@@ -48,8 +48,10 @@ src_configure() {
 }
 
 src_test() {
+	# exclude failing tests
+	# idea: prefetch remote files for local testing
 	local myctestargs=(
-		--exclude-regex '(pgpointcloudtest|pdal_info_test|pdal_io_bpf_base_test|pdal_io_bpf_zlib_test|pdal_io_copc_reader_test|pdal_filters_overlay_test|pdal_filters_stats_test|pdal_app_plugin_test|pdal_merge_test|pdal_io_stac_reader_test)'
+		--exclude-regex '(pgpointcloudtest|pdal_info_test|pdal_io_bpf_base_test|pdal_io_bpf_zlib_test|pdal_io_copc_reader_test|pdal_io_copc_remote_reader_test|pdal_filters_overlay_test|pdal_filters_stats_test|pdal_app_plugin_test|pdal_merge_test|pdal_io_stac_reader_test)'
 		--output-on-failure
 		-j1
 	)
