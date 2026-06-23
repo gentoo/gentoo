@@ -1,11 +1,11 @@
-# Copyright 2020-2025 Gentoo Authors
+# Copyright 2020-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 PYTHON_COMPAT=( python3_{11..13} )
 
-inherit edo flag-o-matic multiprocessing python-any-r1 rust-toolchain toolchain-funcs
+inherit edo flag-o-matic multiprocessing python-any-r1 rust-toolchain toolchain-funcs crossdev
 
 DESCRIPTION="Rust standard library, standalone (for crossdev)"
 HOMEPAGE="https://www.rust-lang.org"
@@ -35,26 +35,12 @@ RESTRICT="test"
 
 QA_FLAGS_IGNORED="usr/lib/rust/${PV}/rustlib/.*/lib/lib.*.so"
 
-#
-# The cross magic
-#
-export CTARGET=${CTARGET:-${CHOST}}
-if [[ ${CTARGET} == ${CHOST} ]] ; then
-	if [[ ${CATEGORY} == cross-* ]] ; then
-		export CTARGET=${CATEGORY#cross-}
-	fi
-fi
-
-is_cross() {
-	[[ ${CHOST} != ${CTARGET} ]]
-}
-
 toml_usex() {
 	usex "$1" true false
 }
 
 pkg_pretend() {
-	is_cross || die "${PN} should only be used for cross"
+	is_crosspkg || die "${PN} should only be used for cross"
 }
 
 pkg_setup() {
