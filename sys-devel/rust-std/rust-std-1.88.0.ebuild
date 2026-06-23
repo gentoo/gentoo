@@ -139,8 +139,13 @@ src_configure() {
 		cxx = "$(tc-getCXX ${CTARGET})"
 		linker = "$(tc-getCC ${CTARGET})"
 		ranlib = "$(tc-getRANLIB ${CTARGET})"
-		$(usev elibc_musl 'crt-static = false')
 	EOF
+	if use elibc_musl; then
+		cat <<- _EOF_ >> "${S}"/bootstrap.toml
+			crt-static = false
+			musl-root = "/usr/${CTARGET}/usr"
+		_EOF_
+	fi
 
 	einfo "${PN^} configured with the following settings:"
 	cat "${S}"/bootstrap.toml || die
