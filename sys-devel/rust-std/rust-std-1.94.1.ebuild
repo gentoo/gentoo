@@ -40,7 +40,7 @@ LICENSE="|| ( MIT Apache-2.0 ) BSD-1 BSD-2 BSD-4"
 SLOT="stable/$(ver_cut 1-2)"
 # please do not keyword
 #KEYWORDS="" #nowarn
-IUSE="debug"
+IUSE="debug llvm-libunwind"
 
 BDEPEND="
 	${PYTHON_DEPS}
@@ -140,6 +140,7 @@ src_configure() {
 		cxx = "$(tc-getCXX ${CTARGET})"
 		linker = "$(tc-getCC ${CTARGET})"
 		ranlib = "$(tc-getRANLIB ${CTARGET})"
+		llvm-libunwind = "$(usex llvm-libunwind in-tree no)"
 	EOF
 	if use elibc_musl; then
 		cat <<- _EOF_ >> "${S}"/bootstrap.toml
@@ -147,7 +148,6 @@ src_configure() {
 			musl-root = "/usr/${CTARGET}/usr"
 		_EOF_
 	fi
-
 	einfo "${PN^} configured with the following settings:"
 	cat "${S}"/bootstrap.toml || die
 }
