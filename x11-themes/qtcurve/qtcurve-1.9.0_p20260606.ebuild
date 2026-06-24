@@ -1,21 +1,21 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-KDE_ORG_COMMIT=efb9e510f50f8147f05054d77c3ef433a8b9390e
 inherit cmake kde.org
 
 DESCRIPTION="Widget styles for Qt and GTK2"
 HOMEPAGE="https://invent.kde.org/system/qtcurve"
+SRC_URI="https://dev.gentoo.org/~asturm/distfiles/kde/${P}.tar.xz" # at be313810
 
 LICENSE="LGPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
-IUSE="gtk plasma qt5 +qt6 test X"
+IUSE="gtk plasma +qt6 test X"
 
 REQUIRED_USE="gtk? ( X )
-	|| ( gtk qt5 qt6 )
+	|| ( gtk qt6 )
 	plasma? ( qt6 )
 "
 RESTRICT="test"
@@ -43,14 +43,6 @@ DEPEND="
 		kde-frameworks/kwindowsystem:6[X]
 		kde-frameworks/kxmlgui:6
 	)
-	qt5? (
-		dev-qt/qtcore:5
-		dev-qt/qtdbus:5
-		dev-qt/qtgui:5
-		dev-qt/qtsvg:5
-		dev-qt/qtwidgets:5
-		X? ( dev-qt/qtx11extras:5 )
-	)
 	qt6? (
 		>=dev-qt/qtbase-6.9.0:6[dbus,gui,widgets]
 		>=dev-qt/qtsvg-6.9.0:6
@@ -73,18 +65,17 @@ BDEPEND="
 DOCS=( AUTHORS ChangeLog.md README.md TODO.md )
 
 PATCHES=(
-	"${FILESDIR}/${P}-manhandle-cmake.patch"  # bug 959633
-	"${FILESDIR}/${P}-qt-6.10.patch" # bug 966408
+	"${FILESDIR}/${PN}-1.9.0_p20250314-manhandle-cmake.patch"  # bug 959633
 )
 
 src_configure() {
 	local mycmakeargs=(
 		-DENABLE_QT4=OFF
+		-DENABLE_QT5=OFF
 		-DQTC_QT4_ENABLE_KDE=OFF
 		-DQTC_KDE4_DEFAULT_HOME=ON
 		-DENABLE_GTK2=$(usex gtk)
 		-DQTC_INSTALL_PO=$(usex plasma)
-		-DENABLE_QT5=$(usex qt5)
 		-DENABLE_QT6=$(usex qt6)
 		-DQTC_QT6_ENABLE_KDE=$(usex plasma)
 		-DBUILD_TESTING=$(usex test)

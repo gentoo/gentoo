@@ -36,8 +36,6 @@ app-i18n/fcitx-qt qt5
 app-i18n/uim qt5
 x11-themes/QGnomePlatform qt5
 x11-themes/adwaita-qt qt5
-x11-themes/kvantum qt5
-x11-themes/qtcurve qt5
 
 # Michał Górny <mgorny@gentoo.org> (2026-05-07)
 # Force-enable all PYTHON_TARGETS for python-exec to avoid using private

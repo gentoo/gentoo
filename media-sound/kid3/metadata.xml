@@ -15,6 +15,6 @@
 	</upstream>
 	<use>
 		<flag name="acoustid">Build acoustic fingerprinting plugin using <pkg>media-libs/chromaprint</pkg></flag>
-		<flag name="mpris">Enable support for MPRIS2 interface using <pkg>dev-qt/qtdbus</pkg></flag>
+		<flag name="mpris">Enable support for MPRIS2 interface using <pkg>dev-qt/qtbase</pkg>[dbus]</flag>
 	</use>
 </pkgmetadata>
