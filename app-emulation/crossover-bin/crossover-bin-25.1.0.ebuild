@@ -2,12 +2,12 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit python-single-r1 unpacker
 
 DESCRIPTION="Commercial version of app-emulation/wine with paid support"
-HOMEPAGE="https://www.codeweavers.com/products/"
+HOMEPAGE="https://www.codeweavers.com/crossover/"
 SRC_URI="https://media.codeweavers.com/pub/crossover/cxlinux/demo/install-crossover-${PV}.bin"
 
 S="${WORKDIR}"
@@ -15,7 +15,7 @@ S="${WORKDIR}"
 LICENSE="CROSSOVER-3"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
-IUSE="+capi +cups doc +gphoto2 +gstreamer +jpeg +lcms +mp3 +nls osmesa +openal +opencl +opengl +pcap +png +scanner +ssl +v4l +vulkan"
+IUSE="+capi +cups +gphoto2 +gstreamer +jpeg +lcms +mp3 +nls +openal +opencl +opengl +pcap +png +scanner +ssl +v4l +vulkan"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RESTRICT="bindist test"
@@ -65,7 +65,7 @@ RDEPEND="${DEPEND}
 	dev-util/desktop-file-utils
 	media-libs/alsa-lib[abi_x86_32(-)]
 	media-libs/freetype:2[abi_x86_32(-)]
-	media-libs/mesa[abi_x86_32(-),osmesa?]
+	media-libs/mesa[abi_x86_32(-)]
 	media-libs/tiff-compat:4[abi_x86_32(-)]
 	sys-auth/nss-mdns[abi_x86_32(-)]
 	sys-apps/util-linux[abi_x86_32(-)]
@@ -102,7 +102,6 @@ src_prepare() {
 	# Remove unnecessary files, license.txt file kept as it's used by
 	# multiple files (apart of the menu to show the license)
 	rm -r guis/ || die "Could not remove files"
-	use doc || rm -r doc/ || die "Could not remove files"
 }
 
 src_install() {
