@@ -316,7 +316,7 @@ src_install() {
 	# TODO drop and replace with runtime detection similar to what python does {{{
 	# ATTENTION: change requires revbump, see link below for supported GCC # versions
 	# https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html#system-requirements
-	local cuda_supported_gcc=( 8.5 9.5 10 11 12 13 "${GCC_MAX_VER}" )
+	local cuda_supported_gcc=( 8.5 9.5 10 11 12 13 14 "${GCC_MAX_VER}" )
 
 	mkdir -p "${ED}/${CUDA_PATH}/bin" || die
 	sed \
