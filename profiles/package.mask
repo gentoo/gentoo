@@ -36,6 +36,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Alfred Wingate <parona@protonmail.com> (2026-07-24)
+# Renamed to libgedit-tepl upstream.
+# Unbuildable for half a year. Last revdep moved to libgedit-tepl.
+# Removal on 2026-07-27. Bug #949068.
+gui-libs/tepl
+
 # Sam James <sam@gentoo.ogr> (2026-07-16)
 # Broken (bug #978438).
 =app-portage/mirrorselect-2.6.5
