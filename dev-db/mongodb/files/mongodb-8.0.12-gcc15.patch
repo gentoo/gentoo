@@ -1,0 +1,32 @@
+--- a/src/third_party/abseil-cpp/dist/absl/container/internal/container_memory.h	2025-05-25 15:02:02.029582436 +0200
++++ b/src/third_party/abseil-cpp/dist/absl/container/internal/container_memory.h	2025-05-25 15:02:09.676522672 +0200
+@@ -18,6 +18,7 @@
+ #include <cassert>
+ #include <cstddef>
+ #include <cstring>
++#include <cstdint>
+ #include <memory>
+ #include <new>
+ #include <tuple>
+--- a/src/mongo/db/timeseries/bucket_catalog/bucket_catalog.h	2026-01-19 23:39:11.014100847 +0100
++++ b/src/mongo/db/timeseries/bucket_catalog/bucket_catalog.h	2026-01-19 23:39:42.968583829 +0100
+@@ -175,7 +175,7 @@
+     // many buckets it exist in 'archivedBuckets' for this UUID.
+     // TODO SERVER-70605: Remove this mapping, only needed when usingAlwaysCompressedBuckets is
+     // disabled.
+-    tracked_unordered_map<UUID, std::tuple<tracked_string, int64_t>> collectionTimeFields;
++    tracked_unordered_map<UUID, std::pair<tracked_string, int64_t>> collectionTimeFields;
+ 
+     // All series currently with outstanding reopening operations. Used to coordinate disk access
+     // between reopenings and regular writes to prevent stale reads and corrupted updates.
+--- a/src/mongo/db/timeseries/bucket_catalog/bucket_catalog.cpp	2026-01-19 23:39:18.027284201 +0100
++++ b/src/mongo/db/timeseries/bucket_catalog/bucket_catalog.cpp	2026-01-19 23:40:01.928810659 +0100
+@@ -177,7 +177,7 @@
+       archivedBuckets(
+           make_tracked_btree_map<ArchivedKey, ArchivedBucket, std::greater<ArchivedKey>>(
+               getTrackingContext(trackingContexts, TrackingScope::kArchivedBuckets))),
+-      collectionTimeFields(make_tracked_unordered_map<UUID, std::tuple<tracked_string, int64_t>>(
++      collectionTimeFields(make_tracked_unordered_map<UUID, std::pair<tracked_string, int64_t>>(
+           getTrackingContext(trackingContexts, TrackingScope::kArchivedBuckets))),
+       outstandingReopeningRequests(
+           make_tracked_unordered_map<
