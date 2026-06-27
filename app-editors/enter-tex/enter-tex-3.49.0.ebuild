@@ -5,14 +5,9 @@ EAPI=8
 
 inherit gnome2-utils meson vala xdg
 
-# prepared for rename
-MY_PN="enter-tex"
-MY_P="${MY_PN}-${PV}"
-
 DESCRIPTION="TeX/LaTeX text editor"
 HOMEPAGE="https://gitlab.gnome.org/World/gedit/enter-tex"
-SRC_URI="https://gitlab.gnome.org/World/gedit/${MY_PN}/-/archive/${PV}/${MY_P}.tar.bz2"
-S="${WORKDIR}/${MY_P}"
+SRC_URI="https://gitlab.gnome.org/World/gedit/${PN}/-/archive/${PV}/${P}.tar.bz2"
 
 LICENSE="GPL-3+"
 SLOT="0"
