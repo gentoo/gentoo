@@ -26,19 +26,20 @@ SITEFILE="50${PN}-gentoo-0.11.0.el"
 pkg_setup() {
 	elisp-check-emacs-version
 
-	local i feat=(
+	local i missing feat=(
 		dynamic-loading "(fboundp 'module-load)"
 		sqlite "(sqlite-available-p)"
 	)
 
 	for (( i=0; i<${#feat[@]}; i+=2 )); do
-		if [[ $(${EMACS} ${EMACSFLAGS} --eval "(princ ${feat[i+1]})") != t ]]
-		then
-			eerror "${CATEGORY}/${PN} needs ${feat[i]} support in Emacs."
-			eerror "Emerge app-editors/emacs with USE=\"${feat[i]}\"."
-			die "Missing ${feat[i]} support"
-		fi
+		[[ $(${EMACS} ${EMACSFLAGS} --eval "(princ ${feat[i+1]})") = t ]] \
+			|| missing+="${missing:+ }${feat[i]}"
 	done
+	if [[ -n ${missing} ]]; then
+		eerror "${CATEGORY}/${PN} needs ${missing// / and } support in Emacs"
+		eerror "Emerge app-editors/emacs with USE=\"${missing}\""
+		die "Emacs misses at least one feature"
+	fi
 }
 
 src_compile() {

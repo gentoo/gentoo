@@ -34,6 +34,11 @@ distutils_enable_tests unittest
 
 QA_FLAGS_IGNORED="usr/lib.*/py.*/site-packages/vcsgraph/_graph_rs.*.so"
 
+src_unpack() {
+	pypi_src_unpack
+	cargo_gen_config
+}
+
 python_test() {
 	cd "${BUILD_DIR}/install$(python_get_sitedir)" || die
 	eunittest
