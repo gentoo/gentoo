@@ -11,5 +11,6 @@
   </use>
   <upstream>
     <remote-id type="gnome-gitlab">swilmet/gnome-latex</remote-id>
+    <remote-id type="gnome-gitlab">World/gedit/enter-tex</remote-id>
   </upstream>
 </pkgmetadata>
