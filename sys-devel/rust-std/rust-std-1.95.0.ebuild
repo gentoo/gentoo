@@ -3,12 +3,12 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{12..14} )
 
 inherit edo flag-o-matic multiprocessing python-any-r1 rust-toolchain toolchain-funcs verify-sig crossdev
 
 DESCRIPTION="Rust standard library, standalone (for crossdev)"
-HOMEPAGE="https://www.rust-lang.org"
+HOMEPAGE="https://rust-lang.org/"
 
 if [[ ${PV} = *9999* ]]; then
 	inherit git-r3

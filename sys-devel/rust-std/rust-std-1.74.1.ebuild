@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..12} )
+PYTHON_COMPAT=( python3_{12..12} )
 
 inherit edo flag-o-matic multiprocessing python-any-r1 rust-toolchain toolchain-funcs crossdev
 
