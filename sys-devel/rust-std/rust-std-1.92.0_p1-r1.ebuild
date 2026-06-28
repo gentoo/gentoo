@@ -10,6 +10,8 @@ inherit edo flag-o-matic multiprocessing python-any-r1 rust-toolchain toolchain-
 DESCRIPTION="Rust standard library, standalone (for crossdev)"
 HOMEPAGE="https://www.rust-lang.org"
 
+RUST_PV=${PV%%_p*}
+
 if [[ ${PV} = *9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/rust-lang/rust.git"
@@ -29,7 +31,7 @@ elif [[ ${PV} == *beta* ]]; then
 	"
 	S="${WORKDIR}/${MY_P}-src"
 else
-	MY_P="rustc-${PV}"
+	MY_P="rustc-${RUST_PV}"
 	SRC_URI="https://static.rust-lang.org/dist/${MY_P}-src.tar.xz
 			verify-sig? ( https://static.rust-lang.org/dist/${MY_P}-src.tar.xz.asc )
 	"
