@@ -5,6 +5,9 @@ EAPI=8
 
 inherit linux-mod-r1
 
+# Uses centralised patches from https://github.com/joanbm/broadcom-wl-linux-mainline/
+COMMIT=6b1a7cc8dae345d249359b37dc2920776040beb2
+
 DESCRIPTION="Broadcom's IEEE 802.11a/b/g/n hybrid Linux device driver"
 HOMEPAGE="https://www.broadcom.com/support/802.11"
 SRC_BASE="https://docs.broadcom.com/docs-and-downloads/docs/linux_sta/hybrid-v35"
@@ -12,6 +15,7 @@ SRC_URI="
 	x86? ( ${SRC_BASE}-nodebug-pcoem-${PV//\./_}.tar.gz )
 	amd64? ( ${SRC_BASE}_64-nodebug-pcoem-${PV//\./_}.tar.gz )
 	https://docs.broadcom.com/docs-and-downloads/docs/linux_sta/README_${PV}.txt -> README-${P}.txt
+	https://github.com/joanbm/broadcom-wl-linux-mainline/archive/${COMMIT}.tar.gz -> broadcom-${COMMIT}.tar.gz
 "
 
 S="${WORKDIR}"
@@ -23,30 +27,6 @@ KEYWORDS="-* ~amd64 ~x86"
 RESTRICT="mirror"
 
 DEPEND="virtual/linux-sources"
-
-PATCHES=(
-	"${FILESDIR}/001-null-pointer-fix.patch"
-	"${FILESDIR}/002-rdtscl.patch"
-	"${FILESDIR}/003-linux47.patch"
-	"${FILESDIR}/004-linux48.patch"
-	"${FILESDIR}/005-debian-fix-kernel-warnings.patch"
-	"${FILESDIR}/006-linux411.patch"
-	"${FILESDIR}/007-linux412.patch"
-	"${FILESDIR}/008-linux415.patch"
-	"${FILESDIR}/009-fix_mac_profile_discrepancy.patch"
-	"${FILESDIR}/010-linux56.patch"
-	"${FILESDIR}/011-linux59.patch"
-	"${FILESDIR}/012-linux517.patch"
-	"${FILESDIR}/013-linux518.patch"
-	"${FILESDIR}/014-linux414.patch"
-	"${FILESDIR}/015-linux600.patch"
-	"${FILESDIR}/016-linux601.patch"
-	"${FILESDIR}/017-handle-new-header-name-6.12.patch"
-	"${FILESDIR}/018-broadcom-wl-fix-linux-6.13.patch"
-	"${FILESDIR}/019-broadcom-wl-fix-linux-6.14.patch"
-	"${FILESDIR}/020-broadcom-wl-fix-linux-6.15.patch"
-	"${FILESDIR}/021-broadcom-wl-fix-linux-6.17.patch"
-)
 
 pkg_pretend() {
 	ewarn
@@ -93,6 +73,12 @@ pkg_setup() {
 	fi
 
 	linux-mod-r1_pkg_setup
+}
+
+src_prepare() {
+	# Apply all patches from zip downloaded earlier.
+	eapply "${WORKDIR}/broadcom-wl-linux-mainline-${COMMIT}/patches/"*.patch
+	eapply_user
 }
 
 src_compile() {
