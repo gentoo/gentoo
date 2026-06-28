@@ -1,9 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{12..15} )
 DISTUTILS_USE_PEP517=setuptools
 inherit fcaps flag-o-matic toolchain-funcs linux-info distutils-r1
 
@@ -58,6 +58,8 @@ PATCHES=(
 	"${FILESDIR}/2.3/criu-2.3-no-git.patch"
 	"${FILESDIR}/criu-3.12-automagic-libbsd.patch"
 	"${FILESDIR}/criu-4.1-no-werror.patch"
+	"${FILESDIR}/criu-4.1-musl-build.patch"
+	"${FILESDIR}/criu-4.1-lld_elf_metadata.patch"
 )
 
 FILECAPS=(
