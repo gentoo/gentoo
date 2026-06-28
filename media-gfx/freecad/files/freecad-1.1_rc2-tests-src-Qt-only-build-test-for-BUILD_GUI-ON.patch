@@ -1,0 +1,26 @@
+--- a/tests/src/Base/CMakeLists.txt
++++ b/tests/src/Base/CMakeLists.txt
+@@ -31,7 +31,9 @@
+         Writer.cpp
+ )
+ 
+-setup_qt_test(InventorBuilder)
++if(BUILD_GUI)
++    setup_qt_test(InventorBuilder)
++endif()
+ 
+ target_link_libraries(Base_tests_run PRIVATE
+     GTest::gtest_main
+--- a/tests/src/Gui/CMakeLists.txt
++++ b/tests/src/Gui/CMakeLists.txt
+@@ -11,7 +11,9 @@
+ )
+ 
+ # Qt tests
+-setup_qt_test(QuantitySpinBox)
++if(BUILD_GUI)
++    setup_qt_test(QuantitySpinBox)
++endif
+ 
+ target_link_libraries(Gui_tests_run PRIVATE
+     GTest::gtest_main
