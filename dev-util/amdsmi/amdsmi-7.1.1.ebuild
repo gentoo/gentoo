@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -45,6 +45,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-7.0.2-no-git.patch
 	"${FILESDIR}"/${PN}-7.0.2-unbundle-gtest.patch
 	"${FILESDIR}"/${PN}-7.1.1-libdrm-compat.patch
+	"${FILESDIR}"/${PN}-7.1.1-fix-includes.patch
 )
 
 CONFIG_CHECK="~HSA_AMD ~DRM_AMDGPU"
