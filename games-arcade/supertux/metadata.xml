@@ -10,6 +10,11 @@
 		<remote-id type="github">SuperTux/supertux</remote-id>
 	</upstream>
 	<use>
+		<flag name="discord">Enable Discord Rich Presence Support</flag>
+		<flag name="egl">
+			Use EGL (<pkg>media-libs/libepoxy</pkg>) as the OpenGL provider instead of
+			<pkg>media-libs/glew</pkg>
+		</flag>
 		<flag name="network">Enable network support (e.g. for downloading add-ons)</flag>
 	</use>
 </pkgmetadata>
