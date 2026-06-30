@@ -497,8 +497,10 @@ declare -g -A NGX_MOD_TO_SONAME+=(
 
 # @ECLASS_VARIABLE: NGINX_MOD_TEST_DIR
 # @DESCRIPTION:
-# Set to directory containing tests relative to NGINX_MOD_S.  If
-# NGINX_MOD_OPENRESTY_TESTS is not set, has no effect.  Defaults to "t".
+# Set to directory containing tests relative to ${S} before calling
+# nginx-module_src_test() to override the default directory where tests for this
+# package are stored.  If NGINX_MOD_OPENRESTY_TESTS is not set, has no effect.
+# Defaults to "t".
 : "${NGINX_MOD_TEST_DIR:=t}"
 
 # @ECLASS_VARIABLE: NGINX_MOD_TEST_LOAD_ORDER
@@ -509,7 +511,7 @@ declare -g -A NGX_MOD_TO_SONAME+=(
 # sensitive to the order of module loading, their load order.  As a special
 # workaround, the current module could also be specified as an entry in order to
 # force a specific load order.  If the current module is not listed in this
-# array, it is loaded first, before its test dependencies.
+# array, it is loaded first, before all the modules specified in this array.
 #
 # All the modules specified in this array, barring the current module, are added
 # to test BDEPEND.  This behaviour may be disabled by setting the
@@ -523,8 +525,11 @@ declare -g -A NGX_MOD_TO_SONAME+=(
 # instructs Test::Nginx in what order and which shared objects should be loaded
 # during tests.
 #
-# This array must be set prior to inheriting the eclass.  If
-# NGINX_MOD_OPENRESTY_TESTS is not set, this variable has no effect.
+# If NGINX_MOD_OPENRESTY_TESTS is not set, this variable has no effect.
+#
+# If NGINX_MOD_OVERRIDE_TEST_BDEPEND is not set, this array must be set prior to
+# inheriting the eclass to populate BDEPEND.  In any case, this variable must
+# ultimately be set before nginx-module_src_test() is called.
 #
 # Example:
 # @CODE
