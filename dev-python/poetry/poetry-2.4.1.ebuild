@@ -48,6 +48,7 @@ BDEPEND="
 		>=dev-python/jaraco-classes-3.3.1[${PYTHON_USEDEP}]
 		dev-python/keyring[${PYTHON_USEDEP}]
 		dev-python/responses[${PYTHON_USEDEP}]
+		dev-python/keyring[${PYTHON_USEDEP}]
 	)
 "
 
