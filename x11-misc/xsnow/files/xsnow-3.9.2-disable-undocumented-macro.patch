@@ -1,0 +1,13 @@
+From https://git.altlinux.org/gears/x/xsnow.git?p=xsnow.git;a=blob_plain;f=fix_politics_statements.patch
+--- a/src/xsnow-constants.h
++++ b/src/xsnow-constants.h
+@@ -44,5 +47,9 @@
+ #define SNOWSPEED 0.7    // the higher, the speedier the snow
+ #define WHIRL 150
+ #define MAXVISWORKSPACES 100   // should be enough...
++
++/*
+ #define USE_EXTRATREE
++*/
++
+ #define ignore_atom                "IGNORE_ME"
