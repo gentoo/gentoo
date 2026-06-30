@@ -60,7 +60,7 @@ RDEPEND="
 	dev-qt/qtsvg:6
 	media-gfx/qrencode:=
 	sys-apps/pcsc-lite
-	sys-apps/keyutils
+	sys-apps/keyutils:=
 	sys-libs/readline:0=
 	virtual/minizip:=
 	virtual/zlib:=
