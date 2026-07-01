@@ -5,7 +5,19 @@
 		<email>netmon@gentoo.org</email>
 		<name>Gentoo network monitoring and analysis project</name>
 	</maintainer>
+	<longdescription lang="en">
+		Portsentry monitors network traffic to detect and respond to port
+		scans and probing attempts in real-time. It can serve as a
+		supplementary intrusion detection system (IDS) or as an
+		enumeration-prevention tool, blocking bots and adversaries that probe
+		unused services, especially when paired with a mostly-closed firewall.
+	</longdescription>
+	<use>
+		<flag name="pcap">Use <pkg>net-libs/libpcap</pkg> for packet capture
+			instead of Linux raw sockets</flag>
+		<flag name="systemd">Install a <pkg>sys-apps/systemd</pkg> service unit</flag>
+	</use>
 	<upstream>
-		<remote-id type="sourceforge">sentrytools</remote-id>
+		<remote-id type="github">portsentry/portsentry</remote-id>
 	</upstream>
 </pkgmetadata>
