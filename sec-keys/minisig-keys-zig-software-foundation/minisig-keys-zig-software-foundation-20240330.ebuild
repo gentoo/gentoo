@@ -1,7 +1,7 @@
-# Copyright 2024-2025 Gentoo Authors
+# Copyright 2024-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=9
 
 DESCRIPTION="Minisign keys used by Zig Software Foundation"
 
