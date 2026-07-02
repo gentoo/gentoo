@@ -364,7 +364,7 @@ src_compile() {
 	export SETUPTOOLS_USE_DISTUTILS=stdlib
 
 	# Gentoo hack to disable accessing system site-packages
-	export GENTOO_CPYTHON_BUILD=1
+	local -x GENTOO_CPYTHON_BUILD=1
 
 	# also need to clear the flags explicitly here or they end up
 	# in _sysconfigdata*

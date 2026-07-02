@@ -467,7 +467,7 @@ src_compile() {
 	# Ensure sed works as expected
 	# https://bugs.gentoo.org/594768
 	local -x LC_ALL=C
-	export PYTHONSTRICTEXTENSIONBUILD=1
+	local -x PYTHONSTRICTEXTENSIONBUILD=1
 
 	# Save PYTHONDONTWRITEBYTECODE so that 'has_version' doesn't
 	# end up writing bytecode & violating sandbox.
@@ -475,7 +475,7 @@ src_compile() {
 	local -x _PYTHONDONTWRITEBYTECODE=${PYTHONDONTWRITEBYTECODE}
 
 	# Gentoo hack to disable accessing system site-packages
-	export GENTOO_CPYTHON_BUILD=1
+	local -x GENTOO_CPYTHON_BUILD=1
 
 	if use pgo ; then
 		# bug 660358
