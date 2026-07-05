@@ -189,9 +189,6 @@ media-libs/libv4l bpf
 media-video/ffmpeg libplacebo shaderc
 media-video/ffmpeg-compat libplacebo shaderc
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2023-10-08)
-# Vulkan is not available on hppa.
->=dev-qt/qtwayland-5.15.11:5 compositor
 # Patrick McLean <chutzpah@gentoo.org> (2023-10-03)
 # sys-apps/s6-linux-init has not been tested on this arch
 sys-apps/openrc s6

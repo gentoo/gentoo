@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,7 +7,7 @@ DISTUTILS_EXT=1
 # we aren't using meson-python, as that results in removing .pc file
 # https://bugs.gentoo.org/966038
 DISTUTILS_USE_PEP517=no
-PYTHON_COMPAT=( python3_{11..12} python3_{13..14}{,t} pypy3_11 )
+PYTHON_COMPAT=( python3_12 python3_{13..15}{,t} pypy3_11 )
 PYTHON_REQ_USE="threads(+)"
 
 inherit meson distutils-r1

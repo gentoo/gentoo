@@ -175,6 +175,21 @@ src_configure() {
 	cmake_src_configure
 }
 
+src_test() {
+	# see setenv in upstream repository
+	local -x MLT_REPOSITORY="${BUILD_DIR}/out/lib/mlt"
+	local -x MLT_DATA="${BUILD_DIR}/out/share/mlt"
+	local -x MLT_PROFILES_PATH="${BUILD_DIR}/out/share/mlt/profiles"
+	local -x MLT_PRESETS_PATH="${BUILD_DIR}/out/share/mlt/presets"
+	local -x LD_LIBRARY_PATH="${BUILD_DIR}/out/lib:${LD_LIBRARY_PATH}"
+	local -x PATH="${BUILD_DIR}/out/bin:${PATH}"
+
+	local CMAKE_SKIP_TESTS=()
+	use !xml && CMAKE_SKIP_TESTS+=( QtTest:xml )
+
+	cmake_src_test
+}
+
 src_install() {
 	cmake_src_install
 

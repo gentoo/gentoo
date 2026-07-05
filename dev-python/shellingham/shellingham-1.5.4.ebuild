@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( pypy3_11 python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 
 inherit distutils-r1 pypi
 
@@ -23,10 +23,5 @@ LICENSE="ISC"
 SLOT="0"
 KEYWORDS="amd64 ~arm arm64 ~loong ~riscv x86"
 
-DEPEND="
-	test? (
-		dev-python/pytest-mock[${PYTHON_USEDEP}]
-	)
-"
-
+EPYTEST_PLUGINS=( pytest-mock )
 distutils_enable_tests pytest

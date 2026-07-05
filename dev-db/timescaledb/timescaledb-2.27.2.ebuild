@@ -13,10 +13,10 @@ HOMEPAGE="https://www.timescale.com/"
 SRC_URI="https://github.com/timescale/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="POSTGRESQL Apache-2.0 proprietary-extensions? ( timescale )"
-SLOT=0
+SLOT="0"
 KEYWORDS="~amd64"
 IUSE="proprietary-extensions"
-
+REQUIRED_USE="${POSTGRES_REQ_USE}"
 RESTRICT="test"
 
 DEPEND="${POSTGRES_DEP}"

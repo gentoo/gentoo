@@ -24,7 +24,7 @@ IUSE="chdr"
 
 DEPEND="
 	dev-libs/miniz:=
-	media-libs/jg:1=
+	>=media-libs/jg-2.0.0
 	media-libs/speexdsp
 	chdr? ( media-libs/libchdr:= )
 "

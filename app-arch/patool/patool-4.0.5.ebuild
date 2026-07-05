@@ -14,7 +14,7 @@ HOMEPAGE="https://wummel.github.io/patool/"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 BDEPEND="
 	test? (
@@ -136,6 +136,14 @@ python_test() {
 		EPYTEST_DESELECT+=(
 			# bug #916317
 			"tests/archives/test_lrzip.py::TestLrzip::test_lrzip"
+		)
+	fi
+
+	if has_version app-arch/rpm[-sequoia]; then
+		EPYTEST_DESELECT+=(
+			# bug #977415
+			"tests/archives/test_rpm.py::TestRpm::test_rpm_file"
+			"tests/archives/test_rpm.py::TestRpm::test_rpm"
 		)
 	fi
 

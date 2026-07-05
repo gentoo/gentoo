@@ -1,6 +1,14 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (2025-07-04)
+# Hypothesis has now been RIIR-ed.
+>=dev-python/hypothesis-6.156
+
+# Michał Górny <mgorny@gentoo.org> (2025-07-01)
+# Requires dev-python/rpds-py.
+dev-python/octave-kernel
+
 # Michał Górny <mgorny@gentoo.org> (2025-06-02)
 # Require dev-python/pydantic.
 dev-python/syrupy
@@ -92,12 +100,14 @@ dev-python/gherkin-official
 dev-python/guessit
 dev-python/knowit
 dev-python/logfury
+dev-python/progressbar2
 dev-python/pykwalify
 dev-python/pytest-bdd
 dev-python/pytest-describe
 dev-python/pytest-django
 dev-python/pytest-golden
 dev-python/pytest-socket
+dev-python/python-utils
 dev-python/rebulk
 dev-python/sphinxcontrib-doxylink
 >=dev-python/sphinxcontrib-httpdomain-2.0
@@ -108,6 +118,7 @@ dev-python/trakit
 dev-python/uv-build
 dev-python/vcsgraph
 dev-python/zmq-anyio
+dev-util/elf_diff
 media-video/subliminal
 net-analyzer/fail2ban
 sci-libs/cartopy

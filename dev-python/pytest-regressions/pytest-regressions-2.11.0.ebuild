@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
 PYPI_VERIFY_REPO=https://github.com/ESSS/pytest-regressions
-PYTHON_COMPAT=( python3_{11..14} pypy3_11 )
+PYTHON_COMPAT=( python3_{12..15} )
 
 inherit distutils-r1 pypi
 
@@ -55,7 +55,7 @@ python_test() {
 		)
 	fi
 	if ! has_version "dev-python/pillow[${PYTHON_USEDEP}]"; then
-		EPYTEST_DESELECT+=(
+		EPYTEST_IGNORE+=(
 			tests/test_image_regression.py
 		)
 	fi

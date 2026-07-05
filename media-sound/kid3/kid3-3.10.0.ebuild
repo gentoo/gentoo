@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{11..15} )
 inherit cmake kde.org python-any-r1 xdg
 
 DESCRIPTION="Simple tag editor based on Qt"
@@ -81,10 +81,14 @@ src_configure() {
 		-DWITH_VORBIS=$(usex vorbis)
 	)
 
-	if use kde ; then
+	if use kde; then
 		mycmakeargs+=( "-DWITH_APPS=KDE;CLI" )
 	else
 		mycmakeargs+=( "-DWITH_APPS=Qt;CLI" )
+	fi
+
+	if use acoustid; then
+		addpredict /dev # bug #855281
 	fi
 
 	cmake_src_configure

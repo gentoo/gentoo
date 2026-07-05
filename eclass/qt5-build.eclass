@@ -8,6 +8,7 @@
 # Davide Pesavento <pesa@gentoo.org>
 # @SUPPORTED_EAPIS: 8
 # @BLURB: Eclass for Qt5 split ebuilds.
+# @DEAD
 # @DESCRIPTION:
 # This eclass contains various functions that are used when building Qt5.
 

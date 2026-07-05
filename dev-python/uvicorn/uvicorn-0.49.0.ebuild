@@ -5,20 +5,20 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=hatchling
 PYPI_VERIFY_REPO=https://github.com/Kludex/uvicorn
-PYTHON_COMPAT=( python3_{12..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 
 inherit distutils-r1 optfeature pypi
 
 DESCRIPTION="Lightning-fast ASGI server implementation"
 HOMEPAGE="
-	https://www.uvicorn.org/
+	https://uvicorn.dev/
 	https://github.com/Kludex/uvicorn/
 	https://pypi.org/project/uvicorn/
 "
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc ~x86"
 IUSE="test-rust"
 
 RDEPEND="
@@ -49,31 +49,17 @@ EPYTEST_RERUNS=5
 EPYTEST_XDIST=1
 distutils_enable_tests pytest
 
-python_test() {
-	local EPYTEST_DESELECT=(
-		# too long path for unix socket
-		tests/test_config.py::test_bind_unix_socket_works_with_reload_or_workers
-		# TODO
-		'tests/protocols/test_http.py::test_close_connection_with_multiple_requests[httptools]'
-		'tests/protocols/test_websocket.py::test_send_binary_data_to_server_bigger_than_default_on_websockets[httptools-max=defaults sent=defaults+1]'
-		'tests/protocols/test_websocket.py::test_send_binary_data_to_server_bigger_than_default_on_websockets[h11-max=defaults sent=defaults+1]'
-		# tests broken with non-ancient dev-python/websockets
-		tests/protocols/test_websocket.py::test_fragmented_message_exceeding_max_size
-		tests/protocols/test_websocket.py::test_fragmented_message_reassembly
-	)
-	case ${EPYTHON} in
-		pypy3*)
-			EPYTEST_DESELECT+=(
-				# TODO
-				tests/middleware/test_logging.py::test_running_log_using_fd
-				# crashes pytest-xdist
-				tests/test_config.py::test_bind_stdin_works_with_reload_or_workers
-			)
-			;;
-	esac
-
-	epytest
-}
+EPYTEST_DESELECT=(
+	# too long path for unix socket
+	tests/test_config.py::test_bind_unix_socket_works_with_reload_or_workers
+	# TODO
+	'tests/protocols/test_http.py::test_close_connection_with_multiple_requests[httptools]'
+	'tests/protocols/test_websocket.py::test_send_binary_data_to_server_bigger_than_default_on_websockets[httptools-max=defaults sent=defaults+1]'
+	'tests/protocols/test_websocket.py::test_send_binary_data_to_server_bigger_than_default_on_websockets[h11-max=defaults sent=defaults+1]'
+	# tests broken with non-ancient dev-python/websockets
+	tests/protocols/test_websocket.py::test_fragmented_message_exceeding_max_size
+	tests/protocols/test_websocket.py::test_fragmented_message_reassembly
+)
 
 pkg_postinst() {
 	optfeature "auto reload on file changes" dev-python/watchfiles

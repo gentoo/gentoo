@@ -1,11 +1,11 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 POSTGRES_COMPAT=( 13 14 15 16 17 )
 
-RESTRICT="test"
+inherit postgres-multi
 
 DESCRIPTION="PostgreSQL Replication Manager"
 HOMEPAGE="http://www.repmgr.org/"
@@ -14,8 +14,8 @@ SRC_URI="https://github.com/EnterpriseDB/repmgr/releases/download/v${PV}/${P}.ta
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-
-inherit postgres-multi
+REQUIRED_USE="${POSTGRES_REQ_USE}"
+RESTRICT="test"
 
 DEPEND="${POSTGRES_DEP}
 	dev-libs/json-c"

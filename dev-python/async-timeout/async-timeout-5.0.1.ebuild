@@ -4,13 +4,13 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{11..14} pypy3_11 )
+PYTHON_COMPAT=( python3_{12..15} )
 
 inherit distutils-r1 pypi
 
 DESCRIPTION="Timeout context manager for asyncio programs"
 HOMEPAGE="
-	https://github.com/aio-libs/async-timeout/
+	https://github.com/aio-libs-abandoned/async-timeout/
 	https://pypi.org/project/async-timeout/
 "
 

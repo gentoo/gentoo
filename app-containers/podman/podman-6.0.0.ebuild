@@ -49,6 +49,7 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	${PYTHON_DEPS}
 	dev-go/go-md2man
+	>=dev-lang/go-1.25.6
 "
 
 PATCHES=(

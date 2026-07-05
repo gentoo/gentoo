@@ -13,8 +13,8 @@ inherit cmake flag-o-matic lua-single optfeature python-single-r1 xdg
 
 CEF_AMD64="cef_binary_6533_linux_x86_64_v6"
 CEF_ARM64="cef_binary_6533_linux_aarch64_v6"
-OBS_BROWSER_COMMIT="ea04212e4bbadd077f9e6038758c4e4779c24fa3"
-OBS_WEBSOCKET_COMMIT="68bebc28be57a8ca371404182113e16eeac74cbf"
+OBS_BROWSER_COMMIT="3f0a2cdf378939ebe3c6f9ab36d4ea100c25aac2"
+OBS_WEBSOCKET_COMMIT="1ef34bf48110c2a18184e50e41cd0b1a855e2147"
 
 DESCRIPTION="Software for Recording and Streaming Live Video Content"
 HOMEPAGE="https://obsproject.com"
@@ -69,7 +69,7 @@ DEPEND="
 	dev-libs/jansson:=
 	dev-libs/simde
 	dev-libs/uthash
-	dev-qt/qtbase:6[network,widgets,X,xml(+)]
+	dev-qt/qtbase:6=[network,widgets,X,xml(+)]
 	dev-qt/qtsvg:6
 	media-libs/libglvnd[X]
 	media-libs/libva
@@ -134,7 +134,7 @@ DEPEND="
 		media-libs/libv4l
 		virtual/udev
 	)
-	vlc? ( media-video/vlc:= )
+	vlc? ( <media-video/vlc-4.0:= )
 	wayland? (
 		dev-libs/wayland
 		x11-libs/libxkbcommon

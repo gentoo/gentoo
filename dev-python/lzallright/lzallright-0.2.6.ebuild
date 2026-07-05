@@ -101,7 +101,7 @@ CRATES="
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=maturin
 RUST_MIN_VER=1.80
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 inherit cargo distutils-r1 pypi
 
 DESCRIPTION="Python bindings for lzokay library"

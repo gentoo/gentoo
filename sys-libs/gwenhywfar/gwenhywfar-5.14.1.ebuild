@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools qmake-utils
+inherit autotools qt-utils
 
 DESCRIPTION="Multi-platform helper library for other libraries"
 HOMEPAGE="https://www.aquamaniac.de/"

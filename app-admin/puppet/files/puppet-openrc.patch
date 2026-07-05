@@ -1,0 +1,15 @@
+If systemd is in use, OpenRC may be picked because the OpenRC provider
+was underconstrained.
+
+https://groups.google.com/g/puppet-users/c/t6vyTO0057g
+--- a/lib/puppet/provider/service/openrc.rb
++++ b/lib/puppet/provider/service/openrc.rb
+@@ -9,6 +9,8 @@ Puppet::Type.type(:service).provide :openrc, :parent => :base do
+ 
+   EOT
+ 
++  confine :true => Puppet::FileSystem.exist?('/proc/1/comm') && Puppet::FileSystem.read('/proc/1/comm').include?('init')
++
+   defaultfor 'os.name' => :gentoo
+   defaultfor 'os.name' => :funtoo
+ 

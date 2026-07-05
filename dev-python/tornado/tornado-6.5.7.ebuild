@@ -6,7 +6,7 @@ EAPI=8
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
 PYPI_VERIFY_REPO=https://github.com/tornadoweb/tornado
-PYTHON_COMPAT=( python3_{12..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 PYTHON_REQ_USE="threads(+)"
 
 inherit distutils-r1 pypi
@@ -38,6 +38,8 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}/${PN}-6.3.2-ignore-deprecationwarning.patch"
+	# https://github.com/tornadoweb/tornado/pull/3678
+	"${FILESDIR}/${P}-pycurl-7.47.0.patch"
 )
 
 src_prepare() {

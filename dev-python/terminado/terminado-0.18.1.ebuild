@@ -1,10 +1,10 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=hatchling
-PYTHON_COMPAT=( pypy3_11 python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 
 inherit distutils-r1 pypi
 
@@ -22,13 +22,9 @@ RDEPEND="
 	dev-python/ptyprocess[${PYTHON_USEDEP}]
 	dev-python/tornado[${PYTHON_USEDEP}]
 "
-BDEPEND="
-	test? (
-		dev-python/pytest-rerunfailures[${PYTHON_USEDEP}]
-		dev-python/pytest-timeout[${PYTHON_USEDEP}]
-	)
-"
 
+EPYTEST_PLUGINS=( pytest-timeout )
+EPYTEST_RERUNS=5
 distutils_enable_tests pytest
 
 src_test() {
@@ -36,9 +32,4 @@ src_test() {
 	echo "set enable-bracketed-paste off" > "${T}"/inputrc || die
 	local -x INPUTRC="${T}"/inputrc
 	distutils-r1_src_test
-}
-
-python_test() {
-	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
-	epytest -p timeout -p rerunfailures --reruns=3
 }

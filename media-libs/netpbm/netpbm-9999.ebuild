@@ -55,6 +55,7 @@ PATCHES=(
 	"${FILESDIR}"/netpbm-11.0.0-misc-deps.patch
 	"${FILESDIR}"/netpbm-11.1.0-fix-clang-O2.patch
 	"${FILESDIR}"/netpbm-11.6.1-incompatible-pointer-types.patch
+	"${FILESDIR}"/netpbm-11.15.0-fix-test-pm_message.patch
 )
 
 netpbm_libtype() {
@@ -229,7 +230,7 @@ src_compile() {
 src_test() {
 	# The code wants to install everything first and then test the result.
 	emake install.{bin,lib,data}
-	LC_ALL=C emake check
+	emake check
 }
 
 src_install() {

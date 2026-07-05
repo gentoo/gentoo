@@ -1,11 +1,11 @@
-# Copyright 2020-2025 Gentoo Authors
+# Copyright 2020-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{12..14} )
 
-inherit edo flag-o-matic multiprocessing python-any-r1 rust-toolchain toolchain-funcs verify-sig
+inherit edo flag-o-matic multiprocessing python-any-r1 rust-toolchain toolchain-funcs verify-sig crossdev
 
 DESCRIPTION="Rust standard library, standalone (for crossdev)"
 HOMEPAGE="https://www.rust-lang.org"
@@ -40,7 +40,7 @@ LICENSE="|| ( MIT Apache-2.0 ) BSD-1 BSD-2 BSD-4"
 SLOT="stable/$(ver_cut 1-2)"
 # please do not keyword
 #KEYWORDS="" #nowarn
-IUSE="debug"
+IUSE="debug llvm-libunwind"
 
 BDEPEND="
 	${PYTHON_DEPS}
@@ -65,26 +65,13 @@ QA_FLAGS_IGNORED="usr/lib/rust/${PV}/rustlib/.*/lib/lib.*.so"
 PATCHES=(
 	"${FILESDIR}"/1.90.0-enable-stage-0-build.patch  # remove for >=1.91.0
 )
-#
-# The cross magic
-#
-export CTARGET=${CTARGET:-${CHOST}}
-if [[ ${CTARGET} == ${CHOST} ]] ; then
-	if [[ ${CATEGORY} == cross-* ]] ; then
-		export CTARGET=${CATEGORY#cross-}
-	fi
-fi
-
-is_cross() {
-	[[ ${CHOST} != ${CTARGET} ]]
-}
 
 toml_usex() {
 	usex "$1" true false
 }
 
 pkg_pretend() {
-	is_cross || die "${PN} should only be used for cross"
+	is_crosspkg || die "${PN} should only be used for cross"
 }
 
 pkg_setup() {
@@ -156,8 +143,14 @@ src_configure() {
 		cxx = "$(tc-getCXX ${CTARGET})"
 		linker = "$(tc-getCC ${CTARGET})"
 		ranlib = "$(tc-getRANLIB ${CTARGET})"
-		$(usev elibc_musl 'crt-static = false')
+		llvm-libunwind = "$(usex llvm-libunwind in-tree no)"
 	EOF
+	if use elibc_musl; then
+		cat <<- _EOF_ >> "${S}"/bootstrap.toml
+			crt-static = false
+			musl-root = "/usr/${CTARGET}/usr"
+		_EOF_
+	fi
 
 	einfo "${PN^} configured with the following settings:"
 	cat "${S}"/bootstrap.toml || die

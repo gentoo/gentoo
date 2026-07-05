@@ -6,7 +6,7 @@ EAPI=8
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
 PYPI_VERIFY_REPO=https://github.com/aio-libs/aiohttp
-PYTHON_COMPAT=( python3_{12..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 
 inherit distutils-r1 pypi
 
@@ -23,9 +23,7 @@ IUSE="+native-extensions test-rust"
 
 DEPEND="
 	native-extensions? (
-		$(python_gen_cond_dep '
-			net-libs/llhttp:=
-		' 'python3*')
+		net-libs/llhttp:=
 	)
 "
 RDEPEND="
@@ -54,14 +52,14 @@ BDEPEND="
 		dev-python/pkgconfig[${PYTHON_USEDEP}]
 	)
 	test? (
-		dev-python/blockbuster[${PYTHON_USEDEP}]
 		dev-python/freezegun[${PYTHON_USEDEP}]
 		dev-python/isal[${PYTHON_USEDEP}]
 		dev-python/re-assert[${PYTHON_USEDEP}]
-		$(python_gen_cond_dep '
-			dev-python/time-machine[${PYTHON_USEDEP}]
-		' 'python3*')
 		dev-python/zlib-ng[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			dev-python/blockbuster[${PYTHON_USEDEP}]
+			dev-python/time-machine[${PYTHON_USEDEP}]
+		' 3.{12..14})
 		www-servers/gunicorn[${PYTHON_USEDEP}]
 		test-rust? (
 			dev-python/trustme[${PYTHON_USEDEP}]

@@ -4,7 +4,7 @@
 EAPI=8
 
 POSTGRES_COMPAT=( {12..17} )
-POSTGRES_USEDEP="server"
+POSTGRES_USEDEP="server(+)"
 inherit autotools postgres-multi toolchain-funcs
 
 MY_P="${PN}-$(ver_rs 3 '')"

@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,7 +7,7 @@ inherit flag-o-matic multilib multilib-minimal toolchain-funcs
 MY_P="${PN^^}_${PV}"
 
 DESCRIPTION="An ultra-fast, ultra-compact key-value embedded data store"
-HOMEPAGE="https://symas.com/lmdb/technical/"
+HOMEPAGE="https://www.symas.com/mdb"
 SRC_URI="https://git.openldap.org/openldap/openldap/-/archive/${MY_P}/openldap-${MY_P}.tar.gz"
 S="${WORKDIR}/openldap-${MY_P}/libraries/liblmdb"
 

@@ -145,9 +145,9 @@ LICENSE+="
 	Unicode-3.0
 "
 SLOT="0"
-if [[ ${PV} != *_rc* ]]; then
-	KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~sparc ~x86"
-fi
+# This is the same as 2.12.0 final, except upstream never uploaded it
+# to PyPI.
+KEYWORDS="amd64 ~arm arm64 ~riscv ~sparc ~x86"
 
 DEPEND="
 	app-arch/bzip2:=

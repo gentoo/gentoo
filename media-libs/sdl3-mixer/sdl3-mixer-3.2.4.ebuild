@@ -20,7 +20,7 @@ S="${WORKDIR}/SDL_mixer-${GIT_TAG}"
 LICENSE="ZLIB"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64"
-IUSE="drlibs flac +fluidsynth gme +midi mod modplug mp3 opus playtools"
+IUSE="drlibs flac +fluidsynth gme +midi mod mp3 opus playtools"
 IUSE+=" +libvorbis timidity tremor +vorbis +wav wavpack xmp"
 REQUIRED_USE="
 	drlibs? ( || ( flac mp3 ) )

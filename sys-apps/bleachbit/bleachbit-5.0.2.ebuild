@@ -3,16 +3,20 @@
 
 EAPI=8
 
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/${PN}.asc
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{11..14} )
 PYTHON_REQ_USE="sqlite(+)"
 DISTUTILS_SINGLE_IMPL=1
 
-inherit desktop distutils-r1 virtualx
+inherit desktop distutils-r1 verify-sig virtualx
 
 DESCRIPTION="Clean junk to free disk space and to maintain privacy"
 HOMEPAGE="https://www.bleachbit.org"
-SRC_URI="https://download.bleachbit.org/${P}.tar.bz2"
+SRC_URI="
+	https://download.bleachbit.org/${P}.tar.bz2
+	verify-sig? ( https://download.sourceforge.net/project/bleachbit/bleachbit/${PV}/detached_signatures/${P}.tar.bz2.sig )
+"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -28,6 +32,7 @@ RDEPEND="
 "
 BDEPEND="
 	sys-devel/gettext
+	verify-sig? ( sec-keys/openpgp-keys-bleachbit )
 "
 
 distutils_enable_tests unittest
@@ -36,6 +41,7 @@ PATCHES=(
 	"${FILESDIR}"/bleachbit-5.0.2-chardet-6.patch
 	"${FILESDIR}"/bleachbit-5.0.2-py3.14.patch
 	"${FILESDIR}"/bleachbit-5.0.2-pygobject-deprecation.patch
+	"${FILESDIR}"/bleachbit-5.0.2-fix_locale_test.patch
 )
 
 python_prepare_all() {
@@ -90,6 +96,11 @@ python_compile_all() {
 }
 
 python_test() {
+	# use a hardcoded valid code, some tests may fail with accent (pt, fr, ck ...)
+	# tests.TestGuiStartup.GuiStartupTestCase.test_first_start_message_clears_flag
+	# tests.TestGuiStartup.GuiStartupTestCase.test_upgrade_message_shown_for_pre_510
+	# tests.TestWinapp.WinappTestCase.test_section_not_found
+	export LC_ALL="C.UTF-8"
 	virtx eunittest -p Test*.py
 }
 

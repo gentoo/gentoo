@@ -17,35 +17,52 @@ fi
 
 LICENSE="BSD CC0-1.0 MIT ZLIB"
 SLOT="1"
+IUSE="vulkan"
 
 DEPEND="
 	dev-libs/miniz
 	dev-libs/openssl:0=
-	media-libs/jg:1=
+	>=media-libs/jg-2.0.0
 	media-libs/libepoxy[egl(+)]
-	media-libs/libsdl3[opengl]
+	media-libs/libsdl3[opengl,udev]
 	media-libs/speexdsp
+	vulkan? (
+		dev-util/vulkan-headers
+		media-libs/libsdl3[vulkan]
+		media-libs/vulkan-loader
+	)
 "
 RDEPEND="${DEPEND}"
 BDEPEND="
 	virtual/pkgconfig
+	vulkan? ( dev-util/glslang )
 "
 
-src_compile() {
-	emake \
-		CC="$(tc-getCC)" \
-		PKG_CONFIG="$(tc-getPKG_CONFIG)" \
-		PREFIX="${EPREFIX}"/usr \
-		LIBDIR="${EPREFIX}/usr/$(get_libdir)" \
-		USE_EXTERNAL_MD5=1 \
+src_configure() {
+	local makeopts=(
+		PREFIX="${EPREFIX}"/usr
+		USE_EXTERNAL_MD5=1
 		USE_EXTERNAL_MINIZ=1
+		ENABLE_VULKAN=$(usex vulkan 1 0)
+	)
+	export MY_MAKEOPTS="${makeopts[@]}"
+}
+
+src_compile() {
+	local mymakeargs=(
+		CC="$(tc-getCC)"
+		PKG_CONFIG="$(tc-getPKG_CONFIG)"
+		LIBDIR="${EPREFIX}/usr/$(get_libdir)"
+		${MY_MAKEOPTS}
+	)
+	emake "${mymakeargs[@]}"
 }
 
 src_install() {
-	emake install \
+	local mymakeargs=(
 		DESTDIR="${D}" \
-		PREFIX="${EPREFIX}"/usr \
-		DOCDIR="${EPREFIX}"/usr/share/doc/${PF} \
-		USE_EXTERNAL_MD5=1 \
-		USE_EXTERNAL_MINIZ=1
+		DOCDIR="${EPREFIX}"/usr/share/doc/${PF}
+		${MY_MAKEOPTS}
+	)
+	emake install "${mymakeargs[@]}"
 }

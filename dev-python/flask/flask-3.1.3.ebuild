@@ -3,9 +3,9 @@
 
 EAPI=8
 
-DISTUTILS_USE_PEP517=flit
+DISTUTILS_USE_PEP517=flit-core
 PYPI_VERIFY_REPO=https://github.com/pallets/flask
-PYTHON_COMPAT=( python3_{11..14} pypy3_11 )
+PYTHON_COMPAT=( python3_{12..15} )
 
 inherit distutils-r1
 
@@ -34,9 +34,11 @@ RDEPEND="
 	>=dev-python/jinja2-3.1.2[${PYTHON_USEDEP}]
 	>=dev-python/werkzeug-3.1.0[${PYTHON_USEDEP}]
 "
+# pytest-9.1: https://github.com/pallets/flask/issues/6071
 BDEPEND="
 	test? (
 		>=dev-python/asgiref-3.2[${PYTHON_USEDEP}]
+		<dev-python/pytest-9.1[${PYTHON_USEDEP}]
 		!!dev-python/shiboken2[${PYTHON_USEDEP}]
 	)
 "

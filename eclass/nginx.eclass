@@ -10,17 +10,17 @@
 # @BLURB: Provides a common set of functions for building the NGINX server
 # @DESCRIPTION:
 # This eclass automates building, testing and installation of the NGINX server.
-# Essentially, apart from the advanced usage, the ebuild must only define 4
+# Essentially, apart from the advanced usage, the ebuild must only define 3
 # variables prior to inheriting the eclass, everything else is handled by the
 # nginx.eclass.
 # Refer to the individual variable descriptions for documentation.  The required
 # variables are:
 #  - NGINX_SUBSYSTEMS
 #  - NGINX_MODULES
-#  - NGINX_UPDATE_STREAM
 #  - NGINX_TESTS_COMMIT
-# And 1 optional variable (see description):
+# And 2 optional variables (see description):
 #  - NGINX_MISC_FILES
+#  - NGINX_UPDATE_STREAM (only for -9999 VCS versions)
 #
 # EAPI porting notes:
 #  - 8 -> 9:
@@ -113,34 +113,35 @@ readonly _NGX_MODULES=( "${NGINX_MODULES[@]}" )
 
 # @ECLASS_VARIABLE: NGINX_UPDATE_STREAM
 # @PRE_INHERIT
-# @REQUIRED
 # @DESCRIPTION:
-# This variable must contain the update stream of NGINX.  The list of all
-# possible update streams is set by the NGX_UPDATE_STREAMS_LIST variable.  An
-# ebuild must not set SLOT manually.  The eclass will automatically set SLOT and
-# add blocks on other update streams into RDEPEND variable, based on this
-# variable.
-# NGINX_UPDATE_STREAM might be set to a special value: 'live'.  Doing this makes
-# the eclass fetch the live (latest) version of NGINX from its Git repository.
-# This behaviour can be further configured by setting the following variables
-# (refer to each variable description for documentation):
+# NGINX_UPDATE_STREAM, if set at all, must only be set to a special value:
+# 'live'.  Setting this variable to any other value is a noop and deprecated.
+# The allowed (noop) values for this variable, including 'live', are specified
+# in ${NGX_UPDATE_STREAMS_LIST}.
+#
+# If this is set to 'live', the eclass fetches the live (latest) version of
+# NGINX from its Git repository.  This behaviour can be further configured by
+# setting the following variables (refer to each variable description for
+# documentation):
 #  - NGINX_GIT_URI
 #  - NGINX_GIT_TESTS_URI
-#
-# Example usage:
-# @CODE
-# NGINX_UPDATE_STREAM=mainline
-# @CODE
 
 # @ECLASS_VARIABLE: NGX_UPDATE_STREAMS_LIST
 # @DESCRIPTION:
 # Read-only array that contains all the possible NGINX update streams.
+# Currently, any values other than 'live' are deprecated and are a noop.
 readonly NGX_UPDATE_STREAMS_LIST=( stable mainline live )
 
-[[ -z ${NGINX_UPDATE_STREAM} ]] &&
-	die "The required NGINX_UPDATE_STREAM variable is unset or empty"
-has "${NGINX_UPDATE_STREAM}" "${NGX_UPDATE_STREAMS_LIST[@]}" ||
+if [[ -n ${NGINX_UPDATE_STREAM} ]] &&
+	! has "${NGINX_UPDATE_STREAM}" "${NGX_UPDATE_STREAMS_LIST[@]}"; then
 	die "Unknown update stream set in the NGINX_UPDATE_STREAM variable"
+fi
+
+has "${NGINX_UPDATE_STREAM}" stable mainline &&
+	eqawarn <<- EOF
+	NGINX_UPDATE_STREAM=${NGINX_UPDATE_STREAM} is deprecated and a
+	noop. Please unset NGINX_UPDATE_STREAM
+	EOF
 
 [[ ${NGINX_UPDATE_STREAM} == live ]] && inherit git-r3
 
@@ -239,9 +240,9 @@ has "${NGINX_UPDATE_STREAM}" "${NGX_UPDATE_STREAMS_LIST[@]}" ||
 
 #-----> ebuild setup <-----
 
-# NGINX does not guarantee ABI stability (required by dynamic modules), SLOT is
+# NGINX does not guarantee ABI stability (required by dynamic modules), subslot is
 # set to reflect this.
-SLOT="${NGINX_UPDATE_STREAM}/${PV}"
+: "${SLOT=0/${PV}}"
 : "${DESCRIPTION=Robust, small and high performance HTTP and reverse proxy server}"
 : "${HOMEPAGE=https://nginx.org https://github.com/nginx/nginx}"
 if [[ -z ${SRC_URI} ]]; then
@@ -346,27 +347,6 @@ RDEPEND="
 "
 
 IDEPEND="virtual/tmpfiles"
-
-
-# @FUNCTION: _ngx_set_blocks
-# @INTERNAL
-# @USAGE: <chosen_update_stream> <possible_upd_stream1> [<possible_upd_stream2>...]
-# @DESCRIPTION:
-# Set blocks on all the supplied update streams apart from the chosen one.
-_ngx_set_blocks() {
-	debug-print-function "${FUNCNAME[0]}" "$@"
-	[[ $# -ge 2 ]] || die "${FUNCNAME[0]} must receive at least two arguments"
-	local chosen candidate
-	chosen="$1"
-	shift
-	for candidate; do
-		[[ ${candidate} != "${chosen}" ]] &&
-			RDEPEND+=" !${CATEGORY}/${PN}:${candidate}"
-	done
-}
-
-# Null at the end makes the function also block the legacy unslotted NGINX versions.
-_ngx_set_blocks "${NGINX_UPDATE_STREAM}" "${NGX_UPDATE_STREAMS_LIST[@]}" 0
 
 
 # @FUNCTION: _ngx_set_mod_required_use

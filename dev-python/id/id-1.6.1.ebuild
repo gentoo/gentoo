@@ -3,8 +3,8 @@
 
 EAPI=8
 
-DISTUTILS_USE_PEP517=flit
-PYTHON_COMPAT=( pypy3_11 python3_{11..14} )
+DISTUTILS_USE_PEP517=flit-core
+PYTHON_COMPAT=( python3_{12..15} )
 
 inherit distutils-r1
 
@@ -34,22 +34,3 @@ BDEPEND="
 
 EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
-
-python_test() {
-	local EPYTEST_DESELECT=()
-
-	case ${EPYTHON} in
-		pypy3*)
-			EPYTEST_DESELECT+=(
-				# https://github.com/di/id/issues/287
-				test/unit/internal/oidc/test_ambient.py::test_gcp_bad_env
-				test/unit/internal/oidc/test_ambient.py::test_gcp_wrong_product
-				test/unit/internal/oidc/test_ambient.py::test_detect_gcp_request_fails
-				test/unit/internal/oidc/test_ambient.py::test_detect_gcp_request_timeout
-				test/unit/internal/oidc/test_ambient.py::test_detect_gcp
-			)
-			;;
-	esac
-
-	epytest
-}

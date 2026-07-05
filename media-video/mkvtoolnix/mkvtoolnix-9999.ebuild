@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools flag-o-matic multiprocessing prefix qmake-utils toolchain-funcs xdg
+inherit autotools flag-o-matic multiprocessing prefix qt-utils toolchain-funcs xdg
 
 if [[ ${PV} == *9999 ]] ; then
 	inherit git-r3

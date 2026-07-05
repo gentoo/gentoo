@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=poetry
-PYTHON_COMPAT=( python3_{11..14} pypy3_11 )
+PYTHON_COMPAT=( python3_{12..14} )
 
 inherit distutils-r1 optfeature
 
@@ -52,14 +52,6 @@ python_test() {
 		# flaky? plain broken?
 		tests/test_console.py::test_brokenpipeerror
 	)
-	# version-specific output -- the usual deal
-	case ${EPYTHON} in
-		pypy3.11)
-			EPYTEST_DESELECT+=(
-				tests/test_inspect.py::test_inspect_integer_with_methods_python311
-			)
-			;;
-	esac
 
 	local -x COLUMNS=80
 	epytest
