@@ -5,7 +5,7 @@ EAPI=8
 
 CARGO_OPTIONAL=yes
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{12..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 
 RUST_MIN_VER=1.85.0
 CRATES="
@@ -130,9 +130,7 @@ BDEPEND="
 	test? (
 		${RDEPEND}
 		dev-python/beautifulsoup4[${PYTHON_USEDEP}]
-		$(python_gen_cond_dep '
-			dev-python/cffi[${PYTHON_USEDEP}]
-		' 'python*')
+		dev-python/cffi[${PYTHON_USEDEP}]
 		dev-python/lxml[${PYTHON_USEDEP}]
 	)
 "

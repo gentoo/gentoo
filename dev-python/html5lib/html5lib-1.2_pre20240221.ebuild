@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{11..14} pypy3_11 )
+PYTHON_COMPAT=( python3_{12..15} )
 PYTHON_REQ_USE="xml(+)"
 
 inherit distutils-r1
@@ -45,6 +45,8 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.2_pre20240221-py314.patch
+	"${FILESDIR}"/${PN}-1.2_pre20240221-pytest-9.0.patch
+	"${FILESDIR}"/${PN}-1.2_pre20240221-pytest-9.1.patch
 )
 
 EPYTEST_PLUGINS=( pytest-expect )

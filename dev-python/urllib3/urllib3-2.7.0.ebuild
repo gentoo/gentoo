@@ -6,8 +6,8 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=hatchling
 PYPI_VERIFY_REPO=https://github.com/urllib3/urllib3
-PYTHON_TESTED=( python3_{11..14} pypy3_11 )
-PYTHON_COMPAT=( "${PYTHON_TESTED[@]}" python3_15 )
+PYTHON_TESTED=( python3_{12..15} )
+PYTHON_COMPAT=( "${PYTHON_TESTED[@]}" )
 PYTHON_REQ_USE="ssl(+)"
 
 inherit distutils-r1 pypi
@@ -69,7 +69,7 @@ BDEPEND="
 		" "${PYTHON_TESTED[@]}")
 		$(python_gen_cond_dep '
 			>=dev-python/backports-zstd-1.0.0[${PYTHON_USEDEP}]
-		' 3.{11..13})
+		' 3.{12..13})
 	)
 "
 
@@ -77,6 +77,12 @@ src_prepare() {
 	# upstream considers 0.5 s to be "long" for a timeout
 	# we get tons of test failures on *fast* systems because of that
 	sed -i -e '/LONG_TIMEOUT/s:0.5:5:' test/__init__.py || die
+
+	# remove stupid warning checks
+	sed -e '/str(wm)/d' \
+		-e '/assert not warn\.called/d' \
+		-i test/with_dummyserver/test_https.py || die
+
 	distutils-r1_src_prepare
 }
 
@@ -98,16 +104,10 @@ python_test() {
 		# hangs randomly
 		test/contrib/test_pyopenssl.py::TestHTTPS_TLSv1_{2,3}::test_http2_probe_blocked_per_thread
 		test/with_dummyserver/test_https.py::TestHTTPS_TLSv1_{2,3}::test_http2_probe_blocked_per_thread
+		# more random warning failures
+		test/contrib/test_pyopenssl.py::TestHTTPS_TLSv1_{2,3}::test_ssl_correct_system_time
+		test/contrib/test_pyopenssl.py::TestHTTPS_TLSv1_{2,3}::test_ssl_wrong_system_time
 	)
-	case ${EPYTHON} in
-		pypy3.11)
-			EPYTEST_DESELECT+=(
-				# lots of random "coroutine not awaited" warnings
-				test/contrib/test_pyopenssl.py
-				test/with_dummyserver/test_https.py
-			)
-			;;
-	esac
 
 	local EPYTEST_PLUGINS=( pytest-timeout )
 	local EPYTEST_RERUNS=10

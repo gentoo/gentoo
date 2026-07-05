@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python3_{12..14} )
 # The added asserts break on mem leaks, so tests fail.
 # PYTHON_REQ_USE="-debug"
 
-inherit check-reqs cmake cuda edo flag-o-matic optfeature python-single-r1 qmake-utils toolchain-funcs xdg virtualx branding
+inherit check-reqs cmake cuda edo flag-o-matic optfeature python-single-r1 qt-utils toolchain-funcs xdg virtualx branding
 
 DESCRIPTION="Qt based Computer Aided Design application"
 HOMEPAGE="https://www.freecad.org/ https://github.com/FreeCAD/FreeCAD"

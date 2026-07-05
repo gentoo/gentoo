@@ -1,11 +1,11 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
 PYPI_NO_NORMALIZE=1
-PYTHON_COMPAT=( pypy3_11 python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 
 inherit distutils-r1 pypi
 
@@ -24,12 +24,9 @@ RDEPEND="
 	>=dev-python/pytest-7.2.0[${PYTHON_USEDEP}]
 	>=dev-python/trio-0.22.0[${PYTHON_USEDEP}]
 "
-BDEPEND="
-	test? (
-		>=dev-python/hypothesis-3.64[${PYTHON_USEDEP}]
-	)
-"
 
+EPYTEST_PLUGINS=( "${PN}" hypothesis )
+EPYTEST_PLUGIN_LOAD_VIA_ENV=1
 distutils_enable_tests pytest
 distutils_enable_sphinx docs/source \
 	dev-python/attrs \
@@ -45,12 +42,4 @@ python_prepare_all() {
 	# Defining 'pytest_plugins' in a non-top-level conftest is no longer supported:
 	mv pytest_trio/_tests/conftest.py conftest.py || die
 	distutils-r1_python_prepare_all
-}
-
-python_test() {
-	# disable autoloading pytest-asyncio in nested pytest calls
-	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
-	# since we disabled autoloading, force loading pytest-trio
-	local -x PYTEST_PLUGINS=pytest_trio.plugin
-	epytest
 }

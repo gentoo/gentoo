@@ -3,8 +3,8 @@
 
 EAPI=8
 
-DISTUTILS_USE_PEP517=poetry
-PYTHON_COMPAT=( python3_{12..14} )
+DISTUTILS_USE_PEP517=poetry-core
+PYTHON_COMPAT=( python3_{12..15} )
 PYPI_VERIFY_REPO=https://github.com/pavdmyt/yaspin
 
 inherit distutils-r1 pypi

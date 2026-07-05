@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( pypy3_11 python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 
 inherit distutils-r1
 
@@ -56,16 +56,6 @@ python_test() {
 		# requires ruff
 		_tests/tools/test_gen_exports.py
 	)
-
-	case ${EPYTHON} in
-		python3.14)
-			EPYTEST_DESELECT+=(
-				# xfail-ed upstream with ref to
-				# https://github.com/python/cpython/issues/125603
-				_core/_tests/test_run.py::test_ki_protection_doesnt_leave_cyclic_garbage
-			)
-			;;
-	esac
 
 	rm -rf trio || die
 	epytest -m "not redistributors_should_skip" --pyargs trio \

@@ -72,6 +72,7 @@ COMMON_DEPEND="
 	)
 	elibc_musl? (
 		>=sys-libs/musl-1.2.6
+		sys-libs/libucontext
 		virtual/libcrypt
 	)
 	fido2? (
@@ -285,7 +286,7 @@ src_configure() {
 		# We can't unconditionally do this b/c we fortify needs
 		# some level of optimisation.
 		filter-flags -D_FORTIFY_SOURCE=3
-		append-cppflags -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2
+		append-cppflags -U_FORTIFY_SOURCE -D_GENTOO_NO_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2
 	fi
 
 	python_setup

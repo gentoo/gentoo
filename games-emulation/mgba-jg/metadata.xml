@@ -15,7 +15,7 @@
 		existing Game Boy Advance emulators.
 	</longdescription>
 	<upstream>
-		<bugs-to>https://gitlab.com/jgemu/mgba/-/issues</bugs-to>
+		<bugs-to>https://gitlab.com/jgemu/mgba/-/work_items</bugs-to>
 		<changelog>https://gitlab.com/jgemu/mgba/-/blob/master/CHANGES</changelog>
 		<remote-id type="gitlab">jgemu/mgba</remote-id>
 	</upstream>

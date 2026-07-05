@@ -1,0 +1,10 @@
+--- a/llama.cpp-b9840/common/common.h	2026-07-04 12:25:21.565559439 +0200
++++ b/llama.cpp-b9840/common/common.h	2026-07-04 12:25:43.052343559 +0200
+@@ -8,6 +8,7 @@
+ #include "ggml.h"
+ 
+ #include <set>
++#include <fstream>
+ #include <sstream>
+ #include <string>
+ #include <string_view>

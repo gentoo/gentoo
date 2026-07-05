@@ -4,8 +4,8 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=hatchling
-PYTHON_FULLY_TESTED=( python3_{11..14} pypy3_11 )
-PYTHON_COMPAT=( "${PYTHON_FULLY_TESTED[@]}" )
+PYTHON_FULLY_TESTED=( python3_{12..14} )
+PYTHON_COMPAT=( "${PYTHON_FULLY_TESTED[@]}" python3_15 )
 
 inherit distutils-r1
 
@@ -50,5 +50,5 @@ python_test() {
 	fi
 
 	local -x TZ=UTC
-	epytest "${args[@]}"
+	epytest
 }

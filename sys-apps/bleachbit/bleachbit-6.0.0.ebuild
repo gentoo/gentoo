@@ -15,12 +15,16 @@ DESCRIPTION="Clean junk to free disk space and to maintain privacy"
 HOMEPAGE="https://www.bleachbit.org"
 SRC_URI="
 	https://download.bleachbit.org/${P}.tar.bz2
-	verify-sig? ( https://download.sourceforge.net/project/bleachbit/bleachbit/${PV}/detached_signatures/${P}.tar.bz2.sig )
+	verify-sig? (
+		https://download.sourceforge.net/project/bleachbit/bleachbit/${PV}/detached_signatures/${P}.tar.bz2.sig
+	)
 "
 
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
+IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	$(python_gen_cond_dep '
@@ -38,6 +42,10 @@ RDEPEND="
 "
 BDEPEND="
 	sys-devel/gettext
+	test? (
+		gnome-base/dconf
+		sys-apps/dbus
+	)
 	verify-sig? ( sec-keys/openpgp-keys-bleachbit )
 "
 
@@ -60,6 +68,12 @@ python_prepare_all() {
 
 		sed -e "s/test_chaff(self)/_&/" \
 			-i tests/TestGUI.py || die
+
+		# incorrectly parses all locale dirs or alias, including non-POSIX locales (e.g. es_419),
+		# even though Bleachbit only validates POSIX locales
+		# see https://bugs.gentoo.org/978295
+		sed -e "s/test_assertIsLanguageCode_live(self)/_&/" \
+			-i tests/TestCommon.py || die
 
 		# fails due to non-existent $HOME/.profile
 		rm tests/TestInit.py || die
@@ -105,7 +119,7 @@ python_test() {
 	# tests.TestGuiStartup.GuiStartupTestCase.test_upgrade_message_shown_for_pre_510
 	# tests.TestWinapp.WinappTestCase.test_section_not_found
 	export LC_ALL="C.UTF-8"
-	virtx eunittest -p Test*.py
+	virtx dbus-run-session "${EPYTHON}" -m unittest discover -v -p Test*.py || die "tests failed with ${EPYTHON}"
 }
 
 python_install() {

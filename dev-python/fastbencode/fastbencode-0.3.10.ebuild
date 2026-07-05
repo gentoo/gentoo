@@ -9,7 +9,7 @@ RUST_MIN_VER=1.83.0
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
 PYPI_VERIFY_REPO=https://github.com/breezy-team/fastbencode
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 
 CRATES="
 	heck@0.5.0

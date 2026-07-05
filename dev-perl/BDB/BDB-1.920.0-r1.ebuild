@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -19,9 +19,15 @@ RDEPEND="
 DEPEND="
 	sys-libs/db:=
 "
-BDEPEND="${RDEPEND}
+BDEPEND="
+	${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
 "
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.920.0-perl-5.44.patch
+)
+
 src_compile() {
 	mymake=(
 		"OPTIMIZE=${CFLAGS}"

@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
 PYPI_PN=${PN^}
-PYTHON_COMPAT=( python3_{11..14} pypy3_11 )
+PYTHON_COMPAT=( python3_{12..15} )
 
 inherit distutils-r1 pypi
 
@@ -33,6 +33,8 @@ distutils_enable_sphinx docs
 EPYTEST_DESELECT=(
 	# Internet
 	tests/test_proxy.py
+	# pkg_resources deprecation warning
+	tests/test_cgiapp.py::test_form
 )
 
 python_compile() {

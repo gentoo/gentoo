@@ -183,7 +183,7 @@ SRC_URI="
 "
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 
 DOTNET_PKG_PROJECTS=(
 	"${S}"/src/shared/Git-Credential-Manager

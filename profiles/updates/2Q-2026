@@ -1,2 +1,5 @@
 move llvm-core/libclc llvm-runtimes/libclc
 move dev-python/passlib dev-python/libpass
+slotmove www-servers/nginx mainline 0
+slotmove www-servers/nginx stable 0
+slotmove www-servers/nginx live 0

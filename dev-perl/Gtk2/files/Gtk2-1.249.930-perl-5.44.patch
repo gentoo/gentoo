@@ -1,0 +1,22 @@
+https://bugs.gentoo.org/978277
+--- a/xs/GtkEntryBuffer.xs
++++ b/xs/GtkEntryBuffer.xs
+@@ -41,13 +41,16 @@
+ =for arg initial_chars (string)
+ =cut
+ GtkEntryBuffer_noinc *
+-gtk_entry_buffer_new (class, const gchar_utf8_length *initial_chars=NULL, gint length(initial_chars))
++gtk_entry_buffer_new (class, SV *initial_chars=NULL)
+     CODE:
+         if (initial_chars == NULL) {
+                 RETVAL = gtk_entry_buffer_new (NULL, 0);
+         }
+         else {
+-                RETVAL = gtk_entry_buffer_new (initial_chars, XSauto_length_of_initial_chars);
++                STRLEN length_bytes;
++                const char *buf = SvPVutf8(initial_chars, length_bytes);
++                gint length_chars = g_utf8_strlen(buf, length_bytes);
++                RETVAL = gtk_entry_buffer_new (buf, length_chars);
+         }
+     OUTPUT:
+         RETVAL

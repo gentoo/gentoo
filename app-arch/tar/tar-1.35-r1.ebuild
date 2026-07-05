@@ -4,7 +4,7 @@
 EAPI=8
 
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/tar.asc
-inherit branding multiprocessing verify-sig
+inherit branding check-reqs multiprocessing verify-sig
 
 DESCRIPTION="Use this to make tarballs :)"
 HOMEPAGE="https://www.gnu.org/software/tar/"
@@ -22,7 +22,8 @@ SLOT="0"
 if [[ -z "$(ver_cut 3)" || "$(ver_cut 3)" -lt 90 ]] ; then
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~arm64-macos ~x64-macos ~x64-solaris"
 fi
-IUSE="acl minimal nls selinux xattr"
+IUSE="acl minimal nls selinux test xattr"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	acl? ( virtual/acl )
@@ -43,6 +44,22 @@ PDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.35-acl-2.4.0.patch
 )
+
+check_space() {
+	if use test; then
+		# https://bugs.gentoo.org/978323
+		local CHECKREQS_DISK_BUILD=11G
+		check-reqs_pkg_setup
+	fi
+}
+
+pkg_pretend() {
+	check_space
+}
+
+pkg_setup() {
+	check_space
+}
 
 src_configure() {
 	# -fanalyzer doesn't make sense for us in ebuilds, as it's for static analysis

@@ -18,7 +18,7 @@
 		Color. This is a fork of the final public revision of Gambatte.
 	</longdescription>
 	<upstream>
-		<bugs-to>https://gitlab.com/jgemu/gambatte/-/issues</bugs-to>
+		<bugs-to>https://gitlab.com/jgemu/gambatte/-/work_items</bugs-to>
 		<changelog>https://gitlab.com/jgemu/gambatte/-/blob/master/ChangeLog</changelog>
 		<remote-id type="gitlab">jgemu/gambatte</remote-id>
 	</upstream>

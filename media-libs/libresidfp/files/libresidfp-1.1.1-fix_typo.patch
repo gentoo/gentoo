@@ -1,0 +1,12 @@
+PR merged https://github.com/libsidplayfp/libresidfp/pull/41.patch
+[PATCH] configure.ac: remove typo
+--- a/configure
++++ b/configure
+@@ -3897,7 +3897,6 @@ AM_BACKSLASH='\'
+ LIB_MAJOR=1
+ LIB_MINOR=1
+ LIB_LEVEL=1
+-NEWS.md
+ 
+ 
+ 

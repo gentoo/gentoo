@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
 DISTUTILS_UPSTREAM_PEP517=standalone
-PYTHON_COMPAT=( python3_{12..15} )
+PYTHON_COMPAT=( python3_{12..15} python3_{14..15}t )
 RUST_MIN_VER=1.89.0
 inherit cargo distutils-r1 flag-o-matic shell-completion toolchain-funcs
 
@@ -143,6 +143,13 @@ python_test() {
 		# unimportant and simpler to skip, does not work with just `git init`
 		sdist::lib_with_parent_workspace_git_dep_sdist
 	)
+
+	if [[ ${EPYTHON} == *t ]]; then
+		CARGO_SKIP_TESTS+=(
+			# incompatible with free-threaded CPython
+			develop::develop_pip_cases::case_02_pyo3_mixed
+		)
+	fi
 
 	cargo_src_test
 }
