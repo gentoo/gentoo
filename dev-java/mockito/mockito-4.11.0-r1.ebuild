@@ -6,13 +6,13 @@ EAPI=9
 # Tests not enabled, wants junit-jupiter.
 # "${S}/settings.gradle.kts"
 JAVA_PKG_IUSE="doc source"
-MAVEN_ID="org.mockito:mockito-core:4.11.0"
 
 inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="Mockito mock objects library core API and implementation"
 HOMEPAGE="https://github.com/mockito/mockito"
 SRC_URI="https://github.com/mockito/mockito/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/${P}"
 
 LICENSE="MIT"
 SLOT="4"
@@ -36,14 +36,12 @@ RDEPEND="
 	${CP_DEPEND}
 "
 
-S="${WORKDIR}/${P}"
-
 JAVA_AUTOMATIC_MODULE_NAME="org.mockito"
 JAVA_CLASSPATH_EXTRA="junit-4 opentest4j"
 JAVA_SRC_DIR="src/main/java"
 
 src_prepare() {
-	default
+	java-pkg-2_src_prepare
 	# dev-java/byte-buddy is built from byte-buddy-dep without shaded stuff.
 	sed \
 		-e 's:net.bytebuddy.jar.asm:org.objectweb.asm:' \
