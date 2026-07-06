@@ -19,7 +19,7 @@ fi
 # main
 LICENSE="Apache-2.0 BSD BSD-2 CC-BY-SA-4.0 ISC MIT"
 SLOT="0"
-IUSE="btrfs rootless"
+IUSE="btrfs rootless selinux"
 RESTRICT="test"
 
 DEPEND="
@@ -27,6 +27,7 @@ DEPEND="
 	dev-db/sqlite:3
 	btrfs? ( >=sys-fs/btrfs-progs-4.0.1 )
 	rootless? ( sys-apps/shadow:= )
+	selinux? ( sec-policy/selinux-podman sys-libs/libselinux:= )
 "
 RDEPEND="${DEPEND}
 	>=app-containers/container-libs-0.68.0
@@ -35,6 +36,7 @@ BDEPEND="
 	dev-go/go-md2man
 	>=dev-lang/go-1.25.6
 "
+PATCHES=( "${FILESDIR}"/handle-conflicts-with-c-libs-pr2173.patch )
 
 pkg_setup() {
 	use btrfs && CONFIG_CHECK+=" ~BTRFS_FS"
@@ -44,22 +46,17 @@ pkg_setup() {
 run_make() {
 	local emakeflags=(
 		BTRFS_BUILD_TAG="$(usex btrfs '' 'exclude_graphdriver_btrfs')"
-		CONTAINERSCONFDIR="${EPREFIX}/etc/containers"
 		LIBSUBID_BUILD_TAG="$(usex rootless 'libsubid' '')"
+		SQLITE_BUILD_TAG="libsqlite3"
 		PREFIX="${EPREFIX}/usr"
 	)
 	emake "${emakeflags[@]}" "$@"
 }
 
 src_compile() {
-	run_make all completions
+	run_make
 }
 
 src_install() {
-	# The install target in the Makefile tries to rebuild the binary and
-	# installs things that are already installed by containers-common.
-	dobin bin/skopeo
-	einstalldocs
-	doman docs/*.1
-	run_make "DESTDIR=${D}" install-completions
+	run_make "DESTDIR=${D}" install
 }
