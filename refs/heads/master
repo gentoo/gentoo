@@ -1,16 +1,14 @@
 certificate version 0.1
-pusher 21C632129C6D7DE4 1783344682 +0100
-pushee git+ssh://git.gentoo.org/repo/gentoo.git
-nonce 1783344682-a5e6e6e3ec975fd9a6be677680b9d76225bdee07
+pusher DF84256885283521 1783346745 +0200
+pushee git.gentoo.org:repo/gentoo.git
+nonce 1783346745-3f311916399ce4382331a33de68c109cb950967a
 
-0a794d7c5026a64f154f7d042ed3f85f902f49ed bbdf70df92719193b97f920ad636a4ca75a6cb0f refs/heads/master
+bbdf70df92719193b97f920ad636a4ca75a6cb0f 92cfb9eed0dbcfad52e1d63c7c5395ead00e02ec refs/heads/master
 -----BEGIN PGP SIGNATURE-----
 
-iPEEABYKAJkWIQTqoRNWzjK7ct+5zdew0IlnqM/ztAUCakuuKhsUgAAAAAAEAA5t
-YW51MiwyLjUrMS4xMiwyLDJfFIAAAAAALgAoaXNzdWVyLWZwckBub3RhdGlvbnMu
-b3BlbnBncC5maWZ0aGhvcnNlbWFuLm5ldEVBQTExMzU2Q0UzMkJCNzJERkI5Q0RE
-N0IwRDA4OTY3QThDRkYzQjQACgkQsNCJZ6jP87SASwEA/eY5iGiEqkWWwYWC2gkZ
-d5X3wpaQ0tdEOSztQGH/aYEA/1TstE+re26WTzojJ5cqlaUxOoHK4Qk+yzr+hLNU
-BhYG
-=EhRn
+iJEEABYKADkWIQQcFD0bEK7NPNmWHtiOMjR69AVa6AUCaku2ORsUgAAAAAAEAA5t
+YW51MiwyLjUrMS4xMiwyLDIACgkQjjI0evQFWugjvQD+MC4/ziTihaZ2iniRMjw9
+edrqpvmU/5d27qSEqe3nvsoA/1mMQRkUM6w6MMZtDTPMoix5wp7NOeCHUUn/yfQS
+gd4B
+=stMv
 -----END PGP SIGNATURE-----
