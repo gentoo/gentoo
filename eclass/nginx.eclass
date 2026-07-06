@@ -495,7 +495,7 @@ _ngx_set_mod_test_depend() {
 			dev-perl/IO-Socket-SSL
 			dev-perl/Net-SSLeay
 		"
-		[http_uwsgi]="www-servers/uwsgi[python(-)]"
+		[http_uwsgi]="www-servers/uwsgi[ssl,python(-)]"
 		[http_v3]="dev-perl/CryptX"
 		[mail_ssl]="dev-perl/IO-Socket-SSL"
 		[stream_ssl]="dev-perl/IO-Socket-SSL"
