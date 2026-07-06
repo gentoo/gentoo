@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Eric Joldasov <bratishkaerik@landless-city.net> (2025-03-11)
@@ -15,11 +15,6 @@ sys-devel/binutils cet
 # sys-devel/gcc[multilib] (which is forced) will fail late in build.
 dev-libs/libatomic_ops abi_x86_32
 dev-libs/boehm-gc abi_x86_32
-
-# Michał Górny <mgorny@gentoo.org> (2017-12-30)
-# We have ready-to-use configs here.
-sys-kernel/gentoo-kernel -savedconfig
-sys-kernel/vanilla-kernel -savedconfig
 
 # Luke Dashjr <luke-jr+gentoobugs@utopios.org> (2019-09-21)
 # iasl is stable on amd64

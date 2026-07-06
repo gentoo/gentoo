@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Paul Zander <negril.nx+gentoo@gmail.com> (2024-04-12)
@@ -9,11 +9,6 @@ media-libs/opencv cpu_flags_arm_neon
 # GHC does not gain native codegen for arm64 until 9.2.
 # We don't want an unregisterised build, so force LLVM codegen.
 dev-lang/ghc:0/9.0.2 llvm
-
-# Michał Górny <mgorny@gentoo.org> (2021-02-19)
-# We have ready-to-use configs here.
-sys-kernel/gentoo-kernel -savedconfig
-sys-kernel/vanilla-kernel -savedconfig
 
 # Aaron Bauman <bman@gentoo.org> (2019-12-27)
 # ffmpeg does support 64 bit neon

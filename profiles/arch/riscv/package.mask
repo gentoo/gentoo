@@ -1,5 +1,11 @@
-# Copyright 2019-2022 Gentoo Authors
+# Copyright 2019-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Ian Jordan <immoloism@gmail.com>  (2026-06-19)
+# Debian kernel configs aren't tested below 6.18
+# users should unmask this package and use savedconfig
+<sys-kernel/gentoo-kernel-6.18
+<sys-kernel/vanilla-kernel-6.18
 
 # Yixun Lan <dlan@gentoo.org> (2022-08-27)
 # mask it due to depend on virtual/jre

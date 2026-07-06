@@ -34,11 +34,6 @@ dev-java/openjdk:11 -system-bootstrap
 dev-java/openjdk:17 -system-bootstrap
 dev-java/openjdk:21 -system-bootstrap
 
-# Michał Górny <mgorny@gentoo.org> (2017-12-30)
-# We have ready-to-use configs here.
-sys-kernel/gentoo-kernel -savedconfig
-sys-kernel/vanilla-kernel -savedconfig
-
 # Luke Dashjr <luke-jr+gentoobugs@utopios.org> (2019-11-21)
 # iasl is stable on x86
 sys-firmware/seabios -binary

@@ -1,5 +1,10 @@
-# Copyright 2021-2024 Gentoo Authors
+# Copyright 2021-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Ian Jordan <immoloism@gmail.com (2026-06-17}
+# Premade kernel configs for PPC64le here.
+sys-kernel/gentoo-kernel -savedconfig
+sys-kernel/vanilla-kernel -savedconfig
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2022-01-20)
 # force users to use system versions
@@ -9,8 +14,3 @@ dev-java/openjdk:11 system-bootstrap
 dev-java/openjdk:17 system-bootstrap
 dev-java/openjdk:21 system-bootstrap
 dev-java/openjdk:25 system-bootstrap
-
-# Michał Górny <mgorny@gentoo.org> (2021-02-19)
-# We have ready-to-use configs here.
-sys-kernel/gentoo-kernel -savedconfig
-sys-kernel/vanilla-kernel -savedconfig
