@@ -770,8 +770,8 @@ nginx-module_src_test() {
 	[[ ${#NGINX_MOD_SHARED_OBJECTS[@]} -eq 0 ]] &&
 		die "No shared objects found for the currently built module"
 	# Prepend each member of the NGINX_MOD_SHARED_OBJECTS array with
-	# '${S}/build/' and save the array into pkg_sonames.
-	pkg_sonames=( "${NGINX_MOD_SHARED_OBJECTS[@]/#/${S}/build/}" )
+	# '${NGINX_S}/build/' and save the array into pkg_sonames.
+	pkg_sonames=( "${NGINX_MOD_SHARED_OBJECTS[@]/#/${NGINX_S}/build/}" )
 
 	local pkg
 	for pkg in "${NGINX_MOD_TEST_LOAD_ORDER[@]}"; do
