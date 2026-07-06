@@ -411,6 +411,13 @@ fi
 # NGINX's headers are created in the nginx-module_src_prepare() phase function.
 NGINX_S="${WORKDIR}/nginx"
 
+# @ECLASS_VARIABLE: _NGX_MOD_CONFIG_FLAGS_FILE
+# @INTERNAL
+# @DESCRIPTION:
+# Holds the path to the file containing NUL-separated ./configure flags used to
+# build www-servers/nginx.
+_NGX_MOD_CONFIG_FLAGS_FILE="${BROOT}/usr/src/nginx/configure-flags"
+
 # @ECLASS_VARIABLE: NGINX_MOD_SHARED_OBJECTS
 # @OUTPUT_VARIABLE
 # @DESCRIPTION:
@@ -634,8 +641,7 @@ unset -f _ngx_mod_set_test_env
 
 # @FUNCTION: nginx-module_src_prepare
 # @DESCRIPTION:
-# Creates a fake build environment and patches the module's initialisation code
-# to play nicely with it.
+# Creates a fake build environment.
 #
 # In the build environment initialisation part, the following symbolic links are
 # created (to not copy files over):
@@ -645,12 +651,7 @@ unset -f _ngx_mod_set_test_env
 # For additional information of what resides under linked paths, see the
 # nginx.eclass source, namely the nginx_src_install() function.
 #
-# The second part of the function patches module's initialisation code so that
-# any module's preprocessor definitions appear in the separate
-# '__ngx_gentoo_mod_config.h' file inside the 'build' directory.  This function
-# also makes module's "config" script clear whatever content
-# build/ngx_auto_config.h may have at the time of invocation. Then,
-# default_src_prepare() is called.
+# In the end, default_src_prepare() is called.
 nginx-module_src_prepare() {
 	debug-print-function "${FUNCNAME[0]}" "$@"
 
@@ -665,45 +666,54 @@ nginx-module_src_prepare() {
 	popd >/dev/null || die "popd failed"
 	eend 0
 
-	pushd "${S}/${NGINX_MOD_CONFIG_DIR}" >/dev/null ||
-		die "pushd failed"
+	ebegin "Determining NGINX configuration on-disk format"
 
-	ebegin "Patching module's config"
-	# Since NGINX does not guarantee ABI or API stability, we utilise
-	# preprocessor macros that were used to compile NGINX itself, to build third
-	# party modules. As such, we do not want for the dummy preprocessor macros
-	# produced by NGINX build system during module compilation to leak into the
-	# building environment. However, we do need to "capture" preprocessor macros
-	# set by the module itself, so we are required to somehow get these
-	# separately.
-	#
-	# To achieve that, the following sed script inserts ': >
-	# build/ngx_auto_config.h' line at the start of a module's 'config' shell
-	# script which gets sourced by NGINX build system midway during
-	# configuration. It has an effect of truncating the file containing NGINX
-	# preprocessor macros. This results in the file containing only module's
-	# macros at the end of the module's configuration.
-	#
-	# The following command renames the file with module's preprocessor macros
-	# to __ngx_gentoo_mod_config.h to be later merged with the system NGINX
-	# header into the actual header used during compilation. Due to the fact
-	# that executing the config shell script is not the last thing that NGINX
-	# build system does during configuration, we can not simply rename the
-	# header after the whole configuration, as it may contain other preprocessor
-	# macros than only the module's ones.
-	sed -i -e '1i\' -e ': > build/ngx_auto_config.h' config ||
-		{ eend $? || die "sed failed"; }
+	if [[ -f "${_NGX_MOD_CONFIG_FLAGS_FILE}" ]]; then
+		eend 0
+		einfo "Using ./configure flags file"
+	else
+		eend 0
+		einfo "Using saved ngx_auto_{config,headers}.h headers"
+		pushd "${S}/${NGINX_MOD_CONFIG_DIR}" >/dev/null ||
+			die "pushd failed"
 
-	# Add one extra LF before the command in case the 'config' script does not
-	# have a trailing newline already.
-	printf "\n%s\n" 'mv build/ngx_auto_config.h build/__ngx_gentoo_mod_config.h' \
-		>> config
-	# We specifically need the $? of printf.
-	# shellcheck disable=SC2320
-	eend $? || die "printf failed"
+		ebegin "Patching module's config"
+		# Since NGINX does not guarantee ABI or API stability, we utilise
+		# preprocessor macros that were used to compile NGINX itself, to build
+		# third party modules. As such, we do not want for the dummy
+		# preprocessor macros produced by NGINX build system during module
+		# compilation to leak into the building environment. However, we do need
+		# to "capture" preprocessor macros set by the module itself, so we are
+		# required to somehow get these separately.
+		#
+		# To achieve that, the following sed script inserts ': >
+		# build/ngx_auto_config.h' line at the start of a module's 'config'
+		# shell script which gets sourced by NGINX build system midway during
+		# configuration. It has an effect of truncating the file containing
+		# NGINX preprocessor macros. This results in the file containing only
+		# module's macros at the end of the module's configuration.
+		#
+		# The following command renames the file with module's preprocessor
+		# macros to __ngx_gentoo_mod_config.h to be later merged with the system
+		# NGINX header into the actual header used during compilation. Due to
+		# the fact that executing the config shell script is not the last thing
+		# that NGINX build system does during configuration, we can not simply
+		# rename the header after the whole configuration, as it may contain
+		# other preprocessor macros than only the module's ones.
+		sed -i -e '1i\' -e ': > build/ngx_auto_config.h' config ||
+			{ eend $? || die "sed failed"; }
 
-	# Get back into the module root and apply patches.
-	popd >/dev/null || die "popd failed"
+		# Add one extra LF before the command in case the 'config' script does
+		# not have a trailing newline already.
+		printf "\n%s\n" 'mv build/ngx_auto_config.h build/__ngx_gentoo_mod_config.h' \
+			>> config
+		# We specifically need the $? of printf.
+		# shellcheck disable=SC2320
+		eend $? || die "printf failed"
+		# Get back into the module root and apply patches.
+		popd >/dev/null || die "popd failed"
+	fi
+
 	default_src_prepare
 }
 
@@ -712,38 +722,59 @@ nginx-module_src_prepare() {
 # Configures the dynamic module by calling NGINX's ./configure script.
 # Custom flags can be supplied as arguments to the function, taking precedence
 # over eclass's flags.
-# This assembles ngx_auto_config.h from the system ngx_auto_config.h and
-# __ngx_gentoo_mod_config.h (see nginx-module_src_prepare()), and
-# ngx_auto_headers.h from the system ngx_auto_headers.h.
+#
+# This restores ./configure flags, if the respective file is present.
+# Otherwise, this function assembles ngx_auto_config.h from the system
+# ngx_auto_config.h and __ngx_gentoo_mod_config.h (see
+# nginx-module_src_prepare()), and ngx_auto_headers.h from the system
+# ngx_auto_headers.h.
+#
 # Also, sets environment variables and appends necessary libraries if
 # NGINX_MOD_LINK_MODULES is set.
 nginx-module_src_configure() {
 	debug-print-function "${FUNCNAME[0]}" "$@"
 	pushd "${NGINX_S}" >/dev/null || die "pushd failed"
 
-	local ngx_mod_flags
-	ngx_mod_flags=(
-		--with-cc="$(tc-getCC)"
-		--with-cpp="$(tc-getCPP)"
-		# The '-isystem' flag is used instead of '-I', so as for the installed
-		# (system) modules' headers to be of lower priority than the headers of
-		# the currently built module. This only affects the modules that both
-		# come with and install their own headers, e.g. ngx_devel_kit.
-		--with-cc-opt="-isystem src/modules"
-		--with-ld-opt="${LDFLAGS}"
-		--builddir=build
+	local ngx_mod_flags=()
+	if [[ -f "${_NGX_MOD_CONFIG_FLAGS_FILE}" ]]; then
+		# Restore the stored configure flags into ngx_mod_flags.
+		mapfile -d '' ngx_mod_flags < "${_NGX_MOD_CONFIG_FLAGS_FILE}"
+
+		# When we save compilation flags, NGINX passes all the -l flags to
+		# modules too, including stuff like -lperl -lcrypt etc. I am not sure
+		# what to do with this yet so for now we just pass the following to
+		# limit unnecessary linkage.
+		ngx_mod_append_libs "$(test-flags-CC '-Wl,--as-needed')"
+	else
+		# Otherwise, just replicate a sane subset of configure flags for
+		# backwards compatibility.
+		ngx_mod_flags=(
+			--with-cc="$(tc-getCC)"
+			--with-cpp="$(tc-getCPP)"
+			--with-ld-opt="${LDFLAGS}"
+			--builddir=build
+		)
+
+		# NGINX build system adds directories under src/ to the include path based
+		# on the specified configuration flags. Since this is the branch where
+		# we do not use ./configure flags we have to add the directories to the
+		# include path manually.
+		#
+		# The src/os is added automatically by the auto/unix script and the
+		# src/modules directory is included below.
+		append-cflags "$(find -H src -mindepth 1 -type d \! \( \( -path 'src/os' -o \
+							-path 'src/modules' \) -prune \) -printf '-I %p ')"
+	fi
+
+	ngx_mod_flags+=(
 		--add-dynamic-module="${S}/${NGINX_MOD_CONFIG_DIR}"
 	)
 
-	# NGINX build system adds directories under src/ to the include path based
-	# on the specified configuration flags. Since nginx.eclass does not
-	# save/restore the configuration flags, we have to add the directories to
-	# the include path manually.
-	# The src/os is added automatically by the auto/unix script and the
-	# src/modules directory is included by the '--with-cc-opt' configuration
-	# flag.
-	append-cflags "$(find -H src -mindepth 1 -type d \! \( \( -path 'src/os' -o \
-						-path 'src/modules' \) -prune \) -printf '-I %p ')"
+	# The '-isystem' flag is used instead of '-I', so as for the installed
+	# (system) modules' headers to be of lower priority than the headers of
+	# the currently built module. This only affects the modules that both
+	# come with and install their own headers, e.g. ngx_devel_kit.
+	append-cflags "-isystem src/modules"
 
 	# Some NGINX modules that depend on ngx_devel_kit (NDK) check whether the
 	# NDK_SRCS variable is non-empty and error out if it is empty or not
@@ -771,6 +802,7 @@ nginx-module_src_configure() {
 
 	eval "local -a EXTRA_ECONF=( ${EXTRA_ECONF} )"
 
+	# Backwards compatibility shim for header saving setups:
 	# Setting the required environment variable to skip the unnecessary
 	# execution of certain scripts (see nginx_src_install() in nginx.eclass).
 	_NGINX_GENTOO_SKIP_PHASES=1 econf_ngx \
@@ -778,11 +810,14 @@ nginx-module_src_configure() {
 		"$@"					\
 		"${EXTRA_ECONF[@]}"
 
-	cat "${ESYSROOT}/usr/include/nginx/ngx_auto_config.h" \
-		build/__ngx_gentoo_mod_config.h > build/ngx_auto_config.h ||
-		die "cat failed"
-	cp "${ESYSROOT}/usr/include/nginx/ngx_auto_headers.h" build ||
-		die "cp failed"
+	# Backwards compatibility.
+	if [[ ! -f "${_NGX_MOD_CONFIG_FLAGS_FILE}" ]]; then
+		cat "${ESYSROOT}/usr/include/nginx/ngx_auto_config.h" \
+			build/__ngx_gentoo_mod_config.h > build/ngx_auto_config.h ||
+			die "cat failed"
+		cp "${ESYSROOT}/usr/include/nginx/ngx_auto_headers.h" build ||
+				die "cp failed"
+	fi
 
 	popd >/dev/null || die "popd failed"
 }

@@ -237,6 +237,16 @@ esac
 # In EAPI 9, the functionality is unconditionally enabled.
 [[ ${EAPI} != 8 ]] && readonly NGINX_SUPPORT_MODULE_STUBS=1
 
+#-----> Internal variables <-----
+
+# @ECLASS_VARIABLE: _NGX_CONFIG_FLAGS_FILE
+# @INTERNAL
+# @DESCRIPTION:
+# Holds the path to the temporary copy of ./configure flags used to configure
+# NGINX.  Installed to /usr/src/nginx.  Used in nginx_src_configure() and
+# nginx_src_install().
+_NGX_CONFIG_FLAGS_FILE="${T}/nginx-configure-flags"
+
 #-----> ebuild setup <-----
 
 # NGINX does not guarantee ABI stability (required by dynamic modules), subslot is
@@ -673,6 +683,13 @@ nginx_src_configure() {
 		"$@"					\
 		"${EXTRA_ECONF[@]}"
 
+	# Store the configuration flags to install to /usr/src/nginx later for
+	# module building.
+	if use modules; then
+		printf '%s\0' "${nginx_flags[@]}" "$@" "${EXTRA_ECONF[@]}" \
+			>> "${_NGX_CONFIG_FLAGS_FILE}"
+	fi
+
 	sed -E -i \
 		-e '/^\s*LIB= \\$/ d' \
 		-e '/^\s*INSTALLSITEMAN3DIR= \\$/ d' \
@@ -880,23 +897,10 @@ nginx_src_install() {
 		# Copy the build system of NGINX to /usr/src/nginx.
 		insinto /usr/src/nginx
 		doins -r auto
+		# Save the configure flags so that modules have easier time manipulating
+		# the build environment.
+		newins "${_NGX_CONFIG_FLAGS_FILE}" configure-flags
 
-		# Disable several checks if the _NGINX_GENTOO_SKIP_PHASES variable is
-		# set to a non-empty value during the invocation of ./configure script.
-		# This is done since (1) these scripts do not have any effect on the
-		# build process of third-party modules and (2) they considerably
-		# increase configuration time.
-		sed -E -i \
-			's#^\s*\. auto/(unix|summary)$# \
-			[ -z "${_NGINX_GENTOO_SKIP_PHASES}" ] \&\& &#' \
-			configure || die "sed failed"
-
-		# The last statement in ./configure is [ -z "${_NGINX_GENTOO... ]. If
-		# _NGINX_GENTOO_SKIP_PHASES is non-empty, it evaluates to false and the
-		# whole ./configure script exits with a non-zero exit status. 'exit 0'
-		# is appended to the end of the script to always exit with a zero exit
-		# status, regardless of what the last statement evaluates to.
-		echo 'exit 0' >> configure || die "echo failed"
 		exeinto /usr/src/nginx
 		doexe configure
 
