@@ -1,0 +1,41 @@
+Failures (1):
+  JUnit Vintage:InlineDelegateByteBuddyMockMakerTest:instantiate_fine_when_objenesis_on_the_classpath
+    MethodSource [className = 'org.mockito.internal.creation.bytebuddy.InlineDelegateByteBuddyMockMakerTest', methodName = 'instantiate_fine_when_objenesis_on_the_classpath', methodParameterTypes = '']
+    => java.lang.reflect.InvocationTargetException
+       java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
+       java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
+       org.mockito.internal.creation.bytebuddy.AbstractByteBuddyMockMakerTest.instantiate_fine_when_objenesis_on_the_classpath(AbstractByteBuddyMockMakerTest.java:140)
+       java.base/java.lang.reflect.Method.invoke(Method.java:583)
+     Caused by: java.lang.NoClassDefFoundError: org/objectweb/asm/ClassWriter
+       net.bytebuddy.utility.dispatcher.JavaDispatcher$DynamicClassLoader.invoker(JavaDispatcher.java:1330)
+       net.bytebuddy.utility.dispatcher.JavaDispatcher$InvokerCreationAction.run(JavaDispatcher.java:476)
+       net.bytebuddy.utility.dispatcher.JavaDispatcher$InvokerCreationAction.run(JavaDispatcher.java:469)
+       net.bytebuddy.utility.dispatcher.JavaDispatcher.doPrivileged(JavaDispatcher.java:140)
+       net.bytebuddy.utility.dispatcher.JavaDispatcher.<clinit>(JavaDispatcher.java:99)
+       [...]
+     Caused by: java.lang.ClassNotFoundException: org.objectweb.asm.ClassWriter
+       java.base/java.net.URLClassLoader.findClass(URLClassLoader.java:377)
+       org.mockitoutil.ClassLoaders$LocalExcludingURLClassLoader.findClass(ClassLoaders.java:326)
+       java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:569)
+       java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:502)
+       [...]
+
+--- a/src/test/java/org/mockito/internal/creation/bytebuddy/AbstractByteBuddyMockMakerTest.java
++++ b/src/test/java/org/mockito/internal/creation/bytebuddy/AbstractByteBuddyMockMakerTest.java
+@@ -12,6 +12,7 @@ import java.io.Serializable;
+ 
+ import net.bytebuddy.ByteBuddy;
+ import org.junit.Test;
++import org.junit.Ignore;
+ import org.mockito.Mockito;
+ import org.mockito.internal.creation.AbstractMockMakerTest;
+ import org.mockito.internal.handler.MockHandlerImpl;
+@@ -121,7 +122,7 @@ public abstract class AbstractByteBuddyMockMakerTest<MM extends MockMaker>
+         }
+     }
+ 
+-    @Test
++    @Test @Ignore
+     public void instantiate_fine_when_objenesis_on_the_classpath() throws Exception {
+         // given
+         ClassLoader classpath_with_objenesis =
