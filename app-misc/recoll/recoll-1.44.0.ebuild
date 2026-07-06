@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{11..14} )
 
-inherit linux-info optfeature python-single-r1 qmake-utils meson systemd xdg-utils
+inherit linux-info optfeature python-single-r1 qt-utils meson systemd xdg-utils
 
 DESCRIPTION="Personal full text search package"
 HOMEPAGE="https://www.recoll.org"
