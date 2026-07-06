@@ -4,7 +4,7 @@
 EAPI=8
 
 GNOME_ORG_MODULE=gtk
-inherit gnome2 meson-multilib multilib toolchain-funcs virtualx
+inherit gnome2 meson-multilib multilib optfeature toolchain-funcs virtualx
 
 DESCRIPTION="Gimp ToolKit +"
 HOMEPAGE="https://www.gtk.org/"
@@ -198,11 +198,7 @@ pkg_postinst() {
 	}
 	multilib_parallel_foreach_abi multilib_pkg_postinst
 
-	if ! has_version "app-text/evince"; then
-		elog "Please install app-text/evince for print preview functionality."
-		elog "Alternatively, check \"gtk-print-preview-command\" documentation and"
-		elog "add it to your settings.ini file."
-	fi
+	optfeature "default gtk-print-preview-command" app-text/evince
 }
 
 pkg_postrm() {
