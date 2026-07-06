@@ -92,7 +92,7 @@ if [[ -z ${_NGINX_MODULE_ECLASS} ]]; then
 _NGINX_MODULE_ECLASS=1
 
 case ${EAPI} in
-	8) inherit edo ;;
+	8) inherit edo eapi9-pipestatus ;;
 	9) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
@@ -100,6 +100,167 @@ esac
 inherit flag-o-matic toolchain-funcs
 
 #-----> Generic helper functions <-----
+
+# @FUNCTION: _ngx_mod_assert_argfile_exists
+# @INTERNAL
+# @USAGE: <argfile>
+# @DESCRIPTION:
+# Checks whether the specified configure flags file exists and die's with a
+# explanatory message otherwise.
+_ngx_mod_assert_argfile_exists() {
+	debug-print-function "${FUNCNAME[0]}" "$@"
+	[[ $# -eq 1 ]] || die "${FUNCNAME[0]} must receive exactly one argument"
+
+	if [[ ! -f "$1" ]]; then
+		eerror "The file with NGINX configure flags has not been found at the"
+		eerror "following path: \"$1\""
+		eerror ""
+		eerror "The most probable cause is a stale installation of www-servers/nginx."
+		eerror "Please make sure to reemerge NGINX like shown below, and attempt"
+		eerror "to emerge this package again."
+		eerror ""
+		eerror "To reemerge www-servers/nginx, issue the following command."
+		eerror "    emerge --ask --oneshot www-servers/nginx"
+		eerror ""
+		eerror "If a reinstallation of www-servers/nginx still results in this"
+		eerror "error, please seek guidance on Gentoo social channels and/or file"
+		eerror "a bug as described on Gentoo Wiki."
+
+		die "Unable to find the required NGINX ./configure flags file"
+	fi
+	return 0
+}
+
+# @FUNCTION: _ngx_mod_enforce_module_flags
+# @INTERNAL
+# @USAGE: <flags var name> <module name> <module state>
+# @DESCRIPTION:
+# Takes three parameters: (1) the name of the variable holding ./configure flags
+# used to build NGINX, (2) the name of the module which needs to be
+# enabled/disabled, (3) and the requested state.
+#
+# Let state be the requested state of the module.  If state > 0, the module is
+# enabled, if state < 0, the module is disabled.  If abs(state) == 1, the
+# function die's if the specified module is not found, if abs(state) == 2, the
+# function does not die and returns 1 in such case.
+#
+# Let mod be the requested module to be enabled/disabled, let flags be the
+# read-write variable holding flags used to build NGINX (those flags will also
+# be used to build mod).  mod is enabled/disabled as follows:
+#
+#     1. Strings corresponding to ./configure flags to set mod in the desired
+#     (target_string) and inverse (inverse_string) configurations are
+#     constructed.
+#
+#     2. We iterate over flags.  If we see an element matching target_string, we
+#     know that mod is already in its desired configuration and return.  If we
+#     see inverse_string, we remove it from flags.  This guarantees that NGINX
+#     builds mod in the desired configuration.  This is because NGINX does not
+#     allow to specify ./configure flags that repeat default settings, so if we
+#     see inverse_string, we know that the default configuration of mod is our
+#     desired configuration.
+#
+#     3. If flags do not contain either target_string or inverse_string, we grep
+#     ./configure --help to find out whether the desired configuration is the
+#     default and if module is present at all.
+#
+#     3.1. If we see target_string in the output of ./configure --help, we know
+#     that this is the flag that needs to be supplied to get the desired
+#     configuration of mod.  We add target_string to flags and return.
+#
+#     3.2. If we do not see target_string but see inverse_string, we know that
+#     the module exists and its default state corresponds to the desired state.
+#     We return.
+#
+#     3.3. If neither target_string nor inverse_string are found, the module
+#     does not exist.  If abs(state) == 1, we die.  If abs(state) == 2, we
+#     return 1.
+_ngx_mod_enforce_module_flags() {
+	debug-print-function "${FUNCNAME[0]}" "$@"
+	[[ $# -eq 3 ]] || die "${FUNCNAME[0]} must receive exactly three arguments"
+
+	local -n ref_target="$1"
+	local mod="$2"
+	local state="$3"
+
+	if ! [[ ${state} -ge -2 && ${state} -le 2 && ${state} != 0 ]]; then
+		die "${FUNCNAME[0]}: invalid state value: ${state}. Please file a bug"
+	fi
+
+	# First, construct target_string and inverse_string.
+	local target_string inverse_string
+	if [[ ${state} -gt 0 ]]; then
+		target_string="--with-${mod}_module"
+		inverse_string="--without-${mod}_module"
+	else
+		target_string="--without-${mod}_module"
+		inverse_string="--with-${mod}_module"
+	fi
+
+	# Check whether we already have the target_string or inverse_string in
+	# the specified flag variable.
+	local key
+	for key in "${!ref_target[@]}"; do
+		case "${ref_target[${key}]}" in
+			"${target_string}")
+				# We already have the module in the desired configuration,
+				# simply return.
+				return 0
+				;;
+			"${inverse_string}")
+				# We have a flag that does the opposite of we want: remove the
+				# flag and we are done with this module.
+				unset 'ref_target[${key}]'
+				return 0
+				;;
+			*)
+				# Some other flag -- continue to the next entry in the flags
+				# variable.
+				continue
+				;;
+		esac
+	done
+
+	# If we are still here, we have not found either target_string or
+	# inverse_string in the flags variable.
+	#
+	# Now, we grep for target_string in ./configure --help output. If we find
+	# it, we append target_string to the flags variable. If not, the default
+	# state of the module _is_ the desired state (if the module exists), so we
+	# do not need to do anything to force module to the requested state.
+	local status
+	econf_ngx --help |& grep -q -F -- "${target_string}"
+	pipestatus
+	status=$?
+	if [[ ${status} -eq 0 ]]; then
+		ref_target+=( "${target_string}" )
+		return 0
+	elif [[ ${status} -ne 1 ]]; then
+		die "grep failed"
+	fi
+
+	# Check whether the specified module exists at all.
+	econf_ngx --help |& grep -q -F -- "${inverse_string}"
+	pipestatus
+	status=$?
+	if [[ ${status} -eq 0 ]]; then
+		# If inverse_string exists, we know that the module is present: we
+		# can safely return.
+		return 0
+	elif [[ ${status} -ne 1 ]]; then
+		die "grep failed"
+	fi
+
+	if [[ ${state} -ne 2 && ${state} -ne -2 ]]; then
+		# Neither target_string, nor inverse_string are found in
+		# ./configure --help: either the module genuinely does not exist or
+		# something has gone really wrong.
+		die "ngx_force_module: module \"${mod}\" not found and '-n' has not been supplied"
+	else
+		# If we do not die, we just return 1.
+		return 1
+	fi
+}
 
 # @FUNCTION: econf_ngx
 # @USAGE: [<args>...]
@@ -366,6 +527,64 @@ ngx_gen_dep() {
 	printf '%s\n' "${out}"
 }
 
+# @FUNCTION: ngx_force_module
+# @USAGE: [-t] <module> [<module>...]
+# @DESCRIPTION:
+# Enable or disable the specified first-party NGINX module(s).  To disable a
+# module, prefix it with a bang: '!'.  If the same module is supplied multiple
+# times, the later module overrides the previous ones.
+#
+# If the '-t' option is specified, the not found module is not treated as an
+# error and is instead ignored.  If '-t' is not specified, if the module is not
+# found, the build is aborted with die.  The option might be useful for newer or
+# older modules, that might not be present in all NGINX versions.
+#
+# Example:
+# @CODE
+# # Force enable the http_ssl module.
+# ngx_force_module http_ssl
+#
+# # Force disable the stream_ssl module
+# ngx_force_module !stream_ssl
+#
+# # The following call overrides the first call, forcing http_ssl off.
+# ngx_force_module !http_ssl
+#
+# # Do not die if http_foo_bar is not found, but do try to force enable it if
+# # present.
+# ngx_force_module -t http_foo_bar
+# @CODE
+ngx_force_module() {
+	debug-print-function "${FUNCNAME[0]}" "$@"
+	[[ $# -ge 1 ]] ||
+		die "${FUNCNAME[0]} must receive one or more non-option arguments"
+	_ngx_mod_assert_argfile_exists "${_NGX_MOD_CONFIG_FLAGS_FILE}"
+
+	local nonfatal=0
+	if [[ $1 = '-t' ]]; then
+		nonfatal=1
+		shift
+		[[ $# -ge 1 ]] ||
+			die "${FUNCNAME[0]} must receive one or more non-option arguments"
+	fi
+
+	local mod
+	local offstate=-1 onstate=1
+	if [[ ${nonfatal} -eq 1 ]]; then
+		offstate=-2
+		onstate=2
+	fi
+
+	for mod; do
+		if [[ ${mod:0:1} = '!' ]]; then
+			mod="${mod#\!}"
+			_NGX_MOD_FORCED_MODULES[${mod}]="${offstate}"
+		else
+			_NGX_MOD_FORCED_MODULES[${mod}]="${onstate}"
+		fi
+	done
+}
+
 #-----> ebuild-defined variables <-----
 
 # @ECLASS_VARIABLE: NGINX_MOD_S
@@ -417,6 +636,16 @@ NGINX_S="${WORKDIR}/nginx"
 # Holds the path to the file containing NUL-separated ./configure flags used to
 # build www-servers/nginx.
 _NGX_MOD_CONFIG_FLAGS_FILE="${BROOT}/usr/src/nginx/configure-flags"
+
+# @ECLASS_VARIABLE: _NGX_MOD_FORCED_MODULES
+# @INTERNAL
+# @OUTPUT_VARIABLE
+# @DESCRIPTION:
+# An associative array containing first-party NGINX modules forced on or off by
+# a call to ngx_force_module().  See the description of
+# _ngx_mod_enforce_module_flags() for the valid values of each key stored in
+# this array.
+declare -g -A _NGX_MOD_FORCED_MODULES=()
 
 # @ECLASS_VARIABLE: NGINX_MOD_SHARED_OBJECTS
 # @OUTPUT_VARIABLE
@@ -776,6 +1005,13 @@ nginx-module_src_configure() {
 	# come with and install their own headers, e.g. ngx_devel_kit.
 	append-cflags "-isystem src/modules"
 
+	# Process _NGX_MOD_FORCED_MODULES by iterating over each forced module.
+	local mod
+	for mod in "${!_NGX_MOD_FORCED_MODULES[@]}"; do
+		local state="${_NGX_MOD_FORCED_MODULES[${mod}]}"
+		_ngx_mod_enforce_module_flags ngx_mod_flags "${mod}" "${state}"
+	done
+
 	# Some NGINX modules that depend on ngx_devel_kit (NDK) check whether the
 	# NDK_SRCS variable is non-empty and error out if it is empty or not
 	# defined. ngx_devel_kit sets this variable during its build but due to the
@@ -795,7 +1031,6 @@ nginx-module_src_configure() {
 
 	# Add the required linking flags required for the modules specified in the
 	# NGINX_MOD_LINK_MODULES array.
-	local mod
 	for mod in "${NGINX_MOD_LINK_MODULES[@]}"; do
 		ngx_mod_link_module "${mod}"
 	done
