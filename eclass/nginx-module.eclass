@@ -28,6 +28,11 @@
 # patching the module's 'config' file and depending on dev-libs/openssl directly
 # using the ngx_mod_link_lib() function.
 #
+# If the package genuinely depends on first-party NGINX module(s), the helper
+# ngx_mod_gen_nginx_dep() might be used to generate the suitable dependency
+# string for depending on first-party modules. For more advanced setups,
+# ngx_force_module() and ngx_usex_module() might be of interest.
+#
 # If the module makes use of the ngx_devel_kit (NDK) or any other NGINX
 # module, there are two approaches.
 #
@@ -100,6 +105,26 @@ esac
 inherit flag-o-matic toolchain-funcs
 
 #-----> Generic helper functions <-----
+
+# @FUNCTION: _ngx_mod_toggle_prefix
+# @INTERNAL
+# @USAGE: <prefix> <word>
+# @RETURN: 'word' with 'prefix' removed if present or added if absent
+_ngx_mod_toggle_prefix() {
+       debug-print-function "${FUNCNAME[0]}" "$@"
+       [[ $# -eq 2 ]] || die "${FUNCNAME[0]} must receive exactly two arguments"
+
+       local prefix="$1" word="$2"
+       case "${word}" in
+               "${prefix}"*)
+                       word="${word#"${prefix}"}"
+                       ;;
+               *)
+                       word="${prefix}${word}"
+                       ;;
+       esac
+       printf '%s\n' "${word}"
+}
 
 # @FUNCTION: _ngx_mod_assert_argfile_exists
 # @INTERNAL
@@ -581,6 +606,84 @@ ngx_force_module() {
 			_NGX_MOD_FORCED_MODULES[${mod}]="${offstate}"
 		else
 			_NGX_MOD_FORCED_MODULES[${mod}]="${onstate}"
+		fi
+	done
+}
+
+# @FUNCTION: ngx_usex_module
+# @USAGE: [-n] [-t] <use flag> <module> [<module>...]
+# @DESCRIPTION:
+# Disables or enables the specified first-party NGINX module(s) based on
+# the specified USE flag.
+#
+# Let myflag be the specified USE flag.  If 'use myflag' is true, passes all
+# specified modules to ngx_force_module().  If 'use myflag' is false and '-n'
+# has not been specified, passes the inversion of all specified modules to
+# ngx_force_module().  For the accepted module syntax refer to
+# ngx_force_module() description.
+#
+# By default, if any of the specified modules do not exist, the build is
+# aborted.  This can be overriden by supplying '-t'.  See ngx_force_module()
+# for behaviour when this flag is supplied.
+#
+# Example:
+# @CODE
+# # Enable the http_fastcgi and http_uwsgi if and only if our fastcgi USE flag is
+# # enabled. Otherwise, disables http_fastcgi and http_uwsgi.
+# ngx_usex_module fastcgi http_fastcgi http_uwsgi
+#
+# # Enable http_ssl and disable http_rewrite if USE=lazy is set. If USE=-lazy is
+# # set, this is equivalent to 'ngx_force_module !http_ssl !http_rewrite'
+# ngx_usex_module lazy http_ssl !http_rewrite
+#
+# # The following is equivalent to
+# #    use !ssl && ngx_force_module  stream_pass !stream_ssl
+# #    use  ssl && ngx_force_module !stream_pass  stream_ssl
+# ngx_usex_module !ssl stream_pass !stream_ssl
+#
+# # The following is equivalent to
+# #    use imap && ngx_force_module mail_imap mail_smtp
+# ngx_usex_module -n imap mail_imap mail_smtp
+#
+# # The following is equivalent to
+# #    use !fancy && ngx_force_module -t http_gd http_autoindex
+# ngx_usex_module -n -t !fancy http_gd http_autoindex
+# @CODE
+ngx_usex_module() {
+	debug-print-function "${FUNCNAME[0]}" "$@"
+
+	local noinverse=0 nonfatal=0
+	while [[ $# -gt 0 ]]; do
+		case "$1" in
+			-n)
+				noinverse=1
+				;;
+			-t)
+				nonfatal=1
+				;;
+			*)
+				break
+				;;
+		esac
+		shift
+	done
+	[[ $# -ge 2 ]] || die "${FUNCNAME[0]} must receive two or more non-option arguments"
+
+	local module useflag="$1"
+	shift
+
+	for module; do
+		if ! use "${useflag}"; then
+			# If '-n' is passed, do not do anything since 'use myflag' is false.
+			[[ ${noinverse} -eq 1 ]] && return 0
+
+			module="$(_ngx_mod_toggle_prefix '!' "${module}")"
+		fi
+
+		if [[ ${nonfatal} -eq 1 ]]; then
+			ngx_force_module -t "${module}"
+		else
+			ngx_force_module "${module}"
 		fi
 	done
 }
