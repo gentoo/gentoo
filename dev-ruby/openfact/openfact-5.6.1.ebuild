@@ -23,7 +23,7 @@ if [[ ${PV} == 9999 ]] ; then
 	EGIT_BRANCH="main"
 else
 	[[ "${PV}" = *_rc* ]] || \
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~riscv ~x86"
 	SRC_URI="https://github.com/OpenVoxProject/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 fi
 

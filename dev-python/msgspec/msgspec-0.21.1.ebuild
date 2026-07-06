@@ -5,18 +5,20 @@ EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 
 inherit distutils-r1 pypi
 
 DESCRIPTION="Fast serialization and validation library, with builtin support for many formats"
 HOMEPAGE="
-	https://jcristharif.com/msgspec/
-	https://github.com/jcrist/msgspec
+	https://github.com/msgspec/msgspec
 	https://pypi.org/project/msgspec/
 "
 # No tests in sdist
-SRC_URI="https://github.com/jcrist/msgspec/archive/refs/tags/${PV}.tar.gz -> ${P}.gh.tar.gz"
+SRC_URI="
+	https://github.com/msgspec/msgspec/archive/refs/tags/${PV}.tar.gz
+		-> ${P}.gh.tar.gz
+"
 
 LICENSE="BSD"
 SLOT="0"

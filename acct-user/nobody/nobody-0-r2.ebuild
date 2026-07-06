@@ -1,4 +1,4 @@
-# Copyright 2020-2024 Gentoo Authors
+# Copyright 2020-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,5 +13,3 @@ ACCT_USER_HOME_PERMS=0755
 ACCT_USER_GROUPS=( nobody )
 
 acct-user_add_deps
-
-RDEPEND+=" acct-user/root"

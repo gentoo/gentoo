@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 
 inherit distutils-r1 eapi9-ver optfeature systemd
 
@@ -25,7 +25,7 @@ RDEPEND="
 	>=acct-user/radicale-0-r2
 	acct-group/radicale
 	dev-python/defusedxml[${PYTHON_USEDEP}]
-	dev-python/passlib[${PYTHON_USEDEP}]
+	dev-python/libpass[${PYTHON_USEDEP}]
 	dev-python/vobject[${PYTHON_USEDEP}]
 	sys-apps/util-linux
 "

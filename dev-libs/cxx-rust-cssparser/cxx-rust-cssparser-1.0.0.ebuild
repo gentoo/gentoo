@@ -24,7 +24,7 @@ if [[ ${KDE_BUILD_TYPE} == release ]]; then
 	if [[ ${PKGBUMPING} != ${PVR} ]]; then
 		SRC_URI+=" https://github.com/gentoo-crate-dist/${PN}/releases/download/v${PV}/${P}-crates.tar.xz"
 	fi
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64 ~riscv ~x86"
 fi
 
 LICENSE="BSD-2 CC0-1.0 || ( LGPL-2.1 LGPL-3 )"

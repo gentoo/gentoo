@@ -170,6 +170,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.10.0-gentoo.patch
 	"${FILESDIR}"/${PN}-2.11.0-mimalloc.patch
 	"${FILESDIR}"/${P}-removekineto-pr178960.patch
+	"${FILESDIR}"/${P}-rocm-assert-fix.patch
 )
 
 src_prepare() {

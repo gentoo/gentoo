@@ -1,6 +1,10 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Pacho Ramos <pacho@gentoo.org> (2026-07-05)
+# QT6 is not keyworded here, bug #977775
+dev-libs/appstream test
+
 # Michał Górny <mgorny@gentoo.org> (2026-06-19)
 # CLI requires dev-python/black that is being dekeyworded.
 dev-python/hypothesis cli

@@ -1,0 +1,73 @@
+# Copyright 1999-2026 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=8
+
+DISTUTILS_USE_PEP517=setuptools
+PYTHON_COMPAT=( python3_{11..14} )
+inherit distutils-r1 pypi shell-completion
+
+DESCRIPTION="Console vCard address book"
+HOMEPAGE="
+	https://github.com/lucc/khard
+	https://pypi.org/project/khard/
+"
+LICENSE="GPL-3"
+SLOT="0"
+KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
+
+RDEPEND="
+	>=dev-python/configobj-5.0.6[${PYTHON_USEDEP}]
+	>=dev-python/ruamel-yaml-0.17.0[${PYTHON_USEDEP}]
+	dev-python/vobject[${PYTHON_USEDEP}]
+"
+BDEPEND="
+	test? (
+		dev-python/setuptools-scm[${PYTHON_USEDEP}]
+	)
+"
+
+PATCHES=( "${FILESDIR}/khard-0.21.0-musl-testfix.patch" )
+
+DOCS=(
+	CHANGES
+	CONTRIBUTING.rst
+	README.md
+	doc/source/examples/khard.conf.example
+)
+
+distutils_enable_tests unittest
+distutils_enable_sphinx docs \
+	dev-python/sphinx-argparse \
+	dev-python/sphinx-autoapi \
+	dev-python/sphinx-autodoc-typehints \
+	dev-python/sphinx-rtd-theme
+
+python_compile_all() {
+	if use doc; then
+		# The safe_MAKE= assignment below strips any arguments you might
+		# have in your $MAKE variable (i.e. it keeps only the stuff
+		# before the first space character). Sphinx tries to execute
+		# $MAKE using subprocess.call, which is expecting an actual
+		# program and not a program plus flags. This can help in some
+		# corner cases, like MAKE="make LIBTOOL=..." in make.conf, and
+		# should still allow e.g. MAKE=/usr/local/bin/mymake
+		local safe_MAKE="${MAKE%% *}"
+		[[ -z "${safe_MAKE}" ]] && safe_MAKE=make
+		emake MAKE="${safe_MAKE}" -j1 -C doc/ html text man info
+	fi
+}
+
+python_install_all() {
+	if use doc; then
+		DOCS+=( doc/build/text/. )
+		HTML_DOCS+=( doc/build/html/. )
+
+		doman doc/build/man/*
+		doinfo doc/build/texinfo/*.info
+	fi
+
+	dozshcomp misc/zsh/_khard
+
+	distutils-r1_python_install_all
+}

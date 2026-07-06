@@ -25,6 +25,11 @@ BDEPEND="
 	zstd? ( virtual/pkgconfig )
 "
 
+CMAKE_SKIP_TESTS=(
+	# bug 948899
+	karchivetest
+)
+
 src_prepare() {
 	ecm_src_prepare
 

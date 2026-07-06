@@ -18,7 +18,7 @@
 		PSG and DAC based audio.
 	</longdescription>
 	<upstream>
-		<bugs-to>https://gitlab.com/jgemu/vecx/-/issues</bugs-to>
+		<bugs-to>https://gitlab.com/jgemu/vecx/-/work_items</bugs-to>
 		<changelog>https://gitlab.com/jgemu/vecx/-/blob/master/ChangeLog</changelog>
 		<remote-id type="gitlab">jgemu/vecx</remote-id>
 	</upstream>

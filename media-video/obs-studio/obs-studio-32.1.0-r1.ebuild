@@ -69,7 +69,7 @@ DEPEND="
 	dev-libs/jansson:=
 	dev-libs/simde
 	dev-libs/uthash
-	dev-qt/qtbase:6[network,widgets,X,xml(+)]
+	dev-qt/qtbase:6=[network,widgets,X,xml(+)]
 	dev-qt/qtsvg:6
 	media-libs/libglvnd[X]
 	media-libs/libva

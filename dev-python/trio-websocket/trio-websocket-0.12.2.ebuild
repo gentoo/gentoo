@@ -1,10 +1,10 @@
-# Copyright 2023-2025 Gentoo Authors
+# Copyright 2023-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( pypy3_11 python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 
 inherit distutils-r1
 
@@ -31,26 +31,21 @@ RDEPEND="
 "
 BDEPEND="
 	test? (
-		>=dev-python/pytest-trio-0.5.0[${PYTHON_USEDEP}]
 		dev-python/trustme[${PYTHON_USEDEP}]
 	)
 "
 
+EPYTEST_PLUGINS=( pytest-trio )
 distutils_enable_tests pytest
 
-python_test() {
-	local EPYTEST_DESELECT=(
-		# exception tests are broken with trio-0.25
-		# https://github.com/python-trio/trio-websocket/issues/187
-		tests/test_connection.py::test_handshake_exception_before_accept
-		tests/test_connection.py::test_reject_handshake
-		tests/test_connection.py::test_reject_handshake_invalid_info_status
-		tests/test_connection.py::test_client_open_timeout
-		tests/test_connection.py::test_client_close_timeout
-		tests/test_connection.py::test_client_connect_networking_error
-		tests/test_connection.py::test_finalization_dropped_exception
-	)
-
-	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
-	epytest -p trio
-}
+EPYTEST_DESELECT=(
+	# exception tests are broken with trio-0.25
+	# https://github.com/python-trio/trio-websocket/issues/187
+	tests/test_connection.py::test_handshake_exception_before_accept
+	tests/test_connection.py::test_reject_handshake
+	tests/test_connection.py::test_reject_handshake_invalid_info_status
+	tests/test_connection.py::test_client_open_timeout
+	tests/test_connection.py::test_client_close_timeout
+	tests/test_connection.py::test_client_connect_networking_error
+	tests/test_connection.py::test_finalization_dropped_exception
+)

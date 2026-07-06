@@ -1,0 +1,23 @@
+https://github.com/rbsec/sslscan/commit/2ddf1f2f873572ce503cf37efd18d08bc48a688b
+From 2ddf1f2f873572ce503cf37efd18d08bc48a688b Mon Sep 17 00:00:00 2001
+From: Jon DeVree <nuxi@vault24.org>
+Date: Sun, 26 Apr 2026 22:41:30 -0400
+Subject: [PATCH] Add missing newline in version output
+
+---
+ sslscan.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/sslscan.c b/sslscan.c
+index 0358aca..24ffd9d 100644
+--- a/sslscan.c
++++ b/sslscan.c
+@@ -4155,7 +4155,7 @@ int main(int argc, char *argv[])
+     switch (mode)
+     {
+         case mode_version:
+-            printf("%s\n%s", VERSION, OpenSSL_version(OPENSSL_VERSION));
++            printf("%s\n%s\n", VERSION, OpenSSL_version(OPENSSL_VERSION));
+             break;
+ 
+         case mode_help:

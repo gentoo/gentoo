@@ -49,16 +49,16 @@ src_configure() {
 
 	set_opt I18N use nls
 	set_opt HAVE_AFINET6 use ipv6
-	set_opt HAVE_HWIB has_version '>=sys-kernel/linux-headers-2.6'
-	set_opt HAVE_HWTR has_version '<sys-kernel/linux-headers-3.5'
-	set_opt HAVE_HWSTRIP has_version '<sys-kernel/linux-headers-3.6'
+	set_opt HAVE_HWIB has_version -d '>=sys-kernel/linux-headers-2.6'
+	set_opt HAVE_HWTR has_version -d '<sys-kernel/linux-headers-3.5'
+	set_opt HAVE_HWSTRIP has_version -d '<sys-kernel/linux-headers-3.6'
 	set_opt HAVE_SELINUX use selinux
 	set_opt HAVE_ARP_TOOLS use arp
 	set_opt HAVE_HOSTNAME_TOOLS use hostname
 	set_opt HAVE_HOSTNAME_SYMLINKS use nis
 	set_opt HAVE_PLIP_TOOLS use plipconfig
-	set_opt HAVE_AFROSE has_version '<sys-kernel/linux-headers-7.1'
-	set_opt HAVE_HWROSE has_version '<sys-kernel/linux-headers-7.1'
+	set_opt HAVE_AFROSE has_version -d '<sys-kernel/linux-headers-7.1'
+	set_opt HAVE_HWROSE has_version -d '<sys-kernel/linux-headers-7.1'
 	set_opt HAVE_SERIAL_TOOLS use slattach
 	if use static ; then
 		append-flags -static

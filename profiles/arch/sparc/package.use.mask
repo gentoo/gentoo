@@ -1,6 +1,10 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Pacho Ramos <pacho@gentoo.org> (2026-07-05)
+# QT6 is not keyworded here, bug #977775
+dev-libs/appstream test
+
 # Viorel Munteanu <ceamac@gentoo.org> (2026-05-14)
 # dev-libs/efl not keyworded here
 app-misc/fastfetch efl

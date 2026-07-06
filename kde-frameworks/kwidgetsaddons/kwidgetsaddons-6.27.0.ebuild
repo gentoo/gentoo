@@ -8,7 +8,7 @@ ECM_PYTHON_BINDINGS="off"
 QTMIN=6.10.1
 inherit ecm frameworks.kde.org
 
-DESCRIPTION="An assortment of high-level widgets for common tasks"
+DESCRIPTION="Assortment of high-level widgets for common tasks"
 
 LICENSE="LGPL-2.1+"
 KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
@@ -21,6 +21,8 @@ BDEPEND=">=dev-qt/qttools-${QTMIN}:6[linguist]"
 CMAKE_SKIP_TESTS=(
 	# bug 650216
 	kdatecomboboxtest
+	# bug 948896
+	kdatetimeedittest
 	# bug 697866
 	ksqueezedtextlabelautotest
 	# bug 926508

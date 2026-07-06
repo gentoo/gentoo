@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 
 inherit meson python-r1 verify-sig
 
@@ -16,7 +16,7 @@ S="${WORKDIR}"/${P/gstreamer/gst}
 
 LICENSE="LGPL-2+"
 SLOT="1.0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="~amd64 ~arm64 x86"
 
 IUSE="+introspection test"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"

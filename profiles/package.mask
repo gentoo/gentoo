@@ -36,11 +36,61 @@
 
 #--- END OF EXAMPLES ---
 
+# Eray Aslan <eras@gentoo.org> (2026-07-06)
+# Introduces backwards breaking change. Mask until downstreams adjust
+>=dev-db/lmdb-1.0.0
+
+# Michał Górny <mgorny@gentoo.org> (2026-07-04)
+# Renamed to dev-python/jsonschema-path.  No revdeps left.
+# Removal on 2026-08-03.
+dev-python/jsonschema-spec
+
+# Michał Górny <mgorny@gentoo.org> (2026-06-30)
+# Backwards compatibility wrapper.  No revdeps left.
+# Removal on 2026-07-30.
+dev-python/roman-numerals-py
+
+# Conrad Kostecki <conikost@gentoo.org> (2026-06-29)
+# ICR (Intel Compute Runtime) is currently not compatible.
+# Will be unmasked, once a new version is available.
+>=dev-libs/level-zero-1.32.0
+
+# Michał Górny <mgorny@gentoo.org> (2026-06-29)
+# Unmaintained.  Requires patching since py3.12.  No revdeps.
+# Removal on 2026-07-29.  Bug #978274.
+dev-python/commentjson
+
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2026-06-23)
 # Work in progress
 =dev-lang/perl-5.44*
 ~virtual/perl-Archive-Tar-3.120.0
 ~virtual/perl-Compress-Raw-Bzip2-2.218.0
+~virtual/perl-CPAN-Meta-2.150.13
+~virtual/perl-CPAN-Meta-Requirements-2.145.0
+~virtual/perl-DB_File-1.860.0
+~virtual/perl-Encode-3.240.0
+~virtual/perl-ExtUtils-CBuilder-0.280.243
+~virtual/perl-ExtUtils-MakeMaker-7.780.0
+~virtual/perl-ExtUtils-ParseXS-3.630.0
+~virtual/perl-File-Spec-3.950.0
+~virtual/perl-IO-1.560.0
+~virtual/perl-IO-Compress-2.220.0
+~virtual/perl-IO-Socket-IP-0.440.0
+~virtual/perl-Math-BigInt-2.5.3
+~virtual/perl-Module-CoreList-5.202.606.10
+~virtual/perl-Module-Metadata-1.0.39
+~virtual/perl-Pod-Simple-3.480.0
+~virtual/perl-Scalar-List-Utils-1.700.0
+~virtual/perl-Socket-2.41.0
+~virtual/perl-Storable-3.410.0
+~virtual/perl-Term-Table-0.28.0
+~virtual/perl-Test2-Suite-1.302.219
+~virtual/perl-Test-Harness-3.520.0
+~virtual/perl-Test-Simple-1.302.219
+~virtual/perl-Text-Balanced-2.70.0
+~virtual/perl-threads-2.450.0
+~virtual/perl-Time-HiRes-1.978.0
+~virtual/perl-version-0.993.400
 
 # Michał Górny <mgorny@gentoo.org> (2026-06-20)
 # No py3.14 in compat, tests lost on bump, no revdeps.
@@ -231,10 +281,6 @@ dev-util/buildbot-www-react
 # Sam James <sam@gentoo.org> (2026-03-30)
 # >=1.7.0 is an LLM-driven revamp of the project.
 >=sys-fs/quotatool-1.7.0
-
-# Conrad Kostecki <conikost@gentoo.org> (2026-03-28)
-# Version 1.18.x breaks API and needs more testing
->=net-libs/libupnp-1.18.4
 
 # Sam James <sam@gentoo.org> (2026-03-22)
 # Commits since the last release of Crypt-OpenSSL-RSA (0.370) are heavily

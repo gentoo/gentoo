@@ -45,6 +45,7 @@ pkg_setup() {
 
 src_configure() {
 	export CONFIG_SHELL="${BASH}"
+	use python && export PYTHON_CONFIG="$(python_get_PYTHON_CONFIG)"
 	local myeconfargs=(
 		--disable-update-databases
 		--disable-xml-catalog-update

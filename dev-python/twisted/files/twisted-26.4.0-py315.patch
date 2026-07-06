@@ -1,0 +1,114 @@
+From 3962d15a2c593d2e47d240ab6f0c5352caca3464 Mon Sep 17 00:00:00 2001
+From: Lumir Balhar <lbalhar@redhat.com>
+Date: Wed, 1 Apr 2026 12:56:27 +0200
+Subject: [PATCH] Fix Python 3.15 compatibility issues
+
+- Replace deprecated SourceFileLoader.load_module() with exec_module()
+- Add addSubTest() method to _AdaptedReporter for Python 3.15 doctest support
+- Update test expectations for Python 3.15 doctest changes:
+  - Different success/failure counts
+  - Changed error output format
+---
+ src/twisted/trial/reporter.py           | 13 +++++++++++++
+ src/twisted/trial/runner.py             |  6 +++++-
+ src/twisted/trial/test/test_doctest.py  |  9 +++++++--
+ src/twisted/trial/test/test_reporter.py | 17 ++++++++++++-----
+ 4 files changed, 37 insertions(+), 8 deletions(-)
+
+diff --git a/src/twisted/trial/reporter.py b/src/twisted/trial/reporter.py
+index 98ad7eb1aa6..bfdaca5e907 100644
+--- a/src/twisted/trial/reporter.py
++++ b/src/twisted/trial/reporter.py
+@@ -390,6 +390,19 @@ def stopTest(self, test):
+         """
+         return self._originalReporter.stopTest(self.testAdapter(test))
+ 
++    def addSubTest(self, test, subtest, outcome):
++        """
++        See L{unittest.TestResult.addSubTest}.
++
++        Called by the doctest runner in Python 3.15+ when reporting sub-test results.
++        """
++        test = self.testAdapter(test)
++        if hasattr(self._originalReporter, "addSubTest"):
++            return self._originalReporter.addSubTest(test, subtest, outcome)
++        # If the underlying reporter doesn't support subtests, treat as error/success
++        if outcome is not None:
++            return self._originalReporter.addError(test, outcome)
++
+ 
+ @implementer(itrial.IReporter)
+ class Reporter(TestResult):
+diff --git a/src/twisted/trial/runner.py b/src/twisted/trial/runner.py
+index 6d4fdb96d18..6d780bb3545 100644
+--- a/src/twisted/trial/runner.py
++++ b/src/twisted/trial/runner.py
+@@ -760,7 +760,11 @@ def loadFile(self, fileName, recurse=False):
+         """
+         name = reflect.filenameToModuleName(fileName)
+         try:
+-            module = SourceFileLoader(name, fileName).load_module()
++            loader = SourceFileLoader(name, fileName)
++            spec = importlib.util.spec_from_loader(name, loader)
++            module = importlib.util.module_from_spec(spec)
++            sys.modules[name] = module
++            spec.loader.exec_module(module)
+             return self.loadAnything(module, recurse=recurse)
+         except OSError:
+             raise ValueError(f"{fileName} is not a Python file.")
+diff --git a/src/twisted/trial/test/test_doctest.py b/src/twisted/trial/test/test_doctest.py
+index 05d57d44e06..5f6a1c17fe8 100644
+--- a/src/twisted/trial/test/test_doctest.py
++++ b/src/twisted/trial/test/test_doctest.py
+@@ -4,6 +4,7 @@
+ """
+ Test Twisted's doctest support.
+ """
++import sys
+ import unittest as pyunit
+ 
+ from twisted.trial import itrial, reporter, runner, unittest
+@@ -40,8 +41,12 @@ def _testRun(self, suite: pyunit.TestSuite) -> None:
+         """
+         result = reporter.TestResult()
+         suite.run(result)
+-        self.assertEqual(5, result.successes)
+-        self.assertEqual(2, len(result.failures))
++        # Python 3.15+ counts doctest examples differently, resulting in more successes
++        # and also consolidates some failures
++        expected_successes = 7 if sys.version_info >= (3, 15) else 5
++        expected_failures = 1 if sys.version_info >= (3, 15) else 2
++        self.assertEqual(expected_successes, result.successes)
++        self.assertEqual(expected_failures, len(result.failures))
+ 
+     def test_expectedResults(self, count: int = 1) -> None:
+         """
+diff --git a/src/twisted/trial/test/test_reporter.py b/src/twisted/trial/test/test_reporter.py
+index 76172e7a6de..441704c7662 100644
+--- a/src/twisted/trial/test/test_reporter.py
++++ b/src/twisted/trial/test/test_reporter.py
+@@ -205,12 +205,19 @@ def test_doctestError(self):
+         suite = unittest.decorate(self.loader.loadDoctests(erroneous), itrial.ITestCase)
+         output = self.getOutput(suite)
+         path = "twisted.trial.test.erroneous.unexpectedException"
+-        for substring in ["1/0", "ZeroDivisionError", "Exception raised:", path]:
++        # Python 3.15+ changed doctest error output format
++        if sys.version_info >= (3, 15):
++            substrings = ["1/0", "ZeroDivisionError", path]
++        else:
++            substrings = ["1/0", "ZeroDivisionError", "Exception raised:", path]
++        for substring in substrings:
+             self.assertSubstring(substring, output)
+-        self.assertTrue(
+-            re.search("Fail(ed|ure in) example:", output),
+-            "Couldn't match 'Failure in example: ' " "or 'Failed example: '",
+-        )
++        # Python 3.15+ no longer uses "Failed example:" format
++        if sys.version_info < (3, 15):
++            self.assertTrue(
++                re.search("Fail(ed|ure in) example:", output),
++                "Couldn't match 'Failure in example: ' " "or 'Failed example: '",
++            )
+         expect = [self.doubleSeparator, re.compile(r"\[(ERROR|FAIL)\]")]
+         self.stringComparison(expect, output.splitlines())
+ 

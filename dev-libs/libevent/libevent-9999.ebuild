@@ -1,9 +1,7 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-
-CMAKE_REMOVE_MODULES_LIST=( FindMbedTLS )
 
 inherit cmake-multilib git-r3
 
@@ -39,11 +37,11 @@ MULTILIB_WRAPPED_HEADERS=(
 
 multilib_src_configure() {
 	local mycmakeargs=(
-		-DEVENT__DISABLE_CLOCK_GETTIME=$(usex !clock-gettime)
-		-DEVENT__DISABLE_DEBUG_MODE=$(usex !debug)
-		-DEVENT__DISABLE_MBEDTLS=$(usex !mbedtls)
-		-DEVENT__DISABLE_MM_REPLACEMENT=$(usex !malloc-replacement)
-		-DEVENT__DISABLE_OPENSSL=$(usex !ssl)
+		-DEVENT__DISABLE_CLOCK_GETTIME=$(usex !clock-gettime ON OFF)
+		-DEVENT__DISABLE_DEBUG_MODE=$(usex !debug ON OFF)
+		-DEVENT__DISABLE_MBEDTLS=$(usex !mbedtls ON OFF)
+		-DEVENT__DISABLE_MM_REPLACEMENT=$(usex !malloc-replacement ON OFF)
+		-DEVENT__DISABLE_OPENSSL=$(usex !ssl ON OFF)
 		-DEVENT__LIBRARY_TYPE=$(usex static-libs BOTH SHARED)
 		-DCMAKE_DEBUG_POSTFIX=""
 	)

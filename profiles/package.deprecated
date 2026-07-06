@@ -78,10 +78,10 @@ dev-python/httpretty
 dev-python/berkeleydb
 
 # Michał Górny <mgorny@gentoo.org> (2025-10-01)
-# dev-python/passlib is unmaintained upstream (last release in 2020),
+# dev-python/libpass is unmaintained upstream (last release in 2020),
 # and we keep having to patch breakage out.  Packages really need
 # to migrate out of it.
-dev-python/passlib
+dev-python/libpass
 
 # Michał Górny <mgorny@gentoo.org> (2025-07-29)
 # dev-python/flaky and dev-python/pytest-rerunfailurse have conflicting

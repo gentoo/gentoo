@@ -1,6 +1,12 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Conrad Kostecki <conikost@gentoo.org> (2026-06-27)
+# We need to force GCC for older releases, which is needed
+# for dev-util/intel-graphics-compiler in the end, as long
+# they do not support newer clang versions (bug #974434).
+<llvm-runtimes/compiler-rt-sanitizers-19 -clang
+
 # Michael Orlitzky <mjo@gentoo.org> (2026-04-15)
 # The non-jumbo build failures are back in 2.52.x.
 =net-libs/webkit-gtk-2.52.3-r410 jumbo-build

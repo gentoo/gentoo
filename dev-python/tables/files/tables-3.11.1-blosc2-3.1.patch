@@ -1,0 +1,17 @@
+From 25b4701e8a75c33fa2c05d192c061ea6855fa861 Mon Sep 17 00:00:00 2001
+From: Antonio Valentino <antonio.valentino@tiscali.it>
+Date: Sat, 9 May 2026 11:13:47 +0200
+Subject: [PATCH] Fix compatibility with c-blosc2 v3.x
+
+diff --git a/setup.py b/setup.py
+index 5d10d2cc5..80ef98aaa 100755
+--- a/setup.py
++++ b/setup.py
+@@ -1251,6 +1251,7 @@ def compiler_has_flags(compiler, flags):
+         "include_dirs": inc_dirs,
+     }
+     def_macros.extend(abi3_macros)
++    def_macros.append(("BLOSC2_MAX_DIM", 8))
+     extension_kwargs.update(abi3_ext_kwargs)
+ 
+     extensions = [

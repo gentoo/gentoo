@@ -24,7 +24,7 @@ S=${WORKDIR}/${P/_}
 LICENSE="BSD"
 SLOT="0"
 if [[ ${PV} != *_rc* ]]; then
-	KEYWORDS="~amd64 ~arm64"
+	KEYWORDS="amd64 ~arm64"
 fi
 IUSE="examples"
 

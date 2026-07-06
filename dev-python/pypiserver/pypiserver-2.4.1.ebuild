@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{11..14} pypy3_11 )
+PYTHON_COMPAT=( python3_{12..14} )
 
 inherit distutils-r1
 
@@ -38,7 +38,7 @@ BDEPEND="
 	dev-python/setuptools-git[${PYTHON_USEDEP}]
 	test? (
 		>=dev-python/build-1.2.0[${PYTHON_USEDEP}]
-		>=dev-python/passlib-1.6[${PYTHON_USEDEP}]
+		>=dev-python/libpass-1.6[${PYTHON_USEDEP}]
 		dev-python/setuptools[${PYTHON_USEDEP}]
 		dev-python/webtest[${PYTHON_USEDEP}]
 	)

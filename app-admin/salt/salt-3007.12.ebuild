@@ -101,7 +101,7 @@ BDEPEND="
 		>=dev-python/mock-2.0.0[${PYTHON_USEDEP}]
 		>=dev-python/more-itertools-10.8.0[${PYTHON_USEDEP}]
 		>=dev-python/moto-2.0.0[${PYTHON_USEDEP}]
-		dev-python/passlib[${PYTHON_USEDEP}]
+		dev-python/libpass[${PYTHON_USEDEP}]
 		dev-python/bcrypt[${PYTHON_USEDEP}]
 		>=dev-python/filelock-3.20.3[${PYTHON_USEDEP}]
 		dev-python/pip[${PYTHON_USEDEP}]

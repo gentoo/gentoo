@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
 PYPI_VERIFY_REPO=https://github.com/python-babel/babel
-PYTHON_COMPAT=( pypy3_11 python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 PYTHON_REQ_USE="threads(+)"
 
 inherit distutils-r1 pypi
@@ -26,10 +26,8 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~x64-macos"
 
-# RDEPEND in BDEPEND for import_cldr.py usage, bug #852158
 BDEPEND="
 	app-arch/unzip
-	${RDEPEND}
 	test? (
 		dev-python/freezegun[${PYTHON_USEDEP}]
 	)

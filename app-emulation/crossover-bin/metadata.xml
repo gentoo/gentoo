@@ -3,7 +3,6 @@
 <pkgmetadata>
 	<!-- maintainer-needed -->
 	<use>
-		<flag name="capi">Enable ISDN support via CAPI</flag>
 		<flag name="osmesa">Add support for OpenGL in bitmaps using libOSMesa</flag>
 		<flag name="pcap">Support packet capture software (e.g. wireshark)</flag>
 	</use>

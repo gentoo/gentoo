@@ -1,0 +1,106 @@
+From 8b76aaf4641af82af5260cb6b0d8c95824905648 Mon Sep 17 00:00:00 2001
+From: Dmitry Shachnev <mitya57@gmail.com>
+Date: Sun, 4 May 2025 21:33:24 +0300
+Subject: [PATCH] Replace `domain.has_equations()` with
+ `context['has_maths_elements']`
+
+See https://github.com/sphinx-doc/sphinx/commit/9b7205b65eebdaf0d1ed544929dca77e3e7a537b.
+
+This is mostly based on that Sphinx commit, with the exception that we
+default to True, so it unconditionally includes jsmath.js for older
+Sphinx versions.
+---
+ sphinxcontrib/jsmath/__init__.py | 18 +++++++++++-------
+ tests/test_jsmath.py             |  9 ++++++++-
+ 2 files changed, 19 insertions(+), 8 deletions(-)
+
+diff --git a/sphinxcontrib/jsmath/__init__.py b/sphinxcontrib/jsmath/__init__.py
+index 1ce675d..ff514a0 100644
+--- a/sphinxcontrib/jsmath/__init__.py
++++ b/sphinxcontrib/jsmath/__init__.py
+@@ -15,8 +15,6 @@ from typing import Any, Dict, cast
+ from docutils import nodes
+ from sphinx.application import Sphinx
+ from sphinx.builders.html import StandaloneHTMLBuilder
+-from sphinx.domains.math import MathDomain
+-from sphinx.environment import BuildEnvironment
+ from sphinx.errors import ExtensionError
+ from sphinx.locale import get_translation
+ from sphinx.util.math import get_node_equation_number
+@@ -62,16 +60,22 @@ def html_visit_displaymath(self: HTMLTranslator, node: nodes.math_block) -> None
+     raise nodes.SkipNode
+ 
+ 
+-def install_jsmath(app: Sphinx, env: BuildEnvironment) -> None:
+-    if app.builder.format != 'html' or app.builder.math_renderer_name != 'jsmath':  # type: ignore  # NOQA
++def install_jsmath(
++    app: Sphinx,
++    pagename: str,
++    templatename: str,
++    context: dict[str, Any],
++    event_arg: Any,
++) -> None:
++    if app.builder.format != 'html' or app.builder.math_renderer_name != 'jsmath':  # type: ignore[attr-defined]
+         return
+     if not app.config.jsmath_path:
+         raise ExtensionError('jsmath_path config value must be set for the '
+                              'jsmath extension to work')
+ 
+     builder = cast(StandaloneHTMLBuilder, app.builder)
+-    domain = cast(MathDomain, env.get_domain('math'))
+-    if domain.has_equations():
++    page_has_equations = context.get('has_maths_elements', True)
++    if app.registry.html_assets_policy == 'always' or page_has_equations:
+         # Enable jsmath only if equations exists
+         builder.add_js_file(app.config.jsmath_path)
+ 
+@@ -84,7 +88,7 @@ def setup(app: Sphinx) -> Dict[str, Any]:
+                                (html_visit_displaymath, None))
+ 
+     app.add_config_value('jsmath_path', '', False)
+-    app.connect('env-updated', install_jsmath)
++    app.connect('html-page-context', install_jsmath)
+     return {
+         'version': __version__,
+         'parallel_read_safe': True,
+diff --git a/tests/test_jsmath.py b/tests/test_jsmath.py
+index 573d262..c8682da 100644
+--- a/tests/test_jsmath.py
++++ b/tests/test_jsmath.py
+@@ -9,6 +9,7 @@
+ """
+ 
+ import pytest
++import sphinx
+ 
+ 
+ @pytest.mark.sphinx('html', testroot='basic')
+@@ -16,6 +17,7 @@ def test_basic(app, status, warning):
+     app.builder.build_all()
+     content = (app.outdir / 'math.html').text()
+     print(content)
++    assert 'jsmath.js' in content
+     assert '<div class="math notranslate nohighlight">\nE = mc^2</div>' in content
+     assert ('<span class="eqno">(1)<a class="headerlink" href="#equation-pythagorean" '
+             'title="Permalink to this equation">¶</a></span>'
+@@ -34,7 +36,8 @@ def test_basic(app, status, warning):
+ def test_numfig_enabled(app, status, warning):
+     app.builder.build_all()
+ 
+-    content = (app.outdir / 'math.html').text()
++    content = (app.outdir / 'math.html').read_text(encoding='utf-8')
++    assert 'jsmath.js' in content
+     assert '<div class="math notranslate nohighlight">\nE = mc^2</div>' in content
+     assert ('<span class="eqno">(1.1)<a class="headerlink" href="#equation-pythagorean" '
+             'title="Permalink to this equation">¶</a></span>'
+@@ -48,6 +51,10 @@ def test_numfig_enabled(app, status, warning):
+     assert '<a class="reference internal" href="#equation-pythagorean">(1.1)</a>' in content
+ 
+ 
++@pytest.mark.skipif(
++    sphinx.version_info < (8, 2),
++    reason='Sphinx < 8.2 does not have `has_maths_elements` in context',
++)
+ @pytest.mark.sphinx('html', testroot='nomath')
+ def test_disabled_when_equations_not_found(app, status, warning):
+     app.builder.build_all()

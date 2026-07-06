@@ -10,6 +10,10 @@
     <name>Gentoo Sysadmin Project</name>
   </maintainer>
   <use>
+    <flag name="filecaps">
+      Use filesystem capabilities for privileged executables like
+      check_icmp (preferable to suid).
+    </flag>
     <!-- leave this global flag defined here to avoid a pkgcheck warning -->
     <flag name="ipv6">
       Enable ipv6 checks.
@@ -37,6 +41,10 @@
     <flag name="snmp" restrict="&gt;=net-analyzer/nagios-plugins-1.4.16-r1">
       Install <pkg>dev-perl/Net-SNMP</pkg> required for monitoring
       SNMP values. Disabling the flag does not remove any plugin file.
+    </flag>
+    <flag name="suid">
+      Fall back to suid for privileged checks like check_icmp if
+      filecaps are disabled or unavailable.
     </flag>
   </use>
   <upstream>

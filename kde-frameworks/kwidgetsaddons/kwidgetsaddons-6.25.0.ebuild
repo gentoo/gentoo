@@ -8,7 +8,7 @@ ECM_PYTHON_BINDINGS="off"
 QTMIN=6.10.1
 inherit ecm frameworks.kde.org
 
-DESCRIPTION="An assortment of high-level widgets for common tasks"
+DESCRIPTION="Assortment of high-level widgets for common tasks"
 
 LICENSE="LGPL-2.1+"
 KEYWORDS="amd64 arm64 ~loong ppc64 ~riscv ~x86"

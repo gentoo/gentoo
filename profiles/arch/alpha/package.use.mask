@@ -1,6 +1,10 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Pacho Ramos <pacho@gentoo.org> (2026-07-05)
+# QT6 is not keyworded here, bug #977775
+dev-libs/appstream test
+
 # Ionen Wolkens <ionen@gentoo.org> (2026-06-10)
 # llvm-core/clang is not available here, and neither is nvidia
 media-video/ffmpeg cuda-clang

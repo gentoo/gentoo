@@ -100,7 +100,7 @@ BDEPEND="
 		>=dev-python/mock-2.0.0[${PYTHON_USEDEP}]
 		>=dev-python/moto-2.0.0[${PYTHON_USEDEP}]
 		<dev-python/moto-5[${PYTHON_USEDEP}]
-		dev-python/passlib[${PYTHON_USEDEP}]
+		dev-python/libpass[${PYTHON_USEDEP}]
 		dev-python/bcrypt[${PYTHON_USEDEP}]
 		dev-python/pip[${PYTHON_USEDEP}]
 		dev-python/pygit2[${PYTHON_USEDEP}]

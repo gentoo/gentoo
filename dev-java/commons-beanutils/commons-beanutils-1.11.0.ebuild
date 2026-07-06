@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,10 +9,11 @@ JAVA_TESTING_FRAMEWORKS="junit-vintage"
 
 inherit java-pkg-2 java-pkg-simple junit5 verify-sig
 
-DESCRIPTION="Provides easy-to-use wrappers around Reflection and Introspection APIs"
-HOMEPAGE="https://commons.apache.org/proper/commons-beanutils/"
 # We need some test classes of commons-collections which are not part of the jar file.
 ACC="commons-collections-3.2.2"
+
+DESCRIPTION="Provides easy-to-use wrappers around Reflection and Introspection APIs"
+HOMEPAGE="https://commons.apache.org/proper/commons-beanutils/"
 SRC_URI="mirror://apache/commons/beanutils/source/${P}-src.tar.gz
 	test? ( https://archive.apache.org/dist/commons/collections/source/${ACC}-src.tar.gz )
 	verify-sig? ( https://downloads.apache.org/commons/beanutils/source/${P}-src.tar.gz.asc )"
@@ -24,7 +25,6 @@ KEYWORDS="amd64 arm64 ppc64 ~x64-macos"
 IUSE="log4j"
 
 BDEPEND="verify-sig? ( sec-keys/openpgp-keys-ggregory )"
-
 COMMON_DEPEND="
 	dev-java/commons-collections:0
 	>=dev-java/commons-logging-1.3.5:0[log4j=]
@@ -60,7 +60,7 @@ JAVA_MODULE_INFO_OUT="src/main"
 JAVA_SRC_DIR="src/main/java"
 JAVA_TEST_GENTOO_CLASSPATH="junit-4 junit-5 opentest4j"
 JAVA_TEST_RESOURCE_DIRS="data"
-JAVA_TEST_SRC_DIR=( src/test/java ../"${ACC}"-src/src/test )
+JAVA_TEST_SRC_DIR=( src/test/java )
 VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/ggregory.asc"
 
 src_unpack() {
@@ -80,18 +80,34 @@ src_prepare() {
 			log4j-api-2
 		"
 	fi
+}
 
-	if use test; then
-		# Apply patch to unpacked commons-collections
-		pushd "../${ACC}-src" >> /dev/null || die
-			eapply "${FILESDIR}/${ACC}-fixes.patch"
-		popd
+src_test() {
+	# locale needed for LocaleConvertUtilsTestCase
+	export LC_ALL="en_US.UTF-8"
+	# Apply patch to unpacked commons-collections
+	pushd "../${ACC}-src" >> /dev/null || die
+		eapply "${FILESDIR}/${ACC}-fixes.patch"
+	popd
 
-		cp -r ../"${ACC}"-src/data . || die "copy test data"
-	fi
+	cp -r ../"${ACC}"-src/data . || die "copy test data"
+
+	# Some test-classes of ~commons-collections-3.2.2 are needed to compile the test-classes.
+	JAVA_JAR_FILENAME="acc.jar"
+	JAVA_SRC_DIR=( ../"${ACC}"-src/src/test )
+	java-pkg-simple_src_compile
+	JAVA_GENTOO_CLASSPATH_EXTRA+=":acc.jar"
 
 	local vm_version="$(java-config -g PROVIDES_VERSION)"
 	if ver_test "${vm_version}" -ge 17; then
 		JAVA_TEST_EXTRA_ARGS+=( --add-opens=java.base/java.{io,lang,util,time,time.chrono}=ALL-UNNAMED )
 	fi
+
+	junit5_src_test
+}
+
+src_install() {
+	JAVA_JAR_FILENAME="commons-beanutils.jar" # avoid to install "acc.jar"
+	JAVA_SRC_DIR="src/main/java" # for the 'source' USE flag
+	java-pkg-simple_src_install
 }

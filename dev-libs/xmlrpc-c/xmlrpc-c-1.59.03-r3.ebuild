@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -77,7 +77,8 @@ src_configure() {
 }
 
 src_compile() {
-	default
+	# bug #978431
+	emake -j1
 
 	# Tools building is broken in this release
 	#use tools && emake -rC "${S}"/tools

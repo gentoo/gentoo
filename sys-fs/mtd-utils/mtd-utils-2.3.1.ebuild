@@ -11,7 +11,7 @@ SRC_URI="https://infraroot.at/pub/mtd/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~mips ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 arm arm64 ~loong ~mips ppc ~ppc64 ~riscv x86"
 IUSE="+lzo selinux +ssl test ubifs xattr +zstd"
 REQUIRED_USE="ubifs? ( lzo ssl xattr zstd )"
 RESTRICT="!test? ( test )"

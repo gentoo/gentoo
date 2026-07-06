@@ -24,7 +24,7 @@ else
 	SRC_URI="$(rust_all_arch_uris "rust-${PV}")
 		rust-src? ( ${RUST_TOOLCHAIN_BASEURL%/}/2026-02-12/rust-src-${PV}.tar.xz )
 	"
-	KEYWORDS="amd64 arm arm64 ~loong ppc ppc64 ~riscv ~s390 x86"
+	KEYWORDS="amd64 arm arm64 ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
 fi
 
 GENTOO_BIN_BASEURI="https://github.com/projg2/rust-bootstrap/releases/download/${PVR}" # omit trailing slash
@@ -32,7 +32,7 @@ GENTOO_BIN_BASEURI="https://github.com/projg2/rust-bootstrap/releases/download/$
 DESCRIPTION="Systems programming language from Mozilla"
 HOMEPAGE="https://www.rust-lang.org/"
 
-if false ; then #[[ ${PV} != *9999* && ${PV} != *beta* ]] ; then
+if [[ ${PV} != *9999* && ${PV} != *beta* ]] ; then
 	# Keep this separate to allow easy commenting out if not yet built
 	SRC_URI+=" sparc? ( ${GENTOO_BIN_BASEURI}/rust-${PVR}-sparc64-unknown-linux-gnu.tar.xz ) "
 	SRC_URI+=" mips? (
@@ -50,7 +50,6 @@ if false ; then #[[ ${PV} != *9999* && ${PV} != *beta* ]] ; then
 	)"
 	SRC_URI+=" ppc64? ( elibc_musl? (
 		big-endian?  ( ${GENTOO_BIN_BASEURI}/rust-${PVR}-powerpc64-unknown-linux-musl.tar.xz )
-		!big-endian? ( ${GENTOO_BIN_BASEURI}/rust-${PVR}-powerpc64le-unknown-linux-musl.tar.xz )
 	) )"
 fi
 

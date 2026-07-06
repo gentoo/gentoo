@@ -8,7 +8,7 @@ MY_PN=${PN}-source-mirror
 SIAPP_PN=SingleApplication
 SIAPP_PV=3.5.3
 SIAPP_P=${SIAPP_PN}-${SIAPP_PV}
-inherit cmake qmake-utils xdg
+inherit cmake qt-utils xdg
 
 DESCRIPTION="Qt application to design electric diagrams"
 HOMEPAGE="https://qelectrotech.org/"

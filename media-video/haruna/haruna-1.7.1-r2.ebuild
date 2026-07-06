@@ -17,7 +17,6 @@ HOMEPAGE="https://apps.kde.org/haruna/"
 
 LICENSE="GPL-2+ GPL-3+"
 SLOT="0"
-IUSE=""
 
 DEPEND="
 	dev-libs/kdsingleapplication

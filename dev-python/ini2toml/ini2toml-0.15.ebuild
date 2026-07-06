@@ -1,10 +1,10 @@
-# Copyright 2022-2025 Gentoo Authors
+# Copyright 2022-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( pypy3_11 python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 
 inherit distutils-r1 pypi
 
@@ -32,28 +32,23 @@ BDEPEND="
 	)
 "
 
+EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
-
-src_prepare() {
-	sed -i -e 's:--cov ini2toml --cov-report term-missing::' setup.cfg || die
-	distutils-r1_src_prepare
-}
 
 python_test() {
 	local EPYTEST_IGNORE=(
 		# validate_pyproject is not packaged
 		tests/test_examples.py
 	)
-	local EPYTEST_DESELECT=()
+	local EPYTEST_DESELECT+=(
+		# Incompatible with pyproject-fmt-2 API:
+		# https://github.com/abravalheri/ini2toml/issues/103
+		tests/test_cli.py::test_auto_formatting
 
-	# Incompatible with pyproject-fmt-2 API:
-	# https://github.com/abravalheri/ini2toml/issues/103
-	if ! has_version "<dev-python/pyproject-fmt-2[${PYTHON_USEDEP}]"; then
-		EPYTEST_DESELECT+=(
-			tests/test_cli.py::test_auto_formatting
-		)
-	fi
+		# Upstream regressions with setuptools.
+		tests/plugins/test_setuptools_pep621.py::test_handle_license
+		tests/plugins/test_setuptools_pep621.py::test_handle_license_and_files
+	)
 
-	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
-	epytest
+	epytest -o addopts=
 }

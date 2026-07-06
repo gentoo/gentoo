@@ -1,0 +1,47 @@
+# Copyright 2025-2026 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=8
+
+DISTUTILS_EXT=1
+DISTUTILS_USE_PEP517=setuptools
+PYTHON_COMPAT=( python3_{12..15} )
+
+inherit distutils-r1 pypi
+
+DESCRIPTION="Drop-in replacement for zlib and gzip modules using zlib-ng"
+HOMEPAGE="
+	https://github.com/pycompression/python-zlib-ng/
+	https://pypi.org/project/zlib-ng/
+"
+
+LICENSE="PSF-2"
+SLOT="0"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+
+DEPEND="
+	sys-libs/zlib-ng:=
+"
+RDEPEND="
+	${DEPEND}
+"
+BDEPEND="
+	dev-python/setuptools-scm[${PYTHON_USEDEP}]
+	test? (
+		dev-python/test[${PYTHON_USEDEP}]
+	)
+"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.0.0-py315.patch
+)
+
+EPYTEST_PLUGINS=()
+EPYTEST_XDIST=1
+distutils_enable_tests pytest
+
+export PYTHON_ZLIB_NG_LINK_DYNAMIC=1
+
+python_test() {
+	epytest tests
+}

@@ -1,0 +1,81 @@
+see https://bugs.gentoo.org/977413
+Backport patches for validation of language codes
+patch-1:
+https://github.com/bleachbit/bleachbit/commit/f105e2a.patch
+Improve validation of language codes
+patch-2:
+https://github.com/bleachbit/bleachbit/pull/2159.patch
+use POSIX locale order for validation
+--- a/tests/TestCommon.py
++++ b/tests/TestCommon.py
+@@ -38,6 +38,8 @@ def test_assertIsLanguageCode_hardcoded(self):
+             'C.utf8',
+             'C',
+             'de_DE.iso88591',
++            'de-CH', # seen in Fedora in Docker
++            'en-US',
+             'en_US',
+             'en',
+             'fr_FR.utf8',
+@@ -49,7 +51,7 @@ def test_assertIsLanguageCode_hardcoded(self):
+             'zh_Hant',
+         ]
+ 
+-        invalid_codes = ['e', 'en_', 'english', 'en_US_', '123', 'en-US',
++        invalid_codes = ['e', 'en_', 'english', 'en_US_', '123',
+                          'en_us', 'en_US.',
+                          'en_us.utf8',
+                          'en_us.UTF-8',
+@@ -76,12 +78,16 @@ def test_assertIsLanguageCode_live(self):
+         from bleachbit import locale_dir
+         locale_dirs = list(set([locale_dir, '/usr/share/locale']))
+         lang_codes = []
++        # Skip directories that are not valid language codes
++        skip_dirs = {'l10n'}
+         for locale_dir in locale_dirs:
+             if not os.path.isdir(locale_dir):
+                 continue
+             for lang_code in os.listdir(locale_dir):
+                 if not os.path.isdir(os.path.join(locale_dir, lang_code)):
+                     continue
++                if lang_code in skip_dirs:
++                    continue
+                 lang_codes.append(lang_code)
+         if os.path.exists('/etc/locale.alias'):
+             with open('/etc/locale.alias', 'r') as f:
+@@ -91,7 +97,13 @@ def test_assertIsLanguageCode_live(self):
+                         parts = line.split()
+                         if len(parts) > 1:
+                             lang_codes.append(parts[1])
++        # /etc/locale.alias may list the qaa-qtz range, which is reserved for
++        # private use rather than a concrete locale. Skip it if present.
++        skip_alias_codes = {'qaa-qtz'}
++
+         for lang_code in lang_codes:
++            if lang_code in skip_alias_codes:
++                continue
+             self.assertIsLanguageCode(lang_code)
+ 
+     def test_environment(self):
+--- a/tests/TestLanguage.py
++++ b/tests/TestLanguage.py
+@@ -106,7 +106,7 @@ def test_get_text_all(self):
+ 
+     @skipIfMissingPo
+     def test_get_text_au(self):
+-        """Test Austrlian English
++        """Test Australian English
+ 
+         It should not get confused with American English.
+         """
+--- a/tests/common.py
++++ b/tests/common.py
+@@ -125,7 +125,7 @@ class BleachbitTestCase(unittest.TestCase):
+             return
+         self.assertTrue(len(lang_id) >= 2)
+         import re
+-        pattern = r'^[a-z]{2,3}(_[A-Z][A-Za-z]{1,3})?(@\w+)?(\.[a-zA-Z][a-zA-Z0-9-]+)?$'
++        pattern = r'^[a-z]{2,3}([_-][A-Z][A-Za-z]{1,3})?(\.[a-zA-Z][a-zA-Z0-9-]+)?(@\w+)?$'
+         self.assertTrue(re.match(pattern, lang_id),
+                         f'Invalid language code format: {lang_id}')
+ 

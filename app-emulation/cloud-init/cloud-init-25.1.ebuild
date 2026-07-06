@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 inherit edo python-single-r1 udev
 
 DESCRIPTION="Cloud instance initialisation magic"
@@ -44,7 +44,7 @@ BDEPEND="
 	test? (
 		$(python_gen_cond_dep '
 			dev-python/mock[${PYTHON_USEDEP}]
-			dev-python/passlib[${PYTHON_USEDEP}]
+			dev-python/libpass[${PYTHON_USEDEP}]
 			dev-python/pytest[${PYTHON_USEDEP}]
 			dev-python/pytest-mock[${PYTHON_USEDEP}]
 			dev-python/responses[${PYTHON_USEDEP}]

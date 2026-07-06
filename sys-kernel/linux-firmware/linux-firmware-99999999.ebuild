@@ -300,7 +300,7 @@ src_install() {
 
 	dodoc README.md
 	# some licenses require copyright and permission notice to be included
-	use bindist && dodoc WHENCE LICEN[CS]E.*
+	use bindist && dodoc -r WHENCE LICENCES
 }
 
 pkg_preinst() {

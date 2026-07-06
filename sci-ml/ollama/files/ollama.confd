@@ -1,0 +1,11 @@
+# Ollama allows cross-origin requests from 127.0.0.1 and 0.0.0.0 by default.
+# Additional origins can be configured with OLLAMA_ORIGINS.
+# export OLLAMA_ORIGINS="<ip>"
+
+# log to syslog
+# output_logger="logger -t \"$RC_SVCNAME\" -p daemon.info"
+# error_logger="logger -t \"$RC_SVCNAME\" -p daemon.err"
+
+# log to file
+output_log="/var/log/ollama/ollama.log"
+error_log="/var/log/ollama/ollama.log"

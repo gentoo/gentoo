@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 inherit flag-o-matic libtool python-single-r1 verify-sig
 
 DESCRIPTION="Command-line tool and library to read and convert trace files"
@@ -34,7 +34,7 @@ BDEPEND="
 	app-alternatives/lex
 	python? (
 		>=dev-lang/swig-3.0
-		$(python_gen_cond_dep 'dev-python/setuptools[${PYTHON_USEDEP}]' python3_12)
+		$(python_gen_cond_dep 'dev-python/setuptools[${PYTHON_USEDEP}]')
 		doc? ( >=dev-python/sphinx-1.3 )
 	)
 	doc? ( >=app-text/doxygen-1.8.6 )

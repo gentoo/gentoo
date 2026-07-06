@@ -1,11 +1,11 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{12..13} )
 
 inherit distutils-r1 optfeature pypi
 
@@ -48,7 +48,7 @@ BDEPEND="
 		>=dev-python/pytrie-0.4[${PYTHON_USEDEP}]
 		>=dev-python/cffi-1.14.5[${PYTHON_USEDEP}]
 		>=dev-python/argon2-cffi-20.1.0[${PYTHON_USEDEP}]
-		>=dev-python/passlib-1.7.4[${PYTHON_USEDEP}]
+		>=dev-python/libpass-1.7.4[${PYTHON_USEDEP}]
 
 		dev-python/pytest[${PYTHON_USEDEP}]
 		dev-python/pytest-asyncio[${PYTHON_USEDEP}]
@@ -112,7 +112,7 @@ pkg_postinst() {
 	optfeature "TLS transport encryption" \
 		"dev-python/pyopenssl dev-python/pynacl dev-python/pytrie dev-python/qrcode dev-python/service-identity"
 	optfeature "WAMP-SCRAM authentication" \
-		"dev-python/cffi dev-python/argon2-cffi dev-python/passlib"
+		"dev-python/cffi dev-python/argon2-cffi dev-python/libpass"
 	optfeature "native SIMD acceleration" "dev-python/cffi"
 
 	python_foreach_impl twisted-regen-cache

@@ -76,6 +76,7 @@ sci-libs/flexiblas -blis -mkl -openblas
 
 # Christopher Byrne <salah.coronya@gmail.com> (2025-09-01)
 # net-emulation/libvirt is only keyworded on amd64 at this time
+dev-util/diffoscope -libguestfs
 sys-block/nbdkit -libguestfs
 
 # Alfred Wingate <parona@protonmail.com> (2025-05-22)

@@ -15,7 +15,7 @@ REQUIRED_USE="
 	gtk-doc? ( introspection )
 	test? ( introspection )
 "
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ppc64 ~riscv ~sparc ~x86"
 IUSE="aqua broadway cloudproviders colord cups examples gstreamer gtk-doc +introspection sysprof test vulkan wayland +X cpu_flags_x86_f16c"
 
 # librsvg for svg icons and "!8541 Use librsvg for symbolics that we

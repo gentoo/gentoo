@@ -1,0 +1,104 @@
+From 56e8c65f6911c168a4f23ae76c9c7f9ad4c088eb Mon Sep 17 00:00:00 2001
+From: Henry Schreiner <henryschreineriii@gmail.com>
+Date: Fri, 3 Apr 2026 23:22:56 -0500
+Subject: [PATCH 2/2] tests: fix for latest setuptools_scm
+
+Signed-off-by: Henry Schreiner <henryschreineriii@gmail.com>
+---
+ pyproject.toml                  |  2 +-
+ tests/test_module_dir.py        |  4 +++-
+ tests/test_setuptools_abi3.py   | 15 +++++++++++++++
+ tests/test_setuptools_pep517.py | 15 +++++++++++++++
+ 4 files changed, 34 insertions(+), 2 deletions(-)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index 51fcad69e..85a74dfeb 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -220,7 +220,7 @@ disallow_untyped_defs = true
+ disallow_incomplete_defs = true
+ 
+ [[tool.mypy.overrides]]
+-module = ["numpy", "setuptools_scm", "hatch_fancy_pypi_readme", "virtualenv"]
++module = ["numpy", "setuptools_scm", "hatch_fancy_pypi_readme", "virtualenv", "vcs_versioning.*"]
+ ignore_missing_imports = true
+ 
+ 
+diff --git a/tests/test_module_dir.py b/tests/test_module_dir.py
+index af8e58b1a..48461e805 100644
+--- a/tests/test_module_dir.py
++++ b/tests/test_module_dir.py
+@@ -29,7 +29,9 @@ def on_all_modules(
+ 
+ def test_all_modules_filter_all():
+     all_modules = on_all_modules("scikit_build_core", pkg=False)
+-    all_modules = (n for n in all_modules if not n.split(".")[-1].startswith("__"))
++    all_modules = (
++        n for n in all_modules if not n.split(".")[-1].startswith(("__", "_version"))
++    )
+     for name in all_modules:
+         try:
+             module = importlib.import_module(name)
+diff --git a/tests/test_setuptools_abi3.py b/tests/test_setuptools_abi3.py
+index bc9256b2c..3ee7aa644 100644
+--- a/tests/test_setuptools_abi3.py
++++ b/tests/test_setuptools_abi3.py
+@@ -8,6 +8,11 @@
+ 
+ from scikit_build_core.setuptools.build_meta import build_wheel
+ 
++try:
++    from vcs_versioning.overrides import GlobalOverrides
++except ImportError:  # pragma: no cover - setuptools-scm < 10 or missing dependency
++    GlobalOverrides = None
++
+ pytestmark = pytest.mark.setuptools
+ 
+ DIR = Path(__file__).parent.resolve()
+@@ -15,6 +20,16 @@
+ SYSCONFIGPLAT = sysconfig.get_platform()
+ 
+ 
++@pytest.fixture(autouse=True)
++def setuptools_scm_overrides():
++    if GlobalOverrides is None:
++        yield
++        return
++
++    with GlobalOverrides.from_env("SETUPTOOLS_SCM"):
++        yield
++
++
+ @pytest.mark.compile
+ @pytest.mark.configure
+ @pytest.mark.skipif(
+diff --git a/tests/test_setuptools_pep517.py b/tests/test_setuptools_pep517.py
+index f7e61b748..3721055d7 100644
+--- a/tests/test_setuptools_pep517.py
++++ b/tests/test_setuptools_pep517.py
+@@ -9,10 +9,25 @@
+ 
+ from scikit_build_core.setuptools.build_meta import build_sdist, build_wheel
+ 
++try:
++    from vcs_versioning.overrides import GlobalOverrides
++except ImportError:  # pragma: no cover - setuptools-scm < 10 or missing dependency
++    GlobalOverrides = None
++
+ pytestmark = pytest.mark.setuptools
+ setuptools_version = Version(importlib.metadata.version("setuptools"))
+ 
+ 
++@pytest.fixture(autouse=True)
++def setuptools_scm_overrides():
++    if GlobalOverrides is None:
++        yield
++        return
++
++    with GlobalOverrides.from_env("SETUPTOOLS_SCM"):
++        yield
++
++
+ @pytest.mark.parametrize("package", ["simple_setuptools_ext"], indirect=True)
+ @pytest.mark.usefixtures("package")
+ def test_pep517_sdist(tmp_path: Path):

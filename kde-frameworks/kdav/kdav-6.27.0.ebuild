@@ -13,6 +13,9 @@ LICENSE="LGPL-2+"
 KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
 IUSE=""
 
+# requires running kde environment, bug #977471
+RESTRICT="test"
+
 RDEPEND="
 	>=dev-qt/qtbase-${QTMIN}:6[gui,xml]
 	>=kde-frameworks/kcoreaddons-${KDE_CATV}:6
@@ -20,12 +23,3 @@ RDEPEND="
 	>=kde-frameworks/kio-${KDE_CATV}:6
 "
 DEPEND="${RDEPEND}"
-
-CMAKE_SKIP_TESTS=(
-	# bug 616808: requires D-Bus
-	kdav-davitemfetchjob
-	# bug 653602: mimetypes unsupported
-	kdav-davitemslistjob
-	# bug 765061
-	kdav-davcollectionsmultifetchjobtest
-)

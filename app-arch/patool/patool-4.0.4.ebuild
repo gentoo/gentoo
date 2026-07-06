@@ -139,5 +139,13 @@ python_test() {
 		)
 	fi
 
+	if has_version app-arch/rpm[-sequoia]; then
+		EPYTEST_DESELECT+=(
+			# bug #977415
+			"tests/archives/test_rpm.py::TestRpm::test_rpm_file"
+			"tests/archives/test_rpm.py::TestRpm::test_rpm"
+		)
+	fi
+
 	epytest
 }

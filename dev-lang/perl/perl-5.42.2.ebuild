@@ -639,6 +639,11 @@ src_configure() {
 			HOSTCC=$(tc-getBUILD_CC) \
 			HOSTCFLAGS="${CFLAGS_FOR_BUILD} -D_GNU_SOURCE" \
 			HOSTLDFLAGS="${LDFLAGS_FOR_BUILD}"
+
+		# bug #977768
+		if tc-is-clang; then
+			export HOSTCFLAGS="${HOSTCFLAGS} -fno-strict-aliasing"
+		fi
 	fi
 
 	# bug #877659, bug #821577

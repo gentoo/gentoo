@@ -22,7 +22,7 @@ S="${WORKDIR}/${MY_SRC}"
 
 LICENSE="|| ( IBM EPL-2.0 )"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 arm arm64 ~hppa ~mips ppc ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
 
 IUSE="+berkdb cdb dovecot-sasl +eai ldap ldap-bind +lmdb mbox memcached mongodb mysql nis pam postgres sasl selinux sqlite ssl tlsrpt"
 
@@ -36,7 +36,7 @@ DEPEND="
 	eai? ( dev-libs/icu:= )
 	ldap? ( net-nds/openldap:= )
 	ldap-bind? ( net-nds/openldap:=[sasl] )
-	lmdb? ( >=dev-db/lmdb-0.9.11:= )
+	lmdb? ( <dev-db/lmdb-1.0.0:= )
 	mongodb? ( >=dev-libs/mongo-c-driver-1.23.0 >=dev-libs/libbson-1.23.0 )
 	mysql? ( dev-db/mysql-connector-c:0= )
 	nis? ( net-libs/libnsl:= )

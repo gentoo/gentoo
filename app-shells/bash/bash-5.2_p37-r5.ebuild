@@ -195,6 +195,7 @@ src_configure() {
 	append-cflags $(test-flags-CC -std=gnu17)
 
 	if tc-is-cross-compiler; then
+		export CC_FOR_BUILD="$(tc-getBUILD_CC)"
 		export CFLAGS_FOR_BUILD="${BUILD_CFLAGS} -std=gnu17"
 	fi
 

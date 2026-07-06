@@ -1,9 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..12} )
+PYTHON_COMPAT=( python3_12 )
 inherit cmake-multilib flag-o-matic llvm llvm.org python-any-r1 \
 	toolchain-funcs
 
@@ -41,7 +41,7 @@ BDEPEND="
 "
 
 LLVM_COMPONENTS=( runtimes libcxx{,abi} llvm/{cmake,utils/llvm-lit} cmake )
-LLVM_PATCHSET=${PV}-r6
+LLVM_PATCHSET=${PV}-r7
 llvm.org_set_globals
 
 python_check_deps() {

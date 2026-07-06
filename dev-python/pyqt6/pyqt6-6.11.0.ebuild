@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=sip
-PYTHON_COMPAT=( python3_{12..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 inherit distutils-r1 flag-o-matic multiprocessing pypi qmake-utils
 
 # can work with older Qt depending on the features the ebuild enables,
@@ -100,6 +100,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-6.11.0-qt6.12.patch
+	"${FILESDIR}"/${PN}-6.11.0-py3.15.patch
 )
 
 src_prepare() {

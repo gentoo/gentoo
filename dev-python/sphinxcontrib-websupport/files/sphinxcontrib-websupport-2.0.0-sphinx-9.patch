@@ -1,0 +1,84 @@
+From dae9bc4e3c67ccd6bec8df855a41fbbca0f479b4 Mon Sep 17 00:00:00 2001
+From: Dmitry Shachnev <mitya57@gmail.com>
+Date: Sat, 31 Jan 2026 15:27:46 +0300
+Subject: [PATCH] Support Sphinx 9
+
+---
+ sphinxcontrib/websupport/builder.py        | 12 +++++-------
+ tests/roots/test-root/root/markup.txt      |  2 +-
+ tests/roots/test-searchadapters/markup.txt |  4 ++--
+ 3 files changed, 8 insertions(+), 10 deletions(-)
+
+diff --git a/sphinxcontrib/websupport/builder.py b/sphinxcontrib/websupport/builder.py
+index a8a2bd7..c9dba86 100644
+--- a/sphinxcontrib/websupport/builder.py
++++ b/sphinxcontrib/websupport/builder.py
+@@ -9,7 +9,6 @@
+ from os import path
+ from typing import TYPE_CHECKING, Any
+ 
+-from docutils.io import StringOutput
+ from sphinx.jinja2glue import BuiltinTemplateLoader
+ from sphinx.util.osutil import copyfile, ensuredir, os_path, relative_uri
+ 
+@@ -80,7 +79,6 @@ def prepare_writing(self, docnames: Iterable[str]) -> None:
+         self.globalcontext['no_search_suffix'] = True
+ 
+     def write_doc(self, docname: str, doctree: nodes.document) -> None:
+-        destination = StringOutput(encoding='utf-8')
+         doctree.settings = self.docsettings
+ 
+         self.secnumbers = self.env.toc_secnumbers.get(docname, {})
+@@ -88,12 +86,12 @@ def write_doc(self, docname: str, doctree: nodes.document) -> None:
+         self.imgpath = '/' + posixpath.join(self.virtual_staticdir, self.imagedir)
+         self.dlpath = '/' + posixpath.join(self.virtual_staticdir, '_downloads')
+         self.current_docname = docname
+-        self.docwriter.write(doctree, destination)
+-        self.docwriter.assemble_parts()
+-        body = self.docwriter.parts['fragment']
+-        metatags = self.docwriter.clean_meta
++        visitor = self.create_translator(doctree, self)
++        doctree.walkabout(visitor)
++        body = ''.join(visitor.fragment)
++        clean_meta = ''.join(visitor.meta[2:])
+ 
+-        ctx = self.get_doc_context(docname, body, metatags)
++        ctx = self.get_doc_context(docname, body, clean_meta)
+         self.handle_page(docname, ctx, event_arg=doctree)
+ 
+     def write_doc_serialized(self, docname: str, doctree: nodes.document) -> None:
+diff --git a/tests/roots/test-root/root/markup.txt b/tests/roots/test-root/root/markup.txt
+index 714dabe..668e6bd 100644
+--- a/tests/roots/test-root/root/markup.txt
++++ b/tests/roots/test-root/root/markup.txt
+@@ -369,7 +369,7 @@ Index markup
+    pair: entry; pair
+    double: entry; double
+    triple: index; entry; triple
+-   keyword: with
++   pair: keyword; with
+    see: from; to
+    seealso: fromalso; toalso
+ 
+diff --git a/tests/roots/test-searchadapters/markup.txt b/tests/roots/test-searchadapters/markup.txt
+index 77f245a..e0fb6c2 100644
+--- a/tests/roots/test-searchadapters/markup.txt
++++ b/tests/roots/test-searchadapters/markup.txt
+@@ -377,7 +377,7 @@ Index markup
+    pair: entry; pair
+    double: entry; double
+    triple: index; entry; triple
+-   keyword: with
++   pair: keyword; with
+    see: from; to
+    seealso: fromalso; toalso
+ 
+@@ -386,7 +386,7 @@ Invalid index markup...
+ .. index::
+    single:
+    pair:
+-   keyword:
++   pair: keyword;
+ 
+ .. index::
+    !Main, !Other

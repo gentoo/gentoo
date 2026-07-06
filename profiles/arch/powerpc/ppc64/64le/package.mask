@@ -68,6 +68,7 @@
 # little-endian power8 ppc64 configs are provided
 -sys-kernel/gentoo-kernel
 -sys-kernel/gentoo-kernel-bin
+-sys-kernel/gentoo-kernel-modprep
 -sys-kernel/vanilla-kernel
 -virtual/dist-kernel
 

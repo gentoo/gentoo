@@ -22,6 +22,11 @@ BDEPEND="
 	sys-devel/flex
 "
 
+CMAKE_SKIP_TESTS=(
+	# bug 948900
+	testholidayregion
+)
+
 src_test() {
 	# bug 624214
 	mkdir -p "${HOME}/.local/share/kf6/libkholidays" || die
