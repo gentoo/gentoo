@@ -15,7 +15,7 @@ else
 	MY_PV=${PV/_rc/-rc}
 	inherit verify-sig
 	SRC_URI="https://github.com/swaywm/${PN}/releases/download/${PV}/${P}.tar.gz -> ${P}.gh.tar.gz
-		https://github.com/swaywm/${PN}/releases/download/${PV}/${P}.tar.gz.sig -> ${P}.gh.tar.gz.sig"
+		verify-sig? ( https://github.com/swaywm/${PN}/releases/download/${PV}/${P}.tar.gz.sig -> ${P}.gh.tar.gz.sig )"
 	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
 	S="${WORKDIR}/${PN}-${MY_PV}"
 fi
@@ -72,7 +72,7 @@ if [[ ${PV} == 9999 ]]; then
 	BDEPEND+=" ~app-text/scdoc-9999"
 else
 	BDEPEND+=" >=app-text/scdoc-1.11.3
-		verify-sig? ( sec-keys/openpgp-keys-emersion )"
+		verify-sig? ( >=sec-keys/openpgp-keys-emersion-20260503 )"
 	VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/emersion.asc"
 fi
 
