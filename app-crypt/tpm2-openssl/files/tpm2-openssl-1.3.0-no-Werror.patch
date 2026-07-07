@@ -1,0 +1,13 @@
+diff --git a/Makefile.am b/Makefile.am
+index c531141..786ee22 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -42,7 +42,7 @@ else
+ @CODE_COVERAGE_RULES@
+ endif
+ 
+-COMMON_CFLAGS = -Werror -Wall $(CRYPTO_CFLAGS)
++COMMON_CFLAGS = -Wall $(CRYPTO_CFLAGS)
+ COMMON_LDFLAGS =
+ if WITH_ASAN
+ COMMON_CFLAGS += -O1 -g -fsanitize=address -fno-omit-frame-pointer
