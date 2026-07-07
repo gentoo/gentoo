@@ -22,7 +22,7 @@ LICENSE="MIT"
 SLOT="1"
 
 DEPEND="
-	media-libs/jg:1=
+	<media-libs/jg-2.0.0
 "
 RDEPEND="
 	${DEPEND}
