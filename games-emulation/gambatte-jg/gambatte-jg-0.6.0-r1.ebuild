@@ -1,4 +1,4 @@
-# Copyright 2022-2024 Gentoo Authors
+# Copyright 2022-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -33,7 +33,7 @@ DEPEND="
 		media-libs/speexdsp
 	)
 	jgmodule? (
-		media-libs/jg:1=
+		<media-libs/jg-2.0.0
 		media-libs/soxr
 	)
 "
