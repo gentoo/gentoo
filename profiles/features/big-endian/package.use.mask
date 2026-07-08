@@ -59,6 +59,8 @@ gnome-base/gnome-control-center wayland
 gnome-base/gnome-shell wayland
 gnome-extra/tecla wayland
 gui-libs/gtk wayland
+# gtkmm with USE=vulkan depends on gtk[vulkan] which sets vulkan-loader[wayland]
+dev-cpp/gtkmm vulkan
 gui-libs/vte wayland
 media-libs/clutter wayland
 media-libs/clutter-gtk wayland
