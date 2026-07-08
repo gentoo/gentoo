@@ -706,12 +706,10 @@ nginx-module_src_configure() {
 
 	# Add the required linking flags required for the modules specified in the
 	# NGINX_MOD_LINK_MODULES array.
-	if [[ ${#NGINX_MOD_LINK_MODULES[@]} -gt 0 ]]; then
-		local mod
-		for mod in "${NGINX_MOD_LINK_MODULES[@]}"; do
-			ngx_mod_link_module "${mod}"
-		done
-	fi
+	local mod
+	for mod in "${NGINX_MOD_LINK_MODULES[@]}"; do
+		ngx_mod_link_module "${mod}"
+	done
 
 	eval "local -a EXTRA_ECONF=( ${EXTRA_ECONF} )"
 
