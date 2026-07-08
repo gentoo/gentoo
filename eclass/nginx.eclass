@@ -849,7 +849,8 @@ nginx_src_install() {
 	# If not using modules, do not 'include modules-enabled/*.conf;'. Also, just
 	# in case, remove the line if NGINX_SUPPORT_MODULE_STUBS is unset.
 	if use !modules || [[ -z ${NGINX_SUPPORT_MODULE_STUBS} ]]; then
-		sed -i '/^@GENTOO_MODULES_INCLUDE@$/d' "${ED}"/etc/nginx/nginx.conf
+		sed -i '/^@GENTOO_MODULES_INCLUDE@$/d' "${ED}"/etc/nginx/nginx.conf ||
+			die "sed failed"
 	fi
 
 	# For the rationale of the following, see nginx-module.eclass.
@@ -913,7 +914,7 @@ nginx_src_install() {
 			keepdir /etc/nginx/modules-{available,enabled}
 
 			sed -i 's|^@GENTOO_MODULES_INCLUDE@$|include modules-enabled/*.conf;|' \
-				"${ED}"/etc/nginx/nginx.conf
+				"${ED}"/etc/nginx/nginx.conf || die "sed failed"
 		fi
 	fi
 }
