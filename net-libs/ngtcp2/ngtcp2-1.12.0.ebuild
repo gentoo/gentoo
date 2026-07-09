@@ -5,7 +5,7 @@ EAPI=8
 
 # Built with autotools rather than cmake to avoid circular dep (bug #951524
 
-inherit multilib-minimal
+inherit libtool multilib-minimal
 
 if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/ngtcp2/ngtcp2.git"
@@ -35,6 +35,7 @@ BDEPEND="virtual/pkgconfig"
 
 src_prepare() {
 	default
+	elibtoolize # bug #978993
 	[[ ${PV} == 9999 ]] && eautoreconf
 }
 
