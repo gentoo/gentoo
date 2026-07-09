@@ -1104,7 +1104,7 @@ src_prepare() {
 
 	pushd "${S}"/cef
 	# apply CEF-upstream patches for chromium sources
-	${EPYTHON} ./tools/gclient_hook.py prepare
+	${EPYTHON} ./tools/gclient_hook.py prepare || die "failed applying CEF patches"
 	popd
 }
 
