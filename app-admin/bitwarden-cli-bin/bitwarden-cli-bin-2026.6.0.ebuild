@@ -8,12 +8,15 @@ inherit shell-completion
 DESCRIPTION="CLI client for Bitwarden compatible servers"
 HOMEPAGE="https://github.com/bitwarden/clients/tree/main/apps/cli"
 
-SRC_URI="https://github.com/bitwarden/clients/releases/download/cli-v${PV}/bw-oss-linux-${PV}.zip"
+SRC_URI="
+	amd64? ( https://github.com/bitwarden/clients/releases/download/cli-v${PV}/bw-oss-linux-${PV}.zip )
+	arm64? ( https://github.com/bitwarden/clients/releases/download/cli-v${PV}/bw-oss-linux-arm64-${PV}.zip )
+"
 
 S="${WORKDIR}"
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="-* ~amd64 ~arm64"
 
 # stripping breaks the binary. Errors:
 # Pkg: Error reading from file.
