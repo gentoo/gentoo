@@ -17,7 +17,6 @@ IUSE="+ocamlopt"
 RESTRICT="test" # sandbox not working
 
 RDEPEND="
-	<dev-ml/cmdliner-2.0.0:=[ocamlopt?]
 	dev-ml/jsonm:=[ocamlopt?]
 	dev-ml/ocamlgraph:=[ocamlopt?]
 	dev-ml/ocaml-sha:=[ocamlopt?]
