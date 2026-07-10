@@ -19,7 +19,6 @@ RESTRICT="test" #see bugs 838658
 
 RDEPEND="
 	dev-ml/0install:=[ocamlopt?]
-	<dev-ml/cmdliner-2:=[ocamlopt?]
 	dev-ml/cudf:=[ocamlopt?]
 	dev-ml/dose3:=[ocamlopt?]
 	dev-ml/extlib:=[ocamlopt?]
