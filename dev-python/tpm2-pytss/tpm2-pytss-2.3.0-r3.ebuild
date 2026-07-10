@@ -48,6 +48,10 @@ RESTRICT="!test? ( test )"
 
 export SETUPTOOLS_SCM_PRETEND_VERSION=${PV}
 
+EPYTEST_PLUGINS=()
+EPYTEST_XDIST=1
+distutils_enable_tests pytest
+
 python_test() {
 	local EPYTEST_DESELECT=(
 		# Current tpm2-tss specified a newer revision that the one tested for
