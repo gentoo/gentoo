@@ -27,7 +27,7 @@ BDEPEND=">=dev-lang/go-1.25.0"
 
 src_compile() {
 	export -n GOCACHE XDG_CACHE_HOME
-	go build -o "./bin/${PN}" "./cmd/${PN}" || die
+	go build -ldflags "-X main.version=${PV}" -o "./bin/${PN}" "./cmd/${PN}" || die
 }
 
 src_install() {
@@ -38,6 +38,10 @@ src_install() {
 	newconfd "${FILESDIR}"/headscale.confd headscale
 	newinitd "${FILESDIR}"/headscale.initd headscale
 	fowners -R "${PN}":"${PN}" /etc/headscale /var/lib/headscale
+}
+
+src_test() {
+	go test ./...
 }
 
 pkg_postinst() {
