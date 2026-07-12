@@ -716,7 +716,7 @@ src_install() {
 
 	# Delete empty /var/run and /var/log directories.
 	# See bug #977105
-	rmdir ${D}/var/log ${D}/var/run || die
+	rmdir "${D}/var/log" "${D}/var/run" || die
 }
 
 src_test() {
