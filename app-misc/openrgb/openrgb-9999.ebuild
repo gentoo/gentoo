@@ -10,14 +10,14 @@ if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI=${EGIT_REPO_URI:-"https://gitlab.com/CalcProgrammer1/OpenRGB"}
 else
 	MY_PV=$(ver_rs 2 "")
-	SRC_URI="https://gitlab.com/CalcProgrammer1/OpenRGB/-/archive/release_${MY_PV}/OpenRGB-release_${MY_PV}.tar.bz2"
-	S="${WORKDIR}/OpenRGB-release_${MY_PV}"
+	SRC_URI="https://gitlab.com/CalcProgrammer1/OpenRGB/-/archive/release_candidate_${MY_PV}/OpenRGB-release_candidate_${MY_PV}.tar.bz2"
+	S="${WORKDIR}/OpenRGB-release_candidate_${MY_PV}"
 	KEYWORDS="~amd64 ~loong"
 fi
 
 DESCRIPTION="Open source RGB lighting control"
 HOMEPAGE="https://openrgb.org https://gitlab.com/CalcProgrammer1/OpenRGB/"
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 # subslot is OPENRGB_PLUGIN_API_VERSION from
 # https://gitlab.com/CalcProgrammer1/OpenRGB/-/blob/master/OpenRGBPluginInterface.h
 SLOT="0/4"
@@ -26,7 +26,7 @@ RDEPEND="
 	dev-cpp/cpp-httplib:=
 	dev-libs/hidapi
 	dev-qt/qtbase:6[gui,widgets]
-	net-libs/mbedtls:0=
+	net-libs/mbedtls:3=
 	virtual/libusb:1
 "
 DEPEND="
@@ -43,6 +43,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/OpenRGB-0.7-r1-udev.patch
 	"${FILESDIR}"/OpenRGB-0.9-udev-check.patch
+	"${FILESDIR}"/OpenRGB-1.0rc3-mbedtls.patch
 )
 if [[ ${PV} != *9999* ]]; then
 	PATCHES+=( "${FILESDIR}"/openrgb-0.9_p20250802-build-system.patch )
