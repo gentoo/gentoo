@@ -277,11 +277,15 @@ src_prepare() {
 	rm ext/openssl/tests/bug{74796,80770}.phpt || die
 	rm ext/openssl/tests/{sni_server.phpt,sni_server_key_cert.phpt} || die
 
+	# Test fails on curl 8.17+, originally fixed upstream, but not
+	# backported to 8.2 (yet).
+	rm ext/curl/tests/curl_setopt_ssl.phpt || die
+
 	# bug 977402
 	rm ext/standard/tests/file/fdatasync.phpt \
-		ext/standard/tests/file/fsync.phpt \
-		ext/standard/tests/general_functions/proc_nice_basic.phpt \
-		|| die
+	   ext/standard/tests/file/fsync.phpt \
+	   ext/standard/tests/general_functions/proc_nice_basic.phpt \
+	   || die
 
 	eautoconf --force
 }
