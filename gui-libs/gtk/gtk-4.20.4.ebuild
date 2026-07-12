@@ -282,11 +282,7 @@ pkg_postinst() {
 	xdg_pkg_postinst
 	gnome2_schemas_update
 
-	if ! has_version "app-text/evince"; then
-		elog "Please install app-text/evince for print preview functionality."
-		elog "Alternatively, check \"gtk-print-preview-command\" documentation and"
-		elog "add it to your settings.ini file."
-	fi
+	optfeature "default gtk-print-preview-command" app-text/evince
 
 	if use examples ; then
 		optfeature "syntax highlighting in gtk4-demo" app-text/highlight

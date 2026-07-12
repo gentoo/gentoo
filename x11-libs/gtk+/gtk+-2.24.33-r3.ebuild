@@ -4,7 +4,7 @@
 EAPI=8
 GNOME2_EAUTORECONF="yes"
 
-inherit flag-o-matic gnome2 multilib multilib-minimal readme.gentoo-r1 virtualx
+inherit flag-o-matic gnome2 multilib multilib-minimal optfeature readme.gentoo-r1 virtualx
 
 DESCRIPTION="Gimp ToolKit +"
 HOMEPAGE="https://www.gtk.org/"
@@ -290,11 +290,7 @@ pkg_postinst() {
 		elog "emerge -va1 \$(qfile -qC ${EPREFIX}/usr/lib/gtk-2.0/2.[^1]*)"
 	fi
 
-	if ! has_version "app-text/evince"; then
-		elog "Please install app-text/evince for print preview functionality."
-		elog "Alternatively, check \"gtk-print-preview-command\" documentation and"
-		elog "add it to your gtkrc."
-	fi
+	optfeature "default gtk-print-preview-command" app-text/evince
 
 	readme.gentoo_print_elog
 }
