@@ -374,7 +374,7 @@ dev-qt/qtx11extras:5
 # This version has lit a firecracker under the community and attracted
 # some ire. The situation is in a state of mild flux, and more generally
 # requires further consideration to determine the correct course of
-# action. Use at your own risk.
+# action. Use at your own risk. See bug #969475.
 >=app-text/calibre-8.11.0
 
 # Sam James <sam@gentoo.org> (2025-11-25)
