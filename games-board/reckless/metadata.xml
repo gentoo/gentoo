@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>hasan.calisir@psauxit.com</email>
+		<name>Hasan ÇALIŞIR</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+		Reckless is an open source UCI chess engine written in Rust,
+		using NNUE evaluation. It has consistently ranked among the
+		top few engines in independent CCRL and CEDR testing pools,
+		close behind Stockfish.
+	</longdescription>
+	<use>
+		<flag name="numa">Enable NUMA-aware memory allocation</flag>
+		<flag name="pgo">Enable Profile-Guided Optimization</flag>
+		<flag name="syzygy">Enable Syzygy tablebase support</flag>
+	</use>
+	<upstream>
+		<bugs-to>https://github.com/codedeliveryservice/Reckless/issues</bugs-to>
+		<remote-id type="github">codedeliveryservice/Reckless</remote-id>
+	</upstream>
+</pkgmetadata>
