@@ -23,8 +23,8 @@ S=${WORKDIR}/${PN}-${P}
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 ~arm arm64 ~riscv ~x86"
-IUSE="opengl svg pyside6 +qt6"
-REQUIRED_USE="test? ( opengl svg ) || ( pyside6 qt6 )"
+IUSE="opengl svg pyside6 +pyqt6"
+REQUIRED_USE="test? ( opengl svg ) || ( pyside6 pyqt6 )"
 
 RDEPEND="
 	dev-python/colorama[${PYTHON_USEDEP}]
@@ -32,13 +32,13 @@ RDEPEND="
 	dev-python/scipy[${PYTHON_USEDEP}]
 	opengl? ( dev-python/pyopengl[${PYTHON_USEDEP}] )
 	pyside6? ( dev-python/pyside[gui,widgets,opengl=,svg=,${PYTHON_USEDEP}] )
-	qt6? ( dev-python/pyqt6[gui,widgets,opengl=,svg=,${PYTHON_USEDEP}] )
+	pyqt6? ( dev-python/pyqt6[gui,widgets,opengl=,svg=,${PYTHON_USEDEP}] )
 "
 BDEPEND="
 	test? (
 		dev-python/h5py[${PYTHON_USEDEP}]
 		pyside6? ( dev-python/pyside6[testlib,${PYTHON_USEDEP}] )
-		qt6? ( dev-python/pyqt6[testlib,${PYTHON_USEDEP}] )
+		pyqt6? ( dev-python/pyqt6[testlib,${PYTHON_USEDEP}] )
 		dev-vcs/git
 	)
 	sys-apps/gawk
@@ -80,7 +80,7 @@ python_prepare_all() {
 	for qt in "${upstream_supported_qt[@]}"; do
 		is_supported_impl=0
 		case ${qt} in
-			PyQt6) is_supported_impl=$(usex qt6 1 0); use_qt=${qt:2} ;;
+			PyQt6) is_supported_impl=$(usex pyqt6 1 0); use_qt=${qt} ;;
 			PySide6) is_supported_impl=$(usex pyside6 1 0); use_qt=${qt} ;;
 		esac
 		if [[ "${is_supported_impl}" -eq 0 ]]; then
@@ -118,7 +118,7 @@ python_prepare_all() {
 	local liborder=()
 	local qt
 	# The order is important (we want to prefer the newest at runtime)
-	for qt in qt6 pyside6; do
+	for qt in pyqt6 pyside6; do
 		if use ${qt}; then
 			liborder+=( "PY${qt^^}" )
 		fi
@@ -137,7 +137,7 @@ python_prepare_all() {
 	# Finally update the list of supported frontends in test to never try unsupported or deselected
 	if use test; then
 		local frontends=()
-		for qt in pyside6 qt6; do
+		for qt in pyqt6 pyside6; do
 			if use ${qt}; then
 				frontends+=( "Qt.PY${qt^^}: False," )
 			fi
