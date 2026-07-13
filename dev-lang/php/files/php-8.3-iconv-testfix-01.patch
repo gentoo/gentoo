@@ -1,0 +1,59 @@
+From 26ba738e33ddd83aeba8c98dc106dd064ea4d7a5 Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Wed, 1 Jul 2026 13:15:50 -0400
+Subject: [PATCH] ext/iconv/tests/bug76249.phpt: fallback for non-GNU iconv()
+
+This test fails on musl, where iconv trips over the //IGNORE suffix.
+It is not obvious that //IGNORE is required to trigger the issue in
+the first place, but since we are ensuring that a security bug is
+fixed, it is better to include it where possible.
+
+This commit updates the test to append //IGNORE only on the two GNU
+iconv implementations. Others may support it eventually, but at the
+moment, despite being part of POSIX, support is inconsistent (as
+evidenced by musl, if nothing else). In any case, we still test that
+iconv works with an invalid stream.
+---
+ ext/iconv/tests/bug76249.phpt | 24 +++++++++++++++++++-----
+ 1 file changed, 19 insertions(+), 5 deletions(-)
+
+diff --git a/ext/iconv/tests/bug76249.phpt b/ext/iconv/tests/bug76249.phpt
+index 37608ccc0447..b817a3f8285a 100644
+--- a/ext/iconv/tests/bug76249.phpt
++++ b/ext/iconv/tests/bug76249.phpt
+@@ -4,16 +4,30 @@ Bug #76249 (stream filter convert.iconv leads to infinite loop on invalid sequen
+ iconv
+ --FILE--
+ <?php
++$ignore = "";
++if (ICONV_IMPL == "libiconv" || ICONV_IMPL == "glibc") {
++    // The original bug report used "//IGNORE", and the bug itself
++    // involves the return value and errno from iconv(), so in the
++    // interest of fidelity we include the suffix on systems like the
++    // one where the bug was reported. On other systems however,
++    // despite being mentioned in POSIX 2024, the "//IGNORE" suffix is
++    // not supported consistently. Musl in particular does not support
++    // it at all, so we must omit it to avoid triggering other
++    // (unexpected) errors. In any case, it is nice to check that
++    // iconv and invalid streams do not interact badly.
++    $ignore = "//IGNORE";
++}
++
+ $fh = fopen('php://memory', 'rw');
+ fwrite($fh, "abc");
+ rewind($fh);
+-if (false === @stream_filter_append($fh, 'convert.iconv.ucs-2/utf8//IGNORE', STREAM_FILTER_READ, [])) {
+-    stream_filter_append($fh, 'convert.iconv.ucs-2/utf-8//IGNORE', STREAM_FILTER_READ, []);
++if (false === @stream_filter_append($fh, "convert.iconv.ucs-2/utf8{$ignore}", STREAM_FILTER_READ, [])) {
++    stream_filter_append($fh, "convert.iconv.ucs-2/utf-8{$ignore}", STREAM_FILTER_READ, []);
+ }
+ var_dump(stream_get_contents($fh));
+ ?>
+ DONE
+---EXPECTF--
+-Warning: stream_get_contents(): iconv stream filter ("ucs-2"=>"utf%A8//IGNORE"): invalid multibyte sequence in %sbug76249.php on line %d
+-string(0) ""
++--EXPECTREGEX--
++Warning: stream_get_contents\(\): iconv stream filter \("ucs-2"=>"utf-?8(\/\/IGNORE)?"\): invalid multibyte sequence in .*bug76249\.php on line \d+
++string\(0\) ""
+ DONE

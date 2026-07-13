@@ -136,6 +136,10 @@ BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}/php-8.3.31-ipv6-printing-test-fix.patch"
+	"${FILESDIR}/php-8.3-iconv-testfix-01.patch"
+	"${FILESDIR}/php-8.3-iconv-testfix-02.patch"
+	"${FILESDIR}/php-8.3-iconv-testfix-03.patch"
+	"${FILESDIR}/php-8.3-iconv-testfix-04.patch"
 )
 
 PHP_MV="$(ver_cut 1)"
