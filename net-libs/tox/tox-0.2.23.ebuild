@@ -1,19 +1,26 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 inherit cmake systemd
 
+# The notice is triggered by a docker file, which is unused here.
+# https://bugs.gentoo.org/964599
+CMAKE_QA_COMPAT_SKIP=1
+CMP_COMMIT="52bfcfa17d2eb4322da2037ad625f5575129cece"
+
 DESCRIPTION="Encrypted P2P, messaging, and audio/video calling platform"
 HOMEPAGE="https://tox.chat https://github.com/TokTok/c-toxcore"
-MY_P="c-toxcore-${PV}"
-S="${WORKDIR}/${MY_P}"
-SRC_URI="https://github.com/TokTok/c-toxcore/releases/download/v${PV}/${MY_P}.tar.gz"
 
+MY_P="c-toxcore-${PV}"
+SRC_URI="
+	https://github.com/TokTok/c-toxcore/archive/v${PV}.tar.gz -> ${MY_P}.tar.gz
+	https://github.com/TokTok/cmp/archive/${CMP_COMMIT}.tar.gz -> toktok-cmp-${CMP_COMMIT}.tar.gz"
+S="${WORKDIR}/${MY_P}"
 LICENSE="GPL-3+"
+KEYWORDS="~amd64 ~arm ~x86"
 SLOT="0/0.2"
-KEYWORDS="amd64 ~arm x86"
 IUSE="+av debug daemon dht-node experimental ipv6 key-utils log-debug +log-error log-info log-trace log-warn test"
 
 REQUIRED_USE="?? ( log-debug log-error log-info log-trace log-warn )
@@ -35,13 +42,17 @@ RDEPEND="${DEPEND}
 	)
 	key-utils? ( || ( sys-devel/gcc[openmp] llvm-runtimes/clang-runtime[openmp] ) )"
 
-src_prepare() {
-	cmake_src_prepare
+# Skip flaky tests.
+CMAKE_SKIP_TESTS=(
+	scenario_group_topic
+	scenario_lan_discovery
+	scenario_tox_many
+)
 
-	#Remove faulty tests
-	for testname in group_topic, lan_discovery; do
-		sed -i -e "/^auto_test(${testname})$/d" ./auto_tests/CMakeLists.txt || die
-	done
+src_unpack() {
+	default
+	rm -d ${MY_P}/third_party/cmp || die
+	mv cmp-${CMP_COMMIT} ${MY_P}/third_party/cmp || die
 }
 
 src_configure() {
@@ -92,6 +103,8 @@ src_configure() {
 }
 
 src_test() {
+	# Some tests appear to get flaky with multiple jobs running.
+	# https://bugs.gentoo.org/730434
 	cmake_src_test -j1
 }
 
