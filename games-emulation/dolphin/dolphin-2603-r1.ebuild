@@ -3,7 +3,7 @@
 
 EAPI=8
 
-LLVM_COMPAT=( {18..21} )
+LLVM_COMPAT=( {18..22} )
 LLVM_OPTIONAL=1
 
 inherit cmake llvm-r2 pax-utils xdg
