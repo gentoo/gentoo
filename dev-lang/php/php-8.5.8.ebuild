@@ -137,6 +137,7 @@ BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}/php-8.3.31-ipv6-printing-test-fix.patch"
+	"${FILESDIR}/php-8.4-libgd-test-fixes.patch"
 )
 
 PHP_MV="$(ver_cut 1)"
@@ -259,12 +260,6 @@ src_prepare() {
 	   ext/gd/tests/bug53504.phpt \
 	   ext/gd/tests/bug65148.phpt \
 	   ext/gd/tests/bug73272.phpt \
-	   || die
-
-	# Other failings test with external libgd.
-	# Keeping this separated from the previous batch due to it's age.
-	rm ext/gd/tests/gh19666.phpt \
-	   ext/gd/tests/gh19739.phpt \
 	   || die
 
 	# Test requires USE=cdb, so we have to skip it when
