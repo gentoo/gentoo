@@ -29,18 +29,20 @@ BDEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-python/wheel[${PYTHON_USEDEP}]
 	native-extensions? (
-		$(python_gen_cond_dep '
-			dev-python/cython[${PYTHON_USEDEP}]
-		' 'python*')
+		dev-python/cython[${PYTHON_USEDEP}]
 	)
 "
+
+PATCHES=(
+	# https://github.com/aio-libs/frozenlist/pull/749
+	"${FILESDIR}"/${P}-tests.patch
+)
 
 EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
 
 python_compile() {
-	# pypy is not using the C extension
-	if ! use native-extensions || [[ ${EPYTHON} != python* ]]; then
+	if ! use native-extensions; then
 		local -x FROZENLIST_NO_EXTENSIONS=1
 	fi
 

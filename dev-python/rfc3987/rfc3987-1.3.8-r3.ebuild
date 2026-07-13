@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{11..15} pypy3_11 )
+PYTHON_COMPAT=( python3_{12..15} python3_{14,15}t )
 
 inherit distutils-r1 pypi
 
@@ -21,9 +21,7 @@ KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390
 # dev-python/regex doesn't support pypy. The package falls back to re and has most
 # functionality without it.
 RDEPEND="
-	$(python_gen_cond_dep '
-		dev-python/regex[${PYTHON_USEDEP}]
-	' 'python*')
+	dev-python/regex[${PYTHON_USEDEP}]
 "
 BDEPEND="
 	${RDEPEND}

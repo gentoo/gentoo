@@ -6,7 +6,7 @@ EAPI=8
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=maturin
 PYPI_VERIFY_REPO=https://github.com/crate-py/rpds
-PYTHON_COMPAT=( python3_{12..15} )
+PYTHON_COMPAT=( python3_{12..15} python3_{14..15}t )
 
 CRATES="
 	archery@1.2.2

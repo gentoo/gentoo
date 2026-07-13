@@ -1,0 +1,50 @@
+# Copyright 2022-2026 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=8
+
+DISTUTILS_USE_PEP517=setuptools
+PYPI_PN=${PN/-/.}
+PYTHON_COMPAT=( python3_{12..15} )
+
+inherit distutils-r1 pypi
+
+DESCRIPTION="Testing support by jaraco"
+HOMEPAGE="
+	https://github.com/jaraco/jaraco.test/
+	https://pypi.org/project/jaraco.test/
+"
+
+LICENSE="MIT"
+SLOT="0"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+
+RDEPEND="
+	dev-python/jaraco-collections[${PYTHON_USEDEP}]
+	dev-python/jaraco-context[${PYTHON_USEDEP}]
+	dev-python/jaraco-functools[${PYTHON_USEDEP}]
+	dev-python/test[${PYTHON_USEDEP}]
+"
+
+EPYTEST_PLUGINS=()
+distutils_enable_tests pytest
+
+src_test() {
+	# workaround namespaces blocking test.support import (sigh!)
+	mv jaraco/test jaraco_test || die
+	rmdir jaraco || die
+	distutils-r1_src_test
+}
+
+python_test() {
+	# while technically these tests are skipped when Internet is
+	# not available (they test whether auto-skipping works), we don't
+	# want any Internet access whenever possible
+	local EPYTEST_DESELECT=(
+		tests/test_http.py::test_needs_internet
+		# https://github.com/pytest-dev/pytest/issues/14700
+		# (it is skipped anyway)
+		jaraco_test/git.py::jaraco_test.git.ensure_checkout
+	)
+	epytest -m "not network"
+}

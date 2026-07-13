@@ -6,7 +6,7 @@ EAPI=8
 LLVM_COMPAT=( {19..22} )
 inherit llvm-r2
 
-DESCRIPTION="Modern, secure, portable, multiprotocol bootloader and boot manager."
+DESCRIPTION="Modern, secure, portable, multiprotocol bootloader and boot manager"
 HOMEPAGE="https://limine-bootloader.org/"
 SRC_URI="https://github.com/Limine-Bootloader/Limine/releases/download/v${PV}/${P}.tar.gz"
 
