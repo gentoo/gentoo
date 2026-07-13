@@ -12,15 +12,14 @@ S="${WORKDIR}/opt/brother/scanner/brscan5"
 
 LICENSE="Brother"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="-* ~amd64"
 RESTRICT="bindist mirror strip"
 
 RDEPEND="
 	dev-libs/libusb:1
 	media-gfx/sane-backends
 	net-dns/avahi[dbus]
-	sys-apps/dbus
-	virtual/libudev
+	virtual/udev
 "
 
 QA_PREBUILT="opt/brother/*"
@@ -28,12 +27,15 @@ QA_PREBUILT="opt/brother/*"
 src_install() {
 	local brscan=/opt/brother/scanner/brscan5
 
+	# Drop GTK2 GUI, in favour of cli brscan_cnetconfig
+	rm brscan_gnetconfig || die
+
 	# Install the full Brother scanner tree to /opt
 	insinto ${brscan}
 	doins -r *
 
 	# Mark executables
-	fperms 0755 ${brscan}/{brsaneconfig5,brscan_cnetconfig,brscan_gnetconfig,setupSaneScan5}
+	fperms 0755 ${brscan}/{brsaneconfig5,brscan_cnetconfig,setupSaneScan5}
 
 	# Mark libraries executable
 	find "${ED}"${brscan} -name '*.so*' -exec chmod 0755 {} + || die
@@ -70,8 +72,8 @@ src_install() {
 pkg_postinst() {
 	udev_reload
 
-	# HOSTNAME is "BRW" followed by MAC for wi-fi
-	# HOSTNAME is "BRN" followed by MAC for etherent
+	# HOSTNAME is "BRW" followed by MAC for Wi-Fi
+	# HOSTNAME is "BRN" followed by MAC for Ethernet
 	elog "Your scanner's HOSTNAME can be discovered via avahi:"
 	elog "  avahi-browse -rt _scanner._tcp"
 	elog "To connect a network scanner using network discovery:"
