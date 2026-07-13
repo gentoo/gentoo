@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=hatchling
-PYTHON_COMPAT=( pypy3_11 python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} python3_14t )
 
 inherit distutils-r1 pypi
 
@@ -19,9 +19,7 @@ SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
 
 RDEPEND="
-	$(python_gen_cond_dep '
-		>=dev-python/forbiddenfruit-0.1.4[${PYTHON_USEDEP}]
-	' 'python*')
+	>=dev-python/forbiddenfruit-0.1.4[${PYTHON_USEDEP}]
 "
 BDEPEND="
 	test? (
@@ -38,23 +36,6 @@ python_test() {
 		# Internet
 		tests/test_blockbuster.py::test_ssl_socket
 	)
-
-	case ${EPYTHON} in
-		pypy3.11)
-			EPYTEST_DESELECT+=(
-				# upstream doesn't care, however that doesn't stop
-				# people from depending on it...
-				# https://github.com/cbornet/blockbuster/issues/47
-				tests/test_blockbuster.py::test_file_random
-				tests/test_blockbuster.py::test_file_read_bytes
-				tests/test_blockbuster.py::test_file_text
-				tests/test_blockbuster.py::test_file_write_bytes
-				tests/test_blockbuster.py::test_lock
-				tests/test_blockbuster.py::test_os_scandir
-				tests/test_blockbuster.py::test_scanned_modules
-			)
-			;;
-	esac
 
 	epytest
 }

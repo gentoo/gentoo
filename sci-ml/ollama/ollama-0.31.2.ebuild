@@ -5,7 +5,7 @@ EAPI=8
 
 inherit cmake go-module systemd
 
-DESCRIPTION="Get up and running with Llama 3, Mistral, Gemma, and other language models."
+DESCRIPTION="Get up and running with Llama 3, Mistral, Gemma, and other language models"
 HOMEPAGE="https://ollama.com"
 
 LLAMA_CPP_tag=b9888

@@ -7,7 +7,7 @@ inherit flag-o-matic multilib multilib-minimal toolchain-funcs
 MY_P="${PN^^}_${PV}"
 
 DESCRIPTION="An ultra-fast, ultra-compact key-value embedded data store"
-HOMEPAGE="https://www.symas.com/mdb"
+HOMEPAGE="https://symas.com/lmdb.php"
 SRC_URI="https://git.openldap.org/openldap/openldap/-/archive/${MY_P}/openldap-${MY_P}.tar.gz"
 S="${WORKDIR}/openldap-${MY_P}/libraries/liblmdb"
 

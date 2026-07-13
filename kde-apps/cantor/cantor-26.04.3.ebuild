@@ -82,7 +82,10 @@ pkg_setup() {
 }
 
 src_configure() {
-	use julia && addpredict /proc/self/mem # bug 602894
+	if use julia; then
+		addpredict /proc/self/mem # bug 602894
+		addpredict /proc/self/fd # bug 909435
+	fi
 
 	local mycmakeargs=(
 		$(cmake_use_find_package analitza Analitza6)

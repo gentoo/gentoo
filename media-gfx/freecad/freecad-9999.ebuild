@@ -137,8 +137,8 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-9999-tests-src-Qt-only-build-test-for-BUILD_GUI-ON.patch
-	"${FILESDIR}"/${PN}-9999-Gentoo-specific-don-t-check-vcs.patch
+	"${FILESDIR}"/${PN}-1.1.1-tests-src-Qt-only-build-test-for-BUILD_GUI-ON.patch
+	"${FILESDIR}"/${PN}-1.1.1-Gentoo-specific-don-t-check-vcs.patch
 	"${FILESDIR}/${PN}-1.0.2-pybind11-latent-slots-macro-conflicts-with-Qt.patch" # fixed in pybind-3.0.1
 )
 
