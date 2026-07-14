@@ -1416,7 +1416,7 @@ toolchain_src_configure() {
 			*-dietlibc)
 				needed_libc=dietlibc
 				;;
-			*-elf|*-eabi)
+			*-elf|*-eabi|*-eabihf)
 				needed_libc=newlib
 				confgcc+=(
 					# Bare-metal targets don't have access to clock_gettime()
@@ -1543,7 +1543,7 @@ toolchain_src_configure() {
 	# __cxa_atexit is "essential for fully standards-compliant handling of
 	# destructors", but apparently requires glibc.
 	case ${CTARGET#accel-} in
-		nvptx*|*-elf|*-eabi)
+		nvptx*|*-elf|*-eabi|*-eabihf)
 			confgcc+=( --with-newlib )
 			;;
 		*-musl*)
@@ -1581,12 +1581,13 @@ toolchain_src_configure() {
 			confgcc+=( --with-float=softfp )
 			;;
 		*)
-			# If they've explicitly opt-ed in, do hardfloat,
-			# otherwise let the gcc default kick in.
+			# Check the target for hardfloat again because softfloat no
+			# does not mean hardfloat yes. The check is required for
+			# arm and ppc triples.
 			case ${CTARGET//_/-} in
 				*-hardfloat-*|*eabihf*)
 					confgcc+=( --with-float=hard )
-				;;
+					;;
 			esac
 	esac
 
@@ -1603,8 +1604,30 @@ toolchain_src_configure() {
 				fi
 			done
 
-			# Convert armv7{a,r,m} to armv7-{a,r,m}
-			[[ ${arm_arch} == armv7? ]] && arm_arch=${arm_arch/7/7-}
+			# Handle converting targets that require a dash
+			case ${arm_arch} in
+				armv*[0-9]a)
+					# armv{7,8,9}a to armv{7,8,9}-a
+					arm_arch="${arm_arch%a}-a"
+					;;
+				armv*[0-9]r)
+					# armv{7,8}r to armv{7,8}-r
+					arm_arch="${arm_arch%r}-r"
+					;;
+				armv6m)
+					# armv6-m does not support SVC but it's now mandatory
+					arm_arch="armv6s-m"
+					;;
+				armv*m)
+					# armv{6,6s,7,7e}m to armv{6,6s,7,7e}-m
+					arm_arch="${arm_arch%m}-m"
+					;;
+				armv*m.*)
+					# armv{8,8.1}m.{base,main} to armv{8,8.1}-m.{base,main}
+					arm_arch="${arm_arch%%m.*}-m.${arm_arch#*m.}"
+					;;
+			esac
+
 			# See if this is a valid --with-arch flag
 			if (srcdir=${S}/gcc target=${CTARGET} with_arch=${arm_arch};
 				. "${srcdir}"/config.gcc) &>/dev/null
@@ -1612,16 +1635,63 @@ toolchain_src_configure() {
 				confgcc+=( --with-arch=${arm_arch} )
 			fi
 
-			# Make default mode thumb for microcontroller classes, bug #418209
-			[[ ${arm_arch} == *-m ]] && confgcc+=( --with-mode=thumb )
+			# Make thumb the default with exceptions
+			case ${arm_arch} in
+				arm|armv[45]*)
+					# Generic arm, version 4 and 5 should
+					# use the gcc default
+					;;
+				armv6*-m*|armv6t2*)
+					# The m and t2 variant fully support thumb
+					confgcc+=( --with-mode=thumb )
+					;;
+				armv6*)
+					# All other v6 variants only support thumb
+					# for softfloat targets
+					[[ $(tc-is-softfloat) == "yes" ]] \
+						&& confgcc+=( --with-mode=thumb )
+					;;
+				*)
+					# Version 7 and 8 or m variants, #418209
+					confgcc+=( --with-mode=thumb )
+					;;
+			esac
 
-			# Enable hardvfp
-			if [[ $(tc-is-softfloat) == "no" ]] && [[ ${CTARGET} == armv[67]* ]] ; then
-				# Follow the new arm hardfp distro standard by default
-				confgcc+=( --with-float=hard )
+			# Set default FPU for hard and softfp targets
+			if [[ $(tc-is-softfloat) == "no" ]] || [[ $(tc-is-softfloat) == "softfp" ]] ; then
 				case ${CTARGET} in
-					armv6*) confgcc+=( --with-fpu=vfp ) ;;
-					armv7*) confgcc+=( --with-fpu=vfpv3-d16 ) ;;
+					armv6m*|armv6s-m*)
+						# the 6m variants have no fpu
+						;;
+					armv5te*|armv6*)
+						confgcc+=( --with-fpu=vfp )
+						;;
+					armv7ve*)
+						confgcc+=( --with-fpu=neon-vfpv4 )
+						;;
+					armv7r*)
+						confgcc+=( --with-fpu=vfpv3xd )
+						;;
+					armv7em*)
+						# also supports fpv4-sp-d16 for single-precision
+						# targets, use EXTRA_ECONF to override
+						confgcc+=( --with-fpu=fpv5-d16 )
+						;;
+					armv7*)
+						confgcc+=( --with-fpu=vfpv3-d16 )
+						;;
+					armv8m.main*)
+						# also supports fpv5-sp-d16 for single-precision
+						# targets, use EXTRA_ECONF to override
+						confgcc+=( --with-fpu=fpv5-d16 )
+						;;
+					armv8.[0-9]m*)
+						# ARMv8.1-M and later doesn't support --with-fpu,
+						# instead it is derived from the tripple
+						;;
+					armv8*)
+						confgcc+=( --with-fpu=neon-fp-armv8 )
+						;;
 				esac
 			fi
 
@@ -2175,7 +2245,7 @@ gcc_do_filter_flags() {
 		GDCFLAGS=${CFLAGS}
 
 		# "hppa2.0-unknown-linux-gnu" -> hppa2_0_unknown_linux_gnu
-		local VAR="CFLAGS_"${CTARGET//[-.]/_}
+		local VAR="CFLAGS_"${CTARGET//[-+.]/_}
 		CXXFLAGS=${!VAR-${CFLAGS}}
 	fi
 }
@@ -2298,6 +2368,13 @@ gcc_do_make() {
 		# some reason for putting it in here... --eradicator
 		BOOT_CFLAGS=${BOOT_CFLAGS-"-O2"}
 		emakeargs+=( BOOT_CFLAGS="${BOOT_CFLAGS}" )
+
+		# ARMv8.1-M PACBTI requires branch protection when building target
+		# libraries to emit pointer authentication instructions in libgcc.
+		if [[ ${CTARGET} == *+pacbti* ]]; then
+			CFLAGS_FOR_TARGET+=" -mbranch-protection=standard"
+			emakeargs+=( CFLAGS_FOR_TARGET="${CFLAGS_FOR_TARGET}" )
+		fi
 	else
 		# XXX: Hack for bug #914881, clean this up when fixed and go back
 		# to just calling get_abi_LDFLAGS as before.
