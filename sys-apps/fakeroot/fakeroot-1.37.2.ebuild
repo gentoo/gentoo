@@ -7,12 +7,12 @@ PLOCALES="de es fr nl pt ro sv"
 inherit autotools flag-o-matic plocale
 
 DESCRIPTION="A fake root environment by means of LD_PRELOAD and SysV IPC (or TCP) trickery"
-HOMEPAGE="https://packages.qa.debian.org/f/fakeroot.html"
+HOMEPAGE="https://tracker.debian.org/pkg/fakeroot"
 SRC_URI="mirror://debian/pool/main/${PN:0:1}/${PN}/${P/-/_}.orig.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ppc ppc64 ~riscv ~s390 ~sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 IUSE="acl debug nls test"
 RESTRICT="!test? ( test )"
 
@@ -27,8 +27,6 @@ DOCS=( AUTHORS BUGS DEBUG README doc/README.saving )
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.32.2-musl-stdint.patch"
-	"${FILESDIR}/${PN}-1.32.2-musl-xattr.patch" # merged upstream 1.37.2
-	"${FILESDIR}/${PN}-1.32.2-configure-id_t.patch" # merged upstream 1.35.1
 )
 
 src_prepare() {
