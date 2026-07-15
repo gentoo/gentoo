@@ -10,17 +10,16 @@ HOMEPAGE="https://claude.com/product/claude-code"
 #             the script is simple: it fetches the latest version,
 #             downloads a manifest of files for that version, and
 #             downloads a single binary claude executable matching.
-#             All this from an unbranded GCS bucket (yikes).
-# https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/bootstrap.sh
-GCS_BUCKET="https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases"
+# https://downloads.claude.ai/claude-code-releases/bootstrap.sh
+DOWNLOAD_BASE_URL="https://downloads.claude.ai/claude-code-releases"
 SRC_URI="
 	amd64? (
-		elibc_glibc? ( ${GCS_BUCKET}/${PV}/linux-x64/claude -> claude-amd64-glibc-${PV} )
-		elibc_musl?  ( ${GCS_BUCKET}/${PV}/linux-x64-musl/claude -> claude-amd64-musl-${PV} )
+		elibc_glibc? ( ${DOWNLOAD_BASE_URL}/${PV}/linux-x64/claude -> claude-amd64-glibc-${PV} )
+		elibc_musl?  ( ${DOWNLOAD_BASE_URL}/${PV}/linux-x64-musl/claude -> claude-amd64-musl-${PV} )
 	)
 	arm64? (
-		elibc_glibc? ( ${GCS_BUCKET}/${PV}/linux-arm64/claude -> claude-arm64-glibc-${PV} )
-		elibc_musl?  ( ${GCS_BUCKET}/${PV}/linux-arm64-musl/claude -> claude-arm64-musl-${PV} )
+		elibc_glibc? ( ${DOWNLOAD_BASE_URL}/${PV}/linux-arm64/claude -> claude-arm64-glibc-${PV} )
+		elibc_musl?  ( ${DOWNLOAD_BASE_URL}/${PV}/linux-arm64-musl/claude -> claude-arm64-musl-${PV} )
 	)"
 S="${WORKDIR}"
 
