@@ -1,0 +1,30 @@
+src/main/jdk1.9/module-info.java:9: error: module not found: mail
+    requires static mail;
+                    ^
+src/main/jdk1.9/module-info.java:10: error: module not found: java.mail
+    requires static java.mail;
+                        ^
+src/main/jdk1.9/module-info.java:11: error: module not found: activation
+    requires static activation;
+                    ^
+src/main/jdk1.9/module-info.java:12: error: module not found: java.activation
+    requires static java.activation;
+                        ^
+4 errors
+Caused by https://github.com/bcgit/bc-java/commit/0fe6009
+
+--- a/src/main/jdk1.9/module-info.java
++++ b/src/main/jdk1.9/module-info.java
+@@ -5,12 +5,6 @@ module org.bouncycastle.mail
+     requires java.datatransfer;
+     requires org.bouncycastle.util;
+ 
+-    // optional: javax.mail/javax.activation go by these four names depending on the artifact used, a hard requires on any one of them breaks the rest.
+-    requires static mail;
+-    requires static java.mail;
+-    requires static activation;
+-    requires static java.activation;
+-
+     exports org.bouncycastle.mail.smime;
+     exports org.bouncycastle.mail.smime.handlers;
+     exports org.bouncycastle.mail.smime.util;
