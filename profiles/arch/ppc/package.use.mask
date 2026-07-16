@@ -41,6 +41,10 @@ net-wireless/kismet mqtt
 # Needs gui-apps/grim, which is not keyworded here
 x11-misc/xscreensaver wayland
 
+# Dawid Rogowicz <rogowiczdawid@naoha.org> (2026-07-16)
+# Needs dev-libs/plasma-wayland-protocols, which is not keyworded here
+app-i18n/fcitx wayland
+
 # NRK <nrk@disroot.org> (2025-05-18)
 # app-arch/plzip is not keyworded
 app-alternatives/lzip plzip

@@ -70,7 +70,11 @@ RDEPEND="
 		x11-libs/xcb-util-wm
 	)
 "
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	wayland? (
+		dev-libs/plasma-wayland-protocols
+	)
+"
 BDEPEND="
 	virtual/pkgconfig
 	kde-frameworks/extra-cmake-modules:0
