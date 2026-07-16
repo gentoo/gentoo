@@ -50,8 +50,13 @@ BDEPEND="virtual/pkgconfig
 		${DISTUTILS_DEPS}
 	)
 	ruby? ( >=dev-lang/swig-2.0.9 )"
+PATCHES=(
+	"${FILESDIR}"/${PN}-3.8.1_ld-flags.patch # bug #979353 fixed in 3.9
+	"${FILESDIR}"/${PN}-3.8.1_lsf.patch # bug #979354 fixed in 3.11
+)
 
 src_prepare() {
+	eapply "${PATCHES[@]}"
 	eapply_user
 
 	if use python; then
@@ -74,11 +79,16 @@ multilib_src_compile() {
 	tc-export AR CC PKG_CONFIG RANLIB
 
 	local -x CFLAGS="${CFLAGS} -fno-semantic-interposition"
+	
+	if tc-ld-is-lld && use elibc_musl; then
+		EXTRA_LD_FLAGS="${EXTRA_LD_FLAGS} --undefined-version"
+	fi
 
 	emake \
 		LIBDIR="\$(PREFIX)/$(get_libdir)" \
 		SHLIBDIR="/$(get_libdir)" \
 		LDFLAGS="-fPIC ${LDFLAGS} -pthread" \
+		EXTRA_LD_FLAGS="${EXTRA_LD_FLAGS}" \
 		USE_PCRE2=y \
 		USE_LFS=y \
 		FTS_LDLIBS="$(usex elibc_musl '-lfts' '')" \

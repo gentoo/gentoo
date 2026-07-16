@@ -47,8 +47,12 @@ BDEPEND="virtual/pkgconfig
 		dev-python/pip[${PYTHON_USEDEP}]
 )
 	ruby? ( >=dev-lang/swig-2.0.9 )"
+PATCHES=(
+	"${FILESDIR}"/${PN}-3.8.1_lsf.patch # bug #979354 fixed in 3.11
+)
 
 src_prepare() {
+	eapply "${PATCHES[@]}"
 	eapply_user
 
 	multilib_copy_sources
