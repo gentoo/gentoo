@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit desktop edo multiprocessing xdg
+inherit desktop edo java-pkg-2 multiprocessing xdg
 
 VER_ABBRV=7f27d794befacdb279039c3bae807ea0f3faacca
 VER_LOCALES=606fa26be1d87837c4e607362b28ed58a7576875
@@ -25,8 +25,8 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
 
-DEPEND=">=virtual/jdk-21:*"
-RDEPEND=">=virtual/jre-21"
+DEPEND="|| ( virtual/jdk:21 virtual/jdk:17 virtual/jdk:11 )"
+RDEPEND=">=virtual/jre-11:*"
 BDEPEND="
 	>=dev-java/gradle-bin-8
 	dev-java/java-config
