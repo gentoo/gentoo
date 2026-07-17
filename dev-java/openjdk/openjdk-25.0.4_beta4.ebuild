@@ -3,9 +3,6 @@
 
 EAPI=8
 
-# Avoid circular dependency
-JAVA_DISABLE_DEPEND_ON_JAVA_DEP_CHECK="true"
-
 inherit check-reqs dot-a flag-o-matic java-pkg-2 java-vm-2 multiprocessing toolchain-funcs
 
 # variable name format: <UPPERCASE_KEYWORD>_XPAK
