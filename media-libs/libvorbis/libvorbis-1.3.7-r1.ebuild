@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -30,6 +30,7 @@ src_prepare() {
 	sed -i \
 		-e '/CFLAGS/s:-O20::' \
 		-e '/CFLAGS/s:-mcpu=750::' \
+		-e '/CFLAGS/s:-mfused-madd::' \
 		-e '/CFLAGS/s:-mno-ieee-fp::' \
 		configure.ac || die
 
