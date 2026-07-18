@@ -36,7 +36,7 @@ IUSE="
 	acl apparmor audit boot bpf cryptsetup curl +dns-over-tls elfutils fido2
 	+gcrypt gnutls homed idn imds importd +kernel-install +kmod +libarchive
 	+lz4 lzma +openssl pam passwdqc pcre pkcs11 policykit pwquality qrcode
-	remote +resolvconf +seccomp selinux sysv-utils test tpm ukify vanilla xkb
+	remote +resolvconf +seccomp selinux sysv-utils static-libs test tpm ukify vanilla xkb
 	+zstd
 "
 REQUIRED_USE="
@@ -299,6 +299,7 @@ multilib_src_configure() {
 	local myconf=(
 		--localstatedir="${EPREFIX}/var"
 		-Ddocdir="share/doc/${PF}"
+		-Ddefault_library=$(usex static-libs both shared)
 		-Dmode=release # default is developer, bug 918671
 		-Dlibc=$(usex elibc_musl musl glibc)
 		-Dsupport-url="${BRANDING_OS_SUPPORT_URL}"
