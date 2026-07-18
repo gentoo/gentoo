@@ -63,7 +63,7 @@ done
 IUSE="${IUSE_VIDEO_CARDS}
 	cpu_flags_x86_sse2 debug +llvm
 	lm-sensors opencl +opengl +proprietary-codecs
-	sysprof test unwind vaapi valgrind vulkan
+	sysprof static-libs test unwind vaapi valgrind vulkan
 	wayland +X +zstd"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="
@@ -405,6 +405,7 @@ multilib_src_configure() {
 		-Dvulkan-drivers=$(driver_list "${VULKAN_DRIVERS[*]}")
 		-Db_ndebug=$(usex debug false true)
 		-Dallow-broken-lto=true
+		-Ddefault_library=$(usex static-libs both shared)
 	)
 	meson_src_configure
 }
