@@ -16,7 +16,7 @@ else
 fi
 LICENSE="MIT"
 SLOT="0/1"
-IUSE="builtin elogind selinux server systemd"
+IUSE="builtin elogind selinux server systemd static-libs"
 REQUIRED_USE="?? ( elogind systemd )"
 
 DEPEND="
@@ -41,6 +41,7 @@ src_prepare() {
 src_configure() {
 	local emesonargs=(
 		-Dman-pages=enabled
+		-Ddefault_library=$(usex static-libs both shared)
 		$(meson_feature builtin libseat-builtin)
 		$(meson_feature server)
 	)
