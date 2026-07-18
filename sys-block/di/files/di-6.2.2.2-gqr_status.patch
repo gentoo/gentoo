@@ -1,0 +1,24 @@
+Fix build with modern glibc/libtirpc rpcsvc/rquota.h.
+
+The legacy Sun RPC headers named the enum type used by the
+struct getquota_rslt::status member "gqr_status", but the
+standardized rpcsvc/rquota.h (glibc, libtirpc) names it
+"qr_status". When di's configure detects that the struct has
+no direct gqr_status member, diquota.c casts to the (now
+non-existent) gqr_status type, which fails to compile:
+
+  diquota.c:555:19: error: 'gqr_status' undeclared (first use in this function); did you mean 'qr_status'?
+
+Use the correct qr_status type name.
+
+--- a/diquota.c
++++ b/diquota.c
+@@ -552,7 +552,7 @@
+ # else
+ #  pragma clang diagnostic push
+ #  pragma clang diagnostic ignored "-Wsign-conversion"
+-  rslt->status = (gqr_status) quotastat;
++  rslt->status = (qr_status) quotastat;
+ #  pragma clang diagnostic pop
+ # endif
+ # if _mem_struct_getquota_rslt_gqr_rquota
