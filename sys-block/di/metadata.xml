@@ -9,6 +9,9 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
+	<use>
+		<flag name="rpc">Enable remote NFS quota support</flag>
+	</use>
 	<upstream>
 		<remote-id type="sourceforge">diskinfo-di</remote-id>
 	</upstream>
