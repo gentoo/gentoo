@@ -9,9 +9,9 @@ DESCRIPTION="Virtual for libudev providers"
 
 SLOT="0/1"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
-IUSE="systemd"
+IUSE="systemd static-libs"
 
 RDEPEND="
-	!systemd? ( >=sys-apps/systemd-utils-${PV}[udev,${MULTILIB_USEDEP}] )
-	systemd? ( >=sys-apps/systemd-${PV}:0/2[${MULTILIB_USEDEP}] )
+	!systemd? ( >=sys-apps/systemd-utils-${PV}[static-libs,udev,${MULTILIB_USEDEP}] )
+	systemd? ( >=sys-apps/systemd-${PV}:0/2[static-libs,${MULTILIB_USEDEP}] )
 "
