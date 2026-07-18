@@ -28,7 +28,7 @@ SRC_URI+=" elibc_musl? ( https://dev.gentoo.org/~floppym/dist/${MUSL_PATCHSET}.t
 LICENSE="GPL-2 LGPL-2.1 MIT public-domain"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
-IUSE="+acl boot +kmod kernel-install selinux split-usr sysusers +tmpfiles test +udev ukify"
+IUSE="+acl boot +kmod kernel-install selinux split-usr sysusers +tmpfiles static-libs test +udev ukify"
 REQUIRED_USE="
 	|| ( kernel-install tmpfiles sysusers udev )
 	boot? ( kernel-install )
@@ -154,6 +154,7 @@ multilib_src_configure() {
 		# default is developer, bug 918671
 		-Dmode=release
 		-Dsysvinit-path=
+		-Ddefault_library=$(usex static-libs both shared)
 		$(meson_native_use_feature boot bootloader)
 		$(meson_native_use_bool kernel-install)
 		$(meson_native_use_feature selinux)
