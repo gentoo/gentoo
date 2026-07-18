@@ -16,7 +16,7 @@ SLOT="0/10"
 if [[ $(ver_cut 3) -lt 900 ]] ; then
 	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
 fi
-IUSE="doc input_devices_wacom lua test"
+IUSE="doc input_devices_wacom lua static-libs test"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )"
 
@@ -84,6 +84,7 @@ src_configure() {
 	# gui can be built but will not be installed
 	local emesonargs=(
 		-Ddebug-gui=false
+		-Ddefault_library=$(usex static-libs both shared)
 		$(meson_use doc documentation)
 		$(meson_use input_devices_wacom libwacom)
 		$(meson_use test tests)
