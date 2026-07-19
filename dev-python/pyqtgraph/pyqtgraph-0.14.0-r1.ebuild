@@ -120,7 +120,7 @@ python_prepare_all() {
 	# The order is important (we want to prefer the newest at runtime)
 	for qt in pyqt6 pyside6; do
 		if use ${qt}; then
-			liborder+=( "PY${qt^^}" )
+			liborder+=( "${qt^^}" )
 		fi
 	done
 
