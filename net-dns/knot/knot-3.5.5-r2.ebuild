@@ -115,15 +115,14 @@ VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/${PN}.asc
 QA_CONFIG_IMPL_DECL_SKIP=( cpuset_create cpuset_destroy )
 
 python_check_deps() {
+	# redundant but clearly marks doc dependencies
 	use doc || return 0
 	python_has_version "dev-python/sphinx[${PYTHON_USEDEP}]" \
 		"dev-python/sphinx-panels[${PYTHON_USEDEP}]"
 }
 
 pkg_setup() {
-	if use doc || use python; then
-		python_setup
-	fi
+	[[ ${MERGE_TYPE} != binary ]] && use doc && python_setup
 }
 
 src_unpack() {
@@ -230,12 +229,16 @@ src_install() {
 	fi
 
 	if use python; then
-		python_foreach_impl python_domodule python/libknot/libknot
+		# install only .py files, not build system leftovers (e.g. .in)
+		python_moduleinto libknot
+		python_foreach_impl python_domodule python/libknot/libknot/*.py
 		newdoc python/libknot/README.md README.python.md
 	fi
 
 	if use prometheus; then
-		python_foreach_impl python_domodule python/knot_exporter/knot_exporter
+		# reset module target
+		python_moduleinto knot_exporter
+		python_foreach_impl python_domodule python/knot_exporter/knot_exporter/.
 		python_scriptinto /usr/sbin
 		python_foreach_impl python_newscript python/knot_exporter/knot_exporter/knot_exporter.py knot-exporter
 		newdoc python/knot_exporter/README.md README.knot_exporter.md
