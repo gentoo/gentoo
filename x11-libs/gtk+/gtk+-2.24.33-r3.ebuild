@@ -105,6 +105,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.24.33-respect-NM.patch # requires eautoreconf
 	# Fix casts, bug #880617
 	"${FILESDIR}"/${PN}-2.24.33-Fix-casts.patch
+	# Fixes "ac_fn_c_try_run: command not found", bug #887337
+	"${FILESDIR}"/${PN}-2.24.33-configure.ac-Use-AC_RUN_IFELSE.patch # requires eautoreconf
 )
 
 strip_builddir() {
