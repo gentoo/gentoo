@@ -84,6 +84,7 @@ sci-libs/flexiblas -blis -openblas
 dev-qt/qtdeclarative:6 -qmlls
 dev-qt/qttools:6 -qmlls
 dev-python/pyside -tools
+dev-python/pyqtgraph -pyside6
 
 # Alfred Wingate <parona@protonmail.com> (2025-06-10)
 # Upstream supports arm64

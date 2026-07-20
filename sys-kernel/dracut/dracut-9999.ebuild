@@ -39,6 +39,7 @@ RDEPEND="${COMMON_DEPEND}
 		sys-apps/openrc[sysv-utils(-),selinux?]
 		sys-apps/systemd[sysv-utils(+)]
 		sys-apps/s6-linux-init[sysv-utils(-)]
+		sys-apps/dinit[sysv-utils(-)]
 	)
 	>=sys-apps/util-linux-2.21
 	virtual/pkgconfig[native-symlinks(+)]

@@ -163,6 +163,7 @@ media-gfx/blender gnome renderdoc
 dev-qt/qtdeclarative:6 qmlls
 dev-qt/qttools:6 qmlls
 dev-python/pyside tools
+dev-python/pyqtgraph pyside6
 
 # Mike Gilbert <floppym@gentoo.org> (2024-04-13)
 # Missing keywords on dev-python/looseversion.
