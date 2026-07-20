@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_{10..14} )
 inherit meson gnome2-utils python-single-r1
 
 DESCRIPTION="Cinnamon session manager"
-HOMEPAGE="https://projects.linuxmint.com/cinnamon/ https://github.com/linuxmint/cinnamon-session"
+HOMEPAGE="https://linuxmint-developer-guide.readthedocs.io/en/latest/cinnamon.html https://linuxmint.com/"
 SRC_URI="https://github.com/linuxmint/cinnamon-session/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+ LGPL-2+"
