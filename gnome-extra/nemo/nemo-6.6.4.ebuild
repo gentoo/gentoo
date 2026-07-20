@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_{10..14} )
 inherit meson flag-o-matic gnome2-utils optfeature python-single-r1 virtualx xdg
 
 DESCRIPTION="A file manager for Cinnamon, forked from Nautilus"
-HOMEPAGE="https://projects.linuxmint.com/cinnamon/ https://github.com/linuxmint/nemo"
+HOMEPAGE="https://linuxmint-developer-guide.readthedocs.io/en/latest/cinnamon.html https://linuxmint.com/"
 SRC_URI="https://github.com/linuxmint/nemo/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+ LGPL-2+ LGPL-2.1+ FDL-1.1"
