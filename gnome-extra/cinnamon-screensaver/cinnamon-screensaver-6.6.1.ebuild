@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_{10..14} )
 inherit meson python-single-r1 xdg
 
 DESCRIPTION="Screensaver for Cinnamon"
-HOMEPAGE="https://projects.linuxmint.com/cinnamon/ https://github.com/linuxmint/cinnamon-screensaver"
+HOMEPAGE="https://linuxmint-developer-guide.readthedocs.io/en/latest/cinnamon.html https://linuxmint.com/"
 SRC_URI="https://github.com/linuxmint/cinnamon-screensaver/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+ LGPL-2+ MIT"
