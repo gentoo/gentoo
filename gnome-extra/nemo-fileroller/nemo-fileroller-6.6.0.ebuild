@@ -6,7 +6,7 @@ EAPI=8
 inherit meson
 
 DESCRIPTION="Nemo file-roller integration"
-HOMEPAGE="https://projects.linuxmint.com/cinnamon/ https://github.com/linuxmint/nemo-extensions"
+HOMEPAGE="https://linuxmint-developer-guide.readthedocs.io/en/latest/cinnamon.html https://linuxmint.com/"
 SRC_URI="https://github.com/linuxmint/nemo-extensions/archive/${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/nemo-extensions-${PV}/${PN}"
 
