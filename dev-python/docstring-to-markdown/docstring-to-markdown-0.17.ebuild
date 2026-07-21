@@ -27,9 +27,9 @@ RDEPEND="
 	>=dev-python/typing-extensions-4.6[${PYTHON_USEDEP}]
 "
 
+EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
 
 python_test() {
-	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	epytest -o addopts=
 }
