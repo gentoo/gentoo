@@ -13,7 +13,7 @@ HOMEPAGE="https://llvm.org/docs/ExceptionHandling.html"
 LICENSE="Apache-2.0-with-LLVM-exceptions || ( UoI-NCSA MIT )"
 SLOT="0"
 KEYWORDS="amd64 arm arm64 ~loong ~mips ~ppc ppc64 ~riscv ~sparc x86 ~arm64-macos ~x64-macos"
-IUSE="+clang debug static-libs test"
+IUSE="+clang debug static-libs test cet"
 REQUIRED_USE="test? ( clang )"
 RESTRICT="!test? ( test )"
 
@@ -133,6 +133,7 @@ multilib_src_configure() {
 		-DLLVM_ENABLE_RUNTIMES="libunwind"
 		-DLLVM_LIBDIR_SUFFIX=${libdir#lib}
 		-DLLVM_INCLUDE_TESTS=OFF
+		-DLIBUNWIND_ENABLE_CET=$(usex cet)
 		-DLIBUNWIND_ENABLE_ASSERTIONS=$(usex debug)
 		-DLIBUNWIND_ENABLE_STATIC=$(usex static-libs)
 		-DLIBUNWIND_INCLUDE_TESTS=$(usex test)
