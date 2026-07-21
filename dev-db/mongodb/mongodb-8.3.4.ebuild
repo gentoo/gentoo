@@ -5,8 +5,8 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{11..14} )
 
-CHECKREQS_DISK_BUILD="2400M"
-CHECKREQS_DISK_USR="512M"
+CHECKREQS_DISK_BUILD="6200M"
+CHECKREQS_DISK_USR="350M"
 CHECKREQS_MEMORY="1024M"
 
 inherit edo check-reqs eapi9-ver flag-o-matic multiprocessing pax-utils python-any-r1 systemd toolchain-funcs
@@ -35,25 +35,25 @@ SRC_URI="
 	https://github.com/bazelbuild/bazel-central-registry/archive/${BAZEL_BCR_HASH}.tar.gz
 		-> ${PN}-bcr-${BAZEL_BCR_HASH}.tar.gz
 	https://github.com/bats-core/bats-core/archive/v1.10.0.tar.gz
-		-> bats-core-v1.10.0.tar.gz
+		-> ${PN}-bats-core__v1.10.0.tar.gz
 	https://github.com/bazel-contrib/rules_perl/archive/refs/tags/0.2.4.tar.gz
-		-> rules_perl-0.2.4.tar.gz
+		-> ${PN}-rules_perl__0.2.4.tar.gz
 	https://github.com/bazelbuild/rules_proto/archive/refs/tags/5.3.0-21.7.tar.gz
-		-> rules_proto-5.3.0-21.7.tar.gz
+		-> ${PN}-rules_proto__5.3.0-21.7.tar.gz
 	https://github.com/bufbuild/protoc-gen-validate/archive/refs/tags/v1.2.1.tar.gz
-		-> protoc-gen-validate-1.2.1.tar.gz
+		-> ${PN}-protoc-gen-validate__v1.2.1.tar.gz
 	https://github.com/cncf/xds/archive/555b57ec207be86f811fb0c04752db6f85e3d7e2.tar.gz
-		-> xds-555b57ec20.tar.gz
+		-> ${PN}-xds__555b57ec207be86f811fb0c04752db6f85e3d7e2.tar.gz
 	https://github.com/envoyproxy/data-plane-api/archive/4de3c74cf21a9958c1cf26d8993c55c6e0d28b49.tar.gz
-		-> data-plane-api-4de3c74cf2.tar.gz
+		-> ${PN}-data-plane-api__4de3c74cf21a9958c1cf26d8993c55c6e0d28b49.tar.gz
 	https://github.com/google/cel-spec/archive/refs/tags/v0.15.0.tar.gz
-		-> cel-spec-0.15.0.tar.gz
+		-> ${PN}-cel-spec__v0.15.0.tar.gz
 	https://github.com/googleapis/googleapis/archive/fe8ba054ad4f7eca946c2d14a63c3f07c0b586a0.tar.gz
-		-> googleapis-fe8ba054ad.tar.gz
+		-> ${PN}-googleapis__fe8ba054ad4f7eca946c2d14a63c3f07c0b586a0.tar.gz
 	https://github.com/keith/buildifier-prebuilt/archive/refs/tags/6.4.0.tar.gz
-		-> buildifier-prebuilt-6.4.0.tar.gz
+		-> ${PN}-buildifier-prebuilt__6.4.0.tar.gz
 	https://github.com/mongodb-forks/bazel_clang_tidy/archive/refs/tags/v1.7.tar.gz
-		-> bazel_clang_tidy-mongodb-1.7.tar.gz
+		-> ${PN}-bazel_clang_tidy__v1.7.tar.gz
 	https://github.com/aspect-build/rules_js/releases/download/v2.1.3/rules_js-v2.1.3.tar.gz
 	https://github.com/bazel-contrib/bazel-lib/releases/download/v2.13.0/bazel-lib-v2.13.0.tar.gz
 	https://github.com/bazel-contrib/bazel_features/releases/download/v1.37.0/bazel_features-v1.37.0.tar.gz
@@ -84,7 +84,7 @@ S="${WORKDIR}/mongo-${MY_PV}"
 LICENSE="Apache-2.0 SSPL-1"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 -riscv"
-IUSE="debug mongosh ssl +tools"
+IUSE="debug ssl"
 
 # https://github.com/mongodb/mongo/wiki/Test-The-Mongodb-Server
 # resmoke needs python packages not yet present in Gentoo
@@ -110,10 +110,6 @@ BDEPEND="
 		dev-python/packaging[${PYTHON_USEDEP}]
 	')
 	sys-apps/ripgrep
-"
-PDEPEND="
-	mongosh? ( app-admin/mongosh-bin )
-	tools? ( >=app-admin/mongo-tools-100 )
 "
 
 PATCHES=(
@@ -157,20 +153,12 @@ src_unpack() {
 	ln -s bazel-central-registry-${BAZEL_BCR_HASH} bcr || die
 
 	mkdir bazel_dist || die
-
-	ln -s "${DISTDIR}"/* "${WORKDIR}/bazel_dist" || die
-	ln -s "${DISTDIR}/bats-core-v1.10.0.tar.gz" "${WORKDIR}/bazel_dist/v1.10.0.tar.gz"
-	ln -s "${DISTDIR}/rules_perl-0.2.4.tar.gz" "${WORKDIR}/bazel_dist/0.2.4.tar.gz"
-	ln -s "${DISTDIR}/rules_proto-5.3.0-21.7.tar.gz" "${WORKDIR}/bazel_dist/5.3.0-21.7.tar.gz"
-	ln -s "${DISTDIR}/protoc-gen-validate-1.2.1.tar.gz" "${WORKDIR}/bazel_dist/v1.2.1.tar.gz"
-	ln -s "${DISTDIR}/xds-555b57ec20.tar.gz" "${WORKDIR}/bazel_dist/555b57ec207be86f811fb0c04752db6f85e3d7e2.tar.gz"
-	ln -s "${DISTDIR}/data-plane-api-4de3c74cf2.tar.gz" \
-		"${WORKDIR}/bazel_dist/4de3c74cf21a9958c1cf26d8993c55c6e0d28b49.tar.gz"
-	ln -s "${DISTDIR}/cel-spec-0.15.0.tar.gz" "${WORKDIR}/bazel_dist/v0.15.0.tar.gz"
-	ln -s "${DISTDIR}/googleapis-fe8ba054ad.tar.gz" \
-		"${WORKDIR}/bazel_dist/fe8ba054ad4f7eca946c2d14a63c3f07c0b586a0.tar.gz"
-	ln -s "${DISTDIR}/buildifier-prebuilt-6.4.0.tar.gz" "${WORKDIR}/bazel_dist/6.4.0.tar.gz"
-	ln -s "${DISTDIR}/bazel_clang_tidy-mongodb-1.7.tar.gz" "${WORKDIR}/bazel_dist/v1.7.tar.gz"
+	pushd "${DISTDIR}" >/dev/null || die
+	local dep
+	for dep in *; do
+		ln -sfT "${DISTDIR}/${dep}" "${WORKDIR}/bazel_dist/${dep#*__}" || die
+	done
+	popd >/dev/null || die
 
 	unpack ${P}.gh.tar.gz
 }
@@ -181,7 +169,7 @@ pkg_pretend() {
 			ewarn "To upgrade from a version earlier than 8.0, you must"
 			ewarn "successively upgrade major releases until you have upgraded"
 			ewarn "to 8.0. Then upgrade to 8.3."
-		else
+		elif ver_replacing -lt 8.3; then
 			ewarn "Be sure to set featureCompatibilityVersion to $(ver_cut 1-2 ${REPLACING_VERSIONS}) before upgrading."
 		fi
 	fi
@@ -192,6 +180,13 @@ src_prepare() {
 
 	# remove compass
 	rm -r src/mongo/installer/compass || die
+
+	# remove all references to poetry and fix python interpreter references
+	find "${S}" -name '*.b*z*l' -exec perl -0 -p -i -e 's#load\("\@poetry//.+?"\)\s*##gm;s#dependency\(.*?\),?##gs;
+		s#python\.files#depset()#g;s#python\.interpreter\.path#python.interpreter_path#g' {} \;
+
+	# replace placeholder with actual python executable
+	sed -i "s#@PYTHON@#${PYTHON}#" "${S}/MODULE.bazel"
 
 	# run auto_header.py
 	edob ${PYTHON} "${FILESDIR}"/auto_header.py "${S}"
@@ -223,23 +218,13 @@ src_configure() {
 		--features=-per_object_debug_info
 		--host_features=-per_object_debug_info
 		--separate_debug=False
-		--config=local
+		--config=public-release-local
 		--build_enterprise=False
 		--disable_warnings_as_errors=True
-		--release=True
 		--dbg=$(usex debug True False)
-		--opt=$(usex debug debug on)
 		--debug_symbols=$(usex debug True False)
 		--cxxopt=-std=c++20
 		--host_cxxopt=-std=c++20
-		--cxxopt=-w
-		--host_cxxopt=-w
-		--cxxopt=-Wno-error
-		--host_cxxopt=-Wno-error
-		--copt=-w
-		--host_copt=-w
-		--copt=-Wno-error
-		--host_copt=-Wno-error
 		--copt=-D_GNU_SOURCE
 		--host_copt=-D_GNU_SOURCE
 		--linkopt=-lresolv
@@ -255,6 +240,10 @@ src_configure() {
 			--host_linkopt=-fuse-ld=bfd
 			--nostart_end_lib
 		)
+	fi
+
+	if tc-is-gcc; then
+		MYEBAZELARGS+=( --compiler_type=gcc )
 	fi
 
 	local cppflags
@@ -286,7 +275,7 @@ src_configure() {
 }
 
 src_compile() {
-	ebazel --output_base="${WORKDIR}/bazel_out" build install-devcore "${MYEBAZELARGS[@]}" || die
+	ebazel --output_base="${WORKDIR}/bazel_out" build install-devcore "${MYEBAZELARGS[@]}"
 }
 
 src_install() {
@@ -320,4 +309,7 @@ pkg_postinst() {
 	ewarn "Make sure to read the release notes and follow the upgrade process:"
 	ewarn "  https://docs.mongodb.com/manual/release-notes/$(ver_cut 1-2)/"
 	ewarn "  https://docs.mongodb.com/manual/release-notes/$(ver_cut 1-2)/#upgrade-procedures"
+	ewarn
+	ewarn "app-admin/mongosh-bin and app-admin/mongo-tools are no longer pulled in by USE flags."
+	ewarn "You will need to install them separately if you want to use them."
 }
