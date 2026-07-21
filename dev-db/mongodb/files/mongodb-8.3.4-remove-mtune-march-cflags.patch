@@ -1,18 +1,11 @@
 diff '--color=auto' -ur a/bazel/toolchains/cc/mongo_linux/mongo_linux_cc_toolchain_config.bzl b/bazel/toolchains/cc/mongo_linux/mongo_linux_cc_toolchain_config.bzl
 --- a/bazel/toolchains/cc/mongo_linux/mongo_linux_cc_toolchain_config.bzl	2026-06-15 18:37:04.000000000 -0400
-+++ b/bazel/toolchains/cc/mongo_linux/mongo_linux_cc_toolchain_config.bzl	2026-06-16 14:28:33.441276638 -0400
-@@ -1732,14 +1732,10 @@
-     )
- 
-     mtune_flags = []
--    if ctx.attr.is_aarch64:
--        mtune_flags += ["-march=armv8.2-a", "-mtune=generic"]
-     if ctx.attr.is_ppc64le:
-         mtune_flags += ["-mcpu=power8", "-mtune=power8", "-mcmodel=medium"]
-     if ctx.attr.is_s390x:
-         mtune_flags += ["-march=z196", "-mtune=zEC12"]
--    if ctx.attr.is_x86_64:
--        mtune_flags += ["-march=sandybridge", "-mtune=generic", "-mprefer-vector-width=128"]
- 
-     mtune_march_feature = feature(
-         name = "mtune_march",
++++ b/bazel/toolchains/cc/mongo_linux/mongo_linux_cc_toolchain_config.bzl	2026-07-20 17:27:34.493483935 -0400
+@@ -2007,7 +2007,6 @@
+         tsan_feature,
+         ubsan_feature,
+         ubsan_third_party_feature,
+-        mtune_march_feature,
+         compress_debug_disable_feature,
+         rpath_override_feature,
+         warnings_as_errors_link_feature,
