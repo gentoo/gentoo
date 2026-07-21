@@ -369,6 +369,9 @@ generate_llvm_config() {
 				--version)
 					do_echo "${version}"
 					;;
+				--help)
+					do_echo "usage: llvm-config <OPTION>... [<COMPONENT>...]"
+					;;
 				-*)
 					do_echo "Unsupported option: \${arg}" >&2
 					exit 1
