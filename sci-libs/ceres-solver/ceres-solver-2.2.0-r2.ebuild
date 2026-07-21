@@ -1,9 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..15} )
 DOCS_BUILDER="sphinx"
 DOCS_DEPEND="dev-python/sphinx-rtd-theme"
 DOCS_DIR="docs/source"
@@ -60,6 +60,10 @@ src_prepare() {
 	# remove Werror
 	sed -e 's/-Werror=(all|extra)//g' \
 		-i CMakeLists.txt || die
+
+	# fix compat with Eigen 5
+	sed -i "s|Eigen3 3.3|Eigen3|g" CMakeLists.txt
+	sed -i "s|Eigen3 \${CERES_EIGEN_VERSION}|Eigen3|g" cmake/CeresConfig.cmake.in
 }
 
 src_configure() {
