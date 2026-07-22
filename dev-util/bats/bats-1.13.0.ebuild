@@ -24,7 +24,10 @@ src_test() {
 	if ! command -v parallel >/dev/null; then
 		my_jobs=1
 	fi
-	bin/bats --tap --jobs "${my_jobs}" test || die "Tests failed"
+	# see https://github.com/bats-core/bats-core/issues/1225
+	# BATS_NUMBER_OF_PARALLEL_JOBS should be the same as "--jobs" as we had before
+	# but turns out they are not so testing like upstream does
+	BATS_NUMBER_OF_PARALLEL_JOBS="${my_jobs}" bin/bats --tap test || die "Tests failed"
 }
 
 src_install() {
