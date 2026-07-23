@@ -1,3 +1,5 @@
+These cpp files reference SYS_* macros but do not explicitly include syscall.h as required.
+
 diff '--color=auto' -ur a/src/mongo/util/concurrency/ticket_pool.cpp b/src/mongo/util/concurrency/ticket_pool.cpp
 --- a/src/mongo/util/concurrency/ticket_pool.cpp	2026-05-13 19:17:03.000000000 -0400
 +++ b/src/mongo/util/concurrency/ticket_pool.cpp	2026-05-29 12:44:21.118990277 -0400

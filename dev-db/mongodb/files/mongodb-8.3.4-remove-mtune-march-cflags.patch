@@ -1,3 +1,5 @@
+Allow the user to set their own mtune/march flags. There is no reason to force specific flags.
+
 diff '--color=auto' -ur a/bazel/toolchains/cc/mongo_linux/mongo_linux_cc_toolchain_config.bzl b/bazel/toolchains/cc/mongo_linux/mongo_linux_cc_toolchain_config.bzl
 --- a/bazel/toolchains/cc/mongo_linux/mongo_linux_cc_toolchain_config.bzl	2026-06-15 18:37:04.000000000 -0400
 +++ b/bazel/toolchains/cc/mongo_linux/mongo_linux_cc_toolchain_config.bzl	2026-07-20 17:27:34.493483935 -0400

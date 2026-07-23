@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 
 CHECKREQS_DISK_BUILD="2500M"
 CHECKREQS_DISK_USR="256M"
@@ -58,26 +58,24 @@ SRC_URI="
 	https://registry.npmjs.org/eslint/-/eslint-9.19.0.tgz
 	https://registry.npmjs.org/prettier/-/prettier-3.4.2.tgz
 "
-
 S="${WORKDIR}/mongo-${MY_PV}"
 
 LICENSE="Apache-2.0 SSPL-1"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 -riscv"
+KEYWORDS="~amd64 ~arm64"
 IUSE="debug ssl"
 
 # https://github.com/mongodb/mongo/wiki/Test-The-Mongodb-Server
 # resmoke needs python packages not yet present in Gentoo
 RESTRICT="test"
 
-RDEPEND="acct-group/mongodb
+RDEPEND="
+	acct-group/mongodb
 	acct-user/mongodb
 	net-misc/curl
-	ssl? (
-		>=dev-libs/openssl-3.0.0:0=
-	)"
-DEPEND="${RDEPEND}
-	${PYTHON_DEPS}"
+	ssl? ( >=dev-libs/openssl-3.0.0:0= )
+"
+DEPEND="${RDEPEND}"
 BDEPEND="
 	$(python_gen_any_dep '
 		dev-python/cheetah3[${PYTHON_USEDEP}]
@@ -85,6 +83,7 @@ BDEPEND="
 		dev-python/pymongo[${PYTHON_USEDEP}]
 		dev-python/packaging[${PYTHON_USEDEP}]
 	')
+	dev-lang/perl
 "
 PATCHES=(
 	"${FILESDIR}/${PN}-8.0.23-disable-bazelisk-check.patch"
@@ -111,9 +110,9 @@ ebazel() {
 
 src_unpack() {
 	case $(tc-arch) in
-		amd64)	  export EARCH=x86_64 ;;
-		arm64)	  export EARCH=arm64 ;;
-		*)		      die "architecture not supported: $(tc-arch)" ;;
+		amd64)	export EARCH=x86_64 ;;
+		arm64)	export EARCH=arm64 ;;
+		*)	die "architecture not supported: $(tc-arch)" ;;
 	esac
 	cp "${DISTDIR}/bazel-${BAZEL_VER}-linux-${EARCH}" bazel || die
 	chmod +x bazel || die
@@ -150,13 +149,15 @@ src_prepare() {
 	default
 
 	# remove enterprise files from build
-	sed -i '/enterprise/d' src/BUILD.bazel
+	sed -i '/enterprise/d' src/BUILD.bazel || die
 
 	# remove compass
 	rm -r src/mongo/installer/compass || die
 
 	# remove all references to poetry
-	find "${S}" -name '*.b*z*l' -exec perl -0 -p -i -e 's#load\("\@poetry//.+?"\)\s*##gm;s#dependency\(.*?\),?##gs' {} \;
+	find "${S}" -name '*.b*z*l' -exec perl -0 -p -i \
+		-e 's#load\("\@poetry//.+?"\)\s*##gm;' \
+		-e 's#dependency\(.*?\),?##gs;' {} \; || die
 }
 
 src_configure() {
@@ -164,9 +165,11 @@ src_configure() {
 	filter-lto
 
 	tc-export CC CXX AR
-	export USE_NATIVE_TOOLCHAIN=1
 
 	MYEBAZELARGS=(
+		--config=public-release
+		--compiler=$(tc-getCC)
+		--host_compiler=$(tc-getBUILD_CC)
 		--compilation_mode=$(usex debug dbg opt)
 		--distdir="${WORKDIR}/bazel_dist"
 		--jobs=$(get_makeopts_jobs)
@@ -185,48 +188,73 @@ src_configure() {
 		--features=-per_object_debug_info
 		--host_features=-per_object_debug_info
 		--separate_debug=False
-		--config=public-release
 		--build_enterprise=False
 		--disable_warnings_as_errors=True
 		--dbg=$(usex debug True False)
 		--debug_symbols=$(usex debug True False)
-		--cxxopt=-std=c++20
-		--host_cxxopt=-std=c++20
-		--copt=-D_GNU_SOURCE
-		--host_copt=-D_GNU_SOURCE
-		--linkopt=-lresolv
-		--linkopt=-Wl,-w
 		--ssl=$(usex ssl True False)
 	)
 
-	if tc-ld-is-lld; then
-		MYEBAZELARGS+=( --linker=lld )
-	else
-		MYEBAZELARGS+=( --linkopt=-fuse-ld=bfd )
+	# several .cpp files attempt to compile with -std=c++17 and fail
+	append-cxxflags -std=c++20
+
+	# these defines are expected by build system and were placed inside
+	# the mongo_linux toolchain that we bypassed
+	append-cppflags -D_XOPEN_SOURCE=700 -D_GNU_SOURCE
+
+	# strict aliasing is broken
+	append-flags -fno-strict-aliasing
+
+	# missing library reference in link stage
+	append-libs -lresolv
+
+	# the only valid options for --linker are auto, lld, and mold
+	# auto is default and will set linker to lld on linux
+	# it explicitly passes -fuse-ld and there is no option
+	# to bypass this
+	if tc-ld-is-mold; then
+		MYEBAZELARGS+=( --linker=mold )
+	elif tc-ld-is-gold; then
+		append-ldflags -fuse-ld=gold
+	elif tc-ld-is-bfd; then
+		append-ldflags -fuse-ld=bfd
 	fi
 
+	# .bazelrc unconditionally sets compiler-type to clang
 	if tc-is-gcc; then
 		MYEBAZELARGS+=( --compiler_type=gcc )
 	fi
 
 	local cppflags
 	for cppflags in ${CPPFLAGS}; do
-		MYEBAZELARGS+=( --copt="${cppflags}" )
+		MYEBAZELARGS+=(
+			--copt="${cppflags}"
+			--host_copt="${cppflags}"
+		)
 	done
 
 	local cflags
 	for cflags in ${CFLAGS}; do
-		MYEBAZELARGS+=( --conlyopt="${cflags}" )
+		MYEBAZELARGS+=(
+			--conlyopt="${cflags}"
+			--host_conlyopt="${cflags}"
+		)
 	done
 
 	local cxxflags
 	for cxxflags in ${CXXFLAGS}; do
-		MYEBAZELARGS+=( --cxxopt="${cxxflags}" )
+		MYEBAZELARGS+=(
+			--cxxopt="${cxxflags}"
+			--host_cxxopt="${cxxflags}"
+		)
 	done
 
 	local ldflags
 	for ldflags in ${LDFLAGS}; do
-		MYEBAZELARGS+=( --linkopt="${ldflags}" )
+		MYEBAZELARGS+=(
+			--linkopt="${ldflags}"
+			--host_linkopt="${ldflags}"
+		)
 	done
 
 	# clean cache, just in case

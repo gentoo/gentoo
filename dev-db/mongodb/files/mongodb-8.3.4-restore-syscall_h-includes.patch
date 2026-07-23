@@ -1,3 +1,5 @@
+These cpp files reference SYS_* macros but do not explicitly include syscall.h as required.
+
 diff '--color=auto' -ur a/src/mongo/util/stacktrace_details.cpp b/src/mongo/util/stacktrace_details.cpp
 --- a/src/mongo/util/stacktrace_details.cpp	2026-06-15 18:37:04.000000000 -0400
 +++ b/src/mongo/util/stacktrace_details.cpp	2026-06-16 14:31:50.121848572 -0400

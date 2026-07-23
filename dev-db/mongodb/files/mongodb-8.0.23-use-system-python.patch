@@ -1,6 +1,17 @@
+The default build tries to download a python executable and all required python modules during
+the build process. While we can pre-populate the Bazel modules to avoid downloading them,
+we cannot prevent poetry from attempting to access PyPI.
+
+Additionally, local_host_values expects to use the downloaded python binary to get the number
+of CPUs on the local system. Since we are not using thin_lto, it is simpler to remove this
+rather than trying to force it to use the sytem python.
+
+This patch allows us to use the system python and removes the rules_poetry Bazel module.
+Additional references to poetry are removed by the ebuild.
+
 diff '--color=auto' -ur a/bazel/mongo_src_rules.bzl b/bazel/mongo_src_rules.bzl
 --- a/bazel/mongo_src_rules.bzl	2026-06-16 10:16:56.000000000 -0400
-+++ b/bazel/mongo_src_rules.bzl	2026-07-20 16:09:52.891711770 -0400
++++ b/bazel/mongo_src_rules.bzl	2026-07-23 11:50:32.370988284 -0400
 @@ -30,7 +30,6 @@
      "extract_debuginfo_binary",
      "extract_debuginfo_test",
@@ -33,8 +44,8 @@ diff '--color=auto' -ur a/bazel/mongo_src_rules.bzl b/bazel/mongo_src_rules.bzl
      } | kwargs
 diff '--color=auto' -ur a/MODULE.bazel b/MODULE.bazel
 --- a/MODULE.bazel	2026-06-16 10:16:56.000000000 -0400
-+++ b/MODULE.bazel	2026-07-20 16:08:33.899606474 -0400
-@@ -77,14 +77,6 @@
++++ b/MODULE.bazel	2026-07-23 12:58:15.107560406 -0400
+@@ -77,13 +77,6 @@
      version = "6.3.0",
  )
  
@@ -45,27 +56,13 @@ diff '--color=auto' -ur a/MODULE.bazel b/MODULE.bazel
 -    patches = ["//bazel/rules_poetry:rules_poetry.patch"],
 -    remote = "https://github.com/mongodb-forks/rules_poetry",
 -)
--
+ 
  #
  ## We need skylib to be able to use config_setting_group in rule_poetry below
- ## https://github.com/bazelbuild/bazel-skylib/blob/main/docs/selects_doc.md#selectsconfig_setting_group
-@@ -160,34 +152,6 @@
-     "@mongo_apple_toolchain//...",
+@@ -173,20 +166,10 @@
+     "py_windows_x86_64",
  )
  
--setup_mongo_python_toolchains = use_extension("//bazel:bzlmod.bzl", "setup_mongo_python_toolchains")
--use_repo(
--    setup_mongo_python_toolchains,
--    "py_host",
--    "py_linux_arm64",
--    "py_linux_ppc64le",
--    "py_linux_s390x",
--    "py_linux_x86_64",
--    "py_macos_arm64",
--    "py_macos_x86_64",
--    "py_windows_x86_64",
--)
--
 -register_toolchains(
 -    "@py_linux_arm64//:python_toolchain",
 -    "@py_linux_ppc64le//:python_toolchain",
@@ -75,16 +72,15 @@ diff '--color=auto' -ur a/MODULE.bazel b/MODULE.bazel
 -    "@py_macos_x86_64//:python_toolchain",
 -    "@py_windows_x86_64//:python_toolchain",
 -)
--
--# broken on windows currently
--setup_local_host_values = use_repo_rule("//bazel/platforms:local_host_values.bzl", "setup_local_host_values")
--
+ 
+ # broken on windows currently
+ setup_local_host_values = use_repo_rule("//bazel/platforms:local_host_values.bzl", "setup_local_host_values")
+ 
 -setup_local_host_values(name = "local_host_values")
--
+ 
  setup_evergreen_variables = use_repo_rule("//bazel/repository_rules:evergreen_variables.bzl", "setup_evergreen_variables")
  
- setup_evergreen_variables(name = "evergreen_variables")
-@@ -196,3 +160,17 @@
+@@ -196,3 +179,17 @@
  use_repo(setup_mongo_windows_toolchains_extension, "mongo_windows_toolchain")
  
  register_toolchains("@mongo_windows_toolchain//...")
@@ -104,8 +100,8 @@ diff '--color=auto' -ur a/MODULE.bazel b/MODULE.bazel
 +register_toolchains("@rules_python//python/runtime_env_toolchains:all")
 diff '--color=auto' -ur a/WORKSPACE.bazel b/WORKSPACE.bazel
 --- a/WORKSPACE.bazel	2026-06-16 10:16:56.000000000 -0400
-+++ b/WORKSPACE.bazel	2026-07-20 16:00:14.395652494 -0400
-@@ -110,20 +110,6 @@
++++ b/WORKSPACE.bazel	2026-07-23 12:26:51.308298469 -0400
+@@ -110,19 +110,6 @@
  
  rules_coverity_toolchains()
  
@@ -122,11 +118,10 @@ diff '--color=auto' -ur a/WORKSPACE.bazel b/WORKSPACE.bazel
 -    python_interpreter_target_mac = "@py_host//:dist/bin/python3",
 -    python_interpreter_target_win = "@py_host//:dist/python.exe",
 -)
--
+ 
  load("@aspect_rules_js//js:toolchains.bzl", "DEFAULT_NODE_VERSION", "rules_js_register_toolchains")
  
- rules_js_register_toolchains(node_version = DEFAULT_NODE_VERSION)
-@@ -174,12 +160,9 @@
+@@ -174,12 +161,10 @@
  
  codeowners_binary()
  
@@ -135,7 +130,7 @@ diff '--color=auto' -ur a/WORKSPACE.bazel b/WORKSPACE.bazel
 -    lockfile = "@bazel_rules_mongo//:poetry.lock",
 -    pyproject = "@bazel_rules_mongo//:pyproject.toml",
 -)
--
+ 
  load("//bazel/format:shfmt.bzl", "shfmt")
  
  shfmt()
