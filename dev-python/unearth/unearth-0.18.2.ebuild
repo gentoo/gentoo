@@ -1,4 +1,4 @@
-# Copyright 2023-2025 Gentoo Authors
+# Copyright 2023-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -35,3 +35,7 @@ BDEPEND="
 
 EPYTEST_PLUGINS=( pytest-{httpserver,mock} )
 distutils_enable_tests pytest
+
+PATCHES=(
+	"${FILESDIR}"/unearth-0.18.2-fix-tests-packaging-26.patch
+)
