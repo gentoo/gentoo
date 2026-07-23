@@ -250,7 +250,7 @@ src_configure() {
 	done
 
 	local ldflags
-	for ldflags in ${LDFLAGS}; do
+	for ldflags in ${LDFLAGS} ${LIBS}; do
 		MYEBAZELARGS+=(
 			--linkopt="${ldflags}"
 			--host_linkopt="${ldflags}"
