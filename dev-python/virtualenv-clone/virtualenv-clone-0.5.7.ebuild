@@ -33,4 +33,5 @@ PATCHES=(
 	"${FILESDIR}/${PN}-0.5.7-fix-test-virtualenv-20.38.patch"
 )
 
+EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
