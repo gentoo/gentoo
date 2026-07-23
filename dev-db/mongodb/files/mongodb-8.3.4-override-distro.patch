@@ -1,3 +1,5 @@
+Does not recognize gentoo and returns None when a string is expected, crashing python.
+
 diff '--color=auto' -ur a/bazel/utils.bzl b/bazel/utils.bzl
 --- a/bazel/utils.bzl	2026-06-15 18:37:04.000000000 -0400
 +++ b/bazel/utils.bzl	2026-07-20 17:25:36.461316417 -0400
