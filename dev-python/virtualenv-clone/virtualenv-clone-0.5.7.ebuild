@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -28,6 +28,9 @@ BDEPEND="
 	)
 "
 
-PATCHES=( "${FILESDIR}/${PN}-0.5.7-backport-pr79.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-0.5.7-backport-pr79.patch"
+	"${FILESDIR}/${PN}-0.5.7-fix-test-virtualenv-20.38.patch"
+)
 
 distutils_enable_tests pytest
