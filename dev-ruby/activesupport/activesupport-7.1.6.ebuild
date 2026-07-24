@@ -55,7 +55,7 @@ ruby_add_bdepend "test? (
 	|| ( dev-ruby/rack:3.1 dev-ruby/rack:3.0 )
 	dev-ruby/rexml
 	dev-ruby/mocha
-	>dev-ruby/minitest-5.15.0:*
+	>dev-ruby/minitest-5.15.0:5
 	)"
 
 all_ruby_prepare() {
@@ -64,12 +64,13 @@ all_ruby_prepare() {
 
 	# Remove items from the common Gemfile that we don't need for this
 	# test run. This also requires handling some gemspecs.
-	sed -i -e "/\(system_timer\|execjs\|jquery-rails\|journey\|ruby-prof\|stackprof\|benchmark-ips\|turbolinks\|coffee-rails\|debugger\|sprockets-rails\|bcrypt\|uglifier\|minitest\|sprockets\|stackprof\|rack-cache\|sqlite\|websocket-client-simple\|\libxml-ruby\|bootsnap\|aws-sdk\|webmock\|capybara\|sass-rails\|selenium-webdriver\|webpacker\|webrick\|propshaft\|rack-test\|terser\|cgi\|net-smtp\|net-imap\|net-pop\|digest\|matrix\|web-console\|error_highlight\|jbuilder\)/ s:^:#:" \
+	sed -i -e "/\(system_timer\|execjs\|jquery-rails\|journey\|ruby-prof\|stackprof\|benchmark-ips\|turbolinks\|coffee-rails\|debugger\|sprockets-rails\|bcrypt\|uglifier\|sprockets\|stackprof\|rack-cache\|sqlite\|websocket-client-simple\|\libxml-ruby\|bootsnap\|aws-sdk\|webmock\|capybara\|sass-rails\|selenium-webdriver\|webpacker\|webrick\|propshaft\|rack-test\|terser\|cgi\|net-smtp\|net-imap\|net-pop\|digest\|matrix\|web-console\|error_highlight\|jbuilder\)/ s:^:#:" \
 		-e '/stimulus-rails/,/tailwindcss-rails/ s:^:#:' \
 		-e '/^group :test/,/^end/ s:^:#:' \
 		-e '/^\s*group :\(db\|doc\|rubocop\|job\|cable\|lint\|mdl\|storage\|ujs\|test\|view\) do/,/^\s*end/ s:^:#:' \
 		-e 's/gemspec/gemspec path: "activesupport"/' \
 		-e '/gem "dalli",/ s/$/, "< 5"/' \
+		-e '/gem "minitest"/ s/$/, "~> 5"/' \
 		-e '5igem "builder"' ../Gemfile || die
 	rm ../Gemfile.lock || die
 
