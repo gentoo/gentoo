@@ -51,11 +51,13 @@ DESCRIPTION="Prebuilt Java JDK binaries provided by Eclipse Temurin"
 HOMEPAGE="https://adoptium.net"
 SRC_URI="
 	$(abi_uri aarch64 arm64)
+	$(abi_uri aarch64 arm64-macos)
 	$(abi_uri aarch64 arm64 musl)
 	$(abi_uri ppc64le ppc64)
 	$(abi_uri x64 amd64)
 	$(abi_uri x64 amd64 musl)
 	$(abi_uri riscv64 riscv)
+	$(abi_uri x64 x64-macos)
 "
 S="${WORKDIR}/jdk-${MY_PV}"
 
