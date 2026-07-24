@@ -56,6 +56,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.24.8-add-desktop-pc-files.patch
 	"${FILESDIR}"/${P}-cross-fixes.patch
 	"${FILESDIR}"/${PN}-1.24.1-darwin.patch
+	"${FILESDIR}"/${PN}-1.27.2-fix-system-zxing-cpp.patch
 	# See bug #662352
 	"${FILESDIR}"/${P}-openssl-x11.patch
 	# General cross fixes from Debian (refreshed)
