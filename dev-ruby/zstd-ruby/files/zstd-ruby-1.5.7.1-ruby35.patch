@@ -1,0 +1,55 @@
+https://github.com/SpringMT/zstd-ruby/pull/118
+https://github.com/SpringMT/zstd-ruby/commit/7cc7e95bcd43b6ca42fb7961267eac216ed960a5
+
+From 5c6d656d39501d356df21c562b0a12fb0480ebf2 Mon Sep 17 00:00:00 2001
+From: Shizuo Fujita <fujita@clear-code.com>
+Date: Sat, 18 Oct 2025 13:32:15 +0900
+Subject: [PATCH] CI: Support Ruby 3.5
+
+Ractor#take was replaced at Ruby 3.5.
+https://bugs.ruby-lang.org/issues/21262
+--- a/spec/zstd-ruby-streaming-compress_spec.rb
++++ b/spec/zstd-ruby-streaming-compress_spec.rb
+@@ -115,7 +115,11 @@
+           stream << "abc" << "def"
+           res = stream.finish
+         }
+-        expect(Zstd.decompress(r.take)).to eq('abcdef')
++        # Ractor#take was replaced at Ruby 3.5.
++        # https://bugs.ruby-lang.org/issues/21262
++        result = r.respond_to?(:take) ? r.take : r.value
++
++        expect(Zstd.decompress(result)).to eq('abcdef')
+       end
+     end
+   end
+--- a/spec/zstd-ruby-streaming-decompress_spec.rb
++++ b/spec/zstd-ruby-streaming-decompress_spec.rb
+@@ -169,7 +169,11 @@
+           result << stream.decompress(cstr[10..-1])
+           result
+         }
+-        expect(r.take).to eq('foo bar buzz')
++        # Ractor#take was replaced at Ruby 3.5.
++        # https://bugs.ruby-lang.org/issues/21262
++        result = r.respond_to?(:take) ? r.take : r.value
++
++        expect(result).to eq('foo bar buzz')
+       end
+     end
+   end
+--- a/spec/zstd-ruby_spec.rb
++++ b/spec/zstd-ruby_spec.rb
+@@ -118,7 +118,11 @@ def to_str
+     describe 'Ractor' do
+       it 'should be supported' do
+         r = Ractor.new { Zstd.compress('abc') }
+-        expect(Zstd.decompress(r.take)).to eq('abc')
++        # Ractor#take was replaced at Ruby 3.5.
++        # https://bugs.ruby-lang.org/issues/21262
++        result = r.respond_to?(:take) ? r.take : r.value
++
++        expect(Zstd.decompress(result)).to eq('abc')
+       end
+     end
+   end
