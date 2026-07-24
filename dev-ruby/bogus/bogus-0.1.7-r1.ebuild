@@ -1,9 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-USE_RUBY="ruby31 ruby32 ruby33 ruby34"
+USE_RUBY="ruby32 ruby33 ruby34"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 
@@ -20,6 +20,10 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 ruby_add_rdepend ">=dev-ruby/dependor-0.0.4"
+
+PATCHES=(
+	"${FILESDIR}"/bogus-0.1.7-erb6.patch
+)
 
 all_ruby_prepare() {
 	sed -i -e '/simplecov/,/^end/ s:^:#:' \
