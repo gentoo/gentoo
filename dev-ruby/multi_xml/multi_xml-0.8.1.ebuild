@@ -27,7 +27,7 @@ IUSE="doc test"
 ruby_add_rdepend "|| ( dev-ruby/bigdecimal:4 >=dev-ruby/bigdecimal-3.1:0 )"
 
 ruby_add_bdepend "doc? ( dev-ruby/yard )"
-ruby_add_bdepend "test? ( >=dev-ruby/minitest-5.27:5 dev-ruby/ox )"
+ruby_add_bdepend "test? ( >=dev-ruby/minitest-5.27:5 dev-ruby/nokogiri dev-ruby/ox )"
 
 all_ruby_prepare() {
 	sed -e 's:_relative ": "./:' \
