@@ -1,0 +1,45 @@
+--- a/spec/facter/facter_spec.rb
++++ b/spec/facter/facter_spec.rb
+@@ -598,7 +598,12 @@ describe Facter do
+       context 'when exception and message are hashes' do
+         let(:message) { { 'a': 1 } }
+         let(:exception) { { 'b': 2 } }
+-        let(:expected_message) { '{:a=>1}' }
++        # https://bugs.ruby-lang.org/issues/20433
++        if RUBY_VERSION >= '3.4'
++          let(:expected_message) { '{a: 1}' }
++        else
++          let(:expected_message) { '{:a=>1}' }
++        end
+ 
+         it_behaves_like 'when exception param is not an exception'
+       end
+@@ -682,7 +687,12 @@ describe Facter do
+       context 'when exception and message are hashes' do
+         let(:message) { { 'a': 1 } }
+         let(:exception) { { 'b': 2 } }
+-        let(:expected_message) { '{:a=>1}' }
++        # https://bugs.ruby-lang.org/issues/20433
++        if RUBY_VERSION >= '3.4'
++          let(:expected_message) { '{a: 1}' }
++        else
++          let(:expected_message) { '{:a=>1}' }
++        end
+ 
+         it_behaves_like 'when exception param is not an exception'
+       end
+@@ -808,7 +818,12 @@ describe Facter do
+     end
+ 
+     it 'when message is a hash' do
+-      expect(logger).to receive(:warn).with('{:warn=>"message"}')
++      # https://bugs.ruby-lang.org/issues/20433
++      if RUBY_VERSION >= '3.4'
++        expect(logger).to receive(:warn).with('{warn: "message"}')
++      else
++        expect(logger).to receive(:warn).with('{:warn=>"message"}')
++      end
+ 
+       Facter.warn({ warn: 'message' })
+     end
+
