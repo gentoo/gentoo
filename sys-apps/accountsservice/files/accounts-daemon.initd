@@ -1,0 +1,20 @@
+#!/sbin/openrc-run
+
+# systemd service file
+
+GVFS_DISABLE_FUSE=1
+GIO_USE_VFS=local
+GVFS_REMOTE_VOLUME_MONITOR_IGNORE=1
+
+supervisor=supervise-daemon
+
+command="/usr/libexec/accounts-daemon"
+no_new_privs=1
+
+depend() {
+	need dbus elogind
+}
+
+start_pre() {
+	checkpath -d -m 775 /var/lib/AccountsService
+}
