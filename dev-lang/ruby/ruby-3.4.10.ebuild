@@ -8,31 +8,18 @@ RUST_OPTIONAL="yes"
 inherit autotools flag-o-matic multiprocessing rust
 
 MY_P="${PN}-$(ver_cut 1-3)"
-MY_PV="${PV%.*}"
-MY_SLOT=$(ver_cut 1-2)
 
 DESCRIPTION="An object-oriented scripting language"
 HOMEPAGE="https://www.ruby-lang.org/"
-if [[ ${PV} == *9999* ]]; then
-	inherit git-r3
-	EGIT_BRANCH="ruby_${MY_PV/./_}"
-	EGIT_REPO_URI="https://github.com/ruby/ruby.git"
-
-	# Self-depend is necessary because ruby from git depends on building some pre-requisite gems.
-	BDEPEND="
-		dev-lang/ruby:${MY_SLOT}
-	"
-else
-	SRC_URI="https://cache.ruby-lang.org/pub/ruby/$(ver_cut 1-2)/${MY_P}.tar.xz"
-	S=${WORKDIR}/${MY_P}
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~arm64-macos ~x64-macos ~x64-solaris"
-fi
+SRC_URI="https://cache.ruby-lang.org/pub/ruby/$(ver_cut 1-2)/${MY_P}.tar.xz"
+S=${WORKDIR}/${MY_P}
 
 LICENSE="|| ( Ruby-BSD BSD-2 )"
-SLOT=${MY_SLOT}
+SLOT=$(ver_cut 1-2)
 MY_SUFFIX=$(ver_rs 1 '' ${SLOT})
 RUBYVERSION=${SLOT}.0
 
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~arm64-macos ~x64-macos ~x64-solaris"
 IUSE="berkdb debug doc examples gdbm jemalloc jit socks5 +ssl static-libs systemtap tk valgrind xemacs"
 
 RDEPEND="
@@ -177,14 +164,6 @@ src_prepare() {
 		sed -i -e "s#\(SHELL = \).*#\1${EPREFIX}/bin/sh#" lib/mkmf.rb || die
 	fi
 
-	# Have ruby --version print out ${PV}
-	if [[ ${PV} == *9999* ]]; then
-		sed -i "s/#define RUBY_VERSION_TEENY.*/#define RUBY_VERSION_TEENY 9999/" version.h || die
-
-		cp "${BROOT}"/usr/share/gnuconfig/config.guess "${S}"/tool/config.guess || die
-		cp "${BROOT}"/usr/share/gnuconfig/config.sub "${S}"/tool/config.sub || die
-	fi
-
 	eapply_user
 
 	eautoreconf
@@ -282,9 +261,6 @@ src_configure() {
 	# Fix co-routine selection for x32, bug 933070
 	[[ ${CHOST} == *gnux32 ]] && myeconfargs+=( --with-coroutine=amd64 )
 
-	# Live ebuilds require a Ruby version to build with.
-	[[ ${PV} == *9999* ]] && myeconfargs+=( --with-baseruby="${BROOT}"/usr/bin/ruby$(ver_rs 1 "" "${MY_PV}") )
-
 	INSTALL="${EPREFIX}/usr/bin/install -c" econf "${myeconfargs[@]}"
 
 	# Makefile is broken because it lacks -ldl
@@ -311,12 +287,13 @@ src_install() {
 	# Ruby is involved in the install process, we don't want interference here.
 	unset RUBYOPT
 
-	local MINIRUBY=$(echo -e 'include Makefile\ngetminiruby:\n\t@echo $(MINIRUBY)' | make -f - getminiruby)
+	local MINIRUBY=$(echo -e 'include Makefile\ngetminiruby:\n\t@echo $(MINIRUBY)'|make -f - getminiruby)
+
 	local -x LD_LIBRARY_PATH="${S}:${ED}/usr/$(get_libdir)${LD_LIBRARY_PATH+:}${LD_LIBRARY_PATH}"
+
 	local -x RUBYLIB="${S}:${ED}/usr/$(get_libdir)/ruby/${RUBYVERSION}"
-	local d
 	for d in $(find "${S}/ext" -type d) ; do
-		RUBYLIB="${RUBYLIB}:${d}"
+		RUBYLIB="${RUBYLIB}:$d"
 	done
 
 	# Create directory for the default gems
