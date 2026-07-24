@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -26,7 +26,7 @@ IUSE="test"
 
 DEPEND="test? ( app-arch/zip )"
 
-ruby_add_bdepend "test? ( dev-ruby/minitest:5 )"
+ruby_add_bdepend "test? ( dev-ruby/minitest:5 dev-ruby/bundler )"
 
 all_ruby_install() {
 	all_fakegem_install
@@ -52,4 +52,14 @@ all_ruby_prepare() {
 
 	# Fix broken test that uses native endian
 	sed -i -e '/pack/ s/LLS/VVv/' test/file_extract_test.rb || die
+
+	# Avoid minitest-6, bug #978921
+	cat <<-EOF > "${T}/Gemfile" || die
+	gem 'rake'
+	gem 'minitest', '~> 5.25'
+	EOF
+}
+
+each_ruby_test() {
+	BUNDLE_GEMFILE="${T}/Gemfile" ${RUBY} -S bundle exec ${RUBY} -S rake test || die
 }
