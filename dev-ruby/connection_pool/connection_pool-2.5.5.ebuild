@@ -3,7 +3,7 @@
 
 EAPI=8
 
-USE_RUBY="ruby32 ruby33 ruby34"
+USE_RUBY="ruby32 ruby33 ruby34 ruby40"
 
 RUBY_FAKEGEM_GEMSPEC="connection_pool.gemspec"
 RUBY_FAKEGEM_RECIPE_TEST="rake"
@@ -22,6 +22,10 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc
 IUSE="test"
 
 ruby_add_bdepend "test? ( dev-ruby/bundler dev-ruby/minitest:5 )"
+
+PATCHES=(
+	"${FILESDIR}"/connection_pool-2.5.5-ruby40.patch
+)
 
 all_ruby_prepare() {
 	sed -i -e '/git ls-files/d' connection_pool.gemspec || die

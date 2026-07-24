@@ -1,0 +1,15 @@
+Surgically taked from
+https://github.com/mperham/connection_pool/commit/5d3f6c1db81b009c06d1f1d85e12c21c1fe74fa2
+
+--- a/test/test_connection_pool.rb
++++ b/test/test_connection_pool.rb
+@@ -805,7 +811,8 @@ def test_ractors_pool_usage
+         pool.with { |y| checkedout = y }
+         checkedout
+       end
+-      result = r.take
++
++      result = (RUBY_VERSION < "4") ? r.take : r.value
+       assert_equal obj, result # same string but different String instance
+       refute_equal obj.object_id, result.object_id # was copied across Ractor boundary
+     end
