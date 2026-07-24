@@ -47,7 +47,12 @@ ruby_add_bdepend "
 #   dev-ruby/rspec-collection_matchers
 
 RDEPEND+=" ${RDEPEND}
-	rrdtool? ( >=net-analyzer/rrdtool-1.2.23[ruby] )
+	rrdtool? (
+		|| (
+			>=dev-ruby/rrdtool-bindings-1.2.23
+			>=net-analyzer/rrdtool-1.2.23[ruby(-)]
+		)
+	)
 	selinux? (
 		sys-libs/libselinux[ruby]
 		sec-policy/selinux-puppet
