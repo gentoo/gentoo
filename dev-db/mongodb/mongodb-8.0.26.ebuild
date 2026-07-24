@@ -202,6 +202,12 @@ src_configure() {
 	# the mongo_linux toolchain that we bypassed
 	append-cppflags -D_XOPEN_SOURCE=700 -D_GNU_SOURCE
 
+	# -Werror is injected in a few places
+	append-cppflags -Wno-error
+
+	# linking fails without this
+	append-ldflags -Wl,-w
+
 	# strict aliasing is broken
 	append-flags -fno-strict-aliasing
 
