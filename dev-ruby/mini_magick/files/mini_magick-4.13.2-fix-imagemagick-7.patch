@@ -1,0 +1,20 @@
+https://github.com/minimagick/minimagick/issues/590
+https://github.com/minimagick/minimagick/pull/591
+https://github.com/minimagick/minimagick/commit/7f25f72f7b2d11954a8d300dbba1208611eb25fb
+
+From 7f25f72f7b2d11954a8d300dbba1208611eb25fb Mon Sep 17 00:00:00 2001
+From: sorenstoutner <soren@stoutner.com>
+Date: Fri, 21 Mar 2025 05:57:02 -0700
+Subject: [PATCH] Fix testing with current versions of ImageMagick (#591)
+
+--- a/spec/lib/mini_magick/shell_spec.rb
++++ b/spec/lib/mini_magick/shell_spec.rb
+@@ -57,7 +57,7 @@
+       stdout, stderr, status = subject.execute(%W[identify foo])
+ 
+       expect(stdout).to eq ""
+-      expect(stderr).to match("unable to open image")
++      expect(stderr).to match("(unable to open image|identify: no decode delegate for this image format)")
+       expect(status).to eq 1
+     end
+ 
