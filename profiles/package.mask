@@ -36,6 +36,16 @@
 
 #--- END OF EXAMPLES ---
 
+# Viorel Munteanu <ceamac@gentoo.org> (2026-09-27)
+# Drupal 11.2.x is EOL, no longer receives security updates.
+# Keeping it in tree only to help upgrading from 10.6.x to 11.3.x.
+# Upgrading directly from 10.6 to 11.3 can result in this error:
+# Uncaught PHP Exception TypeError: \
+# 	"Drupal\\Core\\Utility\\ThemeRegistry::getPreprocessInvokes(): \
+# 	Return value must be of type array, null returned"
+# Will be removed when 10.6.x reaches end of life (after December 2026).
+www-apps/drupal:11.2.14
+
 # Sam James <sam@gentoo.org> (2026-09-24)
 # Increasingly challenging to maintain with increased release cadence,
 # upstream toolchain changes, and conflicts between trying to provide
