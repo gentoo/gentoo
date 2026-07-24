@@ -3,7 +3,7 @@
 
 EAPI=8
 
-USE_RUBY="ruby32 ruby33 ruby34"
+USE_RUBY="ruby32 ruby33 ruby34 ruby40"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 
@@ -35,6 +35,10 @@ DEPEND+=" >=media-gfx/imagemagick-6.9.0 test? ( >=media-gfx/imagemagick-7.1.0:=[
 # observer is a default gem packaged with ruby
 
 ruby_add_bdepend "dev-ruby/pkg-config"
+
+PATCHES=(
+	"${FILESDIR}"/rmagick-5.5.0-ruby35.patch
+)
 
 all_ruby_prepare() {
 	# Avoid unused dependency on rake-compiler. This also avoids an
