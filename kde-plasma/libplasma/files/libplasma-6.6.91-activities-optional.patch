@@ -1,0 +1,150 @@
+From 1770dfbbfe3c21d64162c28aac9f500aaf1af954 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Wed, 2 Aug 2023 22:24:00 +0200
+Subject: [PATCH] Make PlasmaActivities optional via ENABLE_ACTIVITIES cmake
+ option
+
+Much easier after 7b02210b76e95455a58e554b83ffa015ab183b75
+
+See also: https://invent.kde.org/plasma/plasma-workspace/-/issues/35
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+(cherry picked from commit 275ffe37a463709acd396d2fc87e98454f12debc)
+---
+ CMakeLists.txt                       | 7 ++++++-
+ src/plasma/CMakeLists.txt            | 5 ++++-
+ src/plasma/config-plasma.h.cmake     | 1 +
+ src/plasma/containment.cpp           | 8 ++++++++
+ src/plasma/private/containment_p.cpp | 4 ++++
+ 5 files changed, 23 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 76bde1f19..10ae1620c 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -33,6 +33,8 @@ include(ECMQmlModule)
+ include(ECMGenerateQDoc)
+ include(ECMFindQmlModule)
+ 
++option(ENABLE_ACTIVITIES "Enable support for Plasma Activities in containments" ON)
++
+ ecm_setup_version(PROJECT
+                   VARIABLE_PREFIX PLASMA
+                   VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/plasma_version.h"
+@@ -63,7 +65,6 @@ find_package(KF6 ${KF6_MIN_VERSION} REQUIRED
+         Svg
+         ColorScheme
+ )
+-find_package(PlasmaActivities REQUIRED ${PROJECT_DEP_VERSION})
+ 
+ # Wayland features
+ find_package(PlasmaWaylandProtocols 1.10.0 REQUIRED)
+@@ -71,6 +72,10 @@ find_package(Qt6WaylandClient ${QT_MIN_VERSION} REQUIRED CONFIG)
+ find_package(Wayland 1.9 REQUIRED Client)
+ find_package(WaylandProtocols 1.46 REQUIRED)
+ 
++if(ENABLE_ACTIVITIES)
++    find_package(PlasmaActivities ${PROJECT_DEP_VERSION} REQUIRED)
++endif()
++
+ option(WITHOUT_X11 "Build without X11 support (skips finding X11)." OFF)
+ if(NOT WITHOUT_X11)
+     #optional features
+diff --git a/src/plasma/CMakeLists.txt b/src/plasma/CMakeLists.txt
+index c4fb1fc41..4df68dbd8 100644
+--- a/src/plasma/CMakeLists.txt
++++ b/src/plasma/CMakeLists.txt
+@@ -101,11 +101,14 @@ PRIVATE
+     KF6::GlobalAccel #Applet::setGlobalShortcut
+     KF6::Notifications
+     KF6::IconThemes
+-    Plasma::Activities
+     KF6::Svg
+     ${PLASMA_EXTRA_LIBS}
+ )
+ 
++if(ENABLE_ACTIVITIES)
++    target_link_libraries(Plasma PRIVATE Plasma::Activities)
++endif()
++
+ target_link_libraries(Plasma PRIVATE KF6::Package)
+ 
+ set(Plasma_BUILD_INCLUDE_DIRS
+diff --git a/src/plasma/config-plasma.h.cmake b/src/plasma/config-plasma.h.cmake
+index e3c9b61de..bb29a6511 100644
+--- a/src/plasma/config-plasma.h.cmake
++++ b/src/plasma/config-plasma.h.cmake
+@@ -1,5 +1,6 @@
+ #cmakedefine01 HAVE_X11
+ #cmakedefine01 HAVE_GLX
+ #cmakedefine01 HAVE_EGL
++#cmakedefine01 ENABLE_ACTIVITIES
+ 
+ #define PLASMA_RELATIVE_DATA_INSTALL_DIR "@PLASMA_RELATIVE_DATA_INSTALL_DIR@"
+diff --git a/src/plasma/containment.cpp b/src/plasma/containment.cpp
+index 6cb03c772..205d47c93 100644
+--- a/src/plasma/containment.cpp
++++ b/src/plasma/containment.cpp
+@@ -27,7 +27,9 @@
+ #include <KConfigSkeleton>
+ #include <KLocalizedString>
+ 
++#if ENABLE_ACTIVITIES
+ #include <plasmaactivities/info.h>
++#endif
+ 
+ #include "containmentactions.h"
+ #include "corona.h"
+@@ -215,7 +217,9 @@ void Containment::save(KConfigGroup &g) const
+     group.writeEntry("lastScreen", d->lastScreen);
+     group.writeEntry("formfactor", (int)d->formFactor);
+     group.writeEntry("location", (int)d->location);
++#if ENABLE_ACTIVITIES
+     group.writeEntry("activityId", d->activityId);
++#endif
+ 
+     group.writeEntry("wallpaperplugin", d->wallpaperPlugin);
+ 
+@@ -666,10 +670,14 @@ QString Containment::activity() const
+ 
+ QString Containment::activityName() const
+ {
++#if ENABLE_ACTIVITIES
+     if (!d->activityInfo) {
+         return QString();
+     }
+     return d->activityInfo->name();
++#else
++    return QString();
++#endif
+ }
+ 
+ void Containment::reactToScreenChange()
+diff --git a/src/plasma/private/containment_p.cpp b/src/plasma/private/containment_p.cpp
+index 03acea215..be3430509 100644
+--- a/src/plasma/private/containment_p.cpp
++++ b/src/plasma/private/containment_p.cpp
+@@ -16,7 +16,9 @@
+ 
+ #include "pluginloader.h"
+ 
++#if ENABLE_ACTIVITIES
+ #include <plasmaactivities/info.h>
++#endif
+ 
+ #include "debug_p.h"
+ #include "private/applet_p.h"
+@@ -34,8 +36,10 @@ ContainmentPrivate::ContainmentPrivate(Containment *c)
+     , uiReady(false)
+     , appletsUiReady(false)
+ {
++#if ENABLE_ACTIVITIES
+     activityInfo = new KActivities::Info(activityId, q);
+     QObject::connect(activityInfo, &KActivities::Info::nameChanged, q, &Containment::activityNameChanged);
++#endif
+ }
+ 
+ Plasma::ContainmentPrivate::~ContainmentPrivate()
+-- 
+2.54.0
+

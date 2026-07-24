@@ -1,0 +1,88 @@
+From cd610905162812ca7dcf246b3dc46bce5e28e7cb Mon Sep 17 00:00:00 2001
+Message-ID: <cd610905162812ca7dcf246b3dc46bce5e28e7cb.1781226895.git.sam@gentoo.org>
+From: Kerin Millar <kfm@plushkava.net>
+Date: Sun, 31 May 2026 13:36:09 +0800
+Subject: [PATCH 1/2] builtin: Fix octal escapes in dollar-single-quotes
+
+The test suite of gentoo-functions recently uncovered a bug concerning
+the handling of octal escape sequences within dollar-single-quotes.
+Here is a reproducer:
+
+    $ dash -c "x=\$'\\201'; printf '%s' \"\$x\"" | od -An -tx1
+    88
+
+That is, despite the input being 0x81, the output is 0x88. Indeed, any
+input between 0x81..0x88 is adversely affected and some - such as 0x82 -
+induce a segfault.
+
+I noticed the following macros in src/parser.h:
+
+    #define CTL_FIRST -127 /* first 'special' character */
+    #define CTLESC    -127 /* escape next character */
+    #define CTL_LAST  -120 /* last 'special' character */
+
+Reinterpreted as unsigned char, the CTL_FIRST..CTL_LAST range maps
+exactly to 0x81..0x88:
+
+    $ perl -e 'printf "%x\0", $_ & 0xFF for -127..-120' | xargs -0
+    81 82 83 84 85 86 87 88
+
+From this, I was able to deduce that all of these bytes must be preceded
+by CTLESC in order to be taken literally. Make it so.
+
+Link: https://gitweb.gentoo.org/proj/gentoo-functions.git/commit/?id=947090fb7704
+Signed-off-by: Kerin Millar <kfm@plushkava.net>
+
+The escape should also be applied to \x sequences.  In fact \x81
+was totally broken as it produced a multi-byte character.  Fix this
+by merging these two code paths.
+
+Signed-off-by: Herbert Xu <herbert@gondor.apana.org.au>
+---
+ src/bltin/printf.c | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
+
+diff --git a/src/bltin/printf.c b/src/bltin/printf.c
+index 106aecd..671e781 100644
+--- a/src/bltin/printf.c
++++ b/src/bltin/printf.c
+@@ -332,6 +332,7 @@ unsigned conv_escape(char *str0, char *out0, bool mbchar)
+ 	char *out = out0;
+ 	char *str = str0;
+ 	unsigned value;
++	int och;
+ 	int ch;
+ 
+ 	ch = *str;
+@@ -359,12 +360,18 @@ unsigned conv_escape(char *str0, char *out0, bool mbchar)
+ 		}
+ 
+ 		str--;
++
++check_value:
++		if (mbchar && (signed char)value >= CTL_FIRST &&
++		    (signed char)value <= CTL_LAST)
++			USTPUTC(CTLESC, out);
+ 		break;
+ 
+ 	case 'x':
+ 		ch = 2;
+ 
+ hex:
++		och = ch;
+ 		value = 0;
+ 		do {
+ 			int c = *++str;
+@@ -391,6 +398,9 @@ hex:
+ 		if (value < 0x80)
+ 			break;
+ 
++		if (och <= 2)
++			goto check_value;
++
+ 		if (value < 0x110000) {
+ 			int mboff = (mbchar - 1) * 2;
+ 			unsigned uni = value;
+-- 
+2.54.0
+

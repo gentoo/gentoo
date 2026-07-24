@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">powa-team/powa-archivist</remote-id>
+	</upstream>
+	<longdescription>
+		This project is the core extension of the PoWA project,
+		a PostgreSQL Workload Analyzer that gathers performance stats
+		and provides real-time charts and graphs to help monitor
+		and tune your PostgreSQL servers.
+	</longdescription>
+</pkgmetadata>

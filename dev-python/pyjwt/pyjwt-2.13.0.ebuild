@@ -6,7 +6,7 @@ EAPI=8
 DISTUTILS_USE_PEP517=setuptools
 PYPI_PN="PyJWT"
 PYPI_VERIFY_REPO=https://github.com/jpadilla/pyjwt
-PYTHON_COMPAT=( python3_{11..15} )
+PYTHON_COMPAT=( python3_{12..15} )
 
 inherit distutils-r1 optfeature pypi
 
@@ -18,7 +18,7 @@ HOMEPAGE="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="amd64 ~arm arm64 ~loong ppc ppc64 ~riscv ~sparc x86"
 
 RDEPEND="
 	!dev-python/python-jwt

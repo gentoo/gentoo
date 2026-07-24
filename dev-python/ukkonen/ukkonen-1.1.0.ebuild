@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{11..14} pypy3_11 )
+PYTHON_COMPAT=( python3_{12..15} )
 
 inherit distutils-r1
 
@@ -24,9 +24,7 @@ SLOT="0"
 KEYWORDS="amd64 arm64 ~hppa ~ppc ~ppc64 ~riscv x86"
 
 RDEPEND="
-	$(python_gen_cond_dep '
-		dev-python/cffi[${PYTHON_USEDEP}]
-	' 'python*')
+	dev-python/cffi[${PYTHON_USEDEP}]
 "
 BDEPEND="
 	${RDEPEND}

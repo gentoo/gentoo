@@ -6,7 +6,7 @@ EAPI=8
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
 PYPI_VERIFY_REPO=https://github.com/pycurl/pycurl
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 
 inherit distutils-r1 pypi toolchain-funcs
 
@@ -19,7 +19,7 @@ HOMEPAGE="
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-macos"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-macos"
 IUSE="curl_ssl_gnutls +curl_ssl_openssl examples ssl"
 
 # Depend on a curl with curl_ssl_* USE flags.
@@ -43,12 +43,12 @@ RDEPEND="
 BDEPEND="
 	test? (
 		dev-python/flask[${PYTHON_USEDEP}]
+		dev-python/numpy[${PYTHON_USEDEP}]
 		net-misc/curl[curl_ssl_gnutls(-)=,curl_ssl_openssl(-)=,-curl_ssl_axtls(-),-curl_ssl_cyassl(-),http2]
 	)
 "
 
-EPYTEST_PLUGINS=()
-EPYTEST_RERUNS=5
+EPYTEST_PLUGINS=( flaky )
 : ${EPYTEST_TIMEOUT:=120}
 distutils_enable_tests pytest
 

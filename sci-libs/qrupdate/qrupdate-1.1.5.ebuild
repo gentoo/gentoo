@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake fortran-2
+inherit cmake fortran-2 flag-o-matic
 
 MY_PN=${PN}-ng
 MY_P=${MY_PN}-v${PV}
@@ -23,3 +23,10 @@ DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
 PATCHES=( "${FILESDIR}"/${PN}-1.1.3-cmake.patch )
+
+src_prepare() {
+	# bug #878989 976683
+	filter-lto
+
+	cmake_src_prepare
+}

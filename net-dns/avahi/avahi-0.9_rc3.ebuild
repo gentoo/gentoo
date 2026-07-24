@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 PYTHON_REQ_USE="gdbm"
 inherit autotools multilib-minimal python-single-r1 systemd
 

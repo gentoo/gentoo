@@ -1,4 +1,4 @@
-# Copyright 2022-2025 Gentoo Authors
+# Copyright 2022-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -27,7 +27,7 @@ DEPEND="
 	dev-libs/lzo:2
 	>=dev-libs/trio-1.17
 	media-libs/flac
-	media-libs/jg:1=
+	>=media-libs/jg-2.0.0
 	virtual/minizip:=
 	virtual/libiconv
 "

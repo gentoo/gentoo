@@ -1,0 +1,213 @@
+https://savannah.nongnu.org/patch/index.php?10573
+--- a/src/apps/lwiperf/lwiperf.c
++++ b/src/apps/lwiperf/lwiperf.c
+@@ -776,20 +776,20 @@ void* lwiperf_start_tcp_client(const ip_addr_t* remote_addr, u16_t remote_port,
+     break;
+   case LWIPERF_DUAL:
+     /* Do a bidirectional test simultaneously */
+-    settings.flags = htonl(LWIPERF_FLAGS_ANSWER_TEST | LWIPERF_FLAGS_ANSWER_NOW);
++    settings.flags = lwip_htonl(LWIPERF_FLAGS_ANSWER_TEST | LWIPERF_FLAGS_ANSWER_NOW);
+     break;
+   case LWIPERF_TRADEOFF:
+     /* Do a bidirectional test individually */
+-    settings.flags = htonl(LWIPERF_FLAGS_ANSWER_TEST);
++    settings.flags = lwip_htonl(LWIPERF_FLAGS_ANSWER_TEST);
+     break;
+   default:
+     /* invalid argument */
+     return NULL;
+   }
+-  settings.num_threads = htonl(1);
+-  settings.remote_port = htonl(LWIPERF_TCP_PORT_DEFAULT);
++  settings.num_threads = lwip_htonl(1);
++  settings.remote_port = lwip_htonl(LWIPERF_TCP_PORT_DEFAULT);
+   /* TODO: implement passing duration/amount of bytes to transfer */
+-  settings.amount = htonl((u32_t)-1000);
++  settings.amount = lwip_htonl((u32_t)-1000);
+ 
+   ret = lwiperf_tx_start_impl(remote_addr, remote_port, &settings, report_fn, report_arg, NULL, &state);
+   if (ret == ERR_OK) {
+--- a/test/unit/dhcp/test_dhcp.c
++++ b/test/unit/dhcp/test_dhcp.c
+@@ -508,7 +508,7 @@ START_TEST(test_dhcp)
+   fail_if(memcmp(&gw, &net_test.gw, sizeof(ip4_addr_t)));
+ 
+   fail_unless(txpacket == 1, "TX %d packets, expected 1", txpacket); /* Nothing more sent */
+-  xid = htonl(netif_dhcp_data(&net_test)->xid);
++  xid = lwip_htonl(netif_dhcp_data(&net_test)->xid);
+   memcpy(&dhcp_offer[46], &xid, 4); /* insert correct transaction id */
+   send_pkt(&net_test, dhcp_offer, sizeof(dhcp_offer));
+ 
+@@ -518,7 +518,7 @@ START_TEST(test_dhcp)
+   send_pkt(&net_test, dhcp_ack, sizeof(dhcp_ack));
+ 
+   fail_unless(txpacket == 2, "TX %d packets, still expected 2", txpacket); /* No more sent */
+-  xid = htonl(netif_dhcp_data(&net_test)->xid); /* xid updated */
++  xid = lwip_htonl(netif_dhcp_data(&net_test)->xid); /* xid updated */
+   memcpy(&dhcp_ack[46], &xid, 4); /* insert transaction id */
+   send_pkt(&net_test, dhcp_ack, sizeof(dhcp_ack));
+ 
+@@ -583,7 +583,7 @@ START_TEST(test_dhcp_nak)
+   fail_if(memcmp(&gw, &net_test.gw, sizeof(ip4_addr_t)));
+ 
+   fail_unless(txpacket == 1); /* Nothing more sent */
+-  xid = htonl(netif_dhcp_data(&net_test)->xid);
++  xid = lwip_htonl(netif_dhcp_data(&net_test)->xid);
+   memcpy(&dhcp_offer[46], &xid, 4); /* insert correct transaction id */
+   send_pkt(&net_test, dhcp_offer, sizeof(dhcp_offer));
+ 
+@@ -593,7 +593,7 @@ START_TEST(test_dhcp_nak)
+   send_pkt(&net_test, dhcp_ack, sizeof(dhcp_ack));
+ 
+   fail_unless(txpacket == 2); /* No more sent */
+-  xid = htonl(netif_dhcp_data(&net_test)->xid); /* xid updated */
++  xid = lwip_htonl(netif_dhcp_data(&net_test)->xid); /* xid updated */
+   memcpy(&dhcp_ack[46], &xid, 4); /* insert transaction id */
+   send_pkt(&net_test, dhcp_ack, sizeof(dhcp_ack));
+ 
+@@ -807,13 +807,13 @@ START_TEST(test_dhcp_relayed)
+   fail_if(memcmp(&gw, &net_test.gw, sizeof(ip4_addr_t)));
+ 
+   fail_unless(txpacket == 1); /* Nothing more sent */
+-  xid = htonl(netif_dhcp_data(&net_test)->xid);
++  xid = lwip_htonl(netif_dhcp_data(&net_test)->xid);
+   memcpy(&relay_offer[46], &xid, 4); /* insert correct transaction id */
+   send_pkt(&net_test, relay_offer, sizeof(relay_offer));
+ 
+   /* request sent? */
+   fail_unless(txpacket == 2, "txpkt = %d, should be 2", txpacket);
+-  xid = htonl(netif_dhcp_data(&net_test)->xid); /* xid updated */
++  xid = lwip_htonl(netif_dhcp_data(&net_test)->xid); /* xid updated */
+   memcpy(&relay_ack1[46], &xid, 4); /* insert transaction id */
+   send_pkt(&net_test, relay_ack1, sizeof(relay_ack1));
+ 
+@@ -849,7 +849,7 @@ START_TEST(test_dhcp_relayed)
+   fail_unless(txpacket == (4 + DHCP_TEST_NUM_ARP_FRAMES), "TX %d packets, expected %d", txpacket, (4 + DHCP_TEST_NUM_ARP_FRAMES));
+   fail_unless(netif_is_up(&net_test));
+ 
+-  xid = htonl(netif_dhcp_data(&net_test)->xid); /* xid updated */
++  xid = lwip_htonl(netif_dhcp_data(&net_test)->xid); /* xid updated */
+   memcpy(&relay_ack2[46], &xid, 4); /* insert transaction id */
+   send_pkt(&net_test, relay_ack2, sizeof(relay_ack2));
+ 
+@@ -956,14 +956,14 @@ START_TEST(test_dhcp_nak_no_endmarker)
+   fail_if(memcmp(&gw, &net_test.gw, sizeof(ip4_addr_t)));
+ 
+   fail_unless(txpacket == 1); /* Nothing more sent */
+-  xid = htonl(dhcp->xid);
++  xid = lwip_htonl(dhcp->xid);
+   memcpy(&dhcp_offer[46], &xid, 4); /* insert correct transaction id */
+   send_pkt(&net_test, dhcp_offer, sizeof(dhcp_offer));
+ 
+   fail_unless(dhcp->state == DHCP_STATE_REQUESTING);
+ 
+   fail_unless(txpacket == 2); /* No more sent */
+-  xid = htonl(dhcp->xid); /* xid updated */
++  xid = lwip_htonl(dhcp->xid); /* xid updated */
+   memcpy(&dhcp_nack_no_endmarker[46], &xid, 4); /* insert transaction id */
+   tries = dhcp->tries;
+   request_timeout = dhcp->request_timeout;
+@@ -972,7 +972,7 @@ START_TEST(test_dhcp_nak_no_endmarker)
+   /* NAK should be ignored */
+   fail_unless(dhcp->state == DHCP_STATE_REQUESTING);
+   fail_unless(txpacket == 2); /* No more sent */
+-  fail_unless(xid == htonl(dhcp->xid));
++  fail_unless(xid == lwip_htonl(dhcp->xid));
+   fail_unless(tries == dhcp->tries);
+   fail_unless(request_timeout == dhcp->request_timeout);
+ 
+@@ -1052,7 +1052,7 @@ START_TEST(test_dhcp_invalid_overload)
+   dhcp_start(&net_test);
+ 
+   fail_unless(txpacket == 1); /* DHCP discover sent */
+-  xid = htonl(netif_dhcp_data(&net_test)->xid);
++  xid = lwip_htonl(netif_dhcp_data(&net_test)->xid);
+   memcpy(&dhcp_offer_invalid_overload[46], &xid, 4); /* insert correct transaction id */
+   dhcp_offer_invalid_overload[311] = 3;
+   send_pkt(&net_test, dhcp_offer_invalid_overload, sizeof(dhcp_offer_invalid_overload));
+@@ -1084,7 +1084,7 @@ START_TEST(test_dhcp_invalid_overload)
+   fail_unless(netif_dhcp_data(&net_test)->state == DHCP_STATE_REQUESTING);
+ 
+   fail_unless(txpacket == 2); /* No more sent */
+-  xid = htonl(netif_dhcp_data(&net_test)->xid); /* xid updated */
++  xid = lwip_htonl(netif_dhcp_data(&net_test)->xid); /* xid updated */
+ 
+   tcase = TEST_NONE;
+   dhcp_stop(&net_test);
+--- a/test/unit/etharp/test_etharp.c
++++ b/test/unit/etharp/test_etharp.c
+@@ -89,13 +89,13 @@ create_arp_response(ip4_addr_t *adr)
+ 
+   ethhdr->dest = test_ethaddr;
+   ethhdr->src = test_ethaddr2;
+-  ethhdr->type = htons(ETHTYPE_ARP);
++  ethhdr->type = lwip_htons(ETHTYPE_ARP);
+ 
+-  etharphdr->hwtype = htons(LWIP_IANA_HWTYPE_ETHERNET);
+-  etharphdr->proto = htons(ETHTYPE_IP);
++  etharphdr->hwtype = lwip_htons(LWIP_IANA_HWTYPE_ETHERNET);
++  etharphdr->proto = lwip_htons(ETHTYPE_IP);
+   etharphdr->hwlen = ETHARP_HWADDR_LEN;
+   etharphdr->protolen = sizeof(ip4_addr_t);
+-  etharphdr->opcode = htons(ARP_REPLY);
++  etharphdr->opcode = lwip_htons(ARP_REPLY);
+ 
+   SMEMCPY(&etharphdr->sipaddr, adr, sizeof(ip4_addr_t));
+   SMEMCPY(&etharphdr->dipaddr, &test_ipaddr, sizeof(ip4_addr_t));
+--- a/test/unit/ip6/test_ip6.c
++++ b/test/unit/ip6/test_ip6.c
+@@ -96,11 +96,11 @@ create_ip6_input_fragment(u32_t ip_id, u16_t start, u16_t len, int last, u8_t ne
+     fraghdr->_nexth = next_hdr;
+     fraghdr->reserved = 0;
+     if (last) {
+-      fraghdr->_fragment_offset = htons(start & ~7);
++      fraghdr->_fragment_offset = lwip_htons(start & ~7);
+     } else {
+-      fraghdr->_fragment_offset = htons((start & ~7) | 1);
++      fraghdr->_fragment_offset = lwip_htons((start & ~7) | 1);
+     }
+-    fraghdr->_identification = htonl(ip_id);
++    fraghdr->_identification = lwip_htonl(ip_id);
+ 
+     err = ip6_input(p, input_netif);
+     if (err != ERR_OK) {
+--- a/test/unit/tcp/tcp_helper.c
++++ b/test/unit/tcp/tcp_helper.c
+@@ -78,20 +78,20 @@ tcp_create_segment_wnd(ip_addr_t* src_ip, ip_addr_t* dst_ip,
+   iphdr->src.addr = ip_2_ip4(src_ip)->addr;
+   IPH_VHL_SET(iphdr, 4, IP_HLEN / 4);
+   IPH_TOS_SET(iphdr, 0);
+-  IPH_LEN_SET(iphdr, htons(p->tot_len));
++  IPH_LEN_SET(iphdr, lwip_htons(p->tot_len));
+   IPH_CHKSUM_SET(iphdr, inet_chksum(iphdr, IP_HLEN));
+ 
+   /* let p point to TCP header */
+   pbuf_header(p, -(s16_t)sizeof(struct ip_hdr));
+ 
+   tcphdr = (struct tcp_hdr*)p->payload;
+-  tcphdr->src   = htons(src_port);
+-  tcphdr->dest  = htons(dst_port);
+-  tcphdr->seqno = htonl(seqno);
+-  tcphdr->ackno = htonl(ackno);
++  tcphdr->src   = lwip_htons(src_port);
++  tcphdr->dest  = lwip_htons(dst_port);
++  tcphdr->seqno = lwip_htonl(seqno);
++  tcphdr->ackno = lwip_htonl(ackno);
+   TCPH_HDRLEN_SET(tcphdr, sizeof(struct tcp_hdr)/4);
+   TCPH_FLAGS_SET(tcphdr, headerflags);
+-  tcphdr->wnd   = htons(wnd);
++  tcphdr->wnd   = lwip_htons(wnd);
+ 
+   if (data_len > 0) {
+     /* let p point to TCP data */
+--- a/test/unit/tcp/test_tcp.c
++++ b/test/unit/tcp/test_tcp.c
+@@ -617,7 +617,7 @@ check_seqnos(struct tcp_seg *segs, int num_expected, u32_t *seqnos_expected)
+   int i;
+   for (i = 0; i < num_expected; i++, s = s->next) {
+     EXPECT_RET(s != NULL);
+-    EXPECT(s->tcphdr->seqno == htonl(seqnos_expected[i]));
++    EXPECT(s->tcphdr->seqno == lwip_htonl(seqnos_expected[i]));
+   }
+   EXPECT(s == NULL);
+ }

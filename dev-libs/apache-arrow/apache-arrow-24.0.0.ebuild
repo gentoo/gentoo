@@ -74,6 +74,8 @@ DEPEND="
 	)
 "
 
+PATCHES=( "${FILESDIR}"/${P}-gcc17.patch )
+
 src_prepare() {
 	# use Gentoo CXXFLAGS, specify docdir at src_configure.
 	sed -i \

@@ -1,0 +1,24 @@
+From 510ec119e36a660d10db64be0bdadd2909434e53 Mon Sep 17 00:00:00 2001
+From: Tom Pollard <tom.pollard@codethink.co.uk>
+Date: Tue, 26 May 2026 11:37:33 +0100
+Subject: [PATCH] Explicitly add fcfreetype.h include to asc-font.c
+
+As of https://gitlab.freedesktop.org/fontconfig/fontconfig/-/commit/
+b4b753d66dea17d645166adca239a0fba84d03a9 first included in 2.18.0
+FcFreeTypeQuery has been moved to fcfreetype.h
+---
+ compose/asc-font.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/compose/asc-font.c b/compose/asc-font.c
+index 71e8869d..422fb4c2 100644
+--- a/compose/asc-font.c
++++ b/compose/asc-font.c
+@@ -29,6 +29,7 @@
+ 
+ #include <glib/gstdio.h>
+ #include <fontconfig/fontconfig.h>
++#include <fontconfig/fcfreetype.h>
+ #include FT_SFNT_NAMES_H
+ #include FT_TRUETYPE_IDS_H
+ #include <pango/pango-language.h>

@@ -137,6 +137,10 @@ PATCHES=(
 	"${FILESDIR}/php-8.3.9-gd-cachevars.patch"
 	"${FILESDIR}/php-8.3.31-libgd-test-fixes.patch"
 	"${FILESDIR}/php-8.3.31-ipv6-printing-test-fix.patch"
+	"${FILESDIR}/php-8.3-iconv-testfix-01.patch"
+	"${FILESDIR}/php-8.3-iconv-testfix-02.patch"
+	"${FILESDIR}/php-8.3-iconv-testfix-03.patch"
+	"${FILESDIR}/php-8.3-iconv-testfix-04.patch"
 )
 
 PHP_MV="$(ver_cut 1)"
@@ -276,6 +280,12 @@ src_prepare() {
 	# Fixed upstream, but not in 8.3.30.
 	rm ext/openssl/tests/bug{74796,80770}.phpt || die
 	rm ext/openssl/tests/{sni_server.phpt,sni_server_key_cert.phpt} || die
+
+	# bug 977402
+	rm ext/standard/tests/file/fdatasync.phpt \
+		ext/standard/tests/file/fsync.phpt \
+		ext/standard/tests/general_functions/proc_nice_basic.phpt \
+		|| die
 
 	eautoconf --force
 }

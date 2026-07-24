@@ -1,0 +1,17 @@
+Missing includes that seem to only affect musl+>=gcc-16
+--- a/src/3rdparty/chromium/sandbox/linux/services/proc_util.cc
++++ b/src/3rdparty/chromium/sandbox/linux/services/proc_util.cc
+@@ -13,4 +13,5 @@
+ #include <unistd.h>
+ 
++#include <climits>
+ #include <memory>
+ 
+--- a/src/3rdparty/gn/src/gn/pool.h
++++ b/src/3rdparty/gn/src/gn/pool.h
+@@ -6,4 +6,5 @@
+ #define TOOLS_GN_POOL_H_
+ 
++#include <cstdint>
+ #include <string>
+ 

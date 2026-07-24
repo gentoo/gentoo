@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -178,6 +178,7 @@ src_configure() {
 	append-cflags $(test-flags-CC -std=gnu17)
 
 	if tc-is-cross-compiler; then
+		export CC_FOR_BUILD="$(tc-getBUILD_CC)"
 		export CFLAGS_FOR_BUILD="${BUILD_CFLAGS} -std=gnu17"
 	fi
 

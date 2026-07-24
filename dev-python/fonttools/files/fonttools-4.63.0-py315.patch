@@ -1,0 +1,48 @@
+From 731282b6a7335b425c37a02ce865b9189ad6ca63 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Sat, 11 Jul 2026 19:52:51 +0200
+Subject: [PATCH] Replace private `glob.glob1()` with `glob.glob(...,
+ root_dir=...)`
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Replace the use of undocumented `glob.glob1()` function that was removed
+in Python 3.15 with its equivalent `glob.glob(..., root_dir=...)`.  This
+fixes compatibility with Python 3.15 (where the function is removed),
+and works all the way down to Python 3.10.
+
+See: https://docs.python.org/3.13/whatsnew/3.13.html#new-deprecations
+
+Signed-off-by: Michał Górny <mgorny@gentoo.org>
+---
+ MetaTools/buildTableList.py       | 2 +-
+ MetaTools/check_table_coverage.py | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/MetaTools/buildTableList.py b/MetaTools/buildTableList.py
+index b344f330f..9bdd95642 100755
+--- a/MetaTools/buildTableList.py
++++ b/MetaTools/buildTableList.py
+@@ -12,7 +12,7 @@ fontToolsDir = os.path.normpath(fontToolsDir)
+ tablesDir = os.path.join(fontToolsDir, "Lib", "fontTools", "ttLib", "tables")
+ docFile = os.path.join(fontToolsDir, "Doc/source/ttx.rst")
+ 
+-names = glob.glob1(tablesDir, "*.py")
++names = glob.glob("*.py", root_dir=tablesDir)
+ 
+ modules = []
+ tables = []
+diff --git a/MetaTools/check_table_coverage.py b/MetaTools/check_table_coverage.py
+index 5764daddb..19ec986eb 100644
+--- a/MetaTools/check_table_coverage.py
++++ b/MetaTools/check_table_coverage.py
+@@ -141,7 +141,7 @@ KNOWN_GAPS: dict[str, set[str]] = {
+ def get_table_modules() -> list[tuple[str, str]]:
+     """Return sorted list of (module_name, tag_raw) for all table .py files."""
+     modules = []
+-    for filename in glob.glob1(TABLES_DIR, "*.py"):
++    for filename in glob.glob("*.py", root_dir=TABLES_DIR):
+         name = filename[:-3]
+         try:
+             tag = identifierToTag(name)  # may contain trailing spaces, e.g. "cvt "

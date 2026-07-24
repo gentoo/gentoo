@@ -5,7 +5,7 @@ EAPI=8
 
 # Built with autotools rather than cmake to avoid circular dep (bug #951524
 
-inherit multilib-minimal
+inherit libtool multilib-minimal
 
 if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/ngtcp2/ngtcp2.git"
@@ -18,7 +18,7 @@ else
 		verify-sig? ( https://github.com/ngtcp2/ngtcp2/releases/download/v${PV}/${P}.tar.xz.asc )
 	"
 
-	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~arm64-macos ~x64-macos"
 	BDEPEND="verify-sig? ( sec-keys/openpgp-keys-ngtcp2 )"
 fi
 
@@ -49,6 +49,7 @@ QA_CONFIG_IMPL_DECL_SKIP=(
 
 src_prepare() {
 	default
+	elibtoolize # bug #978993
 	[[ ${PV} == 9999 ]] && eautoreconf
 }
 

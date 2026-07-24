@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2026-07-22)
+# media-libs/libmysofa is keyworded here
+media-video/pipewire -sofa
+
 # Alfredo Tupone <tupone@gentoo.org> (2026-05-18)
 # Unmask on specific arches where it's available.
 media-video/obs-studio -mpegts
@@ -76,6 +80,7 @@ sci-libs/flexiblas -blis -mkl -openblas
 
 # Christopher Byrne <salah.coronya@gmail.com> (2025-09-01)
 # net-emulation/libvirt is only keyworded on amd64 at this time
+dev-util/diffoscope -libguestfs
 sys-block/nbdkit -libguestfs
 
 # Alfred Wingate <parona@protonmail.com> (2025-05-22)
@@ -190,6 +195,7 @@ media-gfx/blender -gnome -renderdoc
 dev-qt/qtdeclarative:6 -qmlls
 dev-qt/qttools:6 -qmlls
 dev-python/pyside -tools
+dev-python/pyqtgraph -pyside6
 
 # Nowa Ammerlaan <nowa@gentoo.org> (2024-03-17)
 # virt-firmware is keyworded here
@@ -579,7 +585,6 @@ gnustep-base/gnustep-make -libobjc2
 # The QML (V4) and JSC JITs are supported only on amd64/arm/x86,
 # so the flag is masked in the base profile and unmasked here.
 dev-qt/qtdeclarative -jit
-dev-qt/qtscript -jit
 
 # Robin H. Johnson <robbat2@gentoo.org> (2011-07-10), updated 2019-12-06
 # PPS should work on all arches, but only keyworded on some arches

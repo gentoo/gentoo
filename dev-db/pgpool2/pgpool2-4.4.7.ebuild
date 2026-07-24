@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,12 +12,12 @@ MY_P="${PN/2/-II}-${PV}"
 DESCRIPTION="Connection pool server for PostgreSQL"
 HOMEPAGE="https://www.pgpool.net/"
 SRC_URI="https://www.pgpool.net/download.php?f=${MY_P}.tar.gz -> ${MY_P}.tar.gz"
+
 LICENSE="BSD"
 SLOT="0"
-
 KEYWORDS="amd64 x86"
-
 IUSE="doc memcached pam ssl static-libs"
+REQUIRED_USE="${POSTGRES_REQ_USE}"
 
 RDEPEND="
 	${POSTGRES_DEP}

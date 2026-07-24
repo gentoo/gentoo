@@ -15,11 +15,15 @@ if [[ ${PV} == 9999 ]]; then
 	SRC_URI=""
 	SLOT="0/17" # This can get easily out of date, but better than 9967
 else
-	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
-	SLOT="0/$(($(ver_cut 1) - 32))" # 0/libmutter_api_version - ONLY gnome-shell (or anything using mutter-clutter-<api_version>.pc) should use the subslot
+	KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
+	# 0/libmutter_api_version - ONLY gnome-shell or anything using mutter-clutter-<api_version>.pc
+	# should use the subslot
+	SLOT="0/$(($(ver_cut 1) - 32))"
 fi
 
-IUSE="bash-completion debug devkit elogind gnome gtk-doc input_devices_wacom +introspection screencast selinux sysprof systemd test udev +wayland X +xwayland video_cards_nvidia"
+IUSE="bash-completion debug devkit elogind gnome gtk-doc input_devices_wacom +introspection
+screencast selinux sysprof systemd test udev +wayland X +xwayland video_cards_nvidia"
+
 # native backend requires gles3 for hybrid graphics blitting support, udev and a logind provider
 REQUIRED_USE="
 	|| ( X wayland )
@@ -30,13 +34,14 @@ REQUIRED_USE="
 	xwayland? ( wayland )"
 RESTRICT="!test? ( test )"
 
-# gnome-settings-daemon is build checked, but used at runtime only for org.gnome.settings-daemon.peripherals.keyboard gschema
-# USE=libei was first introduced in xwayland-23.2.1; we min dep on that to ensure the [libei(+)] works right, as missing USE flag with
-# previous versions meant that it's not there, while the intention seems to be to make it always enabled without USE flag in the future;
-# this ensures have_enable_ei_portal is always there in xwayland.pc, which affects how Xwayland is launched, thus if it were toggled off
-# in Xwayland after mutter is installed, Xwayland would fail to be started by mutter. mutter already hard-depends on libei, so there's
-# really no extra deps here (besides xdg-desktop-portal, but we want that too, anyhow).
-# v3.32.2 has many excessive or unused *_req variables declared, thus currently the dep order ignores those and goes via dependency() call order
+# gnome-settings-daemon is build checked but used at runtime only for org.gnome.settings-daemon.peripherals.keyboard
+# gschema
+# USE=libei was first introduced in xwayland-23.2.1; we min dep on that to ensure the [libei(+)] works right, as
+# missing USE flag with previous versions meant that it's not there, while the intention seems to be to make it always
+# enabled without USE flag in the future; this ensures have_enable_ei_portal is always there in xwayland.pc, which
+# affects how Xwayland is launched, thus if it were toggled off in Xwayland after mutter is installed, Xwayland would
+# fail to be started by mutter. mutter already hard-depends on libei, so there's really no extra deps here (besides
+# xdg-desktop-portal, but we want that too, anyhow).
 # dev-libs/wayland is always needed at build time due to https://bugs.gentoo.org/937632
 RDEPEND="
 	>=media-libs/graphene-1.10.2[introspection?]
@@ -233,7 +238,8 @@ src_configure() {
 
 		#verbose # Let upstream choose default for verbose mode
 		#xwayland_path
-		# TODO: relies on default settings, but in Gentoo we might have some more packages we want to give Xgrab access (mostly virtual managers and remote desktops)
+		# TODO: relies on default settings, but in Gentoo we might have some more packages we want to give
+		# Xgrab access (mostly virtual managers and remote desktops)
 		#xwayland_grab_default_access_rules
 	)
 
@@ -253,7 +259,7 @@ src_configure() {
 }
 
 src_test() {
-	# Reset variables to avoid issues from /etc/profile.d/flatpak.sh file
+	# Needed to prevent some tests failures
 	gnome2_environment_reset
 	export XDG_DATA_DIRS="${EPREFIX}"/usr/share
 	glib-compile-schemas "${BUILD_DIR}"/data

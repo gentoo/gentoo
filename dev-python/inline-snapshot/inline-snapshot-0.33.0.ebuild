@@ -18,7 +18,7 @@ HOMEPAGE="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="amd64 arm arm64 ~loong ppc ppc64 ~riscv ~s390 ~sparc x86"
 
 RDEPEND="
 	>=dev-python/asttokens-2.0.5[${PYTHON_USEDEP}]
@@ -33,6 +33,7 @@ BDEPEND="
 		>=dev-python/black-23.3.0[${PYTHON_USEDEP}]
 		>=dev-python/dirty-equals-0.7.0[${PYTHON_USEDEP}]
 		>=dev-python/hypothesis-6.75.5[${PYTHON_USEDEP}]
+		dev-python/isort[${PYTHON_USEDEP}]
 		$(python_gen_cond_dep '
 			dev-python/mypy[${PYTHON_USEDEP}]
 		' 'python*')

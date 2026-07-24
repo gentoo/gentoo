@@ -13,6 +13,7 @@ python_single_target_python3_15t
 
 # Michał Górny <mgorny@gentoo.org> (2026-04-18)
 # LLVM slots with no keyworded releases yet.
+llvm_slot_24
 llvm_slot_23
 
 # Sam James <sam@entoo.org> (2025-12-02)

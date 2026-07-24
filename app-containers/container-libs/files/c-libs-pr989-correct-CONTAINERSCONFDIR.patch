@@ -1,0 +1,32 @@
+From 351075048df0403b7570e01871750b970a8dd459 Mon Sep 17 00:00:00 2001
+From: Rahil Bhimjiani <me@rahil.rocks>
+Date: Wed, 15 Jul 2026 14:57:07 +0530
+Subject: [PATCH] Install policy.json & default.yaml in /usr/share/ instead of
+ /etc/
+
+Due to changes in podman 6.0 config file parsing changed[1]. So
+these files should be installed in /usr/share/containers by packagers
+and let /etc/containers should be system admins.
+
+This is also followed in common/rpm/containers-common.spec
+
+[1] https://github.com/podman-container-tools/podman/blob/main/contrib/design-docs/config-file-parsing.md
+
+Signed-off-by: Rahil Bhimjiani <me@rahil.rocks>
+---
+ image/Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/image/Makefile b/image/Makefile
+index d47d43aeb6..b51b473612 100644
+--- a/image/Makefile
++++ b/image/Makefile
+@@ -30,7 +30,7 @@ MANPAGES ?= $(MANPAGES_MD:%.md=%)
+ ifeq ($(shell uname -s),FreeBSD)
+ CONTAINERSCONFDIR ?= /usr/local/etc/containers
+ else
+-CONTAINERSCONFDIR ?= /etc/containers
++CONTAINERSCONFDIR ?= /usr/share/containers
+ endif
+ REGISTRIESDDIR ?= ${CONTAINERSCONFDIR}/registries.d
+ 

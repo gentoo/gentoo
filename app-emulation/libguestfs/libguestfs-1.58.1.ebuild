@@ -108,6 +108,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-1.52.1-disable-obsolete-lvmetad-in-tests.patch"
 	"${FILESDIR}/${PN}-1.56.2-bash-Remove-vestigial-bash-completions.patch"
 	"${FILESDIR}/${PN}-1.56.2-guestfs-bash-completion.m4-more-control.patch"
+	"${FILESDIR}/${PN}-1.56.2-respect-LDFLAGS-in-perl-module.patch"
 )
 
 src_prepare() {

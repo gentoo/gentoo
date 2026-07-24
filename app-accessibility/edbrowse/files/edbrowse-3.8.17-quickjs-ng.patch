@@ -1,0 +1,25 @@
+use shared quickjs-ng instead of static quickjs
+--- a/src/makefile
++++ b/src/makefile
+@@ -27,10 +27,10 @@ install_exec = $(call install_generic,$(1),$(EXECMODE),$(2))
+ install_file = $(call install_generic,$(1),$(FILEMODE),$(2))
+ 
+ # determine includes and linker flags
+-DEPENDENCIES ?= libcurl odbc libpcre2-8 readline openssl
++DEPENDENCIES ?= libcurl odbc libpcre2-8 readline openssl quickjs-ng
+ dependency_cflags ::= $(shell $(PKG_CONFIG) --cflags $(DEPENDENCIES))
+ dependency_libs ::= $(shell $(PKG_CONFIG) --libs $(DEPENDENCIES))
+-CFLAGS += -Wall -D_FILE_OFFSET_BITS=64 -Wno-trigraphs $(dependency_cflags) -I$(QUICKJS_INCLUDE)
++CFLAGS += -Wall -D_FILE_OFFSET_BITS=64 -Wno-trigraphs $(dependency_cflags)
+ 
+ EDBR_JS_ASSETS = shared.js startwindow.js demin.js
+ # if you don't want the deminimizer - but it only adds 130K to the executable...
+@@ -55,7 +55,7 @@ QUICKJS_LDFLAGS = -L$(QUICKJS_LIB) -l$(QUICKJS_LIB_NAME) -ldl
+ ifeq ($(shell uname),Linux)
+ 	QUICKJS_LDFLAGS += -latomic
+ endif
+-LDFLAGS += $(dependency_libs) $(QUICKJS_LDFLAGS) -lpthread -lm $(STRIP)
++LDFLAGS += $(dependency_libs) -lpthread -lm $(STRIP)
+ 
+ #  ESQL C load flags
+ #ESQLDFLAGS = $(STRIP) -Xlinker -rpath -Xlinker $(INFORMIXDIR)/lib:$(INFORMIXDIR)/lib/esql

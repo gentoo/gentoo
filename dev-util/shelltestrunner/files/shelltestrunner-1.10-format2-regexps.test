@@ -1,0 +1,11 @@
+# simple regexp
+$$$  echo test
+>>> /^test$/
+
+# negative regexp
+$$$  echo test
+>>> !/toast/
+
+# regexp containing quoted /
+$$$  echo 2015/1/1
+>>> /2015\/1\/1/

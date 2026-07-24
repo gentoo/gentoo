@@ -3,7 +3,8 @@
 
 EAPI=8
 
-inherit cmake flag-o-matic
+LUA_COMPAT=( lua5-{3..4} )
+inherit cmake flag-o-matic lua-single
 
 DESCRIPTION="Fast neofetch-like system information tool"
 HOMEPAGE="https://github.com/fastfetch-cli/fastfetch"
@@ -20,7 +21,7 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="X chafa dbus ddcutil drm efl elf gnome imagemagick opencl opengl pulseaudio sqlite test vulkan wayland xcb xrandr"
+IUSE="X chafa dbus ddcutil drm efl elf gnome imagemagick lua opencl opengl pulseaudio sqlite test vaapi vdpau vulkan wayland xcb xrandr"
 RESTRICT="!test? ( test )"
 
 # note - qa-vdb will always report errors because fastfetch loads the libs dynamically
@@ -39,6 +40,7 @@ RDEPEND="
 		gnome-base/dconf
 	)
 	imagemagick? ( media-gfx/imagemagick:= )
+	lua? ( ${LUA_DEPS} )
 	opencl? ( virtual/opencl )
 	opengl? (
 		media-libs/libglvnd[X?]
@@ -46,6 +48,8 @@ RDEPEND="
 	)
 	pulseaudio? ( media-libs/libpulse )
 	sqlite? ( dev-db/sqlite:3 )
+	vaapi? ( media-libs/libva:= )
+	vdpau? ( x11-libs/libvdpau )
 	vulkan? (
 		media-libs/vulkan-loader
 		sys-apps/pciutils
@@ -66,7 +70,16 @@ BDEPEND="virtual/pkgconfig"
 
 REQUIRED_USE="
 	chafa? ( imagemagick )
+	lua? ( ${LUA_REQUIRED_USE} )
 "
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.64.1-cmake_lua_version.patch
+)
+
+pkg_setup() {
+	use lua && lua-single_pkg_setup
+}
 
 src_configure() {
 	local fastfetch_enable_imagemagick7=no
@@ -87,12 +100,16 @@ src_configure() {
 	fi
 
 	local mycmakeargs=(
+		# requires >=dev-libs/quickjs-ng-0.15
+		-DENABLE_QUICKJS=no
+
 		-DENABLE_RPM=no
 		-DENABLE_ZLIB=yes
 		-DENABLE_SYSTEM_YYJSON=yes
 		-DIS_MUSL=$(usex elibc_musl)
 		-DINSTALL_LICENSE=no
 		-DBUILD_FLASHFETCH=no
+		-DPACKAGES_REMOVE_DISABLED=yes
 
 		-DENABLE_CHAFA=$(usex chafa)
 		-DENABLE_DBUS=$(usex dbus)
@@ -106,15 +123,24 @@ src_configure() {
 		-DENABLE_GLX=${glx}
 		-DENABLE_IMAGEMAGICK6=${fastfetch_enable_imagemagick6}
 		-DENABLE_IMAGEMAGICK7=${fastfetch_enable_imagemagick7}
+		-DENABLE_LUA=$(usex lua)
 		-DENABLE_OPENCL=$(usex opencl)
 		-DENABLE_PULSE=$(usex pulseaudio)
 		-DENABLE_SQLITE3=$(usex sqlite)
+		-DENABLE_VA=$(usex vaapi)
+		-DENABLE_VDPAU=$(usex vdpau)
 		-DENABLE_VULKAN=$(usex vulkan)
 		-DENABLE_WAYLAND=$(usex wayland)
 		-DENABLE_XCB_RANDR=$(usex xcb)
 		-DENABLE_XRANDR=$(usex xrandr)
 		-DBUILD_TESTS=$(usex test)
 	)
+
+	if use lua; then
+		mycmakeargs+=(
+			-DLUA_VERSION="$(lua_get_version)"
+		)
+	fi
 
 	append-cppflags -DNDEBUG
 

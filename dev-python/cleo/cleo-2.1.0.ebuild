@@ -1,10 +1,10 @@
-# Copyright 2022-2025 Gentoo Authors
+# Copyright 2022-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-DISTUTILS_USE_PEP517=poetry
-PYTHON_COMPAT=( pypy3_11 python3_{11..14} )
+DISTUTILS_USE_PEP517=poetry-core
+PYTHON_COMPAT=( python3_{12..15} )
 
 inherit distutils-r1
 
@@ -34,18 +34,4 @@ src_prepare() {
 	# unpin rapidfuzz
 	sed -i -e '/rapidfuzz/s:\^:>=:' pyproject.toml || die
 	distutils-r1_src_prepare
-}
-
-python_test() {
-	local EPYTEST_DESELECT=()
-
-	case ${EPYTHON} in
-		pypy3*)
-			EPYTEST_DESELECT+=(
-				tests/ui/test_exception_trace.py::test_render_debug_better_error_message_recursion_error
-			)
-			;;
-	esac
-
-	epytest
 }

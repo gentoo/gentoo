@@ -13,7 +13,7 @@ EAPI=8
 # dev-cpp/wangle
 # dev-util/watchman
 
-inherit cmake
+inherit cmake flag-o-matic
 
 DESCRIPTION="An implementation of the QUIC transport protocol"
 HOMEPAGE="https://github.com/facebook/mvfst"
@@ -44,6 +44,9 @@ PATCHES=(
 )
 
 src_configure() {
+	# -Wodr with IOBufBatchWriter, at least with -fno-semantic-interposition
+	filter-lto
+
 	local mycmakeargs=(
 		-DCMAKE_INSTALL_MODULE_DIR="$(get_libdir)/cmake/${PN}"
 		-DCMAKE_INSTALL_LIBDIR="$(get_libdir)"

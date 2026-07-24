@@ -1,0 +1,19 @@
+--- a/test/java/org/apache/ivy/osgi/repo/BundleRepoTest.java
++++ b/test/java/org/apache/ivy/osgi/repo/BundleRepoTest.java
+@@ -36,6 +36,7 @@ import org.apache.ivy.plugins.repository.file.FileRepository;
+ import org.apache.ivy.plugins.resolver.FileSystemResolver;
+ import org.apache.tools.ant.BuildException;
+ import org.junit.Test;
++import org.junit.Ignore;
+ import org.xml.sax.SAXException;
+ 
+ import static org.junit.Assert.assertEquals;
+@@ -73,7 +74,7 @@ public class BundleRepoTest {
+         assertEquals(repo, repo2);
+     }
+ 
+-    @Test
++    @Test @Ignore
+     public void testResolver() throws Exception {
+         FileSystemResolver fileSystemResolver = new FileSystemResolver();
+         fileSystemResolver.setName("test");

@@ -1,0 +1,15 @@
+Description: Fix FTBFS due to the change in annotation handling in Python 3.14.
+Author: Matthew Burn
+Forwarded: https://github.com/jensengroup/propka/pull/199
+Bug-Debian: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1123164
+--- a/propka/parameters.py
++++ b/propka/parameters.py
+@@ -145,7 +145,7 @@
+         if len(words) == 0:
+             return
+         # parse the words
+-        typeannotation = self.__annotations__.get(words[0])
++        typeannotation = type(self).__annotations__.get(words[0])
+         if typeannotation is _T_NUMBER_DICTIONARY:
+             self.parse_to_number_dictionary(words)
+         elif typeannotation is _T_STRING_LIST:

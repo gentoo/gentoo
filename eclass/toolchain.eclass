@@ -1115,6 +1115,7 @@ toolchain_setup_ada() {
 	! tc-is-cross-compiler && _toolchain_make_gnat_wrappers
 
 	export CC="$(tc-getCC) -specs=${T}/ada.spec"
+	export CXX="$(tc-getCXX) -specs=${T}/ada.spec"
 
 	if ver_test ${PV} -lt 13 && [[ ${CTARGET#accel-} == hppa* ]] ; then
 		# For HPPA, the ada-bootstrap binaries seem to default
@@ -1287,8 +1288,12 @@ toolchain_src_configure() {
 		_tc_use_if_iuse d && [[ ${GCCMAJOR} -ge 12 ]]
 	}
 
-	_need_ada_bootstrap_mangling && toolchain_setup_ada
+	# D goes first because while we'd like a matching CC/CXX for it,
+	# it's not critical like it is for Ada, where a configure test
+	# fails when trying to find GNAT w/o it. D has the benefit of the
+	# GDC envvar.
 	_need_d_bootstrap && toolchain_setup_d
+	_need_ada_bootstrap_mangling && toolchain_setup_ada
 
 	confgcc+=( --enable-languages=${GCC_LANG} )
 

@@ -20,7 +20,7 @@ else
 		mirror://nongnu/${PN}/${P}.tar.xz
 		verify-sig? ( mirror://nongnu/${PN}/${P}.tar.xz.sig )
 	"
-	KEYWORDS="amd64 arm ~arm64 ~loong ~ppc ppc64 ~riscv ~sparc ~x86"
+	KEYWORDS="amd64 arm ~arm64 ~loong ppc ppc64 ~riscv ~sparc x86"
 	BDEPEND="verify-sig? ( sec-keys/openpgp-keys-garyemiller ) "
 fi
 
@@ -79,6 +79,7 @@ fi
 PATCHES=(
 	"${FILESDIR}/${PN}-drop-dia.patch" # bugs 836730, 967742
 	"${FILESDIR}/${PN}-no-class.patch" # from Portage
+	"${FILESDIR}/${P}-cxxflags.patch" # merged
 )
 
 python_check_deps() {

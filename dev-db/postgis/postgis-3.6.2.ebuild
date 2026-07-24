@@ -4,7 +4,7 @@
 EAPI=8
 
 POSTGRES_COMPAT=( {12..18} )
-POSTGRES_USEDEP="server"
+POSTGRES_USEDEP="server(+)"
 inherit autotools postgres-multi toolchain-funcs
 
 MY_P="${PN}-$(ver_rs 3 '')"
@@ -54,6 +54,7 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}/${PN}-3.0.3-try-other-cpp-names.patch"
+	"${FILESDIR}/${PN}-3.6.2-gdal-3.13.patch"
 )
 
 src_prepare() {

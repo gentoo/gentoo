@@ -14,7 +14,7 @@ SRC_URI="https://michael.orlitzky.com/code/releases/${P}.tar.gz"
 
 LICENSE="AGPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~riscv"
+KEYWORDS="amd64 ~riscv"
 
 RDEPEND="dev-python/requests[${PYTHON_USEDEP}]"
 

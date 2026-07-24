@@ -11,5 +11,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="launchpad">~albertomilone</remote-id>
+		<remote-id type="github">joanbm/broadcom-wl-linux-mainline</remote-id>
 	</upstream>
 </pkgmetadata>

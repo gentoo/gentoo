@@ -63,7 +63,7 @@ SRC_URI="${MOZ_SRC_BASE_URI}/source/${MOZ_P}.source.tar.xz -> ${MOZ_P_DISTFILES}
 S="${WORKDIR}/firefox-${PV%_*}"
 LICENSE="MPL-2.0"
 SLOT="$(ver_cut 1)/140.11.0"
-KEYWORDS="amd64 ~arm arm64 ~loong ~ppc ppc64 ~riscv x86"
+KEYWORDS="amd64 arm arm64 ~loong ppc ppc64 ~riscv x86"
 
 IUSE="clang cpu_flags_arm_neon debug +jit test"
 

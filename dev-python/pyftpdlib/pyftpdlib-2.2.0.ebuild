@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( pypy3_11 python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 PYTHON_REQ_USE="ssl(+)"
 
 inherit distutils-r1 pypi
@@ -21,10 +21,8 @@ KEYWORDS="amd64 arm arm64 ppc ppc64 ~riscv ~s390 ~sparc x86 ~x64-macos"
 IUSE="examples ssl"
 
 RDEPEND="
-	$(python_gen_cond_dep '
-		dev-python/pyasynchat[${PYTHON_USEDEP}]
-		dev-python/pyasyncore[${PYTHON_USEDEP}]
-	' 3.12 3.13 3.14)
+	dev-python/pyasynchat[${PYTHON_USEDEP}]
+	dev-python/pyasyncore[${PYTHON_USEDEP}]
 	ssl? ( dev-python/pyopenssl[${PYTHON_USEDEP}] )
 "
 BDEPEND="

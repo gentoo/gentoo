@@ -6,7 +6,7 @@ EAPI=8
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=standalone
 PYPI_VERIFY_REPO=https://github.com/qtile/qtile
-PYTHON_COMPAT=( python3_13 )
+PYTHON_COMPAT=( python3_{13..14} )
 
 inherit distutils-r1 pypi virtualx
 

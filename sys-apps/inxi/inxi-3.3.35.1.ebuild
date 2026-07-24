@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -34,7 +34,7 @@ pkg_postinst() {
 	optfeature "blockdev: --admin -p/-P (filesystem blocksize)" sys-apps/util-linux
 	optfeature "bt-adapter: -E bluetooth data (if no hciconfig, btmgmt)" net-wireless/bluez-tools
 	optfeature "btmgmt: -E bluetooth data (if no hciconfig)" net-wireless/bluez
-	optfeature "dig: -i wlan IP" net-dns/bind-tools
+	optfeature "dig: -i wlan IP" net-dns/bind
 	optfeature "dmidecode: -M if no sys machine data; -m" sys-apps/dmidecode
 	optfeature "doas: -Dx hddtemp-user; -o file-user (alt for sudo)" app-admin/doas
 	optfeature "fdisk: -D partition scheme (fallback)" sys-apps/util-linux

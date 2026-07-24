@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -66,7 +66,7 @@ DEPEND="
 	suid? ( acct-group/mail )
 	systemd? ( sys-apps/systemd:= )
 	tcpd? ( sys-apps/tcp-wrappers )
-	textcat? ( app-text/libexttextcat )
+	textcat? ( app-text/libexttextcat:= )
 	unwind? ( sys-libs/libunwind:= )
 	zstd? ( app-arch/zstd:= )
 	virtual/libcrypt:=

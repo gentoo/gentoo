@@ -19,7 +19,7 @@ else
 		-> ${P}.gh.tar.gz"
 	S="${WORKDIR}/${MY_PN}-${PV}"
 
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 ~x86"
 fi
 
 RDEPEND="

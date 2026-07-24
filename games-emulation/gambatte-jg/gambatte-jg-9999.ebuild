@@ -39,7 +39,7 @@ DEPEND="
 		media-libs/speexdsp
 	)
 	jgmodule? (
-		media-libs/jg:1=
+		>=media-libs/jg-2.0.0
 		media-libs/speexdsp
 	)
 "

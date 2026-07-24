@@ -10,14 +10,14 @@ inherit desktop font optfeature python-single-r1 cmake verify-sig xdg
 DESCRIPTION="WYSIWYM (What You See Is What You Mean) document processor based on LaTeX"
 HOMEPAGE="https://www.lyx.org/"
 SRC_URI="
-	http://ftp.lyx.org/pub/lyx/stable/$(ver_cut 1-2).x/${P/_rc/~RC}.tar.xz
-	http://ftp.lyx.org/pub/lyx/devel/lyx-$(ver_cut 1-2)/${P/_rc/~RC}.tar.xz
+	http://ftp.lyx.org/pub/lyx/stable/$(ver_cut 1-2).x/${P/_rc/\~RC}.tar.xz
+	http://ftp.lyx.org/pub/lyx/devel/lyx-$(ver_cut 1-2)/${P/_rc/\~RC}.tar.xz
 	verify-sig? (
-		http://ftp.lyx.org/pub/lyx/stable/$(ver_cut 1-2).x/${P/_rc/~RC}.tar.xz.sig
-		http://ftp.lyx.org/pub/lyx/devel/lyx-$(ver_cut 1-2)/${P/_rc/~RC}.tar.xz.sig
+		http://ftp.lyx.org/pub/lyx/stable/$(ver_cut 1-2).x/${P/_rc/\~RC}.tar.xz.sig
+		http://ftp.lyx.org/pub/lyx/devel/lyx-$(ver_cut 1-2)/${P/_rc/\~RC}.tar.xz.sig
 	)
 "
-S=${WORKDIR}/${P/_rc/~RC}
+S=${WORKDIR}/${P/_rc/\~RC}
 
 LICENSE="GPL-2+"
 SLOT="0"

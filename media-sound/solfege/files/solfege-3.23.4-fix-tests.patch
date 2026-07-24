@@ -1,0 +1,12 @@
+--- a/solfege/tests/test_lessonfile.py    2026-07-16 06:10:26.973612458 +0300
++++ b/solfege/tests/test_lessonfile.py  2026-07-16 06:12:58.458665911 +0300
+@@ -1239,7 +1239,7 @@
+             # This test only works with nrandom, because prandom will
+             # return a possible different value every time.
+             if rfunc == 'nrandom':
+-                l = Gtk.Label(label=st)
++                l = Gtk.Label(label=str(st))
+                 self.assertTrue(l.get_text() == str(st), "%s and gtk does not cooperate." % rfunc)
+ 
+ 
+

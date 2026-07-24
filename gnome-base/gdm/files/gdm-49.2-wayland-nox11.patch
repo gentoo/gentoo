@@ -1,0 +1,118 @@
+From 555813917ce22d51d72a324d6d5fc17cb47fa8c5 Mon Sep 17 00:00:00 2001
+From: Joan Torres Lopez <joantolo@redhat.com>
+Date: Thu, 19 Feb 2026 16:36:58 +0100
+Subject: [PATCH] local-display-factory: Ignore WaylandEnable key when GNOME
+ doesn't support X11
+
+When GNOME is built without X11 support for GNOME sessions but GDM is
+built with both Wayland and X11 support (to allow other desktop
+environments to use X11), the greeter must always use Wayland.
+
+This adds a runtime check for GNOME X11 support by verifying the
+existence of the gnome.desktop xsession file. When this file doesn't
+exist, the WaylandEnable setting is ignored and the greeter falls back
+to Wayland.
+
+This allows distributions to:
+- Build GDM with X11 support for non-GNOME desktop environments
+- Build GNOME without X11 session support
+- Ensure the greeter always starts correctly
+
+Closes: https://gitlab.gnome.org/GNOME/gdm/-/issues/1027
+Part-of: <https://gitlab.gnome.org/GNOME/gdm/-/merge_requests/354>
+---
+ daemon/gdm-local-display-factory.c | 40 ++++++++++++++++++++++++++----
+ 1 file changed, 35 insertions(+), 5 deletions(-)
+
+diff --git a/daemon/gdm-local-display-factory.c b/daemon/gdm-local-display-factory.c
+index ad2e65cf7..3f33402e3 100644
+--- a/daemon/gdm-local-display-factory.c
++++ b/daemon/gdm-local-display-factory.c
+@@ -55,6 +55,8 @@
+ #define WAIT_TO_FINISH_TIMEOUT 10 /* seconds */
+ #define SEAT0_GRAPHICS_CHECK_TIMEOUT 10 /* seconds */
+ 
++#define GNOME_X11_SESSION_DESKTOP DATADIR "/xsessions/gnome.desktop"
++
+ struct _GdmLocalDisplayFactory
+ {
+         GdmDisplayFactory  parent;
+@@ -207,6 +209,14 @@ take_next_display_number (GdmLocalDisplayFactory *factory)
+         return ret;
+ }
+ 
++#if defined (ENABLE_WAYLAND_SUPPORT) && defined (ENABLE_X11_SUPPORT)
++static gboolean
++gnome_session_supports_x11 (void)
++{
++        return g_file_test (GNOME_X11_SESSION_DESKTOP, G_FILE_TEST_EXISTS);
++}
++#endif
++
+ static char *
+ get_preferred_display_server (GdmLocalDisplayFactory *factory)
+ {
+@@ -216,6 +226,11 @@ get_preferred_display_server (GdmLocalDisplayFactory *factory)
+ #if defined (ENABLE_WAYLAND_SUPPORT) && defined (ENABLE_X11_SUPPORT)
+         gdm_settings_direct_get_boolean (GDM_KEY_WAYLAND_ENABLE, &wayland_enabled);
+         gdm_settings_direct_get_boolean (GDM_KEY_XORG_ENABLE, &xorg_enabled);
++
++        if (!wayland_enabled && !gnome_session_supports_x11 ()) {
++                g_debug ("GdmLocalDisplayFactory: GNOME Session doesn't support X11, fallback to Wayland");
++                wayland_enabled = TRUE;
++        }
+ #elif defined (ENABLE_WAYLAND_SUPPORT)
+         wayland_enabled = TRUE;
+ #elif defined (ENABLE_X11_SUPPORT)
+@@ -262,19 +277,32 @@ get_preferred_display_server (GdmLocalDisplayFactory *factory)
+         return g_strdup ("none");
+ }
+ 
++static gboolean
++check_key_always (void)
++{
++        return TRUE;
++}
++
+ struct GdmDisplayServerConfiguration {
+         const char *display_server;
+         const char *key;
+         const char *binary;
+         const char *session_type;
++        gboolean (*check_key) (void);
+ } display_server_configuration[] = {
+ #ifdef ENABLE_WAYLAND_SUPPORT
+-        { "wayland", GDM_KEY_WAYLAND_ENABLE, NULL, "wayland" },
++        { "wayland", GDM_KEY_WAYLAND_ENABLE, NULL, "wayland",
++#ifdef ENABLE_X11_SUPPORT
++          gnome_session_supports_x11,
++#else
++          check_key_always,
++#endif
++        },
+ #endif
+ #ifdef ENABLE_X11_SUPPORT
+-        { "xorg", GDM_KEY_XORG_ENABLE, "/usr/bin/Xorg", "x11" },
++        { "xorg", GDM_KEY_XORG_ENABLE, "/usr/bin/Xorg", "x11", check_key_always },
+ #endif
+-        { NULL, NULL, NULL },
++        { NULL, NULL, NULL, NULL, check_key_always },
+ };
+ 
+ static gboolean
+@@ -293,8 +321,10 @@ display_server_enabled (GdmLocalDisplayFactory *factory,
+                         continue;
+ 
+ #if defined (ENABLE_WAYLAND_SUPPORT) && defined (ENABLE_X11_SUPPORT)
+-                if (!gdm_settings_direct_get_boolean (key, &enabled) || !enabled)
+-                        return FALSE;
++                if (display_server_configuration[i].check_key ()) {
++                        if (!gdm_settings_direct_get_boolean (key, &enabled) || !enabled)
++                                return FALSE;
++                }
+ #endif
+ 
+                 if (binary && !g_file_test (binary, G_FILE_TEST_IS_EXECUTABLE))
+-- 
+GitLab
+

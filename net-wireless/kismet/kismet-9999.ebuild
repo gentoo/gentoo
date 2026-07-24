@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -46,7 +46,7 @@ CDEPEND="
 	dev-libs/openssl:=
 	virtual/zlib:=
 	dev-db/sqlite:3
-	net-libs/libwebsockets:=[client,lejp]
+	>=net-libs/libwebsockets-4.5.8-r1:=[client,lejp]
 	kernel_linux? ( sys-libs/libcap
 			dev-libs/libnl:3
 			net-libs/libpcap
@@ -60,6 +60,7 @@ CDEPEND="
 	')
 	lm-sensors? ( sys-apps/lm-sensors:= )
 	pcre? ( dev-libs/libpcre2:= )
+	rtlsdr? ( net-wireless/rtl-sdr:= )
 	suid? ( sys-libs/libcap )
 	ubertooth? ( net-wireless/ubertooth )
 	"
@@ -73,7 +74,7 @@ RDEPEND="${CDEPEND}
 		$(python_gen_cond_dep '
 			dev-python/numpy[${PYTHON_USEDEP}]
 		')
-		net-wireless/rtl-sdr:=
+		net-wireless/rtl_433
 	)
 	selinux? ( sec-policy/selinux-kismet )
 "
@@ -129,6 +130,7 @@ src_configure() {
 		$(use_enable lm-sensors lmsensors) \
 		$(use_enable networkmanager libnm) \
 		$(use_enable protobuf) \
+		$(use_enable rtlsdr librtlsdr) \
 		$(use_enable ubertooth) \
 		$(use_enable wext linuxwext) \
 		--sysconfdir=/etc/kismet \

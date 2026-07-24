@@ -13,6 +13,7 @@
 		your code.
 	</longdescription>
 	<upstream>
+		<remote-id type="hackage">safe</remote-id>
 		<remote-id type="github">ndmitchell/safe</remote-id>
 	</upstream>
 </pkgmetadata>

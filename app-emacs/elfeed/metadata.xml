@@ -15,7 +15,7 @@
     RSS. Elfeed was inspired by notmuch.
   </longdescription>
   <upstream>
-    <bugs-to>https://github.com/skeeto/elfeed/issues/</bugs-to>
-    <remote-id type="github">skeeto/elfeed</remote-id>
+    <bugs-to>https://github.com/emacs-elfeed/elfeed/issues/</bugs-to>
+    <remote-id type="github">emacs-elfeed/elfeed</remote-id>
   </upstream>
 </pkgmetadata>

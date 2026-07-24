@@ -6,7 +6,7 @@ EAPI=8
 LLVM_COMPAT=( {18..22} )
 LLVM_OPTIONAL=1
 CARGO_OPTIONAL=1
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 
 inherit flag-o-matic llvm-r2 meson-multilib python-any-r1 linux-info
 
@@ -28,7 +28,7 @@ RUST_OPTIONAL=1
 inherit cargo
 
 DESCRIPTION="OpenGL-like graphic library for Linux"
-HOMEPAGE="https://www.mesa3d.org/ https://mesa.freedesktop.org/"
+HOMEPAGE="https://mesa3d.org/"
 
 if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://gitlab.freedesktop.org/mesa/mesa.git"
@@ -90,7 +90,7 @@ RDEPEND="
 			opencl? (
 				dev-util/spirv-llvm-translator:\${LLVM_SLOT}
 				llvm-core/clang:\${LLVM_SLOT}[llvm_targets_AMDGPU(+),${MULTILIB_USEDEP}]
-				=llvm-core/libclc-\${LLVM_SLOT}*[spirv(-)]
+				=llvm-runtimes/libclc-\${LLVM_SLOT}*[spirv(-)]
 			)
 		")
 		video_cards_r600? (
@@ -103,7 +103,7 @@ RDEPEND="
 	lm-sensors? ( sys-apps/lm-sensors:=[${MULTILIB_USEDEP}] )
 	opencl? (
 		>=virtual/opencl-3
-		llvm-core/libclc[spirv(-)]
+		llvm-runtimes/libclc[spirv(-)]
 		virtual/libelf:0=
 	)
 	vaapi? (
@@ -147,7 +147,7 @@ DEPEND="${RDEPEND}
 
 CLC_DEPSTRING="
 	~dev-util/mesa_clc-${PV}[video_cards_asahi?,video_cards_panfrost?]
-	llvm-core/libclc[spirv(-)]
+	llvm-runtimes/libclc[spirv(-)]
 "
 BDEPEND="
 	${PYTHON_DEPS}

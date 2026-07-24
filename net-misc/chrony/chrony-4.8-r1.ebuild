@@ -162,7 +162,7 @@ src_configure() {
 	# OPERATINGSYSTEM=`uname -s` (--host-system=)
 	# VERSION=`uname -r` (--host-release=)
 	# MACHINE=`uname -m` (--host-machine=)
-	if tc-tc-is-cross-compiler ; then
+	if tc-is-cross-compiler ; then
 		case "${KERNEL}" in
 			linux)
 				myconf+=(

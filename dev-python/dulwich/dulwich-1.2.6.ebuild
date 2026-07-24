@@ -7,7 +7,7 @@ CARGO_OPTIONAL=1
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
 PYPI_VERIFY_REPO=https://github.com/jelmer/dulwich
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 
 RUST_MIN_VER="1.85.0"
 CRATES="
@@ -56,7 +56,7 @@ LICENSE+="
 LICENSE+=" )"
 
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~s390 ~x86 ~arm64-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha amd64 ~arm arm64 ~loong ~ppc ~ppc64 ~riscv ~s390 x86 ~arm64-macos ~x64-macos ~x64-solaris"
 IUSE="doc examples +native-extensions test"
 RESTRICT="!test? ( test )"
 

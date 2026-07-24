@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
 PYPI_VERIFY_REPO=gcp:google-cloud-sdk-py@oss-exit-gate-prod.iam.gserviceaccount.com
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 
 inherit distutils-r1 pypi
 
@@ -18,7 +18,7 @@ HOMEPAGE="
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm arm64 ~ppc ~ppc64 x86"
 
 RDEPEND="
 	<dev-python/protobuf-8[${PYTHON_USEDEP}]
@@ -27,8 +27,3 @@ RDEPEND="
 
 EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
-
-python_compile() {
-	distutils-r1_python_compile
-	find "${BUILD_DIR}" -name '*.pth' -delete || die
-}

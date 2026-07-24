@@ -5,12 +5,16 @@
 		<name>Adel Kara Slimane</name>
 		<email>adel.ks@zegrapher.com</email>
 	</maintainer>
+	<maintainer type="person">
+		<name>Mazunki Hoksaas</name>
+		<email>rolferen@gmail.com</email>
+	</maintainer>
 	<maintainer type="project" proxied="proxy">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<upstream>
-		<bugs-to>https://gitlab.freedesktop.org/pipewire/helvum/-/issues</bugs-to>
+		<bugs-to>https://gitlab.freedesktop.org/pipewire/helvum/-/work_items</bugs-to>
 		<remote-id type="freedesktop-gitlab">pipewire/helvum</remote-id>
 	</upstream>
 </pkgmetadata>

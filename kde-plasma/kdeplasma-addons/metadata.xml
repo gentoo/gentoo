@@ -6,10 +6,12 @@
 		<name>Gentoo KDE Project</name>
 	</maintainer>
 	<upstream>
-		<bugs-to>https://bugs.kde.org/</bugs-to>
+		<bugs-to>https://bugs.kde.org/enter_bug.cgi?product=plasmashell</bugs-to>
+		<remote-id type="kde-invent">plasma/kdeplasma-addons</remote-id>
 	</upstream>
 	<use>
 		<flag name="alternate-calendar">Support alternate calendar systems (currently Chinese or Indian) via <pkg>dev-libs/icu</pkg></flag>
+		<flag name="led">Synchronizes device LEDs with the Plasma accent color (ultimately requires rust)</flag>
 		<flag name="share">Enable applet for quickly sharing data to a variety of sources</flag>
 		<flag name="webengine">Enable dictionary and web browser applets using <pkg>dev-qt/qtwebengine</pkg></flag>
 	</use>

@@ -1,9 +1,10 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=9
 
 inherit go-module
+
 DESCRIPTION="Terminal UI frontend for Podman"
 HOMEPAGE="https://github.com/containers/podman-tui"
 
@@ -22,9 +23,13 @@ LICENSE+=" BSD-2 BSD MIT MPL-2.0"
 SLOT="0"
 RESTRICT="test"
 
+RDEPEND=">=app-containers/podman-6.0.0"
+BDEPEND=">=dev-lang/go-1.25.0"
+
 src_compile() {
+	local -x CGO_ENABLED=0
 	# parse tags from Makefile & make them comma-seperated as space-seperated list is deprecated
-	local BUILDTAGS=$(grep 'BUILDTAGS :=' Makefile | awk -F\" '{ print $2; }' | sed -e 's| |,|g;')
+	local BUILDTAGS=$(grep 'BUILDTAGS :=' Makefile | awk -F\" '{ print $2; }' | tr ' ' ',')
 	ego build -tags "${BUILDTAGS}"
 }
 

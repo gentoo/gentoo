@@ -1,0 +1,94 @@
+https://github.com/rtissera/libchdr/commit/25fcb10cde7b9af71dbbb76d68033a4975af0a08
+https://github.com/rtissera/libchdr/pull/158
+
+From 23d3ddda8332e3793e62e61ec57222b3d4c184e4 Mon Sep 17 00:00:00 2001
+From: orbea <orbea@riseup.net>
+Date: Sat, 2 May 2026 16:33:19 -0700
+Subject: [PATCH] cmake: fallback to pkgconfig if the zstd cmake config is
+ missing
+
+Upstream zstd only installs the zstd cmake config file when its built
+with cmake and several distros such as Gentoo use the official make
+build system instead.
+
+This makes depending on the cmake config file unreliable and for
+downstream projects. Its better to fallback to using the pkgconfig file
+when its not found.
+
+This solution is copied from cemu.
+
+Upstream-Issue: https://github.com/facebook/zstd/issues/3271
+Source: https://github.com/cemu-project/Cemu/blob/9b76b0e2d33725d37dc8c6137d8ea2fa9b991542/cmake/Findzstd.cmake
+---
+ CMakeLists.txt       | 10 ++++------
+ cmake/Findzstd.cmake | 33 +++++++++++++++++++++++++++++++++
+ 2 files changed, 37 insertions(+), 6 deletions(-)
+ create mode 100644 cmake/Findzstd.cmake
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 5cb20c9..5c52522 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -29,6 +29,8 @@ if(BUILD_FUZZER)
+   set(BUILD_SHARED_LIBS OFF)
+ endif()
+ 
++list(APPEND CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake")
++
+ include(GNUInstallDirs)
+ 
+ #--------------------------------------------------
+@@ -55,12 +57,8 @@ endif()
+ 
+ # zstd
+ if (WITH_SYSTEM_ZSTD)
+-  find_package(zstd REQUIRED)
+-  if(TARGET zstd::libzstd_shared)
+-    list(APPEND PLATFORM_LIBS zstd::libzstd_shared)
+-  else()
+-    list(APPEND PLATFORM_LIBS zstd::libzstd_static)
+-  endif()
++  find_package(zstd MODULE REQUIRED)
++  list(APPEND PLATFORM_LIBS zstd::zstd)
+   list(APPEND CHDR_DEFINES CHDR_SYSTEM_ZSTD)
+ else()
+   if(NOT TARGET zstd)
+diff --git a/cmake/Findzstd.cmake b/cmake/Findzstd.cmake
+new file mode 100644
+index 0000000..a8a45a6
+--- /dev/null
++++ b/cmake/Findzstd.cmake
+@@ -0,0 +1,33 @@
++# SPDX-FileCopyrightText: 2022 Andrea Pappacoda <andrea@pappacoda.it>
++# SPDX-License-Identifier: ISC
++
++include(FindPackageHandleStandardArgs)
++
++find_package(zstd CONFIG)
++if (zstd_FOUND)
++	# Use upstream zstdConfig.cmake if possible
++	if (NOT TARGET zstd::zstd)
++		if (TARGET zstd::libzstd_static)
++			add_library(zstd::zstd ALIAS zstd::libzstd_static)
++		elseif (TARGET zstd::libzstd_shared)
++			add_library(zstd::zstd ALIAS zstd::libzstd_shared)
++		endif()
++	endif()
++	find_package_handle_standard_args(zstd CONFIG_MODE)
++else()
++	# Fallback to pkg-config otherwise
++	find_package(PkgConfig)
++	if (PKG_CONFIG_FOUND)
++		pkg_search_module(libzstd IMPORTED_TARGET GLOBAL libzstd)
++		if (libzstd_FOUND)
++			add_library(zstd::zstd ALIAS PkgConfig::libzstd)
++		endif()
++	endif()
++
++	find_package_handle_standard_args(zstd
++		REQUIRED_VARS
++			libzstd_LINK_LIBRARIES
++			libzstd_FOUND
++		VERSION_VAR libzstd_VERSION
++	)
++endif()

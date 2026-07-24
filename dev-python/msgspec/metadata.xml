@@ -6,7 +6,7 @@
 		<name>Python</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">jcrist/msgspec</remote-id>
+		<remote-id type="github">msgspec/msgspec</remote-id>
 		<remote-id type="pypi">msgspec</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -3,9 +3,9 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 
-inherit xdg cmake python-single-r1
+inherit xdg cmake python-single-r1 verify-sig
 
 DOC_VERSION="20250912"
 DOC_FILE="Sigil_User_Guide_${DOC_VERSION}.epub"
@@ -13,7 +13,8 @@ DOC_FILE="Sigil_User_Guide_${DOC_VERSION}.epub"
 DESCRIPTION="Multi-platform WYSIWYG ebook editor for ePub format"
 HOMEPAGE="https://sigil-ebook.com/ https://github.com/Sigil-Ebook/Sigil"
 SRC_URI="https://github.com/Sigil-Ebook/Sigil/archive/${PV}.tar.gz -> ${P}.tar.gz
-	doc? ( https://github.com/Sigil-Ebook/sigil-user-guide/releases/download/${DOC_VERSION}/${DOC_FILE} )"
+	doc? ( https://github.com/Sigil-Ebook/sigil-user-guide/releases/download/${DOC_VERSION}/${DOC_FILE} )
+	verify-sig? ( https://github.com/Sigil-Ebook/Sigil/releases/download/${PV}/${P^}.tar.gz.sig -> ${P}.tar.gz.sig )"
 S=${WORKDIR}/${P^}
 
 LICENSE="GPL-3+ Apache-2.0"
@@ -54,9 +55,16 @@ BDEPEND="
 	${PYTHON_DEPS}
 	virtual/pkgconfig
 	dev-qt/qttools:6[linguist]
+	verify-sig? ( sec-keys/openpgp-keys-dougmassay )
 "
 
+VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/dougmassay.asc"
 DOCS=( ChangeLog.txt README.md )
+
+src_unpack() {
+	use verify-sig && verify-sig_verify_detached "${DISTDIR}"/${P}.tar.gz{,.sig}
+	default_src_unpack
+}
 
 src_configure() {
 	local mycmakeargs=(

@@ -51,7 +51,7 @@ S="${WORKDIR}/jdk${SLOT}u-jdk${MY_PV}"
 LICENSE="GPL-2-with-classpath-exception"
 SLOT="$(ver_cut 1)"
 KEYWORDS="amd64 arm64 ppc64 x86"
-IUSE="alsa big-endian debug cups doc examples headless-awt javafx +jbootstrap selinux system-bootstrap source"
+IUSE="alsa big-endian debug cups doc examples headless-awt +jbootstrap selinux system-bootstrap source"
 
 COMMON_DEPEND="
 	media-libs/freetype:2=
@@ -101,8 +101,6 @@ BDEPEND="
 	virtual/pkgconfig
 	sys-devel/gcc:*
 "
-
-PDEPEND="javafx? ( dev-java/openjfx:${SLOT} )"
 
 PATCHES=(
 	"${FILESDIR}/openjdk-8-insantiate-arrayallocator.patch"

@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{11..15} )
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/isc.asc
 inherit eapi9-ver flag-o-matic meson python-r1 systemd tmpfiles
 inherit toolchain-funcs verify-sig
@@ -274,7 +274,7 @@ src_install() {
 	chmod 0640 "${ED}"/etc/${PN}/*.conf || die
 
 	# Install a conf per service and a linked init script per service
-	newinitd "${FILESDIR}"/${PN}-initd-r3 ${PN}
+	newinitd "${FILESDIR}"/${PN}-initd-r4 ${PN}
 	local svc
 	for svc in dhcp4 dhcp6 dhcp-ddns ctrl-agent; do
 		newconfd "${FILESDIR}"/${PN}-confd-r3 kea-${svc}

@@ -6,6 +6,7 @@
 		<name>Gentoo Haskell</name>
 	</maintainer>
 	<upstream>
+		<remote-id type="hackage">timeit</remote-id>
 		<remote-id type="github">merijn/timeit</remote-id>
 	</upstream>
 </pkgmetadata>

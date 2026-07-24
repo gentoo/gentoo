@@ -14,6 +14,7 @@
 		<flag name="opencv">Build motion tracking module using <pkg>media-libs/opencv</pkg></flag>
 		<flag name="python">Build SWIG bindings for Python</flag>
 		<flag name="rtaudio">Builds rtaudio consumer for native audio support on multiple platforms</flag>
+		<flag name="rnnoise">Build noise-reduction module using <pkg>media-libs/rnnoise</pkg></flag>
 		<flag name="rubberband">Enable audio pitch-shifting using <pkg>media-libs/rubberband</pkg></flag>
 		<flag name="vidstab">Enabled video stabilization with <pkg>media-libs/vidstab</pkg></flag>
 		<!--

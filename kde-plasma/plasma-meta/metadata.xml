@@ -6,7 +6,7 @@
 		<name>Gentoo KDE Project</name>
 	</maintainer>
 	<upstream>
-		<bugs-to>https://bugs.kde.org/</bugs-to>
+		<bugs-to>https://bugs.kde.org/enter_bug.cgi?classification=Plasma</bugs-to>
 	</upstream>
 	<use>
 		<flag name="browser-integration">Enable integration with Chrome/Firefox with browser extensions</flag>
@@ -33,5 +33,6 @@
 		<flag name="wallpapers">Install wallpapers for the Plasma Workspace</flag>
 		<flag name="webengine">Use <pkg>kde-apps/khelpcenter</pkg> to access the locally installed KDE Help System Handbook</flag>
 		<flag name="xwayland">Enable Wayland windows screensharing to XWayland applications via <pkg>gui-apps/xwaylandvideobridge</pkg></flag>
+		<flag name="X">Enable X window manager support via <pkg>kde-plasma/kwin-x11</pkg> (only until and including Plasma 6.7)</flag>
 	</use>
 </pkgmetadata>

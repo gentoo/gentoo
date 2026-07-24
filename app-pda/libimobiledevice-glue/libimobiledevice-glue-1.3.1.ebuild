@@ -1,4 +1,4 @@
-# Copyright 2024-2025 Gentoo Authors
+# Copyright 2024-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,7 +11,7 @@ SRC_URI="https://github.com/libimobiledevice/libimobiledevice-glue/releases/down
 
 LICENSE="LGPL-2.1+"
 SLOT="0/0.1.0"
-KEYWORDS="amd64 ~arm ~arm64 ~hppa ~loong ppc ~ppc64 ~riscv ~s390 x86"
+KEYWORDS="amd64 ~arm arm64 ~hppa ~loong ppc ~ppc64 ~riscv ~s390 x86"
 
 RDEPEND=">=app-pda/libplist-2.3:="
 DEPEND="${RDEPEND}"

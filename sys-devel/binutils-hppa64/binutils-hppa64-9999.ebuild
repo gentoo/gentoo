@@ -22,7 +22,6 @@ IUSE="cet +debuginfod doc gprofng hardened multitarget +nls pgo +plugins static-
 #                      for the patchsets
 
 PATCH_VER=1
-PATCH_DEV=sam
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
@@ -31,13 +30,20 @@ elif [[ ${PV} == *9999 ]]; then
 	inherit git-r3
 	SLOT=$(ver_cut 1-2)
 else
+	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/binutils.asc
+	inherit verify-sig
 	PATCH_BINUTILS_VER=${PATCH_BINUTILS_VER:-${PV}}
 	PATCH_DEV=${PATCH_DEV:-dilfridge}
-	SRC_URI="mirror://gnu/binutils/binutils-${PV}.tar.xz https://sourceware.org/pub/binutils/releases/binutils-${PV}.tar.xz https://dev.gentoo.org/~${PATCH_DEV}/distfiles/binutils-${PV}.tar.xz"
-	[[ -z ${PATCH_VER} ]] || SRC_URI="${SRC_URI}
-		https://dev.gentoo.org/~${PATCH_DEV}/distfiles/binutils-${PATCH_BINUTILS_VER}-patches-${PATCH_VER}.tar.xz"
+	SRC_URI="
+		mirror://gnu/binutils/binutils-${PV}.tar.xz
+		https://sourceware.org/pub/binutils/releases/binutils-${PV}.tar.xz
+		verify-sig? ( mirror://gnu/binutils/binutils-${PV}.tar.xz.sig )
+	"
+	[[ -z ${PATCH_VER} ]] || SRC_URI+=" https://distfiles.gentoo.org/pub/proj/toolchain/binutils/patches/binutils-${PATCH_BINUTILS_VER}-patches-${PATCH_VER}.tar.xz"
 	SLOT=$(ver_cut 1-2)
 	#KEYWORDS="-* ~hppa"
+
+	BDEPEND="verify-sig? ( sec-keys/openpgp-keys-binutils )"
 fi
 
 #
@@ -66,7 +72,7 @@ DEPEND="
 	${RDEPEND}
 	xxhash? ( dev-libs/xxhash )
 "
-BDEPEND="
+BDEPEND+="
 	doc? ( sys-apps/texinfo )
 	pgo? (
 		dev-util/dejagnu
@@ -95,7 +101,7 @@ src_unpack() {
 		"
 		EGIT_CHECKOUT_DIR=${WORKDIR}/patches-git
 		git-r3_src_unpack
-		mv patches-git/9999 patch || die
+		mv patches-git/9999 patches || die
 
 		if [[ ${PV} != 9999 ]] ; then
 			EGIT_BRANCH=binutils-$(ver_cut 1)_$(ver_cut 2)-branch
@@ -109,6 +115,7 @@ src_unpack() {
 		EGIT_CHECKOUT_DIR=${S}
 		git-r3_src_unpack
 	else
+		use verify-sig && verify-sig_verify_detached "${DISTDIR}"/${P/-hppa64/}.tar.xz{,.sig}
 		unpack ${P/-hppa64/}.tar.xz
 
 		cd "${WORKDIR}" || die
@@ -138,7 +145,7 @@ src_prepare() {
 	if [[ -n ${PATCH_VER} ]] || [[ ${PV} == *9999 ]] ; then
 		if ! use vanilla; then
 			einfo "Applying binutils patchset ${patchsetname}"
-			eapply "${WORKDIR}/patch"
+			eapply "${WORKDIR}/patches"
 			einfo "Done."
 
 			# This is applied conditionally for now just out of caution.

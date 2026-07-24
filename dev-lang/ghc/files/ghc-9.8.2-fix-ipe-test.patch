@@ -1,0 +1,33 @@
+From https://gitlab.haskell.org/ghc/ghc/-/merge_requests/11611/diffs?commit_id=d445cbc60d94d9f3449b979d5f312c5c3e76b86c
+From: Krzysztof Gogolewski <krzysztof.gogolewski@tweag.io>
+Date: Wed, 15 Nov 2023 16:58:27 +0100
+Subject: [PATCH] Fix IPE test
+
+A helper function was defined in a different module than used.
+To reproduce: ./hadrian/build test --test-root-dirs=testsuite/tests/rts/ipe
+--- a/testsuite/tests/rts/all.T
++++ b/testsuite/tests/rts/all.T
+@@ -216,10 +216,6 @@ test('EventlogOutput_IPE',
+      ],
+      makefile_test, ['EventlogOutput_IPE'])
+ 
+-# Remove the capability prefix from IPE event log lines.
+-def noCapabilityOutputFilter(s):
+-     return re.sub(r'[a-f0-9]+: IPE:', 'IPE:', s)
+-
+ test('T4059', req_c, makefile_test, ['T4059'])
+ 
+ # Test for #4274
+--- a/testsuite/tests/rts/ipe/all.T
++++ b/testsuite/tests/rts/ipe/all.T
+@@ -1,3 +1,7 @@
++# Remove the capability prefix from IPE event log lines.
++def noCapabilityOutputFilter(s):
++     return re.sub(r'[a-f0-9]+: IPE:', 'IPE:', s)
++
+ test('ipeMap', [extra_files(['ipe_lib.c', 'ipe_lib.h']), c_src, omit_ghci], compile_and_run, ['ipe_lib.c'])
+ 
+ # Manually create IPE entries and dump them to event log (stderr).
+-- 
+GitLab
+

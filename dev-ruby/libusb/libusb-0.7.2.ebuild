@@ -1,9 +1,9 @@
-# Copyright 2022-2024 Gentoo Authors
+# Copyright 2022-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-USE_RUBY="ruby31 ruby32"
+USE_RUBY="ruby32 ruby33 ruby34 ruby40"
 
 RUBY_FAKEGEM_EXTRADOC="History.md README.md"
 RUBY_FAKEGEM_GEMSPEC="${PN}.gemspec"
@@ -28,13 +28,13 @@ all_ruby_prepare() {
 		-e 's/git ls-files --/find/' \
 		-e 's/git ls-files/find */' \
 		-i ${RUBY_FAKEGEM_GEMSPEC} || die
-
-	# Avoid tests that try to open devices or depend on specific hardware
-	rm -f test/test_libusb_{bos,bulk_stream_transfer,descriptors}.rb || die
 }
 
 each_ruby_test() {
-	${RUBY} -I.:lib -e "Dir['test/test_*.rb'].each{|f| require f}" || die
+	# https://github.com/larskanis/libusb/tree/master#testing-libusb-gem
+	# See ci task in the rakefile
+	${RUBY} -I.:lib -e "Dir['test/test_libusb(_structs)?.rb'].each{|f| require f}" -- --verbose || die
+
 }
 
 each_ruby_install() {

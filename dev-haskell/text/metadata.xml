@@ -5,6 +5,9 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
+	<use>
+		<flag name="simdutf">use simdutf library</flag>
+	</use>
 	<upstream>
 		<remote-id type="hackage">text</remote-id>
 		<remote-id type="github">haskell/text</remote-id>

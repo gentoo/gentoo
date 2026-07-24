@@ -9,13 +9,16 @@ inherit bash-completion-r1 check-reqs cmake desktop edo multiprocessing python-a
 
 DESCRIPTION="Reference implementation of the Bitcoin cryptocurrency"
 HOMEPAGE="https://bitcoincore.org/"
-SRC_URI="https://github.com/bitcoin/bitcoin/archive/v${PV/_rc/rc}.tar.gz -> ${P}.tar.gz"
+SRC_URI="
+	https://github.com/bitcoin/bitcoin/archive/v${PV/_rc/rc}.tar.gz -> ${P}.tar.gz
+	https://github.com/bitcoin/bitcoin/commit/0bc9d354dfd8074d1c36a891a69b6585a8775c65.patch?full_index=1 -> ${PN}-31.0-multi_index-fix-compilation-failure-with-boost-1.91.patch
+"
 S="${WORKDIR}/${PN/-core}-${PV/_rc/rc}"
 
 LICENSE="MIT"
 SLOT="0"
 if [[ "${PV}" != *_rc* ]] ; then
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
+	KEYWORDS="amd64 arm arm64 ~ppc ~ppc64 x86"
 fi
 IUSE="asm +cli +daemon dbus examples +external-signer gui qrcode +system-libsecp256k1 systemtap test test-full +wallet zeromq"
 RESTRICT="!test? ( test )"
@@ -88,6 +91,7 @@ DOCS=(
 )
 
 PATCHES=(
+	"${DISTDIR}/${PN}-31.0-multi_index-fix-compilation-failure-with-boost-1.91.patch"
 	"${FILESDIR}/30.0-cmake-syslibs.patch"
 	"${FILESDIR}/26.0-init.patch"
 )

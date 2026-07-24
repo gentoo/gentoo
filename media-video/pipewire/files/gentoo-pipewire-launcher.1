@@ -11,7 +11,12 @@ Two instances of PipeWire are started: one as the core sound-server, and
 one for PulseAudio emulation (cf.\&
 .BR pipewire-pulse (1)\fR).
 .PP
-It must be run in an environment with an active D-Bus session bus,
+If the
+\fIdbus\fR
+USE flag is enabled on the media-video/pipewire package (e.g. for
+Bluetooth or RTKit support),
+\fIgentoo\-pipewire\-launcher\fR
+must be run in an environment with an active D-Bus session bus,
 i.e. one in which the
 .B DBUS_SESSION_BUS_ADDRESS
 environment variable is set appropriately.

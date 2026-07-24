@@ -1,0 +1,18 @@
+--- a/.promu.yml
++++ b/.promu.yml
+@@ -1,6 +1,7 @@
+ go:
+     # Whenever the Go version is updated here, .circle/config.yml should also be updated.
+     version: 1.25
++    cgo: true
+ repository:
+     path: github.com/prometheus/blackbox_exporter
+ build:
+@@ -10,6 +11,7 @@ build:
+         -X github.com/prometheus/common/version.Branch={{.Branch}}
+         -X github.com/prometheus/common/version.BuildUser={{user}}@{{host}}
+         -X github.com/prometheus/common/version.BuildDate={{date "20060102-15:04:05"}}
++    static: false
+ tarball:
+     files:
+         - blackbox.yml

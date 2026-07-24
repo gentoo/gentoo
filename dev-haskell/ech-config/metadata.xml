@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<use>
+		<flag name="devel">Development commands</flag>
+	</use>
+	<upstream>
+		<remote-id type="hackage">ech-config</remote-id>
+		<remote-id type="github">haskell-tls/hs-tls</remote-id>
+	</upstream>
+</pkgmetadata>

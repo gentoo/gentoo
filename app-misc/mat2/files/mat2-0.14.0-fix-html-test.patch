@@ -1,0 +1,23 @@
+From 00b4f110711754496932c59d5af3c0b2ed694484 Mon Sep 17 00:00:00 2001
+From: jvoisin <julien.voisin@dustri.org>
+Date: Mon, 3 Nov 2025 12:10:34 +0100
+Subject: [PATCH] Fix html testcase on old python versions
+
+---
+ tests/test_libmat2.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/test_libmat2.py b/tests/test_libmat2.py
+index dacc584..18f6ab3 100644
+--- a/tests/test_libmat2.py
++++ b/tests/test_libmat2.py
+@@ -639,7 +639,7 @@ def test_html(self):
+         os.remove('./tests/data/clean.cleaned.html')
+         os.remove('./tests/data/clean.cleaned.cleaned.html')
+ 
+-        if sys.version_info >= (3, 13):
++        if sys.version_info >= (3, 9):
+             with open('./tests/data/clean.html', 'w') as f:
+                 f.write('<title><title><pouet/><meta/></title></title><test/>')
+             with self.assertRaises(ValueError):
+

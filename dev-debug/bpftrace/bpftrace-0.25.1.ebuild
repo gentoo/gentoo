@@ -21,7 +21,7 @@ if [[ ${PV} == *9999* ]] ; then
 	MAN_V="0.25.0"
 else
 	SRC_URI="https://github.com/bpftrace/bpftrace/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm64"
+	KEYWORDS="amd64 ~arm64"
 	# the man page version may trail the release
 	#MAN_V="0.25.0"
 fi
@@ -87,6 +87,12 @@ pkg_pretend() {
 		~FTRACE_SYSCALLS
 		~HAVE_EBPF_JIT
 	"
+
+	if use test; then
+		# force linux-info to check kernel configurations only in the
+		# running kernel, not in any on-disk configuration (bug 977516)
+		KERNEL_DIR="linux-info-runtime-checks-only"
+	fi
 
 	check_extra_config
 

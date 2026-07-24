@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 inherit meson optfeature python-single-r1
 
 DESCRIPTION="Universal Wayland Session Manager"
@@ -13,7 +13,6 @@ SRC_URI="https://github.com/Vladimir-csp/${PN}/archive/refs/tags/v${PV}.tar.gz -
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="+man"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
@@ -25,7 +24,7 @@ DEPEND="
 	')
 "
 RDEPEND="${DEPEND}"
-BDEPEND="man? ( app-text/scdoc )"
+BDEPEND="app-text/scdoc"
 
 src_configure() {
 	local emesonargs=(
@@ -34,7 +33,7 @@ src_configure() {
 		-Dttyautolock=enabled
 		-Dwait-tray=enabled
 		-Duwsm-app=enabled
-		$(meson_feature man man-pages)
+		-Dman-pages=enabled
 		-Ddocdir=/usr/share/doc/"${PF}"
 	)
 	meson_src_configure

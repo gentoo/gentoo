@@ -1,0 +1,40 @@
+From https://github.com/gtk2hs/gtk2hs/pull/341
+From: GuillaumedeVolpiano <xavier@wheredoibegin.fr>
+Date: Mon, 17 Feb 2025 11:40:19 +0100
+Subject: [PATCH] Compatibility with Cabal 3.14
+
+--- a/Setup.hs
++++ b/Setup.hs
+@@ -13,6 +13,9 @@ import Distribution.Text ( display )
+ import Distribution.Version ( Version(..) )
+ import Distribution.Verbosity
+ import Distribution.Simple.Utils hiding (die)
++#if MIN_VERSION_Cabal(3,14,0)
++import Distribution.Utils.Path ( getSymbolicPath )
++#endif
+ import System.FilePath
+ import System.Exit (die)
+ 
+@@ -49,7 +52,11 @@ writePangoVersionHeaderFile verbosity lbi (Version (major:minor:micro:_) []) = d
+     , "#define PANGO_VERSION_MICRO " ++ show micro
+     ]
+   where
++#if MIN_VERSION_Cabal(3,14,0)
++    targetDir  = getSymbolicPath . autogenPackageModulesDir $ lbi
++#else
+     targetDir  = autogenPackageModulesDir lbi
++#endif
+     targetFile = targetDir </> "hspangoversion.h"
+ 
+ writeVersionHeaderFile _ _ version =
+--- a/pango.cabal
++++ b/pango.cabal
+@@ -40,7 +40,7 @@ Flag new-exception
+ 
+ custom-setup
+   setup-depends: base >= 4.8 && <5,
+-                 Cabal >= 2.2 && < 3.13,
++                 Cabal >= 2.2 && < 3.15,
+                  filepath >= 1.3 && < 1.6,
+                  gtk2hs-buildtools >= 0.13.2.0 && < 0.14
+ 

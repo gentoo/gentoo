@@ -1,5 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Ben Kohler <bkohler@gentoo.org (2026-06-04)
+# Libseat functionality still needs more work on both systemd & elogind
+sys-apps/kmscon libseat
 
 # Jaco Kroon <jkroon@gentoo.org> (2025-11-11)
 # The depended on packages will need to be keyworded for various arches
@@ -37,10 +41,6 @@ net-fs/samba fam
 # Masked due to upstream build failures (bug #693018)
 # One example: https://tracker.ceph.com/issues/41523
 >=sys-cluster/ceph-14.2 dpdk
-
-# Michael Palimaka <kensington@gentoo.org> (2015-09-03)
-# Native inotify support is preferred on linux.
-kde-frameworks/kcoreaddons fam
 
 # Diego Elio Pettenò <flameeyes@gentoo.org> (2012-08-27)
 # The libpci access is only used for linux.

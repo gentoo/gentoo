@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake-multilib flag-o-matic
+inherit cmake-multilib flag-o-matic toolchain-funcs
 
 DESCRIPTION="C client library for MariaDB/MySQL"
 HOMEPAGE="https://dev.mysql.com/downloads/"
@@ -41,6 +41,12 @@ RDEPEND+="
 	!=dev-db/mysql-5.7.26-r0
 	!=dev-db/mysql-5.7.27-r0
 	!<dev-db/percona-server-5.7.26.29-r1
+"
+# zstd/openssl/zlib are required for native tools while cross-compiling
+BDEPEND="
+	app-arch/zstd
+	dev-libs/openssl
+	virtual/zlib
 "
 
 DOCS=( README )
@@ -81,6 +87,36 @@ src_prepare() {
 	fi
 
 	cmake_src_prepare
+
+	if tc-is-cross-compiler; then
+		BUILD_NATIVE="${S}_build_native"
+		cp -R "${S}" "${BUILD_NATIVE}" || die
+
+		# avoid unused deps for the native tools
+		sed -e '/MYSQL_CHECK_LZ4/d' \
+			-e '/MYSQL_CHECK_RPC/d' \
+			-i "${BUILD_NATIVE}"/CMakeLists.txt || die
+		sed -e 's/ext::lz4//g' \
+			-i "${BUILD_NATIVE}"/utilities/CMakeLists.txt || die
+
+		# Invoke native tools using absolute paths
+		local rnative="${BUILD_NATIVE}"/runtime_output_directory
+		sed -e "s:COMMAND uca9dump:COMMAND ${rnative}/uca9dump:g" \
+			-i strings/CMakeLists.txt || die
+		sed -e "s:COMMAND comp_client_err:COMMAND ${rnative}/comp_client_err:g" \
+			-i utilities/CMakeLists.txt || die
+		sed -e "s:COMMAND comp_err:COMMAND ${rnative}/comp_err:g" \
+			-i utilities/CMakeLists.txt || die
+		sed -e "s:COMMAND comp_sql:COMMAND ${rnative}/comp_sql:g" \
+			-i scripts/CMakeLists.txt \
+			-i scripts/sys_schema/CMakeLists.txt || die
+		sed -e "s:COMMAND libmysql_api_test:COMMAND ${rnative}/libmysql_api_test:g" \
+			-i libmysql/CMakeLists.txt || die
+
+		# do compile-only tests while cross-compiling
+		sed -e '/CHECK_C_SOURCE_/s/_RUNS/_COMPILES/' \
+			-i configure.cmake || die
+	fi
 }
 
 multilib_src_configure() {
@@ -114,6 +150,21 @@ multilib_src_configure() {
 	)
 
 	cmake_src_configure
+
+	if tc-is-cross-compiler; then
+		mycmakeargs=(
+			-DFORCE_INSOURCE_BUILD=ON
+			${mycmakeargs[@]/-DWITH_LZ4=system}
+		)
+		CMAKE_USE_DIR="${BUILD_NATIVE}" BUILD_DIR="${BUILD_NATIVE}" tc-env_build cmake_src_configure
+	fi
+}
+
+multilib_src_compile() {
+	if tc-is-cross-compiler; then
+		BUILD_DIR="${BUILD_NATIVE}" tc-env_build cmake_build uca9dump comp_client_err comp_err comp_sql libmysql_api_test
+	fi
+	cmake_src_compile
 }
 
 multilib_src_install_all() {

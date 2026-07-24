@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=hatchling
 PYPI_VERIFY_REPO=https://github.com/scikit-build/scikit-build-core
-PYTHON_COMPAT=( pypy3_11 python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 
 inherit distutils-r1 pypi
 
@@ -34,7 +34,6 @@ BDEPEND="
 		>=dev-python/cattrs-22.2.0[${PYTHON_USEDEP}]
 		dev-python/fastjsonschema[${PYTHON_USEDEP}]
 		dev-python/pybind11[${PYTHON_USEDEP}]
-		>=dev-python/pytest-subprocess-1.5[${PYTHON_USEDEP}]
 		dev-python/setuptools[${PYTHON_USEDEP}]
 		dev-python/virtualenv[${PYTHON_USEDEP}]
 	)
@@ -43,11 +42,12 @@ BDEPEND="
 EPYTEST_PLUGINS=( pytest-subprocess )
 distutils_enable_tests pytest
 
+PATCHES=(
+	# https://github.com/scikit-build/scikit-build-core/pull/1259/changes/56e8c65f6911c168a4f23ae76c9c7f9ad4c088eb
+	"${FILESDIR}/${P}-test.patch"
+)
+
 python_test() {
-	local _EPYTEST_DESELECT=(
-		# TODO / we don't package validate_pyproject anyway
-		tests/test_schema.py::test_compare_schemas
-	)
 	local EPYTEST_IGNORE=(
 		# needs unpackaged validate_pyproject
 		tests/test_schema.py

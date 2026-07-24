@@ -3,8 +3,8 @@
 
 EAPI=8
 
-DISTUTILS_USE_PEP517=flit
-PYTHON_COMPAT=( python3_{11..14} pypy3_11 )
+DISTUTILS_USE_PEP517=flit-core
+PYTHON_COMPAT=( python3_{12..15} )
 
 inherit distutils-r1
 
@@ -27,4 +27,6 @@ RDEPEND="
 	>=dev-python/ruamel-yaml-0.15[${PYTHON_USEDEP}]
 "
 
+EPYTEST_PLUGINS=( "${PN}" )
+EPYTEST_PLUGIN_LOAD_VIA_ENV=1
 distutils_enable_tests pytest

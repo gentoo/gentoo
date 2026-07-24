@@ -6,7 +6,7 @@ EAPI=8
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=maturin
 PYPI_VERIFY_REPO=https://github.com/tox-dev/toml-fmt
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 
 RUST_MIN_VER="1.87.0"
 CRATES="
@@ -67,7 +67,7 @@ LICENSE+="
 	Unicode-3.0 ZLIB
 "
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~loong ppc ppc64 ~riscv ~s390 ~sparc x86"
+KEYWORDS="amd64 arm arm64 ppc ppc64 ~riscv ~s390 x86"
 
 RDEPEND="
 	dev-python/toml-fmt-common[${PYTHON_USEDEP}]

@@ -34,6 +34,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-noWhich.patch
 	"${FILESDIR}"/${P}-parallel.patch
 	"${FILESDIR}"/${P}-noGCC.patch
+	"${FILESDIR}"/${P}-gcc17.patch
 )
 
 src_prepare() {

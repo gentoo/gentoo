@@ -1,11 +1,11 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DESCRIPTION="Eselect module for management of multiple pwsh versions"
 HOMEPAGE="https://gitlab.gentoo.org/dotnet/eselect-pwsh/"
-SRC_URI="https://gitlab.gentoo.org/dotnet/${PN}/-/archive/${PV}/${P}.tar.bz2"
+SRC_URI="https://dev.gentoo.org/~xgqt/distfiles/mirrored/${P}.tar.bz2"
 
 LICENSE="GPL-2+"
 SLOT="0"

@@ -1,0 +1,21 @@
+Bump cmake min to 3.20 and add explicit extensions for CMP0115
+https://bugs.gentoo.org/953935
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-CMAKE_MINIMUM_REQUIRED(VERSION 2.4)
++CMAKE_MINIMUM_REQUIRED(VERSION 3.20)
+ 
+ project(libcuefile C)
+ 
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -1,7 +1,7 @@
+ add_definitions(-DYY_NEVER_INTERACTIVE)
+ include_directories(${libcuefile_SOURCE_DIR}/include)
+ 
+-add_library(cuefile-shared SHARED cd cdtext cue_parse cue_print cue_scan cuefile time toc toc_parse toc_print toc_scan)
++add_library(cuefile-shared SHARED cd.c cdtext.c cue_parse.c cue_print.c cue_scan.c cuefile.c time.c toc.h toc_parse.c toc_print.c toc_scan.c)
+ set_target_properties(cuefile-shared PROPERTIES OUTPUT_NAME cuefile CLEAN_DIRECT_OUTPUT 1 VERSION 0.0.0 SOVERSION 0)
+ 
+ install(TARGETS cuefile-shared LIBRARY DESTINATION "lib${LIB_SUFFIX}" ARCHIVE DESTINATION "lib${LIB_SUFFIX}")

@@ -1,0 +1,18 @@
+https://sources.debian.org/patches/pngtools/0.5~git20220314.1ccca3a-2/bug1013909.patch/
+
+Description: Fix build failure without network access caused by missing local DTD.
+Author: Michael Schaller <misch@google.com>
+Bug-Debian: https://bugs.debian.org/1013909
+Forwarded: no
+Reviewed-By: Mathieu Malaterre <malat@debian.org>
+Last-Update: 2022-08-11
+
+--- pngtools-1.3.orig/man/docbook/head.sgml
++++ pngtools-1.3/man/docbook/head.sgml
+@@ -12,5 +12,4 @@
+      (c) Michael Still, 2001
+ -->
+ 
+-<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook SGML V4.4//EN"
+-   "http://www.oasis-open.org/docbook/sgml/4.4/docbook.dtd">
++<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook V4.4//EN" []>

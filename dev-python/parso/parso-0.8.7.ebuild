@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{11..14} pypy3_11 )
+PYTHON_COMPAT=( python3_{12..15} )
 
 inherit distutils-r1
 
@@ -27,3 +27,22 @@ distutils_enable_sphinx docs
 EPYTEST_PLUGINS=()
 EPYTEST_XDIST=1
 distutils_enable_tests pytest
+
+python_test() {
+	local EPYTEST_DESELECT=()
+
+	case ${EPYTHON} in
+		python3.15*)
+			EPYTEST_DESELECT+=(
+				# minor exception message mismatch
+				'test/test_python_errors.py::test_python_exception_matches[def f(x, x): pass]'
+				'test/test_python_errors.py::test_python_exception_matches[def x(*): pass]'
+				# now valid in py3.15
+				'test/test_python_errors.py::test_python_exception_matches[[*[] for a in [1]]]'
+				'test/test_python_errors.py::test_python_exception_matches[{**{} for a in [1]}]'
+			)
+			;;
+	esac
+
+	epytest
+}

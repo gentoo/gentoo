@@ -17,7 +17,7 @@ else
 	SRC_URI="https://github.com/emacs-compat/${PN}/archive/${PV}.tar.gz
 		-> ${P}.gh.tar.gz"
 
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
+	KEYWORDS="amd64 arm arm64 ~ppc ppc64 ~riscv x86"
 fi
 
 LICENSE="GPL-3+"

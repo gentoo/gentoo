@@ -5,14 +5,6 @@
 		<email>sci@gentoo.org</email>
 		<name>Gentoo Science Project</name>
 	</maintainer>
-	<maintainer type="person" proxied="yes">
-		<email>jeffrey@icurse.nl</email>
-		<name>Jeffrey Lin</name>
-	</maintainer>
-	<maintainer type="person" proxied="proxy">
-		<email>tamiko@gentoo.org</email>
-		<name>Matthias Maier</name>
-	</maintainer>
 	<longdescription lang="en">
 		The purpose of Double precision SIMD-oriented Fast Mersenne Twister (dSFMT)
 		is to speed up the generation by avoiding the expensive conversion

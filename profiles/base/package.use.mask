@@ -6,6 +6,26 @@
 
 # New entries go on top.
 
+# Michael Orlitzky <mjo@gentoo.org> (2026-07-17)
+# Broke upstream, not an easy fix, bug 978718.
+>=net-analyzer/monitoring-plugins-3.0.1 snmp
+
+# Michał Górny <mgorny@gentoo.org> (2026-07-02)
+# Unsurpringly upstream doesn't support custom slotted Gentoo install.
+dev-libs/libevent mbedtls
+
+# Conrad Kostecki <conikost@gentoo.org> (2026-06-27)
+# We need to force GCC for older releases, which is needed
+# for dev-util/intel-graphics-compiler in the end, as long
+# they do not support newer clang versions (bug #974434).
+# See bug #974434
+<llvm-runtimes/compiler-rt-sanitizers-19 clang
+
+# Christian Ruppert <idl0r@gentoo.org> (2026-06-08)
+# dev-libs/openssl-4.0.0/0.4 is currently masked
+net-misc/curl ech
+net-proxy/haproxy ech
+
 # Sam James <sam@gentoo.org> (2026-06-01)
 # Broken with new dev-python/pathspec (bug #973108)
 <dev-python/mypy-2.1.0 native-extensions
@@ -25,14 +45,11 @@ dev-cpp/eigen:3/3.4 test
 ~sci-libs/adolc-9999 -mpi
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2026-05-15)
-# Various integration packages. Preparing Qt5 last-rites.
-# Removal some time after 2026-05-30.
-app-i18n/fcitx-qt qt5
-app-i18n/uim qt5
-x11-themes/QGnomePlatform qt5
-x11-themes/adwaita-qt qt5
-x11-themes/kvantum qt5
-x11-themes/qtcurve qt5
+# Various integration packages. Maintainers, you must drop Qt5 support.
+<=app-i18n/fcitx-qt-5.1.14-r0 qt5
+<=app-i18n/uim-1.9.6-r0 qt5
+<=x11-themes/QGnomePlatform-0.9.2-r7 qt5
+<=x11-themes/adwaita-qt-1.4.2-r1 qt5
 
 # Michał Górny <mgorny@gentoo.org> (2026-05-07)
 # Force-enable all PYTHON_TARGETS for python-exec to avoid using private
@@ -48,7 +65,7 @@ dev-lang/python-exec -python_targets_python3_15t
 # Andreas Sturmlechner <asturm@gentoo.org> (2026-04-12)
 # net-wireless/gnuradio and dependencies. Preparing Qt5 last-rites.
 # Bugs #948049, #954887.  Removal some time after 2026-04-30.
-dev-python/pyqtgraph qt5
+<=dev-python/pyqtgraph-0.14.0-r0 qt5
 net-wireless/gnuradio qt5
 <=net-wireless/gnuradio-3.10.99 channels
 
@@ -109,10 +126,6 @@ media-libs/subrandr debug
 # repository was archived.
 gui-wm/hyprland qtutils
 
-# Michał Górny <mgorny@gentoo.org> (2025-12-20)
-# Needs last-rited dev-lang/julia.
-<kde-apps/cantor-25.12.2-r1 julia
-
 # Lukas Schmelting <lschmelting@posteo.com (2025-11-06)
 # https://bugs.gentoo.org/933164
 app-misc/localsearch gif
@@ -143,6 +156,7 @@ mail-mta/exim pam
 # really added to test if ILP64 packaging works, mask it for the time
 # being.
 dev-python/numpy index64
+dev-python/scipy index64
 
 # Nicolas PARLANT <nicolas.parlant@parhuet.fr> (2025-09-20)
 # Require dev-libs/libtsm, only keyworded on amd64 and x86
@@ -177,7 +191,8 @@ games-simulation/flightgear gdal
 
 # Joonas Niilola <juippis@gentoo.org> (2025-05-14)
 # Experimental, no official upstream support.
-www-client/firefox jpegxl
+# 2026-06-15 update: after 152.0 upstream officially supports it.
+<www-client/firefox-152.0 jpegxl
 
 # Paul Zander <negril.nx+gentoo@gmail.com> (2025-05-01)
 # Requires llvm-15
@@ -238,10 +253,6 @@ llvm-core/llvm debuginfod
 # Missing dependencies not packaged currently
 dev-python/pyside doc
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-01-29)
-# Prepare cleanup of kde-frameworks/syndication:5
-kde-frameworks/knewstuff:5 opds
-
 # Eli Schwartz <eschwartz@gentoo.org> (2025-01-27)
 # Dependencies e.g. bindgen/netcdf/pypy not keyworded or stable in
 # most places.
@@ -280,10 +291,6 @@ www-client/firefox wasm-sandbox
 # We'll mask it for a few weeks to use the bundled ICU
 # while Google fixes the issue.
 www-client/chromium system-icu
-
-# Joonas Niilola <juippis@gentoo.org> (2024-11-07)
-# Dependency for generating docs not packaged in Gentoo. #942992
-dev-util/repolite doc
 
 # Sam James <sam@gentoo.org> (2024-10-29)
 # Currently needs patched dev-util/sysprof.

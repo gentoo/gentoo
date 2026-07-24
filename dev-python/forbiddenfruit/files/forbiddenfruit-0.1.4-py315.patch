@@ -1,0 +1,93 @@
+diff --git a/forbiddenfruit/__init__.py b/forbiddenfruit/__init__.py
+index f85d4a5..96ec748 100644
+--- a/forbiddenfruit/__init__.py
++++ b/forbiddenfruit/__init__.py
+@@ -97,7 +97,7 @@ FILE_p = ctypes.POINTER(PyFile)
+ 
+ def get_not_implemented():
+     namespace = {}
+-    name = "_Py_NotImplmented"
++    name = "_Py_NotImplemented"
+     not_implemented = ctypes.cast(
+         ctypes.pythonapi._Py_NotImplementedStruct, ctypes.py_object)
+ 
+@@ -205,7 +205,29 @@ PyTypeObject._fields_ = [
+     ('tp_hash', ctypes.CFUNCTYPE(ctypes.c_int64, PyObject_p)),
+     ('tp_call', ctypes.CFUNCTYPE(PyObject_p, PyObject_p, PyObject_p, PyObject_p)),
+     ('tp_str', ctypes.CFUNCTYPE(PyObject_p, PyObject_p)),
+-    # ...
++    ('tp_getattro', ctypes.c_void_p),  # Type not declared yet
++    ('tp_setattro', ctypes.c_void_p),  # Type not declared yet
++    ('tp_as_buffer', ctypes.c_void_p),  # Type not declared yet
++    ('tp_flags', ctypes.c_void_p),  # Type not declared yet
++    ('tp_doc', ctypes.c_void_p),  # Type not declared yet
++    ('tp_traverse', ctypes.c_void_p),  # Type not declared yet
++    ('tp_clear', ctypes.c_void_p),  # Type not declared yet
++    ('tp_richcompare', ctypes.c_void_p),  # Type not declared yet
++    ('tp_weaklistoffset', ctypes.c_void_p),  # Type not declared yet
++    ('tp_iter', ctypes.c_void_p),  # Type not declared yet
++    ('tp_iternext', ctypes.CFUNCTYPE(PyObject_p, PyObject_p)),
++    ('tp_methods', ctypes.c_void_p),  # Type not declared yet
++    ('tp_members', ctypes.c_void_p),  # Type not declared yet
++    ('tp_getset', ctypes.c_void_p),  # Type not declared yet
++    ('tp_base', ctypes.c_void_p),  # Type not declared yet
++    ('tp_dict', ctypes.c_void_p),  # Type not declared yet
++    ('tp_descr_get', ctypes.c_void_p),  # Type not declared yet
++    ('tp_descr_set', ctypes.c_void_p),  # Type not declared yet
++    ('tp_dictoffset', ctypes.c_void_p),  # Type not declared yet
++    ('tp_init', ctypes.c_void_p),  # Type not declared yet
++    ('tp_alloc', ctypes.c_void_p),  # Type not declared yet
++    ('tp_new', ctypes.CFUNCTYPE(PyObject_p, PyObject_p, PyObject_p, ctypes.c_void_p)),
++    # More struct fields follow but aren't declared here yet ...
+ ]
+ 
+ 
+@@ -240,7 +262,7 @@ __hidden_elements__ = defaultdict(list)
+ __dir__ = dir
+ __builtin__.dir = __filtered_dir__
+ 
+-# build override infomation for dunder methods
++# build override information for dunder methods
+ as_number = ('tp_as_number', [
+     ("add", "nb_add"),
+     ("sub", "nb_subtract"),
+@@ -267,7 +289,7 @@ as_number = ('tp_as_number', [
+     ("ipow", "nb_inplace_power"),
+     ("ilshift", "nb_inplace_lshift"),
+     ("irshift", "nb_inplace_rshift"),
+-    ("iadd", "nb_inplace_and"),
++    ("iand", "nb_inplace_and"),
+     ("ixor", "nb_inplace_xor"),
+     ("ior", "nb_inplace_or"),
+     ("floordiv", "nb_floor_divide"),
+@@ -305,6 +327,10 @@ for override in [as_number, as_sequence, as_async]:
+ # divmod isn't a dunder, still make it overridable
+ override_dict['divmod()'] = ('tp_as_number', "nb_divmod")
+ override_dict['__str__'] = ('tp_str', "tp_str")
++override_dict['__new__'] = ('tp_new', "tp_new")
++override_dict['__hash__'] = ('tp_hash', "tp_hash")
++override_dict['__next__'] = ('tp_iternext', "tp_iternext")
++
+ 
+ 
+ def _is_dunder(func_name):
+diff --git a/tests/unit/test_forbidden_fruit.py b/tests/unit/test_forbidden_fruit.py
+index 56b09ce..f8a1b62 100644
+--- a/tests/unit/test_forbidden_fruit.py
++++ b/tests/unit/test_forbidden_fruit.py
+@@ -331,6 +332,15 @@ def test_dunder_reverse():
+     reverse(TypeError, '__str__')
+     assert str(te) == "testing"
+ 
++@skip_legacy
++def test_dunder_new():
++    assert str(1) == "1"
++    def the_answer(cls, args, kwargs):
++        return 'fourty-two'
++    curse(str, '__new__', the_answer)
++    assert str(1) == "fourty-two"
++    reverse(str, '__new__')
++    assert str(1) == "1"
+ 
+ def test_cursed_context_manager():
+     "The `cursed` context manager should curse an existing symbols in a scope"

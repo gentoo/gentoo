@@ -1,0 +1,24 @@
+--- libwebsockets-4.5.8/lib/CMakeLists.txt.orig	2026-06-15 14:05:46.286273515 -0400
++++ libwebsockets-4.5.8/lib/CMakeLists.txt	2026-06-15 14:05:51.588484812 -0400
+@@ -368,6 +368,13 @@ if (UNIX OR MINGW)
+ # figure out pkfcfg required libs here
+ 
+ set(lws_requires "")
++if (LWS_WITH_MBEDTLS)
++	if (NOT lws_requires STREQUAL "")
++		set(lws_requires "${lws_requires},mbedtls-3")
++	else()
++		set(lws_requires "mbedtls-3")
++	endif()
++endif()
+ if (LWS_HAVE_LIBCAP)
+ 	if (NOT lws_requires STREQUAL "")
+ 		set(lws_requires "${lws_requires},libcap")
+@@ -404,7 +411,6 @@ if (NOT ${lws_requires} STREQUAL "")
+         file(APPEND "${PROJECT_BINARY_DIR}/libwebsockets.pc" "Requires: ${lws_requires}")
+ endif()
+ 
+-
+ 	install(FILES "${PROJECT_BINARY_DIR}/libwebsockets.pc"
+ 		DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig)
+ 

@@ -1,0 +1,110 @@
+from Debian https://salsa.debian.org/python-team/packages/sphinx-panels/-/blob/debian/0.6.0-7/debian/patches/Make-the-tests-pass-with-Docutils-0.22.patch
+Bug #962897 / Make the tests pass with Docutils 0.22
+--- a/tests/test_sphinx.py
++++ b/tests/test_sphinx.py
+@@ -1,8 +1,10 @@
+ from pathlib import Path
+ import shutil
+ 
++import docutils
+ import pytest
+ import sphinx
++from docutils.nodes import Element
+ 
+ from sphinx_panels.tabs import TabbedHtmlTransform
+ 
+@@ -34,6 +36,11 @@ def test_sources(sphinx_app_factory, file_regression, folder):
+     doctree["source"] = "source"
+     if sphinx.version_info < (7, 1):
+         doctree["translation_progress"] = "{'total': 0, 'translated': 0}"
++    if docutils.__version_info__ < (0, 22):
++        for node in doctree.findall(Element):
++            for name, value in node.attlist():
++                if isinstance(value, bool):
++                    node.attributes[name] = str(int(value))
+     file_regression.check(
+         doctree.pformat(),
+         encoding="utf8",
+--- a/tests/test_sphinx/test_sources_dropdown_basic_.xml
++++ b/tests/test_sphinx/test_sources_dropdown_basic_.xml
+@@ -2,27 +2,27 @@
+     <section ids="title" names="title">
+         <title>
+             Title
+-        <dropdown_main classes="sphinx-bs dropdown card mb-3 shadow" opened="False">
++        <dropdown_main classes="sphinx-bs dropdown card mb-3 shadow" opened="0">
+             <dropdown_title classes="summary-title card-header bg-primary text-white text-center font-weight-bold">
+                 My Content
+-                <container classes="summary-down" is_div="True">
++                <container classes="summary-down" is_div="1">
+                     <raw format="html" xml:space="preserve">
+                         <svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg>
+-                <container classes="summary-up" is_div="True">
++                <container classes="summary-up" is_div="1">
+                     <raw format="html" xml:space="preserve">
+                         <svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg>
+-            <container classes="summary-content card-body bg-light text-right font-italic" is_div="True">
++            <container classes="summary-content card-body bg-light text-right font-italic" is_div="1">
+                 <paragraph classes="card-text">
+                     Is formatted
+-        <dropdown_main classes="sphinx-bs dropdown card mb-3 fade-in-slide-down" opened="False">
++        <dropdown_main classes="sphinx-bs dropdown card mb-3 fade-in-slide-down" opened="0">
+             <dropdown_title classes="summary-title card-header">
+                 Fade In
+-                <container classes="summary-down" is_div="True">
++                <container classes="summary-down" is_div="1">
+                     <raw format="html" xml:space="preserve">
+                         <svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg>
+-                <container classes="summary-up" is_div="True">
++                <container classes="summary-up" is_div="1">
+                     <raw format="html" xml:space="preserve">
+                         <svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg>
+-            <container classes="summary-content card-body" is_div="True">
++            <container classes="summary-content card-body" is_div="1">
+                 <paragraph classes="card-text">
+                     Content
+--- a/tests/test_sphinx/test_sources_tabbed_basic_.xml
++++ b/tests/test_sphinx/test_sources_tabbed_basic_.xml
+@@ -2,31 +2,31 @@
+     <section ids="title" names="title">
+         <title>
+             Title
+-        <container classes="tabbed-set" is_div="True">
+-            <tabbed_input checked="True" id="mock-uuid" set_id="mock-uuid" type="radio">
++        <container classes="tabbed-set" is_div="1">
++            <tabbed_input checked="1" id="mock-uuid" set_id="mock-uuid" type="radio">
+             <tabbed_label classes="tabbed-label" input_id="mock-uuid">
+                 Tab 1
+-            <container classes="tabbed-content" is_div="True">
++            <container classes="tabbed-content" is_div="1">
+                 <paragraph>
+                     Tab 1 content
+-            <tabbed_input checked="False" id="mock-uuid" set_id="mock-uuid" type="radio">
++            <tabbed_input checked="0" id="mock-uuid" set_id="mock-uuid" type="radio">
+             <tabbed_label classes="tabbed-label" input_id="mock-uuid">
+                 Tab 2
+-            <container classes="tabbed-content pl-1 bg-primary" is_div="True">
++            <container classes="tabbed-content pl-1 bg-primary" is_div="1">
+                 <paragraph>
+                     Tab 2 content
+-        <container classes="tabbed-set" is_div="True">
+-            <tabbed_input checked="False" id="mock-uuid" set_id="mock-uuid" type="radio">
++        <container classes="tabbed-set" is_div="1">
++            <tabbed_input checked="0" id="mock-uuid" set_id="mock-uuid" type="radio">
+             <tabbed_label classes="tabbed-label" input_id="mock-uuid">
+                 Tab 3
+-            <container classes="tabbed-content" is_div="True">
++            <container classes="tabbed-content" is_div="1">
+                 <paragraph>
+                     Tab 3 content
+-                <literal_block force="False" highlight_args="{}" language="python" linenos="False" xml:space="preserve">
++                <literal_block force="0" highlight_args="{}" language="python" linenos="0" xml:space="preserve">
+                     import pip
+-            <tabbed_input checked="True" id="mock-uuid" set_id="mock-uuid" type="radio">
++            <tabbed_input checked="1" id="mock-uuid" set_id="mock-uuid" type="radio">
+             <tabbed_label classes="tabbed-label" input_id="mock-uuid">
+                 Tab 4
+-            <container classes="tabbed-content" is_div="True">
++            <container classes="tabbed-content" is_div="1">
+                 <paragraph>
+                     Tab 4 content

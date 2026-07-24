@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 
 inherit distutils-r1
 
@@ -38,6 +38,11 @@ RDEPEND="
 
 EPYTEST_PLUGINS=( pytest-mock )
 distutils_enable_tests pytest
+
+PATCHES=(
+	# https://github.com/kbr/fritzconnection/pull/269
+	"${FILESDIR}/${P}-pytest-9.patch"
+)
 
 python_test() {
 	local EPYTEST_DESELECT=(

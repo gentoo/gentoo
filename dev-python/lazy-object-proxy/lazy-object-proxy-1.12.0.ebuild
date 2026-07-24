@@ -1,11 +1,11 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{11..14} python3_{13,14}t pypy3_11 )
+PYTHON_COMPAT=( python3_{12..15} python3_{14..15}t )
 
 inherit distutils-r1 pypi
 
@@ -31,15 +31,28 @@ distutils_enable_tests pytest
 python_prepare_all() {
 	distutils-r1_python_prepare_all
 
-	# No need to benchmark
-	sed \
-		-e '/benchmark/s:test_:_&:g' \
-		-e '/pytest.mark.benchmark/d' \
-		-i tests/test_lazy_object_proxy.py || die
-
 	if use native-extensions; then
 		unset SETUPPY_FORCE_PURE
 	else
 		export SETUPPY_FORCE_PURE=1
 	fi
+}
+
+python_test() {
+	local EPYTEST_DESELECT=(
+		# benchmarks
+		tests/test_lazy_object_proxy.py::test_perf
+		tests/test_lazy_object_proxy.py::test_proto
+	)
+
+	case ${EPYTHON} in
+		python3.15*)
+			EPYTEST_DESELECT+=(
+				tests/test_async_py3.py::test_await_12
+				tests/test_async_py3.py::test_await_13
+				tests/test_async_py3.py::test_await_5
+			)
+	esac
+
+	epytest -o strict_markers=False
 }

@@ -1,0 +1,12 @@
+#!/sbin/openrc-run
+# Copyright 2026 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+name="PoWA Web"
+description="PoWA user interface"
+pidfile="/run/powa-web.pid"
+
+command="/usr/bin/powa-web"
+command_background="true"
+command_group="powa"
+command_user="powa"

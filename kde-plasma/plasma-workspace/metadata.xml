@@ -11,6 +11,7 @@
 	</upstream>
 	<use>
 		<flag name="appstream">Enable AppStream software metadata support</flag>
+		<flag name="flatpak">Enable support for flatpaks notifications using <pkg>sys-apps/flatpak</pkg></flag>
 		<flag name="ksysguard">Enable device notifier and system monitor applets as well as terminate applications runner</flag>
 		<flag name="networkmanager">Enable support for location-based time zone changes</flag>
 		<flag name="policykit">Enable locale generation and Users KCM using <pkg>sys-auth/polkit</pkg> and <pkg>sys-apps/accountsservice</pkg></flag>

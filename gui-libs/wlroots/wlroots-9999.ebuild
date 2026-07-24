@@ -66,7 +66,7 @@ RDEPEND="
 	)
 "
 DEPEND="
-	${REPEND}
+	${RDEPEND}
 	>=dev-libs/wayland-protocols-1.47
 "
 BDEPEND="

@@ -7,7 +7,7 @@ EAPI=8
 # that, so we use another backend.  And since we use another backend,
 # why not dogfood it in the first place?
 DISTUTILS_USE_PEP517=standalone
-PYTHON_COMPAT=( pypy3_11 python3_{11..15} )
+PYTHON_COMPAT=( python3_{12..15} )
 
 inherit distutils-r1 pypi
 
@@ -19,7 +19,7 @@ HOMEPAGE="
 
 LICENSE="|| ( Apache-2.0 MIT )"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~s390 ~x86"
+KEYWORDS="amd64 arm arm64 ~loong ppc ppc64 ~riscv ~s390 x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 

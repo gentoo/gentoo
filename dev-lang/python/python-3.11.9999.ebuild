@@ -8,7 +8,7 @@ inherit autotools check-reqs flag-o-matic git-r3 multiprocessing pax-utils
 inherit prefix toolchain-funcs
 
 PYVER=$(ver_cut 1-2)
-PATCHSET="python-gentoo-patches-3.11.13"
+PATCHSET="python-gentoo-patches-3.11.15"
 
 DESCRIPTION="An interpreted, interactive, object-oriented programming language"
 HOMEPAGE="
@@ -43,11 +43,11 @@ RDEPEND="
 	dev-libs/libffi:=
 	dev-libs/mpdecimal:=
 	dev-python/gentoo-common
+	sys-apps/util-linux
 	>=virtual/zlib-1.1.3:=
 	virtual/libcrypt:=
 	virtual/libintl
 	gdbm? ( sys-libs/gdbm:=[berkdb] )
-	kernel_linux? ( sys-apps/util-linux:= )
 	ncurses? ( >=sys-libs/ncurses-5.2:= )
 	readline? (
 		!libedit? ( >=sys-libs/readline-4.1:= )

@@ -1,0 +1,41 @@
+From e78ea0a56cbfa0045ec28dd5753cdc885f3ca411 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Thu, 25 Jun 2026 20:58:48 +0200
+Subject: [PATCH] CMake: Provide explicit WITH_NM option for
+ KF6NetworkManagerQt dep
+
+Done as CMakeDependentOption based on "LINUX" to slot in for the
+existing conditional.
+
+Amends c2414374c8280317e9d2268a3b67f2625a128d60
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index f3e032c..38d0b72 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -14,6 +14,7 @@ set(KDE_COMPILERSETTINGS_LEVEL "5.82")
+ find_package(ECM ${KF6_MIN_VERSION} REQUIRED NO_MODULE)
+ set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH}  ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
+ 
++include(CMakeDependentOption)
+ include(CheckIncludeFiles)
+ include(KDEInstallDirs)
+ include(KDECMakeSettings)
+@@ -33,7 +34,8 @@ find_package(KF6 ${KF6_MIN_VERSION} REQUIRED COMPONENTS CoreAddons Solid KIO Cra
+ find_package(KSysGuard ${PROJECT_DEP_VERSION} REQUIRED)
+ 
+ # there's no NetworkManager on FreeBSD'
+-if (LINUX)
++cmake_dependent_option(WITH_NM "Provide improved backend for network statistics" TRUE "LINUX" FALSE)
++if (WITH_NM)
+     find_package(KF6NetworkManagerQt ${KF6_MIN_VERSION} CONFIG REQUIRED)
+ endif()
+ 
+-- 
+GitLab
+

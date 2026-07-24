@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{11..15} )
 inherit cmake flag-o-matic python-any-r1 toolchain-funcs xdg-utils
 
 if [[ ${PV} == *9999* ]] ; then
@@ -14,7 +14,7 @@ else
 	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/aacid.asc
 	inherit verify-sig
 
-	TEST_COMMIT="9d5011815a14c157ba25bb160187842fb81579a5"
+	TEST_COMMIT="b85e4d1ce75636b3e727555a9d31da34ad771c1c"
 	SRC_URI="https://poppler.freedesktop.org/${P}.tar.xz"
 	SRC_URI+=" test? ( https://gitlab.freedesktop.org/poppler/test/-/archive/${TEST_COMMIT}/test-${TEST_COMMIT}.tar.bz2 -> ${PN}-test-${TEST_COMMIT}.tar.bz2 )"
 	SRC_URI+=" verify-sig? ( https://poppler.freedesktop.org/${P}.tar.xz.sig )"
@@ -26,7 +26,7 @@ DESCRIPTION="PDF rendering library based on the xpdf-3.0 code base"
 HOMEPAGE="https://poppler.freedesktop.org/"
 
 LICENSE="GPL-2"
-IUSE="boost cairo cjk curl +cxx debug doc gpgme +introspection +jpeg +jpeg2k +lcms nss png qt6 test tiff +utils"
+IUSE="boost cairo cjk curl +cxx debug doc gpg +introspection +jpeg +jpeg2k +lcms nss png qt6 test tiff +utils"
 RESTRICT="!test? ( test )"
 
 COMMON_DEPEND="
@@ -39,7 +39,7 @@ COMMON_DEPEND="
 		introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 	)
 	curl? ( net-misc/curl )
-	gpgme? ( dev-cpp/gpgmepp:= )
+	gpg? ( dev-cpp/gpgmepp:= )
 	jpeg? ( >=media-libs/libjpeg-turbo-1.1.0:= )
 	jpeg2k? ( >=media-libs/openjpeg-2.3.0-r1:2= )
 	lcms? ( media-libs/lcms:2 )
@@ -55,8 +55,7 @@ DEPEND="${COMMON_DEPEND}
 	boost? ( >=dev-libs/boost-1.83 )
 	test? ( qt6? ( dev-qt/qtbase:6[widgets] ) )
 "
-BDEPEND="
-	${PYTHON_DEPS}
+BDEPEND="${PYTHON_DEPS}
 	>=dev-util/glib-utils-2.80
 	virtual/pkgconfig
 "
@@ -115,7 +114,7 @@ src_configure() {
 		-DWITH_Cairo=$(usex cairo)
 		-DENABLE_LIBCURL=$(usex curl)
 		-DENABLE_CPP=$(usex cxx)
-		-DENABLE_GPGME=$(usex gpgme)
+		-DENABLE_GPGME=$(usex gpg)
 		-DWITH_JPEG=$(usex jpeg)
 		-DENABLE_DCTDECODER=$(usex jpeg libjpeg none)
 		-DENABLE_LIBOPENJPEG=$(usex jpeg2k openjpeg2 none)

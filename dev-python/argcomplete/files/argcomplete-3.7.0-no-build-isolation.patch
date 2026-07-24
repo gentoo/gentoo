@@ -1,0 +1,13 @@
+diff --git a/test/test.py b/test/test.py
+index 7b1e6ff..9c5e947 100755
+--- a/test/test.py
++++ b/test/test.py
+@@ -1397,7 +1397,7 @@ class TestBashZshGlobalBase(TestBashZshBase):
+             self.sh.run_command("export PATH=$PATH:./bin")
+             self.sh.run_command("export PYTHONPATH=.:$PYTHONPATH")
+             test_package = os.path.join(TEST_DIR, "test_package")
+-            command = "pip install {} --target .".format(test_package)
++            command = "pip install {} --no-build-isolation --target .".format(test_package)
+             if not wheel:
+                 command += " --no-binary :all:"
+             install_output = self.sh.run_command(command)

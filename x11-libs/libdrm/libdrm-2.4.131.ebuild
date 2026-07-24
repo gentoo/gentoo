@@ -13,7 +13,7 @@ fi
 inherit ${GIT_ECLASS} python-any-r1 meson-multilib
 
 DESCRIPTION="X.Org libdrm library"
-HOMEPAGE="https://dri.freedesktop.org/ https://gitlab.freedesktop.org/mesa/drm"
+HOMEPAGE="https://dri.freedesktop.org/ https://gitlab.freedesktop.org/mesa/libdrm"
 if [[ ${PV} != 9999* ]]; then
 	SRC_URI="https://dri.freedesktop.org/libdrm/${P}.tar.xz"
 	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"

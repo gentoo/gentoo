@@ -151,6 +151,10 @@ PATCHES=(
 	"${FILESDIR}/php-8.2.20-implicit-printf.patch"
 	"${FILESDIR}/php-8.2.23-fix-ub.patch"
 	"${FILESDIR}/php-bug75457-pcre2-backport.patch"
+	"${FILESDIR}/php-8.3-iconv-testfix-01.patch"
+	"${FILESDIR}/php-8.3-iconv-testfix-02.patch"
+	"${FILESDIR}/php-8.3-iconv-testfix-03.patch"
+	"${FILESDIR}/php-8.3-iconv-testfix-04.patch"
 )
 
 # ARM/Windows functions (bug 923335)

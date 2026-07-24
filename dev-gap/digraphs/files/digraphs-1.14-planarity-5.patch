@@ -1,0 +1,103 @@
+diff --git a/Makefile.in b/Makefile.in
+index 0cc11139..05b4b237 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -47,7 +47,8 @@ endif
+ ifdef WITH_INCLUDED_PLANARITY
+   KEXT_SOURCES += \
+         $(PLANARITY_SUITE_DIR)/c/graphLib/graphDFSUtils.c \
+-        $(PLANARITY_SUITE_DIR)/c/graphLib/graphUtils.c \
++        $(PLANARITY_SUITE_DIR)/c/graphLib/graph.c \
++        $(PLANARITY_SUITE_DIR)/c/graphLib/graphLib.c \
+         $(PLANARITY_SUITE_DIR)/c/graphLib/extensionSystem/graphExtensions.c \
+         $(PLANARITY_SUITE_DIR)/c/graphLib/homeomorphSearch/graphK23Search.c \
+         $(PLANARITY_SUITE_DIR)/c/graphLib/homeomorphSearch/graphK23Search_Extensions.c \
+@@ -70,6 +71,8 @@ ifdef WITH_INCLUDED_PLANARITY
+         $(PLANARITY_SUITE_DIR)/c/graphLib/planarityRelated/graphIsolator.c \
+         $(PLANARITY_SUITE_DIR)/c/graphLib/planarityRelated/graphNonplanar.c \
+         $(PLANARITY_SUITE_DIR)/c/graphLib/planarityRelated/graphOuterplanarObstruction.c \
++        $(PLANARITY_SUITE_DIR)/c/graphLib/planarityRelated/graphOuterplanarity_Extensions.c \
++        $(PLANARITY_SUITE_DIR)/c/graphLib/planarityRelated/graphPlanarity_Extensions.c \
+         $(PLANARITY_SUITE_DIR)/c/graphLib/planarityRelated/graphTests.c
+ 
+   KEXT_CFLAGS += -I$(PLANARITY_SUITE_DIR) -include extern/eaps_flags.h
+diff --git a/m4/ax_check_planarity.m4 b/m4/ax_check_planarity.m4
+index 4f1c66d5..70af478a 100644
+--- a/m4/ax_check_planarity.m4
++++ b/m4/ax_check_planarity.m4
+@@ -23,7 +23,7 @@ AC_DEFUN([AX_CHECK_PLANARITY], [
+           #else
+           #error too old
+           #endif
+-          int main(void) { gp_InitGraph(0, 0); }
++          int main(void) { gp_EnsureVertexCapacity(0, 0); }
+         ])], [
+           AC_MSG_RESULT([yes])
+         ], [
+diff --git a/src/planar.c b/src/planar.c
+index 72e5b304..f705f8eb 100644
+--- a/src/planar.c
++++ b/src/planar.c
+@@ -33,12 +33,12 @@
+ #pragma GCC diagnostic ignored "-Wswitch-default"
+ #endif
+ #ifdef DIGRAPHS_WITH_INCLUDED_PLANARITY
+-#include "c/graph.h"
++#include "c/graphLib.h"
+ #include "c/graphLib/homeomorphSearch/graphK23Search.h"
+ #include "c/graphLib/homeomorphSearch/graphK33Search.h"
+ #include "c/graphLib/homeomorphSearch/graphK4Search.h"
+ #else
+-#include "planarity/graph.h"
++#include "planarity/graphLib.h"
+ #include "planarity/c/graphLib/homeomorphSearch/graphK23Search.h"
+ #include "planarity/c/graphLib/homeomorphSearch/graphK33Search.h"
+ #include "planarity/c/graphLib/homeomorphSearch/graphK4Search.h"
+@@ -169,13 +169,13 @@ Obj boyers_planarity_check(Obj digraph, int flags, bool krtwsk) {
+ 
+   graphP theGraph = gp_New();
+ 
+-  if (gp_InitGraph(theGraph, V) != OK) {
++  if (gp_EnsureVertexCapacity(theGraph, V) != OK) {
+     gp_Free(&theGraph);
+     ErrorQuit("Digraphs: boyers_planarity_check (C): invalid number of nodes!",
+               0L,
+               0L);
+     return 0L;
+-  } else if (gp_EnsureArcCapacity(theGraph, 2 * E) != OK) {
++  } else if (gp_EnsureEdgeCapacity(theGraph, 2 * E) != OK) {
+     gp_Free(&theGraph);
+     ErrorQuit("Digraphs: boyers_planarity_check (C): invalid number of edges!",
+               0L,
+@@ -185,13 +185,13 @@ Obj boyers_planarity_check(Obj digraph, int flags, bool krtwsk) {
+ 
+   switch (flags) {
+     case EMBEDFLAGS_SEARCHFORK33:
+-      gp_AttachK33Search(theGraph);
++      gp_ExtendWith_K33Search(theGraph);
+       break;
+     case EMBEDFLAGS_SEARCHFORK23:
+-      gp_AttachK23Search(theGraph);
++      gp_ExtendWith_K23Search(theGraph);
+       break;
+     case EMBEDFLAGS_SEARCHFORK4:
+-      gp_AttachK4Search(theGraph);
++      gp_ExtendWith_K4Search(theGraph);
+       break;
+     default:
+       break;
+@@ -202,11 +202,11 @@ Obj boyers_planarity_check(Obj digraph, int flags, bool krtwsk) {
+ 
+   // Construct the antisymmetric digraph with no loops
+   for (Int v = 1; v <= LEN_LIST(out); ++v) {
+-    DIGRAPHS_ASSERT(gp_VertexInRange(theGraph, v));
+-    gp_SetVertexIndex(theGraph, v, v);
++    DIGRAPHS_ASSERT(v < gp_UpperBoundVertices(theGraph));
++    gp_SetIndex(theGraph, v, v);
+     Obj const out_v = ELM_LIST(out, v);
+     for (Int w = 1; w <= LEN_LIST(out_v); ++w) {
+-      DIGRAPHS_ASSERT(gp_VertexInRange(theGraph, w));
++      DIGRAPHS_ASSERT(w < gp_UpperBoundVertices(theGraph));
+       Int u = INT_INTOBJ(ELM_LIST(out_v, w));
+       if (v < u
+           || CALL_3ARGS(IsDigraphEdge, digraph, INTOBJ_INT(u), INTOBJ_INT(v))

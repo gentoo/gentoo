@@ -1,0 +1,21 @@
+miscmods: don't directly use `ld`
+
+Avoid using ld directly.  It is done purposely in this case to
+apparently work around some issues with Solaris linker.  While we could
+resolve it here by simply using $LD, use the compiler as the commented
+out original would, for it is even better.
+
+Bug: https://bugs.gentoo.org/976375
+Signed-off-by: Fabian Groffen <grobian@bitzolder.nl>
+
+--- a/src/miscmods/Makefile
++++ b/src/miscmods/Makefile
+@@ -62,7 +62,7 @@
+ 	$(FE)$(CC) -c $(CFLAGS) $(INCLUDE) pdkim.c
+ 	$(FE)$(CC) -c $(CFLAGS) $(INCLUDE) $(TLS_INCLUDE) signing.c
+ 	$(FE)mv dkim.o dkim_tmp.o
+-	$(FE)ld -r -o dkim.o $(LDFLAGS_PARTIAL) \
++	$(FE)$(CC) -r -o dkim.o $(LDFLAGS_PARTIAL) \
+ 		dkim_tmp.o dkim_transport.o pdkim.o signing.o
+ 
+ # Similarly, we want a single .so for the dynamic-load module

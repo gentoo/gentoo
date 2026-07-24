@@ -90,7 +90,7 @@ src_compile() {
 }
 
 src_test() {
-	cmake_src_install
+	cmake_src_test
 
 	wrap_python ${FUNCNAME}
 }

@@ -35,7 +35,7 @@ REQUIRED_USE="
 DEPEND="
 	media-libs/libsamplerate
 	examples? ( media-libs/libsdl3 )
-	jgmodule? ( media-libs/jg:1= )
+	jgmodule? ( >=media-libs/jg-2.0.0 )
 "
 RDEPEND="
 	${DEPEND}

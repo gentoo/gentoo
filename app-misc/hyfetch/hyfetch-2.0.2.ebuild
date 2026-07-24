@@ -166,7 +166,7 @@ KEYWORDS="amd64 ~arm64"
 
 src_install() {
 	dodir usr/bin
-	dobin target/release/hyfetch
+	dobin "$(cargo_target_dir)"/hyfetch
 	newbin neofetch neowofetch
 	doman docs/hyfetch.1
 	newman docs/neofetch.1 neowofetch.1

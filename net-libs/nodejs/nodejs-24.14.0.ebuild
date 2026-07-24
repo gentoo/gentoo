@@ -21,7 +21,7 @@ if [[ ${PV} == *9999 ]]; then
 else
 	SRC_URI="https://nodejs.org/dist/v${PV}/node-v${PV}.tar.xz"
 	SLOT="0/$(ver_cut 1)"
-	KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64 ~riscv ~x86 ~x64-macos"
+	KEYWORDS="amd64 arm arm64 ~loong ppc64 ~riscv x86 ~x64-macos"
 	S="${WORKDIR}/node-v${PV}"
 fi
 
@@ -73,6 +73,10 @@ RDEPEND="${COMMON_DEPEND}"
 # fatter binaries and set the disk requirement to 22GiB.
 CHECKREQS_MEMORY="8G"
 CHECKREQS_DISK_BUILD="22G"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-24.14.0-32-bit.patch
+)
 
 pkg_pretend() {
 	if [[ ${MERGE_TYPE} != "binary" ]]; then

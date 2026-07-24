@@ -13,7 +13,8 @@ LICENSE="GPL-3+ BSD BSD-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc ~x86 ~arm64-macos ~x64-macos ~x64-solaris"
 IUSE="ccache doc pcre test"
-RESTRICT="!test? ( test )"
+# tests are automagic for many languages and quite brittle
+RESTRICT="!test? ( test ) test"
 
 RDEPEND="
 	pcre? ( dev-libs/libpcre2 )

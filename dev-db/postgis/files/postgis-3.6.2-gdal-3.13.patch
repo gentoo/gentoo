@@ -1,0 +1,21 @@
+https://github.com/postgis/postgis/commit/032bbd6237c705c4c5a3bc53a5e366f62e6d88ab
+
+From 032bbd6237c705c4c5a3bc53a5e366f62e6d88ab Mon Sep 17 00:00:00 2001
+From: Darafei Praliaskouski <me@komzpa.net>
+Date: Thu, 5 Mar 2026 13:37:40 +0400
+Subject: [PATCH] CI: fix latest builds and improve regression failure logging
+
+--- a/raster/rt_pg/rtpg_geometry.c
++++ b/raster/rt_pg/rtpg_geometry.c
+@@ -1572,9 +1572,8 @@ Datum RASTER_asRaster(PG_FUNCTION_ARGS)
+ 		srs = NULL;
+ 
+ 	/* determine number of bands */
+-	/* MIN macro is from GDAL's cpl_port.h */
+-	num_bands = MIN(pixtypes_len, values_len);
+-	num_bands = MIN(num_bands, nodatavals_len);
++	num_bands = Min(pixtypes_len, values_len);
++	num_bands = Min(num_bands, nodatavals_len);
+ 	POSTGIS_RT_DEBUGF(3, "RASTER_asRaster: pixtypes_len = %d", pixtypes_len);
+ 	POSTGIS_RT_DEBUGF(3, "RASTER_asRaster: values_len = %d", values_len);
+ 	POSTGIS_RT_DEBUGF(3, "RASTER_asRaster: nodatavals_len = %d", nodatavals_len);

@@ -13,7 +13,7 @@ SRC_URI="https://gitlab.freedesktop.org/emersion/${PN}/-/releases/v${PV}/downloa
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
-IUSE="+man varlink"
+IUSE="varlink"
 
 RDEPEND="
 	dev-libs/json-c:=
@@ -23,10 +23,10 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
-	virtual/pkgconfig
+	>=app-text/scdoc-1.9.3
 	dev-libs/wayland-protocols
 	dev-util/wayland-scanner
-	man? ( >=app-text/scdoc-1.9.3 )
+	virtual/pkgconfig
 	varlink? ( dev-libs/vali )
 	verify-sig? ( sec-keys/openpgp-keys-emersion )
 "
@@ -35,7 +35,7 @@ VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/emersion.asc"
 
 src_configure() {
 	local emesonargs=(
-		$(meson_feature man man-pages)
+		-Dman-pages=enabled
 		$(meson_feature varlink ipc)
 	)
 	meson_src_configure

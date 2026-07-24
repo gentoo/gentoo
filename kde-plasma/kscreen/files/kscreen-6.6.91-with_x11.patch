@@ -1,0 +1,54 @@
+From 25a7fef1176c5ba974d813372c43df38428c3299 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Wed, 3 Jun 2026 19:46:09 +0200
+Subject: [PATCH] osd: ifdef KX11Extras via WITH_X11
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ osd/osd.cpp | 9 +++++++--
+ 1 file changed, 7 insertions(+), 2 deletions(-)
+
+diff --git a/osd/osd.cpp b/osd/osd.cpp
+index 45e61596..87660c83 100644
+--- a/osd/osd.cpp
++++ b/osd/osd.cpp
+@@ -6,14 +6,16 @@
+ */
+ 
+ #include "osd.h"
++#include "config-X11.h"
+ 
+ #include <KScreen/Mode>
+ 
+ #include <LayerShellQt/Window>
+ 
+ #include <KWindowSystem>
++#if WITH_X11
+ #include <KX11Extras>
+-
++#endif
+ #include <Plasma/Plasma>
+ 
+ #include <QCursor>
+@@ -75,7 +77,9 @@ void Osd::showActionSelector()
+         layerWindow->setKeyboardInteractivity(LayerShellQt::Window::KeyboardInteractivityOnDemand);
+         m_osdActionSelector->setScreen(screen);
+         m_osdActionSelector->setVisible(true);
+-    } else {
++    }
++#if WITH_X11
++    else {
+         auto newGeometry = m_osdActionSelector->geometry();
+         newGeometry.moveCenter(screen->geometry().center());
+         KX11Extras::setState(m_osdActionSelector->winId(), NET::SkipPager | NET::SkipSwitcher | NET::SkipTaskbar);
+@@ -86,6 +90,7 @@ void Osd::showActionSelector()
+         m_osdActionSelector->setGeometry(newGeometry);
+         m_osdActionSelector->requestActivate();
+     }
++#endif
+ }
+ 
+ void Osd::onOsdActionSelected(int action)
+-- 
+2.54.0
+

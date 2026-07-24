@@ -1,0 +1,82 @@
+# https://codeberg.org/ziglang/zig/pulls/35809
+
+From: Eric Joldasov <bratishkaerik@landless-city.net>
+Subject: [PATCH] Resolve relative install directories against install prefix
+
+This fixes a regression introduced on the `master` branch in commit
+0505318efe0d2757a344dded9ae1607f948f7511
+(PR https://codeberg.org/ziglang/zig/pulls/35428).
+
+In Zig 0.16 and earlier, overriding install sub-directories (such as
+`--prefix-lib-dir`) with a relative path correctly resolved them
+against the "install prefix". The mentioned PR changed this behavior
+(though this was not mentioned in its description), causing relative
+path overrides to resolve against the "current working directory"
+instead.
+
+This commit restores the old behavior and brings the logic back in line
+with existing build system conventions (CMake, Autotools, Meson):
+
+1. Absolute paths are used as-is.
+2. Relative paths are resolved relative to the install
+   prefix path, rather than CWD.
+
+Ecosystem context:
+https://github.com/mesonbuild/meson/pull/9903
+
+Signed-off-by: Eric Joldasov <bratishkaerik@landless-city.net>
+---
+ lib/compiler/Maker.zig | 38 ++++++++++++++++++++++++++------------
+ 1 file changed, 26 insertions(+), 12 deletions(-)
+
+diff --git a/lib/compiler/Maker.zig b/lib/compiler/Maker.zig
+index ad73ac16272d..20884225b3d7 100644
+--- a/lib/compiler/Maker.zig
++++ b/lib/compiler/Maker.zig
+@@ -631,20 +631,34 @@ pub fn main(init: process.Init.Minimal) !void {
+         .sub_path = "zig-out",
+     };
+ 
+-    const install_lib_path: Path = if (override_lib_dir) |cwd_relative| .{
+-        .root_dir = .cwd(),
+-        .sub_path = cwd_relative,
+-    } else try install_prefix_path.join(arena, "lib");
++    // Standard installation convention (matching CMake, Autotools, and Meson):
++    // 1. Absolute paths => used as-is.
++    // 2. Relative paths => used as relative to the install prefix (NOT CWD).
++    //
++    // REF: https://github.com/mesonbuild/meson/pull/9903
++    const install_lib_path: Path = if (override_lib_dir) |lib_dir|
++        if (Dir.path.isAbsolute(lib_dir)) .{
++            .root_dir = .cwd(),
++            .sub_path = lib_dir,
++        } else try install_prefix_path.join(arena, lib_dir)
++    else
++        try install_prefix_path.join(arena, "lib");
+ 
+-    const install_bin_path: Path = if (override_bin_dir) |cwd_relative| .{
+-        .root_dir = .cwd(),
+-        .sub_path = cwd_relative,
+-    } else try install_prefix_path.join(arena, "bin");
++    const install_bin_path: Path = if (override_bin_dir) |bin_dir|
++        if (Dir.path.isAbsolute(bin_dir)) .{
++            .root_dir = .cwd(),
++            .sub_path = bin_dir,
++        } else try install_prefix_path.join(arena, bin_dir)
++    else
++        try install_prefix_path.join(arena, "bin");
+ 
+-    const install_include_path: Path = if (override_include_dir) |cwd_relative| .{
+-        .root_dir = .cwd(),
+-        .sub_path = cwd_relative,
+-    } else try install_prefix_path.join(arena, "include");
++    const install_include_path: Path = if (override_include_dir) |include_dir|
++        if (Dir.path.isAbsolute(include_dir)) .{
++            .root_dir = .cwd(),
++            .sub_path = include_dir,
++        } else try install_prefix_path.join(arena, include_dir)
++    else
++        try install_prefix_path.join(arena, "include");
+ 
+     const now = Io.Clock.Timestamp.now(io, .awake);
+ 

@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,7 +12,8 @@ SRC_URI="https://i3wm.org/${PN}/${P}.tar.xz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
-IUSE="pulseaudio"
+IUSE="pulseaudio test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-libs/yajl-2.0.2:=
@@ -22,7 +23,10 @@ RDEPEND="
 	pulseaudio? ( || ( media-libs/libpulse media-sound/apulse[sdk] ) )
 "
 DEPEND="${RDEPEND}"
-BDEPEND="virtual/pkgconfig"
+BDEPEND="
+	virtual/pkgconfig
+	test? ( sys-apps/grep[pcre] )
+"
 
 src_prepare() {
 	default

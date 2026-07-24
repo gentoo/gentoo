@@ -21,7 +21,7 @@
 		<flag name="chromaprint">Enable audio fingerprinting support via <pkg>media-libs/chromaprint</pkg></flag>
 		<flag name="chromium">Builds libffmpeg.so to enable media playback in Chromium-based browsers like Opera and Vivaldi.</flag>
 		<flag name="codec2">Enable codec2 low bit rate speech codec support via <pkg>media-libs/codec2</pkg></flag>
-		<flag name="cuda">Enable support for various GPU-accelerated filters using NVIDIA PTX compiled with <pkg>llvm-core/clang</pkg></flag>
+		<flag name="cuda-clang">Enable support for various GPU-accelerated filters using NVIDIA PTX compiled with <pkg>llvm-core/clang</pkg></flag>
 		<flag name="dav1d">Enable AV1 decoding support via <pkg>media-libs/dav1d</pkg></flag>
 		<flag name="drm">
 			Enable use of <pkg>x11-libs/libdrm</pkg> for various hardware

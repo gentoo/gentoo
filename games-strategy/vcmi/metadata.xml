@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>games@gentoo.org</email>
+		<name>Gentoo Games</name>
+	</maintainer>
+	<longdescription>
+		VCMI is an open-source engine for Heroes III, offering new and extended possibilities.
+		To use VCMI, you need to own the original data files.
+	</longdescription>
+	<use>
+		<flag name="discord">Enable Discord integration</flag>
+		<flag name="editor">Enable editor support</flag>
+		<flag name="erm">Enable compilation of ERM scripting module</flag>
+		<flag name="launcher">Enable launcher support</flag>
+		<flag name="lobby">Enable lobby server</flag>
+		<flag name="translations">Install translations</flag>
+		<flag name="video">Enable video support using ffmpeg</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">vcmi/vcmi</remote-id>
+	</upstream>
+</pkgmetadata>

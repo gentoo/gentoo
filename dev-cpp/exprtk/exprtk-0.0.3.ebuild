@@ -21,6 +21,13 @@ KEYWORDS="amd64 ~arm arm64 ~ppc ppc64 ~riscv x86"
 
 DOCS=( readme.txt )
 
+src_prepare () {
+	default
+
+	# bug #977184
+	sed -e '/^BASE_OPTIONS/ s/-Werror //' -i Makefile || die
+}
+
 src_compile() { :; }
 
 src_test() {

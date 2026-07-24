@@ -4,7 +4,8 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{11..14} )
-inherit eapi9-ver optfeature python-any-r1 readme.gentoo-r1 toolchain-funcs wine
+inherit eapi9-ver flag-o-matic optfeature python-any-r1
+inherit readme.gentoo-r1 toolchain-funcs wine
 
 WINE_GECKO=2.47.4
 WINE_MONO=10.4.1
@@ -117,18 +118,16 @@ RDEPEND="
 "
 DEPEND="
 	${WINE_COMMON_DEPEND}
-	|| (
-		sys-devel/gcc:*
-		llvm-runtimes/compiler-rt:*[atomic-builtins(-)]
-	)
 	>=sys-kernel/linux-headers-6.14
 	X? ( x11-base/xorg-proto )
 "
 BDEPEND="
 	${PYTHON_DEPS}
 	dev-lang/perl
+	sys-devel/binutils:*
 	sys-devel/bison
 	sys-devel/flex
+	sys-devel/gcc:*
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )
 	wayland? ( dev-util/wayland-scanner )
@@ -156,22 +155,19 @@ src_prepare() {
 
 	wine_src_prepare
 
-	# this is kind-of best effort and ignores llvm slots, ideally
-	# atomic-builtins should be package.use.force then could drop this
-	if tc-is-clang && [[ $(tc-get-c-rtlib) == compiler-rt ]] &&
-		has_version -d 'llvm-runtimes/compiler-rt[-atomic-builtins(-)]'
-	then
-		# needed by Valve's fsync patches if using compiler-rt w/o atomics
-		sed -e '/^UNIX_LIBS.*=/s/$/ -latomic/' \
-			-i dlls/{ntdll,winevulkan}/Makefile.in || die
-	fi
-
 	# proton variant also needs specfiles and vulkan
 	tools/make_specfiles || die # perl
 	dlls/winevulkan/make_vulkan -X video.xml -x vk.xml || die # python
 }
 
 src_configure() {
+	# Valve does not really support anything but gcc+bfd, and some of
+	# their modifications have been fragile and accumulating issues
+	# that they seemingly have no interest in fixing (bug #977021)
+	tc-is-gcc || unset AR AS CC CPP CXX LD NM OBJ{COPY,DUMP} RANLIB READELF STRIP
+	tc-ld-is-bfd || append-ldflags -fuse-ld=bfd
+	strip-unsupported-flags
+
 	local wineconfargs=(
 		# upstream (Valve) doesn't really support misc configurations (e.g.
 		# adds vulkan code not always guarded by --with-vulkan), so force

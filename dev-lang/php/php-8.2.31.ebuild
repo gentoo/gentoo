@@ -151,6 +151,10 @@ PATCHES=(
 	"${FILESDIR}/php-8.2.20-implicit-printf.patch"
 	"${FILESDIR}/php-8.2.23-fix-ub.patch"
 	"${FILESDIR}/php-bug75457-pcre2-backport.patch"
+	"${FILESDIR}/php-8.3-iconv-testfix-01.patch"
+	"${FILESDIR}/php-8.3-iconv-testfix-02.patch"
+	"${FILESDIR}/php-8.3-iconv-testfix-03.patch"
+	"${FILESDIR}/php-8.3-iconv-testfix-04.patch"
 )
 
 # ARM/Windows functions (bug 923335)
@@ -369,6 +373,10 @@ src_prepare() {
 	# backported to 8.2 (yet).
 	rm ext/curl/tests/curl_setopt_ssl.phpt || die
 
+	# bug 977402
+	rm ext/standard/tests/file/fdatasync.phpt \
+		ext/standard/tests/file/fsync.phpt \
+		|| die
 }
 
 src_configure() {

@@ -1,0 +1,14 @@
+--- metrics-library-1.0.231.old/CMakeLists.txt	2026-05-29 13:00:24.000000000 +0200
++++ metrics-library-1.0.231/CMakeLists.txt	2026-06-14 14:17:55.085824407 +0200
+@@ -673,11 +673,6 @@
+         "${CMAKE_BUILD_TYPE}" STREQUAL "release-internal" OR
+         "${CMAKE_BUILD_TYPE}" STREQUAL "releaseinternal")
+         set (COMMON_COMPILE_OPTIONS ${COMMON_COMPILE_OPTIONS}
+-            -O3                 # optimize for speed with conforming optimizations
+-            -ffast-math         # enable fast-math optimizations (equivalent intent to -Ofast)
+-            -Werror             # treats warning as errors
+-            -fvisibility=hidden # hides non-exported symbols
+-            -flto               # enables Link-Time Optimization (LTO)
+             -fPIC               # generates position-independent code during the compilation phase
+             )
+     endif ()

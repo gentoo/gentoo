@@ -1,0 +1,277 @@
+https://github.com/python/cpython/issues/97850
+https://github.com/jazzband/django-configurations/issues/385
+https://github.com/jazzband/django-configurations/pull/386
+
+Modified to apply without 6dc2340dfe3dc39cf0bf0139717d4fb017d30535
+
+From b8f66f76eeedde5e9a4832faeaa6914f15400b8f Mon Sep 17 00:00:00 2001
+From: Adam Johnson <me@adamj.eu>
+Date: Mon, 18 Nov 2024 16:52:55 +0000
+Subject: [PATCH] Move to PEP-451 style loader
+
+--- a/configurations/importer.py
++++ b/configurations/importer.py
+@@ -1,4 +1,3 @@
+-import importlib.util
+ from importlib.machinery import PathFinder
+ import logging
+ import os
+@@ -47,12 +46,12 @@ def create_parser(self, prog_name, subcommand):
+             return parser
+ 
+         base.BaseCommand.create_parser = create_parser
+-        importer = ConfigurationImporter(check_options=check_options)
++        importer = ConfigurationFinder(check_options=check_options)
+         sys.meta_path.insert(0, importer)
+         installed = True
+ 
+ 
+-class ConfigurationImporter:
++class ConfigurationFinder(PathFinder):
+     modvar = SETTINGS_ENVIRONMENT_VARIABLE
+     namevar = CONFIGURATION_ENVIRONMENT_VARIABLE
+     error_msg = ("Configuration cannot be imported, "
+@@ -71,7 +70,7 @@ def __init__(self, check_options=False):
+             self.announce()
+ 
+     def __repr__(self):
+-        return "<ConfigurationImporter for '{0}.{1}'>".format(self.module,
++        return "<ConfigurationFinder for '{0}.{1}'>".format(self.module,
+                                                               self.name)
+ 
+     @property
+@@ -129,56 +128,53 @@ def stylize(text):
+ 
+     def find_spec(self, fullname, path=None, target=None):
+         if fullname is not None and fullname == self.module:
+-            spec = PathFinder.find_spec(fullname, path)
++            spec = super().find_spec(fullname, path, target)
+             if spec is not None:
+-                return importlib.machinery.ModuleSpec(spec.name,
+-                    ConfigurationLoader(self.name, spec),
+-                    origin=spec.origin)
+-        return None
+-
+-
+-class ConfigurationLoader:
+-
+-    def __init__(self, name, spec):
+-        self.name = name
+-        self.spec = spec
+-
+-    def load_module(self, fullname):
+-        if fullname in sys.modules:
+-            mod = sys.modules[fullname]  # pragma: no cover
++                wrap_loader(spec.loader, self.name)
++                return spec
+         else:
+-            mod = importlib.util.module_from_spec(self.spec)
+-            sys.modules[fullname] = mod
+-            self.spec.loader.exec_module(mod)
+-
+-        cls_path = '{0}.{1}'.format(mod.__name__, self.name)
+-
+-        try:
+-            cls = getattr(mod, self.name)
+-        except AttributeError as err:  # pragma: no cover
+-            reraise(err, "Couldn't find configuration '{0}' "
+-                         "in module '{1}'".format(self.name,
+-                                                  mod.__package__))
+-        try:
+-            cls.pre_setup()
+-            cls.setup()
+-            obj = cls()
+-            attributes = uppercase_attributes(obj).items()
+-            for name, value in attributes:
+-                if callable(value) and not getattr(value, 'pristine', False):
+-                    value = value()
+-                    # in case a method returns a Value instance we have
+-                    # to do the same as the Configuration.setup method
+-                    if isinstance(value, Value):
+-                        setup_value(mod, name, value)
+-                        continue
+-                setattr(mod, name, value)
+-
+-            setattr(mod, 'CONFIGURATION', '{0}.{1}'.format(fullname,
+-                                                           self.name))
+-            cls.post_setup()
+-
+-        except Exception as err:
+-            reraise(err, "Couldn't setup configuration '{0}'".format(cls_path))
+-
+-        return mod
++            return None
++
++
++def wrap_loader(loader, class_name):
++    class ConfigurationLoader(loader.__class__):
++        def exec_module(self, module):
++            super().exec_module(module)
++
++            mod = module
++
++            cls_path = f'{mod.__name__}.{class_name}'
++
++            try:
++                cls = getattr(mod, class_name)
++            except AttributeError as err:  # pragma: no cover
++                reraise(
++                    err,
++                    (
++                        f"Couldn't find configuration '{class_name}' in "
++                        f"module '{mod.__package__}'"
++                    ),
++                )
++            try:
++                cls.pre_setup()
++                cls.setup()
++                obj = cls()
++                attributes = uppercase_attributes(obj).items()
++                for name, value in attributes:
++                    if callable(value) and not getattr(value, 'pristine', False):
++                        value = value()
++                        # in case a method returns a Value instance we have
++                        # to do the same as the Configuration.setup method
++                        if isinstance(value, Value):
++                            setup_value(mod, name, value)
++                            continue
++                    setattr(mod, name, value)
++
++                setattr(mod, 'CONFIGURATION', '{0}.{1}'.format(module.__name__,
++                                                               class_name))
++                cls.post_setup()
++
++            except Exception as err:
++                reraise(err, f"Couldn't setup configuration '{cls_path}'")
++
++    loader.__class__ = ConfigurationLoader
+--- a/tests/settings/dot_env.py
++++ b/tests/settings/dot_env.py
+@@ -6,3 +6,6 @@ class DotEnvConfiguration(Configuration):
+     DOTENV = 'test_project/.env'
+ 
+     DOTENV_VALUE = values.Value()
++
++    def DOTENV_VALUE_METHOD(self):
++        return values.Value(environ_name="DOTENV_VALUE")
+--- /dev/null
++++ b/tests/settings/error.py
+@@ -0,0 +1,8 @@
++from configurations import Configuration
++
++
++class ErrorConfiguration(Configuration):
++
++    @classmethod
++    def pre_setup(cls):
++        raise ValueError("Error in pre_setup")
+--- a/tests/test_env.py
++++ b/tests/test_env.py
+@@ -11,4 +11,5 @@ class DotEnvLoadingTests(TestCase):
+     def test_env_loaded(self):
+         from tests.settings import dot_env
+         self.assertEqual(dot_env.DOTENV_VALUE, 'is set')
++        self.assertEqual(dot_env.DOTENV_VALUE_METHOD, 'is set')
+         self.assertEqual(dot_env.DOTENV_LOADED, dot_env.DOTENV)
+--- /dev/null
++++ b/tests/test_error.py
+@@ -0,0 +1,22 @@
++import os
++from django.test import TestCase
++from unittest.mock import patch
++
++
++class ErrorTests(TestCase):
++
++    @patch.dict(os.environ, clear=True,
++                DJANGO_CONFIGURATION='ErrorConfiguration',
++                DJANGO_SETTINGS_MODULE='tests.settings.error')
++    def test_env_loaded(self):
++        with self.assertRaises(ValueError) as cm:
++            from tests.settings import error  # noqa: F401
++
++        self.assertIsInstance(cm.exception, ValueError)
++        self.assertEqual(
++            cm.exception.args,
++            (
++                "Couldn't setup configuration "
++                "'tests.settings.error.ErrorConfiguration':  Error in pre_setup ",
++            )
++        )
+--- a/tests/test_main.py
++++ b/tests/test_main.py
+@@ -7,7 +7,7 @@
+ 
+ from unittest.mock import patch
+ 
+-from configurations.importer import ConfigurationImporter
++from configurations.importer import ConfigurationFinder
+ 
+ ROOT_DIR = os.path.dirname(os.path.dirname(__file__))
+ TEST_PROJECT_DIR = os.path.join(ROOT_DIR, 'test_project')
+@@ -42,12 +42,14 @@ def test_global_arrival(self):
+ 
+     @patch.dict(os.environ, clear=True, DJANGO_CONFIGURATION='Test')
+     def test_empty_module_var(self):
+-        self.assertRaises(ImproperlyConfigured, ConfigurationImporter)
++        with self.assertRaises(ImproperlyConfigured):
++            ConfigurationFinder()
+ 
+     @patch.dict(os.environ, clear=True,
+                 DJANGO_SETTINGS_MODULE='tests.settings.main')
+     def test_empty_class_var(self):
+-        self.assertRaises(ImproperlyConfigured, ConfigurationImporter)
++        with self.assertRaises(ImproperlyConfigured):
++            ConfigurationFinder()
+ 
+     def test_global_settings(self):
+         from configurations.base import Configuration
+@@ -70,21 +72,21 @@ def test_repr(self):
+                 DJANGO_SETTINGS_MODULE='tests.settings.main',
+                 DJANGO_CONFIGURATION='Test')
+     def test_initialization(self):
+-        importer = ConfigurationImporter()
+-        self.assertEqual(importer.module, 'tests.settings.main')
+-        self.assertEqual(importer.name, 'Test')
++        finder = ConfigurationFinder()
++        self.assertEqual(finder.module, 'tests.settings.main')
++        self.assertEqual(finder.name, 'Test')
+         self.assertEqual(
+-            repr(importer),
+-            "<ConfigurationImporter for 'tests.settings.main.Test'>")
++            repr(finder),
++            "<ConfigurationFinder for 'tests.settings.main.Test'>")
+ 
+     @patch.dict(os.environ, clear=True,
+                 DJANGO_SETTINGS_MODULE='tests.settings.inheritance',
+                 DJANGO_CONFIGURATION='Inheritance')
+     def test_initialization_inheritance(self):
+-        importer = ConfigurationImporter()
+-        self.assertEqual(importer.module,
++        finder = ConfigurationFinder()
++        self.assertEqual(finder.module,
+                          'tests.settings.inheritance')
+-        self.assertEqual(importer.name, 'Inheritance')
++        self.assertEqual(finder.name, 'Inheritance')
+ 
+     @patch.dict(os.environ, clear=True,
+                 DJANGO_SETTINGS_MODULE='tests.settings.main',
+@@ -93,12 +95,12 @@ def test_initialization_inheritance(self):
+                                 '--settings=tests.settings.main',
+                                 '--configuration=Test'])
+     def test_configuration_option(self):
+-        importer = ConfigurationImporter(check_options=False)
+-        self.assertEqual(importer.module, 'tests.settings.main')
+-        self.assertEqual(importer.name, 'NonExisting')
+-        importer = ConfigurationImporter(check_options=True)
+-        self.assertEqual(importer.module, 'tests.settings.main')
+-        self.assertEqual(importer.name, 'Test')
++        finder = ConfigurationFinder(check_options=False)
++        self.assertEqual(finder.module, 'tests.settings.main')
++        self.assertEqual(finder.name, 'NonExisting')
++        finder = ConfigurationFinder(check_options=True)
++        self.assertEqual(finder.module, 'tests.settings.main')
++        self.assertEqual(finder.name, 'Test')
+ 
+     def test_configuration_argument_in_cli(self):
+         """

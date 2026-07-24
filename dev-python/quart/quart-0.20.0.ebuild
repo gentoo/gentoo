@@ -1,10 +1,10 @@
-# Copyright 2024-2025 Gentoo Authors
+# Copyright 2024-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-DISTUTILS_USE_PEP517=flit
-PYTHON_COMPAT=( pypy3_11 python3_{11..14} )
+DISTUTILS_USE_PEP517=flit-core
+PYTHON_COMPAT=( python3_{12..15} )
 
 inherit distutils-r1
 
@@ -36,15 +36,18 @@ RDEPEND="
 "
 BDEPEND="
 	test? (
-		dev-python/hypothesis[${PYTHON_USEDEP}]
-		dev-python/pytest-asyncio[${PYTHON_USEDEP}]
 		dev-python/python-dotenv[${PYTHON_USEDEP}]
 	)
 "
 
+EPYTEST_PLUGINS=( hypothesis pytest-asyncio )
 distutils_enable_tests pytest
 
 python_test() {
-	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
-	epytest -o addopts= -p asyncio
+	local EPYTEST_DESELECT=(
+		# https://github.com/pallets/quart/issues/465
+		'tests/test_blueprints.py::test_cli_blueprints[cli_group2-args2]'
+	)
+
+	epytest -o addopts=
 }

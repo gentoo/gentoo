@@ -1,0 +1,968 @@
+https://github.com/pjsip/pjproject/pull/5031
+
+From 6f423fd208e5b6b92bc69b5958be8d58963be5a6 Mon Sep 17 00:00:00 2001
+From: nanang <nanang@teluu.com>
+Date: Thu, 18 Jun 2026 11:33:56 +0700
+Subject: [PATCH 1/4] Don't fail ICE immediately when all checks complete
+ without a valid pair (#4978)
+
+When all of an agent's own connectivity checks complete without producing a
+valid pair, ICE is declared failed immediately. This is premature when the
+checks could not even be sent (e.g. the local routing or firewall rejects the
+remote candidate address, failing the send with EPERM): the remote agent may
+still be able to reach us and trigger a valid pair via an incoming check and
+peer-reflexive candidate discovery. By failing and setting is_complete right
+away, such incoming checks are dropped ("Ignored incoming check after ICE nego
+has been completed").
+
+Add a bounded grace window before declaring failure. When all checks have
+completed with no valid pair, arm a TIMER_WAIT_VALID_PAIR timer (instead of
+failing) and keep the session open so incoming checks can still form a valid
+pair. If the timer expires first, ICE fails as before. This applies to both
+controlled and controlling agents, and the timer is cancelled as soon as a
+valid pair is found. While trickle ICE is still in progress the timer is not
+armed (the existing is_trickling path already defers failure).
+
+The timeout is configurable via the new pj_ice_sess_options field
+wait_valid_pair_timeout (default PJ_ICE_WAIT_VALID_PAIR_TIMEOUT, 10000 ms);
+set it to -1 to restore the previous immediate-fail behaviour.
+
+Co-Authored-By Claude Code
+---
+ pjnath/include/pjnath/config.h      |  32 +++++++++
+ pjnath/include/pjnath/ice_session.h |  29 +++++++-
+ pjnath/src/pjnath/ice_session.c     | 102 ++++++++++++++++++++++++----
+ 3 files changed, 148 insertions(+), 15 deletions(-)
+
+diff --git a/pjnath/include/pjnath/config.h b/pjnath/include/pjnath/config.h
+index 106ab14bdc..17b245d982 100644
+--- a/pjnath/include/pjnath/config.h
++++ b/pjnath/include/pjnath/config.h
+@@ -393,6 +393,38 @@
+ #endif
+ 
+ 
++/**
++ * Specify how long an agent wants to wait (in milliseconds) for a valid pair
++ * to be created from incoming connectivity checks, after it has found that all
++ * connectivity checks in its checklist have been completed but there is no
++ * valid pair yet for any component.
++ *
++ * This is useful when the agent's own connectivity checks cannot be sent
++ * (e.g. the local routing or firewall rejects the remote candidate address),
++ * while the remote agent may still be able to reach this agent and trigger a
++ * valid pair via incoming checks. It applies to both controlling and
++ * controlled agents.
++ *
++ * This timer starts after all of the agent's own checks have completed. Note
++ * that, for an answerer, this may happen before the remote agent has received
++ * the SDP answer and started sending its checks, especially when the agent's
++ * own checks fail immediately (e.g. due to local routing/firewall rejecting
++ * the remote candidate address). The timeout should therefore also
++ * accommodate the time until the remote receives the answer and its first
++ * incoming check arrives, similar to the consideration for
++ * ICE_CONTROLLED_AGENT_WAIT_NOMINATION_TIMEOUT.
++ *
++ * Application may set this value to -1 to disable this timer, in which case
++ * ICE will fail immediately when all checks have completed without any valid
++ * pair.
++ *
++ * Default: 10000 (milliseconds)
++ */
++#ifndef PJ_ICE_WAIT_VALID_PAIR_TIMEOUT
++#   define PJ_ICE_WAIT_VALID_PAIR_TIMEOUT               10000
++#endif
++
++
+ /**
+  * For controlling agent if it uses regular nomination, specify the delay to
+  * perform nominated check (connectivity check with USE-CANDIDATE attribute)
+diff --git a/pjnath/include/pjnath/ice_session.h b/pjnath/include/pjnath/ice_session.h
+index b4296d3692..b60f1605f1 100644
+--- a/pjnath/include/pjnath/ice_session.h
++++ b/pjnath/include/pjnath/ice_session.h
+@@ -671,12 +671,39 @@ typedef struct pj_ice_sess_options
+      * its checklist have been completed and there is at least one successful
+      * (but not nominated) check for every component.
+      *
+-     * Default value for this option is 
++     * Default value for this option is
+      * ICE_CONTROLLED_AGENT_WAIT_NOMINATION_TIMEOUT. Specify -1 to disable
+      * this timer.
+      */
+     int                 controlled_agent_want_nom_timeout;
+ 
++    /**
++     * Specify how long an agent wants to wait (in milliseconds) for a valid
++     * pair to be created from incoming connectivity checks, after it has
++     * found that all connectivity checks in its checklist have been completed
++     * but there is no valid pair yet for any component.
++     *
++     * This is useful when the agent's own connectivity checks cannot be sent
++     * (e.g. the local routing or firewall rejects the remote candidate
++     * address), while the remote agent may still be able to reach this agent
++     * and trigger a valid pair via incoming checks. It applies to both
++     * controlling and controlled agents.
++     *
++     * This timer starts after all of the agent's own checks have completed.
++     * Note that, for an answerer, this may happen before the remote agent has
++     * received the SDP answer and started sending its checks, especially when
++     * the agent's own checks fail immediately (e.g. due to local
++     * routing/firewall rejecting the remote candidate address). The timeout
++     * should therefore also accommodate the time until the remote receives the
++     * answer and its first incoming check arrives, similar to the
++     * consideration for controlled_agent_want_nom_timeout.
++     *
++     * Default value for this option is PJ_ICE_WAIT_VALID_PAIR_TIMEOUT.
++     * Specify -1 to disable this timer, in which case ICE will fail
++     * immediately when all checks have completed without any valid pair.
++     */
++    int                 wait_valid_pair_timeout;
++
+     /**
+      * Trickle ICE mode. Note that, when enabled, aggressive nomination will
+      * be automatically disabled.
+diff --git a/pjnath/src/pjnath/ice_session.c b/pjnath/src/pjnath/ice_session.c
+index 7a351af38f..a0a431a4f3 100644
+--- a/pjnath/src/pjnath/ice_session.c
++++ b/pjnath/src/pjnath/ice_session.c
+@@ -68,10 +68,14 @@ enum timer_type
+ {
+     TIMER_NONE,                 /**< Timer not active                   */
+     TIMER_COMPLETION_CALLBACK,  /**< Call on_ice_complete() callback    */
+-    TIMER_CONTROLLED_WAIT_NOM,  /**< Controlled agent is waiting for 
++    TIMER_CONTROLLED_WAIT_NOM,  /**< Controlled agent is waiting for
+                                      controlling agent to send connectivity
+                                      check with nominated flag after it has
+                                      valid check for every components.  */
++    TIMER_WAIT_VALID_PAIR,      /**< Agent is waiting for a valid pair to be
++                                     created from incoming checks after all of
++                                     its own checks have completed without any
++                                     valid pair.                        */
+     TIMER_START_NOMINATED_CHECK,/**< Controlling agent start connectivity
+                                      checks with USE-CANDIDATE flag.    */
+     TIMER_KEEP_ALIVE            /**< ICE keep-alive timer.              */
+@@ -322,8 +326,9 @@ PJ_DEF(void) pj_ice_sess_options_default(pj_ice_sess_options *opt)
+ {
+     opt->aggressive = PJ_TRUE;
+     opt->nominated_check_delay = PJ_ICE_NOMINATED_CHECK_DELAY;
+-    opt->controlled_agent_want_nom_timeout = 
++    opt->controlled_agent_want_nom_timeout =
+         ICE_CONTROLLED_AGENT_WAIT_NOMINATION_TIMEOUT;
++    opt->wait_valid_pair_timeout = PJ_ICE_WAIT_VALID_PAIR_TIMEOUT;
+     opt->trickle = PJ_ICE_SESS_TRICKLE_DISABLED;
+     opt->check_src_addr = PJ_ICE_SESS_CHECK_SRC_ADDR;
+ }
+@@ -1258,11 +1263,17 @@ static void on_timer(pj_timer_heap_t *th, pj_timer_entry *te)
+ 
+     switch (type) {
+     case TIMER_CONTROLLED_WAIT_NOM:
+-        LOG4((ice->obj_name, 
++        LOG4((ice->obj_name,
+               "Controlled agent timed-out in waiting for the controlling "
+               "agent to send nominated check. Setting state to fail now.."));
+         on_ice_complete(ice, PJNATH_EICENOMTIMEOUT);
+         break;
++    case TIMER_WAIT_VALID_PAIR:
++        LOG4((ice->obj_name,
++              "Timed-out in waiting for a valid pair to be created from "
++              "incoming checks. Setting state to fail now.."));
++        on_ice_complete(ice, PJNATH_EICEFAILED);
++        break;
+     case TIMER_COMPLETION_CALLBACK:
+         {
+             void (*on_ice_complete)(pj_ice_sess *ice, pj_status_t status);
+@@ -1438,6 +1449,50 @@ static void update_comp_check(pj_ice_sess *ice, unsigned comp_id,
+     }
+ }
+ 
++/* All of the agent's own connectivity checks have completed but there is no
++ * valid pair yet. Instead of failing immediately, wait for a while: the remote
++ * agent may still be able to reach us and trigger a valid pair via incoming
++ * checks (e.g. when our own checks could not be sent because the local routing
++ * or firewall rejects the remote candidate address).
++ *
++ * Returns PJ_TRUE if ICE has been marked failed (grace disabled or another
++ * timer is active), or PJ_FALSE if the agent is now waiting.
++ */
++static pj_bool_t wait_valid_pair_or_fail(pj_ice_sess *ice)
++{
++    /* Grace timer already running, keep waiting. */
++    if (ice->timer.id == TIMER_WAIT_VALID_PAIR)
++        return PJ_FALSE;
++
++    if (ice->timer.id == TIMER_NONE &&
++        ice->opt.wait_valid_pair_timeout >= 0)
++    {
++        pj_time_val delay;
++
++        delay.sec = 0;
++        delay.msec = ice->opt.wait_valid_pair_timeout;
++        pj_time_val_normalize(&delay);
++
++        pj_timer_heap_schedule_w_grp_lock(ice->stun_cfg.timer_heap,
++                                          &ice->timer, &delay,
++                                          TIMER_WAIT_VALID_PAIR,
++                                          ice->grp_lock);
++
++        LOG5((ice->obj_name,
++              "All checks have completed but there is no valid pair yet. "
++              "Agent now waits for a valid pair to be created from incoming "
++              "checks (timeout=%d msec)",
++              ice->opt.wait_valid_pair_timeout));
++        return PJ_FALSE;
++    }
++
++    /* Grace timer is disabled (or another timer is active), mark ICE as
++     * failed.
++     */
++    on_ice_complete(ice, PJNATH_EICEFAILED);
++    return PJ_TRUE;
++}
++
+ /* Check if ICE nego completed */
+ static pj_bool_t check_ice_complete(pj_ice_sess *ice)
+ {
+@@ -1525,17 +1580,26 @@ static pj_bool_t check_ice_complete(pj_ice_sess *ice)
+             }
+ 
+             if (i < ice->comp_cnt) {
+-                /* This component ID doesn't have valid pair.
+-                 * Mark ICE as failed. 
++                /* This component ID doesn't have a valid pair yet. Don't fail
++                 * immediately, wait for a valid pair from incoming checks.
+                  */
+-                on_ice_complete(ice, PJNATH_EICEFAILED);
+-                return PJ_TRUE;
++                return wait_valid_pair_or_fail(ice);
+             } else {
+                 /* All components have a valid pair.
+                  * We should wait until we receive nominated checks.
+                  */
++
++                /* If we were waiting for a valid pair to be created from
++                 * incoming checks, cancel that grace timer now that we have
++                 * one, so we can wait for nomination instead.
++                 */
++                if (ice->timer.id == TIMER_WAIT_VALID_PAIR) {
++                    pj_timer_heap_cancel_if_active(ice->stun_cfg.timer_heap,
++                                                   &ice->timer, TIMER_NONE);
++                }
++
+                 if (ice->timer.id == TIMER_NONE &&
+-                    ice->opt.controlled_agent_want_nom_timeout >= 0) 
++                    ice->opt.controlled_agent_want_nom_timeout >= 0)
+                 {
+                     pj_time_val delay;
+ 
+@@ -1579,17 +1643,27 @@ static pj_bool_t check_ice_complete(pj_ice_sess *ice)
+             }
+ 
+             if (i < ice->comp_cnt) {
+-                /* At least one component doesn't have a valid check. Mark
+-                 * ICE as failed.
++                /* At least one component doesn't have a valid check yet.
++                 * Don't fail immediately: the controlled agent may still be
++                 * able to reach us and trigger a valid pair via incoming
++                 * checks, after which we can nominate. Wait for a while.
+                  */
+-                on_ice_complete(ice, PJNATH_EICEFAILED);
+-                return PJ_TRUE;
++                return wait_valid_pair_or_fail(ice);
++            }
++
++            /* All components have a valid pair. If we were waiting for one to
++             * be created from incoming checks, cancel that grace timer before
++             * starting our nominated checks.
++             */
++            if (ice->timer.id == TIMER_WAIT_VALID_PAIR) {
++                pj_timer_heap_cancel_if_active(ice->stun_cfg.timer_heap,
++                                               &ice->timer, TIMER_NONE);
+             }
+ 
+-            /* Now it's time to send connectivity check with nomination 
++            /* Now it's time to send connectivity check with nomination
+              * flag set.
+              */
+-            LOG4((ice->obj_name, 
++            LOG4((ice->obj_name,
+                   "All checks have completed, starting nominated checks now"));
+             start_nominated_check(ice);
+             return PJ_FALSE;
+
+From d1e2011787d60c91a37562c1d1910fbd2b2020f9 Mon Sep 17 00:00:00 2001
+From: nanang <nanang@teluu.com>
+Date: Thu, 18 Jun 2026 15:18:49 +0700
+Subject: [PATCH 2/4] ICE: address review feedback on wait-valid-pair grace
+ timer
+
+- TIMER_WAIT_VALID_PAIR no longer fails ICE unconditionally on expiry. If
+  checks are still pending (e.g. a triggered check from a late incoming check
+  is in progress) or valid pairs have meanwhile been created, defer to the
+  normal completion handling instead of forcing PJNATH_EICEFAILED.
+- Fix option docs: the grace timer is armed when one or more components still
+  lack a valid pair (not only when no component has one).
+
+Co-Authored-By Claude Code
+---
+ pjnath/include/pjnath/config.h      |  4 +--
+ pjnath/include/pjnath/ice_session.h |  2 +-
+ pjnath/src/pjnath/ice_session.c     | 42 ++++++++++++++++++++++++++---
+ 3 files changed, 41 insertions(+), 7 deletions(-)
+
+diff --git a/pjnath/include/pjnath/config.h b/pjnath/include/pjnath/config.h
+index 17b245d982..29946b3f06 100644
+--- a/pjnath/include/pjnath/config.h
++++ b/pjnath/include/pjnath/config.h
+@@ -396,8 +396,8 @@
+ /**
+  * Specify how long an agent wants to wait (in milliseconds) for a valid pair
+  * to be created from incoming connectivity checks, after it has found that all
+- * connectivity checks in its checklist have been completed but there is no
+- * valid pair yet for any component.
++ * connectivity checks in its checklist have been completed but one or more
++ * components still lack a valid pair.
+  *
+  * This is useful when the agent's own connectivity checks cannot be sent
+  * (e.g. the local routing or firewall rejects the remote candidate address),
+diff --git a/pjnath/include/pjnath/ice_session.h b/pjnath/include/pjnath/ice_session.h
+index b60f1605f1..2bc4508224 100644
+--- a/pjnath/include/pjnath/ice_session.h
++++ b/pjnath/include/pjnath/ice_session.h
+@@ -681,7 +681,7 @@ typedef struct pj_ice_sess_options
+      * Specify how long an agent wants to wait (in milliseconds) for a valid
+      * pair to be created from incoming connectivity checks, after it has
+      * found that all connectivity checks in its checklist have been completed
+-     * but there is no valid pair yet for any component.
++     * but one or more components still lack a valid pair.
+      *
+      * This is useful when the agent's own connectivity checks cannot be sent
+      * (e.g. the local routing or firewall rejects the remote candidate
+diff --git a/pjnath/src/pjnath/ice_session.c b/pjnath/src/pjnath/ice_session.c
+index a0a431a4f3..de4876657c 100644
+--- a/pjnath/src/pjnath/ice_session.c
++++ b/pjnath/src/pjnath/ice_session.c
+@@ -136,6 +136,7 @@ typedef struct timer_data
+ 
+ /* Forward declarations */
+ static void on_timer(pj_timer_heap_t *th, pj_timer_entry *te);
++static pj_bool_t check_ice_complete(pj_ice_sess *ice);
+ static void on_ice_complete(pj_ice_sess *ice, pj_status_t status);
+ static void ice_keep_alive(pj_ice_sess *ice, pj_bool_t send_now);
+ static void ice_on_destroy(void *obj);
+@@ -1269,10 +1270,43 @@ static void on_timer(pj_timer_heap_t *th, pj_timer_entry *te)
+         on_ice_complete(ice, PJNATH_EICENOMTIMEOUT);
+         break;
+     case TIMER_WAIT_VALID_PAIR:
+-        LOG4((ice->obj_name,
+-              "Timed-out in waiting for a valid pair to be created from "
+-              "incoming checks. Setting state to fail now.."));
+-        on_ice_complete(ice, PJNATH_EICEFAILED);
++        {
++            /* Grace period elapsed. Only fail if all checks have completed
++             * and at least one component still lacks a valid pair. If some
++             * checks are still pending (e.g. a triggered check from a late
++             * incoming check is in progress), or valid pairs have meanwhile
++             * been created, don't force a failure here: let the normal
++             * completion handling proceed instead.
++             */
++            unsigned k;
++            pj_bool_t pending = PJ_FALSE;
++
++            for (k=0; k<ice->clist.count; ++k) {
++                if (ice->clist.checks[k].state <
++                        PJ_ICE_SESS_CHECK_STATE_SUCCEEDED)
++                {
++                    pending = PJ_TRUE;
++                    break;
++                }
++            }
++
++            for (k=0; k<ice->comp_cnt; ++k) {
++                if (ice->comp[k].valid_check == NULL)
++                    break;
++            }
++
++            if (!pending && k < ice->comp_cnt) {
++                LOG4((ice->obj_name,
++                      "Timed-out in waiting for a valid pair to be created "
++                      "from incoming checks. Setting state to fail now.."));
++                on_ice_complete(ice, PJNATH_EICEFAILED);
++            } else {
++                LOG4((ice->obj_name,
++                      "Grace period for valid pair elapsed, but checks are "
++                      "still pending or valid pairs now exist; continuing.."));
++                check_ice_complete(ice);
++            }
++        }
+         break;
+     case TIMER_COMPLETION_CALLBACK:
+         {
+
+From 96d5d7d098b6f1419b47617083783029b882def3 Mon Sep 17 00:00:00 2001
+From: nanang <nanang@teluu.com>
+Date: Fri, 19 Jun 2026 07:23:21 +0700
+Subject: [PATCH 3/4] ICE: add test for wait-valid-pair grace timer (#4978)
+
+Add ice_wait_valid_pair_test, driving raw transport-agnostic pj_ice_sess
+instances wired through an in-memory packet queue. Sends to a designated
+"bogon" address fail synchronously (simulating EPERM), reproducing the case
+where an agent's own connectivity checks all fail to be sent.
+
+Three sub-tests:
+- recovery: the callee's own checks all fail to send, but the caller can
+  reach the callee; the callee must form a peer-reflexive valid pair from the
+  incoming checks and complete successfully (fails without the grace timer).
+- timeout: with no peer reaching it, the callee must not fail during the
+  grace period but must fail after it elapses.
+- disabled: with wait_valid_pair_timeout = -1, the callee fails immediately.
+
+The test is self-contained and deterministic (no STUN/TURN server or real
+sockets).
+
+Co-Authored-By Claude Code
+---
+ pjnath/src/pjnath-test/ice_test.c | 413 ++++++++++++++++++++++++++++++
+ pjnath/src/pjnath-test/test.c     |   4 +
+ pjnath/src/pjnath-test/test.h     |   1 +
+ 3 files changed, 418 insertions(+)
+
+diff --git a/pjnath/src/pjnath-test/ice_test.c b/pjnath/src/pjnath-test/ice_test.c
+index b01a3444e9..0a5100d8e7 100644
+--- a/pjnath/src/pjnath-test/ice_test.c
++++ b/pjnath/src/pjnath-test/ice_test.c
+@@ -1595,3 +1595,416 @@ int trickle_ice_test(void)
+ 
+     return rc;
+ }
++
++
++/*****************************************************************************
++ * Test for issue #4978: an agent must not fail ICE immediately when all of
++ * its own connectivity checks complete without a valid pair. This happens
++ * when the checks cannot even be sent (e.g. the remote candidate address is
++ * unreachable from this host and the send fails with EPERM), while the remote
++ * agent can still reach this agent and create a (peer-reflexive) valid pair
++ * via incoming checks.
++ *
++ * These tests drive raw, transport-agnostic pj_ice_sess instances and route
++ * their packets through an in-memory queue. Sends to a designated "bogon"
++ * address fail synchronously, simulating EPERM.
++ */
++#define WVP_TP_ID       1
++#define WVP_BOGON_IP    "192.168.1.162"
++#define WVP_BOGON_PORT  49130
++
++struct wvp_sess;
++
++/* A queued packet pending delivery to a destination session. */
++struct wvp_pkt
++{
++    PJ_DECL_LIST_MEMBER(struct wvp_pkt);
++    struct wvp_sess *dst;
++    unsigned         comp_id;
++    unsigned         transport_id;
++    pj_sockaddr      src_addr;
++    int              src_len;
++    pj_size_t        len;
++    pj_uint8_t       data[800];
++};
++
++struct wvp_test
++{
++    pj_stun_config  *stun_cfg;
++    pj_pool_t       *pool;
++    struct wvp_pkt   txq;       /* List head of queued packets.         */
++    pj_sockaddr      bogon;     /* "Unreachable" address (sends fail).  */
++    struct wvp_sess *caller;
++    struct wvp_sess *callee;
++};
++
++struct wvp_sess
++{
++    struct wvp_test *test;
++    pj_ice_sess     *ice;
++    pj_sockaddr      addr;      /* This session's transport address.    */
++    pj_str_t         ufrag;
++    pj_str_t         pass;
++    pj_bool_t        completed;
++    pj_status_t      status;
++};
++
++static struct wvp_sess *wvp_find_dst(struct wvp_test *t,
++                                     const pj_sockaddr_t *addr)
++{
++    if (t->caller && pj_sockaddr_cmp(addr, &t->caller->addr) == 0)
++        return t->caller;
++    if (t->callee && pj_sockaddr_cmp(addr, &t->callee->addr) == 0)
++        return t->callee;
++    return NULL;
++}
++
++static pj_status_t wvp_on_tx_pkt(pj_ice_sess *ice, unsigned comp_id,
++                                 unsigned transport_id,
++                                 const void *pkt, pj_size_t size,
++                                 const pj_sockaddr_t *dst_addr,
++                                 unsigned dst_addr_len)
++{
++    struct wvp_sess *src = (struct wvp_sess*) ice->user_data;
++    struct wvp_test *t = src->test;
++    struct wvp_sess *dst;
++    struct wvp_pkt *p;
++
++    PJ_UNUSED_ARG(dst_addr_len);
++
++    /* Sends to the bogon address fail synchronously, as if the local route
++     * to it is prohibited (EPERM).
++     */
++    if (pj_sockaddr_cmp(dst_addr, &t->bogon) == 0)
++        return PJ_STATUS_FROM_OS(120); /* arbitrary non-success send error */
++
++    dst = wvp_find_dst(t, dst_addr);
++    if (dst == NULL || size > sizeof(p->data))
++        return PJ_SUCCESS;
++
++    /* Enqueue a copy for delivery from the poll loop. */
++    p = PJ_POOL_ZALLOC_T(t->pool, struct wvp_pkt);
++    p->dst = dst;
++    p->comp_id = comp_id;
++    p->transport_id = transport_id;
++    pj_sockaddr_cp(&p->src_addr, &src->addr);
++    p->src_len = pj_sockaddr_get_len(&src->addr);
++    p->len = size;
++    pj_memcpy(p->data, pkt, size);
++    pj_list_push_back(&t->txq, p);
++
++    return PJ_SUCCESS;
++}
++
++static void wvp_on_ice_complete(pj_ice_sess *ice, pj_status_t status)
++{
++    struct wvp_sess *s = (struct wvp_sess*) ice->user_data;
++    s->completed = PJ_TRUE;
++    s->status = status;
++}
++
++static void wvp_on_rx_data(pj_ice_sess *ice, unsigned comp_id,
++                           unsigned transport_id, void *pkt, pj_size_t size,
++                           const pj_sockaddr_t *src_addr,
++                           unsigned src_addr_len)
++{
++    PJ_UNUSED_ARG(ice); PJ_UNUSED_ARG(comp_id); PJ_UNUSED_ARG(transport_id);
++    PJ_UNUSED_ARG(pkt); PJ_UNUSED_ARG(size);
++    PJ_UNUSED_ARG(src_addr); PJ_UNUSED_ARG(src_addr_len);
++}
++
++/* Poll the timer heap and deliver queued packets for the given duration. */
++static void wvp_poll(struct wvp_test *t, unsigned msec)
++{
++    pj_time_val stop, now;
++
++    pj_gettimeofday(&stop);
++    stop.msec += msec;
++    pj_time_val_normalize(&stop);
++
++    for (;;) {
++        unsigned guard = 0;
++
++        pj_timer_heap_poll(t->stun_cfg->timer_heap, NULL);
++
++        while (!pj_list_empty(&t->txq) && ++guard < 1000) {
++            struct wvp_pkt *p = t->txq.next;
++            pj_list_erase(p);
++            pj_ice_sess_on_rx_pkt(p->dst->ice, p->comp_id, p->transport_id,
++                                  p->data, p->len, &p->src_addr, p->src_len);
++        }
++
++        pj_gettimeofday(&now);
++        if (PJ_TIME_VAL_GTE(now, stop))
++            break;
++        pj_thread_sleep(1);
++    }
++}
++
++/* Create a raw ICE session with a single host candidate. Pass
++ * wait_pair_timeout == -2 to keep the default (do not override the option).
++ */
++static pj_status_t wvp_create_sess(struct wvp_test *t, struct wvp_sess *s,
++                                   const char *name, pj_ice_sess_role role,
++                                   pj_uint16_t port, int wait_pair_timeout)
++{
++    pj_ice_sess_cb cb;
++    pj_ice_sess_options opt;
++    pj_str_t loopback, fnd;
++    unsigned cand_id;
++    pj_status_t status;
++
++    pj_bzero(&cb, sizeof(cb));
++    cb.on_tx_pkt = &wvp_on_tx_pkt;
++    cb.on_ice_complete = &wvp_on_ice_complete;
++    cb.on_rx_data = &wvp_on_rx_data;
++
++    s->test = t;
++    s->completed = PJ_FALSE;
++    s->status = PJ_EUNKNOWN;
++    s->ufrag = pj_str((char*)(role==PJ_ICE_SESS_ROLE_CONTROLLING ?
++                              "Lcaller0" : "Lcallee0"));
++    s->pass  = pj_str((char*)"0123456789012345678901"); /* >=22 chars */
++
++    loopback = pj_str((char*)"127.0.0.1");
++    pj_sockaddr_init(pj_AF_INET(), &s->addr, &loopback, port);
++
++    status = pj_ice_sess_create(t->stun_cfg, name, role, 1, &cb,
++                                &s->ufrag, &s->pass, NULL, &s->ice);
++    if (status != PJ_SUCCESS)
++        return status;
++
++    s->ice->user_data = s;
++
++    if (wait_pair_timeout != -2) {
++        pj_ice_sess_get_options(s->ice, &opt);
++        opt.wait_valid_pair_timeout = wait_pair_timeout;
++        pj_ice_sess_set_options(s->ice, &opt);
++    }
++
++    /* Add a single host candidate at this session's address. */
++    fnd = pj_str((char*)"Hhost");
++    status = pj_ice_sess_add_cand(s->ice, 1, WVP_TP_ID,
++                                  PJ_ICE_CAND_TYPE_HOST, 65535, &fnd,
++                                  &s->addr, &s->addr, &s->addr,
++                                  pj_sockaddr_get_len(&s->addr), &cand_id);
++    return status;
++}
++
++/* Build a remote host candidate at the given address. */
++static void wvp_init_rcand(pj_ice_sess_cand *c, const pj_sockaddr *addr)
++{
++    pj_bzero(c, sizeof(*c));
++    c->type = PJ_ICE_CAND_TYPE_HOST;
++    c->comp_id = 1;
++    c->transport_id = WVP_TP_ID;
++    c->local_pref = 65535;
++    c->foundation = pj_str((char*)"Hrhost");
++    c->prio = 1862270975;       /* a valid host-candidate priority */
++    pj_sockaddr_cp(&c->addr, addr);
++    pj_sockaddr_cp(&c->base_addr, addr);
++}
++
++int ice_wait_valid_pair_test(void)
++{
++    app_sess_t app_sess;
++    pj_str_t bogon_ip;
++    pj_status_t status;
++    int rc = 0;
++
++    PJ_LOG(3,(THIS_FILE, "ICE wait-valid-pair (#4978)"));
++    pj_log_push_indent();
++
++    status = create_stun_config(&app_sess);
++    if (status != PJ_SUCCESS) {
++        pj_log_pop_indent();
++        return -10;
++    }
++    bogon_ip = pj_str((char*)WVP_BOGON_IP);
++
++    /* --- Sub-test 1: recovery via incoming check ---
++     * Callee's own checks (to the bogon) all fail to send, but the caller can
++     * reach the callee, so the callee should form a peer-reflexive valid pair
++     * and complete successfully instead of failing immediately.
++     */
++    {
++        struct wvp_test t;
++        struct wvp_sess caller, callee;
++        pj_ice_sess_cand rcand;
++        unsigned i;
++
++        PJ_LOG(3,(THIS_FILE, INDENT "recovery: callee's checks fail to send "
++                  "but caller reaches callee"));
++
++        pj_bzero(&t, sizeof(t));
++        pj_bzero(&caller, sizeof(caller));
++        pj_bzero(&callee, sizeof(callee));
++        t.stun_cfg = &app_sess.stun_cfg;
++        t.pool = app_sess.pool;
++        pj_list_init(&t.txq);
++        pj_sockaddr_init(pj_AF_INET(), &t.bogon, &bogon_ip, WVP_BOGON_PORT);
++        t.caller = &caller;
++        t.callee = &callee;
++
++        if ((rc=wvp_create_sess(&t, &caller, "wvpUA1",
++                                PJ_ICE_SESS_ROLE_CONTROLLING, 34101, -2))) {
++            rc = -20; goto s1_done;
++        }
++        if ((rc=wvp_create_sess(&t, &callee, "wvpUA2",
++                                PJ_ICE_SESS_ROLE_CONTROLLED, 34102, -2))) {
++            rc = -21; goto s1_done;
++        }
++
++        /* Caller's remote candidate is the callee's real (reachable) addr. */
++        wvp_init_rcand(&rcand, &callee.addr);
++        if (pj_ice_sess_create_check_list(caller.ice, &callee.ufrag,
++                                          &callee.pass, 1, &rcand)) {
++            rc = -22; goto s1_done;
++        }
++        /* Callee's remote candidate is the unreachable bogon. */
++        wvp_init_rcand(&rcand, &t.bogon);
++        if (pj_ice_sess_create_check_list(callee.ice, &caller.ufrag,
++                                          &caller.pass, 1, &rcand)) {
++            rc = -23; goto s1_done;
++        }
++
++        pj_ice_sess_start_check(caller.ice);
++        pj_ice_sess_start_check(callee.ice);
++
++        for (i=0; i<80 && !(caller.completed && callee.completed); ++i)
++            wvp_poll(&t, 100);
++
++        if (!callee.completed) {
++            PJ_LOG(1,(THIS_FILE, INDENT "err: callee did not complete"));
++            rc = -25; goto s1_done;
++        }
++        if (callee.status != PJ_SUCCESS) {
++            PJ_LOG(1,(THIS_FILE, INDENT "err: callee failed to recover, "
++                      "status=%d", callee.status));
++            rc = -26; goto s1_done;
++        }
++        PJ_LOG(3,(THIS_FILE, INDENT "ok: callee recovered via incoming check"));
++
++    s1_done:
++        if (caller.ice) pj_ice_sess_destroy(caller.ice);
++        if (callee.ice) pj_ice_sess_destroy(callee.ice);
++        pj_list_init(&t.txq);
++        if (rc) goto on_return;
++    }
++
++    /* --- Sub-test 2: bounded failure on timeout ---
++     * Callee's checks fail to send and nobody reaches it. It must not fail
++     * immediately (grace timer), but must eventually fail after the timeout.
++     */
++    {
++        struct wvp_test t;
++        struct wvp_sess callee;
++        pj_ice_sess_cand rcand;
++        unsigned i;
++
++        PJ_LOG(3,(THIS_FILE, INDENT "timeout: no peer, fail after grace "
++                  "period (500ms)"));
++
++        pj_bzero(&t, sizeof(t));
++        pj_bzero(&callee, sizeof(callee));
++        t.stun_cfg = &app_sess.stun_cfg;
++        t.pool = app_sess.pool;
++        pj_list_init(&t.txq);
++        pj_sockaddr_init(pj_AF_INET(), &t.bogon, &bogon_ip, WVP_BOGON_PORT);
++        t.callee = &callee;
++
++        if ((rc=wvp_create_sess(&t, &callee, "wvpUA3",
++                                PJ_ICE_SESS_ROLE_CONTROLLED, 34103, 500))) {
++            rc = -30; goto s2_done;
++        }
++        wvp_init_rcand(&rcand, &t.bogon);
++        if (pj_ice_sess_create_check_list(callee.ice, &callee.ufrag,
++                                          &callee.pass, 1, &rcand)) {
++            rc = -31; goto s2_done;
++        }
++
++        pj_ice_sess_start_check(callee.ice);
++
++        /* Within the grace period the agent must NOT have failed yet. */
++        wvp_poll(&t, 200);
++        if (callee.completed) {
++            PJ_LOG(1,(THIS_FILE, INDENT "err: failed during grace period "
++                      "(status=%d)", callee.status));
++            rc = -32; goto s2_done;
++        }
++
++        /* After the grace period it must fail. */
++        for (i=0; i<10 && !callee.completed; ++i)
++            wvp_poll(&t, 100);
++        if (!callee.completed) {
++            PJ_LOG(1,(THIS_FILE, INDENT "err: did not fail after grace"));
++            rc = -33; goto s2_done;
++        }
++        if (callee.status == PJ_SUCCESS) {
++            PJ_LOG(1,(THIS_FILE, INDENT "err: unexpected success"));
++            rc = -34; goto s2_done;
++        }
++        PJ_LOG(3,(THIS_FILE, INDENT "ok: deferred then failed on timeout"));
++
++    s2_done:
++        if (callee.ice) pj_ice_sess_destroy(callee.ice);
++        pj_list_init(&t.txq);
++        if (rc) goto on_return;
++    }
++
++    /* --- Sub-test 3: disabled grace (-1) restores immediate failure --- */
++    {
++        struct wvp_test t;
++        struct wvp_sess callee;
++        pj_ice_sess_cand rcand;
++        unsigned i;
++
++        PJ_LOG(3,(THIS_FILE, INDENT "disabled: timeout=-1 fails immediately"));
++
++        pj_bzero(&t, sizeof(t));
++        pj_bzero(&callee, sizeof(callee));
++        t.stun_cfg = &app_sess.stun_cfg;
++        t.pool = app_sess.pool;
++        pj_list_init(&t.txq);
++        pj_sockaddr_init(pj_AF_INET(), &t.bogon, &bogon_ip, WVP_BOGON_PORT);
++        t.callee = &callee;
++
++        if ((rc=wvp_create_sess(&t, &callee, "wvpUA4",
++                                PJ_ICE_SESS_ROLE_CONTROLLED, 34104, -1))) {
++            rc = -40; goto s3_done;
++        }
++        wvp_init_rcand(&rcand, &t.bogon);
++        if (pj_ice_sess_create_check_list(callee.ice, &callee.ufrag,
++                                          &callee.pass, 1, &rcand)) {
++            rc = -41; goto s3_done;
++        }
++
++        pj_ice_sess_start_check(callee.ice);
++
++        /* Should fail almost immediately (well within the 500ms that would
++         * apply if the grace timer were active).
++         */
++        for (i=0; i<5 && !callee.completed; ++i)
++            wvp_poll(&t, 20);
++        if (!callee.completed) {
++            PJ_LOG(1,(THIS_FILE, INDENT "err: did not fail immediately"));
++            rc = -42; goto s3_done;
++        }
++        if (callee.status == PJ_SUCCESS) {
++            PJ_LOG(1,(THIS_FILE, INDENT "err: unexpected success"));
++            rc = -43; goto s3_done;
++        }
++        PJ_LOG(3,(THIS_FILE, INDENT "ok: failed immediately when disabled"));
++
++    s3_done:
++        if (callee.ice) pj_ice_sess_destroy(callee.ice);
++        pj_list_init(&t.txq);
++        if (rc) goto on_return;
++    }
++
++on_return:
++    destroy_stun_config(&app_sess);
++    pj_log_pop_indent();
++
++    return rc;
++}
+diff --git a/pjnath/src/pjnath-test/test.c b/pjnath/src/pjnath-test/test.c
+index ff826a161d..d3eab78142 100644
+--- a/pjnath/src/pjnath-test/test.c
++++ b/pjnath/src/pjnath-test/test.c
+@@ -247,6 +247,10 @@ static int test_inner(int argc, char *argv[])
+     UT_ADD_TEST(&test_app.ut_app, trickle_ice_test, 0);
+ #endif
+ 
++#if INCLUDE_ICE_TEST
++    UT_ADD_TEST(&test_app.ut_app, ice_wait_valid_pair_test, 0);
++#endif
++
+ #if INCLUDE_TURN_SOCK_TEST
+     UT_ADD_TEST1(&test_app.ut_app, turn_sock_test, (void*)(intptr_t)0, 0);
+     UT_ADD_TEST1(&test_app.ut_app, turn_sock_test, (void*)(intptr_t)1, 0);
+diff --git a/pjnath/src/pjnath-test/test.h b/pjnath/src/pjnath-test/test.h
+index 60ae0b21b3..e96ce6b054 100644
+--- a/pjnath/src/pjnath-test/test.h
++++ b/pjnath/src/pjnath-test/test.h
+@@ -69,6 +69,7 @@ int turn_sock_test(void*);
+ int ice_test(void*);
+ int ice_conc_test(void);
+ int trickle_ice_test(void);
++int ice_wait_valid_pair_test(void);
+ int concur_test(void);
+ int test_main(int argc, char *argv[]);
+ 
+
+From 6db76bcaaad4dbd679b3881fa4b72428dd5fa688 Mon Sep 17 00:00:00 2001
+From: nanang <nanang@teluu.com>
+Date: Fri, 19 Jun 2026 08:29:01 +0700
+Subject: [PATCH 4/4] ICE: tighten wait-valid-pair test per review feedback
+
+- The in-memory transport shim now fails (and flags) sends to an unknown
+  destination or oversized packets, instead of silently reporting success,
+  so the test fails loudly if those unexpected cases occur.
+- The recovery sub-test now also asserts that the controlling side (caller)
+  completes successfully, validating ICE end-to-end rather than only the
+  callee.
+
+Co-Authored-By Claude Code
+---
+ pjnath/src/pjnath-test/ice_test.c | 33 +++++++++++++++++++++++++++++--
+ 1 file changed, 31 insertions(+), 2 deletions(-)
+
+diff --git a/pjnath/src/pjnath-test/ice_test.c b/pjnath/src/pjnath-test/ice_test.c
+index 0a5100d8e7..1b21b1486b 100644
+--- a/pjnath/src/pjnath-test/ice_test.c
++++ b/pjnath/src/pjnath-test/ice_test.c
+@@ -1634,6 +1634,7 @@ struct wvp_test
+     pj_pool_t       *pool;
+     struct wvp_pkt   txq;       /* List head of queued packets.         */
+     pj_sockaddr      bogon;     /* "Unreachable" address (sends fail).  */
++    pj_bool_t        shim_err;  /* Set if shim hit an unexpected packet.*/
+     struct wvp_sess *caller;
+     struct wvp_sess *callee;
+ };
+@@ -1678,9 +1679,15 @@ static pj_status_t wvp_on_tx_pkt(pj_ice_sess *ice, unsigned comp_id,
+     if (pj_sockaddr_cmp(dst_addr, &t->bogon) == 0)
+         return PJ_STATUS_FROM_OS(120); /* arbitrary non-success send error */
+ 
++    /* An unknown destination or an oversized packet is not expected in this
++     * controlled setup; flag it and fail the send so the test fails loudly
++     * instead of silently masking the problem.
++     */
+     dst = wvp_find_dst(t, dst_addr);
+-    if (dst == NULL || size > sizeof(p->data))
+-        return PJ_SUCCESS;
++    if (dst == NULL || size > sizeof(p->data)) {
++        t->shim_err = PJ_TRUE;
++        return PJ_EINVAL;
++    }
+ 
+     /* Enqueue a copy for delivery from the poll loop. */
+     p = PJ_POOL_ZALLOC_T(t->pool, struct wvp_pkt);
+@@ -1883,6 +1890,18 @@ int ice_wait_valid_pair_test(void)
+                       "status=%d", callee.status));
+             rc = -26; goto s1_done;
+         }
++        /* The controlling side must complete successfully too. */
++        if (!caller.completed || caller.status != PJ_SUCCESS) {
++            PJ_LOG(1,(THIS_FILE, INDENT "err: caller did not complete "
++                      "successfully, completed=%d status=%d",
++                      caller.completed, caller.status));
++            rc = -27; goto s1_done;
++        }
++        if (t.shim_err) {
++            PJ_LOG(1,(THIS_FILE, INDENT "err: transport shim saw an "
++                      "unexpected packet"));
++            rc = -28; goto s1_done;
++        }
+         PJ_LOG(3,(THIS_FILE, INDENT "ok: callee recovered via incoming check"));
+ 
+     s1_done:
+@@ -1944,6 +1963,11 @@ int ice_wait_valid_pair_test(void)
+             PJ_LOG(1,(THIS_FILE, INDENT "err: unexpected success"));
+             rc = -34; goto s2_done;
+         }
++        if (t.shim_err) {
++            PJ_LOG(1,(THIS_FILE, INDENT "err: transport shim saw an "
++                      "unexpected packet"));
++            rc = -35; goto s2_done;
++        }
+         PJ_LOG(3,(THIS_FILE, INDENT "ok: deferred then failed on timeout"));
+ 
+     s2_done:
+@@ -1994,6 +2018,11 @@ int ice_wait_valid_pair_test(void)
+             PJ_LOG(1,(THIS_FILE, INDENT "err: unexpected success"));
+             rc = -43; goto s3_done;
+         }
++        if (t.shim_err) {
++            PJ_LOG(1,(THIS_FILE, INDENT "err: transport shim saw an "
++                      "unexpected packet"));
++            rc = -44; goto s3_done;
++        }
+         PJ_LOG(3,(THIS_FILE, INDENT "ok: failed immediately when disabled"));
+ 
+     s3_done:

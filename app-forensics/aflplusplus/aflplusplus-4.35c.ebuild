@@ -3,7 +3,7 @@
 
 EAPI=8
 
-LLVM_COMPAT=( {15..22} )
+LLVM_COMPAT=( {15..21} )
 PYTHON_COMPAT=( python3_{11..14} )
 inherit flag-o-matic toolchain-funcs llvm-r2 optfeature python-single-r1
 

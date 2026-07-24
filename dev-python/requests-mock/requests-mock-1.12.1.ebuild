@@ -1,11 +1,11 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
 PYPI_NO_NORMALIZE=1
-PYTHON_COMPAT=( pypy3_11 python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 
 inherit distutils-r1 pypi
 
@@ -26,13 +26,13 @@ BDEPEND="
 	dev-python/setuptools-scm[${PYTHON_USEDEP}]
 	test? (
 		dev-python/fixtures[${PYTHON_USEDEP}]
-		dev-python/pytest[${PYTHON_USEDEP}]
 		dev-python/requests-futures[${PYTHON_USEDEP}]
 		dev-python/testtools[${PYTHON_USEDEP}]
 	)
 "
 
 distutils_enable_sphinx doc/source
+EPYTEST_PLUGINS=( "${PN}" )
 distutils_enable_tests pytest
 
 python_prepare_all() {
@@ -49,5 +49,6 @@ python_prepare_all() {
 	# Disable a test which requires purl (not in the tree)
 	sed -e "/^import purl$/d" -e "s/test_with_purl/_&/" \
 		-i tests/test_adapter.py || die
+	sed -i -e 's:assertEquals:assertEqual:' tests/test_*.py || die
 	distutils-r1_python_prepare_all
 }

@@ -22,7 +22,7 @@ else
 	# https://community.ardour.org/download?architecture=x86_64&type=source
 	SRC_URI="https://dev.gentoo.org/~fordfrog/distfiles/Ardour-${PV}.tar.bz2"
 	S="${WORKDIR}/Ardour-${PV}"
-	KEYWORDS="~amd64 ~loong ~x86"
+	KEYWORDS="amd64 ~loong ~x86"
 fi
 
 LICENSE="GPL-2"

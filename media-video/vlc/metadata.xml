@@ -33,13 +33,11 @@
 		<flag name="lua">Enable Lua scripting support, needed for including support for Jamendo (online music platform) and similar things</flag>
 		<flag name="macosx-notifications">Enable Mac OS X notifications module (formerly growl)</flag>
 		<flag name="matroska">Enable matroska support using reference libraries (fallback on other existing matroska support if disabled, i.e., matroska enabled FFmpeg)</flag>
-		<flag name="mpeg">Add libmpeg2 support for mpeg-1 and mpeg-2 video streams</flag>
 		<flag name="nfs">Enable support for nfs protocol via <pkg>net-fs/libnfs</pkg></flag>
 		<flag name="omxil">Enable OpenMAX Integration Layer codec module</flag>
 		<flag name="optimisememory">Enable optimisation for memory rather than performance</flag>
 		<flag name="projectm">Enable the projectM visualization plugin</flag>
 		<flag name="run-as-root">Allows vlc to start for root. Don't enable this unless you have a very specific (e.g. embedded) need for it!</flag>
-		<flag name="sdl-image">Enable sdl image video decoder (depends on sdl)</flag>
 		<flag name="sftp">Enable libssh2 to support SFTP file transfer</flag>
 		<flag name="shout">Enable libshout output</flag>
 		<flag name="skins">Enable support for the skins2 interface</flag>

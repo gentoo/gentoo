@@ -1,0 +1,18 @@
+--- a/src/openrct2/platform/Platform.Linux.cpp
++++ b/src/openrct2/platform/Platform.Linux.cpp
+@@ -399,6 +399,7 @@
+             userHome + "/.wine/drive_c/Program Files (x86)/GalaxyClient/Games/RollerCoaster Tycoon Deluxe",
+             userHome + "/.wine/drive_c/Program Files/Hasbro Interactive/RollerCoaster Tycoon",
+             userHome + "/.wine/drive_c/Program Files (x86)/Hasbro Interactive/RollerCoaster Tycoon",
++            "/usr/share/openrct2/rct1_data",
+             // game-data-packager uses this path when installing game files
+             "/usr/share/games/roller-coaster-tycoon",
+         };
+@@ -417,6 +418,7 @@
+             userHome + "/.wine/drive_c/Program Files (x86)/Infogrames/RollerCoaster Tycoon 2",
+             userHome + "/.wine/drive_c/Program Files/Infogrames Interactive/RollerCoaster Tycoon 2",
+             userHome + "/.wine/drive_c/Program Files (x86)/Infogrames Interactive/RollerCoaster Tycoon 2",
++            "/usr/share/openrct2/rct2_data",
+             // game-data-packager uses this path when installing game files
+             "/usr/share/games/roller-coaster-tycoon2",
+         };

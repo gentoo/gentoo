@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Module that 'unblesses' Perl objects"
 
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~ppc64 x86"
 
 RDEPEND=""
 BDEPEND="${RDEPEND}

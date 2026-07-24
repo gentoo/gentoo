@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">powa-team/powa-collector</remote-id>
+	</upstream>
+	<longdescription>
+		A simple multi-threaded python program that performs the snapshots
+		for all the remote servers configured in a powa repository database.
+	</longdescription>
+</pkgmetadata>

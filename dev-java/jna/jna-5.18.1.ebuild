@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -47,6 +47,7 @@ PATCHES=(
 	"${FILESDIR}/jna-5.11.0-no-Werror.patch"
 	"${FILESDIR}/jna-5.13.0-testpath.patch"
 	"${FILESDIR}/jna-5.13.0-LibCTest.patch"
+	"${FILESDIR}/jna-5.18.1-native-fix-parallel-build-issue.patch"
 )
 
 src_prepare() {

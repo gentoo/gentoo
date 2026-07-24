@@ -181,6 +181,15 @@
 # this is useful for things like wolk. IE:
 # EXTRAVERSION would be something like : -wolk-4.19-r1
 
+# @ECLASS_VARIABLE: K_NO_VERSION_CHECK
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# If this is set, skip the sanity check that make sure 
+# a kernel version patch number is present that 
+# matches the kernel version indicated by the build name
+# This should be used in X.Y.0 kernels as the initial
+# ebuild does not contain a separate point release
+
 # @ECLASS_VARIABLE: K_WANT_GENPATCHES
 # @DEFAULT_UNSET
 # @DESCRIPTION:
@@ -341,7 +350,7 @@ handle_genpatches() {
 
 	debug-print "Inside handle_genpatches"
 	local OKV_ARRAY
-	IFS="." read -r -a OKV_ARRAY <<<"${OKV}"
+	local IFS=.; OKV_ARRAY=(${OKV}); unset IFS
 
 	# for > 3.0 kernels, handle genpatches tarball name
 	# genpatches for 3.0 and 3.0.1 might be named
@@ -402,7 +411,7 @@ detect_version() {
 	KV_MAJOR=$(ver_cut 1 ${OKV})
 	# handle if OKV is X.Y or X.Y.Z (e.g. 3.0 or 3.0.1)
 	local OKV_ARRAY
-	IFS="." read -r -a OKV_ARRAY <<<"${OKV}"
+	local IFS=.; OKV_ARRAY=(${OKV}); unset IFS
 
 	# if KV_MAJOR >= 3, then we have no more KV_MINOR
 	#if [[ ${KV_MAJOR} -lt 3 ]]; then
@@ -667,7 +676,7 @@ if [[ ${ETYPE} == sources ]]; then
 
 	SLOT=${SLOT:=${PVR}}
 	DESCRIPTION="Sources based on the Linux Kernel"
-	IUSE="symlink build"
+	IUSE="symlink build vanilla"
 
 	# Bug #266157, deblob for libre support
 	if [[ -z ${K_PREDEBLOBBED} ]]; then
@@ -783,7 +792,7 @@ universal_unpack() {
 	debug-print "Inside universal_unpack"
 
 	local OKV_ARRAY
-	IFS="." read -r -a OKV_ARRAY <<<"${OKV}"
+	local IFS=.; OKV_ARRAY=(${OKV}); unset IFS
 
 	cd "${WORKDIR}" || die
 	if [[ ${#OKV_ARRAY[@]} -ge 3 && ${KV_MAJOR} -ge 3 ]]; then
@@ -1131,7 +1140,7 @@ unipatch() {
                 fi
             done < <(find "$KPATCH_DIR" -type f -print0)
 
-            if [[ -z ${KV_PATCH_FOUND} ]]; then
+            if [[ -z ${K_NO_VERSION_CHECK} && -z ${KV_PATCH_FOUND} ]]; then
                 eerror "GENPATCHES does not contain linux patch ${OKV}"
                 eerror "Please check your ebuild for the proper K_GENPATCHES_VER=N"
                 die "GENPATCHES appears to be missing Linux patch ${OKV}"
@@ -1234,10 +1243,25 @@ unipatch() {
 	# So now lets get rid of the patch numbers we want to exclude
 	UNIPATCH_DROP="${UNIPATCH_EXCLUDE} ${UNIPATCH_DROP}"
 	for i in ${UNIPATCH_DROP}; do
-		ebegin "Excluding Patch #${i}"
+		ebegin "Excluding Patch ${i}"
 		for x in ${KPATCH_DIR}; do rm -f ${x}/${i}* 2>/dev/null; done
 		eend $?
 	done
+
+	# for USE=vanilla, remove non-upstream patches
+	# which should be labeled as 1000_ through 1499_
+	if in_iuse vanilla && use vanilla; then
+		for patch in ${KPATCH_DIR}/*; do
+			patchname="${patch##*/}" # Extract filename without path
+			numericprefix="${patchname:0:4}" # Get first 4 characters
+			# Check if it's exactly 4 digits and greater than 1499
+			if [[ $numericprefix =~ ^[0-9]{4}$ ]] && (( numericprefix > 1499 )); then
+				ebegin "Excluding Patch ${patchname}"
+				rm ${patch} 2>/dev/null
+				eend $?
+			fi
+		done
+	fi
 
 	# and now, finally, we patch it :)
 	for x in ${KPATCH_DIR}; do

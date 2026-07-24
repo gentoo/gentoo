@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{12..14} )
 
-inherit bash-completion-r1 edo python-single-r1 systemd tmpfiles
+inherit bash-completion-r1 edo python-single-r1 systemd
 
 DESCRIPTION="Scans log files and bans IPs that show malicious signs"
 HOMEPAGE="https://www.fail2ban.org/"
@@ -56,7 +56,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-0.11.2-adjust-apache-logs-paths.patch
 	"${FILESDIR}"/${PN}-1.0.2-umask-tests.patch
 	"${FILESDIR}"/${PN}-1.1.0-systemd-order.patch
-	"${FILESDIR}"/${PN}-1.1.0-openrc-use-supervise-daemon.patch
 )
 
 src_prepare() {
@@ -98,8 +97,6 @@ src_install() {
 	newinitd "${S}"/build/fail2ban-openrc.init ${PN}
 	systemd_dounit "${S}"/build/${PN}.service
 
-	dotmpfiles "${FILESDIR}"/${PN}-tmpfiles.conf
-
 	doman man/*.{1,5}
 
 	# Use INSTALL_MASK if you do not want to touch /etc/logrotate.d.
@@ -119,8 +116,6 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
-	tmpfiles_process ${PN}-tmpfiles.conf
-
 	if [[ ${previous_less_than_0_7} == 0 ]] ; then
 		elog
 		elog "Configuration files are now in /etc/fail2ban/"

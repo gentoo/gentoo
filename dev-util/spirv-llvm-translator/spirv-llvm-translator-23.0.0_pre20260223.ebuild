@@ -5,12 +5,11 @@ EAPI=8
 
 # spirv-headers-tag.conf
 HASH_SPIRV="9268f3057354a2cb65991ba5f38b16d81e803692"
-LLVM_COMPAT=( "${PV%%.*}" )
 MY_PN="SPIRV-LLVM-Translator"
 EGIT_COMMIT=ee801714f0d5f85b608c42af77b9fa6d36215303
 MY_P=${MY_PN}-${EGIT_COMMIT}
 
-inherit cmake-multilib flag-o-matic llvm-r2 multiprocessing
+inherit cmake-multilib flag-o-matic multiprocessing
 
 DESCRIPTION="Bi-directional translator between SPIR-V and LLVM IR"
 HOMEPAGE="https://github.com/KhronosGroup/SPIRV-LLVM-Translator"
@@ -59,8 +58,9 @@ src_prepare() {
 
 multilib_src_configure() {
 	local mycmakeargs=(
+		-DLLVM_ROOT="${ESYSROOT}/usr/lib/llvm/${SLOT}"
 		-DCCACHE_ALLOWED="OFF"
-		-DCMAKE_INSTALL_PREFIX="$(get_llvm_prefix)"
+		-DCMAKE_INSTALL_PREFIX="${EPREFIX}/usr/lib/llvm/${SLOT}"
 		-DLLVM_EXTERNAL_SPIRV_HEADERS_SOURCE_DIR="${WORKDIR}/SPIRV-Headers-${HASH_SPIRV}"
 		-DLLVM_SPIRV_INCLUDE_TESTS=$(usex test "ON" "OFF")
 		-Wno-dev

@@ -6,7 +6,7 @@ EAPI=8
 inherit flag-o-matic multilib-minimal toolchain-funcs udev
 
 FFMPEG_SOC_PATCH=
-FFMPEG_SUBSLOT=60.62.62 # avutil.avcodec.avformat SONAME
+FFMPEG_SUBSLOT=61.63.63 # avutil.avcodec.avformat SONAME
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
@@ -51,7 +51,7 @@ FFMPEG_IUSE_MAP=(
 	cdio:libcdio
 	chromaprint
 	codec2:libcodec2
-	cuda:cuda-llvm
+	cuda-clang:cuda-llvm
 	+dav1d:libdav1d
 	${FFMPEG_UNSLOTTED:+doc:^htmlpages}
 	+drm:libdrm
@@ -125,10 +125,8 @@ FFMPEG_IUSE_MAP=(
 	vmaf:libvmaf
 	vorbis:libvorbis
 	vpx:libvpx
-	# libshaderc: merged here given shaderc is needed at build-time
-	# either way and many vulkan features depend on spirv_library
 	# vulkan-static: it still uses shared, only means no dlopen()
-	vulkan:libshaderc,vulkan,vulkan-static
+	vulkan:vulkan,vulkan-static
 	webp:libwebp
 	x264:libx264
 	x265:libx265
@@ -163,7 +161,7 @@ IUSE="
 	${FFMPEG_SOC_PATCH:+soc}
 "
 REQUIRED_USE="
-	cuda? ( nvenc )
+	cuda-clang? ( nvenc )
 	fribidi? ( truetype )
 	gmp? ( !librtmp )
 	libplacebo? ( vulkan )
@@ -291,10 +289,7 @@ COMMON_DEPEND="
 	vmaf? ( media-libs/libvmaf:=[${MULTILIB_USEDEP}] )
 	vorbis? ( media-libs/libvorbis[${MULTILIB_USEDEP}] )
 	vpx? ( media-libs/libvpx:=[${MULTILIB_USEDEP}] )
-	vulkan? (
-		media-libs/shaderc[${MULTILIB_USEDEP}]
-		media-libs/vulkan-loader[${MULTILIB_USEDEP}]
-	)
+	vulkan? ( media-libs/vulkan-loader[${MULTILIB_USEDEP}] )
 	webp? ( media-libs/libwebp:=[${MULTILIB_USEDEP}] )
 	x264? ( media-libs/x264:=[${MULTILIB_USEDEP}] )
 	x265? ( media-libs/x265:=[${MULTILIB_USEDEP}] )
@@ -315,7 +310,7 @@ RDEPEND="
 DEPEND="
 	${COMMON_DEPEND}
 	X? ( x11-base/xorg-proto )
-	amf? ( >=media-libs/amf-headers-1.5.0 )
+	amf? ( >=media-libs/amf-headers-1.5.2 )
 	kernel_linux? ( >=sys-kernel/linux-headers-6 )
 	ladspa? ( media-libs/ladspa-sdk )
 	nvenc? ( >=media-libs/nv-codec-headers-12.1.14.0 )
@@ -329,7 +324,7 @@ BDEPEND="
 	app-alternatives/awk
 	virtual/pkgconfig
 	amd64? ( dev-lang/nasm )
-	cuda? ( llvm-core/clang:*[llvm_targets_NVPTX] )
+	cuda-clang? ( llvm-core/clang:*[llvm_targets_NVPTX] )
 	vulkan? ( media-libs/shaderc )
 	${FFMPEG_UNSLOTTED:+"
 		dev-lang/perl
@@ -406,8 +401,10 @@ src_prepare() {
 	fi
 	filter-lto
 
-	# workaround ICEs with >=gcc-16, (bug #973641 and bug #973622)
-	tc-is-gcc && [[ $(gcc-major-version) -ge 16 ]] &&
+	# workaround ICE with <gcc-16.1.1_p20260606:16 (bug #973641)
+	# TODO: kept to let people update, cleanup after a few months
+	tc-is-gcc && [[ $(gcc-major-version) -eq 16 ]] &&
+		has_version -b '<sys-devel/gcc-16.1.1_p20260606:16' &&
 		append-flags -fno-tree-vectorize
 }
 
@@ -465,6 +462,7 @@ multilib_src_configure() {
 		--disable-libmpeghdec
 		--disable-libmysofa
 		--disable-liboapv
+		--disable-libonnxruntime
 		--disable-libopenvino
 		--disable-libshine
 		--disable-libsvtjpegxs
@@ -485,18 +483,13 @@ multilib_src_configure() {
 
 		# disabled for other or additional reasons
 		--disable-cuda-nvcc # prefer cuda-llvm for less issues
-		--disable-libcelt # obsolete (bug #664158)
-		--disable-libglslang # prefer shaderc (bug #918989,#920283,#922333)
 		--disable-liblensfun # https://trac.ffmpeg.org/ticket/9112 (abandoned?)
 		--disable-libmfx # prefer libvpl for USE=qsv
-		--disable-libnpp # deprecated and not supported for cuda 13.0+
 		--disable-libopencv # leaving for later due to circular opencv[ffmpeg]
 		--disable-libtensorflow # causes headaches, and is gone
 		--disable-libtorch # support may need special attention (bug #936127)
 		--disable-mbedtls # messy with slots, tests underlinking issues
 		--disable-mmal # prefer USE=soc
-		--disable-omx # unsupported (bug #653386)
-		--disable-omx-rpi # ^
 
 		# to avoid obscure issues like bug #915384 and simplify the ebuild,
 		# not passing the following (use EXTRA_ECONF if really must):

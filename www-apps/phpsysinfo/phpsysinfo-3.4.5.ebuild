@@ -10,7 +10,7 @@ HOMEPAGE="https://phpsysinfo.github.io/phpsysinfo/"
 SRC_URI="https://github.com/rk4an/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"
-KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~hppa ppc ppc64 x86"
 RDEPEND="
 	dev-lang/php[simplexml,xml,xsl(+),xslt(+),unicode]
 	virtual/httpd-php

@@ -8,7 +8,7 @@ DISTUTILS_USE_PEP517=hatchling
 # no provenance for pydantic-core:
 # https://github.com/pydantic/pydantic-core/issues/1842
 PYPI_VERIFY_REPO=https://github.com/pydantic/pydantic
-PYTHON_COMPAT=( pypy3_11 python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 
 PYDANTIC_CORE_PV=2.46.${PV##*.}
 RUST_MIN_VER="1.88.0"
@@ -139,7 +139,7 @@ LICENSE+="
 	ZLIB
 "
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="amd64 arm arm64 ~loong ppc ppc64 ~riscv ~s390 ~sparc x86"
 
 RDEPEND="
 	>=dev-python/annotated-types-0.6.0[${PYTHON_USEDEP}]
@@ -152,9 +152,7 @@ BDEPEND="
 	>=dev-python/hatch-fancy-pypi-readme-22.5.0[${PYTHON_USEDEP}]
 	dev-util/maturin[${PYTHON_USEDEP}]
 	test? (
-		$(python_gen_cond_dep '
-			dev-python/cloudpickle[${PYTHON_USEDEP}]
-		' 'python3*')
+		dev-python/cloudpickle[${PYTHON_USEDEP}]
 		dev-python/dirty-equals[${PYTHON_USEDEP}]
 		>=dev-python/email-validator-2.0.0[${PYTHON_USEDEP}]
 		>=dev-python/faker-18.13.0[${PYTHON_USEDEP}]
@@ -203,6 +201,12 @@ python_test() {
 		# == pydantic ==
 		# -Werror, sigh
 		tests/test_types_typeddict.py::test_readonly_qualifier_warning
+		# random regressions?
+		tests/test_deprecated_fields.py::test_computed_field_deprecated
+		tests/test_deprecated_fields.py::test_deprecated_field_forward_annotation
+		tests/test_deprecated_fields.py::test_deprecated_fields
+		tests/test_deprecated_fields.py::test_deprecated_fields_deprecated_class
+		tests/test_deprecated_fields.py::test_deprecated_with_boolean
 
 		# == pydantic-core ==
 		# TODO: recursion till segfault
@@ -222,10 +226,17 @@ python_test() {
 		)
 	fi
 
+	case ${EPYTHON} in
+		python3.15*)
+			EPYTEST_DESELECT+=(
+				tests/test_types.py::test_base64url_invalid
+			)
+			;;
+	esac
+
 	cd "${PYDANTIC_CORE_S}" || die
 	rm -rf pydantic_core || die
-	# tests link to libpython, so they fail to link on pypy3
-	[[ ${EPYTHON} != pypy3* ]] && cargo_src_test
+	cargo_src_test
 	epytest -o xfail_strict=False -o addopts=
 	cd - 2>/dev/null || die
 

@@ -1,0 +1,12 @@
+A change to pm_message causes the output of this test to be a bit off.
+
+--- a/test/pnmtojpeg-scans.ok
++++ a/test/pnmtojpeg-scans.ok
+@@ -1,6 +1,5 @@
+ success
+-pnmtojpeg: Input file has format P6.
+-It has 149 rows of 227 columns of pixels with max sample value of 255.
++pnmtojpeg: Input file has format P6.  It has 149 rows of 227 columns of pixels with max sample value of 255.
+ pnmtojpeg: A scan script with 7 entries is being used:
+ pnmtojpeg:     Scan  0: Ss= 0 Se= 0 Ah= 0 Al= 0  3 components
+ pnmtojpeg:         Color component 0 index: 0

@@ -17,7 +17,7 @@ HOMEPAGE="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 RDEPEND="
 	dev-python/filelock[${PYTHON_USEDEP}]
@@ -27,6 +27,7 @@ RDEPEND="
 BDEPEND="
 	test? (
 		dev-db/redis
+		dev-python/aiohttp[${PYTHON_USEDEP}]
 		dev-python/pyyaml[${PYTHON_USEDEP}]
 	)
 "

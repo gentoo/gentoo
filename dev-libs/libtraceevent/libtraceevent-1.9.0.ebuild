@@ -30,6 +30,11 @@ BDEPEND="
 	test? ( dev-util/cunit )
 "
 
+PATCHES=(
+	"${FILESDIR}"/${P}-32-bit-tests.patch
+	"${FILESDIR}"/${P}-32-bit-tests-deux.patch
+)
+
 src_configure() {
 	local emesonargs=(
 		-Dasciidoctor=false

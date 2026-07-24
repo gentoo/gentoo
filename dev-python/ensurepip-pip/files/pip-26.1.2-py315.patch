@@ -1,0 +1,49 @@
+diff --git a/src/pip/_internal/build_env.py b/src/pip/_internal/build_env.py
+index 1a42a9d41..7639dabca 100644
+--- a/src/pip/_internal/build_env.py
++++ b/src/pip/_internal/build_env.py
+@@ -468,15 +468,19 @@ class BuildEnvironment:
+                     """
+                 import os, site, sys
+ 
+-                # First, drop system-sites related paths.
++                # First, discover all system-sites related paths.
+                 original_sys_path = sys.path[:]
++                # Clear sys.path so addsitedir() will add system site paths and paths
++                # added by contained .pth files to sys.path reliably. This is necessary
++                # since Python 3.15, which notably no longer re-executes .pth files for
++                # known paths.
++                sys.path = []
+                 known_paths = set()
+                 for path in {system_sites!r}:
+                     site.addsitedir(path, known_paths=known_paths)
+-                system_paths = set(
+-                    os.path.normcase(path)
+-                    for path in sys.path[len(original_sys_path):]
+-                )
++                system_paths = set(os.path.normcase(path) for path in sys.path)
++
++                # Drop discovered system-sites related paths.
+                 original_sys_path = [
+                     path for path in original_sys_path
+                     if os.path.normcase(path) not in system_paths
+diff --git a/tests/lib/venv.py b/tests/lib/venv.py
+index 67b01d9f3..4e86b92b3 100644
+--- a/tests/lib/venv.py
++++ b/tests/lib/venv.py
+@@ -174,11 +174,13 @@ class VirtualEnvironment:
+                     site.ENABLE_USER_SITE = {self._user_site_packages}
+                     # First, drop system-sites related paths.
+                     original_sys_path = sys.path[:]
++                    # To discover system-sites related paths, clear sys.path
++                    # and build a new one with only system paths.
++                    sys.path = []
+                     known_paths = set()
+                     for path in site.getsitepackages():
+                         site.addsitedir(path, known_paths=known_paths)
+-                    system_paths = sys.path[len(original_sys_path):]
+-                    for path in system_paths:
++                    for path in sys.path:
+                         if path in original_sys_path:
+                             original_sys_path.remove(path)
+                     sys.path = original_sys_path

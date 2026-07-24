@@ -16,7 +16,7 @@ else
 	# no up-to-date releases or tags
 	COMMIT="24b5e7a8b27f42fa16b96fc70aade9106cf7102f"
 	SRC_URI="https://github.com/Tencent/rapidjson/archive/${COMMIT}.tar.gz -> rapidjson-${PV}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+	KEYWORDS="amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv ~s390 ~sparc x86"
 	S="${WORKDIR}/rapidjson-${COMMIT}"
 fi
 

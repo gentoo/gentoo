@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		This library provide the APIs for creating, indexing,
+		modifying matrices (2d arrays), including dense and
+		sparse representations. The underling data
+		structure is vector.
+	</longdescription>
+	<upstream>
+		<remote-id type="hackage">matrices</remote-id>
+		<remote-id type="github">kaizhang/matrices</remote-id>
+	</upstream>
+</pkgmetadata>

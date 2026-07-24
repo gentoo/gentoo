@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,6 +17,10 @@ LICENSE="GPL-2+"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
 IUSE="embed-data-files trypandoc"
+
+CABAL_CHDEPS=(
+	'tasty-lua         >= 1.0     && < 1.1' 'tasty-lua         >= 1.0     && < 1.2'
+)
 
 RDEPEND=">=dev-haskell/aeson-0.7:=[profile?] <dev-haskell/aeson-2.1:=[profile?]
 	>=dev-haskell/aeson-pretty-0.8.9:=[profile?] <dev-haskell/aeson-pretty-0.9:=[profile?]
@@ -87,7 +91,7 @@ DEPEND="${RDEPEND}
 		>=dev-haskell/tasty-0.11 <dev-haskell/tasty-1.5
 		>=dev-haskell/tasty-golden-2.3 <dev-haskell/tasty-golden-2.4
 		>=dev-haskell/tasty-hunit-0.9 <dev-haskell/tasty-hunit-0.11
-		>=dev-haskell/tasty-lua-1.0 <dev-haskell/tasty-lua-1.1
+		>=dev-haskell/tasty-lua-1.0 <dev-haskell/tasty-lua-1.2
 		>=dev-haskell/tasty-quickcheck-0.8 <dev-haskell/tasty-quickcheck-0.11 )
 "
 

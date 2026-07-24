@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="person">
-<email>aballier@gentoo.org</email>
-<name>Alexis Ballier</name>
-</maintainer>
+<!-- maintainer-needed -->
 <longdescription lang="en">
 	The Bayesian Filtering Library (BFL) provides an application independent framework
 	for inference in Dynamic Bayesian Networks, i.e., recursive information processing

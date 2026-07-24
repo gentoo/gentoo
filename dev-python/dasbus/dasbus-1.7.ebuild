@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 
 inherit distutils-r1
 
@@ -14,7 +14,7 @@ SRC_URI="https://github.com/dasbus-project/${PN}/archive/refs/tags/v${PV}.tar.gz
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~sparc"
+KEYWORDS="amd64 arm64 ~loong ~ppc64 ~riscv ~sparc x86"
 
 RDEPEND="dev-python/pygobject:3[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"

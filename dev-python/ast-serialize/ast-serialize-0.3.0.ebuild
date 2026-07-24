@@ -121,7 +121,7 @@ LICENSE+="
 	Unicode-DFS-2016
 "
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="amd64 arm64 ~ppc64 ~riscv ~s390 ~sparc ~x86"
 
 EPYTEST_PLUGINS=()
 distutils_enable_tests pytest

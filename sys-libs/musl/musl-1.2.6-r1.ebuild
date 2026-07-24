@@ -20,7 +20,7 @@ else
 		https://distfiles.gentoo.org/pub/proj/musl/${P}-patches.tar.xz
 		verify-sig? ( https://musl.libc.org/releases/${P}.tar.gz.asc )
 	"
-	KEYWORDS="-* ~amd64 ~arm ~arm64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~x86"
+	KEYWORDS="-* amd64 arm arm64 ~m68k ~mips ppc ppc64 ~riscv x86"
 
 	BDEPEND="verify-sig? ( sec-keys/openpgp-keys-musl )"
 fi

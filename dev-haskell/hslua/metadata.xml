@@ -5,6 +5,9 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
+	<use>
+		<flag name="executable">Compile `hslua` standalone executable.</flag>
+	</use>
 	<upstream>
 		<remote-id type="hackage">hslua</remote-id>
 		<remote-id type="github">hslua/hslua</remote-id>

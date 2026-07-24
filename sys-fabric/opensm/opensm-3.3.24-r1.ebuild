@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -22,7 +22,7 @@ RDEPEND="${DEPEND}
 		virtual/openssh
 	)"
 
-PATCHES=( "${FILESDIR}"/${PN}-3.3.17-sldd.patch )
+PATCHES=( "${FILESDIR}"/${PN}-3.3.17-sldd.patch "${FILESDIR}/${PN}-3.3.23-no-rpm-check.patch" )
 
 src_prepare() {
 	default

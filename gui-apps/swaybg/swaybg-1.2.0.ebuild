@@ -20,7 +20,7 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="gdk-pixbuf +man"
+IUSE="gdk-pixbuf"
 
 DEPEND="
 	dev-libs/wayland
@@ -33,9 +33,9 @@ RDEPEND="
 	!<gui-wm/sway-1.1_alpha1
 "
 BDEPEND="
+	app-text/scdoc
 	dev-util/wayland-scanner
 	virtual/pkgconfig
-	man? ( app-text/scdoc )
 "
 
 if [[ ${PV} != 9999 ]]; then
@@ -45,8 +45,8 @@ fi
 
 src_configure() {
 	local emesonargs=(
-		-Dman-pages=$(usex man enabled disabled)
-		-Dgdk-pixbuf=$(usex gdk-pixbuf enabled disabled)
+		-Dman-pages=enabled
+		$(meson_feature gdk-pixbuf)
 	)
 
 	meson_src_configure

@@ -1,4 +1,4 @@
-# Copyright 2024-2025 Gentoo Authors
+# Copyright 2024-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,7 +7,7 @@ DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
 PYPI_VERIFY_REPO=https://github.com/Instagram/LibCST
 # TODO: add freethreading when the deps are done
-PYTHON_COMPAT=( pypy3_11 python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 
 RUST_MIN_VER="1.80.0"
 CRATES="
@@ -142,6 +142,8 @@ distutils_enable_tests pytest
 
 QA_FLAGS_IGNORED="usr/lib/py.*/site-packages/libcst/native.*"
 
+export PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1
+
 src_unpack() {
 	pypi_src_unpack
 	cargo_src_unpack
@@ -169,15 +171,6 @@ python_test() {
 		# TODO: figure out if we don't need that for revdeps anyway
 		libcst/codegen/tests/test_codegen_clean.py
 	)
-
-	case ${EPYTHON} in
-		pypy3*)
-			EPYTEST_DESELECT+=(
-				# https://github.com/Instagram/LibCST/issues/1278
-				libcst/codemod/commands/tests/test_rename_typing_generic_aliases.py::TestRenameCommand::test_rename_typing_generic_alias
-			)
-			;;
-	esac
 
 	cd "${BUILD_DIR}/install$(python_get_sitedir)" || die
 	# fixtures

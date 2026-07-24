@@ -7,7 +7,7 @@ DISTUTILS_USE_PEP517=flit
 PYPI_PN=${PN#ensurepip-}
 PYPI_VERIFY_REPO=https://github.com/pypa/wheel
 # PYTHON_COMPAT used only for testing
-PYTHON_COMPAT=( python3_{11..14} python3_{13,14}t pypy3_11 )
+PYTHON_COMPAT=( python3_{12..15} python3_{14..15}t )
 
 inherit distutils-r1 pypi
 

@@ -1,0 +1,79 @@
+From b1e2554836b6e3018c950bfb172930fe85ccdd09 Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <chewi@gentoo.org>
+Date: Sat, 30 May 2026 23:03:13 +0100
+Subject: [PATCH 1/2] build(deps): libcap is mandatory on Linux now
+
+Signed-off-by: James Le Cuirot <chewi@gentoo.org>
+--- a/cmake/compile_definitions/linux.cmake
++++ b/cmake/compile_definitions/linux.cmake
+@@ -89,22 +89,18 @@ endif()
+ if(LIBDRM_FOUND)
+     include_directories(SYSTEM ${LIBDRM_INCLUDE_DIRS})
+     list(APPEND PLATFORM_LIBRARIES ${LIBDRM_LIBRARIES})
++    if(${SUNSHINE_ENABLE_DRM})
++        add_compile_definitions(SUNSHINE_BUILD_DRM)
++        list(APPEND PLATFORM_TARGET_FILES
++                "${CMAKE_SOURCE_DIR}/src/platform/linux/kmsgrab.cpp")
++        list(APPEND SUNSHINE_DEFINITIONS EGL_NO_X11=1)
++    endif()
+ endif()
+ 
+-# drm
+-if(${SUNSHINE_ENABLE_DRM})
+-    find_package(LIBCAP REQUIRED)
+-else()
+-    set(LIBCAP_FOUND OFF)
+-endif()
+-if(LIBDRM_FOUND AND LIBCAP_FOUND)
+-    add_compile_definitions(SUNSHINE_BUILD_DRM)
+-    include_directories(SYSTEM ${LIBCAP_INCLUDE_DIRS})
+-    list(APPEND PLATFORM_LIBRARIES ${LIBCAP_LIBRARIES})
+-    list(APPEND PLATFORM_TARGET_FILES
+-            "${CMAKE_SOURCE_DIR}/src/platform/linux/kmsgrab.cpp")
+-    list(APPEND SUNSHINE_DEFINITIONS EGL_NO_X11=1)
+-endif()
++# Capabilities
++find_package(LIBCAP REQUIRED)
++include_directories(SYSTEM ${LIBCAP_INCLUDE_DIRS})
++list(APPEND PLATFORM_LIBRARIES ${LIBCAP_LIBRARIES})
+ 
+ # evdev
+ include(dependencies/libevdev_Sunshine)
+-- 
+2.54.0
+
+
+From 896ab0480a204d0fa620e2bf6ba696630896eb87 Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <chewi@gentoo.org>
+Date: Sat, 30 May 2026 23:26:18 +0100
+Subject: [PATCH 2/2] build(deps): fix use of libdrm headers when DRM capture
+ is disabled
+
+Signed-off-by: James Le Cuirot <chewi@gentoo.org>
+--- a/cmake/compile_definitions/linux.cmake
++++ b/cmake/compile_definitions/linux.cmake
+@@ -80,16 +80,18 @@ if(CUDA_FOUND)
+     add_compile_definitions(SUNSHINE_BUILD_CUDA)
+ endif()
+ 
+-# libdrm is required for DRM (KMS), KWin ScreenCast and Wayland
+-if(${SUNSHINE_ENABLE_DRM} OR ${SUNSHINE_ENABLE_KWIN} OR ${SUNSHINE_ENABLE_WAYLAND})
++# libdrm is required for DRM (KMS). Only the headers are required for Wayland,
++# Vulkan, and PipeWire (KWin, Portal).
++if(${SUNSHINE_ENABLE_DRM} OR ${SUNSHINE_ENABLE_WAYLAND} OR ${SUNSHINE_ENABLE_VULKAN}
++   OR ${SUNSHINE_ENABLE_KWIN} OR ${SUNSHINE_ENABLE_PORTAL})
+     find_package(LIBDRM REQUIRED)
+ else()
+     set(LIBDRM_FOUND OFF)
+ endif()
+ if(LIBDRM_FOUND)
+     include_directories(SYSTEM ${LIBDRM_INCLUDE_DIRS})
+-    list(APPEND PLATFORM_LIBRARIES ${LIBDRM_LIBRARIES})
+     if(${SUNSHINE_ENABLE_DRM})
++        list(APPEND PLATFORM_LIBRARIES ${LIBDRM_LIBRARIES})
+         add_compile_definitions(SUNSHINE_BUILD_DRM)
+         list(APPEND PLATFORM_TARGET_FILES
+                 "${CMAKE_SOURCE_DIR}/src/platform/linux/kmsgrab.cpp")
+-- 
+2.54.0
+

@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,7 +17,12 @@ KEYWORDS="~amd64"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-BDEPEND="test? ( dev-lang/perl )"
+BDEPEND="
+	test? (
+		dev-lang/perl
+		dev-util/xxd
+	)
+"
 
 src_prepare() {
 	default

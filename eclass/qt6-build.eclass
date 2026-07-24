@@ -276,12 +276,14 @@ _qt6-build_create_user_facing_links() {
 # @DESCRIPTION:
 # Prepares the environment for building Qt.
 _qt6-build_prepare_env() {
-	# setup installation directories
-	# note: keep paths in sync with qmake-utils.eclass
+	# setup variables for installation directories
+	# note: qt-utils.eclass should be kept in sync, eclass is not used
+	# here for clarity and for paths that are only defined here
 	QT6_PREFIX=${EPREFIX}/usr
-	QT6_DATADIR=${QT6_PREFIX}/share/qt6
 	QT6_LIBDIR=${QT6_PREFIX}/$(get_libdir)
+	QT6_SYSCONFDIR=${EPREFIX}/etc/xdg
 
+	QT6_DATADIR=${QT6_PREFIX}/share/qt6
 	QT6_ARCHDATADIR=${QT6_LIBDIR}/qt6
 
 	QT6_BINDIR=${QT6_ARCHDATADIR}/bin
@@ -293,7 +295,6 @@ _qt6-build_prepare_env() {
 	QT6_MKSPECSDIR=${QT6_ARCHDATADIR}/mkspecs
 	QT6_PLUGINDIR=${QT6_ARCHDATADIR}/plugins
 	QT6_QMLDIR=${QT6_ARCHDATADIR}/qml
-	QT6_SYSCONFDIR=${EPREFIX}/etc/xdg
 	QT6_TRANSLATIONDIR=${QT6_DATADIR}/translations
 }
 

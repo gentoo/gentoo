@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,7 +18,7 @@ if [[ "${PV}" == "9999" ]] ; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/accellera-official/${PN}/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="amd64 ~arm ~arm64 ~x86"
+	KEYWORDS="amd64 ~arm ~arm64 ~riscv ~x86"
 	S="${WORKDIR}/${PN}-${MY_PV}"
 fi
 
@@ -27,9 +27,14 @@ SLOT="0"
 IUSE="debug doc examples static-libs"
 REQUIRED_USE="examples? ( doc )"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.3.4-arch-pthreads-fallback.patch
+	"${FILESDIR}"/${PN}-2.3.4-riscv-int64.patch
+)
+
 src_prepare() {
 	default
-	eautoconf --force
+	eautoreconf
 }
 
 src_configure() {

@@ -56,6 +56,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.0.5-dont-repeat-standard-paths.patch
 )
 
+EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
 
 python_prepare_all() {

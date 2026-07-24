@@ -1,10 +1,10 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{11..14} pypy3_11 )
+PYTHON_COMPAT=( python3_{12..15} )
 
 inherit distutils-r1
 
@@ -30,6 +30,7 @@ RDEPEND="
 	dev-python/lxml[${PYTHON_USEDEP}]
 "
 
+EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
 distutils_enable_sphinx doc \
 	dev-python/sphinx-rtd-theme
@@ -38,7 +39,14 @@ python_test() {
 	local EPYTEST_DESELECT=()
 
 	case ${EPYTHON} in
-		pypy3*|python3.14*)
+		python3.15*)
+			EPYTEST_DESELECT+=(
+				# minor exception message difference
+				et_xmlfile/tests/test_incremental_tree_with_stdlib_tests.py::ElementTreeTest::test_iterparse
+				et_xmlfile/tests/test_incremental_tree_with_stdlib_tests.py::KeywordArgsTest::test_issue14818
+			)
+			;&
+		python3.14*)
 			EPYTEST_DESELECT+=(
 				# minor exception message difference
 				# https://foss.heptapod.net/openpyxl/et_xmlfile/-/issues/8
@@ -47,6 +55,5 @@ python_test() {
 			;;
 	esac
 
-	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	epytest
 }

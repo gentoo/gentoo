@@ -1,0 +1,8 @@
+--- a/x/mlxrunner/mlx/CMakeLists.txt	2026-07-04 13:53:35.494218027 +0200
++++ b/x/mlxrunner/mlx/CMakeLists.txt	2026-07-04 13:54:08.428885766 +0200
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.5)
++cmake_minimum_required(VERSION 3.10)
+ 
+ project(mlx)
+ 

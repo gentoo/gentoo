@@ -1,0 +1,24 @@
+https://bugs.gentoo.org/972684
+https://github.com/MediaArea/MediaInfoLib/pull/2643
+
+From 6a5d847b6af8723217713f81e47905b3456097c5 Mon Sep 17 00:00:00 2001
+From: Ted Rodgers <ted.d.rodgers@gmail.com>
+Date: Sun, 21 Jun 2026 00:37:38 -0400
+Subject: [PATCH] add #include <sstream> to Source/MediaInfo/MediaInfo_Const.h
+
+---
+ Source/MediaInfo/MediaInfo_Const.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/Source/MediaInfo/MediaInfo_Const.h b/Source/MediaInfo/MediaInfo_Const.h
+index ef718941fc..fbc299deaa 100644
+--- a/Source/MediaInfo/MediaInfo_Const.h
++++ b/Source/MediaInfo/MediaInfo_Const.h
+@@ -16,6 +16,7 @@
+ //---------------------------------------------------------------------------
+ 
+ //---------------------------------------------------------------------------
++#include <sstream>
+ #include <string>
+ #include <ZenLib/Conf.h>
+ //---------------------------------------------------------------------------

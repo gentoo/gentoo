@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -59,7 +59,10 @@ BDEPEND="
 	vala? ( $(vala_depend) )
 "
 
-PATCHES=( "${FILESDIR}"/${PN}-1.0.0-disable-Werror-flags.patch ) # bug 733774
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.0.0-disable-Werror-flags.patch # bug 733774
+	"${FILESDIR}"/${P}-missing-fontconfig-include.patch # bug 977023
+)
 
 src_prepare() {
 	default

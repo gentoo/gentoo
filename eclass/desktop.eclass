@@ -63,17 +63,20 @@ _DESKTOP_IDS=()
 # @CODE
 make_desktop_entry() {
 	local eapi9
-	if [[ ${1} == --eapi9 ]]; then
-		case ${EAPI} in
-			7|8)
+	case ${EAPI} in
+		7|8)
+			if [[ ${1} == --eapi9 ]]; then
 				eapi9=1
 				shift
-				;;
-			*)
+			fi
+			;;
+		*)
+			eapi9=1
+			if [[ ${1} == --eapi9 ]]; then
 				die "make_desktop_entry: --eapi9 arg is obsolete in EAPI-${EAPI}!"
-				;;
-		esac
-	fi
+			fi
+			;;
+	esac
 	[[ -z ${1} ]] && die "make_desktop_entry: You must specify at least a command"
 
 	if [[ ${eapi9} ]]; then
@@ -374,17 +377,20 @@ make_desktop_entry() {
 # @CODE
 make_session_desktop() {
 	local eapi9
-	if [[ ${1} == --eapi9 ]]; then
-		case ${EAPI} in
-			7|8)
+	case ${EAPI} in
+		7|8)
+			if [[ ${1} == --eapi9 ]]; then
 				eapi9=1
 				shift
-				;;
-			*)
+			fi
+			;;
+		*)
+			eapi9=1
+			if [[ ${1} == --eapi9 ]]; then
 				die "make_session_desktop: --eapi9 arg is obsolete in EAPI-${EAPI}!"
-				;;
-		esac
-	fi
+			fi
+			;;
+	esac
 	[[ -z ${1} ]] && die "make_session_desktop: You must specify at least a command"
 
 	if [[ ${eapi9} ]]; then

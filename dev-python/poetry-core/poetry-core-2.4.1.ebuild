@@ -5,8 +5,8 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=standalone
 PYPI_VERIFY_REPO=https://github.com/python-poetry/poetry-core
-PYTHON_TESTED=( pypy3_11 python3_{11..14} )
-PYTHON_COMPAT=( "${PYTHON_TESTED[@]}" python3_15 )
+PYTHON_TESTED=( python3_{12..15} python3_{14..15}t )
+PYTHON_COMPAT=( "${PYTHON_TESTED[@]}" )
 
 inherit distutils-r1 pypi
 
@@ -18,7 +18,7 @@ HOMEPAGE="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~arm64-macos ~x64-macos"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~arm64-macos ~x64-macos"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
@@ -57,11 +57,23 @@ python_test() {
 		return
 	fi
 
+	local EPYTEST_DESELECT=()
+	case ${EPYTHON} in
+		python*t)
+			EPYTEST_DESELECT+=(
+				# tests not adjusted for freethreading tags
+				tests/masonry/builders/test_complete.py::test_wheel_c_extension
+				tests/masonry/builders/test_wheel.py::test_tag
+			)
+			;;
+	esac
+
 	# Poetry expects test to be run inside a git repository, otherwise
 	# VCS-related logic doesn't get triggered.  An empty repository
 	# suffices, though.
 	git init || die
 
 	local EPYTEST_PLUGINS=( pytest-mock )
+	# NB: xdist breaks test collection
 	epytest
 }

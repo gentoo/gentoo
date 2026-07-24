@@ -1,0 +1,30 @@
+https://github.com/texstudio-org/texstudio/commit/e0fcba2.patch
+backport fix for cache regression from 4.9.4
+see https://github.com/texstudio-org/texstudio/issues/4505
+--- a/src/latexparser/latexparser.cpp
++++ b/src/latexparser/latexparser.cpp
+@@ -196,8 +196,12 @@ QString removeOptionBrackets(const QString &option)
+  * \param cmd latex command
+  * \return level of stucture
+  */
+-int LatexParser::structureCommandLevel(const QString &cmd) const
++int LatexParser::structureCommandLevel(const QString &cmd)
+ {
++    if(sectionCommands.isEmpty()){
++        // not yet chached, do it now
++        cacheStructureCommand();
++    }
+     if(!sectionCommands.contains(cmd)) return -1;
+ 	for (int i=0; i<=MAX_STRUCTURE_LEVEL; i++) {
+ 		if (possibleCommands[QString("%structure%1").arg(i)].contains(cmd)) {
+--- a/src/latexparser/latexparser.h
++++ b/src/latexparser/latexparser.h
+@@ -33,7 +33,7 @@ class LatexParser
+ 	{
+ 		return MAX_STRUCTURE_LEVEL;
+ 	}
+-    int structureCommandLevel(const QString &cmd) const;
++    int structureCommandLevel(const QString &cmd);
+     void cacheStructureCommand();
+ 
+ 	QSet<QString> environmentCommands; ///< used by LatexReader only, obsolete

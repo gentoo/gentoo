@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=hatchling
-PYTHON_COMPAT=( python3_{11..14} pypy3_11 )
+PYTHON_COMPAT=( python3_{12..15} )
 
 inherit distutils-r1 pypi
 
@@ -27,9 +27,7 @@ RDEPEND="
 BDEPEND="
 	dev-python/hatch-fancy-pypi-readme[${PYTHON_USEDEP}]
 	test? (
-		dev-python/fields[${PYTHON_USEDEP}]
 		>=dev-python/process-tests-2.0.2[${PYTHON_USEDEP}]
-		>=dev-python/py-1.4.22[${PYTHON_USEDEP}]
 		dev-python/virtualenv[${PYTHON_USEDEP}]
 	)
 "

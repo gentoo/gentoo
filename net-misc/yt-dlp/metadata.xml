@@ -6,6 +6,8 @@
 		<name>Ionen Wolkens</name>
 	</maintainer>
 	<stabilize-allarches/>
+	<!-- website changes can leave the stable version immediately broken -->
+	<straight-to-stable/>
 	<use>
 		<flag name="deno">
 			Pull in <pkg>dev-lang/deno-bin</pkg> by default

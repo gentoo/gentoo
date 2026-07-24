@@ -1,0 +1,20 @@
+echo -e is not portable, use printf instead
+--- a/src/commands/Makefile.am
++++ b/src/commands/Makefile.am
+@@ -132,11 +132,11 @@ if BUILD_CONSOLE_APP
+ 	test "`echo entrainer | $(LU) ./verbiste-console | grep -c ^entrai`" -eq 0
+ 	test "`echo entrainer | $(LU) ./verbiste-console | grep -c ^entraî`" -eq 50
+ 	test "`echo entraîner | $(LU) ./verbiste-console | grep -c ^entraî`" -eq 50
+-	echo -ne "A\n"                | $(LU) ./verbiste-console | grep -q "^eussiez"
+-	echo -ne "/hidepronouns\nA\n" | $(LU) ./verbiste-console | grep -q "^eussiez"
+-	echo -ne "/hp\nA\n"           | $(LU) ./verbiste-console | grep -q "^eussiez"
+-	echo -ne "/showpronouns\nA\n" | $(LU) ./verbiste-console | grep -q "^que vous eussiez"
+-	echo -ne "/sp\nA\n"           | $(LU) ./verbiste-console | grep -q "^que vous eussiez"
++	printf "A\n"                | $(LU) ./verbiste-console | grep -q "^eussiez"
++	printf "/hidepronouns\nA\n" | $(LU) ./verbiste-console | grep -q "^eussiez"
++	printf "/hp\nA\n"           | $(LU) ./verbiste-console | grep -q "^eussiez"
++	printf "/showpronouns\nA\n" | $(LU) ./verbiste-console | grep -q "^que vous eussiez"
++	printf "/sp\nA\n"           | $(LU) ./verbiste-console | grep -q "^que vous eussiez"
+ endif BUILD_CONSOLE_APP
+ 
+ check-it:

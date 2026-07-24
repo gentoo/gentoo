@@ -1,0 +1,28 @@
+Similar to https://cgit.git.savannah.gnu.org/cgit/mailutils.git/commit/?id=53d431588db350d31051a3f057f74a4995523986
+--- a/tests/outperms.sh
++++ b/tests/outperms.sh
+@@ -3,7 +3,7 @@ unifdef -DFOO=1 -DFOOB=42 -UBAR -ooutfile.c if1.c
+ e=$?
+ case ${BUILD_MINGW} in
+ (yes)	printf '%s\n' '-rw-r-----' 1>&2 ;;
+-(*)	ls -l outfile.c | cut -d' ' -f1 1>&2 ;;
++(*)	ls -l outfile.c | cut -b 1-10 1>&2 ;;
+ esac
+ cat outfile.c
+ rm outfile.c
+--- a/tests/overperms.sh
++++ b/tests/overperms.sh
+@@ -1,11 +1,11 @@
+ cp if1.c outfile.c
+ chmod 640 outfile.c
+-ls -l outfile.c | cut -d' ' -f1 1>&2
++ls -l outfile.c | cut -b 1-10 1>&2
+ unifdef -DFOO=1 -DFOOB=42 -UBAR -m outfile.c
+ e=$?
+ case ${BUILD_MINGW} in
+ (yes)	printf '%s\n' '-rw-r-----' 1>&2 ;;
+-(*)	ls -l outfile.c | cut -d' ' -f1 1>&2 ;;
++(*)	ls -l outfile.c | cut -b 1-10 1>&2 ;;
+ esac
+ cat outfile.c
+ rm outfile.c

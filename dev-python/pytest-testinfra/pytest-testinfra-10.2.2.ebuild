@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=hatchling
 PYPI_VERIFY_REPO=https://github.com/pytest-dev/pytest-testinfra
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 
 inherit distutils-r1 pypi
 
@@ -34,8 +34,6 @@ BDEPEND="
 
 EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
-
-export SETUPTOOLS_SCM_PRETEND_VERSION=${PV}
 
 python_test() {
 	local EPYTEST_DESELECT=()

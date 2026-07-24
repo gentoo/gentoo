@@ -1,0 +1,196 @@
+https://bugs.gentoo.org/979729
+
+From 27e177baae285c52a94ed75d508736e3e9426d0a Mon Sep 17 00:00:00 2001
+From: Jaipaul Cheernam <jaipaul.cheernam@est.tech>
+Date: Tue, 21 Jul 2026 13:22:48 +0000
+Subject: [PATCH 1/3] patches for perl-5.44.0
+
+Add patchset symlinks directory for perl5-5.44.0, reusing existing
+patches from perl5-5.22.3 and perl5-5.38.0 where applicable.
+
+Signed-off-by: Jaipaul Cheernam <jaipaul.cheernam@est.tech>
+---
+ cnf/diffs/perl5-5.44.0/constant.patch       | 1 +
+ cnf/diffs/perl5-5.44.0/dynaloader.patch     | 1 +
+ cnf/diffs/perl5-5.44.0/findext.patch        | 1 +
+ cnf/diffs/perl5-5.44.0/installscripts.patch | 1 +
+ cnf/diffs/perl5-5.44.0/liblist.patch        | 1 +
+ cnf/diffs/perl5-5.44.0/makemaker.patch      | 1 +
+ cnf/diffs/perl5-5.44.0/posix-makefile.patch | 1 +
+ cnf/diffs/perl5-5.44.0/test-checkcase.patch | 1 +
+ cnf/diffs/perl5-5.44.0/test-makemaker.patch | 1 +
+ cnf/diffs/perl5-5.44.0/xconfig.patch        | 1 +
+ 10 files changed, 10 insertions(+)
+ create mode 120000 cnf/diffs/perl5-5.44.0/constant.patch
+ create mode 120000 cnf/diffs/perl5-5.44.0/dynaloader.patch
+ create mode 120000 cnf/diffs/perl5-5.44.0/findext.patch
+ create mode 120000 cnf/diffs/perl5-5.44.0/installscripts.patch
+ create mode 120000 cnf/diffs/perl5-5.44.0/liblist.patch
+ create mode 120000 cnf/diffs/perl5-5.44.0/makemaker.patch
+ create mode 120000 cnf/diffs/perl5-5.44.0/posix-makefile.patch
+ create mode 120000 cnf/diffs/perl5-5.44.0/test-checkcase.patch
+ create mode 120000 cnf/diffs/perl5-5.44.0/test-makemaker.patch
+ create mode 120000 cnf/diffs/perl5-5.44.0/xconfig.patch
+
+diff --git a/cnf/diffs/perl5-5.44.0/constant.patch b/cnf/diffs/perl5-5.44.0/constant.patch
+new file mode 120000
+index 0000000..065e198
+--- /dev/null
++++ b/cnf/diffs/perl5-5.44.0/constant.patch
+@@ -0,0 +1 @@
++../perl5-5.22.3/constant.patch
+\ No newline at end of file
+diff --git a/cnf/diffs/perl5-5.44.0/dynaloader.patch b/cnf/diffs/perl5-5.44.0/dynaloader.patch
+new file mode 120000
+index 0000000..ffb73eb
+--- /dev/null
++++ b/cnf/diffs/perl5-5.44.0/dynaloader.patch
+@@ -0,0 +1 @@
++../perl5-5.22.3/dynaloader.patch
+\ No newline at end of file
+diff --git a/cnf/diffs/perl5-5.44.0/findext.patch b/cnf/diffs/perl5-5.44.0/findext.patch
+new file mode 120000
+index 0000000..9efbe5b
+--- /dev/null
++++ b/cnf/diffs/perl5-5.44.0/findext.patch
+@@ -0,0 +1 @@
++../perl5-5.22.3/findext.patch
+\ No newline at end of file
+diff --git a/cnf/diffs/perl5-5.44.0/installscripts.patch b/cnf/diffs/perl5-5.44.0/installscripts.patch
+new file mode 120000
+index 0000000..1c05e0f
+--- /dev/null
++++ b/cnf/diffs/perl5-5.44.0/installscripts.patch
+@@ -0,0 +1 @@
++../perl5-5.36.0/installscripts.patch
+\ No newline at end of file
+diff --git a/cnf/diffs/perl5-5.44.0/liblist.patch b/cnf/diffs/perl5-5.44.0/liblist.patch
+new file mode 120000
+index 0000000..5037380
+--- /dev/null
++++ b/cnf/diffs/perl5-5.44.0/liblist.patch
+@@ -0,0 +1 @@
++../perl5-5.42.0/liblist.patch
+\ No newline at end of file
+diff --git a/cnf/diffs/perl5-5.44.0/makemaker.patch b/cnf/diffs/perl5-5.44.0/makemaker.patch
+new file mode 120000
+index 0000000..d7bd609
+--- /dev/null
++++ b/cnf/diffs/perl5-5.44.0/makemaker.patch
+@@ -0,0 +1 @@
++../perl5-5.38.0/makemaker.patch
+\ No newline at end of file
+diff --git a/cnf/diffs/perl5-5.44.0/posix-makefile.patch b/cnf/diffs/perl5-5.44.0/posix-makefile.patch
+new file mode 120000
+index 0000000..29463b7
+--- /dev/null
++++ b/cnf/diffs/perl5-5.44.0/posix-makefile.patch
+@@ -0,0 +1 @@
++../perl5-5.22.3/posix-makefile.patch
+\ No newline at end of file
+diff --git a/cnf/diffs/perl5-5.44.0/test-checkcase.patch b/cnf/diffs/perl5-5.44.0/test-checkcase.patch
+new file mode 120000
+index 0000000..36c5186
+--- /dev/null
++++ b/cnf/diffs/perl5-5.44.0/test-checkcase.patch
+@@ -0,0 +1 @@
++../perl5-5.22.3/test-checkcase.patch
+\ No newline at end of file
+diff --git a/cnf/diffs/perl5-5.44.0/test-makemaker.patch b/cnf/diffs/perl5-5.44.0/test-makemaker.patch
+new file mode 120000
+index 0000000..4e970ff
+--- /dev/null
++++ b/cnf/diffs/perl5-5.44.0/test-makemaker.patch
+@@ -0,0 +1 @@
++../perl5-5.34.0/test-makemaker.patch
+\ No newline at end of file
+diff --git a/cnf/diffs/perl5-5.44.0/xconfig.patch b/cnf/diffs/perl5-5.44.0/xconfig.patch
+new file mode 120000
+index 0000000..87ac501
+--- /dev/null
++++ b/cnf/diffs/perl5-5.44.0/xconfig.patch
+@@ -0,0 +1 @@
++../perl5-5.42.0/xconfig.patch
+\ No newline at end of file
+
+From b97cff4cb11201a1baeb1a9a90a3e7355574b887 Mon Sep 17 00:00:00 2001
+From: Jaipaul Cheernam <jaipaul.cheernam@est.tech>
+Date: Tue, 21 Jul 2026 13:22:49 +0000
+Subject: [PATCH 2/3] Add configure checks for perl 5.44.0 new symbols
+
+Add detection for d_getentropy, i_stdckdint, and i_sysrandom which
+are new config symbols required by perl 5.44.0.
+
+Signed-off-by: Jaipaul Cheernam <jaipaul.cheernam@est.tech>
+---
+ cnf/configure_func.sh | 1 +
+ cnf/configure_hdrs.sh | 2 ++
+ 2 files changed, 3 insertions(+)
+
+diff --git a/cnf/configure_func.sh b/cnf/configure_func.sh
+index 20f9cdf..4cbee2f 100644
+--- a/cnf/configure_func.sh
++++ b/cnf/configure_func.sh
+@@ -104,6 +104,7 @@ checkfunc d_getaddrinfo 'getaddrinfo' "NULL,NULL,NULL,NULL" 'sys/types.h sys/soc
+ checkfunc d_get_current_dir_name 'get_current_dir_name' "" 'unistd.h'
+ checkfunc d_getcwd 'getcwd' 'NULL,0' 'unistd.h'
+ checkfunc d_getespwnam 'getespwnam'
++checkfunc d_getentropy 'getentropy' 'NULL,0' 'unistd.h'
+ checkfunc d_getfsstat 'getfsstat' "NULL,0,0" 'sys/types.h sys/mount.h'
+ checkfunc d_getgrent 'getgrent' "" 'sys/types.h grp.h'
+ checkfunc d_getgrps 'getgroups' "0,NULL" 'unistd.h'
+diff --git a/cnf/configure_hdrs.sh b/cnf/configure_hdrs.sh
+index 249f5bc..b2d9d88 100644
+--- a/cnf/configure_hdrs.sh
++++ b/cnf/configure_hdrs.sh
+@@ -64,6 +64,7 @@ checkhdr i_socks 'socks.h'
+ # i_stdarg below
+ checkhdr i_stdbool 'stdbool.h'
+ checkhdr i_stddef 'stddef.h'
++checkhdr i_stdckdint 'stdckdint.h'
+ checkhdr i_stdint 'stdint.h'
+ checkhdr i_stdlib 'stdlib.h'
+ checkhdr i_string 'string.h'
+@@ -88,6 +89,7 @@ checkhdr i_syssockio 'sys/sockio.h'
+ checkhdr i_sysstat 'sys/stat.h'
+ checkhdr i_sysstatfs 'sys/statfs.h'
+ checkhdr i_sysstatvfs 'sys/statvfs.h'
++checkhdr i_sysrandom 'sys/random.h'
+ checkhdr i_systime 'sys/time.h'
+ define i_systimek 'undef' # not a plain header check
+ checkhdr i_systimes 'sys/times.h'
+
+From 518c836fc3e90ee44f07b96cc8ab5ea041006427 Mon Sep 17 00:00:00 2001
+From: Jaipaul Cheernam <jaipaul.cheernam@est.tech>
+Date: Wed, 22 Jul 2026 09:21:26 +0000
+Subject: [PATCH 3/3] configure_type_ext: Fix checkfield for C23/GCC 16
+
+In C23, 'void foo()' means no parameters, so calling foo(value.field)
+fails with GCC 16 when -Werror is used. This breaks detection of
+struct fields like tm_gmtoff and tm_zone.
+
+Use (void)value.field instead, which works for any field type.
+
+Signed-off-by: Jaipaul Cheernam <jaipaul.cheernam@est.tech>
+---
+ cnf/configure_type_ext.sh | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
+
+diff --git a/cnf/configure_type_ext.sh b/cnf/configure_type_ext.sh
+index 0136c90..9ecd3fb 100644
+--- a/cnf/configure_type_ext.sh
++++ b/cnf/configure_type_ext.sh
+@@ -7,11 +7,9 @@ checkfield() {
+ 	
+ 	try_start
+ 	try_includes $4
+-	try_add 'void foo();'
+-	try_add 'void bar()'
+-        try_add "{"
++	try_add 'void bar(void) {'
+ 	try_add "	$2 value;"
+-	try_add "	foo(value.$3);"
++	try_add "	(void)value.$3;"
+ 	try_add "}"
+ 	try_compile
+ 

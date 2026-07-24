@@ -17,7 +17,6 @@
 		methods and automatic handling of HTTP-Equiv and Refresh.
 	</longdescription>
 	<upstream>
-		<remote-id type="sourceforge">wwwsearch</remote-id>
 		<remote-id type="pypi">mechanize</remote-id>
 		<remote-id type="github">python-mechanize/mechanize</remote-id>
 	</upstream>

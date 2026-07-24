@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=hatchling
 PYPI_VERIFY_REPO=https://github.com/yt-dlp/ejs
-PYTHON_COMPAT=( pypy3_11 python3_{11..15} )
+PYTHON_COMPAT=( python3_{12..15} )
 inherit distutils-r1 pypi
 
 DESCRIPTION="External JavaScript for yt-dlp supporting many runtimes"
@@ -16,7 +16,6 @@ SRC_URI+=" $(pypi_wheel_url --unpack)"
 LICENSE="Unlicense"
 LICENSE+=" ISC MIT" # .js dependencies
 SLOT="0"
-# bumps should typically be done straight-to-stable like yt-dlp itself
 KEYWORDS="amd64 arm arm64 ~hppa ppc ppc64 ~riscv x86 ~arm64-macos ~x64-macos"
 
 BDEPEND="

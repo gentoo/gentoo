@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{11..14} )
-MY_P=${P/_rc2/~rc2}
+MY_P=${P/_rc2/\~rc2}
 
 inherit autotools flag-o-matic python-single-r1
 

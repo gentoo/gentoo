@@ -1,11 +1,10 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-DISTUTILS_USE_PEP517=flit
-PYTHON_TESTED=( python3_{12..14} )
-PYTHON_COMPAT=( "${PYTHON_TESTED[@]}" )
+DISTUTILS_USE_PEP517=flit-core
+PYTHON_COMPAT=( python3_{12..15} )
 
 inherit distutils-r1 pypi
 
@@ -32,10 +31,8 @@ PDEPEND="
 BDEPEND="
 	test? (
 		${PDEPEND}
-		$(python_gen_cond_dep '
-			dev-python/sqlalchemy[${PYTHON_USEDEP}]
-			dev-python/whoosh[${PYTHON_USEDEP}]
-		' "${PYTHON_TESTED[@]}")
+		dev-python/sqlalchemy[${PYTHON_USEDEP}]
+		dev-python/whoosh[${PYTHON_USEDEP}]
 	)
 "
 
@@ -46,4 +43,6 @@ distutils_enable_tests pytest
 PATCHES=(
 	# https://github.com/sphinx-doc/sphinxcontrib-websupport/pull/78
 	"${FILESDIR}/${P}-fix-sqlalchemy.patch"
+	# https://github.com/sphinx-doc/sphinxcontrib-websupport/pull/91
+	"${FILESDIR}/${P}-sphinx-9.patch"
 )

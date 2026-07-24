@@ -31,3 +31,12 @@ inherit nginx
 PATCHES=(
 	"${FILESDIR}/${PN}-httpoxy-mitigation-r1.patch"
 )
+
+src_prepare() {
+	nginx_src_prepare
+
+	if use test ; then
+		# Fails with network-sandbox (bug #976129)
+		rm "${NGX_TESTS_S}"/tunnel_next_upstream.t || die
+	fi
+}

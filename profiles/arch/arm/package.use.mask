@@ -1,6 +1,14 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Rick Farina <zerochaos@gentoo.org> (2026-06-13)
+# net-wireless/rtl_433 and deps are not keyworded here
+net-wireless/kismet rtlsdr
+
+# Alexey Sokolov <alexey+gentoo@asokolov.org> (2026-06-04)
+# New versions of dev-cpp/cpp-httplib dropped support for 32 bits. Bug #973312
+dev-util/ccache http
+
 # Alfred Wingate <parona@protonmail.com> (2026-05-13)
 # dev-qt/qtgraphs:6 is not keyworded here
 dev-python/pyside graphs

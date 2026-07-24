@@ -10,7 +10,7 @@ HOMEPAGE="https://doc.qt.io/"
 
 LICENSE="FDL-1.3"
 SLOT="6"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv x86"
 IUSE="+examples +html +qch"
 REQUIRED_USE="|| ( examples html qch )"
 
@@ -91,7 +91,7 @@ qt6_docs_generate_metadata() {
 		+shadertools/qtshadertools:
 		+speech/qtspeech="qttexttospeech"
 		+svg^qtsvg
-		-tasktree/qttasktree
+		+tasktree/qttasktree
 		+timeline/qtquicktimeline:
 		+tools^qttools="
 			qdoc qtassistant qtdesigner qtdistancefieldgenerator

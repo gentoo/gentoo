@@ -1,6 +1,12 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Conrad Kostecki <conikost@gentoo.org> (2026-06-27)
+# CAPS/ISDN has been dropped from kernel, so we need to remove it.
+# Masked and removal on 2026-07-12.
+# See bug #977907
+net-libs/libcapi
+
 # Sam James <sam@gentoo.org> (2026-03-17)
 # Hurd-only packages
 dev-util/mig

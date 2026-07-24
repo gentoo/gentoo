@@ -1,10 +1,10 @@
-# Copyright 2022-2025 Gentoo Authors
+# Copyright 2022-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=hatchling
-PYTHON_COMPAT=( pypy3_11 python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 
 inherit distutils-r1 optfeature
 
@@ -45,21 +45,19 @@ BDEPEND="
 		dev-python/cryptography[${PYTHON_USEDEP}]
 		dev-python/h2[${PYTHON_USEDEP}]
 		dev-python/socksio[${PYTHON_USEDEP}]
+		dev-python/trio[${PYTHON_USEDEP}]
 		dev-python/trustme[${PYTHON_USEDEP}]
 		dev-python/typing-extensions[${PYTHON_USEDEP}]
 		dev-python/uvicorn[${PYTHON_USEDEP}]
 		>=dev-python/zstandard-0.18.0[${PYTHON_USEDEP}]
-		$(python_gen_cond_dep '
-			dev-python/trio[${PYTHON_USEDEP}]
-		' 3.{11..13})
 	)
 "
 
+EPYTEST_PLUGINS=( anyio )
 distutils_enable_tests pytest
 
 src_prepare() {
 	local PATCHES=(
-		"${FILESDIR}/${PN}-0.27.0-opt-trio.patch"
 		# fix test failures when httptools are installed
 		# https://github.com/encode/httpx/discussions/3429
 		# https://gitlab.archlinux.org/archlinux/packaging/packages/python-httpx/-/blob/main/uvicorn-test-server-use-h11.diff
@@ -75,23 +73,24 @@ src_prepare() {
 }
 
 python_test() {
-	local args=()
 	local EPYTEST_DESELECT=(
 		# Internet
 		tests/client/test_proxies.py::test_async_proxy_close
 		tests/client/test_proxies.py::test_sync_proxy_close
+
+		# random regressions
+		tests/client/test_client.py::test_client_decode_text_using_autodetect
+		tests/client/test_client.py::test_client_decode_text_using_explicit_encoding
+		tests/models/test_responses.py::test_response_decode_text_using_autodetect
+		tests/test_utils.py::test_logging_request
+		tests/test_utils.py::test_logging_redirect_chain
 	)
 
 	use cli || EPYTEST_IGNORE+=(
 		tests/test_main.py
 	)
 
-	if ! has_version "dev-python/trio[${PYTHON_USEDEP}]"; then
-		args+=( -o filterwarnings= -k "not trio" )
-	fi
-
-	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
-	epytest -p anyio "${args[@]}"
+	epytest
 }
 
 pkg_postinst() {

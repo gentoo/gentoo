@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,6 +16,10 @@ LICENSE="MIT"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
 
+CABAL_CHDEPS=(
+	'tasty-lua               >= 1.0 && < 1.1' 'tasty-lua               >= 1.0 && < 1.2'
+)
+
 RDEPEND=">=dev-haskell/doclayout-0.2:=[profile?] <dev-haskell/doclayout-0.5:=[profile?]
 	>=dev-haskell/hslua-2.1:=[profile?] <dev-haskell/hslua-2.3:=[profile?]
 	>=dev-lang/ghc-8.4.3:=
@@ -24,5 +28,5 @@ DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-2.2.0.1
 	test? ( dev-haskell/tasty
 		dev-haskell/tasty-hunit
-		>=dev-haskell/tasty-lua-1.0 <dev-haskell/tasty-lua-1.1 )
+		>=dev-haskell/tasty-lua-1.0 <dev-haskell/tasty-lua-1.2 )
 "

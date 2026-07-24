@@ -4,18 +4,15 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=hatchling
-PYTHON_COMPAT=( python3_{11..14} )
+PYPI_VERIFY_REPO=https://github.com/gmr/flatdict
+PYTHON_COMPAT=( python3_{12..15} )
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="Python module for interacting with nested dicts"
 HOMEPAGE="
 	https://github.com/gmr/flatdict/
 	https://pypi.org/project/flatdict/
-"
-SRC_URI="
-	https://github.com/gmr/flatdict/archive/${PV}.tar.gz
-		-> ${P}.gh.tar.gz
 "
 
 LICENSE="BSD"
@@ -27,5 +24,3 @@ BDEPEND="
 "
 
 distutils_enable_tests unittest
-
-export SETUPTOOLS_SCM_PRETEND_VERSION=${PV}

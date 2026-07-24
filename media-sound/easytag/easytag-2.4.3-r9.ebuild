@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,7 +11,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/EasyTAG"
 
 LICENSE="GPL-2 GPL-2+ LGPL-2 LGPL-2+ LGPL-2.1+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm ppc ppc64 ~riscv ~x86"
 IUSE="flac mp3 mp4 opus speex test vorbis wavpack"
 # Disable nautilus support until https://gitlab.gnome.org/GNOME/easytag/-/issues/78
 # is solved

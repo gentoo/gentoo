@@ -1,0 +1,40 @@
+# Copyright 2021-2026 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=8
+
+inherit cmake verify-sig xdg
+
+DESCRIPTION="Lightweight Qt6 Plain-Text Editor for Linux"
+HOMEPAGE="https://github.com/tsujan/FeatherPad"
+SRC_URI="https://github.com/tsujan/FeatherPad/releases/download/V${PV}/FeatherPad-${PV}.tar.xz
+	https://github.com/tsujan/FeatherPad/releases/download/V${PV}/FeatherPad-${PV}.tar.xz.asc"
+S="${WORKDIR}/FeatherPad-${PV}"
+
+LICENSE="GPL-3+"
+SLOT="0"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
+IUSE="+X"
+
+RDEPEND="
+	app-text/hunspell:=
+	dev-qt/qtbase:6[dbus,gui,widgets]
+	dev-qt/qtsvg:6
+	X? ( x11-libs/libX11 )
+"
+DEPEND="${RDEPEND}
+	X? ( x11-base/xorg-proto )
+"
+BDEPEND="
+	dev-qt/qttools:6[linguist]
+	verify-sig? ( sec-keys/openpgp-keys-tsujan )
+"
+
+VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/tsujan.asc"
+
+src_configure() {
+	local mycmakeargs=(
+		-DWITHOUT_X11=$(usex !X)
+	)
+	cmake_src_configure
+}

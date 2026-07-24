@@ -1,0 +1,46 @@
+https://github.com/squid-cache/squid/pull/2442
+
+From c21f102c8d6c6700c5d96e0f63ae3f880c2e1da0 Mon Sep 17 00:00:00 2001
+From: Renan Rodrigo <rr@ubuntu.com>
+Date: Tue, 9 Jun 2026 18:15:46 -0300
+Subject: [PATCH 1/2] Fix tests when using rust-coreutils (#5237)
+
+testHeaders copies the 'true' binary to a file named testHeaders relying
+on the fact that GNU's true always exits 0. When 'true' implementation
+is a multicall binary (e.g., in rust-coreutils and on Alpine Linux), it
+cannot be called by other name. Create an empty executable file instead.
+
+squid-conf-tests also copied the 'true' binary, but that Makefile target
+is never executed and, hence, should not create an executable file.
+---
+ src/TestHeaders.am     | 2 +-
+ test-suite/Makefile.am | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/TestHeaders.am b/src/TestHeaders.am
+index 0e6a023db25..40b8fddd527 100644
+--- a/src/TestHeaders.am
++++ b/src/TestHeaders.am
+@@ -15,7 +15,7 @@ EXCLUDE_FROM_HDR_TESTING =
+ # headers to test
+ 
+ testHeaders: $(SOURCES) $(noinst_HEADERS) $(EXTRA_DIST) $(top_srcdir)/test-suite/testHeader.cc.in
+-	$(MAKE) $(^:.h=.hdrtest) && cp $(TRUE) $@
++	$(MAKE) $(^:.h=.hdrtest) && touch $@ && $(CHMOD) +x $@
+ 
+ .h.hdrtest:
+ 	@SrcFilePath=`echo $< | $(SED) 's%^$(top_srcdir)/%%'`; \
+diff --git a/test-suite/Makefile.am b/test-suite/Makefile.am
+index 1a7d91dd20a..a8a3cc53149 100644
+--- a/test-suite/Makefile.am
++++ b/test-suite/Makefile.am
+@@ -150,7 +150,7 @@ squid-conf-tests: $(srcdir)/test-squid-conf.sh $(top_builddir)/src/squid.conf.de
+ 				sed s%$(srcdir)/squidconf/%% ; \
+ 		else break; fi; \
+ 	done; \
+-	if test "$$failed" -eq 0; then cp $(TRUE) $@ ; else exit 1; fi
++	if test "$$failed" -eq 0; then touch $@ ; else exit 1; fi
+ 
+ CLEANFILES += \
+ 	squid-conf-tests \
+

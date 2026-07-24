@@ -36,3 +36,11 @@ multilib_src_configure() {
 	)
 	cmake_src_configure
 }
+
+multilib_src_test() {
+	local CMAKE_SKIP_TESTS=(
+		# bug #977176 (https://github.com/KhronosGroup/glslang/issues/4180)
+		$(usev arm 'glslang-testsuite')
+	)
+	cmake_src_test
+}

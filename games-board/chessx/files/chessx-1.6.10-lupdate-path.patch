@@ -1,0 +1,36 @@
+From 42576f6a3eb642d3fd684a31a2fb6da6d244951a Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Tue, 27 Jan 2026 07:15:33 +0000
+Subject: [PATCH] Fix up lupdate path
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Thanks-to: Ondrej Mosnáček <omosnacek@gmail.com>
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ chessx.pro | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/chessx.pro b/chessx.pro
+index 43b1f3a..f4cbd00 100644
+--- a/chessx.pro
++++ b/chessx.pro
+@@ -608,11 +608,11 @@ TSQM.CONFIG += no_link target_predeps
+ QMAKE_EXTRA_COMPILERS += TSQM
+ PRE_TARGETDEPS += compiler_TSQM_make_all
+ 
+-# Automatically run lupdate when building
+-updateqm.commands = lupdate $$PWD/$$TARGET.pro && lrelease $$PWD/i18n/*.ts
++# Automatically run $$[QT_INSTALL_BINS]/lupdate when building
++updateqm.commands = $$[QT_INSTALL_BINS]/lupdate $$PWD/$$TARGET.pro && lrelease $$PWD/i18n/*.ts
+ QMAKE_EXTRA_TARGETS += updateqm
+ 
+-update_translations.commands = lupdate $$PWD -ts $$TRANSLATIONS
++update_translations.commands = $$[QT_INSTALL_BINS]/lupdate $$PWD -ts $$TRANSLATIONS
+ QMAKE_EXTRA_TARGETS += update_translations
+ PRE_TARGETDEPS += update_translations  # Optional: Run before build
+ 
+-- 
+2.54.0
+

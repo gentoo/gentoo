@@ -17,7 +17,7 @@ S="${WORKDIR}"
 
 LICENSE="LGPL-2 BSD rar? ( unRAR )"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv ~s390 ~sparc x86"
 IUSE="uasm jwasm rar +symlink"
 REQUIRED_USE="?? ( uasm jwasm )"
 
@@ -38,8 +38,6 @@ PATCHES=(
 )
 
 # TODO(NRK): also build and install the library
-# TODO(NRK): make it so this package can be used as a drop-in replacement
-# for app-arch/p7zip ??
 
 pkg_setup() {
 	# instructions in DOC/readme.txt, Compiling 7-Zip for Unix/Linux

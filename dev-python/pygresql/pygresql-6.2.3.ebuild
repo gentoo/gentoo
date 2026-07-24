@@ -7,7 +7,7 @@ DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
 PYPI_PN="PyGreSQL"
 POSTGRES_COMPAT=( 9.6 {10..18} )
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 
 inherit distutils-r1 postgres pypi
 
@@ -22,11 +22,12 @@ LICENSE="POSTGRESQL"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~hppa ppc ~sparc x86"
 
+REQUIRED_USE="${POSTGRES_REQ_USE}"
 DEPEND="${POSTGRES_DEP}"
 RDEPEND="${DEPEND}"
 BDEPEND="
 	test? (
-		dev-db/postgresql[server]
+		dev-db/postgresql[server(+)]
 	)
 "
 

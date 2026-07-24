@@ -6,9 +6,11 @@
 		<name>Gentoo KDE Project</name>
 	</maintainer>
 	<upstream>
-		<bugs-to>https://bugs.kde.org/</bugs-to>
+		<bugs-to>https://bugs.kde.org/enter_bug.cgi?product=kdepim</bugs-to>
+		<remote-id type="kde-invent">pim/kdepim-runtime</remote-id>
 	</upstream>
 	<use>
 		<flag name="activities">Enable Plasma Activities support via kde-plasma/plasma-activities</flag>
+		<flag name="ews">Enable support for Microsoft Exchange Web Services</flag>
 	</use>
 </pkgmetadata>

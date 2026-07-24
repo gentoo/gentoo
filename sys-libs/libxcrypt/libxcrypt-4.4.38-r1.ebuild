@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 # NEED_BOOTSTRAP is for developers to quickly generate a tarball
 # for publishing to the tree.
 NEED_BOOTSTRAP="no"
@@ -41,11 +41,11 @@ RDEPEND="${DEPEND}
 "
 BDEPEND="
 	dev-lang/perl
-	test? ( $(python_gen_any_dep 'dev-python/passlib[${PYTHON_USEDEP}]') )
+	test? ( $(python_gen_any_dep 'dev-python/libpass[${PYTHON_USEDEP}]') )
 "
 
 python_check_deps() {
-	python_has_version "dev-python/passlib[${PYTHON_USEDEP}]"
+	python_has_version "dev-python/libpass[${PYTHON_USEDEP}]"
 }
 
 pkg_pretend() {

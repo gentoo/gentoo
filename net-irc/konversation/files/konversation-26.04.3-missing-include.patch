@@ -1,0 +1,27 @@
+From 6f44ff64e56ea2abcf3c6ceb8f93455e62f60abb Mon Sep 17 00:00:00 2001
+From: argonel <argonel@gmail.com>
+Date: Sat, 4 Jul 2026 03:15:49 -0400
+Subject: [PATCH] Fix build without QCA
+
+QCA (via QtCrypto) provides QThread
+
+(cherry picked from commit 68a57f4975d0c014c2794d653be0b5a8038f8e31)
+---
+ src/viewer/topichistoryview.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/viewer/topichistoryview.cpp b/src/viewer/topichistoryview.cpp
+index 25c433285..767a35fe5 100644
+--- a/src/viewer/topichistoryview.cpp
++++ b/src/viewer/topichistoryview.cpp
+@@ -11,6 +11,7 @@
+ 
+ #include <KCategoryDrawer>
+ 
++#include <QThread>
+ 
+ constexpr int MARGIN = 2;
+ 
+-- 
+GitLab
+

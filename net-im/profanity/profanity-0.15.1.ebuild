@@ -1,9 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 inherit flag-o-matic python-single-r1
 
 DESCRIPTION="A console based XMPP client inspired by Irssi"
@@ -14,7 +14,7 @@ SRC_URI="
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 ~arm64"
 IUSE="libnotify omemo omemo-qrcode otr gpg test xscreensaver python"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="omemo-qrcode? ( omemo ) python? ( ${PYTHON_REQUIRED_USE} )"

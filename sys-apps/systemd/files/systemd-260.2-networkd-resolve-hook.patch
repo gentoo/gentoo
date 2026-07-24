@@ -1,0 +1,37 @@
+https://bugs.gentoo.org/977121
+https://github.com/systemd/systemd/pull/42370
+
+From 63ecdb3e09f7dfb79410156a5e46fbbfafb6ce1c Mon Sep 17 00:00:00 2001
+From: Yu Watanabe <watanabe.yu+github@gmail.com>
+Date: Fri, 29 May 2026 01:12:29 +0900
+Subject: [PATCH] units: drop Before=sockets.target from networkd resolve hook
+
+Otherwise, it introduces cyclic dependencies:
+```
+systemd[1]: sockets.target: Found ordering cycle:
+    systemd-networkd-resolve-hook.socket/start after network-pre.target/start after
+    iptables.service/start after basic.target/start after sockets.target/start -
+    after systemd-networkd-resolve-hook.socket
+systemd[1]: sockets.target: Job systemd-networkd-resolve-hook.socket/start deleted
+    to break ordering cycle starting with sockets.target/start
+```
+
+Follow-up for 37adb410a2b62716b666dbf8359edf8a6546ff94.
+Fixes #42353.
+---
+ units/systemd-networkd-resolve-hook.socket | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/units/systemd-networkd-resolve-hook.socket b/units/systemd-networkd-resolve-hook.socket
+index 8a724bbc0c0d4..07b596319b4b5 100644
+--- a/units/systemd-networkd-resolve-hook.socket
++++ b/units/systemd-networkd-resolve-hook.socket
+@@ -13,7 +13,7 @@ Documentation=man:systemd-networkd.service(8)
+ ConditionCapability=CAP_NET_ADMIN
+ DefaultDependencies=no
+ After=network-pre.target
+-Before=sockets.target shutdown.target
++Before=shutdown.target
+ Conflicts=shutdown.target
+ 
+ [Socket]

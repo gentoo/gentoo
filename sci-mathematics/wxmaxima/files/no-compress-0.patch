@@ -1,0 +1,40 @@
+diff '--color=auto' -U2 -r wxmaxima-Version-26.06.2.orig/data/CMakeLists.txt wxmaxima-Version-26.06.2/data/CMakeLists.txt
+--- wxmaxima-Version-26.06.2.orig/data/CMakeLists.txt	2026-06-16 14:58:48.000000000 +0700
++++ wxmaxima-Version-26.06.2/data/CMakeLists.txt	2026-07-02 15:11:48.926699924 +0700
+@@ -38,25 +38,8 @@
+     configure_file(${CMAKE_CURRENT_SOURCE_DIR}/de/wxmaxima.1.in de/wxmaxima.1)
+ 
+-    # Compress man pages
+-    add_custom_command(
+-        OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/wxmaxima.1.gz"
+-        COMMAND gzip -cn9 "${CMAKE_CURRENT_BINARY_DIR}/wxmaxima.1" > "${CMAKE_CURRENT_BINARY_DIR}/wxmaxima.1.gz"
+-        DEPENDS "${CMAKE_CURRENT_BINARY_DIR}/wxmaxima.1"
+-        COMMENT "Compressing man page"
+-    )
+-    add_custom_target(generate_man ALL DEPENDS "${CMAKE_CURRENT_BINARY_DIR}/wxmaxima.1.gz")
+-
+-    add_custom_command(
+-        OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/de/wxmaxima.1.gz"
+-        COMMAND gzip -cn9 "${CMAKE_CURRENT_BINARY_DIR}/de/wxmaxima.1" > "${CMAKE_CURRENT_BINARY_DIR}/de/wxmaxima.1.gz"
+-        DEPENDS "${CMAKE_CURRENT_BINARY_DIR}/de/wxmaxima.1"
+-        COMMENT "Compressing German man page"
+-    )
+-    add_custom_target(generate_man_de ALL DEPENDS "${CMAKE_CURRENT_BINARY_DIR}/de/wxmaxima.1.gz")
+-
+     install(FILES ${PIXMAPS}                                                                     DESTINATION share/pixmaps)
+     install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/wxmaxima                                           DESTINATION share/bash-completion/completions)
+-    install(FILES ${CMAKE_CURRENT_BINARY_DIR}/wxmaxima.1.gz                                      DESTINATION share/man/man1)
+-    install(FILES ${CMAKE_CURRENT_BINARY_DIR}/de/wxmaxima.1.gz                                   DESTINATION share/man/de/man1)
++    install(FILES ${CMAKE_CURRENT_BINARY_DIR}/wxmaxima.1                                         DESTINATION share/man/man1)
++    install(FILES ${CMAKE_CURRENT_BINARY_DIR}/de/wxmaxima.1                                      DESTINATION share/man/de/man1)
+     install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/io.github.wxmaxima_developers.wxMaxima.appdata.xml DESTINATION share/metainfo)
+     install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/io.github.wxmaxima_developers.wxMaxima.desktop     DESTINATION share/applications)
+@@ -80,6 +63,6 @@
+         create_install_symlink(../icons/hicolor/scalable/apps/io.github.wxmaxima_developers.wxMaxima.svg share/wxMaxima/io.github.wxmaxima_developers.wxMaxima.svg)
+         create_install_symlink(../icons/hicolor/1024x1024/apps/io.github.wxmaxima_developers.wxMaxima.png share/wxMaxima/io.github.wxmaxima_developers.wxMaxima.png)
+-        create_install_symlink(wxmaxima.1.gz share/man/man1/wxmxdiff.1.gz)
+-        create_install_symlink(wxmaxima.1.gz share/man/de/man1/wxmxdiff.1.gz)
++        create_install_symlink(wxmaxima.1.bz2 share/man/man1/wxmxdiff.1.bz2)
++        create_install_symlink(wxmaxima.1.bz2 share/man/de/man1/wxmxdiff.1.bz2)
+     ")
+ endif()

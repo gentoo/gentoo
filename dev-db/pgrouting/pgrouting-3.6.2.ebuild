@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,18 +6,18 @@ EAPI=8
 CMAKE_BUILD_TYPE="Release"
 
 POSTGRES_COMPAT=( {12..16} )
-POSTGRES_USEDEP="server"
+POSTGRES_USEDEP="server(+)"
 
 inherit cmake postgres-multi
 
 DESCRIPTION="pgRouting extends PostGIS and PostgreSQL with geospatial routing functionality"
 HOMEPAGE="https://pgrouting.org/"
-LICENSE="GPL-2 MIT Boost-1.0"
+SRC_URI="https://github.com/pgRouting/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
+LICENSE="GPL-2 MIT Boost-1.0"
 SLOT="0"
 KEYWORDS="amd64 ~x86"
-SRC_URI="https://github.com/pgRouting/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-IUSE=""
+REQUIRED_USE="${POSTGRES_REQ_USE}"
 
 RDEPEND="${POSTGRES_DEP}
 	>=dev-db/postgis-2.0

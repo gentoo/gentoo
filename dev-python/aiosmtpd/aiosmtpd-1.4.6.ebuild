@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{12..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 
 inherit distutils-r1 pypi
 
@@ -46,7 +46,7 @@ python_prepare_all() {
 python_test() {
 	local EPYTEST_DESELECT=()
 	case ${EPYTHON} in
-		python3.1[34])
+		python3.1[345])
 			EPYTEST_DESELECT+=(
 				# https://github.com/aio-libs/aiosmtpd/issues/403
 				aiosmtpd/tests/test_server.py::TestUnthreaded::test_unixsocket

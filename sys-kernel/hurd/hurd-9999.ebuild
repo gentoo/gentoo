@@ -38,7 +38,7 @@ SLOT="0"
 if is_crosspkg ; then
 	IUSE="custom-cflags headers-only"
 else
-	IUSE="custom-cflags headers-only ncurses rumpkernel xkb"
+	IUSE="custom-cflags headers-only lwip ncurses rumpkernel xkb"
 fi
 [[ ${PV} != 9999 ]] && KEYWORDS="~amd64 ~x86"
 
@@ -58,6 +58,7 @@ else
 		x11-libs/libpciaccess[static-libs]
 		virtual/libcrypt:=[static-libs]
 		virtual/zlib:=[static-libs]
+		lwip? ( net-libs/lwip )
 		ncurses? ( sys-libs/ncurses:= )
 		rumpkernel? ( sys-kernel/rumpkernel )
 		xkb? ( x11-libs/libxkbcommon )
@@ -133,6 +134,7 @@ src_configure() {
 		cat <<-EOF >> config.make.in || die "Failed to amend config.make.in"
 		HAVE_LIBGCRYPT = no
 		HAVE_LIBPCIACCESS = no
+		HAVE_LIBLWIP = no
 		HAVE_XKBCOMMON = no
 		EOF
 	else
@@ -154,6 +156,7 @@ src_configure() {
 		)
 
 		cat <<-EOF >> config.make.in || die "Failed to amend config.make.in"
+		HAVE_LIBLWIP = $(usex lwip)
 		HAVE_XKBCOMMON = $(usex xkb)
 		EOF
 	fi

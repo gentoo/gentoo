@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{11..15} pypy3_11 )
+PYTHON_COMPAT=( python3_{12..15} python3_{14,15}t )
 
 inherit distutils-r1 optfeature pypi
 
@@ -23,6 +23,7 @@ RDEPEND="
 "
 
 EPYTEST_PLUGINS=( pytest-timeout )
+EPYTEST_XDIST=1
 distutils_enable_tests pytest
 
 python_test() {

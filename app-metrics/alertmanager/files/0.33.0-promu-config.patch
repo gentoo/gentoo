@@ -1,0 +1,18 @@
+--- a/.promu.yml
++++ b/.promu.yml
+@@ -2,6 +2,7 @@ go:
+     # Whenever the Go version is updated here,
+     # .github/workflows/ci.yml and ui/app/Makefile should also be updated.
+     version: 1.26
++    cgo: true
+ repository:
+     path: github.com/prometheus/alertmanager
+ build:
+@@ -20,6 +21,7 @@ build:
+         -X github.com/prometheus/common/version.Branch={{.Branch}}
+         -X github.com/prometheus/common/version.BuildUser={{user}}@{{host}}
+         -X github.com/prometheus/common/version.BuildDate={{date "20060102-15:04:05"}}
++    static: false
+ tarball:
+     files:
+         - examples/ha/alertmanager.yml

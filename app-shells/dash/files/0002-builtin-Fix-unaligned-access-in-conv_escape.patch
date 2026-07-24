@@ -1,0 +1,35 @@
+From 28c4d5b126e336f1632c074fa002969ff42e7a51 Mon Sep 17 00:00:00 2001
+Message-ID: <28c4d5b126e336f1632c074fa002969ff42e7a51.1781226895.git.sam@gentoo.org>
+In-Reply-To: <cd610905162812ca7dcf246b3dc46bce5e28e7cb.1781226895.git.sam@gentoo.org>
+References: <cd610905162812ca7dcf246b3dc46bce5e28e7cb.1781226895.git.sam@gentoo.org>
+From: Herbert Xu <herbert@gondor.apana.org.au>
+Date: Sun, 31 May 2026 13:51:02 +0800
+Subject: [PATCH 2/2] builtin: Fix unaligned access in conv_escape
+
+When writing out the unicode character in conv_escape, use memcpy
+instead of direct assignment as the output buffer may not be aligned
+sufficiently.
+
+Reported-by: Nathan Mills <the.true.nathan.mills@gmail.com>
+Fixes: 776424a8f915 ("parser: Add dollar single quote")
+Signed-off-by: Herbert Xu <herbert@gondor.apana.org.au>
+---
+ src/bltin/printf.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/bltin/printf.c b/src/bltin/printf.c
+index 671e781..c2c3615 100644
+--- a/src/bltin/printf.c
++++ b/src/bltin/printf.c
+@@ -429,7 +429,7 @@ hex:
+ 			USTPUTC(CTLMBCHAR, out);
+ 			USTPUTC(len, out);
+ 			STADJUST(mboff, out);
+-			*(uint32_t *)out = value;
++			memcpy(out, &value, 4);
+ 			STADJUST(len, out);
+ 			USTPUTC(len, out);
+ 			USTPUTC(CTLMBCHAR, out);
+-- 
+2.54.0
+

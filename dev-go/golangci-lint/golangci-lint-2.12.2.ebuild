@@ -19,7 +19,14 @@ KEYWORDS="~amd64"
 BDEPEND=">=dev-lang/go-1.26.1"
 
 src_compile() {
-	emake build
+	local myldflags=(
+		-w
+		-X main.version="${PV}"
+		-X main.commit="gentoo-${PV}"
+		-X main.date="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+	)
+	local -x CGO_ENABLED=0
+	ego build -trimpath -ldflags "${myldflags[*]}" -o golangci-lint ./cmd/golangci-lint
 
 	einfo "generating shell completion files"
 	sysroot_try_run_prefixed ./golangci-lint completion bash > ${PN}.bash || die

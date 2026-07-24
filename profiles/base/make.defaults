@@ -140,7 +140,7 @@ UNINSTALL_IGNORE="/boot/dtbs/* /lib/modules/* /var/run /var/lock"
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2013-08-23)
 # Make emerge messages default to English as per Council decision
-LC_MESSAGES="C"
+LC_MESSAGES="C.UTF-8"
 
 # Brian Dolbec <dolsen@gentoo.org> (2017-06-16)
 # disable twisted's plugin cache update to prevent access violations

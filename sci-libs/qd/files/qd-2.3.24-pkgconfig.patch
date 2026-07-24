@@ -1,0 +1,11 @@
+--- a/qd.pc.in	2026-06-05 17:03:45.537080350 +0200
++++ b/qd.pc.in	2026-06-05 17:05:08.164202956 +0200
+@@ -1,7 +1,7 @@
+ /------------------ qd.pc ------------------------
+ prefix=@prefix@
+ exec_prefix=@prefix@
+-libdir=@prefix@/lib
++libdir=@libdir@
+ includedir=@prefix@/include
+ 
+ Name: qd

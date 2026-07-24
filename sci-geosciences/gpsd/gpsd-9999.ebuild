@@ -8,7 +8,7 @@ DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{11..14} )
 SCONS_MIN_VERSION="2.3.0"
 
-inherit distutils-r1 scons-utils systemd toolchain-funcs udev
+inherit distutils-r1 optfeature scons-utils systemd toolchain-funcs udev
 
 if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://gitlab.com/gpsd/gpsd.git"
@@ -21,7 +21,6 @@ else
 		verify-sig? ( mirror://nongnu/${PN}/${P}.tar.xz.sig )
 	"
 	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
-	BDEPEND="verify-sig? ( sec-keys/openpgp-keys-garyemiller ) "
 fi
 
 DESCRIPTION="GPS daemon and library for USB/serial GPS devices and GPS/mapping clients"
@@ -36,7 +35,7 @@ GPSD_PROTOCOLS=(
 	sirf skytraq superstar2 tnt tripmate tsip
 )
 IUSE_GPSD_PROTOCOLS=${GPSD_PROTOCOLS[@]/#/+gpsd_protocols_}
-IUSE="${IUSE_GPSD_PROTOCOLS} bluetooth +cxx dbus debug latency-timing ncurses ntp qt6 selinux +shm static systemd test udev usb X"
+IUSE="${IUSE_GPSD_PROTOCOLS} bluetooth +cxx dbus debug latency-timing ncurses ntp qt6 selinux +shm systemd test udev usb"
 REQUIRED_USE="
 	gpsd_protocols_nmea2000? ( gpsd_protocols_aivdm )
 	${PYTHON_REQUIRED_USE}
@@ -44,36 +43,43 @@ REQUIRED_USE="
 "
 RESTRICT="!test? ( test )"
 
-RDEPEND="
+DEPEND="
 	acct-user/gpsd
 	acct-group/dialout
 	>=net-misc/pps-tools-0.0.20120407
+	sys-libs/libcap
 	bluetooth? ( net-wireless/bluez:= )
 	dbus? (
 		sys-apps/dbus
 		dev-libs/dbus-glib
 	)
 	ncurses? ( sys-libs/ncurses:= )
-	ntp? ( || (
-		net-misc/ntp
-		net-misc/ntpsec
-		net-misc/chrony
-	) )
 	qt6? ( dev-qt/qtbase:6[network] )
 	${PYTHON_DEPS}
 	dev-python/pyserial[${PYTHON_USEDEP}]
 	usb? ( virtual/libusb:1 )
-	X? ( dev-python/pygobject:3[cairo,${PYTHON_USEDEP}] )"
-DEPEND="${RDEPEND}"
-BDEPEND+="virtual/pkgconfig
+"
+RDEPEND="
+	${DEPEND}
+	ntp? ( || (
+		net-misc/ntpsec
+		net-misc/chrony
+		net-misc/ntp
+	) )
+	selinux? ( sec-policy/selinux-gpsd )
+"
+BDEPEND="
+	virtual/pkgconfig
 	$(python_gen_any_dep 'dev-build/scons[${PYTHON_USEDEP}]')
 	${DISTUTILS_DEPS}
-	test? ( app-alternatives/bc )"
-RDEPEND+=" selinux? ( sec-policy/selinux-gpsd )"
+	test? ( app-alternatives/bc )
+"
 
-# asciidoctor package is for man page generation
 if [[ ${PV} == *9999* ]] ; then
+	# asciidoctor package is for man page generation
 	BDEPEND+=" dev-ruby/asciidoctor"
+else
+	BDEPEND+=" verify-sig? ( sec-keys/openpgp-keys-garyemiller )"
 fi
 
 PATCHES=(
@@ -106,32 +112,14 @@ src_prepare() {
 python_prepare_all() {
 	python_setup
 
-	# bug #796476
-	python_export_utf8_locale
-
-	# Extract python info out of SConscript so we can use saner distribute
-	pyarray() { sed -n "/^ *$1 *= *\\[/,/\\]/p" SConscript ; }
-	local pyprogs=$(pyarray python_progs)
-	local pybins=$("${PYTHON}" -c "${pyprogs}; \
-		print(list(set(python_progs) - {'xgps', 'xgpsspeed', 'ubxtool', 'zerk'}))" || die "Unable to list pybins")
-	# Handle conditional tools manually. #666734
-	use X && pybins+="+ ['xgps', 'xgpsspeed']"
-	pybins+="+ ['ubxtool']"
-	use gpsd_protocols_greis && pybins+="+ ['zerk']"
-	local pysrcs=$(pyarray packet_ffi_extension)
-	local packet=$("${PYTHON}" -c "${pysrcs}; print(packet_ffi_extension)" || die "Unable to extract packet types")
-
 	pyvar() { sed -n "/^ *$1 *=/s:.*= *::p" SConscript ; }
 	pyvar2() { sed -n "/^ *$1 *=/s:.*= *::p" SConstruct ; }
 
 	# Post 3.19 the clienthelpers were merged into gps.packet
 
-	# TODO: Fix hardcoding https://gpsd.io/ for now for @URL@
 	sed \
 		-e "s|@VERSION@|$(pyvar2 gpsd_version | sed -e 's:\"::g')|" \
-		-e "s|@URL@|https://gpsd.io/|" \
 		-e "s|@DEVMAIL@|$(pyvar devmail)|" \
-		-e "s|@SCRIPTS@|${pybins}|" \
 		-e "s|@DOWNLOAD@|$(pyvar download)|" \
 		-e "s|@IRCCHAN@|$(pyvar ircchan)|" \
 		-e "s|@ISSUES@|$(pyvar bugtracker)|" \
@@ -161,7 +149,7 @@ src_configure() {
 		nostrip=True
 		systemd=$(usex systemd)
 		unitdir="$(systemd_get_systemunitdir)"
-		shared=$(usex !static True False)
+		shared=True
 		bluez=$(usex bluetooth)
 		libgpsmm=$(usex cxx)
 		clientdebug=$(usex debug)
@@ -183,7 +171,6 @@ src_configure() {
 		scons_opts+=( manbuild=False )
 	fi
 
-	use X && scons_opts+=( xgps=1 xgpsspeed=1 )
 	use qt6 && scons_opts+=( qt_versioned=6 )
 
 	# enable specified protocols
@@ -198,7 +185,7 @@ src_configure() {
 
 src_compile() {
 	export CHRPATH=
-	tc-export CC CXX PKG_CONFIG
+	tc-export AR CC CXX PKG_CONFIG
 	export SHLINKFLAGS=${LDFLAGS} LINKFLAGS=${LDFLAGS}
 	escons "${scons_opts[@]}"
 
@@ -219,7 +206,7 @@ python_test() {
 
 python_install() {
 	while read -d '' -r file ; do
-		grep -q "#!/usr/bin/env python" "${file}" && python_doscript "${file}"
+		grep -q "#! \?/usr/bin/env python" "${file}" && python_doscript "${file}"
 	done < <(find "${T}"/scripts -type f -print0)
 
 	distutils-r1_python_install
@@ -245,5 +232,11 @@ src_install() {
 }
 
 pkg_postinst() {
+	use udev && udev_reload
+	optfeature "gpsplot" dev-python/matplotlib
+	optfeature "xgpsd and xgpsspeed" dev-python/pygobject[cairo]
+}
+
+pkg_postrm() {
 	use udev && udev_reload
 }

@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
 PYPI_PN=MechanicalSoup
-PYTHON_COMPAT=( pypy3_11 python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 
 inherit distutils-r1 pypi
 
@@ -27,17 +27,17 @@ RDEPEND="
 	>=dev-python/requests-2.22.0[${PYTHON_USEDEP}]
 	>=dev-python/urllib3-2.2.2[${PYTHON_USEDEP}]
 "
-BDEPEND="
-	test? (
-		>=dev-python/requests-mock-1.3.0[${PYTHON_USEDEP}]
-	)
-"
 
-EPYTEST_PLUGINS=( pytest-{httpbin,mock} )
+EPYTEST_PLUGINS=( pytest-{httpbin,mock} requests-mock )
 distutils_enable_tests pytest
 distutils_enable_sphinx docs
 
 python_test() {
+	local EPYTEST_DESELECT=(
+		# random regression (deps?)
+		tests/test_stateful_browser.py::test_select_form_associated_elements
+	)
+
 	epytest -o addopts=
 }
 

@@ -4,7 +4,7 @@
 EAPI=8
 
 DISABLE_AUTOFORMATTING="yes"
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit edo flag-o-matic python-any-r1
 inherit qmake-utils readme.gentoo-r1 systemd toolchain-funcs user-info

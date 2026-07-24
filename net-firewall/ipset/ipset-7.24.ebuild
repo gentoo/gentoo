@@ -4,7 +4,7 @@
 EAPI=8
 
 MODULES_OPTIONAL_IUSE=modules
-inherit autotools bash-completion-r1 linux-mod-r1 systemd
+inherit autotools linux-mod-r1 shell-completion systemd
 
 DESCRIPTION="IPset tool for iptables, successor to ippool"
 HOMEPAGE="https://ipset.netfilter.org/ https://git.netfilter.org/ipset/"

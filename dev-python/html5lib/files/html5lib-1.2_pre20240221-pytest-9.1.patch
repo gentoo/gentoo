@@ -1,0 +1,113 @@
+https://github.com/html5lib/html5lib-python/pull/600
+
+From b7e8c4ccec36c87e076daed4db68201de151cc57 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Tom=C3=A1=C5=A1=20Hrn=C4=8Diar?= <tomas.hrnciar@me.com>
+Date: Mon, 29 Jun 2026 10:20:38 +0200
+Subject: [PATCH] Fix test compatibility with pytest >= 9.1
+
+Pytest 9.1 no longer accepts non-Collection iterables in parametrize. Wrap generator
+functions and itertools.product calls with list(). Also deduplicate the parametrize
+values in testLegacyQuoteAttribute. The character list had 6 duplicates
+between the "spec" prefix and the extended character ranges.  With --strict (set
+in pytest.ini), pytest 9.1 enforces unique parametrization IDs and rejects them.
+
+Assisted-by: Claude Opus 4.6
+---
+ html5lib/tests/test_encoding.py    |  4 ++--
+ html5lib/tests/test_sanitizer.py   |  4 ++--
+ html5lib/tests/test_serializer.py  | 12 +++++-------
+ html5lib/tests/test_treewalkers.py |  4 ++--
+ 4 files changed, 11 insertions(+), 13 deletions(-)
+
+diff --git a/html5lib/tests/test_encoding.py b/html5lib/tests/test_encoding.py
+index 47c4814a..951fd42f 100644
+--- a/html5lib/tests/test_encoding.py
++++ b/html5lib/tests/test_encoding.py
+@@ -82,7 +82,7 @@ def param_encoding():
+             yield test[b'data'], test[b'encoding']
+ 
+ 
+-@pytest.mark.parametrize("data, encoding", param_encoding())
++@pytest.mark.parametrize("data, encoding", list(param_encoding()))
+ def test_parser_encoding(data, encoding):
+     p = HTMLParser()
+     assert p.documentEncoding is None
+@@ -92,7 +92,7 @@ def test_parser_encoding(data, encoding):
+     assert encoding == p.documentEncoding, errorMessage(data, encoding, p.documentEncoding)
+ 
+ 
+-@pytest.mark.parametrize("data, encoding", param_encoding())
++@pytest.mark.parametrize("data, encoding", list(param_encoding()))
+ def test_prescan_encoding(data, encoding):
+     stream = _inputstream.HTMLBinaryInputStream(data, useChardet=False)
+     encoding = encoding.lower().decode("ascii")
+diff --git a/html5lib/tests/test_sanitizer.py b/html5lib/tests/test_sanitizer.py
+index 499310b6..15746ffa 100644
+--- a/html5lib/tests/test_sanitizer.py
++++ b/html5lib/tests/test_sanitizer.py
+@@ -130,8 +130,8 @@ def test_details_summary_allowed():
+ 
+ 
+ @pytest.mark.parametrize("expected, input",
+-                         (pytest.param(expected, input, id=id)
+-                          for id, expected, input in param_sanitizer()))
++                         [pytest.param(expected, input, id=id)
++                          for id, expected, input in param_sanitizer()])
+ def test_sanitizer(expected, input):
+     parsed = parseFragment(expected)
+     expected = serialize(parsed,
+diff --git a/html5lib/tests/test_serializer.py b/html5lib/tests/test_serializer.py
+index a2be0be5..2fec0341 100644
+--- a/html5lib/tests/test_serializer.py
++++ b/html5lib/tests/test_serializer.py
+@@ -155,14 +155,12 @@ def testSpecQuoteAttribute(c):
+     test_serializer(input_, output_, options_)
+ 
+ 
+-@pytest.mark.parametrize("c", list("\t\n\u000C\x20\r\"'=<>`"
+-                                   "\x00\x01\x02\x03\x04\x05\x06\x07\x08\t\n"
++@pytest.mark.parametrize("c", list("\x00\x01\x02\x03\x04\x05\x06\x07\x08\t\n"
+                                    "\x0b\x0c\r\x0e\x0f\x10\x11\x12\x13\x14\x15"
+                                    "\x16\x17\x18\x19\x1a\x1b\x1c\x1d\x1e\x1f"
+-                                   "\x20\x2f\x60\xa0\u1680\u180e\u180f\u2000"
+-                                   "\u2001\u2002\u2003\u2004\u2005\u2006\u2007"
+-                                   "\u2008\u2009\u200a\u2028\u2029\u202f\u205f"
+-                                   "\u3000"))
++                                   "\x20\"'=<>/\x60\xa0\u1680\u180e\u180f"
++                                   "\u2000\u2001\u2002\u2003\u2004\u2005\u2006"
++                                   "\u2007\u2008\u2009\u200a\u2028\u2029\u202f\u205f\u3000"))
+ def testLegacyQuoteAttribute(c):
+     input_ = [["StartTag", "http://www.w3.org/1999/xhtml", "span",
+                [{"namespace": None, "name": "foo", "value": c}]]]
+@@ -212,7 +210,7 @@ def param_serializer():
+                 yield test["input"], test["expected"], test.get("options", {})
+ 
+ 
+-@pytest.mark.parametrize("input, expected, options", param_serializer())
++@pytest.mark.parametrize("input, expected, options", list(param_serializer()))
+ def test_serializer(input, expected, options):
+     encoding = options.get("encoding", None)
+ 
+diff --git a/html5lib/tests/test_treewalkers.py b/html5lib/tests/test_treewalkers.py
+index 780ca964..4fb5d1f7 100644
+--- a/html5lib/tests/test_treewalkers.py
++++ b/html5lib/tests/test_treewalkers.py
+@@ -87,7 +87,7 @@ def param_treewalker_six_mix():
+             yield intext, expected, attrs, tree
+ 
+ 
+-@pytest.mark.parametrize("intext, expected, attrs_to_add, tree", param_treewalker_six_mix())
++@pytest.mark.parametrize("intext, expected, attrs_to_add, tree", list(param_treewalker_six_mix()))
+ def test_treewalker_six_mix(intext, expected, attrs_to_add, tree):
+     """tests what happens when we add attributes to the intext"""
+     treeName, treeClass = tree
+@@ -105,7 +105,7 @@ def test_treewalker_six_mix(intext, expected, attrs_to_add, tree):
+         raise AssertionError("TreewalkerEditTest: %s\nExpected:\n%s\nReceived:\n%s" % (treeName, expected, output))
+ 
+ 
+-@pytest.mark.parametrize("tree,char", itertools.product(sorted(treeTypes.items()), ["x", "\u1234"]))
++@pytest.mark.parametrize("tree,char", list(itertools.product(sorted(treeTypes.items()), ["x", "\u1234"])))
+ def test_fragment_single_char(tree, char):
+     expected = [
+         {'data': char, 'type': 'Characters'}
+

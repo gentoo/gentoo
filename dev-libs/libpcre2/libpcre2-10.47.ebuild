@@ -50,6 +50,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-10.10-000-Fix-multilib.patch
 	"${FILESDIR}"/${PN}-10.47-riscv.patch
 	"${FILESDIR}"/${PN}-10.47-constness.patch
+	"${FILESDIR}"/${PN}-10.47-remove-local-symbols.patch
 )
 
 QA_CONFIG_IMPL_DECL_SKIP=(

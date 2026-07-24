@@ -1,0 +1,121 @@
+diff '--color=auto' -U2 -r wxmaxima-Version-26.06.2.orig/info/CMakeLists.txt wxmaxima-Version-26.06.2/info/CMakeLists.txt
+--- wxmaxima-Version-26.06.2.orig/info/CMakeLists.txt	2026-06-16 14:58:48.000000000 +0700
++++ wxmaxima-Version-26.06.2/info/CMakeLists.txt	2026-07-02 14:58:51.960018660 +0700
+@@ -19,114 +19,7 @@
+ endif()
+ 
+-find_program(PANDOC pandoc)
+-if(PANDOC)
+-	execute_process(
+-		COMMAND ${PANDOC} --version
+-		OUTPUT_VARIABLE PANDOC_VERSION_TEXT)
+-	string(REGEX REPLACE "^pandoc(.exe)? ([0-9.]*).*" "\\2" PANDOC_VERSION ${PANDOC_VERSION_TEXT})
+-	message(STATUS "Found pandoc: ${PANDOC} (found version \"${PANDOC_VERSION}\")")
+-
+-	# "make pdf" creates the manual in PDF form. The other targets that now
+-	# follow do the same for other formats
+-	add_custom_target(pdf)
+-	add_custom_target(epub)
+-	add_custom_target(html ALL)
+-	function(generate_wxmaxima_documentation_html FILEBASENAME)
+-		add_custom_command(
+-			OUTPUT ${FILEBASENAME}.html
+-			COMMAND ${PANDOC} ${FILEBASENAME}.md -t html5 "--include-in-header=${CMAKE_CURRENT_SOURCE_DIR}/header.html" -o ${FILEBASENAME}.html --number-sections --table-of-contents --standalone --css=wxmaxima.css --metadata title="WxMaxima"
+-			COMMAND ${REMOVE_HTML5SHIV}
+-			COMMENT "Generating ${FILEBASENAME}.html")
+-		add_custom_target(build_${FILEBASENAME}.html DEPENDS ${FILEBASENAME}.html)
+-		add_dependencies(html build_${FILEBASENAME}.html)
+-		install(FILES "${CMAKE_CURRENT_BINARY_DIR}/${FILEBASENAME}.html" DESTINATION share/doc/wxmaxima OPTIONAL)
+-	endfunction()
+-
+-	function(generate_wxmaxima_documentation_pdf FILEBASENAME)
+-		set(PDFLANG "${LANG}")
+-		# if LANG is empty, we are generating the default (english) manual.
+-		if("${PDFLANG}" STREQUAL "")
+-			set(PDFLANG "en")
+-		endif()
+-		# For Chinese use "zh_Hans", which is "Simplified Chinese". At least keywords like "Figure" or
+-		# "Contents" have a translation now (hopefully a correct one).
+-		# "zh_Hant" (Traditional Chinese) might also be possible, don't know which is 'correct'.
+-		if("${PDFLANG}" STREQUAL "zh_CN")
+-			set(PDFLANG "zh_Hans")
+-		endif()
+-
+-		add_custom_command(
+-			OUTPUT ${FILEBASENAME}.pdf
+-			COMMAND ${PANDOC} ${FILEBASENAME}.md -t latex -o ${FILEBASENAME}.pdf -M lang=${PDFLANG} -V 'mainfont:NotoSerif-Regular.ttf' -V 'sansfont:NotoSans-Regular.ttf' -V 'monofont:NotoSansMono-Regular.ttf' -V 'mathfont:NotoSansMath-Regular.ttf' -V 'CJKmainfont:NotoSerifCJK-Regular.ttc' --number-sections --table-of-contents --standalone --metadata title="wxMaxima" --pdf-engine=${WXMAXIMA_LATEX_COMMAND}
+-			COMMENT "Generating ${FILEBASENAME}.pdf")
+-		add_custom_target(build_${FILEBASENAME}.pdf DEPENDS ${FILEBASENAME}.pdf)
+-		add_dependencies(pdf build_${FILEBASENAME}.pdf)
+-		install(FILES "${CMAKE_CURRENT_BINARY_DIR}/${FILEBASENAME}.pdf" DESTINATION share/doc/wxmaxima OPTIONAL)
+-	endfunction()
+-
+-	function(generate_wxmaxima_documentation_epub FILEBASENAME)
+-		add_custom_command(
+-			OUTPUT ${FILEBASENAME}.epub
+-			COMMAND ${PANDOC} ${FILEBASENAME}.md -t epub -o ${FILEBASENAME}.epub --number-sections --table-of-contents --standalone --css=wxmaxima.css --metadata title="wxMaxima"
+-			COMMENT "Generating ${FILEBASENAME}.epub")
+-		add_custom_target(build_${FILEBASENAME}.epub DEPENDS ${FILEBASENAME}.epub)
+-		add_dependencies(epub build_${FILEBASENAME}.epub)
+-		install(FILES "${CMAKE_CURRENT_BINARY_DIR}/${FILEBASENAME}.epub" DESTINATION share/doc/wxmaxima OPTIONAL)
+-	endfunction()
+-
+-	# Create a list of the common part of the name of all the translated manuals.
+-	# The "list(TRANSFORM" type of commands only is available in very new cmake
+-	# versions and therefore (in 2019) of only limited use so we'll have to do
+-	# this by hand.
+-	set(BASENAMES "")
+-	file(GLOB POFILES ${CMAKE_SOURCE_DIR}/locales/manual/*.po)
+-	foreach(POFILE ${POFILES})
+-		string(REGEX REPLACE ".*/(.*).po$" "wxmaxima.\\1" BASENAME ${POFILE})
+-		list(APPEND BASENAMES ${BASENAME})
+-	endforeach()
+-
+-	# Find a suitable LaTeX installation
+-	find_package(LATEX COMPONENTS XELATEX LUALATEX)
+-        if(LATEX_XELATEX_FOUND)
+-            set(WXMAXIMA_LATEX_COMMAND "${XELATEX_COMPILER}")
+-        elseif(LATEX_LUALATEX_FOUND)
+-            set(WXMAXIMA_LATEX_COMMAND "${LUALATEX_COMPILER}")
+-        else()
+-            message(STATUS "Xelatex or Lualatex not found. PDF documentation can not be converted from Markdown.")
+-	endif()
+-
+-	file(GLOB IMAGEFILES ${CMAKE_CURRENT_SOURCE_DIR}/*.png)
+-	file(COPY ${IMAGEFILES} DESTINATION .)
+-        configure_file(wxmaxima.md wxmaxima.md COPYONLY)
+-	foreach(BASENAME ${BASENAMES})
+-                configure_file(${BASENAME}.md ${BASENAME}.md COPYONLY)
+-	endforeach()
+-	generate_wxmaxima_documentation_html("wxmaxima")
+-	generate_wxmaxima_documentation_epub("wxmaxima")
+-	if(WXMAXIMA_LATEX_COMMAND)
+-		generate_wxmaxima_documentation_pdf("wxmaxima")
+-    endif()
+-
+-	if(PO4A)
+-		foreach(BASENAME ${BASENAMES})
+-			string(REGEX REPLACE "wxmaxima.(.*)$" "\\1" LANG ${BASENAME})
+-			string(REGEX REPLACE "wxmaxima$" "" LANG ${LANG})
+-			generate_wxmaxima_documentation_html("${BASENAME}")
+-			generate_wxmaxima_documentation_epub("${BASENAME}")
+-			if(WXMAXIMA_LATEX_COMMAND)
+-				generate_wxmaxima_documentation_pdf("${BASENAME}")
+-			endif()
+-		endforeach()
+-	else()
+-		foreach(BASENAME ${BASENAMES})
+-			install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/${BASENAME}.html DESTINATION share/doc/wxmaxima OPTIONAL)
+-		endforeach()
+-	endif()
+-else()
+-    message(STATUS "Pandoc not found. Documentation can not be converted from Markdown. Included HTML documentation will be installed.")
+-	file(GLOB WXMAXIMA_HTML_HELP "${CMAKE_CURRENT_SOURCE_DIR}/*.html")
+-	install(FILES ${WXMAXIMA_HTML_HELP} DESTINATION share/doc/wxmaxima)
+-	file(COPY ${WXMAXIMA_HTML_HELP} DESTINATION .)
+-endif()
++file(GLOB WXMAXIMA_HTML_HELP "${CMAKE_CURRENT_SOURCE_DIR}/*.html")
++install(FILES ${WXMAXIMA_HTML_HELP} DESTINATION share/doc/wxmaxima)
++file(COPY ${WXMAXIMA_HTML_HELP} DESTINATION .)
+ 
+ file(GLOB HTMLHELP_ADDITIONAL_FILES *.png *.svg)

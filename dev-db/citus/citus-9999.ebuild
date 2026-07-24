@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,13 +12,10 @@ HOMEPAGE="https://www.citusdata.com/"
 
 EGIT_REPO_URI="https://github.com/citusdata/citus.git"
 
-IUSE=""
 LICENSE="POSTGRESQL AGPL-3"
-
+SLOT="0"
 KEYWORDS=""
-
-SLOT=0
-
+REQUIRED_USE="${POSTGRES_REQ_USE}"
 RESTRICT="test"
 
 DEPEND="${POSTGRES_DEP}

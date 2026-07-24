@@ -48,7 +48,7 @@ DEPEND="
 "
 BDEPEND="
 	${PYTHON_DEPS}
-	>=dev-build/meson-1.6.1
+	>=dev-build/meson-1.11.0
 	dev-util/gperf
 	virtual/pkgconfig
 	doc? (
@@ -235,6 +235,6 @@ pkg_postinst() {
 			eend $?
 		}
 
-		multilib_parallel_foreach_abi multilib_pkg_postinst
+		multilib_foreach_abi multilib_pkg_postinst
 	fi
 }

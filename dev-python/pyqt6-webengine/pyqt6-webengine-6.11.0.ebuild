@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=sip
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 inherit distutils-r1 flag-o-matic multiprocessing pypi qmake-utils
 
 QT_PV=$(ver_cut 1-2):6
@@ -15,7 +15,7 @@ HOMEPAGE="https://www.riverbankcomputing.com/software/pyqtwebengine/"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 arm64"
 IUSE="debug quick +widgets"
 
 RDEPEND="
@@ -54,7 +54,7 @@ python_configure_all() {
 
 	DISTUTILS_ARGS=(
 		--jobs="$(makeopts_jobs)"
-		--qmake="$(qt6_get_bindir)"/qmake
+		--qmake="$(qt_get_broot_binary 6 qmake)"
 		--qmake-setting="$(qt6_get_qmake_args)"
 		--verbose
 

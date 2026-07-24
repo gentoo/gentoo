@@ -6,7 +6,7 @@ EAPI=8
 DISTUTILS_USE_PEP517=setuptools
 DISTUTILS_EXT=1
 PYPI_VERIFY_REPO=https://github.com/AbstractUmbra/audioop
-PYTHON_COMPAT=( python3_{13..14} )
+PYTHON_COMPAT=( python3_{13..15} )
 
 inherit distutils-r1 pypi
 

@@ -59,6 +59,8 @@ src_configure() {
 		-Dsystemdsystemunitdir="$(systemd_get_systemunitdir)"
 		$(meson_use gtk-doc gtk_doc)
 		$(meson_use test tests)
+		$(meson_feature video_cards_amdgpu libdrm_amdgpu)
+		$(meson_feature video_cards_nouveau libdrm_nouveau)
 	)
 	meson_src_configure
 }

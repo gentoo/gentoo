@@ -49,12 +49,11 @@ S="${WORKDIR}/jdk${SLOT}u-jdk-${MY_PV//+/-}"
 
 LICENSE="GPL-2-with-classpath-exception"
 SLOT="$(ver_cut 1)"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 arm64 ppc64 ~riscv ~x86"
 
-IUSE="alsa big-endian cups debug doc examples headless-awt javafx +jbootstrap selinux source static-libs +system-bootstrap systemtap"
+IUSE="alsa big-endian cups debug doc examples headless-awt +jbootstrap selinux source static-libs +system-bootstrap systemtap"
 
 REQUIRED_USE="
-	javafx? ( alsa !headless-awt )
 	!system-bootstrap? ( jbootstrap )
 	!system-bootstrap? ( || ( ppc64 x86 ) )
 "
@@ -102,7 +101,6 @@ DEPEND="
 	x11-libs/libXrender
 	x11-libs/libXt
 	x11-libs/libXtst
-	javafx? ( dev-java/openjfx:${SLOT}= )
 	system-bootstrap? (
 		|| (
 			dev-java/openjdk-bin:${SLOT}
@@ -237,15 +235,6 @@ src_configure() {
 	)
 
 	use riscv && myconf+=( --with-boot-jdk-jvmargs="-Djdk.lang.Process.launchMechanism=vfork" )
-
-	if use javafx; then
-		local zip="${EPREFIX}/usr/$(get_libdir)/openjfx-${SLOT}/javafx-exports.zip"
-		if [[ -r ${zip} ]]; then
-			myconf+=( --with-import-modules="${zip}" )
-		else
-			die "${zip} not found or not readable"
-		fi
-	fi
 
 	# Workaround for bug #938302
 	if use systemtap && has_version "dev-debug/systemtap[-dtrace-symlink(+)]" ; then

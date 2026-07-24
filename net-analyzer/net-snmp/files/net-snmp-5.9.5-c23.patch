@@ -1,0 +1,44 @@
+https://bugs.gentoo.org/976674
+https://github.com/net-snmp/net-snmp/issues/1100
+
+From: Bart Van Assche <bvanassche@acm.org>
+Date: Wed, 3 Jun 2026 08:57:24 -0700
+Subject: [PATCH] MIB-II, sendmail: Stop using the auto keyword
+
+Stop using the auto keyword because C23 changed the meaning of this keyword.
+
+Fixes: https://github.com/net-snmp/net-snmp/issues/1100
+---
+ agent/mibgroup/mibII/mta_sendmail.c | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/agent/mibgroup/mibII/mta_sendmail.c b/agent/mibgroup/mibII/mta_sendmail.c
+index 3d63d15171..dd46768e1e 100644
+--- a/agent/mibgroup/mibII/mta_sendmail.c
++++ b/agent/mibgroup/mibII/mta_sendmail.c
+@@ -1182,9 +1182,9 @@ var_mtaEntry(struct variable *vp,
+ 
+ 
+     static long     long_ret;
+-    auto int        i;
+-    auto int        result;
+-    auto time_t     current_time;
++    int             i;
++    int             result;
++    time_t          current_time;
+     int             global_count = 0;
+     int             global_size = 0;
+ 
+@@ -1332,9 +1332,9 @@ var_mtaGroupEntry(struct variable *vp,
+                   int exact, size_t * var_len, WriteMethod ** write_method)
+ {
+     static long     long_ret;
+-    auto long       row;
+-    auto int        result;
+-    auto time_t     current_time;
++    long            row;
++    int             result;
++    time_t          current_time;
+ 
+ 
+     if (exact) {

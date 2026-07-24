@@ -6,7 +6,7 @@ EAPI=8
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
 PYPI_PN=SQLAlchemy
-PYTHON_COMPAT=( pypy3_11 python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 PYTHON_REQ_USE="sqlite?"
 
 inherit distutils-r1 optfeature pypi
@@ -55,27 +55,13 @@ python_test() {
 	)
 	local sqlite_version=$(sqlite3 --version | cut -d' ' -f1)
 	case ${EPYTHON} in
-		pypy3.11)
+		python3.15)
 			EPYTEST_DESELECT+=(
-				# TODO: looks like cursor cleanup failure
-				"test/dialect/test_suite.py::ReturningGuardsTest_sqlite+pysqlite_${sqlite_version//./_}"
-				# mismatched exception messages
-				"test/dialect/sqlite/test_types.py::TestTypes_sqlite+pysqlite_${sqlite_version//./_}::test_cant_parse_datetime_message"
-				"test/engine/test_execute.py::ExecuteDriverTest_sqlite+pysqlite_${sqlite_version//./_}::test_exception_wrapping_orig_accessors"
-				test/ext/test_associationproxy.py::DictOfTupleUpdateTest::test_update_multi_elem_varg
-				test/ext/test_associationproxy.py::DictOfTupleUpdateTest::test_update_one_elem_varg
-				test/ext/test_associationproxy.py::ProxyHybridTest::test_msg_fails_on_cls_access
-				test/engine/test_processors.py::PyDateProcessorTest::test_time_invalid_string
-				"test/engine/test_processors.py::PyDateProcessorTest::test_invalid_string[str_to_time]"
-				# TODO
-				test/orm/test_utils.py::ContextualWarningsTest::test_autoflush_implicit
-				test/orm/test_utils.py::ContextualWarningsTest::test_configure_mappers_explicit
-				"test/sql/test_resultset.py::CursorResultTest_sqlite+pysqlite_${sqlite_version//./_}::test_new_row_no_dict_behaviors"
-				"test/sql/test_compare.py::HasCacheKeySubclass::test_init_args_in_traversal[_MemoizedSelectEntities]"
-				test/sql/test_lambdas.py::LambdaElementTest::test_bindparam_not_cached
-				test/sql/test_compare.py::CompareAndCopyTest::test_all_present
-				test/sql/test_compare.py::CacheKeyTest::test_cache_key
-				"test/dialect/sqlite/test_on_conflict.py::OnConflictTest_sqlite+pysqlite_${sqlite_version//./_}::test_on_conflict_do_update_bindparam"
+				# repr() changes
+				test/orm/declarative/test_dc_transforms.py::DCTransformsTest::test_basic_constructor_repr_base_cls
+				test/orm/declarative/test_dc_transforms_future_anno_sync.py::DCTransformsTest::test_basic_constructor_repr_base_cls
+				# exception message changes
+				test/engine/test_processors.py::PyDateProcessorTest::test_no_string
 			)
 			;;
 	esac

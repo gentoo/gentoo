@@ -1,0 +1,94 @@
+From 4039f65285e5fbd89192319e52cd8fa0ea1ec214 Mon Sep 17 00:00:00 2001
+From: Armin Preiml <apreiml@strohwolke.at>
+Date: Wed, 25 Jun 2025 10:57:23 +0200
+Subject: [PATCH hare] os::exec: fix clearenv
+X-Upstream-Status: applied
+
+Signed-off-by: Armin Preiml <apreiml@strohwolke.at>
+---
+ os/exec/+freebsd/platform_cmd.ha |  2 +-
+ os/exec/+linux/platform_cmd.ha   |  2 +-
+ os/exec/+netbsd/platform_cmd.ha  |  2 +-
+ os/exec/+openbsd/platform_cmd.ha |  2 +-
+ os/exec/env+test.ha              | 19 +++++++++++++++++++
+ 5 files changed, 23 insertions(+), 4 deletions(-)
+
+diff --git a/os/exec/+freebsd/platform_cmd.ha b/os/exec/+freebsd/platform_cmd.ha
+index 2c0d972d..f328f9ac 100644
+--- a/os/exec/+freebsd/platform_cmd.ha
++++ b/os/exec/+freebsd/platform_cmd.ha
+@@ -91,7 +91,7 @@ fn platform_setenv(
+ 
+ fn platform_unsetenv(cmd: *command, key: str) (void | errors::invalid) = {
+ 	// XXX: This can be a binary search
+-	for (let i = 0z; i < len(cmd.env) - 1; i += 1) {
++	for (let i = 0z; i < len(cmd.env) && cmd.env[i] != null; i += 1) {
+ 		let e = c::tostr(cmd.env[i]: *const c::char)!;
+ 		if (strings::cut(e, "=").0 == key) {
+ 			free(cmd.env[i]);
+diff --git a/os/exec/+linux/platform_cmd.ha b/os/exec/+linux/platform_cmd.ha
+index 1ec0ddd4..4bf65cb9 100644
+--- a/os/exec/+linux/platform_cmd.ha
++++ b/os/exec/+linux/platform_cmd.ha
+@@ -89,7 +89,7 @@ fn platform_setenv(
+ 
+ fn platform_unsetenv(cmd: *command, key: str) (void | errors::invalid) = {
+ 	// XXX: This can be a binary search
+-	for (let i = 0z; cmd.env[i] != null; i += 1) {
++	for (let i = 0z; i < len(cmd.env) && cmd.env[i] != null; i += 1) {
+ 		let e = c::tostr(cmd.env[i]: *const c::char)!;
+ 		if (strings::cut(e, "=").0 == key) {
+ 			free(cmd.env[i]);
+diff --git a/os/exec/+netbsd/platform_cmd.ha b/os/exec/+netbsd/platform_cmd.ha
+index 2c26cff6..0ccd99bf 100644
+--- a/os/exec/+netbsd/platform_cmd.ha
++++ b/os/exec/+netbsd/platform_cmd.ha
+@@ -92,7 +92,7 @@ fn platform_setenv(
+ 
+ fn platform_unsetenv(cmd: *command, key: str) (void | errors::invalid) = {
+ 	// XXX: This can be a binary search
+-	for (let i = 0z; i < len(cmd.env) - 1; i += 1) {
++	for (let i = 0z; i < len(cmd.env) && cmd.env[i] != null; i += 1) {
+ 		let e = c::tostr(cmd.env[i]: *const c::char)!;
+ 		if (strings::cut(e, "=").0 == key) {
+ 			free(cmd.env[i]);
+diff --git a/os/exec/+openbsd/platform_cmd.ha b/os/exec/+openbsd/platform_cmd.ha
+index 9826111f..d1e1f667 100644
+--- a/os/exec/+openbsd/platform_cmd.ha
++++ b/os/exec/+openbsd/platform_cmd.ha
+@@ -89,7 +89,7 @@ fn platform_setenv(
+ 
+ fn platform_unsetenv(cmd: *command, key: str) (void | errors::invalid) = {
+ 	// XXX: This can be a binary search
+-	for (let i = 0z; i < len(cmd.env) - 1; i += 1) {
++	for (let i = 0z; i < len(cmd.env) && cmd.env[i] != null; i += 1) {
+ 		let e = c::tostr(cmd.env[i]: *const c::char)!;
+ 		if (strings::cut(e, "=").0 == key) {
+ 			free(cmd.env[i]);
+diff --git a/os/exec/env+test.ha b/os/exec/env+test.ha
+index cfd62733..e41395ad 100644
+--- a/os/exec/env+test.ha
++++ b/os/exec/env+test.ha
+@@ -43,3 +43,22 @@ use bufio;
+ 	io::close(rd)!;
+ 	wait(&proc)!;
+ };
++
++@test fn clearenv() void = {
++	let cmd = cmd("env")!;
++	clearenv(&cmd);
++	setenv(&cmd, "HARETEST", "single")!;
++
++	const (rd, wr) = pipe();
++	addfile(&cmd, os::stdout_file, wr)!;
++	let proc = start(&cmd)!;
++	io::close(wr)!;
++
++	let sc = bufio::newscanner(rd);
++	defer io::close(&sc)!;
++	for (let l => bufio::scan_line(&sc)!) {
++		assert(l == "HARETEST=single");
++	};
++	io::close(rd)!;
++	wait(&proc)!;
++};

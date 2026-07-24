@@ -6,7 +6,7 @@ EAPI=8
 LUA_COMPAT=( lua5-{3..4} )
 PYTHON_COMPAT=( python3_{12..14} )
 
-inherit fcaps lua-single python-any-r1 qmake-utils toolchain-funcs xdg cmake
+inherit fcaps lua-single python-any-r1 qt-utils toolchain-funcs xdg cmake
 
 DESCRIPTION="Network protocol analyzer (sniffer)"
 HOMEPAGE="https://www.wireshark.org/"
@@ -179,10 +179,6 @@ src_configure() {
 		-DENABLE_CCACHE=OFF
 
 		$(use androiddump && use pcap && echo -DEXTCAP_ANDROIDDUMP_LIBPCAP=yes)
-		$(usex gui LRELEASE=$(qt6_get_bindir)/lrelease '')
-		$(usex gui MOC=$(qt6_get_bindir)/moc '')
-		$(usex gui RCC=$(qt6_get_bindir)/rcc '')
-		$(usex gui UIC=$(qt6_get_bindir)/uic '')
 
 		-DBUILD_androiddump=$(usex androiddump)
 		-DBUILD_capinfos=$(usex capinfos)

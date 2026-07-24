@@ -31,6 +31,7 @@ BDEPEND="
 	app-text/asciidoc
 "
 DEPEND="
+	app-portage/gemato
 	sys-apps/portage[${PYTHON_USEDEP}]
 	>=dev-python/snakeoil-0.6.5[${PYTHON_USEDEP}]
 	dev-python/fasteners[${PYTHON_USEDEP}]

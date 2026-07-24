@@ -1,0 +1,203 @@
+Rebased version of expat unbundling to 1.64.03:
+https://codeberg.org/gentoo/gentoo/commit/61b6130343a41b49da1ffe7376ab5d2077a37411
+Bug: https://bugs.gentoo.org/952113
+
+--- a/common.mk
++++ b/common.mk
+@@ -216,22 +216,6 @@ LIBXMLRPC_SERVER_CGI_A   = $(BLDDIR)/src
+ 
+ endif
+ 
+-LIBXMLRPC_XMLTOK_DIR = $(BLDDIR)/lib/expat/xmltok
+-
+-ifneq ($(OMIT_XMLTOK_LIB_RULE),Y)
+-LIBXMLRPC_XMLTOK         = \
+-  $(call shliblefn, $(LIBXMLRPC_XMLTOK_DIR)/libxmlrpc_xmltok)
+-LIBXMLRPC_XMLTOK_A       = $(LIBXMLRPC_XMLTOK_DIR)/libxmlrpc_xmltok.a
+-endif
+-
+-LIBXMLRPC_XMLPARSE_DIR = $(BLDDIR)/lib/expat/xmlparse
+-
+-ifneq ($(OMIT_XMLPARSE_LIB_RULE),Y)
+-LIBXMLRPC_XMLPARSE       = \
+-  $(call shliblefn, $(LIBXMLRPC_XMLPARSE_DIR)/libxmlrpc_xmlparse)
+-LIBXMLRPC_XMLPARSE_A     = $(LIBXMLRPC_XMLPARSE_DIR)/libxmlrpc_xmlparse.a
+-endif
+-
+ LIBXMLRPC_ABYSS_DIR = $(BLDDIR)/lib/abyss/src
+ 
+ ifneq ($(OMIT_ABYSS_LIB_RULE),Y)
+@@ -270,16 +254,11 @@ LIBXMLRPC_SERVER_PSTREAMPP = \
+   $(call shliblefn, $(BLDDIR)/src/cpp/libxmlrpc_server_pstream++)
+ LIBXMLRPC_SERVER_PSTREAMPP_A = $(BLDDIR)/src/cpp/libxmlrpc_server_pstream++.a
+ 
+-# LIBXMLRPC_XML is the list of Xmlrpc-c libraries we need to parse
+-# XML.  If we're using an external library to parse XML, this is null.
+ # LDLIBS_XML is the corresponding -L/-l options
+ 
+ ifneq ($(ENABLE_LIBXML2_BACKEND),yes)
+   # We're using the internal Expat XML parser
+-  LIBXMLRPC_XML = $(LIBXMLRPC_XMLPARSE) $(LIBXMLRPC_XMLTOK)
+-  LDLIBS_XML = \
+-        -L$(BLDDIR)/lib/expat/xmlparse -lxmlrpc_xmlparse \
+-        -L$(BLDDIR)/lib/expat/xmltok   -lxmlrpc_xmltok
++  LDLIBS_XML = $(shell $(PKG_CONFIG) --libs expat)
+ else
+   LDLIBS_XML = $(shell $(PKG_CONFIG) libxml-2.0 --libs)
+ endif
+@@ -472,14 +451,6 @@ $(LIBXMLRPC_UTILPP) $(LIBXMLRPC_UTILPP_A
+ 	$(MAKE) -C $(dir $@) -f $(SRCDIR)/lib/libutil++/Makefile \
+ 	    $(notdir $@)
+ 
+-$(LIBXMLRPC_XMLPARSE) $(LIBXMLRPC_XMLPARSE_A) : FORCE
+-	$(MAKE) -C $(dir $@) -f $(SRCDIR)/lib/expat/xmlparse/Makefile \
+-	    $(notdir $@)
+-
+-$(LIBXMLRPC_XMLTOK) $(LIBXMLRPC_XMLTOK_A) : FORCE
+-	$(MAKE) -C $(dir $@) -f $(SRCDIR)/lib/expat/xmltok/Makefile \
+-	    $(notdir $@)
+-
+ $(LIBXMLRPC_ABYSS) $(LIBXMLRPC_ABYSS_A): FORCE
+ 	$(MAKE) -C $(dir $@) -f $(SRCDIR)/lib/abyss/src/Makefile \
+ 	    $(notdir $@)
+--- a/config.mk.in
++++ b/config.mk.in
+@@ -52,6 +52,7 @@ CXX = @CXX@
+ CCLD = $(CC)
+ CXXLD = $(CXX)
+ AR = @AR@
++PKG_CONFIG = pkg-config
+ RANLIB = @RANLIB@
+ LN_S = ln -s
+ INSTALL = $(SRCDIR)/install-sh
+--- a/lib/Makefile
++++ b/lib/Makefile
+@@ -28,9 +28,6 @@ endif
+ ifeq ($(MUST_BUILD_LIBWWW_CLIENT),yes)
+   SUBDIRS += libwww_transport
+ endif
+-ifneq ($(ENABLE_LIBXML2_BACKEND),yes)
+-  SUBDIRS += expat
+-endif
+ 
+ ifeq ($(HAVE_OPENSSL),yes)
+   SUBDIRS += openssl
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -73,10 +73,8 @@ ifeq ($(ENABLE_LIBXML2_BACKEND),yes)
+   XML_PKGCONFIG_REQ = libxml-2.0
+ else
+   XMLRPC_XML_PARSER = xmlrpc_expat
+-  XML_PARSER_LIBDEP = \
+-    -Lblddir/lib/expat/xmlparse -lxmlrpc_xmlparse \
+-    -Lblddir/lib/expat/xmltok -lxmlrpc_xmltok
+-  XML_PARSER_LIBDEP_DEP = $(LIBXMLRPC_XMLPARSE) $(LIBXMLRPC_XMLTOK)
++  XML_PARSER_LIBDEP = $(shell $(PKG_CONFIG) expat --libs)
++  XML_PARSER_LIBDEP_DEP =
+   XML_PKGCONFIG_REQ = xmlrpc_expat
+ endif
+ 
+@@ -278,7 +276,7 @@ BASIC_INCLUDES = \
+ ifeq ($(ENABLE_LIBXML2_BACKEND),yes)
+   LIBXML_INCLUDES = $(shell $(PKG_CONFIG) libxml-2.0 --cflags)
+ else
+-  LIBXML_INCLUDES = -Isrcdir/lib/expat/xmlparse
++  LIBXML_INCLUDES = $(shell $(PKG_CONFIG) --cflags expat)
+ endif
+ 
+ $(LIBXMLRPC_MODS:%=%.o) \
+--- a/src/cpp/Makefile
++++ b/src/cpp/Makefile
+@@ -42,7 +42,7 @@ DEP_SOURCES = *.cpp
+ ifeq ($(ENABLE_LIBXML2_BACKEND),yes)
+   LIBXML_INCLUDES = $(LIBXML2_CFLAGS)
+ else
+-  LIBXML_INCLUDES = -Isrcdir/lib/expat/xmlparse
++  LIBXML_INCLUDES = $(shell $(PKG_CONFIG) --cflags expat)
+ endif
+ 
+ LIBXMLRPCPP_MODS = fault global outcome param_list value xml
+--- a/src/xmlrpc_expat.c
++++ b/src/xmlrpc_expat.c
+@@ -6,7 +6,7 @@
+ #include <stdlib.h>
+ #include <string.h>
+ 
+-#include <xmlparse.h> /* Expat */
++#include <expat.h>
+ 
+ #include "bool.h"
+ 
+@@ -419,18 +419,18 @@ createParser(xmlrpc_env *      const env
+ -----------------------------------------------------------------------------*/
+     XML_Parser parser;
+ 
+-    parser = xmlrpc_XML_ParserCreate(NULL);
++    parser = XML_ParserCreate(NULL);
+     if (parser == NULL)
+         xmlrpc_faultf(envP, "Could not create expat parser");
+     else {
+         initParseContext(contextP, memPoolP);
+ 
+-        xmlrpc_XML_SetUserData(parser, contextP);
+-        xmlrpc_XML_SetElementHandler(
++        XML_SetUserData(parser, contextP);
++        XML_SetElementHandler(
+             parser,
+             (XML_StartElementHandler) startElement,
+             (XML_EndElementHandler) endElement);
+-        xmlrpc_XML_SetCharacterDataHandler(
++        XML_SetCharacterDataHandler(
+             parser,
+             (XML_CharacterDataHandler) characterData);
+     }
+@@ -445,7 +445,7 @@ destroyParser(XML_Parser     const parse
+ 
+     termParseContext(contextP);
+ 
+-    xmlrpc_XML_ParserFree(parser);
++    XML_ParserFree(parser);
+ }
+ 
+ 
+@@ -483,15 +483,18 @@ xml_parse(xmlrpc_env *      const envP,
+     if (!envP->fault_occurred) {
+         bool ok;
+ 
+-        ok = xmlrpc_XML_Parse(parser, xmlData, xmlDataLen, 1);
++        ok = XML_Parse(parser, xmlData, xmlDataLen, 1);
+             /* sets 'context', *envP */
+         if (!ok) {
+             /* Expat failed on its own to parse it -- this is not an error
+                that our handlers detected.
+             */
++            const enum XML_Error error_code = XML_GetErrorCode(parser);
++            const char * const error_string = (error_code == XML_ERROR_NONE) ? NULL : XML_ErrorString(error_code);
++
+             xmlrpc_env_set_fault(
+                 envP, XMLRPC_PARSE_ERROR,
+-                xmlrpc_XML_GetErrorString(parser));
++                error_string);
+             if (!context.env.fault_occurred) {
+                 /* Have to clean up what our handlers built before Expat
+                    barfed.
+--- a/xmlrpc-c-config.test.main
++++ b/xmlrpc-c-config.test.main
+@@ -19,13 +19,12 @@ sopath=
+ # It's important that packetsocket lib go after client, server libs
+ packetsocket_lib=
+ 
++[ -n "${PKG_CONFIG}" ] || PKG_CONFIG=pkg-config
++
+ if test "${ENABLE_LIBXML2_BACKEND}" = "yes"; then
+-  LIBXML=$(shell $(PKG_CONFIG) libxml-2.0 --libs)
++  LIBXML=$(${PKG_CONFIG} libxml-2.0 --libs)
+ else
+-  LIBXML="${BLDDIR}/lib/expat/xmlparse/libxmlrpc_xmlparse.a"
+-  sopath="${BLDDIR}/lib/expat/xmlparse:$sopath"
+-  LIBXML="${LIBXML} ${BLDDIR}/lib/expat/xmltok/libxmlrpc_xmltok.a"
+-  sopath="${BLDDIR}/lib/expat/xmltok:$sopath"
++  LIBXML=$(${PKG_CONFIG} expat --libs)
+ fi
+ 
+ needCpp=no

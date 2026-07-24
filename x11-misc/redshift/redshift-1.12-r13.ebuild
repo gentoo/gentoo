@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,8 +8,8 @@ PYTHON_COMPAT=( python3_{9..13} )
 inherit autotools flag-o-matic systemd xdg-utils python-r1
 
 DESCRIPTION="A screen color temperature adjusting software"
-HOMEPAGE="http://jonls.dk/redshift/"
-SRC_URI="https://github.com/jonls/${PN}/releases/download/v${PV}/${P}.tar.xz"
+HOMEPAGE="https://github.com/sharpbracket/redshift"
+SRC_URI="https://github.com/sharpbracket/redshift/releases/download/v${PV}/${P}.tar.xz"
 
 LICENSE="GPL-3"
 SLOT="0"

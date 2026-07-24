@@ -1,0 +1,30 @@
+Fix access violation when attempting to create symlinks.
+
+Upstream: https://github.com/musescore/MuseScore/pull/33819
+
+--- a/buildscripts/packaging/Linux+BSD/SetupAppImagePackaging.cmake
++++ b/buildscripts/packaging/Linux+BSD/SetupAppImagePackaging.cmake
+@@ -132,8 +132,8 @@ endif(GZIP_EXECUTABLE AND NOT CMAKE_SYSTEM_NAME MATCHES "OpenBSD")
+ install(FILES ${MAN_BUILD} DESTINATION share/man/man1 COMPONENT doc)
+ 
+ # Create symlink alias for man pages so `man musescore` = `man mscore`
+-install(CODE "message(STATUS \"Creating symlink ${CMAKE_INSTALL_PREFIX}/share/man/man1/${MAN_FULL_ALIAS} -> ${CMAKE_INSTALL_PREFIX}/share/man/man1/${MAN_FULL_NAME}\")
+-              execute_process(COMMAND ${CMAKE_COMMAND} -E create_symlink \"${CMAKE_INSTALL_PREFIX}/share/man/man1/${MAN_FULL_NAME}\" \"${CMAKE_INSTALL_PREFIX}/share/man/man1/${MAN_FULL_ALIAS}\")" 
++install(CODE "message(STATUS \"Creating symlink \$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/share/man/man1/${MAN_FULL_ALIAS} -> ${CMAKE_INSTALL_PREFIX}/share/man/man1/${MAN_FULL_NAME}\")
++execute_process(COMMAND ${CMAKE_COMMAND} -E create_symlink \"${CMAKE_INSTALL_PREFIX}/share/man/man1/${MAN_FULL_NAME}\" \"\$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/share/man/man1/${MAN_FULL_ALIAS}\")" 
+         COMPONENT doc)
+ 
+ # Add .MSCZ, .MSCX and .MSCS to MIME database (informs system that filetypes .MSCZ, .MSCX and .MSCS are MuseScore files)
+--- a/src/app/CMakeLists.txt
++++ b/src/app/CMakeLists.txt
+@@ -362,8 +362,8 @@ if (OS_IS_WIN)
+ ###########################################
+ elseif(OS_IS_LIN)
+     # Install mscore executable (package maintainers may add "MuseScore" and/or "musescore" aliases that symlink to mscore)
+-    install(CODE "message(STATUS \"Creating symlink ${CMAKE_INSTALL_PREFIX}/bin/musescore${MUSE_APP_INSTALL_SUFFIX} -> ${CMAKE_INSTALL_PREFIX}/bin/mscore${MUSE_APP_INSTALL_SUFFIX}\")
+-                  execute_process(COMMAND ${CMAKE_COMMAND} -E create_symlink \"${CMAKE_INSTALL_PREFIX}/bin/mscore${MUSE_APP_INSTALL_SUFFIX}\" \"${CMAKE_INSTALL_PREFIX}/bin/musescore${MUSE_APP_INSTALL_SUFFIX}\")")
++	install(CODE "message(STATUS \"Creating symlink \$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/musescore${MUSE_APP_INSTALL_SUFFIX} -> ${CMAKE_INSTALL_PREFIX}/bin/mscore${MUSE_APP_INSTALL_SUFFIX}\")
++	execute_process(COMMAND ${CMAKE_COMMAND} -E create_symlink \"${CMAKE_INSTALL_PREFIX}/bin/mscore${MUSE_APP_INSTALL_SUFFIX}\" \"\$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/musescore${MUSE_APP_INSTALL_SUFFIX}\")")
+ 
+ ###########################################
+ # FreeBSD

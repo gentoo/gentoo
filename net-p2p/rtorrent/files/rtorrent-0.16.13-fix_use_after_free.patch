@@ -1,0 +1,41 @@
+Fix regression from 0.16.13
+PR merged https://github.com/rakshasa/rtorrent/pull/1806.patch
+From 8e52277917c1d84cb7cef46cc7bc5544738b85f9 Mon Sep 17 00:00:00 2001
+From: Xirvik <community@xirvik.net>
+Date: Thu, 4 Jun 2026 23:15:50 +0000
+Subject: [PATCH] fix(rpc): preserve c_str() stability of stored XMLRPC method
+--- a/src/rpc/xmlrpc.cc
++++ b/src/rpc/xmlrpc.cc
+@@ -1,3 +1,4 @@
++#include <deque>
+ #include "config.h"
+ 
+ #include "xmlrpc.h"
+@@ -9,7 +10,7 @@
+ 
+ namespace rpc {
+ 
+-std::vector<std::string> XmlRpc::m_command_names;
++std::deque<std::string>  XmlRpc::m_command_names;
+ 
+ const char*
+ XmlRpc::store_command_name(const char* name) {
+--- a/src/rpc/xmlrpc.h
++++ b/src/rpc/xmlrpc.h
+@@ -1,6 +1,7 @@
+ #ifndef RTORRENT_RPC_XMLRPC_H
+ #define RTORRENT_RPC_XMLRPC_H
+ 
++#include <deque>
+ #include <functional>
+ #include <torrent/common.h>
+ #include <torrent/hash_string.h>
+@@ -61,7 +62,7 @@ class XmlRpc {
+ private:
+   static const char*  store_command_name(const char* name);
+ 
+-  static std::vector<std::string> m_command_names;
++  static std::deque<std::string>  m_command_names;
+ 
+   slot_download       m_slotFindDownload;
+   slot_file           m_slotFindFile;

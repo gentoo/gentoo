@@ -37,6 +37,14 @@ src_prepare() {
 src_configure() {
 	# builds its own policy, no selinux until policies are official
 	local myconf="--disable-selinux-support"
+	# building selinux policies is explicitly disabled, but
+	# configure still checks for existence of
+	# /usr/share/selinux/devel/Makefile with AC_CHECK_FILE - this
+	# results in an error when cross-compiling:
+	#
+	# checking for /usr/share/selinux/devel/Makefile... configure:
+	# error: cannot check for file existence when cross compiling
+	local -x ac_cv_file__usr_share_selinux_devel_Makefile=no
 	econf \
 		${myconf} \
 		$(use_enable doc) \

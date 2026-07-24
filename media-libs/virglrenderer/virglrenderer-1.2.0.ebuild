@@ -42,11 +42,15 @@ BDEPEND="
 	$(python_gen_any_dep "
 		dev-python/pyyaml[\${PYTHON_USEDEP}]
 	")
+	test? (
+		dev-libs/check
+	)
 "
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.2.0-c23-glibc-2.43.patch
 	"${FILESDIR}"/${PN}-1.2.0-c23-glibc-2.43-deux.patch
+	"${FILESDIR}"/${PN}-1.2.0-x86-format.patch
 )
 
 python_check_deps() {

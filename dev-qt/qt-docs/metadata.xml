@@ -39,7 +39,7 @@
 		<flag name="speech">Install documentation for <pkg>dev-qt/qtspeech</pkg></flag>
 		<flag name="svg">Install documentation for <pkg>dev-qt/qtsvg</pkg></flag>
 		<flag name="timeline">Install documentation for <pkg>dev-qt/qtquicktimeline</pkg></flag>
-		<flag name="tasktree">Install documentation for QtTaskTree (unpackaged)</flag>
+		<flag name="tasktree">Install documentation for <pkg>dev-qt/qttasktree</pkg></flag>
 		<flag name="tools">Install documentation for <pkg>dev-qt/qttools</pkg></flag>
 		<flag name="virtualkeyboard">Install documentation for <pkg>dev-qt/qtvirtualkeyboard</pkg></flag>
 		<flag name="wayland">Install documentation for <pkg>dev-qt/qtwayland</pkg></flag>

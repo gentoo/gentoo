@@ -57,8 +57,8 @@ src_prepare() {
 	EOF
 
 	cat >> qwtconfig.pri <<-EOF || die
-		QWT_INSTALL_PLUGINS   = "${EPREFIX}/usr/$(get_libdir)/qt6/plugins/designer"
-		QWT_INSTALL_FEATURES  = "${EPREFIX}/usr/$(get_libdir)/qt6/mkspecs/features"
+		QWT_INSTALL_PLUGINS   = "${EPREFIX}$(qt_get_plugindir 6)/designer"
+		QWT_INSTALL_FEATURES  = "${EPREFIX}$(qt_get_mkspecsdir 6)/features"
 	EOF
 	sed \
 		-e 's/target doc/target/' \

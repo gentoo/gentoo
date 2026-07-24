@@ -1,0 +1,43 @@
+unbundle gtest and allow the testsuite to be handled via cmake_comment_add_subdirectory
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -9,19 +9,6 @@ set(CMAKE_POSITION_INDEPENDENT_CODE ON)
+ # set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fsanitize=address")
+ # set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=address")
+ 
+-include(FetchContent)
+-FetchContent_Declare(
+-    googletest
+-    GIT_REPOSITORY https://github.com/google/googletest.git
+-    GIT_TAG        v1.17.0
+-)
+-set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+-FetchContent_MakeAvailable(googletest)
+-
+-include(CTest)
+-include(GoogleTest)
+-enable_testing()
+-
+ add_subdirectory(INCHI-1-SRC/INCHI_EXE/inchi-1/src)
+ add_subdirectory(INCHI-1-SRC/INCHI_API/libinchi/src)
+ add_subdirectory(INCHI-1-TEST/tests/test_unit)
+--- a/INCHI-1-TEST/tests/test_unit/CMakeLists.txt
++++ b/INCHI-1-TEST/tests/test_unit/CMakeLists.txt
+@@ -1,5 +1,9 @@
+ cmake_minimum_required(VERSION 3.21 FATAL_ERROR)
+
++find_package(GTest REQUIRED)
++include(GoogleTest)
++enable_testing()
++
+ set(P_BASE "${CMAKE_SOURCE_DIR}/INCHI-1-SRC/INCHI_BASE/src")
+ file(GLOB BASE_SOURCES CONFIGURE_DEPENDS
+      "${P_BASE}/*.c"
+@@ -13,6 +16,6 @@ file(GLOB TEST_SOURCES CONFIGURE_DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/test_*.cpp
+ foreach(test_src ${TEST_SOURCES})
+     get_filename_component(test_name "${test_src}" NAME_WE)
+     add_executable(${test_name} ${test_src})
+-    target_link_libraries(${test_name} PRIVATE gtest_main gmock_main test_dependencies libinchi)
++    target_link_libraries(${test_name} PRIVATE GTest::gtest_main GTest::gmock_main test_dependencies libinchi)
+     add_test(NAME ${test_name} COMMAND $<TARGET_FILE:${test_name}>)
+ endforeach()

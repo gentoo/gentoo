@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/fche.asc
 inherit autotools flag-o-matic linux-info python-single-r1 toolchain-funcs
 
@@ -138,9 +138,7 @@ src_configure() {
 		$(use_with selinux)
 	)
 
-	# Use bash because of bashisms with brace expansion in Makefile.am
-	# https://sourceware.org/PR32105
-	CONFIG_SHELL="${BROOT}"/bin/bash PYTHON3="${PYTHON}" econf "${myeconfargs[@]}"
+	PYTHON3="${PYTHON}" econf "${myeconfargs[@]}"
 }
 
 src_test() {

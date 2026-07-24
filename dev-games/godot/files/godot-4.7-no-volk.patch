@@ -1,0 +1,78 @@
+https://github.com/godotengine/godot/pull/120362
+--- a/drivers/vulkan/godot_vulkan.h
++++ b/drivers/vulkan/godot_vulkan.h
+@@ -39,2 +39,5 @@
+ #include <vulkan/vulkan.h>
++#ifdef VK_USE_PLATFORM_XLIB_KHR
++#undef CursorShape // vulkan.h transitively includes Xlib.h.
++#endif
+ #endif
+--- a/drivers/vulkan/rendering_device_driver_vulkan.cpp
++++ b/drivers/vulkan/rendering_device_driver_vulkan.cpp
+@@ -1537,2 +1537,5 @@
+ 			device_functions.CreateAccelerationStructureKHR = PFN_vkCreateAccelerationStructureKHR(functions.GetDeviceProcAddr(vk_device, "vkCreateAccelerationStructureKHR"));
++			device_functions.DestroyAccelerationStructureKHR = PFN_vkDestroyAccelerationStructureKHR(functions.GetDeviceProcAddr(vk_device, "vkDestroyAccelerationStructureKHR"));
++			device_functions.GetAccelerationStructureBuildSizesKHR = PFN_vkGetAccelerationStructureBuildSizesKHR(functions.GetDeviceProcAddr(vk_device, "vkGetAccelerationStructureBuildSizesKHR"));
++			device_functions.CmdBuildAccelerationStructuresKHR = PFN_vkCmdBuildAccelerationStructuresKHR(functions.GetDeviceProcAddr(vk_device, "vkCmdBuildAccelerationStructuresKHR"));
+ 		}
+@@ -1541,2 +1544,4 @@
+ 			device_functions.CreateRaytracingPipelinesKHR = PFN_vkCreateRayTracingPipelinesKHR(functions.GetDeviceProcAddr(vk_device, "vkCreateRayTracingPipelinesKHR"));
++			device_functions.GetRayTracingShaderGroupHandlesKHR = PFN_vkGetRayTracingShaderGroupHandlesKHR(functions.GetDeviceProcAddr(vk_device, "vkGetRayTracingShaderGroupHandlesKHR"));
++			device_functions.CmdTraceRaysKHR = PFN_vkCmdTraceRaysKHR(functions.GetDeviceProcAddr(vk_device, "vkCmdTraceRaysKHR"));
+ 		}
+@@ -6333,3 +6338,3 @@
+ 
+-	vkGetAccelerationStructureBuildSizesKHR(vk_device, VK_ACCELERATION_STRUCTURE_BUILD_TYPE_DEVICE_KHR, &accel_info->build_info, max_primitive_counts.ptr(), &size_info);
++	device_functions.GetAccelerationStructureBuildSizesKHR(vk_device, VK_ACCELERATION_STRUCTURE_BUILD_TYPE_DEVICE_KHR, &accel_info->build_info, max_primitive_counts.ptr(), &size_info);
+ 	_acceleration_structure_create(VK_ACCELERATION_STRUCTURE_TYPE_BOTTOM_LEVEL_KHR, size_info, accel_info);
+@@ -6378,3 +6383,3 @@
+ 	size_info.sType = VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_BUILD_SIZES_INFO_KHR;
+-	vkGetAccelerationStructureBuildSizesKHR(vk_device, VK_ACCELERATION_STRUCTURE_BUILD_TYPE_DEVICE_KHR, &accel_info->build_info, &p_max_instance_count, &size_info);
++	device_functions.GetAccelerationStructureBuildSizesKHR(vk_device, VK_ACCELERATION_STRUCTURE_BUILD_TYPE_DEVICE_KHR, &accel_info->build_info, &p_max_instance_count, &size_info);
+ 
+@@ -6427,3 +6432,3 @@
+ 	accel_create_info.buffer = ((const BufferInfo *)buffer.id)->vk_buffer;
+-	VkResult err = vkCreateAccelerationStructureKHR(vk_device, &accel_create_info, nullptr, &r_accel_info->vk_acceleration_structure);
++	VkResult err = device_functions.CreateAccelerationStructureKHR(vk_device, &accel_create_info, nullptr, &r_accel_info->vk_acceleration_structure);
+ 	ERR_FAIL_COND_MSG(err, vformat("Couldn't create Vulkan raytracing acceleration structure (VkResult error %d).", err));
+@@ -6441,3 +6446,3 @@
+ 	if (accel_info->vk_acceleration_structure) {
+-		vkDestroyAccelerationStructureKHR(vk_device, accel_info->vk_acceleration_structure, nullptr);
++		device_functions.DestroyAccelerationStructureKHR(vk_device, accel_info->vk_acceleration_structure, nullptr);
+ 	}
+@@ -6479,3 +6484,3 @@
+ 
+-	vkCmdBuildAccelerationStructuresKHR(command_buffer->vk_command_buffer, 1, build_info, &range_infos);
++	device_functions.CmdBuildAccelerationStructuresKHR(command_buffer->vk_command_buffer, 1, build_info, &range_infos);
+ #endif
+@@ -6497,3 +6502,3 @@
+ 
+-	vkCmdBuildAccelerationStructuresKHR(command_buffer->vk_command_buffer, 1, build_info, &range_infos);
++	device_functions.CmdBuildAccelerationStructuresKHR(command_buffer->vk_command_buffer, 1, build_info, &range_infos);
+ #endif
+@@ -6520,3 +6525,3 @@
+ 	VkStridedDeviceAddressRegionKHR callable_sbt = {};
+-	vkCmdTraceRaysKHR(command_buffer->vk_command_buffer, &raygen_sbt, &miss_sbt, &hit_sbt, &callable_sbt, p_width, p_height, p_depth);
++	device_functions.CmdTraceRaysKHR(command_buffer->vk_command_buffer, &raygen_sbt, &miss_sbt, &hit_sbt, &callable_sbt, p_width, p_height, p_depth);
+ #endif
+@@ -6616,3 +6621,3 @@
+ 	VkPipeline vk_pipeline = VK_NULL_HANDLE;
+-	VkResult err = vkCreateRayTracingPipelinesKHR(vk_device, VK_NULL_HANDLE, pipelines_cache.vk_cache, 1, &pipeline_create_info, nullptr, &vk_pipeline);
++	VkResult err = device_functions.CreateRaytracingPipelinesKHR(vk_device, VK_NULL_HANDLE, pipelines_cache.vk_cache, 1, &pipeline_create_info, nullptr, &vk_pipeline);
+ 	ERR_FAIL_COND_V_MSG(err, RaytracingPipelineID(), vformat("Couldn't create Vulkan raytracing pipelines (VkResult error %d).", err));
+@@ -6639,3 +6644,3 @@
+ 	for (uint32_t i = 0; i < p_group_indices.size(); i++) {
+-		VkResult err = vkGetRayTracingShaderGroupHandlesKHR(vk_device, (VkPipeline)p_pipeline.id, p_group_index_offset + p_group_indices[i], 1, raytracing_capabilities.shader_group_handle_size, r_data);
++		VkResult err = device_functions.GetRayTracingShaderGroupHandlesKHR(vk_device, (VkPipeline)p_pipeline.id, p_group_index_offset + p_group_indices[i], 1, raytracing_capabilities.shader_group_handle_size, r_data);
+ 		ERR_FAIL_COND_V_MSG(err != VK_SUCCESS, false, vformat("Couldn't get Vulkan raytracing shader group handles (VkResult error %d).", err));
+--- a/drivers/vulkan/rendering_device_driver_vulkan.h
++++ b/drivers/vulkan/rendering_device_driver_vulkan.h
+@@ -131,3 +131,8 @@
+ 		PFN_vkCreateAccelerationStructureKHR CreateAccelerationStructureKHR = nullptr;
++		PFN_vkDestroyAccelerationStructureKHR DestroyAccelerationStructureKHR = nullptr;
++		PFN_vkGetAccelerationStructureBuildSizesKHR GetAccelerationStructureBuildSizesKHR = nullptr;
++		PFN_vkCmdBuildAccelerationStructuresKHR CmdBuildAccelerationStructuresKHR = nullptr;
+ 		PFN_vkCreateRayTracingPipelinesKHR CreateRaytracingPipelinesKHR = nullptr;
++		PFN_vkGetRayTracingShaderGroupHandlesKHR GetRayTracingShaderGroupHandlesKHR = nullptr;
++		PFN_vkCmdTraceRaysKHR CmdTraceRaysKHR = nullptr;
+ 	};

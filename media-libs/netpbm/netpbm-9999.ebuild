@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -55,6 +55,7 @@ PATCHES=(
 	"${FILESDIR}"/netpbm-11.0.0-misc-deps.patch
 	"${FILESDIR}"/netpbm-11.1.0-fix-clang-O2.patch
 	"${FILESDIR}"/netpbm-11.6.1-incompatible-pointer-types.patch
+	"${FILESDIR}"/netpbm-11.15.0-fix-test-pm_message.patch
 )
 
 netpbm_libtype() {
@@ -161,6 +162,9 @@ src_prepare() {
 			-e 's:pnmindex.*::' \
 			-i test/Test-Order || die
 	fi
+
+	# fix typo in test
+	sed 's/cmps/cmp/' -i test/pnmhisteq.test
 }
 
 src_configure() {

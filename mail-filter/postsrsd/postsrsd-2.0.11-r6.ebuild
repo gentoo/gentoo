@@ -90,7 +90,7 @@ src_install() {
 		for example:
 		\n\n\t# mkdir /var/spool/postfix/postsrsd
 		\n\t# chown root:postfix /var/spool/postfix/postsrsd
-		\n\t# chmod 0770 /var/spool/postfix/postsrsd
+		\n\t# chmod 0750 /var/spool/postfix/postsrsd
 		\n\nand adjust \"{sender,recipient}_canonical_maps\" in main.cf
 		as well as \"socketmap\" in postsrsd.conf accordingly.
 		\n\nSee README.rst and the comments in postsrsd.conf for more detailed

@@ -1,10 +1,10 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: gear.kde.org.eclass
 # @MAINTAINER:
 # kde@gentoo.org
-# @SUPPORTED_EAPIS: 8
+# @SUPPORTED_EAPIS: 8 9
 # @PROVIDES: kde.org
 # @BLURB: Support eclass for KDE Gear packages.
 # @DESCRIPTION:
@@ -17,13 +17,13 @@
 # variables and helper functions (not phase functions) may be considered as
 # part of this eclass's API.
 
-case ${EAPI} in
-	8) ;;
-	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
-esac
-
 if [[ -z ${_GEAR_KDE_ORG_ECLASS} ]]; then
 _GEAR_KDE_ORG_ECLASS=1
+
+case ${EAPI} in
+	8|9) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
 
 # @ECLASS_VARIABLE: KDE_PV_UNRELEASED
 # @INTERNAL
@@ -63,7 +63,7 @@ elif [[ -z ${KDE_ORG_COMMIT} ]]; then
 	SRC_URI="${_KDE_SRC_URI}${KDE_ORG_TAR_PN}-${PV}.tar.xz"
 fi
 
-# list of applications ported to KF6 having to block SLOT=5
+# list of applications ported to KF6 having to block SLOT=5; TODO: drop on 2026-09-01
 if $(ver_test -gt 24.01.75); then
 	case ${PN} in
 		akonadi | \
@@ -71,7 +71,6 @@ if $(ver_test -gt 24.01.75); then
 		akonadi-contacts | \
 		akonadi-import-wizard | \
 		akonadi-mime | \
-		akonadi-notes | \
 		akonadi-search | \
 		akonadiconsole | \
 		akregator | \
@@ -173,7 +172,6 @@ if $(ver_test -gt 24.01.75); then
 		knavalbattle | \
 		knetwalk | \
 		knights | \
-		knotes | \
 		kolf | \
 		kollision | \
 		konqueror | \
@@ -252,10 +250,8 @@ fi
 if $(ver_test -gt 24.04.75); then
 	case ${PN} in
 		audex | \
-		itinerary | \
 		kio-perldoc | \
 		kolourpaint | \
-		libkcompactdisc | \
 		signon-kwallet-extension)
 			RDEPEND+=" !${CATEGORY}/${PN}:5" ;;
 		*) ;;

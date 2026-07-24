@@ -1,0 +1,26 @@
+https://bugs.gentoo.org/976605
+https://gitlab.com/saalen/ansifilter/-/merge_requests/12
+
+From 07d7cf825aeae74d3e5a47aba091b399d451763b Mon Sep 17 00:00:00 2001
+From: Ted Rodgers <ted.d.rodgers@gmail.com>
+Date: Fri, 19 Jun 2026 10:48:24 -0400
+Subject: [PATCH] add include sstream to stylecolour.h for gcc-17
+
+---
+ src/stylecolour.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/stylecolour.h b/src/stylecolour.h
+index e0d6e46..406e18b 100644
+--- a/src/stylecolour.h
++++ b/src/stylecolour.h
+@@ -28,6 +28,7 @@ along with ANSIFilter.  If not, see <http://www.gnu.org/licenses/>.
+ 
+ #include "enums.h"
+ 
++#include <sstream>
+ #include <string>
+ #include <string_view>
+ 
+-- 
+GitLab

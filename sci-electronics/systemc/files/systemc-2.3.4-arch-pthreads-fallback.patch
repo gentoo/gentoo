@@ -1,0 +1,20 @@
+Fall back to the portable pthread coroutine backend on CPUs that have no
+QuickThreads assembly in the autotools build (arm, riscv, ppc, ...), instead
+of aborting configure with "sorry...architecture not supported".
+
+https://bugs.gentoo.org/926545
+--- a/configure.ac
++++ b/configure.ac
+@@ -161,7 +161,11 @@
+          [TARGET_ARCH="linuxaarch64"
+           QT_ARCH="aarch64"
+           CPU_ARCH=""],
+-       [AC_MSG_ERROR("sorry...architecture not supported")])
++       dnl Other CPUs (arm, riscv, ppc, ...) have no QuickThreads assembly in
++       dnl the autotools build; fall back to the portable pthread coroutine
++       dnl backend instead of aborting.  See https://bugs.gentoo.org/926545
++       [QT_ARCH="pthreads"
++        CPU_ARCH=""])
+ 
+      # check compiler
+      AS_VAR_IF([GXX],[yes],dnl

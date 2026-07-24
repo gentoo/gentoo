@@ -1,0 +1,5 @@
+dev-java/openjdk:8
+dev-java/openjdk:11
+dev-java/openjdk:17
+dev-java/openjdk:21
+dev-java/openjdk:25

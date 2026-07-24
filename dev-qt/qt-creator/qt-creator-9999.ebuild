@@ -50,6 +50,8 @@ COMMON_DEPEND="
 	dev-cpp/yaml-cpp:=
 	>=dev-qt/qtbase-${QT_PV}=[concurrent,dbus,gui,network,ssl,widgets,xml]
 	>=dev-qt/qtdeclarative-${QT_PV}=
+	>=dev-qt/qthttpserver-${QT_PV}
+	>=dev-qt/qttasktree-${QT_PV}
 	clang? (
 		$(llvm_gen_dep '
 			llvm-core/clang:${LLVM_SLOT}=

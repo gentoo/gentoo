@@ -14,4 +14,4 @@ DESCRIPTION="OpenPGP keys used by Moritz Bunkus"
 HOMEPAGE="https://www.bunkus.org/"
 SRC_URI+=" https://www.bunkus.org/gpg-pub-moritzbunkus.txt -> ${P}-gpg-pub-moritzbunkus.txt"
 
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"

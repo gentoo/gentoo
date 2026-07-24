@@ -22,7 +22,7 @@ VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/openldap.asc
 LICENSE="OPENLDAP GPL-2"
 # Subslot added for bug #835654
 SLOT="0/$(ver_cut 1-2)"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
 
 IUSE_DAEMON="argon2 +cleartext crypt experimental minimal samba tcpd"
 IUSE_OVERLAY="overlays perl autoca"
@@ -82,20 +82,17 @@ DEPEND="
 	${COMMON_DEPEND}
 	sys-apps/groff
 "
-RDEPEND="
-	${COMMON_DEPEND}
-	selinux? ( sec-policy/selinux-ldap )
-"
-
 # The user/group are only used for running daemons which are
 # disabled in minimal builds, so elide the accounts too.
-BDEPEND="
+RDEPEND="
+	${COMMON_DEPEND}
 	!minimal? (
 		acct-group/ldap
 		acct-user/ldap
 	)
-	verify-sig? ( >=sec-keys/openpgp-keys-openldap-20201216 )
+	selinux? ( sec-policy/selinux-ldap )
 "
+BDEPEND="verify-sig? ( >=sec-keys/openpgp-keys-openldap-20201216 )"
 
 # for tracking versions
 OPENLDAP_VERSIONTAG=".version-tag"
@@ -474,7 +471,7 @@ multilib_src_configure() {
 			myconf+=( --enable-sql=mod )
 			if use iodbc ; then
 				myconf+=( --with-odbc="iodbc" )
-				append-cflags -I"${EPREFIX}"/usr/include/iodbc
+				append-cflags -I"${ESYSROOT}"/usr/include/iodbc
 			else
 				myconf+=( --with-odbc="unixodbc" )
 			fi

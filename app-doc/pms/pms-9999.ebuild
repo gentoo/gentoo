@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=9
 
 inherit git-r3
 
@@ -15,14 +15,16 @@ SLOT="live"
 IUSE="html twoside"
 
 # texlive-bibtexextra for unsrturl.bst
+# texlive-fontsextra for opensans
 # texlive-latexextra for chngcntr, gitinfo2, isodate, leaflet, marginnote,
 #   paralist, tocbibind
 # texlive-mathscience for algorithm, algorithmic
 BDEPEND="dev-texlive/texlive-bibtexextra
-	>=dev-texlive/texlive-latexextra-2020-r2
+	dev-texlive/texlive-fontsextra
+	dev-texlive/texlive-latexextra
 	dev-texlive/texlive-mathscience
 	virtual/latex-base
-	html? ( >=dev-tex/tex4ht-20090611_p1038-r11 )"
+	html? ( dev-tex/tex4ht )"
 RDEPEND="!app-doc/pms-bin"
 
 src_compile() {

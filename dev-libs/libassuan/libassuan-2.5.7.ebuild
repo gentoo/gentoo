@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -45,6 +45,7 @@ src_configure() {
 	local myeconfargs=(
 		GPG_ERROR_CONFIG="${ESYSROOT}/usr/bin/${CHOST}-gpg-error-config"
 		GPGRT_CONFIG="${ESYSROOT}/usr/bin/${CHOST}-gpgrt-config"
+		CC_FOR_BUILD="$(tc-getBUILD_CC)"
 		$("${S}/configure" --help | grep -o -- '--without-.*-prefix')
 	)
 	econf "${myeconfargs[@]}"

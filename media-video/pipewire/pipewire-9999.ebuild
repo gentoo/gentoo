@@ -63,7 +63,7 @@ LICENSE="MIT LGPL-2.1+ GPL-2"
 SLOT="0/0.4"
 IUSE="${PIPEWIRE_DOCS_USEFLAG} bluetooth elogind dbus doc echo-cancel extra ffmpeg fftw flatpak gstreamer gsettings"
 IUSE+=" ieee1394 jack-client jack-sdk libcamera loudness lv2 modemmanager pipewire-alsa readline roc selinux"
-IUSE+=" pulseaudio sound-server ssl system-service systemd test v4l X zeroconf"
+IUSE+=" pulseaudio sound-server sofa ssl system-service systemd test v4l X zeroconf"
 
 # Once replacing system JACK libraries is possible, it's likely that
 # jack-client IUSE will need blocking to avoid users accidentally
@@ -165,6 +165,7 @@ RDEPEND="
 	roc? ( >=media-libs/roc-toolkit-0.4.0:= )
 	readline? ( sys-libs/readline:= )
 	selinux? ( sys-libs/libselinux )
+	sofa? ( media-libs/libmysofa )
 	ssl? ( dev-libs/openssl:= )
 	systemd? ( sys-apps/systemd )
 	system-service? ( acct-user/pipewire )
@@ -294,7 +295,7 @@ multilib_src_configure() {
 		-Dudev=enabled
 		-Dudevrulesdir="${EPREFIX}$(get_udevdir)/rules.d"
 		-Dsdl2=disabled # Controls SDL2 dependent code (currently only examples when -Dinstalled_tests=enabled which we never install)
-		-Dlibmysofa=disabled # libmysofa is unpackaged
+		$(meson_native_use_feature sofa libmysofa)
 		$(meson_native_use_feature extra sndfile) # Enables libsndfile dependent code (currently only pw-cat)
 		-Dsession-managers="[]" # All available session managers are now their own projects, so there's nothing to build
 

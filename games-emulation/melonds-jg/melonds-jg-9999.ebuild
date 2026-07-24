@@ -22,7 +22,7 @@ LICENSE="BSD-2 FatFs GPL-3+ LGPL-2.1+ MIT Unlicense public-domain"
 SLOT="1"
 
 DEPEND="
-	media-libs/jg:1=
+	>=media-libs/jg-2.0.0
 "
 RDEPEND="
 	${DEPEND}

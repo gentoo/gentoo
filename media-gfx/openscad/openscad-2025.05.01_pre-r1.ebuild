@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{12..14} )
 inherit cmake flag-o-matic optfeature python-any-r1 virtualx xdg
 
 DESCRIPTION="The Programmers Solid 3D CAD Modeller"

@@ -3,11 +3,10 @@
 
 EAPI=8
 
-LLVM_COMPAT=( 22 )
 MY_PN="SPIRV-LLVM-Translator"
 MY_P="${MY_PN}-${PV}"
 
-inherit cmake-multilib flag-o-matic llvm-r2 multiprocessing
+inherit cmake-multilib flag-o-matic multiprocessing
 
 DESCRIPTION="Bi-directional translator between SPIR-V and LLVM IR"
 HOMEPAGE="https://github.com/KhronosGroup/SPIRV-LLVM-Translator"
@@ -16,7 +15,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="UoI-NCSA"
 SLOT="$(ver_cut 1)"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~riscv ~x86"
+KEYWORDS="amd64 arm arm64 ~loong ~riscv x86"
 IUSE="test"
 RESTRICT="!test? ( test )
 	arm? ( test )
@@ -51,8 +50,9 @@ src_prepare() {
 
 multilib_src_configure() {
 	local mycmakeargs=(
+		-DLLVM_ROOT="${ESYSROOT}/usr/lib/llvm/${SLOT}"
 		-DCCACHE_ALLOWED="OFF"
-		-DCMAKE_INSTALL_PREFIX="$(get_llvm_prefix)"
+		-DCMAKE_INSTALL_PREFIX="${EPREFIX}/usr/lib/llvm/${SLOT}"
 		-DLLVM_EXTERNAL_SPIRV_HEADERS_SOURCE_DIR="${ESYSROOT}/usr/include/spirv"
 		-DLLVM_SPIRV_INCLUDE_TESTS=$(usex test "ON" "OFF")
 		-Wno-dev

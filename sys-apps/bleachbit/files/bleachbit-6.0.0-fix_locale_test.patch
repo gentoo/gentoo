@@ -1,0 +1,15 @@
+PR merged https://github.com/bleachbit/bleachbit/pull/2159.patch
+see https://bugs.gentoo.org/977413
+Subject: [PATCH] use POSIX locale order for validation
+codeset must come before @modifier, fixing be_BY.utf8@latin for example
+--- a/tests/common.py
++++ b/tests/common.py
+@@ -244,7 +244,7 @@ def assertIsLanguageCode(self, lang_id):
+         if lang_id in ('C', 'C.UTF-8', 'C.utf8', 'POSIX'):
+             return
+         self.assertTrue(len(lang_id) >= 2)
+-        pattern = r'^[a-z]{2,3}([_-][A-Z][A-Za-z]{1,3})?(@\w+)?(\.[a-zA-Z][a-zA-Z0-9-]+)?$'
++        pattern = r'^[a-z]{2,3}([_-][A-Z][A-Za-z]{1,3})?(\.[a-zA-Z][a-zA-Z0-9-]+)?(@\w+)?$'
+         self.assertTrue(re.match(pattern, lang_id),
+                         f'Invalid language code format: {lang_id}')
+ 

@@ -3,9 +3,9 @@
 
 EAPI=8
 
-DISTUTILS_USE_PEP517=flit
+DISTUTILS_USE_PEP517=flit-core
 # PYTHON_COMPAT is used only for testing
-PYTHON_COMPAT=( pypy3_11 python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..15} python3_{14,15}t )
 PYTHON_REQ_USE="ssl(+),threads(+)"
 
 inherit distutils-r1 pypi
@@ -83,6 +83,10 @@ python_prepare_all() {
 		# remove coverage & pytest-subket wheel expectation from test suite
 		# (from dev-python/pip)
 		"${FILESDIR}/pip-26.0-test-wheels.patch"
+
+		# https://github.com/pypa/pip/pull/14033
+		# + https://github.com/pypa/pip/commit/4c6d7471dec62fb004a47a7c2164b6b5b089ac06
+		"${FILESDIR}/pip-26.1.2-py315.patch"
 	)
 
 	distutils-r1_python_prepare_all
@@ -149,22 +153,6 @@ python_test() {
 		# requires proxy.py
 		tests/functional/test_proxy.py
 	)
-
-	case ${EPYTHON} in
-		pypy3*)
-			EPYTEST_DESELECT+=(
-				# unexpected tempfiles?
-				tests/functional/test_install_config.py::test_do_not_prompt_for_authentication
-				tests/functional/test_install_config.py::test_prompt_for_authentication
-				# wrong path
-				tests/functional/test_install.py::test_install_editable_with_prefix_setup_py
-				# wrong exception assumptions
-				tests/unit/test_utils_datetime.py::test_parse_iso_datetime_invalid
-				# TODO
-				tests/functional/test_install.py::test_install_warns_on_unexpected_post_install_import
-			)
-			;;
-	esac
 
 	if ! has_version "dev-python/cryptography[${PYTHON_USEDEP}]"; then
 		EPYTEST_DESELECT+=(

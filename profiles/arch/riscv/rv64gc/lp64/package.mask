@@ -1,0 +1,6 @@
+# Copyright 2026 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# rust-bin isn't available for soft-float. it installs as hardfloat
+# and can't run afterwards...
+dev-lang/rust-bin

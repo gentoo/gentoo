@@ -139,7 +139,14 @@ _python_set_impls() {
 			case ${i} in
 				python3_1[2-5]|python3_1[4-5]t)
 					;;
+				# implementations deprecated prior to EAPI 9 are fatal
 				jython2_7|pypy|pypy1_[89]|pypy2_0|pypy3|pypy3_11|python2_[5-7]|python3_[1-9]|python3_1[01]|python3_13t)
+					[[ ${EAPI} != [78] ]] &&
+						die "Please remove old implementations from PYTHON_COMPAT for EAPI ${EAPI}"
+					;&
+				# implementations deprecated after EAPI 9 are non-fatal
+				# (none yet, hence placeholder)
+				python3_x)
 					obsolete+=( "${i}" )
 					;;
 				*)
@@ -230,9 +237,17 @@ _python_impl_matches() {
 				fi
 				return 0
 				;;
-			3.[89]|3.1[0-5])
+			3.[89]|3.10)
+				[[ ${EAPI} != [78] ]] &&
+					die "Please remove old implementations from ${FUNCNAME[1]} in EAPI ${EAPI}"
+				;&
+			3.1[1-5])
 				[[ ${impl%t} == python${pattern/./_} || ${impl} == pypy${pattern/./_} ]] &&
 					return 0
+				;;
+			jython2_7|pypy|pypy1_[89]|pypy2_0|pypy3|python2_[5-7]|python3_[1-9]|python3_10)
+				[[ ${EAPI} != [78] ]] &&
+					die "Please remove old implementations from ${FUNCNAME[1]} in EAPI ${EAPI}"
 				;;
 			*)
 				# unify value style to allow lax matching
@@ -1430,9 +1445,11 @@ epytest() {
 		-ra
 		# print local variables in tracebacks, useful for debugging
 		-l
-		# override filterwarnings=error, we do not really want -Werror
-		# for end users, as it tends to fail on new warnings from deps
-		-Wdefault
+		# override filterwarnings=:
+		# 1. we do not really want -Werror for end users, as it tends
+		#    to fail on new warnings from deps
+		# 2. ignore: lines for optional dependencies trigger ImportError
+		-o filterwarnings=
 		# override color output
 		"--color=${color}"
 		# count is more precise when we're dealing with a large number
@@ -1590,7 +1607,8 @@ epytest() {
 			)
 
 			if [[ ${MAKEFLAGS} == *--jobserver-auth=* ]]; then
-				if has_version "dev-python/pytest-jobserver[${PYTHON_USEDEP}]"
+				local usedep="python_targets_${EPYTHON/./_}(-)"
+				if has_version "dev-python/pytest-jobserver[${usedep}]"
 				then
 					args+=( -p jobserver )
 				elif [[ ! ${_EPYTEST_JOBSERVER_WARNED} ]]; then

@@ -1,0 +1,19 @@
+Unbundle libsass in order to use system libsass
+
+Ancestor patch authored by: tastytea <tastytea@tastytea.de>
+--- a/vendor/github.com/bep/golibsass/internal/libsass/a__cgo.go
++++ b/vendor/github.com/bep/golibsass/internal/libsass/a__cgo.go
+@@ -4,9 +4,9 @@
+ // license that can be found in the LICENSE file.
+ package libsass
+ 
+-// #cgo CFLAGS: -O2 -fPIC
+-// #cgo CPPFLAGS: -I../../libsass_src/include
+-// #cgo CXXFLAGS: -g -std=c++0x -O2 -fPIC
+-// #cgo LDFLAGS: -lstdc++ -lm
++// #cgo CFLAGS: -fPIC
++// #cgo CPPFLAGS: -DUSE_LIBSASS_SRC
++// #cgo CXXFLAGS: -std=c++0x -fPIC
++// #cgo LDFLAGS: -lstdc++ -lm -lsass
+ // #cgo darwin linux LDFLAGS: -ldl
+ import "C"

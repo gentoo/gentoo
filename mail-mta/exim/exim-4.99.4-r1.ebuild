@@ -23,15 +23,15 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
 
-IUSE="arc berkdb +dane dcc +dkim dlfunc dmarc dmarc-native +dmarc-opendmarc
-	+dnsdb doc dovecot-sasl dsn gdbm gnutls gsasl idn ldap lmtp maildir mbx
-	mysql nis pam perl pkcs11 postgres +prdr proxy redis sasl selinux socks5 spf
-	sqlite srs +ssl syslog +tdb tcpd +tpda"
+IUSE="arc berkdb +dane dcc +dkim dlfunc dmarc +dnsdb doc dovecot-sasl
+	dsn gdbm gnutls gsasl idn ipv6 ldap lmtp maildir mbx
+	mysql nis pam perl pkcs11 postgres +prdr proxy redis sasl
+	selinux socks5 spf sqlite srs +ssl syslog +tdb tcpd +tpda"
 REQUIRED_USE="
 	arc? ( dkim spf )
 	dane? ( ssl !gnutls )
 	!dane? ( ssl? ( gnutls ) )
-	dmarc? ( dkim spf ^^ ( dmarc-native dmarc-opendmarc ) )
+	dmarc? ( dkim spf )
 	dkim? ( ssl !gnutls )
 	gnutls? ( ssl )
 	pkcs11? ( ssl )
@@ -81,9 +81,7 @@ COMMON_DEPEND=">=sys-apps/sed-4.0.5
 	gsasl? ( net-misc/gsasl )
 	redis? ( dev-libs/hiredis:= )
 	spf? ( >=mail-filter/libspf2-1.2.5-r1 )
-	dmarc? (
-		dmarc-opendmarc? ( mail-filter/opendmarc:= )
-	)
+	dmarc? ( mail-filter/opendmarc:= )
 	sqlite? ( dev-db/sqlite:= )
 	virtual/libcrypt:=
 	virtual/libiconv
@@ -114,6 +112,7 @@ src_prepare() {
 	eapply     "${FILESDIR}"/exim-4.69-r1.27021.patch
 	eapply     "${FILESDIR}"/exim-4.97-localscan_dlopen.patch
 	eapply     "${FILESDIR}"/exim-4.97-no-exim_id_update.patch
+	eapply     "${FILESDIR}"/exim-4.99.4-dkim_no_direct_ld.patch # 963615
 
 	if use maildir ; then
 		eapply "${FILESDIR}"/exim-4.94-maildir.patch
@@ -166,7 +165,6 @@ src_configure() {
 		SPOOL_DIRECTORY=${EPREFIX}/var/spool/exim
 		HAVE_ICONV=yes
 		WITH_CONTENT_SCAN=yes
-		HAVE_IPV6=YES
 	EOC
 
 	# configure db implementation, Exim always needs one for its hints
@@ -210,6 +208,13 @@ src_configure() {
 	if use !elibc_glibc && use !elibc_musl ; then
 		cat >> Makefile <<- EOC
 			EXTRALIBS_EXIM=-liconv
+		EOC
+	fi
+
+	# support for IPv6
+	if use ipv6; then
+		cat >> Makefile <<- EOC
+			HAVE_IPV6=YES
 		EOC
 	fi
 
@@ -424,21 +429,10 @@ src_configure() {
 
 	# DMARC
 	if use dmarc; then
-		if use dmarc-opendmarc; then
-			cat >> Makefile <<- EOC
-				SUPPORT_DMARC=yes
-				EXTRALIBS_EXIM += -lopendmarc
-			EOC
-		elif use dmarc-native; then
-			cat >> MAKEFILE <<- EOC
-				# Disable opendmarc based support.
-				SUPPORT_DMARC=no
-				# Enable experimental
-				EXPERIMENTAL_DMARC_NATIVE=yes
-			EOC
-		else
-			die "Unable to correctly detemine selected DMARC implementation."
-		fi
+		cat >> Makefile <<- EOC
+			SUPPORT_DMARC=yes
+			EXTRALIBS_EXIM += -lopendmarc
+		EOC
 	fi
 
 	# Sender Policy Framework
@@ -547,9 +541,9 @@ src_install() {
 		dosbin $i
 	done
 
-	dodoc -r "${S}"/doc/.
+	dodoc "${S}"/doc/{ChangeLog,NewStuff,README,README.SIEVE}
+	dodoc "${S}"/doc/*.txt
 	doman "${S}"/doc/exim.8
-	use dsn && dodoc "${S}"/README.DSN
 	use doc && dodoc "${WORKDIR}"/${PN}-pdf-${PV//rc/RC}/doc/*.pdf
 
 	# conf files

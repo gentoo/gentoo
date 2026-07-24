@@ -6,6 +6,10 @@
 		<name>GNU Hurd project</name>
 	</maintainer>
 	<use>
+		<flag name="lwip">
+		Build alternative userland TCP/IP stack lwIP, from
+		<pkg>net-libs/lwip</pkg>.
+		</flag>
 		<flag name="ncurses">
 		Build console-curses client for non-basic capabilities,
 		unlike the builtin one.

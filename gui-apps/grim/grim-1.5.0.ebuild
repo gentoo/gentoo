@@ -20,7 +20,7 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="+man jpeg"
+IUSE="jpeg"
 
 RDEPEND="
 	dev-libs/wayland
@@ -32,8 +32,8 @@ DEPEND="${RDEPEND}
 	>=dev-libs/wayland-protocols-1.14
 "
 BDEPEND="
+	app-text/scdoc
 	dev-util/wayland-scanner
-	man? ( app-text/scdoc )
 "
 
 if [[ ${PV} != 9999 ]]; then
@@ -44,9 +44,9 @@ fi
 src_configure() {
 	local emesonargs=(
 		$(meson_feature jpeg)
-		$(meson_feature man man-pages)
-		"-Dbash-completions=false"
-		"-Dfish-completions=false"
+		-Dman-pages=enabled
+		-Dbash-completions=false
+		-Dfish-completions=false
 	)
 	meson_src_configure
 }

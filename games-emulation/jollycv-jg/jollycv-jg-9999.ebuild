@@ -35,7 +35,7 @@ REQUIRED_USE="
 DEPEND="
 	media-libs/speexdsp
 	examples? ( media-libs/libsdl3 )
-	jgmodule? ( media-libs/jg:1= )
+	jgmodule? ( >=media-libs/jg-2.0.0 )
 "
 RDEPEND="
 	${DEPEND}

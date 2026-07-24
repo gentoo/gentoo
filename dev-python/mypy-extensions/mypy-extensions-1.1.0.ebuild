@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..14} pypy3_11 )
+PYTHON_COMPAT=( python3_{12..15} python3_{14..15}t )
 DISTUTILS_USE_PEP517=flit
 
 inherit distutils-r1
@@ -30,7 +30,7 @@ distutils_enable_tests pytest
 python_test() {
 	local EPYTEST_DESELECT=()
 	case ${EPYTHON} in
-		python3.14)
+		python3.1[45]*)
 			EPYTEST_DESELECT+=(
 				tests/testextensions.py::TypedDictTests::test_py36_class_syntax_usage
 			)

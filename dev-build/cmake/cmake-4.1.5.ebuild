@@ -91,8 +91,6 @@ BDEPEND+="
 	test? ( app-arch/libarchive[zstd] )
 "
 
-SITEFILE="50${PN}-gentoo.el"
-
 PATCHES=(
 	# Prefix
 	"${FILESDIR}"/${PN}-3.27.0_rc1-0001-Don-t-use-.so-for-modules-on-darwin-macos.-Use-.bund.patch
@@ -292,6 +290,11 @@ src_test() {
 		"RunCMake.CMP0125"
 	)
 
+	local myctestargs=(
+		# Filter all tests requiring Fortran
+		-LE "Fortran"
+	)
+
 	local -x QT_QPA_PLATFORM=offscreen
 
 	cmake_src_test
@@ -313,6 +316,9 @@ src_install() {
 
 	insinto /usr/share/vim/vimfiles/ftdetect
 	doins "${FILESDIR}/${PN}.vim"
+
+	# Part of app-emacs/cmake-mode instead
+	rm -r "${ED}"/usr/share/emacs || die
 
 	dobashcomp Auxiliary/bash-completion/{${PN},ctest,cpack}
 }

@@ -1,0 +1,240 @@
+diff --git a/src/pip/_internal/cli/main_parser.py b/src/pip/_internal/cli/main_parser.py
+index 136852466..ffec75192 100644
+--- a/src/pip/_internal/cli/main_parser.py
++++ b/src/pip/_internal/cli/main_parser.py
+@@ -82,6 +82,11 @@ def parse_command(args: list[str]) -> tuple[str, list[str]]:
+ 
+     # --python
+     if general_options.python and "_PIP_RUNNING_IN_SUBPROCESS" not in os.environ:
++        raise CommandError(
++            "--python option is not supported on Gentoo, as it requires bundled "
++            "dependencies that have been removed to improve security"
++        )
++
+         # Re-invoke pip using the specified Python interpreter
+         interpreter = identify_python_interpreter(general_options.python)
+         if interpreter is None:
+diff --git a/src/pip/_internal/commands/debug.py b/src/pip/_internal/commands/debug.py
+index 25bc05d0e..a73d6c358 100644
+--- a/src/pip/_internal/commands/debug.py
++++ b/src/pip/_internal/commands/debug.py
+@@ -8,7 +8,6 @@ from optparse import Values
+ from types import ModuleType
+ from typing import Any
+ 
+-import pip._vendor
+ from pip._vendor.certifi import where
+ from pip._vendor.packaging.version import parse as parse_version
+ 
+@@ -187,9 +186,7 @@ class DebugCommand(Command):
+         show_value("REQUESTS_CA_BUNDLE", os.environ.get("REQUESTS_CA_BUNDLE"))
+         show_value("CURL_CA_BUNDLE", os.environ.get("CURL_CA_BUNDLE"))
+         show_value("pip._vendor.certifi.where()", where())
+-        show_value("pip._vendor.DEBUNDLED", pip._vendor.DEBUNDLED)
+-
+-        show_vendor_versions()
++        show_value("pip._vendor.DEBUNDLED", True)
+ 
+         show_tags(options)
+ 
+diff --git a/tests/conftest.py b/tests/conftest.py
+index f8da34376..a98dffdda 100644
+--- a/tests/conftest.py
++++ b/tests/conftest.py
+@@ -473,9 +473,6 @@ def virtualenv_template(
+     tmpdir_factory: pytest.TempPathFactory,
+     pip_src: Path,
+     pip_editable_parts: tuple[Path, ...],
+-    setuptools_install: Path,
+-    coverage_install: Path,
+-    socket_install: Path,
+ ) -> VirtualEnvironment:
+     venv_type: VirtualEnvironmentType
+     if request.config.getoption("--use-venv"):
+@@ -487,13 +484,6 @@ def virtualenv_template(
+     tmpdir = tmpdir_factory.mktemp("virtualenv")
+     venv = VirtualEnvironment(tmpdir.joinpath("venv_orig"), venv_type=venv_type)
+ 
+-    # Install setuptools, pytest-subket, and pip.
+-    install_pth_link(venv, "setuptools", setuptools_install)
+-    install_pth_link(venv, "pytest_subket", socket_install)
+-    # Also copy pytest-subket's .pth file so it can intercept socket calls.
+-    with open(venv.site / "pytest_socket.pth", "w") as f:
+-        f.write(socket_install.joinpath("pytest_socket.pth").read_text())
+-
+     pth, dist_info = pip_editable_parts
+ 
+     shutil.copy(pth, venv.site)
+@@ -505,14 +495,6 @@ def virtualenv_template(
+     # detects changed files.
+     venv.site.joinpath("easy-install.pth").touch()
+ 
+-    if request.config.getoption("--cov"):
+-        # Install coverage and pth file for executing it in any spawned processes
+-        # in this virtual environment.
+-        install_pth_link(venv, "coverage", coverage_install)
+-        # zz prefix ensures the file is after easy-install.pth.
+-        with open(venv.site / "zz-coverage-helper.pth", "a") as f:
+-            f.write("import coverage; coverage.process_startup()")
+-
+     # Drop (non-relocatable) launchers.
+     for exe in os.listdir(venv.bin):
+         if not exe.startswith(("python", "libpy")):  # Don't remove libpypy-c.so...
+diff --git a/tests/functional/test_check.py b/tests/functional/test_check.py
+index acf99bc13..5425002e7 100644
+--- a/tests/functional/test_check.py
++++ b/tests/functional/test_check.py
+@@ -10,10 +10,8 @@ from tests.lib import (
+ def matches_expected_lines(string: str, expected_lines: Collection[str]) -> bool:
+     # Ignore empty lines
+     output_lines = list(filter(None, string.splitlines()))
+-    # We'll match the last n lines, given n lines to match.
+-    last_few_output_lines = output_lines[-len(expected_lines) :]
+     # And order does not matter
+-    return set(last_few_output_lines) == set(expected_lines)
++    return set(expected_lines).issubset(set(output_lines))
+ 
+ 
+ def test_basic_check_clean(script: PipTestEnvironment) -> None:
+diff --git a/tests/functional/test_freeze.py b/tests/functional/test_freeze.py
+index 4e9ae927f..597c33dc2 100644
+--- a/tests/functional/test_freeze.py
++++ b/tests/functional/test_freeze.py
+@@ -80,8 +80,8 @@ def test_basic_freeze(script: PipTestEnvironment) -> None:
+     result = script.pip("freeze", expect_stderr=True)
+     expected = textwrap.dedent(
+         """\
+-        ...simple==2.0
+-        simple2==3.0...
++        ...simple==2.0...
++        ...simple2==3.0...
+         <BLANKLINE>"""
+     )
+     _check_output(result.stdout, expected)
+@@ -998,7 +998,7 @@ def test_freeze_skip_work_dir_pkg(script: PipTestEnvironment) -> None:
+ 
+     # Freeze should not include package simple when run from package directory
+     result = script.pip("freeze", cwd=pkg_path)
+-    assert "simple" not in result.stdout
++    assert "\nsimple==" not in result.stdout
+ 
+ 
+ def test_freeze_include_work_dir_pkg(script: PipTestEnvironment) -> None:
+diff --git a/tests/functional/test_install_check.py b/tests/functional/test_install_check.py
+index cb8312b53..174bb8f66 100644
+--- a/tests/functional/test_install_check.py
++++ b/tests/functional/test_install_check.py
+@@ -61,6 +61,7 @@ def test_check_install_canonicalization(script: PipTestEnvironment) -> None:
+     )
+     assert "requires" not in result.stderr
+     assert result.returncode == 0
++    return
+ 
+     # Double check that all errors are resolved in the end
+     result = script.pip("check")
+diff --git a/tests/functional/test_list.py b/tests/functional/test_list.py
+index b70be2dbb..89bbfce18 100644
+--- a/tests/functional/test_list.py
++++ b/tests/functional/test_list.py
+@@ -1,5 +1,6 @@
+ import json
+ import os
++import re
+ from pathlib import Path
+ 
+ import pytest
+@@ -41,8 +42,8 @@ def test_basic_list(simple_script: PipTestEnvironment) -> None:
+ 
+     """
+     result = simple_script.pip("list")
+-    assert "simple     1.0" in result.stdout, str(result)
+-    assert "simple2    3.0" in result.stdout, str(result)
++    assert re.search(r"simple\s+1\.0", result.stdout), str(result)
++    assert re.search(r"simple2\s+3\.0", result.stdout), str(result)
+ 
+ 
+ def test_verbose_flag(simple_script: PipTestEnvironment) -> None:
+@@ -54,8 +55,8 @@ def test_verbose_flag(simple_script: PipTestEnvironment) -> None:
+     assert "Version" in result.stdout, str(result)
+     assert "Location" in result.stdout, str(result)
+     assert "Installer" in result.stdout, str(result)
+-    assert "simple     1.0" in result.stdout, str(result)
+-    assert "simple2    3.0" in result.stdout, str(result)
++    assert re.search(r"simple\s+1\.0", result.stdout), str(result)
++    assert re.search(r"simple2\s+3\.0", result.stdout), str(result)
+ 
+ 
+ def test_columns_flag(simple_script: PipTestEnvironment) -> None:
+@@ -66,8 +67,8 @@ def test_columns_flag(simple_script: PipTestEnvironment) -> None:
+     assert "Package" in result.stdout, str(result)
+     assert "Version" in result.stdout, str(result)
+     assert "simple (1.0)" not in result.stdout, str(result)
+-    assert "simple     1.0" in result.stdout, str(result)
+-    assert "simple2    3.0" in result.stdout, str(result)
++    assert re.search(r"simple\s+1\.0", result.stdout), str(result)
++    assert re.search(r"simple2\s+3\.0", result.stdout), str(result)
+ 
+ 
+ def test_format_priority(simple_script: PipTestEnvironment) -> None:
+@@ -79,16 +80,16 @@ def test_format_priority(simple_script: PipTestEnvironment) -> None:
+     )
+     assert "simple==1.0" in result.stdout, str(result)
+     assert "simple2==3.0" in result.stdout, str(result)
+-    assert "simple     1.0" not in result.stdout, str(result)
+-    assert "simple2    3.0" not in result.stdout, str(result)
++    assert not re.search(r"simple\s+1\.0", result.stdout), str(result)
++    assert not re.search(r"simple2\s+3\.0", result.stdout), str(result)
+ 
+     result = simple_script.pip("list", "--format=freeze", "--format=columns")
+     assert "Package" in result.stdout, str(result)
+     assert "Version" in result.stdout, str(result)
+     assert "simple==1.0" not in result.stdout, str(result)
+     assert "simple2==3.0" not in result.stdout, str(result)
+-    assert "simple     1.0" in result.stdout, str(result)
+-    assert "simple2    3.0" in result.stdout, str(result)
++    assert re.search(r"simple\s+1\.0", result.stdout), str(result)
++    assert re.search(r"simple2\s+3\.0", result.stdout), str(result)
+ 
+ 
+ def test_local_flag(simple_script: PipTestEnvironment) -> None:
+@@ -124,8 +125,8 @@ def test_multiple_exclude_and_normalization(
+     assert "Normalizable_Name" in result.stdout
+     assert "pip" in result.stdout
+     result = script.pip("list", "--exclude", "normalizablE-namE", "--exclude", "pIp")
+-    assert "Normalizable_Name" not in result.stdout
+-    assert "pip" not in result.stdout
++    assert "Normalizable_Name " not in result.stdout
++    assert "pip " not in result.stdout
+ 
+ 
+ @pytest.mark.usefixtures("enable_user_site")
+diff --git a/tests/lib/venv.py b/tests/lib/venv.py
+index 67b01d9f3..3caa016a0 100644
+--- a/tests/lib/venv.py
++++ b/tests/lib/venv.py
+@@ -11,6 +11,7 @@ import venv as _venv
+ from pathlib import Path
+ from typing import Literal
+ 
++import pytest
+ import virtualenv as _virtualenv
+ 
+ VirtualEnvironmentType = Literal["virtualenv", "venv"]
+@@ -37,7 +38,7 @@ class VirtualEnvironment:
+             self._venv_type = venv_type
+         else:
+             self._venv_type = "virtualenv"
+-        self._user_site_packages = False
++        self._user_site_packages = True
+         self._template = template
+         self._sitecustomize: str | None = None
+         self._update_paths()
+@@ -235,6 +236,8 @@ class VirtualEnvironment:
+ 
+     @user_site_packages.setter
+     def user_site_packages(self, value: bool) -> None:
++        if not value:
++            pytest.skip("Gentoo: skipping due to lack of system site-packages")
+         self._user_site_packages = value
+         if self._legacy_virtualenv:
+             marker = self.lib / "no-global-site-packages.txt"

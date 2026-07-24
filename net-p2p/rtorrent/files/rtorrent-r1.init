@@ -4,10 +4,11 @@
 description="rTorrent BitTorrent client"
 
 command="/usr/bin/rtorrent"
-command_args="-o system.daemon.set=true"
+command_args="-o system.daemon.set=true ${EXTRA_ARGS}"
 command_background=true
 command_user="${USER}"
 pidfile="/run/rtorrent.pid"
+output_log="${LOGFILE:-/dev/null}"
 
 depend()
 {

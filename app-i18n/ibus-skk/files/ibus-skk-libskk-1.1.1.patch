@@ -1,0 +1,42 @@
+https://github.com/ueno/ibus-skk/commit/b9c00e304412c513738516a567df14a4a28e4a21.patch
+
+From b9c00e304412c513738516a567df14a4a28e4a21 Mon Sep 17 00:00:00 2001
+From: Boyuan Yang <byang@debian.org>
+Date: Fri, 6 Mar 2026 10:24:56 -0500
+Subject: [PATCH] Fix compatibility with libskk 1.1.1
+
+closes: #75
+---
+ configure.ac    | 4 ++++
+ src/Makefile.am | 3 ++-
+ 2 files changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index 2e1abf0..a3b91b0 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -64,6 +64,10 @@ PKG_CHECK_MODULES(IBUS, [ibus-1.0 >= 1.5.11], ,
+ PKG_CHECK_MODULES(LIBSKK, [libskk >= 1.0.2], ,
+   AC_MSG_ERROR([can't find libskk]))
+ 
++# check gee
++PKG_CHECK_MODULES(GEE, [gee-0.8], ,
++  AC_MSG_ERROR([can't find gee-0.8]))
++
+ # check gtk+
+ PKG_CHECK_MODULES(GTK, [gtk+-3.0], ,
+   AC_MSG_ERROR([can't find gtk+-3.0]))
+diff --git a/src/Makefile.am b/src/Makefile.am
+index 26e1cad..94c0b23 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -32,7 +32,8 @@ COMMON_CFLAGS =					\
+ 
+ COMMON_LIBS =					\
+ 	$(IBUS_LIBS)				\
+-	$(LIBSKK_LIBS)
++	$(LIBSKK_LIBS)				\
++	$(GEE_LIBS)
+ 
+ ibus_engine_skk_VALAFLAGS =			\
+ 	--vapidir=.				\

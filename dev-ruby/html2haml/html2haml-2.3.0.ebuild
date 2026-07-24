@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-USE_RUBY="ruby31 ruby32 ruby33"
+USE_RUBY="ruby32 ruby33 ruby34"
 
 RUBY_FAKEGEM_EXTRADOC="README.md Changelog.markdown"
 RUBY_FAKEGEM_RECIPE_DOC="yard"
@@ -24,6 +24,10 @@ ruby_add_rdepend ">=dev-ruby/nokogiri-1.6.0
 	>=dev-ruby/haml-4.0"
 
 ruby_add_bdepend "test? ( dev-ruby/minitest )"
+
+PATCHES=(
+	"${FILESDIR}"/html2haml-2.3.0-fix-nokogiri-html-doctype-test.patch # bug #978789
+)
 
 all_ruby_prepare() {
 	sed -e "/bundler/d" \

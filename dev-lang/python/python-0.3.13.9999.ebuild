@@ -9,7 +9,7 @@ inherit autotools check-reqs flag-o-matic git-r3 linux-info
 inherit multiprocessing pax-utils toolchain-funcs
 
 PYVER="$(ver_cut 2-3)t"
-PATCHSET="python-gentoo-patches-3.13.4"
+PATCHSET="python-gentoo-patches-3.13.14"
 
 DESCRIPTION="Freethreading (no-GIL) version of Python programming language"
 HOMEPAGE="
@@ -44,10 +44,10 @@ RDEPEND="
 	dev-libs/libffi:=
 	dev-libs/mpdecimal:=
 	dev-python/gentoo-common
+	sys-apps/util-linux
 	>=virtual/zlib-1.1.3:=
 	virtual/libintl
 	gdbm? ( sys-libs/gdbm:=[berkdb] )
-	kernel_linux? ( sys-apps/util-linux:= )
 	ncurses? ( >=sys-libs/ncurses-5.2:= )
 	readline? (
 		!libedit? ( >=sys-libs/readline-4.1:= )

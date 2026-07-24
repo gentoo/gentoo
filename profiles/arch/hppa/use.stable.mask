@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 #
 
@@ -137,7 +137,3 @@ openal
 # Matt Turner <mattst88@gentoo.org> (2018-04-22)
 # media-gfx/gimp is ~hppa only
 gimp
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2017-10-29)
-# Mask qt5 for stabilisation timeout, bug #620334
-qt5

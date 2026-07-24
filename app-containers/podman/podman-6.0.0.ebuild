@@ -1,0 +1,141 @@
+# Copyright 1999-2026 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=8
+
+PYTHON_COMPAT=( python3_{12..14} )
+
+inherit go-module python-any-r1 tmpfiles toolchain-funcs linux-info
+
+DESCRIPTION="A tool for managing OCI containers and pods with Docker-compatible CLI"
+HOMEPAGE="https://github.com/podman-container-tools/podman/ https://podman.io/"
+
+if [[ ${PV} == 9999* ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/podman-container-tools/podman.git"
+else
+	SRC_URI="https://github.com/podman-container-tools/podman/archive/v${PV/_rc/-rc}.tar.gz -> ${P}.tar.gz"
+	S="${WORKDIR}/${P/_rc/-rc}"
+	[[ ${PV} != *rc* ]] && \
+		KEYWORDS="~amd64 ~arm64 ~loong ~riscv"
+fi
+
+# main pkg
+LICENSE="Apache-2.0"
+# deps
+LICENSE+=" BSD BSD-2 CC-BY-SA-4.0 ISC MIT MPL-2.0"
+SLOT="0"
+IUSE="apparmor btrfs cron +seccomp selinux systemd wrapper"
+RESTRICT="test"
+
+RDEPEND="
+	app-containers/catatonit
+	>=app-containers/conmon-2.1.10
+	>=app-containers/container-libs-0.68.0[extra(-)]
+	app-crypt/gpgme:=
+	dev-db/sqlite:3
+	dev-libs/libassuan:=
+	dev-libs/libgpg-error:=
+	sys-apps/shadow:=
+
+	apparmor? ( sys-libs/libapparmor )
+	btrfs? ( sys-fs/btrfs-progs )
+	wrapper? ( !app-containers/docker-cli )
+	seccomp? ( sys-libs/libseccomp:= )
+	selinux? ( sec-policy/selinux-podman sys-libs/libselinux:= )
+	systemd? ( sys-apps/systemd:= )
+"
+DEPEND="${RDEPEND}"
+BDEPEND="
+	${PYTHON_DEPS}
+	dev-go/go-md2man
+	>=dev-lang/go-1.25.6
+"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-5.5.2-togglable-seccomp.patch
+)
+
+CONFIG_CHECK="
+	~USER_NS
+"
+
+pkg_setup() {
+	use btrfs && CONFIG_CHECK+=" ~BTRFS_FS"
+	linux-info_pkg_setup
+	python-any-r1_pkg_setup
+}
+
+src_prepare() {
+	default
+
+	# assure necessary files are present
+	local file
+	for file in apparmor_tag btrfs_installed_tag systemd_tag; do
+		[[ -f hack/"${file}".sh ]] || die
+	done
+
+	local feature
+	for feature in apparmor systemd; do
+		cat <<-EOF > hack/"${feature}"_tag.sh || die
+		#!/usr/bin/env bash
+		$(usex ${feature} "echo ${feature}" echo)
+		EOF
+	done
+
+	cat <<-EOF > hack/btrfs_installed_tag.sh || die
+	#!/usr/bin/env bash
+	$(usex btrfs echo 'echo exclude_graphdriver_btrfs')
+	EOF
+
+	# hardcode using system sqlite instead of bundled one
+	[[ -f hack/sqlite_tag.sh ]] && echo -e '#!/usr/bin/env bash\necho libsqlite3' > hack/sqlite_tag.sh || die
+}
+
+src_compile() {
+	export ETCDIR="${EPREFIX}/etc" PREFIX="${EPREFIX}/usr" BUILD_ORIGIN="Gentoo Portage"
+
+	# For non-live versions, prevent git operations which causes sandbox violations
+	# https://github.com/gentoo/gentoo/pull/33531#issuecomment-1786107493
+	[[ ${PV} != 9999* ]] && export COMMIT_NO="" GIT_COMMIT="" EPOCH_TEST_COMMIT=""
+
+	# Use proper pkg-config to get gpgme cflags and ldflags when
+	# cross-compiling, bug 930982.
+	if tc-is-cross-compiler; then
+		tc-export PKG_CONFIG
+	fi
+
+	emake BUILDFLAGS="-v -work -x" GOMD2MAN="go-md2man" EXTRA_BUILDTAGS="$(usev seccomp)" SELINUXOPT= \
+		  all $(usev wrapper docker-docs)
+}
+
+src_install() {
+	emake DESTDIR="${D}" SELINUXOPT= install install.completions $(usev wrapper install.docker-full)
+
+	newconfd "${FILESDIR}"/podman-5.0.0_rc4.confd podman
+	newinitd "${FILESDIR}"/podman-5.0.0_rc4.initd podman
+
+	newinitd "${FILESDIR}"/podman-restart-5.0.0_rc4.initd podman-restart
+	newconfd "${FILESDIR}"/podman-restart-5.0.0_rc4.confd podman-restart
+
+	newinitd "${FILESDIR}"/podman-clean-transient-5.0.0_rc6.initd podman-clean-transient
+	newconfd "${FILESDIR}"/podman-clean-transient-5.0.0_rc6.confd podman-clean-transient
+
+	if use cron; then
+		exeinto /etc/cron.daily
+		newexe "${FILESDIR}"/podman-auto-update-5.0.0.cron podman-auto-update
+	fi
+
+	insinto /etc/logrotate.d
+	newins "${FILESDIR}/podman.logrotated" podman
+
+	exeinto /etc/user/init.d
+	newexe "${FILESDIR}/podman-5.0.0_rc4.user.initd" podman
+
+	insinto /etc/user/conf.d
+	newins "${FILESDIR}/podman-5.0.0_rc4.user.confd" podman
+}
+
+pkg_postinst() {
+	tmpfiles_process podman.conf $(usev wrapper podman-docker.conf)
+}

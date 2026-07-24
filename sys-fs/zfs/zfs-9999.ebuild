@@ -81,17 +81,6 @@ BDEPEND="
 	)
 "
 
-if [[ ${PV} != "9999" ]] ; then
-	BDEPEND+=" verify-sig? ( sec-keys/openpgp-keys-openzfs )"
-
-	IUSE+=" +dist-kernel-cap"
-	RDEPEND="
-		dist-kernel-cap? ( dist-kernel? (
-			<virtual/dist-kernel-${ZFS_KERNEL_DEP}
-		) )
-	"
-fi
-
 # awk is used for some scripts, completions, and the Dracut module
 RDEPEND="
 	${DEPEND}
@@ -116,6 +105,17 @@ RDEPEND="
 	)
 	!<sys-fs/zfs-kmod-2.4.0_rc2-r1
 "
+
+if [[ ${PV} != "9999" ]] ; then
+	BDEPEND+=" verify-sig? ( sec-keys/openpgp-keys-openzfs )"
+
+	IUSE+=" +dist-kernel-cap"
+	RDEPEND+="
+		dist-kernel-cap? ( dist-kernel? (
+			<virtual/dist-kernel-${ZFS_KERNEL_DEP}
+		) )
+	"
+fi
 
 REQUIRED_USE="
 	!minimal? ( ${PYTHON_REQUIRED_USE} )
@@ -199,7 +199,8 @@ libsoversion_check() {
 	local bugurl libzfs_sover
 	bugurl="https://bugs.gentoo.org/enter_bug.cgi?form_name=enter_bug&product=Gentoo+Linux&component=Current+packages"
 
-	libzfs_sover="$(grep 'libzfs_la_LDFLAGS += -version-info' lib/libzfs/Makefile.am \
+	libzfs_sover="$(grep -E 'libzfs_la_LDFLAGS[[:space:]]*\+?=[[:space:]]*-version-info' \
+		lib/libzfs/Makefile.am \
 		| grep -Eo '[0-9]+:[0-9]+:[0-9]+')"
 	libzfs_sover="${libzfs_sover%%:*}"
 
@@ -224,6 +225,9 @@ src_prepare() {
 
 	# Run unconditionally (bug #792627)
 	eautoreconf
+
+	# strip forced -Werror, #904378
+	sed -i '/BUILD_FREEBSD_TRUE/s/-Werror //g' Makefile.in || die
 
 	if [[ ${PV} != "9999" ]]; then
 		# Set revision number

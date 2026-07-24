@@ -1,0 +1,15 @@
+Fix build with GCC 17
+
+https://bugs.gentoo.org/976979
+https://gitlab.com/OpenMW/openmw/-/merge_requests/5346
+
+--- a/apps/wizard/unshield/inisettings.hpp
++++ b/apps/wizard/unshield/inisettings.hpp
+@@ -1,6 +1,7 @@
+ #ifndef INISETTINGS_HPP
+ #define INISETTINGS_HPP
+ 
++#include <fstream>
+ #include <QHash>
+ #include <QVariant>
+ 

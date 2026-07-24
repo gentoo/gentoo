@@ -56,7 +56,7 @@ move dev-python/PyQt6-WebEngine dev-python/pyqt6-webengine
 move dev-python/PyQt6-sip dev-python/pyqt6-sip
 move dev-python/PyQt6 dev-python/pyqt6
 move sys-libs/llvm-offload llvm-runtimes/offload
-move dev-libs/libclc llvm-core/libclc
+move dev-libs/libclc llvm-runtimes/libclc
 move sys-libs/llvm-libunwind llvm-runtimes/libunwind
 move sys-libs/libomp llvm-runtimes/openmp
 move sys-libs/libcxxabi llvm-runtimes/libcxxabi

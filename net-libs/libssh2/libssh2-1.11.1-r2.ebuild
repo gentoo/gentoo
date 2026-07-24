@@ -1,0 +1,80 @@
+# Copyright 1999-2026 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=8
+
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/danielstenberg.asc
+inherit cmake-multilib verify-sig
+
+DESCRIPTION="Library implementing the SSH2 protocol"
+HOMEPAGE="https://libssh2.org"
+SRC_URI="
+	https://libssh2.org/download/${P}.tar.xz
+	verify-sig? (
+		https://libssh2.org/download/${P}.tar.xz.asc
+	)
+"
+
+LICENSE="BSD"
+SLOT="0"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~x64-macos"
+IUSE="gcrypt mbedtls test zlib"
+REQUIRED_USE="?? ( gcrypt mbedtls )"
+RESTRICT="!test? ( test )"
+
+RDEPEND="
+	gcrypt? ( >=dev-libs/libgcrypt-1.5.3:0[${MULTILIB_USEDEP}] )
+	!gcrypt? (
+		mbedtls? ( net-libs/mbedtls:0=[${MULTILIB_USEDEP}] )
+		!mbedtls? (
+			>=dev-libs/openssl-1.0.1h-r2:0=[${MULTILIB_USEDEP}]
+		)
+	)
+	zlib? ( >=virtual/zlib-1.2.8-r1:=[${MULTILIB_USEDEP}] )
+"
+DEPEND="
+	${RDEPEND}
+"
+BDEPEND="
+	verify-sig? ( sec-keys/openpgp-keys-danielstenberg )
+"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.11.0-mansyntax_sh.patch
+	"${FILESDIR}"/${P}-CVE-2026-55200-transport.patch
+	"${FILESDIR}"/${P}-CVE-2026-55199-packet.patch
+	"${FILESDIR}"/${P}-CVE-2025-15661-sftp.patch
+	"${FILESDIR}"/${P}-CVE-2026-7598-userauth.patch
+	"${FILESDIR}"/${PN}-1.11.1-tests-without-static.patch
+)
+
+multilib_src_configure() {
+	local crypto_backend=OpenSSL
+	if use gcrypt; then
+		crypto_backend=Libgcrypt
+	elif use mbedtls; then
+		crypto_backend=mbedTLS
+	fi
+
+	local mycmakeargs=(
+		-DBUILD_SHARED_LIBS=ON
+		-DBUILD_STATIC_LIBS=OFF
+		-DBUILD_TESTING=$(usex test)
+		-DCRYPTO_BACKEND=${crypto_backend}
+		-DENABLE_ZLIB_COMPRESSION=$(usex zlib)
+	)
+
+	if use test ; then
+		# Pass separately to avoid unused var warnings w/ USE=-test
+		mycmakeargs+=(
+			-DRUN_SSHD_TESTS=OFF
+			-DRUN_DOCKER_TESTS=OFF
+		)
+	fi
+
+	cmake_src_configure
+}
+
+multilib_src_install_all() {
+	einstalldocs
+}

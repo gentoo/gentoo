@@ -1,0 +1,77 @@
+From e6f0c19a10d02ce74d4525b7decdd593964e01a0 Mon Sep 17 00:00:00 2001
+From: Sebastian Pipping <sebastian@pipping.org>
+Date: Wed, 22 Jul 2026 18:07:26 +0200
+Subject: [PATCH] Remove SSL support that is broken for pyopenssl >=26.2.0
+
+Related upstream issue:
+https://github.com/sebageek/servefile/issues/33
+---
+ servefile/servefile.py  | 10 +++-------
+ setup.py                |  1 -
+ tests/test_servefile.py |  3 +++
+ 3 files changed, 6 insertions(+), 8 deletions(-)
+
+diff --git a/servefile/servefile.py b/servefile/servefile.py
+index 2de955b..400d1cf 100755
+--- a/servefile/servefile.py
++++ b/servefile/servefile.py
+@@ -1160,13 +1160,9 @@ def main():
+                         help="Limit upload size in kB. Size modifiers are allowed, e.g. 2G, 12MB, 1B")
+     parser.add_argument('-l', '--list-dir', action="store_true", default=False,
+                         help="Show directory indexes and allow access to all subdirectories")
+-    parser.add_argument('--ssl', action="store_true", default=False,
+-                        help="Enable SSL. If no key/cert is specified one will be generated")
+-    parser.add_argument('--key', type=str,
+-                        help="Keyfile to use for SSL. If no cert is given with --cert the keyfile "
+-                             "will also be searched for a cert")
+-    parser.add_argument('--cert', type=str,
+-                        help="Certfile to use for SSL")
++    parser.set_defaults(ssl=False)
++    parser.set_defaults(key=None)
++    parser.set_defaults(cert=None)
+     parser.add_argument('-a', '--auth', type=str, metavar='user:password',
+                         help="Set user and password for HTTP basic authentication")
+     parser.add_argument('--realm', type=str, default=None,
+diff --git a/setup.py b/setup.py
+index ab26743..f738953 100755
+--- a/setup.py
++++ b/setup.py
+@@ -16,7 +16,6 @@ setup(
+     url='https://github.com/sebageek/servefile/',
+     author='Sebastian Lohff',
+     author_email='seba@someserver.de',
+-    install_requires=['pyopenssl'],
+     tests_require=[
+         'pathlib2; python_version<"3"',
+         'pytest',
+diff --git a/tests/test_servefile.py b/tests/test_servefile.py
+index 17d760d..84ef66d 100644
+--- a/tests/test_servefile.py
++++ b/tests/test_servefile.py
+@@ -10,6 +10,7 @@ import tarfile
+ import time
+ import urllib3
+ from requests.exceptions import ConnectionError
++from unittest import skip
+ 
+ # crudly written to learn more about pytest and to have a base for refactoring
+ 
+@@ -406,6 +407,7 @@ def test_tar_compression(run_servefile, datadir):
+     assert len(tar.getmembers()) == 1
+ 
+ 
++@skip("SSL support not available")
+ def test_https(run_servefile, datadir):
+     data = "NOOT NOOT"
+     p = datadir({'testfile': data}) / 'testfile'
+@@ -427,6 +429,7 @@ def test_https(run_servefile, datadir):
+     _retry_while(ConnectionError, check_download)(data, protocol='https', verify=False)
+ 
+ 
++@skip("SSL support not available")
+ def test_https_big_download(run_servefile, datadir):
+     # test with about 10 mb of data
+     data = "x" * (10 * 1024 ** 2)
+-- 
+2.55.0
+

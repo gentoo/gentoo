@@ -12,6 +12,7 @@
 		<flag name="fluidsynth">Support FluidSynth as MIDI synth backend</flag>
 		<flag name="gme">Support various gaming console music formats</flag>
 		<flag name="http">Support HTTP streams through neon</flag>
+		<flag name="mpris">Enable support for MPRIS2 interface</flag>
 		<flag name="openmpt">Add support for OpenMPT</flag>
 		<flag name="pipewire">Build the PipeWire output plugin</flag>
 		<flag name="qtmedia">Enable playback via <pkg>dev-qt/qtmultimedia</pkg></flag>

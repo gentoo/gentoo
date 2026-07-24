@@ -17,6 +17,15 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2026-06-10)
+# Part of stdlib since Python 3.11 (as tomllib).
+dev-python/tomli
+
+# Michał Górny <mgorny@gentoo.org> (2026-06-06)
+# Discontinued upstream, with explicit note that they will not be fixing
+# any further security issues.
+dev-python/bleach
+
 # Michał Górny <mgorny@gentoo.org> (2026-05-08)
 # The package was archived upstream as pytest-9 features built-in
 # subtest support.  Gotta check if we need any code changes, or can just
@@ -67,21 +76,6 @@ dev-python/httpretty
 # Only exists temporarily to facilitate upgrades for exaile.
 # Bug 892854
 dev-python/berkeleydb
-
-# Michał Górny <mgorny@gentoo.org> (2025-10-01)
-# dev-python/passlib is unmaintained upstream (last release in 2020),
-# and we keep having to patch breakage out.  Packages really need
-# to migrate out of it.
-dev-python/passlib
-
-# Michał Górny <mgorny@gentoo.org> (2025-07-29)
-# dev-python/flaky and dev-python/pytest-rerunfailurse have conflicting
-# pytest fixtures, with the latter providing a more powerful fixture
-# (and the former breaking packages requiring it).  If your package
-# uses `@pytest.mark.flaky`, use pytest-rerunfailures instead.
-# If it uses `@flaky.flaky`, send a patch upstream to switch
-# to `@pytest.mark.flaky`.
-dev-python/flaky
 
 # Michał Górny <mgorny@gentoo.org> (2025-06-28)
 # versioningit does not provide any support for building via GitHub

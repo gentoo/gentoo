@@ -8,8 +8,8 @@ PYTHON_COMPAT=( python3_{11..14} )
 inherit autotools flag-o-matic systemd xdg-utils python-r1
 
 DESCRIPTION="A screen color temperature adjusting software"
-HOMEPAGE="http://jonls.dk/redshift/"
-SRC_URI="https://github.com/jonls/${PN}/releases/download/v${PV}/${P}.tar.xz"
+HOMEPAGE="https://github.com/sharpbracket/redshift"
+SRC_URI="https://github.com/sharpbracket/redshift/releases/download/v${PV}/${P}.tar.xz"
 
 LICENSE="GPL-3"
 SLOT="0"

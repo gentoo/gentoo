@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,7 +15,7 @@ S="${WORKDIR}"/${PN}-${MY_COMMIT}
 # While COPYING* doesn't mention 'or any later version', all the headers do, hence use +
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="0/1.0-6" # based on SONAME of libimobiledevice-1.0.so
-KEYWORDS="amd64 ~arm ~arm64 ~hppa ~loong ppc ~ppc64 ~riscv ~s390 x86"
+KEYWORDS="amd64 ~arm arm64 ~hppa ~loong ppc ~ppc64 ~riscv ~s390 x86"
 IUSE="doc gnutls readline static-libs"
 
 RDEPEND="

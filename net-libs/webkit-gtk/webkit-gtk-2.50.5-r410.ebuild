@@ -247,10 +247,13 @@ src_configure() {
 		-DUSE_WOFF2=ON
 	)
 
-	if use riscv; then
+	if use riscv || use ppc64; then
+		# https://bugs.gentoo.org/970556
 		# https://bugs.webkit.org/show_bug.cgi?id=305745
 		append-cppflags -DSKCMS_HAS_MUSTTAIL=0
+	fi
 
+	if use riscv; then
 		# Workaround for bug 938162 (upstream bug 271371).
 		mycmakeargs+=(
 			-DENABLE_WEBASSEMBLY=OFF

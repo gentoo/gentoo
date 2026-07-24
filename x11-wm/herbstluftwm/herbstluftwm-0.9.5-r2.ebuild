@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -86,7 +86,7 @@ src_prepare() {
 
 src_configure() {
 	# Ensure that 'python3' is in PATH. #765118
-	python_setup
+	use python && python_setup
 
 	local mycmakeargs=(
 		-DWITH_DOCUMENTATION=$(usex doc)

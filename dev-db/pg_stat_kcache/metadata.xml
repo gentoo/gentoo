@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">powa-team/pg_stat_kcache</remote-id>
+	</upstream>
+	<longdescription>
+		Gathers statistics about real reads and writes done by the filesystem layer.
+		It is provided in the form of an extension for PostgreSQL,
+		and requires pg_stat_statements extension to be installed.
+	</longdescription>
+</pkgmetadata>

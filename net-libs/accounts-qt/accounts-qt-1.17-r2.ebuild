@@ -1,7 +1,7 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=9
 
 inherit qmake-utils
 
@@ -44,7 +44,7 @@ src_prepare() {
 
 	sed -e "s|share/doc/\$\${PROJECT_NAME}|share/doc/${PF}|" \
 		-i doc/doc.pri || die
-	sed -e "/QHG_LOCATION/s|qhelpgenerator|$(qt6_get_libexecdir)/&|" \
+	sed -e "/QHG_LOCATION/s|qhelpgenerator|$(qt_get_broot_binary 6 qhelpgenerator)|" \
 		-i doc/doxy.conf || die
 	if ! use doc; then
 		sed -e "/include( doc\/doc.pri )/d" -i ${PN}.pro || die

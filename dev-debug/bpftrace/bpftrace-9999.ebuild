@@ -88,6 +88,12 @@ pkg_pretend() {
 		~HAVE_EBPF_JIT
 	"
 
+	if use test; then
+		# force linux-info to check kernel configurations only in the
+		# running kernel, not in any on-disk configuration (bug 977516)
+		KERNEL_DIR="linux-info-runtime-checks-only"
+	fi
+
 	check_extra_config
 
 	if use test; then

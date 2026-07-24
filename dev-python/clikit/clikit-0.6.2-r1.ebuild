@@ -1,10 +1,10 @@
-# Copyright 2022-2025 Gentoo Authors
+# Copyright 2022-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-DISTUTILS_USE_PEP517=poetry
-PYTHON_COMPAT=( python3_{11..14} )
+DISTUTILS_USE_PEP517=poetry-core
+PYTHON_COMPAT=( python3_{12..15} )
 
 inherit distutils-r1
 
@@ -29,15 +29,13 @@ RDEPEND="
 BDEPEND="
 	test? (
 		dev-python/crashtest[${PYTHON_USEDEP}]
-		dev-python/pytest-mock[${PYTHON_USEDEP}]
 	)
 "
 
+EPYTEST_PLUGINS=( pytest-mock )
 distutils_enable_tests pytest
 
 python_test() {
-	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
-	local -x PYTEST_PLUGINS=pytest_mock.plugin
 	local -x COLUMNS=80
 	epytest
 }

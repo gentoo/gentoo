@@ -9,6 +9,6 @@
     <flag name="tools">Install optional tests and tools</flag>
   </use>
   <upstream>
-    <remote-id type="freedesktop-gitlab">mesa/drm</remote-id>
+    <remote-id type="freedesktop-gitlab">mesa/libdrm</remote-id>
   </upstream>
 </pkgmetadata>

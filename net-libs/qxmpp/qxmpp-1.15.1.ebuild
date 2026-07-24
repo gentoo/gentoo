@@ -10,7 +10,7 @@ HOMEPAGE="https://invent.kde.org/libraries/qxmpp"
 
 if [[ ${KDE_BUILD_TYPE} == release ]]; then
 	SRC_URI="mirror://kde/unstable/${PN}/${P}.tar.xz"
-	KEYWORDS="~amd64"
+	KEYWORDS="amd64"
 fi
 
 LICENSE="LGPL-2.1 CC0-1.0"

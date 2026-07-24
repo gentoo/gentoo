@@ -14,7 +14,7 @@ else
 fi
 
 DESCRIPTION="Standalone X server running under Wayland"
-HOMEPAGE="https://www.x.org/wiki/ https://gitlab.freedesktop.org/xorg/xserver/xorg-server"
+HOMEPAGE="https://www.x.org/ https://gitlab.freedesktop.org/xorg/xserver/xorg-server"
 
 LICENSE="MIT"
 SLOT="0"

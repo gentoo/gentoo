@@ -4,7 +4,7 @@
 EAPI=8
 
 GUILE_COMPAT=( 2-2 3-0 )
-LUA_COMPAT=( lua5-{1..4} )
+LUA_COMPAT=( lua5-{3..4} )
 PYTHON_COMPAT=( python3_{11..14} )
 GENTOO_DEPEND_ON_PERL=no
 
@@ -54,11 +54,11 @@ REQUIRED_USE="
 "
 
 RDEPEND="
-	dev-libs/libgcrypt:0=
-	net-libs/gnutls:=
+	>=dev-libs/libgcrypt-1.8.0:0=
+	>=net-libs/gnutls-3.6.3:=
 	sys-libs/ncurses:0=
 	virtual/zlib:=
-	net-misc/curl[ssl]
+	>=net-misc/curl-7.68.0[ssl]
 	charset? ( virtual/libiconv )
 	guile? ( ${GUILE_DEPS} )
 	lua? ( ${LUA_DEPS} )
@@ -78,11 +78,11 @@ RDEPEND="
 	)
 	selinux? ( sec-policy/selinux-irc )
 	spell? (
-		enchant? ( app-text/enchant:* )
+		enchant? ( app-text/enchant:2 )
 		!enchant? ( app-text/aspell )
 	)
 	tcl? ( >=dev-lang/tcl-8.4.15:0= )
-	zstd? ( app-arch/zstd:= )
+	zstd? ( >=app-arch/zstd-1.4.0:= )
 "
 
 DEPEND="${RDEPEND}
@@ -100,7 +100,7 @@ DOCS="AUTHORS.md CHANGELOG.md CONTRIBUTING.md UPGRADING.md README.md"
 RESTRICT="!test? ( test )"
 
 maint_pkg_create() {
-	pushd "${S}" > /dev/null
+	pushd "${S}" > /dev/null || die
 
 	local -x BUILD_DIR=${S}-docsonly
 	local mycmakeargs=(
@@ -125,7 +125,7 @@ maint_pkg_create() {
 	if [[ -n ${ver} ]]; then
 		local MY_P="${PN}-${ver}"
 		local tar="${T}/${MY_P}-manpages.tar.xz"
-		bsdtar -s "#^#${MY_P}-manpages/#S" -caf "${tar}" *.1 || die
+		bsdtar -s "#^#${MY_P}-manpages/#S" -caf "${tar}" ./*.1 || die
 		einfo "Packaged tar now available:"
 		einfo "$(du -b "${tar}")"
 	fi
@@ -238,7 +238,7 @@ src_configure() {
 }
 
 src_test() {
-	if $(locale -a | grep -iq "en_US\.utf.*8"); then
+	if locale -a | grep -iq "en_US\.utf.*8"; then
 		cmake_src_test -V
 	else
 		eerror "en_US.UTF-8 locale is required to run ${PN}'s ${FUNCNAME}"

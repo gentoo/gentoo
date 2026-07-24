@@ -17,7 +17,7 @@ else
 	SRC_URI="https://github.com/clojure-emacs/${PN}/archive/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz"
 
-	KEYWORDS="~amd64"
+	KEYWORDS="amd64"
 fi
 
 LICENSE="GPL-3+"
@@ -58,7 +58,7 @@ src_prepare() {
 	mv lisp/*.el ./ || die
 	echo "" > test/integration/integration-tests.el || die
 
-	default
+	elisp_src_prepare
 }
 
 src_install() {

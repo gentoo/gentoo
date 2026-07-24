@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 
 inherit distutils-r1
 
@@ -19,6 +19,8 @@ KEYWORDS="~amd64 ~x86"
 # Connects to moddb.com
 RESTRICT="test"
 PROPERTIES="test? ( test_network )"
+
+BDEPEND="dev-python/pkg-resources[${PYTHON_USEDEP}]"
 
 RDEPEND="
 	dev-python/beautifulsoup4[${PYTHON_USEDEP}]

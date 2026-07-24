@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -34,6 +34,10 @@ BDEPEND="
 DOCS=( ChangeLog.adoc README.adoc  )
 
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/andresimon.asc
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.22-gcc17.patch
+)
 
 src_unpack() {
 	if use verify-sig ; then

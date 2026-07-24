@@ -18,7 +18,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{12..14} )
 # NOTE must match media-libs/osl
 LLVM_COMPAT=( {18..19} )
 LLVM_OPTIONAL=1

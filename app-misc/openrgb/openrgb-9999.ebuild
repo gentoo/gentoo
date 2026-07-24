@@ -1,4 +1,4 @@
-# Copyright 2020-2025 Gentoo Authors
+# Copyright 2020-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,7 +12,7 @@ else
 	MY_PV=$(ver_rs 2 "")
 	SRC_URI="https://gitlab.com/CalcProgrammer1/OpenRGB/-/archive/release_${MY_PV}/OpenRGB-release_${MY_PV}.tar.bz2"
 	S="${WORKDIR}/OpenRGB-release_${MY_PV}"
-	KEYWORDS="~amd64 ~loong ~x86"
+	KEYWORDS="~amd64 ~loong"
 fi
 
 DESCRIPTION="Open source RGB lighting control"

@@ -2,16 +2,15 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{11..14} )
 
-inherit gnome.org gnome2-utils meson python-any-r1 vala xdg
+inherit gnome.org gnome2-utils meson vala xdg
 
 DESCRIPTION="GNOME contact management application"
 HOMEPAGE="https://apps.gnome.org/Contacts/"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64 ~riscv x86"
 IUSE="+gnome-online-accounts"
 
 PATCHES=(
@@ -40,7 +39,6 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
-	${PYTHON_DEPS}
 	${VALA_DEPEND}
 	dev-util/blueprint-compiler
 	app-text/docbook-xml-dtd:4.2

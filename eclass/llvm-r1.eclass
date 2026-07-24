@@ -57,14 +57,14 @@ inherit llvm-utils
 # @DESCRIPTION:
 # Oldest supported LLVM slot.  This is used to automatically filter out
 # unsupported LLVM_COMPAT values.
-_LLVM_OLDEST_SLOT=16
+_LLVM_OLDEST_SLOT=17
 
 # @ECLASS_VARIABLE: _LLVM_NEWEST_STABLE
 # @INTERNAL
 # @DESCRIPTION:
 # The newest stable LLVM version.  Versions newer than that won't
 # be automatically enabled via USE defaults.
-_LLVM_NEWEST_STABLE=21
+_LLVM_NEWEST_STABLE=22
 
 # == control variables ==
 

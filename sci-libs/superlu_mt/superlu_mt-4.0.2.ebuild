@@ -28,6 +28,7 @@ BDEPEND="virtual/pkgconfig
 PATCHES=(
 	"${FILESDIR}"/${P}-gentoo.patch
 	"${FILESDIR}"/${P}-proto.patch
+	"${FILESDIR}"/${P}-examples.patch
 )
 
 pkg_pretend() {

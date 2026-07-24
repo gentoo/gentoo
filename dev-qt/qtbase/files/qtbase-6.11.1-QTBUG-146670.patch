@@ -1,0 +1,14 @@
+https://codereview.qt-project.org/c/qt/qtbase/+/735182
+https://qt-project.atlassian.net/browse/QTBUG-146670
+(seems to also affect ppc32)
+--- a/src/corelib/kernel/qtestsupport_core.cpp
++++ b/src/corelib/kernel/qtestsupport_core.cpp
+@@ -9,8 +9,4 @@
+ using namespace std::chrono_literals;
+ 
+-// Assert that this instantiation of std::atomic is always lock-free so we
+-// know that no code will execute on destruction.
+-static_assert(std::atomic<std::chrono::milliseconds>::is_always_lock_free);
+-
+ QT_BEGIN_NAMESPACE
+ 

@@ -4,8 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=standalone
-PYTHON_TESTED=( pypy3_11 python3_{11..14} )
-PYTHON_COMPAT=( "${PYTHON_TESTED[@]}" )
+PYTHON_COMPAT=( python3_{12..15} )
 PYTHON_REQ_USE="threads(+)"
 
 inherit distutils-r1 pypi
@@ -22,9 +21,6 @@ SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
 
 RDEPEND="
-	$(python_gen_cond_dep '
-		dev-python/importlib-resources[${PYTHON_USEDEP}]
-	' pypy3_11 3.11)
 	>=dev-python/packaging-20.0[${PYTHON_USEDEP}]
 	>=dev-python/setuptools-64.0.0[${PYTHON_USEDEP}]
 "
@@ -36,15 +32,13 @@ RDEPEND="
 BDEPEND="
 	${RDEPEND}
 	test? (
-		$(python_gen_cond_dep '
-			>=dev-python/wheel-0.32.0[${PYTHON_USEDEP}]
-			>=dev-python/fixtures-3.0.0[${PYTHON_USEDEP}]
-			>=dev-python/testresources-2.0.0[${PYTHON_USEDEP}]
-			>=dev-python/testscenarios-0.4[${PYTHON_USEDEP}]
-			>=dev-python/testtools-2.2.0[${PYTHON_USEDEP}]
-			>=dev-python/virtualenv-20.0.3[${PYTHON_USEDEP}]
-			dev-vcs/git
-		' "${PYTHON_TESTED[@]}")
+		>=dev-python/wheel-0.32.0[${PYTHON_USEDEP}]
+		>=dev-python/fixtures-3.0.0[${PYTHON_USEDEP}]
+		>=dev-python/testresources-2.0.0[${PYTHON_USEDEP}]
+		>=dev-python/testscenarios-0.4[${PYTHON_USEDEP}]
+		>=dev-python/testtools-2.2.0[${PYTHON_USEDEP}]
+		>=dev-python/virtualenv-20.0.3[${PYTHON_USEDEP}]
+		dev-vcs/git
 	)
 "
 
@@ -63,11 +57,6 @@ python_prepare_all() {
 }
 
 python_test() {
-	if ! has "${EPYTHON}" "${PYTHON_TESTED[@]/_/.}"; then
-		einfo "Testing on ${EPYTHON} is not supported at the moment"
-		return
-	fi
-
 	cd "${BUILD_DIR}/install$(python_get_sitedir)" || die
 	eunittest -b
 }

@@ -561,9 +561,10 @@ cmake_src_configure() {
 	# Fix xdg collision with sandbox
 	xdg_environment_reset
 
+	local libdir=$(get_libdir)
+
 	# Prepare Gentoo override rules (set valid compiler, append CPPFLAGS etc.)
 	local build_rules=${BUILD_DIR}/gentoo_rules.cmake
-
 	cat > "${build_rules}" <<- _EOF_ || die
 		set(CMAKE_ASM_COMPILE_OBJECT "<CMAKE_ASM_COMPILER> <DEFINES> <INCLUDES> ${CPPFLAGS} <FLAGS> -o <OBJECT> -c <SOURCE>" CACHE STRING "ASM compile command" FORCE)
 		set(CMAKE_ASM-ATT_COMPILE_OBJECT "<CMAKE_ASM-ATT_COMPILER> <DEFINES> <INCLUDES> ${CPPFLAGS} <FLAGS> -o <OBJECT> -c -x assembler <SOURCE>" CACHE STRING "ASM-ATT compile command" FORCE)
@@ -571,9 +572,38 @@ cmake_src_configure() {
 		set(CMAKE_C_COMPILE_OBJECT "<CMAKE_C_COMPILER> <DEFINES> <INCLUDES> ${CPPFLAGS} <FLAGS> -o <OBJECT> -c <SOURCE>" CACHE STRING "C compile command" FORCE)
 		set(CMAKE_CXX_COMPILE_OBJECT "<CMAKE_CXX_COMPILER> <DEFINES> <INCLUDES> ${CPPFLAGS} <FLAGS> -o <OBJECT> -c <SOURCE>" CACHE STRING "C++ compile command" FORCE)
 		set(CMAKE_Fortran_COMPILE_OBJECT "<CMAKE_Fortran_COMPILER> <DEFINES> <INCLUDES> ${FCFLAGS} <FLAGS> -o <OBJECT> -c <SOURCE>" CACHE STRING "Fortran compile command" FORCE)
+
+		# in Prefix we need rpath and must ensure cmake gets our default linker path
+		# right ... except for Darwin hosts
+		if($(usex prefix-guest 1 0)) # if use prefix-guest
+			if(NOT APPLE)
+				set(CMAKE_SKIP_RPATH OFF CACHE BOOL "" FORCE)
+				set(CMAKE_PLATFORM_REQUIRED_RUNTIME_PATH "${EPREFIX}/usr/${CHOST}/lib/gcc;${EPREFIX}/usr/${CHOST}/lib;${EPREFIX}/usr/${libdir};${EPREFIX}/${libdir}" CACHE STRING "" FORCE)
+			else()
+				set(CMAKE_PREFIX_PATH "${EPREFIX}/usr" CACHE STRING "" FORCE)
+				set(CMAKE_MACOSX_RPATH ON CACHE BOOL "" FORCE)
+				set(CMAKE_SKIP_BUILD_RPATH OFF CACHE BOOL "" FORCE)
+				set(CMAKE_SKIP_RPATH OFF CACHE BOOL "" FORCE)
+				set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE CACHE BOOL "" FORCE)
+			endif()
+		endif()
 	_EOF_
 
 	local myCC=$(tc-getCC) myCXX=$(tc-getCXX) myFC=$(tc-getFC)
+
+	# We are using the C compiler for assembly by default.
+	local -x ASMFLAGS=${CFLAGS}
+	local -x PKG_CONFIG=$(tc-getPKG_CONFIG)
+
+	local sysname
+	case "${KERNEL:-linux}" in
+		Cygwin) sysname="CYGWIN_NT-5.1" ;;
+		HPUX) sysname="HP-UX" ;;
+		Hurd) sysname="GNU" ;;
+		linux) sysname="Linux" ;;
+		Winnt) sysname="Windows" ;;
+		*) sysname="${KERNEL}" ;;
+	esac
 
 	# !!! IMPORTANT NOTE !!!
 	# Single slash below is intentional. CMake is weird and wants the
@@ -589,65 +619,26 @@ cmake_src_configure() {
 		set(CMAKE_Fortran_COMPILER "${myFC/ /;}")
 		set(CMAKE_AR $(type -P $(tc-getAR)) CACHE FILEPATH "Archive manager" FORCE)
 		set(CMAKE_RANLIB $(type -P $(tc-getRANLIB)) CACHE FILEPATH "Archive index generator" FORCE)
+		set(CMAKE_SYSTEM_NAME "${sysname}")
+		set(CMAKE_CROSSCOMPILING $(tc-is-cross-compiler && echo TRUE || echo FALSE))
 		set(CMAKE_SYSTEM_PROCESSOR "${CHOST%%-*}")
-	_EOF_
 
-	# We are using the C compiler for assembly by default.
-	local -x ASMFLAGS=${CFLAGS}
-	local -x PKG_CONFIG=$(tc-getPKG_CONFIG)
+		if(CMAKE_CROSSCOMPILING AND CMAKE_SYSTEM_NAME STREQUAL "Windows")
+			set(CMAKE_RC_COMPILER $(tc-getRC))
+		endif()
 
-	if tc-is-cross-compiler; then
-		local sysname
-		case "${KERNEL:-linux}" in
-			Cygwin) sysname="CYGWIN_NT-5.1" ;;
-			HPUX) sysname="HP-UX" ;;
-			Hurd) sysname="GNU" ;;
-			linux) sysname="Linux" ;;
-			Winnt)
-				sysname="Windows"
-				cat >> "${toolchain_file}" <<- _EOF_ || die
-					set(CMAKE_RC_COMPILER $(tc-getRC))
-				_EOF_
-				;;
-			*) sysname="${KERNEL}" ;;
-		esac
-
-		cat >> "${toolchain_file}" <<- _EOF_ || die
-			set(CMAKE_SYSTEM_NAME "${sysname}")
-		_EOF_
-	fi
-
-	if [[ ${SYSROOT:-/} != / ]] ; then
 		# When building with a sysroot (e.g. with crossdev's emerge wrappers)
 		# we need to tell cmake to use libs/headers from the sysroot but programs from / only.
-		cat >> "${toolchain_file}" <<- _EOF_ || die
+		if($(if [[ ${SYSROOT:-/} != / ]] ; then echo 1; else echo 0; fi)) # if \${SYSROOT:-/} != /
 			set(CMAKE_SYSROOT "${ESYSROOT}")
 			set(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)
 			set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
 			set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
-		_EOF_
-	fi
-
-	if use prefix-guest; then
-		cat >> "${build_rules}" <<- _EOF_ || die
-			# in Prefix we need rpath and must ensure cmake gets our default linker path
-			# right ... except for Darwin hosts
-			if(NOT APPLE)
-				set(CMAKE_SKIP_RPATH OFF CACHE BOOL "" FORCE)
-				set(CMAKE_PLATFORM_REQUIRED_RUNTIME_PATH "${EPREFIX}/usr/${CHOST}/lib/gcc;${EPREFIX}/usr/${CHOST}/lib;${EPREFIX}/usr/$(get_libdir);${EPREFIX}/$(get_libdir)" CACHE STRING "" FORCE)
-			else()
-				set(CMAKE_PREFIX_PATH "${EPREFIX}/usr" CACHE STRING "" FORCE)
-				set(CMAKE_MACOSX_RPATH ON CACHE BOOL "" FORCE)
-				set(CMAKE_SKIP_BUILD_RPATH OFF CACHE BOOL "" FORCE)
-				set(CMAKE_SKIP_RPATH OFF CACHE BOOL "" FORCE)
-				set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE CACHE BOOL "" FORCE)
-			endif()
-		_EOF_
-	fi
+		endif()
+	_EOF_
 
 	# Common configure parameters (invariants)
 	local common_config=${BUILD_DIR}/gentoo_common_config.cmake
-	local libdir=$(get_libdir)
 	cat > "${common_config}" <<- _EOF_ || die
 		set(CMAKE_GENTOO_BUILD ON CACHE BOOL "Indicate Gentoo package build")
 		set(LIB_SUFFIX ${libdir/lib} CACHE STRING "library path suffix" FORCE)
@@ -664,19 +655,17 @@ cmake_src_configure() {
 		set(CMAKE_TLS_VERIFY ON CACHE BOOL "")
 		set(CMAKE_COMPILE_WARNING_AS_ERROR OFF CACHE BOOL "")
 		set(CMAKE_LINK_WARNING_AS_ERROR OFF CACHE BOOL "")
-	_EOF_
 
-	# See bug 689410
-	if [[ "${ARCH}" == riscv ]]; then
-		echo 'set(CMAKE_FIND_LIBRARY_CUSTOM_LIB_SUFFIX '"${libdir#lib}"' CACHE STRING "library search suffix" FORCE)' >> "${common_config}" || die
-	fi
+		# See Gentoo-bug 689410
+		if($(if [[ "${ARCH}" == riscv ]]; then echo 1; else echo 0; fi)) # if \${ARCH} == riscv
+			set(CMAKE_FIND_LIBRARY_CUSTOM_LIB_SUFFIX '"${libdir#lib}"' CACHE STRING "library search suffix" FORCE)
+		endif()
 
-	if [[ "${NOCOLOR}" = true || "${NOCOLOR}" = yes ]]; then
-		echo 'set(CMAKE_COLOR_MAKEFILE OFF CACHE BOOL "pretty colors during make" FORCE)' >> "${common_config}" || die
-	fi
+		if($(if [[ "${NOCOLOR}" = true || "${NOCOLOR}" = yes ]]; then echo 1; else echo 0; fi)) # if NOCOLOR=(true|yes)
+			set(CMAKE_COLOR_MAKEFILE OFF CACHE BOOL "pretty colors during make" FORCE)
+		endif()
 
-	# Wipe the default optimization flags out of CMake
-	cat >> ${common_config} <<- _EOF_ || die
+		# Wipe the default optimization flags out of CMake
 		set(CMAKE_ASM_FLAGS_${CMAKE_BUILD_TYPE^^} "" CACHE STRING "")
 		set(CMAKE_ASM-ATT_FLAGS_${CMAKE_BUILD_TYPE^^} "" CACHE STRING "")
 		set(CMAKE_C_FLAGS_${CMAKE_BUILD_TYPE^^} "" CACHE STRING "")
@@ -782,7 +771,9 @@ cmake_build() {
 			;;
 	esac
 
+	local rc=$? # save build tool's exit code in case of running under nonfatal
 	popd > /dev/null || die
+	return $rc
 }
 
 # @ECLASS_VARIABLE: CTEST_JOBS

@@ -43,7 +43,7 @@ pkg_postinst() {
 	elog "Please note that this is only a graphical front-end, and additional"
 	elog "packages are needed to have support for specific file formats."
 	elog "For example, to be able to work with the 7-Zip format, the"
-	elog "'app-arch/p7zip' package may be used."
+	elog "'app-arch/7zip' package may be used."
 	elog "For the full list of supported formats, see the 'README.md' file:"
 	elog "https://github.com/lxqt/lxqt-archiver/blob/master/README.md"
 }

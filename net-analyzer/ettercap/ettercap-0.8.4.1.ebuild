@@ -76,7 +76,7 @@ src_configure() {
 	if use gtk ; then
 		mycmakeargs+=(-DGTK_BUILD_TYPE=GTK3 -DENABLE_GTK=ON)
 	else
-		mycmakeargs+=(-DINSTALL_DESKTOP=OFF)
+		mycmakeargs+=(-DENABLE_GTK=OFF -DINSTALL_DESKTOP=OFF)
 	fi
 
 	cmake_src_configure

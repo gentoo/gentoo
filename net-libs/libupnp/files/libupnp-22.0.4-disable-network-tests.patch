@@ -1,0 +1,39 @@
+--- a/tests/CMakeLists.txt
++++ b/tests/CMakeLists.txt
+@@ -17,13 +17,6 @@
+ 	return()
+ endif()
+ 
+-add_test(
+-	NAME test-init-py
+-	COMMAND ${Python3_EXECUTABLE} -m pytest
+-		${CMAKE_CURRENT_SOURCE_DIR}/test_init.py
+-		-v
+-)
+-
+ set(_test_init_py_env "UPNP_BUILD_DIR=${CMAKE_BINARY_DIR}")
+ if(CMAKE_C_FLAGS MATCHES "sanitize=address" OR
+ 		CMAKE_SHARED_LINKER_FLAGS MATCHES "sanitize=address")
+@@ -38,10 +31,6 @@
+ 	list(APPEND _test_init_py_env "ASAN_OPTIONS=detect_leaks=0")
+ endif()
+ 
+-set_tests_properties(test-init-py PROPERTIES
+-	ENVIRONMENT "${_test_init_py_env}"
+-)
+-
+ add_test(
+ 	NAME test-issue-110-py
+ 	COMMAND ${Python3_EXECUTABLE} -m pytest
+--- a/upnp/test/CMakeLists.txt
++++ b/upnp/test/CMakeLists.txt
+@@ -1,9 +1,6 @@
+ UPNP_Add_Unit_Test(test-upnp-list test_list.c)
+-UPNP_Add_Unit_Test(test-upnp-init test_init.c)
+ UPNP_Add_Unit_Test(test-upnp-log test_log.c)
+ UPNP_Add_Unit_Test(test-upnp-url test_url.c)
+-UPNP_Add_Unit_Test(test-upnp-sock-io test_sock_io.c)
+-UPNP_Add_Unit_Test(test-upnp-ssdp-req-port test_ssdp_req_port.c)
+ # test_threadpool_overflow calls internal ThreadPool API (ThreadPoolInit,
+ # TPAttrInit, …) that have hidden visibility in the shared library.  Compile
+ # the three ThreadPool translation units directly into each test variant so

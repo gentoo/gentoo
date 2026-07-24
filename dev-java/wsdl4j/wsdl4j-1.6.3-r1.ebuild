@@ -14,7 +14,7 @@ S="${WORKDIR}/${P//./_}"
 
 LICENSE="CPL-1.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc64"
+KEYWORDS="amd64 arm64 ppc64"
 
 BDEPEND="app-arch/unzip"
 DEPEND=">=virtual/jdk-1.8:*"

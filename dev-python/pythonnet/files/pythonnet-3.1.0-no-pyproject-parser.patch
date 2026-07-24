@@ -1,0 +1,32 @@
+diff --git a/setup.py b/setup.py
+index 1c2ffe2..3b3b319 100644
+--- a/setup.py
++++ b/setup.py
+@@ -6,13 +6,14 @@ from setuptools.command.develop import develop as _develop
+ from setuptools.command.bdist_wheel import bdist_wheel as _bdist_wheel
+ from packaging.specifiers import SpecifierSet
+ from packaging.version import Version
+-from pyproject_parser import PyProject
+ from setuptools import Distribution
+ from setuptools import setup, Command
+ 
+ import os
+ import sys
+ 
++import tomllib
++
+ # Disable SourceLink during the build until it can read repo-format v1, #1613
+ os.environ["EnableSourceControlManagerQueries"] = "false"
+ 
+@@ -127,8 +128,9 @@ class bdist_wheel(_bdist_wheel):
+         return python_tag, abi_tag, platform_tag
+ 
+     def _get_python_tag(self) -> str:
+-        pyproject = PyProject.load("pyproject.toml")
+-        project = pyproject.project or {}
++        with open("pyproject.toml", "rb") as f:
++            pyproject = tomllib.load(f)
++        project = pyproject.get("project") or {}
+ 
+         requires_python = project.get("requires-python")
+         if not requires_python:

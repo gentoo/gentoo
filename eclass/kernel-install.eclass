@@ -178,7 +178,7 @@ if [[ ${KERNEL_IUSE_GENERIC_UKI} ]]; then
 		["sys-fs/multipath-tools"]="GPL-2"
 		["sys-fs/xfsprogs"]="LGPL-2.1"
 		["sys-kernel/dracut"]="GPL-2"
-		["sys-kernel/linux-firmware[redistributable,-unknown-license]"]="GPL-2 GPL-2+ GPL-3 BSD MIT || ( MPL-1.1 GPL-2 ) linux-fw-redistributable BSD-2 BSD BSD-4 ISC MIT"
+		["sys-kernel/linux-firmware[redistributable,-unknown-license(-)]"]="GPL-2 GPL-2+ GPL-3 BSD MIT || ( MPL-1.1 GPL-2 ) linux-fw-redistributable BSD-2 BSD BSD-4 ISC MIT"
 		["sys-libs/glibc"]="LGPL-2.1+ BSD HPND ISC inner-net rc PCRE"
 		["sys-libs/libapparmor"]="GPL-2 LGPL-2.1"
 		["sys-libs/libcap"]="|| ( GPL-2 BSD )"

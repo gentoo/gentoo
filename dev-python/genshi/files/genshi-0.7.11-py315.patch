@@ -1,0 +1,120 @@
+From 0bcd1eeefaa58d49441ad1d82d0852c049154811 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?C=C3=A9dric=20Krier?= <ced@b2ck.com>
+Date: Mon, 12 May 2025 00:28:42 +0200
+Subject: [PATCH 1/4] Fix deprecation warning when creating AST node without
+ required fields
+
+Python 3.13 added the warning which will become an error in Python 3.15
+(see https://github.com/python/cpython/pull/105880)
+---
+ genshi/template/astutil.py | 16 +++++++++++++++-
+ genshi/template/eval.py    | 11 +++++------
+ pytest.ini                 |  3 +++
+ 3 files changed, 23 insertions(+), 7 deletions(-)
+
+diff --git a/genshi/template/astutil.py b/genshi/template/astutil.py
+index c841aeb..b53b573 100644
+--- a/genshi/template/astutil.py
++++ b/genshi/template/astutil.py
+@@ -802,7 +802,7 @@ def visit(self, node):
+         return visitor(node)
+ 
+     def _clone(self, node):
+-        clone = node.__class__()
++        clone = construct_ast_class(node.__class__)
+         for name in getattr(clone, '_attributes', ()):
+             try:
+                 setattr(clone, name, getattr(node, name))
+@@ -887,3 +887,17 @@ def _clone(self, node):
+     visit_Index = _clone
+ 
+     del _clone
++
++
++def construct_ast_class(cls):
++    kwargs = {}
++    for name, typ in cls.__annotations__.items():
++        if typ is str:
++            kwargs[name] = 'foo'
++        elif typ is int:
++            kwargs[name] = 42
++        elif typ is object:
++            kwargs[name] = b'foo'
++        elif isinstance(typ, type) and issubclass(typ, _ast.AST):
++            kwargs[name] = construct_ast_class(typ)
++    return cls(**kwargs)
+diff --git a/genshi/template/eval.py b/genshi/template/eval.py
+index 82bddf3..4197597 100644
+--- a/genshi/template/eval.py
++++ b/genshi/template/eval.py
+@@ -18,7 +18,8 @@
+ 
+ from genshi.compat import builtins, exec_, string_types, text_type
+ from genshi.core import Markup
+-from genshi.template.astutil import ASTTransformer, ASTCodeGenerator, parse
++from genshi.template.astutil import (
++    ASTTransformer, ASTCodeGenerator, parse, construct_ast_class)
+ from genshi.template.base import TemplateRuntimeError
+ from genshi.util import flatten
+ 
+@@ -59,11 +60,9 @@ def __init__(self, source, filename=None, lineno=-1, lookup='strict',
+                 'Expected string or AST node, but got %r' % source
+             self.source = '?'
+             if self.mode == 'eval':
+-                node = _ast.Expression()
+-                node.body = source
++                node = _ast.Expression(body=source)
+             else:
+-                node = _ast.Module()
+-                node.body = [source]
++                node = _ast.Module(body=[source])
+ 
+         self.ast = node
+         self.code = _compile(node, self.source, mode=self.mode,
+@@ -454,7 +453,7 @@ def _compile(node, source=None, mode='eval', filename=None, lineno=-1,
+ 
+ 
+ def _new(class_, *args, **kwargs):
+-    ret = class_()
++    ret = construct_ast_class(class_)
+     for attr, value in zip(ret._fields, args):
+         if attr in kwargs:
+             raise ValueError('Field set both in args and kwargs')
+
+From 09fd95760e231d4f487c7378b11215e5c5d184c4 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?C=C3=A9dric=20Krier?= <ced@b2ck.com>
+Date: Mon, 12 May 2025 00:49:35 +0200
+Subject: [PATCH 3/4] Use ast Node annotations to construct if available
+
+---
+ genshi/template/astutil.py | 19 ++++++++++---------
+ 1 file changed, 10 insertions(+), 9 deletions(-)
+
+diff --git a/genshi/template/astutil.py b/genshi/template/astutil.py
+index b53b573..510d3a8 100644
+--- a/genshi/template/astutil.py
++++ b/genshi/template/astutil.py
+@@ -891,13 +891,14 @@ def _clone(self, node):
+ 
+ def construct_ast_class(cls):
+     kwargs = {}
+-    for name, typ in cls.__annotations__.items():
+-        if typ is str:
+-            kwargs[name] = 'foo'
+-        elif typ is int:
+-            kwargs[name] = 42
+-        elif typ is object:
+-            kwargs[name] = b'foo'
+-        elif isinstance(typ, type) and issubclass(typ, _ast.AST):
+-            kwargs[name] = construct_ast_class(typ)
++    if hasattr(cls, '__annotations__'):
++        for name, typ in cls.__annotations__.items():
++            if typ is str:
++                kwargs[name] = 'foo'
++            elif typ is int:
++                kwargs[name] = 42
++            elif typ is object:
++                kwargs[name] = b'foo'
++            elif isinstance(typ, type) and issubclass(typ, _ast.AST):
++                kwargs[name] = construct_ast_class(typ)
+     return cls(**kwargs)

@@ -1,0 +1,95 @@
+diff -urN orig/.obcmake/cmake/module/OB/Library.cmake mod/.obcmake/cmake/module/OB/Library.cmake
+--- orig/.obcmake/cmake/module/OB/Library.cmake	2025-09-05 01:11:15.000000000 +0100
++++ mod/.obcmake/cmake/module/OB/Library.cmake	2026-03-18 00:41:55.073580773 +0000
+@@ -510,13 +510,13 @@
+         ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+         RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+         FILE_SET headers_api
+-            DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/${_ALIAS_LC}"
++            DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}"
+         FILE_SET headers_api_gen
+             OPTIONAL
+-            DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/${_ALIAS_LC}"
++            DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}"
+         FILE_SET headers_export
+             OPTIONAL
+-            DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/${_ALIAS_LC}"
++            DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}"
+     )
+ 
+     # Package Config
+@@ -526,7 +526,7 @@
+             COMPONENT ${_TARGET_NAME}
+             FILE "${_NAMESPACE}${_ALIAS}Targets.cmake"
+             NAMESPACE ${_NAMESPACE}::
+-            DESTINATION "cmake/${_ALIAS}"
++            DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/${_ALIAS}"
+             ${SUB_PROJ_EXCLUDE_FROM_ALL} # "EXCLUDE_FROM_ALL" if project is not top-level
+         )
+ 
+diff -urN orig/.obcmake/cmake/module/OB/Project.cmake mod/.obcmake/cmake/module/OB/Project.cmake
+--- orig/.obcmake/cmake/module/OB/Project.cmake	2025-09-05 01:11:15.000000000 +0100
++++ mod/.obcmake/cmake/module/OB/Project.cmake	2026-03-18 00:41:55.074973736 +0000
+@@ -316,7 +316,7 @@
+     configure_package_config_file(
+         "${CFG_TEMPLATE_FILE}"
+         "${gen_file}"
+-        INSTALL_DESTINATION "cmake"
++        INSTALL_DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake"
+         NO_SET_AND_CHECK_MACRO
+     )    
+ endfunction()
+@@ -327,7 +327,7 @@
+         configure_package_config_file(
+             "${in_path}"
+             "${gen_file}"
+-            INSTALL_DESTINATION "cmake"
++            INSTALL_DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake"
+         )
+ endfunction()
+ 
+@@ -488,7 +488,7 @@
+         "${ver_gen_path}"
+         "${cfg_gen_path}"
+         COMPONENT ${PROJECT_NAMESPACE_LC}
+-        DESTINATION "cmake"
++        DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake"
+         ${SUB_PROJ_EXCLUDE_FROM_ALL} # "EXCLUDE_FROM_ALL" if project is not top-level
+     )
+ endfunction()
+diff -urN orig/.obcmake/cmake/private/common.cmake mod/.obcmake/cmake/private/common.cmake
+--- orig/.obcmake/cmake/private/common.cmake	2025-09-05 01:11:15.000000000 +0100
++++ mod/.obcmake/cmake/private/common.cmake	2026-03-18 00:41:55.076206999 +0000
+@@ -195,7 +195,7 @@
+     install(FILES
+         "${cfg_gen_path}"
+         COMPONENT ${target}
+-        DESTINATION "cmake/${alias}"
++        DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/${alias}"
+         ${SUB_PROJ_EXCLUDE_FROM_ALL} # "EXCLUDE_FROM_ALL" if project is not top-level
+     )
+ endfunction()
+diff -urN orig/CMakeLists.txt mod/CMakeLists.txt
+--- orig/CMakeLists.txt	2025-09-05 02:18:42.000000000 +0100
++++ mod/CMakeLists.txt	2026-03-18 00:41:55.069777809 +0000
+@@ -94,7 +94,6 @@
+ 
+ #================= Install ==========================
+ 
+-ob_standard_project_misc_install()
+ 
+ #====================== CPack ==============================
+ 
+diff -urN orig/cmake/FetchOBCMake.cmake mod/cmake/FetchOBCMake.cmake
+--- orig/cmake/FetchOBCMake.cmake	2025-09-05 02:18:42.000000000 +0100
++++ mod/cmake/FetchOBCMake.cmake	2026-03-18 00:41:55.070922176 +0000
+@@ -6,8 +6,7 @@
+ macro(fetch_ob_cmake git_ref)
+     include(FetchContent)
+     FetchContent_Declare(OBCMake
+-        GIT_REPOSITORY "https://github.com/oblivioncth/OBCMake"
+-        GIT_TAG ${git_ref}
++        SOURCE_DIR "${OB_CMAKE_SOURCE_DIR}"
+     )
+     FetchContent_MakeAvailable(OBCMake)
+ endmacro()

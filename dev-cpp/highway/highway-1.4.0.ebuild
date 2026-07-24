@@ -20,7 +20,7 @@ else
 		https://github.com/google/highway/releases/download/${PV}/${P}.tar.gz -> ${P}.tgz
 		verify-sig? ( https://github.com/google/highway/releases/download/${PV}/${P}.tar.gz.asc -> ${P}.tgz.asc )
 	"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~ppc ppc64 ~riscv ~sparc x86"
 
 	BDEPEND="verify-sig? ( sec-keys/openpgp-keys-janwassenberg )"
 fi

@@ -20,7 +20,6 @@ memcached
 # Ionen Wolkens <ionen@gentoo.org> (2024-01-27)
 # dev-qt/* is not keyworded here, and is mostly known buggy so that is
 # unlikely to change without real interest (e.g. bug #914033, #916867).
-qt5
 qt6
 
 # matoro <matoro_gentoo@matoro.tk> (2023-06-17)

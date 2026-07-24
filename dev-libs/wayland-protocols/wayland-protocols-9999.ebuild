@@ -19,7 +19,7 @@ fi
 LICENSE="MIT"
 SLOT="0"
 IUSE="test"
-RESTRICT="test" # Bug #843596
+RESTRICT="!test? ( test )"
 
 DEPEND="
 	test? ( dev-libs/wayland )

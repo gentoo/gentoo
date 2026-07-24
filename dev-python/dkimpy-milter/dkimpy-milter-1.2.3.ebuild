@@ -1,4 +1,4 @@
-# Copyright 2020-2025 Gentoo Authors
+# Copyright 2020-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -41,10 +41,9 @@ python_configure() {
 		--sysconfigdir=/etc
 }
 
-python_install() {
-	distutils-r1_python_install
-
+python_install_all() {
 	mv "${ED}"{/usr/etc,} || die
 	rm "${ED}"/etc/init.d/dkimpy-milter{.openrc,} || die
 	newinitd "${FILESDIR}"/dkimpy-milter.initd dkimpy-milter
+	distutils-r1_python_install_all
 }

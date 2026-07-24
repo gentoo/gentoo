@@ -1,0 +1,285 @@
+diff --git a/AUTHORS b/AUTHORS
+index 7ec645c8eb..53486d8f83 100644
+--- a/AUTHORS
++++ b/AUTHORS
+@@ -593,6 +593,7 @@ answer newbie questions, and generally made Django that much better:
+     Karderio <karderio@gmail.com>
+     Karen Tracey <kmtracey@gmail.com>
+     Karol Sikora <elektrrrus@gmail.com>
++    Kasey Steinhauer <kstein257@gmail.com>
+     Kasun Herath <kasunh01@gmail.com>
+     Katherine “Kati” Michel <kthrnmichel@gmail.com>
+     Kathryn Killebrew <kathryn.killebrew@gmail.com>
+diff --git a/django/contrib/admin/templatetags/base.py b/django/contrib/admin/templatetags/base.py
+index 3f8290d3b1..94b2011c3c 100644
+--- a/django/contrib/admin/templatetags/base.py
++++ b/django/contrib/admin/templatetags/base.py
+@@ -1,7 +1,7 @@
+ from inspect import getfullargspec
+ 
+ from django.template.library import InclusionNode, parse_bits
+-from django.utils.inspect import lazy_annotations
++from django.utils.inspect import getfullargspec
+ 
+ 
+ class InclusionAdminNode(InclusionNode):
+@@ -12,10 +12,9 @@ class InclusionAdminNode(InclusionNode):
+ 
+     def __init__(self, parser, token, func, template_name, takes_context=True):
+         self.template_name = template_name
+-        with lazy_annotations():
+-            params, varargs, varkw, defaults, kwonly, kwonly_defaults, _ = (
+-                getfullargspec(func)
+-            )
++        params, varargs, varkw, defaults, kwonly, kwonly_defaults, _ = getfullargspec(
++            func
++        )
+         bits = token.split_contents()
+         args, kwargs = parse_bits(
+             parser,
+diff --git a/django/template/base.py b/django/template/base.py
+index 9d75111e42..526a5f9ecf 100644
+--- a/django/template/base.py
++++ b/django/template/base.py
+@@ -60,7 +60,7 @@ from django.template.context import BaseContext
+ from django.utils.deprecation import django_file_prefixes
+ from django.utils.formats import localize
+ from django.utils.html import conditional_escape
+-from django.utils.inspect import lazy_annotations, signature
++from django.utils.inspect import getfullargspec, signature
+ from django.utils.regex_helper import _lazy_re_compile
+ from django.utils.safestring import SafeData, SafeString, mark_safe
+ from django.utils.text import get_text_list, smart_split, unescape_string_literal
+@@ -826,8 +826,7 @@ class FilterExpression:
+         # Check to see if a decorator is providing the real function.
+         func = inspect.unwrap(func)
+ 
+-        with lazy_annotations():
+-            args, _, _, defaults, _, _, _ = inspect.getfullargspec(func)
++        args, _, _, defaults, _, _, _ = getfullargspec(func)
+         alen = len(args)
+         dlen = len(defaults or [])
+         # Not enough OR Too many
+diff --git a/django/template/library.py b/django/template/library.py
+index 27af7a6969..a645717935 100644
+--- a/django/template/library.py
++++ b/django/template/library.py
+@@ -1,10 +1,10 @@
+ from collections.abc import Iterable
+ from functools import wraps
+ from importlib import import_module
+-from inspect import getfullargspec, unwrap
++from inspect import unwrap
+ 
+ from django.utils.html import conditional_escape
+-from django.utils.inspect import lazy_annotations
++from django.utils.inspect import getfullargspec
+ 
+ from .base import Node, Template, token_kwargs
+ from .exceptions import TemplateSyntaxError
+@@ -111,16 +111,15 @@ class Library:
+         """
+ 
+         def dec(func):
+-            with lazy_annotations():
+-                (
+-                    params,
+-                    varargs,
+-                    varkw,
+-                    defaults,
+-                    kwonly,
+-                    kwonly_defaults,
+-                    _,
+-                ) = getfullargspec(unwrap(func))
++            (
++                params,
++                varargs,
++                varkw,
++                defaults,
++                kwonly,
++                kwonly_defaults,
++                _,
++            ) = getfullargspec(unwrap(func))
+             function_name = name or func.__name__
+ 
+             @wraps(func)
+@@ -167,16 +166,15 @@ class Library:
+ 
+         def dec(func):
+             nonlocal end_name
+-            with lazy_annotations():
+-                (
+-                    params,
+-                    varargs,
+-                    varkw,
+-                    defaults,
+-                    kwonly,
+-                    kwonly_defaults,
+-                    _,
+-                ) = getfullargspec(unwrap(func))
++            (
++                params,
++                varargs,
++                varkw,
++                defaults,
++                kwonly,
++                kwonly_defaults,
++                _,
++            ) = getfullargspec(unwrap(func))
+             function_name = name or func.__name__
+ 
+             if end_name is None:
+@@ -251,16 +249,15 @@ class Library:
+         """
+ 
+         def dec(func):
+-            with lazy_annotations():
+-                (
+-                    params,
+-                    varargs,
+-                    varkw,
+-                    defaults,
+-                    kwonly,
+-                    kwonly_defaults,
+-                    _,
+-                ) = getfullargspec(unwrap(func))
++            (
++                params,
++                varargs,
++                varkw,
++                defaults,
++                kwonly,
++                kwonly_defaults,
++                _,
++            ) = getfullargspec(unwrap(func))
+             function_name = name or func.__name__
+ 
+             @wraps(func)
+diff --git a/django/utils/inspect.py b/django/utils/inspect.py
+index a04669fc11..1b4d5733fd 100644
+--- a/django/utils/inspect.py
++++ b/django/utils/inspect.py
+@@ -3,16 +3,17 @@ import inspect
+ import threading
+ from contextlib import contextmanager
+ 
+-from django.utils.version import PY314
++from django.utils.version import PY314, PY315
+ 
+ if PY314:
+     import annotationlib
+ 
+-    lock = threading.Lock()
+-    safe_signature_from_callable = functools.partial(
+-        inspect._signature_from_callable,
+-        annotation_format=annotationlib.Format.FORWARDREF,
+-    )
++    if not PY315:
++        lock = threading.Lock()
++        safe_signature_from_callable = functools.partial(
++            inspect._signature_from_callable,
++            annotation_format=annotationlib.Format.FORWARDREF,
++        )
+ 
+ 
+ @functools.lru_cache(maxsize=512)
+@@ -106,12 +107,12 @@ def lazy_annotations():
+     compatibility with Python 3.14+ deferred evaluation, patch the module-level
+     helper to provide the annotation_format that we are using elsewhere.
+ 
+-    This private helper could be removed when there is an upstream solution for
+-    https://github.com/python/cpython/issues/141560.
++    This private helper should only be used for Python 3.14, as
++    https://github.com/python/cpython/issues/141560 was fixed in 3.15.
+ 
+     This context manager is not reentrant.
+     """
+-    if not PY314:
++    if PY315 or not PY314:
+         yield
+         return
+     with lock:
+@@ -123,6 +124,22 @@ def lazy_annotations():
+             inspect._signature_from_callable = original_helper
+ 
+ 
++def getfullargspec(*args, annotation_format=None, **kwargs):
++    """
++    A wrapper around inspect.getfullargspec that leaves deferred annotations
++    unevaluated on Python 3.14+, since they are not used in our case.
++    """
++    if PY315:
++        return inspect.getfullargspec(
++            *args, **kwargs, annotation_format=annotationlib.Format.FORWARDREF
++        )
++    if PY314:
++        with lazy_annotations():
++            return inspect.getfullargspec(*args, **kwargs)
++    else:
++        return inspect.getfullargspec(*args, **kwargs)
++
++
+ def signature(obj):
+     """
+     A wrapper around inspect.signature that leaves deferred annotations
+diff --git a/django/utils/version.py b/django/utils/version.py
+index 2bb650ac89..9f694070c5 100644
+--- a/django/utils/version.py
++++ b/django/utils/version.py
+@@ -20,6 +20,7 @@ PY311 = sys.version_info >= (3, 11)
+ PY312 = sys.version_info >= (3, 12)
+ PY313 = sys.version_info >= (3, 13)
+ PY314 = sys.version_info >= (3, 14)
++PY315 = sys.version_info >= (3, 15)
+ 
+ 
+ def get_version(version=None):
+diff --git a/tests/admin_scripts/tests.py b/tests/admin_scripts/tests.py
+index 0c27194568..9dc8f16013 100644
+--- a/tests/admin_scripts/tests.py
++++ b/tests/admin_scripts/tests.py
+@@ -38,7 +38,7 @@ from django.db.migrations.recorder import MigrationRecorder
+ from django.test import LiveServerTestCase, SimpleTestCase, TestCase, override_settings
+ from django.test.utils import captured_stderr, captured_stdout
+ from django.urls import path
+-from django.utils.version import PY313, get_docs_version
++from django.utils.version import PY313, PY315, get_docs_version
+ from django.views.static import serve
+ 
+ from . import urls
+@@ -2446,10 +2446,17 @@ class Discovery(SimpleTestCase):
+ 
+ class CommandDBOptionChoiceTests(SimpleTestCase):
+     def test_invalid_choice_db_option(self):
+-        expected_error = (
+-            r"Error: argument --database: invalid choice: 'deflaut' "
+-            r"\(choose from '?default'?, '?other'?\)"
+-        )
++        if PY315:
++            expected_error = (
++                r"Error: argument --database: invalid choice: 'deflaut', "
++                r"maybe you meant 'default'\? "
++                r"\(choose from '?default'?, '?other'?\)"
++            )
++        else:
++            expected_error = (
++                r"Error: argument --database: invalid choice: 'deflaut' "
++                r"\(choose from '?default'?, '?other'?\)"
++            )
+         args = [
+             "changepassword",
+             "createsuperuser",
+diff --git a/tests/utils_tests/test_html.py b/tests/utils_tests/test_html.py
+index 7e1a90cc93..91561a8de8 100644
+--- a/tests/utils_tests/test_html.py
++++ b/tests/utils_tests/test_html.py
+@@ -131,9 +131,6 @@ class TestUtilsHtml(SimpleTestCase):
+             (3, 10): (3, 10, 19),
+             (3, 9): (3, 9, 24),
+         }
+-        htmlparser_fixed_security = (
+-            sys.version_info >= min_fixed_security[sys.version_info[:2]]
+-        )
+         # Similarly, there was a fix for terminating incomplete entities. See:
+         # https://github.com/python/cpython/commit/95296a9d
+         min_fixed_incomplete_entities = {

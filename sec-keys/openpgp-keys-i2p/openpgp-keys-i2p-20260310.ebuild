@@ -12,7 +12,7 @@ S=${WORKDIR}
 
 LICENSE='public-domain'
 SLOT='0'
-KEYWORDS='~amd64 ~arm64'
+KEYWORDS='amd64 ~arm64'
 
 src_install() {
 	insinto /usr/share/openpgp-keys

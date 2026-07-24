@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>orbea@riseup.net</email>
+		<name>orbea</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+		The code is based off of MAME's old C codebase which read up to CHDv4 with
+		OS-dependent features removed, and CHDv5 support backported from MAME's
+		current C++ codebase.
+	</longdescription>
+	<upstream>
+		<bugs-to>https://github.com/rtissera/libchdr/issues</bugs-to>
+		<changelog>https://github.com/rtissera/libchdr/blob/master/CHANGELOG.md</changelog>
+		<remote-id type="github">rtissera/libchdr</remote-id>
+	</upstream>
+</pkgmetadata>

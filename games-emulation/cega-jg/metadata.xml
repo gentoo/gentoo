@@ -15,7 +15,7 @@
 		The Jolly Good API.
 	</longdescription>
 	<upstream>
-		<bugs-to>https://gitlab.com/jgemu/cega/-/issues</bugs-to>
+		<bugs-to>https://gitlab.com/jgemu/cega/-/work_items</bugs-to>
 		<changelog>https://gitlab.com/jgemu/cega/-/blob/master/ChangeLog</changelog>
 		<remote-id type="gitlab">jgemu/cega</remote-id>
 	</upstream>

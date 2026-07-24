@@ -46,10 +46,6 @@ net-fs/samba fam
 # One example: https://tracker.ceph.com/issues/41523
 >=sys-cluster/ceph-14.2 dpdk
 
-# Michael Palimaka <kensington@gentoo.org> (2015-09-03)
-# Native inotify support is preferred on linux.
-kde-frameworks/kcoreaddons fam
-
 # Diego Elio Pettenò <flameeyes@gentoo.org> (2012-08-27)
 # The libpci access is only used for linux.
 net-analyzer/net-snmp -pci

@@ -1,0 +1,52 @@
+https://bugs.gentoo.org/977206
+https://sourceforge.net/p/mcomix/bugs/154/
+https://sourceforge.net/p/mcomix/git/merge-requests/56/
+https://sourceforge.net/p/mcomix/git/ci/274e95ecbcf1cdac6e26341bd7241dd86b70b417/
+
+--- a/mcomix/keybindings.py
++++ b/mcomix/keybindings.py
+@@ -176,7 +176,7 @@
+         # Load stored keybindings, or fall back to passed arguments
+         keycodes = self._action_to_bindings[name]
+         if keycodes == []:
+-            keycodes = [Gtk.accelerator_parse(binding) for binding in bindings ]
++            keycodes = [tuple(Gtk.accelerator_parse(binding)) for binding in bindings]
+ 
+         for keycode in keycodes:
+             if keycode in list(self._binding_to_action.keys()):
+@@ -207,7 +207,7 @@
+         """
+         assert name in BINDING_INFO, "'%s' isn't a valid keyboard action." % name
+ 
+-        nb = Gtk.accelerator_parse(new_binding)
++        nb = tuple(Gtk.accelerator_parse(new_binding))
+         old_action_with_nb = self._binding_to_action.get(nb)
+         if old_action_with_nb is not None:
+             # The new key is already bound to an action, erase the action
+@@ -216,7 +216,7 @@
+ 
+         if old_binding and name != old_action_with_nb:
+             # The action already had a key that is now being replaced
+-            ob = Gtk.accelerator_parse(old_binding)
++            ob = tuple(Gtk.accelerator_parse(old_binding))
+             self._binding_to_action[nb] = name
+ 
+             # Remove action bound to the key.
+@@ -238,7 +238,7 @@
+         """ Remove binding for an action """
+         assert name in BINDING_INFO, "'%s' isn't a valid keyboard action." % name
+ 
+-        ob = Gtk.accelerator_parse(binding)
++        ob = tuple(Gtk.accelerator_parse(binding))
+         self._action_to_bindings[name].remove(ob)
+         self._binding_to_action.pop(ob)
+ 
+@@ -299,7 +299,7 @@
+         for action in BINDING_INFO.keys():
+             if action in stored_action_bindings:
+                 bindings = [
+-                    Gtk.accelerator_parse(keyname)
++                    tuple(Gtk.accelerator_parse(keyname))
+                     for keyname in stored_action_bindings[action] ]
+                 self._action_to_bindings[action] = bindings
+                 for binding in bindings:

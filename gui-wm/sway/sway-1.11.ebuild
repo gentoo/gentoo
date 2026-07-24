@@ -22,7 +22,7 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="+man +swaybar +swaynag tray wallpapers X"
+IUSE="+swaybar +swaynag tray wallpapers X"
 REQUIRED_USE="tray? ( swaybar )"
 
 DEPEND="
@@ -69,9 +69,9 @@ BDEPEND="
 	virtual/pkgconfig
 "
 if [[ ${PV} == 9999 ]]; then
-	BDEPEND+="man? ( ~app-text/scdoc-9999 )"
+	BDEPEND+=" ~app-text/scdoc-9999"
 else
-	BDEPEND+="man? ( >=app-text/scdoc-1.11.3 )
+	BDEPEND+=" >=app-text/scdoc-1.11.3
 		verify-sig? ( sec-keys/openpgp-keys-emersion )"
 	VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/emersion.asc"
 fi
@@ -82,7 +82,7 @@ FILECAPS=(
 
 src_configure() {
 	local emesonargs=(
-		$(meson_feature man man-pages)
+		-Dman-pages=enabled
 		$(meson_feature tray)
 		$(meson_feature swaybar gdk-pixbuf)
 		$(meson_use swaynag)

@@ -1,0 +1,14 @@
+https://bugs.gentoo.org/961580
+skip tests for gjs due to sandbox restrictions (usersandbox)
+--- a/tests/libpeas/meson.build
++++ b/tests/libpeas/meson.build
+@@ -9,7 +9,8 @@ libpeas_tests_sources = [
+ libpeas_tests_c_args = ['-UG_DISABLE_ASSERT', '-UG_DISABLE_CAST_CHECKS']
+ 
+ if build_gjs_loader == true
+-  libpeas_tests_sources += [['extension-gjs', [gjs_dep]]]
++   warning('gjs tests are currently disabled due to sandbox restrictions #961580')
++#  libpeas_tests_sources += [['extension-gjs', [gjs_dep]]]
+ endif
+ 
+ if build_lua51_loader == true

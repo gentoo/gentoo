@@ -13,6 +13,7 @@ SRC_URI="https://github.com/nullptrlabs/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64"
+REQUIRED_USE="${POSTGRES_REQ_USE}"
 
 DEPEND="${POSTGRES_DEP}
 	dev-libs/libxml2:=

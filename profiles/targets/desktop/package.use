@@ -1,6 +1,19 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Michael Orlitzky <mjo@gentoo.org> (2026-07-14)
+# USE=qt6 (the desktop profile default) requires USE=doc for this
+# package, and pkgcheck warns about the unsatisfied REQUIRED_USE unless
+# we enable USE=doc, too. It would be much better to disable USE=qt6,
+# but that does not actually fix the warning due to a bug in
+# pkgcheck. There is a short discussion on bug 977138.
+dev-libs/uriparser doc
+
+# Ian Jordan <immoloism@gmail.com> (2026-06-15)
+# Circular depend on webp and tiff #972473
+# Helps users going from a basic to desktop profile.
+media-libs/libwebp -tiff
+
 # Ian Jordan <immoloism@gmail.com> (2026-01-14)
 # Use PipeWire sound server. It also acts as PulseAudio implementation for
 # packages using media-libs/libpulse (e.g. via USE="pulseaudio").
@@ -28,7 +41,7 @@ dev-qt/qtbase libproxy
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2023-11-12)
 # NSS: Required by kde-apps/okular[pdf]
-# Boost: app-text/poppler[qt5] recommended w/ Boost (bug #795888)
+# Boost: app-text/poppler[qt6] recommended w/ Boost (bug #795888)
 app-text/poppler nss boost
 
 # Mart Raudsepp <leio@gentoo.org> (2023-10-01)

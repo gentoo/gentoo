@@ -1,0 +1,16 @@
+On LP64 RISC-V int64_t is long, which collides with the explicit long
+overloads in sc_bit.h.  Use long long for sc_dt::int64 there, as later
+SystemC releases do unconditionally.
+
+https://bugs.gentoo.org/926545
+--- a/src/sysc/datatypes/int/sc_nbdefs.h
++++ b/src/sysc/datatypes/int/sc_nbdefs.h
+@@ -177,7 +177,7 @@
+ // Support for the long long type. This type is not in the standard
+ // but is usually supported by compilers.
+ #ifndef _WIN32
+-#   if defined(__x86_64__) || defined(__aarch64__)
++#   if defined(__x86_64__) || defined(__aarch64__) || defined(__riscv)
+         typedef long long          int64;
+         typedef unsigned long long uint64;
+ #   else

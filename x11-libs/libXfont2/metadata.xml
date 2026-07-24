@@ -11,6 +11,6 @@
   </use>
   <upstream>
     <remote-id type="cpe">cpe:/a:x.org:libxfont</remote-id>
-    <remote-id type="freedesktop-gitlab">xorg/lib/libXfont</remote-id>
+    <remote-id type="freedesktop-gitlab">xorg/lib/libXfont2</remote-id>
   </upstream>
 </pkgmetadata>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">powa-team/powa-web</remote-id>
+	</upstream>
+	<longdescription>
+		PoWA-web is the dedicated user interface of the PoWA project.
+		It produces graphs, grids and suggest various kind of optimisations
+		based on the data stored on the PoWA repository server.
+	</longdescription>
+</pkgmetadata>

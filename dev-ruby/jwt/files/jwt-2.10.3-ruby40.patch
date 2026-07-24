@@ -1,0 +1,39 @@
+https://github.com/jwt/ruby-jwt/pull/706
+
+From 2c4d9bd89569f191d303b9ae1b7d94e0f67a2c3e Mon Sep 17 00:00:00 2001
+From: Joakim Antman <antmanj@gmail.com>
+Date: Thu, 13 Nov 2025 21:36:20 +0200
+Subject: [PATCH 1/4] Fix compatibility with openssl
+
+--- a/lib/jwt/jwk/rsa.rb
++++ b/lib/jwt/jwk/rsa.rb
+@@ -195,7 +195,7 @@ def validate_rsa_parameters!(rsa_parameters)
+ 
+         if ::JWT.openssl_3?
+           alias create_rsa_key create_rsa_key_using_der
+-        elsif OpenSSL::PKey::RSA.new.respond_to?(:set_key)
++        elsif OpenSSL::PKey::RSA.method_defined?(:set_key)
+           alias create_rsa_key create_rsa_key_using_sets
+         else
+           alias create_rsa_key create_rsa_key_using_accessors
+--- a/spec/jwt/jwk/rsa_spec.rb
++++ b/spec/jwt/jwk/rsa_spec.rb
+@@ -262,7 +262,7 @@
+ 
+   describe '.create_rsa_key_using_sets' do
+     before do
+-      skip 'OpenSSL without the RSA#set_key method not supported' unless OpenSSL::PKey::RSA.new.respond_to?(:set_key)
++      skip 'OpenSSL without the RSA#set_key method not supported' unless OpenSSL::PKey::RSA.method_defined?(:set_key)
+       skip 'OpenSSL 3.0 does not allow mutating objects anymore' if JWT.openssl_3?
+     end
+ 
+@@ -274,7 +274,7 @@
+ 
+   describe '.create_rsa_key_using_accessors' do
+     before do
+-      skip 'OpenSSL if RSA#set_key is available there is no accessors anymore' if OpenSSL::PKey::RSA.new.respond_to?(:set_key)
++      skip 'OpenSSL if RSA#set_key is available there is no accessors anymore' if OpenSSL::PKey::RSA.method_defined?(:set_key)
+     end
+ 
+     subject(:rsa) { described_class.create_rsa_key_using_accessors(rsa_parameters) }
+

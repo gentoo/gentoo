@@ -1,0 +1,12 @@
+--- a/test/test_dropbearconvert.py
++++ b/test/test_dropbearconvert.py
+@@ -28,6 +28,9 @@
+ 	if kt == 'dss' and keyformat is None:
+ 		pytest.skip("dss doesn't support openssh format")
+ 
++	if keytype == "ed25519" and keyformat == "PEM":
++		pytest.skip("ssh-keygen does not support PEM format for type ed25519")
++
+ 	os_kt = kt
+ 	if os_kt == 'dss':
+ 		# OpenSSH calls it 'dsa', Dropbear calls it 'dss'

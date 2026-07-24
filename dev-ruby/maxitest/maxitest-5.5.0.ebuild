@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -36,6 +36,8 @@ all_ruby_prepare() {
 	sed -e '/shows backtrace for/askip' \
 		-e '/describe.*line/ s/describe/xdescribe/' \
 		-e '/describe.*color/ s/describe/xdescribe/' \
+		-e '/stops on ctrl+c and prints errors/askip' \
+		-e '/shows backtraces when in verbose mode/askip' \
 		-i spec/maxitest_spec.rb || die
 }
 

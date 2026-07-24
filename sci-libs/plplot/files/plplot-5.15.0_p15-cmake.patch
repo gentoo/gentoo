@@ -1,0 +1,33 @@
+--- a/cmake/epa_build/CMakeLists.txt	2026-06-06 17:59:03.537154867 +0200
++++ b/cmake/epa_build/CMakeLists.txt	2026-06-06 17:59:21.866963600 +0200
+@@ -26,7 +26,7 @@
+ message(STATUS "CMAKE_GENERATOR = ${CMAKE_GENERATOR}")
+ message(STATUS "CMAKE_INSTALL_PREFIX = ${CMAKE_INSTALL_PREFIX}")
+ 
+-cmake_minimum_required(VERSION 3.0.2 FATAL_ERROR)
++cmake_minimum_required(VERSION 3.10 FATAL_ERROR)
+ 
+ set(EPA_BASE ${CMAKE_BINARY_DIR}/epa_build)
+ message(STATUS "EPA_BASE = ${EPA_BASE}")
+--- a/cmake/test_automoc/CMakeLists.txt	2026-06-06 18:01:41.984501472 +0200
++++ b/cmake/test_automoc/CMakeLists.txt	2026-06-06 18:02:00.007313402 +0200
+@@ -1,7 +1,7 @@
+ # MAINTENANCE
+ # Use same minimum version for all platforms as the Linux platform minimum adopted for
+ # the PLplot project.
+-cmake_minimum_required(VERSION 3.7.2 FATAL_ERROR)
++cmake_minimum_required(VERSION 3.10 FATAL_ERROR)
+ 
+ project(test_automoc CXX)
+ 
+--- a/cmake/test_ada/CMakeLists.txt	2026-06-06 18:02:49.557796330 +0200
++++ b/cmake/test_ada/CMakeLists.txt	2026-06-06 18:03:04.601639344 +0200
+@@ -5,7 +5,7 @@
+ # MAINTENANCE
+ # Use same minimum version for all platforms as the Linux platform minimum adopted for
+ # the PLplot project.
+-cmake_minimum_required(VERSION 3.7.2 FATAL_ERROR)
++cmake_minimum_required(VERSION 3.10 FATAL_ERROR)
+ 
+ # Before the project command must specify the location where
+ # the test_ada project looks for CMake Ada language support files.

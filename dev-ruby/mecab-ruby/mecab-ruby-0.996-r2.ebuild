@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-USE_RUBY="ruby31 ruby32 ruby33 ruby34"
+USE_RUBY="ruby32 ruby33 ruby34 ruby40"
 
 inherit ruby-ng
 
@@ -27,6 +27,11 @@ each_ruby_configure() {
 
 each_ruby_compile() {
 	emake V=1
+}
+
+each_ruby_test() {
+	# Not a real test but rather a sample program. But it works as a quick smoke test
+	${RUBY} -I.:lib test.rb || die
 }
 
 each_ruby_install() {

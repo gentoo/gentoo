@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -49,11 +49,18 @@ PATCHES=(
 	# pending upstream PR: https://github.com/openstreetmap/merkaartor/pull/291
 	"${FILESDIR}"/${PN}-0.20.0-GNUInstallDirs.patch
 	"${FILESDIR}"/${PN}-0.20.0-gdal-3.12-fix.patch # backport from master
+	"${FILESDIR}"/${PN}-0.20.0-fix-exif-disabled.patch # bug #941962
 )
 
 src_prepare() {
 	# no Qt5 automagic, please
 	sed -e "/^ *find_package.*QT NAMES/s/Qt5 //" -i CMakeLists.txt || die
+
+	if has_version ">=dev-cpp/abseil-cpp-20260107.0"; then
+		# needs >=c++20, bug #976275
+		sed -e 's/set(CMAKE_CXX_STANDARD 17)/set(CMAKE_CXX_STANDARD 20)/' \
+			-i CMakeLists.txt || die
+	fi
 
 	cmake_src_prepare
 }

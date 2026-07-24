@@ -7,9 +7,9 @@ GENTOO_DEPEND_ON_PERL=no
 
 # bug #329479: git-remote-testgit is not multiple-version aware
 PYTHON_COMPAT=( python3_{11..14} )
-RUST_OPTIONAL=1
-inherit flag-o-matic toolchain-funcs perl-module shell-completion optfeature
-inherit plocale python-single-r1 rust systemd meson
+CARGO_OPTIONAL=1
+inherit cargo flag-o-matic toolchain-funcs perl-module shell-completion
+inherit optfeature plocale python-single-r1 systemd meson
 
 PLOCALES="bg ca de es fr is it ko pt_PT ru sv vi zh_CN"
 
@@ -59,7 +59,7 @@ S="${WORKDIR}"/${MY_P}
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="+curl cgi cvs doc keyring +gpg highlight +iconv +nls +pcre perforce +perl rust +safe-directory selinux subversion test tk +webdav xinetd"
+IUSE="+curl cgi cvs doc keyring +gpg highlight +iconv +nls +pcre perforce +perl +rust +safe-directory selinux subversion test tk +webdav xinetd"
 
 # Common to both DEPEND and RDEPEND
 DEPEND="
@@ -144,7 +144,7 @@ REQUIRED_USE="
 RESTRICT="!test? ( test )"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-2.48.1-macos-no-fsmonitor.patch
+	"${FILESDIR}"/${PN}-2.55.0-0001-macos-no-fsmonitor.patch
 
 	# This patch isn't merged upstream but is kept in the ebuild by
 	# demand from developers. It's opt-in (needs a config option)
@@ -187,6 +187,7 @@ src_unpack() {
 		git-r3_src_unpack
 	fi
 
+	use rust && cargo_gen_config
 }
 
 src_prepare() {
@@ -304,7 +305,11 @@ git_emake() {
 }
 
 src_compile() {
-	meson_src_compile
+	if use rust; then # bug #978391
+		cargo_env meson_src_compile
+	else
+		meson_src_compile
+	fi
 
 	if use doc ; then
 		# Workaround fragments that still use the Makefile and can't

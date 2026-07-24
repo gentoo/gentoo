@@ -20,7 +20,7 @@
 		for The Jolly Good API.
 	</longdescription>
 	<upstream>
-		<bugs-to>https://gitlab.com/jgemu/jollycv/-/issues</bugs-to>
+		<bugs-to>https://gitlab.com/jgemu/jollycv/-/work_items</bugs-to>
 		<changelog>https://gitlab.com/jgemu/jollycv/-/blob/master/ChangeLog</changelog>
 		<remote-id type="gitlab">jgemu/jollycv</remote-id>
 	</upstream>

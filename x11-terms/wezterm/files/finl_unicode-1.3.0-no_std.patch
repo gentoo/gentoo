@@ -1,0 +1,66 @@
+commit a1892f26245529f2ef3877a9ebd610c96cec07a6 (HEAD -> no_std, origin/no_std)
+Author: Wez Furlong <wez@wezfurlong.org>
+Date:   Sun Apr 20 10:20:46 2025 -0700
+
+    allow building no_std but alloc
+
+diff --git a/Cargo.toml b/Cargo.toml
+index 6b5ed91..61f8cb0 100644
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -20,7 +20,8 @@ unicode-segmentation = "1.12.0"
+ bstr = "1.10.0"
+ 
+ [features]
+-default = ["categories", "grapheme_clusters"]
++default = ["categories", "grapheme_clusters", "std"]
++std = []
+ categories = []
+ grapheme_clusters = []
+ 
+@@ -32,4 +33,4 @@ harness = false
+ 
+ [[bench]]
+ name = "grapheme_clusters"
+-harness = false
+\ No newline at end of file
++harness = false
+diff --git a/src/grapheme_clusters.rs b/src/grapheme_clusters.rs
+index 9568ec8..3803965 100644
+--- a/src/grapheme_clusters.rs
++++ b/src/grapheme_clusters.rs
+@@ -23,10 +23,13 @@
+ //! assert_eq!(graphemes.collect::<Vec<&str>>(), ["A\u{301}", "✋", "🇦🇹 "!"])
+ //! ```
+ 
+-use std::iter::Peekable;
+-use std::str::CharIndices;
++use core::iter::Peekable;
++use core::str::CharIndices;
+ use crate::data::grapheme_property::{GP_PAGES,GP_TABLE};
+ 
++extern crate alloc;
++use alloc::string::String;
++
+ 
+ /// `Graphemes` provides an iterator over the grapheme clusters of a string.
+ pub struct Graphemes<'a> {
+diff --git a/src/lib.rs b/src/lib.rs
+index d7ac286..04513e2 100644
+--- a/src/lib.rs
++++ b/src/lib.rs
+@@ -14,10 +14,12 @@
+ //!
+ //! Building the crate runs a build script which connects to unicode.org to download the data files.
+ 
++#![cfg_attr(not(feature="std"), no_std)]
++
+ #[cfg(feature = "categories")]
+ pub mod categories;
+ 
+ #[cfg(feature = "grapheme_clusters")]
+ pub mod grapheme_clusters;
+ 
+-mod data;
+\ No newline at end of file
++mod data;

@@ -1,10 +1,10 @@
-# Copyright 2018-2025 Gentoo Authors
+# Copyright 2018-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{11..14} pypy3_11 )
+PYTHON_COMPAT=( python3_{12..15} )
 
 inherit distutils-r1
 
@@ -29,7 +29,7 @@ RDEPEND="
 "
 
 python_test() {
-	touch "${S}/.tox" || die
+	> "${S}/.tox" || die
 	"${EPYTHON}" -m unittest discover -v -p '*_test.py' ||
 		die "Tests failed with ${EPYTHON}"
 }

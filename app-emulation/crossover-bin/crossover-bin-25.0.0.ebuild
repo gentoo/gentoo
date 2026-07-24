@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,7 +15,7 @@ S="${WORKDIR}"
 LICENSE="CROSSOVER-3"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
-IUSE="+capi +cups +gphoto2 +gstreamer +jpeg +lcms +mp3 +nls osmesa +openal +opencl +opengl +pcap +png +scanner +ssl +v4l +vulkan"
+IUSE="+cups +gphoto2 +gstreamer +jpeg +lcms +mp3 +nls osmesa +openal +opencl +opengl +pcap +png +scanner +ssl +v4l +vulkan"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RESTRICT="bindist test"
@@ -35,7 +35,6 @@ RDEPEND="${DEPEND}
 		dev-python/pygobject:3[${PYTHON_USEDEP}]
 	')
 	!prefix? ( sys-libs/glibc )
-	capi? ( net-libs/libcapi[abi_x86_32(-)] )
 	cups? ( net-print/cups[abi_x86_32(-)] )
 	jpeg? ( media-libs/libjpeg-turbo:0[abi_x86_32(-)] )
 	lcms? ( media-libs/lcms:2 )

@@ -93,6 +93,9 @@ BDEPEND="
 	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2 )
 	test? (
 		net-libs/gnutls[tools]
+		$(python_gen_cond_dep '
+			dev-python/python-dbusmock[${PYTHON_USEDEP}]
+		')
 	)
 	uefi? (
 		$(python_gen_cond_dep '

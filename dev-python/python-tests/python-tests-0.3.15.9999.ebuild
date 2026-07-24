@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_15t )
 inherit git-r3 python-r1
 
 PYVER="$(ver_cut 2-3)t"
-PATCHSET="python-gentoo-patches-3.15.0b1"
+PATCHSET="python-gentoo-patches-3.15.0b3"
 
 DESCRIPTION="Test modules from dev-lang/python"
 HOMEPAGE="

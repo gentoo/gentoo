@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -89,6 +89,7 @@ src_install() {
 
 	# dissuade Portage from removing our dir file
 	touch "${ED}"/usr/share/${P}/info/.keepinfodir || die
+	docompress -x /usr/share/${P}/info/dir
 
 	#rm "${ED}"/usr/share/aclocal/README || die
 	#rmdir "${ED}"/usr/share/aclocal || die

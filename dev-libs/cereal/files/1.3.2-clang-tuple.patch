@@ -1,0 +1,34 @@
+https://bugs.gentoo.org/946812
+https://github.com/USCiLab/cereal/issues/852
+https://github.com/USCiLab/cereal/pull/872
+
+From: nindanaoto <matsuoka.kotaro@gmail.com>
+Date: Sun, 14 Sep 2025 11:02:03 +0000
+Subject: [PATCH] Fix llvm20 compile issue in tuple.hpp
+
+---
+ include/cereal/types/tuple.hpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/include/cereal/types/tuple.hpp b/include/cereal/types/tuple.hpp
+index 80c68075..d6bef110 100644
+--- a/include/cereal/types/tuple.hpp
++++ b/include/cereal/types/tuple.hpp
+@@ -95,7 +95,7 @@ namespace cereal
+       template <class Archive, class ... Types> inline
+       static void apply( Archive & ar, std::tuple<Types...> & tuple )
+       {
+-        serialize<Height - 1>::template apply( ar, tuple );
++        serialize<Height - 1>::template apply<Archive, Types...>( ar, tuple );
+         ar( CEREAL_NVP_(tuple_element_name<Height - 1>::c_str(),
+             std::get<Height - 1>( tuple )) );
+       }
+@@ -116,7 +116,7 @@ namespace cereal
+   template <class Archive, class ... Types> inline
+   void CEREAL_SERIALIZE_FUNCTION_NAME( Archive & ar, std::tuple<Types...> & tuple )
+   {
+-    tuple_detail::serialize<std::tuple_size<std::tuple<Types...>>::value>::template apply( ar, tuple );
++    tuple_detail::serialize<std::tuple_size<std::tuple<Types...>>::value>::template apply<Archive, Types...>( ar, tuple );
+   }
+ } // namespace cereal
+ 

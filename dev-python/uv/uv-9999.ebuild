@@ -3,7 +3,7 @@
 
 EAPI=8
 
-RUST_MIN_VER="1.94.0"
+RUST_MIN_VER="1.95.0"
 
 inherit cargo check-reqs git-r3
 
@@ -31,7 +31,6 @@ RDEPEND="
 BDEPEND="
 	virtual/pkgconfig
 	test? (
-		dev-lang/python:3.9
 		dev-lang/python:3.10
 		dev-lang/python:3.11
 		dev-lang/python:3.12
@@ -112,8 +111,7 @@ src_test() {
 }
 
 src_install() {
-	cd crates/uv || die
-	cargo_src_install
+	dobin "$(cargo_target_dir)"/{uv,uvx}
 
 	insinto /etc/xdg/uv
 	newins - uv.toml <<-EOF || die

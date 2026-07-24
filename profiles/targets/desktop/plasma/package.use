@@ -26,9 +26,6 @@ dev-python/pyside webchannel
 # Required by sys-apps/flatpak, a dependency of kde-plasma/discover
 dev-util/ostree curl
 
-# Required by kde-apps/akonadi:6
-dev-qt/qtbase:6 mysql
-
 # Enable by default, requires kde-frameworks/kwayland
 kde-apps/yakuake absolute-position
 

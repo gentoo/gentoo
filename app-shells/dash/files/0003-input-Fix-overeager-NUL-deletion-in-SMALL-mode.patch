@@ -1,0 +1,147 @@
+From e170d9a49b3652460d6272bba9cd20afbb8140f2 Mon Sep 17 00:00:00 2001
+From: Herbert Xu <herbert@gondor.apana.org.au>
+Date: Sat, 20 Jun 2026 17:23:30 +0800
+Subject: [PATCH] input: Fix overeager NUL deletion in SMALL mode
+
+NUL characters should not be removed from input lines that are
+yet to be processed because they could become the input to the
+next executed utility.
+
+Fix this by moving the NUL deletion into pgetc when history support
+is off (IS_DEFINED_SMALL).
+
+Also fold __pgetc into pgetc since the only other caller of it
+is preadbuffer and that logic can also be moved up.
+
+Finally add a missing signed char cast for the unget characters.
+
+Reported-by: Kerin Millar <kfm@plushkava.net>
+Fixes: 44ae22beedf8 ("input: Disable lleft in SMALL mode")
+Fixes: 2c92409145d0 ("input: Allow MB_LEN_MAX calls to pungetc")
+Signed-off-by: Herbert Xu <herbert@gondor.apana.org.au>
+---
+ src/input.c | 66 ++++++++++++++++++++++++++++-------------------------
+ 1 file changed, 35 insertions(+), 31 deletions(-)
+
+diff --git a/src/input.c b/src/input.c
+index 0fb2f18..e9b9d33 100644
+--- a/src/input.c
++++ b/src/input.c
+@@ -217,39 +217,47 @@ static void freestrings(struct strpush *sp)
+ }
+ 
+ 
+-static int __pgetc(void)
++/*
++ * Read a character from the script, returning PEOF on end of file.
++ * Nul characters in the input are silently discarded.
++ */
++
++int __attribute__((noinline)) pgetc(void)
+ {
++	struct strpush *sp = parsefile->spfree;
+ 	int c;
+ 
++	if (unlikely(sp))
++		freestrings(sp);
++
++again:
+ 	if (parsefile->unget) {
+ 		long unget = -(long)(unsigned)parsefile->unget--;
+ 
+-		return parsefile->nextc[unget];
++		return (signed char)parsefile->nextc[unget];
+ 	}
+ 
+-	if (parsefile->nleft > 0) {
++nextc:
++	if (likely(parsefile->nleft > 0)) {
+ 		parsefile->nleft--;
+ 		c = (signed char)*parsefile->nextc++;
++	} else if (unlikely(parsefile->strpush)) {
++		popstring();
++		/* The freestrings call must be delayed til the next
++		 * pgetc call for PEOA to work properly.
++		 */
++		goto again;
+ 	} else
+ 		c = preadbuffer();
+ 
+-	return c;
+-}
+-
+-
+-/*
+- * Read a character from the script, returning PEOF on end of file.
+- * Nul characters in the input are silently discarded.
+- */
+-
+-int __attribute__((noinline)) pgetc(void)
+-{
+-	struct strpush *sp = parsefile->spfree;
+-
+-	if (unlikely(sp))
+-		freestrings(sp);
++	/* delete nul characters */
++	if (IS_DEFINED_SMALL && unlikely(!c)) {
++		parsefile->nextc = memmove(parsefile->nextc - 1,
++					   parsefile->nextc, parsefile->nleft);
++		goto nextc;
++	}
+ 
+-	return __pgetc();
++	return c;
+ }
+ 
+ int pgetc_eoa(void)
+@@ -374,10 +382,6 @@ static int preadbuffer(void)
+ 	int more;
+ 	char *q;
+ 
+-	if (unlikely(parsefile->strpush)) {
+-		popstring();
+-		return __pgetc();
+-	}
+ 	if (parsefile->eof & 2) {
+ eof:
+ 		parsefile->eof = 3;
+@@ -408,6 +412,12 @@ again:
+ 		}
+ 	}
+ 
++	if (IS_DEFINED_SMALL) {
++		q += more;
++		more = 0;
++		goto done;
++	}
++
+ 	/* delete nul characters */
+ 	for (;;) {
+ 		int c;
+@@ -422,9 +432,6 @@ again:
+ 
+ 		q++;
+ 
+-		if (IS_DEFINED_SMALL)
+-			goto check;
+-
+ 		switch (c) {
+ 		case '\n':
+ 			goto done;
+@@ -439,11 +446,8 @@ again:
+ 		}
+ 
+ check:
+-		if (more <= 0) {
+-			if (!IS_DEFINED_SMALL)
+-				goto again;
+-			break;
+-		}
++		if (more <= 0)
++			goto again;
+ 	}
+ done:
+ 	input_set_lleft(parsefile, more);
+-- 
+2.53.0
+

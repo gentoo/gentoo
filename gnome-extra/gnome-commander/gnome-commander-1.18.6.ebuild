@@ -10,7 +10,7 @@ HOMEPAGE="https://gnome.pages.gitlab.gnome.org/gnome-commander/"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="doc exif gsf pdf samba taglib test"
 RESTRICT="!test? ( test )"
 

@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 PYTHON_REQ_USE="xml(+)"
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/jvoisin.asc
 inherit distutils-r1 optfeature verify-sig
@@ -45,6 +45,7 @@ distutils_enable_tests unittest
 
 PATCHES=(
 	"${FILESDIR}"/mat2-0.14.0-fix-tests.patch
+	"${FILESDIR}"/mat2-0.14.0-fix-html-test.patch
 )
 
 pkg_postinst() {

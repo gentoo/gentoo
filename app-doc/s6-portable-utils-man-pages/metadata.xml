@@ -7,6 +7,6 @@
 	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
-		<remote-id type="sourcehut">~flexibeast/s6-portable-utils-man-pages</remote-id>
+		<remote-id type="sourcehut">~humm/s6-portable-utils-man-pages</remote-id>
 	</upstream>
 </pkgmetadata>

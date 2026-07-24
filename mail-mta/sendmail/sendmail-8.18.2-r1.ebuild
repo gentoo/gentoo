@@ -29,7 +29,7 @@ SRC_URI+="
 
 LICENSE="Sendmail GPL-2" # GPL-2 is here for initscript
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
 IUSE="+berkdb eai fips ldap mbox nis sasl selinux ssl tcpd tinycdb"
 REQUIRED_USE="
 	|| ( berkdb tinycdb )

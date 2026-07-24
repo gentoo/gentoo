@@ -17,7 +17,7 @@
 		them easier to understand.
 	</longdescription>
 	<upstream>
-		<bugs-to>https://gitlab.com/jgemu/jg/-/issues</bugs-to>
+		<bugs-to>https://gitlab.com/jgemu/jg/-/work_items</bugs-to>
 		<changelog>https://gitlab.com/jgemu/jg/-/blob/master/ChangeLog</changelog>
 		<remote-id type="gitlab">jgemu/jg</remote-id>
 	</upstream>

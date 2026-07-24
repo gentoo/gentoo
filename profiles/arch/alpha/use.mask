@@ -4,6 +4,10 @@
 # Unmask the flag which corresponds to ARCH.
 -alpha
 
+# Michael Orlitzky <mjo@gentoo.org> (2026-07-14)
+# dev-lang/php:8.5 needs new keywords, bug 977138.
+php_targets_php8-5
+
 # Sam James <sam@gentoo.org> (2025-01-09)
 # dev-db/mysql not keyworded here
 mysql
@@ -74,10 +78,6 @@ acpi
 lua_single_target_luajit
 lua_targets_luajit
 luajittex
-
-# Tobias Klausmann <klausman@gentoo.org> (2016-06-07)
-# We currently do not have the resources to AT qt5 packages.
-qt5
 
 # This file masks out USE flags that are simply NOT allowed in the default
 # profile for any architecture.  This works, for example, if a non-default

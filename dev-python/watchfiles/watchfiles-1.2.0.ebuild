@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=maturin
-PYTHON_COMPAT=( python3_{11..14} pypy3_11 )
+PYTHON_COMPAT=( python3_{12..15} )
 
 RUST_MIN_VER="1.83.0"
 CRATES="
@@ -78,7 +78,7 @@ LICENSE+="
 	Apache-2.0-with-LLVM-exceptions CC0-1.0 ISC MIT Unicode-DFS-2016
 "
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="amd64 arm arm64 ppc ppc64 ~riscv ~s390 ~sparc x86"
 
 RDEPEND="
 	>=dev-python/anyio-4.0.0[${PYTHON_USEDEP}]

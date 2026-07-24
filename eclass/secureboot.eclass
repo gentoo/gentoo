@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: secureboot.eclass
@@ -51,6 +51,15 @@ BDEPEND="
 	)
 "
 
+# @ECLASS_VARIABLE: SECUREBOOT_SIGN_CERT
+# @USER_VARIABLE
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# Used with USE=secureboot.  Should be set to the path of the public
+# key certificate in PEM format to use.
+# If unspecified the SECUREBOOT_SIGN_KEY is assumed to also contain the
+# certificate belonging to it.
+
 # @ECLASS_VARIABLE: SECUREBOOT_SIGN_KEY
 # @USER_VARIABLE
 # @DEFAULT_UNSET
@@ -65,14 +74,16 @@ BDEPEND="
 # If none of these exist, a new key will be generated at
 # /etc/portage/secureboot.pem.
 
-# @ECLASS_VARIABLE: SECUREBOOT_SIGN_CERT
+# @ECLASS_VARIABLE: SECUREBOOT_SIGN_TOOL
 # @USER_VARIABLE
-# @DEFAULT_UNSET
 # @DESCRIPTION:
-# Used with USE=secureboot.  Should be set to the path of the public
-# key certificate in PEM format to use.
-# If unspecified the SECUREBOOT_SIGN_KEY is assumed to also contain the
-# certificate belonging to it.
+# Used with USE=secureboot.  May be set to a signing tool to use when
+# signing EFI files.
+#
+# Valid values: sbsign,systemd-sbsign
+#
+# Default if unset: sbsign
+: "${SECUREBOOT_SIGN_TOOL:=sbsign}"
 
 if [[ -z ${_SECUREBOOT_ECLASS} ]]; then
 _SECUREBOOT_ECLASS=1
@@ -220,15 +231,36 @@ secureboot_sign_efi_file() {
 		ewarn "${input_file} already signed, skipping"
 		return=0
 	else
+		# Common arguments
 		local args=(
-			"--key=${SECUREBOOT_SIGN_KEY}"
-			"--cert=${SECUREBOOT_SIGN_CERT}"
+			"--output=${output_file}"
 		)
-		if [[ ${SECUREBOOT_SIGN_KEY} == pkcs11:* ]]; then
-			args+=( --engine=pkcs11 )
-		fi
 
-		sbsign "${args[@]}" "${input_file}" --output "${output_file}"
+		case ${SECUREBOOT_SIGN_TOOL} in
+			sbsign)
+				args+=(
+					"--key=${SECUREBOOT_SIGN_KEY}"
+					"--cert=${SECUREBOOT_SIGN_CERT}"
+				)
+				if [[ ${SECUREBOOT_SIGN_KEY} == pkcs11:* ]]; then
+					args+=( "--engine=pkcs11" )
+				fi
+
+				"${EPREFIX}/usr/bin/sbsign" "${input_file}" "${args[@]}"
+			;;
+			systemd-sbsign)
+				args+=(
+					"--private-key=${SECUREBOOT_SIGN_KEY}"
+					"--certificate=${SECUREBOOT_SIGN_CERT}"
+				)
+				if [[ ${SECUREBOOT_SIGN_KEY} == pkcs11:* ]]; then
+					args+=( "--private-key-source=engine:pkcs11" )
+				fi
+
+				"${EPREFIX}/usr/lib/systemd/systemd-sbsign" sign "${input_file}" "${args[@]}"
+			;;
+			*) die "Unsupported value SECUREBOOT_SIGN_TOOL=${SECUREBOOT_SIGN_TOOL}" ;;
+		esac
 		return=${?}
 	fi
 	eend ${return} || die "Signing ${input_file} failed"

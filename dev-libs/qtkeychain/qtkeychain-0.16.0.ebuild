@@ -10,7 +10,7 @@ HOMEPAGE="https://github.com/frankosterfeld/qtkeychain"
 
 if [[ ${PV} != *9999* ]]; then
 	SRC_URI="https://github.com/frankosterfeld/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
+	KEYWORDS="amd64 arm64 ~loong ~ppc64 ~riscv x86"
 else
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/frankosterfeld/${PN}.git"

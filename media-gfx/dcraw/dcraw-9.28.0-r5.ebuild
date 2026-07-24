@@ -12,7 +12,7 @@ S="${WORKDIR}/dcraw"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ppc ppc64 ~sparc x86"
 LANGS=" ca cs de da eo es fr hu it nl pl pt ru sv zh_CN zh_TW"
 IUSE="nls jpeg lcms"
 

@@ -1,0 +1,64 @@
+https://github.com/xelerance/xl2tpd/pull/288
+From 0bfd157fe69996a64b7a48dff4b92d6604cbb560 Mon Sep 17 00:00:00 2001
+From: Jaco Kroon <jaco@uls.co.za>
+Date: Mon, 22 Jun 2026 12:35:49 +0200
+Subject: [PATCH] xl2tpd: Fix use-after-free in child_handler.
+
+==12749== Invalid write of size 4
+==12749==    at 0x4004D42: child_handler (xl2tpd.c:293)
+==12749==    by 0x4004D42: process_signal (xl2tpd.c:386)
+==12749==    by 0x400C843: network_thread (network.c:697)
+==12749==    by 0x4002A66: main (xl2tpd.c:1946)
+==12749==  Address 0x56bb9a0 is 480 bytes inside a block of size 4,944 free'd
+==12749==    at 0x486496F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==12749==    by 0x4004D41: child_handler (xl2tpd.c:290)
+==12749==    by 0x4004D41: process_signal (xl2tpd.c:386)
+==12749==    by 0x400C843: network_thread (network.c:697)
+==12749==    by 0x4002A66: main (xl2tpd.c:1946)
+==12749==  Block was alloc'd at
+==12749==    at 0x48692B3: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==12749==    by 0x400B825: new_call (call.c:495)
+==12749==    by 0x4009020: message_type_avp (avp.c:323)
+==12749==    by 0x400AF76: handle_avps (avp.c:1771)
+==12749==    by 0x40085E3: handle_control (control.c:1822)
+==12749==    by 0x40085E3: handle_packet (control.c:1841)
+==12749==    by 0x400BEB1: network_thread_process_socket (network.c:617)
+==12749==    by 0x400C9F2: network_thread (network.c:761)
+==12749==    by 0x4002A66: main (xl2tpd.c:1946)
+==12749==
+
+When using kernel mode this call call_close, which will already
+close(c->fd) if >0 and destroy_call is actually called, including
+setting c->fd = -1.
+
+Further to be noted is that call_close could thus free() the relevant
+memory, resulting in this error.
+
+Bottom line:  We only need to set c->fd = -1 if we're the function closing the fd().
+
+Signed-off-by: Jaco Kroon <jaco@uls.co.za>
+---
+ xl2tpd.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/xl2tpd.c b/xl2tpd.c
+index cbf2e22..c1544f8 100644
+--- a/xl2tpd.c
++++ b/xl2tpd.c
+@@ -285,12 +285,12 @@ static void child_handler (int sig)
+ 
+ #endif
+                     close (c->fd);
++                    c->fd = -1;
+ #ifdef USE_KERNEL
+                  } else {
+                      call_close (c);
+                  }
+ #endif
+-                    c->fd = -1;
+                     /*
+                      * terminate tunnel and call loops, returning to the
+                      * for(;;) loop (and possibly get the next pid)
+-- 
+2.53.0
+

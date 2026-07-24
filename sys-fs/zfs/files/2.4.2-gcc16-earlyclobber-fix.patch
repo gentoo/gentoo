@@ -1,0 +1,68 @@
+From be04f4acfa83261571dad5c9c4bfda9fe38063ff Mon Sep 17 00:00:00 2001
+From: Brian Behlendorf <behlendorf1@llnl.gov>
+Date: Wed, 13 May 2026 17:55:23 +0000
+Subject: [PATCH] Fix aarch64 build failure by removing earlyclobber
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+The UVR macros used "+&w" (read-write + earlyclobber) as the
+constraint for NEON register operands that are declared as explicit
+hard-register variables via:
+
+register unsigned char wN asm("vN") __attribute__((vector_size(16)));
+
+The + modifier implicitly makes the operand also an input (reading the
+register before the asm runs). The & (earlyclobber) modifier says "this
+output may be written before all inputs are consumed." Having an
+earlyclobber output on the same hard-register that is simultaneously
+an input is a contradiction — GCC 16 now strictly diagnoses this.
+
+The fix removes the & from "+&w", yielding "+w". The earlyclobber
+was both incorrect (contradicts the implicit input) and unnecessary
+(the physical registers are already hard-bound, so the compiler has no
+freedom to assign conflicting registers anyway).
+
+Co-Authored-by: Claude Sonnet 4.6 <noreply@anthropic.com>
+Signed-off-by: Brian Behlendorf <behlendorf1@llnl.gov>
+Issue #18525
+---
+ .../zfs/vdev_raidz_math_aarch64_neon_common.h  | 18 +++++++++---------
+ 1 file changed, 9 insertions(+), 9 deletions(-)
+
+diff --git a/module/zfs/vdev_raidz_math_aarch64_neon_common.h b/module/zfs/vdev_raidz_math_aarch64_neon_common.h
+index 1ec4d0218bb0..3c3370290c88 100644
+--- a/module/zfs/vdev_raidz_math_aarch64_neon_common.h
++++ b/module/zfs/vdev_raidz_math_aarch64_neon_common.h
+@@ -102,14 +102,14 @@
+ 
+ #define	WVR(X) [w##X] "=w" (w##X)
+ 
+-#define	UVR0_(REG, ...) [w##REG] "+&w" (w##REG)
+-#define	UVR1_(_1, REG, ...) [w##REG] "+&w" (w##REG)
+-#define	UVR2_(_1, _2, REG, ...) [w##REG] "+&w" (w##REG)
+-#define	UVR3_(_1, _2, _3, REG, ...) [w##REG] "+&w" (w##REG)
+-#define	UVR4_(_1, _2, _3, _4, REG, ...) [w##REG] "+&w" (w##REG)
+-#define	UVR5_(_1, _2, _3, _4, _5, REG, ...) [w##REG] "+&w" (w##REG)
+-#define	UVR6_(_1, _2, _3, _4, _5, _6, REG, ...) [w##REG] "+&w" (w##REG)
+-#define	UVR7_(_1, _2, _3, _4, _5, _6, _7, REG, ...) [w##REG] "+&w" (w##REG)
++#define	UVR0_(REG, ...) [w##REG] "+w" (w##REG)
++#define	UVR1_(_1, REG, ...) [w##REG] "+w" (w##REG)
++#define	UVR2_(_1, _2, REG, ...) [w##REG] "+w" (w##REG)
++#define	UVR3_(_1, _2, _3, REG, ...) [w##REG] "+w" (w##REG)
++#define	UVR4_(_1, _2, _3, _4, REG, ...) [w##REG] "+w" (w##REG)
++#define	UVR5_(_1, _2, _3, _4, _5, REG, ...) [w##REG] "+w" (w##REG)
++#define	UVR6_(_1, _2, _3, _4, _5, _6, REG, ...) [w##REG] "+w" (w##REG)
++#define	UVR7_(_1, _2, _3, _4, _5, _6, _7, REG, ...) [w##REG] "+w" (w##REG)
+ 
+ #define	UVR0(r...) UVR0_(r)
+ #define	UVR1(r...) UVR1_(r)
+@@ -120,7 +120,7 @@
+ #define	UVR6(r...) UVR6_(r, 36, 35, 34, 33, 32, 31)
+ #define	UVR7(r...) UVR7_(r, 36, 35, 34, 33, 32, 31, 30)
+ 
+-#define	UVR(X) [w##X] "+&w" (w##X)
++#define	UVR(X) [w##X] "+w" (w##X)
+ 
+ #define	R_01(REG1, REG2, ...) REG1, REG2
+ #define	_R_23(_0, _1, REG2, REG3, ...) REG2, REG3

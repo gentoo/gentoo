@@ -1,0 +1,23 @@
+From 06b5e0687cd118a0b926a34cbe2c80413b246fb2 Mon Sep 17 00:00:00 2001
+From: "Alexander J. Pfleger" <alexander.julian.pfleger@cern.ch>
+Date: Mon, 8 Jun 2026 11:17:18 +0200
+Subject: [PATCH 1/9] fix
+
+---
+ tests/roots/test-chm/index.rst | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/roots/test-chm/index.rst b/tests/roots/test-chm/index.rst
+index 2d9e563..e576976 100644
+--- a/tests/roots/test-chm/index.rst
++++ b/tests/roots/test-chm/index.rst
+@@ -6,7 +6,7 @@ Index markup
+    pair: entry; pair
+    double: entry; double
+    triple: index; entry; triple
+-   keyword: with
++   pair: keyword; with
+    see: from; to
+    seealso: fromalso; toalso
+ 
+

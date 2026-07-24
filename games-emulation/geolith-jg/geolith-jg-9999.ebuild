@@ -15,16 +15,18 @@ if [[ "${PV}" == *9999 ]] ; then
 else
 	SRC_URI="https://gitlab.com/jgemu/${MY_PN}/-/archive/${PV}/${MY_P}.tar.bz2"
 	S="${WORKDIR}/${MY_P}"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
+	KEYWORDS="~amd64"
 fi
 
 LICENSE="BSD MIT MIT-0"
 SLOT="1"
+IUSE="chdr"
 
 DEPEND="
 	dev-libs/miniz:=
-	media-libs/jg:1=
+	>=media-libs/jg-2.0.0
 	media-libs/speexdsp
+	chdr? ( media-libs/libchdr:= )
 "
 RDEPEND="
 	${DEPEND}
@@ -34,18 +36,30 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
-src_compile() {
-	emake \
-		CC="$(tc-getCC)" \
-		PKG_CONFIG="$(tc-getPKG_CONFIG)" \
+src_configure() {
+	local makeopts=(
+		PREFIX="${EPREFIX}"/usr
+		ENABLE_CHDR=$(usex chdr 1 0)
 		USE_EXTERNAL_MINIZ=1
+	)
+	export MY_MAKEOPTS="${makeopts[@]}"
+}
+
+src_compile() {
+	local mymakeargs=(
+		CC="$(tc-getCC)"
+		PKG_CONFIG="$(tc-getPKG_CONFIG)"
+		${MY_MAKEOPTS}
+	)
+	emake "${mymakeargs[@]}"
 }
 
 src_install() {
-	emake install \
-		DESTDIR="${D}" \
-		PREFIX="${EPREFIX}"/usr \
-		DOCDIR="${EPREFIX}"/usr/share/doc/${PF} \
-		LIBDIR="${EPREFIX}/usr/$(get_libdir)" \
-		USE_EXTERNAL_MINIZ=1
+	local mymakeargs=(
+		DESTDIR="${D}"
+		DOCDIR="${EPREFIX}"/usr/share/doc/${PF}
+		LIBDIR="${EPREFIX}/usr/$(get_libdir)"
+		${MY_MAKEOPTS}
+	)
+	emake install "${mymakeargs[@]}"
 }

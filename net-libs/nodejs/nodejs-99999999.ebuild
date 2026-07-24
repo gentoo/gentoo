@@ -25,7 +25,7 @@ else
 	S="${WORKDIR}/node-v${PV}"
 fi
 
-IUSE="corepack cpu_flags_x86_sse2 debug doc +icu +inspector npm pax-kernel +snapshot +ssl +system-icu +system-ssl test"
+IUSE="cpu_flags_x86_sse2 debug doc +icu +inspector lto +npm pax-kernel +snapshot +ssl system-icu +system-ssl test"
 REQUIRED_USE="inspector? ( icu ssl )
 	npm? ( ssl )
 	system-icu? ( icu )
@@ -34,23 +34,22 @@ REQUIRED_USE="inspector? ( icu ssl )
 
 RESTRICT="!test? ( test )"
 
-RDEPEND=">=app-arch/brotli-1.1.0:=
+COMMON_DEPEND=">=app-arch/brotli-1.1.0:=
+	dev-db/sqlite:3
 	>=dev-cpp/ada-3.3.0:=
 	>=dev-cpp/simdutf-7.3.4:=
-	dev-db/sqlite:3
-	>=dev-libs/libuv-1.51.0:=
-	>=dev-libs/simdjson-3.10.1:=
-	>=net-dns/c-ares-1.34.4:=
-	>=net-libs/nghttp2-1.64.0:=
-	>=net-libs/nghttp3-1.7.0:=
+	>=dev-libs/libuv-1.52.1:=
+	>=dev-libs/simdjson-4.6.1:=
+	>=net-dns/c-ares-1.34.5:=
+	>=net-libs/nghttp2-1.69.0:=
+	>=net-libs/nghttp3-1.14.0:=
 	virtual/zlib:=
-	corepack? ( !sys-apps/yarn )
 	system-icu? ( >=dev-libs/icu-73:= )
 	system-ssl? (
-		>=net-libs/ngtcp2-1.9.1:=
-		>=dev-libs/openssl-1.1.1:0=
+		>=net-libs/ngtcp2-1.22.1:=
+		>=dev-libs/openssl-3.5.6:0=
 	)
-	!system-ssl? ( >=net-libs/ngtcp2-1.9.1:=[-gnutls] )
+	!system-ssl? ( >=net-libs/ngtcp2-1.14.0:=[-gnutls] )
 	|| (
 		sys-devel/gcc:*
 		llvm-runtimes/libatomic-stub
@@ -61,7 +60,8 @@ BDEPEND="${PYTHON_DEPS}
 	virtual/pkgconfig
 	test? ( net-misc/curl )
 	pax-kernel? ( sys-apps/elfix )"
-DEPEND="${RDEPEND}"
+DEPEND="${COMMON_DEPEND}"
+RDEPEND="${COMMON_DEPEND}"
 
 # These are measured on a loong machine with -ggdb on, and only checked
 # if debugging flags are present in CFLAGS.
@@ -72,6 +72,12 @@ DEPEND="${RDEPEND}"
 # fatter binaries and set the disk requirement to 22GiB.
 CHECKREQS_MEMORY="8G"
 CHECKREQS_DISK_BUILD="22G"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-26.3.0-gcc17.patch
+	"${FILESDIR}"/${PN}-26.3.0-format-cstdlib.patch
+	"${FILESDIR}"/${PN}-26.3.0-v8-climits.patch
+)
 
 pkg_pretend() {
 	if [[ ${MERGE_TYPE} != "binary" ]]; then
@@ -85,6 +91,12 @@ pkg_pretend() {
 pkg_setup() {
 	python-any-r1_pkg_setup
 	linux-info_pkg_setup
+	# https://github.com/nodejs/node/issues/62676 - Can't build Temporal with system ICU.
+	if use system-icu; then
+		ewarn "The ES2026 'Temporal' datetime feature/object is not available when using system-icu."
+		ewarn "Please consider whether this is desirable for your use case."
+		ewarn "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Temporal"
+	fi
 }
 
 src_prepare() {
@@ -94,7 +106,7 @@ src_prepare() {
 
 	# fix compilation on Darwin
 	# https://code.google.com/p/gyp/issues/detail?id=260
-	sed -i -e "/append('-arch/d" tools/gyp/pylib/gyp/xcode_emulation.py || die
+	sed -i -e '/append("-arch")/{N;d;}' tools/gyp/pylib/gyp/xcode_emulation.py || die
 
 	# proper libdir, hat tip @ryanpcmcquen https://github.com/iojs/io.js/issues/504
 	local LIBDIR=$(get_libdir)
@@ -113,7 +125,11 @@ src_prepare() {
 	fi
 
 	# We need to disable mprotect on two files when it builds Bug 694100.
-	use pax-kernel && PATCHES+=( "${FILESDIR}"/${PN}-24.1.0-paxmarking.patch )
+	use pax-kernel &&
+		PATCHES+=( "${FILESDIR}"/${PN}-24.1.0-paxmarking.patch )
+
+	use ppc64 &&
+		PATCHES+=(	"${FILESDIR}/${PN}-24.11.1-restore-ppc64be.patch" )
 
 	default
 }
@@ -143,15 +159,17 @@ src_configure() {
 		--shared-zlib
 	)
 	use debug && myconf+=( --debug )
-	tc-is-lto && myconf+=( --enable-lto )
+	use lto && myconf+=( --enable-lto )
 	if use system-icu; then
+		# No Temporal support: https://github.com/nodejs/node/issues/62676
 		myconf+=( --with-intl=system-icu )
 	elif use icu; then
+		# Full embedded ICU (Temporal works)
 		myconf+=( --with-intl=full-icu )
 	else
-		myconf+=( --with-intl=none )
+		# Default embedded subset (Temporal works, saves space over full-icu)
+		myconf+=( --with-intl=small-icu )
 	fi
-	use corepack || myconf+=( --without-corepack )
 	use inspector || myconf+=( --without-inspector )
 	use npm || myconf+=( --without-npm )
 	use snapshot || myconf+=( --without-node-snapshot )
@@ -185,6 +203,8 @@ src_configure() {
 
 src_compile() {
 	eninja -C out/Release
+	# There's just a plain make target for the FFI tests, and it doesn't support ninja.
+	use test && emake build-ffi-tests
 }
 
 src_install() {
@@ -192,13 +212,6 @@ src_install() {
 	default
 
 	pax-mark -m "${ED}"/usr/bin/node
-
-	# set up a symlink structure that node-gyp expects..
-	dodir /usr/include/node/deps/{v8,uv}
-	dosym . /usr/include/node/src
-	for var in deps/{uv,v8}/include; do
-		dosym ../.. /usr/include/node/${var}
-	done
 
 	if use doc; then
 		docinto html
@@ -231,15 +244,14 @@ src_install() {
 
 		# Remove various development and/or inappropriate files and
 		# useless docs of dependend packages.
+		# Strict match for LICENSE files to avoid purging actual logic (e.g. license.js)
+		# which breaks npm.
 		find "${LIBDIR}"/node_modules \
 			\( -type d -name examples \) -or \( -type f \( \
-				-iname "LICEN?E*" \
+				\( -iname "LICEN?E*" -not -name "*.js" -not -name "*.json" \) \
 				"${find_name[@]}" \
 			\) \) -exec rm -rf "{}" \;
 	fi
-
-	use corepack &&
-		"${D}"/usr/bin/corepack enable --install-directory "${D}"/usr/bin
 
 	mv "${ED}"/usr/share/doc/node "${ED}"/usr/share/doc/${PF} || die
 }
@@ -262,6 +274,11 @@ src_test() {
 		test/parallel/test-process-setgroups.js
 		test/parallel/test-process-uid-gid.js
 		test/parallel/test-release-npm.js
+		# Unreliable when using system libraries and ASLR.
+		# The variations between snapshot generation passes appear limited to memory
+		# allocation pointers leaking into the serialised V8 blob array; the actual
+		# bytecode and engine structures remain consistently... consistent.
+		test/parallel/test-snapshot-reproducible.js
 		test/parallel/test-socket-write-after-fin-error.js
 		test/parallel/test-strace-openat-openssl.js
 		test/sequential/test-tls-session-timeout.js
@@ -286,5 +303,13 @@ pkg_postinst() {
 	if use npm; then
 		ewarn "remember to run: source /etc/profile if you plan to use nodejs"
 		ewarn " in your current shell"
+	fi
+
+	if use system-icu; then
+		ewarn ""
+		ewarn "Node.js was built with USE='system-icu'."
+		ewarn "The JavaScript 'Temporal' API has been disabled."
+		ewarn "If you need full ES2026+ compliance, rebuild with USE='-system-icu'."
+		ewarn ""
 	fi
 }

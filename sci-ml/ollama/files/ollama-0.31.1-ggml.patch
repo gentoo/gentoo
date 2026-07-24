@@ -1,0 +1,11 @@
+--- a/llama/server/CMakeLists.txt	2026-07-04 07:08:27.528453937 +0200
++++ b/llama/server/CMakeLists.txt	2026-07-04 07:09:07.889047823 +0200
+@@ -508,7 +508,7 @@
+     # RUNTIME covers executables and Windows DLLs; LIBRARY covers .so on Linux
+     install(TARGETS llama-server llama-quantize
+         RUNTIME DESTINATION ${_base_dest} COMPONENT llama-server OPTIONAL)
+-    set(_llama_server_base_libs ggml-base ggml llama mtmd)
++    set(_llama_server_base_libs llama mtmd)
+     if(TARGET llama-common)
+         list(APPEND _llama_server_base_libs llama-common)
+     endif()

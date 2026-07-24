@@ -6,7 +6,7 @@ EAPI=8
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=maturin
 PYPI_VERIFY_REPO=https://github.com/milesgranger/cramjam
-PYTHON_COMPAT=( pypy3_11 python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 
 # Note: you need to use top-level Cargo.lock to generate the crate list.
 CRATES="
@@ -145,9 +145,9 @@ LICENSE+="
 	Unicode-3.0
 "
 SLOT="0"
-if [[ ${PV} != *_rc* ]]; then
-	KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~sparc ~x86"
-fi
+# This is the same as 2.12.0 final, except upstream never uploaded it
+# to PyPI.
+KEYWORDS="amd64 ~arm arm64 ~riscv ~sparc ~x86"
 
 DEPEND="
 	app-arch/bzip2:=

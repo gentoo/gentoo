@@ -9,6 +9,7 @@
 # @SUPPORTED_EAPIS: 8
 # @PROVIDES: java-utils-2
 # @BLURB: Java OSGi eclass
+# @DEPRECATED: none
 # @DESCRIPTION:
 # This eclass provides functionality which is used by packages that need to be
 # OSGi compliant. This means that the generated jars will have special headers

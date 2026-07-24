@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person" proxied="yes">
-		<email>jeffrey@icurse.nl</email>
-		<name>Jeffrey Lin</name>
-	</maintainer>
 	<maintainer type="person">
 		<email>arsen@gentoo.org</email>
 		<name>Arsen Arsenović</name>
@@ -12,10 +8,6 @@
 	<maintainer type="person">
 		<email>flow@gentoo.org</email>
 		<name>Florian Schmaus</name>
-	</maintainer>
-	<maintainer type="project" proxied="proxy">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription>
 	plocate works by creating an inverted index over trigrams (combinations of

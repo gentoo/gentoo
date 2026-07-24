@@ -1,19 +1,30 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/cgzones.asc
-inherit systemd tmpfiles verify-sig
+inherit systemd tmpfiles
 
 DESCRIPTION="Rotates, compresses, and mails system logs"
 HOMEPAGE="https://github.com/logrotate/logrotate"
-SRC_URI="https://github.com/${PN}/${PN}/releases/download/${PV}/${P}.tar.xz"
-SRC_URI+=" verify-sig? ( https://github.com/${PN}/${PN}/releases/download/${PV}/${P}.tar.xz.asc )"
+
+if [[ ${PV} == 9999 ]] ; then
+	EGIT_REPO_URI="https://github.com/logrotate/logrotate"
+	inherit autotools git-r3
+else
+	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/cgzones.asc
+	inherit verify-sig
+
+	SRC_URI="https://github.com/${PN}/${PN}/releases/download/${PV}/${P}.tar.xz"
+	SRC_URI+=" verify-sig? ( https://github.com/${PN}/${PN}/releases/download/${PV}/${P}.tar.xz.asc )"
+
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
+
+	BDEPEND="verify-sig? ( sec-keys/openpgp-keys-cgzones )"
+fi
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
 IUSE="acl +cron selinux"
 
 DEPEND="
@@ -26,7 +37,6 @@ RDEPEND="
 	cron? ( virtual/cron )
 	selinux? ( sec-policy/selinux-logrotate )
 "
-BDEPEND="verify-sig? ( sec-keys/openpgp-keys-cgzones )"
 
 STATEFILE="${EPREFIX}/var/lib/misc/logrotate.status"
 OLDSTATEFILE="${EPREFIX}/var/lib/logrotate.status"
@@ -53,6 +63,8 @@ src_prepare() {
 	default
 
 	sed -i -e 's#/usr/sbin/logrotate#/usr/bin/logrotate#' examples/logrotate.{cron,service} || die
+
+	[[ ${PV} == 9999 ]] && eautoreconf
 }
 
 src_configure() {

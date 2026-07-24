@@ -3,7 +3,7 @@
 
 EAPI=8
 
-RUST_MIN_VER="1.88.0"
+RUST_MIN_VER="1.86.0"
 [[ ${PV} == 9999* ]] || CRATES="${PN}@${PV}"
 inherit cargo
 
@@ -16,7 +16,7 @@ if [[ ${PV} == 9999* ]]; then
 else
 	SRC_URI="${CARGO_CRATE_URIS}"
 	SRC_URI+="https://github.com/containers/aardvark-dns/releases/download/v${PV}/${PN}-v${PV}-vendor.tar.gz"
-	KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv"
+	KEYWORDS="amd64 arm64 ~loong ~ppc64 ~riscv"
 fi
 
 # main

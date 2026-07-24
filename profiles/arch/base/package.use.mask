@@ -1,6 +1,10 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2026-07-22)
+# media-libs/libmysofa not keyworded in most places
+media-video/pipewire sofa
+
 # Michał Górny <mgorny@gentoo.org> (2026-03-14)
 # SPIRV target requires dev-libs/level-zero.
 llvm-runtimes/offload llvm_targets_SPIRV
@@ -62,6 +66,7 @@ sci-libs/flexiblas blis mkl openblas
 
 # Christopher Byrne <salah.coronya@gmail.com> (2025-09-01)
 # net-emulation/libvirt is only keyworded on amd64 at this time
+dev-util/diffoscope libguestfs
 sys-block/nbdkit libguestfs
 
 # Michał Górny <mgorny@gentoo.org> (2025-05-08)
@@ -162,6 +167,7 @@ media-gfx/blender gnome renderdoc
 dev-qt/qtdeclarative:6 qmlls
 dev-qt/qttools:6 qmlls
 dev-python/pyside tools
+dev-python/pyqtgraph pyside6
 
 # Mike Gilbert <floppym@gentoo.org> (2024-04-13)
 # Missing keywords on dev-python/looseversion.
@@ -508,7 +514,6 @@ media-sound/pulseaudio-daemon webrtc-aec
 # The QML (V4) and JSC JITs are supported only on amd64/arm/x86, so
 # mask the flag here and unmask it in the appropriate arch profiles.
 dev-qt/qtdeclarative jit
-dev-qt/qtscript jit
 
 # Samuli Suominen <ssuominen@gentoo.org> (2011-11-25)
 # Expose USE="suid" for USE="svga" only for x86 users,

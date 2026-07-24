@@ -1,0 +1,11 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1784,7 +1784,7 @@
+ )
+ if(ENABLE_LUA)
+     # Lua is a special case since its CMake config does not follow the usual pattern
+-    find_package(Lua QUIET)
++    find_package(Lua ${LUA_VERSION} QUIET EXACT REQUIRED)
+     if(Lua_FOUND AND NOT DEFINED Lua_VERSION) # For CMake 4.2- compatible
+         set(Lua_VERSION ${LUA_VERSION_STRING})
+         set(Lua_VERSION_MAJOR ${LUA_VERSION_MAJOR})

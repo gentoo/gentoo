@@ -7,7 +7,7 @@ CRATES="
 "
 
 RUST_MIN_VER="1.85.0"
-LLVM_COMPAT=( {16..21} )
+LLVM_COMPAT=( {16..22} )
 
 inherit cargo llvm-r1 shell-completion check-reqs
 

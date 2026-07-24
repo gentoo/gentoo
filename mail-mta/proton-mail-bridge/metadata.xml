@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>expeditioneer@gentoo.org</email>
-		<name>Dennis Lamm</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<longdescription>
 		Proton Mail Bridge has been open-source since April 2020.
 		It functions as a daemon that serves as an interface between Proton

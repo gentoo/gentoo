@@ -14,7 +14,7 @@ SRC_URI="
 
 LICENSE="BSD BSD-with-attribution"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ppc ppc64 ~sparc x86"
 IUSE="freeipmi kerberos pam ssl tcpd"
 
 DEPEND="

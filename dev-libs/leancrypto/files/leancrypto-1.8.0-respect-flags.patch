@@ -1,0 +1,57 @@
+Don't force LTO, and don't force flags which we already handle in
+the toolchain.
+--- a/meson.build
++++ b/meson.build
+@@ -31,9 +31,7 @@ project('leancrypto', 'c',
+ cc = meson.get_compiler('c')
+ 
+ # Hardening Compiler flags
+-add_global_arguments([ '-fstack-protector-strong',
+-		       '-fwrapv',
+-		       '--param', 'ssp-buffer-size=4',
++add_global_arguments([ '-fwrapv',
+ 		       '-fvisibility=hidden',
+ 		       '-Wconversion',
+ 		       '-Wcast-align',
+@@ -72,32 +70,6 @@ if cc.has_argument('-Wshorten-64-to-32')
+ 			     language: 'c')
+ endif
+ 
+-# x86_64 hardening
+-if cc.has_argument('-fcf-protection=full')
+-	add_global_arguments([ '-fcf-protection=full' ],
+-			     language: 'c')
+-endif
+-
+-# ARM64 hardening
+-if cc.has_argument('-mbranch-protection=standard')
+-	add_global_arguments([ '-mbranch-protection=standard' ], language: 'c')
+-endif
+-
+-# MINGW64 cannot handle lto properly at the moment
+-if (cc.has_argument('-flto') and
+-    host_machine.system() != 'windows' and
+-    get_option('efi').disabled())
+-	add_global_arguments([ '-flto=auto' ], language: 'c')
+-	add_project_link_arguments('-flto=auto', language : 'c')
+-endif
+-
+-if (cc.has_argument('-ffat-lto-objects') and
+-    host_machine.system() != 'windows' and
+-    host_machine.system() != 'darwin' and
+-    get_option('efi').disabled())
+-	add_global_arguments([ '-ffat-lto-objects' ], language: 'c')
+-endif
+-
+ if build_machine.system() == 'sunos'
+ 	add_global_arguments([ '-Wa,--divide' ], language: 'c')
+ endif
+@@ -105,8 +77,6 @@ endif
+ if get_option('optimization') == '0'
+ 	add_global_arguments([ '-DDEBUG' ], language: 'c')
+ elif get_option('efi').disabled()
+-	add_global_arguments([ '-U_FORTIFY_SOURCE' ], language: 'c')
+-	add_global_arguments([ '-D_FORTIFY_SOURCE=3' ], language: 'c')
+ endif
+ 
+ if get_option('enable_selftests').enabled()

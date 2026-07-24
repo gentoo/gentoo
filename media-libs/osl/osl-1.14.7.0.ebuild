@@ -4,7 +4,7 @@
 EAPI=8
 
 # keep in sync with blender
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{12..14} )
 
 # Check this on updates
 LLVM_COMPAT=( {18..20} )

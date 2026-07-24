@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 
 # Avoid QA warnings
 TMPFILES_OPTIONAL=1
@@ -33,10 +33,11 @@ HOMEPAGE="https://systemd.io/"
 LICENSE="GPL-2 LGPL-2.1 MIT public-domain"
 SLOT="0/2"
 IUSE="
-	acl apparmor audit boot bpf cryptsetup curl +dns-over-tls elfutils
-	fido2 +gcrypt gnutls homed idn importd +kernel-install +kmod +lz4 lzma
-	+openssl pam passwdqc pcre pkcs11 policykit pwquality qrcode remote
-	+resolvconf +seccomp selinux sysv-utils test tpm ukify vanilla xkb +zstd
+	acl apparmor audit boot bpf cryptsetup curl +dns-over-tls elfutils fido2
+	+gcrypt gnutls homed idn imds importd +kernel-install +kmod +libarchive
+	+lz4 lzma +openssl pam passwdqc pcre pkcs11 policykit pwquality qrcode
+	remote +resolvconf +seccomp selinux sysv-utils test tpm ukify vanilla xkb
+	+zstd
 "
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
@@ -44,7 +45,8 @@ REQUIRED_USE="
 	dns-over-tls? ( openssl )
 	fido2? ( cryptsetup openssl )
 	homed? ( cryptsetup pam openssl )
-	importd? ( curl lzma openssl )
+	imds? ( curl )
+	importd? ( curl libarchive lzma openssl )
 	?? ( passwdqc pwquality )
 	passwdqc? ( homed )
 	pwquality? ( homed )
@@ -69,7 +71,8 @@ COMMON_DEPEND="
 		>=sys-libs/libxcrypt-4.4.0
 	)
 	elibc_musl? (
-		>=sys-libs/musl-1.2.5-r8
+		>=sys-libs/musl-1.2.6
+		sys-libs/libucontext
 		virtual/libcrypt
 	)
 	fido2? (
@@ -84,6 +87,7 @@ COMMON_DEPEND="
 		virtual/zlib:=
 	)
 	kmod? ( >=sys-apps/kmod-15:0= )
+	libarchive? ( >=app-arch/libarchive-3.0:0= )
 	lz4? ( >=app-arch/lz4-0_p131:0= )
 	lzma? ( >=app-arch/xz-utils-5.0.5-r1:0= )
 	openssl? ( >=dev-libs/openssl-3.0.0:0= )
@@ -137,6 +141,7 @@ RDEPEND="${COMMON_DEPEND}
 	>=acct-user/systemd-resolve-0-r1
 	>=acct-user/systemd-timesync-0-r1
 	>=sys-apps/baselayout-2.2
+	imds? ( acct-user/systemd-imds )
 	ukify? (
 		${PYTHON_DEPS}
 		$(python_gen_cond_dep "${PEFILE_DEPEND}")
@@ -281,7 +286,7 @@ src_configure() {
 		# We can't unconditionally do this b/c we fortify needs
 		# some level of optimisation.
 		filter-flags -D_FORTIFY_SOURCE=3
-		append-cppflags -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2
+		append-cppflags -U_FORTIFY_SOURCE -D_GENTOO_NO_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2
 	fi
 
 	python_setup
@@ -348,12 +353,14 @@ multilib_src_configure() {
 			$(meson_feature gnutls)
 			$(meson_feature homed)
 			$(meson_use idn)
+			$(meson_feature imds)
 			$(meson_feature importd)
 			$(meson_feature importd bzip2)
 			$(meson_feature importd sysupdate)
 			$(meson_feature importd zlib)
 			$(meson_use kernel-install)
 			$(meson_feature kmod)
+			$(meson_feature libarchive)
 			$(meson_feature lz4)
 			$(meson_feature lzma xz)
 			$(meson_feature zstd)
@@ -378,7 +385,7 @@ multilib_src_configure() {
 		case $(tc-arch) in
 			amd64|arm|arm64|loong|ppc|ppc64|riscv|s390|x86)
 				# src/vmspawn/vmspawn-util.h: QEMU_MACHINE_TYPE
-				myconf+=( $(meson_native_enabled vmspawn) ) ;;
+				myconf+=( -Dvmspawn=enabled ) ;;
 			*)
 				myconf+=( -Dvmspawn=disabled ) ;;
 		esac
@@ -553,8 +560,11 @@ pkg_postinst() {
 	# between OpenRC & systemd
 	migrate_locale
 
-	# Bug 971385
-	systemd_reenable getty@.service
+	# Bug 971385, 974688
+	local autovt=${EROOT}/etc/systemd/system/autovt@.service
+	if [[ ! -e ${autovt} && ! -L ${autovt} ]]; then
+		ln -s "${EPREFIX}/usr/lib/systemd/system/getty@.service" "${autovt}" || FAIL=1
+	fi
 
 	if [[ -z ${REPLACING_VERSIONS} ]]; then
 		if type systemctl &>/dev/null; then

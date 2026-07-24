@@ -45,7 +45,6 @@ RDEPEND="
 	media-libs/libpng:=
 	media-libs/libwebp:=
 	media-libs/mesa[gbm(+)]
-	>=media-libs/openh264-2.4:=
 	media-libs/openjpeg:2=
 	media-libs/opus
 	media-libs/tiff:=
@@ -66,6 +65,7 @@ RDEPEND="
 	x11-libs/libxkbcommon
 	x11-libs/libxkbfile
 	alsa? ( media-libs/alsa-lib )
+	!bindist? ( >=media-libs/openh264-2.4:= )
 	designer? ( ~dev-qt/qttools-${PV}:6[designer] )
 	geolocation? ( ~dev-qt/qtpositioning-${PV}:6 )
 	kerberos? ( virtual/krb5 )
@@ -189,6 +189,7 @@ src_configure() {
 
 		$(qt_feature alsa webengine_system_alsa)
 		$(qt_feature !bindist webengine_proprietary_codecs)
+		$(qt_feature !bindist webengine_system_openh264) # no bundled either
 		$(qt_feature geolocation webengine_geolocation)
 		$(qt_feature jumbo-build webengine_jumbo_build)
 		$(qt_feature kerberos webengine_kerberos)
@@ -227,7 +228,7 @@ src_configure() {
 		$(printf -- '-DQT_FEATURE_webengine_system_%s=ON ' \
 			freetype gbm glib harfbuzz lcms2 libjpeg libopenjpeg2 \
 			libpci libpng libtiff libudev libwebp libxml minizip \
-			openh264 opus snappy zlib)
+			opus snappy zlib)
 
 		# TODO: fixup gn cross, or package dev-qt/qtwebengine-gn with =ON
 		# (see also BUILD_ONLY_GN option added in 6.8+ for the latter)

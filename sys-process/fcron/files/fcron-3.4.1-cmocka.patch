@@ -1,0 +1,42 @@
+https://github.com/yo8192/fcron/pull/56
+
+--- a/tests/exe_list_test.c
++++ b/tests/exe_list_test.c
+@@ -3,6 +3,7 @@
+ #include "../fcron.h"
+ 
+ #include <setjmp.h>             /* setjmp.h is needed by cmocka.h */
++#include <stdint.h>             /* stdint.h is needed by cmocka.h */
+ #include <cmocka.h>
+ 
+ static void
+--- a/tests/fcrondyn_svr_test.c
++++ b/tests/fcrondyn_svr_test.c
+@@ -1,6 +1,7 @@
+ #include <stdarg.h>
+ #include <stddef.h>
+ #include <setjmp.h>             /* setjmp.h is needed by cmocka.h */
++#include <stdint.h>             /* stdint.h is needed by cmocka.h */
+ #include <cmocka.h>
+ 
+ #include "../fcron.h"
+--- a/tests/mail_test.c
++++ b/tests/mail_test.c
+@@ -4,6 +4,7 @@
+ #include <stdlib.h>
+ #include <assert.h>
+ #include <setjmp.h>             /* setjmp.h is needed by cmocka.h */
++#include <stdint.h>             /* stdint.h is needed by cmocka.h */
+ #include <cmocka.h>
+ 
+ #include "../fcron.h"
+--- a/tests/parse_job_test.c
++++ b/tests/parse_job_test.c
+@@ -1,6 +1,7 @@
+ #include <stdarg.h>
+ #include <stddef.h>
+ #include <setjmp.h>             /* setjmp.h is needed by cmocka.h */
++#include <stdint.h>             /* stdint.h is needed by cmocka.h */
+ #include <cmocka.h>
+ 
+ #include "../fcrontab.h"

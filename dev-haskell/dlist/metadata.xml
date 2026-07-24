@@ -9,6 +9,7 @@
 		<flag name="werror">Enable -Werror</flag>
 	</use>
 	<upstream>
+		<remote-id type="hackage">dlist</remote-id>
 		<remote-id type="github">spl/dlist</remote-id>
 	</upstream>
 </pkgmetadata>

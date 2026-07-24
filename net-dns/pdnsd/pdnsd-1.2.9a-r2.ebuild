@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,7 +19,7 @@ RDEPEND="
 	acct-group/pdnsd
 	acct-user/pdnsd
 "
-DEPEND="test? ( net-dns/bind-tools )"
+DEPEND="test? ( net-dns/bind )"
 
 PATCHES=(
 	"${FILESDIR}/${P}-linux-5.13_build_fix.patch" #801688

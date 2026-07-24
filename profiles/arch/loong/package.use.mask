@@ -1,6 +1,18 @@
 # Copyright 2022-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (2026-06-20)
+# dev-python/notebook is being dekeyworded.
+dev-python/ipython notebook
+dev-python/matplotlib-inline test
+dev-python/nbclient test
+dev-python/nbconvert test
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2026-06-17)
+# kde-frameworks/kdnssd and sys-auth/nss-mdns not keyworded here.
+# Bugs #970037, #969360
+kde-apps/kio-extras samba
+
 # Alfred Wingate <parona@protonmail.com> (2026-05-13)
 # dev-qt/qtgraphs:6 is not keyworded here
 dev-python/pyside graphs

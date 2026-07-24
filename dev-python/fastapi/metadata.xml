@@ -6,6 +6,7 @@
 		<name>Matt Jolly</name>
 	</maintainer>
 	<upstream>
+		<remote-id type="github">fastapi/fastapi</remote-id>
 		<remote-id type="pypi">fastapi</remote-id>
 	</upstream>
 </pkgmetadata>

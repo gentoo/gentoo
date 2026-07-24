@@ -21,11 +21,11 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="
 	${PYTHON_DEPS}
+	dev-lang/perl
+	dev-perl/XML-Parser
 	virtual/pkgconfig
 	gtk-doc? (
 		app-text/doxygen[dot]
-		dev-lang/perl
-		dev-perl/XML-Parser
 		dev-libs/libxslt
 		media-gfx/graphviz
 	)

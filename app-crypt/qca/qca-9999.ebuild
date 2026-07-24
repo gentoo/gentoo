@@ -1,9 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit cmake kde.org out-of-source-utils qmake-utils
+inherit cmake kde.org out-of-source-utils qt-utils
 
 DESCRIPTION="Qt Cryptographic Architecture (QCA)"
 HOMEPAGE="https://userbase.kde.org/QCA"
@@ -49,8 +49,8 @@ qca_plugin_use() {
 src_configure() {
 	local mycmakeargs=(
 		-DBUILD_WITH_QT6=ON
-		-DQCA_FEATURE_INSTALL_DIR="${EPREFIX}$(qt6_get_mkspecsdir)/features"
-		-DQCA_PLUGINS_INSTALL_DIR="${EPREFIX}$(qt6_get_plugindir)"
+		-DQCA_FEATURE_INSTALL_DIR="${EPREFIX}$(qt_get_mkspecsdir 6)/features"
+		-DQCA_PLUGINS_INSTALL_DIR="${EPREFIX}$(qt_get_plugindir 6)"
 		$(qca_plugin_use botan)
 		$(qca_plugin_use gcrypt)
 		$(qca_plugin_use gpg gnupg)

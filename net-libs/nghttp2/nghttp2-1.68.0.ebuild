@@ -12,10 +12,10 @@ HOMEPAGE="https://nghttp2.org/"
 
 if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/nghttp2/nghttp2.git"
-	inherit git-r3
+	inherit git-r3 autotools
 else
 	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/nghttp2.asc
-	inherit autotools verify-sig
+	inherit verify-sig
 	SRC_URI="
 		https://github.com/nghttp2/nghttp2/releases/download/v${PV}/${P}.tar.xz
 		verify-sig? ( https://github.com/nghttp2/nghttp2/releases/download/v${PV}/${P}.tar.xz.asc )

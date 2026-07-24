@@ -1,0 +1,42 @@
+From f1b08fb954d41c562103993810a5c78baf9e065e Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Sun, 12 Jul 2026 19:21:54 -0400
+Subject: [PATCH] ext/gd/tests/gh19{666,739}.phpt: skip for external libgd
+
+These two are regression tests for the bundled libgd, we have to skip
+them if an external libgd is used.
+---
+ ext/gd/tests/gh19666.phpt | 4 ++++
+ ext/gd/tests/gh19739.phpt | 4 ++++
+ 2 files changed, 8 insertions(+)
+
+diff --git a/ext/gd/tests/gh19666.phpt b/ext/gd/tests/gh19666.phpt
+index 2d82b9b44760..b1409946aa0a 100644
+--- a/ext/gd/tests/gh19666.phpt
++++ b/ext/gd/tests/gh19666.phpt
+@@ -2,6 +2,10 @@
+ GH-19666 (Unexpected nan value in imageconvolution)
+ --EXTENSIONS--
+ gd
++--SKIPIF--
++<?php
++    if (!GD_BUNDLED) die("skip requires bundled GD library\n");
++?>
+ --FILE--
+ <?php
+ $image = imagecreatetruecolor(180, 30);
+diff --git a/ext/gd/tests/gh19739.phpt b/ext/gd/tests/gh19739.phpt
+index 7dce387b780e..7ef73aeab67d 100644
+--- a/ext/gd/tests/gh19739.phpt
++++ b/ext/gd/tests/gh19739.phpt
+@@ -2,6 +2,10 @@
+ GH-19739 (integer overflow in imageellipse / imagefilledellipse)
+ --EXTENSIONS--
+ gd
++--SKIPIF--
++<?php
++    if (!GD_BUNDLED) die("skip requires bundled GD library\n");
++?>
+ --FILE--
+ <?php
+ $im = imagecreatetruecolor(400, 300);

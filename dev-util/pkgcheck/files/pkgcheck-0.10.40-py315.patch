@@ -1,0 +1,43 @@
+https://github.com/pkgcore/pkgcheck/issues/787
+https://github.com/pkgcore/pkgcheck/commit/d649977e79984afca90c61315fcab89cb8f9ef6a
+
+From d649977e79984afca90c61315fcab89cb8f9ef6a Mon Sep 17 00:00:00 2001
+From: Arthur Zamarin <arthurzam@gentoo.org>
+Date: Sun, 5 Jul 2026 22:14:30 +0300
+Subject: [PATCH] tests: replace deprecated Loader.load_module with exec_module
+
+load_module() was removed in Python 3.15, breaking test_scan_repo[eclass].
+Use the recommended spec_from_loader + module_from_spec + exec_module API.
+
+Resolves: https://github.com/pkgcore/pkgcheck/issues/787
+Signed-off-by: Arthur Zamarin <arthurzam@gentoo.org>
+---
+ tests/scripts/test_pkgcheck_scan.py | 8 +++++---
+ 1 file changed, 5 insertions(+), 3 deletions(-)
+
+diff --git a/tests/scripts/test_pkgcheck_scan.py b/tests/scripts/test_pkgcheck_scan.py
+index 7aee972e8..11deb686b 100644
+--- a/tests/scripts/test_pkgcheck_scan.py
++++ b/tests/scripts/test_pkgcheck_scan.py
+@@ -1,5 +1,6 @@
+ import importlib
+ import importlib.machinery
++import importlib.util
+ import io
+ import os
+ import pathlib
+@@ -608,9 +609,10 @@ def _load_expected_data(self, base: pathlib.Path) -> _expected_data_result:
+             with (custom_handler_path := base / "handler.py").open():
+                 # We can't import since it's not a valid python directory layout, nor do
+                 # want to pollute the namespace.
+-                module = importlib.machinery.SourceFileLoader(
+-                    "handler", str(custom_handler_path)
+-                ).load_module()
++                loader = importlib.machinery.SourceFileLoader("handler", str(custom_handler_path))
++                spec = importlib.util.spec_from_loader("handler", loader)
++                module = importlib.util.module_from_spec(spec)
++                loader.exec_module(module)
+                 if (
+                     custom_handler := typing.cast(
+                         typing.Callable[[Result], bool], getattr(module, "handler")
+

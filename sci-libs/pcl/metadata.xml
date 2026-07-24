@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>aballier@gentoo.org</email>
-		<name>Alexis Ballier</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<use>
 		<flag name="openni">Adds support for Kinect-like 3D sensors devices with <pkg>dev-libs/OpenNI</pkg>.</flag>
 		<flag name="openni2">Adds support for Kinect-like 3D sensors devices with <pkg>dev-libs/OpenNI2</pkg> (should be preferred over openni).</flag>

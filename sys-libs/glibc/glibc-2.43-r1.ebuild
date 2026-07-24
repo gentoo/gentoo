@@ -196,6 +196,7 @@ XFAIL_TEST_LIST=(
 	# Fails with certain PORTAGE_NICENESS/PORTAGE_SCHEDULING_POLICY
 	tst-sched1
 	tst-sched_setattr
+	tst-sched_setattr-thread
 
 	# Fails regularly, unreliable
 	tst-valgrind-smoke

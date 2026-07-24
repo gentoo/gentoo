@@ -1,0 +1,36 @@
+From e84ecb1dc8e27a27c35267077764c0ea10f12306 Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Fri, 3 Jul 2026 22:04:49 -0400
+Subject: [PATCH] plugins/check_ntp_time.c: add missing sockaddr_un -> sockaddr
+ cast
+
+Newer GCC with -Werror=incompatible-pointer-types enabled by default
+will choke on this:
+
+  check_ntp_time.c: In function 'offset_request':
+  check_ntp_time.c:404:42: error: passing argument 2 of 'connect' from
+  incompatible pointer type [-Wincompatible-pointer-types]
+  404 | if (connect(socklist[0], &unix_socket, sizeof(unix_socket))) {
+      |                          ^~~~~~~~~~~~
+      |                          |
+      |                          struct sockaddr_un *
+---
+ plugins/check_ntp_time.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/plugins/check_ntp_time.c b/plugins/check_ntp_time.c
+index 2d9a6f40..5ad615c2 100644
+--- a/plugins/check_ntp_time.c
++++ b/plugins/check_ntp_time.c
+@@ -401,7 +401,7 @@ static offset_request_wrapper offset_request(const char *host, const char *port,
+ 		}
+ 		strncpy(unix_socket.sun_path, host, sizeof(unix_socket.sun_path));
+ 
+-		if (connect(socklist[0], &unix_socket, sizeof(unix_socket))) {
++		if (connect(socklist[0], (struct sockaddr *)&unix_socket, sizeof(unix_socket))) {
+ 			/* don't die here, because it is enough if there is one server
+ 			   answering in time. This also would break for dual ipv4/6 stacked
+ 			   ntp servers when the client only supports on of them.
+-- 
+2.54.0
+

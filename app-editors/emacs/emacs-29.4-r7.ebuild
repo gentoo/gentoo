@@ -36,7 +36,7 @@ else
 	PATCHES=("${WORKDIR}/patch")
 	SLOT="${PV%%.*}"
 	[[ ${PV} == *.*.* ]] && SLOT+="-vcs"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~sparc x86 ~x64-macos"
+	KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~sparc x86 ~x64-macos"
 fi
 
 DESCRIPTION="The advanced, extensible, customizable, self-documenting editor"
@@ -199,7 +199,7 @@ src_prepare() {
 
 		# gccjit doesn't play well with ccache or distcc #801580
 		# For now, work around the problem with an explicit LIBRARY_PATH
-		if has ccache ${FEATURES} || has distcc ${FEATURES} && tc-is-gcc; then
+		if has ccache ${FEATURES} || has distcc ${FEATURES}; then
 			export LIBRARY_PATH=$("$(tc-getCC)" -print-search-dirs \
 				| sed -n '/^libraries:/{s:^[^/]*::;p}')
 		fi
@@ -458,13 +458,16 @@ src_test() {
 		# internet-is-working
 		%src/process-tests.el
 
-		# Reason: fails with stable version of tree-sitter-json due to
-		# ast changes. Bug #922525
-		%src/treesit-tests.log
+		# Reason: test not skipped if tree-sitter-cpp is missing #979386
+		# c-ts-mode-test-filling
+		%lisp/progmodes/c-ts-mode-tests.el
 
 		# Reason: test is not skipped if tree-sitter-tsx is not installed
 		# Bug #922525
 		%lisp/progmodes/typescript-ts-mode-tests.el
+
+		# eglot-test-lsp-abiding-column #977411
+		%lisp/progmodes/eglot-tests.el
 	)
 	use elibc_musl && exclude_tests+=(
 			# Reason: newlocale(3) lenient locale validation #906012

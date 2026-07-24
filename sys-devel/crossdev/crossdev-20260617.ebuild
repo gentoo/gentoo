@@ -1,0 +1,61 @@
+# Copyright 1999-2026 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI="8"
+
+inherit eapi9-ver toolchain-funcs
+
+if [[ ${PV} == "99999999" ]] ; then
+	inherit git-r3
+	EGIT_REPO_URI="
+		https://anongit.gentoo.org/git/proj/crossdev.git
+		https://github.com/gentoo/crossdev
+	"
+else
+	SRC_URI="https://distfiles.gentoo.org/pub/proj/toolchain/crossdev/${P}.tar.xz"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+fi
+
+DESCRIPTION="Gentoo Cross-toolchain generator"
+HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Crossdev"
+
+LICENSE="GPL-2"
+SLOT="0"
+
+RDEPEND="
+	>=sys-apps/portage-2.1
+	app-shells/bash
+	sys-apps/gentoo-functions
+	sys-apps/config-site
+"
+BDEPEND="app-arch/xz-utils"
+
+src_install() {
+	tc-export PKG_CONFIG # Bug 955822
+
+	default
+
+	if [[ ${PV} == "99999999" ]] ; then
+		sed -i "s:@CDEVPV@:${EGIT_VERSION}:" "${ED}"/usr/bin/crossdev || die
+	else
+		sed -i "s:@CDEVPV@:${PV}:" "${ED}"/usr/bin/crossdev || die
+	fi
+
+	dodir /usr/share/config.site.d
+	mv "${ED}"/usr/share/config.site{,.d/80crossdev.conf} || die
+}
+
+pkg_postinst() {
+	if [[ -z ${REPLACING_VERSIONS} ]] || ver_replacing -lt 20260501-r1; then
+		ewarn "crossdev requires another repository exist on the system for"
+		ewarn "its generated ebuilds. It uses the 'crossdev' repository by default,"
+		ewarn "and otherwise the first non-gentoo repository it finds."
+		ewarn
+		ewarn "If you do not already have a 'crossdev' repository,"
+		ewarn "it is recommended that you create one with the following steps:"
+		ewarn " installing app-eselect/eselect-repository"
+		ewarn " running eselect repository create crossdev"
+		ewarn
+		ewarn "Alternatively, always invoke crossdev with --ov-output NAME.".
+	fi
+}

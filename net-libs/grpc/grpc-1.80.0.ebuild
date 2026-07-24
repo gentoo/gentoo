@@ -5,7 +5,7 @@ EAPI=8
 
 CMAKE_IN_SOURCE_BUILD=1
 PYTHON_COMPAT=( python3_{11..14} )
-inherit cmake flag-o-matic python-any-r1
+inherit cmake flag-o-matic python-any-r1 toolchain-funcs
 
 MY_PV="${PV//_pre/-pre}"
 
@@ -102,6 +102,19 @@ soversion_check() {
 	cpp_sover="${cpp_sover//./}"
 	[[ ${core_sover} -eq $(ver_cut 2 "${SLOT}") ]] || die "fix core sublot! should be ${core_sover}"
 	[[ ${cpp_sover} -eq $(ver_cut 3 "${SLOT}") ]] || die "fix cpp sublot! should be ${cpp_sover}"
+}
+
+_need_native() {
+	if ! tc-is-cross-compiler; then
+		return 1
+	fi
+	if ! has_version -b ">=${CATEGORY}/${P}"; then
+		return 0
+	fi
+	if ! [[ -x "${BROOT}"/usr/bin/grpc_cpp_plugin ]]; then
+		return 0
+	fi
+	return 1
 }
 
 src_prepare() {
@@ -202,11 +215,42 @@ src_prepare() {
 
 # 	# suppress network access, package builds fine without the submodules
 # 	mkdir "${S}/third_party/opencensus-proto/src" || die
+
+	if _need_native; then
+		BUILD_NATIVE="${S}_build_native"
+		cp -R "${S}" "${BUILD_NATIVE}" || die
+	fi
 }
 
 src_configure() {
 	# https://github.com/grpc/grpc/issues/29652
 	filter-lto
+
+	if _need_native; then
+		einfo "Building native grpc_cpp_plugin..."
+		local mycmakeargs=(
+			-DgRPC_DOWNLOAD_ARCHIVES="no"
+
+			-DgRPC_BUILD_GRPC_CPP_PLUGIN=ON
+			-DgRPC_BUILD_GRPC_CSHARP_PLUGIN=OFF
+			-DgRPC_BUILD_GRPC_NODE_PLUGIN=OFF
+			-DgRPC_BUILD_GRPC_OBJECTIVE_C_PLUGIN=OFF
+			-DgRPC_BUILD_GRPC_PHP_PLUGIN=OFF
+			-DgRPC_BUILD_GRPC_PYTHON_PLUGIN=OFF
+			-DgRPC_BUILD_GRPC_RUBY_PLUGIN=OFF
+
+			-DgRPC_ABSL_PROVIDER="package"
+			-DgRPC_CARES_PROVIDER="package"
+			-DgRPC_PROTOBUF_PROVIDER="package"
+			-DgRPC_RE2_PROVIDER="package"
+			-DgRPC_SSL_PROVIDER="package"
+			-DgRPC_ZLIB_PROVIDER="package"
+
+			-DgRPC_BUILD_TESTS=OFF
+			-DgRPC_USE_SYSTEMD=OFF
+		)
+		CMAKE_USE_DIR="${BUILD_NATIVE}" tc-env_build cmake_src_configure
+	fi
 
 	local mycmakeargs=(
 		-DgRPC_DOWNLOAD_ARCHIVES="no"
@@ -233,7 +277,20 @@ src_configure() {
 		)
 	fi
 
+	if _need_native; then
+		mycmakeargs+=(
+			-D_gRPC_CPP_PLUGIN="${BUILD_NATIVE}/grpc_cpp_plugin"
+		)
+	fi
+
 	cmake_src_configure
+}
+
+src_compile() {
+	if _need_native; then
+		CMAKE_USE_DIR="${BUILD_NATIVE}" tc-env_build cmake_build plugins
+	fi
+	cmake_src_compile
 }
 
 src_test() {

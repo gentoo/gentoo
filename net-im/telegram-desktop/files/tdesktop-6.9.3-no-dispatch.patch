@@ -1,0 +1,40 @@
+https://github.com/desktop-app/lib_crl/pull/8
+https://github.com/Jamim/lib_crl/commit/8826978a51b8084f9af884b79782ac6450252465
+
+From 8826978a51b8084f9af884b79782ac6450252465 Mon Sep 17 00:00:00 2001
+From: Aliaksei Urbanski <aliaksei.urbanski@gmail.com>
+Date: Fri, 12 Jun 2026 14:25:13 +0300
+Subject: [PATCH] Disable libdispatch support
+
+Telegram Desktop 6.9.3 build fails in case libdispatch is installed.
+Removing #define CRL_USE_DISPATCH fixes that.
+---
+ crl/common/crl_common_config.h | 15 +--------------
+ 1 file changed, 1 insertion(+), 14 deletions(-)
+
+diff --git a/crl/common/crl_common_config.h b/crl/common/crl_common_config.h
+index 2abbcfd..42cb47b 100644
+--- a/Telegram/lib_crl/crl/common/crl_common_config.h
++++ b/Telegram/lib_crl/crl/common/crl_common_config.h
+@@ -31,20 +31,7 @@
+ #define CRL_USE_WINAPI_LIST
+ #endif // !CRL_FORCE_COMMON_LIST
+ 
+-#elif __has_include(<dispatch/dispatch.h>) && !defined CRL_FORCE_QT // _MSC_VER && !CRL_FORCE_QT
+-
+-// gcc compatibility
+-#ifndef __has_feature
+-#define __has_feature(x) 0
+-#endif // !__has_feature
+-
+-#ifndef __has_extension
+-#define __has_extension __has_feature
+-#endif // !__has_extension
+-
+-#define CRL_USE_DISPATCH
+-
+-#elif __has_include(<tmc/ex_cpu.hpp>) && !defined CRL_FORCE_QT // dispatch && !CRL_FORCE_QT
++#elif __has_include(<tmc/ex_cpu.hpp>) && !defined CRL_FORCE_QT // _MSC_VER && !CRL_FORCE_QT
+ 
+ #define CRL_USE_TMC
+ 

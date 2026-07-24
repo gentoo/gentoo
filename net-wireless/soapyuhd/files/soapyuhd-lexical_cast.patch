@@ -1,0 +1,33 @@
+From cd5b601e65cdf9d47947e0fc75c2c9fa69edc00b Mon Sep 17 00:00:00 2001
+From: pluskalm <>
+Date: Thu, 18 Jun 2026 19:39:33 +0000
+Subject: [PATCH] Update soapy-uhd to version 0.4.1git20250213 / rev 11 via SR
+ 1360306
+
+https://build.opensuse.org/request/show/1360306
+by user pluskalm + anag_factory
+soapy-uhd: fix the build against UHD 4.x (C++17, needed by UHD's std::optional/std::is_convertible_v headers) and recent Boost (explicit boost/lexical_cast.hpp include), rescuing it from the botdel (SR 1360107). No version change (already at latest). Both fixes submitted upstream: pothosware/SoapyUHD#75 and #76.
+---
+ packages/s/soapy-uhd/boost-lexical-cast.patch |  20 ++++++++++++++++++
+ create mode 100644 packages/s/soapy-uhd/boost-lexical-cast.patch
+
+--- a/UHDSoapyDevice.cpp	2026-06-18 19:43:32.001219273 +0200
++++ b/UHDSoapyDevice.cpp	2026-06-18 19:43:32.017221061 +0200
+@@ -37,6 +37,7 @@
+ #include <boost/bind.hpp>
+ #include <boost/weak_ptr.hpp>
+ #include <boost/algorithm/string.hpp>
++#include <boost/lexical_cast.hpp>
+ 
+ #include <algorithm>
+ #include <cctype>
+--- a/SoapyUHDDevice.cpp	2026-06-18 19:43:32.005219720 +0200
++++ b/SoapyUHDDevice.cpp	2026-06-18 19:43:32.021221508 +0200
+@@ -22,6 +22,7 @@
+ #include <uhd/version.hpp>
+ #include <cctype>
+ #include <iostream>
++#include <boost/lexical_cast.hpp>
+ 
+ /***********************************************************************
+  * Stream wrapper

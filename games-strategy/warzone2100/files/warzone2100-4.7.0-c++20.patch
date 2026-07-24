@@ -1,0 +1,36 @@
+https://github.com/Warzone2100/warzone2100/commit/e0eccd81d9aa00645ede87b0793b69fae27c7d5b
+
+From e0eccd81d9aa00645ede87b0793b69fae27c7d5b Mon Sep 17 00:00:00 2001
+From: Pavel Solodovnikov <pavel.al.solodovnikov@gmail.com>
+Date: Fri, 15 May 2026 12:59:17 +0300
+Subject: [PATCH] notifications.cpp: Fix compilation for C++20
+
+Signed-off-by: Pavel Solodovnikov <pavel.al.solodovnikov@gmail.com>
+---
+ src/notifications.cpp | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/src/notifications.cpp b/src/notifications.cpp
+index 73c14dc2f24..22ac915ede6 100644
+--- a/src/notifications.cpp
++++ b/src/notifications.cpp
+@@ -46,6 +46,7 @@ using json = nlohmann::json;
+ #include <physfs.h>
+ #include "lib/framework/file.h"
+ #include <sstream>
++#include <string_view>
+ 
+ class WZ_Notification_Preferences
+ {
+@@ -759,8 +760,9 @@ std::shared_ptr<W_NOTIFICATION> W_NOTIFICATION::make(WZ_Queued_Notification* req
+ 
+ 	if (psActionButton != nullptr || request->notification.duration == 0)
+ 	{
++		static constexpr std::u8string_view DISMISS_LABEL_PREFIX = u8"▴ ";
+ 		// 2.) "Dismiss" button
+-		dismissLabel = u8"▴ " + dismissLabel;
++		dismissLabel = std::string(DISMISS_LABEL_PREFIX.begin(), DISMISS_LABEL_PREFIX.end()) + dismissLabel;
+ 		sButInit.id = 3;
+ 		sButInit.FontID = font_regular;
+ 		sButInit.width = iV_GetTextWidth(dismissLabel.c_str(), font_regular) + 18;
+

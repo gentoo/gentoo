@@ -11,7 +11,7 @@ SRC_URI="https://github.com/jawatson/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${
 
 LICENSE="all-rights-reserved"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 RESTRICT="mirror bindist"
 

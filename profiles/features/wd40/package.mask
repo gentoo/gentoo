@@ -1,6 +1,14 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (2025-07-04)
+# Hypothesis has now been RIIR-ed.
+>=dev-python/hypothesis-6.156
+
+# Michał Górny <mgorny@gentoo.org> (2025-07-01)
+# Requires dev-python/rpds-py.
+dev-python/octave-kernel
+
 # Michał Górny <mgorny@gentoo.org> (2025-06-02)
 # Require dev-python/pydantic.
 dev-python/syrupy
@@ -57,6 +65,8 @@ dev-python/unicode-segmentation-rs
 >=app-i18n/ibus-chewing-2.1.7
 >=app-i18n/libchewing-0.10.3
 dev-build/corrosion
+dev-libs/cxx-rust-cssparser
+kde-plasma/union
 
 # Patrick McLean <chutzpah@gentoo.org> (2025-09-16)
 # New version is rewritten in rust
@@ -69,6 +79,8 @@ app-portage/emlop
 # Michał Górny <mgorny@gentoo.org> (2024-05-08)
 # Pure Python packages using dev-python/uv-build, and therefore
 # requiring Rust to install, and their reverse dependencies.
+app-text/paperwork
+app-text/paperwork-backend
 dev-python/aiosmtpd
 dev-python/atpublic
 dev-python/behave
@@ -87,20 +99,31 @@ dev-python/djangorestframework
 dev-python/easy-thumbnails
 dev-python/flufl-lock
 dev-python/gherkin-official
+dev-python/guessit
+dev-python/knowit
 dev-python/logfury
+dev-python/narwhals
+dev-python/progressbar2
 dev-python/pykwalify
 dev-python/pytest-bdd
 dev-python/pytest-describe
 dev-python/pytest-django
 dev-python/pytest-golden
 dev-python/pytest-socket
+dev-python/python-utils
+dev-python/rebulk
+dev-python/scikit-learn
 dev-python/sphinxcontrib-doxylink
 >=dev-python/sphinxcontrib-httpdomain-2.0
 dev-python/sybil
 dev-python/testfixtures
 dev-python/toml-fmt-common
+dev-python/trakit
 dev-python/uv-build
+dev-python/vcsgraph
 dev-python/zmq-anyio
+dev-util/elf_diff
+media-video/subliminal
 net-analyzer/fail2ban
 sci-libs/cartopy
 sci-libs/pcl
@@ -219,8 +242,6 @@ gnome-extra/gnome-characters
 gnome-extra/cjs
 gnome-extra/cinnamon
 gnome-extra/gnome-shell-extension-dash-to-panel
-gnome-extra/gnome-shell-extension-weather-in-the-clock
-gnome-extra/gnome-shell-extension-bluetooth-quick-connect
 gnome-extra/gnome-shell-extension-gsconnect
 gnome-extra/gnome-shell-extension-desktop-icons-ng
 gnome-extra/gnome-shell-extension-appindicator
@@ -369,6 +390,7 @@ dev-python/aws-sam-translator
 dev-python/cfn-lint
 >=dev-python/cryptography-36
 dev-python/aioquic
+dev-python/apispec
 dev-python/apprise
 dev-python/bitstring
 dev-python/cramjam
@@ -415,7 +437,6 @@ dev-python/paramiko
 dev-python/patiencediff
 dev-python/pooch
 dev-python/pydantic
-dev-python/pydantic-core
 dev-python/pydantic-settings
 dev-python/pyfuse3
 >=dev-python/pyopenssl-22
@@ -430,6 +451,7 @@ dev-python/pytest-trio
 dev-python/python-glanceclient
 dev-python/python-ironicclient
 dev-python/python-jose
+dev-python/python-manilaclient
 dev-python/python-neutronclient
 dev-python/python-openstackclient
 dev-python/python-snappy
@@ -446,7 +468,6 @@ dev-python/service-identity
 dev-python/setuptools-rust
 dev-python/sshpubkeys
 dev-python/sshtunnel
-dev-python/tempest
 dev-python/tibs
 dev-python/trustme
 dev-python/trio

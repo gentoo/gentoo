@@ -5,10 +5,6 @@
 		<email>ran.dall@icloud.com</email>
 		<name>Randall T. Vasquez</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>nicolasbock@gentoo.org</email>
-		<name>Nicolas Bock</name>
-	</maintainer>
 	<longdescription lang="en">
 		The official Keybase secure messaging, file-sharing, and key directory
 		client for Linux.

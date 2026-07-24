@@ -1,0 +1,81 @@
+https://bugs.gentoo.org/896406
+https://github.com/tmux-python/libtmux/issues/664
+https://github.com/tmux-python/libtmux/pull/665
+
+From 8151ec39c4cf4c1c797bbfa26b8b485dffd4f43d Mon Sep 17 00:00:00 2001
+From: Tony Narlock <tony@git-pull.com>
+Date: Sat, 2 May 2026 12:26:44 -0500
+Subject: [PATCH 1/2] test_server(fix[isolation]): use `server` fixture for "no
+ server" tests
+
+why: Tests using hardcoded socket_name strings (e.g. test_no_server_is_alive,
+test_no_server_sessions, test_raise_if_dead_no_server_raises) fail whenever a
+stale tmux daemon happens to be alive at the same socket path. tmux does not
+reliably unlink its socket on non-graceful exit, so leftover daemons accumulate
+in /tmp/tmux-<uid>/ and persist across runs - breaking the tests even in
+isolation.
+
+what:
+- Convert test_no_server_sessions, test_no_server_attached_sessions,
+  test_no_server_is_alive, and test_raise_if_dead_no_server_raises to take
+  the existing `server` fixture (src/libtmux/pytest_plugin.py:144-182), which
+  already produces a Server with a unique random socket_name and registers
+  a finalizer that kills any daemon and unlinks the socket file.
+- A freshly-created Server with a unique name has no daemon running on it,
+  so it IS the "dead server" these tests want.
+- Drops the typo coupling where test_no_server_sessions and
+  test_raise_if_dead_no_server_raises both hardcoded the unrelated socket
+  name "test_attached_session_no_server".
+
+Fixes #664
+---
+ tests/test_server.py | 18 +++++++-----------
+ 1 file changed, 7 insertions(+), 11 deletions(-)
+
+diff --git a/tests/test_server.py b/tests/test_server.py
+index 38c05636f..c58613749 100644
+--- a/tests/test_server.py
++++ b/tests/test_server.py
+@@ -192,22 +192,19 @@ def test_new_session_environmental_variables(
+     assert my_session.show_environment()["FOO"] == "HI"
+ 
+ 
+-def test_no_server_sessions() -> None:
++def test_no_server_sessions(server: Server) -> None:
+     """Verify ``Server.sessions`` returns empty list without tmux server."""
+-    server = Server(socket_name="test_attached_session_no_server")
+     assert server.sessions == []
+ 
+ 
+-def test_no_server_attached_sessions() -> None:
++def test_no_server_attached_sessions(server: Server) -> None:
+     """Verify ``Server.attached_sessions`` returns empty list without tmux server."""
+-    server = Server(socket_name="test_no_server_attached_sessions")
+     assert server.attached_sessions == []
+ 
+ 
+-def test_no_server_is_alive() -> None:
++def test_no_server_is_alive(server: Server) -> None:
+     """Verify is_alive() returns False without tmux server."""
+-    dead_server = Server(socket_name="test_no_server_is_alive")
+-    assert not dead_server.is_alive()
++    assert not server.is_alive()
+ 
+ 
+ def test_with_server_is_alive(server: Server) -> None:
+@@ -216,11 +213,10 @@ def test_with_server_is_alive(server: Server) -> None:
+     assert server.is_alive()
+ 
+ 
+-def test_raise_if_dead_no_server_raises() -> None:
+-    """Verify new_session() raises if tmux server is dead."""
+-    dead_server = Server(socket_name="test_attached_session_no_server")
++def test_raise_if_dead_no_server_raises(server: Server) -> None:
++    """Verify ``Server.raise_if_dead`` raises if tmux server is dead."""
+     with pytest.raises(subprocess.CalledProcessError):
+-        dead_server.raise_if_dead()
++        server.raise_if_dead()
+ 
+ 
+ def test_raise_if_dead_does_not_raise_if_alive(server: Server) -> None:
+

@@ -1,0 +1,22 @@
+diff --git a/Makefile b/Makefile
+index 8862e05..092773e 100644
+--- a/Makefile
++++ b/Makefile
+@@ -24,7 +24,7 @@ endif
+ build: generate build-quick
+ 
+ build-quick:
+-	CGO_ENABLED=$(CGO_ENABLED) go build -trimpath -ldflags "-s -w $(GOVARS) $(ADDITIONAL_GO_LINKER_FLAGS)" ./cmd/micro
++	CGO_ENABLED=$(CGO_ENABLED) go build -trimpath -ldflags "-w $(GOVARS) $(ADDITIONAL_GO_LINKER_FLAGS)" ./cmd/micro
+ 
+ build-dbg:
+ 	CGO_ENABLED=$(CGO_ENABLED) go build -trimpath -ldflags "$(ADDITIONAL_GO_LINKER_FLAGS) $(DEBUGVAR)" ./cmd/micro
+@@ -34,7 +34,7 @@ build-tags: fetch-tags build
+ build-all: build
+ 
+ install: generate
+-	go install -ldflags "-s -w $(GOVARS) $(ADDITIONAL_GO_LINKER_FLAGS)" ./cmd/micro
++	go install -ldflags "-w $(GOVARS) $(ADDITIONAL_GO_LINKER_FLAGS)" ./cmd/micro
+ 
+ install-all: install
+ 

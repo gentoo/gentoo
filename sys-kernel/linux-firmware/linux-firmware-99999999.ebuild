@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -26,17 +26,15 @@ DESCRIPTION="Linux firmware files"
 HOMEPAGE="https://git.kernel.org/?p=linux/kernel/git/firmware/linux-firmware.git"
 
 LICENSE="GPL-2 GPL-2+ GPL-3 BSD MIT || ( MPL-1.1 GPL-2 )
-	redistributable? ( linux-fw-redistributable BSD-2 BSD BSD-4 ISC MIT )
-	unknown-license? ( all-rights-reserved )"
+	redistributable? ( linux-fw-redistributable BSD-2 BSD BSD-4 ISC MIT )"
 SLOT="0"
-IUSE="bindist compress-xz compress-zstd deduplicate dist-kernel +initramfs +redistributable unknown-license"
+IUSE="bindist compress-xz compress-zstd deduplicate dist-kernel +initramfs +redistributable"
 REQUIRED_USE="initramfs? ( redistributable )
 	?? ( compress-xz compress-zstd )
 	savedconfig? ( !deduplicate )"
 
 RESTRICT="binchecks strip test
-	!bindist? ( bindist )
-	unknown-license? ( bindist )"
+	!bindist? ( bindist )"
 
 BDEPEND="initramfs? ( app-alternatives/cpio )
 	compress-xz? ( app-arch/xz-utils )
@@ -50,12 +48,6 @@ RDEPEND="!savedconfig? (
 			!sys-firmware/alsa-firmware[alsa_cards_ca0132,-deduplicate(-)]
 			!sys-block/qla-fc-firmware
 			!sys-firmware/raspberrypi-wifi-ucode
-		)
-		unknown-license? (
-			!sys-firmware/alsa-firmware[alsa_cards_korg1212,-deduplicate(-)]
-			!sys-firmware/alsa-firmware[alsa_cards_maestro3,-deduplicate(-)]
-			!sys-firmware/alsa-firmware[alsa_cards_sb16,-deduplicate(-)]
-			!sys-firmware/alsa-firmware[alsa_cards_ymfpci,-deduplicate(-)]
 		)
 	)
 	dist-kernel? (
@@ -218,58 +210,8 @@ src_prepare() {
 		mellanox/mlxsw_spectrum-13.2000.1122.mfa2
 	)
 
-	# blacklist of images with unknown license
-	local unknown_license=(
-		korg/k1212.dsp
-		ess/maestro3_assp_kernel.fw
-		ess/maestro3_assp_minisrc.fw
-		yamaha/ds1_ctrl.fw
-		yamaha/ds1_dsp.fw
-		yamaha/ds1e_ctrl.fw
-		ttusb-budget/dspbootcode.bin
-		emi62/bitstream.fw
-		emi62/loader.fw
-		emi62/midi.fw
-		emi62/spdif.fw
-		ti_3410.fw
-		ti_5052.fw
-		mts_mt9234mu.fw
-		mts_mt9234zba.fw
-		whiteheat.fw
-		whiteheat_loader.fw
-		cpia2/stv0672_vp4.bin
-		vicam/firmware.fw
-		edgeport/boot.fw
-		edgeport/boot2.fw
-		edgeport/down.fw
-		edgeport/down2.fw
-		edgeport/down3.bin
-		sb16/mulaw_main.csp
-		sb16/alaw_main.csp
-		sb16/ima_adpcm_init.csp
-		sb16/ima_adpcm_playback.csp
-		sb16/ima_adpcm_capture.csp
-		sun/cassini.bin
-		acenic/tg1.bin
-		acenic/tg2.bin
-		adaptec/starfire_rx.bin
-		adaptec/starfire_tx.bin
-		yam/1200.bin
-		yam/9600.bin
-		ositech/Xilinx7OD.bin
-		qlogic/isp1000.bin
-		myricom/lanai.bin
-		yamaha/yss225_registers.bin
-		lgs8g75.fw
-	)
-
-	if use !unknown-license; then
-		einfo "Removing files with unknown license ..."
-		rm -v "${unknown_license[@]}" || die
-	fi
-
 	if use !redistributable; then
-		# remove files _not_ in the free_software or unknown_license lists
+		# remove files _not_ in the free_software lists
 		# everything else is confirmed (or assumed) to be redistributable
 		# based on upstream acceptance policy
 		einfo "Removing non-redistributable files ..."
@@ -277,7 +219,7 @@ src_prepare() {
 		local IFS=$'\n'
 		set -o pipefail
 		find ! -type d -printf "%P\n" \
-			| grep -Fvx -e "${misc_files[*]}" -e "${free_software[*]}" -e "${unknown_license[*]}" \
+			| grep -Fvx -e "${misc_files[*]}" -e "${free_software[*]}" \
 			| xargs -d '\n' --no-run-if-empty rm -v
 
 		[[ ${?} -ne 0 ]] && die "Failed to remove non-redistributable files"
@@ -358,7 +300,7 @@ src_install() {
 
 	dodoc README.md
 	# some licenses require copyright and permission notice to be included
-	use bindist && dodoc WHENCE LICEN[CS]E.*
+	use bindist && dodoc -r WHENCE LICENSES
 }
 
 pkg_preinst() {

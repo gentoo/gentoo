@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -64,9 +64,8 @@ src_prepare() {
 }
 
 src_compile() {
+	tc-export AR CC
 	emake prefix="${EPREFIX}"${DIETHOME} \
-		AR="$(tc-getAR)" \
-		CC="$(tc-getCC)" \
 		CFLAGS="${CFLAGS}" \
 		STRIP=":"
 }

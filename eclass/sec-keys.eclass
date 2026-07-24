@@ -68,7 +68,7 @@ _sec_keys_set_globals() {
 	for key in "${SEC_KEYS_VALIDPGPKEYS[@]}"; do
 		fingerprint=${key%%:*}
 		name=${key#${fingerprint}:}; name=${name%%:*}
-		IFS=, read -r -a locations <<<"${key##*:}"
+		mapfile -td ',' locations < <(printf %s "${key##*:}")
 		[[ ${locations[@]} ]] || die "${ECLASS}: ${name}: PGP key remote is mandatory"
 		for loc in "${locations[@]}"; do
 			case ${loc} in

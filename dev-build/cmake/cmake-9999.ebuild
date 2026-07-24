@@ -70,7 +70,7 @@ RESTRICT="!test? ( test )"
 
 # >= 1.51.0-r1 for ppc32 workaround (bug #941738)
 RDEPEND="
-	>=app-arch/libarchive-3.3.3:=
+	>=app-arch/libarchive-3.8.0:=
 	app-crypt/rhash:0=
 	>=dev-libs/expat-2.0.1
 	>=dev-libs/jsoncpp-1.9.2-r2:0=
@@ -90,8 +90,6 @@ BDEPEND+="
 	)
 	test? ( app-arch/libarchive[zstd] )
 "
-
-SITEFILE="50${PN}-gentoo.el"
 
 PATCHES=(
 	# Prefix
@@ -291,6 +289,11 @@ src_test() {
 		"RunCMake.CMP0125"
 	)
 
+	local myctestargs=(
+		# Filter all tests requiring Fortran
+		-LE "Fortran"
+	)
+
 	local -x QT_QPA_PLATFORM=offscreen
 
 	cmake_src_test
@@ -312,6 +315,9 @@ src_install() {
 
 	insinto /usr/share/vim/vimfiles/ftdetect
 	doins "${FILESDIR}/${PN}.vim"
+
+	# Part of app-emacs/cmake-mode instead
+	rm -r "${ED}"/usr/share/emacs || die
 
 	dobashcomp Auxiliary/bash-completion/{${PN},ctest,cpack}
 }

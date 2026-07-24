@@ -99,7 +99,7 @@ src_configure() {
 }
 
 src_compile() {
-	tc-export AR CC RANLIB
+	tc-export AR CC CXX RANLIB
 
 	local myconf=(
 		AR="${AR}"

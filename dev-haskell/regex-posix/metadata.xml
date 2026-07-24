@@ -7,7 +7,7 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="hackage">regex-posix</remote-id>
-		<remote-id type="github">hvr/regex-base</remote-id>
-		<remote-id type="github">hvr/regex-posix</remote-id>
+		<remote-id type="github">haskell-hvr/regex-base</remote-id>
+		<remote-id type="github">haskell-hvr/regex-posix</remote-id>
 	</upstream>
 </pkgmetadata>

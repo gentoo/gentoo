@@ -17,7 +17,7 @@
 		emulator.
 	</longdescription>
 	<upstream>
-		<bugs-to>https://gitlab.com/jgemu/nestopia/-/issues</bugs-to>
+		<bugs-to>https://gitlab.com/jgemu/nestopia/-/work_items</bugs-to>
 		<changelog>https://gitlab.com/jgemu/nestopia/-/blob/master/ChangeLog</changelog>
 		<remote-id type="gitlab">jgemu/nestopia</remote-id>
 	</upstream>

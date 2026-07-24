@@ -15,7 +15,8 @@ KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
 IUSE="doc +man static-libs test"
 RESTRICT="!test? ( test )"
 
-BDEPEND="man? ( app-text/doxygen )"
+BDEPEND="man? ( app-text/doxygen )
+	doc? ( app-text/doxygen media-gfx/graphviz )"
 
 src_prepare() {
 	default
@@ -23,6 +24,10 @@ src_prepare() {
 
 	if use man; then
 		echo 'GENERATE_MAN=YES' >> Doxyfile || die
+	fi
+	if use doc; then
+		echo 'GENERATE_HTML=YES' >> Doxyfile || die
+	else
 		echo 'GENERATE_HTML=NO' >> Doxyfile || die
 	fi
 }

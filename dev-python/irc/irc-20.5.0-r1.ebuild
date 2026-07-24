@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 
 inherit distutils-r1 pypi
 
@@ -28,9 +28,6 @@ RDEPEND="
 	dev-python/more-itertools[${PYTHON_USEDEP}]
 	dev-python/pytz[${PYTHON_USEDEP}]
 	>=dev-python/tempora-1.6[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep '
-		dev-python/importlib-resources[${PYTHON_USEDEP}]
-	' 3.11)
 "
 BDEPEND="
 	>=dev-python/setuptools-scm-3.4.1[${PYTHON_USEDEP}]

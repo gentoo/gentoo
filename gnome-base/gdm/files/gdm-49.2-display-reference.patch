@@ -1,0 +1,30 @@
+From 101f997885fb7675a8b583d5dba54870d4dae493 Mon Sep 17 00:00:00 2001
+From: Joan Torres Lopez <joantolo@redhat.com>
+Date: Thu, 18 Dec 2025 21:34:11 +0100
+Subject: [PATCH] local-display-factory: Fix display reference
+
+The display returned must be referenced, otherwise it would be
+undesirably destroyed.
+
+Fixes bug introduced from last X11 cleanup MR. Reference:
+bd5ef40371b366bf58c96224ef55fba162437125.
+---
+ daemon/gdm-local-display-factory.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/daemon/gdm-local-display-factory.c b/daemon/gdm-local-display-factory.c
+index f1ccf643a..ae90f05ba 100644
+--- a/daemon/gdm-local-display-factory.c
++++ b/daemon/gdm-local-display-factory.c
+@@ -503,7 +503,7 @@ get_display_for_seat (GdmLocalDisplayFactory *factory,
+         else
+                 display = gdm_display_store_find (store, lookup_managed_display_by_seat_id, (gpointer) seat_id);
+ 
+-        return display;
++        return g_object_ref (display);
+ }
+ 
+ static void
+-- 
+GitLab
+

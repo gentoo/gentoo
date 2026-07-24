@@ -1,4 +1,4 @@
-# Copyright 2022-2025 Gentoo Authors
+# Copyright 2022-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: junit5.eclass
@@ -322,9 +322,21 @@ _junit5_post_test_qa_check_use_dep() {
 	einfo "Verifying test classes' dependencies"
 
 	local jdeps_output="${T}/test-classes-jdeps.txt"
-	find "${classes}" -type f -name '*.class' -exec \
-		"$(java-config --jdk-home)/bin/jdeps" {} + > "${jdeps_output}" ||
+	local jdeps_bin="$(java-config --jdk-home)/bin/jdeps"
+	local classfile magic
+
+	find "${classes}" -type f -name '*.class' -print0 |
+	while IFS= read -r -d '' classfile; do
+		magic=$(od -An -tx1 -N4 "${classfile}" | tr -d ' \n')
+
+		if [[ ${magic} == cafebabe ]]; then
+			printf '%s\0' "${classfile}"
+		else
+			eqawarn "Skipping invalid .class file during jdeps verification: ${classfile#${classes}/}"
+		fi
+	done | xargs -r -0 "${jdeps_bin}" > "${jdeps_output}" ||
 		die "jdeps failed"
+
 	declare -A junit_5_flag_to_package=(
 		[migration-support]=org.junit.jupiter.migrationsupport
 		[test-kit]=org.junit.platform.testkit.engine

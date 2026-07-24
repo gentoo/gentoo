@@ -1,0 +1,51 @@
+From 3b9c7376c22816e9adae936f6831b1255aa5aae7 Mon Sep 17 00:00:00 2001
+From: Alessandro Astone <alessandro.astone@canonical.com>
+Date: Wed, 26 Nov 2025 16:07:00 +0100
+Subject: [PATCH] gdm-session-worker: Set XDG_SESSION_EXTRA_DEVICE_ACCESS
+
+Graphical-remote sessions may not have access to GPU rendering nodes
+because
+that is usually associated with a seat. Some distributions set
+permission 666
+on render nodes, while others like Debian and Ubuntu prefer not to.
+
+XDG_SESSION_EXTRA_DEVICE_ACCESS is being introduced in systemd to
+support
+the use-case of granting sessions extra device access.
+
+Set XDG_SESSION_EXTRA_DEVICE_ACCESS=render to gain access to DRM render
+nodes
+tagged as `xaccess-render` in udev.
+Also set XDG_SESSION_EXTRA_DEVICE_ACCESS=accel to gain acces to NPU
+nodes
+tagged as `xaccess-accel` in uev.
+
+This also applies to physical sessions where the user will now retain
+access
+to these devices even after the session goes in the background.
+
+* https://github.com/systemd/systemd/pull/38516
+* https://github.com/systemd/systemd/pull/40645
+
+Closes: https://gitlab.gnome.org/GNOME/gnome-remote-desktop/-/issues/224
+---
+ daemon/gdm-session-worker.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/daemon/gdm-session-worker.c b/daemon/gdm-session-worker.c
+index fc49ba2ba..ac6bf69e3 100644
+--- a/daemon/gdm-session-worker.c
++++ b/daemon/gdm-session-worker.c
+@@ -1242,6 +1242,9 @@ gdm_session_worker_initialize_pam (GdmSessionWorker   *worker,
+                 }
+         }
+ 
++        /* Grant extra access to GPUs and NPUs (i.e. for remote sessions without a seat) */
++        gdm_session_worker_set_environment_variable (worker, "XDG_SESSION_EXTRA_DEVICE_ACCESS", "render:accel");
++
+         /* set seat ID */
+         if (seat_id != NULL && seat_id[0] != '\0') {
+                 gdm_session_worker_set_environment_variable (worker, "XDG_SEAT", seat_id);
+-- 
+GitLab
+

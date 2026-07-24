@@ -20,8 +20,11 @@ GCC_BOOTSTRAP_VER=20201208
 # systemd integration version
 GLIBC_SYSTEMD_VER=20210729
 
-# Minimum kernel version that glibc requires
-MIN_KERN_VER="3.2.0"
+# Minimum kernel version that glibc requires (used with USE=old-kernel)
+MIN_KERN_VER_UPSTREAM="3.2.0"
+
+# Minimum kernel version that Gentoo recommends (oldest in the tree)
+MIN_KERN_VER_GENTOO="6.1.0"
 
 # Minimum pax-utils version needed (which contains any new syscall changes for
 # its seccomp filter!). Please double check this!
@@ -53,7 +56,7 @@ SRC_URI+=" systemd? ( https://gitweb.gentoo.org/proj/toolchain/glibc-systemd.git
 
 LICENSE="LGPL-2.1+ BSD HPND ISC inner-net rc PCRE"
 SLOT="2.2"
-IUSE="audit caps cet clang compile-locales custom-cflags doc gd hash-sysv-compat headers-only +multiarch multilib multilib-bootstrap nscd perl profile selinux sframe +ssp stack-realign +static-libs suid systemd systemtap test vanilla"
+IUSE="audit caps cet clang compile-locales custom-cflags doc gd hash-sysv-compat headers-only +multiarch multilib multilib-bootstrap nscd old-kernel perl profile selinux sframe +ssp stack-realign +static-libs suid systemd systemtap test vanilla"
 
 # Here's how the cross-compile logic breaks down ...
 #  CTARGET - machine that will target the binaries
@@ -195,6 +198,7 @@ XFAIL_TEST_LIST=(
 	# Fails with certain PORTAGE_NICENESS/PORTAGE_SCHEDULING_POLICY
 	tst-sched1
 	tst-sched_setattr
+	tst-sched_setattr-thread
 
 	# Fails regularly, unreliable
 	tst-valgrind-smoke
@@ -221,6 +225,7 @@ XFAIL_NSPAWN_TEST_LIST=(
 	tst-aarch64-pkey
 	tst-bz21269
 	tst-mlock2
+	tst-mseal-pkey
 	tst-ntp_gettime
 	tst-ntp_gettime-time64
 	tst-ntp_gettimex
@@ -354,6 +359,21 @@ setup_target_flags() {
 	just_headers && return 0
 
 	case $(tc-arch) in
+		alpha)
+			# glibc selects its hand-written assembly mem*/str* routines by the
+			# host triplet's machine prefix (sysdeps/alpha/preconfigure does
+			# machine=alpha/$machine), NOT by the -mcpu codegen flag.  With the
+			# bare alpha-*-* CHOST only the generic C is built.  Map -mcpu to the
+			# most specific sysdeps/alpha/alphaev* dir that exists (Implies chain
+			# alphaev67 -> alphaev6 -> alphaev5) so the tuned asm is selected.
+			local cpu
+			case $(get-flag mcpu) in
+			21264a|ev67)           cpu="alphaev67" ;;
+			21264|ev6)             cpu="alphaev6" ;;
+			21164*|ev5|ev56|pca56) cpu="alphaev5" ;;
+			esac
+			[[ -n ${cpu} ]] && CTARGET_OPT="${cpu}-${CTARGET#*-}"
+		;;
 		x86)
 			# -march needed for #185404 #199334
 			# TODO: When creating the first glibc cross-compile, this test will
@@ -907,6 +927,12 @@ sanity_prechecks() {
 		fi
 
 		if is_linux ; then
+			if use old-kernel ; then
+				MIN_KERN_VER=${MIN_KERN_VER_UPSTREAM}
+			else
+				MIN_KERN_VER=${MIN_KERN_VER_GENTOO}
+			fi
+
 			local run_kv build_kv want_kv
 
 			run_kv=$(g_get_running_KV)
@@ -920,7 +946,7 @@ sanity_prechecks() {
 					eend 1
 					echo
 					eerror "You need a kernel of at least ${want_kv}!"
-					die "Kernel version too low!"
+					die "Kernel version too low! Maybe setting USE=old-kernel helps."
 				fi
 				eend 0
 			fi
@@ -1091,6 +1117,11 @@ glibc_do_configure() {
 
 	[[ $(tc-is-softfloat) == "yes" ]] && myconf+=( --without-fp )
 
+	if use old-kernel ; then
+		MIN_KERN_VER=${MIN_KERN_VER_UPSTREAM}
+	else
+		MIN_KERN_VER=${MIN_KERN_VER_GENTOO}
+	fi
 	myconf+=( --enable-kernel=${MIN_KERN_VER} )
 
 	# Since SELinux support is only required for nscd, only enable it if:
@@ -1368,6 +1399,9 @@ glibc_src_test() {
 			myxfailparams+="test-xfail-${myt}=yes "
 		done
 	fi
+
+	# https://inbox.sourceware.org/libc-alpha/lhuikb5ibey.fsf@oldenburg.str.redhat.com/
+	local -x GAWK_GNU_MATCHERS=1
 
 	# sandbox does not understand unshare() and prevents
 	# writes to /proc/, which makes many tests fail

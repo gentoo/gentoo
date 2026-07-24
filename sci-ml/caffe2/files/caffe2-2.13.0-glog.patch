@@ -1,0 +1,21 @@
+--- a/c10/util/Exception.cpp	2026-07-20 08:01:49.241949729 +0200
++++ b/c10/util/Exception.cpp	2026-07-20 08:02:53.751321052 +0200
+@@ -15,9 +15,7 @@
+ // (e.g. Torch, common/init). See also Logging.cpp in this directory.
+ #ifdef C10_USE_GLOG
+ namespace google {
+-namespace glog_internal_namespace_ {
+ bool IsGoogleLoggingInitialized();
+-} // namespace glog_internal_namespace_
+ } // namespace google
+ #endif
+ 
+@@ -265,7 +263,7 @@
+   // During static initialization (before InitGoogleLogging), glog's global
+   // flags may not be constructed yet. Accessing them causes SIOF crashes
+   // (T253115013, D96553733). Fall back to stderr in that case.
+-  if (!::google::glog_internal_namespace_::IsGoogleLoggingInitialized()) {
++  if (!::google::IsGoogleLoggingInitialized()) {
+     std::cerr << warning.source_location().file << ':'
+               << warning.source_location().line
+               << ": Warning: " << warning.msg() << " (function "

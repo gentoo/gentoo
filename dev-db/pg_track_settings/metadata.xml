@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">rjuju/pg_track_settings</remote-id>
+	</upstream>
+	<longdescription>
+		Helps you keep track of PostgreSQL settings configuration.
+		It provides a function (pg_track_settings_snapshot()), that must be called regularly.
+		At each call, it will store the settings that have been changed since last call.
+		It will also track the postgresql start time if it's different from the last one.
+	</longdescription>
+</pkgmetadata>

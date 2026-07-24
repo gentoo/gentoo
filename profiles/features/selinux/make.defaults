@@ -1,10 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # curl_ssl_openssl & ssl flags are required to satisfy pycurl deps for stage1
 # jpeg for dev-python/pillow to satisfy matplotlib
 # unconfined for sec-policy/selinux-base-policy
 BOOTSTRAP_USE="${BOOTSTRAP_USE} curl_ssl_openssl jpeg ssl unconfined"
+BOOTSTRAP_USE="${BOOTSTRAP_USE} selinux_policy_types_strict selinux_policy_types_targeted selinux_policy_types_mcs selinux_policy_types_mls"
 
 # selinux - Enable SELinux support
 USE="selinux"

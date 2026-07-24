@@ -18,7 +18,7 @@ else
 	SRC_URI="https://github.com/emacsmirror/${PN}/archive/v${PV}.tar.gz
 		-> ${P}.tar.gz"
 
-	KEYWORDS="~amd64 ~ppc ~sparc ~x86"
+	KEYWORDS="amd64 ~ppc ~sparc ~x86"
 fi
 
 LICENSE="GPL-3+"

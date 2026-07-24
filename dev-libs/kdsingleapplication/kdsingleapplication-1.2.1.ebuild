@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake qmake-utils
+inherit cmake qt-utils
 
 DESCRIPTION="KDAB's helper class for single-instance policy applications"
 HOMEPAGE="https://github.com/KDAB/KDSingleApplication"
@@ -12,7 +12,7 @@ S="${WORKDIR}"/KDSingleApplication-${PV}
 
 LICENSE="BSD MIT"
 SLOT="0/$(ver_cut 1-2)" # ${PROJECT_NAME}_SOVERSION
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm64 ~ppc64 x86"
 
 IUSE="doc examples test"
 RESTRICT="!test? ( test )"
@@ -36,7 +36,7 @@ src_configure() {
 		-DKDSingleApplication_TESTS=$(usex test)
 	)
 	use doc && mycmakeargs+=(
-		-DQHELPGEN_EXECUTABLE="$(qt6_get_libexecdir)/qhelpgenerator"
+		-DQHELPGEN_EXECUTABLE="$(qt_get_broot_binary 6 qhelpgenerator)"
 	)
 	cmake_src_configure
 }

@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
+EAPI="8"
 
-inherit vala
+inherit autotools vala
 
 DESCRIPTION="Japanese SKK engine for IBus"
 HOMEPAGE="https://github.com/ueno/ibus-skk"
@@ -25,9 +25,12 @@ BDEPEND="$(vala_depend)
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )"
 
+PATCHES=( "${FILESDIR}"/${PN}-libskk-1.1.1.patch )
+
 src_prepare() {
-	vala_src_prepare
+	vala_setup
 	default
+	eautoreconf
 }
 
 src_configure() {

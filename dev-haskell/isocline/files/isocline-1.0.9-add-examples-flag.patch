@@ -1,0 +1,26 @@
+From 7ee00f85833370913ba38e746f93a4891a928494 Mon Sep 17 00:00:00 2001
+From: hololeap <hololeap@protonmail.com>
+Date: Sat, 2 Aug 2025 08:33:00 -0600
+Subject: [PATCH 1/1] Add examples flag (disabled by default)
+
+Signed-off-by: hololeap <hololeap@protonmail.com>
+--- a/isocline.cabal
++++ b/isocline.cabal
+@@ -71,7 +71,14 @@ library
+     , text
+   default-language: Haskell2010
+ 
++flag examples
++  description: Build example executable
++  manual: True
++  default: False
++
+ executable example
++  if !flag(examples)
++      buildable: False
+   main-is: Example.hs
+   other-modules:
+       Paths_isocline
+-- 
+2.49.1
+

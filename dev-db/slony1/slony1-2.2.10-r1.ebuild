@@ -1,10 +1,10 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 POSTGRES_COMPAT=( 9.6 {10..14} )
-POSTGRES_USEDEP="server,threads(+)"
+POSTGRES_USEDEP="server(+),threads(+)"
 
 inherit flag-o-matic postgres-multi
 

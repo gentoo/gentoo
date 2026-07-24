@@ -1,0 +1,111 @@
+https://bugs.gentoo.org/976749
+
+From 32f56a2732f0ac6204aad946388789cdbb0e26eb Mon Sep 17 00:00:00 2001
+Message-ID: <32f56a2732f0ac6204aad946388789cdbb0e26eb.1781166873.git.sam@gentoo.org>
+From: Philip Le <philip.le@gnupg.com>
+Date: Thu, 21 May 2026 14:46:46 +0200
+Subject: [PATCH GnuPG] gpgsm: Fix regression in gpgsm_verify with expired
+ certificates.
+
+* sm/verify.c (gpgsm_verify): Display information about signers with
+expired certificate.
+--
+
+The loop over signers skipped the parsing of the current signer's
+information if the certificate is expired.
+
+GnuPG-bug-id: 8188
+Fixes-commit: fa1ac5c23d167dde6899536d6d80d9391737d21e
+---
+ sm/verify.c | 68 ++++++++++++++++++++++++++---------------------------
+ 1 file changed, 34 insertions(+), 34 deletions(-)
+
+diff --git a/sm/verify.c b/sm/verify.c
+index e56e0674e..e48b8e374 100644
+--- a/sm/verify.c
++++ b/sm/verify.c
+@@ -615,6 +615,40 @@ gpgsm_verify (ctrl_t ctrl, estream_t in_fp, estream_t data_fp,
+                                  keyexptime, 0,
+                                  NULL, 0, &verifyflags);
+ 
++      {
++        char *fpr, *buf, *tstr;
++
++        fpr = gpgsm_fpr_and_name_for_status (cert);
++        if (gpg_err_code (rc) == GPG_ERR_CERT_EXPIRED)
++          {
++            gpgsm_status (ctrl, STATUS_EXPKEYSIG, fpr);
++            rc = 0;
++          }
++        else
++          gpgsm_status (ctrl, STATUS_GOODSIG, fpr);
++
++        xfree (fpr);
++
++        /* FIXME: INFO_PKALGO correctly shows ECDSA but PKALGO is then
++         * ECC.  We should use the ECDSA here and need to find a way to
++         * figure this out without using the bogus assumption in
++         * gpgsm_check_cms_signature that ECC is always ECDSA.  */
++
++        fpr = gpgsm_get_fingerprint_hexstring (cert, GCRY_MD_SHA1);
++        tstr = strtimestamp_r (sigtime);
++        buf = xasprintf ("%s %s %s %s 0 0 %d %d 00", fpr, tstr,
++                         *sigtime? sigtime : "0",
++                         *keyexptime? keyexptime : "0",
++                         info_pkalgo, algo);
++        xfree (tstr);
++        /* Handle the --assert-signer option.  */
++        check_assert_signer_list (ctrl, fpr);
++        xfree (fpr);
++        /* Print the status line.  */
++        gpgsm_status (ctrl, STATUS_VALIDSIG, buf);
++        xfree (buf);
++      }
++
+       audit_log_ok (ctrl->audit, AUDIT_CHAIN_STATUS, rc);
+       if (rc) /* of validate_chain */
+         {
+@@ -671,40 +705,6 @@ gpgsm_verify (ctrl_t ctrl, estream_t in_fp, estream_t data_fp,
+           goto next_signer;
+         }
+ 
+-      {
+-        char *fpr, *buf, *tstr;
+-
+-        fpr = gpgsm_fpr_and_name_for_status (cert);
+-        if (gpg_err_code (rc) == GPG_ERR_CERT_EXPIRED)
+-          {
+-            gpgsm_status (ctrl, STATUS_EXPKEYSIG, fpr);
+-            rc = 0;
+-          }
+-        else
+-          gpgsm_status (ctrl, STATUS_GOODSIG, fpr);
+-
+-        xfree (fpr);
+-
+-        /* FIXME: INFO_PKALGO correctly shows ECDSA but PKALGO is then
+-         * ECC.  We should use the ECDSA here and need to find a way to
+-         * figure this out without using the bogus assumption in
+-         * gpgsm_check_cms_signature that ECC is always ECDSA.  */
+-
+-        fpr = gpgsm_get_fingerprint_hexstring (cert, GCRY_MD_SHA1);
+-        tstr = strtimestamp_r (sigtime);
+-        buf = xasprintf ("%s %s %s %s 0 0 %d %d 00", fpr, tstr,
+-                         *sigtime? sigtime : "0",
+-                         *keyexptime? keyexptime : "0",
+-                         info_pkalgo, algo);
+-        xfree (tstr);
+-        /* Handle the --assert-signer option.  */
+-        check_assert_signer_list (ctrl, fpr);
+-        xfree (fpr);
+-        /* Print the status line.  */
+-        gpgsm_status (ctrl, STATUS_VALIDSIG, buf);
+-        xfree (buf);
+-      }
+-
+       audit_log_s (ctrl->audit, AUDIT_SIG_STATUS, "good");
+ 
+       for (i=0; (p = ksba_cert_get_subject (cert, i)); i++)
+-- 
+2.54.0
+

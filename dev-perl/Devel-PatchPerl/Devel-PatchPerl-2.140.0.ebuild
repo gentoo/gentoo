@@ -9,7 +9,7 @@ inherit perl-module
 
 DESCRIPTION="Patch perl source a la Devel::PPPort's buildperl.pl"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 RDEPEND="
 	>=dev-perl/File-pushd-1.0.0

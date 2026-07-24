@@ -55,7 +55,7 @@ LICENSE="|| ( Artistic GPL-1+ )"
 SLOT="0/${SUBSLOT}"
 
 if [[ "${PV##*.}" != "9999" ]] && [[ "${PV/rc//}" == "${PV}" ]] ; then
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~arm64-macos ~x64-macos ~x64-solaris"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~arm64-macos ~x64-macos ~x64-solaris"
 fi
 
 IUSE="berkdb perl_features_debug doc gdbm perl_features_ithreads minimal perl_features_quadmath"
@@ -639,6 +639,11 @@ src_configure() {
 			HOSTCC=$(tc-getBUILD_CC) \
 			HOSTCFLAGS="${CFLAGS_FOR_BUILD} -D_GNU_SOURCE" \
 			HOSTLDFLAGS="${LDFLAGS_FOR_BUILD}"
+
+		# bug #977768
+		if tc-is-clang; then
+			export HOSTCFLAGS="${HOSTCFLAGS} -fno-strict-aliasing"
+		fi
 	fi
 
 	# bug #877659, bug #821577

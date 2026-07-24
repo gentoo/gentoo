@@ -85,6 +85,7 @@ CRATES="
 	regex-automata@0.4.8
 	regex-syntax@0.8.5
 	regex@1.11.0
+	rustc-demangle@0.1.27
 	rustc-hash@2.1.1
 	rustix@0.38.37
 	rustversion@1.0.17
@@ -147,12 +148,13 @@ CRATES="
 
 LLVM_COMPAT=( {17..21} )
 MODULES_INITRAMFS_IUSE=+initramfs
-MODDULES_KERNEL_MIN=6.16
+MODULES_KERNEL_MIN=6.16
+MODULES_OPTIONAL_IUSE=+modules
 PYTHON_COMPAT=( python3_{11..14} )
 RUST_MIN_VER="1.85.0"
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/kentoverstreet.asc
 
-inherit cargo flag-o-matic linux-mod-r1 llvm-r2 multiprocessing python-any-r1
+inherit cargo flag-o-matic linux-mod-r1 llvm-r2 python-any-r1
 inherit shell-completion sysroot toolchain-funcs unpacker verify-sig
 
 DESCRIPTION="Tools for bcachefs"
@@ -173,7 +175,7 @@ LICENSE="GPL-2"
 # Dependent crate licenses
 LICENSE+=" Apache-2.0 BSD ISC MIT Unicode-DFS-2016"
 SLOT="0"
-IUSE="debug verify-sig +modules"
+IUSE="debug llvm-libunwind verify-sig"
 RESTRICT="test"
 
 DEPEND="
@@ -184,7 +186,8 @@ DEPEND="
 	dev-libs/userspace-rcu:=
 	sys-apps/keyutils:=
 	sys-apps/util-linux
-	sys-libs/libunwind:=
+	llvm-libunwind? ( llvm-runtimes/libunwind:= )
+	!llvm-libunwind? ( sys-libs/libunwind:= )
 	virtual/udev
 	virtual/zlib:=
 "
@@ -274,31 +277,37 @@ src_prepare() {
 	default
 	tc-export CC
 
-	sed -i s/^VERSION=.*$/VERSION=${PV}/ Makefile || die
+	echo "${PV}" > .version || die
 	sed \
 		-e '/^CFLAGS/s:-O2::' \
 		-e '/^CFLAGS/s:-g::' \
 		-i Makefile || die
+
+	if use llvm-libunwind; then
+		sed -i s/libunwind// Makefile || die
+	fi
+
 	append-lfs-flags
 }
 
 src_configure() {
 	cargo_src_configure
-	use modules && emake DESTDIR="${WORKDIR}" PREFIX="/module" install_dkms
+
+	MODULE_SRC="module/${PN%-*}-${PV}"
+	use modules && emake DESTDIR="${WORKDIR}" DKMSDIR="/${MODULE_SRC}" install_dkms
 }
 
 src_compile() {
 	export BUILD_VERBOSE=1
 	export VERSION=${PV}
 
-	local module_s="module/src/${PN%-*}-${PV}"
-	local modlist=( "bcachefs=:../${module_s}:../${module_s}/src/fs/bcachefs" )
+	local modlist=( "bcachefs=:../${MODULE_SRC}:../${MODULE_SRC}/src/fs/bcachefs" )
 	local modargs=(
 		KDIR=${KV_OUT_DIR}
 	)
 
 	# Makefile calls `cargo` directly, so make sure we set our rustflags (etc)
-	cargo_env emake -j$(get_makeopts_jobs) bcachefs || die
+	cargo_env emake bcachefs || die
 	use modules && linux-mod-r1_src_compile
 
 	local shell

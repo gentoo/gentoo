@@ -1,0 +1,11 @@
+# Copyright 2026 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Holger Hoffstätte <holger@applied-asynchrony.com> (2026-06-10)
+# Crashes due to ABI incompatibility specifically on ppc/musl:
+# https://bugs.gentoo.org/928297
+# https://github.com/LuaJIT/LuaJIT/issues/481
+# which will never be fixed. Still seems to work on ppc/glibc,
+# so mask for ppc/musl only (until it gets fully removed).
+lua_single_target_luajit
+lua_targets_luajit

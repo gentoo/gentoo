@@ -25,7 +25,7 @@ RDEPEND="
 		)
 	)
 	mysql? ( dev-python/mysqlclient[${PYTHON_USEDEP}] )
-	postgres? ( dev-python/psycopg:0[${PYTHON_USEDEP}] )
+	postgres? ( dev-python/psycopg:2[${PYTHON_USEDEP}] )
 	pyjwt? ( dev-python/pyjwt[${PYTHON_USEDEP}] )
 	sqlite? ( $(python_gen_impl_dep sqlite) )
 	ssl? ( dev-python/pyopenssl[${PYTHON_USEDEP}] )

@@ -49,11 +49,11 @@ RDEPEND="
 	dev-libs/libffi:=
 	dev-libs/mpdecimal:=
 	dev-python/gentoo-common
+	sys-apps/util-linux
 	>=virtual/zlib-1.1.3:=
 	virtual/libcrypt:=
 	virtual/libintl
 	gdbm? ( sys-libs/gdbm:=[berkdb] )
-	kernel_linux? ( sys-apps/util-linux:= )
 	ncurses? ( >=sys-libs/ncurses-5.2:= )
 	readline? (
 		!libedit? ( >=sys-libs/readline-4.1:= )
@@ -229,6 +229,10 @@ src_configure() {
 		-x test_gdb
 		# this is actually test_gdb.test_pretty_print
 		-x test_pretty_print
+		# broken w/ >=linux-7.1, fixed w/ >=3.13
+		# https://github.com/python/cpython/issues/149078
+		# https://github.com/python/cpython/issues/149776
+		-x test_socket
 	)
 
 	# Arch-specific skips.  See #931888 for a collection of these.

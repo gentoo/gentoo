@@ -30,6 +30,8 @@ EPYTEST_RERUNS=5
 distutils_enable_tests pytest
 
 python_test() {
+	# Avoid stale /tmp/tmux-$(id -u) confusing things (bug #896406)
+	local -x TMUX_TMPDIR=$(mktemp --directory --tmpdir=/tmp libtmux.XXXXXXXXXX)
 	# tests/test_window.py::test_fresh_window_data fails if TMUX_PANE is set
 	# https://bugs.gentoo.org/927158
 	local -x TMUX_PANE=

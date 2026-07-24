@@ -10,8 +10,8 @@
     <name>Cjk</name>
   </maintainer>
   <use>
-    <flag name="fontforge">Use <pkg>media-gfx/fontforge</pkg> to build fonts from source</flag>
-    <flag name="utils">Install unifont utilities</flag>
+    <flag name="fontforge">Build TrueType fonts from sources, using <pkg>media-gfx/fontforge</pkg></flag>
+    <flag name="utils">Build unifont utilities and use them to compile OpenType fonts from sources</flag>
   </use>
   <upstream>
     <remote-id type="savannah">unifont</remote-id>

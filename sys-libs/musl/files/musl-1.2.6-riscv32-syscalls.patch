@@ -1,0 +1,48 @@
+From b306b16af15c89a04d8e0c55cac2dadbeb39c083 Mon Sep 17 00:00:00 2001
+From: Rich Felker <dalias@aerifal.cx>
+Date: Thu, 18 Jun 2026 11:33:50 -0400
+Subject: [PATCH] riscv32: fix missing and extraneous items in syscall table
+
+nanosleep is a time32 syscall which riscv32 lacks by being natively
+time64. the erroneous macro being present did not break anything libc
+internal, because SYS_nanosleep is never used in the natively-time64
+path, but i could in theory cause applications to wrongly attempt to
+use it if they do their own syscalls. it has wrongly been there since
+the riscv32 port was added.
+
+close_range and quotactl_fd were somehow omitted in commit
+8432d16a4664433b2f9a263aee0d7d829129a7bc.
+---
+ arch/riscv32/bits/syscall.h.in | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/arch/riscv32/bits/syscall.h.in b/arch/riscv32/bits/syscall.h.in
+index dcd0e9f7..7ce5083f 100644
+--- a/arch/riscv32/bits/syscall.h.in
++++ b/arch/riscv32/bits/syscall.h.in
+@@ -89,7 +89,6 @@
+ #define __NR_unshare 97
+ #define __NR_set_robust_list 99
+ #define __NR_get_robust_list 100
+-#define __NR_nanosleep 101
+ #define __NR_getitimer 102
+ #define __NR_setitimer 103
+ #define __NR_kexec_load 104
+@@ -280,12 +279,14 @@
+ #define __NR_fspick		433
+ #define __NR_pidfd_open		434
+ #define __NR_clone3		435
++#define __NR_close_range	436
+ #define __NR_openat2		437
+ #define __NR_pidfd_getfd	438
+ #define __NR_faccessat2		439
+ #define __NR_process_madvise	440
+ #define __NR_epoll_pwait2	441
+ #define __NR_mount_setattr	442
++#define __NR_quotactl_fd	443
+ #define __NR_landlock_create_ruleset	444
+ #define __NR_landlock_add_rule	445
+ #define __NR_landlock_restrict_self	446
+-- 
+2.53.0
+

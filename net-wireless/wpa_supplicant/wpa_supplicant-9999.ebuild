@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,7 +7,6 @@ inherit desktop linux-info qmake-utils readme.gentoo-r1 systemd toolchain-funcs
 
 DESCRIPTION="IEEE 802.1X/WPA supplicant for secure wireless transfers"
 HOMEPAGE="https://w1.fi/wpa_supplicant/"
-LICENSE="|| ( GPL-2 BSD )"
 
 if [ "${PV}" = "9999" ]; then
 	inherit git-r3
@@ -17,6 +16,9 @@ else
 	SRC_URI="https://w1.fi/releases/${P}.tar.gz"
 fi
 
+S="${WORKDIR}/${P}"
+
+LICENSE="|| ( GPL-2 BSD )"
 SLOT="0"
 IUSE="+ap broadcom-sta dbus eap-sim eapol-test +fils gui macsec +mbo +mesh p2p privsep readline selinux smartcard tkip uncommon-eap-types wep wps"
 
@@ -64,30 +66,35 @@ DOC_CONTENTS="
 	/usr/share/doc/${PF}/
 "
 
-S="${WORKDIR}/${P}/${PN}"
+PATCHES=(
+	# bug #320097
+	"${FILESDIR}/${PN}-2.6-do-not-call-dbus-functions-with-NULL-path.patch"
+	# bug #912315
+	"${FILESDIR}/${PN}-2.10-allow-legacy-renegotiation.patch"
+)
 
 Kconfig_style_config() {
-		#param 1 is CONFIG_* item
-		#param 2 is what to set it = to, defaulting in y
-		CONFIG_PARAM="${CONFIG_HEADER:-CONFIG_}$1"
-		setting="${2:-y}"
+	#param 1 is CONFIG_* item
+	#param 2 is what to set it = to, defaulting in y
+	CONFIG_PARAM="${CONFIG_HEADER:-CONFIG_}$1"
+	setting="${2:-y}"
 
-		if [ ! $setting = n ]; then
-			#first remove any leading "# " if $2 is not n
-			sed -i "/^# *$CONFIG_PARAM=/s/^# *//" .config || echo "Kconfig_style_config error uncommenting $CONFIG_PARAM"
-			#set item = $setting (defaulting to y)
-			if ! sed -i "/^$CONFIG_PARAM\>/s/=.*/=$setting/" .config; then
-				echo "Kconfig_style_config error setting $CONFIG_PARAM=$setting"
-			fi
-			if [ -z "$( grep ^$CONFIG_PARAM= .config )" ] ; then
-				echo "$CONFIG_PARAM=$setting" >>.config
-			fi
-		else
-			#ensure item commented out
-			if ! sed -i "/^$CONFIG_PARAM\>/s/$CONFIG_PARAM/# $CONFIG_PARAM/" .config; then
-				echo "Kconfig_style_config error commenting $CONFIG_PARAM"
-			fi
+	if [ ! $setting = n ]; then
+		#first remove any leading "# " if $2 is not n
+		sed -i "/^# *$CONFIG_PARAM=/s/^# *//" .config || echo "Kconfig_style_config error uncommenting $CONFIG_PARAM"
+		#set item = $setting (defaulting to y)
+		if ! sed -i "/^$CONFIG_PARAM\>/s/=.*/=$setting/" .config; then
+			echo "Kconfig_style_config error setting $CONFIG_PARAM=$setting"
 		fi
+		if [ -z "$( grep ^$CONFIG_PARAM= .config )" ] ; then
+			echo "$CONFIG_PARAM=$setting" >>.config
+		fi
+	else
+		#ensure item commented out
+		if ! sed -i "/^$CONFIG_PARAM\>/s/$CONFIG_PARAM/# $CONFIG_PARAM/" .config; then
+			echo "Kconfig_style_config error commenting $CONFIG_PARAM"
+		fi
+	fi
 }
 
 src_prepare() {
@@ -96,34 +103,25 @@ src_prepare() {
 	# net/bpf.h needed for net-libs/libpcap on Gentoo/FreeBSD
 	sed -i \
 		-e "s:\(#include <pcap\.h>\):#include <net/bpf.h>\n\1:" \
-		../src/l2_packet/l2_packet_freebsd.c || die
+		src/l2_packet/l2_packet_freebsd.c || die
 
 	# Change configuration to match Gentoo locations (bug #143750)
 	sed -i \
 		-e "s:/usr/lib/opensc:/usr/$(get_libdir):" \
 		-e "s:/usr/lib/pkcs11:/usr/$(get_libdir):" \
-		wpa_supplicant.conf || die
+		wpa_supplicant/wpa_supplicant.conf || die
 
 	# systemd entries to D-Bus service files (bug #372877)
 	echo 'SystemdService=wpa_supplicant.service' \
-		| tee -a dbus/*.service >/dev/null || die
-
-	cd "${WORKDIR}/${P}" || die
-
-	# bug (320097)
-	eapply "${FILESDIR}/${PN}-2.6-do-not-call-dbus-functions-with-NULL-path.patch"
-
-	# bug (912315)
-	eapply "${FILESDIR}/${PN}-2.10-allow-legacy-renegotiation.patch"
-
-	# bug (948052)
-	eapply "${FILESDIR}/${PN}-2.10-use-qt6.patch"
+		| tee -a wpa_supplicant/dbus/*.service >/dev/null || die
 
 	# bug (640492)
 	sed -i 's#-Werror ##' wpa_supplicant/Makefile || die
 }
 
 src_configure() {
+	cd wpa_supplicant || die
+
 	# Toolchain setup
 	tc-export CC PKG_CONFIG
 
@@ -335,7 +333,7 @@ src_configure() {
 	fi
 
 	if use gui ; then
-		pushd "${S}"/wpa_gui-qt4 > /dev/null || die
+		pushd "${S}"/wpa_supplicant/wpa_gui-qt4 > /dev/null || die
 		eqmake6 wpa_gui.pro
 		popd > /dev/null || die
 	fi
@@ -343,19 +341,21 @@ src_configure() {
 
 src_compile() {
 	einfo "Building wpa_supplicant"
-	emake V=1 BINDIR=/usr/sbin
+	emake -C wpa_supplicant V=1 BINDIR=/usr/sbin
 
 	if use gui ; then
 		einfo "Building wpa_gui"
-		emake -C "${S}"/wpa_gui-qt4
+		emake -C wpa_supplicant/wpa_gui-qt4
 	fi
 
 	if use eapol-test ; then
-		emake eapol_test
+		emake -C wpa_supplicant/eapol_test
 	fi
 }
 
 src_install() {
+	cd wpa_supplicant || die
+
 	dosbin wpa_supplicant
 	use privsep && dosbin wpa_priv
 	dobin wpa_cli wpa_passphrase
@@ -386,7 +386,7 @@ src_install() {
 	fi
 
 	if use dbus ; then
-		pushd "${S}"/dbus > /dev/null || die
+		pushd "${S}"/wpa_supplicant/dbus > /dev/null || die
 		insinto /etc/dbus-1/system.d
 		newins dbus-wpa_supplicant.conf wpa_supplicant.conf
 		insinto /usr/share/dbus-1/system-services

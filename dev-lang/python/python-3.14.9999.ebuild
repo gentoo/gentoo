@@ -11,7 +11,7 @@ inherit autotools check-reqs flag-o-matic git-r3 linux-info llvm-r1
 inherit multiprocessing pax-utils python-utils-r1 toolchain-funcs
 
 PYVER=$(ver_cut 1-2)
-PATCHSET="python-gentoo-patches-3.14.0b1"
+PATCHSET="python-gentoo-patches-3.14.6_p1"
 
 DESCRIPTION="An interpreted, interactive, object-oriented programming language"
 HOMEPAGE="
@@ -27,7 +27,7 @@ EGIT_BRANCH=${PYVER}
 LICENSE="PSF-2"
 SLOT="${PYVER}"
 IUSE="
-	bluetooth debug +ensurepip examples gdbm jit libedit +ncurses pgo
+	bluetooth build debug +ensurepip examples gdbm jit libedit +ncurses pgo
 	+readline +sqlite +ssl tail-call-interp test tk valgrind
 "
 REQUIRED_USE="jit? ( ${LLVM_REQUIRED_USE} )"
@@ -41,16 +41,16 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	app-arch/bzip2:=
 	app-arch/xz-utils:=
-	app-arch/zstd:=
 	app-misc/mime-types
 	>=dev-libs/expat-2.1:=
 	dev-libs/libffi:=
 	dev-libs/mpdecimal:=
 	dev-python/gentoo-common
+	sys-apps/util-linux
 	>=virtual/zlib-1.1.3:=
 	virtual/libintl
+	!build? ( app-arch/zstd:= )
 	gdbm? ( sys-libs/gdbm:=[berkdb] )
-	kernel_linux? ( sys-apps/util-linux:= )
 	ncurses? ( >=sys-libs/ncurses-5.2:= )
 	readline? (
 		!libedit? ( >=sys-libs/readline-4.1:= )
@@ -421,6 +421,7 @@ src_configure() {
 	cat > Modules/Setup.local <<-EOF || die
 		*disabled*
 		nis
+		$(usev build '_zstd')
 		$(usev !gdbm '_gdbm _dbm')
 		$(usev !sqlite '_sqlite3')
 		$(usev !ssl '_hashlib _ssl')

@@ -13,7 +13,7 @@ LLVM_COMPAT=( {18..22} )
 DISTUTILS_USE_PEP517=setuptools
 DISTUTILS_EXT=1
 
-inherit distutils-r1 llvm-r2 multiprocessing ninja-utils qmake-utils virtualx
+inherit distutils-r1 llvm-r2 multiprocessing ninja-utils qt-utils virtualx
 
 MY_PN=${PN}-setup-everywhere-src
 MY_P=${MY_PN}-${PV}

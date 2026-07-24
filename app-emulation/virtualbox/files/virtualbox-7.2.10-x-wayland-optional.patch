@@ -1,0 +1,71 @@
+Make X and/or wayland optional depending on how qtbase was compiled.
+
+--- a/src/VBox/Frontends/VirtualBox/src/platform/nix/VBoxUtils-nix.cpp
++++ b/src/VBox/Frontends/VirtualBox/src/platform/nix/VBoxUtils-nix.cpp
+@@ -66,9 +66,12 @@ VBGHDISPLAYSERVERTYPE NativeWindowSubsystem::displayServerType()
+ {
+     if (!qApp)
+         return VBGHDISPLAYSERVERTYPE_NONE;
++#if QT_CONFIG(xcb)
+     QNativeInterface::QX11Application *pX11App = qApp->nativeInterface<QNativeInterface::QX11Application>();
+     if (pX11App)
+         return VBGHDISPLAYSERVERTYPE_X11;
++#endif
++#if QT_CONFIG(wayland)
+ #if QT_VERSION >= QT_VERSION_CHECK(6, 5, 0) && defined(RT_OS_LINUX)
+     QNativeInterface::QWaylandApplication *pWaylandApp = qApp->nativeInterface<QNativeInterface::QWaylandApplication>();
+     if (pWaylandApp)
+@@ -76,6 +79,7 @@ VBGHDISPLAYSERVERTYPE NativeWindowSubsystem::displayServerType()
+ #else
+     if (QGuiApplication::platformName().contains("wayland", Qt::CaseInsensitive))
+         return VBGHDISPLAYSERVERTYPE_PURE_WAYLAND;
++#endif
+ #endif
+     return VBGHDISPLAYSERVERTYPE_NONE;
+ }
+@@ -100,6 +104,7 @@ bool NativeWindowSubsystem::X11IsCompositingManagerRunning()
+ 
+ bool NativeWindowSubsystem::WaylandIsCompositingManagerRunning()
+ {
++#if QT_CONFIG(wayland)
+ #if QT_VERSION >= QT_VERSION_CHECK(6, 5, 0) && defined(RT_OS_LINUX)
+     QNativeInterface::QWaylandApplication *pWaylandApp = qApp->nativeInterface<QNativeInterface::QWaylandApplication>();
+     if (pWaylandApp)
+@@ -107,6 +112,7 @@ bool NativeWindowSubsystem::WaylandIsCompositingManagerRunning()
+         if (pWaylandApp->compositor())
+             return true;
+     }
++#endif
+ #endif
+     return false;
+ }
+@@ -741,12 +747,14 @@ void NativeWindowSubsystem::setXwaylandMayGrabKeyboardFlag(QWidget *pWidget)
+ Display *NativeWindowSubsystem::X11GetDisplay()
+ {
+     Display *pDisplay = 0;
++#if QT_CONFIG(xcb)
+     if (qApp)
+     {
+         QNativeInterface::QX11Application *pX11App = qApp->nativeInterface<QNativeInterface::QX11Application>();
+         if (pX11App)
+             pDisplay = pX11App->display();
+     }
++#endif
+     Assert(pDisplay);
+     return pDisplay;
+ }
+@@ -754,12 +762,14 @@ Display *NativeWindowSubsystem::X11GetDisplay()
+ xcb_connection_t *NativeWindowSubsystem::X11GetConnection()
+ {
+     xcb_connection_t *pConnection = 0;
++#if QT_CONFIG(xcb)
+     if (qApp)
+     {
+         QNativeInterface::QX11Application *pX11App = qApp->nativeInterface<QNativeInterface::QX11Application>();
+         if (pX11App)
+             pConnection = pX11App->connection();
+     }
++#endif
+     Assert(pConnection);
+     return pConnection;
+ }

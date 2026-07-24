@@ -4,7 +4,7 @@
 EAPI=8
 
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/gnupg.asc
-inherit autotools qmake-utils verify-sig
+inherit autotools qt-utils verify-sig
 
 DESCRIPTION="Simple passphrase entry dialogs which utilize the Assuan protocol"
 HOMEPAGE="https://gnupg.org/related_software/pinentry/"
@@ -86,9 +86,8 @@ src_configure() {
 	)
 
 	if use qt6 ; then
-		export PATH="$(qt6_get_bindir):${PATH}"
-		export QTLIB="$(qt6_get_libdir):${QTLIB}"
-		export MOC="$(qt6_get_libexecdir)/moc"
+		export PATH="${BROOT}$(qt_get_bindir 6):${PATH}"
+		export MOC="$(qt_get_broot_binary 6 moc)"
 
 		myeconfargs+=(
 			$(use_enable wayland kf6-wayland)

@@ -1,6 +1,14 @@
 # Copyright 2023-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Rick Farina <zerochaos@gentoo.org> (2026-06-13)
+# net-wireless/rtl_433 and deps are not keyworded here
+net-wireless/kismet rtlsdr
+
+# Alexey Sokolov <alexey+gentoo@asokolov.org> (2026-06-04)
+# New versions of dev-cpp/cpp-httplib dropped support for 32 bits. Bug #973312
+dev-util/ccache http
+
 # Brett A C Sheffield <bacs@librecast.net> (2026-04-22)
 # virtual/pandoc is not keyworded here
 >=dev-libs/xmlsec-1.3.11 doc
@@ -32,6 +40,10 @@ net-wireless/kismet mqtt
 # Cristian Othón Martínez Vera <cfuga@cfuga.mx> (2025-07-15)
 # Needs gui-apps/grim, which is not keyworded here
 x11-misc/xscreensaver wayland
+
+# Dawid Rogowicz <rogowiczdawid@naoha.org> (2026-07-16)
+# Needs dev-libs/plasma-wayland-protocols, which is not keyworded here
+app-i18n/fcitx wayland
 
 # NRK <nrk@disroot.org> (2025-05-18)
 # app-arch/plzip is not keyworded

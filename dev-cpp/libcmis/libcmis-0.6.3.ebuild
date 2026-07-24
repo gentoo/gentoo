@@ -1,0 +1,61 @@
+# Copyright 1999-2026 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=9
+
+if [[ ${PV} == *9999* ]]; then
+	EGIT_REPO_URI="https://github.com/tdf/libcmis.git"
+	inherit git-r3
+else
+	SRC_URI="https://github.com/tdf/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
+fi
+inherit autotools flag-o-matic
+
+DESCRIPTION="C++ client library for the CMIS interface"
+HOMEPAGE="https://github.com/tdf/libcmis"
+
+LICENSE="|| ( GPL-2 LGPL-2 MPL-1.1 )"
+SLOT="0/0.6"
+IUSE="man test tools"
+RESTRICT="!test? ( test )"
+
+DEPEND="
+	dev-libs/boost:=
+	dev-libs/libxml2:=
+	net-misc/curl
+"
+RDEPEND="${DEPEND}"
+BDEPEND="
+	virtual/pkgconfig
+	man? (
+		app-text/xmlto
+		dev-libs/libxslt
+	)
+	test? ( dev-util/cppunit )
+"
+
+PATCHES=( "${FILESDIR}"/${P}-buildsys.patch ) # in git master
+
+src_prepare() {
+	default
+	eautoreconf
+}
+
+src_configure() {
+	# ODR issues in tests w/ curl
+	filter-lto
+
+	local myeconfargs=(
+		--disable-werror
+		$(use_with man)
+		$(use_enable test tests)
+		$(use_enable tools client)
+	)
+	econf "${myeconfargs[@]}"
+}
+
+src_install() {
+	default
+	find "${D}" -name '*.la' -delete || die
+}

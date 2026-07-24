@@ -10,7 +10,7 @@ HOMEPAGE="https://apps.gnome.org/Epiphany/"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64 ~riscv x86"
 IUSE="test selinux"
 RESTRICT="!test? ( test )"
 

@@ -1,9 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
 
-PYTHON_COMPAT=( python3_{9..13} )
+PYTHON_COMPAT=( python3_{9..14} )
 inherit git-r3 python-any-r1 toolchain-funcs
 
 DESCRIPTION="Self-syncing tree-merging file system based on FUSE"

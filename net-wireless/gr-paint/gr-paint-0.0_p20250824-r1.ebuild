@@ -59,5 +59,5 @@ src_install() {
 	cmake_src_install
 	find "${D}" -name '*.py[oc]' -delete || die
 	python_optimize
-	mv "${ED}/usr/share/doc/gr-paint" "${ED}/usr/share/doc/${P}"
+	mv "${ED}/usr/share/doc/gr-paint" "${ED}/usr/share/doc/${PF}"
 }

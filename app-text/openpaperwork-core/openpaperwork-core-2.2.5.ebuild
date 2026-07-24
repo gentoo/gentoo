@@ -17,7 +17,8 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-RDEPEND="dev-python/distro[${PYTHON_USEDEP}]"
+RDEPEND="dev-python/distro[${PYTHON_USEDEP}]
+	dev-python/psutil[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
 BDEPEND="dev-python/setuptools-scm[${PYTHON_USEDEP}]
 	sys-apps/which

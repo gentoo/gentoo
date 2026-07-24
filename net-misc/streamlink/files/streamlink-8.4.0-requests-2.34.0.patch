@@ -1,0 +1,30 @@
+https://github.com/streamlink/streamlink/commit/a1875a2c85cef47ddf6b1375c3651d52c8e799a1
+
+From a1875a2c85cef47ddf6b1375c3651d52c8e799a1 Mon Sep 17 00:00:00 2001
+From: bastimeyer <mail@bastimeyer.de>
+Date: Mon, 11 May 2026 21:38:26 +0200
+Subject: [PATCH] session.http: fix default value of params kwarg
+
+requests==2.34.0 fixed the signature of Session.get() after adding
+inline typing annotations, leading to an incorrect default value
+in our request() method override that resulted in test failures.
+---
+ src/streamlink/session/http.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/streamlink/session/http.py b/src/streamlink/session/http.py
+index 0fb87919266..8817ab202c9 100644
+--- a/src/streamlink/session/http.py
++++ b/src/streamlink/session/http.py
+@@ -254,8 +254,8 @@ def request(self, method, url, *args, **kwargs):
+         acceptable_status = kwargs.pop("acceptable_status", [])
+         encoding = kwargs.pop("encoding", None)
+         exception = kwargs.pop("exception", PluginError)
+-        headers = kwargs.pop("headers", {})
+-        params = kwargs.pop("params", {})
++        headers = kwargs.pop("headers", None) or {}
++        params = kwargs.pop("params", None) or {}
+         proxies = kwargs.pop("proxies", self.proxies)
+         raise_for_status = kwargs.pop("raise_for_status", True)
+         schema = kwargs.pop("schema", None)
+

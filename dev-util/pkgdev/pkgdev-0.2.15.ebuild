@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=standalone
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 inherit distutils-r1 optfeature
 
 if [[ ${PV} == *9999 ]] ; then
@@ -14,7 +14,7 @@ if [[ ${PV} == *9999 ]] ; then
 	inherit git-r3
 else
 	inherit pypi
-	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-macos"
+	KEYWORDS="amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~x64-macos"
 fi
 
 DESCRIPTION="Collection of tools for Gentoo development"
@@ -43,15 +43,13 @@ RDEPEND+="
 "
 BDEPEND="
 	>=dev-python/flit-core-3.8[${PYTHON_USEDEP}]
-	>=dev-python/snakeoil-0.10.11[${PYTHON_USEDEP}]
+	>=dev-python/snakeoil-0.11.0[${PYTHON_USEDEP}]
 	test? (
 		x11-misc/xdg-utils
 	)
 "
 
-distutils_enable_sphinx doc \
-	">=dev-python/snakeoil-0.10.11" \
-	dev-python/tomli
+distutils_enable_sphinx doc
 EPYTEST_PLUGINS=( pkgcore )
 distutils_enable_tests pytest
 

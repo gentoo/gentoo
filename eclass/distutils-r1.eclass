@@ -94,38 +94,16 @@
 # @PRE_INHERIT
 # @REQUIRED
 # @DESCRIPTION:
-# Specifies the PEP517 build system used for the package.  Currently,
-# the following values are supported:
+# Specifies the PEP517 build system used for the package.  Normally,
+# the values match the name of the package providing this backend.
 #
-# - flit - flit-core backend
+# The currently supported backends are: flit-core, flit-scm, hatchling,
+# jupyter-packaging, maturin, meson-python, pbr, pdm-backend,
+# poetry-core, scikit-build-core, setuptools, sip, uv-build.
 #
-# - flit_scm - flit_scm backend
-#
-# - hatchling - hatchling backend (from hatch)
-#
-# - jupyter - jupyter_packaging backend
-#
-# - maturin - maturin backend
-#
-# - meson-python - meson-python (mesonpy) backend
-#
-# - no - no PEP517 build system (see below)
-#
-# - pbr - pbr backend
-#
-# - pdm-backend - pdm.backend backend
-#
-# - poetry - poetry-core backend
-#
-# - scikit-build-core - scikit-build-core backend
-#
-# - setuptools - distutils or setuptools (incl. legacy mode)
-#
-# - sip - sipbuild backend
-#
-# - standalone - standalone/local build systems
-#
-# - uv-build - uv-build backend (using dev-python/uv)
+# Additionally, two special values are supported: "no" to indicate
+# no PEP517 build system, and "standalone" to indicate a standalone
+# (local to the package) build backend.  Both are described further on.
 #
 # The variable needs to be set before the inherit line.  If another
 # value than "standalone" and "no" is used, The eclass adds appropriate
@@ -235,30 +213,40 @@ else
 fi
 
 _distutils_set_globals() {
+	# convert deprecated values
+	if [[ ${EAPI} == [78] ]]; then
+		case ${DISTUTILS_USE_PEP517} in
+			flit)
+				DISTUTILS_USE_PEP517=flit-core
+				;;
+			flit_scm)
+				DISTUTILS_USE_PEP517=flit-scm
+				;;
+			jupyter)
+				DISTUTILS_USE_PEP517=jupyter-packaging
+				;;
+			poetry)
+				DISTUTILS_USE_PEP517=poetry-core
+				;;
+		esac
+	fi
+
 	local rdep bdep
 	bdep='
 		>=dev-python/gpep517-16[${PYTHON_USEDEP}]
 	'
 	case ${DISTUTILS_USE_PEP517} in
-		flit)
-			bdep+='
-				>=dev-python/flit-core-3.11.0[${PYTHON_USEDEP}]
-			'
+		flit-core|hatchling|jupyter-packaging|meson-python|pbr|pdm-backend)
+			;&
+		poetry-core|scikit-build-core|setuptools|sip|uv-build)
+			bdep+="
+				dev-python/${DISTUTILS_USE_PEP517}[\${PYTHON_USEDEP}]
+			"
 			;;
-		flit_scm)
+		flit-scm)
 			bdep+='
 				>=dev-python/flit-core-3.11.0[${PYTHON_USEDEP}]
 				>=dev-python/flit-scm-1.7.0[${PYTHON_USEDEP}]
-			'
-			;;
-		hatchling)
-			bdep+='
-				>=dev-python/hatchling-1.27.0[${PYTHON_USEDEP}]
-			'
-			;;
-		jupyter)
-			bdep+='
-				>=dev-python/jupyter-packaging-0.12.3[${PYTHON_USEDEP}]
 			'
 			;;
 		maturin)
@@ -270,47 +258,7 @@ _distutils_set_globals() {
 			# undo the generic deps added above
 			bdep=
 			;;
-		meson-python)
-			bdep+='
-				>=dev-python/meson-python-0.17.1[${PYTHON_USEDEP}]
-			'
-			;;
-		pbr)
-			bdep+='
-				>=dev-python/pbr-6.1.1[${PYTHON_USEDEP}]
-			'
-			;;
-		pdm-backend)
-			bdep+='
-				>=dev-python/pdm-backend-2.4.3[${PYTHON_USEDEP}]
-			'
-			;;
-		poetry)
-			bdep+='
-				>=dev-python/poetry-core-2.1.1[${PYTHON_USEDEP}]
-			'
-			;;
-		scikit-build-core)
-			bdep+='
-				>=dev-python/scikit-build-core-0.11.5[${PYTHON_USEDEP}]
-			'
-			;;
-		setuptools)
-			bdep+='
-				>=dev-python/setuptools-78.1.0[${PYTHON_USEDEP}]
-			'
-			;;
-		sip)
-			bdep+='
-				>=dev-python/sip-6.10.0[${PYTHON_USEDEP}]
-			'
-			;;
 		standalone)
-			;;
-		uv-build)
-			bdep+='
-				dev-python/uv-build[${PYTHON_USEDEP}]
-			'
 			;;
 		*)
 			die "Unknown DISTUTILS_USE_PEP517=${DISTUTILS_USE_PEP517}"
@@ -742,12 +690,12 @@ _distutils-r1_print_package_versions() {
 		)
 	fi
 	case ${DISTUTILS_USE_PEP517} in
-		flit)
+		flit-core|meson-python|poetry-core|scikit-build-core|sip)
 			packages+=(
-				dev-python/flit-core
+				"dev-python/${DISTUTILS_USE_PEP517}"
 			)
 			;;
-		flit_scm)
+		flit-scm)
 			packages+=(
 				dev-python/flit-core
 				dev-python/flit-scm
@@ -761,7 +709,7 @@ _distutils-r1_print_package_versions() {
 				dev-python/hatch-vcs
 			)
 			;;
-		jupyter)
+		jupyter-packaging)
 			packages+=(
 				dev-python/jupyter-packaging
 				dev-python/setuptools
@@ -777,11 +725,6 @@ _distutils-r1_print_package_versions() {
 		no)
 			return
 			;;
-		meson-python)
-			packages+=(
-				dev-python/meson-python
-			)
-			;;
 		pbr)
 			packages+=(
 				dev-python/pbr
@@ -795,27 +738,12 @@ _distutils-r1_print_package_versions() {
 				dev-python/setuptools
 			)
 			;;
-		poetry)
-			packages+=(
-				dev-python/poetry-core
-			)
-			;;
-		scikit-build-core)
-			packages+=(
-				dev-python/scikit-build-core
-			)
-			;;
 		setuptools)
 			packages+=(
 				dev-python/setuptools
 				dev-python/setuptools-rust
 				dev-python/setuptools-scm
 				dev-python/wheel
-			)
-			;;
-		sip)
-			packages+=(
-				dev-python/sip
 			)
 			;;
 		uv-build)
@@ -867,16 +795,16 @@ _distutils-r1_key_to_backend() {
 
 	local key=${1}
 	case ${key} in
-		flit)
+		flit-core)
 			echo flit_core.buildapi
 			;;
-		flit_scm)
+		flit-scm)
 			echo flit_scm:buildapi
 			;;
 		hatchling)
 			echo hatchling.build
 			;;
-		jupyter)
+		jupyter-packaging)
 			echo jupyter_packaging.build_api
 			;;
 		maturin)
@@ -891,7 +819,7 @@ _distutils-r1_key_to_backend() {
 		pdm-backend)
 			echo pdm.backend
 			;;
-		poetry)
+		poetry-core)
 			echo poetry.core.masonry.api
 			;;
 		scikit-build-core)
@@ -1859,6 +1787,7 @@ _distutils-r1_post_python_install() {
 				eqawarn "QA Notice: Python extension modules (*$(get_modname)) found installed. Please set:"
 				eqawarn "  DISTUTILS_EXT=1"
 				eqawarn "in the ebuild."
+				[[ ${EAPI} != [78] ]] && die "DISTUTILS_EXT not set"
 				_DISTUTILS_EXT_WARNED=1
 			fi
 		fi

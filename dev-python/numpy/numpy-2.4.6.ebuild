@@ -6,7 +6,7 @@ EAPI=8
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=meson-python
 PYPI_VERIFY_REPO=https://github.com/numpy/numpy-release
-PYTHON_COMPAT=( python3_{11..14} pypy3_11 )
+PYTHON_COMPAT=( python3_{12..14} )
 PYTHON_REQ_USE="threads(+)"
 FORTRAN_NEEDED=lapack
 
@@ -22,7 +22,7 @@ HOMEPAGE="
 LICENSE="BSD 0BSD MIT ZLIB CC0-1.0"
 SLOT="0/2"
 if [[ ${PV} != *_rc* ]]; then
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc x86"
 fi
 # +lapack because the internal fallbacks are pretty slow. Building without blas
 # is barely supported anyway, see bug #914358.

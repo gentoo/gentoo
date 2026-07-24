@@ -1,0 +1,39 @@
+https://bugs.gentoo.org/971601
+https://github.com/dracut-ng/dracut/pull/2453
+
+From cd2b33734f3cbead1e0f728ac838252cf16535f4 Mon Sep 17 00:00:00 2001
+From: fiftydinar <65243233+fiftydinar@users.noreply.github.com>
+Date: Thu, 28 May 2026 17:07:19 +0200
+Subject: [PATCH] fix(base): use printf instead of echo for hook variable
+
+Use printf instead of echo in list_hooks() to avoid dash's echo interpreting \x2f hex escapes, which corrupts hook file paths containing escaped slashes.
+
+1. parse-root.sh creates a hook file with \x2f-escaped device paths via str_replace()
+2. list_hooks() finds the file via glob but outputs it with echo, which dash interprets as hex escapes
+3. The corrupted path causes check_finished() to never find the real hook, looping until timeout (~5 min boot delay)
+---
+ modules.d/80base/dracut-lib.sh | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/modules.d/80base/dracut-lib.sh b/modules.d/80base/dracut-lib.sh
+index 339567d9a..09b20bf5b 100755
+--- a/modules.d/80base/dracut-lib.sh
++++ b/modules.d/80base/dracut-lib.sh
+@@ -378,14 +378,14 @@ list_hooks() {
+     # priority, '/etc/dracut/hooks' comes after and '/usr/lib/dracut/hooks' is the
+     # least priviliged location.
+     for hook in "/var/lib/dracut/hooks/$dir/"$pattern; do
+-        [ -f "$hook" ] && echo "$hook"
++        [ -f "$hook" ] && printf '%s\n' "$hook"
+     done
+     for hook in "/etc/dracut/hooks/$dir/"$pattern; do
+-        [ -f "$hook" ] && [ ! -f "/var/lib/dracut/hooks/$dir/${hook##*/}" ] && echo "$hook"
++        [ -f "$hook" ] && [ ! -f "/var/lib/dracut/hooks/$dir/${hook##*/}" ] && printf '%s\n' "$hook"
+     done
+     for hook in "/usr/lib/dracut/hooks/$dir/"$pattern; do
+         [ -f "$hook" ] && [ ! -f "/var/lib/dracut/hooks/$dir/${hook##*/}" ] \
+-            && [ ! -f "/etc/dracut/hooks/$dir/${hook##*/}" ] && echo "$hook"
++            && [ ! -f "/etc/dracut/hooks/$dir/${hook##*/}" ] && printf '%s\n' "$hook"
+     done
+ }
+ 

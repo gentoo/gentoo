@@ -1,0 +1,66 @@
+diff '--color=auto' -U2 -r wxmaxima-Version-26.06.2.orig/src/CMakeLists.txt wxmaxima-Version-26.06.2/src/CMakeLists.txt
+--- wxmaxima-Version-26.06.2.orig/src/CMakeLists.txt	2026-06-16 14:58:48.000000000 +0700
++++ wxmaxima-Version-26.06.2/src/CMakeLists.txt	2026-07-02 15:07:23.000028261 +0700
+@@ -543,62 +543,3 @@
+ add_dependencies(wxmaxima build_manualanchors.h)
+ 
+-
+-# Debian wants to be able to download a signature of the source package from the
+-# project's download directory. If it cannot find it it will still work, but will
+-# issue a warning. For details see
+-# https://lintian.debian.org/tags/debian-watch-may-check-gpg-signature.html
+-find_program(gpg NAMES gpg pgp)
+-add_custom_target(gpg DEPENDS dist
+-  COMMAND ${gpg} --armor --detach-sign ${CPACK_SOURCE_PACKAGE_FILE_NAME}.tar.bz2
+-  COMMAND ${gpg} --armor --detach-sign ${CPACK_SOURCE_PACKAGE_FILE_NAME}.tar.gz
+-  COMMAND ${gpg} --armor --detach-sign ${CPACK_SOURCE_PACKAGE_FILE_NAME}.tar.xz
+-  COMMAND ${gpg} --armor --detach-sign ${CPACK_SOURCE_PACKAGE_FILE_NAME}.tar.Z)
+-
+-if(NOT WIN32)
+-    # 1. Generate and compress Debian changelog to changelog.gz
+-    configure_file(
+-        "${CMAKE_SOURCE_DIR}/data/changelog.Debian.in"
+-        "${CMAKE_CURRENT_BINARY_DIR}/changelog.Debian"
+-        @ONLY
+-    )
+-    add_custom_command(
+-        OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/changelog.gz"
+-        COMMAND gzip -cn9 "${CMAKE_CURRENT_BINARY_DIR}/changelog.Debian" > "${CMAKE_CURRENT_BINARY_DIR}/changelog.gz"
+-        DEPENDS "${CMAKE_CURRENT_BINARY_DIR}/changelog.Debian"
+-        COMMENT "Compressing Debian changelog"
+-    )
+-    # Compress upstream ChangeLog to changelog.upstream.gz
+-    add_custom_command(
+-        OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/changelog.upstream.gz"
+-        COMMAND gzip -cn9 "${CMAKE_SOURCE_DIR}/ChangeLog" > "${CMAKE_CURRENT_BINARY_DIR}/changelog.upstream.gz"
+-        DEPENDS "${CMAKE_SOURCE_DIR}/ChangeLog"
+-        COMMENT "Compressing upstream changelog"
+-    )
+-    add_custom_target(generate_changelogs ALL DEPENDS
+-        "${CMAKE_CURRENT_BINARY_DIR}/changelog.gz"
+-        "${CMAKE_CURRENT_BINARY_DIR}/changelog.upstream.gz"
+-    )
+-    install(FILES
+-        "${CMAKE_CURRENT_BINARY_DIR}/changelog.gz"
+-        "${CMAKE_CURRENT_BINARY_DIR}/changelog.upstream.gz"
+-        DESTINATION share/doc/wxmaxima
+-    )
+-
+-    # 2. Install copyright file
+-    install(FILES "${CMAKE_SOURCE_DIR}/data/copyright" DESTINATION share/doc/wxmaxima)
+-
+-    # 3. Strip binaries
+-    set(CPACK_STRIP_FILES ON)
+-
+-    # 4. Standard directory permissions to prevent 0775 permissions warnings
+-    set(CPACK_INSTALL_DEFAULT_DIRECTORY_PERMISSIONS
+-        OWNER_READ OWNER_WRITE OWNER_EXECUTE
+-        GROUP_READ GROUP_EXECUTE
+-        WORLD_READ WORLD_EXECUTE
+-    )
+-
+-    # 5. Install lintian overrides
+-    install(FILES "${CMAKE_CURRENT_SOURCE_DIR}/wxmaxima.lintian-overrides" DESTINATION share/lintian/overrides RENAME wxmaxima)
+-endif()
+-
+ include(CPack)

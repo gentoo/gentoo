@@ -25,3 +25,11 @@ RDEPEND="net-wireless/soapysdr:=
 		net-wireless/uhd:=
 		dev-libs/boost:="
 DEPEND="${RDEPEND}"
+
+PATCHES=( "${FILESDIR}"/${PN}-cxx17.patch
+	"${FILESDIR}"/${PN}-lexical_cast.patch
+)
+
+src_prepare() {
+	cmake_src_prepare
+}

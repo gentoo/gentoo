@@ -1,0 +1,11 @@
+--- a/test/test-repo/build.xml
++++ b/test/test-repo/build.xml
+@@ -20,7 +20,7 @@
+ 
+     <!-- Need ant contrib ! -->
+     <taskdef resource="net/sf/antcontrib/antcontrib.properties">
+-    	<classpath location="${basedir}/../../lib/ant-contrib.jar"/>
++    	<classpath location="${ant-contrib.jar}"/>
+    	</taskdef>
+ 
+     <target name="generate-bundles">

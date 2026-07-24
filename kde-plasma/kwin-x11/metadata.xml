@@ -11,6 +11,7 @@
 	</upstream>
 	<use>
 		<flag name="lock">Enable screen locking via <pkg>kde-plasma/kscreenlocker</pkg></flag>
+		<flag name="nightlight">Enable night light support via <pkg>kde-plasma/knighttime</pkg></flag>
 		<flag name="shortcuts">Enable global shortcuts support via <pkg>kde-plasma/kglobalacceld</pkg></flag>
 	</use>
 </pkgmetadata>

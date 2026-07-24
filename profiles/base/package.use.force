@@ -1,6 +1,19 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2026-07-16)
+# Fails to build GCC otherwise:
+# https://lists.gnu.org/archive/html/bug-gawk/2026-07/msg00026.html
+# https://lists.gnu.org/archive/html/bug-gawk/2026-07/msg00013.html
+# A fix is available but the git repo isn't synced properly right now.
+=sys-apps/gawk-5.4.1 mpfr
+
+# Conrad Kostecki <conikost@gentoo.org> (2026-06-27)
+# We need to force GCC for older releases, which is needed
+# for dev-util/intel-graphics-compiler in the end, as long
+# they do not support newer clang versions (bug #974434).
+<llvm-runtimes/compiler-rt-sanitizers-19 -clang
+
 # Michael Orlitzky <mjo@gentoo.org> (2026-04-15)
 # The non-jumbo build failures are back in 2.52.x.
 =net-libs/webkit-gtk-2.52.3-r410 jumbo-build
@@ -11,8 +24,9 @@
 =sci-libs/opencascade-7.8* opengl
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-06-22)
-# This is currently more footgun than real option. Bugs #958638, #968227
-<kde-plasma/kwin-6.7.0 X
+# This is currently more footgun than real option. Really means xwayland.
+# Bugs #958638, #968227
+<kde-plasma/kwin-6.7.80 X
 
 # Ionen Wolkens <ionen@gentoo.org> (2025-06-17)
 # Build system currently does not allow static libs to be optional, and
@@ -87,6 +101,12 @@ llvm-runtimes/libcxxabi clang
 #    echo "dev-lang/rust:${slot} llvm_slot_${_RUST_LLVM_MAP[${slot}]}"
 #    echo "dev-lang/rust-bin:${slot} llvm_slot_${_RUST_LLVM_MAP[${slot}]}"
 # done
+dev-lang/rust:1.97.1 llvm_slot_22
+dev-lang/rust-bin:1.97.1 llvm_slot_22
+dev-lang/rust:1.96.1 llvm_slot_22
+dev-lang/rust-bin:1.96.1 llvm_slot_22
+dev-lang/rust:1.95.0 llvm_slot_22
+dev-lang/rust-bin:1.95.0 llvm_slot_22
 dev-lang/rust:1.94.0 llvm_slot_21
 dev-lang/rust-bin:1.94.0 llvm_slot_21
 dev-lang/rust:1.93.1 llvm_slot_21
@@ -186,11 +206,6 @@ games-engines/openmw lua_single_target_luajit
 # Done this way also avoids conflicts for users using another default.
 # [1] https://github.com/mpv-player/mpv/wiki/FAQ#why-does-mpv-not-support-lua-53-or-newer
 media-video/mpv lua_single_target_luajit
-
-# Andreas K. Hüttel <dilfridge@gentoo.org> (2023-07-08)
-# Uses attr even if disabling is requested, bug 910070
-# Workaround that should fix some stage builds
->=sys-devel/gettext-0.22-r1 xattr
 
 # Patrick McLean <chutzpah@gentoo.org> (2022-06-27)
 # Doesn't build with boost installed on the system, some deps require boost

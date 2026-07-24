@@ -30,5 +30,5 @@ src_install() {
 	default
 
 	doicon pengupop.png
-	make_desktop_entry ${PN} Pengupop
+	make_desktop_entry ${PN} -n Pengupop
 }

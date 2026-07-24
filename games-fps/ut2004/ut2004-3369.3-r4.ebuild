@@ -1,15 +1,16 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 inherit desktop wrapper unpacker
 
-PATCH_P="${PN}-lnxpatch${PV%.*}-2.tar.tar"
+PATCH_P="${PN}-lnxpatch${PV%.*}-2.tar.bz2"
 DESCRIPTION="Editor's Choice Edition plus Mega Pack for the well-known first-person shooter"
 HOMEPAGE="https://liandri.beyondunreal.com/Unreal_Tournament_2004"
 SRC_URI="
-	http://ut2004.ut-files.com/UT2004/${PATCH_P}
+	https://unrealmassdestruction.com/downloads/ut2k4/essentials/${PATCH_P}
+	https://unreal-archive-files-na.s3.ca-east-tor.io.cloud.ovh.net/managed/Unreal%20Tournament%202004/patches-updates/patches/${PATCH_P}
 	https://dev.gentoo.org/~chewi/distfiles/ut2004-v${PV/./-}-linux-dedicated.7z
 "
 S="${WORKDIR}/${PN^^}-Patch"

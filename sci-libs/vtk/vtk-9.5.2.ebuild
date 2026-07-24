@@ -7,7 +7,7 @@ EAPI=8
 # - add USE flag for remote modules? Those modules can be downloaded properly before building.
 # - vtkm was renamed to viskores. Rename once usemove is implemented.
 
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 PYTHON_REQ_USE="tk?"
 
 WEBAPP_OPTIONAL=yes
@@ -163,6 +163,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-9.4.2-ThirdParty-libfmt-12.patch"
 	"${FILESDIR}/${PN}-9.5.0-cuda-13-1.patch"
 	"${FILESDIR}/${PN}-9.5.0-cuda-13-2.patch"
+	"${FILESDIR}/${PN}-9.5.2-gdal-3.13.patch"
 )
 
 DOCS=( CONTRIBUTING.md README.md )

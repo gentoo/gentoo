@@ -5,6 +5,7 @@
 		<email>java@gentoo.org</email>
 	</maintainer>
 	<upstream>
+		<remote-id type="github">spotbugs/spotbugs</remote-id>
 		<remote-id type="sourceforge">findbugs</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 inherit branding desktop python-any-r1 flag-o-matic scons-utils
 inherit shell-completion toolchain-funcs xdg
 
@@ -118,11 +118,10 @@ src_prepare() {
 src_compile() {
 	local -x BUILD_NAME=${BRANDING_OS_ID} # replaces "custom_build" in version
 
+	tc-export AR CC CXX RANLIB
 	filter-lto #921017
 
 	local esconsargs=(
-		AR="$(tc-getAR)" CC="$(tc-getCC)" CXX="$(tc-getCXX)"
-
 		progress=no
 		verbose=yes
 

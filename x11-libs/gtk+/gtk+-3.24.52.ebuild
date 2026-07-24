@@ -11,7 +11,7 @@ HOMEPAGE="https://www.gtk.org/"
 
 LICENSE="LGPL-2+"
 SLOT="3"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~x64-solaris"
 IUSE="aqua broadway cloudproviders colord cups examples gtk-doc +introspection sysprof test vim-syntax wayland +X xinerama"
 REQUIRED_USE="
 	|| ( aqua wayland X )
@@ -186,7 +186,7 @@ pkg_preinst() {
 			touch "${ED}${cache}" || die
 		fi
 	}
-	multilib_parallel_foreach_abi multilib_pkg_preinst
+	multilib_foreach_abi multilib_pkg_preinst
 }
 
 pkg_postinst() {
@@ -196,7 +196,7 @@ pkg_postinst() {
 		gnome2_query_immodules_gtk3 \
 			|| die "Update immodules cache failed (for ${ABI})"
 	}
-	multilib_parallel_foreach_abi multilib_pkg_postinst
+	multilib_foreach_abi multilib_pkg_postinst
 
 	if ! has_version "app-text/evince"; then
 		elog "Please install app-text/evince for print preview functionality."
