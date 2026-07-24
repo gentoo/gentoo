@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_SINGLE_IMPL=1
-DISTUTILS_USE_PEP517=poetry
+DISTUTILS_USE_PEP517=hatchling
 PYTHON_COMPAT=( python3_{12..14} )
 PYTHON_REQ_USE="sqlite"
 
@@ -103,7 +103,7 @@ DOCS=( README.rst docs/changelog.rst )
 EPYTEST_PLUGINS=( pytest-flask )
 EPYTEST_IGNORE=(
 	# Not relevant downstream
-	test/test_release.py
+	test/extra/test_release.py
 	# Unpackaged test dependencies: titlecase and pytest-factoryboy
 	# (These tests aren't included in the sdist)
 	test/plugins
