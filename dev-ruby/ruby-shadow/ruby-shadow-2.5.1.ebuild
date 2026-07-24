@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-USE_RUBY="ruby31 ruby32 ruby33 ruby34"
+USE_RUBY="ruby32 ruby33 ruby34 ruby40"
 
 RUBY_FAKEGEM_TASK_TEST=""
 
@@ -11,7 +11,7 @@ RUBY_FAKEGEM_EXTRADOC="HISTORY README README.euc"
 
 RUBY_FAKEGEM_EXTENSIONS=(./extconf.rb)
 
-inherit ruby-fakegem
+inherit flag-o-matic ruby-fakegem
 
 DESCRIPTION="ruby shadow bindings"
 HOMEPAGE="https://github.com/apalmblad/ruby-shadow"
@@ -28,4 +28,11 @@ PATCHES=(
 all_ruby_prepare() {
 	sed -e '16i$CFLAGS += ENV["CFLAGS"]' \
 		-i extconf.rb || die
+}
+
+src_configure() {
+	# Definition no longer set in >=ruby40?
+	append-cflags -DRUBY19 # doesn't respect CPPFLAGS
+
+	ruby-ng_src_configure
 }
