@@ -1,0 +1,21 @@
+https://github.com/zxing-cpp/zxing-cpp/pull/1137
+
+From aee35e95eb6bdb330536deb0ffd2e5ec4a2ae67d Mon Sep 17 00:00:00 2001
+From: Alfred Wingate <parona@protonmail.com>
+Date: Fri, 24 Jul 2026 18:19:53 +0300
+Subject: [PATCH] ReedSolomon: add missing header for GCC-16
+
+Transitively included header moved around and its needed explicitly now
+(for uint8_t).
+
+Signed-off-by: Alfred Wingate <parona@protonmail.com>
+--- a/core/src/ReedSolomon.h
++++ b/core/src/ReedSolomon.h
+@@ -3,6 +3,7 @@
+ 
+ #pragma once
+ 
++#include <cstdint>
+ #include <optional>
+ #include <span>
+ #include <stdexcept>
