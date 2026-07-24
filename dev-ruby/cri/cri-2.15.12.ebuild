@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -31,6 +31,10 @@ all_ruby_prepare() {
 
 	sed -e 's/MiniTest::Unit::TestCase/Minitest::Test/' \
 		-i test/helper.rb || die
+
+	# Fix against minitest-6
+	sed -e 's|assert_equal(nil,|assert_nil(|' \
+		-i test/test_argument_list.rb test/test_command.rb || die
 }
 
 each_ruby_test() {
