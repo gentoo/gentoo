@@ -54,6 +54,8 @@ DEPEND="
 
 RDEPEND=">=virtual/jre-1.8:*"
 
+PATCHES=( "${FILESDIR}"/log4j-api-2.26.0-StatusLoggerLevelTest.patch )
+
 JAVA_CLASSPATH_EXTRA="bnd-annotation error-prone-annotations findbugs-annotations jspecify osgi-annotation osgi-core"
 JAVA_GENTOO_CLASSPATH_EXTRA="${DISTDIR}/system-stubs-core-${WSV}.jar"
 JAVA_GENTOO_CLASSPATH_EXTRA+=":${DISTDIR}/system-stubs-jupiter-${WSV}.jar"
