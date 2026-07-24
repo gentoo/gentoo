@@ -1,0 +1,52 @@
+# Copyright 2023-2026 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=9
+inherit autotools
+
+MYP=maildrop-${PV}
+
+DESCRIPTION="Mail delivery agent/filter"
+HOMEPAGE="https://www.courier-mta.org/maildrop/"
+SRC_URI="https://downloads.sourceforge.net/courier/${MYP}.tar.bz2"
+
+S=${WORKDIR}/${MYP}
+
+LICENSE="GPL-3"
+SLOT="0"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
+IUSE="berkdb +gdbm"
+
+RDEPEND="!mail-mta/courier
+	>=net-libs/courier-unicode-2.0:=
+	gdbm? ( >=sys-libs/gdbm-1.8.0:= )
+	!gdbm? ( berkdb? ( >=sys-libs/db-3:= ) )"
+DEPEND="${RDEPEND}"
+
+REQUIRED_USE="|| ( berkdb gdbm )"
+
+PATCHES=( "${FILESDIR}"/${PN}-3.1.5-gentoo.patch )
+
+src_prepare() {
+	# Prefer gdbm over berkdb
+	if use gdbm ; then
+		use berkdb && elog "Both gdbm and berkdb selected. Using gdbm."
+	fi
+
+	default
+	eautoreconf
+}
+
+src_configure() {
+	local myeconfargs=(
+		--without-devel
+	)
+
+	if use gdbm ; then
+		myeconfargs+=( --with-db=gdbm )
+	else
+		myeconfargs+=( --with-db=db )
+	fi
+
+	econf "${myeconfargs[@]}"
+}

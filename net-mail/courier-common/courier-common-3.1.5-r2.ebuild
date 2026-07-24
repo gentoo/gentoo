@@ -19,6 +19,7 @@ IUSE="berkdb +gdbm"
 
 RDEPEND="!mail-mta/courier
 	>=net-libs/courier-unicode-2.0:=
+	<net-libs/courier-unicode-2.4
 	gdbm? ( >=sys-libs/gdbm-1.8.0:= )
 	!gdbm? ( berkdb? ( >=sys-libs/db-3:= ) )"
 DEPEND="${RDEPEND}"
