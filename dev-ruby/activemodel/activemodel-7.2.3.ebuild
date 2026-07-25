@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -39,7 +39,7 @@ ruby_add_bdepend "
 
 all_ruby_prepare() {
 	# Set test environment to our hand.
-	sed -e '3igem "activesupport", "~> 7.2.0"; gem "railties", "~> 7.2.0"' \
+	sed -e '3igem "activesupport", "~> 7.2.0"; gem "railties", "~> 7.2.0"; gem "minitest", "~> 5"' \
 		-e '/load_paths/d' \
 		-i test/cases/helper.rb || die
 
