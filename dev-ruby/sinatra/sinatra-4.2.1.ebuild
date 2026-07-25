@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -46,6 +46,6 @@ ruby_add_bdepend "doc? ( dev-ruby/yard )"
 
 all_ruby_prepare() {
 	sed -i \
-		-e "/require 'rack'/igem 'rack', '~> 3.0.0'" \
+		-e "/require 'rack'/igem 'rack', '>= 3.0.0'" \
 		test/test_helper.rb || die
 }
