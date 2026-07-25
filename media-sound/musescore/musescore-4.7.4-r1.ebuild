@@ -66,6 +66,7 @@ DEPEND="${RDEPEND}
 PATCHES=(
 	"${FILESDIR}/${PN}-4.7.3-missing-includes.patch"
 	"${FILESDIR}/${PN}-4.7.3-symlinks-destdir.patch"
+	"${FILESDIR}/${PN}-4.7.4-StyledDropdown-fix.patch"
 	# unbundle 3rd libs
 	"${FILESDIR}/${PN}-4.7.3-unbundle-gtest.patch"
 )
