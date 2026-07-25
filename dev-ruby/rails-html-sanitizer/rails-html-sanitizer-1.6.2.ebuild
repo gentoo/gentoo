@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,14 +19,21 @@ IUSE="test"
 
 ruby_add_rdepend ">=dev-ruby/loofah-2.21:0 >=dev-ruby/nokogiri-1.16.8:0"
 
-ruby_add_bdepend "test? ( dev-ruby/rails-dom-testing )"
+ruby_add_bdepend "test? (
+	dev-ruby/bundler
+	dev-ruby/minitest:5
+	dev-ruby/rails-dom-testing
+)"
 
 all_ruby_prepare() {
 	# Avoid tests that depend on nokogiri patches to libxml2.
 #	sed -i -e '/\(name_action\|attr\)_in_a_tag_in_safe_list_sanitizer/askip "libxml2"' test/sanitizer_test.rb || die
-:
+	cat <<-EOF > "${T}/Gemfile" || die
+	gem "minitest", "~> 5"
+	gem "loofah"
+	EOF
 }
 
 each_ruby_test() {
-	${RUBY} -Ilib:test:. -e 'Dir["test/*_test.rb"].each{|f| require f}' || die
+	BUNDLE_GEMFILE="${T}/Gemfile" ${RUBY} -S bundle exec ${RUBY} -Ilib:test:. -e 'Dir["test/*_test.rb"].each{|f| require f}' || die
 }
