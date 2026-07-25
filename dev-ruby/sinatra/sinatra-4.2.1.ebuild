@@ -34,11 +34,15 @@ ruby_add_rdepend "
 # circular dependencies so we don't require it for tests.
 ruby_add_bdepend "
 	test? (
-		dev-ruby/builder
-		dev-ruby/erubi
-		>=dev-ruby/rack-test-0.5.6
-		dev-ruby/rackup
 		dev-ruby/activesupport
+		dev-ruby/builder
+		dev-ruby/bundler
+		dev-ruby/erubi
+		dev-ruby/minitest:5
+		dev-ruby/mustermann
+		dev-ruby/rackup
+		>=dev-ruby/rack-test-0.5.6
+		dev-ruby/tilt
 		www-servers/puma
 	)
 "
@@ -46,6 +50,25 @@ ruby_add_bdepend "doc? ( dev-ruby/yard )"
 
 all_ruby_prepare() {
 	sed -i \
-		-e "/require 'rack'/igem 'rack', '>= 3.0.0'" \
+		-e "/require 'rack'/igem 'rack', '>= 3.0.0';" \
 		test/test_helper.rb || die
+
+	cat <<-EOF > "${T}/Gemfile" || die
+	gem "activesupport"
+	gem "builder"
+	gem "erubi"
+	gem "minitest", "~> 5"
+	gem "mustermann"
+	gem "puma"
+	gem "rack-protection"
+	gem "rack-session"
+	gem "rack-test"
+	gem "rackup"
+	gem "rake"
+	gem "tilt"
+	EOF
+}
+
+each_ruby_test() {
+	BUNDLE_GEMFILE="${T}/Gemfile" MT_NO_PLUGINS=true ${RUBY} -S bundle exec ${RUBY} -S rake test:core || die
 }
