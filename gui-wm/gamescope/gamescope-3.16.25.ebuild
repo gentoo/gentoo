@@ -10,7 +10,7 @@ MY_PV="${MY_PV//_/-}"
 
 DESCRIPTION="Efficient micro-compositor for running games"
 HOMEPAGE="https://github.com/ValveSoftware/gamescope"
-EGIT_SUBMODULES=( src/reshade subprojects/{libliftoff,vkroots,wlroots} )
+EGIT_SUBMODULES=( src/reshade subprojects/{libliftoff,vkroots} )
 
 if [[ ${PV} == "9999" ]]; then
 	EGIT_REPO_URI="https://github.com/ValveSoftware/${PN}.git"
@@ -19,13 +19,11 @@ else
 	RESHADE_COMMIT="696b14cd6006ae9ca174e6164450619ace043283"
 	LIBLIFTOFF_COMMIT="0.5.0" # Upstream points at this release.
 	VKROOTS_COMMIT="5106d8a0df95de66cc58dc1ea37e69c99afc9540"
-	WLROOTS_COMMIT="c08d99437ec8bb56a703f04ad1ef199502c62d10"
 	SRC_URI="
 		https://github.com/ValveSoftware/${PN}/archive/refs/tags/${MY_PV}.tar.gz -> ${P}.tar.gz
 		https://gitlab.freedesktop.org/emersion/libliftoff/-/releases/v${LIBLIFTOFF_COMMIT}/downloads/libliftoff-${LIBLIFTOFF_COMMIT}.tar.gz
 		https://github.com/Joshua-Ashton/reshade/archive/${RESHADE_COMMIT}.tar.gz -> reshade-${RESHADE_COMMIT}.tar.gz
 		https://github.com/Joshua-Ashton/vkroots/archive/${VKROOTS_COMMIT}.tar.gz -> vkroots-${VKROOTS_COMMIT}.tar.gz
-		https://github.com/Joshua-Ashton/wlroots/archive/${WLROOTS_COMMIT}.tar.gz -> wlroots-${WLROOTS_COMMIT}.tar.gz
 	"
 	KEYWORDS="~amd64"
 fi
@@ -41,6 +39,7 @@ RDEPEND="
 	>=dev-libs/libinput-1.14.0:=
 	>=dev-libs/wayland-1.23.1
 	gui-libs/libdecor
+	gui-libs/wlroots:0.19
 	<media-libs/libdisplay-info-0.4:=
 	media-libs/vulkan-loader
 	sys-apps/hwdata
@@ -67,15 +66,6 @@ RDEPEND="
 	sdl? ( media-libs/libsdl2[video,vulkan] )
 	wsi-layer? ( x11-libs/libxcb )
 "
-# For bundled wlroots.
-RDEPEND+="
-	media-libs/libglvnd
-	>=media-libs/mesa-24.1.0_rc1[opengl]
-	sys-auth/seatd:=
-	x11-base/xwayland
-	x11-libs/libxcb:=
-	x11-libs/xcb-util-wm
-"
 DEPEND="
 	${RDEPEND}
 	>=dev-libs/wayland-protocols-1.41
@@ -84,7 +74,6 @@ DEPEND="
 	>=media-libs/glm-1.0.1
 	dev-util/spirv-headers
 	test? ( dev-cpp/catch:0 )
-	wsi-layer? ( >=media-libs/vkroots-0_p20240430 )
 "
 BDEPEND="
 	dev-util/glslang
@@ -104,8 +93,8 @@ FILECAPS=(
 src_prepare() {
 	# ReShade is bundled as a git submodule, but it references an unofficial
 	# fork, so we cannot unbundle it. Upstream have requested that we do not
-	# unbundle libliftoff, vkroots, or wlroots. Symlink to the extracted sources
-	# when not using the git submodules in 9999.
+	# unbundle libliftoff or vkroots. Symlink to the extracted sources when not
+	# using the git submodules in 9999.
 	if [[ ${PV} != "9999" ]]; then
 		local dir name commit
 		for dir in "${EGIT_SUBMODULES[@]}"; do
@@ -138,13 +127,6 @@ src_configure() {
 		-Denable_openvr_support=false
 		$(meson_use test enable_tests)
 		-Dbenchmark=disabled
-
-		-Dwlroots:xcb-errors=disabled
-		-Dwlroots:examples=false
-		-Dwlroots:renderers=gles2,vulkan
-		-Dwlroots:xwayland=enabled
-		-Dwlroots:backends=libinput
-		-Dwlroots:session=enabled
 	)
 	meson_src_configure
 }
