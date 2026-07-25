@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -57,6 +57,7 @@ all_ruby_prepare() {
 		-e '/stimulus-rails/,/tailwindcss-rails/ s:^:#:' \
 		-e '/group :\(cable\|doc\|job\|lint\|mdl\|rubocop\|test\)/,/^end/ s:^:#:' \
 		-e '/sqlite/ s/1.6.4/99/' \
+		-e 's/gem "minitest"/gem "minitest", "~> 5"/' \
 		-i ../Gemfile || die
 	rm ../Gemfile.lock || die
 
