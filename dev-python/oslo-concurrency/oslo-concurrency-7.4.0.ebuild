@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=pbr
 PYPI_PN=${PN/-/.}
-PYTHON_COMPAT=( python3_{12..13} )
+PYTHON_COMPAT=( python3_{12..14} )
 
 inherit distutils-r1 pypi
 
@@ -18,7 +18,7 @@ HOMEPAGE="
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm arm64 ~riscv x86"
 
 RDEPEND="
 	>=dev-python/debtcollector-3.0.0[${PYTHON_USEDEP}]
@@ -36,6 +36,11 @@ BDEPEND="
 "
 
 distutils_enable_tests unittest
+
+PATCHES=(
+	# https://review.opendev.org/c/openstack/oslo.concurrency/+/984403
+	"${FILESDIR}/0001-Fix-multiprocessing-tests-under-Python-3.14.patch"
+)
 
 src_prepare() {
 	# fails, then hangs

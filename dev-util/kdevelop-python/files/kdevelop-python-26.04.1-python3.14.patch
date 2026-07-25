@@ -1,0 +1,26 @@
+From f33db0a63b961fd9be728409a0a977b46373b521 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Sat, 9 May 2026 12:35:08 +0200
+Subject: [PATCH] Drop Python3 upper version limit
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 4a8ee6f2..e1ea85d7 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -42,7 +42,7 @@ add_definitions( -DTRANSLATION_DOMAIN=\"kdevpython\" )
+ 
+ set(Python3_USE_STATIC_LIBS FALSE)
+ set(Python3_FIND_STRATEGY VERSION)
+-find_package(Python3 3.4.3...<3.14 COMPONENTS Interpreter Development REQUIRED)
++find_package(Python3 3.4.3 COMPONENTS Interpreter Development REQUIRED)
+ 
+ configure_file(kdevpythonversion.h.cmake "${CMAKE_CURRENT_BINARY_DIR}/kdevpythonversion.h" @ONLY)
+ 
+-- 
+2.54.0
+

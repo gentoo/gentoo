@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -14,7 +14,7 @@ else
 	SRC_URI="
 		https://github.com/jackaudio/jack2/archive/refs/tags/v${PV}.tar.gz
 			-> ${P}.tar.gz
-		https://dev.gentoo.org/~ionen/distfiles/${P}-python3.12.patch.xz
+		https://distfiles.gentoo.org/pub/dev/ionen@gentoo.org/${P}-python3.12.patch.xz
 	"
 	KEYWORDS="amd64 arm arm64 ~loong ~mips ppc ppc64 ~riscv x86"
 fi

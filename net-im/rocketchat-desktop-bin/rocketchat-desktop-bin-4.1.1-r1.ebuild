@@ -1,4 +1,4 @@
-# Copyright 2019-2024 Gentoo Authors
+# Copyright 2019-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,6 +9,7 @@ CHROMIUM_LANGS="
 	sv sw ta te th tr uk ur vi zh-CN zh-TW
 "
 
+RPM_COMPRESS_TYPE=xz
 inherit chromium-2 desktop rpm xdg
 
 DESCRIPTION="The Ultimate Open Source Web Chat Platform"
@@ -16,13 +17,13 @@ HOMEPAGE="https://rocket.chat"
 SRC_URI="https://github.com/RocketChat/Rocket.Chat.Electron/releases/download/${PV}/rocketchat-${PV}-linux-x86_64.rpm"
 S="${WORKDIR}"
 
-KEYWORDS="-* ~amd64"
 # Electron bundles a bunch of things
 LICENSE="
 	MIT BSD BSD-2 BSD-4 AFL-2.1 Apache-2.0 Ms-PL GPL-2 LGPL-2.1 APSL-2
 	unRAR OFL-1.1 CC-BY-SA-3.0 MPL-2.0 android public-domain all-rights-reserved
 "
 SLOT="0"
+KEYWORDS="-* ~amd64"
 RESTRICT="bindist mirror"
 
 RDEPEND="

@@ -14,7 +14,7 @@ S="${WORKDIR}/varnish-${PV}"
 
 LICENSE="BSD-2 GPL-2"
 SLOT="0/2"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm arm64 ~ppc ~ppc64 ~riscv x86"
 IUSE="jit selinux static-libs unwind"
 
 COMMON_DEPEND="

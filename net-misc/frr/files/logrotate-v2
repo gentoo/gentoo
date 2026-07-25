@@ -1,0 +1,13 @@
+/var/log/frr/*.log {
+  su frr frr
+  notifempty
+  missingok
+  delaycompress
+  postrotate
+    for f in /run/frr/*.pid; do
+		[ -r "$f" ] || continue
+		[ "$(basename "$f" .pid)" = watchfrr ] && continue
+		kill -USR1 $(cat "$f")
+	done
+  endscript
+}

@@ -1,0 +1,49 @@
+From 074b807361164e1522b64a225f4647a8b4bb53b8 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ondrej=20Mosn=C3=A1=C4=8Dek?= <omosnacek@gmail.com>
+Date: Sat, 23 Nov 2024 10:25:44 +0100
+Subject: [PATCH] Fix "There is no current event loop" in the asyncio test
+
+This bug is causing the test to fail under Python 3.14. Fix it by
+calling asyncio.new_event_loop() and asyncio.set_event_loop() as
+recommended in: https://stackoverflow.com/a/73367187
+
+Fixes #197
+---
+ irc/tests/test_client_aio.py | 13 ++-----------
+ 1 file changed, 2 insertions(+), 11 deletions(-)
+
+diff --git a/irc/tests/test_client_aio.py b/irc/tests/test_client_aio.py
+index 962cbde..00a02f6 100644
+--- a/irc/tests/test_client_aio.py
++++ b/irc/tests/test_client_aio.py
+@@ -1,6 +1,4 @@
+ import asyncio
+-import contextlib
+-import warnings
+ from unittest.mock import MagicMock
+ 
+ from irc import client_aio
+@@ -13,21 +11,14 @@ async def mock_create_connection(*args, **kwargs):
+     return mock_create_connection
+ 
+ 
+-@contextlib.contextmanager
+-def suppress_issue_197():
+-    with warnings.catch_warnings():
+-        warnings.filterwarnings('ignore', 'There is no current event loop')
+-        yield
+-
+-
+ def test_privmsg_sends_msg():
+     # create dummy transport, protocol
+     mock_transport = MagicMock()
+     mock_protocol = MagicMock()
+ 
+     # connect to dummy server
+-    with suppress_issue_197():
+-        loop = asyncio.get_event_loop()
++    loop = asyncio.new_event_loop()
++    asyncio.set_event_loop(loop)
+     loop.create_connection = make_mocked_create_connection(
+         mock_transport, mock_protocol
+     )

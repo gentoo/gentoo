@@ -201,6 +201,22 @@ ECARGO_VENDOR="${ECARGO_HOME}/gentoo"
 # }
 # @CODE
 
+# @ECLASS_VARIABLE: CARGO_SKIP_TESTS
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# Optional array of test names to be skipped.
+# Should be defined before calling cargo_src_test.
+#
+# @CODE
+# src_test() {
+# 	local CARGO_SKIP_TESTS=(
+#		tests::filesystem
+#		tests::network
+# 	)
+# 	cargo_src_test --no-fail-fast
+# }
+# @CODE
+
 # @ECLASS_VARIABLE: ECARGO_HOME
 # @OUTPUT_VARIABLE
 # @DESCRIPTION:
@@ -835,7 +851,35 @@ cargo_src_test() {
 
 	_cargo_check_initialized
 
-	set -- "${CARGO}" test $(usex debug "" --release) ${ECARGO_ARGS[@]} "$@"
+	# This is the same as myfeatures in cargo_src_configure:
+	# Prefix all test names with '--skip'.
+	[[ -z ${CARGO_SKIP_TESTS} ]] && declare -a CARGO_SKIP_TESTS=()
+	local CARGO_SKIP_TESTS_TYPE=$(declare -p CARGO_SKIP_TESTS 2>&-)
+	if [[ "${CARGO_SKIP_TESTS_TYPE}" != "declare -a CARGO_SKIP_TESTS="* ]]; then
+		die "CARGO_SKIP_TESTS must be declared as an array"
+	fi
+
+	skip=( ${CARGO_SKIP_TESTS[@]/#/--skip } )
+
+	# The skip args must be passed to the test harness, after a '--' on
+	# the command line of cargo test.
+	# To avoid breakage if the caller of cargo_src_test also passes '--',
+	# we split the caller args and group the skip args together with the
+	# caller args.
+	local args=( $@ )
+
+	sep="${#args}"
+	for i in "${!args[@]}"; do
+		[[ "${args[i]}" == "--" ]] && sep="$i";
+	done
+
+	cargo_test_args=( ${args[@]:0:sep} )
+	test_harness_args=( -- ${skip[@]} ${args[@]:sep} )
+
+	set -- "${CARGO}" test $(usex debug "" --release) \
+		${ECARGO_ARGS[@]} \
+		${cargo_test_args[@]} \
+		${test_harness_args[@]}
 	einfo "${@}"
 	cargo_env "${@}" || die "cargo test failed"
 }

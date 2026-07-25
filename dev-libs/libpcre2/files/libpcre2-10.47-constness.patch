@@ -1,0 +1,48 @@
+https://github.com/PCRE2Project/pcre2/commit/d8a443253783718f62f970b10bec2fcf34f077e3
+
+From: Rudi Heitbaum <rudi@heitbaum.com>
+Date: Mon, 9 Feb 2026 21:10:22 +1100
+Subject: [PATCH] pcre2grep: retain const qualifier from pointer (#879)
+
+Since glibc-2.43:
+
+For ISO C23, the functions bsearch, memchr, strchr, strpbrk, strrchr, strstr, wcschr, wcspbrk, wcsrchr, wcsstr and wmemchr that return pointers into their input arrays now have definitions as macros that return a pointer to a const-qualified type when the input argument is a pointer to a const-qualified type.
+
+https://lists.gnu.org/archive/html/info-gnu/2026-01/msg00005.html
+---
+ src/pcre2grep.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/src/pcre2grep.c b/src/pcre2grep.c
+index 705e15f5d..044a8f6e4 100644
+--- a/src/pcre2grep.c
++++ b/src/pcre2grep.c
+@@ -593,7 +593,7 @@ static char *
+ parse_grep_colors(const char *gc)
+ {
+ static char seq[16];
+-char *col;
++const char *col;
+ uint32_t len;
+ if (gc == NULL) return NULL;
+ col = strstr(gc, "ms=");
+@@ -1309,7 +1309,7 @@ if (*endptr != 0)   /* Error */
+   {
+   if (longop)
+     {
+-    char *equals = strchr(op->long_name, '=');
++    const char *equals = strchr(op->long_name, '=');
+     int nlen = (equals == NULL)? (int)strlen(op->long_name) :
+       (int)(equals - op->long_name);
+     fprintf(stderr, "pcre2grep: Malformed number \"%s\" after --%.*s\n",
+@@ -4007,8 +4007,8 @@ for (i = 1; i < argc; i++)
+ 
+     for (op = optionlist; op->one_char != 0; op++)
+       {
+-      char *opbra = strchr(op->long_name, '(');
+-      char *equals = strchr(op->long_name, '=');
++      const char *opbra = strchr(op->long_name, '(');
++      const char *equals = strchr(op->long_name, '=');
+ 
+       /* Handle options with only one spelling of the name */
+ 

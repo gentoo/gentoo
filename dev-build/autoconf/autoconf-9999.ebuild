@@ -55,11 +55,15 @@ BDEPEND+="
 "
 RDEPEND="
 	${BDEPEND}
-	>=dev-build/autoconf-wrapper-20231224
+	>=dev-build/autoconf-wrapper-20260320
 	sys-devel/gnuconfig
 	!~${CATEGORY}/${P}:2.5
 "
 [[ ${PV} == 9999 ]] && BDEPEND+=" >=sys-apps/texinfo-4.3"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.73-maintainer-mode-autoheader.patch
+)
 
 src_prepare() {
 	if [[ ${PV} == *9999 ]] ; then
@@ -77,7 +81,7 @@ src_prepare() {
 
 	# usr/bin/libtool is provided by binutils-apple, need gnu libtool
 	if [[ ${CHOST} == *-darwin* ]] ; then
-		PATCHES+=( "${FILESDIR}"/${PN}-2.71-darwin.patch )
+		PATCHES+=( "${FILESDIR}"/${PN}-2.73-darwin.patch )
 	fi
 
 	# Save timestamp to avoid later makeinfo call

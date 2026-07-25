@@ -9,7 +9,7 @@ inherit prefix python-any-r1 qt6-build toolchain-funcs
 
 DESCRIPTION="Library for rendering dynamic web content in Qt6 C++ and QML applications"
 SRC_URI+="
-	https://dev.gentoo.org/~ionen/distfiles/${PN}-6.11-patchset-1.tar.xz
+	https://distfiles.gentoo.org/pub/dev/ionen@gentoo.org/${PN}-6.11-patchset-2.tar.xz
 "
 
 if [[ ${QT6_BUILD_TYPE} == release ]]; then
@@ -109,7 +109,8 @@ PATCHES=( "${WORKDIR}"/patches/${PN} )
 PATCHES+=(
 	# add extras as needed here, may merge in set if carries across versions
 	"${FILESDIR}"/${PN}-6.10.2-clang-22.patch
-	"${FILESDIR}"/${PN}-6.10.2-glibc-2.43.patch
+	"${FILESDIR}"/${PN}-6.10.3-climits.patch
+	"${FILESDIR}"/${PN}-6.11.0-gcc17.patch
 )
 
 python_check_deps() {
@@ -232,9 +233,6 @@ src_configure() {
 		# TODO: fixup gn cross, or package dev-qt/qtwebengine-gn with =ON
 		# (see also BUILD_ONLY_GN option added in 6.8+ for the latter)
 		-DINSTALL_GN=OFF
-
-		# TODO: drop this if no longer errors out early during cmake generation
-		-DQT_GENERATE_SBOM=OFF
 	)
 
 	local mygnargs=(
@@ -254,6 +252,10 @@ src_configure() {
 			replace-flags '-g?(gdb)?([2-9])' -g1
 			ewarn "-g2+/-ggdb* *FLAGS replaced with -g1 (enable USE=custom-cflags to keep)"
 		fi
+
+		# gcc-16 with -O3 is known to cause runtime issues (bug #968755)
+		tc-is-gcc && [[ $(gcc-major-version) -ge 16 ]] &&
+			replace-flags '-O[3-9]' -O2
 
 		# Qt normally ignores users *FLAGS specifically for qtwebengine, and
 		# does not really support passing -march -- qt6-build.eclass has some

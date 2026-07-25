@@ -1,9 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit meson-multilib
+inherit dot-a meson-multilib
 
 DESCRIPTION="Extremely Fast Compression algorithm"
 HOMEPAGE="https://github.com/lz4/lz4"
@@ -23,6 +23,11 @@ PATCHES=(
 	"${FILESDIR}/${PV}-meson-do-not-force-c99-mode.patch"
 )
 
+src_configure() {
+	use static-libs && lto-guarantee-fat
+	multilib-minimal_src_configure
+}
+
 multilib_src_configure() {
 	local emesonargs=(
 		-Dtests=$(usex test true false)
@@ -39,4 +44,9 @@ multilib_src_configure() {
 	fi
 
 	meson_src_configure
+}
+
+multilib_src_install_all() {
+	einstalldocs
+	strip-lto-bytecode
 }

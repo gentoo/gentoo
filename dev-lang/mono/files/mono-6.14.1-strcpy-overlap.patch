@@ -1,0 +1,28 @@
+https://gitlab.winehq.org/mono/mono/-/commit/dee6acaeb59e46661efd4ca2018cdd1c275d2a09
+
+From dee6acaeb59e46661efd4ca2018cdd1c275d2a09 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Bernhard=20=C3=9Cbelacker?= <bernhardu@mailbox.org>
+Date: Wed, 3 Sep 2025 22:28:13 +0200
+Subject: [PATCH] Avoid strcpy on overlapping strings in mono_path_canonicalize
+ (ASan).
+
+Wine-Bug: https://bugs.winehq.org/show_bug.cgi?id=57691
+---
+ mono/utils/mono-path.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/mono/utils/mono-path.c b/mono/utils/mono-path.c
+index 2f4790666a4..a9924732902 100644
+--- a/mono/utils/mono-path.c
++++ b/mono/utils/mono-path.c
+@@ -87,7 +87,7 @@ mono_path_canonicalize (const char *path)
+ 		lastpos = lastpos-1;
+ #endif
+ 	
+-	if (dest != lastpos) strcpy (dest, lastpos);
++	if (dest != lastpos) memmove (dest, lastpos, strlen(lastpos) + 1);
+ 	
+ 	g_strreverse (abspath);
+ 
+-- 
+GitLab

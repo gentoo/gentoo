@@ -1,0 +1,21 @@
+https://bugs.gentoo.org/973610
+
+--- wireshark-4.6.5/ui/recent.c
++++ wireshark-4.6.5/ui/recent.c
+@@ -1974,11 +1974,11 @@ recent_init(void)
+ {
+     memset(&recent, 0, sizeof(recent_settings_t));
+ 
+-    recent.gui_welcome_page_sidebar_learn_visible = true;
+-    recent.gui_welcome_page_sidebar_tips_visible = true;
+-    recent.gui_welcome_page_sidebar_tips_events = true;
+-    recent.gui_welcome_page_sidebar_tips_sponsorship = true;
+-    recent.gui_welcome_page_sidebar_tips_tips = true;
++    recent.gui_welcome_page_sidebar_learn_visible = false;
++    recent.gui_welcome_page_sidebar_tips_visible = false;
++    recent.gui_welcome_page_sidebar_tips_events = false;
++    recent.gui_welcome_page_sidebar_tips_sponsorship = false;
++    recent.gui_welcome_page_sidebar_tips_tips = false;
+     recent.gui_welcome_page_sidebar_tips_interval = 8;
+ }
+ 

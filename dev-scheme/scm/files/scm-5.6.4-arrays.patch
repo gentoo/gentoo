@@ -1,0 +1,12 @@
+diff '--color=auto' -Naur scm.old/scl.c scm/scl.c
+--- scm.old/scl.c	2026-04-18 21:41:05.718448466 +0300
++++ scm/scl.c	2026-04-18 21:41:28.657818441 +0300
+@@ -953,7 +953,7 @@
+   /* at this point, we have a legitimate floating point result */
+   if (lead_sgn==-1)  res = -res;
+   if (i==len)
+-# ifdef SINGLES
++# if defined  SINGLES && defined ARRAYS
+     return shrtp ? makflo(res) : makdbl(res, 0.0);
+ # else
+   return makdbl(res, 0.0);

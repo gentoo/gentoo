@@ -1,4 +1,4 @@
-# Copyright 2022-2025 Gentoo Authors
+# Copyright 2022-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_{11..14} pypy3_11 )
 
 inherit distutils-r1
 
-DESCRIPTION="Pytest parametrize decorators from external files."
+DESCRIPTION="Pytest parametrize decorators from external files"
 HOMEPAGE="
 	https://github.com/chrisjsewell/pytest-param-files/
 	https://pypi.org/project/pytest_param_files/

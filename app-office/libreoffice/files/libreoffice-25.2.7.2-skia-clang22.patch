@@ -1,0 +1,35 @@
+https://bugs.gentoo.org/971474
+
+--- a/external/skia/UnpackedTarball_skia.mk  2025-10-24 18:29:01.000000000 +0300
++++ b/external/skia/UnpackedTarball_skia.mk        2026-04-06 18:32:16.100632067 +0300
+@@ -41,6 +41,7 @@
+     help-msvc-analyzer.patch \
+     always_inline_and_multiversioning_conflict.patch.1 \
+     windows-define-conflict.patch.1 \
++    clang-22.patch.1 \
+ 
+ $(eval $(call gb_UnpackedTarball_set_patchlevel,skia,1))
+ 
+--- /dev/null   2026-04-03 01:06:01.615629442 +0300
++++ b/external/skia/clang-22.patch.1  2026-04-06 18:34:10.370800276 +0300
+@@ -0,0 +1,19 @@
++https://skia.googlesource.com/skcms.git/+/135488419331
++https://skia.googlesource.com/skcms.git/+/02ca44da98eb
++https://skia.googlesource.com/skcms.git/+/238fd0489c04
++https://skia.googlesource.com/skcms.git/+/c602c137fb05
++--- a/modules/skcms/src/Transform_inl.h
+++++ b/modules/skcms/src/Transform_inl.h
++@@ -162,6 +162,11 @@
++     return (F)_mm512_cvtph_ps((__m256i)half);
++ #elif defined(USING_AVX_F16C)
+++#if defined(__clang__) && __clang_major__ >= 15 // for _Float16 support
+++    typedef _Float16 __attribute__((vector_size(16))) F16;
+++    return __builtin_convertvector((F16)half, F);
+++#else
++     typedef int16_t __attribute__((vector_size(16))) I16;
++     return __builtin_ia32_vcvtph2ps256((I16)half);
+++#endif // defined(__clang))
++ #else
++     U32 wide = cast<U32>(half);
++
+

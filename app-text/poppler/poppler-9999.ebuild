@@ -19,7 +19,7 @@ else
 	SRC_URI+=" test? ( https://gitlab.freedesktop.org/poppler/test/-/archive/${TEST_COMMIT}/test-${TEST_COMMIT}.tar.bz2 -> ${PN}-test-${TEST_COMMIT}.tar.bz2 )"
 	SRC_URI+=" verify-sig? ( https://poppler.freedesktop.org/${P}.tar.xz.sig )"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~arm64-macos ~x64-macos ~x64-solaris"
-	SLOT="0/158"   # CHECK THIS WHEN BUMPING!!! SUBSLOT IS libpoppler.so SOVERSION
+	SLOT="0/160"   # CHECK THIS WHEN BUMPING!!! SUBSLOT IS libpoppler.so SOVERSION
 fi
 
 DESCRIPTION="PDF rendering library based on the xpdf-3.0 code base"
@@ -30,12 +30,12 @@ IUSE="boost cairo cjk curl +cxx debug doc gpgme +introspection +jpeg +jpeg2k +lc
 RESTRICT="!test? ( test )"
 
 COMMON_DEPEND="
-	>=media-libs/fontconfig-2.13
-	>=media-libs/freetype-2.10
+	>=media-libs/fontconfig-2.15
+	>=media-libs/freetype-2.11
 	virtual/zlib:=
 	cairo? (
-		>=dev-libs/glib-2.64:2
-		>=x11-libs/cairo-1.16
+		>=dev-libs/glib-2.80:2
+		>=x11-libs/cairo-1.18
 		introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 	)
 	curl? ( net-misc/curl )
@@ -43,7 +43,7 @@ COMMON_DEPEND="
 	jpeg? ( >=media-libs/libjpeg-turbo-1.1.0:= )
 	jpeg2k? ( >=media-libs/openjpeg-2.3.0-r1:2= )
 	lcms? ( media-libs/lcms:2 )
-	nss? ( >=dev-libs/nss-3.49 )
+	nss? ( >=dev-libs/nss-3.98 )
 	png? ( media-libs/libpng:0= )
 	qt6? ( dev-qt/qtbase:6[gui,xml] )
 	tiff? ( media-libs/tiff:= )
@@ -52,12 +52,12 @@ RDEPEND="${COMMON_DEPEND}
 	cjk? ( app-text/poppler-data )
 "
 DEPEND="${COMMON_DEPEND}
-	boost? ( >=dev-libs/boost-1.74 )
+	boost? ( >=dev-libs/boost-1.83 )
 	test? ( qt6? ( dev-qt/qtbase:6[widgets] ) )
 "
 BDEPEND="
 	${PYTHON_DEPS}
-	>=dev-util/glib-utils-2.64
+	>=dev-util/glib-utils-2.80
 	virtual/pkgconfig
 "
 
@@ -68,7 +68,7 @@ fi
 DOCS=( AUTHORS NEWS README.md README-XPDF )
 
 PATCHES=(
-	"${FILESDIR}/${PN}-26.01.0-qt-deps.patch"
+	"${FILESDIR}/${PN}-26.05.0-qt-deps.patch"
 	"${FILESDIR}/${PN}-26.01.0-respect-cflags.patch"
 	"${FILESDIR}/${PN}-0.57.0-disable-internal-jpx.patch"
 )

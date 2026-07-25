@@ -82,7 +82,7 @@ DEPEND="!!llvm-core/llvm:0"
 # @INTERNAL
 # @DESCRIPTION:
 # Correct values of LLVM slots, newest first.
-declare -g -r _LLVM_KNOWN_SLOTS=( {19..8} )
+declare -g -r _LLVM_KNOWN_SLOTS=( {19..16} )
 
 # @ECLASS_VARIABLE: LLVM_ECLASS_SKIP_PKG_SETUP
 # @INTERNAL

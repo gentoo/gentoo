@@ -1,0 +1,176 @@
+https://bugs.gentoo.org/957940
+https://gitlab.freedesktop.org/gstreamer/gstreamer/-/commit/47874799e328f2b4f081b623efe9d0ae059d0fd8
+
+From 47874799e328f2b4f081b623efe9d0ae059d0fd8 Mon Sep 17 00:00:00 2001
+From: Thibault Saunier <tsaunier@igalia.com>
+Date: Sun, 28 Sep 2025 09:48:05 -0300
+Subject: [PATCH] ges: Move OTIO formatter to a separate Python plugin
+
+The GES OpenTimelineIO formatter was previously embedded directly in
+libges using GLib resources, this was all a bit complex for not much
+benefit, moreover it started to crash recently.
+
+Move the formatter to a standalone Python plugin that will be loaded
+through the standard GStreamer Python plugin infrastructure making
+it all more simple.
+
+The formatter is now located in subprojects/gst-python/plugins/ges/
+and will only be loaded when the Python plugin is available and
+opentimelineio is installed.
+
+Fixes https://gitlab.freedesktop.org/gstreamer/gstreamer/-/issues/4676
+
+Part-of: <https://gitlab.freedesktop.org/gstreamer/gstreamer/-/merge_requests/9759>
+--- a/meson.build
++++ b/meson.build
+@@ -128,7 +128,8 @@ configinc = include_directories('.')
+ meson.add_dist_script('scripts/gen-changelog.py', meson.project_name(), '1.26.0', meson.project_version())
+ 
+ pkgconfig = import('pkgconfig')
+-plugins_install_dir = join_paths(libdir, 'gstreamer-1.0')
++plugins_install_dir = join_paths(get_option('libdir'), 'gstreamer-1.0')
++python_plugin_install_dir = join_paths(plugins_install_dir, 'python')
+ plugins_pkgconfig_install_dir = join_paths(plugins_install_dir, 'pkgconfig')
+ if get_option('default_library') == 'shared'
+   # If we don't build static plugins there is no need to generate pc files
+@@ -139,6 +140,7 @@ subdir('gi')
+ if not get_option('plugin').disabled()
+   if get_option('default_library') != 'static'
+     subdir('plugin')
++    subdir('plugins')
+   else
+     warning('Python plugin not supported with `static` builds yet.')
+   endif
+--- a/plugin/meson.build
++++ b/plugin/meson.build
+@@ -3,7 +3,7 @@ gstpython = library('gstpython',
+     include_directories : [configinc],
+     dependencies : [gst_dep, pygobject_dep, gstbase_dep, python_embed_dep, gmodule_dep, libdl],
+     install : true,
+-    install_dir : '@0@/gstreamer-1.0'.format(get_option('libdir')),
++    install_dir : plugins_install_dir,
+ )
+ plugins = [gstpython]
+ # XXX: Generate a pc file for this plugin? Can gstpython be statically linked?
+--- /dev/null
++++ b/plugins/ges/meson.build
+@@ -0,0 +1,4 @@
++install_data(
++  'python/gesotioformatter.py',
++  install_dir: python_plugin_install_dir
++)
+--- /dev/null
++++ b/plugins/ges/python/gesotioformatter.py
+@@ -0,0 +1,105 @@
++#!/usr/bin/env python
++# -*- Mode: Python -*-
++# vi:si:et:sw=4:sts=4:ts=4
++#
++# Copyright (C) 2019 Igalia S.L
++# Authors:
++#   Thibault Saunier <tsaunier@igalia.com>
++#
++
++import sys
++
++import gi
++import tempfile
++
++try:
++    gi.require_version("GES", "1.0")
++    gi.require_version("Gst", "1.0")
++
++    from gi.repository import GObject
++    from gi.repository import Gst
++    Gst.init(None)
++    from gi.repository import GES
++    from gi.repository import GLib
++    from collections import OrderedDict
++
++    import opentimelineio as otio
++    otio.adapters.from_name('xges')
++
++    class GESOtioFormatter(GES.Formatter):
++        def do_save_to_uri(self, timeline, uri, overwrite):
++            if not Gst.uri_is_valid(uri) or Gst.uri_get_protocol(uri) != "file":
++                Gst.error("Protocol not supported for file: %s" % uri)
++                return False
++
++            with tempfile.NamedTemporaryFile(suffix=".xges") as tmpxges:
++                timeline.get_asset().save(timeline, "file://" + tmpxges.name, None, overwrite)
++
++                linker = otio.media_linker.MediaLinkingPolicy.ForceDefaultLinker
++                otio_timeline = otio.adapters.read_from_file(tmpxges.name, "xges", media_linker_name=linker)
++                location = Gst.uri_get_location(uri)
++                out_adapter = otio.adapters.from_filepath(location)
++                otio.adapters.write_to_file(otio_timeline, Gst.uri_get_location(uri), out_adapter.name)
++
++            return True
++
++        def do_can_load_uri(self, uri):
++            try:
++                if not Gst.uri_is_valid(uri) or Gst.uri_get_protocol(uri) != "file":
++                    return False
++            except GLib.Error as e:
++                Gst.error(str(e))
++                return False
++
++            if uri.endswith(".xges"):
++                return False
++
++            try:
++                return otio.adapters.from_filepath(Gst.uri_get_location(uri)) is not None
++            except Exception as e:
++                Gst.info("Could not load %s -> %s" % (uri, e))
++                return False
++
++        def do_load_from_uri(self, timeline, uri):
++            location = Gst.uri_get_location(uri)
++            in_adapter = otio.adapters.from_filepath(location)
++            assert (in_adapter)  # can_load_uri should have ensured it is loadable
++
++            linker = otio.media_linker.MediaLinkingPolicy.ForceDefaultLinker
++            otio_timeline = otio.adapters.read_from_file(
++                location,
++                in_adapter.name,
++                media_linker_name=linker
++            )
++
++            with tempfile.NamedTemporaryFile(suffix=".xges") as tmpxges:
++                otio.adapters.write_to_file(otio_timeline, tmpxges.name, "xges")
++                formatter = GES.Formatter.get_default().extract()
++                timeline.get_asset().add_formatter(formatter)
++                return formatter.load_from_uri(timeline, "file://" + tmpxges.name)
++
++    GObject.type_register(GESOtioFormatter)
++    known_extensions_mimetype_map = [
++        ("otio", "xml", "fcpxml"),
++        ("application/vnd.pixar.opentimelineio+json", "application/vnd.apple-xmeml+xml", "application/vnd.apple-fcp+xml")
++    ]
++
++    extensions = []
++    for adapter in otio.plugins.ActiveManifest().adapters:
++        if adapter.name != 'xges':
++            extensions.extend(adapter.suffixes)
++
++    extensions_mimetype_map = [[], []]
++    for i, ext in enumerate(known_extensions_mimetype_map[0]):
++        if ext in extensions:
++            extensions_mimetype_map[0].append(ext)
++            extensions_mimetype_map[1].append(known_extensions_mimetype_map[1][i])
++            extensions.remove(ext)
++    extensions_mimetype_map[0].extend(extensions)
++
++    GES.FormatterClass.register_metas(GESOtioFormatter, "otioformatter",
++                                      "GES Formatter using OpenTimelineIO",
++                                      ','.join(extensions_mimetype_map[0]),
++                                      ';'.join(extensions_mimetype_map[1]), 0.1, Gst.Rank.SECONDARY)
++except (ImportError, TypeError) as e:
++    Gst.warning(f"opentimelineio module not found, GES OTIO formatter will not be available: {e}")
+--- /dev/null
++++ b/subprojects/gst-python/plugins/meson.build
+@@ -0,0 +1 @@
++subdir('ges')
+-- 
+GitLab
+

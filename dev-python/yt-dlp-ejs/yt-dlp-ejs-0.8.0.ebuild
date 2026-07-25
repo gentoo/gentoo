@@ -4,7 +4,8 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=hatchling
-PYTHON_COMPAT=( pypy3_11 python3_{11..14} )
+PYPI_VERIFY_REPO=https://github.com/yt-dlp/ejs
+PYTHON_COMPAT=( pypy3_11 python3_{11..15} )
 inherit distutils-r1 pypi
 
 DESCRIPTION="External JavaScript for yt-dlp supporting many runtimes"

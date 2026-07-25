@@ -1,0 +1,72 @@
+From 58585679f08bf79b707659756041486215d21385 Mon Sep 17 00:00:00 2001
+From: Li Hua <lihua@email.com>
+Date: Wed, 11 Feb 2026 19:21:46 +0800
+Subject: [PATCH] Replace xdg-user-dir shell script with C implementation
+
+Fixes: https://gitlab.freedesktop.org/xdg/xdg-user-dirs/-/issues/42
+--- a/.gitignore
++++ b/.gitignore
+@@ -30,3 +30,5 @@ xdg-user-dir-lookup
+ xdg-user-dirs-update
+ 
+ xdg-user-dirs-*.tar*
++
++.cache
+--- a/meson.build
++++ b/meson.build
+@@ -98,14 +98,15 @@ xdg_user_dir_lookup = executable('xdg-user-dir-lookup',
+   install: false
+ )
+ 
++xdg_user_dir = executable('xdg-user-dir',
++  'xdg-user-dir.c',
++  include_directories: config_inc,
++  install: true
++)
++
+ #
+ # Data
+ #
+-install_data('xdg-user-dir',
+-  install_dir: get_option('bindir'),
+-  install_mode: 'rwxr-xr-x'
+-)
+-
+ xdg_config_dir = get_option('sysconfdir') / 'xdg'
+ install_data(['user-dirs.conf', 'user-dirs.defaults'],
+   install_dir: xdg_config_dir
+--- a/xdg-user-dir
++++ /dev/null
+@@ -1,8 +0,0 @@
+-#!/bin/sh
+-
+-test -f ${XDG_CONFIG_HOME:-~/.config}/user-dirs.dirs && . ${XDG_CONFIG_HOME:-~/.config}/user-dirs.dirs
+-if [ "x$1" = "xDESKTOP" ]; then
+-  eval echo \${XDG_${1}_DIR:-$HOME/Desktop}
+-else
+-  eval echo \${XDG_${1}_DIR:-$HOME}
+-fi
+--- /dev/null
++++ b/xdg-user-dir.c
+@@ -0,0 +1,18 @@
++#include "xdg-user-dir-lookup.c"
++#include <stddef.h>
++#include <stdio.h>
++#include <stdlib.h>
++
++int
++main (int argc, char *argv[])
++{
++  char *dir;
++  dir = xdg_user_dir_lookup (argc >= 2 ? argv[1] : "");
++  if (dir != NULL)
++    {
++      printf ("%s\n", dir);
++      free (dir);
++      return 0;
++    }
++  return 1;
++}
+-- 
+GitLab
+

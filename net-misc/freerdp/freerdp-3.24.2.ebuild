@@ -17,7 +17,7 @@ else
 	S="${WORKDIR}/${MY_P}"
 	SRC_URI="https://pub.freerdp.com/releases/${MY_P}.tar.gz
 		verify-sig? ( https://pub.freerdp.com/releases/${MY_P}.tar.gz.asc )"
-	KEYWORDS="~alpha amd64 arm arm64 ~loong ~ppc ~ppc64 ~riscv x86"
+	KEYWORDS="~alpha amd64 arm arm64 ~loong ~ppc ppc64 ~riscv x86"
 	BDEPEND="verify-sig? ( sec-keys/openpgp-keys-akallabeth )"
 	VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/akallabeth.asc"
 fi
@@ -27,7 +27,7 @@ HOMEPAGE="https://www.freerdp.com/"
 
 LICENSE="Apache-2.0"
 SLOT="3"
-IUSE="aad alsa cpu_flags_arm_neon +client cups debug +ffmpeg +fuse gstreamer +icu jpeg kerberos openh264 pulseaudio sdl server smartcard systemd test usb valgrind wayland X xinerama xv"
+IUSE="aad alsa camera cpu_flags_arm_neon +client cups debug +ffmpeg +fuse gstreamer +icu jpeg kerberos openh264 pulseaudio sdl server smartcard systemd test usb valgrind wayland X xinerama xv"
 RESTRICT="!test? ( test )"
 
 BDEPEND+="
@@ -84,6 +84,7 @@ COMMON_DEPEND="
 	smartcard? ( sys-apps/pcsc-lite )
 	systemd? ( sys-apps/systemd:0= )
 	client? (
+		camera? ( media-libs/libv4l )
 		sdl? (
 			media-libs/libsdl3
 			media-libs/sdl3-ttf
@@ -138,14 +139,13 @@ src_configure() {
 		-DCMAKE_INTERPROCEDURAL_OPTIMIZATION=OFF
 
 		-DCHANNEL_URBDRC=$(option usb)
+		-DCHANNEL_RDPECAM_CLIENT=$(option_client camera)
 		-DWITH_AAD=$(option aad)
 		-DWITH_ALSA=$(option alsa)
 		-DWITH_CCACHE=OFF
-
 		-DWITH_CLIENT=$(option client)
 		-DWITH_CLIENT_SDL2=OFF
 		-DWITH_CLIENT_SDL3=$(option_client sdl)
-
 		-DWITH_SAMPLE=OFF
 		-DWITH_CUPS=$(option cups)
 		-DWITH_DEBUG_ALL=$(option debug)

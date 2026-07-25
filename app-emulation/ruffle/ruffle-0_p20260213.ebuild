@@ -14,7 +14,7 @@ HOMEPAGE="https://ruffle.rs/"
 SRC_URI="
 	https://github.com/ruffle-rs/ruffle/archive/refs/tags/${MY_PV}.tar.gz
 		-> ${MY_P}.tar.gz
-	https://dev.gentoo.org/~ionen/distfiles/${MY_P}-vendor.tar.xz
+	https://distfiles.gentoo.org/pub/dev/ionen@gentoo.org/${MY_P}-vendor.tar.xz
 "
 S=${WORKDIR}/${MY_P}
 

@@ -10,7 +10,7 @@ inherit distutils-r1 optfeature pypi
 
 DESCRIPTION="A generator for Rust/Cargo ebuilds written in Python"
 HOMEPAGE="
-	https://github.com/projg2/pycargoebuild/
+	https://github.com/gentoo/pycargoebuild/
 	https://pypi.org/project/pycargoebuild/
 "
 
@@ -21,11 +21,9 @@ KEYWORDS="amd64 ~arm64 ~loong ~ppc64"
 RDEPEND="
 	dev-python/jinja2[${PYTHON_USEDEP}]
 	dev-python/license-expression[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep '
-		dev-python/tomli[${PYTHON_USEDEP}]
-	' 3.10)
 "
 
+EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
 
 pkg_postinst() {

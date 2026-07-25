@@ -8,6 +8,14 @@
     <email>sci-mathematics@gentoo.org</email>
   </maintainer>
 
+  <use>
+    <flag name="hipo">
+      Build the new factorization-based interior-point solver requiring
+      <pkg>sci-libs/amd</pkg>, <pkg>sci-libs/metis</pkg>, and
+      <pkg>virtual/cblas</pkg>.
+    </flag>
+  </use>
+
   <upstream>
     <remote-id type="github">ERGO-Code/HiGHS</remote-id>
   </upstream>

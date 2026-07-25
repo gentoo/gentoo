@@ -1,0 +1,34 @@
+diff '--color=auto' -ur libbluray-1.4.1/src/libbluray/bdj/bdj.c libbluray-1.4.1-jars/src/libbluray/bdj/bdj.c
+--- libbluray-1.4.1/src/libbluray/bdj/bdj.c	2026-01-26 20:37:11.000000000 +0000
++++ libbluray-1.4.1-jars/src/libbluray/bdj/bdj.c	2026-04-10 18:41:22.911125238 +0100
+@@ -22,6 +22,9 @@
+ #include "config.h"
+ #endif
+ 
++#undef VERSION
++#define VERSION "gentoo"
++
+ #include "bdj.h"
+ 
+ #include "native/register_native.h"
+diff '--color=auto' -ur libbluray-1.4.1/src/libbluray/bdj/meson.build libbluray-1.4.1-jars/src/libbluray/bdj/meson.build
+--- libbluray-1.4.1/src/libbluray/bdj/meson.build	2026-01-26 20:37:11.000000000 +0000
++++ libbluray-1.4.1-jars/src/libbluray/bdj/meson.build	2026-04-10 18:14:37.889605089 +0100
+@@ -45,13 +45,13 @@
+               '-Dsrc_awt=:' + awt_src,
+               '-Djavac_path=' + javac_path,
+               '-Djavac_arg=' + javac_arg,
+-              f'-Dversion=@bdj_type@-@libbluray_version@',
++              f'-Dversion=@bdj_type@-gentoo',
+               f'-Djava_version_asm=@java_src_version_asm@',
+               f'-Djava_version_bdj=@java_src_version@'],
+-    output: [f'libbluray-@bdj_type@-@libbluray_version@.jar',
+-             f'libbluray-awt-@bdj_type@-@libbluray_version@.jar'],
++    output: [f'libbluray-@bdj_type@-gentoo.jar',
++             f'libbluray-awt-@bdj_type@-gentoo.jar'],
+     build_always_stale: true,
+     install: true,
+     install_tag: 'runtime',
+-    install_dir: get_option('datadir') / 'java',
++    install_dir: get_option('datadir') / 'libbluray/lib',
+ )

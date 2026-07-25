@@ -1,0 +1,20 @@
+https://mail.kde.org/pipermail/distributions/2026-May/001681.html
+https://qt-project.atlassian.net/browse/QTBUG-145310
+https://codereview.qt-project.org/c/qt/qtbase/+/727830
+--- a/src/gui/text/freetype/qfontengine_ft.cpp
++++ b/src/gui/text/freetype/qfontengine_ft.cpp
+@@ -1956,9 +1956,11 @@
+ 
+     err = FT_Render_Glyph(slot, renderMode);
+-    if (err != FT_Err_Ok)
+-        qWarning("render glyph failed err=%x face=%p, glyph=%d", err, face, glyph);
+-
+     FT_Library_SetLcdFilter(slot->library, FT_LCD_FILTER_NONE);
+ 
++    if (err != FT_Err_Ok) {
++        qWarning("render glyph failed err=%x face=%p, glyph=%d", err, face, glyph);
++        return nullptr;
++    }
++
+     info.height = slot->bitmap.rows;
+     info.width = slot->bitmap.width;

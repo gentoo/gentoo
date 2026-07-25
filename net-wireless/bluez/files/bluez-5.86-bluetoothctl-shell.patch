@@ -1,0 +1,79 @@
+From 33dd33a23ff250902eafa94fce5ea8178de50112 Mon Sep 17 00:00:00 2001
+From: Bastien Nocera <hadess@hadess.net>
+Date: Fri, 27 Feb 2026 12:07:14 +0100
+Subject: [PATCH 1/2] Revert "shared/shell: Don't init input for
+ non-interactive shells"
+
+This reverts commit e73bf582dae60356641a32fc27ae03d359ec4c47.
+
+The fix caused "bluetoothctl list" to not output any text, breaking
+a lot of existing scripts.
+
+Closes: https://bugzilla.redhat.com/show_bug.cgi?id=2440346
+---
+ src/shared/shell.c | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/src/shared/shell.c b/src/shared/shell.c
+index 78d58c513d3e..b061f8001414 100644
+--- a/src/shared/shell.c
++++ b/src/shared/shell.c
+@@ -1642,13 +1642,13 @@ static bool shell_quit(void *data)
+ 
+ bool bt_shell_attach(int fd)
+ {
+-	if (data.mode == MODE_INTERACTIVE) {
+-		struct input *input;
++	struct input *input;
+ 
+-		input = input_new(fd);
+-		if (!input)
+-			return false;
++	input = input_new(fd);
++	if (!input)
++		return false;
+ 
++	if (data.mode == MODE_INTERACTIVE) {
+ 		io_set_read_handler(input->io, input_read, input, NULL);
+ 		io_set_disconnect_handler(input->io, input_hup, input, NULL);
+ 
+-- 
+2.53.0
+
+
+From 0178bc8bda31cf60837fcce91b33e009bc3f7d7d Mon Sep 17 00:00:00 2001
+From: Bastien Nocera <hadess@hadess.net>
+Date: Fri, 27 Feb 2026 12:24:13 +0100
+Subject: [PATCH 2/2] tools: Work-around broken stdin handling in home-made
+ mainloop
+
+bluetoothd has 3 mainloop implementations, one relying on ell, one
+relying on glib, and another home-made.
+
+The home-made mainloop handler use epoll() without any fallbacks, and
+will hang if one tries to epoll() an stdin that redirects from
+/dev/null.
+
+Closes: https://github.com/bluez/bluez/issues/700
+---
+ Makefile.tools | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/Makefile.tools b/Makefile.tools
+index 589f7c94f9df..7c52e053ffee 100644
+--- a/Makefile.tools
++++ b/Makefile.tools
+@@ -531,8 +531,8 @@ tools_obexctl_LDADD = gdbus/libgdbus-internal.la src/libshared-glib.la \
+ 
+ tools_btmgmt_SOURCES = tools/btmgmt.c src/uuid-helper.c client/display.c \
+ 			client/mgmt.c
+-tools_btmgmt_LDADD = lib/libbluetooth-internal.la src/libshared-mainloop.la \
+-				-lreadline
++tools_btmgmt_LDADD = lib/libbluetooth-internal.la src/libshared-glib.la \
++				$(GLIB_LIBS) -lreadline
+ if DEPRECATED
+ noinst_PROGRAMS += attrib/gatttool
+ 
+-- 
+2.53.0
+

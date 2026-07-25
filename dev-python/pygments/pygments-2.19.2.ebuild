@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,7 +6,7 @@ EAPI=8
 DISTUTILS_USE_PEP517=hatchling
 PYPI_PN=${PN^}
 PYTHON_FULLY_TESTED=( python3_{11..14} pypy3_11 )
-PYTHON_COMPAT=( "${PYTHON_FULLY_TESTED[@]}" python3_{13,14}t )
+PYTHON_COMPAT=( "${PYTHON_FULLY_TESTED[@]}" python3_15 python3_{13..15}t )
 
 inherit distutils-r1 bash-completion-r1 pypi
 
@@ -40,6 +40,7 @@ EPYTEST_DESELECT=(
 	tests/test_html_formatter.py::test_ctags
 )
 
+EPYTEST_PLUGINS=()
 EPYTEST_XDIST=1
 distutils_enable_tests pytest
 

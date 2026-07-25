@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..14} )
+PYTHON_COMPAT=( python3_{11..14} )
 inherit python-any-r1 flag-o-matic cmake
 
 CommitId=c246916f9e3804eacc3c95058e51cce02ae00fff
@@ -17,7 +17,7 @@ S="${WORKDIR}"/${PN}-${CommitId}
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="doc test"
 
 DEPEND="

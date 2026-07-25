@@ -1,5 +1,11 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Sam James <sam@gentoo.org> (2026-04-05)
+# openblas[-cpudetection] runs a program during the build w/ cpuid to
+# determine TARGET which doesn't align with what we expect in a mismatched
+# bitness chroot. See bug #925114 and bug #968113.
+sci-libs/openblas cpudetection
 
 # Ionen Wolkens <ionen@gentoo.org> (2025-05-04)
 # Fails to build with .incbin errors only on x86, believed to be

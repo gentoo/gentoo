@@ -13,7 +13,7 @@ S="${WORKDIR}/${PN}-${P}-release"
 LICENSE="Boost-1.0"
 # SHARED_LIBRARY_VERSION -> "${S}"/libversion
 SLOT="0/120"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 arm arm64 ppc64 x86"
 IUSE="7z activerecord avahi cppparser +crypt +data examples iodbc mariadb +mongodb mysql +net odbc +pagecompiler pdf pocodoc postgres prometheus sqlite test +util +xml +zip"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="

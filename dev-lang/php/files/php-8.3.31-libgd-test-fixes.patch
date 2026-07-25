@@ -1,0 +1,62 @@
+From 02c2a50b0faed7689698254c5823dd39d681a399 Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Fri, 8 May 2026 13:39:48 -0400
+Subject: [PATCH] ext/gd/tests/gh16559.phpt: skip when using an external libgd
+
+This is a test for a bugfix in the bundled libgd.
+---
+ ext/gd/tests/gh16559.phpt | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/ext/gd/tests/gh16559.phpt b/ext/gd/tests/gh16559.phpt
+index 4481311c4c4..2bb5bab0564 100644
+--- a/ext/gd/tests/gh16559.phpt
++++ b/ext/gd/tests/gh16559.phpt
+@@ -2,6 +2,13 @@
+ GH-16559 (UBSan abort in ext/gd/libgd/gd_interpolation.c:1007)
+ --EXTENSIONS--
+ gd
++--SKIPIF--
++<?php
++    if (!GD_BUNDLED) {
++        /* external libgd bugs are not our problem */
++    	die("skip meaningful only for bundled libgd\n");
++    }
++?>
+ --FILE--
+ <?php
+ $input = imagecreatefrompng(__DIR__ . '/gh10614.png');
+-- 
+2.52.0
+
+From a592526473d5f0ede77ad647c66583a5b9b733da Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Fri, 8 May 2026 13:42:56 -0400
+Subject: [PATCH] ext/gd/tests/gh17349.phpt: require PNG support
+
+This test loads a PNG image, so if an external libgd is being used, it
+has to support PNG.
+---
+ ext/gd/tests/gh17349.phpt | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/ext/gd/tests/gh17349.phpt b/ext/gd/tests/gh17349.phpt
+index cd0fc4317b5..ae40ecc6e42 100644
+--- a/ext/gd/tests/gh17349.phpt
++++ b/ext/gd/tests/gh17349.phpt
+@@ -2,6 +2,12 @@
+ GH-17349 (Tiled truecolor filling looses single color transparency)
+ --EXTENSIONS--
+ gd
++--SKIPIF--
++<?php
++    if (!(imagetypes() & IMG_PNG)) {
++        die("skip No PNG support");
++    }
++?>
+ --FILE--
+ <?php
+ require_once __DIR__ . "/func.inc";
+-- 
+2.52.0
+

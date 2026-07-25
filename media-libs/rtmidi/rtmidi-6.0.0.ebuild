@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,8 +6,8 @@ EAPI=8
 inherit cmake
 
 DESCRIPTION="A set of C++ classes that provide a common API for realtime MIDI input/output"
-HOMEPAGE="https://www.music.mcgill.ca/~gary/rtmidi"
-SRC_URI="https://www.music.mcgill.ca/~gary/rtmidi/release/${P}.tar.gz"
+HOMEPAGE="https://caml.music.mcgill.ca/~gary/rtmidi/"
+SRC_URI="https://caml.music.mcgill.ca/~gary/rtmidi/release/${P}.tar.gz"
 
 LICENSE="RtMidi"
 SLOT="0"

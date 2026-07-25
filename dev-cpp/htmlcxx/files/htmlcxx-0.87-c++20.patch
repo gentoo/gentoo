@@ -1,0 +1,78 @@
+https://sourceforge.net/p/htmlcxx/patches/9/
+
+Author: Frantisek Boranek <fboranek@gmail.com>
+Date: Thu, 6 Oct 2022 22:39:21 +0200
+Subject: [PATCH] fix compiling with c++20
+
+The second parameter in function allocate() was removed in C++20 standard.
+These changes are backward compatible. Prior standard will use these:
+* < C++17: pointer allocate( size_type n, const void * hint = 0 ); // (until C++17)
+* < C++20: T* allocate( std::size_t n ); // (since C++17)
+* = C++20: [[nodiscard]] constexpr T* allocate( std::size_t n );
+--- a/html/tree.h
++++ b/html/tree.h
+@@ -416,8 +416,8 @@ tree<T, tree_node_allocator>::~tree()
+ template <class T, class tree_node_allocator>
+ void tree<T, tree_node_allocator>::head_initialise_() 
+    { 
+-   head = alloc_.allocate(1,0); // MSVC does not have default second argument 
+-   feet = alloc_.allocate(1,0);
++   head = alloc_.allocate(1);
++   feet = alloc_.allocate(1);
+ 
+    head->parent=0;
+    head->first_child=0;
+@@ -672,7 +672,7 @@ iter tree<T, tree_node_allocator>::append_child(iter position)
+    {
+    assert(position.node!=head);
+ 
+-   tree_node* tmp = alloc_.allocate(1,0);
++   tree_node* tmp = alloc_.allocate(1);
+    kp::constructor(&tmp->data);
+    tmp->first_child=0;
+    tmp->last_child=0;
+@@ -700,7 +700,7 @@ iter tree<T, tree_node_allocator>::append_child(iter position, const T& x)
+    // the API change.
+    assert(position.node!=head);
+ 
+-   tree_node* tmp = alloc_.allocate(1,0);
++   tree_node* tmp = alloc_.allocate(1);
+    kp::constructor(&tmp->data, x);
+    tmp->first_child=0;
+    tmp->last_child=0;
+@@ -756,7 +756,7 @@ iter tree<T, tree_node_allocator>::insert(iter position, const T& x)
+       position.node=feet; // Backward compatibility: when calling insert on a null node,
+                           // insert before the feet.
+       }
+-   tree_node* tmp = alloc_.allocate(1,0);
++   tree_node* tmp = alloc_.allocate(1);
+    kp::constructor(&tmp->data, x);
+    tmp->first_child=0;
+    tmp->last_child=0;
+@@ -776,7 +776,7 @@ iter tree<T, tree_node_allocator>::insert(iter position, const T& x)
+ template <class T, class tree_node_allocator>
+ typename tree<T, tree_node_allocator>::sibling_iterator tree<T, tree_node_allocator>::insert(sibling_iterator position, const T& x)
+    {
+-   tree_node* tmp = alloc_.allocate(1,0);
++   tree_node* tmp = alloc_.allocate(1);
+    kp::constructor(&tmp->data, x);
+    tmp->first_child=0;
+    tmp->last_child=0;
+@@ -804,7 +804,7 @@ template <class T, class tree_node_allocator>
+ template <class iter>
+ iter tree<T, tree_node_allocator>::insert_after(iter position, const T& x)
+    {
+-   tree_node* tmp = alloc_.allocate(1,0);
++   tree_node* tmp = alloc_.allocate(1);
+    kp::constructor(&tmp->data, x);
+    tmp->first_child=0;
+    tmp->last_child=0;
+@@ -864,7 +864,7 @@ iter tree<T, tree_node_allocator>::replace(iter position, const iterator_base& f
+ 
+    // replace the node at position with head of the replacement tree at from
+    erase_children(position);  
+-   tree_node* tmp = alloc_.allocate(1,0);
++   tree_node* tmp = alloc_.allocate(1);
+    kp::constructor(&tmp->data, (*from));
+    tmp->first_child=0;
+    tmp->last_child=0;

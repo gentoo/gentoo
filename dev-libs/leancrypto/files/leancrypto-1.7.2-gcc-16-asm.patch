@@ -1,0 +1,45 @@
+https://gcc.gnu.org/PR124877
+https://github.com/smuellerDD/leancrypto/issues/57
+https://github.com/smuellerDD/leancrypto/commit/489ce1a1d913e09a7f1107f61c4f969f866551ee
+
+From 489ce1a1d913e09a7f1107f61c4f969f866551ee Mon Sep 17 00:00:00 2001
+From: Stephan Mueller <smueller@chronox.de>
+Date: Tue, 14 Apr 2026 11:57:46 +0200
+Subject: [PATCH] Curve448 AVX2: fix ABI issue
+
+A uint8_t has to be copied into a register with movzbl as the upper
+32 bits of a 64 bit movq instruction are undefined.
+
+Reported-bu: rguenth
+Signed-off-by: Stephan Mueller <smueller@chronox.de>
+---
+ curve448/src/avx2/gf_p4482241_nsqr.S  | 2 +-
+ curve448/src/avx2/gf_p4482241_nsqrx.S | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/curve448/src/avx2/gf_p4482241_nsqr.S b/curve448/src/avx2/gf_p4482241_nsqr.S
+index 3d54fa7a..d8907515 100644
+--- a/curve448/src/avx2/gf_p4482241_nsqr.S
++++ b/curve448/src/avx2/gf_p4482241_nsqr.S
+@@ -93,7 +93,7 @@ movq 	%r13, 40(%rdi)
+ movq 	%r14, 48(%rdi)
+ movq 	%r15, 56(%rdi)
+ 
+-movq  	%rdx, %rcx
++movzbl  %dl, %ecx
+ 
+ .START:
+ 
+diff --git a/curve448/src/avx2/gf_p4482241_nsqrx.S b/curve448/src/avx2/gf_p4482241_nsqrx.S
+index 0fee5d6a..04e62cd9 100644
+--- a/curve448/src/avx2/gf_p4482241_nsqrx.S
++++ b/curve448/src/avx2/gf_p4482241_nsqrx.S
+@@ -91,7 +91,7 @@ movq    %r12, 32(%rdi)
+ movq    %r13, 40(%rdi)
+ movq    %r14, 48(%rdi)
+ 
+-movq    %rdx, %rbx
++movzbl  %dl, %ebx
+ 
+ .START_nsqrx:
+ 

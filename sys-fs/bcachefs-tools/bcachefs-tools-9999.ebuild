@@ -184,8 +184,9 @@ DEPEND="
 	dev-libs/userspace-rcu:=
 	sys-apps/keyutils:=
 	sys-apps/util-linux
-	virtual/zlib:=
+	sys-libs/libunwind:=
 	virtual/udev
+	virtual/zlib:=
 "
 
 RDEPEND="${DEPEND}"
@@ -299,10 +300,6 @@ src_compile() {
 	# Makefile calls `cargo` directly, so make sure we set our rustflags (etc)
 	cargo_env emake -j$(get_makeopts_jobs) bcachefs || die
 	use modules && linux-mod-r1_src_compile
-
-	# Recent versions mangle the 'bcachefs' symbolic link, work around it.
-	[[ -e bcachefs ]] && die "bcachefs symlink is valid, please remove workaround"
-	ln -rsf target/release/bcachefs bcachefs || die
 
 	local shell
 	for shell in bash fish zsh; do

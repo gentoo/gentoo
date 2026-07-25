@@ -6,7 +6,7 @@ EAPI=8
 # Remember to check the release notes for a 'Important Changes for Packagers'
 # section, e.g. https://inkscape.org/doc/release_notes/1.4/Inkscape_1.4.html#Important_Changes_for_Packagers.
 
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 PYTHON_REQ_USE="xml(+)"
 
 inherit cmake flag-o-matic xdg toolchain-funcs python-single-r1
@@ -27,7 +27,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
-IUSE="cdr dia exif graphicsmagick imagemagick inkjar jpeg openmp postscript readline sourceview spell svg2 test visio wpg X"
+IUSE="cdr dia exif graphicsmagick imagemagick inkjar jpeg openmp postscript readline sourceview spell svg2 test visio wayland wpg X"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 # Lots of test failures which need investigating, bug #871621
 RESTRICT="!test? ( test ) test"
@@ -39,7 +39,7 @@ BDEPEND="
 	test? ( virtual/imagemagick-tools )
 "
 COMMON_DEPEND="${PYTHON_DEPS}
-	>=app-text/poppler-0.57.0:=[cairo]
+	>=app-text/poppler-0.57.0:=[cairo,lcms]
 	>=dev-cpp/cairomm-1.12:0
 	>=dev-cpp/glibmm-2.58:2
 	dev-cpp/gtkmm:3.0
@@ -60,7 +60,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	media-libs/libpng:0=
 	sci-libs/gsl:=
 	>=x11-libs/pango-1.44
-	x11-libs/gtk+:3[X?]
+	x11-libs/gtk+:3[X?,wayland?]
 	X? ( x11-libs/libX11 )
 	$(python_gen_cond_dep '
 		dev-python/appdirs[${PYTHON_USEDEP}]
@@ -112,6 +112,10 @@ DEPEND="${COMMON_DEPEND}
 	test? ( dev-cpp/gtest )
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.4.4-respect-EPYTHON.patch # bug 924747
+)
+
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 }
@@ -133,6 +137,8 @@ src_unpack() {
 src_prepare() {
 	rm -vr src/3rdparty/2geom/tests/dependent-project || die # unused, causing bug #964016
 	cmake_src_prepare
+	# bug #924747
+	sed -i -e "s:@GENTOO_PYTHON_INTERP@:${EPYTHON}:" src/extension/implementation/script.cpp || die
 	sed -i "/install.*COPYING/d" CMakeScripts/ConfigCPack.cmake || die
 }
 
@@ -141,6 +147,8 @@ src_configure() {
 	filter-lto
 	# Aliasing unsafe (bug #310393)
 	append-flags -fno-strict-aliasing
+
+	use wayland || append-flags -DGENTOO_GTK_HIDE_WAYLAND
 
 	local mycmakeargs=(
 		# -DWITH_LPETOOL   # Compile with LPE Tool and experimental LPEs enabled

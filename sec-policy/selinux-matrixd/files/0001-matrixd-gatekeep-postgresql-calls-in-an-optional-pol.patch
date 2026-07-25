@@ -1,0 +1,47 @@
+From 8d49a23bd5745be581d3f2f17fab6cd75be6c9db Mon Sep 17 00:00:00 2001
+From: Rahul Sandhu <nvraxn@posteo.uk>
+Date: Sun, 28 Dec 2025 16:47:55 +0000
+Subject: [PATCH] matrixd: gatekeep postgresql calls in an optional policy
+ block
+
+postgresql is a seperate policy module[1], and hence is not required
+for the matrixd policy to work; it's already behind a tunable policy
+block, and hence the boolean matrix_postgresql_connect.
+
+[1] https://github.com/SELinuxProject/refpolicy/blob/main/policy/modules/services/postgresql.te
+
+Closes: https://bugs.gentoo.org/968058
+Signed-off-by: Rahul Sandhu <nvraxn@posteo.uk>
+---
+ refpolicy/policy/modules/services/matrixd.te | 11 ++++++-----
+ 1 file changed, 6 insertions(+), 5 deletions(-)
+
+diff --git a/refpolicy/policy/modules/services/matrixd.te b/refpolicy/policy/modules/services/matrixd.te
+index 52396b877..1cd947dd1 100644
+--- a/refpolicy/policy/modules/services/matrixd.te
++++ b/refpolicy/policy/modules/services/matrixd.te
+@@ -123,11 +123,6 @@ tunable_policy(`matrix_allow_federation',`
+ 	corenet_dontaudit_udp_bind_all_ports(matrixd_t)
+ ')
+ 
+-tunable_policy(`matrix_postgresql_connect',`
+-	postgresql_stream_connect(matrixd_t)
+-	postgresql_tcp_connect(matrixd_t)
+-')
+-
+ tunable_policy(`matrix_bind_all_unreserved_tcp_ports',`
+ 	corenet_tcp_bind_all_unreserved_ports(matrixd_t)
+ ')
+@@ -136,3 +131,9 @@ optional_policy(`
+ 	apache_search_config(matrixd_t)
+ ')
+ 
++optional_policy(`
++	tunable_policy(`matrix_postgresql_connect',`
++		postgresql_stream_connect(matrixd_t)
++		postgresql_tcp_connect(matrixd_t)
++	')
++')
+-- 
+2.54.0
+

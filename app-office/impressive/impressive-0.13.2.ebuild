@@ -1,14 +1,15 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 inherit optfeature python-r1
 
 DESCRIPTION="Stylish way of giving presentations with Python"
 HOMEPAGE="https://impressive.sourceforge.net/"
 SRC_URI="https://downloads.sourceforge.net/${PN}/${PN^}/${PV/_/-}/${PN^}-${PV/_/-}.tar.gz"
+S="${WORKDIR}/${PN^}-${PV/_/-}"
 
 LICENSE="GPL-2"
 
@@ -28,7 +29,6 @@ RDEPEND="${PYTHON_DEPS}
 DOCS=( changelog.txt demo.pdf )
 HTML_DOCS=( impressive.html )
 
-S="${WORKDIR}/${PN^}-${PV/_/-}"
 SLOT="0"
 KEYWORDS="amd64 x86"
 

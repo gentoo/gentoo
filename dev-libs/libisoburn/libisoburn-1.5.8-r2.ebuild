@@ -1,0 +1,91 @@
+# Copyright 1999-2026 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=9
+
+inherit autotools
+
+DESCRIPTION="Creation/expansion of ISO-9660 filesystems on CD/DVD media supported by libburn"
+HOMEPAGE="https://dev.lovelyhq.com/libburnia/web/wiki/Libisoburn https://dev.lovelyhq.com/libburnia/libisoburn"
+SRC_URI="https://files.libburnia-project.org/releases/${P}.tar.gz"
+
+LICENSE="GPL-2 GPL-3"
+SLOT="0"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+IUSE="acl debug external-filters frontend-optional launch-frontend libedit
+	readline static-libs xattr zlib"
+
+REQUIRED_USE="frontend-optional? ( launch-frontend )"
+
+BDEPEND="
+	virtual/pkgconfig
+"
+RDEPEND="
+	>=dev-libs/libburn-1.5.8
+	>=dev-libs/libisofs-1.5.8
+	readline? ( sys-libs/readline:0= )
+	!readline? (
+		libedit? ( dev-libs/libedit )
+	)
+	acl? (
+		virtual/acl
+		>=dev-libs/libisofs-1.5.8[acl]
+	)
+	xattr? (
+		sys-apps/attr
+		>=dev-libs/libisofs-1.5.8[xattr]
+	)
+	zlib? (
+		virtual/zlib:=
+		>=dev-libs/libisofs-1.5.8[zlib]
+	)
+	launch-frontend? (
+		dev-lang/tcl:0
+		dev-lang/tk:0
+	)
+	frontend-optional? ( dev-tcltk/bwidget )
+"
+DEPEND="
+	${RDEPEND}
+"
+
+src_prepare() {
+	default
+
+	# Ancient libtool version in 1.5.6 at least (debian's 2.4.2-1.11)
+	eautoreconf
+}
+
+src_configure() {
+	econf \
+		$(use_enable static-libs static) \
+		$(use_enable readline libreadline) \
+		$(usex readline --disable-libedit $(use_enable libedit)) \
+		$(use_enable acl libacl) \
+		$(use_enable xattr) \
+		$(use_enable zlib) \
+		--disable-libjte \
+		--disable-libcdio \
+		$(use_enable external-filters) \
+		--disable-external-filters-setuid \
+		$(use_enable launch-frontend) \
+		--disable-launch-frontend-setuid \
+		--disable-dvd-obs-64k \
+		--enable-versioned-libs \
+		--disable-ldconfig-at-install \
+		--enable-pkg-check-modules \
+		$(use_enable debug)
+}
+
+src_install() {
+	default
+
+	dodoc CONTRIBUTORS doc/{comments,*.wiki,startup_file.txt}
+
+	docinto frontend
+	dodoc frontend/README-tcltk
+	docinto xorriso
+	dodoc xorriso/{changelog.txt,README_gnu_xorriso}
+
+	find "${D}" -name '*.la' -delete || die
+}

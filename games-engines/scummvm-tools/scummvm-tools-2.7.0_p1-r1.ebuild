@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,7 +6,7 @@ WX_GTK_VER="3.2-gtk3"
 
 inherit desktop flag-o-matic toolchain-funcs wxwidgets xdg
 
-DESCRIPTION="Utilities for the SCUMM game engine"
+DESCRIPTION="Utilities for working with game files supported by the ScummVM project"
 HOMEPAGE="https://www.scummvm.org/"
 SRC_URI="https://www.scummvm.org/frs/scummvm-tools/${PV/_p*}/${P/_p*}.tar.xz
 	mirror://debian/pool/main/${PN:0:1}/${PN}/${PN}_${PV/_p*}-${PV/*_p}.debian.tar.xz

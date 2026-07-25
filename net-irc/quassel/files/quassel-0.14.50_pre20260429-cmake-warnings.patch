@@ -1,0 +1,154 @@
+From 176cb380d1bc9e7aa7cfcd991af7cd526a9b78aa Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Tue, 21 Apr 2026 22:09:02 +0200
+Subject: [PATCH 1/2] CMake: Avoid ~200 lines of warnings caused by
+ ECM-after-GNUInstallDirs
+
++ update ECM, KDE and KF6Sonnet package properties URLs.
+
+ECM is typically one of, if not the first thing set up in a project.
+When it is optional, that is less certain, as non-KDE projects often
+deal with unconditional dependencies first, what with Qt6 having ported
+to CMake leads to countless warnings of the form:
+
+CMake Warning at /usr/share/ECM/kde-modules/KDEInstallDirsCommon.cmake:169 (message):
+  KDE_INSTALL_BINDIR got its value from CMAKE_INSTALL_BINDIR.  In most cases
+  this is unintended, check if you included GNUInstallDirs before
+  KDEInstallDirs.  Some third party modules include GNUInstallDirs too so eg.
+  find_package(Qt6 ...) is equivalent to include(GNUInstallDirs).  If you set
+  CMAKE_INSTALL_BINDIR deliberately before including KDEInstallDirs its
+  recommended to use KDE_INSTALL_BINDIR instead to suppress this message.
+Call Stack (most recent call first):
+  /usr/share/ECM/kde-modules/KDEInstallDirsCommon.cmake:255 (_define_relative)
+  /usr/share/ECM/kde-modules/KDEInstallDirs6.cmake:201 (include)
+  /usr/share/ECM/kde-modules/KDEInstallDirs.cmake:17 (include)
+  CMakeLists.txt:239 (include)
+
+[many times repeated]
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ cmake/QuasselQtSetup.cmake | 55 ++++++++++++++++++++------------------
+ 1 file changed, 29 insertions(+), 26 deletions(-)
+
+diff --git a/cmake/QuasselQtSetup.cmake b/cmake/QuasselQtSetup.cmake
+index 692daf19..cd5faadf 100644
+--- a/cmake/QuasselQtSetup.cmake
++++ b/cmake/QuasselQtSetup.cmake
+@@ -40,6 +40,26 @@ set(WITH_KF FALSE)
+ set(quassel_qt_components Core Core5Compat Network CoreTools)
+ if (BUILD_GUI)
+     list(APPEND quassel_qt_components Gui Widgets)
++
++    # find extra-cmake-modules first, to avoid CMake warnings spam
++    if (WITH_KDE)
++        set(ecm_find_type "REQUIRED")
++        find_package(ECM NO_MODULE REQUIRED)
++    else()
++        # Even with KDE integration disabled, we optionally use tier1 frameworks if we find them
++        set(ecm_find_type "RECOMMENDED")
++        find_package(ECM NO_MODULE QUIET)
++    endif()
++
++    set_package_properties(ECM PROPERTIES TYPE ${ecm_find_type}
++        URL "https://invent.kde.org/frameworks/extra-cmake-modules"
++        DESCRIPTION "extra modules for CMake, maintained by the KDE project"
++        PURPOSE     "Required to find KDE Frameworks components"
++    )
++
++    if (ECM_FOUND)
++        list(APPEND CMAKE_MODULE_PATH ${ECM_MODULE_PATH})
++    endif()
+ endif()
+ if (BUILD_CORE)
+     list(APPEND quassel_qt_components Sql)
+@@ -131,39 +151,22 @@ if (BUILD_GUI)
+     # KDE Frameworks
+     ################
+ 
+-    # extra-cmake-modules
+     if (WITH_KDE)
+-        set(ecm_find_type "REQUIRED")
+-        find_package(ECM NO_MODULE REQUIRED)
+-    else()
+-        # Even with KDE integration disabled, we optionally use tier1 frameworks if we find them
+-        set(ecm_find_type "RECOMMENDED")
+-        find_package(ECM NO_MODULE QUIET)
++        find_package(KF6 REQUIRED COMPONENTS ConfigWidgets CoreAddons Notifications NotifyConfig Sonnet TextWidgets WidgetsAddons XmlGui)
++        set_package_properties(KF6 PROPERTIES TYPE REQUIRED
++            URL "https://kde.org/"
++            DESCRIPTION "KDE Frameworks 6"
++            PURPOSE     "Required for integration into the Plasma desktop"
++        )
++        message(STATUS "Found KDE Frameworks ${KF6_VERSION}")
++        set(WITH_KF TRUE)
+     endif()
+ 
+-    set_package_properties(ECM PROPERTIES TYPE ${ecm_find_type}
+-        URL "https://projects.kde.org/projects/kdesupport/extra-cmake-modules"
+-        DESCRIPTION "extra modules for CMake, maintained by the KDE project"
+-        PURPOSE     "Required to find KDE Frameworks components"
+-    )
+-
+     if (ECM_FOUND)
+-        list(APPEND CMAKE_MODULE_PATH ${ECM_MODULE_PATH})
+-        if (WITH_KDE)
+-            find_package(KF6 REQUIRED COMPONENTS ConfigWidgets CoreAddons Notifications NotifyConfig Sonnet TextWidgets WidgetsAddons XmlGui)
+-            set_package_properties(KF6 PROPERTIES TYPE REQUIRED
+-                URL "http://www.kde.org"
+-                DESCRIPTION "KDE Frameworks 6"
+-                PURPOSE     "Required for integration into the Plasma desktop"
+-            )
+-            message(STATUS "Found KDE Frameworks ${KF6_VERSION}")
+-            set(WITH_KF TRUE)
+-        endif()
+-
+         # Optional KF6 tier1 components
+         find_package(KF6Sonnet QUIET)
+         set_package_properties(KF6Sonnet PROPERTIES TYPE RECOMMENDED
+-            URL "http://api.kde.org/frameworks-api/frameworks6-apidocs/sonnet/html"
++            URL "https://api.kde.org/sonnet-index.html"
+             DESCRIPTION "framework for providing spell-checking capabilities"
+             PURPOSE "Enables spell-checking support in input widgets"
+         )
+-- 
+2.54.0
+
+
+From 3035a149fcfabe5302ba6b4d256c658d7f8cacf2 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Tue, 21 Apr 2026 22:16:50 +0200
+Subject: [PATCH 2/2] CMake: Raise Boost minimum version to 1.70
+
+Boost 1.70 was released on April 12th, 2019. It introduced their own
+BoostConfig.cmake upstream cmake module which CMake Policy CMP0167
+drives to port away to.
+
+Fixes warning introduced with CMake >=3.30:
+
+CMake Warning (dev) at CMakeLists.txt:169 (find_package):
+  Policy CMP0167 is not set: The FindBoost module is removed.  Run "cmake
+  --help-policy CMP0167" for policy details.  Use the cmake_policy command to
+  set the policy and suppress this warning.
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 1715633d..86a96ebb 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -166,7 +166,7 @@ include(QuasselQtSetup)
+ # Non-Qt-based packages
+ #####################################################################
+ 
+-find_package(Boost 1.54 REQUIRED)
++find_package(Boost 1.70 CONFIG REQUIRED)
+ set_package_properties(Boost PROPERTIES TYPE REQUIRED
+     URL "https://www.boost.org/"
+     DESCRIPTION "Boost libraries for C++"
+-- 
+2.54.0
+

@@ -12,7 +12,7 @@ S="${WORKDIR}/package"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv"
+KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv"
 
 RDEPEND="
 	net-libs/nodejs

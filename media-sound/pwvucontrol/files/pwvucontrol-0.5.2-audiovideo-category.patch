@@ -1,0 +1,12 @@
+diff --git a/data/com.saivert.pwvucontrol.desktop.in.in b/data/com.saivert.pwvucontrol.desktop.in.in
+index f1c09f9..e3d7010 100644
+--- a/data/com.saivert.pwvucontrol.desktop.in.in
++++ b/data/com.saivert.pwvucontrol.desktop.in.in
+@@ -5,6 +5,6 @@ Exec=pwvucontrol
+ Icon=@icon@
+ Terminal=false
+ Type=Application
+-Categories=Audio;System
++Categories=AudioVideo;Audio;System
+ Keywords=PipeWire;Volume;Audio;Mixer;Control;Sound
+ StartupNotify=true

@@ -6,7 +6,7 @@
 		<name>Craig Andrews</name>
 	</maintainer>
 	<upstream>
-		<bugs-to>https://github.com/miloyip/rapidjson/issues</bugs-to>
-		<remote-id type="github">miloyip/rapidjson</remote-id>
+		<bugs-to>https://github.com/Tencent/rapidjson/issues</bugs-to>
+		<remote-id type="github">Tencent/rapidjson</remote-id>
 	</upstream>
 </pkgmetadata>

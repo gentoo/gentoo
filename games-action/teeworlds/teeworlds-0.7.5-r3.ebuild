@@ -1,16 +1,16 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 inherit cmake desktop flag-o-matic python-any-r1
 
 DESCRIPTION="Online multi-player platform 2D shooter"
 HOMEPAGE="https://www.teeworlds.com/"
 SRC_URI="
 	https://github.com/teeworlds/teeworlds/releases/download/${PV}/teeworlds-${PV}-src.tar.gz
-	https://dev.gentoo.org/~ionen/distfiles/${PN}.png
+	https://distfiles.gentoo.org/pub/dev/ionen@gentoo.org/${PN}.png
 "
 S=${WORKDIR}/${P}-src
 
@@ -37,6 +37,10 @@ BDEPEND="
 	test? ( dev-cpp/gtest )
 "
 
+PATCHES=(
+	"${FILESDIR}"/${P}-cmake4.patch
+)
+
 src_configure() {
 	append-flags -fno-strict-aliasing #858524
 
@@ -49,7 +53,7 @@ src_configure() {
 }
 
 src_test() {
-	eninja run_tests
+	cmake_build run_tests
 }
 
 src_install() {

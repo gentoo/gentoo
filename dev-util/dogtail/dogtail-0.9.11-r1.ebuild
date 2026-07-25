@@ -1,10 +1,10 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit distutils-r1 xdg
 
@@ -41,6 +41,9 @@ src_prepare() {
 	# gentoo's dev-lang/python-exec. So we need to add hard-coded paths.
 	eapply "${FILESDIR}"/${PN}-0.9.10-gentoo-paths.patch
 	sed -e "s:@EPREFIX_USR@:'${EPREFIX}/usr':" -i sniff/sniff || die "sed failed"
+
+	# Fix .desktop file, #726038
+	sed -i -e "s:Application;::" sniff/sniff.desktop || die
 
 	distutils-r1_src_prepare
 }

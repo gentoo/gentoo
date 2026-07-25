@@ -1,0 +1,37 @@
+https://github.com/xbmc/xbmc/pull/27993
+
+From f6a9d3756d88b15867ce48178d1fe1c92442d1fa Mon Sep 17 00:00:00 2001
+From: Alfred Wingate <parona@protonmail.com>
+Date: Thu, 12 Mar 2026 11:38:22 +0200
+Subject: [PATCH] [dbwrappers] add previously implicit include for
+ va_list/va_start/va_end
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+GCC-16 fails without the explicit include.
+
+xbmc/dbwrappers/test/TestVPrepare.cpp:28:3: error: there are no arguments to ‘va_start’ that depend on a template parameter, so a declaration of ‘va_start’ must be available [-Wtemplate-body]
+   28 |   va_start(args, sqlFormat);
+      |   ^~~~~~~~
+
+Signed-off-by: Alfred Wingate <parona@protonmail.com>
+---
+ xbmc/dbwrappers/dataset.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/xbmc/dbwrappers/dataset.h b/xbmc/dbwrappers/dataset.h
+index d54fabf0fb..5b925df452 100644
+--- a/xbmc/dbwrappers/dataset.h
++++ b/xbmc/dbwrappers/dataset.h
+@@ -14,6 +14,7 @@
+ 
+ #include "qry_dat.h"
+ 
++#include <cstdarg>
+ #include <list>
+ #include <map>
+ #include <memory>
+-- 
+2.53.0
+

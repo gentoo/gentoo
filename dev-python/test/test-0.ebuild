@@ -1,9 +1,9 @@
-# Copyright 2024-2025 Gentoo Authors
+# Copyright 2024-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( pypy3_11 python3_{11..14} python3_{13..14}t )
+PYTHON_COMPAT=( pypy3_11 python3_{11..15} python3_{13..15}t )
 
 inherit python-r1
 
@@ -45,4 +45,10 @@ RDEPEND="
 	$(python_gen_cond_dep '
 		dev-python/python-tests:3.14t
 	' python3_14t)
+	$(python_gen_cond_dep '
+		dev-python/python-tests:3.15
+	' python3_15)
+	$(python_gen_cond_dep '
+		dev-python/python-tests:3.15t
+	' python3_15t)
 "

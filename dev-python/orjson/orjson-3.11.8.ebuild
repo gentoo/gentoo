@@ -11,6 +11,7 @@ PYTHON_COMPAT=( python3_{11..14} )
 # upstream is vendoring crates, so we don't need CRATES.
 CRATES="
 "
+RUST_MAX_VER="1.94.1" # bug #972911
 RUST_MIN_VER="1.89.0"
 
 inherit cargo distutils-r1 pypi
@@ -27,7 +28,7 @@ LICENSE+="
 	Apache-2.0-with-LLVM-exceptions BSD Boost-1.0 MIT Unicode-3.0
 "
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="amd64 arm arm64 ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
 
 BDEPEND="
 	>=dev-util/maturin-1.7.8[${PYTHON_USEDEP}]

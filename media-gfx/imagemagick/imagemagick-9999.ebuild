@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,10 +15,18 @@ if [[ ${PV} == 9999 ]] ; then
 	inherit git-r3
 	MY_P="imagemagick-9999"
 else
+	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/imagemagick.asc
+	inherit verify-sig
+
 	MY_PV="$(ver_rs 3 '-')"
 	MY_P="ImageMagick-${MY_PV}"
-	SRC_URI="mirror://imagemagick/${MY_P}.tar.xz"
+	SRC_URI="
+		mirror://imagemagick/${MY_P}.tar.xz
+		verify-sig? ( mirror://imagemagick/${MY_P}.tar.xz.asc )
+	"
+
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~arm64-macos ~x64-macos ~x64-solaris"
+	BDEPEND="verify-sig? ( sec-keys/openpgp-keys-imagemagick )"
 fi
 
 S="${WORKDIR}/${MY_P}"
@@ -93,7 +101,7 @@ DEPEND="
 	${RDEPEND}
 	X? ( x11-base/xorg-proto )
 "
-BDEPEND="virtual/pkgconfig"
+BDEPEND+=" virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-9999-nocputuning.patch"
@@ -120,6 +128,11 @@ src_prepare() {
 	done
 	shopt -u nullglob
 	addpredict /dev/nvidiactl
+
+	if use hardened ; then
+		# https://github.com/ImageMagick/ImageMagick/issues/8646 (bug #971784)
+		sed -i -e 's:not ok:ok:' tests/cli-svg.tap || die
+	fi
 }
 
 src_configure() {

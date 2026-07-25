@@ -31,7 +31,7 @@ else
 		[[ $(( $(ver_cut 2) % 2 )) -eq 0 ]] &&
 		[[ $(( $(ver_cut 3) % 2 )) -eq 0 ]]
 	then
-		KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~x86"
+		KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
 	fi
 fi
 

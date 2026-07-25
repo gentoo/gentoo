@@ -1,17 +1,17 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 inherit estack
 
-DESCRIPTION="System for computational discrete algebra. Core functionality."
+DESCRIPTION="System for computational discrete algebra. Core functionality"
 HOMEPAGE="https://www.gap-system.org/"
 SRC_URI="https://github.com/gap-system/gap/releases/download/v${PV}/${P}-core.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0/10" # soname
-KEYWORDS="~amd64 ~riscv"
+KEYWORDS="amd64 ~riscv"
 IUSE="cpu_flags_x86_popcnt debug memcheck minimal readline test valgrind"
 REQUIRED_USE="?? ( memcheck valgrind )"
 

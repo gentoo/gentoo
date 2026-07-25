@@ -1,4 +1,4 @@
-# Copyright 2021-2024 Gentoo Authors
+# Copyright 2021-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -14,7 +14,7 @@ else
 fi
 
 DESCRIPTION="Standalone X server running under Wayland"
-HOMEPAGE="https://wayland.freedesktop.org/xserver.html"
+HOMEPAGE="https://www.x.org/wiki/ https://gitlab.freedesktop.org/xorg/xserver/xorg-server"
 
 LICENSE="MIT"
 SLOT="0"

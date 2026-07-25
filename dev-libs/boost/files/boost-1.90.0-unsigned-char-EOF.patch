@@ -1,0 +1,41 @@
+https://github.com/boostorg/process/issues/536
+--- a/libs/process/src/ext/cmd.cpp
++++ b/libs/process/src/ext/cmd.cpp
+@@ -219,7 +219,7 @@ shell cmd(boost::process::v2::pid_type pid, error_code & ec)
+     procargs.resize(4096);
+     int f = ::open(("/proc/" + std::to_string(pid) + "/cmdline").c_str(), O_RDONLY);
+ 
+-    while (procargs.back() != EOF)
++    while (procargs.back() != (char) EOF)
+     {
+         auto r = ::read(f, &*(procargs.end() - 4096), 4096);
+         if (r < 0)
+@@ -237,7 +237,7 @@ shell cmd(boost::process::v2::pid_type pid, error_code & ec)
+     }
+     ::close(f);
+ 
+-    if (procargs.back() == EOF)
++    if (procargs.back() == (char) EOF)
+         procargs.pop_back();
+ 
+     auto argc = std::count(procargs.begin(), procargs.end(), '\0');
+--- a/libs/process/src/ext/env.cpp
++++ b/libs/process/src/ext/env.cpp
+@@ -127,7 +127,7 @@ native_env_iterator next(native_env_iterator nh)
+ }
+ native_env_iterator find_end(native_env_iterator nh)
+ {
+-    while (*nh != EOF)
++    while (*nh != (char) EOF)
+         nh ++;
+     return nh ;
+ }
+@@ -318,7 +318,7 @@ env_view env(boost::process::v2::pid_type pid, error_code & ec)
+ 
+     int f = ::open(("/proc/" + std::to_string(pid) + "/environ").c_str(), O_RDONLY);
+ 
+-    while (!procargs || procargs.get()[size - 1] != EOF)
++    while (!procargs || procargs.get()[size - 1] != (char) EOF)
+     {
+         std::unique_ptr<char, detail::ext::native_env_handle_deleter> buf{new char[size + 4096]};
+         if (size > 0)

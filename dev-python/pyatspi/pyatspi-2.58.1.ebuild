@@ -12,7 +12,7 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/pyatspi2"
 # Note: only some of the tests are GPL-licensed, everything else is LGPL
 LICENSE="LGPL-2 GPL-2+"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~sparc x86"
 
 IUSE="test"
 RESTRICT="!test? ( test )"

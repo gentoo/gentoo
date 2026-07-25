@@ -25,7 +25,7 @@
 		<flag name="widgets">Build Qt6Widgets module</flag>
 	</use>
 	<upstream>
-		<bugs-to>https://bugreports.qt.io/</bugs-to>
+		<bugs-to>https://qt-project.atlassian.net/</bugs-to>
 		<doc>https://doc.qt.io/</doc>
 		<remote-id type="github">qt/qtbase</remote-id>
 	</upstream>

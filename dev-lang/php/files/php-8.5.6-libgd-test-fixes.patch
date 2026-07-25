@@ -1,0 +1,31 @@
+From e40a59c6ac2c19e092249a88804549f8721fda3f Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Fri, 8 May 2026 17:08:03 -0400
+Subject: [PATCH] ext/gd/tests/imagebmp_basic.phpt: require PNG support
+
+After c1c6520c4f3, libgd needs PNG support to pass this test. Skip the
+test if we are using (external) libgd without it.
+---
+ ext/gd/tests/imagebmp_basic.phpt | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/ext/gd/tests/imagebmp_basic.phpt b/ext/gd/tests/imagebmp_basic.phpt
+index ff302a8b074..82b14f06b3c 100644
+--- a/ext/gd/tests/imagebmp_basic.phpt
++++ b/ext/gd/tests/imagebmp_basic.phpt
+@@ -2,6 +2,12 @@
+ imagebmp() - basic functionality
+ --EXTENSIONS--
+ gd
++--SKIPIF--
++<?php
++    if (!(imagetypes() & IMG_PNG)) {
++        die("skip No PNG support");
++    }
++?>
+ --FILE--
+ <?php
+ // create an image
+-- 
+2.52.0
+

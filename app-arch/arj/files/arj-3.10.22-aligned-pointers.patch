@@ -1,0 +1,30 @@
+https://bugs.gentoo.org/959767
+
+--- a/gnu/configure.in
++++ b/gnu/configure.in
+@@ -113,23 +113,8 @@ os2*)
+ 	;;
+ esac
+ 
+-case $host_cpu in
+-alpha*)
+-	AC_DEFINE(ALIGN_POINTERS, 1, [Define if pointers need to be aligned])
+-	;;
+-sparc*)
+-	AC_DEFINE(ALIGN_POINTERS)
+-	;;
+-ia64*)
+-	AC_DEFINE(ALIGN_POINTERS)
+-	;;
+-arm*)
+-	AC_DEFINE(ALIGN_POINTERS)
+-	;;
+-hppa*)
+-	AC_DEFINE(ALIGN_POINTERS)
+-	;;
+-esac
++dns Unconditionally align pointers
++AC_DEFINE(ALIGN_POINTERS)
+ 
+ dnl Registration wizard is named "arj-register" under UNIX-like platforms, to
+ dnl give it a unique name

@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Skeleton command:
@@ -12,7 +12,7 @@ JAVA_TESTING_FRAMEWORKS="junit-4"
 
 inherit java-pkg-2 java-pkg-simple
 
-DESCRIPTION="A collection of JUnit rules for testing code which uses java.lang.System."
+DESCRIPTION="A collection of JUnit rules for testing code which uses java.lang.System"
 HOMEPAGE="https://stefanbirkner.github.io/system-rules/"
 SRC_URI="https://github.com/stefanbirkner/${PN}/archive/${P}.tar.gz"
 

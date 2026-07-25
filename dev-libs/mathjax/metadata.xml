@@ -5,7 +5,6 @@
     <email>eschwartz@gentoo.org</email>
     <name>Eli Schwartz</name>
   </maintainer>
-  <stabilize-allarches/>
   <longdescription lang="en">
   MathJax is an open-source JavaScript display engine for LaTeX and
   MathML that works in all modern browsers. It was designed with the
@@ -18,8 +17,8 @@
   easily. One simply includes MathJax and some mathematics in a web
   page, and MathJax does the rest.
   </longdescription>
+  <stabilize-allarches/>
   <upstream>
     <remote-id type="github">mathjax/MathJax</remote-id>
   </upstream>
-  <stabilize-allarches/>
 </pkgmetadata>

@@ -27,7 +27,7 @@ RPYTHON_VER="1.5.4"
 JAPZIP_HASH="3352476"
 GICONS_VER="4.0.0"
 
-DESCRIPTION="Mozc - Japanese input method editor."
+DESCRIPTION="Japanese input method editor"
 HOMEPAGE="https://github.com/google/mozc"
 # for new release, update versions according to MODULE.bazel or failures of the fetch's phase of bazel
 SRC_URI="

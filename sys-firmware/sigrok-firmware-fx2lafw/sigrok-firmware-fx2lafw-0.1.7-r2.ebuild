@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
@@ -13,7 +13,7 @@ else
 		binary? ( https://sigrok.org/download/binary/${PN}/${PN}-bin-${PV}.tar.gz )
 		!binary? (
 			https://sigrok.org/download/source/${PN}/${P}.tar.gz
-			https://dev.gentoo.org/~ceamac/${CATEGORY}/${PN}/${P}-update-syntax.patch.xz
+			https://distfiles.gentoo.org/pub/dev/ceamac@gentoo.org/${CATEGORY}/${PN}/${P}-update-syntax.patch.xz
 		)
 	"
 	KEYWORDS="~amd64 ~x86"

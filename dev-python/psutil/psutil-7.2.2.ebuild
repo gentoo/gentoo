@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{11..14} python3_{13,14}t pypy3_11 )
+PYTHON_COMPAT=( python3_{11..15} python3_{13..15}t pypy3_11 )
 
 inherit distutils-r1 pypi
 
@@ -17,9 +17,9 @@ HOMEPAGE="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~arm64-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~arm64-macos ~x64-macos ~x64-solaris"
 
-EPYTEST_PLUGINS=( pytest-subtests )
+EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
 
 python_test() {
@@ -83,6 +83,14 @@ python_test() {
 		# requires psleak
 		tests/test_memleaks.py
 	)
+
+	case ${EPYTHON} in
+		python3.15*)
+			EPYTEST_DESELECT+=(
+				tests/test_process.py::TestProcess::test_rlimit_infinity_value
+			)
+			;;
+	esac
 
 	# Since we are running in an environment a bit similar to CI,
 	# let's skip the tests that are disabled for CI

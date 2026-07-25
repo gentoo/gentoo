@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 inherit autotools python-single-r1 xdg-utils
 
 DESCRIPTION="Library for manipulating block devices"

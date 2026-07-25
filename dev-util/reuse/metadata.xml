@@ -7,7 +7,9 @@
 	</maintainer>
 	<upstream>
 		<doc>https://reuse.readthedocs.io/</doc>
-		<remote-id type="pypi">reuse</remote-id>
+		<remote-id type="codeberg">fsfe/reuse-tool</remote-id>
 		<remote-id type="github">fsfe/reuse-tool</remote-id>
+		<remote-id type="pypi">reuse</remote-id>
 	</upstream>
+	<!-- Arch related bugs known, so we avoid allarches here. https://codeberg.org/fsfe/reuse-tool/issues/1349 -->
 </pkgmetadata>

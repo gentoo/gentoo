@@ -264,22 +264,31 @@ src_test() {
 	pushd "${BUILD_DIR}" > /dev/null || die
 
 	# Excluded tests:
-	#    BootstrapTest: we actually bootstrap it every time so why test it?
-	#    BundleUtilities: bundle creation broken
-	#    CMakeOnly.AllFindModules: pthread issues
-	#    CTest.updatecvs: which fails to commit as root
-	#    Fortran: requires fortran
-	#    RunCMake.CompilerLauncher: also requires fortran
-	#    RunCMake.CPack_RPM: breaks if app-arch/rpm is installed because
-	#        debugedit binary is not in the expected location
-	#    RunCMake.CPack_DEB: breaks if app-arch/dpkg is installed because
-	#        it can't find a deb package that owns libc
-	#    RunCMake.CPack_TGZ: requires 64-bit time_t (bug #967480)
-	#    TestUpload, which requires network access
-	#    RunCMake.CMP0125, known failure reported upstream (bug #829414)
-	local myctestargs=(
-		--output-on-failure
-		-E "(BootstrapTest|BundleUtilities|CMakeOnly.AllFindModules|CompileOptions|CTest.UpdateCVS|Fortran|RunCMake.CompilerLauncher|RunCMake.CPack_(DEB|RPM|TGZ)|TestUpload|RunCMake.CMP0125)" \
+	local CMAKE_SKIP_TESTS=(
+		# BootstrapTest: we actually bootstrap it every time so why test it?
+		"BootstrapTest"
+		# BundleUtilities: bundle creation broken
+		"BundleUtilities"
+		# CMakeOnly.AllFindModules: pthread issues
+		"CMakeOnly.AllFindModules"
+		# TODO
+		"CompileOptions"
+		# CTest.updatecvs: which fails to commit as root
+		"CTest.UpdateCVS"
+		# Fortran: requires fortran
+		"Fortran"
+		# RunCMake.CompilerLauncher: also requires fortran
+		"RunCMake.CompilerLauncher"
+		# RunCMake.CPack_RPM: breaks if app-arch/rpm is installed because
+		#    debugedit binary is not in the expected location
+		# RunCMake.CPack_DEB: breaks if app-arch/dpkg is installed because
+		#    it can't find a deb package that owns libc
+		# RunCMake.CPack_TGZ: requires 64-bit time_t (bug #967480)
+		"RunCMake.CPack_(DEB|RPM|TGZ)"
+		# TestUpload, which requires network access
+		"TestUpload"
+		# RunCMake.CMP0125, known failure reported upstream (bug #829414)
+		"RunCMake.CMP0125"
 	)
 
 	local -x QT_QPA_PLATFORM=offscreen

@@ -58,6 +58,7 @@ BDEPEND="
 		dev-python/pyyaml[${PYTHON_USEDEP}]
 		dev-python/distro[${PYTHON_USEDEP}]
 		dev-python/gitpython[${PYTHON_USEDEP}]
+		dev-python/pkg-resources[${PYTHON_USEDEP}]
 		dev-python/poetry[${PYTHON_USEDEP}]
 		dev-python/pymongo[${PYTHON_USEDEP}]
 		dev-python/tenacity[${PYTHON_USEDEP}]
@@ -90,6 +91,7 @@ python_check_deps() {
 	python_has_version -b "dev-python/pyyaml[${PYTHON_USEDEP}]" &&
 	python_has_version -b "dev-python/distro[${PYTHON_USEDEP}]" &&
 	python_has_version -b "dev-python/gitpython[${PYTHON_USEDEP}]" &&
+	python_has_version -b "dev-python/pkg-resources[${PYTHON_USEDEP}]" &&
 	python_has_version -b "dev-python/poetry[${PYTHON_USEDEP}]" &&
 	python_has_version -b "dev-python/pymongo[${PYTHON_USEDEP}]" &&
 	python_has_version -b "dev-python/tenacity[${PYTHON_USEDEP}]"

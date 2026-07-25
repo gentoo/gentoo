@@ -1,4 +1,4 @@
-# Copyright 2021-2025 Gentoo Authors
+# Copyright 2021-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,7 +12,7 @@ if [[ ${QT6_BUILD_TYPE} == release ]]; then
 	KEYWORDS="amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv x86"
 fi
 
-declare -A QT6_IUSE=(
+declare -gA QT6_IUSE=(
 	[global]="+ssl +udev zstd"
 	[core]="icu journald syslog"
 	[modules]="+concurrent +dbus +gui +network +sql +xml"

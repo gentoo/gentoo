@@ -9,7 +9,7 @@ GITHUB_PV=$(ver_rs 1- '_')
 
 DESCRIPTION="A Verilog simulation and synthesis tool"
 HOMEPAGE="
-	http://iverilog.icarus.com
+	https://steveicarus.github.io/iverilog/
 	https://github.com/steveicarus/iverilog
 "
 
@@ -32,8 +32,8 @@ DEPEND="
 RDEPEND="${DEPEND}"
 BDEPEND="
 	dev-util/gperf
-	app-alternatives/yacc
-	app-alternatives/lex
+	sys-devel/bison
+	sys-devel/flex
 "
 
 src_prepare() {

@@ -1,9 +1,9 @@
-# Copyright 2021-2025 Gentoo Authors
+# Copyright 2021-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{12..13} )
+PYTHON_COMPAT=( python3_{12..14} )
 DISTUTILS_USE_PEP517=setuptools
 inherit distutils-r1 toolchain-funcs
 
@@ -65,7 +65,7 @@ src_compile() {
 	distutils-r1_src_compile
 }
 
-src_test() {
+python_test() {
 	local EPYTEST_IGNORE=(
 		tests/tests_e3/python/main_test.py
 	)
@@ -73,5 +73,5 @@ src_test() {
 		tests/tests_e3/cve/cve_test.py::test_nvd_cve_search
 		tests/tests_e3/anod/spec_test.py::test_spec_check_dll_closure[arguments0-expected0]
 	)
-	distutils-r1_src_test
+	epytest
 }

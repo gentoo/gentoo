@@ -1,0 +1,82 @@
+From ab486df804b0b306d2b1d407eec5185bcdd40543 Mon Sep 17 00:00:00 2001
+From: Michael Waskom <mwaskom@gmail.com>
+Date: Sat, 25 Jan 2025 20:52:38 -0500
+Subject: [PATCH 2/6] Address np.in1d deprecation
+
+---
+ tests/test_categorical.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/test_categorical.py b/tests/test_categorical.py
+index 3df7824787..21db60beb7 100644
+--- a/tests/test_categorical.py
++++ b/tests/test_categorical.py
+@@ -1206,7 +1206,7 @@ def check_boxen(self, patches, data, orient, pos, width=0.8):
+ 
+         assert verts[pos_idx].min().round(4) >= np.round(pos - width / 2, 4)
+         assert verts[pos_idx].max().round(4) <= np.round(pos + width / 2, 4)
+-        assert np.in1d(
++        assert np.isin(
+             np.percentile(data, [25, 75]).round(4), verts[val_idx].round(4).flat
+         ).all()
+         assert_array_equal(verts[val_idx, 1:, 0], verts[val_idx, :-1, 2])
+
+From 2eada7ee9f69a97b43c7c6b41b3c56feb756a5c2 Mon Sep 17 00:00:00 2001
+From: Michael Waskom <mwaskom@gmail.com>
+Date: Mon, 16 Dec 2024 07:23:31 -0500
+Subject: [PATCH] Fix tick visibility introspection on 3.10
+
+---
+ tests/_core/test_plot.py | 25 +++++++++++++------------
+ 1 file changed, 13 insertions(+), 12 deletions(-)
+
+diff --git a/tests/_core/test_plot.py b/tests/_core/test_plot.py
+index 5554ea650f..50851646cf 100644
+--- a/tests/_core/test_plot.py
++++ b/tests/_core/test_plot.py
+@@ -1782,6 +1782,17 @@ def test_labels(self, long_df):
+ 
+ class TestLabelVisibility:
+ 
++    def has_xaxis_labels(self, ax):
++        if _version_predates(mpl, "3.7"):
++            # mpl3.7 added a getter for tick params, but both yaxis and xaxis return
++            # the same entry of "labelleft" instead of "labelbottom" for xaxis
++            return len(ax.get_xticklabels()) > 0
++        elif _version_predates(mpl, "3.10"):
++            # Then I guess they made it labelbottom in 3.10?
++            return ax.xaxis.get_tick_params()["labelleft"]
++        else:
++            return ax.xaxis.get_tick_params()["labelbottom"]
++
+     def test_single_subplot(self, long_df):
+ 
+         x, y = "a", "z"
+@@ -1852,12 +1863,7 @@ def test_1d_column_wrapped(self):
+         for s in subplots[1:]:
+             ax = s["ax"]
+             assert ax.xaxis.get_label().get_visible()
+-            # mpl3.7 added a getter for tick params, but both yaxis and xaxis return
+-            # the same entry of "labelleft" instead of  "labelbottom" for xaxis
+-            if not _version_predates(mpl, "3.7"):
+-                assert ax.xaxis.get_tick_params()["labelleft"]
+-            else:
+-                assert len(ax.get_xticklabels()) > 0
++            assert self.has_xaxis_labels(ax)
+             assert all(t.get_visible() for t in ax.get_xticklabels())
+ 
+         for s in subplots[1:-1]:
+@@ -1882,12 +1888,7 @@ def test_1d_row_wrapped(self):
+         for s in subplots[-2:]:
+             ax = s["ax"]
+             assert ax.xaxis.get_label().get_visible()
+-            # mpl3.7 added a getter for tick params, but both yaxis and xaxis return
+-            # the same entry of "labelleft" instead of  "labelbottom" for xaxis
+-            if not _version_predates(mpl, "3.7"):
+-                assert ax.xaxis.get_tick_params()["labelleft"]
+-            else:
+-                assert len(ax.get_xticklabels()) > 0
++            assert self.has_xaxis_labels(ax)
+             assert all(t.get_visible() for t in ax.get_xticklabels())
+ 
+         for s in subplots[:-2]:

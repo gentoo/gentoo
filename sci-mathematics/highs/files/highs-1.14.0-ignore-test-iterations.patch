@@ -1,0 +1,21 @@
+We don't care if the number of iterations is a little bit off if we
+get the correct objective value. Regex is not really appropriate for
+numerical comparisons, so for lack of a better idea, we look for any
+number.
+
+diff --git a/check/CMakeLists.txt b/check/CMakeLists.txt
+index 36ace0b..3a6878f 100644
+--- a/check/CMakeLists.txt
++++ b/check/CMakeLists.txt
+@@ -431,7 +431,7 @@ if ((NOT FAST_BUILD OR ALL_TESTS) AND NOT (BUILD_EXTRA_UNIT_ONLY))
+                 (CMAKE_SIZEOF_VOID_P EQUAL 8))
+                   set_tests_properties (${name}${setting} PROPERTIES
+                           PASS_REGULAR_EXPRESSION
+-                          "Simplex   iterations: ${iter}\nObjective value     : ${optval}")
++                          "Simplex   iterations: [0-9]+\nObjective value     : ${optval}")
+               else()
+                   set_tests_properties (${name}${setting} PROPERTIES
+                           PASS_REGULAR_EXPRESSION
+-- 
+2.53.0
+

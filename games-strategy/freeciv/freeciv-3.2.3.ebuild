@@ -17,7 +17,7 @@ else
 	MY_PV="R${PV//./_}"
 	SRC_URI="https://github.com/freeciv/freeciv/archive/refs/tags/${MY_PV}.tar.gz -> ${P}.tar.gz"
 	if [[ ${PV} != *_beta* ]]; then
-		KEYWORDS="~amd64"
+		KEYWORDS="~amd64 ~arm64"
 	fi
 	MY_P="${PN}-${MY_PV}"
 	S="${WORKDIR}/${MY_P}"

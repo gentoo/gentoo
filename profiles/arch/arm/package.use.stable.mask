@@ -1,6 +1,12 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Ionen Wolkens <ionen@gentoo.org> (2026-04-16)
+# media-libs/opencolorio is not stable here and has many dependencies.
+# Not overly worth extra stabilizations over new still scarcely used
+# colour filters. Can revisit if someone wants this.
+media-video/ffmpeg opencolorio
+
 # Matt Turner <mattst88@gentoo.org> (2025-11-24)
 # spirv-llvm-translator < 20 is not stable here.
 dev-util/mesa_clc llvm_slot_18 llvm_slot_19

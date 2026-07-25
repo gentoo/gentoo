@@ -1,0 +1,42 @@
+The rest of the replacements are in src_prepare() to keep the patch
+small.
+
+diff --git a/cmake/sources-python.cmake b/cmake/sources-python.cmake
+index ac1c94c..e5039bf 100644
+--- a/cmake/sources-python.cmake
++++ b/cmake/sources-python.cmake
+@@ -1,6 +1,5 @@
+ set(include_dirs_python
+     $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/extern>
+-    $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/extern/pdqsort>
+     $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/extern/zstr>
+     $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/highs>
+     $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/highs/interfaces>
+@@ -292,7 +291,6 @@ set(highs_sources_python
+     highs/util/stringutil.cpp)
+ 
+ set(highs_headers_python
+-    extern/pdqsort/pdqsort.h
+     highs/interfaces/highs_c_api.h
+     highs/io/Filereader.h
+     highs/io/FilereaderLp.h
+diff --git a/cmake/sources.cmake b/cmake/sources.cmake
+index 1e605de..983833a 100644
+--- a/cmake/sources.cmake
++++ b/cmake/sources.cmake
+@@ -1,6 +1,5 @@
+ set(include_dirs
+   $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/extern>
+-  $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/extern/pdqsort>
+   $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/extern/zstr>
+   $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/highs>
+   $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/highs/interfaces>
+@@ -447,7 +446,6 @@ set(highs_sources
+ 
+ # add catch header?
+ set(highs_headers
+-    ../extern/pdqsort/pdqsort.h
+     ../extern/zstr/strict_fstream.hpp
+     ../extern/zstr/zstr.hpp
+     interfaces/highs_c_api.h
+-- 

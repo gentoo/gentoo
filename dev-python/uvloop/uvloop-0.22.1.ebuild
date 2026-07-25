@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -31,6 +31,7 @@ RDEPEND="
 "
 BDEPEND="
 	>=dev-python/cython-3.0[${PYTHON_USEDEP}]
+	dev-python/pkg-resources[${PYTHON_USEDEP}]
 	test? (
 		>=dev-python/pyopenssl-22.0.0[${PYTHON_USEDEP}]
 		dev-python/psutil[${PYTHON_USEDEP}]

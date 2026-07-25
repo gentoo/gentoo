@@ -1,0 +1,66 @@
+# Copyright 1999-2026 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=8
+
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/marcusmeissner.asc
+inherit autotools multilib-minimal verify-sig
+
+DESCRIPTION="Library for parsing, editing, and saving EXIF data"
+HOMEPAGE="https://libexif.github.io/"
+SRC_URI="
+	https://github.com/${PN}/${PN}/releases/download/v${PV}/${P}.tar.xz
+	verify-sig? ( https://github.com/${PN}/${PN}/releases/download/v${PV}/${P}.tar.xz.asc )
+"
+
+LICENSE="LGPL-2+"
+SLOT="0"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~arm64-macos ~x64-macos ~x64-solaris"
+IUSE="doc nls"
+
+RDEPEND="nls? ( virtual/libintl )"
+DEPEND="${RDEPEND}"
+BDEPEND="
+	virtual/pkgconfig
+	doc? ( app-text/doxygen )
+	nls? ( sys-devel/gettext )
+	verify-sig? ( sec-keys/openpgp-keys-marcusmeissner )
+"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.6.13-pkgconfig.patch
+)
+
+QA_CONFIG_IMPL_DECL_SKIP=(
+	localtime_s # bug #898318
+)
+
+src_prepare() {
+	default
+
+	# bug #390249
+	sed -i -e '/FLAGS=/s:-g::' configure.ac || die
+
+	# Previously elibtoolize for BSD
+	eautoreconf
+}
+
+multilib_src_configure() {
+	local myeconfargs=(
+		$(multilib_native_use_enable doc docs)
+		$(use_enable nls)
+		--with-doc-dir="${EPREFIX}"/usr/share/doc/${PF}
+	)
+
+	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
+}
+
+multilib_src_install() {
+	emake DESTDIR="${D}" install
+}
+
+multilib_src_install_all() {
+	find "${ED}" -name '*.la' -delete || die
+
+	rm -f "${ED}"/usr/share/doc/${PF}/{ABOUT-NLS,COPYING} || die
+}

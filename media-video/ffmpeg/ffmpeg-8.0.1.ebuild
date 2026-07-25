@@ -395,6 +395,10 @@ src_prepare() {
 		tc-ld-is-mold && tc-is-clang && FFMPEG_ENABLE_LTO= #963835
 	fi
 	filter-lto
+
+	# workaround ICEs with >=gcc-16, (bug #973641 and bug #973622)
+	tc-is-gcc && [[ $(gcc-major-version) -ge 16 ]] &&
+		append-flags -fno-tree-vectorize
 }
 
 multilib_src_configure() {

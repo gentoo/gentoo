@@ -1,0 +1,110 @@
+diff -rup ghostscript-10.06.0/base/gsalloc.c ghostscript-10.06.0-fix/base/gsalloc.c
+--- ghostscript-10.06.0/base/gsalloc.c	2025-09-09 11:36:39.000000000 +0200
++++ ghostscript-10.06.0-fix/base/gsalloc.c	2026-04-02 20:49:47.663907312 +0200
+@@ -15,6 +15,7 @@
+ 
+ 
+ /* Standard memory allocator */
++#include <stdint.h>
+ #include "gx.h"
+ #include "memory_.h"
+ #include "gserrors.h"
+diff -rup ghostscript-10.06.0/base/gsmchunk.c ghostscript-10.06.0-fix/base/gsmchunk.c
+--- ghostscript-10.06.0/base/gsmchunk.c	2025-09-09 11:36:39.000000000 +0200
++++ ghostscript-10.06.0-fix/base/gsmchunk.c	2026-04-02 20:36:07.054944826 +0200
+@@ -21,6 +21,7 @@
+  * a top-down semi-splaying access scheme on lookups and
+  * insertions. */
+ 
++#include <stdint.h>
+ #include "memory_.h"
+ #include "gx.h"
+ #include "gsstruct.h"
+diff -rup ghostscript-10.06.0/base/gsmisc.c ghostscript-10.06.0-fix/base/gsmisc.c
+--- ghostscript-10.06.0/base/gsmisc.c	2025-09-09 11:36:39.000000000 +0200
++++ ghostscript-10.06.0-fix/base/gsmisc.c	2026-04-02 20:35:38.579157437 +0200
+@@ -35,6 +35,7 @@ orig_sqrt(double x)
+ }
+ 
+ /* Here is the real #include section. */
++#include <stdint.h>
+ #include "ctype_.h"
+ #include "malloc_.h"
+ #include "math_.h"
+diff -rup ghostscript-10.06.0/base/gxblend.h ghostscript-10.06.0-fix/base/gxblend.h
+--- ghostscript-10.06.0/base/gxblend.h	2025-09-09 11:36:39.000000000 +0200
++++ ghostscript-10.06.0-fix/base/gxblend.h	2026-04-02 20:33:39.431037868 +0200
+@@ -18,6 +18,7 @@
+ #ifndef gxblend_INCLUDED
+ #  define gxblend_INCLUDED
+ 
++#include <stdint.h>
+ #include "gxcindex.h"
+ #include "gxcvalue.h"
+ #include "gxfrac.h"
+diff -rup ghostscript-10.06.0/base/gxclmem.c ghostscript-10.06.0-fix/base/gxclmem.c
+--- ghostscript-10.06.0/base/gxclmem.c	2025-09-09 11:36:39.000000000 +0200
++++ ghostscript-10.06.0-fix/base/gxclmem.c	2026-04-02 20:36:39.973691086 +0200
+@@ -15,6 +15,7 @@
+ 
+ 
+ /* RAM-based command list implementation */
++#include <stdint.h>
+ #include "memory_.h"
+ #include "gx.h"
+ #include "gserrors.h"
+diff -rup ghostscript-10.06.0/psi/idebug.c ghostscript-10.06.0-fix/psi/idebug.c
+--- ghostscript-10.06.0/psi/idebug.c	2025-09-09 11:36:39.000000000 +0200
++++ ghostscript-10.06.0-fix/psi/idebug.c	2026-04-02 20:37:46.665170371 +0200
+@@ -18,6 +18,7 @@
+ /* This file must always be compiled with DEBUG set. */
+ #undef DEBUG
+ #define DEBUG
++#include <stdint.h>
+ #include "string_.h"
+ #include "ghost.h"
+ #include "gxalloc.h"		/* for procs for getting struct type */
+diff -rup ghostscript-10.06.0/psi/idict.c ghostscript-10.06.0-fix/psi/idict.c
+--- ghostscript-10.06.0/psi/idict.c	2025-09-09 11:36:39.000000000 +0200
++++ ghostscript-10.06.0-fix/psi/idict.c	2026-04-02 20:37:22.277362728 +0200
+@@ -15,6 +15,7 @@
+ 
+ 
+ /* Dictionary implementation */
++#include <stdint.h>
+ #include "math_.h"		/* for frexp */
+ #include "string_.h"		/* for strlen */
+ #include "ghost.h"
+diff -rup ghostscript-10.06.0/psi/idstack.c ghostscript-10.06.0-fix/psi/idstack.c
+--- ghostscript-10.06.0/psi/idstack.c	2025-09-09 11:36:39.000000000 +0200
++++ ghostscript-10.06.0-fix/psi/idstack.c	2026-04-02 20:38:40.001719693 +0200
+@@ -15,6 +15,7 @@
+ 
+ 
+ /* Implementation of dictionary stacks */
++#include <stdint.h>
+ #include "ghost.h"
+ #include "idict.h"
+ #include "idictdef.h"
+diff -rup ghostscript-10.06.0/psi/interp.c ghostscript-10.06.0-fix/psi/interp.c
+--- ghostscript-10.06.0/psi/interp.c	2025-09-09 11:36:39.000000000 +0200
++++ ghostscript-10.06.0-fix/psi/interp.c	2026-04-02 20:39:06.601472602 +0200
+@@ -15,6 +15,7 @@
+ 
+ 
+ /* Ghostscript language interpreter */
++#include <stdint.h>
+ #include "memory_.h"
+ #include "string_.h"
+ #include "ghost.h"
+diff -rup ghostscript-10.06.0/psi/iutil.c ghostscript-10.06.0-fix/psi/iutil.c
+--- ghostscript-10.06.0/psi/iutil.c	2025-09-09 11:36:39.000000000 +0200
++++ ghostscript-10.06.0-fix/psi/iutil.c	2026-04-02 20:38:35.765759042 +0200
+@@ -15,6 +15,7 @@
+ 
+ 
+ /* Utilities for Ghostscript interpreter */
++#include <stdint.h>
+ #include "math_.h"		/* for fabs */
+ #include "memory_.h"
+ #include "string_.h"

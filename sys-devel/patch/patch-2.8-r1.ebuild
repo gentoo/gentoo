@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -58,6 +58,12 @@ src_configure() {
 		# rename to gpatch for better BSD compatibility
 		--program-prefix=g
 	)
+
+	# https://savannah.gnu.org/support/?111394
+	# This can be removed when we patch dev-build/autoconf, though
+	# packages w/o eautoreconf will still need it.
+	[[ ${enable_year2038} == "no" ]] && myeconfargs+=( --disable-year2038 )
+
 	# Do not let $ED or $PATH (split-usr) mess up the search for `ed`:
 	# bug 470210 / bug 957593
 	ac_cv_path_ED="${EPREFIX}/bin/ed" \

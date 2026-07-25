@@ -12,7 +12,7 @@ DESCRIPTION="Import mbox email archives from various sources into Akonadi"
 
 LICENSE="GPL-2+"
 SLOT="6/$(ver_cut 1-2)"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 arm64"
 IUSE=""
 
 DEPEND="

@@ -14,7 +14,7 @@ NANORS_COMMIT="19f07b513e924e471cadd141943c1ec4adc8d0e0"
 TRAY_COMMIT="0309a7cb84aad25079b60c40d1eae0bacd05b26d"
 SWS_COMMIT="187f798d54a9c6cee742f2eb2c54e9ba26f5a385"
 WLRP_COMMIT="a741f0ac5d655338a5100fc34bc8cec87d237346"
-FFMPEG_VERSION="8.1"
+FFMPEG_VERSION="8.1.1"
 
 # To make the assets tarball:
 # PV=
@@ -58,7 +58,7 @@ DESCRIPTION="Self-hosted game stream host for Moonlight"
 HOMEPAGE="https://github.com/LizardByte/Sunshine"
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="cuda debug libdrm svt-av1 systemd trayicon vaapi vulkan wayland X x264 x265"
+IUSE="cuda debug libdrm pipewire svt-av1 systemd trayicon vaapi vulkan wayland X x264 x265"
 
 # Strings for CPU features in the useflag[:configure_option] form
 # if :configure_option isn't set, it will use 'useflag' as configure option
@@ -133,6 +133,7 @@ REQUIRED_USE="
 
 CDEPEND="
 	>=dev-libs/boost-1.89:=[nls]
+	dev-libs/glib:2
 	dev-libs/libevdev
 	dev-libs/openssl:=
 	media-libs/opus
@@ -146,6 +147,7 @@ CDEPEND="
 		sys-libs/libcap
 		x11-libs/libdrm
 	)
+	pipewire? ( media-video/pipewire:= )
 	svt-av1? ( media-libs/svt-av1:= )
 	trayicon? (
 		dev-libs/libayatana-appindicator
@@ -178,7 +180,7 @@ DEPEND="
 	${CDEPEND}
 	dev-cpp/nlohmann_json
 	>=media-libs/amf-headers-1.4.36-r1
-	<media-libs/nv-codec-headers-14
+	=media-libs/nv-codec-headers-13*
 	cuda? ( dev-util/nvidia-cuda-toolkit )
 	vulkan? ( >=dev-util/vulkan-headers-1.4.317 )
 	wayland? ( dev-libs/wayland-protocols )
@@ -193,7 +195,6 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-2025.122.141614-nvcodec.patch
 	"${FILESDIR}"/${PN}-new-boost.patch
 	"${FILESDIR}"/${PN}-new-cuda.patch
 )
@@ -371,11 +372,15 @@ src_configure() {
 		-DSUNSHINE_ASSETS_DIR=share/${PN}
 		-DSUNSHINE_ENABLE_CUDA=$(usex cuda)
 		-DSUNSHINE_ENABLE_DRM=$(usex libdrm)
+		-DSUNSHINE_ENABLE_KWIN=no # Not in any KWin release yet
+		-DSUNSHINE_ENABLE_PORTAL=$(usex pipewire)
 		-DSUNSHINE_ENABLE_VAAPI=$(usex vaapi)
+		-DSUNSHINE_ENABLE_VULKAN=$(usex vulkan)
 		-DSUNSHINE_ENABLE_WAYLAND=$(usex wayland)
 		-DSUNSHINE_ENABLE_X11=$(usex X)
 		-DSUNSHINE_ENABLE_TRAY=$(usex trayicon)
 		-DSUNSHINE_SYSTEM_WAYLAND_PROTOCOLS=yes
+		-DSUNSHINE_SYSTEM_VULKAN_HEADERS=yes
 		-DUDEV_RULES_INSTALL_DIR=$(get_udevdir)/rules.d
 	)
 
@@ -409,7 +414,7 @@ src_compile() {
 pkg_postinst() {
 	udev_reload
 	xdg_pkg_postinst
-	use libdrm && fcaps cap_sys_admin+p usr/bin/"$(readlink "${EROOT}"/usr/bin/${PN})"
+	use libdrm && fcaps cap_sys_admin+p usr/bin/${PN}
 
 	elog "At upstream's request, please report any issues to https://bugs.gentoo.org"
 	elog "rather than going directly to them."

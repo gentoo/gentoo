@@ -1036,6 +1036,8 @@ distutils_wheel_install() {
 		-o -path '*.dist-info/license_files' \
 		-o -path '*.dist-info/licenses/*' \
 		-o -path '*.dist-info/licenses' \
+		-o -path '*.dist-info/sboms/*' \
+		-o -path '*.dist-info/sboms' \
 		-o -path '*.dist-info/zip-safe' \
 		\) -delete || die
 
@@ -1092,7 +1094,7 @@ distutils_pep517_install() {
 			local maturin_args=(
 				"${DISTUTILS_ARGS[@]}"
 				--auditwheel=skip # see bug #831171
-				--jobs="$(makeopts_jobs)"
+				--jobs="$(get_makeopts_jobs)"
 				$(in_iuse debug && usex debug '--profile=dev' '')
 			)
 

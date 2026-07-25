@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 PYTHON_REQ_USE="threads(+),xml(+)"
 
 inherit autotools flag-o-matic linux-info python-single-r1 readme.gentoo-r1 udev
@@ -11,7 +11,7 @@ inherit autotools flag-o-matic linux-info python-single-r1 readme.gentoo-r1 udev
 DESCRIPTION="HP Linux Imaging and Printing - Print, scan, fax drivers and service tools"
 HOMEPAGE="https://developers.hp.com/hp-linux-imaging-and-printing"
 SRC_URI="https://downloads.sourceforge.net/project/${PN}/${PN}/${PV}/${P}.tar.gz
-	https://dev.gentoo.org/~billie/distfiles/${PN}-3.25.6-patches-2.tar.xz"
+	https://dev.gentoo.org/~billie/distfiles/${PN}-3.25.8-patches-1.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -74,7 +74,10 @@ RDEPEND="
 	policykit? ( sys-auth/polkit )
 "
 
-REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+REQUIRED_USE="
+	${PYTHON_REQUIRED_USE}
+	minimal? ( ^^ ( hpcups hpijs ) )
+"
 
 PATCHES=(
 	"${WORKDIR}/patches"
@@ -99,15 +102,8 @@ pkg_setup() {
 
 	if use minimal ; then
 		ewarn "Installing driver portions only, make sure you know what you are doing."
-		ewarn "Depending on the USE flags set for hpcups or hpijs the appropiate driver"
-		ewarn "is installed. If both USE flags are set hpijs overrides hpcups."
-		ewarn "This also disables fax, network, scanner and gui support!"
-	fi
-
-	if ! use hpcups && ! use hpijs ; then
-		ewarn "Installing neither hpcups (USE=-hpcups) nor hpijs (USE=-hpijs) driver,"
-		ewarn "which is probably not what you want."
-		ewarn "You will almost certainly not be able to print."
+		ewarn "Depending on the USE flags set for hpcups or hpijs the appropriate driver"
+		ewarn "is installed. This also disables fax, network, scanner and gui support!"
 	fi
 }
 

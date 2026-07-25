@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,8 +9,9 @@ DESCRIPTION="Validating XML parser written in a portable subset of C++"
 HOMEPAGE="https://xerces.apache.org/xerces-c/"
 
 if [[ ${PV} == *9999 ]] ; then
-	ESVN_REPO_URI="https://svn.apache.org/repos/asf/xerces/c/trunk"
-	inherit subversion
+	EGIT_REPO_URI="https://github.com/apache/xerces-c"
+	EGIT_BRANCH="master"
+	inherit git-r3
 else
 	SRC_URI="
 		mirror://apache/xerces/c/3/sources/${P}.tar.xz
@@ -20,7 +21,11 @@ fi
 
 LICENSE="Apache-2.0"
 SLOT="0/$(ver_cut 1-2)"
-IUSE="cpu_flags_x86_sse2 curl doc examples iconv icu static-libs test threads"
+IUSE="cpu_flags_x86_sse2 curl doc examples iconv icu static-libs test"
+
+# needs 'gencat' on glibc or ICU on musl:
+# https://bugs.gentoo.org/830270
+REQUIRED_USE="elibc_musl? ( icu )"
 
 RESTRICT="!test? ( test )"
 
@@ -37,7 +42,6 @@ DOCS=( CREDITS KEYS NOTICE README )
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.2.4-strict-aliasing.patch
-	"${FILESDIR}"/${PN}-3.2.5-cxx17.patch # bug 931105
 )
 
 pkg_setup() {
@@ -88,7 +92,9 @@ src_configure() {
 		-Dnetwork-accessor="${netaccessor}"
 		-Dmessage-loader="${msgloader}"
 		-Dtranscoder="${transcoder}"
-		-Dthreads:BOOL="$(usex threads)"
+		# always select the "standard" Mutex Manager:
+		# https://bugs.gentoo.org/972564
+		-Dthreads:BOOL=ON
 		-Dsse2:BOOL="$(usex cpu_flags_x86_sse2)"
 	)
 

@@ -1,0 +1,38 @@
+https://gitlab.freedesktop.org/pipewire/wireplumber/-/work_items/932
+https://gitlab.freedesktop.org/pipewire/wireplumber/-/commit/78bd42cad84f9cd174616a98aecbc78dbe67d121
+
+From 78bd42cad84f9cd174616a98aecbc78dbe67d121 Mon Sep 17 00:00:00 2001
+From: Julian Bouzas <julian.bouzas@collabora.com>
+Date: Mon, 30 Mar 2026 07:33:44 -0400
+Subject: [PATCH] bluez: Don't set bluez5.autoswitch-routes on BT devices
+
+This seems to cause some issues with BT profile autoswitch.
+
+See #932
+---
+ src/scripts/monitors/bluez.lua | 10 ----------
+ 1 file changed, 10 deletions(-)
+
+diff --git a/src/scripts/monitors/bluez.lua b/src/scripts/monitors/bluez.lua
+index 347e1bc7..5ba70eb2 100644
+--- a/src/scripts/monitors/bluez.lua
++++ b/src/scripts/monitors/bluez.lua
+@@ -474,16 +474,6 @@ function checkProfiles (dev)
+     end
+   end
+ 
+-  -- Setup Route/Port correctly for loopback nodes
+-  if has_headset_profile then
+-    local param = Pod.Object ({
+-        "Spa:Pod:Object:Param:Props",
+-        "Props",
+-        params = Pod.Struct ({ "bluez5.autoswitch-routes", true })
+-    })
+-    dev:set_param("Props", param)
+-  end
+-
+   if has_headset_profile then
+     -- Always create the source loopback device if autoswitch is enabled.
+     -- Otherwise, only create the source loopback device if the current profile
+-- 
+GitLab

@@ -1,0 +1,11 @@
+Same issue as https://bugs.gentoo.org/971287 which only happens with
+recent gcc-16 libstdc++ snapshots.
+--- a/src/3rdparty/chromium/third_party/blink/renderer/platform/widget/input/prediction/predictor_factory.cc
++++ b/src/3rdparty/chromium/third_party/blink/renderer/platform/widget/input/prediction/predictor_factory.cc
+@@ -3,4 +3,6 @@
+ // found in the LICENSE file.
+ 
++#include <climits>
++
+ #include "third_party/blink/renderer/platform/widget/input/prediction/predictor_factory.h"
+ 

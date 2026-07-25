@@ -1,0 +1,120 @@
+diff --git a/cmake/sources.cmake b/cmake/sources.cmake
+index 354de9e..06917f7 100644
+--- a/cmake/sources.cmake
++++ b/cmake/sources.cmake
+@@ -257,56 +257,9 @@ set(hipo_util_headers
+     ipm/hipo/auxiliary/VectorOperations.h)
+ 
+ set(hipo_orderings_sources
+-    ../extern/metis/GKlib/error.c
+-    ../extern/metis/GKlib/mcore.c
+-    ../extern/metis/GKlib/memory.c
+-    ../extern/metis/GKlib/random.c
+-    ../extern/metis/libmetis/auxapi.c
+-    ../extern/metis/libmetis/balance.c
+-    ../extern/metis/libmetis/bucketsort.c
+-    ../extern/metis/libmetis/coarsen.c
+-    ../extern/metis/libmetis/compress.c
+-    ../extern/metis/libmetis/contig.c
+-    ../extern/metis/libmetis/fm.c
+-    ../extern/metis/libmetis/gklib.c
+-    ../extern/metis/libmetis/graph.c
+-    ../extern/metis/libmetis/initpart.c
+-    ../extern/metis/libmetis/mcutil.c
+-    ../extern/metis/libmetis/mmd.c
+-    ../extern/metis/libmetis/ometis.c
+-    ../extern/metis/libmetis/options.c
+-    ../extern/metis/libmetis/refine.c
+-    ../extern/metis/libmetis/separator.c
+-    ../extern/metis/libmetis/sfm.c
+-    ../extern/metis/libmetis/srefine.c
+-    ../extern/metis/libmetis/util.c
+-    ../extern/metis/libmetis/wspace.c
+     ../extern/rcm/rcm.cpp)
+ 
+ set(hipo_orderings_headers
+-    ../extern/metis/GKlib/gk_arch.h
+-    ../extern/metis/GKlib/gk_defs.h
+-    ../extern/metis/GKlib/gk_macros.h
+-    ../extern/metis/GKlib/gk_mkblas.h
+-    ../extern/metis/GKlib/gk_mkmemory.h
+-    ../extern/metis/GKlib/gk_mkpqueue.h
+-    ../extern/metis/GKlib/gk_mkrandom.h
+-    ../extern/metis/GKlib/gk_mksort.h
+-    ../extern/metis/GKlib/gk_ms_inttypes.h
+-    ../extern/metis/GKlib/gk_ms_stat.h
+-    ../extern/metis/GKlib/gk_ms_stdint.h
+-    ../extern/metis/GKlib/gk_proto.h
+-    ../extern/metis/GKlib/gk_struct.h
+-    ../extern/metis/GKlib/gk_types.h
+-    ../extern/metis/GKlib/GKlib.h
+-    ../extern/metis/libmetis/defs.h
+-    ../extern/metis/libmetis/gklib_defs.h
+-    ../extern/metis/libmetis/macros.h
+-    ../extern/metis/libmetis/metislib.h
+-    ../extern/metis/libmetis/proto.h
+-    ../extern/metis/libmetis/stdheaders.h
+-    ../extern/metis/libmetis/struct.h
+-    ../extern/metis/metis.h
+     ../extern/rcm/rcm.h)
+ 
+ # redefinition of 'kHighsInf'
+diff --git a/highs/CMakeLists.txt b/highs/CMakeLists.txt
+index 99ae0d1..f2d873b 100644
+--- a/highs/CMakeLists.txt
++++ b/highs/CMakeLists.txt
+@@ -159,6 +159,7 @@ else()
+ 
+   target_sources(highs PRIVATE ${sources} ${headers} ${win_version_file})
+   target_link_libraries(highs PRIVATE amd)
++  target_link_libraries(highs PRIVATE metis)
+ 
+   # Optional Cuda
+   if (CUPDLP_GPU)
+diff --git a/highs/ipm/hipo/factorhighs/Analyse.cpp b/highs/ipm/hipo/factorhighs/Analyse.cpp
+index e638240..0d9b4e5 100644
+--- a/highs/ipm/hipo/factorhighs/Analyse.cpp
++++ b/highs/ipm/hipo/factorhighs/Analyse.cpp
+@@ -13,7 +13,7 @@
+ #include <amd.h>
+ #include "ipm/hipo/auxiliary/Auxiliary.h"
+ #include "ipm/hipo/auxiliary/Log.h"
+-#include "metis/metis.h"
++#include <metis.h>
+ #include "rcm/rcm.h"
+ 
+ namespace hipo {
+diff --git a/highs/ipm/hipo/ipm/FactorHiGHSSolver.cpp b/highs/ipm/hipo/ipm/FactorHiGHSSolver.cpp
+index 6a11446..37cca65 100644
+--- a/highs/ipm/hipo/ipm/FactorHiGHSSolver.cpp
++++ b/highs/ipm/hipo/ipm/FactorHiGHSSolver.cpp
+@@ -6,7 +6,7 @@
+ #include <amd.h>
+ #include "ipm/hipo/auxiliary/Auxiliary.h"
+ #include "ipm/hipo/auxiliary/Log.h"
+-#include "metis/metis.h"
++#include <metis.h>
+ #include "parallel/HighsParallel.h"
+ #include "rcm/rcm.h"
+ 
+@@ -591,7 +591,7 @@ Int FactorHiGHSSolver::chooseOrdering(const std::vector<Int>& rows,
+     // compute ordering
+     if (orderings_to_try[i] == kHipoMetisString) {
+       idx_t options[METIS_NOPTIONS];
+-      Highs_METIS_SetDefaultOptions(options);
++      METIS_SetDefaultOptions(options);
+       options[METIS_OPTION_SEED] = kMetisSeed;
+ 
+       // set logging of Metis depending on debug level
+@@ -606,7 +606,7 @@ Int FactorHiGHSSolver::chooseOrdering(const std::vector<Int>& rows,
+       std::vector<Int> iperm(n);
+ 
+       Int status =
+-          Highs_METIS_NodeND(&n, full_ptr.data(), full_rows.data(), NULL,
++          METIS_NodeND(&n, full_ptr.data(), full_rows.data(), NULL,
+                              options, permutations[i].data(), iperm.data());
+ 
+       log_.printDevInfo("Metis done\n");
+-- 
+2.53.0
+

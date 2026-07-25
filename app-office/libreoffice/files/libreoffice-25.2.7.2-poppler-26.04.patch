@@ -1,0 +1,46 @@
+From a427db4f20717b1d34721192567a4368deb9eb06 Mon Sep 17 00:00:00 2001
+From: Xisco Fauli <xiscofauli@libreoffice.org>
+Date: Thu, 2 Apr 2026 11:32:02 +0200
+Subject: [PATCH] poppler: upgrade to 26.04
+
+Downloaded from https://poppler.freedesktop.org/poppler-26.04.0.tar.xz
+
+Change-Id: I1e43d4a63da2f380b613718a897c3973ec9e16ce
+Reviewed-on: https://gerrit.libreoffice.org/c/core/+/203153
+Reviewed-by: Xisco Fauli <xiscofauli@libreoffice.org>
+Tested-by: Jenkins
+---
+ .../source/pdfimport/xpdfwrapper/pdfioutdev_gpl.cxx  |  4 +++-
+ .../source/pdfimport/xpdfwrapper/pdfioutdev_gpl.hxx  |  4 +++-
+ 2 files changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/sdext/source/pdfimport/xpdfwrapper/pdfioutdev_gpl.cxx b/sdext/source/pdfimport/xpdfwrapper/pdfioutdev_gpl.cxx
+index f1487453eb503..18c855908f024 100644
+--- a/sdext/source/pdfimport/xpdfwrapper/pdfioutdev_gpl.cxx
++++ b/sdext/source/pdfimport/xpdfwrapper/pdfioutdev_gpl.cxx
+@@ -1114,7 +1114,9 @@ void PDFOutDev::drawChar(GfxState *state, double x, double y,
+     printf( "\n" );
+ }
+ 
+-#if POPPLER_CHECK_VERSION(0, 64, 0)
++#if POPPLER_CHECK_VERSION(26, 4, 0)
++void PDFOutDev::drawString(GfxState*, const std::string& /*s*/)
++#elif POPPLER_CHECK_VERSION(0, 64, 0)
+ void PDFOutDev::drawString(GfxState*, const GooString* /*s*/)
+ #else
+ void PDFOutDev::drawString(GfxState*, GooString* /*s*/)
+diff --git a/sdext/source/pdfimport/xpdfwrapper/pdfioutdev_gpl.hxx b/sdext/source/pdfimport/xpdfwrapper/pdfioutdev_gpl.hxx
+index da587b1522d61..0c8b77183b7a6 100644
+--- a/sdext/source/pdfimport/xpdfwrapper/pdfioutdev_gpl.hxx
++++ b/sdext/source/pdfimport/xpdfwrapper/pdfioutdev_gpl.hxx
+@@ -261,7 +261,9 @@ void setDefaultCTM(const std::array<double, 6> &pMat) override;
+                               double originX, double originY,
+                               CharCode code, int nBytes, Unicode *u, int uLen) override;
+ #endif
+-#if POPPLER_CHECK_VERSION(0, 64, 0)
++#if POPPLER_CHECK_VERSION(26, 4, 0)
++        virtual void drawString(GfxState *state, const std::string &s) override;
++#elif POPPLER_CHECK_VERSION(0, 64, 0)
+         virtual void drawString(GfxState *state, const GooString *s) override;
+ #else
+         virtual void drawString(GfxState *state, GooString *s) override;

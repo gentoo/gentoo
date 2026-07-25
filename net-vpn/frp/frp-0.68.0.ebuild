@@ -19,7 +19,7 @@ KEYWORDS="~amd64 ~loong ~riscv"
 IUSE="+client +server"
 REQUIRED_USE="|| ( client server )"
 
-BDEPEND=">=dev-lang/go-1.25"
+BDEPEND=">=dev-lang/go-1.25.0"
 
 _compile() {
 	# Currently no web support

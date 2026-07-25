@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{12..14} )
 
 DOCS_BUILDER="mkdocs"
 DOCS_DEPEND="
@@ -25,9 +25,8 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="test"
-# Seem to hang right now?
-RESTRICT="!test? ( test ) test"
+# Needs network access and possibly privileges
+RESTRICT="test"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
@@ -40,15 +39,8 @@ RDEPEND="
 		dev-python/pylint[${PYTHON_USEDEP}]
 		dev-python/rpyc[${PYTHON_USEDEP}]
 		dev-util/unicorn[python,${PYTHON_USEDEP}]
-	')"
-
-BDEPEND="
-	test? (
-		$(python_gen_cond_dep '
-			dev-python/pytest[${PYTHON_USEDEP}]
-			dev-python/pytest-xdist[${PYTHON_USEDEP}]
-		')
-	)"
+	')
+"
 
 DOCS=( README.md )
 

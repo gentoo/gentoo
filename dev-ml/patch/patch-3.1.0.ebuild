@@ -9,7 +9,7 @@ DESCRIPTION="Patch library purely in OCaml"
 HOMEPAGE="https://github.com/hannesm/patch/"
 
 SRC_URI="https://github.com/hannesm/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 
 LICENSE="LGPL-2.1"
 SLOT="0/${PV}"

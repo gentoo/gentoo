@@ -18,7 +18,7 @@ HOMEPAGE="
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
 IUSE="+native-extensions test-rust"
 
 DEPEND="
@@ -138,6 +138,10 @@ python_test() {
 		tests/test_client_functional.py::test_invalid_idna
 		# broken by irrelevant deprecation warnings
 		tests/test_circular_imports.py::test_no_warnings
+		# https://github.com/aio-libs/aiohttp/issues/11400#issuecomment-4168569526
+		# https://github.com/python/cpython/issues/145599
+		# https://github.com/python/cpython/pull/145600
+		tests/test_cookie_helpers.py::test_parse_set_cookie_headers_uses_unquote_with_octal
 	)
 
 	case ${EPYTHON} in

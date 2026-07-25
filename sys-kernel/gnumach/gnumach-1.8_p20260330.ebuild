@@ -33,7 +33,7 @@ fi
 
 LICENSE="GPL-2 BSD-2"
 SLOT="0"
-IUSE="headers-only"
+IUSE="debug headers-only"
 [[ ${PV} != 9999 ]] && KEYWORDS="~amd64 ~x86"
 
 if is_crosspkg ; then
@@ -45,6 +45,8 @@ else
 		dev-util/mig
 	"
 fi
+
+BDEPEND="sys-apps/texinfo"
 
 src_prepare() {
 	default
@@ -82,6 +84,8 @@ src_configure() {
 
 		# Needed for QEMU with `-net nic,model=ne2k_pc` at least
 		--enable-net-group
+
+		$(use_enable debug kdb)
 	)
 
 	econf "${myeconfargs[@]}"

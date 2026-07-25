@@ -1,10 +1,10 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 GNOME_ORG_MODULE="gtk+"
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 PYTHON_REQ_USE="xml(+)"
 
 inherit gnome.org python-single-r1
@@ -27,7 +27,8 @@ BDEPEND="${PYTHON_DEPS}
 src_configure() { :; }
 
 src_compile() {
-	xsltproc -nonet http://docbook.sourceforge.net/release/xsl/current/manpages/docbook.xsl docs/reference/gtk/gtk-builder-convert.xml || die
+	xsltproc -nonet http://docbook.sourceforge.net/release/xsl/current/manpages/docbook.xsl \
+		docs/reference/gtk/gtk-builder-convert.xml || die
 }
 
 src_install() {

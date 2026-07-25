@@ -1,0 +1,4 @@
+#!/bin/sh
+appname="masterpdfeditor5"
+selfpath="/opt/master-pdf-editor-5"
+exec "$selfpath/$appname" "$@"

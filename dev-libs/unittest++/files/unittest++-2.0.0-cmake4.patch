@@ -5,7 +5,7 @@ https://bugs.gentoo.org/951811
 +++ b/CMakeLists.txt
 @@ -1,4 +1,4 @@
 -cmake_minimum_required(VERSION 2.8.1)
-+cmake_minimum_required(VERSION 3.5)
++cmake_minimum_required(VERSION 3.10)
  project(UnitTest++)
  
  option(UTPP_USE_PLUS_SIGN

@@ -1,0 +1,27 @@
+https://bugs.gentoo.org/972697
+https://github.com/file/file/commit/f37cc42c535a08598d3ec4b4fa7aa73af7a8e223
+
+From f37cc42c535a08598d3ec4b4fa7aa73af7a8e223 Mon Sep 17 00:00:00 2001
+From: Christos Zoulas <christos@zoulas.com>
+Date: Wed, 25 Mar 2026 22:10:22 +0000
+Subject: [PATCH] Revert PR/679: matches too many unix stanza files (like
+ toml). https://bbs.archlinux.org/viewtopic.php?pid=2292157#p2292157
+
+---
+ magic/Magdir/windows | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/magic/Magdir/windows b/magic/Magdir/windows
+index eb5b8b3db..05eb1d01e 100644
+--- a/magic/Magdir/windows
++++ b/magic/Magdir/windows
+@@ -1260,7 +1260,7 @@
+ >>>>>&0	ubyte				x
+ # characters, digits, underscore and white space followed by right bracket
+ # terminated by CR implies section line to skip BOOTLOG.TXT DETLOG.TXT
+->>>>>>&-1	regex/T			\^([A-Za-z0-9_\(\)\ ]+)\][\r\n]	Generic INItialization configuration [%-.40s
++>>>>>>&-1	regex/T			\^([A-Za-z0-9_\(\)\ ]+)\]\r	Generic INItialization configuration [%-.40s
+ # NETDEF.INF multiarc.ini 
+ #!:mime	application/x-setupscript
+ !:mime	application/x-wine-extension-ini
+

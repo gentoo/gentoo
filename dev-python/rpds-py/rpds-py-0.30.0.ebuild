@@ -6,7 +6,7 @@ EAPI=8
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=maturin
 PYPI_VERIFY_REPO=https://github.com/crate-py/rpds
-PYTHON_COMPAT=( pypy3_11 python3_{11..14} )
+PYTHON_COMPAT=( pypy3_11 python3_{11..15} )
 
 CRATES="
 	archery@1.2.2
@@ -60,6 +60,8 @@ QA_FLAGS_IGNORED="usr/lib.*/py.*/site-packages/rpds/rpds.*.so"
 
 EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
+
+export PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1
 
 src_unpack() {
 	pypi_src_unpack

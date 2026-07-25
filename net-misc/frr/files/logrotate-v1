@@ -1,9 +1,0 @@
-/var/log/frr/*.log {
-  su frr frr
-  notifempty
-  missingok
-  delaycompress
-  postrotate
-    [ -r /run/frr/watchfrr.pid ] && kill -USR1 $(cat /var/run/frr/*.pid)
-  endscript
-}

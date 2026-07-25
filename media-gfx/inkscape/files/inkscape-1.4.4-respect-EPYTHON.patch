@@ -1,0 +1,19 @@
+https://bugs.gentoo.org/924747
+--- a/src/extension/implementation/script.cpp
++++ b/src/extension/implementation/script.cpp
+@@ -87,12 +87,12 @@ const std::map<std::string, Script::interpreter_t> Script::interpreterTab = {
+     { "python",  {"python-interpreter",  {"pythonw"           }}},
+ #elif defined __APPLE__
+     { "perl",    {"perl-interpreter",    {"perl"              }}},
+-    { "python",  {"python-interpreter",  {"python3"           }}},
++    { "python",  {"python-interpreter",  {"@GENTOO_PYTHON_INTERP@", "python3"           }}},
+ #else
+     { "perl",    {"perl-interpreter",    {"perl"              }}},
+-    { "python",  {"python-interpreter",  {"python3", "python" }}},
++    { "python",  {"python-interpreter",  {"@GENTOO_PYTHON_INTERP@", "python3", "python" }}},
+ #endif
+-    { "python2", {"python2-interpreter", {"python2", "python" }}},
++    { "python2", {"python2-interpreter", {"python2", "@GENTOO_PYTHON_INTERP@", "python" }}},
+     { "ruby",    {"ruby-interpreter",    {"ruby"    }}},
+     { "shell",   {"shell-interpreter",   {"sh"      }}},
+     // clang-format on

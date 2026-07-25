@@ -5,4 +5,12 @@
 		<email>hurd@gentoo.org</email>
 		<name>GNU Hurd project</name>
 	</maintainer>
+	<use>
+		<flag name="debug">
+		Enable the in-kernel debugger. Can be entered manually
+		with CTRL-ALT-d.
+
+		See https://www.gnu.org/software/hurd/microkernel/mach/gnumach/debugging.html
+		</flag>
+	</use>
 </pkgmetadata>

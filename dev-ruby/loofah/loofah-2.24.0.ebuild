@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -10,7 +10,7 @@ RUBY_FAKEGEM_GEMSPEC="loofah.gemspec"
 
 inherit ruby-fakegem
 
-DESCRIPTION="Library for manipulating and transforming HTML/XML documents and fragments."
+DESCRIPTION="Library for manipulating and transforming HTML/XML documents and fragments"
 HOMEPAGE="https://github.com/flavorjones/loofah"
 SRC_URI="https://github.com/flavorjones/loofah/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 

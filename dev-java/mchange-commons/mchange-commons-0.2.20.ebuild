@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Skeleton command:
@@ -12,7 +12,7 @@ MAVEN_ID="com.mchange:mchange-commons-java:0.2.20"
 
 inherit java-pkg-2 java-pkg-simple
 
-DESCRIPTION="a library of arguably useful Java utilities."
+DESCRIPTION="a library of arguably useful Java utilities"
 HOMEPAGE="https://github.com/swaldman/mchange-commons-java"
 SRC_URI="https://github.com/swaldman/${PN}-java/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 

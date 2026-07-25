@@ -1,4 +1,4 @@
-# Copyright 2023-2025 Gentoo Authors
+# Copyright 2023-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,7 +11,7 @@ CHROMIUM_LANGS="
 
 inherit chromium-2 desktop unpacker xdg
 
-DESCRIPTION="A privacy-first, open-source platform for knowledge sharing and management."
+DESCRIPTION="A privacy-first, open-source platform for knowledge sharing and management"
 HOMEPAGE="https://github.com/logseq/logseq"
 SRC_URI="https://github.com/logseq/logseq/releases/download/${PV}/logseq-linux-x64-${PV}.zip -> ${P}.zip"
 S="${WORKDIR}/Logseq-linux-x64"

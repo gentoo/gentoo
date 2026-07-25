@@ -3,8 +3,7 @@
 
 EAPI=8
 
-# dev-python/pyinotify doesn't have py3.14 yet
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 PYTHON_REQ_USE="xml(+)"
 
 inherit meson gnome2-utils optfeature pax-utils python-single-r1 xdg
@@ -15,7 +14,7 @@ SRC_URI="https://github.com/linuxmint/cinnamon/archive/${PV}.tar.gz -> ${P}.tar.
 
 LICENSE="BSD GPL-2+ GPL-3+ GPL-3-with-openssl-exception LGPL-2+ LGPL-2.1 LGPL-2.1+ MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~loong ~riscv ~x86"
+KEYWORDS="amd64 arm64 ~loong ~riscv x86"
 IUSE="+eds +gstreamer gtk-doc +nls +networkmanager wayland"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 

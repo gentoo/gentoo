@@ -18,30 +18,24 @@ HOMEPAGE="
 SRC_URI="
 	elibc_glibc? (
 		amd64? (
-			https://dev.gentoo.org/~mgorny/binpkg/amd64/pypy/dev-lang/pypy3-exe/${MY_P}.gpkg.tar
-				-> ${MY_P}.amd64.gpkg.tar
+			https://distfiles.gentoo.org/pub/proj/python/binpkg/amd64/pypy3-exe/${MY_P}.amd64.gpkg.tar
 		)
 		arm64? (
-			https://dev.gentoo.org/~mgorny/binpkg/arm64/pypy/dev-lang/pypy3-exe/${MY_P}.gpkg.tar
-				-> ${MY_P}.arm64.gpkg.tar
+			https://distfiles.gentoo.org/pub/proj/python/binpkg/arm64/pypy3-exe/${MY_P}.arm64.gpkg.tar
 		)
 		x86? (
-			https://dev.gentoo.org/~mgorny/binpkg/x86/pypy/dev-lang/pypy3-exe/${MY_P}.gpkg.tar
-				-> ${MY_P}.x86.gpkg.tar
+			https://distfiles.gentoo.org/pub/proj/python/binpkg/x86/pypy3-exe/${MY_P}.x86.gpkg.tar
 		)
 	)
 	elibc_musl? (
 		amd64? (
-			https://dev.gentoo.org/~mgorny/binpkg/amd64-musl/pypy/dev-lang/pypy3-exe/${MY_P}.gpkg.tar
-				-> ${MY_P}.amd64-musl.gpkg.tar
+			https://distfiles.gentoo.org/pub/proj/python/binpkg/amd64-musl/pypy3-exe/${MY_P}.amd64-musl.gpkg.tar
 		)
 		arm64? (
-			https://dev.gentoo.org/~mgorny/binpkg/arm64-musl/pypy/dev-lang/pypy3-exe/${MY_P}.gpkg.tar
-				-> ${MY_P}.arm64-musl.gpkg.tar
+			https://distfiles.gentoo.org/pub/proj/python/binpkg/arm64-musl/pypy3-exe/${MY_P}.arm64-musl.gpkg.tar
 		)
 		x86? (
-			https://dev.gentoo.org/~mgorny/binpkg/x86-musl/pypy/dev-lang/pypy3-exe/${MY_P}.gpkg.tar
-				-> ${MY_P}.x86-musl.gpkg.tar
+			https://distfiles.gentoo.org/pub/proj/python/binpkg/x86-musl/pypy3-exe/${MY_P}.x86-musl.gpkg.tar
 		)
 	)
 "
@@ -49,7 +43,7 @@ S=${WORKDIR}/${MY_P}
 
 LICENSE="MIT"
 SLOT="${PV%_p*}"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 
 # sys-devel/gcc for libgcc_s.so
 RDEPEND="

@@ -322,6 +322,27 @@ _git-r3_env_setup() {
 	fi
 }
 
+# @FUNCTION: _git-r3_get_object_format
+# @USAGE: <hash>
+# @INTERNAL
+# @DESCRIPTION:
+# Determine the object format from hash. Prints "sha1" or "sha256".
+_git-r3_get_object_format() {
+	local h=${1}
+
+	case "${#h}" in
+		40)
+			echo sha1
+			;;
+		64)
+			echo sha256
+			;;
+		*)
+			die "Unrecognized hash: ${h}"
+			;;
+	esac
+}
+
 # @FUNCTION: _git-r3_set_gitdir
 # @USAGE: <repo-uri>
 # @INTERNAL
@@ -334,7 +355,8 @@ _git-r3_env_setup() {
 _git-r3_set_gitdir() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	local repo_name=${1#*://*/}
+	local repo_uri=${1}
+	local repo_name=${repo_uri#*://*/}
 
 	# strip the trailing slash
 	repo_name=${repo_name%/}
@@ -391,7 +413,13 @@ _git-r3_set_gitdir() {
 			umask "${EVCS_UMASK}" || die "Bad options to umask: ${EVCS_UMASK}"
 		fi
 		mkdir "${GIT_DIR}" || die
-		git init --bare -b __init__ || die
+
+		# determine the remote object format
+		local head_ref=(
+			$(git ls-remote "${repo_uri}" "HEAD" || die)
+		)
+		local object_format=$(_git-r3_get_object_format "${head_ref[0]}")
+		git init --object-format="${object_format}" --bare -b __init__ || die
 		if [[ ${saved_umask} ]]; then
 			umask "${saved_umask}" || die
 		fi
@@ -850,7 +878,15 @@ git-r3_fetch() {
 	if [[ ${saved_umask} ]]; then
 		umask "${saved_umask}" || die
 	fi
-	[[ ${success} ]] || die "Unable to fetch from any of EGIT_REPO_URI"
+	if [[ ! ${success} ]]; then
+		eerror "Fetching git repository failed. Please inspect the log for errors."
+		eerror "If you see 'mismatched algorithm' errors, please remove the local clone"
+		eerror "and try again:"
+		eerror "  rm -r ${GIT_DIR}"
+		eerror
+
+		die "Unable to fetch from any of EGIT_REPO_URI"
+	fi
 
 	# submodules can reference commits in any branch
 	# always use the 'mirror' mode to accommodate that, bug #503332
@@ -958,7 +994,8 @@ git-r3_checkout() {
 		# use git init+fetch instead of clone since the latter doesn't like
 		# non-empty directories.
 
-		git init --quiet -b __init__ || die
+		local object_format=$(_git-r3_get_object_format "${new_commit_id}")
+		git init --object-format="${object_format}" --quiet -b __init__ || die
 		if [[ ${EGIT_LFS} ]]; then
 			# The "skip-repo" flag will just skip the installation of the pre-push hooks.
 			# We don't use these hook as we don't do any pushes

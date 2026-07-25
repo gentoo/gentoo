@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # This file contains descriptions of PYTHON_SINGLE_TARGET USE_EXPAND flags.
@@ -9,4 +9,6 @@ python3_13 - Build for Python 3.13 only
 python3_13t - Build for Python 3.13 freethreading only
 python3_14 - Build for Python 3.14 only
 python3_14t - Build for Python 3.14 freethreading only
+python3_15 - Build for Python 3.15 only
+python3_15t - Build for Python 3.15 freethreading only
 pypy3_11 - Build for PyPy3.11 only

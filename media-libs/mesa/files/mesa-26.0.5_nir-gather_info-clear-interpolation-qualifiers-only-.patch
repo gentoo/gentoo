@@ -1,0 +1,62 @@
+From b2833e444029cb922a970a9769e741faf8f48b7c Mon Sep 17 00:00:00 2001
+From: Janne Grunau <j@jannau.net>
+Date: Fri, 17 Apr 2026 15:38:31 +0200
+Subject: [PATCH 2/2] nir/gather_info: clear interpolation qualifiers only in
+ fragment stage
+
+Asahi wants the the interpolation qualifiers from the shader info in the
+vertex shader. Clear them only in the fragment stage so they can
+propagate back.
+
+Closes: https://gitlab.freedesktop.org/mesa/mesa/-/work_items/15288
+Backport-to: 26.0
+Fixes: a72704d0fbd ("nir/gather_info: clear interpolation qualifiers before gathering")
+Signed-off-by: Janne Grunau <j@jannau.net>
+Part-of: <https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/41040>
+(cherry picked from commit 98a97cb4136751080979a4ae2dacc69869099b75)
+---
+ src/compiler/nir/nir_gather_info.c    | 4 ++--
+ src/gallium/drivers/asahi/agx_state.c | 5 +++++
+ 2 files changed, 7 insertions(+), 2 deletions(-)
+
+diff --git a/src/compiler/nir/nir_gather_info.c b/src/compiler/nir/nir_gather_info.c
+index 2ac32c7e42e..85dc0b57132 100644
+--- a/src/compiler/nir/nir_gather_info.c
++++ b/src/compiler/nir/nir_gather_info.c
+@@ -1067,8 +1067,6 @@ nir_shader_gather_info(nir_shader *shader, nir_function_impl *entrypoint)
+    shader->info.patch_outputs_written_indirectly = 0;
+    shader->info.per_primitive_inputs = 0;
+    shader->info.per_primitive_outputs = 0;
+-   shader->info.linear_varyings = 0;
+-   shader->info.perspective_varyings = 0;
+ 
+    shader->info.uses_resource_info_query = false;
+ 
+@@ -1086,6 +1084,8 @@ nir_shader_gather_info(nir_shader *shader, nir_function_impl *entrypoint)
+ 
+       /* By definition the fragment shader knows, unless we fail to gather. */
+       shader->info.known_interpolation_qualifiers = true;
++      shader->info.linear_varyings = 0;
++      shader->info.perspective_varyings = 0;
+    }
+    if (shader->info.stage == MESA_SHADER_TESS_CTRL) {
+       shader->info.tess.tcs_same_invocation_inputs_read = 0;
+diff --git a/src/gallium/drivers/asahi/agx_state.c b/src/gallium/drivers/asahi/agx_state.c
+index 6269ed55bc7..b3693ac8267 100644
+--- a/src/gallium/drivers/asahi/agx_state.c
++++ b/src/gallium/drivers/asahi/agx_state.c
+@@ -1800,6 +1800,11 @@ agx_shader_initialize(struct agx_device *dev, struct agx_uncompiled_shader *so,
+             nir_lower_io_lower_64bit_to_32 |
+                nir_lower_io_use_interpolated_input_intrinsics);
+ 
++   /* Regather shader info after nir_lower_io. This recalculates interpolation
++    * qualifiers which got lost when mesa/st lowered I/O back to vars.
++    */
++   nir_shader_gather_info(nir, nir_shader_get_entrypoint(nir));
++
+    if (nir->info.stage == MESA_SHADER_FRAGMENT) {
+       so->info.uses_fbfetch = nir->info.fs.uses_fbfetch_output;
+       so->info.inputs_linear_shaded = nir->info.linear_varyings;
+-- 
+2.53.0
+

@@ -1,6 +1,14 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Alfred Wingate <parona@protonmail.com> (2026-05-13)
+# dev-qt/qtgraphs:6 is not keyworded here
+dev-python/pyside graphs
+
+# Brett A C Sheffield <bacs@librecast.net> (2026-04-22)
+# virtual/pandoc is not keyworded here
+>=dev-libs/xmlsec-1.3.11 doc
+
 # Robin H. Johnson <robbat2@gentoo.org> (2026-03-22)
 # sys-block/vdo not keyworded here
 sys-fs/lvm2 vdo
@@ -91,8 +99,9 @@ dev-ml/labltk ocamlopt
 mail-mta/sendmail tinycdb
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-04-02)
-# Needs kde-frameworks/breeze-icons which is not keyworded here.
-net-irc/quassel system-icons
+# spell: kde-frameworks/sonnet is not keyworded here
+# system-icons: kde-frameworks/breeze-icons is not keyworded here
+net-irc/quassel spell system-icons
 
 # NRK <nrk@disroot.org> (2025-03-17)
 # media-libs/libyuv is not keyworded
@@ -225,6 +234,7 @@ dev-lang/idris2 test-full
 dev-python/cloudscraper test
 dev-python/qtpy test
 games-util/lgogdownloader gui
+net-irc/quassel urlpreview
 net-misc/seafile-client shibboleth
 
 # Florian Schmaus <flow@gentoo.org> (2022-11-23)
@@ -587,7 +597,6 @@ net-vpn/tinc vde
 # The QML (V4) and JSC JITs are supported only on amd64/arm/x86,
 # so the flag is masked in the base profile and unmasked here.
 dev-qt/qtdeclarative -jit
-dev-qt/qtscript -jit
 
 # missing keywords
 media-plugins/gst-plugins-meta aac dts dv lame libvisual modplug vcd wavpack

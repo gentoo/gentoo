@@ -1,6 +1,22 @@
 # Copyright 2022-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Alfred Wingate <parona@protonmail.com> (2026-05-13)
+# dev-qt/qtgraphs:6 is not keyworded here
+dev-python/pyside graphs
+
+# Pacho Ramos <pacho@gentoo.org> (2026-05-09)
+# media-plugins/gst-plugin-gtk4 is not keyworded
+>=net-im/gajim-2.3 voice
+
+# Alfred Wingate <parona@protonmail.com> (2026-05-03)
+# dev-libs/libthai not keyworded here
+x11-libs/pango libthai
+
+# Cristian Othón Martínez Vera <cfuga@cfuga.mx> (2026-03-22)
+# app-pda/usbmuxd is not keyworded here
+gnome-base/gvfs ios
+
 # Robin H. Johnson <robbat2@gentoo.org> (2026-03-22)
 # sys-block/vdo not keyworded here
 sys-fs/lvm2 vdo
@@ -109,6 +125,7 @@ dev-db/mariadb -galera
 
 # WANG Xuerui <xen0n@gentoo.org> (2025-01-06)
 # 2 test cases abort with "LLVM ERROR: Relocation type not implemented yet!"
+dev-python/symengine llvm
 sci-libs/symengine llvm
 
 # WANG Xuerui <xen0n@gentoo.org> (2025-01-06)

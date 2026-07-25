@@ -17,6 +17,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2026-05-08)
+# The package was archived upstream as pytest-9 features built-in
+# subtest support.  Gotta check if we need any code changes, or can just
+# drop it in place.
+dev-python/pytest-subtests
+
 # Michał Górny <mgorny@gentoo.org> (2026-04-01)
 # Upstream is no longer accepting nor publishing any bug reports.
 # As such, the package is not suitable for public consumption anymore.

@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="Run real-mode video BIOS code to alter hw state (i.e. reinitialize video card)"
 HOMEPAGE="https://cgit.freedesktop.org/~airlied/vbetool/"
-SRC_URI="https://dev.gentoo.org/~ionen/distfiles/${P}.tar.xz"
+SRC_URI="https://distfiles.gentoo.org/pub/dev/ionen@gentoo.org/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"

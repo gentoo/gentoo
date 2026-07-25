@@ -1,0 +1,130 @@
+commit efeddc3e639e6e963933ca5505efe3d62d281b41
+Author: Robin H. Johnson <robbat2@gentoo.org>
+Date:   Sun Apr 19 13:50:41 2026 -0700
+
+    feat: Qt6 port
+    
+    Trivial Qt5 to Qt6 port.
+    
+    Fixes: https://github.com/cgsecurity/testdisk/issues/179
+    Signed-off-by: Robin H. Johnson <robbat2@gentoo.org>
+
+diff --git a/configure.ac a/configure.ac
+index e72579d9..2e507680 100644
+--- a/configure.ac
++++ a/configure.ac
+@@ -918,13 +918,16 @@ AC_CHECK_FUNCS([reiserfs_fs_open_fast])
+ LIBS="$OLDLIBS"
+ AC_CHECK_FUNCS([ntfs_libntfs_version ntfs_volume_startup])
+ 
+-export QT_SELECT=qt5
++export QT_SELECT=qt6
+ if test "$use_qt" = "true";
+ then
+-  PKG_CHECK_MODULES(QT5GUI, [Qt5Gui  >= 5.0.0],,use_qt=false)
+-  PKG_CHECK_MODULES(QT5WIDGETS, [Qt5Widgets  >= 5.0.0],,use_qt=false)
+-  AC_MSG_CHECKING([whether Qt5 is using --std=c++14])
+-  qt_config=`$PKG_CONFIG --variable=qt_config Qt5Core | grep "c++14"`
++  PKG_CHECK_MODULES(QT6CORE, [Qt6Core  >= 6.0.0],,use_qt=false)
++  PKG_CHECK_MODULES(QT6GUI, [Qt6Gui  >= 6.0.0],,use_qt=false)
++  PKG_CHECK_MODULES(QT6WIDGETS, [Qt6Widgets  >= 6.0.0],,use_qt=false)
++
++
++  AC_MSG_CHECKING([whether Qt6 is using --std=c++14])
++  qt_config=`$PKG_CONFIG --variable=qt_config Qt6Core | grep "c++14"`
+   if test "x$qt_config" != "x" ;
+   then
+     AC_MSG_RESULT([[yes]])
+@@ -943,8 +946,8 @@ then
+     AC_LANG_POP([C++])
+   else
+     AC_MSG_RESULT([[no]])
+-    AC_MSG_CHECKING([whether Qt5 is using --std=c++11])
+-    qt_config=`$PKG_CONFIG --variable=qt_config Qt5Core | grep "c++11"`
++    AC_MSG_CHECKING([whether QT6 is using --std=c++11])
++    qt_config=`$PKG_CONFIG --variable=qt_config Qt6Core | grep "c++11"`
+     if test "x$qt_config" != "x" ;
+     then
+       AC_MSG_RESULT([[yes]])
+@@ -966,23 +969,27 @@ then
+     fi
+   fi
+ 
+-  AC_CHECK_TOOLS(MOC,[moc-qt5 moc],)
++
++  PKG_CHECK_VAR([QT_LIBEXECDIR], [Qt6Core >= 6.0.0], [libexecdir])
++  PKG_CHECK_VAR([QT_BINDIR], [Qt6Core >= 6.0.0], [bindir])
++
++  AC_PATH_PROGS([MOC],[moc-qt6 moc],[],["$QT_LIBEXECDIR:$QT_BINDIR:$PATH"])
+   if test x$MOC = x ; then
+-	AC_MSG_WARN(Could not find a moc-qt5 or moc tool in your PATH.)
++	AC_MSG_WARN(Could not find a moc-qt6 or moc tool in your PATH.)
+ 	use_qt=false
+   fi
+-  AC_CHECK_TOOLS(RCC,[rcc-qt5 rcc],)
++  AC_PATH_PROGS([RCC],[rcc-qt6 rcc],[],["$QT_LIBEXECDIR:$QT_BINDIR:$PATH"])
+   if test x$RCC = x ; then
+-	AC_MSG_WARN(Could not find a rcc-qt5 or rcc tool in your PATH.)
++	AC_MSG_WARN(Could not find a rcc-qt6 or rcc tool in your PATH.)
+ 	use_qt=false
+   fi
+-  AC_CHECK_TOOLS(LRELEASE,[lrelease-qt5 lrelease],)
++  AC_PATH_PROGS([LRELEASE],[lrelease-qt6 lrelease],[],["$QT_LIBEXECDIR:$QT_BINDIR:$PATH"])
+   if test x$LRELEASE = x ; then
+-	AC_MSG_WARN(Could not find a lrelease-qt5 or lrelease tool in your PATH.)
++	AC_MSG_WARN(Could not find a lrelease-qt6 or lrelease tool in your PATH.)
+ 	use_qt=false
+   fi
+-  qphotorec_LDADD="$qphotorec_LDADD $QT5GUI_LIBS $QT5WIDGETS_LIBS"
+-  qphotorec_CXXFLAGS="$qphotorec_CXXFLAGS $QT5GUI_CFLAGS $QT5WIDGETS_CFLAGS"
++  qphotorec_LDADD="$qphotorec_LDADD $QT6GUI_LIBS $QT6WIDGETS_LIBS"
++  qphotorec_CXXFLAGS="$qphotorec_CXXFLAGS $QT6GUI_CFLAGS $QT6WIDGETS_CFLAGS"
+ fi
+ AM_CONDITIONAL(USEQT, test "$use_qt" = true)
+ if test "$win_target" = yes;
+diff --git a/src/intrf.c a/src/intrf.c
+index d63858ff..09cfd893 100644
+--- a/src/intrf.c
++++ a/src/intrf.c
+@@ -128,7 +128,7 @@ void screen_buffer_to_log(void)
+     log_info("%s\n",intr_buffer_screen[i]);
+ }
+ 
+-int get_partition_status(const partition_t *partition)
++char get_partition_status(const partition_t *partition)
+ {
+   switch(partition->status)
+   {
+diff --git a/src/intrf.h a/src/intrf.h
+index 3b6fd81f..37dec890 100644
+--- a/src/intrf.h
++++ a/src/intrf.h
+@@ -105,7 +105,7 @@ void screen_buffer_to_log(void);
+   @ terminates \true;
+   @ assigns \nothing;
+   @*/
+-int get_partition_status(const partition_t *partition);
++char get_partition_status(const partition_t *partition);
+ 
+ #ifdef __cplusplus
+ } /* closing brace for extern "C" */
+diff --git a/src/qphotorec.cpp a/src/qphotorec.cpp
+index 3771ef41..8bcfb45e 100644
+--- a/src/qphotorec.cpp
++++ a/src/qphotorec.cpp
+@@ -284,13 +284,11 @@ void QPhotorec::PartListWidget_updateUI()
+ 	QString partname="";
+ 	if(partition->partname[0]!='\0')
+ 	{
+-	  partname.sprintf("[%s]", partition->partname);
++	  QTextStream(&partname) << "[" << partition->partname << "]";
+ 	}
+ 	if(partition->fsname[0]!='\0')
+ 	{
+-	  QString fsname;
+-	  fsname.sprintf(" [%s]", partition->fsname);
+-	  partname.append(fsname);
++	  QTextStream(&partname) << " [" << partition->fsname << "]";
+ 	}
+ 	PartListWidget->setItem(currentRow, 5, new QTableWidgetItem(partname));
+       }

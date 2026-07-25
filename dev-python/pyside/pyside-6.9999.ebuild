@@ -9,7 +9,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{11..14} )
-LLVM_COMPAT=( {16..21} )
+LLVM_COMPAT=( {18..22} )
 DISTUTILS_USE_PEP517=setuptools
 DISTUTILS_EXT=1
 
@@ -49,6 +49,7 @@ declare -A QT_MODULES=(
 	["+core"]="Core"
 	["+dbus"]="DBus"
 	["designer"]="Designer"
+	["graphs"]="Graphs" # plus widgets
 	["+gui"]="Gui"
 	["help"]="Help"
 	["httpserver"]="HttpServer"
@@ -85,15 +86,16 @@ declare -A QT_MODULES=(
 
 # Manually reextract these requirements on version bumps by running the
 # following one-liner from within "${S}":
-#     $ grep 'set.*_deps' PySide6/Qt*/CMakeLists.txt
+#     $ grep -E '(set|list).*_deps' sources/pyside6/PySide6/Qt*/CMakeLists.txt
 declare -A QT_REQUIREMENTS=(
-	["3d"]="gui network opengl"
+	["3d"]="gui network"
 	["bluetooth"]="core"
 	["charts"]="core gui widgets"
 	["concurrent"]="core"
 	["dbus"]="core"
 	["designer"]="widgets"
 	["gles2-only"]="gui"
+	["graphs"]="core network gui qml quick quick3d"
 	["gui"]="core"
 	["help"]="widgets"
 	["httpserver"]="core concurrent network websockets"
@@ -107,7 +109,7 @@ declare -A QT_REQUIREMENTS=(
 	["positioning"]="core"
 	["printsupport"]="widgets"
 	["qml"]="network"
-	["quick"]="gui network qml opengl"
+	["quick"]="gui network qml"
 	["quick3d"]="gui network qml quick"
 	["remoteobjects"]="core network"
 	["scxml"]="core"
@@ -121,11 +123,17 @@ declare -A QT_REQUIREMENTS=(
 	["testlib"]="widgets"
 	["uitools"]="widgets"
 	["webchannel"]="core"
-	["webengine"]="core gui network printsupport quick webchannel"
+	["webengine"]="core gui network printsupport webchannel"
 	["websockets"]="network"
 	["webview"]="gui quick webengine"
 	["widgets"]="gui"
 	["xml"]="core"
+)
+# Manually reextract these requirements on version bumps by running the
+# following one-liner from within "${S}":
+#     $ grep 'check_qt_opengl' sources/pyside6/PySide6/Qt*/CMakeLists.txt
+declare -a CONDITIONAL_OPENGL=(
+	3d graphs quick
 )
 
 IUSE="${!QT_MODULES[*]} debug doc gles2-only numpy test tools"
@@ -144,11 +152,13 @@ done
 # Minimal supported version of Qt.
 QT_PV="$(ver_cut 1-3)*:6"
 
+# USE="tools" is heavily automagic based on what other qt tools are installed at build time.
+
 # WebEngine needs sound support, so enable either pulseaudio or alsa
 RDEPEND="
 	dev-libs/libxml2:=
 	dev-libs/libxslt
-	=dev-qt/qtbase-${QT_PV}[concurrent?,dbus?,gles2-only=,network?,opengl?,sql?,widgets?,xml?]
+	=dev-qt/qtbase-${QT_PV}[concurrent?,dbus?,gles2-only=,network?,opengl=,sql?,widgets?,xml?]
 	$(llvm_gen_dep '
 		llvm-core/clang:${LLVM_SLOT}
 	')
@@ -156,6 +166,7 @@ RDEPEND="
 	bluetooth? ( =dev-qt/qtconnectivity-${QT_PV}[bluetooth] )
 	charts? ( =dev-qt/qtcharts-${QT_PV} )
 	designer? ( =dev-qt/qttools-${QT_PV}[designer,widgets,gles2-only=] )
+	graphs? ( =dev-qt/qtgraphs-${QT_PV}[quick3d] )
 	gui? (
 		=dev-qt/qtbase-${QT_PV}[gui,jpeg(+)]
 		x11-libs/libxkbcommon
@@ -213,7 +224,7 @@ DEPEND="${RDEPEND}
 BDEPEND="
 	dev-build/cmake
 	dev-python/distro[${PYTHON_USEDEP}]
-	<dev-python/wheel-0.46.0[${PYTHON_USEDEP}]
+	dev-python/wheel[${PYTHON_USEDEP}]
 	dev-util/patchelf
 	doc? (
 		>=dev-libs/libxml2-2.6.32
@@ -223,11 +234,10 @@ BDEPEND="
 		dev-python/myst-parser[${PYTHON_USEDEP}]
 	)
 	numpy? ( dev-python/numpy[${PYTHON_USEDEP}] )
+	test? ( dev-python/pkginfo[${PYTHON_USEDEP}] )
 "
 
 PATCHES=(
-	# Needs porting to newer wheel and setuptools
-	"${FILESDIR}/${PN}-6.8.2-quick-fix-build-wheel.patch"
 	"${FILESDIR}/${PN}-6.10.0-dont-vendor-ffmpeg.patch"
 	"${FILESDIR}/${PN}-6.10.1-pass-ninja-opts.patch"
 )
@@ -243,7 +253,7 @@ python_prepare_all() {
 	# Shiboken6 assumes Vulkan headers live under either "$VULKAN_SDK/include"
 	# or "$VK_SDK_PATH/include" rather than "${EPREFIX}/usr/include/vulkan".
 	sed -i -e "s~\bdetectVulkan(&headerPaths);~headerPaths.append(HeaderPath{QByteArrayLiteral(\"${EPREFIX}/usr/include/vulkan\"), HeaderType::System});~" \
-			sources/shiboken6/ApiExtractor/clangparser/compilersupport.cpp || die
+			sources/shiboken6_generator/ApiExtractor/clangparser/compilersupport.cpp || die
 
 	# Shiboken6 assumes the "/usr/lib/clang/${CLANG_NEWEST_VERSION}/include/"
 	# subdirectory provides Clang builtin includes (e.g., "stddef.h") for the
@@ -262,7 +272,7 @@ python_prepare_all() {
 	#     https://bugs.gentoo.org/619490
 	sed -e \
 		's~(findClangBuiltInIncludesDir())~(QStringLiteral("'"${EPREFIX}"'/usr/lib/clang/'"${LLVM_SLOT}"'/include"))~' \
-		-i sources/shiboken6/ApiExtractor/clangparser/compilersupport.cpp || die
+		-i sources/shiboken6_generator/ApiExtractor/clangparser/compilersupport.cpp || die
 
 	sed -e \
 		's~set(libclang_directory_suffix "lib")~set(libclang_directory_suffix "'"$(get_libdir)"'")~' \
@@ -291,6 +301,9 @@ python_prepare_all() {
 	# py3.14?
 	[sample::multiple_derived]
 		linux
+	# Doesn't appear to play well with virtualx as it tries to use wayland
+	[QtWidgets::qapp_issue_585]
+		linux
 	EOF
 
 	if ! use numpy; then
@@ -303,6 +316,8 @@ python_prepare_all() {
 		[QtGui::qpainter_test]
 			linux
 		[QtCore::qrangemodel_test]
+			linux
+		[QtGraphs::qgraphs_numpy_test]
 			linux
 		EOF
 	fi
@@ -337,6 +352,10 @@ python_configure_all() {
 					die "${depflag} is required but not enabled"
 				fi
 			done
+			if use opengl && [[ ${CONDITIONAL_OPENGL[@]} =~ ${flag//+} ]]; then
+				# match key in QT_MODULES
+				enable_qt_mod "+opengl"
+			fi
 		fi
 		if [[ "${ENABLED_QT_MODULES[*]}" != *${modules}* ]]; then
 			# modules is whitespace separated. We expand implicitly.
@@ -357,6 +376,7 @@ python_configure_all() {
 		use opengl && ENABLED_QT_MODULES+=( OpenGLWidgets )
 		use pdfium && ENABLED_QT_MODULES+=( PdfWidgets )
 		use quick && ENABLED_QT_MODULES+=( QuickWidgets )
+		use graphs && ENABLED_QT_MODULES+=( GraphsWidgets ) # requires QuickWidgets
 		use svg && ENABLED_QT_MODULES+=( SvgWidgets )
 		use webengine && ENABLED_QT_MODULES+=( WebEngineWidgets )
 	fi
@@ -376,7 +396,7 @@ python_configure_all() {
 		--openssl="${ESYSROOT}/usr/bin/openssl"
 		--qt="$(ver_cut 1-3)"
 		--qtpaths="$(qt6_get_bindir)/qtpaths"
-		--verbose-build
+		--log-level=verbose
 		--parallel="$(makeopts_jobs)"
 		"$(usex debug "--debug" "--relwithdebinfo")"
 		"--$(usex doc "build" "skip")-docs"
@@ -400,7 +420,7 @@ python_configure_all() {
 python_compile() {
 	DISTUTILS_ARGS=(
 		"${MAIN_DISTUTILS_ARGS[@]}"
-		--build-type=shiboken6
+		--build-type=shiboken6-generator
 	)
 	distutils-r1_python_compile
 
@@ -411,27 +431,31 @@ python_compile() {
 			-maxdepth 1 -type d -name 'qfp*-py*-qt*-*' -printf "%f\n"
 	)
 	export pyside_build_id="${pyside_build_dir#"qfp$(usev debug d)-py${EPYTHON#python}-qt$(ver_cut 1-3)-"}"
-	export PYTHONPATH="${BUILD_DIR}/build$((${#DISTUTILS_WHEELS[@]}-1))/${pyside_build_dir}/install/lib/${EPYTHON}/site-packages:${PYTHONPATH}"
+	export PYTHONPATH="${BUILD_DIR}/build$((${#DISTUTILS_WHEELS[@]}-1))/${pyside_build_dir}/package:${BUILD_DIR}/build$((${#DISTUTILS_WHEELS[@]}-1))/${pyside_build_dir}/install/lib/${EPYTHON}/site-packages:${PYTHONPATH}"
 
 	DISTUTILS_ARGS=(
 		"${MAIN_DISTUTILS_ARGS[@]}"
 		--reuse-build
-		--shiboken-target-path="${BUILD_DIR}/build$((${#DISTUTILS_WHEELS[@]}-1))/${pyside_build_dir}/install"
-		--build-type=shiboken6-generator
+		--shiboken-target-path="${BUILD_DIR}/build$((${#DISTUTILS_WHEELS[@]}-1))/${pyside_build_dir}/package/shiboken6_generator"
+		--build-type=shiboken6
 	)
 	distutils-r1_python_compile
-	export PYTHONPATH="${BUILD_DIR}/build$((${#DISTUTILS_WHEELS[@]}-1))/${pyside_build_dir}/install/lib/${EPYTHON}/site-packages:${PYTHONPATH}"
+	export PYTHONPATH="${BUILD_DIR}/build$((${#DISTUTILS_WHEELS[@]}-1))/${pyside_build_dir}/package:${BUILD_DIR}/build$((${#DISTUTILS_WHEELS[@]}-1))/${pyside_build_dir}/install/lib/${EPYTHON}/site-packages:${PYTHONPATH}"
+
+	# Copy shiboken6_generator files to shiboken6 package so we can reuse the shiboken-target-path
+	rsync -ur "${BUILD_DIR}/build$((${#DISTUTILS_WHEELS[@]}-2))/${pyside_build_dir}/package/shiboken6_generator/"* "${BUILD_DIR}/build$((${#DISTUTILS_WHEELS[@]}-1))/${pyside_build_dir}/package/shiboken6/" || die
+	ln -s shiboken6 "${BUILD_DIR}/build$((${#DISTUTILS_WHEELS[@]}-1))/${pyside_build_dir}/package/shiboken6_generator" || die
 
 	# If no pyside modules enabled, build just shiboken
 	if [[ ${#ENABLED_QT_MODULES[@]} -gt 0 ]]; then
 		DISTUTILS_ARGS=(
 			"${MAIN_DISTUTILS_ARGS[@]}"
 			--reuse-build
-			--shiboken-target-path="${BUILD_DIR}/build$((${#DISTUTILS_WHEELS[@]}-1))/${pyside_build_dir}/install"
+			--shiboken-target-path="${BUILD_DIR}/build$((${#DISTUTILS_WHEELS[@]}-1))/${pyside_build_dir}/package/shiboken6"
 			--build-type=pyside6
 		)
 		distutils-r1_python_compile
-		export PYTHONPATH="${BUILD_DIR}/build$((${#DISTUTILS_WHEELS[@]}-1))/${pyside_build_dir}/install/lib/${EPYTHON}/site-packages:${PYTHONPATH}"
+		export PYTHONPATH="${BUILD_DIR}/build$((${#DISTUTILS_WHEELS[@]}-1))/${pyside_build_dir}/package:${BUILD_DIR}/build$((${#DISTUTILS_WHEELS[@]}-1))/${pyside_build_dir}/install/lib/${EPYTHON}/site-packages:${PYTHONPATH}"
 	fi
 
 	# Link libraries to the usual location for backwards compatibility
@@ -542,7 +566,7 @@ python_compile() {
 		-e "s~\${PACKAGE_PREFIX_DIR}/~\${PACKAGE_PREFIX_DIR}/share/PySide6/~g" \
 		-e "s~\${_IMPORT_PREFIX}/shiboken6/include~/usr/include/shiboken6~g" \
 		-e "s~\${_IMPORT_PREFIX}/PySide6/include~/usr/include/PySide6~g" \
-		-i 	"${BUILD_DIR}/install/usr/lib/cmake/"*/*.cmake || die
+		-i "${BUILD_DIR}/install/usr/lib/cmake/"*/*.cmake || die
 	local file
 	for file in "${BUILD_DIR}/install/usr/lib/cmake/"*/*.cpython-*.cmake
 	do

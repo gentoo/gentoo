@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{12..13} )
+PYTHON_COMPAT=( python3_{12..14} )
 ADA_COMPAT=( gcc_{14..16} )
 
 inherit ada python-single-r1 multiprocessing
@@ -36,8 +36,8 @@ BDEPEND="
 			dev-python/sphinx[${PYTHON_USEDEP}]
 			dev-python/sphinx-rtd-theme[${PYTHON_USEDEP}]
 		)
-	')
-	test? ( dev-ada/e3-testsuite )"
+		test? ( dev-ada/e3-testsuite[${PYTHON_USEDEP}] )
+	')"
 
 pkg_setup() {
 	python-single-r1_pkg_setup

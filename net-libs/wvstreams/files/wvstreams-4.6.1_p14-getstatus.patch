@@ -1,0 +1,13 @@
+From: Martin Vath <martin@mvath.de>
+Bug: https://bugs.gentoo.org/937274
+--- a/include/wvscatterhash.h
++++ b/include/wvscatterhash.h
+@@ -183,8 +183,6 @@
+         Iter(WvScatterHash &_table) : IterBase(_table) { }
+         Iter(const Iter &other) : IterBase(other) { }
+ 
+-        unsigned char *getstatus() { return &this->xstatus[index-1]; }
+-
+         T *ptr() const
+             { return (T *)(get()); }
+ 

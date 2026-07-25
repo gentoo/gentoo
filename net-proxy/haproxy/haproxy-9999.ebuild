@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
@@ -13,18 +13,23 @@ MY_P="${PN}-${PV/_beta/-dev}"
 DESCRIPTION="A TCP/HTTP reverse proxy for high availability environments"
 HOMEPAGE="http://www.haproxy.org"
 if [[ ${PV} != *9999 ]]; then
-	# This is arbitrary; upstream uses master.  Try to update when possible
-	VTEST_COMMIT="af198470d7ce482d3d26eb9ca3f246a438739366"
-	VTEST_DIR="${WORKDIR}/VTest-${VTEST_COMMIT}"
+	# This is arbitrary; upstream uses master. Try to update when possible. Only git clones are allowed by VTest upstream.
+	# git clone https://code.vinyl-cache.org/vtest/VTest2
+	# cd VTest2
+	# VTEST2_NAME="VTest2-$(git rev-parse --short HEAD)"
+	# git archive --format=tar.gz --prefix="${VTEST2_NAME}/" -o "${VTEST2_NAME}.tar.gz" HEAD
+	# scp ${VTEST2_NAME}.tar.gz dev.gentoo.org:~/public_html/distfiles/
+	VTEST2_COMMIT="3bba149e0c322585c09db2827a2a6cf0d3b15d54"
+	VTEST2_DIR="${WORKDIR}/VTest2-${VTEST2_COMMIT:0:7}"
 	SRC_URI="http://haproxy.1wt.eu/download/$(ver_cut 1-2)/src/${MY_P}.tar.gz
-			test? ( https://github.com/vtest/VTest/archive/${VTEST_COMMIT}.tar.gz -> VTest-${VTEST_COMMIT}.tar.gz )"
+		test? ( https://dev.gentoo.org/~idl0r/distfiles/VTest2-${VTEST2_COMMIT:0:7}.tar.gz )"
 	KEYWORDS="~amd64 ~arm64 ~ppc ~x86"
 elif [[ ${PV} == 9999 ]]; then
-	VTEST_DIR="${WORKDIR}/VTest"
+	VTEST2_DIR="${WORKDIR}/VTest2"
 	EGIT_REPO_URI="https://git.haproxy.org/git/haproxy.git/"
 	EGIT_BRANCH=master
 else
-	VTEST_DIR="${WORKDIR}/VTest"
+	VTEST2_DIR="${WORKDIR}/VTest2"
 	EGIT_REPO_URI="https://git.haproxy.org/git/haproxy-$(ver_cut 1-2).git/"
 	EGIT_BRANCH=master
 fi
@@ -86,7 +91,8 @@ src_unpack() {
 		default
 	else
 		git-r3_src_unpack
-		EGIT_REPO_URI="https://github.com/vtest/VTest" EGIT_CHECKOUT_DIR="${VTEST_DIR}" git-r3_src_unpack
+		EGIT_REPO_URI="https://code.vinyl-cache.org/vtest/VTest2" EGIT_BRANCH="main" EGIT_CHECKOUT_DIR="${VTEST2_DIR}" \
+			git-r3_src_unpack
 	fi
 }
 
@@ -152,10 +158,10 @@ src_compile() {
 
 src_test() {
 	# https://github.com/vtest/VTest/issues/12
-	emake -C "${VTEST_DIR}" CC="$(tc-getCC)" FLAGS="${CFLAGS} -Wno-error=unused-result"
+	emake -C "${VTEST2_DIR}" CC="$(tc-getCC)" FLAGS="${CFLAGS} -Wno-error=unused-result"
 	ulimit -n 65536 || die "${PN} requires ulimit -n set to at least 65536 for tests"
 	env -u A -u D TMPDIR="/tmp" emake reg-tests -- --v --j "$(makeopts_jobs)" \
-		HAPROXY_PROGRAM="${S}/haproxy" VTEST_PROGRAM="${VTEST_DIR}/vtest" REGTESTS_TYPE="default,bug,devel"
+		HAPROXY_PROGRAM="${S}/haproxy" VTEST_PROGRAM="${VTEST2_DIR}/vtest" REGTESTS_TYPE="default,bug,devel"
 }
 
 src_install() {

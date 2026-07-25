@@ -1,0 +1,14 @@
+https://github.com/luceneplusplus/LucenePlusPlus/pull/227
+
+diff --git a/src/core/util/ThreadPool.cpp b/src/core/util/ThreadPool.cpp
+index ee6640b..38f4170 100644
+--- a/src/core/util/ThreadPool.cpp
++++ b/src/core/util/ThreadPool.cpp
+@@ -30,6 +30,7 @@ ThreadPool::ThreadPool()
+ }
+ 
+ ThreadPool::~ThreadPool() {
++    io_context.stop();
+     threadGroup.join_all(); // wait for all competition
+ }
+ 

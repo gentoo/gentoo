@@ -24,7 +24,7 @@ else
 	"
 	S="${WORKDIR}/${PN}-src-${SRC_PV}"
 
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~arm64-macos ~x64-macos ~x64-solaris"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~arm64-macos ~x64-macos ~x64-solaris"
 fi
 
 LICENSE="public-domain"
@@ -372,7 +372,11 @@ multilib_src_test() {
 	addpredict "/ÿ.db"
 
 	emake tclextension
-	emake -Onone $(usex test-full 'xdevtest' 'test')
+	if multilib_is_native_abi; then
+		emake -Onone $(usex test-full 'xdevtest' 'test')
+	else
+		emake  srctree-check fuzztest sourcetest $TESTPROGS testrunner
+	fi
 }
 
 multilib_src_install() {

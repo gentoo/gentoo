@@ -42,6 +42,7 @@ PATCHES=(
 	# Fix C99 compat (from Fedora); included in debian "source-hardening"???
 	#"${FILESDIR}"/${PN}-c99.patch
 	"${FILESDIR}"/${PN}-configure-c99.patch
+	"${FILESDIR}"/${P}-config.patch
 )
 
 pkg_setup() {
@@ -58,6 +59,7 @@ src_prepare() {
 
 		eapply -p1 "${WORKDIR}/debian/patches/${p}"
 	done
+	eapply "${FILESDIR}"/${P}-ldflags.patch
 
 	# don't strip if not asked for
 	sed -i \

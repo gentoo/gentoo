@@ -10,7 +10,7 @@
 		<flag name="nfc">Enable support for the Near Field Communication protocol</flag>
 	</use>
 	<upstream>
-		<bugs-to>https://bugreports.qt.io/</bugs-to>
+		<bugs-to>https://qt-project.atlassian.net/</bugs-to>
 		<doc>https://doc.qt.io/</doc>
 		<remote-id type="github">qt/qtconnectivity</remote-id>
 	</upstream>

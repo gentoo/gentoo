@@ -1,0 +1,30 @@
+From f199c15aa88bf6c0e15d2bd5b22f4432d5439e0d Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Thu, 14 May 2026 11:21:55 -0400
+Subject: [PATCH] sapi/cli/tests/php_cli_server_ipv6_error_message.phpt:
+ captures IO
+
+Skip this test if SKIP_IO_CAPTURE_TESTS is set in the environment. It
+tries to capture stdout/stderr, and can produce different results when
+automated.
+---
+ sapi/cli/tests/php_cli_server_ipv6_error_message.phpt | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/sapi/cli/tests/php_cli_server_ipv6_error_message.phpt b/sapi/cli/tests/php_cli_server_ipv6_error_message.phpt
+index 55432eeec15..c4bda62e061 100644
+--- a/sapi/cli/tests/php_cli_server_ipv6_error_message.phpt
++++ b/sapi/cli/tests/php_cli_server_ipv6_error_message.phpt
+@@ -5,6 +5,9 @@
+ if (substr(PHP_OS, 0, 3) == 'WIN') {
+     die("skip not for Windows");
+ }
++if (getenv("SKIP_IO_CAPTURE_TESTS")) {
++    die("skip I/O capture test");
++}
+ ?>
+ --FILE--
+ <?php
+-- 
+2.52.0
+

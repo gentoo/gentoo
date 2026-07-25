@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -44,6 +44,10 @@ BDEPEND="
 
 MULTILIB_CHOST_TOOLS=(
 	/usr/bin/wflinfo$(get_exeext)
+)
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.8.1-glibc-2.43.patch
 )
 
 multilib_src_configure() {

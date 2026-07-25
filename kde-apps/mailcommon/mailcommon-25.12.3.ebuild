@@ -15,7 +15,7 @@ DESCRIPTION="Common mail library"
 
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="6/$(ver_cut 1-2)"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 arm64"
 IUSE="activities"
 
 RESTRICT="test"

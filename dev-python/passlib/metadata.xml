@@ -15,7 +15,7 @@
 	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
-		<remote-id type="pypi">passlib</remote-id>
-		<remote-id type="heptapod">python-libs/passlib</remote-id>
+		<remote-id type="github">notypecheck/passlib</remote-id>
+		<remote-id type="pypi">libpass</remote-id>
 	</upstream>
 </pkgmetadata>

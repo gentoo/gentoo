@@ -1,0 +1,29 @@
+https://bugs.gentoo.org/973445
+https://gcc.gnu.org/bugzilla/show_bug.cgi?id=125064
+--- a/src/3rdparty/chromium/base/allocator/partition_allocator/src/partition_alloc/partition_alloc_base/compiler_specific.h
++++ b/src/3rdparty/chromium/base/allocator/partition_allocator/src/partition_alloc/partition_alloc_base/compiler_specific.h
+@@ -352,5 +352,5 @@
+ //   struct PA_TRIVIAL_ABI S { ~S(); }
+ // ```
+-#if PA_HAS_CPP_ATTRIBUTE(clang::trivial_abi)
++#if PA_HAS_CPP_ATTRIBUTE(clang::trivial_abi) && defined(__clang__)
+ #define PA_TRIVIAL_ABI [[clang::trivial_abi]]
+ #else
+--- a/src/3rdparty/chromium/base/compiler_specific.h
++++ b/src/3rdparty/chromium/base/compiler_specific.h
+@@ -575,5 +575,5 @@
+ //   struct TRIVIAL_ABI S { ~S(); }
+ // ```
+-#if __has_cpp_attribute(clang::trivial_abi)
++#if __has_cpp_attribute(clang::trivial_abi) && defined(__clang__)
+ #define TRIVIAL_ABI [[clang::trivial_abi]]
+ #else
+--- a/src/3rdparty/chromium/skia/config/SkUserConfig.h
++++ b/src/3rdparty/chromium/skia/config/SkUserConfig.h
+@@ -104,5 +104,5 @@
+ 
+ #if defined(__has_attribute)
+-#if __has_attribute(trivial_abi)
++#if __has_attribute(trivial_abi) && defined(__clang__)
+ #define SK_TRIVIAL_ABI [[clang::trivial_abi]]
+ #else

@@ -58,6 +58,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-4.2.0-flags.patch"
 	"${FILESDIR}/${PN}-4.2.1-x86-time.patch"
 	"${FILESDIR}/${PN}-4.2.2-setuppy.patch"
+	"${FILESDIR}/${PN}-4.2.4-setuptools.patch"
 )
 
 python_prepare_all() {

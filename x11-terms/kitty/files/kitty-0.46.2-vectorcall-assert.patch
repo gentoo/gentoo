@@ -1,0 +1,9 @@
+https://bugs.gentoo.org/973466
+https://github.com/kovidgoyal/kitty/commit/eaec66fdc628786dd7d8ce5533ff4cdcf71c4f82
+--- a/kitty/colors.c
++++ b/kitty/colors.c
+@@ -1181,3 +1181,3 @@
+     .tp_basicsize = sizeof(Color),
+-    .tp_flags = Py_TPFLAGS_DEFAULT | Py_TPFLAGS_HAVE_VECTORCALL,
++    .tp_flags = Py_TPFLAGS_DEFAULT,
+     .tp_doc = "Color",

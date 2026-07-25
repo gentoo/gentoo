@@ -7,7 +7,7 @@ DOCS_BUILDER="sphinx"
 DOCS_DIR="doc"
 DOCS_AUTODOC=0
 
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 # python-any-r1 is inherited first because docs.eclass sources it, and cmake.eclass exports phases.
 inherit python-any-r1 cmake docs flag-o-matic linux-info

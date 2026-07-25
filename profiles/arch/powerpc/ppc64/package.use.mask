@@ -1,6 +1,14 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2026-05-10)
+# dev-qt/qtwebengine not available here
+net-irc/quassel urlpreview
+
+# Brett A C Sheffield <bacs@librecast.net> (2026-04-22)
+# virtual/pandoc is not keyworded here
+>=dev-libs/xmlsec-1.3.11 doc
+
 # Ionen Wolkens <ionen@gentoo.org> (2026-03-16)
 # media-libs/opencolorio is masked on ppc64(be)
 media-video/ffmpeg opencolorio
@@ -110,12 +118,18 @@ media-video/pipewire -echo-cancel
 
 # Sam James <sam@gentoo.org> (2022-10-13)
 # Causes segfaults, bug #871921
+dev-python/symengine tcmalloc
 sci-libs/symengine tcmalloc
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2022-09-29)
 # USE=fix requires ring crate, which is not portable
 # https://github.com/rustsec/rustsec/issues/707
 dev-util/cargo-audit fix
+
+# Michał Górny <mgorny@gentoo.org> (2021-12-31)
+# Don't apply stable masks to python-exec since we're forcing every
+# impl there anyway. Please keep this in sync with use.stable.mask.
+dev-lang/python-exec -python_targets_pypy3_11
 
 # Marek Szuba <marecki@gentoo.org> (2021-07-18)
 # media-plugins/zam-plugins not keyworded here

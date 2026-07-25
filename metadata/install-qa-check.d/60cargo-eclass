@@ -42,6 +42,9 @@ cargo_ver_check() {
 		eqawarn "QA Notice: ${min_rust_source}"
 		eqawarn "which requires RUST_MIN_VER=\"${min_rust_ver}\""
 		eqawarn
+
+		# For EAPI>=9, enforce the ebuild being updated to specify the correct RUST_MIN_VER
+		[[ ${EAPI} != 8 ]] && die "Update ebuild to specify RUST_MIN_VER=\"${min_rust_ver}\""
 	fi
 }
 

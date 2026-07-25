@@ -20,5 +20,6 @@
 		<flag name="l10n_zh">Builds extended Chinese (Mandarin and Cantonese) Dictionary files</flag>
 		<flag name="man">Builds and installs manpage with <pkg>app-text/ronn-ng</pkg></flag>
 		<flag name="mbrola">Adds support for mbrola voices</flag>
+		<flag name="sonic">Enable audio speed up support with <pkg>media-libs/sonic</pkg></flag>
 	</use>
 </pkgmetadata>

@@ -1,0 +1,53 @@
+From 657ea415798add52716a9131b1d4727dfce13b20 Mon Sep 17 00:00:00 2001
+From: Lukas Schmelting <lschmelting@posteo.com>
+Date: Thu, 16 Apr 2026 21:04:15 +0200
+Subject: [PATCH] gnome-contacts-49.0: align with eds-3.60 vCard export
+
+gnome-contacts-49.0 was written against the evolution-data-server-3.58
+vCard export surface. In 3.60, evolution-data-server changed that public
+API (version type naming and how callers request a specific vCard
+version for export).
+
+Building gnome-contacts against newer evolution-data-server therefore
+fails in Vala until Contacts is updated for that API. This patch enables
+building gnome-contacts-49.0 against evolution-data-server-3.60+.
+
+Signed-off-by: Lukas Schmelting <lschmelting@posteo.com>
+---
+ src/io/contacts-io-vcard-export-operation.vala | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/io/contacts-io-vcard-export-operation.vala b/src/io/contacts-io-vcard-export-operation.vala
+index 74ed657..0e08faf 100644
+--- a/src/io/contacts-io-vcard-export-operation.vala
++++ b/src/io/contacts-io-vcard-export-operation.vala
+@@ -16,7 +16,7 @@ public class Contacts.Io.VCardExportOperation : ExportOperation {
+
+   // We _could_ parameterize this with our own enum, but there's no need for
+   // that at the moment.
+-  private E.VCardFormat vcard_format = E.VCardFormat.@30;
++  private E.VCardVersion vcard_format = E.VCardVersion.@30;
+
+   // This should always be on false, except for debugging/troubleshooting
+   // purposes. It forces E-D-S personas to use our manual serialization instead
+@@ -53,7 +53,7 @@ public class Contacts.Io.VCardExportOperation : ExportOperation {
+     // that's an E.VCard already
+     if (persona is Edsf.Persona && !avoid_eds) {
+       unowned var contact = ((Edsf.Persona) persona).contact;
+-      return contact.to_string (this.vcard_format);
++      return contact.convert_to_string (this.vcard_format);
+     }
+
+     var vcard = new E.VCard ();
+@@ -104,7 +104,7 @@ public class Contacts.Io.VCardExportOperation : ExportOperation {
+       vcard_set_webservice_details (vcard, (WebServiceDetails) persona);
+ */
+
+-    return vcard.to_string (this.vcard_format);
++    return vcard.convert_to_string (this.vcard_format);
+   }
+
+   private void vcard_set_avatar_details (E.VCard vcard,
+--
+2.52.0
+

@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -30,6 +30,7 @@ SLOT="0"
 IUSE='dynamicdns dns-alidns dns-azure dns-cloudflare dns-cloudns dns-digitalocean dns-duckdns dns-dynv6 dns-gandi dns-godaddy dns-googleclouddns dns-he dns-hetzner dns-huaweicloud dns-linode dns-mailinabox dns-namecheap dns-netcup dns-netlify dns-ovh dns-porkbun dns-powerdns dns-rfc2136 dns-route53 dns-vultr events-handlers-exec security webdav'
 RESTRICT="test"
 
+BDEPEND=">=dev-lang/go-1.25.1"
 RDEPEND="
 	acct-user/http
 	acct-group/http"

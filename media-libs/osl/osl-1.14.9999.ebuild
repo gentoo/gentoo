@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -94,6 +94,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}/${PN}-include-cstdint.patch"
+	"${FILESDIR}/${PN}-1.14.7.0-test-shade.patch"
 )
 
 cuda_get_host_compiler() {

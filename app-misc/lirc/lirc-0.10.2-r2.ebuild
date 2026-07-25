@@ -1,11 +1,11 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
-inherit autotools linux-info python-single-r1 xdg-utils
+inherit autotools dot-a linux-info python-single-r1 toolchain-funcs xdg-utils
 
 DESCRIPTION="decode and send infra-red signals of many commonly used remote controls"
 HOMEPAGE="https://www.lirc.org/"
@@ -18,7 +18,6 @@ S="${WORKDIR}/${MY_P}"
 if [[ ${PV} == *_pre* ]] ; then
 	SRC_URI="https://www.lirc.org/software/snapshots/${MY_P}.tar.bz2"
 elif [[ ${PV} == *_p* ]] ; then
-	inherit autotools
 	SRC_URI="https://downloads.sourceforge.net/lirc/${PN}-$(ver_cut 1-3).tar.bz2"
 	SRC_URI+=" mirror://debian/pool/main/l/${PN}/${PN}_$(ver_cut 1-3)-$(ver_cut 5-).debian.tar.xz"
 	S="${WORKDIR}"/${PN}-$(ver_cut 1-3)
@@ -58,9 +57,6 @@ COMMON_DEPEND="
 DEPEND="
 	${COMMON_DEPEND}
 	dev-libs/libxslt
-	$(python_gen_cond_dep '
-		dev-python/setuptools[${PYTHON_USEDEP}]
-	')
 	doc? ( app-text/doxygen )
 	sys-apps/kmod
 	sys-kernel/linux-headers
@@ -76,6 +72,11 @@ RDEPEND="
 	)
 	inputlirc? ( app-misc/inputlircd )
 	selinux? ( sec-policy/selinux-lircd )
+"
+
+BDEPEND="
+	${PYTHON_DEPS}
+	$(python_gen_cond_dep 'dev-python/setuptools[${PYTHON_USEDEP}]')
 "
 
 PATCHES=(
@@ -107,12 +108,26 @@ src_prepare() {
 
 src_configure() {
 	xdg_environment_reset
-	econf \
-		--localstatedir="${EPREFIX}/var" \
-		$(use_enable static-libs static) \
-		$(use_enable devinput) \
-		$(use_enable uinput) \
+
+	use static-libs && lto-guarantee-fat
+
+	tc-export CC PKG_CONFIG
+	export ac_cv_prog_PKGCONFIG="${PKG_CONFIG}"
+
+	local myeconfargs=(
+		--localstatedir="${EPREFIX}/var"
+		$(use_enable static-libs static)
+		$(use_enable devinput)
+		$(use_enable uinput)
 		$(use_with X x)
+	)
+	if tc-is-cross-compiler; then
+		myeconfargs+=(
+			DEVINPUT_HEADER="${ESYSROOT}/usr/include/linux/input.h"
+			HAVE_WORKING_POLL=yes
+		)
+	fi
+	econf "${myeconfargs[@]}"
 }
 
 src_install() {
@@ -139,6 +154,7 @@ src_install() {
 		newdoc "${ED}"/etc/lirc/lircd.conf lircd.conf.example
 	fi
 
+	use static-libs && strip-lto-bytecode
 	find "${ED}" -name '*.la' -delete || die
 
 	# https://bugs.gentoo.org/830522

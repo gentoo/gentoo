@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,7 +7,7 @@ REAL_PN="buildtools"
 
 inherit go-module
 
-DESCRIPTION="Tools for working with Google's Bazel BUILD files."
+DESCRIPTION="Tools for working with Google's Bazel BUILD files"
 HOMEPAGE="https://github.com/bazelbuild/buildtools/"
 
 if [[ "${PV}" == *9999* ]] ; then

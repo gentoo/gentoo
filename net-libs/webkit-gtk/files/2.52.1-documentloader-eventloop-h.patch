@@ -1,0 +1,10 @@
+--- a/Source/WebCore/loader/DocumentLoader.cpp	2026-04-03 21:25:52.278106049 -0400
++++ b/Source/WebCore/loader/DocumentLoader.cpp	2026-04-03 21:26:02.474116111 -0400
+@@ -52,6 +52,7 @@
+ #include "DocumentWriter.h"
+ #include "ElementChildIteratorInlines.h"
+ #include "Event.h"
++#include "EventLoop.h"
+ #include "EventNames.h"
+ #include "ExtensionStyleSheets.h"
+ #include "FormSubmission.h"

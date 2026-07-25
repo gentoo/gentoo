@@ -1,11 +1,11 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
-inherit autotools gnome2-utils python-single-r1 xdg virtualx
+inherit autotools gnome2-utils python-single-r1 xdg
 
 DESCRIPTION="Korean Hangul engine for IBus"
 HOMEPAGE="https://github.com/libhangul/ibus-hangul/wiki"
@@ -44,9 +44,10 @@ src_configure() {
 src_test() {
 	"${BROOT}"${GLIB_COMPILE_SCHEMAS} --allow-any-name "${S}"/data || die
 
-	export GSETTINGS_BACKEND="memory"
-	export GSETTINGS_SCHEMA_DIR="${S}/data"
-	virtx default
+	local -x GSETTINGS_BACKEND="memory"
+	local -x GSETTINGS_SCHEMA_DIR="${S}/data"
+	local -x DISABLE_GUI_TESTS="ibus-hangul" # bug #833198
+	default
 }
 
 pkg_preinst() {

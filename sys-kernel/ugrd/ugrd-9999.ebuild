@@ -40,6 +40,17 @@ BDEPEND="
 	)
 "
 
+distutils_enable_tests unittest
+
+src_test() {
+	addwrite /dev/kvm
+	distutils-r1_src_test
+}
+
+python_test() {
+	eunittest tests/
+}
+
 python_install_all() {
 	# Call the distutils-r1_python_install_all function
 	distutils-r1_python_install_all
@@ -70,15 +81,4 @@ pkg_postinst() {
 	optfeature "ugrd.base.plymouth support" sys-boot/plymouth
 	optfeature "ZSTD compression support" dev-python/zstandard
 
-}
-
-distutils_enable_tests unittest
-
-src_test() {
-	addwrite /dev/kvm
-	distutils-r1_src_test
-}
-
-python_test() {
-	eunittest tests/
 }

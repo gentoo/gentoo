@@ -1,7 +1,7 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
+EAPI=8
 
 MODS="crio"
 
@@ -13,11 +13,11 @@ if [[ ${PV} != 9999* ]] ; then
 	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 fi
 
-DEPEND="${DEPEND}
-	sec-policy/selinux-kubernetes
-	sec-policy/selinux-podman
+DEPEND+="
+	sec-policy/selinux-kubernetes[${SELINUX_POLICY_USEDEP}]
+	sec-policy/selinux-podman[${SELINUX_POLICY_USEDEP}]
 "
-RDEPEND="${RDEPEND}
-	sec-policy/selinux-kubernetes
-	sec-policy/selinux-podman
+RDEPEND+="
+	sec-policy/selinux-kubernetes[${SELINUX_POLICY_USEDEP}]
+	sec-policy/selinux-podman[${SELINUX_POLICY_USEDEP}]
 "

@@ -9,11 +9,16 @@
 		<flag name="aio">
 			Enable <pkg>dev-libs/libaio</pkg> support for tracing Asynchronous I/O operations
 		</flag>
-		<flag name="unwind">
-			Enable stack backtraces (-k flag) via <pkg>sys-libs/libunwind</pkg>
-		</flag>
 		<flag name="elfutils">
 			Enable stack backtraces (-k flag) via <pkg>dev-libs/elfutils</pkg>
+		</flag>
+		<flag name="ncurses">
+			Make color support available via <pkg>sys-libs/ncurses</pkg>.
+			At runtime, if enabled, defaults to 'auto', but can be
+			disabled with --color never.
+		</flag>
+		<flag name="unwind">
+			Enable stack backtraces (-k flag) via <pkg>sys-libs/libunwind</pkg>
 		</flag>
 	</use>
 	<upstream>

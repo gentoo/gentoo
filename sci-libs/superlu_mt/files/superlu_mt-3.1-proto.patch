@@ -1,0 +1,616 @@
+--- a/SRC/smatgen.c	2026-05-05 10:09:56.551955544 +0200
++++ b/SRC/smatgen.c	2026-05-05 10:10:36.422464887 +0200
+@@ -32,7 +32,7 @@
+     int_t    *asub, *xa;
+     float *val;
+     int_t    *row;
+-    extern double dlaran_();
++    extern double dlaran_(int *);
+     
+     printf("A banded matrix.");
+     sallocateA(n, nonz, nzval, rowind, colptr); /* Allocate storage */
+@@ -73,7 +73,7 @@
+     int_t    *asub, *xa;
+     float *val;
+     int_t    *row;
+-    extern double dlaran_();
++    extern double dlaran_(int *);
+     
+     n = bs * nb;
+     printf("A block diagonal matrix: nb " IFMT ", bs " IFMT ", n " IFMT "\n", nb, bs, n);
+--- a/SRC/slu_mt_sdefs.h	2026-05-05 10:35:08.073768931 +0200
++++ b/SRC/slu_mt_sdefs.h	2026-05-05 10:35:36.110435758 +0200
+@@ -281,7 +281,7 @@
+ 			       int_t *, int_t *, pxgstrf_shared_t *);
+ extern int_t  sParallelInit (int_t, pxgstrf_relax_t *, superlumt_options_t *,
+ 			  pxgstrf_shared_t *);
+-extern int_t  ParallelFinalize ();
++extern int_t  ParallelFinalize (pxgstrf_shared_t *);
+ extern void psgstrf_StackFree ();
+ extern int_t  queue_init (queue_t *, int_t);
+ extern int_t  queue_destroy (queue_t *);
+@@ -462,7 +462,7 @@
+    -------------------*/
+ extern double  SuperLU_timer_();
+ extern int_t     sp_ienv(int_t);
+-extern double  slamch_();
++extern double  slamch_(char *);
+ extern int     lsame_(char *, char *);
+ extern int     xerbla_(char *, int *);
+ extern void    superlu_abort_and_exit(char *);
+@@ -480,7 +480,8 @@
+ extern void    sCompRow_to_CompCol(int_t m, int_t n, int_t nnz, 
+                            float *a, int_t *colind, int_t *rowptr,
+                            float **at, int_t **rowind, int_t **colptr);
+-
++extern void    sp_colorder(SuperMatrix *, int_t *, superlumt_options_t *,
++                           SuperMatrix *);
+ 
+ /* -----------------------
+    Routines for debugging
+--- a/SRC/psmemory.c	2026-05-05 10:23:51.580836840 +0200
++++ b/SRC/psmemory.c	2026-05-05 10:24:23.540456533 +0200
+@@ -869,7 +869,7 @@
+     int_t *map_in_sup; /* memory mapping function; values irrelevant on entry. */
+     int_t *colcnt;     /* column count of Lc or H */
+     int_t *super_bnd;  /* supernodes partition in H */
+-    char *snode_env, *getenv();
++    char *snode_env;
+ 
+     snode_env = getenv("SuperLU_DYNAMIC_SNODE_STORE");
+     if ( snode_env != NULL ) {
+--- a/SRC/sgstrs.c	2026-05-05 10:28:37.203432482 +0200
++++ b/SRC/sgstrs.c	2026-05-05 10:29:03.340120543 +0200
+@@ -89,7 +89,7 @@
+     float   *Lval, *Uval, *Bmat;
+     float   *work, *work_col, *rhs_work, *soln;
+     flops_t  solve_ops;
+-    void sprint_soln();
++    void sprint_soln(int_t n, int_t nrhs, float *soln);
+ 
+     /* Test input parameters ... */
+     *info = 0;
+--- a/SRC/psgstrf_thread_init.c	2026-05-05 10:30:38.273987506 +0200
++++ b/SRC/psgstrf_thread_init.c	2026-05-05 10:32:57.364327454 +0200
+@@ -11,6 +11,18 @@
+ 
+ #include "slu_mt_sdefs.h"
+ 
++extern void
++pxgstrf_relax_snode(
++                    const int_t,
++                    superlumt_options_t *,
++                    pxgstrf_relax_t *
++                   );
++
++extern int_t
++ParallelInit(int_t n, pxgstrf_relax_t *pxgstrf_relax,
++             superlumt_options_t *superlumt_options,
++             pxgstrf_shared_t *pxgstrf_shared);
++
+ psgstrf_threadarg_t *
+ psgstrf_thread_init(SuperMatrix *A, SuperMatrix *L, SuperMatrix *U,
+ 		    superlumt_options_t *options, 
+--- a/SRC/sp_colorder.c	2026-05-05 10:37:48.706860063 +0200
++++ b/SRC/sp_colorder.c	2026-05-05 10:41:06.366511201 +0200
+@@ -11,6 +11,18 @@
+ 
+ #include "slu_mt_ddefs.h"
+ 
++extern int_t
++sp_symetree(
++                int_t *, int_t *,
++                int_t *,            /* row indices of A */
++                int_t,                /* dimension of A */
++                int_t *
++           );
++
++extern int_t cholnzcnt(int_t, int_t *, int_t *,
++                int_t *, int_t *, int_t *,
++                int_t *, int_t *, int_t *);
++
+ void
+ sp_colorder(SuperMatrix *A, int_t *perm_c, superlumt_options_t *options,
+ 	    SuperMatrix *AC)
+@@ -281,7 +293,7 @@
+ dPrintSuperPart(char *pname, int_t n, int_t *part_super)
+ {
+     register int_t i;
+-    FILE *fopen(), *fp;
++    FILE *fp;
+     char fname[20];
+     strcpy(fname, pname);
+     strcat(fname, ".dat");
+--- a/SRC/slu_mt_ddefs.h	2026-05-05 10:42:47.203312916 +0200
++++ b/SRC/slu_mt_ddefs.h	2026-05-05 10:43:24.531870105 +0200
+@@ -281,7 +281,7 @@
+ 			       int_t *, int_t *, pxgstrf_shared_t *);
+ extern int_t  dParallelInit (int_t, pxgstrf_relax_t *, superlumt_options_t *,
+ 			  pxgstrf_shared_t *);
+-extern int_t  ParallelFinalize ();
++extern int_t  ParallelFinalize (pxgstrf_shared_t *);
+ extern void pdgstrf_StackFree ();
+ extern int_t  queue_init (queue_t *, int_t);
+ extern int_t  queue_destroy (queue_t *);
+@@ -462,7 +462,7 @@
+    -------------------*/
+ extern double  SuperLU_timer_();
+ extern int_t     sp_ienv(int_t);
+-extern double  dlamch_();
++extern double  dlamch_(char *);
+ extern int     lsame_(char *, char *);
+ extern int     xerbla_(char *, int *);
+ extern void    superlu_abort_and_exit(char *);
+@@ -480,6 +480,8 @@
+ extern void    dCompRow_to_CompCol(int_t m, int_t n, int_t nnz, 
+                            double *a, int_t *colind, int_t *rowptr,
+                            double **at, int_t **rowind, int_t **colptr);
++extern void    sp_colorder(SuperMatrix *, int_t *, superlumt_options_t *,
++                           SuperMatrix *);
+ 
+ 
+ /* -----------------------
+--- a/SRC/dmatgen.c	2026-05-05 10:45:55.595085553 +0200
++++ b/SRC/dmatgen.c	2026-05-05 10:47:25.676021395 +0200
+@@ -32,7 +32,7 @@
+     int_t    *asub, *xa;
+     double *val;
+     int_t    *row;
+-    extern double dlaran_();
++    extern double dlaran_(int *);
+     
+     printf("A banded matrix.");
+     dallocateA(n, nonz, nzval, rowind, colptr); /* Allocate storage */
+@@ -73,7 +73,7 @@
+     int_t    *asub, *xa;
+     double *val;
+     int_t    *row;
+-    extern double dlaran_();
++    extern double dlaran_(int *);
+     
+     n = bs * nb;
+     printf("A block diagonal matrix: nb " IFMT ", bs " IFMT ", n " IFMT "\n", nb, bs, n);
+--- a/SRC/dgstrs.c	2026-05-05 10:53:26.071802281 +0200
++++ b/SRC/dgstrs.c	2026-05-05 10:54:16.615226353 +0200
+@@ -89,7 +89,7 @@
+     double   *Lval, *Uval, *Bmat;
+     double   *work, *work_col, *rhs_work, *soln;
+     flops_t  solve_ops;
+-    void dprint_soln();
++    void dprint_soln(int_t, int_t, double *);
+ 
+     /* Test input parameters ... */
+     *info = 0;
+--- a/SRC/pdmemory.c	2026-05-05 10:55:14.990561181 +0200
++++ b/SRC/pdmemory.c	2026-05-05 10:55:33.001355952 +0200
+@@ -869,7 +869,7 @@
+     int_t *map_in_sup; /* memory mapping function; values irrelevant on entry. */
+     int_t *colcnt;     /* column count of Lc or H */
+     int_t *super_bnd;  /* supernodes partition in H */
+-    char *snode_env, *getenv();
++    char *snode_env;
+ 
+     snode_env = getenv("SuperLU_DYNAMIC_SNODE_STORE");
+     if ( snode_env != NULL ) {
+--- a/SRC/pdgstrf_thread_init.c	2026-05-05 11:03:48.119015513 +0200
++++ b/SRC/pdgstrf_thread_init.c	2026-05-05 11:10:40.213391852 +0200
+@@ -11,6 +11,18 @@
+ 
+ #include "slu_mt_ddefs.h"
+ 
++extern void
++pxgstrf_relax_snode(
++                    const int_t,
++                    superlumt_options_t *,
++                    pxgstrf_relax_t *
++                   );
++
++extern int_t
++ParallelInit(int_t, pxgstrf_relax_t *,
++             superlumt_options_t *,
++             pxgstrf_shared_t *);
++
+ pdgstrf_threadarg_t *
+ pdgstrf_thread_init(SuperMatrix *A, SuperMatrix *L, SuperMatrix *U,
+ 		    superlumt_options_t *options, 
+--- a/SRC/cmatgen.c	2026-05-05 11:11:45.293654751 +0200
++++ b/SRC/cmatgen.c	2026-05-05 11:12:15.972305898 +0200
+@@ -32,7 +32,7 @@
+     int_t    *asub, *xa;
+     complex *val;
+     int_t    *row;
+-    extern double dlaran_();
++    extern double dlaran_(int *);
+     
+     printf("A banded matrix.");
+     callocateA(n, nonz, nzval, rowind, colptr); /* Allocate storage */
+@@ -73,7 +73,7 @@
+     int_t    *asub, *xa;
+     complex *val;
+     int_t    *row;
+-    extern double dlaran_();
++    extern double dlaran_(int *);
+     
+     n = bs * nb;
+     printf("A block diagonal matrix: nb " IFMT ", bs " IFMT ", n " IFMT "\n", nb, bs, n);
+--- a/SRC/slu_mt_cdefs.h	2026-05-05 11:14:23.487852880 +0200
++++ b/SRC/slu_mt_cdefs.h	2026-05-05 11:14:46.556585558 +0200
+@@ -282,7 +282,7 @@
+ 			       int_t *, int_t *, pxgstrf_shared_t *);
+ extern int_t  cParallelInit (int_t, pxgstrf_relax_t *, superlumt_options_t *,
+ 			  pxgstrf_shared_t *);
+-extern int_t  ParallelFinalize ();
++extern int_t  ParallelFinalize (pxgstrf_shared_t *);
+ extern void pcgstrf_StackFree ();
+ extern int_t  queue_init (queue_t *, int_t);
+ extern int_t  queue_destroy (queue_t *);
+@@ -463,7 +463,7 @@
+    -------------------*/
+ extern double  SuperLU_timer_();
+ extern int_t     sp_ienv(int_t);
+-extern double  slamch_();
++extern double  slamch_(char *);
+ extern int     lsame_(char *, char *);
+ extern int     xerbla_(char *, int *);
+ extern void    superlu_abort_and_exit(char *);
+@@ -481,7 +481,8 @@
+ extern void    cCompRow_to_CompCol(int_t m, int_t n, int_t nnz, 
+                            complex *a, int_t *colind, int_t *rowptr,
+                            complex **at, int_t **rowind, int_t **colptr);
+-
++extern void    sp_colorder(SuperMatrix *, int_t *, superlumt_options_t *,
++                           SuperMatrix *);
+ 
+ /* -----------------------
+    Routines for debugging
+--- a/SRC/cgstrs.c	2026-05-05 11:18:40.593866234 +0200
++++ b/SRC/cgstrs.c	2026-05-05 11:19:21.743390809 +0200
+@@ -90,7 +90,7 @@
+     complex   *Lval, *Uval, *Bmat;
+     complex   *work, *work_col, *rhs_work, *soln;
+     flops_t  solve_ops;
+-    void cprint_soln();
++    void cprint_soln(int_t, int_t, complex *);
+ 
+     /* Test input parameters ... */
+     *info = 0;
+--- a/SRC/clacon.c	2026-05-05 11:20:54.665317808 +0200
++++ b/SRC/clacon.c	2026-05-05 11:21:10.446137656 +0200
+@@ -22,6 +22,8 @@
+ #include "slu_mt_util.h"
+ #include "slu_scomplex.h"
+ 
++extern int ccopy_(int *, complex *, int *, complex *, int *);
++
+ int_t
+ clacon_(int_t *n, complex *v, complex *x, float *est, int_t *kase)
+ 
+--- a/SRC/pcmemory.c	2026-05-05 11:22:02.888539416 +0200
++++ b/SRC/pcmemory.c	2026-05-05 11:22:17.075377580 +0200
+@@ -869,7 +869,7 @@
+     int_t *map_in_sup; /* memory mapping function; values irrelevant on entry. */
+     int_t *colcnt;     /* column count of Lc or H */
+     int_t *super_bnd;  /* supernodes partition in H */
+-    char *snode_env, *getenv();
++    char *snode_env;
+ 
+     snode_env = getenv("SuperLU_DYNAMIC_SNODE_STORE");
+     if ( snode_env != NULL ) {
+--- a/SRC/zmatgen.c	2026-05-05 11:36:18.769814971 +0200
++++ b/SRC/zmatgen.c	2026-05-05 11:36:43.606534396 +0200
+@@ -32,7 +32,7 @@
+     int_t    *asub, *xa;
+     doublecomplex *val;
+     int_t    *row;
+-    extern double dlaran_();
++    extern double dlaran_(int *);
+     
+     printf("A banded matrix.");
+     zallocateA(n, nonz, nzval, rowind, colptr); /* Allocate storage */
+@@ -73,7 +73,7 @@
+     int_t    *asub, *xa;
+     doublecomplex *val;
+     int_t    *row;
+-    extern double dlaran_();
++    extern double dlaran_(int *);
+     
+     n = bs * nb;
+     printf("A block diagonal matrix: nb " IFMT ", bs " IFMT ", n " IFMT "\n", nb, bs, n);
+--- a/SRC/slu_mt_zdefs.h	2026-05-05 11:39:18.749788299 +0200
++++ b/SRC/slu_mt_zdefs.h	2026-05-05 11:39:38.844563218 +0200
+@@ -282,7 +282,7 @@
+ 			       int_t *, int_t *, pxgstrf_shared_t *);
+ extern int_t  zParallelInit (int_t, pxgstrf_relax_t *, superlumt_options_t *,
+ 			  pxgstrf_shared_t *);
+-extern int_t  ParallelFinalize ();
++extern int_t  ParallelFinalize (pxgstrf_shared_t *);
+ extern void pzgstrf_StackFree ();
+ extern int_t  queue_init (queue_t *, int_t);
+ extern int_t  queue_destroy (queue_t *);
+@@ -463,7 +463,7 @@
+    -------------------*/
+ extern double  SuperLU_timer_();
+ extern int_t     sp_ienv(int_t);
+-extern double  dlamch_();
++extern double  dlamch_(char *);
+ extern int     lsame_(char *, char *);
+ extern int     xerbla_(char *, int *);
+ extern void    superlu_abort_and_exit(char *);
+@@ -481,7 +481,8 @@
+ extern void    zCompRow_to_CompCol(int_t m, int_t n, int_t nnz, 
+                            doublecomplex *a, int_t *colind, int_t *rowptr,
+                            doublecomplex **at, int_t **rowind, int_t **colptr);
+-
++extern void    sp_colorder(SuperMatrix *, int_t *, superlumt_options_t *,
++                           SuperMatrix *);
+ 
+ /* -----------------------
+    Routines for debugging
+--- a/SRC/pcgstrf_thread_init.c	2026-05-05 12:05:57.119705690 +0200
++++ b/SRC/pcgstrf_thread_init.c	2026-05-05 12:07:06.996911214 +0200
+@@ -11,6 +11,18 @@
+ 
+ #include "slu_mt_cdefs.h"
+ 
++extern void
++pxgstrf_relax_snode(
++                    const int_t,
++                    superlumt_options_t *,
++                    pxgstrf_relax_t *
++                   );
++
++extern int_t
++ParallelInit(int_t n, pxgstrf_relax_t *pxgstrf_relax,
++             superlumt_options_t *superlumt_options,
++             pxgstrf_shared_t *pxgstrf_shared);
++
+ pcgstrf_threadarg_t *
+ pcgstrf_thread_init(SuperMatrix *A, SuperMatrix *L, SuperMatrix *U,
+ 		    superlumt_options_t *options, 
+--- a/SRC/zgstrs.c	2026-05-05 12:08:31.386951973 +0200
++++ b/SRC/zgstrs.c	2026-05-05 12:10:40.157489714 +0200
+@@ -90,7 +90,7 @@
+     doublecomplex   *Lval, *Uval, *Bmat;
+     doublecomplex   *work, *work_col, *rhs_work, *soln;
+     flops_t  solve_ops;
+-    void zprint_soln();
++    void zprint_soln(int_t, int_t, doublecomplex *);
+ 
+     /* Test input parameters ... */
+     *info = 0;
+--- a/SRC/zlacon.c	2026-05-05 12:12:03.765540303 +0200
++++ b/SRC/zlacon.c	2026-05-05 12:12:18.397374128 +0200
+@@ -22,6 +22,8 @@
+ #include "slu_mt_util.h"
+ #include "slu_dcomplex.h"
+ 
++extern int zcopy_(int *, doublecomplex *, int *, doublecomplex *, int *);
++
+ int_t
+ zlacon_(int_t *n, doublecomplex *v, doublecomplex *x, double *est, int_t *kase)
+ 
+--- a/SRC/pzmemory.c	2026-05-05 12:17:37.675748558 +0200
++++ b/SRC/pzmemory.c	2026-05-05 12:17:49.844610399 +0200
+@@ -869,7 +869,7 @@
+     int_t *map_in_sup; /* memory mapping function; values irrelevant on entry. */
+     int_t *colcnt;     /* column count of Lc or H */
+     int_t *super_bnd;  /* supernodes partition in H */
+-    char *snode_env, *getenv();
++    char *snode_env;
+ 
+     snode_env = getenv("SuperLU_DYNAMIC_SNODE_STORE");
+     if ( snode_env != NULL ) {
+--- a/SRC/pzgstrf_thread_init.c	2026-05-05 12:21:42.037973715 +0200
++++ b/SRC/pzgstrf_thread_init.c	2026-05-05 12:22:43.862271681 +0200
+@@ -11,6 +11,18 @@
+ 
+ #include "slu_mt_zdefs.h"
+ 
++extern void
++pxgstrf_relax_snode(
++                    const int_t,
++                    superlumt_options_t *,
++                    pxgstrf_relax_t *
++                   );
++
++extern int_t
++ParallelInit(int_t n, pxgstrf_relax_t *pxgstrf_relax,
++             superlumt_options_t *superlumt_options,
++             pxgstrf_shared_t *pxgstrf_shared); 
++
+ pzgstrf_threadarg_t *
+ pzgstrf_thread_init(SuperMatrix *A, SuperMatrix *L, SuperMatrix *U,
+ 		    superlumt_options_t *options, 
+--- a/TESTING/MATGEN/slatb4.c	2026-05-05 13:10:13.950870321 +0200
++++ b/TESTING/MATGEN/slatb4.c	2026-05-05 13:10:38.470591452 +0200
+@@ -4,6 +4,7 @@
+ */
+ 
+ #include "f2c.h"
++#include <string.h>
+ 
+ /* Table of constant values */
+ 
+--- a/TESTING/MATGEN/dlatb4.c	2026-05-05 13:11:35.253945640 +0200
++++ b/TESTING/MATGEN/dlatb4.c	2026-05-05 13:11:52.800746076 +0200
+@@ -4,6 +4,7 @@
+ */
+ 
+ #include "f2c.h"
++#include <string.h>
+ 
+ /* Table of constant values */
+ 
+--- a/TESTING/MATGEN/clatb4.c	2026-05-05 13:12:17.512465024 +0200
++++ b/TESTING/MATGEN/clatb4.c	2026-05-05 13:12:32.620293201 +0200
+@@ -4,6 +4,7 @@
+ */
+ 
+ #include "f2c.h"
++#include <string.h>
+ 
+ /* Table of constant values */
+ 
+--- a/TESTING/MATGEN/zlatb4.c	2026-05-05 13:13:05.652917505 +0200
++++ b/TESTING/MATGEN/zlatb4.c	2026-05-05 13:13:22.765722880 +0200
+@@ -4,6 +4,7 @@
+ */
+ 
+ #include "f2c.h"
++#include <string.h>
+ 
+ /* Table of constant values */
+ 
+--- a/TESTING/psdrive.c	2026-05-05 13:15:31.884254371 +0200
++++ b/TESTING/psdrive.c	2026-05-05 13:17:22.832992359 +0200
+@@ -10,6 +10,7 @@
+ */
+ 
+ #include <string.h>
++#include <unistd.h>
+ #include "slu_mt_sdefs.h"
+ 
+ #define NTESTS    5    /* Number of test types */
+@@ -28,7 +29,7 @@
+ #endif
+ 
+ 
+-main(int argc, char *argv[])
++int main(int argc, char *argv[])
+ {
+ /*
+  * -- SuperLU MT routine (version 2.0) --
+@@ -89,7 +90,9 @@
+     trans_t trans;
+     equed_t equed;
+     yes_no_t refact, usepr;
+-    void parse_command_line();
++    void parse_command_line(int argc, char *argv[], char *matrix_type,
++		   int *nprocs, int *n, int *w, int *relax, int *nrhs,
++		   int *maxsuper, int *rowblk, int *colblk, int *lwork);
+ 
+     /* Fixed set of parameters */
+     int      iseed[]  = {1994, 1995, 1996, 1997};
+--- a/TESTING/psgst04.c	2026-05-05 13:19:05.014826490 +0200
++++ b/TESTING/psgst04.c	2026-05-05 13:19:54.612260605 +0200
+@@ -12,6 +12,8 @@
+ #include <math.h>
+ #include "slu_mt_sdefs.h"
+ 
++extern int idamax_(int *, float *, int *);
++
+ int_t psgst04(int_t n, int_t nrhs, float *x, int_t ldx, float *xact,
+ 	    int_t ldxact, float rcond, float *resid)
+ {
+--- a/TESTING/pddrive.c	2026-05-05 13:21:13.468360864 +0200
++++ b/TESTING/pddrive.c	2026-05-05 13:22:24.459550868 +0200
+@@ -10,6 +10,7 @@
+ */
+ 
+ #include <string.h>
++#include <unistd.h>
+ #include "slu_mt_ddefs.h"
+ 
+ #define NTESTS    5    /* Number of test types */
+@@ -28,7 +29,7 @@
+ #endif
+ 
+ 
+-main(int argc, char *argv[])
++int main(int argc, char *argv[])
+ {
+ /*
+  * -- SuperLU MT routine (version 2.0) --
+@@ -89,7 +90,9 @@
+     trans_t trans;
+     equed_t equed;
+     yes_no_t refact, usepr;
+-    void parse_command_line();
++    void parse_command_line(int argc, char *argv[], char *matrix_type,
++		   int *nprocs, int *n, int *w, int *relax, int *nrhs,
++		   int *maxsuper, int *rowblk, int *colblk, int *lwork);
+ 
+     /* Fixed set of parameters */
+     int      iseed[]  = {1994, 1995, 1996, 1997};
+--- a/TESTING/pcdrive.c	2026-05-05 13:24:00.625453637 +0200
++++ b/TESTING/pcdrive.c	2026-05-05 13:24:40.085003414 +0200
+@@ -9,6 +9,7 @@
+ at the top-level directory.
+ */
+ 
++#include <unistd.h>
+ #include <string.h>
+ #include "slu_mt_cdefs.h"
+ 
+@@ -28,7 +29,7 @@
+ #endif
+ 
+ 
+-main(int argc, char *argv[])
++int main(int argc, char *argv[])
+ {
+ /*
+  * -- SuperLU MT routine (version 2.0) --
+@@ -89,7 +90,9 @@
+     trans_t trans;
+     equed_t equed;
+     yes_no_t refact, usepr;
+-    void parse_command_line();
++    void parse_command_line(int argc, char *argv[], char *matrix_type,
++		   int *nprocs, int *n, int *w, int *relax, int *nrhs,
++		   int *maxsuper, int *rowblk, int *colblk, int *lwork);
+ 
+     /* Fixed set of parameters */
+     int      iseed[]  = {1994, 1995, 1996, 1997};
+--- a/TESTING/pcgst04.c	2026-05-05 13:25:23.588507043 +0200
++++ b/TESTING/pcgst04.c	2026-05-05 13:26:57.516435352 +0200
+@@ -12,6 +12,8 @@
+ #include <math.h>
+ #include "slu_mt_cdefs.h"
+ 
++extern int idamax_(int *, complex *, int *);
++
+ int_t pcgst04(int_t n, int_t nrhs, complex *x, int_t ldx, complex *xact,
+ 	    int_t ldxact, float rcond, float *resid)
+ {
+--- a/TESTING/pzdrive.c	2026-05-05 13:27:38.190971265 +0200
++++ b/TESTING/pzdrive.c	2026-05-05 13:28:20.082493292 +0200
+@@ -10,6 +10,7 @@
+ */
+ 
+ #include <string.h>
++#include <unistd.h>
+ #include "slu_mt_zdefs.h"
+ 
+ #define NTESTS    5    /* Number of test types */
+@@ -28,7 +29,7 @@
+ #endif
+ 
+ 
+-main(int argc, char *argv[])
++int main(int argc, char *argv[])
+ {
+ /*
+  * -- SuperLU MT routine (version 2.0) --
+@@ -89,7 +90,9 @@
+     trans_t trans;
+     equed_t equed;
+     yes_no_t refact, usepr;
+-    void parse_command_line();
++    void parse_command_line(int argc, char *argv[], char *matrix_type,
++		   int *nprocs, int *n, int *w, int *relax, int *nrhs,
++		   int *maxsuper, int *rowblk, int *colblk, int *lwork);
+ 
+     /* Fixed set of parameters */
+     int      iseed[]  = {1994, 1995, 1996, 1997};
+--- a/TESTING/pzgst04.c	2026-05-05 13:29:02.476009592 +0200
++++ b/TESTING/pzgst04.c	2026-05-05 13:31:18.533457212 +0200
+@@ -12,6 +12,8 @@
+ #include <math.h>
+ #include "slu_mt_zdefs.h"
+ 
++extern int idamax_(int *, doublecomplex *, int *);
++
+ int_t pzgst04(int_t n, int_t nrhs, doublecomplex *x, int_t ldx, doublecomplex *xact,
+ 	    int_t ldxact, double rcond, double *resid)
+ {

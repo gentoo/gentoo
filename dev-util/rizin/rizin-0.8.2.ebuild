@@ -19,7 +19,7 @@ S="${WORKDIR}/${PN}-v${PV}"
 
 LICENSE="Apache-2.0 BSD LGPL-3 MIT"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 ~x86"
 IUSE="test"
 
 # Need to audit licenses of the binaries used for testing

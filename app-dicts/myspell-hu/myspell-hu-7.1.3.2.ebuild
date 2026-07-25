@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,6 +17,7 @@ MYSPELL_THES=(
 	"opt/libreoffice7.1/share/extensions/dict-hu/th_hu_HU_v2.idx"
 )
 
+RPM_COMPRESS_TYPE=none
 inherit rpm myspell-r2
 
 DESCRIPTION="Hungarian dictionaries for myspell/hunspell"
@@ -26,7 +27,6 @@ SRC_URI="https://downloadarchive.documentfoundation.org/libreoffice/old/${PV}/rp
 LICENSE="GPL-3 GPL-2 LGPL-2.1 MPL-1.1"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~sparc x86"
-IUSE=""
 
 src_unpack() {
 	myspell-r2_src_unpack

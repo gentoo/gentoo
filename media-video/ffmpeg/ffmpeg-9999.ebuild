@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit flag-o-matic multilib-minimal toolchain-funcs
+inherit flag-o-matic multilib-minimal toolchain-funcs udev
 
 FFMPEG_SOC_PATCH=
 FFMPEG_SUBSLOT=60.62.62 # avutil.avcodec.avformat SONAME
@@ -320,7 +320,10 @@ DEPEND="
 	ladspa? ( media-libs/ladspa-sdk )
 	nvenc? ( >=media-libs/nv-codec-headers-12.1.14.0 )
 	opencl? ( dev-util/opencl-headers )
-	vulkan? ( >=dev-util/vulkan-headers-1.4.317 )
+	vulkan? (
+		dev-util/spirv-headers
+		>=dev-util/vulkan-headers-1.4.317
+	)
 "
 BDEPEND="
 	app-alternatives/awk
@@ -402,6 +405,10 @@ src_prepare() {
 		tc-ld-is-mold && tc-is-clang && FFMPEG_ENABLE_LTO= #963835
 	fi
 	filter-lto
+
+	# workaround ICEs with >=gcc-16, (bug #973641 and bug #973622)
+	tc-is-gcc && [[ $(gcc-major-version) -ge 16 ]] &&
+		append-flags -fno-tree-vectorize
 }
 
 multilib_src_configure() {
@@ -500,7 +507,6 @@ multilib_src_configure() {
 
 	in_iuse soc && use soc &&
 		conf+=(
-			--disable-epoxy
 			--enable-libudev
 			--enable-sand
 			--enable-v4l2-request
@@ -590,7 +596,10 @@ multilib_src_configure() {
 
 multilib_src_compile() {
 	mkdir -p fftools/resources/ || die #965687
+	mkdir -p libavfilter/vulkan/ || die #974907
+
 	emake V=1
+
 	in_iuse chromium && use chromium && multilib_is_native_abi &&
 		emake V=1 libffmpeg
 }
@@ -604,4 +613,17 @@ multilib_src_install() {
 	emake V=1 DESTDIR="${D}" install
 	in_iuse chromium && use chromium && multilib_is_native_abi &&
 		emake V=1 DESTDIR="${D}" install-libffmpeg
+}
+
+multilib_src_install_all() {
+	in_iuse soc && use soc && udev_dorules "${FILESDIR}"/60-dma-heap-ffmpeg.rules
+	einstalldocs
+}
+
+pkg_postinst() {
+	in_iuse soc && use soc && udev_reload
+}
+
+pkg_postrm() {
+	in_iuse soc && use soc && udev_reload
 }

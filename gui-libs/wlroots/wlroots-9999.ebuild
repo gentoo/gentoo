@@ -3,6 +3,8 @@
 
 EAPI=8
 
+# Note: please bump this together with gui-wm/tinywl
+
 inherit meson
 
 DESCRIPTION="Pluggable, composable, unopinionated modules for building a Wayland compositor"
@@ -29,7 +31,7 @@ REQUIRED_USE="
 	xcb-errors? ( || ( x11-backend X ) )
 "
 
-DEPEND="
+RDEPEND="
 	>=dev-libs/wayland-1.24.0
 	media-libs/libglvnd
 	>=media-libs/mesa-24.1.0_rc1[opengl]
@@ -63,11 +65,11 @@ DEPEND="
 		x11-base/xwayland
 	)
 "
-RDEPEND="
-	${DEPEND}
+DEPEND="
+	${REPEND}
+	>=dev-libs/wayland-protocols-1.47
 "
 BDEPEND="
-	>=dev-libs/wayland-protocols-1.47
 	dev-util/wayland-scanner
 	virtual/pkgconfig
 "

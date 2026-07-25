@@ -11,7 +11,7 @@ SRC_URI="https://distfiles.audacious-media-player.org/${P}.tar.bz2"
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64 ~riscv ~x86"
+KEYWORDS="~amd64 ~ppc ~ppc64 ~riscv ~x86"
 IUSE="gtk qt6 test"
 REQUIRED_USE="test? ( qt6 )"
 RESTRICT="!test? ( test )"

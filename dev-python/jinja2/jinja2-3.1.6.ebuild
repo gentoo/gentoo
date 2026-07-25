@@ -1,11 +1,12 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=flit
 PYPI_PN=jinja2
-PYTHON_COMPAT=( python3_{11..14} pypy3_11 )
+PYPI_VERIFY_REPO=https://github.com/pallets/jinja
+PYTHON_COMPAT=( python3_{11..15} pypy3_11 )
 PYTHON_REQ_USE="threads(+)"
 
 inherit distutils-r1 pypi
@@ -28,6 +29,8 @@ RDEPEND="
 distutils_enable_sphinx docs \
 	dev-python/sphinx-issues \
 	dev-python/pallets-sphinx-themes
+
+EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
 
 # XXX: handle Babel better?
@@ -48,7 +51,6 @@ python_test() {
 		)
 	fi
 
-	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	epytest
 }
 

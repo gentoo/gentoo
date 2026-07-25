@@ -1,0 +1,22 @@
+diff --git a/src/exabgp/application/healthcheck.py b/src/exabgp/application/healthcheck.py
+index 7a3a4d416..b14266688 100644
+--- a/src/exabgp/application/healthcheck.py
++++ b/src/exabgp/application/healthcheck.py
+@@ -112,6 +112,7 @@ def setargs(parser):
+     g.add_argument('--label', default=None, help='use the provided label to match setup ip addresses')
+     g.add_argument('--label-exact-match', default=False, action='store_true', help='use the provided label to exactly match setup ip addresses, not a prefix match')
+     g.add_argument('--start-ip', metavar='N', type=int, default=0, help='index of the first IP in the list of IP addresses')
++    g.add_argument('--no-metric', type="store_true", default=False, help="don't send metrics when updating announcements")
+     g.add_argument('--up-metric', metavar='M', type=int, default=100, help='first IP get the metric M when the service is up')
+     g.add_argument('--down-metric', metavar='M', type=int, default=1000, help='first IP get the metric M when the service is down')
+     g.add_argument('--disabled-metric', metavar='M', type=int, default=500, help='first IP get the metric M when the service is disabled')
+@@ -438,7 +439,8 @@ def loop(options):
+             announce = f'route {ip} next-hop {options.next_hop or "self"}'
+ 
+             if action == 'announce':
+-                announce = f'{announce} med {metric}'
++                if  not options.no_metric:
++                    announce = f'{announce} med {metric}'
+                 if options.local_preference >= 0:
+                     announce = f'{announce} local-preference {options.local_preference}'
+                 if options.community or options.disabled_community:

@@ -1,13 +1,13 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit gnome.org gnome2-utils meson python-single-r1 xdg
 
 DESCRIPTION="An API documentation browser for GNOME"
-HOMEPAGE="https://wiki.gnome.org/Apps/Devhelp"
+HOMEPAGE="https://gitlab.gnome.org/Archive/devhelp"
 
 LICENSE="GPL-3+ CC-BY-SA-4.0"
 SLOT="0/3-6" # subslot = 3-(libdevhelp-3 soname version)

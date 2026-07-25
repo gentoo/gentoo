@@ -7,7 +7,7 @@
 # @AUTHOR:
 # William Hubbs <williamh@gentoo.org>
 # Robin H. Johnson <robbat2@gentoo.org>
-# @SUPPORTED_EAPIS: 7 8
+# @SUPPORTED_EAPIS: 7 8 9
 # @BLURB: basic eclass for building software written as go modules
 # @DESCRIPTION:
 # This eclass provides basic settings and functions needed by all software
@@ -61,7 +61,7 @@
 # @CODE
 
 case ${EAPI} in
-	7|8) ;;
+	7|8|9) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
@@ -71,7 +71,7 @@ _GO_MODULE_ECLASS=1
 inherit toolchain-funcs go-env
 
 if [[ ! ${GO_OPTIONAL} ]]; then
-	BDEPEND=">=dev-lang/go-1.20:="
+	BDEPEND=">=dev-lang/go-1.24.11:="
 
 	# Workaround for pkgcheck false positive: https://github.com/pkgcore/pkgcheck/issues/214
 	# MissingUnpackerDep: version ...: missing BDEPEND="app-arch/unzip"
@@ -108,13 +108,13 @@ QA_FLAGS_IGNORED='.*'
 #
 # You can use some combination of sed/awk/cut to extract the
 # contents of EGO_SUM or use the dev-go/get-ego-vendor tool.
-# 
+#
 # One manual way to do this is the following:
 #
 # @CODE
 #
 # cat go.sum | cut -d" " -f1,2 | awk '{print "\t\"" $0 "\""}'
-# 
+#
 # @CODE
 #
 # The format of go.sum is described upstream here:
@@ -182,7 +182,7 @@ declare -A -g _GOMODULE_GOSUM_REVERSE_MAP
 # If set to a non-null value before inherit, the Go part of the
 # ebuild will be considered optional. No dependencies will be added and
 # no phase functions will be exported. You will need to set BDEPEND and
-# call go-module_src_unpack in your ebuild.
+# call go-module_src_unpack and go-module_src_configure in your ebuild.
 
 # @FUNCTION: ego
 # @USAGE: [<args>...]
@@ -347,12 +347,11 @@ go-module_setup_proxy() {
 
 # @FUNCTION: go-module_src_unpack
 # @DESCRIPTION:
-# Sets up GOFLAGS for the system and then unpacks based on the following rules:
+# Unpacks based on the following rules:
 # 1. If EGO_SUM is set, unpack the base tarball(s) and set up the
 #    local go proxy.  This mode is deprecated.
 # 2. Otherwise, if EGO_VENDOR is set, bail out, as this functionality was removed.
 # 3. Otherwise, call 'ego mod verify' and then do a normal unpack.
-# Set compile env via go-env.
 go-module_src_unpack() {
 	if [[ "${#EGO_SUM[@]}" -gt 0 ]]; then
 		eqawarn "QA Notice: This ebuild uses EGO_SUM which is deprecated"
@@ -372,7 +371,9 @@ go-module_src_unpack() {
 		fi
 	fi
 
-	go-env_set_compile_environment
+	case ${EAPI} in
+		7|8) go-env_set_compile_environment ;;
+	esac
 }
 
 # @FUNCTION: _go-module_src_unpack_gosum
@@ -501,8 +502,21 @@ go-module_live_vendor() {
 	popd >& /dev/null || die
 }
 
+# @FUNCTION: go-module_src_configure
+# @DESCRIPTION:
+# Sets up the environment to build Go code for the target system. If manually
+# calling this from your own src_configure, do it between handling build flags
+# and invoking another build system.
+go-module_src_configure() {
+	go-env_set_compile_environment
+}
+
 fi
 
 if [[ ! ${GO_OPTIONAL} ]]; then
 	EXPORT_FUNCTIONS src_unpack
+	case ${EAPI} in
+		7|8) ;;
+		*) EXPORT_FUNCTIONS src_configure ;;
+	esac
 fi

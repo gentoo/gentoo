@@ -1,0 +1,43 @@
+From 2eb1afe7822b198b340096b63586ae1f9a9287ea Mon Sep 17 00:00:00 2001
+From: Florian Schmaus <flo@geekplace.eu>
+Date: Fri, 8 May 2026 11:33:39 +0200
+Subject: [PATCH] Do not perform the TLS dance
+
+Gentoo's ruby has DEFAULT_CERT_FILE set to /etc/ssl/cert.pem, which
+does not exist:
+
+$ ruby -ropenssl -e 'File.open(OpenSSL::X509::DEFAULT_CERT_FILE)'
+-e:1:in `initialize': No such file or directory @ rb_sysopen - /etc/ssl/cert.pem (Errno::ENOENT)
+	from -e:1:in `open'
+	from -e:1:in `<main>'
+--- a/lib/kramdown-rfc/command.rb
++++ b/lib/kramdown-rfc/command.rb
+@@ -180,17 +180,6 @@ RFC7942
+   end
+ end
+ 
+-def do_the_tls_dance
+-  begin
+-    require 'openssl'
+-    File.open(OpenSSL::X509::DEFAULT_CERT_FILE) do end
+-    # This guards against having an unreadable cert file (yes, that appears to happen a lot).
+-  rescue
+-    warn "*** Configuration problem with OS certificate store."
+-    exit 71 # EX_OSERR
+-  end
+-end
+-
+ RE_NL = /(?:\r\n|\n|\r)/
+ RE_SECTION = /---(?: +(\w+)(-?))? *#{RE_NL}(.*?#{RE_NL})(?=---(?:\s+\w+-?)?\s*#{RE_NL}|\Z)/m
+ 
+@@ -683,7 +672,6 @@ if input =~ /[\t]/
+ end
+ 
+ if input =~ /\A---/        # this is a sectionized file
+-  do_the_tls_dance unless ENV["KRAMDOWN_DONT_VERIFY_HTTPS"]
+   input, options, coding_override = xml_from_sections(input, input_filename)
+ else
+   options = process_kramdown_options # all default
+-- 
+2.53.0
+

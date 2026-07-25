@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Paul Zander <negril.nx+gentoo@gmail.com> (2025-09-11)
@@ -34,6 +34,7 @@ dev-lang/dafny test
 # depends on dev-python/notebook which depends on nodejs
 dev-python/ipython notebook
 dev-python/iminuit test
+dev-python/matplotlib-inline test
 dev-python/nbdime test
 dev-python/nbclient test
 dev-python/nbconvert test
@@ -70,6 +71,7 @@ kde-apps/kleopatra pim
 kde-apps/umbrello php
 kde-misc/kio-gdrive share
 kde-plasma/plasma-nm openconnect
+net-irc/quassel urlpreview
 net-misc/seafile-client shibboleth
 
 # Patrick McLean <chutzpah@gentoo.org> (2020-02-05)
@@ -103,4 +105,3 @@ dev-python/qtpy test
 # Davide Pesavento <pesa@gentoo.org> (2011-11-30)
 # The QML (V4) and JSC JITs do not work on x32 (bug #932192).
 dev-qt/qtdeclarative jit
-dev-qt/qtscript jit

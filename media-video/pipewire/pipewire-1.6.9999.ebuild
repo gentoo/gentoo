@@ -426,6 +426,19 @@ pkg_postinst() {
 			ewarn "Screencasting may not work until you do."
 		fi
 
+		# Upgrading from a previous major version may require a restart (bug #964059)
+		if use sound-server && ver_test $(ver_cut 1-2 ${ver}) -lt $(ver_cut 1-2 ${PV}) ; then
+			ewarn "Please restart PipeWire after upgrading to a new major version:"
+			if use systemd ; then
+				ewarn " $ systemctl --user daemon-reload"
+				ewarn " $ systemctl restart --user pipewire.service"
+				ewarn " $ systemctl restart --user pipewire-pulse.service"
+				ewarn " $ systemctl restart --user wireplumber.service"
+			else
+				ewarn " $ gentoo-pipewire-launcher restart"
+			fi
+		fi
+
 		if ver_test ${ver} -le 0.3.66-r1 ; then
 			elog ">=pipewire-0.3.66 uses the 'pipewire' group to manage permissions"
 			elog "and limits needed to function smoothly:"

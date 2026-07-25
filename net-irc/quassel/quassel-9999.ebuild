@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,30 +6,45 @@ EAPI=8
 inherit cmake optfeature pax-utils systemd xdg-utils
 
 if [[ ${PV} != *9999* ]]; then
-	MY_P=${PN}-${PV/_/-}
-	if [[ ${PV} == *_rc* ]] ; then
-		SRC_URI="https://github.com/quassel/quassel/archive/refs/tags/${PV/_/-}.tar.gz -> ${P}.tar.gz"
+	COMMIT=
+	if [[ -n ${COMMIT} ]]; then
+		SRC_URI="https://github.com/johu/quassel/archive/${COMMIT}.tar.gz -> ${P}-${COMMIT:0:8}.tar.gz"
+		# quassel-i18n branch tx-sync (po subdir) @d88d126
+		SRC_URI+=" https://dev.gentoo.org/~asturm/distfiles/${PN}-i18n-${PV/29/27}.tar.xz"
+		S="${WORKDIR}/${PN}-${COMMIT}"
 	else
-		SRC_URI="https://quassel-irc.org/pub/${MY_P}.tar.bz2"
-		KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
+		MY_P=${PN}-${PV/_/-}
+		if [[ ${PV} == *_rc* ]]; then
+			SRC_URI="https://github.com/quassel/quassel/archive/refs/tags/${PV/_/-}.tar.gz -> ${P}.tar.gz"
+		else
+			SRC_URI="https://quassel-irc.org/pub/${MY_P}.tar.bz2"
+		fi
+		S="${WORKDIR}/${MY_P}"
 	fi
-	S="${WORKDIR}/${MY_P}"
+	# RCs weren't keyworded in past, but we are past that point
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
 else
-	EGIT_REPO_URI=( "https://github.com/${PN}/${PN}" )
+	EGIT_REPO_URI=( https://github.com/johu/${PN} ) # as long as Qt6 isn't
+	EGIT_BRANCH=( feat/qt6-migration )              # merged upstream ...
+	# See also: https://github.com/quassel/quassel/pull/631
+	# EGIT_REPO_URI=( "https://github.com/${PN}/${PN}" )
 	inherit git-r3
 fi
 
-DESCRIPTION="Qt IRC client supporting a remote daemon for 24/7 connectivity"
+DESCRIPTION="Qt/KDE IRC client supporting a remote daemon for 24/7 connectivity"
 HOMEPAGE="https://quassel-irc.org/"
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="+dbus gui ldap monolithic oxygen postgres +server syslog +system-icons test"
+IUSE="crypt +dbus gui kde ldap monolithic oxygen postgres +server spell syslog +system-icons test urlpreview"
 
 REQUIRED_USE="
 	|| ( gui server monolithic )
+	crypt? ( || ( server monolithic ) )
+	kde? ( dbus spell )
 	ldap? ( || ( server monolithic ) )
 	postgres? ( || ( server monolithic ) )
+	spell? ( || ( gui monolithic ) )
 	syslog? ( || ( server monolithic ) )
 "
 
@@ -38,84 +53,98 @@ RESTRICT="!test? ( test )"
 SERVER_DEPEND="
 	acct-group/quassel
 	acct-user/quassel
+	crypt? ( >=app-crypt/qca-2.3.7:2[qt6(+)] )
 	ldap? ( net-nds/openldap:= )
-	postgres? ( dev-qt/qtsql:5[postgres] )
+	postgres? ( dev-qt/qtbase:6[postgres,sql] )
 	!postgres? (
-		dev-qt/qtsql:5[sqlite]
+		dev-qt/qtbase:6[sql,sqlite]
 		dev-db/sqlite:3[threadsafe(+),-secure-delete]
 	)
 	syslog? ( virtual/logger )
 "
 GUI_DEPEND="
-	dev-qt/qtgui:5
-	dev-qt/qtmultimedia:5
-	dev-qt/qtwidgets:5
-	dbus? ( dev-qt/qtdbus:5 )
+	dev-qt/qt5compat:6
+	dev-qt/qtbase:6[dbus?,gui,widgets]
+	dev-qt/qtmultimedia:6
+	kde? (
+		kde-frameworks/kconfigwidgets:6
+		kde-frameworks/kcoreaddons:6
+		kde-frameworks/knotifications:6
+		kde-frameworks/knotifyconfig:6
+		kde-frameworks/ktextwidgets:6
+		kde-frameworks/kwidgetsaddons:6
+		kde-frameworks/kxmlgui:6
+	)
+	spell? ( kde-frameworks/sonnet:6 )
 	system-icons? (
 		kde-frameworks/breeze-icons:*
 		oxygen? ( kde-frameworks/oxygen-icons:* )
 	)
+	urlpreview? ( dev-qt/qtwebengine:6[widgets] )
 "
 RDEPEND="
 	dev-libs/boost:=
-	dev-qt/qtcore:5
-	dev-qt/qtnetwork:5[ssl]
+	dev-qt/qtbase:6[network,ssl]
 	virtual/zlib:=
 	monolithic? (
-		${SERVER_DEPEND}
 		${GUI_DEPEND}
+		${SERVER_DEPEND}
 	)
 	!monolithic? (
-		server? ( ${SERVER_DEPEND} )
 		gui? ( ${GUI_DEPEND} )
+		server? ( ${SERVER_DEPEND} )
 	)
 "
-DEPEND="
-	${RDEPEND}
-	test? (
-		dev-cpp/gtest
-		dev-qt/qttest:5
-	)
+DEPEND="${RDEPEND}
+	test? ( dev-cpp/gtest )
 "
 BDEPEND="
-	dev-qt/linguist-tools:5
+	dev-qt/qttools:6[linguist]
 	kde-frameworks/extra-cmake-modules:0
 "
 
 DOCS=( AUTHORS ChangeLog README.md )
+
+src_unpack() {
+	case ${PV} in
+		9999) git-r3_src_unpack ;&
+		*)
+			default
+			if [[ -n ${COMMIT} ]]; then
+				mv "${WORKDIR}"/po "${S}" || die
+			fi
+			;;
+	esac
+}
 
 src_configure() {
 	local mycmakeargs=(
 		-DUSE_CCACHE=OFF
 		-DCMAKE_SKIP_RPATH=ON
 		-DEMBED_DATA=OFF
-		-DWITH_WEBKIT=OFF
-		-DWITH_BUNDLED_ICONS=$(usex !system-icons)
 		-DWANT_QTCLIENT=$(usex gui)
-		-DWITH_KDE=OFF # bug 953029
+		-DWITH_KDE=$(usex kde)
 		-DWITH_LDAP=$(usex ldap)
 		-DWANT_MONO=$(usex monolithic)
 		-DWITH_OXYGEN_ICONS=$(usex oxygen)
 		-DWANT_CORE=$(usex server)
+		-DWITH_BUNDLED_ICONS=$(usex !system-icons)
 		-DBUILD_TESTING=$(usex test)
-		-DWITH_WEBENGINE=OFF # bug 925723
+		-DWITH_WEBENGINE=$(usex urlpreview)
 	)
 
 	# bug #830708
 	if use gui || use monolithic ; then
 		mycmakeargs+=(
-			-DCMAKE_DISABLE_FIND_PACKAGE_KF5Sonnet=ON
-			-DCMAKE_DISABLE_FIND_PACKAGE_LibsnoreQt5=ON
-			-DCMAKE_DISABLE_FIND_PACKAGE_dbusmenu-qt5=ON
-			$(cmake_use_find_package dbus Qt5DBus)
+			-DCMAKE_DISABLE_FIND_PACKAGE_LibsnoreQt6=ON # not a thing?
+			-DCMAKE_DISABLE_FIND_PACKAGE_dbusmenu-qt6=ON # not a thing?
+			$(cmake_use_find_package dbus Qt6DBus)
+			$(cmake_use_find_package spell KF6Sonnet)
 		)
 	fi
 
 	if use server || use monolithic ; then
-		mycmakeargs+=(
-			# only packaged for qt6 now. Prevent it from being autodetected.
-			-DCMAKE_DISABLE_FIND_PACKAGE_Qca-qt5=ON
-		)
+		mycmakeargs+=( $(cmake_use_find_package crypt Qca-qt6) )
 	fi
 
 	cmake_src_configure

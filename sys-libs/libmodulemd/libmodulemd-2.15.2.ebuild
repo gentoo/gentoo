@@ -1,9 +1,9 @@
-# Copyright 2023-2025 Gentoo Authors
+# Copyright 2023-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit meson python-single-r1
 
@@ -15,6 +15,14 @@ if [[ ${PV} = 9999* ]]; then
 else
 		SRC_URI="https://github.com/fedora-modularity/libmodulemd/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 		KEYWORDS="amd64 ~arm64 x86"
+
+		# Backports for tests
+		SRC_URI+="
+			https://github.com/fedora-modularity/libmodulemd/commit/89d4afb3d018250427d4d87840ae57aab3903361.patch
+				-> ${PN}-2.15.2-glib-2.87.patch
+			https://github.com/fedora-modularity/libmodulemd/commit/e33ecf1cc15383b9563bc4cd9a6908277bf8039d.patch
+				-> ${PN}-2.15.2-pygobject-3.55.patch
+		"
 fi
 
 LICENSE="MIT"
@@ -47,6 +55,11 @@ BDEPEND="
 		sys-libs/libmodulemd
 	)
 "
+
+PATCHES=(
+	"${DISTDIR}"/libmodulemd-2.15.2-glib-2.87.patch
+	"${DISTDIR}"/libmodulemd-2.15.2-pygobject-3.55.patch
+)
 
 src_configure() {
 	local emesonargs=(

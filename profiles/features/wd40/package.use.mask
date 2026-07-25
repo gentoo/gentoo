@@ -1,6 +1,15 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (2025-05-07)
+# dev-python/mypy now started requiring NIH Rust packages.
+dev-python/charset-normalizer native-extensions
+
+# Michał Górny <mgorny@gentoo.org> (2025-05-02)
+# dev-python/cbor2 has been RIIR-ed, and the fallback Python
+# implementation was removed at the same time.  Cover its revdeps.
+sys-apps/fwupd uefi
+
 # Ionen Wolkens <ionen@gentoo.org> (2026-03-22)
 # app-text/mdbook is written in rust
 >=dev-libs/wayland-1.25.0 doc
@@ -126,6 +135,7 @@ dev-python/jupyter-client test
 # Michał Górny <mgorny@gentoo.org> (2023-10-15)
 # Need dev-python/notebook.
 dev-python/ipython notebook
+dev-python/matplotlib-inline test
 dev-python/nbclient test
 dev-python/nbconvert test
 
@@ -166,10 +176,6 @@ dev-python/django test
 # Hans de Graaff <graaff@gentoo.org> (2023-03-04)
 # The JIT compiler in ruby requires rust
 dev-lang/ruby jit
-
-# Sam James <sam@gentoo.org> (2022-12-26)
-# Needs dev-python/mkdocs-redirects->dev-python/twine which is masked on wd40
-dev-debug/gef doc
 
 # Sam James <sam@gentoo.org> (2022-12-11)
 # net-libs/rustls-ffi needs Rust.

@@ -6,7 +6,7 @@ EAPI=8
 inherit optfeature wine
 
 WINE_GECKO=2.47.4
-WINE_MONO=11.0.0
+WINE_MONO=11.1.0
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
@@ -26,7 +26,7 @@ HOMEPAGE="
 
 LICENSE="
 	LGPL-2.1+
-	BSD BSD-2 IJG MIT OPENLDAP ZLIB gsm libpng2 libtiff
+	BSD BSD-2 IJG MIT OPENLDAP ZLIB gsm libpng2 libtiff public-domain
 	|| ( WTFPL-2 public-domain )
 "
 SLOT="${PV}"

@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,7 +11,7 @@ RUBY_FAKEGEM_GEMSPEC="base64.gemspec"
 
 inherit ruby-fakegem
 
-DESCRIPTION="Support for encoding and decoding binary data using a Base64 representation."
+DESCRIPTION="Support for encoding and decoding binary data using a Base64 representation"
 HOMEPAGE="https://github.com/ruby/base64"
 SRC_URI="https://github.com/ruby/base64/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 

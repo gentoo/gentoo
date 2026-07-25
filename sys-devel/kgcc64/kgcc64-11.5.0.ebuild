@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,7 +15,6 @@ export CTARGET
 
 GCC_TARGET_NO_MULTILIB=true
 TOOLCHAIN_ALLOWED_LANGS="c"
-TOOLCHAIN_PATCH_DEV="sam"
 PATCH_GCC_VER="11.4.0"
 PATCH_VER="12"
 MUSL_VER="2"

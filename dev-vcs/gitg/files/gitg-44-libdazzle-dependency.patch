@@ -1,0 +1,199 @@
+From: Alberto Fanjul <albertofanjul@gmail.com>
+Date: Sun, 19 Jan 2025 21:29:37 +0100
+Subject: Remove libdazzle dependency
+
+(cherry picked from commit c66e8ed30c25f85d86010c5f17186beb09e3de8c)
+
+Origin: upstream after 44
+---
+ PACKAGING                      |   1 -
+ gitg/meson.build               |   1 -
+ libgitg/gitg-font-manager.vala | 105 ++++++++++++++++++++++++++++++++++++++++-
+ libgitg/meson.build            |   1 -
+ meson.build                    |   1 -
+ plugins/meson.build            |   1 -
+ 6 files changed, 104 insertions(+), 6 deletions(-)
+
+diff --git a/PACKAGING b/PACKAGING
+index fe0f11b..16f28ea 100644
+--- a/PACKAGING
++++ b/PACKAGING
+@@ -102,7 +102,6 @@ change and a definite list can be obtained by inspecting configure.ac instead:
+ - libpeas >= 1.5.0
+ - libpeas-gtk >= 1.5.0
+ - gspell-1 >= 1.8.1
+-- libdazzle >= 1.0
+ 
+ gitg has a soft dependency on python due to its plugin system. Building gitg
+ without python is perfectly possible, and since there are currently no plugins
+diff --git a/gitg/meson.build b/gitg/meson.build
+index cc01887..ef3bcaf 100644
+--- a/gitg/meson.build
++++ b/gitg/meson.build
+@@ -71,7 +71,6 @@ deps = [
+   gspell_dep,
+   libgitg_ext_dep,
+   libpeas_dep,
+-  libdazzle_dep,
+   json_glib_dependency,
+   valac.find_library ('posix'),
+ ]
+diff --git a/libgitg/gitg-font-manager.vala b/libgitg/gitg-font-manager.vala
+index 52f84d7..39dc82d 100644
+--- a/libgitg/gitg-font-manager.vala
++++ b/libgitg/gitg-font-manager.vala
+@@ -69,6 +69,109 @@ public class FontManager: Object
+ 		return null;
+ 	}
+ 
++	private string pango_font_description_to_css(Pango.FontDescription fd)
++	{
++		string font_to_css = "";
++		var family = fd.get_family();
++		font_to_css += @"font-family:\"$family\";";
++
++		var style = fd.get_style();
++		var style_txt = "";
++		switch(style)
++		{
++			case Pango.Style.NORMAL:
++				style_txt = "normal";
++				break;
++			case Pango.Style.OBLIQUE:
++				style_txt = "oblique";
++				break;
++			case Pango.Style.ITALIC:
++				style_txt = "italic";
++				break;
++			default:
++				break;
++		}
++
++		if (style_txt != "")
++			font_to_css += @"font-style:$style_txt;";
++
++		var variant = fd.get_variant();
++		var variant_txt = "";
++		switch(variant)
++		{
++			case Pango.Variant.NORMAL:
++				variant_txt = "normal";
++				break;
++			case Pango.Variant.SMALL_CAPS:
++				variant_txt = "small-caps";
++				break;
++			default:
++				break;
++		}
++
++		if (variant_txt != "")
++		font_to_css += @"font-variant:$variant_txt;";
++
++		var weight = fd.get_weight();
++		var weight_txt = "";
++		switch(weight)
++		{
++			case Pango.Weight.SEMILIGHT:
++			case Pango.Weight.NORMAL:
++				weight_txt = "normal";
++				break;
++			case Pango.Weight.BOLD:
++				weight_txt = "bold";
++				break;
++			default:
++				weight_txt = @"$((weight / 100) * 100)";
++				break;
++		}
++
++		if (weight_txt != "")
++			font_to_css += @"font-weight:$weight_txt;";
++
++		var stretch = fd.get_stretch();
++		var stretch_txt = "";
++		switch(stretch)
++		{
++			case Pango.Stretch.ULTRA_CONDENSED:
++				stretch_txt = "ultra-condensed";
++				break;
++			case Pango.Stretch.CONDENSED:
++				stretch_txt = "condensed";
++				break;
++			case Pango.Stretch.SEMI_CONDENSED:
++				stretch_txt = "semi-condensed";
++				break;
++			case Pango.Stretch.NORMAL:
++				stretch_txt = "normal";
++				break;
++			case Pango.Stretch.SEMI_EXPANDED:
++				stretch_txt = "semi-expanded";
++				break;
++			case Pango.Stretch.EXPANDED:
++				stretch_txt = "expanded";
++				break;
++			case Pango.Stretch.EXTRA_EXPANDED:
++				stretch_txt = "extra-expanded";
++				break;
++			case Pango.Stretch.ULTRA_EXPANDED:
++				stretch_txt = "ultra-expanded";
++				break;
++			default:
++				break;
++		}
++
++		if (stretch_txt != "")
++			font_to_css += @"font-stretch:$stretch_txt;";
++
++		var size_txt = (fd.get_size()/Pango.SCALE).to_string();
++		font_to_css += @"font-size:$(size_txt)pt;";
++
++		return font_to_css;
++	}
++
+ 	private void update_font_settings()
+ 	{
+ 		var fname = d_font_settings.get_string("monospace-font-name");
+@@ -77,7 +180,7 @@ public class FontManager: Object
+ 		}
+ 
+ 		var font_desc = Pango.FontDescription.from_string(fname);
+-		var css = "textview { %s }".printf(Dazzle.pango_font_description_to_css(font_desc));
++		var css = "textview { %s }".printf(pango_font_description_to_css(font_desc));
+ 		try
+ 		{
+ 			css_provider.load_from_data(css);
+diff --git a/libgitg/meson.build b/libgitg/meson.build
+index c572867..9dc68b2 100644
+--- a/libgitg/meson.build
++++ b/libgitg/meson.build
+@@ -13,7 +13,6 @@ common_deps = [
+   glib_dep,
+   gtk_dep,
+   libgit2_glib_dep,
+-  libdazzle_dep,
+   gpgme_dependency,
+ ]
+ 
+diff --git a/meson.build b/meson.build
+index 03d3ccc..c364d27 100644
+--- a/meson.build
++++ b/meson.build
+@@ -135,7 +135,6 @@ libgit2_glib_dep = dependency('libgit2-glib-1.0', version: ['>= 1.1.0'])
+ libpeas_dep = dependency('libpeas-1.0')
+ libsecret_dep = dependency('libsecret-1')
+ libxml_dep = dependency('libxml-2.0', version: '>= 2.9.0')
+-libdazzle_dep = dependency('libdazzle-1.0')
+ json_glib_dependency = dependency('json-glib-1.0')
+ gpgme_dependency = dependency('gpgme')
+ 
+diff --git a/plugins/meson.build b/plugins/meson.build
+index 4b39d67..6ca3d33 100644
+--- a/plugins/meson.build
++++ b/plugins/meson.build
+@@ -12,7 +12,6 @@ plugin_deps = [
+   libgitg_dep,
+   libgitg_ext_dep,
+   libpeas_dep,
+-  libdazzle_dep,
+ ]
+ 
+ plugin_dir = join_paths(gitg_pkglibdir, 'plugins')

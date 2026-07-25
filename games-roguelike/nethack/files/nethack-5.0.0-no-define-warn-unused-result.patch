@@ -1,0 +1,13 @@
+diff --git a/include/tradstdc.h b/include/tradstdc.h
+index a202c0c7b..d4b3f9b3f 100644
+--- a/include/tradstdc.h
++++ b/include/tradstdc.h
+@@ -441,7 +441,7 @@ typedef genericptr genericptr_t; /* (void *) or (char *) */
+ /* #pragma message is available */
+ #define NH_PRAGMA_MESSAGE 1
+ #endif  /* __GNUC__ greater than or equal to 5 */
+-#if (!defined(__linux__) && !defined(MACOS)) || defined(GCC_URWARN)
++#if 0
+ /* disable gcc's __attribute__((__warn_unused_result__)) since explicitly
+    discarding the result by casting to (void) is not accepted as a 'use' */
+ #define __warn_unused_result__ /*empty*/

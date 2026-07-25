@@ -1,10 +1,10 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{11..14} python3_{13,14}t pypy3_11 )
+PYTHON_COMPAT=( python3_{11..15} python3_{13..15}t pypy3_11 )
 PYTHON_REQ_USE="threads(+)"
 
 inherit distutils-r1 pypi
@@ -25,9 +25,21 @@ RDEPEND="
 	>=dev-python/ptyprocess-0.5[${PYTHON_USEDEP}]
 "
 
+EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
 distutils_enable_sphinx doc \
 	dev-python/sphinxcontrib-github-alt
+
+EPYTEST_DESELECT=(
+	# flaky test on weaker arches
+	tests/test_performance.py
+	# requires zsh installed, not worth it
+	tests/test_replwrap.py::REPLWrapTestCase::test_zsh
+	# flaky
+	tests/test_env.py::TestCaseEnv::test_spawn_uses_env
+	# flaky & hangy
+	tests/test_socket.py::ExpectTestCase::test_interrupt
+)
 
 PATCHES=(
 	# https://github.com/pexpect/pexpect/pull/794
@@ -42,22 +54,6 @@ src_test() {
 	local -x INPUTRC="${T}"/inputrc
 
 	distutils-r1_src_test
-}
-
-python_test() {
-	local EPYTEST_DESELECT=(
-		# flaky test on weaker arches
-		tests/test_performance.py
-		# requires zsh installed, not worth it
-		tests/test_replwrap.py::REPLWrapTestCase::test_zsh
-		# flaky
-		tests/test_env.py::TestCaseEnv::test_spawn_uses_env
-		# flaky & hangy
-		tests/test_socket.py::ExpectTestCase::test_interrupt
-	)
-
-	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
-	epytest
 }
 
 python_install_all() {

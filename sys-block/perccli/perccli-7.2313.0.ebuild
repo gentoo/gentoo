@@ -1,26 +1,25 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+
+RPM_COMPRESS_TYPE=xz
 inherit mount-boot rpm secureboot
 
 DESCRIPTION="LINUX PERCCLI Utility For All Dell HBA/PERC Controllers"
 HOMEPAGE="https://www.dell.com/support/home/en-us/drivers/driversdetails?driverid=tdghn"
+# Files not fetchable with the default user-agent, and EULA
+# requires consent for redistribution.
+SRC_URI="https://dl.dell.com/FOLDER09770976M/1/PERCCLI_7.2313.0_A14_Linux.tar.gz
+	uefi? ( https://dl.dell.com/FOLDER09770794M/1/perccli.efi -> perccli-7.2313.0.efi )"
+S=${WORKDIR}
+
 LICENSE="Dell-EULA"
 SLOT="0"
 KEYWORDS="-* ~amd64"
 IUSE="uefi"
 RESTRICT="bindist fetch mirror strip"
-DEPEND=""
-RDEPEND=""
 QA_PREBUILT="opt/MegaRAID/perccli/perccli* boot/efi/perccli.efi"
-
-# Files not fetchable with the default user-agent, and EULA
-# requires consent for redistribution.
-SRC_URI="https://dl.dell.com/FOLDER09770976M/1/PERCCLI_7.2313.0_A14_Linux.tar.gz
-	uefi? ( https://dl.dell.com/FOLDER09770794M/1/perccli.efi -> perccli-7.2313.0.efi )"
-
-S=${WORKDIR}
 
 pkg_nofetch() {
 	einfo "Please download PERCCLI_7.2313.0_A14_Linux.tar.gz from"

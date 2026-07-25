@@ -3,7 +3,8 @@
 
 EAPI=8
 
-inherit autotools systemd tmpfiles toolchain-funcs
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/nlnetlabs.asc
+inherit autotools systemd tmpfiles toolchain-funcs verify-sig
 
 DESCRIPTION="An authoritative only, high performance, open source name server"
 HOMEPAGE="https://www.nlnetlabs.nl/projects/nsd/about/"
@@ -18,17 +19,21 @@ else
 	MY_P="${PN}-${MY_PV}"
 
 	if [[ ${PV} != *_beta* && ${PV} != *_rc* ]] ; then
-		SRC_URI="https://www.nlnetlabs.nl/downloads/${PN}/${MY_P}.tar.gz"
+		SRC_URI="
+				https://www.nlnetlabs.nl/downloads/${PN}/${MY_P}.tar.gz
+				verify-sig? ( https://www.nlnetlabs.nl/downloads/nsd/${MY_P}.tar.gz.asc )
+		"
 		S="${WORKDIR}"/${MY_P}
 
-		KEYWORDS="~amd64 ~arm64 ~x86"
+		KEYWORDS="amd64 arm64 x86"
+		BDEPEND="verify-sig? ( >=sec-keys/openpgp-keys-nlnetlabs-20260101 ) "
 	fi
 fi
 
 LICENSE="BSD"
 SLOT="0"
 IUSE="+bind8-stats debug +dnstap +ipv6 libevent memclean minimal-responses mmap munin"
-IUSE+=" +nsec3 +radix-tree +ratelimit recvmmsg +simdzone ssl systemd +tfo xdp"
+IUSE+=" +nsec3 +radix-tree +ratelimit recvmmsg +simdzone ssl systemd +tfo xdp verify-sig"
 
 RDEPEND="
 	acct-group/nsd
@@ -48,7 +53,7 @@ RDEPEND="
 	)
 "
 DEPEND="${RDEPEND}"
-BDEPEND="
+BDEPEND+="
 	app-alternatives/lex
 	app-alternatives/yacc
 	systemd? ( virtual/pkgconfig )
@@ -69,9 +74,16 @@ QA_EXECSTACK="
 src_prepare() {
 	default
 
-	# Required to get correct pkg-config macros with USE="systemd".
-	# See bugs #663618 & #758050.
-	eautoreconf
+	if [[ ${PV} == *9999 ]] ; then
+		# When building from git, the configure script and simdzone sources are missing
+		# See README.md
+		git submodule update --init || die "Could't update submodules"
+		autoreconf -fi || die "autoreconf -fi failed"
+	else
+		# Required to get correct pkg-config macros with USE="systemd".
+		# See bugs #663618 & #758050.
+		eautoreconf
+	fi
 }
 
 src_configure() {

@@ -1,0 +1,23 @@
+respect compiler and flags from system
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -110,7 +110,7 @@ else()
+   set(GRN_BUNDLED TRUE)
+ endif()
+ 
+-if(NOT GRN_BUNDLED)
++if(NOT GRN_BUNDLED AND GRN_CCACHE)
+   find_program(CCACHE ccache)
+   if(CCACHE)
+     if(NOT CMAKE_C_COMPILER_LAUNCHER)
+@@ -239,10 +239,6 @@ if(GRN_C_COMPILER_GNU_LIKE)
+   set(GRN_C_COMPILE_FLAGS "${GRN_C_COMPILE_FLAGS} $<$<CONFIG:Debug>:-g3 -O0>")
+   set(GRN_CXX_COMPILE_FLAGS
+       "${GRN_CXX_COMPILE_FLAGS} $<$<CONFIG:Debug>:-g3 -O0>")
+-  set(GRN_C_COMPILE_FLAGS
+-      "${GRN_C_COMPILE_FLAGS} $<$<CONFIG:RelWithDebInfo>:-g3>")
+-  set(GRN_CXX_COMPILE_FLAGS
+-      "${GRN_CXX_COMPILE_FLAGS} $<$<CONFIG:RelWithDebInfo>:-g3>")
+ endif()
+ 
+ # /Ob1 is used with RelWithDebInfo by default but it's slower than /Ob2 which is

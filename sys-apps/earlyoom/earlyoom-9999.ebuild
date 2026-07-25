@@ -1,4 +1,4 @@
-# Copyright 2020-2024 Gentoo Authors
+# Copyright 2020-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -26,7 +26,10 @@ RESTRICT="!test? ( test )"
 
 BDEPEND="
 	man? ( virtual/pandoc )
-	test? ( dev-lang/go )
+	test? (
+		>=dev-lang/go-1.16
+		dev-util/cppcheck
+	)
 "
 
 src_unpack() {

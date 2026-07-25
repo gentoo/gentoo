@@ -11,7 +11,7 @@ SRC_URI="https://github.com/facebook/yoga/archive/refs/tags/v${PV}.tar.gz -> ${P
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~ppc64 ~riscv"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
@@ -20,6 +20,7 @@ BDEPEND="
 "
 
 PATCHES=(
+	"${FILESDIR}"/"${P}-add-tests-option.patch"
 	"${FILESDIR}"/"${P}-fix-tests.patch"
 )
 

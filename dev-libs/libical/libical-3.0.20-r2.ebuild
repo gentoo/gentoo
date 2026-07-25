@@ -1,11 +1,11 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..14} )
+PYTHON_COMPAT=( python3_{11..14} )
 VALA_USE_DEPEND="vapigen"
-inherit cmake python-any-r1 vala
+inherit cmake dot-a python-any-r1 toolchain-funcs vala
 
 DESCRIPTION="Implementation of basic iCAL protocols"
 HOMEPAGE="https://github.com/libical/libical"
@@ -43,6 +43,13 @@ BDEPEND="
 	)
 	vala? ( $(vala_depend) )
 "
+# to build native ical-glib-src-generator w/ cross-compile
+BDEPEND+="
+	glib? (
+		dev-libs/glib:2
+		dev-libs/libxml2:2
+	)
+"
 
 DOCS=(
 	AUTHORS README.md ReleaseNotes.txt TEST THANKS TODO
@@ -68,6 +75,39 @@ src_prepare() {
 }
 
 src_configure() {
+	if tc-is-cross-compiler && use glib; then
+		einfo "Building the native ical-glib-src-generator..."
+
+		BUILD_NATIVE="${WORKDIR}/${P}_build_native"
+		GENERATOR_BIN_DIR="${BUILD_NATIVE}/src/libical-glib/libexec/libical"
+
+		local mycmakeargs=(
+			-DCMAKE_DISABLE_FIND_PACKAGE_BerkeleyDB=ON
+			-DICAL_BUILD_DOCS=OFF
+			-DLIBICAL_BUILD_EXAMPLES=OFF
+			-DGOBJECT_INTROSPECTION=OFF
+			-DLIBICAL_BUILD_TESTING=OFF
+			-DICAL_GLIB_VAPI=OFF
+			-DICAL_GLIB=ON
+		)
+
+		BUILD_DIR="${BUILD_NATIVE}" tc-env_build cmake_src_configure
+
+		# configure for CHOST requires a cmake...
+		local native_gen=$(
+			find "${BUILD_NATIVE}" -type f -name IcalGlibSrcGenerator.cmake -print
+		)
+		# ... and a valid path. This empty file is fine for now.
+		mkdir -p "${GENERATOR_BIN_DIR}" || die
+		touch "${GENERATOR_BIN_DIR}"/ical-glib-src-generator || die
+	fi
+
+	use static-libs && lto-guarantee-fat
+
+	# fix gtk-doc, see https://bugs.gentoo.org/777090
+	# to check w/ 4.0 and migration to gi-docgen
+	export LD="$(tc-getCC)"
+
 	local mycmakeargs=(
 		-DCMAKE_DISABLE_FIND_PACKAGE_BerkeleyDB=ON
 		-DICAL_BUILD_DOCS=$(usex doc)
@@ -78,6 +118,13 @@ src_configure() {
 		-DLIBICAL_BUILD_TESTING=$(usex test)
 		-DICAL_GLIB_VAPI=$(usex vala)
 	)
+
+	if tc-is-cross-compiler && use glib; then
+		mycmakeargs+=(
+			-DIMPORT_ICAL_GLIB_SRC_GENERATOR="${native_gen}"
+		)
+	fi
+
 	if use vala; then
 		mycmakeargs+=(
 			-DVALAC="${VALAC}"
@@ -88,6 +135,12 @@ src_configure() {
 }
 
 src_compile() {
+	# build the native ical-glib-src-generator and place it where it's expected
+	if tc-is-cross-compiler && use glib; then
+		BUILD_DIR="${BUILD_NATIVE}" tc-env_build cmake_build ical-glib-src-generator
+		ln -sfT "${BUILD_NATIVE}"/bin/ical-glib-src-generator "${GENERATOR_BIN_DIR}"/ical-glib-src-generator || die
+	fi
+
 	cmake_src_compile
 
 	if use doc; then
@@ -112,4 +165,6 @@ src_install() {
 		rm examples/CMakeLists.txt || die
 		dodoc -r examples
 	fi
+
+	use static-libs && strip-lto-bytecode
 }

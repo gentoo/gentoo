@@ -1,4 +1,4 @@
-https://bugs.exim.org/show_bug.cgi?id=3144
+https://code.exim.org/exim/exim/issues/3144
 
 --- a/src/hintsdb.h
 +++ b/src/hintsdb.h

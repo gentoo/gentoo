@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=hatchling
 PYPI_VERIFY_REPO=https://github.com/python-jsonschema/jsonschema
-PYTHON_COMPAT=( pypy3_11 python3_{11..14} )
+PYTHON_COMPAT=( pypy3_11 python3_{11..15} )
 
 inherit distutils-r1 pypi
 
@@ -50,11 +50,24 @@ RDEPEND+="
 EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
 
-EPYTEST_DESELECT=(
-	# requires pip, does not make much sense for the users
-	jsonschema/tests/test_cli.py::TestCLIIntegration::test_license
-	# fragile warning tests
-	jsonschema/tests/test_deprecations.py
-	# wtf?
-	jsonschema/tests/test_jsonschema_test_suite.py::test_suite_bug
-)
+python_test() {
+	local EPYTEST_DESELECT=(
+		# requires pip, does not make much sense for the users
+		jsonschema/tests/test_cli.py::TestCLIIntegration::test_license
+		# fragile warning tests
+		jsonschema/tests/test_deprecations.py
+		# wtf?
+		jsonschema/tests/test_jsonschema_test_suite.py::test_suite_bug
+	)
+
+	case ${EPYTHON} in
+		python3.15*)
+			EPYTEST_DESELECT+=(
+				# pprint formatting changes
+				jsonschema/tests/test_exceptions.py::TestErrorInitReprStr::test_uses_pprint
+			)
+			;;
+	esac
+
+	epytest
+}

@@ -1,0 +1,88 @@
+diff --git a/cmake/sources.cmake b/cmake/sources.cmake
+index 31e0630..354de9e 100644
+--- a/cmake/sources.cmake
++++ b/cmake/sources.cmake
+@@ -257,18 +257,6 @@ set(hipo_util_headers
+     ipm/hipo/auxiliary/VectorOperations.h)
+ 
+ set(hipo_orderings_sources
+-    ../extern/amd/amd_1.c
+-    ../extern/amd/amd_2.c
+-    ../extern/amd/amd_aat.c
+-    ../extern/amd/amd_control.c
+-    ../extern/amd/amd_defaults.c
+-    ../extern/amd/amd_info.c
+-    ../extern/amd/amd_order.c
+-    ../extern/amd/amd_post_tree.c
+-    ../extern/amd/amd_postorder.c
+-    ../extern/amd/amd_preprocess.c
+-    ../extern/amd/amd_valid.c
+-    ../extern/amd/SuiteSparse_config.c
+     ../extern/metis/GKlib/error.c
+     ../extern/metis/GKlib/mcore.c
+     ../extern/metis/GKlib/memory.c
+@@ -296,9 +284,6 @@ set(hipo_orderings_sources
+     ../extern/rcm/rcm.cpp)
+ 
+ set(hipo_orderings_headers
+-    ../extern/amd/amd_internal.h
+-    ../extern/amd/amd.h
+-    ../extern/amd/SuiteSparse_config.h
+     ../extern/metis/GKlib/gk_arch.h
+     ../extern/metis/GKlib/gk_defs.h
+     ../extern/metis/GKlib/gk_macros.h
+diff --git a/highs/CMakeLists.txt b/highs/CMakeLists.txt
+index 7e90ad5..99ae0d1 100644
+--- a/highs/CMakeLists.txt
++++ b/highs/CMakeLists.txt
+@@ -158,6 +158,7 @@ else()
+ 
+ 
+   target_sources(highs PRIVATE ${sources} ${headers} ${win_version_file})
++  target_link_libraries(highs PRIVATE amd)
+ 
+   # Optional Cuda
+   if (CUPDLP_GPU)
+diff --git a/highs/ipm/hipo/factorhighs/Analyse.cpp b/highs/ipm/hipo/factorhighs/Analyse.cpp
+index 587c71a..e638240 100644
+--- a/highs/ipm/hipo/factorhighs/Analyse.cpp
++++ b/highs/ipm/hipo/factorhighs/Analyse.cpp
+@@ -10,7 +10,7 @@
+ #include "DataCollector.h"
+ #include "FactorHiGHSSettings.h"
+ #include "ReturnValues.h"
+-#include "amd/amd.h"
++#include <amd.h>
+ #include "ipm/hipo/auxiliary/Auxiliary.h"
+ #include "ipm/hipo/auxiliary/Log.h"
+ #include "metis/metis.h"
+diff --git a/highs/ipm/hipo/ipm/FactorHiGHSSolver.cpp b/highs/ipm/hipo/ipm/FactorHiGHSSolver.cpp
+index b0ba1d7..6a11446 100644
+--- a/highs/ipm/hipo/ipm/FactorHiGHSSolver.cpp
++++ b/highs/ipm/hipo/ipm/FactorHiGHSSolver.cpp
+@@ -3,7 +3,7 @@
+ #include <limits>
+ 
+ #include "Status.h"
+-#include "amd/amd.h"
++#include <amd.h>
+ #include "ipm/hipo/auxiliary/Auxiliary.h"
+ #include "ipm/hipo/auxiliary/Log.h"
+ #include "metis/metis.h"
+@@ -616,11 +616,11 @@ Int FactorHiGHSSolver::chooseOrdering(const std::vector<Int>& rows,
+       }
+     } else if (orderings_to_try[i] == kHipoAmdString) {
+       double control[AMD_CONTROL];
+-      Highs_amd_defaults(control);
++      amd_defaults(control);
+       double info[AMD_INFO];
+ 
+       log_.printDevInfo("Running AMD\n");
+-      Int status = Highs_amd_order(n, full_ptr.data(), full_rows.data(),
++      Int status = amd_order(n, full_ptr.data(), full_rows.data(),
+                                    permutations[i].data(), control, info);
+       log_.printDevInfo("AMD done\n");
+ 
+-- 
+2.53.0
+

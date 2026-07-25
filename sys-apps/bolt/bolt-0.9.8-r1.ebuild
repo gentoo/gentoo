@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -36,15 +36,22 @@ BDEPEND="
 	test? (
 		dev-util/umockdev
 		${PYTHON_DEPS}
-		$(python_gen_any_dep \
-			'dev-python/pygobject[${PYTHON_USEDEP}]' \
-			'dev-python/dbus-python[${PYTHON_USEDEP}]' \
-			'dev-python/python-dbusmock[${PYTHON_USEDEP}]'
-		)
+		$(python_gen_any_dep '
+			dev-python/pygobject[${PYTHON_USEDEP}]
+			dev-python/dbus-python[${PYTHON_USEDEP}]
+			dev-python/python-dbusmock[${PYTHON_USEDEP}]
+		')
 	)
 "
 
 PATCHES=( "${FILESDIR}"/${P}-sockaddr.patch )
+
+python_check_deps() {
+	python_has_version \
+		"dev-python/pygobject[${PYTHON_USEDEP}]" \
+		"dev-python/dbus-python[${PYTHON_USEDEP}]" \
+		"dev-python/python-dbusmock[${PYTHON_USEDEP}]"
+}
 
 pkg_setup() {
 	if use kernel_linux && kernel_is lt 5 6; then
@@ -58,7 +65,7 @@ pkg_setup() {
 	ERROR_HOTPLUG_PCI="Thunderbolt requires PCI hotplug support."
 
 	linux-info_pkg_setup
-	python-any-r1_pkg_setup
+	use test && python-any-r1_pkg_setup
 }
 
 src_configure() {

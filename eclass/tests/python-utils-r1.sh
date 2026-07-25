@@ -64,7 +64,7 @@ tmpfile=$(mktemp)
 
 inherit multilib python-utils-r1
 
-for minor in {11..14} {13..14}t; do
+for minor in {11..15} {13..15}t; do
 	ebegin "Testing python3.${minor}"
 	eindent
 	test_var EPYTHON "python3_${minor}" "python3.${minor}"

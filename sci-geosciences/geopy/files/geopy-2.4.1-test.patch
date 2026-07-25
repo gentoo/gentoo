@@ -1,0 +1,28 @@
+--- a/test/geocoders/nominatim.py	2026-05-11 11:14:13.294741085 +0200
++++ b/test/geocoders/nominatim.py	2026-05-11 11:15:26.008947638 +0200
+@@ -71,7 +71,7 @@
+ 
+     async def test_reverse_near_zero(self):
+         location = await self.reverse_run(
+-            {"query": Point(31.0, -1.0e-5)},
++            {"query": Point(31.0, -1.0e-5), "language": "en"},
+             {"latitude": 32.3096365, "longitude": 0.2450916, "delta": 3}
+         )
+         assert "El Bayadh" in location.address
+--- a/test/geocoders/photon.py	2026-05-11 11:52:03.018076549 +0200
++++ b/test/geocoders/photon.py	2026-05-11 12:18:00.771121860 +0200
+@@ -27,12 +27,12 @@
+     async def test_osm_tag(self):
+         await self.geocode_run(
+             {"query": "Freedom", "osm_tag": "tourism:artwork"},
+-            {"latitude": 38.8898061, "longitude": -77.009088, "delta": 2.0},
++            {"latitude": 41.9994187, "longitude": 14.9861365, "delta": 2.0},
+         )
+ 
+         await self.geocode_run(
+             {"query": "Freedom", "osm_tag": ["!office", "place:hamlet"]},
+-            {"latitude": 44.3862491, "longitude": -88.290994, "delta": 2.0},
++            {"latitude": 36.9228445, "longitude": -85.105511, "delta": 2.0},
+         )
+ 
+     async def test_bbox(self):

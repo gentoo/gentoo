@@ -1,0 +1,14 @@
+Manifest signature verification is currently disabled; the checksum for Cropimage.qml is
+incorrect, and the shared libraries aren't ignored as expected.
+This will be reworked and made optional in version 5.3.
+--- a/cplusplus/extensions/pqc_extensionshandler.cpp
++++ b/cplusplus/extensions/pqc_extensionshandler.cpp
+@@ -1451,7 +1451,7 @@ bool PQCExtensionsHandler::verifyExtension(QString extensionDir, QString nameId)
+ 
+         if(hash != hashMap.value(f)) {
+             qWarning() << identifyName << "- Invalid hash for file:" << f;
+-            return false;
++            return true;
+         }
+ 
+     }

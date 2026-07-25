@@ -7,12 +7,12 @@ inherit autotools edos2unix rpm
 
 DESCRIPTION="Epson Inkjet Printer Driver (ESC/P-R)"
 HOMEPAGE="https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX"
-SRC_URI="${P}-1.src.rpm"
+SRC_URI="https://distfiles.gentoo.org/pub/dev/dilfridge%40gentoo.org/${CATEGORY}/${PN}/${P}-1.src.rpm"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ppc64"
-RESTRICT="fetch"
+# No reason for RESTRICT=fetch since this is GPL-2
 
 DEPEND="net-print/cups"
 RDEPEND="${DEPEND}"
@@ -22,12 +22,6 @@ PATCHES=(
 	"${FILESDIR}/${PN}-1.7.7-fnocommon.patch"
 	"${FILESDIR}/${PN}-1.8-missing-include.patch"
 )
-
-pkg_nofetch() {
-	einfo "Please download ${SRC_URI} from:"
-	einfo "https://download-center.epson.com/search/?region=US&language=en"
-	einfo "and move it to your distfiles directory."
-}
 
 src_prepare() {
 	local f

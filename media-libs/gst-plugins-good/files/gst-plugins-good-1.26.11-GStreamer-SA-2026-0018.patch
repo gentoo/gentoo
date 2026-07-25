@@ -1,0 +1,337 @@
+https://bugs.gentoo.org/974286
+https://gstreamer.freedesktop.org/security/sa-2026-0018.html
+https://gitlab.freedesktop.org/gstreamer/gstreamer/-/merge_requests/11243
+
+From ea7ac498e3f3f6cd4f41bc5d1c8af1a3bb68d44c Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Sebastian=20Dr=C3=B6ge?= <sebastian@centricular.com>
+Date: Thu, 19 Mar 2026 10:25:22 +0200
+Subject: [PATCH 1/4] qtdemux: Avoid division by zero if 0 audio channels are
+ signalled
+
+Fixes https://gitlab.freedesktop.org/gstreamer/gstreamer/-/issues/4977
+
+Part-of: <https://gitlab.freedesktop.org/gstreamer/gstreamer/-/merge_requests/11243>
+--- a/gst/isomp4/qtdemux.c
++++ b/gst/isomp4/qtdemux.c
+@@ -13287,6 +13287,10 @@ qtdemux_parse_chnl (GstQTDemux * qtdemux, GstByteReader * br,
+       }
+ 
+       n_channels = entry->n_channels;
++      if (n_channels == 0) {
++        GST_WARNING_OBJECT (qtdemux, "Unknown number of channels");
++        goto error;
++      }
+ 
+       if (defined_layout == 0) {
+         for (unsigned int i = 0; i < n_channels; i++) {
+@@ -16442,20 +16446,20 @@ qtdemux_parse_trak (GstQTDemux * qtdemux, GNode * trak, guint32 * mvhd_matrix)
+           /* Sometimes these are set to 0 in the sound sample descriptions so
+            * let's try to infer useful values from the other information we
+            * have available */
+-          if (entry->bytes_per_sample == 0)
++          if (entry->bytes_per_sample == 0 && entry->n_channels > 0)
+             entry->bytes_per_sample =
+                 entry->bytes_per_frame / entry->n_channels;
+           if (entry->bytes_per_sample == 0)
+             entry->bytes_per_sample = samplesize / 8;
+ 
+-          if (entry->bytes_per_frame == 0)
++          if (entry->bytes_per_frame == 0 && entry->n_channels > 0)
+             entry->bytes_per_frame =
+                 entry->bytes_per_sample * entry->n_channels;
+ 
+           if (entry->bytes_per_packet == 0)
+             entry->bytes_per_packet = entry->bytes_per_sample;
+ 
+-          if (entry->samples_per_frame == 0)
++          if (entry->samples_per_frame == 0 && entry->n_channels > 0)
+             entry->samples_per_frame = entry->n_channels;
+ 
+           if (entry->samples_per_packet == 0)
+@@ -19817,7 +19821,8 @@ qtdemux_audio_caps (GstQTDemux * qtdemux, QtDemuxStream * stream,
+       data = stsd_entry->data;
+       len = QT_UINT32 (data);
+ 
+-      if (stsd_version == 0 && version == 0x00020000 && len >= 16 + 56) {
++      if (stsd_version == 0 && version == 0x00020000 && len >= 16 + 56
++          && entry->n_channels > 0) {
+         /* sample description entry (16) + sound sample description v0 (20) */
+         depth = QT_UINT32 (data + 36 + 20);
+         flags = QT_UINT32 (data + 36 + 24);
+-- 
+GitLab
+
+
+From 401f350074ceeea0868c34d0af084ae98316c7b3 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Sebastian=20Dr=C3=B6ge?= <sebastian@centricular.com>
+Date: Thu, 19 Mar 2026 10:34:54 +0200
+Subject: [PATCH 2/4] qtdemux: Validate chnl defined layout before using it to
+ index the layouts array
+
+Fixes https://gitlab.freedesktop.org/gstreamer/gstreamer/-/issues/4976
+
+Part-of: <https://gitlab.freedesktop.org/gstreamer/gstreamer/-/merge_requests/11243>
+--- a/gst/isomp4/qtdemux.c
++++ b/gst/isomp4/qtdemux.c
+@@ -13479,6 +13479,14 @@ qtdemux_parse_chnl (GstQTDemux * qtdemux, GstByteReader * br,
+           }
+         }
+ 
++        if (defined_layout >= G_N_ELEMENTS (chnl_layouts) ||
++            chnl_layouts[defined_layout][0] ==
++            GST_AUDIO_CHANNEL_POSITION_INVALID) {
++          GST_WARNING_OBJECT (qtdemux, "Unsupported defined layout %u",
++              defined_layout);
++          goto error;
++        }
++
+         const GstAudioChannelPosition *layout = chnl_layouts[defined_layout];
+ 
+         // Calculate number of channels: number of channels in the layout
+-- 
+GitLab
+
+
+From 067232489fbdec93341921361a1bdbd718c16e9a Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Sebastian=20Dr=C3=B6ge?= <sebastian@centricular.com>
+Date: Thu, 19 Mar 2026 10:46:51 +0200
+Subject: [PATCH 3/4] qtdemux: Avoid out-of-bounds reads and writes of 64 item
+ audio channel positions array
+
+When parsing both the chan and chnl boxes.
+
+Part-of: <https://gitlab.freedesktop.org/gstreamer/gstreamer/-/merge_requests/11243>
+--- a/gst/isomp4/qtdemux.c
++++ b/gst/isomp4/qtdemux.c
+@@ -13292,6 +13292,12 @@ qtdemux_parse_chnl (GstQTDemux * qtdemux, GstByteReader * br,
+         goto error;
+       }
+ 
++      if (n_channels >= 64) {
++        GST_WARNING_OBJECT (qtdemux, "Unsupported number of channels %d",
++            n_channels);
++        goto error;
++      }
++
+       if (defined_layout == 0) {
+         for (unsigned int i = 0; i < n_channels; i++) {
+           guint8 speaker_position;
+@@ -13428,6 +13434,12 @@ qtdemux_parse_chnl (GstQTDemux * qtdemux, GstByteReader * br,
+           goto error;
+         }
+ 
++        if (layout_channel_count >= 64) {
++          GST_WARNING_OBJECT (qtdemux, "Unsupported number of channels %d",
++              layout_channel_count);
++          goto error;
++        }
++
+         n_channels = layout_channel_count;
+         for (unsigned int i = 0; i < layout_channel_count; i++) {
+           guint8 speaker_position;
+@@ -13508,6 +13520,9 @@ qtdemux_parse_chnl (GstQTDemux * qtdemux, GstByteReader * br,
+           }
+         }
+ 
++        // Guaranteed above by construction
++        g_assert (n_channels < 64);
++
+         // The omitted channel map defines which of the channels of the
+         // pre-defined layout are *not* included.
+         for (unsigned int c = 0; c < n_channels; c++) {
+@@ -13563,7 +13578,8 @@ qtdemux_parse_chnl (GstQTDemux * qtdemux, GstByteReader * br,
+ 
+ #ifndef GST_DISABLE_GST_DEBUG
+   {
+-    gchar *s = gst_audio_channel_positions_to_string (positions, n_channels);
++    gchar *s =
++        gst_audio_channel_positions_to_string (positions, MIN (n_channels, 64));
+ 
+     GST_DEBUG_OBJECT (qtdemux, "Retrieved channel positions %s", s);
+ 
+@@ -13571,35 +13587,41 @@ qtdemux_parse_chnl (GstQTDemux * qtdemux, GstByteReader * br,
+   }
+ #endif
+ 
+-  guint64 channel_mask;
+-  GstAudioChannelPosition valid_positions[64];
+-
+-  if (!gst_audio_channel_positions_to_mask (positions, n_channels, FALSE,
+-          &channel_mask)) {
+-    GST_WARNING_OBJECT (qtdemux, "Can't convert channel positions to mask");
+-    goto error;
+-  }
++  if (n_channels < 64) {
++    guint64 channel_mask;
++    GstAudioChannelPosition valid_positions[64];
+ 
+-  memcpy (valid_positions, positions, sizeof (positions[0]) * n_channels);
+-  if (!gst_audio_channel_positions_to_valid_order (valid_positions, n_channels)) {
+-    GST_WARNING_OBJECT (qtdemux,
+-        "Can't convert channel positions to GStreamer channel order");
+-    goto error;
+-  }
++    if (!gst_audio_channel_positions_to_mask (positions, n_channels, FALSE,
++            &channel_mask)) {
++      GST_WARNING_OBJECT (qtdemux, "Can't convert channel positions to mask");
++      goto error;
++    }
+ 
+-  if (n_channels > 1) {
+-    if (!gst_audio_get_channel_reorder_map (n_channels, positions,
+-            valid_positions, entry->reorder_map)) {
+-      GST_WARNING_OBJECT (qtdemux, "Can't calculate channel reorder map");
++    memcpy (valid_positions, positions, sizeof (positions[0]) * n_channels);
++    if (!gst_audio_channel_positions_to_valid_order (valid_positions,
++            n_channels)) {
++      GST_WARNING_OBJECT (qtdemux,
++          "Can't convert channel positions to GStreamer channel order");
+       goto error;
+     }
+-    entry->needs_reorder =
+-        memcmp (positions, valid_positions,
+-        sizeof (positions[0]) * n_channels) != 0;
+-  }
+ 
+-  gst_caps_set_simple (entry->caps, "channel-mask", GST_TYPE_BITMASK,
+-      channel_mask, NULL);
++    if (n_channels > 1) {
++      if (!gst_audio_get_channel_reorder_map (n_channels, positions,
++              valid_positions, entry->reorder_map)) {
++        GST_WARNING_OBJECT (qtdemux, "Can't calculate channel reorder map");
++        goto error;
++      }
++      entry->needs_reorder =
++          memcmp (positions, valid_positions,
++          sizeof (positions[0]) * n_channels) != 0;
++    }
++
++    gst_caps_set_simple (entry->caps, "channel-mask", GST_TYPE_BITMASK,
++        channel_mask, NULL);
++  } else {
++    gst_caps_set_simple (entry->caps, "channel-mask", GST_TYPE_BITMASK,
++        G_GUINT64_CONSTANT (0), NULL);
++  }
+ 
+   // Update based on the actual channel count from this box
+   entry->samples_per_frame = n_channels;
+@@ -14876,14 +14898,15 @@ qtdemux_parse_chan (GstQTDemux * qtdemux, GstByteReader * br,
+     }
+   } else if (layout_tag == AUDIO_CHANNEL_LAYOUT_TAG_DISCRETEINORDER) {
+     // Unordered
+-    n_channels = entry->n_channels;
+-    for (gsize i = 0; i < n_channels; i++) {
++    for (gsize i = 0; i < G_N_ELEMENTS (positions); i++) {
+       positions[i] = GST_AUDIO_CHANNEL_POSITION_NONE;
+     }
+   } else if (layout_tag & 0xffff) {
+     for (gsize i = 0; i < G_N_ELEMENTS (chan_layout_map); i++) {
+       if (chan_layout_map[i].tag == layout_tag) {
+         n_channels = layout_tag & 0xffff;
++        // Guaranteed by construction of the layout map table
++        g_assert (n_channels < 64);
+         memcpy (positions, chan_layout_map[i].positions,
+             n_channels * sizeof (GstAudioChannelPosition));
+         break;
+@@ -14911,7 +14934,8 @@ qtdemux_parse_chan (GstQTDemux * qtdemux, GstByteReader * br,
+ 
+ #ifndef GST_DISABLE_GST_DEBUG
+   {
+-    gchar *s = gst_audio_channel_positions_to_string (positions, n_channels);
++    gchar *s =
++        gst_audio_channel_positions_to_string (positions, MIN (n_channels, 64));
+ 
+     GST_DEBUG_OBJECT (qtdemux, "Retrieved channel positions %s", s);
+ 
+@@ -14919,35 +14943,41 @@ qtdemux_parse_chan (GstQTDemux * qtdemux, GstByteReader * br,
+   }
+ #endif
+ 
+-  guint64 channel_mask;
+-  GstAudioChannelPosition valid_positions[64];
+-
+-  if (!gst_audio_channel_positions_to_mask (positions, n_channels, FALSE,
+-          &channel_mask)) {
+-    GST_WARNING_OBJECT (qtdemux, "Can't convert channel positions to mask");
+-    goto error;
+-  }
++  if (n_channels < 64) {
++    guint64 channel_mask;
++    GstAudioChannelPosition valid_positions[64];
+ 
+-  memcpy (valid_positions, positions, sizeof (positions[0]) * n_channels);
+-  if (!gst_audio_channel_positions_to_valid_order (valid_positions, n_channels)) {
+-    GST_WARNING_OBJECT (qtdemux,
+-        "Can't convert channel positions to GStreamer channel order");
+-    goto error;
+-  }
++    if (!gst_audio_channel_positions_to_mask (positions, n_channels, FALSE,
++            &channel_mask)) {
++      GST_WARNING_OBJECT (qtdemux, "Can't convert channel positions to mask");
++      goto error;
++    }
+ 
+-  if (n_channels > 1) {
+-    if (!gst_audio_get_channel_reorder_map (n_channels, positions,
+-            valid_positions, entry->reorder_map)) {
+-      GST_WARNING_OBJECT (qtdemux, "Can't calculate channel reorder map");
++    memcpy (valid_positions, positions, sizeof (positions[0]) * n_channels);
++    if (!gst_audio_channel_positions_to_valid_order (valid_positions,
++            n_channels)) {
++      GST_WARNING_OBJECT (qtdemux,
++          "Can't convert channel positions to GStreamer channel order");
+       goto error;
+     }
+-    entry->needs_reorder =
+-        memcmp (positions, valid_positions,
+-        sizeof (positions[0]) * n_channels) != 0;
+-  }
+ 
+-  gst_caps_set_simple (entry->caps, "channel-mask", GST_TYPE_BITMASK,
+-      channel_mask, NULL);
++    if (n_channels > 1) {
++      if (!gst_audio_get_channel_reorder_map (n_channels, positions,
++              valid_positions, entry->reorder_map)) {
++        GST_WARNING_OBJECT (qtdemux, "Can't calculate channel reorder map");
++        goto error;
++      }
++      entry->needs_reorder =
++          memcmp (positions, valid_positions,
++          sizeof (positions[0]) * n_channels) != 0;
++    }
++
++    gst_caps_set_simple (entry->caps, "channel-mask", GST_TYPE_BITMASK,
++        channel_mask, NULL);
++  } else {
++    gst_caps_set_simple (entry->caps, "channel-mask", GST_TYPE_BITMASK,
++        G_GUINT64_CONSTANT (0), NULL);
++  }
+ 
+   // Update based on the actual channel count from this box
+   entry->samples_per_frame = n_channels;
+-- 
+GitLab
+
+
+From 56b7963de77859de3ea36d207914b4a0f073df23 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Sebastian=20Dr=C3=B6ge?= <sebastian@centricular.com>
+Date: Thu, 19 Mar 2026 11:00:50 +0200
+Subject: [PATCH 4/4] qtdemux: Fix bit pattern check for omitted audio channels
+ map
+
+Part-of: <https://gitlab.freedesktop.org/gstreamer/gstreamer/-/merge_requests/11243>
+--- a/gst/isomp4/qtdemux.c
++++ b/gst/isomp4/qtdemux.c
+@@ -13511,7 +13511,8 @@ qtdemux_parse_chnl (GstQTDemux * qtdemux, GstByteReader * br,
+           n_channels += 1;
+         }
+         for (unsigned int i = 0; i < 64; i++) {
+-          if ((omitted_channels_map >> i) == 1) {
++          // The i-th channel is omitted
++          if (((omitted_channels_map >> i) & 1) == 1) {
+             n_channels -= 1;
+           }
+           // No channels present
+-- 
+GitLab
+

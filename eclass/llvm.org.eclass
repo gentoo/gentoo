@@ -72,11 +72,11 @@ if [[ -z ${_LLVM_SOURCE_TYPE+1} ]]; then
 			_LLVM_SOURCE_TYPE=snapshot
 
 			case ${PV} in
-				23.0.0_pre20260331)
-					EGIT_COMMIT=af6521fb3a36149cd69d83bfdf87ed26e59a14a2
+				23.0.0_pre20260512)
+					EGIT_COMMIT=8789401c6f0b2c53ba348860c1b0c5df1fa40c8c
 					;;
-				23.0.0_pre20260321)
-					EGIT_COMMIT=df9eb79970c012990e829d174d181d575d414efe
+				23.0.0_pre20260507)
+					EGIT_COMMIT=0f3ca6bb9ca514518c55fc02855a6083312ddfe2
 					;;
 				*)
 					die "Unknown snapshot: ${PV}"
@@ -305,7 +305,7 @@ llvm.org_set_globals() {
 		if [[ -n ${LLVM_MANPAGE_DIST} ]]; then
 			SRC_URI+="
 				!doc? (
-					https://dev.gentoo.org/~mgorny/dist/llvm/${LLVM_MANPAGE_DIST}
+					https://distfiles.gentoo.org/pub/proj/llvm/manpages/${LLVM_MANPAGE_DIST}
 				)
 			"
 		fi
@@ -313,7 +313,8 @@ llvm.org_set_globals() {
 
 	if [[ -n ${LLVM_PATCHSET} ]]; then
 		SRC_URI+="
-			https://dev.gentoo.org/~mgorny/dist/llvm/llvm-gentoo-patchset-${LLVM_PATCHSET}.tar.xz"
+			https://distfiles.gentoo.org/pub/proj/llvm/patchsets/${LLVM_MAJOR}/llvm-gentoo-patchset-${LLVM_PATCHSET}.tar.xz
+		"
 	fi
 
 	local x

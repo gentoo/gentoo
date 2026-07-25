@@ -1,0 +1,13 @@
+We rename libtoolize -> glibtoolize on macOS to avoid conflicting with
+the system tool.
+--- a/bin/autoreconf.in
++++ b/bin/autoreconf.in
+@@ -130,7 +130,7 @@ my %C = (
+   autom4te    => $ENV{'AUTOM4TE'}    || '@bindir@/@autom4te-name@',
+   automake    => $ENV{'AUTOMAKE'}    || 'automake',
+   aclocal     => $ENV{'ACLOCAL'}     || 'aclocal',
+-  libtoolize  => $ENV{'LIBTOOLIZE'}  || 'libtoolize',
++  libtoolize  => $ENV{'LIBTOOLIZE'}  || 'glibtoolize',
+   intltoolize => $ENV{'INTLTOOLIZE'} || 'intltoolize',
+   gtkdocize   => $ENV{'GTKDOCIZE'}   || 'gtkdocize',
+   autopoint   => $ENV{'AUTOPOINT'}   || 'autopoint',

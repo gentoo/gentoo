@@ -1,0 +1,78 @@
+From 8f1531ec29968e379758baac487b3e63f9bdaf55 Mon Sep 17 00:00:00 2001
+From: Christopher Byrne <salah.coronya@gmail.com>
+Date: Fri, 24 Apr 2026 21:11:37 -0500
+Subject: [PATCH 2/2] m4/guestfs-bash-completion.m4: Allow control of
+ completions installation
+
+It can be desirable to install (or suppress) the installion of the bash
+completion files regardless on what's on the compile host. Gentoo always
+installs bash completions files, even if bash-completion is not installed.
+
+Signed-off-by: Christopher Byrne <salah.coronya@gmail.com>
+---
+ configure.ac                  |  2 ++
+ m4/guestfs-bash-completion.m4 | 37 +++++++++++++++++++++++++----------
+ 2 files changed, 29 insertions(+), 10 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 8a180a1d..bb1d35d7 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -218,6 +218,8 @@ feature "OCaml-based virt tools" test "x$HAVE_OCAML_TRUE" = "x"
+ feature "OCaml gettext"          test "x$OCAML_PKG_gettext" != "xno"
+ feature "Perl-based virt tools"  test "x$HAVE_TOOLS_TRUE" = "x"
+ feature "Bash tab completion"    test "x$HAVE_BASH_COMPLETION_TRUE" = "x"
++AS_IF([test "x$HAVE_BASH_COMPLETION_TRUE" = "x"],
++[print   "Bash completions dir"  "$BASH_COMPLETIONS_DIR"])
+ 
+ echo
+ echo "If any optional component is configured 'no' when you expected 'yes'"
+diff --git a/m4/guestfs-bash-completion.m4 b/m4/guestfs-bash-completion.m4
+index ecd9f591..72ea2ef7 100644
+--- a/m4/guestfs-bash-completion.m4
++++ b/m4/guestfs-bash-completion.m4
+@@ -16,14 +16,31 @@
+ # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+ 
+ dnl Bash completion.
+-PKG_CHECK_MODULES([BASH_COMPLETION], [bash-completion >= 2.0], [
+-    bash_completion=yes
+-    AC_MSG_CHECKING([for bash-completions directory])
+-    BASH_COMPLETIONS_DIR="`pkg-config --variable=completionsdir bash-completion`"
+-    AC_MSG_RESULT([$BASH_COMPLETIONS_DIR])
+-    AC_SUBST([BASH_COMPLETIONS_DIR])
+-],[
+-    bash_completion=no
+-    AC_MSG_WARN([bash-completion not installed])
++AC_ARG_WITH([bash-completion],
++  [AS_HELP_STRING([--with-bash-completion],[Enable bash completions @<:@default=auto@:>@])],
++  [with_bash_completion="$withval"],
++  [with_bash_completion=auto])
++
++AS_IF([test "x$with_bash_completion" = "xauto"], [
++       PKG_CHECK_MODULES([BASH_COMPLETION], [bash-completion >= 2.0],
++       [], [
++         AC_MSG_WARN([bash-completion not installed])
++       BASH_COMPLETION=no
++])],[BASH_COMPLETION=$with_bash_completion])
++AM_CONDITIONAL([HAVE_BASH_COMPLETION],[test "x$BASH_COMPLETION" != "xno"])
++
++AC_ARG_WITH([bash-completion-dir],
++  [AS_HELP_STRING([--with-bash-completion-dir],[Directory to install bash completions @<:@default=auto@:>@])],
++  [with_bash_completion_dir="$withval"],
++  [with_bash_completion_dir=auto])
++
++AS_IF([test "x$BASH_COMPLETION" != "xno"], [
++  AC_MSG_CHECKING([for bash-completions directory])
++  AS_IF([test "x$with_bash_completion_dir" = "xauto" || test "x$with_bash_completion_dir" = "xyes"], [
++    PKG_CHECK_VAR([BASH_COMPLETIONS_DIR], [bash-completion], [completionsdir], [], [
++      BASH_COMPLETIONS_DIR="${datadir}/bash-completion/completions"])
++  ],
++  [BASH_COMPLETIONS_DIR=$with_bash_completion_dir])
++  AC_MSG_RESULT([$BASH_COMPLETIONS_DIR])
++  AC_SUBST([BASH_COMPLETIONS_DIR])
+ ])
+-AM_CONDITIONAL([HAVE_BASH_COMPLETION],[test "x$bash_completion" = "xyes"])
+-- 
+2.53.0
+

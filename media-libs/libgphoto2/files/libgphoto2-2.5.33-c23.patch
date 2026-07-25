@@ -1,0 +1,71 @@
+https://github.com/gphoto/libgphoto2/pull/1235
+https://github.com/gphoto/libgphoto2/commit/7cbc8b7241f73835270493d26e440b27060cb3df
+
+From 7cbc8b7241f73835270493d26e440b27060cb3df Mon Sep 17 00:00:00 2001
+From: Khem Raj <khem.raj@oss.qualcomm.com>
+Date: Sat, 4 Apr 2026 14:56:01 -0700
+Subject: [PATCH] libgphoto2: fix const-correctness for c23 builds
+
+C23 treats the return values of strrchr() and strchr() as const char *
+when the input string is const-qualified. Update local variables to use
+const char * where appropriate to avoid discarded-qualifier warnings and
+build failures with -std=gnu23.
+
+No functional change intended.
+
+Signed-off-by: Khem Raj <khem.raj@oss.qualcomm.com>
+--- a/camlibs/directory/directory.c
++++ b/camlibs/directory/directory.c
+@@ -125,7 +125,7 @@ static const char *
+ get_mime_type (const char *filename)
+ {
+ 
+-	char *dot;
++	const char *dot;
+ 	int x=0;
+ 
+ 	dot = strrchr(filename, '.');
+--- a/libgphoto2/gphoto2-file.c
++++ b/libgphoto2/gphoto2-file.c
+@@ -611,7 +611,7 @@ int
+ gp_file_open (CameraFile *file, const char *filename)
+ {
+ 	FILE *fp;
+-	char *name, *dot;
++	const char *name, *dot;
+ 	long size, size_read;
+ 	int  i;
+ 	struct stat s;
+@@ -907,8 +907,8 @@ gp_file_get_name (CameraFile *file, const char **name)
+ int
+ gp_file_get_name_by_type (CameraFile *file, const char *basename, CameraFileType type, char **newname)
+ {
+-	char *prefix = NULL, *s, *new, *slash = NULL;
+-	const char *suffix = NULL;
++	char *prefix = NULL, *new;
++	const char *suffix = NULL, *s, *slash = NULL;
+ 	int i;
+ 
+ 	C_PARAMS (file && basename && newname);
+--- a/libgphoto2/gphoto2-filesys.c
++++ b/libgphoto2/gphoto2-filesys.c
+@@ -521,7 +521,7 @@ append_to_folder (CameraFilesystemFolder *folder,
+ 	CameraFilesystemFolder **newfolder
+ ) {
+ 	CameraFilesystemFolder	*f;
+-	char	*s;
++	const char	*s;
+ 
+ 	GP_LOG_D ("Append to folder %p/%s - %s", folder, folder->name, foldername);
+ 	/* Handle multiple slashes, and slashes at the end */
+--- a/packaging/generic/print-camera-list.c
++++ b/packaging/generic/print-camera-list.c
+@@ -1138,7 +1138,7 @@ escape_html(const char *str) {
+ 	newstr = malloc(strlen(str)+1+inc);
+ 	s = str; ns = newstr;
+ 	do {
+-		char *x;
++		const char *x;
+ 		x = strchr(s,'&');
+ 		if (x) {
+ 			memcpy (ns, s, x-s);

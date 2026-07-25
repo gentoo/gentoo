@@ -36,6 +36,7 @@ RDEPEND="
 	dev-libs/expat
 	dev-libs/glib:2
 	dev-libs/gmp:=
+	dev-libs/hidapi
 	dev-libs/mpfr:=
 	media-gfx/openvdb:=
 	media-gfx/libbgcode

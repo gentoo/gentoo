@@ -1,8 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
+RPM_COMPRESS_TYPE=none
 inherit bash-completion-r1 rpm
 
 MY_P="${PN}-${PV/_p/-}"
@@ -13,6 +14,7 @@ SRC_URI="
 	amd64? ( https://repo.yandex.ru/yandex-disk/rpm/stable/x86_64/${MY_P}.fedora.x86_64.rpm )
 	x86? ( https://repo.yandex.ru/yandex-disk/rpm/stable/i386/${MY_P}.fedora.i386.rpm )
 "
+S="${WORKDIR}"
 
 LICENSE="YDSLA"
 SLOT="0"
@@ -20,8 +22,6 @@ KEYWORDS="-* amd64 x86"
 
 DEPEND="app-arch/gzip"
 RDEPEND="virtual/zlib:="
-
-S="${WORKDIR}"
 
 QA_PREBUILT="opt/bin/yandex-disk"
 

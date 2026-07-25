@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,7 +18,10 @@ RDEPEND="sys-libs/ncurses:0="
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
-PATCHES=( "${FILESDIR}"/${PN}-0.8.5-fno-common.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.8.5-fno-common.patch
+	"${FILESDIR}"/${PN}-0.9.0-gcc-15.patch
+)
 
 DOCS=( README.md )
 

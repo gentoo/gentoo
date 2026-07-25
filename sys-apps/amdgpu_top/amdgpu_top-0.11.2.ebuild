@@ -15,7 +15,7 @@ declare -A GIT_CRATES=(
 
 inherit desktop cargo
 
-DESCRIPTION="Tool to display AMDGPU usage."
+DESCRIPTION="Tool to display AMDGPU usage"
 HOMEPAGE="https://github.com/Umio-Yasuno/amdgpu_top"
 SRC_URI="
 	https://github.com/Umio-Yasuno/amdgpu_top/archive/refs/tags/v${PV}.tar.gz -> ${P}.gh.tar.gz

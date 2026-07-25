@@ -1,0 +1,31 @@
+Minimal fix for libupnp-1.18
+https://github.com/amule-project/amule/pull/448
+
+--- a/src/UPnPBase.cpp
++++ b/src/UPnPBase.cpp
+@@ -1129,7 +1147,9 @@ bool CUPnPControlPoint::PrivateDeletePortMapping(
+ 
+ 
+ // This function is static
+-#if UPNP_VERSION >= 10800
++#if UPNP_VERSION >= 11800
++int CUPnPControlPoint::Callback(Upnp_EventType_e EventType, void *Event, void * /*Cookie*/)
++#elif UPNP_VERSION >= 10800
+ int CUPnPControlPoint::Callback(Upnp_EventType_e EventType, const void *Event, void * /*Cookie*/)
+ #else
+ int CUPnPControlPoint::Callback(Upnp_EventType EventType, void *Event, void * /*Cookie*/)
+--- a/src/UPnPBase.h
++++ b/src/UPnPBase.h
+@@ -491,7 +491,11 @@ public:
+ 
+ 	// Callback function
+ 	static int Callback(
+-#if UPNP_VERSION >= 10800
++#if UPNP_VERSION >= 11800
++		Upnp_EventType_e EventType,
++		void *Event,
++		void *Cookie);
++#elif UPNP_VERSION >= 10800
+ 		Upnp_EventType_e EventType,
+ 		const void *Event,
+ 		void *Cookie);

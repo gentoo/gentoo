@@ -1,4 +1,4 @@
-# Copyright 2025 Gentoo Authors
+# Copyright 2025-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -33,5 +33,5 @@ src_configure() {
 		$(cmake_use_find_package quick3d Qt6Quick3D)
 	)
 
-	cmake_src_configure
+	qt6-build_src_configure
 }

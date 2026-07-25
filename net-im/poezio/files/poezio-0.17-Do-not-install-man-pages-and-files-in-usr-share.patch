@@ -1,0 +1,26 @@
+From 7b889591550f57485cabb6961571fd3c279bd1ca Mon Sep 17 00:00:00 2001
+From: Florian Schmaus <flo@geekplace.eu>
+Date: Mon, 12 Jul 2021 15:08:30 +0200
+Subject: [PATCH] Do not install man pages and files in /usr/share/poezio
+
+Signed-off-by: Florian Schmaus <flo@geekplace.eu>
+--- a/setup.py
++++ b/setup.py
+@@ -121,14 +121,9 @@ setup(
+     scripts=['scripts/poezio_logs'],
+     entry_points={'console_scripts': ['poezio = poezio.__main__:run']},
+     data_files=([
+-            ('share/man/man1/', ['data/poezio.1', 'data/poezio_logs.1']),
+-            ('share/poezio/', ['README.rst', 'COPYING', 'CHANGELOG']),
+             ('share/applications/', ['data/io.poez.Poezio.desktop']),
+             ('share/metainfo/', ['data/io.poez.Poezio.appdata.xml'])
+         ]
+-        + find_doc('share/doc/poezio/source', 'source')
+-        # Requires sphinx-build doc/source doc/build/html
+-        + find_doc('share/doc/poezio/html', 'build/html')
+         + sphinx_files_found
+     ),
+     cmdclass=cmdclass,
+-- 
+2.53.0
+

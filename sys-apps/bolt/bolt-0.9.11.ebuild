@@ -12,7 +12,7 @@ SRC_URI="https://gitlab.freedesktop.org/${PN}/${PN}/-/archive/${PV}/${P}.tar.bz2
 
 LICENSE="LGPL-2.1 GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~loong ~riscv ~x86"
+KEYWORDS="~amd64 ~loong ~ppc64 ~riscv ~x86"
 IUSE="selinux test"
 RESTRICT="!test? ( test )"
 
@@ -36,13 +36,20 @@ BDEPEND="
 	test? (
 		dev-util/umockdev
 		${PYTHON_DEPS}
-		$(python_gen_any_dep \
-			'dev-python/pygobject[${PYTHON_USEDEP}]' \
-			'dev-python/dbus-python[${PYTHON_USEDEP}]' \
-			'dev-python/python-dbusmock[${PYTHON_USEDEP}]'
-		)
+		$(python_gen_any_dep '
+			dev-python/pygobject[${PYTHON_USEDEP}]
+			dev-python/dbus-python[${PYTHON_USEDEP}]
+			dev-python/python-dbusmock[${PYTHON_USEDEP}]
+		')
 	)
 "
+
+python_check_deps() {
+	python_has_version \
+		"dev-python/pygobject[${PYTHON_USEDEP}]" \
+		"dev-python/dbus-python[${PYTHON_USEDEP}]" \
+		"dev-python/python-dbusmock[${PYTHON_USEDEP}]"
+}
 
 pkg_setup() {
 	if use kernel_linux && kernel_is lt 5 6; then
@@ -56,7 +63,7 @@ pkg_setup() {
 	ERROR_HOTPLUG_PCI="Thunderbolt requires PCI hotplug support."
 
 	linux-info_pkg_setup
-	python-any-r1_pkg_setup
+	use test && python-any-r1_pkg_setup
 }
 
 src_configure() {

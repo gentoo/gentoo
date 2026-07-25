@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -49,6 +49,12 @@ MULTILIB_CHOST_TOOLS=(
 PATCHES=(
 	"${FILESDIR}"/${PN}-10.10-000-Fix-multilib.patch
 	"${FILESDIR}"/${PN}-10.47-riscv.patch
+	"${FILESDIR}"/${PN}-10.47-constness.patch
+)
+
+QA_CONFIG_IMPL_DECL_SKIP=(
+	# Only exists in MS Visual C++ (bug #954363)
+	__assume
 )
 
 src_prepare() {

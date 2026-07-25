@@ -1,0 +1,125 @@
+--- a/tests/results/bootstrap3/test_form_helper/bootstrap_form_show_errors_bs3_true_gte52.html	2026-05-12 08:54:40.844588615 +0200
++++ b/tests/results/bootstrap3/test_form_helper/bootstrap_form_show_errors_bs3_true_gte52.html	2026-05-12 08:56:08.969609620 +0200
+@@ -3,7 +3,7 @@
+         <label for="id_email" class=" control-label requiredField"> email<span class="asteriskField">*</span> </label>
+         <div class=" controls">
+             <div class="input-group"><input type="text" name="email" value="invalidemail" maxlength="30"
+-            aria-describedby="id_email_helptext" aria-invalid="true"
++            aria-describedby="id_email_helptext id_email_error" aria-invalid="true"
+             class="textinput textInput inputtext form-control" required id="id_email" />
+             <span class="input-group-addon">whatever</span></div>
+             <span id="error_1_id_email" class="help-block"><strong>Enter a valid email address.</strong></span>
+@@ -15,7 +15,7 @@
+         <div class=" controls">
+             <div class="input-group">
+                 <span class="input-group-addon">blabla</span>
+-                <input type="text" name="first_name" value="first_name_too_long" maxlength="5" aria-invalid="true"
++                <input type="text" name="first_name" value="first_name_too_long" maxlength="5" aria-describedby="id_first_name_error" aria-invalid="true"
+                        class="textinput textInput inputtext form-control" required id="id_first_name" />
+             </div>
+ 
+@@ -27,7 +27,7 @@
+         <div class=" controls">
+             <div class="input-group">
+                 <span class="input-group-addon">foo</span>
+-                <input type="text" name="last_name" value="last_name_too_long" maxlength="5"  aria-invalid="true"
++                <input type="text" name="last_name" value="last_name_too_long" maxlength="5"  aria-describedby="id_last_name_error" aria-invalid="true"
+                        class="textinput textInput inputtext form-control" required id="id_last_name" />
+                 <span class="input-group-addon">bar</span>
+             </div>
+--- a/tests/results/bootstrap3/test_form_helper/bootstrap_form_show_errors_bs3_false_gte52.html	2026-05-12 08:58:43.242895175 +0200
++++ b/tests/results/bootstrap3/test_form_helper/bootstrap_form_show_errors_bs3_false_gte52.html	2026-05-12 08:59:34.010330008 +0200
+@@ -3,7 +3,7 @@
+         <label for="id_email" class=" control-label requiredField"> email<span class="asteriskField">*</span> </label>
+         <div class=" controls">
+             <div class="input-group"><input type="text" name="email" value="invalidemail" maxlength="30"
+-            aria-describedby="id_email_helptext" aria-invalid="true"
++            aria-describedby="id_email_helptext id_email_error" aria-invalid="true"
+             class="textinput textInput inputtext form-control" required id="id_email" />
+             <span class="input-group-addon">whatever</span></div>
+             <div id="hint_id_email" class="help-block">Insert your email</div>
+@@ -14,7 +14,7 @@
+         <div class=" controls">
+             <div class="input-group">
+                 <span class="input-group-addon">blabla</span>
+-              <input type="text" name="first_name" value="first_name_too_long" maxlength="5" aria-invalid="true"
++              <input type="text" name="first_name" value="first_name_too_long" maxlength="5" aria-describedby="id_first_name_error" aria-invalid="true"
+                      class="textinput textInput inputtext form-control" required id="id_first_name" />
+             </div>
+         </div>
+@@ -24,7 +24,7 @@
+         <div class=" controls">
+             <div class="input-group">
+                 <span class="input-group-addon">foo</span>
+-                <input type="text" name="last_name" value="last_name_too_long" maxlength="5" aria-invalid="true"
++                <input type="text" name="last_name" value="last_name_too_long" maxlength="5" aria-describedby="id_last_name_error" aria-invalid="true"
+                        class="textinput textInput inputtext form-control" required id="id_last_name" />
+                 <span class="input-group-addon">bar</span>
+             </div>
+--- a/tests/results/bootstrap3/test_form_helper/test_form_show_errors_non_field_errors_true_gte52.html	2026-05-12 09:05:52.812112989 +0200
++++ b/tests/results/bootstrap3/test_form_helper/test_form_show_errors_non_field_errors_true_gte52.html	2026-05-12 09:08:58.292049212 +0200
+@@ -11,7 +11,7 @@
+     <div id="div_id_email" class="form-group has-error"> <label for="id_email" class="control-label  requiredField">
+             email<span class="asteriskField">*</span> </label>
+         <div class="controls "> <input type="text" name="email" maxlength="30"
+-                aria-describedby="id_email_helptext" aria-invalid="true"
++                aria-describedby="id_email_helptext id_email_error" aria-invalid="true"
+                 class="textinput textInput inputtext form-control" required id="id_email"> <span id="error_1_id_email"
+                 class="help-block"><strong>This field is required.</strong></span>
+             <div id="hint_id_email" class="help-block">Insert your email</div>
+@@ -29,13 +29,13 @@
+     </div>
+     <div id="div_id_first_name" class="form-group has-error"> <label for="id_first_name"
+             class="control-label  requiredField"> first name<span class="asteriskField">*</span> </label>
+-        <div class="controls "> <input type="text" name="first_name" maxlength="5" aria-invalid="true"
++        <div class="controls "> <input type="text" name="first_name" maxlength="5" aria-describedby="id_first_name_error" aria-invalid="true"
+                 class="textinput textInput inputtext form-control" required id="id_first_name"> <span
+                 id="error_1_id_first_name" class="help-block"><strong>This field is required.</strong></span> </div>
+     </div>
+     <div id="div_id_last_name" class="form-group has-error"> <label for="id_last_name"
+             class="control-label  requiredField"> last name<span class="asteriskField">*</span> </label>
+-        <div class="controls "> <input type="text" name="last_name" maxlength="5" aria-invalid="true"
++        <div class="controls "> <input type="text" name="last_name" maxlength="5" aria-describedby="id_last_name_error" aria-invalid="true"
+                 class="textinput textInput inputtext form-control" required id="id_last_name"> <span
+                 id="error_1_id_last_name" class="help-block"><strong>This field is required.</strong></span> </div>
+     </div>
+@@ -46,4 +46,4 @@
+                 id="id_datetime_field_1"> <span id="error_1_id_datetime_field" class="help-block"><strong>This field is
+                     required.</strong></span> </div>
+     </div>
+-</form>
+\ No newline at end of file
++</form>
+--- a/tests/results/bootstrap3/test_form_helper/test_form_show_errors_non_field_errors_false_gte52.html	2026-05-12 09:07:54.198762179 +0200
++++ b/tests/results/bootstrap3/test_form_helper/test_form_show_errors_non_field_errors_false_gte52.html	2026-05-12 09:10:38.733931881 +0200
+@@ -6,7 +6,7 @@
+     <div id="div_id_email" class="form-group"> <label for="id_email" class="control-label  requiredField"> email<span
+                 class="asteriskField">*</span> </label>
+         <div class="controls "> <input type="text" name="email" maxlength="30"
+-                aria-describedby="id_email_helptext" aria-invalid="true"
++                aria-describedby="id_email_helptext id_email_error" aria-invalid="true"
+                 class="textinput textInput inputtext form-control" required id="id_email">
+             <div id="hint_id_email" class="help-block">Insert your email</div>
+         </div>
+@@ -23,12 +23,12 @@
+     </div>
+     <div id="div_id_first_name" class="form-group"> <label for="id_first_name" class="control-label  requiredField">
+             first name<span class="asteriskField">*</span> </label>
+-        <div class="controls "> <input type="text" name="first_name" maxlength="5" aria-invalid="true"
++        <div class="controls "> <input type="text" name="first_name" maxlength="5" aria-describedby="id_first_name_error" aria-invalid="true"
+                 class="textinput textInput inputtext form-control" required id="id_first_name"> </div>
+     </div>
+     <div id="div_id_last_name" class="form-group"> <label for="id_last_name" class="control-label  requiredField"> last
+             name<span class="asteriskField">*</span> </label>
+-        <div class="controls "> <input type="text" name="last_name" maxlength="5" aria-invalid="true"
++        <div class="controls "> <input type="text" name="last_name" maxlength="5" aria-describedby="id_last_name_error" aria-invalid="true"
+                 class="textinput textInput inputtext form-control" required id="id_last_name"> </div>
+     </div>
+     <div id="div_id_datetime_field" class="form-group"> 
+@@ -37,4 +37,4 @@
+                 id="id_datetime_field_0"><input type="text" name="datetime_field_1" class="timeinput" required aria-invalid="true"
+                 id="id_datetime_field_1"> </div>
+     </div>
+-</form>
+\ No newline at end of file
++</form>

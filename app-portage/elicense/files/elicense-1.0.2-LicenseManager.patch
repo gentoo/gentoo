@@ -1,0 +1,19 @@
+LicenseManager has been refactored in portage-3.0.74.
+
+--- a/elicense
++++ b/elicense
+@@ -45,11 +45,10 @@ def main(argv):
+ 	locations_manager.set_port_dirs(settings.get("PORTDIR"),
+ 		settings.get("PORTDIR_OVERLAY"))
+ 
+-	abs_user_config = locations_manager.abs_user_config
++	locations_manager.profiles = []
++	locations_manager.profiles_complex = []
+ 
+-	license_manager = LicenseManager(locations_manager.profile_locations,
+-		abs_user_config,
+-		user_config=True)
++	license_manager = LicenseManager(locations_manager, user_config=True)
+ 
+ 	license_manager.set_accept_license_str(settings.get("ACCEPT_LICENSE"))
+ 

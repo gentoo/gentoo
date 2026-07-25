@@ -1,0 +1,26 @@
+diff --git a/src/engine/Makefile.am b/src/engine/Makefile.am
+index 90671dd..72a95ad 100644
+--- a/src/engine/Makefile.am
++++ b/src/engine/Makefile.am
+@@ -156,6 +156,8 @@ if FZ_MAC
+ libfzclient_private_la_LDFLAGS += -framework CoreServices
+ endif
+ 
++libfzclient_private_la_LIBADD = $(PUGIXML_LIBS)
++
+ CLEANFILES = filezilla.h.gch
+ DISTCLEANFILES = ./$(DEPDIR)/filezilla.Po
+ 
+diff --git a/src/interface/Makefile.am b/src/interface/Makefile.am
+index 60937a8..438b099 100644
+--- a/src/interface/Makefile.am
++++ b/src/interface/Makefile.am
+@@ -310,7 +310,7 @@ filezilla_LDFLAGS += $(PUGIXML_LIBS)
+ 
+ if HAVE_DBUS
+ filezilla_DEPENDENCIES += ../dbus/libfzdbus.a
+-filezilla_LDFLAGS += ../dbus/libfzdbus.a $(LIBDBUS_LIBS)
++filezilla_LDADD = ../dbus/libfzdbus.a $(LIBDBUS_LIBS)
+ endif
+ 
+ filezilla_LDFLAGS += $(WX_LIBS)

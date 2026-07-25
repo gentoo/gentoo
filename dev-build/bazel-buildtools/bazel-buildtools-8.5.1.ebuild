@@ -7,7 +7,7 @@ REAL_PN="buildtools"
 
 inherit go-module
 
-DESCRIPTION="Tools for working with Google's Bazel BUILD files."
+DESCRIPTION="Tools for working with Google's Bazel BUILD files"
 HOMEPAGE="https://github.com/bazelbuild/buildtools/"
 
 if [[ "${PV}" == *9999* ]] ; then

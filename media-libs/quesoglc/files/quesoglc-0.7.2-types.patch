@@ -1,0 +1,40 @@
+https://bugs.gentoo.org/880987
+https://src.fedoraproject.org/rpms/quesoglc/blob/rawhide/f/quesoglc-0.7.2-buildfix.patch
+https://sourceforge.net/p/quesoglc/code/ci/003cf755b0786248279713b283657c75662c6c4d/
+--- a/src/scalable.c
++++ b/src/scalable.c
+@@ -597,14 +597,8 @@
+     gluTessProperty(tess, GLU_TESS_BOUNDARY_ONLY, GL_FALSE);
+ 
+-    gluTessCallback(tess, GLU_TESS_ERROR,
+-			(void (CALLBACK *) (GLenum))__glcCallbackError);
+-    gluTessCallback(tess, GLU_TESS_VERTEX_DATA,
+-		    (void (CALLBACK *) (void*, void*))__glcVertexCallback);
+-    gluTessCallback(tess, GLU_TESS_COMBINE_DATA,
+-		    (void (CALLBACK *) (GLdouble[3], void*[4],
+-					GLfloat[4], void**, void*))
+-		    __glcCombineCallback);
+-    gluTessCallback(tess, GLU_TESS_BEGIN_DATA,
+-		    (void (CALLBACK *) (GLenum, void*))__glcBeginCallback);
++    gluTessCallback(tess, GLU_TESS_ERROR, (_GLUfuncptr)__glcCallbackError);
++    gluTessCallback(tess, GLU_TESS_VERTEX_DATA, (_GLUfuncptr)__glcVertexCallback);
++    gluTessCallback(tess, GLU_TESS_COMBINE_DATA, (_GLUfuncptr)__glcCombineCallback);
++    gluTessCallback(tess, GLU_TESS_BEGIN_DATA, (_GLUfuncptr)__glcBeginCallback);
+ 
+     gluTessNormal(tess, 0., 0., 1.);
+--- a/src/unicode.c
++++ b/src/unicode.c
+@@ -551,5 +551,5 @@
+   GLCchar32* string = NULL;
+   int length = 0;
+-  FriBidiCharType base = FRIBIDI_TYPE_ON;
++  FriBidiParType base = FRIBIDI_TYPE_ON;
+   GLCchar32* visualString = NULL;
+ 
+@@ -678,5 +678,5 @@
+ {
+   GLCchar32* string = NULL;
+-  FriBidiCharType base = FRIBIDI_TYPE_ON;
++  FriBidiParType base = FRIBIDI_TYPE_ON;
+   GLCchar32* visualString = NULL;
+ 

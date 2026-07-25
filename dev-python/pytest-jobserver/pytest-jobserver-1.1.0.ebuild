@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
 PYPI_VERIFY_REPO=https://github.com/tommilligan/pytest-jobserver
-PYTHON_COMPAT=( pypy3_11 python3_{11..14} python3_{13..14}t )
+PYTHON_COMPAT=( pypy3_11 python3_{11..15} python3_{13..15}t )
 
 inherit distutils-r1 pypi
 
@@ -17,7 +17,7 @@ HOMEPAGE="
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~s390 ~x86"
 
 RDEPEND="
 	dev-python/pytest[${PYTHON_USEDEP}]

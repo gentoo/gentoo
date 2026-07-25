@@ -1,8 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
+RPM_COMPRESS_TYPE=xz
 inherit desktop rpm xdg-utils
 
 MY_PN="Pencil"
@@ -10,6 +11,7 @@ MY_PN="Pencil"
 DESCRIPTION="A simple GUI prototyping tool to create mockups"
 HOMEPAGE="https://pencil.evolus.vn/"
 SRC_URI="https://pencil.evolus.vn/dl/V${PV}.ga/${MY_PN}-${PV}.ga.x86_64.rpm"
+S="${WORKDIR}"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -50,8 +52,6 @@ RDEPEND="
 IDEPEND="
 	dev-util/gtk-update-icon-cache
 "
-
-S="${WORKDIR}"
 
 # bug 703602
 RESTRICT="splitdebug"

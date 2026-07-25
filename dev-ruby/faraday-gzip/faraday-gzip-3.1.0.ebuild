@@ -14,7 +14,7 @@ RUBY_FAKEGEM_GEMSPEC="${PN}.gemspec"
 
 inherit ruby-fakegem
 
-DESCRIPTION="Faraday plugin to set compression headers and decompress responses."
+DESCRIPTION="Faraday plugin to set compression headers and decompress responses"
 HOMEPAGE="https://github.com/bodrovis/faraday-gzip"
 SRC_URI="https://github.com/bodrovis/faraday-gzip/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 

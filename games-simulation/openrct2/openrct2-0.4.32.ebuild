@@ -31,7 +31,7 @@ S="${WORKDIR}/${MY_PN}-${PV}"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 ~arm arm64 ~x86"
 IUSE="dedicated +flac +opengl scripting test +truetype +vorbis"
 RESTRICT="!test? ( test )"
 
@@ -126,7 +126,7 @@ src_configure() {
 		-DDISABLE_TTF=$(usex !truetype)
 		$(usex !dedicated "-DDISABLE_VORBIS=$(usex !vorbis)" "")
 		-DDOWNLOAD_OBJECTS=OFF
-		-DDOWNLOAD_OPENMSX=OFF
+		-DDOWNLOAD_OPENMUSIC=OFF
 		-DDOWNLOAD_OPENSFX=OFF
 		-DDOWNLOAD_REPLAYS=OFF
 		-DDOWNLOAD_TITLE_SEQUENCES=OFF

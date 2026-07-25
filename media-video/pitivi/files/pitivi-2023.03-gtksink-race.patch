@@ -1,0 +1,58 @@
+From: Thibault Saunier <tsaunier@igalia.com>
+Date: Mon, 3 Mar 2025 09:03:41 -0300
+Subject: viewer: Fix a race where gtksink is started before being embedded in
+ the UI
+
+Which was leading to g_warning and an external Gtk window to pop up.
+
+We now set the preview video sink only once it has already
+been embedded in our widget avoiding that possible issue
+
+(cherry picked from commit 52cb30ae78e8322fc4055b1f064ec86427fd5a9c)
+
+Origin: upstream, 52cb30ae
+---
+ pitivi/utils/pipeline.py | 4 ----
+ pitivi/viewer/viewer.py  | 4 +++-
+ 2 files changed, 3 insertions(+), 5 deletions(-)
+
+diff --git a/pitivi/utils/pipeline.py b/pitivi/utils/pipeline.py
+index d850556..39fa9b4 100644
+--- a/pitivi/utils/pipeline.py
++++ b/pitivi/utils/pipeline.py
+@@ -563,10 +563,6 @@ class Pipeline(GES.Pipeline, SimplePipeline):
+                 watchdog.props.timeout = WATCHDOG_TIMEOUT * 1000
+                 self.props.audio_filter = watchdog
+ 
+-    def create_sink(self):
+-        video_sink, sink_widget = SimplePipeline.create_sink(self)
+-        self._pipeline.preview_set_video_sink(video_sink)
+-        return video_sink, sink_widget
+ 
+     def set_mode(self, mode):
+         self._next_seek = None
+diff --git a/pitivi/viewer/viewer.py b/pitivi/viewer/viewer.py
+index 0ea7a18..010ad16 100644
+--- a/pitivi/viewer/viewer.py
++++ b/pitivi/viewer/viewer.py
+@@ -175,10 +175,10 @@ class ViewerContainer(Gtk.Box, Loggable):
+         project.connect("audio-channels-changed", self._project_audio_channels_changed_cb)
+ 
+     def __create_new_viewer(self):
+-        _, sink_widget = self.project.pipeline.create_sink()
+ 
+         self.guidelines_popover = GuidelinesPopover()
+         self.guidelines_button.set_popover(self.guidelines_popover)
++        video_sink, sink_widget = self.project.pipeline.create_sink()
+         self.overlay_stack = OverlayStack(self.app,
+                                           sink_widget,
+                                           self.guidelines_popover.overlay)
+@@ -194,6 +194,8 @@ class ViewerContainer(Gtk.Box, Loggable):
+ 
+         self.viewer_row_box.show_all()
+ 
++        self.project.pipeline.preview_set_video_sink(video_sink)
++
+         # Wait for 1s to make sure that the viewer has completely realized
+         # and then we can mark the resize status as showable.
+         GLib.timeout_add(1000, self.__viewer_realization_done_cb, None)

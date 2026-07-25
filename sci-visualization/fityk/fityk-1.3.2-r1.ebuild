@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -30,6 +30,8 @@ RDEPEND="${DEPEND}
 	gnuplot? ( sci-visualization/gnuplot )
 "
 BDEPEND="dev-lang/swig"
+
+PATCHES=( "${FILESDIR}"/${P}-fixTest.patch )
 
 src_configure() {
 	# codebase relies on dynamic exception specifications

@@ -1,9 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-USE_RUBY="ruby31 ruby32"
+USE_RUBY="ruby32 ruby33 ruby34"
 
 inherit ruby-fakegem
 
@@ -52,6 +52,10 @@ ruby_add_bdepend "
 		www-apps/jekyll-coffeescript
 	)
 "
+
+PATCHES=(
+	"${FILESDIR}"/jekyll-4.1.1-minitest6.patch
+)
 
 all_ruby_prepare() {
 	eapply "${FILESDIR}"/jekyll-3.6.0-test-helper.patch

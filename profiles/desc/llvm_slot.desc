@@ -1,7 +1,6 @@
-# Copyright 2024-2025 Gentoo Authors
+# Copyright 2024-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-15 - Use LLVM 15.
 16 - Use LLVM 16.
 17 - Use LLVM 17.
 18 - Use LLVM 18.

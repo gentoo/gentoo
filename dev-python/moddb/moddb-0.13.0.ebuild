@@ -25,10 +25,6 @@ RDEPEND="
 	dev-python/requests[${PYTHON_USEDEP}]
 "
 
-BDEPEND="test? (
-	dev-python/pytest-rerunfailures[${PYTHON_USEDEP}]
-)"
-
 EPYTEST_DESELECT=(
 	# These tests require valid moddb.com login information
 	"tests/test_base.py::TestLogin::test_login"
@@ -40,6 +36,7 @@ EPYTEST_DESELECT=(
 )
 
 distutils_enable_sphinx docs/source dev-python/sphinx-autodoc-typehints
+EPYTEST_PLUGINS=( pytest-rerunfailures )
 distutils_enable_tests pytest
 
 python_test() {

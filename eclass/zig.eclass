@@ -339,25 +339,28 @@ zig_pkg_setup() {
 	# Environment variables set by this eclass.
 
 	# Used by Zig Build System to find `pkg-config`.
-	# UPSTREAM Used only by 9999 for now, should land in future
-	# 0.14 release.
 	export PKG_CONFIG="${PKG_CONFIG:-"$(tc-getPKG_CONFIG)"}"
 	# Used by whole Zig toolchain (most of the sub-commands)
 	# to find local and global cache directories.
 	export ZIG_LOCAL_CACHE_DIR="${T}/zig-cache/local/"
 	export ZIG_GLOBAL_CACHE_DIR="${T}/zig-cache/global/"
+
+	# Used by `zig fetch` and `zig build` to save packages.
+	# Zig 0.17+: https://codeberg.org/ziglang/zig/pulls/31992
+	if ver_test "${ZIG_SLOT}" -ge "0.17"; then
+		export ZIG_LOCAL_PKG_DIR="${T}/zig-cache/pkgs/"
+	fi
 }
 
 # @FUNCTION: zig_live_fetch
 # @USAGE: [<args>...]
+# @DEPRECATED: zig_live_src_unpack
 # @DESCRIPTION:
 # Fetches packages, if they exist, to the "ZBS_ECLASS_DIR/p/".
 # Adds build file path to ZBS_BASE_ARGS.
 # If you have some lazy dependency which is not triggered in default
 # configuration, pass options like you would pass them for regular
 # "ezig build".  Try to cover all of them before "src_configure".
-# **Note**: this function will be deprecated once/if
-# https://github.com/ziglang/zig/pull/19975 lands.
 #
 # Example:
 # @CODE
@@ -375,6 +378,10 @@ zig_pkg_setup() {
 # }
 # @CODE
 zig_live_fetch() {
+	if ver_test "${ZIG_SLOT}" -ge "0.16"; then
+		die "${ECLASS}: zig_live_fetch is not supported for Zig 0.16+, use zig_live_src_unpack instead"
+	fi
+
 	# This function will likely be called in src_unpack,
 	# before [zig_]src_prepare, so this directory might not
 	# exist yet.
@@ -430,13 +437,85 @@ zig_src_unpack() {
 
 	# Now unpack all Zig dependencies, including those that are
 	# now unpacked from tarball-tarball.
+
+	# Starting from Zig 0.16, packages can now be stored in two forms:
+	# 1. Compressed (used for checks and caches)
+	# 2. Folder (used for compilation and system mode)
 	local zig_dep
-	for zig_dep in "${zig_deps[@]}"; do
-		# Hide now-spammy hash from stdout
-		ezig fetch --global-cache-dir "${ZBS_ECLASS_DIR}/" \
-			"${DISTDIR}/${zig_dep}" > /dev/null
-	done
+	if ver_test "${ZIG_SLOT}" -ge "0.16"; then
+		# Two version-specific notes for 0.16.0:
+		# 1. Saves to zig-pkg/ local folder (not configurable).
+		# 2. Regression: needs build.zig to operate.
+
+		# Both of them are fixed for master and 0.17+.
+		# https://codeberg.org/ziglang/zig/pulls/31992
+
+		# `touch` necessary only for 0.16, but it won't hurt for 0.17+.
+		touch build.zig || die
+		for zig_dep in "${zig_deps[@]}"; do
+			# Hide now-spammy hash from stdout
+			ezig fetch "${DISTDIR}/${zig_dep}" > /dev/null
+		done
+
+		# For 0.17 and later:
+		# Folder packages: saved into "${ZIG_LOCAL_PKG_DIR}" (because this env var is supported)
+		# Compacted packages: saved into "${ZIG_GLOBAL_CACHE_DIR}/p/"
+
+		# For 0.16.0:
+		# Folder packages: saved into "${WORKDIR}/zig-pkg/" (because hardcoded to local zig-pkg)
+		# Compacted packages: saved into "${ZIG_GLOBAL_CACHE_DIR}/p/"
+	else
+		for zig_dep in "${zig_deps[@]}"; do
+			# Hide now-spammy hash from stdout
+			ezig fetch --global-cache-dir "${ZBS_ECLASS_DIR}/" \
+				"${DISTDIR}/${zig_dep}" > /dev/null
+		done
+
+		# For 0.15 and before:
+		# Folder packages: saved into "${ZBS_ECLASS_DIR}/p/" (because passed --global-cache-dir)
+		# Compacted packages: don't exist.
+	fi
+
 	einfo "ZBS: ${#zig_deps[@]} dependencies unpacked"
+}
+
+# @FUNCTION: zig_live_src_unpack
+# @DESCRIPTION:
+# Fetches all dependencies with build runner eagerly.
+# Supported for Zig 0.16+.
+zig_live_src_unpack() {
+	if ver_test "${ZIG_SLOT}" -lt "0.16"; then
+		die "${ECLASS}: zig_live_src_unpack is supported only for Zig 0.16+"
+	fi
+
+	if [[ "${EBUILD_PHASE}" != "unpack" ]]; then
+		die "${FUNCNAME}: not valid for ${EBUILD_PHASE}. Use src_unpack instead"
+	fi
+
+	mkdir -p "${BUILD_DIR}" > /dev/null || die
+	pushd "${BUILD_DIR}" > /dev/null || die
+
+	ZBS_ARGS_BASE+=( --build-file "${S}/build.zig" )
+
+	local args=(
+		"${ZBS_ARGS_BASE[@]}"
+
+		--fetch=all
+	)
+
+	# See notes in zig_src_unpack
+	if ver_test "${ZIG_SLOT}" -eq "0.16"; then
+		# Redirect hardcoded cache subfolder to same one
+		# as src_unpack and src_prepare use.
+		mkdir -p "${WORKDIR}/zig-pkg/" || die
+		ln -s "${WORKDIR}/zig-pkg" "zig-pkg" || die
+	fi
+
+	einfo "ZBS: live-fetching with:"
+	einfo "${args[@]}"
+	ezig build "${args[@]}" > /dev/null
+
+	popd > /dev/null || die
 }
 
 # @FUNCTION: zig_src_prepare
@@ -452,11 +531,20 @@ zig_src_prepare() {
 	mkdir -p "${BUILD_DIR}" || die
 	einfo "BUILD_DIR: \"${BUILD_DIR}\""
 
-	local system_dir="${ZBS_ECLASS_DIR}/p/"
+	# See notes in zig_src_unpack
+	local system_dir
+	if ver_test "${ZIG_SLOT}" -ge "0.17"; then
+		system_dir="${ZIG_LOCAL_PKG_DIR}"
+	elif ver_test "${ZIG_SLOT}" -eq "0.16"; then
+		system_dir="${WORKDIR}/zig-pkg/"
+	else
+		system_dir="${ZBS_ECLASS_DIR}/p/"
+	fi
+
 	mkdir -p "${system_dir}" || die
 	ZBS_ARGS_BASE+=(
-		# Disable network access after ensuring all dependencies
-		# are unpacked (by "src_unpack" or "live_fetch")
+		# Disable network access after ensuring
+		# all dependencies are unpacked into folder form
 		--system "${system_dir}"
 	)
 }

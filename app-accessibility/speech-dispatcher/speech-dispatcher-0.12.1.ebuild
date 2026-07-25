@@ -1,10 +1,10 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 PYTHON_COMPAT=( python3_{11..14} )
-inherit python-r1 systemd
+inherit python-r1 systemd toolchain-funcs
 
 DESCRIPTION="Speech synthesis interface"
 HOMEPAGE="https://freebsoft.org/speechd"
@@ -41,6 +41,9 @@ src_configure() {
 	# bug 573732
 	export GIT_CEILING_DIRECTORIES="${WORKDIR}"
 
+	# manpages can't be generated w/o launching programs
+	tc-is-cross-compiler && export ac_cv_prog_HELP2MAN=
+
 	local myeconfargs=(
 		--disable-ltdl
 		--disable-python
@@ -72,7 +75,8 @@ src_configure() {
 src_compile() {
 	use python && python_copy_sources
 
-	emake
+	# LDFLAGS fixed in master, remove w/ >0.12.1
+	emake LDFLAGS="${LDFLAGS}"
 
 	if use python; then
 		building() {
@@ -123,5 +127,10 @@ pkg_postinst() {
 		ewarn "You must edit ${EROOT}/etc/speech-dispatcher/speechd.conf"
 		ewarn "and make sure the settings there match your system."
 		ewarn
+	fi
+
+	if tc-is-cross-compiler; then
+		ewarn "The manpages are not generated due to cross-compilation."
+		ewarn "Launching the commands with --help is equivalent."
 	fi
 }

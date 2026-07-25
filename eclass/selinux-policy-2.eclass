@@ -37,7 +37,12 @@ _SELINUX_POLICY_2_ECLASS=1
 # This variable contains the version string of the selinux-base-policy package
 # that this module build depends on. It is used to patch with the appropriate
 # patch bundle(s) that are part of selinux-base-policy.
-: "${BASEPOL:="${PVR}"}"
+# For EAPI 8 and above, _pN corresponds to -rN in the patch bundle(s).
+if [[ ${EAPI} = 7 ]]; then
+	: "${BASEPOL:="${PVR}"}"
+else
+	: "${BASEPOL:="${PV/_p/-r}"}"
+fi
 
 # @ECLASS_VARIABLE: POLICY_PATCH
 # @DESCRIPTION:
@@ -84,6 +89,18 @@ fi
 # The default value is the 'master' branch.
 : "${SELINUX_GIT_BRANCH:="master"}"
 
+# @ECLASS_VARIABLE: SELINUX_POLICY_USEDEP
+# @OUTPUT_VARIABLE
+# @DESCRIPTION:
+# This variable contains the USE dependency constraints for policy packages.
+SELINUX_POLICY_USEDEP="selinux_policy_types_targeted(-)?,selinux_policy_types_strict(-)?,selinux_policy_types_mcs(-)?,selinux_policy_types_mls(-)?"
+
+# @ECLASS_VARIABLE: _SELINUX_POLICY_UPSTREAM_PV
+# @INTERNAL
+# @DESCRIPTION:
+# Internal variable representing (spoofed) upstream refpolicy version.
+_SELINUX_POLICY_UPSTREAM_PV=$(ver_cut 1-2)
+
 case ${BASEPOL} in
 	9999)
 		inherit git-r3
@@ -102,11 +119,11 @@ fi
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:SELinux"
 if [[ -n ${BASEPOL} && "${BASEPOL}" != "9999" ]]; then
 	SRC_URI="
-		https://github.com/SELinuxProject/refpolicy/releases/download/RELEASE_${PV/./_}/refpolicy-${PV}.tar.bz2
+		https://github.com/SELinuxProject/refpolicy/releases/download/RELEASE_${_SELINUX_POLICY_UPSTREAM_PV/./_}/refpolicy-${_SELINUX_POLICY_UPSTREAM_PV}.tar.bz2
 		https://dev.gentoo.org/~perfinion/patches/selinux-base-policy/patchbundle-selinux-base-policy-${BASEPOL}.tar.bz2
 	"
 elif [[ "${BASEPOL}" != "9999" ]]; then
-	SRC_URI="https://github.com/SELinuxProject/refpolicy/releases/download/RELEASE_${PV/./_}/refpolicy-${PV}.tar.bz2"
+	SRC_URI="https://github.com/SELinuxProject/refpolicy/releases/download/RELEASE_${_SELINUX_POLICY_UPSTREAM_PV/./_}/refpolicy-${_SELINUX_POLICY_UPSTREAM_PV}.tar.bz2"
 fi
 
 LICENSE="GPL-2"
@@ -118,7 +135,7 @@ S="${WORKDIR}"
 if [[ -n ${BASEPOL} ]]; then
 	_BASE_POLICY_VERSION="${BASEPOL}"
 else
-	_BASE_POLICY_VERSION="${PV}"
+	_BASE_POLICY_VERSION="${_SELINUX_POLICY_UPSTREAM_PV}"
 fi
 
 if [[ ${EAPI} = 7 ]]; then
@@ -127,15 +144,10 @@ if [[ ${EAPI} = 7 ]]; then
 		>=sec-policy/selinux-base-policy-${_BASE_POLICY_VERSION}
 	"
 else
-	RDEPEND=">=sys-apps/policycoreutils-2.5"
-	for _poltype in selinux_policy_types_{targeted,strict,mcs,mls}; do
-		RDEPEND+="
-			${_poltype}? (
-				>=sec-policy/selinux-base-policy-${_BASE_POLICY_VERSION}[${_poltype}]
-			)
-		"
-	done
-	unset _poltype
+	RDEPEND="
+		>=sys-apps/policycoreutils-2.5
+		>=sec-policy/selinux-base-policy-${_BASE_POLICY_VERSION}[${SELINUX_POLICY_USEDEP}]
+	"
 fi
 
 unset _BASE_POLICY_VERSION

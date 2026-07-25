@@ -1,16 +1,16 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{11..14} python3_{13,14}t pypy3_11 )
+PYTHON_COMPAT=( python3_{11..15} python3_{13..15}t pypy3_11 )
 
 inherit distutils-r1 pypi
 
 DESCRIPTION="Python Lex-Yacc library"
 HOMEPAGE="
-	http://www.dabeaz.com/ply/
+	https://www.dabeaz.com/ply/
 	https://github.com/dabeaz/ply/
 	https://pypi.org/project/ply/
 "
@@ -25,6 +25,8 @@ DOCS=( ANNOUNCE CHANGES TODO )
 
 PATCHES=(
 	"${FILESDIR}/3.6-picklefile-IOError.patch"
+	# https://github.com/dabeaz/ply/pull/318
+	"${FILESDIR}/${P}-test-py315.patch"
 	"${WORKDIR}/${P}-py3.12-assert.patch"
 )
 

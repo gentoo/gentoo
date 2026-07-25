@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -52,6 +52,7 @@ DOCS=( AUTHORS CHANGELOG.md DEVELOPERS.md README.md )
 PATCHES=(
 	"${FILESDIR}/${PN}-1.3.0-cflags.patch"
 	"${FILESDIR}/${PN}-1.3.0-missing-includes.patch"
+	"${FILESDIR}/${PN}-2.0.0-missing-includes.patch"
 )
 
 src_configure() {

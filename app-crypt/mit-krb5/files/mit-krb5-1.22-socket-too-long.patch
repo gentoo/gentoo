@@ -1,0 +1,39 @@
+Use a short tempdir for UNIX-domain sockets in t_changepw.py.
+
+Otherwise, we get a UNIX domain socket path too long error.
+Mirror the approach already used by t_ccache.py / t_otp.py
+
+--- a/tests/t_changepw.py
++++ b/tests/t_changepw.py
+@@ -1,10 +1,14 @@
+ from k5test import *
++import tempfile
+
+-# Also listen on a UNIX domain sockets for kpasswd.
++# sun_path is limited to 108 bytes on Linux; the portage build path
++# can push $testdir/*.sock past that limit. Use a short tempdir
++# instead, matching what t_ccache.py / t_otp.py already do.
++sockdir = tempfile.mkdtemp()
+ unix_conf = {'realms': {'$realm': {
+-    'kdc_listen': '$port0, $testdir/krb5.sock',
+-    'kadmind_listen': '$port1, $testdir/kadmin.sock',
+-    'kpasswd_listen': '$port2, $testdir/kpasswd.sock'}}}
++    'kdc_listen': '$port0, %s/k' % sockdir,
++    'kadmind_listen': '$port1, %s/a' % sockdir,
++    'kpasswd_listen': '$port2, %s/p' % sockdir}}}
+ realm = K5Realm(create_host=False,get_creds=False, kdc_conf=unix_conf)
+ realm.start_kadmind()
+ realm.prep_kadmin()
+@@ -56,9 +60,9 @@ realm.run([kadminl, 'delprinc', 'testprinc'])
+ mark('password change over UNIX domain socket')
+
+ unix_cli_conf = {'realms': {'$realm': {
+-    'kdc': '$testdir/krb5.sock',
+-    'admin_server': '$testdir/kadmin.sock',
+-    'kpasswd_server': '$testdir/kpasswd.sock'}}}
++    'kdc': '%s/k' % sockdir,
++    'admin_server': '%s/a' % sockdir,
++    'kpasswd_server': '%s/p' % sockdir}}}
+ unix_cli = realm.special_env('unix_cli', False, krb5_conf=unix_cli_conf)
+
+ realm.run([kadminl, 'addprinc', '-pw', 'pw1', 'testprinc'])

@@ -10,6 +10,7 @@
 		<name>Gentoo Mathematics Project</name>
 	</maintainer>
 	<upstream>
-		<bugs-to>https://bugs.kde.org/</bugs-to>
+		<bugs-to>https://bugs.kde.org/enter_bug.cgi?product=rkward</bugs-to>
+		<remote-id type="kde-invent">education/rkward</remote-id>
 	</upstream>
 </pkgmetadata>

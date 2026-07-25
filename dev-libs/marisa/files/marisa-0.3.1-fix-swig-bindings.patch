@@ -1,0 +1,353 @@
+https://github.com/s-yata/marisa-trie/pull/123
+https://github.com/s-yata/marisa-trie/commit/cf4602f08df49861d987d122bd85bfdb456fe7a0
+
+From cf4602f08df49861d987d122bd85bfdb456fe7a0 Mon Sep 17 00:00:00 2001
+From: Weng Xuetian <wengxt@gmail.com>
+Date: Sat, 9 Aug 2025 02:31:06 -0700
+Subject: [PATCH] Fix binding build and add CI to test it on linux. (#123)
+
+Fix #121
+Fix #122
+---
+ .github/workflows/linux.yml              | 23 +++++++++++++++++++++++
+ bindings/marisa-swig-python3.cxx         | 15 +++++----------
+ bindings/marisa-swig.cxx                 | 15 +++++----------
+ bindings/perl/marisa-swig.cxx            | 15 +++++----------
+ bindings/python/marisa-swig.cxx          | 17 ++++++-----------
+ bindings/python3/marisa-swig-python3.cxx | 15 +++++----------
+ bindings/ruby/marisa-swig.cxx            | 15 +++++----------
+ 7 files changed, 54 insertions(+), 61 deletions(-)
+
+diff --git a/bindings/marisa-swig-python3.cxx b/bindings/marisa-swig-python3.cxx
+index 50ab6b0..10bbad3 100644
+--- a/bindings/marisa-swig-python3.cxx
++++ b/bindings/marisa-swig-python3.cxx
+@@ -27,8 +27,7 @@ size_t Query::query_id() const {
+   return query_.id();
+ }
+ 
+-Keyset::Keyset() : keyset_(new (std::nothrow) marisa::Keyset) {
+-  MARISA_THROW_IF(keyset_ == NULL, ::MARISA_MEMORY_ERROR);
++Keyset::Keyset() : keyset_(new marisa::Keyset) {
+ }
+ 
+ Keyset::~Keyset() {
+@@ -82,8 +81,7 @@ void Keyset::clear() {
+ }
+ 
+ Agent::Agent()
+-    : agent_(new (std::nothrow) marisa::Agent), buf_(NULL), buf_size_(0) {
+-  MARISA_THROW_IF(agent_ == NULL, ::MARISA_MEMORY_ERROR);
++    : agent_(new marisa::Agent), buf_(NULL), buf_size_(0) {
+ }
+ 
+ Agent::~Agent() {
+@@ -101,8 +99,7 @@ void Agent::set_query(const char *ptr, size_t length) {
+         new_buf_size *= 2;
+       }
+     }
+-    char *new_buf = new (std::nothrow) char[new_buf_size];
+-    MARISA_THROW_IF(new_buf == NULL, MARISA_MEMORY_ERROR);
++    char *new_buf = new char[new_buf_size];
+     delete [] buf_;
+     buf_ = new_buf;
+     buf_size_ = new_buf_size;
+@@ -141,8 +138,7 @@ size_t Agent::query_id() const {
+   return agent_->query().id();
+ }
+ 
+-Trie::Trie() : trie_(new (std::nothrow) marisa::Trie) {
+-  MARISA_THROW_IF(trie_ == NULL, ::MARISA_MEMORY_ERROR);
++Trie::Trie() : trie_(new marisa::Trie) {
+ }
+ 
+ Trie::~Trie() {
+@@ -195,8 +191,7 @@ void Trie::reverse_lookup(size_t id,
+   marisa::Agent agent;
+   agent.set_query(id);
+   trie_->reverse_lookup(agent);
+-  char * const buf = new (std::nothrow) char[agent.key().length()];
+-  MARISA_THROW_IF(buf == NULL, MARISA_MEMORY_ERROR);
++  char * const buf = new char[agent.key().length()];
+   std::memcpy(buf, agent.key().ptr(), agent.key().length());
+   *ptr_out_to_be_deleted = buf;
+   *length_out = agent.key().length();
+diff --git a/bindings/marisa-swig.cxx b/bindings/marisa-swig.cxx
+index 6c9037c..593f5f0 100644
+--- a/bindings/marisa-swig.cxx
++++ b/bindings/marisa-swig.cxx
+@@ -27,8 +27,7 @@ size_t Query::id() const {
+   return query_.id();
+ }
+ 
+-Keyset::Keyset() : keyset_(new (std::nothrow) marisa::Keyset) {
+-  MARISA_THROW_IF(keyset_ == NULL, ::MARISA_MEMORY_ERROR);
++Keyset::Keyset() : keyset_(new marisa::Keyset) {
+ }
+ 
+ Keyset::~Keyset() {
+@@ -82,8 +81,7 @@ void Keyset::clear() {
+ }
+ 
+ Agent::Agent()
+-    : agent_(new (std::nothrow) marisa::Agent), buf_(NULL), buf_size_(0) {
+-  MARISA_THROW_IF(agent_ == NULL, ::MARISA_MEMORY_ERROR);
++    : agent_(new marisa::Agent), buf_(NULL), buf_size_(0) {
+ }
+ 
+ Agent::~Agent() {
+@@ -101,8 +99,7 @@ void Agent::set_query(const char *ptr, size_t length) {
+         new_buf_size *= 2;
+       }
+     }
+-    char *new_buf = new (std::nothrow) char[new_buf_size];
+-    MARISA_THROW_IF(new_buf == NULL, MARISA_MEMORY_ERROR);
++    char *new_buf = new char[new_buf_size];
+     delete [] buf_;
+     buf_ = new_buf;
+     buf_size_ = new_buf_size;
+@@ -141,8 +138,7 @@ size_t Agent::query_id() const {
+   return agent_->query().id();
+ }
+ 
+-Trie::Trie() : trie_(new (std::nothrow) marisa::Trie) {
+-  MARISA_THROW_IF(trie_ == NULL, ::MARISA_MEMORY_ERROR);
++Trie::Trie() : trie_(new marisa::Trie) {
+ }
+ 
+ Trie::~Trie() {
+@@ -195,8 +191,7 @@ void Trie::reverse_lookup(size_t id,
+   marisa::Agent agent;
+   agent.set_query(id);
+   trie_->reverse_lookup(agent);
+-  char * const buf = new (std::nothrow) char[agent.key().length()];
+-  MARISA_THROW_IF(buf == NULL, MARISA_MEMORY_ERROR);
++  char * const buf = new char[agent.key().length()];
+   std::memcpy(buf, agent.key().ptr(), agent.key().length());
+   *ptr_out_to_be_deleted = buf;
+   *length_out = agent.key().length();
+diff --git a/bindings/perl/marisa-swig.cxx b/bindings/perl/marisa-swig.cxx
+index 6c9037c..593f5f0 100644
+--- a/bindings/perl/marisa-swig.cxx
++++ b/bindings/perl/marisa-swig.cxx
+@@ -27,8 +27,7 @@ size_t Query::id() const {
+   return query_.id();
+ }
+ 
+-Keyset::Keyset() : keyset_(new (std::nothrow) marisa::Keyset) {
+-  MARISA_THROW_IF(keyset_ == NULL, ::MARISA_MEMORY_ERROR);
++Keyset::Keyset() : keyset_(new marisa::Keyset) {
+ }
+ 
+ Keyset::~Keyset() {
+@@ -82,8 +81,7 @@ void Keyset::clear() {
+ }
+ 
+ Agent::Agent()
+-    : agent_(new (std::nothrow) marisa::Agent), buf_(NULL), buf_size_(0) {
+-  MARISA_THROW_IF(agent_ == NULL, ::MARISA_MEMORY_ERROR);
++    : agent_(new marisa::Agent), buf_(NULL), buf_size_(0) {
+ }
+ 
+ Agent::~Agent() {
+@@ -101,8 +99,7 @@ void Agent::set_query(const char *ptr, size_t length) {
+         new_buf_size *= 2;
+       }
+     }
+-    char *new_buf = new (std::nothrow) char[new_buf_size];
+-    MARISA_THROW_IF(new_buf == NULL, MARISA_MEMORY_ERROR);
++    char *new_buf = new char[new_buf_size];
+     delete [] buf_;
+     buf_ = new_buf;
+     buf_size_ = new_buf_size;
+@@ -141,8 +138,7 @@ size_t Agent::query_id() const {
+   return agent_->query().id();
+ }
+ 
+-Trie::Trie() : trie_(new (std::nothrow) marisa::Trie) {
+-  MARISA_THROW_IF(trie_ == NULL, ::MARISA_MEMORY_ERROR);
++Trie::Trie() : trie_(new marisa::Trie) {
+ }
+ 
+ Trie::~Trie() {
+@@ -195,8 +191,7 @@ void Trie::reverse_lookup(size_t id,
+   marisa::Agent agent;
+   agent.set_query(id);
+   trie_->reverse_lookup(agent);
+-  char * const buf = new (std::nothrow) char[agent.key().length()];
+-  MARISA_THROW_IF(buf == NULL, MARISA_MEMORY_ERROR);
++  char * const buf = new char[agent.key().length()];
+   std::memcpy(buf, agent.key().ptr(), agent.key().length());
+   *ptr_out_to_be_deleted = buf;
+   *length_out = agent.key().length();
+diff --git a/bindings/python/marisa-swig.cxx b/bindings/python/marisa-swig.cxx
+index ec7460a..593f5f0 100644
+--- a/bindings/python/marisa-swig.cxx
++++ b/bindings/python/marisa-swig.cxx
+@@ -27,8 +27,7 @@ size_t Query::id() const {
+   return query_.id();
+ }
+ 
+-Keyset::Keyset() : keyset_(new (std::nothrow) marisa::Keyset) {
+-  MARISA_THROW_IF(keyset_ == NULL, ::MARISA_MEMORY_ERROR);
++Keyset::Keyset() : keyset_(new marisa::Keyset) {
+ }
+ 
+ Keyset::~Keyset() {
+@@ -82,8 +81,7 @@ void Keyset::clear() {
+ }
+ 
+ Agent::Agent()
+-    : agent_(new (std::nothrow) marisa::Agent), buf_(NULL), buf_size_(0) {
+-  MARISA_THROW_IF(agent_ == NULL, ::MARISA_MEMORY_ERROR);
++    : agent_(new marisa::Agent), buf_(NULL), buf_size_(0) {
+ }
+ 
+ Agent::~Agent() {
+@@ -101,8 +99,7 @@ void Agent::set_query(const char *ptr, size_t length) {
+         new_buf_size *= 2;
+       }
+     }
+-    char *new_buf = new (std::nothrow) char[new_buf_size];
+-    MARISA_THROW_IF(new_buf == NULL, MARISA_MEMORY_ERROR);
++    char *new_buf = new char[new_buf_size];
+     delete [] buf_;
+     buf_ = new_buf;
+     buf_size_ = new_buf_size;
+@@ -141,8 +138,7 @@ size_t Agent::query_id() const {
+   return agent_->query().id();
+ }
+ 
+-Trie::Trie() : trie_(new (std::nothrow) marisa::Trie) {
+-  MARISA_THROW_IF(trie_ == NULL, ::MARISA_MEMORY_ERROR);
++Trie::Trie() : trie_(new marisa::Trie) {
+ }
+ 
+ Trie::~Trie() {
+@@ -153,7 +149,7 @@ void Trie::build(Keyset &keyset, int config_flags) {
+   trie_->build(*keyset.keyset_, config_flags);
+ }
+ 
+-void Trie::mmap(const char *filename, , int flags) {
++void Trie::mmap(const char *filename, int flags) {
+   trie_->mmap(filename, flags);
+ }
+ 
+@@ -195,8 +191,7 @@ void Trie::reverse_lookup(size_t id,
+   marisa::Agent agent;
+   agent.set_query(id);
+   trie_->reverse_lookup(agent);
+-  char * const buf = new (std::nothrow) char[agent.key().length()];
+-  MARISA_THROW_IF(buf == NULL, MARISA_MEMORY_ERROR);
++  char * const buf = new char[agent.key().length()];
+   std::memcpy(buf, agent.key().ptr(), agent.key().length());
+   *ptr_out_to_be_deleted = buf;
+   *length_out = agent.key().length();
+diff --git a/bindings/python3/marisa-swig-python3.cxx b/bindings/python3/marisa-swig-python3.cxx
+index 50ab6b0..10bbad3 100644
+--- a/bindings/python3/marisa-swig-python3.cxx
++++ b/bindings/python3/marisa-swig-python3.cxx
+@@ -27,8 +27,7 @@ size_t Query::query_id() const {
+   return query_.id();
+ }
+ 
+-Keyset::Keyset() : keyset_(new (std::nothrow) marisa::Keyset) {
+-  MARISA_THROW_IF(keyset_ == NULL, ::MARISA_MEMORY_ERROR);
++Keyset::Keyset() : keyset_(new marisa::Keyset) {
+ }
+ 
+ Keyset::~Keyset() {
+@@ -82,8 +81,7 @@ void Keyset::clear() {
+ }
+ 
+ Agent::Agent()
+-    : agent_(new (std::nothrow) marisa::Agent), buf_(NULL), buf_size_(0) {
+-  MARISA_THROW_IF(agent_ == NULL, ::MARISA_MEMORY_ERROR);
++    : agent_(new marisa::Agent), buf_(NULL), buf_size_(0) {
+ }
+ 
+ Agent::~Agent() {
+@@ -101,8 +99,7 @@ void Agent::set_query(const char *ptr, size_t length) {
+         new_buf_size *= 2;
+       }
+     }
+-    char *new_buf = new (std::nothrow) char[new_buf_size];
+-    MARISA_THROW_IF(new_buf == NULL, MARISA_MEMORY_ERROR);
++    char *new_buf = new char[new_buf_size];
+     delete [] buf_;
+     buf_ = new_buf;
+     buf_size_ = new_buf_size;
+@@ -141,8 +138,7 @@ size_t Agent::query_id() const {
+   return agent_->query().id();
+ }
+ 
+-Trie::Trie() : trie_(new (std::nothrow) marisa::Trie) {
+-  MARISA_THROW_IF(trie_ == NULL, ::MARISA_MEMORY_ERROR);
++Trie::Trie() : trie_(new marisa::Trie) {
+ }
+ 
+ Trie::~Trie() {
+@@ -195,8 +191,7 @@ void Trie::reverse_lookup(size_t id,
+   marisa::Agent agent;
+   agent.set_query(id);
+   trie_->reverse_lookup(agent);
+-  char * const buf = new (std::nothrow) char[agent.key().length()];
+-  MARISA_THROW_IF(buf == NULL, MARISA_MEMORY_ERROR);
++  char * const buf = new char[agent.key().length()];
+   std::memcpy(buf, agent.key().ptr(), agent.key().length());
+   *ptr_out_to_be_deleted = buf;
+   *length_out = agent.key().length();
+diff --git a/bindings/ruby/marisa-swig.cxx b/bindings/ruby/marisa-swig.cxx
+index 6c9037c..593f5f0 100644
+--- a/bindings/ruby/marisa-swig.cxx
++++ b/bindings/ruby/marisa-swig.cxx
+@@ -27,8 +27,7 @@ size_t Query::id() const {
+   return query_.id();
+ }
+ 
+-Keyset::Keyset() : keyset_(new (std::nothrow) marisa::Keyset) {
+-  MARISA_THROW_IF(keyset_ == NULL, ::MARISA_MEMORY_ERROR);
++Keyset::Keyset() : keyset_(new marisa::Keyset) {
+ }
+ 
+ Keyset::~Keyset() {
+@@ -82,8 +81,7 @@ void Keyset::clear() {
+ }
+ 
+ Agent::Agent()
+-    : agent_(new (std::nothrow) marisa::Agent), buf_(NULL), buf_size_(0) {
+-  MARISA_THROW_IF(agent_ == NULL, ::MARISA_MEMORY_ERROR);
++    : agent_(new marisa::Agent), buf_(NULL), buf_size_(0) {
+ }
+ 
+ Agent::~Agent() {
+@@ -101,8 +99,7 @@ void Agent::set_query(const char *ptr, size_t length) {
+         new_buf_size *= 2;
+       }
+     }
+-    char *new_buf = new (std::nothrow) char[new_buf_size];
+-    MARISA_THROW_IF(new_buf == NULL, MARISA_MEMORY_ERROR);
++    char *new_buf = new char[new_buf_size];
+     delete [] buf_;
+     buf_ = new_buf;
+     buf_size_ = new_buf_size;
+@@ -141,8 +138,7 @@ size_t Agent::query_id() const {
+   return agent_->query().id();
+ }
+ 
+-Trie::Trie() : trie_(new (std::nothrow) marisa::Trie) {
+-  MARISA_THROW_IF(trie_ == NULL, ::MARISA_MEMORY_ERROR);
++Trie::Trie() : trie_(new marisa::Trie) {
+ }
+ 
+ Trie::~Trie() {
+@@ -195,8 +191,7 @@ void Trie::reverse_lookup(size_t id,
+   marisa::Agent agent;
+   agent.set_query(id);
+   trie_->reverse_lookup(agent);
+-  char * const buf = new (std::nothrow) char[agent.key().length()];
+-  MARISA_THROW_IF(buf == NULL, MARISA_MEMORY_ERROR);
++  char * const buf = new char[agent.key().length()];
+   std::memcpy(buf, agent.key().ptr(), agent.key().length());
+   *ptr_out_to_be_deleted = buf;
+   *length_out = agent.key().length();

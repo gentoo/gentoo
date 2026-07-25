@@ -46,7 +46,7 @@ RESTRICT="!test? ( test )"
 COMMON_DEPEND="
 	media-libs/libass:=[fontconfig]
 	>=media-libs/libplacebo-7.360.1:=[vulkan?]
-	>=media-video/ffmpeg-6.1:=[encode(+),soc(-)?,threads(+),vaapi?,vdpau?]
+	>=media-video/ffmpeg-6.1:=[encode(+),threads(+),vaapi?,vdpau?]
 	X? (
 		x11-libs/libX11
 		x11-libs/libXScrnSaver
@@ -91,6 +91,7 @@ COMMON_DEPEND="
 	sdl? ( media-libs/libsdl2[sound,threads(+),video] )
 	sixel? ( media-libs/libsixel )
 	sndio? ( media-sound/sndio:= )
+	soc? ( >=media-video/ffmpeg-8.1:=[soc(-)] )
 	subrandr? ( >=media-libs/subrandr-1.1.0 )
 	vaapi? ( media-libs/libva:=[X?,drm(+)?,wayland?] )
 	vdpau? (
@@ -128,6 +129,10 @@ BDEPEND="
 	cli? ( dev-python/docutils )
 	wayland? ( >=dev-util/wayland-scanner-1.23 )
 "
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.41.0-v4l2request.patch
+)
 
 pkg_setup() {
 	use lua && lua-single_pkg_setup
@@ -206,6 +211,7 @@ src_configure() {
 
 		# hardware decoding
 		$(meson_feature nvenc cuda-hwaccel)
+		$(meson_feature soc v4l2request)
 		$(meson_feature vaapi)
 		$(meson_feature vdpau)
 	)

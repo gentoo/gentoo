@@ -1,0 +1,13 @@
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -14,10 +14,6 @@
+ 	errors \
+ 	icons
+ 
+-if ENABLE_LOADABLE_MODULES
+-SUBDIRS += libltdl
+-endif
+-
+ SUBDIRS += \
+ 	lib \
+ 	scripts \

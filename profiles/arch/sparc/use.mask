@@ -4,6 +4,10 @@
 # Unmask the flag which corresponds to ARCH.
 -sparc
 
+# Pacho Ramos <pacho@gentoo.org> (2026-05-09)
+# Newer gedit versions were not keyworded, bug #948858
+gedit
+
 # Lukas Schmelting <lschmelting@posteo.com> (2025-11-09)
 # gnome-online-accounts is not keyworded for sparc
 gnome-online-accounts

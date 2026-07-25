@@ -6,12 +6,12 @@
 # Flatcar Linux Maintainers <infra@flatcar-linux.org>
 # @AUTHOR:
 # Flatcar Linux Maintainers <infra@flatcar-linux.org>
-# @SUPPORTED_EAPIS: 7 8
+# @SUPPORTED_EAPIS: 7 8 9
 # @BLURB: Helper eclass for setting up the Go build environment.
 # @DESCRIPTION:
 # This eclass includes helper functions for setting up the build environment for
 # Go ebuilds. Intended to be called by other Go eclasses in an early build
-# stage, e.g. src_unpack.
+# stage, e.g. src_configure.
 
 # @ECLASS_VARIABLE: GOMAXPROCS
 # @USER_VARIABLE
@@ -77,7 +77,7 @@
 # Optimisation setting for riscv when building for CBUILD.
 
 case ${EAPI} in
-	7|8) ;;
+	7|8|9) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
@@ -85,6 +85,26 @@ if [[ -z ${_GO_ENV_ECLASS} ]]; then
 _GO_ENV_ECLASS=1
 
 inherit flag-o-matic multiprocessing sysroot toolchain-funcs
+
+# @ECLASS_VARIABLE: CGO_ENABLED
+# @DESCRIPTION:
+# Whether to enable the cgo tool that lets Go packages call C code. Upstream Go
+# enables this by default for native builds when a C compiler is found. Some
+# projects will forcibly enable it by necessity. Other projects may disable it
+# by default or even forcibly disable it to make the resulting binaries more
+# portable. When enabled, certain standard library packages will use the libc
+# over their own built-in code for things like DNS resolution, which is
+# generally preferable. It makes sense for a distribution to enable it where
+# possible, even when cross-compiling. Ebuilds may force this setting one way or
+# the other before inheriting this eclass where necessary, although upstream
+# projects will likely do this for you. If you believe that a project should not
+# force it, then please work with upstream to have the variable respected.
+# Ebuilds may also disable it by default if this is more appropriate. See
+# https://pkg.go.dev/cmd/cgo.
+case ${EAPI} in
+	7|8) : ;;
+	*) export CGO_ENABLED="${CGO_ENABLED:-1}" ;;
+esac
 
 # @FUNCTION: go-env_set_compile_environment
 # @DESCRIPTION:
@@ -147,9 +167,12 @@ go-env_set_compile_environment() {
 
 	# go run will build binaries for the target system and try to execute them.
 	# This will fail when cross-compiling unless you provide a wrapper.
-	local script
+	local script go_exec
 	if script=$(sysroot_make_run_prefixed); then
-		GOFLAGS+=" -exec=${script}" "${@}"
+		go_exec="${T}/go-exec"
+		PATH="${go_exec}:${PATH}"
+		mkdir -p "${go_exec}" || die
+		ln -snfr "${script}" "${go_exec}/go_${GOOS}_${GOARCH}_exec" || die
 	fi
 }
 

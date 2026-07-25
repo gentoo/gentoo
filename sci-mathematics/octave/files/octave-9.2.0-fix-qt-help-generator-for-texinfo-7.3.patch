@@ -1,0 +1,34 @@
+https://github.com/gnu-octave/octave/commit/e21b1898cb6507dff38679c25b4db7fde44de883
+From e21b1898cb6507dff38679c25b4db7fde44de883 Mon Sep 17 00:00:00 2001
+From: "Dmitri A. Sergatskov" <dasergatskov@gmail.com>
+Date: Sun, 8 Mar 2026 16:08:04 -0400
+Subject: [PATCH] Fix Qt help generator for Texinfo 7.3 Function-Index output.
+
+Texinfo 7.3 changed the HTML classes used for the function index.
+Update the Qt help generator to handle both the old and the new HTML
+forms when parsing Function-Index.html.
+
+* mk-qthelp.pl: Accept new printindex-style function
+index table classes in Function-Index.html parsing.
+
+diff --git a/doc/interpreter/mk-qthelp.pl b/doc/interpreter/mk-qthelp.pl
+index 475ba20b22..a68af8b0ad 100755
+--- a/doc/interpreter/mk-qthelp.pl
++++ b/doc/interpreter/mk-qthelp.pl
+@@ -72,7 +72,12 @@ open ($HTML, "<", $htmlfname) or die "Unable to open $htmlfname";
+ 
+ # Skip through preamble of file to find start of list
+ while (defined ($_ = <$HTML>)
+-         and ! /^<table class="(?:index-fn|fn-entries)/ ) {;}
++         and ! /<table\b[^>]*\bclass="[^"]*\b
++                 (?:
++                   index-fn |
++                   fn-entries |
++                   fn-entries-printindex
++                 )\b/x ) {;}
+ 
+ die "Function-Index.html: reached EOF without finding data start pattern"
+   if eof ($HTML);
+-- 
+2.49.1
+

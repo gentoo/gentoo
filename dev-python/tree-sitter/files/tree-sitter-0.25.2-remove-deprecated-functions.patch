@@ -1,0 +1,467 @@
+https://github.com/tree-sitter/py-tree-sitter/commit/1542b4bb
+From: ObserverOfTime <chronobserver@disroot.org>
+Date: Sun, 14 Dec 2025 13:41:36 +0200
+Subject: [PATCH] feat!: remove deprecated methods
+
+--- a/docs/classes/tree_sitter.Language.rst
++++ b/docs/classes/tree_sitter.Language.rst
+@@ -16,14 +16,8 @@ Language
+    .. automethod:: node_kind_is_named
+    .. automethod:: node_kind_is_supertype
+    .. automethod:: node_kind_is_visible
+-   .. automethod:: query
+-
+-      .. deprecated:: 0.25.0
+-         Use the :class:`Query` constructor instead.
+    .. automethod:: subtypes
+ 
+-      .. versionadded:: 0.25.0
+-
+    Special Methods
+    ---------------
+ 
+@@ -41,21 +35,9 @@ Language
+    ----------
+ 
+    .. autoattribute:: abi_version
+-
+-      .. versionadded:: 0.25.0
+    .. autoattribute:: field_count
+    .. autoattribute:: name
+-
+-      .. versionadded:: 0.25.0
+    .. autoattribute:: node_kind_count
+    .. autoattribute:: parse_state_count
+    .. autoattribute:: semantic_version
+-
+-      .. versionadded:: 0.25.0
+    .. autoattribute:: supertypes
+-
+-      .. versionadded:: 0.25.0
+-   .. autoattribute:: version
+-
+-      .. deprecated:: 0.25.0
+-         Use :attr:`abi_version` instead.
+--- a/docs/classes/tree_sitter.LookaheadIterator.rst
++++ b/docs/classes/tree_sitter.LookaheadIterator.rst
+@@ -8,29 +8,15 @@ LookaheadIterator
+    -------
+ 
+    .. automethod:: names
+-
+-      .. versionadded:: 0.25.0
+-         Replaces the ``iter_names`` method
+    .. automethod:: reset
+-
+-      .. versionadded:: 0.25.0
+-         Replaces the ``reset_state`` method
+    .. automethod:: symbols
+ 
+-      .. versionadded:: 0.25.0
+-
+    Special Methods
+    ---------------
+ 
+    .. automethod:: __iter__
+-
+-      .. versionchanged:: 0.25.0
+-         Iterates over ``tuple[int, str]``
+    .. automethod:: __next__
+ 
+-      .. versionchanged:: 0.25.0
+-         Yields ``tuple[int, str]``
+-
+    Attributes
+    ----------
+ 
+--- a/docs/classes/tree_sitter.Node.rst
++++ b/docs/classes/tree_sitter.Node.rst
+@@ -18,11 +18,7 @@ Node
+    .. automethod:: field_name_for_child
+    .. automethod:: field_name_for_named_child
+    .. automethod:: first_child_for_byte
+-
+-      .. versionadded:: 0.25.0
+    .. automethod:: first_named_child_for_byte
+-
+-      .. versionadded:: 0.25.0
+    .. automethod:: named_child
+    .. automethod:: named_descendant_for_byte_range
+    .. automethod:: named_descendant_for_point_range
+--- a/docs/classes/tree_sitter.Parser.rst
++++ b/docs/classes/tree_sitter.Parser.rst
+@@ -7,10 +7,6 @@ Parser
+    -------
+ 
+    .. automethod:: parse
+-
+-      .. versionchanged:: 0.25.0
+-         * ``encoding`` can be one of ``"utf8", "utf16", "utf16le", "utf16be"``.
+-         * ``progress_callback`` parameter added.
+    .. automethod:: print_dot_graphs
+    .. automethod:: reset
+ 
+@@ -20,7 +16,3 @@ Parser
+    .. autoattribute:: included_ranges
+    .. autoattribute:: language
+    .. autoattribute:: logger
+-   .. autoattribute:: timeout_micros
+-
+-      .. deprecated:: 0.25.0
+-         Use the ``progress_callback`` in :meth:`parse`.
+--- a/docs/classes/tree_sitter.Query.rst
++++ b/docs/classes/tree_sitter.Query.rst
+@@ -21,11 +21,7 @@ Query
+    -------
+ 
+    .. automethod:: capture_name
+-
+-      .. versionadded:: 0.25.0
+    .. automethod:: capture_quantifier
+-
+-      .. versionadded:: 0.25.0
+    .. automethod:: disable_capture
+    .. automethod:: disable_pattern
+    .. automethod:: end_byte_for_pattern
+@@ -37,13 +33,9 @@ Query
+    .. automethod:: start_byte_for_pattern
+    .. automethod:: string_value
+ 
+-      .. versionadded:: 0.25.0
+-
+    Attributes
+    ----------
+ 
+    .. autoattribute:: capture_count
+    .. autoattribute:: pattern_count
+    .. autoattribute:: string_count
+-
+-      .. versionadded:: 0.25.0
+--- a/docs/classes/tree_sitter.QueryCursor.rst
++++ b/docs/classes/tree_sitter.QueryCursor.rst
+@@ -1,10 +1,8 @@
+ QueryCursor
+-=====
++===========
+ 
+ .. autoclass:: tree_sitter.QueryCursor
+ 
+-   .. versionadded:: 0.25.0
+-
+    Methods
+    -------
+ 
+@@ -19,4 +17,3 @@ QueryCursor
+ 
+    .. autoattribute:: did_exceed_match_limit
+    .. autoattribute:: match_limit
+-   .. autoattribute:: timeout_micros
+--- a/tree_sitter/__init__.pyi
++++ b/tree_sitter/__init__.pyi
+@@ -27,9 +27,6 @@ class Language:
+     def abi_version(self) -> int: ...
+     @property
+     def semantic_version(self) -> tuple[int, int, int] | None: ...
+-    @deprecated("Use abi_version instead")
+-    @property
+-    def version(self) -> int: ...
+     @property
+     def node_kind_count(self) -> int: ...
+     @property
+@@ -48,8 +45,6 @@ class Language:
+     def field_id_for_name(self, name: str, /) -> int | None: ...
+     def next_state(self, state: int, id: int, /) -> int: ...
+     def lookahead_iterator(self, state: int, /) -> LookaheadIterator | None: ...
+-    @deprecated("Use the Query() constructor instead")
+-    def query(self, source: str, /) -> Query: ...
+     def copy(self) -> Language: ...
+     def __repr__(self) -> str: ...
+     def __eq__(self, other: Any, /) -> bool: ...
+@@ -226,22 +221,11 @@ class TreeCursor:
+ 
+ @final
+ class Parser:
+-    @overload
+-    def __init__(
+-        self,
+-        language: Language | None = None,
+-        *,
+-        included_ranges: Sequence[Range] | None = None,
+-        logger: Callable[[LogType, str], None] | None = None,
+-    ) -> None: ...
+-    @deprecated("timeout_micros is deprecated")
+-    @overload
+     def __init__(
+         self,
+         language: Language | None = None,
+         *,
+         included_ranges: Sequence[Range] | None = None,
+-        timeout_micros: int | None = None,
+         logger: Callable[[LogType, str], None] | None = None,
+     ) -> None: ...
+     @property
+@@ -256,15 +240,6 @@ class Parser:
+     def included_ranges(self, ranges: Sequence[Range]) -> None: ...
+     @included_ranges.deleter
+     def included_ranges(self) -> None: ...
+-    @deprecated("Use the progress_callback in parse()")
+-    @property
+-    def timeout_micros(self) -> int: ...
+-    @deprecated("Use the progress_callback in parse()")
+-    @timeout_micros.setter
+-    def timeout_micros(self, timeout: int) -> None: ...
+-    @deprecated("Use the progress_callback in parse()")
+-    @timeout_micros.deleter
+-    def timeout_micros(self) -> None: ...
+     @property
+     def logger(self) -> Callable[[LogType, str], None] | None: ...
+     @logger.setter
+@@ -328,29 +303,13 @@ class Query:
+ 
+ @final
+ class QueryCursor:
+-    @overload
+     def __init__(self, query: Query, *, match_limit: int = 0xFFFFFFFF) -> None: ...
+-    @deprecated("timeout_micros is deprecated")
+-    @overload
+-    def __init__(
+-        self,
+-        query: Query,
+-        *,
+-        match_limit: int = 0xFFFFFFFF,
+-        timeout_micros: int = 0
+-    ) -> None: ...
+     @property
+     def match_limit(self) -> int: ...
+     @match_limit.setter
+     def match_limit(self, limit: int) -> None: ...
+     @match_limit.deleter
+     def match_limit(self) -> None: ...
+-    @deprecated("Use the progress_callback in matches() or captures()")
+-    @property
+-    def timeout_micros(self) -> int: ...
+-    @deprecated("Use the progress_callback in matches() or captures()")
+-    @timeout_micros.setter
+-    def timeout_micros(self, timeout: int) -> None: ...
+     @property
+     def did_exceed_match_limit(self) -> bool: ...
+     def set_max_start_depth(self, depth: int, /) -> None: ...
+--- a/tree_sitter/binding/language.c
++++ b/tree_sitter/binding/language.c
+@@ -63,13 +63,6 @@ PyObject *language_get_name(Language *self, void *Py_UNUSED(payload)) {
+     return PyUnicode_FromString(self->name);
+ }
+ 
+-PyObject *language_get_version(Language *self, void *Py_UNUSED(payload)) {
+-    if (REPLACE("version", "abi_version") < 0) {
+-        return NULL;
+-    }
+-    return PyLong_FromUnsignedLong(self->abi_version);
+-}
+-
+ PyObject *language_get_abi_version(Language *self, void *Py_UNUSED(payload)) {
+     return PyLong_FromUnsignedLong(self->abi_version);
+ }
+@@ -237,19 +230,6 @@ PyObject *language_lookahead_iterator(Language *self, PyObject *args) {
+     return PyObject_Init((PyObject *)iter, state->lookahead_iterator_type);
+ }
+ 
+-PyObject *language_query(Language *self, PyObject *args) {
+-    ModuleState *state = GET_MODULE_STATE(self);
+-    char *source;
+-    Py_ssize_t length;
+-    if (!PyArg_ParseTuple(args, "s#:query", &source, &length)) {
+-        return NULL;
+-    }
+-    if (REPLACE("query()", "the Query() constructor") < 0) {
+-        return NULL;
+-    }
+-    return PyObject_CallFunction((PyObject *)state->query_type, "Os#", self, source, length);
+-}
+-
+ PyObject *language_copy(Language *self, PyObject *Py_UNUSED(args)) {
+     ModuleState *state = GET_MODULE_STATE(self);
+     Language *copied = PyObject_New(Language, state->language_type);
+@@ -290,10 +270,6 @@ PyDoc_STRVAR(language_next_state_doc,
+ PyDoc_STRVAR(language_lookahead_iterator_doc,
+              "lookahead_iterator(self, state, /)\n--\n\n"
+              "Create a new :class:`LookaheadIterator` for this language and parse state.");
+-PyDoc_STRVAR(
+-    language_query_doc,
+-    "query(self, source, /)\n--\n\n"
+-    "Create a new :class:`Query` from a string containing one or more S-expression patterns.");
+ PyDoc_STRVAR(language_copy_doc, "copy(self, /)\n--\n\n"
+                                 "Create a copy of the language.");
+ PyDoc_STRVAR(language_copy2_doc, "__copy__(self, /)\n--\n\n"
+@@ -360,12 +336,6 @@ static PyMethodDef language_methods[] = {
+         .ml_flags = METH_VARARGS,
+         .ml_doc = language_lookahead_iterator_doc,
+     },
+-    {
+-        .ml_name = "query",
+-        .ml_meth = (PyCFunction)language_query,
+-        .ml_flags = METH_VARARGS,
+-        .ml_doc = language_query_doc,
+-    },
+     {
+         .ml_name = "copy",
+         .ml_meth = (PyCFunction)language_copy,
+@@ -381,10 +351,6 @@ static PyMethodDef language_methods[] = {
+ 
+ static PyGetSetDef language_accessors[] = {
+     {"name", (getter)language_get_name, NULL, PyDoc_STR("The name of the language."), NULL},
+-    {"version", (getter)language_get_version, NULL,
+-     PyDoc_STR("The ABI version number that indicates which version of "
+-               "the Tree-sitter CLI was used to generate this language."),
+-     NULL},
+     {"abi_version", (getter)language_get_abi_version, NULL,
+      PyDoc_STR("The ABI version number that indicates which version of "
+                "the Tree-sitter CLI was used to generate this language."),
+--- a/tree_sitter/binding/parser.c
++++ b/tree_sitter/binding/parser.c
+@@ -230,31 +230,6 @@ PyObject *parser_print_dot_graphs(Parser *self, PyObject *arg) {
+     Py_RETURN_NONE;
+ }
+ 
+-PyObject *parser_get_timeout_micros(Parser *self, void *Py_UNUSED(payload)) {
+-    if (DEPRECATE("Use the progress_callback in parse()") < 0) {
+-        return NULL;
+-    }
+-    return PyLong_FromUnsignedLong(ts_parser_timeout_micros(self->parser));
+-}
+-
+-int parser_set_timeout_micros(Parser *self, PyObject *arg, void *Py_UNUSED(payload)) {
+-    if (DEPRECATE("Use the progress_callback in parse()") < 0) {
+-        return -1;
+-    }
+-    if (arg == NULL || arg == Py_None) {
+-        ts_parser_set_timeout_micros(self->parser, 0);
+-        return 0;
+-    }
+-    if (!PyLong_Check(arg)) {
+-        PyErr_Format(PyExc_TypeError, "'timeout_micros' must be assigned an int, not %s",
+-                     arg->ob_type->tp_name);
+-        return -1;
+-    }
+-
+-    ts_parser_set_timeout_micros(self->parser, PyLong_AsSize_t(arg));
+-    return 0;
+-}
+-
+ PyObject *parser_get_included_ranges(Parser *self, void *Py_UNUSED(payload)) {
+     uint32_t count;
+     const TSRange *ranges = ts_parser_included_ranges(self->parser, &count);
+@@ -397,11 +372,10 @@ int parser_set_language(Parser *self, PyObject *arg, void *Py_UNUSED(payload)) {
+ 
+ int parser_init(Parser *self, PyObject *args, PyObject *kwargs) {
+     ModuleState *state = GET_MODULE_STATE(self);
+-    PyObject *language = NULL, *included_ranges = NULL, *timeout_micros = NULL, *logger = NULL;
+-    char *keywords[] = {"language", "included_ranges", "timeout_micros", "logger", NULL};
+-    if (!PyArg_ParseTupleAndKeywords(args, kwargs, "|O!$OOO:__init__", keywords,
+-                                     state->language_type, &language, &included_ranges,
+-                                     &timeout_micros, &logger)) {
++    PyObject *language = NULL, *included_ranges = NULL, *logger = NULL;
++    char *keywords[] = {"language", "included_ranges", "logger", NULL};
++    if (!PyArg_ParseTupleAndKeywords(args, kwargs, "|O!$OO:__init__", keywords,
++                                     state->language_type, &language, &included_ranges, &logger)) {
+         return -1;
+     }
+ 
+@@ -411,9 +385,6 @@ int parser_init(Parser *self, PyObject *args, PyObject *kwargs) {
+     if (SET_ATTRIBUTE_ERROR(included_ranges)) {
+         return -1;
+     }
+-    if (SET_ATTRIBUTE_ERROR(timeout_micros)) {
+-        return -1;
+-    }
+     if (SET_ATTRIBUTE_ERROR(logger)) {
+         return -1;
+     }
+@@ -469,8 +440,6 @@ static PyGetSetDef parser_accessors[] = {
+      PyDoc_STR("The language that will be used for parsing."), NULL},
+     {"included_ranges", (getter)parser_get_included_ranges, (setter)parser_set_included_ranges,
+      PyDoc_STR("The ranges of text that the parser will include when parsing."), NULL},
+-    {"timeout_micros", (getter)parser_get_timeout_micros, (setter)parser_set_timeout_micros,
+-     PyDoc_STR("The duration in microseconds that parsing is allowed to take."), NULL},
+     {"logger", (getter)parser_get_logger, (setter)parser_set_logger,
+      PyDoc_STR("The logger that the parser should use during parsing."), NULL},
+     {NULL},
+--- a/tree_sitter/binding/query_cursor.c
++++ b/tree_sitter/binding/query_cursor.c
+@@ -1,7 +1,5 @@
+ #include "types.h"
+ 
+-#include <string.h>
+-
+ PyObject *node_new_internal(ModuleState *state, TSNode node, PyObject *tree);
+ 
+ bool query_satisfies_predicates(Query *query, TSQueryMatch match, Tree *tree, PyObject *callable);
+@@ -25,16 +23,14 @@ int query_cursor_init(QueryCursor *self, PyObject *args, PyObject *kwargs) {
+     ModuleState *state = GET_MODULE_STATE(self);
+     PyObject *query = NULL;
+     uint32_t match_limit = UINT32_MAX;
+-    uint64_t timeout_micros = 0;
+-    char *keywords[] = {"query", "match_limit", "timeout_micros", NULL};
+-    if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O!|$II:__init__", keywords, state->query_type,
+-                                     &query, &match_limit, &timeout_micros)) {
++    char *keywords[] = {"query", "match_limit", NULL};
++    if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O!|$I:__init__", keywords, state->query_type,
++                                     &query, &match_limit)) {
+         return -1;
+     }
+ 
+     self->query = Py_NewRef(query);
+     ts_query_cursor_set_match_limit(self->cursor, match_limit);
+-    ts_query_cursor_set_timeout_micros(self->cursor, timeout_micros);
+ 
+     return 0;
+ }
+@@ -237,32 +233,7 @@ int query_cursor_set_match_limit(QueryCursor *self, PyObject *arg, void *Py_UNUS
+         return -1;
+     }
+ 
+-    ts_query_cursor_set_timeout_micros(self->cursor, PyLong_AsSize_t(arg));
+-    return 0;
+-}
+-
+-PyObject *query_cursor_get_timeout_micros(QueryCursor *self, void *Py_UNUSED(payload)) {
+-    if (DEPRECATE("Use the progress_callback in matches() or captures()") < 0) {
+-        return NULL;
+-    }
+-    return PyLong_FromUnsignedLong(ts_query_cursor_timeout_micros(self->cursor));
+-}
+-
+-int query_cursor_set_timeout_micros(QueryCursor *self, PyObject *arg, void *Py_UNUSED(payload)) {
+-    if (DEPRECATE("Use the progress_callback in matches() or captures()") < 0) {
+-        return -1;
+-    }
+-    if (arg == NULL || arg == Py_None) {
+-        ts_query_cursor_set_timeout_micros(self->cursor, 0);
+-        return 0;
+-    }
+-    if (!PyLong_Check(arg)) {
+-        PyErr_Format(PyExc_TypeError, "'timeout_micros' must be assigned an int, not %s",
+-                     arg->ob_type->tp_name);
+-        return -1;
+-    }
+-
+-    ts_query_cursor_set_timeout_micros(self->cursor, PyLong_AsSize_t(arg));
++    ts_query_cursor_set_match_limit(self->cursor, PyLong_AsSize_t(arg));
+     return 0;
+ }
+ 
+@@ -330,11 +301,6 @@ static PyMethodDef query_cursor_methods[] = {
+ };
+ 
+ static PyGetSetDef query_cursor_accessors[] = {
+-    {"timeout_micros", (getter)query_cursor_get_timeout_micros,
+-     (setter)query_cursor_set_timeout_micros,
+-     PyDoc_STR("The maximum duration in microseconds that query "
+-               "execution should be allowed to take before halting."),
+-     NULL},
+     {"match_limit", (getter)query_cursor_get_match_limit, (setter)query_cursor_set_match_limit,
+      PyDoc_STR("The maximum number of in-progress matches."), NULL},
+     {"did_exceed_match_limit", (getter)query_cursor_get_did_exceed_match_limit, NULL,
+-- 
+2.54.0
+

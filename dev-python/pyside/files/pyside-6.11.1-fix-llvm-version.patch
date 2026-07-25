@@ -1,0 +1,16 @@
+https://codeberg.org/gentoo/gentoo/pulls/884#issuecomment-14921022
+
+Fixes https://github.com/pyside/pyside-setup/commit/2f25d2a3db2ffc4c5e18654138249d285e995d08
+
+--- a/sources/shiboken6_generator/cmake/ShibokenGeneratorSetup.cmake
++++ b/sources/shiboken6_generator/cmake/ShibokenGeneratorSetup.cmake
+@@ -36,7 +36,7 @@ compute_config_py_values(shiboken6_VERSION)
+ 
+ shiboken_internal_set_python_site_packages()
+ 
+-string(REGEX REPLACE "\\.[0-9]+\\.[0-9]+$" "" LLVM_VERSION "${LLVM_PACKAGE_VERSION}")
++set(LLVM_VERSION "${LLVM_VERSION_MAJOR}")
+ 
+ set_cmake_cxx_flags()
+ set(CMAKE_CXX_FLAGS
+

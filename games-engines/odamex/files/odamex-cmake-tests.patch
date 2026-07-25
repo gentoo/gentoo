@@ -1,0 +1,154 @@
+From b4d182c34c1099ae3977be59aee4bbc72514df6e Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <chewi@gentoo.org>
+Date: Sat, 18 Apr 2026 10:23:31 +0100
+Subject: [PATCH 1/3] Fix bad cmake_dependent_option syntax
+
+This wasn't behaving as intended.
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -53,12 +53,12 @@ option(USE_LTO "Build Release builds with Link Time Optimization" 1)
+ option(ODAMEX_INSTALL_BINDIR "Smart default for bin dir location" "/usr/local/bin")
+ option(ODAMEX_INSTALL_DATADIR "Smart default for data dir location" "/usr/local/share")
+ option(USE_EXTERNAL_LIBDWARF "Use external libdwarf for cpptrace" 0)
+-cmake_dependent_option( USE_INTERNAL_ZLIB "Use internal zlib" ${USE_INTERNAL_LIBS} BUILD_CLIENT OR BUILD_SERVER 0 )
+-cmake_dependent_option( USE_INTERNAL_ZSTD "Use internal zstd" ${USE_INTERNAL_LIBS} BUILD_CLIENT OR BUILD_SERVER 0 )
++cmake_dependent_option( USE_INTERNAL_ZLIB "Use internal zlib" ${USE_INTERNAL_LIBS} "BUILD_CLIENT OR BUILD_SERVER" 0 )
++cmake_dependent_option( USE_INTERNAL_ZSTD "Use internal zstd" ${USE_INTERNAL_LIBS} "BUILD_CLIENT OR BUILD_SERVER" 0 )
+ cmake_dependent_option( USE_INTERNAL_PNG "Use internal libpng" ${USE_INTERNAL_LIBS} BUILD_CLIENT 0 )
+ cmake_dependent_option( USE_INTERNAL_CURL "Use internal libcurl" ${USE_INTERNAL_LIBS} BUILD_CLIENT 0 )
+-cmake_dependent_option( USE_INTERNAL_JSONCPP "Use internal JsonCpp" 1 BUILD_CLIENT OR BUILD_SERVER 0 )
+-cmake_dependent_option( USE_INTERNAL_CPPTRACE "Use internal cpptrace" 1 BUILD_CLIENT OR BUILD_SERVER 0 )
++cmake_dependent_option( USE_INTERNAL_JSONCPP "Use internal JsonCpp" 1 "BUILD_CLIENT OR BUILD_SERVER" 0 )
++cmake_dependent_option( USE_INTERNAL_CPPTRACE "Use internal cpptrace" 1 "BUILD_CLIENT OR BUILD_SERVER" 0 )
+ cmake_dependent_option( USE_INTERNAL_FLTK "Use internal FLTK" 1 BUILD_CLIENT 0 )
+ cmake_dependent_option( USE_INTERNAL_WXWIDGETS "Use internal wxWidgets" ${USE_INTERNAL_LIBS} BUILD_LAUNCHER 0 )
+ cmake_dependent_option( ENABLE_PORTMIDI "Enable portmidi support" 1 BUILD_CLIENT 0 )
+-- 
+2.53.0
+
+
+From 91e3c98eb591680f2f13719104d12ee260fc6bf0 Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <chewi@gentoo.org>
+Date: Sat, 18 Apr 2026 10:24:19 +0100
+Subject: [PATCH 2/3] Fix test dependencies in CMake
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -53,12 +53,12 @@ option(USE_LTO "Build Release builds with Link Time Optimization" 1)
+ option(ODAMEX_INSTALL_BINDIR "Smart default for bin dir location" "/usr/local/bin")
+ option(ODAMEX_INSTALL_DATADIR "Smart default for data dir location" "/usr/local/share")
+ option(USE_EXTERNAL_LIBDWARF "Use external libdwarf for cpptrace" 0)
+-cmake_dependent_option( USE_INTERNAL_ZLIB "Use internal zlib" ${USE_INTERNAL_LIBS} "BUILD_CLIENT OR BUILD_SERVER" 0 )
+-cmake_dependent_option( USE_INTERNAL_ZSTD "Use internal zstd" ${USE_INTERNAL_LIBS} "BUILD_CLIENT OR BUILD_SERVER" 0 )
++cmake_dependent_option( USE_INTERNAL_ZLIB "Use internal zlib" ${USE_INTERNAL_LIBS} "BUILD_CLIENT OR BUILD_SERVER OR BUILD_TESTS" 0 )
++cmake_dependent_option( USE_INTERNAL_ZSTD "Use internal zstd" ${USE_INTERNAL_LIBS} "BUILD_CLIENT OR BUILD_SERVER OR BUILD_TESTS" 0 )
+ cmake_dependent_option( USE_INTERNAL_PNG "Use internal libpng" ${USE_INTERNAL_LIBS} BUILD_CLIENT 0 )
+-cmake_dependent_option( USE_INTERNAL_CURL "Use internal libcurl" ${USE_INTERNAL_LIBS} BUILD_CLIENT 0 )
+-cmake_dependent_option( USE_INTERNAL_JSONCPP "Use internal JsonCpp" 1 "BUILD_CLIENT OR BUILD_SERVER" 0 )
+-cmake_dependent_option( USE_INTERNAL_CPPTRACE "Use internal cpptrace" 1 "BUILD_CLIENT OR BUILD_SERVER" 0 )
++cmake_dependent_option( USE_INTERNAL_CURL "Use internal libcurl" ${USE_INTERNAL_LIBS} "BUILD_CLIENT OR BUILD_TESTS" 0 )
++cmake_dependent_option( USE_INTERNAL_JSONCPP "Use internal JsonCpp" 1 "BUILD_CLIENT OR BUILD_SERVER OR BUILD_TESTS" 0 )
++cmake_dependent_option( USE_INTERNAL_CPPTRACE "Use internal cpptrace" 1 "BUILD_CLIENT OR BUILD_SERVER OR BUILD_TESTS" 0 )
+ cmake_dependent_option( USE_INTERNAL_FLTK "Use internal FLTK" 1 BUILD_CLIENT 0 )
+ cmake_dependent_option( USE_INTERNAL_WXWIDGETS "Use internal wxWidgets" ${USE_INTERNAL_LIBS} BUILD_LAUNCHER 0 )
+ cmake_dependent_option( ENABLE_PORTMIDI "Enable portmidi support" 1 BUILD_CLIENT 0 )
+--- a/libraries/CMakeLists.txt
++++ b/libraries/CMakeLists.txt
+@@ -139,7 +139,7 @@ target_include_directories(tinylibs INTERFACE . "tinylibs/include")
+ 
+ ### minilzo ###
+ 
+-if(BUILD_CLIENT OR BUILD_SERVER)
++if(BUILD_CLIENT OR BUILD_SERVER OR BUILD_TESTS)
+   message(STATUS "Compiling minilzo...")
+   add_library(minilzo STATIC
+       "minilzo/lzoconf.h" "minilzo/lzodefs.h" "minilzo/minilzo.c" "minilzo/minilzo.h")
+--- a/libraries/cpptrace-lib.cmake
++++ b/libraries/cpptrace-lib.cmake
+@@ -1,6 +1,6 @@
+ ### cpptrace ###
+ 
+-if(BUILD_CLIENT OR BUILD_SERVER)
++if(BUILD_CLIENT OR BUILD_SERVER OR BUILD_TESTS)
+   if(USE_INTERNAL_CPPTRACE)
+     if(USE_INTERNAL_ZSTD)
+       set(CPPTRACE_USE_EXTERNAL_ZSTD OFF)
+--- a/libraries/curl-lib.cmake
++++ b/libraries/curl-lib.cmake
+@@ -1,6 +1,6 @@
+ ### libcurl ###
+ 
+-if(BUILD_CLIENT)
++if(BUILD_CLIENT OR BUILD_TESTS)
+   if(USE_INTERNAL_CURL)
+     # [AM] Don't put an early return in this block, otherwise you run the risk
+     #      of changes in the build cache not percolating down to the library.
+--- a/libraries/fmt-lib.cmake
++++ b/libraries/fmt-lib.cmake
+@@ -1,6 +1,6 @@
+ ### fmtlib ###
+ 
+-if(BUILD_CLIENT OR BUILD_SERVER)
++if(BUILD_CLIENT OR BUILD_SERVER OR BUILD_TESTS)
+   message(STATUS "Compiling {fmt}...")
+ 
+   lib_buildgen(
+--- a/libraries/protobuf-lib.cmake
++++ b/libraries/protobuf-lib.cmake
+@@ -1,6 +1,6 @@
+ ### Protocol Buffers ###
+ 
+-if(BUILD_CLIENT OR BUILD_SERVER)
++if(BUILD_CLIENT OR BUILD_SERVER OR BUILD_TESTS)
+   set(_PROTOBUF_BUILDGEN_PARAMS
+     "-Dprotobuf_BUILD_SHARED_LIBS=OFF"
+     "-Dprotobuf_BUILD_TESTS=OFF"
+--- a/libraries/zlib-lib.cmake
++++ b/libraries/zlib-lib.cmake
+@@ -1,6 +1,6 @@
+ ### zlib ###
+ 
+-if(BUILD_CLIENT OR BUILD_SERVER)
++if(BUILD_CLIENT OR BUILD_SERVER OR BUILD_TESTS)
+   if(USE_INTERNAL_ZLIB)
+     message(STATUS "Compiling internal ZLIB...")
+ 
+-- 
+2.53.0
+
+
+From 2d5f1929dde1be6782c25f4fa0c4de24f42bdfc4 Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <chewi@gentoo.org>
+Date: Sat, 18 Apr 2026 10:26:22 +0100
+Subject: [PATCH 3/3] Add USE_INTERNAL_GTEST CMake options
+
+Distributions will want to run these tests but will not want to build
+GoogleTest yet again. It is widely available and highly compatible.
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -61,6 +61,7 @@ cmake_dependent_option( USE_INTERNAL_JSONCPP "Use internal JsonCpp" 1 "BUILD_CLI
+ cmake_dependent_option( USE_INTERNAL_CPPTRACE "Use internal cpptrace" 1 "BUILD_CLIENT OR BUILD_SERVER OR BUILD_TESTS" 0 )
+ cmake_dependent_option( USE_INTERNAL_FLTK "Use internal FLTK" 1 BUILD_CLIENT 0 )
+ cmake_dependent_option( USE_INTERNAL_WXWIDGETS "Use internal wxWidgets" ${USE_INTERNAL_LIBS} BUILD_LAUNCHER 0 )
++cmake_dependent_option( USE_INTERNAL_GTEST "Use internal GoogleTest" 1 BUILD_TESTS 0 )
+ cmake_dependent_option( ENABLE_PORTMIDI "Enable portmidi support" 1 BUILD_CLIENT 0 )
+ cmake_dependent_option( USE_MINIUPNP "Build with UPnP support" 1 BUILD_SERVER 0 )
+ cmake_dependent_option( USE_INTERNAL_MINIUPNP "Use internal MiniUPnP" 1 USE_MINIUPNP 0 )
+@@ -190,8 +191,12 @@ if(BUILD_SERVER)
+   add_subdirectory(server)
+ endif()
+ if(BUILD_TESTS)
+-  set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+-  add_subdirectory(libraries/googletest)
++  if(USE_INTERNAL_GTEST)
++    set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
++    add_subdirectory(libraries/googletest)
++  else()
++    find_package(GTest REQUIRED)
++  endif()
+   add_subdirectory(tests/unit-tests)
+ endif()
+ if(BUILD_MASTER)
+-- 
+2.53.0
+

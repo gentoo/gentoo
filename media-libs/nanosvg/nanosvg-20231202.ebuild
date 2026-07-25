@@ -1,4 +1,4 @@
-# Copyright 2023-2024 Gentoo Authors
+# Copyright 2023-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,7 +7,7 @@ inherit cmake
 
 MY_PV="fltk_${PV:0:4}-${PV:4:2}-${PV:6:2}"
 
-DESCRIPTION="NanoSVG is a simple stupid single-header-file SVG parse."
+DESCRIPTION="Simple stupid single-header-file SVG parse"
 HOMEPAGE="https://github.com/fltk/nanosvg"
 SRC_URI="https://github.com/fltk/${PN}/archive/refs/tags/${MY_PV}.tar.gz -> ${P}.gh.tar.gz"
 S="${WORKDIR}/${PN}-${MY_PV}"

@@ -1,4 +1,4 @@
-# Copyright 2022-2025 Gentoo Authors
+# Copyright 2022-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -38,6 +38,9 @@ src_configure() {
 		# Upstream don't really support Qt 5 for >= 2.0:
 		# https://github.com/epasveer/seer/wiki/Building-Seer---Qt5.
 		-DQTVERSION=QT6
+
+		-DCONFIG_SEER_INSTALL_ICONS=1
+		-DCONFIG_SEER_INSTALL_FLATHUB_FILES=0
 	)
 
 	cmake_src_configure
@@ -48,8 +51,4 @@ src_install() {
 
 	domenu resources/seergdb.desktop
 
-	local size
-	for size in 32 64 128 256 512 ; do
-		newicon -s ${size} resources/seergdb_${size}x${size}.png seergdb.png
-	done
 }

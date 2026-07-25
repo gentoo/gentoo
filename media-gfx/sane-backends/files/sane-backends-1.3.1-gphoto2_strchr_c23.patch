@@ -1,0 +1,31 @@
+From d04d17b456d9847021b6df6eb08a3419a75172cf Mon Sep 17 00:00:00 2001
+From: Zdenek Dohnal <zdohnal@redhat.com>
+Date: Wed, 7 Jan 2026 17:11:27 +0100
+Subject: [PATCH] gphoto2.c: Fix build failure with GCC 16 and C23
+
+The function `strchr()` in the standard C23 now returns const pointer if
+const pointer is present as parameter and vice-versa, so if the returned
+string is about to be modified, non-const parameter has to be used.
+
+GCC 16 started to enforce this rule, which made sane-backends to fail
+during build when GCC 16 + C23 standard are used.
+---
+ backend/gphoto2.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/backend/gphoto2.c b/backend/gphoto2.c
+index 758829aee..386cecb20 100644
+--- a/backend/gphoto2.c
++++ b/backend/gphoto2.c
+@@ -586,7 +586,7 @@ get_info (void)
+ 	  folder_list[n] = strdup (val);
+ 	  if (strchr ((const char *) folder_list[n], ' '))
+ 	    {
+-	      *strchr ((const char *) folder_list[n], ' ') = '\0';
++	      *strchr (folder_list[n], ' ') = '\0';
+ 	    }
+ 	}
+       if (n == 0)
+-- 
+GitLab
+

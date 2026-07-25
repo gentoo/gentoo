@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -29,6 +29,8 @@ S="${WORKDIR}/${MY_PN}_${PV}"
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.1-duplicate-symbols.patch
 	"${FILESDIR}"/${PN}-3.1-fix-predefs.patch
+	"${FILESDIR}"/${P}-proto.patch
+	#"${FILESDIR}"/${P}-prototype.patch
 )
 
 pkg_pretend() {

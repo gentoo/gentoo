@@ -4,5 +4,6 @@
 	<!--maintainer-needed-->
 	<upstream>
 		<remote-id type="github">jekyll/jekyll-coffeescript</remote-id>
+		<remote-id type="rubygems">jekyll-coffeescript</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -12,7 +12,7 @@ else
 	KEYWORDS="amd64 ~mips ppc x86"
 fi
 
-DESCRIPTION="A run utility featuring a slim design and bash style auto-completion."
+DESCRIPTION="A run utility featuring a slim design and bash style auto-completion"
 HOMEPAGE="https://github.com/wdlkmpx/gmrun"
 
 LICENSE="ISC"

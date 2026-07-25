@@ -1,0 +1,27 @@
+https://gitlab.gnome.org/GNOME/gnome-calculator/-/issues/531
+https://gitlab.gnome.org/GNOME/gnome-calculator/-/merge_requests/457
+
+From c9bf69ce3688390a584ca7571ea5fcda5aea8863 Mon Sep 17 00:00:00 2001
+From: Weijia Wang <contact@weijia.wang>
+Date: Fri, 17 Apr 2026 16:21:25 +0200
+Subject: [PATCH] Set imaginary component to +0*i when inverting a real number
+
+---
+ lib/number.vala | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/lib/number.vala b/lib/number.vala
+index f45565b0..505c48eb 100644
+--- a/lib/number.vala
++++ b/lib/number.vala
+@@ -369,6 +369,8 @@ public class Number : GLib.Object
+     {
+         var z = new Number ();
+         z.num.neg (num);
++        if (!is_complex ())
++            z.num.get_imag ().val.set_zero ();
+         return z;
+     }
+ 
+-- 
+GitLab
