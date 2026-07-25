@@ -34,11 +34,12 @@ SLOT=${MY_SLOT}
 MY_SUFFIX=$(ver_rs 1 '' ${SLOT})
 RUBYVERSION=${SLOT}.0
 
-IUSE="berkdb debug doc examples gdbm jemalloc jit socks5 +ssl static-libs systemtap tk valgrind xemacs"
+IUSE="berkdb debug doc examples gdbm gmp jemalloc jit socks5 +ssl static-libs systemtap tk valgrind xemacs"
 
 RDEPEND="
 	berkdb? ( sys-libs/db:= )
 	gdbm? ( sys-libs/gdbm:= )
+	gmp? ( dev-libs/gmp:= )
 	jemalloc? ( dev-libs/jemalloc:= )
 	jit? ( ${RUST_DEPEND} )
 	ssl? (
@@ -276,6 +277,7 @@ src_configure() {
 		--with-setjmp-type=setjmp
 		--enable-mkmf-verbose
 		--with-out-ext="${modules}"
+		$(use_with gmp)
 		$(use_with jemalloc jemalloc)
 		$(use_enable jit jit-support)
 		$(use_enable jit yjit)
