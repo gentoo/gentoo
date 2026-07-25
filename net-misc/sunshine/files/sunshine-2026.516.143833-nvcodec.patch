@@ -1,0 +1,19 @@
+From 6c95a679f9ec991bd8cbdf4f0b2c3e2ad0ab1850 Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <chewi@gentoo.org>
+Date: Sat, 25 Jul 2026 13:28:51 +0100
+Subject: [PATCH] Broaden the accepted versions of nvenc
+
+--- a/src/nvenc/nvenc_base.cpp
++++ b/src/nvenc/nvenc_base.cpp
+@@ -24,7 +24,7 @@
+ // - NV_ENC_*_VER definitions where the value inside NVENCAPI_STRUCT_VERSION() was increased
+ // - Incompatible struct changes in nvEncodeAPI.h (fields removed, semantics changed, etc.)
+ // - Test both old and new drivers with all supported codecs
+-#if NVENCAPI_VERSION != MAKE_NVENC_VER(13U, 0U)
++#if NVENCAPI_MAJOR_VERSION != 13
+   #error Check and update NVENC code for backwards compatibility!
+ #endif
+ 
+-- 
+2.55.0
+

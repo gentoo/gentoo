@@ -14,7 +14,7 @@ NANORS_COMMIT="19f07b513e924e471cadd141943c1ec4adc8d0e0"
 TRAY_COMMIT="563dee475f8878d252ab2b9938d3a014e776ed08"
 SWS_COMMIT="546895a93a29062bb178367b46c7afb72da9881e"
 WLRP_COMMIT="a741f0ac5d655338a5100fc34bc8cec87d237346"
-FFMPEG_VERSION="8.1.1"
+FFMPEG_VERSION="8.1.2"
 
 # To make the assets tarball:
 # PV=
@@ -215,6 +215,7 @@ BDEPEND="
 "
 
 PATCHES=(
+	"${FILESDIR}"/${PN}-2026.516.143833-nvcodec.patch
 	"${FILESDIR}"/${PN}-new-boost.patch
 	"${FILESDIR}"/${PN}-new-cuda.patch
 )
@@ -252,7 +253,7 @@ src_unpack() {
 		git-r3_src_unpack
 
 		local EGIT_REPO_URI="https://github.com/LizardByte/Sunshine.git"
-		local EGIT_SUBMODULES=( third-party/{glad,inputtino,libdisplaydevice,moonlight-common-c{,/enet},nanors,tray,Simple-Web-Server,wlr-protocols} )
+		local EGIT_SUBMODULES=( third-party/{glad,inputtino,libdisplaydevice,lizardbyte-common,moonlight-common-c{,/enet,/nanors},tray,Simple-Web-Server,wlr-protocols} )
 		unset EGIT_CHECKOUT_DIR EGIT_COMMIT EGIT_BRANCH
 		git-r3_src_unpack
 
