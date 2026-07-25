@@ -3,6 +3,10 @@
 
 EAPI=8
 
+# Bumping notes:
+# * Update DOLPHIN_TAG_COMMIT to match commit used in tag.
+# * Update *_COMMIT for the vendored packages based on their submodules in Externals/.
+
 LLVM_COMPAT=( {18..22} )
 LLVM_OPTIONAL=1
 
@@ -23,6 +27,9 @@ if [[ ${PV} == *9999 ]]; then
 		Externals/watcher/watcher
 	)
 else
+	# bug #979791
+	DOLPHIN_TAG_COMMIT=6094cfcf7b8fba733b3116fdf3414d51c1c0e4a4
+
 	CPPIPC_COMMIT=ce0773b3e6d5abaa8d104100c5704321113853ca
 	CPPOPTPARSE_COMMIT=2265d647232249a53a03b411099863ceca35f0d3
 	IMGUI_COMMIT=45acd5e0e82f4c954432533ae9985ff0e1aad6d5
@@ -178,6 +185,11 @@ pkg_setup() {
 
 src_prepare() {
 	if [[ ${PV} != *9999 ]]; then
+		# Set tag commit to fix netplay against builds on other platforms, bug #979791
+		eapply "${FILESDIR}"/dolphin-2606-git-rev.patch
+		sed -e "s|@@GENTOO_DOLPHIN_COMMIT@@|${DOLPHIN_TAG_COMMIT}|" \
+			-i CMake/ScmRevGen.cmake || die
+
 		mv -T "${WORKDIR}/cpp-ipc-${CPPIPC_COMMIT}" Externals/cpp-ipc/cpp-ipc || die
 		mv -T "${WORKDIR}/cpp-optparse-${CPPOPTPARSE_COMMIT}" Externals/cpp-optparse/cpp-optparse || die
 		mv -T "${WORKDIR}/imgui-${IMGUI_COMMIT}" Externals/imgui/imgui || die
