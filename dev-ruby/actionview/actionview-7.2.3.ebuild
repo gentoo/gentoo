@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -64,7 +64,7 @@ all_ruby_prepare() {
 		-e '/defined/ s/FixtureSet/ActiveRecord::FixtureSet/' \
 		-i test/active_record_unit.rb || die
 
-	sed -e '3irequire "ostruct"; gem "actionpack", "~> 7.2.0"; gem "activerecord", "~> 7.2.0"; gem "railties", "~> 7.2.0"' \
+	sed -e '3irequire "ostruct"; gem "actionpack", "~> 7.2.0"; gem "activerecord", "~> 7.2.0"; gem "railties", "~> 7.2.0"; gem "minitest", "~> 5"' \
 		-i test/abstract_unit.rb || die
 
 	# Avoid test failing on capitalization difference
