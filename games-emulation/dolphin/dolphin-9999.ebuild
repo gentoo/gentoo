@@ -10,7 +10,7 @@ EAPI=8
 LLVM_COMPAT=( {18..22} )
 LLVM_OPTIONAL=1
 
-inherit cmake llvm-r2 pax-utils xdg
+inherit branding cmake llvm-r2 pax-utils xdg
 
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
@@ -270,6 +270,8 @@ src_configure() {
 		-DUSE_SYSTEM_CURL=ON
 		-DUSE_SYSTEM_ICONV=ON
 		-DUSE_SYSTEM_HIDAPI=ON
+
+		-DDISTRIBUTOR="${BRANDING_OS_NAME}"
 
 		# Undo cmake.eclass's defaults.
 		# All dolphin's libraries are private
