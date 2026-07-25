@@ -291,6 +291,14 @@ src_prepare() {
 	fi
 	sed -i -e "/AX_CXX_COMPILE_STDCXX/{s/_17(/(${CXXSTD}, /}" configure.ac || die
 
+	if use kernel_linux ; then
+		if tc-is-gcc ; then
+			export QMAKESPEC="linux-g++"
+		elif tc-is-clang; then
+			export QMAKESPEC="linux-clang"
+		fi
+	fi
+
 	eautoreconf
 }
 
