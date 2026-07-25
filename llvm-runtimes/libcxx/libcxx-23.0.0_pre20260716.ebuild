@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 inherit cmake-multilib crossdev flag-o-matic llvm.org llvm-utils
 inherit python-any-r1 toolchain-funcs
 
@@ -116,8 +116,8 @@ multilib_src_configure() {
 
 	local nostdlib_flags=( -nostdlib++ )
 	if ! test_compiler && test_compiler "${nostdlib_flags[@]}"; then
-		local -x LDFLAGS="${LDFLAGS} ${nort_flags[*]}"
-		ewarn "${CXX} seems to lack runtime, trying with ${nort_flags[*]}"
+		local -x LDFLAGS="${LDFLAGS} ${nostdlib_flags[*]}"
+		ewarn "${CXX} seems to lack runtime, trying with ${nostdlib_flags[*]}"
 	fi
 
 	local libdir=$(get_libdir)
