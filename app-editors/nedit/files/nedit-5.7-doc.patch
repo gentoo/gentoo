@@ -1,0 +1,13 @@
+--- a/doc/Makefile
++++ b/doc/Makefile
+@@ -48,8 +48,8 @@
+ ../source/help_topic.h ../source/help_data.h: .version help.etx setext
+ 	@ echo "Creating NEdit help code `cat .version`"
+ 	@ ./setext -m -v version="`cat .version`" help.etx
+-	@ mv -f help_topic.h ../source
+-	@ mv -f help_data.h ../source
++	@ cp -f help_topic.h ../source
++	@ cp -f help_data.h ../source
+ 
+ nedit.html: .version help.etx setext
+ 	@ echo "Creating NEdit HTML documentation..."
