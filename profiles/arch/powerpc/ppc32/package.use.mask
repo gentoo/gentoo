@@ -1,6 +1,10 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Alfred Wingate <parona@protonmail.com> (2026-07-26)
+# Firefox not keyworded here
+dev-util/selenium-manager test
+
 # Ionen Wolkens <ionen@gentoo.org> (2026-05-31)
 # dev-qt/qtmultimedia:6 was dekeyworded due to notable test failures
 # which stalled stabilizations (bug #973096) and there is low interest
