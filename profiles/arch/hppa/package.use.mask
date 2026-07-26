@@ -4,10 +4,6 @@
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
 
-# Alfred Wingate <parona@protonmail.com> (2026-07-26)
-# Firefox not keyworded here
-dev-util/selenium-manager test
-
 # Ionen Wolkens <ionen@gentoo.org> (2026-06-10)
 # llvm-core/clang is not available here, and neither is nvidia
 media-video/ffmpeg cuda-clang
