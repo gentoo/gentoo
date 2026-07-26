@@ -17,6 +17,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Alfred Wingate <parona@protonmail.com> (2026-07-26)
+# Discontinued upstream since 2019.
+# Replaced by dev-ruby/sassc
+# https://sass-lang.com/blog/ruby-sass-is-unsupported/
+dev-ruby/sass
+
 # Michał Górny <mgorny@gentoo.org> (2026-06-10)
 # Part of stdlib since Python 3.11 (as tomllib).
 dev-python/tomli
