@@ -39,7 +39,7 @@ RDEPEND="
 	>=dev-libs/libinput-1.14.0:=
 	>=dev-libs/wayland-1.23.1
 	gui-libs/libdecor
-	gui-libs/wlroots:0.19
+	gui-libs/wlroots:0.19[libinput,X]
 	<media-libs/libdisplay-info-0.4:=
 	media-libs/vulkan-loader
 	sys-apps/hwdata
