@@ -87,8 +87,9 @@ src_configure() {
 		-DENABLE_DEBUG_OUTPUT="$(usex debug)"
 		-DENABLE_DISCORD_RPC="$(usex discord)"
 		-DENABLE_KGLOBALACCEL_GLOBALSHORTCUTS=$(usex kde)
-		-DENABLE_SONGFINGERPRINTING="$(usex chromaprint)"
-		-DENABLE_MUSICBRAINZ="$(usex chromaprint)"
+		-DENABLE_CHROMAPRINT="$(usex chromaprint)"
+		-DENABLE_SONGTRACKING="$(usex chromaprint)"
+		-DENABLE_TAGFETCHER="$(usex chromaprint)"
 		-DENABLE_X11_GLOBALSHORTCUTS="$(usex X)"
 		-DENABLE_AUDIOCD="$(usex cdda)"
 		-DENABLE_MTP="$(usex mtp)"
