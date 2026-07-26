@@ -41,6 +41,7 @@ DEPEND="
 	>=xfce-base/xfconf-4.21.2:=
 
 	>=dev-libs/libinput-1.28.0
+	<media-libs/libdisplay-info-0.4
 	>=media-libs/libdisplay-info-0.3.0:=
 	>=media-libs/mesa-25.0.0[opengl]
 	>=sys-auth/seatd-0.9.0
