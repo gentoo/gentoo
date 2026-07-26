@@ -13,8 +13,8 @@ SLOT="0"
 
 KEYWORDS="amd64 ~arm arm64 ~loong ~ppc ~ppc64 ~riscv x86"
 
-IUSE="+cloudproviders doc gnome +gstreamer +introspection +previewer selinux"
-REQUIRED_USE="doc? ( introspection )"
+IUSE="+cloudproviders gtk-doc gnome +gstreamer +introspection +previewer selinux"
+REQUIRED_USE="gtk-doc? ( introspection )"
 
 DEPEND="
 	>=dev-libs/glib-2.84.0:2
@@ -43,7 +43,7 @@ BDEPEND="
 	>=dev-util/gdbus-codegen-2.80.5-r1
 	dev-util/glib-utils
 	dev-util/wayland-scanner
-	doc? (
+	gtk-doc? (
 		app-text/docbook-xml-dtd:4.1.2
 		dev-util/gi-docgen
 	)
@@ -77,7 +77,7 @@ src_prepare() {
 
 src_configure() {
 	local emesonargs=(
-		$(meson_use doc docs)
+		$(meson_use gtk-doc docs)
 		-Dextensions=true # image file properties, also required for -Dgstreamer=true
 		$(meson_use introspection)
 		-Dpackagekit=false
@@ -93,6 +93,13 @@ src_configure() {
 src_install() {
 	use previewer && readme.gentoo_create_doc
 	meson_src_install
+
+	if use gtk-doc; then
+		mkdir -p "${ED}"/usr/share/gtk-doc/html/"${PVR}"/ || die
+		mv "${ED}"/usr/share/doc/"${PN}"/* \
+			"${ED}"/usr/share/gtk-doc/html/"${PVR}"/ || die
+		rmdir "${ED}"/usr/share/doc/"${PN}"/ || die
+	fi
 }
 
 src_test() {
