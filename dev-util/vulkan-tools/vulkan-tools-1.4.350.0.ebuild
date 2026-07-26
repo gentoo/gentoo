@@ -27,6 +27,7 @@ RESTRICT="!test? ( test )"
 
 BDEPEND="${PYTHON_DEPS}
 	cube? ( ~dev-util/glslang-${PV}:=[${MULTILIB_USEDEP}] )
+	test? ( dev-cpp/gtest )
 "
 RDEPEND="
 	wayland? ( dev-libs/wayland[${MULTILIB_USEDEP}] )
