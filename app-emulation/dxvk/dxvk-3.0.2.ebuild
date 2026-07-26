@@ -14,7 +14,7 @@ if [[ ${PV} == 9999 ]]; then
 else
 	# tarball is same as upstream except for including git submodules
 	SRC_URI="https://distfiles.gentoo.org/pub/dev/ionen@gentoo.org/${P}.tar.xz"
-	KEYWORDS="-* amd64 ~x86"
+	KEYWORDS="-* amd64 x86"
 fi
 
 DESCRIPTION="Vulkan-based implementation of D3D9, D3D10 and D3D11 for Linux / Wine"
