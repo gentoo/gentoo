@@ -8,18 +8,21 @@ HOMEPAGE="https://www.geekbench.com/"
 SRC_URI="
 	amd64? ( https://cdn.geekbench.com/Geekbench-${PV}-Linux.tar.gz )
 	arm64? ( https://cdn.geekbench.com/Geekbench-${PV}-LinuxARMPreview.tar.gz )
+	riscv? ( https://cdn.geekbench.com/Geekbench-${PV}-LinuxRISCVPreview.tar.gz )
 "
 S="${WORKDIR}"
 
 LICENSE="geekbench"
 SLOT="6"
-KEYWORDS="-* amd64 arm64"
+KEYWORDS="-* amd64 arm64 ~riscv"
 
 RESTRICT="bindist mirror"
 
 QA_PREBUILT="
 	opt/geekbench6/geekbench_aarch64
 	opt/geekbench6/geekbench_avx2
+	opt/geekbench7/geekbench_rv64gc
+	opt/geekbench7/geekbench_rv64gcbv
 	opt/geekbench6/geekbench_x86_64
 	opt/geekbench6/geekbench6
 "
@@ -31,10 +34,12 @@ pkg_nofetch() {
 
 src_install() {
 	local MY_S="Geekbench-${PV}-Linux$(usex arm64 'ARMPreview' '')"
+	local MY_S="Geekbench-${PV}-Linux$(usex riscv 'RISCVPreview' '')"
 
 	exeinto /opt/geekbench6
-	use amd64 && doexe "${MY_S}"/geekbench_avx2 "${MY_S}"/geekbench_x86_64
+	use amd64 && doexe "${MY_S}"/geekbench_{avx2,x86_64}
 	use arm64 && doexe "${MY_S}"/geekbench_aarch64
+	use riscv && doexe "${MY_S}"/geekbench_{rv64gc,rv64gcbv}
 	doexe "${MY_S}"/geekbench6
 
 	insinto /opt/geekbench6

@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,18 +8,20 @@ HOMEPAGE="https://www.geekbench.com/"
 SRC_URI="
 	amd64? ( https://cdn.geekbench.com/Geekbench-${PV}-Linux.tar.gz )
 	arm64? ( https://cdn.geekbench.com/Geekbench-${PV}-LinuxARMPreview.tar.gz )
+	riscv? ( https://cdn.geekbench.com/Geekbench-${PV}-LinuxRISCVPreview.tar.gz )
 "
 S="${WORKDIR}"
 
 LICENSE="geekbench"
 SLOT="5"
-KEYWORDS="-* amd64 arm arm64"
+KEYWORDS="-* amd64 arm arm64 ~riscv"
 
 RESTRICT="bindist mirror"
 
 QA_PREBUILT="
 	opt/geekbench5/geekbench_aarch64
 	opt/geekbench5/geekbench_armv7
+	opt/geekbench5/geekbench_riscv64
 	opt/geekbench5/geekbench_x86_64
 	opt/geekbench5/geekbench5
 "
@@ -30,12 +32,15 @@ pkg_nofetch() {
 }
 
 src_install() {
+	local MY_S="Geekbench-${PV}-Linux$(usex arm 'ARMPreview' '')"
 	local MY_S="Geekbench-${PV}-Linux$(usex arm64 'ARMPreview' '')"
+	local MY_S="Geekbench-${PV}-Linux$(usex riscv 'RISCVPreview' '')"
 
 	exeinto /opt/geekbench5
 	use amd64 && doexe "${MY_S}"/geekbench_x86_64
 	use arm && doexe "${MY_S}"/geekbench_armv7
 	use arm64 && doexe "${MY_S}"/geekbench_aarch64
+	use riscv && doexe "${MY_S}"/geekbench_riscv64
 	doexe "${MY_S}"/geekbench5
 
 	insinto /opt/geekbench5
