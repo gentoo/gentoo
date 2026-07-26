@@ -28,6 +28,10 @@ LICENSE="LGPL-2.1+ GPL-2"
 SLOT="0"
 IUSE="nls static-libs"
 
+# attr dep should be obsolete with >=2.4.0 but there's a configure check
+# left, and also some header use in libacl/ still (bug #978746, reported on acl-devel).
+DEPEND="sys-apps/attr"
+RDEPEND="${DEPEND}"
 BDEPEND+=" nls? ( sys-devel/gettext )"
 
 src_prepare() {
