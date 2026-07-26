@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 
 inherit gnome2-utils meson python-single-r1 vala xdg
 
@@ -40,7 +40,7 @@ DEPEND="
 	gui-libs/libgedit-gtksourceview:300
 "
 RDEPEND="${DEPEND}
-	!<app-editors/gedit-plugins-48
+	!<app-editors/gedit-plugins-49
 	x11-themes/adwaita-icon-theme
 	gnome-base/gsettings-desktop-schemas
 	gnome-base/gvfs
