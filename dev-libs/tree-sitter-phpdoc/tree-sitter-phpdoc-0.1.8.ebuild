@@ -11,7 +11,7 @@ SRC_URI="https://github.com/claytonrcarter/${PN}/archive/refs/tags/v${PV}.tar.gz
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~riscv"
+KEYWORDS="~amd64 ~riscv"
 
 src_prepare() {
 	sed -e "s/VERSION := 0.0.1/VERSION := ${PV}/" \
