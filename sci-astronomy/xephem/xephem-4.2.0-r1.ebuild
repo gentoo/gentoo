@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,7 +19,7 @@ RDEPEND="
 	media-libs/libjpeg-turbo:=
 	media-libs/libpng:0=
 	virtual/zlib:=
-	>=x11-libs/motif-2.3:0
+	>=x11-libs/motif-2.3:0=
 	x11-libs/libXext
 	x11-libs/libXmu
 	x11-libs/libXt
