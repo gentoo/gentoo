@@ -90,6 +90,9 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-6.0.9-config-example.patch
 	"${FILESDIR}"/${PN}-6.0.12-pytest_tomllib.patch
 	"${FILESDIR}"/${PN}-6.1.0-libsystemd.patch
+
+	# from upstream
+	"${FILESDIR}"/${P}-fix_regress_cachelog.patch
 )
 
 pkg_setup() {

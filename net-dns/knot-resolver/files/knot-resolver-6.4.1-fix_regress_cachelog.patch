@@ -1,0 +1,37 @@
+backport https://gitlab.nic.cz/knot/knot-resolver/-/merge_requests/1869.patch
+see https://github.com/CZ-NIC/knot-resolver/issues/147
+Subject: [PATCH] lib/cache: fix excessive logging regression
+Regressed in 29b55ceb426efaa and annoyingly logging e.g.:
+> [cache ] [35589.02] stash failed, ret = 1
+--- a/lib/cache/api.c
++++ b/lib/cache/api.c
+@@ -556,15 +556,13 @@ static ssize_t stash_rrset(struct kr_cache *cache, const struct kr_query *qry,
+ 		return kr_error(EINVAL);
+ 
+ 	int ret = kr_ok();
+-	if (rrset_has_min_range_or_weird(rr, qry)) {
+-		ret = kr_error(ERANGE);
++	if (rrset_has_min_range_or_weird(rr, qry))
+ 		goto return_needs_pkt;
+-	}
+ 
+ 	const int wild_labels = rr_sigs == NULL ? 0 :
+ 	       knot_dname_labels(rr->owner, NULL) - knot_rrsig_labels(rr_sigs->rrs.rdata);
+ 	if (wild_labels < 0) {
+-		ret = kr_error(ERANGE);
++		VERBOSE_MSG(qry, "=> invalid wildcard labels %d\n", wild_labels);
+ 		goto return_needs_pkt;
+ 	}
+ 	const knot_dname_t *encloser = rr->owner; /**< the closest encloser name */
+@@ -584,7 +582,7 @@ static ssize_t stash_rrset(struct kr_cache *cache, const struct kr_query *qry,
+ 			signer_labels = MAX(signer_labels, l);
+ 		}
+ 		if (knot_dname_labels(encloser, NULL) < signer_labels) {
+-			ret = kr_error(ERANGE);
++			VERBOSE_MSG(qry, "=> invalid wildcard labels %d\n", wild_labels);
+ 			goto return_needs_pkt;
+ 		}
+ 	}
+-- 
+GitLab
+

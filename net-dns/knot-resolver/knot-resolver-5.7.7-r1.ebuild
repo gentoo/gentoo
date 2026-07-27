@@ -56,6 +56,9 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-5.5.3-docdir.patch
 	"${FILESDIR}"/${PN}-5.5.3-nghttp-openssl.patch
 	"${FILESDIR}"/${PN}-5.7.4-libsystemd.patch
+
+	# from upstream
+	"${FILESDIR}"/${PN}-6.4.1-fix_regress_cachelog.patch
 )
 
 src_configure() {
