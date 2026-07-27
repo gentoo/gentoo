@@ -49,6 +49,7 @@ QA_CONFIG_IMPL_DECL_SKIP=(
 
 src_prepare() {
 	default
+	elibtoolize # bug #978993
 	[[ ${PV} == 9999 ]] && eautoreconf
 }
 
