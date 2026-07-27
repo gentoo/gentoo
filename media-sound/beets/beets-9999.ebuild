@@ -133,6 +133,7 @@ python_compile_all() {
 	# We could install mans from the sphinx build path, but to be consistent with pypi for src_install
 	# we'll instead generate them and copy to the same install location if building from VCS sources.
 	if [[ ${PV} == "9999" ]] || [[ ${IS_VCS_SOURCE} == "yes" ]]; then
+		local -x PYTHONPATH=.
 		einfo "Building man pages"
 		sphinx-build -b man docs docs/build/man || die "Failed to generate man pages"
 		mkdir "${S}/man" || die
