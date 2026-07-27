@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -17,7 +17,7 @@ IUSE="+motif"
 RDEPEND="
 	x11-libs/libX11
 	x11-libs/libXt
-	x11-libs/motif:0
+	x11-libs/motif:0=
 	virtual/opengl"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
