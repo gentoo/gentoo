@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 inherit cmake flag-o-matic llvm.org python-any-r1
 
 DESCRIPTION="LLVM's Fortran runtime"
@@ -52,7 +52,7 @@ src_configure() {
 		# this package forces NO_DEFAULT_PATHS
 		-DLLVM_BINARY_DIR="${ESYSROOT}/usr/lib/llvm/${LLVM_MAJOR}"
 		# set correct install paths
-		-DFLANG_RT_INSTALL_RESOURCE_PATH="${EPREFIX}/usr/lib/clang/${LLVM_MAJOR}"
+		-DRUNTIMES_INSTALL_RESOURCE_PATH="${EPREFIX}/usr/lib/clang/${LLVM_MAJOR}"
 		-DLLVM_DEFAULT_TARGET_TRIPLE="${CHOST}"
 
 		-DFLANG_RT_INCLUDE_TESTS=$(usex test)
