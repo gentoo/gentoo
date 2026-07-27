@@ -29,6 +29,7 @@ RESTRICT="!test? ( test )"
 
 # https://github.com/kristapsdz/openrsync/issues/46
 BDEPEND="
+	app-arch/ncompress
 	dev-build/bmake
 	test? (
 		app-misc/jot
