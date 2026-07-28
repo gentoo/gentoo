@@ -17,7 +17,7 @@ SRC_URI="https://github.com/splattael/minitest-around/archive/refs/tags/v${PV}.t
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~amd64 arm ~arm64 ~hppa ~ppc ppc64 ~riscv ~sparc ~x86"
 IUSE="test"
 
 ruby_add_rdepend "|| ( dev-ruby/minitest:6 dev-ruby/minitest:5 )"
