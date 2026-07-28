@@ -23,7 +23,7 @@ HOMEPAGE="
 LICENSE="BSD"
 SLOT="0"
 if [[ ${PV} != *_rc* ]]; then
-	KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
+	KEYWORDS="~amd64 arm64 ~riscv ~x86"
 fi
 IUSE="big-endian full-support minimal test X"
 RESTRICT="!test? ( test )"
