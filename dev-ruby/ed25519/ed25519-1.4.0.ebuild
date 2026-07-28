@@ -21,7 +21,7 @@ SRC_URI="https://github.com/RubyCrypto/ed25519/archive/v${PV}.tar.gz -> ${P}.tar
 
 LICENSE="MIT"
 SLOT="1"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ppc64 ~x86"
 
 all_ruby_prepare() {
 	sed -i -e '/\(bundler\|coverall\)/I s:^:#:' spec/spec_helper.rb || die
