@@ -36,6 +36,11 @@
 
 #--- END OF EXAMPLES ---
 
+# James Le Cuirot <chewi@gentoo.org> (2026-07-28)
+# microsoft-identity-broker no longer needs a user. Removal on 2026-09-28.
+acct-user/microsoft-identity-broker
+acct-group/microsoft-identity-broker
+
 # Alfred Wingate <parona@protonmail.com> (2026-07-24)
 # Renamed to libgedit-tepl upstream.
 # Unbuildable for half a year. Last revdep moved to libgedit-tepl.
