@@ -1,0 +1,28 @@
+From 14cb15c632995a7070ef6c0ef6791d7adfb1a75d Mon Sep 17 00:00:00 2001
+From: Bram Matthys <syzop@vulnscan.org>
+Date: Wed, 25 Mar 2026 14:01:42 +0100
+Subject: [PATCH] Don't call -m upgrade or -m compile-all if zero
+ src/modules/third/*.c
+
+Reported by bss.
+---
+ src/modules/third/Makefile.in | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/src/modules/third/Makefile.in b/src/modules/third/Makefile.in
+index 3afa9fcbd..ba004035e 100644
+--- a/src/modules/third/Makefile.in
++++ b/src/modules/third/Makefile.in
+@@ -40,8 +40,10 @@ RM=@RM@
+ all: build
+ 
+ build:
+-	-../../../src/ircd -m upgrade --no-install
+-	../../../src/ircd -m compile-all
++	@if ls *.c 1>/dev/null 2>&1; then \
++		../../../src/ircd -m upgrade --no-install || true; \
++		../../../src/ircd -m compile-all; \
++	fi
+ 
+ custommodule: $(MODULEFILE).c
+ 	$(CC) $(CFLAGS) $(MODULEFLAGS) -DDYNAMIC_LINKING \
