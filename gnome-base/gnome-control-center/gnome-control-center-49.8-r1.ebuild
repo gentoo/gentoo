@@ -38,7 +38,7 @@ DEPEND="
 	>=media-libs/libpulse-2.0[glib]
 	>=gui-libs/gtk-4.17.1:4[X?,wayland]
 	>=gui-libs/libadwaita-1.8_alpha:1
-	>=sys-apps/accountsservice-23.11.69
+	>=sys-apps/accountsservice-23.11.69:=
 	>=x11-misc/colord-0.1.34:0=
 	>=x11-libs/gdk-pixbuf-2.23.0:2
 	>=dev-libs/glib-2.76.6:2
