@@ -1,0 +1,35 @@
+From 2a485a1d13e65a9c59afe873d061e3a7ab31c00b Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Hannes=20M=C3=BCller?= <>
+Date: Thu, 27 Nov 2025 19:53:08 +0100
+Subject: [PATCH] libguile/Makefile.am: Fix race condition in install-data-hook
+
+During parallel installation (`make -j install`), `install-data-hook`
+might execute before the libraries are actually installed to the
+destination directory. Since the hook attempts to read the installed
+library names from `$(DESTDIR)$(libdir)`, this can lead to build failures.
+
+This patch adds an explicit dependency on `install-libLTLIBRARIES` to
+ensure the libraries exist before the hook runs. Consequently, the explicit
+creation of `$(libdir)` is no longer required as `install-libLTLIBRARIES`
+handles it.
+
+* libguile/Makefile.am (install-data-hook): Add dependency on
+install-libLTLIBRARIES. Remove redundant directory creation.
+---
+ libguile/Makefile.am | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/libguile/Makefile.am b/libguile/Makefile.am
+index f5c4a5479..5ef612511 100644
+--- a/libguile/Makefile.am
++++ b/libguile/Makefile.am
+@@ -489,8 +489,7 @@ INSTANTIATE =									\
+          -e 's,[@]pkglibdir[@],$(pkglibdir),g'					\
+          -e 's,[@]GUILE_EFFECTIVE_VERSION[@],$(GUILE_EFFECTIVE_VERSION),g'
+ 
+-install-data-hook: libguile-@GUILE_EFFECTIVE_VERSION@-gdb.scm
+-	@$(MKDIR_P) $(DESTDIR)$(libdir)
++install-data-hook: libguile-@GUILE_EFFECTIVE_VERSION@-gdb.scm install-libLTLIBRARIES
+ ## We want to install libguile-X.Y-gdb.scm as SOMETHING-gdb.scm.
+ ## SOMETHING is the full name of the final library.  We want to ignore
+ ## symlinks, the .la file, and any previous -gdb.py file.  This is
