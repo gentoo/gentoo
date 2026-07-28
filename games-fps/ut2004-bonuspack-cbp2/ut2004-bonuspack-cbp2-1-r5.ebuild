@@ -13,30 +13,37 @@ S="${WORKDIR}"
 
 LICENSE="free-noncomm all-rights-reserved"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
-RESTRICT="mirror bindist strip"
+KEYWORDS="~amd64 ~arm64"
+RESTRICT="bindist mirror strip"
 
-BDEPEND="app-arch/unzip"
-RDEPEND="|| ( games-fps/ut2004 >=games-server/ut2004-ded-3369.3-r2 )
+BDEPEND="
+	app-arch/unzip
+	>=games-fps/ut2004-3374_pre23
+"
+RDEPEND="
+	games-fps/ut2004-data
 	games-fps/ut2004-bonuspack-cbp1
-	games-fps/ut2004-bonuspack-mega"
+"
 
 src_prepare() {
 	default
 
 	# In ut2004-bonuspack-cbp1.
-	rm Music/Soeren.ogg || die
+	rm -v Music/Soeren.ogg || die
 
-	# In ut2004-bonuspack-mega.
-	rm Textures/Ty_RocketTextures.utx || die
-
-	# Useless file.
-	rm Help/Note.txt || die
+	# In ut2004-data with Mega Pack.
+	rm -v Textures/Ty_RocketTextures.utx || die
 
 	cd Help || die
-	mv Readme.txt CBP2-Readme.txt || die
-	mv GERROIDREADME.txt DOM-CBP2-Gerroid.txt || die
-	mv Tydal.txt DM-CBP2-Tydal.txt || die
+	rm -v CBP2InstallerLogoP1.bmp Note.txt || die
+	mv -v Readme.txt CBP2-Readme.txt || die
+	mv -v GERROIDREADME.txt DOM-CBP2-Gerroid.txt || die
+	mv -v ons-cbp2-valarna.txt ONS-CBP2-Valarna.txt || die
+	mv -v Tydal.txt DM-CBP2-Tydal.txt || die
+}
+
+src_compile() {
+	ut2004-ucc exportcache -mod=Gentoo System/*.u Maps/*.ut2 || die
 }
 
 src_install() {
