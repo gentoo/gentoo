@@ -16,7 +16,7 @@ S="${WORKDIR}/mchange-commons-java-${PV}"
 
 LICENSE="EPL-1.0 LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64"
+KEYWORDS="~amd64 ppc64"
 
 CP_DEPEND="
 	>=dev-java/log4j-api-2.25.2:0
