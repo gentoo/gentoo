@@ -26,8 +26,8 @@ RDEPEND="zoom-symlink? ( !games-engines/zoom )
 	dev-libs/nss
 	dev-libs/quazip
 	dev-qt/qt5compat:6[qml]
-	dev-qt/qtbase:6
-	dev-qt/qtdeclarative:6
+	dev-qt/qtbase:6[opengl]
+	dev-qt/qtdeclarative:6[opengl]
 	dev-qt/qtsvg:6
 	media-libs/alsa-lib
 	media-libs/fdk-aac:0/2
