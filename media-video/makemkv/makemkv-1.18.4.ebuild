@@ -10,8 +10,8 @@ MY_PB=makemkv-bin-${PV}
 
 DESCRIPTION="Tool for ripping and streaming Blu-ray, HD-DVD and DVD discs"
 HOMEPAGE="http://www.makemkv.com/"
-SRC_URI="http://www.makemkv.com/download/${MY_P}.tar.gz
-	http://www.makemkv.com/download/${MY_PB}.tar.gz"
+SRC_URI="https://web.archive.org/web/20260711012600/https://www.makemkv.com/download/${MY_P}.tar.gz
+	https://web.archive.org/web/20260711012600/http://www.makemkv.com/download/${MY_PB}.tar.gz"
 S="${WORKDIR}/${MY_P}"
 LICENSE="GPL-2 LGPL-2.1 MPL-1.1 MakeMKV-EULA openssl"
 SLOT="0"
