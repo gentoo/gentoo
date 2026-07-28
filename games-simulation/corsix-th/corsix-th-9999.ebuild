@@ -1,9 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-LUA_COMPAT=( lua5-{1..4} )
+LUA_COMPAT=( lua5-4 )
 
 inherit cmake edo lua-single xdg
 
@@ -21,13 +21,13 @@ else
 	S="${WORKDIR}/${MY_P}"
 
 	if [[ ${PV} != *_beta* && ${PV} != *_rc* ]] ; then
-		KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+		KEYWORDS="~amd64 ~arm64 ~x86"
 	fi
 fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="doc +midi +sound test tools +truetype +videos"
+IUSE="doc +midi test tools +videos"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="${LUA_REQUIRED_USE}"
 
@@ -38,8 +38,10 @@ RDEPEND="${LUA_DEPS}
 		>=dev-lua/luasocket-3.0_rc1-r4[${LUA_USEDEP}]
 	')
 	media-libs/libsdl2[opengl,video]
-	sound? ( media-libs/sdl2-mixer[midi?] )
-	truetype? ( >=media-libs/freetype-2.5.3:2 )
+	>=media-libs/freetype-2.5.3:2
+	media-libs/sdl2-mixer[midi?]
+	virtual/zlib:=
+	midi? ( media-libs/rtmidi )
 	videos? ( >=media-video/ffmpeg-2.2.3:0= )
 "
 
@@ -74,8 +76,7 @@ src_configure() {
 		-DLUA_VERSION=$(lua_get_version)
 		-DBUILD_TOOLS=$(usex tools)
 		-DENABLE_UNIT_TESTS=$(usex test)
-		-DWITH_AUDIO=$(usex sound)
-		-DWITH_FREETYPE2=$(usex truetype)
+		-DWITH_MIDI_DEVICE=$(usex midi)
 		-DWITH_MOVIES=$(usex videos)
 		-DWITH_UPDATE_CHECK=OFF
 	)
