@@ -15,6 +15,6 @@ SRC_URI="https://github.com/jeremyevans/minitest-global_expectations/archive/ref
 
 LICENSE="MIT"
 SLOT="1"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 
 ruby_add_rdepend ">=dev-ruby/minitest-5"
