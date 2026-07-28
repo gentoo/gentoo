@@ -21,12 +21,12 @@ REQUIRED_USE="?? ( geoip geoip-classic )"
 RDEPEND="
 	acct-group/unrealircd
 	acct-user/unrealircd
-	app-crypt/argon2:=
-	dev-libs/libpcre2
-	dev-libs/libsodium:=
+	>=app-crypt/argon2-20171227-r1:=
+	>=dev-libs/libpcre2-10.47
+	>=dev-libs/libsodium-1.0.22:=
 	dev-libs/openssl:=
-	dev-libs/jansson:=
-	net-dns/c-ares:=
+	>=dev-libs/jansson-2.15.0:=
+	>=net-dns/c-ares-1.7:=
 	virtual/libcrypt:=
 	curl? ( net-misc/curl[adns] )
 	geoip-classic? ( dev-libs/geoip )
