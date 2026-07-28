@@ -52,6 +52,9 @@ FFMPEG_IUSE_MAP=(
 	chromaprint
 	codec2:libcodec2
 	cuda-clang:cuda-llvm
+	# TODO?: currently curl is not used by default even if enabled but, if that
+	# changes, should consider swapping defaults from gnutls to +curl
+	curl:libcurl
 	+dav1d:libdav1d
 	${FFMPEG_UNSLOTTED:+doc:^htmlpages}
 	+drm:libdrm
@@ -192,6 +195,7 @@ COMMON_DEPEND="
 	cdio? ( dev-libs/libcdio-paranoia:=[${MULTILIB_USEDEP}] )
 	chromaprint? ( media-libs/chromaprint:=[${MULTILIB_USEDEP}] )
 	codec2? ( media-libs/codec2:=[${MULTILIB_USEDEP}] )
+	curl? (  net-misc/curl[${MULTILIB_USEDEP}] )
 	dav1d? ( media-libs/dav1d:=[${MULTILIB_USEDEP}] )
 	dvd? (
 		media-libs/libdvdnav[${MULTILIB_USEDEP}]
