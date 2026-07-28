@@ -32,6 +32,12 @@ all_ruby_prepare() {
 		-i Rakefile test/test_helper.rb test/timecop_with_active_support_test.rb || die
 	sed -i -e '/rubygems/ a\gem "test-unit"' \
 		-e '/minitest\/rg/ s:^:#:' -e '/pry/ s:^:#:' test/test_helper.rb || die
+
+	if use x86; then
+		# The values are the same but the objects are distinct, bug #940908
+		sed -e '/is not frozen"/ s:^:#:' \
+			-i test/timecop_with_process_clock_test.rb || die
+	fi
 }
 
 each_ruby_prepare() {
