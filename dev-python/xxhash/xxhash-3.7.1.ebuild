@@ -18,7 +18,7 @@ HOMEPAGE="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="amd64 ~arm arm64 ppc64 ~riscv ~sparc x86"
 
 DEPEND="
 	>=dev-libs/xxhash-0.8.0
