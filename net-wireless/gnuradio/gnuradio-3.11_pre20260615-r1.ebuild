@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 inherit cmake desktop python-single-r1 virtualx xdg-utils
 
 DESCRIPTION="Toolkit that provides signal processing blocks to implement software radios"
@@ -68,7 +68,7 @@ RDEPEND="${PYTHON_DEPS}
 	)
 	filter? (
 		$(python_gen_cond_dep 'dev-python/scipy[${PYTHON_USEDEP}]')
-		qt6? ( $(python_gen_cond_dep 'dev-python/pyqtgraph[qt6,${PYTHON_USEDEP}]') )
+		qt6? ( $(python_gen_cond_dep '>=dev-python/pyqtgraph-0.14.0-r1[pyqt6,${PYTHON_USEDEP}]') )
 	)
 	grc? (
 		$(python_gen_cond_dep 'dev-python/mako[${PYTHON_USEDEP}]
