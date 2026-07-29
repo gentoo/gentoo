@@ -62,7 +62,7 @@ src_configure() {
 		-DLWS_WITH_CGI=$(usex cgi)
 		-DLWS_WITH_GENERIC_SESSIONS=$(usex generic-sessions)
 		-DLWS_WITH_HTTP2=$(usex http2)
-		-DLWS_WITH_HTTP3=off
+        -DLWS_WITH_HTTP3=OFF
 		-DLWS_WITH_HTTP_PROXY=$(usex http-proxy)
 		-DLWS_WITH_HUBBUB=$(usex http-proxy)
 		-DLWS_WITH_LEJP=$(usex lejp)
