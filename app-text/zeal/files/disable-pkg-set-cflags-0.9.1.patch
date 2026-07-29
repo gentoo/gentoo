@@ -1,0 +1,11 @@
+--- a/CMakeLists.txt	2026-07-29 11:31:43.651420925 -0400
++++ b/CMakeLists.txt	2026-07-29 11:31:56.726678510 -0400
+@@ -91,8 +91,6 @@ add_custom_target(zeal_version
+ # Enable all compiler warnings and treat them as errors.
+ if(MSVC)
+     add_compile_options(/W4)
+-else()
+-    add_compile_options(-Wall -Wextra -Wpedantic)
+ endif()
+ 
+ set(CMAKE_COMPILE_WARNING_AS_ERROR ON)
