@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{11..15} )
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/isc.asc
-inherit flag-o-matic meson python-r1 systemd tmpfiles
+inherit eapi9-ver flag-o-matic meson python-r1 systemd tmpfiles
 inherit toolchain-funcs verify-sig
 
 DESCRIPTION="High-performance production grade DHCPv4 & DHCPv6 server"
@@ -17,9 +17,10 @@ if [[ ${PV} == 9999 ]]; then
 else
 	SRC_URI="
 		https://downloads.isc.org/isc/kea/${PV}/${P}.tar.xz
+		!doc? ( https://codeberg.org/peter1010/kea-manpages/archive/kea-manpages-${PV}.tar.gz )
 		verify-sig? ( https://downloads.isc.org/isc/kea/${PV}/${P}.tar.xz.asc )
 	"
-	KEYWORDS="amd64 arm arm64 ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 fi
 
 LICENSE="MPL-2.0"
@@ -72,7 +73,7 @@ python_check_deps() {
 }
 
 pkg_setup() {
-	python_setup
+	[[ ${MERGE_TYPE} != binary ]] && python_setup
 }
 
 src_unpack() {
@@ -243,8 +244,7 @@ install_shell() {
 src_install() {
 	meson_install
 
-	# Remove build metadata and unused database files
-	rm -r "${ED}"/usr/share/kea/meson-info || die
+	# Remove unused database files
 	if use !mysql; then
 		rm -r "${ED}"/usr/share/kea/scripts/mysql || die
 	fi
@@ -276,7 +276,6 @@ src_install() {
 
 	# Install a conf per service and a linked init script per service
 	newinitd "${FILESDIR}"/${PN}-initd-r5 ${PN}
-
 	local svc
 	for svc in dhcp4 dhcp6 dhcp-ddns; do
 		newconfd "${FILESDIR}"/${PN}-confd-r4 kea-${svc}
@@ -284,6 +283,10 @@ src_install() {
 			-i "${ED}"/etc/conf.d/kea-${svc} || die
 		dosym kea "${EPREFIX}"/etc/init.d/kea-${svc}
 	done
+
+	if use !doc; then
+		doman "${WORKDIR}"/kea-manpages/man/*
+	fi
 
 	systemd_newunit "${FILESDIR}"/${PN}-dhcp-ddns.service-r2 ${PN}-dhcp-ddns.service
 	systemd_newunit "${FILESDIR}"/${PN}-dhcp4.service-r2 ${PN}-dhcp4.service
@@ -298,6 +301,32 @@ src_install() {
 
 pkg_postinst() {
 	tmpfiles_process ${PN}.conf
+
+	if ver_replacing -lt 2.6; then
+		ewarn "Several changes have been made for daemons:"
+		ewarn "  To comply with common practices for this package,"
+		ewarn "  config paths by default has been changed as below:"
+		ewarn "    /etc/kea/kea-dhcp4.conf"
+		ewarn "    /etc/kea/kea-dhcp6.conf"
+		ewarn "    /etc/kea/kea-dhcp-ddns.conf"
+		ewarn
+		ewarn "  Daemons are launched by default with the unprivileged user 'dhcp'"
+		ewarn
+		ewarn "Please check your configuration!"
+	fi
+
+	if ver_replacing -lt 3.0; then
+		ewarn "Make sure that ${EPREFIX}/var/lib/kea and all the files in it are owned by dhcp:"
+		ewarn "chown -R dhcp:dhcp ${EPREFIX}/var/lib/kea"
+		ewarn
+		ewarn "If using openrc;"
+		ewarn "  There are now separate conf.d scripts and associated init.d per daemon!"
+		ewarn "    Each Daemon needs to be launched separately, i.e. the daemons are"
+		ewarn "      kea-dhcp4"
+		ewarn "      kea-dhcp6"
+		ewarn "      kea-dhcp-ddns"
+		ewarn "Please adjust your service startups appropriately"
+	fi
 
 	if ! has_version net-misc/kea; then
 		elog "See examples of config files in:"
