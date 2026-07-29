@@ -7,7 +7,7 @@ inherit dune
 
 DESCRIPTION="Core installer for opam packages"
 HOMEPAGE="https://opam.ocaml.org/ https://github.com/ocaml/opam"
-SRC_URI="https://github.com/ocaml/opam/releases/download/${PV}/opam-${PV}.tar.gz"
+SRC_URI="https://github.com/ocaml/opam/archive/${PV/_/-}.tar.gz -> opam-${PV}.tar.gz"
 S="${WORKDIR}/opam-${PV/_/-}"
 
 LICENSE="LGPL-2.1"
