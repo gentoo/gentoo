@@ -1,0 +1,14 @@
+https://bugs.gentoo.org/868000
+The output file was previously passed as an argument.
+Using '-o' explicitly sets the output file. 
+--- a/man/Makefile.am
++++ b/man/Makefile.am
+@@ -189,7 +189,7 @@ MANS_COMMON = \
+ 	manpage-common-legacy-output.man
+ 
+ $(MANS_CPP): $(MANS_CPP:%=%.pre)
+-	$(CPP_FOR_BUILD) -nostdinc -w -C -P -I. -I$(top_srcdir)/man $@.pre $@
++	$(CPP_FOR_BUILD) -nostdinc -w -C -P -I. -I$(top_srcdir)/man $@.pre -o $@
+ 
+ CLEANFILES = $(MANS_CPP) *~
+ DISTCLEANFILES = $(MANS_CPP) $(MANS_CPP:%=%.pre) .deps/*.P

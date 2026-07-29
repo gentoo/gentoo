@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit toolchain-funcs
+inherit autotools toolchain-funcs
 
 MY_P="${P/_/.}"
 DESCRIPTION="Provides Remote-Console and System Management Software as per IPMI v1.5/2.0"
@@ -28,6 +28,16 @@ RDEPEND="
 		net-analyzer/nagios
 	)
 "
+
+PATCHES=(
+	"${FILESDIR}"/freeipmi-1.6.18-fix_cpp_man.patch #868000
+)
+
+src_prepare() {
+	default
+	# for freeipmi-1.6.18-fix_cpp_man.patch
+	eautoreconf
+}
 
 src_configure() {
 	local myeconfargs=(
