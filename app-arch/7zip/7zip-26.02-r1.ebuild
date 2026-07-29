@@ -61,9 +61,11 @@ pkg_setup() {
 
 src_prepare() {
 	# patch doesn't deal with CRLF even if file+patch match
-	# not even with --ignore-whitespace, --binary or --force
+	# not even with --ignore-whitespace, --binary or --force. We only
+	# strictly need to convert the .mk files we patch but do everything
+	# to allow easily patching in future + facilitate user patches.
 	pushd "./CPP/7zip" || die "Unable to switch directory"
-	edos2unix ./7zip_gcc.mak ./var_gcc{,_x64}.mak ./var_clang{,_x64}.mak
+	edos2unix $(find . -type 'f' || die)
 	sed -i -e 's/-Werror //g' ./7zip_gcc.mak || die "Error removing -Werror"
 	popd >/dev/null || die "Unable to switch directory"
 
