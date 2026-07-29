@@ -80,7 +80,7 @@ LICENSE="MIT"
 # Dependent crate licenses
 LICENSE+=" Apache-2.0-with-LLVM-exceptions MIT Unicode-3.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="~amd64 ~arm64 ~x86"
 
 EPYTEST_PLUGINS=( hypothesis pytest-asyncio )
 distutils_enable_tests pytest
