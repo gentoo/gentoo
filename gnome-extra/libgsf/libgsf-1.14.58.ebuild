@@ -4,7 +4,7 @@
 EAPI=8
 
 GNOME2_EAUTORECONF=yes
-inherit gnome2
+inherit gnome2 toolchain-funcs
 
 DESCRIPTION="The GNOME Structured File Library"
 HOMEPAGE="https://gitlab.gnome.org/GNOME/libgsf"
@@ -39,6 +39,7 @@ PATCHES=(
 )
 
 src_configure() {
+	export ac_cv_path_PKG_CONFIG="$(tc-getPKG_CONFIG)"
 	gnome2_src_configure \
 		--disable-static \
 		$(use_with bzip2 bz2) \
