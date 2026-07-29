@@ -16,7 +16,7 @@ SRC_URI="https://github.com/drbrain/net-http-persistent/archive/refs/tags/v${PV}
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1)"
-KEYWORDS="amd64 ~arm ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86"
 IUSE="doc test"
 
 ruby_add_rdepend "|| ( dev-ruby/connection_pool:3 >=dev-ruby/connection_pool-2.2.4:0 )"
