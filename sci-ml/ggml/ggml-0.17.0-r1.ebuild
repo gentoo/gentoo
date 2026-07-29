@@ -4,7 +4,7 @@
 EAPI=8
 
 ROCM_VERSION=7.2
-inherit cmake rocm toolchain-funcs
+inherit cuda cmake rocm toolchain-funcs
 
 DESCRIPTION="Tensor library for machine learning"
 HOMEPAGE="https://ggml.ai/"
@@ -29,7 +29,7 @@ X86_CPU_FLAGS=(
 	sse4_2
 )
 CPU_FLAGS=( "${X86_CPU_FLAGS[@]/#/cpu_flags_x86_}" )
-IUSE="${CPU_FLAGS[*]} openmp rocm test vulkan"
+IUSE="${CPU_FLAGS[*]} cuda openmp rocm test vulkan"
 
 REQUIRED_USE="rocm? ( ${ROCM_REQUIRED_USE} )"
 
@@ -38,6 +38,9 @@ RESTRICT="!test? ( test )"
 # Should be >=sci-libs/hipBLAS-${ROCM_VERSION}[${ROCM_USEDEP}]
 # But pkgcheck can't elaborate that
 RDEPEND="
+	cuda? (
+		dev-util/nvidia-cuda-toolkit:=
+	)
 	vulkan? ( media-libs/vulkan-loader )
 	rocm? (
 		>=dev-util/hip-${ROCM_VERSION}
@@ -55,6 +58,14 @@ pkg_pretend() {
 
 pkg_setup() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+}
+
+src_prepare() {
+	cmake_src_prepare
+
+	if use cuda; then
+		cuda_src_prepare
+	fi
 }
 
 src_configure() {
@@ -75,6 +86,7 @@ src_configure() {
 		-DGGML_F16C=$(usex cpu_flags_x86_f16c)
 		-DGGML_SSE42=$(usex cpu_flags_x86_sse4_2)
 
+		-DGGML_CUDA=$(usex cuda)
 		-DGGML_OPENMP=$(usex openmp)
 		-DGGML_HIP=$(usex rocm)
 		-DGGML_VULKAN=$(usex vulkan)
@@ -87,6 +99,11 @@ src_configure() {
 		mycmakeargs+=( -DGGML_AVX512=ON )
 	else
 		mycmakeargs+=( -DGGML_AVX512=OFF )
+	fi
+
+	if use cuda; then
+		cuda_add_sandbox -w
+		addpredict "/dev/char/"
 	fi
 
 	cmake_src_configure
