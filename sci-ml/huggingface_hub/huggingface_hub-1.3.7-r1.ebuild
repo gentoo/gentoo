@@ -22,6 +22,7 @@ IUSE="torch"
 
 RDEPEND="
 	$(python_gen_cond_dep '
+		dev-python/click[${PYTHON_USEDEP}]
 		dev-python/filelock[${PYTHON_USEDEP}]
 		dev-python/fsspec[${PYTHON_USEDEP}]
 		dev-python/httpx[${PYTHON_USEDEP}]
