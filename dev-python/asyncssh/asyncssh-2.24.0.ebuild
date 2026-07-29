@@ -36,6 +36,14 @@ BDEPEND="
 	)
 "
 
+EPYTEST_DESELECT=(
+	# Network sandbox
+	tests/test_connection.py::_TestCanonicalizeHost::test_canonicalize_failure
+	tests/test_x11.py::_TestX11::test_consecutive_different_servers
+	tests/test_x11.py::_TestX11::test_from_connect
+	tests/test_x11.py::_TestX11::test_wildcard_address
+)
+
 EPYTEST_PLUGINS=()
 # xdist: fails on serializing 'type'
 distutils_enable_tests pytest
