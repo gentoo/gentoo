@@ -24,7 +24,10 @@ REQUIRED_USE="test-full? ( test )"
 RESTRICT="!test? ( test )"
 
 BDEPEND="
-	doc? ( app-text/doxygen )
+	doc? (
+		app-text/doxygen
+		media-gfx/graphviz
+	)
 "
 DEPEND="
 	media-libs/libpng:=[${MULTILIB_USEDEP}]
@@ -34,7 +37,7 @@ DEPEND="
 	dav1d? ( media-libs/dav1d:=[${MULTILIB_USEDEP}] )
 	de265? ( media-libs/libde265[${MULTILIB_USEDEP}] )
 	ffmpeg? ( >=media-video/ffmpeg-7.1:=[${MULTILIB_USEDEP}] )
-	gdk-pixbuf? ( x11-libs/gdk-pixbuf[${MULTILIB_USEDEP}] )
+	gdk-pixbuf? ( x11-libs/gdk-pixbuf:2[${MULTILIB_USEDEP}] )
 	jpeg? ( media-libs/libjpeg-turbo:=[${MULTILIB_USEDEP}] )
 	jpeg2k? ( media-libs/openjpeg:=[${MULTILIB_USEDEP}] )
 	kvazaar? ( media-libs/kvazaar:=[${MULTILIB_USEDEP}] )
@@ -43,7 +46,7 @@ DEPEND="
 	svt-av1? ( media-libs/svt-av1:=[${MULTILIB_USEDEP}] )
 	tools? (
 		gui? (
-			media-libs/libsdl2:=[${MULTILIB_USEDEP}]
+			media-libs/libsdl2[${MULTILIB_USEDEP}]
 		)
 	)
 	webp? ( media-libs/libwebp:= )
