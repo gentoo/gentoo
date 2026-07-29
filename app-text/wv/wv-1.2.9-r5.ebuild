@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools
+inherit autotools toolchain-funcs
 
 DESCRIPTION="Tool for conversion of MSWord doc and rtf files to something readable"
 HOMEPAGE="http://wvware.sourceforge.net/"
@@ -57,6 +57,7 @@ src_prepare() {
 }
 
 src_configure() {
+	export ac_cv_path_PKG_CONFIG="$(tc-getPKG_CONFIG)"
 	econf $(use_with wmf libwmf)
 }
 
