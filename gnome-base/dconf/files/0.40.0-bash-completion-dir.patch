@@ -11,6 +11,8 @@ file without a bash-completion build-dep. Allow installing the
 completion file to a passed directory, and add back the fallback
 path if an explicit directory isn't passed and bash-completion
 package isn't found. This is also what the tracker project does.
+
+See: https://gitlab.gnome.org/GNOME/dconf/-/merge_requests/44
 ---
  meson.build       | 26 ++++++++++++++++++--------
  meson_options.txt |  2 +-

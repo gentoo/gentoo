@@ -17,9 +17,7 @@ RDEPEND="
 	>=dev-libs/glib-2.67.4.0:2
 	sys-apps/dbus
 "
-DEPEND="${RDEPEND}
-	app-shells/bash-completion
-"
+DEPEND="${RDEPEND}"
 BDEPEND="
 	app-text/docbook-xml-dtd:4.2
 	app-text/docbook-xsl-stylesheets

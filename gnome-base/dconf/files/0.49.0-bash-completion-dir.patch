@@ -12,6 +12,7 @@ completion file to a passed directory, and add back the fallback
 path if an explicit directory isn't passed and bash-completion
 package isn't found. This is also what the tracker project does.
 
+See: https://gitlab.gnome.org/GNOME/dconf/-/merge_requests/44
 Signed-off-by: Lukas Schmelting <lschmelting@posteo.com>
 ---
  meson.build       | 26 ++++++++++++++++++--------
