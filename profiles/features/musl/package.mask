@@ -346,6 +346,7 @@ games-fps/ut2004-bonuspack-cbp1
 games-fps/ut2004-bonuspack-cbp2
 games-fps/ut2004-bonuspack-ece
 games-fps/ut2004-bonuspack-mega
+games-fps/ut2004-bonuspack-xp
 games-fps/ut2004-data
 games-fps/ut2004-demo
 games-puzzle/world-of-goo-demo
