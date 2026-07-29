@@ -38,6 +38,12 @@
 
 # James Le Cuirot <chewi@gentoo.org> (2026-07-29)
 # UT2004 now has modern builds and is essentially free to download, so there is
+# no need for this ancient package that allowed you to run a server for free.
+# Use games-fps/ut2004[dedicated] instead. Removal on 2026-08-29. Bug #979392.
+games-server/ut2004-ded
+
+# James Le Cuirot <chewi@gentoo.org> (2026-07-29)
+# UT2004 now has modern builds and is essentially free to download, so there is
 # no reason to bother with this old demo. Removal on 2026-08-29. Bug #979271.
 games-fps/ut2004-demo
 
