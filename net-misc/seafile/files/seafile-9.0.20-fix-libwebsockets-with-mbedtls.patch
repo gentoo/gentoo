@@ -1,0 +1,29 @@
+https://github.com/haiwen/seafile/pull/3063
+From bf01b87ce768288d4e848ff60598337bddd68dc0 Mon Sep 17 00:00:00 2001
+From: Anton Bolshakov <blshkv@gmail.com>
+Date: Wed, 29 Jul 2026 09:52:17 +0800
+Subject: [PATCH] daemon: add @WS_CFLAGS@ to AM_CFLAGS
+
+configure.ac defines and substitutes WS_CFLAGS via PKG_CHECK_MODULES
+for libwebsockets, but daemon/Makefile.am only used @WS_LIBS@ without
+the corresponding @WS_CFLAGS@.  On systems where libwebsockets depends
+on mbedtls headers that are not in the default include path (e.g.
+Gentoo with mbedtls3 at /usr/include/mbedtls3), the missing -I flag
+causes notif-mgr.c to fail to compile because libwebsockets.h cannot
+find <mbedtls/ssl.h>.
+---
+ daemon/Makefile.am | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/daemon/Makefile.am b/daemon/Makefile.am
+index 42a442070..6a3a4a18f 100644
+--- a/daemon/Makefile.am
++++ b/daemon/Makefile.am
+@@ -13,6 +13,7 @@ AM_CFLAGS = -DPKGDATADIR=\"$(pkgdatadir)\" \
+ 	@CURL_CFLAGS@ \
+ 	@BPWRAPPER_CFLAGS@ \
+ 	@GNUTLS_CFLAGS@ \
++	@WS_CFLAGS@ \
+ 	-Wall
+ 
+ if MACOS
