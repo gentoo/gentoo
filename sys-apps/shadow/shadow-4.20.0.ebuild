@@ -184,14 +184,9 @@ src_install() {
 	fi
 
 	if use pam; then
-		dopamd "${FILESDIR}"/pam.d-include/shadow
-
+		local x
 		for x in chsh chfn ; do
 			newpamd "${FILESDIR}"/pam.d-include/passwd ${x}
-		done
-
-		for x in chpasswd newusers ; do
-			newpamd "${FILESDIR}"/pam.d-include/chpasswd ${x}
 		done
 
 		# Remove manpages that pam will install for us
