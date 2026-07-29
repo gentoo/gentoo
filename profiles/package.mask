@@ -37,6 +37,11 @@
 #--- END OF EXAMPLES ---
 
 # James Le Cuirot <chewi@gentoo.org> (2026-07-29)
+# UT2004 now has modern builds and is essentially free to download, so there is
+# no reason to bother with this old demo. Removal on 2026-08-29. Bug #979271.
+games-fps/ut2004-demo
+
+# James Le Cuirot <chewi@gentoo.org> (2026-07-29)
 # UT2004 is basically the same as UT2003, only bigger and better. Unlike UT2003,
 # UT2004 now has modern builds and is essentially free to download, so there is
 # no reason to choose UT2003 anymore. Removal on 2026-08-29. Bug #790173.
