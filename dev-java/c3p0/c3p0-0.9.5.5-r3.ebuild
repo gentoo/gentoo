@@ -15,7 +15,7 @@ S="${WORKDIR}/${P}.src"
 
 LICENSE="|| ( EPL-1.0 LGPL-2.1 )"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64"
+KEYWORDS="amd64 ~ppc64"
 
 BDEPEND=">=dev-java/ant-1.10.15-r1:0"
 CP_DEPEND=">=dev-java/mchange-commons-0.2.20-r1:0"
