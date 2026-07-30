@@ -1,4 +1,4 @@
-# Copyright 2019-2025 Gentoo Authors
+# Copyright 2019-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: acct-group.eclass
@@ -42,6 +42,10 @@ case ${EAPI} in
 esac
 
 inherit user-info
+
+case ${EAPI} in
+	7|8) inherit edo ;;
+esac
 
 [[ ${CATEGORY} == acct-group ]] ||
 	die "Ebuild error: this eclass can be used only in acct-group category!"
@@ -181,7 +185,7 @@ acct-group_pkg_preinst() {
 	fi
 
 	elog "Adding group ${ACCT_GROUP_NAME}"
-	groupadd "${opts[@]}" "${ACCT_GROUP_NAME}" || die "groupadd failed with status $?"
+	nonfatal edo groupadd "${opts[@]}" "${ACCT_GROUP_NAME}" || die "groupadd failed with status $?"
 }
 
 fi
