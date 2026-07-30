@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 PYPI_PN="wxPython"
 PYPI_VERIFY_REPO=https://github.com/wxWidgets/Phoenix
 WX_GTK_VER="3.2-gtk3"
