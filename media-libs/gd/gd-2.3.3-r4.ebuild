@@ -6,7 +6,7 @@ EAPI=8
 inherit autotools flag-o-matic multilib-minimal
 
 DESCRIPTION="Graphics library for fast image creation"
-HOMEPAGE="https://libgd.org/ https://www.boutell.com/gd/"
+HOMEPAGE="https://libgd.github.io/ https://www.boutell.com/gd/"
 SRC_URI="https://github.com/libgd/libgd/releases/download/${P}/lib${P}.tar.xz"
 S="${WORKDIR}/lib${P}"
 
