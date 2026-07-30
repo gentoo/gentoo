@@ -1,6 +1,10 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Nicolas PARLANT <nicolas.parlant@parhuet.fr> (2026-07-30)
+# dev-python/qtpy is not keyworded here
+media-libs/libffado gui
+
 # Pacho Ramos <pacho@gentoo.org> (2026-07-05)
 # QT6 is not keyworded here, bug #977775
 dev-libs/appstream test
