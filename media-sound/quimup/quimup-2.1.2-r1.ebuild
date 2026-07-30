@@ -14,11 +14,14 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-RDEPEND="
+DEPEND="
 	dev-qt/qtbase:6[gui,network,widgets]
 	media-libs/libmpdclient
 "
-DEPEND="${RDEPEND}"
+RDEPEND="
+	${DEPEND}
+	dev-qt/qtsvg:6
+"
 BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
