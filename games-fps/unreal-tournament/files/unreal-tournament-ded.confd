@@ -1,0 +1,6 @@
+# User and group the server should run as. A valid HOME is required.
+ut_ded_user="unreal"
+ut_ded_group="unreal"
+
+# Any extra options you want to pass to the server.
+ut_ded_opts="DM-Deck16]["
