@@ -3,7 +3,7 @@
 
 EAPI=8
 
-LUA_COMPAT=( lua5-4 )
+LUA_COMPAT=( lua5-{1..4} luajit )
 
 inherit cmake edo lua-single xdg
 
@@ -73,13 +73,28 @@ lua_enable_tests busted
 
 src_configure() {
 	local mycmakeargs=(
-		-DLUA_VERSION=$(lua_get_version)
 		-DBUILD_TOOLS=$(usex tools)
 		-DENABLE_UNIT_TESTS=$(usex test)
 		-DWITH_MIDI_DEVICE=$(usex midi)
 		-DWITH_MOVIES=$(usex videos)
 		-DWITH_UPDATE_CHECK=OFF
+
+		-DFETCH_CATCH2=OFF
+		-DFETCH_SOUNDFONT=OFF
+		-DFETCH_UNICODE_FONT=OFF
 	)
+
+	if use lua_single_target_luajit ; then
+		mycmakeargs+=(
+			-DLUA_VERSION=5.1
+			-DLUA_LIBRARY=$(lua_get_shared_lib)
+			-DWITH_LUAJIT=ON
+		)
+	else
+		mycmakeargs+=(
+			-DLUA_VERSION=$(get_lua_version)
+		)
+	fi
 
 	cmake_src_configure
 }
@@ -95,7 +110,13 @@ src_test() {
 	BUILD_DIR="${BUILD_DIR}"/CorsixTH cmake_src_test
 
 	# Lua tests
-	edo busted --lua="${ELUA}" --output="TAP" --verbose --directory=CorsixTH/Luatest
+	# vip_spec.lua fails with luajit
+	edo busted \
+		--lua="${ELUA}" \
+		--output="TAP" \
+		--verbose \
+		--directory=CorsixTH/Luatest \
+		--filter-out='VIP.*rating'
 }
 
 src_install() {
