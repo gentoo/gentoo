@@ -32,7 +32,10 @@ BDEPEND="
 	${UT_DEPEND}
 	cdinstall? ( app-arch/unshield )
 	gog? ( app-arch/innoextract )
-	!cdinstall? ( !gog? ( app-arch/libarchive ) )
+	!cdinstall? ( !gog? (
+		app-arch/libarchive
+		app-arch/unshield
+	) )
 "
 RDEPEND="
 	${UT_DEPEND}
