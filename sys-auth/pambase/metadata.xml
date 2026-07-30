@@ -100,6 +100,9 @@
 			relevant anymore as the login stack only refers to local logins
 			and local terminals imply secure access in the first place.
 		</flag>
+		<flag name="turnstile">
+			Use pam_turnstile module to register user sessions with turnstile.
+		</flag>
 	</use>
 	<upstream>
 		<remote-id type="gentoo">proj/pambase</remote-id>

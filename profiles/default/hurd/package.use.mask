@@ -1,6 +1,11 @@
 # Copyright 2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Emi <reedy.sailors.8t@icloud.com> (2026-07-30)
+# Turnstile is only being tested on Linux
+# running it on different kernels is likely to cause issues
+sys-auth/pambase turnstile
+
 # Sam James <sam@gentoo.org> (2026-03-10)
 # Fails to link
 net-libs/gnutls post-quantum

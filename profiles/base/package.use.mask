@@ -6,6 +6,10 @@
 
 # New entries go on top.
 
+# Emi <reedy.sailors.8t@icloud.com> (2026-07-30)
+# Turnstile is currently in ::guru
+sys-auth/pambase turnstile
+
 # Michael Orlitzky <mjo@gentoo.org> (2026-07-17)
 # Broke upstream, not an easy fix, bug 978718.
 >=net-analyzer/monitoring-plugins-3.0.1 snmp

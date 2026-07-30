@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -24,7 +24,7 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="caps debug elogind gnome-keyring homed minimal mktemp +nullok pam_krb5 pam_ssh +passwdqc pwhistory pwquality securetty selinux sha512 sssd systemd +yescrypt"
+IUSE="caps debug elogind gnome-keyring homed minimal mktemp +nullok pam_krb5 pam_ssh +passwdqc pwhistory pwquality securetty selinux sha512 sssd systemd +yescrypt turnstile"
 
 RESTRICT="binchecks"
 
@@ -58,6 +58,7 @@ RDEPEND="
 	systemd? ( sys-apps/systemd[pam] )
 	yescrypt? ( sys-libs/libxcrypt[system] )
 	sssd? ( sys-auth/sssd )
+	turnstile? ( sys-apps/turnstile )
 "
 BDEPEND="
 	$(python_gen_any_dep '
@@ -97,6 +98,7 @@ src_configure() {
 		$(usev selinux '--selinux')
 		$(usex systemd '--systemd' '--openrc')
 		$(usev sssd '--sssd')
+		$(usev turnstile '--turnstile')
 
 		--encrypt=${crypt}
 	)
