@@ -8,7 +8,7 @@
   </maintainer>
   <stabilize-allarches/>
   <upstream>
-    <bugs-to>https://github.com/parenworks/clatter.el</bugs-to>
+    <bugs-to>https://github.com/parenworks/clatter.el/issues/</bugs-to>
     <remote-id type="github">parenworks/clatter.el</remote-id>
   </upstream>
 </pkgmetadata>
