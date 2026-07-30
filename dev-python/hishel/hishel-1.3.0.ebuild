@@ -35,7 +35,9 @@ BDEPEND="
 	dev-python/hatch-fancy-pypi-readme[${PYTHON_USEDEP}]
 	test? (
 		dev-db/redis
+		>=dev-python/anysqlite-0.0.5[${PYTHON_USEDEP}]
 		>=dev-python/boto3-1.15.3[${PYTHON_USEDEP}]
+		>=dev-python/fakeredis-2.0[${PYTHON_USEDEP}]
 		>=dev-python/inline-snapshot-0.28.0[${PYTHON_USEDEP}]
 		>=dev-python/redis-6.2.0[${PYTHON_USEDEP}]
 		>=dev-python/time-machine-2.19.0[${PYTHON_USEDEP}]
