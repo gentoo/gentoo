@@ -136,6 +136,7 @@ dev-python/sphinx-autodoc-typehints test
 # Michał Górny <mgorny@gentoo.org> (2024-02-01)
 # Need dev-python/trio.
 >=dev-python/urllib3-2.2.0 test
+>=dev-python/websockets-17.0 test
 
 # Takuya Wakazono <pastalian46@gmail.com> (2023-11-21)
 # Need app-crypt/rpm-sequoia.
