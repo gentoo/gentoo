@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <longdescription lang="en">
-    PAM module that manages XDG Base Directories
-  </longdescription>
   <maintainer type="person" proxied="yes">
     <name>Alexis</name>
     <email>flexibeast@gmail.com</email>
