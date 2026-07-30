@@ -1,9 +1,9 @@
-# Copyright 2025 Gentoo Authors
+# Copyright 2025-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit pam
+inherit pam toolchain-funcs
 
 DESCRIPTION="PAM module that manages XDG Base Directories"
 HOMEPAGE="https://www.sdaoden.eu/code.html"
@@ -15,6 +15,17 @@ KEYWORDS="~amd64"
 
 RDEPEND="sys-libs/pam"
 DEPEND="${RDEPEND}"
+
+src_compile() {
+	tc-export CC
+
+	# Do we want to set XDG_CONFIG_DIR for prefix?
+	emake \
+		CFLAGS="${CFLAGS} -DNDEBUG" \
+		LDFLAGS="-shared ${LDFLAGS}" \
+		PREFIX="${EPREFIX}" \
+		LIBDIR="${EPREFIX}$(getpam_mod_dir)"
+}
 
 src_install() {
 	dopammod pam_xdg.so
