@@ -186,48 +186,6 @@ acct-user_add_deps() {
 }
 
 
-# << Helper functions >>
-
-# @FUNCTION: eislocked
-# @USAGE: <user>
-# @INTERNAL
-# @DESCRIPTION:
-# Check whether the specified user account is currently locked.
-# Returns 0 if it is locked, 1 if it is not, 2 if the platform
-# does not support determining it.
-eislocked() {
-	[[ $# -eq 1 ]] || die "usage: ${FUNCNAME} <user>"
-
-	if [[ ${EUID} -ne 0 || -n ${EPREFIX} ]]; then
-		einfo "Insufficient privileges to execute ${FUNCNAME[0]}"
-		return 0
-	fi
-
-	case ${CHOST} in
-	*-freebsd*|*-dragonfly*|*-netbsd*)
-		[[ $(egetent "$1" | cut -d: -f2) == '*LOCKED*'* ]]
-		;;
-
-	*-openbsd*)
-		return 2
-		;;
-
-	*)
-		# NB: 'no password' and 'locked' are indistinguishable
-		# but we also expire the account which is more clear
-		local shadow
-		if [[ -n "${ROOT}" ]]; then
-			shadow=$(grep "^$1:" "${ROOT}/etc/shadow")
-		else
-			shadow=$(getent shadow "$1")
-		fi
-
-		[[ $( echo ${shadow} | cut -d: -f2) == '!'* ]] &&
-			[[ $(echo ${shadow} | cut -d: -f8) == 1 ]]
-		;;
-	esac
-}
-
 # << Phase functions >>
 
 # @FUNCTION: acct-user_pkg_pretend
@@ -457,10 +415,13 @@ acct-user_pkg_postinst() {
 		--shell "${_ACCT_USER_SHELL}"
 		--gid "${groups[0]}"
 		--groups "${aux_groups// /,}"
+		--expiredate ""
 	)
 
-	if eislocked "${ACCT_USER_NAME}"; then
-		opts+=( --expiredate "" --unlock )
+	local pwhash=$(egetent shadow "${ACCT_USER_NAME}" | cut -d: -f2)
+	if [[ ${pwhash} != '!' && ${pwhash} = '!'* ]]; then
+		# Unlock the account if a password hash exists.
+		opts+=( --unlock )
 	fi
 
 	if [[ -n ${ROOT} ]]; then
