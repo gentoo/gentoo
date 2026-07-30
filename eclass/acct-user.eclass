@@ -51,6 +51,10 @@ esac
 
 inherit user-info
 
+case ${EAPI} in
+	7|8) inherit edo ;;
+esac
+
 [[ ${CATEGORY} == acct-user ]] ||
 	die "Ebuild error: this eclass can be used only in acct-user category!"
 
@@ -340,7 +344,7 @@ acct-user_pkg_preinst() {
 		fi
 
 		elog "Adding user ${ACCT_USER_NAME}"
-		useradd "${opts[@]}" "${ACCT_USER_NAME}" || die "useradd failed with status $?"
+		nonfatal edo useradd "${opts[@]}" "${ACCT_USER_NAME}" || die "useradd failed with status $?"
 		_ACCT_USER_ADDED=1
 	fi
 
@@ -445,7 +449,7 @@ acct-user_pkg_postinst() {
 	fi
 
 	elog "Updating user ${ACCT_USER_NAME}"
-	usermod "${opts[@]}" "${ACCT_USER_NAME}"
+	nonfatal edo usermod "${opts[@]}" "${ACCT_USER_NAME}"
 	local status=$?
 	if [[ ${status} -eq 8 ]]; then
 		# usermod refused to update the home directory
@@ -509,7 +513,7 @@ acct-user_pkg_prerm() {
 	fi
 
 	elog "Locking user ${ACCT_USER_NAME}"
-	usermod "${opts[@]}" "${ACCT_USER_NAME}" || die "usermod failed with status $?"
+	nonfatal edo usermod "${opts[@]}" "${ACCT_USER_NAME}" || die "usermod failed with status $?"
 }
 
 fi
