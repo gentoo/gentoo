@@ -1,6 +1,6 @@
 --- a/CMakeLists.txt	2026-07-29 11:31:43.651420925 -0400
-+++ b/CMakeLists.txt	2026-07-29 11:31:56.726678510 -0400
-@@ -91,8 +91,6 @@ add_custom_target(zeal_version
++++ b/CMakeLists.txt	2026-07-30 07:27:03.982936568 -0400
+@@ -91,12 +91,8 @@ add_custom_target(zeal_version
  # Enable all compiler warnings and treat them as errors.
  if(MSVC)
      add_compile_options(/W4)
@@ -8,4 +8,8 @@
 -    add_compile_options(-Wall -Wextra -Wpedantic)
  endif()
  
- set(CMAKE_COMPILE_WARNING_AS_ERROR ON)
+-set(CMAKE_COMPILE_WARNING_AS_ERROR ON)
+-
+ option(ZEAL_FEATURE_UPDATE_CHECK "Automatic update check on startup" ON)
+ if(ZEAL_FEATURE_UPDATE_CHECK)
+     add_compile_definitions(ZEAL_FEATURE_UPDATE_CHECK)
