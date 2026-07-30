@@ -1,0 +1,20 @@
+https://github.com/pytoolz/toolz/issues/623
+https://github.com/pytoolz/toolz/pull/624
+
+From 8f23a9a2d5f07ff0c790ee1e2bdef023ff252cc1 Mon Sep 17 00:00:00 2001
+From: Karolina Surma <ksurma@redhat.com>
+Date: Thu, 21 May 2026 23:30:41 +0200
+Subject: [PATCH] Add frozendict signature (Python 3.15 compatibility)
+
+--- a/toolz/_signatures.py
++++ b/toolz/_signatures.py
+@@ -109,6 +109,9 @@
+     format=[
+         lambda value: None,
+         lambda value, format_spec: None],
++    frozendict=[
++        lambda **kwargs: None,
++        lambda mapping, **kwargs: None],
+     frozenset=[
+         lambda: None,
+         lambda iterable: None],
