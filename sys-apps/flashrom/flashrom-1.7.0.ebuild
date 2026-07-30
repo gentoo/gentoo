@@ -12,7 +12,7 @@ SRC_URI="https://download.flashrom.org/releases/${PN}-v${PV}.tar.xz -> ${P}.tar.
 S="${WORKDIR}/${PN}-v${PV}"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="~amd64 ~arm arm64 ~loong ~ppc ~ppc64 ~riscv x86"
 
 # These programmers cannot be compiled, so excluded in the list below
 # ni845x_spi   windows/x86 only (we are linux/...)
