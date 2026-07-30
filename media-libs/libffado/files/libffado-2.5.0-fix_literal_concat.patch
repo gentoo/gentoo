@@ -1,0 +1,13 @@
+fix C++11 string literal concatenation w/ clang
+error: invalid suffix on literal; C++11 requires a space between literal and identifier
+--- a/src/libutil/serialize_expat.cpp
++++ b/src/libutil/serialize_expat.cpp
+@@ -118,7 +118,7 @@ Util::XMLSerialize::write( std::string strMemberName,
+             // element to be added
+             Xml::Node& n = pNode->add( Xml::Node(tokens[tokens.size() - 1].c_str(), NULL) );
+             char* valstr;
+-            asprintf( &valstr, "%"PRId64"", value );
++            asprintf( &valstr, "%" PRId64, value );
+             n.set_child_text( valstr );
+             free( valstr );
+         } else {
