@@ -29,7 +29,8 @@ SLOT="0"
 IUSE="nls static-libs"
 
 # attr dep should be obsolete with >=2.4.0 but there's a configure check
-# left, and also some header use in libacl/ still (bug #978746, reported on acl-devel).
+# left, and also some header use in libacl/ still (bug #978746, reported on acl-devel at
+# https://lists.nongnu.org/archive/html/acl-devel/2026-07/msg00000.html).
 DEPEND="sys-apps/attr"
 RDEPEND="${DEPEND}"
 BDEPEND+=" nls? ( sys-devel/gettext )"
