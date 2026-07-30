@@ -11,7 +11,7 @@ SRC_URI="https://ftp.sdaoden.eu/${P}.tar.gz"
 
 LICENSE="ISC"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~ppc64"
 
 RDEPEND="sys-libs/pam"
 DEPEND="${RDEPEND}"
