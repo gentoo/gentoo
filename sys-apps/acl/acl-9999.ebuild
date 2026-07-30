@@ -32,7 +32,6 @@ IUSE="nls static-libs"
 # left, and also some header use in libacl/ still (bug #978746, reported on acl-devel at
 # https://lists.nongnu.org/archive/html/acl-devel/2026-07/msg00000.html).
 DEPEND="sys-apps/attr"
-RDEPEND="${DEPEND}"
 BDEPEND+=" nls? ( sys-devel/gettext )"
 
 src_prepare() {
