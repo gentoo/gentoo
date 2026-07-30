@@ -1,6 +1,15 @@
 # Copyright 2023-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# James Le Cuirot <chewi@gentoo.org> (2026-07-30)
+# UT2004 is supported on ppc64le but not ppc64be. I doubt we'll ever see this on
+# any other big endian platform.
+games-fps/ut2004
+games-fps/ut2004-bonuspack-cbp1
+games-fps/ut2004-bonuspack-cbp2
+games-fps/ut2004-bonuspack-xp
+games-fps/ut2004-data
+
 # Eli Schwartz <eschwartz@gentoo.org> (2026-05-04)
 # Tests fail on ppc64, pass on ppc64le. Bug #952112.
 media-libs/libyuv
