@@ -31,7 +31,7 @@ LICENSE+="
 	Unicode-3.0 Unicode-DFS-2016 ZLIB
 "
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~loong ~ppc64"
+KEYWORDS="~amd64 arm64 ~loong ~ppc64"
 IUSE="azure dist-client dist-server gcs memcached redis s3 webdav"
 
 BDEPEND="virtual/pkgconfig"
