@@ -14,7 +14,7 @@ if [[ ${PV} == 9999* ]]; then
 else
 	SRC_URI="
 	https://github.com/dani-garcia/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz
-	https://github.com/gentoo-crate-dist/${PN}/releases/download/${PV}/${P}-crates.tar.xz -> ${P}-deps.tar.xz
+	https://github.com/gentoo-crate-dist/${PN}/releases/download/1.37.0/${PN}-1.37.0-crates.tar.xz -> ${PN}-1.37.0-deps.tar.xz
 "
 	KEYWORDS="~amd64 ~arm64"
 fi
