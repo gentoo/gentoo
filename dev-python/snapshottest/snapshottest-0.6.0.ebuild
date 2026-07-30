@@ -27,6 +27,7 @@ RDEPEND="
 	dev-python/termcolor[${PYTHON_USEDEP}]
 "
 
+EPYTEST_PLUGINS=( ${PN} )
 distutils_enable_tests pytest
 
 PATCHES=(
