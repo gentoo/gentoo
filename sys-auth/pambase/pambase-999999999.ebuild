@@ -56,7 +56,10 @@ RDEPEND="
 	sha512? ( >=sys-libs/pam-${MIN_PAM_REQ} )
 	homed? ( sys-apps/systemd[homed] )
 	systemd? ( sys-apps/systemd[pam] )
-	!systemd? ( sys-apps/openrc[pam] )
+	!systemd? (
+		sys-apps/openrc[pam]
+		!elogind? ( sys-auth/pam_xdg )
+	)
 	yescrypt? ( sys-libs/libxcrypt[system] )
 	sssd? ( sys-auth/sssd )
 	turnstile? ( sys-apps/turnstile )
