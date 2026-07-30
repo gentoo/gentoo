@@ -31,22 +31,22 @@ IUSE="doc +midi test tools +videos"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="${LUA_REQUIRED_USE}"
 
-RDEPEND="${LUA_DEPS}
+RDEPEND="
+	${LUA_DEPS}
 	$(lua_gen_cond_dep '
 		>=dev-lua/luafilesystem-1.5[${LUA_USEDEP}]
 		>=dev-lua/lpeg-0.9[${LUA_USEDEP}]
 		>=dev-lua/luasocket-3.0_rc1-r4[${LUA_USEDEP}]
 	')
 	media-libs/libsdl2[opengl,video]
+	media-libs/libpng:=
 	>=media-libs/freetype-2.5.3:2
 	media-libs/sdl2-mixer[midi?]
 	virtual/zlib:=
 	midi? ( media-libs/rtmidi )
 	videos? ( >=media-video/ffmpeg-2.2.3:0= )
 "
-
 DEPEND="${RDEPEND}"
-
 # Although the docs could potentially be built with nearly any Lua version,
 # we need to ensure the necessary Lua modules are installed, so pin to the
 # same single version as runtime.
