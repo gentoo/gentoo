@@ -59,7 +59,7 @@ SRC_URI="
 	https://github.com/bazel-contrib/bazel_features/releases/download/v1.37.0/bazel_features-v1.37.0.tar.gz
 	https://github.com/bazel-contrib/rules_foreign_cc/releases/download/0.15.1/rules_foreign_cc-0.15.1.tar.gz
 	https://github.com/bazel-contrib/rules_nodejs/releases/download/v6.3.0/rules_nodejs-v6.3.0.tar.gz
-	https://github.com/bazelbuild/apple_support/releases/download/1.22.1/apple_support.1.22.1.tar.gz
+	https://github.com/bazelbuild/apple_support/releases/download/1.24.1/apple_support.1.24.1.tar.gz
 	https://github.com/bazelbuild/bazel-skylib/releases/download/1.9.0/bazel-skylib-1.9.0.tar.gz
 	https://github.com/bazelbuild/platforms/releases/download/0.0.11/platforms-0.0.11.tar.gz
 	https://github.com/bazelbuild/rules_apple/releases/download/3.16.0/rules_apple.3.16.0.tar.gz
@@ -111,13 +111,13 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}/${P}-disable-bazelisk-check.patch"
+	"${FILESDIR}/${PN}-8.3.4-disable-bazelisk-check.patch"
 	"${FILESDIR}/${PN}-8.0.23-fix-compiler-names.patch"
-	"${FILESDIR}/${P}-fix-grpc-build.patch"
-	"${FILESDIR}/${P}-override-distro.patch"
-	"${FILESDIR}/${P}-remove-mtune-march-cflags.patch"
-	"${FILESDIR}/${P}-restore-syscall_h-includes.patch"
-	"${FILESDIR}/${P}-use-system-python.patch"
+	"${FILESDIR}/${PN}-8.3.4-fix-grpc-build.patch"
+	"${FILESDIR}/${PN}-8.3.4-override-distro.patch"
+	"${FILESDIR}/${PN}-8.3.4-remove-mtune-march-cflags.patch"
+	"${FILESDIR}/${PN}-8.3.4-restore-syscall_h-includes.patch"
+	"${FILESDIR}/${PN}-8.3.4-use-system-python.patch"
 )
 
 python_check_deps() {
