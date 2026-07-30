@@ -92,7 +92,7 @@ src_configure() {
 		)
 	else
 		mycmakeargs+=(
-			-DLUA_VERSION=$(get_lua_version)
+			-DLUA_VERSION=$(lua_get_version)
 		)
 	fi
 
