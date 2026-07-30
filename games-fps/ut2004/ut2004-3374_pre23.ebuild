@@ -10,7 +10,7 @@ DESCRIPTION="Modern build of the Unreal Tournament 2004 engine"
 HOMEPAGE="https://github.com/OldUnreal/UT2004Patches"
 SRC_URI="
 	https://github.com/OldUnreal/UT2004Patches/releases/download/${PV/_pre/-preview-}/OldUnreal-UT2004Patch${PV%_*}-Linux-${COMMIT}.tar.bz2
-	mirror+https://dev.gentoo.org/~chewi/${PN}.png
+	mirror+https://dev.gentoo.org/~chewi/distfiles/${PN}.png
 "
 S="${WORKDIR}"
 
@@ -42,15 +42,14 @@ PDEPEND="
 DIR="/opt/${PN}"
 QA_PREBUILT="*"
 
-declare -A SYSTEMS=(
+declare -gA SYSTEMS=(
 	[amd64]=""
 	[arm64]="ARM64"
 	[ppc64]="PPC64LE"
 )
 
-System="System${SYSTEMS[${ARCH}]}"
-
 src_prepare() {
+	declare -g System="System${SYSTEMS[${ARCH}]}"
 	default
 
 	# https://github.com/OldUnreal/FullGameInstallers/issues/93
