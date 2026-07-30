@@ -41,6 +41,7 @@ COMMON_DEPEND="
 "
 DEPEND="
 	${COMMON_DEPEND}
+	acl? ( sys-apps/attr )
 	kernel_linux? ( >=sys-kernel/linux-headers-4.14 )
 "
 RDEPEND="
