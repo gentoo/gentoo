@@ -22,7 +22,7 @@ src_compile() {
 	# Do we want to set XDG_CONFIG_DIR for prefix?
 	emake \
 		CFLAGS="${CFLAGS} -DNDEBUG" \
-		LDFLAGS="-shared ${LDFLAGS}" \
+		LDFLAGS="-shared -fPIC ${LDFLAGS}" \
 		PREFIX="${EPREFIX}" \
 		LIBDIR="${EPREFIX}$(getpam_mod_dir)"
 }
