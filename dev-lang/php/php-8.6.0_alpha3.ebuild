@@ -9,9 +9,9 @@ inherit flag-o-matic multilib postgres systemd
 
 DESCRIPTION="The PHP language runtime engine"
 HOMEPAGE="https://www.php.net/"
-SRC_URI="https://downloads.php.net/~svpernova09/php-8.6.0alpha2.tar.xz"
+SRC_URI="https://downloads.php.net/~mbeccati/php-8.6.0alpha3.tar.xz"
 
-S="${WORKDIR}/php-8.6.0alpha2"
+S="${WORKDIR}/php-8.6.0alpha3"
 
 LICENSE="PHP-3.01
 	BSD
