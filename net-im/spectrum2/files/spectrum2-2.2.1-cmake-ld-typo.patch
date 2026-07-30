@@ -1,0 +1,12 @@
+https://github.com/SpectrumIM/spectrum2/pull/519
+--- a/spectrum/src/CMakeLists.txt
++++ b/spectrum/src/CMakeLists.txt
+@@ -20,7 +20,7 @@ target_link_libraries(spectrum2 transport spectrum2-xmpp-frontend spectrum2-slac
+ 
+ if(NOT MSVC AND NOT APPLE)
+ 	# export all symbols (used for loading frontends)
+-	set(CMAKE_EXE_LINKER_FLAGS "-Wl,-export-dynamic")
++	set(CMAKE_EXE_LINKER_FLAGS "-Wl,--export-dynamic")
+ endif()
+ 
+ install(TARGETS spectrum2 RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})

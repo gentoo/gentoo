@@ -73,6 +73,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.2.1-boost-1.89.patch
 	"${FILESDIR}"/${PN}-2.2.1-cmake.patch
 	"${FILESDIR}"/${PN}-2.2.1-findjsoncpp.patch
+	"${FILESDIR}"/${PN}-2.2.1-cmake-ld-typo.patch
 )
 
 src_prepare() {
