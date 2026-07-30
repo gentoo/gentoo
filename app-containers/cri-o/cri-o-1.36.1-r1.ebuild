@@ -19,6 +19,7 @@ IUSE="btrfs +device-mapper selinux systemd"
 DEPEND="
 	app-crypt/gpgme:=
 	app-containers/conmon
+	>=app-containers/container-libs-0.68.0
 	app-containers/runc
 	dev-libs/glib:=
 	dev-libs/libassuan:=
