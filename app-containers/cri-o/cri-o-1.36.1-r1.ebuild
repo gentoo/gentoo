@@ -95,4 +95,5 @@ src_install() {
 	keepdir /etc/cni/net.d
 	insinto /etc/cni/net.d
 	doins contrib/cni/99-loopback.conflist
+	dosym -r /usr/share/containers/policy.json /etc/containers/policy.json #979676
 }
