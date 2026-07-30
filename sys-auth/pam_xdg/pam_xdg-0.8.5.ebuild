@@ -6,7 +6,7 @@ EAPI=8
 inherit pam toolchain-funcs
 
 DESCRIPTION="PAM module that manages XDG Base Directories"
-HOMEPAGE="https://www.sdaoden.eu/code.html"
+HOMEPAGE="https://www.sdaoden.eu/code.html https://www.sdaoden.eu/code-pam_xdg.html"
 SRC_URI="https://ftp.sdaoden.eu/${P}.tar.gz"
 
 LICENSE="ISC"
