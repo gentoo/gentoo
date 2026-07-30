@@ -6,7 +6,7 @@ EAPI=8
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=standalone
 PYPI_VERIFY_REPO=https://github.com/ariebovenberg/whenever
-PYTHON_COMPAT=( python3_{12..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 
 CARGO_OPTIONAL=1
 RUST_MIN_VER="1.93.0"
