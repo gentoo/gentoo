@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=hatchling
 # TODO: see if we can remove pypy3.11, because of the segfaults
-PYTHON_COMPAT=( python3_{12..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 PYTHON_REQ_USE="sqlite"
 
 inherit distutils-r1 optfeature
