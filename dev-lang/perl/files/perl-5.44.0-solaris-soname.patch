@@ -1,0 +1,18 @@
+Makefile.SH: treat Solaris on Gentoo Prefix as having soname versioning
+
+sunos target exists, but doesn't use -L. in linklibperl which we also
+require, so make solaris be treated as *bsd
+
+Signed-off-by: Fabian Groffen <grobian@gentoo.org>
+
+--- a/Makefile.SH
++++ b/Makefile.SH
+@@ -88,7 +88,7 @@
+ 		linklibperl="-lperl"
+ 		shrpldflags="$shrpldflags -Wl,-soname -Wl,libperl.so.${revision}.${patchlevel}"
+ 		;;
+-	netbsd*|freebsd*|openbsd*|dragonfly*|bitrig*)
++	netbsd*|freebsd*|openbsd*|dragonfly*|bitrig*|solaris*)
+ 		linklibperl="-L. -lperl"
+ 		shrpldflags="$shrpldflags -Wl,-soname -Wl,libperl.so.${revision}.${patchlevel}"
+ 		;;
