@@ -36,6 +36,7 @@ RDEPEND="
 BDEPEND="
 	${RDEPEND}
 	dev-libs/appstream-glib
+	dev-util/blueprint-compiler
 	dev-util/desktop-file-utils
 "
 RDEPEND+="
