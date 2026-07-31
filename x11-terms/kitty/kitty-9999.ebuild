@@ -125,6 +125,8 @@ src_prepare() {
 	:> fonts/SymbolsNerdFontMono-Regular.ttf || die
 
 	local skiptests=(
+		# needs cgroups and may not work right with portage sandbox
+		kitty_tests/child.py
 		# broken with nspawn defaults, skip for convenience (bug #954176)
 		kitty_tests/crypto.py
 		# relies on 'who' command which doesn't detect users with pid-sandbox
