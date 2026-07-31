@@ -38,8 +38,10 @@ pkg_nofetch() {
 src_prepare() {
 	default
 
-	local MY_S="Geekbench-${PV}-Linux$(usex arm64 'ARMPreview' '')"
-	local MY_S="Geekbench-${PV}-Linux$(usex riscv 'RISCVPreview' '')"
+	local suffix=""
+	use arm64 && suffix="ARMPreview"
+	use riscv && suffix="RISCVPreview"
+	local MY_S="Geekbench-${PV}-Linux${suffix}"
 
 	# Fix QA insecure RUNPATHs
 	patchelf --remove-rpath "${MY_S}"/geekbench7 || die
@@ -53,8 +55,10 @@ src_prepare() {
 }
 
 src_install() {
-	local MY_S="Geekbench-${PV}-Linux$(usex arm64 'ARMPreview' '')"
-	local MY_S="Geekbench-${PV}-Linux$(usex riscv 'RISCVPreview' '')"
+	local suffix=""
+	use arm64 && suffix="ARMPreview"
+	use riscv && suffix="RISCVPreview"
+	local MY_S="Geekbench-${PV}-Linux${suffix}"
 
 	exeinto /opt/geekbench7
 	use amd64 && doexe "${MY_S}"/geekbench_{avx2,x86_64}

@@ -33,8 +33,10 @@ pkg_nofetch() {
 }
 
 src_install() {
-	local MY_S="Geekbench-${PV}-Linux$(usex arm64 'ARMPreview' '')"
-	local MY_S="Geekbench-${PV}-Linux$(usex riscv 'RISCVPreview' '')"
+	local suffix=""
+	use arm64 && suffix="ARMPreview"
+	use riscv && suffix="RISCVPreview"
+	local MY_S="Geekbench-${PV}-Linux${suffix}"
 
 	exeinto /opt/geekbench6
 	use amd64 && doexe "${MY_S}"/geekbench_{avx2,x86_64}
