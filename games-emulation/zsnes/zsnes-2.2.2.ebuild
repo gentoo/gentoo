@@ -30,6 +30,7 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	${PYTHON_DEPS}
 	dev-lang/nasm
+	sys-devel/gcc:*
 	virtual/pkgconfig
 	virtual/zlib:=
 "
@@ -49,6 +50,17 @@ src_compile() {
 
 		# furthermore fails with -Werror=strict-aliasing
 		append-cflags -fno-strict-aliasing
+	fi
+
+	# zsnes passes -mno-sse while profiles do -mfpmath=sse -- gcc will fallback
+	# to 387, but clang errors out at the combination (bug #884827)
+	append-flags -mfpmath=387
+
+	# asm issues with clang (bug #830491), the asm may never get fixed at this
+	# point but zsnes is slowly porting it to C and so may work eventually
+	if tc-is-clang; then
+		CC=${CHOST}-gcc
+		strip-unsupported-flags
 	fi
 
 	use amd64 && multilib_toolchain_setup x86
