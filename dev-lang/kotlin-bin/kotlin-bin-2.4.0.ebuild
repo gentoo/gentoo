@@ -14,7 +14,7 @@ S="${WORKDIR}/kotlinc"
 
 LICENSE="Apache-2.0 BSD MIT NPL-1.1"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 RDEPEND="
 	>=virtual/jre-1.8:*
