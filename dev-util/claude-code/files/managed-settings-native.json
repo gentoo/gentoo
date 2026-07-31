@@ -1,7 +1,8 @@
 {
   "env": {
     "DISABLE_AUTOUPDATER": "1",
-    "DISABLE_INSTALLATION_CHECKS": "1"
+    "DISABLE_INSTALLATION_CHECKS": "1",
+    "CLAUDE_CODE_CERT_STORE": "system"
   },
   "installMethod": "native"
 }
