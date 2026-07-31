@@ -22,7 +22,7 @@ else
 	"
 	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~ppc ~ppc64 ~riscv ~s390 ~x86"
 
-	BDEPEND="verify-sig? ( sec-keys/openpgp-keys-ntpsec )"
+	BDEPEND="verify-sig? ( >=sec-keys/openpgp-keys-ntpsec-20260731 )"
 fi
 
 DESCRIPTION="The NTP reference implementation, refactored"
