@@ -38,7 +38,6 @@ RDEPEND="
 BDEPEND="
 	test? (
 		$(python_gen_impl_dep 'gdbm')
-		dev-python/pytest[${PYTHON_USEDEP}]
 		dev-python/redis[${PYTHON_USEDEP}]
 	)
 "
@@ -48,6 +47,8 @@ REQUIRED_USE="
 "
 
 distutils_enable_sphinx docs
+EPYTEST_PLUGINS=()
+distutils_enable_tests pytest
 
 python_test() {
 	epytest -vv tests/unit
