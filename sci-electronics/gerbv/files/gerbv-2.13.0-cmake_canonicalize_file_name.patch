@@ -1,0 +1,51 @@
+diff --git a/config/CMakeLists.txt b/config/CMakeLists.txt
+index 65b898d..9713799 100644
+--- a/config/CMakeLists.txt
++++ b/config/CMakeLists.txt
+@@ -32,6 +32,9 @@ check_function_exists(canonicalize_file_name HAVE_CANONICALIZE_FILE_NAME)
+ check_function_exists(dcgettext HAVE_DCGETTEXT)
+ check_function_exists(iconv HAVE_ICONV)
+ 
++include(CheckSymbolExists)
++check_symbol_exists(canonicalize_file_name stdlib.h HAVE_CANONICALIZE_FILE_NAME_DECL)
++
+ include(CheckLibraryExists)
+ check_library_exists(m pow "" HAVE_LIBM)
+ check_library_exists(dl dlopen "" HAVE_LIBDL)
+diff --git a/config/config.h.in b/config/config.h.in
+index 9c35cce..8d19151 100644
+--- a/config/config.h.in
++++ b/config/config.h.in
+@@ -38,6 +38,9 @@
+ /* Define to 1 if you have the `canonicalize_file_name' function. */
+ #cmakedefine HAVE_CANONICALIZE_FILE_NAME @HAVE_CANONICALIZE_FILE_NAME@
+ 
++/* Define to 1 if canonicalize_file_name is declared in system header files. */
++#cmakedefine HAVE_CANONICALIZE_FILE_NAME_DECL @HAVE_CANONICALIZE_FILE_NAME_DECL@
++
+ /* Define to 1 if you have the Mac OS X function CFLocaleCopyCurrent in the
+    CoreFoundation framework. */
+ #undef HAVE_CFLOCALECOPYCURRENT
+@@ -121,9 +124,6 @@
+ /* Define to the sub-directory where libtool stores uninstalled libraries. */
+ //#undef LT_OBJDIR
+ 
+-/* Define if canonicalize_file_name is not declared in system header files. */
+-#undef NEED_DECLARATION_CANONICALIZE_FILE_NAME
+-
+ /* Name of package */
+ #define PACKAGE "@PACKAGE@"
+ 
+diff --git a/src/lrealpath.c b/src/lrealpath.c
+index e75184e..2d9780c 100644
+--- a/src/lrealpath.c
++++ b/src/lrealpath.c
+@@ -53,7 +53,7 @@ components will be simplified.  The returned value will be allocated using
+ 
+ /* On GNU libc systems the declaration is only visible with _GNU_SOURCE.  */
+ #if defined(HAVE_CANONICALIZE_FILE_NAME) \
+-    && defined(NEED_DECLARATION_CANONICALIZE_FILE_NAME)
++    && ! defined(HAVE_CANONICALIZE_FILE_NAME_DECL)
+ extern char *canonicalize_file_name (const char *);
+ #endif
+ 

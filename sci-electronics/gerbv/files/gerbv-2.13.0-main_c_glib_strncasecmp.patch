@@ -1,0 +1,23 @@
+diff --git a/src/main.c b/src/main.c
+index 3f6f048..55a7aea 100644
+--- a/src/main.c
++++ b/src/main.c
+@@ -1299,15 +1299,15 @@ getopt_configured(int argc, char * const argv[], const char *optstring,
+ static int
+ getopt_lengh_unit(const char *optarg, double *input_div, gerbv_screen_t *screen)
+ {
+-	if (strncasecmp(optarg, "mm", 2) == 0) {
++	if (g_ascii_strncasecmp(optarg, "mm", 2) == 0) {
+ 		*input_div = 25.4;
+ 		screen->unit = GERBV_MMS;
+ 		screen->unit_is_from_cmdline = TRUE;
+-	} else if (strncasecmp(optarg, "mil", 3) == 0) {
++	} else if (g_ascii_strncasecmp(optarg, "mil", 3) == 0) {
+ 		*input_div = 1000.0;
+ 		screen->unit = GERBV_MILS;
+ 		screen->unit_is_from_cmdline = TRUE;
+-	} else if (strncasecmp(optarg, "inch", 4) == 0) {
++	} else if (g_ascii_strncasecmp(optarg, "inch", 4) == 0) {
+ 		*input_div = 1.0;
+ 		screen->unit = GERBV_INS;
+ 		screen->unit_is_from_cmdline = TRUE;
