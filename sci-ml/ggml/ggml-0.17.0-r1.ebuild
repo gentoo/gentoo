@@ -104,6 +104,10 @@ src_configure() {
 	if use cuda; then
 		cuda_add_sandbox -w
 		addpredict "/dev/char/"
+		cuda_sanitize
+		mycmakeargs+=(
+			-DCMAKE_CUDA_FLAGS="${NVCCFLAGS}"
+		)
 	fi
 
 	cmake_src_configure
