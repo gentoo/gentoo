@@ -23,3 +23,8 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv 
 EPYTEST_PLUGINS=()
 EPYTEST_RERUNS=5
 distutils_enable_tests pytest
+
+PATCHES=(
+	# https://github.com/noxdafox/pebble/pull/165
+	"${FILESDIR}/${P}-clear-lock.patch"
+)
