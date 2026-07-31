@@ -1,6 +1,7 @@
-https://bugs.gentoo.org/868000
+see https://bugs.gentoo.org/868000 and https://bugs.gentoo.org/980185
 The output file was previously passed as an argument.
-Using '-o' explicitly sets the output file. 
+Using '-o' explicitly sets the output file.
+Pass -x c to preprocess files with non-standard extensions (.pre)
 --- a/man/Makefile.am
 +++ b/man/Makefile.am
 @@ -189,7 +189,7 @@ MANS_COMMON = \
@@ -8,7 +9,7 @@ Using '-o' explicitly sets the output file.
  
  $(MANS_CPP): $(MANS_CPP:%=%.pre)
 -	$(CPP_FOR_BUILD) -nostdinc -w -C -P -I. -I$(top_srcdir)/man $@.pre $@
-+	$(CPP_FOR_BUILD) -nostdinc -w -C -P -I. -I$(top_srcdir)/man $@.pre -o $@
++	$(CPP_FOR_BUILD) -x c -nostdinc -w -C -P -I. -I$(top_srcdir)/man $@.pre -o $@
  
  CLEANFILES = $(MANS_CPP) *~
  DISTCLEANFILES = $(MANS_CPP) $(MANS_CPP:%=%.pre) .deps/*.P
