@@ -55,8 +55,10 @@ src_install() {
 	local yq_bin
 	distutils-r1_src_install
 	mv "${ED}/usr/bin/yq"{,-python} || die
-	for yq_bin in "${ED}"/usr/lib/python-exec/python*/yq; do
-		mv "${yq_bin}" "${yq_bin}-python" || die
+	for yq_bin in "${ED}"/usr/lib/python-exec/python*/yq "${ED}"/usr/lib/python-exec/pypy*/yq; do
+		if [[ -e "${yq_bin}" ]]; then
+			mv "${yq_bin}" "${yq_bin}-python" || die
+		fi
 	done
 	if use yq-symlink; then
 		dosym yq-python /usr/bin/yq
