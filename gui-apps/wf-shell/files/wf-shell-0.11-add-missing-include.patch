@@ -1,0 +1,20 @@
+When compiling with gcc-17:
+
+In file included from ../wf-shell-77038bdf8a05005ff510e7e1ba3ac2054cc304ce/src/dock/toplevel.cpp:2:
+../wf-shell-77038bdf8a05005ff510e7e1ba3ac2054cc304ce/src/dock/toplevel-icon.hpp:11:21: error: ‘std::string’ has not been declared
+   11 |     void set_app_id(std::string app_id);
+      |                     ^~~
+../wf-shell-77038bdf8a05005ff510e7e1ba3ac2054cc304ce/src/dock/toplevel-icon.hpp:1:1: note: ‘std::string’ is defined in header ‘<string>’; this is probably fixable by adding ‘#include <string>’
+  +++ |+#include <string>
+    1 | #pragma once
+
+--- a/src/dock/toplevel-icon.hpp
++++ b/src/dock/toplevel-icon.hpp
+@@ -1,6 +1,7 @@
+ #pragma once
+ 
+ #include <memory>
++#include <string>
+ #include <wlr-foreign-toplevel-management-unstable-v1-client-protocol.h>
+ 
+ class WfToplevelIcon
