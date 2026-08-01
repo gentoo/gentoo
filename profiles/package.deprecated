@@ -17,6 +17,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2026-08-01)
+# Used only by old dev-python/feedparser versions.  To be last-rited
+# once they're gone.
+dev-python/sgmllib3k
+
 # Michał Górny <mgorny@gentoo.org> (2026-07-27)
 # The project is not actively developed since 2020, when the developer
 # switched to Rust.  The maintenance currently seems to be limited to
