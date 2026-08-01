@@ -746,6 +746,14 @@ src_test() {
 		$(usex test-full "--set-timeout 300" "") \
 		-d "session.save_path=${T}" \
 		|| die "tests failed"
+
+	# The variable TEST_PHP_EXECUTABLE is used by PHP's own
+	# install script, e.g. ext/phar/Makefile.frag.
+	#
+	# We have to unset it to guarantee a sane environment,
+	# otherwise we'll see spurious error messages during
+	# src_install().
+	unset TEST_PHP_EXECUTABLE
 }
 
 pkg_postinst() {
