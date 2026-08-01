@@ -25,12 +25,16 @@ KEYWORDS="amd64 arm64 x86"
 RDEPEND="
 	dev-python/appdirs[${PYTHON_USEDEP}]
 "
-BDEPEND="
-	test? (
-		dev-python/py[${PYTHON_USEDEP}]
-	)
-"
 
 EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
 distutils_enable_sphinx docs
+
+src_prepare() {
+	distutils-r1_src_prepare
+
+	# eliminate dev-python/py dep
+	sed -e 's:import py$:&test:' \
+		-e 's:py\.test:pytest:' \
+		-i tests/test_*.py || die
+}
