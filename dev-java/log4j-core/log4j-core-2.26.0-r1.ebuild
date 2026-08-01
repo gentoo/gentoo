@@ -57,7 +57,7 @@ DEPEND="
 	>=dev-java/snakeyaml-2.5:0
 	>=dev-java/xz-java-1.12:0
 	>=dev-java/zstd-jni-1.5.7.6:0
-	>=virtual/jdk-9:*
+	>=virtual/jdk-17:*
 "
 
 RDEPEND="
