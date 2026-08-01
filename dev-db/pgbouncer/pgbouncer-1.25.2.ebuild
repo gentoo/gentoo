@@ -9,7 +9,7 @@ SRC_URI="https://www.pgbouncer.org/downloads/files/${PV}/pgbouncer-${PV}.tar.gz
 	https://dev.gentoo.org/~patrick/${P}-manpages.tar.gz"
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="+c-ares debug doc pam ssl systemd"
 
 RDEPEND="
