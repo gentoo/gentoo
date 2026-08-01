@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{11..15} )
+PYTHON_COMPAT=( python3_{12..15} )
 PYTHON_REQ_USE="tk"
 
 inherit distutils-r1 pypi
@@ -22,9 +22,6 @@ KEYWORDS="amd64 x86"
 
 BDEPEND="
 	dev-python/setuptools-scm[${PYTHON_USEDEP}]
-	test? (
-		dev-python/py[${PYTHON_USEDEP}]
-	)
 "
 
 # Could not import extension sphinx.builders.epub3 (exception: cannot import
