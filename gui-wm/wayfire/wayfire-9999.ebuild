@@ -1,4 +1,4 @@
-# Copyright 2019-2025 Gentoo Authors
+# Copyright 2019-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,21 +11,46 @@ HOMEPAGE="https://github.com/WayfireWM/wayfire"
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/WayfireWM/${PN}.git"
-	SLOT="0/0.11"
+	SLOT="0/0.12"
+
+	IUSE="vulkan"
+
+	# vulkan support is experimental and uses a bundled fork of wlroots
+	# keep it only in the live ebuild for now
+	RDEPEND="vulkan? ( media-libs/vulkan-loader )"
+	DEPEND="vulkan? ( dev-util/vulkan-headers )"
+	COMMON_DEPEND="
+		!vulkan? (
+			gui-libs/wlroots:0.20[drm(+),libinput(+),x11-backend,X?]
+		)
+		vulkan? (
+			dev-libs/libliftoff
+			media-libs/lcms:2
+			media-libs/libdisplay-info:=
+			media-libs/mesa
+			sys-auth/seatd:=
+			x11-libs/libdrm
+			x11-libs/xcb-util-errors
+			x11-libs/xcb-util-renderutil
+			x11-libs/xcb-util-wm
+		)
+	"
 else
 	SRC_URI="https://github.com/WayfireWM/${PN}/releases/download/v${PV}/${P}.tar.xz"
 	KEYWORDS="~amd64 ~arm64 ~riscv"
 	SLOT="0/$(ver_cut 1-2)"
+
+	COMMON_DEPEND="gui-libs/wlroots:0.20[drm(+),libinput(+),x11-backend,X?]"
 fi
 
 LICENSE="MIT"
-IUSE="X +dbus +gles3 openmp test"
+IUSE+=" X +dbus +gles3 nls openmp test"
 RESTRICT="!test? ( test )"
 
 # bundled wlroots has the following dependency string according to included headers.
 # wlroots[drm,gles2-renderer,libinput,x11-backend?,X?]
 # enable x11-backend with X and vice versa
-COMMON_DEPEND="
+COMMON_DEPEND+="
 	dev-cpp/nlohmann_json
 	dev-libs/glib:2
 	dev-libs/libevdev
@@ -34,12 +59,10 @@ COMMON_DEPEND="
 	dev-libs/yyjson
 	>=dev-libs/wayland-protocols-1.12
 	gui-libs/wf-config:${SLOT}
-	gui-libs/wlroots:0.19[drm(+),libinput(+),x11-backend,X?]
 	media-libs/glm
 	media-libs/libglvnd
 	media-libs/libjpeg-turbo:=
 	media-libs/libpng:=
-	media-libs/vulkan-loader
 	virtual/libudev:=
 	x11-libs/cairo
 	x11-libs/libxkbcommon
@@ -49,11 +72,11 @@ COMMON_DEPEND="
 	X? ( x11-libs/libxcb:= )
 "
 
-RDEPEND="
+RDEPEND+="
 	${COMMON_DEPEND}
 	x11-misc/xkeyboard-config
 "
-DEPEND="
+DEPEND+="
 	${COMMON_DEPEND}
 	test? ( dev-cpp/doctest )
 "
@@ -65,6 +88,9 @@ BDEPEND="
 			sys-devel/gcc[openmp]
 			llvm-runtimes/clang-runtime[openmp]
 		)
+	)
+	nls? (
+		sys-devel/gettext
 	)
 "
 
@@ -93,10 +119,23 @@ src_configure() {
 		$(meson_feature test tests)
 		$(meson_feature X xwayland)
 		$(meson_use gles3 enable_gles32)
+		$(meson_feature nls build_locales)
 		$(meson_use openmp enable_openmp)
 		-Duse_system_wfconfig=enabled
-		-Duse_system_wlroots=enabled
 	)
+
+	if [[ ${PV} == 9999 ]]; then
+		emesonargs+=(
+			$(meson_feature !vulkan use_system_wlroots)
+			$(meson_use vulkan vulkan_effects)
+		)
+	else
+		emesonargs+=(
+		-Duse_system_wlroots=enabled
+		-Dvulkan_effects=false
+		)
+	fi
+
 	meson_src_configure
 }
 
