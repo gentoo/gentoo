@@ -1,0 +1,85 @@
+# Copyright 2021-2026 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=8
+
+PYTHON_COMPAT=( python3_{12..14} )
+inherit flag-o-matic multilib python-any-r1 toolchain-funcs xdg
+
+DESCRIPTION="Fork of the classic Super Nintendo emulator"
+HOMEPAGE="https://github.com/xyproto/zsnes/ https://www.zsnes.com/"
+SRC_URI="
+	https://github.com/xyproto/zsnes/archive/refs/tags/${PV}.tar.gz
+		-> ${P}.tar.gz
+"
+
+LICENSE="GPL-2"
+SLOT="0"
+KEYWORDS="-* ~amd64 ~x86"
+IUSE="ao custom-cflags pipewire"
+
+RDEPEND="
+	media-libs/libglvnd[X,abi_x86_32(-)]
+	media-libs/libpng:=[abi_x86_32(-)]
+	media-libs/libsdl3[abi_x86_32(-),opengl]
+	virtual/zlib:=[abi_x86_32(-)]
+	ao? ( media-libs/libao[abi_x86_32(-)] )
+	pipewire? (  media-video/pipewire:=[abi_x86_32(-)] )
+"
+DEPEND="${RDEPEND}"
+BDEPEND="
+	${PYTHON_DEPS}
+	dev-lang/nasm
+	sys-devel/gcc:*
+	virtual/pkgconfig
+	virtual/zlib:=
+"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.1.0-cc-quotes.patch
+)
+
+src_compile() {
+	# Makefile forces many CFLAGS that are questionable, but zsnes' ancient x86
+	# asm is fragile, not pic safe (bug #427104), broken by F_S=3 (formerly
+	# broken with =2 as well), and can be affected by -march=* and similar.
+	# Stick to upstream's choices, this is non-portable either way.
+	if use !custom-cflags; then
+		strip-flags
+		append-cppflags -U_FORTIFY_SOURCE # to disable =3, Makefile enables =2
+
+		# furthermore fails with -Werror=strict-aliasing+lto-type-mismatch
+		# https://github.com/xyproto/zsnes/issues/59#issuecomment-5024118435
+		append-cflags -fno-strict-aliasing
+		filter-lto
+	fi
+
+	# zsnes passes -mno-sse while profiles do -mfpmath=sse -- gcc will fallback
+	# to 387, but clang errors out at the combination (bug #884827)
+	append-flags -mfpmath=387
+
+	# asm issues with clang (bug #830491), the asm may never get fixed at this
+	# point but zsnes is slowly porting it to C and so may work eventually
+	if tc-is-clang; then
+		CC=${CHOST}-gcc
+		strip-unsupported-flags
+	fi
+
+	use amd64 && multilib_toolchain_setup x86
+	tc-export CC PKG_CONFIG
+	append-cflags ${CPPFLAGS}
+
+	ZSNES_MAKEARGS=(
+		ARCH=LINUX
+		PREFIX="${EPREFIX}"/usr
+		WITH_AO=$(usex ao)
+		WITH_PIPEWIRE=$(usex pipewire)
+	)
+
+	emake "${ZSNES_MAKEARGS[@]}"
+}
+
+src_install() {
+	emake "${ZSNES_MAKEARGS[@]}" DESTDIR="${D}" install
+	einstalldocs
+}
