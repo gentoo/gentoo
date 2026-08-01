@@ -15,8 +15,8 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 
 IUSE="static-libs"
 
 RDEPEND="app-arch/bzip2
-	app-arch/lz4
-	dev-libs/lzo
+	app-arch/lz4:=
+	dev-libs/lzo:2
 	virtual/zlib:="
 DEPEND="${RDEPEND}"
 BDEPEND="dev-perl/Pod-Parser
@@ -44,8 +44,8 @@ src_configure() {
 src_install() {
 	default
 	# Don't collide with net-dialup/lrzsz and /usr/bin/lrz, bug #588206
-	rm -f "${ED}"/usr/bin/lrz || die
-	rm -f "${ED}"/usr/share/man/man1/lrz.* || die
+	rm "${ED}"/usr/bin/lrz || die
+	rm "${ED}"/usr/share/man/man1/lrz.* || die
 
 	find "${ED}" -name '*.la' -delete || die
 }
