@@ -49,7 +49,6 @@ BDEPEND="
 			dev-python/iniconfig[${PYTHON_USEDEP}]
 			dev-python/packaging[${PYTHON_USEDEP}]
 			dev-python/pluggy[${PYTHON_USEDEP}]
-			dev-python/py[${PYTHON_USEDEP}]
 			dev-python/pyparsing[${PYTHON_USEDEP}]
 			dev-python/pytest[${PYTHON_USEDEP}]
 			dev-python/psutil[${PYTHON_USEDEP}]
@@ -91,7 +90,6 @@ python_check_deps() {
 		python_has_version "dev-python/iniconfig[${PYTHON_USEDEP}]" && \
 		python_has_version "dev-python/packaging[${PYTHON_USEDEP}]" && \
 		python_has_version "dev-python/pluggy[${PYTHON_USEDEP}]" && \
-		python_has_version "dev-python/py[${PYTHON_USEDEP}]" && \
 		python_has_version "dev-python/pyparsing[${PYTHON_USEDEP}]" && \
 		python_has_version "dev-python/pytest[${PYTHON_USEDEP}]" && \
 		python_has_version "dev-python/psutil[${PYTHON_USEDEP}]"
