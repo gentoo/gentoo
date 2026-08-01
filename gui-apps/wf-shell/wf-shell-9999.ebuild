@@ -1,4 +1,4 @@
-# Copyright 2019-2025 Gentoo Authors
+# Copyright 2019-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,7 +11,7 @@ HOMEPAGE="https://github.com/WayfireWM/wf-shell"
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/WayfireWM/wf-shell.git"
-	SLOT="0/0.11"
+	SLOT="0/0.12"
 else
 	SRC_URI="https://github.com/WayfireWM/wf-shell/releases/download/v${PV}/${P}.tar.xz"
 	KEYWORDS="~amd64 ~arm64"
@@ -19,24 +19,38 @@ else
 fi
 
 LICENSE="MIT"
-IUSE="+pulseaudio"
+IUSE="ddcutil pipewire +pulseaudio"
 
 # no tests
 RESTRICT="test"
 
 DEPEND="
-	dev-cpp/glibmm:2
-	dev-cpp/gtkmm:3.0[wayland]
+	dev-cpp/cairomm:1.16
+	dev-cpp/glibmm:2.68
+	dev-cpp/gtkmm:4.0
 	dev-libs/glib:2
 	>=dev-libs/gobject-introspection-1.82.0-r2
-	dev-libs/libsigc++:2
+	dev-libs/libsigc++:3
 	dev-libs/libdbusmenu[gtk3]
-	>=gui-libs/gtk-layer-shell-0.6
+	>=gui-libs/gtk4-layer-shell-1.3.0[introspection]
+	dev-libs/openssl:=
 	dev-libs/wayland
+	dev-libs/yyjson
+	gui-libs/gtk:4[wayland]
 	>=gui-libs/wf-config-0.7.0:=
 	gui-wm/wayfire
-	x11-libs/cairo
-	x11-libs/gtk+:3[wayland]
+	media-libs/libepoxy
+	media-libs/mesa[opengl]
+	sys-libs/pam
+	x11-libs/libdrm
+	x11-libs/libxkbcommon
+	ddcutil? (
+		app-misc/ddcutil:=
+	)
+	pipewire? (
+		media-video/pipewire:=
+		media-video/wireplumber:=
+	)
 	pulseaudio? (
 		media-libs/alsa-lib
 		media-libs/libpulse
@@ -51,10 +65,31 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+src_prepare() {
+	default
+
+	if [[ $PV != *9999* ]]; then
+		# wf-json is bundled as a subproject
+		# no need to unbundle it, it's a static library containing a wrapper to yyjson
+		rmdir subprojects/wf-json || die
+		mv "${WORKDIR}"/wf-json-${WF_JSON_COMMIT} subprojects/wf-json || die
+
+		if use pulseaudio; then
+			# bundled subproject for the volume widget
+			# static, written to be used as a subproject
+			rmdir subprojects/gvc || die
+			mv "${WORKDIR}"/libgnome-volume-control-${GVC_COMMIT} subprojects/gvc || die
+		fi
+	fi
+}
+
 src_configure () {
 	local emesonargs=(
-		"$(meson_feature pulseaudio pulse)"
+		"$(meson_feature pipewire wp-mixer-widget)"
+		"$(meson_feature pulseaudio volume-widget)"
+		"$(meson_feature ddcutil)"
 		-Dwayland-logout=false
+		-Dweather=false
 	)
 	meson_src_configure
 }
