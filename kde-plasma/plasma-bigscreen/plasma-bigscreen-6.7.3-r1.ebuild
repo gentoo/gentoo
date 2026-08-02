@@ -17,8 +17,8 @@ IUSE=""
 
 # TODO: libcec automagic
 COMMON_DEPEND="
-	>=dev-libs/qcoro-0.7.0[qml]
 	>=dev-libs/libcec-6:=
+	>=dev-libs/qcoro-0.7.0[qml]
 	dev-libs/wayland
 	>=dev-qt/qtbase-${QTMIN}:6[dbus,gui,network]
 	>=dev-qt/qtdeclarative-${QTMIN}:6
@@ -28,8 +28,8 @@ COMMON_DEPEND="
 	>=kde-frameworks/kcmutils-${KFMIN}:6
 	>=kde-frameworks/kconfig-${KFMIN}:6
 	>=kde-frameworks/kcoreaddons-${KFMIN}:6
-	>=kde-frameworks/kdeclarative-${KFMIN}:6
 	>=kde-frameworks/kdbusaddons-${KFMIN}:6
+	>=kde-frameworks/kdeclarative-${KFMIN}:6
 	>=kde-frameworks/kglobalaccel-${KFMIN}:6
 	>=kde-frameworks/ki18n-${KFMIN}:6
 	>=kde-frameworks/kiconthemes-${KFMIN}:6
@@ -51,13 +51,14 @@ DEPEND="${COMMON_DEPEND}
 	dev-libs/plasma-wayland-protocols
 "
 RDEPEND="${COMMON_DEPEND}
+	>=dev-qt/qtsvg-${QTMIN}:6
+	>=dev-qt/qtvirtualkeyboard-${QTMIN}:6
+	kde-misc/kdeconnect:6
 	>=kde-plasma/kwin-${KDE_CATV}:6
 	>=kde-plasma/milou-${KDE_CATV}:6
 	>=kde-plasma/plasma-nano-${KDE_CATV}:6
 	>=kde-plasma/plasma-nm-${KDE_CATV}:6
 	>=kde-plasma/plasma-pa-${KDE_CATV}:6
-	>=dev-qt/qtsvg-${QTMIN}:6
-	>=dev-qt/qtvirtualkeyboard-${QTMIN}:6
 "
 BDEPEND="
 	>=dev-qt/qtbase-${QTMIN}:6[wayland]
