@@ -147,6 +147,7 @@ PHP_MV="$(ver_cut 1)"
 PATCHES=(
 	"${FILESDIR}/php-iodbc-header-location.patch"
 	"${FILESDIR}/php-capstone-optional.patch"
+	"${FILESDIR}/php-set-fpm-test-executable.patch"
 	"${FILESDIR}/php-8.2.8-openssl-tests.patch"
 	"${FILESDIR}/php-8.2.20-implicit-printf.patch"
 	"${FILESDIR}/php-8.2.23-fix-ub.patch"
@@ -809,6 +810,10 @@ src_test() {
 
 	if [[ -x "${WORKDIR}/sapis-build/cgi/sapi/cgi/php-cgi" ]] ; then
 		export TEST_PHP_CGI_EXECUTABLE="${WORKDIR}/sapis-build/cgi/sapi/cgi/php-cgi"
+	fi
+
+	if [[ -x "${WORKDIR}/sapis-build/fpm/sapi/fpm/php-fpm" ]] ; then
+		export TEST_PHP_FPM_EXECUTABLE="${WORKDIR}/sapis-build/fpm/sapi/fpm/php-fpm"
 	fi
 
 	if [[ -x "${WORKDIR}/sapis-build/phpdbg/sapi/phpdbg/phpdbg" ]] ; then
