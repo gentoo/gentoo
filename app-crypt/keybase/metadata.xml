@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person" proxied="yes">
-		<email>ran.dall@icloud.com</email>
-		<name>Randall T. Vasquez</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<longdescription lang="en">
 		The official Keybase secure messaging, file-sharing, and key directory
 		client for Linux.
