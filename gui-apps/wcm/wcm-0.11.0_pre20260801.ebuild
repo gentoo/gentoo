@@ -16,7 +16,7 @@ else
 	COMMIT=14f2e03fc4bfa3a20d10b913461636363e39240c
 	SRC_URI="https://github.com/WayfireWM/wcm/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}"/${PN}-${COMMIT}
-	KEYWORDS="~amd64"
+	KEYWORDS="~amd64 ~arm64"
 	SLOT="0/$(ver_cut 1-2)"
 fi
 
