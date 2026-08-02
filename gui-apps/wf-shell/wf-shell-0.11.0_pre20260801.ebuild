@@ -25,7 +25,7 @@ else
 		)
 	"
 	S="${WORKDIR}"/${PN}-${COMMIT}
-	KEYWORDS="~amd64"
+	KEYWORDS="~amd64 ~arm64"
 	SLOT="0/$(ver_cut 1-2)"
 fi
 
