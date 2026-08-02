@@ -1,0 +1,37 @@
+From 986ae3c0b295e72003d2000fa74f288d1c5d6a28 Mon Sep 17 00:00:00 2001
+From: Luna Lovecraft <ciubix8514@gmail.com>
+Date: Thu, 30 Jul 2026 17:51:51 +0400
+Subject: [PATCH] Fix font family drop down not working on qt 6.11
+
+In Qt 6.11 changing an element of an array no longer calls onChanged
+for that array, so we force update it instead
+
+BUG:520971
+---
+ plugins/dockers/textproperties/qml/FontFamily.qml | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/plugins/dockers/textproperties/qml/FontFamily.qml b/plugins/dockers/textproperties/qml/FontFamily.qml
+index a69c132500e..729ae045375 100644
+--- a/plugins/dockers/textproperties/qml/FontFamily.qml
++++ b/plugins/dockers/textproperties/qml/FontFamily.qml
+@@ -81,10 +81,14 @@ CollapsibleGroupProperty {
+             Layout.fillWidth: true;
+             locales: root.locales;
+             onActivated: {
+-                if (fontFamilies.length >0) {
++                if (fontFamilies.length > 0) {
+                     fontFamilies[0] = resourceName;
++
++                    //Force update font families, as changing an element in an array no longer calls onChanged
++                    fontFamilies = [fontFamilies];
++
+                 } else {
+-                    fontFamilies = [ resourceName ];
++                    fontFamilies = [resourceName];
+                 }
+             }
+             function updateCurrentIndex() {
+-- 
+GitLab
+
