@@ -717,7 +717,7 @@ src_install() {
 }
 
 src_test() {
-	export TEST_PHP_EXECUTABLE="${WORKDIR}/sapis-build/cli/sapi/cli/php"
+	local TEST_PHP_EXECUTABLE="${WORKDIR}/sapis-build/cli/sapi/cli/php"
 
 	# Sometimes when the sub-php launches a sub-sub-php, it uses these.
 	# Without an "-n" in all instances, the *live* php.ini can be loaded,
@@ -726,15 +726,18 @@ src_test() {
 	export TEST_PHP_EXTRA_ARGS="-n"
 
 	if [[ -x "${WORKDIR}/sapis-build/cgi/sapi/cgi/php-cgi" ]] ; then
-		export TEST_PHP_CGI_EXECUTABLE="${WORKDIR}/sapis-build/cgi/sapi/cgi/php-cgi"
+		local TEST_PHP_CGI_EXECUTABLE="${WORKDIR}/sapis-build/cgi/sapi/cgi/php-cgi"
+		export TEST_PHP_CGI_EXECUTABLE
 	fi
 
 	if [[ -x "${WORKDIR}/sapis-build/fpm/sapi/fpm/php-fpm" ]] ; then
-		export TEST_PHP_FPM_EXECUTABLE="${WORKDIR}/sapis-build/fpm/sapi/fpm/php-fpm"
+		local TEST_PHP_FPM_EXECUTABLE="${WORKDIR}/sapis-build/fpm/sapi/fpm/php-fpm"
+		export TEST_PHP_FPM_EXECUTABLE
 	fi
 
 	if [[ -x "${WORKDIR}/sapis-build/phpdbg/sapi/phpdbg/phpdbg" ]] ; then
-		export TEST_PHPDBG_EXECUTABLE="${WORKDIR}/sapis-build/phpdbg/sapi/phpdbg/phpdbg"
+		local TEST_PHPDBG_EXECUTABLE="${WORKDIR}/sapis-build/phpdbg/sapi/phpdbg/phpdbg"
+		export TEST_PHPDBG_EXECUTABLE
 	fi
 
 	# The IO capture tests need to be disabled because they fail when
@@ -751,14 +754,6 @@ src_test() {
 		$(usex test-full "--set-timeout 300" "") \
 		-d "session.save_path=${T}" \
 		|| die "tests failed"
-
-	# The variable TEST_PHP_EXECUTABLE is used by PHP's own
-	# install script, e.g. ext/phar/Makefile.frag.
-	#
-	# We have to unset it to guarantee a sane environment,
-	# otherwise we'll see spurious error messages during
-	# src_install().
-	unset TEST_PHP_EXECUTABLE
 }
 
 pkg_postinst() {
