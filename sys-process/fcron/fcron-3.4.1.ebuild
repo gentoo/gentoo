@@ -17,7 +17,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 arm ~arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~amd64 arm ~arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~sparc x86"
 IUSE="audit debug +mta pam readline selinux +system-crontab test"
 RESTRICT="!test? ( test )"
 
