@@ -78,10 +78,6 @@ acct-group/microsoft-identity-broker
 # Removal on 2026-07-27. Bug #949068.
 gui-libs/tepl
 
-# Sam James <sam@gentoo.ogr> (2026-07-16)
-# Broken (bug #978438).
-=app-portage/mirrorselect-2.6.5
-
 # Sam James <sam@gentoo.org> (2026-07-16)
 # Stub since Bind 9.18. Maintaining a separate build just for the client
 # binaries proved brittle and unsustainable (see discussion in
