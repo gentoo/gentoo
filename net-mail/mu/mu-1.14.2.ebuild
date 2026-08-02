@@ -15,7 +15,7 @@ SRC_URI="https://github.com/djcb/mu/releases/download/v${PV}/${P}.tar.xz"
 # + variant-lite: Boost-1.0
 LICENSE="GPL-3+ BSD Boost-1.0 CC0-1.0 MIT"
 SLOT="0"
-KEYWORDS="~amd64 arm arm64 ~riscv ~x86 ~x64-macos"
+KEYWORDS="~amd64 arm arm64 ~riscv x86 ~x64-macos"
 IUSE="emacs readline test"
 RESTRICT="!test? ( test )"
 
