@@ -12,7 +12,7 @@ SRC_URI="https://github.com/wmww/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.t
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 
 IUSE="doc examples introspection +smoke-tests test vala"
 REQUIRED_USE="vala? ( introspection )"
