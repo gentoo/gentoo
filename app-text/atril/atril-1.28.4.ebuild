@@ -14,7 +14,7 @@ SRC_URI="https://github.com/mate-desktop/${PN}/releases/download/v${PV}/atril-${
 
 LICENSE="FDL-1.1+ GPL-2+ GPL-3+ LGPL-2+ LGPL-2.1+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~riscv x86"
+KEYWORDS="amd64 ~arm ~arm64 ~loong ~riscv x86"
 IUSE="caja dbus debug djvu dvi epub +introspection keyring nls +postscript synctex t1lib test tiff xps"
 
 REQUIRED_USE="t1lib? ( dvi )"
