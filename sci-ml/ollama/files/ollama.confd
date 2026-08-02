@@ -1,6 +1,10 @@
 # Ollama allows cross-origin requests from 127.0.0.1 and 0.0.0.0 by default.
 # Additional origins can be configured with OLLAMA_ORIGINS.
 # export OLLAMA_ORIGINS="<ip>"
+# Allow connections from any origin (or specify exact domains/IPs like "http://192.168.1.50:*")
+# export OLLAMA_ORIGINS="*"
+# Explicitly bind to all network interfaces (needed if running behind a proxy or remote API access)
+# export OLLAMA_HOST="0.0.0.0"
 
 # log to syslog
 # output_logger="logger -t \"$RC_SVCNAME\" -p daemon.info"
@@ -9,3 +13,24 @@
 # log to file
 output_log="/var/log/ollama/ollama.log"
 error_log="/var/log/ollama/ollama.log"
+
+# Set the default context size - default is 4096 token
+# export OLLAMA_CONTEXT_LENGTH=8192
+# export OLLAMA_CONTEXT_LENGTH=16384
+# export OLLAMA_CONTEXT_LENGTH=32768
+# export OLLAMA_CONTEXT_LENGTH=131072
+# export OLLAMA_CONTEXT_LENGTH=262144
+
+# Optimizations
+#
+# Enable Flash Attention (drastically reduces VRAM usage for long contexts)
+# export OLLAMA_FLASH_ATTENTION=true
+# Compress the Key-Value cache (saves VRAM at a tiny precision cost) default is f16
+# export OLLAMA_KV_CACHE_TYPE=q4_0
+#
+# Number of parallel model requests.
+# export OLLAMA_NUM_PARALLEL=1
+#
+# export OLLAMA_VULKAN=false
+# export OLLAMA_DEBUG=INFO
+# export OLLAMA_DEBUG=1 
