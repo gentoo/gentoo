@@ -1,0 +1,13 @@
+diff --git a/sapi/fpm/tests/tester.inc b/sapi/fpm/tests/tester.inc
+index 90798865433..91ba564edf8 100644
+--- a/sapi/fpm/tests/tester.inc
++++ b/sapi/fpm/tests/tester.inc
+@@ -225,7 +225,7 @@ class Tester
+      */
+     static public function findExecutable(): bool|string
+     {
+-        $phpPath = getenv("TEST_PHP_EXECUTABLE");
++        $phpPath = getenv("TEST_PHP_FPM_EXECUTABLE");
+         for ($i = 0; $i < 2; $i++) {
+             $slashPosition = strrpos($phpPath, "/");
+             if ($slashPosition) {
