@@ -30,12 +30,11 @@ UT_DEPEND=">=games-fps/ut2004-3374_pre23"
 
 BDEPEND="
 	${UT_DEPEND}
-	cdinstall? ( app-arch/unshield )
 	gog? ( app-arch/innoextract )
-	!cdinstall? ( !gog? (
+	!gog? (
 		app-arch/libarchive
 		app-arch/unshield
-	) )
+	)
 "
 RDEPEND="
 	${UT_DEPEND}
