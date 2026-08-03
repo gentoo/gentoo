@@ -25,7 +25,14 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 		"${FILESDIR}/${PN}-2.0.05-musl.patch"
+		"${FILESDIR}/${PN}-2.0.10-build-m4.patch"
 	)
+
+src_prepare() {
+	default_src_prepare
+	eapply_user
+	autoreconf -i
+}
 
 src_configure() {
 	#fails to compile with -flto (bug #860408)
