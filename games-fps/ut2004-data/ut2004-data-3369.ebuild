@@ -4,7 +4,7 @@
 EAPI=8
 
 CDROM_OPTIONAL="yes"
-inherit cdrom check-reqs portability
+inherit cdrom check-reqs multiprocessing portability
 
 DESCRIPTION="Data files for Unreal Tournament 2004"
 HOMEPAGE="https://liandri.beyondunreal.com/Unreal_Tournament_2004"
@@ -180,17 +180,21 @@ src_unpack() {
 			;;
 	esac
 
-	# Some disks compress most of the files. The engine has the decompresser.
-	# Annoyingly, it logs to the engine's directory.
-	addpredict "${BROOT}"/opt/ut2004
-	find -name "*.uz2" -exec ut2004-ucc decompress "${PWD}"/{} -nohomedir \; -delete || die
-
-	# Install the Mega Pack where necessary for parity between different
-	# installation sources. This includes the ECE content but *not* the XP Bonus
-	# Maps (ONS-Aridoom and ONS-Ascendancy). The latter were never released as
-	# part of the game and OldUnreal does not include them in its installation.
 	case ${CDROM_SET} in
-		3|4|5) tar --strip-components=1 -jxvf "${DISTDIR}"/ut2004megapack-linux.tar.bz2 || die ;;
+		3|4|5)
+			# Some disks compress most of the files. The engine has the
+			# decompresser. Annoyingly, it logs to the engine's directory.
+			addpredict "${BROOT}"/opt/ut2004
+			ls */*.uz2 | xargs -P "$(get_makeopts_jobs)" -ti ut2004-ucc decompress "${PWD}"/{} -nohomedir >/dev/null || die
+			rm -v */*.uz2 || die
+
+			# Install the Mega Pack where necessary for parity between different
+			# installation sources. This includes the ECE content but *not* the
+			# XP Bonus Maps (ONS-Aridoom and ONS-Ascendancy). The latter were
+			# never released as part of the game and OldUnreal does not include
+			# them in its installation.
+			tar --strip-components=1 -jxvf "${DISTDIR}"/ut2004megapack-linux.tar.bz2 || die
+		;;
 	esac
 }
 
