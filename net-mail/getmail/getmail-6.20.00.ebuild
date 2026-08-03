@@ -24,6 +24,9 @@ PATCHES=(
 	"${FILESDIR}/${PN}-revert-doc-path.patch"
 )
 
+# tests require a mail server
+RESTRICT="test"
+
 python_prepare_all() {
 	# Use gentoo version number (including revision) for doc dir and remove COPYING file
 	sed -i -e "s,'getmail-%s' % __version__,'${PF}'," \
