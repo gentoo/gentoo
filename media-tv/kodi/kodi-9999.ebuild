@@ -385,7 +385,6 @@ src_configure() {
 		-DENABLE_AVAHI=$(usex zeroconf)
 		-DENABLE_BLUETOOTH=$(usex bluetooth)
 		-DENABLE_BLURAY=$(usex bluray)
-		-DENABLE_BLURAY_JAR=OFF # applies to internal bluray build
 		-DENABLE_CAP=$(usex caps)
 		-DENABLE_CEC=$(usex cec)
 		-DENABLE_DBUS=$(usex dbus)
@@ -443,7 +442,10 @@ src_configure() {
 	)
 
 	# Separated to avoid "Manually-specified variables were not used by the project:"
-	use bluray && mycmakeargs+=( -DENABLE_INTERNAL_BLURAY=OFF )
+	use bluray && mycmakeargs+=(
+		-DENABLE_INTERNAL_BLURAY=OFF
+		-DENABLE_BLURAY_JAR=OFF # applies to internal bluray build
+	)
 	use cec && mycmakeargs+=( -DENABLE_INTERNAL_CEC=OFF )
 	use css && mycmakeargs+=( -DLIBDVDCSS_URL="${DISTDIR}/libdvdcss-${LIBDVDCSS_VERSION}.tar.bz2" )
 	use mariadb && mycmakeargs+=( -DENABLE_INTERNAL_MARIADBCLIENT=OFF )
