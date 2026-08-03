@@ -15,7 +15,7 @@ if [[ "${PV}" == *9999* ]] ; then
 else
 	SRC_URI="https://github.com/troglobit/${PN}/archive/${PV}.tar.gz
 		-> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm64 x86"
+	KEYWORDS="amd64 ~arm64 x86"
 fi
 
 LICENSE="Apache-2.0"
