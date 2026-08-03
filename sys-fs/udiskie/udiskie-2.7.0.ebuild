@@ -4,7 +4,7 @@
 EAPI=8
 
 PYPI_VERIFY_REPO=https://github.com/coldfix/udiskie
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{13..14} )
 DISTUTILS_USE_PEP517=setuptools
 inherit distutils-r1 pypi xdg-utils
 
