@@ -49,7 +49,7 @@ RDEPEND="${DEPEND}
 		sys-apps/gptfdisk
 	)
 	selinux? ( sec-policy/selinux-incus )"
-BDEPEND=">=dev-lang/go-1.25.10
+BDEPEND=">=dev-lang/go-1.25.12
 	nls? ( sys-devel/gettext )
 	verify-sig? ( sec-keys/openpgp-keys-linuxcontainers )"
 
