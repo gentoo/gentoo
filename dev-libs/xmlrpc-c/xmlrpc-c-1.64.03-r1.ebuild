@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools flag-o-matic toolchain-funcs
+inherit autotools toolchain-funcs
 
 # Upstream maintains 3 release channels: https://xmlrpc-c.sourceforge.net/release.html
 # 1. Only the "Super Stable" series is released as a tarball
