@@ -41,6 +41,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.64.03-use-stdbool.patch
 	"${FILESDIR}"/${PN}-1.64.03-use-system-expat.patch
 	"${FILESDIR}"/${PN}-1.64.03-fix-pkgconfig.patch
+	"${FILESDIR}"/${PN}-1.64.03-fix_hardcoded_pkg-config.patch
 )
 
 pkg_setup() {

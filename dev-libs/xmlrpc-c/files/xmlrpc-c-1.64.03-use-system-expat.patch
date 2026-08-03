@@ -66,7 +66,7 @@ Bug: https://bugs.gentoo.org/952113
  CCLD = $(CC)
  CXXLD = $(CXX)
  AR = @AR@
-+PKG_CONFIG = pkg-config
++PKG_CONFIG ?= pkg-config
  RANLIB = @RANLIB@
  LN_S = ln -s
  INSTALL = $(SRCDIR)/install-sh
