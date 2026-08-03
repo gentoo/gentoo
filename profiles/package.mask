@@ -451,10 +451,6 @@ dev-qt/qtx11extras:5
 # Severe memory leak (bug #953874)
 =app-i18n/ibus-anthy-1.5.17
 
-# Alfred Wingate <parona@protonmail.com> (2025-05-17)
-# Masked for testing
-dev-db/mysql:8.4
-
 # Norbert Norbiros <norbiros@protonmail.com> (2025-04-01)
 # Screen v5.0.0 has a lot of regressions
 # https://lists.gnu.org/archive/html/screen-devel/2024-10/msg00007.html
