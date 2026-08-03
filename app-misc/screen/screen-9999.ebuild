@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -35,7 +35,6 @@ BDEPEND="sys-apps/texinfo"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-5.0.0-utmp-musl.patch
-	"${FILESDIR}"/${PN}-5.0.1-texi.patch
 )
 
 src_prepare() {
