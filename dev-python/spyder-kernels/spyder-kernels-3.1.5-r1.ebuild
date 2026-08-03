@@ -33,6 +33,7 @@ RDEPEND="
 	>=dev-python/pyxdg-0.26[${PYTHON_USEDEP}]
 	>=dev-python/pyzmq-24.0.0[${PYTHON_USEDEP}]
 	>=dev-python/traitlets-5.14.3[${PYTHON_USEDEP}]
+	<dev-python/traitlets-5.16.0[${PYTHON_USEDEP}]
 	>=dev-python/wurlitzer-1.0.3[${PYTHON_USEDEP}]
 "
 
