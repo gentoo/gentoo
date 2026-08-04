@@ -583,7 +583,7 @@ ngx_force_module() {
 	debug-print-function "${FUNCNAME[0]}" "$@"
 	[[ $# -ge 1 ]] ||
 		die "${FUNCNAME[0]} must receive one or more non-option arguments"
-	_ngx_mod_assert_argfile_exists "${_NGX_MOD_CONFIG_FLAGS_FILE}"
+	_ngx_mod_assert_argfile_exists "${ESYSROOT}${_NGX_MOD_CONFIG_FLAGS_FILE}"
 
 	local nonfatal=0
 	if [[ $1 = '-t' ]]; then
@@ -736,9 +736,9 @@ NGINX_S="${WORKDIR}/nginx"
 # @ECLASS_VARIABLE: _NGX_MOD_CONFIG_FLAGS_FILE
 # @INTERNAL
 # @DESCRIPTION:
-# Holds the path to the file containing NUL-separated ./configure flags used to
-# build www-servers/nginx.
-_NGX_MOD_CONFIG_FLAGS_FILE="${BROOT}/usr/src/nginx/configure-flags"
+# Holds the root-relative path to the file containing NUL-separated ./configure
+# flags used to build www-servers/nginx.
+_NGX_MOD_CONFIG_FLAGS_FILE="/usr/src/nginx/configure-flags"
 
 # @ECLASS_VARIABLE: _NGX_MOD_FORCED_MODULES
 # @INTERNAL
@@ -1000,7 +1000,7 @@ nginx-module_src_prepare() {
 
 	ebegin "Determining NGINX configuration on-disk format"
 
-	if [[ -f "${_NGX_MOD_CONFIG_FLAGS_FILE}" ]]; then
+	if [[ -f "${ESYSROOT}${_NGX_MOD_CONFIG_FLAGS_FILE}" ]]; then
 		eend 0
 		einfo "Using ./configure flags file"
 	else
@@ -1068,9 +1068,10 @@ nginx-module_src_configure() {
 	pushd "${NGINX_S}" >/dev/null || die "pushd failed"
 
 	local ngx_mod_flags=()
-	if [[ -f "${_NGX_MOD_CONFIG_FLAGS_FILE}" ]]; then
+	if [[ -f "${ESYSROOT}${_NGX_MOD_CONFIG_FLAGS_FILE}" ]]; then
 		# Restore the stored configure flags into ngx_mod_flags.
-		mapfile -d '' ngx_mod_flags < "${_NGX_MOD_CONFIG_FLAGS_FILE}"
+		mapfile -d '' ngx_mod_flags < \
+			"${ESYSROOT}${_NGX_MOD_CONFIG_FLAGS_FILE}"
 
 		# When we save compilation flags, NGINX passes all the -l flags to
 		# modules too, including stuff like -lperl -lcrypt etc. I am not sure
@@ -1149,7 +1150,7 @@ nginx-module_src_configure() {
 		"${EXTRA_ECONF[@]}"
 
 	# Backwards compatibility.
-	if [[ ! -f "${_NGX_MOD_CONFIG_FLAGS_FILE}" ]]; then
+	if [[ ! -f "${ESYSROOT}${_NGX_MOD_CONFIG_FLAGS_FILE}" ]]; then
 		cat "${ESYSROOT}/usr/include/nginx/ngx_auto_config.h" \
 			build/__ngx_gentoo_mod_config.h > build/ngx_auto_config.h ||
 			die "cat failed"
