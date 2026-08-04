@@ -111,19 +111,19 @@ inherit flag-o-matic toolchain-funcs
 # @USAGE: <prefix> <word>
 # @RETURN: 'word' with 'prefix' removed if present or added if absent
 _ngx_mod_toggle_prefix() {
-       debug-print-function "${FUNCNAME[0]}" "$@"
-       [[ $# -eq 2 ]] || die "${FUNCNAME[0]} must receive exactly two arguments"
+	debug-print-function "${FUNCNAME[0]}" "$@"
+	[[ $# -eq 2 ]] || die "${FUNCNAME[0]} must receive exactly two arguments"
 
-       local prefix="$1" word="$2"
-       case "${word}" in
-               "${prefix}"*)
-                       word="${word#"${prefix}"}"
-                       ;;
-               *)
-                       word="${prefix}${word}"
-                       ;;
-       esac
-       printf '%s\n' "${word}"
+	local prefix="$1" word="$2"
+	case "${word}" in
+		"${prefix}"*)
+			word="${word#"${prefix}"}"
+			;;
+		*)
+			word="${prefix}${word}"
+			;;
+	esac
+	printf '%s\n' "${word}"
 }
 
 # @FUNCTION: _ngx_mod_assert_argfile_exists
@@ -280,7 +280,7 @@ _ngx_mod_enforce_module_flags() {
 		# Neither target_string, nor inverse_string are found in
 		# ./configure --help: either the module genuinely does not exist or
 		# something has gone really wrong.
-		die "ngx_force_module: module \"${mod}\" not found and '-n' has not been supplied"
+		die "ngx_force_module: module \"${mod}\" not found and '-t' has not been supplied"
 	else
 		# If we do not die, we just return 1.
 		return 1
@@ -664,7 +664,7 @@ ngx_force_module() {
 # ngx_force_module() description.
 #
 # By default, if any of the specified modules do not exist, the build is
-# aborted.  This can be overriden by supplying '-t'.  See ngx_force_module()
+# aborted.  This can be overridden by supplying '-t'.  See ngx_force_module()
 # for behaviour when this flag is supplied.
 #
 # Example:
