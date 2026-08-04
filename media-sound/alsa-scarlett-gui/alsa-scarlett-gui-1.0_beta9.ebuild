@@ -1,4 +1,4 @@
-# Copyright 2023-2025 Gentoo Authors
+# Copyright 2023-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,7 +7,8 @@ inherit toolchain-funcs xdg
 
 DESCRIPTION="A UI for Focusrite Scarlett and Clarett audio interfaces"
 HOMEPAGE="https://github.com/geoffreybennett/alsa-scarlett-gui"
-SRC_URI="https://github.com/geoffreybennett/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+MY_PV="${PV//_/}"
+SRC_URI="https://github.com/geoffreybennett/${PN}/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"
@@ -23,6 +24,7 @@ BDEPEND="virtual/pkgconfig"
 
 MAKEOPTS="${MAKEOPTS} -C src"
 
+S="${WORKDIR}/${PN}-${MY_PV}"
 export PREFIX="/usr"
 
 src_compile() {
