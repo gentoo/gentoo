@@ -66,7 +66,7 @@ RDEPEND="
 	!sci-ml/caffe2
 	dev-cpp/abseil-cpp:=
 	dev-cpp/gflags:=
-	>=dev-cpp/glog-0.5.0:=
+	>=dev-cpp/glog-0.6.0:=
 	>=dev-libs/cpuinfo-2025.11.14
 	dev-libs/libfmt:=
 	dev-libs/protobuf:=
@@ -119,7 +119,7 @@ RDEPEND="
 		>=sci-libs/rocBLAS-6.3:=   <sci-libs/rocBLAS-7.3:=
 		>=sci-libs/rocRAND-6.3:=   <sci-libs/rocRAND-7.3:=
 		>=sci-libs/rocSOLVER-6.3:= <sci-libs/rocSOLVER-7.3:=
-		memefficient? ( =sci-libs/aotriton-bin-0.11*:= )
+		memefficient? ( =sci-libs/aotriton-bin-0.13*:= )
 		distributed? (
 			>=dev-util/rocm-smi-6.3:= <dev-util/rocm-smi-7.3:=
 			>=dev-util/amdsmi-6.3:= <dev-util/amdsmi-7.3:=
@@ -160,7 +160,7 @@ DEPEND="
 BDEPEND="dev-build/cmake"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-2.10.0-cpp-extension-multilib.patch
+	"${FILESDIR}"/${P}-aotriton-fixes.patch
 	"${FILESDIR}"/${P}-glog.patch
 	"${FILESDIR}"/${P}-removekineto-pr178960.patch
 	"${FILESDIR}"/${P}-unbundle_fbgemm.patch
@@ -179,13 +179,10 @@ src_prepare() {
 	fi
 	filter-lto #bug 862672
 
+	eapply "${FILESDIR}/${PN}-2.10.0-cpp-extension-multilib.patch"
 	# Replace placeholders added by cpp-extension.patch
 	sed -e "s|%LIB_DIR%|$(get_libdir)|g" \
 		-i torch/utils/cpp_extension.py || die
-
-	# Drop legacy from pyproject.toml
-	sed -e "/build-backend/s|:__legacy__||" \
-		-i pyproject.toml || die
 
 	# Unbundle fmt
 	sed -i \
@@ -205,13 +202,6 @@ src_prepare() {
 		cmake/Dependencies.cmake \
 		cmake/ProtoBuf.cmake \
 		aten/src/ATen/CMakeLists.txt \
-		|| die
-
-	# Change libaotriton path
-	sed -i \
-		-e "s|}/lib|}/\${CMAKE_INSTALL_LIBDIR}|g" \
-		-e "/set(__AOTRITON_LIB/s|lib/|\${CMAKE_INSTALL_LIBDIR}/|g" \
-		cmake/External/aotriton.cmake \
 		|| die
 
 	# Add needed file for cutlass as symbolic link
