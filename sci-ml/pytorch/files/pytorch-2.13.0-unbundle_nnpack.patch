@@ -1,0 +1,11 @@
+--- a/cmake/External/nnpack.cmake
++++ b/cmake/External/nnpack.cmake
+@@ -56,7 +56,7 @@
+   set(PTHREADPOOL_SOURCE_DIR "${CAFFE2_THIRD_PARTY_ROOT}/pthreadpool" CACHE STRING "pthreadpool source directory")
+   set(GOOGLETEST_SOURCE_DIR "${CAFFE2_THIRD_PARTY_ROOT}/googletest" CACHE STRING "Google Test source directory")
+ 
+-  if(NOT TARGET nnpack)
++  if(FALSE)
+     set(NNPACK_BUILD_TESTS OFF CACHE BOOL "")
+     set(NNPACK_BUILD_BENCHMARKS OFF CACHE BOOL "")
+     set(NNPACK_LIBRARY_TYPE "static" CACHE STRING "")

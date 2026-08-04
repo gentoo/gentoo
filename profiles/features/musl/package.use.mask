@@ -9,6 +9,7 @@ sys-auth/pambase homed
 # Sv. Lockal <lockalsash@gmail.com.com> (2025-07-07)
 # sci-libs/aotriton-bin is masked on musl
 sci-ml/caffe2 memefficient
+sci-ml/pytorch memefficient
 
 # Alfred Wingate <parona@protonmail.com> (2025-05-17)
 # Tests cannot be built on musl due to libc specific ifdefs (bug #836710)

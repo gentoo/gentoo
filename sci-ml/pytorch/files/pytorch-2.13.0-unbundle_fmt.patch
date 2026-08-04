@@ -1,0 +1,39 @@
+--- a/cmake/Dependencies.cmake
++++ b/cmake/Dependencies.cmake
+@@ -1522,7 +1522,6 @@
+ # CMAKE_CXX_FLAGS in ways that break feature checks. Since we already know
+ # `fmt` is compatible with a superset of the compilers that PyTorch is, it
+ # shouldn't be too bad to just disable the checks.
+-set_target_properties(fmt-header-only PROPERTIES INTERFACE_COMPILE_FEATURES "")
+ 
+ list(APPEND Caffe2_DEPENDENCY_LIBS fmt)
+ set(BUILD_SHARED_LIBS ${TEMP_BUILD_SHARED_LIBS} CACHE BOOL "Build shared libs" FORCE)
+@@ -1641,8 +1641,6 @@
+ else()
+   set(_fmt_no_unique_address "[[no_unique_address]]")
+ endif()
+-target_compile_definitions(fmt PUBLIC "FMT_NO_UNIQUE_ADDRESS=${_fmt_no_unique_address}")
+-target_compile_definitions(fmt-header-only INTERFACE "FMT_NO_UNIQUE_ADDRESS=${_fmt_no_unique_address}")
+ unset(_fmt_no_unique_address)
+ 
+ list(APPEND Caffe2_DEPENDENCY_LIBS fmt)
+--- a/aten/src/ATen/CMakeLists.txt	2025-02-27 14:23:02.402742165 +0100
++++ b/aten/src/ATen/CMakeLists.txt	2025-02-27 14:23:40.445850718 +0100
+@@ -448,8 +448,6 @@
+ if(USE_CUDA)
+   list(APPEND ATen_CUDA_INCLUDE ${CMAKE_CURRENT_SOURCE_DIR}/cuda)
+   # Next two lines are needed because TunableOp uses third-party/fmt
+-  list(APPEND ATen_CUDA_INCLUDE $<TARGET_PROPERTY:fmt::fmt-header-only,INTERFACE_INCLUDE_DIRECTORIES>)
+-  list(APPEND ATen_CUDA_DEPENDENCY_LIBS fmt::fmt-header-only)
+   list(APPEND ATen_CUDA_CU_SRCS
+     ${cuda_cu}
+     ${native_cuda_cu}
+@@ -521,8 +519,6 @@
+   endif()
+
+   # Next two lines are needed because TunableOp uses third-party/fmt
+-  list(APPEND ATen_HIP_INCLUDE $<TARGET_PROPERTY:fmt::fmt-header-only,INTERFACE_INCLUDE_DIRECTORIES>)
+-  list(APPEND ATen_HIP_DEPENDENCY_LIBS fmt::fmt-header-only)
+   if(USE_FLASH_ATTENTION AND USE_ROCM_CK_SDPA)
+     list(APPEND ATen_HIP_INCLUDE ${CMAKE_CURRENT_SOURCE_DIR}/native/transformers/hip/flash_attn/ck)
+   endif()
