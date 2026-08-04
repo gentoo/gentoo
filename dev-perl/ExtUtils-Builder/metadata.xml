@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">ExtUtils-Builder</remote-id>
+    <remote-id type="cpan-module">ExtUtils::Builder</remote-id>
+    <remote-id type="cpan-module">ExtUtils::Builder::Action</remote-id>
+    <remote-id type="cpan-module">ExtUtils::Builder::Action::Code</remote-id>
+    <remote-id type="cpan-module">ExtUtils::Builder::Action::Command</remote-id>
+    <remote-id type="cpan-module">ExtUtils::Builder::Action::Composite</remote-id>
+    <remote-id type="cpan-module">ExtUtils::Builder::Action::Function</remote-id>
+    <remote-id type="cpan-module">ExtUtils::Builder::Action::Perl</remote-id>
+    <remote-id type="cpan-module">ExtUtils::Builder::Action::Primitive</remote-id>
+    <remote-id type="cpan-module">ExtUtils::Builder::CPAN::Tool</remote-id>
+    <remote-id type="cpan-module">ExtUtils::Builder::MakeMaker</remote-id>
+    <remote-id type="cpan-module">ExtUtils::Builder::Node</remote-id>
+    <remote-id type="cpan-module">ExtUtils::Builder::Plan</remote-id>
+    <remote-id type="cpan-module">ExtUtils::Builder::Planner</remote-id>
+    <remote-id type="cpan-module">ExtUtils::Builder::Planner::Extension</remote-id>
+    <remote-id type="cpan-module">ExtUtils::Builder::Serializer</remote-id>
+    <remote-id type="cpan-module">ExtUtils::Builder::Util</remote-id>
+    <remote-id type="github">leont/extutils-builder-plan</remote-id>
+  </upstream>
+</pkgmetadata>
