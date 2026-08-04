@@ -339,7 +339,6 @@ BDEPEND="
 	BDEPEND+=" verify-sig? ( sec-keys/openpgp-keys-ffmpeg )"
 
 DOCS=( CREDITS Changelog README.md doc/APIchanges )
-[[ ${PV} != 9999 ]] && DOCS+=( RELEASE_NOTES )
 
 MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/libavutil/avconfig.h
