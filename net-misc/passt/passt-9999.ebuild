@@ -23,6 +23,8 @@ LICENSE="BSD GPL-2+"
 SLOT="0"
 IUSE="static"
 
+PATCHES=( "${FILESDIR}/${PN}-2026.07.28-musl.patch" )
+
 src_prepare() {
 	default
 	tc-export CC
