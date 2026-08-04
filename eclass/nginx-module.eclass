@@ -29,7 +29,7 @@
 # using the ngx_mod_link_lib() function.
 #
 # If the package genuinely depends on first-party NGINX module(s), the helper
-# ngx_mod_gen_nginx_dep() might be used to generate the suitable dependency
+# ngx_gen_dep() might be used to generate the suitable dependency
 # string for depending on first-party modules. For more advanced setups,
 # ngx_force_module() and ngx_usex_module() might be of interest.
 #
