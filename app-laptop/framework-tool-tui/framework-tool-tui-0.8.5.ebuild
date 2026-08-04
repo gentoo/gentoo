@@ -29,7 +29,7 @@ LICENSE+="
 LICENSE+=" MIT"
 
 # framework_lib
-LICENSE+=" BSD-3"
+LICENSE+=" BSD"
 
 SLOT="0"
 KEYWORDS="~amd64"
