@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Dist-Build</remote-id>
+    <remote-id type="cpan-module">Dist::Build</remote-id>
+    <remote-id type="cpan-module">Dist::Build::Core</remote-id>
+    <remote-id type="cpan-module">Dist::Build::Serializer</remote-id>
+    <remote-id type="cpan-module">Dist::Build::ShareDir</remote-id>
+    <remote-id type="cpan-module">Dist::Build::Util</remote-id>
+    <remote-id type="cpan-module">Dist::Build::XS</remote-id>
+    <remote-id type="cpan-module">Dist::Build::XS::Alien</remote-id>
+    <remote-id type="cpan-module">Dist::Build::XS::Conf</remote-id>
+    <remote-id type="cpan-module">Dist::Build::XS::Export</remote-id>
+    <remote-id type="cpan-module">Dist::Build::XS::Import</remote-id>
+    <remote-id type="cpan-module">Dist::Build::XS::WriteConstants</remote-id>
+    <remote-id type="github">Leont/dist-build</remote-id>
+  </upstream>
+</pkgmetadata>
