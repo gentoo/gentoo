@@ -12,7 +12,6 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 BDEPEND="
-	dev-perl/ExtUtils-Builder-Compiler
 	dev-perl/ExtUtils-Config
 	dev-perl/ExtUtils-Helpers
 "
