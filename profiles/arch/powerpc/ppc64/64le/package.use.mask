@@ -4,6 +4,7 @@
 # Ionen Wolkens <ionen@gentoo.org> (2026-03-16)
 # media-libs/opencolorio is available on ppc64le
 media-video/ffmpeg -opencolorio
+media-video/ffmpeg-compat -opencolorio
 
 # Marek Szuba <marecki@gentoo.org> (2023-12-05)
 # Needs USE=video_cards_amdgpu, which IS available on ppc64le.

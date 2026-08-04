@@ -32,6 +32,7 @@ dev-util/ccache http
 # Ionen Wolkens <ionen@gentoo.org> (2026-03-16)
 # media-libs/opencolorio is not keyworded here
 media-video/ffmpeg opencolorio
+media-video/ffmpeg-compat opencolorio
 
 # Sam James <sam@gentoo.org> (2025-08-29)
 # net-misc/passt not yet keyworded here

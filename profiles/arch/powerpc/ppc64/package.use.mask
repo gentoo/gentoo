@@ -12,6 +12,7 @@ net-irc/quassel urlpreview
 # Ionen Wolkens <ionen@gentoo.org> (2026-03-16)
 # media-libs/opencolorio is masked on ppc64(be)
 media-video/ffmpeg opencolorio
+media-video/ffmpeg-compat opencolorio
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2026-02-14)
 # <dev-cpp/opentelemetry-cpp-1.10 not keyworded here, bug #961188

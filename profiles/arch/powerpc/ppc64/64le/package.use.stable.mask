@@ -6,6 +6,7 @@
 # Not overly worth extra stabilizations over new still scarcely used
 # colour filters. Can revisit if someone wants this.
 media-video/ffmpeg opencolorio
+media-video/ffmpeg-compat opencolorio
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2021-05-07)
 # openjfx:8 will never be stabilized

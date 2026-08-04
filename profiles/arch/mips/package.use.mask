@@ -33,6 +33,7 @@ sys-fs/lvm2 vdo
 # Ionen Wolkens <ionen@gentoo.org> (2026-03-16)
 # media-libs/opencolorio is not keyworded here
 media-video/ffmpeg opencolorio
+media-video/ffmpeg-compat opencolorio
 
 # Sam James <sam@gentoo.org> (2026-01-16)
 # Unkeyworded dependencies (bug #968238)
@@ -401,6 +402,7 @@ app-text/enchant nuspell
 # Adel Kara Slimane <adel.ks@zegrapher.com> (2022-03-14)
 # Untested useflag on other arches, needs keywording
 media-video/ffmpeg vmaf
+media-video/ffmpeg-compat vmaf
 
 # James Le Cuirot <chewi@gentoo.org> (2022-02-24)
 # These GRUB platforms are only for MIPS.

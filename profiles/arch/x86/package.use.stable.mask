@@ -22,6 +22,7 @@
 # Not overly worth extra stabilizations over new still scarcely used
 # colour filters. Can revisit if someone wants this.
 media-video/ffmpeg opencolorio
+media-video/ffmpeg-compat opencolorio
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-12-13)
 # media-gfx/asymptote is not stable here, bug #961740

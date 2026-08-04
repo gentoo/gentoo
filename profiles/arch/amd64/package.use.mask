@@ -36,6 +36,7 @@ llvm-runtimes/clang-runtime -llvm_targets_AMDGPU -llvm_targets_NVPTX -llvm_targe
 # Ionen Wolkens <ionen@gentoo.org> (2026-02-11)
 # net-libs/librist is available here
 media-video/ffmpeg -rist
+media-video/ffmpeg-compat -rist
 
 # Andrey Grozin <grozin@gentoo.org> (2026-01-08)
 # dev-python/pyside[tools] is available here

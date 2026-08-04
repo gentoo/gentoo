@@ -41,6 +41,7 @@ sys-fs/lvm2 vdo
 # Ionen Wolkens <ionen@gentoo.org> (2026-03-16)
 # media-libs/opencolorio is not keyworded here
 media-video/ffmpeg opencolorio
+media-video/ffmpeg-compat opencolorio
 
 # Jaco Kroon <jaco@uls.co.za> (2026-02-06)
 # Requires sys-auth/libyubikey
@@ -404,6 +405,7 @@ media-libs/freetype svg
 # Adel Kara Slimane <adel.ks@zegrapher.com> (2022-03-14)
 # Untested useflag on other arches, needs keywording
 media-video/ffmpeg vmaf
+media-video/ffmpeg-compat vmaf
 
 # Sam James <sam@gentoo.org> (2022-03-06)
 # Unkeyworded dependencies

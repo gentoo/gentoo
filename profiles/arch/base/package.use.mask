@@ -17,6 +17,7 @@ llvm-runtimes/clang-runtime llvm_targets_AMDGPU llvm_targets_NVPTX
 # Ionen Wolkens <ionen@gentoo.org> (2026-02-11)
 # net-libs/librist currently has very few keywords
 media-video/ffmpeg rist
+media-video/ffmpeg-compat rist
 
 # Andrey Grozin <grozin@gentoo.org> (2026-01-08)
 # Needs dev-python/pyside[tools]

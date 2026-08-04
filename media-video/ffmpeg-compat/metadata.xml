@@ -62,6 +62,7 @@
 		</flag>
 		<flag name="libsoxr">Enable use of the audio resampler from <pkg>media-libs/soxr</pkg></flag>
 		<flag name="lv2">Enable use of filters through <pkg>media-libs/lv2</pkg></flag>
+		<flag name="opencolorio">Enable use of color management filters via <pkg>media-libs/opencolorio</pkg></flag>
 		<flag name="ocr">Enable Optical Character Recognition (OCR) filter support via <pkg>app-text/tesseract</pkg></flag>
 		<flag name="openh264">Enable H.264 encoding support via <pkg>media-libs/openh264</pkg></flag>
 		<flag name="openmpt">Enable MPTM tracked music files decoding support via <pkg>media-libs/libopenmpt</pkg></flag>
@@ -78,6 +79,7 @@
 		<flag name="quirc">Enable QR decoding support via <pkg>media-libs/quirc</pkg></flag>
 		<flag name="rabbitmq">Enable AMQP stream support via <pkg>net-libs/rabbitmq-c</pkg></flag>
 		<flag name="rav1e">Enable AV1 encoding support via <pkg>media-video/rav1e</pkg></flag>
+		<flag name="rist">Enable Reliable Internet Stream Transport (RIST) protocol support via <pkg>net-libs/librist</pkg></flag>
 		<flag name="rubberband">Enable time-stretching and pitch-shifting audio filter support via <pkg>media-libs/rubberband</pkg></flag>
 		<flag name="sdl">Enable use of the Simple Direct Layer library (required for the ffplay command)</flag>
 		<flag name="shaderc">Enable support for various GPU-accelerated filters using Vulkan compiled with <pkg>media-libs/shaderc</pkg></flag>
@@ -99,6 +101,7 @@
 			in addition to FFmpeg's own implementation
 		</flag>
 		<flag name="vidstab">Enable video stabilization filter support via <pkg>media-libs/vidstab</pkg></flag>
+		<flag name="vmaf">Enable Netflix's perceptual video quality assessment filter support via <pkg>media-libs/libvmaf</pkg></flag>
 		<flag name="vpx">
 			Enable VP8 and VP9 de/encoding support via <pkg>media-libs/libvpx</pkg>
 			in addition to FFmpeg's own implementation (for decoding only)
