@@ -35,6 +35,11 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
+PATCHES=(
+	# https://bugs.gentoo.org/980178
+	"${FILESDIR}"/${P}-lcms_tiff.patch
+)
+
 src_prepare() {
 	default
 
