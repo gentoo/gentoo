@@ -8,13 +8,12 @@ inherit desktop dot-a eapi9-pipestatus eapi9-ver flag-o-matic linux-mod-r1
 inherit readme.gentoo-r1 systemd toolchain-funcs unpacker user-info
 
 MODULES_KERNEL_MAX=7.1
-NV_PIN=595.71.05
+NV_PIN=595.91.07
 
 DESCRIPTION="NVIDIA Accelerated Graphics Driver"
 HOMEPAGE="https://developer.nvidia.com/vulkan-driver/"
 SRC_URI="
-	https://developer.nvidia.com/downloads/vulkan-beta-${PV//.}-linux
-		-> NVIDIA-Linux-x86_64-${PV}.run
+	https://developer.nvidia.com/downloads/assets/gameworks/downloads/secure/Vulkan_Beta_Drivers/NVIDIA-Linux-x86_64-${PV}.run
 	$(printf "https://download.nvidia.com/XFree86/%s/%s-${NV_PIN}.tar.bz2 " \
 		nvidia-{installer,modprobe,persistenced,settings,xconfig}{,})
 	https://github.com/NVIDIA/open-gpu-kernel-modules/archive/refs/tags/${PV}.tar.gz
