@@ -22,6 +22,7 @@ else
 		${FFMPEG_SOC_PATCH:+"
 			soc? ( https://dev.gentoo.org/~chewi/distfiles/${FFMPEG_SOC_PATCH} )
 		"}
+		https://distfiles.gentoo.org/pub/dev/ionen@gentoo.org/ffmpeg-$(ver_cut 1-2)-patchset-1.tar.xz
 	"
 	S=${WORKDIR}/ffmpeg-${PV} # avoid ${P} for ffmpeg-compat
 	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~sparc x86 ~arm64-macos ~x64-macos"
@@ -344,7 +345,7 @@ MULTILIB_WRAPPED_HEADERS=(
 )
 
 PATCHES=(
-	"${FILESDIR}"/ffmpeg-6.1-opencl-parallel-gmake-fix.patch
+	"${WORKDIR}"/patches
 )
 
 pkg_pretend() {
