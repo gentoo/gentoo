@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: perl-module.eclass
@@ -265,7 +265,7 @@ perl-module_src_configure() {
 		# https://metacpan.org/pod/CPAN::API::BuildPL#Command-Line-Options
 		set -- \
 			--installdirs=vendor \
-                        --create_packlist=1 \
+			--create_packlist=1 \
 			--verbose \
 			--prefix "${EPREFIX}"/usr \
 			--config ar="$(tc-getAR)" \
