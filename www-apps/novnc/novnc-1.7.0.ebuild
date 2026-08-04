@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=no
-PYTHON_COMPAT=( python3_{9..14} )
+PYTHON_COMPAT=( python3_{9..15} )
 inherit distutils-r1
 
 DESCRIPTION="noVNC is a VNC client implemented using HTML5 technologies"
