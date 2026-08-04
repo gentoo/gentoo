@@ -888,10 +888,10 @@ nginx_src_install() {
 		# The directory where third-party modules should save their own headers.
 		keepdir /usr/include/nginx/modules
 
-		# Allow pluging arbitrary libraries (linker flags, more accurately) via
-		# the _NGINX_GENTOO_MOD_LIBS environment variable.
+		# Allow injecting linker flags before and libraries after NGINX's module
+		# libraries via environment variables.
 		sed -i -e '/"$ngx_module_link" = DYNAMIC/ a\' \
-			-e 'ngx_module_libs="$ngx_module_libs ${_NGINX_GENTOO_MOD_LIBS}"' \
+			-e 'ngx_module_libs="${_NGINX_GENTOO_MOD_LDFLAGS} $ngx_module_libs ${_NGINX_GENTOO_MOD_LIBS}"' \
 			auto/module || die "sed failed"
 
 		# Copy the build system of NGINX to /usr/src/nginx.

@@ -39,7 +39,7 @@ PATCHES=(
 )
 
 src_configure() {
-	ngx_mod_append_libs "$(lua_get_LIBS)"
+	ngx_mod_append_ldflags "$(lua_get_LIBS)"
 	append-cflags "$(lua_get_CFLAGS)"
 
 	nginx-module_src_configure
