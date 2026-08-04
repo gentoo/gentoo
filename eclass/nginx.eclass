@@ -687,7 +687,7 @@ nginx_src_configure() {
 	# module building.
 	if use modules; then
 		printf '%s\0' "${nginx_flags[@]}" "$@" "${EXTRA_ECONF[@]}" \
-			>> "${_NGX_CONFIG_FLAGS_FILE}"
+			> "${_NGX_CONFIG_FLAGS_FILE}" || die "printf failed"
 	fi
 
 	sed -E -i \
