@@ -173,9 +173,10 @@ src_prepare() {
 	# temporary dirty workaround for clang being stricter than gcc,
 	# reproducing requires a kernel with CONFIG_OF_GPIO enabled
 	# nv-linux.h:1737:51: error: passing 'const struct gpio_device *' [...]
-	CC=${KERNEL_CC} tc-is-clang &&
+	if CC=${KERNEL_CC} tc-is-clang; then
 		sed -e 's/-Wno-error/& -Wno-error=incompatible-pointer-types-discards-qualifiers/' \
 			-i kernel-module-source/kernel-open/Kbuild || die
+	fi
 }
 
 src_compile() {
