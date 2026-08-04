@@ -13,7 +13,7 @@ LICENSE="Apache-2.0 BSD BSD-2 ISC MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64"
 
-BDEPEND=">=dev-lang/go-1.26:="
+BDEPEND=">=dev-lang/go-1.26.0:="
 
 QA_PRESTRIPPED="usr/bin/kubectl-oidc_login"
 
