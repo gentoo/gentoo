@@ -36,6 +36,16 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2026-08-04)
+# Slop package.  The old versions bundle a very old fork of
+# app-i18n/uchardet.  The new ones require app-i18n/uchardet from git
+# that suffers from regressions (and upstream slop-patched them anyway).
+# The only revdep supports fallback to dev-python/chardet and
+# dev-python/charset-normalizer (both are also slop nowadays, but we're
+# stuck with them anyway), and uses a || dep.
+# Removal on 2026-09-03.  Bug #980354.
+dev-python/faust-cchardet
+
 # James Le Cuirot <chewi@gentoo.org> (2026-07-29)
 # These packages have been superseded by recent versions of
 # games-fps/ut2004-data, which now includes this content regardless of
