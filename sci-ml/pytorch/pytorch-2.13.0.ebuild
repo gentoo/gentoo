@@ -161,6 +161,7 @@ BDEPEND="dev-build/cmake"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.10.0-cpp-extension-multilib.patch
+	"${FILESDIR}"/${P}-glog.patch
 	"${FILESDIR}"/${P}-removekineto-pr178960.patch
 	"${FILESDIR}"/${P}-unbundle_fbgemm.patch
 	"${FILESDIR}"/${P}-unbundle_flatbuffers.patch
