@@ -27,7 +27,7 @@ BDEPEND="
 	dev-util/patchelf
 "
 RDEPEND="
-	media-libs/libsdl2[opengl,video]
+	media-libs/libsdl2[opengl?,video,vulkan?]
 	media-libs/libsndfile
 	media-libs/libxmp
 	media-libs/openal
