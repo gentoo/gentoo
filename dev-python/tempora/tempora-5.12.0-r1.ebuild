@@ -22,6 +22,7 @@ RDEPEND="
 	>=dev-python/jaraco-collections-5.2.1[${PYTHON_USEDEP}]
 	dev-python/jaraco-context[${PYTHON_USEDEP}]
 	>=dev-python/jaraco-functools-4.2[${PYTHON_USEDEP}]
+	dev-python/python-dateutil[${PYTHON_USEDEP}]
 "
 
 EPYTEST_PLUGINS=( pytest-freezer )
