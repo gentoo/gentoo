@@ -54,6 +54,7 @@ src_prepare() {
 	sed -i \
 		-e "/-Werror/d" \
 		CMakeLists.txt \
+		cmake/modules/CppLibrary.cmake \
 		|| die
 	cmake_src_prepare
 }
