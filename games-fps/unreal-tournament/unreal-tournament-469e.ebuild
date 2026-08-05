@@ -15,7 +15,7 @@ SRC_URI="
 "
 S="${WORKDIR}"
 
-LICENSE="Epic-TOS Apache-2.0 BSD BSD-2 libpng2 MIT OFL-1.1 ZLIB" # See LICENSE.md
+LICENSE="Epic-TOS Apache-2.0 BSD BSD-2 HappyBunny libpng2 MIT OFL-1.1 ZLIB" # See LICENSE.md
 SLOT="0"
 KEYWORDS="-* ~amd64 ~arm64 ~x86"
 IUSE="dedicated l10n_ca l10n_de l10n_el l10n_es l10n_fr l10n_it l10n_nl l10n_pt l10n_ru opengl vulkan"
