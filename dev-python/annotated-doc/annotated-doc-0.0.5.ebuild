@@ -20,3 +20,8 @@ KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 
 EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
+
+EPYTEST_IGNORE=(
+	# not useful for us, requires dev-python/typer
+	tests/test_prepare_release.py
+)
