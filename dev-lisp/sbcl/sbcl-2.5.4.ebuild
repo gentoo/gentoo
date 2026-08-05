@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -267,4 +267,14 @@ src_install() {
 	echo "SBCL_HOME=${EPREFIX}/usr/$(get_libdir)/${PN}" > "${ENVD}"
 	echo "SBCL_SOURCE_ROOT=${EPREFIX}/usr/$(get_libdir)/${PN}/src" >> "${ENVD}"
 	doenvd "${ENVD}"
+}
+
+pkg_postinst() {
+	if [[ -z ${REPLACING_VERSIONS} ]]; then
+		elog "SBCL_HOME is set through /etc/env.d/50sbcl. On a first"
+		elog "installation, shells that are already running still have a"
+		elog "stale environment, so sbcl cannot locate its core file."
+		elog "Run 'source /etc/profile' in each affected shell, or start"
+		elog "a new login session."
+	fi
 }

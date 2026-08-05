@@ -269,3 +269,13 @@ src_install() {
 	echo "SBCL_SOURCE_ROOT=${EPREFIX}/usr/$(get_libdir)/${PN}/src" >> "${ENVD}"
 	doenvd "${ENVD}"
 }
+
+pkg_postinst() {
+	if [[ -z ${REPLACING_VERSIONS} ]]; then
+		elog "SBCL_HOME is set through /etc/env.d/50sbcl. On a first"
+		elog "installation, shells that are already running still have a"
+		elog "stale environment, so sbcl cannot locate its core file."
+		elog "Run 'source /etc/profile' in each affected shell, or start"
+		elog "a new login session."
+	fi
+}
