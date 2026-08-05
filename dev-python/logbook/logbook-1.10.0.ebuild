@@ -73,7 +73,8 @@ BDEPEND="
 "
 EPYTEST_PLUGINS=( pytest-rerunfailures )
 distutils_enable_tests pytest
-distutils_enable_sphinx docs
+distutils_enable_sphinx docs \
+	dev-python/furo
 
 EPYTEST_DESELECT=(
 	# Delete test file requiring local connection to redis server
