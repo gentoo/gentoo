@@ -4,6 +4,7 @@
 EAPI=8
 
 DIST_AUTHOR=LEONT
+DIST_VERSION=0.037
 inherit perl-module
 
 DESCRIPTION="Interface around different compilers"
