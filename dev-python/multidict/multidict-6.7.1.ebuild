@@ -27,6 +27,7 @@ IUSE="+native-extensions"
 BDEPEND="
 	test? (
 		dev-python/objgraph[${PYTHON_USEDEP}]
+		dev-python/psutil[${PYTHON_USEDEP}]
 	)
 "
 
