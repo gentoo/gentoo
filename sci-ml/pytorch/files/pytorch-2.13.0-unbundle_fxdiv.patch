@@ -1,0 +1,20 @@
+--- a/caffe2/CMakeLists.txt	2026-08-05 09:32:50.189849728 +0200
++++ b/caffe2/CMakeLists.txt	2026-08-05 09:34:02.015073194 +0200
+@@ -90,7 +90,7 @@
+ # Note: the folders that are being commented out have not been properly
+ # addressed yet.
+ 
+-if(NOT MSVC AND USE_XNNPACK)
++if(FALSE)
+   if(NOT TARGET fxdiv)
+     set(FXDIV_BUILD_TESTS OFF CACHE BOOL "")
+     set(FXDIV_BUILD_BENCHMARKS OFF CACHE BOOL "")
+@@ -1220,7 +1220,7 @@
+   endif()
+ endif()
+ 
+-if(NOT MSVC AND USE_XNNPACK)
++if(FALSE)
+   TARGET_LINK_LIBRARIES(torch_cpu PRIVATE fxdiv)
+ endif()
+ 

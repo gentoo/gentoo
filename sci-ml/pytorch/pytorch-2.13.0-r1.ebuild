@@ -166,6 +166,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-unbundle_fbgemm.patch
 	"${FILESDIR}"/${P}-unbundle_flatbuffers.patch
 	"${FILESDIR}"/${P}-unbundle_fmt.patch
+	"${FILESDIR}"/${P}-unbundle_fxdiv.patch
 	"${FILESDIR}"/${P}-unbundle_kineto.patch
 	"${FILESDIR}"/${P}-unbundle_mkldnn.patch
 	"${FILESDIR}"/${P}-unbundle_nnpack.patch
