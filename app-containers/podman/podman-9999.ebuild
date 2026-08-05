@@ -42,7 +42,7 @@ RDEPEND="
 	btrfs? ( sys-fs/btrfs-progs )
 	wrapper? ( !app-containers/docker-cli )
 	seccomp? ( sys-libs/libseccomp:= )
-	selinux? ( sec-policy/selinux-podman sys-libs/libselinux:= )
+	selinux? ( sec-policy/selinux-podman )
 	systemd? ( sys-apps/systemd:= )
 "
 DEPEND="${RDEPEND}"
@@ -105,12 +105,12 @@ src_compile() {
 		tc-export PKG_CONFIG
 	fi
 
-	emake BUILDFLAGS="-v -work -x" GOMD2MAN="go-md2man" EXTRA_BUILDTAGS="$(usev seccomp)" \
+	emake BUILDFLAGS="-v -work -x" GOMD2MAN="go-md2man" EXTRA_BUILDTAGS="$(usev seccomp)" SELINUXOPT= \
 		  all $(usev wrapper docker-docs)
 }
 
 src_install() {
-	emake DESTDIR="${D}" install install.completions $(usev wrapper install.docker-full)
+	emake DESTDIR="${D}" SELINUXOPT= install install.completions $(usev wrapper install.docker-full)
 
 	newconfd "${FILESDIR}"/podman-5.0.0_rc4.confd podman
 	newinitd "${FILESDIR}"/podman-5.0.0_rc4.initd podman
