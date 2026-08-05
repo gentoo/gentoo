@@ -62,6 +62,7 @@ QA_CONFIG_IMPL_DECL_SKIP=(
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-10.0.6-fix-lib-check.patch
+	"${FILESDIR}"/${PN}-10.5.0-no-privsep.patch
 )
 
 src_configure() {
