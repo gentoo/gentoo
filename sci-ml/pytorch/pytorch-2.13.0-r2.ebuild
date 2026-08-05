@@ -11,9 +11,9 @@ DISTUTILS_EXT=1
 ROCM_VERSION=6.1
 inherit distutils-r1 prefix cuda flag-o-matic rocm multiprocessing
 
-# pytorch-2.13.0 depends on future version of composable kernel
+# pytorch-2.13.0 depends on specific commit of composable kernel
 # TODO: replace it with DEPEND in the future
-CK_COMMIT=7fe50dc3da2069d6645d9deb8c017a876472a977
+CK_COMMIT=f1746955fdaf80a3414de814bf32437686dac347
 CK_P=composable_kernel-${CK_COMMIT:0:8}
 
 # Starting from 2.7.0 pytorch moved flash attention out-of-tree,
@@ -76,6 +76,7 @@ RDEPEND="
 		dev-python/sympy[${PYTHON_USEDEP}]
 		dev-python/typing-extensions[${PYTHON_USEDEP}]
 	')
+	!mkl? ( !openblas? ( virtual/blas ) )
 	cuda? (
 		dev-libs/cudnn
 		>=sci-ml/cudnn-frontend-1.12.0:=
@@ -84,12 +85,12 @@ RDEPEND="
 	)
 	distributed? (
 		!rocm? ( sci-ml/tensorpipe[cuda?] )
-		dev-cpp/cpp-httplib:=
 	)
 	fbgemm? ( >=sci-ml/FBGEMM-1.4 )
 	gloo? ( >=sci-ml/gloo-2025.06.04[cuda?,rocm?] )
 	kineto? ( ~sci-ml/kineto-0.4.0_p20260603 )
 	mimalloc? ( dev-libs/mimalloc )
+	mkl? ( sci-libs/mkl )
 	mpi? ( virtual/mpi )
 	nnpack? (
 		sci-ml/NNPACK
@@ -99,6 +100,7 @@ RDEPEND="
 		dev-python/numpy[${PYTHON_USEDEP}]
 	') )
 	onednn? ( sci-ml/oneDNN )
+	openblas? ( sci-libs/openblas )
 	opencl? ( virtual/opencl )
 	qnnpack? (
 		!sci-libs/QNNPACK
@@ -130,8 +132,6 @@ RDEPEND="
 		>=sci-ml/XNNPACK-2024.11
 		dev-libs/pthreadpool
 	)
-	mkl? ( sci-libs/mkl )
-	openblas? ( sci-libs/openblas )
 "
 
 DEPEND="
@@ -148,6 +148,7 @@ DEPEND="
 		dev-python/typing-extensions[${PYTHON_USEDEP}]
 	')
 	cuda? ( ~dev-libs/cutlass-4.4.2[tools(+)] )
+	distributed? ( dev-cpp/cpp-httplib:= )
 	onednn? ( sci-ml/ideep )
 	rocm? (
 		>=sci-libs/hipCUB-6.3:=    <sci-libs/hipCUB-7.3:=
@@ -163,6 +164,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-aotriton-fixes.patch
 	"${FILESDIR}"/${P}-glog.patch
 	"${FILESDIR}"/${P}-removekineto-pr178960.patch
+	"${FILESDIR}"/${P}-rocm-assert-fix.patch
 	"${FILESDIR}"/${P}-unbundle_fbgemm.patch
 	"${FILESDIR}"/${P}-unbundle_flatbuffers.patch
 	"${FILESDIR}"/${P}-unbundle_fmt.patch
@@ -238,13 +240,10 @@ src_prepare() {
 		sed -e "s:third_party/composable_kernel:../composable_kernel-${CK_COMMIT}:g" \
 			-i aten/src/ATen/CMakeLists.txt || die
 
-		# Bug 959808: fix for gfx101x targets
-		pushd "${WORKDIR}/composable_kernel-${CK_COMMIT}" > /dev/null || die
-		eapply "${FILESDIR}"/composable-kernel-7fe50dc-expand-isa.patch
-		popd > /dev/null || die
-
 		# Workaround for libc++ issue https://github.com/llvm/llvm-project/issues/100802
-		sed -e 's/std::memcpy/memcpy/g' -i torch/headeronly/util/Half.h || die
+		sed -e 's/std::memcpy/memcpy/g' \
+			-i torch/headeronly/util/Half.h \
+			-i aten/src/ATen/native/cuda/int4mm.cu || die
 
 		ebegin "HIPifying cuda sources"
 		FBCODE_BUILD_TOOL="buck" ${EPYTHON} tools/amd_build/build_amd.py || die
@@ -304,6 +303,21 @@ python_compile() {
 	local -x USE_VALGRIND=OFF
 	local -x USE_XNNPACK=$(usex xnnpack)
 	local -x USE_XPU=OFF
+
+	if use mkl; then
+		local -x USE_BLAS=ON
+		local -x BLAS=MKL
+	elif use openblas; then
+		local -x USE_BLAS=ON
+		local -x BLAS=OpenBLAS
+	else
+		# Note: USE_BLAS=OFF does not properly work, instead pytorch still searches for libraries.
+		# Even though it is easy to patch pytorch to disable BLAS usage completely,
+		# it is practically not useful, as it would render the library barely usable.
+		local -x USE_BLAS=ON
+		local -x BLAS=Generic
+		local -x GENERIC_BLAS_LIBRARIES=cblas
+	fi
 
 	if use cuda; then
 		# bug 867706 926116
