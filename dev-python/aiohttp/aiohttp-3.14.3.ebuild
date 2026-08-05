@@ -152,5 +152,5 @@ python_test() {
 	fi
 
 	rm -rf aiohttp || die
-	epytest -m "not internal and not dev_mode" -o filterwarnings=
+	epytest -m "not internal and not dev_mode"
 }
