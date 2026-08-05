@@ -35,7 +35,7 @@ RDEPEND="
 	apparmor? ( sys-libs/libapparmor:= )
 	btrfs? ( sys-fs/btrfs-progs )
 	seccomp? ( sys-libs/libseccomp:= )
-	selinux? ( sec-policy/selinux-podman sys-libs/libselinux:= )
+	selinux? ( sec-policy/selinux-podman )
 	systemd? ( sys-apps/systemd )
 "
 DEPEND="${RDEPEND}"
@@ -98,7 +98,7 @@ src_compile() {
 
 	tc-export AS LD STRIP
 	export GOMD2MAN="$(command -v go-md2man)"
-	emake binaries
+	emake SELINUXOPT= binaries
 	emake -C docs
 }
 
