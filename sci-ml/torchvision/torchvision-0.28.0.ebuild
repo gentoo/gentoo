@@ -19,7 +19,7 @@ S="${WORKDIR}"/vision-${PV}
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 IUSE="cuda +ffmpeg +jpeg +png rocm +webp"
 
 REQUIRED_USE="
