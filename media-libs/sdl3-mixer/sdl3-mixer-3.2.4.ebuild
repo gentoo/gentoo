@@ -19,7 +19,7 @@ S="${WORKDIR}/SDL_mixer-${GIT_TAG}"
 
 LICENSE="ZLIB"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="~amd64 ~arm64 ~ppc64"
 IUSE="drlibs flac +fluidsynth gme +midi mod mp3 opus playtools"
 IUSE+=" +libvorbis timidity tremor +vorbis +wav wavpack xmp"
 REQUIRED_USE="
