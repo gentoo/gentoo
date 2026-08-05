@@ -42,11 +42,12 @@ BDEPEND="
 
 DOCS=( AUTHORS NEWS.rst README.rst )
 
-distutils_enable_tests unittest
+EPYTEST_PLUGINS=()
+distutils_enable_tests pytest
 
 python_test() {
 	rm -rf gammu || die
-	eunittest
+	epytest
 }
 
 python_install_all() {
