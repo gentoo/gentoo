@@ -22,7 +22,7 @@ if [[ ${PV} == *9999* ]] ; then
 	CRATES_PV="${PV}"-"${CRATES_HASH}"
 else
 	SRC_URI="https://downloads.powerdns.com/releases/${P}.tar.xz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 ~x86"
 	CRATES_PV="${PV}"
 fi
 
