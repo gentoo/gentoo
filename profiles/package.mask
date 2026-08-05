@@ -36,6 +36,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2026-08-05)
+# Last released in 2017.  Carries a significant patchset already.
+# Uses pkg_resources namespaces.  No reverse dependencies.
+# Removal on 2026-09-04.  Bug #957269.
+dev-python/pyformance
+
 # Michał Górny <mgorny@gentoo.org> (2026-08-04)
 # Slop package.  The old versions bundle a very old fork of
 # app-i18n/uchardet.  The new ones require app-i18n/uchardet from git
