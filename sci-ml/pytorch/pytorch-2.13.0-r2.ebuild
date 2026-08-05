@@ -40,7 +40,7 @@ SRC_URI="https://github.com/pytorch/${PN}/archive/refs/tags/v${PV}.tar.gz
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 IUSE="cuda cusparselt distributed fbgemm flash gloo kineto memefficient
 	mimalloc mkl mpi nccl nnpack +numpy onednn openblas opencl openmp qnnpack
 	rocm xnnpack"

@@ -106,6 +106,7 @@ sci-ml/datasets test
 # Alfredo Tupone <tupone@gentoo.org> (2025-05-03)
 # dependencies not arm64 ready
 sci-ml/caffe2 distributed gloo fbgemm nnpack onednn qnnpack rocm xnnpack
+sci-ml/pytorch distributed gloo fbgemm nnpack onednn qnnpack rocm xnnpack
 
 # Sam James <sam@gentoo.org> (2025-04-30)
 # 32-bit only (bug #951981).
