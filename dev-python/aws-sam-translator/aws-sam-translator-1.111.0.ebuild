@@ -57,5 +57,5 @@ python_prepare_all() {
 
 python_test() {
 	local -x AWS_DEFAULT_REGION=us-east-1
-	epytest -o addopts= -o filterwarnings=
+	epytest -o addopts=
 }
