@@ -4,6 +4,7 @@
 EAPI=8
 
 DIST_AUTHOR=LEONT
+DIST_VERSION=0.020
 inherit perl-module
 
 DESCRIPTION="An abstract representation of build processes"
@@ -11,7 +12,8 @@ DESCRIPTION="An abstract representation of build processes"
 SLOT="0"
 KEYWORDS="~amd64"
 
-BDEPEND="
+RDEPEND="
 	dev-perl/ExtUtils-Config
 	dev-perl/ExtUtils-Helpers
 "
+BDEPEND="${RDEPEND}"
