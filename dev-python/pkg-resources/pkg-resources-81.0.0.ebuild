@@ -43,7 +43,7 @@ EPYTEST_IGNORE=(
 python_test() {
 	# needed only by setuptools
 	rm -f conftest.py || die
-	epytest -o filterwarnings= pkg_resources
+	epytest pkg_resources
 }
 
 python_install() {
