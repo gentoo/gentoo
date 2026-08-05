@@ -111,7 +111,7 @@ python_test() {
 	esac
 
 	local -x HYPOTHESIS_NO_PLUGINS=1
-	epytest -o filterwarnings= tests/{cover,pytest,quality}
+	epytest tests/{cover,pytest,quality}
 }
 
 src_install() {
