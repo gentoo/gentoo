@@ -124,6 +124,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# lto currently causes runtime issues (bug #980365)
+	filter-lto
+
 	# note that upstream only supports clang and ignores gcc issues, e.g.
 	# https://github.com/PCSX2/pcsx2/issues/10624#issuecomment-1890326047
 	# (CMakeLists.txt also gives a big warning if compiler is not clang)
