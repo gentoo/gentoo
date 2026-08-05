@@ -62,6 +62,8 @@ PATCHES=(
 	# e7f539f813bd56a71ca3c1fbf379f47691002086
 	# plus my own fixes
 	"${FILESDIR}"/django-6.0.7-py315.patch
+	# rebase of 25cf1cbb1cb92c6c57b76cc43d697cfdc61f568f
+	"${FILESDIR}"/django-6.0.7-py315-mail.patch
 )
 
 distutils_enable_sphinx docs --no-autodoc
