@@ -17,7 +17,7 @@ else
 	MY_PV="R${PV//./_}"
 	SRC_URI="https://github.com/freeciv/freeciv/archive/refs/tags/${MY_PV}.tar.gz -> ${P}.tar.gz"
 	if [[ ${PV} != *_beta* ]]; then
-		KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+		KEYWORDS="~amd64 ~arm64"
 	fi
 	MY_P="${PN}-${MY_PV}"
 	S="${WORKDIR}/${MY_P}"
@@ -81,6 +81,11 @@ pkg_setup() {
 	use system-lua && lua-single_pkg_setup
 	use svg && use !qt6 && einfo "SVG flags only supported in qt6 client, ignoring"
 }
+
+PATCHES=(
+	"${FILESDIR}/${P}-widget_id-truncation.patch"
+	"${FILESDIR}/${PN}-3.2.5-sdl2-include.patch"
+)
 
 src_prepare() {
 	# Upstream's meson.build is not very friendly to our needs

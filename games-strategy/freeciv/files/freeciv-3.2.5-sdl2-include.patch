@@ -1,0 +1,117 @@
+From 4e6a5716cb133c2a220acf206c440f457af36538 Mon Sep 17 00:00:00 2001
+From: Matt Jolly <kangie@gentoo.org>
+Date: Wed, 5 Aug 2026 19:06:32 +1000
+Subject: [PATCH] Guard SDL2-only client includes and fix SDL3 exit audio loop
+
+The gtk3.22, gtk4, and qt clients previously unconditionally included
+SDL2, resulting in compilation failures on a system that successfully
+configured for SDL3 audio.
+
+Additionally, client/audio.c now uses audio_stop_usage() during shutdown
+to prevent music-finished callbacks from restarting looping tracks on
+exit.
+
+Bug: https://bugs.gentoo.org/971045
+Bug: RM #2121
+Signed-off-by: Matt Jolly <kangie@gentoo.org>
+---
+ client/audio.c                 | 5 +++--
+ client/gui-gtk-3.22/gui_main.c | 9 +++------
+ client/gui-gtk-4.0/gui_main.c  | 9 +++------
+ client/gui-qt/gui_main.cpp     | 9 +++------
+ 4 files changed, 12 insertions(+), 20 deletions(-)
+
+diff --git a/client/audio.c b/client/audio.c
+index 2b8687f50a..17aa086423 100644
+--- a/client/audio.c
++++ b/client/audio.c
+@@ -657,8 +657,9 @@ void audio_set_volume(double volume)
+ **************************************************************************/
+ void audio_shutdown(bool play_quit_tag)
+ {
+-  /* Avoid infinite loop at end of game */
+-  audio_stop();
++  /* Prevent music-finished callback from starting another looping track
++   * while exit waits for current audio to drain. */
++  audio_stop_usage();
+ 
+   if (play_quit_tag) {
+     audio_play_sound("e_client_quit", NULL, NULL);
+diff --git a/client/gui-gtk-3.22/gui_main.c b/client/gui-gtk-3.22/gui_main.c
+index fcc70d2e9b..b62b67547e 100644
+--- a/client/gui-gtk-3.22/gui_main.c
++++ b/client/gui-gtk-3.22/gui_main.c
+@@ -15,17 +15,14 @@
+ #include <fc_config.h>
+ #endif
+ 
+-#ifdef AUDIO_SDL
+-/* Though it would happily compile without this include,
+- * it is needed for sound to work.
+- * It defines "main" macro to rename our main() so that
+- * it can install SDL's own. */
++#if defined(AUDIO_SDL) && !defined(AUDIO_SDL3)
++/* SDL2 audio backend requires this include so SDL can rewrite main(). */
+ #ifdef SDL2_PLAIN_INCLUDE
+ #include <SDL.h>
+ #else  /* PLAIN_INCLUDE */
+ #include <SDL2/SDL.h>
+ #endif /* PLAIN_INCLUDE */
+-#endif /* AUDIO_SDL */
++#endif /* AUDIO_SDL && !AUDIO_SDL3 */
+ 
+ #ifdef HAVE_LOCALE_H
+ #include <locale.h>
+diff --git a/client/gui-gtk-4.0/gui_main.c b/client/gui-gtk-4.0/gui_main.c
+index aec8ba524d..78cf24a248 100644
+--- a/client/gui-gtk-4.0/gui_main.c
++++ b/client/gui-gtk-4.0/gui_main.c
+@@ -15,17 +15,14 @@
+ #include <fc_config.h>
+ #endif
+ 
+-#ifdef AUDIO_SDL
+-/* Though it would happily compile without this include,
+- * it is needed for sound to work.
+- * It defines "main" macro to rename our main() so that
+- * it can install SDL's own. */
++#if defined(AUDIO_SDL) && !defined(AUDIO_SDL3)
++/* SDL2 audio backend requires this include so SDL can rewrite main(). */
+ #ifdef SDL2_PLAIN_INCLUDE
+ #include <SDL.h>
+ #else  /* PLAIN_INCLUDE */
+ #include <SDL2/SDL.h>
+ #endif /* PLAIN_INCLUDE */
+-#endif /* AUDIO_SDL */
++#endif /* AUDIO_SDL && !AUDIO_SDL3 */
+ 
+ #ifdef HAVE_LOCALE_H
+ #include <locale.h>
+diff --git a/client/gui-qt/gui_main.cpp b/client/gui-qt/gui_main.cpp
+index 50bb12b70f..620252b735 100644
+--- a/client/gui-qt/gui_main.cpp
++++ b/client/gui-qt/gui_main.cpp
+@@ -15,17 +15,14 @@
+ #include <fc_config.h>
+ #endif
+ 
+-#ifdef AUDIO_SDL
+-/* Though it would happily compile without this include,
+- * it is needed for sound to work.
+- * It defines "main" macro to rename our main() so that
+- * it can install SDL's own. */
++#if defined(AUDIO_SDL) && !defined(AUDIO_SDL3)
++/* SDL2 audio backend requires this include so SDL can rewrite main(). */
+ #ifdef SDL2_PLAIN_INCLUDE
+ #include <SDL.h>
+ #else  // PLAIN_INCLUDE
+ #include <SDL2/SDL.h>
+ #endif // PLAIN_INCLUDE
+-#endif // AUDIO_SDL
++#endif // AUDIO_SDL && !AUDIO_SDL3
+ 
+ #include <stdio.h>
+ 
+-- 
+2.55.0
+
