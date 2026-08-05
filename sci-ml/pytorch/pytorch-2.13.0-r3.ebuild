@@ -85,6 +85,7 @@ RDEPEND="
 	)
 	distributed? (
 		!rocm? ( sci-ml/tensorpipe[cuda?] )
+		dev-cpp/cpp-httplib:=
 	)
 	fbgemm? ( >=sci-ml/FBGEMM-1.4 )
 	gloo? ( >=sci-ml/gloo-2025.06.04[cuda?,rocm?] )
@@ -148,7 +149,6 @@ DEPEND="
 		dev-python/typing-extensions[${PYTHON_USEDEP}]
 	')
 	cuda? ( ~dev-libs/cutlass-4.4.2[tools(+)] )
-	distributed? ( dev-cpp/cpp-httplib:= )
 	onednn? ( sci-ml/ideep )
 	rocm? (
 		>=sci-libs/hipCUB-6.3:=    <sci-libs/hipCUB-7.3:=
@@ -169,6 +169,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-unbundle_flatbuffers.patch
 	"${FILESDIR}"/${P}-unbundle_fmt.patch
 	"${FILESDIR}"/${P}-unbundle_fxdiv.patch
+	"${FILESDIR}"/${P}-unbundle_httplib.patch
 	"${FILESDIR}"/${P}-unbundle_kineto.patch
 	"${FILESDIR}"/${P}-unbundle_mkldnn.patch
 	"${FILESDIR}"/${P}-unbundle_nnpack.patch
