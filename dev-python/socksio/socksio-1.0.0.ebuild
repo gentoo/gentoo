@@ -18,6 +18,10 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
 
+BDEPEND="
+	<dev-python/flit-core-4[${PYTHON_USEDEP}]
+"
+
 EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
 
