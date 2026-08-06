@@ -29,6 +29,9 @@ BDEPEND="
 python_test() {
 	local -x PYTHONIOENCODING='utf8'
 	"${EPYTHON}" commonmark/tests/run_spec_tests.py || die
+	"${EPYTHON}" -m unittest -v -b \
+		commonmark.tests.unit_tests \
+		commonmark.tests.rst_tests || die
 }
 
 src_prepare() {
