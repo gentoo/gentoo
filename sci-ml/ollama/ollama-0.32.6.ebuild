@@ -8,7 +8,7 @@ inherit cmake go-module systemd
 DESCRIPTION="Get up and running with Llama 3, Mistral, Gemma, and other language models"
 HOMEPAGE="https://ollama.com"
 
-LLAMA_CPP_tag=b10091
+LLAMA_CPP_tag=b10242
 
 SRC_URI="
 	https://github.com/ollama/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.gh.tar.gz
