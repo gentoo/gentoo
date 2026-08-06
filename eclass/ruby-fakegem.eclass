@@ -661,7 +661,7 @@ all_fakegem_install() {
 
 	# binary wrappers; we assume that all the implementations get the
 	# same binaries, or something is wrong anyway, so...
-	if [[ -n ${RUBY_FAKEGEM_BINWRAP} ]]; then
+	if [[ -n ${RUBY_FAKEGEM_BINDIR} && -n ${RUBY_FAKEGEM_BINWRAP} ]]; then
 		local bindir=$(find "${D}" -type d -path "*/gems/${RUBY_FAKEGEM_NAME}-${RUBY_FAKEGEM_VERSION}/${RUBY_FAKEGEM_BINDIR}" -print -quit)
 
 		if [[ -d "${bindir}" ]]; then
