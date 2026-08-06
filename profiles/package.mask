@@ -36,6 +36,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Brett A C Sheffield <bacs@librecast.net> (2026-08-09)
+# Unmaintained by upstream for 16 years. Two unpatched security bugs
+# (Bug #906111 and Bug #916866) and many more unpatched issues upstream.
+# Removal on 2026-09-09.
+app-text/catdoc
+
 # Michał Górny <mgorny@gentoo.org> (2026-08-08)
 # A chain of NIH packages that have seen no upstream activity in 3+
 # years.  They are all broken with >=dev-python/flit-core-4, and have
