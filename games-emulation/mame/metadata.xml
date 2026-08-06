@@ -8,4 +8,7 @@
 	<upstream>
 		<remote-id type="github">mamedev/mame</remote-id>
 	</upstream>
+	<use>
+		<flag name="pipewire">Enable support for PipeWire (<pkg>media-video/pipewire</pkg>)</flag>
+	</use>
 </pkgmetadata>
