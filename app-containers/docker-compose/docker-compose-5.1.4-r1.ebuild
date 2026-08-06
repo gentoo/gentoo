@@ -13,7 +13,7 @@ S="${WORKDIR}/compose-${PV}"
 
 LICENSE="Apache-2.0"
 SLOT="2"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="~amd64 arm64"
 RESTRICT="test"
 
 RDEPEND="
