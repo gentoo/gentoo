@@ -10,14 +10,14 @@ Bug: https://bugs.gentoo.org/980398
 -target_include_directories(torch_cpu PRIVATE
 -  ${TORCH_ROOT}/third_party/cpp-httplib)
 +if(USE_DISTRIBUTED)
-+  target_link_libraries(torch_cpu PRIVATE httplib)
++  target_link_libraries(torch_cpu PRIVATE httplib::httplib)
 +endif()
  
  target_include_directories(torch_cpu PRIVATE
    ${TORCH_ROOT}/third_party/nlohmann/include)
 --- a/cmake/Dependencies.cmake
 +++ b/cmake/Dependencies.cmake
-@@ -1732,8 +1732,10 @@ include(${CMAKE_CURRENT_LIST_DIR}/FlatBuffers.cmake)
+@@ -1717,8 +1717,9 @@ endif()
  include(${CMAKE_CURRENT_LIST_DIR}/FlatBuffers.cmake)
  
  # Include cpp-httplib
@@ -25,8 +25,27 @@ Bug: https://bugs.gentoo.org/980398
 -target_include_directories(httplib SYSTEM INTERFACE ${PROJECT_SOURCE_DIR}/third_party/cpp-httplib)
 +if(USE_DISTRIBUTED)
 +  find_package(httplib REQUIRED)
-+  add_library(httplib ALIAS httplib::httplib)
 +endif()
  
  # Include nlohmann-json
  add_library(nlohmann INTERFACE IMPORTED)
+--- a/torch/CMakeLists.txt
++++ b/torch/CMakeLists.txt
+@@ -78,13 +78,16 @@ list(APPEND TORCH_PYTHON_INCLUDE_DIRECTORIES ${LIBSHM_SRCDIR})
+ set(TORCH_PYTHON_LINK_LIBRARIES
+     Python::Module
+     pybind::pybind11
+-    httplib
+     nlohmann
+     moodycamel
+     shm
+     fmt
+     ATEN_CPU_FILES_GEN_LIB)
+ 
++if(USE_DISTRIBUTED)
++  list(APPEND TORCH_PYTHON_LINK_LIBRARIES httplib::httplib)
++endif()
++
+ if(USE_ASAN AND TARGET Sanitizer::address)
+   list(APPEND TORCH_PYTHON_LINK_LIBRARIES Sanitizer::address)
+ endif()
