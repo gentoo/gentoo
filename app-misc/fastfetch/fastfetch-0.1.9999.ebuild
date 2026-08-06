@@ -48,7 +48,7 @@ RDEPEND="
 	)
 	pulseaudio? ( media-libs/libpulse )
 	sqlite? ( dev-db/sqlite:3 )
-	vaapi? ( media-libs/libva:= )
+	vaapi? ( media-libs/libva:=[X?] )
 	vdpau? ( x11-libs/libvdpau )
 	vulkan? (
 		media-libs/vulkan-loader
@@ -127,7 +127,7 @@ src_configure() {
 		-DENABLE_OPENCL=$(usex opencl)
 		-DENABLE_PULSE=$(usex pulseaudio)
 		-DENABLE_SQLITE3=$(usex sqlite)
-		-DENABLE_VA=$(usex vaapi)
+		-DENABLE_VADRM=$(usex vaapi)
 		-DENABLE_VDPAU=$(usex vdpau)
 		-DENABLE_VULKAN=$(usex vulkan)
 		-DENABLE_WAYLAND=$(usex wayland)
@@ -135,6 +135,12 @@ src_configure() {
 		-DENABLE_XRANDR=$(usex xrandr)
 		-DBUILD_TESTS=$(usex test)
 	)
+
+	if use vaapi && use X; then
+		mycmakeargs+=( -DENABLE_VAX11=1 )
+	else
+		mycmakeargs+=( -DENABLE_VAX11=0 )
+	fi
 
 	if use lua; then
 		mycmakeargs+=(
