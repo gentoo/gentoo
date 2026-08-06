@@ -77,6 +77,7 @@ DEPEND="
 BDEPEND="
 	${PYTHON_DEPS}
 	>=dev-lang/go-1.26:=
+	dev-util/shader-slang
 	sys-libs/ncurses
 	virtual/pkgconfig
 	test? ( $(python_gen_cond_dep 'dev-python/pillow[zlib,${PYTHON_USEDEP}]') )
