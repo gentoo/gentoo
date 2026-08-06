@@ -14,7 +14,7 @@ LICENSE="
 	Apache-2.0-with-LLVM-exceptions
 	Apache-2.0 Boost-1.0 CC-BY-4.0 MIT Unlicense UoI-NCSA
 "
-SLOT="0"
+SLOT="0/${PV}"
 KEYWORDS="~amd64"
 
 # needs an annoying submodule that fetches many things, the tests do
