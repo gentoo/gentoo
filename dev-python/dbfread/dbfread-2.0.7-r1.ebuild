@@ -13,12 +13,6 @@ HOMEPAGE="
 	https://github.com/olemb/dbfread/
 	https://pypi.org/project/dbfread/
 "
-SRC_URI+="
-	test? (
-		https://github.com/olemb/dbfread/archive/${PV}.tar.gz
-			-> ${P}.gh.tar.gz
-	)
-"
 
 LICENSE="MIT"
 SLOT="0"
