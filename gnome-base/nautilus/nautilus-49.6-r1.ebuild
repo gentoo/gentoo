@@ -95,10 +95,8 @@ src_install() {
 	meson_src_install
 
 	if use gtk-doc; then
-		mkdir -p "${ED}"/usr/share/gtk-doc/html/"${PVR}"/ || die
-		mv "${ED}"/usr/share/doc/"${PN}"/* \
-			"${ED}"/usr/share/gtk-doc/html/"${PVR}"/ || die
-		rmdir "${ED}"/usr/share/doc/"${PN}"/ || die
+		mkdir -p "${ED}"/usr/share/gtk-doc/html/ || die
+		mv "${ED}"/usr/share/doc/${PN} "${ED}"/usr/share/gtk-doc/html/ || die
 	fi
 }
 
