@@ -14,7 +14,8 @@ HOMEPAGE="
 	https://pypi.org/project/jinxed/
 "
 
-LICENSE="MPL-2.0"
+# MIT for files derived from ncurses
+LICENSE="MPL-2.0 MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
 
