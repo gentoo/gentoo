@@ -1,0 +1,27 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -732 +732 @@
+-            DESTINATION "lib/pkgconfig"
++            DESTINATION "${CMAKE_INSTALL_LIBDIR}/pkgconfig"
+--- a/cmake/SlangTarget.cmake
++++ b/cmake/SlangTarget.cmake
+@@ -717 +717 @@
+-set(library_subdir lib)
++set(library_subdir ${CMAKE_INSTALL_LIBDIR})
+--- a/extras/pkgconfig/slang-compiler.pc.in
++++ b/extras/pkgconfig/slang-compiler.pc.in
+@@ -3 +3 @@
+-libdir=${prefix}/lib
++libdir=${prefix}/@CMAKE_INSTALL_LIBDIR@
+--- a/source/slang/CMakeLists.txt
++++ b/source/slang/CMakeLists.txt
+@@ -502,2 +502,2 @@
+-        ARCHIVE DESTINATION lib
+-        LIBRARY DESTINATION lib
++        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
++        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+--- a/source/standard-modules/CMakeLists.txt
++++ b/source/standard-modules/CMakeLists.txt
+@@ -22 +22 @@
+-    set(slang_library_dir "lib")
++    set(slang_library_dir ${CMAKE_INSTALL_LIBDIR})
