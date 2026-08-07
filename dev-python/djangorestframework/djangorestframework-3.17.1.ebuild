@@ -26,6 +26,7 @@ SLOT="0"
 KEYWORDS="amd64 arm arm64 ppc64 ~riscv x86"
 
 RDEPEND="
+	<dev-python/django-6.1[${PYTHON_USEDEP}]
 	>=dev-python/django-4.2[${PYTHON_USEDEP}]
 "
 BDEPEND="
