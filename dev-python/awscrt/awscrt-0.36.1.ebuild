@@ -40,7 +40,8 @@ RDEPEND="
 "
 BDEPEND="
 	test? (
-		dev-python/pytest
+		dev-python/h2[${PYTHON_USEDEP}]
+		dev-python/websockets[${PYTHON_USEDEP}]
 	)
 "
 
