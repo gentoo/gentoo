@@ -97,7 +97,7 @@ src_install() {
 	cp -rP * "${ED}${DIR}" || die
 
 	sed -e "s:@EPREFIX@:${EPREFIX}:g" -e "s:@System@:${System}:g" "${FILESDIR}/wrapper.sh" | newbin - ${PN}
-	dosym ${PN} /usr/bin/${PN}-ucc
+	dosym -r "${DIR}/${System}"/UCC /usr/bin/${PN}-ucc
 
 	doicon -s 128 "${DISTDIR}/${PN}.png"
 	make_desktop_entry --eapi9 ${PN} -n "Unreal Tournament 2004" \
