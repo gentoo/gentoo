@@ -13,7 +13,9 @@
 # and inter-module dependency checking.
 
 LUA_COMPAT=( lua5-{1..4} )
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/apache-httpd.asc
 inherit autotools fcaps flag-o-matic lua-single multilib ssl-cert toolchain-funcs
+inherit verify-sig
 
 [[ ${CATEGORY}/${PN} != www-servers/apache ]] \
 	&& die "Do not use this eclass with anything else than www-servers/apache ebuilds!"
@@ -69,8 +71,11 @@ esac
 # Defaults to the name of the patchset, with a datestamp.
 [[ -n "${GENTOO_PATCH_A}" ]] || GENTOO_PATCH_A="${GENTOO_PATCHNAME}-${GENTOO_PATCHSTAMP}.tar.bz2"
 
-SRC_URI="mirror://apache/httpd/httpd-${PV}.tar.bz2
-	https://dev.gentoo.org/~${GENTOO_DEVELOPER}/dist/apache/${GENTOO_PATCH_A}"
+SRC_URI="
+	mirror://apache/httpd/httpd-${PV}.tar.bz2
+	https://dev.gentoo.org/~${GENTOO_DEVELOPER}/dist/apache/${GENTOO_PATCH_A}
+	verify-sig? ( mirror://apache/httpd/httpd-${PV}.tar.bz2.asc )
+"
 
 # @VARIABLE: IUSE_MPMS_FORK
 # @DESCRIPTION:
@@ -437,6 +442,17 @@ apache-2_pkg_setup() {
 	fi
 }
 
+# @FUNCTION: apache-2_src_unpack
+# @DESCRIPTION:
+# Standard unpack to support verify-sig.
+apache-2_src_unpack() {
+	if use verify-sig ; then
+		verify-sig_verify_detached "${DISTDIR}"/httpd-${PV}.tar.bz2{,.asc}
+	fi
+
+	default
+}
+
 # @FUNCTION: apache-2_src_prepare
 # @DESCRIPTION:
 # This function applies patches, configures a custom file-system layout and
@@ -692,4 +708,4 @@ apache-2_pkg_postinst() {
 
 }
 
-EXPORT_FUNCTIONS pkg_setup src_prepare src_configure src_install pkg_postinst
+EXPORT_FUNCTIONS pkg_setup src_unpack src_prepare src_configure src_install pkg_postinst
