@@ -47,6 +47,9 @@ BDEPEND="
 	test? (
 		sci-ml/pytorch[${PYTHON_SINGLE_USEDEP}]
 		dev-vcs/git-lfs
+		$(python_gen_cond_dep '
+			dev-python/jedi[${PYTHON_USEDEP}]
+		')
 	)
 "
 
