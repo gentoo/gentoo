@@ -37,6 +37,7 @@ DEPEND="
 "
 
 PATCHES=(
+	"${FILESDIR}"/${PN}-2026.14.1-includedir.patch
 	"${FILESDIR}"/${PN}-2026.14.1-libdir.patch
 	"${FILESDIR}"/${PN}-2026.14.1-lz4.patch
 	"${FILESDIR}"/${PN}-2026.14.1-system-glslang.patch
@@ -67,7 +68,8 @@ src_configure() {
 		-DSLANG_USE_SYSTEM_VULKAN_HEADERS=yes
 		-DSLANG_VERSION_{FULL,NUMERIC}=${PV}
 
-		# legacy option, disabling prevents collision with sys-libs/slang
+		# avoid collisions with sys-libs/slang
+		-DCMAKE_INSTALL_INCLUDEDIR=include/${PN}
 		-DSLANG_ENABLE_SLANG_PROXY=no
 
 		# options disabled for simplicity, will revisit only if needed
