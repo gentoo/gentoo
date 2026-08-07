@@ -1,0 +1,231 @@
+# Copyright 2026 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=8
+
+DISTUTILS_EXT=1
+DISTUTILS_USE_PEP517=maturin
+PYPI_VERIFY_REPO=https://github.com/mypyc/ast_serialize
+PYTHON_COMPAT=( python3_{12..15} python3_{14,15}t )
+
+RUST_MIN_VER="1.93.0"
+CRATES="
+	aho-corasick@1.1.4
+	allocator-api2@0.2.21
+	anstream@0.6.21
+	anstream@1.0.0
+	anstyle-lossy@1.1.5
+	anstyle-parse@0.2.7
+	anstyle-parse@1.0.0
+	anstyle-query@1.1.5
+	anstyle-svg@1.1.1
+	anstyle-wincon@3.0.11
+	anstyle@1.0.14
+	anyhow@1.0.100
+	attribute-derive-macro@0.10.5
+	attribute-derive@0.10.5
+	autocfg@1.5.1
+	bit-set@0.8.0
+	bit-vec@0.8.0
+	bitflags@2.10.0
+	block-buffer@0.10.4
+	boxcar@0.2.14
+	bstr@1.12.1
+	camino@1.2.5
+	castaway@0.2.4
+	cfg-if@1.0.4
+	clap@4.5.60
+	clap_builder@4.5.60
+	clap_derive@4.5.55
+	clap_lex@1.1.0
+	collection_literals@1.0.3
+	colorchoice@1.0.5
+	compact_str@0.9.0
+	console@0.16.4
+	cpufeatures@0.2.17
+	crossbeam-deque@0.8.7
+	crossbeam-epoch@0.9.20
+	crossbeam-queue@0.3.13
+	crossbeam-utils@0.8.22
+	crypto-common@0.1.7
+	datatest-stable@0.3.3
+	derive-where@1.6.0
+	digest@0.10.7
+	dyn-clone@1.0.20
+	either@1.15.0
+	encode_unicode@1.0.0
+	equivalent@1.0.2
+	errno@0.3.14
+	escape8259@0.5.3
+	escargot@0.5.15
+	fancy-regex@0.14.0
+	fastrand@2.5.0
+	filetime@0.2.29
+	foldhash@0.1.5
+	foldhash@0.2.0
+	generic-array@0.14.7
+	get-size-derive2@0.8.0
+	get-size2@0.8.0
+	getopts@0.2.24
+	getrandom@0.2.17
+	getrandom@0.4.3
+	glob@0.3.4
+	globset@0.4.20
+	hashbrown@0.15.5
+	hashbrown@0.17.1
+	hashlink@0.10.0
+	heck@0.5.0
+	html-escape@0.2.15
+	ignore@0.4.33
+	indexmap@2.14.0
+	indoc@2.0.7
+	insta@1.48.0
+	interpolator@0.5.0
+	intrusive-collections@0.9.7
+	inventory@0.3.24
+	is-macro@0.3.7
+	is_terminal_polyfill@1.70.2
+	itertools@0.14.0
+	itoa@1.0.17
+	libc@0.2.189
+	libtest-mimic@0.8.2
+	linux-raw-sys@0.12.1
+	lock_api@0.4.14
+	log@0.4.29
+	manyhow-macros@0.11.4
+	manyhow@0.11.4
+	memchr@2.7.6
+	memoffset@0.9.1
+	normalize-line-endings@0.3.0
+	once_cell@1.21.3
+	once_cell_polyfill@1.70.2
+	ordermap@1.2.0
+	os_pipe@1.2.3
+	parking_lot@0.12.5
+	parking_lot_core@0.9.12
+	phf@0.11.3
+	phf_codegen@0.11.3
+	phf_generator@0.11.3
+	phf_shared@0.11.3
+	pin-project-lite@0.2.17
+	portable-atomic@1.13.0
+	ppv-lite86@0.2.21
+	proc-macro-utils@0.10.0
+	proc-macro2@1.0.106
+	pyo3-build-config@0.29.2
+	pyo3-ffi@0.29.2
+	pyo3-macros-backend@0.29.2
+	pyo3-macros@0.29.2
+	pyo3@0.29.2
+	quote-use-macros@0.8.4
+	quote-use@0.8.4
+	quote@1.0.44
+	r-efi@6.0.0
+	rand@0.8.5
+	rand_chacha@0.3.1
+	rand_core@0.6.4
+	redox_syscall@0.5.18
+	ref-cast-impl@1.0.26
+	ref-cast@1.0.26
+	regex-automata@0.4.18
+	regex-syntax@0.8.11
+	regex@1.13.1
+	rustc-hash@2.1.1
+	rustix@1.1.4
+	rustversion@1.0.22
+	ryu@1.0.22
+	salsa-macro-rules@0.26.2
+	salsa-macros@0.26.2
+	salsa@0.26.2
+	same-file@1.0.6
+	schemars@1.2.2
+	schemars_derive@1.2.2
+	scopeguard@1.2.0
+	seahash@4.1.0
+	serde@1.0.228
+	serde_core@1.0.228
+	serde_derive@1.0.228
+	serde_derive_internals@0.30.0
+	serde_json@1.0.151
+	serde_spanned@1.1.1
+	serde_test@1.0.177
+	sha1@0.10.6
+	similar@2.7.0
+	similar@3.1.2
+	siphasher@1.0.1
+	smallvec@1.15.1
+	snapbox-macros@1.1.0
+	snapbox@1.2.2
+	static_assertions@1.1.0
+	strsim@0.11.1
+	syn@2.0.114
+	syn@3.0.3
+	synstructure@0.13.2
+	target-lexicon@0.13.5
+	tempfile@3.27.0
+	thin-vec@0.2.19
+	thiserror-impl@2.0.18
+	thiserror@2.0.18
+	tinyvec@1.10.0
+	tinyvec_macros@0.1.1
+	toml@1.1.4+spec-1.1.0
+	toml_datetime@1.1.1+spec-1.1.0
+	toml_parser@1.1.3+spec-1.1.0
+	toml_writer@1.1.2+spec-1.1.0
+	tracing-core@0.1.36
+	tracing@0.1.44
+	tryfn@1.1.0
+	typeid@1.0.3
+	typenum@1.19.0
+	unicode-ident@1.0.22
+	unicode-normalization@0.1.25
+	unicode-width@0.2.2
+	unicode_names2@1.3.0
+	unicode_names2_generator@1.3.0
+	utf8parse@0.2.2
+	version_check@0.9.5
+	wait-timeout@0.2.1
+	walkdir@2.5.0
+	wasi@0.11.1+wasi-snapshot-preview1
+	winapi-util@0.1.11
+	windows-link@0.2.1
+	windows-sys@0.61.2
+	winnow@1.0.4
+	zerocopy-derive@0.8.33
+	zerocopy@0.8.33
+	zmij@1.0.23
+"
+
+inherit cargo distutils-r1 pypi
+
+DESCRIPTION="Python bindings for mypy AST serialization"
+HOMEPAGE="
+	https://github.com/mypyc/ast_serialize/
+	https://pypi.org/project/ast-serialize/
+"
+SRC_URI+="
+	${CARGO_CRATE_URIS}
+"
+
+LICENSE="MIT"
+# Dependent crate licenses
+LICENSE+="
+	Apache-2.0 Apache-2.0-with-LLVM-exceptions MIT Unicode-3.0
+	Unicode-DFS-2016 ZLIB
+"
+SLOT="0"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~s390 ~sparc ~x86"
+
+EPYTEST_PLUGINS=()
+distutils_enable_tests pytest
+
+EPYTEST_IGNORE=(
+	crates
+)
+
+QA_FLAGS_IGNORED="usr/lib.*/py.*/site-packages/ast_serialize/ast_serialize.*"
+
+src_unpack() {
+	pypi_src_unpack
+	cargo_src_unpack
+}
