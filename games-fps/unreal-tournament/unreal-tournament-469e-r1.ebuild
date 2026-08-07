@@ -107,7 +107,8 @@ src_install() {
 		-e "s:@GameRenderDevice@:${GameRenderDevice}:g" \
 		"${FILESDIR}/wrapper.sh" | newbin - ${PN}
 
-	dosym ${PN} /usr/bin/${PN}-ucc
+	# ucc does not benefit from the wrapper.
+	dosym -r "${DIR}/${System}"/ucc-bin /usr/bin/${PN}-ucc
 
 	doicon -s 128 "${DISTDIR}/${PN}.png"
 	make_desktop_entry --eapi9 ${PN} -n "Unreal Tournament" \
