@@ -10,7 +10,7 @@ DISTUTILS_EXT=1
 CRATES=""
 
 DISTUTILS_USE_PEP517=maturin
-PYTHON_COMPAT=( python3_{11..15} )
+PYTHON_COMPAT=( python3_{12..15} )
 RUST_MIN_VER="1.85.0"
 
 inherit distutils-r1 cargo
