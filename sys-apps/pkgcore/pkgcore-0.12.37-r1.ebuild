@@ -18,6 +18,8 @@ fi
 
 DESCRIPTION="a framework for package management"
 HOMEPAGE="https://github.com/pkgcore/pkgcore"
+SRC_URI+=" https://github.com/pkgcore/pkgcore/commit/64f1319f0bb147d61cb080f07acd5f416d9c680e.patch
+	-> ${P}-fix-empty-depset.patch"
 
 LICENSE="BSD MIT"
 SLOT="0"
@@ -38,6 +40,10 @@ BDEPEND="${RDEPEND}
 		dev-vcs/git
 	)
 "
+
+PATCHES=(
+	"${DISTDIR}/${P}-fix-empty-depset.patch"
+)
 
 EPYTEST_PLUGINS=( pkgcore )
 distutils_enable_tests pytest
