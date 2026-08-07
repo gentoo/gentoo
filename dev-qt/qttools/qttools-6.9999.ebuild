@@ -38,22 +38,14 @@ REQUIRED_USE="
 
 RDEPEND="
 	~dev-qt/qtbase-${PV}:6[widgets?]
-	assistant? (
-		~dev-qt/qtbase-${PV}:6[concurrent,network,sql,sqlite]
-		!dev-qt/assistant:5
-	)
+	assistant? ( ~dev-qt/qtbase-${PV}:6[concurrent,network,sql,sqlite] )
 	designer? (
 		~dev-qt/qtbase-${PV}:6[network,xml,zstd=]
 		zstd? ( app-arch/zstd:= )
-		!<dev-qt/designer-5.15.18-r1:5
 	)
 	kmap2qmap? ( ~dev-qt/qtbase-${PV}:6[evdev] )
-	linguist? (
-		widgets? ( !dev-qt/linguist:5 )
-	)
 	qdbus? (
 		~dev-qt/qtbase-${PV}:6[dbus,xml]
-		widgets? ( !dev-qt/qdbusviewer:5 )
 	)
 	qdoc? (
 		$(llvm_gen_dep '
