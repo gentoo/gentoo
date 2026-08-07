@@ -15,11 +15,12 @@ S="${WORKDIR}/${MY_PN}-${PV}"
 LICENSE="LGPL-2+ Unicode-DFS-2016"
 SLOT="5"
 KEYWORDS="amd64 arm64 ~ppc ~ppc64 ~riscv x86"
-IUSE="+autostart doc +emoji +enchant +keyboard presage +server systemd system-yoga test wayland +X"
+IUSE="+autostart doc +emoji +enchant +keyboard +plasma presage +server systemd system-yoga test wayland +X"
 REQUIRED_USE="
 	|| ( wayland X )
 	X? ( keyboard )
 	wayland? ( keyboard )
+	plasma? ( wayland )
 "
 
 RESTRICT="!test? ( test )"
@@ -71,7 +72,7 @@ RDEPEND="
 	)
 "
 DEPEND="${RDEPEND}
-	wayland? (
+	plasma? (
 		dev-libs/plasma-wayland-protocols
 	)
 "
@@ -100,6 +101,7 @@ src_configure() {
 		-DENABLE_DOC=$(usex doc)
 		-DUSE_SYSTEMD=$(usex systemd)
 		-DUSE_SYSTEM_YOGA=$(usex system-yoga)
+		-DUSE_SYSTEM_PLASMA_WAYLAND_PROTOCOLS=$(usex plasma)
 	)
 	cmake_src_configure
 }
