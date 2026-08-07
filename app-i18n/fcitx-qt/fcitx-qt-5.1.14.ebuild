@@ -14,7 +14,7 @@ S="${WORKDIR}/${MY_PN}-${PV}"
 
 LICENSE="BSD LGPL-2.1+"
 SLOT="5"
-KEYWORDS="~amd64 ~arm64 ~loong ~riscv x86"
+KEYWORDS="amd64 ~arm64 ~loong ~riscv x86"
 IUSE="onlyplugin staticplugin wayland +X"
 REQUIRED_USE="
 	staticplugin? ( onlyplugin )
