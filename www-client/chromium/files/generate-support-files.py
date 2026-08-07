@@ -60,6 +60,7 @@ def main():
         "PROGNAME": "chrome",
         "PROJECT_LICENSE": "BSD, LGPL-2, LGPL-2.1, MPL-1.1, MPL-2.0, Apache-2.0, and others",
         "SHORTDESC": "Open-source foundation of many web browsers including Google Chrome",
+        "STARTUP_WM_CLASS": f"chromium-browser{channel_suffix}",
         # Use a distinct scheme handler for slotted installs to avoid conflicts
         "URI_SCHEME": f"x-scheme-handler/chromium{channel_suffix}",
         "USR_BIN_SYMLINK_NAME": f"chromium-browser{channel_suffix}",
