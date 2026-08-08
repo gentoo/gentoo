@@ -335,6 +335,8 @@ games-fps/legends
 games-fps/soldieroffortune
 games-fps/transfusion-bin
 games-fps/tribes2
+games-fps/unreal
+games-fps/unreal-gold-data
 games-fps/unreal-tournament
 games-fps/unreal-tournament-data
 games-fps/ut2003
