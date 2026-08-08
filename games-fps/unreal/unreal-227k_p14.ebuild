@@ -19,7 +19,7 @@ KEYWORDS="-* ~amd64 ~arm64 ~x86"
 IUSE="dedicated l10n_ca l10n_de l10n_el l10n_es l10n_fr l10n_it l10n_nl l10n_pl l10n_pt l10n_ru opengl"
 RESTRICT="bindist mirror strip"
 
-UT_DEPEND="games-fps/unreal-gold-data-226"
+UT_DEPEND="games-fps/unreal-gold-data-226b"
 
 BDEPEND="
 	dev-util/patchelf
