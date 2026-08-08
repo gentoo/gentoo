@@ -38,8 +38,12 @@ src_configure() {
 	distutils-r1_src_configure
 }
 
-src_compile() {
+python_compile() {
 	cargo_src_compile
+	distutils-r1_python_compile
+}
+
+src_compile() {
 	distutils-r1_src_compile
 }
 
