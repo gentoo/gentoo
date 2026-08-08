@@ -53,8 +53,8 @@ inherit python-any-r1 readme.gentoo-r1 rust systemd toolchain-funcs virtualx xdg
 
 DESCRIPTION="Open-source version of Google Chrome web browser"
 HOMEPAGE="https://www.chromium.org/"
-PPC64_HASH="a85b64f07b489b8c6fdb13ecf79c16c56c560fc6"
-PATCH_V="151-2"
+PPC64_HASH="7aae8a84e327fc2078ce1625c9c70bfda77d626f"
+PATCH_V="151-3"
 COPIUM_COMMIT="3c7e56fb4523b43b47595bb3a22f77178fc76293"
 SRC_URI="https://github.com/chromium-linux-tarballs/chromium-tarballs/releases/download/${PV}/chromium-${PV}-linux.tar.xz
 	https://deps.gentoo.zip/www-client/chromium/rollup-wasm-node-${ROLLUP_VER}.tgz
@@ -84,7 +84,7 @@ LICENSE+=" Unicode-DFS-2015 Unlicense UoI-NCSA ZLIB libtiff openssl"
 LICENSE+=" rar? ( unRAR )"
 
 SLOT="stable"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="~amd64 ~arm64 ~ppc64"
 
 IUSE_SYSTEM_LIBS="+system-harfbuzz +system-icu +system-zstd"
 IUSE="+X ${IUSE_SYSTEM_LIBS} bindist bundled-toolchain cups debug ffmpeg-chromium gtk4 +hangouts headless kerberos +official pax-kernel pgo"
@@ -509,11 +509,27 @@ src_prepare() {
 		"${WORKDIR}/chromium-patches-${PATCH_V}/common/"
 	)
 
-	# https://issues.chromium.org/issues/442698344
-	# Unreleased fontconfig changed magic numbers and google have rolled to this version
-	if has_version "<=media-libs/fontconfig-2.17.1"; then
-		PATCHES+=( "${FILESDIR}/chromium-142-work-with-old-fontconfig.patch" )
+	# So many fontconfig magic numbers to cover
+	# TODO: once upstream roll to 2.18.2+ set that as our minimum and remove this logic.
+	# <=2.17.1 -> 9
+	# >2.17.1 && <2.18.2 -> 11
+	# >=2.18.2 -> 12
+	local fontconfig_cache_magic=9
+	if has_version ">=media-libs/fontconfig-2.18.2"; then
+		fontconfig_cache_magic=12
+	elif has_version ">media-libs/fontconfig-2.17.1"; then
+		fontconfig_cache_magic=11
 	fi
+
+	sed -E -i \
+		-e "s#(fb5c91b2895aa445d23aebf7f9e2189c-le64\.cache-)(9|10|11|12)#\1${fontconfig_cache_magic}#g" \
+		third_party/test_fonts/fontconfig/BUILD.gn || die "Failed to set fontconfig cache magic in BUILD.gn"
+
+	sed -E -i \
+		-e "s#(kCacheKey \+ \"/-le64\.cache-)(9|10|11|12)(\")#\1${fontconfig_cache_magic}\3#g" \
+		-e "s#(kCacheKey \+ \"-le64\.cache-)(9|10|11|12)(\")#\1${fontconfig_cache_magic}\3#g" \
+		third_party/test_fonts/fontconfig/generate_fontconfig_caches.cc || \
+			die "Failed to set fontconfig cache magic in generate_fontconfig_caches.cc"
 
 	if use bundled-toolchain; then
 		# We need to symlink the toolchain into the expected location
@@ -675,8 +691,8 @@ src_prepare() {
 	# adjust python interpreter version
 	sed -i -e "s|\(^script_executable = \).*|\1\"${EPYTHON}\"|g" .gn || die
 
-	# Use the system copy of hwdata's usb.ids; upstream is woefully out of date (2015!)
-	sed 's|//third_party/usb_ids/usb.ids|/usr/share/hwdata/usb.ids|g' \
+	# Use the system copy of hwdata's usb.ids
+	sed 's|//third_party/usb_ids/src/usb.ids|/usr/share/hwdata/usb.ids|g' \
 		-i services/device/public/cpp/usb/BUILD.gn || die "Failed to set system usb.ids path"
 
 	# remove_bundled_libraries.py walks the source tree and looks for paths containing the substring 'third_party'
@@ -1643,6 +1659,19 @@ src_install() {
 		einfo "Creating symlink to libffmpeg.so from $(usex ffmpeg-chromium ffmpeg-chromium ffmpeg[chromium])..."
 		dosym ../chromium/libffmpeg.so$(usex ffmpeg-chromium .${PV%%\.*} "") \
 			/usr/$(get_libdir)/chromium-browser/libffmpeg.so
+	fi
+
+	local test_libs=(
+		"libimmediate_crash_test_helper.so"
+		"libmalloc_wrapper.so"
+		"libtest_shared_library.so"
+		"libtest_trace_processor.so"
+	)
+	if use test; then
+		local test_lib
+		for test_lib in "${test_libs[@]}"; do
+			rm -f "out/Release/${test_lib}" || die "Failed to remove ${test_lib}"
+		done
 	fi
 
 	(
