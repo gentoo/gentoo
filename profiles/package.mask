@@ -36,6 +36,15 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2026-08-08)
+# A chain of NIH packages that have seen no upstream activity in 3+
+# years.  They are all broken with >=dev-python/flit-core-4, and have
+# no reverse dependencies outside the chain.
+# Removal on 2026-09-07.  Bug #980500.
+dev-python/autoprop
+dev-python/signature-dispatch
+dev-python/vecrec
+
 # Nowa Ammerlaan <nowa@gentoo.org> (2026-08-06)
 # This version was pulled from upstream. The reason for this is
 # unclear. But masked just as a precaution. Bug #980367.
