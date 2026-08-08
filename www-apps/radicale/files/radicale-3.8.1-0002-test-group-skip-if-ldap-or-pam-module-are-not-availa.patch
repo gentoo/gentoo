@@ -1,0 +1,25 @@
+From 8762aa5dbb42a51aa1eb08ccc5a024c12f7847cf Mon Sep 17 00:00:00 2001
+From: Peter Bieringer <pb@bieringer.de>
+Date: Tue, 29 Sep 2026 21:00:41 +0200
+Subject: [PATCH 2/2] test/group: skip if ldap or pam module are not available
+
+---
+ radicale/tests/test_group.py | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/radicale/tests/test_group.py b/radicale/tests/test_group.py
+index a604ddaf8a1b..29cc6d1037ba 100644
+--- a/radicale/tests/test_group.py
++++ b/radicale/tests/test_group.py
+@@ -189,6 +189,8 @@ permissions: r
+                          })
+             except RuntimeError:
+                 raise
++            except ModuleNotFoundError:
++                pass
+             else:
+                 pass
+ 
+-- 
+2.55.0
+
