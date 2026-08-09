@@ -1,0 +1,41 @@
+From 200ff3c5e45f9f3d78a54b99fc392657b5f5e2f4 Mon Sep 17 00:00:00 2001
+From: Max Schwarz <max.schwarz@online.de>
+Date: Thu, 23 Jul 2026 09:24:16 +0200
+Subject: [PATCH] sftp: don't spin forever removing Solid device entries from
+ Dolphin
+
+SftpPlugin::removeFromDolphin() iterates the shared KFilePlacesModel to
+remove the kdeconnect://<deviceId>/ place added by addToDolphin(). When
+the KDE Connect Solid backend is installed, each device also shows up in
+the model as a Solid *device* item with that exact URL. The loop matches
+it and calls removePlace(), but removePlace() is a no-op for device
+items, so rowCount() never decreases and the --i re-processes the same
+row forever, pegging the daemon at 100% CPU on device disconnect.
+
+Skip device items so we only ever remove the bookmark place kdeconnect
+itself added; Solid device entries are owned by the Solid backend.
+---
+ plugins/sftp/sftpplugin.cpp | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/plugins/sftp/sftpplugin.cpp b/plugins/sftp/sftpplugin.cpp
+index 6c8a3bb14..c378262e8 100644
+--- a/plugins/sftp/sftpplugin.cpp
++++ b/plugins/sftp/sftpplugin.cpp
+@@ -67,6 +67,13 @@ void SftpPlugin::removeFromDolphin()
+     QUrl kioUrl(QStringLiteral("kdeconnect://") + deviceId + QStringLiteral("/"));
+     for (int i = 0; i < m_placesModel.rowCount(); ++i) {
+         QModelIndex index = m_placesModel.index(i, 0);
++        // Skip Solid device entries: when the KDE Connect Solid backend is installed, each device
++        // shows up in the places model with a kdeconnect://<deviceId>/ URL that matches kioUrl.
++        // removePlace() is a no-op for device items, so trying to remove one here would never
++        // decrease rowCount() and the --i below would spin on the same row forever (100% CPU hang).
++        if (m_placesModel.isDevice(index)) {
++            continue;
++        }
+         QUrl url = m_placesModel.url(index);
+         if (url == kioUrl) {
+             m_placesModel.removePlace(index);
+-- 
+GitLab
+
