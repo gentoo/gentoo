@@ -19,6 +19,7 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64"
 IUSE="torch"
+REQUIRED_USE="test? ( torch )"
 
 RDEPEND="
 	$(python_gen_cond_dep '
@@ -38,14 +39,12 @@ RDEPEND="
 		)
 	')
 	torch? (
-		sci-ml/caffe2[${PYTHON_SINGLE_USEDEP}]
-		sci-ml/pytorch[${PYTHON_SINGLE_USEDEP}]
+		>=sci-ml/pytorch-2.13.0[${PYTHON_SINGLE_USEDEP},gloo]
 	)
 "
 
 BDEPEND="
 	test? (
-		sci-ml/pytorch[${PYTHON_SINGLE_USEDEP}]
 		dev-vcs/git-lfs
 		$(python_gen_cond_dep '
 			dev-python/jedi[${PYTHON_USEDEP}]
