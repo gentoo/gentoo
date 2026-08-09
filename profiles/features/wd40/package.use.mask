@@ -1,6 +1,10 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (2025-08-09)
+# Require dev-python/sybil.
+dev-python/tldextract test
+
 # Eli Schwartz <eschwartz@gentoo.org> (2026-07-07)
 # Requires >= on gtk/libadwaita, which is masked for librsvg
 # reasons.
