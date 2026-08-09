@@ -1,4 +1,4 @@
-# Copyright 2019-2025 Gentoo Authors
+# Copyright 2019-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,7 +15,7 @@ LICENSE="
 	unRAR OFL-1.1 CC-BY-SA-3.0 MPL-2.0 android public-domain all-rights-reserved
 "
 SLOT="0"
-KEYWORDS="-* ~amd64 ~x86"
+KEYWORDS="-* ~amd64"
 RESTRICT="bindist mirror"
 
 RDEPEND="
