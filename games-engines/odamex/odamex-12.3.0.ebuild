@@ -24,9 +24,9 @@ RESTRICT="!test? ( test )"
 # completely different protobuf version on a multiplayer-focused engine.
 
 RDEPEND="
+	dev-libs/jsoncpp:=
 	client? (
 		dev-cpp/cpptrace
-		dev-libs/jsoncpp:=
 		media-libs/libpng:0=
 		media-libs/libsdl2[joystick,sound,video]
 		media-libs/sdl2-mixer
@@ -39,7 +39,6 @@ RDEPEND="
 		x11-libs/wxGTK:${WX_GTK_VER}=[curl]
 	)
 	server? (
-		dev-libs/jsoncpp:=
 		virtual/zlib:=
 		upnp? ( net-libs/miniupnpc:= )
 	)
@@ -48,7 +47,7 @@ DEPEND="
 	${RDEPEND}
 	test? (
 		dev-cpp/cpptrace
-		dev-libs/jsoncpp
+		dev-cpp/gtest
 		net-misc/curl
 		virtual/zlib
 	)
