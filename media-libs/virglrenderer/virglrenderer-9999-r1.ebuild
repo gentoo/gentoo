@@ -56,6 +56,7 @@ src_configure() {
 	use video_cards_amdgpu && gpus+=( amdgpu-experimental )
 	use video_cards_asahi && gpus+=( asahi )
 	use video_cards_freedreno && gpus+=( msm )
+	use video_cards_intel && gpus+=( i915-experimental )
 
 	# Build egl unconditionally. Tests and vaapi require it.
 	local -a platforms=( egl )
