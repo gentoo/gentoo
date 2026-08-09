@@ -23,7 +23,7 @@ IUSE="doc test X"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	>=dev-libs/glib-2.72:2
+	>=dev-libs/glib-2.84:2
 	dev-libs/gobject-introspection
 "
 DEPEND="
@@ -49,7 +49,6 @@ src_configure() {
 
 	local emesonargs=(
 		$(meson_feature doc docs)
-		$(meson_feature test tests)
 	)
 	meson_src_configure
 }
