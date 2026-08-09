@@ -6,6 +6,7 @@
 		<name>Gentoo KDE Project</name>
 	</maintainer>
 	<use>
+		<flag name="fido2">Enable FIDO2 support</flag>
 		<flag name="gssapi">Enable gssapi support</flag>
 		<flag name="mbedtls">Use <pkg>net-libs/mbedtls</pkg> as TLS provider</flag>
 		<flag name="pcap">Build with PCAP output support</flag>
