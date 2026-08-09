@@ -11,7 +11,7 @@ inherit cmake
 
 LICENSE="Apache-2.0"
 SLOT="$(ver_cut 1)"
-KEYWORDS="amd64"
+KEYWORDS="amd64 ~arm64"
 
 IUSE="test"
 
