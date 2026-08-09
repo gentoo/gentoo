@@ -38,11 +38,11 @@
 
 # @ECLASS_VARIABLE: ELISP_PATCHES
 # @DEFAULT_UNSET
+# @DEPRECATED: PATCHES
 # @DESCRIPTION:
 # Space separated list of patches to apply after unpacking the sources.
 # Patch files are searched for in the current working dir, WORKDIR, and
-# FILESDIR.  This variable is semi-deprecated, preferably use the
-# PATCHES array instead.
+# FILESDIR.  This variable is deprecated, use the PATCHES array instead.
 
 # @ECLASS_VARIABLE: ELISP_REMOVE
 # @DEFAULT_UNSET
@@ -98,23 +98,26 @@ elisp_src_unpack() {
 
 # @FUNCTION: elisp_src_prepare
 # @DESCRIPTION:
-# Apply any patches listed in ELISP_PATCHES.  Patch files are searched
-# for in the current working dir, WORKDIR, and FILESDIR.
+# Apply patches and remove any files listed in ELISP_REMOVE.
 
 elisp_src_prepare() {
-	local patch file
-	for patch in ${ELISP_PATCHES}; do
-		if [[ -f ${patch} ]]; then
-			file="${patch}"
-		elif [[ -f ${WORKDIR}/${patch} ]]; then
-			file="${WORKDIR}/${patch}"
-		elif [[ -f ${FILESDIR}/${patch} ]]; then
-			file="${FILESDIR}/${patch}"
-		else
-			die "Cannot find ${patch}"
-		fi
-		eapply "${file}"
-	done
+	if has "${EAPI}" 7 8; then
+		local patch file
+		for patch in ${ELISP_PATCHES}; do
+			if [[ -f ${patch} ]]; then
+				file="${patch}"
+			elif [[ -f ${WORKDIR}/${patch} ]]; then
+				file="${WORKDIR}/${patch}"
+			elif [[ -f ${FILESDIR}/${patch} ]]; then
+				file="${FILESDIR}/${patch}"
+			else
+				die "Cannot find ${patch}"
+			fi
+			eapply "${file}"
+		done
+	elif [[ -n ${ELISP_PATCHES} ]]; then
+		die "ELISP_PATCHES is banned in EAPI ${EAPI}"
+	fi
 
 	# apply PATCHES and any user patches
 	default
