@@ -34,6 +34,10 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
+PATCHES=(
+	"${FILESDIR}"/cppduals-no-std-is_compound.patch
+)
+
 DOCS=(
 	ANALYSES
 	AUTHORS

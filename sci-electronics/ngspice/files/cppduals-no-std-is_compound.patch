@@ -1,0 +1,20 @@
+Remove specialization of std::is_compound in bundled cppduals.
+
+Specializing std type traits is UB and newer libc++ marks them
+[[clang::no_specializations]], making this a hard error. The
+specialization is a no-op anyway (class types are always compound).
+Matches upstream ngspice commit ab87bd57a ("Re-enable compiling with
+clang", issue 826), applied to the pre-45 bundled cppduals.
+
+--- a/src/include/cppduals/duals/dual
++++ b/src/include/cppduals/duals/dual
+@@ -439,9 +439,6 @@
+ 
+ #endif // CPPDUALS_ENABLE_IS_ARITHMETIC
+ 
+-/// Duals are compound types.
+-template <class T>
+-struct is_compound<duals::dual<T>> : true_type {};
+ 
+ // Modification of std::numeric_limits<> per
+ // C++03 17.4.3.1/1, and C++11 18.3.2.3/1.
