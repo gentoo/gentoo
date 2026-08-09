@@ -31,7 +31,7 @@ fi
 # Commit ref from `strings libffmpeg.so | grep -F "FFmpeg version"` matches this Chromium version
 # or use Chromicler to handle bumps.
 # Does not _need_ to be updated for every new version of Opera, only when it breaks.
-CHROMIUM_VERSION="148"
+CHROMIUM_VERSION="150"
 SRC_URI="${SRC_URI_BASE[*]/%//${PV}/linux/${MY_PN}_${PV}_amd64.deb}"
 S=${WORKDIR}
 
