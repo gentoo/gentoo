@@ -15,7 +15,7 @@ LICENSE="
 	Apache-2.0 Boost-1.0 CC-BY-4.0 MIT Unlicense UoI-NCSA
 "
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 
 # needs an annoying submodule that fetches many things, the tests do
 # runtime compilation that fail due to missing headers, and they also
