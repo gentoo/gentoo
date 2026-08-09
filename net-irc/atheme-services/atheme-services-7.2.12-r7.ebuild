@@ -34,7 +34,8 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${P}-configure-logdir.patch
 	"${FILESDIR}"/${P}-libathemecore-account-fix-assertion-macro-return-type.patch
-	"${FILESDIR}"/${P}-fix-compilation-with-recent-ExtUtils-ParseXS.patch)
+	"${FILESDIR}"/${P}-fix-compilation-with-recent-ExtUtils-ParseXS.patch
+	"${FILESDIR}"/${P}-Fix-implicit-function-declaration-on-Perl-5.44.patch)
 
 src_configure() {
 	# perl scriping module support is also broken in 7.0.0. Yay for QA failures.

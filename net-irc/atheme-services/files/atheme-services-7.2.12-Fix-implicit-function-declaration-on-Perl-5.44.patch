@@ -1,0 +1,24 @@
+From 23d60185ebeda03c31a82d9c90f837f80b210bf0 Mon Sep 17 00:00:00 2001
+From: Attila Toth <unknown@unknown.com>
+Date: Sun, 9 Aug 2026 15:34:59 -0700
+Subject: [PATCH] Fix implicit function declaration on Perl 5.44
+
+---
+ modules/scripting/perl/api/channel.xs | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/modules/scripting/perl/api/channel.xs b/modules/scripting/perl/api/channel.xs
+index ec289c03c..9fba442ae 100644
+--- a/modules/scripting/perl/api/channel.xs
++++ b/modules/scripting/perl/api/channel.xs
+@@ -1,5 +1,7 @@
+ MODULE = Atheme			PACKAGE = Atheme::Channel
+ 
++#include "../../../chanserv/chanserv.h"
++
+ Atheme_Channel
+ find(SV * package, const char * name)
+ CODE:
+-- 
+2.54.0
+
