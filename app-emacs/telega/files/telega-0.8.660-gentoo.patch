@@ -1,0 +1,30 @@
+diff --git a/telega-core.el b/telega-core.el
+index 3655317..eaa78cb 100644
+--- a/telega-core.el
++++ b/telega-core.el
+@@ -55,8 +55,7 @@ Also return `nil' if FILENAME is `nil'."
+ (defun telega-etc-file (filename)
+   "Return absolute path to FILENAME from etc/ directory in telega.
+ Use FILENAME as is if resulting file does not exist."
+-  (let ((abspath (expand-file-name (concat "etc/" filename)
+-                                   telega--lib-directory)))
++  (let ((abspath (expand-file-name filename "@SITEETC@")))
+     (if (file-exists-p abspath)
+         abspath
+       filename)))
+diff --git a/telega-server.el b/telega-server.el
+index 7c616e2..df950fa 100644
+--- a/telega-server.el
++++ b/telega-server.el
+@@ -165,10 +165,7 @@ Set `telega-server-libs-prefix' to the TDLib installion path"
+                    "docker")))
+ 
+     (let ((exec-path (cons telega-directory exec-path)))
+-      (or (if (executable-find telega-server-command)
+-              (telega-server--check-version)
+-            (telega-server-build))
+-          (executable-find telega-server-command)
++      (or (executable-find telega-server-command)
+           (error "`%s' not found in exec-path" telega-server-command)))))
+ 
+ (defun telega-server--process-command (&rest flags)
