@@ -124,7 +124,7 @@ RDEPEND="
 	x11-libs/pango
 	gtk? ( gui-libs/gtk:4 x11-libs/gtk+:3 )
 	proprietary-codecs? (
-		!ffmpeg-chromium? ( media-video/ffmpeg:0/60.62.62[chromium] )
+		!ffmpeg-chromium? ( media-video/ffmpeg:0/61.63.63[chromium] )
 		ffmpeg-chromium? ( media-video/ffmpeg-chromium:${CHROMIUM_VERSION} )
 	)
 	qt6? ( dev-qt/qtbase:6[gui,widgets] )
