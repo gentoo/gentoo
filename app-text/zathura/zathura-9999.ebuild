@@ -17,24 +17,23 @@ else
 fi
 
 LICENSE="ZLIB"
-SLOT="0/6.7" # plugin versions api.abi (see meson.build)
+SLOT="0/8.9" # plugin versions api.abi (see meson.build)
 IUSE="+man landlock seccomp synctex test wayland X"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="
-	test? ( wayland X )
 	|| ( wayland X )
 "
 
 RDEPEND="
 	dev-libs/json-glib
-	dev-db/sqlite:3
-	>=dev-libs/girara-2026.02.03:=[X?]
-	>=dev-libs/glib-2.76:2
+	>=dev-db/sqlite-3.35:3
+	>=dev-libs/girara-2026.07.07:=[X?]
+	>=dev-libs/glib-2.84:2
 	sys-apps/file
 	x11-libs/cairo
 	>=x11-libs/gtk+-3.24:3[wayland?,X?]
 	x11-libs/pango
-	man? ( dev-python/sphinx )
+	dev-python/sphinx
 	seccomp? ( sys-libs/libseccomp )
 	synctex? ( app-text/texlive-core )
 "
@@ -47,8 +46,8 @@ BDEPEND="
 	virtual/pkgconfig
 	test? (
 		dev-libs/appstream
-		dev-libs/weston[headless]
-		x11-misc/xvfb-run
+		wayland? ( dev-libs/weston[headless] )
+		X? ( x11-misc/xvfb-run )
 	)
 "
 
@@ -59,12 +58,24 @@ src_configure() {
 
 	local emesonargs=(
 		-Dconvert-icon=disabled
-		$(meson_feature man manpages)
+		-Dmanpages=enabled
 		$(meson_feature landlock)
 		$(meson_feature seccomp)
 		$(meson_feature synctex)
-		$(meson_feature test tests)
 	)
+
+	if use test ; then
+		emesonargs+=(
+			$(meson_feature X tests-x11)
+			$(meson_feature wayland tests-wayland)
+		)
+	else
+		emesonargs+=(
+			-Dtests-x11=disabled
+			-Dtests-wayland=disabled
+		)
+	fi
+
 	meson_src_configure
 }
 
@@ -75,6 +86,11 @@ src_install() {
 		mv "${ED}"/usr/bin/zathura{,-full} || die
 		dosym zathura-sandbox /usr/bin/zathura
 	fi
+}
+
+src_test() {
+	addwrite /dev/dri
+	meson_src_test
 }
 
 pkg_postinst() {
