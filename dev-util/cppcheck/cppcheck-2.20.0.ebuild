@@ -106,7 +106,7 @@ src_test() {
 		# https://github.com/danmar/cppcheck/pull/5462
 		TestFileLister
 	)
-	cmake_src_test
+	cmake_src_test -j1
 
 	rm test/cli/other_test.py || die
 	rm test/cli/lookup_test.py || die
