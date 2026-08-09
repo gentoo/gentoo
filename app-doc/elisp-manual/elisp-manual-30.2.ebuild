@@ -8,7 +8,6 @@ HOMEPAGE="https://www.gnu.org/software/emacs/manual/"
 # taken from doc/lispref/ (and some files from doc/emacs/) of emacs-${PV}
 SRC_URI="https://distfiles.gentoo.org/pub/proj/emacs/${P}.tar.xz
 	https://distfiles.gentoo.org/pub/proj/emacs/${P}-patches-1.tar.xz"
-
 S="${WORKDIR}/lispref"
 
 LICENSE="FDL-1.3+"
