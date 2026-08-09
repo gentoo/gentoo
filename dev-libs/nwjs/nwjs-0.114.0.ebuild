@@ -3,7 +3,7 @@
 
 EAPI=8
 
-CHROMIUM_VERSION="145"
+CHROMIUM_VERSION="152"
 CHROMIUM_LANGS="
 	af
 	am
@@ -69,17 +69,15 @@ HOMEPAGE="https://nwjs.io"
 SRC_URI="
 	sdk? (
 		amd64? ( https://dl.nwjs.io/v${PV}/${PN}-sdk-v${PV}-linux-x64.tar.gz )
-		x86? ( https://dl.nwjs.io/v${PV}/${PN}-sdk-v${PV}-linux-ia32.tar.gz )
 	)
 	!sdk? (
 		amd64? ( https://dl.nwjs.io/v${PV}/${PN}-v${PV}-linux-x64.tar.gz )
-		x86? ( https://dl.nwjs.io/v${PV}/${PN}-v${PV}-linux-ia32.tar.gz )
 	)
 "
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="-* ~amd64 ~x86"
+KEYWORDS="-* ~amd64"
 IUSE="ffmpeg-chromium sdk"
 
 RDEPEND="
@@ -89,7 +87,7 @@ RDEPEND="
 	dev-libs/nspr
 	dev-libs/nss
 	media-libs/alsa-lib
-	media-libs/mesa[opengl]
+	media-libs/libglvnd
 	net-print/cups
 	sys-apps/dbus
 	sys-apps/util-linux
@@ -107,7 +105,7 @@ RDEPEND="
 	x11-libs/pango
 	virtual/libudev
 	|| ( gui-libs/gtk:4 x11-libs/gtk+:3 )
-	!ffmpeg-chromium? ( media-video/ffmpeg:0/60.62.62[chromium] )
+	!ffmpeg-chromium? ( media-video/ffmpeg:0/61.63.63[chromium] )
 	ffmpeg-chromium? ( media-video/ffmpeg-chromium:${CHROMIUM_VERSION} )
 "
 
@@ -118,8 +116,6 @@ src_unpack() {
 	default
 	if use amd64; then
 		mv "${WORKDIR}/${PN}-$(usev sdk "sdk-")v${PV}-linux-x64" "${S}" || die
-	elif use x86; then
-		mv "${WORKDIR}/${PN}-$(usev sdk "sdk-")v${PV}-linux-ia32" "${S}" || die
 	else
 		die "Unsupported architecture"
 	fi
