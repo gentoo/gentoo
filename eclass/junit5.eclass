@@ -144,15 +144,39 @@ junit5_pkg_setup() {
 ejunit5() {
 	debug-print-function ${FUNCNAME} $*
 
-	local pkgs
+	local cp pkgs
 	if [[ -f ${JAVA_PKG_DEPEND_FILE} ]]; then
 		for atom in $(cat ${JAVA_PKG_DEPEND_FILE} | tr : ' '); do
 			pkgs=${pkgs},$(echo ${atom} | sed -re "s/^.*@//")
 		done
+		cp=$(java-pkg_getjars --build-only --with-dependencies ${pkgs#,})
 	fi
 
-	local junit="junit-5"
-	local cp=$(java-pkg_getjars --build-only --with-dependencies ${junit}${pkgs})
+	run-vintage() {
+		if has junit-vintage ${JAVA_TESTING_FRAMEWORKS}; then
+			echo "junit-vintage-engine"
+		fi
+	}
+
+	# Error: Module junit not found, required by org.junit.vintage.engine
+	# conditionally depend on dev-java/junit:5[-vintage] bug #961479
+	local JUNIT_JARS=(
+		junit-jupiter-api
+		junit-jupiter-engine
+		junit-jupiter-params
+		junit-platform-commons
+		junit-platform-console
+		junit-platform-engine
+		junit-platform-launcher
+		junit-platform-reporting
+		$(run-vintage)
+	)
+	for jar in ${JUNIT_JARS[@]}; do
+		cp="${cp}:$(java-pkg_getjar --build-only junit-5 $jar.jar)"
+	done
+	if has junit-vintage ${JAVA_TESTING_FRAMEWORKS}; then
+		cp=$(java-pkg_getjars --build-only --with-dependencies junit-4)
+	fi
 	if [[ ${1} = -cp || ${1} = -classpath ]]; then
 		cp="${2}:${cp}"
 		shift 2
