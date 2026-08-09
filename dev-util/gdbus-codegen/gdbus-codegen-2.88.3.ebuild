@@ -32,10 +32,6 @@ BDEPEND="
 "
 
 python_prepare_all() {
-	cd "${WORKDIR}"/glib-${PV} || die
-	eapply "${WORKDIR}/glib-2.88.2-const-whoops.patch"
-	cd "${S}" || die
-
 	PATCHES=(
 		"${FILESDIR}/${PN}-2.56.1-sitedir.patch"
 	)
