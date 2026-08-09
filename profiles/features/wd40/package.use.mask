@@ -2,6 +2,12 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Michał Górny <mgorny@gentoo.org> (2025-08-09)
+# Require dev-python/pydantic and dev-python/inline-snapshot,
+# respectively.
+dev-python/cappa test
+dev-python/yaxmldiff test
+
+# Michał Górny <mgorny@gentoo.org> (2025-08-09)
 # Require dev-python/sybil.
 dev-python/tldextract test
 
