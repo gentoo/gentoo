@@ -5,6 +5,7 @@
 # Needs gnome-control-center and other rust reverse deps
 app-emulation/winetricks gui
 dev-perl/Panotools-Script gui
+gnome-base/gvfs google onedrive test
 x11-misc/mugshot gnome
 x11-misc/xscreensaver gdm
 
