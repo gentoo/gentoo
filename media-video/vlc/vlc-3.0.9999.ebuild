@@ -123,12 +123,11 @@ RDEPEND="
 	keyring? ( app-crypt/libsecret )
 	gstreamer? ( >=media-libs/gst-plugins-base-1.4.5:1.0 )
 	gui? (
-		dev-qt/qtcore:5
-		dev-qt/qtgui:5
-		dev-qt/qtsvg:5
-		dev-qt/qtwidgets:5
+		dev-qt/qtbase:6=[gui,opengl,widgets]
+		dev-qt/qtdeclarative:6
+		dev-qt/qtsvg:6
 		X? (
-			dev-qt/qtx11extras:5
+			dev-qt/qtbase:6[X]
 			x11-libs/libX11
 		)
 	)
@@ -259,6 +258,9 @@ src_prepare() {
 	if [[ ${PV} == *9999* || ${PV} == *_p[0-9]* ]] ; then
 		./bootstrap
 	fi
+
+	# Disable qt5
+	sed -i 's/Qt5Svg/Qt5Svg Qt5DisableDetection/' configure.ac
 
 	# Make it build with libtool 1.5
 	rm m4/lt* m4/libtool.m4 || die
