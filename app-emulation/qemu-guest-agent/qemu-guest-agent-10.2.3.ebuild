@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 PYTHON_REQ_USE="ensurepip(-),ncurses,readline"
 
 inherit edo linux-info python-any-r1 systemd toolchain-funcs udev
@@ -27,8 +27,8 @@ BDEPEND="
 	$(python_gen_any_dep '
 		dev-python/distlib[${PYTHON_USEDEP}]
 	')
-	dev-lang/perl
 	app-alternatives/ninja
+	dev-lang/perl
 "
 
 QA_CONFIG_IMPL_DECL_SKIP=(
