@@ -468,6 +468,9 @@ src_test() {
 
 		# eglot-test-lsp-abiding-column #977411
 		%lisp/progmodes/eglot-tests.el
+
+		# Reason: fails with app-crypt/freepg
+		%lisp/epg-tests.el
 	)
 	use elibc_musl && exclude_tests+=(
 			# Reason: newlocale(3) lenient locale validation #906012
@@ -481,15 +484,6 @@ src_test() {
 			%src/keyboard-tests.el
 		)
 	use xpm || exclude_tests+=( %src/image-tests.el )
-
-	# Some tests hang with gnupg-2.2.42
-	local gpgver=$(best_version app-crypt/gnupg)
-	gpgver=${gpgver#*gnupg-}
-	[[ -n ${gpgver} ]] \
-		&& ver_test "${gpgver}" -ge 2.2.42 && ver_test "${gpgver}" -lt 2.3 \
-		&& exclude_tests+=(
-			%lisp/epg-tests.el
-		)
 
 	# Redirect GnuPG's sockets, in order not to exceed the 108 char limit
 	# for socket paths on Linux.

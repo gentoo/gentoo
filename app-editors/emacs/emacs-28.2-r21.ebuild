@@ -406,6 +406,9 @@ src_test() {
 		# Reason: tries to access network
 		# internet-is-working
 		%src/process-tests.el
+
+		# Reason: fails with app-crypt/freepg
+		%lisp/epg-tests.el
 	)
 	use elibc_musl && exclude_tests+=(
 			# Reason: newlocale(3) lenient locale validation #906012

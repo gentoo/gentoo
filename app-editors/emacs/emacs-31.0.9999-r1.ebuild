@@ -469,6 +469,9 @@ src_test() {
 		# Reason: tries to access network
 		# internet-is-working
 		%src/process-tests.el
+
+		# Reason: fails with app-crypt/freepg
+		%lisp/epg-tests.el
 	)
 	use threads || exclude_tests+=(
 			%src/emacs-module-tests.el
