@@ -580,3 +580,7 @@ net-wireless/gnome-bluetooth
 sys-apps/baobab
 sys-apps/xdg-desktop-portal-gnome
 www-client/epiphany
+app-misc/bijiben
+mail-client/geary
+media-gfx/gnome-photos
+net-libs/msgraph
