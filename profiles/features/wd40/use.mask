@@ -1,6 +1,12 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Pacho Ramos <pacho@gentoo.org> (2026-08-10)
+# Require rustified librsvg.
+gnome-shell
+gnome-online-accounts
+nautilus
+
 # Sam James <sam@gentoo.org> (2025-04-03)
 # Needs Rustified librsvg.
 gimp
@@ -18,8 +24,3 @@ test-rust
 # Sam James <sam@gentoo.org> (2022-08-26)
 # >=media-gfx/libimagequant-4 requires Rust.
 imagequant
-
-# Matt Turner <mattst88@gentoo.org> (2021-07-25)
-# gnome-shell and gnome-online-accounts require rustified librsvg.
-gnome-shell
-gnome-online-accounts
