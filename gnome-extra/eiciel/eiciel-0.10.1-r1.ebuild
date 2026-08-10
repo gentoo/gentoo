@@ -11,16 +11,23 @@ SRC_URI="https://github.com/rofirrim/eiciel/archive/refs/tags/${PV/_/-}.tar.gz -
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="nautilus xattr"
+IUSE="nautilus"
 
-DEPEND="
+RDEPEND="
 	>=sys-apps/acl-2.2.32
 	>=dev-cpp/gtkmm-4.6:4.0
 	dev-cpp/glibmm:2.68
-	>=gnome-base/nautilus-43
+	nautilus? ( >=gnome-base/nautilus-43 )
 "
-RDEPEND="${DEPEND}"
+DEPEND="${RDEPEND}"
 BDEPEND="
 	virtual/pkgconfig
 	>=sys-devel/gettext-0.18.1
 "
+
+src_configure() {
+	local emesonargs=(
+		$(meson_feature nautilus nautilus-plugin)
+	)
+	meson_src_configure
+}
