@@ -9,7 +9,9 @@ inherit flag-o-matic multilib postgres systemd
 
 DESCRIPTION="The PHP language runtime engine"
 HOMEPAGE="https://www.php.net/"
-SRC_URI="https://www.php.net/distributions/${P}.tar.xz"
+SRC_URI="https://downloads.php.net/~mbeccati/php-8.6.0alpha3.tar.xz"
+
+S="${WORKDIR}/php-8.6.0alpha3"
 
 LICENSE="PHP-3.01
 	BSD
@@ -72,7 +74,6 @@ RESTRICT="!test? ( test )"
 COMMON_DEPEND="
 	app-eselect/eselect-php[apache2?,fpm?]
 	dev-libs/libpcre2[jit?,unicode]
-	dev-libs/uriparser
 	virtual/libcrypt:=
 	fpm? ( acl? ( sys-apps/acl ) apparmor? ( sys-libs/libapparmor ) selinux? ( sys-libs/libselinux ) )
 	apache2? ( www-servers/apache[apache2_modules_unixd(+),threads=] )
@@ -210,7 +211,7 @@ src_prepare() {
 	# In src_configure() we make several copies of the source tree, so
 	# it is extra worthwhile to delete the unused bundled copies of
 	# these libraries.
-	rm -r ext/gd/libgd ext/uri/uriparser ext/pcre/pcre2lib || die
+	rm -r ext/gd/libgd ext/pcre/pcre2lib || die
 
 	# In php-8.x, the FPM pool configuration files have been split off
 	# of the main config. By default the pool config files go in
@@ -502,19 +503,13 @@ src_configure() {
 	fi
 
 	# Use pic for shared modules such as apache2's mod_php
-	our_conf+=( --with-pic )
+	our_conf+=( --enable-pic )
 
 	# we use the system copy of pcre
 	# --with-external-pcre affects ext/pcre
 	our_conf+=(
 		--with-external-pcre
 		$(use_with jit pcre-jit)
-	)
-
-	# The URI extension is new in PHP 8.5, and always available. We
-	# insist that it use the system copy of dev-libs/uriparser.
-	our_conf+=(
-		--with-external-uriparser
 	)
 
 	# Catch CFLAGS problems
@@ -710,7 +705,7 @@ src_install() {
 
 	# Delete empty /var/run and /var/log directories.
 	# See bug #977105
-	if use fpm || use phpdbg ; then
+	if use fpm ; then
 		rmdir "${D}/var/log" "${D}/var/run" || die
 	fi
 }
