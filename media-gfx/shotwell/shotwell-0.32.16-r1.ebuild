@@ -27,7 +27,7 @@ DEPEND="
 	>=media-libs/gst-plugins-base-1.20:1.0
 	>=media-libs/libgphoto2-2.5:=
 	udev? ( >=dev-libs/libgudev-145:= )
-	>=media-libs/gexiv2-0.12.3
+	>=media-libs/gexiv2-0.12.3:0=
 	>=media-libs/libraw-0.13.2:=
 	>=media-libs/libexif-0.6.16
 	app-crypt/libsecret[vala]
@@ -51,7 +51,7 @@ BDEPEND="
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
 	net-libs/libsoup:3.0[vala]
-	media-libs/gexiv2[vala]
+	media-libs/gexiv2:0=[vala]
 	app-crypt/gcr:0[vala]
 "
 
