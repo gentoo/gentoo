@@ -591,3 +591,5 @@ media-gfx/geeqie
 x11-wm/marco
 x11-wm/muffin
 x11-wm/mutter
+mate-base/mate
+mate-base/mate-control-center
