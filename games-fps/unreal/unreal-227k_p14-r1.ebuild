@@ -30,6 +30,7 @@ RDEPEND="
 	media-libs/libsndfile
 	media-libs/libxmp
 	media-libs/openal
+	media-libs/sdl3-ttf
 	media-sound/mpg123-base
 	dedicated? ( acct-user/unreal )
 "
