@@ -101,6 +101,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-6.11.0-qt6.12.patch
 	"${FILESDIR}"/${PN}-6.11.0-py3.15.patch
+	"${FILESDIR}"/${PN}-6.11.0-bluetooth.patch
 )
 
 src_prepare() {
