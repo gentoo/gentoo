@@ -24,7 +24,7 @@ fi
 
 LICENSE="GPL-2"
 SLOT="$(ver_cut 1-2)"
-IUSE="+boost debug examples graphicsmagick +minimal osg +pdf scripts +templates tk"
+IUSE="+boost debug examples graphicsmagick +jpegxl +minimal osg +pdf scripts +templates tk"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	tk? ( scripts )"
@@ -61,6 +61,7 @@ DEPEND="${PYTHON_DEPS}
 	x11-libs/libxcb
 	boost? ( dev-libs/boost:= )
 	graphicsmagick? ( media-gfx/graphicsmagick:= )
+	jpegxl? ( >=media-libs/libjxl-0.11.2:= )
 	osg? ( dev-games/openscenegraph:= )
 	pdf? ( app-text/podofo:0= )
 	scripts? (
@@ -112,6 +113,7 @@ src_configure() {
 		-DWANT_NOOSG=$(usex !osg)
 		-DWITH_PODOFO=$(usex pdf)
 		-DWANT_NOTEMPLATES=$(usex !templates)
+		$(cmake_use_find_package jpegxl JXL)
 	)
 	cmake_src_configure
 }
