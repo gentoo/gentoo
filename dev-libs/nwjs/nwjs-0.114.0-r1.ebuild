@@ -102,6 +102,7 @@ RDEPEND="
 	x11-libs/libXfixes
 	x11-libs/libxkbcommon
 	x11-libs/libXrandr
+	x11-libs/libXtst
 	x11-libs/pango
 	virtual/libudev
 	|| ( gui-libs/gtk:4 x11-libs/gtk+:3 )
