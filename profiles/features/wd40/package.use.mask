@@ -2,8 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Pacho Ramos <pacho@gentoo.org> (2026-08-10)
-# Needs gnome-control-center, that cannot run here with their latest
-# versions.
+# Needs gnome-control-center and other rust reverse deps
+app-emulation/winetricks gui
+dev-perl/Panotools-Script gui
 x11-misc/mugshot gnome
 x11-misc/xscreensaver gdm
 
