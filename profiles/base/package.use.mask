@@ -10,10 +10,6 @@
 # Turnstile is currently in ::guru
 sys-auth/pambase turnstile
 
-# Michael Orlitzky <mjo@gentoo.org> (2026-07-17)
-# Broke upstream, not an easy fix, bug 978718.
->=net-analyzer/monitoring-plugins-3.0.1 snmp
-
 # Michał Górny <mgorny@gentoo.org> (2026-07-02)
 # Unsurpringly upstream doesn't support custom slotted Gentoo install.
 dev-libs/libevent mbedtls
