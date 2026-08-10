@@ -584,3 +584,10 @@ app-misc/bijiben
 mail-client/geary
 media-gfx/gnome-photos
 net-libs/msgraph
+dev-games/aseprite
+dev-python/nautilus-python
+gnome-extra/nemo-fileroller
+media-gfx/geeqie
+x11-wm/marco
+x11-wm/muffin
+x11-wm/mutter
