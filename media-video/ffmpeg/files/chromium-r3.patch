@@ -23,7 +23,7 @@ to need rebasing across ffmpeg versions.
 +}
 --- a/ffbuild/libffmpeg.mak
 +++ b/ffbuild/libffmpeg.mak
-@@ -0,0 +1,27 @@
+@@ -0,0 +1,29 @@
 +LIBFFMPEG = $(SLIBPREF)ffmpeg$(SLIBSUF)
 +LIBFFMPEG_LINK = $(LD) -shared -Wl,-soname,$(LIBFFMPEG) -Wl,-Bsymbolic -Wl,-z,now -Wl,-z,relro -Wl,-z,defs -Wl,--gc-sections $(LDFLAGS) $(LDLIBFLAGS) -o $(LIBFFMPEG)
 +
@@ -45,7 +45,9 @@ to need rebasing across ffmpeg versions.
 +install-libffmpeg: $(LIBFFMPEG)
 +	$(Q)mkdir -p "$(SHLIBDIR)/chromium"
 +	$(INSTALL) -m 755 $< "$(SHLIBDIR)/chromium/$<"
++ifneq ($(STRIPTYPE),nostrip)
 +	$(STRIP) "$(SHLIBDIR)/chromium/$<"
++endif
 +
 +uninstall-libffmpeg:
 +	$(RM) "$(SHLIBDIR)/chromium/$(LIBFFMPEG)"
