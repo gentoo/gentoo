@@ -462,6 +462,10 @@ src_test() {
 
 		%lisp/progmodes/eglot-tests.el  #966957
 
+		# Reason: flaky (https://bugs.gnu.org/73441, fails even with the fix)
+		# proced-refine-test
+		%lisp/proced-tests.el
+
 		# Reason: test not skipped if tree-sitter-cpp is missing #979386
 		# c-ts-mode-test-filling
 		%lisp/progmodes/c-ts-mode-tests.el
@@ -469,9 +473,6 @@ src_test() {
 		# Reason: tries to access network
 		# internet-is-working
 		%src/process-tests.el
-
-		# Reason: intermittent hangs, https://bugs.gnu.org/76898
-		%lisp/proced-tests.el
 	)
 	use elibc_musl && exclude_tests+=(
 			# Reason: newlocale(3) lenient locale validation #906012

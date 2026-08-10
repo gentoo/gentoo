@@ -469,9 +469,6 @@ src_test() {
 		# Reason: tries to access network
 		# internet-is-working
 		%src/process-tests.el
-
-		# Reason: intermittent hangs, https://bugs.gnu.org/76898
-		%lisp/proced-tests.el
 	)
 	use threads || exclude_tests+=(
 			%src/emacs-module-tests.el
