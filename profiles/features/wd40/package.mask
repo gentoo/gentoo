@@ -524,6 +524,7 @@ net-dns/hash-slinger
 net-dns/pdns-recursor
 net-im/gajim
 >=net-irc/polari-3.37
+>=net-libs/gnome-online-accounts-3.56
 net-libs/quiche
 net-misc/streamlink
 net-news/newsboat
