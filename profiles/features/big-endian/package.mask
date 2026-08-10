@@ -146,6 +146,7 @@ dev-libs/weston
 # in big-endian package.use.mask:
 # Hard depends on gui-libs/gtk[wayland] since version 48.3
 >=gnome-base/gnome-control-center-48.3
+>=gnome-base/gnome-shell-48.5
 # Hard depends on gui-libs/gtk[X,wayland] since atleast version 47.4
 gnome-base/nautilus
 # gnome-base/nautilus reverse-dependencies
