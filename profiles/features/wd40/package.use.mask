@@ -1,6 +1,11 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Pacho Ramos <pacho@gentoo.org> (2026-08-10)
+# Needs gnome-control-center, that cannot run here with their latest
+# versions.
+x11-misc/mugshot gnome
+
 # Michał Górny <mgorny@gentoo.org> (2025-08-09)
 # Require dev-python/pydantic and dev-python/inline-snapshot,
 # respectively.
