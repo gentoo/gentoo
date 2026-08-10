@@ -1,9 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 PYTHON_REQ_USE='ncurses,xml(+),threads(+)'
 
 inherit bash-completion-r1 flag-o-matic multilib python-single-r1 readme.gentoo-r1 toolchain-funcs
@@ -14,17 +14,23 @@ if [[ ${PV} == *9999 ]]; then
 	EGIT_REPO_URI="https://xenbits.xen.org/git-http/${REPO}"
 	S="${WORKDIR}/${REPO}"
 else
-	KEYWORDS="amd64 ~arm ~arm64 x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 
-	SEABIOS_VER="1.16.0"
-	EDK2_COMMIT="b16284e2a0011489f6e16dfcc6af7623c3cbaf0b"
-	EDK2_OPENSSL_VERSION="1_1_1t"
-	EDK2_SOFTFLOAT_COMMIT="b64af41c3276f97f0e181920400ee056b9c88037"
-	EDK2_BROTLI_COMMIT="f4153a09f87cbb9c826d8fc12c74642bb2d879ea"
+	EDK2_BROTLI_COMMIT="028fb5a23661f123017c060daa546b55cf4bde29"
+	EDK2_COMMIT="1c74842bd07a48070d1cf3458f0b6b377e3ec8b9"
+	EDK2_MIPISYST_COMMIT="370b5944c046bab043dd8b133727b2135af7747a"
+	EDK2_OPENSSL_VERSION="3.5.1"
 	IPXE_COMMIT="1d1cf74a5e58811822bee4b3da3cff7282fcdfca"
+	QEMU_VERSION="4.20.1"
+	QEMU_TRADITIONAL_VERSION="4.20.0"
+	QEMU_DTC_VERSION="1.8.1"
+	QEMU_KEYCODEMAPDB_COMMIT="f5772a62ec52591ff6870b7e8ef32482371f22c6"
+	QEMU_SOFTFLOAD_COMMIT="b64af41c3276f97f0e181920400ee056b9c88037"
+	QEMU_TESTFLOAD_COMMIT="e7af9751d9f9fd3b47911f51a5cfd08af256a9ab"
+	SEABIOS_VER="1.16.3"
 
-	XEN_GENTOO_PATCHSET_NUM=2
-	XEN_GENTOO_PATCHSET_BASE=4.17.0
+	XEN_GENTOO_PATCHSET_NUM=0
+	XEN_GENTOO_PATCHSET_BASE=4.20.1
 	XEN_PRE_PATCHSET_NUM=
 	XEN_PRE_VERSION_BASE=
 
@@ -32,15 +38,22 @@ else
 	if [[ -n "${XEN_PRE_VERSION_BASE}" ]]; then
 		XEN_BASE_PV="${XEN_PRE_VERSION_BASE}"
 	fi
+	
 
 	SRC_URI="
 	https://downloads.xenproject.org/release/xen/${XEN_BASE_PV}/xen-${XEN_BASE_PV}.tar.gz
 	https://www.seabios.org/downloads/seabios-${SEABIOS_VER}.tar.gz
+	https://github.com/hydrapolic/gentoo-dist/releases/download/xen-4.20.1/qemu-xen-${QEMU_VERSION}.tar.gz
+	https://github.com/hydrapolic/gentoo-dist/releases/download/xen-4.20.1/qemu-xen-traditional-${QEMU_TRADITIONAL_VERSION}.tar.gz
+	https://gitlab.com/qemu-project/dtc/-/archive/v${QEMU_DTC_VERSION}/dtc-v${QEMU_DTC_VERSION}.tar.gz?ref_type=tags -> xen-qemu-dtc-${QEMU_DTC_VERSION}.tar.gz
+	https://gitlab.com/qemu-project/keycodemapdb/-/archive/${QEMU_KEYCODEMAPDB_COMMIT}/keycodemapdb-${QEMU_KEYCODEMAPDB_COMMIT}.tar.gz -> xen-qemu-keycodemapdb-${KEYCODEMAPDB_COMMIT}.tar.gz
+	https://gitlab.com/qemu-project/berkeley-softfloat-3/-/archive/${QEMU_SOFTFLOAD_COMMIT}/berkeley-softfloat-3-${QEMU_SOFTFLOAD_COMMIT}.tar.gz -> xen-qemu-softload-${QEMU_SOFTFLOAD_COMMIT}.tar.gz
+	https://gitlab.com/qemu-project/berkeley-testfloat-3/-/archive/${QEMU_TESTFLOAD_COMMIT}/berkeley-testfloat-3-${QEMU_TESTFLOAD_COMMIT}.tar.gz -> xen-qemu-testload-${QEMU_TESTFLOAD_COMMIT}.tar.gz
 	ipxe? ( https://xenbits.xen.org/xen-extfiles/ipxe-git-${IPXE_COMMIT}.tar.gz )
 	ovmf? ( https://github.com/tianocore/edk2/archive/${EDK2_COMMIT}.tar.gz -> edk2-${EDK2_COMMIT}.tar.gz
-		https://github.com/openssl/openssl/archive/OpenSSL_${EDK2_OPENSSL_VERSION}.tar.gz
-		https://github.com/ucb-bar/berkeley-softfloat-3/archive/${EDK2_SOFTFLOAT_COMMIT}.tar.gz -> berkeley-softfloat-${EDK2_SOFTFLOAT_COMMIT}.tar.gz
+		https://github.com/openssl/openssl/releases/download/openssl-${EDK2_OPENSSL_VERSION}/openssl-${EDK2_OPENSSL_VERSION}.tar.gz -> xen-ovmf-openssl-${EDK2_OPENSSL_VERSION}.tar.gz
 		https://github.com/google/brotli/archive/${EDK2_BROTLI_COMMIT}.tar.gz -> brotli-${EDK2_BROTLI_COMMIT}.tar.gz
+		https://github.com/MIPI-Alliance/public-mipi-sys-t/archive/${EDK2_MIPISYST_COMMIT}.tar.gz ->  xen-ovmf-mipisyst-${EDK2_MIPISYST_COMMIT}.tar.gz
 	)
 	"
 
@@ -151,6 +164,9 @@ DEPEND="${COMMON_DEPEND}
 	qemu? (
 		app-arch/snappy:=
 		dev-build/meson
+		$(python_gen_cond_dep '
+			dev-python/distlib[${PYTHON_USEDEP}]
+		')
 		sdl? (
 			media-libs/libsdl[X]
 			media-libs/libsdl2[X]
@@ -239,6 +255,17 @@ pkg_setup() {
 }
 
 src_prepare() {
+	mv ../qemu-xen tools/qemu-xen || die
+	mv ../qemu-xen-traditional tools/qemu-xen-traditional || die
+
+	mv ../dtc-v${QEMU_DTC_VERSION} tools/qemu-xen/subprojects/dtc || die
+	mv ../keycodemapdb-${QEMU_KEYCODEMAPDB_COMMIT} tools/qemu-xen/subprojects/keycodemapdb || die
+	mv ../berkeley-softfloat-3-${QEMU_SOFTFLOAD_COMMIT} tools/qemu-xen/subprojects/berkeley-softfloat-3 || die
+	mv ../berkeley-testfloat-3-${QEMU_TESTFLOAD_COMMIT} tools/qemu-xen/subprojects/berkeley-testfloat-3 || die
+
+	mv tools/qemu-xen/subprojects/packagefiles/berkeley-softfloat-3/meson* tools/qemu-xen/subprojects/berkeley-softfloat-3/ || die
+	mv tools/qemu-xen/subprojects/packagefiles/berkeley-testfloat-3/meson* tools/qemu-xen/subprojects/berkeley-testfloat-3/ || die
+
 	# move before Gentoo patch, one patch should apply to seabios, to fix gcc-4.5.x build err
 	mv ../seabios-${SEABIOS_VER} tools/firmware/seabios-dir-remote || die
 	pushd tools/firmware/ > /dev/null
@@ -266,11 +293,11 @@ src_prepare() {
 	if use ovmf; then
 		mv ../edk2-${EDK2_COMMIT} tools/firmware/ovmf-dir-remote || die
 		rm -r tools/firmware/ovmf-dir-remote/CryptoPkg/Library/OpensslLib/openssl || die
-		rm -r tools/firmware/ovmf-dir-remote/ArmPkg/Library/ArmSoftFloatLib/berkeley-softfloat-3 || die
 		rm -r tools/firmware/ovmf-dir-remote/BaseTools/Source/C/BrotliCompress/brotli || die
 		rm -r tools/firmware/ovmf-dir-remote/MdeModulePkg/Library/BrotliCustomDecompressLib/brotli || die
-		mv ../openssl-OpenSSL_${EDK2_OPENSSL_VERSION} tools/firmware/ovmf-dir-remote/CryptoPkg/Library/OpensslLib/openssl || die
-		mv ../berkeley-softfloat-3-${EDK2_SOFTFLOAT_COMMIT} tools/firmware/ovmf-dir-remote/ArmPkg/Library/ArmSoftFloatLib/berkeley-softfloat-3 || die
+		rm -r tools/firmware/ovmf-dir-remote/MdePkg/Library/MipiSysTLib || die
+		mv ../openssl-${EDK2_OPENSSL_VERSION} tools/firmware/ovmf-dir-remote/CryptoPkg/Library/OpensslLib/openssl || die
+		mv ../public-mipi-sys-t-${EDK2_MIPISYST_COMMIT} tools/firmware/ovmf-dir-remote/MdePkg/Library/MipiSysTLib || die
 		cp -r ../brotli-${EDK2_BROTLI_COMMIT} tools/firmware/ovmf-dir-remote/BaseTools/Source/C/BrotliCompress/brotli || die
 		cp -r ../brotli-${EDK2_BROTLI_COMMIT} tools/firmware/ovmf-dir-remote/MdeModulePkg/Library/BrotliCustomDecompressLib/brotli || die
 		cp tools/firmware/ovmf-makefile tools/firmware/ovmf-dir-remote/Makefile || die
@@ -440,7 +467,6 @@ src_configure() {
 	use system-seabios && myconf+=( --with-system-seabios=/usr/share/seabios/bios.bin )
 	use system-qemu && myconf+=( --with-system-qemu=/usr/bin/qemu-system-x86_64 )
 	use amd64 && myconf+=( $(use_enable qemu-traditional) )
-	tc-ld-disable-gold # Bug 669570
 	econf ${myconf[@]}
 }
 
