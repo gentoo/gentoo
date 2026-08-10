@@ -69,6 +69,7 @@ net-libs/gnome-online-accounts gnome
 net-libs/webkit-gtk:6 wayland
 sys-apps/xdg-desktop-portal-gnome wayland
 x11-libs/vte wayland
+x11-misc/xscreensaver gdm
 
 # matoro <matoro_gentoo@matoro.tk> (2023-04-10)
 # media-libs/libldac casualties (#80238)
