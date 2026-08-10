@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 inherit eapi9-ver python-single-r1 xdg
 
 DESCRIPTION="GTK HTML editor for the experienced web designer or programmer"
@@ -17,15 +17,20 @@ IUSE="gucharmap nls python spell"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="
+	app-accessibility/at-spi2-core:2
 	dev-libs/glib:2
 	dev-libs/libxml2:=
+	media-libs/harfbuzz:=
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf:2
 	x11-libs/gtk+:3
 	x11-libs/pango
 	virtual/zlib:=
 	gucharmap? ( gnome-extra/gucharmap:2.90 )
-	python? ( ${PYTHON_DEPS} )
+	python? (
+		${PYTHON_DEPS}
+		dev-libs/libpcre2:=
+	)
 	spell? ( app-text/enchant:2 )
 "
 DEPEND="${RDEPEND}"
