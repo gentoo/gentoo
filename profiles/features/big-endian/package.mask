@@ -147,6 +147,16 @@ dev-libs/weston
 # Hard depends on gui-libs/gtk[wayland] since version 48.3
 >=gnome-base/gnome-control-center-48.3
 >=gnome-base/gnome-shell-48.5
+app-eselect/eselect-gnome-shell-extensions
+gnome-base/gdm
+gnome-extra/gnome-browser-connector
+gnome-extra/gnome-shell-extension-appindicator
+gnome-extra/gnome-shell-extension-dash-to-panel
+gnome-extra/gnome-shell-extension-gsconnect
+gnome-extra/gnome-shell-extension-pop-shell
+gnome-extra/gnome-shell-extensions
+gnome-extra/gnome-tweaks
+
 # Hard depends on gui-libs/gtk[X,wayland] since atleast version 47.4
 gnome-base/nautilus
 # gnome-base/nautilus reverse-dependencies
