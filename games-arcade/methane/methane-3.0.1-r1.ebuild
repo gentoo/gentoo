@@ -18,6 +18,7 @@ KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
 	dev-util/vulkan-headers
+	media-libs/vulkan-loader
 	media-libs/alsa-lib
 	x11-libs/libXinerama
 	x11-libs/libXrender
