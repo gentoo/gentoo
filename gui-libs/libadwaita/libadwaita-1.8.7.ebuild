@@ -13,9 +13,9 @@ LICENSE="LGPL-2.1+"
 SLOT="1"
 KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
 
-IUSE="doc examples +introspection test +vala"
+IUSE="examples gtk-doc +introspection test +vala"
 REQUIRED_USE="
-	doc? ( introspection )
+	gtk-doc? ( introspection )
 	vala? ( introspection )
 "
 
@@ -30,7 +30,7 @@ DEPEND="${RDEPEND}
 "
 BDEPEND="
 	${PYTHON_DEPS}
-	doc? ( >=dev-util/gi-docgen-2021.1 )
+	gtk-doc? ( >=dev-util/gi-docgen-2021.1 )
 	vala? ( $(vala_depend) )
 	dev-util/glib-utils
 	sys-devel/gettext
@@ -52,7 +52,7 @@ src_configure() {
 		-Dprofiling=false
 		$(meson_feature introspection)
 		$(meson_use vala vapi)
-		$(meson_use doc documentation)
+		$(meson_use gtk-doc documentation)
 		$(meson_use test tests)
 		$(meson_use examples)
 	)
@@ -66,7 +66,8 @@ src_test() {
 
 src_install() {
 	meson_src_install
-	if use doc; then
-		mv "${ED}"/usr/share/doc/{${PN}-${SLOT},${PF}/html} || die
+	if use gtk-doc; then
+		mkdir -p "${ED}"/usr/share/gtk-doc/html/ || die
+		mv "${ED}"/usr/share/doc/${PN}-${SLOT} "${ED}"/usr/share/gtk-doc/html/ || die
 	fi
 }
