@@ -36,7 +36,10 @@ DEPEND="
 	eai? ( dev-libs/icu:= )
 	ldap? ( net-nds/openldap:= )
 	ldap-bind? ( net-nds/openldap:=[sasl] )
-	lmdb? ( <dev-db/lmdb-1.0.0:= )
+	lmdb? (
+		dev-db/lmdb:=
+		!~dev-db/lmdb-1.0.0
+	)
 	mongodb? ( >=dev-libs/mongo-c-driver-1.23.0 >=dev-libs/libbson-1.23.0 )
 	mysql? ( dev-db/mysql-connector-c:0= )
 	nis? ( net-libs/libnsl:= )
