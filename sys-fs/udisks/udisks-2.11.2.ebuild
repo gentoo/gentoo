@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools bash-completion-r1 linux-info systemd tmpfiles udev xdg-utils
+inherit autotools linux-info shell-completion systemd tmpfiles udev xdg-utils
 
 DESCRIPTION="Daemon providing interfaces to work with storage devices"
 HOMEPAGE="https://www.freedesktop.org/wiki/Software/udisks/ https://github.com/storaged-project/udisks"
