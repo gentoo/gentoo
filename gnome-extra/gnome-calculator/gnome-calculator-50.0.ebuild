@@ -51,11 +51,6 @@ PATCHES=(
 )
 
 src_configure() {
-	# TODO: drop when cc1a060dfff7ce792aab99364638a85efdbeb2a0 is in a release
-	# https://gitlab.gnome.org/GNOME/gnome-calculator/-/issues/520
-	# bug #967919
-	append-flags -fno-strict-aliasing
-
 	local emesonargs=(
 		-Ddisable-ui=false
 		#-Dvala-version # doesn't do anything in 3.34
