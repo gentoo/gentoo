@@ -118,8 +118,8 @@ src_configure() {
 	CLOCKSTRING="`echo ${string_127}|sed 's|,$||'`"
 
 	myconf=(
-		--docdir="/use/share/docs/${PF}"
-		--htmldir="/use/share/docs/${PF}/html"
+		--docdir="${EPREFIX}/usr/share/docs/${PF}"
+		--htmldir="${EPREFIX}/usr/share/docs/${PF}/html"
 		--nopyc
 		--nopyo
 		--notests
