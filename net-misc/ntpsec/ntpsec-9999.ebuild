@@ -45,11 +45,11 @@ DEPEND="
 	${PYTHON_DEPS}
 	dev-libs/openssl:=
 	dev-python/psutil[${PYTHON_USEDEP}]
+	sys-libs/libcap
 	libbsd? ( dev-libs/libbsd:0= )
 	oncore? ( net-misc/pps-tools )
 	pps? ( net-misc/pps-tools )
 	seccomp? ( sys-libs/libseccomp )
-	sys-libs/libcap
 "
 RDEPEND="
 	${DEPEND}
