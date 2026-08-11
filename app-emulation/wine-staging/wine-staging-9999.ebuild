@@ -39,7 +39,7 @@ IUSE="
 	+X +alsa bluetooth cups +dbus dos ffmpeg +fontconfig +gecko gphoto2
 	+gstreamer kerberos +mono netapi nls odbc opencl +opengl pcap perl
 	pulseaudio samba scanner +sdl selinux smartcard +ssl +truetype udev
-	usb v4l +vulkan wayland xinerama
+	usb v4l vaapi +vulkan wayland xinerama
 "
 REQUIRED_USE="
 	X? ( truetype )
@@ -74,6 +74,7 @@ WINE_DLOPEN_DEPEND="
 	ssl? ( net-libs/gnutls:=[${WINE_USEDEP}] )
 	truetype? ( media-libs/freetype[${WINE_USEDEP}] )
 	v4l? ( media-libs/libv4l[${WINE_USEDEP}] )
+	vaapi? ( media-libs/libva:=[${WINE_USEDEP}] )
 	vulkan? ( media-libs/vulkan-loader[X?,wayland?,${WINE_USEDEP}] )
 "
 WINE_COMMON_DEPEND="
@@ -220,6 +221,7 @@ src_configure() {
 		$(use_with udev)
 		$(use_with usb)
 		$(use_with v4l v4l2)
+		$(use_with vaapi va)
 		$(use_with vulkan)
 		$(use_with wayland)
 		$(use_with xinerama)
