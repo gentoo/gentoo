@@ -23,6 +23,7 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	virtual/pkgconfig
 	>=sys-devel/gettext-0.18.1
+	dev-util/itstool
 "
 
 src_configure() {
