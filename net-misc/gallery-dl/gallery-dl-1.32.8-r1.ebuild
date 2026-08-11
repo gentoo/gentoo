@@ -7,19 +7,17 @@ PYTHON_COMPAT=( python3_{12..15} )
 PYTHON_REQ_USE="sqlite,ssl,xml(+)"
 DISTUTILS_USE_PEP517="setuptools"
 
-inherit distutils-r1 optfeature
+inherit distutils-r1 optfeature shell-completion
 
 DESCRIPTION="Download image galleries and collections from several image hosting sites"
 HOMEPAGE="https://github.com/mikf/gallery-dl/"
 
 if [[ "${PV}" == *9999* ]]; then
 	inherit git-r3
-
 	EGIT_REPO_URI="https://github.com/mikf/${PN}"
 else
 	SRC_URI="https://github.com/mikf/${PN}/archive/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz"
-
 	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~x86"
 fi
 
@@ -35,12 +33,18 @@ distutils_enable_tests unittest
 src_prepare() {
 	# Tests against real servers, some tests always fail and some are subject to change.
 	rm ./test/test_{extractor,results}.py || die
-
 	distutils-r1_src_prepare
 }
 
 python_compile_all() {
-	emake PYTHON="${EPYTHON}" ./data/completion/{,_}gallery-dl man
+	emake PYTHON="${EPYTHON}" ./data/completion/{,_}${PN} man
+}
+
+src_install() {
+	distutils-r1_src_install
+	doman ./data/man/*
+	dobashcomp ./data/completion/${PN}
+	dozshcomp ./data/completion/_${PN}
 }
 
 pkg_postinst() {
