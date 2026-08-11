@@ -46,6 +46,11 @@ BDEPEND+=" doc? ( app-text/doxygen[dot] )"
 
 DOCS=( AUTHORS CHANGELOG README )
 
+MULTILIB_WRAPPED_HEADERS=(
+	# No multilib for libfido2
+	/usr/include/libssh/sk_api.h
+)
+
 src_unpack() {
 	if [[ ${PV} == *9999* ]] ; then
 		git-r3_src_unpack
