@@ -19,7 +19,7 @@ RESTRICT="!test? ( test )"
 CDEPEND="
 	>=dev-libs/boost-1.86:=[zlib]
 	>=dev-libs/libmcfp-1.4.2
-	>=sci-libs/libcifpp-9.0.6:=
+	>=sci-libs/libcifpp-9.0.6:=[sqlite]
 "
 BDEPEND="${CDEPEND}
 	dev-cpp/catch:0
