@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-inherit flag-o-matic multilib multilib-minimal toolchain-funcs
+inherit flag-o-matic toolchain-funcs multilib multilib-minimal
 
 MY_P="${PN^^}_${PV}"
 
@@ -12,7 +12,7 @@ SRC_URI="https://git.openldap.org/openldap/openldap/-/archive/${MY_P}/openldap-$
 S="${WORKDIR}/openldap-${MY_P}/libraries/liblmdb"
 
 LICENSE="OPENLDAP"
-SLOT="0/${PV}"
+SLOT="1/${PV}"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~arm64-macos ~x64-macos ~x64-solaris"
 IUSE="static-libs"
 
@@ -27,9 +27,8 @@ src_prepare() {
 }
 
 multilib_src_configure() {
-	local soname="-Wl,-soname,liblmdb$(get_libname 0)"
 	if [[ ${CHOST} == *-darwin* ]] ; then
-		soname="-dynamiclib -install_name ${EPREFIX}/usr/$(get_libdir)/liblmdb$(get_libname 0)"
+		soname="-dynamiclib -install_name ${EPREFIX}/usr/$(get_libdir)/liblmdb$(get_libname 1)"
 		replace-flags -O[123456789] -O1
 	fi
 	sed -i -e "s!^CC.*!CC = $(tc-getCC)!" \
@@ -42,23 +41,12 @@ multilib_src_configure() {
 		"Makefile" || die
 }
 
-multilib_src_compile() {
-	emake LDLIBS+=" -pthread"
-}
-
 multilib_src_install() {
 	emake DESTDIR="${D}" install
 
-	mv "${ED}"/usr/$(get_libdir)/liblmdb$(get_libname) \
-		"${ED}"/usr/$(get_libdir)/liblmdb$(get_libname 0) || die
-	dosym liblmdb$(get_libname 0) /usr/$(get_libdir)/liblmdb$(get_libname)
-
+	dodoc *.doc
 	insinto /usr/$(get_libdir)/pkgconfig
-	doins "${FILESDIR}/lmdb.pc"
-	sed -i -e "s!@PACKAGE_VERSION@!${PV}!" \
-		-e "s!@prefix@!${EPREFIX}/usr!g" \
-		-e "s!@libdir@!$(get_libdir)!" \
-		"${ED}"/usr/$(get_libdir)/pkgconfig/lmdb.pc || die
+	doins lmdb.pc
 
 	if ! use static-libs; then
 		rm "${ED}"/usr/$(get_libdir)/liblmdb.a || die
