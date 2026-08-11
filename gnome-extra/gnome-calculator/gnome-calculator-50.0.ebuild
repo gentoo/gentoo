@@ -43,7 +43,6 @@ BDEPEND="
 src_prepare() {
 	default
 	vala_setup
-	xdg_environment_reset
 }
 
 PATCHES=(
@@ -65,7 +64,9 @@ src_configure() {
 }
 
 src_test() {
-	XDG_SESSION_TYPE=x11 virtx dbus-run-session meson test -C "${BUILD_DIR}" --print-errorlogs || die 'tests failed'
+	# gci-entry-controller test tries to access it
+	addwrite /dev/dri
+	virtx meson test -C "${BUILD_DIR}" --print-errorlogs || die 'tests failed'
 }
 
 pkg_postinst() {
