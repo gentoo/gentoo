@@ -29,6 +29,10 @@ QA_FLAGS_IGNORED="usr/libexec/podman/${PN}"
 QA_PRESTRIPPED="usr/libexec/podman/${PN}"
 ECARGO_VENDOR="${WORKDIR}/vendor"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.1.0-musl-close_range.patch #bug #980641, fixed in >2.1.0
+)
+
 src_unpack() {
 	if [[ ${PV} == 9999* ]]; then
 		git-r3_src_unpack
