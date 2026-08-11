@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{12..15} )
 PYTHON_REQ_USE="sqlite,ssl,xml(+)"
 DISTUTILS_USE_PEP517="setuptools"
 
-inherit distutils-r1 optfeature shell-completion
+inherit distutils-r1 optfeature
 
 DESCRIPTION="Download image galleries and collections from several image hosting sites"
 HOMEPAGE="https://github.com/mikf/gallery-dl/"
@@ -36,15 +36,9 @@ src_prepare() {
 	distutils-r1_src_prepare
 }
 
-python_compile_all() {
-	emake PYTHON="${EPYTHON}" ./data/completion/{,_}${PN} man
-}
-
-src_install() {
-	distutils-r1_src_install
-	doman ./data/man/*
-	dobashcomp ./data/completion/${PN}
-	dozshcomp ./data/completion/_${PN}
+python_compile() {
+	emake completion man
+	distutils-r1_python_compile
 }
 
 pkg_postinst() {
