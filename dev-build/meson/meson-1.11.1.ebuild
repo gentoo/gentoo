@@ -179,7 +179,11 @@ python_compile_all() {
 }
 
 src_test() {
+	# bug 513658
+	has_version -b dev-lang/vala && vala_setup
+
 	tc-export PKG_CONFIG
+
 	if ${PKG_CONFIG} --exists Qt5Core && ! ${PKG_CONFIG} --exists Qt5Gui; then
 		ewarn "Found Qt5Core but not Qt5Gui; skipping tests"
 	else
@@ -193,9 +197,6 @@ python_test() {
 		# all tests work when they happen to use it. And in particular, this
 		# breaks rust.
 		filter-lto
-
-		# bug 513658
-		has_version -b dev-lang/vala && vala_setup
 
 		# remove unwanted python_wrapper_setup contents
 		# We actually do want to non-error if python2 is installed and tested.
