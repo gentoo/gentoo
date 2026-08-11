@@ -1,0 +1,20 @@
+From 8d4e7daddaa52d71a9c7e196b6d30e9483c07026 Mon Sep 17 00:00:00 2001
+From: Mario Haustein <mario.haustein@hrz.tu-chemnitz.de>
+Date: Tue, 11 Aug 2026 07:48:52 +0200
+Subject: [PATCH] Link planewave rotate against httplib (#2467)
+
+---
+ drivers/rotator/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/rotator/CMakeLists.txt b/drivers/rotator/CMakeLists.txt
+index be9689324c..820df13b1a 100644
+--- a/drivers/rotator/CMakeLists.txt
++++ b/drivers/rotator/CMakeLists.txt
+@@ -130,5 +130,5 @@ SET(planewave_rotator_SRC
+     planewave_rotator.cpp)
+ 
+ add_executable(indi_planewave_rotator ${planewave_rotator_SRC})
+-target_link_libraries(indi_planewave_rotator indidriver)
++target_link_libraries(indi_planewave_rotator indidriver ${HTTPLIB_LIBRARY})
+ install(TARGETS indi_planewave_rotator RUNTIME DESTINATION bin)
