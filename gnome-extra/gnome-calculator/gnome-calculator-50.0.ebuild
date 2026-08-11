@@ -47,6 +47,7 @@ src_prepare() {
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-49.2-mpc-1.4.patch
+	"${FILESDIR}"/${PN}-50.0-strict-aliasing.patch
 )
 
 src_configure() {
