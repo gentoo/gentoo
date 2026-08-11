@@ -83,7 +83,7 @@ src_configure() {
 		-DBUILD_PackageKitBackend=OFF
 		-DBUILD_RpmOstreeBackend=OFF
 		-DBUILD_SnapBackend=$(usex snap)
-		-DBUILD_SteamOSBackend=OFF
+		-DBUILD_HoloBackend=OFF
 		-DBUILD_SystemdSysupdateBackend=OFF
 		$(cmake_use_find_package telemetry KF6UserFeedback)
 		$(cmake_use_find_package webengine Qt6WebView)
