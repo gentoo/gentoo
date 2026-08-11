@@ -105,7 +105,7 @@ src_install() {
 	postgres-multi_foreach emake DESTDIR="${D}" install
 	postgres-multi_forbest dobin ./utils/postgis_restore.pl
 
-	dodoc CREDITS TODO loader/README.* doc/*txt
+	dodoc CREDITS loader/README.* doc/*txt
 
 	docinto topology
 	dodoc topology/{TODO,README}
