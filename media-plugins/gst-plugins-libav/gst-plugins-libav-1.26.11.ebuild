@@ -29,6 +29,10 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND=""
 
+PATCHES=(
+	"${FILESDIR}"/${P}-ffmpeg9.patch # upstreamed
+)
+
 multilib_src_test() {
 	# Homebrew test skips for meson
 	local -a tests
