@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit flag-o-matic gnome.org gnome2-utils meson vala virtualx xdg
+inherit gnome.org gnome2-utils meson vala virtualx xdg
 
 DESCRIPTION="A calculator application for GNOME"
 HOMEPAGE="https://apps.gnome.org/Calculator/"
