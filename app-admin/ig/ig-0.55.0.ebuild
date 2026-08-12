@@ -18,7 +18,7 @@ KEYWORDS="~amd64 ~arm64"
 RESTRICT="test" # Not safe to run outside a container.
 
 BDEPEND="
-	>=dev-lang/go-1.25.7
+	>=dev-lang/go-1.26.0
 "
 
 src_compile() {
