@@ -518,10 +518,10 @@ cargo_update_crates () {
 	cargo_env "${@}" || die "Failed to update crates"
 }
 
-# @FUNCTION: cargo_src_unpack
+# @FUNCTION: cargo_crate_unpack
 # @DESCRIPTION:
-# Unpacks the package and the cargo registry.
-cargo_src_unpack() {
+# Unpack the *.crate files from ${A}.
+cargo_crate_unpack() {
 	debug-print-function ${FUNCNAME} "$@"
 
 	mkdir -p "${ECARGO_VENDOR}" "${S}" || die
@@ -532,9 +532,6 @@ cargo_src_unpack() {
 		case "${archive}" in
 			*.crate)
 				crates+=( "${archive}" )
-				;;
-			*)
-				unpack "${archive}"
 				;;
 		esac
 	done
@@ -572,7 +569,27 @@ cargo_src_unpack() {
 			eqawarn "'pycargoebuild --crate-tarball' to create one."
 		fi
 	fi
+}
 
+# @FUNCTION: cargo_src_unpack
+# @DESCRIPTION:
+# Unpacks the package and the cargo registry.
+cargo_src_unpack() {
+	debug-print-function ${FUNCNAME} "$@"
+
+	mkdir -p "${ECARGO_VENDOR}" "${S}" || die
+
+	local archive
+	for archive in ${A}; do
+		case "${archive}" in
+			*.crate)
+				;;
+			*)
+				unpack "${archive}"
+				;;
+		esac
+	done
+	cargo_crate_unpack
 	cargo_gen_config
 }
 
