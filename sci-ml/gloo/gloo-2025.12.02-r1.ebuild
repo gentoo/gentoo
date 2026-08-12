@@ -39,9 +39,7 @@ RDEPEND="
 	rocm? ( dev-util/hip:= )
 	ssl? ( dev-libs/openssl:= )
 "
-DEPEND="${RDEPEND}
-	cuda? ( sci-ml/caffe2[cuda] )
-"
+DEPEND="${RDEPEND}"
 
 BDEPEND="test? ( dev-cpp/gtest )"
 RESTRICT="test" # For some test the network is needed
