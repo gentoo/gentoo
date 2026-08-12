@@ -19,7 +19,7 @@ LICENSE="PHP-3.01
 	unicode? ( BSD-2 LGPL-2.1 )"
 
 SLOT="$(ver_cut 1-2)"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~sparc ~x86 ~x64-macos"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-macos"
 
 # We can build the following SAPIs in the given order.
 ALL_SAPIS=( embed cli cgi fpm apache2 phpdbg )
@@ -38,7 +38,7 @@ IUSE="${IUSE} acl apparmor argon2 avif bcmath berkdb bzip2 calendar
 	+flatfile ftp gd gdbm gmp +iconv inifile
 	intl iodbc ipv6 +jit jpeg ldap ldap-sasl libedit lmdb
 	mhash mssql mysql mysqli nls
-	odbc +opcache-jit pcntl pdo +phar +posix postgres png
+	odbc +opcache +opcache-jit pcntl pdo +phar +posix postgres png
 	qdbm readline selinux +session session-mm sharedmem
 	+simplexml snmp soap sockets sodium spell sqlite ssl sysvipc
 	systemd test test-full tidy +tokenizer tokyocabinet truetype
@@ -75,7 +75,6 @@ RESTRICT="!test? ( test )"
 COMMON_DEPEND="
 	app-eselect/eselect-php[apache2?,fpm?]
 	dev-libs/libpcre2[jit?,unicode]
-	dev-libs/uriparser
 	>=virtual/libcrypt-2-r1:=
 	fpm? ( acl? ( sys-apps/acl ) apparmor? ( sys-libs/libapparmor ) selinux? ( sys-libs/libselinux ) )
 	apache2? ( www-servers/apache[apache2_modules_unixd(+),threads=] )
@@ -99,7 +98,7 @@ COMMON_DEPEND="
 	libedit? ( dev-libs/libedit )
 	lmdb? ( dev-db/lmdb:= )
 	mssql? ( dev-db/freetds[mssql] )
-	nls? ( sys-devel/gettext )
+	nls? ( virtual/libintl )
 	odbc? ( iodbc? ( dev-db/libiodbc ) !iodbc? ( dev-db/unixODBC ) )
 	postgres? ( ${POSTGRES_DEP} )
 	qdbm? ( dev-db/qdbm )
@@ -187,6 +186,14 @@ php_install_ini() {
 	dodir "${PHP_EXT_INI_DIR#"${EPREFIX}"}"
 	dodir "${PHP_EXT_INI_DIR_ACTIVE#"${EPREFIX}"}"
 
+	if use opcache; then
+		elog "Adding opcache to $PHP_EXT_INI_DIR"
+		echo "zend_extension = opcache.so" >> \
+			 "${D}/${PHP_EXT_INI_DIR}"/opcache.ini
+		dosym "../ext/opcache.ini" \
+			  "${PHP_EXT_INI_DIR_ACTIVE#"${EPREFIX}"}/opcache.ini"
+	fi
+
 	# SAPI-specific handling
 	if [[ "${sapi}" == "fpm" ]] ; then
 		einfo "Installing FPM config files php-fpm.conf and www.conf"
@@ -211,11 +218,6 @@ pkg_setup() {
 
 src_prepare() {
 	default
-
-	# In src_configure() we make several copies of the source tree, so
-	# it is extra worthwhile to delete the unused bundled copies of
-	# these libraries.
-	rm -r ext/gd/libgd ext/uri/uriparser ext/pcre/pcre2lib || die
 
 	# In php-8.x, the FPM pool configuration files have been split off
 	# of the main config. By default the pool config files go in
@@ -275,6 +277,9 @@ src_prepare() {
 		rm ext/dba/tests/gh19706.phpt
 	fi
 
+	# One-off, somebody forgot to update a version constant
+	rm ext/reflection/tests/ReflectionZendExtension.phpt || die
+
 	local virt=$(systemd-detect-virt 2>/dev/null)
 	if [[ ${virt} == systemd-nspawn ]]; then
 		# If we are in a container where certain system calls can fail
@@ -285,6 +290,10 @@ src_prepare() {
 			ext/standard/tests/general_functions/proc_nice_basic.phpt \
 			|| die
 	fi
+
+	# Behavior was changed in 8.5 where this test now passes on musl
+	# (see upstream PR 22717), so not bothering to patch it in 8.4
+	rm ext/posix/tests/posix_fpathconf.phpt || die
 }
 
 src_configure() {
@@ -363,6 +372,7 @@ src_configure() {
 		$(use_enable pcntl)
 		$(use_enable phar)
 		$(use_enable pdo)
+		$(use_enable opcache)
 		$(use_enable opcache-jit)
 		$(use_with postgres pgsql "$("${PG_CONFIG:-true}" --bindir)/..")
 		$(use_enable posix)
@@ -532,12 +542,6 @@ src_configure() {
 		$(use_with jit pcre-jit)
 	)
 
-	# The URI extension is new in PHP 8.5, and always available. We
-	# insist that it use the system copy of dev-libs/uriparser.
-	our_conf+=(
-		--with-external-uriparser
-	)
-
 	# Catch CFLAGS problems
 	# Fixes bug #14067.
 	# Changed order to run it in reverse for bug #32022 and #12021.
@@ -643,6 +647,7 @@ src_install() {
 		# (SAPI-independent) targets from there.
 		cd "${WORKDIR}/sapis-build/${sapi}" || die
 		emake INSTALL_ROOT="${D}" install-build install-programs
+		use opcache && emake INSTALL_ROOT="${D}" install-modules
 		break
 	done
 
