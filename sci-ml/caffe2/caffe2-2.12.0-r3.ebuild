@@ -80,7 +80,7 @@ RDEPEND="
 		>=dev-util/nvidia-cuda-toolkit-12.9:=[profiler]
 		cusparselt? ( dev-libs/cusparselt )
 	)
-	fbgemm? ( >=sci-ml/FBGEMM-1.4 )
+	fbgemm? ( =sci-ml/FBGEMM-1.4* )
 	gloo? ( >=sci-ml/gloo-2025.06.04[cuda?,rocm?] )
 	kineto? ( ~sci-ml/kineto-0.4.0_p20260323 )
 	mimalloc? ( dev-libs/mimalloc )
