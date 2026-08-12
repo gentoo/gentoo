@@ -1,0 +1,63 @@
+From 520a8e82757118e3a5ccb34b60d3e72f9347b78a Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Wed, 12 Aug 2026 10:07:28 -0400
+Subject: [PATCH] ext/gettext/tests: updates for musl-1.2.6
+
+As of v1.2.6, musl's bind_textdomain_codeset() no longer returns NULL
+to indicate that the codeset is UTF-8 "by default." Instead you get
+"UTF-8". Two tests require minor updates for this.
+---
+ ext/gettext/tests/bug53251.phpt                      | 12 +++++++++---
+ .../gettext_bind_textdomain_codeset-retval.phpt      |  3 ++-
+ 2 files changed, 11 insertions(+), 4 deletions(-)
+
+diff --git a/ext/gettext/tests/bug53251.phpt b/ext/gettext/tests/bug53251.phpt
+index d568be6bc07..b04abe9f1fa 100644
+--- a/ext/gettext/tests/bug53251.phpt
++++ b/ext/gettext/tests/bug53251.phpt
+@@ -21,15 +21,21 @@
+ // "foo" is unbound, so in the first call, you will get false instead
+ // of a string.
+ //
+-// bind_textdomain_codeset() always returns false on musl
+-// because musl only supports UTF-8. For more information:
++// Prior to v1.2.6, bind_textdomain_codeset() always returns false on
++// musl because musl only supports UTF-8. For more information:
+ //
+ //   * https://github.com/php/doc-en/issues/4311,
+ //   * https://github.com/php/php-src/issues/17163
+ //
+ $expected_musl = [false, true, false, false, false];
+ 
+-var_dump($results === $expected || $results === $expected_musl);
++// As of v1.2.6, bind_textdomain_codeset() returns "UTF-8" in all
++// three cases on musl because UTF-8 is the only supported codeset.
++$expected_musl126 = [false, true, "UTF-8", "UTF-8", "UTF-8"];
++
++var_dump($results === $expected
++         || $results === $expected_musl
++         || $results === $expected_musl126);
+ ?>
+ --EXPECT--
+ bool(true)
+diff --git a/ext/gettext/tests/gettext_bind_textdomain_codeset-retval.phpt b/ext/gettext/tests/gettext_bind_textdomain_codeset-retval.phpt
+index 44957ad8d70..bba70c9848e 100644
+--- a/ext/gettext/tests/gettext_bind_textdomain_codeset-retval.phpt
++++ b/ext/gettext/tests/gettext_bind_textdomain_codeset-retval.phpt
+@@ -17,11 +17,12 @@
+     }
+ 
+     // bind_textdomain_codeset() always returns false on musl
+-    // because musl only supports UTF-8. For more information:
++    // prior to v1.2.6. For more information:
+     //
+     //   * https://github.com/php/doc-en/issues/4311,
+     //   * https://github.com/php/php-src/issues/17163
+     //
++    // As of v1.2.6, it returns "UTF-8" as well.
+     $result = bind_textdomain_codeset('messages', "UTF-8");
+     var_dump($result === false || $result === "UTF-8");
+ 
+-- 
+2.55.0
+

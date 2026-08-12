@@ -141,6 +141,7 @@ BDEPEND="virtual/pkgconfig"
 PATCHES=(
 	"${FILESDIR}/php-set-fpm-test-executable.patch"
 	"${FILESDIR}/php-8.3.31-ipv6-printing-test-fix.patch"
+	"${FILESDIR}/php-8.4-musl126-tests.patch"
 	"${FILESDIR}/php-8.5-musl-pathconf.patch"
 )
 
@@ -226,6 +227,12 @@ src_prepare() {
 	sed -i "s~^include=.*$~include=${PHP_INI_DIR}/fpm.d/*.conf~" \
 		sapi/fpm/php-fpm.conf.in \
 		|| die 'failed to move the include directory in php-fpm.conf'
+
+	# The ./configure script creates this symlink, but we run the tests
+	# in ${S} rather than in a SAPI-specicific copy where ./configure
+	# was run. Easiest thing to do is recreate it under ${S}. Only
+	# relevant for USE=nls on musl.
+	ln -s en_US.UTF-8 ext/gettext/tests/locale/en_US || die
 
 	# fails in a network sandbox,
 	#
