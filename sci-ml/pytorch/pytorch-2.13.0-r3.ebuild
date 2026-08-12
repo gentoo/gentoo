@@ -211,6 +211,11 @@ src_prepare() {
 	# Add needed file for cutlass as symbolic link
 	ln -sf /usr/share/cutlass/examples third_party/cutlass/examples || die
 
+	# cudnn_frontend is unbundled, but some targets still look for its
+	# headers under third_party/cudnn_frontend/include.
+	mkdir -p third_party/cudnn_frontend || die
+	ln -sf /usr/include third_party/cudnn_frontend/include || die
+
 	distutils-r1_src_prepare
 
 	# Noisy warnings from Logging.h
