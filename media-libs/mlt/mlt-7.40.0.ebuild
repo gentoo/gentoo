@@ -95,6 +95,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-6.10.0-swig-underlinking.patch
 	"${FILESDIR}"/${PN}-6.22.1-no_lua_bdepend.patch
 	"${FILESDIR}"/${PN}-7.0.1-cmake-symlink.patch
+	"${FILESDIR}"/${P}-ffmpeg-9.patch # in git master
 )
 
 pkg_setup() {
