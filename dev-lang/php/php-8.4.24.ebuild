@@ -69,10 +69,13 @@ RESTRICT="!test? ( test )"
 # The supported (that is, autodetected) versions of BDB are listed in
 # the ./configure script. Other versions *work*, but we need to stick to
 # the ones that can be detected to avoid a repeat of bug #564824.
+#
+# Require at least libcrypt-2-r1 so that on musl systems we pull in
+# sys-libs/libxcrypt (i.e. cannot use the musl crypt implementation).
 COMMON_DEPEND="
 	app-eselect/eselect-php[apache2?,fpm?]
 	dev-libs/libpcre2[jit?,unicode]
-	virtual/libcrypt:=
+	>=virtual/libcrypt-2-r1:=
 	fpm? ( acl? ( sys-apps/acl ) apparmor? ( sys-libs/libapparmor ) selinux? ( sys-libs/libselinux ) )
 	apache2? ( www-servers/apache[apache2_modules_unixd(+),threads=] )
 	argon2? ( app-crypt/argon2:= )
@@ -137,6 +140,7 @@ BDEPEND="virtual/pkgconfig"
 PATCHES=(
 	"${FILESDIR}/php-set-fpm-test-executable.patch"
 	"${FILESDIR}/php-8.3.31-ipv6-printing-test-fix.patch"
+	"${FILESDIR}/php-8.5-musl-pathconf.patch"
 )
 
 PHP_MV="$(ver_cut 1)"
@@ -286,6 +290,10 @@ src_prepare() {
 			ext/standard/tests/general_functions/proc_nice_basic.phpt \
 			|| die
 	fi
+
+	# Behavior was changed in 8.5 where this test now passes on musl
+	# (see upstream PR 22717), so not bothering to patch it in 8.4
+	rm ext/posix/tests/posix_fpathconf.phpt || die
 }
 
 src_configure() {
@@ -391,8 +399,11 @@ src_configure() {
 		$(use_with valgrind)
 	)
 
-	# Override autoconf cache variables for libcrypt algorithms.These
-	# otherwise cannot be detected when cross-compiling. Bug 931884.
+	# Override autoconf cache variables for libcrypt. The algorithms
+	# otherwise cannot be detected when cross-compiling (bug 931884),
+	# and on musl systems, AC_SEARCH_LIBS misses that -lcrypt is needed
+	# to use the intended libcrypt (rather than the built in musl crypt
+	# functions whose headers have been deleted -- this is a Gentooism).
 	our_conf+=(
 		ac_cv_crypt_blowfish=yes
 		ac_cv_crypt_des=yes
@@ -400,7 +411,20 @@ src_configure() {
 		ac_cv_crypt_md5=yes
 		ac_cv_crypt_sha512=yes
 		ac_cv_crypt_sha256=yes
+		ac_cv_search_crypt='-lcrypt'
+		ac_cv_search_crypt_r='-lcrypt'
 	)
+
+	if use posix; then
+		# Avoid needing to patch/eautoreconf to enable these functions
+		# on musl. They are perfectly POSIX-compliant, and of course
+		# glibc has them too. Obsolete when
+		#
+		#   https://github.com/php/php-src/pull/22717
+		#
+		# is merged.
+		append-cppflags -DHAVE_PATHCONF=1 -DHAVE_FPATHCONF=1
+	fi
 
 	# DBA support
 	if use cdb || use berkdb || use flatfile || use gdbm || use inifile \
