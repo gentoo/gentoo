@@ -13,7 +13,7 @@ LICENSE="LGPL-2.1"
 # Reflects the ABI of libgpiod.so
 SLOT="0/3"
 KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
-IUSE="cxx dbus introspection glib python +tools test"
+IUSE="cxx dbus introspection glib python static-libs +tools test"
 REQUIRED_USE="introspection? ( glib )"
 RESTRICT="!test? ( test )"
 
@@ -85,4 +85,13 @@ src_configure() {
 	)
 
 	meson_src_configure
+}
+
+src_install() {
+	meson_src_install
+
+	# -Ddefault_library=shared is ignored
+	if ! use static-libs; then
+		find "${ED}" -name '*.a' -delete || die
+	fi
 }
