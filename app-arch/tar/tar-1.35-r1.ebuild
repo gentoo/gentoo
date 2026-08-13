@@ -4,7 +4,7 @@
 EAPI=8
 
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/tar.asc
-inherit branding check-reqs multiprocessing verify-sig
+inherit branding check-reqs multiprocessing toolchain-funcs verify-sig
 
 DESCRIPTION="Use this to make tarballs :)"
 HOMEPAGE="https://www.gnu.org/software/tar/"
@@ -96,7 +96,14 @@ src_test() {
 	# Drop after 1.35: https://git.savannah.gnu.org/cgit/tar.git/commit/?id=18f90676e4695ffcf13413e9fbb24cc0ae2ae9d5
 	local -x XZ_OPT= XZ_DEFAULTS=
 
-	emake check TESTSUITEFLAGS="--jobs=$(get_makeopts_jobs)"
+	local testargs=(
+		--jobs=$(get_makeopts_jobs)
+	)
+
+	# 155: time: tricky time stamps FAILED (time01.at:23)
+	! tc-has-64bit-time_t && testargs+=( -k '!time01' )
+
+	emake check TESTSUITEFLAGS="${testargs[*]}"
 }
 
 src_install() {
