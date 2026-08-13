@@ -20,6 +20,7 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE="test torch"
+RESTRICT="test" # Need network to download models parameters
 
 RDEPEND="
 	>=sci-ml/huggingface_hub-1.5.0[${PYTHON_SINGLE_USEDEP}]
