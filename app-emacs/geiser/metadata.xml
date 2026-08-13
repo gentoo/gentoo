@@ -12,6 +12,7 @@
   </maintainer>
   <upstream>
     <bugs-to>https://gitlab.com/emacs-geiser/geiser/-/issues/</bugs-to>
+    <doc>https://elpa.nongnu.org/nongnu/doc/geiser.html</doc>
     <remote-id type="gitlab">emacs-geiser/geiser</remote-id>
   </upstream>
 </pkgmetadata>
