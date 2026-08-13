@@ -1,0 +1,27 @@
+https://bugs.gentoo.org/980747
+https://gitlab.com/kicad/code/kicad/-/merge_requests/2753
+
+pcbcommon uses ConvertMarkdown2Html from markdown_lib, declare the
+dependency PUBLIC. qa_gerbview also needs the EDA_3D_VIEWER_SETTINGS
+typeinfo from 3d-viewer.
+
+--- a/common/CMakeLists.txt
++++ b/common/CMakeLists.txt
+@@ -870,6 +870,7 @@
+     delaunator
+     kimath
+     kiplatform
++    markdown_lib
+ )
+ 
+ message( STATUS "Including 3Dconnexion SpaceMouse navigation support in pcbcommon" )
+--- a/qa/tests/gerbview/CMakeLists.txt
++++ b/qa/tests/gerbview/CMakeLists.txt
+@@ -62,6 +62,7 @@
+ target_link_libraries( qa_gerbview
+     gerbview_kiface_objects
+     pcbcommon
++    3d-viewer
+     gal
+     common
+     gal
