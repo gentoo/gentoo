@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -14,7 +14,8 @@ SRC_URI="https://github.com/AngusJohnson/Clipper2/archive/refs/tags/${MY_P}.tar.
 S="${WORKDIR}/${MY_PN}-${MY_P}/CPP"
 
 LICENSE="Boost-1.0"
-SLOT="0"
+# SONAME
+SLOT="0/$(ver_cut 1)"
 KEYWORDS="amd64 ~arm64 ~x86"
 
 IUSE="test"
