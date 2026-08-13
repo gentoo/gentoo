@@ -40,7 +40,11 @@ else
 
 		SRC_URI="
 			https://rsync.samba.org/ftp/rsync/${SRC_DIR}/${P/_/}.tar.gz
-			verify-sig? ( https://rsync.samba.org/ftp/rsync/${SRC_DIR}/${P/_/}.tar.gz.asc )
+			https://github.com/RsyncProject/rsync/releases/download/v${PV}/${P/_/}.tar.gz
+			verify-sig? (
+				https://rsync.samba.org/ftp/rsync/${SRC_DIR}/${P/_/}.tar.gz.asc
+				https://github.com/RsyncProject/rsync/releases/download/v${PV}/${P/_/}.tar.gz.asc
+			)
 		"
 		S="${WORKDIR}"/${P/_/}
 	fi
