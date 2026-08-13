@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,11 +17,11 @@ DOCS_DEPEND="
 inherit cmake docs distutils-r1 systemd
 
 DESCRIPTION="Extended ROOT remote file server"
-HOMEPAGE="https://xrootd.slac.stanford.edu/"
+HOMEPAGE="https://xrootd.org/"
 LICENSE="LGPL-3+"
 
-SLOT="0"
-IUSE="ceph examples fuse http kerberos +libxml2 macaroons python readline scitokens +server systemd test xrdec"
+SLOT="0/6"
+IUSE="ceph examples fuse +http +kerberos +libxml2 macaroons python readline scitokens +server systemd test"
 
 if [[ ${PV} =~ "9999" ]] ; then
 	inherit git-r3
@@ -34,31 +34,29 @@ fi
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="
-	http? ( kerberos )
+	http? ( server )
 	macaroons? ( server http )
 	python? ( ${PYTHON_REQUIRED_USE} )
 	scitokens? ( server )
+	test? ( http server )
 "
 
 CDEPEND="acct-group/xrootd
 	acct-user/xrootd
 	dev-libs/openssl:0=
+	net-misc/curl:=
 	virtual/zlib:=
 	virtual/libcrypt:=
 	ceph? ( sys-cluster/ceph )
 	fuse? ( sys-fs/fuse:0= )
-	http? (
-		net-misc/curl:=
-		net-libs/davix
-	)
 	kerberos? ( virtual/krb5 )
 	libxml2? ( dev-libs/libxml2:2= )
 	macaroons? ( dev-libs/libmacaroons )
 	python? ( ${PYTHON_DEPS} )
 	readline? ( sys-libs/readline:0= )
 	scitokens? ( dev-cpp/scitokens-cpp )
+	server? ( dev-libs/libzip:= )
 	systemd? ( sys-apps/systemd:= )
-	xrdec? ( dev-libs/isa-l )
 "
 DEPEND="${CDEPEND}"
 BDEPEND="
@@ -79,7 +77,7 @@ RDEPEND="${CDEPEND}
 # XRootD plugins are not intended to be linked with,
 # they are loaded at runtime by the XRootD server.
 # See https://github.com/xrootd/xrootd/issues/447
-QA_SONAME="/usr/lib.*/libXrd.*-5\.so"
+QA_SONAME="/usr/lib.*/libXrd.*-6\.so"
 
 pkg_setup() {
 	use python && python_setup
@@ -89,7 +87,7 @@ src_prepare() {
 	cmake_src_prepare
 
 	if use python; then
-		pushd "${S}"/bindings/python > /dev/null || die
+		pushd "${S}"/python > /dev/null || die
 		distutils-r1_src_prepare
 		popd > /dev/null || die
 	fi
@@ -112,15 +110,15 @@ src_configure() {
 		-DENABLE_TESTS=$(usex test)
 		-DENABLE_VOMS=no
 		-DENABLE_XRDCL=yes
-		-DENABLE_XRDCLHTTP=$(usex http)
-		-DENABLE_XRDEC=$(usex xrdec)
+		-DENABLE_XRDEC=no
+		-DENABLE_XRDOSSARC=$(usex server)
 		-DFORCE_ENABLED=yes
 		-DXRDCL_ONLY=$(usex server "no" "yes")
 	)
 	cmake_src_configure
 
 	if use python; then
-		pushd "${BUILD_DIR}"/bindings/python > /dev/null || die
+		pushd "${BUILD_DIR}"/python > /dev/null || die
 		distutils-r1_src_configure
 		popd > /dev/null || die
 	fi
@@ -129,7 +127,7 @@ src_configure() {
 src_compile() {
 	cmake_src_compile
 	if use python; then
-		pushd "${BUILD_DIR}"/bindings/python > /dev/null || die
+		pushd "${BUILD_DIR}"/python > /dev/null || die
 		distutils-r1_src_compile
 		popd > /dev/null || die
 	fi
@@ -137,7 +135,7 @@ src_compile() {
 	docs_compile
 	# secondary documentation for python bindings
 	if use python && use doc; then
-		emake -C bindings/python/docs html
+		emake -C python/docs html
 	fi
 }
 
@@ -191,33 +189,31 @@ src_install() {
 		newconfd "${FILESDIR}"/xrootd.confd xrootd
 
 		if use systemd; then
-			systemd_dounit packaging/common/*.{service,socket}
+			systemd_dounit systemd/*.{service,socket}
 		fi
 	fi
 
 	# base configs
 	insinto /etc/xrootd
-	doins packaging/common/*.cfg
+	doins config/*.{cfg,conf,example}
 
-	keepdir /etc/xrootd/config.d
-	keepdir /var/log/xrootd
-
-	fowners -R xrootd:xrootd /etc/xrootd
-	fowners -R xrootd:xrootd /var/log/xrootd
+	# client configs
+	insinto /etc/xrootd/client.plugins.d
+	doins config/client.plugins.d/*.conf
 
 	if use python; then
-		pushd "${BUILD_DIR}"/bindings/python > /dev/null || die
+		pushd "${BUILD_DIR}"/python > /dev/null || die
 		distutils-r1_src_install
 		popd > /dev/null || die
 
 		if use doc; then
 			docinto python
 			docompress -x "/usr/share/doc/${PF}/python/html"
-			dodoc -r bindings/python/docs/build/html
+			dodoc -r python/docs/build/html
 		fi
 		if use examples; then
 			docinto python
-			dodoc -r bindings/python/examples
+			dodoc -r python/examples
 		fi
 	fi
 
