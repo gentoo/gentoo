@@ -30,13 +30,15 @@ BDEPEND="
 	test? (
 		dev-python/attrs[${PYTHON_USEDEP}]
 		dev-python/flask[${PYTHON_USEDEP}]
+		dev-python/starlette[${PYTHON_USEDEP}]
 		dev-python/tiny-proxy[${PYTHON_USEDEP}]
 		dev-python/trustme[${PYTHON_USEDEP}]
+		dev-python/uvicorn[${PYTHON_USEDEP}]
 		dev-python/yarl[${PYTHON_USEDEP}]
 	)
 "
 
-EPYTEST_PLUGINS=( pytest-asyncio )
+EPYTEST_PLUGINS=( anyio pytest-asyncio )
 distutils_enable_tests pytest
 
 src_prepare() {
