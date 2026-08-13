@@ -6,7 +6,7 @@ EAPI=8
 # Uncomment when introducing a patch which touches configure
 RSYNC_NEEDS_AUTOCONF=1
 PYTHON_COMPAT=( python3_{12..15} )
-inherit prefix python-single-r1 systemd
+inherit flag-o-matic prefix python-single-r1 systemd
 
 DESCRIPTION="File transfer program to keep remote files into sync"
 HOMEPAGE="https://rsync.samba.org/"
@@ -25,20 +25,31 @@ else
 
 	if [[ ${PV} == *_pre* ]] ; then
 		SRC_DIR="src-previews"
+		# Upstream make some private tarballs available for security releases
+		# for testing.
+		SRC_URI="
+			${PN}-v${PV/_pre/-test}.tar.gz
+			verify-sig? ( ${PN}-v${PV/_pre/-test}.tar.gz.asc )
+		"
+		S="${WORKDIR}"/${PN}-v${PV/_pre/-test}
+
+		RESTRICT="fetch"
 	else
 		SRC_DIR="src"
 		KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~arm64-macos ~x64-macos ~x64-solaris"
-	fi
 
-	SRC_URI="https://rsync.samba.org/ftp/rsync/${SRC_DIR}/${P/_/}.tar.gz
-		verify-sig? ( https://rsync.samba.org/ftp/rsync/${SRC_DIR}/${P/_/}.tar.gz.asc )"
-	S="${WORKDIR}"/${P/_/}
+		SRC_URI="
+			https://rsync.samba.org/ftp/rsync/${SRC_DIR}/${P/_/}.tar.gz
+			verify-sig? ( https://rsync.samba.org/ftp/rsync/${SRC_DIR}/${P/_/}.tar.gz.asc )
+		"
+		S="${WORKDIR}"/${P/_/}
+	fi
 fi
 
 LICENSE="GPL-3"
 SLOT="0"
 IUSE="acl examples iconv lz4 rrsync ssl stunnel system-zlib test xattr +xxhash zstd"
-RESTRICT="!test? ( test )"
+RESTRICT+=" !test? ( test )"
 REQUIRED_USE+="
 	examples? ( ${PYTHON_REQUIRED_USE} )
 	rrsync? ( ${PYTHON_REQUIRED_USE} )
@@ -128,6 +139,10 @@ src_configure() {
 		$(use_enable xxhash)
 		$(use_enable zstd)
 	)
+
+	if is-flagq -fsanitize=undefined ; then
+		append-flags -DCAREFUL_ALIGNMENT
+	fi
 
 	econf "${myeconfargs[@]}"
 }
