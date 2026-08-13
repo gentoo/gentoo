@@ -59,6 +59,7 @@ DEPEND="${RDEPEND}"
 #  torchdata
 #  transformers
 BDEPEND="test? (
+	sci-ml/tokenizers[${PYTHON_SINGLE_USEDEP}]
 	sci-ml/torchvision[${PYTHON_SINGLE_USEDEP}]
 	$(python_gen_cond_dep '
 		dev-python/absl-py[${PYTHON_USEDEP}]
