@@ -16,7 +16,7 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/OfflineIMAP/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64"
+	KEYWORDS="amd64"
 fi
 SRC_URI+="
 	https://github.com/OfflineIMAP/offlineimap3/commit/2dc91a853aebd65815b0aaa0066e7d4069673cd8.patch
