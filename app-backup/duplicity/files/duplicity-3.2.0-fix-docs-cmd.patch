@@ -1,0 +1,21 @@
+--- a/setup.py
++++ b/setup.py
+@@ -104,18 +104,6 @@ def get_data_files():
+ 
+     # static data files
+     data_files = [
+-        (
+-            f"share/doc/duplicity-{Version}",
+-            [
+-                "CHANGELOG.md",
+-                "AUTHORS.md",
+-                "COPYING",
+-                "README.md",
+-                "README-LOG.md",
+-                "README-REPO.md",
+-                "README-TESTING.md",
+-            ],
+-        ),
+     ]
+ 
+     # generate versioned man page
