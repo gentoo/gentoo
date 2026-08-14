@@ -18,7 +18,8 @@ LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 
-distutils_enable_sphinx docs/source
+distutils_enable_sphinx docs/source \
+	dev-python/furo
 EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
 
