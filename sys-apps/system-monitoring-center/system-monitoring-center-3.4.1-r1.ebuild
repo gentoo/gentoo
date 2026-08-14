@@ -13,12 +13,10 @@ HOMEPAGE="https://github.com/hakandundar34coding/system-monitoring-center/"
 
 if [[ "${PV}" == *9999* ]] ; then
 	inherit git-r3
-
 	EGIT_REPO_URI="https://github.com/hakandundar34coding/${PN}"
 else
 	SRC_URI="https://github.com/hakandundar34coding/${PN}/archive/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz"
-
 	KEYWORDS="amd64 ~x86"
 fi
 
@@ -36,16 +34,21 @@ RDEPEND="
 		dev-python/pygobject:3[${PYTHON_USEDEP}]
 	')
 "
+BDEPEND="
+	${RDEPEND}
+	dev-libs/appstream-glib
+	dev-util/desktop-file-utils
+	dev-util/gtk-update-icon-cache
+	virtual/pkgconfig
+"
 
 src_prepare() {
 	sed -i "s|@PYTHON@|${PYTHON}|" "${S}/src/${PN}.in" || die
-
 	default
 }
 
 src_install() {
 	meson_src_install
 	python_optimize "${ED}/usr/share/${PN}"
-
 	mv "${ED}/usr/share/appdata" "${ED}/usr/share/metainfo" || die
 }
