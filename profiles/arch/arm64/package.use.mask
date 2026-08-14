@@ -527,10 +527,6 @@ mate-base/mate-applets-meta sensors
 mate-extra/caja-extensions gajim
 sci-libs/gdal armadillo netcdf
 sys-fs/btrfs-progs reiserfs
-www-client/chromium widevine
-www-client/qutebrowser widevine
-www-client/vivaldi widevine
-www-client/vivaldi-snapshot widevine
 
 # Michał Górny <mgorny@gentoo.org> (2018-02-17)
 # Requires unkeyworded dependencies.
