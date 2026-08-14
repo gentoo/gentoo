@@ -1,0 +1,32 @@
+
+https://www.openwall.com/lists/musl/2026/07/13/3
+
+>From e28fefd3e46c5e7537a2901a9c3494e946eaae85 Mon Sep 17 00:00:00 2001
+From: Szabolcs Nagy <nsz@port70.net>
+Date: Mon, 13 Jul 2026 06:44:27 +0000
+Subject: [PATCH] clock_nanosleep: define SYS_nanosleep to fix riscv32
+
+riscv32 does not have SYS_nanosleep, but it is used in unreachable
+fallback code.
+---
+ src/time/clock_nanosleep.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/src/time/clock_nanosleep.c b/src/time/clock_nanosleep.c
+index e195499c..f75f7f2a 100644
+--- a/src/time/clock_nanosleep.c
++++ b/src/time/clock_nanosleep.c
+@@ -19,6 +19,9 @@ int __clock_nanosleep(clockid_t clk, int flags, const struct timespec *req, stru
+ 		return -r;
+ 	long long extra = s - CLAMP(s);
+ 	long ts32[2] = { CLAMP(s), ns };
++#ifndef SYS_nanosleep
++#define SYS_nanosleep -1
++#endif
+ 	if (clk == CLOCK_REALTIME && !flags)
+ 		r = __syscall_cp(SYS_nanosleep, &ts32, &ts32);
+ 	else
+-- 
+2.52.0
+
+
