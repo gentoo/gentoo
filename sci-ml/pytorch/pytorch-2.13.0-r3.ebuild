@@ -163,6 +163,7 @@ BDEPEND="dev-build/cmake"
 PATCHES=(
 	"${FILESDIR}"/${P}-aotriton-fixes.patch
 	"${FILESDIR}"/${P}-glog.patch
+	"${FILESDIR}"/${P}-mimalloc.patch
 	"${FILESDIR}"/${P}-removekineto-pr178960.patch
 	"${FILESDIR}"/${P}-rocm-assert-fix.patch
 	"${FILESDIR}"/${P}-unbundle_fbgemm.patch
