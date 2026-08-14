@@ -77,7 +77,7 @@ src_prepare() {
 	if use amd64; then
 		find . '(' -name koffi-linux-arm64 -o -name musl_x64 ')' -exec rm -r {} + || die
 	elif use arm64; then
-		find . '(' -name koffi-linux-x64 -o name musl_arm64 ')' -exec rm -r {} + || die
+		find . '(' -name koffi-linux-x64 -o -name musl_arm64 ')' -exec rm -r {} + || die
 	fi
 
 	# file collision with FEATURES=splitdebug, see bug #961437
