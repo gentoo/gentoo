@@ -16,7 +16,7 @@ if [[ "${PV}" == *9999 ]] ; then
 	EGIT_REPO_URI="https://gitlab.gnome.org/GNOME/${PN}.git"
 else
 	inherit gnome.org
-	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
 fi
 
 LICENSE="LGPL-3+"
