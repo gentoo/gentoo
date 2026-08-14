@@ -1,4 +1,4 @@
-# Copyright 2020-2025 Gentoo Authors
+# Copyright 2020-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -29,5 +29,10 @@ RDEPEND="${DEPEND}"
 src_prepare() {
 	eapply_user
 	eapply "${FILESDIR}"/${PN}-0.3.0_p20251029-drop-ldconfig.patch
+
+	# bug 980746
+	sed -i -e "s#prefix}/lib#prefix}/$(get_libdir)#g" suscan.pc.in
+	sed -i -e "s#prefix}/lib#prefix}/$(get_libdir)#g" suscan-thin-client.pc.in
+
 	cmake_src_prepare
 }
