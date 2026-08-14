@@ -12,7 +12,7 @@ HOMEPAGE="https://github.com/tree-sitter/tree-sitter-cpp"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~riscv ~x86"
 
 # requires test data from tree-sitter-c
 RESTRICT="test"
