@@ -1,0 +1,402 @@
+https://github.com/mikehaertel/minrx/pull/68
+https://cgit.git.savannah.gnu.org/cgit/gawk.git/commit/?h=gawk-5.4-stable&id=1a61f93cd203dca8b0bc94f04a3eff80effae152
+
+From 1a61f93cd203dca8b0bc94f04a3eff80effae152 Mon Sep 17 00:00:00 2001
+From: "Arnold D. Robbins" <arnold@skeeve.com>
+Date: Sat, 8 Aug 2026 22:24:22 +0300
+Subject: Update minrx.c from upstream: memory management improvements.
+
+---
+ support/minrx.c   | 201 ++++++++++++++++++++++++++++++++++++++++++------------
+ 4 files changed, 174 insertions(+), 42 deletions(-)
+
+diff --git a/support/minrx.c b/support/minrx.c
+index 1e03fb99..5e268213 100644
+--- a/support/minrx.c
++++ b/support/minrx.c
+@@ -185,15 +185,6 @@ cowvec_allocator_construct(COWVec_Allocator *a, size_t length)
+ 	a->length = length;
+ }
+ 
+-static void
+-cowvec_allocator_destruct(COWVec_Allocator *a)
+-{
+-	for (COWVec_Storage *s = a->freelist, *sfreelink = (COWVec_Storage *) NULL; s != (COWVec_Storage *) NULL; s = sfreelink) {
+-		sfreelink = s->u.freelink;
+-		free(s);
+-	}
+-}
+-
+ static size_t
+ cowvec_storage_get(const COWVec_Storage *cvs, size_t i)
+ {
+@@ -1272,6 +1263,28 @@ nodelist_empty(void)
+ 	return r;
+ }
+ 
++// Scratch space for an execution, kept with the compiled Regexp so that
++// the next execution can have it again.  Everything in it is sized from
++// the Regexp alone, so it need only be built once; building it afresh
++// for every execution otherwise dominates the cost of matching a short
++// subject.
++//
++// Only one execution can have it at a time, so an execution that finds
++// it taken -- a concurrent or a nested one -- falls back to its own.
++typedef struct Scratch Scratch;
++struct Scratch {
++	bool ready;
++#ifdef HAVE_PTHREADS
++	pthread_mutex_t inuse;
++#else
++	bool inuse;
++#endif
++	COWVec_Storage *freelist;
++	QSet epsq;
++	QVec epsv;
++	QVec mcsv[2];
++};
++
+ typedef struct Regexp Regexp;
+ struct Regexp {
+ 	WConv_Encoding enc;
+@@ -1287,8 +1300,89 @@ struct Regexp {
+ 	FirstBytes firstbytes;
+ 	int32_t firstunique;
+ 	bool anchored;
++	Scratch scratch;
+ };
+ 
++static bool
++scratch_construct(Scratch *sc, size_t nnode)
++{
++	if (sc->ready)
++		return true;
++	if (!qset_construct(&sc->epsq, nnode)
++	    || !qvec_construct(&sc->epsv, nnode)
++	    || !qvec_construct(&sc->mcsv[0], nnode)
++	    || !qvec_construct(&sc->mcsv[1], nnode)) {
++		qvec_destruct(&sc->mcsv[1]);
++		qvec_destruct(&sc->mcsv[0]);
++		qvec_destruct(&sc->epsv);
++		qset_destruct(&sc->epsq);
++		return false;
++	}
++	sc->ready = true;
++	return true;
++}
++
++static void
++scratch_destruct(Scratch *sc)
++{
++	if (sc->ready) {
++		qvec_destruct(&sc->mcsv[1]);
++		qvec_destruct(&sc->mcsv[0]);
++		qvec_destruct(&sc->epsv);
++		qset_destruct(&sc->epsq);
++		sc->ready = false;
++	}
++	for (COWVec_Storage *s = sc->freelist, *next = (COWVec_Storage *) NULL; s != (COWVec_Storage *) NULL; s = next) {
++		next = s->u.freelink;
++		free(s);
++	}
++	sc->freelist = (COWVec_Storage *) NULL;
++}
++
++// Claim the scratch space for an execution, or report it already taken.
++static bool
++scratch_acquire(Scratch *sc)
++{
++#ifdef HAVE_PTHREADS
++	return pthread_mutex_trylock(&sc->inuse) == 0;
++#else
++	if (sc->inuse)
++		return false;
++	sc->inuse = true;
++	return true;
++#endif
++}
++
++static void
++scratch_release(Scratch *sc)
++{
++#ifdef HAVE_PTHREADS
++	pthread_mutex_unlock(&sc->inuse);
++#else
++	sc->inuse = false;
++#endif
++}
++
++// For the Regexp's own scratch space, as opposed to the one an execution
++// falls back to, which is private to it and needs neither of these.
++static void
++scratch_init(Scratch *sc)
++{
++	memset(sc, 0, sizeof *sc);
++#ifdef HAVE_PTHREADS
++	pthread_mutex_init(&sc->inuse, (const pthread_mutexattr_t *) NULL);
++#endif
++}
++
++static void
++scratch_fini(Scratch *sc)
++{
++	scratch_destruct(sc);
++#ifdef HAVE_PTHREADS
++	pthread_mutex_destroy(&sc->inuse);
++#endif
++}
++
+ static NInt
+ satmul(NInt x, NInt y)
+ {
+@@ -1879,6 +1973,7 @@ compile(Compile *c)
+ 	memset(&r->firstbytes, 0, sizeof r->firstbytes);
+ 	r->firstunique = -1;
+ 	r->anchored = false;
++	scratch_init(&r->scratch);
+ 	int err;
+ 	if ((err = setjmp(c->errjmp)) != 0) {
+ 		c = vc, r = vr;
+@@ -1944,13 +2039,16 @@ struct Execute {
+ 	COWVec_Allocator allocator;
+ 	COWVec best;
+ 	NInt bestmincount; // note mincounts are negated so this means +infinity
+-	QSet epsq;
+-	QVec epsv;
++	Scratch *scratch;	// the scratch space this execution is using
++	QSet *epsq;		// aliases of the members of *scratch, cached
++	QVec *epsv;		// here to save an indirection on every use
++	QVec *mcsv;
++	Scratch own;		// used where the Regexp's is already taken
+ 	bool exiting;
+ };
+ 
+ static bool
+-execute_construct(Execute *e, const Regexp *r, minrx_regexec_flags_t flags, const char *bp, const char *ep)
++execute_construct(Execute *e, Regexp *r, minrx_regexec_flags_t flags, const char *bp, const char *ep)
+ {
+ 	e->r = r;
+ 	e->flags = flags;
+@@ -1965,21 +2063,47 @@ execute_construct(Execute *e, const Regexp *r, minrx_regexec_flags_t flags, cons
+ 	cowvec_allocator_construct(&e->allocator, e->nestoff + r->nmin);
+ 	cowvec_construct(&e->best, (COWVec_Allocator *) NULL);
+ 	e->bestmincount = 0;
+-	if (!qset_construct(&e->epsq, r->nnode) || !qvec_construct(&e->epsv, r->nnode)) {
+-		qset_destruct(&e->epsq);
++	if (scratch_acquire(&r->scratch)) {
++		e->scratch = &r->scratch;
++	} else {
++		// Private to this execution, so only what scratch_construct()
++		// reads needs setting here; it fills in the rest.
++		e->own.ready = false;
++		e->own.freelist = (COWVec_Storage *) NULL;
++		e->scratch = &e->own;
++	}
++	if (!scratch_construct(e->scratch, r->nnode)) {
++		if (e->scratch != &e->own)
++			scratch_release(e->scratch);
+ 		return false;
+ 	}
++	e->epsq = &e->scratch->epsq;
++	e->epsv = &e->scratch->epsv;
++	e->mcsv = e->scratch->mcsv;
++	e->allocator.freelist = e->scratch->freelist;
+ 	e->exiting = r->anchored;
+ 	return true;
+ }
+ 
++// 'reusable' is false where the execution has failed part way through and
++// may have left the scratch space in a state the next one, which would
++// otherwise inherit it, should not build upon.
+ static void
+-execute_destruct(Execute *e)
++execute_destruct(Execute *e, bool reusable)
+ {
+-	qvec_destruct(&e->epsv);
+-	qset_destruct(&e->epsq);
++	Scratch *sc = e->scratch;
+ 	cowvec_destruct(&e->best);
+-	cowvec_allocator_destruct(&e->allocator);
++	// Drain, but keep the storage for the next execution.
++	qvec_clear(&e->mcsv[1]);
++	qvec_clear(&e->mcsv[0]);
++	qvec_clear(e->epsv);
++	while (!qset_empty(e->epsq))
++		(void) qset_remove(e->epsq);
++	sc->freelist = e->allocator.freelist;
++	if (!reusable || sc == &e->own)
++		scratch_destruct(sc);
++	if (sc != &e->own)
++		scratch_release(sc);
+ }
+ 
+ inline static void
+@@ -2001,7 +2125,7 @@ execute_add(Execute *e, QVec *ncsv, NInt k, NInt nstk, const NState *nsp, WChar
+ 			qvi.newnsp->gen = e->gen;
+ 		}
+ 	} else {
+-		QVecInsert qvi = qvec_insert(&e->epsv, k, nsp);
++		QVecInsert qvi = qvec_insert(e->epsv, k, nsp);
+ 		if (qvi.newly) {
+ 			nstate_construct_copy(qvi.newnsp, nsp);
+ 		} else {
+@@ -2012,7 +2136,7 @@ execute_add(Execute *e, QVec *ncsv, NInt k, NInt nstk, const NState *nsp, WChar
+ 				return;
+ 		}
+ 		qvi.newnsp->gen = e->gen;
+-		qset_insert(&e->epsq, k);
++		qset_insert(e->epsq, k);
+ 	}
+ }
+ 
+@@ -2036,7 +2160,7 @@ execute_add_1(Execute *e, QVec *ncsv, NInt k, NInt nstk, const NState *nsp, WCha
+ 			cowvec_put(&qvi.newnsp->substack, nstk - 1, arg1);
+ 		}
+ 	} else {
+-		QVecInsert qvi = qvec_insert(&e->epsv, k, nsp);
++		QVecInsert qvi = qvec_insert(e->epsv, k, nsp);
+ 		if (qvi.newly) {
+ 			nstate_construct_copy(qvi.newnsp, nsp);
+ 		} else {
+@@ -2048,7 +2172,7 @@ execute_add_1(Execute *e, QVec *ncsv, NInt k, NInt nstk, const NState *nsp, WCha
+ 		}
+ 		qvi.newnsp->gen = e->gen;
+ 		cowvec_put(&qvi.newnsp->substack, nstk - 1, arg1);
+-		qset_insert(&e->epsq, k);
++		qset_insert(e->epsq, k);
+ 	}
+ }
+ 
+@@ -2073,7 +2197,7 @@ execute_add_2(Execute *e, QVec *ncsv, NInt k, NInt nstk, const NState *nsp, WCha
+ 			cowvec_put(&qvi.newnsp->substack, nstk - 1, arg2);
+ 		}
+ 	} else {
+-		QVecInsert qvi = qvec_insert(&e->epsv, k, nsp);
++		QVecInsert qvi = qvec_insert(e->epsv, k, nsp);
+ 		if (qvi.newly) {
+ 			nstate_construct_copy(qvi.newnsp, nsp);
+ 		} else {
+@@ -2086,7 +2210,7 @@ execute_add_2(Execute *e, QVec *ncsv, NInt k, NInt nstk, const NState *nsp, WCha
+ 		qvi.newnsp->gen = e->gen;
+ 		cowvec_put(&qvi.newnsp->substack, nstk - 2, arg1);
+ 		cowvec_put(&qvi.newnsp->substack, nstk - 1, arg2);
+-		qset_insert(&e->epsq, k);
++		qset_insert(e->epsq, k);
+ 	}
+ }
+ 
+@@ -2112,7 +2236,7 @@ execute_add_3(Execute *e, QVec *ncsv, NInt k, NInt nstk, const NState *nsp, WCha
+ 			cowvec_put(&qvi.newnsp->substack, nstk - 1, arg3);
+ 		}
+ 	} else {
+-		QVecInsert qvi = qvec_insert(&e->epsv, k, nsp);
++		QVecInsert qvi = qvec_insert(e->epsv, k, nsp);
+ 		if (qvi.newly) {
+ 			nstate_construct_copy(qvi.newnsp, nsp);
+ 		} else {
+@@ -2126,7 +2250,7 @@ execute_add_3(Execute *e, QVec *ncsv, NInt k, NInt nstk, const NState *nsp, WCha
+ 		cowvec_put(&qvi.newnsp->substack, nstk - 3, arg1);
+ 		cowvec_put(&qvi.newnsp->substack, nstk - 2, arg2);
+ 		cowvec_put(&qvi.newnsp->substack, nstk - 1, arg3);
+-		qset_insert(&e->epsq, k);
++		qset_insert(e->epsq, k);
+ 	}
+ }
+ 
+@@ -2148,8 +2272,8 @@ execute_epsclosure(Execute *e, QVec *ncsv, WChar wcnext)
+ 	const Node *nodes = e->nodes;
+ 	bool (*is_word)(WChar) = e->r->enc == Byte ? is_word_byte : is_word_wide;
+ 	do {
+-		NInt k = qset_remove(&e->epsq);
+-		NState *nsp = qvec_lookup(&e->epsv, k);
++		NInt k = qset_remove(e->epsq);
++		NState *nsp = qvec_lookup(e->epsv, k);
+ 		if (cowvec_valid(&e->best) && nsp->boff > cowvec_get(&e->best, e->suboff + 0))
+ 			continue;
+ 		const Node *np = &e->nodes[k];
+@@ -2305,7 +2429,7 @@ execute_epsclosure(Execute *e, QVec *ncsv, WChar wcnext)
+ 			abort();
+ 			break;
+ 		}
+-	} while (!qset_empty(&e->epsq));
++	} while (!qset_empty(e->epsq));
+ }
+ 
+ #define WCNEXT(E, WCN) ((E)->wcprev = (WCN), (E)->off = wconv_off(&(E)->wconv), (WCN) = wconv_nextchr(&(E)->wconv))
+@@ -2313,18 +2437,12 @@ execute_epsclosure(Execute *e, QVec *ncsv, WChar wcnext)
+ static int
+ execute(Execute *e, size_t nm, minrx_regmatch_t *rm)
+ {
+-	QVec mcsvs[2];
+-	if (!qvec_construct(&mcsvs[0], e->r->nnode) || !qvec_construct(&mcsvs[1], e->r->nnode)) {
+-		qvec_destruct(&mcsvs[0]);
+-		return MINRX_REG_ESPACE;
+-	}
++	QVec *mcsvs = e->mcsv;
+ 	NState nsinit;
+ 	nstate_construct(&nsinit, (COWVec_Allocator *) NULL);	// fake construction so "exception handler" will be safe
+ 	int err;
+ 	if ((err = setjmp(e->allocator.errjmp)) != 0) {
+ 		nstate_destruct(&nsinit);
+-		qvec_destruct(&mcsvs[1]);
+-		qvec_destruct(&mcsvs[0]);
+ 		return err;
+ 	}
+ 	nstate_construct(&nsinit, &e->allocator);		// real construction
+@@ -2381,7 +2499,7 @@ execute(Execute *e, size_t nm, minrx_regmatch_t *rm)
+ 	for (size_t i = 0; i < e->r->nmin; ++i)
+ 		cowvec_put(&nsinit.substack, e->nestoff + i, 0);
+ 	execute_add(e, &mcsvs[0], 0, 0, &nsinit, wcnext);
+-	if (!qset_empty(&e->epsq))
++	if (!qset_empty(e->epsq))
+ 		execute_epsclosure(e, &mcsvs[0], wcnext);
+ 	for (;;) { // unrolled to ping-pong roles of mcsvs[0]/[1]
+ 		if (wcnext == End)
+@@ -2396,7 +2514,7 @@ execute(Execute *e, size_t nm, minrx_regmatch_t *rm)
+ 			nsinit.boff = e->off;
+ 			execute_add(e, &mcsvs[1], 0, 0, &nsinit, wcnext);
+ 		}
+-		if (!qset_empty(&e->epsq))
++		if (!qset_empty(e->epsq))
+ 			execute_epsclosure(e, &mcsvs[1], wcnext);
+ 		if (qvec_empty(&mcsvs[1])) {
+ 			if (e->exiting)
+@@ -2416,7 +2534,7 @@ execute(Execute *e, size_t nm, minrx_regmatch_t *rm)
+ 			nsinit.boff = e->off;
+ 			execute_add(e, &mcsvs[0], 0, 0, &nsinit, wcnext);
+ 		}
+-		if (!qset_empty(&e->epsq))
++		if (!qset_empty(e->epsq))
+ 			execute_epsclosure(e, &mcsvs[0], wcnext);
+ 		if (qvec_empty(&mcsvs[0])) {
+ 			if (e->exiting)
+@@ -2427,8 +2545,6 @@ execute(Execute *e, size_t nm, minrx_regmatch_t *rm)
+ 	}
+ exit:
+ 	nstate_destruct(&nsinit);
+-	qvec_destruct(&mcsvs[1]);
+-	qvec_destruct(&mcsvs[0]);
+ 	if (cowvec_valid(&e->best)) {
+ 		if (rm) {
+ 			size_t nsub = MIN(nm, e->r->nsub);
+@@ -2504,7 +2620,7 @@ minrx_regnexec(minrx_regex_t *rx, size_t ns, const char *s, size_t nm, minrx_reg
+ 	if (!execute_construct(&e, r, (minrx_regexec_flags_t) flags, s, s + ns))
+ 		return MINRX_REG_ESPACE;
+ 	int ret = execute(&e, nm, rm);
+-	execute_destruct(&e);
++	execute_destruct(&e, ret == MINRX_REG_SUCCESS || ret == MINRX_REG_NOMATCH);
+ 	return ret;
+ }
+ 
+@@ -2513,6 +2629,7 @@ minrx_regfree(minrx_regex_t *rx)
+ {
+ 	Regexp *r = (Regexp *) rx->re_regexp;
+ 	if (r) {
++		scratch_fini(&r->scratch);
+ 		if (r->firstcset) {
+ 			cset_destruct(r->firstcset);
+ 			free((void *) r->firstcset);
+-- 
+cgit v1.3
+
+
