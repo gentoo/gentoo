@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 
 inherit autotools libtool python-any-r1 flag-o-matic toolchain-funcs
 
@@ -15,7 +15,7 @@ if [[ "${PV}" == *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/containers/${PN}.git"
 else
 	SRC_URI="https://github.com/containers/${PN}/releases/download/${PV}/${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv"
+	KEYWORDS="~amd64 ~arm ~arm64 ~loong ppc64 ~riscv"
 fi
 
 LICENSE="GPL-2+ LGPL-2.1+"
