@@ -34,7 +34,7 @@ DEPEND="
 	>=kde-frameworks/kcodecs-${KFMIN}:6
 	>=kde-frameworks/kcontacts-${KFMIN}:6
 	>=kde-frameworks/ki18n-${KFMIN}:6
-	=media-libs/zxing-cpp-2*:=
+	>=media-libs/zxing-cpp-1.1.1:=
 	virtual/zlib:=
 "
 RDEPEND="${DEPEND}"
