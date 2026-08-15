@@ -18,7 +18,6 @@ KEYWORDS="~amd64 ~arm64"
 RDEPEND="
 	dev-python/nbformat[${PYTHON_USEDEP}]
 	>=dev-python/notebook-7.4.7[${PYTHON_USEDEP}]
-	<dev-python/notebook-7.5[${PYTHON_USEDEP}]
 	dev-python/psutil[${PYTHON_USEDEP}]
 	dev-python/qdarkstyle[${PYTHON_USEDEP}]
 	dev-python/qtpy[${PYTHON_USEDEP}]
