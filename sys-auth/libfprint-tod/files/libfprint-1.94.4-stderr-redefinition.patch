@@ -1,0 +1,24 @@
+https://gitlab.freedesktop.org/libfprint/libfprint/-/merge_requests/366
+
+From 2584d440afc87d463cb8dc809d48c660e091c2c4 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Thu, 23 Jun 2022 05:57:46 +0100
+Subject: [PATCH] nbis: fix build on musl
+
+Drop re-definition of stderr. There's no need for this anywhere
+(including glibc). This breaks in particular on musl because
+stderr (and stdin) are both const, and macros unlike in glibc.
+
+Bug: https://bugs.gentoo.org/853811
+--- a/libfprint/nbis/include/bozorth.h
++++ b/libfprint/nbis/include/bozorth.h
+@@ -217,8 +217,6 @@ struct xytq_struct {
+ /**************************************************************************/
+ /* Globals supporting command line options */
+ extern int verbose_threshold;
+-/* Global supporting error reporting */
+-extern FILE *stderr;
+ 
+ /**************************************************************************/
+ /* In: BZ_GBLS.C */
+GitLab
