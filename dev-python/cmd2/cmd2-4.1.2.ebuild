@@ -16,7 +16,7 @@ HOMEPAGE="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~mips ~ppc64 ~riscv ~s390 ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~mips ~ppc64 ~riscv ~s390 x86"
 
 RDEPEND="
 	>=dev-python/prompt-toolkit-3.0.52[${PYTHON_USEDEP}]
