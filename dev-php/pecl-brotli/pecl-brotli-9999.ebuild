@@ -24,7 +24,7 @@ DESCRIPTION="Brotli compression extension for PHP"
 HOMEPAGE+=" https://github.com/kjdev/php-ext-brotli"
 
 LICENSE="MIT"
-SLOT="0/0.20"
+SLOT="0/0.21"
 
 IUSE="apcu"
 RDEPEND="app-arch/brotli:= apcu? ( dev-php/pecl-apcu )"
