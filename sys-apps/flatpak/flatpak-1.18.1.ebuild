@@ -70,6 +70,8 @@ BDEPEND="
 
 PDEPEND="sys-apps/xdg-desktop-portal"
 
+PATCHES=("${FILESDIR}/flatpak-1.18.1-test.patch")
+
 python_check_deps() {
 	python_has_version "dev-python/pyparsing[${PYTHON_USEDEP}]"
 }

@@ -1,0 +1,13 @@
+diff --git a/tests/make-test-runtime.sh b/tests/make-test-runtime.sh
+index f978601c..c5b08dd7 100755
+--- a/tests/make-test-runtime.sh
++++ b/tests/make-test-runtime.sh
+@@ -95,7 +95,7 @@ chmod a+x ${DIR}/usr/bin/runtime_hello.sh
+ # local archive.
+ if [ -d /usr/lib/locale ]; then
+     mkdir -p ${DIR}/usr/lib/locale/
+-    cp -r /usr/lib/locale/C.* ${DIR}/usr/lib/locale/en_US
++    cp -r /usr/lib/locale/C.* ${DIR}/usr/lib/locale/en_US || true
+ fi
+ 
+ if [ x$COLLECTION_ID != x ]; then
