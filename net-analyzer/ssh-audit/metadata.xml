@@ -10,6 +10,10 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<upstream>
+		<bugs-to>https://github.com/jtesta/ssh-audit/issues</bugs-to>
+		<changelog>https://github.com/jtesta/ssh-audit/releases</changelog>
+		<doc>https://github.com/jtesta/ssh-audit/wiki</doc>
 		<remote-id type="github">jtesta/ssh-audit</remote-id>
 	</upstream>
+	<stabilize-allarches/>
 </pkgmetadata>
