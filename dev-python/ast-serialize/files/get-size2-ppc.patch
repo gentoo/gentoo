@@ -1,0 +1,27 @@
+diff '--color=auto' -dupr old/src/impls/primitives.rs get-size2-0.8.0/src/impls/primitives.rs
+--- old/src/impls/primitives.rs	2026-08-15 16:43:00.804672506 +0200
++++ get-size2-0.8.0/src/impls/primitives.rs	2026-08-15 16:43:22.885502883 +0200
+@@ -5,8 +5,8 @@ use std::num::{
+     NonZeroU16, NonZeroU32, NonZeroU64, NonZeroU128, NonZeroUsize,
+ };
+ use std::sync::atomic::{
+-    AtomicBool, AtomicI8, AtomicI16, AtomicI32, AtomicI64, AtomicIsize, AtomicU8, AtomicU16,
+-    AtomicU32, AtomicU64, AtomicUsize, Ordering,
++    AtomicBool, AtomicI8, AtomicI16, AtomicI32, AtomicIsize, AtomicU8, AtomicU16,
++    AtomicU32, AtomicUsize, Ordering,
+ };
+ use std::time::{Duration, Instant, SystemTime};
+ 
+@@ -46,12 +46,10 @@ impl GetSize for AtomicBool {}
+ impl GetSize for AtomicI8 {}
+ impl GetSize for AtomicI16 {}
+ impl GetSize for AtomicI32 {}
+-impl GetSize for AtomicI64 {}
+ impl GetSize for AtomicIsize {}
+ impl GetSize for AtomicU8 {}
+ impl GetSize for AtomicU16 {}
+ impl GetSize for AtomicU32 {}
+-impl GetSize for AtomicU64 {}
+ impl GetSize for AtomicUsize {}
+ impl GetSize for Ordering {}
+ impl GetSize for std::cmp::Ordering {}

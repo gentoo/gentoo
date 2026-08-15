@@ -230,6 +230,14 @@ src_unpack() {
 	cargo_src_unpack
 }
 
+src_prepare() {
+	default
+
+	# hack around https://github.com/mypyc/ast_serialize/issues/68
+	cd "${ECARGO_VENDOR}"/get-size2-* || die
+	eapply "${FILESDIR}/get-size2-ppc.patch"
+}
+
 python_test_all() {
 	cargo_src_test
 }
