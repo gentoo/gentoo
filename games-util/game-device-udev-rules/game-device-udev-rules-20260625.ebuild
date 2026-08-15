@@ -9,7 +9,7 @@ inherit linux-info udev
 # also has its own rules and more may be added later so we version it
 # independently.
 
-STEAM_COMMIT="124a29a8f6fb9f0142a5397ecd88f88469c724de"
+STEAM_COMMIT="22ec85e5ff5ea2e15c56d71a41bcbef46356cd60"
 MY_P="steam-devices-${STEAM_COMMIT}"
 
 DESCRIPTION="udev rules for various game hardware devices"
