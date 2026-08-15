@@ -16,6 +16,6 @@
   <flag name="bbdb">Include support for <pkg>app-emacs/bbdb</pkg></flag>
 </use>
 <upstream>
-  <remote-id type="launchpad">vm</remote-id>
+  <remote-id type="gitlab">emacs-vm/vm</remote-id>
 </upstream>
 </pkgmetadata>
