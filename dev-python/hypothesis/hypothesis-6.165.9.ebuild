@@ -90,9 +90,6 @@ distutils_enable_tests pytest
 QA_PREBUILT="usr/lib/python.*/site-packages/hypothesis/_native.*"
 
 python_test() {
-	# https://github.com/python/cpython/issues/154701
-	local -x PYTHON_JIT=0
-
 	# NB: paths need to be relative to pytest.ini, i.e. start with hypothesis/
 	local EPYTEST_DESELECT=(
 		# broken somehow (xdist?)
