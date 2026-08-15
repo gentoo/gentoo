@@ -137,6 +137,7 @@ DEPEND="
 	vlc? ( <media-video/vlc-4.0:= )
 	wayland? (
 		dev-libs/wayland
+		dev-qt/qtbase:6[wayland]
 		x11-libs/libxkbcommon
 	)
 	websocket? (
