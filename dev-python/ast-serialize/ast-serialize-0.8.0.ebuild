@@ -229,3 +229,7 @@ src_unpack() {
 	pypi_src_unpack
 	cargo_src_unpack
 }
+
+python_test_all() {
+	cargo_src_test
+}
