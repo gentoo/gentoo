@@ -1,0 +1,33 @@
+From 2c8f279e9bd837a9c931d3b013247dab8a627061 Mon Sep 17 00:00:00 2001
+From: Mark Hills <mark@xwax.org>
+Date: Tue, 13 Jan 2026 21:05:54 +0000
+Subject: [PATCH] Consistent types required for building with LTO
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Gentoo user reported [1] this bug "During LTO compatibility testing" [2].
+I don't have access to the platform to verify this fixes the bug they
+are seeing.
+
+[1] https://github.com/hills/xosview/issues/27
+[2] https://bugs.gentoo.org/941118
+
+Reported-by: Andreas K. Hüttel <mail@akhuettel.de>
+---
+ Xrm.cc | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Xrm.cc b/Xrm.cc
+index 9795add..cae7811 100644
+--- a/Xrm.cc
++++ b/Xrm.cc
+@@ -14,7 +14,7 @@
+ #include <iostream>
+ #include "stringutils.h"
+ 
+-extern char *defaultXResourceString;
++extern const char *defaultXResourceString;
+ 
+ 
+ bool Xrm::_initialized = false;
