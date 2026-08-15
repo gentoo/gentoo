@@ -104,6 +104,8 @@ src_configure() {
 	)
 
 	cargo_src_configure --no-default-features
+	# otherwise, rustc/llvm runs out of address space
+	use arm && export RUSTFLAGS="${RUSTFLAGS} -Copt-level=0"
 }
 
 src_compile() {

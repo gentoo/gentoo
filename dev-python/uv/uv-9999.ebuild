@@ -70,24 +70,10 @@ src_prepare() {
 
 	# enable system libraries where supported
 	export ZSTD_SYS_USE_PKG_CONFIG=1
-	# TODO: unbundle libz-ng-sys, tikv-jemalloc-sys?
+	# TODO: unbundle tikv-jemalloc-sys?
 
 	# remove unbundled sources, just in case
-	find "${ECARGO_VENDOR}"/{bzip2,lzma,zstd}-sys-*/ -name '*.c' -delete || die
-
-	# bzip2-sys requires a pkg-config file
-	# https://github.com/alexcrichton/bzip2-rs/issues/104
-	mkdir "${T}/pkg-config" || die
-	export PKG_CONFIG_PATH=${T}/pkg-config${PKG_CONFIG_PATH+:${PKG_CONFIG_PATH}}
-	cat >> "${T}/pkg-config/bzip2.pc" <<-EOF || die
-		Name: bzip2
-		Version: 9999
-		Description:
-		Libs: -lbz2
-	EOF
-
-	# uv is now forcing bundled liblzma, sigh
-	sed -i -e '/xz/s:"static"::' Cargo.toml || die
+	find "${ECARGO_VENDOR}"/zstd-sys-*/ -name '*.c' -delete || die
 }
 
 src_configure() {
@@ -98,6 +84,8 @@ src_configure() {
 	)
 
 	cargo_src_configure --no-default-features
+	# otherwise, rustc/llvm runs out of address space
+	use arm && export RUSTFLAGS="${RUSTFLAGS} -Copt-level=0"
 }
 
 src_compile() {
