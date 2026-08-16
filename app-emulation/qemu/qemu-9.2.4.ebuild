@@ -227,7 +227,7 @@ SOFTMMU_TOOLS_DEPEND="
 		>=app-emulation/spice-protocol-0.14.0
 		>=app-emulation/spice-0.14.0[static-libs(+)]
 	)
-	ssh? ( >=net-libs/libssh-0.8.6[static-libs(+)] )
+	ssh? ( >=net-libs/libssh-0.8.6[sftp,static-libs(+)] )
 	udev? ( virtual/libudev:= )
 	usb? ( >=virtual/libusb-1-r2:1[static-libs(+)] )
 	usbredir? ( >=sys-apps/usbredir-0.6[static-libs(+)] )
