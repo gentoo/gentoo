@@ -3,3 +3,13 @@ dev-java/openjdk:11
 dev-java/openjdk:17
 dev-java/openjdk:21
 dev-java/openjdk:25
+dev-java/openjdk-bin:8
+dev-java/openjdk-bin:11
+dev-java/openjdk-bin:17
+dev-java/openjdk-bin:21
+dev-java/openjdk-bin:25
+dev-java/openjdk-jre-bin:8
+dev-java/openjdk-jre-bin:11
+dev-java/openjdk-jre-bin:17
+dev-java/openjdk-jre-bin:21
+dev-java/openjdk-jre-bin:25
