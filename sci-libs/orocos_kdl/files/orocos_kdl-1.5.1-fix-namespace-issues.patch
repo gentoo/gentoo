@@ -1,0 +1,43 @@
+From f263aed85e0dc27d31bce221de2aeef2faaf705b Mon Sep 17 00:00:00 2001
+From: Bernd Waibel <waebbl-gentoo@posteo.net>
+Date: Thu, 4 Nov 2021 20:15:08 +0100
+Subject: [PATCH] fix namespace issues
+
+Signed-off-by: Bernd Waibel <waebbl-gentoo@posteo.net>
+---
+ examples/chainiksolverpos_lma_demo.cpp | 4 ++--
+ models/kukaLWRtestDHnew.cpp            | 2 +-
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/examples/chainiksolverpos_lma_demo.cpp b/examples/chainiksolverpos_lma_demo.cpp
+index 5697b25..8f3cbe9 100644
+--- a/examples/chainiksolverpos_lma_demo.cpp
++++ b/examples/chainiksolverpos_lma_demo.cpp
+@@ -90,9 +90,9 @@ void test_inverseposkin(KDL::Chain& chain) {
+     KDL::JntArray q_sol(n);
+     for (int trial=0;trial<num_of_trials;++trial) {
+         q.data.setRandom();
+-        q.data *= PI;
++        q.data *= KDL::PI;
+         q_init.data.setRandom();
+-        q_init.data *= PI;
++        q_init.data *= KDL::PI;
+         KDL::Frame pos_goal,pos_reached;
+         fwdkin.JntToCart(q,pos_goal);
+         //solver.compute_fwdpos(q.data);
+diff --git a/models/kukaLWRtestDHnew.cpp b/models/kukaLWRtestDHnew.cpp
+index b936577..f0dcedb 100644
+--- a/models/kukaLWRtestDHnew.cpp
++++ b/models/kukaLWRtestDHnew.cpp
+@@ -109,7 +109,7 @@ int getInputs(JntArray &_q, JntArray &_qdot, JntArray &_qdotdot, int &linenr)
+    *READING Qdot = joint velocities
+    */
+   counter=0;//reset counter
+-  ifstream inQdotfile("interpreteerbaar/qdot", std::ios::in);
++  std::ifstream inQdotfile("interpreteerbaar/qdot", std::ios::in);
+ 
+   if (!inQdotfile)
+   {
+-- 
+2.33.1
+
