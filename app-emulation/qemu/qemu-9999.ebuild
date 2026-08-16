@@ -60,7 +60,7 @@ SLOT="0"
 [[ ${QEMU_DOCS_PREBUILT} == 1 ]] && QEMU_DOC_USEFLAG="doc"
 
 IUSE="accessibility +aio alsa bpf bzip2 capstone +curl debug ${QEMU_DOC_USEFLAG}
-	+fdt fuse glusterfs +gnutls gtk infiniband iscsi io-uring
+	+fdt fuse +gnutls gtk infiniband iscsi io-uring
 	jack +jpeg keyutils
 	lzo multipath
 	ncurses nfs nls numa opengl +oss pam passt +pin-upstream-blobs pipewire
@@ -179,7 +179,6 @@ SOFTMMU_TOOLS_DEPEND="
 	curl? ( >=net-misc/curl-7.15.4[static-libs(+)] )
 	fdt? ( >=sys-apps/dtc-1.5.1[static-libs(+)] )
 	fuse? ( >=sys-fs/fuse-3.1:3=[static-libs(+)] )
-	glusterfs? ( >=sys-cluster/glusterfs-3.4.0[static-libs(+)] )
 	gnutls? (
 		>=net-libs/gnutls-3.7.5:=[static-libs(+)]
 		>=dev-libs/nettle-3.7.3:=[static-libs(+)]
@@ -628,7 +627,6 @@ qemu_src_configure() {
 		$(conf_tools doc docs)
 		$(conf_notuser fdt)
 		$(conf_notuser fuse)
-		$(conf_notuser glusterfs)
 		$(conf_notuser gnutls)
 		$(conf_notuser gnutls nettle)
 		$(conf_notuser gtk)
