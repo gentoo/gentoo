@@ -34,7 +34,7 @@ BDEPEND="sys-apps/which"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.3.1-musl.patch
-	"${FILESDIR}"/${P}-unbundle-hwloc.patch
+	"${FILESDIR}"/${PN}-1.4-unbundle-hwloc.patch
 )
 
 src_prepare() {
