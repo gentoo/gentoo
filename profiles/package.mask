@@ -36,6 +36,13 @@
 
 #--- END OF EXAMPLES ---
 
+# James Le Cuirot <chewi@gentoo.org> (2026-08-16)
+# This fork of Barrier sadly didn't get very far. Upstream have now archived the
+# repository. Use gui-apps/deskflow, which is now the FOSS upstream of the
+# original Synergy project that all these other projects are descended from.
+# Removal on 2026-09-16. Bug #980972.
+gui-apps/input-leap
+
 # Brett A C Sheffield <bacs@librecast.net> (2026-08-09)
 # Unmaintained by upstream for 16 years. Two unpatched security bugs
 # (Bug #906111 and Bug #916866) and many more unpatched issues upstream.
