@@ -108,7 +108,7 @@ DEPEND="${COMMON_DEPEND}
 BDEPEND="
 	virtual/pkgconfig
 	agent2? (
-		>=dev-lang/go-1.24.10
+		>=dev-lang/go-1.25.9
 		app-arch/unzip
 	)
 "
