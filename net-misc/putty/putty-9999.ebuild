@@ -44,7 +44,7 @@ BDEPEND="
 	dev-lang/perl
 	virtual/pkgconfig
 	doc? ( app-text/halibut )
-	verify-sig? ( ~sec-keys/openpgp-keys-putty-release-2023 )
+	verify-sig? ( ~sec-keys/openpgp-keys-putty-release-2026 )
 "
 
 src_unpack() {
