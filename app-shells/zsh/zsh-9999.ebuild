@@ -10,13 +10,20 @@ if [[ ${PV} == *9999 ]]; then
 	EGIT_REPO_URI="https://git.code.sf.net/p/zsh/code"
 else
 	inherit verify-sig
-	DIST_SITE="https://www.zsh.org/pub"
 	SRC_URI="
-		${DIST_SITE}/${P}.tar.xz
-		verify-sig? ( ${DIST_SITE}/${P}.tar.xz.asc )
+		https://www.zsh.org/pub/${P}.tar.xz
+		https://www.zsh.org/pub/old/${P}.tar.xz
+		verify-sig? (
+			https://www.zsh.org/pub/${P}.tar.xz.asc
+			https://www.zsh.org/pub/old/${P}.tar.xz.asc
+		)
 		doc? (
-			${DIST_SITE}/${P}-doc.tar.xz
-			verify-sig? ( ${DIST_SITE}/${P}-doc.tar.xz.asc )
+			https://www.zsh.org/pub/${P}-doc.tar.xz
+			https://www.zsh.org/pub/old/${P}-doc.tar.xz
+			verify-sig? (
+				https://www.zsh.org/pub/${P}-doc.tar.xz.asc
+				https://www.zsh.org/pub/old/${P}-doc.tar.xz.asc
+			)
 		)
 	"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~arm64-macos ~x64-macos ~x64-solaris"
