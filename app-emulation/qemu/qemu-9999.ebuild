@@ -100,6 +100,7 @@ COMMON_TARGETS="
 IUSE_SOFTMMU_TARGETS="
 	${COMMON_TARGETS}
 	avr
+	hexagon
 	rx
 	tricore
 "
