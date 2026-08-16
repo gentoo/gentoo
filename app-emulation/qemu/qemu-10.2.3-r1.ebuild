@@ -79,6 +79,7 @@ COMMON_TARGETS="
 	loongarch64
 	m68k
 	microblaze
+	microblazeel
 	mips
 	mips64
 	mips64el
@@ -108,7 +109,6 @@ IUSE_USER_TARGETS="
 	aarch64_be
 	armeb
 	hexagon
-	microblazeel
 	mipsn32
 	mipsn32el
 	ppc64le
