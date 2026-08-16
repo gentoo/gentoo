@@ -44,6 +44,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/1.3.0-skip-protocol-test.patch
+	"${FILESDIR}"/1.6.0-util-explicitly-reject-rejecting-negative-numbers-in.patch
 )
 
 python_check_deps() {
