@@ -1,0 +1,33 @@
+From 2df40937d8383c4b7db12f62827ca6f31efe20db Mon Sep 17 00:00:00 2001
+From: David Redondo <kde@david-redondo.de>
+Date: Tue, 21 Jul 2026 09:40:18 +0200
+Subject: [PATCH] waylandclipboard: Check isInterruptionRequested in prepare
+ read loop
+
+When there's an error on the wl_display like on reconnect it can be
+that there are still pending messages on the connection.
+wl_display_prepare_read_queue does not check the error on the wl_display
+and return -1. However wl_display_dispatch_queue_pending checks the
+error and  noops. This causes the loop to never terminate. Check
+if the main thread wants us to stop also in this inner loop as a fix.
+BUG:517743
+---
+ src/systemclipboard/waylandclipboard.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/systemclipboard/waylandclipboard.cpp b/src/systemclipboard/waylandclipboard.cpp
+index 5868a1c..1eaacf9 100644
+--- a/src/systemclipboard/waylandclipboard.cpp
++++ b/src/systemclipboard/waylandclipboard.cpp
+@@ -552,7 +552,7 @@ public:
+     void run() override
+     {
+         while (!isInterruptionRequested()) {
+-            while (wl_display_prepare_read_queue(m_display, m_queue) != 0) {
++            while (!isInterruptionRequested() && wl_display_prepare_read_queue(m_display, m_queue) != 0) {
+                 QMutexLocker lock(&s_clipboardLock);
+                 wl_display_dispatch_queue_pending(m_display, m_queue);
+             }
+-- 
+GitLab
+
