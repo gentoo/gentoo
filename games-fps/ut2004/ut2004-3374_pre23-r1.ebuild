@@ -16,7 +16,7 @@ S="${WORKDIR}"
 
 LICENSE="Epic-TOS"
 SLOT="0"
-KEYWORDS="-* ~amd64 ~arm64"
+KEYWORDS="~amd64 ~arm64"
 IUSE="dedicated l10n_de l10n_es l10n_fr l10n_he l10n_it l10n_ko l10n_pl l10n_ru"
 RESTRICT="bindist mirror strip"
 
