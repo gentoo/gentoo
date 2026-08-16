@@ -1,0 +1,44 @@
+The ebuild will install these instead, respecting ${PF}.
+--- a/setup.py
++++ b/setup.py
+@@ -111,18 +111,6 @@ def get_data_files():
+                 "man/duplicity.1",
+             ],
+         ),
+-        (
+-            f"share/doc/duplicity-{Version}",
+-            [
+-                "CHANGELOG.md",
+-                "AUTHORS.md",
+-                "COPYING",
+-                "README.md",
+-                "README-LOG.md",
+-                "README-REPO.md",
+-                "README-TESTING.md",
+-            ],
+-        ),
+     ]
+ 
+     # short circuit fot READTHEDOCS
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -65,19 +65,6 @@ include = [
+ [tool.setuptools-gettext]
+ compiler = "msgfmt"
+ [tool.setuptools.data-files]
+-"share/doc/duplicity" = [
+-    "CHANGELOG.md",
+-    "AUTHORS.md",
+-    "COPYING",
+-    "README.md",
+-    "README-ARCH.md",
+-    "README-INSTALL.md",
+-    "README-LOG.md",
+-    "README-RELEASE.md",
+-    "README-REPO.md",
+-    "README-SNAP.md",
+-    "README-TESTING.md",
+-]
+ "share/man/man1" =  [
+     "man/duplicity.1",
+ ]
