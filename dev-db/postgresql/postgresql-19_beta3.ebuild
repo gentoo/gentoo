@@ -99,7 +99,7 @@ dev-libs/libxslt
 "
 
 pkg_setup() {
-	use llvm && llvm-r1_pkg_setup
+	use llvm && llvm-r2_pkg_setup
 
 	use server && CONFIG_CHECK="~SYSVIPC" linux-info_pkg_setup
 
