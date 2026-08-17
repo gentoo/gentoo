@@ -1,6 +1,10 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Ulrich Müller <ulm@gentoo.org> (2026-08-17)
+# net-libs/webkit-gtk keywords dropped, bug #721342
+app-editors/emacs xwidgets
+
 # Nicolas PARLANT <nicolas.parlant@parhuet.fr> (2026-07-30)
 # dev-python/qtpy is not keyworded here
 media-libs/libffado gui
