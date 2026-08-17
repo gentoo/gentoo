@@ -211,10 +211,6 @@ dev-python/txaio
 dev-python/vpython
 dev-python/wsaccel
 
-# Ulrich Müller <ulm@gentoo.org> (2026-06-05)
-# Pretest versions, masked for testing.
-<app-editors/emacs-31.0.9999:31-vcs
-
 # Michał Górny <mgorny@gentoo.org> (2026-06-03)
 # Mike Pagano <mpagano@gentoo.org> (2026-06-03)
 # Support for 5.10.x and 5.15.x kernels in Gentoo is being discontinued.
