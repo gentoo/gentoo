@@ -44,6 +44,9 @@ DEPEND="
 	${RDEPEND}
 	test? ( >=dev-lang/tcl-8.6:0[${MULTILIB_USEDEP}] )
 "
+BDEPEND="
+	icu? ( virtual/pkgconfig )
+"
 if [[ ${PV} == 9999 ]]; then
 	BDEPEND+=" dev-vcs/fossil"
 else
@@ -153,6 +156,9 @@ multilib_src_configure() {
 		--enable-load-extension
 		--enable-threadsafe
 	)
+	if tc-is-cross-compiler; then
+		options+=( --sysroot="${ESYSROOT}" )
+	fi
 
 	# Support detection of misuse of SQLite API.
 	# https://sqlite.org/compile.html#enable_api_armor
@@ -278,9 +284,10 @@ multilib_src_configure() {
 	options+=( $(use_enable debug) )
 
 	if use icu; then
+		tc-export PKG_CONFIG
 		# Support ICU extension.
 		# https://sqlite.org/compile.html#enable_icu
-		options+=( --with-icu-config )
+		options+=( --with-icu-config=pkg-config )
 	fi
 
 	options+=(
