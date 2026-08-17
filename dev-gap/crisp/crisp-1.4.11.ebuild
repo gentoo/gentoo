@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,7 +6,7 @@ EAPI=8
 inherit gap-pkg
 
 DESCRIPTION="GAP algorithms for subgroups of finite soluble groups"
-SRC_URI="https://github.com/bh11/${PN}/releases/download/CrISP-${PV}/${P}.tar.bz2"
+SRC_URI="https://github.com/bh11/${PN}/releases/download/CRISP-${PV}/${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"
