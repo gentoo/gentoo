@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~riscv"
 
 RDEPEND="dev-gap/polycyclic"
 
-DOCS=( README doc/manual.pdf )
+DOCS=( README.md doc/manual.pdf )
 
 GAP_PKG_HTML_DOCDIR="htm"
 gap-pkg_enable_tests
