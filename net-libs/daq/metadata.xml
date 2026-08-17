@@ -10,19 +10,46 @@
 		Build the AFPacket data acquisition module. Functions similar to the PCAP 
 		module but with better performance. Snort can run unprivileged when using 
 		this module. AFpacket supports both inline and passive modes.
-	</flag>
+		</flag>
+		<flag name="bpf">
+		Build the BPF data acquisition module that implements filtering on packet
+		reception when given a Berkeley Packet Filter (BPF) to operate with.  BPF
+		supports both inline and passive modes.
+		</flag>
 		<flag name="dump">Build the Dump data acquisition module. The dump DAQ
 		allows you to test the various inline mode features available in
 		2.9 Snort like injection and normalization.
-	</flag>
-		<flag name="pcap">Build the PCAP data acquisition module.</flag>
-		<flag name="nfq">
-		Build the NFQ data acquisition module. NFQ is the new way to process iptables 
-		packets for inline deployments. Snort can not run unprivileged when using this module.
-	</flag>
+		</flag>
+		<flag name="fst">Build the Flow State Table (FST) data acquisition module.
+		FST module is a wrapper module that mimics operating on top of a flow-
+		tracking dataplane.  It will perform basic decoding of packet messages
+		received from the lower modules in the stack and use that information
+		to classify packets into flows and track state for those flows.
+		</flag>
 		<flag name="ipq">
 		Build the IPQ data acquisition module. IPQ is the old way to process iptables
-		packets for inline deployments. Snort can not run unprivileged when using this module.
-	</flag>
+		packets for inline deployments. Snort can not run unprivileged when using this
+		module.
+		</flag>
+		<flag name="gwlb">
+		Build the Gateway Load Balancer (GWLB) data acquisition module. GWLB is
+		used to deploy, scale and manage third-party virtual appliances in a public
+		cloud environment.
+		</flag>
+		<flag name="nfq">
+		Build the NFQ data acquisition module. NFQ is the new way to process iptables 
+		packets for inline deployments. Snort can not run unprivileged when using this
+		module.
+		</flag>
+		<flag name="pcap">Build the PCAP data acquisition module.</flag>
+		<flag name="savefile">
+		Build the savefile data acquisition module designed for performance-optimized
+		readback of traditional pcap savefiles.
+		</flag>
+		<flag name="trace">
+		Build the trace data acquisition module that records information about
+		packet message verdicts, injected packet messages, and IOCTL calls that
+		it intercepts to a text file.
+		</flag>
 	</use>
 </pkgmetadata>
