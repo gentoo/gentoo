@@ -1,0 +1,10 @@
+--- a/scripts/test.sh
++++ b/scripts/test.sh
+@@ -57,7 +57,6 @@
+ # The test script is not supposed to make any changes to the files
+ # e.g. add/update missing dependencies. Such divergences should be 
+ # detected and trigger a failure that needs explicit developer's action.
+-export GOFLAGS=-mod=readonly
+ export ETCD_VERIFY=all
+ 
+ source ./scripts/test_lib.sh
