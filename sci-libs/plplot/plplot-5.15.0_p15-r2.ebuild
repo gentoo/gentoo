@@ -5,7 +5,7 @@ EAPI=8
 
 WX_GTK_VER=3.2-gtk3
 FORTRAN_NEEDED=fortran
-LUA_COMPAT=( lua5-1 )
+LUA_COMPAT=( lua5-{1..4} )
 PYTHON_COMPAT=( python3_{12..14} )
 # fails with ninja, due to USE=java missing swig output dependencies
 CMAKE_MAKEFILE_GENERATOR=emake
@@ -278,6 +278,9 @@ src_test() {
 
 src_install() {
 	cmake_src_install
+
+	mkdir "${ED}/$(lua_get_cmod_dir)/"
+	cp "/usr/lib64/lua/plplot/plplotluac.so" "${ED}/$(lua_get_cmod_dir)/"
 
 	if use examples; then
 		docompress -x /usr/share/doc/${PF}/examples
