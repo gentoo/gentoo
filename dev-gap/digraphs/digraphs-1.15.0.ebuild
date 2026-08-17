@@ -32,15 +32,12 @@ BDEPEND="test? ( || (
 
 DOCS=( CHANGELOG.md README.md )
 
-PATCHES=( "${FILESDIR}/digraphs-1.14-planarity-5.patch" )
-
 GAP_PKG_EXTRA_INSTALL=( data notebooks )
 gap-pkg_enable_tests
 
 src_prepare() {
 	# belt and suspenders
-	rm -r extern/bliss-0.73 \
-		extern/edge-addition-planarity-suite-Version_4.0.0.0 \
+	rm -r extern/edge-addition-planarity-suite-Version_5.0.0.0 \
 		|| die
 
 	default
