@@ -1,0 +1,115 @@
+# Copyright 1999-2026 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=8
+
+# We avoid xdg.eclass here because it'll pull in glib, desktop utils on
+# htop which is often used on headless machines. bug #787470
+inherit fcaps linux-info optfeature xdg-utils
+
+DESCRIPTION="Interactive process viewer"
+HOMEPAGE="https://htop.dev/ https://github.com/htop-dev/htop"
+if [[ ${PV} == *9999 ]] ; then
+	EGIT_REPO_URI="https://github.com/htop-dev/htop.git"
+	inherit autotools git-r3
+else
+	SRC_URI="https://github.com/htop-dev/htop/releases/download/${PV}/${P}.tar.xz"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~arm64-macos ~x64-macos"
+fi
+
+S="${WORKDIR}/${P/_}"
+
+LICENSE="GPL-2+"
+SLOT="0"
+IUSE="bfd caps debug delayacct hwloc lm-sensors llvm-libunwind unicode unwind"
+
+RDEPEND="
+	sys-libs/ncurses:=[unicode(+)?]
+	bfd? ( sys-libs/binutils-libs:= )
+	hwloc? ( sys-apps/hwloc:= )
+	unwind? (
+		!llvm-libunwind? ( sys-libs/libunwind:= )
+		llvm-libunwind? ( llvm-runtimes/libunwind:= )
+	)
+	kernel_linux? (
+		caps? ( sys-libs/libcap )
+		delayacct? ( dev-libs/libnl:3 )
+		lm-sensors? ( sys-apps/lm-sensors )
+	)
+"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
+
+DOCS=( ChangeLog README.md )
+
+CONFIG_CHECK="~TASKSTATS ~TASK_XACCT ~TASK_IO_ACCOUNTING ~CGROUPS"
+WARNING_CGROUPS="CONFIG_CGROUPS is required for the cgroups column in htop"
+
+QA_CONFIG_IMPL_DECL_SKIP=(
+	typeof # backtrace check triggers this as noise from a failure
+)
+
+src_prepare() {
+	default
+
+	if [[ ${PV} == 9999 ]] ; then
+		eautoreconf
+	fi
+}
+
+src_configure() {
+	if [[ ${CBUILD} != ${CHOST} ]] ; then
+		# bug #328971
+		export ac_cv_file__proc_{meminfo,stat}=yes
+	fi
+
+	local myeconfargs=(
+		--enable-unicode
+		$(use_enable bfd demangling libiberty)
+		$(use_enable debug)
+		$(use_enable hwloc)
+		$(use_enable !hwloc affinity)
+		$(use_enable unicode)
+		$(use_enable unwind backtrace)
+		$(use_with unwind libunwind)
+	)
+
+	if use kernel_linux ; then
+		myeconfargs+=(
+			$(use_enable caps capabilities)
+			$(use_enable delayacct)
+			$(use_enable lm-sensors sensors)
+		)
+	else
+		if use kernel_Darwin ; then
+			# Upstream default to checking but --enable-affinity
+			# overrides this. Simplest to just disable on Darwin
+			# given it works on BSD anyway.
+			myeconfargs+=( --disable-affinity )
+		fi
+
+		myeconfargs+=(
+			--disable-capabilities
+			--disable-delayacct
+			--disable-sensors
+		)
+	fi
+
+	econf "${myeconfargs[@]}"
+}
+
+pkg_postinst() {
+	xdg_desktop_database_update
+	xdg_icon_cache_update
+
+	# Non-caps mode is blank to avoid suid with USE="-filecaps" (bug 961054)
+	fcaps -m '' cap_sys_ptrace usr/bin/htop
+
+	optfeature "Viewing processes accessing certain files" sys-process/lsof
+	optfeature "Tracing system calls and signals of processes" dev-debug/strace
+}
+
+pkg_postrm() {
+	xdg_desktop_database_update
+	xdg_icon_cache_update
+}
