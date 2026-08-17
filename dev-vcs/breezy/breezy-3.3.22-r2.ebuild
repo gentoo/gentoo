@@ -30,6 +30,7 @@ RESTRICT="test"
 
 RDEPEND="
 	$(python_gen_cond_dep '
+		dev-python/catalogus[${PYTHON_USEDEP}]
 		dev-python/configobj[${PYTHON_USEDEP}]
 		dev-python/fastbencode[${PYTHON_USEDEP}]
 		dev-python/patiencediff[${PYTHON_USEDEP}]
