@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit check-reqs flag-o-matic qmake-utils udev xdg-utils
+inherit check-reqs flag-o-matic qmake-utils tmpfiles udev xdg-utils
 
 if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
@@ -100,6 +100,7 @@ src_install() {
 pkg_postinst() {
 	xdg_icon_cache_update
 	udev_reload
+	tmpfiles_process openrgb.conf
 }
 
 pkg_postrm() {
