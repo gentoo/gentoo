@@ -91,7 +91,7 @@ vidix
 # vdpau is currently only available with binary nvidia-drivers, thus amd64/x86*
 vdpau
 
-# Infiniband stuff should generaly work on all arches but keyworded only on amd64/x86
+# Infiniband stuff should generally work on all arches but keyworded only on amd64/x86
 infiniband
 
 # These need libieee1284 which is amd64/x86 only.
