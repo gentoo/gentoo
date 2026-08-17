@@ -24,7 +24,7 @@ SRC_URI="https://github.com/rails/bootsnap/archive/refs/tags/v${PV}.tar.gz -> ${
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 
 ruby_add_rdepend "
 	>=dev-ruby/msgpack-1.2
