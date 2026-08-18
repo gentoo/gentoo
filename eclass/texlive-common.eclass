@@ -41,6 +41,12 @@ _TEXLIVE_COMMON_ECLASS=1
 # @CODE
 : "${CTAN_MIRROR_URL:="https://mirrors.ctan.org"}"
 
+# @ECLASS_VARIABLE: TEXLIVE_SRC_URI_PROJ_TEX
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# If set, use https://distfiles.gentoo.org/pub/proj/tex/ as additional
+# SRC_URI of texlive distfiles.
+
 # @ECLASS_VARIABLE: TEXLIVE_SCRIPTS_W_FILE_EXT
 # @DEFAULT_UNSET
 # @DESCRIPTION:
@@ -240,13 +246,20 @@ texlive-common_append_to_src_uri() {
 
 	local tl_uri_prefix="https://dev.gentoo.org/~@dev@/distfiles/texlive/tl-"
 	local tl_2023_uri_prefix="https://dev.gentoo.org/~@dev@/distfiles/texlive/"
+	local tl_proj_tex_uri_prefix="https://distfiles.gentoo.org/pub/proj/tex/"
+	local tl_mirror="${CTAN_MIRROR_URL%/}/systems/texlive/tlnet/archive/"
 
 	local tl_dev
-	# If the version is less than 2023 and the package is the
-	# dev-texlive category, we fallback to the old SRC_URI layout. With
-	# the 2023 bump, packages outside the dev-texlive category start to
-	# inherit texlive-common.eclass.
-	if ver_test -lt 2023 && [[ ${CATEGORY} == dev-texlive ]]; then
+	if ver_test -ge 2026 || [[ ${TEXLIVE_SRC_URI_PROJ_TEX} ]]; then
+		tl_uri=( "${tl_uri[@]/%/.${tl_pkgext}}" )
+
+		SRC_URI+=" ${tl_uri[*]/#/${tl_proj_tex_uri_prefix}}"
+		SRC_URI+=" ${tl_uri[*]/#/${tl_mirror}}"
+	elif ver_test -lt 2023 && [[ ${CATEGORY} == dev-texlive ]]; then
+		# If the version is less than 2023 and the package is the
+		# dev-texlive category, we fallback to the old SRC_URI layout. With
+		# the 2023 bump, packages outside the dev-texlive category start to
+		# inherit texlive-common.eclass.
 		local texlive_lt_2023_devs=( zlogene dilfridge sam )
 		local tl_uri_suffix="-${PV}.${tl_pkgext}"
 
