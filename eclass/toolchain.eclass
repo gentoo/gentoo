@@ -1386,7 +1386,7 @@ toolchain_src_configure() {
 	# Turn on the -Wl,--build-id flag by default for ELF targets. bug #953869
 	# This helps with locating debug files.
 	case ${CTARGET} in
-		*-linux-*|*-elf|*-eabi)
+		*-linux-*)
 			tc_version_is_at_least 4.5 && confgcc+=(
 				--enable-linker-build-id
 			)
