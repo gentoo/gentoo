@@ -37,7 +37,11 @@ src_configure() {
 	# https://github.com/openpmix/openpmix/issues/3350
 	filter-lto
 
-	econf
+	econf --without-legacy-tools
+
+	# do not install conflicting pterm man page #981014
+	sed -i 's/pterm.1//' docs/Makefile || die
+	sed -i 's/prun.1 \\/prun.1/' docs/Makefile || die
 }
 
 src_install() {
