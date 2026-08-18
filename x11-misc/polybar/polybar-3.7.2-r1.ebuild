@@ -42,6 +42,7 @@ DEPEND="
 	mpd? ( media-libs/libmpdclient )
 	network? ( dev-libs/libnl:3 )
 	pulseaudio? ( media-libs/libpulse )
+	verify-sig? ( sec-keys/openpgp-keys-patrick96 )
 "
 RDEPEND="${DEPEND}"
 
