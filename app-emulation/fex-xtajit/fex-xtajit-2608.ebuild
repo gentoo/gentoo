@@ -19,8 +19,10 @@ RANGE_V3_HASH="ca1388fb9da8e69314dda222dc7b139ca84e092f"
 
 SRC_URI="
 	https://github.com/FEX-Emu/rpmalloc/archive/${RPMALLOC_HASH}.tar.gz -> rpmalloc-${RPMALLOC_HASH}.tar.gz
-	https://github.com/Sonicadvance1/cpp-optparse/archive/${CPP_OPTPARSE_HASH}.tar.gz -> cpp-optparse-${CPP_OPTPARSE_HASH}.tar.gz
-	https://github.com/martinus/unordered_dense/archive/${UNORDERED_DENSE_HASH}.tar.gz -> unordered_dense-${UNORDERED_DENSE_HASH}.tar.gz
+	https://github.com/Sonicadvance1/cpp-optparse/archive/${CPP_OPTPARSE_HASH}.tar.gz
+		-> cpp-optparse-${CPP_OPTPARSE_HASH}.tar.gz
+	https://github.com/martinus/unordered_dense/archive/${UNORDERED_DENSE_HASH}.tar.gz
+		-> unordered_dense-${UNORDERED_DENSE_HASH}.tar.gz
 	https://github.com/Cyan4973/xxHash/archive/${XXHASH_HASH}.tar.gz -> xxhash-${XXHASH_HASH}.tar.gz
 	https://github.com/fmtlib/fmt/archive/${FMT_HASH}.tar.gz -> fmt-${FMT_HASH}.tar.gz
 	https://github.com/ericniebler/range-v3/archive/${RANGE_V3_HASH}.tar.gz -> range-v3-${RANGE_V3_HASH}.tar.gz
