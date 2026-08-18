@@ -91,6 +91,10 @@ src_configure() {
 	meson_src_configure
 }
 
+src_test() {
+	meson_src_test --timeout-multiplier=10
+}
+
 src_install() {
 	meson_src_install
 
