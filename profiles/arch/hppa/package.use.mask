@@ -506,6 +506,11 @@ kde-frameworks/extra-cmake-modules doc
 # pulls in many dev-ruby/asciidoctor dependencies (bug #583390)
 net-misc/chrony html
 
+# Jeroen Roovers <jer@gentoo.org> (2016-01-31)
+# Ulrich Müller <ulm@gentoo.org> (2026-08-18)
+# USE=xwidgets requires net-libs/webkit-gtk, bug #573432
+app-editors/emacs xwidgets
+
 # Jeroen Roovers <jer@gentoo.org> (2015-05-17)
 # Mask USE=rados for net-analyzer/rrdtool since sys-cluster/ceph is not
 # keyworded (bug #549516)
