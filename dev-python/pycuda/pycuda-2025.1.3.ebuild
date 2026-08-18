@@ -3,9 +3,10 @@
 
 EAPI=8
 
+DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..14} )
-inherit cuda distutils-r1 pypi
+PYTHON_COMPAT=( python3_{12..14} )
+inherit cuda distutils-r1 edo pypi
 
 DESCRIPTION="Python wrapper for NVIDIA CUDA"
 HOMEPAGE="https://mathema.tician.de/software/pycuda/ https://pypi.org/project/pycuda/ https://github.com/inducer/pycuda"
@@ -31,6 +32,8 @@ DEPEND="${RDEPEND}"
 # user is (usually) not in the video group
 RESTRICT="test? ( userpriv ) !test? ( test )"
 
+EPYTEST_PLUGINS=()
+EPYTEST_XDIST=1
 distutils_enable_tests pytest
 
 src_prepare() {
@@ -49,7 +52,6 @@ python_configure() {
 	cd "${BUILD_DIR}" || die
 
 	local conf=(
-		"${EPYTHON}" "${S}"/configure.py
 		--boost-inc-dir="${ESYSROOT}"/usr/include
 		--boost-lib-dir="${ESYSROOT}"/usr/$(get_libdir)
 		--boost-python-libname=boost_${EPYTHON/./}.so
@@ -59,8 +61,8 @@ python_configure() {
 		--cudadrv-lib-dir="${ESYSROOT}"/usr/$(get_libdir)
 		--cudart-lib-dir="${ESYSROOT}"/opt/cuda/$(get_libdir)
 	)
-	echo ${conf[*]}
-	"${conf[@]}" || die
+
+	edo "${EPYTHON}" "${S}"/configure.py "${conf[@]}"
 }
 
 python_test() {
@@ -76,8 +78,8 @@ python_test() {
 		test/test_driver.py::test_pointer_holder_base
 	)
 
-	cd "${T}" || die
-	epytest "${S}"/test
+	rm -rf pycuda || die
+	epytest test
 }
 
 python_install_all() {
