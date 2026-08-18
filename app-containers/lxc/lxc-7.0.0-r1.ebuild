@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit bash-completion-r1 linux-info meson optfeature systemd verify-sig
+inherit linux-info meson optfeature shell-completion systemd verify-sig
 
 DESCRIPTION="A userspace interface for the Linux kernel containment features"
 HOMEPAGE="https://linuxcontainers.org/ https://github.com/lxc/lxc"
