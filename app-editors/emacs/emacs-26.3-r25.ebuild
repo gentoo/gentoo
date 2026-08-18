@@ -18,7 +18,7 @@ S="${WORKDIR}/emacs-${FULL_VERSION}"
 LICENSE="GPL-3+ FDL-1.3+ BSD HPND MIT MPL-2.0 PSF-2 unicode W3C"
 SLOT="26"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~mips ppc ppc64 ~riscv ~sparc x86 ~x64-macos"
-IUSE="acl alsa aqua athena cairo dbus dynamic-loading games gfile gif gpm gsettings gtk gui gzip-el imagemagick +inotify jpeg kerberos lcms libxml2 livecd m17n-lib mailutils motif png selinux sound source ssl svg systemd +threads tiff toolkit-scroll-bars valgrind wide-int Xaw3d xft +xpm zlib"
+IUSE="acl alsa aqua athena cairo dbus dynamic-loading games gfile gif gpm gsettings gtk gui gzip-el imagemagick +inotify jpeg lcms libxml2 livecd m17n-lib mailutils motif png selinux sound source ssl svg systemd +threads tiff toolkit-scroll-bars valgrind wide-int Xaw3d xft +xpm zlib"
 
 RDEPEND=">=app-emacs/emacs-common-1.11[games?,gui?]
 	sys-libs/ncurses:0=
@@ -28,7 +28,6 @@ RDEPEND=">=app-emacs/emacs-common-1.11[games?,gui?]
 	games? ( acct-group/gamestat )
 	gpm? ( sys-libs/gpm )
 	!inotify? ( gfile? ( >=dev-libs/glib-2.28.6 ) )
-	kerberos? ( virtual/krb5 )
 	lcms? ( media-libs/lcms:2 )
 	libxml2? ( >=dev-libs/libxml2-2.2.0:= )
 	mailutils? ( net-mail/mailutils[clients] )
@@ -134,7 +133,6 @@ src_configure() {
 		--localstatedir="${EPREFIX}"/var
 		--enable-locallisppath="${EPREFIX}/etc/emacs:${EPREFIX}${SITELISP}"
 		--without-compress-install
-		--without-hesiod
 		--without-pop
 		--with-file-notification=$(usev inotify || usev gfile || echo no)
 		$(use_enable acl)
@@ -142,7 +140,6 @@ src_configure() {
 		$(use_with dynamic-loading modules)
 		$(use_with games gameuser ":gamestat")
 		$(use_with gpm)
-		$(use_with kerberos) $(use_with kerberos kerberos5)
 		$(use_with lcms lcms2)
 		$(use_with libxml2 xml2)
 		$(use_with mailutils)

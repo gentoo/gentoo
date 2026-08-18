@@ -43,7 +43,7 @@ DESCRIPTION="The advanced, extensible, customizable, self-documenting editor"
 HOMEPAGE="https://www.gnu.org/software/emacs/"
 
 LICENSE="GPL-3+ FDL-1.3+ Boost-1.0 BSD CC-BY-SA-3.0 CC-BY-SA-4.0 HPND MIT MPL-2.0 PCRE PSF-2 unicode W3C"
-IUSE="acl alsa aqua athena cairo dbus dynamic-loading games gfile gif +gmp gpm gsettings gtk gui gzip-el harfbuzz imagemagick +inotify jit jpeg kerberos lcms libxml2 livecd m17n-lib mailutils motif png selinux sound source sqlite ssl svg systemd +threads tiff toolkit-scroll-bars tree-sitter valgrind webp wide-int +X xattr Xaw3d xft +xpm zlib"
+IUSE="acl alsa aqua athena cairo dbus dynamic-loading games gfile gif +gmp gpm gsettings gtk gui gzip-el harfbuzz imagemagick +inotify jit jpeg lcms libxml2 livecd m17n-lib mailutils motif png selinux sound source sqlite ssl svg systemd +threads tiff toolkit-scroll-bars tree-sitter valgrind webp wide-int +X xattr Xaw3d xft +xpm zlib"
 
 X_DEPEND="x11-libs/libICE
 	x11-libs/libSM
@@ -105,7 +105,6 @@ RDEPEND=">=app-emacs/emacs-common-1.11[games?,gui?]
 		sys-devel/gcc:=[jit(-)]
 		virtual/zlib:=
 	)
-	kerberos? ( virtual/krb5 )
 	lcms? ( media-libs/lcms:2 )
 	libxml2? ( >=dev-libs/libxml2-2.2.0:= )
 	mailutils? ( net-mail/mailutils[clients] )
@@ -242,7 +241,6 @@ src_configure() {
 		--localstatedir="${EPREFIX}"/var
 		--enable-locallisppath="${EPREFIX}/etc/emacs:${EPREFIX}${SITELISP}"
 		--without-compress-install
-		--without-hesiod
 		--without-pop
 		--with-file-notification=$(usev inotify || usev gfile || echo no)
 		--with-pdumper
@@ -254,7 +252,6 @@ src_configure() {
 		$(use_with gmp libgmp)
 		$(use_with gpm)
 		$(use_with jit native-compilation aot)
-		$(use_with kerberos) $(use_with kerberos kerberos5)
 		$(use_with lcms lcms2)
 		$(use_with libxml2 xml2)
 		$(use_with mailutils)
