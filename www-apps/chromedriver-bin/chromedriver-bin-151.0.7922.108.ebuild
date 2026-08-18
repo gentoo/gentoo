@@ -23,6 +23,11 @@ BDEPEND="app-arch/unzip"
 
 QA_PREBUILT="usr/bin/chromedriver"
 
+pkg_pretend() {
+	# Protect against people using autounmask overzealously
+	use amd64 || die "${PN} only works on supported architectures (amd64)."
+}
+
 src_install() {
 	dobin chromedriver
 }
