@@ -18,11 +18,11 @@ IUSE="examples test"
 
 RDEPEND="
 	dev-libs/boost:=[python,${PYTHON_USEDEP}]
-	dev-python/appdirs[${PYTHON_USEDEP}]
 	dev-python/decorator[${PYTHON_USEDEP}]
 	dev-python/mako[${PYTHON_USEDEP}]
-	dev-python/numpy[${PYTHON_USEDEP}]
-	dev-python/pytools[${PYTHON_USEDEP}]
+	>=dev-python/numpy-1.24[${PYTHON_USEDEP}]
+	>=dev-python/platformdirs-2.2.0[${PYTHON_USEDEP}]
+	>=dev-python/pytools-2011.2[${PYTHON_USEDEP}]
 	dev-util/nvidia-cuda-toolkit[profiler]
 	x11-drivers/nvidia-drivers
 "
