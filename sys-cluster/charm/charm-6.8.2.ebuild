@@ -1,15 +1,17 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 FORTRAN_STANDARD="90"
 
-inherit flag-o-matic fortran-2 multilib multiprocessing toolchain-funcs
+inherit flag-o-matic fortran-2 multiprocessing toolchain-funcs
 
 DESCRIPTION="Message-passing parallel language and runtime system"
 HOMEPAGE="http://charm.cs.uiuc.edu/"
 SRC_URI="http://charm.cs.uiuc.edu/distrib/${P}.tar.gz"
+
+S="${WORKDIR}/${PN}-v${PV}"
 
 LICENSE="charm"
 SLOT="0"
@@ -25,8 +27,6 @@ BDEPEND="virtual/pkgconfig"
 REQUIRED_USE="
 	cmkopt? ( !charmdebug !charmtracing )
 	charmproduction? ( !charmdebug !charmtracing )"
-
-S="${WORKDIR}/${PN}-v${PV}"
 
 get_opts() {
 	local CHARM_OPTS
@@ -81,7 +81,8 @@ src_prepare() {
 		-e "/CMK_LD/s:\"$: ${LDFLAGS} \":g" \
 		-i src/arch/$(usex mpi "mpi" "net")*-linux*/*sh || die
 	sed \
-		-e "/CMK_CF90/s:gfortran:$(usex mpi "mpif90" "$(tc-getFC)") ${FCFLAGS}:g" \
+		-e "s|CMK_CF90=\$(which .*)|CMK_CF90=\$(which $(usex mpi "mpif90" "$(tc-getFC)"))|" \
+		-e "/-z \$CMK_CF90/d" \
 		-e "/F90DIR/s:gfortran:$(usex mpi "mpif90" "$(tc-getFC)") ${FCFLAGS}:g" \
 		-e "/f95target/s:gfortran:$(usex mpi "mpif90" "$(tc-getFC)") ${FCFLAGS}:g" \
 		-e "/f95version/s:gfortran:$(usex mpi "mpif90" "$(tc-getFC)") ${FCFLAGS}:g" \
