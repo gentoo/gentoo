@@ -80,7 +80,11 @@ src_prepare() {
 		-e '/CMK_F90_MODINC/s:-p:-I:g' \
 		-e "/CMK_LD/s:\"$: ${LDFLAGS} \":g" \
 		-i src/arch/$(usex mpi "mpi" "net")*-linux*/*sh || die
+
 	sed \
+		-e "/CMK_CC='gcc'/s|gcc|$(usex mpi "mpicc" "$(tc-getCC)")|" \
+		-e "/CMK_CXX='g++'/s|g++|$(usex mpi "mpic++" "$(tc-getCXX)")|" \
+		-e "/CMK_LDXX='g++'/s|g++|$(usex mpi "mpic++" "$(tc-getCXX)")|" \
 		-e "s|CMK_CF90=\$(which .*)|CMK_CF90=\$(which $(usex mpi "mpif90" "$(tc-getFC)"))|" \
 		-e "/-z \$CMK_CF90/d" \
 		-e "/F90DIR/s:gfortran:$(usex mpi "mpif90" "$(tc-getFC)") ${FCFLAGS}:g" \
