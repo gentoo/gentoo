@@ -79,12 +79,7 @@ IUSE+=" +system-av1 +system-harfbuzz +system-icu +system-jpeg +system-libevent +
 IUSE+=" system-pipewire system-png +system-webp test wayland wifi +X"
 
 # Firefox-only IUSE
-IUSE+=" +gmp-autoupdate gnome-shell jpegxl +jumbo-build openh264 +telemetry wasm-sandbox"
-
-# MOZ_ESR-only IUSE
-if [[ -z ${MOZ_ESR} ]] ; then
-	IUSE+=" valgrind"
-fi
+IUSE+=" +gmp-autoupdate gnome-shell jpegxl +jumbo-build openh264 +telemetry valgrind wasm-sandbox"
 
 REQUIRED_USE="|| ( X wayland )
 	debug? ( !system-av1 )
@@ -172,6 +167,7 @@ COMMON_DEPEND="${FF_ONLY_DEPEND}
 	system-pipewire? ( >=media-video/pipewire-1.4.7-r2:= )
 	system-png? ( >=media-libs/libpng-1.6.45:0=[apng] )
 	system-webp? ( >=media-libs/libwebp-1.1.0:0= )
+	valgrind? ( dev-debug/valgrind )
 	wayland? (
 		>=media-libs/libepoxy-1.5.10-r1
 		x11-libs/gtk+:3[wayland]
@@ -217,8 +213,7 @@ if [[ -n ${MOZ_ESR} ]] ; then
 				~www-client/firefox-l10n-${PV}:0/esr"
 else
 	RDEPEND+=" !www-client/firefox:esr
-				~www-client/firefox-l10n-${PV}:0/rapid
-				valgrind? ( dev-debug/valgrind )"
+				~www-client/firefox-l10n-${PV}:0/rapid"
 fi
 
 # Allow MOZ_GMP_PLUGIN_LIST to be set in an eclass or
@@ -765,16 +760,13 @@ src_configure() {
 		mozconfig_add_options_ac 'Disable JIT for RISC-V' --disable-jit
 	fi
 
-	# Rapid/ESR configure options.
-	if [[ -z ${MOZ_ESR} ]] ; then
-		if use valgrind ; then
-			mozconfig_add_options_ac 'valgrind requirement' --disable-sandbox
-			mozconfig_add_options_ac 'valgrind requirement' --disable-jemalloc
+	mozconfig_use_enable valgrind
 
-			sed -i -e 's/--enable-optimize=-O[0-9s]/--enable-optimize="-g -O2"/' .mozconfig || die
-		fi
+	if use valgrind ; then
+		mozconfig_add_options_ac 'valgrind requirement' --disable-sandbox
+		mozconfig_add_options_ac 'valgrind requirement' --disable-jemalloc
 
-		mozconfig_use_enable valgrind
+		sed -i -e 's/--enable-optimize=-O[0-9s]/--enable-optimize="-g -O2"/' .mozconfig || die
 	fi
 
 	if [[ -s "${S}/api-google.key" ]] ; then
@@ -825,7 +817,6 @@ src_configure() {
 
 	mozconfig_use_enable dbus
 	mozconfig_use_enable libproxy
-	mozconfig_use_enable valgrind
 
 	use eme-free && mozconfig_add_options_ac '+eme-free' --disable-eme
 
@@ -988,10 +979,6 @@ src_configure() {
 		mozconfig_add_options_ac '!elibc_glibc' --disable-jemalloc
 	fi
 
-	if use valgrind; then
-		mozconfig_add_options_ac 'valgrind requirement' --disable-jemalloc
-	fi
-
 	# System-av1 fix
 	use system-av1 && append-ldflags "-Wl,--undefined-version"
 
@@ -1053,10 +1040,6 @@ src_configure() {
 	done
 	echo "=========================================================="
 	echo
-
-	if use valgrind; then
-		sed -i -e 's/--enable-optimize=-O[0-9s]/--enable-optimize="-g -O2"/' .mozconfig || die
-	fi
 
 	./mach configure || die
 }
