@@ -13,7 +13,7 @@ SRC_URI="https://linuxcontainers.org/downloads/lxc/${P}.tar.gz
 LICENSE="GPL-2 LGPL-2.1 LGPL-3" # LGPL-2.1+ is listed, but it's covered by "LGPL-3"
 SLOT="0/1.700" # SONAME liblxc.so.1 + ${PV//./} _if_ breaking ABI change while bumping.
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
-IUSE="apparmor +caps doc examples io-uring landlock man pam seccomp selinux ssl systemd test +tools"
+IUSE="apparmor +caps doc examples io-uring landlock man pam seccomp selinux ssl systemd test-install +tools"
 
 REQUIRED_USE="landlock? ( seccomp )"
 
@@ -39,8 +39,6 @@ BDEPEND="virtual/pkgconfig
 	doc? ( app-text/doxygen )
 	man? ( app-text/docbook2X )
 	verify-sig? ( sec-keys/openpgp-keys-linuxcontainers )"
-
-RESTRICT="!test? ( test )"
 
 CONFIG_CHECK="~!NETPRIO_CGROUP
 	~CGROUPS
@@ -114,7 +112,7 @@ src_configure() {
 		$(meson_use seccomp)
 		$(meson_use selinux)
 		$(meson_use ssl openssl)
-		$(meson_use test tests)
+		$(meson_use test-install tests)
 		$(meson_use tools)
 
 		$(usex systemd -Ddbus=true -Ddbus=false)
