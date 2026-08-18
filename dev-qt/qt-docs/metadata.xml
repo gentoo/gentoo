@@ -19,6 +19,8 @@
 		<flag name="html">Install documentation in HTML format</flag>
 		<flag name="httpserver">Install documentation for <pkg>dev-qt/qthttpserver</pkg></flag>
 		<flag name="imageformats">Install documentation for <pkg>dev-qt/qtimageformats</pkg></flag>
+		<flag name="jenny">Install documentation for QtJenny (unpackaged)</flag>
+		<flag name="labsstylekit">Install documentation for QtLabsStyleKit (unpackaged)</flag>
 		<flag name="location">Install documentation for <pkg>dev-qt/qtlocation</pkg></flag>
 		<flag name="lottie">Install documentation for QtLottie (unpackaged)</flag>
 		<flag name="multimedia">Install documentation for <pkg>dev-qt/qtmultimedia</pkg></flag>
@@ -38,8 +40,8 @@
 		<flag name="shadertools">Install documentation for <pkg>dev-qt/qtshadertools</pkg></flag>
 		<flag name="speech">Install documentation for <pkg>dev-qt/qtspeech</pkg></flag>
 		<flag name="svg">Install documentation for <pkg>dev-qt/qtsvg</pkg></flag>
-		<flag name="timeline">Install documentation for <pkg>dev-qt/qtquicktimeline</pkg></flag>
 		<flag name="tasktree">Install documentation for <pkg>dev-qt/qttasktree</pkg></flag>
+		<flag name="timeline">Install documentation for <pkg>dev-qt/qtquicktimeline</pkg></flag>
 		<flag name="tools">Install documentation for <pkg>dev-qt/qttools</pkg></flag>
 		<flag name="virtualkeyboard">Install documentation for <pkg>dev-qt/qtvirtualkeyboard</pkg></flag>
 		<flag name="wayland">Install documentation for <pkg>dev-qt/qtwayland</pkg></flag>
