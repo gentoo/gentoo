@@ -8,7 +8,7 @@ inherit desktop xdg
 DESCRIPTION="Modern build of the original Unreal engine"
 HOMEPAGE="https://www.oldunreal.com/downloads/unreal/oldunreal-patches/"
 SRC_URI="
-	https://github.com/OldUnreal/Unreal-testing/releases/download/v${PV/_p/_}/OldUnreal-UnrealPatch${PV%_p*}-Linux.tar.bz2
+	https://github.com/OldUnreal/Unreal-testing/releases/download/v${PV/_p/_}/OldUnreal-UnrealPatch${PV%_p*}-Linux.tar.bz2 -> OldUnreal-UnrealPatch${PV/_p/_}-Linux.tar.bz2
 	mirror+https://dev.gentoo.org/~chewi/distfiles/${PN}.png
 "
 S="${WORKDIR}"
@@ -66,7 +66,7 @@ src_prepare() {
 	fi
 
 	# Remove the non-native files. The main System directory is shared, it's not
-	# just for amd64, so we cannot delete it entirely.
+	# just for x86, so we cannot delete it entirely.
 	local system
 	for system in "${!SYSTEMS[@]}"; do
 		if [[ ${system} != ${ARCH} ]]; then
