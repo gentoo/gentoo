@@ -1,6 +1,12 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Ionen Wolkens <ionen@gentoo.org> (2026-08-19)
+# arm64 is only supported in >=wine-mono-11.3.0 which is only
+# used by >=wine-11.16
+<app-emulation/wine-staging-11.16 mono
+<app-emulation/wine-vanilla-11.16 mono
+
 # Alfredo Tupone <tupone@gentoo.org> (2026-07-09)
 # dependencies not arm64 ready
 sci-ml/ggml rocm
@@ -114,13 +120,13 @@ sci-ml/gloo rocm
 dev-cpp/highway cpu_flags_arm_neon
 
 # Ionen Wolkens <ionen@gentoo.org> (2025-04-21)
-# These are not currently supported on arm64. Porting wine-gecko and
-# wine-mono is on Wine's TODO[1], mingw64-toolchain lacks ebuild
-# support (crossdev might be usable, but users are on their own there),
+# These are not currently supported on arm64. Porting wine-gecko
+# is on Wine's TODO[1], mingw64-toolchain lacks ebuild support
+# (crossdev might be usable, but users are on their own there),
 # and dosbox is not keyworded here.
 # [1] https://gitlab.winehq.org/wine/wine/-/wikis/ARM64#todo
-app-emulation/wine-vanilla crossdev-mingw dos gecko mingw mono
-app-emulation/wine-staging crossdev-mingw dos gecko mingw mono
+app-emulation/wine-staging crossdev-mingw dos gecko mingw
+app-emulation/wine-vanilla crossdev-mingw dos gecko mingw
 
 # NRK <nrk@disroot.org> (2025-03-17)
 # media-libs/libyuv is not keyworded
