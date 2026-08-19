@@ -97,7 +97,6 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-21.0.0-musl-no-execinfo.patch
-	"${FILESDIR}"/${PN}-12.0.0-musl-no-malloc-trim.patch
 )
 
 src_prepare() {
