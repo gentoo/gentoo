@@ -24,6 +24,7 @@ RDEPEND="
 	dev-qt/qtwebsockets:6
 	virtual/libusb:1
 	>=media-libs/hamlib-4.0:=
+	media-libs/portaudio
 	sci-libs/fftw:3.0=[threads,fortran]
 	virtual/fortran
 	app-text/asciidoc
