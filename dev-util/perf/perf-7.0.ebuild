@@ -73,7 +73,7 @@ RDEPEND="
 		')
 	)
 	caps? ( sys-libs/libcap )
-	capstone? ( dev-libs/capstone )
+	capstone? ( <dev-libs/capstone-6 )
 	crypt? ( dev-libs/openssl:= )
 	gtk? ( x11-libs/gtk+:2 )
 	java? ( virtual/jre:* )
