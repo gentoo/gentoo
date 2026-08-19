@@ -212,14 +212,10 @@ BDEPEND="
 	!bundled-toolchain? ( $(llvm_gen_dep '
 		llvm-core/clang:${LLVM_SLOT}
 		llvm-core/llvm:${LLVM_SLOT}
+		llvm-core/lld:${LLVM_SLOT}
 		official? (
 			!ppc64? ( llvm-runtimes/compiler-rt-sanitizers:${LLVM_SLOT}[cfi] )
 		) ')
-		|| (
-			$(llvm_gen_dep 'llvm-core/lld:${LLVM_SLOT}')
-			>=sys-devel/mold-2.41.0
-		)
-		!official? ( >=sys-devel/mold-2.41.0 )
 		${RUST_DEPEND}
 	)
 	pgo? (
@@ -1078,10 +1074,6 @@ src_prepare() {
 	sed -i -e 's|${clang_base_path}/bin/llvm-strip|/bin/true|g' \
 		-e 's|${clang_base_path}/bin/llvm-objcopy|/bin/true|g' \
 		build/linux/strip_binary.gni || die
-
-	if ! use official; then
-		ln -s /usr/bin/mold buildtools/third_party/mold/cipd/mold || die
-	fi
 }
 
 chromium_configure() {
