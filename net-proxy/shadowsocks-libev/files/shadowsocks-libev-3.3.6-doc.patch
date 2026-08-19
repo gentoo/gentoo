@@ -1,0 +1,13 @@
+diff --git a/doc/CMakeLists.txt b/doc/CMakeLists.txt
+index 9abd455..76a1993 100644
+--- a/doc/CMakeLists.txt
++++ b/doc/CMakeLists.txt
+@@ -84,7 +84,7 @@ if (NOT WITH_DOC_HTML)
+     set_target_properties(doc-html PROPERTIES EXCLUDE_FROM_ALL TRUE)
+ else ()
+     install(DIRECTORY ${PROJECT_BINARY_DIR}/html/
+-            DESTINATION share/doc/${PROJECT_NAME})
++            DESTINATION share/doc/${PROJECT_NAME}-${PROJECT_VERSION})
+ endif ()
+ 
+ # This is required for custom command
