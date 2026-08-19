@@ -85,7 +85,7 @@ src_configure() {
 		--without-pcre
 		--with-pcre2="${T}"/pcre2-config
 		$(use_enable ssl)
-		$(usex ssl '--with-ssl="${EPREFIX}"/usr' '')
+		$(use_with ssl ssl "${EPREFIX}"/usr)
 	)
 
 	# econf overwrites the stuff from config.layout.
