@@ -75,8 +75,8 @@ src_prepare() {
 		-e "/CMK_CF77/s:[fg]77:$(usex mpi "mpif90" "$(tc-getF77)") ${FCFLAGS}:g" \
 		-e "/CMK_CF90/s:f95:$(usex mpi "mpif90" "$(tc-getFC)") ${FCFLAGS}:g" \
 		-e "/CMK_CF90/s:\`which f90.*$::g" \
-		-e "/CMK_CXX/s:g++:$(usex mpi "mpic++" "$(tc-getCXX)") ${CPPFLAGS} ${CXXFLAGS}:g" \
-		-e "/CMK_CC/s:gcc:$(usex mpi "mpicc" "$(tc-getCC)") ${CPPFLAGS} ${CFLAGS}:g" \
+		-e "/CMK_CXX/s:g++:$(usex mpi "mpic++" "$(tc-getCXX)") ${CPPFLAGS}:g" \
+		-e "/CMK_CC/s:gcc:$(usex mpi "mpicc" "$(tc-getCC)") ${CPPFLAGS}:g" \
 		-e '/CMK_F90_MODINC/s:-p:-I:g' \
 		-e "/CMK_LD/s:\"$: ${LDFLAGS} \":g" \
 		-i src/arch/$(usex mpi "mpi" "net")*-linux*/*sh || die
@@ -100,10 +100,16 @@ src_prepare() {
 		-e "s:-o charmrun:${LDFLAGS} &:g" \
 		-e "s:-o charmd_faceless:${LDFLAGS} &:g" \
 		-e "s:-o charmd:${LDFLAGS} &:g" \
-		-e "/^CHARMC/s:$: ${CPPFLAGS} ${CFLAGS}:g" \
+		-e "/^CHARMC/s:$: ${CPPFLAGS}:g" \
 		-i \
 		src/scripts/Makefile \
 		src/util/charmrun-src/Makefile || die
+
+	sed -i \
+		-e "s|^OPTS=\"\"|OPTS=\"-c++-option ${CXXFLAGS} -cc-option ${CFLAGS}\"|" \
+		build || die
+
+	eapply "${FILESDIR}"/${P}-cxxflags.patch
 
 	# CMK optimization
 	use cmkopt && append-cppflags -DCMK_OPTIMIZE=1
@@ -122,7 +128,9 @@ src_compile() {
 
 	# Build charmm++ first.
 	einfo "running ./build charm++ ${build_commandline}"
-	./build charm++ ${build_commandline} || die "Failed to build charm++"
+	GENTOO_CFLAGS="${CFLAGS}" \
+		GENTOO_CXXFLAGS="${CXXFLAGS}" \
+		./build charm++ ${build_commandline} || die "Failed to build charm++"
 
 	if use ampi; then
 		einfo "running ./build AMPI ${build_commandline}"
@@ -176,6 +184,7 @@ src_install() {
 		[[ -s $i ]] || continue
 		[[ ${i} = *.so ]] && dolib.so "${i}" || dolib.a "${i}"
 	done
+	rm -f "${ED}"/usr/$(get_libdir)/libthreads-fibers.so* || die
 
 	# Install examples.
 	if use examples; then
