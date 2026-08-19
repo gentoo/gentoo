@@ -1,0 +1,14 @@
+Upstream PR: https://github.com/zeromq/libzmq/pull/4772
+diff --git i/CMakeLists.txt w/CMakeLists.txt
+index 03462271..32f02790 100644
+--- i/CMakeLists.txt
++++ w/CMakeLists.txt
+@@ -7,6 +7,8 @@ else()
+   cmake_minimum_required(VERSION 2.8.12)
+ endif()
+ 
++set(CMAKE_CXX_VISIBILITY_PRESET hidden)
++
+ include(CheckIncludeFiles)
+ include(CheckCCompilerFlag)
+ include(CheckCXXCompilerFlag)
