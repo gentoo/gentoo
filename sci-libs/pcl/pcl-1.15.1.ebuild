@@ -13,9 +13,18 @@ if [[ ${PV} == *9999* ]]; then
 else
 	SRC_URI="
 		https://github.com/PointCloudLibrary/pcl/archive/${P}.tar.gz
+		https://github.com/PointCloudLibrary/pcl/commit/99333442ac63971297b4cdd05fab9d2bd2ff57a4.patch -> ${PN}-PR6330.patch
+		https://github.com/PointCloudLibrary/pcl/commit/8dd410058f7acfd825e078dd9ef078677ebd929c.patch -> ${PN}-PR6386.patch
+		https://github.com/PointCloudLibrary/pcl/commit/2d6929bdcd98beaa28fa8ee3a105beb566f16347.patch -> ${PN}-PR6354.patch
+		https://github.com/PointCloudLibrary/pcl/commit/f76acdae162e77437582ea93856bb4f81109a359.patch -> ${PN}-PR6394.patch
+		https://github.com/PointCloudLibrary/pcl/commit/0290ff7340519d6213f78b067a2fd28d8dd13a56.patch -> ${PN}-PR6412.patch
+		https://github.com/PointCloudLibrary/pcl/commit/c423d307ceeb5c004b0c9714180c521fafadb857.patch -> ${PN}-PR6424.patch
+		https://github.com/PointCloudLibrary/pcl/commit/4a6fbd87dcc7caf5be63526e4c3f469f79b63ea5.patch -> ${PN}-PR6435.patch
+		https://github.com/PointCloudLibrary/pcl/commit/5f77c27fb80a0a70a56570f3974501a527afb320.patch -> ${PN}-PR6443.patch
+		https://github.com/PointCloudLibrary/pcl/commit/c1126ecfb6535d0199827615676a92b648b98a16.patch -> ${PN}-PR6460.patch
 	"
 	S="${WORKDIR}/${PN}-${P}"
-	KEYWORDS="~amd64 ~arm"
+	KEYWORDS="~amd64"
 	CMAKE_QA_COMPAT_SKIP="true"
 fi
 
@@ -122,6 +131,17 @@ PATCHES=(
 	"${FILESDIR}/${PN}-1.14.1-tests.patch"
 	"${FILESDIR}/${PN}-1.15.1-ASSERT_FLOAT_EQ.patch"
 	"${FILESDIR}/${PN}-1.15.1-update-find-vtk.patch"
+
+	"${DISTDIR}/${PN}-PR6330.patch" # Fix build with Boost 1.89.0
+	"${DISTDIR}/${PN}-PR6386.patch" # Enable compilation with Eigen 5.0.0
+	"${DISTDIR}/${PN}-PR6354.patch" # Fix CUDA 12.9 transform_reduce ambiguity
+	"${DISTDIR}/${PN}-PR6394.patch" # Replace deprecated VTK function
+	"${DISTDIR}/${PN}-PR6412.patch" # fix missing iostream include
+	"${DISTDIR}/${PN}-PR6424.patch" # Fix gpu module building with cuda 13.2
+	"${DISTDIR}/${PN}-PR6435.patch" # Add x11 on linux when vtk 9.6+
+	"${DISTDIR}/${PN}-PR6443.patch" # fix cuda 13.3 errors
+	"${DISTDIR}/${PN}-PR6460.patch" # Replace deprecated thrust function, fix problems with thrust
+	"${FILESDIR}/${PN}-1.15.1-gcc17-includes.patch"
 )
 
 pkg_pretend() {

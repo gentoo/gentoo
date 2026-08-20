@@ -1,0 +1,25 @@
+From f295b9bb52d419d67c338ed9f782ad7761c09234 Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx@gmail.com>
+Date: Thu, 8 Jan 2026 17:52:49 +0100
+Subject: [PATCH] ASSERT_FLOAT_EQ
+
+Compare float as floats...
+
+Signed-off-by: Paul Zander <negril.nx@gmail.com>
+
+diff --git a/test/gpu/octree/test_approx_nearest.cpp b/test/gpu/octree/test_approx_nearest.cpp
+index f6f4c0a50..46c951d6e 100644
+--- a/test/gpu/octree/test_approx_nearest.cpp
++++ b/test/gpu/octree/test_approx_nearest.cpp
+@@ -121,7 +121,7 @@ TEST(PCL_OctreeGPU, approxNearesSearch)
+                                                   pcl::squaredEuclideanDistance(coords[7], queries[2]) };
+ 
+   for (size_t i = 0; i < queries.size(); ++i) {
+-    ASSERT_EQ(dists_pcl[i], dists_gpu[i]);
++    ASSERT_FLOAT_EQ(dists_pcl[i], dists_gpu[i]);
+     ASSERT_NEAR(dists_gpu[i], dists_device_downloaded[i], 0.001);
+     ASSERT_NEAR(dists_device_downloaded[i], expected_sqr_dists[i], 0.001);
+   }
+-- 
+2.52.0
+
