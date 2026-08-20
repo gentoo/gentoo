@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake flag-o-matic
+inherit cmake
 
 DESCRIPTION="High-level 3D graphics toolkit, fully compatible with SGI Open Inventor 2.1"
 HOMEPAGE="https://github.com/coin3d/coin/wiki"
@@ -55,7 +55,7 @@ PATCHES=(
 DOCS=( AUTHORS FAQ FAQ.legal NEWS THANKS docs/HACKING )
 
 src_configure() {
-	use debug && append-cppflags -DCOIN_DEBUG=1
+	use debug && CMAKE_BUILD_TYPE="Debug"
 
 	local mycmakeargs=(
 		-DCMAKE_INSTALL_DOCDIR="${EPREFIX}/usr/share/doc/${PF}"
