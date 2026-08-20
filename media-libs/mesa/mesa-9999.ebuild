@@ -8,7 +8,7 @@ LLVM_OPTIONAL=1
 CARGO_OPTIONAL=1
 PYTHON_COMPAT=( python3_{12..14} )
 
-inherit flag-o-matic llvm-r2 meson-multilib python-any-r1 linux-info
+inherit flag-o-matic linux-info llvm-r2 meson-multilib python-any-r1 toolchain-funcs
 
 MY_P="${P/_/-}"
 
@@ -207,6 +207,10 @@ src_unpack() {
 }
 
 pkg_pretend() {
+	if [[ ${MERGE_TYPE} != binary ]] && use test; then
+		tc-check-openmp
+	fi
+
 	if use vulkan; then
 		if ! use video_cards_asahi &&
 		   ! use video_cards_d3d12 &&
@@ -247,6 +251,10 @@ python_check_deps() {
 }
 
 pkg_setup() {
+	if [[ ${MERGE_TYPE} != binary ]] && use test; then
+		tc-check-openmp
+	fi
+
 	# warning message for bug 459306
 	if use llvm && has_version llvm-core/llvm[!debug=]; then
 		ewarn "Mismatch between debug USE flags in media-libs/mesa and llvm-core/llvm"
