@@ -117,6 +117,9 @@ multilib_src_configure() {
 		-DWITH_SERVER=$(usex server)
 		-DWITH_SFTP=$(usex sftp)
 		-DBUILD_STATIC_LIB=$(usex static-libs)
+		# libtomcrypt tries to open /dev/urandom -> sandbox issue, but we don't
+		# do client/server testing yet anyway (bug #964307)
+		-DDROPBEAR_EXECUTABLE=
 		# TODO: try enabling {CLIENT,SERVER}_TESTING
 		-DUNIT_TESTING=$(usex test)
 		-DWITH_ZLIB=$(usex zlib)
