@@ -6,6 +6,10 @@
 		<name>Gentoo KDE Project</name>
 	</maintainer>
 	<upstream>
-		<bugs-to>https://bugs.kde.org/</bugs-to>
+		<bugs-to>https://bugs.kde.org/enter_bug.cgi?product=konsole</bugs-to>
+		<remote-id type="kde-invent">utilities/konsole</remote-id>
 	</upstream>
+	<use>
+		<flag name="ssh">Enable <pkg>net-libs/libssh</pkg>support for resolving user SSH configuration</flag>
+	</use>
 </pkgmetadata>
