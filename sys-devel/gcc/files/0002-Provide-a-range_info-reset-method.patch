@@ -1,0 +1,511 @@
+From 06f435d587db631be745eb36c46e550939022827 Mon Sep 17 00:00:00 2001
+Message-ID: <06f435d587db631be745eb36c46e550939022827.1787205028.git.sam@gentoo.org>
+From: Andrew MacLeod <amacleod@redhat.com>
+Date: Tue, 18 Aug 2026 08:58:35 -0400
+Subject: [PATCH] Provide a range_info reset method.
+
+Provide a mechanism to reset range info in ranger and the oracles.
+
+	PR tree-optimization/126856
+	gcc/
+	* gimple-range-cache.cc (block_range_cache::clear): New.
+	(ranger_cache::reset_range_info): New.
+	* gimple-range-cache.h (block_range_cache::clear): Declare.
+	(ranger_cache::reset_range_info): Declare.
+	* gimple-range-gori.cc (range_def_chain::clear): New.
+	* gimple-range-gori.h (range_def_chain::clear): Declare.
+	* gimple-range-infer.cc (infer_range_manager::clear): New.
+	* gimple-range-infer.h (infer_oracle::clear): New virtual function.
+	(infer_range_manager::clear): Override.
+	* gimple-range.cc (gimple_ranger::reset_range_info): New.
+	* gimple-range.h (gimple_ranger::reset_range_info): Declare.
+	* tree-ssa-dce.cc (simple_dce_from_worklist): Reset flow-sensitive
+	information when replacing a definition.
+	* tree-ssanames.cc (reset_flow_sensitive_info): Reset information
+	maintained by the current range query.
+	* value-query.cc (range_query::reset_range_info): New.
+	* value-query.h (range_query::reset_range_info): Declare.
+	* value-relation.cc (equiv_oracle::clear): New.
+	(relation_chain_head::clear): New.
+	(dom_oracle::clear): New.
+	(path_oracle::clear): New.
+	* value-relation.h (relation_oracle::clear): New virtual function.
+	(equiv_oracle::clear): Override.
+	(relation_chain_head::clear): Declare.
+	(dom_oracle::clear): Override.
+	(path_oracle::clear): Override.
+
+	gcc/testsuite/
+	* gcc.dg/pr126856.c: New test.
+---
+ gcc/gimple-range-cache.cc       | 21 +++++++
+ gcc/gimple-range-cache.h        |  3 +
+ gcc/gimple-range-gori.cc        | 15 +++++
+ gcc/gimple-range-gori.h         |  1 +
+ gcc/gimple-range-infer.cc       | 31 +++++++++++
+ gcc/gimple-range-infer.h        |  2 +
+ gcc/gimple-range.cc             |  9 +++
+ gcc/gimple-range.h              |  1 +
+ gcc/testsuite/gcc.dg/pr126856.c | 16 ++++++
+ gcc/tree-ssa-dce.cc             |  2 +
+ gcc/tree-ssanames.cc            |  3 +
+ gcc/value-query.cc              | 11 ++++
+ gcc/value-query.h               |  2 +
+ gcc/value-relation.cc           | 98 +++++++++++++++++++++++++++++++++
+ gcc/value-relation.h            | 11 ++++
+ 15 files changed, 226 insertions(+)
+ create mode 100644 gcc/testsuite/gcc.dg/pr126856.c
+
+diff --git a/gcc/gimple-range-cache.cc b/gcc/gimple-range-cache.cc
+index a540a10ce588..0386b9981178 100644
+--- a/gcc/gimple-range-cache.cc
++++ b/gcc/gimple-range-cache.cc
+@@ -381,6 +381,17 @@ block_range_cache::~block_range_cache ()
+   bitmap_obstack_release (&m_bitmaps);
+ }
+ 
++// Clear block info for NAME.
++
++void
++block_range_cache::clear (tree name)
++{
++  unsigned v = SSA_NAME_VERSION (name);
++  if (v >= m_ssa_ranges.length ())
++    return;
++  m_ssa_ranges[v] = NULL;
++}
++
+ // Set the range for NAME on entry to block BB to R.
+ // If it has not been accessed yet, allocate it first.
+ 
+@@ -1982,3 +1993,13 @@ ranger_cache::apply_inferred_ranges (gimple *s)
+     for (unsigned x = 0; x < infer.num (); x++)
+       register_inferred_value (infer.range (x), infer.name (x), bb);
+ }
++
++// Reset range info for NAME.
++
++void
++ranger_cache::reset_range_info (tree name)
++{
++  m_on_entry.clear (name);
++  m_globals.clear_range (name);
++  range_query::reset_range_info (name);
++}
+diff --git a/gcc/gimple-range-cache.h b/gcc/gimple-range-cache.h
+index e01f35a548db..8a4185fc3e37 100644
+--- a/gcc/gimple-range-cache.h
++++ b/gcc/gimple-range-cache.h
+@@ -38,6 +38,7 @@ public:
+   bool set_bb_range (tree name, const_basic_block bb, const vrange &v);
+   bool get_bb_range (vrange &v, tree name, const_basic_block bb);
+   bool bb_range_p (tree name, const_basic_block bb);
++  void clear (tree name);
+ 
+   void dump (FILE *f);
+   void dump (FILE *f, basic_block bb, bool print_varying = true);
+@@ -120,6 +121,8 @@ public:
+   void register_inferred_value (const vrange &r, tree name, basic_block bb);
+   void apply_inferred_ranges (gimple *s);
+ 
++  void reset_range_info (tree name);
++
+   void dump_bb (FILE *f, basic_block bb);
+   virtual void dump (FILE *f) override;
+ private:
+diff --git a/gcc/gimple-range-gori.cc b/gcc/gimple-range-gori.cc
+index 3bdc5305b491..d34c2b79a7c8 100644
+--- a/gcc/gimple-range-gori.cc
++++ b/gcc/gimple-range-gori.cc
+@@ -295,6 +295,21 @@ range_def_chain::get_def_chain (tree name)
+   return m_def_chain[v].bm;
+ }
+ 
++// Clear def chain info for NAME.
++
++void
++range_def_chain::clear (tree name)
++{
++  unsigned v = SSA_NAME_VERSION (name);
++  if (v >= m_def_chain.length ())
++    return;
++
++  m_def_chain[v].ssa1 = 0;
++  m_def_chain[v].ssa2 = 0;
++  m_def_chain[v].bm = NULL;
++  get_def_chain (name);
++}
++
+ // Dump what we know for basic block BB to file F.
+ 
+ void
+diff --git a/gcc/gimple-range-gori.h b/gcc/gimple-range-gori.h
+index d562c515a28e..ab83d8f3dff8 100644
+--- a/gcc/gimple-range-gori.h
++++ b/gcc/gimple-range-gori.h
+@@ -36,6 +36,7 @@ public:
+   bool in_chain_p (tree name, tree def);
+   bool chain_import_p (tree name, tree import);
+   void register_dependency (tree name, tree ssa1, basic_block bb = NULL);
++  void clear (tree name);
+   void dump (FILE *f, basic_block bb, const char *prefix = NULL);
+ protected:
+   bool has_def_chain (tree name);
+diff --git a/gcc/gimple-range-infer.cc b/gcc/gimple-range-infer.cc
+index 65c10ac1cb43..5f0f7efcc012 100644
+--- a/gcc/gimple-range-infer.cc
++++ b/gcc/gimple-range-infer.cc
+@@ -532,3 +532,34 @@ infer_range_manager::register_all_uses (tree name)
+ 	}
+     }
+ }
++
++// Clear all inferred ranges for NAME.
++
++void
++infer_range_manager::clear(tree name)
++{
++  if (!m_seen)
++    return;
++
++  // Check if this name has any inferred ranges.
++  unsigned v = SSA_NAME_VERSION (name);
++  if (!bitmap_bit_p (m_seen, v))
++     return;
++
++  // Check each basic block for an inferred range.
++  basic_block bb;
++  FOR_EACH_BB_FN (bb, cfun)
++    {
++      unsigned bbi = bb->index;
++      if (bbi >= m_on_exit.length ())
++	continue;
++      exit_range *ptr = m_on_exit[bbi].find_ptr (name);
++      if (ptr)
++	{
++	  bitmap_clear_bit (m_on_exit[bbi].m_names, v);
++	  ptr->name = NULL;
++	}
++    }
++
++  bitmap_clear_bit (m_seen, v);
++}
+diff --git a/gcc/gimple-range-infer.h b/gcc/gimple-range-infer.h
+index e2adeec8edf2..ca95e121633b 100644
+--- a/gcc/gimple-range-infer.h
++++ b/gcc/gimple-range-infer.h
+@@ -89,6 +89,7 @@ public:
+   virtual bool has_range_p (basic_block, tree = NULL_TREE) { return false; }
+   virtual bool maybe_adjust_range (vrange &, tree, basic_block)
+       { return false; }
++  virtual void clear (tree) { }
+ };
+ 
+ // This class manages a list of inferred ranges for each basic block.
+@@ -115,6 +116,7 @@ public:
+   virtual void add_ranges (gimple *s, gimple_infer_range &ir);
+   virtual bool has_range_p (basic_block bb, tree name = NULL_TREE);
+   virtual bool maybe_adjust_range (vrange &r, tree name, basic_block bb);
++  virtual void clear (tree name);
+ private:
+   void add_range (tree name, gimple *s, const vrange &r);
+   void add_nonzero (tree name, gimple *s);
+diff --git a/gcc/gimple-range.cc b/gcc/gimple-range.cc
+index 37390c5df276..b221cfc56164 100644
+--- a/gcc/gimple-range.cc
++++ b/gcc/gimple-range.cc
+@@ -607,6 +607,15 @@ gimple_ranger::update_range_info (tree name, const vrange &r)
+     }
+ }
+ 
++// Reset range information for NAME.
++
++void
++gimple_ranger::reset_range_info (tree name)
++{
++  // Clearing the cache will also clear all the shared oracles.
++  m_cache.reset_range_info (name);
++}
++
+ // This routine will export whatever global ranges are known to GCC
+ // SSA_RANGE_NAME_INFO and SSA_NAME_PTR_INFO fields.
+ 
+diff --git a/gcc/gimple-range.h b/gcc/gimple-range.h
+index a74b48aafe68..003fede83342 100644
+--- a/gcc/gimple-range.h
++++ b/gcc/gimple-range.h
+@@ -65,6 +65,7 @@ public:
+   void register_inferred_ranges (gimple *s);
+   void register_transitive_inferred_ranges (basic_block bb);
+   range_query &const_query ();
++  void reset_range_info (tree name);
+ protected:
+   bool fold_range_internal (vrange &r, gimple *s, tree name);
+   struct prefill_frame
+diff --git a/gcc/testsuite/gcc.dg/pr126856.c b/gcc/testsuite/gcc.dg/pr126856.c
+new file mode 100644
+index 000000000000..9f1d7734705c
+--- /dev/null
++++ b/gcc/testsuite/gcc.dg/pr126856.c
+@@ -0,0 +1,16 @@
++/* { dg-do run } */
++/* { dg-options "-O2" } */
++__attribute__((noipa)) static int
++mpfr_scale2_bad (int exp)
++{
++    if (-1073 > exp || exp > 1025)
++      __builtin_unreachable();
++    if (exp < -1021)
++      __builtin_abort();
++    return exp;
++}
++int main ()
++{
++    if (mpfr_scale2_bad(499) != 499)
++    __builtin_abort();
++}
+diff --git a/gcc/tree-ssa-dce.cc b/gcc/tree-ssa-dce.cc
+index 18bc851b2cdd..a5391290c4dc 100644
+--- a/gcc/tree-ssa-dce.cc
++++ b/gcc/tree-ssa-dce.cc
+@@ -2278,6 +2278,7 @@ simple_dce_from_worklist (bitmap worklist, bitmap need_eh_cleanup,
+ 	      for (unsigned i = 0; i < gimple_phi_num_args (phi); ++i)
+ 		SET_PHI_ARG_DEF (phi, i, zero);
+ 	      update_stmt (phi);
++	      reset_flow_sensitive_info (def);
+ 	    }
+ 	  else
+ 	    remove_phi_node (&gsi, true);
+@@ -2292,6 +2293,7 @@ simple_dce_from_worklist (bitmap worklist, bitmap need_eh_cleanup,
+ 	      tree zero = build_zero_cst (TREE_TYPE (def));
+ 	      gassign *new_stmt = gimple_build_assign (def, zero);
+ 	      gsi_replace (&gsi, new_stmt, true);
++	      reset_flow_sensitive_info (def);
+ 	    }
+ 	  else
+ 	    {
+diff --git a/gcc/tree-ssanames.cc b/gcc/tree-ssanames.cc
+index 9ad860df65a1..8eac57f42cba 100644
+--- a/gcc/tree-ssanames.cc
++++ b/gcc/tree-ssanames.cc
+@@ -927,6 +927,9 @@ reset_flow_sensitive_info (tree name)
+     }
+   else
+     SSA_NAME_RANGE_INFO (name) = NULL;
++
++  // Clear range info in the current range query.
++  get_range_query (cfun)->reset_range_info (name);
+ }
+ 
+ /* Clear all flow sensitive data from all statements and PHI definitions
+diff --git a/gcc/value-query.cc b/gcc/value-query.cc
+index decf4e4d0ac0..17077eef9e8b 100644
+--- a/gcc/value-query.cc
++++ b/gcc/value-query.cc
+@@ -78,6 +78,17 @@ range_query::update_range_info (tree, const vrange &)
+ {
+ }
+ 
++// Default for resetting range info for NAME is to clear the oracles.
++
++void
++range_query::reset_range_info (tree name)
++{
++  relation ().clear (name);
++  if (gori_ssa ())
++    gori_ssa ()->clear (name);
++  infer_oracle ().clear (name);
++}
++
+ // If the range of expr EXPR at STMT is a single value, return it.
+ // Otherwise return NULL_TREE.
+ 
+diff --git a/gcc/value-query.h b/gcc/value-query.h
+index 7756e431155a..9932d7d493b2 100644
+--- a/gcc/value-query.h
++++ b/gcc/value-query.h
+@@ -79,6 +79,8 @@ public:
+   virtual void update_range_info (tree name);
+   // Provide a specific range update to NAME.
+   virtual void update_range_info (tree name, const vrange &r);
++  // Reset range information for NAME.
++  virtual void reset_range_info (tree name);
+ 
+   inline class relation_oracle &relation () const  { return *m_relation; }
+   void create_relation_oracle (bool do_trans_p = true);
+diff --git a/gcc/value-relation.cc b/gcc/value-relation.cc
+index cc9e8e56c67b..b4b65e6cdc8b 100644
+--- a/gcc/value-relation.cc
++++ b/gcc/value-relation.cc
+@@ -621,6 +621,38 @@ equiv_oracle::register_initial_def (tree ssa)
+   add_equiv_to_block (bb, equiv_set);
+ }
+ 
++// Clear the equivalence lists and partial equivalencs for NAME.
++
++void
++equiv_oracle::clear (tree name)
++{
++  unsigned v = SSA_NAME_VERSION (name);
++  // Remove v from any equivalences.
++  if (bitmap_bit_p (m_equiv_set, v))
++    {
++      basic_block bb;
++      FOR_EACH_BB_FN (bb, cfun)
++	{
++	  unsigned bbi = bb->index;
++	  if (bbi >= m_equiv.length ())
++	    continue;
++	  if (!m_equiv[bbi])
++	    continue;
++	  equiv_chain *ptr = m_equiv[bbi]->find (v);
++	  if (ptr)
++	    {
++	      bitmap_clear_bit (ptr->m_names, v);
++	      bitmap_clear_bit (m_equiv[bbi]->m_names, v);
++	    }
++	}
++      bitmap_clear_bit (m_equiv_set, v);
++    }
++  // Eliminate any partial equivs.
++  if (v < m_partial.length ())
++    m_partial[v].members = NULL;
++}
++
++
+ // Register an equivalence between SSA1 and SSA2 in block BB.
+ // The equivalence oracle maintains a vector of equivalencies indexed by basic
+ // block. When an equivalence between SSA1 and SSA2 is registered in block BB,
+@@ -1078,6 +1110,56 @@ dom_oracle::~dom_oracle ()
+   m_relations.release ();
+ }
+ 
++// Remove any relations with NAME from this list.
++
++void
++relation_chain_head::clear (tree name)
++{
++  unsigned v = SSA_NAME_VERSION (name);
++  if (!m_names || !bitmap_bit_p (m_names, v))
++    return;
++
++  relation_chain *ptr, *last = NULL;;
++
++  for (ptr = m_head; ptr; ptr = ptr->m_next)
++    {
++      tree op1 = ptr->op1 ();
++      tree op2 = ptr->op2 ();
++      // Delink any elements with NAME.
++      if (op1 == name || op2 == name)
++	{
++	  if (!last)
++	    m_head = ptr->m_next;
++	  else
++	    last->m_next = ptr->m_next;
++	}
++      else
++	last = ptr;
++    }
++  // And remove name from the possible relations in this block bitfield.
++  bitmap_clear_bit (m_names, v);
++}
++
++// Remove any relations involving NAME from the DOM oracle
++
++void
++dom_oracle::clear (tree name)
++{
++  equiv_oracle::clear (name);
++  unsigned v = SSA_NAME_VERSION (name);
++  if (bitmap_bit_p (m_relation_set, v))
++    {
++      basic_block bb;
++      FOR_EACH_BB_FN (bb, cfun)
++	{
++	  if (bb->index >= (int)m_relations.length())
++	    continue;
++	  m_relations[bb->index].clear (name);
++	}
++      bitmap_clear_bit (m_relation_set, v);
++    }
++}
++
+ // Register relation K between ssa_name OP1 and OP2 on STMT.
+ // Return false if no new relation is added.
+ 
+@@ -1728,6 +1810,22 @@ path_oracle::~path_oracle ()
+   bitmap_obstack_release (&m_bitmaps);
+ }
+ 
++// Clear any range info and relations associated with NAME.
++
++void
++path_oracle::clear (tree name)
++{
++  if (m_root)
++    m_root->clear (name);
++
++  m_relations.clear (name);
++
++  unsigned v = SSA_NAME_VERSION (name);
++  equiv_chain *ptr = m_equiv.find (v);
++  if (ptr)
++    bitmap_clear_bit (ptr->m_names, v);
++}
++
+ // Return the equiv set for SSA, and if there isn't one, check for equivs
+ // starting in block BB.
+ 
+diff --git a/gcc/value-relation.h b/gcc/value-relation.h
+index eed79c5e83d8..d150b0ac5b2a 100644
+--- a/gcc/value-relation.h
++++ b/gcc/value-relation.h
+@@ -110,6 +110,9 @@ public:
+   relation_kind query (edge e, tree ssa1, tree ssa2);
+   virtual relation_kind query (basic_block, tree, tree) { return VREL_VARYING; }
+ 
++  // Remove relations for an SSA_NAME
++  virtual void clear (tree) { }
++
+   virtual void dump (FILE *, basic_block) const { }
+   virtual void dump (FILE *) const  { }
+   void debug () const;
+@@ -174,6 +177,8 @@ public:
+   relation_kind partial_equiv (tree ssa1, tree ssa2, tree *base = NULL) const;
+   relation_kind query (basic_block, tree, tree) override;
+   relation_kind query (basic_block, const_bitmap, const_bitmap) override;
++
++  virtual void clear (tree name);
+   void dump (FILE *f, basic_block bb) const override;
+   void dump (FILE *f) const override;
+ 
+@@ -209,6 +214,7 @@ public:
+   class relation_chain *m_head; // List of relations in block.
+   int m_num_relations;		// Number of relations in block.
+   relation_kind find_relation (const_bitmap b1, const_bitmap b2) const;
++  void clear (tree name);
+ };
+ 
+ // A relation oracle maintains a set of relations between ssa_names using the
+@@ -234,6 +240,8 @@ public:
+   relation_kind query (basic_block bb, const_bitmap b1, const_bitmap b2)
+     final override;
+ 
++  virtual void clear (tree name);
++
+   void dump (FILE *f, basic_block bb) const final override;
+   void dump (FILE *f) const final override;
+ protected:
+@@ -284,6 +292,9 @@ public:
+   relation_kind query (basic_block, const_bitmap, const_bitmap) final override;
+   void reset_path (relation_oracle *oracle = NULL);
+   void set_root_oracle (relation_oracle *oracle) { m_root = oracle; }
++
++  virtual void clear (tree name);
++
+   void dump (FILE *, basic_block) const final override;
+   void dump (FILE *) const final override;
+ private:
+-- 
+2.55.0
+
