@@ -44,7 +44,8 @@ fi
 # but there are "stale" distfiles on the mirrors with the wrong names.
 # export MESON_PACKAGE_CACHE_DIR="${DISTDIR}"
 SRC_URI+="
-	${CARGO_CRATE_URIS}
+	opencl? ( ${CARGO_CRATE_URIS} )
+	!opencl? ( video_cards_nvk? ( ${CARGO_CRATE_URIS} ) )
 "
 
 S="${WORKDIR}/${MY_P}"
@@ -193,14 +194,16 @@ src_unpack() {
 		unpack ${MY_P}.tar.xz
 	fi
 
-	# We need this because we cannot tell meson to use DISTDIR yet
-	pushd "${DISTDIR}" >/dev/null || die
-	mkdir -p "${S}"/subprojects/packagecache || die
-	local i
-	for i in *.crate; do
-		ln -s "${PWD}/${i}" "${S}/subprojects/packagecache/${i/.crate/}.tar.gz" || die
-	done
-	popd >/dev/null || die
+	if use opencl || use video_cards_nvk; then
+		# We need this because we cannot tell meson to use DISTDIR yet
+		mkdir -p "${S}"/subprojects/packagecache || die
+		local i
+		for i in ${CRATES}; do
+			i=${i/@/-}
+			ln -s "${DISTDIR}/${i}.crate" \
+				"${S}/subprojects/packagecache/${i}.tar.gz" || die
+		done
+	fi
 }
 
 pkg_pretend() {
