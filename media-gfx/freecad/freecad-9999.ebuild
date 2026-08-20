@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python3_{12..14} )
 # The added asserts break on mem leaks, so tests fail.
 # PYTHON_REQ_USE="-debug"
 
-inherit check-reqs cmake cuda edo flag-o-matic optfeature python-single-r1 qt-utils toolchain-funcs xdg virtualx branding
+inherit check-reqs cmake cuda edo flag-o-matic optfeature python-single-r1 toolchain-funcs xdg virtualx branding
 
 DESCRIPTION="Qt based Computer Aided Design application"
 HOMEPAGE="https://www.freecad.org/ https://github.com/FreeCAD/FreeCAD"
@@ -410,8 +410,6 @@ src_configure() {
 			-DFREECAD_QT_MAJOR_VERSION=6
 			-DFREECAD_QT_VERSION=6
 			-DQT_DEFAULT_MAJOR_VERSION=6
-			-DQt6Core_MOC_EXECUTABLE="$(qt_get_broot_binary 6 moc)"
-			-DQt6Core_RCC_EXECUTABLE="$(qt_get_broot_binary 6 rcc)"
 			-DBUILD_QT5=OFF
 			# Drawing module unmaintained and not ported to qt6
 			-DBUILD_DRAWING=OFF
