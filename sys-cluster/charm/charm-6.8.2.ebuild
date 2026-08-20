@@ -26,7 +26,8 @@ BDEPEND="virtual/pkgconfig"
 
 REQUIRED_USE="
 	cmkopt? ( !charmdebug !charmtracing )
-	charmproduction? ( !charmdebug !charmtracing )"
+	charmproduction? ( !charmdebug !charmtracing )
+	mpi? ( !tcp )"
 
 get_opts() {
 	local CHARM_OPTS
