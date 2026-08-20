@@ -12,7 +12,10 @@ User=root
 Group=root
 Restart=on-failure
 Type=exec
-# TODO: find a good way to add args here
+# Args should be added with `systemctl edit`, with patch file looking like
+# [Service]
+# ExecStart=
+# ExecStart=/usr/sbin/smartctl_exporter $args_go_here
 ExecStart=/usr/sbin/smartctl_exporter
 ExecReload=/usr/bin/kill -HUP $MAINPID
 TimeoutStopSec=20s
