@@ -66,11 +66,23 @@ python_configure() {
 }
 
 python_test() {
-	# we need write access to this to run the tests
+	# We need write access to these to run the tests
 	addwrite /dev/nvidia0
 	addwrite /dev/nvidiactl
 	addwrite /dev/nvidia-uvm
 	addwrite /dev/nvidia-uvm-tools
+
+	if [[ ! -w /dev/nvidiactl ]]; then
+		eerror "Could not write to /dev/nvidiactl. To run these tests, a NVIDIA GPU is required"
+		eerror "and must be accessible by the package manager."
+		eerror
+		eerror "Further, the 'portage' user usually needs to be in the video group:"
+		eerror " 1) set ACCT_USER_PORTAGE_GROUPS_ADD='video' in make.conf and re-emerge"
+		eerror "    acct-user/portage, or"
+		eerror
+		eerror " 2) please run 'gpasswd -a portage video'."
+		die "/dev/nvidiactl inaccessible; check permissions?"
+	fi
 
 	EPYTEST_DESELECT=(
 		# needs investigation, perhaps failure is hardware-specific
