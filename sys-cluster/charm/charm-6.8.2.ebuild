@@ -102,7 +102,8 @@ src_prepare() {
 		-e "s|^OPTS=\"\"|OPTS=\"-c++-option ${CXXFLAGS} -cc-option ${CFLAGS}\"|" \
 		build || die
 
-	eapply "${FILESDIR}"/${P}-cxxflags.patch
+	eapply "${FILESDIR}"/${P}-cxxflags.patch \
+		"${FILESDIR}"/${P}-soname.patch
 
 	# CMK optimization
 	use cmkopt && append-cppflags -DCMK_OPTIMIZE=1
