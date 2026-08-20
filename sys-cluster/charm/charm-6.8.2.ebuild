@@ -57,6 +57,7 @@ get_opts() {
 	fi
 
 	CHARM_OPTS+="$(usex numa ' --with-numa' '')"
+
 	echo ${CHARM_OPTS}
 }
 
@@ -78,7 +79,6 @@ src_prepare() {
 		-e "/CMK_CXX/s:g++:$(usex mpi "mpic++" "$(tc-getCXX)") ${CPPFLAGS}:g" \
 		-e "/CMK_CC/s:gcc:$(usex mpi "mpicc" "$(tc-getCC)") ${CPPFLAGS}:g" \
 		-e '/CMK_F90_MODINC/s:-p:-I:g' \
-		-e "/CMK_LD/s:\"$: ${LDFLAGS} \":g" \
 		-i src/arch/$(usex mpi "mpi" "net")*-linux*/*sh || die
 
 	sed \
@@ -93,13 +93,6 @@ src_prepare() {
 		-i src/arch/common/*.sh || die
 
 	sed \
-		-e "s:-o conv-cpm:${LDFLAGS} &:g" \
-		-e "s:-o charmxi:${LDFLAGS} &:g" \
-		-e "s:-o charmrun-silent:${LDFLAGS} &:g" \
-		-e "s:-o charmrun-notify:${LDFLAGS} &:g" \
-		-e "s:-o charmrun:${LDFLAGS} &:g" \
-		-e "s:-o charmd_faceless:${LDFLAGS} &:g" \
-		-e "s:-o charmd:${LDFLAGS} &:g" \
 		-e "/^CHARMC/s:$: ${CPPFLAGS}:g" \
 		-i \
 		src/scripts/Makefile \
@@ -124,7 +117,7 @@ src_compile() {
 	local build_version="$(usex mpi "mpi" "net")-linux$(usex amd64 "-amd64" '')"
 	local build_options="$(get_opts)"
 	#build only accepts -j from MAKEOPTS
-	local build_commandline="${build_version} ${build_options} -j$(makeopts_jobs)"
+	local build_commandline="${build_version} ${build_options} -j$(makeopts_jobs) -ld-option ${LDFLAGS}"
 
 	# Build charmm++ first.
 	einfo "running ./build charm++ ${build_commandline}"
