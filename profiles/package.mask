@@ -36,6 +36,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Arthur Zamarin <arthurzam@gentoo.org> (2026-08-20)
+# Masked for testing. Already detected regressions, so downgrade
+# unless you want to help test.
+# Bug #981130.
+=dev-lang/go-1.27.0
+
 # James Le Cuirot <chewi@gentoo.org> (2026-08-16)
 # This fork of Barrier sadly didn't get very far. Upstream have now archived the
 # repository. Use gui-apps/deskflow, which is now the FOSS upstream of the
