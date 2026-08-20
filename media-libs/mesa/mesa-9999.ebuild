@@ -169,6 +169,7 @@ BDEPEND="
 	video_cards_panfrost? ( ${CLC_DEPSTRING} )
 	vulkan? (
 		dev-util/glslang
+		video_cards_imagination? ( ${CLC_DEPSTRING} )
 		video_cards_nvk? (
 			>=dev-util/bindgen-0.71.1
 			>=dev-util/cbindgen-0.26.0
@@ -371,7 +372,8 @@ multilib_src_configure() {
 	if use video_cards_asahi ||
 	   use video_cards_intel ||
 	   use video_cards_nvk ||
-	   use video_cards_panfrost; then
+	   use video_cards_panfrost ||
+	   { use vulkan && use video_cards_imagination; }; then
 	   emesonargs+=(-Dmesa-clc=system)
 	fi
 
