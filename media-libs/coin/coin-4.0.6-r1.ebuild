@@ -7,7 +7,10 @@ inherit cmake flag-o-matic
 
 DESCRIPTION="High-level 3D graphics toolkit, fully compatible with SGI Open Inventor 2.1"
 HOMEPAGE="https://github.com/coin3d/coin/wiki"
-SRC_URI="https://github.com/coin3d/coin/releases/download/v${PV}/${P}-src.tar.gz"
+SRC_URI="
+	https://github.com/coin3d/coin/releases/download/v${PV}/${P}-src.tar.gz
+	https://github.com/coin3d/coin/commit/1bba57bd0d9f41666d72857f75263068aeeeefcb.patch -> ${PN}-PR590.patch
+"
 S="${WORKDIR}/${PN}"
 
 LICENSE="|| ( GPL-2 PEL )"
@@ -44,7 +47,10 @@ BDEPEND="
 	)
 "
 
-PATCHES=( "${FILESDIR}"/${PN}-4.0.3-find-qhelpgenerator.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-4.0.3-find-qhelpgenerator.patch
+	"${DISTDIR}/${PN}-PR590.patch"
+)
 
 DOCS=( AUTHORS FAQ FAQ.legal NEWS THANKS docs/HACKING )
 
