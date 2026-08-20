@@ -73,12 +73,12 @@ src_prepare() {
 	append-cppflags $($(tc-getPKG_CONFIG) --cflags libtirpc)
 
 	sed \
-		-e "/CMK_CF77/s:[fg]77:$(usex mpi "mpif90" "$(tc-getF77)") ${FCFLAGS}:g" \
-		-e "/CMK_CF90/s:f95:$(usex mpi "mpif90" "$(tc-getFC)") ${FCFLAGS}:g" \
-		-e "/CMK_CF90/s:\`which f90.*$::g" \
-		-e "/CMK_CXX/s:g++:$(usex mpi "mpic++" "$(tc-getCXX)") ${CPPFLAGS}:g" \
-		-e "/CMK_CC/s:gcc:$(usex mpi "mpicc" "$(tc-getCC)") ${CPPFLAGS}:g" \
-		-e '/CMK_F90_MODINC/s:-p:-I:g' \
+		-e "/CMK_CF77/s|[fg]77|$(usex mpi "mpif90" "$(tc-getF77)") ${FCFLAGS}|g" \
+		-e "/CMK_CF90/s|f95|$(usex mpi "mpif90" "$(tc-getFC)") ${FCFLAGS}|g" \
+		-e "/CMK_CF90/s|\`which f90.*$||g" \
+		-e "/CMK_CXX/s|g++|$(usex mpi "mpic++" "$(tc-getCXX)") ${CPPFLAGS}|g" \
+		-e "/CMK_CC/s|gcc|$(usex mpi "mpicc" "$(tc-getCC)") ${CPPFLAGS}|g" \
+		-e '/CMK_F90_MODINC/s|-p|-I|g' \
 		-i src/arch/$(usex mpi "mpi" "net")*-linux*/*sh || die
 
 	sed \
@@ -87,13 +87,13 @@ src_prepare() {
 		-e "/CMK_LDXX='g++'/s|g++|$(usex mpi "mpic++" "$(tc-getCXX)")|" \
 		-e "s|CMK_CF90=\$(which .*)|CMK_CF90=\$(which $(usex mpi "mpif90" "$(tc-getFC)"))|" \
 		-e "/-z \$CMK_CF90/d" \
-		-e "/F90DIR/s:gfortran:$(usex mpi "mpif90" "$(tc-getFC)") ${FCFLAGS}:g" \
-		-e "/f95target/s:gfortran:$(usex mpi "mpif90" "$(tc-getFC)") ${FCFLAGS}:g" \
-		-e "/f95version/s:gfortran:$(usex mpi "mpif90" "$(tc-getFC)") ${FCFLAGS}:g" \
+		-e "/F90DIR/s|gfortran|$(usex mpi "mpif90" "$(tc-getFC)") ${FCFLAGS}|g" \
+		-e "/f95target/s|gfortran|$(usex mpi "mpif90" "$(tc-getFC)") ${FCFLAGS}|g" \
+		-e "/f95version/s|gfortran|$(usex mpi "mpif90" "$(tc-getFC)") ${FCFLAGS}|g" \
 		-i src/arch/common/*.sh || die
 
 	sed \
-		-e "/^CHARMC/s:$: ${CPPFLAGS}:g" \
+		-e "/^CHARMC/s|$| ${CPPFLAGS}|g" \
 		-i \
 		src/scripts/Makefile \
 		src/util/charmrun-src/Makefile || die
@@ -183,10 +183,10 @@ src_install() {
 	# Install examples.
 	if use examples; then
 		find examples/ -name 'Makefile' | xargs sed \
-			-r "s:(../)+bin/charmc:/usr/bin/charmc:" -i || \
+			-r "s|(../)+bin/charmc|/usr/bin/charmc|" -i || \
 			die "Failed to fix examples"
 		find examples/ -name 'Makefile' | xargs sed \
-			-r "s:./charmrun:./charmrun ++local:" -i || \
+			-r "s|./charmrun|./charmrun ++local|" -i || \
 			die "Failed to fix examples"
 		docinto examples
 		dodoc -r examples/charm++/*
