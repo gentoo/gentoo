@@ -4,7 +4,7 @@
 EAPI=8
 
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/isc.asc
-inherit eapi9-ver systemd tmpfiles toolchain-funcs verify-sig
+inherit autotools eapi9-ver systemd tmpfiles toolchain-funcs verify-sig
 
 MY_PV="${PV/_p/-P}"
 MY_PV="${MY_PV/_rc/rc}"
@@ -62,6 +62,7 @@ BDEPEND="
 
 src_prepare() {
 	default
+	eautoreconf
 
 	# Don't clobber our toolchain defaults
 	sed -i -e '/FORTIFY_SOURCE=/d' configure || die

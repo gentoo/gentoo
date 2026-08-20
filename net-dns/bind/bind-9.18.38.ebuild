@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit eapi9-ver systemd tmpfiles toolchain-funcs
+inherit autotools eapi9-ver systemd tmpfiles toolchain-funcs
 
 MY_PV="${PV/_p/-P}"
 MY_PV="${MY_PV/_rc/rc}"
@@ -57,6 +57,7 @@ BDEPEND="
 
 src_prepare() {
 	default
+	eautoreconf
 
 	# Don't clobber our toolchain defaults
 	sed -i -e '/FORTIFY_SOURCE=/d' configure || die
