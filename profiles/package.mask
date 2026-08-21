@@ -220,7 +220,6 @@ dev-python/pyotherside
 # For magic-wormhole, use net-misc/wormhole-william or
 # net-misc/magic-wormhole-rust instead.
 # Removal on 2026-07-19.  Bug #967367.
-dev-python/autobahn
 dev-python/magic-wormhole
 dev-python/py-ubjson
 dev-python/pytrie
@@ -450,7 +449,6 @@ dev-util/buildbot-www-react
 # of the packages cannot be trusted to be safe to use.  Furthermore,
 # the maintenance cost of dealing with packaging bugs alone
 # is overwhelming to human maintainers of this package.
->=dev-python/autobahn-25.10
 >=dev-python/txaio-25.10
 
 # Sam James <sam@gentoo.org> (2025-11-25)
