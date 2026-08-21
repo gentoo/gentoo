@@ -20,7 +20,8 @@ IUSE="libvirt"
 COMMON_DEPEND="libvirt? ( app-emulation/libvirt:=[qemu] )"
 DEPEND="${COMMON_DEPEND}"
 RDEPEND="${COMMON_DEPEND}"
-BDEPEND="dev-go/go-bindata"
+BDEPEND="dev-go/go-bindata
+	>=dev-lang/go-1.25.0"
 
 RESTRICT="test"
 
