@@ -169,11 +169,6 @@ dev-python/fields
 # Introduces backwards breaking change. Mask until downstreams adjust
 >=dev-db/lmdb-1.0.0
 
-# Michał Górny <mgorny@gentoo.org> (2026-07-04)
-# Renamed to dev-python/jsonschema-path.  No revdeps left.
-# Removal on 2026-08-03.
-dev-python/jsonschema-spec
-
 # Michał Górny <mgorny@gentoo.org> (2026-06-19)
 # dev-python/pytrie is broken on Python 3.14 and has not been touched
 # since 2020.  dev-python/autobahn and dev-python/txaio have become

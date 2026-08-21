@@ -401,7 +401,6 @@ dev-python/joserfc
 dev-python/josepy
 >=dev-python/jsonschema-4.18.0
 dev-python/jsonschema-path
-dev-python/jsonschema-spec
 dev-python/jsonschema-specifications
 dev-python/jupyter-events
 dev-python/jupyter-lsp
