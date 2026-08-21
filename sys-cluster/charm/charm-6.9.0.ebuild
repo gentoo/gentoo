@@ -11,8 +11,6 @@ DESCRIPTION="Message-passing parallel language and runtime system"
 HOMEPAGE="http://charm.cs.uiuc.edu/"
 SRC_URI="http://charm.cs.uiuc.edu/distrib/${P}.tar.gz"
 
-S="${WORKDIR}/${PN}-v${PV}"
-
 LICENSE="charm"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
@@ -44,6 +42,9 @@ get_opts() {
 
 	# Build shared libraries by default.
 	CHARM_OPTS+=" --build-shared"
+
+	# Disable opencl
+	CHARM_OPTS+=" --disable-opencl"
 
 	if use charmproduction; then
 		CHARM_OPTS+=" --with-production"
@@ -123,7 +124,7 @@ src_prepare() {
 }
 
 src_compile() {
-	local build_version="$(usex mpi "mpi" "net")-linux$(usex amd64 "-amd64" '')"
+	local build_version="$(usex mpi "mpi" "netlrts")-linux$(usex amd64 "-x86_64" '')"
 	local build_options="$(get_opts)"
 	#build only accepts -j from MAKEOPTS
 	local build_commandline="${build_version} ${build_options} -j$(makeopts_jobs) -ld-option ${LDFLAGS}"
@@ -174,7 +175,7 @@ src_install() {
 		if [[ -L ${i} ]]; then
 			i=$(readlink -e "${i}") || die
 		fi
-		doins "${i}"
+		doins -r "${i}"
 	done
 
 	# Install libs incl. charm objects
