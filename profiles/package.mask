@@ -174,11 +174,6 @@ dev-python/fields
 # Removal on 2026-08-03.
 dev-python/jsonschema-spec
 
-# Michał Górny <mgorny@gentoo.org> (2026-06-30)
-# Backwards compatibility wrapper.  No revdeps left.
-# Removal on 2026-07-30.
-dev-python/roman-numerals-py
-
 # Michał Górny <mgorny@gentoo.org> (2026-06-19)
 # dev-python/pytrie is broken on Python 3.14 and has not been touched
 # since 2020.  dev-python/autobahn and dev-python/txaio have become
