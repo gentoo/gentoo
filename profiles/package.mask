@@ -196,11 +196,6 @@ dev-python/sphinx-selective-exclude
 sci-chemistry/GromacsWrapper
 sci-libs/numkit
 
-# Michał Górny <mgorny@gentoo.org> (2026-06-20)
-# No maintainer, no py3.14 compat, broken tests, no revdeps.
-# Removal on 2026-07-20.  Bug #973876.
-dev-python/pdoc3
-
 # Michał Górny <mgorny@gentoo.org> (2026-06-19)
 # dev-python/pytrie is broken on Python 3.14 and has not been touched
 # since 2020.  dev-python/autobahn and dev-python/txaio have become
