@@ -278,7 +278,6 @@ dev-python/omemo-dr
 dev-python/noiseprotocol
 dev-python/magic-wormhole
 dev-python/magic-wormhole-transit-relay
-dev-python/magic-wormhole-mailbox-server
 dev-python/jwcrypto
 dev-python/websockify
 dev-python/jupyter

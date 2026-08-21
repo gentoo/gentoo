@@ -222,7 +222,6 @@ dev-python/pyotherside
 # Removal on 2026-07-19.  Bug #967367.
 dev-python/autobahn
 dev-python/magic-wormhole
-dev-python/magic-wormhole-mailbox-server
 dev-python/magic-wormhole-transit-relay
 dev-python/py-ubjson
 dev-python/pytrie
