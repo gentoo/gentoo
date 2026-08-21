@@ -8,7 +8,7 @@ inherit cmake go-module systemd
 DESCRIPTION="Get up and running with Llama 3, Mistral, Gemma, and other language models"
 HOMEPAGE="https://ollama.com"
 
-LLAMA_CPP_tag=b10434
+LLAMA_CPP_tag=b10488
 
 SRC_URI="
 	https://github.com/ollama/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.gh.tar.gz
@@ -59,7 +59,12 @@ src_prepare() {
 		"${FILESDIR}"/${PN}-0.31.1-gcc17.patch
 
 	# Remove vendored
+	cmake_comment_add_subdirectory -f vendor stb
 	rm -r vendor/stb || die
+	sed -i \
+		-e "s|vendor::stb ||" \
+		tools/mtmd/CMakeLists.txt \
+		|| die
 	popd > /dev/null || die
 }
 
