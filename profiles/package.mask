@@ -215,6 +215,8 @@ dev-python/pyotherside
 # since 2020.  dev-python/autobahn and dev-python/txaio have become
 # complete broken slop, and still depend on it.  Remove these packages,
 # their reverse dependencies and their dependencies without revdeps.
+# For magic-wormhole, use net-misc/wormhole-william or
+# net-misc/magic-wormhole-rust instead.
 # Removal on 2026-07-19.  Bug #967367.
 dev-python/autobahn
 dev-python/magic-wormhole
