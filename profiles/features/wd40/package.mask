@@ -276,7 +276,6 @@ dev-python/python-axolotl
 dev-python/pyghmi
 dev-python/omemo-dr
 dev-python/noiseprotocol
-dev-python/magic-wormhole
 dev-python/jwcrypto
 dev-python/websockify
 dev-python/jupyter
