@@ -206,12 +206,6 @@ dev-python/pdoc3
 # Removal on 2026-07-20.  Bug #973847.
 dev-python/django-cacheops
 
-# Michał Górny <mgorny@gentoo.org> (2026-06-20)
-# NIH package with little activity.  Last revdeps were removed
-# in Sep 2025.
-# Removal on 2026-07-20.  Bug #977772.
-dev-python/pyotherside
-
 # Michał Górny <mgorny@gentoo.org> (2026-06-19)
 # dev-python/pytrie is broken on Python 3.14 and has not been touched
 # since 2020.  dev-python/autobahn and dev-python/txaio have become
