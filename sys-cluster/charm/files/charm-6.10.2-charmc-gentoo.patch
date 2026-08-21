@@ -11,19 +11,19 @@ diff --git a/src/scripts/charmc b/src/scripts/charmc
 index 4d37a6b..8ec2f70 100755
 --- a/src/scripts/charmc
 +++ b/src/scripts/charmc
-@@ -361,19 +361,9 @@ then
+@@ -387,19 +387,9 @@
  	PROG_EXT=".exe"
  fi
  
 -CHARMLIB="$CHARMBIN/../lib"
 -CHARMINC="$CHARMBIN/../include"
 -CHARMLIBSO=
--if test -d "$CHARMBIN/../lib_so" 
+-if test -d "$CHARMBIN/../lib_so"
 -then
 -  CHARMLIBSO=`cd $CHARMBIN/../lib_so 2>/dev/null && pwd`
 -  #getting absolute path is harder than thought because of symbolic links and ..
 -  #ksh needs cd -P to resolve werid symbolic links, however -P is not portable
--  #csh is ok too if it exists 
+-  #csh is ok too if it exists
 -  test -z "$CHARMLIBSO" && CHARMLIBSO=`cd -P $CHARMBIN/../lib_so 2>/dev/null && pwd`
 -  test -z "$CHARMLIBSO" && CHARMLIBSO=`csh -c "cd $CHARMBIN/../lib_so >& /dev/null && pwd"`
 -  test -z "$CHARMLIBSO" && echo "$CHARMBIN/../lib_so: not found" && exit 1
@@ -34,6 +34,3 @@ index 4d37a6b..8ec2f70 100755
  
  ##############################################################################
  #
--- 
-1.8.1.5
-

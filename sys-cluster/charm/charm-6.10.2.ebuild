@@ -10,6 +10,7 @@ inherit flag-o-matic fortran-2 multiprocessing toolchain-funcs
 DESCRIPTION="Message-passing parallel language and runtime system"
 HOMEPAGE="http://charm.cs.uiuc.edu/"
 SRC_URI="http://charm.cs.uiuc.edu/distrib/${P}.tar.gz"
+S="${WORKDIR}"/${PN}-v${PV}
 
 LICENSE="charm"
 SLOT="0"
@@ -112,7 +113,7 @@ src_prepare() {
 		build || die
 
 	eapply "${FILESDIR}"/${P}-cxxflags.patch \
-		"${FILESDIR}"/${P}-soname.patch
+		"${FILESDIR}"/${PN}-6.9.0-soname.patch
 
 	# CMK optimization
 	use cmkopt && append-cppflags -DCMK_OPTIMIZE=1
@@ -149,7 +150,7 @@ src_install() {
 	# Make charmc play well with gentoo before we move it into /usr/bin. This
 	# patch cannot be applied during src_prepare() because the charmc wrapper
 	# is used during building.
-	eapply "${FILESDIR}/charm-6.5.1-charmc-gentoo.patch"
+	eapply "${FILESDIR}/charm-6.10.2-charmc-gentoo.patch"
 
 	sed -e "s|gentoo-include|${P}|" \
 		-e "s|gentoo-libdir|$(get_libdir)|g" \
