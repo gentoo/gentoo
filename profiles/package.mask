@@ -221,7 +221,6 @@ dev-python/pyotherside
 # net-misc/magic-wormhole-rust instead.
 # Removal on 2026-07-19.  Bug #967367.
 dev-python/magic-wormhole
-dev-python/wsaccel
 
 # Michał Górny <mgorny@gentoo.org> (2026-06-03)
 # Mike Pagano <mpagano@gentoo.org> (2026-06-03)
