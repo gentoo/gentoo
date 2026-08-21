@@ -44,9 +44,6 @@ get_opts() {
 	# Build shared libraries by default.
 	CHARM_OPTS+=" --build-shared"
 
-	# Disable opencl
-	CHARM_OPTS+=" --disable-opencl"
-
 	if use charmproduction; then
 		CHARM_OPTS+=" --with-production"
 	else
