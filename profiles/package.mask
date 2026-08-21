@@ -152,14 +152,6 @@ net-dns/bind-tools
 # Removal on 2026-08-15.  Bug #942397.
 app-arch/p7zip
 
-# Michał Górny <mgorny@gentoo.org> (2026-07-13)
-# dev-python/fields is unmaintained for 5 years.  Broken with pytest-9,
-# we already patch it for earlier pytest versions.  It is the only
-# revdep of dev-python/characteristic which was archived in 2023.
-# No revdeps left.
-# Removal on 2026-08-12.  Bug #978175.
-dev-python/characteristic
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2026-07-07)
 # dev-embedded/ponyprog destabilisation mask, bug #978907
 =dev-embedded/ponyprog-3.1.4_p20250501-r0
