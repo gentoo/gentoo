@@ -223,7 +223,6 @@ dev-python/pyotherside
 dev-python/magic-wormhole
 dev-python/py-ubjson
 dev-python/pytrie
-dev-python/txaio
 dev-python/wsaccel
 
 # Michał Górny <mgorny@gentoo.org> (2026-06-03)
@@ -442,14 +441,6 @@ dev-util/buildbot-www-react
 # requires further consideration to determine the correct course of
 # action. Use at your own risk.
 >=app-text/calibre-8.11.0
-
-# Michał Górny <mgorny@gentoo.org> (2025-12-12)
-# Upstream has switched to LLM-first coding which has already caused
-# a number of suspicious bugs.  At this point, new versions
-# of the packages cannot be trusted to be safe to use.  Furthermore,
-# the maintenance cost of dealing with packaging bugs alone
-# is overwhelming to human maintainers of this package.
->=dev-python/txaio-25.10
 
 # Sam James <sam@gentoo.org> (2025-11-25)
 # Generates session keys with weak (no) randomness. Please re-encrypt
