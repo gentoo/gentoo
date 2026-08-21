@@ -14,7 +14,9 @@ S=${WORKDIR}/wsjtx
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="doc"
+IUSE="doc test"
+
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-libs/boost:=[nls,python]
@@ -51,6 +53,9 @@ src_prepare() {
 	edos2unix "${S}/CMakeLists.txt"
 	sed -i -e "s/COMMAND \${GZIP_EXECUTABLE}/#  COMMAND/" \
 								manpages/CMakeLists.txt || die
+	# comment out unconditional test activation if not requested
+	use test || ( sed -i -e "s/^  enable_testing/#  enable_testing/" \
+								CMakeLists.txt || die )
 	cmake_src_prepare
 }
 
@@ -67,6 +72,11 @@ src_configure() {
 	# heap. Switch is only supported for newer GCC versions (bug #968790).
 	append-fflags $(test-flags-FC -ftrampoline-impl=heap)
 	cmake_src_configure
+}
+
+src_test() {
+	local -x QT_QPA_PLATFORM=offscreen
+	cmake_src_test
 }
 
 src_install() {
