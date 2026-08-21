@@ -99,6 +99,13 @@ src_prepare() {
 		src/scripts/Makefile \
 		src/util/charmrun-src/Makefile || die
 
+	# Use toolchain nm
+	sed -i \
+		-e "/CMK_NM=/s|nm|$(tc-getNM)|" \
+		src/arch/*/*.sh \
+		src/scripts/conv-config.sh \
+		|| die
+
 	sed -i \
 		-e "s|^OPTS=\"\"|OPTS=\"-c++-option ${CXXFLAGS} -cc-option ${CFLAGS}\"|" \
 		build || die
