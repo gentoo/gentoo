@@ -475,7 +475,6 @@ dev-python/watchfiles
 dev-python/wcmatch
 dev-python/widgetsnbextension
 dev-ruby/selenium-webdriver
-dev-util/buildbot-worker
 dev-util/cargo-c
 dev-util/cbindgen
 dev-util/git-delta

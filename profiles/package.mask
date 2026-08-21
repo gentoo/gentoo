@@ -252,27 +252,6 @@ dev-qt/qtx11extras:5
 # Bug #954006. Removal some time after 2026-05-30.
 =media-video/vlc-3.0.23
 
-# Michał Górny <mgorny@gentoo.org> (2026-05-09)
-# The buildbot packages aren't actively maintained in ::gentoo.  They
-# are stuck on Python 3.12 and obsolete dependencies.  Bug reports
-# aren't receiving any attention.
-# Removal on 2026-06-08.  Bug #952430.
-acct-group/buildbot
-acct-user/buildbot
-dev-util/buildbot
-dev-util/buildbot-badges
-dev-util/buildbot-console-view
-dev-util/buildbot-grid-view
-dev-util/buildbot-pkg
-dev-util/buildbot-react-console-view
-dev-util/buildbot-react-grid-view
-dev-util/buildbot-react-wsgi-dashboards
-dev-util/buildbot-waterfall-view
-dev-util/buildbot-worker
-dev-util/buildbot-wsgi-dashboards
-dev-util/buildbot-www
-dev-util/buildbot-www-react
-
 # Sam James <sam@gentoo.org> (2026-05-05)
 # dev-debug/pwndbg itself needs >=dev-util/unicorn-2.1.4, while
 # pwndbg also depends on dev-util/pwntools which needs <dev-util/unicorn-2.1.4.
