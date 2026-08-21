@@ -263,7 +263,6 @@ dev-util/cargo-license
 dev-util/cargo-audit
 dev-util/bingrep
 dev-python/trimesh
-dev-python/vpython
 dev-python/treq
 dev-python/twython
 dev-python/txtorcon

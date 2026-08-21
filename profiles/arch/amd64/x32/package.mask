@@ -74,7 +74,6 @@ sci-visualization/dash
 dev-python/spyder-notebook
 app-emacs/emacs-ipython-notebook
 dev-python/jupyter
-dev-python/vpython
 dev-python/widgetsnbextension
 dev-python/ipywidgets
 dev-python/metakernel

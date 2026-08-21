@@ -225,7 +225,6 @@ dev-python/magic-wormhole
 dev-python/py-ubjson
 dev-python/pytrie
 dev-python/txaio
-dev-python/vpython
 dev-python/wsaccel
 
 # Michał Górny <mgorny@gentoo.org> (2026-06-03)
