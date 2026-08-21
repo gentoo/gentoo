@@ -36,6 +36,15 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2026-08-21)
+# Grave security vulnerabilities which either haven't been
+# fixed upstream or fixed insufficiently. Our version is out-of-date as
+# well though the latest version wouldn't fix all of these. Other distributions
+# have removed croc because of its poor security posture already.
+# Use net-misc/wormhole-william or net-misc/magic-wormhole-rust instead.
+# Removal on 2026-09-20.  Bug #980854 and the older bug #918091.
+net-misc/croc
+
 # Arthur Zamarin <arthurzam@gentoo.org> (2026-08-20)
 # Masked for testing. Already detected regressions, so downgrade
 # unless you want to help test.
