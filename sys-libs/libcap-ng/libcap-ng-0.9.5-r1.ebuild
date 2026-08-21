@@ -6,7 +6,7 @@ EAPI=8
 # Keep an eye on Fedora's packaging (https://src.fedoraproject.org/rpms/libcap-ng/tree/rawhide) for patches
 # Same maintainer in Fedora as upstream
 PYTHON_COMPAT=( python3_{12..14} )
-inherit autotools dot-a flag-o-matic linux-info out-of-source-utils python-r1
+inherit autotools dot-a flag-o-matic linux-info out-of-source-utils python-r1 shell-completion
 
 DESCRIPTION="POSIX 1003.1e capabilities"
 HOMEPAGE="https://people.redhat.com/sgrubb/libcap-ng/"
@@ -146,4 +146,8 @@ src_install() {
 	use static-libs && strip-lto-bytecode
 
 	find "${ED}" -name '*.la' -delete || die
+
+	# Fixup completions, bug 972536
+	mv "${D}$(get_bashcompdir)"/{libcap-ng.bash_completion,cap-audit} || die
+	bashcomp_alias cap-audit filecap netcap pscap
 }
