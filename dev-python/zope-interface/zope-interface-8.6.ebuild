@@ -7,7 +7,7 @@ DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
 PYPI_PN=${PN/-/.}
 PYPI_VERIFY_REPO="https://github.com/zopefoundation/zope.interface"
-PYTHON_COMPAT=( python3_{12..15} python3_14t )
+PYTHON_COMPAT=( python3_{12..15} python3_{14,15}t )
 
 inherit distutils-r1 pypi
 
