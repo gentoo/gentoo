@@ -1,0 +1,20 @@
+diff --git a/Source/WebCore/bindings/js/JSHTMLMediaElementCustom.cpp b/Source/WebCore/bindings/js/JSHTMLMediaElementCustom.cpp
+index fcbad044..52ad4727 100644
+--- a/Source/WebCore/bindings/js/JSHTMLMediaElementCustom.cpp
++++ b/Source/WebCore/bindings/js/JSHTMLMediaElementCustom.cpp
+@@ -24,6 +24,9 @@
+  */
+ 
+ #include "config.h"
++
++#if ENABLE(VIDEO)
++
+ #include "JSHTMLMediaElement.h"
+ 
+ #include "TrackOpaqueRoot.h"
+@@ -40,3 +43,5 @@ void JSHTMLMediaElement::visitAdditionalChildren(Visitor& visitor)
+ DEFINE_VISIT_ADDITIONAL_CHILDREN(JSHTMLMediaElement);
+ 
+ } // namespace WebCore
++
++#endif
