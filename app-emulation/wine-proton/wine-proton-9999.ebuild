@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 inherit eapi9-ver flag-o-matic optfeature python-any-r1
 inherit readme.gentoo-r1 toolchain-funcs wine
 
