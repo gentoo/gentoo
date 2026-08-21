@@ -159,7 +159,6 @@ app-arch/p7zip
 # No revdeps left.
 # Removal on 2026-08-12.  Bug #978175.
 dev-python/characteristic
-dev-python/fields
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2026-07-07)
 # dev-embedded/ponyprog destabilisation mask, bug #978907
