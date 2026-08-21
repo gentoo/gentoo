@@ -113,6 +113,9 @@ RDEPEND="
 	video_cards_i915? (
 		${LIBDRM_DEPSTRING}[video_cards_intel]
 	)
+	video_cards_nvk? (
+		virtual/libelf:0=[${MULTILIB_USEDEP}]
+	)
 	video_cards_radeonsi? (
 		${LIBDRM_DEPSTRING}[video_cards_amdgpu]
 		virtual/libelf:0=[${MULTILIB_USEDEP}]
