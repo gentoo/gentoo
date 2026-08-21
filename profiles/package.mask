@@ -188,7 +188,6 @@ dev-python/commentjson
 # No py3.14 in compat, tests lost on bump, no revdeps.
 # Removal on 2026-07-20.  Bug #973904.
 dev-python/pyx
-dev-python/sphinx-selective-exclude
 
 # Michał Górny <mgorny@gentoo.org> (2026-06-19)
 # dev-python/pytrie is broken on Python 3.14 and has not been touched
