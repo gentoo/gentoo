@@ -1,10 +1,10 @@
-# Copyright 2022-2025 Gentoo Authors
+# Copyright 2022-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{11..14} pypy3_11 )
+PYTHON_COMPAT=( python3_{12..14} )
 
 inherit distutils-r1
 
@@ -32,7 +32,14 @@ EPYTEST_PLUGINS=()
 EPYTEST_XDIST=1
 distutils_enable_tests pytest
 
-python_test() {
+src_test() {
+	local -x XDG_CONFIG_HOME=${T}
+	mkdir "${T}/pip" || die
+	cat > "${T}/pip/pip.conf" <<-EOF || die
+		[install]
+		no-build-isolation = false
+	EOF
+
 	local -x COLUMNS=80
-	epytest
+	distutils-r1_src_test
 }
