@@ -49,11 +49,6 @@ pkg_postrm() {
 }
 
 src_test() {
-	if ! use test; then
-		ewarn "Skipping tests (USE=-test)"
-		return
-	fi
-
 	einfo "Running cfg-update integration test harness"
 	"${S}"/test/run-tests.sh --full || die "Integration tests failed"
 }
