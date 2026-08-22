@@ -14,7 +14,7 @@ SRC_URI="https://git.kernel.org/pub/scm/utils/patatt/patatt.git/snapshot/${P}.ta
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm64 ~ppc ~ppc64 ~x86"
 
 RDEPEND="dev-python/pynacl[${PYTHON_USEDEP}]"
 
