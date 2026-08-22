@@ -1,0 +1,40 @@
+From 89e7cbf63a556675efd490cf3697885e8295561d Mon Sep 17 00:00:00 2001
+From: Florian Schmaus <flo@geekplace.eu>
+Date: Wed, 12 Jun 2024 21:31:47 +0200
+Subject: [PATCH] setup: support GIT_IGNORE_INSECURE_OWNER environment variable
+
+Sometimes more flexibility to disable/ignore the ownership check, besides
+the safe.directory configuration option, is required.
+
+For example, git-daemon running as nobody user, which typically has no
+home directory. Therefore, we can not add the path to a user-global
+configuration and adding the path to the system-wide configuration could
+have negative security implications.
+
+Therefore, make the check configurable via an environment variable.
+
+If the environment variable GIT_IGNORE_INSECURE_OWNER is set to true,
+then ignore potentially insecure ownership of git-related path
+components.
+
+Signed-off-by: Florian Schmaus <flo@geekplace.eu>
+--- a/setup.c
++++ b/setup.c
+@@ -1278,6 +1278,14 @@ static int ensure_valid_ownership(const char *gitfile,
+ 	 */
+ 	git_protected_config(safe_directory_cb, &data);
+ 
++	if (data.is_safe)
++		return data.is_safe;
++
++	if (git_env_bool("GIT_IGNORE_INSECURE_OWNER", 0)) {
++		warning("ignoring dubious ownership in repository at '%s' (GIT_IGNORE_INSECURE_OWNER set)", data.path);
++		return 1;
++	}
++
+ 	return data.is_safe;
+ }
+ 
+-- 
+2.44.2
+
