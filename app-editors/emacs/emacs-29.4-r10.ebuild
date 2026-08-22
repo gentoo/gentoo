@@ -472,6 +472,11 @@ src_test() {
 		# Reason: https://bugs.gnu.org/72120
 		# dired-test-bug27243-02
 		%lisp/dired-tests.el
+
+		# Reason: does not pass -Q to emacs (https://bugs.gnu.org/81676)
+		# emacsclient-test-alternate-editor-allows-arguments
+		# emacsclient-test-alternate-editor-allows-quotes
+		%lib-src/emacsclient-tests.el
 	)
 	use elibc_musl && exclude_tests+=(
 			# Reason: newlocale(3) lenient locale validation #906012
