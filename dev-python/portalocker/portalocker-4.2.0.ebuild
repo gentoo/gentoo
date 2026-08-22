@@ -1,0 +1,46 @@
+# Copyright 1999-2026 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=8
+
+DISTUTILS_USE_PEP517=uv-build
+PYTHON_COMPAT=( python3_{12..15} )
+
+inherit distutils-r1 optfeature
+
+DESCRIPTION="A library for Python file locking"
+HOMEPAGE="
+	https://github.com/WoLpH/portalocker/
+	https://portalocker.readthedocs.io/
+	https://pypi.org/project/portalocker/
+"
+SRC_URI="
+	https://github.com/WoLpH/${PN}/archive/v${PV}.tar.gz
+		-> ${P}.gh.tar.gz
+"
+
+LICENSE="BSD"
+SLOT="0"
+KEYWORDS="~amd64"
+
+BDEPEND="
+	test? (
+		>=dev-python/fakeredis-2.31.0[${PYTHON_USEDEP}]
+		dev-python/redis[${PYTHON_USEDEP}]
+		>=dev-python/sphinx-6.0.0[${PYTHON_USEDEP}]
+	)
+"
+
+EPYTEST_PLUGINS=( pytest-{rerunfailures,timeout} )
+distutils_enable_tests pytest
+
+src_prepare() {
+	default
+
+	# Disable code coverage in tests.
+	sed -i '/--cov/d' pyproject.toml || die
+}
+
+pkg_postinst() {
+	optfeature "redis support" dev-python/redis
+}
