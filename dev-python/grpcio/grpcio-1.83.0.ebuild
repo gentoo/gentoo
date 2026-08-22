@@ -44,7 +44,7 @@ BDEPEND="
 	>=dev-python/cython-3.1.1[${PYTHON_USEDEP}]
 	test? (
 		dev-python/coverage[${PYTHON_USEDEP}]
-		>=dev-python/protobuf-6.33.5[${PYTHON_USEDEP}]
+		>=dev-python/protobuf-7.35.1[${PYTHON_USEDEP}]
 	)
 "
 
