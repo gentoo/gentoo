@@ -1,0 +1,35 @@
+From: Pavel Sobolev <contact@paveloom.dev>
+Subject: [PATCH] Build documentation only when requested.
+
+Signed-off-by: Pavel Sobolev <contact@paveloom.dev>
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -36,6 +36,9 @@ option(ZYAN_FORCE_ASSERTS
+ option(ZYCORE_BUILD_SHARED_LIB
+     "Build shared library"
+     OFF)
++option(ZYCORE_BUILD_DOCS
++    "Build documentation"
++    OFF)
+ option(ZYCORE_BUILD_EXAMPLES
+     "Build examples"
+     OFF)
+@@ -228,7 +231,8 @@ install(DIRECTORY "include/" DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
+ # Doxygen documentation                                                                           #
+ # =============================================================================================== #
+ 
+-find_package(Doxygen)
++if (ZYCORE_BUILD_DOCS)
++find_package(Doxygen REQUIRED)
+ if (DOXYGEN_FOUND)
+     set(DOXYGEN_GENERATE_MAN YES)
+     doxygen_add_docs(ZycoreDoc "include/Zycore/" ALL)
+@@ -243,6 +247,7 @@ if (DOXYGEN_FOUND)
+         COMPONENT Documentation
+     )
+ endif()
++endif()
+ 
+ # =============================================================================================== #
+ # Developer mode                                                                                  #
