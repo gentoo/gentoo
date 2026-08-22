@@ -15,7 +15,7 @@ S="${WORKDIR}"/${PN}-v${PV}
 LICENSE="charm"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="charmdebug charmtracing charmproduction cmkopt examples mlogft mpi ampi numa smp static-libs syncft tcp"
+IUSE="charmdebug charmtracing charmproduction cmkopt examples mpi ampi numa smp static-libs syncft tcp"
 
 RDEPEND="mpi? ( virtual/mpi )"
 DEPEND="
@@ -38,7 +38,6 @@ get_opts() {
 	# enable direct SMP support using shared memory
 	CHARM_OPTS+="$(usex smp ' smp' '')"
 
-	CHARM_OPTS+="$(usex mlogft ' mlogft' '')"
 	CHARM_OPTS+="$(usex syncft ' syncft' '')"
 
 	# Build shared libraries by default.
