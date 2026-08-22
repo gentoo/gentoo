@@ -96,24 +96,24 @@ REQUIRED_USE="
 RDEPEND="
 	>=virtual/zlib-1.2.5:=[${MULTILIB_USEDEP}]
 	adns? ( >=net-dns/c-ares-1.16.0:=[${MULTILIB_USEDEP}] )
-	brotli? ( app-arch/brotli:=[${MULTILIB_USEDEP}] )
+	brotli? ( >=app-arch/brotli-1.0.0:=[${MULTILIB_USEDEP}] )
 	http2? ( >=net-libs/nghttp2-1.15.0:=[${MULTILIB_USEDEP}] )
 	http3? ( >=net-libs/nghttp3-1.1.0[${MULTILIB_USEDEP}] )
 	idn? ( >=net-dns/libidn2-2.0.0:=[static-libs?,${MULTILIB_USEDEP}] )
 	kerberos? ( >=virtual/krb5-0-r1[${MULTILIB_USEDEP}] )
 	ldap? ( >=net-nds/openldap-2.0.0:=[static-libs?,${MULTILIB_USEDEP}] )
-	psl? ( net-libs/libpsl[${MULTILIB_USEDEP}] )
+	psl? ( >=net-libs/libpsl-0.16.0[${MULTILIB_USEDEP}] )
 	quic? (
 		gnutls? ( >=net-libs/ngtcp2-1.20.0-r1[gnutls,ssl,${MULTILIB_USEDEP}] )
 		openssl? ( >=net-libs/ngtcp2-1.20.0-r1[openssl,ssl,${MULTILIB_USEDEP}] )
 	)
-	ssh? ( >=net-libs/libssh2-1.2.8[${MULTILIB_USEDEP}] )
+	ssh? ( >=net-libs/libssh2-1.9.0[${MULTILIB_USEDEP}] )
 	sasl-scram? ( >=net-misc/gsasl-2.2.0[static-libs?,${MULTILIB_USEDEP}] )
 	ssl? (
 		gnutls? (
 			app-misc/ca-certificates
-			>=net-libs/gnutls-3.1.10:=[static-libs?,${MULTILIB_USEDEP}]
-			dev-libs/nettle:=[${MULTILIB_USEDEP}]
+			>=net-libs/gnutls-3.6.5:=[static-libs?,${MULTILIB_USEDEP}]
+			>=dev-libs/nettle-3.4.1:=[${MULTILIB_USEDEP}]
 		)
 		mbedtls? (
 			app-misc/ca-certificates
@@ -127,7 +127,7 @@ RDEPEND="
 			>=net-libs/rustls-ffi-0.15.0:=[${MULTILIB_USEDEP}]
 		)
 	)
-	zstd? ( app-arch/zstd:=[${MULTILIB_USEDEP}] )
+	zstd? ( >=app-arch/zstd-1.0:=[${MULTILIB_USEDEP}] )
 "
 
 DEPEND="${RDEPEND}"
@@ -138,7 +138,7 @@ BDEPEND="
 	test? (
 		sys-apps/diffutils
 		http2? ( >=net-libs/nghttp2-1.15.0:=[utils,${MULTILIB_USEDEP}] )
-		http3? ( net-libs/nghttp2:=[utils,${MULTILIB_USEDEP}] )
+		http3? ( >=net-libs/nghttp2-1.15.0:=[utils,${MULTILIB_USEDEP}] )
 	)
 	verify-sig? ( sec-keys/openpgp-keys-danielstenberg )
 "
