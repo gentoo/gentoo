@@ -12,7 +12,7 @@ SRC_URI="https://github.com/OpenIDC/cjose/releases/download/v${PV}/${P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="doc test"
+IUSE="+doc test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -40,6 +40,12 @@ src_configure() {
 		$(use_enable doc doxygen-doc)
 	)
 	econf "${myconf[@]}"
+}
+
+src_compile() {
+	emake
+	# need to invoke doc generation, otherwise it doesn't get installed properly
+	use doc && emake doxygen
 }
 
 src_install() {
