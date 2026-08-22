@@ -19,6 +19,7 @@ X86_CPU_FLAGS=(
 	avx
 	avx_vnni
 	avx2
+	avx512_bf16
 	avx512bw
 	avx512f
 	avx512vbmi
@@ -79,6 +80,7 @@ src_configure() {
 		-DGGML_AVX=$(usex cpu_flags_x86_avx)
 		-DGGML_AVX_VNNI=$(usex cpu_flags_x86_avx_vnni)
 		-DGGML_AVX2=$(usex cpu_flags_x86_avx2)
+		-DGGML_AVX512_BF16=$(usex cpu_flags_x86_avx512_bf16)
 		-DGGML_AVX512_VBMI=$(usex cpu_flags_x86_avx512vbmi)
 		-DGGML_AVX512_VNNI=$(usex cpu_flags_x86_avx512_vnni)
 		-DGGML_BMI2=$(usex cpu_flags_x86_bmi2)
