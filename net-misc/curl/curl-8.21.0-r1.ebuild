@@ -403,14 +403,20 @@ multilib_src_test() {
 	# -am: automake style TAP output
 	# -p: print logs if test fails
 	# --retry: retry any failing tests up to 3 times; this is a band-aid for timing-dependent flakiness.
+	#
 	# Note: if needed, we can skip specific tests. See e.g. Fedora's packaging
 	# or just read https://github.com/curl/curl/tree/master/tests#run.
+	#
 	# Note: we don't run the testsuite for cross-compilation.
+	#
 	# Upstream recommend 7*nproc as a starting point for parallel tests, but
 	# this ends up breaking when nproc is huge (like -j80).
+	#
 	# The network sandbox causes tests 241 and 1083 to fail; these are typically skipped
 	# as most gentoo users don't have an 'ip6-localhost'
-	multilib_is_native_abi && emake test TFLAGS="-n -v -a -am -p -j$((2*$(get_makeopts_jobs))) --retry=3 !241 !1083"
+	#
+	# 1701: dropped in master
+	multilib_is_native_abi && emake test TFLAGS="-n -v -a -am -p -j$((2*$(get_makeopts_jobs))) --retry=3 !241 !1083 !1701"
 	# TODO: enable python tests (make pytest).
 }
 
