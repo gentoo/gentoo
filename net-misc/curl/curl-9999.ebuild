@@ -86,7 +86,7 @@ REQUIRED_USE="
 
 # cURL's docs and CI/CD are great resources for confirming supported versions
 # particulary for fast-moving targets like HTTP/2 and TCP/2 e.g.:
-# - https://github.com/curl/curl/blob/master/docs/INTERNALS.md (core dependencies + minimum versions)
+# - https://github.com/curl/curl/blob/master/docs/DEPENDENCIES.md (core dependencies + minimum versions)
 # - https://github.com/curl/curl/blob/master/docs/HTTP3.md (example of a feature that moves quickly)
 # - https://github.com/curl/curl/blob/master/.github/workflows/http3-linux.yml (CI/CD for TCP/2)
 # - https://curl.se/dev/deprecate.html - good source of deprecation timelines, e.g. for OpenSSL 1.1.1
