@@ -17,16 +17,15 @@ BDEPEND="
 	test? (
 		app-shells/bash
 		sys-apps/diffutils
-		virtual/perl-Term-ANSIColor
 	)
 "
-
 RDEPEND="
 	dev-perl/TermReadKey
 	X? (
 		>=x11-misc/sux-1.0
 		x11-apps/xhost
-		)"
+	)
+"
 
 pkg_prerm() {
 	if [[ -z ${ROOT} ]]
