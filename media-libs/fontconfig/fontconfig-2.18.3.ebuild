@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 inherit eapi9-ver multilib meson-multilib python-any-r1 readme.gentoo-r1
 
 DESCRIPTION="A library for configuring and customizing font access"
@@ -16,7 +16,7 @@ SRC_URI="
 LICENSE="MIT"
 SLOT="1.0"
 if ! [[ $(ver_cut 3) -ge 90 ]] ; then
-	KEYWORDS="~amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~x86"
 fi
 IUSE="doc nls test"
 RESTRICT="!test? ( test )"
