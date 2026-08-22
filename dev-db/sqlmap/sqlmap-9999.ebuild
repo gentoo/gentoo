@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -28,11 +28,7 @@ fi
 # colorama (BSD)
 # fcrypt (BSD-2)
 # identitywaf (MIT)
-# keepalive (LGPL-2.1+)
 # magic (MIT)
-# multipartpost (LGPL-2.1+)
-# ordereddict (MIT)
-# prettyprint (BSD-2)
 # pydes (public-domain)
 # six (MIT)
 # socks (BSD)
