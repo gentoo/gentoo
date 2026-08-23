@@ -1,0 +1,301 @@
+commit ab40915f820946561e484702646261a088ce1e6f
+Author: tharvik <tharvik@mail.i2p>
+Date:   Thu Jul 30 23:09:47 2026 +0200
+
+    add gentoo.classpath
+
+diff --git a/apps/i2pcontrol/build.xml b/apps/i2pcontrol/build.xml
+index d714a304d..915e56e73 100644
+--- a/apps/i2pcontrol/build.xml
++++ b/apps/i2pcontrol/build.xml
+@@ -28,6 +28,7 @@
+         <pathelement location="${wrapperlib}/wrapper.jar" />
+         <!-- following jar only present for debian builds -->
+         <pathelement location="../../core/java/build/json-simple.jar" />
++        <pathelement path="${gentoo.classpath}" />
+     </path>
+ 
+     <path id="cpSocket">
+@@ -37,6 +38,7 @@
+         <pathelement location="${wrapperlib}/wrapper.jar" />
+         <!-- following jar only present for debian builds -->
+         <pathelement location="../../core/java/build/json-simple.jar" />
++        <pathelement path="${gentoo.classpath}" />
+     </path>
+ 
+     <target name="all" depends="clean, build" />
+diff --git a/apps/i2psnark/java/build.xml b/apps/i2psnark/java/build.xml
+index 18c0502a9..cca8ea340 100644
+--- a/apps/i2psnark/java/build.xml
++++ b/apps/i2psnark/java/build.xml
+@@ -65,6 +65,7 @@
+                 <pathelement location="../../jetty/jettylib/jetty-http.jar" />
+                 <pathelement location="../../jetty/jettylib/jetty-io.jar" />
+                 <pathelement location="../../desktopgui/dist/desktopgui.jar" />
++                <pathelement path="${gentoo.classpath}" />
+             </classpath>
+         </javac>
+     </target>
+diff --git a/apps/i2ptunnel/java/build.xml b/apps/i2ptunnel/java/build.xml
+index 9fb15fc0c..0604106f7 100644
+--- a/apps/i2ptunnel/java/build.xml
++++ b/apps/i2ptunnel/java/build.xml
+@@ -45,7 +45,7 @@
+             destdir="./build/obj" 
+             includeAntRuntime="false"
+             encoding="UTF-8"
+-            classpath="../../../core/java/build/i2p.jar:../../../core/java/build/gnu-getopt.jar:../../ministreaming/java/build/mstreaming.jar" >
++            classpath="../../../core/java/build/i2p.jar:../../../core/java/build/gnu-getopt.jar:../../ministreaming/java/build/mstreaming.jar:${gentoo.classpath}" >
+             <compilerarg line="${javac.compilerargs}" />
+         </javac>
+     </target>
+@@ -62,7 +62,7 @@
+             destdir="./build/obj" 
+             includeAntRuntime="false"
+             encoding="UTF-8"
+-            classpath="../../../core/java/build/i2p.jar:build/i2ptunnel.jar:../../jetty/jettylib/jetty-i2p.jar:../../jetty/jettylib/jetty-util.jar:../../jetty/jettylib/jetty-xml.jar:../../jetty/jettylib/javax.servlet.jar" >
++            classpath="../../../core/java/build/i2p.jar:build/i2ptunnel.jar:../../jetty/jettylib/jetty-i2p.jar:../../jetty/jettylib/jetty-util.jar:../../jetty/jettylib/jetty-xml.jar:../../jetty/jettylib/javax.servlet.jar:${gentoo.classpath}" >
+             <compilerarg line="${javac.compilerargs}" />
+         </javac>
+     </target>
+@@ -372,6 +372,7 @@
+                 <!-- required for multipart form handling in register.jsp -->
+                 <pathelement location="../../jetty/jettylib/jetty-i2p.jar" />
+                 <pathelement location="../../jetty/jettylib/jspc.jar" />
++                <pathelement path="${gentoo.classpath}" />
+             </classpath>
+             <arg value="-d" />
+             <arg value="../jsp/WEB-INF/classes" />
+@@ -409,6 +410,7 @@
+                 <pathelement location="../../../core/java/build/i2p.jar" />
+                 <!-- required for multipart form handling in register.jsp -->
+                 <pathelement location="../../jetty/jettylib/jetty-i2p.jar" />
++                <pathelement path="${gentoo.classpath}" />
+             </classpath>
+         </javac>
+         <copy file="../jsp/web.xml" tofile="../jsp/web-out.xml" />
+@@ -476,6 +478,7 @@
+                 <pathelement location="../../ministreaming/java/build/mstreaming.jar" />
+                 <pathelement location="../../streaming/java/build/streaming.jar" />
+                 <pathelement location="${junit.home}/junit4.jar" />
++                <pathelement path="${gentoo.classpath}" />
+             </classpath>
+             <batchtest>
+                 <fileset dir="./test/junit/">
+diff --git a/apps/imagegen/imagegen/build.xml b/apps/imagegen/imagegen/build.xml
+index 39252ef8b..6193ff129 100644
+--- a/apps/imagegen/imagegen/build.xml
++++ b/apps/imagegen/imagegen/build.xml
+@@ -9,6 +9,7 @@
+         <pathelement location="../zxing/build/zxing.jar" />
+         <pathelement location="../../../build/i2p.jar" />
+         <pathelement location="../../../build/jrobin.jar" />
++        <pathelement path="${gentoo.classpath}" />
+     </path>
+ 
+     <target name="all" depends="war" />
+diff --git a/apps/jetty/build.xml b/apps/jetty/build.xml
+index 3746c1874..5e5e5a6e6 100644
+--- a/apps/jetty/build.xml
++++ b/apps/jetty/build.xml
+@@ -462,6 +462,7 @@
+                 <!-- following jars only present for debian builds -->
+                 <pathelement location="./jettylib/tomcat-api.jar" />
+                 <pathelement location="./jettylib/slf4j2-api.jar" />
++                <pathelement path="${gentoo.classpath}" />
+             </classpath>
+             <compilerarg line="${javac.compilerargs}" />
+         </javac>
+diff --git a/apps/ministreaming/java/build.xml b/apps/ministreaming/java/build.xml
+index b61f36dc3..81b1e954e 100644
+--- a/apps/ministreaming/java/build.xml
++++ b/apps/ministreaming/java/build.xml
+@@ -262,6 +262,7 @@
+                 <pathelement location="${mockito.home}/byte-buddy.jar" />
+                 <pathelement location="${mockito.home}/objenesis.jar" />
+                 <pathelement location="${mockito.home}/mockito-core.jar" />
++                <pathelement path="${gentoo.classpath}" />
+             </classpath>
+             <compilerarg line="${javac.compilerargs}" />
+         </javac>
+@@ -326,6 +327,7 @@
+                 <pathelement location="../../build/jbigi.jar" />
+                 <pathelement location="${with.clover}" />
+                 <pathelement location="${with.cobertura}" />
++                <pathelement path="${gentoo.classpath}" />
+             </classpath>
+             <batchtest todir="../../../reports/ministreaming/junit/">
+                 <fileset dir="./test/junit">
+diff --git a/apps/routerconsole/java/build.xml b/apps/routerconsole/java/build.xml
+index 87fb97dad..d54c399ae 100644
+--- a/apps/routerconsole/java/build.xml
++++ b/apps/routerconsole/java/build.xml
+@@ -91,6 +91,7 @@
+                 <pathelement location="../../jetty/jettylib/jetty-ee.jar" />
+                 <pathelement location="../../jetty/jettylib/tomcat-api.jar" />
+                 <pathelement location="../../../core/java/build/json-simple.jar" />
++                <pathelement path="${gentoo.classpath}" />
+             </classpath>
+         </javac>
+     </target>
+@@ -502,6 +503,7 @@
+                 <pathelement location="build/obj/" />
+                 <pathelement location="../../../router/java/build/router.jar" />
+                 <pathelement location="../../../core/java/build/i2p.jar" />
++                <pathelement path="${gentoo.classpath}" />
+             </classpath>
+             <arg value="-d" />
+             <arg value="../jsp/WEB-INF/classes" />
+@@ -543,6 +545,7 @@
+                 <pathelement location="build/obj/" />
+                 <pathelement location="../../../router/java/build/router.jar" />
+                 <pathelement location="../../../core/java/build/i2p.jar" />
++                <pathelement path="${gentoo.classpath}" />
+             </classpath>
+         </javac>
+ 
+diff --git a/apps/sam/java/build.xml b/apps/sam/java/build.xml
+index 89233a415..24c84ab08 100644
+--- a/apps/sam/java/build.xml
++++ b/apps/sam/java/build.xml
+@@ -18,6 +18,7 @@
+                 <pathelement location="../../../core/java/build/obj" />
+                 <pathelement location="../../../core/java/build/gnu-getopt.jar" />
+                 <pathelement location="../../ministreaming/java/build/obj" />
++                <pathelement path="${gentoo.classpath}" />
+             </classpath>
+         </depend>
+     </target>
+@@ -38,8 +39,8 @@
+             release="${javac.release}"
+             includeAntRuntime="false"
+             encoding="UTF-8"
+-            destdir="./build/obj" 
+-            classpath="../../../core/java/build/i2p.jar:../../../core/java/build/gnu-getopt.jar:../../ministreaming/java/build/mstreaming.jar" >
++            destdir="./build/obj"
++            classpath="../../../core/java/build/i2p.jar:../../../core/java/build/gnu-getopt.jar:../../ministreaming/java/build/mstreaming.jar:${gentoo.classpath}" >
+             <compilerarg line="${javac.compilerargs}" />
+         </javac>
+     </target>
+diff --git a/apps/streaming/java/build.xml b/apps/streaming/java/build.xml
+index 751c04f4f..3703e01b3 100644
+--- a/apps/streaming/java/build.xml
++++ b/apps/streaming/java/build.xml
+@@ -76,6 +76,7 @@
+                 <pathelement location="${mockito.home}/byte-buddy.jar" />
+                 <pathelement location="${mockito.home}/objenesis.jar" />
+                 <pathelement location="${mockito.home}/mockito-core.jar" />
++                <pathelement path="${gentoo.classpath}" />
+             </classpath>
+             <compilerarg line="${javac.compilerargs}" />
+         </javac>
+@@ -143,6 +144,7 @@
+                 <pathelement location="../../build/jbigi.jar" />
+                 <pathelement location="${with.clover}" />
+                 <pathelement location="${with.cobertura}" />
++                <pathelement path="${gentoo.classpath}" />
+             </classpath>
+             <batchtest todir="../../../reports/streaming/junit/">
+                 <fileset dir="./test/junit">
+diff --git a/apps/susidns/src/build.xml b/apps/susidns/src/build.xml
+index 652b32d44..9761ea09d 100644
+--- a/apps/susidns/src/build.xml
++++ b/apps/susidns/src/build.xml
+@@ -35,6 +35,7 @@
+ 		<pathelement location="${ant.home}/lib/ant.jar" />
+ 		<pathelement location="../../../core/java/build/i2p.jar" />
+ 		<pathelement location="../../addressbook/dist/addressbook.jar" />
++		<pathelement path="${gentoo.classpath}" />
+  	</path>
+ 
+ 	<property name="javac.compilerargs" value="" />
+diff --git a/apps/susimail/build.xml b/apps/susimail/build.xml
+index 2ec56c466..385d3ed6d 100644
+--- a/apps/susimail/build.xml
++++ b/apps/susimail/build.xml
+@@ -55,6 +55,7 @@
+                 <!-- tomcat-api.jar only present for debian builds -->
+                 <pathelement location="../jetty/jettylib/tomcat-api.jar" />
+                 <pathelement location="../jetty/jettylib/jetty-i2p.jar" />
++                <pathelement path="${gentoo.classpath}" />
+             </classpath>
+         </javac>
+     </target>
+diff --git a/core/java/build.xml b/core/java/build.xml
+index f2e2adb26..11f355f77 100644
+--- a/core/java/build.xml
++++ b/core/java/build.xml
+@@ -72,7 +72,7 @@
+                debuglevel="lines,vars,source"
+                includeAntRuntime="false"
+                encoding="UTF-8"
+-               destdir="./build/obj" classpath="${javac.classpath.mod}" >
++               destdir="./build/obj" classpath="${javac.classpath.mod}:${gentoo.classpath}" >
+             <compilerarg line="${javac.compilerargs}" />
+             <include name="**/*.java" />
+             <exclude name="${source.exclude1}" />
+@@ -291,6 +291,7 @@
+                 <pathelement location="${scalactic.jar}" />
+                 <pathelement location="${scalatest.jar}" />
+                 <pathelement location="./build/obj" />
++                <pathelement path="${gentoo.classpath}" />
+             </classpath>
+         </scalac>
+     </target>
+@@ -326,6 +327,7 @@
+                 <pathelement location="${mockito.home}/objenesis.jar" />
+                 <pathelement location="${mockito.home}/mockito-core.jar" />
+                 <pathelement location="${junit.home}/junit4.jar" />
++                <pathelement path="${gentoo.classpath}" />
+             </classpath>
+             <compilerarg line="${javac.compilerargs}" />
+         </javac>
+@@ -491,6 +493,7 @@
+                 <pathelement location="../../build/jbigi.jar" />
+                 <pathelement location="${with.clover}" />
+                 <pathelement location="${with.cobertura}" />
++                <pathelement path="${gentoo.classpath}" />
+             </classpath>
+             <batchtest todir="../../reports/core/junit/">
+                 <fileset dir="./test/junit/">
+diff --git a/installer/tools/java/build.xml b/installer/tools/java/build.xml
+index 97dacf582..6388a0b59 100644
+--- a/installer/tools/java/build.xml
++++ b/installer/tools/java/build.xml
+@@ -29,7 +29,7 @@
+             release="${javac.release}"
+             includeAntRuntime="false"
+             encoding="UTF-8"
+-            destdir="./build/obj" classpath="${javac.classpath}:../../../build/i2p.jar:../../../core/java/build/gnu-getopt.jar:../../../build/router.jar:../../../build/routerconsole.jar" >
++            destdir="./build/obj" classpath="${javac.classpath}:../../../build/i2p.jar:../../../core/java/build/gnu-getopt.jar:../../../build/router.jar:../../../build/routerconsole.jar:${gentoo.classpath}" >
+             <compilerarg line="${javac.compilerargs}" />
+         </javac>
+     </target>
+diff --git a/router/java/build.xml b/router/java/build.xml
+index 025e652b4..bedaee0ce 100644
+--- a/router/java/build.xml
++++ b/router/java/build.xml
+@@ -68,6 +68,7 @@
+                 <pathelement path="../../core/java/build/gnu-getopt.jar" />
+                 <pathelement path="../../core/java/build/httpclient.jar" />
+                 <pathelement path="../../core/java/build/httpcore.jar" />
++                <pathelement path="${gentoo.classpath}" />
+             </classpath>
+             <compilerarg line="${javac.compilerargs}" />
+             <include name="**/*.java" />
+@@ -314,6 +315,7 @@
+                 <pathelement location="${hamcrest.home}/hamcrest-all.jar" />
+                 <pathelement location="${junit.home}/junit4.jar" />
+                 <pathelement location="../../core/java/build/i2ptest.jar" />
++                <pathelement path="${gentoo.classpath}" />
+             </classpath>
+             <compilerarg line="${javac.compilerargs}" />
+         </javac>
+@@ -460,6 +462,7 @@
+                 <pathelement location="../../build/jbigi.jar" />
+                 <pathelement location="${with.clover}" />
+                 <pathelement location="${with.cobertura}" />
++                <pathelement path="${gentoo.classpath}" />
+             </classpath>
+             <batchtest todir="../../reports/router/junit/">
+                 <fileset dir="./test/junit">
