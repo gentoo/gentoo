@@ -16,7 +16,7 @@ SRC_URI="
 LICENSE="MIT"
 SLOT="1.0"
 if ! [[ $(ver_cut 3) -ge 90 ]] ; then
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~riscv ~x86"
 fi
 IUSE="doc nls test"
 RESTRICT="!test? ( test )"
