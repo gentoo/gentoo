@@ -21,6 +21,7 @@ RDEPEND="
 	dev-libs/openssl:=
 "
 DEPEND="${RDEPEND}"
+BDEPEND="test? ( dev-cpp/gtest )"
 
 PATCHES=( "${FILESDIR}"/${P}-test.patch )
 
