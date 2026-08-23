@@ -5,7 +5,7 @@ EAPI=8
 
 inherit java-pkg-2 prefix
 
-DOWNLOAD_ID="996"
+DOWNLOAD_ID="1168"
 MY_DATE="$(ver_cut 4)"
 MY_PN="SMCIPMITool"
 MY_PN_SRC_URI="SMCIPMItool"
