@@ -1,3 +1,26 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 15f0551..901d12e 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -36,6 +36,7 @@ endif ()
+ 
+ message(STATUS "Running cmake version ${CMAKE_VERSION}")
+ 
++option(WITH_DOCS "build with Documentations." ON)
+ option(WITH_STATIC "build with static libraries." ON)
+ option(WITH_EMBEDDED_SRC "build with embedded libcork, libipset, and libbloom source." ON)
+ option(ENABLE_CONNMARKTOS "Enable saved connmark to IP TOS QoS feature" OFF)
+@@ -177,7 +178,10 @@ target_link_libraries(ipset cork bloom)
+ endif ()
+ 
+ add_subdirectory(src)
++
++if(WITH_DOCS)
+ add_subdirectory(doc)
++endif()
+ 
+ # Testing
+ include(CTest)
 diff --git a/doc/CMakeLists.txt b/doc/CMakeLists.txt
 index 9abd455..76a1993 100644
 --- a/doc/CMakeLists.txt

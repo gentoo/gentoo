@@ -44,6 +44,7 @@ src_configure() {
 	local mycmakeargs=(
 		-DWITH_EMBEDDED_SRC=OFF
 		-DWITH_STATIC=OFF
+		-DWITH_DOCS="$(usex doc)"
 	)
 	cmake_src_configure
 }
@@ -63,7 +64,7 @@ src_install() {
 	dosym shadowsocks /etc/init.d/shadowsocks.redir
 	dosym shadowsocks /etc/init.d/shadowsocks.tunnel
 
-	dodoc -r acl
+	use doc && dodoc -r acl
 
 	for i in debian/${PN}*.service; do
 		systemd_newunit $i $(basename $i)

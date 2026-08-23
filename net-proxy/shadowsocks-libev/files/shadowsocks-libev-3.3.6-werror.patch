@@ -11,3 +11,17 @@ index 52ff13e..15f0551 100644
  
  set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/lib)
  set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/lib)
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 80503cb..08bd33e 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -84,9 +84,6 @@ set(SS_REDIR_SOURCE
+         ${SS_PLUGIN_SOURCE}
+         )
+ 
+-# Apply -Werror only to project sources (not bundled submodules)
+-set(SS_WERROR_FLAGS -Werror)
+-
+ # Include directories from Find modules
+ # MbedTLS must come first to avoid conflicts with other mbedtls versions
+ # that may be in /opt/homebrew/include (e.g. mbedtls 4.x vs 3.x)
