@@ -15,7 +15,7 @@ SRC_URI="https://extensions.libreoffice.org/assets/downloads/41/1782877663/dict-
 
 LICENSE="BSD MIT LGPL-3+"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-macos"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~x64-macos"
 
 src_prepare() {
 	local PLOCALES=( "en_AU" "en_CA" "en_GB" "en_US" "en_GB-oxendict" "en_ZA" )
