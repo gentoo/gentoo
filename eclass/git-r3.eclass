@@ -369,7 +369,6 @@ _git-r3_create_gitdir() {
 	[[ ${?} -ne 0 ]] && return 1
 	local object_format=$(_git-r3_get_object_format "${head_ref[0]}")
 
-	addwrite "${EGIT3_STORE_DIR}"
 	local saved_umask
 	if [[ ${EVCS_UMASK} ]]; then
 		saved_umask=$(umask)
@@ -426,6 +425,8 @@ _git-r3_set_gitdir() {
 
 	local distdir=${PORTAGE_ACTUAL_DISTDIR:-${DISTDIR}}
 	: "${EGIT3_STORE_DIR:=${distdir}/git3-src}"
+
+	addwrite "${EGIT3_STORE_DIR}"
 
 	GIT_DIR=${EGIT3_STORE_DIR}/${repo_name}
 }
