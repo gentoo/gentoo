@@ -42,7 +42,7 @@ S="${WORKDIR}/jdk-${MY_PV}"
 
 LICENSE="GPL-2-with-classpath-exception"
 SLOT=$(ver_cut 1)
-KEYWORDS="~amd64 arm64 ~ppc64 ~riscv"
+KEYWORDS="~amd64 arm64 ppc64 ~riscv"
 IUSE="alsa cups headless-awt selinux source"
 
 RDEPEND="
