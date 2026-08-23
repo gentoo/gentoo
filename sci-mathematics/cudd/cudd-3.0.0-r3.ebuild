@@ -14,6 +14,7 @@ KEYWORDS="~amd64 ~x86"
 BDEPEND="
 	app-text/doxygen
 	dev-texlive/texlive-latex
+	dev-texlive/texlive-latexrecommended
 	media-gfx/graphviz
 "
 
