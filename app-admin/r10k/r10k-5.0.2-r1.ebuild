@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -33,7 +33,8 @@ ruby_add_rdepend "
 	|| ( dev-ruby/puppet_forge:6 dev-ruby/puppet_forge:5 )
 "
 
-RDEPEND="git? ( >=dev-vcs/git-1.6.6 )"
+# ${RDEPND} is needed here to not clobber the Ruby function above
+RDEPEND="${RDEPEND} git? ( >=dev-vcs/git-1.6.6 )"
 
 all_ruby_prepare() {
 	# Remove unused multi_json dependency. It is not used anywhere and
