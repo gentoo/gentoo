@@ -22,7 +22,7 @@ fi
 LICENSE="ISC"
 SLOT="0"
 if [[ ${PV} != 9999 ]] ; then
-	KEYWORDS="~amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~riscv ~x86"
 fi
 IUSE="test"
 RESTRICT="!test? ( test )"
