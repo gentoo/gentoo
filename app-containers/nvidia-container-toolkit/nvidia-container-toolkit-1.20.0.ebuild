@@ -27,9 +27,17 @@ SLOT="0/${PV}"
 # Some tests may require specific environmental setups or additional hardware.
 RESTRICT="test" # Bug 831702
 
+# Bug 950233 version should not be newer than libnvidia-container
 RDEPEND="
-	sys-libs/libnvidia-container
+	~sys-libs/libnvidia-container-${PV}
 "
+
+# go.mod requires a newer Go than go-module.eclass guarantees (bug 976194)
+BDEPEND=">=dev-lang/go-1.25.0"
+
+PATCHES=(
+	"${FILESDIR}/${PN}-1.19.0-no-prestrip.patch"
+)
 
 src_compile() {
 	emake binaries
