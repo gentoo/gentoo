@@ -19,8 +19,13 @@ SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~arm64-macos ~x64-macos"
 
 BDEPEND="
-	<dev-python/flit-core-4[${PYTHON_USEDEP}]
+	>=dev-python/flit-core-2[${PYTHON_USEDEP}]
 "
+
+PATCHES=(
+	# https://github.com/pexpect/ptyprocess/pull/84
+	"${FILESDIR}"/${PN}-0.7.0-flit-core-4.patch
+)
 
 distutils_enable_tests unittest
 
