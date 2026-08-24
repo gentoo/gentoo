@@ -37,6 +37,12 @@
 #--- END OF EXAMPLES ---
 
 # Bernard Cafarelli <voyageur@gentoo.org> (2026-08-24)
+# Abandoned (last release in 2008), and uncertain useful value with modern 
+# filesystems. Also collides with dev-util/shake
+# Removal on 2026-09-24. Bug #978360
+sys-fs/shake
+
+# Bernard Cafarelli <voyageur@gentoo.org> (2026-08-24)
 # Abandoned (last release in 2009), and failing on sample QTVR panorama files
 # Removal on 2026-09-24. Bug #955494
 media-gfx/freepv
