@@ -4,6 +4,10 @@
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
 
+# Lukas Schmelting <lschmelting@posteo.com> (2026-09-10)
+# dev-util/bpftool not keyworded here
+net-misc/networkmanager clat
+
 # David Seifert <soap@gentoo.org> (2026-09-07)
 # sci-libs/libaec is not keyworded here, and >=sci-libs/hdf5-2.2.0
 # requires it directly instead of via virtual/szip

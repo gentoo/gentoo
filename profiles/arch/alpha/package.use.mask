@@ -1,6 +1,10 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Lukas Schmelting <lschmelting@posteo.com> (2026-09-10)
+# dev-util/bpftool not keyworded here
+net-misc/networkmanager clat
+
 # David Seifert <soap@gentoo.org> (2026-09-07)
 # sci-libs/libaec is not keyworded here, and >=sci-libs/hdf5-2.2.0
 # requires it directly instead of via virtual/szip
