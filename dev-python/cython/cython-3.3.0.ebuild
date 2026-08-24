@@ -10,7 +10,7 @@ PYTHON_TESTED=( "${PYTHON_FULLY_TESTED[@]}" )
 PYTHON_COMPAT=( "${PYTHON_TESTED[@]}" python3_15 python3_{14..15}t )
 PYTHON_REQ_USE="threads(+)"
 
-inherit distutils-r1 flag-o-matic multiprocessing pypi toolchain-funcs
+inherit distutils-r1 multiprocessing pypi toolchain-funcs
 
 DESCRIPTION="A Python to C compiler"
 HOMEPAGE="
@@ -46,11 +46,6 @@ PATCHES=(
 #	dev-python/jinja2 \
 #	dev-python/sphinx-issues \
 #	dev-python/sphinx-tabs
-
-python_configure_all() {
-	# https://gcc.gnu.org/PR125730 (bug #976797)
-	tc-is-gcc && [[ $(gcc-major-version) -ge 16 ]] && append-cflags -fno-ivopts
-}
 
 python_compile() {
 	# Python gets confused when it is in sys.path before build.
