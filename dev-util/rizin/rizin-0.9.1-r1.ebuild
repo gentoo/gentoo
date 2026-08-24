@@ -36,6 +36,7 @@ RDEPEND="
 	dev-libs/openssl:0=
 	dev-libs/libpcre2:0=[jit,pcre16,pcre32]
 	>=dev-libs/tree-sitter-0.19.0:=
+	dev-libs/zydis:=
 	dev-libs/xxhash
 	sys-apps/file
 	virtual/zlib:=
