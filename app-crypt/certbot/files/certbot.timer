@@ -1,0 +1,10 @@
+[Unit]
+Description=Daily Certbot renewal timer
+
+[Timer]
+OnCalendar=daily
+RandomizedDelaySec=24h
+Persistent=true
+
+[Install]
+WantedBy=timers.target
