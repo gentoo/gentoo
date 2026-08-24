@@ -13,7 +13,7 @@ if [[ ${PV} = "9999" ]]; then
 	EGIT_REPO_URI="https://github.com/csete/gpredict.git"
 else
 	SRC_URI="https://github.com/csete/gpredict/releases/download/v${PV}/${P}.tar.bz2"
-	KEYWORDS="amd64 ~ppc x86"
+	KEYWORDS="amd64 ppc x86"
 fi
 
 LICENSE="GPL-2"
