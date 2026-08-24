@@ -5,14 +5,17 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{12..15} )
 
-inherit git-r3 linux-info meson python-any-r1 systemd udev
+inherit linux-info meson python-any-r1 systemd udev
 
 DESCRIPTION="A load-balancing jobserver for Gentoo"
 HOMEPAGE="https://gitweb.gentoo.org/proj/steve.git/"
-EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/steve.git"
+SRC_URI="
+	https://distfiles.gentoo.org/pub/dev/mgorny%40gentoo.org/steve/${P}.tar.xz
+"
 
 LICENSE="GPL-2+"
 SLOT="0"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 IUSE="debug test"
 RESTRICT="test"
 PROPERTIES="test? ( test_privileged )"
