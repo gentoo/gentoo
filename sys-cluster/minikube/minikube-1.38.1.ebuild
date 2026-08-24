@@ -55,9 +55,7 @@ src_compile() {
 	COMMIT_NO=${GIT_COMMIT} \
 	COMMIT_SHORT=${GIT_COMMIT_SHORT} \
 	LDFLAGS="" \
-	emake \
-		$(usex libvirt "out/docker-machine-driver-kvm2" "") \
-		"${minikube_target}"
+	emake "${minikube_target}"
 }
 
 src_install() {
