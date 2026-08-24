@@ -29,6 +29,7 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	dev-python/setuptools-scm
 	test? (
+		dev-python/nbconvert[${PYTHON_USEDEP}]
 		dev-python/pillow[${PYTHON_USEDEP}]
 		dev-python/pandas[${PYTHON_USEDEP}]
 		dev-python/pixelmatch[${PYTHON_USEDEP}]
