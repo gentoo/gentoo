@@ -31,7 +31,7 @@ IUSE="+jit +opengl wayland"
 
 RDEPEND="
 	app-arch/libarchive[zstd]
-	dev-qt/qtbase:6[network,opengl,widgets]
+	dev-qt/qtbase:6[network,opengl,widgets,X]
 	dev-qt/qtmultimedia:6
 	dev-qt/qtsvg:6
 	media-libs/faad2
