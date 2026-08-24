@@ -9,6 +9,7 @@
     <flag name="concheck">Enable connectivity checking support (needed for Captive portals detection)</flag>
     <flag name="connection-sharing">Support connection sharing (uses <pkg>net-dns/dnsmasq</pkg>)</flag>
     <flag name="dhclient">Use dhclient from <pkg>net-misc/dhcp</pkg> for getting an IP via DHCP</flag>
+    <flag name="clat">Enable CLAT (464XLAT) support for IPv4 over IPv6-only networks</flag>
     <flag name="dhcpcd">Use <pkg>net-misc/dhcpcd</pkg> for getting an IP</flag>
     <flag name="elogind">Use <pkg>sys-auth/elogind</pkg> for session tracking</flag>
     <flag name="iptables">Use <pkg>net-firewall/iptables</pkg> for connection sharing</flag>
