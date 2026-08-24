@@ -22,7 +22,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
 
 # See 'ffi_lib FFI.library_name("vips", ??)' in lib/vips.rb
 VIPS_ABI="42"
