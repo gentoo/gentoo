@@ -16,7 +16,7 @@ if [[ "${PV}" == *9999* ]] ; then
 	EGIT_REPO_URI="git://thelambdalab.xyz/${PN}.git"
 else
 	SRC_URI="https://dev.gentoo.org/~xgqt/distfiles/mirrored/${P}.tar.xz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 ~x86"
 fi
 
 LICENSE="GPL-3+"
