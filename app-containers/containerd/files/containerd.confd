@@ -1,3 +1,9 @@
 # This is the delay to be used in the start_post function to wait for
 # the socket to be active.
 #containerd_socket_delay=5
+
+# Configure containerd socket address
+#containerd_socket_address="/run/containerd/containerd.sock"
+
+# Configure parameters for containerd process. See `man containerd` for details
+#command_args="--root=/var/lib/containerd --state=/run/containerd --address=${containerd_socket_address:-/run/containerd/containerd.sock}"
