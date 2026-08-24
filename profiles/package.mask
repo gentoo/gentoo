@@ -36,6 +36,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Bernard Cafarelli <voyageur@gentoo.org> (2026-08-24)
+# Abandoned (last release in 2009), and failing on sample QTVR panorama files
+# Removal on 2026-09-24. Bug #955494
+media-gfx/freepv
+
 # Sam James <sam@gentoo.org> (2026-08-21)
 # Grave security vulnerabilities which either haven't been
 # fixed upstream or fixed insufficiently. Our version is out-of-date as
