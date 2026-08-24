@@ -14,8 +14,7 @@ SLOT="0/${PV}"
 if [[ ${PV} =~ "9999" ]]; then
 	EGIT_REPO_URI="https://github.com/gnuradio/gnuradio.git"
 	EGIT_BRANCH="main"
-	SRC_URI+="https://dev.gentoo.org/~tomjbe/distfiles/${PN}-qt5to6.patch.xz
-		https://dev.gentoo.org/~tomjbe/distfiles/${PN}-3.11-OOT-compatibility.patch.xz"
+	SRC_URI+="https://dev.gentoo.org/~tomjbe/distfiles/${PN}-3.11-OOT-compatibility.patch.xz"
 	inherit git-r3
 else
 	SRC_URI="https://github.com/gnuradio/gnuradio/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
@@ -134,7 +133,6 @@ DEPEND="${RDEPEND}
 
 src_unpack() {
 	unpack ${PN}-3.11-OOT-compatibility.patch.xz
-	unpack ${PN}-qt5to6.patch.xz
 	git-r3_src_unpack
 }
 
@@ -146,8 +144,6 @@ src_prepare() {
 	use !oss && sed -i 's#soundcard.h#oss-nonexistent.h#g' cmake/Modules/FindOSS.cmake
 	use !portaudio && sed -i 's#portaudio.h#portaudio-nonexistent.h#g' cmake/Modules/FindPORTAUDIO.cmake
 
-	# see https://github.com/haakov/gnuradio/pull/12
-	eapply "${WORKDIR}"/${PN}-qt5to6.patch
 	# see https://github.com/gnuradio/gnuradio/pull/8127
 	# support existing OOT modules
 	eapply "${WORKDIR}/${PN}-3.11-OOT-compatibility.patch"
