@@ -24,7 +24,7 @@ RUBY_S="rails-${PV}/${PN}"
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1-2)"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~riscv"
 
 RDEPEND=">=app-eselect/eselect-rails-0.29"
 
