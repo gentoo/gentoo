@@ -6,7 +6,7 @@ EAPI=8
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{12..14} )
 
-inherit distutils-r1 toolchain-funcs
+inherit distutils-r1 systemd toolchain-funcs
 
 if [[ "${PV}" == *9999 ]]; then
 	inherit git-r3
@@ -136,6 +136,7 @@ RDEPEND="
 # 	)
 # "
 
+EPYTEST_PLUGINS=()
 # Note: "docs" is not an actual directory under "S", they are actually
 # under each modules, see python_compile_all redefinition, but keep
 # this instruction enabled for dependency configuration.
@@ -209,8 +210,6 @@ python_compile_all() {
 }
 
 python_test() {
-	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
-
 	tc-has-64bit-time_t || EPYTEST_DESELECT+=(
 		'certbot/_internal/tests/storage_test.py::RenewableCertTests::test_time_interval_judgments'
 	)
@@ -218,4 +217,10 @@ python_test() {
 	# Change for pytest rootdir is required.
 	cd "${BUILD_DIR}/install$(python_get_sitedir)" || die
 	epytest
+}
+
+src_install() {
+	default
+
+	systemd_dounit "${FILESDIR}"/certbot.{service,timer}
 }
