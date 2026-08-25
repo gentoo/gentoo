@@ -1,0 +1,13 @@
+https://qt-project.atlassian.net/browse/QTBUG-149431
+https://bugs.kde.org/show_bug.cgi?id=524657
+https://mail.kde.org/pipermail/distributions/2026-August/001726.html
+--- a/src/gui/image/qiconloader.cpp
++++ b/src/gui/image/qiconloader.cpp
+@@ -152,6 +152,5 @@
+ 
+     if (m_systemTheme.isEmpty()) {
+-        const QString &themeName = systemThemeName();
+-        m_systemTheme = !themeName.isEmpty() ? themeName : fallbackThemeName();
++        m_systemTheme = systemThemeName();
+     }
+     return m_systemTheme;
