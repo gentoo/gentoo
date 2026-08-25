@@ -19,7 +19,7 @@ S="${WORKDIR}"/${MY_PN}-${PV}
 
 LICENSE="BSD ISC MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 RDEPEND="app-crypt/gnupg"
 BDEPEND="verify-sig? ( sec-keys/openpgp-keys-maxbaz )"
