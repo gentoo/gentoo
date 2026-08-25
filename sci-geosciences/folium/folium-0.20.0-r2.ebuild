@@ -46,9 +46,16 @@ python_test() {
 		tests/plugins/test_time_slider_choropleth.py	# require geopandas
 	)
 	EPYTEST_DESELECT=(
-		tests/selenium/test_selenium.py::test_notebook                 # require jupytext
-		tests/snapshots/test_snapshots.py::test_screenshot[issue_2109] # require geopandas
-		tests/snapshots/test_snapshots.py::test_screenshot[issue_1989] # require geopandas
+		# require jupytext
+		tests/selenium/test_selenium.py::test_notebook
+		# require geopandas
+		tests/snapshots/test_snapshots.py::test_screenshot
+		# need network to dl drivers
+		tests/selenium/test_geojson_selenium.py::test_geojson
+		tests/selenium/test_heat_map_selenium.py::test_heat_map_with_weights
+		tests/test_repr.py::test__repr_png_is_bytes
+		tests/test_repr.py::test_valid_png
+		tests/test_repr.py::test_valid_png_size
 	)
 
 	SE_MANAGER_PATH=/usr/bin/selenium-manager \
