@@ -34,6 +34,7 @@ KEYWORDS="~amd64 ~x86"
 
 BDEPEND="
 	>=dev-lang/go-1.26.2
+	<dev-lang/go-1.27
 "
 DEPEND="
 	acct-group/ipfs
