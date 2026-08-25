@@ -1,17 +1,13 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 inherit cmake flag-o-matic fortran-2 toolchain-funcs
 
-# 2024/07/04 master branch containing 45 commits on top of 2.2.0
-COMMIT_HASH="0234af94c6578c53ac4c19f2925eb6e5c4ad6f0f"
-
 DESCRIPTION="Subset of LAPACK routines redesigned for heterogenous (MPI) computing"
 HOMEPAGE="https://www.netlib.org/scalapack/"
-SRC_URI="https://github.com/Reference-ScaLAPACK/${PN}//archive/${COMMIT_HASH}.tar.gz -> ${P}.tar.gz"
-S="${WORKDIR}/${PN}-${COMMIT_HASH}"
+SRC_URI="https://github.com/Reference-ScaLAPACK/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
