@@ -73,6 +73,10 @@ if [[ ${PV} != *9999 ]] ; then
 	VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/moritzbunkus.asc"
 fi
 
+PATCHES=(
+	"${FILESDIR}"/mktoolnix-101.0-optional-tests-build.patch
+)
+
 pkg_setup() {
 	if [[ ${MERGE_TYPE} != binary ]]; then
 		# bug #927497
@@ -124,10 +128,11 @@ src_configure() {
 	local myeconfargs=(
 		$(use_enable dbus)
 		$(use_enable debug)
-		$(usex pch "" --disable-precompiled-headers)
-		$(use_enable gui)
 		$(use_with dvd dvdread)
+		$(use_enable gui)
 		$(use_with nls gettext)
+		$(usex pch "" --disable-precompiled-headers)
+		$(use_enable test tests)
 		#$(use_with nls po4a)
 		--disable-update-check
 		--disable-optimization
