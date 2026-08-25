@@ -1,0 +1,18 @@
+--- ACR38_LINUX_100711_P-a/src/controllib/Makefile.am	2026-07-07 11:29:48.000000000 +0200
++++ ACR38_LINUX_100711_P-b/src/controllib/Makefile.am	2026-07-07 19:06:23.447265558 +0200
+@@ -6,7 +6,7 @@
+ 
+ ACR38_CONTROLLIB = libacr38ucontrol.$(DYN_LIB_EXT)
+ 
+-AM_CPPFLAGS = -I$(srcdir)/../driver $(PCSCLITE_CFLAGS)
++AM_CPPFLAGS = -I$(srcdir)/../driver
+ 
+ lib_LTLIBRARIES = libacr38ucontrol.la
+ include_HEADERS = ACS38DrvTools.h
+@@ -16,6 +16,5 @@
+ 				 ACS38DrvTools.h
+ 
+ libacr38ucontrol_la_SOURCES = $(SRC_CONTROLLIB)
+-libacr38ucontrol_la_CFLAGS = $(PCSCLITE_CFLAGS)
+ 
+ pkgconfig_DATA = libacr38ucontrol.pc
