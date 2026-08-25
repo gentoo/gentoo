@@ -5,7 +5,8 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=flit-core
 PYPI_PN=Flask-Caching
-PYTHON_COMPAT=( python3_{12..14} )
+PYPI_VERIFY_REPO=https://github.com/pallets-eco/flask-caching
+PYTHON_COMPAT=( python3_{12..15} )
 
 inherit distutils-r1 pypi
 
