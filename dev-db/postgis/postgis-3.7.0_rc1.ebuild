@@ -25,7 +25,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="address-standardizer doc gtk static-libs topology"
+IUSE="doc gtk static-libs topology"
 
 REQUIRED_USE="${POSTGRES_REQ_USE}"
 
@@ -39,7 +39,6 @@ RDEPEND="${POSTGRES_DEP}
 	>=sci-libs/geos-3.9.0
 	>=sci-libs/proj-6.1.0:=
 	>=sci-libs/gdal-1.10.0:=
-	address-standardizer? ( dev-libs/libpcre2 )
 	gtk? ( x11-libs/gtk+:2 )
 "
 DEPEND="${RDEPEND}
@@ -84,7 +83,6 @@ src_configure() {
 	export CPP=$(tc-getCPP)
 
 	local myeconfargs=(
-		$(use_with address-standardizer)
 		$(use_with gtk gui)
 		$(use_with topology)
 	)
