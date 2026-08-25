@@ -50,12 +50,27 @@ FONT_CONF=( "" )
 # Determines whether detected BDF and PCF font files should be converted
 # to an SFNT wrapper, for use with newer Pango.
 
-if [[ ${CATEGORY}/${PN} != media-fonts/encodings ]]; then
+# @ECLASS_VARIABLE: FONT_DEPEND
+# @OUTPUT_VARIABLE
+# @DESCRIPTION:
+# Contains dependencies on mkfontscale and encodings in *DEPEND format
+# needed for font_xfont_config.
+FONT_DEPEND="
+	>=x11-apps/mkfontscale-1.2.0
+	media-fonts/encodings
+"
+
+# @ECLASS_VARIABLE: FONT_AUTO_DEPEND
+# @PRE_INHERIT
+# @DESCRIPTION:
+# Set to 'no' to disable automatically adding USE=X and FONT_DEPEND to BDEPEND.
+# This allows ebuilds to handle dependencies or X font generation conditionally
+# under their own USE flag or unconditionally.
+: "${FONT_AUTO_DEPEND:=yes}"
+
+if [[ ${CATEGORY}/${PN} != media-fonts/encodings && ${FONT_AUTO_DEPEND} != "no" ]]; then
 	IUSE="X"
-	BDEPEND="X? (
-			>=x11-apps/mkfontscale-1.2.0
-			media-fonts/encodings
-	)"
+	BDEPEND="X? ( ${FONT_DEPEND} )"
 fi
 
 if [[ -n ${FONT_OPENTYPE_COMPAT} ]] ; then
@@ -84,22 +99,26 @@ font_wrap_opentype_compat() {
 }
 
 # @FUNCTION: font_xfont_config
+# @USAGE: [directory]
 # @DESCRIPTION:
 # Generate Xorg font files (mkfontscale/mkfontdir).
 font_xfont_config() {
 	local dir_name
-	if in_iuse X && use X ; then
-		dir_name="${1:-${FONT_PN}}"
-		rm -f "${ED}${FONTDIR}/${1//${S}/}"/{fonts.{dir,scale},encodings.dir} \
-			|| die "failed to prepare ${FONTDIR}/${1//${S}/}"
-		einfo "Creating fonts.scale & fonts.dir in ${dir_name##*/}"
-		mkfontscale "${ED}${FONTDIR}/${1//${S}/}" || eerror "failed to create fonts.scale"
-		mkfontdir \
-			-e "${EPREFIX}"/usr/share/fonts/encodings \
-			-e "${EPREFIX}"/usr/share/fonts/encodings/large \
-			"${ED}${FONTDIR}/${1//${S}/}" || eerror "failed to create fonts.dir"
-		[[ -e fonts.alias ]] && doins fonts.alias
+
+	if ! in_iuse X || ! use X ; then
+		return
 	fi
+
+	dir_name="${1:-${FONT_PN}}"
+	rm -f "${ED}${FONTDIR}/${1//${S}/}"/{fonts.{dir,scale},encodings.dir} \
+		|| die "failed to prepare ${FONTDIR}/${1//${S}/}"
+	einfo "Creating fonts.scale & fonts.dir in ${dir_name##*/}"
+	mkfontscale "${ED}${FONTDIR}/${1//${S}/}" || eerror "failed to create fonts.scale"
+	mkfontdir \
+		-e "${EPREFIX}"/usr/share/fonts/encodings \
+		-e "${EPREFIX}"/usr/share/fonts/encodings/large \
+		"${ED}${FONTDIR}/${1//${S}/}" || eerror "failed to create fonts.dir"
+	[[ -e fonts.alias ]] && doins fonts.alias
 }
 
 # @FUNCTION: font_fontconfig

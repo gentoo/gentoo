@@ -69,6 +69,15 @@ assert() {
 	done
 }
 
+_INSDESTTREE_=""
+insinto() {
+	_INSDESTTREE_="$1"
+	mkdir -p "${ED}${_INSDESTTREE_}"
+}
+doins() {
+	cp -t "${ED}${_INSDESTTREE_}" "$@"
+}
+
 has_version() {
 	while [[ $1 == -* ]]; do
 		shift
