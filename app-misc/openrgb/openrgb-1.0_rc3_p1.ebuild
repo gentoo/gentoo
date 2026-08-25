@@ -7,16 +7,16 @@ inherit check-reqs flag-o-matic qmake-utils tmpfiles udev xdg-utils
 
 if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
-	EGIT_REPO_URI=${EGIT_REPO_URI:-"https://gitlab.com/CalcProgrammer1/OpenRGB"}
+	EGIT_REPO_URI=${EGIT_REPO_URI:-"https://codeberg.org/OpenRGB/OpenRGB.git"}
 else
-	MY_PV=$(ver_rs 2 "")
-	SRC_URI="https://gitlab.com/CalcProgrammer1/OpenRGB/-/archive/release_candidate_${MY_PV}/OpenRGB-release_candidate_${MY_PV}.tar.bz2"
-	S="${WORKDIR}/OpenRGB-release_candidate_${MY_PV}"
+	MY_PV="1.0rc3.1"
+	SRC_URI="https://codeberg.org/OpenRGB/OpenRGB/archive/release_candidate_${MY_PV}.tar.gz -> ${P}.tar.gz"
+	S="${WORKDIR}/openrgb"
 	KEYWORDS="~amd64 ~loong"
 fi
 
 DESCRIPTION="Open source RGB lighting control"
-HOMEPAGE="https://openrgb.org https://gitlab.com/CalcProgrammer1/OpenRGB/"
+HOMEPAGE="https://openrgb.org https://gitlab.com/CalcProgrammer1/OpenRGB/ https://codeberg.org/OpenRGB/OpenRGB"
 LICENSE="GPL-2+"
 # subslot is OPENRGB_PLUGIN_API_VERSION from
 # https://gitlab.com/CalcProgrammer1/OpenRGB/-/blob/master/OpenRGBPluginInterface.h
