@@ -220,7 +220,7 @@ python_test() {
 }
 
 src_install() {
-	default
+	distutils-r1_src_install
 
 	systemd_dounit "${FILESDIR}"/certbot.{service,timer}
 }
