@@ -3,8 +3,6 @@
 
 ARCH="riscv"
 
-CHOST="riscv64-pc-linux-gnu"
-
 ACCEPT_KEYWORDS="~riscv"
 
 SYMLINK_LIB=""
