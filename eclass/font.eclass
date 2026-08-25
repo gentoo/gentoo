@@ -310,7 +310,7 @@ _update_fontcache() {
 # @DESCRIPTION:
 # The font pkg_postinst function.
 font_pkg_postinst() {
-	if [[ -n ${FONT_CONF[@]} ]]; then
+	if [[ -z ${REPLACING_VERSIONS} && -n ${FONT_CONF[@]} ]]; then
 		local conffile
 		elog "The following fontconfig configuration files have been installed:"
 		elog
