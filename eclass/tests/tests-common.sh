@@ -69,6 +69,14 @@ assert() {
 	done
 }
 
+pipestatus() {
+	local s ret=0
+	for s in "${PIPESTATUS[@]}"; do
+		[[ ${s} -ne 0 ]] && ret=${s}
+	done
+	return "${ret}"
+}
+
 _INSDESTTREE_=""
 insinto() {
 	_INSDESTTREE_="$1"

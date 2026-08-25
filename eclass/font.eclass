@@ -4,11 +4,11 @@
 # @ECLASS: font.eclass
 # @MAINTAINER:
 # fonts@gentoo.org
-# @SUPPORTED_EAPIS: 7 8
+# @SUPPORTED_EAPIS: 7 8 9
 # @BLURB: Eclass to make font installation uniform
 
 case ${EAPI} in
-	7|8) ;;
+	7|8|9) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
@@ -77,6 +77,19 @@ if [[ -n ${FONT_OPENTYPE_COMPAT} ]] ; then
 	IUSE+=" +opentype-compat"
 	BDEPEND+=" opentype-compat? ( x11-apps/fonttosfnt )"
 fi
+
+# @FUNCTION: font_bdf_to_otb
+# @USAGE: <output.otb> [input1.bdf...]
+# @DESCRIPTION:
+# Converts and merges one or more BDF font files into a single OpenType
+# Bitmap (OTB) font using x11-apps/fonttosfnt. If no input files are
+# specified, uncompressed BDF is read from stdin.
+font_bdf_to_otb() {
+	[[ $# -ge 1 ]] || die "Usage: ${FUNCNAME} <output.otb> [input1.bdf...]"
+	local out=$1
+	shift
+	fonttosfnt -v -o "${out}" ${@:+-- "$@"} || die "Failed to convert BDF ${*:-stdin} to ${out}"
+}
 
 # @FUNCTION: font_wrap_opentype_compat
 # @DESCRIPTION:
@@ -192,15 +205,54 @@ font_pkg_setup() {
 	fi
 }
 
+# @FUNCTION: font_src_compile
+# @DESCRIPTION:
+# The font src_compile function. Converts BDF fonts to OTB when
+# FONT_OPENTYPE_COMPAT is enabled.
+font_src_compile() {
+	debug-print-function ${FUNCNAME} "$@"
+
+	case ${EAPI} in
+		7|8) die "${FUNCNAME} is not supported in EAPI ${EAPI}" ;;
+	esac
+
+	if [[ -z ${FONT_OPENTYPE_COMPAT} ]] || ! in_iuse opentype-compat || ! use opentype-compat ; then
+		return
+	fi
+
+	local dirs=()
+	if [[ $(declare -p FONT_S 2>/dev/null) == "declare -a"* ]]; then
+		dirs=( "${FONT_S[@]}" )
+	else
+		dirs=( "${FONT_S:-${S}}" )
+	fi
+	local file out
+	while IFS= read -rd '' file; do
+		out=${file%.gz}
+		out=${out%.*}.otb
+		if [[ ${file} == *.gz ]]; then
+			gzip -cd -- "${file}" | font_bdf_to_otb "${out}"
+			pipestatus || die "Failed to convert ${file} to OTB"
+		else
+			font_bdf_to_otb "${out}" "${file}"
+		fi
+	done < <(find "${dirs[@]}" \( -name '*.bdf' -o -name '*.bdf.gz' \) -type f -print0)
+	[[ " ${FONT_SUFFIX} " != *" otb "* ]] && FONT_SUFFIX+=" otb"
+}
+
 # @FUNCTION: font_src_install
 # @DESCRIPTION:
 # The font src_install function.
 font_src_install() {
 	local dir suffix commondoc
 
-	if [[ -n ${FONT_OPENTYPE_COMPAT} ]] && in_iuse opentype-compat && use opentype-compat ; then
-		font_wrap_opentype_compat
-	fi
+	case ${EAPI} in
+		7|8)
+			if [[ -n ${FONT_OPENTYPE_COMPAT} ]] && in_iuse opentype-compat && use opentype-compat ; then
+				font_wrap_opentype_compat
+			fi
+			;;
+	esac
 
 	if [[ $(declare -p FONT_S 2>/dev/null) == "declare -a"* ]]; then
 		# recreate the directory structure if FONT_S is an array
@@ -284,3 +336,7 @@ font_pkg_postrm() {
 fi
 
 EXPORT_FUNCTIONS pkg_setup src_install pkg_postinst pkg_postrm
+case ${EAPI} in
+	7|8) ;;
+	*) EXPORT_FUNCTIONS src_compile ;;
+esac
