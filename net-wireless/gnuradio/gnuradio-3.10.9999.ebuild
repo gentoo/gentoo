@@ -20,7 +20,7 @@ else
 	KEYWORDS="~amd64 ~arm ~riscv ~x86"
 fi
 
-IUSE="+audio +alsa +analog +digital channels ctrlport doc dtv examples fec +filter grc iio jack modtool network oss performance-counters portaudio +qt5 sdl soapy test trellis uhd vocoder +utils wavelet zeromq"
+IUSE="+audio +alsa +analog +digital channels ctrlport doc dtv examples fec +filter grc iio jack modtool network oss performance-counters portaudio sdl soapy test trellis uhd vocoder +utils wavelet zeromq"
 
 #RESTRICT="!test? ( test )"
 # Tests are pulling in the installed python libs and breaking
@@ -31,14 +31,13 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	alsa? ( audio )
 	analog? ( filter )
 	audio? ( || ( alsa oss jack portaudio ) )
-	channels? ( filter analog qt5 )
+	channels? ( filter analog )
 	digital? ( filter analog )
 	dtv? ( filter analog fec )
 	jack? ( audio )
 	modtool? ( utils )
 	oss? ( audio )
 	portaudio? ( audio )
-	qt5? ( filter )
 	test? ( channels )
 	trellis? ( analog digital )
 	uhd? ( filter analog )
@@ -67,7 +66,6 @@ RDEPEND="${PYTHON_DEPS}
 	)
 	filter? (
 		$(python_gen_cond_dep 'dev-python/scipy[${PYTHON_USEDEP}]')
-		qt5? ( $(python_gen_cond_dep 'dev-python/pyqtgraph[qt5,${PYTHON_USEDEP}]') )
 	)
 	grc? (
 		$(python_gen_cond_dep 'dev-python/mako[${PYTHON_USEDEP}]
@@ -83,13 +81,6 @@ RDEPEND="${PYTHON_DEPS}
 	)
 	jack? ( virtual/jack )
 	portaudio? ( >=media-libs/portaudio-19_pre )
-	qt5? (
-		$(python_gen_cond_dep 'dev-python/pyqt5[opengl,${PYTHON_USEDEP}]')
-		dev-qt/qtcore:5
-		dev-qt/qtgui:5
-		x11-libs/qwt:6=[qt5(-)]
-		dev-qt/qtwidgets:5
-	)
 	soapy? (
 		net-wireless/soapysdr:=[${PYTHON_SINGLE_USEDEP}]
 	)
@@ -168,7 +159,7 @@ src_configure() {
 		-DENABLE_GR_PDU=ON
 		-DENABLE_PERFORMANCE_COUNTERS="$(usex performance-counters ON OFF)"
 		-DENABLE_TESTING="$(usex test ON OFF)"
-		-DENABLE_GR_QTGUI="$(usex qt5 ON OFF)"
+		-DENABLE_GR_QTGUI=OFF
 		-DENABLE_GR_SOAPY="$(usex soapy ON OFF)"
 		-DENABLE_GR_TRELLIS="$(usex trellis ON OFF)"
 		-DENABLE_GR_UHD="$(usex uhd ON OFF)"
