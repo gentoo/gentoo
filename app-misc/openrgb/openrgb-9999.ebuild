@@ -3,20 +3,20 @@
 
 EAPI=8
 
-inherit check-reqs flag-o-matic qmake-utils udev xdg-utils
+inherit check-reqs flag-o-matic qmake-utils tmpfiles udev xdg-utils
 
 if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
-	EGIT_REPO_URI=${EGIT_REPO_URI:-"https://gitlab.com/CalcProgrammer1/OpenRGB"}
+	EGIT_REPO_URI=${EGIT_REPO_URI:-"https://codeberg.org/OpenRGB/OpenRGB.git"}
 else
 	MY_PV=$(ver_rs 2 "")
-	SRC_URI="https://gitlab.com/CalcProgrammer1/OpenRGB/-/archive/release_candidate_${MY_PV}/OpenRGB-release_candidate_${MY_PV}.tar.bz2"
-	S="${WORKDIR}/OpenRGB-release_candidate_${MY_PV}"
+	SRC_URI="https://codeberg.org/OpenRGB/OpenRGB/archive/release_candidate_${MY_PV}.tar.gz -> ${P}.tar.gz"
+	S="${WORKDIR}/openrgb"
 	KEYWORDS="~amd64 ~loong"
 fi
 
 DESCRIPTION="Open source RGB lighting control"
-HOMEPAGE="https://openrgb.org https://gitlab.com/CalcProgrammer1/OpenRGB/"
+HOMEPAGE="https://openrgb.org https://gitlab.com/CalcProgrammer1/OpenRGB/ https://codeberg.org/OpenRGB/OpenRGB"
 LICENSE="GPL-2+"
 # subslot is OPENRGB_PLUGIN_API_VERSION from
 # https://gitlab.com/CalcProgrammer1/OpenRGB/-/blob/master/OpenRGBPluginInterface.h
@@ -41,8 +41,7 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}"/OpenRGB-0.7-r1-udev.patch
-	"${FILESDIR}"/OpenRGB-1.0rc3-mbedtls.patch
+	"${FILESDIR}"/OpenRGB-1.0rc3-mbedtls-20260825.patch
 )
 if [[ ${PV} != *9999* ]]; then
 	PATCHES+=( "${FILESDIR}"/openrgb-0.9_p20250802-build-system.patch )
@@ -99,6 +98,7 @@ src_install() {
 pkg_postinst() {
 	xdg_icon_cache_update
 	udev_reload
+	tmpfiles_process openrgb.conf
 }
 
 pkg_postrm() {

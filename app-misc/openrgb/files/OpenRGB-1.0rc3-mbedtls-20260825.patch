@@ -1,0 +1,27 @@
+Use net-libs/mbedtls:3 instead of :0
+Upstream intended to use 3, but in gentoo the naming is different
+
+https://gitlab.com/CalcProgrammer1/OpenRGB/-/merge_requests/2728
+https://bugs.gentoo.org/963058
+
+--- a/OpenRGB.pro
++++ b/OpenRGB.pro
+@@ -464,6 +464,7 @@ contains(QMAKE_PLATFORM, linux) {
+     CONFIG += link_pkgconfig
+ 
+     PKGCONFIG +=                                                                                \
++    mbedtls-3 mbedx509-3 mbedcrypto-3 \
+     libusb-1.0
+ 
+     TARGET = $$lower($$TARGET)
+@@ -482,10 +483,7 @@ contains(QMAKE_PLATFORM, linux) {
+         LIBS += -L/usr/lib/mbedtls/
+     }
+ 
+     LIBS +=                                                                                     \
+-    -lmbedx509                                                                                  \
+-    -lmbedtls                                                                                   \
+-    -lmbedcrypto                                                                                \
+     -ldl                                                                                        \
+ 
+     COMPILER_VERSION = $$system($$QMAKE_CXX " -dumpversion")
