@@ -49,6 +49,7 @@ BDEPEND="
 	dev-go/go-md2man
 	virtual/pkgconfig
 	>=dev-lang/go-1.25.5
+	<dev-lang/go-1.27
 "
 # tests require running dockerd as root and downloading containers
 RESTRICT="installsources strip test"
