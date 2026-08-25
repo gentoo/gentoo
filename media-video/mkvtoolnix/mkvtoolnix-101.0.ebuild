@@ -75,6 +75,7 @@ fi
 
 PATCHES=(
 	"${FILESDIR}"/mktoolnix-101.0-optional-tests-build.patch
+	"${FILESDIR}"/mktoolnix-101.0-fix-nongui-build.patch
 )
 
 pkg_setup() {
