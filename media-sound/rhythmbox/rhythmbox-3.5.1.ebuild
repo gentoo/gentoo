@@ -91,10 +91,6 @@ BDEPEND="
 	test? ( dev-libs/check )
 "
 
-PATCHES=(
-	"${FILESDIR}/${PN}-3.4.9-pygobject-meson-test.patch"
-)
-
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
 }
@@ -133,6 +129,11 @@ src_test() {
 	unset SESSION_MANAGER
 	"${BROOT}${GLIB_COMPILE_SCHEMAS}" --allow-any-name "${S}/data" || die
 	GSETTINGS_SCHEMA_DIR="${S}/data" virtx meson_src_test
+}
+
+pkg_preinst() {
+	xdg_pkg_preinst
+	gnome2_schemas_savelist
 }
 
 pkg_postinst() {
