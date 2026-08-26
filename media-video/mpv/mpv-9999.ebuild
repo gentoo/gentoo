@@ -169,10 +169,7 @@ src_configure() {
 		$(meson_feature curl libcurl)
 		$(meson_feature dvb dvbin)
 		# TODO: depend on >=libdvdread-7.1.1 w/ USE=dvd when it is
-		# packaged (*could* be a separate USE to skip dvdnav when
-		# only want dvd audio, but dvdnav is kind of small and it's
-		# more straight forward to have all features behind dvd --
-		# for the other way around, dvdnav pulls dvdread either way)
+		# packaged (bug #981444)
 		-Ddvda=disabled #$(meson_feature dvd dvda)
 		$(meson_feature dvd dvdnav)
 		$(meson_feature gamepad sdl2-gamepad)
