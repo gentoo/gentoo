@@ -99,6 +99,13 @@ pkg_setup() {
 	use python && python-single-r1_pkg_setup
 }
 
+src_prepare() {
+	default
+
+	# Disable plugins whose dependencies do not exist in ::gentoo
+	sed '/rbzeitgeist/d' -i ${S}/meson.build || die
+}
+
 src_configure() {
 	local emesonargs=(
 		$(meson_feature cdr brasero)
