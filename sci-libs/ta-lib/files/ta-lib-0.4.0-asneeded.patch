@@ -1,10 +1,3 @@
- src/Makefile.am             |    2 +-
- src/Makefile.in             |    2 +-
- src/ta_abstract/Makefile.am |    8 ++++----
- src/ta_common/Makefile.am   |    6 +++---
- src/ta_func/Makefile.am     |    6 +++---
- 5 files changed, 12 insertions(+), 12 deletions(-)
-
 diff --git a/src/Makefile.am b/src/Makefile.am
 index 12bc5b6..b1a0c6b 100644
 --- a/src/Makefile.am
@@ -18,19 +11,6 @@ index 12bc5b6..b1a0c6b 100644
  
  libta_lib_la_LDFLAGS = -version-info $(TALIB_LIBRARY_VERSION)
  
-diff --git a/src/Makefile.in b/src/Makefile.in
-index 489b44a..ef1f506 100644
---- a/src/Makefile.in
-+++ b/src/Makefile.in
-@@ -56,7 +56,7 @@ am_libta_lib_la_OBJECTS =
- libta_lib_la_OBJECTS = $(am_libta_lib_la_OBJECTS)
- libta_lib_la_LINK = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) \
- 	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
--	$(libta_lib_la_LDFLAGS) $(LDFLAGS) -o $@
-+	$(libta_lib_la_LDFLAGS) $(LDFLAGS) -lm -o $@
- DEFAULT_INCLUDES = -I. -I$(top_builddir)/include@am__isrc@
- COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
- 	$(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
 diff --git a/src/ta_abstract/Makefile.am b/src/ta_abstract/Makefile.am
 index cba69bb..4411234 100644
 --- a/src/ta_abstract/Makefile.am
@@ -81,3 +61,4 @@ index 030a516..299baf9 100644
 +libta_func_HEADERS = $(top_builddir)/include/ta_defs.h \
 +	$(top_builddir)/include/ta_libc.h \
 +	$(top_builddir)/include/ta_func.h
+

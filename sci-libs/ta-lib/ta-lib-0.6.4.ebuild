@@ -7,17 +7,15 @@ inherit autotools flag-o-matic
 
 DESCRIPTION="Technical Analysis Library for analyzing financial markets trends"
 HOMEPAGE="https://www.ta-lib.org/"
-SRC_URI="https://downloads.sourceforge.net/ta-lib/${P}-src.tar.gz"
-
-S="${WORKDIR}/${PN}"
+SRC_URI="https://github.com/TA-Lib/ta-lib/releases/download/v${PV}/${P}-src.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 PATCHES=(
-	"${FILESDIR}"/${P}-asneeded.patch
-	"${FILESDIR}"/${P}-slibtool.patch # 790770
+	"${FILESDIR}"/${PN}-0.4.0-asneeded.patch
+	"${FILESDIR}"/${PN}-0.4.0-slibtool.patch # 790770
 )
 
 src_prepare() {
