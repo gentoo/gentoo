@@ -92,7 +92,7 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}/${PN}-3.4.9-pygobject-meson-test.patch"
+	"${FILESDIR}"/${P}-introspection-build-fix.patch
 )
 
 pkg_setup() {

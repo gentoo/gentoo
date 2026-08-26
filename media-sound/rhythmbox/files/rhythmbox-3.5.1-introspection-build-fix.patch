@@ -1,0 +1,71 @@
+From b4f9c2de137857540e12246761a9a1eadd22a20a Mon Sep 17 00:00:00 2001
+From: Pacho Ramos <pachoramos@gmail.com>
+Date: Sun, 6 Sep 2026 18:38:25 +1000
+Subject: [PATCH] build: always link girepository
+
+Fixes: #2135
+---
+ meson.build       | 18 ++++++++++--------
+ shell/meson.build | 11 ++++++-----
+ 2 files changed, 16 insertions(+), 13 deletions(-)
+
+diff --git a/meson.build b/meson.build
+index a08b06877..016672edf 100644
+--- a/meson.build
++++ b/meson.build
+@@ -145,20 +145,22 @@ sampleplugindatadir = datadir / 'rhythmbox' / 'sample-plugins'
+ 
+ enable_python = false
+ enable_gir2 = false
++
++if girepository.found() and libpeas.version() > '1.37'
++  enable_gir2 = true
++  cdata.set('USE_GIREPOSITORY2', 1)
++elif girepository.found() and run_command('pkg-config', '--print-requires', 'libpeas-1.0', check: true).stdout().contains('girepository-2')
++  enable_gir2 = true
++  cdata.set('USE_GIREPOSITORY2', 1)
++endif
++
+ python_install = python.find_installation('python3', required: get_option('plugins_python'))
+ pygobject = dependency('pygobject-3.0', version: '>= 3.0.0', required: get_option('plugins_python'))
+ if python_install.found() and pygobject.found()
+   enable_python = true
+ 
+   if pygobject.version() >= '3.53.0'
+-    # must have girepository-2.0 and a compatible version of libpeas for this to work
+-    if girepository.found() and libpeas.version() > '1.37'
+-      enable_gir2 = true
+-      cdata.set('USE_GIREPOSITORY2', 1)
+-    elif girepository.found() and run_command('pkg-config', '--print-requires', 'libpeas-1.0', check: true).stdout().contains('girepository-2')
+-      enable_gir2 = true
+-      cdata.set('USE_GIREPOSITORY2', 1)
+-    else
++    if not enable_gir2
+       error('cannot mix girepository 1.0 (via libpeas) and 2.0 (via pygobject)')
+     endif
+   elif pygobject.version() >= '3.52.0'
+diff --git a/shell/meson.build b/shell/meson.build
+index f0caee536..3aca79f82 100644
+--- a/shell/meson.build
++++ b/shell/meson.build
+@@ -93,11 +93,12 @@ rhythmbox_core_deps = [
+ 
+ if enable_python
+   rhythmbox_core_deps += [pygobject]
+-  if enable_gir2
+-    rhythmbox_core_deps += [girepository]
+-  else
+-    rhythmbox_core_deps += [gobject_introspection]
+-  endif
++endif
++
++if enable_gir2
++  rhythmbox_core_deps += [girepository]
++else
++  rhythmbox_core_deps += [gobject_introspection]
+ endif
+ 
+ librhythmbox_core = shared_library('rhythmbox-core',
+-- 
+2.55.0
+
