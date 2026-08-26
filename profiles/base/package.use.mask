@@ -63,8 +63,7 @@ dev-lang/python-exec -python_targets_python3_15t
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2026-04-12)
 # net-wireless/gnuradio and dependencies. Qt5 was last-rited.
-# Bugs #948049, #954887.  Removal some time after 2026-04-30.
-<=dev-python/pyqtgraph-0.14.0-r0 qt5
+# Bug #948049.
 <net-wireless/gnuradio-3.10.12.0-r4 channels qt5
 
 # Mike Gilbert <floppym@gentoo.org> (2026-03-20)
