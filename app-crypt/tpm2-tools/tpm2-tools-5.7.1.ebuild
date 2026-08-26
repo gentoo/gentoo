@@ -9,6 +9,7 @@ inherit autotools bash-completion-r1 flag-o-matic python-any-r1
 DESCRIPTION="Tools for the TPM 2.0 TSS"
 HOMEPAGE="https://github.com/tpm2-software/tpm2-tools"
 SRC_URI="https://github.com/tpm2-software/tpm2-tools/releases/download/${PV}/${P}.tar.gz"
+SRC_URI+=" https://github.com/tpm2-software/tpm2-tools/commit/644867e8116b79a37fdf299101522ac245d05ce9.patch?full_index=1 -> ${PN}-5.7-efivars-pretty-print.patch"
 
 LICENSE="BSD"
 SLOT="0"
@@ -37,6 +38,7 @@ BDEPEND="virtual/pkgconfig
 	${PYTHON_DEPS}"
 
 PATCHES=(
+	"${DISTDIR}/${PN}-5.7-efivars-pretty-print.patch"
 	"${FILESDIR}/${PN}-5.6-Makefile-am-Dont-require-pandoc-for-tests.patch"
 	"${FILESDIR}/${PN}-5.7-tests-Eliminate-dependency-on-which.patch"
 )
