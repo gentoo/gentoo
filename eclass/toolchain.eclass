@@ -729,10 +729,11 @@ do_gcc_gentoo_patches() {
 				fi
 			fi
 
-			local -
+			local shopt_save=$(shopt -p nullglob)
 			shopt -s nullglob
 			einfo "Applying musl patches ..."
 			eapply "${WORKDIR}"/musl/{,nocross/}*.patch
+			${shopt_save}
 		fi
 
 		#
