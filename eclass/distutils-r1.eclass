@@ -1269,6 +1269,12 @@ distutils-r1_python_compile() {
 					${EPYTHON} == python* &&
 					${EPYTHON} != *t &&
 					.${abi_tag}. == *.abi3.*
+				) ||
+				# For freethreading CPython, we can reuse abi3t wheels.
+				# Same as above, we're relying on the ordering.
+				(
+					${EPYTHON} == python*t &&
+					.${abi_tag}. == *.abi3t.*
 				)
 			]]; then
 				distutils_wheel_install "${BUILD_DIR}/install" "${whl}"
