@@ -1237,23 +1237,38 @@ distutils-r1_python_compile() {
 				continue
 			fi
 
-			# 1. Use pure Python wheels only if we're not expected
-			# to build extensions.  Otherwise, we may end up
-			# not building the extension at all when e.g. PyPy3
-			# is built without one.
-			#
-			# 2. For CPython, we can reuse stable ABI wheels.  Note
-			# that this relies on the assumption that we're building
-			# from the oldest to the newest implementation,
-			# and the wheels are forward-compatible.
+			local whl_fn=${whl##*/}
+			# This technically omits the build tag, but we're
+			# not greedy, so we're only checking for the minimum number
+			# of components.
+			[[ ${whl_fn} != *-*-*-*-*.whl ]] &&
+				die "Invalid wheel filename: ${whl}"
+			whl_fn=${whl_fn%.whl}
+			local platform_tag=${whl_fn##*-}
+			whl_fn=${whl_fn%-*}
+			local abi_tag=${whl_fn##*-}
+			whl_fn=${whl_fn%-*}
+			local python_tag=${whl_fn##*-}
+
 			if [[
-				( ! ${DISTUTILS_EXT} && ${whl} == *py3-none* ) ||
+				# Use pure Python wheels only if we're not expected to
+				# build extensions.  Otherwise, we may end up not
+				# building the extension at all when e.g. PyPy3 is built
+				# without one.
+				(
+					! ${DISTUTILS_EXT} &&
+					.${python_tag}. == *.py3.* &&
+					.${abi_tag}. == *.none.*
+				) ||
+				# For GIL-enabled CPython, we can reuse abi3 wheels.
+				# Note that we do not check the Python tag (yet),
+				# and instead rely on the assumption that we're building
+				# from the oldest to the newest implementation,
+				# and the wheels are forward-compatible.
 				(
 					${EPYTHON} == python* &&
-					# freethreading does not support stable ABI
-					# at the moment
 					${EPYTHON} != *t &&
-					${whl} == *-abi3-*
+					.${abi_tag}. == *.abi3.*
 				)
 			]]; then
 				distutils_wheel_install "${BUILD_DIR}/install" "${whl}"
