@@ -1,5 +1,4 @@
-# /lib/systemd/system/tor.service
-# tor.service -- this systemd configuration file for Tor sets up a
+# tor@.service -- this systemd configuration file for Tor sets up a
 # relatively conservative, hardened Tor service.  You may need to
 # edit it if you are making changes to your Tor configuration that it
 # does not allow.  Package maintainers: this should be a starting point
