@@ -39,7 +39,7 @@ BDEPEND="
 		app-alternatives/bc
 		sys-process/procps
 	)
-	verify-sig? ( >=sec-keys/openpgp-keys-openssl-20260415 )
+	verify-sig? ( >=sec-keys/openpgp-keys-openssl-20260617-r1 )
 "
 
 # Do not install any docs
