@@ -19,10 +19,11 @@ HOMEPAGE="https://sabnzbd.org/"
 SRC_URI="https://github.com/sabnzbd/sabnzbd/releases/download/${MY_PV}/${MY_P}-src.tar.gz"
 S="${WORKDIR}/${MY_P}"
 
-# Sabnzbd is GPL-2 but bundles software with the following licenses.
-LICENSE="GPL-2 BSD LGPL-2 MIT BSD-1"
+# SABnzbd is GPL-2+ but bundles JS/CSS libraries and Python modules
+# with their own licenses (Bootstrap, jQuery, Knockout, rarfile, etc).
+LICENSE="GPL-2+ Apache-2.0 CC-BY-3.0 ISC LGPL-2.1+ MIT"
 SLOT="0"
-KEYWORDS="amd64"
+KEYWORDS="~amd64"
 IUSE="test"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
@@ -40,11 +41,12 @@ DEPEND="
 		dev-python/cryptography[${PYTHON_USEDEP}]
 		>=dev-python/feedparser-6.0.11[${PYTHON_USEDEP}]
 		>=dev-python/guessit-3.8.0[${PYTHON_USEDEP}]
+		dev-python/hachoir[${PYTHON_USEDEP}]
 		dev-python/notify2[${PYTHON_USEDEP}]
 		dev-python/portend[${PYTHON_USEDEP}]
 		dev-python/puremagic[${PYTHON_USEDEP}]
-		~dev-python/rarfile-4.2[${PYTHON_USEDEP}]
-		~dev-python/sabctools-8.2.6[${PYTHON_USEDEP}]
+		~dev-python/rarfile-4.3[${PYTHON_USEDEP}]
+		~dev-python/sabctools-9.6.3[${PYTHON_USEDEP}]
 	')
 "
 RDEPEND="
@@ -59,8 +61,8 @@ BDEPEND="
 	test? (
 		$(python_gen_cond_dep '
 			dev-python/flaky[${PYTHON_USEDEP}]
-			>=dev-python/lxml-4.5.0[${PYTHON_USEDEP}]
-			>=dev-python/pyfakefs-5.6.0[${PYTHON_USEDEP}]
+			dev-python/lxml[${PYTHON_USEDEP}]
+			dev-python/pyfakefs[${PYTHON_USEDEP}]
 			dev-python/pytest-asyncio[${PYTHON_USEDEP}]
 			dev-python/pytest-httpbin[${PYTHON_USEDEP}]
 			dev-python/pytest-httpserver[${PYTHON_USEDEP}]
@@ -69,67 +71,43 @@ BDEPEND="
 			dev-python/requests[${PYTHON_USEDEP}]
 			dev-python/selenium[${PYTHON_USEDEP}]
 			dev-python/tavalidate[${PYTHON_USEDEP}]
-			>=dev-python/tavern-2[${PYTHON_USEDEP}]
+			>=dev-python/tavern-3[${PYTHON_USEDEP}]
 			dev-python/werkzeug[${PYTHON_USEDEP}]
 			dev-python/xmltodict[${PYTHON_USEDEP}]
 		')
 		app-arch/7zip
 		app-arch/unrar
 		app-arch/unzip
-		www-apps/chromedriver-bin
 	)
 "
 
 src_test() {
 	local EPYTEST_IGNORE=(
 		# network sandbox
+		tests/test_get_addrinfo.py
 		tests/test_getipaddress.py
-		tests/test_rss.py
-		tests/test_urlgrabber.py
-		tests/test_utils/test_happyeyeballs.py
-		tests/test_utils/test_internetspeed.py
+		tests/test_internetspeed.py
+		# Requires chromedriver
+		tests/test_functional_config.py
+		tests/test_functional_downloads.py
+		tests/test_functional_sorting.py
 	)
 	local EPYTEST_DESELECT=(
 		# network sandbox
 		'tests/test_cfg.py::TestValidators::test_validate_host'
 		'tests/test_consistency.py::TestWiki'
-		'tests/test_newswrapper.py::TestNewsWrapper'
-		'tests/test_happyeyeballs.py::TestHappyEyeballs'
-		'tests/test_internetspeed.py::TestInternetSpeed'
-		'tests/test_get_addrinfo.py'
-		# Just plain fails
-		'tests/test_newsunpack.py::TestPar2Repair::test_basic'
-		# Does not work with pytest-8.x
-		'tests/test_functional_api.py'
-		# Chromedriver tests don't want to behave in portage
-		'tests/test_functional_config.py::TestBasicPages::test_base_pages'
-		'tests/test_functional_config.py::TestBasicPages::test_base_submit_pages'
-		'tests/test_functional_config.py::TestConfigLogin::test_login'
-		'tests/test_functional_config.py::TestConfigCategories::test_page'
-		'tests/test_functional_config.py::TestConfigRSS::test_rss_basic_flow'
-		'tests/test_functional_config.py::TestConfigServers::test_add_and_remove_server'
-		'tests/test_functional_downloads.py::TestDownloadFlow::test_download_basic_rar5'
-		'tests/test_functional_downloads.py::TestDownloadFlow::test_download_zip'
-		'tests/test_functional_downloads.py::TestDownloadFlow::test_download_7zip'
-		'tests/test_functional_downloads.py::TestDownloadFlow::test_download_passworded'
-		'tests/test_functional_downloads.py::TestDownloadFlow::test_download_fully_obfuscated'
-		'tests/test_functional_downloads.py::TestDownloadFlow::test_download_unicode_rar'
-		'tests/test_functional_misc.py::TestExtractPot::test_extract_pot'
+		'tests/test_downloader.py::TestConnectionStateMachine::test_failed_connect_allows_retry'
+		'tests/test_rss.py::TestRSS::test_rss_newznab_parser'
+		'tests/test_rss.py::TestRSS::test_rss_nzedb_parser'
+		'tests/test_urlgrabber.py::TestBuildRequest::test_http_basic'
+		'tests/test_urlgrabber.py::TestBuildRequest::test_https_basic'
+		# Requires chromedriver
 		'tests/test_functional_misc.py::TestShowLogging::test_showlog'
 		'tests/test_functional_misc.py::TestQueueRepair::test_queue_repair'
 		'tests/test_functional_misc.py::TestDaemonizing::test_daemonizing'
-		'tests/test_functional_sorting.py::TestDownloadSorting'
+		# Runs extract_pot.py which needs the git repo
+		'tests/test_functional_misc.py::TestExtractPot::test_extract_pot'
 	)
-
-	# The test suite is prone to being broken by random plugins that happen
-	# to be installed, so disable autoloading.
-	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
-	# Use PYTEST_PLUGINS instead of args to 'epytest' because the test suite
-	# calls pytest itself and the args would get lost. To get the list of plugins,
-	# if stuck, comment out the AUTOLOAD line above, look at the list of loaded
-	# plugins at the top of the pytest output, then translate those into module names
-	# by e.g. checking equery f.
-	local -x PYTEST_PLUGINS=pytest_mock,tavern,tavern._core.pytest,pyfakefs.pytest_plugin,pytest_asyncio.plugin
 
 	epytest -s
 }
