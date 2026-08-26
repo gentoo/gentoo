@@ -30,7 +30,7 @@ else
 		KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~arm64-macos ~x64-macos ~x64-solaris"
 	fi
 
-	BDEPEND="verify-sig? ( >=sec-keys/openpgp-keys-openssl-20260415 )"
+	BDEPEND="verify-sig? ( >=sec-keys/openpgp-keys-openssl-20260617-r1 )"
 fi
 
 S="${WORKDIR}"/${MY_P}
