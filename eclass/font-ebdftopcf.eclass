@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: font-ebdftopcf.eclass
@@ -11,6 +11,9 @@
 # @DESCRIPTION:
 # The manpage for this eclass is in media-gfx/ebdftopcf.
 # Inherit this eclass after font.eclass
+#
+# In EAPI 9 and newer, this eclass is deprecated in favor of font.eclass's
+# native BDF to OTB conversion via FONT_OPENTYPE_COMPAT=1.
 
 case ${EAPI} in
 	7) ;;
