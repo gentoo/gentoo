@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=pdm-backend
-PYTHON_COMPAT=( python3_{14..15} )
+PYTHON_COMPAT=( python3_{12..15} )
 #may be not stricly required
 PYTHON_REQ_USE="threads(+)"
 
@@ -45,6 +45,8 @@ BDEPEND="
 "
 
 EPYTEST_PLUGINS=( anyio inline-snapshot pytest-timeout )
+# workaround broken toml config
+: ${EPYTEST_TIMEOUT:=30}
 # 3k tests+, so use xdist to speed them up
 EPYTEST_XDIST=1
 distutils_enable_tests pytest
