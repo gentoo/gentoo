@@ -62,11 +62,10 @@ dev-lang/python-exec -python_targets_python3_15t
 >=sci-libs/libsemigroups-3.5.5 eigen
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2026-04-12)
-# net-wireless/gnuradio and dependencies. Preparing Qt5 last-rites.
+# net-wireless/gnuradio and dependencies. Qt5 was last-rited.
 # Bugs #948049, #954887.  Removal some time after 2026-04-30.
 <=dev-python/pyqtgraph-0.14.0-r0 qt5
-net-wireless/gnuradio qt5
-<=net-wireless/gnuradio-3.10.99 channels
+<net-wireless/gnuradio-3.10.12.0-r4 channels qt5
 
 # Mike Gilbert <floppym@gentoo.org> (2026-03-20)
 # Only meant for bootstrapping a cross-compiler.
