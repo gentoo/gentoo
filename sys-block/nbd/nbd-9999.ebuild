@@ -12,6 +12,8 @@ if [[ ${PV} == 9999 ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/NetworkBlockDevice/nbd.git"
 else
+	# Use auto-generated tarballs for now as there's no dist tarball available
+	# See https://github.com/NetworkBlockDevice/nbd/issues/198
 	SRC_URI="https://github.com/NetworkBlockDevice/nbd/archive/refs/tags/${P}.tar.gz"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~sparc ~x86"
 fi
