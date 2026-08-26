@@ -1230,7 +1230,7 @@ distutils-r1_python_compile() {
 	EOF
 
 	if [[ ${DISTUTILS_ALLOW_WHEEL_REUSE} ]]; then
-		local whl
+		local best_wheel= whl
 		for whl in "${!DISTUTILS_WHEELS[@]}"; do
 			# use only wheels corresponding to the current directory
 			if [[ ${PWD} != ${DISTUTILS_WHEELS["${whl}"]} ]]; then
@@ -1277,10 +1277,14 @@ distutils-r1_python_compile() {
 					.${abi_tag}. == *.abi3t.*
 				)
 			]]; then
-				distutils_wheel_install "${BUILD_DIR}/install" "${whl}"
-				return
+				best_wheel=${whl}
 			fi
 		done
+
+		if [[ -n ${best_wheel} ]]; then
+			distutils_wheel_install "${BUILD_DIR}/install" "${best_wheel}"
+			return
+		fi
 	fi
 
 	distutils_pep517_install "${BUILD_DIR}/install"
