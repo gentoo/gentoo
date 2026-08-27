@@ -1,0 +1,29 @@
+see https://gitlab.xiph.org/xiph/kate/-/work_items/125
+these functions mutate one of their arguments (*res) and therefore are not eligible for __attribute__((pure))
+overflow test fails when compiling with -ftrivial-auto-var-init=zero
+--- a/src/kate_internal.h
++++ b/src/kate_internal.h
+@@ -50,7 +50,6 @@
+ #define KATE_TYPE_MIN(type) ((type)-1 < 1?KATE_TYPE_MIN_SIGNED(type):(type)0)
+ #define KATE_TYPE_MAX(type) ((type)~KATE_TYPE_MIN(type))
+ 
+-static inline int kate_check_add_overflow(size_t x,size_t y,size_t *res) __attribute__((pure));
+ static inline int kate_check_add_overflow(size_t x,size_t y,size_t *res)
+ {
+   if (KATE_TYPE_MAX(size_t)-(y)>=x) {
+@@ -60,7 +59,6 @@ static inline int kate_check_add_overflow(size_t x,size_t y,size_t *res)
+   return KATE_E_LIMIT;
+ }
+ 
+-static inline int kate_check_mul_overflow_generic(size_t x,size_t y,size_t *res) __attribute__((pure));
+ static inline int kate_check_mul_overflow_generic(size_t x,size_t y,size_t *res)
+ {
+   kate_uint64_t r,mask;
+@@ -72,7 +70,6 @@ static inline int kate_check_mul_overflow_generic(size_t x,size_t y,size_t *res)
+   return kate_check_add_overflow(r,(x&mask)*(y&mask),res);
+ }
+ 
+-static inline int kate_check_mul_overflow(size_t x,size_t y,size_t *res) __attribute__((pure));
+ static inline int kate_check_mul_overflow(size_t x,size_t y,size_t *res)
+ {
+   if (sizeof(size_t)>4) {
