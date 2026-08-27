@@ -8,7 +8,7 @@
 		<flag name="benchmark">Build benchmark programs</flag>
 		<flag name="exact-alloc-count">Atomic counting for memory alloc count</flag>
 		<flag name="futex">Use futex</flag>
-		<flag name="json">Enable JSON processing using <pkg>dev-libs/rapidjson</pkg></flag>
+		<flag name="json">Enable JSON parser</flag>
 		<flag name="libevent">Enable <pkg>dev-libs/libevent</pkg> used for suggestion</flag>
 		<flag name="mecab">Use <pkg>app-text/mecab</pkg> for morphological analysis</flag>
 		<flag name="msgpack">Enable <pkg>dev-libs/msgpack</pkg> used for suggestion</flag>
