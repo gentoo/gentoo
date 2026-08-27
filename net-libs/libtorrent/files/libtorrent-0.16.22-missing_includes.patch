@@ -1,0 +1,30 @@
+PR merged https://github.com/rakshasa/libtorrent/pull/914.patch
+add missing headers for libcxx-23
+--- a/src/torrent/system/common.h
++++ b/src/torrent/system/common.h
+@@ -1,8 +1,10 @@
+ #ifndef LIBTORRENT_TORRENT_SYSTEM_COMMON_H
+ #define LIBTORRENT_TORRENT_SYSTEM_COMMON_H
+ 
++#include <atomic>
+ #include <chrono>
+ #include <cinttypes>
++#include <cstdint>
+ #include <memory>
+ 
+ 
+--- a/src/torrent/utils/string_manip.h
++++ b/src/torrent/utils/string_manip.h
+@@ -1,10 +1,12 @@
+ #ifndef LIBTORRENT_TORRENT_UTILS_STRING_MANIP_H
+ #define LIBTORRENT_TORRENT_UTILS_STRING_MANIP_H
+ 
++#include <cstdint>
+ #include <exception>
+ #include <optional>
+ #include <string>
+ #include <string_view>
++#include <vector>
+ #include <torrent/common.h>
+ #include <torrent/exceptions.h>
+ 
