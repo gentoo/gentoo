@@ -6,7 +6,7 @@ EAPI=8
 inherit xorg-meson
 
 DESCRIPTION="window information utility for X"
-KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
 
 RDEPEND="
 	>=x11-libs/libxcb-1.6:=
