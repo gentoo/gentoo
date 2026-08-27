@@ -1188,12 +1188,17 @@ distutils_pep517_install() {
 
 # @VARIABLE: DISTUTILS_WHEELS
 # @DESCRIPTION:
-# An associative array of wheels created as a result
-# of distutils-r1_python_compile invocations, mapped to the source
-# directories.  Note that this includes only wheels implicitly created
-# by the eclass, and not wheels created as a result of direct
-# distutils_pep517_install calls in the ebuild.
-declare -g -A DISTUTILS_WHEELS=()
+# An array of paths to wheels that were created as a result
+# of distutils-r1_python_compile invocations.  Note that this includes
+# only wheels implicitly created by the eclass, and not wheels created
+# as a result of direct distutils_pep517_install calls in the ebuild.
+declare -g -a DISTUTILS_WHEELS=()
+
+# @VARIABLE: DISTUTILS_WHEEL_PATHS
+# @DESCRIPTION:
+# Mapping from wheels in DISTUTILS_WHEELS to corresponding source
+# directories.
+declare -g -A DISTUTILS_WHEEL_PATHS=()
 
 # @FUNCTION: _distutils-r1_find_best_wheel
 # @INTERNAL
@@ -1202,9 +1207,9 @@ declare -g -A DISTUTILS_WHEELS=()
 # If no wheel is reusable, returns empty.
 _distutils-r1_find_best_wheel() {
 	local best_wheel= whl
-	for whl in "${!DISTUTILS_WHEELS[@]}"; do
+	for whl in "${DISTUTILS_WHEELS[@]}"; do
 		# use only wheels corresponding to the current directory
-		if [[ ${PWD} != ${DISTUTILS_WHEELS["${whl}"]} ]]; then
+		if [[ ${PWD} != ${DISTUTILS_WHEEL_PATHS["${whl}"]} ]]; then
 			continue
 		fi
 
@@ -1320,7 +1325,8 @@ distutils-r1_python_compile() {
 	fi
 
 	distutils_pep517_install "${BUILD_DIR}/install"
-	DISTUTILS_WHEELS+=( "${DISTUTILS_WHEEL_PATH}" "${PWD}" )
+	DISTUTILS_WHEELS+=( "${DISTUTILS_WHEEL_PATH}" )
+	DISTUTILS_WHEEL_PATHS+=( "${DISTUTILS_WHEEL_PATH}" "${PWD}" )
 }
 
 # @FUNCTION: _distutils-r1_wrap_scripts
@@ -1658,8 +1664,8 @@ _distutils-r1_compare_installed_files() {
 	# Perform the check only if at least one potentially reusable wheel
 	# has been produced.  Nonpure packages (e.g. NumPy) may install
 	# interpreter configuration details into sitedir.
-	if [[ ${!DISTUTILS_WHEELS[*]} != *py3-none-any.whl* &&
-			${!DISTUTILS_WHEELS[*]} != *-abi3-*.whl ]]; then
+	if [[ ${DISTUTILS_WHEELS[*]} != *py3-none-any.whl* &&
+			${DISTUTILS_WHEELS[*]} != *-abi3-*.whl ]]; then
 		return
 	fi
 
