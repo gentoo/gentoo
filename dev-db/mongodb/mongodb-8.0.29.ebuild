@@ -86,13 +86,14 @@ BDEPEND="
 	dev-lang/perl
 "
 PATCHES=(
-	"${FILESDIR}/${PN}-8.0.23-disable-bazelisk-check.patch"
-	"${FILESDIR}/${PN}-8.0.23-fix-build-with-gcc-15.patch"
-	"${FILESDIR}/${PN}-8.0.23-fix-compiler-names.patch"
-	"${FILESDIR}/${PN}-8.0.23-override-distro.patch"
-	"${FILESDIR}/${PN}-8.0.23-remove-mtune-march-cflags.patch"
-	"${FILESDIR}/${PN}-8.0.23-restore-syscall_h-includes.patch"
-	"${FILESDIR}/${PN}-8.0.23-use-system-python.patch"
+	"${FILESDIR}/${P}-add-missing-mongos-dependency.patch"
+	"${FILESDIR}/${P}-disable-bazelisk-check.patch"
+	"${FILESDIR}/${P}-fix-build-with-gcc-15.patch"
+	"${FILESDIR}/${P}-fix-compiler-names.patch"
+	"${FILESDIR}/${P}-override-distro.patch"
+	"${FILESDIR}/${P}-remove-mtune-march-cflags.patch"
+	"${FILESDIR}/${P}-restore-syscall_h-includes.patch"
+	"${FILESDIR}/${P}-use-system-python.patch"
 )
 
 python_check_deps() {
@@ -204,9 +205,6 @@ src_configure() {
 
 	# -Werror is injected in a few places
 	append-cppflags -Wno-error
-
-	# linking fails without this
-	append-ldflags -Wl,-w
 
 	# strict aliasing is broken
 	append-flags -fno-strict-aliasing
