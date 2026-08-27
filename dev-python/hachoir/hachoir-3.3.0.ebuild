@@ -4,11 +4,11 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{12..14} pypy3_11 )
+PYTHON_COMPAT=( python3_{12..14} )
 
 inherit distutils-r1
 
-DESCRIPTION="Hachoir is a Python library to view and edit a binary stream field by field "
+DESCRIPTION="Library to view and edit a binary stream field by field"
 HOMEPAGE="
 	https://pypi.org/project/hachoir/
 	https://github.com/vstinner/hachoir/
