@@ -12,7 +12,7 @@ else
 	MY_PV="1.0rc3.1"
 	SRC_URI="https://codeberg.org/OpenRGB/OpenRGB/archive/release_candidate_${MY_PV}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/openrgb"
-	KEYWORDS="~amd64 ~loong"
+	KEYWORDS="amd64 ~loong"
 fi
 
 DESCRIPTION="Open source RGB lighting control"
