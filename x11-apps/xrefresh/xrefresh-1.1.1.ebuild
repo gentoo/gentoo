@@ -6,7 +6,7 @@ EAPI=8
 inherit xorg-3
 
 DESCRIPTION="refresh all or part of an X screen"
-KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
 
 RDEPEND="x11-libs/libX11"
 DEPEND="${RDEPEND}
