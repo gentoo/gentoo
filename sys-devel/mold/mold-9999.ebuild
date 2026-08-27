@@ -35,6 +35,9 @@ RDEPEND="
 	mimalloc? ( >=dev-libs/mimalloc-3:= )
 "
 DEPEND="${RDEPEND}"
+BDEPEND="
+	test? ( llvm-core/clang:* )
+"
 
 pkg_pretend() {
 	# Requires a c++20 compiler, see #831473
