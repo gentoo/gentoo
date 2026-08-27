@@ -49,7 +49,8 @@ LICENSE="Boost-1.0 GPL-2+ MIT Unlicense"
 SLOT="0"
 IUSE="
 	+alsa browser decklink fdk jack lua mpegts nvenc pulseaudio python
-	qsv screencast sndio speex test-input truetype v4l vlc wayland websocket
+	qsv screencast sndio speex test-input truetype v4l vlc wayland webrtc
+	websocket
 "
 REQUIRED_USE="
 	browser? ( || ( alsa pulseaudio ) )
@@ -140,6 +141,9 @@ DEPEND="
 		dev-qt/qtbase:6[wayland]
 		x11-libs/libxkbcommon
 	)
+	webrtc? (
+		net-libs/libdatachannel:=
+	)
 	websocket? (
 		dev-cpp/asio
 		dev-cpp/websocketpp
@@ -216,7 +220,7 @@ src_configure() {
 		-DENABLE_VLC=$(usex vlc)
 		-DENABLE_VST=ON
 		-DENABLE_WAYLAND=$(usex wayland)
-		-DENABLE_WEBRTC=OFF # Requires libdatachannel.
+		-DENABLE_WEBRTC=$(usex webrtc)
 		-DENABLE_WEBSOCKET=$(usex websocket)
 	)
 
