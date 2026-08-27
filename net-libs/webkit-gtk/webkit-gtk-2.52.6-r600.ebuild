@@ -186,26 +186,6 @@ src_configure() {
 	# https://bugs.webkit.org/show_bug.cgi?id=42070 , #301634
 	use ppc64 && append-flags "-mminimal-toc"
 
-	# Do our best to support x86 machines lacking SSE,
-	# https://bugs.gentoo.org/730044
-	if use x86; then
-		if use cpu_flags_x86_sse2; then
-			# These are normally added by the build system, but our
-			# patch changes the way an x86 CPU is detected, bypassing
-			# that addition.
-			append-flags "-msse2 -mfpmath=sse"
-		elif use cpu_flags_x86_sse; then
-			# If you have SSE1 but not SSE2, these are needed to
-			# avoid static_assert failures.
-			append-flags "-msse -mfpmath=sse"
-		else
-			# Neither? This is reportedly crashy, but better than
-			# nothing if you really don't have the hardware.
-			mycmakeargs+=( -DENABLE_WEBGL=OFF )
-			append-cppflags -DSKCMS_HAS_MUSTTAIL=0
-		fi
-	fi
-
 	# Try to use less memory, bug #469942 (see Fedora .spec for reference)
 	append-ldflags $(test-flags-CCLD "-Wl,--no-keep-memory")
 
@@ -275,6 +255,26 @@ src_configure() {
 		-DUSE_SYSPROF_CAPTURE=OFF
 		-DUSE_WOFF2=ON
 	)
+
+	# Do our best to support x86 machines lacking SSE,
+	# https://bugs.gentoo.org/730044
+	if use x86; then
+		if use cpu_flags_x86_sse2; then
+			# These are normally added by the build system, but our
+			# patch changes the way an x86 CPU is detected, bypassing
+			# that addition.
+			append-flags "-msse2 -mfpmath=sse"
+		elif use cpu_flags_x86_sse; then
+			# If you have SSE1 but not SSE2, these are needed to
+			# avoid static_assert failures.
+			append-flags "-msse -mfpmath=sse"
+		else
+			# Neither? This is reportedly crashy, but better than
+			# nothing if you really don't have the hardware.
+			mycmakeargs+=( -DENABLE_WEBGL=OFF )
+			append-cppflags -DSKCMS_HAS_MUSTTAIL=0
+		fi
+	fi
 
 	if use riscv || use ppc64; then
 		# https://bugs.gentoo.org/970556
