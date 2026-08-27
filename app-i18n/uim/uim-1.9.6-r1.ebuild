@@ -111,6 +111,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-xkb.patch
 	# PR merged https://github.com/uim/uim/pull/275.patch
 	"${FILESDIR}"/${P}-pkg_config.patch
+	"${FILESDIR}"/${P}-volatile.patch
 )
 
 DOCS=( AUTHORS NEWS README RELNOTE doc )
