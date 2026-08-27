@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{11..14} )
 LLVM_COMPAT=( {16..22} )
 LLVM_OPTIONAL=1
 
-inherit dot-a flag-o-matic linux-info llvm-r1 meson pam python-single-r1 \
+inherit dot-a flag-o-matic linux-info llvm-r2 meson pam python-single-r1 \
 		systemd tmpfiles
 
 DESCRIPTION="PostgreSQL RDBMS"
@@ -121,7 +121,7 @@ test? (
 pkg_setup() {
 	CONFIG_CHECK="~SYSVIPC" linux-info_pkg_setup
 
-	use llvm && llvm-r1_pkg_setup
+	use llvm && llvm-r2_pkg_setup
 	use python && python-single-r1_pkg_setup
 }
 
