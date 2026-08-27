@@ -25,16 +25,15 @@ CDEPEND="
 	dev-cpp/abseil-cpp:=
 	dev-cpp/ada:=
 	dev-cpp/cld3:=
-	>=dev-cpp/glibmm-2.77:2.68
 	dev-cpp/toomanycooks
 	dev-libs/glib:2
 	dev-libs/libfido2:=
 	dev-libs/openssl:=
 	dev-libs/qr-code-generator:=
 	dev-libs/xxhash
-	>=dev-qt/qtbase-6.5:6=[dbus?,gui,network,opengl,ssl,wayland?,widgets]
-	>=dev-qt/qtimageformats-6.5:6
-	>=dev-qt/qtsvg-6.5:6
+	>=dev-qt/qtbase-6.11:6=[dbus?,gui,network,opengl,ssl,wayland?,widgets]
+	>=dev-qt/qtimageformats-6.11:6
+	>=dev-qt/qtsvg-6.11:6
 	kde-frameworks/kcoreaddons:6
 	media-libs/libjpeg-turbo:=
 	media-libs/openal
@@ -47,8 +46,8 @@ CDEPEND="
 	!enchant? ( >=app-text/hunspell-1.7:= )
 	enchant? ( app-text/enchant:= )
 	webkit? ( wayland? (
-		>=dev-qt/qtdeclarative-6.5:6
-		>=dev-qt/qtwayland-6.5:6[compositor(+),qml]
+		>=dev-qt/qtdeclarative-6.11:6
+		>=dev-qt/qtwayland-6.11:6[compositor(+),qml]
 	) )
 "
 RDEPEND="${CDEPEND}
@@ -66,11 +65,10 @@ BDEPEND="
 	${PYTHON_DEPS}
 	>=dev-build/cmake-3.16
 	>=dev-cpp/cppgir-2.0_p20260226
-	>=dev-libs/gobject-introspection-1.82.0-r2
 	dev-qt/qtshadertools
 	>=dev-util/gdbus-codegen-2.80.5-r1
 	virtual/pkgconfig
-	wayland? ( dev-util/wayland-scanner )
+	webkit? ( wayland? ( dev-util/wayland-scanner ) )
 "
 # NOTE: dev-cpp/expected-lite used indirectly by a dev-cpp/cppgir header file
 # NOTE: sys-apps/hwloc is depended upon by dev-cpp/toomanycooks, but needs to
