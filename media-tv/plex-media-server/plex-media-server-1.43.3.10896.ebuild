@@ -7,7 +7,7 @@ VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/plexmediaserver.asc
 
 inherit eapi9-pipestatus readme.gentoo-r1 systemd unpacker pax-utils verify-sig
 
-MY_PV="${PV}-00f62d37d"
+MY_PV="${PV}-cb3ebc72d"
 MY_URI="https://downloads.plex.tv/plex-media-server-new"
 
 DESCRIPTION="Free media library that is intended for use with a plex client"
