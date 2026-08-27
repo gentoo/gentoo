@@ -13,7 +13,7 @@ SRC_URI+=" https://github.com/tpm2-software/tpm2-tools/commit/644867e8116b79a37f
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ppc64 x86"
+KEYWORDS="amd64 arm ~arm64 ppc64 x86"
 IUSE="+fapi test"
 
 RESTRICT="!test? ( test )"
