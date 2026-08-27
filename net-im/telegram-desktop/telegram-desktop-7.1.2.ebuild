@@ -106,6 +106,7 @@ src_prepare() {
 	# Some packages are found through pkg_check_modules, rather than find_package
 	sed -e '/find_package(lz4 /d' -i cmake/external/lz4/CMakeLists.txt || die
 	sed -e '/find_package(xxHash /d' -i cmake/external/xxhash/CMakeLists.txt || die
+	sed -e '/find_package(minizip /d' -i cmake/external/minizip/CMakeLists.txt || die
 
 	# Greedily remove ThirdParty directories, keep only ones that interest us
 	local keep=(
