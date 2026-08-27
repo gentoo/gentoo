@@ -1195,6 +1195,88 @@ distutils_pep517_install() {
 # distutils_pep517_install calls in the ebuild.
 declare -g -A DISTUTILS_WHEELS=()
 
+# @FUNCTION: _distutils-r1_find_best_wheel
+# @INTERNAL
+# @DESCRIPTION:
+# Find the best reusable wheel in DISTUTILS_WHEELS, and print its path.
+# If no wheel is reusable, returns empty.
+_distutils-r1_find_best_wheel() {
+	local best_wheel= whl
+	for whl in "${!DISTUTILS_WHEELS[@]}"; do
+		# use only wheels corresponding to the current directory
+		if [[ ${PWD} != ${DISTUTILS_WHEELS["${whl}"]} ]]; then
+			continue
+		fi
+
+		local whl_fn=${whl##*/}
+		# This technically omits the build tag, but we're
+		# not greedy, so we're only checking for the minimum number
+		# of components.
+		[[ ${whl_fn} != *-*-*-*-*.whl ]] &&
+			die "Invalid wheel filename: ${whl}"
+		whl_fn=${whl_fn%.whl}
+		local platform_tag=${whl_fn##*-}
+		whl_fn=${whl_fn%-*}
+		local abi_tag=${whl_fn##*-}
+		whl_fn=${whl_fn%-*}
+		local python_tag=${whl_fn##*-}
+
+		# Verify whether the Python tag is compatible.  We should
+		# be running from the oldest to the newest Python version,
+		# so it should always hold.  We short-circuit py3 tag.
+		if [[ .${python_tag}. != *.py3.* ]]; then
+			[[ ${EPYTHON} != python3.* ]] &&
+				die "Update the python_tag check for ${EPYTHON}"
+			local minor=${EPYTHON#python3.}
+			minor=${minor%t}
+			local is_compatible=
+			while [[ ${minor} -ge 0 ]]; do
+				if [[
+					.${python_tag}. == *.cp3${minor}.* ||
+					.${python_tag}. == *.py3${minor}.*
+				]]; then
+					is_compatible=1
+				fi
+				: $(( minor-- ))
+			done
+			[[ ! ${is_compatible} ]] &&
+				die "Incompatible Python tag found in ${whl_fn}"
+		fi
+
+		if [[
+			# Use pure Python wheels only if we're not expected to
+			# build extensions.  Otherwise, we may end up not
+			# building the extension at all when e.g. PyPy3 is built
+			# without one.
+			(
+				! ${DISTUTILS_EXT} &&
+				.${python_tag}. == *.py3.* &&
+				.${abi_tag}. == *.none.*
+			) ||
+			# For GIL-enabled CPython, we can reuse abi3 wheels.
+			# Note that we do not check the Python tag (yet),
+			# and instead rely on the assumption that we're building
+			# from the oldest to the newest implementation,
+			# and the wheels are forward-compatible.
+			(
+				${EPYTHON} == python* &&
+				${EPYTHON} != *t &&
+				.${abi_tag}. == *.abi3.*
+			) ||
+			# For freethreading CPython, we can reuse abi3t wheels.
+			# Same as above, we're relying on the ordering.
+			(
+				${EPYTHON} == python*t &&
+				.${abi_tag}. == *.abi3t.*
+			)
+		]]; then
+			best_wheel=${whl}
+		fi
+	done
+
+	echo "${best_wheel}"
+}
+
 # @FUNCTION: distutils-r1_python_compile
 # @USAGE: [additional-args...]
 # @DESCRIPTION:
@@ -1230,79 +1312,7 @@ distutils-r1_python_compile() {
 	EOF
 
 	if [[ ${DISTUTILS_ALLOW_WHEEL_REUSE} ]]; then
-		local best_wheel= whl
-		for whl in "${!DISTUTILS_WHEELS[@]}"; do
-			# use only wheels corresponding to the current directory
-			if [[ ${PWD} != ${DISTUTILS_WHEELS["${whl}"]} ]]; then
-				continue
-			fi
-
-			local whl_fn=${whl##*/}
-			# This technically omits the build tag, but we're
-			# not greedy, so we're only checking for the minimum number
-			# of components.
-			[[ ${whl_fn} != *-*-*-*-*.whl ]] &&
-				die "Invalid wheel filename: ${whl}"
-			whl_fn=${whl_fn%.whl}
-			local platform_tag=${whl_fn##*-}
-			whl_fn=${whl_fn%-*}
-			local abi_tag=${whl_fn##*-}
-			whl_fn=${whl_fn%-*}
-			local python_tag=${whl_fn##*-}
-
-			# Verify whether the Python tag is compatible.  We should
-			# be running from the oldest to the newest Python version,
-			# so it should always hold.  We short-circuit py3 tag.
-			if [[ .${python_tag}. != *.py3.* ]]; then
-				[[ ${EPYTHON} != python3.* ]] &&
-					die "Update the python_tag check for ${EPYTHON}"
-				local minor=${EPYTHON#python3.}
-				minor=${minor%t}
-				local is_compatible=
-				while [[ ${minor} -ge 0 ]]; do
-					if [[
-						.${python_tag}. == *.cp3${minor}.* ||
-						.${python_tag}. == *.py3${minor}.*
-					]]; then
-						is_compatible=1
-					fi
-					: $(( minor-- ))
-				done
-				[[ ! ${is_compatible} ]] &&
-					die "Incompatible Python tag found in ${whl_fn}"
-			fi
-
-			if [[
-				# Use pure Python wheels only if we're not expected to
-				# build extensions.  Otherwise, we may end up not
-				# building the extension at all when e.g. PyPy3 is built
-				# without one.
-				(
-					! ${DISTUTILS_EXT} &&
-					.${python_tag}. == *.py3.* &&
-					.${abi_tag}. == *.none.*
-				) ||
-				# For GIL-enabled CPython, we can reuse abi3 wheels.
-				# Note that we do not check the Python tag (yet),
-				# and instead rely on the assumption that we're building
-				# from the oldest to the newest implementation,
-				# and the wheels are forward-compatible.
-				(
-					${EPYTHON} == python* &&
-					${EPYTHON} != *t &&
-					.${abi_tag}. == *.abi3.*
-				) ||
-				# For freethreading CPython, we can reuse abi3t wheels.
-				# Same as above, we're relying on the ordering.
-				(
-					${EPYTHON} == python*t &&
-					.${abi_tag}. == *.abi3t.*
-				)
-			]]; then
-				best_wheel=${whl}
-			fi
-		done
-
+		local best_wheel=$(_distutils-r1_find_best_wheel)
 		if [[ -n ${best_wheel} ]]; then
 			distutils_wheel_install "${BUILD_DIR}/install" "${best_wheel}"
 			return
