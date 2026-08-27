@@ -7,7 +7,7 @@ inherit xorg-meson
 
 DESCRIPTION="analog / digital clock for X"
 
-KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
 
 RDEPEND="x11-libs/libX11
 	x11-libs/libXmu
