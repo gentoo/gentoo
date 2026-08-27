@@ -83,10 +83,6 @@ src_prepare() {
 	cp -r -l "${WORKDIR}/MicroTeX-${BUNDLED_MICROTEX_SUBMODULE_SHA}"/* \
 	   ./submodules/microtex/ || die
 
-	# Fix "PYTHON_EXECUTABLE" in Jupyter kernel
-	sed -i "s|@PYTHON_EXECUTABLE@|${EPYTHON}|"  \
-		./jupyterkernel/kernelspec/kernel.json.in || die
-
 	# Clean postinst script which calls libtool and icon-cache update
 	echo '#!/bin/sh' > ./config/postinst.in || die
 
@@ -102,14 +98,13 @@ src_prepare() {
 
 src_configure() {
 	local -a mycmakeargs=(
+		-DPython_EXECUTABLE="${PYTHON}"
 		-DENABLE_SYSTEM_JSONCPP="ON"
 		-DPACKAGING_MODE="ON"
-
 		-DBUILD_AS_CPP_LIBRARY="OFF"
 		-DENABLE_JUPYTER="OFF"  # For a special Xeus Jupyter kernel (uses xtl).
 		-DENABLE_MATHEMATICA="OFF"
 		-DINSTALL_TARGETS_ONLY="OFF"
-
 		-DBUILD_TESTS="$(usex test)"
 		-DENABLE_FRONTEND="$(usex gui)"
 		-DENABLE_PY_JUPYTER="$(usex jupyter)"
