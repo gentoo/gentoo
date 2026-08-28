@@ -25,7 +25,7 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
 
-# Using jdk:25 or higher, depending on version of grandle-bin, leads to:
+# Using jdk:25 or higher, depending on version of gradle-bin, leads to:
 # BUG! exception in phase 'semantic analysis' in source unit '_BuildScript_' Unsupported class file major version 69
 DEPEND="|| ( virtual/jdk:21 virtual/jdk:17 virtual/jdk:11 )"
 RDEPEND=">=virtual/jre-11:*"
