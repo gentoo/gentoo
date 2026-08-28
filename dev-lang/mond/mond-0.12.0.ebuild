@@ -116,7 +116,7 @@ else
 	SRC_URI="https://github.com/Rohansi/${PN^}/archive/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz"
 	S="${WORKDIR}/${P^}"
-	KEYWORDS="~amd64"
+	KEYWORDS="amd64"
 fi
 
 SRC_URI+=" ${NUGET_URIS} "
