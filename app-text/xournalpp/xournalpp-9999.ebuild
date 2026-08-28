@@ -3,8 +3,13 @@
 
 EAPI=8
 
+DOCS_BUILDER="doxygen"
+DOCS_DEPEND="
+	app-text/doxygen
+	media-gfx/graphviz
+"
 LUA_COMPAT=( lua5-3 lua5-4 lua5-5 )
-inherit cmake lua-single xdg flag-o-matic
+inherit cmake docs lua-single xdg flag-o-matic
 
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
@@ -70,6 +75,11 @@ src_configure() {
 	use wayland || append-flags -DGENTOO_GTK_HIDE_WAYLAND
 
 	cmake_src_configure
+}
+
+src_compile() {
+	docs_compile
+	cmake_src_compile
 }
 
 src_test() {
