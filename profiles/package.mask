@@ -36,6 +36,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Joonas Niilola <juippis@gentoo.org> (2026-08-28)
+# Parallel-build issue. While "emake -j1" works, have some time to
+# figure it out for now. Bug #981581
+=dev-libs/nss-3.128
+
 # Bernard Cafarelli <voyageur@gentoo.org> (2026-08-24)
 # Abandoned (last release in 2008), and uncertain useful value with modern 
 # filesystems. Also collides with dev-util/shake
