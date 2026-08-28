@@ -242,6 +242,9 @@ src_configure() {
 		symbol_level=0
 	)
 
+	use arm64 && use elibc_musl &&
+		mygnargs+=( allow_memory_tagging=false ) #981510
+
 	if use !custom-cflags; then
 		# qtwebengine can be rather fragile with *FLAGS
 		filter-lto

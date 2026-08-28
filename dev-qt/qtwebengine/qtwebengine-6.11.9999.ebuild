@@ -112,6 +112,7 @@ PATCHES+=(
 	"${FILESDIR}"/${PN}-6.10.3-climits.patch
 	"${FILESDIR}"/${PN}-6.11.0-gcc17.patch
 	"${FILESDIR}"/${PN}-6.11.1-musl-missing-includes.patch
+	"${FILESDIR}"/${PN}-6.11.1-musl-arm64-mte.patch
 )
 
 python_check_deps() {
@@ -242,6 +243,9 @@ src_configure() {
 		# reduce default disk space usage
 		symbol_level=0
 	)
+
+	use arm64 && use elibc_musl &&
+		mygnargs+=( allow_memory_tagging=false ) #981510
 
 	if use !custom-cflags; then
 		# qtwebengine can be rather fragile with *FLAGS
