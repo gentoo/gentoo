@@ -171,7 +171,8 @@ src_configure() {
 		-DWITH_XV=$(option xv)
 		-DWITH_WAYLAND=$(option_client wayland)
 		-DWITH_WEBVIEW=OFF
-		-DWITH_WINPR_TOOLS=$(option server)
+		# https://bugs.gentoo.org/981523
+		#-DWITH_WINPR_TOOLS=$(option server)
 	)
 	cmake_src_configure
 }
