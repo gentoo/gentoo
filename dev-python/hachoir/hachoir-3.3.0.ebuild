@@ -18,7 +18,7 @@ SRC_URI="https://github.com/vstinner/hachoir/archive/${PV}.tar.gz -> ${P}.gh.tar
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 ~arm64"
 
 distutils_enable_tests unittest
 
