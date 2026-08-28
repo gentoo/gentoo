@@ -1,0 +1,6 @@
+/var/log/keydb/keydb.log /var/log/keydb/sentinel.log {
+	compress
+	delaycompress
+	notifempty
+	missingok
+}

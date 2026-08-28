@@ -1,0 +1,13 @@
+[Unit]
+Description=A persistent key-value database
+After=syslog.target network.target
+
+[Service]
+Type=simple
+PIDFile=/run/keydb/keydb.pid
+ExecStart=/usr/sbin/keydb-server /etc/keydb/keydb.conf
+User=keydb
+Group=keydb
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,23 @@
+--- a/src/Makefile.old	2023-01-20 21:58:11.000000000 +0100
++++ b/src/Makefile	2023-02-16 11:36:49.550446792 +0100
+@@ -37,7 +37,7 @@
+ OPT=$(OPTIMIZATION)
+ 
+ # Detect if the compiler supports C11 _Atomic
+-C11_ATOMIC := $(shell sh -c 'echo "\#include <stdatomic.h>" > foo.c; \
++C11_ATOMIC := $(shell sh -c 'echo "#include <stdatomic.h>" > foo.c; \
+ 	$(CC) -std=c11 -c foo.c -o foo.o > /dev/null 2>&1; \
+ 	if [ -f foo.o ]; then echo "yes"; rm foo.o; fi; rm foo.c')
+ ifeq ($(C11_ATOMIC),yes)
+@@ -232,8 +232,9 @@
+ 	FINAL_LIBS+= -lpthread
+ else
+ 	# All the other OSes (notably Linux)
+-	FINAL_LDFLAGS+= -rdynamic
+-	FINAL_LIBS+=-ldl -pthread -lrt -luuid
++	FINAL_CFLAGS+= -Wa,--noexecstack
++	FINAL_LDFLAGS+= -rdynamic -Wl,-z,noexecstack
++	FINAL_LIBS+=-ldl -pthread -lrt -luuid -latomic
+ ifneq ($(NO_MOTD),yes)
+ 	FINAL_CFLAGS += -DMOTD
+ 	FINAL_CXXFLAGS += -DMOTD
