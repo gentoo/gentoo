@@ -67,8 +67,8 @@ CRATES="
 	pin-utils@0.1.0
 	postcard@1.0.6
 	ppv-lite86@0.2.20
-	proc-macro2@1.0.63
-	quote@1.0.29
+	proc-macro2@1.0.103
+	quote@1.0.42
 	rand@0.8.5
 	rand_chacha@0.3.1
 	rand_core@0.6.4
@@ -87,23 +87,22 @@ CRATES="
 	stable_deref_trait@1.2.0
 	strsim@0.10.0
 	syn@1.0.98
-	syn@2.0.32
+	syn@2.0.111
 	syslog@6.1.1
 	termcolor@1.1.3
-	thiserror-impl@1.0.41
-	thiserror@1.0.41
+	thiserror-impl@2.0.17
+	thiserror@2.0.17
 	time@0.3.11
 	unicode-ident@1.0.2
 	utf8parse@0.2.1
-	uuid-macro-internal@1.11.0
 	uuid@1.11.0
 	version_check@0.9.4
-	vhost-user-backend@0.17.0
-	vhost@0.13.0
-	virtio-bindings@0.2.4
-	virtio-queue@0.14.0
-	vm-memory@0.16.0
-	vmm-sys-util@0.12.1
+	vhost-user-backend@0.21.0
+	vhost@0.15.0
+	virtio-bindings@0.2.7
+	virtio-queue@0.17.0
+	vm-memory@0.17.1
+	vmm-sys-util@0.15.0
 	wasi@0.11.0+wasi-snapshot-preview1
 	winapi-i686-pc-windows-gnu@0.4.0
 	winapi-util@0.1.5
@@ -124,7 +123,7 @@ CRATES="
 
 inherit cargo
 
-DESCRIPTION="Shared file system for virtual machines"
+DESCRIPTION="A virtio-fs vhost-user device daemon"
 HOMEPAGE="https://virtio-fs.gitlab.io/"
 
 if [[ ${PV} == *9999* ]]; then
@@ -142,10 +141,11 @@ LICENSE="Apache-2.0 BSD"
 # Dependent crate licenses
 LICENSE+=" Apache-2.0 BSD MIT Unicode-DFS-2016"
 SLOT="0"
+IUSE="+seccomp xen"
 
 DEPEND="
 	sys-libs/libcap-ng
-	sys-libs/libseccomp
+	seccomp? ( sys-libs/libseccomp )
 "
 RDEPEND="
 	sys-apps/shadow
@@ -171,11 +171,6 @@ src_install() {
 	mkdir "${ED}/usr/libexec" || die
 	mv "${ED}/usr/"{bin,libexec}/${PN} || die
 
-	# Install 50-virtiofsd.json but to avoid conflicts with
-	# <app-emulation/qemu-8.0.0 install it under different name. In this case,
-	# smaller number means higher priority, but that's probably what users want
-	# anyway if they install this package on top of app-emulation/qemu.
-	# TODO: remove once old QEMUs are removed from the portage.
 	insinto "/usr/share/qemu/vhost-user"
-	newins "50-virtiofsd.json" "40-virtiofsd.json"
+	doins "50-virtiofsd.json"
 }
