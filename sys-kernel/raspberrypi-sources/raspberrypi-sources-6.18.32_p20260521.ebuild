@@ -72,16 +72,3 @@ universal_unpack() {
 	# remove all backup files
 	find . -iname "*~" -exec rm {} \; 2>/dev/null
 }
-
-src_prepare() {
-	default
-	kernel-2_src_prepare
-}
-
-pkg_postinst() {
-	kernel-2_pkg_postinst
-}
-
-pkg_postrm() {
-	kernel-2_pkg_postrm
-}
