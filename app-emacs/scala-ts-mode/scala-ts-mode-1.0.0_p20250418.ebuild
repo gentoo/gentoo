@@ -16,7 +16,7 @@ S="${WORKDIR}/${PN}-${MY_COMMIT}"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 RDEPEND="
 	>=app-editors/emacs-29[tree-sitter]
