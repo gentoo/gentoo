@@ -23,7 +23,7 @@ S="${WORKDIR}/${MY_P}"
 # with their own licenses (Bootstrap, jQuery, Knockout, rarfile, etc).
 LICENSE="GPL-2+ Apache-2.0 CC-BY-3.0 ISC LGPL-2.1+ MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="test"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
