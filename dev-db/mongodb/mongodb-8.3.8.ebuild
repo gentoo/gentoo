@@ -114,6 +114,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-add-missing-mongos-dependency.patch"
 	"${FILESDIR}/${P}-disable-bazelisk-check.patch"
 	"${FILESDIR}/${PN}-8.0.29-fix-compiler-names.patch"
+	"${FILESDIR}/${PN}-8.0.29-fix-toolchain-environment.patch"
 	"${FILESDIR}/${P}-fix-grpc-build.patch"
 	"${FILESDIR}/${P}-override-distro.patch"
 	"${FILESDIR}/${P}-remove-mtune-march-cflags.patch"
@@ -238,7 +239,7 @@ src_configure() {
 	append-cppflags -D_XOPEN_SOURCE=700 -D_GNU_SOURCE
 
 	# -Werror is injected in a few places
-	append-cppflags -Wno-error
+	append-flags -Wno-error
 
 	# strict aliasing is broken
 	append-flags -fno-strict-aliasing
@@ -254,8 +255,10 @@ src_configure() {
 		MYEBAZELARGS+=( --linker=mold )
 	elif tc-ld-is-gold; then
 		append-ldflags -fuse-ld=gold
+		BUILD_LDFLAGS="${BUILD_LDFLAGS} -fuse-ld=gold"
 	elif tc-ld-is-bfd; then
 		append-ldflags -fuse-ld=bfd
+		BUILD_LDFLAGS="${BUILD_LDFLAGS} -fuse-ld=bfd"
 		# start-lib / end-lib not supported by bfd
 		MYEBAZELARGS+=( --nostart_end_lib )
 	fi
@@ -265,36 +268,38 @@ src_configure() {
 		MYEBAZELARGS+=( --compiler_type=gcc )
 	fi
 
-	local cppflags
-	for cppflags in ${CPPFLAGS}; do
-		MYEBAZELARGS+=(
-			--copt="${cppflags}"
-			--host_copt="${cppflags}"
-		)
+	local flags
+
+	for flags in ${CPPFLAGS}; do
+		MYEBAZELARGS+=( --copt="${flags}" )
 	done
 
-	local cflags
-	for cflags in ${CFLAGS}; do
-		MYEBAZELARGS+=(
-			--conlyopt="${cflags}"
-			--host_conlyopt="${cflags}"
-		)
+	for flags in ${CFLAGS}; do
+		MYEBAZELARGS+=( --conlyopt="${flags}" )
 	done
 
-	local cxxflags
-	for cxxflags in ${CXXFLAGS}; do
-		MYEBAZELARGS+=(
-			--cxxopt="${cxxflags}"
-			--host_cxxopt="${cxxflags}"
-		)
+	for flags in ${CXXFLAGS}; do
+		MYEBAZELARGS+=( --cxxopt="${flags}" )
 	done
 
-	local ldflags
-	for ldflags in ${LDFLAGS} ${LIBS}; do
-		MYEBAZELARGS+=(
-			--linkopt="${ldflags}"
-			--host_linkopt="${ldflags}"
-		)
+	for flags in ${LDFLAGS} ${LIBS}; do
+		MYEBAZELARGS+=( --linkopt="${flags}" )
+	done
+
+	for flags in ${BUILD_CPPFLAGS}; do
+		MYEBAZELARGS+=( --host_copt="${flags}" )
+	done
+
+	for flags in ${BUILD_CFLAGS}; do
+		MYEBAZELARGS+=( --host_conlyopt="${flags}" )
+	done
+
+	for flags in ${BUILD_CXXFLAGS}; do
+		MYEBAZELARGS+=( --host_cxxopt="${flags}" )
+	done
+
+	for flags in ${BUILD_LDFLAGS}; do
+		MYEBAZELARGS+=( --host_linkopt="${flags}" )
 	done
 
 	# clean cache, just in case

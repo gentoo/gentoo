@@ -90,6 +90,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-disable-bazelisk-check.patch"
 	"${FILESDIR}/${P}-fix-build-with-gcc-15.patch"
 	"${FILESDIR}/${P}-fix-compiler-names.patch"
+	"${FILESDIR}/${P}-fix-toolchain-environment.patch"
 	"${FILESDIR}/${P}-override-distro.patch"
 	"${FILESDIR}/${P}-remove-mtune-march-cflags.patch"
 	"${FILESDIR}/${P}-restore-syscall_h-includes.patch"
@@ -184,6 +185,7 @@ src_configure() {
 		--define=MONGO_VERSION="${PV}"
 		--define=MONGO_DISTMOD=gentoo
 		--repo_env=BAZEL_DO_NOT_DETECT_CPP_TOOLCHAIN=0
+		--action_env=PATH="$PATH"
 		--features=external_include_paths
 		--host_features=external_include_paths
 		--features=-per_object_debug_info
@@ -204,7 +206,7 @@ src_configure() {
 	append-cppflags -D_XOPEN_SOURCE=700 -D_GNU_SOURCE
 
 	# -Werror is injected in a few places
-	append-cppflags -Wno-error
+	append-flags -Wno-error
 
 	# strict aliasing is broken
 	append-flags -fno-strict-aliasing
@@ -220,8 +222,10 @@ src_configure() {
 		MYEBAZELARGS+=( --linker=mold )
 	elif tc-ld-is-gold; then
 		append-ldflags -fuse-ld=gold
+		BUILD_LDFLAGS="${BUILD_LDFLAGS} -fuse-ld=gold"
 	elif tc-ld-is-bfd; then
 		append-ldflags -fuse-ld=bfd
+		BUILD_LDFLAGS="${BUILD_LDFLAGS} -fuse-ld=bfd"
 	fi
 
 	# .bazelrc unconditionally sets compiler-type to clang
@@ -229,36 +233,38 @@ src_configure() {
 		MYEBAZELARGS+=( --compiler_type=gcc )
 	fi
 
-	local cppflags
-	for cppflags in ${CPPFLAGS}; do
-		MYEBAZELARGS+=(
-			--copt="${cppflags}"
-			--host_copt="${cppflags}"
-		)
+	local flags
+
+	for flags in ${CPPFLAGS}; do
+		MYEBAZELARGS+=( --copt="${flags}" )
 	done
 
-	local cflags
-	for cflags in ${CFLAGS}; do
-		MYEBAZELARGS+=(
-			--conlyopt="${cflags}"
-			--host_conlyopt="${cflags}"
-		)
+	for flags in ${CFLAGS}; do
+		MYEBAZELARGS+=( --conlyopt="${flags}" )
 	done
 
-	local cxxflags
-	for cxxflags in ${CXXFLAGS}; do
-		MYEBAZELARGS+=(
-			--cxxopt="${cxxflags}"
-			--host_cxxopt="${cxxflags}"
-		)
+	for flags in ${CXXFLAGS}; do
+		MYEBAZELARGS+=( --cxxopt="${flags}" )
 	done
 
-	local ldflags
-	for ldflags in ${LDFLAGS} ${LIBS}; do
-		MYEBAZELARGS+=(
-			--linkopt="${ldflags}"
-			--host_linkopt="${ldflags}"
-		)
+	for flags in ${LDFLAGS} ${LIBS}; do
+		MYEBAZELARGS+=( --linkopt="${flags}" )
+	done
+
+	for flags in ${BUILD_CPPFLAGS}; do
+		MYEBAZELARGS+=( --host_copt="${flags}" )
+	done
+
+	for flags in ${BUILD_CFLAGS}; do
+		MYEBAZELARGS+=( --host_conlyopt="${flags}" )
+	done
+
+	for flags in ${BUILD_CXXFLAGS}; do
+		MYEBAZELARGS+=( --host_cxxopt="${flags}" )
+	done
+
+	for flags in ${BUILD_LDFLAGS}; do
+		MYEBAZELARGS+=( --host_linkopt="${flags}" )
 	done
 
 	# clean cache, just in case
