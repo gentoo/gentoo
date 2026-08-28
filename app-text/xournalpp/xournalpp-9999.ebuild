@@ -31,6 +31,7 @@ RDEPEND="
 	dev-libs/libxml2:=
 	>=dev-libs/libzip-1.0.1:=
 	>=gnome-base/librsvg-2.40
+	media-libs/harfbuzz:=
 	virtual/zlib:=
 	>=x11-libs/gtk+-3.18.9:3[wayland?,X]
 	debug? ( dev-cpp/cpptrace )
