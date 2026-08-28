@@ -26,7 +26,7 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	${LUA_DEPS}
 	app-text/poppler[cairo]
-	app-text/qpdf
+	app-text/qpdf:=
 	>=dev-libs/glib-2.32.0
 	dev-libs/libxml2:=
 	>=dev-libs/libzip-1.0.1:=
