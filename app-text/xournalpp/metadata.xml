@@ -4,6 +4,9 @@
 	<maintainer type="person">
 		<email>dilfridge@gentoo.org</email>
 	</maintainer>
+	<use>
+		<flag name="sourceview">Enable syntax highlighting in TeX editor</flag>
+	</use>
 	<upstream>
 		<bugs-to>https://github.com/xournalpp/xournalpp/issues</bugs-to>
 		<changelog>https://github.com/xournalpp/xournalpp/releases</changelog>

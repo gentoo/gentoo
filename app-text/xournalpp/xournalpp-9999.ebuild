@@ -19,7 +19,7 @@ HOMEPAGE="https://github.com/xournalpp/xournalpp"
 
 LICENSE="GPL-2+"
 SLOT="0"
-IUSE="debug +man sound test wayland"
+IUSE="debug +man sound +sourceview test wayland"
 REQUIRED_USE="${LUA_REQUIRED_USE}"
 RESTRICT="!test? ( test )"
 
@@ -33,10 +33,10 @@ RDEPEND="
 	>=gnome-base/librsvg-2.40
 	virtual/zlib:=
 	>=x11-libs/gtk+-3.18.9:3[wayland?,X]
-	>=x11-libs/gtksourceview-4.0
 	debug? ( dev-cpp/cpptrace )
 	sound? ( >=media-libs/portaudio-12[cxx]
 		 >=media-libs/libsndfile-1.0.25 )
+	sourceview? ( x11-libs/gtksourceview:4 )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
@@ -55,6 +55,7 @@ src_configure() {
 	local mycmakeargs=(
 		-DLUA_VERSION="$(lua_get_version)"
 		-DENABLE_AUDIO=$(usex sound)
+		-DENABLE_GTK_SOURCEVIEW=$(usex sourceview)
 		-DENABLE_GTEST=$(usex test)
 		-DENABLE_CPPTRACE=$(usex debug)
 		-DWITH_MAN=$(usex man)
