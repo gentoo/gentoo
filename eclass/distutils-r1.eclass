@@ -288,11 +288,9 @@ _distutils_set_globals() {
 	if [[ ! ${DISTUTILS_OPTIONAL} ]]; then
 		RDEPEND="${PYTHON_DEPS} ${rdep}"
 		BDEPEND="${PYTHON_DEPS} ${bdep}"
+		# needed to get sysconfigdata for cross builds
+		DEPEND="${PYTHON_DEPS}"
 		REQUIRED_USE=${PYTHON_REQUIRED_USE}
-
-		if [[ ${DISTUTILS_EXT} ]]; then
-			DEPEND="${PYTHON_DEPS}"
-		fi
 	fi
 
 	if [[ ${DISTUTILS_EXT} ]]; then
