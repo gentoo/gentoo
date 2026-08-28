@@ -1,3 +1,6 @@
+mongos (at least as compiled by gcc) requires transaction_participant_resource_yielder.cpp
+which is defined by mongo_cc_library(name = "transaction" ...) in src/mongo/db/transaction/BUILD.bazel
+
 diff '--color=auto' -ur a/src/mongo/s/BUILD.bazel b/src/mongo/s/BUILD.bazel
 --- a/src/mongo/s/BUILD.bazel	2026-08-11 15:14:12.000000000 -0400
 +++ b/src/mongo/s/BUILD.bazel	2026-08-27 13:58:47.829136136 -0400
