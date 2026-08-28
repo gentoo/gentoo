@@ -24,12 +24,11 @@ HOMEPAGE="https://github.com/xournalpp/xournalpp"
 
 LICENSE="GPL-2+"
 SLOT="0"
-IUSE="debug +man sound +sourceview test wayland"
-REQUIRED_USE="${LUA_REQUIRED_USE}"
+IUSE="debug +lua +man sound +sourceview test wayland"
+REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	${LUA_DEPS}
 	app-text/poppler[cairo]
 	app-text/qpdf:=
 	>=dev-libs/glib-2.32.0
@@ -40,6 +39,7 @@ RDEPEND="
 	virtual/zlib:=
 	>=x11-libs/gtk+-3.18.9:3[wayland?,X]
 	debug? ( dev-cpp/cpptrace )
+	lua? ( ${LUA_DEPS} )
 	sound? ( >=media-libs/portaudio-12[cxx]
 		 >=media-libs/libsndfile-1.0.25 )
 	sourceview? ( x11-libs/gtksourceview:4 )
@@ -64,6 +64,7 @@ src_configure() {
 		-DENABLE_GTK_SOURCEVIEW=$(usex sourceview)
 		-DENABLE_GTEST=$(usex test)
 		-DENABLE_CPPTRACE=$(usex debug)
+		-DENABLE_PLUGINS=$(usex lua)
 		-DWITH_MAN=$(usex man)
 		-DMAN_COMPRESS=OFF
 	)
