@@ -103,7 +103,7 @@ RDEPEND="
 		sys-fs/mdadm
 		sys-process/procps
 	)
-	!<sys-fs/zfs-kmod-2.4.0_rc2-r1
+	!sys-fs/zfs-kmod
 "
 
 if [[ ${PV} != "9999" ]] ; then
