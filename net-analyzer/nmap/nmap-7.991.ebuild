@@ -30,7 +30,7 @@ else
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-macos"
 fi
 
-SRC_URI+=" https://distfiles.gentoo.org/pub/dev/dilfridge@gentoo.org/${CATEGORY}/${PN}/${PN}-7.991-patches-1.tar.xz"
+SRC_URI+=" https://distfiles.gentoo.org/pub/dev/sam@gentoo.org/${CATEGORY}/${PN}/${PN}-7.991-patches-1.tar.xz"
 
 # https://github.com/nmap/nmap/issues/2199
 LICENSE="NPSL-0.95"
