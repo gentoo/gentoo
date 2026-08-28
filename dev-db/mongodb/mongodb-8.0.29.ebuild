@@ -185,7 +185,6 @@ src_configure() {
 		--define=MONGO_VERSION="${PV}"
 		--define=MONGO_DISTMOD=gentoo
 		--repo_env=BAZEL_DO_NOT_DETECT_CPP_TOOLCHAIN=0
-		--action_env=PATH="$PATH"
 		--features=external_include_paths
 		--host_features=external_include_paths
 		--features=-per_object_debug_info
