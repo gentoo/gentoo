@@ -19,7 +19,7 @@ HOMEPAGE="https://github.com/xournalpp/xournalpp"
 
 LICENSE="GPL-2+"
 SLOT="0"
-IUSE="debug sound test wayland"
+IUSE="debug +man sound test wayland"
 REQUIRED_USE="${LUA_REQUIRED_USE}"
 RESTRICT="!test? ( test )"
 
@@ -42,6 +42,7 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	virtual/pkgconfig
 	sys-apps/lsb-release
+	man? ( sys-apps/help2man )
 	test? ( dev-cpp/gtest )
 "
 
@@ -53,10 +54,11 @@ PATCHES=(
 src_configure() {
 	local mycmakeargs=(
 		-DLUA_VERSION="$(lua_get_version)"
-		-DMAN_COMPRESS=OFF
 		-DENABLE_AUDIO=$(usex sound)
 		-DENABLE_GTEST=$(usex test)
 		-DENABLE_CPPTRACE=$(usex debug)
+		-DWITH_MAN=$(usex man)
+		-DMAN_COMPRESS=OFF
 	)
 
 	# bug 974936
