@@ -23,7 +23,7 @@ IUSE="debug sound test wayland"
 REQUIRED_USE="${LUA_REQUIRED_USE}"
 RESTRICT="!test? ( test )"
 
-COMMON_DEPEND="
+RDEPEND="
 	${LUA_DEPS}
 	app-text/poppler[cairo]
 	app-text/qpdf
@@ -38,8 +38,7 @@ COMMON_DEPEND="
 	sound? ( >=media-libs/portaudio-12[cxx]
 		 >=media-libs/libsndfile-1.0.25 )
 "
-RDEPEND="${COMMON_DEPEND}"
-DEPEND="${COMMON_DEPEND}"
+DEPEND="${RDEPEND}"
 BDEPEND="
 	virtual/pkgconfig
 	sys-apps/lsb-release
