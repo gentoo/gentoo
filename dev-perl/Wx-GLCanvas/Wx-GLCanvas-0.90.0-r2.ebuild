@@ -1,11 +1,12 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DIST_AUTHOR=MBARBON
 DIST_VERSION=0.09
-inherit perl-module virtualx
+WX_GTK_VER="3.2-gtk3"
+inherit perl-module virtualx toolchain-funcs wxwidgets
 
 DESCRIPTION="interface to wxWidgets' OpenGL canvas"
 
@@ -21,6 +22,14 @@ BDEPEND="${RDEPEND}
 	virtual/perl-Exporter
 	virtual/perl-ExtUtils-MakeMaker
 "
+
+src_configure() {
+	# use c++ compiler
+	export CC="$(tc-getCXX)"
+	export CXX="$(tc-getCXX)"
+	setup-wxwidgets
+	perl-module_src_configure
+}
 
 src_test() {
 	perl_rm_files "t/zz_pod.t"
