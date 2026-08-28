@@ -1,10 +1,10 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-DIST_AUTHOR=SMUELLER
-DIST_VERSION=0.18
+DIST_AUTHOR=MBARBON
+DIST_VERSION=0.19
 inherit perl-module
 
 DESCRIPTION="XS for C++"
@@ -23,10 +23,6 @@ BDEPEND="${RDEPEND}
 		dev-perl/Test-Base
 	)
 "
-
-PATCHES=(
-	"${FILESDIR}/${P}-no-dot-inc.patch"
-)
 
 PERL_RM_FILES=(
 	"t/zzz_pod.t"
