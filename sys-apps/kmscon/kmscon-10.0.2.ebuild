@@ -16,7 +16,7 @@ IUSE="debug +drm +fbdev freetype +gles2 libseat +pango test"
 RESTRICT="!test? ( test )"
 
 COMMON_DEPEND="app-text/docbook-xsl-stylesheets
-	>=dev-libs/libtsm-4.6.0:=
+	>=dev-libs/libtsm-4.7.0:=
 	dev-libs/libxslt
 	media-libs/libglvnd[X(+)]
 	>=virtual/udev-172
