@@ -1,0 +1,90 @@
+# Copyright 1999-2026 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=8
+
+DOCS_BUILDER="doxygen"
+DOCS_DEPEND="
+	app-text/doxygen
+	media-gfx/graphviz
+"
+LUA_COMPAT=( lua5-3 lua5-4 lua5-5 )
+inherit cmake docs lua-single xdg flag-o-matic
+
+if [[ ${PV} == *9999 ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/xournalpp/xournalpp.git"
+else
+	SRC_URI="https://github.com/xournalpp/xournalpp/archive/refs/tags/v${PV}.tar.gz -> ${P}.tgz"
+	KEYWORDS="~amd64 ~arm64 ~ppc64"
+fi
+
+DESCRIPTION="Handwriting notetaking software with PDF annotation support"
+HOMEPAGE="https://github.com/xournalpp/xournalpp"
+
+LICENSE="GPL-2+"
+SLOT="0"
+IUSE="debug +lua +man sound +sourceview test wayland"
+REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )"
+RESTRICT="!test? ( test )"
+
+RDEPEND="
+	app-text/poppler[cairo]
+	app-text/qpdf:=
+	>=dev-libs/glib-2.32.0
+	dev-libs/libxml2:=
+	>=dev-libs/libzip-1.0.1:=
+	>=gnome-base/librsvg-2.40
+	media-libs/harfbuzz:=
+	virtual/zlib:=
+	>=x11-libs/gtk+-3.18.9:3[wayland?,X]
+	debug? ( dev-cpp/cpptrace )
+	lua? ( ${LUA_DEPS} )
+	sound? ( >=media-libs/portaudio-12[cxx]
+		 >=media-libs/libsndfile-1.0.25 )
+	sourceview? ( x11-libs/gtksourceview:4 )
+"
+DEPEND="${RDEPEND}"
+BDEPEND="
+	virtual/pkgconfig
+	sys-apps/lsb-release
+	man? ( sys-apps/help2man )
+	test? ( dev-cpp/gtest )
+"
+
+PATCHES=(
+	"${FILESDIR}/${PN}-1.1.1-nostrip.patch"
+	"${FILESDIR}/${PN}-1.2.8-lua.patch"
+)
+
+src_configure() {
+	local mycmakeargs=(
+		-DLUA_VERSION="$(lua_get_version)"
+		-DENABLE_AUDIO=$(usex sound)
+		-DENABLE_GTK_SOURCEVIEW=$(usex sourceview)
+		-DENABLE_GTEST=$(usex test)
+		-DENABLE_CPPTRACE=$(usex debug)
+		-DENABLE_PLUGINS=$(usex lua)
+		-DWITH_MAN=$(usex man)
+		-DMAN_COMPRESS=OFF
+	)
+
+	# bug 974936
+	use debug && mycmakeargs+=( -DFETCHCONTENT_TRY_FIND_PACKAGE_MODE=ALWAYS )
+
+	# bug 957673
+	use wayland || append-flags -DGENTOO_GTK_HIDE_WAYLAND
+
+	cmake_src_configure
+}
+
+src_compile() {
+	docs_compile
+	cmake_src_compile
+}
+
+src_test() {
+	# https://github.com/xournalpp/xournalpp/tree/master/test#problems-running-make-test
+	eninja -C "${BUILD_DIR}" test-units
+	cmake_src_test
+}
