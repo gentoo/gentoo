@@ -1,0 +1,152 @@
+Subject: parser_bison: parse number as reject icmp code
+
+Extend parser to accept a numeric icmp code, instead of bailing out:
+
+ # nft add rule inet filter input reject with icmpx type 3
+ Error: syntax error, unexpected number, expecting string
+ add rule inet filter input reject with icmpx type 3
+                                                   ^
+
+Closes: https://bugzilla.netfilter.org/show_bug.cgi?id=1555
+Closes: https://bugs.gentoo.org/790014
+Signed-off-by: Pablo Neira Ayuso <pablo@netfilter.org>
+Backported-by: Francisco Blas Izquierdo Riera (klondike) <klondike@gentoo.org>
+
+--- a/src/parser_bison.y
++++ b/src/parser_bison.y
+@@ -698,6 +698,8 @@
+ 
+ %type <stmt>			queue_stmt queue_stmt_alloc
+ %destructor { stmt_free($$); }	queue_stmt queue_stmt_alloc
++%type <expr>			reject_with_expr
++%destructor { expr_free($$); }	reject_with_expr
+ %type <val>			queue_stmt_flags queue_stmt_flag
+ %type <stmt>			dup_stmt
+ %destructor { stmt_free($$); }	dup_stmt
+@@ -3298,42 +3298,39 @@ reject_stmt_alloc	:	_REJECT
+ 			}
+ 			;
+ 
++reject_with_expr	:	STRING
++			{
++				$$ = symbol_expr_alloc(&@$, SYMBOL_VALUE,
++						       current_scope(state), $1);
++				xfree($1);
++			}
++			|	integer_expr	{ $$ = $1; }
++			;
++
+ reject_opts		:       /* empty */
+ 			{
+ 				$<stmt>0->reject.type = -1;
+ 				$<stmt>0->reject.icmp_code = -1;
+ 			}
+-			|	WITH	ICMP	TYPE	STRING
++			|	WITH	ICMP	TYPE	reject_with_expr
+ 			{
+ 				$<stmt>0->reject.family = NFPROTO_IPV4;
+ 				$<stmt>0->reject.type = NFT_REJECT_ICMP_UNREACH;
+-				$<stmt>0->reject.expr =
+-					symbol_expr_alloc(&@$, SYMBOL_VALUE,
+-							  current_scope(state),
+-							  $4);
++				$<stmt>0->reject.expr = $4;
+ 				datatype_set($<stmt>0->reject.expr, &icmp_code_type);
+-				xfree($4);
+ 			}
+-			|	WITH	ICMP6	TYPE	STRING
++			|	WITH	ICMP6	TYPE	reject_with_expr
+ 			{
+ 				$<stmt>0->reject.family = NFPROTO_IPV6;
+ 				$<stmt>0->reject.type = NFT_REJECT_ICMP_UNREACH;
+-				$<stmt>0->reject.expr =
+-					symbol_expr_alloc(&@$, SYMBOL_VALUE,
+-							  current_scope(state),
+-							  $4);
++				$<stmt>0->reject.expr = $4;
+ 				datatype_set($<stmt>0->reject.expr, &icmpv6_code_type);
+-				xfree($4);
+ 			}
+-			|	WITH	ICMPX	TYPE	STRING
++			|	WITH	ICMPX	TYPE	reject_with_expr
+ 			{
+ 				$<stmt>0->reject.type = NFT_REJECT_ICMPX_UNREACH;
+-				$<stmt>0->reject.expr =
+-					symbol_expr_alloc(&@$, SYMBOL_VALUE,
+-							  current_scope(state),
+-							  $4);
++				$<stmt>0->reject.expr = $4;
+ 				datatype_set($<stmt>0->reject.expr, &icmpx_code_type);
+-				xfree($4);
+ 			}
+ 			|	WITH	TCP	RESET
+ 			{
+--- a/tests/py/inet/reject.t
++++ b/tests/py/inet/reject.t
+@@ -25,6 +25,7 @@ reject with icmpx type host-unreachable;ok
+ reject with icmpx type no-route;ok
+ reject with icmpx type admin-prohibited;ok
+ reject with icmpx type port-unreachable;ok;reject
++reject with icmpx type 3;ok;reject with icmpx type admin-prohibited
+ 
+ meta nfproto ipv4 reject with icmp type host-unreachable;ok;reject with icmp type host-unreachable
+ meta nfproto ipv6 reject with icmpv6 type no-route;ok;reject with icmpv6 type no-route
+--- a/tests/py/inet/reject.t.payload.inet
++++ b/tests/py/inet/reject.t.payload.inet
+@@ -104,6 +104,10 @@ inet test-inet input
+ inet test-inet input
+   [ reject type 2 code 1 ]
+ 
++# reject with icmpx type 3
++inet test-inet input
++  [ reject type 2 code 3 ]
++
+ # meta nfproto ipv4 reject with icmp type host-unreachable
+ inet test-inet input
+   [ meta load nfproto => reg 1 ]
+--- a/tests/py/ip/reject.t
++++ b/tests/py/ip/reject.t
+@@ -10,6 +10,7 @@ reject with icmp type port-unreachable;ok;reject
+ reject with icmp type net-prohibited;ok
+ reject with icmp type host-prohibited;ok
+ reject with icmp type admin-prohibited;ok
++reject with icmp type 3;ok;reject
+ mark 0x80000000 reject with tcp reset;ok;meta mark 0x80000000 reject with tcp reset
+ 
+ reject with icmp type no-route;fail
+--- a/tests/py/ip/reject.t.payload
++++ b/tests/py/ip/reject.t.payload
+@@ -30,6 +30,10 @@ ip test-ip4 output
+ ip test-ip4 output
+   [ reject type 0 code 13 ]
+ 
++# reject with icmp type 3
++ip test-ip4 output
++  [ reject type 0 code 3 ]
++
+ # mark 0x80000000 reject with tcp reset
+ ip test-ip4 output
+   [ meta load l4proto => reg 1 ]
+--- a/tests/py/ip6/reject.t
++++ b/tests/py/ip6/reject.t
+@@ -9,6 +9,7 @@ reject with icmpv6 type addr-unreachable;ok
+ reject with icmpv6 type port-unreachable;ok;reject
+ reject with icmpv6 type policy-fail;ok
+ reject with icmpv6 type reject-route;ok
++reject with icmpv6 type 3;ok;reject with icmpv6 type addr-unreachable
+ mark 0x80000000 reject with tcp reset;ok;meta mark 0x80000000 reject with tcp reset
+ 
+ reject with icmpv6 type host-unreachable;fail
+--- a/tests/py/ip6/reject.t.payload.ip6
++++ b/tests/py/ip6/reject.t.payload.ip6
+@@ -26,6 +26,10 @@ ip6 test-ip6 output
+ ip6 test-ip6 output
+   [ reject type 0 code 6 ]
+ 
++# reject with icmpv6 type 3
++ip6 test-ip6 output
++  [ reject type 0 code 3 ]
++
+ # mark 0x80000000 reject with tcp reset
+ ip6 test-ip6 output
+   [ meta load l4proto => reg 1 ]
