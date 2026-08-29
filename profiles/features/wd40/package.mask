@@ -101,6 +101,7 @@ dev-python/flufl-lock
 dev-python/gherkin-official
 dev-python/guessit
 dev-python/knowit
+dev-python/hypothesis
 dev-python/logfury
 dev-python/narwhals
 dev-python/progressbar2

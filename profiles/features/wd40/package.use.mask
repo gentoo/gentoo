@@ -1,6 +1,67 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (2025-08-29)
+# Need dev-python/hypothesis.
+dev-python/accessible-pygments test
+dev-python/argon2-cffi test
+dev-python/attrs test
+dev-python/binaryornot test
+dev-python/brotlicffi test
+dev-python/cattrs test
+dev-python/chardet test
+dev-python/commonmark test
+dev-python/coverage test
+dev-python/ecdsa test
+dev-python/gmpy2 test
+dev-python/h2 test
+dev-python/hpack test
+dev-python/hyperlink test
+dev-python/hypothesis-gentoo test
+dev-python/icalendar test
+dev-python/idna test
+dev-python/iso8601 test
+dev-python/isoduration test
+dev-python/isort test
+dev-python/jsondiff test
+dev-python/jsonpath-ng test
+dev-python/kombu test
+dev-python/mccabe test
+dev-python/mpmath test
+dev-python/natsort test
+dev-python/numpy test
+dev-python/packaging test
+dev-python/pandas test
+dev-python/parver test
+dev-python/pikepdf test
+dev-python/priority test
+dev-python/pyarrow test
+dev-python/pycairo test
+dev-python/pynacl test
+dev-python/pyrsistent test
+dev-python/pytest test
+dev-python/pytest-asyncio test
+dev-python/pytest-twisted test
+dev-python/python-dateutil test
+dev-python/python-subunit test
+dev-python/pyudev test
+dev-python/quart test
+dev-python/rapidfuzz test
+dev-python/rfc3339-validator test
+dev-python/rfc3986-validator test
+dev-python/scipy test
+dev-python/srt test
+dev-python/sympy test
+dev-python/textdistance test
+dev-python/time-machine test
+dev-python/wcag-contrast-ratio test
+dev-python/xarray test
+dev-python/yarl test
+dev-python/zeroconf test
+dev-python/zstandard test
+media-libs/mutagen test
+sci-libs/pyshp test
+
 # Pacho Ramos <pacho@gentoo.org> (2026-08-10)
 # Needs gnome-control-center and other rust reverse deps
 app-emulation/winetricks gui
