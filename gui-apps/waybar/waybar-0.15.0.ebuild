@@ -5,6 +5,10 @@ EAPI=8
 
 inherit meson optfeature
 
+PATCHES=(
+	"${FILESDIR}"/fmt12.patch
+)
+
 DESCRIPTION="Highly customizable Wayland bar for Sway and Wlroots based compositors"
 HOMEPAGE="https://github.com/Alexays/Waybar"
 
