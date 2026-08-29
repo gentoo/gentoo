@@ -1,4 +1,4 @@
-# Copyright 2016-2025 Gentoo Authors
+# Copyright 2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # This file contains descriptions of L10N USE_EXPAND flags.
@@ -32,6 +32,7 @@ as - Assamese
 ast - Asturian
 az - Azerbaijani
 be - Belarusian
+be-tarask - Belarusian (traditional orthography)
 bea - Beaver
 bg - Bulgarian
 bn - Bengali
