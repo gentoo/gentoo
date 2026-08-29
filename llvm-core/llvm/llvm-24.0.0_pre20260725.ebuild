@@ -387,6 +387,9 @@ multilib_src_configure() {
 	# LLVM with LTO anyway (which is not necessarily its fault).
 	tc-is-gcc && filter-lto
 
+	# https://github.com/llvm/llvm-project/issues/219693
+	append-flags -fno-strict-aliasing
+
 	local ffi_cflags ffi_ldflags
 	if use libffi; then
 		ffi_cflags=$($(tc-getPKG_CONFIG) --cflags-only-I libffi)
