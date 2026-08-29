@@ -8,11 +8,11 @@ media-video/pipewire sofa
 # Michał Górny <mgorny@gentoo.org> (2026-03-14)
 # SPIRV target requires dev-libs/level-zero.
 llvm-runtimes/offload llvm_targets_SPIRV
-llvm-runtimes/openmp -level-zero
+llvm-runtimes/openmp level-zero
 
 # Michał Górny <mgorny@gentoo.org> (2026-03-03)
 # OpenMP offloading GPU runtimes are not keyworded everywhre.
-llvm-runtimes/clang-runtime llvm_targets_AMDGPU llvm_targets_NVPTX
+llvm-runtimes/clang-runtime llvm_targets_AMDGPU llvm_targets_NVPTX llvm_targets_SPIRV
 
 # Ionen Wolkens <ionen@gentoo.org> (2026-02-11)
 # net-libs/librist currently has very few keywords
@@ -248,6 +248,12 @@ kde-plasma/discover snap
 # Needs dev-python/py-cpuinfo which is not ported to all of our platforms
 # See bug #894078.
 dev-python/tables cpudetection
+
+# Yiyang Wu <xgreenlandforwyy@gmail.com> (2023-01-27)
+# AMDGPU enablement depends on dev-libs/rocr-runtime, ~amd64 only
+# See also: https://bugs.gentoo.org/891499
+llvm-runtimes/offload llvm_targets_AMDGPU
+llvm-runtimes/openmp llvm_targets_AMDGPU rocm
 
 # Michał Górny <mgorny@gentoo.org> (2023-01-24)
 # libomptarget is only supported on 64-bit architectures.

@@ -288,7 +288,7 @@ dev-python/tables -cpudetection
 # AMDGPU enablement depends on dev-libs/rocr-runtime, ~amd64 only
 # See also: https://bugs.gentoo.org/891499
 llvm-runtimes/offload -llvm_targets_AMDGPU
-llvm-runtimes/openmp -llvm_targets_AMDGPU
+llvm-runtimes/openmp -llvm_targets_AMDGPU -rocm
 
 # Michał Górny <mgorny@gentoo.org> (2023-01-24)
 # libomptarget is only supported on 64-bit architectures.
