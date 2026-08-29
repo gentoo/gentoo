@@ -1,0 +1,166 @@
+From 6a9819e9084f66436f48c699a7c11a3f3ec7b089 Mon Sep 17 00:00:00 2001
+From: Lukas Schmelting <lschmelting@posteo.com>
+Date: Sun, 12 Apr 2026 00:01:00 +0200
+Subject: [PATCH] libbsd: install per-libdir time_abi.h for multilib time_t ABI
+
+Stop rewriting ${includedir}/bsd/sys/cdefs.h at install time. This does not work
+in case the same on-disk header path must be identical across multilib ABIs
+while LIBBSD_SYS_TIME_BITS and LIBBSD_SYS_HAS_TIME64 must still reflect the
+libbsd linked from each $(libdir).
+
+Generate include/libbsd/time_abi.h from configure (same substitutions as
+config.h), install one copy under $(libdir)/libbsd/include, and add the
+directory to pkg-config Cflags with -isystem so it tracks Libs.  Extend
+libbsd-overlay.pc.in the same way.
+
+Include libbsd/time_abi.h from bsd/sys/cdefs.h only when either macro is
+still undefined so the in-tree build keeps using config.h.
+
+Add -isystem $(top_builddir)/include to src AM_CPPFLAGS so <libbsd/time_abi.h>
+resolves when that include is taken.
+
+Ship include/libbsd/time_abi.h.in in EXTRA_DIST and list the generated
+header in AC_CONFIG_FILES.
+
+Bug: https://bugs.gentoo.org/925663
+Signed-off-by: Lukas Schmelting <lschmelting@posteo.com>
+---
+ Makefile.am                  |  1 +
+ configure.ac                 |  1 +
+ include/Makefile.am          | 19 ++++++++++---------
+ include/bsd/sys/cdefs.h      | 11 ++++++++---
+ include/libbsd/time_abi.h.in | 10 ++++++++++
+ src/Makefile.am              |  1 +
+ src/libbsd-overlay.pc.in     |  5 +++--
+ src/libbsd.pc.in             |  2 +-
+ 8 files changed, 35 insertions(+), 15 deletions(-)
+ create mode 100644 include/libbsd/time_abi.h.in
+
+diff --git a/Makefile.am b/Makefile.am
+index bdb8376..f01b4ed 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -12,6 +12,7 @@ ACLOCAL_AMFLAGS = -I m4
+ EXTRA_DIST = \
+ 	autogen \
+ 	get-version \
++	include/libbsd/time_abi.h.in \
+ 	# EOL
+ 
+ dist-hook:
+diff --git a/configure.ac b/configure.ac
+index 2a15d72..f8152f7 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -618,6 +618,7 @@ AC_SUBST([LIBBSD_LIBS])
+ AC_CONFIG_FILES([
+   Makefile
+   include/Makefile
++  include/libbsd/time_abi.h
+   man/Makefile
+   src/Makefile
+   src/libbsd.pc
+diff --git a/include/Makefile.am b/include/Makefile.am
+index cf2713e..2f1b844 100644
+--- a/include/Makefile.am
++++ b/include/Makefile.am
+@@ -76,13 +76,14 @@ nobase_include_HEADERS += \
+ 	# EOL
+ endif
+ 
+-do_header_subst = $(AM_V_GEN) $(SED) \
+-	-e 's:^//\(.define LIBBSD_SYS_TIME_BITS\).*:\1 $(LIBBSD_SYS_TIME_BITS):' \
+-	-e 's:^//\(.define LIBBSD_SYS_HAS_TIME64\).*:\1 $(LIBBSD_SYS_HAS_TIME64):' \
+-	# EOL
++install-data-local: $(top_builddir)/include/libbsd/time_abi.h
++	@$(NORMAL_INSTALL)
++	$(MKDIR_P) '$(DESTDIR)$(libdir)/libbsd/include/libbsd'
++	$(INSTALL_HEADER) '$(top_builddir)/include/libbsd/time_abi.h' \
++		'$(DESTDIR)$(libdir)/libbsd/include/libbsd/time_abi.h'
+ 
+-install-data-hook:
+-	$(do_header_subst) <$(DESTDIR)$(includedir)/bsd/sys/cdefs.h \
+-	                   >$(DESTDIR)$(includedir)/bsd/sys/cdefs.h.new
+-	mv  $(DESTDIR)$(includedir)/bsd/sys/cdefs.h.new \
+-	    $(DESTDIR)$(includedir)/bsd/sys/cdefs.h
++uninstall-local:
++	rm -f '$(DESTDIR)$(libdir)/libbsd/include/libbsd/time_abi.h'
++	-rmdir '$(DESTDIR)$(libdir)/libbsd/include/libbsd' 2>/dev/null || :
++	-rmdir '$(DESTDIR)$(libdir)/libbsd/include' 2>/dev/null || :
++	-rmdir '$(DESTDIR)$(libdir)/libbsd' 2>/dev/null || :
+diff --git a/include/bsd/sys/cdefs.h b/include/bsd/sys/cdefs.h
+index d2627c4..3b76be3 100644
+--- a/include/bsd/sys/cdefs.h
++++ b/include/bsd/sys/cdefs.h
+@@ -86,9 +86,14 @@
+ #define _SYS_CDEFS_H
+ #endif
+ 
+-/* Define the ABI for the current system. */
+-//#define LIBBSD_SYS_TIME_BITS 0
+-//#define LIBBSD_SYS_HAS_TIME64 0
++/*
++ * LIBBSD_SYS_* come from configure (config.h when building this tree).  Installed
++ * layouts use the same values from libbsd/time_abi.h beside libdir; include it
++ * only when either macro is still undefined here.
++ */
++#if !defined(LIBBSD_SYS_TIME_BITS) || !defined(LIBBSD_SYS_HAS_TIME64)
++# include <libbsd/time_abi.h>
++#endif
+ 
+ #define LIBBSD_CONCAT(x, y)	x ## y
+ #define LIBBSD_STRING(x)	#x
+diff --git a/include/libbsd/time_abi.h.in b/include/libbsd/time_abi.h.in
+new file mode 100644
+index 0000000..f4a5e3f
+--- /dev/null
++++ b/include/libbsd/time_abi.h.in
+@@ -0,0 +1,10 @@
++#ifndef LIBBSD_TIME_ABI_H
++#define LIBBSD_TIME_ABI_H
++
++#ifndef LIBBSD_SYS_TIME_BITS
++#define LIBBSD_SYS_TIME_BITS @LIBBSD_SYS_TIME_BITS@
++#endif
++#ifndef LIBBSD_SYS_HAS_TIME64
++#define LIBBSD_SYS_HAS_TIME64 @LIBBSD_SYS_HAS_TIME64@
++#endif
++#endif
+diff --git a/src/Makefile.am b/src/Makefile.am
+index 00181bd..f04d580 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -2,6 +2,7 @@
+ 
+ AM_CPPFLAGS = \
+ 	-I$(top_builddir) \
++	-isystem $(top_builddir)/include \
+ 	-isystem $(top_srcdir)/include/bsd/ \
+ 	-include $(top_builddir)/config.h \
+ 	-DLIBBSD_OVERLAY -DLIBBSD_DISABLE_DEPRECATED \
+diff --git a/src/libbsd-overlay.pc.in b/src/libbsd-overlay.pc.in
+index 7ef4e4d..835db52 100644
+--- a/src/libbsd-overlay.pc.in
++++ b/src/libbsd-overlay.pc.in
+@@ -9,5 +9,6 @@ Version: @VERSION@
+ URL: https://libbsd.freedesktop.org/
+ Libs: -L${libdir} -lbsd
+ Libs.private: @LIBBSD_LIBS@ @MD5_LIBS@
+-# We use -isystem instead of -I due the overlay via #include_next usage.
+-Cflags: -isystem ${includedir}/bsd -DLIBBSD_OVERLAY
++# -isystem ${includedir}/bsd: We use -isystem instead of -I due to the overlay via #include_next usage.
++# -isystem ${libdir}/libbsd/include: libbsd/time_abi.h is installed beside the library, not under ${includedir}.
++Cflags: -isystem ${includedir}/bsd -DLIBBSD_OVERLAY -isystem ${libdir}/libbsd/include
+diff --git a/src/libbsd.pc.in b/src/libbsd.pc.in
+index 4bca715..1c529ab 100644
+--- a/src/libbsd.pc.in
++++ b/src/libbsd.pc.in
+@@ -9,4 +9,4 @@ Version: @VERSION@
+ URL: https://libbsd.freedesktop.org/
+ Libs: -L${libdir} -lbsd
+ Libs.private: @LIBBSD_LIBS@ @MD5_LIBS@
+-Cflags: -I${includedir}
++Cflags: -I${includedir} -isystem ${libdir}/libbsd/include
+-- 
+2.52.0
+
