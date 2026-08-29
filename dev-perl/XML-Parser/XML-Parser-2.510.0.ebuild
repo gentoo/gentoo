@@ -5,7 +5,7 @@ EAPI=8
 
 DIST_AUTHOR=TODDR
 DIST_VERSION=2.51
-inherit perl-module
+inherit multilib perl-module
 
 DESCRIPTION="A perl module for parsing XML documents"
 
@@ -44,6 +44,6 @@ src_install() {
 	perl-module_src_install
 
 	# "special" test for bug #827966
-	einfo "Checking for Expat.so (bug #827966)"
-	find "${D}" -name Expat.so | grep Expat || die "Something went badly wrong, can't find Expat.so. Please file a bug."
+	einfo "Checking for Expat$(get_modname) (bug #827966)"
+	find "${D}" -name Expat$(get_modname) | grep Expat || die "Something went badly wrong, can't find Expat$(get_modname). Please file a bug."
 }
