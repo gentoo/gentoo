@@ -30,3 +30,10 @@ src_prepare() {
 
 	cmake_src_prepare
 }
+
+src_configure() {
+	local mycmakeargs=(
+		-DBUILD_STATIC_LIBS=OFF
+	)
+	cmake_src_configure
+}
