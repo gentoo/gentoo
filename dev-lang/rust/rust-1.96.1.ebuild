@@ -31,7 +31,7 @@ else
 	RUST_MIN_VER="$(ver_cut 1).$(($(ver_cut 2) - 1)).0"
 fi
 
-inherit check-reqs estack flag-o-matic llvm-r1 multiprocessing optfeature
+inherit check-reqs estack flag-o-matic llvm-r2 multiprocessing optfeature
 inherit multilib multilib-build python-any-r1 rust rust-toolchain toolchain-funcs
 inherit verify-sig
 
@@ -125,6 +125,9 @@ BDEPEND="
 		)
 	) )
 	rust_sysroots_wasm? ( llvm-core/clang )
+	system-llvm? (
+        $(llvm_gen_dep 'llvm-core/llvm:${LLVM_SLOT}')
+    )
 	!system-llvm? (
 		>=dev-build/cmake-3.13.4
 		app-alternatives/ninja
@@ -161,6 +164,7 @@ RDEPEND="
 
 REQUIRED_USE="
 	|| ( ${ALL_LLVM_TARGETS[*]} )
+	system-llvm? ( ${LLVM_REQUIRED_USE} )
 	rust-analyzer? ( rust-src )
 	test? ( ${ALL_LLVM_TARGETS[*]} )
 	rust_sysroots_bpf? ( llvm_targets_BPF )
@@ -239,10 +243,6 @@ pre_build_checks() {
 	CHECKREQS_DISK_BUILD=${M}M check-reqs_pkg_${EBUILD_PHASE}
 }
 
-llvm_check_deps() {
-	has_version -r "llvm-core/llvm:${LLVM_SLOT}[${LLVM_TARGET_USEDEPS// /,}]"
-}
-
 # Is LLVM being linked against libc++?
 is_libcxx_linked() {
 	local code='#include <ciso646>
@@ -264,20 +264,25 @@ pkg_setup() {
 
 	export LIBGIT2_NO_PKG_CONFIG=1 #749381
 	if tc-is-cross-compiler; then
-		use system-llvm && die "USE=system-llvm not allowed when cross-compiling"
 		local cross_llvm_target="$(llvm_tuple_to_target "${CBUILD}")"
 		use "llvm_targets_${cross_llvm_target}" || \
 			die "Must enable LLVM_TARGETS=${cross_llvm_target} matching CBUILD=${CBUILD} when cross-compiling"
 	fi
 
 	rust_pkg_setup
+	export HOST_RUSTFLAGS="${RUSTFLAGS}"
 
 	if use system-llvm; then
-		llvm-r1_pkg_setup
-
-		local llvm_config="$(get_llvm_prefix)/bin/llvm-config"
+		llvm-r2_pkg_setup
+		
 		export LLVM_LINK_SHARED=1
-		export RUSTFLAGS="${RUSTFLAGS} -Lnative=$("${llvm_config}" --libdir)"
+		export HOST_LLVM_CONFIG="${T}/llvm-bin/$(get_abi_CHOST)-llvm-config"
+
+        if tc-is-cross-compiler; then
+			export BUILD_LLVM_CONFIG="$(get_llvm_prefix -b)/bin/llvm-config"
+		else
+			export BUILD_LLVM_CONFIG="$(get_llvm_prefix -d)/bin/llvm-config"
+        fi
 	fi
 }
 
@@ -364,19 +369,46 @@ src_prepare() {
 }
 
 src_configure() {
+	
+	rust_target="$(rust_abi)"
+	rust_build="$(rust_abi "${CBUILD}")"
+	rust_host="$(rust_abi "${CHOST}")"
+
 	if tc-is-cross-compiler; then
 		export PKG_CONFIG_ALLOW_CROSS=1
 
-		local rust_host_triple="$(rust_abi "${CHOST}")"
+		local rust_host_id="${rust_host//-/_}"
+		local rust_build_id="${rust_build//-/_}"
+		local rust_host_env="${rust_host_id^^}"
+		local rust_build_env="${rust_build_id^^}"
+
+		local cargo_host_var="CARGO_TARGET_${rust_host_env//-/_}_RUSTFLAGS"
+		local cargo_host="${!cargo_host_var:-$HOST_RUSTFLAGS}"
+		export ${cargo_host_var}="${cargo_host}"
+
+		export CFLAGS_${rust_host_id}="${CFLAGS}"
+		export CXXFLAGS_${rust_host_id}="${CXXFLAGS}"
+		export LDFLAGS_${rust_host_id}="${LDFLAGS}"
+
+		local cargo_build_var="CARGO_TARGET_${rust_build_env//-/_}_RUSTFLAGS"
+		local cargo_build="${!cargo_build_var:-$BUILD_RUSTFLAGS}"
+		export ${cargo_build_var}="${cargo_build}"
+
+		export CFLAGS_${rust_build_id}="${BUILD_CFLAGS}"
+		export CXXFLAGS_${rust_build_id}="${BUILD_CXXFLAGS}"
+		export LDFLAGS_${rust_build_id}="${BUILD_LDFLAGS}"
 
 		# https://docs.rs/pkg-config/latest/pkg_config/#cross-compilation
 		local pcvar
-		for pcvar in PKG_CONFIG_{PATH,LIBDIR} ; do
-			pcvar="${pcvar}_${rust_host_triple//-/_}"
+		for pcvar in PKG_CONFIG_{PATH,LIBDIR,SYSROOT_DIR} ; do
+			pcvar="${pcvar}_${rust_host//-/_}"
 
 			[[ -n ${!pcvar} ]] && continue
 
 			case ${pcvar} in
+				*PKG_CONFIG_SYSROOT_DIR*)
+					printf -v "${pcvar}" "${ESYSROOT}"
+ 					;;
 				*PKG_CONFIG_PATH*)
 					printf -v "${pcvar}" "${ESYSROOT}/usr/$(get_libdir)/pkgconfig"
 					;;
@@ -394,7 +426,7 @@ src_configure() {
 		# https://docs.rs/openssl/latest/openssl/#manual
 		local osslvar
 		for osslvar in OPENSSL_{INCLUDE_,LIB_,}DIR ; do
-			osslvar="${rust_host_triple}_${osslvar}"
+			osslvar="${rust_host}_${osslvar}"
 			osslvar="${osslvar^^}"
 			osslvar="${osslvar//-/_}"
 
@@ -463,10 +495,6 @@ src_configure() {
 	# in case of prefix it will be already prefixed, as --print sysroot returns full path
 	[[ -d ${rust_stage0_root} ]] || die "${rust_stage0_root} is not a directory"
 
-	rust_target="$(rust_abi)"
-	rust_build="$(rust_abi "${CBUILD}")"
-	rust_host="$(rust_abi "${CHOST}")"
-
 	RUST_EXPERIMENTAL_TARGETS=()
 	for _x in "${!ALL_RUST_EXPERIMENTAL_TARGETS[@]}"; do
 		if [[ ${ALL_RUST_EXPERIMENTAL_TARGETS[${_x}]} == 1 ]] && use ${_x} ; then
@@ -523,20 +551,10 @@ src_configure() {
 		esac)
 		enable-warnings = false
 		[llvm.build-config]
-		CMAKE_VERBOSE_MAKEFILE = "ON"
-		$(if ! tc-is-cross-compiler; then
-			# When cross-compiling, LLVM is compiled twice, once for host and
-			# once for target.  Unfortunately, this build configuration applies
-			# to both, which means any flags applicable to one target but not
-			# the other will break.  Conditionally disable respecting user
-			# flags when cross-compiling.
-			echo "CMAKE_C_FLAGS_${cm_btype} = \"${CFLAGS}\""
-			echo "CMAKE_CXX_FLAGS_${cm_btype} = \"${CXXFLAGS}\""
-			echo "CMAKE_EXE_LINKER_FLAGS_${cm_btype} = \"${LDFLAGS}\""
-			echo "CMAKE_MODULE_LINKER_FLAGS_${cm_btype} = \"${LDFLAGS}\""
-			echo "CMAKE_SHARED_LINKER_FLAGS_${cm_btype} = \"${LDFLAGS}\""
-			echo "CMAKE_STATIC_LINKER_FLAGS_${cm_btype} = \"${ARFLAGS}\""
+		$(if use system-llvm; then
+			echo "llvm-config = '${BUILD_LLVM_CONFIG}'"
 		fi)
+		CMAKE_VERBOSE_MAKEFILE = "ON"
 		[build]
 		build-stage = 2
 		test-stage = 2
@@ -592,6 +610,7 @@ src_configure() {
 		dist-src = false
 		remap-debuginfo = true
 		lld = $(usex system-llvm false $(toml_usex rust_sysroots_wasm))
+		llvm-tools = false
 		$(if use lto && tc-is-clang && ! tc-ld-is-mold; then
 			echo "use-lld = true"
 		fi)
@@ -609,11 +628,28 @@ src_configure() {
 		compression-profile = "balanced"
 	_EOF_
 
+	if tc-is-cross-compiler; then
+		cat <<- _EOF_ >> "${S}"/bootstrap.toml
+			[target.${rust_build}]
+			ar = "$(tc-getBUILD_AR)"
+			cc = "$(tc-getBUILD_CC)"
+			cxx = "$(tc-getBUILD_CXX)"
+			linker = "$(tc-getBUILD_CC)"
+			ranlib = "$(tc-getBUILD_RANLIB)"
+			llvm-libunwind = "$(usex llvm-libunwind $(usex system-llvm system in-tree) no)"
+			$(if use system-llvm; then
+				echo "llvm-config = '${BUILD_LLVM_CONFIG}'"
+			fi)
+		_EOF_
+	fi
+
 	for v in $(multilib_get_enabled_abi_pairs); do
 		rust_target=$(rust_abi $(get_abi_CHOST ${v##*.}))
 		arch_cflags="$(get_abi_CFLAGS ${v##*.})"
-
-		export CFLAGS_${rust_target//-/_}="${arch_cflags}"
+		
+		if [[ -n ${arch_cflags} ]]; then
+			export CFLAGS_${rust_target//-/_}=${arch_cflags}
+		fi
 
 		cat <<- _EOF_ >> "${S}"/bootstrap.toml
 			[target.${rust_target}]
@@ -623,18 +659,17 @@ src_configure() {
 			linker = "$(tc-getCC)"
 			ranlib = "$(tc-getRANLIB)"
 			llvm-libunwind = "$(usex llvm-libunwind $(usex system-llvm system in-tree) no)"
+			$(if use system-llvm; then
+				echo "llvm-config = '${HOST_LLVM_CONFIG}'"
+			fi)
 		_EOF_
-		if use system-llvm; then
-			cat <<- _EOF_ >> "${S}"/bootstrap.toml
-				llvm-config = "$(get_llvm_prefix)/bin/llvm-config"
-			_EOF_
-		fi
+
 		# by default librustc_target/spec/linux_musl_base.rs sets base.crt_static_default = true;
 		# but we patch it and set to false here as well
 		if use elibc_musl; then
 			cat <<- _EOF_ >> "${S}"/bootstrap.toml
 				crt-static = false
-				musl-root = "$($(tc-getCC) -print-sysroot)/usr"
+				musl-root = "$ESYSROOT/usr"
 			_EOF_
 		fi
 	done
@@ -688,7 +723,7 @@ src_configure() {
 
 	# BUG: we can't pass host flags to cross compiler, so just filter for now
 	# BUG: this should be more fine-grained.
-	filter-flags '-mcpu=*' '-march=*' '-mtune=*'
+	filter-flags '-mcpu=*' '-march=*' '-mtune=*' 'target-cpu=*'
 
 	local cross_target_spec
 	for cross_target_spec in "${RUST_CROSS_TARGETS[@]}";do
@@ -755,11 +790,16 @@ src_configure() {
 	einfo "Rust configured with the following flags:"
 	echo
 	echo RUSTFLAGS="\"${RUSTFLAGS}\""
+	echo BUILD_RUSTFLAGS="\"${BUILD_RUSTFLAGS}\""
+	echo HOST_RUSTFLAGS="\"${HOST_RUSTFLAGS}\""
 	echo RUSTFLAGS_BOOTSTRAP="\"${RUSTFLAGS_BOOTSTRAP}\""
 	echo RUSTFLAGS_NOT_BOOTSTRAP="\"${RUSTFLAGS_NOT_BOOTSTRAP}\""
 	echo MAGIC_EXTRA_RUSTFLAGS="\"${MAGIC_EXTRA_RUSTFLAGS}\""
 	env | grep "CARGO_TARGET_.*_RUSTFLAGS="
 	env | grep "CFLAGS_.*"
+	env | grep "CXXFLAGS_.*"
+	env | grep "LDFLAGS_.*"
+	env | grep "RUSTFLAGS_.*"
 	echo
 	einfo "bootstrap.toml contents:"
 	cat "${S}"/bootstrap.toml || die
@@ -767,7 +807,19 @@ src_configure() {
 }
 
 src_compile() {
+
+	local -a cross_unset=()
+	if tc-is-cross-compiler; then
+		# use XXFLAGS_CHOST for build and target instead of generic flags
+		cross_unset=(
+			-u CFLAGS
+			-u CXXFLAGS
+			-u LDFLAGS
+			-u RUSTFLAGS
+		)
+	fi
 	# -v will show invocations, -vv "very verbose" is overkill, -vvv "very very verbose" is insane
+	env "${cross_unset[@]}" \
 	RUST_BACKTRACE=1 "${EPYTHON}" ./x.py build -v \
 		--config="${S}"/bootstrap.toml -j$(get_makeopts_jobs) || die
 }

@@ -363,25 +363,28 @@ tc-export_build_env() {
 		: "${BUILD_CXXFLAGS:=-O1 -pipe}"
 		: "${BUILD_CPPFLAGS:= }"
 		: "${BUILD_LDFLAGS:= }"
+		: "${BUILD_RUSTFLAGS:= }"
 	else
 		# https://bugs.gentoo.org/654424
 		: "${BUILD_CFLAGS:=${CFLAGS}}"
 		: "${BUILD_CXXFLAGS:=${CXXFLAGS}}"
 		: "${BUILD_CPPFLAGS:=${CPPFLAGS}}"
 		: "${BUILD_LDFLAGS:=${LDFLAGS}}"
+		: "${BUILD_RUSTFLAGS:=${RUSTFLAGS}}"
 
 		if has go-env ${INHERITED}; then
 			: "${BUILD_GOAMD64:=${GOAMD64}}"
 			: "${BUILD_GOARM64:=${GOARM64}}"
 			: "${BUILD_GOPPC64:=${GOPPC64}}"
 			: "${BUILD_GORISCV64:=${GORISCV64}}"
+			: "${BUILD_GORISCV64:=${GORISCV64}}"
 		fi
 	fi
-	export BUILD_{C,CXX,CPP,LD}FLAGS
+	export BUILD_{C,CXX,CPP,LD,RUST}FLAGS
 
 	# Some packages use XXX_FOR_BUILD.
 	local v
-	for v in BUILD_{C,CXX,CPP,LD}FLAGS ; do
+	for v in BUILD_{C,CXX,CPP,LD,RUST}FLAGS ; do
 		export ${v#BUILD_}_FOR_BUILD="${!v}"
 	done
 }
@@ -406,6 +409,7 @@ tc-env_build() {
 	CXXFLAGS=${BUILD_CXXFLAGS} \
 	CPPFLAGS=${BUILD_CPPFLAGS} \
 	LDFLAGS=${BUILD_LDFLAGS} \
+	RUSTFLAGS=${BUILD_RUSTFLAGS} \
 	AR=$(tc-getBUILD_AR) \
 	AS=$(tc-getBUILD_AS) \
 	CC=$(tc-getBUILD_CC) \

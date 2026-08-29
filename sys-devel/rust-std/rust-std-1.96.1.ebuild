@@ -47,12 +47,13 @@ BDEPEND="
 	~dev-lang/rust-${PV}:=
 	verify-sig? ( sec-keys/openpgp-keys-rust )
 "
-DEPEND="||
-	(
-		>="${CATEGORY}"/gcc-4.7:*
-		>="${CATEGORY/sys-devel/llvm-core}"/clang-3.5:*
-	)
-"
+# bugs #979305
+#DEPEND="||
+#	(
+#		>="${CATEGORY}"/gcc-4.7:*
+#		>="${CATEGORY/sys-devel/llvm-core}"/clang-3.5:*
+#	)
+#"
 RDEPEND="${DEPEND}"
 
 # need full compiler to run tests
