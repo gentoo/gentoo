@@ -220,12 +220,12 @@ src_configure() {
 create_config_dropins() {
 	local locale_vars=(
 		# These are language variables that POSIX defines.
-		# http://pubs.opengroup.org/onlinepubs/9699919799/basedefs/V1_chap08.html#tag_08_02
-		LANG LC_ALL LC_COLLATE LC_CTYPE LC_MESSAGES LC_MONETARY LC_NUMERIC LC_TIME
+		# https://pubs.opengroup.org/onlinepubs/9799919799/basedefs/V1_chap08.html#tag_08_02
+		LANG LANGUAGE LC_ALL LC_COLLATE LC_CTYPE LC_MESSAGES LC_MONETARY LC_NUMERIC LC_TIME
 
 		# These are the GNU extensions.
 		# https://www.gnu.org/software/autoconf/manual/html_node/Special-Shell-Variables.html
-		LANGUAGE LC_ADDRESS LC_IDENTIFICATION LC_MEASUREMENT LC_NAME LC_PAPER LC_TELEPHONE
+		LC_ADDRESS LC_IDENTIFICATION LC_MEASUREMENT LC_NAME LC_PAPER LC_TELEPHONE
 	)
 
 	mkdir -p "${WORKDIR}"/etc/ssh/ssh{,d}_config.d || die
