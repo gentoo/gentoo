@@ -1,0 +1,34 @@
+From 6808787f762242748cb3aab426632e87da5e9525 Mon Sep 17 00:00:00 2001
+From: Struan Robertson <contact@struan.tech>
+Date: Fri, 24 Oct 2025 16:58:48 +0100
+Subject: [PATCH] Patch out source and target
+
+---
+ build.xml | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/build.xml b/build.xml
+index 640d561f..19a6594d 100644
+--- a/build.xml
++++ b/build.xml
+@@ -143,7 +143,7 @@
+     <target name="compile-java" if="is.java8">
+         <mkdir dir="target/classes"/>
+         <echo level="info" message="Compile java 8"/>
+-        <javac srcdir="src/java" destdir="target/classes" source="1.8" target="1.8" debug="on" encoding="UTF-8"
++        <javac srcdir="src/java" destdir="target/classes" debug="on" encoding="UTF-8"
+                includeantruntime="false">
+             <exclude name="davmail/exchange/auth/*Interactive*" unless="is.javafx"/>
+             <classpath>
+@@ -166,7 +166,7 @@
+ 
+     <target name="test-compile" depends="compile">
+         <mkdir dir="target/test-classes"/>
+-        <javac srcdir="src/test" destdir="target/test-classes"  source="1.8" target="1.8" debug="on" encoding="UTF-8"
++        <javac srcdir="src/test" destdir="target/test-classes" debug="on" encoding="UTF-8"
+                includeantruntime="false">
+             <classpath>
+                 <path refid="classpath"/>
+-- 
+2.51.0
+
