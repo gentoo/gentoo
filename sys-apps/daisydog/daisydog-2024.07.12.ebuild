@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,13 +6,12 @@ EAPI=8
 inherit toolchain-funcs flag-o-matic
 
 GIT_SHA1="c24ad8bc3682292d289537dfaa19bf549abfcc15"
-MY_P="${PN}-${GIT_SHA1}"
 
 DESCRIPTION="A very simple /dev/watchdog daemon"
 HOMEPAGE="https://chromium.googlesource.com/chromiumos/third_party/daisydog/+/master"
 SRC_URI="
-	https://chromium.googlesource.com/chromiumos/third_party/daisydog/+archive/${GIT_SHA1}.tar.gz
-		-> ${MY_P}.tar.gz
+	https://distfiles.gentoo.org/pub/dev/dilfridge@gentoo.org/sys-apps/daisydog/${P}.tar.gz
+	https://chromium.googlesource.com/chromiumos/third_party/daisydog/+archive/${GIT_SHA1}.tar.gz -> ${P}.tar.gz
 "
 S="${WORKDIR}"
 
