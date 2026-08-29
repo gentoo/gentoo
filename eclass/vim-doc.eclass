@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: vim-doc.eclass
@@ -61,7 +61,7 @@ update_vim_helptags() {
 		# Remove links
 		readarray -d '' files < <(find "${d}"/doc -name "*.txt" -type l -print0 || die "cannot traverse ${d}/doc" )
 		for helpfile in "${files[@]}"; do
-			if [[ $(readlink -f "${helpfile}") == "${vimfiles}"/* ]]; then
+			if [[ $(realpath "$(readlink -f "${helpfile}")") == "${vimfiles}"/* ]]; then
 				rm "${helpfile}" || die
 			fi
 		done
@@ -80,8 +80,16 @@ update_vim_helptags() {
 		# Re-create / install new links
 		if [[ -d "${vimfiles}"/doc ]]; then
 			for helpfile in "${vimfiles}"/doc/*.txt; do
-				if [[ ! -e "${d}/doc/$(basename "${helpfile}")" ]]; then
-					ln -s "${helpfile}" "${d}/doc" || die
+				helpfile="$(basename "${helpfile}")"
+				# Symlinks to packaged files should've already been removed
+				# above, but if somehow a symlink exists for this file, make
+				# sure to point it to the new file.
+				if [[ -h "${d}/doc/${helpfile}" ]]; then
+					ewarn "Updating symlink ${d}/doc/${helpfile}"
+					rm "${d}/doc/${helpfile}" || die
+				fi
+				if [[ ! -e "${d}/doc/${helpfile}" ]]; then
+					ln -s "../../vimfiles/doc/${helpfile}" "${d}/doc" || die
 				fi
 			done
 		fi
