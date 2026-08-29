@@ -7,7 +7,7 @@ inherit cmake udev
 
 DESCRIPTION="Modified Osmocom drivers with enhancements for RTL-SDR Blog V3 and V4 units"
 HOMEPAGE="https://github.com/rtlsdrblog/rtl-sdr-blog"
-SRC_URI="https://github.com/rtlsdrblog/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.gh.tar.gz"
+SRC_URI="https://github.com/rtlsdrblog/${PN}/archive/refs/tags/V${PV}.tar.gz -> ${P}.gh.tar.gz"
 
 LICENSE="GPL-2+ GPL-3+"
 SLOT="0"
