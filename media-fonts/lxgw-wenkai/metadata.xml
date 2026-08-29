@@ -9,4 +9,7 @@
 	<upstream>
 		<remote-id type="github">lxgw/LxgwWenKai</remote-id>
 	</upstream>
+	<use>
+		<flag name="screen">Install Screen variant</flag>
+	</use>
 </pkgmetadata>
