@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>gnome@gentoo.org</email>
+    <name>Gentoo GNOME Desktop</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="gnome-gitlab">GNOME/gweather-locations</remote-id>
+  </upstream>
+  <longdescription>
+    The GWeather locations database contains a list of locations used by GNOME
+    components through the GWeather library.
+
+    The locations are structured in an XML file, which follows a provided
+    schema file.
+	
+    The XML source is "compiled" into a binary format for fast parsing and
+    access.
+
+    Location names are translatable.
+  </longdescription>
+</pkgmetadata>
