@@ -1,12 +1,25 @@
 # Config file for /etc/init.d/portsentry
 #
-# This file is read by /etc/init.d/portsentry. See the portsentry.8
-# manpage for details.
+# portsentry 2.x is a single, config-driven daemon. Unlike the old 1.x
+# package there are no per-protocol "modes" (tcp/udp/stcp/...) to list here;
+# scan detection is configured in /etc/portsentry/portsentry.conf.
 #
-# The options in this file refer to commandline arguments (all in lowercase)
-# of portsentry. Use only one tcp and udp mode at a time.
+# Use PORTSENTRY_OPTS to pass command-line switches. See portsentry(8).
+# Commonly used options:
+#   --stealth              Stealth mode (default, recommended)
+#   -i, --interface <if>   Interface to listen on, ALL / ALL_NLO (default: ALL_NLO)
+#   -l, --logoutput <dst>  Log to "stdout" or "syslog" (default: stdout)
+#   -m, --method <method>  Stealth method: "pcap" or "raw" (default: pcap)
+#   -c, --configfile <p>   Use an alternate config file
 #
+# NOTE: --connect is a LEGACY option and its use is discouraged. It binds to
+# each monitored port and only registers fully completed TCP handshakes, so
+# stealth scans go unnoticed and it carries several additional caveats. Prefer
+# the default --stealth mode. See the "--connect" section of portsentry(8)
+# before enabling it.
+#
+# Example: log to syslog and watch a single interface
+#PORTSENTRY_OPTS="--stealth --logoutput syslog -i eth0"
 
-#PORTSENTRY_MODES="udp tcp"
-#PORTSENTRY_MODES="stcp sudp"
-#PORTSENTRY_MODES="atcp audp"
+# Log to syslog by default so output is captured under supervise-daemon.
+PORTSENTRY_OPTS="--logoutput syslog"
