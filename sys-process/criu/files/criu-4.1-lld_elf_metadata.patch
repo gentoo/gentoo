@@ -1,0 +1,34 @@
+From ef7b1cdb1f892300e43a6ded49914095d51eb6d0 Mon Sep 17 00:00:00 2001
+From: Pepper Gray <hello@peppergray.xyz>
+Date: Fri, 20 Mar 2026 03:38:53 +0100
+Subject: [PATCH] Keep ELF metadata for ld.lld
+
+Linking on arm64 using lld fails with:
+  LINK     criu/pie/parasite.built-in.o
+ld: error: discarding .shstrtab section is not allowed
+
+keep the missing sections to enhance portability
+
+Fixes: #2978
+Signed-off-by: Pepper Gray <hello@peppergray.xyz>
+---
+ compel/arch/aarch64/scripts/compel-pack.lds.S | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/compel/arch/aarch64/scripts/compel-pack.lds.S b/compel/arch/aarch64/scripts/compel-pack.lds.S
+index 57895ec9b6..9dfb0f8ad8 100644
+--- a/compel/arch/aarch64/scripts/compel-pack.lds.S
++++ b/compel/arch/aarch64/scripts/compel-pack.lds.S
+@@ -19,7 +19,11 @@ SECTIONS
+ 		. = ALIGN(32);
+ 		*(.toc*)
+ 		. = ALIGN(32);
+-	} =0x00000000,
++	} =0x00000000
++
++	.shstrtab : { *(.shstrtab) }
++	.strtab   : { *(.strtab) }
++	.symtab   : { *(.symtab) }
+ 
+ 	/DISCARD/ : {
+ 		*(.debug*)

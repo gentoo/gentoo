@@ -1,0 +1,62 @@
+From 7d68037743c912e15469857614c3e9c7f7e38ee7 Mon Sep 17 00:00:00 2001
+From: Pepper Gray <111446242+peppergrayxyz@users.noreply.github.com>
+Date: Tue, 30 Sep 2025 22:58:29 +0200
+Subject: [PATCH] make: prevent redefinition of 'struct sigcontext'
+
+Compilation on gentoo/arm64 (llvm+musl) fails with:
+
+In file included from compel/include/uapi/compel/asm/sigframe.h:4,
+                 from compel/plugins/std/infect.c:14:
+/usr/include/asm/sigcontext.h:28:8: error: redefinition of 'struct sigcontext'
+   28 | struct sigcontext {
+      |        ^~~~~~~~~~
+
+In file included from criu/arch/aarch64/include/asm/restorer.h:4,
+                 from criu/arch/aarch64/crtools.c:11:
+/usr/include/asm/sigcontext.h:28:8: error: redefinition of 'struct sigcontext'
+   28 | struct sigcontext {
+      |        ^~~~~~~~~~
+
+This is happening because <asm/sigcontext.h> and <signal.h> are
+mutually incompatible on Linux.
+
+To fix, use  <signal.h> instead of <asm/sigcontext.h> for arm64
+(like all others arches do).
+
+Fixes: #2766
+Signed-off-by: Pepper Gray <hello@peppergray.xyz>
+---
+ compel/arch/aarch64/src/lib/include/uapi/asm/sigframe.h | 3 ++-
+ criu/arch/aarch64/include/asm/restorer.h                | 2 +-
+ 2 files changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/compel/arch/aarch64/src/lib/include/uapi/asm/sigframe.h b/compel/arch/aarch64/src/lib/include/uapi/asm/sigframe.h
+index 9152024fd8..a3528500db 100644
+--- a/compel/arch/aarch64/src/lib/include/uapi/asm/sigframe.h
++++ b/compel/arch/aarch64/src/lib/include/uapi/asm/sigframe.h
+@@ -1,10 +1,11 @@
+ #ifndef UAPI_COMPEL_ASM_SIGFRAME_H__
+ #define UAPI_COMPEL_ASM_SIGFRAME_H__
+ 
+-#include <asm/sigcontext.h>
++#include <signal.h>
+ #include <sys/ucontext.h>
+ 
+ #include <stdint.h>
++#include <asm/types.h>
+ 
+ /* Copied from the kernel header arch/arm64/include/uapi/asm/sigcontext.h */
+ 
+diff --git a/criu/arch/aarch64/include/asm/restorer.h b/criu/arch/aarch64/include/asm/restorer.h
+index 64a9c24eb9..2174df4fa1 100644
+--- a/criu/arch/aarch64/include/asm/restorer.h
++++ b/criu/arch/aarch64/include/asm/restorer.h
+@@ -1,7 +1,7 @@
+ #ifndef __CR_ASM_RESTORER_H__
+ #define __CR_ASM_RESTORER_H__
+ 
+-#include <asm/sigcontext.h>
++#include <signal.h>
+ #include <sys/ucontext.h>
+ 
+ #include "asm/types.h"
