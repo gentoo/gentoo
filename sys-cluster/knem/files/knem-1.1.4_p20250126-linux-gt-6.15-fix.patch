@@ -1,0 +1,83 @@
+From https://gitlab.inria.fr/knem/knem/-/commit/40c101fa75ac31f7490cbde6e819777660639696.patch
+From: Brice Goglin <Brice.Goglin@inria.fr>
+Date: Fri, 13 Jun 2025 21:54:34 +0200
+Subject: [PATCH] driver/linux: del_timer() replaced with timer_delete() in
+ 6.15
+
+Thanks to Tzafrir Cohen for the patch.
+
+Signed-off-by: Brice Goglin <Brice.Goglin@inria.fr>
+--- a/driver/linux/check_kernel_headers.sh
++++ b/driver/linux/check_kernel_headers.sh
+@@ -399,6 +399,19 @@ else
+   echo no
+ fi
+ 
++# timer_delete() added in 6.2, del_timer() was removed in 6.15
++echo -n "  checking (in kernel headers) timer_del() availability ... "
++if test -e ${LINUX_HDR}/include/linux/timer.h > /dev/null ; then
++  if grep -w timer_delete ${LINUX_HDR}/include/linux/timer.h > /dev/null ; then
++    echo "#define KNEM_HAVE_TIMER_DELETE 1" >> ${TMP_CHECKS_NAME}
++    echo yes
++  else
++    echo no
++  fi
++else
++  echo no
++fi
++
+ # add the footer
+ echo "" >> ${TMP_CHECKS_NAME}
+ echo "#endif /* __knem_checks_h__ */" >> ${TMP_CHECKS_NAME}
+--- a/driver/linux/knem_main.c
++++ b/driver/linux/knem_main.c
+@@ -149,6 +149,11 @@ typedef u32 knem_region_id_t;
+ #define KNEM_REGION_ID_HTBL_KEY(region_id) ((region_id) & (KNEM_REGION_HTBL_SIZE-1))
+ #endif
+ 
++#ifndef KNEM_HAVE_TIMER_DELETE
++#define timer_delete_sync del_timer_sync
++#define timer_delete del_timer
++#endif
++
+ struct knem_context {
+ 	/* Contexts are obtained from the file descriptor private data (always valid as long as it's open)
+ 	 * or by looking up the context array using cookies.
+@@ -1938,7 +1943,7 @@ knem_dmacpy_partial_cleanup(struct knem_context *ctx)
+ 				spin_lock(&ctx->dmacpy_cleanup_work_lock);
+ 			}
+ 			/* we cleaned up all pending works, delete the timer (could have been rescheduled by a copy ioctl) */
+-			del_timer(&ctx->dmacpy_cleanup_timer);
++			timer_delete(&ctx->dmacpy_cleanup_timer);
+ 		}
+ 	}
+ 	spin_unlock(&ctx->dmacpy_cleanup_work_lock);
+@@ -1974,7 +1979,7 @@ knem_dmacpy_partial_cleanup_until(struct knem_context *ctx, dma_cookie_t cookie)
+ 			spin_lock(&ctx->dmacpy_cleanup_work_lock);
+ 		}
+ 		/* we cleaned up all pending works, delete the timer (could have been rescheduled by a copy ioctl) */
+-		del_timer(&ctx->dmacpy_cleanup_timer);
++		timer_delete(&ctx->dmacpy_cleanup_timer);
+ 
+ 		/* release the lock a bit */
+ 		spin_unlock(&ctx->dmacpy_cleanup_work_lock);
+@@ -2698,7 +2703,7 @@ knem_miscdev_open(struct inode * inode, struct file * file)
+  out_with_ctx:
+ #ifdef KNEM_HAVE_DMA_ENGINE
+ 	if (ctx->dmacpy_chan) {
+-		del_timer_sync(&ctx->dmacpy_cleanup_timer);
++		timer_delete_sync(&ctx->dmacpy_cleanup_timer);
+ 		knem_put_dma_channel(ctx->dmacpy_chan);
+ 	}
+ #endif
+@@ -2744,7 +2749,7 @@ knem_ctx_destroy_work(knem_work_struct_data_t data)
+ 
+ #ifdef KNEM_HAVE_DMA_ENGINE
+ 	if (ctx->dmacpy_chan) {
+-		del_timer_sync(&ctx->dmacpy_cleanup_timer);
++		timer_delete_sync(&ctx->dmacpy_cleanup_timer);
+ 		/* cleanup the pending work. don't check whether we got a dma_chan
+ 		 * since the work list has been properly initialized
+ 		 */
+-- 
+GitLab
