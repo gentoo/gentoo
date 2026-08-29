@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -47,8 +47,13 @@ BDEPEND="virtual/pkgconfig
 		dev-python/pip[${PYTHON_USEDEP}]
 )
 	ruby? ( >=dev-lang/swig-2.0.9 )"
+PATCHES=(
+	"${FILESDIR}"/${PN}-3.8.1_ld-flags.patch # bug #979353 fixed in 3.9
+	"${FILESDIR}"/${PN}-3.8.1_lsf.patch # bug #979354 fixed in 3.11
+)
 
 src_prepare() {
+	eapply "${PATCHES[@]}"
 	eapply_user
 
 	multilib_copy_sources
@@ -59,10 +64,15 @@ multilib_src_compile() {
 
 	local -x CFLAGS="${CFLAGS} -fno-semantic-interposition"
 
+	if tc-ld-is-lld && use elibc_musl; then
+		EXTRA_LD_FLAGS="${EXTRA_LD_FLAGS} --undefined-version"
+	fi
+
 	emake \
 		LIBDIR="\$(PREFIX)/$(get_libdir)" \
 		SHLIBDIR="/$(get_libdir)" \
 		LDFLAGS="-fPIC ${LDFLAGS} -pthread" \
+		EXTRA_LD_FLAGS="${EXTRA_LD_FLAGS}" \
 		USE_PCRE2=y \
 		USE_LFS=y \
 		FTS_LDLIBS="$(usex elibc_musl '-lfts' '')" \

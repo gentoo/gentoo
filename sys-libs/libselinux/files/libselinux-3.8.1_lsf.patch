@@ -1,0 +1,36 @@
+From 4bdb748b12661b24517d901d957759cf7447303c Mon Sep 17 00:00:00 2001
+From: Renato Caldas <renato@calgera.com>
+Date: Mon, 8 Jun 2026 09:16:14 -0400
+Subject: [PATCH] libselinux: restore: drop the obsolete LSF transitional API.
+
+The preferred way to enable LSF support on 32 bit systems is to define
+_FILE_OFFSET_BITS=64 when building selinux.
+
+Signed-off-by: Renato Caldas <renato@calgera.com>
+Acked-by: Stephen Smalley <stephen.smalley.work@gmail.com>
+---
+ libselinux/src/selinux_restorecon.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/selinux_restorecon.c b/src/selinux_restorecon.c
+index 10807867a..0159fb7f8 100644
+--- a/src/selinux_restorecon.c
++++ b/src/selinux_restorecon.c
+@@ -487,7 +487,7 @@ static int filespec_add(ino_t ino, const char *con, const char *file,
+ 	file_spec_t *prevfl, *fl;
+ 	uint32_t h;
+ 	int ret;
+-	struct stat64 sb;
++	struct stat sb;
+ 
+ 	__pthread_mutex_lock(&fl_mutex);
+ 
+@@ -501,7 +501,7 @@ static int filespec_add(ino_t ino, const char *con, const char *file,
+ 	for (prevfl = &fl_head[h], fl = fl_head[h].next; fl;
+ 	     prevfl = fl, fl = fl->next) {
+ 		if (ino == fl->ino) {
+-			ret = lstat64(fl->file, &sb);
++			ret = lstat(fl->file, &sb);
+ 			if (ret < 0 || sb.st_ino != ino) {
+ 				freecon(fl->con);
+ 				free(fl->file);

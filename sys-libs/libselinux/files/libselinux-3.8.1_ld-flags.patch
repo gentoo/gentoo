@@ -1,0 +1,45 @@
+From 6b84331e9060d6b72aa4f0c1ea18988a091e200a Mon Sep 17 00:00:00 2001
+From: Stephen Smalley <stephen.smalley.work@gmail.com>
+Date: Mon, 15 Jun 2026 13:20:42 -0400
+Subject: [PATCH] libselinux: Add EXTRA_LD_FLAGS for musl+llvm builds
+
+Introduce an optionally defined EXTRA_LD_FLAGS variable for use
+by musl+llvm builds to pass --undefined-version. This enables such
+builds to link despite the intentionally omitted
+matchpathcon_filespec_add64 symbol.
+
+Fixes: https://github.com/SELinuxProject/selinux/issues/512
+Fixes: https://github.com/SELinuxProject/selinux/pull/513
+Link: https://lore.kernel.org/selinux/871pe7n3w3.fsf@redhat.com/
+Fixes: 9395cc03226a0 ("Always build for LFS mode on 32-bit archs.")
+Reported-by: Pepper Gray <hello@peppergray.xyz>
+Suggested-by: Petr Lautrbach <plautrba@redhat.com>
+Signed-off-by: Stephen Smalley <stephen.smalley.work@gmail.com>
+---
+ README.md               | 4 ++++
+ libselinux/src/Makefile | 5 ++++-
+ 2 files changed, 8 insertions(+), 1 deletion(-)
+
+diff --git a/libselinux/src/Makefile b/libselinux/src/Makefile
+index 9982faada..9ecdbd4d0 100644
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -7,6 +7,9 @@ RUBY ?= ruby
+ RUBYPREFIX ?= $(notdir $(RUBY))
+ PKG_CONFIG ?= pkg-config
+ 
++# Set EXTRA_LD_FLAGS to --undefined-version to fix
++# linking against musl with llvm.
++
+ # Installation directories.
+ PREFIX ?= /usr
+ LIBDIR ?= $(PREFIX)/lib
+@@ -163,7 +166,7 @@ $(LIBA): $(OBJS)
+ 	$(RANLIB) $@
+ 
+ $(LIBSO): $(LOBJS)
+-	$(CC) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) -shared -o $@ $^ $(PCRE_LDLIBS) $(FTS_LDLIBS) -ldl -Wl,$(LD_SONAME_FLAGS)
++	$(CC) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) -shared -o $@ $^ $(PCRE_LDLIBS) $(FTS_LDLIBS) -ldl -Wl,$(LD_SONAME_FLAGS)$(EXTRA_LD_FLAGS:%=,%)
+ 	ln -sf $@ $(TARGET)
+ 
+ $(LIBPC): $(LIBPC).in ../VERSION
