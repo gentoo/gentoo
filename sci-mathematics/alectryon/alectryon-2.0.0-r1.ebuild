@@ -13,12 +13,10 @@ HOMEPAGE="https://github.com/cpitclaudel/alectryon/"
 
 if [[ "${PV}" == *9999* ]] ; then
 	inherit git-r3
-
 	EGIT_REPO_URI="https://github.com/cpitclaudel/${PN}"
 else
 	SRC_URI="https://github.com/cpitclaudel/${PN}/archive/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz"
-
 	KEYWORDS="~amd64"
 fi
 
@@ -37,12 +35,16 @@ RDEPEND="
 BDEPEND="
 	${RDEPEND}
 	doc? (
+		dev-tex/latexmk
+		dev-texlive/texlive-fontsrecommended
+		dev-texlive/texlive-latexextra
+		dev-texlive/texlive-luatex
 		dev-texlive/texlive-xetex
 		media-fonts/fira-code
 		media-fonts/libertine
 	)
 	emacs? (
-		app-emacs/flycheck
+		>=app-emacs/flycheck-31
 		app-emacs/proofgeneral
 	)
 "
