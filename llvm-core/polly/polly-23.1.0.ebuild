@@ -14,7 +14,8 @@ LICENSE="Apache-2.0-with-LLVM-exceptions UoI-NCSA"
 # vendored isl (fork?)
 LICENSE+=" MIT"
 SLOT="${LLVM_MAJOR}/${LLVM_SOABI}"
-IUSE="+debug test"
+KEYWORDS="~amd64 ~arm ~arm64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
+IUSE="debug test"
 RESTRICT="!test? ( test )"
 
 DEPEND="
