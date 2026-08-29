@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,9 +12,10 @@ SLOT="0"
 KEYWORDS="amd64 ppc ppc64 ~riscv x86"
 
 RDEPEND="
+	dev-perl/IO-Socket-SSL
 	>=dev-perl/Mojolicious-7.130.0
 "
-BDEPEND="${RDEPEND}
+BDEPEND="
 	>=dev-perl/Module-Build-0.420.0
 "
 
