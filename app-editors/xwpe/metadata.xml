@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>juan.mendezr@proton.me</email>
+		<name>Juan Manuel Méndez Rey</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+		xwpe (the X Windows Programming Environment) is a programming and text
+		editor in the style of the Borland Turbo C IDE of the early 1990s,
+		written by Fred Kruse in 1993, maintained by Dennis Payne from 2000 to
+		2006, and revived in 2026. A single binary runs in the console
+		(wpe/we, ncurses) or under X11 (xwpe/xwe, anti-aliased Xft/Cairo,
+		UTF-8). It pairs a syntax-highlighting editor with a Borland-style menu
+		and dialog system, project management, multi-language compiler
+		integration and source-level debugging (gdb/jdb/pdb), plus LSP and DAP
+		clients.
+	</longdescription>
+	<use>
+		<flag name="X">Build the X11 GUI front-end (xwpe/xwe) with Xft/Cairo/Pango rendering</flag>
+	</use>
+	<upstream>
+		<remote-id type="codeberg">mendezr/xwpe</remote-id>
+	</upstream>
+</pkgmetadata>
