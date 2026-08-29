@@ -1,13 +1,13 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit bash-completion-r1 desktop pax-utils
+inherit desktop pax-utils shell-completion xdg-utils
 
 MY_PN="${PN/-bin}"
 MY_P="${MY_PN}-${PV}"
-BIN_ARCHIVE="${MY_P}-linux_x64.bin"
+BIN_ARCHIVE="${MY_P}-linux_x64.run"
 
 DESCRIPTION="Complete set of tools that provide a virtual environment for Android"
 HOMEPAGE="https://www.genymotion.com"
@@ -22,15 +22,11 @@ KEYWORDS="-* ~amd64"
 RDEPEND="app-arch/lz4
 	app-crypt/mit-krb5
 	|| (
-		app-emulation/qemu[qemu_softmmu_targets_x86_64]
+		app-emulation/qemu[pulseaudio,qemu_softmmu_targets_x86_64]
 		app-emulation/virtualbox
 	)
-	|| (
-		dev-libs/openssl-compat:1.1.1
-		=dev-libs/openssl-1.1*:0
-	)
+	dev-libs/openssl-compat:1.1.1
 	dev-libs/glib:2
-	=dev-libs/hiredis-1.0*
 	media-libs/alsa-lib
 	media-libs/fontconfig
 	media-libs/freetype
@@ -38,7 +34,7 @@ RDEPEND="app-arch/lz4
 	media-libs/gst-plugins-base:1.0
 	media-libs/gstreamer:1.0
 	sys-apps/dbus
-	virtual/zlib:=
+	sys-libs/zlib
 	virtual/opengl
 	x11-libs/libX11
 	x11-libs/libxcb
@@ -83,9 +79,13 @@ src_prepare() {
 
 	# copy .desktop file in S directory
 	sed -i -e "s:Icon.*:Icon=/opt/${MY_PN}/icons/genymotion-logo.png:" \
-		-e "s:Exec.*:Exec=/opt/${MY_PN}/genymotion:" \
-		"${HOME}"/.local/share/applications/genymobile-genymotion.desktop || die "sed failed"
-	cp "${HOME}"/.local/share/applications/genymobile-genymotion.desktop "${S}" || die "copy .desktop file"
+		-e "s:Exec.*:Exec=/opt/${MY_PN}/genymotion %U:" \
+		"${HOME}"/.local/share/applications/genymotion-launchpad.desktop || die "sed failed"
+	cp "${HOME}"/.local/share/applications/genymotion-launchpad.desktop "${S}" || die "copy genymotion-launchpad.desktop file"
+	sed -i -e "s:Icon.*:Icon=/opt/${MY_PN}/icons/player-logo.png:" \
+		-e "s:Exec.*:Exec=/opt/${MY_PN}/player %U:" \
+		"${HOME}"/.local/share/applications/genymotion-player.desktop || die "sed failed"
+	cp "${HOME}"/.local/share/applications/genymotion-player.desktop "${S}" || die "copy genymotion-player.desktop file"
 }
 
 src_install() {
@@ -93,15 +93,15 @@ src_install() {
 	exeinto /opt/"${MY_PN}"
 
 	# Use qt bundled
-	doins -r "${MY_PN}"/{audio,geoservices,Qt,QtGraphicalEffects,QtLocation,QtPositioning,QtQuick,QtQuick.2}
+	doins -r "${MY_PN}"/{audio,gamepads,geoservices,Qt,QtGamepad,QtGraphicalEffects,QtLocation,QtPositioning,QtQuick,QtQuick.2}
 	doins -r "${MY_PN}"/{icons,imageformats,mediaservice,platforms,plugins,sqldrivers,translations,xcbglintegrations}
 	doins "${MY_PN}"/libQt*
 	doins "${MY_PN}"/qt.conf
 	doins "${MY_PN}"/libicu*
 
-	doexe "${MY_PN}"/{libcom,librendering,libshadertranslator,libswscale,libavutil}.so*
+	doexe "${MY_PN}"/lib{com,rendering,shadertranslator,swscale,avutil,hiredis}.so*
 	# android library
-	doexe "${MY_PN}"/{libOpenglRender,libemugl_logger,libemugl_common}.so*
+	doexe "${MY_PN}"/lib{OpenglRender,emugl_logger,emugl_common}.so*
 
 	find "${ED}/opt/${MY_PN}" -name "*.so*" -type f -exec chmod +x {} \; || die "Change .so permission failed"
 
@@ -122,15 +122,14 @@ src_install() {
 	dosym -r /opt/"${MY_PN}"/gmtool /opt/bin/gmtool
 
 	newbashcomp "${MY_PN}/completion/bash/gmtool.bash" gmtool
-
-	insinto /usr/share/zsh/site-functions
-	doins "${MY_PN}/completion/zsh/_gmtool"
+	dozshcomp "${MY_PN}/completion/zsh/_gmtool"
 
 	dodir /opt/"${MY_PN}"/qemu/bin
 	dosym  -r /usr/bin/qemu-system-x86_64 /opt/"${MY_PN}"/qemu/x86_64/bin/qemu-system-x86_64
 	dosym -r /usr/bin/qemu-img /opt/"${MY_PN}"/qemu/x86_64/bin/qemu-img
 
-	domenu genymobile-genymotion.desktop
+	domenu genymotion-player.desktop
+	domenu genymotion-launchpad.desktop
 }
 
 pkg_postinst() {
@@ -142,4 +141,12 @@ pkg_postinst() {
 		ewarn ""
 		ewarn "to change hypervisor to VirtualBox"
 	fi
+
+	xdg_desktop_database_update
+	xdg_icon_cache_update
+}
+
+pkg_postrm() {
+	xdg_desktop_database_update
+	xdg_icon_cache_update
 }
