@@ -447,7 +447,7 @@ src_compile() {
 	local -x _PYTHONDONTWRITEBYTECODE=${PYTHONDONTWRITEBYTECODE}
 
 	# Gentoo hack to disable accessing system site-packages
-	export GENTOO_CPYTHON_BUILD=1
+	local -x GENTOO_CPYTHON_BUILD=1
 
 	if use pgo ; then
 		# bug 660358
