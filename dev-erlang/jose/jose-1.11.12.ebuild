@@ -10,6 +10,8 @@ HOMEPAGE="https://github.com/potatosalad/erlang-jose"
 SRC_URI="
 	https://github.com/potatosalad/erlang-jose/archive/${PV}.tar.gz
 		-> erlang-${P}.tar.gz
+	https://977745.bugs.gentoo.org/attachment.cgi?id=969162
+		-> jose-1.11.12-build-fix.patch
 "
 
 S="${WORKDIR}/erlang-${P}"
@@ -26,3 +28,7 @@ DOCS=( ALGORITHMS.md CHANGELOG.md README.md examples/KEY-GENERATION.md )
 # TODO: jose has test suite, but it require lots of dependencies. It may not be
 # TODO: urgent, but it would be nice to have those sooner or later.
 RESTRICT=test
+
+PATCHES=(
+	"${DISTDIR}"/jose-1.11.12-build-fix.patch
+)
