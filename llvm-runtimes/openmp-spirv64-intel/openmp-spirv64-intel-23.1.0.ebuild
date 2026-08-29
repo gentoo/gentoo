@@ -11,6 +11,7 @@ HOMEPAGE="https://openmp.llvm.org"
 
 LICENSE="Apache-2.0-with-LLVM-exceptions || ( UoI-NCSA MIT )"
 SLOT="0/${LLVM_SOABI}"
+KEYWORDS="~amd64"
 
 BDEPEND="
 	~llvm-core/clang-${PV}:${LLVM_MAJOR}[llvm_targets_SPIRV]
