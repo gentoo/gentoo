@@ -45,6 +45,7 @@ multilib_src_configure() {
 	# --with-fft=gpl-fftw3             (fftw)
 	ECONF_SOURCE="${S}" econf \
 		--disable-static \
+		--enable-resample-full-sinc-table \
 		$(use_enable cpu_flags_x86_sse sse) \
 		$(use_enable cpu_flags_x86_sse2 sse2) \
 		$(use_enable cpu_flags_arm_neon neon)
