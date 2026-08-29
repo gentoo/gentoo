@@ -16,7 +16,7 @@ Setting -std=c++20 globally for the gcc toolchain lets all tests pass.
 
 --- a/libs/msm/test/Jamfile.v2
 +++ b/libs/msm/test/Jamfile.v2
-@@ -20,7 +20,7 @@
+@@ -20,7 +20,7 @@ project
         <library>/boost/msm//boost_msm
         <include>.
         <include>../doc/modules/ROOT

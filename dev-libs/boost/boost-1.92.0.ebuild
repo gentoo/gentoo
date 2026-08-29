@@ -42,15 +42,13 @@ DEPEND="${RDEPEND}"
 BDEPEND=">=dev-build/b2-5.1.0"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.88.0-disable_icu_rpath.patch
+	"${FILESDIR}"/${PN}-1.92.0-disable_icu_rpath.patch
 	"${FILESDIR}"/${PN}-1.88.0-build-auto_index-tool.patch
 	"${FILESDIR}"/${PN}-1.88.0-beast-network-sandbox.patch
-	"${FILESDIR}"/${PN}-1.88.0-bind-no-Werror.patch
 	"${FILESDIR}"/${PN}-1.88.0-system-crashing-test.patch
 	"${FILESDIR}"/${PN}-1.88.0-yap-cstdint.patch
 	# https://github.com/boostorg/dll/issues/108
 	"${FILESDIR}"/${PN}-1.89.0-dll-no-lto.patch
-	"${FILESDIR}"/${PN}-1.92.0-graph-remove-system-dependency.patch
 	"${FILESDIR}"/${PN}-1.89.0-predef-include-path.patch
 	"${FILESDIR}"/${PN}-1.89.0-python-exclude-broken-tests.patch
 	"${FILESDIR}"/${PN}-1.89.0-unordered-no-tbb.patch
@@ -125,6 +123,14 @@ pkg_setup() {
 
 src_prepare() {
 	default
+
+	# Many libs unfortunately hardcode b2's equivalent of -Werror, so undo
+	# it everywhere instead of patching every maybe-failing subproject.
+	# Do this before the sources are copied into the multilib build dir.
+	for f in $(grep -lr 'warnings-as-errors>on' libs) ; do
+		sed -i "s/warnings-as-errors>on/warnings-as-errors>off/g" "$f" || die
+	done
+
 	multilib_copy_sources
 }
 
@@ -237,8 +243,6 @@ multilib_src_test() {
 
 	# The following libraries do not compile or fail their tests:
 	local libs_excluded=(
-		# it seems tests are no longer built
-		"callable_traits"
 		# test output comparison failure
 		"config"
 		# undefined reference to `boost::math::concepts::real_concept boost::math::bernoulli_b2n<boost::math::concepts::real_concept>(int)
@@ -252,24 +256,46 @@ multilib_src_test() {
 		"phoenix"
 		# vec_access.hpp:95:223: error: static assertion failed: Boost QVM static assertion failure
 		"qvm"
-		# In function 'void boost::redis::detail::update_sentinel_list(std::vector<boost::redis::address>&,
-		#  std::size_t, boost::span<const boost::redis::address>, boost::span<const boost::redis::address>)':
-		#  boost/redis/impl/sentinel_utils.hpp:269:20: error: no matching function for call to
-		#  'find(std::vector<boost::redis::address>::iterator, std::vector<boost::redis::address>::iterator,
-		#    const boost::redis::address&)'
-		"redis"
 		# Processing file ../boost_1_89_0/libs/regex/example/../include/boost/regex/v5/regex_iterator.hpp
 		# terminate called after throwing an instance of 'std::length_error'
 		#   what():  basic_string::_M_create
 		# https://github.com/boostorg/regex/issues/274
 		"regex"
-		# in function `boost::archive::tmpnam(char*)': test_array.cpp:(.text+0x108):
-		#   undefined reference to `boost::filesystem::detail::unique_path(...)'
-		"serialization"
 		# TuTestMain.cpp(22) fatal error: in "test_main_caller( argc_ argv )":
 		#   std::runtime_error: Event was not consumed!
 		"statechart"
 	)
+
+	# clang-specific exclusions
+	if tc-is-clang; then
+		# clang crashes due to unsupported varargs with segmented stacks:
+		# https://github.com/llvm/llvm-project/issues/73797
+		local no_clang=( "context" )
+
+		# clang does not automatically link to libatomic:
+		# https://github.com/llvm/llvm-project/issues/73361
+		no_clang+=( "lockfree" )
+
+		# integral_wrapper.hpp:63:51: error: in-class initializer for static data member is not a constant expression
+		no_clang+=( "mpl" )
+
+		# rule.hpp:291:18: error: static assertion failed due to requirement
+		# 'boost::is_convertible<const boost::spirit::qi::alternative<boost::fusion::cons..<snip>:
+		# The passed skipper is not compatible/convertible to one that the rule was instantiated with
+		no_clang+=( "spirit" )
+
+		# mismatched stack traces
+		no_clang+=( "stacktrace" )
+
+		# is_unsigned.hpp:38:25: error: in-class initializer for static data member is not a constant expression
+		no_clang+=( "type_traits" )
+
+		# test_assert_fail.cxx:15:3: error: too few arguments provided to function-like macro invocation
+		no_clang+=( "vmd" )
+
+		einfo "Disabling tests due to clang: ${no_clang[@]}"
+		libs_excluded+=( ${no_clang[@]} )
+	fi
 
 	if ! use mpi; then
 		# graph_parallel tries to use MPI even with use=-mpi
