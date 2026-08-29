@@ -1,0 +1,14 @@
+--- a/libs/graph/test/Jamfile.v2
++++ b/libs/graph/test/Jamfile.v2
+@@ -186,11 +186,9 @@
+ alias graph_test_with_filesystem :
+     [ run all_planar_input_files_test.cpp
+         /boost/filesystem//boost_filesystem
+-        /boost/system//boost_system
+         : $(PLANAR_INPUT_FILES) ]
+     [ run parallel_edges_loops_test.cpp
+         /boost/filesystem//boost_filesystem
+-        /boost/system//boost_system
+         : $(PLANAR_INPUT_FILES) ]
+     ;
+ 
