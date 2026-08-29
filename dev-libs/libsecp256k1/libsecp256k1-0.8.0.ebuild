@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,15 +12,16 @@ SRC_URI="https://github.com/bitcoin-core/secp256k1/archive/v${PV}.tar.gz -> ${P}
 S="${WORKDIR}/${MyPN}-${PV}"
 
 LICENSE="MIT"
-SLOT="0/6"  # subslot is "$((_LIB_VERSION_CURRENT-_LIB_VERSION_AGE))" from configure.ac
-KEYWORDS="amd64 arm arm64 ~ppc ~ppc64 x86"
-IUSE="asm +ecdh +ellswift experimental +extrakeys lowmem musig +recovery +schnorr test test-full valgrind"
+SLOT="0/7"  # subslot is "$((_LIB_VERSION_CURRENT-_LIB_VERSION_AGE))" from configure.ac
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
+IUSE="asm +ecdh +ellswift experimental +extrakeys lowmem +musig +recovery +schnorr +silentpayments test test-full valgrind"
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="
 	asm? ( || ( amd64 arm ) arm? ( experimental ) )
 	musig? ( schnorr )
 	schnorr? ( extrakeys )
+	silentpayments? ( extrakeys )
 	test-full? ( test )
 "
 BDEPEND="
@@ -66,6 +67,7 @@ src_configure() {
 		-DSECP256K1_ENABLE_MODULE_MUSIG=$(usex musig)
 		-DSECP256K1_ENABLE_MODULE_RECOVERY=$(usex recovery)
 		-DSECP256K1_ENABLE_MODULE_SCHNORRSIG=$(usex schnorr)
+		-DSECP256K1_ENABLE_MODULE_SILENTPAYMENTS=$(usex silentpayments)
 		-DSECP256K1_ASM=$(usex asm "$(usex arm arm32 AUTO)" OFF)
 		-DSECP256K1_VALGRIND=$(usex valgrind ON OFF)
 	)
