@@ -1,0 +1,31 @@
+From cfdb59958374492b99c1e16a57f5035853dca7f4 Mon Sep 17 00:00:00 2001
+From: Clint Adams <clint@debian.org>
+Date: Tue, 7 Oct 2025 11:53:47 -0400
+Subject: [PATCH] Add missing SEND_GET_XATTR defines
+
+---
+ libfakeroot.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/libfakeroot.c b/libfakeroot.c
+index e7b1e7c..69e2f6f 100644
+--- a/libfakeroot.c
++++ b/libfakeroot.c
+@@ -86,12 +86,14 @@
+ #define SEND_STAT64(a,b,c) send_stat64(a,b,c)
+ #define SEND_GET_STAT(a,b) send_get_stat(a,b)
+ #define SEND_GET_STAT64(a,b) send_get_stat64(a,b)
++#define SEND_GET_XATTR(a,b,c) send_get_xattr(a,b,c)
+ #define SEND_GET_XATTR64(a,b,c) send_get_xattr64(a,b,c)
+ #else
+ #define SEND_STAT(a,b,c) send_stat(a,b)
+ #define SEND_STAT64(a,b,c) send_stat64(a,b)
+ #define SEND_GET_STAT(a,b) send_get_stat(a)
+ #define SEND_GET_STAT64(a,b) send_get_stat64(a)
++#define SEND_GET_XATTR(a,b,c) send_get_xattr(a,b)
+ #define SEND_GET_XATTR64(a,b,c) send_get_xattr64(a,b)
+ #endif
+ 
+-- 
+GitLab
+
