@@ -1,0 +1,35 @@
+Patch adapted from [1]:
+
+	musl doesn't expose these sysconf values, so just use the loop
+	below that reads them out of sysfs coherency_line_size only
+
+For the __pagesize bit, this is currently only used on arm64 and aborts
+if __pagesize != GetRuntimePageSize -- so, as a wishful thinking solution,
+have it return __pagesize.
+
+[1] https://github.com/chimera-linux/cports/blob/114b576aee3ebc25b48ac120da1a1093dcc4365f/user/pcsx2/patches/cache.patch
+--- a/common/Linux/LnxHostSys.cpp
++++ b/common/Linux/LnxHostSys.cpp
+@@ -93,6 +93,10 @@
+ size_t HostSys::GetRuntimePageSize()
+ {
++#if defined(__GLIBC__)
+ 	int res = sysconf(_SC_PAGESIZE);
+ 	return (res > 0) ? static_cast<size_t>(res) : 0;
++#else
++	return __pagesize;
++#endif
+ }
+ 
+@@ -115,7 +119,11 @@
+ 	return static_cast<size_t>(max_line_size);
+ #else
++#if defined(__GLIBC__)
+ 	int l1i = sysconf(_SC_LEVEL1_DCACHE_LINESIZE);
+ 	int l1d = sysconf(_SC_LEVEL1_ICACHE_LINESIZE);
+ 	int res = (l1i > l1d) ? l1i : l1d;
++#else
++	int res = 0;
++#endif
+ 	for (int index = 0; index < 16; index++)
+ 	{
