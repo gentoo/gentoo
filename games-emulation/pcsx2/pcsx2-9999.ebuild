@@ -17,7 +17,7 @@ else
 		https://github.com/PCSX2/pcsx2/archive/refs/tags/v${PV}.tar.gz
 			-> ${P}.tar.gz
 	"
-	KEYWORDS="-* ~amd64"
+	KEYWORDS="~amd64"
 fi
 
 DESCRIPTION="PlayStation 2 emulator"
@@ -29,7 +29,7 @@ LICENSE="
 "
 SLOT="0"
 IUSE="alsa cpu_flags_x86_sse4_1 +clang jack pulseaudio sndio test wayland"
-REQUIRED_USE="cpu_flags_x86_sse4_1" # dies at runtime if no support
+REQUIRED_USE="amd64? ( cpu_flags_x86_sse4_1 )" # dies at runtime if no support
 RESTRICT="!test? ( test )"
 
 # qtbase:6=[X] is due to using qtx11extras_p.h
@@ -89,10 +89,10 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.7.5232-cubeb-automagic.patch
 	"${FILESDIR}"/${PN}-1.7.5835-musl-header.patch
-	"${FILESDIR}"/${PN}-1.7.5913-musl-cache.patch
 	"${FILESDIR}"/${PN}-2.5.317-flags.patch
 	"${FILESDIR}"/${PN}-2.6.3-climits.patch
 	"${FILESDIR}"/${PN}-2.6.3-cubeb-alsa.patch
+	"${FILESDIR}"/${PN}-2.8.0-musl-sysconf.patch
 )
 
 CMAKE_QA_COMPAT_SKIP=1 #957976
