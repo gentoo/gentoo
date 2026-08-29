@@ -1,0 +1,247 @@
+Use ssize_t for substdio op and read/write wrappers.
+
+Bug: https://bugs.gentoo.org/944901
+
+--- a/condredirect.c
++++ b/condredirect.c
+@@ -15,7 +15,7 @@
+ 
+ struct qmail qqt;
+ 
+-int mywrite(fd,buf,len) int fd; char *buf; int len;
++ssize_t mywrite(fd,buf,len) int fd; char *buf; int len;
+ {
+   qmail_put(&qqt,buf,len);
+   return len;
+--- a/forward.c
++++ b/forward.c
+@@ -13,7 +13,7 @@
+ 
+ struct qmail qqt;
+ 
+-int mywrite(fd,buf,len) int fd; char *buf; int len;
++ssize_t mywrite(fd,buf,len) int fd; char *buf; int len;
+ {
+   qmail_put(&qqt,buf,len);
+   return len;
+--- a/qmail-pop3d.c
++++ b/qmail-pop3d.c
+@@ -20,7 +20,7 @@
+ 
+ void die() { _exit(0); }
+ 
+-int saferead(fd,buf,len) int fd; char *buf; int len;
++ssize_t saferead(fd,buf,len) int fd; char *buf; int len;
+ {
+   int r;
+   r = timeoutread(1200,fd,buf,len);
+@@ -28,7 +28,7 @@
+   return r;
+ }
+ 
+-int safewrite(fd,buf,len) int fd; char *buf; int len;
++ssize_t safewrite(fd,buf,len) int fd; char *buf; int len;
+ {
+   int r;
+   r = timeoutwrite(1200,fd,buf,len);
+--- a/qmail-popup.c
++++ b/qmail-popup.c
+@@ -16,7 +16,7 @@
+ 
+ void die() { _exit(1); }
+ 
+-int saferead(fd,buf,len) int fd; char *buf; int len;
++ssize_t saferead(fd,buf,len) int fd; char *buf; int len;
+ {
+   int r;
+   r = timeoutread(1200,fd,buf,len);
+@@ -24,7 +24,7 @@
+   return r;
+ }
+ 
+-int safewrite(fd,buf,len) int fd; char *buf; int len;
++ssize_t safewrite(fd,buf,len) int fd; char *buf; int len;
+ {
+   int r;
+   r = timeoutwrite(1200,fd,buf,len);
+--- a/qmail-qmqpc.c
++++ b/qmail-qmqpc.c
+@@ -34,14 +34,14 @@
+ int lasterror = 55;
+ int qmqpfd;
+ 
+-int saferead(fd,buf,len) int fd; char *buf; int len;
++ssize_t saferead(fd,buf,len) int fd; char *buf; int len;
+ {
+   int r;
+   r = timeoutread(60,qmqpfd,buf,len);
+   if (r <= 0) die_conn();
+   return r;
+ }
+-int safewrite(fd,buf,len) int fd; char *buf; int len;
++ssize_t safewrite(fd,buf,len) int fd; char *buf; int len;
+ {
+   int r;
+   r = timeoutwrite(60,qmqpfd,buf,len);
+--- a/qmail-qmqpd.c
++++ b/qmail-qmqpd.c
+@@ -11,14 +11,14 @@
+ 
+ void resources() { _exit(111); }
+ 
+-int safewrite(fd,buf,len) int fd; char *buf; int len;
++ssize_t safewrite(fd,buf,len) int fd; char *buf; int len;
+ {
+   int r;
+   r = write(fd,buf,len);
+   if (r <= 0) _exit(0);
+   return r;
+ }
+-int saferead(fd,buf,len) int fd; char *buf; int len;
++ssize_t saferead(fd,buf,len) int fd; char *buf; int len;
+ {
+   int r;
+   r = read(fd,buf,len);
+--- a/qmail-qmtpd.c
++++ b/qmail-qmtpd.c
+@@ -16,7 +16,7 @@
+ void badproto() { _exit(100); }
+ void resources() { _exit(111); }
+ 
+-int safewrite(fd,buf,len) int fd; char *buf; int len;
++ssize_t safewrite(fd,buf,len) int fd; char *buf; int len;
+ {
+   int r;
+   r = write(fd,buf,len);
+@@ -27,7 +27,7 @@
+ char ssoutbuf[256];
+ substdio ssout = SUBSTDIO_FDBUF(safewrite,1,ssoutbuf,sizeof ssoutbuf);
+ 
+-int saferead(fd,buf,len) int fd; char *buf; int len;
++ssize_t saferead(fd,buf,len) int fd; char *buf; int len;
+ {
+   int r;
+   substdio_flush(&ssout);
+--- a/qmail-remote.c
++++ b/qmail-remote.c
+@@ -124,7 +124,7 @@
+ int smtpfd;
+ int timeout = 1200;
+ 
+-int saferead(fd,buf,len) int fd; char *buf; int len;
++ssize_t saferead(fd,buf,len) int fd; char *buf; int len;
+ {
+   int r;
+ #ifdef TLS
+@@ -137,7 +137,7 @@
+   if (r <= 0) dropped();
+   return r;
+ }
+-int safewrite(fd,buf,len) int fd; char *buf; int len;
++ssize_t safewrite(fd,buf,len) int fd; char *buf; int len;
+ {
+   int r;
+ #ifdef TLS
+--- a/qmail-smtpd.c
++++ b/qmail-smtpd.c
+@@ -43,7 +43,7 @@
+ int ssl_rfd = -1, ssl_wfd = -1; /* SSL_get_Xfd() are broken */
+ #endif
+ 
+-int safewrite(fd,buf,len) int fd; char *buf; int len;
++ssize_t safewrite(fd,buf,len) int fd; char *buf; int len;
+ {
+   int r;
+ #ifdef TLS
+@@ -398,7 +398,7 @@
+ }
+ 
+ 
+-int saferead(fd,buf,len) int fd; char *buf; int len;
++ssize_t saferead(fd,buf,len) int fd; char *buf; int len;
+ {
+   int r;
+   flush();
+--- a/subfd.h
++++ b/subfd.h
+@@ -9,7 +9,7 @@
+ extern substdio *subfdoutsmall;
+ extern substdio *subfderr;
+ 
+-extern int subfd_read();
+-extern int subfd_readsmall();
++extern ssize_t subfd_read();
++extern ssize_t subfd_readsmall();
+ 
+ #endif
+--- a/subfdin.c
++++ b/subfdin.c
+@@ -2,7 +2,7 @@
+ #include "substdio.h"
+ #include "subfd.h"
+ 
+-int subfd_read(fd,buf,len) int fd; char *buf; int len;
++ssize_t subfd_read(fd,buf,len) int fd; char *buf; int len;
+ {
+   if (substdio_flush(subfdout) == -1) return -1;
+   return read(fd,buf,len);
+--- a/subfdins.c
++++ b/subfdins.c
+@@ -2,7 +2,7 @@
+ #include "substdio.h"
+ #include "subfd.h"
+ 
+-int subfd_readsmall(fd,buf,len) int fd; char *buf; int len;
++ssize_t subfd_readsmall(fd,buf,len) int fd; char *buf; int len;
+ {
+   if (substdio_flush(subfdoutsmall) == -1) return -1;
+   return read(fd,buf,len);
+--- a/substdi.c
++++ b/substdi.c
+@@ -3,7 +3,7 @@
+ #include "error.h"
+ 
+ static int oneread(op,fd,buf,len)
+-register int (*op)();
++register ssize_t (*op)();
+ register int fd;
+ register char *buf;
+ register int len;
+--- a/substdio.c
++++ b/substdio.c
+@@ -2,7 +2,7 @@
+ 
+ void substdio_fdbuf(s,op,fd,buf,len)
+ register substdio *s;
+-register int (*op)();
++register ssize_t (*op)();
+ register int fd;
+ register char *buf;
+ register int len;
+--- a/substdio.h
++++ b/substdio.h
+@@ -1,3 +1,4 @@
++#include <sys/types.h>
+ #ifndef SUBSTDIO_H
+ #define SUBSTDIO_H
+ 
+@@ -6,7 +7,7 @@
+   int p;
+   int n;
+   int fd;
+-  int (*op)();
++  ssize_t (*op)();
+ } substdio;
+ 
+ #define SUBSTDIO_FDBUF(op,fd,buf,len) { (buf), 0, (len), (fd), (op) }
+--- a/substdo.c
++++ b/substdo.c
+@@ -4,7 +4,7 @@
+ #include "error.h"
+ 
+ static int allwrite(op,fd,buf,len)
+-register int (*op)();
++register ssize_t (*op)();
+ register int fd;
+ register char *buf;
+ register unsigned int len;
