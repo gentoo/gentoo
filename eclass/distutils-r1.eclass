@@ -943,6 +943,15 @@ distutils_wheel_install() {
 			--optimize=all
 			"${wheel}"
 	)
+	# --verify-tags is reliable only for native builds.
+	# packaging is a PDEP, so make sure it got installed/upgraded first.
+	# 26.1 ensures abi3t tags are supported.
+	if [[ -z ${SYSROOT} ]] &&
+		has_version ">=dev-python/gpep517-22[${PYTHON_USEDEP}]" &&
+		has_version ">=dev-python/packaging-26.1[${PYTHON_USEDEP}]"
+	then
+		cmd+=( --verify-tags )
+	fi
 	printf '%s\n' "${cmd[*]}"
 	"${cmd[@]}" || die "Wheel install failed"
 
