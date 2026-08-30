@@ -1,7 +1,5 @@
-Index: Scribus/scribus/plugins/import/pdf/importpdfconfig.h
-===================================================================
---- Scribus/scribus/plugins/import/pdf/importpdfconfig.h	(revision 27543)
-+++ Scribus/scribus/plugins/import/pdf/importpdfconfig.h	(revision 27545)
+--- Scribus/scribus/plugins/import/pdf/importpdfconfig.h
++++ Scribus/scribus/plugins/import/pdf/importpdfconfig.h
 @@ -21,4 +21,8 @@
  #define POPPLER_CONST_25_02
  #endif
@@ -11,10 +9,8 @@ Index: Scribus/scribus/plugins/import/pdf/importpdfconfig.h
  #endif
 +
 +#endif
-Index: Scribus/scribus/plugins/import/pdf/slaoutput.cpp
-===================================================================
---- Scribus/scribus/plugins/import/pdf/slaoutput.cpp	(revision 27543)
-+++ Scribus/scribus/plugins/import/pdf/slaoutput.cpp	(revision 27545)
+--- Scribus/scribus/plugins/import/pdf/slaoutput.cpp
++++ Scribus/scribus/plugins/import/pdf/slaoutput.cpp
 @@ -3115,7 +3115,13 @@
  		// load the font file
  		switch (fontType) {

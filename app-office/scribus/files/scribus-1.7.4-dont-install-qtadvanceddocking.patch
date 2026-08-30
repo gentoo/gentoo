@@ -1,91 +1,89 @@
 --- a/scribus/third_party/Qt-Advanced-Docking-System/src/CMakeLists.txt
 +++ b/scribus/third_party/Qt-Advanced-Docking-System/src/CMakeLists.txt
-@@ -79,16 +79,16 @@ if (UNIX AND NOT APPLE)
- endif()
+@@ -147,7 +147,6 @@ endif()
+ set(library_name_base "qtadvanceddocking")
+ set(library_name "${library_name_base}-qt${QT_VERSION_MAJOR}")
  
- set(library_name "qtadvanceddocking-qt${QT_VERSION_MAJOR}")
 -if(BUILD_STATIC)
-+#if(BUILD_STATIC)
-     add_library(${library_name} STATIC ${ads_SRCS} ${ads_HEADERS})
-     target_compile_definitions( ${library_name} PUBLIC ADS_STATIC)
+     add_library(
+         ${library_name}
+         STATIC
+@@ -167,26 +166,6 @@ if(BUILD_STATIC)
+         ${library_name}
+         PROPERTIES OUTPUT_NAME "${library_name}_static"
+     )
 -else()
--    add_library( ${library_name} SHARED ${ads_SRCS} ${ads_HEADERS})
+-    add_library(
+-        ${library_name}
+-        SHARED
+-        ${ads_SRCS}
+-        ${ads_HEADERS}
+-    )
+-
+-    # ADS_SHARED_EXPORT enables symbol export while building the shared
+-    # library itself. Consumers do not need this definition.
+-    target_compile_definitions(
+-        ${library_name}
+-        PRIVATE ADS_SHARED_EXPORT
+-    )
+-
+-    # Add Windows version information to the DLL.
 -    if(WIN32)
 -        add_windows_version_resources(${library_name})
 -    endif()
--    target_compile_definitions( ${library_name} PRIVATE ADS_SHARED_EXPORT)
 -endif()
-+#else()
-+#    add_library( ${library_name} SHARED ${ads_SRCS} ${ads_HEADERS})
-+#    if(WIN32)
-+#        add_windows_version_resources(${library_name})
-+#    endif()
-+#    target_compile_definitions( ${library_name} PRIVATE ADS_SHARED_EXPORT)
-+#endif()
  
- add_library(ads::${library_name} ALIAS ${library_name})
+ # Provide namespaced aliases for use inside the build tree.
+ #
+@@ -357,50 +336,14 @@ write_basic_package_version_file(
+ # ---------------------------------------------------------------------------
  
-@@ -136,35 +136,35 @@ write_basic_package_version_file(
-     VERSION ${VERSION_SHORT}
-     COMPATIBILITY SameMajorVersion
- )
--install(FILES ${ads_HEADERS}
+ # Install public ADS headers.
+-install(
+-    FILES
+-        ${ads_HEADERS}
+-        "${CMAKE_CURRENT_BINARY_DIR}/ads_version.h"
 -    DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/${library_name}
 -    COMPONENT headers
 -)
--install(FILES
--    "${CMAKE_CURRENT_SOURCE_DIR}/../LICENSE"
--    "${CMAKE_CURRENT_SOURCE_DIR}/../gnu-lgpl-v2.1.md"
+ 
+ # Install license files.
+-install(
+-    FILES
+-        "${CMAKE_CURRENT_SOURCE_DIR}/../LICENSE"
+-        "${CMAKE_CURRENT_SOURCE_DIR}/../gnu-lgpl-v2.1.md"
 -    DESTINATION share/ads/license
 -    COMPONENT license
 -)
--install(TARGETS ${library_name}
+ 
+ # Install the ADS library and add it to the exported target set.
+-install(
+-    TARGETS ${library_name}
 -    EXPORT adsTargets
 -    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
 -    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
 -    ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
--    INCLUDES DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/${library_name}
 -)
-+#install(FILES ${ads_HEADERS}
-+#    DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/${library_name}
-+#    COMPONENT headers
-+#)
-+#install(FILES
-+#    "${CMAKE_CURRENT_SOURCE_DIR}/../LICENSE"
-+#    "${CMAKE_CURRENT_SOURCE_DIR}/../gnu-lgpl-v2.1.md"
-+#    DESTINATION share/ads/license
-+#    COMPONENT license
-+#)
-+#install(TARGETS ${library_name}
-+#    EXPORT adsTargets
-+#    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
-+#    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
-+#    ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
-+#    INCLUDES DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/${library_name}
-+#)
  
--install(EXPORT adsTargets
+ # Export the installed target as ads::<target>.
+-install(
+-    EXPORT adsTargets
 -    FILE adsTargets.cmake
 -    NAMESPACE ads::
 -    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/${library_name}
 -)
--install(FILES qtadvanceddockingConfig.cmake RENAME ${library_name}Config.cmake
--    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/${library_name}
--)
--install(FILES "${CMAKE_CURRENT_BINARY_DIR}/${library_name}ConfigVersion.cmake"
--    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/${library_name}
--)
-+#install(EXPORT adsTargets
-+#    FILE adsTargets.cmake
-+#    NAMESPACE ads::
-+#    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/${library_name}
-+#)
-+#install(FILES qtadvanceddockingConfig.cmake RENAME ${library_name}Config.cmake
-+#    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/${library_name}
-+#)
-+#install(FILES "${CMAKE_CURRENT_BINARY_DIR}/${library_name}ConfigVersion.cmake"
-+#    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/${library_name}
-+#)
  
- target_include_directories(${library_name} PUBLIC
-     $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
+ # Install the package configuration file using the Qt-major-specific
+ # package name.
+-install(
+-    FILES qtadvanceddockingConfig.cmake
+-    RENAME ${library_name}Config.cmake
+-    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/${library_name}
+-)
+ 
+ # Install the generated package version file.
+-install(
+-    FILES "${CMAKE_CURRENT_BINARY_DIR}/${library_name}ConfigVersion.cmake"
+-    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/${library_name}
+-)
+\ No newline at end of file

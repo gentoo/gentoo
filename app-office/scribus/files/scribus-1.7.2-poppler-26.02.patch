@@ -1,7 +1,5 @@
-Index: Scribus/scribus/plugins/import/pdf/importpdf.cpp
-===================================================================
---- Scribus/scribus/plugins/import/pdf/importpdf.cpp	(revision 27386)
-+++ Scribus/scribus/plugins/import/pdf/importpdf.cpp	(revision 27389)
+--- Scribus/scribus/plugins/import/pdf/importpdf.cpp
++++ Scribus/scribus/plugins/import/pdf/importpdf.cpp
 @@ -79,7 +79,11 @@
  	bgColor[0] = 255;
  	bgColor[1] = 255;
@@ -66,10 +64,8 @@ Index: Scribus/scribus/plugins/import/pdf/importpdf.cpp
  	return image;
  }
  
-Index: Scribus/scribus/plugins/import/pdf/pdftextrecognition.cpp
-===================================================================
---- Scribus/scribus/plugins/import/pdf/pdftextrecognition.cpp	(revision 27386)
-+++ Scribus/scribus/plugins/import/pdf/pdftextrecognition.cpp	(revision 27389)
+--- Scribus/scribus/plugins/import/pdf/pdftextrecognition.cpp
++++ Scribus/scribus/plugins/import/pdf/pdftextrecognition.cpp
 @@ -81,7 +81,7 @@
  */
  PdfGlyph PdfTextRecognition::AddCharCommon(GfxState* state, double x, double y, double dx, double dy, Unicode const* u, int uLen)
@@ -106,10 +102,8 @@ Index: Scribus/scribus/plugins/import/pdf/pdftextrecognition.cpp
  	QTransform trans(ctm[0], ctm[1], ctm[2], ctm[3], ctm[4], ctm[5]);
  
  	QPointF newPosition = trans.map(QPointF(state->getCurX(), state->getCurY()));
-Index: Scribus/scribus/plugins/import/pdf/slaoutput.cpp
-===================================================================
---- Scribus/scribus/plugins/import/pdf/slaoutput.cpp	(revision 27386)
-+++ Scribus/scribus/plugins/import/pdf/slaoutput.cpp	(revision 27389)
+--- Scribus/scribus/plugins/import/pdf/slaoutput.cpp
++++ Scribus/scribus/plugins/import/pdf/slaoutput.cpp
 @@ -1535,7 +1535,7 @@
  
  void SlaOutputDev::adjustClip(GfxState *state, Qt::FillRule fillRule)
