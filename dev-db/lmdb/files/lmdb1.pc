@@ -1,0 +1,11 @@
+prefix=@prefix@
+exec_prefix=@prefix@
+libdir=${prefix}/@libdir@/lmdb1
+includedir=${prefix}/include/lmdb1
+
+Name: liblmdb
+Description: Lightning Memory-Mapped Database (1.0, slot 1)
+URL: https://symas.com/products/lightning-memory-mapped-database/
+Version: @PACKAGE_VERSION@
+Libs: -L${libdir} -llmdb
+Cflags: -I${includedir}
