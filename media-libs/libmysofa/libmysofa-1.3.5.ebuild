@@ -11,7 +11,7 @@ SRC_URI="https://github.com/hoene/libmysofa/archive/refs/tags/v${PV}.tar.gz -> $
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
