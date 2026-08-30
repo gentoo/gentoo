@@ -1162,11 +1162,6 @@ distutils_pep517_install() {
 		die "DISTUTILS_CONFIG_SETTINGS_JSON supported only for standalone backends"
 	fi
 
-	# https://pyo3.rs/latest/building-and-distribution.html#cross-compiling
-	if tc-is-cross-compiler; then
-		local -x PYO3_CROSS_LIB_DIR=${SYSROOT}/$(python_get_stdlib)
-	fi
-
 	local build_backend=$(_distutils-r1_get_backend)
 	einfo "  Building the wheel for ${PWD#${WORKDIR}/} via ${build_backend}"
 	cmd+=(
@@ -1180,6 +1175,9 @@ distutils_pep517_install() {
 		cmd+=( --config-json "${config_settings}" )
 	fi
 	if [[ -n ${SYSROOT} ]]; then
+		# https://pyo3.rs/latest/building-and-distribution.html#cross-compiling
+		local -x PYO3_CROSS_LIB_DIR=${SYSROOT}/$(python_get_stdlib)
+
 		cmd+=( --sysroot "${SYSROOT}" )
 	fi
 	printf '%s\n' "${cmd[*]}"
