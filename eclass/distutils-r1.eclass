@@ -1575,6 +1575,8 @@ _distutils-r1_run_common_phase() {
 		python_setup "${DISTUTILS_ALL_SUBPHASE_IMPLS[@]}"
 
 		local MULTIBUILD_VARIANTS=( "${EPYTHON/./_}" )
+		local PYTHON_USEDEP="python_targets_${EPYTHON/./_}(-)"
+		local PYTHON_SINGLE_USEDEP="python_single_target_${EPYTHON/./_}(-)"
 		# store for restoring after distutils-r1_run_phase.
 		local _DISTUTILS_INITIAL_CWD=${PWD}
 		multibuild_foreach_variant \
@@ -1601,6 +1603,8 @@ _distutils-r1_run_foreach_impl() {
 		if [[ ! ${EPYTHON} ]]; then
 			die "EPYTHON unset, python-single-r1_pkg_setup not called?!"
 		fi
+		local PYTHON_USEDEP="python_targets_${EPYTHON/./_}(-)"
+		local PYTHON_SINGLE_USEDEP="python_single_target_${EPYTHON/./_}(-)"
 		local BUILD_DIR=${BUILD_DIR:-${S}}
 		BUILD_DIR=${BUILD_DIR%%/}_${EPYTHON}
 
