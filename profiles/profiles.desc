@@ -403,6 +403,7 @@ sparc		default/linux/sparc/23.0/split-usr/64ul/desktop			stable
 x86		default/linux/x86/23.0/i686					stable
 x86		default/linux/x86/23.0/i686/systemd				stable
 x86		default/linux/x86/23.0/i686/hardened				stable
+x86		default/linux/x86/23.0/i686/hardened/systemd			stable
 x86		default/linux/x86/23.0/i686/hardened/selinux			stable
 x86		default/linux/x86/23.0/i686/desktop				stable
 x86		default/linux/x86/23.0/i686/desktop/gnome			stable
