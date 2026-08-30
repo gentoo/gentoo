@@ -85,6 +85,7 @@ fi
 
 PATCHES=(
 	"${WORKDIR}"/${PN}-7.991-patches-1
+	"${FILESDIR}"/${PN}-7.9991-no-lua.patch
 )
 
 pkg_setup() {
