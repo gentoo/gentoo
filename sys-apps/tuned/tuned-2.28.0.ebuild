@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit optfeature python-single-r1 tmpfiles toolchain-funcs xdg
 
@@ -13,17 +13,14 @@ SRC_URI="https://github.com/redhat-performance/tuned/archive/v${PV}.tar.gz -> ${
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64"
+KEYWORDS="~amd64 ~arm64"
 IUSE="+ppd selinux"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
 	${PYTHON_DEPS}
-	app-emulation/virt-what
-	dev-debug/systemtap
 	sys-apps/dbus
 	sys-apps/ethtool
-	sys-power/powertop
 	$(python_gen_cond_dep '
 		dev-python/configobj[${PYTHON_USEDEP}]
 		dev-python/dbus-python[${PYTHON_USEDEP}]
@@ -61,7 +58,7 @@ src_install() {
 	einstalldocs
 
 	# 934664
-	dodir /etc/tuned/profiles
+	keepdir /etc/tuned/profiles
 
 	rm -r "${ED}"/run "${ED}"/var || die
 
@@ -75,9 +72,14 @@ pkg_postinst() {
 	xdg_pkg_postinst
 
 	optfeature_header
-	optfeature "Optimize for power saving by spinning-down rotational disks" sys-apps/hdparm
+	optfeature "Virtual machine detection" app-emulation/virt-what
+	optfeature "Detailed system monitoring" dev-debug/systemtap
+	optfeature "Optimize Wi-Fi power management" net-wireless/wireless-tools
 	optfeature "Get hardware info" sys-apps/dmidecode
+	optfeature "Optimize for power saving by spinning-down rotational disks" sys-apps/hdparm
 	optfeature "Optimize network txqueuelen" sys-apps/iproute2
+	optfeature "Generate custom profiles based on powertop recommendations" sys-power/powertop
+
 	# tuned-gui.py calls systemctl
 	has_version sys-apps/systemd && optfeature "GTK gui" x11-libs/gtk+:3[introspection]
 }
