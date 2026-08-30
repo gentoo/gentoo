@@ -29,6 +29,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-sparc-find-libs.patch"
 	"${FILESDIR}/${P}-arm64-fix-__libc_csu_-symbols.patch"
 	"${FILESDIR}/${P}-x86-fix-__libc_csu_-symbols.patch"
+	"${FILESDIR}/${P}-pas2js-textrels.patch"
 )
 
 # fpc is special: it can't use CFLAGS and LDFLAGS directly
