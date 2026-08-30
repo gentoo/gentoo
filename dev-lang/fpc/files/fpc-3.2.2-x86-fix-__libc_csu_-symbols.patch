@@ -1,0 +1,38 @@
+From cb2704dfb22c30aca8cd64b171d47e3a740f12bc Mon Sep 17 00:00:00 2001
+From: florian <florian@freepascal.org>
+Date: Thu, 31 Mar 2022 22:32:04 +0200
+Subject: [PATCH]   * some more use of __libc_csu_* removed
+
+---
+diff --git a/rtl/linux/i386/si_c21.inc b/rtl/linux/i386/si_c21.inc
+index 71df29b6efd..d6a2fd7bec7 100644
+--- a/rtl/linux/i386/si_c21.inc
++++ b/rtl/linux/i386/si_c21.inc
+@@ -35,12 +35,13 @@
+ 
+ {$asmmode att}
+ 
+-procedure __libc_csu_init; cdecl; external;
+-procedure __libc_csu_fini; cdecl; external;
++procedure ini_dummy;
++  begin
++  end;
++
+ procedure libc_start_main; external name '__libc_start_main';
+ procedure libc_exit(code: longint); cdecl; external name 'exit';
+ 
+-
+ {******************************************************************************
+                        glibc 2.1 lib + profiling start/halt
+  ******************************************************************************}
+@@ -93,8 +94,8 @@ procedure _FPC_libc21_start; assembler; nostackframe; public name '_start';
+         pushl %esp   			{ stack_end }
+         pushl %edx   			{ function to be registered with
+                       			  atexit(), passed by loader }
+-        pushl $__libc_csu_fini
+-        pushl $__libc_csu_init
++        pushl $ini_dummy
++        pushl $ini_dummy
+         pushl %esi                      { Push second argument: argv.  }
+         pushl %ecx                      { Push first argument: argc.  }
+ 
