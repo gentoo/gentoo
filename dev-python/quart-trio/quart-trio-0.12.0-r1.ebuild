@@ -21,6 +21,7 @@ KEYWORDS="amd64 arm arm64 ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
 
 RDEPEND="
 	>=dev-python/hypercorn-0.12.0[${PYTHON_USEDEP}]
+	<dev-python/quart-0.23[${PYTHON_USEDEP}]
 	>=dev-python/quart-0.19[${PYTHON_USEDEP}]
 	>=dev-python/trio-0.19.0[${PYTHON_USEDEP}]
 "
