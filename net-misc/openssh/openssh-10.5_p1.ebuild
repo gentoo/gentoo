@@ -219,6 +219,7 @@ src_configure() {
 	fi
 
 	if use kernel_linux; then
+		# OpenSSH aborts if prctl(PR_SET_SECCOMP) fails (bug 980784)
 		myconf+=( $(use_with seccomp sandbox seccomp_filter) )
 	fi
 
