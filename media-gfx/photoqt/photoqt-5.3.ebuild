@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 inherit cmake optfeature python-single-r1 xdg
 
 DESCRIPTION="Simple but powerful Qt-based image viewer"
@@ -13,7 +13,7 @@ S="${WORKDIR}/${PN}-v${PV}"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64"
 IUSE="barcode chromecast devil exif extensions ffmpegthumbnailer geolocation graphicsmagick +imagemagick lcms mpv pdf raw test vips wayland"
 REQUIRED_USE="chromecast? ( ${PYTHON_REQUIRED_USE} )"
 RESTRICT="!test? ( test )"
