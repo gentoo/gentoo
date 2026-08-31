@@ -28,6 +28,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.2.0-optimisation.patch
 	"${FILESDIR}"/${PN}-3.2.0-tcl.patch
 	"${FILESDIR}"/${P}-c99-conversions.patch
+	"${FILESDIR}"/${P}-soname.patch
 )
 
 src_prepare() {

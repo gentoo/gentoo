@@ -1,0 +1,11 @@
+--- a/config/unix.mak	2026-08-31 19:57:06.922008434 +0200
++++ b/config/unix.mak	2026-08-31 19:57:27.983784802 +0200
+@@ -100,7 +100,7 @@
+ 
+ $(DYNAGEN): $(OBJECTS)
+ 	@echo Making dynamic library: $@
+-	$(SHLIB_LD) $(SHLIB_LDFLAGS) $(COMMON_LDFLAGS) $(COMMON_CFLAGS) -o $@ $^ $(LINK_LIBS) 
++	$(SHLIB_LD) $(SHLIB_LDFLAGS) $(COMMON_LDFLAGS) $(COMMON_CFLAGS) -Wl,-soname,$(LIB_PREFIX)$(TOBEGEN).$(SHLIB_EXT) -o $@ $^ $(LINK_LIBS) 
+ 	@echo $@ made successfully ...
+ 
+ 
