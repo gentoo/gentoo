@@ -17,3 +17,9 @@ RDEPEND="
 	sci-ml/fastcore[${PYTHON_USEDEP}]
 	sci-ml/fastprogress[${PYTHON_USEDEP}]
 "
+
+BDEPEND="
+	dev-python/packaging[${PYTHON_USEDEP}]
+"
+
+PATCHES=( "${FILESDIR}"/${P}-pkg-resource.patch )
