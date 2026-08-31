@@ -1,0 +1,68 @@
+diff --git a/configure.ac b/configure.ac
+index fcafc921..3a0262f0 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -82,10 +82,24 @@ AC_CHECK_LIB(crypto, [EVP_sm3], [
+ AC_CHECK_LIB(crypto, [EVP_sm4_cfb128], [
+         AC_DEFINE([HAVE_EVP_SM4_CFB], [1], [Support EVP_sm4_cfb in openssl])],
+         [])
+-AC_CHECK_LIB(tss2-fapi, [Fapi_DigestAndSign], [
+-        AC_DEFINE([HAVE_FAPI_DIGEST_AND_SIGN], [1], [Support signing with restricted keys])],
+-        [])
+-LIBS="${LIBS_save}"
++save_CPPFLAGS="$CPPFLAGS"
++save_LIBS="$LIBS"
++
++save_LIBS="$LIBS"
++
++LIBS="$TSS2_FAPI_LIBS $LIBS"
++
++AC_CHECK_FUNC(
++    [Fapi_DigestAndSign],
++    [AC_DEFINE(
++        [HAVE_FAPI_DIGEST_AND_SIGN],
++        [1],
++        [Define if Fapi_DigestAndSign is available]
++    )]
++)
++
++LIBS="$save_LIBS"
++
+ PKG_CHECK_MODULES([CURL], [libcurl])
+ 
+ # pretty print of devicepath if efivar library is present
+diff --git a/test/integration/fapi/fapi-sign-verify.sh b/test/integration/fapi/fapi-sign-verify.sh
+index 24635ed1..5181dd00 100644
+--- a/test/integration/fapi/fapi-sign-verify.sh
++++ b/test/integration/fapi/fapi-sign-verify.sh
+@@ -337,19 +337,23 @@ dd if=/dev/zero of=$DATA_FILE bs=1 count=1024
+ if [ "$CRYPTO_PROFILE" = "RSA" ]; then
+     PADDING="--padding=RSA_PSS"
+ fi
+-if nm -D $(ldconfig -p | grep "libtss2-fapi" | head -n1 | awk '{print $NF}') | \
+-        grep "Fapi_DigestAndSign";
++
++if printf '%s\n' \
++    'extern void Fapi_DigestAndSign(void);' \
++    'int main(void) { Fapi_DigestAndSign(); return 0; }' |
++   "${CC:-cc}" -x c - -L/usr/local/lib -ltss2-fapi -o /tmp/check-fapi
+ then
+     tss2 sign --data=$DATA_FILE --keyPath=$KEY_PATH $PADDING \
+          --signature=$SIGNATURE_FILE --publicKey=$PUBLIC_KEY_FILE -f
+-
+-    shasum -a 256 $DATA_FILE | awk '{ $1 }' | xxd -r -p > $DIGEST_FILE
++    shasum -a 256 $DATA_FILE | awk '{ print $1 }' | xxd -r -p > $DIGEST_FILE
+     tss2 verifysignature --keyPath=$PUB_KEY_DIR/$IMPORTED_KEY_NAME \
+          --digest=$DIGEST_FILE --signature=$SIGNATURE_FILE
+ else
+     # The sign should fail because Fapi_DigestAndSign is not available
+-    ! tss2 sign --data=$DATA_FILE --keyPath=$KEY_PATH $PADDING \
+-      --signature=$SIGNATURE_FILE --publicKey=$PUBLIC_KEY_FILE
++    if tss2 sign --data=$DATA_FILE --keyPath=$KEY_PATH $PADDING \
++            --signature=$SIGNATURE_FILE --publicKey=$PUBLIC_KEY_FILE ; then
++        echo "ERROR: tss2_sign unexpectedly succeeded"
++        exit 1;
++    fi
+ fi
+-
+ exit 0
