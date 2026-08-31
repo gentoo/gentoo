@@ -65,6 +65,7 @@ RDEPEND="
 	app-arch/bzip2
 	>=virtual/zlib-1.2.12:=
 	virtual/libcrypt:=
+	sys-libs/timezone-data
 "
 DEPEND="${RDEPEND}"
 BDEPEND="${RDEPEND}"
