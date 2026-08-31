@@ -246,7 +246,6 @@ RDEPEND="${DEPEND}"
 
 # Clang is required for bindgen
 BDEPEND="
-	dev-util/bindgen
 	${PYTHON_DEPS}
 	$(python_gen_any_dep '
 		dev-python/docutils[${PYTHON_USEDEP}]
@@ -257,9 +256,17 @@ BDEPEND="
 	')
 	elibc_musl? ( >=sys-libs/musl-1.2.5 )
 	virtual/pkgconfig
-	modules? ( >=sys-kernel/linux-headers-6.16.0 )
+	modules? (
+		dev-util/bindgen
+		>=sys-kernel/linux-headers-6.16.0
+	)
 	verify-sig? ( >=sec-keys/openpgp-keys-kentoverstreet-20241012 )
 "
+
+PATCHES=(
+	# https://github.com/koverstreet/bcachefs-tools/pull/894
+	"${FILESDIR}/${PN}-1.39.3-probe-rust-src.patch"
+)
 
 QA_FLAGS_IGNORED="/sbin/bcachefs"
 
