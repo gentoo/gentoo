@@ -246,6 +246,7 @@ RDEPEND="${DEPEND}"
 
 # Clang is required for bindgen
 BDEPEND="
+	dev-util/bindgen
 	${PYTHON_DEPS}
 	$(python_gen_any_dep '
 		dev-python/docutils[${PYTHON_USEDEP}]
