@@ -135,7 +135,7 @@ CRATES="
 	zmij@1.0.21
 "
 
-RUST_MIN_VER="1.85.0"
+RUST_MIN_VER="1.88.0"
 
 inherit cargo shell-completion
 
