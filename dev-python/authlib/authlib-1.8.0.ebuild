@@ -40,6 +40,7 @@ BDEPEND="
 		dev-python/django[${PYTHON_USEDEP}]
 		dev-python/flask[${PYTHON_USEDEP}]
 		dev-python/httpx[${PYTHON_USEDEP}]
+		dev-python/httpx2[${PYTHON_USEDEP}]
 		dev-python/joserfc[${PYTHON_USEDEP}]
 		>=dev-python/pycryptodome-3.10[${PYTHON_USEDEP}]
 		dev-python/requests[${PYTHON_USEDEP}]
