@@ -1,6 +1,10 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2026-08-31)
+# Pulls in kde-apps/kgpg which is not keyworded here.
+kde-apps/kdeutils-meta gpg
+
 # Alexey Sokolov <alexey+gentoo@asokolov.org> (2026-07-07)
 # New versions of dev-cpp/cpp-httplib dropped support for 32 bits. Bug #973312
 dev-util/ccache http
