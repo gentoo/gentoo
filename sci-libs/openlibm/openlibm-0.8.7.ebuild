@@ -41,6 +41,7 @@ src_compile() {
 
 src_install() {
 	emake DESTDIR="${D}" prefix="${EPREFIX}/usr" \
+		CC="$(tc-getCC)" \
 		libdir="${EPREFIX}/usr/$(get_libdir)" install
 	dodoc README.md
 }
