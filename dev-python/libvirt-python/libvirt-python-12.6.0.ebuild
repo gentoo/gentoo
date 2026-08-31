@@ -41,10 +41,10 @@ BDEPEND="
 	test? (
 		dev-python/lxml[${PYTHON_USEDEP}]
 	)
-	verify-sig? ( sec-keys/openpgp-keys-libvirt )
+	verify-sig? ( >=sec-keys/openpgp-keys-libvirt-20260831 )
 "
 
-VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/libvirt.org.asc
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/libvirt.asc
 
 distutils_enable_tests pytest
 
