@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>adel.ks@zegrapher.com</email>
+		<name>Adel KARA SLIMANE</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+		An open source, free and easy to use math plotter. It can plot functions, sequences,
+		parametric equations and data on the plane.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">AdelKS/ZeGrapher</remote-id>
+		<bugs-to>https://github.com/AdelKS/ZeGrapher/issues</bugs-to>
+	</upstream>
+</pkgmetadata>
