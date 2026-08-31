@@ -1,0 +1,106 @@
+
+--- a/doc/building.html
++++ b/doc/building.html
+@@ -603,8 +603,9 @@ <h4 id="alsa-1">ALSA</h4>
+ <li>If alsa is not properly detected by <code>configure</code>, you can point it out by <code>--with-alsa</code>.</li>
+ </ul>
+ <h4 id="x11-1">X11</h4>
+-<p>You will need X11 libraries suitable for your <em>target</em> system. For most cases, using Debian's pre-built libraries work fine.</p>
+-<p>Note that X11 is needed even if you only want to build a headless JDK.</p>
++<p>When not building a headless JDK, you will need X11 libraries
++suitable for your <em>target</em> system. In most cases, using Debian's
++pre-built libraries work fine.</p>
+ <ul>
+ <li>Go to <a href="https://www.debian.org/distrib/packages">Debian Package Search</a>, search for the following packages for your <em>target</em> system, and download them to /tmp/target-x11:
+ <ul>
+--- a/doc/building.md
++++ b/doc/building.md
+@@ -1077,10 +1077,8 @@ dpkg-deb -x /tmp/libasound2-dev_1.0.25-4_armhf.deb .
+ 
+ #### X11
+ 
+-You will need X11 libraries suitable for your *target* system. For most cases,
+-using Debian's pre-built libraries work fine.
+-
+-Note that X11 is needed even if you only want to build a headless JDK.
++When not building a headless JDK, you will need X11 libraries suitable for your
++*target* system. In most cases, using Debian's pre-built libraries work fine.
+ 
+   * Go to [Debian Package Search](https://www.debian.org/distrib/packages),
+     search for the following packages for your *target* system, and download them
+--- a/make/lib/Awt2dLibraries.gmk
++++ b/make/lib/Awt2dLibraries.gmk
+@@ -140,6 +140,10 @@ ifeq ($(call isTargetOs, windows), true)
+       #
+ endif
+ 
++ifeq ($(ENABLE_HEADLESS_ONLY), true)
++  LIBAWT_CFLAGS += -DHEADLESS
++endif
++
+ ifeq ($(call isTargetOs, solaris linux macosx aix), true)
+   LIBAWT_EXFILES += awt_Font.c CUPSfuncs.c fontpath.c X11Color.c
+ endif
+@@ -453,13 +457,20 @@ ifeq ($(call isTargetOs, windows macosx), false)
+       $(TOPDIR)/src/$(MODULE)/$(OPENJDK_TARGET_OS_TYPE)/native/common/awt \
+       #
+ 
+-  LIBAWT_HEADLESS_EXCLUDES := medialib
++  LIBAWT_HEADLESS_EXCLUDES := medialib opengl
++
++  LIBAWT_HEADLESS_EXCLUDE_FILES := \
++      GLXGraphicsConfig.c \
++      GLXSurfaceData.c \
++      X11PMBlitLoops.c \
++      X11Renderer.c \
++      X11SurfaceData.c \
++      #
+ 
+   LIBAWT_HEADLESS_EXTRA_HEADER_DIRS := \
+       $(LIBAWT_DEFAULT_HEADER_DIRS) \
+       common/awt/debug \
+       common/font \
+-      common/java2d/opengl \
+       #
+ 
+   LIBAWT_HEADLESS_CFLAGS := $(CUPS_CFLAGS) $(FONTCONFIG_CFLAGS) $(X_CFLAGS) \
+@@ -469,6 +480,7 @@ ifeq ($(call isTargetOs, windows macosx), false)
+       NAME := awt_headless, \
+       EXTRA_SRC := $(LIBAWT_HEADLESS_EXTRA_SRC), \
+       EXCLUDES := $(LIBAWT_HEADLESS_EXCLUDES), \
++      EXCLUDE_FILES := $(LIBAWT_HEADLESS_EXCLUDE_FILES), \
+       OPTIMIZATION := LOW, \
+       CFLAGS := $(CFLAGS_JDKLIB) \
+           $(LIBAWT_HEADLESS_CFLAGS), \
+--- a/src/java.desktop/unix/native/common/awt/utility/rect.h
++++ b/src/java.desktop/unix/native/common/awt/utility/rect.h
+@@ -28,7 +28,7 @@
+ #ifndef _AWT_RECT_H
+ #define _AWT_RECT_H
+ 
+-#ifndef MACOSX
++#if !defined(HEADLESS) && !defined(MACOSX)
+ #include <X11/Xlib.h>
+ typedef XRectangle RECT_T;
+ #else
+@@ -39,7 +39,7 @@ typedef struct {
+     int width;
+     int height;
+ } RECT_T;
+-#endif /* !MACOSX */
++#endif /* !HEADLESS && !MACOSX */
+ 
+ #define RECT_EQ_X(r1,r2)        ((r1).x==(r2).x && (r1).width==(r2).width)
+ 
+--- a/make/autoconf/libraries.m4
++++ b/make/autoconf/libraries.m4
+@@ -43,6 +43,9 @@ AC_DEFUN_ONCE([LIB_DETERMINE_DEPENDENCIES],
+   if test "x$OPENJDK_TARGET_OS" = xwindows || test "x$OPENJDK_TARGET_OS" = xmacosx; then
+     # No X11 support on windows or macosx
+     NEEDS_LIB_X11=false
++  elif test "x$ENABLE_HEADLESS_ONLY" = xtrue; then
++    # No X11 support needed when building headless only
++    NEEDS_LIB_X11=false
+   else
+     # All other instances need X11, even if building headless only, libawt still
+     # needs X11 headers.
