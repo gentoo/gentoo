@@ -16,8 +16,8 @@ else
 	# See https://github.com/NetworkBlockDevice/nbd/issues/198
 	SRC_URI="https://github.com/NetworkBlockDevice/nbd/archive/refs/tags/${P}.tar.gz"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~sparc ~x86"
+	S="${WORKDIR}/${PN}-${P}"
 fi
-S="${WORKDIR}/${PN}-${P}"
 
 LICENSE="GPL-2"
 SLOT="0"
