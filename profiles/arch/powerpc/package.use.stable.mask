@@ -17,6 +17,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2026-08-31)
+# Requires dependencies that aren't stable here.
+sys-block/gparted kde
+virtual/notification-daemon kde
+
 # Joonas Niilola <juippis@gentoo.org> (2024-05-28)
 # Depchain-destabilization on ppc (libsecret[test-rust] -> gjs -> spidermonkey)
 app-crypt/libsecret test-rust
