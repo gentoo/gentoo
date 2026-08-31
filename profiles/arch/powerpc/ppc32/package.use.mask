@@ -8,11 +8,6 @@ sys-auth/polkit kde
 sys-block/gparted kde
 virtual/notification-daemon kde
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2026-08-31)
-# Requires unkeyworded kde-apps/akonadi
-kde-apps/kgpg pim
-kde-apps/kleopatra pim
-
 # Alfred Wingate <parona@protonmail.com> (2026-07-26)
 # Firefox not keyworded here
 dev-util/selenium-manager test

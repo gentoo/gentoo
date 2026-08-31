@@ -1,6 +1,11 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2026-08-31)
+# Requires unkeyworded kde-apps/akonadi
+kde-apps/kgpg pim
+kde-apps/kleopatra pim
+
 # Alfred Wingate <parona@protonmail.com> (2026-05-13)
 # dev-qt/qtgraphs:6 is not keyworded here
 dev-python/pyside graphs
