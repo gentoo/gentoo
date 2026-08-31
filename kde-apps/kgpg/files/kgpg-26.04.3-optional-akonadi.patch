@@ -1,0 +1,164 @@
+Source: https://invent.kde.org/utilities/kgpg/-/merge_requests/38 (pending)
+
+From a4333eadd5b9992cfc6b553999d08b8e2134303c Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Wed, 26 Aug 2026 19:11:04 +0200
+Subject: [PATCH] CMake: Add KGPG_WITH_ADDRESSBOOK option
+
+kgpg is not strictly a PIM application, so akonadi should be optional,
+similarly to how kleopatra has these dependencies not required. Except
+here we introduce an explicit option, default enabled, that does not
+change existing behavior of build.
+
+BUG: 448046
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt      | 18 ++++++++++++++----
+ config-kgpg.h.cmake |  1 +
+ keysmanager.cpp     |  8 +++++++-
+ keysmanager.h       |  4 ++++
+ 4 files changed, 26 insertions(+), 5 deletions(-)
+ create mode 100644 config-kgpg.h.cmake
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index a548a4f0..bc211940 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -51,11 +51,15 @@ find_package(KF6 ${KF_MIN_VERSION} REQUIRED
+   XmlGui
+   WidgetsAddons
+   WindowSystem
+-  Contacts
+   StatusNotifierItem
+ )
+ 
+-find_package(KPim6AkonadiContactWidgets 5.24.40 REQUIRED)
++option(KGPG_WITH_ADDRESSBOOK "Support addressbook integration (uses akonadi)" ON)
++
++if(KGPG_WITH_ADDRESSBOOK)
++  find_package(KF6Contacts ${KF_MIN_VERSION} REQUIRED)
++  find_package(KPim6AkonadiContactWidgets 5.24.40 REQUIRED)
++endif()
+ 
+ find_package(KF6DocTools ${KF_MIN_VERSION})
+ set_package_properties(KF6DocTools PROPERTIES
+@@ -70,6 +74,8 @@ ecm_set_disabled_deprecation_versions(
+      KF 5.80.0
+     )
+ 
++configure_file (config-kgpg.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/config-kgpg.h)
++
+ add_subdirectory( icons )
+ include_directories(  ${KDEPIMLIBS_INCLUDE_DIR} ${GPGME_INCLUDES} )
+ 
+@@ -253,7 +259,6 @@ set_property(SOURCE main.cpp APPEND PROPERTY COMPILE_DEFINITIONS "KGPG_VERSION=\
+ target_link_libraries(kgpg_lib
+     KF6::Archive
+     KF6::Codecs
+-    KF6::Contacts
+     KF6::CoreAddons
+     KF6::Crash
+     KF6::DBusAddons
+@@ -269,9 +274,14 @@ target_link_libraries(kgpg_lib
+     KF6::WidgetsAddons
+     KF6::WindowSystem
+     KF6::StatusNotifierItem
+-    KPim6::AkonadiContactWidgets
+     Qt6::PrintSupport
+ )
++if(KGPG_WITH_ADDRESSBOOK)
++    target_link_libraries(kgpg_lib
++        KF6::Contacts
++        KPim6::AkonadiContactWidgets
++    )
++endif()
+ 
+ if(BUILD_TESTING)
+   add_subdirectory(tests)
+diff --git a/config-kgpg.h.cmake b/config-kgpg.h.cmake
+new file mode 100644
+index 00000000..e5f7988e
+--- /dev/null
++++ b/config-kgpg.h.cmake
+@@ -0,0 +1 @@
++#cmakedefine01 KGPG_WITH_ADDRESSBOOK
+diff --git a/keysmanager.cpp b/keysmanager.cpp
+index 4edff077..5a4a27f0 100644
+--- a/keysmanager.cpp
++++ b/keysmanager.cpp
+@@ -52,11 +52,13 @@
+ #include "transactions/customstyleditemdelegate.h"
+ 
+ #include <algorithm>
++#if KGPG_WITH_ADDRESSBOOK
+ #include <Akonadi/ContactEditor>
+ #include <Akonadi/ContactEditorDialog>
+ #include <Akonadi/ContactSearchJob>
+-#include <KActionCollection>
+ #include <KContacts/AddresseeList>
++#endif
++#include <KActionCollection>
+ // #include <KContacts/Key> TODO
+ #include <kmessagebox.h>
+ #include <KIO/Global>
+@@ -191,9 +193,11 @@ KeysManager::KeysManager(QWidget *parent)
+ 	m_sendEmail->setIcon(QIcon::fromTheme(QLatin1String("mail-send")));
+ 	m_sendEmail->setText(i18n("Send Ema&il"));
+ 
++#if KGPG_WITH_ADDRESSBOOK
+ 	QAction *newContact = actionCollection()->addAction(QLatin1String("add_kab"), this, &KeysManager::addToKAB);
+ 	newContact->setIcon(QIcon::fromTheme( QLatin1String( "contact-new" )));
+ 	newContact->setText(i18n("&Create New Contact in Address Book"));
++#endif
+ 
+ 	createGroup = actionCollection()->addAction(QLatin1String("create_group"), this, &KeysManager::createNewGroup);
+ 	createGroup->setIcon(Images::group());
+@@ -981,6 +985,7 @@ void KeysManager::slotSetPhotoSize(int size)
+ 	}
+ }
+ 
++#if KGPG_WITH_ADDRESSBOOK
+ void KeysManager::addToKAB()
+ {
+ 	KGpgNode *nd = iview->selectedNode();
+@@ -1024,6 +1029,7 @@ void KeysManager::slotAddressbookSearchResult(KJob *job)
+ 	connect(dlg, &Akonadi::ContactEditorDialog::finished, dlg, &Akonadi::ContactEditorDialog::deleteLater);
+ 	dlg->show();
+ }
++#endif
+ 
+ void KeysManager::slotManpage()
+ {
+diff --git a/keysmanager.h b/keysmanager.h
+index 0d4b9895..300407ee 100644
+--- a/keysmanager.h
++++ b/keysmanager.h
+@@ -7,6 +7,8 @@
+ #ifndef KEYSMANAGER_H
+ #define KEYSMANAGER_H
+ 
++#include "config-kgpg.h"
++
+ #include "ui_adduid.h"
+ 
+ #include "core/kgpgkey.h"
+@@ -180,6 +182,7 @@ private Q_SLOTS:
+     void slotSendEmail();
+     void slotedit();
+ 
++#if KGPG_WITH_ADDRESSBOOK
+     /**
+      * @brief start an "add to addressbook" operation
+      *
+@@ -195,6 +198,7 @@ private Q_SLOTS:
+      * This handles the result of the search started in addToKAB().
+      */
+     void slotAddressbookSearchResult(KJob *job);
++#endif
+ 
+     void editGroup();
+     void createNewGroup();
+-- 
+2.55.0
+

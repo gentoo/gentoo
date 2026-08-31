@@ -16,17 +16,14 @@ HOMEPAGE="https://apps.kde.org/kgpg/"
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="6"
 KEYWORDS="~amd64 ~arm64"
-IUSE=""
+IUSE="pim"
 
 COMMON_DEPEND="
 	>=dev-qt/qtbase-${QTMIN}:6[dbus,gui,network,widgets]
-	>=kde-apps/akonadi-${PVCUT}:6=
-	>=kde-apps/akonadi-contacts-${PVCUT}:6=
 	>=kde-frameworks/karchive-${KFMIN}:6
 	>=kde-frameworks/kcodecs-${KFMIN}:6
 	>=kde-frameworks/kconfig-${KFMIN}:6
 	>=kde-frameworks/kconfigwidgets-${KFMIN}:6
-	>=kde-frameworks/kcontacts-${KFMIN}:6
 	>=kde-frameworks/kcoreaddons-${KFMIN}:6
 	>=kde-frameworks/kcrash-${KFMIN}:6
 	>=kde-frameworks/kdbusaddons-${KFMIN}:6
@@ -40,6 +37,11 @@ COMMON_DEPEND="
 	>=kde-frameworks/kwidgetsaddons-${KFMIN}:6
 	>=kde-frameworks/kwindowsystem-${KFMIN}:6
 	>=kde-frameworks/kxmlgui-${KFMIN}:6
+	pim? (
+		>=kde-apps/akonadi-${PVCUT}:6=
+		>=kde-apps/akonadi-contacts-${PVCUT}:6=
+		>=kde-frameworks/kcontacts-${KFMIN}:6
+	)
 "
 DEPEND="${COMMON_DEPEND}
 	app-crypt/gpgme
@@ -47,3 +49,12 @@ DEPEND="${COMMON_DEPEND}
 RDEPEND="${COMMON_DEPEND}
 	app-crypt/gnupg
 "
+
+PATCHES=( "${FILESDIR}/${PN}-26.04.3-optional-akonadi.patch" )
+
+src_configure() {
+	local mycmakeargs=(
+		-DKGPG_WITH_ADDRESSBOOK=$(usex pim)
+	)
+	ecm_src_configure
+}
