@@ -22,7 +22,7 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="+swaybar +swaynag tray wallpapers X"
+IUSE="+libinput +drm +session +swaybar +swaynag tray wallpapers x11-backend X"
 REQUIRED_USE="tray? ( swaybar )"
 
 DEPEND="
@@ -53,10 +53,12 @@ DEPEND="
 "
 # x11-libs/xcb-util-wm needed for xcb-iccm
 if [[ ${PV} == 9999 ]]; then
-	DEPEND+="~gui-libs/wlroots-9999:=[X=]"
+	DEPEND+="
+		~gui-libs/wlroots-9999:=[drm=,libinput=,session=,X=,x11-backend=]
+	"
 else
 	DEPEND+="
-		gui-libs/wlroots:0.20[X=]
+		gui-libs/wlroots:0.20[drm=,libinput=,session=,X=,x11-backend=]
 	"
 fi
 RDEPEND="

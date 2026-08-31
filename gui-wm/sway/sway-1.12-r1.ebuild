@@ -15,14 +15,14 @@ else
 	MY_PV=${PV/_rc/-rc}
 	inherit verify-sig
 	SRC_URI="https://github.com/swaywm/${PN}/releases/download/${PV}/${P}.tar.gz -> ${P}.gh.tar.gz
-		https://github.com/swaywm/${PN}/releases/download/${PV}/${P}.tar.gz.sig -> ${P}.gh.tar.gz.sig"
-	KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64 ~riscv x86"
+		verify-sig? ( https://github.com/swaywm/${PN}/releases/download/${PV}/${P}.tar.gz.sig -> ${P}.gh.tar.gz.sig )"
+	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
 	S="${WORKDIR}/${PN}-${MY_PV}"
 fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="+swaybar +swaynag tray wallpapers X"
+IUSE="+libinput +drm +session +swaybar +swaynag tray wallpapers x11-backend X"
 REQUIRED_USE="tray? ( swaybar )"
 
 DEPEND="
@@ -53,10 +53,12 @@ DEPEND="
 "
 # x11-libs/xcb-util-wm needed for xcb-iccm
 if [[ ${PV} == 9999 ]]; then
-	DEPEND+="~gui-libs/wlroots-9999:=[X=]"
+	DEPEND+="
+		~gui-libs/wlroots-9999:=[drm=,libinput=,session=,X=,x11-backend=]
+	"
 else
 	DEPEND+="
-		gui-libs/wlroots:0.19[X=]
+		gui-libs/wlroots:0.20[drm=,libinput=,session=,X=,x11-backend=]
 	"
 fi
 RDEPEND="
@@ -64,7 +66,7 @@ RDEPEND="
 	x11-misc/xkeyboard-config
 "
 BDEPEND="
-	>=dev-libs/wayland-protocols-1.24
+	>=dev-libs/wayland-protocols-1.41
 	>=dev-build/meson-1.3
 	virtual/pkgconfig
 "
@@ -72,7 +74,7 @@ if [[ ${PV} == 9999 ]]; then
 	BDEPEND+=" ~app-text/scdoc-9999"
 else
 	BDEPEND+=" >=app-text/scdoc-1.11.3
-		verify-sig? ( sec-keys/openpgp-keys-emersion )"
+		verify-sig? ( >=sec-keys/openpgp-keys-emersion-20260503 )"
 	VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/emersion.asc"
 fi
 
