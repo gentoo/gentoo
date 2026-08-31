@@ -46,6 +46,7 @@ BDEPEND="
 
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/libvirt.asc
 
+EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
 
 python_compile() {
