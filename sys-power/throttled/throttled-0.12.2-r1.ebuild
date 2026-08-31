@@ -19,7 +19,7 @@ CONFIG_CHECK="~X86_MSR ~DEVMEM"
 
 # sys-power/upower: dependency via dbus
 RDEPEND="
-	dev-python/dbus-next[${PYTHON_USEDEP}]
+	dev-python/dbus-fast[${PYTHON_USEDEP}]
 	sys-apps/pciutils
 	sys-power/upower
 "
