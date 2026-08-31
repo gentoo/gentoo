@@ -2,6 +2,13 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2026-08-31)
+# Requires unkeyworded dependencies
+dev-vcs/subversion kwallet
+sys-auth/polkit kde
+sys-block/gparted kde
+virtual/notification-daemon kde
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2026-08-31)
 # Requires unkeyworded kde-apps/akonadi
 kde-apps/kgpg pim
 kde-apps/kleopatra pim
