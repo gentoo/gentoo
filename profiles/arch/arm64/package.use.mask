@@ -210,10 +210,6 @@ sys-kernel/installkernel -ugrd
 # See #934149, #934151, #936022, #936021
 <sys-devel/binutils-2.44 -gold
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2024-06-23)
-# Pulls in kde-apps/kgpg which is keyworded here
->=kde-apps/kdeutils-meta-24.05.1 -gpg
-
 # Ionen Wolkens <ionen@gentoo.org> (2024-05-19)
 # jit is supported here
 >=dev-qt/qtdeclarative-6 -jit

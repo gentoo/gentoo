@@ -150,12 +150,6 @@ sys-devel/binutils-hppa64 default-gold gold
 # UGRD is not keyworded everywhere yet
 sys-kernel/installkernel ugrd
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2024-06-23)
-# Pulls in kde-apps/kgpg which requires kde-apps/akonadi, which is as
-# part of the KDE PIM stack (big, requiring QtWebengine) only keyworded
-# on amd64 and arm64.
->=kde-apps/kdeutils-meta-24.05.1 gpg
-
 # Jared Allard <jared@rgst.io> (2024-06-21)
 # uasm and jwasm include amd64-specific ASM
 app-arch/7zip uasm jwasm

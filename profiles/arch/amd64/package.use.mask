@@ -175,10 +175,6 @@ games-emulation/rmg -dynarec
 # Unmask the ugrd flag for installkernel. It is keyworded here
 sys-kernel/installkernel -ugrd
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2024-06-23)
-# Pulls in kde-apps/kgpg which is keyworded here
->=kde-apps/kdeutils-meta-24.05.1 -gpg
-
 # Jared Allard <jared@rgst.io> (2024-06-21)
 # uasm and jwasm include amd64-specific ASM
 app-arch/7zip -uasm -jwasm
