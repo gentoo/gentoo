@@ -4,29 +4,48 @@
 # QA check: ensure that packages installing udev rules inherit the eclass
 # Maintainer: Sam James <sam@gentoo.org>
 
-# Implements three checks:
-# 1) Installation to /etc/udev/rules.d (which is a user-customization location);
-# 2) Installation of any udev rules to /lib/udev/rules.d without inheriting the eclass
-#    (needed for udev_reload in pkg_postinst);
-# 3) Check for installation of udev rules without calling udev_reload in
-#    pkg_postinst.
-udev_rules_check() {
-	# Check 1
-	# Scan image for files in /etc/udev/rules.d which is a forbidden location
-	# (We use this glob to avoid triggering on keepdir)
-	shopt -s nullglob
-	local files=( "${ED}"/etc/udev/rules.d/* )
-	shopt -u nullglob
+# Implements the following checks:
+# 1) Installation to user-customization locations
+#    1a) /etc/udev/rules.d (udev rules files)
+#    1b) /etc/udev/hwdb.d  (udev hardware database files)
+# 2) Installation of udev files without inheriting udev.eclass, which provides
+#    helper functions used in pkg_postinst and pkg_postrm to update udev state.
+#    2a) /lib/udev/rules.d (udev rules files)
+#    2b) /lib/udev/hwdb.d  (udev hardware database files)
+# 3) Installation of udev files without triggering udev state updates in
+#    pkg_postinst and pkg_postrm via eclass helper functions.
+#    3a) udev_reload
+#    3b) udev_hwdb_update
 
-	if [[ ${#files[@]} -gt 0 ]]; then
+
+# Check whether a directory contains any non-hidden files (i.e avoid triggering
+# on keepdir). Returns 0 if at least one file exists, 1 otherwise.
+_dir_has_nonhidden_files() {
+    local path="$1"
+
+    shopt -s nullglob
+    local files=( "${ED}/${path}"/* )
+    shopt -u nullglob
+
+    (( ${#files[@]} > 0 ))
+}
+
+udev_rules_check() {
+	# Check 1a: Scan image for files in /etc/udev/rules.d which is a forbidden location
+	if _dir_has_nonhidden_files "etc/udev/rules.d"; then
 		eqawarn "QA Notice: files installed to /etc/udev/rules.d found"
 		eqawarn "udev rules files supplied by ebuilds must be installed to /lib/udev/rules.d/"
 	fi
 
-	# Check 2
-	# We're now going to check for whether we install files to /lib/udev/rules.d/ without
-	# inheriting the eclass (weak catch for ebuilds not calling udev_reload in pkg_postinst)
+	# Check 1b: Scan image for files in /etc/udev/hwdb.d which is a forbidden location
+	if _dir_has_nonhidden_files "etc/udev/hwdb.d"; then
+		eqawarn "QA Notice: files installed to /etc/udev/hwdb.d found"
+		eqawarn "hwdb files supplied by ebuilds must be installed to /usr/lib/udev/hwdb.d/"
+	fi
 
+	# Check 2
+    # Detect whether udev.eclass must be inherited which provides helper
+    # functions for updating udev state
 	if [[ -n ${UDEV_OPTIONAL} ]] ; then
 		# While imperfect, using ${UDEV_OPTIONAL} is good enough to allow opting out
 		# for e.g. sys-apps/portage, sys-apps/systemd, sys-libs/pam, etc. We may want
@@ -36,30 +55,68 @@ udev_rules_check() {
 		return
 	fi
 
-	if [[ -d "${ED}"/lib/udev/rules.d  || -d "${ED}"/usr/lib/udev/rules.d ]] ; then
-		if ! has udev ${INHERITED} ; then
-			eqawarn "QA Notice: package is installing udev rules without inheriting udev.eclass!"
-			eqawarn "Packages must inherit udev.eclass then call udev_reload in pkg_postinst."
-			return
-		fi
+    local need_udev_reload=0
+    local need_udev_hwdb_update=0
 
-		# Check 3
-		# Check whether we're installing udev rules without explicitly
-		# calling udev_reload in pkg_postinst, but we have inherited
-		# the eclass.
-		# Small risk of false positives if called indirectly.
-		# See: https://archives.gentoo.org/gentoo-dev/message/7bdfdc9a7560fd07436defd0253af0b8
-		local pkg_postinst_body="$(declare -fp pkg_postinst 2>&1)"
-		if [[ ! ${pkg_postinst_body} == *udev_reload* ]] ; then
-			eqawarn "QA Notice: package is installing udev rules without calling"
-			eqawarn "udev_reload in pkg_postinst phase"
-		fi
-		local pkg_postrm_body="$(declare -fp pkg_postrm 2>&1)"
-		if [[ ! ${pkg_postrm_body} == *udev_reload* ]] ; then
-			eqawarn "QA Notice: package is installing udev rules without calling"
-			eqawarn "udev_reload in pkg_postrm phase"
-		fi
-	fi
+    # Check 2a: Check if udev rules must be updated
+    if _dir_has_nonhidden_files "lib/udev/rules.d" \
+        || _dir_has_nonhidden_files "usr/lib/udev/rules.d"; then
+        need_udev_reload=1
+    fi
+
+    # Check 2b: Check if udev binary hardware database must be updated
+    if _dir_has_nonhidden_files "lib/udev/hwdb.d" \
+       || _dir_has_nonhidden_files "usr/lib/udev/hwdb.d"; then
+	    need_udev_hwdb_update=1
+    fi
+
+    # No relevant files -> nothing to enforce
+    if [[ ${need_udev_reload} -eq 0 ]]; then
+	    return
+    fi
+
+    # If any udev feature is used, eclass must be inherited
+    if [[ ${need_udev_reload} -eq 1 || ${need_udev_hwdb_update} -eq 1 ]] \
+       && ! has udev ${INHERITED}; then
+	    eqawarn "QA Notice: package is installing udev-related files without inheriting"
+        eqawarn "udev.eclass! Packages must inherit udev.eclass then call the respective"
+        eqawarn "eclass function (udev_reload and udev_hwdb_update) in pkg_postinst and"
+        eqawarn "pkg_postrm."
+	    return
+    fi
+
+    # Check 3
+    # Check if the respective eclass helper function intended to update udev
+    # state is called in pkg_postinst and pkg_postrm (small risk of false
+    # positives if called indirectly).
+	# See: https://archives.gentoo.org/gentoo-dev/message/7bdfdc9a7560fd07436defd0253af0b8
+
+    local pkg_postinst_body="$(declare -fp pkg_postinst 2>&1)"
+    local pkg_postrm_body="$(declare -fp pkg_postrm 2>&1)"
+
+    if [[ ${need_udev_reload} -eq 1 ]]; then
+	    if [[ ! ${pkg_postinst_body} == *udev_reload* ]]; then
+		    eqawarn "QA Notice: package is installing udev rules without calling"
+		    eqawarn "udev_reload in pkg_postinst phase"
+	    fi
+
+	    if [[ ! ${pkg_postrm_body} == *udev_reload* ]]; then
+		    eqawarn "QA Notice: package is installing udev rules without calling"
+		    eqawarn "udev_reload in pkg_postrm phase"
+	    fi
+    fi
+
+    if [[ ${need_udev_hwdb_update} -eq 1 ]]; then
+	    if [[ ! ${pkg_postinst_body} == *udev_hwdb_update* ]]; then
+		    eqawarn "QA Notice: package is installing hwdb files without calling"
+		    eqawarn "udev_hwdb_update in pkg_postinst phase"
+	    fi
+
+	    if [[ ! ${pkg_postrm_body} == *udev_hwdb_update* ]]; then
+		    eqawarn "QA Notice: package is installing hwdb files without calling"
+		    eqawarn "udev_hwdb_update in pkg_postrm phase"
+	    fi
+    fi
 }
 
 udev_rules_check
