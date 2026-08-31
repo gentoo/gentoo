@@ -1,0 +1,28 @@
+From 69069bc63e6b1152e34e39bc322132fd4fd7284d Mon Sep 17 00:00:00 2001
+From: Werner Koch <wk@gnupg.org>
+Date: Tue, 25 Jun 2024 09:06:04 +0200
+Subject: [PATCH] Remove an declaration for an unused function
+
+* src/assuan-defs.h (putc_unlocked): Remove declaration.
+--
+
+It seems the test for putc_unlocked was remove a long time ago.
+GnuPG-bug-id: 7111
+---
+ src/assuan-defs.h | 3 ---
+ 1 file changed, 3 deletions(-)
+
+diff --git a/src/assuan-defs.h b/src/assuan-defs.h
+index faf9aae..5052e8e 100644
+--- a/src/assuan-defs.h
++++ b/src/assuan-defs.h
+@@ -431,9 +431,6 @@ char *stpcpy (char *dest, const char *src);
+ #define clearenv _assuan_clearenv
+ int setenv (const char *name, const char *value, int replace);
+ #endif
+-#ifndef HAVE_PUTC_UNLOCKED
+-int putc_unlocked (int c, FILE *stream);
+-#endif
+ 
+ 
+ #define DIM(v)		     (sizeof(v)/sizeof((v)[0]))
