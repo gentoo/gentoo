@@ -1,7 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
+
+inherit flag-o-matic
 
 DESCRIPTION="Open Geographical Datastore Interface, a GIS support library"
 HOMEPAGE="http://ogdi.sourceforge.net/ https://github.com/libogdi/ogdi"
@@ -10,7 +12,6 @@ SRC_URI="https://github.com/libogdi/ogdi/releases/download/${PN}_${PV//./_}/${P}
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~arm arm64 ~ppc ppc64 ~riscv ~x86"
-IUSE=""
 
 DEPEND="
 	dev-libs/expat
@@ -40,6 +41,7 @@ src_configure() {
 	export TARGET=$(uname)
 	export CFG="release"
 	export LD_LIBRARY_PATH=$TOPDIR/bin/${TARGET}
+	append-cflags -std=gnu17
 
 	econf \
 		--with-expat \
