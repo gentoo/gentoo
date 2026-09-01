@@ -143,6 +143,7 @@ PATCHES=(
 	"${FILESDIR}/php-8.3.31-ipv6-printing-test-fix.patch"
 	"${FILESDIR}/php-8.4-musl126-tests.patch"
 	"${FILESDIR}/php-8.5-musl-pathconf.patch"
+	"${FILESDIR}/php-8.4.25-gh23043.patch"
 )
 
 PHP_MV="$(ver_cut 1)"
@@ -281,14 +282,6 @@ src_prepare() {
 	if ! use cdb; then
 		rm ext/dba/tests/gh19706.phpt
 	fi
-
-	# Test fails in Gentoo, maybe wrongly inheriting from
-	# the installation?
-	# Expected test output:
-	#	(session.save_path: , handler: a::write)
-	# Actual test output:
-	#	(session.save_path: /var/tmp/portage/dev-lang/php-8.4.25/temp, handler: a::write)
-	rm ext/session/tests/user_session_module/gh23043.phpt || die
 
 	local virt=$(systemd-detect-virt 2>/dev/null)
 	if [[ ${virt} == systemd-nspawn ]]; then
