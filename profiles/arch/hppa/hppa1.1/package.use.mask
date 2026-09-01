@@ -1,6 +1,10 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2026-09-01)
+# Not supported for hppa1.1
+>=net-misc/openssh-10.5_p1 seccomp
+
 # Sam James <sam@gentoo.org> (2025-01-01)
 # dev-lang/ada-bootstrap exists here
 >=sys-devel/gcc-11 -ada
