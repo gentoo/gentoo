@@ -4,6 +4,10 @@
 # New entries go on top.
 # Please use the same syntax as in use.mask.
 
+# Michał Górny <mgorny@gentoo.org> (2026-09-01)
+# LLVM slots with no stable keywords.
+llvm_slot_23
+
 # Hans de Graaff <graaff@gentoo.org> (2024-12-26)
 # Currently in testing and not ready to go stable yet.
 ruby_targets_ruby34
