@@ -36,6 +36,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2026-09-01)
+# Low quality slop package with high code churn and frequently changing
+# results.  All the most recent releases are broken.
+# No reverse dependencies.  Removal on 2026-10-01.  Bug #981756.
+dev-python/pyproject-fmt
+
 # Ulrich Müller <ulm@gentoo.org> (2026-08-31)
 # Snapshot versions, masked for testing.
 <app-editors/emacs-32.0.9999:32-vcs
