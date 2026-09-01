@@ -26,7 +26,7 @@ else
 	# 27.0.90              upstream prerelease snapshot (27-vcs)
 	# 27.0.50_pre20191223  snapshot by Gentoo developer (27-vcs)
 	if [[ ${PV} == *_pre* ]]; then
-		SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.tar.xz"
+		SRC_URI="https://distfiles.gentoo.org/pub/proj/emacs/${P}.tar.xz"
 		S="${WORKDIR}/emacs"
 	elif [[ ${PV//[0-9]} != "." ]]; then
 		SRC_URI="https://alpha.gnu.org/gnu/emacs/pretest/${PN}-${PV/_/-}.tar.xz"
