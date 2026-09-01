@@ -817,6 +817,7 @@ src_configure() {
 
 	mozconfig_use_enable dbus
 	mozconfig_use_enable libproxy
+	mozconfig_use_enable jumbo-build unified-build
 
 	use eme-free && mozconfig_add_options_ac '+eme-free' --disable-eme
 
@@ -838,8 +839,6 @@ src_configure() {
 	mozconfig_add_options_ac '--enable-audio-backends' --enable-audio-backends="${myaudiobackends::-1}"
 
 	mozconfig_use_enable wifi necko-wifi
-
-	use jumbo-build && mozconfig_add_options_ac '--enable-unified-build (default)' --enable-unified-build
 
 	if use X && use wayland ; then
 		mozconfig_add_options_ac '+x11+wayland' --enable-default-toolkit=cairo-gtk3-x11-wayland
