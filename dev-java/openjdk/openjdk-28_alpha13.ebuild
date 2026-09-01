@@ -179,8 +179,8 @@ src_configure() {
 
 	if has_version dev-java/openjdk:${SLOT}; then
 		export JDK_HOME=${BROOT}/usr/$(get_libdir)/openjdk-${SLOT}
-	elif has_version dev-java/openjdk:26; then
-		export JDK_HOME=${BROOT}/usr/$(get_libdir)/openjdk-26
+	elif has_version dev-java/openjdk:27; then
+		export JDK_HOME=${BROOT}/usr/$(get_libdir)/openjdk-27
 	elif use !system-bootstrap ; then
 		local xpakvar="${ARCH^^}_XPAK"
 		export JDK_HOME="${WORKDIR}/openjdk-bootstrap-${!xpakvar}"
