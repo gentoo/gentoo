@@ -52,7 +52,7 @@ COMMON_DEPEND="
 	media-libs/plutovg
 	media-libs/shaderc
 	media-libs/vulkan-loader
-	media-video/ffmpeg:=
+	>=media-video/ffmpeg-7.1:=
 	net-libs/libpcap
 	net-misc/curl
 	sys-apps/dbus
