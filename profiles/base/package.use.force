@@ -1,6 +1,13 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Joonas Niilola <juippis@gentoo.org> (2026-09-01)
+# Force 'jumbo-build' on, as 155.0 doesn't build without it.
+# '-jumbo-build' is often broken, it's untested by upstream and Gentoo
+# Firefox packagers.
+# Report bugs directly to upstream if you want '-jumbo-build' to work.
+>=www-client/firefox-155.0 jumbo-build
+
 # Matt Jolly <kangie@gentoo.org> (2026-08-19)
 # Upstream has a faulty mold dependency with -official and
 # the version we need isn't stable yet; Bug #980645
