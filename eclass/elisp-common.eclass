@@ -234,8 +234,9 @@ elisp-emacs-version() {
 	local version ret tmout="timeout -k 5 55"
 	# Run without timeout if the command is not available
 	${tmout} true &>/dev/null || tmout=""
-	# The following will work for at least versions 18 to 30.
-	echo "(princ emacs-version)" >"${T}"/emacs-version.el
+	# The following will work for at least versions 18 to 31.
+	printf '%s\n' ";;-*-lexical-binding:t-*-" "(princ emacs-version)" \
+		>"${T}"/emacs-version.el
 	version=$(
 		# EMACS could be a microemacs variant that ignores the -batch
 		# option and would therefore hang, waiting for user interaction.
