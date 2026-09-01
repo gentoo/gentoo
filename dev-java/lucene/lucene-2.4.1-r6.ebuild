@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,14 +19,14 @@ KEYWORDS="~amd64"
 VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/lucene.apache.org.asc"
 BDEPEND="verify-sig? ( sec-keys/openpgp-keys-apache-lucene )"
 
-# Restricting to jdk:1.8 since it fails to build with openjdk-17
+# Max jdk:11 since it fails to build with openjdk-17
 # BUILD FAILED
 # /var/tmp/portage/dev-java/lucene-2.4.1-r3/work/lucene-2.4.1/build.xml:52: \
 # rmic does not exist under Java 15 and higher,
 # use rmic of an older JDK and explicitly set the executable attribute
 DEPEND="
 	dev-java/javacc:0
-	virtual/jdk:1.8
+	|| ( virtual/jdk:11 virtual/jdk:1.8 )
 	test? (
 		>=dev-java/ant-1.10.14-r3:0[junit]
 		dev-java/junit:0
