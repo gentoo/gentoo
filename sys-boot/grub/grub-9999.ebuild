@@ -29,7 +29,7 @@ if [[ -n ${GRUB_AUTORECONF} ]]; then
 fi
 
 inherit eapi9-ver flag-o-matic multibuild optfeature
-inherit python-any-r1 secureboot shell-completion toolchain-funcs verify-sig
+inherit python-any-r1 secureboot toolchain-funcs verify-sig
 
 DESCRIPTION="GNU GRUB boot loader"
 HOMEPAGE="https://gnu-grub.freedesktop.org/"
@@ -375,7 +375,7 @@ grub_mkstandalone_secureboot() {
 }
 
 src_install() {
-	grub_do emake install DESTDIR="${D}" bashcompletiondir="$(get_bashcompdir)"
+	grub_do emake install DESTDIR="${D}"
 	use doc && grub_do_once emake -C docs install-html DESTDIR="${D}"
 
 	einstalldocs
