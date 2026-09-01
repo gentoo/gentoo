@@ -3,7 +3,7 @@
 
 EAPI=8
 
-FIREFOX_PATCHSET="firefox-155-patches-01.tar.xz"
+FIREFOX_PATCHSET="firefox-155-patches-04.tar.xz"
 
 LLVM_COMPAT=( 21 22 )
 
@@ -18,8 +18,8 @@ VIRTUALX_REQUIRED="manual"
 
 # Information about the bundled wasi toolchain from
 # https://github.com/WebAssembly/wasi-sdk/
-WASI_SDK_VER=32.0
-WASI_SDK_LLVM_VER=22
+WASI_SDK_VER=34.0
+WASI_SDK_LLVM_VER=23
 
 MOZ_ESR=
 
