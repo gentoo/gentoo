@@ -5,13 +5,7 @@ EAPI=8
 
 inherit unpacker
 
-MY_PV_HIGH=$(ver_cut 1)
-MY_PV_MIDDLE=$(ver_cut 2)
-MY_PV_LOW=$(ver_cut 3)
-MY_PV_REV=$(ver_cut 4)
-
-MY_PV="${MY_PV_HIGH}.${MY_PV_MIDDLE}.${MY_PV_LOW}"
-MY_PV_FULL="${MY_PV}-${MY_PV_REV}"
+MY_PV_REV=$(ver_cut 3)
 
 MY_PN="amf-amdgpu-pro"
 MY_PN_ENC="libamdenc-amdgpu-pro"
@@ -19,24 +13,28 @@ MY_PN_ENC="libamdenc-amdgpu-pro"
 INTERNAL_VER="6.4.4"
 EXTERNAL_VER="25.10"
 UBUNTU_VER="24.04"
+AMF_HEADERS_VER="1.4.37"
 
-DESCRIPTION="AMD's closed source Advanced Media Framework (AMF) driver for AMD GPUs"
+DESCRIPTION="AMD's closed source GPU video encode/decode binary driver, for RDNA2 or older"
 HOMEPAGE="https://www.amd.com/en/support"
 
 URI_PREFIX="repo.radeon.com/amdgpu/${INTERNAL_VER}/ubuntu/pool/proprietary"
 
 SRC_URI="
-	https://${URI_PREFIX}/a/${MY_PN}/${MY_PN}_${MY_PV_FULL}.${UBUNTU_VER}_amd64.deb -> ${P}.deb
+	https://${URI_PREFIX}/a/${MY_PN}/${MY_PN}_${AMF_HEADERS_VER}-${MY_PV_REV}.${UBUNTU_VER}_amd64.deb -> ${P}.deb
 	https://${URI_PREFIX}/liba/${MY_PN_ENC}/${MY_PN_ENC}_${EXTERNAL_VER}-${MY_PV_REV}.${UBUNTU_VER}_amd64.deb -> ${P}-enc.deb
 "
 
-S="${WORKDIR}"
+S="${WORKDIR}/${PN}-amd64"
 
 LICENSE="AMD-GPU-PRO-EULA"
-SLOT="0"
+SLOT="legacy"
 KEYWORDS="-* amd64"
 
-IUSE="+radv pro video_cards_amdgpu"
+# Version 25.10 is the last one that supports GPUs older or equal to RDNA2
+# https://github.com/GPUOpen-LibrariesAndSDKs/AMF/issues/575
+
+IUSE="pro +radv video_cards_amdgpu"
 REQUIRED_USE="
 	video_cards_amdgpu
 	|| ( radv  pro )
@@ -56,8 +54,8 @@ QA_PREBUILT="
 "
 
 src_unpack() {
-	mkdir "${S}/${PN}-amd64" || die
-	cd "${S}/${PN}-amd64" || die
+	mkdir -p "${S}" || die
+	cd "${S}" || die
 	unpack_deb "${DISTDIR}/${P}.deb"
 	unpack_deb "${DISTDIR}/${P}-enc.deb"
 }
@@ -65,9 +63,10 @@ src_unpack() {
 src_install() {
 	insinto "/usr/$(get_libdir)"
 
-	doins "${S}/${PN}-amd64/opt/amdgpu-pro/lib/x86_64-linux-gnu/libamfrt64.so.${MY_PV}"
-	dosym "libamfrt64.so.${MY_PV}" "/usr/$(get_libdir)/libamfrt64.so.1"
+	doins "${S}/opt/amdgpu-pro/lib/x86_64-linux-gnu/libamfrt64.so.${AMF_HEADERS_VER}"
+	dosym "libamfrt64.so.${AMF_HEADERS_VER}" "/usr/$(get_libdir)/libamfrt64.so.1"
+	dosym "libamfrt64.so.1" "/usr/$(get_libdir)/libamfrt64.so"
 
-	doins "${S}/${PN}-amd64/opt/amdgpu-pro/lib/x86_64-linux-gnu/libamdenc64.so.1.0"
-	doins "${S}/${PN}-amd64/opt/amdgpu-pro/lib/x86_64-linux-gnu/libamdenc64.so"
+	doins "${S}/opt/amdgpu-pro/lib/x86_64-linux-gnu/libamdenc64.so.1.0"
+	doins "${S}/opt/amdgpu-pro/lib/x86_64-linux-gnu/libamdenc64.so"
 }
