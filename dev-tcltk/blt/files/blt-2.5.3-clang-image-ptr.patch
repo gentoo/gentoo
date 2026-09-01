@@ -1,0 +1,20 @@
+--- a/generic/bltImage.c
++++ b/generic/bltImage.c
+@@ -2535,7 +2535,7 @@
+ 	color.Red = red >> 8;
+ 	color.Green = green >> 8;
+ 	color.Blue = blue >> 8;
+-	Mark(cubePtr, color.value, lut);
++	Mark(cubePtr, color.value, (unsigned int (*)[33][33])lut);
+     }
+     return lut;
+ }
+@@ -2617,7 +2617,7 @@
+     lut = CreateColorLookupTable(statistics, cubes, nColors);
+     Blt_Free(statistics);
+     Blt_Free(cubes);
+-    MapColors(src, dest, lut);
++    MapColors(src, dest, (unsigned int (*)[33][33])lut);
+     Blt_Free(lut);
+     return TCL_OK;
+ }
