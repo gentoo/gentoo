@@ -7,6 +7,7 @@
 # Firefox packagers.
 # Report bugs directly to upstream if you want '-jumbo-build' to work.
 >=www-client/firefox-155.0 jumbo-build
+>=mail-client/thunderbird-155.0 jumbo-build
 
 # Matt Jolly <kangie@gentoo.org> (2026-08-19)
 # Upstream has a faulty mold dependency with -official and
