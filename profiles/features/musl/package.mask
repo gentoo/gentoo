@@ -357,7 +357,6 @@ games-server/bedrock-server
 games-server/etqw-ded
 games-server/mtavc
 games-server/steamcmd
-games-server/ut2004-ded
 games-simulation/slime-rancher
 games-strategy/darwinia
 games-strategy/knights-demo
