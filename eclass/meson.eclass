@@ -147,6 +147,10 @@ _meson_get_machine_info() {
 # Creates a cross file. meson uses this to define settings for
 # cross-compilers. This function is called from meson_src_configure.
 _meson_create_cross_file() {
+	# This can die if the external program is nonfunctional. Sanity check if it
+	# works, else failure means logging dozens of times before cat completes.
+	_meson_env_array >/dev/null
+
 	local system cpu_family cpu
 	_meson_get_machine_info "${CHOST}"
 
@@ -217,6 +221,10 @@ _meson_create_cross_file() {
 # Creates a native file. meson uses this to define settings for
 # native compilers. This function is called from meson_src_configure.
 _meson_create_native_file() {
+	# This can die if the external program is nonfunctional. Sanity check if it
+	# works, else failure means logging dozens of times before cat completes.
+	_meson_env_array >/dev/null
+
 	local system cpu_family cpu
 	_meson_get_machine_info "${CBUILD}"
 
