@@ -1,0 +1,42 @@
+Patch status: fixed in >=chromium-150.0.7853.0
+
+https://crbug.com/511831898
+https://crrev.com/24ba0573aba51311281c7c2e1e6fc5ee19aa4a8c
+--- a/src/3rdparty/chromium/components/autofill/core/browser/metrics/quality_metrics.cc
++++ b/src/3rdparty/chromium/components/autofill/core/browser/metrics/quality_metrics.cc
+@@ -78,6 +78,7 @@
+                         base::TimeTicks submission_time) {
+   size_t num_detected_field_types =
+-      std::ranges::count_if(form, &FieldHasMeaningfulPossibleFieldTypes,
+-                            &std::unique_ptr<AutofillField>::operator*);
++      std::ranges::count_if(form, [](const auto& field) {
++        return FieldHasMeaningfulPossibleFieldTypes(*field);
++      });
+   bool form_has_autofilled_fields = std::ranges::any_of(
+       form, [](const auto& field) { return field->is_autofilled(); });
+--- a/src/3rdparty/chromium/content/browser/cookie_store/cookie_store_manager.cc
++++ b/src/3rdparty/chromium/content/browser/cookie_store/cookie_store_manager.cc
+@@ -232,7 +232,8 @@
+         std::move(mojo_subscription), service_worker_registration->id());
+ 
+-    auto existing_subscription_it = std::ranges::find(
+-        subscriptions, *new_subscription,
+-        &std::unique_ptr<CookieChangeSubscription>::operator*);
++    auto existing_subscription_it = std::ranges::find_if(
++        subscriptions, [&new_subscription](const auto& sub) {
++          return *sub == *new_subscription;
++        });
+     if (existing_subscription_it == subscriptions.end())
+       subscriptions.push_back(std::move(new_subscription));
+@@ -330,7 +331,8 @@
+ 
+   for (auto& subscription : all_subscriptions) {
+-    auto target_subscription_it = std::ranges::find(
+-        target_subscriptions, *subscription,
+-        &std::unique_ptr<CookieChangeSubscription>::operator*);
++    auto target_subscription_it = std::ranges::find_if(
++        target_subscriptions,
++        [&subscription](const auto& sub) { return *sub == *subscription; });
++
+     if (target_subscription_it == target_subscriptions.end()) {
+       // The subscription is not marked for deletion.

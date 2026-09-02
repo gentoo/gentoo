@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 inherit check-reqs flag-o-matic multiprocessing optfeature
 inherit prefix python-any-r1 qt6-build toolchain-funcs
 
@@ -113,6 +113,7 @@ PATCHES+=(
 	"${FILESDIR}"/${PN}-6.11.0-gcc17.patch
 	"${FILESDIR}"/${PN}-6.11.1-musl-missing-includes.patch
 	"${FILESDIR}"/${PN}-6.11.1-musl-arm64-mte.patch
+	"${FILESDIR}"/${PN}-6.11.2-libcxx23.patch
 )
 
 python_check_deps() {
