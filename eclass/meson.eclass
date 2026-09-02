@@ -490,8 +490,14 @@ meson_src_configure() {
 	# https://bugs.gentoo.org/625396
 	python_export_utf8_locale
 
+	# We do this outside the subshell and localize any variables the function
+	# itself sets, because it can internally die. If it ran inside the subshell,
+	# then after dying, `meson setup` still runs after "If you need support, [...]"
+	# and logs the command line followed by "ERROR: Cannot find specified native file:"
+	local NM READELF BOOST_INCLUDEDIR BOOST_LIBRARYDIR
+	setup_meson_src_configure "$@"
+
 	(
-		setup_meson_src_configure "$@"
 		MESONARGS+=(
 			# Source directory
 			"${EMESON_SOURCE:-${S}}"
