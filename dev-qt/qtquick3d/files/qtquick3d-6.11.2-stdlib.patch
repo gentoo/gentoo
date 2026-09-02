@@ -1,5 +1,4 @@
-xatlas.cpp:166:32: error: use of undeclared identifier 'realloc'
-(happened on llvm-musl with libcxx-23, but haven't narrowed down the cause)
+https://bugs.gentoo.org/981804
 --- a/src/3rdparty/xatlas/xatlas.cpp
 +++ b/src/3rdparty/xatlas/xatlas.cpp
 @@ -52,2 +52,3 @@
