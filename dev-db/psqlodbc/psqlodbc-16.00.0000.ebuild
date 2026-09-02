@@ -1,11 +1,11 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DESCRIPTION="Official ODBC driver for PostgreSQL"
 HOMEPAGE="https://odbc.postgresql.org/"
-SRC_URI="https://ftp.postgresql.org/pub/odbc/versions/src/${P}.tar.gz"
+SRC_URI="https://ftp.postgresql.org/pub/odbc/versions.old/src/${P}.tar.gz"
 LICENSE="LGPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
