@@ -59,8 +59,6 @@ games-fps/glxquake-bin
 games-fps/legends
 games-fps/sauerbraten
 games-fps/soldieroffortune
-games-fps/ut2003
-games-fps/ut2003-demo
 games-fps/ut2004-demo
 games-misc/little-inferno
 games-misc/papers-please

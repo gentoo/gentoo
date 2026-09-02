@@ -339,12 +339,6 @@ games-fps/unreal
 games-fps/unreal-gold-data
 games-fps/unreal-tournament
 games-fps/unreal-tournament-data
-games-fps/ut2003
-games-fps/ut2003-bonuspack-cm
-games-fps/ut2003-bonuspack-de
-games-fps/ut2003-bonuspack-epic
-games-fps/ut2003-data
-games-fps/ut2003-demo
 games-fps/ut2004
 games-fps/ut2004-bonuspack-cbp1
 games-fps/ut2004-bonuspack-cbp2
