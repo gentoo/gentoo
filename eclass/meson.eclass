@@ -368,6 +368,16 @@ setup_meson_src_configure() {
 		# finally, remove it from *FLAGS to avoid passing it:
 		# - twice, with potentially different values
 		# - on excluded targets
+		#
+		# But first, localize all *FLAGS changes to this function -- since the
+		# values are frozen into machine files for Meson's own use, but we
+		# don't want to mess with other code in an ebuild (that runs outside of
+		# meson) or repeated calls to meson_src_configure (for multilib
+		# builds).
+		local x
+		for x in $(all-flag-vars); do
+			local -x "${x}=${!x}"
+		done
 		filter-lto
 	else
 		# Prevent projects from enabling LTO by default.  In Gentoo, LTO is
