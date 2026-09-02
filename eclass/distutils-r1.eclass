@@ -1044,11 +1044,6 @@ distutils_pep517_install() {
 		meson-python)
 			# variables defined by setup_meson_src_configure
 			local MESONARGS=() BOOST_INCLUDEDIR BOOST_LIBRARYDIR NM READELF
-			# it also calls filter-lto
-			local x
-			for x in $(all-flag-vars); do
-				local -x "${x}=${!x}"
-			done
 
 			setup_meson_src_configure "${DISTUTILS_ARGS[@]}"
 
