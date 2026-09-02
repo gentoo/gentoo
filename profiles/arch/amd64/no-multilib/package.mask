@@ -59,7 +59,6 @@ games-fps/glxquake-bin
 games-fps/legends
 games-fps/sauerbraten
 games-fps/soldieroffortune
-games-fps/ut2004-demo
 games-misc/little-inferno
 games-misc/papers-please
 games-puzzle/braid-hb

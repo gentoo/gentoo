@@ -122,19 +122,6 @@ dev-python/pyformance
 # Removal on 2026-09-03.  Bug #980354.
 dev-python/faust-cchardet
 
-# James Le Cuirot <chewi@gentoo.org> (2026-07-29)
-# These packages have been superseded by recent versions of
-# games-fps/ut2004-data, which now includes this content regardless of
-# installation source. For the XP Bonus Maps that were included in the ECE
-# package, install games-fps/ut2004-bonuspack-xp. Removal on 2026-08-29.
-games-fps/ut2004-bonuspack-ece
-games-fps/ut2004-bonuspack-mega
-
-# James Le Cuirot <chewi@gentoo.org> (2026-07-29)
-# UT2004 now has modern builds and is essentially free to download, so there is
-# no reason to bother with this old demo. Removal on 2026-08-29. Bug #979271.
-games-fps/ut2004-demo
-
 # James Le Cuirot <chewi@gentoo.org> (2026-07-28)
 # microsoft-identity-broker no longer needs a user. Removal on 2026-09-28.
 acct-user/microsoft-identity-broker
