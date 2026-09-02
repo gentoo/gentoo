@@ -6,7 +6,7 @@
 # gnome@gentoo.org
 # @AUTHOR:
 # Alexandre Rostovtsev <tetromino@gentoo.org>
-# @SUPPORTED_EAPIS: 7 8
+# @SUPPORTED_EAPIS: 7 8 9
 # @BLURB: Sets up the environment for using a specific version of vala.
 # @DESCRIPTION:
 # This eclass sets up commonly used environment variables for using a specific
@@ -14,13 +14,13 @@
 # packages whose build systems assume the existence of certain unversioned vala
 # executables, pkgconfig files, etc., which Gentoo does not provide.
 
-case ${EAPI} in
-	7|8) ;;
-	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
-esac
-
 if [[ -z ${_VALA_ECLASS} ]] ; then
 _VALA_ECLASS=1
+
+case ${EAPI} in
+	7|8|9) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
 
 inherit flag-o-matic
 

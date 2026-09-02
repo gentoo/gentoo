@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: gkrellm-plugin.eclass
@@ -8,7 +8,7 @@
 # Original author: Jim Ramsay <lack@gentoo.org>
 # EAPI 6 author: David Seifert <soap@gentoo.org>
 # EAPI 8 author: Thomas Bracht Laumann Jespersen <t@laumann.xyz>
-# @SUPPORTED_EAPIS: 8
+# @SUPPORTED_EAPIS: 8 9
 # @BLURB: Provides src_install used by (almost) all gkrellm plugins
 # @DESCRIPTION:
 # - Sets up default dependencies
@@ -31,13 +31,13 @@
 # An optional list of docs to be installed, in addition to the default
 # DOCS variable which is respected too.  Has to be a bash array.
 
-case ${EAPI} in
-	8) ;;
-	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
-esac
-
 if [[ -z ${_GKRELLM_PLUGIN_ECLASS} ]]; then
 _GKRELLM_PLUGIN_ECLASS=1
+
+case ${EAPI} in
+	8|9) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
 
 inherit multilib
 

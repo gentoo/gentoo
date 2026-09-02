@@ -7,14 +7,14 @@
 # ML <ml@gentoo.org>
 # @AUTHOR:
 # Alexis Ballier <aballier@gentoo.org>
-# @SUPPORTED_EAPIS: 7 8
+# @SUPPORTED_EAPIS: 7 8 9
 # @BLURB: Provides functions for installing opam packages.
 # @DESCRIPTION:
 # Provides dependencies on opam and ocaml, opam-install and a default
 # src_install for opam-based packages.
 
 case ${EAPI} in
-	7|8) ;;
+	7|8|9) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 

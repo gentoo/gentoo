@@ -6,7 +6,7 @@
 # Wine <wine@gentoo.org>
 # @AUTHOR:
 # Ionen Wolkens <ionen@gentoo.org>
-# @SUPPORTED_EAPIS: 8
+# @SUPPORTED_EAPIS: 8 9
 # @BLURB: Common functions for app-emuluation/wine-* ebuilds
 # @DESCRIPTION:
 # Given the large amount of Wine ebuilds (and variants) that need
@@ -18,13 +18,13 @@
 # Wine, but there is currently no garantee that eclass changes may
 # not break these ebuilds now and then without real warnings
 
-case ${EAPI} in
-	8) ;;
-	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
-esac
-
 if [[ -z ${_WINE_ECLASS} ]]; then
 _WINE_ECLASS=1
+
+case ${EAPI} in
+	8|9) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
 
 inherit autotools flag-o-matic multilib prefix toolchain-funcs wrapper
 
