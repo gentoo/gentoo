@@ -5,7 +5,7 @@ EAPI=8
 
 FIREFOX_PATCHSET="firefox-155-patches-04.tar.xz"
 
-LLVM_COMPAT=( 21 22 )
+LLVM_COMPAT=( 22 )
 
 # This will also filter rust versions that don't match LLVM_COMPAT in the non-clang path; this is fine.
 RUST_NEEDS_LLVM=1
