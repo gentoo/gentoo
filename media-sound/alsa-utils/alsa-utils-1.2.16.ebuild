@@ -27,6 +27,7 @@ DEPEND="
 "
 RDEPEND="
 	${DEPEND}
+	app-text/tree
 	selinux? ( sec-policy/selinux-alsa )
 "
 BDEPEND="
