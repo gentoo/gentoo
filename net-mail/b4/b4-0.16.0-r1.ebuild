@@ -15,8 +15,6 @@ LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64"
 
-RESTRICT=test # gentoo:: is missing dependences (e.g. dev-python/textual)
-
 RDEPEND="
 	>=dev-python/certifi-3024.7.22[${PYTHON_USEDEP}]
 	>=dev-python/cffi-2.0.0[${PYTHON_USEDEP}]
@@ -31,12 +29,17 @@ RDEPEND="
 	>=dev-python/requests-2.32.5[${PYTHON_USEDEP}]
 	>=dev-python/urllib3-2.6.3[${PYTHON_USEDEP}]
 	>=dev-python/pygit2-1.19.3[${PYTHON_USEDEP}]
-
 "
 
 BDEPEND="
 	dev-python/shtab[${PYTHON_USEDEP}]
 "
+
+distutils_enable_tests pytest
+EPYTEST_DESELECT=(
+	# broken upstream
+	src/tests/test_packaging.py::test_public_modules_import_without_textual
+)
 
 python_compile_all() {
 	local shell
