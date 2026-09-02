@@ -42,6 +42,7 @@ CMAKE_SKIP_TESTS=(
 PATCHES=(
 	"${FILESDIR}"/${PN}-6.6.2-gcc14.patch
 	"${FILESDIR}"/${PN}-6.6.2-x32abi.patch
+	"${FILESDIR}"/${PN}-6.11.2-stdlib.patch
 )
 
 src_configure() {
