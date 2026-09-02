@@ -45,7 +45,6 @@ RDEPEND="
 	virtual/zlib:=
 	midi? (
 		media-libs/rtmidi
-		media-sound/fluid-soundfont
 	)
 	videos? ( >=media-video/ffmpeg-2.2.3:0= )
 "
