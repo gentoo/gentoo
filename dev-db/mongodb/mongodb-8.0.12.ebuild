@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 SCONS_MIN_VERSION="3.3.1"
 CHECKREQS_DISK_BUILD="2400M"
@@ -25,7 +25,7 @@ LICENSE="Apache-2.0 SSPL-1"
 SLOT="0"
 KEYWORDS="amd64 ~arm64 -riscv"
 CPU_FLAGS="cpu_flags_x86_avx"
-IUSE="debug kerberos mongosh selinux ssl +tools ${CPU_FLAGS}"
+IUSE="debug kerberos mongosh ssl +tools ${CPU_FLAGS}"
 
 # https://github.com/mongodb/mongo/wiki/Test-The-Mongodb-Server
 # resmoke needs python packages not yet present in Gentoo
@@ -58,7 +58,6 @@ BDEPEND="
 		dev-python/pyyaml[${PYTHON_USEDEP}]
 		dev-python/distro[${PYTHON_USEDEP}]
 		dev-python/gitpython[${PYTHON_USEDEP}]
-		dev-python/pkg-resources[${PYTHON_USEDEP}]
 		dev-python/poetry[${PYTHON_USEDEP}]
 		dev-python/pymongo[${PYTHON_USEDEP}]
 		dev-python/tenacity[${PYTHON_USEDEP}]
@@ -68,7 +67,6 @@ PDEPEND="
 	mongosh? ( app-admin/mongosh-bin )
 	tools? ( >=app-admin/mongo-tools-100 )
 "
-RDEPEND+=" selinux? ( sec-policy/selinux-mongodb )"
 
 PATCHES=(
 	"${WORKDIR}/mongodb-8.0.8-patches/mongodb-4.4.29-no-enterprise.patch"
@@ -92,7 +90,6 @@ python_check_deps() {
 	python_has_version -b "dev-python/pyyaml[${PYTHON_USEDEP}]" &&
 	python_has_version -b "dev-python/distro[${PYTHON_USEDEP}]" &&
 	python_has_version -b "dev-python/gitpython[${PYTHON_USEDEP}]" &&
-	python_has_version -b "dev-python/pkg-resources[${PYTHON_USEDEP}]" &&
 	python_has_version -b "dev-python/poetry[${PYTHON_USEDEP}]" &&
 	python_has_version -b "dev-python/pymongo[${PYTHON_USEDEP}]" &&
 	python_has_version -b "dev-python/tenacity[${PYTHON_USEDEP}]"
