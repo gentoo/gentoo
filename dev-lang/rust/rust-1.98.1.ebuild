@@ -6,7 +6,7 @@ EAPI=8
 # Bump notes: https://wiki.gentoo.org/wiki/Project:Rust/Rust_bump
 
 LLVM_COMPAT=( 22 )
-PYTHON_COMPAT=( python3_{12..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 
 # Patches are kept in rust-patches.git, see its README.rst for the versioning
 # scheme.
