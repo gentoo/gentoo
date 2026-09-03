@@ -1120,30 +1120,36 @@ distutils_pep517_install() {
 			fi
 			;;
 		sip)
-			if [[ -n ${DISTUTILS_ARGS[@]} ]]; then
-				# NB: for practical reasons, we support only --foo=bar,
-				# not --foo bar
-				local arg
-				for arg in "${DISTUTILS_ARGS[@]}"; do
-					[[ ${arg} != -* ]] &&
-						die "Bare arguments in DISTUTILS_ARGS unsupported: ${arg}"
-				done
+			# NB: for practical reasons, we support only --foo=bar,
+			# not --foo bar
+			local arg
+			for arg in "${DISTUTILS_ARGS[@]}"; do
+				[[ ${arg} != -* ]] &&
+					die "Bare arguments in DISTUTILS_ARGS unsupported: ${arg}"
+			done
 
-				config_settings=$(
-					"${EPYTHON}" - "${DISTUTILS_ARGS[@]}" <<-EOF || die
-						import collections
-						import json
-						import sys
+			local sip_args=(
+				# sip adds manylinux to tags by default which is wrong
+				# without a curated environment and causes problems on
+				# musl with gpep517's --verify-tags
+				--no-manylinux
+				"${DISTUTILS_ARGS[@]}"
+			)
 
-						args = collections.defaultdict(list)
-						for arg in (x.split("=", 1) for x in sys.argv[1:]): \
-							args[arg[0]].extend(
-								[arg[1]] if len(arg) > 1 else [])
+			config_settings=$(
+				"${EPYTHON}" - "${sip_args[@]}" <<-EOF || die
+					import collections
+					import json
+					import sys
 
-						print(json.dumps(args))
-					EOF
-				)
-			fi
+					args = collections.defaultdict(list)
+					for arg in (x.split("=", 1) for x in sys.argv[1:]): \
+						args[arg[0]].extend(
+							[arg[1]] if len(arg) > 1 else [])
+
+					print(json.dumps(args))
+				EOF
+			)
 			;;
 		*)
 			[[ -n ${DISTUTILS_ARGS[@]} ]] &&
