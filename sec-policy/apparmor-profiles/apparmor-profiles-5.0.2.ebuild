@@ -3,20 +3,16 @@
 
 EAPI=8
 
-inherit git-r3
-
 DESCRIPTION="A collection of profiles for the AppArmor application security system"
 HOMEPAGE="https://gitlab.com/apparmor/apparmor/wikis/home"
+SRC_URI="https://gitlab.com/apparmor/apparmor/-/archive/v${PV}/apparmor-v${PV}.tar.bz2 -> ${P}.tar.bz2"
 
-EGIT_REPO_URI="https://gitlab.com/apparmor/apparmor.git"
-EGIT_BRANCH="master"
+S=${WORKDIR}/apparmor-v${PV}/profiles
 
-S=${WORKDIR}/${P}/profiles
 LICENSE="GPL-2"
-SLOT="0"
-KEYWORDS=""
+SLOT="0/$(ver_cut 1-2)"
+KEYWORDS="~amd64 ~arm64 ~ppc64"
 IUSE="minimal"
-
 RESTRICT="test"
 
 src_install() {
