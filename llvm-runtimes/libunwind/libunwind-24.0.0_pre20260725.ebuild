@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 inherit cmake-multilib crossdev flag-o-matic llvm.org llvm-utils
 inherit python-any-r1 toolchain-funcs
 
