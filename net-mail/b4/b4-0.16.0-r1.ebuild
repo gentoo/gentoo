@@ -35,6 +35,7 @@ BDEPEND="
 	dev-python/shtab[${PYTHON_USEDEP}]
 "
 
+EPYTEST_PLUGINS=( pytest-asyncio )
 distutils_enable_tests pytest
 EPYTEST_DESELECT=(
 	# broken upstream
