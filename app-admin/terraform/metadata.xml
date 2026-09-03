@@ -5,6 +5,10 @@
 		<email>williamh@gentoo.org</email>
 		<name>William Hubbs</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>arthurzam@gentoo.org</email>
+		<name>Arthur Zamarin</name>
+	</maintainer>
 	<longdescription lang="en">
 		Terraform is a tool for building, changing, and versioning infrastructure
 		safely and efficiently. Terraform can manage existing and popular service
