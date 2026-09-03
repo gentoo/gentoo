@@ -24,6 +24,13 @@ SLOT="0"
 
 BDEPEND="sys-apps/pkgcore"
 
+if [[ ${PV} = 99999999 ]]; then
+	src_unpack() {
+		git-r3_fetch
+		git-r3_checkout "" "" "" eclass
+	}
+fi
+
 src_compile() {
 	pmaint eclass -f man -o "{eclass}.eclass.5" *.eclass
 }
