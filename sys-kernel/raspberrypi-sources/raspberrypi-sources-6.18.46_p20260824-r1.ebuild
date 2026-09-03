@@ -19,7 +19,7 @@ detect_arch
 
 #MY_P=$(ver_cut 4-)
 #MY_P="stable_${MY_P/p/}"
-COMMIT=66318c5b5cd8145a662303af12ed39ac07eb27cc
+COMMIT=16f1da3c4e94437449d6aa151589ca0ad4b388bb
 MY_P=${COMMIT}
 
 DESCRIPTION="Raspberry Pi kernel sources"
