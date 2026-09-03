@@ -7,8 +7,8 @@
     <name>Maciej Barć</name>
   </maintainer>
   <upstream>
-    <bugs-to>https://github.com/mikf/gallery-dl/issues/</bugs-to>
-    <remote-id type="github">mikf/gallery-dl</remote-id>
+    <bugs-to>https://codeberg.org/mikf/gallery-dl/issues/</bugs-to>
+    <remote-id type="codeberg">mikf/gallery-dl</remote-id>
     <remote-id type="pypi">gallery-dl</remote-id>
   </upstream>
   <stabilize-allarches/>

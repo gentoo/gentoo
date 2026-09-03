@@ -10,14 +10,16 @@ DISTUTILS_USE_PEP517="setuptools"
 inherit distutils-r1 optfeature
 
 DESCRIPTION="Download image galleries and collections from several image hosting sites"
-HOMEPAGE="https://github.com/mikf/gallery-dl/"
+HOMEPAGE="https://codeberg.org/mikf/gallery-dl/
+	https://github.com/mikf/gallery-dl/"
 
 if [[ "${PV}" == *9999* ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="https://github.com/mikf/${PN}"
+	EGIT_REPO_URI="https://codeberg.org/mikf/${PN}"
 else
-	SRC_URI="https://github.com/mikf/${PN}/archive/v${PV}.tar.gz
-		-> ${P}.gh.tar.gz"
+	SRC_URI="https://codeberg.org/mikf/${PN}/archive/v${PV}.tar.gz
+		-> ${P}.codeberg.tar.gz"
+	S="${WORKDIR}/${PN}"
 	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~x86"
 fi
 
