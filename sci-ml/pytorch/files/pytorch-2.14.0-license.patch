@@ -1,0 +1,10 @@
+--- a/pyproject.toml	2026-09-03 16:46:07.080977356 +0200
++++ b/pyproject.toml	2026-09-03 18:11:07.550648831 +0200
+@@ -354,7 +354,6 @@
+     "LICENSE",
+     "third_party/**/LICENSE",
+     "third_party/**/LICENSE.txt",
+-    "third_party/**/LICENSE.rst",
+ ]
+ authors = [{ name = "PyTorch Team", email = "packages@pytorch.org" }]
+ keywords = ["pytorch", "machine learning"]
