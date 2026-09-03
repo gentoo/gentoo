@@ -255,7 +255,9 @@ src_unpack() {
 }
 
 src_prepare() {
-	local PATCHES=()
+	local PATCHES=(
+		"${FILESDIR}/systemd-261-lxml-6.1.3.patch"
+	)
 
 	if ! use vanilla; then
 		PATCHES+=(
