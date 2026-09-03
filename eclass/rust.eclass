@@ -108,6 +108,7 @@ declare -A -g -r _RUST_LLVM_MAP=(
 declare -a -g -r _RUST_SLOTS_ORDERED=(
 	"9999"
 	"1.98.1"
+	"1.97.1"
 	"1.96.1"
 	"1.95.0"
 	"1.94.1"
