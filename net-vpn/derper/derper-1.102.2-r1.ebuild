@@ -18,6 +18,8 @@ SRC_URI+=" https://github.com/gentoo-golang-dist/tailscale/releases/download/v${
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="MIT"
+# Dependent licenses
+LICENSE+=" Apache-2.0 BSD BSD-2 ISC MIT MPL-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
 
@@ -26,7 +28,7 @@ CONFIG_CHECK="~TUN"
 BDEPEND="
 	acct-group/derper
 	acct-user/derper
-	>=dev-lang/go-1.26.4
+	>=dev-lang/go-1.26.5
 "
 
 RESTRICT="test"
