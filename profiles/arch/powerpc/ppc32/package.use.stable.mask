@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2026-09-04)
+# sys-apps/xdg-desktop-portal not marked stable here
+x11-base/xwayland libei
+
 # Ian Jordan <immoloism@gmail.com> (2026-04-08)
 # Requires app-emulation/qemu which does not have stable keywords.
 sys-kernel/gentoo-kernel test

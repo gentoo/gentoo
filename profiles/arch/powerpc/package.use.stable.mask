@@ -27,10 +27,6 @@ virtual/notification-daemon kde
 app-crypt/libsecret test-rust
 dev-util/glade gjs
 
-# Mart Raudsepp <leio@gentoo.org> (2023-12-25)
-# Libei not stable here yet
-x11-base/xwayland libei
-
 # Sam James <sam@gentoo.org> (2023-07-28)
 # media-libs/libffado not marked stable here
 media-video/pipewire ieee1394
