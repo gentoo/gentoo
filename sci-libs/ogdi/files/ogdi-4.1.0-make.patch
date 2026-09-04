@@ -1,0 +1,12 @@
+--- a/ogdi/makefile	2026-09-04 12:03:50.025354987 +0200
++++ b/ogdi/makefile	2026-09-04 12:05:43.440118366 +0200
+@@ -20,7 +20,8 @@
+ #
+ # Default target to build everything in all sub-directories
+ #
+-all: $(subdirs)
++all: include c-api
++	$(MAKE) glutil attr_driver driver gltpd
+ 
+ #
+ # Target to allow individual sub-directories to be built 
