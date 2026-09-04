@@ -39,11 +39,9 @@ _tc-getPROG() {
 	local search=
 	[[ -n $4 ]] && search=$(type -p $4-${prog[0]})
 	[[ -z ${search} && -n ${!tuple} ]] && search=$(type -p ${!tuple}-${prog[0]})
-	if [[ -n ${search} ]] ; then
-		prog[0]=${search##*/}
-		export ${var}="${prog[*]}"
-	fi
+	[[ -n ${search} ]] && prog[0]=${search##*/}
 
+	export ${var}="${prog[*]}"
 	echo "${!var}"
 }
 tc-getBUILD_PROG() {
