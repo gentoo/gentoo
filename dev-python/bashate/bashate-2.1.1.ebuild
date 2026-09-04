@@ -17,7 +17,7 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 BDEPEND="
-	>dev-python/pbr-2.1.0[${PYTHON_USEDEP}]
+	>=dev-python/pbr-2.2.0[${PYTHON_USEDEP}]
 	test? (
 		dev-python/fixtures[${PYTHON_USEDEP}]
 		dev-python/testtools[${PYTHON_USEDEP}]
