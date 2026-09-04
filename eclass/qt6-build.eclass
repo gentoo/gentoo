@@ -334,6 +334,7 @@ _qt6-build_sanitize_cpu_flags() {
 	local march=$(
 		$(tc-getCXX) -x c++ -E -P ${CXXFLAGS} ${CPPFLAGS} - <<-EOF | sed -n '/^-march=/p' | tail -n 1
 			/* ignore evex* for >=gcc-16 and >=clang-22 (bug #956750,#969664) */
+			/* TODO: drop this and v4's EVEX* when both compilers been stable for a while */
 			#if (!defined(__clang__) && __GNUC__ >= 16) || __clang_major__ >= 22
 			#  ifndef __EVEX256__
 			#    define __EVEX256__ 1
