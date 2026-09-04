@@ -129,6 +129,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	>=app-text/libwps-0.4
 	app-text/mythes
 	>=dev-cpp/clucene-2.3.3.4-r2
+	dev-cpp/fast_float
 	>=dev-cpp/libcmis-0.6.2:0=
 	dev-db/unixODBC
 	dev-lang/perl
@@ -138,12 +139,13 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	dev-libs/icu:=
 	dev-libs/libassuan:=
 	dev-libs/libgpg-error
-	>=dev-libs/liborcus-0.20.0:0/0.20
+	>=dev-libs/liborcus-0.21.0:0/0.21
 	dev-libs/librevenge
 	dev-libs/libxml2:=
 	dev-libs/libxslt
 	dev-libs/nspr
 	dev-libs/nss
+	dev-libs/md4c:=
 	>=dev-libs/redland-1.0.16
 	dev-libs/zxcvbn-c
 	>=dev-libs/xmlsec-1.2.35:=[nss]
@@ -152,9 +154,10 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	media-gfx/graphite2
 	media-libs/fontconfig
 	>=media-libs/freetype-2.11.0-r1:2
-	>=media-libs/harfbuzz-5.1.0:=[graphite,icu]
+	>=media-libs/harfbuzz-8.3.1:=[graphite,icu]
 	media-libs/lcms:2
 	>=media-libs/libcdr-0.1.0
+	media-libs/libeot
 	>=media-libs/libepoxy-1.3.1[X]
 	>=media-libs/libfreehand-0.1.0
 	media-libs/libjpeg-turbo:=
@@ -165,7 +168,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	media-libs/libzmf
 	media-libs/openjpeg:=
 	media-libs/tiff:=
-	>=media-libs/zxing-cpp-2.3.0:=
+	>=media-libs/zxing-cpp-3.0.2:=
 	net-misc/curl
 	sci-mathematics/lpsolve:=
 	virtual/zlib:=
@@ -216,6 +219,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	pdfimport? ( >=app-text/poppler-22.06:=[cxx] )
 	postgres? ( >=dev-db/postgresql-9.0:*[kerberos] )
 	qt6? (
+		dev-libs/wayland
 		dev-qt/qtbase:6[gui,opengl,widgets]
 		dev-qt/qtmultimedia:6
 	)
@@ -239,6 +243,7 @@ DEPEND="${COMMON_DEPEND}
 		|| (
 		   virtual/jdk:17
 		   virtual/jdk:21
+		   virtual/jdk:25
 		)
 	)
 	test? (
@@ -283,6 +288,12 @@ PATCHES=(
 	"${FILESDIR}/${PN}-6.1-nomancompress.patch"
 	"${FILESDIR}/${PN}-24.2-qtdetect.patch"
 	"${FILESDIR}/${PN}-25.2-cflags.patch"
+
+	# box2d has no pkg-config file upstream; use a header check instead
+	"${FILESDIR}/${PN}-26.8-box2d-header-detect.patch"
+
+	# fix Qt6/KF6 Wayland fractional scaling: tdf#172896, tdf#173298
+	"${FILESDIR}/${PN}-26.8-qt6-fractional-scaling.patch"
 )
 
 _check_reqs() {
