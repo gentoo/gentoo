@@ -333,9 +333,16 @@ _qt6-build_sanitize_cpu_flags() {
 	# so users will not lose *all* CPU-specific optimizations
 	local march=$(
 		$(tc-getCXX) -x c++ -E -P ${CXXFLAGS} ${CPPFLAGS} - <<-EOF | sed -n '/^-march=/p' | tail -n 1
-			#if !defined(__EVEX512__) && !defined(__clang__) && __GNUC__ >= 16
-			#  define __EVEX512__ 1 /* removed in gcc-16 (bug #956750,#969664) */
+			/* ignore evex* for >=gcc-16 and >=clang-22 (bug #956750,#969664) */
+			#if (!defined(__clang__) && __GNUC__ >= 16) || __clang_major__ >= 22
+			#  ifndef __EVEX256__
+			#    define __EVEX256__ 1
+			#  endif
+			#  ifndef __EVEX512__
+			#    define __EVEX512__ 1
+			#  endif
 			#endif
+
 			#if (__CRC32__ + __LAHF_SAHF__ + __POPCNT__ + __SSE3__ + __SSE4_1__ + __SSE4_2__ + __SSSE3__) == 7
 			-march=x86-64-v2
 			#  if (__AVX__ + __AVX2__ + __BMI__ + __BMI2__ + __F16C__ + __FMA__ + __LZCNT__ + __MOVBE__ + __XSAVE__) == 9
