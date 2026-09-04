@@ -3,22 +3,18 @@
 
 EAPI=8
 inherit go-module systemd tmpfiles
-GIT_COMMIT=5e7fd0de9
+GIT_COMMIT=9f4b12540
 
 DESCRIPTION="Highly-available key value store for shared configuration and service discovery"
 HOMEPAGE="https://github.com/etcd-io/etcd"
 SRC_URI="https://github.com/etcd-io/etcd/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-SRC_URI+=" https://dev.gentoo.org/~chewi/distfiles/${P}-vendor.tar.xz"
+SRC_URI+=" https://dev.gentoo.org/~chewi/distfiles/${P}-deps.tar.xz" # Vendor tarball doesn't work.
 
-# `go mod vendor` doesn't work but `go work vendor` does. Additional steps can
-# make the vendor tarball a bit smaller.
-#
 # P=etcd-3.X.Y
 # ebuild ${P}.ebuild clean unpack
 # cd /var/tmp/portage/dev-db/${P}/work/${P}
-# sed -i "/\.\/tools\//d" go.work
-# go work vendor
-# tar --owner root --group root -Jcf /var/cache/distfiles/${P}-vendor.tar.xz -C .. ${P}/vendor ${P}/go.work
+# GOMODCACHE="${PWD}"/go-mod find -name go.mod -execdir go mod download -modcacherw -x
+# tar --owner root --group root -Jcf /var/cache/distfiles/${P}-deps.tar.xz go-mod
 
 LICENSE="Apache-2.0"
 LICENSE+=" BSD BSD-2 MIT"
@@ -32,35 +28,30 @@ COMMON_DEPEND="server? (
 	)"
 DEPEND="${COMMON_DEPEND}"
 RDEPEND="${COMMON_DEPEND}"
-BDEPEND=">=dev-lang/go-1.26"
+BDEPEND=">=dev-lang/go-1.25.12"
 
 # Unit tests attempt to download go modules.
 PROPERTIES="test_network"
 RESTRICT="test"
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-3.7.1-vendor.patch
-)
-
 src_prepare() {
 	default
-	sed -i "s|GIT_SHA=.*|GIT_SHA=${GIT_COMMIT}|" scripts/build_lib.sh || die
+	sed -i "s|GIT_SHA=.*|GIT_SHA=${GIT_COMMIT}|" build.sh || die
 
 	# Don't test these as they are not built.
 	find tools/ -name "*_test.go" -delete || die
 }
 
 src_configure() {
-	export FORCE_HOST_GO=1 GO_BUILD_FLAGS="-v -x"
+	export FORCE_HOST_GO=1 GO_BUILD_FLAGS="-v -x" CGO_ENABLED=1
 }
 
 src_compile() {
-	scripts/build.sh || die
+	./build.sh || die
 }
 
 src_test() {
-	# -buildmode=pie is incompatible with -race used by the tests.
-	GOFLAGS=${GOFLAGS//-buildmode=pie} PASSES="unit" scripts/test.sh -v || die
+	PASSES="unit" ./test.sh -v || die
 }
 
 src_install() {
