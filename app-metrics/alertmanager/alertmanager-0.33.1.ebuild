@@ -14,7 +14,7 @@ SRC_URI="
 "
 LICENSE="Apache-2.0 BSD BSD-2 MIT MPL-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 ~arm64"
 
 # tests don't work due to "missing files"
 RESTRICT+=" test"
