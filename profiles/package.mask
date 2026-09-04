@@ -36,6 +36,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2026-09-04)
+# Test suite broken with numpy-2.  Last release in 2020.  No reverse
+# dependencies.
+# Removal on 2026-10-04.  Bug #952323.
+dev-python/chart-studio
+
 # Michał Górny <mgorny@gentoo.org> (2026-09-01)
 # Low quality slop package with high code churn and frequently changing
 # results.  All the most recent releases are broken.
