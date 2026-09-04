@@ -1,4 +1,4 @@
-# Copyright 2012-2025 Gentoo Authors
+# Copyright 2012-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -43,6 +43,7 @@ PDEPEND="
 PATCHES=(
 	"${FILESDIR}"/ninja-cflags.patch
 	"${FILESDIR}"/${PN}-1.13.2-allow-psuedo-fifo.patch
+	"${FILESDIR}"/${PN}-1.13.2-big-endian-test.patch
 )
 
 pkg_setup() {
