@@ -98,6 +98,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-16.0.0-musl-no-execinfo.patch
 	"${FILESDIR}"/${PN}-12.0.0-musl-no-malloc-trim.patch
+	"${FILESDIR}"/${PN}-20.0.1-libcxx23.patch
 )
 
 src_prepare() {
