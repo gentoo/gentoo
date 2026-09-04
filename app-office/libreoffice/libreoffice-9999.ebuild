@@ -12,7 +12,7 @@ MY_PV="${MY_PV/_beta/.beta}"
 # Usually the tarballs are moved a lot so this should make everyone happy.
 DEV_URI="
 	https://dev-builds.libreoffice.org/pre-releases/src
-	https://download.documentfoundation.org/libreoffice/src/${MY_PV:0:5}/
+	https://download.documentfoundation.org/libreoffice/src/${MY_PV:0:6}/
 	https://downloadarchive.documentfoundation.org/libreoffice/old/${MY_PV}/src
 "
 ADDONS_URI="https://dev-www.libreoffice.org/src/"
@@ -21,6 +21,10 @@ BRANDING="${PN}-branding-gentoo-0.8.tar.xz"
 # PATCHSET="${P}-patchset-01.tar.xz"
 
 [[ ${MY_PV} == *9999* ]] && inherit git-r3
+# helpcontent2 is a submodule of core, pinned to the revision core expects,
+# so it doesn't need fetching separately. translations and dictionaries are
+# unused: we build with --with-lang="" and --without-myspell-dicts.
+EGIT_SUBMODULES=( '*' '-translations' '-dictionaries' )
 inherit autotools bash-completion-r1 check-reqs flag-o-matic java-pkg-opt-2 multiprocessing python-single-r1 qt-utils toolchain-funcs xdg-utils
 
 DESCRIPTION="A full office productivity suite"
@@ -46,12 +50,10 @@ unset DEV_URI
 ADDONS_SRC=(
 	# not packaged in Gentoo
 	"${ADDONS_URI}/dragonbox-1.1.3.tar.gz"
-	# not packaged in Gentoo, https://www.netlib.org/fp/dtoa.c
-	"${ADDONS_URI}/dtoa-20180411.tgz"
 	# not packaged in Gentoo, https://github.com/serge-sans-paille/frozen
 	"${ADDONS_URI}/frozen-1.2.0.tar.gz"
 	# not packaged in Gentoo, https://skia.org/
-	"${ADDONS_URI}/skia-m136-28685d899b0a35894743e2cedad4c9f525e90e1e.tar.xz"
+	"${ADDONS_URI}/skia-m149-9bb16a741cdbcbde46a0d4caf8ac73f4d07a89e2.tar.xz"
 
 	"base? (
 		${ADDONS_URI}/ba2930200c9f019c2d93a8c88c651a0f-flow-engine-0.9.4.zip
@@ -66,9 +68,7 @@ ADDONS_SRC=(
 		${ADDONS_URI}/ace6ab49184e329db254e454a010f56d-libxml-1.1.7.zip
 		${ADDONS_URI}/39bb3fcea1514f1369fcfc87542390fd-sacjava-1.3.zip
 	)"
-	# Java-WebSocket: not packaged in Gentoo, https://github.com/TooTallNate/Java-WebSocket
 	"java? (
-		${ADDONS_URI}/Java-WebSocket-1.6.0.tar.gz
 		${ADDONS_URI}/17410483b5b5f267aa18b7e00b65e6e0-hsqldb_1_8_0.zip
 	)"
 	# no release for 8 years, should we package it?
@@ -85,7 +85,7 @@ LICENSE="|| ( LGPL-3 MPL-1.1 )"
 SLOT="0"
 
 [[ ${MY_PV} == *9999* ]] || \
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="~amd64 ~riscv"
 
 # Extensions that need extra work:
 LO_EXTS="nlpsolver scripting-beanshell scripting-javascript wiki-publisher"
@@ -129,6 +129,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	>=app-text/libwps-0.4
 	app-text/mythes
 	>=dev-cpp/clucene-2.3.3.4-r2
+	dev-cpp/fast_float
 	>=dev-cpp/libcmis-0.6.2:0=
 	dev-db/unixODBC
 	dev-lang/perl
@@ -138,23 +139,25 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	dev-libs/icu:=
 	dev-libs/libassuan:=
 	dev-libs/libgpg-error
-	>=dev-libs/liborcus-0.20.0:0/0.20
+	>=dev-libs/liborcus-0.21.0:0/0.21
 	dev-libs/librevenge
 	dev-libs/libxml2:=
 	dev-libs/libxslt
 	dev-libs/nspr
 	dev-libs/nss
+	dev-libs/md4c:=
 	>=dev-libs/redland-1.0.16
 	dev-libs/zxcvbn-c
 	>=dev-libs/xmlsec-1.2.35:=[nss]
-	>=games-engines/box2d-2.4.1:0
+	>=games-engines/box2d-3.1.1:0
 	media-gfx/fontforge
 	media-gfx/graphite2
 	media-libs/fontconfig
 	>=media-libs/freetype-2.11.0-r1:2
-	>=media-libs/harfbuzz-5.1.0:=[graphite,icu]
+	>=media-libs/harfbuzz-14.3.0:=[graphite,icu]
 	media-libs/lcms:2
 	>=media-libs/libcdr-0.1.0
+	media-libs/libeot
 	>=media-libs/libepoxy-1.3.1[X]
 	>=media-libs/libfreehand-0.1.0
 	media-libs/libjpeg-turbo:=
@@ -165,7 +168,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	media-libs/libzmf
 	media-libs/openjpeg:=
 	media-libs/tiff:=
-	>=media-libs/zxing-cpp-2.3.0:=
+	>=media-libs/zxing-cpp-3.0.2:=
 	net-misc/curl
 	sci-mathematics/lpsolve:=
 	virtual/zlib:=
@@ -201,6 +204,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 		gui-libs/gtk[wayland,X]
 		x11-libs/pango
 	)
+	java? ( dev-java/java-websocket:0 )
 	kde? (
 		kde-frameworks/kconfig:6
 		kde-frameworks/kcoreaddons:6
@@ -216,6 +220,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	pdfimport? ( >=app-text/poppler-22.06:=[cxx] )
 	postgres? ( >=dev-db/postgresql-9.0:*[kerberos] )
 	qt6? (
+		dev-libs/wayland
 		dev-qt/qtbase:6[gui,opengl,widgets]
 		dev-qt/qtmultimedia:6
 	)
@@ -237,8 +242,9 @@ DEPEND="${COMMON_DEPEND}
 	java? (
 		dev-java/ant:0
 		|| (
-		   virtual/jdk:17
-		   virtual/jdk:21
+			virtual/jdk:17
+			virtual/jdk:21
+			virtual/jdk:25
 		)
 	)
 	test? (
@@ -256,7 +262,7 @@ RDEPEND="${COMMON_DEPEND}
 	!app-office/libreoffice-bin-debug
 	media-fonts/liberation-fonts
 	|| ( x11-misc/xdg-utils kde-plasma/kde-cli-tools:* )
-	java? ( >=virtual/jre-11 )
+	java? ( >=virtual/jre-17 )
 	kde? ( kde-frameworks/breeze-icons:* )
 "
 BDEPEND="
@@ -281,8 +287,19 @@ PATCHES=(
 
 	# not upstreamable stuff
 	"${FILESDIR}/${PN}-6.1-nomancompress.patch"
-	"${FILESDIR}/${PN}-24.2-qtdetect.patch"
 	"${FILESDIR}/${PN}-25.2-cflags.patch"
+
+	# add qt6 backend as possible fallback for gtk-based desktop environments:
+	# https://bugs.gentoo.org/950170
+	"${FILESDIR}/${PN}-26.8-vcl-backend-fallback.patch"
+
+	# box2d ships no pkg-config file; detect the 3.x API from its headers
+	"${FILESDIR}/${PN}-26.8-box2d-header-detect.patch"
+
+	# fix Qt6/KF6 Wayland fractional scaling:
+	# https://bugs.documentfoundation.org/show_bug.cgi?id=172896
+	# https://bugs.documentfoundation.org/show_bug.cgi?id=173298
+	"${FILESDIR}/${PN}-26.8-qt6-fractional-scaling.patch"
 )
 
 _check_reqs() {
@@ -324,9 +341,6 @@ src_unpack() {
 		git-r3_fetch "${base_uri}/core" "refs/heads/${branch}"
 		git-r3_checkout "${base_uri}/core"
 		LOCOREGIT_VERSION=${EGIT_VERSION}
-
-		git-r3_fetch "${base_uri}/${PN}/help" "refs/heads/master"
-		git-r3_checkout "${base_uri}/${PN}/help" "helpcontent2" # doesn't match on help
 	fi
 }
 
@@ -463,7 +477,7 @@ src_configure() {
 	export PYTHON_LIBS=$(python_get_LIBS)
 
 	if use qt6; then
-		export QT6DIR="$(qt6_get_bindir)/.."
+		export QT6DIR="${EPREFIX}$(qt_get_bindir 6)/.."
 	fi
 
 	local gentoo_buildid="Gentoo official package"
@@ -476,7 +490,7 @@ src_configure() {
 	# --enable-cairo: ensure that cairo is always required
 	# --enable-*-link: link to the library rather than just dlopen on runtime
 	# --enable-release-build: build the libreoffice as release
-	# --disable-fetch-external: prevent dowloading during compile phase
+	# --disable-fetch-external: prevent downloading during compile phase
 	# --enable-extension-integration: enable any extension integration support
 	# --without-{fonts,myspell-dicts,ppsd}: prevent install of sys pkgs
 	# --disable-report-builder: too much java packages pulled in without pkgs
@@ -540,7 +554,8 @@ src_configure() {
 		--without-system-jfreereport
 		--without-system-libfixmath
 		--without-system-sane
-		--without-system-java-websocket
+		$(use_with java system-java-websocket)
+		$(use_with java java-websocket-jar="${EPREFIX}/usr/share/java-websocket/lib/java-websocket.jar")
 		$(use_enable base report-builder)
 		$(use_enable bluetooth sdremote-bluetooth)
 		$(use_enable coinmp)
@@ -621,13 +636,6 @@ src_test() {
 
 src_install() {
 	emake -Onone DESTDIR="${D}" distro-pack-install
-
-	# TODO: still relevant for gtk4?
-	# bug #593514
-	#if use gtk3; then
-	#	dosym libreoffice/program/liblibreofficekitgtk.so \
-	#		/usr/$(get_libdir)/liblibreofficekitgtk.so
-	#fi
 
 	# bash completion aliases
 	bashcomp_alias \
