@@ -6,7 +6,7 @@ EAPI=8
 DISTUTILS_USE_PEP517=setuptools
 PYPI_NO_NORMALIZE=1
 PYPI_PN="QDarkStyle"
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 
 inherit distutils-r1 optfeature pypi
 
@@ -31,12 +31,8 @@ DEPEND="
 	)
 "
 
+EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
-
-python_test() {
-	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
-	epytest
-}
 
 pkg_postinst() {
 	optfeature "Retrieve detailed system information and report bugs upstream" dev-python/helpdev
