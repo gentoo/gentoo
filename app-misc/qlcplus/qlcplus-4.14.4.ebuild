@@ -1,9 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit cmake udev xdg
+inherit cmake qmake-utils udev xdg
 
 DESCRIPTION="A software to control DMX or analog lighting systems"
 HOMEPAGE="https://www.qlcplus.org/"
@@ -56,6 +56,17 @@ src_prepare() {
 	## the CMakeLists file
 	sed -e "s| Qt5 | |g" -e "s|\${QT_VERSION_MAJOR}|6|g" \
 		-i CMakeLists.txt || die
+
+	## QLC+ uses "-Wall -Wextra -Werror" by default. Might be nice for
+	## development but doesn't make sense when building locally
+	sed -e '\|-Werror|s|^|#|g' -e '\|-Wextra|s|^|#|g' -e '\|-Wall|s|^|#|g' \
+		-i variables.cmake || die
+
+	## translate.sh searches lrelease and lupdate in $PATH. This worked for
+	## Qt5 but will fail for Qt6. Let us tell them where they are
+	sed -e "s|^\(LRELEASE=\).*|\1\"$(qt6_get_bindir)/lrelease\"|" \
+	    -e "s|^\(LUPDATE=\).*|\1\"$(qt6_get_bindir)/lupdate\"|" \
+		-i translate.sh || die
 }
 
 pkg_postinst() {
