@@ -43,7 +43,7 @@ LICENSE="MIT"
 # Dependent crate licenses
 LICENSE+=" Apache-2.0 Apache-2.0-with-LLVM-exceptions Unicode-3.0"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~x86"
+KEYWORDS="amd64 arm64 ~x86"
 
 QA_FLAGS_IGNORED="
 	usr/lib/py.*/site-packages/unicode_segmentation_rs/unicode_segmentation_rs.*
