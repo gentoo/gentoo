@@ -28,15 +28,10 @@ RDEPEND="
 	dev-python/traitlets[${PYTHON_USEDEP}]
 "
 
-BDEPEND="
-	test? (
-		dev-python/pytest-mock[${PYTHON_USEDEP}]
-		dev-python/pytest-qt[${PYTHON_USEDEP}]
-	)
-"
 
 DOCS=( "README.md" "CHANGELOG.md" )
 
+EPYTEST_PLUGINS=( pytest-{mock,qt} )
 distutils_enable_tests pytest
 
 EPYTEST_DESELECT=(
