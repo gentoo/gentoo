@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 inherit edo go-env optfeature multiprocessing python-single-r1
 inherit shell-completion toolchain-funcs xdg
 
@@ -18,7 +18,7 @@ else
 		verify-sig? ( https://github.com/kovidgoyal/kitty/releases/download/v${PV}/${P}.tar.xz.sig )
 	"
 	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/kovidgoyal.gpg
-	KEYWORDS="amd64 ~arm64 ~loong ~ppc64 ~riscv x86"
+	KEYWORDS="amd64 arm64 ~loong ~ppc64 ~riscv x86"
 fi
 
 DESCRIPTION="Fast, feature-rich, GPU-based terminal"
