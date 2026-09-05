@@ -14,7 +14,7 @@ if [[ ${PV} == *9999 ]] ; then
 	inherit git-r3
 else
 	inherit pypi
-	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-macos"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-macos"
 fi
 
 DESCRIPTION="Collection of tools for Gentoo development"
@@ -32,18 +32,19 @@ if [[ ${PV} == *9999 ]] ; then
 	"
 else
 	RDEPEND="
-		>=dev-python/snakeoil-0.11.0[${PYTHON_USEDEP}]
-		>=sys-apps/pkgcore-0.12.30[${PYTHON_USEDEP}]
-		>=dev-util/pkgcheck-0.10.36[${PYTHON_USEDEP}]
+		>=dev-python/snakeoil-0.11.6[${PYTHON_USEDEP}]
+		>=sys-apps/pkgcore-0.12.42[${PYTHON_USEDEP}]
+		>=dev-util/pkgcheck-0.10.43[${PYTHON_USEDEP}]
 	"
 fi
 
 RDEPEND+="
+	>=dev-python/tabulate-0.9.0[${PYTHON_USEDEP}]
 	dev-vcs/git
 "
 BDEPEND="
 	>=dev-python/flit-core-3.8[${PYTHON_USEDEP}]
-	>=dev-python/snakeoil-0.11.0[${PYTHON_USEDEP}]
+	>=dev-python/snakeoil-0.11.6[${PYTHON_USEDEP}]
 	test? (
 		x11-misc/xdg-utils
 	)
