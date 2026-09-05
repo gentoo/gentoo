@@ -29,7 +29,7 @@ BDEPEND="sys-apps/pkgcore"
 if [[ ${PV} = 99999999 ]]; then
 	src_unpack() {
 		git-r3_fetch
-		git-r3_checkout "" "" "" eclass
+		git-r3_checkout "" "" "" "eclass/*.eclass"
 	}
 fi
 
