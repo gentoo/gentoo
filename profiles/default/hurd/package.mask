@@ -1,10 +1,6 @@
 # Copyright 2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Sam James <sam@gentoo.org> (2026-09-04)
-# Uses PATH_MAX (https://github.com/pkgconf/pkgconf/issues/600, bug #981896)
->=dev-util/pkgconf-3
-
 # Broken on Hurd or needs porting to do the right thing
 sys-apps/makedev
 sys-fs/static-dev
