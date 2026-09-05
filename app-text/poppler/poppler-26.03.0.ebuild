@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{11..15} )
 inherit cmake flag-o-matic python-any-r1 toolchain-funcs xdg-utils
 
 if [[ ${PV} == *9999* ]] ; then
@@ -59,6 +59,7 @@ BDEPEND="
 	${PYTHON_DEPS}
 	>=dev-util/glib-utils-2.64
 	virtual/pkgconfig
+	qt6? ( dev-qt/qtbase:6 )
 "
 
 if [[ ${PV} != *9999* ]] ; then
@@ -128,6 +129,7 @@ src_configure() {
 		-DENABLE_UTILS=$(usex utils)
 	)
 	use cairo && mycmakeargs+=( -DWITH_GObjectIntrospection=$(usex introspection) )
+	use qt6 && tc-is-cross-compiler && mycmakeargs+=( -DQT_HOST_PATH=/ )
 
 	cmake_src_configure
 }
