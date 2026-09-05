@@ -20,6 +20,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-0.6.9-automake113.patch
 	"${FILESDIR}"/${PN}-0.6.9-gettext019.patch
 	"${FILESDIR}"/${PN}-0.6.9-gcc43.patch
+	"${FILESDIR}"/${PN}-0.6.9-gcc16.patch # bug 943766, 881865
 	"${FILESDIR}"/${PN}-0.6.9-remove-m4.patch
 )
 
