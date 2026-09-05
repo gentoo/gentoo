@@ -22,8 +22,9 @@ SLOT="0"
 KEYWORDS="amd64 ~arm arm64 ~ppc64 ~riscv ~x86 ~x64-macos"
 
 # Note: only C API of graphviz is used, PYTHON_USEDEP unnecessary.
+# [cairo] is actually pangocairo, needed for gvplugin_pango.
 DEPEND="
-	media-gfx/graphviz:=
+	media-gfx/graphviz:=[cairo]
 "
 RDEPEND="
 	${DEPEND}
