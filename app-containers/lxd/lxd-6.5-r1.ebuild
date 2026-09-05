@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit go-module linux-info optfeature systemd verify-sig flag-o-matic eapi9-ver
+inherit go-module linux-info optfeature systemd verify-sig flag-o-matic
 
 DESCRIPTION="Modern, secure and powerful system container and virtual machine manager"
 HOMEPAGE="https://ubuntu.com/lxd https://github.com/canonical/lxd"
@@ -14,13 +14,14 @@ SRC_URI="https://github.com/canonical/lxd/releases/download/${P}/${P}.tar.gz
 LICENSE="Apache-2.0 AGPL-3+ BSD LGPL-3 MIT"
 SLOT="0/stable"
 KEYWORDS="~amd64 ~arm64 ~x86"
-IUSE="apparmor"
+IUSE="apparmor nls"
 
 DEPEND="acct-group/lxd
 	app-arch/xz-utils
 	>=app-containers/lxc-6.0.4:=[apparmor?,seccomp(+)]
 	dev-db/sqlite:3
 	>=dev-libs/dqlite-1.18.2:=[lz4]
+	<dev-libs/dqlite-1.18.3
 	dev-libs/lzo
 	>=dev-util/xdelta-3.0[lzma(+)]
 	net-dns/dnsmasq[dhcp]
@@ -39,7 +40,8 @@ RDEPEND="${DEPEND}
 	>=sys-fs/lxcfs-6.0.4
 	sys-fs/squashfs-tools[lzma]
 	virtual/acl"
-BDEPEND=">=dev-lang/go-1.26.4
+BDEPEND=">=dev-lang/go-1.24.4
+	nls? ( sys-devel/gettext )
 	verify-sig? ( sec-keys/openpgp-keys-canonical )"
 
 CONFIG_CHECK="
@@ -72,7 +74,7 @@ QA_PREBUILT="/usr/bin/fuidshift
 	/usr/bin/lxc
 	/usr/bin/lxd-agent
 	/usr/bin/lxd-benchmark
-	/usr/bin/lxd-convert
+	/usr/bin/lxd-migrate
 	/usr/sbin/lxd"
 
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/canonical.asc
@@ -130,8 +132,10 @@ src_compile() {
 	go install -v -x -tags libsqlite3 "${S}"/lxd || die "Failed to build the daemon"
 
 	# Needs to be built statically
-	CGO_ENABLED=0 go install -v -tags netgo "${S}"/lxd-convert
+	CGO_ENABLED=0 go install -v -tags netgo "${S}"/lxd-migrate
 	CGO_ENABLED=0 go install -v -tags agent,netgo "${S}"/lxd-agent
+
+	use nls && emake build-mo
 }
 
 src_test() {
@@ -144,7 +148,7 @@ src_install() {
 
 	dosbin ${bindir}/lxd
 
-	for l in fuidshift lxd-agent lxd-benchmark lxd-convert lxc; do
+	for l in fuidshift lxd-agent lxd-benchmark lxd-migrate lxc; do
 		dobin ${bindir}/${l}
 	done
 
@@ -157,6 +161,7 @@ src_install() {
 
 	dodoc AUTHORS
 	dodoc -r doc/*
+	use nls && domo po/*.mo
 
 	# LXD needs LXD_QEMU_FW_PATH in env to find OVMF files for virtual machines
 	newenvd - 90lxd <<- _EOF_
@@ -165,13 +170,6 @@ src_install() {
 }
 
 pkg_postinst() {
-	if ver_replacing -lt 6.7
-	then
-		ewarn
-		ewarn "Starting with lxd-6.7, 'lxd-migrate' has been renamed to 'lxd-convert'."
-		ewarn
-	fi
-
 	elog
 	elog "Consult https://wiki.gentoo.org/wiki/LXD for more information,"
 	elog "including a Quick Start."
@@ -180,14 +178,12 @@ pkg_postinst() {
 	elog
 	elog "Please run 'lxc-checkconfig' to see all optional kernel features."
 	elog
-	elog "LXD 6.9 documents a minimum kernel version of 6.8 (up from 5.15 for 6.5)."
-	elog
-	optfeature "virtual machine support" ">=app-emulation/qemu-8.2.2[spice,usbredir,virtfs]"
+	optfeature "virtual machine support" app-emulation/qemu[spice,usbredir,virtfs]
 	optfeature "btrfs storage backend" sys-fs/btrfs-progs
 	optfeature "ipv6 support" net-dns/dnsmasq[ipv6]
-	optfeature "full lxd-convert support" net-misc/rsync
+	optfeature "full lxd-migrate support" net-misc/rsync
 	optfeature "lvm2 storage backend" sys-fs/lvm2
-	optfeature "zfs storage backend" ">=sys-fs/zfs-2.2"
+	optfeature "zfs storage backend" sys-fs/zfs
 	elog
 	elog "Be sure to add your local user to the lxd group."
 }
