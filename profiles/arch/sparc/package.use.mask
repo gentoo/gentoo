@@ -1,6 +1,11 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# James Le Cuirot <chewi@gentoo.org> (2026-09-05)
+# VIS is a sparc-specific SIMD optimisation.
+media-libs/libggi -vis
+media-libs/xine-lib -vis
+
 # Sam James <sam@gentoo.org> (2026-09-04)
 # sys-apps/xdg-desktop-portal not keyworded here
 x11-base/xwayland libei

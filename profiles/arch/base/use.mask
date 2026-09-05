@@ -166,9 +166,6 @@ loongson2f
 ibm
 ps3
 
-# sparc arch specific USE flags
-vis
-
 # arm arch specific USE flags
 cpu_flags_arm_v4
 cpu_flags_arm_v5
