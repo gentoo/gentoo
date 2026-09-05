@@ -28,4 +28,8 @@ RDEPEND="
 EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
 
+PATCHES=(
+	# https://github.com/pypa/readme_renderer/pull/361#discussion_r3389722801
+	"${FILESDIR}/${P}-py315.patch"
+)
 DOCS=( README.rst )
