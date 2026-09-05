@@ -16,7 +16,7 @@ else
 		https://downloads.sourceforge.net/qbittorrent/${P}.tar.xz
 		verify-sig? ( https://downloads.sourceforge.net/qbittorrent/${P}.tar.xz.asc )
 	"
-	KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~riscv x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
 
 	BDEPEND="verify-sig? ( sec-keys/openpgp-keys-qbittorrent )"
 	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/qBittorrent.asc
@@ -36,12 +36,12 @@ REQUIRED_USE="
 RDEPEND="
 	>=dev-libs/boost-1.76:=
 	>=dev-libs/openssl-3.0.2:=
-	>=dev-qt/qtbase-6.5:6[network,ssl,sql,sqlite,xml]
+	>=dev-qt/qtbase-6.6:6[network,ssl,sql,sqlite,xml]
 	>=net-libs/libtorrent-rasterbar-2.0.10:=
 	>=virtual/zlib-1.2.11:=
 	gui? (
-		>=dev-qt/qtbase-6.5:6[dbus?,gui,widgets]
-		>=dev-qt/qtsvg-6.5:6
+		>=dev-qt/qtbase-6.6:6[dbus?,gui,widgets]
+		>=dev-qt/qtsvg-6.6:6
 	)
 	webui? (
 		acct-group/qbittorrent
@@ -52,7 +52,7 @@ DEPEND="
 	${RDEPEND}
 "
 BDEPEND+="
-	>=dev-qt/qttools-6.5:6[linguist]
+	>=dev-qt/qttools-6.6:6[linguist]
 	virtual/pkgconfig
 "
 
