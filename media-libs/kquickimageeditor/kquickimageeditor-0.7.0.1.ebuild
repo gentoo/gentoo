@@ -20,7 +20,6 @@ fi
 
 LICENSE="LGPL-2.1+"
 SLOT="6"
-IUSE=""
 
 DEPEND="
 	>=dev-cpp/highway-1.3.0
