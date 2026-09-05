@@ -6,6 +6,10 @@
 
 # New entries go on top.
 
+# Michał Górny <mgorny@gentoo.org> (2026-09-05)
+# dev-python/{ioflo,raet} stuck on Python 3.12 and last-rited.
+app-admin/salt raet
+
 # Emi <reedy.sailors.8t@icloud.com> (2026-07-30)
 # Turnstile is currently in ::guru
 sys-auth/pambase turnstile

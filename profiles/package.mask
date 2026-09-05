@@ -37,6 +37,12 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2026-09-05)
+# Stuck on Python 3.12.  No activity upstream.
+# Removal on 2026-10-05.  Bug #952340.
+dev-python/ioflo
+dev-python/raet
+
+# Michał Górny <mgorny@gentoo.org> (2026-09-05)
 # dev-python/consonance has been broken since at least 2024.  Contrary
 # to PYTHON_COMPAT, the code is incompatible with Python 3.12+.
 # The protobuf file needs to be rebuilt, yet upstream never published
