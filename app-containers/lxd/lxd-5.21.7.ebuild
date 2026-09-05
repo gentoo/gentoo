@@ -117,8 +117,9 @@ src_configure() { :; }
 
 src_compile() {
         export GOPATH="${S}/_dist"
-        export CGO_LDFLAGS_ALLOW="-Wl,-z,now"
-        export GOPATH="${S}/_dist"
+        append-ldflags -Wl,-z,lazy
+        export CGO_LDFLAGS_ALLOW="-Wl,-z,lazy"
+        export CGO_LDFLAGS="${CGO_LDFLAGS} ${LDFLAGS}"
 
 	for k in fuidshift lxd-benchmark lxc; do
 		go install -v -x "${S}/${k}" || die "failed compiling ${k}"

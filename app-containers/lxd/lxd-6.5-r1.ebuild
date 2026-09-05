@@ -1,4 +1,4 @@
-# Copyright 1999-2026 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -14,7 +14,7 @@ SRC_URI="https://github.com/canonical/lxd/releases/download/${P}/${P}.tar.gz
 LICENSE="Apache-2.0 AGPL-3+ BSD LGPL-3 MIT"
 SLOT="0/stable"
 KEYWORDS="~amd64 ~arm64 ~x86"
-IUSE="apparmor"
+IUSE="apparmor nls"
 
 DEPEND="acct-group/lxd
 	app-arch/xz-utils
@@ -39,7 +39,8 @@ RDEPEND="${DEPEND}
 	>=sys-fs/lxcfs-6.0.4
 	sys-fs/squashfs-tools[lzma]
 	virtual/acl"
-BDEPEND=">=dev-lang/go-1.26.4
+BDEPEND=">=dev-lang/go-1.24.4
+	nls? ( sys-devel/gettext )
 	verify-sig? ( sec-keys/openpgp-keys-canonical )"
 
 CONFIG_CHECK="
@@ -72,7 +73,7 @@ QA_PREBUILT="/usr/bin/fuidshift
 	/usr/bin/lxc
 	/usr/bin/lxd-agent
 	/usr/bin/lxd-benchmark
-	/usr/bin/lxd-convert
+	/usr/bin/lxd-migrate
 	/usr/sbin/lxd"
 
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/canonical.asc
@@ -118,9 +119,9 @@ src_configure() { :; }
 
 src_compile() {
 	export GOPATH="${S}/_dist"
-        append-ldflags -Wl,-z,lazy
-        export CGO_LDFLAGS_ALLOW="-Wl,-z,lazy"
-        export CGO_LDFLAGS="${CGO_LDFLAGS} ${LDFLAGS}"
+	append-ldflags -Wl,-z,lazy
+	export CGO_LDFLAGS_ALLOW="-Wl,-z,lazy"
+	export CGO_LDFLAGS="${CGO_LDFLAGS} ${LDFLAGS}"
 
 	for k in fuidshift lxd-benchmark lxc; do
 		go install -v -x "${S}/${k}" || die "failed compiling ${k}"
@@ -129,8 +130,10 @@ src_compile() {
 	go install -v -x -tags libsqlite3 "${S}"/lxd || die "Failed to build the daemon"
 
 	# Needs to be built statically
-	CGO_ENABLED=0 go install -v -tags netgo "${S}"/lxd-convert
+	CGO_ENABLED=0 go install -v -tags netgo "${S}"/lxd-migrate
 	CGO_ENABLED=0 go install -v -tags agent,netgo "${S}"/lxd-agent
+
+	use nls && emake build-mo
 }
 
 src_test() {
@@ -143,7 +146,7 @@ src_install() {
 
 	dosbin ${bindir}/lxd
 
-	for l in fuidshift lxd-agent lxd-benchmark lxd-convert lxc; do
+	for l in fuidshift lxd-agent lxd-benchmark lxd-migrate lxc; do
 		dobin ${bindir}/${l}
 	done
 
@@ -156,6 +159,7 @@ src_install() {
 
 	dodoc AUTHORS
 	dodoc -r doc/*
+	use nls && domo po/*.mo
 
 	# LXD needs LXD_QEMU_FW_PATH in env to find OVMF files for virtual machines
 	newenvd - 90lxd <<- _EOF_
@@ -172,14 +176,12 @@ pkg_postinst() {
 	elog
 	elog "Please run 'lxc-checkconfig' to see all optional kernel features."
 	elog
-	elog "LXD 6.9 documents a minimum kernel version of 6.8 (up from 5.15 for 6.5)."
-	elog
-	optfeature "virtual machine support" ">=app-emulation/qemu-8.2.2[spice,usbredir,virtfs]"
+	optfeature "virtual machine support" app-emulation/qemu[spice,usbredir,virtfs]
 	optfeature "btrfs storage backend" sys-fs/btrfs-progs
 	optfeature "ipv6 support" net-dns/dnsmasq[ipv6]
-	optfeature "full lxd-convert support" net-misc/rsync
+	optfeature "full lxd-migrate support" net-misc/rsync
 	optfeature "lvm2 storage backend" sys-fs/lvm2
-	optfeature "zfs storage backend" ">=sys-fs/zfs-2.2"
+	optfeature "zfs storage backend" sys-fs/zfs
 	elog
 	elog "Be sure to add your local user to the lxd group."
 }
