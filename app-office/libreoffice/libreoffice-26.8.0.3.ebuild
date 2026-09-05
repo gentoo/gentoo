@@ -12,7 +12,7 @@ MY_PV="${MY_PV/_beta/.beta}"
 # Usually the tarballs are moved a lot so this should make everyone happy.
 DEV_URI="
 	https://dev-builds.libreoffice.org/pre-releases/src
-	https://download.documentfoundation.org/libreoffice/src/${MY_PV:0:5}/
+	https://download.documentfoundation.org/libreoffice/src/${MY_PV:0:6}/
 	https://downloadarchive.documentfoundation.org/libreoffice/old/${MY_PV}/src
 "
 ADDONS_URI="https://dev-www.libreoffice.org/src/"
@@ -21,7 +21,7 @@ BRANDING="${PN}-branding-gentoo-0.8.tar.xz"
 # PATCHSET="${P}-patchset-01.tar.xz"
 
 [[ ${MY_PV} == *9999* ]] && inherit git-r3
-inherit autotools bash-completion-r1 check-reqs flag-o-matic java-pkg-opt-2 multiprocessing python-single-r1 qt-utils toolchain-funcs xdg-utils
+inherit autotools bash-completion-r1 check-reqs flag-o-matic java-pkg-opt-2 multiprocessing python-single-r1 qmake-utils toolchain-funcs xdg-utils
 
 DESCRIPTION="A full office productivity suite"
 HOMEPAGE="https://www.libreoffice.org"
@@ -51,7 +51,7 @@ ADDONS_SRC=(
 	# not packaged in Gentoo, https://github.com/serge-sans-paille/frozen
 	"${ADDONS_URI}/frozen-1.2.0.tar.gz"
 	# not packaged in Gentoo, https://skia.org/
-	"${ADDONS_URI}/skia-m136-28685d899b0a35894743e2cedad4c9f525e90e1e.tar.xz"
+	"${ADDONS_URI}/skia-m147-ad8ecedbfdef9f4ae4b1e73347b6dd56e6637d38.tar.xz"
 
 	"base? (
 		${ADDONS_URI}/ba2930200c9f019c2d93a8c88c651a0f-flow-engine-0.9.4.zip
@@ -85,13 +85,13 @@ LICENSE="|| ( LGPL-3 MPL-1.1 )"
 SLOT="0"
 
 [[ ${MY_PV} == *9999* ]] || \
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="~amd64 ~riscv"
 
 # Extensions that need extra work:
 LO_EXTS="nlpsolver scripting-beanshell scripting-javascript wiki-publisher"
 
 IUSE="accessibility base bluetooth +branding coinmp +cups custom-cflags +dbus debug eds
-googledrive gstreamer gtk kde ldap +mariadb odk pdfimport postgres qt6 test valgrind vulkan
+googledrive gstreamer +gtk3 gtk4 kde ldap +mariadb odk pdfimport postgres qt6 test valgrind vulkan
 $(printf 'libreoffice_extensions_%s ' ${LO_EXTS})"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
@@ -116,7 +116,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	>=app-text/libebook-0.1
 	app-text/libepubgen
 	>=app-text/libetonyek-0.1
-	app-text/libexttextcat:=
+	app-text/libexttextcat
 	app-text/liblangtag
 	>=app-text/libmspub-0.1.0
 	>=app-text/libmwaw-0.3.21
@@ -194,14 +194,22 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	)
 	gstreamer? (
 		media-libs/gstreamer:1.0
-		media-plugins/gst-plugins-meta:1.0
+		media-libs/gst-plugins-base:1.0
 	)
-	gtk? (
+	gtk3? (
 		app-accessibility/at-spi2-core:2
 		dev-libs/glib:2
 		gnome-base/dconf
 		media-libs/mesa[egl(+)]
-		gui-libs/gtk[wayland,X]
+		x11-libs/gtk+:3[wayland,X]
+		x11-libs/pango
+	)
+	gtk4? (
+		app-accessibility/at-spi2-core:2
+		dev-libs/glib:2
+		gnome-base/dconf
+		media-libs/mesa[egl(+)]
+		gui-libs/gtk:4[wayland,X]
 		x11-libs/pango
 	)
 	kde? (
@@ -241,9 +249,9 @@ DEPEND="${COMMON_DEPEND}
 	java? (
 		dev-java/ant:0
 		|| (
-		   virtual/jdk:17
-		   virtual/jdk:21
-		   virtual/jdk:25
+			virtual/jdk:17
+			virtual/jdk:21
+			virtual/jdk:25
 		)
 	)
 	test? (
@@ -257,11 +265,11 @@ DEPEND="${COMMON_DEPEND}
 RDEPEND="${COMMON_DEPEND}
 	acct-group/libreoffice
 	acct-user/libreoffice
-	!<app-office/libreoffice-bin-24.8.4-r2
+	!<app-office/libreoffice-bin-26.8.0
 	!app-office/libreoffice-bin-debug
 	media-fonts/liberation-fonts
 	|| ( x11-misc/xdg-utils kde-plasma/kde-cli-tools:* )
-	java? ( >=virtual/jre-11 )
+	java? ( >=virtual/jre-17 )
 	kde? ( kde-frameworks/breeze-icons:* )
 "
 BDEPEND="
@@ -286,13 +294,18 @@ PATCHES=(
 
 	# not upstreamable stuff
 	"${FILESDIR}/${PN}-6.1-nomancompress.patch"
-	"${FILESDIR}/${PN}-24.2-qtdetect.patch"
 	"${FILESDIR}/${PN}-25.2-cflags.patch"
+
+	# add qt6 backend as possible fallback for gtk-based desktop environments:
+	# https://bugs.gentoo.org/950170
+	"${FILESDIR}/${PN}-26.8-vcl-backend-fallback.patch"
 
 	# box2d has no pkg-config file upstream; use a header check instead
 	"${FILESDIR}/${PN}-26.8-box2d-header-detect.patch"
 
-	# fix Qt6/KF6 Wayland fractional scaling: tdf#172896, tdf#173298
+	# fix Qt6/KF6 Wayland fractional scaling:
+	# https://bugs.documentfoundation.org/show_bug.cgi?id=172896
+	# https://bugs.documentfoundation.org/show_bug.cgi?id=173298
 	"${FILESDIR}/${PN}-26.8-qt6-fractional-scaling.patch"
 )
 
@@ -332,8 +345,8 @@ src_unpack() {
 		branch="master"
 		mypv=${MY_PV/.9999}
 		[[ ${mypv} != ${MY_PV} ]] && branch="${PN}-${mypv/./-}"
-		git-r3_fetch "${base_uri}/core" "refs/heads/${branch}"
-		git-r3_checkout "${base_uri}/core"
+		git-r3_fetch "${base_uri}/${PN}/core" "refs/heads/${branch}"
+		git-r3_checkout "${base_uri}/${PN}/core"
 		LOCOREGIT_VERSION=${EGIT_VERSION}
 
 		git-r3_fetch "${base_uri}/${PN}/help" "refs/heads/master"
@@ -371,30 +384,26 @@ src_prepare() {
 			sysui/desktop/menus/draw.desktop || die
 	fi
 
-	# These test failures are largely added blindly in 25.2.1.1 to
-	# give us a baseline and then chip away at, rather than disregarding
-	# tests entirely.
+	# These test failures are largely added blindly to give us a baseline
+	# and then chip away at, rather than disregarding tests entirely.
 	#
 	# Various test skips from Fedora
 	#
 	# "Failing on multiple arches"
-	# "https://bugzilla.redhat.com/show_bug.cgi?id=2334719
-	# started to fail in 25.2.0.0"
 	sed -i -e '/CppunitTest_svgio/d' svgio/Module_svgio.mk || die
 	sed -i \
 		-e '/CppunitTest_sw_layoutwriter3/d' \
 		-e '/CppunitTest_sw_layoutwriter4/d' \
 		sw/Module_sw.mk || die
 	# "testStatusBarPageNumber it is said to "fail from time to time"...
-	# started to fail in 25.2.0.0"
-	# Skip tests failing with latest app-text/poppler (25.02.0?)
+	# Skip tests failing with latest app-text/poppler
 	sed -i -e '/CppunitTest_sw_tiledrendering2/d' sw/Module_sw.mk || die
 	sed -i -e '/CppunitTest_sc_pdf_export/d' sc/Module_sc.mk || die
 	sed -i -e '/CppunitTest_sdext_pdfimport/d' sdext/Module_sdext.mk || die
 	sed -i -e '/CppunitTest_sfx2_view/d' sfx2/Module_sfx2.mk || die
 	sed -i -e '/CppunitTest_sw_pdf_test/d' sw/Module_sw.mk || die
 	#
-	# Fails w/ 25.2.1.1 on amd64
+	# Fails on amd64
 	sed -i -e '/CppunitTest_sd_layout_tests/d' sd/Module_sd.mk || die
 	sed -i -e '/CppunitTest_vcl_text/d' vcl/Module_vcl.mk || die
 	sed -i -e '/CppunitTest_svx_unit/d' svx/Module_svx.mk || die
@@ -458,7 +467,7 @@ src_configure() {
 	fi
 
 	# Workaround for bug #967047
-	tc-is-gcc && [[ $(gcc-major-version) -ge 16 ]] && append-cxxflags -fno-devirtualize-speculatively
+	tc-is-gcc && [[ $(gcc-major-version) -eq 16 ]] && append-cxxflags -fno-devirtualize-speculatively
 
 	# Show flags set at the end
 	einfo "  Used CFLAGS:    ${CFLAGS}"
@@ -472,6 +481,9 @@ src_configure() {
 	# System python enablement:
 	export PYTHON_CFLAGS=$(python_get_CFLAGS)
 	export PYTHON_LIBS=$(python_get_LIBS)
+
+	# doesn't respect CPPFLAGS
+	append-flags "-I${ESYSROOT}/usr/include/zxcvbn"
 
 	if use qt6; then
 		export QT6DIR="$(qt6_get_bindir)/.."
@@ -487,7 +499,7 @@ src_configure() {
 	# --enable-cairo: ensure that cairo is always required
 	# --enable-*-link: link to the library rather than just dlopen on runtime
 	# --enable-release-build: build the libreoffice as release
-	# --disable-fetch-external: prevent dowloading during compile phase
+	# --disable-fetch-external: prevent downloading during compile phase
 	# --enable-extension-integration: enable any extension integration support
 	# --without-{fonts,myspell-dicts,ppsd}: prevent install of sys pkgs
 	# --disable-report-builder: too much java packages pulled in without pkgs
@@ -516,7 +528,6 @@ src_configure() {
 		--disable-epm
 		--disable-fetch-external
 		--disable-firebird-sdbc
-		--disable-gtk3
 		--disable-gtk3-kde5
 		# Covered by our own toolchain defaults
 		--disable-hardening-flags
@@ -560,7 +571,8 @@ src_configure() {
 		$(use_enable debug)
 		$(use_enable eds evolution2)
 		$(use_enable gstreamer gstreamer-1-0)
-		$(use_enable gtk gtk4)
+		$(use_enable gtk3)
+		$(use_enable gtk4)
 		$(use_enable kde kf6)
 		$(use_enable ldap)
 		$(use_enable odk)
@@ -578,7 +590,7 @@ src_configure() {
 		$(use_with valgrind)
 	)
 
-	if use eds || use gtk ; then
+	if use eds || use gtk3 || use gtk4 ; then
 		myeconfargs+=( --enable-dconf --enable-gio )
 	else
 		myeconfargs+=( --disable-dconf --disable-gio )
@@ -635,10 +647,10 @@ src_install() {
 
 	# TODO: still relevant for gtk4?
 	# bug #593514
-	#if use gtk3; then
-	#	dosym libreoffice/program/liblibreofficekitgtk.so \
-	#		/usr/$(get_libdir)/liblibreofficekitgtk.so
-	#fi
+	if use gtk3; then
+		dosym libreoffice/program/liblibreofficekitgtk.so \
+			/usr/$(get_libdir)/liblibreofficekitgtk.so
+	fi
 
 	# bash completion aliases
 	bashcomp_alias \
@@ -678,7 +690,7 @@ EOF
 	for py in uno.py unohelper.py officehelper.py; do
 		dosym -r ${loprogdir}/${py} $(python_get_sitedir)/${py}
 		while IFS="" read -d $'\0' -r pyc; do
-			pyc=${pyc//*\/}
+			pyc=${pyc//*\//}
 			dosym -r ${loprogdir}/__pycache__/${pyc} $(python_get_sitedir)/__pycache__/${pyc}
 		done < <(find "${D}"${lodir}/program -type f -name ${py/.py/*.pyc} -print0)
 	done

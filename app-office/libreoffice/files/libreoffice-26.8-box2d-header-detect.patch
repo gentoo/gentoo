@@ -1,0 +1,17 @@
+diff --git a/configure.ac b/configure.ac
+index 0000000..0000000 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -12251,9 +12251,9 @@
+     AC_MSG_RESULT([external])
+     SYSTEM_BOX2D=TRUE
+     AC_LANG_PUSH([C++])
+-    BOX2D_VERSION=`$PKG_CONFIG --modversion box2d 2>/dev/null`
+-    BOX2D_MAJOR=`echo $BOX2D_VERSION | cut -d"." -f1`
+-    BOX2D_MINOR=`echo $BOX2D_VERSION | cut -d"." -f2`
++    dnl box2d has no pkg-config file upstream; treat a present header as 2.4.x,
++    dnl the only layout it has ever shipped
++    AC_CHECK_HEADER([box2d/box2d.h], [BOX2D_MAJOR=2; BOX2D_MINOR=4], [])
+     if test "$BOX2D_MAJOR" -eq "2"; then
+         if test "$BOX2D_MINOR" -eq "4"; then
+             _BOX2D_LIB=box2d
