@@ -6,7 +6,7 @@ EAPI=8
 LLVM_COMPAT=( 22 )
 LLVM_OPTIONAL="yes"
 
-inherit edo llvm-r1 multilib prefix rust-toolchain verify-sig multilib-minimal optfeature
+inherit edo llvm-r2 multilib prefix rust-toolchain verify-sig multilib-minimal optfeature
 
 if [[ ${PV} == *9999* ]]; then
 	# We need to fetch a tarball in src_unpack
@@ -24,7 +24,7 @@ else
 	SRC_URI="$(rust_all_arch_uris "rust-${PV}")
 		rust-src? ( ${RUST_TOOLCHAIN_BASEURL%/}/2026-03-26/rust-src-${PV}.tar.xz )
 	"
-	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~s390 ~x86" # "~mips ~sparc"
+	KEYWORDS=""~mips # ~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86""
 fi
 
 GENTOO_BIN_BASEURI="https://github.com/projg2/rust-bootstrap/releases/download/${PVR}" # omit trailing slash

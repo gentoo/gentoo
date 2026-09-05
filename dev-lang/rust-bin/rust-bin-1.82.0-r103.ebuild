@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,7 +6,7 @@ EAPI=8
 LLVM_COMPAT=( 19 )
 LLVM_OPTIONAL="yes"
 
-inherit llvm-r1 multilib prefix rust-toolchain verify-sig multilib-minimal optfeature
+inherit llvm-r2 multilib prefix rust-toolchain verify-sig multilib-minimal optfeature
 
 MY_P="rust-${PV}-r102"
 # curl -L static.rust-lang.org/dist/channel-rust-${PV}.toml 2>/dev/null | grep "xz_url.*rust-src"
