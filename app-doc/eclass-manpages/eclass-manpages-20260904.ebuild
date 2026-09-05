@@ -24,7 +24,7 @@ HOMEPAGE="https://gitweb.gentoo.org/repo/gentoo.git/tree/eclass"
 LICENSE="GPL-2"
 SLOT="0"
 
-BDEPEND="sys-apps/pkgcore"
+BDEPEND=">=sys-apps/pkgcore-0.12.42"
 
 if [[ ${PV} = 99999999 ]]; then
 	src_unpack() {
@@ -34,7 +34,7 @@ if [[ ${PV} = 99999999 ]]; then
 fi
 
 src_compile() {
-	pmaint eclass -f man -o "{eclass}.eclass.5" *.eclass
+	edo pmaint eclass -f man -o "{eclass}.eclass.5" *.eclass
 }
 
 src_install() {
