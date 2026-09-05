@@ -21,4 +21,5 @@ KEYWORDS="amd64 arm64 x86"
 RDEPEND="dev-python/python-lsp-server[all-plugins,${PYTHON_USEDEP}]"
 BDEPEND="test? ( dev-python/mock[${PYTHON_USEDEP}] )"
 
+EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
