@@ -37,6 +37,12 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2026-09-05)
+# Broken with current dev-python/pywayland version.  Stuck on old
+# gui-libs/wlroots.  Used only by old versions of x11-wm/qtile.
+# Removal on 2026-10-05.  Bug #982020.
+dev-python/pywlroots
+
+# Michał Górny <mgorny@gentoo.org> (2026-09-05)
 # Stuck on Python 3.12, broken tests, no reverse dependencies.
 # Removal on 2026-10-05.  Bug #952388.
 dev-python/python3-saml
