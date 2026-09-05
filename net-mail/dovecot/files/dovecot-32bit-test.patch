@@ -1,0 +1,31 @@
+From 25a1010e7c36b205f0d51335059ea0e5e2bd4e22 Mon Sep 17 00:00:00 2001
+From: Paul Howarth <paul@city-fan.org>
+Date: Fri, 17 Jul 2026 17:59:50 +0100
+Subject: [PATCH] lib: Fix fatal_array test for 32-bit systems
+
+On 64-bit systems, SIZE_MAX is much bigger than UINT_MAX so an
+allocation of UINT_MAX objects is not unreasonable.
+
+On 32-bit systems, SIZE_MAX and UINT_MAX are the same so an
+allocation of UINT_MAX objects fails malloc checks before reaching
+buffer size limit checks.
+---
+ src/lib/test-array.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/src/lib/test-array.c b/src/lib/test-array.c
+index d6bebbae348..556d0106988 100644
+--- a/src/lib/test-array.c
++++ b/src/lib/test-array.c
+@@ -461,7 +461,11 @@ enum fatal_test_state fatal_array(unsigned int stage)
+ 
+ 		t_array_init(&arr, 2);
+ 		array_push_back(&arr, value);
++#if SIZEOF_SIZE_T > 4 /* MALLOC_MULTIPLY will fail before buffer_check_limits with 32bit */
+ 		test_expect_fatal_string("Buffer write out of range");
++#else
++		test_expect_fatal_string("memory allocation overflow");
++#endif
+ 		/* this is supposed to assert-crash before it even attempts to
+ 		   access value */
+ 		array_append(&arr, value, UINT_MAX);
