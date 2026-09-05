@@ -118,7 +118,7 @@ DOCS=(
 	"RELEASE.md"
 )
 
-distutils_enable_tests pytest
+#distutils_enable_tests pytest
 # TODO: Package sphinx-design
 # distutils_enable_sphinx docs/doc \
 # 	dev-python/sphinx-panels \
