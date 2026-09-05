@@ -6,7 +6,7 @@ EAPI=8
 # Bump notes: https://wiki.gentoo.org/wiki/Project:Rust/Rust_bump
 
 LLVM_COMPAT=( 21 )
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 
 RUST_PATCH_VER=${PV#*_p}
 RUST_MAX_VER=${PV%%_*}
@@ -20,7 +20,7 @@ else
 	RUST_MIN_VER="$(ver_cut 1).$(($(ver_cut 2) - 1)).0"
 fi
 
-inherit check-reqs estack flag-o-matic llvm-r1 multiprocessing optfeature \
+inherit check-reqs estack flag-o-matic llvm-r2 multiprocessing optfeature \
 	multilib multilib-build python-any-r1 rust rust-toolchain toolchain-funcs verify-sig
 
 if [[ ${PV} = *9999* ]]; then
@@ -248,7 +248,7 @@ pkg_setup() {
 	rust_pkg_setup
 
 	if use system-llvm; then
-		llvm-r1_pkg_setup
+		llvm-r2_pkg_setup
 
 		local llvm_config="$(get_llvm_prefix)/bin/llvm-config"
 		export LLVM_LINK_SHARED=1
