@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{12..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 
 inherit distutils-r1
 
@@ -69,6 +69,9 @@ python_test() {
 	local EPYTEST_DESELECT=(
 		# Avoid needing heavy virtualx
 		tests/test_auth.py::test_warns_for_empty_password
+		# readme-renderer 46.0
+		# https://github.com/pypa/twine/issues/1385
+		tests/test_check.py::test_fails_rst_no_content
 	)
 
 	local -x COLUMNS=80
