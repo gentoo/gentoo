@@ -37,6 +37,7 @@ BDEPEND="${RDEPEND}
 	>=dev-python/flit-core-3.8[${PYTHON_USEDEP}]
 	test? (
 		dev-vcs/git
+		>=dev-python/docutils-0.23[${PYTHON_USEDEP}]
 	)
 "
 
