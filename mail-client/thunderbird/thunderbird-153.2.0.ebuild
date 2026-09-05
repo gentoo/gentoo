@@ -3,7 +3,7 @@
 
 EAPI=8
 
-FIREFOX_PATCHSET="firefox-153esr-patches-02.tar.xz"
+FIREFOX_PATCHSET="firefox-153esr-patches-03.tar.xz"
 
 LLVM_COMPAT=( 22 )
 
@@ -479,6 +479,14 @@ src_prepare() {
 	# Workaround for bgo#915651 and bmo#1988166 on musl
 	if use elibc_glibc ; then
 		rm -v "${WORKDIR}"/firefox-patches/*bgo-748849-RUST_TARGET_override.patch || die
+	else
+		# in musl, the rust-1.98 patch probably handles RUST_TARGET like we want to?
+		local rustver=$(rustc --version | cut -d' ' -f2)
+		if ver_test "${rustver}" -ge 1.98 ; then
+			rm -v "${WORKDIR}"/firefox-patches/*bgo-748849-RUST_TARGET_override.patch || die
+		else
+			rm -v "${WORKDIR}"/firefox-patches/*-bmo-2053518-handle-oe-linux-rust-targets-added-in-rustc-1.98.patch || die
+		fi
 	fi
 
 	eapply "${WORKDIR}/firefox-patches"
