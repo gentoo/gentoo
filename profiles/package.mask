@@ -37,6 +37,11 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2026-09-05)
+# Stuck on Python 3.12, broken tests, no reverse dependencies.
+# Removal on 2026-10-05.  Bug #952388.
+dev-python/python3-saml
+
+# Michał Górny <mgorny@gentoo.org> (2026-09-05)
 # Stuck on Python 3.12.  No activity upstream.
 # Removal on 2026-10-05.  Bug #952340.
 dev-python/ioflo
