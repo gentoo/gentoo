@@ -9,6 +9,6 @@ SLOT="${PV}"
 IUSE="headless-awt"
 
 RDEPEND="|| (
-		dev-java/openjdk-bin:${SLOT}[gentoo-vm(+),headless-awt=]
-		dev-java/openjdk:${SLOT}[gentoo-vm(+),headless-awt=]
+		dev-java/openjdk-bin:${SLOT}[headless-awt=]
+		dev-java/openjdk:${SLOT}[headless-awt=]
 )"
