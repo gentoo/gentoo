@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>adel.ks@zegrapher.com</email>
+		<name>Adel KARA SLIMANE</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+	A C++23 library for parsing and computing mathematical expressions and objects:
+	objects live in a shared "MathWorld" and can reference each other by name.
+	When one object changes, ZeCalculator updates every dependent object,
+	like a spreadsheet that recalculates its cells.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">AdelKS/ZeCalculator</remote-id>
+		<bugs-to>https://github.com/AdelKS/ZeCalculator/issues</bugs-to>
+	</upstream>
+</pkgmetadata>
