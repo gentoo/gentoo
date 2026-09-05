@@ -36,6 +36,19 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2026-09-05)
+# dev-python/consonance has been broken since at least 2024.  Contrary
+# to PYTHON_COMPAT, the code is incompatible with Python 3.12+.
+# The protobuf file needs to be rebuilt, yet upstream never published
+# its source.  No upstream activity since 2021.  No reverse
+# dependencies.  Including a bunch of dead NIH dependencies.
+# Removal on 2026-10-05.  Bug #926610.
+dev-python/consonance
+dev-python/dissonance
+dev-python/python-axolotl
+dev-python/python-axolotl-curve25519
+dev-python/transitions
+
 # Michał Górny <mgorny@gentoo.org> (2026-09-04)
 # Test suite broken with numpy-2.  Last release in 2020.  No reverse
 # dependencies.
