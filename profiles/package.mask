@@ -44,7 +44,7 @@
 # dependencies.  Including a bunch of dead NIH dependencies.
 # Removal on 2026-10-05.  Bug #926610.
 dev-python/consonance
-dev-python/dissonance
+dev-python/dissononce
 dev-python/python-axolotl
 dev-python/python-axolotl-curve25519
 dev-python/transitions
