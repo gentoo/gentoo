@@ -8,7 +8,7 @@ DISTUTILS_USE_PEP517=setuptools
 PYPI_VERIFY_REPO=https://github.com/pygraphviz/pygraphviz
 PYTHON_COMPAT=( python3_{12..15} )
 
-inherit distutils-r1 pypi
+inherit distutils-r1 flag-o-matic pypi toolchain-funcs
 
 DESCRIPTION="Python wrapper for the Graphviz Agraph data structure"
 HOMEPAGE="
@@ -34,6 +34,20 @@ BDEPEND="
 
 EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
+
+src_configure() {
+	# set to a meaningless path, it hardcodes /lib anyway; at least it
+	# will stop it from adding a bunch of wrong RUNPATHs
+	export GRAPHVIZ_PREFIX=${T}
+
+	# upstream's solution to "not one of the random hardcoded paths" is
+	# literally "add a bunch of -I -L flags yourself"
+	append-cppflags $($(tc-getPKG_CONFIG) --cflags libcdt || die)
+	local libdir=$($(tc-getPKG_CONFIG) --variable=libdir libcdt || die)
+	# the build system will pass a bunch of "-l"s anyway
+	append-ldflags $($(tc-getPKG_CONFIG) --libs-only-L libcdt || die) \
+		-L"${libdir}/graphviz" -Wl,-rpath,"${libdir}/graphviz"
+}
 
 python_test() {
 	rm -rf pygraphviz || die
