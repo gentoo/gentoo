@@ -9,7 +9,7 @@ PYTHON_REQ_USE="xml(+)"
 inherit meson gnome2-utils optfeature pax-utils python-single-r1 xdg
 
 DESCRIPTION="A fork of GNOME Shell with layout similar to GNOME 2"
-HOMEPAGE="https://projects.linuxmint.com/cinnamon/ https://github.com/linuxmint/cinnamon"
+HOMEPAGE="https://linuxmint-developer-guide.readthedocs.io/en/latest/cinnamon.html https://linuxmint.com/"
 SRC_URI="https://github.com/linuxmint/cinnamon/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD GPL-2+ GPL-3+ GPL-3-with-openssl-exception LGPL-2+ LGPL-2.1 LGPL-2.1+ MIT"
@@ -27,7 +27,7 @@ DEPEND="
 	dev-libs/libxml2:2=
 	>=gnome-extra/cinnamon-desktop-6.6:0=
 	>=gnome-extra/cinnamon-menus-6.6
-	>=gnome-extra/cjs-128[cairo(+)]
+	>=gnome-extra/cjs-140[cairo(+)]
 	sys-apps/dbus
 	>=sys-auth/polkit-0.100[introspection]
 	virtual/opengl
@@ -127,6 +127,10 @@ PATCHES=(
 	# Fix crash when networkmanager is not present.
 	# https://github.com/linuxmint/cinnamon/pull/13651
 	"${FILESDIR}/${PN}-6.6.7-fix-disable-networkmanager.patch"
+
+	# Additional girepository-2.0 fixes.
+	# https://github.com/linuxmint/cinnamon/commit/3a2d558aa575f0ea364c5b4e30d2eb3ee604ee58
+	"${FILESDIR}/${PN}-6.6.8-fix-misc-util-gir-handling.patch"
 )
 
 src_prepare() {

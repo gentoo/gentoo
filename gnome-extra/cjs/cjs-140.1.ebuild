@@ -13,12 +13,12 @@ SRC_URI="https://github.com/linuxmint/cjs/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD CC0-1.0 MIT MPL-2.0 || ( MPL-1.1 GPL-2+ LGPL-2.1+ )"
 SLOT="0"
-KEYWORDS="amd64 arm64 ~loong ~ppc64 ~riscv x86"
+KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
 IUSE="examples readline sysprof test"
 
 RDEPEND="
-	dev-lang/spidermonkey:$(ver_cut 1)
-	>=dev-libs/glib-2.66.0:2
+	dev-lang/spidermonkey:$(ver_cut 1)=
+	>=dev-libs/glib-2.86.0:2
 	>=dev-libs/gobject-introspection-1.82.0-r2:=
 	>=dev-libs/libffi-3.3:0=
 	x11-libs/cairo[glib,svg(+),X]
@@ -31,6 +31,8 @@ RDEPEND="
 	readline? (
 		sys-libs/readline:0=
 	)
+
+	!<gnome-extra/cinnamon-6.6.9
 "
 DEPEND="
 	${RDEPEND}
@@ -40,6 +42,7 @@ DEPEND="
 	)
 
 	test? (
+		gui-libs/gtk:4[introspection]
 		sys-apps/dbus
 		x11-libs/gtk+:3[introspection]
 	)
@@ -75,7 +78,7 @@ src_configure() {
 		$(meson_feature readline)
 		$(meson_feature sysprof profiler)
 		-Dinstalled_tests=false
-		-Dgobject-introspection-tests:install_dir=''
+		#-Dgobject-introspection-tests:install_dir=''
 		$(meson_use !test skip_dbus_tests)
 		$(meson_use !test skip_gtk_tests)
 	)

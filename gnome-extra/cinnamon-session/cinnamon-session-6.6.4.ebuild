@@ -13,7 +13,7 @@ SRC_URI="https://github.com/linuxmint/cinnamon-session/archive/${PV}.tar.gz -> $
 
 LICENSE="GPL-2+ LGPL-2+"
 SLOT="0"
-KEYWORDS="amd64 arm64 ~loong ~ppc64 ~riscv x86"
+KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
 IUSE="systemd"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
@@ -37,7 +37,7 @@ COMMON_DEPEND="
 	>=x11-libs/xapp-3.2.2[introspection]
 
 	systemd? (
-		>=sys-apps/systemd-183
+		>=sys-apps/systemd-253
 	)
 	!systemd? (
 		sys-auth/elogind[policykit]
@@ -63,6 +63,12 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+PATCHES=(
+	# pkg-config variable systemduserunitdir belongs to package systemd.
+	# https://github.com/linuxmint/cinnamon-session/commit/b7ac3041a00deec62c8d9f55ee33e139e8deb664
+	"${FILESDIR}/${PN}-${PV}-fix-systemd-dep.patch"
+)
+
 src_prepare() {
 	default
 	python_fix_shebang data cinnamon-session-quit
@@ -72,6 +78,7 @@ src_configure() {
 	local emesonargs=(
 		-Dipv6=true
 		-Dxtrans=true
+		$(meson_feature systemd)
 	)
 	meson_src_configure
 }

@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_{11..14} )
 inherit meson flag-o-matic gnome2-utils python-any-r1
 
 DESCRIPTION="A collection of libraries and utilites used by Cinnamon"
-HOMEPAGE="https://projects.linuxmint.com/cinnamon/ https://github.com/linuxmint/cinnamon-desktop"
+HOMEPAGE="https://linuxmint-developer-guide.readthedocs.io/en/latest/cinnamon.html https://linuxmint.com/"
 SRC_URI="https://github.com/linuxmint/cinnamon-desktop/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-1 GPL-2+ LGPL-2+ LGPL-2.1+ MIT"

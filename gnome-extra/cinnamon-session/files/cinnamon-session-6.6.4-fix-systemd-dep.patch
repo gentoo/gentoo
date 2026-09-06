@@ -1,0 +1,23 @@
+From b7ac3041a00deec62c8d9f55ee33e139e8deb664 Mon Sep 17 00:00:00 2001
+From: Pierre Lejeune <superheron@gmail.com>
+Date: Sun, 19 Jul 2026 16:59:38 +0200
+Subject: [PATCH] pkg-config variable systemduserunitdir belongs to package
+ systemd
+
+---
+ meson.build | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/meson.build b/meson.build
+index cbf3094..c54a9e2 100644
+--- a/meson.build
++++ b/meson.build
+@@ -59,7 +59,7 @@ endif
+ conf.set('HAVE_LOGIND', logind.found())
+ 
+ systemd_opt = get_option('systemd')
+-systemd_dep = dependency('libsystemd', required: systemd_opt.enabled())
++systemd_dep = dependency('systemd', required: systemd_opt.enabled())
+ if systemd_dep.found()
+   systemduserunitdir = systemd_dep.get_variable(
+     pkgconfig: 'systemduserunitdir',
