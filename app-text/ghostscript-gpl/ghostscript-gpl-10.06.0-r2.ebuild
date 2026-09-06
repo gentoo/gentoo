@@ -159,6 +159,9 @@ src_configure() {
 		FONTPATH="${FONTPATH}${FONTPATH:+:}${EPREFIX}${path}"
 	done
 
+	# use target config in cross build, bug #982024
+	use cups && local -x CUPSCONFIG="${ESYSROOT}/usr/bin/cups-config"
+
 	# Do not add --enable-dynamic here, it's not supported fully upstream
 	# https://bugs.ghostscript.com/show_bug.cgi?id=705895
 	# bug #884707
