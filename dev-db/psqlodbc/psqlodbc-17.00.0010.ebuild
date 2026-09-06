@@ -1,11 +1,16 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
+inherit autotools
+
 DESCRIPTION="Official ODBC driver for PostgreSQL"
 HOMEPAGE="https://odbc.postgresql.org/"
-SRC_URI="https://ftp.postgresql.org/pub/odbc/versions.old/src/${P}.tar.gz"
+
+SRC_URI="https://github.com/postgresql-interfaces/psqlodbc/archive/refs/tags/REL-${PV//\./_}.tar.gz"
+S="${WORKDIR}/${PN}-REL-${PV//\./_}"
+
 LICENSE="LGPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
@@ -29,9 +34,18 @@ HTML_DOCS=(
 	docs/release.html
 )
 
-src_configure() {
+src_configure()
+{
+	eautoreconf --force --install
+
 	econf \
 		$(use_with iodbc) \
 		$(use_with !iodbc unixodbc) \
 		$(use_enable threads pthreads)
+}
+
+src_install()
+{
+	default_src_install
+	find "${D}" -name "*.la" -exec rm -f {} \;
 }
