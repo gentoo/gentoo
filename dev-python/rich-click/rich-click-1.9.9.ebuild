@@ -1,0 +1,46 @@
+# Copyright 2024-2026 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=8
+
+DISTUTILS_USE_PEP517=setuptools
+PYTHON_COMPAT=( python3_{12..15} )
+
+inherit distutils-r1
+
+DESCRIPTION="Format click help output nicely with rich"
+HOMEPAGE="
+	https://pypi.org/project/rich-click/
+	https://github.com/ewels/rich-click/
+"
+SRC_URI="
+	https://github.com/ewels/${PN}/archive/refs/tags/v${PV}.tar.gz
+		-> ${P}.gh.tar.gz
+"
+
+LICENSE="MIT"
+SLOT="0"
+KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+
+RDEPEND="
+	>=dev-python/click-8[${PYTHON_USEDEP}]
+	>=dev-python/rich-12[${PYTHON_USEDEP}]
+"
+BDEPEND="
+	test? (
+		>=dev-python/packaging-25[${PYTHON_USEDEP}]
+		dev-python/typer[${PYTHON_USEDEP}]
+	)
+"
+
+EPYTEST_PLUGINS=( inline-snapshot )
+distutils_enable_tests pytest
+
+EPYTEST_IGNORE=(
+	# broken by typer making the brilliant decision to bundle click
+	tests/typer_help
+)
+
+python_test() {
+	epytest -o addopts=
+}
