@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit meson optfeature
+inherit meson optfeature toolchain-funcs
 
 DESCRIPTION="Highly customizable Wayland bar for Sway and Wlroots based compositors"
 HOMEPAGE="https://github.com/Alexays/Waybar"
@@ -78,8 +78,20 @@ DEPEND="${RDEPEND}
 	test? ( dev-cpp/catch:0 )
 "
 
+PATCHES=(
+	"${FILESDIR}"/meson-fix-build.patch
+)
+
 src_configure() {
+	local cxx_stdlib=$(tc-get-cxx-stdlib)
+	einfo "C++ standard library: ${cxx_stdlib:-unknown}"
+	local libcxx=false
+	if [[ ${cxx_stdlib} == libc++ ]]; then
+		libcxx=true
+	fi
+
 	local emesonargs=(
+		-Dlibcxx=${libcxx}
 		-Dman-pages=enabled
 		-Dcava=disabled # depends on LukashonakV/cava fork, but media-sound/cava is karlstav/cava
 		$(meson_feature evdev libevdev)
