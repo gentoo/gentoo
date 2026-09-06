@@ -157,6 +157,10 @@ multilib_src_configure() {
 			-DCMAKE_INSTALL_PREFIX="${EPREFIX}/usr/${CTARGET}/usr"
 		)
 	fi
+	if use kernel_Darwin; then
+		# For Darwin it ships libc++ in system by default, conflicting prefix
+		mycmakeargs+=( -DLIBCXX_ABI_NAMESPACE=__gentoo1 )
+	fi
 	if use test; then
 		mycmakeargs+=(
 			-DLLVM_EXTERNAL_LIT="${EPREFIX}/usr/bin/lit"
