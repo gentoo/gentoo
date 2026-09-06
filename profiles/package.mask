@@ -36,6 +36,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Lukas Schmelting <lschmelting@posteo.com> (2026-09-06)
+# Most revdeps still need gexiv2-0.16 compatibility fixes
+# See: https://bugs.gentoo.org/982084
+=media-libs/gexiv2-0.16*
+
 # Michał Górny <mgorny@gentoo.org> (2026-09-05)
 # Broken with current dev-python/pywayland version.  Stuck on old
 # gui-libs/wlroots.  Used only by old versions of x11-wm/qtile.
