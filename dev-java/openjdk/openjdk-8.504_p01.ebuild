@@ -52,6 +52,7 @@ IUSE="alsa big-endian debug cups doc examples headless-awt +jbootstrap selinux s
 
 COMMON_DEPEND="
 	media-libs/freetype:2=
+	media-libs/fontconfig:1.0
 	media-libs/giflib:0/7
 	virtual/zlib:=
 "
