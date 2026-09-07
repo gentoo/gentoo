@@ -194,32 +194,32 @@ src_configure() {
 	tc-export_build_env CC CXX PKG_CONFIG STRIP
 
 	myconf+=(
-			--disable-ccache
-			--disable-precompiled-headers
-			--enable-unlimited-crypto
-			--with-boot-jdk="${JDK_HOME}"
-			--with-extra-cflags="${CFLAGS}"
-			--with-extra-cxxflags="${CXXFLAGS}"
-			--with-extra-ldflags="${LDFLAGS}"
-			--with-freetype=system
-			--with-freetype-lib="$( $(tc-getPKG_CONFIG) --variable=libdir freetype2 )"
-			--with-freetype-include="$( $(tc-getPKG_CONFIG) --variable=includedir freetype2)/freetype2"
-			--with-giflib="${XPAK_BOOTSTRAP:-system}"
-			--with-jtreg=no
-			--with-jobs=1
-			--with-num-cores=1
-			--with-update-version="$(ver_cut 2)"
-			--with-build-number="b$(ver_cut 4)"
-			--with-milestone="fcs" # magic variable that means "release version"
-			--with-vendor-name="Gentoo"
-			--with-vendor-url="https://gentoo.org"
-			--with-vendor-bug-url="https://bugs.gentoo.org"
-			--with-vendor-vm-bug-url="https://bugs.openjdk.java.net"
-			--with-zlib="${XPAK_BOOTSTRAP:-system}"
-			--with-native-debug-symbols=$(usex debug internal none)
-			$(usex headless-awt --disable-headful '')
-			$(tc-is-clang && echo "--with-toolchain-type=clang")
-		)
+		--disable-ccache
+		--disable-precompiled-headers
+		--enable-unlimited-crypto
+		--with-boot-jdk="${JDK_HOME}"
+		--with-extra-cflags="${CFLAGS}"
+		--with-extra-cxxflags="${CXXFLAGS}"
+		--with-extra-ldflags="${LDFLAGS}"
+		--with-freetype=system
+		--with-freetype-lib="$( $(tc-getPKG_CONFIG) --variable=libdir freetype2 )"
+		--with-freetype-include="$( $(tc-getPKG_CONFIG) --variable=includedir freetype2)/freetype2"
+		--with-giflib="${XPAK_BOOTSTRAP:-system}"
+		--with-jtreg=no
+		--with-jobs=1
+		--with-num-cores=1
+		--with-update-version="$(ver_cut 2)"
+		--with-build-number="b$(ver_cut 4)"
+		--with-milestone="fcs" # magic variable that means "release version"
+		--with-vendor-name="Gentoo"
+		--with-vendor-url="https://gentoo.org"
+		--with-vendor-bug-url="https://bugs.gentoo.org"
+		--with-vendor-vm-bug-url="https://bugs.openjdk.java.net"
+		--with-zlib="${XPAK_BOOTSTRAP:-system}"
+		--with-native-debug-symbols=$(usex debug internal none)
+		$(usex headless-awt --disable-headful '')
+		$(tc-is-clang && echo "--with-toolchain-type=clang")
+	)
 
 	(
 		unset _JAVA_OPTIONS JAVA JAVA_TOOL_OPTIONS JAVAC MAKE XARGS
