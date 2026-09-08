@@ -1,0 +1,564 @@
+From 773f303b2ea20c7fba1ce6ef743460c0882e2b3f Mon Sep 17 00:00:00 2001
+From: mrf <jfitz1994@pm.me>
+Date: Thu, 27 Aug 2026 23:07:03 +0800
+Subject: [PATCH] tdf#173298 svx: build pre-render and overlay buffers from the
+ target device
+
+SdrPreRenderDevice and OverlayManagerBuffered both create their
+VirtualDevice with no comparison device, even though both already hold
+the OutputDevice they are drawing for.
+
+With no comparison device, VirtualDevice falls back to
+Application::GetDefaultDevice() (vcl/source/gdi/virdev.cxx), which is the
+hidden WorkWindow created by ImplGetDefaultContextWindow(). That window is
+never shown and never resized, so on backends where the frame surface
+carries a device scale the hidden window's surface keeps the scale it was
+created with, and every buffer derived from it inherits that instead of
+the scale of the window actually being painted.
+
+Where the two differ, the buffer is rasterised at the wrong resolution and
+then resampled into the frame, which shows up as soft text and chrome.
+
+Pass the device each object already has. No behavioural change where the
+default device and the target device have the same scale, which is the
+case on backends that use one scale for everything.
+
+Change-Id: I56b62dd3e1a25d0ed1e9071de8dbff4b8b45debf
+
+diff --git a/svx/source/sdr/overlay/overlaymanagerbuffered.cxx b/svx/source/sdr/overlay/overlaymanagerbuffered.cxx
+index 90ab566..8722c1b 100644
+--- a/svx/source/sdr/overlay/overlaymanagerbuffered.cxx
++++ b/svx/source/sdr/overlay/overlaymanagerbuffered.cxx
+@@ -375,8 +375,10 @@ namespace sdr::overlay
+         OverlayManagerBuffered::OverlayManagerBuffered(
+             OutputDevice& rOutputDevice)
+         :   OverlayManager(rOutputDevice),
+-            mpBufferDevice(VclPtr<VirtualDevice>::Create()),
+-            mpOutputBufferDevice(VclPtr<VirtualDevice>::Create()),
++            // Same as SdrPreRenderDevice: build the buffers against the device
++            // being drawn to, not the hidden default device.
++            mpBufferDevice(VclPtr<VirtualDevice>::Create(rOutputDevice)),
++            mpOutputBufferDevice(VclPtr<VirtualDevice>::Create(rOutputDevice)),
+             maBufferIdle( "sdr::overlay::OverlayManagerBuffered maBufferIdle" ),
+             maMapModeLastCompleteRedraw()
+         {
+diff --git a/svx/source/svdraw/sdrpaintwindow.cxx b/svx/source/svdraw/sdrpaintwindow.cxx
+index 6989822..8bf87d4 100644
+--- a/svx/source/svdraw/sdrpaintwindow.cxx
++++ b/svx/source/svdraw/sdrpaintwindow.cxx
+@@ -116,7 +116,12 @@ void CandidateMgr::PaintTransparentChildren(vcl::Window const & rWindow, tools::
+ 
+ SdrPreRenderDevice::SdrPreRenderDevice(OutputDevice& rOriginal)
+ :   mpOutputDevice(&rOriginal),
+-    mpPreRenderDevice(VclPtr<VirtualDevice>::Create())
++    // Create the pre-render buffer against the device we are actually drawing
++    // for. Without a comparison device this falls back to
++    // Application::GetDefaultDevice(), which is a hidden window that is never
++    // shown and never resized, so the buffer can inherit an unrelated
++    // resolution from it.
++    mpPreRenderDevice(VclPtr<VirtualDevice>::Create(rOriginal))
+ {
+ }
+ 
+From 5a8fc76c921bb11caf83743a732e3ab0cdcaf2b9 Mon Sep 17 00:00:00 2001
+From: mrf <jfitz1994@pm.me>
+Date: Tue, 21 Jul 2026 08:52:34 +0800
+Subject: [PATCH] tdf#172896 qt: use the real Wayland output scale for
+ fractional HiDPI
+
+On a Qt 6 Wayland session LibreOffice forced
+Qt::HighDpiScaleFactorRoundingPolicy::Round, which disables the compositor's
+fractional scaling: at a fractional desktop scale the buffer scale is rounded
+up to the next integer and the compositor downscales the oversized result,
+wasting fill rate. How much depends on the scale: roughly 1.6x the pixels at
+235% and 1.9x at 220%. The downscale also softens the output slightly, though
+that is a much smaller effect than the wasted work.
+Round was forced because the Qt 6 default, PassThrough, exposed size bugs in
+this plugin (tdf#159915).
+
+The core problem is that QScreen::devicePixelRatio() is not the real scale
+under Wayland. wl_output can only advertise an integer buffer scale, so a
+fractionally scaled output reports a rounded-up integer (2 for 125%, 3 for
+220%), and that is what Qt exposes. VCL derived both its DPI and the frame's
+device-pixel-ratio from it, so the UI was laid out and rendered for the wrong
+scale - e.g. 200% on a 125% display.
+
+The real fractional scale is available up front from the protocol, without a
+surface: wl_output's current mode (device pixels) divided by the logical size
+Qt reports as QScreen::geometry() gives the true scale. Read it once, cached,
+and use it for both the layout DPI (ImplGetResolution) and the frame's
+devicePixelRatioF(), so the two agree and the UI is drawn at the exact scale.
+
+With that in place the rounding policy no longer needs forcing: Qt 6 defaults
+to PassThrough and Qt 5 to Round, which is what we want, so the explicit call
+is removed.
+
+The query needs libwayland-client, so configure looks for it with pkg-config
+for Qt 5 and Qt 6 and defines QT5_USING_WAYLAND / QT6_USING_WAYLAND, following
+what is already done for XCB and QT[56]_USING_X11. It is not a hard
+requirement: where it is missing the plugin still builds and simply keeps
+using the scale Qt reports.
+
+Also fixes surface-size handling exposed by PassThrough:
+- handleResizeEvent() and SetPosSize() derive logical/device sizes with QSize
+  arithmetic; handleResizeEvent() previously used ceil(), which at a fractional
+  DPR made the backing surface one pixel larger than Qt's window geometry.
+- A fixed-size top-level laid out before its surface has the real DPR is
+  re-applied from reapplyDeviceSizeForDpr() once DevicePixelRatioChange /
+  screenChanged() arrives.
+
+Not addressed here:
+- Toolbar icon sizing still uses the coarse CountDPIScaleFactor buckets, so
+  icons snap to the nearest 50% rather than the exact fractional scale. That is
+  a pre-existing, backend-independent VCL limitation.
+- Relayout of an already-open window when the DPR changes at runtime (e.g.
+  dragging between differently scaled monitors) remains a pre-existing gap.
+- The reason this reads the protocol directly is that VCL fixes its layout DPI
+  when a window is created, before any surface exists, and Qt cannot report the
+  fractional scale until after the surface is configured. If layout stops
+  depending on the scale, the value is only needed at paint time and Qt's own
+  ratio is sufficient, at which point this code can be removed.
+
+Change-Id: I1f182727bd128be73372498eb401ab5a3c317436
+---
+Packaging note (Gentoo): dev-libs/wayland is already a hard dependency
+whenever USE=qt6 is built, so instead of the configure.ac/pkg-config
+detection above, QT5_USING_WAYLAND/QT6_USING_WAYLAND are defined
+unconditionally for Linux/FreeBSD in QtTools.hxx, and -lwayland-client is
+linked directly in the two Library_vclplug_qt{5,6}.mk files. Everything
+else is unchanged.
+
+diff --git a/vcl/Library_vclplug_qt5.mk b/vcl/Library_vclplug_qt5.mk
+index f48553c..f0ca736 100644
+--- a/vcl/Library_vclplug_qt5.mk
++++ b/vcl/Library_vclplug_qt5.mk
+@@ -177,6 +177,7 @@ ifeq ($(OS),LINUX)
+ $(eval $(call gb_Library_add_libs,vclplug_qt5,\
+ 	-lm \
+ 	-ldl \
++	-lwayland-client \
+ ))
+ endif
+ 
+diff --git a/vcl/Library_vclplug_qt6.mk b/vcl/Library_vclplug_qt6.mk
+index c46a499..02a636f 100644
+--- a/vcl/Library_vclplug_qt6.mk
++++ b/vcl/Library_vclplug_qt6.mk
+@@ -177,6 +177,7 @@ ifeq ($(OS),LINUX)
+ $(eval $(call gb_Library_add_libs,vclplug_qt6,\
+ 	-lm \
+ 	-ldl \
++	-lwayland-client \
+ ))
+ endif
+ 
+diff --git a/vcl/inc/qt5/QtFrame.hxx b/vcl/inc/qt5/QtFrame.hxx
+index 80710cc..5a296df 100644
+--- a/vcl/inc/qt5/QtFrame.hxx
++++ b/vcl/inc/qt5/QtFrame.hxx
+@@ -95,6 +95,9 @@ class VCLPLUG_QT_PUBLIC QtFrame : public QObject, public SalFrame
+ 
+     bool m_bDefaultSize;
+     bool m_bDefaultPos;
++    // Preserve the VCL size of fixed-size windows until Qt has assigned their DPR.
++    QSize m_aRequestedDeviceSize;
++    QSize m_aAppliedLogicalSize;
+     bool m_bFullScreen;
+     bool m_bFullScreenSpanAll;
+     sal_uInt32 m_nRestoreScreen;
+@@ -133,6 +136,7 @@ class VCLPLUG_QT_PUBLIC QtFrame : public QObject, public SalFrame
+     bool isMinimized() const;
+     bool isMaximized() const;
+     void SetWindowStateImpl(Qt::WindowStates eState);
++    void reapplyDeviceSizeForDpr();
+ 
+     static int toQtKeyCode(sal_uInt16 nVclCode);
+ 
+diff --git a/vcl/inc/qt5/QtGraphicsBase.hxx b/vcl/inc/qt5/QtGraphicsBase.hxx
+index 393644d..a063f52 100644
+--- a/vcl/inc/qt5/QtGraphicsBase.hxx
++++ b/vcl/inc/qt5/QtGraphicsBase.hxx
+@@ -18,6 +18,15 @@
+ 
+ #include <QtWidgets/QApplication>
+ 
++class QScreen;
++
++// The real (possibly fractional) scale the output that \p pScreen is on runs
++// at, read from the Wayland protocol, or 0 if it cannot be determined. Unlike
++// QScreen::devicePixelRatio(), this is not rounded up to an integer under
++// Wayland. Both the layout DPI and the frame's buffer device-pixel-ratio must
++// use it so that they agree. Returns 0 on non-Wayland platforms.
++qreal QtGetWaylandOutputScale(const QScreen* pScreen);
++
+ class QtGraphicsBase
+ {
+     qreal m_fDPR;
+diff --git a/vcl/inc/qt5/QtTools.hxx b/vcl/inc/qt5/QtTools.hxx
+index ba2a4c4..a5d04f9 100644
+--- a/vcl/inc/qt5/QtTools.hxx
++++ b/vcl/inc/qt5/QtTools.hxx
+@@ -228,4 +228,19 @@ inline std::basic_ostream<charT, traits>& operator<<(std::basic_ostream<charT, t
+ 
+ #define CHECK_ANY_QT_USING_X11 CHECK_QT5_USING_X11 || CHECK_QT6_USING_X11
+ 
++#if defined(__linux__) || defined(__FreeBSD__)
++#ifndef QT6_USING_WAYLAND
++#define QT6_USING_WAYLAND 1
++#endif
++#ifndef QT5_USING_WAYLAND
++#define QT5_USING_WAYLAND 1
++#endif
++#endif
++
++#define CHECK_QT5_USING_WAYLAND (QT_VERSION < QT_VERSION_CHECK(6, 0, 0) && QT5_USING_WAYLAND)
++
++#define CHECK_QT6_USING_WAYLAND (QT_VERSION >= QT_VERSION_CHECK(6, 0, 0) && QT6_USING_WAYLAND)
++
++#define CHECK_ANY_QT_USING_WAYLAND CHECK_QT5_USING_WAYLAND || CHECK_QT6_USING_WAYLAND
++
+ /* vim:set shiftwidth=4 softtabstop=4 expandtab cinoptions=b1,g0,N-s cinkeys+=0=break: */
+diff --git a/vcl/qt5/QtFrame.cxx b/vcl/qt5/QtFrame.cxx
+index 96d343e..ec5bb87 100644
+--- a/vcl/qt5/QtFrame.cxx
++++ b/vcl/qt5/QtFrame.cxx
+@@ -24,6 +24,7 @@
+ #include <QtDragAndDrop.hxx>
+ #include <QtFrame.hxx>
+ #include <QtFrame.moc>
++#include <QtGraphicsBase.hxx>
+ #include <QtInstance.hxx>
+ #include <QtMainWindow.hxx>
+ #include <QtTools.hxx>
+@@ -142,7 +143,24 @@ QtFrame::QtFrame(QtFrame* pParent, SalFrameStyleFlags nStyle)
+     SetIcon(SV_ICON_ID_OFFICE);
+ }
+ 
+-void QtFrame::screenChanged(QScreen*) { m_pQWidget->fakeResize(); }
++void QtFrame::screenChanged(QScreen*)
++{
++    reapplyDeviceSizeForDpr();
++    m_pQWidget->fakeResize();
++}
++
++void QtFrame::reapplyDeviceSizeForDpr()
++{
++    if (!m_aRequestedDeviceSize.isValid() || asChild()->size() != m_aAppliedLogicalSize)
++        return;
++
++    const QSize aLogicalSize = m_aRequestedDeviceSize / devicePixelRatioF();
++    if (aLogicalSize == m_aAppliedLogicalSize)
++        return;
++
++    m_aAppliedLogicalSize = aLogicalSize;
++    asChild()->setFixedSize(aLogicalSize);
++}
+ 
+ void QtFrame::FillSystemEnvData(SystemEnvData& rData, QWidget* pWidget, QtFrame* pFrame)
+ {
+@@ -199,8 +217,18 @@ QWidget* QtFrame::asChild() const
+ 
+ qreal QtFrame::devicePixelRatioF() const
+ {
+-    return GetQtInstance().EmscriptenLightweightRunInMainThread(
+-        [child = asChild()] { return child->devicePixelRatioF(); });
++    return GetQtInstance().EmscriptenLightweightRunInMainThread([child = asChild()]()->qreal {
++        // Under Wayland, child->devicePixelRatioF() is the integer scale the
++        // wl_output advertises (e.g. 3 for a 220% output), while the surface is
++        // actually presented at the fractional scale (2.2). The buffer size and
++        // all geometry derived from this must use the same real scale that the
++        // layout DPI does (see QtGraphicsBase::ImplGetResolution), or the two
++        // disagree and the whole UI is drawn at the wrong size.
++        const qreal fRealScale = QtGetWaylandOutputScale(child->screen());
++        if (fRealScale > 0.0)
++            return fRealScale;
++        return child->devicePixelRatioF();
++    });
+ }
+ 
+ bool QtFrame::isWindow() const { return asChild()->isWindow(); }
+@@ -460,12 +488,16 @@ void QtFrame::SetPosSize(tools::Long nX, tools::Long nY, tools::Long nWidth, too
+             if (nWidth > 0 && nHeight > 0)
+             {
+                 m_bDefaultSize = false;
+-                const int nNewWidth = round(nWidth / devicePixelRatioF());
+-                const int nNewHeight = round(nHeight / devicePixelRatioF());
++                const QSize aDeviceSize(nWidth, nHeight);
++                const QSize aLogicalSize = aDeviceSize / devicePixelRatioF();
+                 if (m_nStyle & SalFrameStyleFlags::SIZEABLE)
+-                    asChild()->resize(nNewWidth, nNewHeight);
++                    asChild()->resize(aLogicalSize);
+                 else
+-                    asChild()->setFixedSize(nNewWidth, nNewHeight);
++                {
++                    m_aRequestedDeviceSize = aDeviceSize;
++                    m_aAppliedLogicalSize = aLogicalSize;
++                    asChild()->setFixedSize(aLogicalSize);
++                }
+             }
+         }
+     }
+@@ -1304,11 +1336,9 @@ void QtFrame::handlePaintEvent(const QPaintEvent* pEvent, QWidget* pWidget)
+ 
+ void QtFrame::handleResizeEvent(const QResizeEvent* pEvent)
+ {
+-    const qreal fRatio = devicePixelRatioF();
+-    const int nWidth = ceil(pEvent->size().width() * fRatio);
+-    const int nHeight = ceil(pEvent->size().height() * fRatio);
++    const QSize aDeviceSize = pEvent->size() * devicePixelRatioF();
+ 
+-    DoHandleResizeEvent(nWidth, nHeight);
++    DoHandleResizeEvent(aDeviceSize.width(), aDeviceSize.height());
+ 
+     CallCallback(SalEvent::Resize, nullptr);
+ }
+diff --git a/vcl/qt5/QtGraphicsBase.cxx b/vcl/qt5/QtGraphicsBase.cxx
+index a6b99eb..aae47a3 100644
+--- a/vcl/qt5/QtGraphicsBase.cxx
++++ b/vcl/qt5/QtGraphicsBase.cxx
+@@ -11,11 +11,191 @@
+ 
+ #include <QtGraphicsBase.hxx>
+ #include <QtInstance.hxx>
++#include <QtTools.hxx>
+ 
+ #include <o3tl/string_view.hxx>
+ 
++#include <QtGui/QGuiApplication>
+ #include <QtGui/QScreen>
+ 
++#if CHECK_ANY_QT_USING_WAYLAND
++#include <cmath>
++#include <cstring>
++#include <map>
++#include <utility>
++#include <vector>
++#include <wayland-client.h>
++
++namespace
++{
++/*
++ * Determining the real fractional scale of a Wayland output.
++ *
++ * QScreen::devicePixelRatio() is not usable for this. wl_output can only
++ * advertise an *integer* scale, so a compositor running an output at e.g. 125%
++ * or 220% reports a rounded-up integer (2 resp. 3) there, and that rounded
++ * value is what Qt exposes on the QScreen. The real fractional scale is only
++ * negotiated per surface, via wp_fractional_scale_v1, and therefore is not
++ * known at the time the first window - and with it the whole toolbar and
++ * dialog layout - is built.
++ *
++ * The information is however available up front, without any surface: the
++ * output's native pixel resolution comes from wl_output's "mode" event, and
++ * Qt already reports the matching logical size as QScreen::geometry(). The
++ * ratio of the two is the real scale, per output.
++ *
++ * A short-lived private wl_display connection is used for the query, so that
++ * this cannot interfere with the event queue Qt owns. It happens once, costs
++ * a couple of milliseconds, and the result is cached.
++ */
++
++struct WaylandOutput
++{
++    QString aName;
++    QSize aMode;
++};
++
++void outputGeometry(void*, struct wl_output*, int32_t, int32_t, int32_t, int32_t, int32_t,
++                    const char*, const char*, int32_t)
++{
++}
++
++void outputMode(void* pData, struct wl_output*, uint32_t nFlags, int32_t nWidth, int32_t nHeight,
++                int32_t)
++{
++    if (nFlags & WL_OUTPUT_MODE_CURRENT)
++        static_cast<WaylandOutput*>(pData)->aMode = QSize(nWidth, nHeight);
++}
++
++void outputDone(void*, struct wl_output*) {}
++
++void outputScale(void*, struct wl_output*, int32_t) {}
++
++void outputName(void* pData, struct wl_output*, const char* pName)
++{
++    static_cast<WaylandOutput*>(pData)->aName = QString::fromUtf8(pName);
++}
++
++void outputDescription(void*, struct wl_output*, const char*) {}
++
++const struct wl_output_listener aOutputListener
++    = { outputGeometry, outputMode, outputDone, outputScale, outputName, outputDescription };
++
++struct RegistryData
++{
++    std::vector<std::pair<struct wl_output*, WaylandOutput*>> aOutputs;
++};
++
++void registryGlobal(void* pData, struct wl_registry* pRegistry, uint32_t nId,
++                    const char* pInterface, uint32_t nVersion)
++{
++    // the "name" event, needed to match against QScreen::name(), is wl_output v4
++    if (strcmp(pInterface, wl_output_interface.name) != 0 || nVersion < 4)
++        return;
++
++    RegistryData* pReg = static_cast<RegistryData*>(pData);
++    struct wl_output* pOutput
++        = static_cast<struct wl_output*>(wl_registry_bind(pRegistry, nId, &wl_output_interface, 4));
++    if (!pOutput)
++        return;
++
++    WaylandOutput* pInfo = new WaylandOutput;
++    wl_output_add_listener(pOutput, &aOutputListener, pInfo);
++    pReg->aOutputs.emplace_back(pOutput, pInfo);
++}
++
++void registryGlobalRemove(void*, struct wl_registry*, uint32_t) {}
++
++const struct wl_registry_listener aRegistryListener = { registryGlobal, registryGlobalRemove };
++
++/// Native pixel resolution of each Wayland output, keyed by output name.
++std::map<QString, QSize> probeWaylandOutputModes()
++{
++    std::map<QString, QSize> aModes;
++
++    if (!QGuiApplication::platformName().startsWith("wayland"))
++        return aModes;
++    if (getenv("SAL_DISABLE_WAYLAND_OUTPUT_SCALE"))
++        return aModes;
++
++    struct wl_display* pDisplay = wl_display_connect(nullptr);
++    if (!pDisplay)
++        return aModes;
++
++    struct wl_registry* pRegistry = wl_display_get_registry(pDisplay);
++    if (pRegistry)
++    {
++        RegistryData aData;
++        wl_registry_add_listener(pRegistry, &aRegistryListener, &aData);
++        // the first roundtrip announces the globals, the second delivers the per-output events
++        wl_display_roundtrip(pDisplay);
++        wl_display_roundtrip(pDisplay);
++
++        for (auto & [ pOutput, pInfo ] : aData.aOutputs)
++        {
++            if (!pInfo->aName.isEmpty() && !pInfo->aMode.isEmpty())
++                aModes[pInfo->aName] = pInfo->aMode;
++            delete pInfo;
++            wl_output_destroy(pOutput);
++        }
++        wl_registry_destroy(pRegistry);
++    }
++
++    wl_display_disconnect(pDisplay);
++    return aModes;
++}
++
++qreal getWaylandOutputScale(const QScreen* pScreen)
++{
++    // thread-safe, and the probe runs at most once
++    static const std::map<QString, QSize> aModes = probeWaylandOutputModes();
++
++    if (!pScreen || aModes.empty())
++        return 0.0;
++
++    auto it = aModes.find(pScreen->name());
++    if (it == aModes.end())
++        return 0.0;
++
++    const QRect aGeometry = pScreen->geometry();
++    if (aGeometry.width() <= 0 || aGeometry.height() <= 0)
++        return 0.0;
++
++    const QSize aMode = it->second;
++    qreal fScaleX = static_cast<qreal>(aMode.width()) / aGeometry.width();
++    qreal fScaleY = static_cast<qreal>(aMode.height()) / aGeometry.height();
++
++    // a rotated output has its mode reported in the panel's own orientation
++    if (std::abs(fScaleX - fScaleY) > 0.05)
++    {
++        fScaleX = static_cast<qreal>(aMode.height()) / aGeometry.width();
++        fScaleY = static_cast<qreal>(aMode.width()) / aGeometry.height();
++    }
++
++    // Anything inconsistent or out of range means the assumption behind this
++    // does not hold for that output, and what Qt reports is the better guess.
++    if (std::abs(fScaleX - fScaleY) > 0.05)
++        return 0.0;
++
++    const qreal fScale = (fScaleX + fScaleY) / 2.0;
++    if (fScale < 0.5 || fScale > 8.0)
++        return 0.0;
++
++    // Logical sizes are integers, so the quotient carries a small rounding
++    // error. Scales are configured in whole percent, so snapping there
++    // restores the exact value.
++    return std::round(fScale * 100.0) / 100.0;
++}
++}
++
++qreal QtGetWaylandOutputScale(const QScreen* pScreen) { return getWaylandOutputScale(pScreen); }
++
++#else // !CHECK_ANY_QT_USING_WAYLAND
++
++qreal QtGetWaylandOutputScale(const QScreen*) { return 0.0; }
++
++#endif // CHECK_ANY_QT_USING_WAYLAND
++
+ void QtGraphicsBase::ImplGetResolution(const QtFrame* pFrame, sal_Int32& rDPIX, sal_Int32& rDPIY)
+ {
+     char* pForceDpi;
+@@ -31,6 +211,14 @@ void QtGraphicsBase::ImplGetResolution(const QtFrame* pFrame, sal_Int32& rDPIX,
+     QScreen* pScreen = pFrame->GetQWidget().screen();
+     qreal devicePixelRatio = GetQtInstance().EmscriptenLightweightRunInMainThread(
+         [pScreen] { return pScreen->devicePixelRatio(); });
++
++    // Under Wayland, QScreen::devicePixelRatio() is the integer scale that
++    // wl_output advertises, not the fractional one the output actually runs
++    // at, so the UI would be laid out for the wrong scale. Prefer the real one.
++    const qreal fOutputScale = QtGetWaylandOutputScale(pScreen);
++    if (fOutputScale > 0.0)
++        devicePixelRatio = fOutputScale;
++
+     rDPIX = pScreen->logicalDotsPerInchX() * devicePixelRatio + 0.5;
+     rDPIY = pScreen->logicalDotsPerInchY() * devicePixelRatio + 0.5;
+ }
+diff --git a/vcl/qt5/QtInstance.cxx b/vcl/qt5/QtInstance.cxx
+index 8fec94a..4d42adf 100644
+--- a/vcl/qt5/QtInstance.cxx
++++ b/vcl/qt5/QtInstance.cxx
+@@ -810,11 +810,11 @@ std::unique_ptr<QApplication> QtInstance::CreateQApplication()
+     // for scaled icons in the native menus
+     QApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
+ #endif
+-    // force Qt::HighDpiScaleFactorRoundingPolicy::Round, which is the Qt 5 default
+-    // policy and prevents incorrect rendering with the Qt 6 default policy
+-    // Qt::HighDpiScaleFactorRoundingPolicy::PassThrough (tdf#159915)
+-    QGuiApplication::setHighDpiScaleFactorRoundingPolicy(
+-        Qt::HighDpiScaleFactorRoundingPolicy::Round);
++    // No HighDpiScaleFactorRoundingPolicy is set: the Qt defaults are what we
++    // want on both toolkits — Round on Qt 5, PassThrough on Qt 6. The latter
++    // enables the compositor's fractional scaling on Wayland; the resulting
++    // non-integer device pixel ratio is handled via the real output scale read
++    // in QtGraphicsBase (see QtGetWaylandOutputScale).
+ 
+     std::unique_ptr<QApplication> pQApp
+         = std::make_unique<QApplication>(m_nFakeArgc, m_pFakeArgv.get());
+diff --git a/vcl/qt5/QtWidget.cxx b/vcl/qt5/QtWidget.cxx
+index c6b179e..171184e 100644
+--- a/vcl/qt5/QtWidget.cxx
++++ b/vcl/qt5/QtWidget.cxx
+@@ -448,6 +448,13 @@ bool QtWidget::handleKeyEvent(QKeyEvent* pEvent) const
+ 
+ bool QtWidget::handleEvent(QEvent* pEvent)
+ {
++#if QT_VERSION >= QT_VERSION_CHECK(6, 6, 0)
++    if (pEvent->type() == QEvent::DevicePixelRatioChange)
++    {
++        m_rFrame.reapplyDeviceSizeForDpr();
++        return false;
++    }
++#endif
+     if (pEvent->type() == QEvent::Gesture)
+     {
+         QGestureEvent* pGestureEvent = static_cast<QGestureEvent*>(pEvent);
