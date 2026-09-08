@@ -132,14 +132,16 @@ src_install() {
 	newtmpfiles "${FILESDIR}"/vaultwarden-tmpfiles-1.33.2.conf "${PN}".conf
 	insinto /etc/logrotate.d
 	newins "${FILESDIR}/"vaultwarden-1.33.2.logrotated "${PN}"
-	insinto /etc/"${PN}"
-	newins .env.template "${PN}".conf
 	keepdir /var/lib/"${PN}"
 	fowners "${PN}":"${PN}" /var/lib/"${PN}"
 	fperms 750 /var/lib/"${PN}"
 	keepdir /var/log/"${PN}"
 	fowners "${PN}":"${PN}" /var/log/"${PN}"
 	fperms 750 /var/log/"${PN}"
+	# Do last due to insopts modifications
+	insopts -m0640 -g "${PN}"
+	insinto /etc/"${PN}"
+	newins .env.template "${PN}".conf
 
 	readme.gentoo_create_doc
 	einstalldocs
