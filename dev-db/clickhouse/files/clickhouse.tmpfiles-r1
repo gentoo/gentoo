@@ -1,0 +1,1 @@
+d /run/clickhouse 0750 clickhouse clickhouse -
