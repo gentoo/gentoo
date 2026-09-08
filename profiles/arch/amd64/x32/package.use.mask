@@ -1,6 +1,12 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# ian Jordan <immoloism@gmail.com> (2026-07-21)
+# dev-python/mypy now started requiring NIH Rust packages
+# Bit of dirty fix to get stages rebuilt on x32 until
+# bug #760405 is resolved.
+dev-python/charset-normalizer native-extensions
+
 # Paul Zander <negril.nx+gentoo@gmail.com> (2025-09-11)
 # no llvm-runtimes/offload here
 dev-cpp/eigen clang-cuda
