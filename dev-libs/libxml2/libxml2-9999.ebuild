@@ -115,6 +115,28 @@ multilib_src_compile() {
 	if multilib_is_native_abi && use python ; then
 		python_foreach_impl python_compile
 	fi
+
+	# Remove all references to $SYSROOT from installed files
+	if [[ ${SYSROOT} != / ]]; then
+		# Try to remove -L and -I flags that reference $SYSROOT.
+		# In the case that they include some other path than $ESYSROOT/usr/LIBDIR
+		# or $ESYSROOT/usr/include preserve them.
+
+		local i flags=(-L -I) default_dirs=("/usr/$(get_libdir)" "/usr/include")
+		for ((i=0; i<${#flags[@]}; ++i)); do
+			local flag="${flags[i]}" default_dir="${default_dirs[i]}"
+			# Remove all occurences of the default arg.
+			sed -Eie "s,${flag}${ESYSROOT%/}${default_dir}/?(\s|$),,g" libxml-2.0.pc \
+				|| die "Coult not patch libxml pkg-config file"
+			# Remove the $SYSROOT prefix from what remains
+			sed -Eie "s,(${flag})${SYSROOT%/},\1,g" libxml-2.0.pc \
+				|| die "Coult not patch libxml pkg-config file"
+
+			# Now do the same thing for xml2-config but only remove the prefix
+			sed -Eie "s,(${flag})${SYSROOT%/},\1,g" xml2-config \
+				|| die "Coult not patch xml2-config"
+		done
+	fi
 }
 
 multilib_src_test() {
