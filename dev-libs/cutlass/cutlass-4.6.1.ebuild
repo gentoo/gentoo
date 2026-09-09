@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..15} )
+PYTHON_COMPAT=( python3_{12..15} )
 
 inherit cuda cmake python-any-r1 flag-o-matic toolchain-funcs
 
@@ -28,7 +28,7 @@ X86_CPU_FEATURES=(
 )
 CPU_FEATURES=( "${X86_CPU_FEATURES[@]/#/cpu_flags_x86_}" )
 
-IUSE="clang-cuda cublas cudnn doc dot examples +headers-only jumbo-build performance profiler test tools ${CPU_FEATURES[*]%:*}"
+IUSE="clang-cuda cublas cudnn examples +headers-only jumbo-build performance profiler test tools ${CPU_FEATURES[*]%:*}"
 
 REQUIRED_USE="
 	headers-only? (
@@ -94,7 +94,7 @@ src_configure() {
 		-DCUTLASS_ENABLE_TESTS="$(usex test)"
 		-DCUTLASS_ENABLE_TOOLS="$(usex tools)"
 		-DCUTLASS_INSTALL_TESTS="no"
-		-DCUTLASS_NVCC_ARCHS="${CUDAARCHS:-80;89;90}"
+		-DCUTLASS_NVCC_ARCHS="${CUDAARCHS:-80;89}"
 		-DCUTLASS_UNITY_BUILD_ENABLED="$(usex jumbo-build)"
 		-DCUTLASS_USE_SYSTEM_GOOGLETEST="yes"
 		-DIMPLICIT_CMAKE_CXX_STANDARD="yes"
@@ -118,12 +118,6 @@ src_configure() {
 		mycmakeargs+=(
 			-DCUDNN_INCLUDE_DIR="${CUDNN_PATH:-${ESYSROOT}/opt/cuda}/linux/include"
 			-DCUDNN_LIBRARY="${CUDNN_PATH:-${ESYSROOT}/opt/cuda}/$(get_libdir)/libcudnn.so"
-		)
-	fi
-
-	if use doc; then
-		mycmakeargs+=(
-			-DCUTLASS_ENABLE_DOXYGEN_DOT="$(usex dot)"
 		)
 	fi
 
