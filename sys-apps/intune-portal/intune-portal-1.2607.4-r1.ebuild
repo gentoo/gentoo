@@ -29,7 +29,7 @@ RDEPEND="
 	sys-apps/lsb-release
 	sys-apps/systemd
 	sys-apps/util-linux
-	>=sys-auth/microsoft-identity-broker-2.5.2
+	>=sys-auth/microsoft-identity-broker-3.0.2-r1
 	sys-auth/pambase[pwquality]
 	sys-auth/polkit
 	sys-libs/pam
@@ -47,6 +47,7 @@ session entries in /etc/pam.d/system-auth. You may need to tailor this to your o
 
 src_unpack() {
 	unpack_deb ${A}
+	cp "${FILESDIR}"/wrapper . || die
 }
 
 src_prepare() {
@@ -59,7 +60,7 @@ src_prepare() {
 
 src_install() {
 	exeinto "${DIR}"/bin
-	newexe $(prefixify_ro "${FILESDIR}"/wrapper) intune-portal
+	newexe $(prefixify_ro wrapper) intune-portal
 	dosym -r "${DIR}"/bin/intune-portal /usr/bin/intune-portal
 	dosym intune-portal "${DIR}"/bin/intune-agent
 	dosym intune-portal "${DIR}"/bin/intune-daemon
