@@ -1,0 +1,15 @@
+From: Gentoo Contributors <gentoo@gentoo.org>
+Bug: https://bugs.gentoo.org/944101
+Description: Fix initcolors prototype for GCC 16
+
+--- a/output.h
++++ b/output.h
+@@ -7,7 +7,7 @@
+ #include "machine_type.h"
+ #include "datatypes.h"
+ 
+-void initcolors();
++void initcolors(tOutput* output);
+ void colorpair(tOutput* output,uicolors uicol,short fg,short bg,int attr);
+ void pairsinit(tOutput* output);
+ void setcolor(tOutput* output,uicolors col);
