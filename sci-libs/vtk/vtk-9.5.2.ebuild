@@ -13,9 +13,6 @@ PYTHON_REQ_USE="tk?"
 WEBAPP_OPTIONAL=yes
 WEBAPP_MANUAL_SLOT=yes
 
-# bug #982155
-CMAKE_REMOVE_MODULES_LIST=( vtkModule )
-
 inherit check-reqs cmake cuda java-pkg-opt-2 multiprocessing python-single-r1 toolchain-funcs virtualx webapp
 
 # Short package version
@@ -473,6 +470,8 @@ src_configure() {
 		# -DVTK_MODULE_ENABLE_VTK_glad
 		# -DVTK_MODULE_ENABLE_VTK_h5part
 		-DVTK_MODULE_ENABLE_VTK_hdf5="YES"
+		# bug #982169
+		-DHDF5_IS_PARALLEL="$(usex mpi "YES" "NO")"
 		# -DVTK_MODULE_ENABLE_VTK_ioss
 		-DVTK_MODULE_ENABLE_VTK_jpeg="YES"
 		-DVTK_MODULE_ENABLE_VTK_jsoncpp="YES"
