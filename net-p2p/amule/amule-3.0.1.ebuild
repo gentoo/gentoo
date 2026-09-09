@@ -53,6 +53,10 @@ BDEPEND="
 	nls? ( sys-devel/gettext )
 "
 
+PATCHES=(
+	"${FILESDIR}/${P}-32-bit-libatomic.patch"
+)
+
 src_configure() {
 	setup-wxwidgets
 
