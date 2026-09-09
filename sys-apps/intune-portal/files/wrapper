@@ -1,10 +1,14 @@
 #!/bin/sh
 
+lsb_release=$(realpath /etc/lsb-release)
+os_release=$(realpath /etc/os-release)
+common_password=$(realpath /etc/pam.d/common-password)
+
 exec bwrap \
     --bind / / \
     --dev-bind /dev /dev \
-    --ro-bind /etc/microsoft/identity-broker/etc/lsb-release /etc/lsb-release \
-    --ro-bind /etc/microsoft/identity-broker/etc/os-release /etc/os-release \
-    --ro-bind /etc/pam.d/system-auth /etc/pam.d/common-password \
+    --ro-bind /etc/microsoft/identity-broker/etc/lsb-release "${lsb_release}" \
+    --ro-bind /etc/microsoft/identity-broker/etc/os-release "${os_release}" \
+    --ro-bind /etc/pam.d/system-auth "${common_password}" \
     -- \
     /opt/microsoft/intune/libexec/"${0##*/}" "${@}"
