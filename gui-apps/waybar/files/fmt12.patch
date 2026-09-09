@@ -1,0 +1,15 @@
+diff --git a/src/modules/simpleclock.cpp b/src/modules/simpleclock.cpp
+index b6a96ecc..e528fcab 100644
+--- a/src/modules/simpleclock.cpp
++++ b/src/modules/simpleclock.cpp
+@@ -17,7 +17,9 @@ waybar::modules::Clock::Clock(const std::string& id, const Json::Value& config)
+ auto waybar::modules::Clock::update() -> void {
+   tzset();  // Update timezone information
+   auto now = std::chrono::system_clock::now();
+-  auto localtime = fmt::localtime(std::chrono::system_clock::to_time_t(now));
++  auto t = std::chrono::system_clock::to_time_t(now);
++  std::tm localtime{};
++  localtime_r(&t, &localtime);
+   auto text = fmt::format(fmt::runtime(format_), localtime);
+   label_.set_markup(text);
+ 
