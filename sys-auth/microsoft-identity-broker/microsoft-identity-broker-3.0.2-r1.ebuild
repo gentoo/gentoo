@@ -5,10 +5,10 @@ EAPI=8
 
 inherit desktop prefix systemd unpacker xdg
 
-FAKE_OS="ubuntu-24.04"
+FAKE_OS="ubuntu-26.04"
 DESCRIPTION="Microsoft Authentication Broker to access a corporate environment"
 HOMEPAGE="https://learn.microsoft.com/intune/"
-SRC_URI="https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/${PN:0:1}/${PN}/${PN}_${PV%_p*}-noble_amd64.deb"
+SRC_URI="https://packages.microsoft.com/ubuntu/26.04/prod/pool/main/${PN:0:1}/${PN}/${PN}_${PV%_p*}-resolute_amd64.deb"
 S="${WORKDIR}"
 LICENSE="microsoft-proprietary Apache-2.0 BSD-2 MIT"
 SLOT="0"
@@ -52,6 +52,9 @@ pkg_setup() {
 
 src_unpack() {
 	unpack_deb ${A}
+	cp "${FILESDIR}"/lsb-release-${FAKE_OS} lsb-release || die
+	cp "${FILESDIR}"/os-release-${FAKE_OS} os-release || die
+	cp "${FILESDIR}"/wrapper . || die
 }
 
 src_install() {
@@ -59,7 +62,7 @@ src_install() {
 	doman usr/share/man/man1/dsreg.1
 
 	exeinto "${DIR}"/bin
-	newexe $(prefixify_ro "${FILESDIR}"/wrapper) ${PN}
+	newexe $(prefixify_ro wrapper) ${PN}
 	dosym ${PN} "${DIR}"/bin/${DB}
 
 	exeinto "${DIR}"/libexec
@@ -78,8 +81,9 @@ src_install() {
 	fperms 0700 /etc/microsoft/identity-broker/{certs,private}
 
 	insinto /etc/microsoft/identity-broker/etc
-	newins "${FILESDIR}/lsb-release-${FAKE_OS}" lsb-release
-	newins "${FILESDIR}/os-release-${FAKE_OS}" os-release
+	doins lsb-release
+	insinto /etc/microsoft/identity-broker/usr/lib
+	doins os-release
 
 	dodoc usr/share/doc/${PN}/CHANGELOG.md
 }
