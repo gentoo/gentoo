@@ -3,9 +3,11 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 inherit check-reqs flag-o-matic multiprocessing optfeature
 inherit prefix python-any-r1 qt6-build toolchain-funcs
+
+QT_PV=6.8:6
 
 DESCRIPTION="Library for rendering dynamic web content in Qt6 C++ and QML applications"
 SRC_URI+="
@@ -34,9 +36,9 @@ RDEPEND="
 	dev-libs/libxslt
 	dev-libs/nspr
 	dev-libs/nss
-	~dev-qt/qtbase-${PV}:6[accessibility=,gui,opengl=,ssl,vulkan?,widgets?]
-	~dev-qt/qtdeclarative-${PV}:6[widgets?]
-	~dev-qt/qtwebchannel-${PV}:6[qml?]
+	>=dev-qt/qtbase-${QT_PV}=[accessibility=,gui,opengl=,ssl,vulkan?,widgets?]
+	>=dev-qt/qtdeclarative-${QT_PV}=[widgets?]
+	>=dev-qt/qtwebchannel-${QT_PV}[qml?]
 	media-libs/fontconfig
 	media-libs/freetype
 	media-libs/harfbuzz:=
@@ -66,8 +68,8 @@ RDEPEND="
 	x11-libs/libxkbfile
 	alsa? ( media-libs/alsa-lib )
 	!bindist? ( >=media-libs/openh264-2.4:= )
-	designer? ( ~dev-qt/qttools-${PV}:6[designer] )
-	geolocation? ( ~dev-qt/qtpositioning-${PV}:6 )
+	designer? ( >=dev-qt/qttools-${QT_PV}[designer] )
+	geolocation? ( >=dev-qt/qtpositioning-${QT_PV} )
 	kerberos? ( virtual/krb5 )
 	opengl? ( media-libs/libglvnd[X] )
 	pulseaudio? ( media-libs/libpulse[glib] )
