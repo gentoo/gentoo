@@ -53,6 +53,7 @@ MULTILIB_CHOST_TOOLS=(
 PATCHES=(
 	"${FILESDIR}"/nss-3.103-gentoo-fixes-add-pkgconfig-files.patch
 	"${FILESDIR}"/nss-3.21-gentoo-fixup-warnings.patch
+	"${FILESDIR}"/nss-3.128-bmo-2067434-avoid-building-libcurx-twice-in-makefile-builds.patch
 )
 
 src_prepare() {
