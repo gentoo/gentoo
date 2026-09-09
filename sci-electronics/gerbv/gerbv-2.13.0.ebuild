@@ -18,16 +18,17 @@ RESTRICT="test"
 RDEPEND="
 	sys-devel/gettext
 	x11-libs/gtk+:2
-	x11-libs/cairo"
+	x11-libs/cairo
+"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
-	  "${FILESDIR}"/${PN}-2.13.0-no_compress_man.patch
-	  "${FILESDIR}"/${PN}-2.13.0-main_c_glib_strncasecmp.patch
-	  "${FILESDIR}"/${PN}-2.13.0-cmake_canonicalize_file_name.patch
-	  "${FILESDIR}"/${PN}-2.13.0-release_version.patch
-	)
+	"${FILESDIR}"/${PN}-2.13.0-no_compress_man.patch
+	"${FILESDIR}"/${PN}-2.13.0-main_c_glib_strncasecmp.patch
+	"${FILESDIR}"/${PN}-2.13.0-cmake_canonicalize_file_name.patch
+	"${FILESDIR}"/${PN}-2.13.0-release_version.patch
+)
 
 src_configure() {
 	# We're manually installing examples if desired
@@ -38,7 +39,7 @@ src_configure() {
 src_install() {
 	rm README-{git,release}.txt || die
 	cmake_src_install
-	rm "${D}"/usr/lib64/libgerbv.a
+	rm "${ED}/usr/$(get_libdir)/libgerbv.a" || die
 
 	dodoc CONTRIBUTORS HACKING
 
