@@ -153,6 +153,7 @@ PATCHES=(
 
 	"${FILESDIR}"/${PN}-2.54.0-0001-rust-don-t-pass-quiet-to-cargo.patch
 	"${FILESDIR}"/${PN}-2.54.0-0002-rust-respect-CARGO-environment-variable.patch
+	"${FILESDIR}"/${PN}-2.55.0-cargo-meson-cross.patch
 )
 
 pkg_setup() {
