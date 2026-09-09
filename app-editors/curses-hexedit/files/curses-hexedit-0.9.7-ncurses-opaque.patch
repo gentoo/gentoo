@@ -1,0 +1,174 @@
+From: Gentoo Contributors <gentoo@gentoo.org>
+Bug: https://bugs.gentoo.org/932131
+Description: Use public ncurses API for opaque WINDOW structs
+
+--- a/src/widgets.c	1999-06-28 22:51:01.000000000 +0200
++++ b/src/widgets.c	2026-06-01 00:19:11.588011402 +0200
+@@ -101,11 +101,11 @@
+          case KEY_LEFT:
+             if (i > 0)
+             {
+-               if (win->_curx > x)
++               if (getcurx(win) > x)
+                /* not at left hand side */
+                {
+                   i--;
+-                  wmove (win, y, win->_curx - 1);
++                  wmove (win, y, getcurx(win) - 1);
+                }
+                else if (i > 0)
+                /* left hand side */
+@@ -130,11 +130,11 @@
+             }
+             break;
+          case KEY_RIGHT:
+-            if (win->_curx < (x + max - 1))
++            if (getcurx(win) < (x + max - 1))
+             /* not at right hand side */
+             {
+                i++;
+-               wmove (win, y, win->_curx + 1);
++               wmove (win, y, getcurx(win) + 1);
+             }
+             else if (i < len - 1)
+             /* right hand side */
+@@ -165,7 +165,7 @@
+ #endif
+             if (i > 0)
+             {
+-               if (win->_curx > x)
++               if (getcurx(win) > x)
+                /* not at left hand side */
+                {
+                   i--;
+@@ -174,7 +174,7 @@
+                   for (n = i; n < len; n++)
+                      *(str + n) = *(str + n + 1);
+                   *(str + n) = ' ';
+-                  oldx = win->_curx;
++                  oldx = getcurx(win);
+                   wmove (win, y, x);
+                   for (n = left; n <= right; n++)
+                   {
+@@ -211,8 +211,8 @@
+                do_beep ();
+             break;
+          case SPACEBAR:
+-            oldx = win->_curx;
+-            if ((win->_curx < x + max - 1)
++            oldx = getcurx(win);
++            if ((getcurx(win) < x + max - 1)
+              && (i < len - 1) && (*(str + len - 1) <= ' '))
+             {
+                for (n = len - 1; n > i; n--)
+@@ -232,7 +232,7 @@
+                }
+                wmove (win, y, oldx + 1);
+             }
+-            else if ((win->_curx == x + max - 1)
++            else if ((getcurx(win) == x + max - 1)
+              && (i < len - 1) && (*(str + len - 1) <= ' '))
+             {
+                for (n = len - 1; n > i; n--)
+@@ -257,7 +257,7 @@
+                }
+                wmove (win, y, x + max - 1);      
+             }
+-            else if ((win->_curx == x + max - 1)
++            else if ((getcurx(win) == x + max - 1)
+              && (i == len - 1))
+             {
+                *(str + len - 1) = ' ';
+@@ -287,12 +287,12 @@
+          default: /* normal input */
+             if (isprintable (in))
+             {
+-               if (win->_curx != (x + max - 1))
++               if (getcurx(win) != (x + max - 1))
+                /* not at right hand side */
+                {
+                   *(str + i) = in;
+                   i++;
+-                  oldx = win->_curx;
++                  oldx = getcurx(win);
+                   wmove (win, y, x);
+                   for (n = left; n <= right; n++)
+                   {
+--- a/src/print.c	1999-08-08 04:56:35.000000000 +0200
++++ b/src/print.c	2026-06-01 00:19:11.603760546 +0200
+@@ -196,16 +196,16 @@
+       if (*offs > Globals.filesize)
+          break;
+ #ifdef __NCURSES_H     /* i don't know why this works */
+-      if (Globals.wmain->_cury == MAIN_BOTTOM_LINE)
++      if (getcury(Globals.wmain) == MAIN_BOTTOM_LINE)
+ #else
+-      if (Globals.wmain->_cury == MAIN_HEIGHT)
++      if (getcury(Globals.wmain) == MAIN_HEIGHT)
+ #endif
+          break;
+-      if (Globals.wmain->_curx == COLS - 2)
++      if (getcurx(Globals.wmain) == COLS - 2)
+       {
+          move = 1;
+       }
+-      if (Globals.wmain->_curx == 0)
++      if (getcurx(Globals.wmain) == 0)
+          *(newlines + i++) = *offs;
+       bold = hash_lookup (*offs, NULL);
+       if (!bold)
+@@ -215,8 +215,8 @@
+       {
+          if (filebuffer (*offs) == '\n')
+          {
+-            int cury = Globals.wmain->_cury;
+-            int i = Globals.wmain->_curx;
++            int cury = getcury(Globals.wmain);
++            int i = getcurx(Globals.wmain);
+             for (; i < COLS - 2; i++)
+                wprintw (Globals.wmain, " ");
+             wprintw (Globals.wmain, ".");
+@@ -235,7 +235,7 @@
+       {
+          if (filebuffer (*offs) == EBCDIC['\n'])
+          {
+-            int cury = Globals.wmain->_cury;
++            int cury = getcury(Globals.wmain);
+             wprintw (Globals.wmain, ".");
+             wmove (Globals.wmain, cury + 1, 0);
+          }
+@@ -257,7 +257,7 @@
+       (*offs)++;
+       if (move)
+       {
+-         wmove (Globals.wmain, Globals.wmain->_cury + 1, 0);
++         wmove (Globals.wmain, getcury(Globals.wmain) + 1, 0);
+          move = 0;
+          continue;
+       }
+--- a/src/misc.c	1999-06-30 00:00:47.000000000 +0200
++++ b/src/misc.c	2026-06-01 00:19:11.616534010 +0200
+@@ -634,10 +634,8 @@
+    if (!newlines)
+       die_horribly (NOT_ENOUGH_MEMORY, NULL);
+ 
+-   Globals.wmain->_cury = cursor_y - 1;
+-   Globals.wmain->_curx = cursor_x;
+-   stdscr->_cury = cursor_y;
+-   stdscr->_curx = cursor_x;
++   wmove(Globals.wmain, cursor_y - 1, cursor_x);
++   wmove(stdscr, cursor_y, cursor_x);
+    if (cursor_y >= BOTTOM_LINE)
+       cursor_y = BOTTOM_LINE;
+    if (Globals.mode == FILE_MODE)
+--- a/src/file.c	1999-06-29 23:57:15.000000000 +0200
++++ b/src/file.c	2026-06-01 00:19:11.626121183 +0200
+@@ -643,7 +643,7 @@
+       wprintw (Globals.wmain, "%s", trunc_file);
+       fp = fp->p;
+ 
+-      for (result = Globals.wmain->_curx; result < COLS; result++)
++      for (result = getcurx(Globals.wmain); result < COLS; result++)
+          wprintw (Globals.wmain, " ");
+    }
+ 
