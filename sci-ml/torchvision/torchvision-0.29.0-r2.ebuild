@@ -44,6 +44,7 @@ BDEPEND="
 		test? (
 				dev-python/lmdb[${PYTHON_USEDEP}]
 				dev-python/sympy[${PYTHON_USEDEP}]
+				dev-python/networkx[${PYTHON_USEDEP}]
 		)
 	')
 "
