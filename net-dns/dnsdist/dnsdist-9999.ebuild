@@ -18,7 +18,7 @@ if [[ ${PV} == *9999* ]] ; then
 	EGIT_BRANCH="master"
 	inherit git-r3
 	# the first 8 digits of the sha256sum of the 9999 crates tarball
-	CRATES_HASH=630a017b
+	CRATES_HASH=d7740dcd
 	CRATES_PV="${PV}"-"${CRATES_HASH}"
 else
 	SRC_URI="https://downloads.powerdns.com/releases/${P}.tar.xz"
@@ -32,7 +32,7 @@ SRC_URI+="
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="bpf cdb dnscrypt dnstap doh doh3 ipcipher ipcrypt lmdb quic regex snmp +ssl systemd test web xdp yaml"
+IUSE="bpf cdb dnscrypt dnstap doh doh3 ipcipher ipcrypt lmdb otlp quic regex snmp +ssl systemd test web xdp yaml"
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="${LUA_REQUIRED_USE}
@@ -53,6 +53,7 @@ RDEPEND="acct-group/dnsdist
 	doh? ( net-libs/nghttp2:= )
 	doh3? ( net-libs/quiche:= )
 	lmdb? ( dev-db/lmdb:= )
+	otlp? ( net-misc/curl )
 	quic? ( net-libs/quiche )
 	regex? ( dev-libs/re2:= )
 	snmp? ( net-analyzer/net-snmp:= )
@@ -136,6 +137,7 @@ src_configure() {
 		$(meson_feature ipcipher)
 		$(meson_feature ipcrypt ipcrypt2)
 		$(meson_feature lmdb)
+		$(meson_feature otlp)
 		$(meson_feature quic dns-over-quic)
 		$(meson_feature regex re2)
 		$(meson_feature snmp)
