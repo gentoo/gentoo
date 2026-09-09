@@ -22,7 +22,6 @@ HOMEPAGE="https://vscodium.com/"
 SRC_URI="
 	$(arch_src_uri amd64 x64)
 	$(arch_src_uri arm64 arm64)
-	$(arch_src_uri loong loong64)
 "
 S="${WORKDIR}"
 
@@ -45,7 +44,7 @@ LICENSE="
 	W3C
 "
 SLOT="0"
-KEYWORDS="-* amd64 ~arm64 ~loong"
+KEYWORDS="-* amd64 ~arm64"
 IUSE="egl kerberos wayland webkit"
 RESTRICT="strip bindist"
 
