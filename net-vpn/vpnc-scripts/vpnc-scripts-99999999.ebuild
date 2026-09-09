@@ -10,7 +10,7 @@ else
 	COMMIT="ce9e961bd0f6b867e1c7c35f78f6fb973f6ff101"
 	SRC_URI="https://gitlab.com/openconnect/vpnc-scripts/-/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${PN}-${COMMIT}"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
 fi
 
 DESCRIPTION="Connect scripts for use with vpnc and openconnect (and similar clients)"
