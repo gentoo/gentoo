@@ -29,7 +29,9 @@ BDEPEND="
 	test? (
 		$(python_gen_cond_dep '
 			dev-python/expecttest[${PYTHON_USEDEP}]
+			dev-python/parameterized[${PYTHON_USEDEP}]
 		')
+		sci-ml/datasets[${PYTHON_SINGLE_USEDEP}]
 	)
 "
 
