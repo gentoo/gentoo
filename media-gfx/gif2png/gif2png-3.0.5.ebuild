@@ -4,26 +4,28 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{12..14} )
+inherit go-module python-any-r1
 
-inherit go-module python-single-r1
-
-DESCRIPTION="Converts images from gif format to png format"
+DESCRIPTION="Converts images from GIF format to PNG format"
 HOMEPAGE="http://catb.org/~esr/gif2png/"
 SRC_URI="http://catb.org/~esr/${PN}/${P}.tar.gz"
+SRC_URI+=" https://github.com/gentoo-golang-dist/gif2png/releases/download/${PV}/${P}-deps.tar.xz"
 
 LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc64 ~x86"
+IUSE="test"
+RESTRICT="!test? ( test )"
 
-REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+BDEPEND="test? ( ${PYTHON_DEPS} )"
 
-BDEPEND="${PYTHON_DEPS}"
-RDEPEND="${BDEPEND}"
+pkg_setup() {
+	use test && python-any-r1_pkg_setup
+}
 
 src_install() {
-	local prefix="${EPREFIX}/usr"
 	emake \
 		DESTDIR="${D}" \
-		PREFIX="${prefix}" \
+		PREFIX="${EPREFIX}"/usr \
 		install
 }
