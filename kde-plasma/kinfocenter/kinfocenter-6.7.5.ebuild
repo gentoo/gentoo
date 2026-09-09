@@ -43,7 +43,10 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
-PATCHES=( "${FILESDIR}/${P}-libcxx23-missing-header.patch" ) # in 6.8 (pending)
+PATCHES=(
+	"${FILESDIR}/${P}-libcxx23-missing-header.patch" # in 6.8
+	"${FILESDIR}/${P}-kcmutils-6.31-qml-link.patch" # in 6.8 (6.7 pending)
+)
 
 CMAKE_SKIP_TESTS=(
 	# bug 816591

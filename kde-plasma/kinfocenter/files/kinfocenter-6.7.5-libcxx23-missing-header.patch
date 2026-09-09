@@ -1,31 +1,30 @@
-Source: https://invent.kde.org/plasma/kinfocenter/-/merge_requests/308
-
-From: Kostadin Shishmanov <kostadinshishmanov@protonmail.com>
-Date: Fri, 4 Sep 2026 15:29:47 +0300
+From 28c7cb32161a0afee1217a5cabc5ec520332efc7 Mon Sep 17 00:00:00 2001
+From: Kostadin Shishmanov <kocelfc@tutanota.com>
+Date: Wed, 9 Sep 2026 13:52:01 +0000
 Subject: [PATCH] Add missing <vector> include
 
-GPUEntryFactory.h uses std::vector but doesn't include <vector>
+`GPUEntryFactory.h` uses `std::vector` but doesn't include `<vector>`
 which causes a build failure with libc++ 23 since it's dropping such
 transitive includes.
 
-Signed-off-by: Kostadin Shishmanov <kostadinshishmanov@protonmail.com>
+Signed-off-by: Kostadin Shishmanov kostadinshishmanov@protonmail.com
 ---
- kcms/about-distro/src/GPUEntryFactory.h | 2 ++
- 1 file changed, 2 insertions(+)
+ kcms/about-distro/src/GPUEntryFactory.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/kcms/about-distro/src/GPUEntryFactory.h b/kcms/about-distro/src/GPUEntryFactory.h
-index c16cdbf0..299e001e 100644
+index c16cdbf0..9a370859 100644
 --- a/kcms/about-distro/src/GPUEntryFactory.h
 +++ b/kcms/about-distro/src/GPUEntryFactory.h
-@@ -3,6 +3,8 @@
+@@ -3,7 +3,7 @@
  
  #pragma once
  
+-#include <QList>
 +#include <vector>
-+
- #include <QList>
  
  class Entry;
+ 
 -- 
 GitLab
 

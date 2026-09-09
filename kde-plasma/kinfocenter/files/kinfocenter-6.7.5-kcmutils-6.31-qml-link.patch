@@ -1,0 +1,70 @@
+From 3bcda3e3419abd4abf82c4174013878d6f142f75 Mon Sep 17 00:00:00 2001
+From: Jakob Petsovits <jpetso@petsovits.com>
+Date: Mon, 7 Sep 2026 12:40:07 -0400
+Subject: [PATCH] Add missing Qt::Qml link
+
+(cherry picked from commit 24f116ab2ed57391265269cc554b318d26d934c0)
+---
+ CMakeLists.txt                       | 7 ++++++-
+ kcms/about-distro/src/CMakeLists.txt | 1 +
+ kcms/energy/CMakeLists.txt           | 1 +
+ kcms/samba/CMakeLists.txt            | 1 +
+ 4 files changed, 9 insertions(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 8ca9279b..442da993 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -26,7 +26,12 @@ include(ECMQmlModule)
+ 
+ option(BUILD_DOC "Whether to build the documentation" ON)
+ 
+-find_package(Qt6 ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS Core Gui Widgets)
++find_package(Qt6 ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS
++    Core
++    Gui
++    Qml
++    Widgets
++)
+ 
+ find_package(KF6 ${KF6_MIN_VERSION} REQUIRED COMPONENTS
+     Config
+diff --git a/kcms/about-distro/src/CMakeLists.txt b/kcms/about-distro/src/CMakeLists.txt
+index 20fe24f5..acee8ed5 100644
+--- a/kcms/about-distro/src/CMakeLists.txt
++++ b/kcms/about-distro/src/CMakeLists.txt
+@@ -33,6 +33,7 @@ set(kcm_SRCS
+ kcmutils_add_qml_kcm(kcm_about-distro SOURCES ${kcm_SRCS} INSTALL_NAMESPACE "plasma/kcms")
+ 
+ target_link_libraries(kcm_about-distro  PRIVATE
++    Qt6::Qml
+     KF6::CoreAddons
+     KF6::I18n
+     KF6::ConfigCore
+diff --git a/kcms/energy/CMakeLists.txt b/kcms/energy/CMakeLists.txt
+index 4c677ff6..d715e7f0 100644
+--- a/kcms/energy/CMakeLists.txt
++++ b/kcms/energy/CMakeLists.txt
+@@ -14,6 +14,7 @@ kinfocenter_add_kcm(kcm_energyinfo MODULE ${kcm_energyinfo_SRCS})
+ target_link_libraries(kcm_energyinfo PRIVATE
+   Qt::DBus
+   Qt::Gui
++  Qt::Qml
+   KF6::CoreAddons
+   KF6::I18n
+   KF6::KCMUtilsQuick
+diff --git a/kcms/samba/CMakeLists.txt b/kcms/samba/CMakeLists.txt
+index 562a4477..9bb0dfa8 100644
+--- a/kcms/samba/CMakeLists.txt
++++ b/kcms/samba/CMakeLists.txt
+@@ -25,6 +25,7 @@ set(kcm_samba_SRCS main.cpp)
+ qt_add_dbus_interface(kcm_samba_SRCS org.freedesktop.DBus.Properties.xml org.freedesktop.DBus.Properties)
+ kinfocenter_add_kcm(kcm_samba SOURCES ${kcm_samba_SRCS} INSTALL_NAMESPACE "plasma/kcms/kinfocenter")
+ target_link_libraries(kcm_samba PRIVATE
++    Qt6::Qml
+     KF6::KCMUtilsQuick
+     kcm_samba_static
+ )
+-- 
+GitLab
+
