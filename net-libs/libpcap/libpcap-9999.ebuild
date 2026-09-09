@@ -45,7 +45,7 @@ BDEPEND="
 "
 
 if [[ ${PV} != *9999* ]] ; then
-	BDEPEND+=" verify-sig? ( >=sec-keys/openpgp-keys-tcpdump-20260104 )"
+	BDEPEND+=" verify-sig? ( >=sec-keys/openpgp-keys-tcpdump-20260908 )"
 fi
 
 src_prepare() {
