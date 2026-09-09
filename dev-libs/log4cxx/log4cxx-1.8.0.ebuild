@@ -13,7 +13,7 @@ SRC_URI="mirror://apache/logging/${PN}/${PV}/${MY_P}.tar.gz
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="Apache-2.0"
-SLOT="0/15"
+SLOT="0/15.8"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86"
 IUSE="odbc smtp test"
 RESTRICT="!test? ( test )"
