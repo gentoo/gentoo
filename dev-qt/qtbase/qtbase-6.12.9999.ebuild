@@ -154,7 +154,6 @@ RDEPEND="
 	!<dev-qt/qtvirtualkeyboard-${PV}:6
 	!<dev-qt/qtwayland-${PV}:6
 	!<dev-qt/qtwebchannel-${PV}:6
-	!<dev-qt/qtwebengine-${PV}:6
 	!<dev-qt/qtwebsockets-${PV}:6
 	!<dev-qt/qtwebview-${PV}:6
 	syslog? ( virtual/logger )
