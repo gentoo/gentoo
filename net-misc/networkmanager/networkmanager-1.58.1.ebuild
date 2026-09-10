@@ -4,7 +4,7 @@
 EAPI=8
 
 MY_PN="NetworkManager"
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 
 inherit linux-info meson-multilib flag-o-matic python-any-r1 \
 	readme.gentoo-r1 systemd toolchain-funcs udev vala virtualx
