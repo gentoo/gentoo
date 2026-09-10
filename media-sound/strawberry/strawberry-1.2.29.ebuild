@@ -63,6 +63,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.2.11-unforce_alsa.patch
+	"${FILESDIR}"/${P}-tagfetcher.patch
 )
 
 DOCS=( Changelog README.md )
