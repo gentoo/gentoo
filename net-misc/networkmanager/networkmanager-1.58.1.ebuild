@@ -191,6 +191,7 @@ multilib_src_configure() {
 
 		# system paths
 		-Dsystemdsystemunitdir=$(systemd_get_systemunitdir)
+		-Dsystemdsystemgeneratordir=$(systemd_get_systemgeneratordir)
 		-Dsystem_ca_path=/etc/ssl/certs
 		-Dudev_dir=$(get_udevdir)
 		-Ddbus_conf_dir=/usr/share/dbus-1/system.d
