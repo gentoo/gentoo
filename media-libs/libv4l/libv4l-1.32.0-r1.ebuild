@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -111,7 +111,6 @@ multilib_src_configure() {
 		-Dudevdir="${EPREFIX}$(get_udevdir)"
 		$(meson_native_use_feature doc doxygen-doc)
 		$(meson_native_use_bool doc doxygen-html)
-		$(meson_native_use_bool doc doxygen-man)
 	)
 	if multilib_is_native_abi && use qt6; then
 		emesonargs+=(
