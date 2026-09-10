@@ -16,7 +16,7 @@ else
 	MY_PV=$(ver_cut 1-2)
 	SRC_URI="https://github.com/SELinuxProject/refpolicy/releases/download/RELEASE_${MY_PV/./_}/refpolicy-${MY_PV}.tar.bz2
 		https://dev.gentoo.org/~perfinion/patches/${PN}/patchbundle-${P}.tar.bz2"
-	KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
+	KEYWORDS="amd64 arm arm64 ~riscv x86"
 fi
 
 S="${WORKDIR}/refpolicy"
