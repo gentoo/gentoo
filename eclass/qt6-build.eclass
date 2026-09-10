@@ -169,24 +169,22 @@ qt6-build_src_prepare() {
 # @DESCRIPTION:
 # Run cmake_src_configure and handle anything else generic as needed.
 qt6-build_src_configure() {
-	if [[ ${PN} == qttranslations ]]; then
-		# does not compile anything, further options would be unrecognized
-		cmake_src_configure
-		return
-	fi
-
 	local defaultcmakeargs=(
 		# cmake defaults to "STATUS" but Qt changes that to "NOTICE" which
 		# hides a lot of information that is useful for bug reports
 		--log-level=STATUS
 		# ...but dev messages are noisy and not really useful downstream
 		-Wno-dev
+		# generally unwanted on Gentoo, portage handles tracking licenses
+		-DQT_GENERATE_SBOM=OFF
 		# see _qt6-build_create_user_facing_links
 		-DINSTALL_PUBLICBINDIR="${QT6_PREFIX}"/bin
+	)
+
+	# avoid QA warning for unused options when not compiling anything
+	[[ ${PN} != qttranslations ]] && defaultcmakeargs+=(
 		# note that if qtbase was built with tests, this is default ON
 		-DQT_BUILD_TESTS=$(in_iuse test && use test && echo ON || echo OFF)
-		# generally unwated on Gentoo, portage handles tracking licenses
-		-DQT_GENERATE_SBOM=OFF
 		# avoid appending -O2 after user's C(XX)FLAGS (bug #911822)
 		-DQT_USE_DEFAULT_CMAKE_OPTIMIZATION_FLAGS=ON
 	)
