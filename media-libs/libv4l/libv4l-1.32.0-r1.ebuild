@@ -68,6 +68,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.32-bpf-locale.patch
+	"${FILESDIR}"/${PN}-1.32-stdlib.patch
 )
 
 # Not really prebuilt but BPF objects make our QA checks go crazy.
