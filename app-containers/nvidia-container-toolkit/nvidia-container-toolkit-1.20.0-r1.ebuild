@@ -52,6 +52,13 @@ src_install() {
 		nvidia-ctk
 	insinto "/etc/nvidia-container-runtime"
 	doins "${FILESDIR}/config.toml"
+
+	insinto "/usr/lib/systemd/system"
+	doins deployments/systemd/nvidia-cdi-refresh.path \
+		deployments/systemd/nvidia-cdi-refresh.service
+
+	insinto "/etc/nvidia-container-toolkit"
+	doins deployments/systemd/nvidia-cdi-refresh.env
 }
 
 pkg_postinst() {
