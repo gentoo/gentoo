@@ -149,8 +149,9 @@ declare -A GIT_CRATES=(
 )
 
 RUST_MIN_VER="1.85.0"
+LLVM_COMPAT=( {20..23} )
 
-inherit gnome2-utils virtualx cargo meson
+inherit gnome2-utils virtualx cargo llvm-r2 meson
 
 DESCRIPTION="Volume control applet for Pipewire"
 HOMEPAGE="https://github.com/saivert/pwvucontrol/"
@@ -165,6 +166,9 @@ DEPEND="
 	gui-libs/libadwaita:1=[introspection]
 	media-video/pipewire:=
 	media-video/wireplumber:=
+	$(llvm_gen_dep '
+		llvm-core/clang:${LLVM_SLOT}=
+	')
 "
 RDEPEND="
 	${DEPEND}
