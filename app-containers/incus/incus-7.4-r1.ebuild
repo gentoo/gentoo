@@ -40,7 +40,7 @@ RDEPEND="${DEPEND}
 	sys-apps/iproute2
 	sys-fs/fuse:*
 	>=sys-fs/lxcfs-5.0.0
-	sys-fs/squashfs-tools[lzma]
+	sys-fs/squashfs-tools[lzma,zstd]
 	virtual/acl
 	apparmor? ( sec-policy/apparmor-profiles )
 	qemu? (
