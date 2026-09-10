@@ -3,7 +3,7 @@
 
 EAPI=8
 
-LLVM_COMPAT=( {18..22} )
+LLVM_COMPAT=( {18..23} )
 RUST_MIN_VER="1.85.0"
 RUST_OPTIONAL=1
 
@@ -39,7 +39,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-libs/blazesym_c-0.1.1
-	>=dev-libs/libbpf-1.6:=[static-libs]
+	>=dev-libs/libbpf-1.7:=[static-libs]
 	>=dev-util/bcc-0.25.0
 	$(llvm_gen_dep '
 		llvm-core/clang:${LLVM_SLOT}=
