@@ -16,6 +16,9 @@ SLOT="0/${PV}"
 KEYWORDS="~amd64 ~arm64"
 
 X86_CPU_FLAGS=(
+	amx_bf16
+	amx_int8
+	amx_tile
 	avx
 	avx_vnni
 	avx2
@@ -77,6 +80,9 @@ src_configure() {
 		-DGGML_HIP_MMQ_MFMA=OFF
 
 		# CPU Flags
+		-DGGML_AMX_BF16=$(usex cpu_flags_x86_amx_bf16)
+		-DGGML_AMX_INT8=$(usex cpu_flags_x86_amx_int8)
+		-DGGML_AMX_TILE=$(usex cpu_flags_x86_amx_tile)
 		-DGGML_AVX=$(usex cpu_flags_x86_avx)
 		-DGGML_AVX_VNNI=$(usex cpu_flags_x86_avx_vnni)
 		-DGGML_AVX2=$(usex cpu_flags_x86_avx2)
