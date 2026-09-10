@@ -22,7 +22,7 @@ LICENSE+="
 	0BSD Apache-2.0 LGPL-3 MIT Unicode-3.0 Unicode-DFS-2016 WTFPL-2 ZLIB
 "
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm64 ~ppc64 ~x86"
 IUSE="test"
 
 RESTRICT="!test? ( test )"
