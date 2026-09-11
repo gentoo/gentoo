@@ -1,0 +1,17 @@
+see https://gitlab.com/flightgear/flightgear/-/work_items/3527
+Fix missing transitive GDAL include directory
+from /var/tmp/portage/games-simulation/flightgear-2024.1.7/work/flightgear-2024.1.7/src/Airports/groundnetwork.cxx:26:
+/usr/include/simgear/scene/dem/SGDemTile.hxx:4:10: fatal error: gdal.h: No such file or directory
+    4 | #include <gdal.h>                                           
+      |          ^~~~~~~~  
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -601,6 +601,8 @@ add_dependencies(fgfsObjects buildId)
+ # remove once we use CMake 3.12, since then the dependency will be explicit
+ add_dependencies(fgfsObjects fgembeddedresources)
+ 
++# For transitive GDAL::GDAL usage requirements
++target_link_libraries(fgfsObjects PRIVATE SimGearScene)
+ ########################################################################
+ 
+ add_subdirectory(3rdparty)
