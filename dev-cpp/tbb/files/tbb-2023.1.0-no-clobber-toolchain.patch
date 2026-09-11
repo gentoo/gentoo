@@ -1,0 +1,79 @@
+Strip flags that are set by the Gentoo toolchain.
+
+For -fcf-protection
+https://bugs.gentoo.org/965340
+
+For -D_FORTIFY_SOURCE
+https://bugs.gentoo.org/922605
+
+--- a/cmake/compilers/Clang.cmake
++++ b/cmake/compilers/Clang.cmake
+@@ -74,40 +74,15 @@ endif()
+ set(TBB_COMMON_COMPILE_FLAGS ${TBB_COMMON_COMPILE_FLAGS}
+     -Wformat -Wformat-security -Werror=format-security
+     $<$<PLATFORM_ID:Windows>:-D_CRT_SECURE_NO_WARNINGS>
+-    $<$<NOT:$<PLATFORM_ID:Windows>>:-fPIC>
+-    $<$<NOT:$<PLATFORM_ID:Emscripten>>:-fstack-protector-strong>)
+-
+-if (NOT APPLE AND NOT ANDROID_PLATFORM AND CMAKE_SYSTEM_PROCESSOR MATCHES "(AMD64|amd64|i.86|x86)" AND NOT WIN32)
+-    set(TBB_LIB_COMPILE_FLAGS ${TBB_LIB_COMPILE_FLAGS} -fstack-clash-protection)
+-    if (NOT EMSCRIPTEN)
+-        # Some versions of Clang implicitly set -march=i686 when compiling for x86 and some don't.
+-        # -fcf-protection requires i686, so check -fcf-protection explicitly.
+-        include(CheckCXXSourceCompiles)
+-        set(CMAKE_TRY_COMPILE_TARGET_TYPE "STATIC_LIBRARY")
+-        set(CMAKE_REQUIRED_FLAGS "-fcf-protection=full")
+-        check_cxx_source_compiles("int main(int, char*[]) { return 0; }" CF_PROTECTION_FULL_SUPPORTED)
+-        unset(CMAKE_TRY_COMPILE_TARGET_TYPE)
+-        unset(CMAKE_REQUIRED_FLAGS)
+-
+-        if (CF_PROTECTION_FULL_SUPPORTED)
+-            set(TBB_LIB_COMPILE_FLAGS ${TBB_LIB_COMPILE_FLAGS} -fcf-protection=full)
+-        else()
+-            message(WARNING "Compiler does not support -fcf-protection=full.")
+-        endif()
+-    endif()
+-endif()
++    $<$<NOT:$<PLATFORM_ID:Windows>>:-fPIC>)
+ 
+ # -z switch is not supported on MacOS and Windows
+ if (NOT APPLE AND NOT WIN32)
+-    set(TBB_LIB_LINK_FLAGS ${TBB_LIB_LINK_FLAGS} -Wl,-z,relro,-z,now,-z,noexecstack)
++    set(TBB_LIB_LINK_FLAGS ${TBB_LIB_LINK_FLAGS} -Wl,-z,noexecstack)
+ endif()
+ 
+ set(TBB_COMMON_LINK_LIBS ${CMAKE_DL_LIBS})
+ 
+-if (NOT CMAKE_CXX_FLAGS MATCHES "_FORTIFY_SOURCE")
+-  set(TBB_COMMON_COMPILE_FLAGS ${TBB_COMMON_COMPILE_FLAGS} $<$<NOT:$<CONFIG:Debug>>:-D_FORTIFY_SOURCE=2>)
+-endif ()
+-
+ if (MINGW)
+     list(APPEND TBB_COMMON_COMPILE_FLAGS -U__STRICT_ANSI__)
+ endif()
+--- a/cmake/compilers/GNU.cmake
++++ b/cmake/compilers/GNU.cmake
+@@ -106,20 +106,12 @@ endif ()
+ 
+ # Gnu flags to prevent compiler from optimizing out security checks
+ set(TBB_COMMON_COMPILE_FLAGS ${TBB_COMMON_COMPILE_FLAGS} -fno-strict-overflow -fno-delete-null-pointer-checks -fwrapv)
+-set(TBB_COMMON_COMPILE_FLAGS ${TBB_COMMON_COMPILE_FLAGS} -Wformat -Wformat-security -Werror=format-security
+-    -fstack-protector-strong )
+-if (CMAKE_SYSTEM_PROCESSOR MATCHES "(AMD64|amd64|i.86|x86)" AND NOT EMSCRIPTEN)
+-    set(TBB_LIB_COMPILE_FLAGS ${TBB_LIB_COMPILE_FLAGS} $<$<NOT:$<VERSION_LESS:${CMAKE_CXX_COMPILER_VERSION},8.0>>:-fcf-protection=full>)
+-endif ()
+-set(TBB_LIB_COMPILE_FLAGS ${TBB_LIB_COMPILE_FLAGS} $<$<NOT:$<VERSION_LESS:${CMAKE_CXX_COMPILER_VERSION},8.0>>:-fstack-clash-protection>)
++set(TBB_COMMON_COMPILE_FLAGS ${TBB_COMMON_COMPILE_FLAGS} -Wformat -Wformat-security -Werror=format-security)
+ 
+ # -z switch is not supported on MacOS and MinGW
+ if (NOT APPLE AND NOT MINGW)
+-    set(TBB_LIB_LINK_FLAGS ${TBB_LIB_LINK_FLAGS} -Wl,-z,relro,-z,now,-z,noexecstack)
++    set(TBB_LIB_LINK_FLAGS ${TBB_LIB_LINK_FLAGS} -Wl,-z,noexecstack)
+ endif()
+-if (NOT CMAKE_CXX_FLAGS MATCHES "_FORTIFY_SOURCE")
+-  set(TBB_COMMON_COMPILE_FLAGS ${TBB_COMMON_COMPILE_FLAGS} $<$<NOT:$<CONFIG:Debug>>:-D_FORTIFY_SOURCE=2> )
+-endif ()
+ 
+ if (TBB_FILE_TRIM AND CMAKE_CXX_COMPILER_VERSION VERSION_GREATER_EQUAL 8 AND NOT CMAKE_CXX_COMPILER_ID MATCHES "Intel")
+     set(TBB_COMMON_COMPILE_FLAGS ${TBB_COMMON_COMPILE_FLAGS} -ffile-prefix-map=${NATIVE_TBB_PROJECT_ROOT_DIR}/= -ffile-prefix-map=${NATIVE_TBB_RELATIVE_BIN_PATH}/=)
+
