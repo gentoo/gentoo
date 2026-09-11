@@ -1,0 +1,16 @@
+From upstream https://gitlab.com/flightgear/simgear/-/merge_requests/313.patch
+Backport the functional changes only
+Fix data race in Emesary Transmitter::NotifyAll (segfault)
+see https://bugs.gentoo.org/886321
+--- a/simgear/emesary/Transmitter.hxx
++++ b/simgear/emesary/Transmitter.hxx
+@@ -176,6 +176,9 @@ namespace simgear
+ 				auto v = receiveDepth.fetch_add(1, std::memory_order_relaxed);
+ 				if (v == 0)
+ 					AddRemoveIFAppropriate();
++				else {
++					std::lock_guard<std::mutex> scopeLock(_lock);
++				}
+ 
+ 				sentMessageCount++;
+ 

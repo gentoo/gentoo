@@ -1,0 +1,14 @@
+see https://gitlab.com/flightgear/simgear/-/work_items/56
+fix compile with >=sci-libs/gdal-3.10
+see https://github.com/OSGeo/gdal/pull/10605.patch
+--- a/simgear/scene/dem/SGDemTile_gdal.cxx
++++ b/simgear/scene/dem/SGDemTile_gdal.cxx
+@@ -546,7 +546,7 @@ void SGDemTile::doWarp( int iSrc, char* pszSrcFile, GDALDatasetH hDstDS, char**
+ 
+     if( bHaveNodata )
+     {
+-        if (CPLIsNan(dfReal))
++        if (std::isnan(dfReal))
+             printf( "Using internal nodata values (e.g. nan) for image %s.\n",
+                     pszSrcFile );
+         else
