@@ -89,7 +89,7 @@ RDEPEND="
 	)
 	fbgemm? ( >=sci-ml/FBGEMM-1.4 )
 	gloo? ( >=sci-ml/gloo-2025.06.04[cuda?,rocm?] )
-	kineto? ( ~sci-ml/kineto-0.4.0_p20260603 )
+	kineto? ( ~sci-ml/kineto-0.4.0_p20260805 )
 	mimalloc? ( dev-libs/mimalloc )
 	mkl? ( sci-libs/mkl )
 	mpi? ( virtual/mpi )
@@ -335,7 +335,7 @@ python_compile() {
 		addpredict "/dev/char/"
 
 		local -x CMAKE_CUDA_FLAGS="$(cuda_gccdir -f | tr -d \")"
-		local -x TORCH_CUDA_ARCH_LIST="${TORCH_CUDA_ARCH_LIST:-7.0}"
+		local -x TORCH_CUDA_ARCH_LIST="${TORCH_CUDA_ARCH_LIST:-7.5}"
 		local -x USE_CUDNN=ON
 		local -x USE_FLASH_ATTENTION=OFF
 		local -x USE_MEM_EFF_ATTENTION=OFF
