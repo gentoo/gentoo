@@ -71,6 +71,7 @@ DEPEND="
 PATCHES=(
 	"${FILESDIR}/${PN}-3.6.0-use-gnuinstalldirs.patch"
 	"${FILESDIR}/${PN}-3.6.0-cudaflags.patch"
+	"${FILESDIR}/${P}-cuda-13.patch"
 )
 
 pkg_pretend() {

@@ -1,0 +1,25 @@
+From cb1b2378c8fb370b4cc9b71079473145fed6ae35 Mon Sep 17 00:00:00 2001
+From: David G Yu <davidgyu@gmail.com>
+Date: Fri, 12 Dec 2025 14:29:05 -0800
+Subject: [PATCH] [opensubdiv/osd] Fixed CUDA deprecated API
+
+Updated osd/cudaEvaluator.cpp to use cudaDeviceSynchronize()
+instead of cudaThreadSynchronize() which was deprecated and
+has been removed from CUDA 13.0.
+---
+ opensubdiv/osd/cudaEvaluator.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/opensubdiv/osd/cudaEvaluator.cpp b/opensubdiv/osd/cudaEvaluator.cpp
+index 4b638dd49..c42caacaa 100644
+--- a/opensubdiv/osd/cudaEvaluator.cpp
++++ b/opensubdiv/osd/cudaEvaluator.cpp
+@@ -359,7 +359,7 @@ CudaEvaluator::EvalPatches(
+ /* static */
+ void
+ CudaEvaluator::Synchronize(void * /*deviceContext*/) {
+-    cudaThreadSynchronize();
++    cudaDeviceSynchronize();
+ }
+ 
+ }  // end namespace Osd
