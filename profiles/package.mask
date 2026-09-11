@@ -477,13 +477,6 @@ dev-db/mysql:8.4
 # https://github.com/lkrg-org/lkrg/issues/364
 =app-antivirus/lkrg-0.9.9
 
-# Sam James <sam@gentoo.org> (2025-02-22)
-# (Only) needed for no-yet-released LibreOffice. Mask for now to avoid
-# unnecessary conflicts/backtracking for LO users.
-=dev-libs/liborcus-0.20.0
-=dev-libs/libixion-0.20.0
-=dev-util/mdds-3.0.0
-
 # Maciej Barć <xgqt@gentoo.org> (2025-02-12)
 # Masked for testing. Fails to update from previous version. See bug #949626.
 >=x11-themes/fluent-icon-theme-2025.02.10
