@@ -1,0 +1,35 @@
+https://github.com/ValveSoftware/gamescope/pull/2400
+
+From 48c55c65992fc8a40444c7b7abcc23bbe335e474 Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <chewi@gentoo.org>
+Date: Fri, 11 Sep 2026 22:59:59 +0100
+Subject: [PATCH] build: don't fail meson setup if git is missing
+
+`check: false` was given to `run_command`, but failure will still be fatal if
+the given command cannot be found at all.
+--- a/src/meson.build
++++ b/src/meson.build
+@@ -173,10 +173,16 @@ endforeach
+ cc = meson.get_compiler('c')
+ compiler_name = cc.get_id()
+ compiler_version = cc.version()
+-
+-vcs_tag_cmd = ['git', 'describe', '--always', '--tags', '--dirty=+']
+-vcs_tag = run_command(vcs_tag_cmd, check: false).stdout().strip()
+-version_tag = vcs_tag + ' (' + compiler_name + ' ' + compiler_version + ')'
++version_tag = '(' + compiler_name + ' ' + compiler_version + ')'
++
++git = find_program('git', native: true, required: false)
++if git.found()
++  vcs_tag_cmd = [git, 'describe', '--always', '--tags', '--dirty=+']
++  vcs_tag = run_command(vcs_tag_cmd, check: false).stdout().strip()
++  if vcs_tag != ''
++    version_tag = vcs_tag + ' ' + version_tag
++  endif
++endif
+ 
+ gamescope_version_conf = configuration_data()
+ gamescope_version_conf.set('VCS_TAG', version_tag)
+-- 
+2.55.0
+
