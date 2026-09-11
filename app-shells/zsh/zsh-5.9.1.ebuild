@@ -64,8 +64,8 @@ if [[ ${PV} == *9999 ]] ; then
 		doc? ( virtual/texi2dvi )
 	"
 else
-	BDEPEND+=" verify-sig? ( sec-keys/openpgp-keys-zsh )"
-	VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/zsh-keyring.asc"
+	BDEPEND+=" verify-sig? ( >=sec-keys/openpgp-keys-zsh-2026.07.12 )"
+	VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/zsh.asc"
 fi
 
 PATCHES=(

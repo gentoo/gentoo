@@ -27,7 +27,7 @@ HOMEPAGE="https://www.freerdp.com/"
 
 LICENSE="Apache-2.0"
 SLOT="3"
-IUSE="aad alsa camera cpu_flags_arm_neon +client cups debug +ffmpeg +fuse gstreamer +icu jpeg kerberos openh264 pulseaudio sdl server smartcard systemd test usb valgrind wayland X xinerama xv"
+IUSE="aad alsa camera cpu_flags_arm_neon +client cups debug +ffmpeg +fuse gstreamer +icu jpeg kerberos openh264 pulseaudio sdl server smartcard systemd test usb valgrind wayland winpr-tools X xinerama xv"
 RESTRICT="!test? ( test )"
 
 BDEPEND+="
@@ -171,7 +171,7 @@ src_configure() {
 		-DWITH_XV=$(option xv)
 		-DWITH_WAYLAND=$(option_client wayland)
 		-DWITH_WEBVIEW=OFF
-		-DWITH_WINPR_TOOLS=$(option server)
+		-DWITH_WINPR_TOOLS=$(option winpr-tools)
 	)
 	cmake_src_configure
 }

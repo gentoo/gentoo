@@ -124,6 +124,7 @@ src_unpack() {
 }
 
 PATCHES=(
+	"${FILESDIR}"/${PN}-10.0.0-fix-clang-build.patch
 	"${FILESDIR}"/${P}-fix-cmake4-compat.patch # Bug 970924
 	"${FILESDIR}"/${PN}-10.0.0-qa-gerbview-underlink.patch # Bug 980747
 )

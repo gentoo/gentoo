@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 DISTUTILS_USE_PEP517=setuptools
 
 inherit distutils-r1 pypi
@@ -27,14 +27,10 @@ RDEPEND="
 
 distutils_enable_sphinx docs \
 	dev-python/sphinx-rtd-theme
+EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
 
-python_test() {
-	local EPYTEST_DESELECT=(
-		# performance test
-		tests/midifiles/test_tracks.py::test_merge_large_midifile
-	)
-
-	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
-	epytest
-}
+EPYTEST_DESELECT=(
+	# performance test
+	tests/midifiles/test_tracks.py::test_merge_large_midifile
+)

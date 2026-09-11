@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,7 +8,7 @@ LLVM_OPTIONAL=1
 PYTHON_COMPAT=( python3_{10..13} )
 PYTHON_REQ_USE="xml(+)"
 
-inherit cmake flag-o-matic llvm-r1 python-any-r1
+inherit cmake flag-o-matic llvm-r2 python-any-r1
 
 DESCRIPTION="Documentation system for most programming languages"
 HOMEPAGE="https://www.doxygen.nl/"
@@ -75,7 +75,7 @@ PATCHES=(
 DOCS=( LANGUAGE.HOWTO README.md )
 
 pkg_setup() {
-	use clang && llvm-r1_pkg_setup
+	use clang && llvm-r2_pkg_setup
 	python-any-r1_pkg_setup
 }
 

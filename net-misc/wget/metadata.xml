@@ -10,6 +10,7 @@
 		<flag name="libproxy">Support for automatic proxy configuration management through <pkg>net-libs/libproxy</pkg>.</flag>
 		<flag name="metalink">Enable support for <pkg>media-libs/libmetalink</pkg></flag>
 		<flag name="ntlm">Enable support for NTLM (Windows-based) authorization</flag>
+		<flag name="psl">Enable Public Suffix List (PSL) support</flag>
 		<flag name="uuid">Generate UUIDs for the WARC (Web ARChive file format) using libuuid; otherwise use a simple RNG (random number generator)</flag>
 	</use>
 	<upstream>

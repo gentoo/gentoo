@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 inherit cmake-multilib crossdev flag-o-matic llvm.org llvm-utils
 inherit python-any-r1 toolchain-funcs
 
@@ -12,7 +12,7 @@ HOMEPAGE="https://llvm.org/docs/ExceptionHandling.html"
 
 LICENSE="Apache-2.0-with-LLVM-exceptions || ( UoI-NCSA MIT )"
 SLOT="0"
-IUSE="+clang +debug static-libs test"
+IUSE="cet +clang +debug static-libs test"
 REQUIRED_USE="test? ( clang )"
 RESTRICT="!test? ( test )"
 
@@ -132,6 +132,7 @@ multilib_src_configure() {
 		-DLLVM_ENABLE_RUNTIMES="libunwind"
 		-DLLVM_LIBDIR_SUFFIX=${libdir#lib}
 		-DLLVM_INCLUDE_TESTS=OFF
+		-DLIBUNWIND_ENABLE_CET=$(usex cet)
 		-DLIBUNWIND_ENABLE_ASSERTIONS=$(usex debug)
 		-DLIBUNWIND_ENABLE_STATIC=$(usex static-libs)
 		-DLIBUNWIND_INCLUDE_TESTS=$(usex test)

@@ -1,0 +1,15 @@
+https://bugs.gentoo.org/981233
+
+Fix building with CONFIG_X86_FRED and !CONFIG_KVM_INTEL.
+
+--- a/vboxdrv/linux/SUPDrv-linux.c
++++ b/vboxdrv/linux/SUPDrv-linux.c
+@@ -261,7 +261,7 @@ static __typeof__(cr4_read_shadow)              *g_pfnCr4ReadShadow;
+ #if defined(CONFIG_X86_FRED)
+ /** Flag whether the system is running with FRED enabled. */
+ static bool                                      g_fFredActive = false;
+-# if RTLNX_VER_MIN(7,1,0)
++# if RTLNX_VER_MIN(7,1,0) && IS_ENABLED(CONFIG_KVM_INTEL)
+ /** Function pointer to x86_entry_from_kvm(). */
+ static __typeof__(x86_entry_from_kvm)           *g_pfnX86EntryFromKvm = NULL;
+ #  define MY_FRED_ENTRY_FROM_KVM                "x86_entry_from_kvm"

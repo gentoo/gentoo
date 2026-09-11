@@ -17,7 +17,7 @@ HOMEPAGE="https://github.com/rails/jbuilder"
 
 LICENSE="MIT"
 SLOT="2"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~riscv"
 
 SUPPORTED_RAILS=( 8.1 8.0 7.2 )
 RAILS_DEPENDENCIES="dev-ruby/activesupport dev-ruby/actionview"

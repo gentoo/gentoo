@@ -14,6 +14,7 @@ SRC_URI+=" https://dev.gentoo.org/~chewi/distfiles/${P}-vendor.tar.xz"
 # make the vendor tarball a bit smaller.
 #
 # P=etcd-3.X.Y
+# ebuild ${P}.ebuild clean unpack
 # cd /var/tmp/portage/dev-db/${P}/work/${P}
 # sed -i "/\.\/tools\//d" go.work
 # go work vendor

@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 
 inherit distutils-r1
 
@@ -32,6 +32,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-0.9.9-py3.14.patch
 )
 
+EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
 
 python_test() {

@@ -1,6 +1,10 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (2026-08-29)
+# Requires CUDA.
+llvm-runtimes/clang-runtime llvm_targets_NVPTX
+
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2026-02-04)
 # Some systemd features will never work on musl.
 sys-apps/systemd homed
@@ -109,8 +113,10 @@ sys-devel/binutils gprofng
 gui-libs/gtk cpu_flags_x86_f16c
 
 # Michał Górny <mgorny@gentoo.org> (2023-12-31)
-# Requires dev-libs/level-zero.
+# Require dev-libs/level-zero.
 dev-lang/ispc gpu
+llvm-runtimes/openmp level-zero
+llvm-runtimes/clang-runtime llvm_targets_SPIRV
 
 # Guillaume Seren <guillaumeseren@gmail.com> (2023-11-29)
 # execinfo.h required for server.

@@ -4,121 +4,151 @@
 EAPI=8
 
 CRATES="
-	aho-corasick@1.1.3
+	aho-corasick@1.1.4
 	android_system_properties@0.1.5
-	anstream@0.6.15
-	anstyle-parse@0.2.5
-	anstyle-query@1.1.1
-	anstyle-wincon@3.0.4
-	anstyle@1.0.8
-	anyhow@1.0.89
+	anstream@1.0.0
+	anstyle-parse@1.0.0
+	anstyle-query@1.1.5
+	anstyle-wincon@3.0.11
+	anstyle@1.0.14
+	anyhow@1.0.103
+	arbitrary@1.4.2
 	ascii@1.1.0
-	autocfg@1.5.0
+	autocfg@1.5.1
 	bindgen@0.72.1
 	bitfield@0.14.0
 	bitflags@1.3.2
-	bitflags@2.11.0
+	bitflags@2.13.0
 	bumpalo@3.19.1
-	cc@1.2.55
+	bytemuck@1.25.0
+	bytemuck_derive@1.10.2
+	cc@1.2.66
 	cexpr@0.6.0
-	cfg-if@1.0.0
+	cfg-if@1.0.4
 	cfg_aliases@0.2.1
-	chrono@0.4.43
+	chrono@0.4.45
 	chunked_transfer@1.5.0
 	clang-sys@1.8.1
-	clap@4.5.20
-	clap_builder@4.5.20
+	clap@4.6.1
+	clap_builder@4.6.0
 	clap_complete@4.5.33
-	clap_derive@4.5.18
-	clap_lex@0.7.2
-	colorchoice@1.0.2
+	clap_derive@4.6.1
+	clap_lex@1.1.0
+	clipboard-win@5.4.1
+	colorchoice@1.0.5
 	core-foundation-sys@0.8.7
-	crossterm@0.28.1
-	either@1.13.0
+	crossterm@0.29.0
+	derive_arbitrary@1.4.2
+	dissimilar@1.0.11
+	document-features@0.2.12
+	either@1.16.0
+	endian-type@0.1.2
 	env_logger@0.10.2
 	equivalent@1.0.2
-	errno@0.3.9
+	errno@0.3.14
+	error-code@3.3.2
+	fd-lock@4.0.4
 	fiemap@0.2.0
 	find-msvc-tools@0.1.9
 	fuser@0.17.0
-	getrandom@0.2.17
-	glob@0.3.1
-	hashbrown@0.16.1
+	getrandom@0.4.3
+	glob@0.3.3
+	hashbrown@0.17.1
 	heck@0.5.0
+	hermit-abi@0.3.9
+	home@0.5.11
 	httpdate@1.0.3
 	iana-time-zone-haiku@0.1.2
 	iana-time-zone@0.1.65
-	indexmap@2.13.0
-	is_terminal_polyfill@1.70.1
+	indexmap@2.14.0
+	io-lifetimes@1.0.11
+	is_terminal_polyfill@1.70.2
 	itertools@0.12.1
-	itoa@1.0.17
+	itoa@1.0.18
 	js-sys@0.3.85
-	libc@0.2.180
+	libc@0.2.189
 	libloading@0.8.5
 	libudev-sys@0.1.4
-	linux-raw-sys@0.4.14
+	linux-raw-sys@0.12.1
+	litrs@1.0.0
 	lock_api@0.4.14
-	log@0.4.22
-	memchr@2.7.4
+	log@0.4.33
+	memchr@2.8.3
 	memoffset@0.9.1
 	minimal-lexical@0.2.1
-	mio@1.1.1
+	mio@1.2.1
+	nibble_vec@0.1.0
 	nix@0.30.1
 	nom@7.1.3
 	num-traits@0.2.19
 	num_enum@0.7.5
 	num_enum_derive@0.7.5
-	once_cell@1.20.2
+	once_cell@1.21.4
+	once_cell_polyfill@1.70.2
 	owo-colors@4.1.0
 	page_size@0.6.0
 	parking_lot@0.12.5
 	parking_lot_core@0.9.12
+	paste-test-suite@0.0.0
 	paste@1.0.15
-	pkg-config@0.3.31
-	prettyplease@0.2.22
-	proc-macro-crate@3.4.0
-	proc-macro2@1.0.87
-	quote@1.0.37
+	pkg-config@0.3.33
+	prettyplease@0.2.37
+	proc-macro-crate@3.5.0
+	proc-macro2@1.0.106
+	quote@1.0.46
+	r-efi@6.0.0
+	radix_trie@0.2.1
 	redox_syscall@0.5.18
 	ref-cast-impl@1.0.25
 	ref-cast@1.0.25
-	regex-automata@0.4.8
-	regex-syntax@0.8.5
-	regex@1.11.0
+	regex-automata@0.4.14
+	regex-syntax@0.8.11
+	regex@1.12.4
 	rustc-demangle@0.1.27
-	rustc-hash@2.1.1
-	rustix@0.38.37
-	rustversion@1.0.17
-	ryu@1.0.22
+	rustc-hash@2.1.2
+	rustix@1.1.4
+	rustversion@1.0.22
+	rustyline@17.0.2
 	scopeguard@1.2.0
 	serde@1.0.228
 	serde_core@1.0.228
 	serde_derive@1.0.228
-	serde_json@1.0.143
+	serde_json@1.0.150
+	serde_spanned@1.1.1
+	serde_test@1.0.177
 	shlex@1.3.0
+	shlex@2.0.1
 	signal-hook-mio@0.2.5
 	signal-hook-registry@1.4.8
 	signal-hook@0.3.18
-	smallvec@1.15.1
+	smallvec@1.15.2
 	strsim@0.11.1
 	strum@0.26.3
 	strum_macros@0.26.4
-	syn@2.0.87
-	terminal_size@0.4.0
+	syn@2.0.118
+	target-triple@1.0.0
+	termcolor@1.4.1
+	terminal_size@0.4.4
 	tiny_http@0.12.0
-	toml_datetime@0.7.5+spec-1.1.0
-	toml_edit@0.23.10+spec-1.0.0
-	toml_parser@1.0.9+spec-1.1.0
-	udev@0.7.0
-	unicode-ident@1.0.13
+	toml@1.0.6+spec-1.1.0
+	toml_datetime@1.1.1+spec-1.1.0
+	toml_edit@0.25.10+spec-1.1.0
+	toml_parser@1.1.2+spec-1.1.0
+	toml_writer@1.1.1+spec-1.1.0
+	trybuild@1.0.116
+	udev@0.9.3
+	unicode-ident@1.0.24
+	unicode-segmentation@1.13.3
+	unicode-width@0.2.2
 	utf8parse@0.2.2
-	uuid@1.10.0
+	uuid@1.23.4
 	wasi@0.11.1+wasi-snapshot-preview1
 	wasm-bindgen-macro-support@0.2.108
 	wasm-bindgen-macro@0.2.108
 	wasm-bindgen-shared@0.2.108
 	wasm-bindgen@0.2.108
 	winapi-i686-pc-windows-gnu@0.4.0
+	winapi-util@0.1.11
 	winapi-x86_64-pc-windows-gnu@0.4.0
 	winapi@0.3.9
 	windows-core@0.62.2
@@ -127,23 +157,43 @@ CRATES="
 	windows-link@0.2.1
 	windows-result@0.4.1
 	windows-strings@0.5.1
-	windows-sys@0.52.0
+	windows-sys@0.48.0
 	windows-sys@0.59.0
+	windows-sys@0.60.2
 	windows-sys@0.61.2
+	windows-targets@0.48.5
 	windows-targets@0.52.6
+	windows-targets@0.53.5
+	windows_aarch64_gnullvm@0.48.5
 	windows_aarch64_gnullvm@0.52.6
+	windows_aarch64_gnullvm@0.53.1
+	windows_aarch64_msvc@0.48.5
 	windows_aarch64_msvc@0.52.6
+	windows_aarch64_msvc@0.53.1
+	windows_i686_gnu@0.48.5
 	windows_i686_gnu@0.52.6
+	windows_i686_gnu@0.53.1
 	windows_i686_gnullvm@0.52.6
+	windows_i686_gnullvm@0.53.1
+	windows_i686_msvc@0.48.5
 	windows_i686_msvc@0.52.6
+	windows_i686_msvc@0.53.1
+	windows_x86_64_gnu@0.48.5
 	windows_x86_64_gnu@0.52.6
+	windows_x86_64_gnu@0.53.1
+	windows_x86_64_gnullvm@0.48.5
 	windows_x86_64_gnullvm@0.52.6
+	windows_x86_64_gnullvm@0.53.1
+	windows_x86_64_msvc@0.48.5
 	windows_x86_64_msvc@0.52.6
-	winnow@0.7.14
-	zerocopy-derive@0.8.27
-	zerocopy@0.8.27
-	zeroize@1.8.1
-	zeroize_derive@1.4.2
+	windows_x86_64_msvc@0.53.1
+	winnow@0.7.15
+	winnow@1.0.3
+	zerocopy-derive@0.8.53
+	zerocopy@0.8.53
+	zeroize@1.9.0
+	zeroize_derive@1.5.0
+	zmij@1.0.21
 "
 
 LLVM_COMPAT=( {17..21} )
@@ -206,9 +256,17 @@ BDEPEND="
 	')
 	elibc_musl? ( >=sys-libs/musl-1.2.5 )
 	virtual/pkgconfig
-	modules? ( >=sys-kernel/linux-headers-6.16.0 )
+	modules? (
+		dev-util/bindgen
+		>=sys-kernel/linux-headers-6.16.0
+	)
 	verify-sig? ( >=sec-keys/openpgp-keys-kentoverstreet-20241012 )
 "
+
+PATCHES=(
+	# https://github.com/koverstreet/bcachefs-tools/pull/894
+	"${FILESDIR}/${PN}-1.39.3-probe-rust-src.patch"
+)
 
 QA_FLAGS_IGNORED="/sbin/bcachefs"
 

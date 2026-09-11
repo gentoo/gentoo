@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -31,10 +31,10 @@ RDEPEND="
 	hdf? (
 		media-libs/libjpeg-turbo:=
 		sci-libs/hdf:=
-		sci-libs/hdf5:=
+		<sci-libs/hdf5-2:=
 	)
 	hdf5? (
-		sci-libs/hdf5:=[hl(+),mpi=,szip=,zlib]
+		<sci-libs/hdf5-2:=[hl(+),mpi=,szip=,zlib]
 		virtual/szip:=
 	)
 	zstd? ( app-arch/zstd:= )

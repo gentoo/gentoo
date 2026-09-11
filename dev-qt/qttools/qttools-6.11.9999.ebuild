@@ -3,8 +3,9 @@
 
 EAPI=8
 
-# match QDOC_SUPPORTED_CLANG_VERSIONS in src/qdoc/cmake/QDocConfiguration.cmake
-LLVM_COMPAT=( {17..21} )
+# see QDOC_SUPPORTED_CLANG_VERSIONS in src/qdoc/cmake/QDocConfiguration.cmake
+# for officially supported versions, but newer may work
+LLVM_COMPAT=( {17..23} )
 LLVM_OPTIONAL=1
 
 # behaves very badly when qttools is not already installed, also
@@ -15,6 +16,9 @@ QT6_RESTRICT_TESTS=1
 inherit flag-o-matic llvm-r2 optfeature qt6-build xdg
 
 DESCRIPTION="Qt Tools Collection"
+SRC_URI+="
+	https://distfiles.gentoo.org/pub/dev/ionen@gentoo.org/${PN}-6.11.2-llvm22.patch.xz
+"
 
 if [[ ${QT6_BUILD_TYPE} == release ]]; then
 	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~x86"
@@ -64,6 +68,10 @@ DEPEND="
 		vulkan? ( dev-util/vulkan-headers )
 	)
 "
+
+PATCHES=(
+	"${WORKDIR}"/${PN}-6.11.2-llvm22.patch
+)
 
 src_prepare() {
 	qt6-build_src_prepare

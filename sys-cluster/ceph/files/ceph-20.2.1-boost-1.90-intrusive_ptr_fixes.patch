@@ -1,0 +1,270 @@
+diff --git a/src/common/Formatter.h b/src/common/Formatter.h
+index 05814ec66c3..fa95fe6a6ca 100644
+--- a/src/common/Formatter.h
++++ b/src/common/Formatter.h
+@@ -5,13 +5,14 @@
+ 
+ #include "include/buffer_fwd.h"
+ 
++#include <cstdarg>
++#include <cstdint>
+ #include <deque>
+ #include <fstream>
+ #include <functional>
+ #include <list>
+ #include <memory>
+ #include <vector>
+-#include <stdarg.h>
+ #include <sstream>
+ #include <map>
+ #include <vector>
+diff --git a/src/journal/ObjectRecorder.h b/src/journal/ObjectRecorder.h
+index a4d75b3a7e3..4684095bf3f 100644
+--- a/src/journal/ObjectRecorder.h
++++ b/src/journal/ObjectRecorder.h
+@@ -21,6 +21,8 @@
+ namespace journal {
+ 
+ class ObjectRecorder;
++void intrusive_ptr_add_ref(ObjectRecorder*);
++void intrusive_ptr_release(ObjectRecorder*);
+ 
+ typedef std::pair<ceph::ref_t<FutureImpl>, bufferlist> AppendBuffer;
+ typedef std::list<AppendBuffer> AppendBuffers;
+@@ -155,6 +157,16 @@ private:
+                              bool notify_overflowed);
+ };
+ 
++inline void intrusive_ptr_add_ref(ObjectRecorder* o)
++{
++  o->get();
++}
++
++inline void intrusive_ptr_release(ObjectRecorder* o)
++{
++  o->put();
++}
++
+ } // namespace journal
+ 
+ #endif // CEPH_JOURNAL_OBJECT_RECORDER_H
+diff --git a/src/mds/Locker.cc b/src/mds/Locker.cc
+index e2d9936ab16..35f2781cc78 100644
+--- a/src/mds/Locker.cc
++++ b/src/mds/Locker.cc
+@@ -4489,7 +4489,7 @@ void Locker::handle_client_lease(const cref_t<MClientLease> &m)
+       dout(7) << "handle_client_lease client." << client << " renew on " << *dn
+ 	      << (!dn->lock.can_lease(client)?", revoking lease":"") << dendl;
+       if (dn->lock.can_lease(client)) {
+-        auto reply = make_message<MClientLease>(*m);
++        auto reply = ceph::make_message<MClientLease>(*m);
+ 	int pool = 1;   // fixme.. do something smart!
+ 	reply->h.duration_ms = (int)(1000 * mdcache->client_lease_durations[pool]);
+ 	reply->h.seq = ++l->seq;
+diff --git a/src/mds/MDCache.cc b/src/mds/MDCache.cc
+index 4ea1fa927b7..f54360a4e7f 100644
+--- a/src/mds/MDCache.cc
++++ b/src/mds/MDCache.cc
+@@ -10535,7 +10535,7 @@ void MDCache::handle_discover(const cref_t<MDiscover> &dis)
+ 
+ 
+   CInode *cur = 0;
+-  auto reply = make_message<MDiscoverReply>(*dis);
++  auto reply = ceph::make_message<MDiscoverReply>(*dis);
+ 
+   snapid_t snapid = dis->get_snapid();
+ 
+diff --git a/src/mds/Server.cc b/src/mds/Server.cc
+index d543d9cfa11..0ca1596128e 100644
+--- a/src/mds/Server.cc
++++ b/src/mds/Server.cc
+@@ -150,7 +150,7 @@ public:
+       }
+     }
+     batch_reqs.clear();
+-    server->reply_client_request(mdr, make_message<MClientReply>(*mdr->client_request, r));
++    server->reply_client_request(mdr, ceph::make_message<MClientReply>(*mdr->client_request, r));
+   }
+   void print(std::ostream& o) const override {
+     o << "[batch front=" << *mdr << "]";
+@@ -2142,7 +2142,7 @@ void Server::respond_to_request(const MDRequestRef& mdr, int r)
+       dout(20) << __func__ << ": batch head " << *mdr << dendl;
+       mdr->release_batch_op()->respond(r);
+     } else {
+-     reply_client_request(mdr, make_message<MClientReply>(*mdr->client_request, r));
++      reply_client_request(mdr, ceph::make_message<MClientReply>(*mdr->client_request, r));
+     }
+   } else if (mdr->internal_op > -1) {
+     dout(10) << __func__ << ": completing with result " << cpp_strerror(r) << " on internal " << *mdr << dendl;
+@@ -2290,7 +2290,7 @@ void Server::early_reply(const MDRequestRef& mdr, CInode *tracei, CDentry *trace
+   }
+ 
+ 
+-  auto reply = make_message<MClientReply>(*req, 0);
++  auto reply = ceph::make_message<MClientReply>(*req, 0);
+   reply->set_unsafe();
+ 
+   // mark xlocks "done", indicating that we are exposing uncommitted changes.
+@@ -2632,7 +2632,7 @@ void Server::handle_client_request(const cref_t<MClientRequest> &req)
+ 	   req->get_op() != CEPH_MDS_OP_OPEN &&
+ 	   req->get_op() != CEPH_MDS_OP_CREATE)) {
+ 	dout(5) << "already completed " << req->get_reqid() << dendl;
+-        auto reply = make_message<MClientReply>(*req, 0);
++        auto reply = ceph::make_message<MClientReply>(*req, 0);
+ 	if (created != inodeno_t()) {
+ 	  bufferlist extra;
+ 	  set_reply_extra_bl(req, created, extra);
+diff --git a/src/mds/Server.h b/src/mds/Server.h
+index 53fac0248db..09129a5a23b 100644
+--- a/src/mds/Server.h
++++ b/src/mds/Server.h
+@@ -25,6 +25,8 @@
+ #include "include/Context.h" // for C_GatherBase
+ #include "include/mempool.h"
+ 
++#include "messages/MClientReclaimReply.h"
++
+ #ifdef WITH_CRIMSON
+ #include "crimson/common/perf_counters_collection.h"
+ #else
+@@ -68,7 +70,6 @@ class MClientRequest;
+ class MClientSession;
+ class MClientSnap;
+ class MClientReclaim;
+-class MClientReclaimReply;
+ class MLock;
+ class MMDSPeerRequest;
+ class filepath;
+diff --git a/src/msg/Message.h b/src/msg/Message.h
+index b66c8ccafaa..0545ada386d 100644
+--- a/src/msg/Message.h
++++ b/src/msg/Message.h
+@@ -551,6 +551,16 @@ public:
+   void encode(uint64_t features, int crcflags, bool skip_header_crc = false);
+ };
+ 
++inline void intrusive_ptr_add_ref(Message* m)
++{
++  m->get();
++}
++
++inline void intrusive_ptr_release(Message* m)
++{
++  m->put();
++}
++
+ extern Message *decode_message(CephContext *cct,
+                                int crcflags,
+                                ceph_msg_header& header,
+diff --git a/src/msg/MessageRef.h b/src/msg/MessageRef.h
+index fd66872e727..300fc600b1f 100644
+--- a/src/msg/MessageRef.h
++++ b/src/msg/MessageRef.h
+@@ -25,9 +25,14 @@ using MConstRef = boost::intrusive_ptr<T const>;
+ template<typename T>
+ using MURef = std::unique_ptr<T, TOPNSPC::common::UniquePtrDeleter>;
+ 
+-using MessageRef = MRef<class Message>;
+-using MessageConstRef = MConstRef<class Message>;
+-using MessageURef = MURef<class Message>;
++class Message;
++
++void intrusive_ptr_add_ref(Message* m);
++void intrusive_ptr_release(Message* m);
++
++using MessageRef = MRef<Message>;
++using MessageConstRef = MConstRef<Message>;
++using MessageURef = MURef<Message>;
+ 
+ /* cd src/messages/ && for f in *; do printf 'class '; basename "$f" .h | tr -d '\n'; printf ';\n'; done >> ../msg/MessageRef.h */
+ 
+diff --git a/src/osd/Session.cc b/src/osd/Session.cc
+index 454e1b85768..c1c2cc55fe9 100644
+--- a/src/osd/Session.cc
++++ b/src/osd/Session.cc
+@@ -12,6 +12,17 @@
+ using std::map;
+ using std::set;
+ 
++Backoff::Backoff(spg_t pgid, PGRef pg, ceph::ref_t<Session> s,
++                 uint64_t i,
++                 const hobject_t& b, const hobject_t& e)
++: RefCountedObject(g_ceph_context),
++  pgid(pgid),
++  id(i),
++  pg(pg),
++  session(std::move(s)),
++  begin(b),
++  end(e) {}
++
+ void Session::clear_backoffs()
+ {
+   map<spg_t,map<hobject_t,set<ceph::ref_t<Backoff>>>> ls;
+diff --git a/src/osd/Session.h b/src/osd/Session.h
+index 05a0119d31e..8f7d5160338 100644
+--- a/src/osd/Session.h
++++ b/src/osd/Session.h
+@@ -115,14 +115,7 @@ private:
+   FRIEND_MAKE_REF(Backoff);
+   Backoff(spg_t pgid, PGRef pg, ceph::ref_t<Session> s,
+ 	  uint64_t i,
+-	  const hobject_t& b, const hobject_t& e)
+-    : RefCountedObject(g_ceph_context),
+-      pgid(pgid),
+-      id(i),
+-      pg(pg),
+-      session(std::move(s)),
+-      begin(b),
+-      end(e) {}
++	  const hobject_t& b, const hobject_t& e);
+ };
+ 
+ 
+diff --git a/src/rgw/driver/rados/rgw_datalog.cc b/src/rgw/driver/rados/rgw_datalog.cc
+index 8fe75e8a59a..f56e095b63d 100644
+--- a/src/rgw/driver/rados/rgw_datalog.cc
++++ b/src/rgw/driver/rados/rgw_datalog.cc
+@@ -122,6 +122,13 @@ void rgw_data_notify_entry::dump(Formatter *f) const
+   encode_json("gen", gen, f);
+ }
+ 
++boost::intrusive_ptr<RGWDataChangesBE> DataLogBackends::head() {
++  std::unique_lock l(m);
++  auto i = end();
++  --i;
++  return i->second;
++}
++
+ void rgw_data_notify_entry::decode_json(JSONObj *obj) {
+   JSONDecoder::decode_json("key", key, obj);
+   JSONDecoder::decode_json("gen", gen, obj);
+diff --git a/src/rgw/driver/rados/rgw_datalog.h b/src/rgw/driver/rados/rgw_datalog.h
+index ae013e2fdef..e77e05f6f45 100644
+--- a/src/rgw/driver/rados/rgw_datalog.h
++++ b/src/rgw/driver/rados/rgw_datalog.h
+@@ -218,12 +218,7 @@ class DataLogBackends final
+ 			  shards), datalog(datalog) {}
+ public:
+ 
+-  boost::intrusive_ptr<RGWDataChangesBE> head() {
+-    std::unique_lock l(m);
+-    auto i = end();
+-    --i;
+-    return i->second;
+-  }
++  boost::intrusive_ptr<RGWDataChangesBE> head();
+   asio::awaitable<std::tuple<std::span<rgw_data_change_log_entry>,
+ 			     std::string>>
+   list(const DoutPrefixProvider *dpp, int shard,
+diff --git a/src/rgw/rgw_sal_config.h b/src/rgw/rgw_sal_config.h
+index 7050940220b..c2e7f02e74b 100644
+--- a/src/rgw/rgw_sal_config.h
++++ b/src/rgw/rgw_sal_config.h
+@@ -15,6 +15,7 @@
+ 
+ #pragma once
+ 
++#include <cstdint>
+ #include <memory>
+ #include <optional>
+ #include <span>

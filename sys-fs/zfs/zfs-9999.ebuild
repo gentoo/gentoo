@@ -21,7 +21,7 @@ inherit linux-mod-r1 multiprocessing pam systemd udev usr-ldscript
 DESCRIPTION="Linux kernel module and userland utilities for ZFS"
 HOMEPAGE="https://github.com/openzfs/zfs"
 
-MODULES_KERNEL_MAX=7.0
+MODULES_KERNEL_MAX=7.2
 MODULES_KERNEL_MIN=4.18
 
 if [[ ${PV} == "9999" ]]; then
@@ -103,7 +103,7 @@ RDEPEND="
 		sys-fs/mdadm
 		sys-process/procps
 	)
-	!<sys-fs/zfs-kmod-2.4.0_rc2-r1
+	!sys-fs/zfs-kmod
 "
 
 if [[ ${PV} != "9999" ]] ; then

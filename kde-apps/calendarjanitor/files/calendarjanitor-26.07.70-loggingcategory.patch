@@ -1,0 +1,42 @@
+From 91aaef52ffc78c0518a7d5eff3071cb6ffec13a6 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Mon, 12 Aug 2024 16:02:27 +0200
+Subject: [PATCH] Move ecm_qt_install_logging_categories to konsolekalendar
+ subdir
+
+None is declared in calendarjanitor.
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -150,12 +150,6 @@ endif()
+ add_subdirectory(calendarjanitor)
+ add_subdirectory(konsolekalendar)
+ 
+-ecm_qt_install_logging_categories(
+-        EXPORT AKONADICALENDARTOOLS
+-        FILE console.categories
+-        DESTINATION ${KDE_INSTALL_LOGGINGCATEGORIESDIR}
+-)
+-
+ if(GIT_SOURCE_TARBALL)
+     if(DEFINED kde_configure_git_pre_commit_hook)
+         kde_configure_git_pre_commit_hook(CHECKS CLANG_FORMAT)
+--- a/konsolekalendar/CMakeLists.txt
++++ b/konsolekalendar/CMakeLists.txt
+@@ -57,6 +57,12 @@ install(
+         ${KDE_INSTALL_TARGETS_DEFAULT_ARGS}
+ )
+ 
++ecm_qt_install_logging_categories(
++        EXPORT AKONADICALENDARTOOLS
++        FILE console.categories
++        DESTINATION ${KDE_INSTALL_LOGGINGCATEGORIESDIR}
++        )
++
+ ########### install files ###############
+ 
+ install(PROGRAMS konsolekalendar.desktop DESTINATION ${KDE_INSTALL_APPDIR})
+-- 
+2.54.0
+

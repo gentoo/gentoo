@@ -1,0 +1,38 @@
+From c9e90e11da54ba0fb1856fc4c1af22e6eeb74b27 Mon Sep 17 00:00:00 2001
+From: "Friedrich W. H. Kossebau" <kossebau@kde.org>
+Date: Wed, 9 Sep 2026 14:12:45 +0200
+Subject: [PATCH] kcm_colord: add missing explicit linkage to Qt::Qml
+
+(cherry picked from commit ab34982a0694d1b62dc45314a5a449683e7587f3)
+---
+ CMakeLists.txt            | 1 +
+ colord-kcm/CMakeLists.txt | 1 +
+ 2 files changed, 2 insertions(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index de5229d..6b15dbe 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -43,6 +43,7 @@ ecm_setup_version("${PROJECT_VERSION}"
+ find_package(Qt6 ${REQUIRED_QT_VERSION} CONFIG REQUIRED COMPONENTS
+     Core
+     DBus
++    Qml
+     Widgets
+ )
+ 
+diff --git a/colord-kcm/CMakeLists.txt b/colord-kcm/CMakeLists.txt
+index ea8f31c..7c6f465 100644
+--- a/colord-kcm/CMakeLists.txt
++++ b/colord-kcm/CMakeLists.txt
+@@ -43,6 +43,7 @@ kcmutils_add_qml_kcm(kcm_colord SOURCES ${kcm_colord_SRCS})
+ target_link_libraries(kcm_colord
+     Qt::Core
+     Qt::DBus
++    Qt::Qml
+     KF6::KCMUtilsQuick
+     KF6::I18n
+     KF6::KCMUtils
+-- 
+GitLab
+

@@ -1,0 +1,20 @@
+diff '--color=auto' -Naur a/lib/freebl/Makefile b/lib/freebl/Makefile
+--- a/lib/freebl/Makefile	2026-09-09 19:46:15.505386235 +0300
++++ b/lib/freebl/Makefile	2026-09-09 19:47:22.985375793 +0300
+@@ -654,7 +654,16 @@
+                libcrux_mldsa_core.c libcrux_mldsa_portable.c \
+                libcrux_mldsa44_portable.c libcrux_mldsa65_portable.c \
+                libcrux_mldsa87_portable.c
++# Bug 2067434 - restrict these to the child build that compiles the real
++# library. The parent (loader-only) and lowhash stub builds reset CSRCS to their
++# single source file, and appending here bypasses that. The stub build shares
++# its OBJDIR with the real single-shlib build, so under make -jN both would
++# compile these to the same object files at once, producing truncated objects.
++ifdef FREEBL_CHILD_BUILD
++ifndef USE_STUB_BUILD
+ CSRCS += $(LIBCRUX_SRCS)
++endif
++endif
+ 
+ # Bug 1918767 / Bug 1918711 - by setting KRML_MUSTINLINE=inline here, we
+ # avoid it being defined to `inline __forceinline` (for msvc) or `inline

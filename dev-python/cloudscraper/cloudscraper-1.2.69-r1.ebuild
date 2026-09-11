@@ -1,10 +1,10 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{12..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 
 inherit distutils-r1 optfeature
 
@@ -34,6 +34,9 @@ BDEPEND="
 	)
 "
 
+EPYTEST_PLUGINS=( pytest-{forked,timeout} )
+distutils_enable_tests pytest
+
 # These tests fail for no understanadble reason
 EPYTEST_DESELECT=(
 	"tests/test_cloudscraper.py::TestCloudScraper::test_bad_interpreter_js_challenge1_16_05_2020"
@@ -41,9 +44,6 @@ EPYTEST_DESELECT=(
 	"tests/test_cloudscraper.py::TestCloudScraper::test_Captcha_challenge_12_12_2019"
 	"tests/test_cloudscraper.py::TestCloudScraper::test_reCaptcha_providers"
 )
-
-EPYTEST_PLUGINS=( pytest-{forked,timeout} )
-distutils_enable_tests pytest
 
 pkg_postinst() {
 	optfeature "brotli decompresssion support" "dev-python/brotlipy"

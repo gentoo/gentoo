@@ -1,5 +1,0 @@
-[Unit]
-Description=Buildbot-Worker target that allows to start or stop all buildbot_worker@*.service instances
-
-[Install]
-WantedBy=multi-user.target

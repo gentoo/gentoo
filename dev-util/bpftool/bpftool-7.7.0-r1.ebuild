@@ -3,11 +3,11 @@
 
 EAPI=8
 
-LLVM_COMPAT=( {15..22} )
+LLVM_COMPAT=( {17..23} )
 LLVM_OPTIONAL=1
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 
-inherit bash-completion-r1 flag-o-matic linux-info llvm-r1 python-any-r1 toolchain-funcs
+inherit flag-o-matic linux-info llvm-r2 python-any-r1 shell-completion toolchain-funcs
 
 DESCRIPTION="Tool for inspection and simple manipulation of eBPF programs and maps"
 HOMEPAGE="https://github.com/libbpf/bpftool"
@@ -68,7 +68,7 @@ CONFIG_CHECK="~DEBUG_INFO_BTF"
 pkg_setup() {
 	linux-info_pkg_setup
 	python-any-r1_pkg_setup
-	use llvm && llvm-r1_pkg_setup
+	use llvm && llvm-r2_pkg_setup
 }
 
 src_prepare() {

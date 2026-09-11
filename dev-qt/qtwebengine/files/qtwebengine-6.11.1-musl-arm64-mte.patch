@@ -1,0 +1,20 @@
+Add a mean to disable the has_memory_tagging condition so the ebuild
+can disable it where needed. Just a quick solution, ideally Gn itself
+should be able to figure this out.
+
+https://bugs.gentoo.org/981510
+https://gitlab.alpinelinux.org/alpine/aports/-/blob/master/community/chromium/partalloc-no-tagging-arm64.patch
+--- a/src/3rdparty/chromium/base/allocator/partition_allocator/partition_alloc.gni
++++ b/src/3rdparty/chromium/base/allocator/partition_allocator/partition_alloc.gni
+@@ -88,6 +88,10 @@
+ use_large_empty_slot_span_ring = true
+ 
++declare_args() {
++  allow_memory_tagging = true
++}
++
+ has_memory_tagging = current_cpu == "arm64" && is_clang && !is_asan &&
+-                     !is_hwasan && (is_linux || is_android)
++                     !is_hwasan && (is_linux || is_android) && allow_memory_tagging
+ 
+ declare_args() {

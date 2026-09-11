@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{11..14} )
-LLVM_COMPAT=( {16..22} )
+LLVM_COMPAT=( {16..23} )
 LLVM_OPTIONAL=1
 
 inherit dot-a flag-o-matic linux-info llvm-r2 pam python-single-r1 systemd tmpfiles
@@ -18,7 +18,7 @@ S="${WORKDIR}/${PN}-${MY_PV}"
 LICENSE="POSTGRESQL GPL-2"
 SLOT=$(ver_cut 1)
 
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~x64-macos ~x64-solaris"
 
 IUSE="debug doc +icu kerberos ldap llvm +lz4 nls pam perl python
 	  +readline selinux +server systemd ssl static-libs tcl uuid xml

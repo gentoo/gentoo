@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 
 DISTUTILS_USE_PEP517=setuptools
 inherit distutils-r1 xdg
@@ -25,7 +25,7 @@ else
 		https://codeberg.org/eduVPN/linux-app/releases/download/${PV}/${MY_P}.tar.xz -> ${P}.tar.xz
 		verify-sig? ( https://codeberg.org/eduVPN/linux-app/releases/download/${PV}/${MY_P}.tar.xz.asc -> ${P}.tar.xz.asc )
 	"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 ~x86"
 	S="${WORKDIR}/${MY_P}"
 fi
 

@@ -1,0 +1,41 @@
+--- a/src/scripts/Makefile	2026-08-19 15:35:52.989866868 +0200
++++ b/src/scripts/Makefile	2026-08-19 15:37:06.201087059 +0200
+@@ -677,7 +677,7 @@
+ $(L)/libmemory-os-wrapper.a: memory-os-wrapper.C $(MEM_DEPS)
+ 	-$(CHARMC) -o $@ memory-os-wrapper.C || touch $@
+ 
+-$(eval $(call libmem,hooks-charmdebug,,-DCMK_MEMORY_BUILD_GNU_HOOKS -DCMK_MEMORY_BUILD_CHARMDEBUG -touch-on-failure))
++$(eval $(call libmem,hooks-charmdebug,,-DCMK_MEMORY_BUILD_CHARMDEBUG -touch-on-failure))
+ 
+ # If the system doesn't have sbrk, these compilations may fail.
+ #  This is OK, but then we can't use "-memory gnu" or friends.
+@@ -900,7 +900,7 @@
+ 	$(NATIVECHARMC) -language c++ -o conv-cpm -cp ../bin/ conv-cpm.o
+ 
+ conv-cpm.o: conv-cpm.C $(CVHEADERS)
+-	$(NATIVECHARMC) conv-cpm.C
++	$(NATIVECHARMC) conv-cpm.C $(GENTOO_CXXFLAGS)
+ 
+ ###############################################################################
+ #
+@@ -952,7 +952,8 @@
+ 
+ $(CHARMXIOBJ) $(SDAGOBJ): $(XIHEADERS) $(SDAGHEADERS)
+ $(CHARMXIOBJ) $(SDAGOBJ): CXX=$(NATIVECHARMC)
+-$(CHARMXIOBJ) $(SDAGOBJ): CXXFLAGS=-I$(SRCBASE)/xlat-i/ -I$(SRCBASE)/xlat-i/sdag/ -I.
++$(CHARMXIOBJ) $(SDAGOBJ): CPPFLAGS=-I$(SRCBASE)/xlat-i/ -I$(SRCBASE)/xlat-i/sdag/ -I.
++$(CHARMXIOBJ) $(SDAGOBJ): CXXFLAGS=$(GENTOO_CXXFLAGS)
+ xi-scan.o: CXXFLAGS+=-DYY_NEVER_INTERACTIVE
+ VPATH=$(SRCBASE)/xlat-i:$(SRCBASE)/xlat-i/sdag:$(SRCBASE)/xlat-i/sdag/constructs
+ 
+--- a/src/scripts/charmc	2026-08-21 15:46:43.304527337 +0200
++++ b/src/scripts/charmc	2026-08-21 15:47:04.747301936 +0200
+@@ -1917,7 +1917,7 @@
+ 	*.C|*.cc|*.cxx|*.cpp|*.c++|*.cu)
+                 if [ -n "$NATIVE" ]
+                 then
+-                    Do $CMK_NATIVE_CXX $CMK_NATIVE_CXX_FLAGS -I$CHARMINC $CMK_SYSINC $OPTS_CPP_INTERNAL $OPTS_CPP -c $FILE $DESTO
++                    Do $CMK_NATIVE_CXX $CMK_NATIVE_CXX_FLAGS -I$CHARMINC $CMK_SYSINC $OPTS_CPP_INTERNAL $OPTS_CPP $OPTS_CXX -c $FILE $DESTO
+                 else
+                     Do $CHARM_CXX $CHARM_CXX_FLAGS -c $FILE $DESTO
+                 fi

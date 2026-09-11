@@ -13,14 +13,15 @@ SLOT="0/${PV}"
 
 if [[ ${PV} =~ "9999" ]]; then
 	EGIT_REPO_URI="https://github.com/gnuradio/gnuradio.git"
-	EGIT_BRANCH="maint-3.10"
+	EGIT_BRANCH="main"
+	SRC_URI+="https://dev.gentoo.org/~tomjbe/distfiles/${PN}-3.11-OOT-compatibility.patch.xz"
 	inherit git-r3
 else
 	SRC_URI="https://github.com/gnuradio/gnuradio/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~riscv ~x86"
 fi
 
-IUSE="+audio +alsa +analog +digital channels ctrlport doc dtv examples fec +filter grc iio jack modtool network oss performance-counters portaudio +qt5 sdl soapy test trellis uhd vocoder +utils wavelet zeromq"
+IUSE="+audio +alsa +analog +digital channels ctrlport doc dtv examples fec +filter grc iio jack modtool network oss performance-counters portaudio +qt6 sdl soapy test trellis uhd vocoder +utils wavelet zeromq"
 
 #RESTRICT="!test? ( test )"
 # Tests are pulling in the installed python libs and breaking
@@ -31,14 +32,14 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	alsa? ( audio )
 	analog? ( filter )
 	audio? ( || ( alsa oss jack portaudio ) )
-	channels? ( filter analog qt5 )
+	channels? ( filter analog qt6 )
 	digital? ( filter analog )
 	dtv? ( filter analog fec )
 	jack? ( audio )
 	modtool? ( utils )
 	oss? ( audio )
 	portaudio? ( audio )
-	qt5? ( filter )
+	qt6? ( filter )
 	test? ( channels )
 	trellis? ( analog digital )
 	uhd? ( filter analog )
@@ -49,15 +50,15 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 RDEPEND="${PYTHON_DEPS}
 	$(python_gen_cond_dep 'dev-libs/boost:=[python,${PYTHON_USEDEP}]')
 	dev-libs/gmp:=
-	dev-libs/log4cpp:=
 	$(python_gen_cond_dep 'dev-python/jsonschema[${PYTHON_USEDEP}]')
 	dev-libs/spdlog:=
 	dev-libs/libfmt:=
 	sci-libs/fftw:3.0=
 	sci-libs/volk:=
+	media-libs/libglvnd
 	media-libs/libsndfile
 	sys-libs/libunwind
-	alsa? ( media-libs/alsa-lib:= )
+	alsa? ( media-libs/alsa-lib )
 	ctrlport? (
 		$(python_gen_cond_dep 'dev-python/thrift[${PYTHON_USEDEP}]')
 	)
@@ -67,15 +68,13 @@ RDEPEND="${PYTHON_DEPS}
 	)
 	filter? (
 		$(python_gen_cond_dep 'dev-python/scipy[${PYTHON_USEDEP}]')
-		qt5? ( $(python_gen_cond_dep 'dev-python/pyqtgraph[qt5,${PYTHON_USEDEP}]') )
+		qt6? ( $(python_gen_cond_dep '>=dev-python/pyqtgraph-0.14.0-r1[pyqt6,${PYTHON_USEDEP}]') )
 	)
 	grc? (
 		$(python_gen_cond_dep 'dev-python/mako[${PYTHON_USEDEP}]
 		dev-python/numpy[${PYTHON_USEDEP}]
 		dev-python/pygobject:3[${PYTHON_USEDEP}]
 		dev-python/pyyaml[${PYTHON_USEDEP}]')
-		x11-libs/gtk+:3[introspection]
-		x11-libs/pango[introspection]
 	)
 	iio? (
 		net-libs/libiio:=
@@ -83,12 +82,11 @@ RDEPEND="${PYTHON_DEPS}
 	)
 	jack? ( virtual/jack )
 	portaudio? ( >=media-libs/portaudio-19_pre )
-	qt5? (
-		$(python_gen_cond_dep 'dev-python/pyqt5[opengl,${PYTHON_USEDEP}]')
-		dev-qt/qtcore:5
-		dev-qt/qtgui:5
-		x11-libs/qwt:6=[qt5(-)]
-		dev-qt/qtwidgets:5
+	qt6? (
+		$(python_gen_cond_dep 'dev-python/pyqt6[opengl,${PYTHON_USEDEP}]')
+		$(python_gen_cond_dep 'dev-python/qtpy[pyqt6,${PYTHON_USEDEP}]')
+		dev-qt/qtbase:6[gui,widgets]
+		x11-libs/qwt:6=
 	)
 	soapy? (
 		net-wireless/soapysdr:=[${PYTHON_SINGLE_USEDEP}]
@@ -133,6 +131,11 @@ DEPEND="${RDEPEND}
 	zeromq? ( net-libs/cppzmq )
 "
 
+src_unpack() {
+	unpack ${PN}-3.11-OOT-compatibility.patch.xz
+	git-r3_src_unpack
+}
+
 src_prepare() {
 	xdg_environment_reset #534582
 
@@ -140,6 +143,12 @@ src_prepare() {
 	use !jack && sed -i 's#jack.h#jack-nonexistent.h#' cmake/Modules/FindJACK.cmake
 	use !oss && sed -i 's#soundcard.h#oss-nonexistent.h#g' cmake/Modules/FindOSS.cmake
 	use !portaudio && sed -i 's#portaudio.h#portaudio-nonexistent.h#g' cmake/Modules/FindPORTAUDIO.cmake
+
+	# see https://github.com/gnuradio/gnuradio/pull/8127
+	# support existing OOT modules
+	eapply "${WORKDIR}/${PN}-3.11-OOT-compatibility.patch"
+
+	eapply_user
 
 	cmake_src_prepare
 }
@@ -168,7 +177,7 @@ src_configure() {
 		-DENABLE_GR_PDU=ON
 		-DENABLE_PERFORMANCE_COUNTERS="$(usex performance-counters ON OFF)"
 		-DENABLE_TESTING="$(usex test ON OFF)"
-		-DENABLE_GR_QTGUI="$(usex qt5 ON OFF)"
+		-DENABLE_GR_QTGUI="$(usex qt6 ON OFF)"
 		-DENABLE_GR_SOAPY="$(usex soapy ON OFF)"
 		-DENABLE_GR_TRELLIS="$(usex trellis ON OFF)"
 		-DENABLE_GR_UHD="$(usex uhd ON OFF)"
@@ -177,7 +186,7 @@ src_configure() {
 		-DENABLE_GR_VOCODER="$(usex vocoder ON OFF)"
 		-DENABLE_GR_WAVELET="$(usex wavelet ON OFF)"
 		-DENABLE_GR_ZEROMQ="$(usex zeromq ON OFF)"
-		-DSYSCONFDIR="${EPREFIX}"/etc
+		-DCMAKE_INSTALL_SYSCONFDIR="${EPREFIX}"/etc
 		-DPYTHON_EXECUTABLE="${PYTHON}"
 		-DGR_PYTHON_DIR="$(python_get_sitedir)"
 		-DGR_PKG_DOC_DIR="${EPREFIX}/usr/share/doc/${PF}"

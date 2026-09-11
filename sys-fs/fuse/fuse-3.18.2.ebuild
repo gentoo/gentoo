@@ -33,7 +33,6 @@ BDEPEND="
 		${PYTHON_DEPS}
 		$(python_gen_any_dep '
 			dev-python/pytest[${PYTHON_USEDEP}]
-			dev-python/looseversion[${PYTHON_USEDEP}]
 		')
 	)
 "
@@ -41,8 +40,7 @@ BDEPEND="
 DOCS=( AUTHORS ChangeLog.rst README.md doc/README.NFS doc/kernel.txt )
 
 python_check_deps() {
-	python_has_version "dev-python/pytest[${PYTHON_USEDEP}]" &&
-	python_has_version "dev-python/looseversion[${PYTHON_USEDEP}]"
+	python_has_version "dev-python/pytest[${PYTHON_USEDEP}]"
 }
 
 pkg_setup() {

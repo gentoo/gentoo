@@ -16,7 +16,7 @@ else
 	SRC_URI="https://git.sr.ht/~bzg/${PN}/archive/release_${PV}.tar.gz
 		-> ${P}.tar.gz"
 	S="${WORKDIR}/${PN}-release_${PV}/lisp"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~riscv ~x86"
+	KEYWORDS="amd64 ~arm ~arm64 ~ppc ~riscv ~x86"
 fi
 
 LICENSE="GPL-3+"

@@ -1,0 +1,53 @@
+From 3ed69d3fb85bac0901dc5b4899d7983cf1f7bbe7 Mon Sep 17 00:00:00 2001
+Message-ID: <3ed69d3fb85bac0901dc5b4899d7983cf1f7bbe7.1788185282.git.sam@gentoo.org>
+In-Reply-To: <cf55ce42d0268f9cfd7abc43aa4ec62d2e8c3f53.1788185282.git.sam@gentoo.org>
+References: <cf55ce42d0268f9cfd7abc43aa4ec62d2e8c3f53.1788185282.git.sam@gentoo.org>
+From: NIIBE Yutaka <gniibe@fsij.org>
+Date: Fri, 28 Aug 2026 15:25:22 +0900
+Subject: [PATCH 3/3] cipher:rsa:pss: Fix SALT-LENGTH handling.
+
+* cipher/pubkey-util.c (_gcry_pk_util_data_to_mpi): For
+PUBKEY_OP_SIGN, just like for PUBKEY_OP_VERIFY, reject larger
+SALT-LENGTH as the comment says.  Fix releasing LIST on error.
+
+--
+
+Fixes-commit: 0bd8137e68c201b6c2290710e348aaf57efa2b2e
+GnuPG-bug-id: 8377
+Reported-by: JEAN Jeremy <Jeremy.Jean@ssi.gouv.fr>
+Signed-off-by: NIIBE Yutaka <gniibe@fsij.org>
+---
+ cipher/pubkey-util.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/cipher/pubkey-util.c b/cipher/pubkey-util.c
+index 4e8350a8..aac5c3f8 100644
+--- a/cipher/pubkey-util.c
++++ b/cipher/pubkey-util.c
+@@ -1305,10 +1305,15 @@ _gcry_pk_util_data_to_mpi (gcry_sexp_t input, gcry_mpi_t *ret_mpi,
+           if (!s)
+             {
+               rc = GPG_ERR_NO_OBJ;
++              sexp_release (list);
+               goto leave;
+             }
+           ctx->saltlen = (unsigned int)strtoul (s, NULL, 10);
++          if (ctx->saltlen > 16384)
++            rc = GPG_ERR_TOO_LARGE;
+           sexp_release (list);
++          if (rc)
++            goto leave;
+         }
+ 
+       /* Get optional RANDOM-OVERRIDE.  */
+@@ -1416,6 +1421,7 @@ _gcry_pk_util_data_to_mpi (gcry_sexp_t input, gcry_mpi_t *ret_mpi,
+           if (!s)
+             {
+               rc = GPG_ERR_NO_OBJ;
++              sexp_release (list);
+               goto leave;
+             }
+           ctx->saltlen = (unsigned int)strtoul (s, NULL, 10);
+-- 
+2.55.0
+

@@ -1,0 +1,12 @@
+https://bugs.gentoo.org/981510
+https://github.com/qt/qtwebengine-chromium/commit/9bfd376e00327
+--- a/src/3rdparty/chromium/base/allocator/partition_allocator/src/partition_alloc/aarch64_support.h
++++ b/src/3rdparty/chromium/base/allocator/partition_allocator/src/partition_alloc/aarch64_support.h
+@@ -16,5 +16,6 @@
+ #include "partition_alloc/buildflags.h"
+ 
+-#if PA_BUILDFLAG(IS_ANDROID) || PA_BUILDFLAG(IS_LINUX)
++#if (PA_BUILDFLAG(IS_ANDROID) || PA_BUILDFLAG(IS_LINUX)) && \
++    __has_include(<sys/ifunc.h>)
+ #define HAS_HW_CAPS
+ #endif

@@ -1,0 +1,32 @@
+From 33b13ae5deae701d858f0d588c06e2a224efdc9e Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Tue, 1 Sep 2026 17:58:13 -0400
+Subject: [PATCH] ext/session/.../gh23043.phpt: session.save_path can be
+ nonempty
+
+Allow session.save_path to be nonempty in this test, as the test
+itself does not empty it, and in automated setups it is common to
+force all "temporary stuff" to a dedicated location.
+---
+ ext/session/tests/user_session_module/gh23043.phpt | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/ext/session/tests/user_session_module/gh23043.phpt b/ext/session/tests/user_session_module/gh23043.phpt
+index e3528884a79..caf98ac9385 100644
+--- a/ext/session/tests/user_session_module/gh23043.phpt
++++ b/ext/session/tests/user_session_module/gh23043.phpt
+@@ -27,9 +27,9 @@ function create_sid(): string {
+ 
+ Warning: SessionHandler::write(): Session ID is too long or contains illegal characters. Only the A-Z, a-z, 0-9, "-", and "," characters are allowed in %s on line %d
+ 
+-Warning: session_write_close(): Failed to write session data using user defined save handler. (session.save_path: , handler: a::write) in %s on line %d
++Warning: session_write_close(): Failed to write session data using user defined save handler. (session.save_path: %S, handler: a::write) in %s on line %d
+ string(0) ""
+ 
+ Warning: SessionHandler::write(): Session ID is too long or contains illegal characters. Only the A-Z, a-z, 0-9, "-", and "," characters are allowed in Unknown on line 0
+ 
+-Warning: session_write_close(): Failed to write session data using user defined save handler. (session.save_path: , handler: a::write) in Unknown on line 0
++Warning: session_write_close(): Failed to write session data using user defined save handler. (session.save_path: %S, handler: a::write) in Unknown on line 0
+-- 
+2.55.0
+

@@ -1,0 +1,30 @@
+# Copyright 2024-2026 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=8
+
+DISTUTILS_EXT=1
+DISTUTILS_USE_PEP517=meson-python
+PYPI_VERIFY_REPO=https://github.com/dnicolodi/python-siphash24
+PYTHON_COMPAT=( python3_{12..15} )
+
+inherit distutils-r1 pypi
+
+DESCRIPTION="Streaming-capable SipHash-1-3 and SipHash-2-4 Implementation"
+HOMEPAGE="
+	https://github.com/dnicolodi/python-siphash24/
+	https://pypi.org/project/siphash24/
+"
+
+LICENSE="|| ( Apache-2.0 LGPL-2.1+ )"
+SLOT="0"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv"
+
+DEPEND="
+	dev-libs/c-siphash
+"
+BDEPEND="
+	>=dev-python/cython-3.1.0[${PYTHON_USEDEP}]
+"
+
+distutils_enable_tests unittest

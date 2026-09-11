@@ -35,6 +35,9 @@ RDEPEND="
 	mimalloc? ( >=dev-libs/mimalloc-3:= )
 "
 DEPEND="${RDEPEND}"
+BDEPEND="
+	test? ( llvm-core/clang:* )
+"
 
 pkg_pretend() {
 	# Requires a c++20 compiler, see #831473
@@ -74,10 +77,8 @@ src_prepare() {
 	# Fails if binutils errors out on textrels by default
 	rm test/textrel.sh test/textrel2.sh || die
 
-	# Fails with (sometimes, maybe dependent on sys-devel/clang default
-	# linker):
-	# "/usr/bin/x86_64-pc-linux-gnu-ld.bfd: unrecognised emulation mode: llvm"
-	rm test/lto-llvm2.sh || die
+	# Don't let the default linker config affect the tests, bug #974439
+	sed -e 's:\(clang\|clang\+\+\):\1 --no-default-config:' -i test/*.sh || die
 
 	# static-pie tests require glibc built with static-pie support
 	if ! has_version -d 'sys-libs/glibc[static-pie(+)]'; then

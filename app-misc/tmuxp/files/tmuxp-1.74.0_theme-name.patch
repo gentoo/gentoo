@@ -1,0 +1,90 @@
+diff --git a/src/tmuxp/cli/_formatter.py b/src/tmuxp/cli/_formatter.py
+index 2296c37b..50b652e6 100644
+--- a/src/tmuxp/cli/_formatter.py
++++ b/src/tmuxp/cli/_formatter.py
+@@ -83,7 +83,7 @@ class TmuxpHelpFormatter(argparse.RawDescriptionHelpFormatter):
+     """
+ 
+     # Theme for colorization, set by create_themed_formatter() or externally
+-    _theme: HelpTheme | None = None
++    _tmuxp_theme: HelpTheme | None = None
+ 
+     def _fill_text(self, text: str, width: int, indent: str) -> str:
+         """Fill text, colorizing examples sections if theme is available.
+@@ -110,7 +110,7 @@ class TmuxpHelpFormatter(argparse.RawDescriptionHelpFormatter):
+         >>> formatter._fill_text("hello", 80, "")
+         'hello'
+         """
+-        theme = getattr(self, "_theme", None)
++        theme = getattr(self, "_tmuxp_theme", None)
+         if not text or theme is None:
+             return super()._fill_text(text, width, indent)
+ 
+@@ -347,7 +347,7 @@ def create_themed_formatter(
+     >>> colors = Colors(ColorMode.ALWAYS)
+     >>> formatter_cls = create_themed_formatter(colors)
+     >>> formatter = formatter_cls("test")
+-    >>> formatter._theme is not None
++    >>> formatter._tmuxp_theme is not None
+     True
+ 
+     With colors disabled:
+@@ -355,7 +355,7 @@ def create_themed_formatter(
+     >>> colors = Colors(ColorMode.NEVER)
+     >>> formatter_cls = create_themed_formatter(colors)
+     >>> formatter = formatter_cls("test")
+-    >>> formatter._theme is None
++    >>> formatter._tmuxp_theme is None
+     True
+     """
+     # Import here to avoid circular import at module load
+@@ -372,6 +372,6 @@ def create_themed_formatter(
+ 
+         def __init__(self, prog: str, **kwargs: t.Any) -> None:
+             super().__init__(prog, **kwargs)
+-            self._theme = theme
++            self._tmuxp_theme = theme
+ 
+     return ThemedTmuxpHelpFormatter
+diff --git a/tests/cli/test_formatter.py b/tests/cli/test_formatter.py
+index 3f1ba378..49b37142 100644
+--- a/tests/cli/test_formatter.py
++++ b/tests/cli/test_formatter.py
+@@ -30,8 +30,8 @@ def test_create_themed_formatter_with_colors_enabled(
+     formatter_cls = create_themed_formatter(colors)
+     formatter = formatter_cls("test")
+ 
+-    assert formatter._theme is not None
+-    assert formatter._theme.prog != ""  # Has color codes
++    assert formatter._tmuxp_theme is not None
++    assert formatter._tmuxp_theme.prog != ""  # Has color codes
+ 
+ 
+ def test_create_themed_formatter_with_colors_disabled() -> None:
+@@ -40,7 +40,7 @@ def test_create_themed_formatter_with_colors_disabled() -> None:
+     formatter_cls = create_themed_formatter(colors)
+     formatter = formatter_cls("test")
+ 
+-    assert formatter._theme is None
++    assert formatter._tmuxp_theme is None
+ 
+ 
+ def test_create_themed_formatter_auto_mode_respects_no_color(
+@@ -51,7 +51,7 @@ def test_create_themed_formatter_auto_mode_respects_no_color(
+     formatter_cls = create_themed_formatter()
+     formatter = formatter_cls("test")
+ 
+-    assert formatter._theme is None
++    assert formatter._tmuxp_theme is None
+ 
+ 
+ def test_create_themed_formatter_auto_mode_respects_force_color(
+@@ -63,7 +63,7 @@ def test_create_themed_formatter_auto_mode_respects_force_color(
+     formatter_cls = create_themed_formatter()
+     formatter = formatter_cls("test")
+ 
+-    assert formatter._theme is not None
++    assert formatter._tmuxp_theme is not None
+ 
+ 
+ def test_fill_text_with_theme_colorizes_examples(

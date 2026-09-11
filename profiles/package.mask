@@ -36,6 +36,103 @@
 
 #--- END OF EXAMPLES ---
 
+# Arthur Zamarin <arthurzam@gentoo.org> (2026-09-11)
+# EAPI=7, old PYTHON_COMPAT, doesn't work with spotify for a long time,
+# upstream inactive for a decade.
+# Removal on 2026-10-11.  Bugs #982278, #952501.
+gnome-extra/gnome-integration-spotify
+
+# Arthur Zamarin <arthurzam@gentoo.org> (2026-09-11)
+# EAPI=7, uses deprecated golang eclass, fails to compile.
+# Removal on 2026-10-11.  Bugs #982277, #657284, #739422, #844712, #926030.
+net-analyzer/kapacitor
+
+# Alexey Sokolov <alexey+gentoo@asokolov.org> (2026-09-09)
+# Upstream abandoned the project, suggests www-servers/gatling
+# by the same upstream instead.
+# Removal on 2026-10-09. Bugs #783666, #944275.
+www-servers/fnord
+acct-user/fnord
+acct-user/fnordlog
+
+# Sam James <sam@gentoo.org> (2026-09-08)
+# Changes ctest(1) behaviour to exit non-zero if no tests, which
+# may break many ebuilds. Needs some assessment.
+>=dev-build/cmake-4.4.0
+
+# David Seifert <soap@gentoo.org> (2026-09-07)
+# Unmaintained, lots of FetchContent_* hacks.
+# Removal on 2026-10-07. Bug #927149.
+sci-physics/espresso
+
+# Michał Górny <mgorny@gentoo.org> (2026-09-05)
+# Broken with current dev-python/pywayland version.  Stuck on old
+# gui-libs/wlroots.  Used only by old versions of x11-wm/qtile.
+# Removal on 2026-10-05.  Bug #982020.
+dev-python/pywlroots
+
+# Michał Górny <mgorny@gentoo.org> (2026-09-05)
+# Stuck on Python 3.12, broken tests, no reverse dependencies.
+# Removal on 2026-10-05.  Bug #952388.
+dev-python/python3-saml
+
+# Michał Górny <mgorny@gentoo.org> (2026-09-05)
+# Stuck on Python 3.12.  No activity upstream.
+# Removal on 2026-10-05.  Bug #952340.
+dev-python/ioflo
+dev-python/raet
+
+# Michał Górny <mgorny@gentoo.org> (2026-09-05)
+# dev-python/consonance has been broken since at least 2024.  Contrary
+# to PYTHON_COMPAT, the code is incompatible with Python 3.12+.
+# The protobuf file needs to be rebuilt, yet upstream never published
+# its source.  No upstream activity since 2021.  No reverse
+# dependencies.  Including a bunch of dead NIH dependencies.
+# Removal on 2026-10-05.  Bug #926610.
+dev-python/consonance
+dev-python/dissononce
+dev-python/python-axolotl
+dev-python/python-axolotl-curve25519
+dev-python/transitions
+
+# Michał Górny <mgorny@gentoo.org> (2026-09-04)
+# Test suite broken with numpy-2.  Last release in 2020.  No reverse
+# dependencies.
+# Removal on 2026-10-04.  Bug #952323.
+dev-python/chart-studio
+
+# Michał Górny <mgorny@gentoo.org> (2026-09-01)
+# Low quality slop package with high code churn and frequently changing
+# results.  All the most recent releases are broken.
+# No reverse dependencies.  Removal on 2026-10-01.  Bug #981756.
+dev-python/pyproject-fmt
+
+# Ulrich Müller <ulm@gentoo.org> (2026-08-31)
+# Snapshot versions, masked for testing.
+<app-editors/emacs-32.0.9999:32-vcs
+
+# Bernard Cafarelli <voyageur@gentoo.org> (2026-08-24)
+# Abandoned (last release in 2008), and uncertain useful value with modern
+# filesystems. Also collides with dev-util/shake
+# Removal on 2026-09-24. Bug #978360
+sys-fs/shake
+
+# Bernard Cafarelli <voyageur@gentoo.org> (2026-08-24)
+# Abandoned (last release in 2009), and failing on sample QTVR panorama files
+# Removal on 2026-09-24. Bug #955494
+media-gfx/freepv
+
+# Sam James <sam@gentoo.org> (2026-08-21)
+# Grave security vulnerabilities which either haven't been
+# fixed upstream or fixed insufficiently. Our version is out-of-date as
+# well though the latest version wouldn't fix all of these. Other distributions
+# have removed croc because of its poor security posture already.
+# Use net-misc/wormhole-william or net-misc/magic-wormhole-rust instead.
+# Removal on 2026-09-20.  Bug #980854 and the older bug #918091.
+acct-group/croc
+acct-user/croc
+net-misc/croc
+
 # James Le Cuirot <chewi@gentoo.org> (2026-08-16)
 # This fork of Barrier sadly didn't get very far. Upstream have now archived the
 # repository. Use gui-apps/deskflow, which is now the FOSS upstream of the
@@ -79,37 +176,6 @@ dev-python/pyformance
 # Removal on 2026-09-03.  Bug #980354.
 dev-python/faust-cchardet
 
-# James Le Cuirot <chewi@gentoo.org> (2026-07-29)
-# These packages have been superseded by recent versions of
-# games-fps/ut2004-data, which now includes this content regardless of
-# installation source. For the XP Bonus Maps that were included in the ECE
-# package, install games-fps/ut2004-bonuspack-xp. Removal on 2026-08-29.
-games-fps/ut2004-bonuspack-ece
-games-fps/ut2004-bonuspack-mega
-
-# James Le Cuirot <chewi@gentoo.org> (2026-07-29)
-# UT2004 now has modern builds and is essentially free to download, so there is
-# no need for this ancient package that allowed you to run a server for free.
-# Use games-fps/ut2004[dedicated] instead. Removal on 2026-08-29. Bug #979392.
-games-server/ut2004-ded
-
-# James Le Cuirot <chewi@gentoo.org> (2026-07-29)
-# UT2004 now has modern builds and is essentially free to download, so there is
-# no reason to bother with this old demo. Removal on 2026-08-29. Bug #979271.
-games-fps/ut2004-demo
-
-# James Le Cuirot <chewi@gentoo.org> (2026-07-29)
-# UT2004 is basically the same as UT2003, only bigger and better. Unlike UT2003,
-# UT2004 now has modern builds and is essentially free to download, so there is
-# no reason to choose UT2003 anymore. Removal on 2026-08-29. Bug #790173.
-games-fps/ut2003
-games-fps/ut2003-bonuspack-cm
-games-fps/ut2003-bonuspack-de
-games-fps/ut2003-bonuspack-epic
-games-fps/ut2003-data
-games-fps/ut2003-demo
-games-util/uz2unpack
-
 # James Le Cuirot <chewi@gentoo.org> (2026-07-28)
 # microsoft-identity-broker no longer needs a user. Removal on 2026-09-28.
 acct-user/microsoft-identity-broker
@@ -135,15 +201,6 @@ net-dns/bind-tools
 # Removal on 2026-08-15.  Bug #942397.
 app-arch/p7zip
 
-# Michał Górny <mgorny@gentoo.org> (2026-07-13)
-# dev-python/fields is unmaintained for 5 years.  Broken with pytest-9,
-# we already patch it for earlier pytest versions.  It is the only
-# revdep of dev-python/characteristic which was archived in 2023.
-# No revdeps left.
-# Removal on 2026-08-12.  Bug #978175.
-dev-python/characteristic
-dev-python/fields
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2026-07-07)
 # dev-embedded/ponyprog destabilisation mask, bug #978907
 =dev-embedded/ponyprog-3.1.4_p20250501-r0
@@ -152,64 +209,15 @@ dev-python/fields
 # Introduces backwards breaking change. Mask until downstreams adjust
 >=dev-db/lmdb-1.0.0
 
-# Michał Górny <mgorny@gentoo.org> (2026-07-04)
-# Renamed to dev-python/jsonschema-path.  No revdeps left.
-# Removal on 2026-08-03.
-dev-python/jsonschema-spec
-
-# Michał Górny <mgorny@gentoo.org> (2026-06-30)
-# Backwards compatibility wrapper.  No revdeps left.
-# Removal on 2026-07-30.
-dev-python/roman-numerals-py
-
-# Michał Górny <mgorny@gentoo.org> (2026-06-29)
-# Unmaintained.  Requires patching since py3.12.  No revdeps.
-# Removal on 2026-07-29.  Bug #978274.
-dev-python/commentjson
-
-# Michał Górny <mgorny@gentoo.org> (2026-06-20)
-# No py3.14 in compat, tests lost on bump, no revdeps.
-# Removal on 2026-07-20.  Bug #973904.
-dev-python/pyx
-dev-python/sphinx-selective-exclude
-
-# Michał Górny <mgorny@gentoo.org> (2026-06-20)
-# Both packages are completely broken and do not install correctly.
-# Removal on 2026-07-20.  Bug #977003.
-sci-chemistry/GromacsWrapper
-sci-libs/numkit
-
-# Michał Górny <mgorny@gentoo.org> (2026-06-20)
-# No maintainer, no py3.14 compat, broken tests, no revdeps.
-# Removal on 2026-07-20.  Bug #973876.
-dev-python/pdoc3
-
-# Michał Górny <mgorny@gentoo.org> (2026-06-20)
-# No py3.14 compat, broken tests, no revdeps.
-# Removal on 2026-07-20.  Bug #973847.
-dev-python/django-cacheops
-
-# Michał Górny <mgorny@gentoo.org> (2026-06-20)
-# NIH package with little activity.  Last revdeps were removed
-# in Sep 2025.
-# Removal on 2026-07-20.  Bug #977772.
-dev-python/pyotherside
-
 # Michał Górny <mgorny@gentoo.org> (2026-06-19)
 # dev-python/pytrie is broken on Python 3.14 and has not been touched
 # since 2020.  dev-python/autobahn and dev-python/txaio have become
 # complete broken slop, and still depend on it.  Remove these packages,
 # their reverse dependencies and their dependencies without revdeps.
+# For magic-wormhole, use net-misc/wormhole-william or
+# net-misc/magic-wormhole-rust instead.
 # Removal on 2026-07-19.  Bug #967367.
-dev-python/autobahn
 dev-python/magic-wormhole
-dev-python/magic-wormhole-mailbox-server
-dev-python/magic-wormhole-transit-relay
-dev-python/py-ubjson
-dev-python/pytrie
-dev-python/txaio
-dev-python/vpython
-dev-python/wsaccel
 
 # Michał Górny <mgorny@gentoo.org> (2026-06-03)
 # Mike Pagano <mpagano@gentoo.org> (2026-06-03)
@@ -292,27 +300,6 @@ dev-qt/qtx11extras:5
 # media-video/smplayer, media-video/qmplay2 and probably many more.
 # Bug #954006. Removal some time after 2026-05-30.
 =media-video/vlc-3.0.23
-
-# Michał Górny <mgorny@gentoo.org> (2026-05-09)
-# The buildbot packages aren't actively maintained in ::gentoo.  They
-# are stuck on Python 3.12 and obsolete dependencies.  Bug reports
-# aren't receiving any attention.
-# Removal on 2026-06-08.  Bug #952430.
-acct-group/buildbot
-acct-user/buildbot
-dev-util/buildbot
-dev-util/buildbot-badges
-dev-util/buildbot-console-view
-dev-util/buildbot-grid-view
-dev-util/buildbot-pkg
-dev-util/buildbot-react-console-view
-dev-util/buildbot-react-grid-view
-dev-util/buildbot-react-wsgi-dashboards
-dev-util/buildbot-waterfall-view
-dev-util/buildbot-worker
-dev-util/buildbot-wsgi-dashboards
-dev-util/buildbot-www
-dev-util/buildbot-www-react
 
 # Sam James <sam@gentoo.org> (2026-05-05)
 # dev-debug/pwndbg itself needs >=dev-util/unicorn-2.1.4, while
@@ -425,17 +412,8 @@ dev-util/buildbot-www-react
 # This version has lit a firecracker under the community and attracted
 # some ire. The situation is in a state of mild flux, and more generally
 # requires further consideration to determine the correct course of
-# action. Use at your own risk.
+# action. Use at your own risk. See bug #969475.
 >=app-text/calibre-8.11.0
-
-# Michał Górny <mgorny@gentoo.org> (2025-12-12)
-# Upstream has switched to LLM-first coding which has already caused
-# a number of suspicious bugs.  At this point, new versions
-# of the packages cannot be trusted to be safe to use.  Furthermore,
-# the maintenance cost of dealing with packaging bugs alone
-# is overwhelming to human maintainers of this package.
->=dev-python/autobahn-25.10
->=dev-python/txaio-25.10
 
 # Sam James <sam@gentoo.org> (2025-11-25)
 # Generates session keys with weak (no) randomness. Please re-encrypt

@@ -1,0 +1,65 @@
+From 0ebadbad7c92133c467f7aed6f3c16a9e3b55774 Mon Sep 17 00:00:00 2001
+Message-ID: <0ebadbad7c92133c467f7aed6f3c16a9e3b55774.1787205067.git.sam@gentoo.org>
+From: Aldy Hernandez <aldy@quesejoda.com>
+Date: Mon, 17 Aug 2026 14:53:24 +0000
+Subject: [PATCH] path solver: only compute ranges at the current path position
+ [PR126876]
+
+Since r17-3298 the path ranger can become the current query while
+fold_using_range folds a statement, so match.pd simplifications can
+query with a context statement that can be from an arbitrary block on
+the path.  The solver's positional machinery is only meaningful at the
+block the walk is currently at.
+
+Only compute ranges at the current path position otherwise fall back
+to the global range.  Assert the positional invariant in
+range_defined_in_block, which I verified holds by testing the assert
+on a tree before r17-3298.
+
+Tested on ppc64le Linux.
+
+	PR tree-optimization/126876
+
+gcc/ChangeLog:
+
+	* gimple-range-path.cc
+	(path_range_query::internal_range_of_expr): Only call
+	range_defined_in_block at the current path position.
+	(path_range_query::range_defined_in_block): Assert the current
+	path position.
+---
+ gcc/gimple-range-path.cc | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
+
+diff --git a/gcc/gimple-range-path.cc b/gcc/gimple-range-path.cc
+index 467e321b8ded..54c8a04b486f 100644
+--- a/gcc/gimple-range-path.cc
++++ b/gcc/gimple-range-path.cc
+@@ -156,7 +156,12 @@ path_range_query::internal_range_of_expr (vrange &r, tree name, gimple *stmt)
+       return true;
+     }
+ 
++  // We can be called from match.pd or elsewhere, with a context statement
++  // that can be anywhere on the path.  Since we can only compute ranges
++  // mid flight at the current path position, check that's the case,
++  // otherwise fall through to the global range.
+   if (stmt
++      && gimple_bb (stmt) == curr_bb ()
+       && range_defined_in_block (r, name, gimple_bb (stmt)))
+     {
+       if (TREE_CODE (name) == SSA_NAME)
+@@ -290,6 +295,11 @@ path_range_query::ssa_range_in_phi (vrange &r, gphi *phi)
+ bool
+ path_range_query::range_defined_in_block (vrange &r, tree name, basic_block bb)
+ {
++  // Ranges can only be calculated at the current path position, both
++  // while pre-computing the cache and when answering questions at the
++  // path exit afterwards.
++  gcc_assert (bb == curr_bb ());
++
+   gimple *def_stmt = SSA_NAME_DEF_STMT (name);
+   basic_block def_bb = gimple_bb (def_stmt);
+ 
+-- 
+2.55.0
+

@@ -18,7 +18,7 @@ else
 		https://www.libssh.org/files/$(ver_cut 1-2)/${P}.tar.xz
 		verify-sig? ( https://www.libssh.org/files/$(ver_cut 1-2)/${P}.tar.xz.asc )
 	"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
 	BDEPEND="verify-sig? ( sec-keys/openpgp-keys-libssh )"
 fi
 
@@ -117,6 +117,9 @@ multilib_src_configure() {
 		-DWITH_SERVER=$(usex server)
 		-DWITH_SFTP=$(usex sftp)
 		-DBUILD_STATIC_LIB=$(usex static-libs)
+		# dropbear's dhclient tries to open /dev/urandom for writing in
+		# seedrandom. And we don't do client/server testing yet anyway (bug #964307)
+		-DDROPBEAR_EXECUTABLE=
 		# TODO: try enabling {CLIENT,SERVER}_TESTING
 		-DUNIT_TESTING=$(usex test)
 		-DWITH_ZLIB=$(usex zlib)

@@ -20,7 +20,7 @@ S="${WORKDIR}/${PN}-${MY_PV}"
 LICENSE="MPL-2.0"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
-IUSE="dnstap doc doh fixed-rrset idn jemalloc geoip gssapi lmdb selinux static-libs systemtap test xml"
+IUSE="dnstap doc doh fixed-rrset idn jemalloc geoip gssapi lmdb selinux systemtap test xml"
 RESTRICT="!test? ( test )"
 
 DEPEND="
@@ -95,7 +95,6 @@ src_configure() {
 		$(use_enable dnstap)
 		$(use_enable doh)
 		$(use_with doh libnghttp2)
-		$(use_enable static-libs static)
 		$(use_enable geoip)
 		$(use_enable systemtap tracing)
 		$(use_with test cmocka)
@@ -146,9 +145,7 @@ src_install() {
 
 	newenvd "${FILESDIR}"/10bind.env 10bind
 
-	if ! use static-libs ; then
-		find "${ED}"/usr/lib* -name '*.la' -delete || die
-	fi
+	find "${ED}"/usr/lib* -name '*.la' -delete || die
 
 	#
 	# /var/bind

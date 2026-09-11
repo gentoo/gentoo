@@ -1,0 +1,15 @@
+# use MathJAX to generate formulas instead of LaTeX
+# bug #981926
+diff --git a/Doxyfile.in b/Doxyfile.in
+index 6c50068..4ab1cc4 100644
+--- a/Doxyfile.in
++++ b/Doxyfile.in
+@@ -1120,7 +1120,7 @@ FORMULA_TRANSPARENT    = YES
+ # output. When enabled you also need to install MathJax separately and
+ # configure the path to it using the MATHJAX_RELPATH option.
+ 
+-USE_MATHJAX            = NO
++USE_MATHJAX            = YES
+ 
+ # When MathJax is enabled you need to specify the location relative to the
+ # HTML output directory using the MATHJAX_RELPATH option. The destination

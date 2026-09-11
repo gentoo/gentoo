@@ -25,7 +25,7 @@
 # When relying on the emacs USE flag, you need to add
 #
 # @CODE
-# emacs? ( >=app-editors/emacs-26.3:* )
+# emacs? ( >=app-editors/emacs-27.2:* )
 # @CODE
 #
 # to your DEPEND/RDEPEND line and use the functions provided here to
@@ -206,7 +206,7 @@ EMACS=${EPREFIX}/usr/bin/emacs
 # @ECLASS_VARIABLE: EMACSFLAGS
 # @DESCRIPTION:
 # Flags for executing Emacs in batch mode.
-# These work for Emacs versions 18 to 30, so don't change them.
+# These work for Emacs versions 18 to 31, so don't change them.
 EMACSFLAGS="-batch -q --no-site-file"
 
 # @ECLASS_VARIABLE: BYTECOMPFLAGS
@@ -217,7 +217,7 @@ BYTECOMPFLAGS="-L ."
 # @ECLASS_VARIABLE: NEED_EMACS
 # @DESCRIPTION:
 # The minimum Emacs version required for the package.
-: "${NEED_EMACS:=26.3}"
+: "${NEED_EMACS:=27.2}"
 
 # @ECLASS_VARIABLE: _ELISP_EMACS_VERSION
 # @INTERNAL
@@ -234,8 +234,9 @@ elisp-emacs-version() {
 	local version ret tmout="timeout -k 5 55"
 	# Run without timeout if the command is not available
 	${tmout} true &>/dev/null || tmout=""
-	# The following will work for at least versions 18 to 30.
-	echo "(princ emacs-version)" >"${T}"/emacs-version.el
+	# The following will work for at least versions 18 to 31.
+	printf '%s\n' ";;-*-lexical-binding:t-*-" "(princ emacs-version)" \
+		>"${T}"/emacs-version.el
 	version=$(
 		# EMACS could be a microemacs variant that ignores the -batch
 		# option and would therefore hang, waiting for user interaction.

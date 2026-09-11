@@ -37,6 +37,10 @@ DEPEND="${RDEPEND}"
 BDEPEND="${PYTHON_DEPS}
 	$(vala_depend)"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-9.0.20-fix-libwebsockets-with-mbedtls.patch"
+)
+
 pkg_setup() {
 	python-single-r1_pkg_setup
 	vala_setup

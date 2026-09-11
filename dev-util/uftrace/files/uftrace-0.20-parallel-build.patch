@@ -1,0 +1,27 @@
+Fix for bug https://bugs.gentoo.org/963843
+
+See also https://github.com/namhyung/uftrace/issues/2070.
+
+diff --git a/Makefile b/Makefile
+index a4e43a12..7fee1230 100644
+--- a/Makefile
++++ b/Makefile
+@@ -233,6 +233,9 @@ LIBMCOUNT_FAST_OBJS := $(patsubst $(objdir)/%.op,$(objdir)/%-fast.op,$(LIBMCOUNT
+ LIBMCOUNT_SINGLE_OBJS := $(patsubst $(objdir)/%.op,$(objdir)/%-single.op,$(LIBMCOUNT_OBJS))
+ LIBMCOUNT_FAST_SINGLE_OBJS := $(patsubst $(objdir)/%.op,$(objdir)/%-fast-single.op,$(LIBMCOUNT_OBJS))
+
++LIBMCOUNT_OBJS_VERSION := $(objdir)/libmcount/mcount.op $(objdir)/libmcount/mcount-single.op
++LIBMCOUNT_OBJS_VERSION += $(objdir)/libmcount/mcount-fast.op $(objdir)/libmcount/mcount-fast-single.op
++
+ LIBMCOUNT_UTILS_SRCS += $(srcdir)/utils/debug.c $(srcdir)/utils/regs.c
+ LIBMCOUNT_UTILS_SRCS += $(srcdir)/utils/rbtree.c $(srcdir)/utils/filter.c
+ LIBMCOUNT_UTILS_SRCS += $(srcdir)/utils/shmem.c $(srcdir)/utils/utils.c
+@@ -333,7 +336,7 @@ $(objdir)/misc/bench.o: $(srcdir)/misc/bench.c
+
+ $(objdir)/cmds/dump.o: $(C_STR_OBJS)
+
+-$(UFTRACE_OBJS_VERSION): $(objdir)/version.h
++$(UFTRACE_OBJS_VERSION) $(LIBMCOUNT_OBJS_VERSION): $(objdir)/version.h
+
+ $(filter-out $(objdir)/uftrace.o, $(UFTRACE_OBJS)): $(objdir)/%.o: $(srcdir)/%.c $(COMMON_DEPS)
+        $(QUIET_CC)$(CC) $(UFTRACE_CFLAGS) -c -o $@ $<

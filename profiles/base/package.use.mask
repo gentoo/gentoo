@@ -6,6 +6,10 @@
 
 # New entries go on top.
 
+# Michał Górny <mgorny@gentoo.org> (2026-09-05)
+# dev-python/{ioflo,raet} stuck on Python 3.12 and last-rited.
+app-admin/salt raet
+
 # Emi <reedy.sailors.8t@icloud.com> (2026-07-30)
 # Turnstile is currently in ::guru
 sys-auth/pambase turnstile
@@ -44,13 +48,6 @@ dev-cpp/eigen:3/3.4 test
 # uses MeDiPack
 ~sci-libs/adolc-9999 -mpi
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2026-05-15)
-# Various integration packages. Maintainers, you must drop Qt5 support.
-<=app-i18n/fcitx-qt-5.1.14-r0 qt5
-<=app-i18n/uim-1.9.6-r0 qt5
-<=x11-themes/QGnomePlatform-0.9.2-r7 qt5
-<=x11-themes/adwaita-qt-1.4.2-r1 qt5
-
 # Michał Górny <mgorny@gentoo.org> (2026-05-07)
 # Force-enable all PYTHON_TARGETS for python-exec to avoid using private
 # API. Please remember to keep it in sync with python_targets.desc.
@@ -63,11 +60,9 @@ dev-lang/python-exec -python_targets_python3_15t
 >=sci-libs/libsemigroups-3.5.5 eigen
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2026-04-12)
-# net-wireless/gnuradio and dependencies. Preparing Qt5 last-rites.
-# Bugs #948049, #954887.  Removal some time after 2026-04-30.
-<=dev-python/pyqtgraph-0.14.0-r0 qt5
-net-wireless/gnuradio qt5
-<=net-wireless/gnuradio-3.10.99 channels
+# net-wireless/gnuradio and dependencies. Qt5 was last-rited.
+# Bug #948049.
+<net-wireless/gnuradio-3.10.12.0-r4 channels qt5
 
 # Mike Gilbert <floppym@gentoo.org> (2026-03-20)
 # Only meant for bootstrapping a cross-compiler.
@@ -518,12 +513,6 @@ dev-java/swt:4.10 webkit
 # https://github.com/gentoo/gentoo/pull/29236#issuecomment-1407373536
 sci-libs/vtk debug
 
-# Yiyang Wu <xgreenlandforwyy@gmail.com> (2023-01-27)
-# AMDGPU enablement depends on dev-libs/rocr-runtime, ~amd64 only
-# See also: https://bugs.gentoo.org/891499
-llvm-runtimes/offload llvm_targets_AMDGPU
-llvm-runtimes/openmp llvm_targets_AMDGPU
-
 # Joonas Niilola <juippis@gentoo.org> (2023-01-08)
 # Doesn't compile currently, bug #853094.
 >=net-dialup/freeradius-3.2.0 oracle
@@ -790,11 +779,6 @@ app-metrics/collectd collectd_plugins_onewire
 # Thomas Deutschmann <whissi@gentoo.org> (2020-08-17)
 # Only supported on 64bit systems, see storage/columnstore/CMakeLists.txt
 dev-db/mariadb columnstore
-
-# Brian Dolbec <dolsen@gentoo.org> (2020-07-20)
-# Required dependencies are not yet in the Gentoo ebuild tree
-# Please file a bug if this feature is needed
-dev-python/autobahn xbr
 
 # Stephan Hartmann <stha09@googlemail.com> (2020-06-28)
 # Mostly intended for development and not for general use.

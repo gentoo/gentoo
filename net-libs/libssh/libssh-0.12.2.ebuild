@@ -125,6 +125,9 @@ multilib_src_configure() {
 		-DWITH_SFTP=$(usex sftp)
 		-DBUILD_STATIC_LIB=$(usex static-libs)
 
+		# dropbear's dhclient tries to open /dev/urandom for writing in
+		# seedrandom. And we don't do client/server testing yet anyway (bug #964307)
+		-DDROPBEAR_EXECUTABLE=
 		# TODO: Still needs some work, some tests hang and some fail
 		# Would need net-misc/openssh and net-misc/putty too
 		#-DCLIENT_TESTING=$(multilib_native_usex test)

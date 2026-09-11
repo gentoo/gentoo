@@ -234,11 +234,6 @@ net-vpn/tor seccomp
 # Mask until >sys-cluster/ceph-0.94 goes stable
 net-analyzer/rrdtool rados
 
-# Michael Sterrett <mr_bones_@gentoo.org> (2013-11-12)
-# Mask openmedia use flag because the content generation tools
-# are missing keywords.
-games-simulation/openttd openmedia
-
 # Kacper Kowalik <xarthisius@gentoo.org> (2011-09-02)
 # Mask www-client/seamonkey[ipc] on ppc64 wrt #381191
 www-client/seamonkey ipc

@@ -8,6 +8,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">pkginfo</remote-id>
-		<remote-id type="launchpad">pkginfo</remote-id>
+		<remote-id type="github">tseaver/pkginfo</remote-id>
 	</upstream>
 </pkgmetadata>

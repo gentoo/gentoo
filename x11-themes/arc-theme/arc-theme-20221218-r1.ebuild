@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 
 inherit meson python-any-r1
 
@@ -52,6 +52,10 @@ RDEPEND="
 		x11-themes/gtk-engines-murrine
 	)
 "
+
+PATCHES=(
+	"${FILESDIR}"/${P}-meson-1.12.patch
+)
 
 src_configure() {
 	# Cinnamon still uses metacity themes for its window manager.

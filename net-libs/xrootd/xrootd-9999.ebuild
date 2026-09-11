@@ -49,7 +49,7 @@ CDEPEND="acct-group/xrootd
 	virtual/libcrypt:=
 	ceph? ( sys-cluster/ceph )
 	fuse? ( sys-fs/fuse:0= )
-	kerberos? ( virtual/krb5 )
+	kerberos? ( app-crypt/mit-krb5 )
 	libxml2? ( dev-libs/libxml2:2= )
 	macaroons? ( dev-libs/libmacaroons )
 	python? ( ${PYTHON_DEPS} )

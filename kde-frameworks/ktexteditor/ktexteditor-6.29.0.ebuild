@@ -41,6 +41,8 @@ DEPEND="
 RDEPEND="${DEPEND}"
 BDEPEND="test? ( >=kde-frameworks/kservice-${KDE_CATV}:6 )"
 
+PATCHES=( "${FILESDIR}/${P}-libcxx23-missing-header.patch" ) # in 6.31
+
 src_configure() {
 	local mycmakeargs=(
 		$(cmake_use_find_package editorconfig EditorConfig)

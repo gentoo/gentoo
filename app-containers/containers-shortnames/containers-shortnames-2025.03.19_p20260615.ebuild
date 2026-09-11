@@ -13,7 +13,7 @@ if [[ ${PV} == 9999* ]]; then
 else
 	SRC_URI="https://github.com/containers/shortnames/archive/${GIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${PN#containers-}-${GIT_COMMIT}"
-	KEYWORDS="~amd64 ~arm64 ~loong ~riscv"
+	KEYWORDS="~alpha ~amd64 ~arm64 ~loong ~riscv"
 fi
 
 LICENSE="Apache-2.0"

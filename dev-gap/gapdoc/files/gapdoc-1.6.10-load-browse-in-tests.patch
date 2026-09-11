@@ -1,0 +1,13 @@
+diff --git a/tst/test.tst b/tst/test.tst
+index 86a1c72..7ddeb22 100644
+--- a/tst/test.tst
++++ b/tst/test.tst
+@@ -13,6 +13,8 @@
+ ##  
+ gap> LoadPackage( "GAPDoc", false );
+ true
++gap> LoadPackage( "Browse", false );
++true
+ gap> save:= SizeScreen();;
+ gap> SizeScreen( [ 72 ] );;
+ gap> START_TEST( "Input file: test.tst" );

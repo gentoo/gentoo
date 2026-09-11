@@ -12,4 +12,4 @@ inherit sec-keys
 DESCRIPTION="OpenPGP keys used by Michal Babej (franz)"
 HOMEPAGE="https://github.com/franz"
 
-KEYWORDS="~amd64 ~ppc64"
+KEYWORDS="amd64 ppc64"

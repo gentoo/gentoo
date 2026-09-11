@@ -48,6 +48,7 @@ DEPEND="
 		media-libs/sdl2-ttf
 	)"
 
+EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
 
 python_test() {
@@ -64,6 +65,5 @@ python_test() {
 	local -x SDL_AUDIODRIVER=dummy
 	local -x SDL_RENDER_DRIVER=software
 
-	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
-	epytest -x
+	epytest
 }

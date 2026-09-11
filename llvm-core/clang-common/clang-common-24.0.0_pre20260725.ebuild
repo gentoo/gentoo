@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit bash-completion-r1 elisp-common llvm.org multilib
+inherit elisp-common llvm.org multilib shell-completion
 
 DESCRIPTION="Common files shared between multiple slots of clang"
 HOMEPAGE="https://llvm.org/"
@@ -300,6 +300,7 @@ src_install() {
 				-Wl,-rpath,${EPREFIX}/../usr/lib
 				-Wl,-L,${EPREFIX}/../usr/lib
 				-isystem ${EPREFIX}/../usr/include
+				-stdlib++-isystem ${EPREFIX}/../usr/include/c++/v1
 			EOF
 		fi
 		# Using -Wl,-L instead of -L to trick compiler driver to put it
@@ -308,6 +309,7 @@ src_install() {
 			-Wl,-rpath,${EPREFIX}/usr/lib
 			-Wl,-L,${EPREFIX}/usr/lib
 			-isystem ${EPREFIX}/usr/include
+			-stdlib++-isystem ${EPREFIX}/usr/include/c++/v1
 			-isysroot ${EPREFIX}/MacOSX.sdk
 		EOF
 	fi

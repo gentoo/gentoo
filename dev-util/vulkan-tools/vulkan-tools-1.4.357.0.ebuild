@@ -42,6 +42,10 @@ DEPEND="${RDEPEND}
 	test? ( ~media-libs/vulkan-loader-${PV}[${MULTILIB_USEDEP},wayland?,X?] )
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.4.357.0-libcxx-23.patch
+)
+
 pkg_setup() {
 	MULTILIB_CHOST_TOOLS=(
 		/usr/bin/vulkaninfo

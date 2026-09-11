@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=flit
 PYPI_VERIFY_REPO=https://github.com/pallets-eco/cachelib
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 
 inherit distutils-r1 pypi
 
@@ -24,7 +24,6 @@ BDEPEND="
 		dev-db/redis
 		dev-python/redis[${PYTHON_USEDEP}]
 		net-misc/memcached
-		www-servers/uwsgi[python,${PYTHON_USEDEP}]
 		!sparc? (
 			dev-python/pylibmc[${PYTHON_USEDEP}]
 		)

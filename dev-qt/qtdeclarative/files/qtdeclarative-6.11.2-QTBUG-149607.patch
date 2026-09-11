@@ -1,0 +1,151 @@
+https://qt-project.atlassian.net/browse/QTBUG-149607
+https://bugs.kde.org/show_bug.cgi?id=508377
+https://mail.kde.org/pipermail/distributions/2026-September/001731.html
+--- a/src/qml/qml/qqmlglobal.cpp
++++ b/src/qml/qml/qqmlglobal.cpp
+@@ -1113,7 +1113,7 @@
+     // A non-composite type will always have a metaobject.
+     const QMetaObject *typeMetaObject = type.metaObject();
+-    const QQmlPropertyCache::ConstPtr typePropertyCache = typeMetaObject
+-            ? QQmlPropertyCache::ConstPtr()
+-            : QQmlMetaType::findPropertyCacheInCompositeTypes(type.typeId());
++    QVarLengthArray<QQmlPropertyCache::ConstPtr, 4> allPropertyCacheCandidates =
++            typeMetaObject ? QVarLengthArray<QQmlPropertyCache::ConstPtr, 4>{}
++                           : QQmlMetaType::rawCompositePropertyCachesForType(type.typeId());
+ 
+     if (const QQmlData *ddata = ddata_for_cast(object)) {
+@@ -1135,5 +1135,5 @@
+                 // Multiple property caches can hold the same metaobject, for example for
+                 // versions of non-composite types.
+-                if (propertyCache == typePropertyCache.data())
++                if (allPropertyCacheCandidates.contains(propertyCache))
+                     return true;
+             }
+@@ -1141,9 +1141,9 @@
+     }
+ 
+-    // If nothing else works, we have to create the metaobjects.
++    // If nothing else works, we have to create the metaobjects (if we can).
++    if (!typeMetaObject && !allPropertyCacheCandidates.isEmpty())
++        typeMetaObject = allPropertyCacheCandidates.first()->createMetaObject();
+ 
+-    return object->metaObject()->inherits(typeMetaObject
+-            ? typeMetaObject
+-            : (typePropertyCache ? typePropertyCache->createMetaObject() : nullptr));
++    return object->metaObject()->inherits(typeMetaObject);
+ }
+ 
+--- a/src/qml/qml/qqmlmetatype.cpp
++++ b/src/qml/qml/qqmlmetatype.cpp
+@@ -1491,4 +1491,18 @@
+  * \internal
+  *
++ * Returns all candidate property caches for a composite
++ * metatype instead of only the last inserted one.
++ * compare rawPropertyCacheForType (which handles however also non-composites)
++ */
++QVarLengthArray<QQmlPropertyCache::ConstPtr, 4>
++QQmlMetaType::rawCompositePropertyCachesForType(QMetaType metaType)
++{
++    const QQmlMetaTypeDataPtr data;
++    return data->findPropertyCachesInCompositeTypes(metaType);
++}
++
++/*!
++ * \internal
++ *
+  * Look up by QQmlType and version. We only fall back to lookup by metaobject if the type
+  * has no revisiononed attributes here. Unspecified versions are interpreted as "any".
+--- a/src/qml/qml/qqmlmetatype_p.h
++++ b/src/qml/qml/qqmlmetatype_p.h
+@@ -24,4 +24,5 @@
+ 
+ #include <QtCore/qtyperevision.h>
++#include <QtCore/qvarlengtharray.h>
+ 
+ QT_BEGIN_NAMESPACE
+@@ -172,4 +173,8 @@
+             QMetaType metaType, QTypeRevision version);
+ 
++    // All property caches for a composite metatype, which may map to more than one of them.
++    static QVarLengthArray<QQmlPropertyCache::ConstPtr, 4> rawCompositePropertyCachesForType(
++            QMetaType metaType);
++
+     static bool canConvert(QObject *o, QMetaType metaType);
+     static bool canConvert(const QQmlPropertyCache::ConstPtr &from, QMetaType metaType);
+--- a/src/qml/qml/qqmlmetatypedata.cpp
++++ b/src/qml/qml/qqmlmetatypedata.cpp
+@@ -258,4 +258,16 @@
+ }
+ 
++QVarLengthArray<QQmlPropertyCache::ConstPtr, 4>
++QQmlMetaTypeData::findPropertyCachesInCompositeTypes(QMetaType t) const
++{
++    QVarLengthArray<QQmlPropertyCache::ConstPtr, 4> result;
++    const auto [begin, end] = compositeTypes.equal_range(t.iface());
++    for (auto iter = begin; iter != end; ++iter) {
++        if (auto cache = propertyCacheForPotentialInlineComponentType(t, iter))
++            result.append(std::move(cache));
++    }
++    return result;
++}
++
+ void QQmlMetaTypeData::clearCompositeTypes()
+ {
+--- a/src/qml/qml/qqmlmetatypedata_p.h
++++ b/src/qml/qml/qqmlmetatypedata_p.h
+@@ -24,4 +24,5 @@
+ 
+ #include <QtCore/qset.h>
++#include <QtCore/qvarlengtharray.h>
+ #include <QtCore/qvector.h>
+ 
+@@ -120,4 +121,8 @@
+     QQmlPropertyCache::ConstPtr findPropertyCacheInCompositeTypes(QMetaType t) const;
+ 
++    // Same, but returns all matches rather than only the last inserted one.
++    QVarLengthArray<QQmlPropertyCache::ConstPtr, 4> findPropertyCachesInCompositeTypes(
++            QMetaType t) const;
++
+     static QQmlPropertyCache::ConstPtr propertyCacheForPotentialInlineComponentType(
+             QMetaType t, const QQmlMetaTypeData::CompositeTypes::const_iterator &iter);
+--- a/src/qml/qml/qqmlpropertyvalidator.cpp
++++ b/src/qml/qml/qqmlpropertyvalidator.cpp
+@@ -3,4 +3,5 @@
+ // Qt-Security score:significant
+ 
++#include "qqmlmetatype_p.h"
+ #include "qqmlpropertyvalidator_p.h"
+ 
+@@ -782,8 +783,27 @@
+             // Determine isAssignable value
+             bool isAssignable = false;
+-            QQmlPropertyCache::ConstPtr c = propertyCaches.at(binding->value.objectIndex);
+-            while (c && !isAssignable) {
+-                isAssignable |= c == propertyMetaObject;
+-                c = c->parent();
++            QQmlPropertyCache::ConstPtr source = propertyCaches.at(binding->value.objectIndex);
++
++            const auto inheritsFrom = [&](const QQmlPropertyCache::ConstPtr &target) {
++                for (QQmlPropertyCache::ConstPtr c = source; c; c = c->parent()) {
++                    if (c == target)
++                        return true;
++                }
++                return false;
++            };
++
++            isAssignable = inheritsFrom(propertyMetaObject);
++
++            if (!isAssignable) {
++                // A single (composite) metatype can map to multiple property caches when
++                // there are multiple engines; rawPropertyCacheForType only returns one of
++                // them. For non-composite types this yields an empty list and is a no-op.
++                const auto candidates = QQmlMetaType::rawCompositePropertyCachesForType(propType);
++                for (const auto &candidate : candidates) {
++                    if (inheritsFrom(candidate)) {
++                        isAssignable = true;
++                        break;
++                    }
++                }
+             }
+ 

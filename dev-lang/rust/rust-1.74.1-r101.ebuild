@@ -1,10 +1,10 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 LLVM_COMPAT=( 17 )
-PYTHON_COMPAT=( python3_{11..12} )
+PYTHON_COMPAT=( python3_12 )
 
 RUST_PATCH_VER=${PVR}
 
@@ -15,7 +15,7 @@ RUST_OPTIONAL=1
 MRUSTC_VERSION="0.11.2"
 MRUSTC_RUST_VERSION="1.74.0"
 
-inherit check-reqs cmake edo estack flag-o-matic llvm-r1 multiprocessing multilib multilib-build \
+inherit check-reqs cmake edo estack flag-o-matic llvm-r2 multiprocessing multilib multilib-build \
 	optfeature python-any-r1 rust rust-toolchain toolchain-funcs verify-sig
 
 if [[ ${PV} = *9999* ]]; then
@@ -247,7 +247,7 @@ pkg_setup() {
 		fi
 
 		if use system-llvm; then
-			llvm-r1_pkg_setup
+			llvm-r2_pkg_setup
 
 			local llvm_config="$(get_llvm_prefix)/bin/llvm-config"
 			export LLVM_LINK_SHARED=1

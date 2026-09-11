@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_FULLY_TESTED=( python3_{12..14} )
-PYTHON_COMPAT=( "${PYTHON_FULLY_TESTED[@]}" )
+PYTHON_COMPAT=( "${PYTHON_FULLY_TESTED[@]}" python3_15 )
 inherit distutils-r1 optfeature pypi
 
 DESCRIPTION="Python library for serializing any arbitrary object graph into JSON"
@@ -16,7 +16,7 @@ HOMEPAGE="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
+KEYWORDS="amd64 arm64 ~riscv x86"
 IUSE="test-full"
 
 BDEPEND="

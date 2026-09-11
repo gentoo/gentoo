@@ -11,7 +11,6 @@
 		<flag name="charmproduction">Optimize performance of Charm++ runtime</flag>
 		<flag name="charmtracing">Enable tracing support in Charm++</flag>
 		<flag name="cmkopt">Enable CMK optimisation</flag>
-		<flag name="mlogft">Compile with Charm++ message logging fault tolerance support</flag>
 		<flag name="numa">Support memory affinity with NUMA</flag>
 		<flag name="syncft">Compile with Charm++ fault tolerance support</flag>
 		<flag name="tcp">Use TCP (instead of UPD) for socket communication</flag>

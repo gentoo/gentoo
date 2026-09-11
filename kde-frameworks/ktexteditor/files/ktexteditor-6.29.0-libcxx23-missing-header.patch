@@ -1,0 +1,30 @@
+From c7e178fa4141861c4d7af934e51deb7695bfb5da Mon Sep 17 00:00:00 2001
+From: Kostadin Shishmanov <kostadinshishmanov@protonmail.com>
+Date: Fri, 4 Sep 2026 15:15:47 +0300
+Subject: [PATCH] Add missing <vector> include
+
+katetextblock.h uses std::vector but doesn't include <vector>
+which causes a build failure with libc++ 23 since it's dropping such
+transitive includes.
+
+Signed-off-by: Kostadin Shishmanov <kostadinshishmanov@protonmail.com>
+---
+ src/buffer/katetextblock.h | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/buffer/katetextblock.h b/src/buffer/katetextblock.h
+index 6150af8c6..34fd0e757 100644
+--- a/src/buffer/katetextblock.h
++++ b/src/buffer/katetextblock.h
+@@ -9,6 +9,8 @@
+ 
+ #include "katetextline.h"
+ 
++#include <vector>
++
+ #include <QList>
+ 
+ #include <ktexteditor/cursor.h>
+-- 
+GitLab
+

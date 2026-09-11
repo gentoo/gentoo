@@ -5,10 +5,14 @@
 		<email>williamh@gentoo.org</email>
 		<name>William Hubbs</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>arthurzam@gentoo.org</email>
+		<name>Arthur Zamarin</name>
+	</maintainer>
 	<longdescription lang="en">
 		Go is a new systems programming language developed at google by
 		Rob Pike. It has garbage collection, coroutines, communication
-		channels and a clean syntax.  
+		channels and a clean syntax.
 	</longdescription>
 	<upstream>
 		<remote-id type="cpe">cpe:/a:golang:go</remote-id>

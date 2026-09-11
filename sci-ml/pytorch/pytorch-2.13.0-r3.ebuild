@@ -214,8 +214,10 @@ src_prepare() {
 
 	# cudnn_frontend is unbundled, but some targets still look for its
 	# headers under third_party/cudnn_frontend/include.
-	mkdir -p third_party/cudnn_frontend || die
-	ln -sf /usr/include third_party/cudnn_frontend/include || die
+	if use cuda; then
+		mkdir -p third_party/cudnn_frontend || die
+		ln -sf /usr/include third_party/cudnn_frontend/include || die
+	fi
 
 	distutils-r1_src_prepare
 

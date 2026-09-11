@@ -11,7 +11,7 @@ if [[ ${PV} == 9999 ]] ; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/amule-org/amule/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
+	KEYWORDS="~alpha amd64 ~arm ~mips ~ppc ppc64 ~riscv ~sparc ~x86"
 fi
 
 DESCRIPTION="aMule, the all-platform eMule p2p client"
@@ -52,6 +52,10 @@ BDEPEND="
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )
 "
+
+PATCHES=(
+	"${FILESDIR}/${P}-32-bit-libatomic.patch"
+)
 
 src_configure() {
 	setup-wxwidgets

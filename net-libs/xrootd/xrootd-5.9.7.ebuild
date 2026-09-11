@@ -51,7 +51,7 @@ CDEPEND="acct-group/xrootd
 		net-misc/curl:=
 		net-libs/davix
 	)
-	kerberos? ( virtual/krb5 )
+	kerberos? ( app-crypt/mit-krb5 )
 	libxml2? ( dev-libs/libxml2:2= )
 	macaroons? ( dev-libs/libmacaroons )
 	python? ( ${PYTHON_DEPS} )

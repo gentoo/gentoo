@@ -101,6 +101,7 @@ dev-python/flufl-lock
 dev-python/gherkin-official
 dev-python/guessit
 dev-python/knowit
+dev-python/hypothesis
 dev-python/logfury
 dev-python/narwhals
 dev-python/progressbar2
@@ -263,7 +264,6 @@ dev-util/cargo-license
 dev-util/cargo-audit
 dev-util/bingrep
 dev-python/trimesh
-dev-python/vpython
 dev-python/treq
 dev-python/twython
 dev-python/txtorcon
@@ -276,9 +276,6 @@ dev-python/python-axolotl
 dev-python/pyghmi
 dev-python/omemo-dr
 dev-python/noiseprotocol
-dev-python/magic-wormhole
-dev-python/magic-wormhole-transit-relay
-dev-python/magic-wormhole-mailbox-server
 dev-python/jwcrypto
 dev-python/websockify
 dev-python/jupyter
@@ -384,7 +381,6 @@ dev-lang/rust-bin
 >=dev-lang/spidermonkey-78
 >=dev-libs/gjs-1.66
 dev-python/aiohttp-oauthlib
-dev-python/autobahn
 dev-python/aws-sam-translator
 >=dev-python/bcrypt-4
 dev-python/cachebox
@@ -406,7 +402,6 @@ dev-python/joserfc
 dev-python/josepy
 >=dev-python/jsonschema-4.18.0
 dev-python/jsonschema-path
-dev-python/jsonschema-spec
 dev-python/jsonschema-specifications
 dev-python/jupyter-events
 dev-python/jupyter-lsp
@@ -481,7 +476,6 @@ dev-python/watchfiles
 dev-python/wcmatch
 dev-python/widgetsnbextension
 dev-ruby/selenium-webdriver
-dev-util/buildbot-worker
 dev-util/cargo-c
 dev-util/cbindgen
 dev-util/git-delta
@@ -576,6 +570,7 @@ media-gfx/gnome-font-viewer
 media-gfx/simple-scan
 media-sound/easyeffects
 media-sound/gnome-music
+media-video/celluloid
 net-wireless/gnome-bluetooth
 sys-apps/baobab
 sys-apps/xdg-desktop-portal-gnome

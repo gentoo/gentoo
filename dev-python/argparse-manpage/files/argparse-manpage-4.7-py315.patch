@@ -1,0 +1,23 @@
+From 05f8260e3e715cc6cf59aeb91adc90e66b0e2b19 Mon Sep 17 00:00:00 2001
+From: Alex Muir <wamuir1212@protonmail.com>
+Date: Sat, 16 May 2026 02:20:21 -0700
+Subject: [PATCH] Changed super(HelpFormatter, self).__init__() to
+ super().__init__(prog)
+
+---
+ argparse_manpage/manpage.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/argparse_manpage/manpage.py b/argparse_manpage/manpage.py
+index b8b344c..dcb7ec1 100644
+--- a/argparse_manpage/manpage.py
++++ b/argparse_manpage/manpage.py
+@@ -362,7 +362,7 @@ def quoted(text):
+ 
+ class _ManpageFormatter(HelpFormatter):
+     def __init__(self, prog, old_formatter, format):
+-        super(HelpFormatter, self).__init__()
++        super().__init__(prog)
+         self._prog = prog
+         self.of = old_formatter
+         assert format in ("pretty", "single-commands-section")

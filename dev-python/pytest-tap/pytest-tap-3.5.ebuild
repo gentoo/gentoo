@@ -18,7 +18,7 @@ SRC_URI="https://github.com/python-tap/pytest-tap/archive/refs/tags/v${PV}.tar.g
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~riscv ~x86"
 
 RDEPEND="
 	dev-python/pytest[${PYTHON_USEDEP}]

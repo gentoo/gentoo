@@ -77,7 +77,7 @@ multilib_src_configure() {
 		--runstatedir="${EPREFIX}"/run
 		$(use_enable gssapi gssapi-krb5)
 		$(use_enable ldap zos-remote)
-		$(use_enable ssl tls)
+		$(multilib_native_use_enable ssl tls)
 		$(use_enable static-libs static)
 		$(use_with arm)
 		$(use_with arm64 aarch64)

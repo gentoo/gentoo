@@ -1,0 +1,107 @@
+From ed4164eaeaec10833108b9ddea4597005addc2a1 Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Mon, 7 Sep 2026 10:36:19 -0400
+Subject: [PATCH] CMakeLists.txt: remove explicit static libraries
+
+Currently both shared and static libraries are built via duplicate
+calls to add_library, set_target_properties, target_link_libraries,
+etc. Typically only one of these is desired, and CMake provides a
+variable to control it:
+
+  https://cmake.org/cmake/help/latest/variable/BUILD_SHARED_LIBS.html
+
+This commit removes the explicit static libraries, and then removes
+the explicit "SHARED" from the remaining add_library(). The end result
+is that one type of library is installed, and it is controlled by the
+BUILD_SHARED_LIBS flag.
+
+Gentoo-bug: https://bugs.gentoo.org/982096
+---
+ CMakeLists.txt             | 17 +++--------------
+ tools/blisp/CMakeLists.txt |  2 +-
+ 2 files changed, 4 insertions(+), 15 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index f7d84f3..8f4e39e 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -8,6 +8,7 @@ set(CMAKE_C_STANDARD 11)
+ option(BLISP_BUILD_CLI "Build CLI Tool" OFF)
+ option(BLISP_USE_SYSTEM_LIBRARIES "Use system-installed libraries" "${CMAKE_USE_SYSTEM_LIBRARIES}")
+ option(COMPILE_TESTS "Compile the tests" OFF)
++option(BUILD_SHARED_LIBS "Build using shared libraries" ON)
+ 
+ add_library(libblisp_obj OBJECT
+         lib/blisp.c
+@@ -30,8 +31,7 @@ endif()
+ 
+ set_property(TARGET libblisp_obj PROPERTY POSITION_INDEPENDENT_CODE 1)
+ 
+-add_library(libblisp SHARED $<TARGET_OBJECTS:libblisp_obj>)
+-add_library(libblisp_static STATIC $<TARGET_OBJECTS:libblisp_obj>)
++add_library(libblisp $<TARGET_OBJECTS:libblisp_obj>)
+ 
+ set(BLISP_PUBLIC_HEADERS
+     include/blisp.h
+@@ -44,20 +44,11 @@ set_target_properties(libblisp PROPERTIES
+         PUBLIC_HEADER "${BLISP_PUBLIC_HEADERS}"
+         VERSION 0.0.5
+         SOVERSION 1
+-        LIBRARY_OUTPUT_DIRECTORY "shared"
+-        OUTPUT_NAME "blisp")
+-
+-set_target_properties(libblisp_static PROPERTIES
+-        PUBLIC_HEADER "${BLISP_PUBLIC_HEADERS}"
+-        VERSION 0.0.5
+-        SOVERSION 1
+-        ARCHIVE_OUTPUT_DIRECTORY "static"
+         OUTPUT_NAME "blisp")
+ 
+ if(BLISP_USE_SYSTEM_LIBRARIES)
+     find_package(Libserialport REQUIRED)
+     target_link_libraries(libblisp PUBLIC Libserialport::Libserialport)
+-    target_link_libraries(libblisp_static PUBLIC Libserialport::Libserialport)
+     target_include_directories(libblisp_obj PUBLIC ${Libserialport_INCLUDE_DIRS})
+ else()
+     if(NOT ${CMAKE_SYSTEM_NAME} STREQUAL "FreeBSD")
+@@ -70,7 +61,6 @@ else()
+ 
+     if(WIN32)
+         target_link_libraries(libblisp PRIVATE Setupapi.lib)
+-        target_link_libraries(libblisp_static PRIVATE Setupapi.lib)
+         target_compile_definitions(libblisp_obj PRIVATE LIBSERIALPORT_MSBUILD)
+         target_sources(libblisp_obj PRIVATE
+                 ${CMAKE_SOURCE_DIR}/vendor/libserialport/windows.c)
+@@ -89,7 +79,6 @@ else()
+     elseif(UNIX AND ${CMAKE_SYSTEM_NAME} STREQUAL "FreeBSD")
+         target_include_directories(libblisp_obj PRIVATE /usr/local/include/)
+         target_link_libraries(libblisp PRIVATE -L/usr/local/lib usb serialport)
+-        target_link_libraries(libblisp_static PRIVATE -L/usr/local/lib usb serialport)
+     elseif(APPLE)
+         target_sources(libblisp_obj PRIVATE
+                 ${CMAKE_SOURCE_DIR}/vendor/libserialport/macosx.c)
+@@ -104,7 +93,7 @@ else()
+ endif()
+ 
+ include(GNUInstallDirs)
+-install(TARGETS libblisp libblisp_static
++install(TARGETS libblisp
+     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+     ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+diff --git a/tools/blisp/CMakeLists.txt b/tools/blisp/CMakeLists.txt
+index 3af2488..f6a9a17 100644
+--- a/tools/blisp/CMakeLists.txt
++++ b/tools/blisp/CMakeLists.txt
+@@ -21,7 +21,7 @@ target_include_directories(blisp PRIVATE
+ 
+ target_link_libraries(blisp PRIVATE
+         argtable3::argtable3
+-        libblisp_static file_parsers)
++        libblisp file_parsers)
+ 
+ if (NOT CMAKE_C_COMPILER_ID MATCHES "MSVC")
+   target_compile_options(libblisp_obj PRIVATE -Wall -Wextra -Wpedantic)
+-- 
+2.55.0
+

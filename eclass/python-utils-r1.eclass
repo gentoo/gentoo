@@ -39,8 +39,8 @@ inherit multiprocessing toolchain-funcs
 # @DESCRIPTION:
 # All supported Python implementations, most preferred last.
 _PYTHON_ALL_IMPLS=(
-	python3_{14..15}t
-	python3_{12..15}
+	python3_{12..13}
+	python3_{14..15}{t,}
 )
 readonly _PYTHON_ALL_IMPLS
 
