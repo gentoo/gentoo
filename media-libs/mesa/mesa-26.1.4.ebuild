@@ -55,7 +55,7 @@ SLOT="0"
 
 VIDEO_CARDS="
 	asahi d3d12 freedreno i915 imagination intel lavapipe lima nouveau nvk
-	panfrost r300 r600 radeon radeonsi v3d vc4 virgl vivante vmware zink"
+	panfrost r300 r600 radeon radeonsi tegra v3d vc4 virgl vivante vmware zink"
 for card in ${VIDEO_CARDS}; do
 	IUSE_VIDEO_CARDS+=" video_cards_${card}"
 done
@@ -74,6 +74,7 @@ REQUIRED_USE="
 	video_cards_r300?   ( x86? ( llvm ) amd64? ( llvm ) )
 	video_cards_zink? ( vulkan opengl )
 	video_cards_nvk? ( vulkan video_cards_nouveau )
+	video_cards_tegra? ( video_cards_nouveau )
 "
 
 LIBDRM_DEPSTRING=">=x11-libs/libdrm-2.4.121"
@@ -313,6 +314,7 @@ multilib_src_configure() {
 	gallium_enable video_cards_lima lima
 	gallium_enable video_cards_nouveau nouveau
 	gallium_enable video_cards_panfrost panfrost
+	gallium_enable video_cards_tegra tegra
 	gallium_enable video_cards_v3d v3d
 	gallium_enable video_cards_vc4 vc4
 	gallium_enable video_cards_virgl virgl
