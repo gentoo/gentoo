@@ -29,12 +29,12 @@ BDEPEND="
 		virtual/pandoc
 	)
 	test? (
-		$(python_gen_cond_dep '
-			dev-python/sympy[${PYTHON_USEDEP}]
-		' python3_{10..12})
+		dev-python/sympy[${PYTHON_USEDEP}]
 	)
 "
 
+EPYTEST_PLUGINS=( "${PN}" )
+EPYTEST_PLUGIN_LOAD_VIA_ENV=1
 distutils_enable_tests pytest
 distutils_enable_sphinx docs/source \
 	dev-python/sphinx-rtd-theme \

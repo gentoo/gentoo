@@ -17,7 +17,7 @@ S="${WORKDIR}"
 
 LICENSE="GPL-3"
 SLOT="0/$(ver_cut 1-2)"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 CONFIG_CHECK="~!SPINLOCK JUMP_LABEL ~PREEMPT_NOTIFIERS ~KPROBES"
 KPROBES_ERROR="CONFIG_KPROBES is required for kernel 6.16+; modules fail to build with kernel 6.19+"

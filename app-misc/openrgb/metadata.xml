@@ -25,5 +25,6 @@
 	</longdescription>
 	<upstream>
 		<remote-id type="gitlab">CalcProgrammer1/OpenRGB</remote-id>
+		<remote-id type="codeberg">OpenRGB/OpenRGB</remote-id>
 	</upstream>
 </pkgmetadata>

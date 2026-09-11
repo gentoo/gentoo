@@ -169,24 +169,22 @@ qt6-build_src_prepare() {
 # @DESCRIPTION:
 # Run cmake_src_configure and handle anything else generic as needed.
 qt6-build_src_configure() {
-	if [[ ${PN} == qttranslations ]]; then
-		# does not compile anything, further options would be unrecognized
-		cmake_src_configure
-		return
-	fi
-
 	local defaultcmakeargs=(
 		# cmake defaults to "STATUS" but Qt changes that to "NOTICE" which
 		# hides a lot of information that is useful for bug reports
 		--log-level=STATUS
 		# ...but dev messages are noisy and not really useful downstream
 		-Wno-dev
+		# generally unwanted on Gentoo, portage handles tracking licenses
+		-DQT_GENERATE_SBOM=OFF
 		# see _qt6-build_create_user_facing_links
 		-DINSTALL_PUBLICBINDIR="${QT6_PREFIX}"/bin
+	)
+
+	# avoid QA warning for unused options when not compiling anything
+	[[ ${PN} != qttranslations ]] && defaultcmakeargs+=(
 		# note that if qtbase was built with tests, this is default ON
 		-DQT_BUILD_TESTS=$(in_iuse test && use test && echo ON || echo OFF)
-		# generally unwated on Gentoo, portage handles tracking licenses
-		-DQT_GENERATE_SBOM=OFF
 		# avoid appending -O2 after user's C(XX)FLAGS (bug #911822)
 		-DQT_USE_DEFAULT_CMAKE_OPTIMIZATION_FLAGS=ON
 	)
@@ -333,9 +331,17 @@ _qt6-build_sanitize_cpu_flags() {
 	# so users will not lose *all* CPU-specific optimizations
 	local march=$(
 		$(tc-getCXX) -x c++ -E -P ${CXXFLAGS} ${CPPFLAGS} - <<-EOF | sed -n '/^-march=/p' | tail -n 1
-			#if !defined(__EVEX512__) && !defined(__clang__) && __GNUC__ >= 16
-			#  define __EVEX512__ 1 /* removed in gcc-16 (bug #956750,#969664) */
+			/* ignore evex* for >=gcc-16 and >=clang-22 (bug #956750,#969664) */
+			/* TODO: drop this and v4's EVEX* when both compilers been stable for a while */
+			#if (!defined(__clang__) && __GNUC__ >= 16) || __clang_major__ >= 22
+			#  ifndef __EVEX256__
+			#    define __EVEX256__ 1
+			#  endif
+			#  ifndef __EVEX512__
+			#    define __EVEX512__ 1
+			#  endif
 			#endif
+
 			#if (__CRC32__ + __LAHF_SAHF__ + __POPCNT__ + __SSE3__ + __SSE4_1__ + __SSE4_2__ + __SSSE3__) == 7
 			-march=x86-64-v2
 			#  if (__AVX__ + __AVX2__ + __BMI__ + __BMI2__ + __F16C__ + __FMA__ + __LZCNT__ + __MOVBE__ + __XSAVE__) == 9

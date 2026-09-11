@@ -19,7 +19,7 @@ else
 		-> ${P}.gh.tar.gz"
 	S="${WORKDIR}/${PN%-mode}-${PV}"
 
-	KEYWORDS="~alpha ~amd64 ~arm ~ppc ~ppc64 ~x86 ~x64-macos"
+	KEYWORDS="~alpha amd64 arm ppc ppc64 x86 ~x64-macos"
 fi
 
 LICENSE="GPL-3+"

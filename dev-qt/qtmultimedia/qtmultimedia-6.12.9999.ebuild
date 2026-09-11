@@ -94,6 +94,7 @@ CMAKE_SKIP_TESTS=(
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-6.11.1-ffmpeg9.patch
+	"${FILESDIR}"/${PN}-6.11.2-libcxx23-mutex.patch
 )
 
 src_prepare() {

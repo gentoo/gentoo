@@ -288,11 +288,9 @@ _distutils_set_globals() {
 	if [[ ! ${DISTUTILS_OPTIONAL} ]]; then
 		RDEPEND="${PYTHON_DEPS} ${rdep}"
 		BDEPEND="${PYTHON_DEPS} ${bdep}"
+		# needed to get sysconfigdata for cross builds
+		DEPEND="${PYTHON_DEPS}"
 		REQUIRED_USE=${PYTHON_REQUIRED_USE}
-
-		if [[ ${DISTUTILS_EXT} ]]; then
-			DEPEND="${PYTHON_DEPS}"
-		fi
 	fi
 
 	if [[ ${DISTUTILS_EXT} ]]; then
@@ -945,6 +943,15 @@ distutils_wheel_install() {
 			--optimize=all
 			"${wheel}"
 	)
+	# --verify-tags is reliable only for native builds.
+	# packaging is a PDEP, so make sure it got installed/upgraded first.
+	# 26.1 ensures abi3t tags are supported.
+	if [[ -z ${SYSROOT} ]] &&
+		has_version ">=dev-python/gpep517-22[${PYTHON_USEDEP}]" &&
+		has_version ">=dev-python/packaging-26.1[${PYTHON_USEDEP}]"
+	then
+		cmd+=( --verify-tags )
+	fi
 	printf '%s\n' "${cmd[*]}"
 	"${cmd[@]}" || die "Wheel install failed"
 
@@ -1037,11 +1044,6 @@ distutils_pep517_install() {
 		meson-python)
 			# variables defined by setup_meson_src_configure
 			local MESONARGS=() BOOST_INCLUDEDIR BOOST_LIBRARYDIR NM READELF
-			# it also calls filter-lto
-			local x
-			for x in $(all-flag-vars); do
-				local -x "${x}=${!x}"
-			done
 
 			setup_meson_src_configure "${DISTUTILS_ARGS[@]}"
 
@@ -1118,30 +1120,36 @@ distutils_pep517_install() {
 			fi
 			;;
 		sip)
-			if [[ -n ${DISTUTILS_ARGS[@]} ]]; then
-				# NB: for practical reasons, we support only --foo=bar,
-				# not --foo bar
-				local arg
-				for arg in "${DISTUTILS_ARGS[@]}"; do
-					[[ ${arg} != -* ]] &&
-						die "Bare arguments in DISTUTILS_ARGS unsupported: ${arg}"
-				done
+			# NB: for practical reasons, we support only --foo=bar,
+			# not --foo bar
+			local arg
+			for arg in "${DISTUTILS_ARGS[@]}"; do
+				[[ ${arg} != -* ]] &&
+					die "Bare arguments in DISTUTILS_ARGS unsupported: ${arg}"
+			done
 
-				config_settings=$(
-					"${EPYTHON}" - "${DISTUTILS_ARGS[@]}" <<-EOF || die
-						import collections
-						import json
-						import sys
+			local sip_args=(
+				# sip adds manylinux to tags by default which is wrong
+				# without a curated environment and causes problems on
+				# musl with gpep517's --verify-tags
+				--no-manylinux
+				"${DISTUTILS_ARGS[@]}"
+			)
 
-						args = collections.defaultdict(list)
-						for arg in (x.split("=", 1) for x in sys.argv[1:]): \
-							args[arg[0]].extend(
-								[arg[1]] if len(arg) > 1 else [])
+			config_settings=$(
+				"${EPYTHON}" - "${sip_args[@]}" <<-EOF || die
+					import collections
+					import json
+					import sys
 
-						print(json.dumps(args))
-					EOF
-				)
-			fi
+					args = collections.defaultdict(list)
+					for arg in (x.split("=", 1) for x in sys.argv[1:]): \
+						args[arg[0]].extend(
+							[arg[1]] if len(arg) > 1 else [])
+
+					print(json.dumps(args))
+				EOF
+			)
 			;;
 		*)
 			[[ -n ${DISTUTILS_ARGS[@]} ]] &&
@@ -1153,11 +1161,6 @@ distutils_pep517_install() {
 		config_settings=${DISTUTILS_CONFIG_SETTINGS_JSON}
 	elif [[ -n ${DISTUTILS_CONFIG_SETTINGS_JSON} ]]; then
 		die "DISTUTILS_CONFIG_SETTINGS_JSON supported only for standalone backends"
-	fi
-
-	# https://pyo3.rs/latest/building-and-distribution.html#cross-compiling
-	if tc-is-cross-compiler; then
-		local -x PYO3_CROSS_LIB_DIR=${SYSROOT}/$(python_get_stdlib)
 	fi
 
 	local build_backend=$(_distutils-r1_get_backend)
@@ -1173,6 +1176,9 @@ distutils_pep517_install() {
 		cmd+=( --config-json "${config_settings}" )
 	fi
 	if [[ -n ${SYSROOT} ]]; then
+		# https://pyo3.rs/latest/building-and-distribution.html#cross-compiling
+		local -x PYO3_CROSS_LIB_DIR=${SYSROOT}/$(python_get_stdlib)
+
 		cmd+=( --sysroot "${SYSROOT}" )
 	fi
 	printf '%s\n' "${cmd[*]}"
@@ -1188,12 +1194,99 @@ distutils_pep517_install() {
 
 # @VARIABLE: DISTUTILS_WHEELS
 # @DESCRIPTION:
-# An associative array of wheels created as a result
-# of distutils-r1_python_compile invocations, mapped to the source
-# directories.  Note that this includes only wheels implicitly created
-# by the eclass, and not wheels created as a result of direct
-# distutils_pep517_install calls in the ebuild.
-declare -g -A DISTUTILS_WHEELS=()
+# An array of paths to wheels that were created as a result
+# of distutils-r1_python_compile invocations.  Note that this includes
+# only wheels implicitly created by the eclass, and not wheels created
+# as a result of direct distutils_pep517_install calls in the ebuild.
+declare -g -a DISTUTILS_WHEELS=()
+
+# @VARIABLE: DISTUTILS_WHEEL_PATHS
+# @DESCRIPTION:
+# Mapping from wheels in DISTUTILS_WHEELS to corresponding source
+# directories.
+declare -g -A DISTUTILS_WHEEL_PATHS=()
+
+# @FUNCTION: _distutils-r1_find_best_wheel
+# @INTERNAL
+# @DESCRIPTION:
+# Find the best reusable wheel in DISTUTILS_WHEELS, and print its path.
+# If no wheel is reusable, returns empty.
+_distutils-r1_find_best_wheel() {
+	local best_wheel= whl
+	for whl in "${DISTUTILS_WHEELS[@]}"; do
+		# use only wheels corresponding to the current directory
+		if [[ ${PWD} != ${DISTUTILS_WHEEL_PATHS["${whl}"]} ]]; then
+			continue
+		fi
+
+		local whl_fn=${whl##*/}
+		# This technically omits the build tag, but we're
+		# not greedy, so we're only checking for the minimum number
+		# of components.
+		[[ ${whl_fn} != *-*-*-*-*.whl ]] &&
+			die "Invalid wheel filename: ${whl}"
+		whl_fn=${whl_fn%.whl}
+		local platform_tag=${whl_fn##*-}
+		whl_fn=${whl_fn%-*}
+		local abi_tag=${whl_fn##*-}
+		whl_fn=${whl_fn%-*}
+		local python_tag=${whl_fn##*-}
+
+		# Verify whether the Python tag is compatible.  We should
+		# be running from the oldest to the newest Python version,
+		# so it should always hold.  We short-circuit py3 tag.
+		if [[ .${python_tag}. != *.py3.* ]]; then
+			[[ ${EPYTHON} != python3.* ]] &&
+				die "Update the python_tag check for ${EPYTHON}"
+			local minor=${EPYTHON#python3.}
+			minor=${minor%t}
+			local is_compatible=
+			while [[ ${minor} -ge 0 ]]; do
+				if [[
+					.${python_tag}. == *.cp3${minor}.* ||
+					.${python_tag}. == *.py3${minor}.*
+				]]; then
+					is_compatible=1
+				fi
+				: $(( minor-- ))
+			done
+			[[ ! ${is_compatible} ]] &&
+				die "Incompatible Python tag found in ${whl_fn}"
+		fi
+
+		if [[
+			# Use pure Python wheels only if we're not expected to
+			# build extensions.  Otherwise, we may end up not
+			# building the extension at all when e.g. PyPy3 is built
+			# without one.
+			(
+				! ${DISTUTILS_EXT} &&
+				.${python_tag}. == *.py3.* &&
+				.${abi_tag}. == *.none.*
+			) ||
+			# For GIL-enabled CPython, we can reuse abi3 wheels.
+			# Note that we do not check the Python tag (yet),
+			# and instead rely on the assumption that we're building
+			# from the oldest to the newest implementation,
+			# and the wheels are forward-compatible.
+			(
+				${EPYTHON} == python* &&
+				${EPYTHON} != *t &&
+				.${abi_tag}. == *.abi3.*
+			) ||
+			# For freethreading CPython, we can reuse abi3t wheels.
+			# Same as above, we're relying on the ordering.
+			(
+				${EPYTHON} == python*t &&
+				.${abi_tag}. == *.abi3t.*
+			)
+		]]; then
+			best_wheel=${whl}
+		fi
+	done
+
+	echo "${best_wheel}"
+}
 
 # @FUNCTION: distutils-r1_python_compile
 # @USAGE: [additional-args...]
@@ -1230,40 +1323,16 @@ distutils-r1_python_compile() {
 	EOF
 
 	if [[ ${DISTUTILS_ALLOW_WHEEL_REUSE} ]]; then
-		local whl
-		for whl in "${!DISTUTILS_WHEELS[@]}"; do
-			# use only wheels corresponding to the current directory
-			if [[ ${PWD} != ${DISTUTILS_WHEELS["${whl}"]} ]]; then
-				continue
-			fi
-
-			# 1. Use pure Python wheels only if we're not expected
-			# to build extensions.  Otherwise, we may end up
-			# not building the extension at all when e.g. PyPy3
-			# is built without one.
-			#
-			# 2. For CPython, we can reuse stable ABI wheels.  Note
-			# that this relies on the assumption that we're building
-			# from the oldest to the newest implementation,
-			# and the wheels are forward-compatible.
-			if [[
-				( ! ${DISTUTILS_EXT} && ${whl} == *py3-none* ) ||
-				(
-					${EPYTHON} == python* &&
-					# freethreading does not support stable ABI
-					# at the moment
-					${EPYTHON} != *t &&
-					${whl} == *-abi3-*
-				)
-			]]; then
-				distutils_wheel_install "${BUILD_DIR}/install" "${whl}"
-				return
-			fi
-		done
+		local best_wheel=$(_distutils-r1_find_best_wheel)
+		if [[ -n ${best_wheel} ]]; then
+			distutils_wheel_install "${BUILD_DIR}/install" "${best_wheel}"
+			return
+		fi
 	fi
 
 	distutils_pep517_install "${BUILD_DIR}/install"
-	DISTUTILS_WHEELS+=( "${DISTUTILS_WHEEL_PATH}" "${PWD}" )
+	DISTUTILS_WHEELS+=( "${DISTUTILS_WHEEL_PATH}" )
+	DISTUTILS_WHEEL_PATHS+=( "${DISTUTILS_WHEEL_PATH}" "${PWD}" )
 }
 
 # @FUNCTION: _distutils-r1_wrap_scripts
@@ -1514,6 +1583,8 @@ _distutils-r1_run_common_phase() {
 		python_setup "${DISTUTILS_ALL_SUBPHASE_IMPLS[@]}"
 
 		local MULTIBUILD_VARIANTS=( "${EPYTHON/./_}" )
+		local PYTHON_USEDEP="python_targets_${EPYTHON/./_}(-)"
+		local PYTHON_SINGLE_USEDEP="python_single_target_${EPYTHON/./_}(-)"
 		# store for restoring after distutils-r1_run_phase.
 		local _DISTUTILS_INITIAL_CWD=${PWD}
 		multibuild_foreach_variant \
@@ -1540,6 +1611,8 @@ _distutils-r1_run_foreach_impl() {
 		if [[ ! ${EPYTHON} ]]; then
 			die "EPYTHON unset, python-single-r1_pkg_setup not called?!"
 		fi
+		local PYTHON_USEDEP="python_targets_${EPYTHON/./_}(-)"
+		local PYTHON_SINGLE_USEDEP="python_single_target_${EPYTHON/./_}(-)"
 		local BUILD_DIR=${BUILD_DIR:-${S}}
 		BUILD_DIR=${BUILD_DIR%%/}_${EPYTHON}
 
@@ -1601,8 +1674,8 @@ _distutils-r1_compare_installed_files() {
 	# Perform the check only if at least one potentially reusable wheel
 	# has been produced.  Nonpure packages (e.g. NumPy) may install
 	# interpreter configuration details into sitedir.
-	if [[ ${!DISTUTILS_WHEELS[*]} != *py3-none-any.whl* &&
-			${!DISTUTILS_WHEELS[*]} != *-abi3-*.whl ]]; then
+	if [[ ${DISTUTILS_WHEELS[*]} != *py3-none-any.whl* &&
+			${DISTUTILS_WHEELS[*]} != *-abi3-*.whl ]]; then
 		return
 	fi
 

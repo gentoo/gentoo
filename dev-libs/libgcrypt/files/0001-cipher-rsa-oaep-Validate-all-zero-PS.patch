@@ -1,0 +1,32 @@
+From cf55ce42d0268f9cfd7abc43aa4ec62d2e8c3f53 Mon Sep 17 00:00:00 2001
+Message-ID: <cf55ce42d0268f9cfd7abc43aa4ec62d2e8c3f53.1788185282.git.sam@gentoo.org>
+From: NIIBE Yutaka <gniibe@fsij.org>
+Date: Thu, 27 Aug 2026 13:47:19 +0900
+Subject: [PATCH 1/3] cipher:rsa:oaep: Validate all-zero PS.
+
+* cipher/rsa-common.c (_gcry_rsa_oaep_decode): Reject non-zero PS.
+
+--
+
+GnuPG-bug-id: 8390
+Reported-by: JEAN Jeremy <Jeremy.Jean@ssi.gouv.fr>
+Signed-off-by: NIIBE Yutaka <gniibe@fsij.org>
+---
+ cipher/rsa-common.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/cipher/rsa-common.c b/cipher/rsa-common.c
+index 1c36c912..f8d06c72 100644
+--- a/cipher/rsa-common.c
++++ b/cipher/rsa-common.c
+@@ -755,6 +755,7 @@ _gcry_rsa_oaep_decode (unsigned char **r_result, size_t *r_resultlen,
+     {
+       not_found &= ct_not_equal_byte (db[n], 0x01);
+       n1 += not_found;
++      failed |= (not_found & ct_not_equal_byte (db[n], 0x00));
+     }
+   failed |= not_found;
+   failed |= ct_not_equal_byte (frame[0], 0x00);
+-- 
+2.55.0
+

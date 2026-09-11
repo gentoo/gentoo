@@ -12,7 +12,7 @@ S=${WORKDIR}/${P^}
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="bluetooth curl dbi debug irda mysql nls odbc postgres usb"
 
 COMMON_DEPEND="

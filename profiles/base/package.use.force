@@ -1,6 +1,14 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Joonas Niilola <juippis@gentoo.org> (2026-09-01)
+# Force 'jumbo-build' on, as 155.0 doesn't build without it.
+# '-jumbo-build' is often broken, it's untested by upstream and Gentoo
+# Firefox packagers.
+# Report bugs directly to upstream if you want '-jumbo-build' to work.
+>=www-client/firefox-155.0 jumbo-build
+>=mail-client/thunderbird-155.0 jumbo-build
+
 # Matt Jolly <kangie@gentoo.org> (2026-08-19)
 # Upstream has a faulty mold dependency with -official and
 # the version we need isn't stable yet; Bug #980645
@@ -112,6 +120,8 @@ llvm-runtimes/libcxxabi clang
 #    echo "dev-lang/rust:${slot} llvm_slot_${_RUST_LLVM_MAP[${slot}]}"
 #    echo "dev-lang/rust-bin:${slot} llvm_slot_${_RUST_LLVM_MAP[${slot}]}"
 # done
+dev-lang/rust:1.98.1 llvm_slot_22
+dev-lang/rust-bin:1.98.1 llvm_slot_22
 dev-lang/rust:1.97.1 llvm_slot_22
 dev-lang/rust-bin:1.97.1 llvm_slot_22
 dev-lang/rust:1.96.1 llvm_slot_22

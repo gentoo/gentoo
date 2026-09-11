@@ -1,9 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit cmake
+inherit cmake flag-o-matic
 
 DESCRIPTION="Library for Bible reading software"
 HOMEPAGE="https://www.crosswire.org/sword/"
@@ -30,11 +30,15 @@ BDEPEND="virtual/pkgconfig"
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.9.0-cflags.patch
 	"${FILESDIR}"/${PN}-1.9.0-cmake4.patch
+	"${FILESDIR}"/${PN}-1.9.0-fix_glob_testfiles.patch
 )
 
 DOCS=( AUTHORS CODINGSTYLE ChangeLog README examples/ samples/ )
 
 src_configure() {
+	# Fix test compilation with char16_t stream operators removed in C++20
+	use test && append-cxxflags -std=c++17
+
 	local mycmakeargs=(
 		# skip unnecessary tests, bug #954771
 		-DCMAKE_DISABLE_FIND_PACKAGE_cppcheck="ON"

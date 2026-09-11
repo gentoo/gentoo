@@ -16,4 +16,4 @@ SRC_URI+="
 		-> ${P}-key-0x4CE14D2AAAC6C2E31BF36920F51469ECE1E71FFB.asc
 "
 
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+KEYWORDS="~alpha amd64 arm64 ppc64 x86"

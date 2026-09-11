@@ -21,7 +21,7 @@ RUBY_S="rails-${PV}/${PN}"
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1-2)"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~riscv"
 
 ruby_add_rdepend "
 	~dev-ruby/actionpack-${PV}

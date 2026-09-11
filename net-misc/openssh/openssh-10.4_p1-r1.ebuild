@@ -25,7 +25,7 @@ LICENSE="BSD GPL-2"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~arm64-macos ~x64-macos ~x64-solaris"
 # Probably want to drop ssl defaulting to on in a future version.
-IUSE="abi_mips_n32 audit debug kerberos ldns libedit livecd pam security-key selinux +ssl static test"
+IUSE="abi_mips_n32 audit debug kerberos ldns libedit livecd pam seccomp security-key selinux +ssl static test"
 
 RESTRICT="!test? ( test )"
 
@@ -216,6 +216,11 @@ src_configure() {
 	if use elibc_musl; then
 		# musl defines bogus values for UTMP_FILE and WTMP_FILE (bug #753230)
 		myconf+=( --disable-utmp --disable-wtmp )
+	fi
+
+	if use kernel_linux; then
+		# OpenSSH aborts if prctl(PR_SET_SECCOMP) fails (bug 980784)
+		myconf+=( $(use_with seccomp sandbox seccomp_filter) )
 	fi
 
 	econf "${myconf[@]}"

@@ -6,29 +6,29 @@ EAPI=8
 inherit readme.gentoo-r1 secureboot
 
 BINPKG="${P/-bin/}-1"
-QEMU_TARGETS="aarch64 loongarch64 riscv64 x86_64"
+EDK2_QEMU_TARGETS="aarch64 loongarch64 riscv64 x86_64"
 
 DESCRIPTION="TianoCore EDK II UEFI firmware for virtual machines"
 HOMEPAGE="https://github.com/tianocore/edk2"
-for a in ${QEMU_TARGETS}; do
+for a in ${EDK2_QEMU_TARGETS}; do
 	SRC_URI+=" qemu_softmmu_targets_${a}? ( https://dev.gentoo.org/~chewi/distfiles/${BINPKG}-qemu-${a}.xpak )"
 done
 S="${WORKDIR}"
 LICENSE="BSD-2-with-patent MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
-printf -v IUSE ' qemu_softmmu_targets_%s' ${QEMU_TARGETS}
+printf -v IUSE ' qemu_softmmu_targets_%s' ${EDK2_QEMU_TARGETS}
 REQUIRED_USE="|| ( ${IUSE} )"
 
 RDEPEND="!sys-firmware/edk2"
 
 DOC_CONTENTS="This package includes the TianoCore EDK II UEFI firmware for virtual \
-machines of these QEMU architectures: ${QEMU_TARGETS}. See each architecture's README \
+machines of these QEMU architectures: ${EDK2_QEMU_TARGETS}. See each architecture's README \
 for usage details."
 
 src_unpack() {
 	local a
-	for a in ${QEMU_TARGETS}; do
+	for a in ${EDK2_QEMU_TARGETS}; do
 		use "qemu_softmmu_targets_${a}" || continue
 		mkdir "${a}" || die
 		tar -C "${a}" -xf - < <(xz -c -d --single-stream "${DISTDIR}/${BINPKG}-qemu-${a}.xpak") ||
@@ -52,7 +52,7 @@ src_install() {
 	readme.gentoo_create_doc
 
 	local a
-	for a in ${QEMU_TARGETS}; do
+	for a in ${EDK2_QEMU_TARGETS}; do
 		use "qemu_softmmu_targets_${a}" || continue
 		newdoc "${a}"/usr/share/doc/*/README.gentoo README-"${a}".gentoo
 	done

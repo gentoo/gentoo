@@ -13,7 +13,7 @@ if [[ "${PV}" = *9999* ]]; then
 	EGIT_REPO_URI="https://salsa.debian.org/dgrift/${PN}.git"
 else
 	SRC_URI="https://salsa.debian.org/dgrift/${PN}/-/archive/${PV}/${P}.tar.bz2"
-	KEYWORDS="~amd64"
+	KEYWORDS="amd64"
 fi
 
 LICENSE="GPL-3"

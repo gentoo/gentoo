@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( pypy3_11 python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 PYTHON_REQ_USE="threads(+)"
 DISTUTILS_USE_PEP517=setuptools
 inherit distutils-r1 pypi
@@ -30,6 +30,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-10.0-py3.13.patch"
 )
 
+EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
 distutils_enable_sphinx docs
 

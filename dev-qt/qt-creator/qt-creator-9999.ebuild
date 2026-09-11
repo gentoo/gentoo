@@ -3,7 +3,7 @@
 
 EAPI=8
 
-LLVM_COMPAT=( {17..22} )
+LLVM_COMPAT=( {17..23} )
 LLVM_OPTIONAL=1
 PYTHON_COMPAT=( python3_{12..14} )
 inherit cmake flag-o-matic llvm-r2 python-any-r1 readme.gentoo-r1 xdg
@@ -97,6 +97,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-21.0.0-musl-no-execinfo.patch
+	"${FILESDIR}"/${PN}-20.0.1-libcxx23.patch
 )
 
 src_prepare() {

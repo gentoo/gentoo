@@ -1,0 +1,6 @@
+--- a/src/plugins/multimedia/gstreamer/common/qgst_p.h
++++ b/src/plugins/multimedia/gstreamer/common/qgst_p.h
+@@ -42,2 +42,3 @@
+ 
++#include <mutex>
+ #include <type_traits>

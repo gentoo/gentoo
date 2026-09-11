@@ -101,6 +101,7 @@ dev-python/flufl-lock
 dev-python/gherkin-official
 dev-python/guessit
 dev-python/knowit
+dev-python/hypothesis
 dev-python/logfury
 dev-python/narwhals
 dev-python/progressbar2
@@ -569,6 +570,7 @@ media-gfx/gnome-font-viewer
 media-gfx/simple-scan
 media-sound/easyeffects
 media-sound/gnome-music
+media-video/celluloid
 net-wireless/gnome-bluetooth
 sys-apps/baobab
 sys-apps/xdg-desktop-portal-gnome

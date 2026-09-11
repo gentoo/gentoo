@@ -1,0 +1,81 @@
+From 868fdd8120790ef453692604fff910e29c56cee1 Mon Sep 17 00:00:00 2001
+From: Sun Yuechi <sunyuechi@iscas.ac.cn>
+Date: Fri, 29 May 2026 18:39:51 +0800
+Subject: [PATCH 0213/1946] rgw: move SWIFT error_handler out-of-line to fix
+ link failure
+
+The two error_handler overrides are defined inline in rgw_rest_swift.h
+and delegate to RGWSwiftWebsiteHandler::error_handler, a non-virtual
+function defined in rgw_rest_swift.cc (librgw_a.a). Because the header
+is included by rgw_rest.cc, the inline bodies are emitted in
+librgw_common.a, which then ODR-uses that symbol across archives.
+
+The link line lists librgw_a.a before librgw_common.a, and GNU ld only
+pulls archive members on demand: when librgw_a.a is scanned nothing yet
+references RGWSwiftWebsiteHandler::error_handler, so rgw_rest_swift.cc.o
+is dropped and the symbol is later unresolved. This shows up as a link
+failure with gcc 16 -O2.
+
+Move the two bodies into rgw_rest_swift.cc next to the function they
+call, so the ODR-use stays within the same object and the build no
+longer depends on archive scan order. No functional change.
+
+Signed-off-by: Sun Yuechi <sunyuechi@iscas.ac.cn>
+Signed-off-by: Daniel Baumann <mail@daniel-baumann.ch>
+---
+ src/rgw/rgw_rest_swift.cc | 14 ++++++++++++++
+ src/rgw/rgw_rest_swift.h  |  9 ++-------
+ 2 files changed, 16 insertions(+), 7 deletions(-)
+
+diff --git a/src/rgw/rgw_rest_swift.cc b/src/rgw/rgw_rest_swift.cc
+index f779175eff4..b3645b90fcc 100644
+--- a/src/rgw/rgw_rest_swift.cc
++++ b/src/rgw/rgw_rest_swift.cc
+@@ -3256,3 +3256,17 @@ RGWHandler_REST* RGWRESTMgr_SWIFT_Info::get_handler(
+   const auto& auth_strategy = auth_registry.get_swift();
+   return new RGWHandler_REST_SWIFT_Info(auth_strategy);
+ }
++
++int RGWHandler_REST_Bucket_SWIFT::error_handler(int err_no,
++						std::string *error_content,
++						optional_yield y)
++{
++  return website_handler->error_handler(err_no, error_content, y);
++}
++
++int RGWHandler_REST_Obj_SWIFT::error_handler(int err_no,
++					     std::string *error_content,
++					     optional_yield y)
++{
++  return website_handler->error_handler(err_no, error_content, y);
++}
+diff --git a/src/rgw/rgw_rest_swift.h b/src/rgw/rgw_rest_swift.h
+index 0fdf055e95a..cafcda23434 100644
+--- a/src/rgw/rgw_rest_swift.h
++++ b/src/rgw/rgw_rest_swift.h
+@@ -374,9 +374,7 @@ public:
+   using RGWHandler_REST_SWIFT::RGWHandler_REST_SWIFT;
+   ~RGWHandler_REST_Bucket_SWIFT() override = default;
+ 
+-  int error_handler(int err_no, std::string *error_content, optional_yield y) override {
+-    return website_handler->error_handler(err_no, error_content, y);
+-  }
++  int error_handler(int err_no, std::string *error_content, optional_yield y) override;
+ 
+   int retarget(RGWOp* op, RGWOp** new_op, optional_yield) override {
+     return website_handler->retarget_bucket(op, new_op);
+@@ -412,10 +410,7 @@ public:
+   using RGWHandler_REST_SWIFT::RGWHandler_REST_SWIFT;
+   ~RGWHandler_REST_Obj_SWIFT() override = default;
+ 
+-  int error_handler(int err_no, std::string *error_content,
+-		    optional_yield y) override {
+-    return website_handler->error_handler(err_no, error_content, y);
+-  }
++  int error_handler(int err_no, std::string *error_content, optional_yield y) override;
+ 
+   int retarget(RGWOp* op, RGWOp** new_op, optional_yield) override {
+     return website_handler->retarget_object(op, new_op);
+-- 
+2.55.0
+

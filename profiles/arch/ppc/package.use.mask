@@ -1,6 +1,11 @@
 # Copyright 2023-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# David Seifert <soap@gentoo.org> (2026-09-07)
+# sci-libs/libaec is not keyworded here (bug #966099), and >=sci-libs/hdf5-2.2.0
+# requires it directly instead of via virtual/szip
+>=sci-libs/hdf5-2.2.0 szip
+
 # Nicolas PARLANT <nicolas.parlant@parhuet.fr> (2026-07-30)
 # dev-python/qtpy is not keyworded here
 media-libs/libffado gui

@@ -403,6 +403,7 @@ sparc		default/linux/sparc/23.0/split-usr/64ul/desktop			stable
 x86		default/linux/x86/23.0/i686					stable
 x86		default/linux/x86/23.0/i686/systemd				stable
 x86		default/linux/x86/23.0/i686/hardened				stable
+x86		default/linux/x86/23.0/i686/hardened/systemd			stable
 x86		default/linux/x86/23.0/i686/hardened/selinux			stable
 x86		default/linux/x86/23.0/i686/desktop				stable
 x86		default/linux/x86/23.0/i686/desktop/gnome			stable
@@ -426,6 +427,7 @@ x86		default/linux/x86/23.0/i686/split-usr/prefix/kernel-3.2+	exp
 x86		default/linux/x86/23.0/i686/time64				stable
 x86		default/linux/x86/23.0/i686/time64/systemd			stable
 x86		default/linux/x86/23.0/i686/time64/hardened			stable
+x86		default/linux/x86/23.0/i686/time64/hardened/systemd		stable
 x86		default/linux/x86/23.0/i686/time64/hardened/selinux		stable
 x86		default/linux/x86/23.0/i686/time64/desktop			stable
 x86		default/linux/x86/23.0/i686/time64/desktop/gnome		stable
@@ -541,6 +543,7 @@ riscv		default/linux/riscv/23.0/rv32/ilp32/musl/systemd		exp
 riscv		default/linux/riscv/23.0/rv32/split-usr/ilp32d/musl		exp
 riscv		default/linux/riscv/23.0/rv32/split-usr/ilp32/musl		exp
 x86		default/linux/x86/23.0/i686/musl				dev
+x86		default/linux/x86/23.0/i686/musl/systemd			dev
 x86		default/linux/x86/23.0/i686/musl/selinux			exp
 x86		default/linux/x86/23.0/i686/split-usr/musl			dev
 x86		default/linux/x86/23.0/i686/split-usr/musl/selinux		exp

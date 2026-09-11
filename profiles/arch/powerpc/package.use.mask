@@ -1,6 +1,11 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2026-08-31)
+# Requires unkeyworded kde-apps/akonadi
+kde-apps/kgpg pim
+kde-apps/kleopatra pim
+
 # Alfred Wingate <parona@protonmail.com> (2026-05-13)
 # dev-qt/qtgraphs:6 is not keyworded here
 dev-python/pyside graphs
@@ -59,10 +64,6 @@ media-sound/mpd sid
 media-libs/libsdl2 fcitx
 x11-terms/mlterm fcitx
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2024-08-19)
-# kde-apps/kdesdk-thumbnailers is not yet keyworded
-kde-apps/thumbnailers gettext
-
 # Thomas Bettler <thomas.bettler@gmail.com> (2024-06-10)
 # requires dev-libs/apache-arrow which is net yet keyworded
 sci-libs/gdal parquet
@@ -82,7 +83,6 @@ media-video/mpv -lua_single_target_lua5-1 lua_single_target_luajit
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-03-24)
 # Requires unkeyworded dev-qt/qtwebengine (and revdeps)
-kde-apps/kleopatra pim
 kde-plasma/plasma-nm openconnect
 net-p2p/ktorrent rss
 
@@ -338,13 +338,6 @@ games-emulation/dosbox glide
 # Thomas Deutschmann <whissi@gentoo.org> (2016-08-26)
 # Enable numa support on supported architectures
 dev-db/mysql -numa
-
-# Michael Palimaka <kensington@gentoo.org> (2016-07-07)
-# Requires unkeyworded dependencies
-dev-vcs/subversion kwallet
-sys-auth/polkit kde
-sys-block/gparted kde
-virtual/notification-daemon kde
 
 # Pacho Ramos <pacho@gentoo.org> (2015-11-15)
 # Missing keywords

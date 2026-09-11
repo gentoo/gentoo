@@ -27,6 +27,7 @@ BDEPEND="verify-sig? ( sec-keys/openpgp-keys-gnupg )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.0.0-fix-typo.patch
+	"${FILESDIR}"/${PN}-3.0.0-remove-putc.patch
 )
 
 src_prepare() {

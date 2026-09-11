@@ -14,7 +14,7 @@ SRC_URI="
 
 LICENSE="BSD BSD-2 LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+KEYWORDS="~alpha amd64 arm64 ppc64 x86"
 
 DEPEND="
 	dev-libs/json-c:=

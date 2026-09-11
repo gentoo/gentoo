@@ -1,0 +1,33 @@
+From a20a7e3497bccf3415bf47ccc55f133eb9d6d6a0 Mon Sep 17 00:00:00 2001
+From: florian <florian@freepascal.org>
+Date: Sun, 10 Apr 2022 23:19:34 +0200
+Subject: [PATCH]   * define __libc_csu_* symbols as weak symbols on
+ aarch64-linux
+
+---
+ rtl/linux/aarch64/cprt0.as | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
+
+diff --git a/rtl/linux/aarch64/cprt0.as b/rtl/linux/aarch64/cprt0.as
+index fd83610fbc..218b05aa9e 100644
+--- a/rtl/linux/aarch64/cprt0.as
++++ b/rtl/linux/aarch64/cprt0.as
+@@ -7,6 +7,18 @@
+ 	.text
+ 	.align 2
+ 
++	.globl __libc_csu_init
++	.type __libc_csu_init,#function
++	.weak __libc_csu_init
++__libc_csu_init:
++	ret
++
++	.globl __libc_csu_fini
++	.type __libc_csu_fini,#function
++	.weak __libc_csu_fini
++__libc_csu_fini:
++	ret
++
+ 	.globl _start
+ 	.type  _start,#function
+ _start:

@@ -1,0 +1,134 @@
+From fa05ca502293f65e25930e6321c82eeaccf382ab Mon Sep 17 00:00:00 2001
+From: Denys Fedoryshchenko <denys.f@collabora.com>
+Date: Wed, 2 Sep 2026 19:13:26 +0300
+Subject: [PATCH v4l-utils] v4l-utils: add missing <cstdlib> includes
+
+Several utilities call std::exit() but include only <stdlib.h>, or no
+standard library header at all. This relies on transitive includes to make
+std::exit() available.
+
+The issue can be reproduced with libc++ by configuring with:
+
+  CXX=clang++ \
+    CXXFLAGS="-stdlib=libc++ -D_LIBCPP_REMOVE_TRANSITIVE_INCLUDES=1" \
+    meson setup build
+  ninja -C build
+
+Include <cstdlib> for std::exit(). cec-test-fuzzing.cpp calls random() and
+cec-tuner.cpp calls abs() unqualified, so include <stdlib.h> there.
+
+Signed-off-by: Denys Fedoryshchenko <denys.f@collabora.com>
+Signed-off-by: Hans Verkuil <hverkuil+cisco@kernel.org>
+--- a/utils/cec-compliance/cec-compliance.h
++++ b/utils/cec-compliance/cec-compliance.h
+@@ -13,6 +13,7 @@
+ 
+ #include <cec-info.h>
+ 
++#include <cstdlib>
+ #include <vector>
+ 
+ #define TAG_AUDIO_RATE_CONTROL		1
+--- a/utils/cec-compliance/cec-test-fuzzing.cpp
++++ b/utils/cec-compliance/cec-test-fuzzing.cpp
+@@ -9,6 +9,7 @@
+ #include <sys/ioctl.h>
+ 
+ #include "cec-compliance.h"
++#include <stdlib.h>
+ 
+ int testFuzzing(struct node &node, unsigned me, unsigned la)
+ {
+--- a/utils/cec-ctl/cec-ctl.cpp
++++ b/utils/cec-ctl/cec-ctl.cpp
+@@ -27,6 +27,7 @@
+ 
+ #include "cec-ctl.h"
+ #include "compiler.h"
++#include <cstdlib>
+ 
+ static struct timespec start_monotonic;
+ static struct timeval start_timeofday;
+--- a/utils/cec-follower/cec-tuner.cpp
++++ b/utils/cec-follower/cec-tuner.cpp
+@@ -10,6 +10,7 @@
+ 
+ #include "cec-follower.h"
+ #include "compiler.h"
++#include <stdlib.h>
+ 
+ #define NUM_ANALOG_FREQS 3
+ #define NUM_DIGITAL_CHANS 3
+--- a/utils/common/cv4l-helpers.h
++++ b/utils/common/cv4l-helpers.h
+@@ -9,6 +9,7 @@
+ #ifndef _CV4L_HELPERS_H_
+ #define _CV4L_HELPERS_H_
+ 
++#include <cstdlib>
+ #include <limits.h>
+ #include <v4l-helpers.h>
+ 
+--- a/utils/edid-decode/calc-ovt.cpp
++++ b/utils/edid-decode/calc-ovt.cpp
+@@ -12,6 +12,7 @@
+ #include <numeric>
+ 
+ #include "edid-decode.h"
++#include <cstdlib>
+ 
+ #define MinVblankDuration 460
+ #define MinVblankLines 20
+--- a/utils/edid-decode/edid-decode.cpp
++++ b/utils/edid-decode/edid-decode.cpp
+@@ -17,6 +17,7 @@
+ #include <unistd.h>
+ 
+ #include "edid-decode.h"
++#include <cstdlib>
+ 
+ #define STR(x) #x
+ #define STRING(x) STR(x)
+--- a/utils/rds-ctl/rds-ctl.cpp
++++ b/utils/rds-ctl/rds-ctl.cpp
+@@ -28,6 +28,7 @@
+ #include <v4l2-info.h>
+ #include <libv4l2rds.h>
+ #include <v4l-getsubopt.h>
++#include <cstdlib>
+ 
+ using dev_vec = std::vector<std::string>;
+ using dev_map = std::map<std::string, std::string>;
+--- a/utils/v4l2-compliance/v4l2-compliance.h
++++ b/utils/v4l2-compliance/v4l2-compliance.h
+@@ -25,6 +25,7 @@
+ #include <set>
+ #include <string>
+ #include <cstdint>
++#include <cstdlib>
+ 
+ #include <linux/videodev2.h>
+ #include <linux/v4l2-subdev.h>
+--- a/utils/v4l2-ctl/v4l2-ctl.h
++++ b/utils/v4l2-ctl/v4l2-ctl.h
+@@ -4,6 +4,7 @@
+ #include <cstdint>
+ #include <linux/videodev2.h>
+ #include <linux/v4l2-subdev.h>
++#include <cstdlib>
+ #include <v4l-getsubopt.h>
+
+ 
+--- a/utils/v4l2-dbg/v4l2-dbg.cpp
++++ b/utils/v4l2-dbg/v4l2-dbg.cpp
+@@ -42,6 +42,7 @@
+ #include "v4l2-dbg-ac97.h"
+ #include "v4l2-dbg-tvp5150.h"
+ #include "v4l2-dbg-micron.h"
++#include <cstdlib>
+ 
+ struct board_list {
+ 	const char *name;
+-- 
+2.55.0
+

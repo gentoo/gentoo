@@ -72,10 +72,6 @@ app-emulation/qemu passt
 # mongodb not keyworded here
 sci-libs/gdal mongodb
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-07-26)
-# kde-apps/kamoso not keyworded yet, bug #946343
->=kde-apps/kdemultimedia-meta-25.04.2-r1 gstreamer
-
 # Robin H. Johnson <robbat2@gentoo.org> (2025-07-04)
 # Deeper test dependencies with Ruby 3.3 are no longer yet keyworded keyword;
 # manually tested instead; Test dependencies work with stable Ruby 3.2.

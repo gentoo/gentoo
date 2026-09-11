@@ -101,6 +101,10 @@ fi
 DOCS=( README.rst docs/changelog.rst )
 
 EPYTEST_PLUGINS=( pytest-flask )
+EPYTEST_DESELECT=(
+	# py7zr is not packaged
+	test/test_importer.py::TestImport7z::test_import_zip
+)
 EPYTEST_IGNORE=(
 	# Not relevant downstream
 	test/extra/test_release.py

@@ -11,7 +11,7 @@ SRC_URI="https://gitlab.freedesktop.org/accountsservice/accountsservice/-/archiv
 
 LICENSE="GPL-3+"
 SLOT="0/1"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ~loong ppc ppc64 ~riscv ~sparc x86"
 
 IUSE="doc elogind gtk-doc +introspection selinux systemd test vala xcrypt"
 RESTRICT="!test? ( test )"

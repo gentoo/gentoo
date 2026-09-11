@@ -23,6 +23,7 @@ RDEPEND="selinux? ( sec-policy/selinux-docker )"
 BDEPEND="
 	dev-go/go-md2man
 	>=dev-lang/go-1.25.0
+	<dev-lang/go-1.27
 "
 
 RESTRICT="installsources strip test"

@@ -1,6 +1,24 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Lukas Schmelting <lschmelting@posteo.com> (2026-09-10)
+# dev-util/bpftool not keyworded here
+net-misc/networkmanager clat
+
+# David Seifert <soap@gentoo.org> (2026-09-07)
+# sci-libs/libaec is not keyworded here, and >=sci-libs/hdf5-2.2.0
+# requires it directly instead of via virtual/szip
+>=sci-libs/hdf5-2.2.0 szip
+
+# James Le Cuirot <chewi@gentoo.org> (2026-09-05)
+# VIS is a sparc-specific SIMD optimisation.
+media-libs/libggi -vis
+media-libs/xine-lib -vis
+
+# Sam James <sam@gentoo.org> (2026-09-04)
+# sys-apps/xdg-desktop-portal not keyworded here
+x11-base/xwayland libei
+
 # Alfred Wingate <parona@protonmail.com> (2026-07-26)
 # Firefox not keyworded here
 dev-util/selenium-manager test
@@ -257,10 +275,6 @@ sys-libs/libnvme keyutils
 # Sam James <sam@gentoo.org> (2024-01-02)
 # dev-libs/capstone not keyworded here
 dev-lang/php capstone
-
-# Mart Raudsepp <leio@gentoo.org> (2023-12-25)
-# sys-apps/xdg-desktop-portal not keyworded here yet
-x11-base/xwayland libei
 
 # Rolf Eike Beer <eike@sf-mail.de> (2023-12-22)
 # media-video/rav1e isn't keyworded here

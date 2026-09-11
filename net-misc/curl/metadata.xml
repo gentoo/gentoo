@@ -24,7 +24,6 @@
 		<flag name="pop3">Enable Post Office Protocol 3 support</flag>
 		<flag name="psl">Enable Public Suffix List (PSL) support. See https://daniel.haxx.se/blog/2024/01/10/psl-in-curl/.</flag>
 		<flag name="quic">Enable support for QUIC (RFC 9000); a UDP-based protocol intended to replace TCP</flag>
-		<flag name="rtmp">Enable RTMP Streaming Media support</flag>
 		<flag name="rustls">Enable Rustls ssl backend</flag>
 		<flag name="sasl-scram">Enable snupport for additional SASL SCRAM-SHA authentication methods via <pkg>net-misc/gsasl</pkg></flag>
 		<flag name="smtp">Enable Simple Mail Transfer Protocol support</flag>

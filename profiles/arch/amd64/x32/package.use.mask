@@ -67,6 +67,7 @@ dev-python/cloudscraper test
 games-util/lgogdownloader gui
 kde-apps/kde-apps-meta pim
 kde-apps/kdenetwork-meta bittorrent
+kde-apps/kgpg pim
 kde-apps/kleopatra pim
 kde-apps/umbrello php
 kde-misc/kio-gdrive share

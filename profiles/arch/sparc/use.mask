@@ -226,9 +226,6 @@ alsa_cards_sbawe
 alsa_cards_sscape
 alsa_cards_wavefront
 
-# Copied over from default-linux/sparc/sparc64
--vis
-
 # The default on SPARC is non-multilib
 # if a sub-profile want's it, it can -use.mask it
 multilib

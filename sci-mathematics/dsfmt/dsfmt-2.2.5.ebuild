@@ -1,0 +1,44 @@
+# Copyright 1999-2026 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=8
+
+inherit toolchain-funcs
+
+MYPN=dSFMT
+MYP=${MYPN}-${PV}
+
+DESCRIPTION="Double precision SIMD-oriented Fast Mersenne Twister library"
+HOMEPAGE="http://www.math.sci.hiroshima-u.ac.jp/~m-mat/MT/SFMT"
+SRC_URI="https://github.com/MersenneTwister-Lab/dSFMT/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/${MYP}"
+
+LICENSE="BSD"
+SLOT="0"
+KEYWORDS="~amd64 ~x86"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.2.4-cc.patch
+)
+
+soname="lib${MYPN}.so"
+
+src_configure() {
+		tc-export CC
+}
+
+src_compile() {
+	emake CCFLAGS="${CFLAGS}"
+	$(tc-getCC) -fPIC -shared -DDSFMT_SHLIB -DDSFMT_DO_NOT_USE_OLD_NAMES ${LDFLAGS} \
+		${CFLAGS} -Wl,-soname=${soname} -o ${soname} ${MYPN}.c || die
+}
+
+src_test() {
+	emake std-check
+}
+
+src_install() {
+	doheader dSFMT.c d*.h
+	dodoc README*txt CHANGE*
+	dolib.so ${soname}
+}

@@ -168,6 +168,9 @@ src_configure() {
 		-Dcplugins=enabled
 		$(meson_feature curl libcurl)
 		$(meson_feature dvb dvbin)
+		# TODO: depend on >=libdvdread-7.1.1 w/ USE=dvd when it is
+		# packaged (bug #981444)
+		-Ddvda=disabled #$(meson_feature dvd dvda)
 		$(meson_feature dvd dvdnav)
 		$(meson_feature gamepad sdl2-gamepad)
 		$(meson_feature iconv)

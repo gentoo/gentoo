@@ -25,6 +25,8 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
 
+# Using jdk:25 or higher, depending on version of gradle-bin, leads to:
+# BUG! exception in phase 'semantic analysis' in source unit '_BuildScript_' Unsupported class file major version 69
 DEPEND="|| ( virtual/jdk:21 virtual/jdk:17 virtual/jdk:11 )"
 RDEPEND=">=virtual/jre-11:*"
 BDEPEND="
@@ -43,6 +45,11 @@ src_unpack() {
 	cp -a "${WORKDIR}"/abbrv.jabref.org-${VER_ABBRV}/* "${S}"/buildres/abbrv.jabref.org/ || die
 	cp -a "${WORKDIR}"/locales-${VER_LOCALES}/* "${S}"/src/main/resources/csl-locales/ || die
 	cp -a "${WORKDIR}"/styles-${VER_STYLES}/* "${S}"/src/main/resources/csl-styles/ || die
+}
+
+src_prepare() {
+	default # bug #780585
+	java-pkg-2_src_prepare
 }
 
 src_compile() {

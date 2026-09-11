@@ -24,7 +24,7 @@ S=${WORKDIR}/${MY_P}
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 arm64 ppc ppc64 ~riscv x86"
 
 # TODO: default to httpx2? add some flags?
 RDEPEND="

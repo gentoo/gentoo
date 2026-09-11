@@ -22,7 +22,7 @@ LICENSE="GPL-2"
 SLOT="0"
 
 src_compile() {
-	local modlist=( nct6687=kernel/drivers/hwmon::${KV_FULL}:build )
-	local modargs=( kver="${KV_FULL}" )
+	local modlist=( nct6687=kernel/drivers/hwmon:::build )
+	local modargs=( KVER="${KV_FULL}" KDIR="${KV_OUT_DIR}" )
 	linux-mod-r1_src_compile
 }

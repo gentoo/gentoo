@@ -22,8 +22,8 @@ else
 	inherit verify-sig
 	SRC_URI="
 		https://weechat.org/files/src/${P}.tar.xz
+		https://distfiles.s3.rbx.io.cloud.ovh.net/${P}-manpages.tar.xz
 		verify-sig? ( https://weechat.org/files/src/${P}.tar.xz.asc )
-		https://dev.gentoo.org/~eschwartz/distfiles/${CATEGORY}/${PN}/${P}-manpages.tar.xz
 	"
 	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/weechat.org.asc
 	BDEPEND+="verify-sig? ( sec-keys/openpgp-keys-weechat )"

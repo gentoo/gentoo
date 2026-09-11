@@ -84,7 +84,7 @@ elisp_pkg_setup() {
 
 # @FUNCTION: elisp_src_unpack
 # @DESCRIPTION:
-# Unpack the sources; also handle the case of a single *.el file in
+# Unpack the sources; also handle the case of a single .el file in
 # WORKDIR for packages distributed that way.
 
 elisp_src_unpack() {
@@ -135,7 +135,7 @@ elisp_src_configure() { :; }
 
 # @FUNCTION: elisp_src_compile
 # @DESCRIPTION:
-# Call elisp-compile to byte-compile all Emacs Lisp (*.el) files.
+# Call elisp-compile to byte-compile all Emacs Lisp (.el) files.
 # If ELISP_TEXINFO lists any Texinfo sources, call makeinfo to generate
 # GNU Info files from them.
 
@@ -161,7 +161,7 @@ elisp_src_test() {
 
 # @FUNCTION: elisp_src_install
 # @DESCRIPTION:
-# Call elisp-install to install all Emacs Lisp (*.el and *.elc) files.
+# Call elisp-install to install all Emacs Lisp (.el and .elc) files.
 # If the SITEFILE variable specifies a site-init file, install it with
 # elisp-site-file-install.  Also install any GNU Info files listed in
 # ELISP_TEXINFO and documentation listed in the DOCS variable.

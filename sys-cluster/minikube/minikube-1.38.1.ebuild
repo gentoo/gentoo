@@ -55,14 +55,11 @@ src_compile() {
 	COMMIT_NO=${GIT_COMMIT} \
 	COMMIT_SHORT=${GIT_COMMIT_SHORT} \
 	LDFLAGS="" \
-	emake \
-		$(usex libvirt "out/docker-machine-driver-kvm2" "") \
-		"${minikube_target}"
+	emake "${minikube_target}"
 }
 
 src_install() {
 	newbin "${minikube_target}" minikube
-	use libvirt && dobin out/docker-machine-driver-kvm2
 	dodoc -r site CHANGELOG.md README.md
 
 	if ! tc-is-cross-compiler; then

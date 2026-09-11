@@ -28,11 +28,9 @@ RDEPEND="
 BDEPEND="
 	>=dev-python/hatch-jupyter-builder-0.8.3[${PYTHON_USEDEP}]
 	>=dev-python/jupyterlab-4.0.6[${PYTHON_USEDEP}]
-	test? (
-		dev-python/pytest-asyncio[${PYTHON_USEDEP}]
-	)
 "
 
+EPYTEST_PLUGINS=( pytest-asyncio )
 distutils_enable_tests pytest
 
 python_prepare_all() {

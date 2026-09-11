@@ -4,7 +4,7 @@
 EAPI="8"
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{12..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 PYTHON_REQ_USE="xml(+)"
 
 inherit distutils-r1 toolchain-funcs
@@ -21,7 +21,7 @@ if [[ ${PV} == 9999 ]] ; then
 	S="${WORKDIR}/${P}/${PN#selinux-}"
 else
 	SRC_URI="https://github.com/SELinuxProject/selinux/releases/download/${MY_PV}/${MY_P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
+	KEYWORDS="amd64 arm arm64 ~riscv x86"
 	S="${WORKDIR}/${MY_P}"
 fi
 

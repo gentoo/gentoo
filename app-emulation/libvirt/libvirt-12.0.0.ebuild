@@ -54,7 +54,7 @@ BDEPEND="
 	dev-python/docutils
 	virtual/pkgconfig
 	bash-completion? ( >=app-shells/bash-completion-2.0 )
-	verify-sig? ( sec-keys/openpgp-keys-libvirt )"
+	verify-sig? ( <sec-keys/openpgp-keys-libvirt-20260831 )"
 
 # gettext.sh command is used by the libvirt command wrappers, and it's
 # non-optional, so put it into RDEPEND.

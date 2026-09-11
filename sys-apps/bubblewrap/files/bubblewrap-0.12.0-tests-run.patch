@@ -1,0 +1,12 @@
+https://bugs.gentoo.org/982101
+--- a/tests/test-sandbox.py
++++ b/tests/test-sandbox.py
+@@ -309,7 +309,7 @@ class TestSandbox(unittest.TestCase):
+     @in_sandbox()
+     def test_ro_bind_root_is_recursive(self):
+         """The base --ro-bind / / should apply read-only to sub-mounts."""
+-        skip_prefixes = ('/dev', '/proc', '/sys', '/tmp')
++        skip_prefixes = ('/dev', '/proc', '/sys', '/tmp', '/run')
+         for mountpoint in list_mounts():
+             if any(mountpoint == p or mountpoint.startswith(p + '/')
+                    for p in skip_prefixes):

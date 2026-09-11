@@ -1,0 +1,63 @@
+# Copyright 2021-2026 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=8
+
+PYTHON_COMPAT=( python3_{12..14} )
+DISTUTILS_USE_PEP517=setuptools
+export SETUPTOOLS_SCM_PRETEND_VERSION=${PV}
+inherit distutils-r1
+
+DESCRIPTION="Python Data, Leaflet.js Maps"
+HOMEPAGE="https://github.com/python-visualization/folium"
+SRC_URI="https://github.com/python-visualization/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
+
+LICENSE="MIT"
+SLOT="0"
+KEYWORDS="~amd64 ~arm64"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.15.1-gentoo.patch
+)
+
+RDEPEND="sci-geosciences/xyzservices[${PYTHON_USEDEP}]
+	sci-libs/branca[${PYTHON_USEDEP}]
+	dev-python/jinja2[${PYTHON_USEDEP}]
+	dev-python/requests[${PYTHON_USEDEP}]
+	dev-python/numpy[${PYTHON_USEDEP}]"
+DEPEND="${RDEPEND}"
+BDEPEND="
+	dev-python/setuptools-scm
+	test? (
+		dev-python/nbconvert[${PYTHON_USEDEP}]
+		dev-python/pillow[${PYTHON_USEDEP}]
+		dev-python/pandas[${PYTHON_USEDEP}]
+		dev-python/pixelmatch[${PYTHON_USEDEP}]
+		dev-python/selenium[${PYTHON_USEDEP}]
+		dev-util/selenium-manager
+	)"
+
+EPYTEST_PLUGINS=( )
+distutils_enable_tests pytest
+
+python_test() {
+	EPYTEST_IGNORE=(
+		tests/test_folium.py							# require geopandas
+		tests/plugins/test_time_slider_choropleth.py	# require geopandas
+	)
+	EPYTEST_DESELECT=(
+		# require jupytext
+		tests/selenium/test_selenium.py::test_notebook
+		# require geopandas
+		tests/snapshots/test_snapshots.py::test_screenshot
+		# need network to dl drivers
+		tests/selenium/test_geojson_selenium.py::test_geojson
+		tests/selenium/test_heat_map_selenium.py::test_heat_map_with_weights
+		tests/test_repr.py::test__repr_png_is_bytes
+		tests/test_repr.py::test_valid_png
+		tests/test_repr.py::test_valid_png_size
+	)
+
+	SE_MANAGER_PATH=/usr/bin/selenium-manager \
+		epytest -m 'not web'
+}

@@ -8,9 +8,9 @@ DESCRIPTION="A SSH/SFTP library based on libfilezilla"
 HOMEPAGE="https://fzssh.filezilla-project.org/"
 SRC_URI="https://dev.gentoo.org/~dlan/distfiles/${PN}/${P}.tar.xz"
 
-LICENSE="GPL-2"
+LICENSE="AGPL-3"
 SLOT="0/13" # libfzssh.so version
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ppc64 ~riscv x86"
 
 DEPEND="
 	>=dev-libs/libfilezilla-0.55.3

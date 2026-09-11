@@ -7,7 +7,7 @@ MODULES_OPTIONAL_IUSE=+modules
 inherit desktop dot-a eapi9-pipestatus eapi9-ver flag-o-matic linux-mod-r1
 inherit readme.gentoo-r1 systemd toolchain-funcs unpacker user-info
 
-MODULES_KERNEL_MAX=7.1
+MODULES_KERNEL_MAX=7.2
 NV_URI="https://download.nvidia.com/XFree86/"
 
 DESCRIPTION="NVIDIA Accelerated Graphics Driver"
@@ -115,7 +115,6 @@ pkg_setup() {
 	local CONFIG_CHECK="
 		PROC_FS
 		~DRM_KMS_HELPER
-		~DRM_FBDEV_EMULATION
 		~SYSVIPC
 		~!LOCKDEP
 		~!PREEMPT_RT
@@ -128,6 +127,9 @@ pkg_setup() {
 	kernel_is -ge 6 11 && linux_chkconfig_present DRM_FBDEV_EMULATION &&
 		CONFIG_CHECK+=" DRM_TTM_HELPER"
 
+	linux_chkconfig_present DRM_KMS_HELPER &&
+		CONFIG_CHECK+=" DRM_FBDEV_EMULATION"
+
 	local drm_helper_msg="Cannot be directly selected in the kernel's config menus, and may need
 	selection of a DRM device even if unused, e.g. CONFIG_DRM_QXL=m or
 	DRM_AMDGPU=m (among others, consult the kernel config's help), can
@@ -138,9 +140,6 @@ pkg_setup() {
 	local ERROR_DRM_TTM_HELPER="CONFIG_DRM_TTM_HELPER: is not set but is needed to compile when using
 	kernel version 6.11.x or newer while DRM_FBDEV_EMULATION is set.
 	${drm_helper_msg}"
-	local ERROR_DRM_FBDEV_EMULATION="CONFIG_DRM_FBDEV_EMULATION: is not set but is needed for
-	nvidia-drm.fbdev=1 support (see ${EPREFIX}/etc/modprobe.d/nvidia.conf), may
-	result in a blank console/tty."
 	local ERROR_PREEMPT_RT="CONFIG_PREEMPT_RT: is set but is unsupported by NVIDIA upstream and
 	will fail to build unless the env var IGNORE_PREEMPT_RT_PRESENCE=1 is
 	set. Please do not report issues if run into e.g. kernel panics while

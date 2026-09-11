@@ -249,7 +249,7 @@ src_test() {
 		)
 	fi
 
-	[[ ${enable_year2038} == "no" ]] && xfail_tests+=( test-year2038 )+
+	[[ ${enable_year2038} == "no" ]] && xfail_tests+=( test-year2038 )
 
 	# This test is flaky (bug #910640).
 	cat > tests/tty/tty-eof.pl <<-EOF || die

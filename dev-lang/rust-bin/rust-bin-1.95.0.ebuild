@@ -6,7 +6,7 @@ EAPI=8
 LLVM_COMPAT=( 22 )
 LLVM_OPTIONAL="yes"
 
-inherit edo llvm-r1 multilib prefix rust-toolchain verify-sig multilib-minimal optfeature
+inherit edo llvm-r2 multilib prefix rust-toolchain verify-sig multilib-minimal optfeature
 
 if [[ ${PV} == *9999* ]]; then
 	# We need to fetch a tarball in src_unpack

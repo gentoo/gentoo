@@ -1,11 +1,11 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DIST_AUTHOR=TODDR
 DIST_VERSION=2.47
-inherit perl-module
+inherit multilib perl-module
 
 DESCRIPTION="A perl module for parsing XML documents"
 
@@ -38,6 +38,6 @@ src_install() {
 	perl-module_src_install
 
 	# "special" test for bug #827966
-	einfo "Checking for Expat.so (bug #827966)"
-	find "${D}" -name Expat.so | grep Expat || die "Something went badly wrong, can't find Expat.so. Please file a bug."
+	einfo "Checking for Expat$(get_modname) (bug #827966)"
+	find "${D}" -name Expat$(get_modname) | grep Expat || die "Something went badly wrong, can't find Expat$(get_modname). Please file a bug."
 }

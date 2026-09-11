@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -43,7 +43,7 @@ dotar() {
 	# Avoid copying files twice
 	# Don't include *.ENG or *.GER files as they are unused by RTTR
 
-	tar -c -f - \
+	gtar -c -f - \
 		--mode=u+w \
 		--ignore-case \
 		--xform='s:.*:\U\0:x' \

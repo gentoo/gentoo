@@ -57,6 +57,7 @@ DEPEND="${LUA_DEPS}
 	=dev-libs/tree-sitter-c-0.24.1*
 	=dev-libs/tree-sitter-lua-0.5*
 	=dev-libs/tree-sitter-markdown-0.5*
+	=dev-libs/tree-sitter-markdown-inline-0.5*
 	=dev-libs/tree-sitter-query-0.8.0*
 	=dev-libs/tree-sitter-vim-0.8*
 	=dev-libs/tree-sitter-vimdoc-4*

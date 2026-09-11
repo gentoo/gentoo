@@ -27,6 +27,7 @@ CONFIG_CHECK="~TLS ~KEYS ~KEYS_REQUEST_CACHE"
 
 src_prepare() {
 	default
+	sed -i -e 's/-Werror//' src/tlshd/Makefile.am || die
 	eautoreconf
 }
 

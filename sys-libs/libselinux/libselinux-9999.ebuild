@@ -33,22 +33,26 @@ SLOT="0"
 IUSE="python ruby static-libs ruby_targets_ruby32 ruby_targets_ruby33"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
-RDEPEND="dev-libs/libpcre2:=[static-libs?,${MULTILIB_USEDEP}]
+RDEPEND="
 	>=sys-libs/libsepol-${PV}:=[${MULTILIB_USEDEP},static-libs(+)]
+	virtual/libpcre2-internals:=[static-libs?,${MULTILIB_USEDEP}]
 	python? ( ${PYTHON_DEPS} )
 	ruby? (
 		ruby_targets_ruby32? ( dev-lang/ruby:3.2 )
 		ruby_targets_ruby33? ( dev-lang/ruby:3.3 )
 	)
-	elibc_musl? ( sys-libs/fts-standalone )"
+	elibc_musl? ( sys-libs/fts-standalone )
+"
 DEPEND="${RDEPEND}"
-BDEPEND="virtual/pkgconfig
+BDEPEND="
+	virtual/pkgconfig
 	python? (
 		>=dev-lang/swig-2.0.9
 		${PYTHON_DEPS}
 		${DISTUTILS_DEPS}
 	)
-	ruby? ( >=dev-lang/swig-2.0.9 )"
+	ruby? ( >=dev-lang/swig-2.0.9 )
+"
 
 src_prepare() {
 	eapply_user
