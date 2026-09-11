@@ -4,7 +4,7 @@
 EAPI=8
 
 GUILE_COMPAT=( 2-2 3-0 )
-PYTHON_COMPAT=( python3_{11..15} )
+PYTHON_COMPAT=( python3_{12..15} )
 FORTRAN_NEEDED="test"
 
 inherit python-r1 cmake guile-single fortran-2
@@ -119,4 +119,8 @@ src_install() {
 	for r in */README; do
 		newdoc ${r} README.$(dirname ${r})
 	done
+
+	if use test; then
+		rm "${ED}"/usr/include/nlopt.f || die
+	fi
 }
