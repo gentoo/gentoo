@@ -26,5 +26,5 @@ RESTRICT="test"
 
 src_prepare() {
 	tree-sitter-grammar_src_prepare
-	cp "${WORKDIR}"/${MY_P}/pyproject.toml ${S}/src/
+	cp "${WORKDIR}"/${MY_P}/pyproject.toml "${S}"/src/ || die
 }
