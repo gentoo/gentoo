@@ -36,6 +36,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Arthur Zamarin <arthurzam@gentoo.org> (2026-09-11)
+# EAPI=7, uses deprecated golang eclass, fails to compile.
+# Removal on 2026-10-11.  Bugs #982277, #657284, #739422, #844712, #926030.
+net-analyzer/kapacitor
+
 # Alexey Sokolov <alexey+gentoo@asokolov.org> (2026-09-09)
 # Upstream abandoned the project, suggests www-servers/gatling
 # by the same upstream instead.
