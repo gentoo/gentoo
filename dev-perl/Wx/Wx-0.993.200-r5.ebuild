@@ -27,7 +27,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	>=virtual/perl-ExtUtils-MakeMaker-6.480.0
 	>=virtual/perl-ExtUtils-ParseXS-3.150.0
-	>=dev-perl/ExtUtils-XSpp-0.160.200
+	>=dev-perl/ExtUtils-XSpp-0.190.0
 	>=virtual/perl-if-0.30.0
 	test? (
 		>=virtual/perl-Test-Harness-2.260.0
