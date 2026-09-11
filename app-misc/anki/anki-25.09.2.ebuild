@@ -113,8 +113,13 @@ BDEPEND="
 		${DISTUTILS_DEPS}
 		${PYTHON_DEPS}
 		app-alternatives/ninja
-		>=net-libs/nodejs-20.12.1
-		sys-apps/yarn
+		|| (
+			>=net-libs/nodejs-20.12.1[corepack]
+			(
+				>=net-libs/nodejs-20.12.1
+				sys-apps/yarn
+			)
+		)
 		$(python_gen_cond_dep 'dev-python/pyqt6[${PYTHON_USEDEP}]')
 	)
 	test? (
