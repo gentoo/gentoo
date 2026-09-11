@@ -1,0 +1,52 @@
+# Add missing <new> includes required for std::nothrow and
+# std::set_new_handler.
+--- a/src/cpu/abstract_cpu.cpp
++++ b/src/cpu/abstract_cpu.cpp
+@@ -28,6 +28,7 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <limits.h>
++#include <new>
+ #include "cpu.h"
+ #include "../lib.h"
+ 
+--- a/src/devices/devfreq.cpp
++++ b/src/devices/devfreq.cpp
+@@ -30,6 +30,7 @@
+ #include <stdlib.h>
+ #include <time.h>
+ #include <unistd.h>
++#include <new>
+ 
+ #include "device.h"
+ #include "devfreq.h"
+--- a/src/main.cpp
++++ b/src/main.cpp
+@@ -40,6 +40,7 @@
+ #include <sys/resource.h>
+ #include <limits.h>
+ #include <pthread.h>
++#include <new>
+ 
+ #include "cpu/cpu.h"
+ #include "process/process.h"
+--- a/src/measurement/measurement.cpp
++++ b/src/measurement/measurement.cpp
+@@ -37,6 +37,7 @@
+ #include <fstream>
+ #include <unistd.h>
+ #include <time.h>
++#include <new>
+ 
+ double min_power = 50000.0;
+ 
+--- a/src/tuning/ethernet.cpp
++++ b/src/tuning/ethernet.cpp
+@@ -33,6 +33,7 @@
+ #include <utility>
+ #include <iostream>
+ #include <fstream>
++#include <new>
+ #include <sys/socket.h>
+ #include <errno.h>
+ #include <linux/types.h>

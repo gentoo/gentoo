@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -41,6 +41,7 @@ RDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.8-ncurses_tinfo.patch
 	"${FILESDIR}"/${PN}-2.15-gettext.patch
+	"${FILESDIR}"/${PN}-2.15-nothrow.patch
 )
 
 pkg_setup() {
