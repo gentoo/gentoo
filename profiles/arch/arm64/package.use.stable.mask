@@ -1,6 +1,11 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2026-09-11)
+# Neither sys-apps/bolt nor kde-plasma/plasma-thunderbolt are marked stable
+# here yet.
+kde-plasma/plasma-meta thunderbolt
+
 # Ionen Wolkens <ionen@gentoo.org> (2026-04-16)
 # media-libs/opencolorio is not stable here and has many dependencies.
 # Not overly worth extra stabilizations over new still scarcely used
