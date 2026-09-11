@@ -19,7 +19,7 @@ S="${WORKDIR}/OpenSubdiv-${MY_PV}"
 LICENSE="Apache-2.0"
 # MATCHES SONAME
 SLOT="0/${PV}"
-KEYWORDS="amd64 ~arm ~arm64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE="X cuda doc examples glfw opencl +opengl openmp ptex python tbb test tutorials"
 RESTRICT="!test? ( test )"
 
@@ -71,6 +71,7 @@ DEPEND="
 PATCHES=(
 	"${FILESDIR}/${PN}-3.6.0-use-gnuinstalldirs.patch"
 	"${FILESDIR}/${PN}-3.6.0-cudaflags.patch"
+	"${FILESDIR}/${PN}-3.6.1-cuda-13.patch"
 )
 
 pkg_pretend() {
