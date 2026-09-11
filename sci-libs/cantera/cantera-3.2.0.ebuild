@@ -70,7 +70,7 @@ DEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}/${PN}-3.1.0_env.patch"
+	"${FILESDIR}/${P}_env.patch"
 )
 
 src_unpack() {
