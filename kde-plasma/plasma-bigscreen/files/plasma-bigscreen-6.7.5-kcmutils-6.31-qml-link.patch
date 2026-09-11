@@ -1,0 +1,29 @@
+From e32e240c90287c433b1005d7ffacdde0fe5d4779 Mon Sep 17 00:00:00 2001
+From: Thomas Eleveld <poketho33extra@gmail.com>
+Date: Thu, 10 Sep 2026 13:13:36 +0000
+Subject: [PATCH] Fix build error by adding Qt6:Qml to CMakeLists of
+ kcms/bluetooth
+
+---
+ kcms/bluetooth/CMakeLists.txt | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/kcms/bluetooth/CMakeLists.txt b/kcms/bluetooth/CMakeLists.txt
+index 4f57b2cb..da9100d0 100644
+--- a/kcms/bluetooth/CMakeLists.txt
++++ b/kcms/bluetooth/CMakeLists.txt
+@@ -6,7 +6,8 @@ kcmutils_add_qml_kcm(kcm_mediacenter_bluetooth SOURCES
+     devicesproxymodel.cpp devicesproxymodel.h
+ )
+ 
+-target_link_libraries(kcm_mediacenter_bluetooth
++target_link_libraries(kcm_mediacenter_bluetooth PRIVATE
+     KF6::KCMUtilsQuick
+     KF6::BluezQt
+-)
+\ No newline at end of file
++    Qt6::Qml
++)
+-- 
+GitLab
+
