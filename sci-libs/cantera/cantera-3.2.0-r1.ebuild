@@ -39,7 +39,7 @@ RDEPEND="
 	)
 	python? (
 		$(python_gen_cond_dep '
-			dev-python/numpy[${PYTHON_USEDEP}]
+			<dev-python/numpy-2.4.0[${PYTHON_USEDEP}]
 			dev-python/ruamel-yaml[${PYTHON_USEDEP}]
 		')
 	)
