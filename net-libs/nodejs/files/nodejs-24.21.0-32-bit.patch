@@ -1,0 +1,579 @@
+https://bugs.gentoo.org/969806
+https://raw.githubusercontent.com/pld-linux/nodejs/5be298517dba200f2036287fb80afc799d9dd497/tuple-build-fix.patch
+
+From ddfa1b3d9201d319e893b4f5624eab43caae86b0 Mon Sep 17 00:00:00 2001
+From: Nico Hartmann <nicohartmann@chromium.org>
+Date: Fri, 08 Aug 2025 11:43:12 +0200
+Subject: [PATCH] [turboshaft] Rename TupleOp to MakeTupleOp to avoid name conflicts
+
+Bug: 385155404
+Change-Id: I0f8f4667e09afb1f4d122dadc1e3fcab80ba7acb
+Reviewed-on: https://chromium-review.googlesource.com/c/v8/v8/+/6830052
+Commit-Queue: Nico Hartmann <nicohartmann@chromium.org>
+Reviewed-by: Leszek Swirski <leszeks@chromium.org>
+Cr-Commit-Position: refs/heads/main@{#101805}
+---
+
+diff --git a/src/compiler/backend/instruction-selector.cc b/src/compiler/backend/instruction-selector.cc
+index 745c46a..7f6498d 100644
+--- a/deps/v8/src/compiler/backend/instruction-selector.cc
++++ b/deps/v8/src/compiler/backend/instruction-selector.cc
+@@ -430,7 +430,7 @@
+       // If the projection has a single use, it is the following tuple, so we
+       // don't return it, since there is no point in emitting it.
+       DCHECK(turboshaft_uses(next).size() == 1 &&
+-             graph->Get(turboshaft_uses(next)[0]).Is<TupleOp>());
++             graph->Get(turboshaft_uses(next)[0]).Is<MakeTupleOp>());
+       continue;
+     }
+     if (projection->index == projection_index) return next;
+@@ -449,7 +449,7 @@
+         // (which doesn't count as a regular use since it is just an artifact of
+         // the Turboshaft graph).
+         DCHECK(turboshaft_uses(use).size() == 1 &&
+-               graph->Get(turboshaft_uses(use)[0]).Is<TupleOp>());
++               graph->Get(turboshaft_uses(use)[0]).Is<MakeTupleOp>());
+       }
+     }
+   }
+@@ -2070,7 +2070,7 @@
+     // If the projection has a single use, it is the following tuple, so we
+     // don't care about the value, and can do branch-if-overflow fusion.
+     DCHECK(turboshaft_uses(projection0_index).size() == 1 &&
+-           graph->Get(turboshaft_uses(projection0_index)[0]).Is<TupleOp>());
++           graph->Get(turboshaft_uses(projection0_index)[0]).Is<MakeTupleOp>());
+     return true;
+   }
+ 
+@@ -2085,7 +2085,7 @@
+   // defined, which will imply that it's fine to define {projection0} and
+   // {binop} now.
+   for (OpIndex use : turboshaft_uses(projection0_index)) {
+-    if (this->Get(use).template Is<TupleOp>()) {
++    if (this->Get(use).template Is<MakeTupleOp>()) {
+       // The Tuple won't have any uses since it would have to be accessed
+       // through Projections, and Projections on Tuples return the original
+       // Projection instead (see Assembler::ReduceProjection in
+@@ -2493,9 +2493,9 @@
+   // {result} back into it through the back edge. In this case, it's
+   // normal to schedule {result} before the Phi that uses it.
+   for (OpIndex use : turboshaft_uses(result.value())) {
+-    // We ignore TupleOp uses, since TupleOp don't lead to emitted machine
+-    // instructions and are just Turboshaft "meta operations".
+-    if (!this->Get(use).template Is<TupleOp>() && !IsDefined(use) &&
++    // We ignore MakeTupleOp uses, since MakeTupleOp don't lead to emitted
++    // machine instructions and are just Turboshaft "meta operations".
++    if (!this->Get(use).template Is<MakeTupleOp>() && !IsDefined(use) &&
+         this->block(schedule_, use) == current_block_ &&
+         !this->Get(use).template Is<PhiOp>()) {
+       return;
+@@ -3869,7 +3869,7 @@
+       TURBOSHAFT_WASM_OPERATION_LIST(UNREACHABLE_CASE)
+       TURBOSHAFT_OTHER_OPERATION_LIST(UNREACHABLE_CASE)
+       UNREACHABLE_CASE(PendingLoopPhi)
+-      UNREACHABLE_CASE(Tuple)
++      UNREACHABLE_CASE(MakeTuple)
+       UNREACHABLE_CASE(Dead)
+       UNREACHABLE();
+ #undef UNREACHABLE_CASE
+diff --git a/src/compiler/turboshaft/assembler.h b/src/compiler/turboshaft/assembler.h
+index c2726c2..98d5809 100644
+--- a/deps/v8/src/compiler/turboshaft/assembler.h
++++ b/deps/v8/src/compiler/turboshaft/assembler.h
+@@ -960,7 +960,7 @@
+       for (int i = 0; i < static_cast<int>(reps.size()); i++) {
+         projections.push_back(Asm().Projection(idx, i, reps[i]));
+       }
+-      return Asm().Tuple(base::VectorOf(projections));
++      return Asm().MakeTuple(base::VectorOf(projections));
+     }
+     return idx;
+   }
+@@ -4216,22 +4216,22 @@
+     return PendingLoopPhi(first, V<T>::rep);
+   }
+ 
+-  V<Any> Tuple(base::Vector<const V<Any>> indices) {
+-    return ReduceIfReachableTuple(indices);
++  V<Any> MakeTuple(base::Vector<const V<Any>> indices) {
++    return ReduceIfReachableMakeTuple(indices);
+   }
+-  V<Any> Tuple(std::initializer_list<V<Any>> indices) {
+-    return ReduceIfReachableTuple(base::VectorOf(indices));
++  V<Any> MakeTuple(std::initializer_list<V<Any>> indices) {
++    return ReduceIfReachableMakeTuple(base::VectorOf(indices));
+   }
+   template <typename... Ts>
+-  V<turboshaft::Tuple<Ts...>> Tuple(V<Ts>... indices) {
++  V<turboshaft::Tuple<Ts...>> MakeTuple(V<Ts>... indices) {
+     std::initializer_list<V<Any>> inputs{V<Any>::Cast(indices)...};
+-    return V<turboshaft::Tuple<Ts...>>::Cast(Tuple(base::VectorOf(inputs)));
++    return V<turboshaft::Tuple<Ts...>>::Cast(MakeTuple(base::VectorOf(inputs)));
+   }
+   // TODO(chromium:331100916): Remove this overload once everything is properly
+   // V<>ified.
+-  V<turboshaft::Tuple<Any, Any>> Tuple(OpIndex left, OpIndex right) {
++  V<turboshaft::Tuple<Any, Any>> MakeTuple(OpIndex left, OpIndex right) {
+     return V<turboshaft::Tuple<Any, Any>>::Cast(
+-        Tuple(base::VectorOf({V<Any>::Cast(left), V<Any>::Cast(right)})));
++        MakeTuple(base::VectorOf({V<Any>::Cast(left), V<Any>::Cast(right)})));
+   }
+ 
+   V<Any> Projection(V<Any> tuple, uint16_t index, RegisterRepresentation rep) {
+@@ -5533,7 +5533,7 @@
+   // this assumption of the ValueNumberingReducer will break.
+   V<Any> ReduceProjection(V<Any> tuple, uint16_t index,
+                           RegisterRepresentation rep) {
+-    if (auto* tuple_op = Asm().matcher().template TryCast<TupleOp>(tuple)) {
++    if (auto* tuple_op = Asm().matcher().template TryCast<MakeTupleOp>(tuple)) {
+       return tuple_op->input(index);
+     }
+     return Stack::ReduceProjection(tuple, index, rep);
+diff --git a/src/compiler/turboshaft/copying-phase.h b/src/compiler/turboshaft/copying-phase.h
+index c1d20d0..485e0e2 100644
+--- a/deps/v8/src/compiler/turboshaft/copying-phase.h
++++ b/deps/v8/src/compiler/turboshaft/copying-phase.h
+@@ -690,7 +690,7 @@
+     if (V8_UNLIKELY(v8_flags.turboshaft_verify_reductions)) {
+       if (new_index.valid()) {
+         const Operation& new_op = Asm().output_graph().Get(new_index);
+-        if (!new_op.Is<TupleOp>()) {
++        if (!new_op.Is<MakeTupleOp>()) {
+           // Checking that the outputs_rep of the new operation are the same as
+           // the old operation. (except for tuples, since they don't have
+           // outputs_rep)
+diff --git a/src/compiler/turboshaft/fast-api-call-lowering-reducer.h b/src/compiler/turboshaft/fast-api-call-lowering-reducer.h
+index d52554b..f833874 100644
+--- a/deps/v8/src/compiler/turboshaft/fast-api-call-lowering-reducer.h
++++ b/deps/v8/src/compiler/turboshaft/fast-api-call-lowering-reducer.h
+@@ -137,7 +137,7 @@
+     }
+ 
+     BIND(done, state);
+-    return __ Tuple(state, __ GetVariable(result));
++    return __ MakeTuple(state, __ GetVariable(result));
+   }
+ 
+  private:
+diff --git a/src/compiler/turboshaft/graph.h b/src/compiler/turboshaft/graph.h
+index 030171f..936c8b0 100644
+--- a/deps/v8/src/compiler/turboshaft/graph.h
++++ b/deps/v8/src/compiler/turboshaft/graph.h
+@@ -1141,7 +1141,8 @@
+     for (OpIndex input : op.inputs()) {
+       // Tuples should never be used as input, except in other tuples (which is
+       // used for instance in Int64Lowering::LowerCall).
+-      DCHECK_IMPLIES(Get(input).Is<TupleOp>(), op.template Is<TupleOp>());
++      DCHECK_IMPLIES(Get(input).Is<MakeTupleOp>(),
++                     op.template Is<MakeTupleOp>());
+       Get(input).saturated_use_count.Incr();
+     }
+   }
+@@ -1151,7 +1152,8 @@
+     for (OpIndex input : op.inputs()) {
+       // Tuples should never be used as input, except in other tuples (which is
+       // used for instance in Int64Lowering::LowerCall).
+-      DCHECK_IMPLIES(Get(input).Is<TupleOp>(), op.template Is<TupleOp>());
++      DCHECK_IMPLIES(Get(input).Is<MakeTupleOp>(),
++                     op.template Is<MakeTupleOp>());
+       Get(input).saturated_use_count.Decr();
+     }
+   }
+diff --git a/src/compiler/turboshaft/int64-lowering-reducer.h b/src/compiler/turboshaft/int64-lowering-reducer.h
+index a814582..e16b3af 100644
+--- a/deps/v8/src/compiler/turboshaft/int64-lowering-reducer.h
++++ b/deps/v8/src/compiler/turboshaft/int64-lowering-reducer.h
+@@ -169,7 +169,7 @@
+     if (kind == ConstantOp::Kind::kWord64) {
+       uint32_t high = value.integral >> 32;
+       uint32_t low = value.integral & std::numeric_limits<uint32_t>::max();
+-      return __ Tuple(__ Word32Constant(low), __ Word32Constant(high));
++      return __ MakeTuple(__ Word32Constant(low), __ Word32Constant(high));
+     }
+     return Next::ReduceConstant(kind, value);
+   }
+@@ -192,8 +192,8 @@
+     int32_t new_index = param_index_map_[parameter_index];
+     if (rep == RegisterRepresentation::Word64()) {
+       rep = RegisterRepresentation::Word32();
+-      return __ Tuple(Next::ReduceParameter(new_index, rep),
+-                      Next::ReduceParameter(new_index + 1, rep));
++      return __ MakeTuple(Next::ReduceParameter(new_index, rep),
++                          Next::ReduceParameter(new_index + 1, rep));
+     }
+     return Next::ReduceParameter(new_index, rep, debug_name);
+   }
+@@ -241,7 +241,7 @@
+           auto [low, high] = Unpack(input_pair);
+           V<Word32> reversed_low = __ Word32ReverseBytes(low);
+           V<Word32> reversed_high = __ Word32ReverseBytes(high);
+-          return __ Tuple(reversed_high, reversed_low);
++          return __ MakeTuple(reversed_high, reversed_low);
+         }
+         default:
+           FATAL("WordUnaryOp kind %d not supported by int64 lowering",
+@@ -265,7 +265,7 @@
+ 
+     if (from == word32 && to == word64) {
+       if (kind == Kind::kZeroExtend) {
+-        return __ Tuple(V<Word32>::Cast(input), __ Word32Constant(0));
++        return __ MakeTuple(V<Word32>::Cast(input), __ Word32Constant(0));
+       }
+       if (kind == Kind::kSignExtend) {
+         return LowerSignExtend(input);
+@@ -273,8 +273,8 @@
+     }
+     if (from == float64 && to == word64) {
+       if (kind == Kind::kBitcast) {
+-        return __ Tuple(__ Float64ExtractLowWord32(input),
+-                        __ Float64ExtractHighWord32(input));
++        return __ MakeTuple(__ Float64ExtractLowWord32(input),
++                            __ Float64ExtractHighWord32(input));
+       }
+     }
+     if (from == word64 && to == float64) {
+@@ -339,7 +339,7 @@
+         return __ AtomicWord32PairLoad(base, index, offset);
+       }
+       if (result_rep == RegisterRepresentation::Word64()) {
+-        return __ Tuple(
++        return __ MakeTuple(
+             __ Load(base, index, kind, loaded_rep,
+                     RegisterRepresentation::Word32(), offset, element_scale),
+             __ Word32Constant(0));
+@@ -349,7 +349,7 @@
+         loaded_rep == MemoryRepresentation::Uint64()) {
+       auto [high_index, high_offset] =
+           IncreaseOffset(index, offset, sizeof(int32_t), kind.tagged_base);
+-      return __ Tuple(
++      return __ MakeTuple(
+           Next::ReduceLoad(base, index, kind, MemoryRepresentation::Int32(),
+                            RegisterRepresentation::Word32(), offset,
+                            element_scale),
+@@ -435,7 +435,7 @@
+       auto [expected_low, expected_high] = Unpack(expected.value());
+       new_expected = expected_low;
+     }
+-    return __ Tuple(Next::ReduceAtomicRMW(
++    return __ MakeTuple(Next::ReduceAtomicRMW(
+                         base, index, value_low, new_expected, bin_op,
+                         RegisterRepresentation::Word32(), memory_rep, kind),
+                     __ Word32Constant(0));
+@@ -455,8 +455,8 @@
+         inputs_low.push_back(__ template Projection<0>(input_w32p));
+         inputs_high.push_back(__ template Projection<1>(input_w32p));
+       }
+-      return __ Tuple(Next::ReducePhi(base::VectorOf(inputs_low), word32),
+-                      Next::ReducePhi(base::VectorOf(inputs_high), word32));
++      return __ MakeTuple(Next::ReducePhi(base::VectorOf(inputs_low), word32),
++                          Next::ReducePhi(base::VectorOf(inputs_high), word32));
+     }
+     return Next::ReducePhi(inputs, rep);
+   }
+@@ -466,7 +466,7 @@
+       auto input_w32p = V<Word32Pair>::Cast(input);
+       V<Word32> low = __ PendingLoopPhi(__ template Projection<0>(input_w32p));
+       V<Word32> high = __ PendingLoopPhi(__ template Projection<1>(input_w32p));
+-      return __ Tuple(low, high);
++      return __ MakeTuple(low, high);
+     }
+     return Next::ReducePendingLoopPhi(input, rep);
+   }
+@@ -474,7 +474,8 @@
+   void FixLoopPhi(const PhiOp& input_phi, OpIndex output_index,
+                   Block* output_graph_loop) {
+     if (input_phi.rep == RegisterRepresentation::Word64()) {
+-      const TupleOp& tuple = __ Get(output_index).template Cast<TupleOp>();
++      const MakeTupleOp& tuple =
++          __ Get(output_index).template Cast<MakeTupleOp>();
+       DCHECK_EQ(tuple.input_count, 2);
+       OpIndex new_inputs[2] = {__ MapToNewGraph(input_phi.input(0)),
+                                __ MapToNewGraph(input_phi.input(1))};
+@@ -527,7 +528,7 @@
+         input, Simd128ExtractLaneOp::Kind::kI32x4, 2 * lane));
+     V<Word32> high = V<Word32>::Cast(__ Simd128ExtractLane(
+         input, Simd128ExtractLaneOp::Kind::kI32x4, 2 * lane + 1));
+-    return __ Tuple(low, high);
++    return __ MakeTuple(low, high);
+   }
+ 
+   V<Simd128> REDUCE(Simd128ReplaceLane)(V<Simd128> into, V<Any> new_lane,
+@@ -612,7 +613,7 @@
+  private:
+   bool CheckPairOrPairOp(V<Word32Pair> input) {
+ #ifdef DEBUG
+-    if (const TupleOp* tuple = matcher_.TryCast<TupleOp>(input)) {
++    if (const MakeTupleOp* tuple = matcher_.TryCast<MakeTupleOp>(input)) {
+       DCHECK_EQ(2, tuple->input_count);
+       RegisterRepresentation word32 = RegisterRepresentation::Word32();
+       ValidateOpInputRep(__ output_graph(), tuple->input(0), word32);
+@@ -642,7 +643,7 @@
+ 
+   V<Word32Pair> LowerSignExtend(V<Word32> input) {
+     // We use SAR to preserve the sign in the high word.
+-    return __ Tuple(input, __ Word32ShiftRightArithmetic(input, 31));
++    return __ MakeTuple(input, __ Word32ShiftRightArithmetic(input, 31));
+   }
+ 
+   V<Word32Pair> LowerClz(V<Word32Pair> input) {
+@@ -654,7 +655,7 @@
+       result = __ Word32CountLeadingZeros(high);
+     }
+ 
+-    return __ Tuple<Word32, Word32>(result, __ Word32Constant(0));
++    return __ template MakeTuple<Word32, Word32>(result, __ Word32Constant(0));
+   }
+ 
+   V<Word32Pair> LowerCtz(V<Word32Pair> input) {
+@@ -667,13 +668,13 @@
+       result = __ Word32CountTrailingZeros(low);
+     }
+ 
+-    return __ Tuple<Word32, Word32>(result, __ Word32Constant(0));
++    return __ template MakeTuple<Word32, Word32>(result, __ Word32Constant(0));
+   }
+ 
+   V<Word32Pair> LowerPopCount(V<Word32Pair> input) {
+     DCHECK(SupportedOperations::word32_popcnt());
+     auto [low, high] = Unpack(input);
+-    return __ Tuple(
++    return __ MakeTuple(
+         __ Word32Add(__ Word32PopCount(low), __ Word32PopCount(high)),
+         __ Word32Constant(0));
+   }
+@@ -698,7 +699,7 @@
+     auto [right_low, right_high] = Unpack(right);
+     V<Word32> low_result = __ Word32BitwiseAnd(left_low, right_low);
+     V<Word32> high_result = __ Word32BitwiseAnd(left_high, right_high);
+-    return __ Tuple(low_result, high_result);
++    return __ MakeTuple(low_result, high_result);
+   }
+ 
+   V<Word32Pair> LowerBitwiseOr(V<Word32Pair> left, V<Word32Pair> right) {
+@@ -706,7 +707,7 @@
+     auto [right_low, right_high] = Unpack(right);
+     V<Word32> low_result = __ Word32BitwiseOr(left_low, right_low);
+     V<Word32> high_result = __ Word32BitwiseOr(left_high, right_high);
+-    return __ Tuple(low_result, high_result);
++    return __ MakeTuple(low_result, high_result);
+   }
+ 
+   V<Word32Pair> LowerBitwiseXor(V<Word32Pair> left, V<Word32Pair> right) {
+@@ -714,7 +715,7 @@
+     auto [right_low, right_high] = Unpack(right);
+     V<Word32> low_result = __ Word32BitwiseXor(left_low, right_low);
+     V<Word32> high_result = __ Word32BitwiseXor(left_high, right_high);
+-    return __ Tuple(low_result, high_result);
++    return __ MakeTuple(low_result, high_result);
+   }
+ 
+   V<Word32Pair> LowerRotateRight(V<Word32Pair> left, V<Word32> right) {
+@@ -733,7 +734,7 @@
+       }
+       if (shift_value == 32) {
+         // Swap low and high of left.
+-        return __ Tuple(left_high, left_low);
++        return __ MakeTuple(left_high, left_low);
+       }
+ 
+       V<Word32> low_input = left_high;
+@@ -753,7 +754,7 @@
+       V<Word32> high_node = __ Word32BitwiseOr(
+           __ Word32ShiftRightLogical(high_input, masked_shift),
+           __ Word32ShiftLeft(low_input, inv_shift));
+-      return __ Tuple(low_node, high_node);
++      return __ MakeTuple(low_node, high_node);
+     }
+ 
+     V<Word32> safe_shift = shift;
+@@ -786,7 +787,7 @@
+     V<Word32> high_node =
+         __ Word32BitwiseOr(__ Word32BitwiseAnd(rotate_high, bit_mask),
+                            __ Word32BitwiseAnd(rotate_low, inv_mask));
+-    return __ Tuple(low_node, high_node);
++    return __ MakeTuple(low_node, high_node);
+   }
+ 
+   V<Any> LowerCall(V<CallTarget> callee, OptionalV<FrameState> frame_state,
+@@ -870,7 +871,7 @@
+     // Example for a call returning [int64, int32]:
+     //   In:  Call(...) -> [int64, int32]
+     //   Out: call = Call() -> [int32, int32, int32]
+-    //        Tuple(
++    //        MakeTuple(
+     //           Tuple(Projection(call, 0), Projection(call, 1)),
+     //           Projection(call, 2))
+     //
+@@ -886,8 +887,8 @@
+           call_descriptor->GetReturnType(i).representation();
+       if (machine_rep == MachineRepresentation::kWord64) {
+         tuple_inputs.push_back(
+-            __ Tuple(__ Projection(call, projection_index, word32),
+-                     __ Projection(call, projection_index + 1, word32)));
++            __ MakeTuple(__ Projection(call, projection_index, word32),
++                         __ Projection(call, projection_index + 1, word32)));
+         projection_index += 2;
+       } else {
+         tuple_inputs.push_back(__ Projection(
+@@ -896,7 +897,7 @@
+       }
+     }
+     DCHECK_EQ(projection_index, return_count + i64_returns);
+-    return __ Tuple(base::VectorOf(tuple_inputs));
++    return __ MakeTuple(base::VectorOf(tuple_inputs));
+   }
+ 
+   void InitializeIndexMaps() {
+diff --git a/src/compiler/turboshaft/machine-optimization-reducer.h b/src/compiler/turboshaft/machine-optimization-reducer.h
+index 199b844..bf0d4bd 100644
+--- a/deps/v8/src/compiler/turboshaft/machine-optimization-reducer.h
++++ b/deps/v8/src/compiler/turboshaft/machine-optimization-reducer.h
+@@ -1312,7 +1312,8 @@
+             overflow = base::bits::SignedSubOverflow32(k1, k2, &res);
+             break;
+         }
+-        return __ Tuple(__ Word32Constant(res), __ Word32Constant(overflow));
++        return __ MakeTuple(__ Word32Constant(res),
++                            __ Word32Constant(overflow));
+       }
+     } else {
+       DCHECK_EQ(rep, WordRepresentation::Word64());
+@@ -1331,7 +1332,8 @@
+             overflow = base::bits::SignedSubOverflow64(k1, k2, &res);
+             break;
+         }
+-        return __ Tuple(__ Word64Constant(res), __ Word32Constant(overflow));
++        return __ MakeTuple(__ Word64Constant(res),
++                            __ Word32Constant(overflow));
+       }
+     }
+ 
+@@ -1339,18 +1341,19 @@
+     // left - 0  =>  (left, false)
+     if (kind == any_of(Kind::kSignedAdd, Kind::kSignedSub) &&
+         matcher_.MatchZero(right)) {
+-      return __ Tuple(left, __ Word32Constant(0));
++      return __ MakeTuple(left, __ Word32Constant(0));
+     }
+ 
+     if (kind == Kind::kSignedMul) {
+       if (int64_t k; matcher_.MatchIntegralWordConstant(right, rep, &k)) {
+         // left * 0  =>  (0, false)
+         if (k == 0) {
+-          return __ Tuple(__ WordConstant(0, rep), __ Word32Constant(false));
++          return __ MakeTuple(__ WordConstant(0, rep),
++                              __ Word32Constant(false));
+         }
+         // left * 1  =>  (left, false)
+         if (k == 1) {
+-          return __ Tuple(left, __ Word32Constant(false));
++          return __ MakeTuple(left, __ Word32Constant(false));
+         }
+         // left * -1  =>  0 - left
+         if (k == -1) {
+@@ -1370,7 +1373,7 @@
+       if (V<Word32> x; matcher_.MatchConstantShiftRightArithmeticShiftOutZeros(
+                            left, &x, WordRepresentation::Word32(), &amount) &&
+                        amount == 1) {
+-        return __ Tuple(x, __ Word32Constant(0));
++        return __ MakeTuple(x, __ Word32Constant(0));
+       }
+     }
+ 
+diff --git a/src/compiler/turboshaft/operations.h b/src/compiler/turboshaft/operations.h
+index 4f05fe1..0a67a0b 100644
+--- a/deps/v8/src/compiler/turboshaft/operations.h
++++ b/deps/v8/src/compiler/turboshaft/operations.h
+@@ -329,7 +329,7 @@
+   V(Call)                                    \
+   V(CatchBlockBegin)                         \
+   V(DidntThrow)                              \
+-  V(Tuple)                                   \
++  V(MakeTuple)                               \
+   V(Projection)                              \
+   V(DebugBreak)                              \
+   V(AssumeMap)                               \
+@@ -4601,8 +4601,8 @@
+     const Block& block, const Graph& graph);
+ 
+ // Tuples are only used to lower operations with multiple outputs.
+-// `TupleOp` should be folded away by subsequent `ProjectionOp`s.
+-struct TupleOp : OperationT<TupleOp> {
++// `MakeTupleOp` should be folded away by subsequent `ProjectionOp`s.
++struct MakeTupleOp : OperationT<MakeTupleOp> {
+   static constexpr OpEffects effects = OpEffects();
+   base::Vector<const RegisterRepresentation> outputs_rep() const { return {}; }
+ 
+@@ -4611,7 +4611,7 @@
+     return {};
+   }
+ 
+-  explicit TupleOp(base::Vector<const V<Any>> inputs) : Base(inputs) {}
++  explicit MakeTupleOp(base::Vector<const V<Any>> inputs) : Base(inputs) {}
+ 
+   template <typename Fn, typename Mapper>
+   V8_INLINE auto Explode(Fn fn, Mapper& mapper) const {
+diff --git a/src/compiler/turboshaft/turbolev-graph-builder.cc b/src/compiler/turboshaft/turbolev-graph-builder.cc
+index 18733cc..378dddd 100644
+--- a/deps/v8/src/compiler/turboshaft/turbolev-graph-builder.cc
++++ b/deps/v8/src/compiler/turboshaft/turbolev-graph-builder.cc
+@@ -6191,7 +6191,7 @@
+ 
+   void SetMapMaybeMultiReturn(maglev::NodeBase* node, V<Any> idx) {
+     const Operation& op = __ output_graph().Get(idx);
+-    if (const TupleOp* tuple = op.TryCast<TupleOp>()) {
++    if (const MakeTupleOp* tuple = op.TryCast<MakeTupleOp>()) {
+       // If the call returned multiple values, then in Maglev, {node} is
+       // used as the 1st returned value, and a GetSecondReturnedValue node is
+       // used to access the 2nd value. We thus call `SetMap` with the 1st
+diff --git a/src/compiler/turboshaft/type-inference-analysis.h b/src/compiler/turboshaft/type-inference-analysis.h
+index 6370e67..164e3b1 100644
+--- a/deps/v8/src/compiler/turboshaft/type-inference-analysis.h
++++ b/deps/v8/src/compiler/turboshaft/type-inference-analysis.h
+@@ -158,7 +158,7 @@
+         case Opcode::kRetain:
+         case Opcode::kUnreachable:
+         case Opcode::kSwitch:
+-        case Opcode::kTuple:
++        case Opcode::kMakeTuple:
+         case Opcode::kStaticAssert:
+         case Opcode::kDebugBreak:
+         case Opcode::kDebugPrint:
+diff --git a/src/compiler/turboshaft/type-inference-reducer.h b/src/compiler/turboshaft/type-inference-reducer.h
+index df241cf..4d1bcd8 100644
+--- a/deps/v8/src/compiler/turboshaft/type-inference-reducer.h
++++ b/deps/v8/src/compiler/turboshaft/type-inference-reducer.h
+@@ -445,7 +445,7 @@
+     return Type::Invalid();
+   }
+ 
+-  Type GetTupleType(const TupleOp& tuple) {
++  Type GetTupleType(const MakeTupleOp& tuple) {
+     base::SmallVector<Type, 4> tuple_types;
+     for (OpIndex input : tuple.inputs()) {
+       tuple_types.push_back(GetType(input));
+@@ -457,8 +457,8 @@
+     Type type = GetTypeOrInvalid(index);
+     if (type.IsInvalid()) {
+       const Operation& op = Asm().output_graph().Get(index);
+-      if (op.Is<TupleOp>()) {
+-        return GetTupleType(op.Cast<TupleOp>());
++      if (op.Is<MakeTupleOp>()) {
++        return GetTupleType(op.Cast<MakeTupleOp>());
+       } else {
+         return Typer::TypeForRepresentation(op.outputs_rep(),
+                                             Asm().graph_zone());
+diff --git a/src/compiler/turboshaft/wasm-lowering-reducer.h b/src/compiler/turboshaft/wasm-lowering-reducer.h
+index 282f1cd..4a43bac 100644
+--- a/deps/v8/src/compiler/turboshaft/wasm-lowering-reducer.h
++++ b/deps/v8/src/compiler/turboshaft/wasm-lowering-reducer.h
+@@ -620,7 +620,7 @@
+     }
+     {
+       BIND(done, base, final_offset, charwidth_shift);
+-      return __ Tuple({base, final_offset, charwidth_shift});
++      return __ MakeTuple({base, final_offset, charwidth_shift});
+     }
+   }
+ 
+
