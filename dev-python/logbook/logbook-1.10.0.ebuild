@@ -51,7 +51,7 @@ LICENSE+="
 	|| ( Apache-2.0 MIT )
 "
 SLOT="0"
-KEYWORDS="~amd64 ~riscv ~x86"
+KEYWORDS="~amd64 ~riscv x86"
 IUSE="+native-extensions"
 
 RDEPEND="
