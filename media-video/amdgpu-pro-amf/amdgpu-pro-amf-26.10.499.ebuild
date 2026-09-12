@@ -7,23 +7,22 @@ inherit unpacker
 
 MY_PV_HIGH=$(ver_cut 1)
 MY_PV_MIDDLE=$(ver_cut 2)
-MY_PV_LOW=$(ver_cut 3)
+MY_PV_LOW=1
 
-MY_PV="${MY_PV_HIGH}.${MY_PV_MIDDLE}-${MY_PV_LOW}"
 MY_PN="amf-amdgpu-pro"
 MY_PN_ENC="libamdenc-amdgpu-pro"
-AMF_HEADERS_VER="1.5.0"
+AMF_HEADERS_VER="1.5.2"
 
 UBUNTU_VER="noble"
 
 DESCRIPTION="AMD's closed source GPU video encode/decode binary driver, for RDNA3 or newer"
 HOMEPAGE="https://www.amd.com/en/support"
 
-URI_PREFIX="repo.radeon.com/amf/${MY_PV_HIGH}.${MY_PV_MIDDLE}/ubuntu/pool/main/${UBUNTU_VER}/"
+URI_PREFIX="repo.radeon.com/amf/${MY_PV_HIGH}.${MY_PV_MIDDLE}.${MY_PV_LOW}/ubuntu/pool/main/${UBUNTU_VER}/"
 
 SRC_URI="
-	https://${URI_PREFIX}/${MY_PN}_${MY_PV}_amd64.deb -> ${P}.deb
-	https://${URI_PREFIX}/${MY_PN_ENC}_${MY_PV}_amd64.deb -> ${P}-enc.deb
+	https://${URI_PREFIX}/${MY_PN}_${PV}-1_amd64.deb -> ${P}.deb
+	https://${URI_PREFIX}/${MY_PN_ENC}_${PV}-1_amd64.deb -> ${P}-enc.deb
 "
 
 S="${WORKDIR}"
@@ -40,8 +39,9 @@ REQUIRED_USE="
 RESTRICT="bindist mirror"
 
 RDEPEND="
-	x11-libs/libdrm
 	media-libs/mesa[proprietary-codecs,vulkan]
+	x11-libs/libdrm
+	!!media-video/amdgpu-pro-amf-legacy
 "
 
 QA_PREBUILT="
