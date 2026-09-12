@@ -6,7 +6,7 @@ EAPI=8
 inherit cmake virtualx xdg-utils
 
 MY_P=ChiPass-${PV}
-DESCRIPTION="Secure password manager"
+DESCRIPTION="A slop-free, Qt6 secure password manager"
 HOMEPAGE="https://codeberg.org/ChiPass/ChiPass"
 SRC_URI="https://codeberg.org/ChiPass/ChiPass/releases/download/v${PV}/${MY_P}-source.tar.bz2"
 S=${WORKDIR}/${MY_P}
