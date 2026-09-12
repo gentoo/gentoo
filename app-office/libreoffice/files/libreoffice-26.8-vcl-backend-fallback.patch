@@ -1,0 +1,15 @@
+Add qt6 as VCL backend fallback in gtk-based environments.
+For details see: https://bugs.gentoo.org/950170
+
+--- a/vcl/source/app/salplug.cxx
++++ b/vcl/source/app/salplug.cxx
+@@ -196,6 +196,9 @@ std::vector<OUString> autodetect_plugin_list()
+ #if ENABLE_GTK3
+     aPlugins.push_back(u"gtk3"_ustr);
+ #endif
++#if ENABLE_QT6
++    aPlugins.push_back(u"qt6"_ustr);
++#endif
+ #if ENABLE_GEN
+     aPlugins.push_back(u"gen"_ustr);
+ #endif

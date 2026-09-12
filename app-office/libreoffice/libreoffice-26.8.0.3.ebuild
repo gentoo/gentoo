@@ -53,7 +53,7 @@ ADDONS_SRC=(
 	# not packaged in Gentoo, https://github.com/serge-sans-paille/frozen
 	"${ADDONS_URI}/frozen-1.2.0.tar.gz"
 	# not packaged in Gentoo, https://skia.org/
-	"${ADDONS_URI}/skia-m149-9bb16a741cdbcbde46a0d4caf8ac73f4d07a89e2.tar.xz"
+	"${ADDONS_URI}/skia-m147-ad8ecedbfdef9f4ae4b1e73347b6dd56e6637d38.tar.xz"
 
 	"base? (
 		${ADDONS_URI}/ba2930200c9f019c2d93a8c88c651a0f-flow-engine-0.9.4.zip
@@ -91,7 +91,7 @@ KEYWORDS="~amd64 ~riscv"
 LO_EXTS="nlpsolver scripting-beanshell scripting-javascript wiki-publisher"
 
 IUSE="accessibility base bluetooth +branding coinmp +cups custom-cflags +dbus debug eds
-googledrive gstreamer gtk kde ldap +mariadb odk pdfimport postgres qt6 test valgrind vulkan
+googledrive gstreamer +gtk3 gtk4 kde ldap +mariadb odk pdfimport postgres qt6 test valgrind vulkan
 $(printf 'libreoffice_extensions_%s ' ${LO_EXTS})"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
@@ -154,7 +154,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	media-gfx/graphite2
 	media-libs/fontconfig
 	>=media-libs/freetype-2.11.0-r1:2
-	>=media-libs/harfbuzz-14.3.0:=[graphite,icu]
+	>=media-libs/harfbuzz-8.3.1:=[graphite,icu]
 	media-libs/lcms:2
 	>=media-libs/libcdr-0.1.0
 	media-libs/libeot
@@ -196,12 +196,20 @@ COMMON_DEPEND="${PYTHON_DEPS}
 		media-libs/gstreamer:1.0
 		media-plugins/gst-plugins-meta:1.0
 	)
-	gtk? (
+	gtk3? (
 		app-accessibility/at-spi2-core:2
 		dev-libs/glib:2
 		gnome-base/dconf
 		media-libs/mesa[egl(+)]
-		gui-libs/gtk[wayland,X]
+		x11-libs/gtk+:3[wayland,X]
+		x11-libs/pango
+	)
+	gtk4? (
+		app-accessibility/at-spi2-core:2
+		dev-libs/glib:2
+		gnome-base/dconf
+		media-libs/mesa[egl(+)]
+		gui-libs/gtk:4[wayland,X]
 		x11-libs/pango
 	)
 	java? ( dev-java/java-websocket:0 )
@@ -519,7 +527,6 @@ src_configure() {
 		--disable-epm
 		--disable-fetch-external
 		--disable-firebird-sdbc
-		--disable-gtk3
 		--disable-gtk3-kde5
 		# Covered by our own toolchain defaults
 		--disable-hardening-flags
@@ -564,7 +571,8 @@ src_configure() {
 		$(use_enable debug)
 		$(use_enable eds evolution2)
 		$(use_enable gstreamer gstreamer-1-0)
-		$(use_enable gtk gtk4)
+		$(use_enable gtk3)
+		$(use_enable gtk4)
 		$(use_enable kde kf6)
 		$(use_enable ldap)
 		$(use_enable odk)
@@ -582,7 +590,7 @@ src_configure() {
 		$(use_with valgrind)
 	)
 
-	if use eds || use gtk ; then
+	if use eds || use gtk3 || use gtk4 ; then
 		myeconfargs+=( --enable-dconf --enable-gio )
 	else
 		myeconfargs+=( --disable-dconf --disable-gio )
@@ -636,6 +644,13 @@ src_test() {
 
 src_install() {
 	emake -Onone DESTDIR="${D}" distro-pack-install
+
+	# TODO: still relevant for gtk4?
+	# bug #593514
+	if use gtk3; then
+		dosym libreoffice/program/liblibreofficekitgtk.so \
+			/usr/$(get_libdir)/liblibreofficekitgtk.so
+	fi
 
 	# bash completion aliases
 	bashcomp_alias \
