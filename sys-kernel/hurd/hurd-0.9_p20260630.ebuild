@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit crossdev multilib flag-o-matic
+inherit crossdev multilib flag-o-matic toolchain-funcs
 
 DESCRIPTION="GNU Hurd is the GNU project's replacement for UNIX"
 HOMEPAGE="https://www.gnu.org/software/hurd/hurd.html"
@@ -99,6 +99,11 @@ src_configure() {
 		# Builds everything twice and needs profiling libs
 		--disable-profile
 	)
+
+	# Make sure host make.conf doesn't pollute us
+	if target_is_not_host || tc-is-cross-compiler ; then
+		CHOST=${CTARGET} strip-unsupported-flags
+	fi
 
 	if ! use custom-cflags ; then
 		strip-flags
