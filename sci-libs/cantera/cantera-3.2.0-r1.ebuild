@@ -20,7 +20,7 @@ SRC_URI="
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 ~x86"
-IUSE="fortran hdf5 lapack +python test"
+IUSE="fortran hdf5 +python test"
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="
@@ -31,15 +31,11 @@ RDEPEND="
 	${PYTHON_DEPS}
 	dev-cpp/eigen:=
 	dev-cpp/yaml-cpp
+	sci-libs/sundials:0=
 	hdf5? ( sci-libs/highfive )
-	!lapack? ( sci-libs/sundials:0= )
-	lapack? (
-		>=sci-libs/sundials-6.5.0:0=[lapack?]
-		virtual/lapack
-	)
 	python? (
 		$(python_gen_cond_dep '
-			dev-python/numpy[${PYTHON_USEDEP}]
+			<dev-python/numpy-2.4.0[${PYTHON_USEDEP}]
 			dev-python/ruamel-yaml[${PYTHON_USEDEP}]
 		')
 	)
@@ -70,7 +66,7 @@ DEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}/${PN}-3.1.0_env.patch"
+	"${FILESDIR}/${P}_env.patch"
 )
 
 src_unpack() {
@@ -103,19 +99,18 @@ src_configure() {
 		renamed_shared_libraries="no"
 		use_pch="no"
 		## In some cases other order can break the detection of right location of Boost: ##
+		system_blas_lapack="n"
 		system_fmt="y"
 		system_sundials="y"
 		system_eigen="y"
 		system_yamlcpp="y"
 		hdf_support=$(usex hdf5 y n)
-		system_blas_lapack=$(usex lapack y n)
 		env_vars="all"
 		extra_inc_dirs="/usr/include/eigen3"
 		use_rpath_linkage="yes"
 		extra_lib_dirs="/usr/$(get_libdir)/${PN}"
 	)
 	use hdf5 && scons_vars+=( system_highfive="y" )
-	use lapack && scons_vars+=( blas_lapack_libs="lapack,blas" )
 	use test || scons_vars+=( googletest="none" )
 
 	scons_targets=(
