@@ -35,7 +35,7 @@ DEPEND="
 	>=gui-libs/gtk4-layer-shell-1.3.0[introspection]
 	dev-libs/openssl:=
 	dev-libs/wayland
-	dev-libs/yyjson
+	dev-libs/yyjson:=
 	gui-libs/gtk:4[wayland]
 	>=gui-libs/wf-config-0.7.0:=
 	gui-wm/wayfire
