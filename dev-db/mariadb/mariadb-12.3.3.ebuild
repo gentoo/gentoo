@@ -5,15 +5,16 @@ EAPI=8
 
 SUBSLOT="18"
 JAVA_PKG_OPT_USE="jdbc"
+MARIADB_GENTOO_PATCH_VERSION="12.3.3-0"
 
 inherit systemd flag-o-matic prefix toolchain-funcs \
-	multiprocessing java-pkg-opt-2 cmake
+	multiprocessing java-pkg-opt-2 cmake pam
 
 DESCRIPTION="An enhanced, drop-in replacement for MySQL"
 HOMEPAGE="https://mariadb.org/"
 SRC_URI="
 	mirror://mariadb/${P}/source/${P}.tar.gz
-	https://dev.gentoo.org/~arkamar/distfiles/${PN}-10.6.23-patches-01.tar.xz
+	https://gitweb.gentoo.org/proj/mariadb-patches.git/snapshot/${PN}-patches-${MARIADB_GENTOO_PATCH_VERSION}.tar.bz2
 "
 # Shorten the path because the socket path length must be shorter than 107 chars
 # and we will run a mysql server during test phase
@@ -21,8 +22,8 @@ S="${WORKDIR}/mysql"
 
 LICENSE="GPL-2 LGPL-2.1+"
 SLOT="$(ver_cut 1-2)/${SUBSLOT:-0}"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv ~s390 x86"
-IUSE="+backup bindist columnstore cracklib debug extraengine galera innodb-lz4
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~s390 ~x86"
+IUSE="aws-km +backup bindist columnstore cracklib debug extraengine galera innodb-lz4
 	innodb-lzo innodb-snappy jdbc jemalloc kerberos latin1 mroonga
 	numa odbc oqgraph pam +perl profiling rocksdb selinux +server sphinx
 	sst-rsync sst-mariabackup static systemd systemtap s3 tcmalloc
@@ -38,11 +39,14 @@ REQUIRED_USE="jdbc? ( extraengine server !static )
 # Be warned, *DEPEND are version-dependant
 # These are used for both runtime and compiletime
 COMMON_DEPEND="
+	dev-libs/libfmt:=
+	dev-libs/lzo:2
 	>=dev-libs/libpcre2-10.34:=
 	>=sys-apps/texinfo-4.7-r1
 	sys-libs/ncurses:0=
 	>=virtual/zlib-1.2.3:=
 	virtual/libcrypt:=
+	aws-km? ( dev-cpp/aws-sdk-cpp:= )
 	!bindist? (
 		sys-libs/binutils-libs:0=
 		>=sys-libs/readline-4.1:0=
@@ -62,6 +66,7 @@ COMMON_DEPEND="
 			app-arch/snappy:=
 			dev-libs/boost:=
 			dev-libs/libxml2:2=
+			dev-libs/thrift:=
 		)
 		cracklib? ( sys-libs/cracklib:0= )
 		extraengine? (
@@ -93,6 +98,7 @@ BDEPEND="
 	test? (
 		acct-group/mysql
 		acct-user/mysql
+		dev-perl/Net-SSLeay
 	)
 "
 DEPEND="${COMMON_DEPEND}
@@ -101,33 +107,13 @@ DEPEND="${COMMON_DEPEND}
 	)
 	static? ( sys-libs/ncurses[static-libs] )
 "
-RDEPEND="${COMMON_DEPEND}
-	!dev-db/mysql !dev-db/mariadb-galera !dev-db/percona-server !dev-db/mysql-cluster
-	!dev-db/mariadb:0
-	!dev-db/mariadb:5.5
-	!dev-db/mariadb:10.1
-	!dev-db/mariadb:10.2
-	!dev-db/mariadb:10.3
-	!dev-db/mariadb:10.4
-	!dev-db/mariadb:10.5
-	!dev-db/mariadb:10.7
-	!dev-db/mariadb:10.8
-	!dev-db/mariadb:10.9
-	!dev-db/mariadb:10.10
-	!dev-db/mariadb:10.11
-	!dev-db/mariadb:11.0
-	!dev-db/mariadb:11.1
-	!dev-db/mariadb:11.2
-	!dev-db/mariadb:11.3
-	!dev-db/mariadb:11.4
-	!<virtual/mysql-5.6-r11
-	!<virtual/libmysqlclient-18-r1
+RDEPEND="
+	${COMMON_DEPEND}
+	!<dev-db/mariadb-$(ver_cut 1-2)
+	!dev-db/mysql
 	selinux? ( sec-policy/selinux-mysql )
 	server? (
-		columnstore? (
-			dev-db/mariadb-connector-c
-			!dev-libs/thrift
-		)
+		columnstore? ( dev-db/mariadb-connector-c )
 		extraengine? ( jdbc? ( >=virtual/jre-1.8 ) )
 		galera? (
 			sys-apps/iproute2
@@ -145,12 +131,6 @@ RDEPEND="${COMMON_DEPEND}
 # For other stuff to bring us in
 # dev-perl/DBD-MariaDB is needed by some scripts installed by MySQL
 PDEPEND="perl? ( dev-perl/DBD-MariaDB )"
-
-QA_CONFIG_IMPL_DECL_SKIP=(
-	# These don't exist on Linux
-	pthread_threadid_np
-	getthrid
-)
 
 mysql_init_vars() {
 	MY_SHAREDSTATEDIR=${MY_SHAREDSTATEDIR="${EPREFIX}/usr/share/mariadb"}
@@ -231,9 +211,9 @@ src_unpack() {
 }
 
 src_prepare() {
-	eapply "${WORKDIR}"/mariadb-patches
+	eapply "${WORKDIR}"/${PN}-patches-${MARIADB_GENTOO_PATCH_VERSION}
+
 	eapply "${FILESDIR}"/${PN}-10.6.12-gcc-13.patch
-	eapply "${FILESDIR}"/${PN}-10.6.21-debug.patch
 	eapply "${FILESDIR}"/${PN}-wsrep-gcc-15.patch
 
 	eapply_user
@@ -306,8 +286,6 @@ src_configure() {
 	filter-lto
 	# bug 508724 mariadb cannot use ld.gold
 	tc-ld-is-gold && tc-ld-force-bfd
-	# Bug #114895, bug #110149
-	filter-flags "-O" "-O[01]"
 
 	use elibc_musl && append-flags -D_LARGEFILE64_SOURCE
 
@@ -337,6 +315,8 @@ src_configure() {
 		-DINSTALL_INCLUDEDIR=include/mysql
 		-DINSTALL_INFODIR=share/info
 		-DINSTALL_LIBDIR=$(get_libdir)
+		-DINSTALL_PAMDIR="$(getpam_mod_dir)"
+		-DINSTALL_PAMDATADIR="${EPREFIX}/etc/security"
 		-DINSTALL_MANDIR=share/man
 		-DINSTALL_MYSQLSHAREDIR=share/mariadb
 		-DINSTALL_PLUGINDIR=$(get_libdir)/mariadb/plugin
@@ -347,6 +327,8 @@ src_configure() {
 		-DWITH_COMMENT="Gentoo Linux ${PF}"
 		-DWITH_UNIT_TESTS=$(usex test ON OFF)
 		-DWITH_LIBEDIT=0
+		-DWITH_LIBFMT=system
+		-DWITH_THRIFT=system # for columnstore
 		-DWITH_ZLIB=system
 		-DWITHOUT_LIBWRAP=1
 		-DENABLED_LOCAL_INFILE=1
@@ -367,7 +349,7 @@ src_configure() {
 		-DWITH_UNITTEST=OFF
 		-DWITHOUT_CLIENTLIBS=YES
 		-DCLIENT_PLUGIN_AUTH_GSSAPI_CLIENT=OFF
-		-DCLIENT_PLUGIN_CACHING_SHA2_PASSWORD=OFF
+		-DCLIENT_PLUGIN_CACHING_SHA2_PASSWORD=$(usex test DYNAMIC OFF)
 		-DCLIENT_PLUGIN_CLIENT_ED25519=$(usex test DYNAMIC OFF)
 		-DCLIENT_PLUGIN_DIALOG=$(usex test DYNAMIC OFF)
 		-DCLIENT_PLUGIN_MYSQL_CLEAR_PASSWORD=STATIC
@@ -414,7 +396,7 @@ src_configure() {
 			-DPLUGIN_OQGRAPH=$(usex oqgraph DYNAMIC NO)
 			-DPLUGIN_SPHINX=$(usex sphinx YES NO)
 			-DPLUGIN_AUTH_PAM=$(usex pam YES NO)
-			-DPLUGIN_AWS_KEY_MANAGEMENT=NO
+			-DPLUGIN_AWS_KEY_MANAGEMENT=$(usex aws-km DYNAMIC NO)
 			-DPLUGIN_CRACKLIB_PASSWORD_CHECK=$(usex cracklib YES NO)
 			-DPLUGIN_SEQUENCE=$(usex extraengine YES NO)
 			-DPLUGIN_SPIDER=$(usex extraengine YES NO)
@@ -459,7 +441,7 @@ src_configure() {
 		elif ! use latin1 ; then
 			mycmakeargs+=(
 				-DDEFAULT_CHARSET=utf8mb4
-				-DDEFAULT_COLLATION=utf8mb4_unicode_520_ci
+				-DDEFAULT_COLLATION=utf8mb4_uca1400_ai_ci
 			)
 		else
 			mycmakeargs+=(
@@ -593,18 +575,17 @@ src_test() {
 		"innodb_gis.gis;MDEV-25095;Known rounding error with latest AMD processors"
 		"main.gis;MDEV-25095;Known rounding error with latest AMD processors"
 
-		# Test which fail in network-sandbox because hostname is set to "localhost"
-		"main.explain_non_select;0;Fails in network-sandbox"
-		"main.mysql_upgrade;MDEV-27044;Fails in network-sandbox"
-		"main.selectivity_no_engine;MDEV-26320;Fails in network-sandbox"
-		"main.stat_tables;0;Fails in network-sandbox"
-		"main.stat_tables_innodb;0;Fails in network-sandbox"
-		"main.upgrade_MDEV-19650;MDEV-25096;Fails in network-sandbox"
-		"perfschema.privilege_table_io;MDEV-27045;Fails in network-sandbox"
-		"roles.acl_statistics;0;Fails in network-sandbox"
+		# Fails in network-sandbox which contains only "lo" interface
+		"main.mysql_client_test;0;Fails in network-sandbox"
+		"main.mysql_client_test_comp;0;Fails in network-sandbox"
 
 		# Some tests are unable to retrieve HW address
 		"spider.*;MDEV-37098;Fails with network sandbox"
+
+		# issue introduced in 11.8.2
+		"main.mysqld--help-aria;MDEV-36668;broken test regex"
+
+		"sys_vars.session_track_system_variables_basic;0;Requires example engine"
 	)
 
 	use latin1 || disabled_tests+=(
@@ -1302,6 +1283,8 @@ pkg_config() {
 	cmd=(
 		"${mysql_binary}"
 		--no-defaults
+		# Skip SSL for client connections, see bug #951865
+		--skip-ssl
 		"--socket='${socket}'"
 		-hlocalhost
 		"-e \"${sql}\""

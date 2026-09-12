@@ -5,15 +5,16 @@ EAPI=8
 
 SUBSLOT="18"
 JAVA_PKG_OPT_USE="jdbc"
+MARIADB_GENTOO_PATCH_VERSION="11.8.9-1"
 
 inherit systemd flag-o-matic prefix toolchain-funcs \
-	multiprocessing java-pkg-opt-2 cmake
+	multiprocessing java-pkg-opt-2 cmake pam
 
 DESCRIPTION="An enhanced, drop-in replacement for MySQL"
 HOMEPAGE="https://mariadb.org/"
 SRC_URI="
 	mirror://mariadb/${P}/source/${P}.tar.gz
-	https://dev.gentoo.org/~arkamar/distfiles/${PN}-11.4.8-patches-01.tar.xz
+	https://gitweb.gentoo.org/proj/mariadb-patches.git/snapshot/${PN}-patches-${MARIADB_GENTOO_PATCH_VERSION}.tar.bz2
 "
 # Shorten the path because the socket path length must be shorter than 107 chars
 # and we will run a mysql server during test phase
@@ -21,8 +22,8 @@ S="${WORKDIR}/mysql"
 
 LICENSE="GPL-2 LGPL-2.1+"
 SLOT="$(ver_cut 1-2)/${SUBSLOT:-0}"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv ~s390 x86"
-IUSE="+backup bindist columnstore cracklib debug extraengine galera innodb-lz4
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~s390 ~x86"
+IUSE="aws-km +backup bindist columnstore cracklib debug extraengine galera innodb-lz4
 	innodb-lzo innodb-snappy jdbc jemalloc kerberos latin1 mroonga
 	numa odbc oqgraph pam +perl profiling rocksdb selinux +server sphinx
 	sst-rsync sst-mariabackup static systemd systemtap s3 tcmalloc
@@ -45,6 +46,7 @@ COMMON_DEPEND="
 	sys-libs/ncurses:0=
 	>=virtual/zlib-1.2.3:=
 	virtual/libcrypt:=
+	aws-km? ( dev-cpp/aws-sdk-cpp:= )
 	!bindist? (
 		sys-libs/binutils-libs:0=
 		>=sys-libs/readline-4.1:0=
@@ -109,7 +111,6 @@ RDEPEND="
 	${COMMON_DEPEND}
 	!<dev-db/mariadb-$(ver_cut 1-2)
 	!dev-db/mysql
-	!dev-db/percona-server
 	selinux? ( sec-policy/selinux-mysql )
 	server? (
 		columnstore? ( dev-db/mariadb-connector-c )
@@ -210,7 +211,8 @@ src_unpack() {
 }
 
 src_prepare() {
-	eapply "${WORKDIR}"/mariadb-patches
+	eapply "${WORKDIR}"/${PN}-patches-${MARIADB_GENTOO_PATCH_VERSION}
+
 	eapply "${FILESDIR}"/${PN}-10.6.12-gcc-13.patch
 	eapply "${FILESDIR}"/${PN}-wsrep-gcc-15.patch
 
@@ -313,6 +315,8 @@ src_configure() {
 		-DINSTALL_INCLUDEDIR=include/mysql
 		-DINSTALL_INFODIR=share/info
 		-DINSTALL_LIBDIR=$(get_libdir)
+		-DINSTALL_PAMDIR="$(getpam_mod_dir)"
+		-DINSTALL_PAMDATADIR="${EPREFIX}/etc/security"
 		-DINSTALL_MANDIR=share/man
 		-DINSTALL_MYSQLSHAREDIR=share/mariadb
 		-DINSTALL_PLUGINDIR=$(get_libdir)/mariadb/plugin
@@ -345,7 +349,7 @@ src_configure() {
 		-DWITH_UNITTEST=OFF
 		-DWITHOUT_CLIENTLIBS=YES
 		-DCLIENT_PLUGIN_AUTH_GSSAPI_CLIENT=OFF
-		-DCLIENT_PLUGIN_CACHING_SHA2_PASSWORD=OFF
+		-DCLIENT_PLUGIN_CACHING_SHA2_PASSWORD=$(usex test DYNAMIC OFF)
 		-DCLIENT_PLUGIN_CLIENT_ED25519=$(usex test DYNAMIC OFF)
 		-DCLIENT_PLUGIN_DIALOG=$(usex test DYNAMIC OFF)
 		-DCLIENT_PLUGIN_MYSQL_CLEAR_PASSWORD=STATIC
@@ -392,7 +396,7 @@ src_configure() {
 			-DPLUGIN_OQGRAPH=$(usex oqgraph DYNAMIC NO)
 			-DPLUGIN_SPHINX=$(usex sphinx YES NO)
 			-DPLUGIN_AUTH_PAM=$(usex pam YES NO)
-			-DPLUGIN_AWS_KEY_MANAGEMENT=NO
+			-DPLUGIN_AWS_KEY_MANAGEMENT=$(usex aws-km DYNAMIC NO)
 			-DPLUGIN_CRACKLIB_PASSWORD_CHECK=$(usex cracklib YES NO)
 			-DPLUGIN_SEQUENCE=$(usex extraengine YES NO)
 			-DPLUGIN_SPIDER=$(usex extraengine YES NO)
@@ -437,7 +441,7 @@ src_configure() {
 		elif ! use latin1 ; then
 			mycmakeargs+=(
 				-DDEFAULT_CHARSET=utf8mb4
-				-DDEFAULT_COLLATION=utf8mb4_unicode_520_ci
+				-DDEFAULT_COLLATION=utf8mb4_uca1400_ai_ci
 			)
 		else
 			mycmakeargs+=(
@@ -571,11 +575,18 @@ src_test() {
 		"innodb_gis.gis;MDEV-25095;Known rounding error with latest AMD processors"
 		"main.gis;MDEV-25095;Known rounding error with latest AMD processors"
 
+		# Fails in network-sandbox which contains only "lo" interface
+		"main.func_json;MDEV-38057;Fails in network-sandbox"
+		"main.mysql_client_test;0;Fails in network-sandbox"
+		"main.mysql_client_test_comp;0;Fails in network-sandbox"
+
 		# Some tests are unable to retrieve HW address
 		"spider.*;MDEV-37098;Fails with network sandbox"
 
 		# issue introduced in 11.8.2
 		"main.mysqld--help-aria;MDEV-36668;broken test regex"
+
+		"sys_vars.session_track_system_variables_basic;0;Requires example engine"
 	)
 
 	use latin1 || disabled_tests+=(
