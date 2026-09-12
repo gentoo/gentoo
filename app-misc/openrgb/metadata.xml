@@ -23,6 +23,9 @@
 		RGB devices from a single app, on both Windows and Linux, without any nonsense?
 		That is what OpenRGB sets out to achieve. One app to rule them all.
 	</longdescription>
+	<use>
+		<flag name="hotplug">Use <pkg>dev-libs/hidapi-hotplug</pkg> instead of <pkg>dev-libs/hidapi</pkg>.</flag>
+	</use>
 	<upstream>
 		<remote-id type="gitlab">CalcProgrammer1/OpenRGB</remote-id>
 		<remote-id type="codeberg">OpenRGB/OpenRGB</remote-id>
