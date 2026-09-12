@@ -66,6 +66,10 @@ DEPEND="
 	)
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-6.12.0-litehtml-no-unity.patch
+)
+
 src_prepare() {
 	qt6-build_src_prepare
 
