@@ -51,6 +51,7 @@ DEPEND="
 RDEPEND="${DEPEND}"
 # asciidoctor is needed to build manpages
 BDEPEND="
+	dev-libs/appstream
 	dev-qt/qttools:6[linguist]
 	dev-ruby/asciidoctor
 	virtual/pkgconfig
