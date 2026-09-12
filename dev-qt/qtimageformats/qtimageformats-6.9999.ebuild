@@ -1,4 +1,4 @@
-# Copyright 2021-2024 Gentoo Authors
+# Copyright 2021-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,7 +19,10 @@ RDEPEND="
 	media-libs/tiff:=
 	mng? ( media-libs/libmng:= )
 "
-DEPEND="${RDEPEND}"
+DEPEND="
+	${RDEPEND}
+	test? ( media-libs/tiff[jpeg] )
+"
 
 CMAKE_SKIP_TESTS=(
 	# heif plugin is only for Mac, test is normally auto-skipped but may
