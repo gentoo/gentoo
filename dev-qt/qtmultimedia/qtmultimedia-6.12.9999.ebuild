@@ -22,7 +22,6 @@ REQUIRED_USE="
 	vaapi? ( ffmpeg opengl )
 "
 
-# dlopen/dbus: pipewire
 RDEPEND="
 	~dev-qt/qtbase-${PV}:6[concurrent,gui,network,opengl=,vulkan=,widgets]
 	alsa? (
@@ -124,6 +123,7 @@ src_configure() {
 		")
 		$(qt_feature pipewire)
 		$(usev pipewire $(qt_feature dbus pipewire_screencapture))
+		-DQT_FEATURE_pipewire_symbolloader=OFF
 		$(qt_feature pulseaudio)
 		$(qt_feature v4l linux_v4l)
 		$(qt_feature vaapi)
