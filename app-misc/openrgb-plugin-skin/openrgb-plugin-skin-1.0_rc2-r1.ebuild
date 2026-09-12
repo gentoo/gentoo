@@ -1,4 +1,4 @@
-# Copyright 2020-2025 Gentoo Authors
+# Copyright 2020-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,6 +18,7 @@ KEYWORDS="amd64"
 
 RDEPEND="
 	>=app-misc/openrgb-0.9_p20250802:=
+	<app-misc/openrgb-1.0
 	dev-qt/qtbase:6[gui,widgets]
 "
 DEPEND="
