@@ -22,7 +22,7 @@ LICENSE="BSD MIT MPL-2.0 ZLIB"
 SLOT="1"
 
 DEPEND="
-	<media-libs/jg-2.0.0
+	>=media-libs/jg-2.0.0
 	media-libs/speexdsp
 "
 RDEPEND="
