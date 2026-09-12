@@ -21,6 +21,9 @@ RDEPEND="
 	quick3d? ( ~dev-qt/qtquick3d-${PV}:6 )
 "
 DEPEND="${RDEPEND}"
+BDEPEND="
+	~dev-qt/qtshadertools-${PV}:6
+"
 
 CMAKE_SKIP_TESTS=(
 	# hangs+timeout with offscreen rendering
