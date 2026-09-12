@@ -56,7 +56,7 @@ COMMON_DEPEND+="
 	dev-libs/libevdev
 	dev-libs/libinput:=
 	dev-libs/wayland
-	dev-libs/yyjson
+	dev-libs/yyjson:=
 	>=dev-libs/wayland-protocols-1.12
 	gui-libs/wf-config:${SLOT}
 	media-libs/glm
