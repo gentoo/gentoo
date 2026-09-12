@@ -17,7 +17,7 @@ HOMEPAGE="
 
 LICENSE="GPL-2+ LGPL-2+ MPL-1.1"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
+KEYWORDS="amd64 arm64 ~riscv x86"
 
 EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
