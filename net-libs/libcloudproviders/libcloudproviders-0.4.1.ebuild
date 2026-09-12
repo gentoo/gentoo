@@ -7,13 +7,12 @@ inherit gnome.org meson-multilib vala
 
 DESCRIPTION="DBus API that allows cloud storage sync clients to expose their services"
 HOMEPAGE="https://gitlab.gnome.org/GNOME/libcloudproviders"
-
 LICENSE="LGPL-3+"
 SLOT="0"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+
 IUSE="gtk-doc +introspection vala"
 REQUIRED_USE="vala? ( introspection )"
-
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 
 DEPEND="
 	>=dev-libs/glib-2.64:2[${MULTILIB_USEDEP}]
