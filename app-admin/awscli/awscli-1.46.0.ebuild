@@ -22,7 +22,7 @@ S=${WORKDIR}/${MY_P}
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ppc ppc64 ~riscv ~sparc x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
 
 # technically they bundle an older version but let's keep it in sync
 # with the latest, just in case
