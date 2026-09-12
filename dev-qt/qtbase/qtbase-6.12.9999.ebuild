@@ -359,6 +359,9 @@ src_test() {
 		tst_xdgdecorationv1
 		# fails for unknown reasons, but seatv4 is not actually used nowadays
 		tst_seatv4
+		# sockets fail when path is too long on linux, and this uses e.g.
+		# ${T}/runtime-portage/qt_networkreply_test_fullServerName12237.sock
+		tst_qnetworkreply_local
 		# fails with network sandbox
 		tst_qdnslookup
 		# fails with sandbox
