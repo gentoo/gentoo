@@ -5,7 +5,7 @@ EAPI=8
 
 DESCRIPTION="Tool to guess CPU_FLAGS_* flags for the host"
 HOMEPAGE="
-	https://gitweb.gentoo.org/cpuid2cpuflags.git/
+	https://gitweb.gentoo.org/proj/cpuid2cpuflags.git/
 	https://github.com/gentoo/cpuid2cpuflags/
 "
 SRC_URI="
