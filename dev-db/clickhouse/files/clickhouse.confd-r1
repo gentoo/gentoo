@@ -1,0 +1,4 @@
+CLICKHOUSE_USER="clickhouse"
+CLICKHOUSE_GROUP="clickhouse"
+CLICKHOUSE_CONFIGFILE="/etc/clickhouse-server/config.xml"
+CLICKHOUSE_DATADIR="/var/lib/clickhouse"

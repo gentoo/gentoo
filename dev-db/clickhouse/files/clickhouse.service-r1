@@ -1,0 +1,19 @@
+[Unit]
+Description=ClickHouse Server (column-oriented OLAP database management system)
+Documentation=https://clickhouse.com/docs
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=clickhouse
+Group=clickhouse
+RuntimeDirectory=clickhouse
+RuntimeDirectoryMode=0750
+ExecStart=/usr/bin/clickhouse server --config-file=/etc/clickhouse-server/config.xml
+Restart=on-failure
+RestartSec=30
+LimitNOFILE=500000
+
+[Install]
+WantedBy=multi-user.target
