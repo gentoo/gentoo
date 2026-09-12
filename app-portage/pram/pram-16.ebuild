@@ -6,7 +6,10 @@ EAPI=8
 inherit meson
 
 DESCRIPTION="Tool to ease merging Pull Requests and git patches"
-HOMEPAGE="https://github.com/gentoo/pram/"
+HOMEPAGE="
+	https://gitweb.gentoo.org/proj/pram.git/
+	https://github.com/gentoo/pram/
+"
 SRC_URI="
 	https://github.com/gentoo/pram/archive/v${PV}.tar.gz -> ${P}.tar.gz
 "
