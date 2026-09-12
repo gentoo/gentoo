@@ -27,7 +27,7 @@ RDEPEND="
 	dev-libs/libxml2:2=
 	>=net-libs/rest-0.9.1:1.0[introspection]
 	>=gnome-base/librsvg-2.0
-	>=dev-libs/json-glib-1.0
+	>=dev-libs/json-glib-1.0[introspection]
 
 	app-crypt/libsecret[introspection]
 	media-libs/graphene[introspection]
