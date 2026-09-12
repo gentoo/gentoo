@@ -167,11 +167,6 @@ media-libs/svt-av1 test
 # Doesn't work well at runtime.
 dev-games/ogre wayland
 
-# Maciej Mrozowski <reavertm@gentoo.org> (2025-05-22)
-# Does not compile as of 2024.1.1, requires buildsystem fixes.
-dev-games/simgear gdal
-games-simulation/flightgear gdal
-
 # Paul Zander <negril.nx+gentoo@gmail.com> (2025-05-01)
 # Requires llvm-15
 media-gfx/openvdb ax
