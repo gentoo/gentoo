@@ -1,10 +1,10 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 CMAKE_MAKEFILE_GENERATOR="emake"
-inherit bash-completion-r1 cmake shell-completion
+inherit cmake shell-completion
 
 DESCRIPTION="Taskwarrior is a command-line todo list manager"
 HOMEPAGE="https://taskwarrior.org/"
