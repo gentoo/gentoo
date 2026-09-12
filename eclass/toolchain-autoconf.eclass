@@ -4,19 +4,19 @@
 # @ECLASS: toolchain-autoconf.eclass
 # @MAINTAINER:
 # <base-system@gentoo.org>
-# @SUPPORTED_EAPIS: 7 8
+# @SUPPORTED_EAPIS: 7 8 9
 # @BLURB: Common code for dev-build/autoconf ebuilds
 # @DESCRIPTION:
 # This eclass contains the common phase functions migrated from
 # dev-build/autoconf eblits.
 
-case ${EAPI} in
-	7|8) ;;
-	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
-esac
-
 if [[ -z ${_TOOLCHAIN_AUTOCONF_ECLASS} ]]; then
 _TOOLCHAIN_AUTOCONF_ECLASS=1
+
+case ${EAPI} in
+	7|8|9) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
 
 # @ECLASS_VARIABLE: TC_AUTOCONF_BREAK_INFOS
 # @DESCRIPTION:

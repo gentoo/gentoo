@@ -6,7 +6,7 @@
 # Distribution Kernel Project <dist-kernel@gentoo.org>
 # @AUTHOR:
 # Michał Górny <mgorny@gentoo.org>
-# @SUPPORTED_EAPIS: 8
+# @SUPPORTED_EAPIS: 8 9
 # @PROVIDES: dist-kernel-utils
 # @BLURB: Installation mechanics for Distribution Kernels
 # @DESCRIPTION:
@@ -54,6 +54,7 @@ _KERNEL_INSTALL_ECLASS=1
 
 case ${EAPI} in
 	8) inherit eapi9-pipestatus ;;
+	9) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 

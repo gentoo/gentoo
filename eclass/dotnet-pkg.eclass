@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: dotnet-pkg.eclass
@@ -7,7 +7,7 @@
 # @AUTHOR:
 # Anna Figueiredo Gomes <navi@vlhl.dev>
 # Maciej Barć <xgqt@gentoo.org>
-# @SUPPORTED_EAPIS: 8
+# @SUPPORTED_EAPIS: 8 9
 # @PROVIDES: dotnet-pkg-base nuget
 # @BLURB: common functions and variables for .NET packages
 # @DESCRIPTION:
@@ -33,13 +33,13 @@
 # - the main project file (*.proj) that builds the project has to be specified
 #   by the "DOTNET_PROJECT" variable.
 
-case ${EAPI} in
-	8) ;;
-	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
-esac
-
 if [[ -z ${_DOTNET_PKG_ECLASS} ]] ; then
 _DOTNET_PKG_ECLASS=1
+
+case ${EAPI} in
+	8|9) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
 
 inherit dotnet-pkg-base
 

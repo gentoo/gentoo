@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: font-ebdftopcf.eclass
@@ -6,19 +6,19 @@
 # fonts@gentoo.org
 # @AUTHOR:
 # Robin H. Johnson <robbat2@gentoo.org>
-# @SUPPORTED_EAPIS: 7
+# @SUPPORTED_EAPIS: 7 8 9
 # @BLURB: Eclass to make PCF font generator from BDF uniform and optimal
 # @DESCRIPTION:
 # The manpage for this eclass is in media-gfx/ebdftopcf.
 # Inherit this eclass after font.eclass
 
-case ${EAPI} in
-	7) ;;
-	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
-esac
-
 if [[ -z ${_FONT_EBDFTOPCF_ECLASS} ]]; then
 _FONT_EBDFTOPCF_ECLASS=1
+
+case ${EAPI} in
+	7|8|9) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
 
 # Make dependence on Xorg optional
 IUSE="X"
