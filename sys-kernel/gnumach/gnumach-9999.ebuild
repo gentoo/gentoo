@@ -65,6 +65,11 @@ src_configure() {
 		fi
 	fi
 
+	# Make sure host make.conf doesn't pollute us
+	if target_is_not_host || tc-is-cross-compiler ; then
+		CHOST=${CTARGET} strip-unsupported-flags
+	fi
+
 	strip-flags
 	# LTO confuses one of the assemble steps
 	filter-lto
