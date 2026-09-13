@@ -18,7 +18,7 @@ if [[ ${PV} != 9999 ]]; then
 	)
 fi
 
-RUST_MIN_VER="1.85.0"
+RUST_MIN_VER="1.87.0"
 
 PYTHON_COMPAT=( python3_{11..14} )
 
