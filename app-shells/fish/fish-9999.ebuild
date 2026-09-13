@@ -7,12 +7,18 @@ CRATES=""
 
 if [[ ${PV} != 9999 ]]; then
 	declare -A GIT_CRATES=(
+		[fluent-bundle]='https://github.com/danielrainer/fluent-rs;cf712bced280b217b6307edabc2089b3e57204ab;fluent-rs-%commit%/fluent-bundle'
+		[fluent-ftl-tools]='https://codeberg.org/danielrainer/fluent-ftl-tools;5917664c8f2e4928ef1e480ff5c13bbe1e226066;fluent-ftl-tools;gitea'
+		[fluent-syntax]='https://github.com/danielrainer/fluent-rs;cf712bced280b217b6307edabc2089b3e57204ab;fluent-rs-%commit%/fluent-syntax'
+		[fluent]='https://github.com/danielrainer/fluent-rs;cf712bced280b217b6307edabc2089b3e57204ab;fluent-rs-%commit%/fluent'
+		[gettext-po-file-parser]='https://codeberg.org/danielrainer/fluent-ftl-tools;5917664c8f2e4928ef1e480ff5c13bbe1e226066;fluent-ftl-tools/crates/gettext-po-file-parser;gitea'
+		[intl-memoizer]='https://github.com/danielrainer/fluent-rs;cf712bced280b217b6307edabc2089b3e57204ab;fluent-rs-%commit%/intl-memoizer'
 		[pcre2-sys]='https://github.com/fish-shell/rust-pcre2;85b7afba1a9d9bd445779800e5bcafeb732e4421;rust-pcre2-%commit%/pcre2-sys'
 		[pcre2]='https://github.com/fish-shell/rust-pcre2;85b7afba1a9d9bd445779800e5bcafeb732e4421;rust-pcre2-%commit%'
 	)
 fi
 
-RUST_MIN_VER="1.85.0"
+RUST_MIN_VER="1.87.0"
 
 PYTHON_COMPAT=( python3_{11..14} )
 
@@ -40,7 +46,10 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2 BSD BSD-2 CC0-1.0 GPL-2+ ISC LGPL-2+ MIT PSF-2 ZLIB"
 # Dependent crate licenses
-LICENSE+=" Apache-2.0 MIT MPL-2.0 Unicode-3.0 ZLIB"
+LICENSE+="
+	Apache-2.0 MIT MPL-2.0 Unicode-3.0 ZLIB
+	|| ( AGPL-3 GPL-2 )
+"
 SLOT="0"
 IUSE="+doc nls test"
 
