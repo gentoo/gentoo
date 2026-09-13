@@ -26,7 +26,7 @@ RESTRICT="!test? ( test )"
 RDEPEND=">=dev-db/postgresql-8.1:*"
 DEPEND="${RDEPEND}"
 BDEPEND="
-	test? ( >=dev-db/postgresql-8.1[server] )
+	test? ( >=dev-db/postgresql-8.1[server(+)] )
 "
 
 python_prepare_all() {

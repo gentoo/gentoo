@@ -44,7 +44,7 @@ BDEPEND="
 		dev-python/cython[${PYTHON_USEDEP}]
 	)
 	test? (
-		>=dev-db/postgresql-8.1[server]
+		>=dev-db/postgresql-8.1[server(+)]
 		>=dev-python/dnspython-2.1[${PYTHON_USEDEP}]
 	)
 "
