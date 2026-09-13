@@ -6,8 +6,8 @@ EAPI=8
 KDE_ORG_CATEGORY="pim"
 ECM_TEST="forceoptional"
 PVCUT=$(ver_cut 1-3)
-KFMIN=6.27.0
-QTMIN=6.11.2
+KFMIN=6.22.0
+QTMIN=6.10.1
 inherit ecm gear.kde.org xdg
 
 DESCRIPTION="Calendar application using Akonadi"
@@ -15,8 +15,8 @@ HOMEPAGE="https://apps.kde.org/merkuro.calendar/"
 
 LICENSE="|| ( GPL-2 GPL-3 ) CC0-1.0"
 SLOT="6"
-KEYWORDS="~amd64 ~arm64"
-IUSE=""
+KEYWORDS="amd64 arm64"
+IUSE="plasma"
 
 # All of the tests involve interacting with akonadi right now (as of 22.04)
 RESTRICT="test"
@@ -32,9 +32,11 @@ DEPEND="
 	>=kde-apps/akonadi-contacts-${PVCUT}:6=
 	>=kde-apps/akonadi-mime-${PVCUT}:6=
 	>=kde-apps/akonadi-search-${PVCUT}:6=
+	>=kde-apps/kcalutils-${PVCUT}:6=
 	>=kde-apps/kidentitymanagement-${PVCUT}:6=
 	>=kde-apps/kmailtransport-${PVCUT}:6=
 	>=kde-apps/kmbox-${PVCUT}:6=
+	>=kde-apps/kmime-${PVCUT}:6=
 	>=kde-apps/libkdepim-${PVCUT}:6=
 	>=kde-apps/libkleo-${PVCUT}:6=
 	>=kde-apps/mailcommon-${PVCUT}:6=
@@ -53,10 +55,10 @@ DEPEND="
 	>=kde-frameworks/kio-${KFMIN}:6
 	>=kde-frameworks/kirigami-${KFMIN}:6
 	>=kde-frameworks/kitemmodels-${KFMIN}:6
-	>=kde-frameworks/kmime-${KFMIN}:6
 	>=kde-frameworks/knotifications-${KFMIN}:6
 	>=kde-frameworks/kwindowsystem-${KFMIN}:6
 	>=kde-frameworks/kxmlgui-${KFMIN}:6
+	plasma? ( kde-plasma/libplasma:6= )
 "
 # Qt5Compat.GraphicalEffects usage in multiple QML files
 # qtlocation is needed at runtime only or fails to start
@@ -68,3 +70,10 @@ RDEPEND="${DEPEND}
 	=kde-apps/kdepim-runtime-${PVCUT}*:6
 	>=kde-frameworks/qqc2-desktop-style-${KFMIN}:6
 "
+
+src_configure() {
+	local mycmakeargs=(
+		$(cmake_use_find_package plasma Plasma)
+	)
+	ecm_src_configure
+}
