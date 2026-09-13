@@ -20,10 +20,12 @@ KEYWORDS="~amd64 ~arm64"
 IUSE="rocm cuda test"
 
 RDEPEND="
-	dev-libs/libfmt
 	dev-libs/dynolog
 "
-DEPEND="${RDEPEND}"
+DEPEND="
+	${RDEPEND}
+	dev-libs/libfmt
+"
 BDEPEND="
 	test? ( dev-cpp/gtest )
 	${PYTHON_DEPS}
@@ -43,12 +45,17 @@ src_configure() {
 	local mycmakeargs=(
 		-DLIBKINETO_THIRDPARTY_DIR="${EPREFIX}"/usr/include/
 		-DKINETO_BUILD_TESTS=OFF # tests require cuda toolkit
-		-DCUDA_SOURCE_DIR=/opt/cuda
 	)
 	if use cuda; then
-		mycmakeargs+=( -DKINETO_BACKEND=cuda )
+		mycmakeargs+=(
+			-DKINETO_BACKEND=cuda
+			-DCUDA_SOURCE_DIR="${EPREFIX}"/opt/cuda
+		)
 	elif use rocm; then
-		mycmakeargs+=( -DKINETO_BACKEND=rocm )
+		mycmakeargs+=(
+			-DKINETO_BACKEND=rocm
+			-DROCM_SOURCE_DIR="${EPREFIX}"/usr
+		)
 	else
 		mycmakeargs+=( -DKINETO_BACKEND=cpu )
 	fi
