@@ -31,7 +31,8 @@ if [[ "${PV}" == *9999* ]] ; then
 
 	EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/dotnet/${PN}.git"
 else
-	SRC_URI="https://gitlab.gentoo.org/dotnet/${PN}/-/archive/${PV}/${P}.tar.bz2"
+	SRC_URI="https://gitweb.gentoo.org/proj/dotnet/${PN}.git/snapshot/${P}.tar.bz2
+		-> ${P}.ggo.tar.bz2"
 
 	KEYWORDS="amd64 arm arm64"
 fi
