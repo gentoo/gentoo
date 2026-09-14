@@ -40,7 +40,9 @@ RDEPEND="
 	x11-libs/libXext
 	openal? ( media-libs/openal )
 "
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	dev-libs/boost:0
+"
 BDEPEND="
 	x11-base/xorg-proto
 	doc? (
