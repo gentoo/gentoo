@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,10 +12,12 @@ SRC_URI="https://github.com/NFFT/nfft/releases/download/${PV}/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="doc openmp"
+IUSE="doc openmp test"
 
 RDEPEND="sci-libs/fftw:3.0=[threads,openmp?]"
 DEPEND="${RDEPEND}"
+BDEPEND="test? ( dev-util/cunit )"
+RESTRICT="!test? ( test )"
 
 PATCHES=(
 	"${FILESDIR}/${P}-gcc15.patch"
@@ -39,6 +41,10 @@ src_configure() {
 	econf \
 		--enable-all \
 		$(use_enable openmp)
+}
+
+src_test() {
+	emake check CFLAGS="${CFLAGS} -Wno-error=incompatible-pointer-types"
 }
 
 src_install() {
