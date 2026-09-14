@@ -15,7 +15,7 @@ SRC_URI="https://github.com/texstudio-org/texstudio/archive/${PV}.tar.gz -> ${P}
 # CC0-1.0: Colibre icon theme
 LICENSE="GPL-3 MIT LGPL-2 CC-BY-SA-3.0 CC0-1.0"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 x86"
 IUSE="qtermwidget video"
 
 DEPEND="
