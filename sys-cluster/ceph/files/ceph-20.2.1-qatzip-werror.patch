@@ -1,0 +1,22 @@
+From: Felix W. (65278) <felix@zeynix.de> 
+Date: Fri, 11 Sep 2026 15:30:00 +0200
+Subject: [PATCH] clang/qatzip: Do not Werror
+
+Werror in releases is always a mistake.
+Here, qatzip sets -Werror and -std=gnu99. This causes problems
+with clang because qatzip invariably uses features beyond gnu99,
+which cause clang to abort compilation.
+
+Index: b/src/qatzip/configure.ac
+===================================================================
+--- a/src/qatzip/configure.ac
++++ b/src/qatzip/configure.ac
+@@ -211,7 +211,7 @@ AS_IF([test ! -z "${ICP_ROOT}"],
+ 
+ #check for compile flags
+ AC_MSG_CHECKING([cflags])
+-CFLAGS+=' -Wall -Werror -std=gnu99 -pedantic \
++CFLAGS+=' -Wall -std=gnu99 -pedantic \
+           -fstack-protector-strong -fPIE -fPIC \
+           -fno-delete-null-pointer-checks -fwrapv'
+ AS_IF([test "x${CC}" = "xgcc"], [CFLAGS+=' -fno-strict-overflow'], [])
