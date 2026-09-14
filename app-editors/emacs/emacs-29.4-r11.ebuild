@@ -8,7 +8,7 @@ inherit autotools elisp-common flag-o-matic readme.gentoo-r1 toolchain-funcs
 if [[ ${PV##*.} = 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://git.savannah.gnu.org/git/emacs.git"
-	EGIT_BRANCH="emacs-31"
+	EGIT_BRANCH="emacs-29"
 	EGIT_CHECKOUT_DIR="${WORKDIR}/emacs"
 	S="${EGIT_CHECKOUT_DIR}"
 	SLOT="${PV%%.*}-vcs"
@@ -26,11 +26,14 @@ else
 	# 27.0.90              upstream prerelease snapshot (27-vcs)
 	# 27.0.50_pre20191223  snapshot by Gentoo developer (27-vcs)
 	if [[ ${PV} == *_pre* ]]; then
-		SRC_URI="https://distfiles.gentoo.org/pub/proj/emacs/${P}.tar.xz"
+		SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.tar.xz"
 		S="${WORKDIR}/emacs"
 	elif [[ ${PV//[0-9]} != "." ]]; then
 		SRC_URI="https://alpha.gnu.org/gnu/emacs/pretest/${PN}-${PV/_/-}.tar.xz"
 	fi
+	# Patchset from proj/emacs-patches.git
+	SRC_URI+=" https://distfiles.gentoo.org/pub/proj/emacs/${P}-patches-8.tar.xz"
+	PATCHES=("${WORKDIR}/patch")
 	SLOT="${PV%%.*}"
 	[[ ${PV} == *.*.* ]] && SLOT+="-vcs"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~x64-macos"
@@ -40,7 +43,7 @@ DESCRIPTION="The advanced, extensible, customizable, self-documenting editor"
 HOMEPAGE="https://www.gnu.org/software/emacs/"
 
 LICENSE="GPL-3+ FDL-1.3+ Boost-1.0 BSD CC-BY-SA-3.0 CC-BY-SA-4.0 HPND MIT MPL-2.0 PCRE PSF-2 unicode W3C"
-IUSE="acl alsa aqua athena cairo dbus dynamic-loading games gfile gif +gmp gpm gsettings gtk gui gzip-el harfbuzz imagemagick +inotify jit jpeg lcms libxml2 livecd m17n-lib mailutils motif png selinux sound source sqlite ssl svg systemd +threads tiff toolkit-scroll-bars tree-sitter valgrind webp wide-int +X xattr Xaw3d xft +xpm xwidgets zlib"
+IUSE="acl alsa aqua athena cairo dbus dynamic-loading games gfile gif +gmp gpm gsettings gtk gui gzip-el harfbuzz imagemagick +inotify jit jpeg json lcms libxml2 livecd m17n-lib mailutils motif png selinux sound source sqlite ssl svg systemd +threads tiff toolkit-scroll-bars tree-sitter valgrind webp wide-int +X Xaw3d xft +xpm zlib"
 
 X_DEPEND="x11-libs/libICE
 	x11-libs/libSM
@@ -67,13 +70,7 @@ X_DEPEND="x11-libs/libICE
 			>=dev-libs/m17n-lib-1.5.1
 		)
 	)
-	gtk? (
-		x11-libs/gtk+:3[X]
-		xwidgets? (
-			net-libs/webkit-gtk:4.1=
-			x11-libs/libXcomposite
-		)
-	)
+	gtk? ( x11-libs/gtk+:3[X] )
 	!gtk? (
 		motif? (
 			>=x11-libs/motif-2.3:0=
@@ -108,6 +105,7 @@ RDEPEND=">=app-emacs/emacs-common-1.11[games?,gui?]
 		sys-devel/gcc:=[jit(-)]
 		virtual/zlib:=
 	)
+	json? ( dev-libs/jansson:= )
 	lcms? ( media-libs/lcms:2 )
 	libxml2? ( >=dev-libs/libxml2-2.2.0:= )
 	mailutils? ( net-mail/mailutils[clients] )
@@ -118,7 +116,6 @@ RDEPEND=">=app-emacs/emacs-common-1.11[games?,gui?]
 	systemd? ( sys-apps/systemd )
 	tree-sitter? ( dev-libs/tree-sitter:= )
 	valgrind? ( dev-debug/valgrind )
-	xattr? ( sys-apps/attr )
 	zlib? ( virtual/zlib:= )
 	gui? (
 		gif? ( media-libs/giflib:0= )
@@ -143,7 +140,6 @@ RDEPEND=">=app-emacs/emacs-common-1.11[games?,gui?]
 					>=dev-libs/libotf-0.9.4
 					>=dev-libs/m17n-lib-1.5.1
 				)
-				xwidgets? ( net-libs/webkit-gtk:4.1= )
 			) )
 			!gtk? ( ${X_DEPEND} )
 			X? ( ${X_DEPEND} )
@@ -208,6 +204,9 @@ src_prepare() {
 		fi
 	fi
 
+	# Fix filename reference in redirected man page
+	sed -i -e "/^\\.so/s/etags/&-${EMACS_SUFFIX}/" doc/man/ctags.1 || die
+
 	# libseccomp is detected by configure but doesn't appear to have any
 	# effect on the installed image. Suppress it by supplying pkg-config
 	# with a wrong library name.
@@ -223,6 +222,8 @@ src_prepare() {
 }
 
 src_configure() {
+	replace-flags "-O[3-9]" -O2			#839405
+
 	# We want floating-point arithmetic to be correct #933380
 	replace-flags -Ofast -O2
 	append-flags -fno-fast-math -ffp-contract=off
@@ -241,17 +242,16 @@ src_configure() {
 		--enable-locallisppath="${EPREFIX}/etc/emacs:${EPREFIX}${SITELISP}"
 		--without-compress-install
 		--without-pop
-		--without-systemduserunitdir
 		--with-file-notification=$(usev inotify || usev gfile || echo no)
 		--with-pdumper
 		$(use_enable acl)
-		$(use_enable xattr)
 		$(use_with dbus)
 		$(use_with dynamic-loading modules)
 		$(use_with games gameuser ":gamestat")
 		$(use_with gmp libgmp)
 		$(use_with gpm)
 		$(use_with jit native-compilation aot)
+		$(use_with json)
 		$(use_with lcms lcms2)
 		$(use_with libxml2 xml2)
 		$(use_with mailutils)
@@ -308,11 +308,11 @@ src_configure() {
 			--with-pgtk --without-x --without-ns
 			--with-toolkit-scroll-bars #836392
 			--without-gconf
+			--without-xwidgets
 			$(use_with gsettings)
 			$(use_with harfbuzz)
 			$(use_with m17n-lib libotf)
 			$(use_with m17n-lib m17n-flt)
-			$(use_with xwidgets)
 		)
 	else
 		# X11
@@ -359,7 +359,7 @@ src_configure() {
 				it with the Athena/Lucid or the Motif toolkit instead,
 				i.e. with USE="athena Xaw3d -gtk -motif" or USE="motif -gtk".
 			EOF
-			myconf+=( --with-x-toolkit=gtk3 $(use_with xwidgets) )
+			myconf+=( --with-x-toolkit=gtk3 --without-xwidgets )
 			for f in motif Xaw3d athena; do
 				use ${f} && ewarn \
 					"USE flag \"${f}\" has no effect if \"gtk\" is set."
@@ -378,8 +378,6 @@ src_configure() {
 			einfo "Configuring to build with no toolkit"
 			myconf+=( --with-x-toolkit=no )
 		fi
-		! use gtk && use xwidgets && ewarn \
-			"USE flag \"xwidgets\" has no effect if \"gtk\" is not set."
 	fi
 
 	if use gui; then
@@ -402,6 +400,9 @@ src_configure() {
 		popd >/dev/null || die
 		# Don't try to execute the binary for dumping during the build
 		myconf+=( --with-dumping=none )
+	elif use m68k; then
+		# Workaround for https://debbugs.gnu.org/44531
+		myconf+=( --with-dumping=unexec )
 	else
 		myconf+=( --with-dumping=pdumper )
 	fi
@@ -410,8 +411,6 @@ src_configure() {
 }
 
 src_compile() {
-	unset SHELL #965834
-
 	if tc-is-cross-compiler; then
 		# Build native tools for compiling lisp etc.
 		emake -C "${S}-build" src
@@ -432,9 +431,8 @@ src_test() {
 	# subtests which caused failure. Elements should begin with a %.
 	# e.g. %lisp/gnus/mml-sec-tests.el.
 	local exclude_tests=(
-		# Reason: not yet known (we skipped this in the past but finally
-		# dropped it for Emacs 30 as it seemed to be passing again)
-		# mml-secure-select-preferred-keys-4
+		# Reason: not yet known
+		# mml-secure-sign-verify-1 #967849
 		%lisp/gnus/mml-sec-tests.el
 
 		# Reason: permission denied on /nonexistent
@@ -453,30 +451,48 @@ src_test() {
 		%lisp/vc/vc-tests.el
 		%lisp/vc/vc-bzr-tests.el
 
-		%lisp/progmodes/eglot-tests.el  #966957
-
-		# Reason: flaky (https://bugs.gnu.org/73441, fails even with the fix)
-		# proced-refine-test
-		%lisp/proced-tests.el
-
-		# Reason: flaky (https://bugs.gnu.org/79056)
-		# tab-bar-tests-quit-restore-window
-		%lisp/tab-bar-tests.el
-
 		# Reason: tries to access network
 		# internet-is-working
 		%src/process-tests.el
 
+		# Reason: test not skipped if tree-sitter-cpp is missing #979386
+		# c-ts-mode-test-filling
+		%lisp/progmodes/c-ts-mode-tests.el
+
+		# Reason: test is not skipped if tree-sitter-tsx is not installed
+		# Bug #922525
+		%lisp/progmodes/typescript-ts-mode-tests.el
+
+		# eglot-test-lsp-abiding-column #977411
+		%lisp/progmodes/eglot-tests.el
+
 		# Reason: fails with app-crypt/freepg
 		%lisp/epg-tests.el
+
+		# Reason: https://bugs.gnu.org/72120
+		# dired-test-bug27243-02
+		%lisp/dired-tests.el
+
+		# Reason: does not pass -Q to emacs (https://bugs.gnu.org/81676)
+		# emacsclient-test-alternate-editor-allows-arguments
+		# emacsclient-test-alternate-editor-allows-quotes
+		%lib-src/emacsclient-tests.el
 
 		# Reason: tests not backported #982533
 		%lisp/progmodes/flymake-tests.el
 	)
+	use elibc_musl && exclude_tests+=(
+			# Reason: newlocale(3) lenient locale validation #906012
+			# fns-tests-collate-strings
+			%src/fns-tests.el
+		)
 	use threads || exclude_tests+=(
+			%lisp/server-tests.el
+			%lisp/progmodes/eglot-tests.el
 			%src/emacs-module-tests.el
 			%src/keyboard-tests.el
 		)
+	use xpm || exclude_tests+=( %src/image-tests.el )
 
 	# Redirect GnuPG's sockets, in order not to exceed the 108 char limit
 	# for socket paths on Linux.
@@ -522,6 +538,7 @@ src_install() {
 	rm "${ED}"/usr/share/emacs/site-lisp/subdirs.el || die
 	rm -rf "${ED}"/usr/share/{applications,icons} || die
 	rm -rf "${ED}"/usr/share/glib-2.0 || die #911117
+	rm -rf "${ED}/usr/$(get_libdir)/systemd" || die
 	rm -rf "${ED}"/var || die
 
 	# remove unused <version>/site-lisp dir
