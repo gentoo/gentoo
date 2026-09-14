@@ -208,6 +208,10 @@ src_configure() {
 		-DQT_FEATURE_webengine_ozone_x11=ON
 		-DQT_FEATURE_webengine_pepper_plugins=ON
 		-DQT_FEATURE_webengine_printing_and_pdf=ON
+		# TODO: enable rust by default to match upstream, inherit rust,
+		# and bdep on dev-util/bindgen (currently fails to link and
+		# needs looking into, may be other issues, delaying for now)
+		-DQT_FEATURE_webengine_rust_build=OFF
 		-DQT_FEATURE_webengine_spellchecker=ON
 		-DQT_FEATURE_webengine_webchannel=ON
 		-DQT_FEATURE_webengine_webrtc=ON
