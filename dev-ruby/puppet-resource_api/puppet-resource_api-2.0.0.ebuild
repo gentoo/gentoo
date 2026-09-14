@@ -27,7 +27,7 @@ SRC_URI="https://github.com/puppetlabs/puppet-resource_api/archive/refs/tags/v${
 LICENSE="MIT"
 
 SLOT="$(ver_cut 1)"
-KEYWORDS="~amd64 ~arm ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
 
 all_ruby_prepare() {
 	# the gemspec tries to system(git ls-files) but has a meaningful fallback, so just make it not run git.
