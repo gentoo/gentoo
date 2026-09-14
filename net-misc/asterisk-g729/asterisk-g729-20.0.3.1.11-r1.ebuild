@@ -31,8 +31,8 @@ pkg_setup() {
 	QA_FLAGS_IGNORED="/usr/$(get_libdir)/asterisk/modules/codec_g729a.so"
 	QA_TEXTRELS="/usr/$(get_libdir)/asterisk/modules/codec_g729a.so"
 	QA_PREBUILT="${QA_FLAGS_IGNORED}
-		/usr/sbin/asthostid
-		/usr/sbin/astregister"
+		/usr/sbin/asthostid-${MY_TOOLS_VERSION}
+		/usr/sbin/astregister-${MY_TOOLS_VERSION}"
 }
 
 src_unpack() {
