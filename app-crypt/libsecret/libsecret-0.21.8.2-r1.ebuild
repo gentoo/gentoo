@@ -62,7 +62,10 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.21.7-optional-vala-tests.patch
-	"${FILESDIR}"/${PN}-0.21.7-fix-installing-pam-module.patch
+	# Collides with gnome-base/gnome-keyring and no other distros
+	# seem to install it because of that, so just leave it uninstalled
+	# for now: https://gitlab.gnome.org/GNOME/libsecret/-/work_items/90
+	#"${FILESDIR}"/${PN}-0.21.7-fix-installing-pam-module.patch
 )
 
 dbus_run() {
