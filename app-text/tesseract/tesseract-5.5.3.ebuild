@@ -34,6 +34,7 @@ DEPEND="${COMMON_DEPEND}
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-5.4.1-arm64-neon-tesseract.patch
+	"${FILESDIR}"/${P}-cstdlib.patch
 )
 
 pkg_pretend() {
