@@ -162,14 +162,16 @@ src_configure() {
 	# bug #214642
 	BUILD_CPPFLAGS+=" -D_GNU_SOURCE"
 
-	# Build the various variants of ncurses -- narrow, wide, and threaded. #510440
-	# Order matters here -- we want unicode/thread versions to come last so that the
-	# binaries in /usr/bin support both wide and narrow.
+	# Build the various variants of ncurses -- wide, narrow, threaded (bug #510440).
+	# We only install programs & the terminfo DB for the wide version.
+	# Wide goes first because later variants won't overwrite existing files
+	# (at least partially).
+	#
 	# The naming is also important as we use these directly with filenames and when
 	# checking configure flags.
 	NCURSES_TARGETS=(
-		ncurses
 		ncursesw
+		ncurses
 		ncursest
 		ncursestw
 	)
@@ -191,6 +193,7 @@ src_configure() {
 			$(tc-getCC) -o x -x c - ${lbuildflags} -pipe >& /dev/null \
 			|| lbuildflags="${dbuildflags}"
 
+		einfo "Configuring target: minimal tic"
 		# We can't re-use the multilib BUILD_DIR because we run outside of it.
 		BUILD_DIR="${WORKDIR}" \
 		CC=${BUILD_CC} \
@@ -213,9 +216,10 @@ multilib_src_configure() {
 		use stack-realign && append-flags -mstackrealign
 	fi
 
-	local t
-	for t in "${NCURSES_TARGETS[@]}" ; do
-		do_configure "${t}"
+	local target
+	for target in "${NCURSES_TARGETS[@]}" ; do
+		einfo "Configuring target: ${target}"
+		do_configure "${target}"
 	done
 }
 
@@ -240,9 +244,10 @@ do_configure() {
 		# Now the rest of the various standard flags.
 		--with-shared
 		--enable-fvisibility
-		# (Originally disabled until bug #245417 is sorted out, but now
+
+		# Originally disabled until bug #245417 is sorted out, but now
 		# just keeping it off for good, given nobody needed it until now
-		# (2022) and we're trying to phase out bdb.)
+		# (2022) and we're trying to phase out bdb.
 		--without-hashed-db
 		$(use_with ada)
 		$(use_with cxx)
@@ -272,10 +277,9 @@ do_configure() {
 		$(use_enable !debug leaks)
 		$(use_enable debug expanded)
 		$(use_enable !debug macros)
-		$(multilib_native_with progs)
+		--without-progs
 		$(use_with test tests)
 		$(use_with trace)
-		$(use_with tinfo termlib)
 		--disable-stripping
 		--disable-pkg-ldflags
 	)
@@ -290,10 +294,11 @@ do_configure() {
 	esac
 
 	if [[ ${target} == ncurses*w ]] ; then
-		conf+=( --enable-widec )
+		conf+=( --enable-{widec,ext-colors} )
 	else
-		conf+=( --disable-widec )
+		conf+=( --disable-{widec,ext-colors} )
 	fi
+
 	if [[ ${target} == ncursest* ]] ; then
 		conf+=( --with-{pthread,reentrant} )
 	else
@@ -309,10 +314,37 @@ do_configure() {
 	else
 		conf+=( --includedir="${EPREFIX}"/usr/include/${target} )
 	fi
+
+	if [[ ${target} == "ncursesw" ]] ; then
+		# Overwrite libtinfo with the wide variant (bug #910430, bug #972804).
+		#
+		# Don't do this for all variants, as we can't mix ncurses with
+		# ncursestw, for example.
+		conf+=(
+			$(use_with tinfo termlib tinfo)
+			--with-ticlib=tic
+			--disable-tic-depends
+
+			$(multilib_native_with progs)
+		)
+	else
+		conf+=(
+			$(use_with tinfo termlib)
+			--with-ticlib
+			--disable-tic-depends
+
+			--disable-db-install
+		)
+	fi
+
 	# See comments in src_configure.
 	if [[ ${target} != "cross" ]] ; then
 		local cross_path="${WORKDIR}/cross"
-		[[ -d ${cross_path} ]] && export TIC="${cross_path}/progs/tic"
+		local tic="${cross_path}/progs/tic"
+		if [[ -x ${tic} ]] ; then
+			einfo "Using TIC=${tic}"
+			export TIC="${tic}"
+		fi
 	fi
 
 	ECONF_SOURCE="${S}" econf "${conf[@]}" "$@"
@@ -321,6 +353,7 @@ do_configure() {
 src_compile() {
 	# See comments in src_configure.
 	if ! has_version -b "~sys-libs/${P}:0" ; then
+		einfo "Building target: minimal tic"
 		BUILD_DIR="${WORKDIR}" do_compile cross -C progs tic$(get_exeext)
 	fi
 
@@ -328,9 +361,10 @@ src_compile() {
 }
 
 multilib_src_compile() {
-	local t
-	for t in "${NCURSES_TARGETS[@]}" ; do
-		do_compile "${t}"
+	local target
+	for target in "${NCURSES_TARGETS[@]}" ; do
+		einfo "Building target: ${target}"
+		do_compile "${target}"
 	done
 }
 
@@ -347,26 +381,28 @@ do_compile() {
 	# generation is quite small.
 	emake -j1 sources
 
-	# For some reason, sources depends on pc-files which depends on
-	# compiled libraries which depends on sources which ...
-	# Manually delete the pc-files file so the install step will
-	# create the .pc files we want.
-	rm -f misc/pc-files || die
 	emake "$@"
 }
 
 multilib_src_install() {
 	local target
 	for target in "${NCURSES_TARGETS[@]}" ; do
-		emake -C "${BUILD_DIR}/${target}" DESTDIR="${D}" install
+		case ${target} in
+			ncursesw)
+				einfo "Installing full target: ${target}"
+				(
+					# Make sure tic picks up the just-built library
+					local -x PATH="${BUILD_DIR}/${target}/progs${PATH+:${PATH}}"
+					local -x LD_LIBRARY_PATH="${BUILD_DIR}/${target}/lib${LD_LIBRARY_PATH+:${LD_LIBRARY_PATH}}"
+					emake -C "${BUILD_DIR}/${target}" DESTDIR="${D}" install
+				)
+				;;
+			*)
+				einfo "Installing library-only target: ${target}"
+				emake -C "${BUILD_DIR}/${target}" DESTDIR="${D}" install.libs
+				;;
+		esac
 	done
-
-	# Move main libraries into /.
-	if multilib_is_native_abi ; then
-		gen_usr_ldscript -a \
-			"${NCURSES_TARGETS[@]}" \
-			$(usex tinfo 'tinfow tinfo' '')
-	fi
 
 	# Don't delete '*.dll.a', needed for linking, bug #631468
 	if ! use static-libs; then
@@ -443,9 +479,11 @@ multilib_src_install_all() {
 pkg_preinst() {
 	preserve_old_lib /$(get_libdir)/libncurses.so.5
 	preserve_old_lib /$(get_libdir)/libncursesw.so.5
+	preserve_old_lib /$(get_libdir)/libtinfow.so.6
 }
 
 pkg_postinst() {
 	preserve_old_lib_notify /$(get_libdir)/libncurses.so.5
 	preserve_old_lib_notify /$(get_libdir)/libncursesw.so.5
+	preserve_old_lib_notify /$(get_libdir)/libtinfow.so.6
 }
