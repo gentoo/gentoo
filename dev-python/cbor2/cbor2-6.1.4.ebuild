@@ -69,5 +69,6 @@ QA_FLAGS_IGNORED="usr/lib.*/py.*/site-packages/cbor2/_cbor2.*.so"
 
 src_unpack() {
 	pypi_src_unpack
-	cargo_src_unpack
+	cargo_crate_unpack
+	cargo_gen_config
 }
