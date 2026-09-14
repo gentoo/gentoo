@@ -37,3 +37,12 @@ src_configure() {
 
 	cmake_src_configure
 }
+
+src_install()
+{
+	cmake_src_install
+
+	if use test; then
+		rm "${ED}/usr/bin/s3" || die
+	fi
+}
