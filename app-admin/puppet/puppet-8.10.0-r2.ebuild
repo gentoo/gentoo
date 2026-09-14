@@ -16,7 +16,7 @@ SRC_URI="https://downloads.puppetlabs.com/puppet/${P}.tar.gz"
 
 LICENSE="Apache-2.0 GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="~amd64 ~arm ~ppc64 ~x86"
 IUSE="augeas diff doc emacs hiera ldap rrdtool selinux shadow sqlite vim-syntax"
 RESTRICT="test"
 
