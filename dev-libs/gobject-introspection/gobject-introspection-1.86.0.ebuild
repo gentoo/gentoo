@@ -56,6 +56,10 @@ BDEPEND="
 	)
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.86.0-tests-setuptools.patch
+)
+
 pkg_setup() {
 	python-single-r1_pkg_setup
 }
