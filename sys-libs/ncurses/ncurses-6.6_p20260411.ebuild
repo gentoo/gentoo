@@ -309,15 +309,6 @@ do_configure() {
 	else
 		conf+=( --includedir="${EPREFIX}"/usr/include/${target} )
 	fi
-
-	if [[ ${target} == "ncursesw" ]] ; then
-		# Overwrite libtinfo with the wide variant (bug #910430, bug #972804).
-		#
-		# Don't do this for all variants, as we can't mix ncurses with
-		# ncursestw, for example.
-		conf+=( $(use_with tinfo termlib tinfo) )
-	fi
-
 	# See comments in src_configure.
 	if [[ ${target} != "cross" ]] ; then
 		local cross_path="${WORKDIR}/cross"
