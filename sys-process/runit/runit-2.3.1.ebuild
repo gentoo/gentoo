@@ -14,7 +14,7 @@ S=${WORKDIR}/admin/${P}/
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~m68k ~mips ~ppc ppc64 ~s390 ~sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~m68k ~mips ppc ppc64 ~s390 ~sparc x86"
 IUSE="+scripts split-usr system-init static"
 
 src_unpack() {
