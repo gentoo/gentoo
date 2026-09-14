@@ -18,6 +18,7 @@ KEYWORDS="-* ~amd64 ~arm64"
 RDEPEND="
 	app-accessibility/at-spi2-core:2
 	dev-libs/glib:2
+	dev-libs/wayland
 	media-libs/fontconfig:1.0
 	media-libs/freetype:2
 	media-libs/harfbuzz
