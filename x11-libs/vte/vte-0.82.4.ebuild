@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+
 PYTHON_COMPAT=( python3_{12..14} )
 
 inherit flag-o-matic gnome.org meson python-any-r1 vala xdg
@@ -63,6 +64,10 @@ src_prepare() {
 }
 
 src_configure() {
+	# Upstream build w/ -fno-strict-aliasing but >= GCC 17 makes
+	# -Werror=strict-aliasing (set by the user here) effective even with
+	# that, so disable both rather than just the error to be safe.
+	append-flags $(test-flags-CC -fno-strict-aliasing -Wno-error=strict-aliasing)
 	# Upstream don't support LTO & error out on it in meson.build
 	filter-lto
 
