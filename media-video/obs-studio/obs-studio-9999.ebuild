@@ -11,8 +11,8 @@ PYTHON_COMPAT=( python3_{11..14} )
 
 inherit cmake flag-o-matic lua-single optfeature python-single-r1 xdg
 
-CEF_AMD64="cef_binary_6533_linux_x86_64_v6"
-CEF_ARM64="cef_binary_6533_linux_aarch64_v6"
+CEF_AMD64="cef_binary_7871_linux_x86_64"
+CEF_ARM64="cef_binary_7871_linux_aarch64"
 OBS_BROWSER_COMMIT="3f0a2cdf378939ebe3c6f9ab36d4ea100c25aac2"
 OBS_WEBSOCKET_COMMIT="1ef34bf48110c2a18184e50e41cd0b1a855e2147"
 
