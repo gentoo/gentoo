@@ -1,0 +1,23 @@
+#!/sbin/openrc-run
+# Copyright 1999-2026 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+: ${CLICKHOUSE_USER:=clickhouse}
+: ${CLICKHOUSE_GROUP:=clickhouse}
+: ${CLICKHOUSE_CONFIGFILE:=/etc/clickhouse-server/config.xml}
+: ${CLICKHOUSE_DATADIR:=/var/lib/clickhouse}
+
+description="ClickHouse column-oriented OLAP database server"
+
+command="/usr/bin/clickhouse"
+command_args="server --config-file=${CLICKHOUSE_CONFIGFILE}"
+command_background="true"
+command_user="${CLICKHOUSE_USER}:${CLICKHOUSE_GROUP}"
+pidfile="/run/${RC_SVCNAME}.pid"
+start_stop_daemon_args="--chdir ${CLICKHOUSE_DATADIR}"
+
+depend() {
+	use localmount logger
+	need net
+	after firewall
+}
