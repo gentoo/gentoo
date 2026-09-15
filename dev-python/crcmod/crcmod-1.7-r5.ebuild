@@ -21,6 +21,12 @@ KEYWORDS="amd64 arm x86"
 
 DOCS=( changelog test/examples.py )
 
+src_prepare() {
+	distutils-r1_src_prepare
+
+	sed -i -e 's:del setup_dict.*$:raise:' setup.py || die
+}
+
 python_test() {
 	"${EPYTHON}" test/test_crcmod.py -v || die "Tests fail with ${EPYTHON}"
 }
