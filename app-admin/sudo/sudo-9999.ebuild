@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -241,6 +241,10 @@ src_install() {
 
 	# bug #697812
 	find "${ED}" -type f -name "*.la" -delete || die
+
+	# Build system installs /etc/sudoers.d, let's make sure we
+	# keep having it.
+	keepdir /etc/sudoers.d
 }
 
 pkg_postinst() {
