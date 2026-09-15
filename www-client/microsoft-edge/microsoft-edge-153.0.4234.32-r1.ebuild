@@ -22,11 +22,12 @@ LICENSE="microsoft-edge"
 SLOT="0"
 KEYWORDS="-* amd64"
 
-IUSE="+mip qt6"
+IUSE="qt6"
 RESTRICT="bindist mirror strip"
 
 RDEPEND="
 	>=app-accessibility/at-spi2-core-2.46.0:2
+	app-crypt/libsecret
 	app-misc/ca-certificates
 	dev-libs/expat
 	dev-libs/glib:2
@@ -55,10 +56,6 @@ RDEPEND="
 	x11-libs/libxshmfence
 	x11-libs/pango
 	x11-misc/xdg-utils
-	mip? (
-		app-crypt/libsecret
-		|| ( dev-libs/libxml2-compat:2/2 dev-libs/libxml2:2/2 )
-	)
 	qt6? ( dev-qt/qtbase:6[gui,widgets] )
 "
 
@@ -111,10 +108,6 @@ src_install() {
 	for size in 16 24 32 48 64 128 256 ; do
 		newicon -s ${size} "${EDGE_HOME}/product_logo_${size}${channel}.png" ${PN}.png
 	done
-
-	if ! use mip; then
-		rm "${EDGE_HOME}"/libmip_core_gn.so || die
-	fi
 
 	rm "${EDGE_HOME}/libqt5_shim.so" || die
 	if ! use qt6; then
