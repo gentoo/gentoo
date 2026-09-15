@@ -10,7 +10,7 @@ inherit ecm frameworks.kde.org
 DESCRIPTION="Framework providing integration of QML and KDE work spaces"
 
 LICENSE="LGPL-2+"
-KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="~amd64 arm64 ~loong ~ppc64 ~riscv ~x86"
 IUSE=""
 
 DEPEND="
