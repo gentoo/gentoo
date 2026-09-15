@@ -13,6 +13,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~ppc ~x86"
 
 DEPEND="sys-kernel/linux-headers"
+BDEPEND=">=dev-perl/Canary-Stability-2001.0.0"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.30.0-linux-headers.patch
