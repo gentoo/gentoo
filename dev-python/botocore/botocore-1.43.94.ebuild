@@ -63,5 +63,18 @@ python_test() {
 		tests/functional/test_six_threading.py::test_six_thread_safety
 	)
 
-	epytest tests/{functional,unit}
+	# The test suite can eat up a lot of memory when running via xdist,
+	# and slow down some tiny tests.  Let's just run a safe subset
+	# of tests known to be slow-ish in parallel, and the rest in series.
+	local parallel_tests=(
+		tests/functional/*/
+		tests/functional/test_event_alias.py
+		tests/functional/test_[cds-z]*.py
+		tests/unit/
+	)
+
+	epytest "${parallel_tests[@]}"
+
+	local EPYTEST_IGNORE=( "${parallel_tests[@]}" )
+	EPYTEST_XDIST= epytest tests/functional
 }
