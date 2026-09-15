@@ -1,0 +1,37 @@
+--- a/keydb.conf	2023-01-20 21:58:11.000000000 +0100
++++ b/keydb.conf	2023-02-07 17:15:32.714811663 +0100
+@@ -304,7 +304,7 @@
+ #
+ # Creating a pid file is best effort: if KeyDB is not able to create it
+ # nothing bad happens, the server will start and run normally.
+-pidfile /var/run/keydb_6379.pid
++pidfile /run/keydb.pid
+ 
+ # Specify the server verbosity level.
+ # This can be one of:
+@@ -317,7 +317,7 @@
+ # Specify the log file name. Also the empty string can be used to force
+ # KeyDB to log on the standard output. Note that if you use standard
+ # output for logging but daemonize, logs will be sent to /dev/null
+-logfile ""
++logfile /var/log/keydb/keydb.log
+ 
+ # To enable logging to the system logger, just set 'syslog-enabled' to yes,
+ # and optionally update the other syslog parameters to suit your needs.
+@@ -470,7 +470,7 @@
+ # The Append Only File will also be created inside this directory.
+ #
+ # Note that you must specify a directory here, not a file name.
+-dir ./
++dir /var/lib/keydb/
+ 
+ ################################# REPLICATION #################################
+ 
+@@ -1057,6 +1057,7 @@
+ # output buffers (but this is not needed if the policy is 'noeviction').
+ #
+ # maxmemory <bytes>
++maxmemory 64MB
+ 
+ # MAXMEMORY POLICY: how KeyDB will select what to remove when maxmemory
+ # is reached. You can select one from the following behaviors:

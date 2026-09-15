@@ -1,0 +1,16 @@
+# keydb-sentinel user.
+KEYDB_SENTINEL_USER="keydb"
+
+# keydb-sentinel group.
+KEYDB_SENTINEL_GROUP="keydb"
+
+# keydb-sentinel configuration file.
+KEYDB_SENTINEL_CONF="/etc/keydb/sentinel.conf"
+
+# keydb-sentinel working directory.
+KEYDB_SENTINEL_DIR="/tmp"
+
+# Specify the network service that corresponds to the "bind" setting
+# in your sentinel.conf. For example, if you bind to 127.0.0.1, this should
+# be set to "net.lo" which provides the loopback interface.
+rc_need="net.lo"
