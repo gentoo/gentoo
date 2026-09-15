@@ -20,10 +20,11 @@ S=${WORKDIR}
 
 LICENSE="microsoft-edge"
 SLOT="0"
-KEYWORDS="-* ~amd64"
+KEYWORDS="-* amd64"
 
-IUSE="qt6"
+IUSE="gtk3 +gtk4 qt6"
 RESTRICT="bindist mirror strip"
+REQUIRED_USE="|| ( gtk3 gtk4 )"
 
 RDEPEND="
 	>=app-accessibility/at-spi2-core-2.46.0:2
@@ -43,7 +44,6 @@ RDEPEND="
 	sys-libs/glibc
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf:2
-	x11-libs/gtk+:3[X]
 	x11-libs/libdrm
 	x11-libs/libX11
 	x11-libs/libXcomposite
@@ -56,6 +56,8 @@ RDEPEND="
 	x11-libs/libxshmfence
 	x11-libs/pango
 	x11-misc/xdg-utils
+	gtk3? ( x11-libs/gtk+:3[X] )
+	gtk4? ( gui-libs/gtk:4[X] )
 	qt6? ( dev-qt/qtbase:6[gui,widgets] )
 "
 
@@ -115,4 +117,49 @@ src_install() {
 	fi
 
 	pax-mark m "${EDGE_HOME}/msedge"
+
+	# MS Edge includes channel information in the wrapper script, so rather than replace it like with Chromium,
+	# We'll inject additional logic to look for and use user-defined flags in /etc/msedge/*.
+	local wrapper="${ED}/${EDGE_HOME}/${PN}"
+	local inject="${T}/msedge-wrapper-flags.inc"
+	local wrapper_tmp="${T}/msedge-wrapper.new"
+
+	cat > "${inject}" <<'EOF'
+
+# Allow the user to override command-line flags, bug #357629.
+for f in /etc/msedge/*; do
+	case "${f}" in
+		*~|*.bak|*.old|*.swp|*.tmp|*/.*) continue ;;
+	esac
+	[[ -f "${f}" ]] && source "${f}"
+done
+
+# Prefer user-defined MSEDGE_USER_FLAGS over MSEDGE_FLAGS from /etc/msedge/default.
+MSEDGE_FLAGS=${MSEDGE_USER_FLAGS:-"$MSEDGE_FLAGS"}
+
+EOF
+
+	{
+		# shebang and copyright notice; hasn't changed in 15 years.
+		head -n 5 "${wrapper}" || die
+		cat "${inject}" || die
+		tail -n +7 "${wrapper}" | \
+			sed 's|^exec -a "\$0" "\$HERE/msedge" "\$@"$|exec -a "$0" "$HERE/msedge" ${MSEDGE_FLAGS} "$@"|' || die
+	} > "${wrapper_tmp}" || die "Failed to build wrapper with injected logic"
+
+	cat "${wrapper_tmp}" > "${wrapper}" || die "Failed to update wrapper logic"
+	rm -f "${wrapper_tmp}" || die "Failed to clean temporary wrapper"
+
+	grep -q 'exec -a "\$0" "\$HERE/msedge" ${MSEDGE_FLAGS} "\$@"' "${wrapper}" ||
+		die "Failed to update wrapper exec flags"
+}
+
+pkg_postinst() {
+	if use gtk4 && has_version x11-libs/gtk+; then
+		einfo "GTK4 has been selected, however x11-libs/gtk+ is also installed."
+		einfo "MS Edge will prefer GTK3 at runtime as a result; if you prefer GTK4,"
+		einfo "please create \`/etc/msedge/default\` and set \`MSEDGE_FLAGS=\"--gtk-version=4\"\`"
+	fi
+	xdg_desktop_database_update
+	xdg_icon_cache_update
 }

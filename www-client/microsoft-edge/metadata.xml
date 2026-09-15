@@ -9,4 +9,8 @@
 		Microsoft Edge is a browser that combines a minimal design with
 		sophisticated technology to make the web faster, safer, and easier.
 	</longdescription>
+	<use>
+		<flag name="gtk3">Pull in <pkg>x11-libs/gtk+</pkg> for the user interface.</flag>
+		<flag name="gtk4">Pull in <pkg>gui-libs/gtk</pkg> for the user interface.</flag>
+	</use>
 </pkgmetadata>
