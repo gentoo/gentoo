@@ -469,9 +469,6 @@ src_test() {
 
 		# Reason: fails with app-crypt/freepg
 		%lisp/epg-tests.el
-
-		# Reason: tests not backported #982533
-		%lisp/progmodes/flymake-tests.el
 	)
 	use threads || exclude_tests+=(
 			%src/emacs-module-tests.el
