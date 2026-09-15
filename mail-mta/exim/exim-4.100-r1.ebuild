@@ -524,7 +524,7 @@ src_configure() {
 }
 
 src_compile() {
-	emake CC="$(tc-getCC)" HOSTCC="$(tc-getBUILD_CC)" \
+	emake CC="$(tc-getCC)" HOSTCC="$(tc-getBUILD_CC)" LD="$(tc-getLD)" \
 		AR="$(tc-getAR) cq" RANLIB="$(tc-getRANLIB)" FULLECHO=''
 }
 
