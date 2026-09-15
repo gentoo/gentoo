@@ -15,7 +15,7 @@ S="${WORKDIR}/${PN}"
 
 LICENSE="|| ( GPL-2 PEL )"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ppc ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ppc ppc64 x86"
 IUSE="debug doc +exceptions openal qch test threads"
 
 REQUIRED_USE="qch? ( doc )"
