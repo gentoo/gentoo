@@ -22,6 +22,7 @@ RESTRICT="!test? ( test )"
 PATCHES=(
 	"${FILESDIR}/${P}-gcc15.patch"
 	"${FILESDIR}/${P}-rtc.patch"
+	"${FILESDIR}/${P}-dash.patch"
 )
 
 pkg_pretend() {
