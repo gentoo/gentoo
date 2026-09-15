@@ -21,7 +21,7 @@ RESTRICT="bindist mirror strip"
 RDEPEND="=net-misc/asterisk-${PV%%.*}*"
 
 pkg_setup() {
-	QA_FLAGS_IGNORED="/usr/$(get_libdir)/asterisk/modules/codec_opus.so"
+	QA_FLAGS_IGNORED="/usr/$(get_libdir)/asterisk/modules/codec_opus.so /usr/$(get_libdir)/asterisk/modules/format_ogg_opus.so"
 	QA_PREBUILT="${QA_FLAGS_IGNORED}"
 }
 
@@ -31,6 +31,7 @@ src_install() {
 	dodoc codec_opus-${MY_PV}-${arch}/README
 	insinto /usr/$(get_libdir)/asterisk/modules/
 	doins "codec_opus-${MY_PV}-${arch}/codec_opus.so"
+	doins "codec_opus-${MY_PV}-${arch}/format_ogg_opus.so"
 
 	insinto /var/lib/asterisk/documentation/thirdparty
 	doins "codec_opus-${MY_PV}-${arch}/codec_opus_config-en_US.xml"
