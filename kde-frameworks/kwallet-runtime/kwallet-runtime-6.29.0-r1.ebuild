@@ -12,7 +12,7 @@ DESCRIPTION="Framework providing desktop-wide storage for passwords"
 SRC_URI+=" https://dev.gentoo.org/~asturm/distfiles/kde/${PATCHSET}.tar.xz"
 
 LICENSE="LGPL-2+"
-KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="~amd64 arm64 ~loong ~ppc64 ~riscv ~x86"
 IUSE="gpg +man +keyring +legacy-kwallet X"
 
 DEPEND="
