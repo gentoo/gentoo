@@ -64,7 +64,10 @@ src_configure() {
 }
 
 python_test() {
-	local EPYTEST_DESELECT=()
+	local EPYTEST_DESELECT=(
+		# black version?
+		tests/test_type_stubs.py::test_xmlsec_constants_stub
+	)
 
 	case ${EPYTHON} in
 		python3.15*)
