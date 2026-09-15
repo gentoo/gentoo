@@ -14,6 +14,7 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<use>
+		<flag name="ai">Enable the autin AI bash helper</flag>
 		<flag name="client">Enable the autin client</flag>
 		<flag name="daemon">Enable the autin background daemon on the client</flag>
 		<flag name="server">Enable the autin server</flag>
