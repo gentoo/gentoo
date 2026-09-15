@@ -32,20 +32,20 @@ RDEPEND="
 BDEPEND="
 	$(python_gen_cond_dep '
 		dev-python/wheel[${PYTHON_USEDEP}]
+		test? (
+			dev-python/pyelftools[${PYTHON_USEDEP}]
+		)
 	')
-	test? ( $(python_gen_cond_dep '
-		dev-python/pyelftools[${PYTHON_USEDEP}]
-		dev-python/pytest[${PYTHON_USEDEP}]
-	') )
 "
+
 EPYTEST_PLUGINS=( )
-distutils_enable_tests pytest
 EPYTEST_DESELECT=(
 	# need real hardware connected
 	test/test_esptool.py
 	# need network
 	test/test_uf2_ids.py
 )
+distutils_enable_tests pytest
 
 src_prepare() {
 	default
