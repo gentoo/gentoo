@@ -3,9 +3,9 @@
 
 EAPI=8
 
-LLVM_COMPAT=( 21 )
+LLVM_COMPAT=( 21 22 )
 
-inherit cmake llvm-r2 systemd tmpfiles
+inherit cmake llvm-r2 systemd toolchain-funcs tmpfiles
 
 DESCRIPTION="Column-oriented OLAP database management system for real-time analytics"
 HOMEPAGE="https://clickhouse.com/"
@@ -14,7 +14,6 @@ CH_SUBMODULES=(
 	"AMQP-CPP ClickHouse/AMQP-CPP 4fccd7f84318fe3a022c63a5b621a831c99e3a32"
 	"FP16 Maratyszcza/FP16 0a92994d729ff76a58f692d3028ca1b64b145d91"
 	"Jieba-CPP amosbird/Jieba-CPP d62beb8a19e326ff5619ea4bcd340e392dbb2ea6"
-	"MeCab taku910/mecab 61b90ba6e669dc2d7d533d4a80d206f3b31d52b1"
 	"NuRaft ClickHouse/NuRaft b053451b233176ef1d2b5c85a780f6ecca1ad8d6"
 	"SHA3IUF brainhub/SHA3IUF fc8504750a5c2174a1874094dd05e6a0d8797753"
 	"SimSIMD ClickHouse/SimSIMD e81e1c2de244061a476eaa7ac4db9ca01df4feed"
@@ -39,9 +38,6 @@ CH_SUBMODULES=(
 	"aws ClickHouse/aws-sdk-cpp 22f694afbdc7e9766894998c3745e23f004f8b86"
 	"azure ClickHouse/azure-sdk-for-cpp 20f8b46b878718b4536a88888a182f60f665465a"
 	"boost ClickHouse/boost e24b1b25e3349236a3c5aac792e3294f62eda1f2"
-	"brotli ClickHouse/brotli d224526f8fa736f24b2339e6f421a142de6586c8"
-	"bzip2 ClickHouse/bzip2 bf905ea2251191ff9911ae7ec0cfc35d41f9f7f6"
-	"c-ares c-ares/c-ares c7a3138dcfe3bb0eaaf10c0c24c36dc66dc790ab"
 	"capnproto ClickHouse/capnproto e7261205a6bea770d98e33ac94a35c2cd29e5b19"
 	"cassandra ClickHouse/cpp-driver f4a31e92a25c34c02c7291ff97c7813bc83b0e09"
 	"cctz ClickHouse/cctz c2ba12b73531a7dbc3ac45b5007649e35760f6d8"
@@ -52,13 +48,10 @@ CH_SUBMODULES=(
 	"cppkafka ClickHouse/cppkafka 8cc2f31027664e33b5df058f917275c1e9a84a30"
 	"crc32-s390x linux-on-ibm-z/crc32-s390x 30980583bf9ed3fa193abb83a1849705ff457f70"
 	"crc32-vpmsum antonblanchard/crc32-vpmsum 452155439389311fc7d143621eaf56a258e02476"
-	"crc32c ClickHouse/crc32c 8e39af2c7f8b23d1a0c2a6367b3313149c20b520"
 	"croaring RoaringBitmap/CRoaring 025ae3f7add169bc820dcfd46fa9304f382ec40a"
-	"cyrus-sasl ClickHouse/cyrus-sasl e6466edfd638cc5073debe941c53345b18a09512"
 	"darts-clone s-yata/darts-clone 87b71afd6cf784953e3c08f24c64203397f3b724"
 	"datasketches-cpp apache/datasketches-cpp 76edd74f5db286b672c170a8ded4ce39b3a8800f"
 	"delta-kernel-rs ClickHouse/delta-kernel-rs 88ff5a947478215d285783b42aafe6f3d04aca58"
-	"double-conversion ClickHouse/double-conversion 4f7a25d8ced8c7cf6eee6fd09d6788eaa23c9afe"
 	"fast_float fastfloat/fast_float 34164f547b7df3f5d794ff67e9f885c36819ebfc"
 	"fastops ClickHouse/fastops e2fbb015ae99e031eaf0223cd2d5d09ca63cfedb"
 	"flatbuffers ClickHouse/flatbuffers 0bed8cd4a001850de9591563df99b435349ba05e"
@@ -73,15 +66,10 @@ CH_SUBMODULES=(
 	"icudata ClickHouse/icudata e3ae5bcb2b24f17cd9336c4f1b25f36ed636d839"
 	"icu ClickHouse/icu b29faa6d4e46f10d230b93a3c33885e7ec71bd41"
 	"idna ada-url/idna 3c8be01d42b75649f1ac9b697d0ef757eebfe667"
-	"isa-l ClickHouse/isa-l 9f2b68f05752097f0f16632fc4a9a86950831efd"
 	"jemalloc ClickHouse/jemalloc e6cea775d316273b05581f6a7c3609be649eb754"
-	"jwt-cpp Thalhammer/jwt-cpp b0ea29a58fc852a67d4e896d266880c2c63b0c4c"
-	"krb5 ClickHouse/krb5 857c2d1edd7a4218b84594768587aa53fd63da9e"
 	"lemmagen-c ClickHouse/lemmagen-c 59537bdcf57bbed17913292cb4502d15657231f1"
-	"libarchive libarchive/libarchive 27cbc7827172698143e440801fc0ba39ccb4f1f5"
 	"libbcrypt rg3/libbcrypt 8aa32ad94ebe06b76853b0767c910c9fbf7ccef4"
 	"libcotp paolostivanin/libcotp 3a7fa1a780716534e800ba51f80fe929af77adf7"
-	"libcpuid anrieff/libcpuid 3c5b94bea740badb8da703e4a30a0ef70d956010"
 	"libdeflate ClickHouse/libdeflate ec0718b8e06dc172eb87ede6a493865ccf7610ec"
 	"libdivide ridiculousfish/libdivide 01526031eb79375dc85e0212c966d2c514a01234"
 	"libfiu ClickHouse/libfiu 74bc382193df83d829f9e5b99d7f17a841c5cf74"
@@ -95,11 +83,7 @@ CH_SUBMODULES=(
 	"libstemmer_c ClickHouse/libstemmer_c e138ee768ef8935d1957769e73850ca8c795efde"
 	"libucontext kaniini/libucontext 3a5a20858e6f79d11f44cba31c3545731362ad73"
 	"liburing axboe/liburing e3d35ea59d3ba09075ed4d7751e4bb9049cce64a"
-	"libuv ClickHouse/libuv 714b58b9849568211ade86b44dd91d37f8a2175e"
-	"libxml2 GNOME/libxml2 c94eb0210183b9d7cb43f8e7fddc6be55843ef49"
 	"llvm-project ClickHouse/llvm-project c7f5fc7904a38ed3d1f6999fc615ad666905d1df"
-	"lz4 lz4/lz4 ebb370ca83af193212df4dcbadcc5d87bc0de2f0"
-	"magic_enum Neargye/magic_enum 1a1824df7ac798177a521eed952720681b0bf482"
 	"mapbox-geometry ClickHouse/geometry.hpp 12ac5412bf85571852ad1cd7c30456faef8d6464"
 	"mariadb-connector-c ClickHouse/mariadb-connector-c 111ec1a5958cf984f50a28b0fb82a4087918d677"
 	"miniselect danlark1/miniselect be0af6bd0b6eb044d1acc4f754b229972d99903a"
@@ -110,15 +94,9 @@ CH_SUBMODULES=(
 	"msgpack-c ClickHouse/msgpack-c 6b0d778ae059cfb77e26f2a011e99b17a8563c23"
 	"musl ClickHouse/musl 7f52b7a53a0e830dbfbf1ebf9381048aed968185"
 	"nats-io ClickHouse/nats.c cf441828d30fdd5de12d9da319e88d2586fdeeba"
-	"nlohmann-json nlohmann/json 55f93686c01528224f448c19128836e7df245f72"
 	"nlp-data ClickHouse/nlp-data 5591f91f5e748cba8fb9ef81564176feae774853"
-	"numactl ClickHouse/numactl ff32c618d63ca7ac48cce366c5a04bb3563683a0"
-	"openldap openldap/openldap 22fe35c6b4098e3ad166469f9574c79832c42952"
 	"openssl ClickHouse/openssl 26868a38972e80dd15f56212c3677d77363f5c74"
 	"orc ClickHouse/orc 6a2fe65eb16ce4c760964dca619260226c1b418e"
-	"pocketfft mreineck/pocketfft f4c1aa8aa9ce79ad39e80f2c9c41b92ead90fda3"
-	"postgres ClickHouse/postgres ab6952af3ac8cdede654be4dc68f990b0352c213"
-	"rapidjson ClickHouse/rapidjson 04dc6714905247b4529310e0cf73a03a3b8148df"
 	"re2 ClickHouse/re2 1f24555c97150767d65aa77fde8ddd029d2bb97c"
 	"replxx ClickHouse/replxx c2de583a3cd41f7b476cb625e954c191b6fcc448"
 	"rocksdb facebook/rocksdb d250fae809fe6af931d12a857d07e6f2b96e1c11"
@@ -126,19 +104,14 @@ CH_SUBMODULES=(
 	"s2geometry ClickHouse/s2geometry 5409e159ec6e0334022395ed33ed24e60c69b6ae"
 	"silk ClickHouse/silk 78aab9d603d43247fa8f05f86c34ecdfe2ab4095"
 	"simdcomp fast-pack/simdcomp 009c67807670d16f8984c0534aef0e630e5465a4"
-	"simdjson ClickHouse/simdjson e95c118160780c2b808d86953938ce40b445d764"
-	"simdutf ClickHouse/simdutf ea20f7cbc39fa29a761a443cbccd9668c0b48287"
 	"snappy ClickHouse/snappy 052d3e8ddb00003e7288ef5c3bb47806196879e5"
-	"sparsehash-c11 sparsehash/sparsehash-c11 cf0bffaa456f23bc4174462a789b90f8b6f5f42f"
 	"spdlog gabime/spdlog 486b55554f11c9cccc913e11a87085b2a91f706f"
 	"sqids-cpp sqids/sqids-cpp a471f53672e98d49223f598528a533b07b085c61"
-	"sqlite-amalgamation ClickHouse/sqlite-amalgamation 23c7b76929611997c5f0315b3149372b1bee1d41"
 	"sysroot ClickHouse/sysroot caf9c9f560e5a06295d961860ed717fe169e8cef"
 	"sz3 ClickHouse/SZ3 f36e8b064fdde4bac260988ea459786964bbb492"
 	"thrift ClickHouse/thrift 13d30d6a6cdfbd44c07977b8b762e88d9d5eb6df"
 	"ulid-c ClickHouse/ulid-c c433b6783cf918b8f996dacd014cb2b68c7de419"
 	"usearch ClickHouse/usearch 1ae009a6aa573629c8871ddb97dd6e1a9c03dd5f"
-	"vectorscan ClickHouse/vectorscan e6993b7003a19806902fa69ac57dcc2df826b946"
 	"wagyu ClickHouse/wagyu 22ce25812c98e42dc277805941ab8e6577ba729b"
 	"wasmedge WasmEdge/WasmEdge fba982bd1ab4b1ea95308ff77044f3779fd6be6e"
 	"wasmtime ClickHouse/wasmtime 561b224fd0589a02fc9e7bcef1aeb70d886d33c0"
@@ -146,11 +119,8 @@ CH_SUBMODULES=(
 	"wyhash wangyi-fudan/wyhash 991aa3dab624e50b066f7a02ccc9f6935cc740ec"
 	"xsimd ClickHouse/xsimd f795779ccfad12832ea47bfc02d02a65fd7f3576"
 	"xxHash Cyan4973/xxHash bbb27a5efb85b92a0486cf361a8635715a53f6ba"
-	"xz tukaani-project/xz 4b73f2ec19a99ef465282fbce633e8deb33691b3"
 	"yaml-cpp ClickHouse/yaml-cpp acf418672e8aae00fa0de9ada9753e9001a6d57e"
-	"zlib-ng ClickHouse/zlib-ng a2fbeffdc30a8b0ce6d54ee31208e2688eac4c9f"
 	"zmij vitaut/zmij b490231ab0cd976b8e3a6e3b442c7eeee22fe05d"
-	"zstd ClickHouse/zstd 5b3e9e8fd2779260101a07e6cc7b34fd8764617f"
 	"zxc ClickHouse/zxc b9890cfe3466b19d0eb5005874ce81728efb9565"
 )
 
@@ -162,13 +132,70 @@ done
 unset submodule parts
 
 S="${WORKDIR}/ClickHouse-${PV}-lts"
-LICENSE="0BSD Apache-2.0 BSD BSD-2 BZIP2 Boost-1.0 CC0-1.0 CDLA-Permissive-2.0 GPL-2 ISC LGPL-2.1+ MIT MIT-0 MPL-2.0 OPENLDAP POSTGRESQL Unicode-3.0 Unlicense UoI-NCSA ZLIB openssl public-domain"
+LICENSE="Apache-2.0"
+LICENSE+=" 0BSD BSD BSD-2 BZIP2 Boost-1.0 CC0-1.0 CDLA-Permissive-2.0 GPL-2 ISC LGPL-2.1+ MIT MIT-0 MPL-2.0 OPENLDAP POSTGRESQL Unicode-3.0 Unlicense UoI-NCSA ZLIB openssl public-domain"
 SLOT="0"
 KEYWORDS="~amd64"
-# upstream unit tests hang in the sandbox (network-dependent)
 RESTRICT="test"
+PROPERTIES="test_network"
 
+DEPEND="
+	>=app-arch/brotli-1.1.0:=
+	>=app-arch/bzip2-1.0.8:=
+	>=app-arch/libarchive-3.8:=
+	>=app-arch/lz4-1.10.0:=
+	>=app-arch/xz-utils-5.8.3
+	>=app-arch/zstd-1.5.5:=
+	>=app-text/mecab-0.996
+	>=dev-cpp/jwt-cpp-0.7.0
+	>=dev-cpp/magic_enum-0.9.7
+	>=dev-cpp/nlohmann_json-3.11
+	>=dev-cpp/simdutf-5.6
+	>=dev-cpp/sparsehash-2.0.4
+	>=dev-db/sqlite-3.45
+	>=dev-libs/crc32c-1.1.2
+	>=dev-libs/cyrus-sasl-2.1.28:=
+	>=dev-libs/double-conversion-3.4.0
+	>=dev-libs/isa-l-2.31
+	>=dev-libs/libcpuid-0.8.0
+	>=dev-libs/libuv-1.48
+	>=dev-libs/libxml2-2.14:=
+	>=dev-libs/pocketfft-2026.04.10
+	>=dev-libs/rapidjson-1.1.0
+	>=dev-libs/simdjson-3.10
+	>=dev-libs/vectorscan-5.4.11:=
+	>=net-dns/c-ares-1.34:=
+	>=net-nds/openldap-2.6
+	>=sys-libs/zlib-ng-2.2:= virtual/zlib
+	>=sys-process/numactl-2.0.19
+	dev-db/postgresql:=
+	virtual/krb5
+"
 RDEPEND="
+	>=app-arch/brotli-1.1.0:=
+	>=app-arch/bzip2-1.0.8:=
+	>=app-arch/libarchive-3.8:=
+	>=app-arch/lz4-1.10.0:=
+	>=app-arch/xz-utils-5.8.3
+	>=app-arch/zstd-1.5.5:=
+	>=app-text/mecab-0.996
+	>=dev-cpp/simdutf-5.6
+	>=dev-db/sqlite-3.45
+	>=dev-libs/crc32c-1.1.2
+	>=dev-libs/cyrus-sasl-2.1.28:=
+	>=dev-libs/double-conversion-3.4.0
+	>=dev-libs/isa-l-2.31
+	>=dev-libs/libcpuid-0.8.0
+	>=dev-libs/libuv-1.48
+	>=dev-libs/libxml2-2.14:=
+	>=dev-libs/simdjson-3.10
+	>=dev-libs/vectorscan-5.4.11:=
+	>=net-dns/c-ares-1.34:=
+	>=net-nds/openldap-2.6
+	>=sys-libs/zlib-ng-2.2:= virtual/zlib
+	>=sys-process/numactl-2.0.19
+	dev-db/postgresql:=
+	virtual/krb5
 	acct-group/clickhouse
 	acct-user/clickhouse
 "
@@ -182,6 +209,40 @@ BDEPEND="
 	dev-lang/nasm
 	dev-lang/yasm
 "
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-unbundle-contrib.patch
+	"${FILESDIR}"/${PN}-unbundle-MeCab.patch
+	"${FILESDIR}"/${PN}-unbundle-brotli.patch
+	"${FILESDIR}"/${PN}-unbundle-bzip2.patch
+	"${FILESDIR}"/${PN}-unbundle-c-ares.patch
+	"${FILESDIR}"/${PN}-unbundle-crc32c.patch
+	"${FILESDIR}"/${PN}-unbundle-cyrus-sasl.patch
+	"${FILESDIR}"/${PN}-unbundle-double-conversion.patch
+	"${FILESDIR}"/${PN}-unbundle-isa-l.patch
+	"${FILESDIR}"/${PN}-unbundle-jwt-cpp.patch
+	"${FILESDIR}"/${PN}-unbundle-krb5.patch
+	"${FILESDIR}"/${PN}-unbundle-libarchive.patch
+	"${FILESDIR}"/${PN}-unbundle-libcpuid.patch
+	"${FILESDIR}"/${PN}-unbundle-libuv.patch
+	"${FILESDIR}"/${PN}-unbundle-libxml2.patch
+	"${FILESDIR}"/${PN}-unbundle-lz4.patch
+	"${FILESDIR}"/${PN}-unbundle-magic_enum.patch
+	"${FILESDIR}"/${PN}-unbundle-nlohmann-json.patch
+	"${FILESDIR}"/${PN}-unbundle-numactl.patch
+	"${FILESDIR}"/${PN}-unbundle-openldap.patch
+	"${FILESDIR}"/${PN}-unbundle-pocketfft.patch
+	"${FILESDIR}"/${PN}-unbundle-postgres.patch
+	"${FILESDIR}"/${PN}-unbundle-rapidjson.patch
+	"${FILESDIR}"/${PN}-unbundle-simdjson.patch
+	"${FILESDIR}"/${PN}-unbundle-simdutf.patch
+	"${FILESDIR}"/${PN}-unbundle-sparsehash-c11.patch
+	"${FILESDIR}"/${PN}-unbundle-sqlite-amalgamation.patch
+	"${FILESDIR}"/${PN}-unbundle-vectorscan.patch
+	"${FILESDIR}"/${PN}-unbundle-xz.patch
+	"${FILESDIR}"/${PN}-unbundle-zlib-ng.patch
+	"${FILESDIR}"/${PN}-unbundle-zstd.patch
+)
 
 src_prepare() {
 	local f=contrib/liburing-cmake/CMakeLists.txt
@@ -203,18 +264,18 @@ src_unpack() {
 }
 
 src_configure() {
-	local llvm_bin="$(get_llvm_prefix -b)/bin"
-	export CC="${llvm_bin}/clang" CXX="${llvm_bin}/clang++"
+	llvm_prepend_path -b "${LLVM_SLOT}"
+	if ! tc-is-clang; then
+		local -x CC=${CHOST}-clang-${LLVM_SLOT}
+		local -x CXX=${CHOST}-clang++-${LLVM_SLOT}
+	fi
 	unset CFLAGS CXXFLAGS LDFLAGS
-
-	local compiler_cache=disabled
-	has ccache ${FEATURES} && compiler_cache=ccache
 
 	local mycmakeargs=(
 		-DBUILD_SHARED_LIBS=OFF
 		-DWERROR=OFF
 		-DENABLE_RUST=OFF
-		-DCOMPILER_CACHE=${compiler_cache}
+		-DCOMPILER_CACHE=disabled
 		-DENABLE_TESTS=OFF
 	)
 	cmake_src_configure
@@ -223,18 +284,15 @@ src_configure() {
 src_install() {
 	cmake_src_install
 
-	newinitd "${FILESDIR}"/clickhouse.initd-r1 clickhouse
-	newconfd "${FILESDIR}"/clickhouse.confd-r1 clickhouse
-	systemd_newunit "${FILESDIR}"/clickhouse.service-r1 clickhouse.service
-	newtmpfiles "${FILESDIR}"/clickhouse.tmpfiles-r1 clickhouse.conf
-
-	sed -i 's|/var/log/clickhouse-server|/var/log/clickhouse|g' \
-		"${ED}"/etc/clickhouse-server/config.xml || die
+	newinitd "${FILESDIR}"/clickhouse-server-v1.initd clickhouse-server
+	newconfd "${FILESDIR}"/clickhouse-server-v1.confd clickhouse-server
+	systemd_newunit "${FILESDIR}"/clickhouse-server-v1.service clickhouse-server.service
+	newtmpfiles "${FILESDIR}"/clickhouse-server-v1.tmpfiles clickhouse-server.conf
 
 	diropts -m0750 -o clickhouse -g clickhouse
-	keepdir /var/lib/clickhouse /var/log/clickhouse
+	keepdir /var/lib/clickhouse /var/log/clickhouse-server
 }
 
 pkg_postinst() {
-	tmpfiles_process clickhouse.conf
+	tmpfiles_process clickhouse-server.conf
 }

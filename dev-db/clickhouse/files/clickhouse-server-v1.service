@@ -8,7 +8,7 @@ Wants=network-online.target
 Type=simple
 User=clickhouse
 Group=clickhouse
-RuntimeDirectory=clickhouse
+RuntimeDirectory=clickhouse-server
 RuntimeDirectoryMode=0750
 ExecStart=/usr/bin/clickhouse server --config-file=/etc/clickhouse-server/config.xml
 Restart=on-failure
