@@ -69,7 +69,7 @@ check_distribution_components() {
 					MLIR)
 						;;
 					# installed test libraries
-					MLIRTestAnalysis|MLIRTestDialect|MLIRTestIR)
+					MLIRTestAliasAnalysis|MLIRTestAnalysis|MLIRTestDialect|MLIRTestIR)
 						;;
 					MLIROpenACCTestPasses)
 						;;
@@ -100,9 +100,10 @@ check_distribution_components() {
 		done
 
 		if [[ ${#add[@]} -gt 0 || ${#remove[@]} -gt 0 ]]; then
-			eqawarn "get_distribution_components() is outdated!"
-			eqawarn "   Add: ${add[*]}"
-			eqawarn "Remove: ${remove[*]}"
+			eerror "get_distribution_components() is outdated!"
+			eerror "   Add: ${add[*]}"
+			eerror "Remove: ${remove[*]}"
+			die "Update get_distribution_components()!"
 		fi
 		cd - >/dev/null || die
 	fi
@@ -129,6 +130,7 @@ get_distribution_components() {
 
 		# test libraries required by flang
 		MLIROpenACCTestPasses
+		MLIRTestAliasAnalysis
 		MLIRTestAnalysis
 		MLIRTestDialect
 		MLIRTestIR
@@ -137,6 +139,7 @@ get_distribution_components() {
 	if multilib_is_native_abi; then
 		out+=(
 			# tools
+			mlir-irdl-to-cpp
 			mlir-linalg-ods-yaml-gen
 			mlir-lsp-server
 			mlir-opt
@@ -146,6 +149,7 @@ get_distribution_components() {
 			mlir-reduce
 			mlir-rewrite
 			mlir-runner
+			mlir-src-sharder
 			mlir-tblgen
 			mlir-translate
 			tblgen-lsp-server
