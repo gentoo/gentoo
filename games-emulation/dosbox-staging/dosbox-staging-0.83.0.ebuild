@@ -35,6 +35,7 @@ RDEPEND="debug? ( sys-libs/ncurses:0= )
 	media-libs/libpng:0=
 	media-libs/libsdl2[alsa,joystick,opengl?,sound,video,X]
 	media-libs/opusfile
+	media-libs/sdl2-image
 	media-libs/speexdsp
 	media-sound/fluid-soundfont
 	media-sound/fluidsynth
@@ -45,6 +46,7 @@ DEPEND="${RDEPEND}"
 BDEPEND="test? ( dev-cpp/gtest )
 	sc55? ( virtual/pkgconfig )"
 
+PATCHES=( "${FILESDIR}"/${P}-optional_mt32.patch )
 DOCS=( README.md docs/AUTHORS )
 
 src_prepare() {
