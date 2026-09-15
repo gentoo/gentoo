@@ -15,7 +15,7 @@ else
 	SRC_URI="https://github.com/coin3d/${PN,,}/releases/download/v${PV}/${P/${PN}/${PN,,}}-src.tar.gz"
 	S="${WORKDIR}/${PN,,}"
 
-	KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ppc ppc64 ~sparc ~x86"
+	KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ppc ppc64 ~sparc x86"
 fi
 
 LICENSE="BSD-1"
