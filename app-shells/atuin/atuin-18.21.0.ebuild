@@ -3,7 +3,7 @@
 
 EAPI=8
 
-RUST_MIN_VER="1.94.0"
+RUST_MIN_VER="1.98.0"
 
 inherit cargo greadme shell-completion systemd
 
@@ -11,7 +11,6 @@ DESCRIPTION="Shell history manager supporting encrypted synchronisation"
 HOMEPAGE="https://atuin.sh https://github.com/atuinsh/atuin"
 SRC_URI="https://github.com/atuinsh/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 SRC_URI+=" https://github.com/gentoo-crate-dist/atuin/releases/download/v${PV}/${P}-crates.tar.xz"
-SRC_URI+=" ${CARGO_CRATE_URIS}"
 
 LICENSE="MIT"
 # Dependent crate licenses
@@ -22,33 +21,47 @@ LICENSE+="
 "
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~riscv"
-IUSE="+client +daemon server system-sqlite test +sync"
+IUSE="ai +client +daemon server system-sqlite test +sync"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="
 	|| ( client server )
+	ai? ( client )
 	sync? ( client )
 	test? ( client server sync )
 "
-DEPEND="system-sqlite? ( dev-db/sqlite:3 )"
-RDEPEND="${DEPEND}
+DEPEND="
+	app-arch/zstd
+	system-sqlite? ( dev-db/sqlite:3 )
+	dev-libs/openssl:=
+"
+RDEPEND="
+	${DEPEND}
 	server? ( acct-user/atuin )
 "
-BDEPEND="test? ( dev-db/postgresql )"
+BDEPEND="
+	test? ( dev-db/postgresql )
+	virtual/pkgconfig
+"
 
-QA_FLAGS_IGNORED="usr/bin/${PN}"
+QA_FLAGS_IGNORED="usr/bin/${PN}*"
 
 GREADME_DISABLE_AUTOFORMAT=1
 
 DOCS=( CONTRIBUTING.md CONTRIBUTORS README.md )
 
 src_configure() {
+	export OPENSSL_NO_VENDOR=1
+	export ZSTD_SYS_USE_PKG_CONFIG=1
 	# Using system-sqlite has a negative performance impact
 	# see https://bugs.gentoo.org/959120
 	use system-sqlite && export LIBSQLITE3_SYS_USE_PKG_CONFIG=1
 	local myfeatures=(
 		$(usev client)
-		$(usev daemon)
 		$(usev sync)
+		"clipboard"
+		$(usev daemon)
+		$(usev ai)
+		"pty-proxy"
 	)
 	cargo_src_configure --no-default-features
 }
