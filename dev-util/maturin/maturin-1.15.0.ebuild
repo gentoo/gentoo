@@ -76,7 +76,6 @@ src_prepare() {
 		git config --global user.name "Larry the Cow" || die
 		git add . || die
 		git commit -qm init || die
-
 	fi
 }
 
@@ -134,9 +133,10 @@ python_test() {
 		develop::develop_uv_cases::case_1_hello_world
 		develop::develop_uv_cases::case_2_pyo3_ffi_pure
 		develop::develop_uv_cases::case_3_pyo3_pure_with_dependency_group
-		# compliance tests using zig (if present) need old libc (bug #946967)
+		# compliance tests that require a old glibc (bug #946967,#982570)
 		integration::integration_cases::case_07_cffi_mixed_py_subdir
 		integration::integration_cases::case_16_pyo3_stub_generation_zig
+		integration::integration_cases::case_16_pyo3_stub_generation_pure_zig
 		# avoid need for wasm over a single hello world test
 		integration::integration_wasm_hello_world
 		# these currently attempt to install tomli regardless of python version
