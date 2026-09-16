@@ -36,12 +36,6 @@
 
 #--- END OF EXAMPLES ---
 
-# Sam James <sam@gentoo.org> (2026-09-16)
-# Incompatible with Perl 5.44 and always lags new Perl releases by a
-# substantial delay (bug #909570, bug #966545).
-# Removal on 2026-10-16.  Bug #981139.
-sci-mathematics/polymake
-
 # Lukas Schmelting <lschmelting@posteo.com> (2026-09-06)
 # Most revdeps still need gexiv2-0.16 compatibility fixes
 # See: https://bugs.gentoo.org/982084
