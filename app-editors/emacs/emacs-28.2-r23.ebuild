@@ -32,7 +32,7 @@ else
 		SRC_URI="https://alpha.gnu.org/gnu/emacs/pretest/${PN}-${PV/_/-}.tar.xz"
 	fi
 	# Patchset from proj/emacs-patches.git
-	SRC_URI+=" https://distfiles.gentoo.org/pub/proj/emacs/${P}-patches-14.tar.xz"
+	SRC_URI+=" https://distfiles.gentoo.org/pub/proj/emacs/${P}-patches-15.tar.xz"
 	PATCHES=("${WORKDIR}/patch")
 	SLOT="${PV%%.*}"
 	[[ ${PV} == *.*.* ]] && SLOT+="-vcs"
@@ -415,9 +415,6 @@ src_test() {
 		# url-tramp-test-convert-tramp-to-url
 		%lisp/net/tramp-tests.el
 		%lisp/url/url-tramp-tests.el
-
-		# Reason: tests not backported #982533
-		%lisp/progmodes/flymake-tests.el
 	)
 	use elibc_musl && exclude_tests+=(
 			# Reason: newlocale(3) lenient locale validation #906012
