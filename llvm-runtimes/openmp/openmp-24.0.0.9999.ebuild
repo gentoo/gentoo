@@ -68,8 +68,16 @@ LLVM_COMPONENTS=(
 llvm.org_set_globals
 
 MULTILIB_WRAPPED_HEADERS=(
-	/usr/include/offload/OffloadPrint.hpp
 	/usr/include/offload/OffloadAPI.h
+	/usr/include/offload/OffloadPrint.hpp
+	/usr/include/offload/cuda/cuda_runtime.h
+	/usr/include/offload/hip/hip_runtime.h
+	/usr/include/offload/kernel/DefineLanguageNames.inc
+	/usr/include/offload/kernel/LanguageErrors.h
+	/usr/include/offload/kernel/LanguageLaunch.h
+	/usr/include/offload/kernel/LanguageRuntime.h
+	/usr/include/offload/kernel/Types.h
+	/usr/include/offload/kernel/UndefineLanguageNames.inc
 )
 
 pkg_pretend() {
