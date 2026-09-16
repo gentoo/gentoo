@@ -5,7 +5,7 @@ EAPI=8
 
 SUBSLOT="18"
 JAVA_PKG_OPT_USE="jdbc"
-MARIADB_GENTOO_PATCH_VERSION="11.8.9-1"
+MARIADB_GENTOO_PATCH_VERSION="12.3.3-0"
 
 inherit systemd flag-o-matic prefix toolchain-funcs \
 	multiprocessing java-pkg-opt-2 cmake pam
@@ -277,6 +277,11 @@ src_prepare() {
 	sed -i -e 's~ \$basedir/lib/\*/mariadb19/plugin~~' \
 		"${S}"/scripts/mysql_install_db.sh || die
 
+	# Apply duckdb patch and remove git apply call
+	eapply -d storage/duckdb/third_parties/duckdb -- storage/duckdb/patches/*.diff
+	sed -i -e 's/PATCH_COMMAND.*/PATCH_COMMAND echo/g' \
+		storage/duckdb/cmake/duckdb.cmake || die
+
 	cmake_src_prepare
 	java-pkg-opt-2_src_prepare
 }
@@ -353,6 +358,7 @@ src_configure() {
 		-DCLIENT_PLUGIN_CLIENT_ED25519=$(usex test DYNAMIC OFF)
 		-DCLIENT_PLUGIN_DIALOG=$(usex test DYNAMIC OFF)
 		-DCLIENT_PLUGIN_MYSQL_CLEAR_PASSWORD=STATIC
+		-DCLIENT_PLUGIN_PARSEC=OFF
 		-DCLIENT_PLUGIN_ZSTD=OFF
 	)
 	if use test ; then
@@ -576,7 +582,6 @@ src_test() {
 		"main.gis;MDEV-25095;Known rounding error with latest AMD processors"
 
 		# Fails in network-sandbox which contains only "lo" interface
-		"main.func_json;MDEV-38057;Fails in network-sandbox"
 		"main.mysql_client_test;0;Fails in network-sandbox"
 		"main.mysql_client_test_comp;0;Fails in network-sandbox"
 
