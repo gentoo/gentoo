@@ -205,29 +205,8 @@ multilib_src_compile() {
 }
 
 multilib_src_test() {
-	local known_xfail=()
-
-	case ${ABI} in
-		arm|ppc|x86)
-			known_xfail+=(
-				# MLIR is full of 64-bit assumptions, sigh
-				# https://github.com/llvm/llvm-project/issues/124541
-				Dialect/Bufferization/Transforms/one-shot-bufferize-pass-statistics.mlir
-				Dialect/LLVMIR/sroa-statistics.mlir
-				Dialect/Linalg/vectorize-tensor-extract.mlir
-				Dialect/MemRef/mem2reg-statistics.mlir
-				Dialect/Tensor/fold-tensor-subset-ops.mlir
-				Dialect/Tensor/tracking-listener.mlir
-				Pass/pipeline-stats-nested.mlir
-				Pass/pipeline-stats.mlir
-			)
-			;;
-	esac
-
 	# respect TMPDIR!
 	local -x LIT_PRESERVES_TMP=1
-	local -x LIT_XFAIL="${known_xfail[*]}"
-	LIT_XFAIL=${LIT_XFAIL// /;}
 	cmake_build check-mlir
 }
 
