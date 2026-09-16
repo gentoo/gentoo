@@ -45,8 +45,14 @@ src_configure() {
 	strip-unsupported-flags
 
 	local mycmakeargs=(
+		# cmake.eclass does not set if it we don't inherit fortran-2
+		# and upstream code relies on it being set before Fortran logic
+		# kicks in and reds envvars
+		-DCMAKE_Fortran_COMPILER="${FC}"
 		# we may not have a runtime yet
 		-DCMAKE_Fortran_COMPILER_WORKS=TRUE
+		# tests require modules now, and we probably want them anyway
+		-DRUNTIMES_FORTRAN_MODULES=ON
 
 		-DLLVM_ENABLE_RUNTIMES="flang-rt"
 		# this package forces NO_DEFAULT_PATHS
