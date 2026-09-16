@@ -11,7 +11,7 @@ SRC_URI="https://downloads.xiph.org/releases/igloo/${P}.tar.gz"
 
 LICENSE="LGPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~ppc64 x86"
+KEYWORDS="amd64 ~arm64 ~ppc ~ppc64 x86"
 
 RDEPEND="app-crypt/rhash:="
 DEPEND="${RDEPEND}"
