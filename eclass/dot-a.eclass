@@ -7,7 +7,7 @@
 # @AUTHOR:
 # Sam James <sam@gentoo.org>
 # Eli Schwartz <eschwartz@gentoo.org>
-# @SUPPORTED_EAPIS: 8
+# @SUPPORTED_EAPIS: 8 9
 # @BLURB: Functions to handle stripping LTO bytecode out of static archives.
 # @DESCRIPTION:
 # This eclass provides functions to strip LTO bytecode out of static archives
@@ -40,13 +40,14 @@
 #     default
 #     strip-lto-bytecode
 # }
-case ${EAPI} in
-	8) ;;
-	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
-esac
 
 if [[ -z ${_DOT_A_ECLASS} ]] ; then
 _DOT_A_ECLASS=1
+
+case ${EAPI} in
+	8|9) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
 
 inherit flag-o-matic toolchain-funcs
 
