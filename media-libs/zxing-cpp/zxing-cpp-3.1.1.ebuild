@@ -19,7 +19,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="Apache-2.0"
 SLOT="0/4" # ZXING_SONAME in CMakeLists.txt
-KEYWORDS="~amd64 ~arm ~riscv ~x86"
+KEYWORDS="~amd64 ~arm ~ppc64 ~riscv ~x86"
 
 IUSE="test tools"
 RESTRICT="!test? ( test )"
