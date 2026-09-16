@@ -36,6 +36,9 @@ DEPEND="
 	test? ( sci-libs/gdal[geos,jpeg(+),png,sqlite] )
 "
 
+# avoid false positive warning on deprecated CMake version in unused example files
+CMAKE_QA_COMPAT_SKIP=1
+
 src_configure() {
 	local mycmakeargs=(
 		-DBUILD_PLUGIN_PGPOINTCLOUD="$(usex postgres)"
