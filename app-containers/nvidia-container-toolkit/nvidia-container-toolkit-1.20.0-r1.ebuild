@@ -1,11 +1,11 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=9
+EAPI=8
 
 EGO_PN="github.com/NVIDIA/${PN}"
 
-inherit go-module
+inherit go-module systemd
 
 DESCRIPTION="NVIDIA container runtime toolkit"
 HOMEPAGE="https://github.com/NVIDIA/nvidia-container-toolkit"
@@ -39,6 +39,12 @@ PATCHES=(
 	"${FILESDIR}/${PN}-1.19.0-no-prestrip.patch"
 )
 
+src_prepare() {
+	default
+	# grep lives in /bin on split-usr
+	sed -i 's|/usr/bin/grep|grep|g' deployments/systemd/nvidia-cdi-refresh.service || die
+}
+
 src_compile() {
 	emake binaries
 }
@@ -52,6 +58,10 @@ src_install() {
 		nvidia-ctk
 	insinto "/etc/nvidia-container-runtime"
 	doins "${FILESDIR}/config.toml"
+
+	systemd_dounit deployments/systemd/nvidia-cdi-refresh.{path,service}
+	insinto "/etc/nvidia-container-toolkit"
+	doins deployments/systemd/nvidia-cdi-refresh.env
 }
 
 pkg_postinst() {
@@ -62,4 +72,8 @@ pkg_postinst() {
 	elog "You may need to edit your /etc/nvidia-container-runtime/config.toml"
 	elog "file before running ${PN} for the first time."
 	elog "For details, please see the NVIDIA docker manual page."
+	elog
+	elog "To regenerate the CDI specification on boot and on driver or toolkit"
+	elog "upgrades, enable both systemd units:"
+	elog "systemctl enable nvidia-cdi-refresh.path nvidia-cdi-refresh.service"
 }
