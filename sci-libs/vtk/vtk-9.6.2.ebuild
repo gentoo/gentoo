@@ -465,7 +465,6 @@ src_configure() {
 	fi
 
 	local mycmakeargs=(
-		-DHDF5_IS_PARALLEL=1
 		-DCMAKE_DISABLE_FIND_PACKAGE_Git="yes"
 		-DVTK_GIT_DESCRIBE="v${PV}"
 		-DVTK_VERSION_FULL="${PV}"
@@ -537,6 +536,8 @@ src_configure() {
 		# -DVTK_MODULE_ENABLE_VTK_glad
 		# -DVTK_MODULE_ENABLE_VTK_h5part
 		-DVTK_MODULE_ENABLE_VTK_hdf5="YES"
+		# bug #982169
+		-DHDF5_IS_PARALLEL="$(usex mpi "YES" "NO")"
 		# -DVTK_MODULE_ENABLE_VTK_ioss
 		-DVTK_MODULE_ENABLE_VTK_jpeg="YES"
 		-DVTK_MODULE_ENABLE_VTK_jsoncpp="YES"
