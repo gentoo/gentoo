@@ -36,6 +36,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Jaco Kroon <jkroon@gentoo.org> (2026-09-16)
+# Intention was for STIR/SHAKEN, which has proven to have extremely limited
+# usability outside of NANP.  No revdeps.  Outdated.  Three different APIs and
+# unable to properly SLOT.  Removal on 2026-10-16.  Bugs #929073, #939530.
+dev-libs/libjwt
+
 # Michał Górny <mgorny@gentoo.org> (2026-09-16)
 # Used only by dev-python/jupyter-server with Python < 3.12.
 # No revdeps left.  Removal on 2026-10-16.  Bug #982608.
