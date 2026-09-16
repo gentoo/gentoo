@@ -23,6 +23,7 @@ fi
 
 LICENSE="Apache-2.0"
 SLOT="0/${PV}"
+IUSE="systemd"
 
 # Some tests may require specific environmental setups or additional hardware.
 RESTRICT="test" # Bug 831702
@@ -52,6 +53,14 @@ src_install() {
 		nvidia-ctk
 	insinto "/etc/nvidia-container-runtime"
 	doins "${FILESDIR}/config.toml"
+	if use systemd; then
+		insinto "/usr/lib/systemd/system"
+		doins deployments/systemd/nvidia-cdi-refresh.path \
+			deployments/systemd/nvidia-cdi-refresh.service
+
+		insinto "/etc/nvidia-container-toolkit"
+		doins deployments/systemd/nvidia-cdi-refresh.env
+	fi
 }
 
 pkg_postinst() {
