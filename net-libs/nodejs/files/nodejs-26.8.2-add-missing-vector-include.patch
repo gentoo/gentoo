@@ -1,0 +1,31 @@
+From f7e2c140c883051d3f6dacd4c4daa280a2b36718 Mon Sep 17 00:00:00 2001
+From: Filip Skokan <panva.ip@gmail.com>
+Date: Sun, 30 Aug 2026 18:32:42 +0200
+Subject: [PATCH] src: add missing vector include
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Signed-off-by: Filip Skokan <panva.ip@gmail.com>
+PR-URL: https://github.com/nodejs/node/pull/65622
+Fixes: https://github.com/nodejs/node/issues/65620
+Reviewed-By: Tim Perry <pimterry@gmail.com>
+Reviewed-By: Luigi Pinca <luigipinca@gmail.com>
+Reviewed-By: René <contact.9a5d6388@renegade334.me.uk>
+Reviewed-By: James M Snell <jasnell@gmail.com>
+---
+ deps/ncrypto/ncrypto.cc | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/deps/ncrypto/ncrypto.cc b/deps/ncrypto/ncrypto.cc
+index 8b707b4f89c4..59006ebf6a84 100644
+--- a/deps/ncrypto/ncrypto.cc
++++ b/deps/ncrypto/ncrypto.cc
+@@ -18,6 +18,7 @@
+ #include <climits>
+ #include <cstring>
+ #include <string_view>
++#include <vector>
+ #if OPENSSL_VERSION_MAJOR >= 3
+ #include <openssl/core_names.h>
+ #include <openssl/params.h>
