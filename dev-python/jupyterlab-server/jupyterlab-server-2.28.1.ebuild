@@ -1,0 +1,61 @@
+# Copyright 1999-2026 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=8
+
+DISTUTILS_USE_PEP517=hatchling
+PYTHON_COMPAT=( python3_{12..14} )
+
+inherit distutils-r1 pypi
+
+DESCRIPTION="Server components for JupyterLab and JupyterLab like applications"
+HOMEPAGE="
+	https://jupyter.org/
+	https://github.com/jupyterlab/jupyterlab_server/
+	https://pypi.org/project/jupyterlab-server/
+"
+
+LICENSE="BSD"
+SLOT="0"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
+
+RDEPEND="
+	>=dev-python/babel-2.10[${PYTHON_USEDEP}]
+	>=dev-python/jinja2-3.0.3[${PYTHON_USEDEP}]
+	>=dev-python/json5-0.9.0[${PYTHON_USEDEP}]
+	>=dev-python/jsonschema-4.18.0[${PYTHON_USEDEP}]
+	>=dev-python/packaging-21.3[${PYTHON_USEDEP}]
+	>=dev-python/requests-2.31[${PYTHON_USEDEP}]
+	>=dev-python/jupyter-server-1.21[${PYTHON_USEDEP}]
+	<dev-python/jupyter-server-3[${PYTHON_USEDEP}]
+"
+
+BDEPEND="
+	test? (
+		dev-python/ipykernel[${PYTHON_USEDEP}]
+		dev-python/jupyter-server[${PYTHON_USEDEP}]
+		>=dev-python/openapi-core-0.19[${PYTHON_USEDEP}]
+		>=dev-python/openapi-spec-validator-0.7[${PYTHON_USEDEP}]
+		dev-python/requests-mock[${PYTHON_USEDEP}]
+		dev-python/ruamel-yaml[${PYTHON_USEDEP}]
+		dev-python/strict-rfc3339[${PYTHON_USEDEP}]
+	)
+"
+
+EPYTEST_PLUGINS=( pytest-{jupyter,tornasync,timeout} )
+distutils_enable_tests pytest
+# TODO: package autodoc_traits
+#distutils_enable_sphinx docs/source dev-python/pydata-sphinx-theme dev-python/myst-parser
+
+PATCHES=(
+	"${FILESDIR}/${PN}-2.28.1-openapi-0.23.patch"
+)
+
+EPYTEST_IGNORE=(
+	tests/test_translation_api.py
+)
+
+EPYTEST_DESELECT=(
+	# Fails if terminal not available
+	tests/test_labapp.py::test_page_config
+)
