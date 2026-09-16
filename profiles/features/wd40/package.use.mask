@@ -215,6 +215,7 @@ dev-python/ipython nbconvert test
 dev-python/opentelemetry-sdk test
 dev-python/sphinx-autodoc-typehints test
 >=sci-libs/gdal-3.11.3 python
+>=app-admin/awscli-2 test
 
 # Michał Górny <mgorny@gentoo.org> (2024-02-01)
 # Need dev-python/trio.
