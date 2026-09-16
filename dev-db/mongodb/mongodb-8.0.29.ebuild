@@ -63,7 +63,7 @@ S="${WORKDIR}/mongo-${MY_PV}"
 LICENSE="Apache-2.0 SSPL-1"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64"
-IUSE="debug ssl"
+IUSE="debug ssl cpu_flags_x86_sse4_2 cpu_flags_x86_ssse3"
 
 # https://github.com/mongodb/mongo/wiki/Test-The-Mongodb-Server
 # resmoke needs python packages not yet present in Gentoo
@@ -160,6 +160,13 @@ src_prepare() {
 	find "${S}" -name '*.b*z*l' -exec perl -0 -p -i \
 		-e 's#load\("\@poetry//.+?"\)\s*##gm;' \
 		-e 's#dependency\(.*?\),?##gs;' {} \; || die
+
+	# bug 982138
+	# fix snappy configuration for cpu features
+	use cpu_flags_x86_sse4_2 || sed -i 's/SNAPPY_HAVE_X86_CRC32 1/SNAPPY_HAVE_X86_CRC32 0/' \
+		src/third_party/snappy/platform/build_linux_x86_64/config.h
+	use cpu_flags_x86_ssse3 || sed -i 's/SNAPPY_HAVE_SSSE3 1/SNAPPY_HAVE_SSSE3 0/' \
+		src/third_party/snappy/platform/build_linux_x86_64/config.h
 }
 
 src_configure() {
