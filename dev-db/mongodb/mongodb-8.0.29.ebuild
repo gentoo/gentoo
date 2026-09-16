@@ -163,10 +163,14 @@ src_prepare() {
 
 	# bug 982138
 	# fix snappy configuration for cpu features
-	use cpu_flags_x86_sse4_2 || sed -i 's/SNAPPY_HAVE_X86_CRC32 1/SNAPPY_HAVE_X86_CRC32 0/' \
-		src/third_party/snappy/platform/build_linux_x86_64/config.h
-	use cpu_flags_x86_ssse3 || sed -i 's/SNAPPY_HAVE_SSSE3 1/SNAPPY_HAVE_SSSE3 0/' \
-		src/third_party/snappy/platform/build_linux_x86_64/config.h
+	if ! use cpu_flags_x86_sse4_2; then
+		sed -i 's/SNAPPY_HAVE_X86_CRC32 1/SNAPPY_HAVE_X86_CRC32 0/' \
+			src/third_party/snappy/platform/build_linux_x86_64/config.h || die
+	fi
+	if ! use cpu_flags_x86_ssse3; then
+		sed -i 's/SNAPPY_HAVE_SSSE3 1/SNAPPY_HAVE_SSSE3 0/' \
+			src/third_party/snappy/platform/build_linux_x86_64/config.h || die
+	fi
 }
 
 src_configure() {
