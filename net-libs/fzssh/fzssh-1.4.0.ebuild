@@ -11,7 +11,7 @@ SRC_URI="https://dev.gentoo.org/~dlan/distfiles/${PN}/${P}.tar.xz"
 
 LICENSE="AGPL-3"
 SLOT="0/14" # libfzssh.so version
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
 
 DEPEND="
 	>=dev-libs/libfilezilla-0.57.0:=
