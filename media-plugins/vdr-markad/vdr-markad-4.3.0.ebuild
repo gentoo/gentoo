@@ -15,7 +15,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
 
 DEPEND="media-video/vdr:=
-	media-video/ffmpeg[lame]
+	media-video/ffmpeg:=[lame]
 	!media-video/noad"
 RDEPEND="${DEPEND}"
 
