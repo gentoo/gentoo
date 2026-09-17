@@ -84,6 +84,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-6.2.2406-link-against-jpeg.patch"
 	"${FILESDIR}/${PN}-PR202-std_map.patch"
 	"${FILESDIR}/${PN}-PR206-catch2-v3.patch"
+	"${FILESDIR}/${PN}-6.2.2604-Gentoo-specific-use-system-catch.patch"
 )
 
 pkg_setup() {
