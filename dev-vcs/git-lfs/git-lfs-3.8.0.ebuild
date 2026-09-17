@@ -4,7 +4,7 @@
 EAPI=8
 EGO_PN=github.com/git-lfs/git-lfs
 # Update the ID as it's included in each build.
-COMMIT_ID=""
+COMMIT_ID="aece9221f8c09221a14395d964806b956289bc07"
 
 inherit edo go-module shell-completion
 
@@ -23,8 +23,7 @@ fi
 
 LICENSE="Apache-2.0 BSD BSD-2 BSD-4 ISC MIT"
 SLOT="0"
-# KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
-
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
 IUSE="doc test"
 
 BDEPEND="
