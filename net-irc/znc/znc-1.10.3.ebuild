@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_{12..14} )
 inherit cmake python-single-r1 readme.gentoo-r1 systemd
 
 GTEST_VER="1.14.0"
-GTEST_URL="https://github.com/google/googletest/archive/${GTEST_VER}.tar.gz -> gtest-${GTEST_VER}.tar.gz"
+GTEST_URL="https://github.com/google/googletest/archive/v${GTEST_VER}.tar.gz -> gtest-${GTEST_VER}.tar.gz"
 DESCRIPTION="An advanced IRC Bouncer"
 
 if [[ ${PV} == *9999* ]]; then
