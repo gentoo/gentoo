@@ -10,7 +10,7 @@ CRATES="
 
 RUST_MIN_VER="1.89.0"
 
-inherit cargo shell-completion
+inherit cargo shell-completion toolchain-funcs
 
 DESCRIPTION="Jujutsu - an experimental version control system"
 HOMEPAGE="https://www.jj-vcs.dev/"
@@ -47,10 +47,12 @@ src_install() {
 
 	einstalldocs
 
-	PATH="${ED}/usr/bin:${PATH}" COMPLETE=zsh jj | sed -e 's/_clap_dynamic_completer_jj/_jj/' > jj-zsh.comp
-	PATH="${ED}/usr/bin:${PATH}" COMPLETE=bash jj > jj-bash.comp
-	newzshcomp jj-zsh.comp _jj
-	newbashcomp jj-bash.comp jj
+	if ! tc-is-cross-compiler ; then
+		PATH="${ED}/usr/bin:${PATH}" COMPLETE=zsh jj | sed -e 's/_clap_dynamic_completer_jj/_jj/' > jj-zsh.comp
+		PATH="${ED}/usr/bin:${PATH}" COMPLETE=bash jj > jj-bash.comp
+		newzshcomp jj-zsh.comp _jj
+		newbashcomp jj-bash.comp jj
+	fi
 }
 
 src_test() {
