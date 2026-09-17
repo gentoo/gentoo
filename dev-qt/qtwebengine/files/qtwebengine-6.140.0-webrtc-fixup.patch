@@ -1,0 +1,30 @@
+Current chromium has removed CrossThreadCopier bits removing the need
+to setup templates, and this file already has headers for
+PostCrossThreadTask() and CrossThreadBindOnce(). Then the backport[1]
+for CVE-2026-79187 took chromium's [2] as-is (minus tests) which
+doesn't build with the older 140.x branch.
+
+Just a quick fix for now, unclear if correct (may(?) be possible to use
+CrossThreadCopierPassthrough but a Copy is probably safer if unsure).
+
+[1] https://codereview.qt-project.org/c/qt/qtwebengine-chromium/+/766614
+[2] https://chromium-review.googlesource.com/c/chromium/src/+/8028963
+--- a/src/3rdparty/chromium/third_party/blink/renderer/modules/peerconnection/webrtc_media_stream_track_adapter_map.cc
++++ b/src/3rdparty/chromium/third_party/blink/renderer/modules/peerconnection/webrtc_media_stream_track_adapter_map.cc
+@@ -11,7 +11,16 @@
+ #include "base/task/single_thread_task_runner.h"
+ #include "third_party/blink/renderer/modules/peerconnection/peer_connection_dependency_factory.h"
++#include "third_party/blink/renderer/platform/scheduler/public/post_cross_thread_task.h"
++#include "third_party/blink/renderer/platform/wtf/cross_thread_functional.h"
+ 
+ namespace blink {
+ 
++template <typename T>
++struct CrossThreadCopier<scoped_refptr<T>> {
++    STATIC_ONLY(CrossThreadCopier);
++    using Type = scoped_refptr<T>;
++    static Type Copy(Type pointer) { return pointer; }
++};
++
+ WebRtcMediaStreamTrackAdapterMap::AdapterRef::AdapterRef(
+     scoped_refptr<WebRtcMediaStreamTrackAdapterMap> map,
