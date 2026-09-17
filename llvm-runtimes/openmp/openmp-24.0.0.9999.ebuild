@@ -113,6 +113,8 @@ multilib_src_configure() {
 	if use fortran; then
 		local -x FC=flang-${LLVM_MAJOR} F77=flang-${LLVM_MAJOR}
 		strip-unsupported-flags
+	else
+		local -x FC= F77=
 	fi
 
 	# LTO causes issues in other packages building, #870127
@@ -186,9 +188,8 @@ multilib_src_configure() {
 		-DLLVM_LIT_ARGS="$(get_lit_flags)"
 		-DOPENMP_TEST_C_COMPILER="$(type -P "${CHOST}-clang-${LLVM_MAJOR}")"
 		-DOPENMP_TEST_CXX_COMPILER="$(type -P "${CHOST}-clang++-${LLVM_MAJOR}")"
-		# disable Fortran tests for now
-		# (TODO: enable where we have flang keyworded)
-		-DOPENMP_TEST_Fortran_COMPILER=
+		# may be set to empty above
+		-DOPENMP_TEST_Fortran_COMPILER="${FC}"
 	)
 	cmake_src_configure
 }
@@ -199,6 +200,13 @@ multilib_src_test() {
 	local targets=( check-openmp )
 	if multilib_is_native_abi && use offload; then
 		targets+=( check-offload check-offload-unit )
+	fi
+
+	if use fortran; then
+		# hack header search around by copying the modules to a directory
+		# that is already given via -I
+		cp "${BUILD_DIR}/$(get_libdir)/clang"/*/finclude/flang/*/*.mod \
+			"${WORKDIR}/offload/test/" || die
 	fi
 
 	cmake_build "${targets[@]}"
