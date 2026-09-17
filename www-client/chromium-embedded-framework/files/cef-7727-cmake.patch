@@ -1,0 +1,30 @@
+--- cef/cmake/cef_variables.cmake.in	2026-05-07 14:25:27.060708755 +0200
++++ cef/cmake/cef_variables.cmake.in.new	2026-05-07 19:52:29.327879685 +0200
+@@ -219,10 +219,10 @@
+     )
+ 
+   # CEF directory paths.
+-  set(CEF_RESOURCE_DIR        "${_CEF_ROOT}/Resources")
+-  set(CEF_BINARY_DIR          "${_CEF_ROOT}/${CMAKE_BUILD_TYPE}")
++  set(CEF_RESOURCE_DIR        "${_CEF_ROOT}")
++  set(CEF_BINARY_DIR          "${_CEF_ROOT}")
+   set(CEF_BINARY_DIR_DEBUG    "${_CEF_ROOT}/Debug")
+-  set(CEF_BINARY_DIR_RELEASE  "${_CEF_ROOT}/Release")
++  set(CEF_BINARY_DIR_RELEASE  "${_CEF_ROOT}")
+ 
+   # CEF library paths.
+   set(CEF_LIB_DEBUG   "${CEF_BINARY_DIR_DEBUG}/libcef.so")
+@@ -568,10 +568,10 @@
+     )
+ 
+   # CEF directory paths.
+-  set(CEF_RESOURCE_DIR        "${_CEF_ROOT}/Resources")
+-  set(CEF_BINARY_DIR          "${_CEF_ROOT}/$<CONFIGURATION>")
++  set(CEF_RESOURCE_DIR        "${_CEF_ROOT}")
++  set(CEF_BINARY_DIR          "${_CEF_ROOT}")
+   set(CEF_BINARY_DIR_DEBUG    "${_CEF_ROOT}/Debug")
+-  set(CEF_BINARY_DIR_RELEASE  "${_CEF_ROOT}/Release")
++  set(CEF_BINARY_DIR_RELEASE  "${_CEF_ROOT}")
+ 
+   # CEF library paths.
+   set(CEF_LIB_DEBUG   "${CEF_BINARY_DIR_DEBUG}/libcef.lib")
