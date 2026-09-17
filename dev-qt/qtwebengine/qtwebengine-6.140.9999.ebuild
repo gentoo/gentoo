@@ -115,7 +115,6 @@ PATCHES+=(
 	"${FILESDIR}"/${PN}-6.11.1-musl-missing-includes.patch
 	"${FILESDIR}"/${PN}-6.11.1-musl-arm64-mte.patch
 	"${FILESDIR}"/${PN}-6.11.2-libcxx23.patch
-	"${FILESDIR}"/${PN}-6.140.0-webrtc-fixup.patch
 )
 
 python_check_deps() {
