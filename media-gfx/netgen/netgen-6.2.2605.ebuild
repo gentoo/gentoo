@@ -43,7 +43,6 @@ DEPEND="
 		media-libs/libglvnd[X]
 		x11-libs/libX11
 		x11-libs/libXmu
-		x11-libs/libxcb:=
 	)
 	jpeg? ( media-libs/libjpeg-turbo:0= )
 	mpi? (
