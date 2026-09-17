@@ -28,7 +28,7 @@ else
 		verify-sig? ( https://codeberg.org/eduVPN/eduvpn-common/releases/download/${PV}/${P}.tar.xz.asc )
 		https://www-user.tu-chemnitz.de/~hamari/eduvpn/${P}-deps.tar.xz
 	"
-	KEYWORDS="amd64 ~x86"
+	KEYWORDS="~amd64 ~x86"
 fi
 
 LICENSE="GPL-3+"
@@ -38,6 +38,9 @@ RESTRICT="test"
 
 RDEPEND="
 	openvpn? ( net-vpn/openvpn )
+"
+BDEPEND="
+	>=dev-lang/go-1.25.0
 "
 
 if [[ ${PV} != *9999* ]] ; then
