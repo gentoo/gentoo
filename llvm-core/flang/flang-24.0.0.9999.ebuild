@@ -29,6 +29,7 @@ BDEPEND="
 	clang? ( llvm-core/clang )
 	test? (
 		$(python_gen_any_dep 'dev-python/lit[${PYTHON_USEDEP}]')
+		>=llvm-runtimes/flang-rt-${PV}:${LLVM_MAJOR}
 	)
 "
 
@@ -51,6 +52,14 @@ pkg_pretend() {
 
 pkg_setup() {
 	use test && python-any-r1_pkg_setup
+}
+
+src_prepare() {
+	# create extra parent dir for relative CLANG_RESOURCE_DIR access
+	mkdir -p x/y || die
+	BUILD_DIR=${WORKDIR}/x/y/build
+
+	llvm.org_src_prepare
 }
 
 src_configure() {
@@ -97,5 +106,11 @@ src_configure() {
 src_test() {
 	# respect TMPDIR!
 	local -x LIT_PRESERVES_TMP=1
+
+	# Since the resource directory is relative to install dir, we need
+	# to link it over.
+	mkdir -p "${WORKDIR}/lib/clang" || die
+	ln -s "${ESYSROOT}/lib/clang/${LLVM_MAJOR}" "${WORKDIR}/lib/clang/${LLVM_MAJOR}" || die
+
 	cmake_build check-flang
 }
