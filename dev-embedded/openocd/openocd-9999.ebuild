@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -30,7 +30,7 @@ RESTRICT="strip" # includes non-native binaries
 
 RDEPEND="
 	acct-group/plugdev
-	>=dev-lang/jimtcl-0.81:=
+	>=dev-lang/jimtcl-0.82:=
 	gpiod? ( dev-libs/libgpiod:0/2 )
 	capstone? ( dev-libs/capstone )
 	cmsis-dap? ( dev-libs/hidapi )
