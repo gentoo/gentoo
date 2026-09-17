@@ -6,9 +6,7 @@ EAPI=8
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
 PYPI_VERIFY_REPO=https://github.com/pycurl/pycurl
-# broken assertions with py3.12
-# https://github.com/pycurl/pycurl/issues/1071
-PYTHON_COMPAT=( python3_{13..15} )
+PYTHON_COMPAT=( python3_{12..15} )
 
 inherit distutils-r1 pypi toolchain-funcs
 
@@ -53,13 +51,19 @@ BDEPEND="
 
 EPYTEST_PLUGINS=( flaky )
 : ${EPYTEST_TIMEOUT:=120}
+EPYTEST_XDIST=1
 distutils_enable_tests pytest
 
 python_prepare_all() {
-	# docs installed into the wrong directory
-	sed -e "/setup_args\['data_files'\] = /d" -i setup.py || die
+	local PATCHES=(
+		# https://github.com/pycurl/pycurl/pull/1072
+		"${FILESDIR}/${PN}-7.47.0-except.patch"
+	)
 
 	distutils-r1_python_prepare_all
+
+	# docs installed into the wrong directory
+	sed -e "/setup_args\['data_files'\] = /d" -i setup.py || die
 }
 
 python_configure_all() {

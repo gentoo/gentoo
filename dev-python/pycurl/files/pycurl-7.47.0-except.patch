@@ -1,0 +1,51 @@
+From 1d028bbb1a1811e976efa8262d713485b70dc437 Mon Sep 17 00:00:00 2001
+From: Scott Talbert <swt@techie.net>
+Date: Thu, 17 Sep 2026 11:18:02 -0400
+Subject: [PATCH 2/3] Preserve pending exception across CurlMulti dealloc
+ cleanup
+
+do_multi_dealloc() can run while an exception is already propagating,
+e.g. when a CurlMulti subclass's __init__ rejects its arguments: the
+freshly constructed object's refcount drops to zero and it is torn
+down immediately, before the TypeError finishes unwinding. The
+cleanup in util_multi_detach_easies() calls back into Python (via
+PySequence_List() on easy_object_refs, and close() on any attached
+easy handles), which must not run with that exception still set.
+
+On a Python interpreter built with assertions enabled, this trips
+_Py_CheckSlotResult and aborts the process (fixes #1071). Save and
+restore the pending exception around the dealloc cleanup, matching
+the existing pattern in easycb.c.
+---
+ src/multi.c | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
+
+diff --git a/src/multi.c b/src/multi.c
+index 170bfa098..ae4564116 100644
+--- a/src/multi.c
++++ b/src/multi.c
+@@ -216,6 +216,15 @@ util_multi_detach_easies(CurlMultiObject *self, int close_handles, int swallow_e
+ PYCURL_INTERNAL void
+ do_multi_dealloc(CurlMultiObject *self)
+ {
++    /* tp_dealloc can run while an exception is propagating (e.g. when
++     * __init__ of a subclass rejects our arguments and the freshly
++     * constructed object is immediately discarded). The cleanup below
++     * calls back into Python (iterating easy_object_refs, calling the
++     * easy objects' close() method), which must not observe that
++     * exception, so stash it for the duration. */
++    PyObject *exc_type, *exc_val, *exc_tb;
++    PyErr_Fetch(&exc_type, &exc_val, &exc_tb);
++
+     PyObject_GC_UnTrack(self);
+     Py_TRASHCAN_BEGIN(self, do_multi_dealloc);
+ 
+@@ -235,6 +244,8 @@ do_multi_dealloc(CurlMultiObject *self)
+ 
+     CurlMulti_Type.tp_free(self);
+     Py_TRASHCAN_END
++
++    PyErr_Restore(exc_type, exc_val, exc_tb);
+ }
+ 
+ 
