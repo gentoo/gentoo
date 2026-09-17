@@ -1,0 +1,11 @@
+--- a/meson.build
++++ b/meson.build
+@@ -155,7 +155,7 @@
+   sysusersdir = systemd.get_variable(pkgconfig : 'sysusersdir')
+ else
+   systemdsystemunitdir = get_option('prefix') / 'lib' / 'systemd' / systemdunit
+-  sysusersdir = get_option('prefix') / 'sysusers.d'
++  sysusersdir = get_option('prefix') / 'lib' / 'sysusers.d'
+ endif
+ 
+ if not compiler.has_function('socket')
