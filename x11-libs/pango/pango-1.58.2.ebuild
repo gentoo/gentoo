@@ -49,6 +49,10 @@ BDEPEND="
 	test? ( media-fonts/cantarell )
 "
 
+PATCHES=(
+	"${FILESDIR}/${PN}-1.58.2-clang23-build-fix.patch"
+)
+
 src_prepare() {
 	default
 	xdg_environment_reset
