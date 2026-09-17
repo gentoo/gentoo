@@ -53,6 +53,9 @@ src_configure() {
 		-DLLVM_BINARY_DIR="${ESYSROOT}/usr/lib/llvm/${LLVM_MAJOR}"
 		# set correct install paths
 		-DFLANG_RT_INSTALL_RESOURCE_PATH="${EPREFIX}/usr/lib/clang/${LLVM_MAJOR}"
+		# do not install flang-rt C++ headers, they cause collisions
+		# across slots and do not seem to be used by anything
+		-DLLVM_INSTALL_TOOLCHAIN_ONLY=ON
 		-DLLVM_DEFAULT_TARGET_TRIPLE="${CHOST}"
 
 		-DFLANG_RT_INCLUDE_TESTS=$(usex test)

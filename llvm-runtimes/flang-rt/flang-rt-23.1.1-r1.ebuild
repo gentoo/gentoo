@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 inherit cmake flag-o-matic llvm.org python-any-r1
 
 DESCRIPTION="LLVM's Fortran runtime"
@@ -27,7 +27,7 @@ BDEPEND="
 "
 
 LLVM_COMPONENTS=(
-	runtimes flang-rt cmake flang llvm/{cmake,utils/llvm-lit}
+	runtimes flang-rt cmake flang libc/shared llvm/{cmake,utils}
 )
 LLVM_TEST_COMPONENTS=( third-party/unittest )
 llvm.org_set_globals
@@ -53,7 +53,10 @@ src_configure() {
 		# this package forces NO_DEFAULT_PATHS
 		-DLLVM_BINARY_DIR="${ESYSROOT}/usr/lib/llvm/${LLVM_MAJOR}"
 		# set correct install paths
-		-DFLANG_RT_INSTALL_RESOURCE_PATH="${EPREFIX}/usr/lib/clang/${LLVM_MAJOR}"
+		-DRUNTIMES_INSTALL_RESOURCE_PATH="${EPREFIX}/usr/lib/clang/${LLVM_MAJOR}"
+		# do not install flang-rt C++ headers, they cause collisions
+		# across slots and do not seem to be used by anything
+		-DLLVM_INSTALL_TOOLCHAIN_ONLY=ON
 		-DLLVM_DEFAULT_TARGET_TRIPLE="${CHOST}"
 
 		-DFLANG_RT_INCLUDE_TESTS=$(usex test)
