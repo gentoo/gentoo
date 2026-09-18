@@ -177,6 +177,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-unbundle_pocketfft.patch
 	"${FILESDIR}"/${PN}-2.13.0-xnnpack.patch
 	"${FILESDIR}"/${P}-license.patch
+	"${FILESDIR}"/${P}-cpp-httplib.patch
 )
 
 src_prepare() {
