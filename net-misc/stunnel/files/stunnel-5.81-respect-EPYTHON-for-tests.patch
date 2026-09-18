@@ -1,0 +1,12 @@
+--- a/tests/Makefile.am
++++ b/tests/Makefile.am
+@@ -14,8 +14,7 @@ fd_limits_select_test_CPPFLAGS = $(fd_limits_test_CPPFLAGS) -DTEST_SELECT
+ 
+ # try to find a supported python version (>= 3.7) that works
+ check-local: $(check_PROGRAMS)
+-	for v in $$(seq 20 -1 7); do command -v python3.$$v && break; done || ( echo "Python 3.7 or later not found" && false )
+-	for v in $$(seq 20 -1 7); do command -v python3.$$v && python3.$$v $(srcdir)/maketest.py --debug=10 --libs=$(SSLDIR)/lib64:$(SSLDIR)/lib && break; done
++	${EPYTHON} $(srcdir)/maketest.py --debug=10 --libs=$(SSLDIR)/lib64:$(SSLDIR)/lib
+ 
+ dist-hook:
+ 	rm -rf $(distdir)/__pycache__ $(distdir)/plugins/__pycache__
