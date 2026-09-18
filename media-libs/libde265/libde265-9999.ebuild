@@ -30,15 +30,8 @@ DEPEND="${RDEPEND}"
 BDEPEND="dec265? ( virtual/pkgconfig )"
 
 multilib_src_configure() {
-	local loglevels=(
-		'error'
-		$(usev debug 'info')
-		$(usev debug 'debug')
-		$(usev debug 'trace')
-	)
-
 	local mycmakeargs=(
-		-DDE265_LOG_LEVEL=$(IFS=';'; echo "${loglevels[*]}")
+		-DDE265_LOG_LEVEL=$(usex debug debug error)
 
 		-DENABLE_AVX2=$(usex cpu_flags_x86_avx2)
 		-DENABLE_AVX512=$(usex cpu_flags_x86_avx512f)
