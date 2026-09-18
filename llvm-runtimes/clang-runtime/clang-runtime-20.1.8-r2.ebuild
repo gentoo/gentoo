@@ -10,12 +10,11 @@ HOMEPAGE="https://clang.llvm.org/"
 S=${WORKDIR}
 
 LICENSE="public-domain"
-SLOT="${PV}"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~arm64-macos ~x64-macos"
+SLOT="${PV%%.*}"
+KEYWORDS="amd64 arm arm64 ~loong ~mips ppc ppc64 ~riscv ~sparc x86 ~arm64-macos ~x64-macos"
 IUSE="
-	+compiler-rt libcxx offload openmp +sanitize
+	+compiler-rt libcxx openmp +sanitize
 	default-compiler-rt default-libcxx default-lld llvm-libunwind polly
-	llvm_targets_AMDGPU llvm_targets_NVPTX llvm_targets_SPIRV
 "
 REQUIRED_USE="
 	sanitize? ( compiler-rt )
@@ -23,26 +22,13 @@ REQUIRED_USE="
 
 RDEPEND="
 	compiler-rt? (
-		>=llvm-runtimes/compiler-rt-${PV}:${SLOT}[abi_x86_32(+)?,abi_x86_64(+)?]
+		~llvm-runtimes/compiler-rt-${PV}:${SLOT}[abi_x86_32(+)?,abi_x86_64(+)?]
 		sanitize? (
-			>=llvm-runtimes/compiler-rt-sanitizers-${PV}:${SLOT}[abi_x86_32(+)?,abi_x86_64(+)?]
+			~llvm-runtimes/compiler-rt-sanitizers-${PV}:${SLOT}[abi_x86_32(+)?,abi_x86_64(+)?]
 		)
 	)
 	libcxx? ( >=llvm-runtimes/libcxx-${PV}[${MULTILIB_USEDEP}] )
-	openmp? (
-		>=llvm-runtimes/openmp-${PV}[offload?,${MULTILIB_USEDEP}]
-		offload? (
-			llvm_targets_AMDGPU? (
-				>=llvm-runtimes/openmp-${PV}[rocm(-)]
-			)
-			llvm_targets_NVPTX? (
-				>=llvm-runtimes/openmp-${PV}[cuda(-)]
-			)
-			llvm_targets_SPIRV? (
-				>=llvm-runtimes/openmp-${PV}[level-zero(-)]
-			)
-		)
-	)
+	openmp? ( >=llvm-runtimes/openmp-${PV}[${MULTILIB_USEDEP}] )
 
 	llvm-core/clang-common
 
@@ -51,7 +37,7 @@ RDEPEND="
 	~llvm-runtimes/clang-unwindlib-config-${SLOT}[default-compiler-rt(-)?,llvm-libunwind(-)?]
 	~llvm-runtimes/clang-stdlib-config-${SLOT}[default-libcxx(-)?]
 
-	polly? ( >=llvm-core/polly-${PV}:${SLOT} )
+	polly? ( ~llvm-core/polly-${PV} )
 "
 
 _doclang_cfg() {

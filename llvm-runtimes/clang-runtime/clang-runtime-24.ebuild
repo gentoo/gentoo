@@ -12,9 +12,8 @@ S=${WORKDIR}
 LICENSE="public-domain"
 SLOT="${PV}"
 IUSE="
-	+compiler-rt libcxx offload openmp +sanitize
+	+compiler-rt libcxx openmp +sanitize
 	default-compiler-rt default-libcxx default-lld llvm-libunwind polly
-	llvm_targets_AMDGPU llvm_targets_NVPTX llvm_targets_SPIRV
 "
 REQUIRED_USE="
 	sanitize? ( compiler-rt )
@@ -28,20 +27,7 @@ RDEPEND="
 		)
 	)
 	libcxx? ( >=llvm-runtimes/libcxx-${PV}[${MULTILIB_USEDEP}] )
-	openmp? (
-		>=llvm-runtimes/openmp-${PV}[offload?,${MULTILIB_USEDEP}]
-		offload? (
-			llvm_targets_AMDGPU? (
-				>=llvm-runtimes/openmp-${PV}[rocm(-)]
-			)
-			llvm_targets_NVPTX? (
-				>=llvm-runtimes/openmp-${PV}[cuda(-)]
-			)
-			llvm_targets_SPIRV? (
-				>=llvm-runtimes/openmp-${PV}[level-zero(-)]
-			)
-		)
-	)
+	openmp? ( >=llvm-runtimes/openmp-${PV}[${MULTILIB_USEDEP}] )
 
 	llvm-core/clang-common
 

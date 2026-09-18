@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,7 +13,7 @@ LICENSE="public-domain"
 SLOT="${PV%%.*}"
 KEYWORDS="amd64 arm arm64 ~loong ~mips ppc ppc64 ~riscv ~sparc x86 ~arm64-macos ~x64-macos"
 IUSE="
-	+compiler-rt libcxx offload openmp +sanitize
+	+compiler-rt libcxx openmp +sanitize
 	default-compiler-rt default-libcxx default-lld llvm-libunwind polly
 "
 REQUIRED_USE="
@@ -28,12 +28,7 @@ RDEPEND="
 		)
 	)
 	libcxx? ( >=llvm-runtimes/libcxx-${PV}[${MULTILIB_USEDEP}] )
-	openmp? (
-		>=llvm-runtimes/openmp-${PV}[${MULTILIB_USEDEP}]
-		offload? (
-			>=llvm-runtimes/offload-${PV}
-		)
-	)
+	openmp? ( >=llvm-runtimes/openmp-${PV}[${MULTILIB_USEDEP}] )
 
 	llvm-core/clang-common
 
