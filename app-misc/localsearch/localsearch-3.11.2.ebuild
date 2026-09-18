@@ -82,6 +82,10 @@ BDEPEND="
 # Introduced by: https://gitlab.gnome.org/GNOME/localsearch/-/commit/4eabf225cd26d6d84ee749661f7fa131f064a305.patch
 QA_FLAGS_IGNORED="usr/lib64/localsearch-3.0/extract-modules/libextract-dummy.so"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-3.11.2-build-fix.patch"
+)
+
 python_check_deps() {
 	python_has_version -b \
 		"dev-python/pygobject[${PYTHON_USEDEP}]" \
