@@ -11,7 +11,7 @@ SRC_URI="https://github.com/pjsip/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.t
 LICENSE="GPL-2"
 MY_SLOTVERSION="${PVR/-r/.0.}" # -r to .0., extra 0 avoids collisions.
 SLOT="0/${MY_SLOTVERSION}"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc64 x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc x86"
 
 # g729 not included due to special bcg729 handling.
 CODEC_FLAGS="g711 g722 g7221 gsm ilbc speex l16"
