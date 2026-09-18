@@ -380,6 +380,7 @@ PATCHES=(
 
 	"${FILESDIR}/${PN}-4.14.0-use-system-flatbuffers.patch"
 	"${FILESDIR}/${PN}-4.14.0-openjpeg-version.patch"
+	"${FILESDIR}/${PN}-4.14.0-clang23-build-fix.patch"
 
 	# TODO applied in src_prepare
 	# "${FILESDIR}/${PN}_contrib-4.8.1-rgbd.patch"
