@@ -120,7 +120,7 @@ multilib_src_configure() {
 	unset LEX YACC
 
 	export ac_cv_header_perfmon_pfmlib_perf_event_h=$(multilib_native_usex libpfm)
-	export ac_cv_lib_pfm_pfm_get_os_event_encoding=yes=$(multilib_native_usex libpfm)
+	export ac_cv_lib_pfm_pfm_get_os_event_encoding=$(multilib_native_usex libpfm)
 	# Only for IMA verification of RPMs
 	export ac_cv_lib_rpm_headerGet=no
 
