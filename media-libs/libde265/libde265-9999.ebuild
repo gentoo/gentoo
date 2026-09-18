@@ -18,7 +18,7 @@ fi
 
 LICENSE="LGPL-3 tools? ( MIT )"
 SLOT="0"
-IUSE="enc265 dec265 debug sdl tools"
+IUSE="dec265 debug sdl tools"
 IUSE+=" cpu_flags_x86_avx2 cpu_flags_x86_avx512f cpu_flags_x86_sse cpu_flags_arm_neon"
 
 RDEPEND="
@@ -36,7 +36,6 @@ multilib_src_configure() {
 		-DENABLE_AVX2=$(usex cpu_flags_x86_avx2)
 		-DENABLE_AVX512=$(usex cpu_flags_x86_avx512f)
 
-		-DENABLE_ENCODER=$(multilib_native_usex enc265)
 		-DENABLE_DECODER=$(multilib_native_usex dec265)
 
 		-DENABLE_SDL=$(usex sdl)
