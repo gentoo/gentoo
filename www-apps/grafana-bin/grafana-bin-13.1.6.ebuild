@@ -11,23 +11,15 @@ MY_PV=${PV/_beta/-beta}
 DESCRIPTION="Gorgeous metric viz, dashboards & editors for Graphite, InfluxDB & OpenTSDB"
 HOMEPAGE="https://grafana.org"
 
-REAL_PV="12.4.7"
-REAL_PVR="12.4.7_30647961040"
-
-BASE_A_ARM64="grafana_${REAL_PVR}_linux_arm64.tar.gz"
-BASE_A_AMD64="grafana_${REAL_PVR}_linux_amd64.tar.gz"
-BASE_URL="https://dl.grafana.com/grafana/release/${REAL_PV}"
-MY_PATCH="" # leading zero means we cannot use plain $PV
 SRC_URI="
 amd64? (
-	${BASE_URL}/${BASE_A_AMD64}
+	https://dl.grafana.com/oss/release/grafana-${PV}.linux-amd64.tar.gz -> ${P}.amd64.tar.gz
 )
 arm64? (
-	${BASE_URL}/${BASE_A_ARM64}
+	https://dl.grafana.com/oss/release/grafana-${PV}.linux-arm64.tar.gz -> ${P}.arm64.tar.gz
 )
 "
-S=${WORKDIR}/${MY_PN}-${REAL_PV}
-
+S=${WORKDIR}/${MY_PN}-${MY_PV}
 LICENSE="AGPL-3"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~arm64"
@@ -51,9 +43,12 @@ src_install() {
 	insinto /usr/share/${MY_PN}
 	doins -r public conf
 
-	dobin bin/grafana-cli
-	dobin bin/grafana
-	dobin bin/grafana-server
+	# Upstream packaging changes in v13; "cli" and "server" are commands ideally
+	exeinto /usr/share/grafana/bin
+	doexe bin/grafana
+	dobin packaging/wrappers/grafana-cli
+	dobin packaging/wrappers/grafana
+	dobin packaging/wrappers/grafana-server
 
 	newconfd "${FILESDIR}"/grafana-r1.confd grafana
 	newinitd "${FILESDIR}"/grafana.initd2 grafana
