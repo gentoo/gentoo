@@ -32,16 +32,11 @@ RDEPEND="
 "
 
 PATCHES=(
-	# https://github.com/palfrey/tagpy/pull/37
-	"${FILESDIR}"/${PN}-2025.1-fix-check-taglib.patch
+	# upstream
+	"${FILESDIR}"/${P}-fix-check-taglib.patch
+	"${FILESDIR}"/${P}-fix-setuptools-0.84.patch
+	"${FILESDIR}"/${P}-fix-taglib-2.3.2.patch
 )
 
 EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
-
-src_prepare() {
-	distutils-r1_src_prepare
-
-	# https://bugs.gentoo.org/982734
-	sed -i -e 's:"":[]:' setup.py || die
-}
