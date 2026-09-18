@@ -120,7 +120,11 @@ RDEPEND="
 	media-libs/tiff:=
 	sci-libs/hdf5:=[mpi=]
 	virtual/zlib:=
-	virtual/opengl[X]
+	all-modules? (
+		app-arch/libarchive:=
+		dev-lang/tcl:=
+		media-gfx/alembic
+	)
 	boost? ( dev-libs/boost:=[mpi?] )
 	cgns? (
 		>=sci-libs/cgnslib-4.1.1:=[hdf5,mpi=]
@@ -162,7 +166,7 @@ RDEPEND="
 		)
 	)
 	rendering? (
-		media-libs/libglvnd[X]
+		virtual/opengl[X]
 		x11-libs/gl2ps
 		x11-libs/libXcursor
 		x11-libs/libX11
@@ -170,7 +174,9 @@ RDEPEND="
 	tbb? ( dev-cpp/tbb:= )
 	tk? ( dev-lang/tk:= )
 	truetype? ( media-libs/fontconfig )
-	video_cards_nvidia? ( x11-drivers/nvidia-drivers )
+	cuda? (
+		video_cards_nvidia? ( x11-drivers/nvidia-drivers )
+	)
 	views? (
 		x11-libs/libX11
 	)
@@ -536,8 +542,6 @@ src_configure() {
 		# -DVTK_MODULE_ENABLE_VTK_glad
 		# -DVTK_MODULE_ENABLE_VTK_h5part
 		-DVTK_MODULE_ENABLE_VTK_hdf5="YES"
-		# bug #982169
-		-DHDF5_IS_PARALLEL="$(usex mpi "YES" "NO")"
 		# -DVTK_MODULE_ENABLE_VTK_ioss
 		-DVTK_MODULE_ENABLE_VTK_jpeg="YES"
 		-DVTK_MODULE_ENABLE_VTK_jsoncpp="YES"
@@ -590,7 +594,7 @@ src_configure() {
 		-DVTK_USE_KOKKOS="no" # "$(usex hip)" # requires kokkos
 		# use system libraries where possible
 		-DVTK_USE_EXTERNAL=ON
-		# avoid finding package from either ::guru or ::sci
+		# avoid finding dev-libs/memkind from either ::guru or ::sci
 		-DVTK_USE_MEMKIND=OFF
 		-DVTK_USE_MPI="$(usex mpi)"
 		-DVTK_USE_TK="$(usex tk)"
@@ -612,8 +616,11 @@ src_configure() {
 			-DVTK_MODULE_ENABLE_VTK_DomainsMicroscopy="NO"
 			-DVTK_MODULE_ENABLE_VTK_fides="NO"
 			-DVTK_MODULE_ENABLE_VTK_FiltersOpenTURNS="NO"
+			-DVTK_MODULE_ENABLE_VTK_FiltersONNX="NO"
+
 			-DVTK_MODULE_ENABLE_VTK_IOADIOS2="NO"
 			-DVTK_MODULE_ENABLE_VTK_IOFides="NO"
+			-DVTK_MODULE_ENABLE_VTK_IOUSD="NO"
 
 			-DVTK_MODULE_ENABLE_VTK_RenderingOpenVR="NO"
 			-DVTK_MODULE_ENABLE_VTK_RenderingOpenXR="NO"
@@ -767,7 +774,6 @@ src_configure() {
 			-DVTK_MODULE_ENABLE_VTK_IOParallelNetCDF="$(usex netcdf "YES" "NO")"
 			-DVTK_MODULE_ENABLE_VTK_IOParallelXML="YES"
 			-DVTK_MODULE_ENABLE_VTK_ParallelMPI="YES"
-			-DVTK_MODULE_ENABLE_VTK_h5part="YES"
 			-DVTK_MODULE_USE_EXTERNAL_VTK_verdict=OFF
 		)
 		use imaging && mycmakeargs+=( -DVTK_MODULE_ENABLE_VTK_IOMPIImage="YES" )
@@ -778,7 +784,12 @@ src_configure() {
 				-DVTK_MODULE_ENABLE_VTK_RenderingParallelLIC="YES"
 			)
 		fi
-		use vtkm && mycmakeargs+=( -DVTKm_ENABLE_MPI=ON )
+	fi
+
+	if has_version ">=sci-libs/hdf5-2"; then
+		mycmakeargs+=(
+			-DHDF5_IS_PARALLEL="$(usex mpi)"
+		)
 	fi
 
 	use mysql && mycmakeargs+=( -DVTK_MODULE_ENABLE_VTK_IOMySQL="YES" )
