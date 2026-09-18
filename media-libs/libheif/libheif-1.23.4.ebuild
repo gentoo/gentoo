@@ -18,7 +18,7 @@ fi
 
 LICENSE="GPL-3 MIT"
 SLOT="0/$(ver_cut 1-2)"
-IUSE="+aom dav1d +de265 doc ffmpeg gdk-pixbuf geotiff gui +jpeg +jpeg2k jph +kvazaar openh264 rav1e svt-av1 test test-full +threads tools +webp x264 x265"
+IUSE="+aom dav1d +de265 doc ffmpeg gdk-pixbuf geotiff gui +jpeg +jpeg2k +kvazaar openh264 rav1e svt-av1 test test-full +threads tools +webp x264 x265"
 # IUSE+=" uvg266 vvdec vvenc"
 REQUIRED_USE="
 	test-full? ( test )
@@ -26,17 +26,19 @@ REQUIRED_USE="
 RESTRICT="!test? ( test )"
 
 BDEPEND="
-	doc? ( app-text/doxygen[dot] )
+	doc? (
+		app-text/doxygen
+		media-gfx/graphviz
+	)
 "
 RDEPEND="
 	aom? ( >=media-libs/libaom-2.0.0:=[${MULTILIB_USEDEP}] )
 	dav1d? ( media-libs/dav1d:=[${MULTILIB_USEDEP}] )
 	de265? ( media-libs/libde265[${MULTILIB_USEDEP}] )
-	ffmpeg? ( media-video/ffmpeg:=[${MULTILIB_USEDEP}] )
+	ffmpeg? ( >=media-video/ffmpeg-7.1:=[${MULTILIB_USEDEP}] )
 	gdk-pixbuf? ( x11-libs/gdk-pixbuf:2[${MULTILIB_USEDEP}] )
 	jpeg? ( media-libs/libjpeg-turbo:=[${MULTILIB_USEDEP}] )
 	jpeg2k? ( media-libs/openjpeg:=[${MULTILIB_USEDEP}] )
-	jph? ( media-libs/openjph:=[${MULTILIB_USEDEP}] )
 	kvazaar? ( media-libs/kvazaar:=[${MULTILIB_USEDEP}] )
 	openh264? ( media-libs/openh264:=[${MULTILIB_USEDEP}] )
 	rav1e? ( media-video/rav1e:= )
@@ -110,7 +112,7 @@ multilib_src_configure() {
 		-DWITH_JPEG_ENCODER=$(usex jpeg)
 		-DWITH_OpenJPEG_DECODER=$(usex jpeg2k)
 		-DWITH_OpenJPEG_ENCODER=$(usex jpeg2k)
-		-DWITH_OPENJPH_ENCODER="$(usex jph)"
+		-DWITH_OPENJPH_ENCODER=OFF
 		-DWITH_UNCOMPRESSED_CODEC=ON
 
 		-DWITH_LIBPNG_INTERNAL="no"
