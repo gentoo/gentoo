@@ -122,6 +122,7 @@ dev-libs/re2 benchmark
 # any performance counters anyway.
 # tools: needs dev-python/numpy and dev-python/scipy which aren't keyworded here
 dev-cpp/benchmark libpfm tools
+dev-libs/elfutils libpfm
 
 # Sam James <sam@gentoo.org> (2025-01-10)
 # Many unkeyworded dependencies like parts of TL (bug #947788)

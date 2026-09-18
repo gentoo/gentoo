@@ -13,6 +13,7 @@
 
 			Requires <pkg>app-arch/libarchive</pkg>.
 		</flag>
+		<flag name="libpfm">Enable <pkg>dev-libs/libpfm</pkg> support for hardware performance counters with eu-stackprof.</flag>
 		<flag name="lzma">Support automatic decompression of LZMA-compressed files and kernel images</flag>
 		<flag name="stacktrace">
 			Build experimental eu-stacktrace tool. Relies on integration with dev-util/sysprof.

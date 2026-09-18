@@ -88,6 +88,7 @@ dev-libs/re2 benchmark
 # Sam James <sam@gentoo.org> (2025-01-14)
 # dev-libs/libpfm is not yet keyworded here
 dev-cpp/benchmark libpfm
+dev-libs/elfutils libpfm
 
 # Sam James <sam@gentoo.org> (2025-01-10)
 # Many unkeyworded dependencies like parts of TL (bug #947788)
