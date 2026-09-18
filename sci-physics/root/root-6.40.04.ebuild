@@ -271,6 +271,7 @@ src_configure() {
 		-Dtmva-pymva=$(usex tmva)
 		-Dtmva-rmva=$(usex R)
 		-Dtmva-sofie=OFF
+		-Dtpython=$(usex python)
 		-Dunuran=$(usex unuran)
 		-During=$(usex uring)
 		-Dvdt=OFF
