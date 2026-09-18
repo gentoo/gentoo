@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -10,7 +10,7 @@ DESCRIPTION="TLS/SSL - Port Wrapper"
 HOMEPAGE="https://www.stunnel.org/index.html"
 SRC_URI="
 	https://www.stunnel.org/downloads/${P}.tar.gz
-	https://www.stunnel.org/stunnel/archive/${PV%%.*}.x/${P}.tar.gz
+	https://www.stunnel.org/archive/${PV%%.*}.x/${P}.tar.gz
 "
 
 LICENSE="GPL-2"
