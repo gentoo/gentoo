@@ -27,6 +27,7 @@ dev-python/jsondiff test
 dev-python/jsonpath-ng test
 dev-python/kombu test
 dev-python/mccabe test
+dev-python/multidict test
 dev-python/mpmath test
 dev-python/natsort test
 dev-python/numpy test
