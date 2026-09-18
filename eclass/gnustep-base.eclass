@@ -4,19 +4,19 @@
 # @ECLASS: gnustep-base.eclass
 # @MAINTAINER:
 # GNUstep Herd <gnustep@gentoo.org>
-# @SUPPORTED_EAPIS: 7 8
+# @SUPPORTED_EAPIS: 7 8 9
 # @BLURB: Internal handling of GNUstep packages
 # @DESCRIPTION:
 # Inner gnustep eclass, should only be inherited directly by gnustep-base
 # packages
 
-case ${EAPI} in
-	7|8) ;;
-	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
-esac
-
 if [[ -z ${_GNUSTEP_BASE_ECLASS} ]] ; then
 _GNUSTEP_BASE_ECLASS=1
+
+case ${EAPI} in
+	7|8|9) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
 
 inherit flag-o-matic toolchain-funcs
 

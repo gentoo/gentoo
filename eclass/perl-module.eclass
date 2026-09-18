@@ -7,7 +7,7 @@
 # @AUTHOR:
 # Seemant Kulleen <seemant@gentoo.org>
 # Andreas K. Hüttel <dilfridge@gentoo.org>
-# @SUPPORTED_EAPIS: 7 8
+# @SUPPORTED_EAPIS: 7 8 9
 # @PROVIDES: perl-functions
 # @BLURB: eclass for installing Perl module distributions
 # @DESCRIPTION:
@@ -24,7 +24,7 @@ case ${EAPI} in
 		inherit multiprocessing perl-functions toolchain-funcs
 		PERL_EXPF="src_prepare src_configure src_compile src_test src_install"
 		;;
-	8)
+	8|9)
 		inherit multiprocessing perl-functions readme.gentoo-r1 toolchain-funcs
 		PERL_EXPF="src_prepare src_configure src_compile src_test src_install"
 		;;
