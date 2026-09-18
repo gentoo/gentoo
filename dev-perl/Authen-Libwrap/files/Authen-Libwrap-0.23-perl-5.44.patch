@@ -1,0 +1,22 @@
+https://bugs.gentoo.org/979346
+https://github.com/drmuey/p5-Authen-Libwrap/pull/2
+
+From f9d01b8258e752776677d08272779e9d10d94dc2 Mon Sep 17 00:00:00 2001
+From: gregor herrmann <gregoa@debian.org>
+Date: Tue, 7 Jul 2026 18:03:18 +0200
+Subject: [PATCH] Fix XS comment syntax
+
+---
+ lib/Authen/Libwrap.xs | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/lib/Authen/Libwrap.xs b/lib/Authen/Libwrap.xs
+index da197df..8e50bf8 100644
+--- a/lib/Authen/Libwrap.xs
++++ b/lib/Authen/Libwrap.xs
+@@ -29,4 +29,4 @@ _hosts_ctl(daemon, client_name, client_addr, client_user)
+             XSRETURN_UNDEF;
+         }
+ 
+-/* EOF */
++# EOF

@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -27,6 +27,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}/${PN}-0.23-inc-paths.patch"
+	"${FILESDIR}/${PN}-0.23-perl-5.44.patch"
 )
 
 PERL_RM_FILES=(
