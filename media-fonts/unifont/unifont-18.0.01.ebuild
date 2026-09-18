@@ -5,7 +5,7 @@ EAPI=8
 
 inherit font optfeature toolchain-funcs verify-sig
 
-DESCRIPTION="GNU Unifont - a Pan-Unicode X11 bitmap iso10646 font"
+DESCRIPTION="Unicode bitmap font with full Basic Multilingual Plane coverage"
 HOMEPAGE="https://unifoundry.com/"
 SRC_URI="
 	mirror://gnu/${PN}/${P}/${P}.tar.gz
