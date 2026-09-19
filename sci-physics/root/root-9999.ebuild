@@ -60,6 +60,8 @@ CDEPEND="
 	media-fonts/dejavu
 	media-libs/freetype:2
 	media-libs/libpng:0=
+	media-libs/giflib:=
+	media-libs/libjpeg-turbo:=
 	virtual/libcrypt:=
 	sys-libs/ncurses:=
 	virtual/zlib:=
@@ -129,7 +131,7 @@ PATCHES=(
 
 pkg_setup() {
 	use fortran && fortran-2_pkg_setup
-	python-single-r1_pkg_setup
+	use python && python-single-r1_pkg_setup
 
 	elog "There are extra options on packages not available in Gentoo."
 	elog "You can use the environment variable MYCMAKEARGS to enable"
@@ -269,6 +271,7 @@ src_configure() {
 		-Dtmva-pymva=$(usex tmva)
 		-Dtmva-rmva=$(usex R)
 		-Dtmva-sofie=OFF
+		-Dtpython=$(usex python)
 		-Dunuran=$(usex unuran)
 		-During=$(usex uring)
 		-Dvdt=OFF
