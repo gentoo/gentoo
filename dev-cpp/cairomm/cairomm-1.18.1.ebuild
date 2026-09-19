@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+
 PYTHON_COMPAT=( python3_{12..14} )
 inherit meson-multilib python-any-r1
 
@@ -9,7 +10,7 @@ DESCRIPTION="C++ bindings for the Cairo vector graphics library"
 HOMEPAGE="https://cairographics.org/cairomm/ https://gitlab.freedesktop.org/cairo/cairomm"
 SRC_URI="https://www.cairographics.org/releases/${P}.tar.xz"
 
-LICENSE="LGPL-2+"
+LICENSE="LGPL-2.1+"
 SLOT="1.16"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
 IUSE="gtk-doc test X"
