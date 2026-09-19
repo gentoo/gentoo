@@ -24,6 +24,8 @@ BDEPEND="
 src_prepare() {
 	default
 
+	# Clean this up + src_install if/when https://github.com/adah1972/libunibreak/pull/47
+	# is merged.
 	if use man; then
 		echo 'GENERATE_MAN=YES' >> Doxyfile || die
 	fi
