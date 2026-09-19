@@ -37,8 +37,6 @@ EPYTEST_PLUGINS=( pytest-xprocess )
 distutils_enable_tests pytest
 
 EPYTEST_IGNORE=(
-	# bug #818523
-	tests/test_redis_cache.py
 	# requires some test server running
 	# (these tests require dev-python/boto3)
 	tests/test_dynamodb_cache.py
