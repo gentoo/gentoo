@@ -16,7 +16,7 @@ S="${WORKDIR}"/${P}-${MY_COMMIT}
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 # It is possible to run the tests using virtualx, but it seems to take
 # screenshots of the terminal window, and compares checksums that never
