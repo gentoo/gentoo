@@ -743,7 +743,7 @@ src_configure() {
 		if use rendering; then
 			mycmakeargs+=(
 				-DVTK_MODULE_ENABLE_VTK_RenderingParallel="YES"
-				-DVTK_MODULE_ENABLE_VTK_RenderingParallelLIC="YES"
+				-DVTK_MODULE_ENABLE_VTK_RenderingParallelLIC="$(usex !gles2 "YES" "NO")"
 			)
 		fi
 	fi
@@ -805,7 +805,7 @@ src_configure() {
 			-DVTK_MODULE_ENABLE_VTK_RenderingContext2D="YES"
 			-DVTK_MODULE_ENABLE_VTK_RenderingContextOpenGL2="YES"
 			-DVTK_MODULE_ENABLE_VTK_RenderingCore="YES"
-			-DVTK_MODULE_ENABLE_VTK_RenderingExternal="YES"
+			-DVTK_MODULE_ENABLE_VTK_RenderingExternal="$(usex !gles2 "YES" "NO")"
 			-DVTK_MODULE_ENABLE_VTK_RenderingGL2PSOpenGL2="YES"
 			-DVTK_MODULE_ENABLE_VTK_RenderingHyperTreeGrid="YES"
 			-DVTK_MODULE_ENABLE_VTK_RenderingLICOpenGL2="YES"
@@ -815,6 +815,7 @@ src_configure() {
 			-DVTK_MODULE_ENABLE_VTK_RenderingRayTracing="YES"
 			-DVTK_MODULE_ENABLE_VTK_RenderingSceneGraph="YES"
 			-DVTK_MODULE_ENABLE_VTK_RenderingUI="YES"
+			-DVTK_MODULE_ENABLE_VTK_RenderingVR="$(usex !gles2 "YES" "NO")"
 			-DVTK_MODULE_ENABLE_VTK_RenderingVolume="YES"
 			-DVTK_MODULE_ENABLE_VTK_RenderingVolumeAMR="YES"
 			-DVTK_MODULE_ENABLE_VTK_RenderingVolumeOpenGL2="YES"
