@@ -14,7 +14,7 @@ SRC_URI="https://archive.xfce.org/src/apps/${PN}/${PV%.*}/${P}.tar.xz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 arm ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~amd64 arm ~hppa ppc ~ppc64 ~riscv ~sparc ~x86"
 IUSE="llm"
 
 DEPEND="
