@@ -9,7 +9,7 @@
     <flag name="devkit">Enable support for running a nested wayland session</flag>
     <flag name="elogind">Rely on <pkg>sys-auth/elogind</pkg> as logind provider for Wayland sessions</flag>
     <flag name="sysprof">Enable profiling data capture support using <pkg>dev-util/sysprof-capture</pkg></flag>
-    <flag name="xwayland">Enable X11 application support in Wayland sessions</flag>
+    <flag name="xwayland">Enable <pkg>x11-base/xwayland</pkg> integration for running X11 applications under Wayland</flag>
   </use>
   <upstream>
     <remote-id type="gnome-gitlab">GNOME/mutter</remote-id>

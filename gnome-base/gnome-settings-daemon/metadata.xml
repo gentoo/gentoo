@@ -6,7 +6,7 @@
     <name>Gentoo GNOME Desktop</name>
   </maintainer>
   <use>
-    <flag name="xwayland">Enable Xwayland integration</flag>
+    <flag name="xwayland">Enable <pkg>x11-base/xwayland</pkg> integration for running X11 applications under Wayland</flag>
     <flag name="elogind">Rely on <pkg>sys-auth/elogind</pkg> as runtime logind provider</flag>
     <flag name="modemmanager">Enable WWAN support via <pkg>net-misc/modemmanager</pkg></flag>
     <flag name="systemd">Rely on <pkg>sys-apps/systemd</pkg> as runtime logind provider</flag>
