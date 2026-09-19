@@ -1,0 +1,32 @@
+From 54f8a4a848fa02d06fefc5543f35224eef73670c Mon Sep 17 00:00:00 2001
+From: Matthias Kurz <m.kurz@irregular.at>
+Date: Wed, 19 Aug 2026 17:51:12 +0200
+Subject: [PATCH] Avoid low battery alerts for unknown percentages
+
+Peripheral batteries with an unavailable charge return a negative percentage. Exclude all non-positive values from low-battery notification handling so an unknown device cannot be mistaken for an empty one.
+
+(cherry picked from commit 78e99fd944a0da0d82b46d02251a8631f005f5ba)
+---
+ daemon/powerdevilcore.cpp | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/daemon/powerdevilcore.cpp b/daemon/powerdevilcore.cpp
+index 50d936c20..fabcc671d 100644
+--- a/daemon/powerdevilcore.cpp
++++ b/daemon/powerdevilcore.cpp
+@@ -521,9 +521,9 @@ bool Core::emitBatteryChargePercentNotification(int currentPercent, int previous
+             return false;
+         }
+ 
+-        // if you leave the device out of reach or it has not been initialized yet
+-        // it won't be "there" and report 0%, don't show anything in this case
+-        if (!b->isPresent() || b->chargePercent() == 0) {
++        // If you leave the device out of reach or it has not been initialized yet,
++        // it won't be "there" and can report an empty or unknown percentage.
++        if (!b->isPresent() || b->chargePercent() <= 0) {
+             return false;
+         }
+ 
+-- 
+GitLab
+
