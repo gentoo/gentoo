@@ -55,3 +55,11 @@ src_configure() {
 src_test() {
 	virtx meson_src_test
 }
+
+src_install() {
+	meson_src_install
+	if use gtk-doc; then
+		mkdir -p "${ED}"/usr/share/gtk-doc/html/ || die
+		mv "${ED}"/usr/share/doc/gtkmm-4.0 "${ED}"/usr/share/gtk-doc/html/ || die
+	fi
+}
