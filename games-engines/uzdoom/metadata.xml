@@ -6,6 +6,7 @@
 		<name>Gentoo Games Project</name>
 	</maintainer>
 	<use>
+		<flag name="mpg123">Enable support for MPEG audio playback via <pkg>media-sound/mpg123</pkg></flag>
 		<flag name="non-free">Install non-free components for an optimal experience of commercial games</flag>
 		<flag name="swr">Enable the software renderer</flag>
 	</use>
