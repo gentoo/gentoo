@@ -15,7 +15,7 @@ S="${WORKDIR}"/${MY_P}
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm"
 IUSE="dbus exif fontconfig jpeg jpegxl pdf +postscript png test tiff"
 RESTRICT="!test? ( test )"
 
