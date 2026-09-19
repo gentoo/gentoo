@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{11..14} )
+
+PYTHON_COMPAT=( python3_{12..14} )
 inherit gnome.org gnome2-utils meson python-any-r1 udev xdg
 
 DESCRIPTION="GNOME compositing window manager based on Clutter"
@@ -13,7 +14,7 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://gitlab.gnome.org/GNOME/mutter.git"
 	SRC_URI=""
-	SLOT="0/17" # This can get easily out of date, but better than 9967
+	SLOT="0/18" # This can get easily out of date, but better than 9967
 else
 	KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
 	# 0/libmutter_api_version - ONLY gnome-shell or anything using mutter-clutter-<api_version>.pc
@@ -22,16 +23,14 @@ else
 fi
 
 IUSE="bash-completion debug devkit elogind gnome gtk-doc input_devices_wacom +introspection
-screencast selinux sysprof systemd test udev +wayland X +xwayland video_cards_nvidia"
+screencast selinux sysprof systemd test video_cards_nvidia +xwayland"
 
-# native backend requires gles3 for hybrid graphics blitting support, udev and a logind provider
+# native backend requires a logind provider
 REQUIRED_USE="
-	|| ( X wayland )
-	devkit? ( screencast wayland )
+	devkit? ( screencast )
 	gtk-doc? ( introspection )
-	wayland? ( ^^ ( elogind systemd ) udev )
-	test? ( screencast wayland )
-	xwayland? ( wayland )"
+	^^ ( elogind systemd )
+	test? ( screencast )"
 RESTRICT="!test? ( test )"
 
 # gnome-settings-daemon is build checked but used at runtime only for org.gnome.settings-daemon.peripherals.keyboard
@@ -46,14 +45,14 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	>=media-libs/graphene-1.10.2[introspection?]
 	>=x11-libs/pango-1.46[introspection?]
-	>=x11-libs/cairo-1.14[X]
+	>=x11-libs/cairo-1.14
 	>=x11-libs/pixman-0.42
 	>=gui-libs/gtk-4.14.0:4[introspection?]
 	>=dev-libs/fribidi-1.0.0
 	>=gnome-base/gsettings-desktop-schemas-47_beta[introspection?]
 	>=dev-libs/glib-2.81.1:2
 	gnome-base/gnome-settings-daemon
-	>=x11-libs/libxkbcommon-1.8.0[X?]
+	>=x11-libs/libxkbcommon-1.8.0
 	>=app-accessibility/at-spi2-core-2.46:2[introspection?]
 	sys-apps/dbus
 	>=x11-misc/colord-1.4.5:=
@@ -73,24 +72,20 @@ RDEPEND="
 	media-libs/libglvnd
 
 	>=dev-libs/wayland-1.24.0
-	wayland? (
-		>=dev-libs/wayland-protocols-1.45
+	>=dev-libs/wayland-protocols-1.47
 
-		>=x11-libs/libdrm-2.4.118
-		media-libs/mesa[gbm(+)]
-		>=dev-libs/libinput-1.27.0:=
+	>=x11-libs/libdrm-2.4.118
+	media-libs/mesa[gbm(+)]
+	>=dev-libs/libinput-1.30.0:=
 
-		elogind? ( sys-auth/elogind )
-		xwayland? ( >=x11-base/xwayland-23.2.1[libei(+)] )
-		video_cards_nvidia? ( gui-libs/egl-wayland )
-	)
-	udev? (
-		>=virtual/libudev-232-r1:=
-		>=dev-libs/libgudev-238
-	)
+	elogind? ( sys-auth/elogind )
+	xwayland? ( >=x11-base/xwayland-23.2.1[libei(+)] )
+	video_cards_nvidia? ( gui-libs/egl-wayland )
+	>=virtual/libudev-232-r1:=
+	>=dev-libs/libgudev-238
 	systemd? ( sys-apps/systemd )
 	input_devices_wacom? ( >=dev-libs/libwacom-0.13:= )
-	screencast? ( >=media-video/pipewire-1.2.7:= )
+	screencast? ( >=media-video/pipewire-1.6.0:= )
 	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 	test? (
 		>=x11-libs/gtk+-3.19.8:3[X,introspection?]
@@ -118,12 +113,9 @@ X11_CLIENT_DEPS="
 "
 
 RDEPEND+="
-	X? (
+	xwayland? (
 		${X11_CLIENT_DEPS}
-		x11-libs/libxkbfile
-		x11-libs/libXtst
 	)
-	wayland? ( xwayland? ( ${X11_CLIENT_DEPS} ) )
 "
 DEPEND="${RDEPEND}
 	x11-base/xorg-proto
@@ -145,15 +137,9 @@ BDEPEND="
 			>=dev-python/python-dbusmock-0.28[${PYTHON_USEDEP}]
 		')
 		app-text/docbook-xml-dtd:4.5
-		X? (
-			gnome-extra/zenity
-			x11-misc/xvfb-run
-		)
 	)
-	wayland? (
-		>=sys-kernel/linux-headers-4.4
-		x11-libs/libxcvt
-	)
+	>=sys-kernel/linux-headers-4.4
+	x11-libs/libxcvt
 	bash-completion? (
 		app-shells/bash-completion
 		${PYTHON_DEPS}
@@ -162,6 +148,10 @@ BDEPEND="
 		')
 	)
 "
+
+PATCHES=(
+	"${FILESDIR}"/mutter-50.3-meta-wayland-touch.patch
+)
 
 python_check_deps() {
 	if use test; then
@@ -175,49 +165,13 @@ python_check_deps() {
 src_configure() {
 	use debug && EMESON_BUILDTYPE=debug
 	local emesonargs=(
-		# Mutter X11 renderer only supports gles2 and GLX, thus do NOT pass
-		#
-		#   -Dopengl_libname=libOpenGL.so.0
-		#
-		# while we build the x11 renderer, as we currently enable gles2 only
-		# with USE=wayland and x11 renderer wouldn't find the needed GLX symbols
-		# in a configuration where wayland is disabled, as libOpenGL doesn't
-		# include them.
-		#
-		# See
-		# - https://bugs.gentoo.org/835786
-		# - https://forums.gentoo.org/viewtopic-p-8695669.html
-
-		-Dopengl=true
-		$(meson_use wayland gles2)
-		#gles2_libname
 		-Degl=true
-		$(meson_use X glx)
-		$(meson_use wayland)
 		-Dfonts=true
-	)
-
-	if use wayland; then
-		emesonargs+=(
-			$(meson_use xwayland)
-		)
-	else
-		emesonargs+=(
-			-Dxwayland=false
-		)
-	fi
-
-	if use elogind || use systemd; then
-		emesonargs+=(
-			-Dlogind=true
-		)
-	fi
-
-	emesonargs+=(
-		$(meson_use wayland native_backend)
+		-Dnative_backend=true
+		-Dopengl=true
 		$(meson_use screencast remote_desktop)
 		$(meson_use gnome libgnome_desktop)
-		$(meson_use udev)
+		-Dudev=true
 		-Dudev_dir=$(get_udevdir)
 		$(meson_use input_devices_wacom libwacom)
 		-Dsound_player=true
@@ -233,7 +187,7 @@ src_configure() {
 		-Dtty_tests=false
 		$(meson_use sysprof profiler)
 		-Dinstalled_tests=false
-		$(meson_use X x11)
+		$(meson_use xwayland)
 		$(meson_use bash-completion bash_completion)
 
 		#verbose # Let upstream choose default for verbose mode
@@ -243,7 +197,13 @@ src_configure() {
 		#xwayland_grab_default_access_rules
 	)
 
-	if use wayland && use video_cards_nvidia; then
+	if use elogind || use systemd; then
+		emesonargs+=(
+			-Dlogind=true
+		)
+	fi
+
+	if use video_cards_nvidia; then
 		emesonargs+=(
 			-Degl_device=true
 			-Dwayland_eglstream=true
@@ -267,13 +227,13 @@ src_test() {
 }
 
 pkg_postinst() {
-	use udev && udev_reload
+	udev_reload
 	xdg_pkg_postinst
 	gnome2_schemas_update
 }
 
 pkg_postrm() {
-	use udev && udev_reload
+	udev_reload
 	xdg_pkg_postrm
 	gnome2_schemas_update
 }
