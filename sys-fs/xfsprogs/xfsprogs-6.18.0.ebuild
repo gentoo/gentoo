@@ -12,7 +12,7 @@ SRC_URI="https://www.kernel.org/pub/linux/utils/fs/xfs/${PN}/${P}.tar.xz"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
-IUSE="icu libedit nls selinux static-libs"
+IUSE="icu libedit nls static-libs"
 
 RDEPEND="
 	dev-libs/inih
@@ -26,7 +26,6 @@ DEPEND="
 	>=sys-kernel/linux-headers-6.11
 "
 BDEPEND="nls? ( sys-devel/gettext )"
-RDEPEND+=" selinux? ( sec-policy/selinux-xfs )"
 
 src_prepare() {
 	default
