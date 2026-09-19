@@ -27,7 +27,7 @@ src_prepare() {
 	sed -i -e '/.SILENT:/d' Makefile.in || die
 
 	# Fix docdir
-	sed -i -e 's:/doc/pdfio:/doc/${PF}:' Makefile.in || die
+	sed -i -e 's:/doc/ttf:/doc/${PF}:' Makefile.in || die
 
 	# Respect CFLAGS
 	sed -i -e 's:-g -Os::' configure.ac configure || die
