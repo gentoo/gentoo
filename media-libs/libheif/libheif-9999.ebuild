@@ -79,11 +79,6 @@ pkg_pretend() {
 src_prepare() {
 	cmake_src_prepare
 
-	git merge-base --is-ancestor 9c9d839132f8846652ecadceaa8dcf23d1ff3e4c HEAD \
-		|| eapply "${FILESDIR}"/libheif-1.21.2-svt-av1-4.patch
-	git merge-base --is-ancestor 2a7a383ffe90a5d36d7e0c939e6a7ae953e6ba55 HEAD \
-		|| eapply "${FILESDIR}"/libheif-1.21.2-svt-av1-4.1.patch
-
 	if use geotiff; then
 		sed -e 's:geotiff/::g' -i heifio/CMakeLists.txt heifio/decoder_tiff.cc || die
 	fi
