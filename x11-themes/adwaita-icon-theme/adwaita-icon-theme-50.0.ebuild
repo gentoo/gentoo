@@ -58,19 +58,3 @@ src_prepare() {
 src_test() {
 	:; # No tests
 }
-
-src_install() {
-	meson_src_install
-
-	# Gentoo uses the following location for cursors too, but keep
-	# upstream path to prevent issues like bugs #838451, #834277, #834001
-	dosym ../../../../usr/share/icons/Adwaita/cursors /usr/share/cursors/xorg-x11/Adwaita
-}
-
-pkg_preinst() {
-	# Needed until bug #834600 is solved
-	if [[ -d "${EROOT}"/usr/share/cursors/xorg-x11/Adwaita ]] ; then
-		rm -r "${EROOT}"/usr/share/cursors/xorg-x11/Adwaita || die
-	fi
-	xdg_pkg_preinst
-}
