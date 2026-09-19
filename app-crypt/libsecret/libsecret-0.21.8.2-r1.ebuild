@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{12..14} )
 
-inherit bash-completion-r1 gnome2 meson-multilib python-any-r1 vala virtualx
+inherit gnome2 meson-multilib python-any-r1 shell-completion vala virtualx
 
 DESCRIPTION="GObject library for accessing the freedesktop.org Secret Service API"
 HOMEPAGE="https://gnome.pages.gitlab.gnome.org/libsecret"
