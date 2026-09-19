@@ -39,14 +39,14 @@ src_compile() {
 	ln -s Makefile.unix config/Makefile || die
 
 	# Make
-	emake depend CPP="$(tc-getPROG CPP cpp)"
-	emake -j1 RANLIB="$(tc-getRANLIB)"
+	emake depend CPP="$(tc-getPROG CPP cpp)" CFLAGS="${CFLAGS}"
+	emake -j1 RANLIB="$(tc-getRANLIB)" CFLAGS="${CFLAGS}"
 }
 
 src_test() {
 	einfo "Running tests..."
 	cd tests || die
-	emake CCPP="$(tc-getCXX)" CC="$(tc-getCC)"
+	emake CCPP="$(tc-getCXX)" CC="$(tc-getCC)" CFLAGS="${CFLAGS}"
 }
 
 src_install() {
