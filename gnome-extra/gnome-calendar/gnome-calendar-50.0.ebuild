@@ -18,7 +18,8 @@ DEPEND="
 	net-libs/libsoup:3.0
 	>=gui-libs/libadwaita-1.8_alpha:1
 	>=dev-libs/glib-2.80.0:2
-	>=gui-libs/gtk-4.15.2:4
+	dev-libs/fribidi
+	>=gui-libs/gtk-4.21.2:4
 	>=dev-libs/libgweather-4.2.0:4=
 	>=app-misc/geoclue-2.4:2.0
 "
