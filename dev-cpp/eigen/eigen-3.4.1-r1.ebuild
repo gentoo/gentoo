@@ -30,7 +30,7 @@ else
 		https://gitlab.com/libeigen/eigen/-/commit/0295f81a835ef69e2bacd9e75ab5782eca398720.patch -> ${P}_p1.patch
 		https://gitlab.com/libeigen/eigen/-/commit/28ded8800c26864e537852658428ab44c8399e87.patch -> ${P}_p2.patch
 	"
-	KEYWORDS="~alpha ~amd64 ~arm arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~arm64-macos ~x64-macos"
+	KEYWORDS="~alpha ~amd64 arm arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~arm64-macos ~x64-macos"
 fi
 
 SRC_URI+="
