@@ -16,7 +16,7 @@ S="${WORKDIR}/glaze-${PV}"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="examples fuzzing test"
+IUSE="examples fuzzing test +ssl"
 RESTRICT="!test? ( test )"
 
 DEPEND="
@@ -25,6 +25,8 @@ DEPEND="
 		>=dev-cpp/eigen-3.4:=
 		>=dev-cpp/ut2-glaze-1.2.1
 	)
+
+	ssl? ( dev-libs/openssl )
 "
 RDEPEND="${DEPEND}"
 
@@ -34,6 +36,7 @@ src_configure() {
 		-Dglaze_DEVELOPER_MODE=ON
 		-Dglaze_ENABLE_FUZZING=$(usex fuzzing)
 		-Dglaze_BUILD_EXAMPLES=$(usex examples)
+		-Dglaze_ENABLE_SSL=$(usex ssl)
 		-DBUILD_TESTING=$(usex test)
 	)
 
