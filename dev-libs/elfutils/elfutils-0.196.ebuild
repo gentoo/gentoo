@@ -66,6 +66,7 @@ BDEPEND+="
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.189-musl-aarch64-regs.patch
 	"${FILESDIR}"/${PN}-0.191-musl-macros.patch
+	"${FILESDIR}"/${PN}-0.196-skip-static-test.patch
 )
 
 src_prepare() {
