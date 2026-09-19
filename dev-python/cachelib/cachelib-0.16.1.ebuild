@@ -22,7 +22,9 @@ KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 BDEPEND="
 	test? (
 		dev-db/redis
+		dev-db/valkey
 		dev-python/redis[${PYTHON_USEDEP}]
+		dev-python/valkey[${PYTHON_USEDEP}]
 		net-misc/memcached
 		!sparc? (
 			dev-python/pylibmc[${PYTHON_USEDEP}]

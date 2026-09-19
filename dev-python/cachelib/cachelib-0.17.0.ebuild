@@ -22,8 +22,10 @@ KEYWORDS="~amd64 ~arm64 ~x86"
 BDEPEND="
 	test? (
 		dev-db/redis
+		dev-db/valkey
 		>=dev-python/python-memcached-1.62[${PYTHON_USEDEP}]
 		dev-python/redis[${PYTHON_USEDEP}]
+		dev-python/valkey[${PYTHON_USEDEP}]
 		net-misc/memcached
 		!sparc? (
 			dev-python/pylibmc[${PYTHON_USEDEP}]
