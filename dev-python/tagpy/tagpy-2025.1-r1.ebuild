@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 
 inherit distutils-r1
 
@@ -38,3 +38,10 @@ PATCHES=(
 
 EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
+
+src_prepare() {
+	distutils-r1_src_prepare
+
+	# https://bugs.gentoo.org/982734
+	sed -i -e 's:"":[]:' setup.py || die
+}
