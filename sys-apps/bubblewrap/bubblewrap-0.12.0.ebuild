@@ -12,7 +12,7 @@ SRC_URI="https://github.com/containers/${PN}/releases/download/v${PV}/${P}.tar.x
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~loong ppc ppc64 ~riscv x86"
+KEYWORDS="amd64 arm ~arm64 ~loong ppc ppc64 ~riscv x86"
 IUSE="selinux test"
 RESTRICT="!test? ( test )"
 
