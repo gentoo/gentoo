@@ -14,7 +14,7 @@ if [[ ${PV} == 9999 ]] ; then
 else
 	SRC_URI="https://github.com/OpenPrinting/cups-filters/releases/download/${PV}/${P}.tar.xz"
 
-	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 fi
 
 LICENSE="Apache-2.0"
@@ -40,10 +40,6 @@ BDEPEND="
 # Bow to this reality and don't claim we can run anything. As a side
 # effect, don't compile in src_test, that which we never use.
 RESTRICT="test"
-
-PATCHES=(
-	"${FILESDIR}"/${PN}-2.0.1-CVE-2025-64524.patch
-)
 
 src_prepare() {
 	default
