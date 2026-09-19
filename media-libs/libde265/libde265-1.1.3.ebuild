@@ -41,6 +41,7 @@ multilib_src_configure() {
 		-DENABLE_SDL=$(usex sdl)
 
 		# dev-tools dir isn't in release tarballs
+		# https://github.com/strukturag/libde265/issues/545
 		#-DENABLE_INTERNAL_DEVELOPMENT_TOOLS=$(usex test)
 
 		# Require libvideogfx or libswscale
