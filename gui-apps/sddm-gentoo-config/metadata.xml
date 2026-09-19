@@ -14,7 +14,8 @@
 		<bugs-to>http://bugs.gentoo.org</bugs-to>
 	</upstream>
 	<use>
-		<flag name="kwin">KWin DisplayServer support (EXPERIMENTAL)</flag>
-		<flag name="weston">Weston DisplayServer support (EXPERIMENTAL)</flag>
+		<flag name="custom-compositor">Custom Wayland DisplayServer support (manual setup) (EXPERIMENTAL)</flag>
+		<flag name="kwin">KWin Wayland DisplayServer support (EXPERIMENTAL)</flag>
+		<flag name="weston">Weston Wayland DisplayServer support (EXPERIMENTAL)</flag>
 	</use>
 </pkgmetadata>
