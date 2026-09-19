@@ -84,7 +84,7 @@ src_configure() {
 		$(meson_use introspection)
 		$(meson_feature selinux)
 		$(meson_feature cloudproviders)
-		-Dtests=$(usex test all none)
+		-Dtests=$(usex test headless none)
 
 		$(meson_use gstreamer) # gstreamer audio-video-properties extension
 	)
