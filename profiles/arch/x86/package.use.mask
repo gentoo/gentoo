@@ -1,6 +1,14 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (2026-09-19)
+# Dekeywording sci-libs/vtk.
+media-libs/opencv vtk
+sci-libs/dealii vtk
+sci-libs/opencascade vtk
+sci-mathematics/maxima vtk
+sci-physics/geant vtk
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2026-08-31)
 # Pulls in kde-apps/kgpg which is not keyworded here.
 kde-apps/kdeutils-meta gpg
