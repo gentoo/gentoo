@@ -1,8 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
+FONT_PN="${PN}$(ver_cut 1)"
 inherit font
 
 DESCRIPTION="The iconic font"
@@ -17,7 +18,7 @@ else
 fi
 
 LICENSE="CC-BY-4.0 OFL-1.1"
-SLOT="7"
+SLOT="$(ver_cut 1)"
 IUSE="woff2"
 
 src_install() {
