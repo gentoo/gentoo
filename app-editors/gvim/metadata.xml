@@ -16,7 +16,15 @@
   <use>
     <flag name="crypt">Use <pkg>dev-libs/libsodium</pkg> for crypto support</flag>
     <flag name="cscope">Enable cscope interface</flag>
+    <flag name="gtk4">Build the GTK 4 GUI using <pkg>gui-libs/gtk</pkg>:4 instead of
+      the default GTK+ 3 one. The GTK 4 GUI uses no X11 API, so 'session'
+      (X session management) is unavailable with it.</flag>
     <flag name="netbeans">Include netbeans external editor integration support</flag>
+    <flag name="pango">Render |:hardcopy| output with <pkg>x11-libs/pango</pkg>
+      and <pkg>x11-libs/cairo</pkg> rather than Vim's own PostScript generator.
+      Gains full Unicode support and PDF output, at the cost of the
+      'printencoding', 'printmbcharset' and 'printmbfont' options, which
+      exist only for the built-in generator.</flag>
     <flag name="racket">Enable support for Scheme using <pkg>dev-scheme/racket</pkg></flag>
   </use>
   <upstream>

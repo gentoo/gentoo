@@ -362,6 +362,10 @@ media-libs/libheif aom
 # Pulls in LXDE which is not keyworded here
 x11-misc/xscreensaver new-login
 
+# Arthur Zamarin <arthurzam@gentoo.org> (2026-09-19)
+# gui-libs/gtk:4 is not keyworded here
+app-editors/gvim gtk4
+
 # matoro <matoro_gentoo@matoro.tk> (2023-11-16)
 # gui-libs/gtk:4 casualties
 app-i18n/ibus gtk4
