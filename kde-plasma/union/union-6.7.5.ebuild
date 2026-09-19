@@ -10,8 +10,7 @@ QTMIN=6.11.2
 inherit ecm plasma.kde.org
 
 DESCRIPTION="Style engine providing a unified style description to separate output styles"
-HOMEPAGE="https://quantumproductions.info/articles/2025-02/moving-kdes-styling-future
-https://files.quantumproductions.info/union/overview.html"
+HOMEPAGE="https://quantumproductions.info/articles/2025-02/moving-kdes-styling-future"
 
 LICENSE="|| ( LGPL-2.1 LGPL-3 ) GPL-3 BSD-2"
 SLOT="6"
