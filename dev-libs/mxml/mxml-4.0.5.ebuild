@@ -3,14 +3,19 @@
 
 EAPI=8
 
-inherit autotools toolchain-funcs
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/michaelrsweet.asc
+inherit autotools toolchain-funcs verify-sig
 
 DESCRIPTION="A small XML parsing library that you can use to read XML data files or strings"
 HOMEPAGE="
 	https://github.com/michaelrsweet/mxml
 	https://www.msweet.org/mxml/
 "
-SRC_URI="https://github.com/michaelrsweet/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+# Drop rename after 4.0.5
+SRC_URI="
+	https://github.com/michaelrsweet/mxml/releases/download/v${PV}/${P}.tar.gz -> ${P}.tgz
+	verify-sig? ( https://github.com/michaelrsweet/mxml/releases/download/v${PV}/${P}.tar.gz.sig -> ${P}.tgz.sig )
+"
 
 LICENSE="Mini-XML"
 SLOT="4"
@@ -18,7 +23,10 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86"
 IUSE="static-libs test threads"
 RESTRICT="!test? ( test )"
 
-BDEPEND="virtual/pkgconfig"
+BDEPEND="
+	virtual/pkgconfig
+	verify-sig? ( sec-keys/openpgp-keys-michaelrsweet )
+"
 
 src_prepare() {
 	default
