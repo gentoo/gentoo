@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,7 +18,7 @@ S="${WORKDIR}/VeraCrypt-VeraCrypt_${PV}/src"
 LICENSE="Apache-2.0 BSD RSA truecrypt-3.0"
 SLOT="0"
 KEYWORDS="amd64"
-IUSE="+asm cpu_flags_x86_sse2 cpu_flags_x86_sse4_1 cpu_flags_x86_ssse3 doc X"
+IUSE="+asm cpu_flags_x86_aes cpu_flags_x86_sse2 cpu_flags_x86_sse4_1 cpu_flags_x86_ssse3 doc X"
 RESTRICT="bindist mirror"
 
 RDEPEND="
@@ -53,6 +53,7 @@ src_compile() {
 		WX_CONFIG="${WX_CONFIG}"
 		$(usex X "" "NOGUI=1")
 		$(usex asm "" "NOASM=1")
+		$(usex cpu_flags_x86_aes "" "NOAESNI=1")
 		$(usex cpu_flags_x86_sse2 "" "NOSSE2=1")
 		$(usex cpu_flags_x86_sse4_1 "SSE41=1" "")
 		$(usex cpu_flags_x86_ssse3 "SSSE3=1" "")
