@@ -6,6 +6,10 @@
 
 # New entries go on top.
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2026-09-19)
+# Building documentation is broken in this version. Bug #976293
+~dev-cpp/eigen-3.4.1 doc
+
 # Michał Górny <mgorny@gentoo.org> (2026-09-05)
 # dev-python/{ioflo,raet} stuck on Python 3.12 and last-rited.
 app-admin/salt raet
