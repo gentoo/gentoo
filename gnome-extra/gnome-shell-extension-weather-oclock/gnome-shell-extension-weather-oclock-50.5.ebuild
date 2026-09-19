@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+
 inherit gnome2-utils
 
 DESCRIPTION="Display the current weather inside the pill next to the clock"
@@ -11,7 +12,7 @@ S="${WORKDIR}/${PN/gnome-shell-extension-}-${PV}"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 RDEPEND="
 	app-eselect/eselect-gnome-shell-extensions
