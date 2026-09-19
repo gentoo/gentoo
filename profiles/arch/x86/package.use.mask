@@ -387,10 +387,6 @@ app-admin/syslog-ng test
 # The JIT feature only works on amd64 and x86.
 app-emulation/aranym -jit
 
-# Thomas Deutschmann <whissi@gentoo.org> (2019-11-11)
-# dev-python/pandas is keyworded for x86
-sys-block/fio -python -gnuplot
-
 # Luke Dashjr <luke-jr+gentoobugs@utopios.org> (2019-09-21)
 # iasl is stable on x86
 sys-firmware/seabios -debug
