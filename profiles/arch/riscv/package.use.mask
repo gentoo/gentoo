@@ -1,6 +1,12 @@
 # Copyright 2019-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Michael Orlitzky <mjo@gentoo.org> (2026-09-19)
+# The test suite passes, but one of its test deps
+# (dev-python/ml-dtypes) isn't keyworded yet due to
+# failing its own test suite.
+dev-python/gfloat test
+
 # Alfred Wingate <parona@protonmail.com> (2026-05-13)
 # dev-qt/qtgraphs:6 is not keyworded here
 dev-python/pyside graphs
