@@ -19,7 +19,7 @@ IUSE="+crypt +gcrypt gnutls gtk-doc +introspection pam test test-rust tpm +vala"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="
 	vala? ( introspection )
-	gtk-doc? ( crypt )
+	gtk-doc? ( crypt introspection )
 	crypt? ( || ( gcrypt gnutls ) )
 "
 
