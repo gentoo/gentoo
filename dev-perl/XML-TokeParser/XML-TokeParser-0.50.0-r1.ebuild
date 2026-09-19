@@ -9,7 +9,7 @@ inherit perl-module
 
 DESCRIPTION="Simplified interface to XML::Parser"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ~ppc64 ~riscv x86"
+KEYWORDS="amd64 arm arm64 ~ppc64 ~riscv x86"
 
 RDEPEND="
 	>=dev-perl/XML-Parser-2.0.0
