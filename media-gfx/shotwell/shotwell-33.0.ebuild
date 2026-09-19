@@ -67,7 +67,7 @@ src_configure() {
 		#trace
 		#measure
 		-Ddupe_detection=true
-		$(meson_use udev)
+		$(meson_feature udev)
 		-Dinstall_apport_hook=false
 		$(meson_use opencv face_detection)
 		-Dfatal_warnings=false
