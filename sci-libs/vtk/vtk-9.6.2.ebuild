@@ -63,7 +63,7 @@ else
 		)
 	"
 	S="${WORKDIR}/VTK-${PV}"
-	KEYWORDS="~amd64 ~arm64 ~x86"
+	KEYWORDS="~amd64 ~arm64"
 fi
 
 LICENSE="BSD LGPL-2"
