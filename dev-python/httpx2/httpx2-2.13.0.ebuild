@@ -43,6 +43,7 @@ BDEPEND="
 	dev-python/hatch-fancy-pypi-readme[${PYTHON_USEDEP}]
 	dev-python/uv-dynamic-versioning[${PYTHON_USEDEP}]
 	test? (
+		>=app-arch/brotli-1.2.0[python,${PYTHON_USEDEP}]
 		>=dev-python/brotlicffi-1.2.0.0[${PYTHON_USEDEP}]
 		dev-python/chardet[${PYTHON_USEDEP}]
 		dev-python/cryptography[${PYTHON_USEDEP}]
