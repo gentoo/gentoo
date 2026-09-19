@@ -9,6 +9,10 @@
 # Requires dev-python/rpds-py.
 dev-python/octave-kernel
 
+# Thibaud CANALE <thican@thican.net> (2026-05-17)
+# Requires dev-python/pydantic
+dev-python/cloudflare
+
 # Michał Górny <mgorny@gentoo.org> (2025-06-02)
 # Require dev-python/pydantic.
 dev-python/syrupy
