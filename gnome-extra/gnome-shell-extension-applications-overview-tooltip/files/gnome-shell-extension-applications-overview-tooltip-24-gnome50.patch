@@ -1,0 +1,11 @@
+--- a/metadata.json~	2025-09-23 09:01:16.000000000 +0200
++++ b/metadata.json	2026-09-19 20:22:39.571339456 +0200
+@@ -2,7 +2,7 @@
+   "description": "Shows a tooltip over applications icons on applications overview with application name and/or description.",
+   "name": "Applications Overview Tooltip",
+   "shell-version": [
+-    "46", "47", "48", "49"
++    "46", "47", "48", "49", "50"
+   ],
+   "settings-schema": "org.gnome.shell.extensions.applications-overview-tooltip",
+   "gettext-domain": "applications-overview-tooltip",
