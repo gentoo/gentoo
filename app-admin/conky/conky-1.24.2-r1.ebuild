@@ -119,6 +119,10 @@ REQUIRED_USE="
 	xinerama? ( X )
 "
 
+PATCHES=(
+	"${FILESDIR}/${P}-x11.patch"
+)
+
 CONFIG_CHECK="~IPV6"
 
 DOCS=( README.md AUTHORS )
