@@ -18,7 +18,7 @@ SEC_KEYS_VALIDPGPKEYS=(
 	'B902B5271325F892AC251AD441633B9FE837F581:mike.frysinger:manual,ubuntu,openpgp'
 	'C5B91BDAF3A89934720FBAB4C3013AEF00BC3D49:benoit.sigoure:manual'
 	'D363BF126B7F7F6FCDCE4F755234845DF2B920F5:alexandre.oliva:manual,ubuntu'
-	'FA26CA784BE188927F22B99F6570EA01146F7354:ileana.dumitrescu:manual,openpgp,ubuntu'
+	'FA26CA784BE188927F22B99F6570EA01146F7354:ileana.dumitrescu:manual,openpgp'
 )
 
 inherit sec-keys
