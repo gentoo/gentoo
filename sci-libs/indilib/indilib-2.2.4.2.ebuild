@@ -12,7 +12,7 @@ S="${WORKDIR}/${P/lib/}"
 
 LICENSE="BSD GPL-2+ LGPL-2+ LGPL-2.1+"
 SLOT="0/1"
-KEYWORDS="~amd64 ppc64 ~riscv"
+KEYWORDS="amd64 ppc64 ~riscv"
 IUSE="ogg rtlsdr test"
 
 RESTRICT="!test? ( test )"
