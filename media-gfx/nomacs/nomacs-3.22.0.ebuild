@@ -16,7 +16,7 @@ LICENSE="GPL-3+"
 SLOT="0"
 
 if [[ ${PV} != *_rc* ]] ; then
-	KEYWORDS="~amd64 ~arm64 ~riscv x86"
+	KEYWORDS="amd64 ~arm64 ~riscv x86"
 fi
 
 IUSE="+opencv plugins raw +tiff test zip"
