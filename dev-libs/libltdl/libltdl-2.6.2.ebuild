@@ -17,8 +17,8 @@ if ! [[ $(( $(ver_cut 2) % 2 )) -eq 0 ]] ; then
 	# Note that sometimes alpha versions have different versioning
 	# than this, so check on bumps!
 	SRC_URI="
-		https://alpha.gnu.org/gnu/${PN}/${MY_P}.tar.xz
-		verify-sig? ( https://alpha.gnu.org/gnu/${PN}/${MY_P}.tar.xz.sig )
+		https://alpha.gnu.org/gnu/libtool/${MY_P}.tar.xz
+		verify-sig? ( https://alpha.gnu.org/gnu/libtool/${MY_P}.tar.xz.sig )
 	"
 
 	BDEPEND="verify-sig? ( sec-keys/openpgp-keys-libtool )"
@@ -27,8 +27,8 @@ else
 	inherit verify-sig
 
 	SRC_URI="
-		mirror://gnu/${PN}/${MY_P}.tar.xz
-		verify-sig? ( mirror://gnu/${PN}/${MY_P}.tar.xz.sig )
+		mirror://gnu/libtool/${MY_P}.tar.xz
+		verify-sig? ( mirror://gnu/libtool/${MY_P}.tar.xz.sig )
 	"
 
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~arm64-macos ~x64-macos ~x64-solaris"
