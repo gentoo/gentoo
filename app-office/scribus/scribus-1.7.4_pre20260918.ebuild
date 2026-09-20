@@ -15,7 +15,7 @@ if [[ ${PV} == *9999* ]] ; then
 	inherit git-r3
 else
 	if [[ ${PV} == *_p* ]] ; then
-		SRC_URI="https://dev.gentoo.org/~asturm/distfiles/${P}.tar.xz"
+		SRC_URI="https://dev.gentoo.org/~asturm/distfiles/${P}.tar.xz" # r27861
 		S="${WORKDIR}/${PN^}"
 	else
 		SRC_URI="
