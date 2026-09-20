@@ -36,6 +36,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2026-09-20)
+# Suspicious bus error when rebuilding itself.
+>=dev-lang/pypy-2.7.8.0.0
+>=dev-python/pypy-exe-8.0.0
+>=dev-python/pypy-exe-bin-8.0.0
+
 # Jaco Kroon <jkroon@gentoo.org> (2026-09-16)
 # Intention was for STIR/SHAKEN, which has proven to have extremely limited
 # usability outside of NANP.  No revdeps.  Outdated.  Three different APIs and
