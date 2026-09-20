@@ -12,7 +12,7 @@ inherit autotools
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~riscv ~x86"
+KEYWORDS="amd64 ~ppc ~riscv x86"
 IUSE="nls debug"
 
 RDEPEND="
