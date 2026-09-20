@@ -222,6 +222,7 @@ _junit5_ConsoleLauncher() {
 		-Djava.awt.headless=true
 		"${JAVA_TEST_EXTRA_ARGS[@]}"
 		${runner}
+		execute
 		"${runner_args[@]}"
 		"${JAVA_TEST_RUNNER_EXTRA_ARGS[@]}"
 		"${@}"
