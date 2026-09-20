@@ -1,0 +1,24 @@
+--- a/misc/vim/migemo.vim
++++ b/misc/vim/migemo.vim
+@@ -26,10 +26,7 @@
+   if dict == ''
+     for path in [
+           \ '/usr/local/share/migemo/',
+-          \ '/usr/local/share/cmigemo/',
+-          \ '/usr/local/share/',
+-          \ '/usr/share/cmigemo/',
+-          \ '/usr/share/',
++          \ '/usr/share/migemo/',
+           \ ]
+       let path = path . a:name
+       if filereadable(path)
+@@ -45,9 +42,6 @@
+ function! s:SearchDict()
+   let dict = ''
+   if dict == ''
+-    let dict = s:SearchDict2('migemo/'.&encoding.'/migemo-dict')
+-  endif
+-  if dict == ''
+     let dict = s:SearchDict2(&encoding.'/migemo-dict')
+   endif
+   if dict == ''

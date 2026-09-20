@@ -17,7 +17,7 @@ IUSE="unicode vim"
 RDEPEND=">=app-dicts/migemo-dict-200812[unicode=]"
 DEPEND="${RDEPEND}"
 
-PATCHES=(  )
+PATCHES=( "${FILESDIR}"/${PN}-vim.patch )
 DOCS=( doc/README_ja.txt )
 
 src_configure() {
@@ -49,9 +49,9 @@ src_install() {
 
 	if use vim; then
 		insinto /usr/share/vim/vimfiles/plugin
-		doins misc/migemo.vim
+		doins misc/vim/migemo.vim
 
 		insinto /usr/share/vim/vimfiles/doc
-		doins misc/vimigemo.txt
+		doins misc/vim/vimigemo.txt
 	fi
 }
