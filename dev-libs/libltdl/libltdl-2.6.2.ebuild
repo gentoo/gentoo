@@ -11,12 +11,29 @@ MY_P="libtool-${PV}"
 
 DESCRIPTION="A shared library tool for developers"
 HOMEPAGE="https://www.gnu.org/software/libtool/"
-if true || ! [[ $(( $(ver_cut 2) % 2 )) -eq 0 ]] ; then
-	# 2.6.0 is an alpha release
-	SRC_URI="https://alpha.gnu.org/gnu/libtool/${MY_P}.tar.xz"
+if ! [[ $(( $(ver_cut 2) % 2 )) -eq 0 ]] ; then
+	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/libtool.asc
+	inherit verify-sig
+	# Note that sometimes alpha versions have different versioning
+	# than this, so check on bumps!
+	SRC_URI="
+		https://alpha.gnu.org/gnu/${PN}/${MY_P}.tar.xz
+		verify-sig? ( https://alpha.gnu.org/gnu/${PN}/${MY_P}.tar.xz.sig )
+	"
+
+	BDEPEND="verify-sig? ( sec-keys/openpgp-keys-libtool )"
 else
-	SRC_URI="mirror://gnu/libtool/${MY_P}.tar.xz"
+	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/libtool.asc
+	inherit verify-sig
+
+	SRC_URI="
+		mirror://gnu/${PN}/${MY_P}.tar.xz
+		verify-sig? ( mirror://gnu/${PN}/${MY_P}.tar.xz.sig )
+	"
+
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~arm64-macos ~x64-macos ~x64-solaris"
+
+	BDEPEND="verify-sig? ( sec-keys/openpgp-keys-libtool )"
 fi
 
 S="${WORKDIR}"/${MY_P}/libltdl
@@ -27,7 +44,7 @@ IUSE="static-libs"
 # libltdl doesn't have a testsuite.  Don't bother trying.
 RESTRICT="test"
 
-BDEPEND="app-arch/xz-utils"
+BDEPEND+=" app-arch/xz-utils"
 
 multilib_src_configure() {
 	# bug #907427
