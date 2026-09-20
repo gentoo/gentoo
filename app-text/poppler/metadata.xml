@@ -20,6 +20,7 @@
 <use>
 	<flag name="boost">Use boost::small_vector for a serious performance gain</flag>
 	<flag name="gpg">Enable signatures handling with <pkg>app-crypt/gpgme</pkg></flag>
+	<flag name="harfbuzz">Enable <pkg>media-libs/harfbuzz</pkg> for font-subsetting</flag>
 	<flag name="nss">Enable signatures handling with <pkg>dev-libs/nss</pkg></flag>
 	<flag name="utils">Install command-line PDF converters and various utilities</flag>
 </use>
