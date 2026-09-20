@@ -3,12 +3,8 @@ From: Xisco Fauli <xiscofauli@libreoffice.org>
 Date: Thu, 2 Apr 2026 11:32:02 +0200
 Subject: [PATCH] poppler: upgrade to 26.04
 
-Downloaded from https://poppler.freedesktop.org/poppler-26.04.0.tar.xz
+stripped of all the bundled update stuff ...
 
-Change-Id: I1e43d4a63da2f380b613718a897c3973ec9e16ce
-Reviewed-on: https://gerrit.libreoffice.org/c/core/+/203153
-Reviewed-by: Xisco Fauli <xiscofauli@libreoffice.org>
-Tested-by: Jenkins
 ---
  .../source/pdfimport/xpdfwrapper/pdfioutdev_gpl.cxx  |  4 +++-
  .../source/pdfimport/xpdfwrapper/pdfioutdev_gpl.hxx  |  4 +++-
