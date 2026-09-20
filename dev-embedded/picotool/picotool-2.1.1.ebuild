@@ -1,4 +1,4 @@
-# Copyright 2022-2025 Gentoo Authors
+# Copyright 2022-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -21,7 +21,7 @@ SRC_URI="
 # |- pico-sdk (BSD)
 LICENSE="BSD MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 RDEPEND="virtual/libusb:1"
 DEPEND="${RDEPEND}"
