@@ -79,7 +79,6 @@ BDEPEND+="
 	lua? ( ${LUA_DEPS} )
 	nls? ( sys-devel/gettext )
 "
-PDEPEND="!minimal? ( app-vim/gentoo-syntax )"
 
 # platform-specific checks (bug #898450 #898452):
 # - acl()     -- Solaris
