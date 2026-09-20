@@ -45,6 +45,10 @@ src_configure() {
 		$(use_enable openmp)
 }
 
+src_compile() {
+	emake CFLAGS="${CFLAGS}"
+}
+
 src_test() {
 	emake check CFLAGS="${CFLAGS} -Wno-error=incompatible-pointer-types"
 }
