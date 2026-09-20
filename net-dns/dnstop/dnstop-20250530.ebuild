@@ -13,7 +13,7 @@ S="${WORKDIR}/${PN}-${SRC_COMMIT}"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 arm ~hppa ppc x86"
+KEYWORDS="amd64 arm ~hppa ppc x86"
 
 RDEPEND="
 	sys-libs/ncurses:0
