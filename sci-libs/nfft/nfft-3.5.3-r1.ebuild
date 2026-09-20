@@ -56,10 +56,6 @@ src_test() {
 src_install() {
 	default
 
-	if ! use doc; then
-		rm -r "${ED}"/usr/share/doc/${P}/html || die
-	fi
-
 	# no static archives
 	find "${ED}" -name '*.la' -delete || die
 }
