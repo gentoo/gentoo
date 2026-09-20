@@ -90,7 +90,6 @@ BDEPEND+="
 	lua? ( ${LUA_DEPS} )
 	nls? ( sys-devel/gettext )
 "
-PDEPEND="!minimal? ( app-vim/gentoo-syntax )"
 
 # various failures (bugs #630042 and #682320)
 RESTRICT="test"
