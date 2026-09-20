@@ -13,12 +13,29 @@ inherit autotools flag-o-matic prefix multiprocessing
 if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="https://git.savannah.gnu.org/git/libtool.git"
 	inherit git-r3
-elif true || ! [[ $(( $(ver_cut 2) % 2 )) -eq 0 ]] ; then
-	# 2.6.0 is an alpha release
-	SRC_URI="https://alpha.gnu.org/gnu/${PN}/${P}.tar.xz"
+elif ! [[ $(( $(ver_cut 2) % 2 )) -eq 0 ]] ; then
+	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/libtool.asc
+	inherit verify-sig
+	# Note that sometimes alpha versions have different versioning
+	# than this, so check on bumps!
+	SRC_URI="
+		https://alpha.gnu.org/gnu/${PN}/${P}.tar.xz
+		verify-sig? ( https://alpha.gnu.org/gnu/${PN}/${P}.tar.xz.sig )
+	"
+
+	BDEPEND="verify-sig? ( sec-keys/openpgp-keys-libtool )"
 else
-	SRC_URI="mirror://gnu/${PN}/${P}.tar.xz"
+	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/libtool.asc
+	inherit verify-sig
+
+	SRC_URI="
+		mirror://gnu/${PN}/${P}.tar.xz
+		verify-sig? ( mirror://gnu/${PN}/${P}.tar.xz.sig )
+	"
+
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~arm64-macos ~x64-macos ~x64-solaris"
+
+	BDEPEND="verify-sig? ( sec-keys/openpgp-keys-libtool )"
 fi
 
 DESCRIPTION="A shared library tool for developers"
@@ -34,14 +51,12 @@ RDEPEND="
 	>=dev-build/automake-1.13:*
 "
 DEPEND="${RDEPEND}"
-[[ ${PV} == *9999 ]] && BDEPEND="sys-apps/help2man"
+[[ ${PV} == *9999 ]] && BDEPEND+=" sys-apps/help2man"
 
 # Note that we have more patches in https://gitweb.gentoo.org/proj/elt-patches.git/
 # for package builds. The patches here are just those which are definitely fine
 # for the system-wide libtool installation as well.
 PATCHES=(
-	# bug #109105
-	"${FILESDIR}"/${PN}-2.4.3-use-linux-version-in-fbsd.patch
 	# bug #581314
 	"${FILESDIR}"/${PN}-2.4.6-ppc64le.patch
 
