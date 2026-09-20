@@ -1,0 +1,43 @@
+From afa40ed531a3a9a4be3b43be35bad34675b57466 Mon Sep 17 00:00:00 2001
+From: Kostadin Shishmanov <kostadinshishmanov@protonmail.com>
+Date: Sun, 20 Sep 2026 01:05:50 +0300
+Subject: [PATCH] Fix building without dbus
+
+Signed-off-by: Kostadin Shishmanov <kostadinshishmanov@protonmail.com>
+---
+ src/libmain/api_base.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/src/libmain/api_base.c b/src/libmain/api_base.c
+index 79dd7964c..2232c3840 100644
+--- a/src/libmain/api_base.c
++++ b/src/libmain/api_base.c
+@@ -661,7 +661,9 @@ _ddca_terminate(void) {
+          dw_stop_watch_displays(/*wait=*/ true, &active_classes);   // in case it was started
+       DBGTRC_NOPREFIX(debug, DDCA_TRC_API, "After ddc_stop_watch_displays");
+       // sleep(5); // still needed?
++#ifdef USE_DBUS
+       ldbus_stop_sleep_watch_thread();
++#endif
+       terminate_dw_services();
+ #endif
+       terminate_ddc_services();
+@@ -884,6 +886,7 @@ ddci_init(const char *      libopts,
+          DBGF(debug, "init_tracing succeeded");
+    }
+
++#ifdef USE_DBUS
+    if (!master_error) {
+       DBGF(true, "Calling ldbus_start_sleep_watch_thread...");
+       bool ok = ldbus_start_sleep_watch_thread();   // right location?
+@@ -892,6 +895,7 @@ ddci_init(const char *      libopts,
+          // for now, don't set master_error
+       }
+    }
++#endif
+
+    if (!master_error) {
+       requested_stats = parsed_cmd->stats_types;
+--
+2.55.0
+
