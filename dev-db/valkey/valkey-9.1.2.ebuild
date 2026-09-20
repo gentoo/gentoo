@@ -17,7 +17,7 @@ SRC_URI="
 # deps/lua: MIT
 LICENSE="BSD || ( Apache-2.0 MIT Boost-1.0 ) Boost-1.0 CC0-1.0 MIT"
 SLOT="0/$(ver_cut 1-2)"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~amd64 ~arm arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 IUSE="jemalloc ssl systemd tcmalloc test"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="?? ( jemalloc tcmalloc )"
