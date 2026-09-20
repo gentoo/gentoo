@@ -10,7 +10,7 @@ HOMEPAGE="https://pfqueue.sourceforge.net/"
 SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc x86"
+KEYWORDS="amd64 ppc x86"
 
 BDEPEND="dev-build/libtool"
 RDEPEND="sys-libs/ncurses:="
