@@ -1,0 +1,51 @@
+From 6018a00d7d885e98d66a6cfa264cacacac966507 Mon Sep 17 00:00:00 2001
+From: brandon wright <33914549+bwrightkc@users.noreply.github.com>
+Date: Sun, 30 Aug 2026 08:16:45 -0500
+Subject: [PATCH] Fix building with Poppler 26.08.0, which now returns
+ std::optional<std::string> from getDocInfoStringEntry, by adding a matching
+ getString() overload.
+
+---
+ src/extension/internal/pdfinput/poppler-utils.cpp | 5 +++++
+ src/extension/internal/pdfinput/poppler-utils.h   | 2 ++
+ 2 files changed, 7 insertions(+)
+
+diff --git a/src/extension/internal/pdfinput/poppler-utils.cpp b/src/extension/internal/pdfinput/poppler-utils.cpp
+index 0a82574209..80b25af86f 100644
+--- a/src/extension/internal/pdfinput/poppler-utils.cpp
++++ b/src/extension/internal/pdfinput/poppler-utils.cpp
+@@ -648,6 +648,11 @@ std::string getDictString(Dict *dict, const char *key)
+     return getString(obj.getString());
+ }
+ 
++std::string getString(const std::optional<std::string> &value)
++{
++    return value ? getString(*value) : "";
++}
++
+ std::string getString(const std::unique_ptr<GooString> &value)
+ {
+     return getString(value.get());
+diff --git a/src/extension/internal/pdfinput/poppler-utils.h b/src/extension/internal/pdfinput/poppler-utils.h
+index 27675b758e..be1103da26 100644
+--- a/src/extension/internal/pdfinput/poppler-utils.h
++++ b/src/extension/internal/pdfinput/poppler-utils.h
+@@ -16,6 +16,7 @@
+ #include <array>
+ #include <map>
+ #include <memory>
++#include <optional>
+ #include <string>
+ #include <unordered_set>
+ #include <vector>
+@@ -84,6 +85,7 @@ FontList getPdfFonts(std::shared_ptr<PDFDoc> pdf_doc);
+ std::string getNameWithoutSubsetTag(std::string name);
+ std::string getDictString(Dict *dict, const char *key);
+ std::string getString(const std::string &value);
++std::string getString(const std::optional<std::string> &value);
+ std::string getString(const std::unique_ptr<GooString> &value);
+ std::string getString(const GooString *value);
+ std::string getString(const GooString &value);
+-- 
+GitLab
+
