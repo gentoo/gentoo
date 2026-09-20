@@ -16,7 +16,7 @@ HOMEPAGE="https://kmymoney.org/"
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
 	# SRC_URI="mirror://kde/stable/${PN}/${PV}/${P}.tar.xz"
 	SRC_URI="https://dev.gentoo.org/~asturm/distfiles/kde/${P}.tar.xz" # at a05ef0f9
-	KEYWORDS="~amd64"
+	KEYWORDS="amd64"
 fi
 
 LICENSE="GPL-2"
