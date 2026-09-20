@@ -62,15 +62,7 @@ _TEXLIVE_COMMON_ECLASS=1
 # configuration.
 # Called by app-text/texlive-core and texlive-module.eclass.
 texlive-common_handle_config_files() {
-	local texmf_path
-	# Starting with TeX Live 2023, we install in texmf-dist, where a
-	# distribution-provided TeX Live installation is supposed to be,
-	# instead of texmf.
-	if ver_test -ge 2023; then
-		texmf_path=/usr/share/texmf-dist
-	else
-		texmf_path=/usr/share/texmf
-	fi
+	local texmf_path=/usr/share/texmf-dist
 
 	# Handle config files properly
 	[[ -d ${ED}${texmf_path} ]] || return
@@ -202,8 +194,7 @@ etexmf-update() {
 		if [[ -z ${ROOT} && -x "${EPREFIX}"/usr/sbin/texmf-update ]] ; then
 			"${EPREFIX}"/usr/sbin/texmf-update
 			local res="${?}"
-			if [[ "${res}" -ne 0 ]] &&
-				   { [[ ${CATEGORY} != dev-texlive ]] || ver_test -ge 2023; } then
+			if [[ "${res}" -ne 0 && ${CATEGORY} != dev-texlive ]]; then
 				die -n "texmf-update returned non-zero exit status ${res}"
 			fi
 		else
@@ -255,18 +246,6 @@ texlive-common_append_to_src_uri() {
 
 		SRC_URI+=" ${tl_uri[*]/#/${tl_proj_tex_uri_prefix}}"
 		SRC_URI+=" ${tl_uri[*]/#/${tl_mirror}}"
-	elif ver_test -lt 2023 && [[ ${CATEGORY} == dev-texlive ]]; then
-		# If the version is less than 2023 and the package is the
-		# dev-texlive category, we fallback to the old SRC_URI layout. With
-		# the 2023 bump, packages outside the dev-texlive category start to
-		# inherit texlive-common.eclass.
-		local texlive_lt_2023_devs=( zlogene dilfridge sam )
-		local tl_uri_suffix="-${PV}.${tl_pkgext}"
-
-		tl_uri=( "${tl_uri[@]/%/${tl_uri_suffix}}" )
-		for tl_dev in "${texlive_lt_2023_devs[@]}"; do
-			SRC_URI+=" ${tl_uri[*]/#/${tl_uri_prefix/@dev@/${tl_dev}}}"
-		done
 	else
 		local texlive_ge_2023_devs=( flow )
 		local tl_mirror="${CTAN_MIRROR_URL%/}/systems/texlive/tlnet/archive/"
@@ -283,8 +262,6 @@ texlive-common_append_to_src_uri() {
 # @DESCRIPTION:
 # Update the TexLive package database at /usr/share/tlpkg/texlive.tlpdb.
 texlive-common_update_tlpdb() {
-	[[ -v TL_PV && ${TL_PV} -lt 2023 ]] && return
-
 	# If we are updating this package, then there is no need to update
 	# the tlpdb in postrm, as it will be again updated in postinst.
 	[[ ${EBUILD_PHASE} == postrm && -n ${REPLACED_BY_VERSION} ]] && return
