@@ -11,7 +11,7 @@ SRC_URI="https://github.com/gtk-gnutella/gtk-gnutella/archive/v${PV}.tar.gz -> $
 
 LICENSE="CC-BY-SA-4.0 GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ppc64 ~x86"
+KEYWORDS="~amd64 ~ppc ppc64 x86"
 
 IUSE="nls dbus ssl +gtk"
 
