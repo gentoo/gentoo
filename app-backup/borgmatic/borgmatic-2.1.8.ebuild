@@ -31,6 +31,7 @@ RDEPEND="
 	$(python_gen_cond_dep '
 		dev-python/jsonschema[${PYTHON_USEDEP}]
 		dev-python/packaging[${PYTHON_USEDEP}]
+		dev-python/psutil[${PYTHON_USEDEP}]
 		dev-python/requests[${PYTHON_USEDEP}]
 		dev-python/ruamel-yaml[${PYTHON_USEDEP}]
 	')
