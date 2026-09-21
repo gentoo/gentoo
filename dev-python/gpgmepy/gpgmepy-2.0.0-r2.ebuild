@@ -36,6 +36,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.0.0_pre20250603-python.patch
 	# https://github.com/gpg/gpgmepy/commit/a4b0c9f6e285c0a56b758f73cc4ee38c0b3e5c46
 	"${FILESDIR}"/${P}-test-fix.patch
+	"${FILESDIR}"/${PN}-2.0.0-swig-4.5.patch
 )
 
 src_prepare() {
