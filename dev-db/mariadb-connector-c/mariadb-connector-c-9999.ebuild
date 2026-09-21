@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,7 +9,7 @@ if [[ ${PV} == 9999 ]] ; then
 else
 	MY_PN=${PN#mariadb-}
 	MY_PV=${PV/_b/-b}
-	SRC_URI="https://downloads.mariadb.com/Connectors/c/connector-c-${PV}/${P}-src.tar.gz"
+	SRC_URI="https://archive.mariadb.org/connector-c-${PV}/${P}-src.tar.gz"
 	S="${WORKDIR%/}/${PN}-${MY_PV}-src"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~x86"
 fi
@@ -39,7 +39,11 @@ DEPEND="
 	)
 "
 BDEPEND="test? ( dev-db/mariadb[server] )"
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	!<dev-db/mariadb-11.4.7-r1
+	!=dev-db/mariadb-11.8.9-r1
+	!=dev-db/mariadb-12.3.3-r1
+"
 
 MULTILIB_CHOST_TOOLS=( /usr/bin/mariadb_config )
 MULTILIB_WRAPPED_HEADERS+=( /usr/include/mariadb/mariadb_version.h )
