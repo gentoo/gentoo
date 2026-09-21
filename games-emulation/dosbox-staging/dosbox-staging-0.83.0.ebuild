@@ -21,24 +21,24 @@ SRC_URI="https://github.com/dosbox-staging/dosbox-staging/archive/v${PV}.tar.gz 
 LICENSE="GPL-2+ sc55? ( XMAME )"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
-IUSE="debug dynrec mt-32 opengl +sc55 slirp test"
+IUSE="debug dynrec mt-32 +sc55 slirp test"
 
 RESTRICT="!test? ( test )"
 
 RDEPEND="debug? ( sys-libs/ncurses:0= )
 	mt-32? ( media-libs/munt-mt32emu )
-	opengl? ( virtual/opengl )
 	slirp? ( net-libs/libslirp )
 	dev-cpp/asio
 	media-libs/alsa-lib
 	media-libs/iir1
 	media-libs/libpng:0=
-	media-libs/libsdl2[alsa,joystick,opengl?,sound,video,X]
+	media-libs/libsdl2[alsa,joystick,opengl,sound,video,X]
 	media-libs/opusfile
 	media-libs/sdl2-image
 	media-libs/speexdsp
 	media-sound/fluid-soundfont
 	media-sound/fluidsynth
+	virtual/opengl
 	virtual/zlib:=
 	sys-libs/zlib-ng:=
 	!games-emulation/dosbox"
@@ -46,7 +46,9 @@ DEPEND="${RDEPEND}"
 BDEPEND="test? ( dev-cpp/gtest )
 	sc55? ( virtual/pkgconfig )"
 
-PATCHES=( "${FILESDIR}"/${P}-optional_mt32.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-optional_mt32.patch
+)
 DOCS=( README.md docs/AUTHORS )
 
 src_prepare() {
@@ -72,13 +74,14 @@ src_configure() {
 
 	# alsa is needed already by libsdl2[alsa,sound]
 	# xinput2 comes with libsdl2[X]
+	# opengl is needed for shader code and strongly recommended in all cases
 	local mycmakeargs=(
 		-DUSE_SYSTEM_LIBS=ON
+		-DOPT_OPENGL=ON
 		-DOPT_XINPUT=ON
 		-DOPT_DEBUGGER=$(usex debug)
 		-DOPT_FORCE_DYNREC=$(usex dynrec)
 		-DOPT_MT32EMU=$(usex mt-32)
-		-DOPT_OPENGL=$(usex opengl)
 		-DOPT_TESTS=$(usex test)
 	)
 	cmake_src_configure
