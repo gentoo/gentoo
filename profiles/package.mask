@@ -36,6 +36,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Ionen Wolkens <ionen@gentoo.org> (2026-09-21)
+# Breaks dev-qt/qtbase at build time (runtime is fine I believe) and
+# hasn't been looked into yet, mask for the time being.
+>=dev-libs/md4c-0.6.0
+
 # Jaco Kroon <jkroon@gentoo.org> (2026-09-16)
 # Intention was for STIR/SHAKEN, which has proven to have extremely limited
 # usability outside of NANP.  No revdeps.  Outdated.  Three different APIs and
