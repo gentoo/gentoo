@@ -49,6 +49,9 @@ DEPEND="
 	)
 "
 RDEPEND="${DEPEND}"
+DEPEND+="
+	dev-qt/qttranslations:6
+"
 # asciidoctor is needed to build manpages
 BDEPEND="
 	dev-libs/appstream
