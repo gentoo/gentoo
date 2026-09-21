@@ -18,7 +18,7 @@ else
 	SRC_URI="https://github.com/OpenPrinting/libcupsfilters/releases/download/${MY_PV}/${MY_P}.tar.xz"
 	S="${WORKDIR}"/${MY_P}
 
-	KEYWORDS="~amd64 ~arm"
+	KEYWORDS="~amd64 ~arm ~x86"
 fi
 
 LICENSE="Apache-2.0"
