@@ -36,13 +36,14 @@ REQUIRED_USE="${LUA_REQUIRED_USE}"
 RESTRICT="test"
 
 # dlopen: libglvnd
+# libunibreak upper bound: bug #983053
 RDEPEND="
 	${LUA_DEPS}
 	app-text/cmark:=
 	dev-games/physfs
 	>=dev-libs/libgit2-1.9.4:0/1.9
 	dev-libs/libpcre2:=
-	dev-libs/libunibreak:=
+	<dev-libs/libunibreak-8.0:=
 	dev-libs/libxml2:=
 	dev-libs/openssl:=
 	media-libs/dav1d:=
