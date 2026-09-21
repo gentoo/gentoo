@@ -237,8 +237,8 @@ src_configure() {
 	fi
 
 	if use browser; then
-		use amd64 && mycmakeargs+=( -DCEF_ROOT_DIR=../cef_binary_6533_linux_x86_64 )
-		use arm64 && mycmakeargs+=( -DCEF_ROOT_DIR=../cef_binary_6533_linux_aarch64 )
+		use amd64 && mycmakeargs+=( -DCEF_ROOT_DIR="${WORKDIR}/${CEF_AMD64}" )
+		use arm64 && mycmakeargs+=( -DCEF_ROOT_DIR="${WORKDIR}/${CEF_ARM64}" )
 		mycmakeargs+=( -DENABLE_WHATSNEW=ON )
 	else
 		mycmakeargs+=( -DENABLE_WHATSNEW=OFF )
