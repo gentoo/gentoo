@@ -26,6 +26,7 @@ RDEPEND="
 	$(python_gen_cond_dep '
 		dev-python/sympy[${PYTHON_USEDEP}]
 		dev-python/typing-extensions[${PYTHON_USEDEP}]
+		dev-python/networkx[${PYTHON_USEDEP}]
 	')
 "
 DEPEND="${RDEPEND}
