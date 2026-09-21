@@ -77,6 +77,7 @@ MULTILIB_WRAPPED_HEADERS=(
 
 PATCHES=(
 	"${FILESDIR}"/${P}-typo.patch
+	"${FILESDIR}"/${P}-another-typo.patch
 )
 
 src_prepare() {
