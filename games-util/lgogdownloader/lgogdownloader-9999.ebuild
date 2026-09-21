@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,7 +18,6 @@ HOMEPAGE="https://sites.google.com/site/gogdownloader/"
 
 LICENSE="WTFPL-2"
 SLOT="0"
-IUSE="gui"
 
 RDEPEND="
 	>=app-crypt/rhash-1.3.3-r2:0=
@@ -27,10 +26,6 @@ RDEPEND="
 	>=dev-libs/jsoncpp-1.7:0=
 	dev-libs/tinyxml2:0=
 	>=net-misc/curl-7.55:0=[ssl]
-	gui? (
-		dev-qt/qtbase:6[network,widgets]
-		dev-qt/qtwebengine:6[widgets]
-	)
 "
 
 DEPEND="
@@ -39,15 +34,7 @@ DEPEND="
 
 BDEPEND="
 	virtual/pkgconfig
-	gui? ( dev-qt/qtbase:6 )
 "
-
-src_configure() {
-	local mycmakeargs=(
-		-DUSE_QT_GUI=$(usex gui)
-	)
-	cmake_src_configure
-}
 
 src_install() {
 	cmake_src_install

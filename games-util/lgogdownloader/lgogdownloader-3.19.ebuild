@@ -18,7 +18,6 @@ HOMEPAGE="https://sites.google.com/site/gogdownloader/"
 
 LICENSE="WTFPL-2"
 SLOT="0"
-IUSE="gui"
 
 RDEPEND="
 	>=app-crypt/rhash-1.3.3-r2:0=
@@ -27,25 +26,15 @@ RDEPEND="
 	>=dev-libs/jsoncpp-1.7:0=
 	dev-libs/tinyxml2:0=
 	>=net-misc/curl-7.55:0=[ssl]
-	gui? (
-		dev-qt/qtbase:6[network,widgets]
-		dev-qt/qtwebengine:6[widgets]
-	)
 "
-DEPEND="${RDEPEND}"
+
+DEPEND="
+	${RDEPEND}
+"
+
 BDEPEND="
 	virtual/pkgconfig
-	gui? ( dev-qt/qtbase:6 )
 "
-
-PATCHES=( "${FILESDIR}/${P}-boost-1.89.patch" ) # bug 963665
-
-src_configure() {
-	local mycmakeargs=(
-		-DUSE_QT_GUI=$(usex gui)
-	)
-	cmake_src_configure
-}
 
 src_install() {
 	cmake_src_install
