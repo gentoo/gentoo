@@ -17,7 +17,7 @@ IUSE=""
 RESTRICT="test"
 
 RDEPEND="
-	>=dev-qt/qtbase-${QTMIN}:6[gui,network,xml]
+	>=dev-qt/qtbase-${QTMIN}:6[gui,network,ssl,xml]
 	>=kde-frameworks/kcoreaddons-${KDE_CATV}:6
 	>=kde-frameworks/ki18n-${KDE_CATV}:6
 "
