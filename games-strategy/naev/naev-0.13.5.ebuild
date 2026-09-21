@@ -12,6 +12,7 @@ DESCRIPTION="2D space trading and combat game, in a similar vein to Escape Veloc
 HOMEPAGE="https://naev.org/"
 # creating the vendor tarball first requires running src_compile until
 # it fails downloading crates in sandbox to generate several cargo files
+# https://codeberg.org/naev/naev/issues/3449
 SRC_URI="
 	https://codeberg.org/naev/naev/releases/download/v${PV}/${P}-source.tar.xz
 	https://distfiles.gentoo.org/pub/dev/ionen@gentoo.org/${P}-vendor.tar.xz
