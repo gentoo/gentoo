@@ -46,6 +46,10 @@ BDEPEND="
 "
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/jeremiegalarneau.asc
 
+PATCHES=(
+	"${FILESDIR}"/babeltrace-2.1.2-swig-4.5.patch
+)
+
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
 }
