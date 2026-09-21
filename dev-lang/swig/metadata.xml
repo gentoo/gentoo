@@ -15,7 +15,12 @@
 		MzScheme) are supported.
 	</longdescription>
 	<use>
+		<flag name="R">Enable support for dev-lang/R</flag>
+		<flag name="boost">Enable support for dev-libs/boost</flag>
 		<flag name="ccache">build ccache-swig(a fast compiler cache)</flag>
+		<flag name="go">Enable support for dev-lang/go</flag>
+		<flag name="npm">Enable support for net-libs/nodejs</flag>
+		<flag name="octave">Enable support for sci-mathematics/octave</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">swig/swig</remote-id>
