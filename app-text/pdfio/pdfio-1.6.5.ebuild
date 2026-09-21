@@ -18,7 +18,7 @@ else
 		verify-sig? ( https://github.com/michaelrsweet/pdfio/releases/download/v${PV}/${P}.tar.gz.sig )
 	"
 
-	KEYWORDS="~amd64 ~arm"
+	KEYWORDS="~amd64 ~arm ~x86"
 fi
 
 # TODO: extension
