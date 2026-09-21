@@ -1,0 +1,87 @@
+https://bugs.gentoo.org/983043
+https://github.com/libratbag/libratbag/pull/1878
+https://github.com/libratbag/libratbag/commit/1f4efda9553a5efbbd5be49def22f993ef1410ca
+
+From 1f4efda9553a5efbbd5be49def22f993ef1410ca Mon Sep 17 00:00:00 2001
+From: Ayoze Torres <53948812+ayozetr@users.noreply.github.com>
+Date: Wed, 12 Aug 2026 19:07:56 +0100
+Subject: [PATCH] swig: use the Python 3 C API instead of the removed PyInt_*
+ aliases (#1878)
+
+src/libratbag.i calls PyInt_Check(), PyInt_AsLong() and PyInt_FromLong().
+Those are Python 2 functions; they only ever worked because SWIG emitted
+compatibility macros mapping them onto their PyLong_* counterparts in the
+generated wrapper. SWIG 4.5.0 dropped those macros, so the generated
+libratbag.c no longer compiles:
+
+  libratbag.c: In function '_wrap_ratbag_device_get_vendor_id':
+  libratbag.c:4583:17: error: implicit declaration of function
+    'PyInt_FromLong'; did you mean 'PyLong_FromLong'?
+  libratbag.c:4583:15: error: assignment to 'PyObject *' from 'int' makes
+    pointer from integer without a cast [-Wint-conversion]
+
+Call the PyLong_* functions directly. The bindings are generated with
+swig -py3, so there is no Python 2 build to keep working, and the macros
+they replace expanded to exactly these functions.
+
+Built and verified on Arch Linux with swig 4.5.0, Python 3.14, meson 1.12.0, gcc 15: `_libratbag.so` and `_hidpp.so` link cleanly with the change and fail without it.
+
+Co-authored-by: Jitka Plesnikova <jplesnik@redhat.com>
+Signed-off-by: Stephen Kitt <skitt@debian.org>
+--- a/src/libratbag.i
++++ b/src/libratbag.i
+@@ -21,12 +21,12 @@
+   $1 = (unsigned int *) malloc(($2 + 1) * sizeof(unsigned int));
+   for (i = 0; i < $2; i++) {
+     PyObject *s = PyList_GetItem($input, i);
+-    if (!PyInt_Check(s)) {
++    if (!PyLong_Check(s)) {
+        free($1);
+        PyErr_SetString(PyExc_ValueError, "List items must be integers");
+        return NULL;
+     }
+-    $1[i] = PyInt_AsLong(s);
++    $1[i] = PyLong_AsLong(s);
+   }
+   $1[i] = 0;
+ }
+@@ -34,7 +34,7 @@
+ %typemap(argout) (unsigned int *resolutions, size_t nres) {
+   unsigned int i;
+   for (i = 0; i < $2; i++) {
+-    PyList_SetItem($input, i, PyInt_FromLong($1[i]));
++    PyList_SetItem($input, i, PyLong_FromLong($1[i]));
+   }
+ }
+ 
+@@ -61,24 +61,24 @@
+ 
+ /* uintXX_t mapping: Python -> C */
+ %typemap(in) uint8_t {
+-    $1 = (uint8_t) PyInt_AsLong($input);
++    $1 = (uint8_t) PyLong_AsLong($input);
+ }
+ %typemap(in) uint16_t {
+-    $1 = (uint16_t) PyInt_AsLong($input);
++    $1 = (uint16_t) PyLong_AsLong($input);
+ }
+ %typemap(in) uint32_t {
+-    $1 = (uint32_t) PyInt_AsLong($input);
++    $1 = (uint32_t) PyLong_AsLong($input);
+ }
+ 
+ /* uintXX_t mapping: C -> Python */
+ %typemap(out) uint8_t {
+-    $result = PyInt_FromLong((long) $1);
++    $result = PyLong_FromLong((long) $1);
+ }
+ %typemap(out) uint16_t {
+-    $result = PyInt_FromLong((long) $1);
++    $result = PyLong_FromLong((long) $1);
+ }
+ %typemap(out) uint32_t {
+-    $result = PyInt_FromLong((long) $1);
++    $result = PyLong_FromLong((long) $1);
+ }
+ 
+ /*  Parse the header file to generate wrappers */
