@@ -1,0 +1,31 @@
+https://bugs.gentoo.org/983043
+https://gitlab.com/apparmor/apparmor/-/merge_requests/2191
+https://gitlab.com/apparmor/apparmor/-/commit/6b80489953728aab8aeb4f9075283feb26e2e262
+
+From 6b80489953728aab8aeb4f9075283feb26e2e262 Mon Sep 17 00:00:00 2001
+From: Nazar Kazakov <nazar.kazakov@codethink.co.uk>
+Date: Thu, 13 Aug 2026 17:28:03 +0100
+Subject: [PATCH] libapparmor: swig: don't use removed macro %new_copy_array
+
+SWIG 4.5 removed this macro, see
+https://github.com/swig/swig/blob/v4.5.0/CHANGES.current#L840
+
+Signed-off-by: Nazar Kazakov <nazar.kazakov@codethink.co.uk>
+--- a/swig/SWIG/libapparmor.i
++++ b/swig/SWIG/libapparmor.i
+@@ -143,7 +143,11 @@ warnings.warn("free_record is now a no-op as the record's memory is handled auto
+   }
+   if (alloc_status != SWIG_NEWOBJ) {
+     // Unconditionally copy because the C function modifies the string in place
+-    $1 = %new_copy_array(con_ptr, con_len+1, char);
++    $1 = %new_array(con_len+1, char);
++    if ($1 == NULL) {
++      SWIG_exception_fail(SWIG_MemoryError, "could not allocate C con_ptr copy array");
++    }
++    memcpy($1, con_ptr, con_len+1);
+   } else {
+     $1 = con_ptr;
+   }
+-- 
+GitLab
+

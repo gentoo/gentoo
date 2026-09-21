@@ -52,6 +52,10 @@ BDEPEND="
 	)
 "
 
+PATCHES=(
+	"${FILESDIR}"/libapparmor-4.1.7-swig-4.5.patch
+)
+
 src_prepare() {
 	default
 
