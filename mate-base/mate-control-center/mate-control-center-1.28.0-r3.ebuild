@@ -50,7 +50,7 @@ COMMON_DEPEND="
 	>=x11-libs/libxklavier-4
 	x11-libs/pango
 	>=x11-wm/marco-1.17.0:=
-	accountsservice? ( sys-apps/accountsservice )
+	accountsservice? ( sys-apps/accountsservice:= )
 	systemd? ( sys-apps/systemd )
 "
 
