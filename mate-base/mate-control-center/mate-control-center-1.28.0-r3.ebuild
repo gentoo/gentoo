@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -72,6 +72,7 @@ PATCHES=(
 src_configure() {
 	mate_src_configure \
 		--disable-update-mimedb \
+		$(use_with accountsservice) \
 		$(use_enable nls) \
 		$(use_enable debug)
 }
