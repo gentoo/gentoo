@@ -45,6 +45,7 @@ PDEPEND="
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.3.8-install-symlinks.patch"
+	"${FILESDIR}/${P}-arm64.patch"
 )
 
 src_configure() {
