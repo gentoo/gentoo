@@ -13,7 +13,7 @@ SRC_URI="mirror://gentoo/TibetanMachineUnicodeFont-${PV}.zip"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 arm64 ~loong ~riscv x86"
+KEYWORDS="amd64 arm64 ~loong ~ppc ~riscv x86"
 
 BDEPEND="app-arch/unzip"
 
