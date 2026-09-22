@@ -36,6 +36,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2026-09-22)
+# Substantial rewrite to drop qpdf->pdfio has introduced some bugs, too
+# many fixes to backport and some aren't fixed at all yet (bug #983080,
+# and tagged onto bug #981565 too).
+~net-print/libcupsfilters-2.2.1
+
 # Ionen Wolkens <ionen@gentoo.org> (2026-09-21)
 # Breaks dev-qt/qtbase at build time (runtime is fine I believe) and
 # hasn't been looked into yet, mask for the time being.
