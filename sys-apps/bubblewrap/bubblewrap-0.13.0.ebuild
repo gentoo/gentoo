@@ -12,8 +12,8 @@ SRC_URI="https://github.com/containers/${PN}/releases/download/v${PV}/${P}.tar.x
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
-KEYWORDS="amd64 arm ~arm64 ~loong ppc ppc64 ~riscv x86"
-IUSE="selinux test"
+KEYWORDS=""
+IUSE="selinux test debug"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -36,7 +36,6 @@ RDEPEND+=" selinux? ( sec-policy/selinux-bubblewrap )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.11.2-no-werror.patch
-	"${FILESDIR}"/${PN}-0.12.0-musl.patch
 	"${FILESDIR}"/${PN}-0.12.0-tests-run.patch
 )
 
@@ -62,6 +61,7 @@ src_configure() {
 		-Dzsh_completion=enabled
 		-Dzsh_completion_dir="$(get_zshcompdir)"
 		-Dman=enabled
+		-Ddebug_logging=$(usex debug "true" "false")
 		$(meson_feature selinux)
 		$(meson_use test tests)
 	)
