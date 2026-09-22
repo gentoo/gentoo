@@ -1,0 +1,41 @@
+Don't force LTO, -Werror, or _F_S=2 (Gentoo defaults to >=2).
+--- a/configure.ac
++++ b/configure.ac
+@@ -46,10 +46,6 @@ AC_DEFUN([AC_CHECK_CFLAG], [
+ 	CFLAGS="$HOLD"
+ ])
+ 
+-AC_CHECK_CFLAG([[-flto=auto]])
+-AC_CHECK_CFLAG([[-fstack-clash-protection]])
+-AC_CHECK_CFLAG([[-fstack-protector-strong]])
+-
+ #
+ # Support for check unit tests
+ #
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -11,10 +11,7 @@ AM_CFLAGS = \
+ 	-DSYSCONFDIR=\"$(sysconfdir)\" \
+ 	-DYY_NO_INPUT \
+ 	-DYY_NO_UNPUT \
+-	-D_FORTIFY_SOURCE=2 \
+-	-Wall \
+-	-Werror
+-
++	-Wall
+ #
+ #
+ #
+--- a/tests/unit/Makefile.am
++++ b/tests/unit/Makefile.am
+@@ -7,9 +7,7 @@ AM_CFLAGS = \
+ 	@CHECK_CFLAGS@ \
+ 	-DYY_NO_INPUT \
+ 	-DYY_NO_UNPUT \
+-	-D_FORTIFY_SOURCE=2 \
+-	-Wall \
+-	-Werror
++	-Wall
+ 
+ AM_LDFLAGS = \
+ 	$(top_builddir)/src/builtin_table.o \
