@@ -28,6 +28,7 @@
   <use>
     <flag name="gev">Build with GeV instead of default MeV for momentum units</flag>
     <flag name="cm">Build with cm instead of default mm for length units</flag>
-    <flag name="root">Build with ROOTIO enabled</flag>
+    <flag name="root">Build with <pkg>sci-physics/root</pkg> IO enabled</flag>
+    <flag name="protobuf">Build with <pkg>dev-libs/protobuf</pkg> IO support</flag>
   </use>
 </pkgmetadata>
