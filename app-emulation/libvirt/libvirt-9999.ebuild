@@ -11,7 +11,7 @@ EAPI=8
 # Please bump them together!
 
 PYTHON_COMPAT=( python3_{11..14} )
-VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/libvirt.org.asc
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/libvirt.asc
 inherit meson flag-o-matic linux-info python-any-r1 readme.gentoo-r1
 inherit tmpfiles verify-sig
 
@@ -109,7 +109,7 @@ RDEPEND="
 		>=sys-auth/polkit-0.9
 	)
 	qemu? (
-		>=app-emulation/qemu-4.2
+		>=app-emulation/qemu-7.2
 		app-crypt/swtpm
 		dev-libs/json-c:=
 	)
@@ -157,7 +157,7 @@ PDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-11.0.0-Fix-paths-in-libvirt-guests.sh.in.patch
-	"${FILESDIR}"/${PN}-11.3.0-fix-paths-for-apparmor.patch
+	"${FILESDIR}"/${PN}-12.6.0-fix-paths-for-apparmor.patch
 	"${FILESDIR}"/${PN}-12.2.0-do-not-use-sysconfig.patch
 )
 
