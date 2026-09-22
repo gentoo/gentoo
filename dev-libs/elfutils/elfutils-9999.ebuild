@@ -28,7 +28,7 @@ fi
 
 LICENSE="|| ( GPL-2+ LGPL-3+ ) utils? ( GPL-3+ )"
 SLOT="0"
-IUSE="bzip2 +debuginfod +libarchive libpfm +lzma nls static-libs test +utils valgrind zstd"
+IUSE="bzip2 +debuginfod +libarchive libpfm +lzma nls stackprof static-libs test +utils valgrind zstd"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="debuginfod? ( libarchive )"
 
@@ -44,7 +44,10 @@ RDEPEND="
 	)
 	libarchive? ( >=app-arch/libarchive-3.1.2:= )
 	lzma? ( >=app-arch/xz-utils-5.0.5-r1[static-libs?,${MULTILIB_USEDEP}] )
-	utils? ( libpfm? ( dev-libs/libpfm:= ) )
+	stackprof? (
+		>=dev-libs/json-c-0.11:=
+		libpfm? ( dev-libs/libpfm:= )
+	)
 	zstd? ( app-arch/zstd:=[static-libs?,${MULTILIB_USEDEP}] )
 	elibc_musl? (
 		dev-libs/libbsd
@@ -66,6 +69,7 @@ BDEPEND+="
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.189-musl-aarch64-regs.patch
 	"${FILESDIR}"/${PN}-0.191-musl-macros.patch
+	"${FILESDIR}"/${PN}-0.196-skip-static-test.patch
 )
 
 src_prepare() {
@@ -130,7 +134,7 @@ multilib_src_configure() {
 		# Could do dummy if needed? We could also split libdebuginfod
 		# (client support) into its own USE if required.
 		$(multilib_native_use_enable debuginfod libdebuginfod)
-		$(multilib_native_use_enable utils stackprof)
+		$(multilib_native_use_enable stackprof)
 		$(use_enable valgrind valgrind-annotations)
 
 		# Explicitly disable thread safety, it's not recommended by upstream

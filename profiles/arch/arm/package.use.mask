@@ -1,6 +1,10 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2026-09-23)
+# Only supported on some arches.
+dev-libs/elfutils -stackprof
+
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2026-08-16)
 # Blocks removal of vulnerable old dev-java/openjdk-bin-8.492_p09
 ~sys-devel/gettext-0.21.1 java

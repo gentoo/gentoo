@@ -6,6 +6,10 @@
 
 # New entries go on top.
 
+# Sam James <sam@gentoo.org> (2026-09-23)
+# Only supported on Linux.
+dev-libs/elfutils stackprof
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2026-09-19)
 # Building documentation is broken in this version. Bug #976293
 ~dev-cpp/eigen-3.4.1 doc

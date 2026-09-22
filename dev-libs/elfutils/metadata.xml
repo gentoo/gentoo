@@ -20,6 +20,9 @@
 
 			See https://developers.redhat.com/articles/2024/06/11/get-system-wide-profiles-binaries-without-frame-pointers.
 		</flag>
+		<flag name="stackprof">
+			Build eu-stackprof tool: a tool for collecting system-wide stacktrace profiles.
+		</flag>
 		<flag name="utils">Install command-line utilities (all the eu-* programs).</flag>
 	</use>
 	<upstream>
