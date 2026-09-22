@@ -19,23 +19,23 @@ LICENSE="
 
 SLOT="0"
 
-KEYWORDS="amd64 ~arm arm64 ~riscv x86"
+KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64 ~riscv x86"
 
-IUSE="audit debug bluetooth-sound branding elogind fprint plymouth selinux systemd tcpd test video_cards_nvidia +X"
+IUSE="accessibility audit bluetooth-sound branding elogind fprint plymouth selinux systemd tcpd test wayland +X"
 
 RESTRICT="!test? ( test )"
-REQUIRED_USE="^^ ( elogind systemd )"
+REQUIRED_USE="^^ ( elogind systemd ) || ( wayland X )"
 
 # dconf, dbus and g-s-d are needed at install time for dconf update
 # keyutils is automagic dep that makes autologin unlock login keyring
 # when all the passwords match (disk encryption, user pw and login keyring)
-# dbus-run-session used at runtime.
+# dbus-run-session used at runtime
 COMMON_DEPEND="
 	virtual/udev
 	>=dev-libs/libgudev-232:=
 	>=dev-libs/glib-2.68:2
 	>=dev-libs/json-glib-1.2.0
-	>=sys-apps/accountsservice-0.6.35
+	>=sys-apps/accountsservice-0.6.35:=
 	sys-apps/keyutils:=
 	selinux? ( sys-libs/libselinux )
 
@@ -49,7 +49,7 @@ COMMON_DEPEND="
 	)
 	tcpd? ( >=sys-apps/tcp-wrappers-7.6 )
 
-	systemd? ( >=sys-apps/systemd-257:0=[pam] )
+	systemd? ( >=sys-apps/systemd-186:0=[pam] )
 	elogind? ( >=sys-auth/elogind-239.3[pam] )
 
 	plymouth? ( sys-boot/plymouth )
@@ -72,26 +72,21 @@ COMMON_DEPEND="
 RDEPEND="${COMMON_DEPEND}
 	acct-group/gdm
 	acct-user/gdm
-	>=gnome-base/gnome-shell-49
+	>=gnome-base/gnome-session-3.6
+	>=gnome-base/gnome-shell-3.1.90
 	x11-apps/xhost
 
-	fprint? ( sys-auth/fprintd[pam] )
-	systemd? (
-		video_cards_nvidia? (
-			x11-drivers/nvidia-drivers
-			sys-apps/acl
-		)
+	accessibility? (
+		>=app-accessibility/orca-3.10
+		gnome-extra/mousetweaks
 	)
+	fprint? ( sys-auth/fprintd[pam] )
 "
-# This is a 'workaround' built into gdm 49, as elogind does not yet have
-# 'working' userdb support in stable or testing.
-# https://github.com/elogind/elogind/issues/323
-RDEPEND+="elogind? ( acct-user/gdm-greeter )"
 DEPEND="${COMMON_DEPEND}
 	x11-base/xorg-proto
 "
 BDEPEND="
-	dev-util/gdbus-codegen
+	>=dev-util/gdbus-codegen-2.80.5-r1
 	dev-util/glib-utils
 	dev-util/itstool
 	>=gnome-base/dconf-0.20
@@ -116,21 +111,16 @@ DOC_CONTENTS="
 	for smartcard support
 "
 
-PATCHES=(
-	# Multiple upstream fixes from 49.x and 50.x branches
-	"${FILESDIR}"/${P}-display-reference.patch
-	"${FILESDIR}"/${P}-boot_display-sysfs.patch
-	"${FILESDIR}"/${P}-property-none.patch
-	"${FILESDIR}"/${P}-wayland-nox11.patch
-	"${FILESDIR}"/${P}-XDG_SESSION_EXTRA_DEVICE_ACCESS.patch
-)
-
 src_prepare() {
 	default
 
 	# Show logo when branding is enabled
 	use branding && eapply "${FILESDIR}/${PN}-3.30.3-logo.patch"
-	eapply "${FILESDIR}/gdm-pam-openrc.patch"
+
+	# Drop nvidia check due to https://bugs.gentoo.org/873154#c8
+	eapply "${FILESDIR}/${P}-stop-disabling-nvidia.patch"
+
+	eapply "${FILESDIR}/47.0-c23.patch"
 }
 
 src_configure() {
@@ -158,6 +148,7 @@ src_configure() {
 		-Dudev-dir=$(get_udevdir)/rules.d
 		-Duser=gdm
 		-Duser-display-server=true
+		$(meson_use wayland wayland-support)
 		$(meson_use X x11-support)
 		$(meson_feature X xdmcp)
 	)
@@ -182,18 +173,15 @@ src_configure() {
 src_install() {
 	meson_src_install
 
+	if ! use accessibility ; then
+		rm "${ED}"/usr/share/gdm/greeter/autostart/orca-autostart.desktop || die
+	fi
+
 	if ! use bluetooth-sound ; then
 		# Workaround https://gitlab.freedesktop.org/pulseaudio/pulseaudio/merge_requests/10
 		# bug #679526
 		insinto /var/lib/gdm/.config/pulse
 		doins "${FILESDIR}"/default.pa
-	fi
-
-	# Ensure that gdm-greeter-XXX dynamic users have the needed
-	# permissions on nvidia systems, bug #973590
-	if use systemd && use video_cards_nvidia; then
-		insinto /usr/lib/systemd/system/gdm.service.d
-		doins "${FILESDIR}/90-nvidia-acl.conf"
 	fi
 
 	# install XDG_DATA_DIRS gdm changes
