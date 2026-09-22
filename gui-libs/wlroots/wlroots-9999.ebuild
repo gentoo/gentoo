@@ -35,9 +35,9 @@ RDEPEND="
 	>=dev-libs/wayland-1.24.0
 	media-libs/libglvnd
 	>=media-libs/mesa-24.1.0_rc1[opengl]
-	>=x11-libs/libdrm-2.4.129
+	>=x11-libs/libdrm-2.4.134
 	>=x11-libs/libxkbcommon-1.8.0
-	>=x11-libs/pixman-0.43.0
+	>=x11-libs/pixman-0.46.0
 	drm? (
 		media-libs/libdisplay-info:=
 		sys-apps/hwdata
@@ -96,7 +96,7 @@ src_configure() {
 		$(meson_feature X xwayland)
 		-Dbackends=${meson_backends}
 		$(meson_feature session)
-		$(meson_feature lcms color-management)
+		$(meson_feature lcms icc-profile)
 		$(meson_feature liftoff libliftoff)
 	)
 
