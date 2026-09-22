@@ -16,7 +16,7 @@ HOMEPAGE="https://okular.kde.org https://apps.kde.org/okular/"
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="6"
 KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
-IUSE="crypt djvu epub markdown mobi +pdf +postscript qml share speech +tiff"
+IUSE="crypt djvu epub markdown mobi +pdf +postscript share speech +tiff"
 
 # slot op: Uses Qt6::CorePrivate
 DEPEND="
@@ -57,11 +57,9 @@ DEPEND="
 "
 RDEPEND="${DEPEND}
 	>=kde-frameworks/kimageformats-${KFMIN}:6
-	qml? ( >=kde-frameworks/kirigami-${KFMIN}:6 )
 "
 
 PATCHES=(
-	"${FILESDIR}/${PN}-26.07.70-hide-mobile-app.patch" # downstream; avoid same-name entry
 	"${FILESDIR}/${PN}-23.08.5-implicit-vasprintf.patch" # bug 922345; pending upstream
 )
 
@@ -76,7 +74,7 @@ CMAKE_SKIP_TESTS=(
 src_configure() {
 	local mycmakeargs=(
 		-DFORCE_NOT_REQUIRED_DEPENDENCIES="KF6DocTools;KF6Wallet;DjVuLibre;EPub;Discount;QMobipocket6;Poppler;LibSpectre;KF6Purpose;Qt6TextToSpeech;TIFF;"
-		-DOKULAR_UI=$(usex qml "both" "desktop")
+		-DOKULAR_UI=desktop
 		$(cmake_use_find_package crypt KF6Wallet)
 		$(cmake_use_find_package djvu DjVuLibre)
 		$(cmake_use_find_package epub EPub)
