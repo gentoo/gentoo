@@ -17,7 +17,7 @@ SRC_URI="http://www.quivira-font.com/files/${MY_PN}.otf -> ${P}.otf
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~loong ppc ~riscv x86"
+KEYWORDS="amd64 arm arm64 ~loong ppc ~ppc64 ~riscv x86"
 IUSE="doc"
 
 S="${WORKDIR}"
