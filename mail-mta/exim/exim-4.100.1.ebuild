@@ -115,6 +115,7 @@ src_prepare() {
 	eapply     "${FILESDIR}"/exim-4.69-r1.27021.patch
 	eapply     "${FILESDIR}"/exim-4.97-localscan_dlopen.patch
 	eapply     "${FILESDIR}"/exim-4.97-no-exim_id_update.patch
+	eapply     "${FILESDIR}"/exim-4.100.1-miscmods-no-direct-ld.patch # 982617
 
 	if use maildir ; then
 		eapply "${FILESDIR}"/exim-4.94-maildir.patch
