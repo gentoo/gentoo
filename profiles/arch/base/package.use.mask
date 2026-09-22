@@ -1,6 +1,10 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (2026-09-22)
+# Fortran modules require llvm-core/flang.
+llvm-runtimes/openmp fortran
+
 # James Le Cuirot <chewi@gentoo.org> (2026-09-05)
 # VIS is a sparc-specific SIMD optimisation.
 media-libs/libggi vis

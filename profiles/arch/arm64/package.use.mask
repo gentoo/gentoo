@@ -1,6 +1,10 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (2026-09-22)
+# Fortran modules require llvm-core/flang.
+llvm-runtimes/openmp -fortran
+
 # Ionen Wolkens <ionen@gentoo.org> (2026-08-19)
 # arm64 is only supported in >=wine-mono-11.3.0 which is only used by
 # >=wine-11.16 (-mono is to override global use.mask, keeping duplicate

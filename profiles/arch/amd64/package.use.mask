@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2026-09-22)
+# Fortran modules require llvm-core/flang.
+llvm-runtimes/openmp -fortran
+
 # Sam James <sam@gentoo.org> (2026-07-22)
 # media-libs/libmysofa is keyworded here
 media-video/pipewire -sofa
