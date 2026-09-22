@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,7 +8,7 @@ HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 
 LICENSE="metapackage"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~loong ~riscv x86"
+KEYWORDS="amd64 arm64 ~loong ~riscv x86"
 IUSE="cjk emoji +latin ms"
 
 LANGS="as bn bo brx doi dz gu hi km kn kok ks mai ml mr ne or pa ru sa sat sd si syc ta te th"
