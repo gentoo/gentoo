@@ -18,7 +18,7 @@ S="${WORKDIR}/protobuf-${MY_PV}"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~arm64"
+KEYWORDS="amd64 ~arm64 ~ppc64"
 IUSE="system-protoc"
 
 BDEPEND="
