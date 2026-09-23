@@ -39,7 +39,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.31.1-ggml.patch
-	"${FILESDIR}"/${P}-cmake.patch
+	"${FILESDIR}"/${PN}-0.34.2-cmake.patch
 )
 
 src_prepare() {
