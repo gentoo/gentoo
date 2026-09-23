@@ -88,6 +88,8 @@ RDEPEND="
 	dev-libs/nss
 	media-libs/alsa-lib
 	media-libs/libglvnd
+	media-libs/mesa
+	media-libs/vulkan-loader
 	net-print/cups
 	sys-apps/dbus
 	sys-apps/util-linux
@@ -125,9 +127,8 @@ src_unpack() {
 src_prepare() {
 	default
 
-	# Unbundle some libraries. We used to unbundle libEGL, libGLESv2, and
-	# libvulkan, but that now causes CrossCode to crash.
-	rm -r lib/libffmpeg.so swiftshader/ || die
+	# Unbundle some libraries.
+	rm -rv lib/lib{EGL,ffmpeg,GLESv2,vulkan}.so* swiftshader/ || die
 
 	cd locales || die
 	rm {ar-XB,en-XA}*.pak* || die # No flags for pseudo locales.
