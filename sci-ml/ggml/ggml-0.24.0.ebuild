@@ -4,7 +4,7 @@
 EAPI=8
 
 ROCM_VERSION=7.2
-inherit cuda cmake rocm toolchain-funcs
+inherit cuda cmake rocm toolchain-funcs flag-o-matic
 
 DESCRIPTION="Tensor library for machine learning"
 HOMEPAGE="https://ggml.ai/"
@@ -69,6 +69,7 @@ src_prepare() {
 
 	if use cuda; then
 		cuda_src_prepare
+		filter-lto #bug 983121
 	fi
 }
 
