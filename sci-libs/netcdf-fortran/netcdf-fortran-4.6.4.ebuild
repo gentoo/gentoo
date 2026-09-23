@@ -24,11 +24,6 @@ DEPEND="
 "
 BDEPEND="doc? ( app-text/doxygen[dot] )"
 
-src_prepare() {
-	touch docs/footer.html || die
-	cmake_src_prepare
-}
-
 src_configure() {
 	append-fflags -fallow-argument-mismatch
 
