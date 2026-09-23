@@ -34,7 +34,7 @@ RDEPEND="
 	>=dev-libs/glib-2.84:2
 	sys-apps/file
 	x11-libs/cairo
-	>=x11-libs/gtk+-3.24:3[wayland?,X?]
+	>=gui-libs/gtk-4.12[wayland?,X?]
 	x11-libs/pango
 	seccomp? ( sys-libs/libseccomp )
 	synctex? ( app-text/texlive-core )
