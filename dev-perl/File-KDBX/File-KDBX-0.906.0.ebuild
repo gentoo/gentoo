@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Encrypted database to store secret text and files"
 
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 
 # File::KeePass::KDBX
 RDEPEND="
