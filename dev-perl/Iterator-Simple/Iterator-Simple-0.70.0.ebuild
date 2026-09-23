@@ -10,6 +10,6 @@ inherit perl-module
 DESCRIPTION="Simple iterator and utilities"
 
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 
 BDEPEND="dev-perl/Module-Install"
