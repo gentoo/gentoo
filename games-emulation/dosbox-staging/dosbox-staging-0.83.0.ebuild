@@ -48,6 +48,7 @@ BDEPEND="test? ( dev-cpp/gtest )
 
 PATCHES=(
 	"${FILESDIR}"/${P}-optional_mt32.patch
+	"${FILESDIR}"/${P}-any-cpu.patch
 )
 DOCS=( README.md docs/AUTHORS )
 
