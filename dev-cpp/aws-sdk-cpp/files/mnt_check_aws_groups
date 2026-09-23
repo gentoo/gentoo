@@ -15,7 +15,14 @@ in_array() {
 	return 1
 }
 
-. /usr/libexec/rc/sh/functions.sh
+if [[ -r /usr/libexec/rc/sh/functions.sh ]]; then
+	# We have openrc so high-jack these for prettier output.
+	. /usr/libexec/rc/sh/functions.sh
+else
+	ebegin() { echo "$*"; }
+	eend() { :; }
+	eerror() { echo "$*"; }
+fi
 
 for eb in "$@"; do
 	unset AWS_GROUPS
