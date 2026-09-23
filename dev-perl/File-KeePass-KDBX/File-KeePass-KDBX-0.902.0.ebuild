@@ -18,3 +18,8 @@ RDEPEND="
 	dev-perl/boolean
 	dev-perl/namespace-clean
 "
+BDEPEND="
+	test? (
+		dev-perl/Test-Deep
+	)
+"
