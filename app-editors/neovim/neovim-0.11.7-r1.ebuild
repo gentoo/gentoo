@@ -16,7 +16,7 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/neovim/neovim.git"
 else
 	SRC_URI="https://github.com/neovim/neovim/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86 ~x64-macos"
+	KEYWORDS="amd64 ~arm arm64 ~ppc ~ppc64 ~riscv x86 ~x64-macos"
 fi
 
 LICENSE="Apache-2.0 vim"
@@ -41,7 +41,7 @@ BDEPEND="${LUA_DEPS}
 # new dependency bounds and so on on bumps (obviously adjust for right branch/tag).
 # List of required tree-sitter parsers is taken from cmake.deps/deps.txt
 DEPEND="${LUA_DEPS}
-	>=dev-lua/luv-1.52.1[${LUA_SINGLE_USEDEP}]
+	>=dev-lua/luv-1.50.0[${LUA_SINGLE_USEDEP}]
 	$(lua_gen_cond_dep '
 		dev-lua/lpeg[${LUA_USEDEP}]
 		dev-lua/mpack[${LUA_USEDEP}]
@@ -49,16 +49,16 @@ DEPEND="${LUA_DEPS}
 	$(lua_gen_cond_dep '
 		dev-lua/LuaBitOp[${LUA_USEDEP}]
 	' lua5-{1,2})
-	>=dev-libs/libutf8proc-2.11.3:=[-cjk]
+	>=dev-libs/libutf8proc-2.10.0:=[-cjk]
 	>=dev-libs/libuv-1.50.0:=
 	>=dev-libs/libvterm-0.3.3
 	>=dev-libs/msgpack-3.0.0:=
-	=dev-libs/tree-sitter-0.26*:=
-	=dev-libs/tree-sitter-c-0.24.1*
-	=dev-libs/tree-sitter-lua-0.5*
+	=dev-libs/tree-sitter-0.25*:=
+	=dev-libs/tree-sitter-c-0.24*
+	=dev-libs/tree-sitter-lua-0.4*
 	=dev-libs/tree-sitter-markdown-0.5*
-	=dev-libs/tree-sitter-query-0.8.0*
-	=dev-libs/tree-sitter-vim-0.8*
+	=dev-libs/tree-sitter-query-0.6.2*
+	=dev-libs/tree-sitter-vim-0.7*
 	=dev-libs/tree-sitter-vimdoc-4*
 	>=dev-libs/unibilium-2.1.2:0=
 "
@@ -74,6 +74,7 @@ BDEPEND+="
 
 PATCHES=(
 	"${FILESDIR}/${PN}-0.9.0-cmake_lua_version.patch"
+	"${FILESDIR}/${PN}-9999-cmake-darwin.patch"
 )
 
 src_prepare() {
