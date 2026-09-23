@@ -133,6 +133,14 @@ src_configure() {
 	append-cflags -fno-strict-aliasing
 	append-cxxflags -fno-strict-aliasing
 
+	# needs upstream fix
+	# 982708
+	# https://github.com/NGSolve/netgen/issues/226
+	if use arm || use arm64; then
+		append-cflags -flax-vector-conversions
+		append-cxxflags -flax-vector-conversions
+	fi
+
 	local mycmakeargs=(
 		# currently not working in a sandbox, expects netgen to be installed
 		# see https://github.com/NGSolve/netgen/issues/132
