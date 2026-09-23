@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="An abstract representation of build processes"
 
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
 	dev-perl/ExtUtils-Config
