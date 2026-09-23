@@ -36,13 +36,14 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-5.0.1-deps.patch
-)
-
 src_prepare() {
 	# The bundled cppdap is heavily modified.
 	rm -r docs/licenses libraries/{bzip2,webp} || die
+
+	# These trigger CMake QA warnings but are unused.
+	rm -v libraries/cppdap/third_party/json/CMakeLists.txt \
+		libraries/ZMusic/thirdparty/dumb/cmake/CMakeLists.txt || die
+
 	cmake_src_prepare
 
 	cat <<-EOF > "${S}/src/gitinfo.h" || die
