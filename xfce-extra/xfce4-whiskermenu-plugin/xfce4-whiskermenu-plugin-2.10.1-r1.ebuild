@@ -27,7 +27,7 @@ DEPEND="
 	>=xfce-base/xfce4-panel-4.16.0:=
 	>=xfce-base/xfconf-4.16.0:=
 	accountsservice? (
-		>=sys-apps/accountsservice-0.6.45
+		>=sys-apps/accountsservice-0.6.45:=
 	)
 	wayland? (
 		>=gui-libs/gtk-layer-shell-0.7
