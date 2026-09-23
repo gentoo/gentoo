@@ -73,7 +73,7 @@ case ${VERIFY_SIG_METHOD} in
 					app-alternatives/gpg
 					app-crypt/gnupg[-alternatives(-)]
 				)
-				>=app-portage/gemato-20
+				>=app-portage/gemato-20.15
 			)
 		"
 		;;
