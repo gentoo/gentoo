@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Read and write KDBX files (using the File::KDBX backend)"
 
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
 	dev-perl/CryptX
