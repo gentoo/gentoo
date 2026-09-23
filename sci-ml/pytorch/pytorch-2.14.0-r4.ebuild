@@ -73,6 +73,7 @@ RDEPEND="
 	dev-libs/sleef
 	sci-ml/onnx
 	$(python_gen_cond_dep '
+		dev-python/networkx[${PYTHON_USEDEP}]
 		dev-python/sympy[${PYTHON_USEDEP}]
 		dev-python/typing-extensions[${PYTHON_USEDEP}]
 	')
