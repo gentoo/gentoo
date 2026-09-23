@@ -521,6 +521,12 @@ pkg_postinst() {
 		ewarn "Starting VLC GUI is only supported by using its desktop file."
 		ewarn "Manually calling vlc from command line is known to break in Wayland sessions."
 
+		if has_version "<${CATEGORY}/${PN}-4[gui]"; then
+			ewarn
+			ewarn "Upgrade from VLC-3 detected. If you experience runtime issues,"
+			ewarn "try cleaning up ~/.config/vlc first."
+		fi
+
 		xdg_pkg_postinst
 	fi
 }
