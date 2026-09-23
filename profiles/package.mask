@@ -321,43 +321,6 @@ x11-drivers/xf86-video-vmware
 # Tries to delete many files (bug #975236)
 =dev-util/jenkins-bin-2.561
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2026-05-15)
-# Qt5 qtbase module. Bug #948836
-# Removal on 2026-06-30.
-dev-qt/qtconcurrent:5
-dev-qt/qtcore:5
-dev-qt/qtdbus:5
-dev-qt/qtgui:5
-dev-qt/qtnetwork:5
-dev-qt/qtopengl:5
-dev-qt/qtprintsupport:5
-dev-qt/qtsql:5
-dev-qt/qttest:5
-dev-qt/qtwidgets:5
-dev-qt/qtxml:5
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2026-05-15)
-# Qt5 non-qtbase modules. Bugs #948836, #964253
-# Removal on 2026-06-30.
-dev-qt/linguist-tools:5
-dev-qt/qtdeclarative:5
-dev-qt/qtgraphicaleffects:5
-dev-qt/qtmultimedia:5
-dev-qt/qtquickcontrols:5
-dev-qt/qtquickcontrols2:5
-dev-qt/qtsvg:5
-dev-qt/qttranslations:5
-dev-qt/qtwayland:5
-dev-qt/qtx11extras:5
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2026-05-15)
-# USE=gui in this version depends on Qt5 and can no longer be supported.
-# VLC-4 snapshots are provided with a Qt6-based USE=gui.
-# Alternatives for stable users are media-video/mpv, media-video/haruna,
-# media-video/smplayer, media-video/qmplay2 and probably many more.
-# Bug #954006. Removal some time after 2026-05-30.
-=media-video/vlc-3.0.23
-
 # Sam James <sam@gentoo.org> (2026-05-05)
 # dev-debug/pwndbg itself needs >=dev-util/unicorn-2.1.4, while
 # pwndbg also depends on dev-util/pwntools which needs <dev-util/unicorn-2.1.4.
@@ -365,11 +328,6 @@ dev-qt/qtx11extras:5
 # Mask to avoid Portage wasting time trying to find a solution, when
 # the only one available is to downgrade.
 >=dev-util/pwntools-4.15.0
-
-# Daniel Pielmeier <billie@gentoo.org> (2026-04-21)
-# Mask last version with USE qt5 which is about to be last rited.
-# Bugs #950282, #961920. Remove with other Qt5 masks.
-<net-print/hplip-3.25.8-r1
 
 # Sam James <sam@gentoo.org> (2026-04-19)
 # Major new release with lots of broken packages expected. Notably, even
