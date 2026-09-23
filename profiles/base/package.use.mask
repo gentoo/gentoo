@@ -67,11 +67,6 @@ dev-lang/python-exec -python_targets_python3_15t
 # need the extra headache right now.
 >=sci-libs/libsemigroups-3.5.5 eigen
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2026-04-12)
-# net-wireless/gnuradio and dependencies. Qt5 was last-rited.
-# Bug #948049.
-<net-wireless/gnuradio-3.10.12.0-r4 channels qt5
-
 # Mike Gilbert <floppym@gentoo.org> (2026-03-20)
 # Only meant for bootstrapping a cross-compiler.
 sys-libs/libxcrypt headers-only
