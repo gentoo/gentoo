@@ -51,7 +51,7 @@ BDEPEND="sys-devel/flex
 
 PATCHES=(
 	"${FILESDIR}/${P}-configure-posix.patch"
-#	"${FILESDIR}/${P}-DrawLine.patch"
+	"${FILESDIR}/${P}-DrawLine.patch"
 )
 
 src_prepare() {
