@@ -1,0 +1,20 @@
+From 4004d0bdeaa58eab6cf8a14753f2c60ace734e14 Mon Sep 17 00:00:00 2001
+From: Matthew Schwartz <matthew.schwartz@linux.dev>
+Date: Wed, 16 Sep 2026 11:33:39 -0700
+Subject: [PATCH] wlserver: fix build without pipewire enabled
+
+Suggested-by: Timo Gurr <timo.gurr@gmail.com>
+Closes: https://github.com/ValveSoftware/gamescope/issues/2415
+--- a/src/wlserver.cpp
++++ b/src/wlserver.cpp
+@@ -77,6 +77,7 @@
+ #include "gpuvis_trace_utils.h"
+ 
+ #include <algorithm>
++#include <cfloat>
+ #include <list>
+ #include <set>
+ 
+-- 
+2.55.0
+

@@ -88,6 +88,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-deprecated-stb.patch
 	"${FILESDIR}"/${PN}-subprojects.patch
 	"${FILESDIR}"/${PN}-no-git.patch
+	"${FILESDIR}"/${PN}-headers.patch
 )
 
 FILECAPS=(
