@@ -48,7 +48,6 @@ REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
 	bim? ( mesh )
 	cam? ( mesh )
-	gui? ( bim )
 	designer? ( gui )
 	fem? ( smesh )
 	inspection? ( points )
@@ -57,7 +56,6 @@ REQUIRED_USE="
 	reverse? ( mesh points )
 	test? ( techdraw )
 "
-# Draft Workbench needs BIM
 
 RESTRICT="!test? ( test )"
 
