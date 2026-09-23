@@ -37,6 +37,7 @@
 		<flag name="omxil">Enable OpenMAX Integration Layer codec module</flag>
 		<flag name="optimisememory">Enable optimisation for memory rather than performance</flag>
 		<flag name="projectm">Enable the projectM visualization plugin</flag>
+		<flag name="qsv">Enable Intel Quick Sync Video support via <pkg>media-libs/libvpl</pkg></flag>
 		<flag name="run-as-root">Allows vlc to start for root. Don't enable this unless you have a very specific (e.g. embedded) need for it!</flag>
 		<flag name="sftp">Enable libssh2 to support SFTP file transfer</flag>
 		<flag name="shout">Enable libshout output</flag>

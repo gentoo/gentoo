@@ -44,7 +44,7 @@ IUSE="alsa aom archive aribsub bidi bluray chromaprint chromecast dav1d dbus
 	mad matroska modplug mp3 mtp musepack ncurses nfs ogg
 	omxil optimisememory opus png projectm pulseaudio run-as-root samba selinux
 	sftp shout sid skins soxr speex srt ssl svg taglib theora tremor truetype twolame
-	udev upnp vaapi v4l vdpau vnc vpx wayland +X x264 x265 xml zeroconf zvbi
+	udev upnp vaapi v4l vdpau vnc qsv vpx wayland +X x264 x265 xml zeroconf zvbi
 	cpu_flags_arm_neon cpu_flags_ppc_altivec cpu_flags_x86_mmx cpu_flags_x86_sse
 "
 REQUIRED_USE="
@@ -75,6 +75,7 @@ BDEPEND="
 RDEPEND="
 	media-libs/libvorbis
 	net-dns/libidn:=
+	net-libs/librist
 	virtual/zlib:=
 	virtual/libintl
 	virtual/opengl
@@ -174,6 +175,7 @@ RDEPEND="
 		>=media-libs/libprojectm-3.1.12:0=
 	)
 	pulseaudio? ( media-libs/libpulse )
+	qsv? ( media-libs/libvpl:= )
 	samba? ( >=net-fs/samba-4.0.0:0[client,-debug(-)] )
 	sftp? ( net-libs/libssh2 )
 	shout? ( media-libs/libshout )
@@ -393,6 +395,7 @@ src_configure() {
 		$(use_enable vaapi libva)
 		$(use_enable vdpau)
 		$(use_enable vnc)
+		$(use_enable qsv vpl)
 		$(use_enable vpx)
 		$(use_enable wayland)
 		$(use_with X x)
@@ -422,14 +425,13 @@ src_configure() {
 		--disable-libplacebo
 		--disable-maintainer-mode
 		--disable-merge-ffmpeg
-		--disable-mfx
 		--disable-mmal
+		--disable-openapv
 		--disable-opencv
 		--disable-opensles
 		--disable-oss
 		--disable-osx-notifications # MacOS only
 		--disable-rpi-omxil
-		--disable-schroedinger
 		--disable-sdl-image # not officially supported anymore
 		--disable-shine
 		--disable-sndio
