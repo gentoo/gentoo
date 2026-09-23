@@ -38,7 +38,7 @@ else
 		RESTRICT="fetch"
 	else
 		SRC_DIR="src"
-		KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~arm64-macos ~x64-macos ~x64-solaris"
+		KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~arm64-macos ~x64-macos ~x64-solaris"
 
 		SRC_URI="
 			https://rsync.samba.org/ftp/rsync/${SRC_DIR}/${P/_/}.tar.gz
