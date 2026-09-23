@@ -72,7 +72,6 @@ fi
 DOCS=( AUTHORS NEWS README.md README-XPDF )
 
 PATCHES=(
-	"${FILESDIR}/${PN}-26.05.0-qt-deps.patch"
 	"${FILESDIR}/${PN}-26.08.0-respect-cflags.patch"
 )
 
