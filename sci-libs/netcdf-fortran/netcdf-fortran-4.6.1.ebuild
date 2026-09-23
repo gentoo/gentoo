@@ -30,6 +30,8 @@ src_prepare() {
 }
 
 src_configure() {
+	append-fflags -fallow-argument-mismatch
+
 	# -Werror=lto-type-mismatch
 	# https://bugs.gentoo.org/927588
 	# https://github.com/Unidata/netcdf-fortran/issues/437
