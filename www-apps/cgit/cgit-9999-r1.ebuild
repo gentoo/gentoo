@@ -20,7 +20,7 @@ HOMEPAGE="https://git.zx2c4.com/cgit/about"
 if [[ ${PV} =~ 9999* ]]; then
 	EGIT_REPO_URI="https://git.zx2c4.com/cgit"
 	# Often newer git updates on this branch
-	EGIT_COMMIT=1854c18658707741c5bf0b5eaca554e083a3729b
+	EGIT_COMMIT=1d3633c83f26615dbb78c969c89ddd72905ae63d
 	EGIT_BRANCH=ch/for-jason
 else
 	SRC_URI="https://www.kernel.org/pub/software/scm/git/git-${GIT_V}.tar.xz
