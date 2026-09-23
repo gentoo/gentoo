@@ -36,6 +36,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2026-09-24)
+# ImageMagick 6 only receives security fixes now upstream and already
+# suffers serious bugs. EOL announcement:
+# https://github-stories.com/2026/imagemagick-6-end-of-life-announcement/
+# Please upgrade to ImageMagick 7.
+=media-gfx/imagemagick-6*
+
 # Sam James <sam@gentoo.org> (2026-09-22)
 # Substantial rewrite to drop qpdf->pdfio has introduced some bugs, too
 # many fixes to backport and some aren't fixed at all yet (bug #983080,
