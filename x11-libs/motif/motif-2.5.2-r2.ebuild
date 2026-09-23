@@ -49,7 +49,10 @@ DEPEND="${RDEPEND}
 BDEPEND="sys-devel/flex
 	dev-util/byacc"
 
-PATCHES=( "${FILESDIR}/${P}-configure-posix.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-configure-posix.patch"
+#	"${FILESDIR}/${P}-DrawLine.patch"
+)
 
 src_prepare() {
 	default

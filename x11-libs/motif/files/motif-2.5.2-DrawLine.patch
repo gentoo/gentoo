@@ -1,0 +1,22 @@
+https://bugs.gentoo.org/983119
+Patch backported from upstream
+
+commit f2c490cc233d2d55cd7c1eade9431d9711de375d
+Author: Tim Hentenaar <tim@hentenaar.com>
+Date:   Mon, 4 May 2026 07:29:32 +0000
+
+    XmString: DrawLine: If there's only a single segment, don't deref
+    
+--- motif-2.5.2/lib/Xm/XmString.c
++++ motif-2.5.2/lib/Xm/XmString.c
+@@ -3737,7 +3737,9 @@
+     Boolean             set_direction = False;
+     XmDirection         lay_dir = prim_dir; /* layout direction of this line */
+ 
+-    seg = _XmEntrySegmentGet(line)[seg_index];
++    if (_XmEntryMultiple(line))
++        seg = _XmEntrySegment(line)[seg_index];
++    else seg = (_XmStringNREntry)line;
+ 
+     if (_XmEntryType(seg) != XmSTRING_ENTRY_OPTIMIZED) {
+       lay_dir = _XmEntryLayoutGet(seg, prim_dir);
