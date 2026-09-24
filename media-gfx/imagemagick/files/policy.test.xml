@@ -11,7 +11,11 @@
   <!-- Policy used for test suite only to allow passing test suite
        in case user has installed a restriction which would prevent
        the execution of some tests -->
-  <policy domain="delegate" rights="read|write" pattern="*" />
-  <policy domain="filter"   rights="read|write" pattern="*" />
-  <policy domain="coder"    rights="read|write" pattern="*" />
+  <policy domain="system"   rights="all" pattern="*" />
+  <policy domain="delegate" rights="all" pattern="*" />
+  <policy domain="coder"    rights="all" pattern="*" />
+  <policy domain="filter"   rights="all" pattern="*" />
+  <policy domain="module"   rights="all" pattern="*" />
+  <policy domain="path"     rights="all" pattern="*" />
+  <policy domain="resource" rights="all" pattern="*" />
 </policymap>

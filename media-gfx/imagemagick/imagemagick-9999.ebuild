@@ -207,11 +207,24 @@ src_compile() {
 
 src_test() {
 	# Install default (unrestricted) policy for the test suite, bug #664238
+	#
+	# IM has to be coerced into not looking at the system policy.xml
+	# last. With this, it will look at the one in ${S}/config, the system
+	# one if it exists, then our generous one for tests.
+	local -x XDG_CONFIG_HOME="${T}"
+	local -x MAGICK_HOME="${T}"/ImageMagick
+	local -x MAGICK_CONFIGURE_PATH="${T}"/ImageMagick
+
+	mkdir "${XDG_CONFIG_HOME}"/ImageMagick || die
 	mv "${S}"/config/policy.xml{,.bak} || die
 	cp "${S}"/config/policy{-open,}.xml || die
+	cp "${FILESDIR}"/policy.test.xml "${XDG_CONFIG_HOME}"/ImageMagick/policy.xml || die
 
-	nonfatal emake check
-	ret=$?
+	(
+		# Make sure we use the just-built IM
+		. "${S}"/magick.sh
+		nonfatal emake check
+	) || ret=$?
 
 	mv "${S}"/config/policy.xml{.bak,} || die
 	(( ${ret} == 0 )) || die "emake check failed"
