@@ -11,6 +11,7 @@ HOMEPAGE="https://pwmt.org/projects/zathura/"
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/pwmt/zathura.git"
+	BDEPEND="dev-python/sphinx"
 else
 	SRC_URI="
 		https://github.com/pwmt/zathura/archive/${PV}.tar.gz -> ${P}.tar.gz
@@ -36,7 +37,6 @@ RDEPEND="
 	x11-libs/cairo
 	>=gui-libs/gtk-4.12[wayland?,X?]
 	x11-libs/pango
-	dev-python/sphinx
 	seccomp? ( sys-libs/libseccomp )
 	synctex? ( app-text/texlive-core )
 "
@@ -44,7 +44,7 @@ DEPEND="
 	${RDEPEND}
 	>=sys-kernel/linux-headers-5.13
 "
-BDEPEND="
+BDEPEND+="
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
 	test? (
