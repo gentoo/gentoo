@@ -12,7 +12,7 @@ DESCRIPTION="Virtual keyboard based on Qt Virtual Keyboard"
 
 LICENSE="|| ( GPL-2 GPL-3 ) LGPL-2.1 LGPL-3"
 SLOT="6"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv ~x86"
 
 RESTRICT="test" # bug #980983; error: socket path "..." plus null terminator exceeds 108 bytes
 
