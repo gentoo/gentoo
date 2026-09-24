@@ -10,6 +10,8 @@
     <name>Proxy Maintainers</name>
   </maintainer>
   <upstream>
+    <bugs-to>https://github.com/commonmark/cmark/issues</bugs-to>
+    <changelog>https://github.com/commonmark/cmark/releases</changelog>
     <remote-id type="github">commonmark/cmark</remote-id>
   </upstream>
 </pkgmetadata>
