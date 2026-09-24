@@ -27,3 +27,16 @@ RDEPEND="
 
 EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
+
+python_test() {
+
+	local EPYTEST_DESELECT=()
+
+	if has network-sandbox ${FEATURES}; then
+		EPYTEST_DESELECT+=(
+			authheaders/test/test_authentication.py::TestAuthenticateMessage::test_authenticate_dmarc_psdsub
+		)
+	fi
+
+	epytest
+}
