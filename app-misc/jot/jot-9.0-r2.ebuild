@@ -14,7 +14,7 @@ S="${WORKDIR}/athena-${P}"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~mips ppc ~ppc64 ~riscv ~s390 x86"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~mips ppc ~ppc64 ~riscv ~s390 x86"
 
 src_prepare() {
 	default
