@@ -52,8 +52,10 @@ src_install() {
 	dodoc README
 	rm -f README COPYING || die
 
-	docinto scripts
-	dodoc bin/*
+	# Keep the command line tools out of the document root (bug #146800),
+	# but where they can be run (bug #983167).
+	exeinto "${MY_APPDIR}"/bin
+	doexe bin/*.php "${FILESDIR}"/dokuwiki-cli
 	rm -r bin || die
 
 	insinto "${MY_HTDOCSDIR}"
