@@ -5,8 +5,11 @@
 # Force 'jumbo-build' on, as 155.0 doesn't build without it.
 # '-jumbo-build' is often broken, it's untested by upstream and Gentoo
 # Firefox packagers.
-# Report bugs directly to upstream if you want '-jumbo-build' to work.
->=www-client/firefox-155.0 jumbo-build
+# Report bugs directly to upstream if you want '-jumbo-build', or
+# "non-unified build" to work.
+# Extended to firefox-153esr, bug #982610. TB-153esr doesn't have
+# 'jumbo-build' use flag.
+>=www-client/firefox-153.0 jumbo-build
 >=mail-client/thunderbird-155.0 jumbo-build
 
 # Matt Jolly <kangie@gentoo.org> (2026-08-19)
