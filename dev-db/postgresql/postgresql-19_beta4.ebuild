@@ -20,7 +20,7 @@ SLOT=$(ver_cut 1)
 
 KEYWORDS=""
 
-IUSE="debug doc +icu kerberos ldap llvm +lz4 +numa nls oauth pam perl python
+IUSE="debug doc +icu kerberos ldap llvm +numa nls oauth pam perl python
 	+readline selinux +server systemd ssl static-libs tcl uuid +uring
 	xml zlib +zstd"
 
@@ -30,6 +30,7 @@ CDEPEND="
 >=app-eselect/eselect-postgresql-2.0
 acct-group/postgres
 acct-user/postgres
+app-arch/lz4
 sys-apps/less
 virtual/libintl
 icu? ( dev-libs/icu:= )
@@ -39,7 +40,6 @@ llvm? ( $(llvm_gen_dep '
 	llvm-core/clang:${LLVM_SLOT}
 	llvm-core/llvm:${LLVM_SLOT}
 	') )
-lz4? ( app-arch/lz4 )
 numa? ( sys-process/numactl )
 oauth? ( net-misc/curl[adns] )
 pam? ( sys-libs/pam )
@@ -161,12 +161,12 @@ src_configure() {
 		--mandir="${PO}/usr/share/postgresql-${SLOT}/man" \
 		--sysconfdir="${PO}/etc/postgresql-${SLOT}" \
 		--with-system-tzdata="${PO}/usr/share/zoneinfo" \
+		--with-lz4 \
 		$(use_enable debug) \
 		$(use_with icu) \
 		$(use_with kerberos gssapi) \
 		$(use_with ldap) \
 		$(use_with llvm) \
-		$(use_with lz4) \
 		$(use_with numa libnuma) \
 		$(use_with oauth libcurl) \
 		$(use_with pam) \
