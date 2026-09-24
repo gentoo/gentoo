@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{11..14} )
-inherit cmake llvm.org multilib-minimal python-any-r1
+inherit cmake flag-o-matic llvm.org multilib-minimal python-any-r1
 
 DESCRIPTION="Multi-Level Intermediate Representation (library only)"
 HOMEPAGE="https://mlir.llvm.org/"
@@ -157,6 +157,9 @@ get_distribution_components() {
 }
 
 multilib_src_configure() {
+	# bug #956603
+	filter-lto
+
 	local mycmakeargs=(
 		-DCMAKE_INSTALL_PREFIX="${EPREFIX}/usr/lib/llvm/${LLVM_MAJOR}"
 		-DLLVM_ROOT="${ESYSROOT}/usr/lib/llvm/${LLVM_MAJOR}"
