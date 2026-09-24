@@ -34,7 +34,7 @@ MOZ_SRC_BASE_URI="https://archive.mozilla.org/pub/${MOZ_PN}/releases/${MOZ_PV}"
 DESCRIPTION="Firefox Web Browser's translation files"
 
 LICENSE="MPL-2.0"
-KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="~amd64 arm64 ~loong ~ppc64 ~riscv ~x86"
 
 if [[ -n ${MOZ_ESR} ]] ; then
 	SLOT="0/esr"
