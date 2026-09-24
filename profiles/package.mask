@@ -56,6 +56,8 @@
 # Other browsers:
 #   www-client/firefox and www-client/firefox-bin
 #   www-client/seamonkey
+#   www-client/qutebrowser
+#   kde-apps/konqueror
 #
 # Removal on 2026-10-24.  Bug #982204.
 www-client/chromium
