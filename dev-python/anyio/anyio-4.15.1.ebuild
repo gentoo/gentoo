@@ -31,11 +31,11 @@ RDEPEND="
 BDEPEND="
 	>=dev-python/setuptools-scm-6.4[${PYTHON_USEDEP}]
 	test? (
+		>=dev-python/blockbuster-1.5.23[${PYTHON_USEDEP}]
 		>=dev-python/psutil-5.9[${PYTHON_USEDEP}]
+		>=dev-python/trio-0.32.0[${PYTHON_USEDEP}]
 		>=dev-python/trustme-1.0.0[${PYTHON_USEDEP}]
 		$(python_gen_cond_dep '
-			>=dev-python/blockbuster-1.5.23[${PYTHON_USEDEP}]
-			>=dev-python/trio-0.32.0[${PYTHON_USEDEP}]
 			amd64? (
 				>=dev-python/uvloop-0.22.1[${PYTHON_USEDEP}]
 			)
