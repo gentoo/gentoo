@@ -37,6 +37,14 @@
 #--- END OF EXAMPLES ---
 
 # Sam James <sam@gentoo.org> (2026-09-24)
+# Increasingly challenging to maintain with increased release cadence,
+# upstream toolchain changes, and conflicts between trying to provide
+# a consistent experience for Gentoo users (avoiding bundled where possible)
+# vs. getting updates out in a timely manner.  Many unfixed vulnerabilities.
+# Removal on 2026-10-24.  Bug #982204.
+www-client/chromium
+
+# Sam James <sam@gentoo.org> (2026-09-24)
 # ImageMagick 6 only receives security fixes now upstream and already
 # suffers serious bugs. EOL announcement:
 # https://github-stories.com/2026/imagemagick-6-end-of-life-announcement/
