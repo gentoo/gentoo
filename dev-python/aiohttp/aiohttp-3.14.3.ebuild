@@ -51,14 +51,12 @@ BDEPEND="
 		dev-python/pkgconfig[${PYTHON_USEDEP}]
 	)
 	test? (
+		dev-python/blockbuster[${PYTHON_USEDEP}]
 		dev-python/freezegun[${PYTHON_USEDEP}]
 		dev-python/isal[${PYTHON_USEDEP}]
 		dev-python/re-assert[${PYTHON_USEDEP}]
+		dev-python/time-machine[${PYTHON_USEDEP}]
 		dev-python/zlib-ng[${PYTHON_USEDEP}]
-		$(python_gen_cond_dep '
-			dev-python/blockbuster[${PYTHON_USEDEP}]
-			dev-python/time-machine[${PYTHON_USEDEP}]
-		' 3.{12..14})
 		www-servers/gunicorn[${PYTHON_USEDEP}]
 		test-rust? (
 			dev-python/trustme[${PYTHON_USEDEP}]
