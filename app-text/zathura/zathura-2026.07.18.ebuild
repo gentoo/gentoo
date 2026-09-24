@@ -22,7 +22,7 @@ fi
 
 LICENSE="ZLIB"
 SLOT="0/8.9" # plugin versions api.abi (see meson.build)
-IUSE="+man landlock seccomp synctex test wayland X"
+IUSE="landlock seccomp synctex test wayland X"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="
 	|| ( wayland X )
