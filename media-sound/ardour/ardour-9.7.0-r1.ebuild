@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..15} )
+PYTHON_COMPAT=( python3_{12..15} )
 PYTHON_REQ_USE='threads(+)'
 inherit desktop edo flag-o-matic optfeature python-any-r1 waf-utils toolchain-funcs xdg
 
@@ -22,7 +22,7 @@ else
 	# https://community.ardour.org/download?architecture=x86_64&type=source
 	SRC_URI="https://dev.gentoo.org/~fordfrog/distfiles/Ardour-${PV}.tar.bz2"
 	S="${WORKDIR}/Ardour-${PV}"
-	KEYWORDS="~amd64 ~loong ~x86"
+	KEYWORDS="amd64 ~loong ~x86"
 fi
 
 LICENSE="GPL-2"
