@@ -501,6 +501,14 @@ src_install() {
 	fi
 }
 
+pkg_preinst() {
+	if use gui && has_version ">=${CATEGORY}/${PN}-4[gui]"; then
+		ewarn "Downgrade from VLC-4 detected. If you experience runtime issues,"
+		ewarn "try cleaning up ~/.config/vlc first."
+	fi
+	xdg_pkg_preinst
+}
+
 pkg_postinst() {
 	if [[ -z "${ROOT}" ]] && [[ -x "${EROOT}/usr/$(get_libdir)/vlc/vlc-cache-gen" ]] ; then
 		einfo "Running ${EPREFIX}/usr/$(get_libdir)/vlc/vlc-cache-gen on ${EROOT}/usr/$(get_libdir)/vlc/plugins/"
@@ -511,14 +519,7 @@ pkg_postinst() {
 		ewarn "If you do not do it, vlc will take a long time to load."
 	fi
 
-	if use gui; then
-		if has_version ">=${CATEGORY}/${PN}-4[gui]"; then
-			ewarn "Downgrade from VLC-4 detected. If you experience runtime issues,"
-			ewarn "try cleaning up ~/.config/vlc first."
-		fi
-
-		xdg_pkg_postinst
-	fi
+	use gui && xdg_pkg_postinst
 }
 
 pkg_postrm() {
