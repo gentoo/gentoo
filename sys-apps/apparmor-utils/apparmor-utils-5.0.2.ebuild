@@ -5,18 +5,24 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{12..15} )
-inherit distutils-r1 toolchain-funcs desktop
+inherit distutils-r1 toolchain-funcs desktop verify-sig
 
 MY_PV="$(ver_cut 1-2)"
 
 DESCRIPTION="Additional userspace utils to assist with AppArmor profile management"
 HOMEPAGE="https://gitlab.com/apparmor/apparmor/wikis/home"
-SRC_URI="https://gitlab.com/apparmor/apparmor/-/archive/v${PV}/apparmor-v${PV}.tar.bz2"
+SRC_URI="
+	https://gitlab.com/apparmor/apparmor/-/archive/v${PV}/apparmor-v${PV}.tar.bz2
+	verify-sig? ( https://gitlab.com/api/v4/projects/4484878/packages/generic/signatures/${PV}/apparmor-v${PV}.tar.bz2.asc
+		-> ${P}.tar.bz2.asc )
+"
+
 S=${WORKDIR}/apparmor-v${PV}
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv"
+IUSE="verify-sig"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 # Needs fixing to use the right Python
 RESTRICT="test"
@@ -36,6 +42,11 @@ RDEPEND="
 	~sys-apps/apparmor-${PV}
 	~sys-libs/libapparmor-${PV}[python,${PYTHON_USEDEP}]
 "
+BDEPEND="
+	verify-sig? ( sec-keys/openpgp-keys-apparmor )
+"
+
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/apparmor.asc
 
 src_prepare() {
 	default
