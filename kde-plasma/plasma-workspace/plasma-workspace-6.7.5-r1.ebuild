@@ -15,7 +15,7 @@ SRC_URI+=" https://dev.gentoo.org/~asturm/distfiles/kde/${PATCHSET}.tar.xz"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="6"
-KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 arm64 ~ppc64 ~riscv ~x86"
 IUSE="appstream +fontconfig flatpak +ksysguard networkmanager +policykit
 screencast +semantic-desktop systemd telemetry +wallpaper-metadata +X"
 
