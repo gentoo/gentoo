@@ -41,6 +41,12 @@
 # upstream toolchain changes, and conflicts between trying to provide
 # a consistent experience for Gentoo users (avoiding bundled where possible)
 # vs. getting updates out in a timely manner.  Many unfixed vulnerabilities.
+#
+# Keeping it in ::gentoo isn't a matter of just supplying an updated ebuild,
+# but a commitment to keeping it up to date and finding a compromise between
+# users' expectations (like various USE flags & not forcing all bundled
+# components) and maintainability.
+#
 # Removal on 2026-10-24.  Bug #982204.
 www-client/chromium
 
