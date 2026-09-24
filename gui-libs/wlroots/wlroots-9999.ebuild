@@ -96,7 +96,7 @@ src_configure() {
 		$(meson_feature X xwayland)
 		-Dbackends=${meson_backends}
 		$(meson_feature session)
-		$(meson_feature lcms color-management)
+		$(meson_feature lcms icc-profile)
 		$(meson_feature liftoff libliftoff)
 	)
 
