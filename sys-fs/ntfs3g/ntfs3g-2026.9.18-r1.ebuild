@@ -12,7 +12,7 @@ SRC_URI="https://download.tuxera.com/opensource/${MY_P}.tgz"
 S="${WORKDIR}/ntfs-3g-${PV}"
 LICENSE="GPL-2"
 # The subslot matches the SONAME major #.
-SLOT="0/90"
+SLOT="0/91"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
 IUSE="acl debug +fuse +mount-ntfs ntfsdecrypt +ntfsprogs static-libs suid xattr"
 
