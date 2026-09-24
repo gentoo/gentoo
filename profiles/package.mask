@@ -53,11 +53,12 @@
 #   www-client/microsoft-edge
 #   www-client/opera
 #   www-client/vivaldi
-# Other browsers:
+# qtwebengine-based browsers (uses chromium's engine):
 #   kde-apps/konqueror
 #   www-client/falkon
-#   www-client/firefox and www-client/firefox-bin
 #   www-client/qutebrowser
+# Other browsers:
+#   www-client/firefox and www-client/firefox-bin
 #   www-client/seamonkey
 #
 # Removal on 2026-10-24.  Bug #982204.
