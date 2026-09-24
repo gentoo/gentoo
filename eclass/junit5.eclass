@@ -253,8 +253,6 @@ junit5_src_test() {
 	local junit_5_classpath="junit-5"
 	JAVA_TEST_GENTOO_CLASSPATH+=" ${junit_5_classpath}"
 	java-pkg-simple_src_test
-	elog "java-pkg-simple.eclass might have printed a \"No suitable function found\""
-	elog "message.  This is OK, as junit5.eclass will handle JUnit 5..."
 
 	local classes="target/test-classes"
 	local classpath="${classes}:${JAVA_JAR_FILENAME}"
