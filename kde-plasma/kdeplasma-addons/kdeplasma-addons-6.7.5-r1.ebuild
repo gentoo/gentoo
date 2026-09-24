@@ -23,7 +23,7 @@ LICENSE="GPL-2 LGPL-2"
 # Dependent crate licenses
 LICENSE+=" GPL-3 MIT Unicode-3.0 ZLIB"
 SLOT="6"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv ~x86"
 IUSE="+alternate-calendar led share webengine"
 
 RESTRICT="test" # bug 727846, +missing selenium-webdriver-at-spi
