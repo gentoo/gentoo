@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <!-- maintainer-needed -->
-  <upstream>
-    <remote-id type="savannah">cppi</remote-id>
-  </upstream>
+	<!-- maintainer-needed -->
+	<upstream>
+		<bugs-to>https://savannah.gnu.org/bugs/?group=cppi</bugs-to>
+		<changelog>https://git.savannah.gnu.org/cgit/cppi.git/tree/NEWS</changelog>
+		<remote-id type="savannah">cppi</remote-id>
+	</upstream>
 </pkgmetadata>
