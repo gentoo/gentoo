@@ -300,6 +300,7 @@ src_install() {
 			src/zabbix_java/lib/logback-core-1.5.16.jar \
 			src/zabbix_java/lib/logback.xml \
 			src/zabbix_java/lib/android-json-4.3_r3.1.jar \
+			src/zabbix_java/lib/dnsjava-3.6.4.jar \
 			src/zabbix_java/lib/slf4j-api-2.0.16.jar
 		newinitd "${FILESDIR}"/zabbix-jmx-proxy.init zabbix-jmx-proxy
 		newconfd "${FILESDIR}"/zabbix-jmx-proxy.conf zabbix-jmx-proxy
