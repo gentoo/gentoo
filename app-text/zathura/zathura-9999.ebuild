@@ -12,7 +12,10 @@ if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/pwmt/zathura.git"
 else
-	SRC_URI="https://github.com/pwmt/zathura/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="
+		https://github.com/pwmt/zathura/archive/${PV}.tar.gz -> ${P}.tar.gz
+		https://oss.turretllc.us/manpages/${P}-manpages.tar.xz
+	"
 	KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
 fi
 
@@ -79,6 +82,11 @@ src_configure() {
 	meson_src_configure
 }
 
+src_test() {
+	addwrite /dev/dri
+	meson_src_test
+}
+
 src_install() {
 	meson_src_install
 
@@ -86,11 +94,8 @@ src_install() {
 		mv "${ED}"/usr/bin/zathura{,-full} || die
 		dosym zathura-sandbox /usr/bin/zathura
 	fi
-}
 
-src_test() {
-	addwrite /dev/dri
-	meson_src_test
+	[[ ${PV} != *9999 ]] && doman "${WORKDIR}"/man/zathura*
 }
 
 pkg_postinst() {
