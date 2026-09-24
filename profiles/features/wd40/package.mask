@@ -105,6 +105,7 @@ dev-python/hypothesis
 dev-python/logfury
 dev-python/narwhals
 dev-python/progressbar2
+dev-python/pydevd
 dev-python/pykwalify
 dev-python/pytest-bdd
 dev-python/pytest-describe
@@ -120,6 +121,7 @@ dev-python/sybil
 dev-python/testfixtures
 dev-python/toml-fmt-common
 dev-python/trakit
+dev-python/untangle
 dev-python/uv-build
 dev-python/vcsgraph
 dev-python/zmq-anyio
