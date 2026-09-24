@@ -81,7 +81,6 @@ RDEPEND="${COMMON_DEPEND}
 # https://github.com/elogind/elogind/issues/323
 RDEPEND+="elogind? ( acct-user/gdm-greeter )"
 DEPEND="${COMMON_DEPEND}
-	x11-base/xorg-proto
 "
 BDEPEND="
 	dev-util/gdbus-codegen
