@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit desktop eapi9-pipestatus linux-info readme.gentoo-r1 xdg-utils
+inherit desktop linux-info readme.gentoo-r1 xdg-utils
 
 DESCRIPTION="Video conferencing and web conferencing service"
 HOMEPAGE="https://www.zoom.com/"
@@ -21,8 +21,14 @@ RDEPEND="zoom-symlink? ( !games-engines/zoom )
 	app-crypt/mit-krb5
 	dev-libs/expat
 	dev-libs/glib:2
+	dev-libs/icu
 	dev-libs/nspr
 	dev-libs/nss
+	dev-libs/quazip
+	dev-qt/qt5compat:6
+	dev-qt/qtbase:6
+	dev-qt/qtdeclarative:6
+	dev-qt/qtsvg:6
 	media-libs/alsa-lib
 	media-libs/fdk-aac:0/2
 	media-libs/fontconfig
@@ -95,11 +101,11 @@ src_install() {
 	doins *.pcm Embedded.properties version.txt unifywebview_config.zip
 	doexe zoom zopen ZoomClips ZoomLauncher ZoomWebviewHost *.sh \
 		aomhost cpthost libaomagent.so libcml.so libdvf.so libmkldnn.so \
-		libquazip.so libavcodec.so* libavformat.so* libavutil.so* \
-		libswresample.so*
+		libavcodec.so* libavformat.so* libavutil.so* libswresample.so*
 	fperms a+x /opt/zoom/cef/chrome_sandbox
 	dosym -r {"/usr/$(get_libdir)",/opt/zoom}/libmpg123.so
 	dosym -r "/usr/$(get_libdir)/libfdk-aac.so.2" /opt/zoom/libfdkaac2.so
+	dosym -r "/usr/$(get_libdir)/libquazip1-qt6.so" /opt/zoom/libquazip.so
 
 	if use opencl; then
 		doexe libclDNN64.so
@@ -110,23 +116,6 @@ src_install() {
 		# Soname dependency on libwayland-client.so.0
 		rm "${ED}"/opt/zoom/cef/libGLESv2.so || die
 	fi
-
-	doins -r Qt
-	find Qt -type f '(' -name '*.so' -o -name '*.so.*' ')' \
-		-printf '/opt/zoom/%p\0' | xargs -0 -r fperms 0755
-	pipestatus || die
-	(	# Remove libs and plugins with unresolved soname dependencies.
-		# Why does the upstream package contain such garbage? :-(
-		cd "${ED}"/opt/zoom/Qt || die
-		rm -r plugins/audio plugins/egldeviceintegrations \
-			plugins/platforms/libqeglfs.so plugins/platforms/libqlinuxfb.so \
-			plugins/platformthemes/libqgtk3.so qml/QtQml/RemoteObjects \
-			qml/QtQuick/LocalStorage qml/QtQuick/Particles.2 \
-			qml/QtQuick/Scene2D qml/QtQuick/Scene3D \
-			qml/QtQuick/XmlListModel || die
-		use wayland || rm -r lib/libQt5Wayland*.so* plugins/wayland* \
-			plugins/platforms/libqwayland*.so qml/QtWayland || die
-	)
 
 	use zoom-symlink && dosym -r /opt/zoom/ZoomLauncher /usr/bin/zoom
 
