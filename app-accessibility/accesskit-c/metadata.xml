@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="person" proxied="yes">
+	<email>openrc@posteo.de</email>
+	<name>Ivy</name>
+</maintainer>
+<maintainer type="project" proxied="proxy">
+	<email>proxy-maint@gentoo.org</email>
+	<name>Proxy Maintainers</name>
+</maintainer>
+<longdescription>
+	These are the bindings to use AccessKit from other languages through FFI such as in C.
+</longdescription>
+<upstream>
+	<bugs-to>https://github.com/AccessKit/accesskit-c/issues</bugs-to>
+	<remote-id type="github">AccessKit/accesskit-c</remote-id>
+</upstream>
+</pkgmetadata>
