@@ -17,7 +17,7 @@ HOMEPAGE="
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~riscv"
+KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
 
 DEPEND="
 	>=dev-libs/aws-c-common-1.0.0:=
