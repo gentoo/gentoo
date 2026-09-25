@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,6 +18,7 @@ KEYWORDS="~amd64 ~x86"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-glibc-2.34.patch"
+	"${FILESDIR}/${PN}-c23.patch"
 )
 
 src_compile() {
