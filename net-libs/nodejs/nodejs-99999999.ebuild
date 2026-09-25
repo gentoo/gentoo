@@ -36,20 +36,20 @@ RESTRICT="!test? ( test )"
 
 COMMON_DEPEND=">=app-arch/brotli-1.1.0:=
 	dev-db/sqlite:3
-	>=dev-cpp/ada-3.3.0:=
-	>=dev-cpp/simdutf-7.3.4:=
+	>=dev-cpp/ada-4.0.0:=
+	>=dev-cpp/simdutf-9.0.0:=
 	>=dev-libs/libuv-1.52.1:=
-	>=dev-libs/simdjson-4.6.1:=
-	>=net-dns/c-ares-1.34.5:=
-	>=net-libs/nghttp2-1.69.0:=
-	>=net-libs/nghttp3-1.14.0:=
+	>=dev-libs/simdjson-4.6.11:=
+	>=net-dns/c-ares-1.34.8:=
+	>=net-libs/nghttp2-1.70.0:=
+	>=net-libs/nghttp3-1.18.0:=
 	virtual/zlib:=
-	system-icu? ( >=dev-libs/icu-73:= )
+	system-icu? ( >=dev-libs/icu-78:= )
 	system-ssl? (
-		>=net-libs/ngtcp2-1.22.1:=
-		>=dev-libs/openssl-3.5.6:0=
+		>=net-libs/ngtcp2-1.25.0:=
+		>=dev-libs/openssl-3.5.8:0=
 	)
-	!system-ssl? ( >=net-libs/ngtcp2-1.14.0:=[-gnutls] )
+	!system-ssl? ( >=net-libs/ngtcp2-1.25.0:=[-gnutls] )
 	|| (
 		sys-devel/gcc:*
 		llvm-runtimes/libatomic-stub
@@ -154,7 +154,6 @@ src_configure() {
 		--shared-nghttp3
 		--shared-ngtcp2
 		--shared-simdjson
-		--shared-simdutf
 		--shared-sqlite
 		--shared-zlib
 	)
