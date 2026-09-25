@@ -36,4 +36,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.4.0-S.patch
 	# fix tests for >=dev-python/ruamel-yaml-1.18, see #923136
 	"${FILESDIR}"/${PN}-1.8.0-ruamel-yaml-1.18.patch
+	# https://github.com/Grokzen/pykwalify/pull/203
+	"${FILESDIR}"/${P}-py315.patch
 )
