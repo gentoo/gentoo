@@ -1,11 +1,11 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 PHP_EXT_NAME="memcached"
 DOCS=( ChangeLog README.markdown )
 
-USE_PHP="php8-2 php8-3"
+USE_PHP="php8-2 php8-3 php8-4 php8-5"
 PHP_EXT_NEEDED_USE="json(+)?,session(-)?"
 MY_P="${PN/pecl-/}-${PV/_rc/RC}"
 PHP_EXT_PECL_FILENAME="${MY_P}.tgz"
@@ -15,7 +15,7 @@ inherit php-ext-pecl-r3
 DESCRIPTION="Interface PHP with memcached via libmemcached library"
 LICENSE="PHP-3.01"
 SLOT="7"
-KEYWORDS="amd64 arm arm64 x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE="igbinary json sasl +session test"
 
 REQUIRED_USE="test? ( igbinary )"
