@@ -14,7 +14,7 @@ S=${WORKDIR}/${P}-src
 
 LICENSE="MIT Boost-1.0 BSD"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv ~x86"
 
 # in general would rather keep this package low maintenance due to
 # its build system, and tests + python bindings give headaches
