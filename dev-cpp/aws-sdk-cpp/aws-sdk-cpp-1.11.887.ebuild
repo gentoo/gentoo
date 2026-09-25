@@ -63,6 +63,7 @@ src_configure() {
 		-DLEGACY_BUILD=ON
 		-DBUILD_DEPS=OFF # disable embedded 3rd-party repositories.
 		-DBUILD_ONLY="${mybuildtargets}"
+		-DAWS_SDK_WARNINGS_ARE_ERRORS=OFF
 	)
 
 	cmake_src_configure
