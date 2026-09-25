@@ -23,7 +23,7 @@ if [[ ${PV} != *9999 ]]; then
 	VTEST2_DIR="${WORKDIR}/VTest2-${VTEST2_COMMIT:0:7}"
 	SRC_URI="http://haproxy.1wt.eu/download/$(ver_cut 1-2)/src/${MY_P}.tar.gz
 		test? ( https://dev.gentoo.org/~idl0r/distfiles/VTest2-${VTEST2_COMMIT:0:7}.tar.gz )"
-	KEYWORDS="~amd64 ~arm64 ~ppc ~x86"
+	KEYWORDS="amd64 ~arm64 ~ppc x86"
 elif [[ ${PV} == 9999 ]]; then
 	VTEST2_DIR="${WORKDIR}/VTest2"
 	EGIT_REPO_URI="https://git.haproxy.org/git/haproxy.git/"
