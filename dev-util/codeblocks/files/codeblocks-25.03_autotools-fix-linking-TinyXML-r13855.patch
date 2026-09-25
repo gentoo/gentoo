@@ -1,0 +1,237 @@
+autotools: fix link error when system tinyxml is used. (Thanks hesti)
+
+See discussion in C::B forum:
+https://forums.codeblocks.org/index.php/topic,26015.msg177209.html
+
+Authored by: christoj 2026-05-26
+
+https://sourceforge.net/p/codeblocks/code/13855/
+
+$ svn diff -r r13854:r13855 > r13855.patch
+
+Patch amended to apply on Gentoo (adds 'a/' and 'b/' prefixes).
+
+This should fix dev-util/codeblocks-25.03 'undefined reference'
+compile errors such as the following:
+
+libtool: link: x86_64-pc-linux-gnu-g++  -fPIC -DPIC -shared -nostdlib /usr/lib/gcc/x86_64-pc-linux-gnu/15/../../../../lib64/crti.o /usr/lib/gcc/x86_64-pc-linux-gnu/15/crtbeginS.o  .libs/AutoVersioning.o .libs/avChangesDlg.o .libs/avHeader.o .libs/avSvnRevision.o .libs/avVersionEditorDlg.o   -Wl,-rpath -Wl,/var/tmp/portage/dev-util/codeblocks-25.03-r2/work/codeblocks_25.03/src/sdk/.libs -Wl,--as-needed ../../../sdk/.libs/libcodeblocks.so -L/usr/lib64 -lwx_gtk3u_aui-3.2 -lwx_gtk3u_propgrid-3.2 -lwx_gtk3u_richtext-3.2 -lwx_gtk3u_xrc-3.2 -lwx_gtk3u_html-3.2 -lwx_gtk3u_qa-3.2 -lwx_gtk3u_core-3.2 -lwx_baseu_xml-3.2 -lwx_baseu_net-3.2 -lwx_baseu-3.2 -lpthread -ldl -L/usr/lib/gcc/x86_64-pc-linux-gnu/15 -L/usr/lib/gcc/x86_64-pc-linux-gnu/15/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/usr/lib/gcc/x86_64-pc-linux-gnu/15/../../../../x86_64-pc-linux-gnu/lib -L/usr/lib/gcc/x86_64-pc-linux-gnu/15/../../.. -L/lib -L/usr/lib -lstdc++ -lm -lgcc_s -lc -lgcc_s /usr/lib/gcc/x86_64-pc-linux-gnu/15/crtendS.o /usr/lib/gcc/x86_64-pc-linux-gnu/15/../../../../lib64/crtn.o  -O2 -march=x86-64 -mtune=generic -Wl,--no-undefined -Wl,-O1 -Wl,-z -Wl,pack-relative-relocs   -pthread -Wl,-soname -Wl,libAutoVersioning.so -o .libs/libAutoVersioning.so
+/usr/x86_64-pc-linux-gnu/binutils-bin/2.47/ld: .libs/AutoVersioning.o: in function `AutoVersioning::OnProjectLoadingHook(cbProject*, TiXmlElement*, bool)':
+AutoVersioning.cpp:(.text+0x7755): undefined reference to `TiXmlNode::FirstChildElement(char const*) const'
+
+$ find /usr/lib64/ -name "libtinyxml.so" | xargs -I {} sh -c 'nm -D --defined-only ${1} 2>/dev/null | grep FirstChildElement && echo ${1}' _ {}
+000000000000db00 T _ZNK11TiXmlHandle17FirstChildElementEPKc
+000000000000dac0 T _ZNK11TiXmlHandle17FirstChildElementEv
+000000000000aa70 T _ZNK9TiXmlNode17FirstChildElementEPKc
+000000000000aa30 T _ZNK9TiXmlNode17FirstChildElementEv
+/usr/lib64/libtinyxml.so
+
+Index: src/plugins/contrib/AutoVersioning/Makefile.am
+===================================================================
+--- a/src/plugins/contrib/AutoVersioning/Makefile.am	(revision 13854)
++++ b/gsrc/plugins/contrib/AutoVersioning/Makefile.am	(revision 13855)
+@@ -11,6 +11,10 @@
+ libAutoVersioning_la_LIBADD = ../../../sdk/libcodeblocks.la \
+ 			$(WX_LIBS)
+ 
++if ! CODEBLOCKS_NT
++libAutoVersioning_la_LIBADD += $(CB_TINYXML_LIBS)
++endif
++
+ libAutoVersioning_la_SOURCES = AutoVersioning.cpp \
+             avChangesDlg.cpp \
+             avHeader.cpp \
+Index: src/plugins/contrib/BrowseTracker/Makefile.am
+===================================================================
+--- a/src/plugins/contrib/BrowseTracker/Makefile.am	(revision 13854)
++++ b/src/plugins/contrib/BrowseTracker/Makefile.am	(revision 13855)
+@@ -11,6 +11,10 @@
+ libBrowseTracker_la_LIBADD = ../../../sdk/libcodeblocks.la \
+ 			$(WX_LIBS)
+ 
++if ! CODEBLOCKS_NT
++libBrowseTracker_la_LIBADD += $(CB_TINYXML_LIBS)
++endif
++
+ libBrowseTracker_la_SOURCES = BrowseTracker.cpp \
+ 			Version.cpp \
+ 			BrowseMarks.cpp \
+Index: src/plugins/contrib/CppCheck/Makefile.am
+===================================================================
+--- a/src/plugins/contrib/CppCheck/Makefile.am	(revision 13854)
++++ b/src/plugins/contrib/CppCheck/Makefile.am	(revision 13855)
+@@ -13,6 +13,10 @@
+ libCppCheck_la_LIBADD = ../../../sdk/libcodeblocks.la \
+ 		$(WX_LIBS)
+ 
++if ! CODEBLOCKS_NT
++libCppCheck_la_LIBADD += $(CB_TINYXML_LIBS)
++endif
++
+ libCppCheck_la_SOURCES = CppCheck.cpp \
+             CppCheckListLog.cpp \
+             ConfigPanel.cpp
+Index: src/plugins/contrib/DoxyBlocks/Makefile.am
+===================================================================
+--- a/src/plugins/contrib/DoxyBlocks/Makefile.am	(revision 13854)
++++ b/src/plugins/contrib/DoxyBlocks/Makefile.am	(revision 13855)
+@@ -11,6 +11,10 @@
+ libDoxyBlocks_la_LIBADD = ../../../sdk/libcodeblocks.la \
+ 			$(WX_LIBS)
+ 
++if ! CODEBLOCKS_NT
++libDoxyBlocks_la_LIBADD += $(CB_TINYXML_LIBS)
++endif
++
+ libDoxyBlocks_la_SOURCES = AutoDoc.cpp \
+ 				Config.cpp \
+ 				ConfigPanel.cpp \
+Index: src/plugins/contrib/EditorConfig/Makefile.am
+===================================================================
+--- a/src/plugins/contrib/EditorConfig/Makefile.am	(revision 13854)
++++ b/src/plugins/contrib/EditorConfig/Makefile.am	(revision 13855)
+@@ -11,6 +11,10 @@
+ libEditorConfig_la_LIBADD = ../../../sdk/libcodeblocks.la \
+ 			$(WX_LIBS)
+ 
++if ! CODEBLOCKS_NT
++libEditorConfig_la_LIBADD += $(CB_TINYXML_LIBS)
++endif
++
+ libEditorConfig_la_SOURCES = \
+ 			EditorConfigUI.cpp \
+ 			EditorConfig.cpp
+Index: src/plugins/contrib/Valgrind/Makefile.am
+===================================================================
+--- a/src/plugins/contrib/Valgrind/Makefile.am	(revision 13854)
++++ b/src/plugins/contrib/Valgrind/Makefile.am	(revision 13855)
+@@ -13,6 +13,10 @@
+ libValgrind_la_LIBADD = ../../../sdk/libcodeblocks.la \
+ 			$(WX_LIBS)
+ 
++if ! CODEBLOCKS_NT
++libValgrind_la_LIBADD += $(CB_TINYXML_LIBS)
++endif
++
+ libValgrind_la_SOURCES = Valgrind.cpp \
+ 			ValgrindListLog.cpp \
+ 			valgrind_config.cpp
+Index: src/plugins/contrib/clangd_client/Makefile.am
+===================================================================
+--- a/src/plugins/contrib/clangd_client/Makefile.am	(revision 13854)
++++ b/src/plugins/contrib/clangd_client/Makefile.am	(revision 13855)
+@@ -36,6 +36,10 @@
+ 			$(WX_LIBS)
+ 
+ if ! CODEBLOCKS_NT
++libclangd_client_la_LIBADD += $(CB_TINYXML_LIBS)
++endif
++
++if ! CODEBLOCKS_NT
+ libclangd_client_la_LIBADD += -lutil
+ endif
+ 
+Index: src/plugins/contrib/codesnippets/Makefile.am
+===================================================================
+--- a/src/plugins/contrib/codesnippets/Makefile.am	(revision 13854)
++++ b/src/plugins/contrib/codesnippets/Makefile.am	(revision 13855)
+@@ -18,6 +18,10 @@
+ 		$(WX_GTK_LIBS) \
+ 		$(WX_X11_LIBS)
+ 
++if ! CODEBLOCKS_NT
++libcodesnippets_la_LIBADD += $(CB_TINYXML_LIBS)
++endif
++
+ libcodesnippets_la_SOURCES = codesnippets.cpp \
+ 		codesnippetstreectrl.cpp \
+ 		codesnippetswindow.cpp \
+Index: src/plugins/contrib/envvars/Makefile.am
+===================================================================
+--- a/src/plugins/contrib/envvars/Makefile.am	(revision 13854)
++++ b/src/plugins/contrib/envvars/Makefile.am	(revision 13855)
+@@ -13,6 +13,10 @@
+ libenvvars_la_LIBADD = ../../../sdk/libcodeblocks.la \
+ 			$(WX_LIBS)
+ 
++if ! CODEBLOCKS_NT
++libenvvars_la_LIBADD += $(CB_TINYXML_LIBS)
++endif
++
+ libenvvars_la_SOURCES = envvars.cpp \
+                         envvars_cfgdlg.cpp \
+                         envvars_common.cpp \
+Index: src/plugins/contrib/lib_finder/Makefile.am
+===================================================================
+--- a/src/plugins/contrib/lib_finder/Makefile.am	(revision 13854)
++++ b/src/plugins/contrib/lib_finder/Makefile.am	(revision 13855)
+@@ -17,6 +17,10 @@
+ 		../wxContribItems/wxFlatNotebook/libwxflatnotebook.la \
+ 		$(WX_LIBS)
+ 
++if ! CODEBLOCKS_NT
++liblib_finder_la_LIBADD += $(CB_TINYXML_LIBS)
++endif
++
+ liblib_finder_la_SOURCES = \
+ 		librariesdlg.cpp \
+ 		dirlistdlg.cpp \
+Index: src/plugins/contrib/wxSmithAui/Makefile.am
+===================================================================
+--- a/src/plugins/contrib/wxSmithAui/Makefile.am	(revision 13854)
++++ b/src/plugins/contrib/wxSmithAui/Makefile.am	(revision 13855)
+@@ -16,6 +16,10 @@
+ 		       ../wxSmith/libwxsmithlib.la \
+ 		       $(WX_LIBS)
+ 
++if ! CODEBLOCKS_NT
++libwxSmithAui_la_LIBADD += $(CB_TINYXML_LIBS)
++endif
++
+ EXTRA_DIST = $(srcdir)/images/*.xpm \
+ 		$(srcdir)/images/*.xcf \
+ 		$(srcdir)/wxsmith/*.wxs \
+Index: src/plugins/contrib/wxSmithContribItems/Makefile.am
+===================================================================
+--- a/src/plugins/contrib/wxSmithContribItems/Makefile.am	(revision 13854)
++++ b/src/plugins/contrib/wxSmithContribItems/Makefile.am	(revision 13855)
+@@ -40,6 +40,10 @@
+ 			../wxContribItems/wxmathplot/libwxmathplot.la \
+ 			$(WX_LIBS)
+ 
++if ! CODEBLOCKS_NT
++libwxsmithcontribitems_la_LIBADD += $(CB_TINYXML_LIBS)
++endif
++
+ EXTRA_DIST = $(srcdir)/wxchart/*.xpm \
+ 		$(srcdir)/wxchart/*.png \
+ 		$(srcdir)/wximagebutton/*.xpm \
+Index: src/plugins/contrib/SpellChecker/Makefile.am
+===================================================================
+--- a/src/plugins/contrib/SpellChecker/Makefile.am	(revision 13854)
++++ b/src/plugins/contrib/SpellChecker/Makefile.am	(revision 13855)
+@@ -17,6 +17,10 @@
+ 							$(WX_LIBS) \
+ 							$(CB_HUNSPELL_LIBS)
+ 
++if ! CODEBLOCKS_NT
++libSpellChecker_la_LIBADD += $(CB_TINYXML_LIBS)
++endif
++
+ libSpellChecker_la_SOURCES = DictionariesNeededDialog.cpp \
+                             MySpellingDialog.cpp \
+                             OnlineSpellChecker.cpp \
+Index: src/plugins/contrib/source_exporter/Makefile.am
+===================================================================
+--- a/src/plugins/contrib/source_exporter/Makefile.am	(revision 13854)
++++ b/src/plugins/contrib/source_exporter/Makefile.am	(revision 13855)
+@@ -18,6 +18,10 @@
+ 				wxPdfDocument/libwxPdfDocument.la \
+ 				$(WX_LIBS) $(CB_FONTCONFIG_LIBS)
+ 
++if ! CODEBLOCKS_NT
++libexporter_la_LIBADD += $(CB_TINYXML_LIBS)
++endif
++
+ libexporter_la_SOURCES = BaseExporter.cpp \
+ 				exporter.cpp \
+ 				HTMLExporter.cpp \
