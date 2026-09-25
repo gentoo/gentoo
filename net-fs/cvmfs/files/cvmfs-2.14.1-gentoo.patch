@@ -6,6 +6,10 @@ Patch to unbundle dependencies to build in Gentoo.
    only used with BUILTIN_EXTERNALS; without it no nlohmann_json target
    would exist).  nlohmann_json is header-only but its C++ headers need the
    C++ standard library, hence the C project type.
+ - Protobuf -> link the imported protobuf::libprotobuf-lite target instead of
+   the bare ${PROTOBUF_LITE_LIBRARY} path.  The imported target propagates
+   compile features from its dependencies (including absl), without
+   hardcoding a C++ standard in the ebuild.
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
 --- a/CMakeLists.txt
@@ -19,6 +23,24 @@ diff --git a/CMakeLists.txt b/CMakeLists.txt
    set (INCLUDE_DIRECTORIES ${INCLUDE_DIRECTORIES} ${SHA3_INCLUDE_DIRS})
  endif ()
  
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -455,0 +457,2 @@ if (BUILD_CVMFS OR BUILD_LIBCVMFS OR BUILD_SERVER OR BUILD_SERVER_DEBUG OR
++
++  find_package (nlohmann_json REQUIRED)
++
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -498,5 +498,7 @@ if (BUILD_CVMFS OR BUILD_LIBCVMFS OR BUILD_LIBCVMFS_CACHE OR
+     BUILD_UNITTESTS OR BUILD_UNITTESTS_DEBUG OR BUILD_UBENCHMARKS OR
+     BUILD_SHRINKWRAP)
+   find_package(Protobuf REQUIRED)
++  find_package(protobuf CONFIG REQUIRED)
++  set(PROTOBUF_LITE_LIBRARY protobuf::libprotobuf-lite)
+   set (INCLUDE_DIRECTORIES ${INCLUDE_DIRECTORIES} ${PROTOBUF_INCLUDE_DIRS})
+ endif ()
 diff --git a/externals/sha3/CMakeLists.txt b/externals/sha3/CMakeLists.txt
 new file mode 100644
 --- /dev/null

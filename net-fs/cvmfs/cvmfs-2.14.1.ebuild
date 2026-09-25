@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake linux-info bash-completion-r1
+inherit cmake linux-info shell-completion
 
 DESCRIPTION="HTTP read-only file system for distributing software"
 HOMEPAGE="https://cernvm.cern.ch/fs/"
