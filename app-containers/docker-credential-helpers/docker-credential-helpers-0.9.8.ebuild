@@ -11,7 +11,7 @@ SRC_URI="https://github.com/docker/docker-credential-helpers/archive/v${PV}.tar.
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 ~arm64"
 
 IUSE="keyring pass"
 REQUIRED_USE="|| ( keyring pass )"
