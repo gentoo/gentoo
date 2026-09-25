@@ -35,10 +35,6 @@ dev-python/gitpython
 # https://sass-lang.com/blog/ruby-sass-is-unsupported/
 dev-ruby/sass
 
-# Michał Górny <mgorny@gentoo.org> (2026-06-10)
-# Part of stdlib since Python 3.11 (as tomllib).
-dev-python/tomli
-
 # Michał Górny <mgorny@gentoo.org> (2026-06-06)
 # Discontinued upstream, with explicit note that they will not be fixing
 # any further security issues.
