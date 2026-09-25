@@ -1,0 +1,48 @@
+Add stdio.h to configure conftest snippets using printf.
+
+GCC 14+ rejects implicit printf declarations in configure probes.
+
+Bug: https://bugs.gentoo.org/874939
+
+--- a/scripts/bash-based-configure
++++ b/scripts/bash-based-configure
+@@ -1170,6 +1170,7 @@ EOF
+ 
+    cat >conftest.c <<EOF
+ #include <Xm/Xm.h>
++#include <stdio.h>
+ int main()
+ {  printf("%d.%d.%d\n",XmVERSION,XmREVISION,XmUPDATE_LEVEL);
+ }
+@@ -1197,6 +1198,7 @@ EOF
+ 
+    cat >conftest.c <<EOF
+ #include <Xm/Xm.h>
++#include <stdio.h>
+ int main()
+ {  printf("%s\n",LesstifVERSION_STRING);
+ }
+@@ -1354,6 +1356,7 @@ EOF
+ 
+    cat >conftest.c <<EOF
+ #include <glib.h>
++#include <stdio.h>
+ int main(int argc, char *argv[])
+ { g_malloc(1024); 
+ 
+@@ -1856,6 +1859,7 @@ EOF
+    # Try automatic detection
+ 
+    cat > conftest.c <<EOF
++#include <stdio.h>
+ int main()
+ {  if(sizeof(int)==4)
+    {  char *c = "1234";
+@@ -1924,6 +1928,7 @@ EOF
+    # Try automatic detection
+ 
+    cat > conftest.c <<EOF
++#include <stdio.h>
+ int main()
+ {  switch(sizeof(char*))
+    {  case 4: printf("32\n"); break;
