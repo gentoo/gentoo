@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,7 +9,7 @@ EGIT_REPO_URI="https://gitlab.freedesktop.org/xorg/xserver.git"
 DESCRIPTION="X.Org X servers"
 SLOT="0/${PV}"
 if [[ ${PV} != 9999* ]]; then
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
 fi
 
 IUSE_SERVERS="xephyr xnest xorg xvfb"
@@ -70,7 +70,7 @@ CDEPEND="
 	!!x11-drivers/nvidia-drivers[-libglvnd(+)]
 "
 DEPEND="${CDEPEND}
-	>=x11-base/xorg-proto-2024.1
+	>=x11-base/xorg-proto-2021.4.99.2
 	>=x11-libs/xtrans-1.3.5
 	media-fonts/font-util
 	test? ( >=x11-libs/libxcvt-0.1.0 )
@@ -92,9 +92,16 @@ REQUIRED_USE="!minimal? (
 	elogind? ( udev )
 	?? ( elogind systemd )"
 
+UPSTREAMED_PATCHES=(
+)
+
 PATCHES=(
 	"${UPSTREAMED_PATCHES[@]}"
 	"${FILESDIR}"/${PN}-1.12-unloadsubmodule.patch
+	# needed for new eselect-opengl, bug #541232
+	"${FILESDIR}"/${PN}-1.18-support-multiple-Files-sections.patch
+	# pending upstream backport, bug #885763
+	"${FILESDIR}"/${PN}-21.1.10-c99.patch
 )
 
 src_configure() {
@@ -102,14 +109,13 @@ src_configure() {
 	use x86 && replace-flags -Os -O2
 	use x86 && replace-flags -Oz -O2
 
-	use debug && EMESON_BUILDTYPE=debug
-
 	# localstatedir is used for the log location; we need to override the default
 	#	from ebuild.sh
 	# sysconfdir is used for the xorg.conf location; same applies
 	local XORG_CONFIGURE_OPTIONS=(
 		--localstatedir "${EPREFIX}/var"
 		--sysconfdir "${EPREFIX}/etc"
+		-Dbuildtype=$(usex debug debug plain)
 		-Db_ndebug=$(usex debug false true)
 		$(meson_use !minimal dri1)
 		$(meson_use !minimal dri2)
@@ -132,6 +138,7 @@ src_configure() {
 		-Dhal=false
 		-Dlinux_acpi=false
 		-Dlinux_apm=false
+		-Dsecure-rpc=false
 		-Dsha1=libcrypto
 		-Dxkb_output_dir="${EPREFIX}/var/lib/xkb"
 	)
