@@ -17,7 +17,7 @@ SRC_URI="https://git.kernel.org/pub/scm/utils/${PN}/${PN}.git/snapshot/${P}.tar.
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64"
+KEYWORDS="amd64 ~ppc64"
 
 IUSE="auth test"
 
