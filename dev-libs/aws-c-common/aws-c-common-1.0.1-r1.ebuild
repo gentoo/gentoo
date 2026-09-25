@@ -15,6 +15,10 @@ KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-32-bit-time_t.patch
+)
+
 CMAKE_SKIP_TESTS=(
 	# https://github.com/awslabs/aws-c-common/issues/1274
 	test_file_path_read_from_offset_direct_io
