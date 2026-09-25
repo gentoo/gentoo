@@ -110,7 +110,7 @@ src_install() {
 		python_optimize "${D}$(python_get_sitedir)"
 	fi
 
-	use tools && doman debian/cec-client.1
+	use tools && doman debian/man/{cec,cecc}-client.1
 
 	if use udev; then
 		udev_dorules "${BUILD_DIR}/65-pulse-eight-usb-cec.rules"
