@@ -20,7 +20,7 @@ SLOT="0"
 KEYWORDS="-* ~amd64 ~arm64"
 
 RDEPEND="
-	>=virtual/jre-21:*
+	>=virtual/jdk-21:*[-headless-awt]
 	x11-libs/gtk+:3[wayland]
 "
 
@@ -33,6 +33,8 @@ src_prepare() {
 		-e 's:/usr/share/dbeaver:/opt/dbeaver:g' \
 		-e "s:^Exec=.*:Exec=${EPREFIX}/usr/bin/${MY_PN}:" \
 		-i "${MY_PN}-ce.desktop" || die
+	# Disable self-update, the install in /opt is managed by portage
+	echo "-Dpolicy.software.update.disabled=true" >> "${MY_PN}.ini" || die
 	default
 }
 
