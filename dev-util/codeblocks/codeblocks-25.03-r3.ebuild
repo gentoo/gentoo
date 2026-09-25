@@ -50,6 +50,7 @@ PATCHES=(
 	"${FILESDIR}/${P}_env.patch"
 	"${FILESDIR}/${PN}-20.03_p13518_FortranProject-r378-autotools-build.patch"
 	"${FILESDIR}/${PN}-25.03_DisplayEvents.cpp-fix-linking-wxGTK-r13653.patch"
+	"${FILESDIR}/${PN}-25.03_autotools-fix-linking-TinyXML-r13855.patch"
 	"${FILESDIR}/${P}_fix_boost-1.89.0.patch"
 )
 
