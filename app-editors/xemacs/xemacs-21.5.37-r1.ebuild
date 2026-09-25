@@ -62,6 +62,7 @@ src_prepare() {
 	eapply "${FILESDIR}/${PN}-21.5.35-unknown-command-test.patch"
 	eapply "${FILESDIR}/${PN}-21.5.36-failing-tests-2.patch"
 	eapply "${FILESDIR}/${PN}-21.5.36-berkdb-5.3.patch"
+	eapply "${FILESDIR}/${P}-ellcc-copy.patch"
 	eapply_user
 
 	eautoconf
