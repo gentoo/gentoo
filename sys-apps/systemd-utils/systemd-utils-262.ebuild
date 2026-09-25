@@ -33,6 +33,9 @@ REQUIRED_USE="
 RESTRICT="!test? ( test )"
 
 COMMON_DEPEND="
+	elibc_musl? (
+		sys-libs/libucontext
+	)
 	selinux? ( sys-libs/libselinux:0= )
 	tmpfiles? (
 		acl? ( sys-apps/acl )
