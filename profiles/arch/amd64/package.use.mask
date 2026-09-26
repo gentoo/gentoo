@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Alexander Tsoy (2026-09-27)
+# Assembly optimisations are supported on amd64 for all versions
+app-crypt/veracrypt -asm
+
 # Sam James <sam@gentoo.org> (2026-09-23)
 # Only supported on some arches.
 dev-libs/elfutils -stackprof

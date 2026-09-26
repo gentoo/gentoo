@@ -59,16 +59,11 @@ src_compile() {
 		TC_EXTRA_CXXFLAGS="${CXXFLAGS}"
 		TC_EXTRA_LFLAGS="${LDFLAGS}"
 		WX_CONFIG="${WX_CONFIG}"
+		$(usex asm "" "NOASM=1")
 		$(usex gui "" "NOGUI=1")
 		$(usex cpu_flags_x86_aes "" "NOAESNI=1")
 		$(usex cpu_flags_x86_sse2 "" "NOSSE2=1")
 	)
-
-	if use amd64 || use x86; then
-		myemakeargs+=( $(usex asm "" "NOASM=1") )
-	else
-		myemakeargs+=( NOASM=1 )
-	fi
 
 	emake "${myemakeargs[@]}"
 }
