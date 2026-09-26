@@ -1,0 +1,159 @@
+--- a/contrib/CMakeLists.txt
++++ b/contrib/CMakeLists.txt
+@@ -55,7 +55,7 @@
+     add_contrib (libucontext-cmake libucontext)
+ endif()
+ add_contrib (abseil-cpp-cmake abseil-cpp)
+-add_contrib (zlib-ng-cmake zlib-ng)
++add_subdirectory (zlib-ng-cmake)
+ add_contrib (google-protobuf-cmake google-protobuf)
+ add_contrib (grpc-cmake grpc)
+ add_contrib (compiler-rt-cmake llvm-project)
+@@ -72,33 +72,33 @@
+ add_contrib (pdqsort-cmake pdqsort)
+ add_contrib (ipnsort-cmake ipnsort)
+ add_contrib (driftsort-cmake driftsort)
+-add_contrib (pocketfft-cmake pocketfft)
++add_subdirectory (pocketfft-cmake)
+ add_contrib (crc32-vpmsum-cmake crc32-vpmsum)
+-add_contrib (sparsehash-c11-cmake sparsehash-c11)
+-add_contrib (magic-enum-cmake magic_enum)
++add_subdirectory (sparsehash-c11-cmake)
++add_subdirectory (magic-enum-cmake)
+ add_contrib (boost-cmake boost)
+ add_contrib (cctz-cmake cctz)
+ add_contrib (consistent-hashing)
+ add_contrib (zmij-cmake zmij)
+-add_contrib (vectorscan-cmake vectorscan)
++add_subdirectory (vectorscan-cmake)
+ add_contrib (jemalloc-cmake jemalloc)
+-add_contrib (libcpuid-cmake libcpuid)
++add_subdirectory (libcpuid-cmake)
+ add_contrib (libdivide-cmake)
+ add_contrib (libmetrohash)
+-add_contrib (lz4-cmake lz4)
++add_subdirectory (lz4-cmake)
+ add_contrib (libdeflate-cmake libdeflate)
+ add_contrib (murmurhash)
+ add_contrib (replxx-cmake replxx)
+ add_contrib (capnproto-cmake capnproto)
+ add_contrib (yaml-cpp-cmake yaml-cpp)
+ add_contrib (re2-cmake re2)
+-add_contrib (xz-cmake xz)
+-add_contrib (brotli-cmake brotli)
+-add_contrib (double-conversion-cmake double-conversion)
++add_subdirectory (xz-cmake)
++add_subdirectory (brotli-cmake)
++add_subdirectory (double-conversion-cmake)
+ add_contrib (croaring-cmake croaring)
+-add_contrib (zstd-cmake zstd)
++add_subdirectory (zstd-cmake)
+ add_contrib (zxc-cmake zxc)
+-add_contrib (bzip2-cmake bzip2)
++add_subdirectory (bzip2-cmake)
+ add_contrib (minizip-ng-cmake minizip-ng)
+ add_contrib (snappy-cmake snappy)
+ add_contrib (thrift-cmake thrift)
+@@ -107,9 +107,9 @@
+ add_contrib (xsimd-cmake xsimd) # required by arrow's SIMD codepaths
+ add_contrib (arrow-cmake arrow) # requires: snappy, thrift, double-conversion, xsimd
+ add_contrib (avro-cmake avro) # requires: snappy
+-add_contrib (openldap-cmake openldap)
++add_subdirectory (openldap-cmake)
+ add_contrib (msgpack-c-cmake msgpack-c)
+-add_contrib (libarchive-cmake libarchive)
++add_subdirectory (libarchive-cmake)
+ 
+ add_contrib (corrosion-cmake corrosion)
+ add_contrib (delta-kernel-rs-cmake delta-kernel-rs)
+@@ -133,7 +133,7 @@
+ endif()
+ 
+ add_contrib (libfuzzer-cmake llvm-project)
+-add_contrib (libxml2-cmake libxml2)
++add_subdirectory (libxml2-cmake)
+ 
+ add_contrib (aws-cmake
+     aws
+@@ -152,29 +152,29 @@
+     aws-cmake
+ )
+ 
+-add_contrib (simdjson-cmake simdjson)
+-add_contrib (simdutf-cmake simdutf)
+-add_contrib (rapidjson-cmake rapidjson)
++add_subdirectory (simdjson-cmake)
++add_subdirectory (simdutf-cmake)
++add_subdirectory (rapidjson-cmake)
+ add_contrib (fastops-cmake fastops)
+-add_contrib (libuv-cmake libuv)
++add_subdirectory (libuv-cmake)
+ add_contrib (liburing-cmake liburing)
+ add_contrib (amqpcpp-cmake AMQP-CPP) # requires: libuv
+ add_contrib (cassandra-cmake cassandra) # requires: libuv
+ add_contrib (azure-cmake azure)
+ add_contrib (fmtlib-cmake fmtlib)
+-add_contrib (krb5-cmake krb5)
+-add_contrib (cyrus-sasl-cmake cyrus-sasl) # for krb5
++add_subdirectory (krb5-cmake)
++add_subdirectory (cyrus-sasl-cmake)
+ add_contrib (libgsasl-cmake libgsasl) # requires krb5
+ add_contrib (librdkafka-cmake librdkafka) # requires: libgsasl
+ add_contrib (nats-io-cmake nats-io)
+-add_contrib (isa-l-cmake isa-l)
++add_subdirectory (isa-l-cmake)
+ add_contrib (libhdfs3-cmake libhdfs3) # requires: google-protobuf, krb5, isa-l
+ add_contrib (hive-metastore-cmake hive-metastore) # requires: thrift, avro, arrow, libhdfs3
+ add_contrib (cppkafka-cmake cppkafka)
+ 
+ option(ENABLE_LIBPQXX "Enable PostgreSQL" ${ENABLE_LIBRARIES})
+ if (ENABLE_LIBPQXX)
+-    add_contrib (postgres-cmake postgres)
++    add_subdirectory (postgres-cmake)
+     add_contrib (libpqxx-cmake libpqxx)
+ endif()
+ 
+@@ -209,12 +209,12 @@
+ 
+ option(ENABLE_MECAB "Enable MeCab (Japanese morphological analyzer) support" ${ENABLE_LIBRARIES})
+ if (ENABLE_MECAB)
+-    add_contrib (MeCab-cmake MeCab)
++    add_subdirectory (MeCab-cmake)
+ endif()
+ 
+-add_contrib (sqlite-cmake sqlite-amalgamation)
++add_subdirectory (sqlite-cmake)
+ add_contrib (s2geometry-cmake s2geometry)
+-add_contrib (c-ares-cmake c-ares)
++add_subdirectory (c-ares-cmake)
+ 
+ add_contrib (morton-nd-cmake morton-nd)
+ if (ARCH_S390X)
+@@ -254,7 +254,7 @@
+ 
+ add_contrib(simdcomp-cmake simdcomp)
+ 
+-add_contrib (numactl-cmake numactl)
++add_subdirectory (numactl-cmake)
+ 
+ # Google Cloud Cpp
+ if(ENABLE_LIBRARIES AND (OS_LINUX OR OS_DARWIN OR OS_FREEBSD) AND (ARCH_AMD64 OR (ARCH_AARCH64 AND NOT NO_ARMV81_OR_HIGHER)))
+@@ -265,15 +265,15 @@
+ option(ENABLE_GOOGLE_CLOUD_CPP "Enable Google Cloud Cpp" ${ENABLE_GOOGLE_CLOUD_CPP_DEFAULT})
+ # `crc32c` is a small portable library used by both `google-cloud-cpp` and the snappy framing format
+ # in `SnappyWriteBuffer`/`SnappyFramedReadBuffer`, so it is always built when libraries are enabled.
+-add_contrib (crc32c-cmake crc32c)
++add_subdirectory (crc32c-cmake)
+ if(ENABLE_GOOGLE_CLOUD_CPP)
+-    add_contrib (nlohmann-json-cmake nlohmann-json)
++    add_subdirectory (nlohmann-json-cmake)
+     add_contrib (google-cloud-cpp-cmake google-cloud-cpp) # requires grpc, protobuf, absl, nlohmann's json, crc32c
+ else()
+     message(STATUS "Not using Google Cloud Cpp")
+ endif()
+ 
+-add_contrib (jwt-cpp-cmake jwt-cpp)
++add_subdirectory (jwt-cpp-cmake)
+ 
+ add_contrib (sha3iuf-cmake SHA3IUF)
+ 
