@@ -34,10 +34,10 @@ src_prepare() {
 
 	if use prefix; then
 		sed -i -e "s,/var/db/pkg,${EPREFIX}&,g" \
-			"${S}/Distribution/Gentoo/Packages.hs" || die
+			"${S}/src/Distribution/Gentoo/Packages.hs" || die
 
 		sed -i -e 's,"/","'"${EPREFIX}"'/",g' \
-			"${S}/Distribution/Gentoo/GHC.hs" || die
+			"${S}/src/Distribution/Gentoo/GHC.hs" || die
 	fi
 }
 
