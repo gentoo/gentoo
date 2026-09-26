@@ -26,6 +26,7 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 BDEPEND="
+	>=dev-build/meson-1.7
 	dev-libs/appstream-glib
 	dev-util/glib-utils
 	dev-util/itstool
