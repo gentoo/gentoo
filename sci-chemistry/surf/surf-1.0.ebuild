@@ -8,14 +8,13 @@ inherit toolchain-funcs flag-o-matic
 DESCRIPTION="Solvent accesible Surface calculator"
 HOMEPAGE="http://www.ks.uiuc.edu/"
 SRC_URI="http://www.ks.uiuc.edu/Research/vmd/extsrcs/surf.tar.Z -> ${P}.tar.Z"
+S="${WORKDIR}"
 
 LICENSE="SURF"
 SLOT="0"
 KEYWORDS="amd64 ~x86"
 
 RDEPEND="!www-client/surf"
-
-S="${WORKDIR}"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-makefile.patch
