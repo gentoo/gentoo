@@ -25,7 +25,7 @@ else
 		"
 		S="${WORKDIR}"/${MY_P}
 
-		KEYWORDS="~amd64 arm64 ~x86"
+		KEYWORDS="amd64 arm64 ~x86"
 		BDEPEND="verify-sig? ( >=sec-keys/openpgp-keys-nlnetlabs-20260101 ) "
 	fi
 fi
