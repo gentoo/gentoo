@@ -23,6 +23,7 @@ SRC_URI="
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 ~riscv"
+IUSE="+native-extensions"
 
 BDEPEND="
 	>=dev-python/cython-3[${PYTHON_USEDEP}]
@@ -37,7 +38,12 @@ BDEPEND="
 EPYTEST_PLUGINS=( pytest-{asyncio,timeout} )
 distutils_enable_tests pytest
 
-export REQUIRE_CYTHON=1
+src_configure() {
+	export REQUIRE_CYTHON=1
+	if ! use native-extensions; then
+		export SKIP_CYTHON=1
+	fi
+}
 
 src_test() {
 	local dbus_params=(
