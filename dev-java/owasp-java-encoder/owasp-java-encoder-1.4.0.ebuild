@@ -10,7 +10,7 @@ MAVEN_ID="org.owasp.encoder:encoder:${PV}"
 inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="OWASP Java Encoder"
-HOMEPAGE="https://owasp.org/www-project-java-encoder/"
+HOMEPAGE="https://owasp.org/projects/java-encoder"
 SRC_URI="https://github.com/OWASP/owasp-java-encoder/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${P}/core"
 
