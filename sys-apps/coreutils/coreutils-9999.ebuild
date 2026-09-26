@@ -198,6 +198,9 @@ src_configure() {
 	# bug #409919
 	export gl_cv_func_mknod_works=yes
 
+	# https://sourceware.org/PR20381
+	has_version "=sys-libs/glibc-2.44*" && export gl_cv_func_re_compile_pattern_working=no
+
 	if use static ; then
 		append-ldflags -static
 		# bug #321821
