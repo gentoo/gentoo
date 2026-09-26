@@ -21,7 +21,7 @@ fi
 LICENSE="BSD-2-with-patent"
 SLOT="0"
 IUSE="+embed-models test"
-
+REQUIRED_USE="test? ( embed-models )"
 RESTRICT="!test? ( test )"
 
 BDEPEND="
