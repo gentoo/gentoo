@@ -90,6 +90,7 @@ src_configure() {
 }
 
 src_test() {
+	export GSETTINGS_BACKEND=memory #982516
 	dbus-run-session meson test -C "${BUILD_DIR}" --print-errorlogs -t 10 || die 'tests failed'
 }
 
