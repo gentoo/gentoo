@@ -81,7 +81,7 @@ _get_tsg_abi_ver() {
 	# This sed script finds ABI definition string in parser source file,
 	# substitutes all the string until the ABI number, and prints remains
 	# (the ABI number itself)
-	sed -n 's/#define LANGUAGE_VERSION //p' "${S}"/src/parser.c ||
+	find "${S}" -name parser.c -exec sed -n 's/#define LANGUAGE_VERSION //p' {} \; -quit ||
 		die "Unable to extract ABI version for this grammar"
 }
 
