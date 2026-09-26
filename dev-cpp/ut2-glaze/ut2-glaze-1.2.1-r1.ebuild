@@ -18,6 +18,10 @@ KEYWORDS="amd64"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
+PATCHES=(
+	"${FILESDIR}/${P}-project-name.patch"
+)
+
 src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_SKIP_INSTALL_RULES=OFF
