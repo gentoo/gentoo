@@ -5,22 +5,36 @@ EAPI=8
 
 inherit cmake
 
+# see hdf4_test/run_get_hdf4_files.sh
+TEST_DATA=(
+	AMSR_E_L2_Rain_V10_200905312326_A.hdf.gz
+	AMSR_E_L3_DailyLand_V06_20020619.hdf.gz
+	MYD29.A2009152.0000.005.2009153124331.hdf.gz
+	MYD29.A2002185.0000.005.2007160150627.hdf.gz
+	MOD29.A2000055.0005.005.2006267200024.hdf.gz
+)
+
 DESCRIPTION="Scientific library and interface for array oriented data access"
 HOMEPAGE="https://www.unidata.ucar.edu/software/netcdf/"
-SRC_URI="https://downloads.unidata.ucar.edu/netcdf-c/${PV}/${PN}-c-${PV}.tar.gz"
+SRC_URI="
+	https://downloads.unidata.ucar.edu/netcdf-c/${PV}/${PN}-c-${PV}.tar.gz
+	hdf? ( test? (
+		${TEST_DATA[@]/#/https://resources.unidata.ucar.edu/netcdf/sample_data/hdf4/}
+	) )
+"
 S="${WORKDIR}"/${PN}-c-${PV}
 
 LICENSE="UCAR-Unidata"
 # SONAME of libnetcdf.so
 SLOT="0/22"
-KEYWORDS="amd64 ~arm arm64 ~ppc ppc64 ~riscv ~x86"
-IUSE="blosc bzip2 +dap doc examples hdf +hdf5 mpi szip test zstd"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
+IUSE="blosc bzip2 +dap doc examples hdf +hdf5 logging mpi szip test zstd"
 RESTRICT="!test? ( test )"
 
 # NOTE OPTION(ENABLE_HDF4 "Build netCDF-4 with HDF4 read capability(HDF4, HDF5 and Zlib required)." OFF)
 #
 # extra deps for hdf5 for https://github.com/Unidata/netcdf-c/issues/3198,
-# automagic in 4.9.3 :(
+# still automagic in 4.10.1 :(
 RDEPEND="
 	dev-libs/libxml2:=
 	dev-libs/libzip:=
@@ -31,12 +45,10 @@ RDEPEND="
 	hdf? (
 		media-libs/libjpeg-turbo:=
 		sci-libs/hdf:=
-		<sci-libs/hdf5-2:=
+		sci-libs/hdf5:=
 	)
-	hdf5? (
-		<sci-libs/hdf5-2:=[hl(+),mpi=,szip=,zlib]
-		virtual/szip:=
-	)
+	hdf5? ( sci-libs/hdf5:=[hl(+),mpi=,szip=,zlib] )
+	szip? ( virtual/szip:= )
 	zstd? ( app-arch/zstd:= )
 "
 
@@ -60,8 +72,6 @@ src_configure() {
 	use mpi && export CC=mpicc
 
 	local mycmakeargs=(
-		-DCMAKE_POLICY_DEFAULT_CMP0153="OLD" # exec_program
-
 		-DNETCDF_ENABLE_DAP_REMOTE_TESTS=OFF
 		#-DNETCDF_ENABLE_HDF4_FILE_TESTS=OFF
 		-DNETCDF_ENABLE_LIBXML2=ON
@@ -77,7 +87,8 @@ src_configure() {
 		-DNETCDF_ENABLE_DOXYGEN="$(usex doc)"
 		-DNETCDF_ENABLE_EXAMPLES="$(usex examples)"
 		-DNETCDF_ENABLE_HDF4="$(usex hdf)"
-		-DNETCDF_ENABLE_NETCDF_4="$(usex hdf5)"
+		-DNETCDF_ENABLE_LOGGING="$(usex logging)"
+		-DNETCDF_ENABLE_HDF5="$(usex hdf5)"
 		-DNETCDF_ENABLE_TESTS="$(usex test)"
 
 		-DNETCDF_ENABLE_NCZARR="yes"
@@ -99,14 +110,10 @@ src_test() {
 	if [[ -f "${BUILD_DIR}/nc_test4/run_par_test.sh" ]]; then
 		sed -e 's/mpiexec/mpiexec --use-hwthread-cpus/g' -i "${BUILD_DIR}/nc_test4/run_par_test.sh" || die
 	fi
+	# hdf4_test/ only exists with USE=hdf, see CMakeLists.txt:1530
+	if use hdf; then
+		mv "${WORKDIR}"/*.hdf "${BUILD_DIR}/hdf4_test/" || die
+	fi
 
 	cmake_src_test
-}
-
-src_install() {
-	cmake_src_install
-
-	# bug #827188
-	sed -i -re "s:${EPREFIX}/usr/$(get_libdir)/lib(dl|m).(so|a);:\1;:g" \
-		"${ED}/usr/$(get_libdir)/cmake/netCDF/netCDFTargets.cmake" || die
 }
