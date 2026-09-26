@@ -12,3 +12,7 @@ dev-lang/php jit
 net-proxy/haproxy pcre-jit
 www-servers/vinyl-cache jit
 www-apache/mod_security jit
+
+# Mike Pagano <mpagano@gentoo.org> (2026-09-26)
+# Rust (and thus Node Temporal) is unsupported on armv4t
+net-libs/nodejs temporal
