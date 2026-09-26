@@ -29,37 +29,42 @@ unset LANG_USE
 REQUIRED_USE="${GUILE_REQUIRED_USE} ${PYTHON_REQUIRED_USE}"
 
 BDEPEND="
-	dev-texlive/texlive-metapost
-	sys-apps/texinfo
-	app-alternatives/yacc
-	app-alternatives/lex
-	virtual/pkgconfig
-	doc? ( app-text/texi2html )
-"
-RDEPEND="app-text/ghostscript-gpl
-	dev-libs/boehm-gc
-	dev-libs/glib:2
-	dev-libs/libatomic_ops
-	media-fonts/tex-gyre
-	media-libs/fontconfig
-	media-libs/freetype:2
-	media-libs/harfbuzz
-	>=x11-libs/pango-1.40
-	emacs? ( >=app-editors/emacs-23.1:* )
-	${GUILE_DEPS}
-	${PYTHON_DEPS}"
-DEPEND="${RDEPEND}
 	app-text/t1utils
+	dev-texlive/texlive-metapost
 	dev-lang/perl
 	dev-libs/kpathsea
-	media-gfx/fontforge[png,python]
+	>=media-gfx/fontforge-20200314[png,python]
+	>=sys-apps/texinfo-6.8
+	>=sys-devel/bison-2.4.1
+	sys-devel/flex
 	sys-devel/gettext
+	virtual/pkgconfig
 	doc? (
 		dev-texlive/texlive-langcyrillic
 		l10n_cs? ( dev-texlive/texlive-xetex )
 		l10n_ja? ( dev-texlive/texlive-langjapanese )
 		l10n_zh? ( dev-texlive/texlive-langchinese )
 	)
+"
+RDEPEND="
+	app-text/ghostscript-gpl
+	dev-libs/boehm-gc
+	>=dev-libs/glib-2.64:2
+	dev-libs/libatomic_ops
+	media-fonts/tex-gyre
+	>=media-libs/fontconfig-2.13
+	>=media-libs/freetype-2.10:2
+	media-libs/harfbuzz
+	>=media-libs/libpng-1.6.0
+	>=x11-libs/cairo-1.16
+	>=x11-libs/pango-1.44.5
+	virtual/zlib:=
+	emacs? ( >=app-editors/emacs-23.1:* )
+	${GUILE_DEPS}
+	${PYTHON_DEPS}
+"
+DEPEND="
+	${RDEPEND}
 "
 # Correct output data for tests isn't bundled with releases
 RESTRICT="test"
