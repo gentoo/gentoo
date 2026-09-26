@@ -1,7 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
+
+inherit linux-info
 
 MY_P=${P/_/-}
 
@@ -33,6 +35,12 @@ DEPEND="
 	)"
 RDEPEND="${DEPEND}
 	virtual/zlib:="
+
+pkg_pretend() {
+	# bug #977863
+	# needs ax25 subsystem which got dropped from Linux kernel starting with v7.1
+	kernel_is -ge 7 1 && eerror "Linux kernel < v7.1 required" && die
+}
 
 src_prepare() {
 	if use elibc_musl ; then
