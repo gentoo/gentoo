@@ -16,6 +16,7 @@ else
 		https://github.com/Netflix/vmaf/archive/v${PV}.tar.gz -> ${P}.tar.gz
 	"
 	KEYWORDS="amd64 arm64 ~loong ~riscv x86"
+	S="${WORKDIR}/vmaf-${PV}"
 fi
 
 LICENSE="BSD-2-with-patent"
@@ -30,8 +31,6 @@ BDEPEND="
 "
 
 RDEPEND="${BDEPEND}"
-
-S="${WORKDIR}/vmaf-${PV}"
 
 src_prepare() {
 	default
