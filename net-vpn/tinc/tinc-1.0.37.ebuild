@@ -16,7 +16,7 @@ SRC_URI="
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="amd64 ~arm ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
 IUSE="+lzo uml vde +zlib"
 
 DEPEND="
