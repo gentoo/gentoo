@@ -122,13 +122,6 @@ src_prepare() {
 		# Upstream patches
 	)
 
-	if [[ ${PV} == 9999 ]] ; then
-		rm "${WORKDIR}"/${MY_PATCH}/0005-env-printenv-quote-terminals-only.patch \
-			"${WORKDIR}"/${MY_PATCH}/0006-regenerate-info-for-printenv-backport.patch || die
-	else
-		die "Please drop the patch cleanup and reroll the patch tarball before copying from live!"
-	fi
-
 	if ! use vanilla && [[ -d "${WORKDIR}"/${MY_PATCH} ]] ; then
 		PATCHES+=( "${WORKDIR}"/${MY_PATCH} )
 	fi
