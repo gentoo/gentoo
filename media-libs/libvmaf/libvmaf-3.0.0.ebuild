@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,22 +16,21 @@ else
 		https://github.com/Netflix/vmaf/archive/v${PV}.tar.gz -> ${P}.tar.gz
 	"
 	KEYWORDS="amd64 arm64 ~loong ~riscv x86"
+	S="${WORKDIR}/vmaf-${PV}"
 fi
 
 LICENSE="BSD-2-with-patent"
 SLOT="0/3"
 IUSE="+embed-models test"
-
+REQUIRED_USE="test? ( embed-models )"
 RESTRICT="!test? ( test )"
 
 BDEPEND="
 	dev-lang/nasm
-	embed-models? ( app-editors/vim-core )
+	embed-models? ( dev-util/xxd )
 "
 
 RDEPEND="${BDEPEND}"
-
-S="${WORKDIR}/vmaf-${PV}"
 
 src_prepare() {
 	default
