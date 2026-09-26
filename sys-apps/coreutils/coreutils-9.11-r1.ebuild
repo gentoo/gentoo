@@ -178,7 +178,7 @@ src_configure() {
 	# https://savannah.gnu.org/support/?111394
 	# This can be removed when we patch dev-build/autoconf, though
 	# packages w/o eautoreconf will still need it.
-	[[ ${enable_year2038} == "no" ]] && myconf+=( --disable-year2038 )
+	! tc-has-64bit-time_t && [[ ${enable_year2038} == "no" ]] && xfail_tests+=( test-year2038 )
 
 	if tc-is-cross-compiler && [[ ${CHOST} == *linux* ]] ; then
 		# bug #311569
@@ -249,7 +249,7 @@ src_test() {
 		)
 	fi
 
-	[[ ${enable_year2038} == "no" ]] && xfail_tests+=( test-year2038 )
+	! tc-has-64bit-time_t && [[ ${enable_year2038} == "no" ]] && xfail_tests+=( test-year2038 )
 
 	# This test is flaky (bug #910640).
 	cat > tests/tty/tty-eof.pl <<-EOF || die
