@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,7 +15,7 @@ else
 	SRC_URI="
 		https://github.com/Netflix/vmaf/archive/v${PV}.tar.gz -> ${P}.tar.gz
 	"
-	KEYWORDS="~amd64 ~loong ~riscv ~x86"
+	KEYWORDS="~amd64 ~arm64 ~loong ~riscv ~x86"
 fi
 
 LICENSE="BSD-2-with-patent"
@@ -26,7 +26,7 @@ RESTRICT="!test? ( test )"
 
 BDEPEND="
 	dev-lang/nasm
-	embed-models? ( app-editors/vim-core )
+	embed-models? ( dev-util/xxd )
 "
 
 RDEPEND="${BDEPEND}"
@@ -36,14 +36,6 @@ if [[ ${PV} == "9999" ]]; then
 else
 	S="${WORKDIR}/vmaf-${PV}"
 fi
-
-src_prepare() {
-	default
-
-	# Workaround for https://bugs.gentoo.org/837221
-	# The paths in the tests are hard coded to look for the model folder as "../../model"
-	sed -i "s|\"../../model|\"../vmaf-${PV}/model|g" "${S}"/libvmaf/test/* || die
-}
 
 multilib_src_configure() {
 	local emesonargs=(
