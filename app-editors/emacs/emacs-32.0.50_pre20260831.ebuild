@@ -137,7 +137,7 @@ RDEPEND=">=app-emacs/emacs-common-1.11[games?,gui?]
 				media-libs/fontconfig
 				media-libs/freetype
 				>=x11-libs/cairo-1.12.18
-				x11-libs/gtk+:3
+				x11-libs/gtk+:3[wayland]
 				harfbuzz? ( media-libs/harfbuzz:0= )
 				m17n-lib? (
 					>=dev-libs/libotf-0.9.4
