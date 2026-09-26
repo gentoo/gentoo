@@ -1,5 +1,10 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Ulrich Müller <ulm@gentoo.org> (2026-09-26)
+# wayland is use.masked, therefore no support for PGTK which is enabled
+# through [gui,gtk,-X].
+app-editors/emacs X
 
 # Sam James <sam@gentoo.org> (2023-04-30)
 # Stacks on HPPA grow upwards and GCC doesn't support SSP or SCP there.
