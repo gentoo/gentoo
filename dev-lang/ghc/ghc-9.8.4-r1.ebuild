@@ -589,6 +589,9 @@ src_prepare() {
 
 	cd "${S}" # otherwise eapply will break
 
+	# GHCi must resolve linker scripts using the C compiler's sysroot.
+	use prefix && eapply "${FILESDIR}/ghc-9.8.4-prefix-ld-linker-script.patch"
+
 	# https://bugs.gentoo.org/978912
 	eapply "${FILESDIR}/ghc-9.8.4-fix-terminfo-build.patch"
 

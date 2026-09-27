@@ -1,0 +1,95 @@
+From: Gentoo Prefix
+Subject: [PATCH] GHCi: resolve linker scripts against the C compiler sysroot
+
+GHC's RTS linker reads GNU ld scripts, but passes the first GROUP member
+straight to dlopen. Recognise scripts regardless of their library name and
+resolve their first absolute GROUP/INPUT member against the configured C
+compiler sysroot before handing it to the RTS. This avoids accidentally
+loading a host library. The sysroot is queried from the configured compiler;
+it is not assumed to equal EPREFIX.
+
+On prefix-guest, gcc sysroot is usually / and does not contain EPREFIX, this
+patch does nothing.
+
+Index: ghc-9.8.4/compiler/GHC/Linker/Loader.hs
+===================================================================
+--- ghc-9.8.4.orig/compiler/GHC/Linker/Loader.hs
++++ ghc-9.8.4/compiler/GHC/Linker/Loader.hs
+@@ -93,6 +93,7 @@ import GHC.Linker.Types
+ import Control.Monad
+ 
+ import qualified Data.Set as Set
++import qualified Data.ByteString as BS
+ import Data.Char (isSpace)
+ import Data.IORef
+ import Data.List (intercalate, isPrefixOf, nub, partition)
+@@ -501,7 +502,13 @@ preloadLib interp hsc_env lib_paths fram
+       return pls
+ 
+     DLLPath dll_path -> do
+-      do maybe_errstr <- loadDLL interp dll_path
++      do
++#if defined(CAN_LOAD_DLL)
++         dll' <- resolveLinkerScript logger dflags dll_path
++#else
++         let dll' = dll_path
++#endif
++         maybe_errstr <- loadDLL interp dll'
+          case maybe_errstr of
+             Right _ -> maybePutStrLn logger "done"
+             Left mm -> preloadFailed mm lib_paths lib_spec
+@@ -1224,13 +1231,53 @@ restriction very easily.
+ -}
+ 
+ #if defined(CAN_LOAD_DLL)
++-- The RTS linker passes the first GROUP/INPUT member of an ld script to
++-- dlopen verbatim. Unlike GNU ld, dlopen does not apply the C compiler's
++-- sysroot. Resolve scripts in that sysroot before trying the host's paths.
++resolveLinkerScript :: Logger -> DynFlags -> FilePath -> IO FilePath
++resolveLinkerScript logger dflags dll
++  | not (isAbsolute dll) = pure dll
++  | otherwise = do
++      out <- askLd logger dflags [Option "--print-sysroot"]
++      case lines out of
++        root:_ | isAbsolute root && normalise root /= "/" -> do
++          root' <- canonicalizePath root
++          dll'  <- canonicalizePath dll
++          let relative = makeRelative root' dll'
++          if relative == ".." || "../" `isPrefixOf` relative
++            then pure dll
++            else do
++              content <- BS.readFile dll'
++              if BS.isPrefixOf (BS.pack [0x7f, 0x45, 0x4c, 0x46]) content
++                then pure dll'
++                else case scriptMember (map (toEnum . fromEnum) (BS.unpack content)) of
++                  Just member | isAbsolute member -> do
++                    let target = root' </> dropWhile (== '/') member
++                    exists <- doesFileExist target
++                    if exists then pure target else missing target
++                  -- Do not pass an unrecognised script to the RTS: it could
++                  -- load an unprefixed member from the host.
++                  _ -> missing dll'
++        _ -> pure dll
++  where
++    -- Treat parentheses as token separators, including GROUP(/path).
++    scriptMember content =
++      case dropWhile (\w -> w /= "GROUP" && w /= "INPUT") $
++           words (map (\c -> if c == '(' || c == ')' then ' ' else c) content) of
++        (_:member:_) -> Just member
++        _            -> Nothing
++
++    missing path = throwGhcExceptionIO $ InstallationError $
++      "Cannot resolve linker script in C compiler sysroot: " ++ path
++
+ -- we have already searched the filesystem; the strings passed to load_dyn
+ -- can be passed directly to loadDLL.  They are either fully-qualified
+ -- ("/usr/lib/libfoo.so"), or unqualified ("libfoo.so").  In the latter case,
+ -- loadDLL is going to search the system paths to find the library.
+ load_dyn :: Interp -> HscEnv -> Bool -> FilePath -> IO (Maybe (RemotePtr LoadedDLL))
+ load_dyn interp hsc_env crash_early dll = do
+-  r <- loadDLL interp dll
++  dll' <- resolveLinkerScript logger (hsc_dflags hsc_env) dll
++  r <- loadDLL interp dll'
+   case r of
+     Right loaded_dll -> pure (Just loaded_dll)
+     Left err ->
