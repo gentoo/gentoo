@@ -140,7 +140,7 @@ COMMON_TARGET_DEPEND="${PYTHON_DEPS}
 		sys-libs/libcap
 	)
 	cec? (
-		>=dev-libs/libcec-4.0:=
+		>=dev-libs/libcec-7.0.0:=
 	)
 	dbus? (
 		sys-apps/dbus
