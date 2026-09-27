@@ -54,7 +54,7 @@ case ${EAPI} in
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
-inherit multiprocessing zig-utils
+inherit multiprocessing toolchain-funcs zig-utils
 
 # @ECLASS_VARIABLE: ZIG_OPTIONAL
 # @PRE_INHERIT
@@ -244,6 +244,72 @@ zig_get_jobs() {
 	fi
 }
 
+# @FUNCTION: _zig_write_libc_txt
+# @INTERNAL
+# @USAGE: <output_file_path>
+# @DESCRIPTION:
+# Generates the zig_libc.txt configuration file based on the target C compiler
+# information and writes it to the specified target path.
+_zig_write_libc_txt() {
+	[[ -z ${1} ]] && die "${ECLASS}: ${FUNCNAME}: missing required argument"
+	local output_file="${1}"
+
+	# Sync with the output format of `zig libc`.
+	# TODO maybe add to upstream to use ZON format instead...
+	# Will also help "https://github.com/ziglang/zig/issues/20327",
+	# and hopefully will respect our settings too.
+
+	local cc crtbegin_path crt1_path
+	cc="$(tc-getCC)"
+	# Omitted CFLAGS here, because for cases where location changes
+	# (say, multilib with "-m32" flag) Zig does not support them.
+	# So there will be danger of desync-ed object formats.
+	crtbegin_path="$("${cc}" --print-file-name=crtbeginS.o)"
+	crt1_path="$("${cc}" --print-file-name=crt1.o)"
+
+	# Check if file paths are absolute and files exists
+	if [[ "${crtbegin_path}" != /* || ! -f "${crtbegin_path}" ]]; then
+		die "${ECLASS}: Failed to provide Zig libc info"
+	fi
+	if [[ "${crt1_path}" != /* || ! -f "${crt1_path}" ]]; then
+		die "${ECLASS}: Failed to provide Zig libc info"
+	fi
+
+	local crtbegin_dir="${crtbegin_path%/*}"
+	local crt1_dir="${crt1_path%/*}"
+	# Note: paths from "--libc" are not prepended by "--sysroot" value,
+	# so repeat prefix here.
+	local include_dir="${ESYSROOT}/usr/include"
+
+	# No quotes here, paths are interpreted verbatim.
+	if ver_test "${ZIG_SLOT}" -ge "0.17"; then
+		# https://codeberg.org/ziglang/zig/src/commit/da561521dd78dcde03fc51de8fd64551b368f56d/lib/std/zig/LibCInstallation.zig#L136-L165
+		cat <<- _EOF_ > "${output_file}" || die "Failed to provide Zig libc info"
+			include_dir=${include_dir}
+			sys_include_dir=${include_dir}
+			cc_dir=${crtbegin_dir}
+			crt_dir=${crt1_dir}
+			# Windows with MSVC only.
+			msvc_lib_dir=
+			kernel32_lib_dir=
+			# Darwin only.
+			darwin_sdk_dir=
+		_EOF_
+	else
+		# https://codeberg.org/ziglang/zig/src/tag/0.16.0/lib/std/zig/LibCInstallation.zig#L133-L158
+		cat <<- _EOF_ > "${output_file}" || die "Failed to provide Zig libc info"
+			include_dir=${include_dir}
+			sys_include_dir=${include_dir}
+			crt_dir=${crt1_dir}
+			# Windows with MSVC only.
+			msvc_lib_dir=
+			kernel32_lib_dir=
+			# Haiku only.
+			gcc_dir=
+		_EOF_
+	fi
+}
+
 # @FUNCTION: zig_init_base_args
 # @DESCRIPTION:
 # Stores basic args for future "ezig build" calls in ZBS_ARGS_BASE.
@@ -272,24 +338,7 @@ zig_get_jobs() {
 zig_init_base_args() {
 	[[ "${ZBS_ARGS_BASE}" ]] && return
 
-	# Sync with the output format of `zig libc`.
-	# TODO maybe add to upstream to use ZON format instead...
-	# Will also help "https://github.com/ziglang/zig/issues/20327",
-	# and hopefully will respect our settings too.
-	cat <<- _EOF_ > "${T}/zig_libc.txt" || die "Failed to provide Zig libc info"
-		# Note: they are not prepended by "--sysroot" value,
-		# so repeat it here.
-		# Also, no quotes here, they are interpreted verbatim.
-		include_dir=${ESYSROOT}/usr/include/
-		sys_include_dir=${ESYSROOT}/usr/include/
-		crt_dir=${ESYSROOT}/usr/$(get_libdir)/
-		# Windows with MSVC only.
-		msvc_lib_dir=
-		# Windows with MSVC only.
-		kernel32_lib_dir=
-		# Haiku only.
-		gcc_dir=
-	_EOF_
+	_zig_write_libc_txt "${T}/zig_libc.txt"
 
 	declare -g -a ZBS_ARGS_BASE=(
 		-j$(zig_get_jobs)
