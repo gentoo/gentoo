@@ -20,19 +20,19 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 IUSE="test-rust"
 
 RDEPEND="
 	>=dev-python/attrs-25.4.0[${PYTHON_USEDEP}]
 	>=dev-python/typing-extensions-4.14.0[${PYTHON_USEDEP}]
 "
+# msgspec is broken pretty much on anything but the most common arches
 BDEPEND="
 	dev-python/hatch-vcs[${PYTHON_USEDEP}]
 	test? (
 		>=dev-python/immutables-0.20[${PYTHON_USEDEP}]
 		>=dev-python/msgpack-1.0.5[${PYTHON_USEDEP}]
-		>=dev-python/msgspec-0.21.1[${PYTHON_USEDEP}]
 		>=dev-python/pymongo-4.4.0[${PYTHON_USEDEP}]
 		>=dev-python/pyyaml-6.0[${PYTHON_USEDEP}]
 		>=dev-python/tomlkit-0.11.8[${PYTHON_USEDEP}]
@@ -41,6 +41,9 @@ BDEPEND="
 		test-rust? (
 			>=dev-python/cbor2-5.4.6[${PYTHON_USEDEP}]
 			>=dev-python/orjson-3.11.3[${PYTHON_USEDEP}]
+		)
+		amd64? (
+			>=dev-python/msgspec-0.21.1[${PYTHON_USEDEP}]
 		)
 	)
 "
@@ -66,6 +69,20 @@ python_test() {
 			tests/test_preconf.py::test_cbor2_efficient_enum
 			tests/test_preconf.py::test_cbor2_native_enums
 			tests/test_preconf.py::test_cbor2_unions
+		)
+	fi
+	if ! has_version "Dev-python/msgspec[${PYTHON_USEDEP}]"; then
+		EPYTEST_DESELECT+=(
+			tests/test_preconf.py::test_literal_dicts_msgspec
+			tests/test_preconf.py::test_msgspec_efficient_enum
+			tests/test_preconf.py::test_msgspec_json_converter
+			tests/test_preconf.py::test_msgspec_json_unions
+			tests/test_preconf.py::test_msgspec_json_unstruct_collection_overrides
+			tests/test_preconf.py::test_msgspec_native_enums
+		)
+		EPYTEST_IGNORE+=(
+			tests/preconf/test_msgspec_cpython.py
+			tests/preconf/test_msgspec_314_cpython.py
 		)
 	fi
 	if ! has_version "dev-python/orjson[${PYTHON_USEDEP}]"; then
