@@ -1,0 +1,27 @@
+From e478b31bae76a4db41651b25dfc8fbcce70baecd Mon Sep 17 00:00:00 2001
+From: Erik Larsson <who+github@cnackers.org>
+Date: Sun, 14 Jul 2024 00:01:17 +0200
+Subject: [PATCH 1/4] scripts: fix regex for header preparation
+
+There are more upstream header file changes, so make sure we handle them correctly.
+
+Signed-off-by: Erik Larsson <who+github@cnackers.org>
+---
+ scripts/prepare_headers.py | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/scripts/prepare_headers.py b/scripts/prepare_headers.py
+index a7529b3..be34fee 100644
+--- a/scripts/prepare_headers.py
++++ b/scripts/prepare_headers.py
+@@ -37,6 +37,7 @@ def remove_common_guards(s):
+     s = re.sub(
+         "(#define [A-Za-z0-9_]+) .*\n.*?.*\)\)", "\g<1>...", s, flags=re.MULTILINE
+     )
++    s = re.sub("(#define +[A-Za-z0-9_]+) +\((-?\d+)\)", "\g<1> \g<2>", s)
+     s = re.sub("(#define [A-Za-z0-9_]+) .*", "\g<1>...", s)
+ 
+     # Restructure structs and untions with ...
+-- 
+2.54.0
+
