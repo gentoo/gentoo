@@ -105,7 +105,11 @@ COMMON_DEPEND="
 		media-libs/libva:=
 		>=media-libs/libvpl-1.13.0:=
 	)
-	vaapi? ( media-libs/libva:=[X] )
+	vaapi? (
+		media-libs/libva:=[X]
+		x11-libs/libX11
+		x11-libs/libdrm
+	)
 "
 RDEPEND="
 	${COMMON_DEPEND}
