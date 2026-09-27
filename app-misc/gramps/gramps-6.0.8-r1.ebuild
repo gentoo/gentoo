@@ -31,7 +31,7 @@ RDEPEND="
 		exif? ( >=media-libs/gexiv2-0.5:0[${PYTHON_USEDEP},introspection] )
 	')
 	gnome-base/librsvg:2
-	>x11-libs/gtk+-3.14.8:3[introspection]
+	>x11-libs/gtk+-3.14.8-r0:3[introspection]
 	x11-libs/pango[introspection]
 	x11-misc/xdg-utils
 	geo? ( >=sci-geosciences/osm-gps-map-1.1.0 )
