@@ -1,7 +1,7 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=9
 
 inherit flag-o-matic toolchain-funcs
 
@@ -16,7 +16,7 @@ LICENSE="GPL-2+"
 # upstream's config/version script.
 SLOT="0/9"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
-IUSE="data doc examples fltk gmp test threads X"
+IUSE="data doc examples fltk test threads X"
 REQUIRED_USE="fltk? ( !X )" # mutually exclusive plot implementations
 RESTRICT="!test? ( test )"
 
@@ -25,11 +25,11 @@ BDEPEND="
 	doc? ( virtual/latex-base )
 "
 DEPEND="
+	dev-libs/gmp:0=
 	sys-libs/readline:0=
 	data? ( sci-mathematics/pari-data )
 	doc? ( X? ( x11-misc/xdg-utils ) )
 	fltk? ( x11-libs/fltk:1= )
-	gmp? ( dev-libs/gmp:0= )
 	X? ( x11-libs/libX11:0= )"
 RDEPEND="${DEPEND}"
 
@@ -88,9 +88,9 @@ src_configure() {
 		--with-readline-lib="${EPREFIX}/usr/$(get_libdir)" \
 		--with-ncurses-lib="${EPREFIX}/usr/$(get_libdir)" \
 		--graphic=none \
+		--with-gmp \
 		$(usex X --graphic=X11 "" "" "") \
 		$(usex fltk --graphic=fltk "" "" "") \
-		$(use_with gmp) \
 		$(usex threads "--mt=pthread" "" "" "") \
 		|| die "./Configure failed"
 }
