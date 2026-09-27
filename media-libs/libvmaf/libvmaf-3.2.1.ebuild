@@ -33,6 +33,10 @@ BDEPEND="
 
 RDEPEND="${BDEPEND}"
 
+PATCHES=(
+	"${FILESDIR}/${P}-swap-min-max-ambiguity-fix.patch"
+)
+
 multilib_src_configure() {
 	local emesonargs=(
 		$(meson_use embed-models built_in_models)
