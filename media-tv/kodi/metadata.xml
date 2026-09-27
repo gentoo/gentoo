@@ -24,6 +24,7 @@
 		<flag name="postproc">Use bundled libpostproc to postprocess and deinterlace video</flag>
 		<flag name="soc">Use additional <pkg>media-video/ffmpeg</pkg> patches for efficient playback on some SoCs (e.g. ARM, RISC-V)</flag>
 		<flag name="system-ffmpeg">Use system ffmpeg instead of the bundled one</flag>
+		<flag name="system-swig">Use system swig instead of the bundled one</flag>
 		<flag name="udev">Use udev rules to handle devices' permissions and hotplug support. Unless you know what you're doing do not disable this flag on Linux kernels. This is provided as an option for completeness.</flag>
 		<flag name="udf">Enable UDF support. Required for playing blurays.</flag>
 		<flag name="webserver">Enable internal webserver</flag>

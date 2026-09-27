@@ -14,6 +14,10 @@ LIBDVDNAV_VERSION="7.0.0"
 LIBDVDREAD_VERSION="7.0.1"
 FFMPEG_VERSION="9.0.2"
 
+# Allow bundled swig to avoid pins
+# See tools/depends/native/<project>/<project>-VERSION
+SWIG_VERSION="4.5.0"
+
 PYTHON_REQ_USE="sqlite,ssl"
 PYTHON_COMPAT=( python3_{12..14} )
 
@@ -38,6 +42,9 @@ SRC_URI="
 	system-ffmpeg? ( postproc? (
 		https://ffmpeg.org/releases/ffmpeg-${FFMPEG_VERSION}.tar.xz
 	) )
+	!system-swig? (
+		https://mirrors.kodi.tv/build-deps/sources/swig-${SWIG_VERSION}.tar.gz
+	)
 "
 if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/xbmc/xbmc.git"
@@ -71,7 +78,7 @@ SLOT="0"
 # use flag is called libusb so that it doesn't fool people in thinking that
 # it is _required_ for USB support. Otherwise they'll disable udev and
 # that's going to be worse.
-IUSE="airplay alsa bluetooth bluray caps cec +css dbus doc eventclients gbm gles lcms libusb lirc mariadb mysql nfs +optical pipewire postproc pulseaudio samba soc +system-ffmpeg test udf udev upnp vaapi vdpau wayland webserver X +xslt zeroconf ${CPU_FLAGS}"
+IUSE="airplay alsa bluetooth bluray caps cec +css dbus doc eventclients gbm gles lcms libusb lirc mariadb mysql nfs +optical pipewire postproc pulseaudio samba soc +system-ffmpeg system-swig test udf udev upnp vaapi vdpau wayland webserver X +xslt zeroconf ${CPU_FLAGS}"
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
 	|| ( gbm wayland X )
@@ -246,14 +253,22 @@ DEPEND="
 		x11-libs/libXrender
 	)
 "
+# Rationale for swig pins
+# https://github.com/xbmc/xbmc/blob/master/xbmc/interfaces/swig/README.md#requirements
+# See _verified in xbmc/interfaces/swig/fix-swig-3535.cmake
 BDEPEND="
 	${COMMON_DEPEND}
 	app-arch/unzip
 	dev-build/cmake
-	>=dev-lang/swig-4.5.0
 	virtual/pkgconfig
 	doc? (
 		app-text/doxygen
+	)
+	system-swig? (
+		|| (
+			~dev-lang/swig-4.5.1
+			~dev-lang/swig-4.5.0
+		)
 	)
 "
 
@@ -407,7 +422,7 @@ src_configure() {
 		-DENABLE_INTERNAL_LCMS2=OFF
 		-DENABLE_INTERNAL_LZO2=OFF
 		-DENABLE_INTERNAL_NLOHMANNJSON=OFF
-		-DENABLE_INTERNAL_SWIG=OFF
+		-DENABLE_INTERNAL_SWIG=$(usex !system-swig)
 		-DENABLE_INTERNAL_PCRE2=OFF
 		-DENABLE_INTERNAL_SPDLOG=OFF
 		-DENABLE_INTERNAL_TAGLIB=OFF
@@ -432,6 +447,7 @@ src_configure() {
 		-DENABLE_INTERNAL_DAV1D=OFF
 		-DFFMPEG_URL="${DISTDIR}/ffmpeg-${FFMPEG_VERSION}.tar.xz"
 	)
+	use !system-swig && mycmakeargs+=( -DSWIG_URL="${DISTDIR}/swig-${SWIG_VERSION}.tar.gz" )
 	use nfs && mycmakeargs+=( -DENABLE_INTERNAL_NFS=OFF )
 	use !udev && mycmakeargs+=( -DENABLE_LIBUSB=$(usex libusb) )
 	use udf && mycmakeargs+=( -DENABLE_INTERNAL_UDFREAD=OFF )
