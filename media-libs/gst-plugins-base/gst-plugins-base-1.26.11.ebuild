@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+
 GST_ORG_MODULE="gst-plugins-base"
 
 inherit flag-o-matic meson-multilib gstreamer-meson verify-sig virtualx
@@ -162,11 +163,7 @@ multilib_src_test() {
 	# User env may cause issues (notably dconf isnt multilib)
 	export GSETTINGS_BACKEND=memory
 
-	# Homebrew test skips for meson
-	local -a tests
-	tests=( $(meson test --list -C "${BUILD_DIR}") )
-
-	local -a _skip_tests=(
+	local -a EMESON_SKIP_TESTS=(
 		# flaky
 		elements_inputselector # tendency to timeout
 		elements_multisocketsink
@@ -176,7 +173,7 @@ multilib_src_test() {
 	)
 
 	# Affects abi_x86_32
-	multilib_is_native_abi || _skip_tests+=(
+	multilib_is_native_abi || EMESON_SKIP_TESTS+=(
 		# failed ABI check
 		libs_libsabi
 		# ../glib-2.84.4/gobject/gtype.c:4159: type id '284' is invalid
@@ -185,23 +182,6 @@ multilib_src_test() {
 		elements_volume
 	)
 
-	# Add suites which in this case are PN
-	if has_version ">=dev-build/meson-1.10.0"; then
-		local -a skip_tests=()
-		for skip_test in ${_skip_tests[@]}; do
-			skip_tests+=( "${PN}:${skip_test}" )
-		done
-	else
-		local -a skip_tests=( ${_skip_tests[@]} )
-	fi
-	unset _skip_tests
-
-	for test_index in ${!tests[@]}; do
-		if [[ ${skip_tests[@]} =~ ${tests[${test_index}]} ]]; then
-			unset tests[${test_index}]
-		fi
-	done
-
 	# gstreamer_multilib_src_test doesn't pass arguments
-	GST_GL_WINDOW=x11 virtx meson_src_test --timeout-multiplier 5 ${tests[@]}
+	GST_GL_WINDOW=x11 virtx meson_src_test --timeout-multiplier 5
 }
