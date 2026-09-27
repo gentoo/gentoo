@@ -426,6 +426,12 @@ pkg_postinst() {
 		# https://gitlab.freedesktop.org/NetworkManager/NetworkManager/-/merge_requests/1988
 	fi
 
+	if use systemd; then
+		ewarn "Systemd defaults to DNSSEC=allow-downgrade. This can break some captive portals."
+		ewarn "Until upstream solves this issue, you may need to disable it by setting DNSSEC=no"
+		ewarn "at /etc/systemd/resolved.conf"
+	fi
+
 	if use wext; then
 		ewarn "You have enabled USE=wext. Note that wext has been deprecated and support for"
 		ewarn "it will be removed in a future release."
