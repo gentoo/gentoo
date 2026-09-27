@@ -8,8 +8,9 @@ inherit tree-sitter-grammar
 DESCRIPTION="Markdown grammar for Tree-sitter"
 HOMEPAGE="https://github.com/tree-sitter-grammars/tree-sitter-markdown"
 SRC_URI="https://github.com/tree-sitter-grammars/tree-sitter-markdown/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-S=${WORKDIR}/${P}/${PN}
 
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 ~arm arm64 ~ppc ~ppc64 ~riscv x86"
+
+RDEPEND="!dev-libs/tree-sitter-markdown-inline"

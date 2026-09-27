@@ -30,7 +30,6 @@ RDEPEND="
 	dev-libs/tree-sitter-julia
 	dev-libs/tree-sitter-lua
 	dev-libs/tree-sitter-markdown
-	dev-libs/tree-sitter-markdown-inline
 	dev-libs/tree-sitter-ocaml
 	dev-libs/tree-sitter-php
 	dev-libs/tree-sitter-python
