@@ -18,7 +18,7 @@ DESCRIPTION="Interpreter for the PostScript language and PDF"
 HOMEPAGE="https://ghostscript.com/ https://cgit.ghostscript.com/cgi-bin/cgit.cgi/ghostpdl.git/"
 SRC_URI="https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs${PVM_S}/${MY_P}.tar.xz"
 if [[ -n "${MY_PATCHSET}" ]] ; then
-	SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${MY_PATCHSET}"
+	SRC_URI+=" https://distfiles.gentoo.org/pub/dev/sam@gentoo.org/${CATEGORY}/${PN}/${MY_PATCHSET}"
 fi
 S="${WORKDIR}/${MY_P}"
 
