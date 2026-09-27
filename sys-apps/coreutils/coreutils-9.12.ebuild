@@ -62,6 +62,8 @@ DEPEND="
 BDEPEND="
 	app-arch/xz-utils
 	dev-lang/perl
+	sys-apps/help2man
+	sys-apps/texinfo
 	test? (
 		dev-debug/strace
 		dev-lang/perl
