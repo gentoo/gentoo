@@ -278,7 +278,7 @@ LICENSE+="
 SLOT="0"
 KEYWORDS="~amd64"
 
-IUSE="X heif gif jpeg jpegxl svg tiff wayland"
+IUSE="X heif gif jpeg jpegxl svg tiff"
 
 BDEPEND="
 	dev-util/itstool
@@ -296,7 +296,7 @@ DEPEND="
 "
 # meson.build file
 DEPEND+="
-	>=gui-libs/gtk-4.16.0:4[X?,wayland?]
+	>=gui-libs/gtk-4.16.0:4[X?,wayland]
 	>=gui-libs/libadwaita-1.8.0:1
 	>=dev-libs/libgweather-4.0.0:4=
 	>=media-libs/lcms-2.12.0:2[jpeg?,tiff?]
