@@ -246,6 +246,9 @@ src_remove_dual_man() {
 	pkg="$1"
 	ver="$2"
 	shift 2
+
+	has noman ${FEATURES}  && return 0
+
 	case "${EBUILD_PHASE:-none}" in
 		postinst|postrm)
 			for i in "$@" ; do
