@@ -3,7 +3,8 @@
 
 EAPI=8
 
-inherit gnome.org linux-info meson vala virtualx
+PYTHON_COMPAT=( python3_{12..14} )
+inherit gnome.org linux-info meson python-r1 vala virtualx
 
 DESCRIPTION="Dex provides Future-based programming for GLib-based applications"
 HOMEPAGE="https://gitlab.gnome.org/GNOME/libdex"
@@ -12,9 +13,10 @@ LICENSE="LGPL-2.1+"
 SLOT="0/1"
 KEYWORDS="~amd64 ~arm64 ~loong ~x86"
 
-IUSE="+eventfd gtk-doc +introspection +liburing sysprof test vala"
+IUSE="+eventfd gtk-doc +introspection +liburing python sysprof test vala"
 REQUIRED_USE="
 	gtk-doc? ( introspection )
+	python? ( ${PYTHON_REQUIRED_USE} )
 	vala? ( introspection )
 "
 RESTRICT="!test? ( test )"
@@ -23,6 +25,8 @@ RDEPEND="
 	>=dev-libs/glib-2.87:2
 	liburing? ( >=sys-libs/liburing-0.7:= )
 	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
+	python? ( ${PYTHON_DEPS}
+		dev-python/pygobject:3[${PYTHON_USEDEP}] )
 	sysprof? ( dev-util/sysprof-capture:4 )
 	elibc_musl? ( sys-libs/libucontext )
 "
@@ -32,6 +36,7 @@ BDEPEND="
 	dev-util/glib-utils
 	virtual/pkgconfig
 	gtk-doc? ( dev-util/gi-docgen )
+	test? ( dev-util/gdbus-codegen )
 "
 
 pkg_setup() {
@@ -57,9 +62,14 @@ src_configure() {
 		$(meson_use test tests)
 		$(meson_feature liburing)
 		$(meson_feature eventfd)
+		$(meson_use python pygobject)
 		-Dgdbus=enabled
 	)
 	meson_src_configure
+}
+
+src_test() {
+	virtx dbus-run-session meson test -C "${BUILD_DIR}" --print-errorlogs || die
 }
 
 src_install() {
@@ -69,8 +79,9 @@ src_install() {
 		mkdir -p "${ED}"/usr/share/gtk-doc/html/ || die
 		mv "${ED}"/usr/share/doc/${PN}-1 "${ED}"/usr/share/gtk-doc/html/ || die
 	fi
-}
 
-src_test() {
-	virtx dbus-run-session meson test -C "${BUILD_DIR}" --print-errorlogs || die
+	if use python; then
+		python_moduleinto gi/overrides/
+		python_foreach_impl python_optimize
+	fi
 }
