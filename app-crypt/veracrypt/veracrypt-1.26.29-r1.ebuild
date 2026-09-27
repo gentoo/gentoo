@@ -39,6 +39,7 @@ CONFIG_CHECK="~BLK_DEV_DM ~CRYPTO ~CRYPTO_XTS ~DM_CRYPT ~FUSE_FS"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-fix-release-date.patch
+	"${FILESDIR}"/${PN}-1.26.29-argon2-avx2-avx512f.patch
 )
 
 src_configure() {
