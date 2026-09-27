@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+
 PYTHON_COMPAT=( python3_{12..15} )
 inherit meson python-any-r1 systemd vala
 
@@ -76,6 +77,7 @@ src_configure() {
 	local emesonargs=(
 		--localstatedir="${EPREFIX}/var"
 		-Dsystemdsystemunitdir="$(systemd_get_systemunitdir)"
+		-Dwtmpfile=/var/log/wtmp
 		-Dadmin_group="wheel"
 		-Dcreate_homed=false
 		$(meson_use elogind)
