@@ -744,10 +744,6 @@ src_configure() {
 
 		# Put docs into the right place, ie /usr/share/doc/ghc-${GHC_PV}
 		--docdir="${EPREFIX}/usr/share/doc/$(cross)${PF}"
-
-		# Use system libffi instead of bundled libffi-tarballs
-		--with-system-libffi
-		--with-ffi-includes=$($(tc-getPKG_CONFIG) --cflags-only-I libffi | sed 's/-I//g')
 	)
 
 	if [[ ${CBUILD} != ${CHOST} ]]; then
@@ -781,6 +777,9 @@ src_configure() {
 		einfo "Installing bootstrap GHC"
 
 		( cd "$(ghc_bin_path)" || die
+			# 9.6.2 calls this undefined m4 macro in its bindist configure.
+			# Autoconf leaves the call in the generated script as a shell command.
+			sed -i '/^[[:space:]]*FP_PROG_LD_BUILD_ID[[:space:]]*$/d' configure || die
 			econf "${econf_args[@]}" \
 				--prefix="" \
 				--libdir="/$(get_libdir)" || die
@@ -796,7 +795,10 @@ src_configure() {
 	fi
 
 #		--enable-bootstrap-with-devel-snapshot \
-	econf ${econf_args[@]} \
+	# The bootstrap bindist configure does not accept these source-tree options.
+	econf "${econf_args[@]}" \
+		--with-system-libffi \
+		--with-ffi-includes="$($(tc-getPKG_CONFIG) --cflags-only-I libffi | sed 's/-I//g')" \
 		$(use_enable elfutils dwarf-unwind) \
 		$(use_enable numa) \
 		$(use_enable unregisterised)
@@ -810,6 +812,11 @@ src_configure() {
 src_compile() {
 
 	run_hadrian binary-dist-dir
+
+	# The generated bindist must be configured before the install phase.
+	pushd "${S}/_build/bindist/${P}-${CHOST}" || die
+	econf
+	popd || die
 
 	# FIXME: This is failing, but the docs mention it:
 	# <https://gitlab.haskell.org/hololeap/ghc/-/blob/master/hadrian/doc/testsuite.md?ref_type=heads#building-just-the-dependencies-needed-for-the-testsuite>
@@ -839,7 +846,6 @@ src_install() {
 	[[ -f VERSION ]] || emake VERSION
 
 	pushd "${S}/_build/bindist/${P}-${CHOST}" || die
-	econf
 	emake DESTDIR="${D}" install
 	popd
 
