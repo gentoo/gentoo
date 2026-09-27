@@ -45,8 +45,6 @@ DEPEND="${RDEPEND}
 	>=dev-util/gdbus-codegen-2.80.5-r1
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
-
-	gnome-base/gnome-common
 "
 BDEPEND="gtk-doc? ( dev-util/gi-docgen )"
 
