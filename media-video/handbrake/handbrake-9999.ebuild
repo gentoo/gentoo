@@ -33,7 +33,7 @@ declare -A BUNDLED=(
 	# Heavily patched in an incompatible way.
 	# Issues related to using system ffmpeg historically.
 	# See bug #829595 and #922828
-	[ffmpeg]="https://ffmpeg.org/releases/ffmpeg-9.0.1.tar.bz2;"
+	[ffmpeg]="https://ffmpeg.org/releases/ffmpeg-9.0.2.tar.bz2;"
 	# Patched in an incompatible way
 	[x265]="https://github.com/Multicorewareinc/x265/releases/download/4.3/x265_4.3.tar.gz;x265"
 	[x265_8bit]="https://github.com/Multicorewareinc/x265/releases/download/4.3/x265_4.3.tar.gz;x265"
