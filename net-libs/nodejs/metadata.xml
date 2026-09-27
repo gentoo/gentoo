@@ -5,6 +5,10 @@
 		<email>williamh@gentoo.org</email>
 		<name>William Hubbs</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>mpagano@gentoo.org</email>
+		<name>Mike Pagano</name>
+	</maintainer>
 	<use>
 		<flag name="corepack">Enable the experimental corepack package management tool</flag>
 		<flag name="inspector">Enable V8 inspector</flag>
