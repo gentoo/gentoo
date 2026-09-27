@@ -592,6 +592,9 @@ src_prepare() {
 	# https://bugs.gentoo.org/978912
 	eapply "${FILESDIR}/ghc-9.8.4-fix-terminfo-build.patch"
 
+	# cdddeb0f is already in 9.8.4; synchronize the bindist configure (c9731d6d).
+	eapply "${FILESDIR}/${PN}-9.8.4-bindist-compiler-flags.patch"
+
 	eapply "${FILESDIR}"/${PN}-8.10.1-allow-cross-bootstrap.patch
 
 	# https://gitlab.haskell.org/ghc/ghc/-/issues/22954
