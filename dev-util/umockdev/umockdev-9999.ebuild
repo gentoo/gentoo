@@ -2,9 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{11..14} )
 
-inherit flag-o-matic meson-multilib python-any-r1 vala
+PYTHON_COMPAT=( python3_{12..14} )
+
+inherit flag-o-matic meson-multilib python-any-r1 toolchain-funcs vala
 
 if [[ ${PV} = 9999* ]]; then
 	EGIT_REPO_URI="https://github.com/martinpitt/${PN}.git"
@@ -57,6 +58,11 @@ src_prepare() {
 multilib_src_configure() {
 	# https://gcc.gnu.org/bugzilla/show_bug.cgi?id=101270
 	filter-flags -fno-semantic-interposition
+
+	if tc-is-clang; then
+		# https://github.com/martinpitt/umockdev/issues/260
+		filter-flags '-O*'
+	fi
 
 	local emesonargs=(
 		$(meson_feature selinux)
