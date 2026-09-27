@@ -84,6 +84,16 @@ BDEPEND=">=dev-build/meson-1.2.3
 # User-controlled environment variable containing arguments to be passed to
 # meson in meson_src_configure.
 
+# @VARIABLE: EMESON_SKIP_TEST_SUITES
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# Array of test suites that should be skipped.
+
+# @VARIABLE: EMESON_SKIP_TESTS
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# Array of tests that should be skipped.
+
 # @FUNCTION: _meson_format_array
 # @INTERNAL
 # @DESCRIPTION:
@@ -553,12 +563,48 @@ meson_src_test() {
 	local mesontestargs=(
 		--print-errorlogs
 		--num-processes "$(makeopts_jobs "${MAKEOPTS}")"
-		"$@"
 	)
 
-	set -- meson test "${mesontestargs[@]}"
-	echo "$@" >&2
-	"$@"
+	if [[ -n ${EMESON_SKIP_TEST_SUITES} || -n ${EMESON_SKIP_TESTS} ]]; then
+		if has_version -b ">=dev-build/meson-1.12.0"; then
+			mesontestargs+=( "${EMESON_SKIP_TEST_SUITES[@]/#/--no-suite=}" "${EMESON_SKIP_TESTS[@]/#/--exclude=}" )
+		else
+			local -a tests=()
+			readarray -t tests < <(meson test --list -C "${BUILD_DIR}" "${EMESON_SKIP_TEST_SUITES[@]/#/--no-suite=}" 2>/dev/null )
+
+			local test_index
+			for test_index in "${!tests[@]}"; do
+				local test_name="${tests[${test_index}]}"
+
+				# Strip test suites while keeping subproject name to match --exclude behavior later on
+				test_name="${test_name##* - }"
+				# Override test name, cannot call test with pretty printed suites included
+				tests[${test_index}]="${test_name}"
+
+				# --exclude matches subproject:testname or testname
+				if [[ ${EMESON_SKIP_TESTS[@]} =~ ${test_name} ]] || \
+					[[ ${EMESON_SKIP_TESTS[@]} =~ ${test_name##*:} ]]; then
+					unset tests[${test_index}]
+				fi
+			done
+
+			# Handle case where you skip everything. Otherwise every test would run instead
+			if [[ ${#tests[@]} -eq 0 ]]; then
+				ewarn "Skipped all tests or no tests defined."
+				return 0
+			fi
+		fi
+	fi
+
+	set -- meson test "${mesontestargs[@]}" "$@"
+	if [[ -z ${tests[@]} ]]; then
+		echo "$@" >&2
+		"$@"
+	else
+		# Address ARGS_MAX for older meson test skipping
+		# Note: meson doesn't append to testlog.txt on new invocations, so logs may be lost.
+		printf '%s\0' "${tests[@]}" | xargs -0 -t "$@"
+	fi
 	local rv=$?
 	[[ ${rv} -eq 0 ]] || die -n "tests failed"
 
