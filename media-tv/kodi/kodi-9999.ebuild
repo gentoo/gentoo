@@ -14,17 +14,6 @@ LIBDVDNAV_VERSION="7.0.0"
 LIBDVDREAD_VERSION="7.0.1"
 FFMPEG_VERSION="9.0.2"
 
-# Java bundles from xbmc/interfaces/swig/CMakeLists.txt
-GROOVY_VERSION="4.0.30"
-APACHE_COMMON_LANG_VERSION="3.20.0"
-APACHE_COMMON_TEXT_VERSION="1.15.0"
-
-_JAVA_PKG_WANT_BUILD_VM=( {openjdk{,-jre},icedtea}{,-bin}-{8,11,17,21,25} )
-JAVA_PKG_WANT_BUILD_VM=${_JAVA_PKG_WANT_BUILD_VM[@]}
-# Required to be set, but not used.
-JAVA_PKG_WANT_SOURCE="21"
-JAVA_PKG_WANT_TARGET="21"
-
 PYTHON_REQ_USE="sqlite,ssl"
 PYTHON_COMPAT=( python3_{12..14} )
 
@@ -38,9 +27,6 @@ DESCRIPTION="A free and open source media-player and entertainment hub"
 HOMEPAGE="https://kodi.tv/"
 
 SRC_URI="
-	https://mirrors.kodi.tv/build-deps/sources/apache-groovy-binary-${GROOVY_VERSION}.zip
-	https://mirrors.kodi.tv/build-deps/sources/commons-lang3-${APACHE_COMMON_LANG_VERSION}-bin.tar.gz
-	https://mirrors.kodi.tv/build-deps/sources/commons-text-${APACHE_COMMON_TEXT_VERSION}-bin.tar.gz
 	https://mirrors.kodi.tv/build-deps/sources/libdvdnav-${LIBDVDNAV_VERSION}.tar.bz2
 	https://mirrors.kodi.tv/build-deps/sources/libdvdread-${LIBDVDREAD_VERSION}.tar.bz2
 	css? (
@@ -76,8 +62,6 @@ fi
 
 LICENSE="GPL-2+"
 # vendored dependencies
-# apache-groovy, common-lang3 and commons-text
-LICENSE+=" Apache-2.0"
 # libdvdnav, libdvdread and libdvdcss.
 LICENSE+=" GPL-2+"
 # ffmpeg built as USE="gpl"
@@ -266,9 +250,8 @@ BDEPEND="
 	${COMMON_DEPEND}
 	app-arch/unzip
 	dev-build/cmake
-	dev-lang/swig
+	>=dev-lang/swig-4.5.0
 	virtual/pkgconfig
-	<=virtual/jre-25-r9999:*
 	doc? (
 		app-text/doxygen
 	)
@@ -297,10 +280,6 @@ src_unpack() {
 	else
 		unpack ${MY_P}.tar.gz
 	fi
-
-	unpack apache-groovy-binary-${GROOVY_VERSION}.zip
-	unpack commons-lang3-${APACHE_COMMON_LANG_VERSION}-bin.tar.gz
-	unpack commons-text-${APACHE_COMMON_TEXT_VERSION}-bin.tar.gz
 
 	if use system-ffmpeg && use postproc; then
 		unpack ffmpeg-${FFMPEG_VERSION}.tar.xz
@@ -428,14 +407,12 @@ src_configure() {
 		-DENABLE_INTERNAL_LCMS2=OFF
 		-DENABLE_INTERNAL_LZO2=OFF
 		-DENABLE_INTERNAL_NLOHMANNJSON=OFF
+		-DENABLE_INTERNAL_SWIG=OFF
 		-DENABLE_INTERNAL_PCRE2=OFF
 		-DENABLE_INTERNAL_SPDLOG=OFF
 		-DENABLE_INTERNAL_TAGLIB=OFF
 
 		-DTARBALL_DIR="${DISTDIR}"
-		-Dgroovy_SOURCE_DIR="${WORKDIR}/groovy-${GROOVY_VERSION}"
-		-Dapache-commons-lang_SOURCE_DIR="${WORKDIR}/commons-lang3-${APACHE_COMMON_LANG_VERSION}"
-		-Dapache-commons-text_SOURCE_DIR="${WORKDIR}/commons-text-${APACHE_COMMON_TEXT_VERSION}"
 		-DLIBDVDNAV_URL="${DISTDIR}/libdvdnav-${LIBDVDNAV_VERSION}.tar.bz2"
 		-DLIBDVDREAD_URL="${DISTDIR}/libdvdread-${LIBDVDREAD_VERSION}.tar.bz2"
 	)
