@@ -98,8 +98,10 @@ BDEPEND="
 	)
 	uefi? (
 		$(python_gen_cond_dep '
-			dev-python/pygobject:3[cairo]
+			dev-python/pycairo[${PYTHON_USEDEP}]
+			dev-python/pygobject:3[cairo,${PYTHON_USEDEP}]
 		')
+		x11-libs/pango[introspection]
 	)
 	verify-sig? ( sec-keys/openpgp-keys-hughsie )
 "
