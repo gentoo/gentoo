@@ -76,6 +76,8 @@ distutils_enable_tests pytest
 src_prepare() {
 	distutils-r1_src_prepare
 
+	# unpin dependencies
+	sed -i -e 's:, < [0-9.]*::' pyproject.toml || die
 	# increase the timeout a little
 	sed -e '/abs=/s/0.001/0.01/' -i tests/test_helpers.py || die
 	sed -i -e 's:-Werror::' Makefile || die
