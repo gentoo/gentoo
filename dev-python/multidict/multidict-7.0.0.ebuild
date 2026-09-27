@@ -25,6 +25,9 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 
 IUSE="+native-extensions"
 
 BDEPEND="
+	native-extensions? (
+		dev-python/cython[${PYTHON_USEDEP}]
+	)
 	test? (
 		dev-python/objgraph[${PYTHON_USEDEP}]
 		dev-python/psutil[${PYTHON_USEDEP}]
