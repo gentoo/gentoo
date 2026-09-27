@@ -23,7 +23,7 @@ S=${WORKDIR}/${MY_P}
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 
 # TODO: default to httpx2? add some flags?
 RDEPEND="
@@ -40,6 +40,7 @@ BDEPEND="
 	test? (
 		dev-python/blockbuster[${PYTHON_USEDEP}]
 		dev-python/httpx2[${PYTHON_USEDEP}]
+		dev-python/opentelemetry-sdk[${PYTHON_USEDEP}]
 		dev-python/trio[${PYTHON_USEDEP}]
 	)
 "
