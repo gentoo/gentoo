@@ -3,6 +3,8 @@
 
 EAPI=8
 
+TS_BINDINGS=( python )
+
 inherit tree-sitter-grammar
 
 DESCRIPTION="Markdown grammar for Tree-sitter"
@@ -14,3 +16,5 @@ SLOT="0"
 KEYWORDS="amd64 ~arm arm64 ~ppc ~ppc64 ~riscv x86"
 
 RDEPEND="!dev-libs/tree-sitter-markdown-inline"
+
+PATCHES=( "${FILESDIR}"/${P}-python.patch )

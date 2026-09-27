@@ -1,0 +1,45 @@
+--- a/setup.py	2026-02-26 19:04:19.000000000 +0100
++++ b/setup.py	2026-09-26 14:44:13.408959435 +0200
+@@ -22,8 +22,10 @@
+             ext.extra_compile_args = ["-std=c11", "-fvisibility=hidden"]
+         else:
+             ext.extra_compile_args = ["/std:c11", "/utf-8"]
+-        if path.exists("src/scanner.c"):
+-            ext.sources.append("src/scanner.c")
++        if path.exists("tree-sitter-markdown/src/scanner.c"):
++            ext.sources.append("tree-sitter-markdown/src/scanner.c")
++        if path.exists("tree-sitter-markdown-inline/src/scanner.c"):
++            ext.sources.append("tree-sitter-markdown-inline/src/scanner.c")
+         if ext.py_limited_api:
+             ext.define_macros.append(("Py_LIMITED_API", "0x030A0000"))
+         super().build_extension(ext)
+@@ -41,7 +43,8 @@
+     def find_sources(self):
+         super().find_sources()
+         self.filelist.recursive_include("queries", "*.scm")
+-        self.filelist.include("src/tree_sitter/*.h")
++        self.filelist.include("tree-sitter-markdown/src/tree_sitter/*.h")
++        self.filelist.include("tree-sitter-markdown-inline/src/tree_sitter/*.h")
+ 
+ 
+ setup(
+@@ -57,13 +60,17 @@
+             name="_binding",
+             sources=[
+                 "bindings/python/tree_sitter_markdown/binding.c",
+-                "src/parser.c",
++                "tree-sitter-markdown/src/parser.c",
++                "tree-sitter-markdown-inline/src/parser.c",
+             ],
+             define_macros=[
+                 ("PY_SSIZE_T_CLEAN", None),
+                 ("TREE_SITTER_HIDE_SYMBOLS", None),
+             ],
+-            include_dirs=["src"],
++            include_dirs=[
++                "tree-sitter-markdown/src",
++                "tree-sitter-markdown-inline/src"
++            ],
+             py_limited_api=not get_config_var("Py_GIL_DISABLED"),
+         )
+     ],
