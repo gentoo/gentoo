@@ -16,7 +16,7 @@ LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 ~riscv"
 
-DEPEND=">=sci-mathematics/pari-2.17.1:=[gmp,doc]
+DEPEND=">=sci-mathematics/pari-2.17.1:=[gmp(+),doc]
 	dev-python/cysignals[${PYTHON_USEDEP}]"
 RDEPEND="${DEPEND}"
 BDEPEND=">=dev-python/cython-3[${PYTHON_USEDEP}]"
