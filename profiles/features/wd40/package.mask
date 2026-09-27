@@ -1,6 +1,10 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Ionen Wolkens <ionen@gentoo.org> (2026-09-27)
+# Depends on sys-fs/inotify-tools which now uses rust.
+net-misc/owncloud-client
+
 # Michał Górny <mgorny@gentoo.org> (2025-07-04)
 # Hypothesis has now been RIIR-ed.
 >=dev-python/hypothesis-6.156
@@ -531,6 +535,7 @@ sci-geosciences/gnome-maps
 sys-block/thin-provisioning-tools
 >=sys-process/glances-4.1.2.1
 sys-fs/bcachefs-tools
+>=sys-fs/inotify-tools-4.26
 sys-fs/ubi_reader
 virtual/rust
 www-apps/radicale
