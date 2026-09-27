@@ -41,7 +41,6 @@ S=${WORKDIR}/${BASE_P}
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 IUSE="debug hardened"
 REQUIRED_USE="
-	hppa? ( savedconfig )
 	mips? ( savedconfig )
 "
 
@@ -88,7 +87,7 @@ src_prepare() {
 
 	# prepare the default config
 	case ${ARCH} in
-		hppa | mips)
+		mips)
 			> .config || die
 		;;
 		alpha)
@@ -111,6 +110,14 @@ src_prepare() {
 		arm64)
 			cp "${WORKDIR}/fedora-kernel-config-${CONFIG_VER}/kernel-aarch64-fedora.config" .config || die
 			biendian=true
+			;;
+		hppa)
+			eapply "${FILESDIR}"/${PN}-7.2.8-hppa-kspp.patch || die
+			cp "${WORKDIR}/linux-${DEBIAN_COMMIT}/debian/config/config" .config || die
+			merge_configs+=(
+				"${WORKDIR}/linux-${DEBIAN_COMMIT}/debian/config/hppa/config" \
+				"${WORKDIR}/linux-${DEBIAN_COMMIT}/debian/config/hppa/config.parisc64"
+			)
 			;;
 		loong)
 			cp "${WORKDIR}/linux-${DEBIAN_COMMIT}/debian/config/config" .config || die
