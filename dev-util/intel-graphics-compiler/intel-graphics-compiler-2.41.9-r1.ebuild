@@ -20,7 +20,7 @@ IUSE="debug vc"
 
 DEPEND="
 	dev-libs/opencl-clang:22[${LLVM_USEDEP}]
-	dev-util/spirv-tools
+	>=dev-util/spirv-tools-1.4.357.0
 	$(llvm_gen_dep '
 		llvm-core/lld:${LLVM_SLOT}
 		llvm-core/llvm:${LLVM_SLOT}
