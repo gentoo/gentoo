@@ -108,8 +108,8 @@ src_install() {
 
 	# symlink tree-sitter parsers
 	dodir /usr/share/nvim/runtime
-	for parser in c lua markdown query vim vimdoc; do
-		dosym ../../../../$(get_libdir)/libtree-sitter-${parser}.so /usr/share/nvim/runtime/parser/${parser}.so
+	for parser in c lua markdown markdown_inline query vim vimdoc; do
+		dosym ../../../../$(get_libdir)/libtree-sitter-${parser/_/-}.so /usr/share/nvim/runtime/parser/${parser}.so
 	done
 
 	# conditionally install a symlink for nvimpager
