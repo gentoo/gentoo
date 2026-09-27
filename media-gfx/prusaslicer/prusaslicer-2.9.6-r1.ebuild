@@ -7,7 +7,7 @@ WX_GTK_VER="3.2-gtk3"
 MY_PN="PrusaSlicer"
 MY_PV="$(ver_rs 3 -)"
 
-inherit cmake wxwidgets xdg
+inherit cmake udev wxwidgets xdg
 
 if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
@@ -27,7 +27,7 @@ IUSE="test"
 
 RESTRICT="!test? ( test )"
 
-RDEPEND="
+CDEPEND="
 	=dev-cpp/eigen-3*:=
 	dev-cpp/tbb:=
 	dev-cpp/nlohmann_json:=
@@ -58,7 +58,11 @@ RDEPEND="
 	x11-libs/wxGTK:${WX_GTK_VER}=[X,opengl,webkit]
 	media-libs/nanosvg:=
 "
-DEPEND="${RDEPEND}
+RDEPEND="
+	${CDEPEND}
+	virtual/udev
+"
+DEPEND="${CDEPEND}
 	media-libs/qhull[static-libs]
 	test? ( >=dev-cpp/catch-3.8 )
 "
@@ -114,4 +118,14 @@ src_test() {
 		"^libslic3r_tests$"
 	)
 	cmake_src_test
+}
+
+pkg_postinst() {
+	xdg_pkg_postinst
+	udev_reload
+}
+
+pkg_postrm() {
+	xdg_pkg_postrm
+	udev_reload
 }
