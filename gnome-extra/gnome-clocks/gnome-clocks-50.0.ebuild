@@ -32,7 +32,7 @@ BDEPEND="
 	dev-util/desktop-file-utils
 	dev-libs/appstream
 	dev-libs/glib:2
-	media-sound/vorbis-tools
+	media-sound/vorbis-tools[flac]
 	>=dev-libs/libgweather-4.2.0:4[vala]
 	>=gui-libs/libadwaita-1.6_alpha:1[vala]
 "
