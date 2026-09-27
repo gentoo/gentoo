@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -31,6 +31,10 @@ PATCHES=(
 	"${FILESDIR}/${PN}-1.70.0-tests.patch"
 	"${FILESDIR}/${PN}-1.70.0_p20181130-config-log.patch"
 )
+
+src_configure() {
+	export CCFLAGS="$CFLAGS"
+}
 
 src_compile() {
 	# Makefile.PL cannot know we use libintl over system
