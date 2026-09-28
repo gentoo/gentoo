@@ -190,6 +190,10 @@ x86? (
 	usr/lib/libGLX_mesa.so.0.0.0
 )"
 
+PATCHES=(
+	"${FILESDIR}"/${PV}-missing-algorithm-include-PR44233.patch
+)
+
 src_unpack() {
 	if [[ ${PV} == 9999 ]]; then
 		git-r3_src_unpack
@@ -309,7 +313,6 @@ multilib_src_configure() {
 	   use video_cards_radeonsi ||
 	   use video_cards_virgl; then
 		emesonargs+=($(meson_feature vaapi gallium-va))
-		use vaapi && emesonargs+=( -Dva-libs-path="${EPREFIX}"/usr/$(get_libdir)/va/drivers )
 	else
 		emesonargs+=(-Dgallium-va=disabled)
 	fi
