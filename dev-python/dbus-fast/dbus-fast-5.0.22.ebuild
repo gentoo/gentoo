@@ -26,6 +26,7 @@ KEYWORDS="amd64 ~riscv"
 IUSE="+native-extensions"
 
 BDEPEND="
+	<dev-python/cython-3.3[${PYTHON_USEDEP}]
 	>=dev-python/cython-3[${PYTHON_USEDEP}]
 	>=dev-python/setuptools-65.4.1[${PYTHON_USEDEP}]
 	test? (
