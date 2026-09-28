@@ -49,7 +49,6 @@ src_prepare() {
 
 multilib_src_configure() {
 	local myeconfargs=(
-		--with-drivers-path="${EPREFIX}/usr/$(get_libdir)/va/drivers"
 		$(use_enable opengl glx)
 		$(use_enable X x11)
 		$(use_enable wayland)
