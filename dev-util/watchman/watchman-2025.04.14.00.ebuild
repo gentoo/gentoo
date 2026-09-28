@@ -239,6 +239,7 @@ CRATES="
 "
 
 DISTUTILS_EXT=1
+DISTUTILS_OPTIONAL=1
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{11..13} )
 
@@ -278,6 +279,7 @@ DEPEND="
 	${RDEPEND}
 	dev-cpp/gtest
 "
+BDEPEND="python? ( ${DISTUTILS_DEPS} )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2022.02.28.00-libatomic.patch
