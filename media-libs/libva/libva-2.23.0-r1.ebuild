@@ -56,7 +56,6 @@ MULTILIB_WRAPPED_HEADERS=(
 
 multilib_src_configure() {
 	local emesonargs=(
-		-Ddriverdir="${EPREFIX}/usr/$(get_libdir)/va/drivers"
 		-Ddisable_drm=false
 		-Dwith_x11=$(usex X)
 		-Dwith_glx=$(usex X $(usex glx))
