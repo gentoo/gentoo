@@ -64,16 +64,23 @@ https://github.com/veracrypt/VeraCrypt/issues/1867
  OBJSSSE41 :=
  OBJSSSSE3 :=
  OBJSHANI :=
-@@ -96,6 +97,8 @@ else
- 	OBJS += ../Crypto/Aescrypt.o
+@@ -96,11 +97,15 @@ else
  endif
  
-+OBJSSSE2 += ../Crypto/blake2s_SSE2.osse2
-+OBJSSSE2 += ../Crypto/Argon2/src/opt_sse2.osse2
  ifeq "$(GCC_GTEQ_430)" "1"
++	OBJSSSE2 += ../Crypto/blake2s_SSE2.osse2
  	OBJSSSE41 += ../Crypto/blake2s_SSE41.osse41
  	OBJSSSSE3 += ../Crypto/blake2s_SSSE3.ossse3
-@@ -127,7 +132,6 @@ ifeq "$(ENABLE_WOLFCRYPT)" "0"
++	OBJSSSE2 += ../Crypto/Argon2/src/opt_sse2.osse2
+ else
++	OBJS += ../Crypto/blake2s_SSE2.o
+ 	OBJS += ../Crypto/blake2s_SSE41.o
+ 	OBJS += ../Crypto/blake2s_SSSE3.o
++	OBJS += ../Crypto/Argon2/src/opt_sse2.o
+ endif
+ ifeq "$(GCC_GTEQ_500)" "1"
+ 	OBJSHANI += ../Crypto/Sha2Intel.oshani
+@@ -127,7 +134,6 @@ ifeq "$(ENABLE_WOLFCRYPT)" "0"
  OBJS += ../Crypto/Aeskey.o
  OBJS += ../Crypto/Aestab.o
  OBJS += ../Crypto/blake2s.o
@@ -81,7 +88,7 @@ https://github.com/veracrypt/VeraCrypt/issues/1867
  OBJS += ../Crypto/SerpentFast.o
  OBJS += ../Crypto/SerpentFast_simd.o
  OBJS += ../Crypto/Sha2.o
-@@ -141,7 +145,6 @@ OBJS += ../Crypto/Argon2/src/blake2/blake2b.o
+@@ -141,7 +147,6 @@ OBJS += ../Crypto/Argon2/src/blake2/blake2b.o
  OBJS += ../Crypto/Argon2/src/argon2.o
  OBJS += ../Crypto/Argon2/src/core.o
  OBJS += ../Crypto/Argon2/src/argon2.o
