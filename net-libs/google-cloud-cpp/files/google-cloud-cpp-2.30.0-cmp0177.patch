@@ -1,0 +1,13 @@
+Fix CMake warning
+
+diff '--color=auto' -urw a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt	2026-02-16 02:33:04.854441013 +0300
++++ b/CMakeLists.txt	2026-02-16 02:37:23.887325999 +0300
+@@ -24,6 +24,7 @@
+     VERSION 2.47.0
+     LANGUAGES CXX)
+ set(PROJECT_VERSION_PRE_RELEASE "")
++cmake_policy(SET CMP0177 OLD)
+ 
+ if (NOT "${PROJECT_VERSION_PRE_RELEASE}" STREQUAL "")
+     set(PROJECT_VERSION "${PROJECT_VERSION}-${PROJECT_VERSION_PRE_RELEASE}")
