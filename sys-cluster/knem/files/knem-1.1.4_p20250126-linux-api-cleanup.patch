@@ -1,0 +1,51 @@
+From https://gitlab.inria.fr/knem/knem/-/commit/9d89515e902bf7d1822001f76c7b1842549fadc9.patch
+From: Brice Goglin <Brice.Goglin@inria.fr>
+Date: Fri, 13 Jun 2025 21:52:35 +0200
+Subject: [PATCH] cleanup for timer_setup() vs setup_timer() API change
+
+Signed-off-by: Brice Goglin <Brice.Goglin@inria.fr>
+--- a/driver/linux/check_kernel_headers.sh
++++ b/driver/linux/check_kernel_headers.sh
+@@ -386,11 +386,11 @@ else
+   echo no
+ fi
+ 
+-# timer_setup() added in v4.14-rc3, setup_timer() removed in 4.14
++# timer_setup() added in 4.14-rc3, setup_timer() removed in 4.14
+ echo -n "  checking (in kernel headers) timer_setup() availability ... "
+ if test -e ${LINUX_HDR}/include/linux/timer.h > /dev/null ; then
+   if grep timer_setup ${LINUX_HDR}/include/linux/timer.h > /dev/null ; then
+-    echo "#define HAVE_TIMER_SETUP 1" >> ${TMP_CHECKS_NAME}
++    echo "#define KNEM_HAVE_TIMER_SETUP 1" >> ${TMP_CHECKS_NAME}
+     echo yes
+   else
+     echo no
+--- a/driver/linux/knem_main.c
++++ b/driver/linux/knem_main.c
+@@ -2607,13 +2607,13 @@ knem_kthread_func(void *data)
+ 
+ #ifdef KNEM_HAVE_DMA_ENGINE
+ static void
+-#ifdef HAVE_TIMER_SETUP
++#ifdef KNEM_HAVE_TIMER_SETUP
+ knem_dmacpy_cleanup_timer_handler(struct timer_list *t)
+ #else
+ knem_dmacpy_cleanup_timer_handler(unsigned long data)
+ #endif
+ {
+-#ifdef HAVE_TIMER_SETUP
++#ifdef KNEM_HAVE_TIMER_SETUP
+ 	struct knem_context * ctx = from_timer(ctx, t, dmacpy_cleanup_timer);
+ #else
+ 	struct knem_context * ctx = (void *) data;
+@@ -2670,7 +2670,7 @@ knem_miscdev_open(struct inode * inode, struct file * file)
+ 	if (ctx->dmacpy_chan) {
+ 		INIT_LIST_HEAD(&ctx->dmacpy_cleanup_work_list);
+ 		spin_lock_init(&ctx->dmacpy_cleanup_work_lock);
+-#ifdef HAVE_TIMER_SETUP
++#ifdef KNEM_HAVE_TIMER_SETUP
+ 		timer_setup(&ctx->dmacpy_cleanup_timer, knem_dmacpy_cleanup_timer_handler, 0);
+ #else
+ 		setup_timer(&ctx->dmacpy_cleanup_timer, knem_dmacpy_cleanup_timer_handler, (unsigned long) ctx);
+-- 
+GitLab
