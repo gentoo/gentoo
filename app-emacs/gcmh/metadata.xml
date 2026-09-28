@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>gnu-emacs@gentoo.org</email>
+    <name>Gentoo GNU Emacs project</name>
+  </maintainer>
+  <maintainer type="person">
+    <email>arsen@gentoo.org</email>
+    <name>Arsen Arsenović</name>
+  </maintainer>
+  <stabilize-allarches/>
+  <longdescription>
+    Enforce a sneaky Garbage Collection strategy to minimize GC
+    interference with user activity.
+
+    During normal use a high GC threshold is set.
+
+    When idling GC is triggered and a low threshold is set.
+  </longdescription>
+</pkgmetadata>
