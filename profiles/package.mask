@@ -36,6 +36,11 @@
 
 #--- END OF EXAMPLES ---
 
+# James Le Cuirot <chewi@gentoo.org> (2026-09-28)
+# Previously split out of games-engines/uzdoom as an external dependency but is
+# now bundled. Not used by anything else. Removal on 2026-10-28. Bug #957494.
+media-libs/zmusic
+
 # Viorel Munteanu <ceamac@gentoo.org> (2026-09-27)
 # Drupal 11.2.x is EOL, no longer receives security updates.
 # Keeping it in tree only to help upgrading from 10.6.x to 11.3.x.
