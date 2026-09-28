@@ -1,0 +1,43 @@
+https://github.com/xbmc/xbmc/pull/29434
+
+From 3d238629d043d1091b13c2ff2dff39563769febd Mon Sep 17 00:00:00 2001
+From: Dom Cobley <popcornmix@gmail.com>
+Date: Sun, 27 Sep 2026 10:54:00 +0100
+Subject: [PATCH] tests: Give each test process its own masterprofile
+
+TestBasicEnvironment points special://temp and special://profile at a
+per-process temporary directory, but leaves special://masterprofile at the
+shared default.
+
+GameClientDiscPlaylist roots disc state at special://masterprofile, and the
+disc-state suites all key off a fixed game path of /roms/my_game.m3u, so
+every test process resolves to the same state directory. ctest runs each
+test as its own process in parallel, which means concurrent tests write and
+delete each other's state files.
+
+Measured on amd64 by running "ctest -R TestGameClientDisc" repeatedly and
+counting the runs with at least one failure, using binaries built from the
+same tree with and without this change:
+
+  -j32, 60 runs:   2 failed without, 0 with
+  -j64, 120 runs: 10 failed without, 0 with
+
+The failing test differs from run to run - SaveLoadRoundtripPreservesSlotTypes,
+SaveLoadSelectedNonePreserved, LoadRestoresEjectedFalseState,
+SaveWritesEjectedFalse and ReusedSlotRetainsFormerIdentity were all seen -
+which points at the shared state directory rather than at any one test. It is
+load dependent, so a less parallel build can pass throughout.
+
+Redirecting masterprofile alongside temp and profile fixes the whole class:
+TestGameClientDiscXML and TestGameClientDiscM3U share the same directory and
+are equally exposed.
+--- a/xbmc/test/TestBasicEnvironment.cpp
++++ b/xbmc/test/TestBasicEnvironment.cpp
+@@ -85,6 +85,7 @@ void TestBasicEnvironment::SetUp()
+ 
+   CSpecialProtocol::SetTempPath(m_tempPath);
+   CSpecialProtocol::SetProfilePath(m_tempPath);
++  CSpecialProtocol::SetMasterProfilePath(m_tempPath);
+ 
+   /* Create and delete a tempfile to initialize the VFS (really to initialize
+    * CLibcdio). This is done so that the initialization of the VFS does not
