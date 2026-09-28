@@ -1,7 +1,7 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit autotools flag-o-matic
 
@@ -13,7 +13,7 @@ SRC_URI="https://abook.sourceforge.io/devel/${MY_P}.tar.gz"
 S="${WORKDIR}/${MY_P}"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ppc ppc64 ~sparc x86"
+KEYWORDS="~alpha ~amd64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="nls"
 
 RDEPEND="
