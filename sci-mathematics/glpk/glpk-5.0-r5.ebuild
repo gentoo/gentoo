@@ -40,6 +40,13 @@ src_prepare() {
 	default
 
 	eautoreconf
+
+	# GLPK's config.h.in is handwritten so autoheader will normally
+	# refuse to overwrite it when we call autoreconf (bug 983432). The
+	# generated header contains all of the preprocessor constants that
+	# the handwritten one does though, and the new ones do not appear
+	# in the codebase, so it should be fine.
+	eautoheader --replace-handwritten
 }
 
 src_configure() {
