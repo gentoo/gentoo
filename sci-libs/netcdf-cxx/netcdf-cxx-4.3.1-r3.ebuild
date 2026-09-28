@@ -19,7 +19,7 @@ IUSE="examples"
 # 6 out of 9 fail, reported upstream
 #RESTRICT="test"
 
-RDEPEND=">=sci-libs/netcdf-4.2:=[hdf5,logging(+)]"
+RDEPEND=">=sci-libs/netcdf-4.2:=[hdf5,logging]"
 DEPEND="${RDEPEND}"
 
 PATCHES=(
@@ -35,4 +35,8 @@ src_install() {
 	default
 	use examples && dodoc -r examples
 	find "${ED}" -name '*.la' -delete || die
+}
+
+src_test() {
+	MAKEOPTS=-j1 default
 }
