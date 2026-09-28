@@ -27,11 +27,16 @@ DEPEND="
 	>=dev-libs/libgpg-error-1.47:=
 	>=dev-qt/qtbase-6.5.0:6
 "
-RDEPEND="${DEPEND}
+RDEPEND="
+	${DEPEND}
 	!<app-crypt/gpgme-2[qt6(-)]
 	!dev-libs/qgpgme:1
 "
 BDEPEND="verify-sig? ( >=sec-keys/openpgp-keys-gnupg-20260913 )"
+
+PATCHES=(
+	"${FILESDIR}"/0001-Avoid-assertion-on-empty-string-or-trailing-delimite.patch
+)
 
 src_configure() {
 	local mycmakeargs=(
@@ -41,13 +46,4 @@ src_configure() {
 	)
 
 	cmake_src_configure
-}
-
-src_test() {
-	local CMAKE_SKIP_TESTS=(
-		# Fails with -D_GLIBCXX_ASSERTIONS, reported upstream by email
-		t-util6
-	)
-
-	cmake_src_test
 }

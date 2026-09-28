@@ -1,0 +1,41 @@
+From 7e5788d5f65d67f16014352583068ebcc7dd6252 Mon Sep 17 00:00:00 2001
+Message-ID: <7e5788d5f65d67f16014352583068ebcc7dd6252.1790626144.git.sam@gentoo.org>
+From: =?UTF-8?q?Ingo=20Kl=C3=B6cker?= <dev@ingo-kloecker.de>
+Date: Mon, 14 Sep 2026 11:39:37 +0200
+Subject: [PATCH] Avoid assertion on empty string or trailing delimiter
+
+* src/util.h (split): Deal separately with trailing empty part.
+--
+
+GnuPG-bug-id: 8456
+---
+ src/util.h | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/src/util.h b/src/util.h
+index 3062c0b..30b184e 100644
+--- a/src/util.h
++++ b/src/util.h
+@@ -71,14 +71,17 @@ static inline std::vector<std::string_view> split(const std::string_view s, char
+     std::vector<std::string_view> result;
+     std::string_view::size_type start = 0;
+     std::string_view::size_type end;
+-    do {
++    while (start < s.size()) {
+         end = s.find(delimiter, start);
+         if (end == s.npos) {
+             end = s.size();
+         }
+         result.emplace_back(std::addressof(s[start]), end - start);
+         start = end + 1;
+-    } while (end != s.size());
++    }
++    if (start == s.size()) {
++        result.emplace_back();
++    }
+     return result;
+ }
+ 
+-- 
+2.55.0
+
