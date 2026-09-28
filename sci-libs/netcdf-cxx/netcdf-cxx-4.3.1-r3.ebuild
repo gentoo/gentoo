@@ -16,8 +16,6 @@ LICENSE="UCAR-Unidata"
 SLOT="0/1"
 KEYWORDS="amd64 ~arm ~arm64 ~x86"
 IUSE="examples"
-# 6 out of 9 fail, reported upstream
-#RESTRICT="test"
 
 RDEPEND=">=sci-libs/netcdf-4.2:=[hdf5,logging]"
 DEPEND="${RDEPEND}"
@@ -33,7 +31,15 @@ src_prepare() {
 
 src_install() {
 	default
-	use examples && dodoc -r examples
+
+	if use examples; then
+		rm -r examples/.libs || die
+
+		# Remove architecture-dependent object files
+		find examples -type f -name "*.o" -delete
+
+		use examples && dodoc -r examples
+	fi
 	find "${ED}" -name '*.la' -delete || die
 }
 
