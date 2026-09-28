@@ -33,6 +33,7 @@ src_install() {
 		docinto examples
 		dodoc -r examples
 	fi
+	find "${ED}" -name '*.la' -delete || die
 }
 
 src_test() {
