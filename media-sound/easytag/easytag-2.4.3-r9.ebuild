@@ -57,6 +57,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${P}-ogg-corruption.patch
 	"${FILESDIR}"/${P}-fix-build-taglib2.patch
+	"${FILESDIR}"/${P}-fix-build-taglib2_32bits.patch
 	"${FILESDIR}"/${P}-fix-check-id3.patch
 	"${FILESDIR}"/${P}-fix-appdata.patch
 	"${FILESDIR}"/${P}-c23.patch
