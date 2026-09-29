@@ -44,12 +44,17 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.26.29-fix-nosse2.patch
 )
 
-src_configure() {
-	setup-wxwidgets
+src_prepare() {
+	default
+
+	# Respect *FLAGS
+	sed -i -e 's/^.* += $(REPRODUCIBLE_/#&/' Makefile || die
 }
 
-src_compile() {
-	local myemakeargs=(
+src_configure() {
+	setup-wxwidgets
+
+	myemakeargs=(
 		NOSTRIP=1
 		NOTEST=1
 		VERBOSE=1
@@ -68,12 +73,14 @@ src_compile() {
 	# x86-specific options causing build failures on other arches
 	if use x86 || use amd64; then
 		myemakeargs+=(
-			$(usex asm "" "NOASM=1")
-			$(usex cpu_flags_x86_aes "" "NOAESNI=1")
-			$(usex cpu_flags_x86_sse2 "" "NOSSE2=1")
+			$(usev !asm "NOASM=1")
+			$(usev !cpu_flags_x86_aes "NOAESNI=1")
+			$(usev !cpu_flags_x86_sse2 "NOSSE2=1")
 		)
 	fi
+}
 
+src_compile() {
 	emake "${myemakeargs[@]}"
 }
 
@@ -84,7 +91,31 @@ src_test() {
 src_install() {
 	local DOCS=( Readme.txt )
 
-	dobin Main/veracrypt
+	# TODO: install translations
+	myemakeargs+=(
+		INSTALL_UNINSTALLER=0
+		INSTALL_LICENSE=0
+		INSTALL_DOCS=0
+		INSTALL_LANGUAGES=0
+		INSTALL_APPIMAGE_FILES=0
+	)
+
+	if use gui; then
+		myemakeargs+=(
+			INSTALL_DESKTOP=1
+			INSTALL_MIME=1
+			INSTALL_ICONS=1
+		)
+	else
+		myemakeargs+=(
+			INSTALL_DESKTOP=0
+			INSTALL_MIME=0
+			INSTALL_ICONS=0
+		)
+	fi
+
+	emake DESTDIR="${D}" "${myemakeargs[@]}" install
+
 	if use doc; then
 		DOCS+=( "${S}"/../doc/EFI-DCS )
 		docompress -x /usr/share/doc/${PF}/EFI-DCS
@@ -93,18 +124,6 @@ src_install() {
 	einstalldocs
 
 	newinitd "${FILESDIR}"/veracrypt.init veracrypt
-
-	if use gui; then
-		local s
-		for s in 16 22 24 32 48 64 128 256 512; do
-			newicon -s ${s} Resources/Icons/VeraCrypt-${s}x${s}.png veracrypt.png
-		done
-
-		domenu Setup/Linux/veracrypt.desktop
-
-		insinto /usr/share/mime/packages
-		doins Setup/Linux/veracrypt.xml
-	fi
 
 	pax-mark -m "${ED}"/usr/bin/veracrypt
 }
