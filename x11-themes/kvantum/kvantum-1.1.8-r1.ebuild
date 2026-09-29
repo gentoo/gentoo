@@ -5,8 +5,8 @@ EAPI=8
 
 # minimum taken from Kvantum/style/CMakeLists.txt
 # increased downstream to ensure sane upgrades
-QTMIN="6.8.2"
-KFMIN="6.13.0"
+KFMIN=6.29.0
+QTMIN=6.11.2
 inherit cmake verify-sig xdg
 
 DESCRIPTION="SVG-based theme engine for Qt, KDE Plasma and LXQt"
@@ -34,7 +34,7 @@ DEPEND="${RDEPEND}
 	x11-base/xorg-proto
 "
 BDEPEND="
-	dev-qt/qttools:6[linguist]
+	>=dev-qt/qttools-${QTMIN}:6[linguist]
 	verify-sig? ( sec-keys/openpgp-keys-tsujan )
 "
 
