@@ -5,7 +5,8 @@ EAPI=8
 
 TS_BINDINGS=( python )
 
-inherit tree-sitter-grammar
+DISTUTILS_OPTIONAL=1
+inherit tree-sitter-grammar distutils-r1
 
 DESCRIPTION="HTML grammar for Tree-sitter"
 HOMEPAGE="https://github.com/tree-sitter/tree-sitter-html"
@@ -18,7 +19,12 @@ KEYWORDS="~amd64"
 
 PATCHES=( "${FILESDIR}"/${P}-make.patch )
 
+src_test() {
+	tree-sitter-grammar_src_test
+
+	use python && distutils-r1_src_test
+}
+
 python_test() {
-	# Silencing QA warning
-	:
+	epytest bindings/python/tests
 }
