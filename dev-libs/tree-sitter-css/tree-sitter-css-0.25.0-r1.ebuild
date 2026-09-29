@@ -3,6 +3,8 @@
 
 EAPI=8
 
+TS_BINDINGS=( python )
+
 inherit tree-sitter-grammar
 
 DESCRIPTION="CSS grammar for Tree-sitter"
