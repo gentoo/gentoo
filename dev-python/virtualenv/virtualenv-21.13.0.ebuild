@@ -6,7 +6,7 @@ EAPI=8
 DISTUTILS_USE_PEP517=hatchling
 PYPI_VERIFY_REPO=https://github.com/pypa/virtualenv
 PYTHON_TESTED=( python3_{12..15} )
-PYTHON_COMPAT=( "${PYTHON_TESTED[@]}" python3_{14..15}t )
+PYTHON_COMPAT=( "${PYTHON_TESTED[@]}" pypy3_12 python3_{14..15}t )
 
 inherit distutils-r1 pypi
 
