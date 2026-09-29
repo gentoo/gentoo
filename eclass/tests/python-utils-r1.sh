@@ -1,5 +1,5 @@
 #!/bin/bash
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -119,6 +119,21 @@ for minor in {12..15} {14..15}t; do
 	eoutdent
 done
 
+for minor in 12; do
+       ebegin "Testing pypy3.${minor}"
+       eindent
+       test_var EPYTHON "pypy3.${minor}" "pypy3.${minor}"
+       test_var PYTHON "pypy3.${minor}" "/usr/bin/pypy3.${minor}"
+       if [[ -x /usr/bin/pypy3.${minor} ]]; then
+              test_var PYTHON_SITEDIR "pypy3.${minor}" "/usr/lib*/pypy3.${minor}/site-packages"
+               test_var PYTHON_INCLUDEDIR "pypy3.${minor}" "/usr/include/pypy3.${minor}"
+       fi
+       test_var PYTHON_PKG_DEP "pypy3.${minor}" "*dev-lang/pypy*:3.${minor}="
+       PYTHON_REQ_USE=sqlite test_var PYTHON_PKG_DEP "pypy3.${minor}" "*dev-lang/pypy*:3.${minor}=\[sqlite\]"
+       test_var PYTHON_SCRIPTDIR "pypy3.${minor}" "/usr/lib/python-exec/pypy3.${minor}"
+       eoutdent
+done
+
 for EPREFIX in '' /foo; do
 	einfo "Testing python_fix_shebang with EPREFIX=${EPREFIX@Q}"
 	eindent
@@ -205,6 +220,9 @@ test_is "_python_impl_matches python3_14t 3.14" 0
 test_is "_python_impl_matches pypy3_11 3.10" 1
 test_is "_python_impl_matches pypy3_11 3.11" 0
 test_is "_python_impl_matches pypy3_11 3.12" 1
+test_is "_python_impl_matches pypy3_12 3.10" 1
+test_is "_python_impl_matches pypy3_12 3.11" 1
+test_is "_python_impl_matches pypy3_12 3.12" 0
 # https://bugs.gentoo.org/955213
 test_is "_python_impl_matches python3_11 3.10 3.11" 0
 test_is "_python_impl_matches python3_11 3.11 3.12" 0
