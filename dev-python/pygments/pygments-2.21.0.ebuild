@@ -6,7 +6,7 @@ EAPI=8
 DISTUTILS_USE_PEP517=hatchling
 PYPI_PN=${PN^}
 PYTHON_FULLY_TESTED=( python3_{12..15} )
-PYTHON_COMPAT=( "${PYTHON_FULLY_TESTED[@]}" python3_{13..15}t )
+PYTHON_COMPAT=( "${PYTHON_FULLY_TESTED[@]}" pypy3_12 python3_{14..15}t )
 
 inherit distutils-r1 pypi shell-completion
 
@@ -23,8 +23,8 @@ KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390
 
 BDEPEND="
 	test? (
-		dev-python/lxml[${PYTHON_USEDEP}]
 		$(python_gen_cond_dep '
+			dev-python/lxml[${PYTHON_USEDEP}]
 			dev-python/pillow[${PYTHON_USEDEP}]
 		' "${PYTHON_FULLY_TESTED[@]}")
 		dev-python/wcag-contrast-ratio[${PYTHON_USEDEP}]
