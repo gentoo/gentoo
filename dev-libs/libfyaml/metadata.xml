@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>vmikhailikov@gmail.com</email>
+		<name>Tanuki</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<use>
+		<flag name="clang">Enables CLang support</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">pantoniou/libfyaml</remote-id>
+	</upstream>
+	<longdescription>
+	libfyaml is a high-performance YAML 1.2 and JSON parser/emitter with zero-copy
+	operation, full document and event APIs, and the two major 1.0 alpha features:
+
+	- generics: a schema-light, sum-type value model for YAML/JSON data in C
+	- reflection/meta-type: typed YAML/C serdes driven by C type metadata
+
+	The alpha release adds a clear progression:
+	- use the core API when you need parser, emitter, event, or document-tree control
+	- use generics when your problem is "work with values"
+	- use reflection when your problem is "populate native C data structures"
+	</longdescription>
+</pkgmetadata>
