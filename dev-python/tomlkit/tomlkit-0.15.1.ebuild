@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=flit-core
-PYTHON_COMPAT=( python3_{12..15} python3_{14,15}t )
+PYTHON_COMPAT=( pypy3_12 python3_{12..15} python3_{14,15}t )
 
 inherit distutils-r1 pypi
 
@@ -17,12 +17,6 @@ HOMEPAGE="
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~arm64-macos ~x64-macos ~x64-solaris"
-
-BDEPEND="
-	test? (
-		dev-python/pyyaml[${PYTHON_USEDEP}]
-	)
-"
 
 EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
@@ -45,4 +39,17 @@ src_configure() {
 	# some brilliant idea about forcing 1970 dates in sdist
 	# which are older than what zip can handle...
 	find -exec touch {} + || die
+}
+
+python_test() {
+	local EPYTEST_DESELECT=()
+
+	if [[ ${EPYTHON} == pypy* ]]; then
+		EPYTEST_DESELECT+=(
+			# https://github.com/python-poetry/tomlkit/issues/619
+			tests/test_items.py::test_times_behave_like_times
+		)
+	fi
+
+	epytest
 }
