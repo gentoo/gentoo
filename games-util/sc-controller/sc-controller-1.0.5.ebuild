@@ -55,6 +55,11 @@ src_compile() {
 	distutils-r1_src_compile
 }
 
+src_test() {
+	unset DISPLAY WAYLAND_DISPLAY
+	distutils-r1_src_test
+}
+
 src_install() {
 	distutils-r1_src_install
 	rm -r "${ED}"/usr/lib/udev/ || die
