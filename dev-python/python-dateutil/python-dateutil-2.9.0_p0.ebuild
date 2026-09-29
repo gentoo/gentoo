@@ -5,8 +5,8 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
 PYPI_NO_NORMALIZE=1
-PYTHON_FULLY_TESTED=( python3_{11..14} python3_{13..14}t )
-PYTHON_COMPAT=( "${PYTHON_FULLY_TESTED[@]}" pypy3_11 python3_15 python3_15t )
+PYTHON_FULLY_TESTED=( python3_{12..15} python3_{14..15}t )
+PYTHON_COMPAT=( "${PYTHON_FULLY_TESTED[@]}" pypy3_12 )
 
 inherit distutils-r1 pypi
 
@@ -52,7 +52,10 @@ python_prepare_all() {
 
 python_test() {
 	local EPYTEST_IGNORE=()
-	if ! has_version "dev-python/hypothesis[${PYTHON_USEDEP}]"; then
+	local EPYTEST_PLUGINS=( "${EPYTEST_PLUGINS[@]}" )
+	if has_version "dev-python/hypothesis[${PYTHON_USEDEP}]"; then
+		EPYTEST_PLUGINS+=( hypothesis )
+	else
 		EPYTEST_IGNORE+=(
 			tests/property
 		)
