@@ -1,0 +1,12 @@
+--- a/common/common.mak	2026-09-29 17:11:28.889106705 +0200
++++ b/common/common.mak	2026-09-29 17:11:37.521003651 +0200
+@@ -62,7 +62,8 @@
+ 		-e 's|@CMAKE_INSTALL_INCLUDEDIR@|$(INCLUDEDIR:$(PREFIX)/%=%)|' \
+ 		-e 's|@PROJECT_DESCRIPTION@|$(DESCRIPTION)|' \
+ 		-e 's|@CMAKE_PROJECT_HOMEPAGE_URL@|$(HOMEPAGE_URL)|' \
+-		-e 's|@CMAKE_INSTALL_PREFIX@|$(PREFIX)|'
++		-e 's|@CMAKE_INSTALL_PREFIX@|$(PREFIX)|' \
++		$< > $@
+ 
+ $(PARSER): $(SRC_DIR)/grammar.json
+ 	$(TS) generate $^
