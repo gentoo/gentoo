@@ -3,6 +3,7 @@
 
 EAPI=8
 
+QTMIN=6.11.2
 inherit cmake qt-utils
 
 DESCRIPTION="Qt API for storing passwords securely"
@@ -24,14 +25,14 @@ IUSE="keyring test"
 RESTRICT="test !test? ( test )"
 
 RDEPEND="
-	dev-qt/qtbase:6[dbus]
+	>=dev-qt/qtbase-${QTMIN}:6[dbus]
 	keyring? (
 		app-crypt/libsecret
 		dev-libs/glib:2
 	)
 "
 DEPEND="${RDEPEND}"
-BDEPEND="dev-qt/qttools:6[linguist]"
+BDEPEND=">=dev-qt/qttools-${QTMIN}:6[linguist]"
 
 DOCS=( ChangeLog ReadMe.md )
 
