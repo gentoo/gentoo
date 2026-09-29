@@ -1,6 +1,11 @@
 # Copyright 2019-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (2025-09-29)
+# dev-python/pypy:3.12 is not a stable target.
+python_single_target_pypy3_12
+python_targets_pypy3_12
+
 # Sam James <sam@gentoo.org> (2021-11-14)
 # media-libs/openexr is not marked stable on ppc64
 # (it's broken on BE and it's more convenient to keep it at ~arch here for now)

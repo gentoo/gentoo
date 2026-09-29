@@ -482,6 +482,7 @@ app-shells/bash:0 readline
 # Michał Górny <mgorny@gentoo.org> (2012-10-14)
 # Force-enable all PYTHON_TARGETS for python-exec to avoid using private
 # API. Please remember to keep it in sync with python_targets.desc.
+dev-lang/python-exec python_targets_pypy3_12
 dev-lang/python-exec python_targets_python3_12
 dev-lang/python-exec python_targets_python3_13
 dev-lang/python-exec python_targets_python3_14

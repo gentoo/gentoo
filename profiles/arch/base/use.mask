@@ -1,6 +1,11 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (2025-09-29)
+# dev-python/pypy:3.12 is not keyworded everywhere.
+python_single_target_pypy3_12
+python_targets_pypy3_12
+
 # Alfred Wingate <parona@protonmail.com> (2025-09-20)
 # Experimental and only available on a subset of architectures
 generic-uki
