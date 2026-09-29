@@ -212,6 +212,9 @@ XFAIL_TEST_LIST=(
 
 	# Fails only in portage. Needs investigation.
 	tst-setvbuf2
+
+	# https://sourceware.org/PR34433
+	tst-dl-llp-stack
 )
 
 XFAIL_NSPAWN_TEST_LIST=(
