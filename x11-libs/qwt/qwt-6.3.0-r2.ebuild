@@ -3,6 +3,7 @@
 
 EAPI=8
 
+QTMIN=6.11.2
 inherit qmake-utils
 
 DESCRIPTION="2D plotting library for Qt"
@@ -18,13 +19,13 @@ IUSE="designer doc examples opengl polar svg"
 RESTRICT="test"
 
 DEPEND="
-	dev-qt/qtbase:6[concurrent,gui,widgets]
-	designer? ( dev-qt/qttools:6[designer] )
+	>=dev-qt/qtbase-${QTMIN}:6[concurrent,gui,widgets]
+	designer? ( >=dev-qt/qttools-${QTMIN}:6[designer] )
 	opengl? (
-		dev-qt/qtbase:6[opengl]
+		>=dev-qt/qtbase-${QTMIN}:6[opengl]
 		virtual/opengl
 	)
-	svg? ( dev-qt/qtsvg:6 )
+	svg? ( >=dev-qt/qtsvg-${QTMIN}:6 )
 "
 RDEPEND="${DEPEND}"
 
