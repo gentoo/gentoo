@@ -23,9 +23,9 @@ RDEPEND="
 	media-libs/fontconfig:1.0
 	media-libs/libepoxy
 	sys-apps/dbus
-	sys-apps/systemd-utils
 	sys-auth/polkit
 	sys-libs/glibc
+	virtual/libudev
 	virtual/zlib
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf:2
