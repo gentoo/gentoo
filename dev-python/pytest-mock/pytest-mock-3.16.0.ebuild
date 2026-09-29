@@ -5,8 +5,7 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
 PYPI_VERIFY_REPO=https://github.com/pytest-dev/pytest-mock
-PYTHON_TESTED=( python3_{12..15} python3_{14..15}t )
-PYTHON_COMPAT=( "${PYTHON_TESTED[@]}" )
+PYTHON_COMPAT=( pypy3_12 python3_{12..15} python3_{14..15}t )
 
 inherit distutils-r1 pypi
 
@@ -19,29 +18,19 @@ HOMEPAGE="
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-macos"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-python/pytest-6.2.5[${PYTHON_USEDEP}]
 "
 BDEPEND="
 	dev-python/setuptools-scm[${PYTHON_USEDEP}]
-	test? (
-		$(python_gen_cond_dep '
-			dev-python/pytest-asyncio[${PYTHON_USEDEP}]
-		' "${PYTHON_TESTED[@]}")
-	)
 "
 
-python_test() {
-	if ! has "${EPYTHON/./_}" "${PYTHON_TESTED[@]}"; then
-		einfo "Skipping tests on ${EPYTHON}"
-		return
-	fi
+EPYTEST_PLUGINS=( "${PN}" pytest-asyncio )
+EPYTEST_PLUGIN_LOAD_VIA_ENV=1
+distutils_enable_tests pytest
 
-	local EPYTEST_PLUGINS=( "${PN}" pytest-asyncio )
-	local EPYTEST_PLUGIN_LOAD_VIA_ENV=1
+python_test() {
 	local EPYTEST_DESELECT=()
 
 	if has_version dev-python/mock; then
