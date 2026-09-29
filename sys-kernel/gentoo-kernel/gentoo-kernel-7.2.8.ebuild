@@ -122,7 +122,8 @@ src_prepare() {
 		loong)
 			cp "${WORKDIR}/linux-${DEBIAN_COMMIT}/debian/config/config" .config || die
 			merge_configs+=(
-				"${WORKDIR}/linux-${DEBIAN_COMMIT}/debian/config/loong64/config"
+				"${WORKDIR}/linux-${DEBIAN_COMMIT}/debian/config/loong64/config" \
+				"${dist_conf_path}"/arch-loong.config
 			)
 			;;
 		m68k)
