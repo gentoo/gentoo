@@ -33,7 +33,7 @@ LICENSE+="
 	Unicode-3.0 ZLIB
 "
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 QA_FLAGS_IGNORED="usr/lib/python.*/site-packages/pysequoia/.*.so"
 
