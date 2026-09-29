@@ -6,7 +6,8 @@ EAPI=8
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
 PYPI_VERIFY_REPO=https://github.com/coveragepy/coveragepy
-PYTHON_COMPAT=( python3_{12..15} python3_{14,15}t )
+PYTHON_FULLY_TESTED=( python3_{12..15} python3_{14,15}t )
+PYTHON_COMPAT=( "${PYTHON_FULLY_TESTED[@]}" pypy3_12 )
 PYTHON_REQ_USE="threads(+),sqlite(+)"
 
 inherit distutils-r1 multiprocessing pypi
@@ -26,10 +27,13 @@ IUSE="+native-extensions"
 BDEPEND="
 	test? (
 		>=dev-python/unittest-mixins-1.4[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			dev-python/hypothesis[${PYTHON_USEDEP}]
+		' "${PYTHON_FULLY_TESTED[@]}")
 	)
 "
 
-EPYTEST_PLUGINS=( hypothesis pytest-{rerunfailures,xdist} )
+EPYTEST_PLUGINS=( pytest-{rerunfailures,xdist} )
 EPYTEST_XDIST=1
 distutils_enable_tests pytest
 
@@ -59,6 +63,11 @@ test_tracer() {
 }
 
 python_test() {
+	local EPYTEST_PLUGINS=( "${EPYTEST_PLUGINS[@]}" )
+	if has_version "dev-python/hypothesis[${PYTHON_USEDEP}]"; then
+		EPYTEST_PLUGINS+=( hypothesis )
+	fi
+
 	local EPYTEST_DESELECT=(
 		# broken because of pytest plugins explicity loaded
 		tests/test_debug.py::ShortStackTest::test_short_stack{,_skip}
@@ -99,8 +108,10 @@ python_test() {
 
 	test_tracer pytrace "${xdist_args[@]}"
 
-	# available since Python 3.12
-	test_tracer sysmon "${xdist_args[@]}"
+	# available since CPython 3.12
+	if [[ ${EPYTHON} == python* ]]; then
+		test_tracer sysmon "${xdist_args[@]}"
+	fi
 
 	if [[ -n ${c_ext} ]]; then
 		rm coverage/*.so || die
