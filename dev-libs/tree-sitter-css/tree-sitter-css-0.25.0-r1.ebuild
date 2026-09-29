@@ -5,7 +5,8 @@ EAPI=8
 
 TS_BINDINGS=( python )
 
-inherit tree-sitter-grammar
+DISTUTILS_OPTIONAL=1
+inherit tree-sitter-grammar distutils-r1
 
 DESCRIPTION="CSS grammar for Tree-sitter"
 HOMEPAGE="https://github.com/tree-sitter/tree-sitter-css"
@@ -19,3 +20,13 @@ PATCHES=(
 	# Test name beginning with :: is incompatible with tree-sitter >0.22
 	"${FILESDIR}"/${PN}-0.20.0-test-selector.patch
 )
+
+src_test() {
+	tree-sitter-grammar_src_test
+
+	use python && distutils-r1_src_test
+}
+
+python_test() {
+	epytest bindings/python/tests
+}
