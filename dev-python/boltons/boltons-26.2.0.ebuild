@@ -3,12 +3,18 @@
 
 EAPI=8
 
-DISTUTILS_USE_PEP517=flit
-PYTHON_COMPAT=( python3_{12..15} python3_{13..15}t )
+DISTUTILS_USE_PEP517=flit-core
+PYPI_VERIFY_REPO="https://github.com/mahmoud/boltons"
+PYTHON_COMPAT=( python3_{12..15} python3_{14..15}t )
+
 inherit distutils-r1 pypi
 
 DESCRIPTION="Pure-python utilities in the same spirit as the standard library"
-HOMEPAGE="https://boltons.readthedocs.io/"
+HOMEPAGE="
+	https://boltons.readthedocs.io/
+	https://github.com/mahmoud/boltons/
+	https://pypi.org/project/boltons/
+"
 
 LICENSE="BSD"
 SLOT="0"
