@@ -43,3 +43,22 @@
              py_limited_api=not get_config_var("Py_GIL_DISABLED"),
          )
      ],
+--- a/bindings/python/tree_sitter_markdown/__init__.py	2026-09-29 19:29:58.719601955 +0200
++++ b/bindings/python/tree_sitter_markdown/__init__.py	2026-09-29 19:30:29.962228510 +0200
+@@ -2,7 +2,7 @@
+ 
+ from importlib.resources import files as _files
+ 
+-from ._binding import language
++from ._binding import inline_language, language
+ 
+ 
+ def _get_query(name, file):
+@@ -29,6 +29,7 @@
+ 
+ __all__ = [
+     "language",
++    "inline_language",
+     "HIGHLIGHTS_QUERY",
+     "INJECTIONS_QUERY",
+     "LOCALS_QUERY",
