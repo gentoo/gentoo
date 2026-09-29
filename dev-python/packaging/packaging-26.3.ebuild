@@ -6,7 +6,8 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=flit-core
 PYPI_VERIFY_REPO=https://github.com/pypa/packaging
-PYTHON_COMPAT=( python3_{12..15} python3_{14..15}t )
+PYTHON_FULLY_TESTED=( python3_{12..15} python3_{14..15}t )
+PYTHON_COMPAT=( "${PYTHON_FULLY_TESTED[@]}" pypy3_12 )
 
 inherit distutils-r1 pypi
 
@@ -27,9 +28,11 @@ RDEPEND="
 "
 DEPEND="
 	test? (
-		dev-python/hypothesis[${PYTHON_USEDEP}]
 		dev-python/pretend[${PYTHON_USEDEP}]
 		dev-python/tomli-w[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			dev-python/hypothesis[${PYTHON_USEDEP}]
+		' "${PYTHON_FULLY_TESTED[@]}")
 	)
 "
 
@@ -37,5 +40,12 @@ EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
 
 python_test() {
+	local EPYTEST_PLUGINS=( "${EPYTEST_PLUGINS[@]}" )
+	local EPYTEST_IGNORE=()
+	if has_version "dev-python/hypothesis[${PYTHON_USEDEP}]"; then
+		EPYTEST_PLUGINS+=( hypothesis )
+	else
+		EPYTEST_IGNORE+=( tests/property/ )
+	fi
 	epytest --capture=no
 }
