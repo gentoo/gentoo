@@ -1,9 +1,10 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=9
 
 MY_PN="QtPBFImagePlugin"
+QTMIN=6.11.2
 inherit qmake-utils
 
 DESCRIPTION="Qt image plugin for displaying Mapbox vector tiles"
@@ -16,9 +17,10 @@ SLOT="0"
 KEYWORDS="amd64"
 
 RDEPEND="
-	dev-qt/qtbase:6[gui,opengl]
+	>=dev-qt/qtbase-${QTMIN}:6=[gui,opengl]
 	virtual/zlib:=
 "
+DEPEND="${RDEPEND}"
 
 src_configure() {
 	eqmake6 pbfplugin.pro
