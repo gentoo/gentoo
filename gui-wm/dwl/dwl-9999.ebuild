@@ -1,4 +1,4 @@
-# Copyright 2022-2024 Gentoo Authors
+# Copyright 2022-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,8 +11,8 @@ if [[ ${PV} == 9999 ]]; then
 else
 	MY_PV="${PV/_rc/-rc}"
 	MY_P="${PN}-v${MY_PV}"
-	SRC_URI="https://codeberg.org/${PN}/${PN}/releases/download/v${MY_PV}/${MY_P}.tar.gz"
-	S="${WORKDIR}/${MY_P}"
+	SRC_URI="https://codeberg.org/${PN}/${PN}/archive/v${MY_PV}.tar.gz -> ${MY_P}.tar.gz"
+	S="${WORKDIR}/${PN}"
 	KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 fi
 
@@ -23,12 +23,11 @@ LICENSE="CC0-1.0 GPL-3+ MIT"
 SLOT="0"
 IUSE="X"
 
-if [[ ${PV} == 9999 ]]; then
+if [[ ${PV} == 9999 && $EGIT_OVERRIDE_BRANCH_DWL_DWL == "wlroots-next" ]]
+then
 	COMMON_DEPEND="~gui-libs/wlroots-9999:=[libinput,session,X?]"
 else
-	COMMON_DEPEND="
-		>=gui-libs/wlroots-0.19:=[libinput,session,X?]
-		<gui-libs/wlroots-0.20:="
+	COMMON_DEPEND="gui-libs/wlroots:0.19[libinput,session,X?]"
 fi
 
 COMMON_DEPEND+="
@@ -73,4 +72,12 @@ src_install() {
 	dodoc CHANGELOG.md README.md
 
 	save_config config.h
+}
+
+pkg_postinst() {
+	if [[ ${PV} == 9999 && ${EGIT_OVERRIDE_BRANCH_DWL_DWL} != "wlroots-next" ]]
+	then
+		einfo "The live ebuild uses the main ${PN} branch with the latest wlroots release"
+		einfo "Use EGIT_OVERRIDE_BRANCH_DWL_DWL to build the wlroots-next branch"
+	fi
 }
