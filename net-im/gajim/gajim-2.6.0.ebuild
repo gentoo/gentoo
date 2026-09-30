@@ -16,7 +16,7 @@ SRC_URI="https://gajim.org/downloads/$(ver_cut 1-2)/${P/_p/-}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 
-KEYWORDS="amd64"
+KEYWORDS="amd64 ~arm64"
 IUSE="voice"
 
 # Same order as in upstream pyproject.toml please for the python dependencies
