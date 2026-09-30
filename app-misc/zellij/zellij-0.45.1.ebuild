@@ -25,7 +25,7 @@ LICENSE+="
 	MPL-2.0 Unicode-3.0 ZLIB
 "
 SLOT="0"
-KEYWORDS="~amd64 ~riscv"
+KEYWORDS="~amd64 ~arm64 ~riscv"
 IUSE="system-sqlite"
 
 # libnghttp2 still bundled
