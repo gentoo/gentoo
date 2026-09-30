@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Simple percent Encoding/Decoding"
 
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86"
 
 RDEPEND="
 	>=virtual/perl-Encode-2.120.0
