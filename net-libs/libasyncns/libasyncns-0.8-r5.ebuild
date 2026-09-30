@@ -1,7 +1,7 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit autotools flag-o-matic multilib-minimal
 
@@ -9,8 +9,8 @@ DESCRIPTION="C library for executing name service queries asynchronously"
 HOMEPAGE="http://0pointer.de/lennart/projects/libasyncns/"
 SRC_URI="http://0pointer.de/lennart/projects/libasyncns/${P}.tar.gz"
 
-SLOT="0"
 LICENSE="LGPL-2.1"
+SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~sparc x86"
 
 IUSE="doc debug"
@@ -22,6 +22,8 @@ PATCHES=(
 	"${FILESDIR}"/${P}-libdir.patch
 	# fix configure check for res_query
 	"${FILESDIR}"/${P}-configure-res_query.patch
+	# fix unnecessary libnsl use
+	"${FILESDIR}"/${P}-libnsl-automagic.patch
 )
 
 src_prepare() {
