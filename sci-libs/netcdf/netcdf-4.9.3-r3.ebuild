@@ -54,6 +54,7 @@ REQUIRED_USE="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.7.4-big-endian-test.patch
+	"${FILESDIR}"/${P}-docWerror.patch
 )
 
 src_configure() {
