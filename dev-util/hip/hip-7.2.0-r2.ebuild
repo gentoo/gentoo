@@ -161,6 +161,10 @@ src_configure() {
 
 	local mycmakeargs=(
 		-DCMAKE_PREFIX_PATH="$(get_llvm_prefix)"
+		# hiprtc-builtins embeds headers preprocessed by this clang.  It must
+		# match the LLVM slot used by rocm-comgr, not clang from PATH.
+		-Dclang="$(get_llvm_prefix)/bin/clang"
+		-Dllvm-mc="$(get_llvm_prefix)/bin/llvm-mc"
 		-DCMAKE_SKIP_RPATH=ON
 		-D__HIP_ENABLE_PCH=OFF
 
