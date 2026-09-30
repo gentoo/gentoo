@@ -1,3 +1,4 @@
 dev-lang/rust
 dev-lang/rust-bin
 dev-lang/rust-common
+app-eselect/eselect-rust
