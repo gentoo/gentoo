@@ -124,7 +124,9 @@ src_compile() {
 }
 
 src_install() {
-	default
+	# Avoid race with parallel install, bug 983579
+	emake -j1 DESTDIR="${D}" install
+	einstalldocs
 
 	# .ms, .ps files shouldn't be compressed and other files are tiny (bug #542624)
 	while IFS= read -r -d ''; do
