@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,7 +10,7 @@ SRC_URI="mirror://debian/pool/main/x/${PN}/${P/-/_}.tar.xz"
 
 SLOT="0"
 LICENSE="GPL-3"
-KEYWORDS="amd64 ppc x86"
+KEYWORDS="amd64 ~arm64 ppc x86"
 
 RDEPEND="
 	virtual/libcrypt:=
