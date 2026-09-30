@@ -12,7 +12,7 @@ SRC_URI="https://github.com/ocaml/${PN}/archive/refs/tags/${PV}.tar.gz
 
 LICENSE="LGPL-2.1-with-linking-exception"
 SLOT="0"
-KEYWORDS="amd64 arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 arm arm64 ~ppc ~ppc64 ~riscv ~x86"
 
 RDEPEND="dev-ml/dune-configurator:=[ocamlopt?]
 	x11-libs/libXft
