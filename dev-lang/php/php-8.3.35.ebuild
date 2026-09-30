@@ -291,6 +291,9 @@ src_prepare() {
 	   ext/standard/tests/general_functions/proc_nice_basic.phpt \
 	   || die
 
+	# bug 983491
+	rm sapi/cli/tests/gh14189.phpt || die
+
 	eautoconf --force
 }
 

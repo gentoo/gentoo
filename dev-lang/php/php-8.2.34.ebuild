@@ -377,6 +377,9 @@ src_prepare() {
 	rm ext/standard/tests/file/fdatasync.phpt \
 		ext/standard/tests/file/fsync.phpt \
 		|| die
+
+	# bug 983491
+	rm sapi/cli/tests/gh14189.phpt || die
 }
 
 src_configure() {
