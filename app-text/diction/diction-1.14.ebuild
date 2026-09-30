@@ -9,7 +9,7 @@ SRC_URI="http://www.moria.de/~michael/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~hppa ~mips ppc ~sparc x86 ~arm64-macos ~x64-macos"
+KEYWORDS="amd64 ~arm ~arm64 ~hppa ~mips ppc ~sparc x86 ~arm64-macos ~x64-macos"
 
 DEPEND="
 	sys-devel/gettext
