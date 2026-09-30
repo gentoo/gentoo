@@ -210,7 +210,7 @@ src_install() {
 	if ! use tk; then
 		rm -r "${ED}${dest}"/{idlelib,tkinter} \
 			"${ED}${dest}"/_tkinter \
-			"${ED}${dest}"/test/test_{tcl,tk,ttk*}.py || die
+			"${ED}${dest}"/test/test_{tcl,ttk*}.py || die
 	fi
 	# remove test last since we have some file removals above
 	if ! use test-install; then
