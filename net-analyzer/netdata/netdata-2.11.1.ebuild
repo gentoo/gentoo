@@ -19,7 +19,7 @@ else
 		https://distfiles.gentoo.org/pub/dev/arthurzam@gentoo.org/net-analyzer/${PN}/${PN}-2.11.1-system-libs.patch.xz
 	"
 	S="${WORKDIR}/${PN}-v${PV}"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64 ~arm64 ~x86"
 fi
 
 DESCRIPTION="Linux real time system monitoring, done right!"
