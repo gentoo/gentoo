@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Interface to (some parts of) the Linux DVB API"
 
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86"
 
 DEPEND="sys-kernel/linux-headers"
 BDEPEND=">=dev-perl/Canary-Stability-2001.0.0"
