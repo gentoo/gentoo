@@ -1,8 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
+FONT_PN="${PN}$(ver_cut 1)"
 inherit font
 
 DESCRIPTION="The iconic font"
@@ -17,12 +18,14 @@ else
 fi
 
 LICENSE="CC-BY-4.0 OFL-1.1"
-SLOT="7"
-IUSE="woff2"
+SLOT="$(ver_cut 1)"
+IUSE="ttf"
+
+RDEPEND="ttf? ( !media-fonts/fontawesome:5[ttf] )"
 
 src_install() {
 	FONT_S="${S}/otfs" FONT_SUFFIX="otf" font_src_install
-	if use woff2; then
-		FONT_S="${S}/webfonts" FONT_SUFFIX="woff2" font_src_install
+	if use ttf; then
+		FONT_S="${S}/webfonts" FONT_SUFFIX="ttf" font_src_install
 	fi
 }
