@@ -12,7 +12,7 @@ SRC_URI="https://github.com/rsyslog/${PN}/archive/v${PV}.tar.gz
 
 LICENSE="MIT"
 SLOT="0/4.3.0"
-KEYWORDS="~amd64 arm arm64 ~hppa ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~amd64 arm arm64 ~hppa ~ppc64 ~riscv ~sparc x86"
 IUSE="static-libs"
 
 BDEPEND="
