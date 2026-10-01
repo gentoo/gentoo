@@ -141,17 +141,7 @@ qt6-build_src_prepare() {
 
 	_qt6-build_prepare_env
 
-	if use !custom-cflags; then
-		_qt6-build_sanitize_cpu_flags
-
-		# lto+gcc used to break a lot of tests, but this has improved so
-		# tentatively allow again for Qt >=6.10 + GCC >=15.2 (bug #955531)
-		if ver_test ${PV} -lt 6.10 ||
-			{ tc-is-gcc && ver_test $(gcc-version) -lt 15.2; };
-		then
-			filter-lto
-		fi
-	fi
+	use custom-cflags || _qt6-build_sanitize_cpu_flags
 
 	[[ ${QT6_HAS_STATIC_LIBS} ]] && lto-guarantee-fat
 }
