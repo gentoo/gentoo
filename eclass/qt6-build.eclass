@@ -76,7 +76,12 @@ else
 	fi
 
 	_QT6_P=${QT6_MODULE}-everywhere-src-${PV/_/-}
-	SRC_URI="https://download.qt.io/${_QT6_SRC}_releases/qt/${PV%.*}/${PV/_/-}/submodules/${_QT6_P}.tar.xz"
+	# TODO: cleanup ver_test bit at some point after <6.12 is gone
+	if [[ ${PN} == qtwebengine ]] && ver_test -ge 6.12; then
+		SRC_URI="https://download.qt.io/${_QT6_SRC}_releases/qtwebengine/${PV/_/-}/${_QT6_P}.tar.xz"
+	else
+		SRC_URI="https://download.qt.io/${_QT6_SRC}_releases/qt/${PV%.*}/${PV/_/-}/submodules/${_QT6_P}.tar.xz"
+	fi
 	S=${WORKDIR}/${_QT6_P}
 
 	unset _QT6_P _QT6_SRC
