@@ -80,7 +80,7 @@ BDEPEND="
 	dev-util/shader-slang
 	sys-libs/ncurses
 	virtual/pkgconfig
-	test? ( $(python_gen_cond_dep 'dev-python/pillow[zlib,${PYTHON_USEDEP}]') )
+	test? ( $(python_gen_cond_dep 'dev-python/pillow[lcms,zlib,${PYTHON_USEDEP}]') )
 	wayland? ( dev-util/wayland-scanner )
 "
 [[ ${PV} == 9999 ]] || BDEPEND+=" verify-sig? ( sec-keys/openpgp-keys-kovidgoyal )"
@@ -130,6 +130,8 @@ src_prepare() {
 		kitty_tests/child.py
 		# broken with nspawn defaults, skip for convenience (bug #954176)
 		kitty_tests/crypto.py
+		# depends on crypto.py
+		kitty_tests/file_transmission.py
 		# relies on 'who' command which doesn't detect users with pid-sandbox
 		kitty_tests/utmp.py
 		# may fail/hang depending on environment and shell initialization
