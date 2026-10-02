@@ -29,6 +29,11 @@ RDEPEND="
 	${DEPEND}
 "
 
+PATCHES=(
+	# https://github.com/wjakob/nanobind/commit/942e75d927e3884e56d607e77c026bb4a72a4763
+	"${FILESDIR}/${PN}-2-cstdio.patch"
+)
+
 EPYTEST_PLUGINS=()
 EPYTEST_XDIST=1
 distutils_enable_tests pytest
