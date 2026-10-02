@@ -1,0 +1,346 @@
+# Copyright 1999-2026 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=9
+
+TEXLIVE_MODULE_CONTENTS="
+	collection-binextra.r77772
+	a2ping.r52964
+	adhocfilelist.r79618
+	arara.r79461
+	bundledoc.r79024
+	checklistings.r38300
+	chklref.r52649
+	clojure-pamphlet.r79618
+	cluttex.r74655
+	ctan-o-mat.r51578
+	ctanbib.r79157
+	ctanify.r44129
+	ctanupload.r26313
+	ctie.r77830
+	cweb.r77830
+	de-macro.r66746
+	digestif.r72163
+	dtl.r62387
+	dtxgen.r75946
+	dviasm.r71902
+	dvicopy.r77830
+	dviinfox.r59216
+	dviout-util.r66186
+	easydtx.r72952
+	expltools.r79469
+	findhyph.r47444
+	fragmaster.r26313
+	git-latexdiff.r75878
+	installfont.r79618
+	ketcindy.r58661
+	l3sys-query.r77682
+	latex-git-log.r71402
+	latex-papersize.r79316
+	latex2man.r79618
+	latex2nemeth.r79618
+	latexfileversion.r79618
+	latexindent.r79306
+	latexpand.r66226
+	light-latex-make.r66473
+	listings-ext.r29349
+	ltxfileinfo.r38663
+	ltximg.r59335
+	make4ht.r78133
+	match_parens.r79202
+	mflua.r78968
+	mkjobtexmf.r29725
+	optexcount.r59817
+	patgen.r77830
+	pdfbook2.r76924
+	pdfcrop.r79461
+	pdflatexpicscale.r72650
+	pdftex-quiet.r49169
+	pdftosrc.r77830
+	pdfxup.r71513
+	pfarrei.r68950
+	pkfix.r26032
+	pkfix-helper.r56061
+	ppmcheckpdf.r74165
+	purifyeps.r79618
+	pythontex.r77873
+	runtexfile.r76526
+	runtexshebang.r68882
+	seetexk.r57972
+	show-pdf-tags.r77604
+	spix.r65050
+	sqltex.r79618
+	srcredact.r38710
+	sty2dtx.r79461
+	synctex.r66203
+	tex4ebook.r78132
+	texaccents.r64447
+	texblend.r68961
+	texcount.r79618
+	texdef.r74067
+	texdiff.r79618
+	texdirflatten.r55064
+	texdoc.r79716
+	texfot.r77286
+	texliveonfly.r76924
+	texloganalyser.r54526
+	texlogfilter.r71525
+	texlogsieve.r77351
+	texosquery.r77682
+	texplate.r71963
+	texware.r77830
+	tie.r77830
+	tlcockpit.r54857
+	typeoutfileinfo.r67526
+	web.r77830
+	xdvipsk.r78968
+	xdvipsk-support.r78653
+	xindex.r79618
+	xpdfopen.r65952
+"
+TEXLIVE_MODULE_SRC_CONTENTS="
+	a2ping.doc.r52964
+	adhocfilelist.doc.r79618
+	arara.doc.r79461
+	bundledoc.doc.r79024
+	checklistings.doc.r38300
+	chklref.doc.r52649
+	clojure-pamphlet.doc.r79618
+	cluttex.doc.r74655
+	ctan-o-mat.doc.r51578
+	ctan_chk.doc.r36304
+	ctanbib.doc.r79157
+	ctanify.doc.r44129
+	ctanupload.doc.r26313
+	ctie.doc.r77830
+	cweb.doc.r77830
+	de-macro.doc.r66746
+	digestif.doc.r72163
+	dtl.doc.r62387
+	dtxgen.doc.r75946
+	dviasm.doc.r71902
+	dvicopy.doc.r77830
+	dviinfox.doc.r59216
+	dviout-util.doc.r66186
+	easydtx.doc.r72952
+	expltools.doc.r79469
+	findhyph.doc.r47444
+	fragmaster.doc.r26313
+	git-latexdiff.doc.r75878
+	hook-pre-commit-pkg.doc.r76790
+	installfont.doc.r79618
+	ketcindy.doc.r58661
+	l3sys-query.doc.r77682
+	latex-git-log.doc.r71402
+	latex-papersize.doc.r79316
+	latex2man.doc.r79618
+	latex2nemeth.doc.r79618
+	latexfileversion.doc.r79618
+	latexindent.doc.r79306
+	latexpand.doc.r66226
+	light-latex-make.doc.r66473
+	listings-ext.doc.r29349
+	ltxfileinfo.doc.r38663
+	ltximg.doc.r59335
+	make4ht.doc.r78133
+	match_parens.doc.r79202
+	mflua.doc.r78968
+	mkjobtexmf.doc.r29725
+	optexcount.doc.r59817
+	patgen.doc.r77830
+	pdfbook2.doc.r76924
+	pdfcrop.doc.r79461
+	pdflatexpicscale.doc.r72650
+	pdftex-quiet.doc.r49169
+	pdftosrc.doc.r77830
+	pdfxup.doc.r71513
+	pfarrei.doc.r68950
+	pkfix.doc.r26032
+	pkfix-helper.doc.r56061
+	ppmcheckpdf.doc.r74165
+	purifyeps.doc.r79618
+	pythontex.doc.r77873
+	runtexfile.doc.r76526
+	runtexshebang.doc.r68882
+	seetexk.doc.r57972
+	show-pdf-tags.doc.r77604
+	spix.doc.r65050
+	sqltex.doc.r79618
+	srcredact.doc.r38710
+	sty2dtx.doc.r79461
+	synctex.doc.r66203
+	tex4ebook.doc.r78132
+	texaccents.doc.r64447
+	texblend.doc.r68961
+	texcount.doc.r79618
+	texdef.doc.r74067
+	texdiff.doc.r79618
+	texdirflatten.doc.r55064
+	texdoc.doc.r79716
+	texfot.doc.r77286
+	texliveonfly.doc.r76924
+	texloganalyser.doc.r54526
+	texlogfilter.doc.r71525
+	texlogsieve.doc.r77351
+	texosquery.doc.r77682
+	texplate.doc.r71963
+	texware.doc.r77830
+	tie.doc.r77830
+	tlcockpit.doc.r54857
+	typeoutfileinfo.doc.r67526
+	web.doc.r77830
+	xdvipsk.doc.r78968
+	xdvipsk-support.doc.r78653
+	xindex.doc.r79618
+	xpdfopen.doc.r65952
+"
+TEXLIVE_MODULE_DOC_CONTENTS="
+	adhocfilelist.source.r79618
+	arara.source.r79461
+	checklistings.source.r38300
+	clojure-pamphlet.source.r79618
+	listings-ext.source.r29349
+	mkjobtexmf.source.r29725
+	optexcount.source.r59817
+	pfarrei.source.r68950
+	pythontex.source.r77873
+	sqltex.source.r79618
+	texaccents.source.r64447
+	texosquery.source.r77682
+	texplate.source.r71963
+	tlcockpit.source.r54857
+"
+
+inherit shell-completion texlive-module
+
+DESCRIPTION="TeXLive TeX auxiliary programs"
+
+LICENSE="Apache-2.0 Artistic BSD BSD-2 FDL-1.1+ GPL-1+ GPL-2 GPL-2+ GPL-3 GPL-3+ LPPL-1.0 LPPL-1.2 LPPL-1.3 LPPL-1.3c MIT TeX TeX-other-free public-domain"
+SLOT="0"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+COMMON_DEPEND="
+	>=dev-texlive/texlive-basic-2026
+"
+RDEPEND="
+	${COMMON_DEPEND}
+	>=app-text/dvisvgm-3.6
+	>=app-text/pdfjam-4.3.1
+	>=dev-tex/bibtexu-3.72
+	>=dev-tex/latexdiff-1.4.0
+	>=dev-tex/latexmk-4.88
+"
+DEPEND="
+	${COMMON_DEPEND}
+"
+BDEPEND="
+	app-text/texlive-core
+"
+
+TEXLIVE_MODULE_BINSCRIPTS="
+	texmf-dist/scripts/a2ping/a2ping.pl
+	texmf-dist/scripts/adhocfilelist/adhocfilelist.sh
+	texmf-dist/scripts/arara/arara.sh
+	texmf-dist/scripts/bundledoc/arlatex
+	texmf-dist/scripts/bundledoc/bundledoc
+	texmf-dist/scripts/checklistings/checklistings.sh
+	texmf-dist/scripts/chklref/chklref.pl
+	texmf-dist/scripts/clojure-pamphlet/pamphletangler
+	texmf-dist/scripts/cluttex/cluttex.lua
+	texmf-dist/scripts/ctan-o-mat/ctan-o-mat.pl
+	texmf-dist/scripts/ctanbib/ctanbib
+	texmf-dist/scripts/ctanify/ctanify
+	texmf-dist/scripts/ctanupload/ctanupload.pl
+	texmf-dist/scripts/de-macro/de-macro
+	texmf-dist/scripts/digestif/digestif.texlua
+	texmf-dist/scripts/dtxgen/dtxgen
+	texmf-dist/scripts/dviasm/dviasm.py
+	texmf-dist/scripts/dviinfox/dviinfox.pl
+	texmf-dist/scripts/easydtx/edtx2dtx.pl
+	texmf-dist/scripts/expltools/explcheck.lua
+	texmf-dist/scripts/findhyph/findhyph
+	texmf-dist/scripts/fragmaster/fragmaster.pl
+	texmf-dist/scripts/git-latexdiff/git-latexdiff
+	texmf-dist/scripts/installfont/installfont-tl
+	texmf-dist/scripts/ketcindy/ketcindy.pl
+	texmf-dist/scripts/l3sys-query/l3sys-query.lua
+	texmf-dist/scripts/latex-git-log/latex-git-log
+	texmf-dist/scripts/latex-papersize/latex-papersize.py
+	texmf-dist/scripts/latex2man/latex2man
+	texmf-dist/scripts/latex2nemeth/latex2nemeth
+	texmf-dist/scripts/latexfileversion/latexfileversion
+	texmf-dist/scripts/latexindent/latexindent.pl
+	texmf-dist/scripts/latexpand/latexpand
+	texmf-dist/scripts/light-latex-make/llmk.lua
+	texmf-dist/scripts/listings-ext/listings-ext.sh
+	texmf-dist/scripts/ltxfileinfo/ltxfileinfo
+	texmf-dist/scripts/ltximg/ltximg.pl
+	texmf-dist/scripts/make4ht/make4ht
+	texmf-dist/scripts/match_parens/match_parens
+	texmf-dist/scripts/mkjobtexmf/mkjobtexmf.pl
+	texmf-dist/scripts/optexcount/optexcount
+	texmf-dist/scripts/pdfbook2/pdfbook2
+	texmf-dist/scripts/pdfcrop/pdfcrop.pl
+	texmf-dist/scripts/pdflatexpicscale/pdflatexpicscale.pl
+	texmf-dist/scripts/pdftex-quiet/pdftex-quiet
+	texmf-dist/scripts/pdfxup/pdfxup
+	texmf-dist/scripts/pfarrei/a5toa4.tlu
+	texmf-dist/scripts/pfarrei/pfarrei.tlu
+	texmf-dist/scripts/pkfix/pkfix.pl
+	texmf-dist/scripts/pkfix-helper/pkfix-helper
+	texmf-dist/scripts/ppmcheckpdf/ppmcheckpdf.lua
+	texmf-dist/scripts/purifyeps/purifyeps
+	texmf-dist/scripts/pythontex/depythontex.py
+	texmf-dist/scripts/pythontex/pythontex.py
+	texmf-dist/scripts/runtexfile/runtexfile.lua
+	texmf-dist/scripts/runtexshebang/runtexshebang.lua
+	texmf-dist/scripts/show-pdf-tags/show-pdf-tags.lua
+	texmf-dist/scripts/spix/spix.py
+	texmf-dist/scripts/sqltex/sqltex
+	texmf-dist/scripts/srcredact/srcredact.pl
+	texmf-dist/scripts/sty2dtx/sty2dtx.pl
+	texmf-dist/scripts/tex4ebook/tex4ebook
+	texmf-dist/scripts/texaccents/texaccents.sno
+	texmf-dist/scripts/texblend/texblend
+	texmf-dist/scripts/texcount/texcount.pl
+	texmf-dist/scripts/texdef/texdef.pl
+	texmf-dist/scripts/texdiff/texdiff
+	texmf-dist/scripts/texdirflatten/texdirflatten
+	texmf-dist/scripts/texdoc/texdoc.tlu
+	texmf-dist/scripts/texfot/texfot.pl
+	texmf-dist/scripts/texliveonfly/texliveonfly.py
+	texmf-dist/scripts/texloganalyser/texloganalyser
+	texmf-dist/scripts/texlogfilter/texlogfilter
+	texmf-dist/scripts/texlogsieve/texlogsieve
+	texmf-dist/scripts/texosquery/texosquery-jre5.sh
+	texmf-dist/scripts/texosquery/texosquery-jre8.sh
+	texmf-dist/scripts/texosquery/texosquery.sh
+	texmf-dist/scripts/texplate/texplate.sh
+	texmf-dist/scripts/tlcockpit/tlcockpit.sh
+	texmf-dist/scripts/typeoutfileinfo/typeoutfileinfo.sh
+	texmf-dist/scripts/xindex/xindex.lua
+"
+TEXLIVE_SCRIPTS_W_FILE_EXT="
+	listings-ext.sh
+"
+
+TEXLIVE_MODULE_BINLINKS="
+	cluttex:clxelatex
+	cluttex:cllualatex
+	pdfcrop:rpdfcrop
+	texdef:latexdef
+"
+
+src_compile() {
+	texlive-module_src_compile
+	./texmf-dist/scripts/texdoc/texdoc.tlu \
+		--print-completion zsh \
+		> "${T}"/_texdoc || die
+}
+
+src_install() {
+	texlive-module_src_install
+	keepdir /var/lib/texmf/web2c
+	dozshcomp "${T}"/_texdoc
+	# installed by texlive-core
+	rm "${ED}"/usr/share/texmf-dist/dvips/xdvipsk/xdvipsk-cid.pro || die
+}
