@@ -522,6 +522,9 @@ src_test() {
 	fi
 
 	# https://github.com/astral-sh/ruff/issues/29033
+	#
+	# Rust's "fearful concurrency" breaks parallel tests. Fixed upstream
+	# post 0.0.84, pending version bump.
 	local CARGO_SKIP_TESTS=(
 		'python_environment::ty_environment_is_only_environment'
 		'python_environment::ty_environment_is_system_not_virtual'
