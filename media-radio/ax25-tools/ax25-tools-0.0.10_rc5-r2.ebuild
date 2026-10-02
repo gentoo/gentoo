@@ -29,6 +29,7 @@ DOCS=(  AUTHORS ChangeLog NEWS README tcpip/ttylinkd.README \
 
 DEPEND="
 	dev-libs/libax25
+	<sys-kernel/linux-headers-7.1
 	X? (
 		x11-libs/libX11
 		media-libs/mesa[X(+)]
@@ -37,8 +38,9 @@ RDEPEND="${DEPEND}
 	virtual/zlib:="
 
 pkg_pretend() {
-	# bug #977863
+	# bug #977863 and #983472
 	# needs ax25 subsystem which got dropped from Linux kernel starting with v7.1
+	# needs also a related sys-kernel/linux-headers version < 7.1
 	kernel_is -ge 7 1 && eerror "Linux kernel < v7.1 required" && die
 }
 
