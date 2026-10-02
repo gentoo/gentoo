@@ -3,7 +3,7 @@
 
 EAPI=9
 
-inherit autotools
+inherit autotools toolchain-funcs
 
 DESCRIPTION="Small utility to modify the dynamic linker and RPATH of ELF executables"
 HOMEPAGE="https://github.com/NixOS/patchelf"
@@ -25,4 +25,9 @@ src_prepare() {
 		configure.ac || die
 
 	eautoreconf
+}
+
+src_configure() {
+	tc-ld-is-mold && tc-ld-force-bfd
+	default
 }
