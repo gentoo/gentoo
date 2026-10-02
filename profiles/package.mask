@@ -36,6 +36,63 @@
 
 #--- END OF EXAMPLES ---
 
+# Florian Schmaus <flow@gentoo.org> (2026-10-02)
+# TeX Live 2026 is currently masked for testing.
+# Please report issues by creating a bug report
+# at https://bugs.gentoo.org.
+>=app-test/dvipsk-2026
+>=app-text/ps2pkm-1.8_p20260301
+>=app-text/texlive-2026
+>=app-text/texlive-core-2026
+>=dev-libs/kpathsea-6.4.2
+>=dev-libs/ptexenc-1.5.2
+>=dev-tex/biber-2.21
+>=dev-tex/biblatex-3.21
+>=dev-tex/bibtexu-3.72_p20260301
+>=dev-tex/glossaries-5.1
+>=dev-tex/latexmk-4.88
+>=dev-tex/minted-3.8.0
+>=dev-tex/tex4ht-20260301
+>=dev-texlive/texlive-basic-2026
+>=dev-texlive/texlive-bibtexextra-2026
+>=dev-texlive/texlive-binextra-2026
+>=dev-texlive/texlive-context-2026
+>=dev-texlive/texlive-fontsextra-2026
+>=dev-texlive/texlive-fontsrecommended-2026
+>=dev-texlive/texlive-fontutils-2026
+>=dev-texlive/texlive-formatsextra-2026
+>=dev-texlive/texlive-games-2026
+>=dev-texlive/texlive-humanities-2026
+>=dev-texlive/texlive-langarabic-2026
+>=dev-texlive/texlive-langchinese-2026
+>=dev-texlive/texlive-langcjk-2026
+>=dev-texlive/texlive-langcyrillic-2026
+>=dev-texlive/texlive-langczechslovak-2026
+>=dev-texlive/texlive-langenglish-2026
+>=dev-texlive/texlive-langeuropean-2026
+>=dev-texlive/texlive-langfrench-2026
+>=dev-texlive/texlive-langgerman-2026
+>=dev-texlive/texlive-langgreek-2026
+>=dev-texlive/texlive-langitalian-2026
+>=dev-texlive/texlive-langjapanese-2026
+>=dev-texlive/texlive-langkorean-2026
+>=dev-texlive/texlive-langother-2026
+>=dev-texlive/texlive-langpolish-2026
+>=dev-texlive/texlive-langportuguese-2026
+>=dev-texlive/texlive-langspanish-2026
+>=dev-texlive/texlive-latex-2026
+>=dev-texlive/texlive-latexextra-2026
+>=dev-texlive/texlive-latexrecommended-2026
+>=dev-texlive/texlive-luatex-2026
+>=dev-texlive/texlive-mathscience-2026
+>=dev-texlive/texlive-metapost-2026
+>=dev-texlive/texlive-music-2026
+>=dev-texlive/texlive-pictures-2026
+>=dev-texlive/texlive-plaingeneric-2026
+>=dev-texlive/texlive-pstricks-2026
+>=dev-texlive/texlive-publishers-2026
+>=dev-texlive/texlive-xetex-2026
+
 # Ionen Wolkens <ionen@gentoo.org> (2026-10-01)
 # Masked for testing the new .0 version and leave time for packages
 # to catch up on support. Will likely be kept masked until 6.12.1
