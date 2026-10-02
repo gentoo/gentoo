@@ -1,21 +1,13 @@
+https://github.com/wjakob/nanobind/commit/942e75d927e3884e56d607e77c026bb4a72a4763
+
 From 942e75d927e3884e56d607e77c026bb4a72a4763 Mon Sep 17 00:00:00 2001
 From: Wenzel Jakob <wenzel.jakob@epfl.ch>
 Date: Sun, 20 Sep 2026 22:29:38 +0200
 Subject: [PATCH] Add missing ``<cstdio>`` include
 
----
- include/nanobind/nanobind.h | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/include/nanobind/nanobind.h b/include/nanobind/nanobind.h
-index 43324c5a..060667cb 100644
 --- a/include/nanobind/nanobind.h
 +++ b/include/nanobind/nanobind.h
-@@ -34,6 +34,7 @@
- // Core C++ headers that nanobind depends on
- #include <cstddef>
+@@ -36,2 +36,3 @@
  #include <cstdint>
 +#include <cstdio>
  #include <cstdlib>
- #include <cstring>
- #include <exception>

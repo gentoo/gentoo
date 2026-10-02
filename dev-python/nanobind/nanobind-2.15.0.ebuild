@@ -31,7 +31,7 @@ RDEPEND="
 
 PATCHES=(
 	# https://github.com/wjakob/nanobind/commit/942e75d927e3884e56d607e77c026bb4a72a4763
-	"${FILESDIR}/${PN}-2-cstdio.patch"
+	"${FILESDIR}/${PN}-cstdio.patch"
 )
 
 EPYTEST_PLUGINS=()
