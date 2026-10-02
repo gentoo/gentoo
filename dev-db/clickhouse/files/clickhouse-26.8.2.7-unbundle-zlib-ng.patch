@@ -1,0 +1,13 @@
+--- a/contrib/zlib-ng-cmake/CMakeLists.txt
++++ b/contrib/zlib-ng-cmake/CMakeLists.txt
+@@ -1,3 +1,10 @@
++find_package(PkgConfig REQUIRED)
++pkg_check_modules(ZLIBNG REQUIRED IMPORTED_TARGET zlib-ng)
++pkg_check_modules(ZLIB REQUIRED IMPORTED_TARGET zlib)
++add_library(_zlib INTERFACE)
++target_link_libraries(_zlib INTERFACE PkgConfig::ZLIBNG PkgConfig::ZLIB)
++add_library(ch_contrib::zlib ALIAS _zlib)
++return()
+ set (SOURCE_DIR "${ClickHouse_SOURCE_DIR}/contrib/zlib-ng")
+ 
+ add_library(_zlib)

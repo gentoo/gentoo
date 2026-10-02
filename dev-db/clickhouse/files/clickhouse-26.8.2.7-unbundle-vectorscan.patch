@@ -1,0 +1,12 @@
+--- a/contrib/vectorscan-cmake/CMakeLists.txt
++++ b/contrib/vectorscan-cmake/CMakeLists.txt
+@@ -1,3 +1,9 @@
++find_package(PkgConfig REQUIRED)
++pkg_check_modules(HS REQUIRED IMPORTED_TARGET libhs)
++add_library(_vectorscan INTERFACE)
++target_link_libraries(_vectorscan INTERFACE PkgConfig::HS)
++add_library(ch_contrib::vectorscan ALIAS _vectorscan)
++return()
+ # Vectorscan is drop-in replacement for Hyperscan.
+ if ((ARCH_AMD64 AND X86_ARCH_LEVEL VERSION_GREATER_EQUAL 2) OR ARCH_AARCH64)
+     option (ENABLE_VECTORSCAN "Enable vectorscan" ${ENABLE_LIBRARIES})
