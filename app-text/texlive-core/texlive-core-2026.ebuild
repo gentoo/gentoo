@@ -4,7 +4,7 @@
 EAPI=9
 
 TL_SOURCE_VERSION=20260301
-inherit flag-o-matic toolchain-funcs libtool texlive-common
+inherit branding flag-o-matic toolchain-funcs libtool texlive-common
 
 MY_P=${PN%-core}-${TL_SOURCE_VERSION}-source
 
@@ -316,7 +316,7 @@ src_configure() {
 		--disable-largefile
 		--disable-xindy-docs
 		--disable-xindy-rules
-		--with-banner-add=" Gentoo Linux"
+		--with-banner-add=" ${BRANDING_OS_PRETTY_NAME}"
 		$(use_enable luajittex)
 		$(use_enable luajittex luajithbtex)
 		$(use_enable luajittex mfluajit)
