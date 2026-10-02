@@ -79,7 +79,7 @@ src_configure() {
 		-DNETCDF_ENABLE_EXAMPLES="$(usex examples)"
 		-DNETCDF_ENABLE_HDF4="$(usex hdf)"
 		-DNETCDF_ENABLE_LOGGING="$(usex logging)"
-		-DNETCDF_ENABLE_NETCDF_4="$(usex hdf5)"
+		-DNETCDF_ENABLE_HDF5="$(usex hdf5)"
 		-DNETCDF_ENABLE_TESTS="$(usex test)"
 
 		-DNETCDF_ENABLE_NCZARR="yes"
