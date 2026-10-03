@@ -35,7 +35,7 @@ RDEPEND="
 	png? ( media-libs/libpng:= )
 	webp? ( media-libs/libwebp )
 	ffmpeg? ( media-video/ffmpeg )
-	=sci-ml/pytorch-2.14*[${PYTHON_SINGLE_USEDEP},numpy,cuda?,rocm?]
+	~sci-ml/pytorch-2.14.1[${PYTHON_SINGLE_USEDEP},numpy,cuda?,rocm?]
 "
 
 BDEPEND="
