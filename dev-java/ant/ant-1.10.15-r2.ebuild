@@ -61,7 +61,7 @@ DEPEND="
 	test? (
 		dev-java/antunit:0
 		dev-java/bsf:2.3[javascript]
-		dev-java/bsh:0
+		<=dev-java/bsh-2.1.1-r9999:0
 		dev-java/hamcrest-library:1.3
 		dev-java/xerces:2
 	)
