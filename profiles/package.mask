@@ -51,6 +51,7 @@
 >=dev-tex/bibtexu-3.72_p20260301
 >=dev-tex/glossaries-5.1
 >=dev-tex/latexmk-4.88
+>=dev-tex/latex2pydata-0.7.0
 >=dev-tex/minted-3.8.0
 >=dev-tex/tex4ht-20260301
 >=dev-texlive/texlive-basic-2026
