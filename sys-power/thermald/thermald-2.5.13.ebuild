@@ -43,12 +43,13 @@ my_src_configure() {
 	ECONF_SOURCE="${S}" econf \
 		--disable-werror \
 		--runstatedir="${EPREFIX}"/run \
-		--with-systemdsystemunitdir="$(systemd_get_systemunitdir)"
+		--with-systemdsystemunitdir="$(systemd_get_systemunitdir)" \
+		--enable-doc
 }
 
 my_src_install_all() {
 	einstalldocs
 
 	rm -rf "${ED}"/etc/init || die
-	doinitd "${FILESDIR}"/thermald
+	newinitd "${FILESDIR}"/thermald-r1 ${PN}
 }
