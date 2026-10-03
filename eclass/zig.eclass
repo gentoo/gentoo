@@ -281,6 +281,14 @@ _zig_write_libc_txt() {
 	# so repeat prefix here.
 	local include_dir="${ESYSROOT}/usr/include"
 
+	local crtbegin_obj="crtbeginS.o"
+	local crtend_obj="crtendS.o"
+	if [[ "$(tc-get-c-rtlib)" = "compiler-rt" ]]; then
+		local host=${CTARGET:-${CHOST}}
+		crtbegin_obj="clang_rt.crtbegin-${host%%-*}.o"
+		crtend_obj="clang_rt.crtend-${host%%-*}.o"
+	fi
+
 	# No quotes here, paths are interpreted verbatim.
 	if ver_test "${ZIG_SLOT}" -ge "0.17"; then
 		# https://codeberg.org/ziglang/zig/src/commit/da561521dd78dcde03fc51de8fd64551b368f56d/lib/std/zig/LibCInstallation.zig#L136-L165
@@ -289,6 +297,8 @@ _zig_write_libc_txt() {
 			sys_include_dir=${include_dir}
 			cc_dir=${crtbegin_dir}
 			crt_dir=${crt1_dir}
+			crtbegin_obj=${crtbegin_obj}
+			crtend_obj=${crtend_obj}
 			# Windows with MSVC only.
 			msvc_lib_dir=
 			kernel32_lib_dir=
