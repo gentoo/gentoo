@@ -1,0 +1,17 @@
+--- cef/tools/make_distrib.py.old	2026-05-01 12:54:51.702253107 +0200
++++ cef/tools/make_distrib.py	2026-05-01 12:55:51.619025328 +0200
+@@ -1136,8 +1136,12 @@
+   src_dir = os.path.join(cef_dir, 'cppdocs')
+   if path_exists(src_dir):
+     # create the docs output directory
+-    docs_output_dir = create_output_dir(output_dir_base + '_docs',
+-                                        options.outputdir)
++    if options.distribsubdir :
++        docs_output_dir = create_output_dir(options.distribsubdir + '_docs',
++                                            options.outputdir)
++    else :
++        docs_output_dir = create_output_dir(output_dir_base + '_docs',
++                                            options.outputdir)
+     # transfer contents
+     copy_dir(src_dir, docs_output_dir, options.quiet)
+   else:
