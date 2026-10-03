@@ -26,7 +26,7 @@ RESTRICT="test"
 CONFIG_CHECK="~TUN"
 
 RDEPEND="|| ( net-firewall/iptables net-firewall/nftables )"
-BDEPEND=">=dev-lang/go-1.26.5"
+BDEPEND=">=dev-lang/go-1.26.6"
 
 src_compile() {
 	# This translates the build command from upstream's build_dist.sh to an
