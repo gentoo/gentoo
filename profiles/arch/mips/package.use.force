@@ -1,2 +1,8 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Ian Jordan <immoloism@gmail.com> (2026-09-30)
+# MIPS is the only arch Gentoo can't support with the dist kernel
+# without the use of savedconfig.
+sys-kernel/gentoo-kernel savedconfig
+sys-kernel/vanilla-kernel savedconfig

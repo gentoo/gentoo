@@ -41,7 +41,6 @@ S=${WORKDIR}/${BASE_P}
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 IUSE="debug hardened"
 REQUIRED_USE="
-	hppa? ( savedconfig )
 	mips? ( savedconfig )
 "
 
@@ -88,7 +87,7 @@ src_prepare() {
 
 	# prepare the default config
 	case ${ARCH} in
-		hppa | mips)
+		mips)
 			> .config || die
 		;;
 		alpha)
@@ -112,10 +111,19 @@ src_prepare() {
 			cp "${WORKDIR}/fedora-kernel-config-${CONFIG_VER}/kernel-aarch64-fedora.config" .config || die
 			biendian=true
 			;;
+		hppa)
+			eapply "${FILESDIR}"/${PN}-7.2.8-hppa-kspp.patch || die
+			cp "${WORKDIR}/linux-${DEBIAN_COMMIT}/debian/config/config" .config || die
+			merge_configs+=(
+				"${WORKDIR}/linux-${DEBIAN_COMMIT}/debian/config/hppa/config" \
+				"${WORKDIR}/linux-${DEBIAN_COMMIT}/debian/config/hppa/config.parisc64"
+			)
+			;;
 		loong)
 			cp "${WORKDIR}/linux-${DEBIAN_COMMIT}/debian/config/config" .config || die
 			merge_configs+=(
-				"${WORKDIR}/linux-${DEBIAN_COMMIT}/debian/config/loong64/config"
+				"${WORKDIR}/linux-${DEBIAN_COMMIT}/debian/config/loong64/config" \
+				"${dist_conf_path}"/arch-loong.config
 			)
 			;;
 		m68k)
@@ -131,8 +139,18 @@ src_prepare() {
 			)
 			;;
 		ppc64)
+			# If ppc64 use Debian kconfig, if ppc64le use Fedora's.
+			if [[ $(tc-endian) == big ]]; then
+				cp "${WORKDIR}/linux-${DEBIAN_COMMIT}/debian/config/config" .config || die
+				merge_configs+=(
+				"${WORKDIR}/linux-${DEBIAN_COMMIT}/debian/config/powerpc/config.powerpc" \
+				"${WORKDIR}/linux-${DEBIAN_COMMIT}/debian/config/powerpc/config-arch-64" \
+				"${WORKDIR}/linux-${DEBIAN_COMMIT}/debian/config/powerpc/config-arch-64-be"
+				)
+			else
+				cp "${WORKDIR}/fedora-kernel-config-${CONFIG_VER}/kernel-ppc64le-fedora.config" .config || die
+			fi
 			cp "${WORKDIR}/fedora-kernel-config-${CONFIG_VER}/kernel-ppc64le-fedora.config" .config || die
-			biendian=true
 			;;
 		riscv)
 			cp "${WORKDIR}/fedora-kernel-config-${CONFIG_VER}/kernel-riscv64-fedora.config" .config || die
@@ -178,7 +196,7 @@ src_prepare() {
 		fi
 	fi
 
-	# this covers ppc64 and aarch64_be only for now
+	# this covers aarch64_be only for now
 	if [[ ${biendian} == true && $(tc-endian) == big ]]; then
 		merge_configs+=( "${dist_conf_path}/big-endian.config" )
 	fi
