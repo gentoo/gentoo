@@ -42,6 +42,13 @@ LICENSE+="
 SLOT="0"
 KEYWORDS="~amd64"
 
+DEPEND="
+	app-arch/lz4:=
+	app-arch/zstd:=
+"
+RDEPEND="
+	${DEPEND}
+"
 BDEPEND="
 	dev-util/maturin[${PYTHON_USEDEP}]
 	test? (
