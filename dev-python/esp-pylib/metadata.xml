@@ -12,6 +12,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="github">espressif/esp-pylib</remote-id>
-		<remote-id type="pypi">esp_pylib</remote-id>
+		<remote-id type="pypi">esp-pylib</remote-id>
 	</upstream>
 </pkgmetadata>
