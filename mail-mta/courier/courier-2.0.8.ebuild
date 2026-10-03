@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit flag-o-matic
+inherit flag-o-matic locale-utils
 
 DESCRIPTION="An MTA designed specifically for maildirs"
 HOMEPAGE="https://www.courier-mta.org/"
@@ -47,7 +47,6 @@ DEPEND="
 	!mail-mta/opensmtpd
 	!net-mail/dot-forward
 	!sys-apps/ucspi-tcp
-	test? ( dev-debug/valgrind )
 	"
 
 RDEPEND="${DEPEND}
@@ -59,6 +58,9 @@ RDEPEND="${RDEPEND}
 	!net-mail/courier-imap
 	!net-mail/cyrus-imapd"
 
+DEPEND+="
+	test? ( sys-libs/nss_wrapper )"
+
 PDEPEND="pam? ( net-mail/mailbase )
 	crypt? ( >=app-crypt/gnupg-1.0.4 )"
 
@@ -69,6 +71,8 @@ src_prepare() {
 
 src_configure() {
 	filter-flags '-fomit-frame-pointer'
+
+	local -x ac_cv_path_VALGRIND=none
 
 	local myconf
 	myconf=""
@@ -240,13 +244,30 @@ src_install() {
 }
 
 src_test() {
+	local -x LOCPATH
 	if [ `whoami` = 'root' ]; then
 		einfo "make check skipped, can't run as root."
 		einfo "You can enable it with FEATURES=\"userpriv\""
-	elif [ $(locale -a|grep '^en_US.iso88591$\|^en_US.utf8$'|wc -l) -le 2 ]; then
-		einfo "make check skipped, tests need en_US.iso88591 and en_US.utf8 locales."
+	elif ! elocale_gen en_US.{ISO-8859-1,UTF-8}; then
+		einfo "make check skipped, tests need en_US.ISO-8859-1 and en_US.UTF-8 locales."
 	else
-		emake -j1 check
+		# The tests under libs/ look valgrind up themselves
+		find . \( -name Makefile -o -name testsuite \) \
+			-exec sed -i -e 's/which valgrind/true/' {} + || die
+		# Expects the default for autorenamesent, which is disabled
+		sed -i -e '/^\t\.\/testpref$/d' libs/sqwebmail/Makefile || die
+
+		# maildrop takes SHELL from the passwd entry, which is nologin
+		# for the portage user
+		local -x NSS_WRAPPER_PASSWD="${T}/passwd" NSS_WRAPPER_GROUP=/etc/group
+		local passwd
+		passwd=$(getent passwd "$(id -u)") || die
+		# The first matching entry is the one that gets used
+		echo "${passwd%:*}:/bin/sh" > "${NSS_WRAPPER_PASSWD}" || die
+		getent passwd >> "${NSS_WRAPPER_PASSWD}" || die
+
+		LD_PRELOAD="libnss_wrapper.so${LD_PRELOAD:+:${LD_PRELOAD}}" \
+			emake check
 	fi
 }
 
