@@ -35,6 +35,7 @@ DEPEND="
 	)
 "
 BDEPEND="
+	dev-tex/latexmk
 	test? (
 		app-shells/bash
 		app-shells/ksh
