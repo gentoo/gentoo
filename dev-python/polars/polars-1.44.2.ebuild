@@ -52,9 +52,11 @@ RDEPEND="
 BDEPEND="
 	dev-util/maturin[${PYTHON_USEDEP}]
 	test? (
+		app-text/xlsx2csv[${PYTHON_USEDEP}]
 		dev-python/aiosqlite[${PYTHON_USEDEP}]
 		dev-python/boto3[${PYTHON_USEDEP}]
 		dev-python/cloudpickle[${PYTHON_USEDEP}]
+		dev-python/fastexcel[${PYTHON_USEDEP}]
 		dev-python/flask[${PYTHON_USEDEP}]
 		dev-python/flask-cors[${PYTHON_USEDEP}]
 		dev-python/fsspec[${PYTHON_USEDEP}]
@@ -203,70 +205,6 @@ python_test() {
 		# deltalake
 		tests/unit/io/test_hive.py::test_hive_decode_reserved_ascii_23241
 		tests/unit/io/test_hive.py::test_hive_decode_utf8_23241
-		# fastexcel, xlsx2csv
-		'tests/unit/io/test_spreadsheet.py::test_drop_empty_rows[calamine]'
-		'tests/unit/io/test_spreadsheet.py::test_drop_empty_rows[xlsx2csv]'
-		'tests/unit/io/test_spreadsheet.py::test_excel_empty_sheet'
-		'tests/unit/io/test_spreadsheet.py::test_excel_freeze_panes'
-		'tests/unit/io/test_spreadsheet.py::test_excel_hidden_columns'
-		'tests/unit/io/test_spreadsheet.py::test_excel_mixed_calamine_float_data'
-		'tests/unit/io/test_spreadsheet.py::test_excel_read_columns_nonlist_sequence[calamine]'
-		'tests/unit/io/test_spreadsheet.py::test_excel_read_columns_nonlist_sequence[xlsx2csv]'
-		'tests/unit/io/test_spreadsheet.py::test_excel_read_named_table_with_total_row'
-		'tests/unit/io/test_spreadsheet.py::test_excel_read_no_headers[calamine]'
-		'tests/unit/io/test_spreadsheet.py::test_excel_read_no_headers[xlsx2csv]'
-		'tests/unit/io/test_spreadsheet.py::test_excel_round_trip'
-		'tests/unit/io/test_spreadsheet.py::test_excel_type_inference_with_nulls[calamine]'
-		'tests/unit/io/test_spreadsheet.py::test_excel_type_inference_with_nulls[xlsx2csv]'
-		'tests/unit/io/test_spreadsheet.py::test_excel_write_column_and_row_totals'
-		'tests/unit/io/test_spreadsheet.py::test_excel_write_compound_types[calamine-list_dtype0]'
-		'tests/unit/io/test_spreadsheet.py::test_excel_write_compound_types[xlsx2csv-list_dtype2]'
-		'tests/unit/io/test_spreadsheet.py::test_excel_write_multiple_tables'
-		'tests/unit/io/test_spreadsheet.py::test_excel_write_sparklines[calamine]'
-		'tests/unit/io/test_spreadsheet.py::test_excel_write_sparklines[xlsx2csv]'
-		'tests/unit/io/test_spreadsheet.py::test_excel_write_to_bytesio[calamine]'
-		'tests/unit/io/test_spreadsheet.py::test_excel_write_to_bytesio[xlsx2csv]'
-		'tests/unit/io/test_spreadsheet.py::test_excel_write_to_file_object[calamine]'
-		'tests/unit/io/test_spreadsheet.py::test_excel_write_to_file_object[xlsx2csv]'
-		'tests/unit/io/test_spreadsheet.py::test_excel_write_worksheet_object'
-		'tests/unit/io/test_spreadsheet.py::test_read_dropped_cols[read_excel-path_xlsx-params0]'
-		'tests/unit/io/test_spreadsheet.py::test_read_excel_all_sheets[read_excel-path_xls-params0]'
-		'tests/unit/io/test_spreadsheet.py::test_read_excel_all_sheets[read_excel-path_xlsb-params4]'
-		'tests/unit/io/test_spreadsheet.py::test_read_excel_all_sheets[read_excel-path_xlsx-params1]'
-		'tests/unit/io/test_spreadsheet.py::test_read_excel_all_sheets[read_excel-path_xlsx-params3]'
-		'tests/unit/io/test_spreadsheet.py::test_read_excel_all_sheets[read_ods-path_ods-params5]'
-		'tests/unit/io/test_spreadsheet.py::test_read_excel_all_sheets_with_sheet_name[calamine]'
-		'tests/unit/io/test_spreadsheet.py::test_read_excel_all_sheets_with_sheet_name[xlsx2csv]'
-		'tests/unit/io/test_spreadsheet.py::test_read_excel_basic_datatypes[calamine]'
-		'tests/unit/io/test_spreadsheet.py::test_read_excel_basic_datatypes[xlsx2csv]'
-		'tests/unit/io/test_spreadsheet.py::test_read_excel_multiple_workbooks[read_excel-path_xls-params0]'
-		'tests/unit/io/test_spreadsheet.py::test_read_excel_multiple_workbooks[read_excel-path_xlsb-params4]'
-		'tests/unit/io/test_spreadsheet.py::test_read_excel_multiple_workbooks[read_excel-path_xlsx-params1]'
-		'tests/unit/io/test_spreadsheet.py::test_read_excel_multiple_workbooks[read_excel-path_xlsx-params3]'
-		'tests/unit/io/test_spreadsheet.py::test_read_excel_multiple_workbooks[read_ods-path_ods-params5]'
-		'tests/unit/io/test_spreadsheet.py::test_read_excel_multiple_worksheets[read_excel-path_xls-params0]'
-		'tests/unit/io/test_spreadsheet.py::test_read_excel_multiple_worksheets[read_excel-path_xlsb-params4]'
-		'tests/unit/io/test_spreadsheet.py::test_read_excel_multiple_worksheets[read_excel-path_xlsx-params1]'
-		'tests/unit/io/test_spreadsheet.py::test_read_excel_multiple_worksheets[read_excel-path_xlsx-params3]'
-		'tests/unit/io/test_spreadsheet.py::test_read_excel_multiple_worksheets[read_ods-path_ods-params5]'
-		'tests/unit/io/test_spreadsheet.py::test_read_excel_temporal_data[path_xls-params0]'
-		'tests/unit/io/test_spreadsheet.py::test_read_excel_temporal_data[path_xlsb-params3]'
-		'tests/unit/io/test_spreadsheet.py::test_read_excel_temporal_data[path_xlsx-params1]'
-		'tests/unit/io/test_spreadsheet.py::test_read_invalid_worksheet[read_excel-path_xls-params0]'
-		'tests/unit/io/test_spreadsheet.py::test_read_invalid_worksheet[read_excel-path_xlsb-params4]'
-		'tests/unit/io/test_spreadsheet.py::test_read_invalid_worksheet[read_excel-path_xlsx-params1]'
-		'tests/unit/io/test_spreadsheet.py::test_read_invalid_worksheet[read_excel-path_xlsx-params3]'
-		'tests/unit/io/test_spreadsheet.py::test_read_invalid_worksheet[read_ods-path_ods-params5]'
-		'tests/unit/io/test_spreadsheet.py::test_read_mixed_dtype_columns[read_ods-path_ods_mixed-additional_params1]'
-		'tests/unit/io/test_spreadsheet.py::test_read_spreadsheet[read_excel-path_xls-engine_params0]'
-		'tests/unit/io/test_spreadsheet.py::test_read_spreadsheet[read_excel-path_xlsb-engine_params4]'
-		'tests/unit/io/test_spreadsheet.py::test_read_spreadsheet[read_excel-path_xlsx-engine_params1]'
-		'tests/unit/io/test_spreadsheet.py::test_read_spreadsheet[read_excel-path_xlsx-engine_params3]'
-		'tests/unit/io/test_spreadsheet.py::test_read_spreadsheet[read_ods-path_ods-engine_params5]'
-		'tests/unit/io/test_spreadsheet.py::test_schema_overrides'
-		'tests/unit/io/test_spreadsheet.py::test_spreadsheet_no_resource_warning[read_excel-path_xlsx-params0]'
-		'tests/unit/io/test_spreadsheet.py::test_spreadsheet_no_resource_warning[read_excel-path_xlsx-params2]'
-		'tests/unit/io/test_spreadsheet.py::test_spreadsheet_no_resource_warning[read_ods-path_ods-params3]'
 		# gevent
 		tests/unit/lazyframe/test_async.py::test_gevent_collect_async_no_switch
 		tests/unit/lazyframe/test_async.py::test_gevent_collect_async_spawn
