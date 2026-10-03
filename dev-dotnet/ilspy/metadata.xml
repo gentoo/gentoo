@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>dotnet@gentoo.org</email>
+    <name>Gentoo Dotnet Project</name>
+  </maintainer>
+  <longdescription>
+    ILSpy is the open-source, cross-platform .NET assembly browser and
+    decompiler. The desktop UI runs on Windows, Linux, and macOS (built on
+    Avalonia).
+  </longdescription>
+  <upstream>
+    <bugs-to>https://github.com/icsharpcode/ILSpy/issues/</bugs-to>
+    <remote-id type="github">icsharpcode/ILSpy</remote-id>
+  </upstream>
+</pkgmetadata>
