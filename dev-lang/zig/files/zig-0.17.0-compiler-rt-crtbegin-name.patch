@@ -1,0 +1,82 @@
+Upstream-Bug: https://codeberg.org/ziglang/zig/issues/36919
+Patch-Author: https://codeberg.org/mganguin
+
+--- a/lib/std/zig/LibCInstallation.zig
++++ b/lib/std/zig/LibCInstallation.zig
+@@ -24,6 +24,8 @@ msvc_lib_dir: ?[]const u8 = null,
+ kernel32_lib_dir: ?[]const u8 = null,
+ cc_dir: ?[]const u8 = null,
+ darwin_sdk_dir: ?[]const u8 = null,
++crtbegin_obj: ?[]const u8 = null,
++crtend_obj: ?[]const u8 = null,
+ 
+ pub const FindError = error{
+     OutOfMemory,
+@@ -147,6 +149,11 @@ pub fn render(self: LibCInstallation, out: *std.Io.Writer) !void {
+         \\# Only needed when targeting Haiku, Linux, or SerenityOS.
+         \\cc_dir={s}
+         \\
++        \\# Define these if the crtbegin/end files are not named `crtbegin.o` and `crtend.o`
++        \\# Only needed when using LLVM compiler-rt versions `clang_rt.crtbegin-x86_64.o`
++        \\crtbegin_obj={s}
++        \\crtend_obj={s}
++        \\
+         \\# The directory that contains `crt1.o` or `crt2.o`.
+         \\# On POSIX, can be found with `cc -print-file-name=crt1.o`.
+         \\crt_dir={s}
+@@ -167,6 +174,8 @@ pub fn render(self: LibCInstallation, out: *std.Io.Writer) !void {
+         self.include_dir orelse "",
+         self.sys_include_dir orelse "",
+         self.cc_dir orelse "",
++        self.crtbegin_obj orelse "",
++        self.crtend_obj orelse "",
+         self.crt_dir orelse "",
+         self.msvc_lib_dir orelse "",
+         self.kernel32_lib_dir orelse "",
+@@ -469,12 +478,25 @@ fn findNativeCrtDirPosix(self: *LibCInstallation, gpa: Allocator, io: Io, args:
+ }
+ 
+ fn findNativeGccDirPosix(self: *LibCInstallation, gpa: Allocator, io: Io, args: FindNativeOptions) FindError!void {
+-    self.cc_dir = try ccPrintFileName(gpa, io, .{
++    self.cc_dir = ccPrintFileName(gpa, io, .{
+         .environ_map = args.environ_map,
+         .search_basename = "crtbeginS.o",
+         .want_dirname = .only_dir,
+         .verbose = args.verbose,
+-    });
++    }) catch |err| switch (err) {
++        error.LibCRuntimeNotFound => blk: {
++            // crtbeginS.o not found, try again with LLVM compiler-rt crtbegin
++            self.crtbegin_obj = try gpa.print("clang_rt.crtbegin-{s}.o", .{@tagName(args.target.cpu.arch)});
++            self.crtend_obj = try gpa.print("clang_rt.crtend-{s}.o", .{@tagName(args.target.cpu.arch)});
++            break :blk try ccPrintFileName(gpa, io, .{
++                .environ_map = args.environ_map,
++                .search_basename = self.crtbegin_obj.?,
++                .want_dirname = .only_dir,
++                .verbose = args.verbose,
++            });
++        },
++        else => return err,
++    };
+ }
+ 
+ fn findNativeKernel32LibDir(
+@@ -1036,11 +1058,16 @@ pub fn resolveCrtPaths(
+                 .root_dir = Cache.Directory.cwd(),
+                 .sub_path = lci.cc_dir orelse return error.LibCInstallationMissingCcDir,
+             };
++
++            // LLVM compiler-rt has only one version of crtbegin, regardless of link_mode
++            const crtbegin = lci.crtbegin_obj orelse crt_basenames.crtbegin;
++            const crtend = lci.crtend_obj orelse crt_basenames.crtend;
++
+             return .{
+                 .crt0 = if (crt_basenames.crt0) |basename| try crt_dir_path.join(arena, basename) else null,
+                 .crti = if (crt_basenames.crti) |basename| try crt_dir_path.join(arena, basename) else null,
+-                .crtbegin = if (crt_basenames.crtbegin) |basename| try cc_dir_path.join(arena, basename) else null,
+-                .crtend = if (crt_basenames.crtend) |basename| try cc_dir_path.join(arena, basename) else null,
++                .crtbegin = if (crtbegin) |basename| try cc_dir_path.join(arena, basename) else null,
++                .crtend = if (crtend) |basename| try cc_dir_path.join(arena, basename) else null,
+                 .crtn = if (crt_basenames.crtn) |basename| try crt_dir_path.join(arena, basename) else null,
+             };
+         },
