@@ -12,7 +12,7 @@ S="${WORKDIR}/${PN}-${COMMIT}"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 
 src_install() {
 	default
