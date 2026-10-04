@@ -12,7 +12,4 @@
 		<email>pkgcore@gentoo.org</email>
 	</maintainer>
 	<straight-to-stable/>
-	<upstream>
-		<remote-id type="github">projg2/eclass-to-manpage</remote-id>
-	</upstream>
 </pkgmetadata>
