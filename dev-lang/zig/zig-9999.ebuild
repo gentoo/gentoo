@@ -44,12 +44,13 @@ fi
 # lib/libc/glibc: BSD HPND ISC inner-net LGPL-2.1+
 LICENSE="MIT Apache-2.0-with-LLVM-exceptions || ( UoI-NCSA MIT ) || ( Apache-2.0-with-LLVM-exceptions Apache-2.0 MIT BSD-2 ) public-domain BSD-2 ZPL ISC HPND BSD inner-net LGPL-2.1+"
 SLOT="${ZIG_SLOT}"
-IUSE="debug doc +llvm"
+IUSE="debug doc +llvm test"
 REQUIRED_USE="
 	!llvm? ( !doc )
 	llvm? ( ${LLVM_REQUIRED_USE} )
+	test? ( debug llvm )
 "
-RESTRICT="!llvm? ( test )"
+RESTRICT="!test? ( test )"
 
 # Used by both "cmake" and "zig" eclasses.
 BUILD_DIR="${WORKDIR}/${P}_build"
@@ -147,6 +148,9 @@ src_configure() {
 		# More asserts and so on by default if "debug" is enabled.
 		--release=$(usex debug safe fast)
 	)
+
+	# Pass version string to build if not using git.
+	[[ ${PV} = 9999 ]] || my_zbs_args+=( -Dversion-string="${PV}" )
 
 	# Scenarios of compilation:
 
