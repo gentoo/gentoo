@@ -53,6 +53,7 @@ BDEPEND="
 	dev-util/maturin[${PYTHON_USEDEP}]
 	test? (
 		app-text/xlsx2csv[${PYTHON_USEDEP}]
+		dev-libs/apache-arrow[lz4,parquet,zlib,zstd]
 		dev-python/aiosqlite[${PYTHON_USEDEP}]
 		dev-python/boto3[${PYTHON_USEDEP}]
 		dev-python/cloudpickle[${PYTHON_USEDEP}]
@@ -60,6 +61,7 @@ BDEPEND="
 		dev-python/flask[${PYTHON_USEDEP}]
 		dev-python/flask-cors[${PYTHON_USEDEP}]
 		dev-python/fsspec[${PYTHON_USEDEP}]
+		dev-python/google-auth[${PYTHON_USEDEP}]
 		dev-python/greenlet[${PYTHON_USEDEP}]
 		dev-python/matplotlib[${PYTHON_USEDEP}]
 		dev-python/moto[${PYTHON_USEDEP}]
@@ -67,12 +69,13 @@ BDEPEND="
 		dev-python/openpyxl[${PYTHON_USEDEP}]
 		dev-python/orjson[${PYTHON_USEDEP}]
 		dev-python/pandas[${PYTHON_USEDEP}]
-		dev-python/pyarrow[${PYTHON_USEDEP}]
+		dev-python/pyarrow[parquet,${PYTHON_USEDEP}]
 		dev-python/pydantic[${PYTHON_USEDEP}]
 		dev-python/pytz[${PYTHON_USEDEP}]
 		dev-python/sqlalchemy[${PYTHON_USEDEP}]
 		dev-python/xlsxwriter[${PYTHON_USEDEP}]
 		dev-python/zstandard[${PYTHON_USEDEP}]
+		media-gfx/graphviz
 	)
 "
 
