@@ -31,7 +31,10 @@ BDEPEND="
 	virtual/os-headers
 	virtual/pkgconfig"
 
-PATCHES=( "${FILESDIR}"/${P}-fno-common.patch )
+PATCHES=(
+	"${FILESDIR}/${P}-fno-common.patch"
+	"${FILESDIR}/${P}-stdio.patch" # bug 874939
+)
 
 DOCS=( CHANGELOG CREDITS.en README README.MODIFYING TODO TRANSLATION.HOWTO )
 
