@@ -1,0 +1,24 @@
+--- a/examples/example_with_cmake/CMakeLists.txt	2026-10-04 22:54:25.388532171 +0200
++++ b/examples/example_with_cmake/CMakeLists.txt	2026-10-04 22:54:56.559153942 +0200
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.0)
++cmake_minimum_required(VERSION 3.10)
+ project(pointcloud_example)
+ 
+ # Find nanoflannConfig.cmake:
+--- a/examples/examples_gui/nanoflann_gui_example_bearings/CMakeLists.txt	2026-10-04 22:55:41.329610725 +0200
++++ b/examples/examples_gui/nanoflann_gui_example_bearings/CMakeLists.txt	2026-10-04 22:55:51.952481830 +0200
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.0)
++cmake_minimum_required(VERSION 3.10)
+ project(nanoflann_gui_example_bearings)
+ 
+ find_package(nanoflann REQUIRED)
+--- a/examples/examples_gui/nanoflann_gui_example_R3/CMakeLists.txt	2026-10-04 22:56:26.189066427 +0200
++++ b/examples/examples_gui/nanoflann_gui_example_R3/CMakeLists.txt	2026-10-04 22:56:35.349955286 +0200
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.0)
++cmake_minimum_required(VERSION 3.10)
+ project(nanoflann_gui_example_R3)
+ 
+ find_package(nanoflann REQUIRED)
