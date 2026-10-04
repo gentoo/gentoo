@@ -21,7 +21,7 @@ else
 fi
 
 SRC_URI+="
-	https://dev.gentoo.org/~xgqt/distfiles/deps/${PN}-8.2.0-deps.tar.xz
+	https://dev.gentoo.org/~xgqt/distfiles/deps/${PN}-10.1.0-deps.tar.xz
 "
 
 LICENSE="Apache-2.0"
