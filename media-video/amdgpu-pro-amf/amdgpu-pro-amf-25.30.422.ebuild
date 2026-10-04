@@ -14,7 +14,7 @@ AMF_HEADERS_VER="1.5.1"
 
 UBUNTU_VER="noble"
 
-DESCRIPTION="AMD's closed source Advanced Media Framework (AMF) driver for AMD GPUs"
+DESCRIPTION="AMD's closed source GPU video encode/decode binary driver, for RDNA3 or newer"
 HOMEPAGE="https://www.amd.com/en/support"
 
 URI_PREFIX="repo.radeon.com/amf/${MY_PV_HIGH}.${MY_PV_MIDDLE}/ubuntu/pool/main/${UBUNTU_VER}/"
