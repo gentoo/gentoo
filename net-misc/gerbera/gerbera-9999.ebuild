@@ -45,6 +45,7 @@ RDEPEND="
 	magic? ( sys-apps/file )
 	matroska? ( media-libs/libmatroska:= )
 	mysql? ( dev-db/mysql-connector-c:= )
+	systemd? ( sys-apps/systemd:= )
 	taglib? ( media-libs/taglib:= )
 "
 DEPEND="
