@@ -8,12 +8,12 @@ inherit shell-completion
 PDFJAM_EXTRAS_COMMIT=622e03add59db004144c0b41722a09b3b29d6d3e
 
 DESCRIPTION="Tool for manipulatiing PDF files"
-HOMEPAGE="https://github.com/rrthomas/pdfjam"
+HOMEPAGE="https://github.com/pdfjam/pdfjam"
 SRC_URI="
 	https://github.com/pdfjam/pdfjam/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.tar.gz
 	extra? (
-		https://github.com/rrthomas/pdfjam-extras/archive/${PDFJAM_EXTRAS_COMMIT}.tar.gz
+		https://github.com/pdfjam/pdfjam-extras/archive/${PDFJAM_EXTRAS_COMMIT}.tar.gz
 			-> pdfjam-extra-20191118.tar.gz
 	)
 "
