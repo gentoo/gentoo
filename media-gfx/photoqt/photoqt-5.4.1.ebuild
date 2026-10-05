@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{12..14} )
-inherit cmake optfeature python-single-r1 xdg
+inherit cmake locale-utils optfeature python-single-r1 xdg
 
 DESCRIPTION="Simple but powerful Qt-based image viewer"
 HOMEPAGE="https://photoqt.org/"
@@ -109,11 +109,9 @@ src_configure() {
 src_test() {
 	local -x QT_QPA_PLATFORM=offscreen
 	# QCollator::setNumericMode is not supported w/ POSIX/C locale or w/o icu
-	# Set LC_ALL=en_US.utf8 if available
 	# Required for PQTScriptsFilesPaths::getFoldersIn()
-	if locale -a | grep -iq "en_US.utf8"; then
-		export LC_ALL="en_US.utf8"
-	else
+	local -x LOCPATH LC_ALL
+	if ! elocale_gen --set LC_ALL en_US.UTF-8; then
 		local CMAKE_SKIP_TESTS=( pqt_scriptsfilespaths )
 	fi
 	cmake_src_test -j1
