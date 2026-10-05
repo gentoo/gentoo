@@ -44,9 +44,8 @@ HOMEPAGE="https://picard.musicbrainz.org"
 
 LICENSE="GPL-2+"
 SLOT="0"
-IUSE="discid fingerprints markdown multimedia nls"
+IUSE="discid fingerprints markdown multimedia nls plugins"
 
-# Plugin manager, git based(?): dev-python/pygit2[${PYTHON_USEDEP}]
 RDEPEND="
 	$(python_gen_cond_dep '
 		>=dev-python/charset-normalizer-3.3[${PYTHON_USEDEP}]
@@ -57,6 +56,7 @@ RDEPEND="
 		>=dev-python/tomlkit-0.12.4[${PYTHON_USEDEP}]
 		discid? ( >=dev-python/discid-1.0[${PYTHON_USEDEP}] )
 		markdown? ( >=dev-python/markdown-3.2[${PYTHON_USEDEP}] )
+		plugins? ( >=dev-python/pygit2-1.19[${PYTHON_USEDEP}] )
 	')
 	fingerprints? ( media-libs/chromaprint[tools] )
 "
