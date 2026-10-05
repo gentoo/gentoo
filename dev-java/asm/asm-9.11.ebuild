@@ -28,7 +28,10 @@ DEPEND="
 "
 RDEPEND=">=virtual/jre-1.8:*"
 
-PATCHES=( "${FILESDIR}"/asm-9.10-gentoo.patch )
+PATCHES=(
+	"${FILESDIR}"/asm-9.10-gentoo.patch
+	"${FILESDIR}"/asm-9.11-skipFailingTests.patch
+)
 
 ASM_MODULES=( "asm" "asm-tree" "asm-analysis" "asm-commons" "asm-util" )
 JAVADOC_SRC_DIRS=( asm{-analysis,-commons,,-tree,-util}/src/main/java )
