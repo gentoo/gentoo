@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{12..14} )
 
-inherit bash-completion-r1 python-single-r1 optfeature autotools
+inherit shell-completion python-single-r1 optfeature autotools
 
 DESCRIPTION="Yet more Objects for (High Energy Physics) Data Analysis"
 HOMEPAGE="https://yoda.hepforge.org/"
