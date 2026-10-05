@@ -450,7 +450,7 @@ src_compile() {
 	# Prevent using distutils bundled by setuptools.
 	# https://bugs.gentoo.org/823728
 	export SETUPTOOLS_USE_DISTUTILS=stdlib
-	export PYTHONSTRICTEXTENSIONBUILD=1
+	local -x PYTHONSTRICTEXTENSIONBUILD=1
 
 	# Save PYTHONDONTWRITEBYTECODE so that 'has_version' doesn't
 	# end up writing bytecode & violating sandbox.
@@ -458,7 +458,7 @@ src_compile() {
 	local -x _PYTHONDONTWRITEBYTECODE=${PYTHONDONTWRITEBYTECODE}
 
 	# Gentoo hack to disable accessing system site-packages
-	export GENTOO_CPYTHON_BUILD=1
+	local -x GENTOO_CPYTHON_BUILD=1
 
 	if use pgo ; then
 		# bug 660358
