@@ -15,7 +15,7 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://gitlab.com/hepcedar/yoda"
 	EGIT_BRANCH="main"
 else
-	SRC_URI="https://yoda.hepforge.org/downloads?f=${P^^}.tar.bz2 -> ${P^^}.tar.bz2"
+	SRC_URI="https://cedar-tools.web.cern.ch/downloads/${P^^}.tar.bz2 -> ${P}.tar.bz2"
 	S="${WORKDIR}/${P^^}"
 	KEYWORDS="~amd64 ~x86"
 fi
