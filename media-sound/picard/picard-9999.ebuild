@@ -49,14 +49,14 @@ IUSE="discid fingerprints markdown multimedia nls"
 # Plugin manager, git based(?): dev-python/pygit2[${PYTHON_USEDEP}]
 RDEPEND="
 	$(python_gen_cond_dep '
-		dev-python/charset-normalizer[${PYTHON_USEDEP}]
-		dev-python/fasteners[${PYTHON_USEDEP}]
-		>=dev-python/pyjwt-2.12[${PYTHON_USEDEP}]
-		dev-python/pyqt6[gui,multimedia?,network,qml,widgets,${PYTHON_USEDEP}]
-		dev-python/pyyaml[${PYTHON_USEDEP}]
-		media-libs/mutagen[${PYTHON_USEDEP}]
-		discid? ( dev-python/discid[${PYTHON_USEDEP}] )
-		markdown? ( dev-python/markdown[${PYTHON_USEDEP}] )
+		>=dev-python/charset-normalizer-3.3[${PYTHON_USEDEP}]
+		>=dev-python/pyjwt-2[${PYTHON_USEDEP}]
+		>=dev-python/pyqt6-6.6.1[gui,multimedia?,network,qml,widgets,${PYTHON_USEDEP}]
+		>=dev-python/pyyaml-5.1[${PYTHON_USEDEP}]
+		>=media-libs/mutagen-1.45[${PYTHON_USEDEP}]
+		>=dev-python/tomlkit-0.12.4[${PYTHON_USEDEP}]
+		discid? ( >=dev-python/discid-1.0[${PYTHON_USEDEP}] )
+		markdown? ( >=dev-python/markdown-3.2[${PYTHON_USEDEP}] )
 	')
 	fingerprints? ( media-libs/chromaprint[tools] )
 "
