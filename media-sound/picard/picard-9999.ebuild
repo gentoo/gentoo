@@ -14,16 +14,28 @@ if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/metabrainz/picard"
 	inherit git-r3
 else
-	if [[ ${PV} == *_p* ]]; then
-		COMMIT="5fb03ea4f2593f224af8c0bd6439faa08c5a7aaf"
-		SRC_URI="https://github.com/metabrainz/${PN}/archive/${COMMIT}.tar.gz -> ${P}-${COMMIT:0:8}.tar.gz"
-		S="${WORKDIR}/${PN}-${COMMIT}"
-	elif [[ ${PV} == *alpha* ]]; then
-		SRC_URI="https://github.com/metabrainz/${PN}/releases/download/release-${PV/_alpha/a}/${PN}-${PV/_alpha/a}.tar.gz"
-		S="${WORKDIR}/${PN}-${PV/_alpha/a}"
-	else
-		SRC_URI="https://data.musicbrainz.org/pub/musicbrainz/${PN}/${P}.tar.gz"
-	fi
+	VERSION_DEV=$(ver_cut 4)
+	case ${VERSION_DEV} in
+		"")  # Releases
+			MY_PV=${PV}
+			[[ $(ver_cut 3) -eq "0" ]] && MY_PV=$(ver_cut 1-2)
+			;;&
+		p*)
+			COMMIT="5fb03ea4f2593f224af8c0bd6439faa08c5a7aaf"
+			SRC_URI="https://github.com/metabrainz/${PN}/archive/${COMMIT}.tar.gz -> ${PN}-${COMMIT:0:8}.tar.gz"
+			S="${WORKDIR}/${PN}-${COMMIT}"
+			;;
+		alpha)
+			MY_PV=${PV/_alpha/a} ;;&
+		beta)
+			MY_PV=${PV/_beta/b} ;;&
+		rc)
+			MY_PV=${PV/_rc/rc} ;;&
+		*)
+			SRC_URI="https://data.musicbrainz.org/pub/musicbrainz/${PN}/${PN}-${MY_PV}.tar.gz"
+			S="${WORKDIR}/${PN}-${MY_PV}"
+			;;
+	esac
 	KEYWORDS="~amd64 ~arm64 ~x86"
 fi
 
