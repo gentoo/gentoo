@@ -22,7 +22,6 @@ RESTRICT="!test? ( test )"
 RDEPEND="app-arch/snappy:=
 	app-arch/zstd:=
 	~dev-libs/libbson-${PV}[static-libs?]
-	dev-python/sphinx
 	virtual/zlib:=
 	icu? ( dev-libs/icu:= )
 	sasl? ( dev-libs/cyrus-sasl:= )
