@@ -16,9 +16,7 @@
 	</upstream>
 	<use>
 		<flag name="certbot-apache">Enable Apache plugin.</flag>
-		<!--
 		<flag name="certbot-dns-cloudflare">Enable Cloudflare DNS Authenticator plugin.</flag>
-		-->
 		<!--
 		<flag name="certbot-dns-digitalocean">Enable DigitalOcean DNS Authenticator plugin.</flag>
 		-->

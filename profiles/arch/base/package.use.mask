@@ -1,6 +1,10 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Thibaud CANALE <thican@thican.net> (2026-10-04)
+# Dependencies not keyworded yet or not supported.
+app-crypt/certbot certbot-dns-cloudflare
+
 # Alexander Tsoy (2026-09-27)
 # Mask assembly optimisations that are platform-specific
 app-crypt/veracrypt asm

@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Thibaud CANALE <thican@thican.net> (2026-10-04)
+# Base keywording on amd64.
+app-crypt/certbot -certbot-dns-cloudflare
+
 # Alexander Tsoy (2026-09-27)
 # Assembly optimisations are supported on amd64 for all versions
 app-crypt/veracrypt -asm
