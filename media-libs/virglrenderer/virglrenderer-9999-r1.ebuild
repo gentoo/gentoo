@@ -22,7 +22,7 @@ HOMEPAGE="https://virgil3d.github.io/"
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="static-libs test venus vaapi video_cards_amdgpu video_cards_asahi video_cards_freedreno X"
+IUSE="static-libs test venus vaapi video_cards_amdgpu video_cards_asahi video_cards_freedreno video_cards_intel X"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
