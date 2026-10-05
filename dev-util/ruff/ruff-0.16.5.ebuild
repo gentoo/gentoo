@@ -30,7 +30,7 @@ LICENSE+="
 	MPL-2.0 PSF-2 Unicode-3.0 Unicode-DFS-2016 WTFPL-2 ZLIB
 "
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~loong ~riscv"
+KEYWORDS="amd64 arm64 ~loong ~riscv"
 
 RDEPEND="
 	!elibc_musl? ( !elibc_Darwin? ( !elibc_bionic? ( dev-libs/jemalloc:= ) ) )
