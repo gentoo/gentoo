@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>samuelbernardo.mail@gmail.com</email>
+		<name>Samuel Bernardo</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">Thomas-Tsai/partclone</remote-id>
+	</upstream>
+	<use>
+		<flag name="apfs">Compile partclone apfs tool</flag>
+		<flag name="btrfs">Compile partclone btrfs tool</flag>
+		<flag name="e2fs">Compile partclone e2fs tool</flag>
+		<flag name="exfat">Compile partclone exfat tool</flag>
+		<flag name="f2fs">Compile partclone f2fs tool</flag>
+		<flag name="fat">Compile partclone fat tool</flag>
+		<flag name="fuse">Compile partclone fuse tool</flag>
+		<flag name="hfs">Compile partclone hfs tool</flag>
+		<flag name="jfs">Compile partclone jfs tool</flag>
+		<flag name="minix">Compile partclone minix tool</flag>
+		<flag name="nilfs2">Compile partclone nilfs2 tool</flag>
+		<flag name="ntfs">Compile partclone ntfs tool</flag>
+		<flag name="reiser4">Compile partclone reiser4 tool</flag>
+		<flag name="reiserfs">Compile partclone reiserfs tool</flag>
+		<flag name="ufs">Compile partclone ufs tool</flag>
+		<flag name="vmfs">Compile partclone vmfs tool</flag>
+		<flag name="xfs">Compile partclone xfs tool</flag>
+	</use>
+</pkgmetadata>
