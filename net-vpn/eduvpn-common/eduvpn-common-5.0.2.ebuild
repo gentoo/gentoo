@@ -39,6 +39,9 @@ RESTRICT="test"
 RDEPEND="
 	openvpn? ( net-vpn/openvpn )
 "
+BDEPEND="
+	>=dev-lang/go-1.25.0
+"
 
 if [[ ${PV} != *9999* ]] ; then
 	BDEPEND="verify-sig? ( >=sec-keys/openpgp-keys-eduvpn-20240307 )"
