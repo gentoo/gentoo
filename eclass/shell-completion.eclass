@@ -3,7 +3,7 @@
 
 # @ECLASS: shell-completion.eclass
 # @MAINTAINER:
-# Jonas Frei <freijon@pm.me>
+# Jonas Frei <freijon@kagimail.com>
 # Florian Schmaus <flow@gentoo.org>
 # mgorny@gentoo.org
 # @AUTHOR:

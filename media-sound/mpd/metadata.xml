@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person">
+  <maintainer type="person" proxied="yes">
     <email>nex+b-g-o@nexadn.de</email>
     <name>Adrian Schollmeyer</name>
+  </maintainer>
+  <maintainer type="person" proxied="yes">
+    <email>nicolas.parlant@parhuet.fr</email>
+    <name>Nicolas PARLANT</name>
   </maintainer>
   <maintainer type="project">
     <email>proxy-maint@gentoo.org</email>

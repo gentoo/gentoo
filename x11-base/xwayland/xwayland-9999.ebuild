@@ -78,6 +78,7 @@ src_configure() {
 	local emesonargs=(
 		$(meson_use selinux xselinux)
 		$(meson_use systemd systemd_notify)
+		$(meson_use test tests)
 		$(meson_use unwind libunwind)
 		$(meson_use xcsecurity)
 		-Ddpms=true

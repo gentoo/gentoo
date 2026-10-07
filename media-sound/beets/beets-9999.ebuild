@@ -25,7 +25,7 @@ else
 	inherit pypi
 	MY_PV=${PV/_beta/-beta.}
 	MY_P=${PN}-${MY_PV}
-	KEYWORDS="~amd64"
+	KEYWORDS="~amd64 ~x86"
 	S="${WORKDIR}/${MY_P}"
 fi
 
@@ -101,10 +101,6 @@ fi
 DOCS=( README.rst docs/changelog.rst )
 
 EPYTEST_PLUGINS=( pytest-flask )
-EPYTEST_DESELECT=(
-	# py7zr is not packaged
-	test/test_importer.py::TestImport7z::test_import_zip
-)
 EPYTEST_IGNORE=(
 	# Not relevant downstream
 	test/extra/test_release.py

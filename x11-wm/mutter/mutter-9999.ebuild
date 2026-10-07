@@ -30,7 +30,8 @@ REQUIRED_USE="
 	devkit? ( screencast )
 	gtk-doc? ( introspection )
 	^^ ( elogind systemd )
-	test? ( screencast )"
+	test? ( screencast )
+"
 RESTRICT="!test? ( test )"
 
 # gnome-settings-daemon is build checked but used at runtime only for org.gnome.settings-daemon.peripherals.keyboard

@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python3_{10..12} pypy3 )
 DISTUTILS_EXT=1
 DISTUTILS_OPTIONAL=1
 
-inherit autotools distutils-r1
+inherit autotools distutils-r1 locale-utils
 
 DESCRIPTION="Lightweight, robust, and efficient POSIX compliant regexp matching library"
 HOMEPAGE="
@@ -79,13 +79,10 @@ src_configure() {
 }
 
 src_test() {
-	if locale -a | grep -iq en_US.iso88591; then
-		emake -j1 check
-	else
-		ewarn "If you like to run the test,"
-		ewarn "please make sure en_US.ISO-8859-1 is installed."
-		die "en_US.ISO-8859-1 locale is missing"
-	fi
+	# bug #728900
+	local -x LOCPATH
+	elocale_gen en_US.ISO-8859-1
+	emake -j1 check
 }
 
 src_compile() {

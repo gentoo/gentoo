@@ -14,9 +14,10 @@ LICENSE="GPL-2+"
 SLOT="0/2"
 KEYWORDS="~amd64 ~riscv"
 
-# Omit USE=mpfr for now because it's broken upstream:
+# Omit USE=mpfr and USE=openmp for now because they're broken upstream:
 #
-#   https://gitlab.com/sagemath/lcalc/-/issues/7
+#   https://gitlab.com/sagemath/lcalc/-/work_items/7
+#   https://gitlab.com/sagemath/lcalc/-/work_items/13
 #
 IUSE="+double double-double quad-double pari"
 REQUIRED_USE="^^ ( double double-double quad-double )"

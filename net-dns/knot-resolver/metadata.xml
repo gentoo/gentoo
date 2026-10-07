@@ -16,6 +16,9 @@
 		<flag name="kresc">
 			Build (experimental) command-line client
 		</flag>
+		<flag name="legacy">
+			Install legacy files only and run kresd directly as in 5.x
+		</flag>
 		<flag name="manager">
 			Manager is a user-friendly interface and a component handling rolling restarts, config update logic and more
 		</flag>

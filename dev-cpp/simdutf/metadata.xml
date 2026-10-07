@@ -5,6 +5,9 @@
     <email>gnome@gentoo.org</email>
     <name>Gentoo GNOME Desktop</name>
   </maintainer>
+  <use>
+        <flag name="atomic-base64">Enable atomic base64 calls</flag>
+  </use>
   <upstream>
     <remote-id type="github">simdutf/simdutf</remote-id>
   </upstream>

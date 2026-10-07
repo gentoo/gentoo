@@ -7,7 +7,7 @@ GUILE_REQ_USE="regex"
 GUILE_COMPAT=( 2-2 3-0 )
 PYTHON_COMPAT=( python3_{11..14} )
 
-inherit cmake flag-o-matic gnome2 guile-single python-single-r1 xdg
+inherit cmake flag-o-matic gnome2 guile-single locale-utils python-single-r1 xdg
 
 # Please bump with app-doc/gnucash-docs
 DESCRIPTION="Personal finance manager"
@@ -182,21 +182,8 @@ src_configure() {
 }
 
 src_test() {
-	LOCALE_TESTS=
-	if type locale >/dev/null 2>&1; then
-		MY_LOCALES="$(locale -a)"
-		if [[ "${MY_LOCALES}" != *en_US* ||
-				"${MY_LOCALES}" != *en_GB* ||
-				"${MY_LOCALES}" != *fr_FR* ]] ; then
-			ewarn "Missing one or more of en_US, en_GB, or fr_FR locales."
-		else
-			LOCALE_TESTS=true
-		fi
-	else
-		ewarn "'locale' not found."
-	fi
-
-	if [[ ! "${LOCALE_TESTS}" ]]; then
+	local -x LOCPATH
+	if ! elocale_gen en_US en_GB fr_FR.UTF-8; then
 		ewarn "Disabling test-qof and test-gnc-numeric."
 		echo 'set(CTEST_CUSTOM_TESTS_IGNORE test-qof test-gnc-numeric)' \
 			> "${BUILD_DIR}"/CTestCustom.cmake || die "Failed to disable test-qof and test-gnc-numeric!"

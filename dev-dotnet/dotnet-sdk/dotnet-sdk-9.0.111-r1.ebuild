@@ -26,7 +26,7 @@ RUNTIME_SLOT="${SDK_SLOT}.10"
 LLVM_COMPAT=( {19..20} )
 PYTHON_COMPAT=( python3_{13..14} )
 
-inherit check-reqs flag-o-matic llvm-r2 multiprocessing python-any-r1
+inherit check-reqs flag-o-matic llvm-r2 locale-utils multiprocessing python-any-r1
 
 DESCRIPTION=".NET is a free, cross-platform, open-source developer platform"
 HOMEPAGE="https://dotnet.microsoft.com/
@@ -141,47 +141,21 @@ QA_FLAGS_IGNORED="
 .*/singlefilehost
 "
 
-check_requirements_locale() {
-	if [[ "${MERGE_TYPE}" != binary ]] ; then
-		if use elibc_glibc ; then
-			local locales
-			locales="$(locale -a)"
-
-			if has en_US.utf8 ${locales} ; then
-				LC_ALL="en_US.utf8"
-			elif has en_US.UTF-8 ${locales} ; then
-				LC_ALL="en_US.UTF-8"
-			else
-				eerror "The locale en_US.utf8 or en_US.UTF-8 is not available."
-				eerror "Please generate en_US.UTF-8 before building ${CATEGORY}/${P}."
-
-				die "Could not switch to the en_US.UTF-8 locale."
-			fi
-		else
-			LC_ALL="en_US.UTF-8"
-		fi
-
-		export LC_ALL
-		einfo "Successfully switched to the ${LC_ALL} locale."
-	fi
-}
-
 pkg_pretend() {
 	check-reqs_pkg_pretend
-
-	check_requirements_locale
 }
 
 pkg_setup() {
 	check-reqs_pkg_setup
 	llvm-r2_pkg_setup
 	python-any-r1_pkg_setup
-
-	check_requirements_locale
 }
 
 src_prepare() {
 	default
+
+	local -x LOCPATH LC_ALL
+	elocale_gen --set LC_ALL en_US.UTF-8
 
 	strip-flags
 	filter-flags -Werror=lto-type-mismatch  # Not implemented by Clang, bug 946334
@@ -246,6 +220,9 @@ EOF
 }
 
 src_compile() {
+	local -x LOCPATH LC_ALL
+	elocale_gen --set LC_ALL en_US.UTF-8
+
 	# Remove .NET leftover files that can be blocking the build.
 	# Keep this nonfatal!
 	local package_versions_path="/tmp/PackageVersions.props"
@@ -295,6 +272,9 @@ src_compile() {
 }
 
 src_install() {
+	local -x LOCPATH LC_ALL
+	elocale_gen --set LC_ALL en_US.UTF-8
+
 	local dest="/usr/$(get_libdir)/${PN}-${SDK_SLOT}"
 	dodir "${dest}"
 

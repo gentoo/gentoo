@@ -38,7 +38,7 @@ inherit dotnet-pkg
 
 DESCRIPTION="Gentoo tools for .NET packages maintenance"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Dotnet
-	https://gitlab.gentoo.org/dotnet/gentoo-dotnet-maintainer-tools/"
+	https://gitweb.gentoo.org/proj/dotnet/gentoo-dotnet-maintainer-tools.git/"
 
 if [[ "${PV}" == *9999* ]] ; then
 	inherit git-r3

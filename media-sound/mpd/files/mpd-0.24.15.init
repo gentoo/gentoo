@@ -1,0 +1,39 @@
+#!/sbin/openrc-run
+# Copyright 1999-2026 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+: ${MPD_CFGFILE:=/etc/mpd.conf}
+: ${MPD_USER:=mpd}
+
+description="Music Player Daemon"
+command=/usr/bin/mpd
+command_args="${MPD_EXTRA_ARGS} ${MPD_CFGFILE}"
+command_args_foreground="--no-daemon"
+command_user="${MPD_USER}"
+required_files="${MPD_CFGFILE}"
+supervisor="supervise-daemon"
+
+extra_started_commands="reload"
+
+depend() {
+	need localmount
+	use net netmount alsasound esound pulseaudio
+}
+
+start_pre() {
+	# the log_file was owned by root with the initscript prior to 0.24.15
+	# use checkpath as a workaround during migration because log_file is defined by default for everyone
+	# ideally this should be removed later
+	local log_file="/var/log/mpd/mpd.log"
+	if [ -f "${log_file}" ]; then
+		checkpath -f -m 644 -o "${MPD_USER}" "${log_file}"
+	else
+		return 0
+	fi
+}
+
+reload() {
+	ebegin "Reloading ${RC_SVCNAME}"
+	supervise-daemon "${RC_SVCNAME}" --signal HUP
+	eend $?
+}

@@ -36,17 +36,18 @@ else
 fi
 
 LICENSE="Apache-2.0-with-LLVM-exceptions"
-SLOT="0/9"
-IUSE="btf debug ${LIBABIGAIL_DOCS_USEFLAG} test"
+SLOT="0/10"
+IUSE="btf debug ${LIBABIGAIL_DOCS_USEFLAG} +threads test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
 	app-arch/xz-utils
-	dev-libs/elfutils[lzma]
+	>=dev-libs/elfutils-0.171[lzma,threads(-)?]
 	dev-libs/libxml2:2=
 	dev-libs/xxhash
 	btf? ( dev-libs/libbpf:= )
 	elibc_musl? ( sys-libs/fts-standalone )
+	threads? ( >=dev-cpp/tbb-2018.2:= )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
@@ -84,6 +85,7 @@ my_src_configure() {
 		$(use_enable btf)
 		$(use_enable doc apidoc)
 		$(use_enable doc manual)
+		$(use_enable threads multithreading)
 	)
 
 	econf "${myeconfargs[@]}"

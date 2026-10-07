@@ -38,6 +38,7 @@ BDEPEND="virtual/pkgconfig
 
 PATCHES=(
 	"${FILESDIR}/${PN}-5.6-Makefile-am-Dont-require-pandoc-for-tests.patch"
+	"${FILESDIR}/${PN}-5.8-fix-fapi-verify-sign.sh.patch"
 )
 
 python_check_deps() {
@@ -50,6 +51,13 @@ pkg_setup() {
 
 src_prepare() {
 	default
+
+	# Regenerate faulty test, see ${S}/bootstrap
+	find "test/integration/fapi" \( -iname "*.sh" ! -iname "*ecc.sh" \) | while read fname; do
+		cp $fname ${fname%.sh}_ecc.sh || die
+		sed -i -e 's/CRYPTO_PROFILE="RSA"/CRYPTO_PROFILE="ECC"/g' ${fname%.sh}_ecc.sh || die
+	done
+
 	eautoreconf
 }
 

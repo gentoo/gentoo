@@ -1,0 +1,65 @@
+#!/sbin/openrc-run
+# Copyright 2024-2026 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+: ${KNOT_RESOLVER_USER:=knot-resolver}
+: ${KNOT_RESOLVER_GROUP:=knot-resolver}
+: ${KNOT_RESOLVER_CONFIG:=/etc/knot-resolver/config.yaml}
+
+command="/usr/bin/knot-resolver"
+command_args="--config=${KNOT_RESOLVER_CONFIG} ${KNOT_RESOLVER_EXTRA_ARGS}"
+command_user="${KNOT_RESOLVER_USER}:${KNOT_RESOLVER_GROUP}"
+pidfile="/run/${RC_SVCNAME}.pid"
+command_background=true
+required_files="${KNOT_RESOLVER_CONFIG}"
+retry="TERM/60/KILL/5"
+
+extra_started_commands="reload"
+
+capabilities="^cap_net_bind_service,^cap_setpcap"
+
+name="knot-resolver manager"
+description="scaleable caching DNS resolver"
+
+depend() {
+    need net
+    use logger
+    provide dns
+}
+
+checkconfig() {
+	# Filter the output to avoid a full traceback if the schema (JSON or YAML) is incorrect. Call 'su' to check permissions too.
+	errors=$(su ${KNOT_RESOLVER_USER} -s /bin/sh -c \
+		"/usr/bin/kresctl validate --strict ${KNOT_RESOLVER_CONFIG} 2>&1" )
+	[ -z "${errors}" ] && return 0
+
+	case "${errors}" in
+	  *"Error:"*)
+	    eerror "${KNOT_RESOLVER_CONFIG} can't be parsed!"
+	    eerror "Please verify the schema (JSON or YAML)."
+	    ;;
+	  *)
+	    eerror "${KNOT_RESOLVER_CONFIG} is invalid!"
+	    eerror "${errors}"
+	    ;;
+	esac
+	return 1
+}
+
+start_pre() {
+	if [ "${RC_CMD}" != "restart" ]; then
+		checkconfig || return 1
+	fi
+}
+
+stop_pre() {
+	if [ "${RC_CMD}" = "restart" ]; then
+		checkconfig || return 1
+	fi
+}
+
+reload() {
+	ebegin "Force-reloading ${SVCNAME}"
+	/usr/bin/kresctl --config="${KNOT_RESOLVER_CONFIG}" reload --force
+	eend $?
+}

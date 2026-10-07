@@ -1,0 +1,30 @@
+From c61a5586a39742dba2296fb4198b273e832cbbed Mon Sep 17 00:00:00 2001
+From: Kai Uwe Broulik <kde@privat.broulik.de>
+Date: Wed, 16 Sep 2026 07:23:02 +0200
+Subject: [PATCH] Handle unknown host when key is known for someone else
+
+In addition to "This key is not known by any other names" also handle
+"This host key is known by the following other names/addresses" by
+making the rationale part of the regular expression generic.
+
+(cherry picked from commit b99b1a027b6b3a5e0704d17c6357e20de8e918d8)
+---
+ src/main.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/main.cpp b/src/main.cpp
+index 8deddd4..4102bbb 100644
+--- a/src/main.cpp
++++ b/src/main.cpp
+@@ -212,7 +212,7 @@ static void parsePrompt(PromptType promptType, const QString &prompt, QString &i
+     // Case: unknown SSH host
+     match = QRegularExpression(QStringLiteral("^The authenticity of host '([^']+)(?: \\(([^)]+)\\))?' can't be established\\.\n"
+                                               "([A-Z0-9_-]+) key fingerprint is:? ([A-Za-z0-9:+/=]+)\\.?\n"
+-                                              "This key is not known by any other names\\.\n"
++                                              "(?:.*\n)*"
+                                               "Are you sure you want to continue connecting \\(yes/no/\\[fingerprint\\]\\)\\?\\s*$"))
+                 .match(prompt);
+     if (match.hasMatch()) {
+-- 
+GitLab
+

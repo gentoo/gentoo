@@ -1,8 +1,8 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-inherit gnome.org meson xdg
+inherit gnome.org locale-utils meson xdg
 
 DESCRIPTION="GLib helper library for geocoding services"
 HOMEPAGE="https://gitlab.gnome.org/GNOME/geocode-glib"
@@ -40,4 +40,11 @@ src_configure() {
 		-Dsoup2=false
 	)
 	meson_src_configure
+}
+
+src_test() {
+	# bug #939520
+	local -x LOCPATH
+	elocale_gen {cs_CZ,en_GB,fr_FR,sv_SE}.UTF-8
+	meson_src_test
 }

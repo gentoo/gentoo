@@ -56,7 +56,8 @@ src_configure() {
 		PREFIX="${EPREFIX}/usr"
 		CONFIG+="
 			disable-mmal
-			$(usex cuda-clang "" disable-cuda)
+			disable-prebuilts
+			$(usex cuda-clang enable-cuda "")
 			$(usex drm "" disable-libdrm)
 			$(usex vaapi "" disable-libva)
 			$(usex vdpau "" disable-libvdpau)

@@ -1,0 +1,17 @@
+--- a/prelude/CATS/array.cats
++++ b/prelude/CATS/array.cats
+@@ -50,12 +50,14 @@
+ //
+ // [stdlib.h]
+ //
++#undef qsort
+ extern
+ void qsort
+ (
+   void *base, size_t nmemb, size_t size
+ , int(*compar)(const void *, const void *)
+ ) ; // end of [qsort]
++#undef bsearch
+ extern
+ void *bsearch
+ (

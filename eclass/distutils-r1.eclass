@@ -251,7 +251,7 @@ _distutils_set_globals() {
 			;;
 		maturin)
 			bdep+='
-				>=dev-util/maturin-1.8.2[${PYTHON_USEDEP}]
+				>=dev-util/maturin-1.14.1[${PYTHON_USEDEP}]
 			'
 			;;
 		no)
@@ -1029,6 +1029,7 @@ distutils_pep517_install() {
 			local maturin_args=(
 				"${DISTUTILS_ARGS[@]}"
 				--auditwheel=skip # see bug #831171
+				--compression-method=stored
 				--jobs="$(get_makeopts_jobs)"
 				$(in_iuse debug && usex debug '--profile=dev' '')
 			)

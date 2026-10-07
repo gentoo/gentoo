@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake db-use flag-o-matic gnome2 vala virtualx
+inherit cmake db-use flag-o-matic gnome2 locale-utils vala virtualx
 
 DESCRIPTION="Evolution groupware backend"
 HOMEPAGE="https://gitlab.gnome.org/GNOME/evolution/-/wikis/home https://gitlab.gnome.org/GNOME/evolution-data-server"
@@ -78,8 +78,7 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
-# Some tests fail due to missing locales.
-# Also, dbus tests are flaky, bugs #397975 #501834
+# dbus tests are flaky, bugs #397975 #501834
 # It looks like a nightmare to disable those for now.
 RESTRICT="!test? ( test )"
 
@@ -153,6 +152,8 @@ src_compile() {
 }
 
 src_test() {
+	local -x LOCPATH
+	elocale_gen en_US.UTF-8
 	virtx cmake_src_test
 }
 

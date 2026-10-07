@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{12..15} )
-inherit meson python-any-r1 systemd vala
+inherit locale-utils meson python-any-r1 systemd vala
 
 DESCRIPTION="D-Bus interfaces for querying and manipulating user account information"
 HOMEPAGE="https://gitlab.freedesktop.org/accountsservice/accountsservice"
@@ -58,7 +58,6 @@ RDEPEND="${CDEPEND}
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-22.04.62-gentoo-system-users.patch
-	"${FILESDIR}"/${PN}-23.13.9-test-languages.patch #903347
 )
 
 python_check_deps() {
@@ -69,6 +68,10 @@ python_check_deps() {
 
 src_prepare() {
 	default
+
+	# Without glibc the locale the language tests need cannot be generated
+	use elibc_glibc ||
+		eapply "${FILESDIR}"/${PN}-23.13.9-test-languages.patch #903347
 
 	use vala && vala_setup
 }
@@ -89,6 +92,13 @@ src_configure() {
 		$(meson_use xcrypt libxcrypt)
 	)
 	meson_src_configure
+}
+
+src_test() {
+	# The daemon is run with LC_ALL=en_IE.UTF-8, bug #903347
+	local -x LOCPATH
+	elocale_gen en_IE.UTF-8
+	meson_src_test
 }
 
 src_install() {

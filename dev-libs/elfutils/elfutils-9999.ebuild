@@ -28,7 +28,7 @@ fi
 
 LICENSE="|| ( GPL-2+ LGPL-3+ ) utils? ( GPL-3+ )"
 SLOT="0"
-IUSE="bzip2 +debuginfod +libarchive libpfm +lzma nls stackprof static-libs test +utils valgrind zstd"
+IUSE="bzip2 +debuginfod +libarchive libpfm +lzma nls stackprof static-libs threads test +utils valgrind zstd"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="debuginfod? ( libarchive )"
 
@@ -67,7 +67,7 @@ BDEPEND+="
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-0.189-musl-aarch64-regs.patch
+	"${FILESDIR}"/${PN}-0.197-musl-aarch64-regs.patch
 	"${FILESDIR}"/${PN}-0.191-musl-macros.patch
 	"${FILESDIR}"/${PN}-0.196-skip-static-test.patch
 )
@@ -137,9 +137,9 @@ multilib_src_configure() {
 		$(multilib_native_use_enable stackprof)
 		$(use_enable valgrind valgrind-annotations)
 
-		# Explicitly disable thread safety, it's not recommended by upstream
-		# (marked experimental in configure) and doesn't build either on musl.
-		--disable-thread-safety
+		# TODO: This can become unconditional in a release after
+		# 0.196 depending on upstream progress.
+		$(use_enable threads thread-safety)
 
 		# Valgrind option is just for running tests under it; dodgy under sandbox
 		# and indeed even w/ glibc with newer instructions.
@@ -163,7 +163,7 @@ multilib_src_configure() {
 
 multilib_src_test() {
 	env LD_LIBRARY_PATH="${BUILD_DIR}/libelf:${BUILD_DIR}/libebl:${BUILD_DIR}/libdw:${BUILD_DIR}/libasm" \
-		LC_ALL="C" \
+		LC_ALL="C.UTF-8" \
 		emake check VERBOSE=1
 }
 

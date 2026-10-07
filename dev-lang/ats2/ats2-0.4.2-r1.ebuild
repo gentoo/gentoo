@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -33,9 +33,10 @@ DEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}/${PN}-0.4.2-makefile_dist.patch"
 	"${DISTDIR}/${PN}-0.4.2-2-deprecated-cl-package.patch"
 	"${DISTDIR}/${PN}-0.4.2-2-prelude-function-prototypes.patch"
+	"${FILESDIR}/${PN}-0.4.2-glibc-2.43-generic-bsearch.patch"
+	"${FILESDIR}/${PN}-0.4.2-makefile_dist.patch"
 )
 
 SITEFILE="50${PN}-gentoo.el"

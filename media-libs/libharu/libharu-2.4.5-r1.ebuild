@@ -21,7 +21,7 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
-PATCHES="${FILESDIR}/${P}-docdir.patch"
+PATCHES=( "${FILESDIR}"/${P}-docdir.patch )
 
 src_prepare() {
 	cmake_src_prepare

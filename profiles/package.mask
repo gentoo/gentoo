@@ -36,6 +36,129 @@
 
 #--- END OF EXAMPLES ---
 
+# Jaco Kroon <jkroon@gentoo.org> (2026-10-06)
+# Unmaintained, abandoned by maintainer.
+# You can look at net-misc/ntpsec or net-misc/chrony as replacement.
+# Removal on 2027-01-04. Bug #962880, and many more.
+
+# Mike Pagano <mpagano@gentoo.org> (2026-10-06)
+# Unmaintained, abandoned by maintainer.
+# Keeping vulnerable dependencies in the tree.
+# Removal on 2026-11-06. Bug #983813 .
+acct-group/kibana
+acct-user/kibana
+www-apps/kibana-bin
+
+# Florian Schmaus <flow@gentoo.org> (2026-10-02)
+# TeX Live 2026 is currently masked for testing.
+# Please report issues by creating a bug report
+# at https://bugs.gentoo.org.
+>=app-test/dvipsk-2026
+>=app-text/ps2pkm-1.8_p20260301
+>=app-text/texlive-2026
+>=app-text/texlive-core-2026
+>=dev-libs/kpathsea-6.4.2
+>=dev-libs/ptexenc-1.5.2
+>=dev-tex/biber-2.21
+>=dev-tex/biblatex-3.21
+>=dev-tex/bibtexu-3.72_p20260301
+>=dev-tex/glossaries-5.1
+>=dev-tex/latexmk-4.88
+>=dev-tex/latex2pydata-0.7.0
+>=dev-tex/minted-3.8.0
+>=dev-tex/tex4ht-20260301
+>=dev-texlive/texlive-basic-2026
+>=dev-texlive/texlive-bibtexextra-2026
+>=dev-texlive/texlive-binextra-2026
+>=dev-texlive/texlive-context-2026
+>=dev-texlive/texlive-fontsextra-2026
+>=dev-texlive/texlive-fontsrecommended-2026
+>=dev-texlive/texlive-fontutils-2026
+>=dev-texlive/texlive-formatsextra-2026
+>=dev-texlive/texlive-games-2026
+>=dev-texlive/texlive-humanities-2026
+>=dev-texlive/texlive-langarabic-2026
+>=dev-texlive/texlive-langchinese-2026
+>=dev-texlive/texlive-langcjk-2026
+>=dev-texlive/texlive-langcyrillic-2026
+>=dev-texlive/texlive-langczechslovak-2026
+>=dev-texlive/texlive-langenglish-2026
+>=dev-texlive/texlive-langeuropean-2026
+>=dev-texlive/texlive-langfrench-2026
+>=dev-texlive/texlive-langgerman-2026
+>=dev-texlive/texlive-langgreek-2026
+>=dev-texlive/texlive-langitalian-2026
+>=dev-texlive/texlive-langjapanese-2026
+>=dev-texlive/texlive-langkorean-2026
+>=dev-texlive/texlive-langother-2026
+>=dev-texlive/texlive-langpolish-2026
+>=dev-texlive/texlive-langportuguese-2026
+>=dev-texlive/texlive-langspanish-2026
+>=dev-texlive/texlive-latex-2026
+>=dev-texlive/texlive-latexextra-2026
+>=dev-texlive/texlive-latexrecommended-2026
+>=dev-texlive/texlive-luatex-2026
+>=dev-texlive/texlive-mathscience-2026
+>=dev-texlive/texlive-metapost-2026
+>=dev-texlive/texlive-music-2026
+>=dev-texlive/texlive-pictures-2026
+>=dev-texlive/texlive-plaingeneric-2026
+>=dev-texlive/texlive-pstricks-2026
+>=dev-texlive/texlive-publishers-2026
+>=dev-texlive/texlive-xetex-2026
+
+# Ionen Wolkens <ionen@gentoo.org> (2026-10-01)
+# Masked for testing the new .0 version and leave time for packages
+# to catch up on support. Will likely be kept masked until 6.12.1
+# is released unless there is a notable reason to need this earlier.
+#
+# If wanted, feel welcome to add `dev-qt/*:6/6.12.0` to package.unmask
+# and report issues.
+#
+# Note: qtwebengine was "split" from Qt's main packaging and is now
+# versioned as 6.<chromium-major>.<patch> (6.140.0 here), for now it is
+# included in this mask (unmask with dev-qt/qtwebengine:6/6.140.0), but
+# in the future it will be treated separately given it is not pinned and
+# e.g. 6.140.0 can be used with Qt 6.11.x (aka not just 6.12.x).
+#
+# !!! ... however, 6.140.0 was not released yet, if you need qtwebengine
+#     either do not unmask this or use qtwebengine-6.140.9999 for now.
+=dev-python/pyside-6.12.0*
+=dev-qt/qt-docs-6.12.0*
+=dev-qt/qt3d-6.12.0*
+=dev-qt/qt5compat-6.12.0*
+=dev-qt/qtbase-6.12.0*
+=dev-qt/qtcharts-6.12.0*
+=dev-qt/qtconnectivity-6.12.0*
+=dev-qt/qtdeclarative-6.12.0*
+=dev-qt/qtgraphs-6.12.0*
+=dev-qt/qthttpserver-6.12.0*
+=dev-qt/qtimageformats-6.12.0*
+=dev-qt/qtlanguageserver-6.12.0*
+=dev-qt/qtlocation-6.12.0*
+=dev-qt/qtmultimedia-6.12.0*
+=dev-qt/qtnetworkauth-6.12.0*
+=dev-qt/qtpositioning-6.12.0*
+=dev-qt/qtquick3d-6.12.0*
+=dev-qt/qtquicktimeline-6.12.0*
+=dev-qt/qtremoteobjects-6.12.0*
+=dev-qt/qtscxml-6.12.0*
+=dev-qt/qtsensors-6.12.0*
+=dev-qt/qtserialbus-6.12.0*
+=dev-qt/qtserialport-6.12.0*
+=dev-qt/qtshadertools-6.12.0*
+=dev-qt/qtspeech-6.12.0*
+=dev-qt/qtsvg-6.12.0*
+=dev-qt/qttasktree-6.12.0*
+=dev-qt/qttools-6.12.0*
+=dev-qt/qttranslations-6.12.0*
+=dev-qt/qtvirtualkeyboard-6.12.0*
+=dev-qt/qtwayland-6.12.0*
+=dev-qt/qtwebchannel-6.12.0*
+=dev-qt/qtwebengine-6.140.0*
+=dev-qt/qtwebsockets-6.12.0*
+=dev-qt/qtwebview-6.12.0*
+
 # James Le Cuirot <chewi@gentoo.org> (2026-09-28)
 # Previously split out of games-engines/uzdoom as an external dependency but is
 # now bundled. Not used by anything else. Removal on 2026-10-28. Bug #957494.
@@ -91,11 +214,6 @@ www-client/chromium
 # many fixes to backport and some aren't fixed at all yet (bug #983080,
 # and tagged onto bug #981565 too).
 ~net-print/libcupsfilters-2.2.1
-
-# Ionen Wolkens <ionen@gentoo.org> (2026-09-21)
-# Breaks dev-qt/qtbase at build time (runtime is fine I believe) and
-# hasn't been looked into yet, mask for the time being.
->=dev-libs/md4c-0.6.0
 
 # Jaco Kroon <jkroon@gentoo.org> (2026-09-16)
 # Intention was for STIR/SHAKEN, which has proven to have extremely limited

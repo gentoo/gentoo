@@ -8,7 +8,7 @@ LUA_COMPAT=( lua5-{3..4} )
 PYTHON_COMPAT=( python3_{11..14} )
 GENTOO_DEPEND_ON_PERL=no
 
-inherit guile-single lua-single perl-module python-single-r1 cmake xdg
+inherit guile-single locale-utils lua-single perl-module python-single-r1 cmake xdg
 
 if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3
@@ -238,12 +238,9 @@ src_configure() {
 }
 
 src_test() {
-	if locale -a | grep -iq "en_US\.utf.*8"; then
-		cmake_src_test -V
-	else
-		eerror "en_US.UTF-8 locale is required to run ${PN}'s ${FUNCNAME}"
-		die "required locale missing"
-	fi
+	local -x LOCPATH
+	elocale_gen {en_US,fr_FR}.UTF-8
+	cmake_src_test -V
 }
 
 src_install() {

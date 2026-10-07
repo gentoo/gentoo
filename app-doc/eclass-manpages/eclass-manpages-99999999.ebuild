@@ -34,7 +34,7 @@ if [[ ${PV} = 99999999 ]]; then
 fi
 
 src_compile() {
-	edo pmaint eclass -f man -o "{eclass}.eclass.5" *.eclass
+	edo pmaint --config=no eclass -f man -o "{eclass}.eclass.5" *.eclass
 }
 
 src_install() {

@@ -1,0 +1,145 @@
+# Copyright 1999-2026 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=9
+
+TEXLIVE_MODULE_CONTENTS="
+	collection-metapost.r78867
+	automata.r19717
+	bbcard.r19440
+	blockdraw_mp.r15878
+	bpolynomial.r79618
+	cmarrows.r24378
+	drv.r29349
+	dviincl.r29349
+	emp.r23483
+	epsincl.r29349
+	expressg.r79618
+	exteps.r19859
+	featpost.r35346
+	feynmf.r77682
+	feynmp-auto.r77682
+	fiziko.r78681
+	garrigues.r15878
+	gmp.r77682
+	hatching.r23818
+	hershey-mp.r70885
+	huffman.r79290
+	latexmp.r55643
+	mcf2graph.r79502
+	metago.r79618
+	metaobj.r15878
+	metaplot.r79618
+	metapost.r77830
+	metapost-colorbrewer.r48753
+	metauml.r49923
+	mfpic.r28444
+	mfpic4ode.r79618
+	minim-hatching.r70885
+	mp-gears.r78918
+	mp-geom2d.r77019
+	mp-neuralnetwork.r73627
+	mp3d.r29349
+	mparrows.r39729
+	mpattern.r15878
+	mpchess.r78101
+	mpcolornames.r79618
+	mpgraphics.r29776
+	mpkiviat.r75712
+	mptrees.r70887
+	piechartmp.r19440
+	repere.r66998
+	roex.r45818
+	roundrect.r39796
+	shapes.r42428
+	slideshow.r15878
+	splines.r15878
+	suanpan.r15878
+	textpath.r15878
+	threeddice.r20675
+"
+TEXLIVE_MODULE_SRC_CONTENTS="
+	automata.doc.r19717
+	bbcard.doc.r19440
+	blockdraw_mp.doc.r15878
+	bpolynomial.doc.r79618
+	cmarrows.doc.r24378
+	drv.doc.r29349
+	dviincl.doc.r29349
+	emp.doc.r23483
+	epsincl.doc.r29349
+	expressg.doc.r79618
+	exteps.doc.r19859
+	featpost.doc.r35346
+	feynmf.doc.r77682
+	feynmp-auto.doc.r77682
+	fiziko.doc.r78681
+	garrigues.doc.r15878
+	gmp.doc.r77682
+	hatching.doc.r23818
+	hershey-mp.doc.r70885
+	huffman.doc.r79290
+	latexmp.doc.r55643
+	mcf2graph.doc.r79502
+	metago.doc.r79618
+	metaobj.doc.r15878
+	metaplot.doc.r79618
+	metapost.doc.r77830
+	metapost-colorbrewer.doc.r48753
+	metauml.doc.r49923
+	mfpic.doc.r28444
+	mfpic4ode.doc.r79618
+	minim-hatching.doc.r70885
+	mp-gears.doc.r78918
+	mp-geom2d.doc.r77019
+	mp-neuralnetwork.doc.r73627
+	mp3d.doc.r29349
+	mparrows.doc.r39729
+	mpattern.doc.r15878
+	mpchess.doc.r78101
+	mpcolornames.doc.r79618
+	mpgraphics.doc.r29776
+	mpkiviat.doc.r75712
+	mptrees.doc.r70887
+	piechartmp.doc.r19440
+	repere.doc.r66998
+	roundrect.doc.r39796
+	shapes.doc.r42428
+	slideshow.doc.r15878
+	splines.doc.r15878
+	suanpan.doc.r15878
+	textpath.doc.r15878
+	threeddice.doc.r20675
+"
+TEXLIVE_MODULE_DOC_CONTENTS="
+	emp.source.r23483
+	expressg.source.r79618
+	feynmf.source.r77682
+	feynmp-auto.source.r77682
+	gmp.source.r77682
+	mfpic.source.r28444
+	mfpic4ode.source.r79618
+	mpcolornames.source.r79618
+	mpgraphics.source.r29776
+	roex.source.r45818
+	roundrect.source.r39796
+	shapes.source.r42428
+	splines.source.r15878
+"
+
+inherit texlive-module
+
+DESCRIPTION="TeXLive MetaPost and Metafont packages"
+
+LICENSE="CC-BY-SA-4.0 EUPL-1.2 GPL-1+ GPL-2+ GPL-3+ LGPL-2+ LPPL-1.2 LPPL-1.3 LPPL-1.3c MIT TeX-other-free public-domain"
+SLOT="0"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+COMMON_DEPEND="
+	>=dev-texlive/texlive-basic-2026
+"
+RDEPEND="
+	${COMMON_DEPEND}
+"
+DEPEND="
+	${COMMON_DEPEND}
+"

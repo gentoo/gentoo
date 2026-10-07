@@ -13,7 +13,7 @@ S="${WORKDIR}/cmdline-tools"
 
 LICENSE="android"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 RESTRICT="bindist mirror"
 

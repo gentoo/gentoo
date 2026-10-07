@@ -9,11 +9,7 @@
 		<email>ulm@gentoo.org</email>
 	</maintainer>
 	<maintainer type="project">
-		<email>tools-portage@gentoo.org</email>
-		<name>Gentoo Portage tools team</name>
+		<email>pkgcore@gentoo.org</email>
 	</maintainer>
 	<straight-to-stable/>
-	<upstream>
-		<remote-id type="github">projg2/eclass-to-manpage</remote-id>
-	</upstream>
 </pkgmetadata>

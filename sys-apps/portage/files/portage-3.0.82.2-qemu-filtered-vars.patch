@@ -1,0 +1,57 @@
+From f7bfe34de11b5868846f482748d3ed0924f3c932 Mon Sep 17 00:00:00 2001
+From: Matt Turner <mattst88@gentoo.org>
+Date: Tue, 1 Sep 2026 17:11:59 -0400
+Subject: [PATCH] phase-functions.sh: don't filter ebuild-set QEMU_* variables
+
+__filter_readonly_variables() determines the set of bash's own special
+variables by asking a clean instance of bash to report them. Since
+commit 7d73f9873 the QEMU_* variables of the calling environment are
+passed to that instance, so bash reports them back and they end up
+filtered from the saved ebuild environment.
+
+That breaks any ebuild setting a QEMU_* variable of its own.
+sys-firmware/edk2-bin sets QEMU_TARGETS at global scope; it is stripped
+when the environment is saved after src_unpack(), leaving it empty for
+every subsequent phase and failing the build.
+
+Exclude the injected variables from the reported ones, as PATH and SHELL
+already are. They remain visible to qemu-static.
+
+Bug: https://bugs.gentoo.org/978685
+Fixes: 7d73f9873 ("special_env_vars.py: preserve QEMU_* for qemu-static")
+Signed-off-by: Matt Turner <mattst88@gentoo.org>
+---
+ bin/phase-functions.sh | 9 ++++++---
+ 1 file changed, 6 insertions(+), 3 deletions(-)
+
+diff --git a/bin/phase-functions.sh b/bin/phase-functions.sh
+index ebad8b8eb2..6cd4c71554 100644
+--- a/bin/phase-functions.sh
++++ b/bin/phase-functions.sh
+@@ -86,12 +86,15 @@ portage_mutable_filtered_vars=( AA HOSTNAME )
+ # is to preserve various variables as they were at the time that the binary
+ # package was built while protecting against the application of package renames.
+ __filter_readonly_variables() {
+-	local -a filtered_vars bash_vars qemu_env
++	local -a filtered_vars bash_vars qemu_env qemu_vars
+ 	local IFS x
+ 
+-	# preserve QEMU vars for qemu-static
++	# Preserve QEMU vars for qemu-static. Exclude them from the reported
++	# variables below, or an ebuild-set QEMU_* var is taken for a bash one
++	# and filtered out. See bug #978685.
+ 	for x in ${!QEMU_@}; do
+ 		qemu_env+=( "${x}=${!x}" )
++		qemu_vars+=( -e "${x}" )
+ 	done
+ 
+ 	# Collect an initial list of special bash variables by instructing a
+@@ -99,7 +102,7 @@ __filter_readonly_variables() {
+ 	mapfile -t bash_vars < <(
+ 		# Like compgen -A variable but doesn't require readline support.
+ 		env -i -- "${qemu_env[@]}" "${BASH}" -c "printf %s\\\n $(printf '${!%s*} ' {A..Z} {a..z} _)" \
+-		| grep -vx -e PATH -e SHELL
++		| grep -vx -e PATH -e SHELL "${qemu_vars[@]}"
+ 	)
+ 	# Incorporate other variables that are known to either be set by or be
+ 	# able to influence bash. This list was last updated for bash-5.3.

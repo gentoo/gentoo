@@ -76,7 +76,12 @@ else
 	fi
 
 	_QT6_P=${QT6_MODULE}-everywhere-src-${PV/_/-}
-	SRC_URI="https://download.qt.io/${_QT6_SRC}_releases/qt/${PV%.*}/${PV/_/-}/submodules/${_QT6_P}.tar.xz"
+	# TODO: cleanup ver_test bit at some point after <6.12 is gone
+	if [[ ${PN} == qtwebengine ]] && ver_test -ge 6.12; then
+		SRC_URI="https://download.qt.io/${_QT6_SRC}_releases/qtwebengine/${PV/_/-}/${_QT6_P}.tar.xz"
+	else
+		SRC_URI="https://download.qt.io/${_QT6_SRC}_releases/qt/${PV%.*}/${PV/_/-}/submodules/${_QT6_P}.tar.xz"
+	fi
 	S=${WORKDIR}/${_QT6_P}
 
 	unset _QT6_P _QT6_SRC
@@ -136,17 +141,7 @@ qt6-build_src_prepare() {
 
 	_qt6-build_prepare_env
 
-	if use !custom-cflags; then
-		_qt6-build_sanitize_cpu_flags
-
-		# lto+gcc used to break a lot of tests, but this has improved so
-		# tentatively allow again for Qt >=6.10 + GCC >=15.2 (bug #955531)
-		if ver_test ${PV} -lt 6.10 ||
-			{ tc-is-gcc && ver_test $(gcc-version) -lt 15.2; };
-		then
-			filter-lto
-		fi
-	fi
+	use custom-cflags || _qt6-build_sanitize_cpu_flags
 
 	[[ ${QT6_HAS_STATIC_LIBS} ]] && lto-guarantee-fat
 }

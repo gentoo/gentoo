@@ -1,6 +1,10 @@
 # Copyright 2022-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Mike Gilbert <floppym@gentoo.org> (2026-10-06)
+# Support missing upstream, bug 983796.
+net-misc/openssh seccomp
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2026-08-31)
 # Pulls in kde-apps/kgpg which is not keyworded here.
 kde-apps/kdeutils-meta gpg

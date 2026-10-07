@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,7 +18,7 @@ KEYWORDS="amd64 ~riscv x86"
 RDEPEND=">=app-editors/emacs-23.1:*"
 BDEPEND="app-arch/unzip"
 
-PATCHES="${FILESDIR}/${P}-require-cl.patch"
+PATCHES=( "${FILESDIR}"/${P}-require-cl.patch )
 
 src_prepare() {
 	edos2unix *.txt html/*.html {lisp,test}/*.el

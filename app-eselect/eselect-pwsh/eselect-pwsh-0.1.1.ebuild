@@ -4,7 +4,7 @@
 EAPI=8
 
 DESCRIPTION="Eselect module for management of multiple pwsh versions"
-HOMEPAGE="https://gitlab.gentoo.org/dotnet/eselect-pwsh/"
+HOMEPAGE="https://gitweb.gentoo.org/proj/dotnet/eselect-pwsh.git/"
 SRC_URI="https://dev.gentoo.org/~xgqt/distfiles/mirrored/${P}.tar.bz2"
 
 LICENSE="GPL-2+"

@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -20,7 +20,7 @@ RDEPEND=">=app-emacs/apel-10.8
 	>=app-emacs/flim-1.14.9"
 DEPEND="${RDEPEND}"
 
-PATCHES="${FILESDIR}/${PN}-1.14.7_p20210613-info.patch"
+PATCHES=( "${FILESDIR}"/${PN}-1.14.7_p20210613-info.patch )
 SITEFILE="50${PN}-gentoo.el"
 
 src_compile() {

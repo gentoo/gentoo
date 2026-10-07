@@ -1,0 +1,19 @@
+--- a/etc/pgbouncer.ini	2026-10-07 09:12:00.164725968 -0000
++++ b/etc/pgbouncer.ini	2026-10-07 09:13:35.274368963 -0000
+@@ -58,10 +58,12 @@
+ listen_addr = localhost
+ listen_port = 6432
+ 
+-;; On Debian it should be /var/run/postgresql
+-;unix_socket_dir = /tmp
+-;unix_socket_mode = 0777
+-;unix_socket_group =
++; Unix socket is also used for -R (online restart), but the
++; initscripts can't do that. Generally, you'll want to leave these
++; alone. System-wide default is: /run/postgresql
++unix_socket_dir = /run/postgresql
++unix_socket_mode = 0777
++unix_socket_group = postgres
+ 
+ ;; The peer id used to identify this pgbouncer process in a group of pgbouncer
+ ;; processes that are peered together. When set to 0 pgbouncer peering is disabled

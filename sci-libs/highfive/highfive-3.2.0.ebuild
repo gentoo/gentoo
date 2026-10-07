@@ -36,7 +36,7 @@ DEPEND="
 
 DOCS=( {README,CHANGELOG}.md )
 
-PATCHES="${FILESDIR}/${P}_use_system_catch2_fix_QA_cmake4_warning.patch"
+PATCHES=( "${FILESDIR}"/${P}_use_system_catch2_fix_QA_cmake4_warning.patch )
 
 src_configure() {
 	default

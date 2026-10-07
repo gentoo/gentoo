@@ -13,7 +13,6 @@
 		<remote-id type="github">jarun/nnn</remote-id>
 	</upstream>
 	<use>
-		<flag name="8contexts">Enable 8 contexts (instead of 4)</flag>
 		<flag name="colemak">Key bindings for Colemak keyboard layout</flag>
 		<flag name="emoji">Display icons using emoji</flag>
 		<flag name="gitstatus">Add git status column to the detail view</flag>

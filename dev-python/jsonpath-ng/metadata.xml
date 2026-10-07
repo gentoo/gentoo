@@ -7,7 +7,7 @@
 	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
-		<remote-id type="github">h2non/jsonpath-ng</remote-id>
+		<remote-id type="github">jsonpath-ng/jsonpath-ng</remote-id>
 		<remote-id type="pypi">jsonpath-ng</remote-id>
 	</upstream>
 </pkgmetadata>
