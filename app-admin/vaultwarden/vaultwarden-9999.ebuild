@@ -41,7 +41,7 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
-RUST_MIN_VER="1.95.0"
+RUST_MIN_VER="1.97.1"
 QA_FLAGS_IGNORED="usr/bin/${PN}"
 QA_PRESTRIPPED="usr/bin/${PN}"
 
