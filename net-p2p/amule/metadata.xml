@@ -1,23 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "https://gentoo.org">
 <pkgmetadata>
-	<maintainer type="person" proxied="yes">
-		<email>alexander@tsoy.me</email>
-		<name>Alexander Tsoy</name>
+	<maintainer type="person">
+		<email>ax@slackware.eu</email>
+		<name>ax - Antonio Napolitano</name>
 	</maintainer>
-	<maintainer type="project" proxied="proxy">
+	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
-	<upstream>
-		<remote-id type="github">amule-org/amule</remote-id>
-		<remote-id type="github">amule-project/amule</remote-id>
-		<remote-id type="sourceforge">amule</remote-id>
-	</upstream>
 	<use>
-		<flag name="bfd">Backtrace symbol resolution via sys-libs/binutils-libs</flag>
-		<flag name="daemon">Enable amule daemon</flag>
-		<flag name="remote">Enable remote controlling of the client</flag>
-		<flag name="stats">Enable statistic reporting</flag>
+		<flag name="bfd">Use libbfd library to generate crash stacktraces</flag>
+		<flag name="daemon">Build the headless background daemon (amuled)</flag>
+		<flag name="remote">Build remote control utilities (amulecmd) and web interface</flag>
+		<flag name="stats">Build aLCM (aMule Link Creator, a GUI utility to calculate hashes)</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">amule-project/amule</remote-id>
+	</upstream>
 </pkgmetadata>
