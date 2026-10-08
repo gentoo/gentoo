@@ -4,7 +4,7 @@
 EAPI=9
 
 JAVA_PKG_IUSE="doc source test"
-JAVA_TESTING_FRAMEWORKS="junit-jupiter"
+JAVA_TESTING_FRAMEWORKS="junit-vintage"
 
 inherit java-pkg-2 java-pkg-simple junit5
 
@@ -28,6 +28,7 @@ KEYWORDS="~amd64"
 # Tests need a running sql server, otherwise would fail:
 # "org.postgresql.util.PSQLException: Connection to localhost:5432 refused.
 # Check that the hostname and port are correct and that the postmaster is accepting TCP/IP connections."
+# Also, stuff from ../testkit/src/main/java is needed for compiling tests.
 RESTRICT="test"
 
 DEPEND="
@@ -41,8 +42,6 @@ DEPEND="
 	test? (
 		>=dev-java/asm-9.10.1:0
 		>=dev-java/byte-buddy-1.18.10:0
-		dev-java/junit:4
-		dev-java/junit:5[vintage]
 	)
 "
 
@@ -66,7 +65,7 @@ JAVA_INTERMEDIATE_JAR_NAME="org.postgresql"
 JAVA_RELEASE_SRC_DIRS=( ["11"]="src/main/java11" )
 JAVA_RESOURCE_DIRS="src/main/resources"
 JAVA_SRC_DIR=( src/main ! -name 'SSPIClient.java' ! -path '**/java11/**' -path '**/*.java' )
-JAVA_TEST_GENTOO_CLASSPATH="asm byte-buddy junit-4 junit-5"
+JAVA_TEST_GENTOO_CLASSPATH="asm byte-buddy"
 JAVA_TEST_RESOURCE_DIRS="src/test/resources"
 JAVA_TEST_SRC_DIR="src/test/java"
 
