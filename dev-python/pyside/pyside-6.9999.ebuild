@@ -8,8 +8,8 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..14} )
-LLVM_COMPAT=( {18..22} )
+PYTHON_COMPAT=( python3_{12..15} )
+LLVM_COMPAT=( {18..23} )
 DISTUTILS_USE_PEP517=setuptools
 DISTUTILS_EXT=1
 
@@ -41,7 +41,7 @@ SLOT="6/${PV}"
 # If a flag enables multiple Qt modules, they should be ordered
 # according to their dependencies, e.g. for 3d, 3DCore must be first.
 # Widgets for various modules are handled as a special case later
-declare -A QT_MODULES=(
+declare -gA QT_MODULES=(
 	["3d"]="3DCore 3DRender 3DLogic 3DInput 3DAnimation 3DExtras"
 	["bluetooth"]="Bluetooth"
 	["charts"]="Charts"
@@ -87,7 +87,7 @@ declare -A QT_MODULES=(
 # Manually reextract these requirements on version bumps by running the
 # following one-liner from within "${S}":
 #     $ grep -E '(set|list).*_deps' sources/pyside6/PySide6/Qt*/CMakeLists.txt
-declare -A QT_REQUIREMENTS=(
+declare -gA QT_REQUIREMENTS=(
 	["3d"]="gui network"
 	["bluetooth"]="core"
 	["charts"]="core gui widgets"
@@ -132,7 +132,7 @@ declare -A QT_REQUIREMENTS=(
 # Manually reextract these requirements on version bumps by running the
 # following one-liner from within "${S}":
 #     $ grep 'check_qt_opengl' sources/pyside6/PySide6/Qt*/CMakeLists.txt
-declare -a CONDITIONAL_OPENGL=(
+declare -ga CONDITIONAL_OPENGL=(
 	3d graphs quick
 )
 
@@ -179,7 +179,7 @@ RDEPEND="
 	network-auth? ( =dev-qt/qtnetworkauth-${QT_PV} )
 	nfc? ( =dev-qt/qtconnectivity-${QT_PV}[nfc] )
 	numpy? ( >=dev-python/numpy-2.1.3[${PYTHON_USEDEP}] )
-	pdfium? ( =dev-qt/qtwebengine-${QT_PV}[pdfium(-),widgets?] )
+	pdfium? ( dev-qt/qtwebengine:6[pdfium(-),widgets?] )
 	positioning? ( =dev-qt/qtpositioning-${QT_PV} )
 	printsupport? ( =dev-qt/qtbase-${QT_PV}[gui,widgets] )
 	qml? ( =dev-qt/qtdeclarative-${QT_PV}[opengl?,widgets?] )
@@ -200,9 +200,10 @@ RDEPEND="
 	)
 	uitools? ( =dev-qt/qttools-${QT_PV}[gles2-only=,widgets] )
 	webchannel? ( =dev-qt/qtwebchannel-${QT_PV} )
-	webengine? ( || (
-		=dev-qt/qtwebengine-${QT_PV}[alsa,widgets?]
-		=dev-qt/qtwebengine-${QT_PV}[pulseaudio,widgets?]
+	webengine? (
+		|| (
+			dev-qt/qtwebengine:6[alsa,widgets?]
+			dev-qt/qtwebengine:6[pulseaudio,widgets?]
 		)
 	)
 	websockets? ( =dev-qt/qtwebsockets-${QT_PV} )
@@ -280,9 +281,6 @@ python_prepare_all() {
 
 	# blacklist.txt works like XFAIL
 	cat <<- EOF >> build_history/blacklist.txt || die
-	# segfaults with QOpenGLContext::create
-	[pysidetest::qapp_like_a_macro_test]
-		linux
 	# no mypy
 	[pysidetest::mypy_correctness_test]
 		linux
@@ -291,18 +289,8 @@ python_prepare_all() {
 		linux
 	[pyside6-android-deploy::test_pyside6_android_deploy]
 		linux
-	# Behavior changed and test not changed to accomodate
-	# https://bugreports.qt.io/projects/PYSIDE/issues/PYSIDE-3135
-	[registry::existence_test]
-		linux
-	# Doesn't appear to play well with virtualx as it tries to use wayland
-	[QtUiTools::loadUiType_test]
-		linux
-	# py3.14?
-	[sample::multiple_derived]
-		linux
-	# Doesn't appear to play well with virtualx as it tries to use wayland
-	[QtWidgets::qapp_issue_585]
+	# FIXME: timeout, complains about wayland
+	[pysidetest::new_inherited_functions_test]
 		linux
 	EOF
 
@@ -383,6 +371,7 @@ python_configure_all() {
 	if use quick; then
 		use webengine && ENABLED_QT_MODULES+=( WebEngineQuick )
 		use testlib && ENABLED_QT_MODULES+=( QuickTest )
+		use qml && ENABLED_QT_MODULES+=( QuickControls2 )
 	fi
 
 	# Arguments listed in options.py
