@@ -108,6 +108,7 @@ EPYTEST_IGNORE=(
 	# (These tests aren't included in the sdist)
 	test/plugins
 )
+EPYTEST_XDIST=1
 distutils_enable_tests pytest
 
 python_prepare_all() {
