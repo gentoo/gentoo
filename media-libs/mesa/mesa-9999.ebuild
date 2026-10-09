@@ -365,7 +365,7 @@ multilib_src_configure() {
 		vulkan_enable video_cards_v3d broadcom
 		vulkan_enable video_cards_vc4 broadcom
 		vulkan_enable video_cards_virgl virtio
-		emesonargs+=(-Dvulkan-layers=anti-lag,device-select,overlay)
+		emesonargs+=(-Dvulkan-layers=device-select,overlay)
 	fi
 
 	driver_list() {
