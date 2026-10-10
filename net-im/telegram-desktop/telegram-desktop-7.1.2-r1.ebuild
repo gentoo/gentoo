@@ -12,6 +12,14 @@ HOMEPAGE="https://desktop.telegram.org https://github.com/telegramdesktop/tdeskt
 
 MY_P="tdesktop-${PV}-full"
 SRC_URI="https://github.com/telegramdesktop/tdesktop/releases/download/v${PV}/${MY_P}.tar.gz"
+# https://nvd.nist.gov/vuln/detail/cve-2026-107181
+# Telegram Desktop before 7.2.9 contains an IPC record-separator injection
+# vulnerability in Core::Sandbox that allows remote attackers to inject OPEN:
+# records via crafted tg:// links containing unescaped semicolons. Attackers
+# can reach the interpret: scheme handler to upload local files, including
+# tdata session keys, to an attacker channel, enabling account takeover.
+# Gentoo note: Confirmed with John Preston that this completely fixes the CVE.
+SRC_URI+=" https://github.com/telegramdesktop/tdesktop/commit/db3405699f8fc3ae28a58d2348b7d13a43c0590a.patch -> CVE-2026-107181.patch"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="BSD GPL-3-with-openssl-exception LGPL-2+"
@@ -78,6 +86,7 @@ PATCHES=(
 	"${FILESDIR}"/tdesktop-5.7.2-cstring.patch
 	"${FILESDIR}"/tdesktop-5.8.3-cstdint.patch
 	"${FILESDIR}"/tdesktop-5.14.3-system-cppgir.patch
+	"${DISTDIR}"/CVE-2026-107181.patch
 )
 
 pkg_pretend() {
