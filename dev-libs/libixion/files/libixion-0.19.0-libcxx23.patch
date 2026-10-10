@@ -1,0 +1,12 @@
+diff --git a/src/libixion/table.cpp b/src/libixion/table.cpp
+index d1827159..6f1996bc 100644
+--- a/src/libixion/table.cpp
++++ b/src/libixion/table.cpp
+@@ -8,6 +8,7 @@
+ #include <ixion/table.hpp>
+ 
+ #include <iomanip>
++#include <ostream>
+ 
+ namespace ixion {
+ 
