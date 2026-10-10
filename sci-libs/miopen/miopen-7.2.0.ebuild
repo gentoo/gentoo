@@ -61,6 +61,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-6.1.1-build-all-tests.patch
+	"${FILESDIR}"/${PN}-7.2.0-fix-boost.patch
 )
 
 src_prepare() {
