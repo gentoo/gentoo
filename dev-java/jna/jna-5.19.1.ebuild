@@ -96,10 +96,7 @@ src_compile() {
 		STRIP=true
 		DYNAMIC_LIBFFI=true
 	)
-	# Using -j1 since otherwise fails to build:
-	# cannot find ../build/native/libtestlib.so: No such file or directory
-	# [Makefile:505: ../build/native/libtestlib2.so] Error 1
-	emake -j1 "${args[@]}"
+	emake "${args[@]}"
 }
 
 src_test() {
