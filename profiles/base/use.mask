@@ -9,13 +9,6 @@
 # receive security updates.
 ruby_targets_ruby32
 
-# Michał Górny <mgorny@gentoo.org> (2026-05-07)
-# Python implementations without keywords.
-python_targets_python3_15
-python_single_target_python3_15
-python_targets_python3_15t
-python_single_target_python3_15t
-
 # Michał Górny <mgorny@gentoo.org> (2026-04-18)
 # LLVM slots with no keyworded releases yet.
 llvm_slot_24
