@@ -1,0 +1,116 @@
+# Copyright 1999-2026 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=8
+
+inherit flag-o-matic systemd toolchain-funcs linux-info verify-sig
+
+MY_PV="$(ver_cut 1-2)"
+
+DESCRIPTION="Userspace utils and init scripts for the AppArmor application security system"
+HOMEPAGE="https://gitlab.com/apparmor/apparmor/wikis/home"
+SRC_URI="
+	https://gitlab.com/apparmor/apparmor/-/archive/v${PV}/${PN}-v${PV}.tar.bz2
+	verify-sig? ( https://gitlab.com/api/v4/projects/4484878/packages/generic/signatures/${PV}/apparmor-v${PV}.tar.bz2.asc
+		-> ${P}.tar.bz2.asc )
+"
+
+S=${WORKDIR}/apparmor-v${PV}
+
+LICENSE="GPL-2"
+SLOT="0"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv"
+IUSE="doc test verify-sig"
+
+RESTRICT="!test? ( test )"
+
+RDEPEND="~sys-libs/libapparmor-${PV}"
+DEPEND="${RDEPEND}"
+BDEPEND="
+	sys-apps/which
+	app-alternatives/yacc
+	sys-devel/gettext
+	app-alternatives/lex
+	doc? ( dev-tex/latex2html )
+	test? ( dev-lang/perl )
+	verify-sig? ( sec-keys/openpgp-keys-apparmor )
+"
+CONFIG_CHECK="SECURITY_APPARMOR"
+
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/apparmor.asc
+
+src_prepare() {
+	default
+
+	# Install rc.apparmor.functions to Gentoo-appropriate location
+	sed -e '/install-indep: indep/a\\tinstall -m 755 -d ${DESTDIR}/usr/libexec' -i init/Makefile || die
+	sed -e 's:rc.apparmor.functions $(APPARMOR_BIN_PREFIX):rc.apparmor.functions ${DESTDIR}/usr/libexec:' \
+		-i init/Makefile || die
+	sed -e ':^APPARMOR_FUNCTIONS=: s:/lib/apparmor/:/usr/libexec/:' -i init/apparmor.systemd || die
+	sed -e 's:\. /lib/apparmor/rc.apparmor.functions:\. /usr/libexec/rc.apparmor.functions:' -i init/profile-load || die
+
+	# remove warning about missing file that controls features
+	# we don't currently support
+	sed -e "/installation problem/ctrue" -i init/rc.apparmor.functions || die
+
+	# bug 634782
+	sed -e "s/cpp/$(tc-getCPP) -/" \
+		-i common/list_capabilities.sh \
+		-i common/list_af_names.sh || die
+}
+
+src_configure() {
+	# ODR violations (bug #863524)
+	filter-lto
+
+	default
+}
+
+src_compile() {
+	pushd parser
+	emake \
+		AR="$(tc-getAR)" \
+		CC="$(tc-getCC)" \
+		CPP="$(tc-getCPP) -" \
+		CXX="$(tc-getCXX)" \
+		USE_SYSTEM=1 \
+		arch manpages
+	use doc && emake pdf
+	popd
+}
+
+src_test() {
+	emake CXX="$(tc-getCXX)" USE_SYSTEM=1 check -Onone
+}
+
+src_install() {
+
+	pushd parser
+	emake \
+		CPP="$(tc-getCPP) -" \
+		DESTDIR="${D}" \
+		DISTRO="unknown" \
+		USE_SYSTEM=1 \
+		install;
+
+	use doc && dodoc techdoc.pdf
+	popd
+
+	pushd init
+	emake \
+		CPP="$(tc-getCPP) -" \
+		DESTDIR="${D}" \
+		DISTRO="unknown" \
+		USE_SYSTEM=1 \
+		install;
+	systemd_dounit apparmor.service
+
+	dodir /etc/apparmor.d/disable
+
+	newinitd "${FILESDIR}/${PN}-init-1" ${PN}
+
+	exeinto /usr/share/apparmor
+	doexe "${FILESDIR}/apparmor_load.sh"
+	doexe "${FILESDIR}/apparmor_unload.sh"
+
+}
