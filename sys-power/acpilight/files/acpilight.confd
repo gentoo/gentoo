@@ -11,3 +11,8 @@ RESTORE_ON_START="yes"
 # yes - Save state
 
 SAVE_ON_STOP="yes"
+
+# XBACKLIGHT_ARGS
+# Extra arguments to xbacklight
+# (e.g. specifying "-ctrl intel_backlight")
+XBACKLIGHT_ARGS=""
