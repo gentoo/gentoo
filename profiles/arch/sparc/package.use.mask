@@ -1,6 +1,14 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2026-10-11)
+# Needed here specifically while we have a general mask for the target
+# on sparc.
+dev-python/python-tests -python_targets_python3_15
+dev-python/python-tests -python_targets_python3_15t
+dev-lang/python-exec -python_targets_python3_15
+dev-lang/python-exec -python_targets_python3_15t
+
 # Lukas Schmelting <lschmelting@posteo.com> (2026-09-10)
 # dev-util/bpftool not keyworded here
 net-misc/networkmanager clat
