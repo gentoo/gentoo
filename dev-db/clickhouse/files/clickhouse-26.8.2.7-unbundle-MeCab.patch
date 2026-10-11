@@ -1,0 +1,13 @@
+--- a/contrib/MeCab-cmake/CMakeLists.txt
++++ b/contrib/MeCab-cmake/CMakeLists.txt
+@@ -1,3 +1,10 @@
++find_library(MECAB_LIB NAMES mecab REQUIRED)
++find_path(MECAB_INC NAMES mecab.h REQUIRED)
++add_library(_mecab INTERFACE)
++target_link_libraries(_mecab INTERFACE ${MECAB_LIB})
++target_include_directories(_mecab SYSTEM INTERFACE ${MECAB_INC})
++add_library(ch_contrib::mecab ALIAS _mecab)
++return()
+ set(LIBRARY_DIR "${ClickHouse_SOURCE_DIR}/contrib/MeCab/mecab")
+ 
+ # Source list mirrors `libmecab_la_SOURCES` in the upstream `src/Makefile.am`.

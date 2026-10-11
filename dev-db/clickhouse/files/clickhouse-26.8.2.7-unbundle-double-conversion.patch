@@ -1,0 +1,12 @@
+--- a/contrib/double-conversion-cmake/CMakeLists.txt
++++ b/contrib/double-conversion-cmake/CMakeLists.txt
+@@ -1,3 +1,9 @@
++find_package(PkgConfig REQUIRED)
++pkg_check_modules(DOUBLE_CONVERSION REQUIRED IMPORTED_TARGET double-conversion)
++add_library(_double-conversion INTERFACE)
++target_link_libraries(_double-conversion INTERFACE PkgConfig::DOUBLE_CONVERSION)
++add_library(ch_contrib::double_conversion ALIAS _double-conversion)
++return()
+ SET(LIBRARY_DIR "${ClickHouse_SOURCE_DIR}/contrib/double-conversion")
+ 
+ add_library(_double-conversion

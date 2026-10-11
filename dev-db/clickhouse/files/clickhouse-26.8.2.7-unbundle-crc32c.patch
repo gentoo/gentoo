@@ -1,0 +1,13 @@
+--- a/contrib/crc32c-cmake/CMakeLists.txt
++++ b/contrib/crc32c-cmake/CMakeLists.txt
+@@ -1,3 +1,10 @@
++find_library(CRC32C_LIB NAMES crc32c REQUIRED)
++find_path(CRC32C_INC NAMES crc32c/crc32c.h REQUIRED)
++add_library(_crc32c INTERFACE)
++target_link_libraries(_crc32c INTERFACE ${CRC32C_LIB})
++target_include_directories(_crc32c SYSTEM INTERFACE ${CRC32C_INC})
++add_library(ch_contrib::crc32c ALIAS _crc32c)
++return()
+ set(CRC32C_DIR ${ClickHouse_SOURCE_DIR}/contrib/crc32c)
+ set(CRC32C_CMAKE_DIR ${ClickHouse_SOURCE_DIR}/contrib/crc32c-cmake)
+ 
