@@ -57,8 +57,15 @@ RDEPEND="
 	homed? ( sys-apps/systemd[homed] )
 	systemd? ( sys-apps/systemd[pam] )
 	!systemd? (
-		sys-apps/openrc[pam]
-		!elogind? ( sys-auth/pam_xdg )
+		!turnstile? (
+			sys-apps/openrc[pam]
+		)
+		!elogind? (
+			|| (
+				sys-apps/turnstile[rundir]
+				sys-auth/pam_xdg
+			)
+		)
 	)
 	yescrypt? ( sys-libs/libxcrypt[system] )
 	sssd? ( sys-auth/sssd )
@@ -100,12 +107,17 @@ src_configure() {
 		$(usev pwquality '--pwquality')
 		$(usev securetty '--securetty')
 		$(usev selinux '--selinux')
-		$(usex systemd '--systemd' '--openrc')
 		$(usev sssd '--sssd')
 		$(usev turnstile '--turnstile')
 
 		--encrypt=${crypt}
 	)
+
+	if use systemd ; then
+		pamargs+=("--systemd")
+	elif ! use turnstile ; then
+		pamargs+=("--openrc")
+	fi
 
 	edo ${EPYTHON} ./${PN}.py "${pamargs[@]}"
 }
