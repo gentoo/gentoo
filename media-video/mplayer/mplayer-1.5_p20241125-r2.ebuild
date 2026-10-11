@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -505,6 +505,8 @@ src_configure() {
 		filter-flags -fPIC -fPIE
 		append-ldflags -nopie
 	fi
+
+	append-cflags -D_XOPEN_SOURCE
 
 	###########################
 	# X enabled configuration #
