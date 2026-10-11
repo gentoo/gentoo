@@ -26,7 +26,10 @@ DEPEND="
 	>=virtual/jdk-11:*
 	x11-base/xorg-proto:0
 	x11-libs/libXt
-	test? ( dev-java/reflections:0 )
+	test? (
+		dev-java/reflections:0
+		net-print/cups
+	)
 "
 
 RDEPEND="
