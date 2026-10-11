@@ -46,8 +46,10 @@ dist-kernel_get_image_path() {
 		loong)
 			if [[ ${KERNEL_EFI_ZBOOT} ]]; then
 				echo arch/loongarch/boot/vmlinuz.efi
-			else
+			elif [[ -f ${WORKDIR}/build/arch/loongarch/boot/vmlinux.elf ]]; then
 				echo arch/loongarch/boot/vmlinux.elf
+			else
+				echo arch/loongarch/boot/vmlinux.efi
 			fi
 			;;
 		arm)
