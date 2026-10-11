@@ -11,11 +11,13 @@ HOMEPAGE="https://github.com/Netflix/vmaf"
 if [[ ${PV} == "9999" ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/Netflix/vmaf.git"
+	S="${WORKDIR}/libvmaf-${PV}"
 else
 	SRC_URI="
 		https://github.com/Netflix/vmaf/archive/v${PV}.tar.gz -> ${P}.tar.gz
 	"
 	KEYWORDS="~amd64 ~arm64 ~loong ~riscv ~x86"
+	S="${WORKDIR}/vmaf-${PV}"
 fi
 
 LICENSE="BSD-2-with-patent"
@@ -30,12 +32,6 @@ BDEPEND="
 "
 
 RDEPEND="${BDEPEND}"
-
-if [[ ${PV} == "9999" ]]; then
-	S="${WORKDIR}/libvmaf-${PV}"
-else
-	S="${WORKDIR}/vmaf-${PV}"
-fi
 
 multilib_src_configure() {
 	local emesonargs=(
