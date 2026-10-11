@@ -1,0 +1,13 @@
+diff --git a/cmake/install-rules.cmake b/cmake/install-rules.cmake
+index e3ef951..d4c29a0 100644
+--- a/cmake/install-rules.cmake
++++ b/cmake/install-rules.cmake
+@@ -5,7 +5,7 @@ include(CMakePackageConfigHelpers)
+ include(GNUInstallDirs)
+ 
+ # find_package(<package>) call for consumers to find this project
+-set(package ${PROJECT_NAME})
++set(package ut2-glaze)
+ 
+ install(
+     DIRECTORY include/
