@@ -175,7 +175,7 @@ src_compile() {
 
 	if use static-libs; then
 		emake clean
-		emake alllib
+		emake all
 	fi
 }
 
@@ -207,10 +207,8 @@ src_install() {
 
 	doins -r include
 	if ! use mpi; then
-		dolib.so libseq/lib*$(get_libname)*
 		insinto /usr/include/mpiseq
 		doins libseq/*.h
-		use static-libs && dolib.a libseq/libmpiseq.a
 	fi
 
 	dodoc README ChangeLog VERSION
