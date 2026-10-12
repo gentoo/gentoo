@@ -31,8 +31,6 @@ RDEPEND="
 	readline? (
 		sys-libs/readline:0=
 	)
-
-	!<gnome-extra/cinnamon-6.6.9
 "
 DEPEND="
 	${RDEPEND}
