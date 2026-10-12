@@ -5,6 +5,7 @@
 # 64 bit global ordinals do not work on 32 bit
 # architectures, bug #928017
 sci-libs/trilinos int64
+sci-libs/dealii int64
 
 # Alexander Tsoy (2026-09-27)
 # Assembly optimisations are supported on x86 for all versions

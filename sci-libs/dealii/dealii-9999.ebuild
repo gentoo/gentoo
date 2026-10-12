@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -40,13 +40,13 @@ RDEPEND="dev-libs/boost:=
 	virtual/zlib:=
 	dev-cpp/magic_enum:=
 	dev-cpp/taskflow:=
-	arborx? ( sci-libs/arborx[mpi=] )
-	adolc? ( sci-libs/adolc )
+	arborx? ( sci-libs/arborx:=[mpi=] )
+	adolc? ( sci-libs/adolc:= )
 	arpack? ( sci-libs/arpack[mpi=] )
 	assimp? ( media-libs/assimp:= )
-	cgal? ( sci-mathematics/cgal )
-	ginkgo? ( sci-libs/ginkgo )
-	gmsh? ( sci-libs/gmsh )
+	cgal? ( sci-mathematics/cgal:= )
+	ginkgo? ( sci-libs/ginkgo:= )
+	gmsh? ( sci-libs/gmsh:= )
 	gsl? ( sci-libs/gsl:= )
 	hdf5? ( sci-libs/hdf5:=[mpi=] )
 	lapack? ( virtual/lapack )
@@ -56,7 +56,7 @@ RDEPEND="dev-libs/boost:=
 	)
 	mpi? ( virtual/mpi )
 	mumps? ( sci-libs/mumps[mpi] )
-	muparser? ( dev-cpp/muParser )
+	muparser? ( dev-cpp/muParser:= )
 	opencascade? ( sci-libs/opencascade:= )
 	p4est? ( sci-libs/p4est[mpi] )
 	petsc? ( sci-mathematics/petsc[mpi=,int64?] )
@@ -65,12 +65,9 @@ RDEPEND="dev-libs/boost:=
 	sparse? ( sci-libs/umfpack )
 	sundials? ( sci-libs/sundials:= )
 	symengine? ( >=sci-libs/symengine-0.4:= )
-	trilinos? ( sci-libs/trilinos )
-	vtk? ( sci-libs/vtk )
-	|| (
-		dev-cpp/kokkos
-		sci-libs/trilinos
-	)
+	trilinos? ( sci-libs/trilinos:=[int64=] )
+	vtk? ( sci-libs/vtk:= )
+	dev-cpp/kokkos:=
 	"
 
 DEPEND="${RDEPEND}
