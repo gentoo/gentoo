@@ -1,7 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
+
+inherit libtool
 
 DESCRIPTION="High-level C Binding for ZeroMQ"
 HOMEPAGE="http://czmq.zeromq.org"
@@ -31,6 +33,11 @@ RDEPEND=">=net-libs/zeromq-4:=[drafts?]
 DEPEND="${RDEPEND}"
 
 DOCS=( AUTHORS NEWS README.md )
+
+src_prepare() {
+	default
+	elibtoolize
+}
 
 src_configure() {
 	local myeconfargs=(
