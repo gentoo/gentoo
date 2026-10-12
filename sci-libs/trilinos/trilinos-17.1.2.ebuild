@@ -69,6 +69,9 @@ PATCHES=(
 	"${FILESDIR}/${PN}-17.1.0-fix_compilation.patch"
 	)
 
+# Silence false positives: outdated bundled CMake files are unused, bug #976168
+CMAKE_QA_COMPAT_SKIP=1
+
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 }

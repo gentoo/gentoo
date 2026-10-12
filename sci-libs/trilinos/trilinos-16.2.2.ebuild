@@ -69,6 +69,9 @@ PATCHES=(
 	"${FILESDIR}/${PN}-17.0.0-drop_boost_system.patch"
 )
 
+# Silence false positives: outdated bundled CMake files are unused, bug #976168
+CMAKE_QA_COMPAT_SKIP=1
+
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 }
