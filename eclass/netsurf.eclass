@@ -22,6 +22,7 @@ inherit toolchain-funcs
 # This function sets NETSURF_MAKECONF as needed by the netsurf build system
 netsurf_define_makeconf() {
 	NETSURF_MAKECONF=(
+		VARIANT=release
 		PREFIX="${EPREFIX}/usr"
 		NSSHARED="${EPREFIX}/usr/share/netsurf-buildsystem"
 		LIBDIR="$(get_libdir)"
