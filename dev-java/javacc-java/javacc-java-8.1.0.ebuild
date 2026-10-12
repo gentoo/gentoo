@@ -14,7 +14,7 @@ S="${WORKDIR}/javacc-8-java-java-${PV}"
 
 LICENSE="BSD-2"
 SLOT="8"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 
 DEPEND="
 	dev-java/javacc:8
