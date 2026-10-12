@@ -230,6 +230,13 @@ src_configure() {
 
 	# Trilinos needs a custom build type:
 	local CMAKE_BUILD_TYPE=Release
+	# Do not let TriBITS hardcode -O3: setting a non-empty *_OVERRIDE value
+	# stops TriBITS from populating it, bug #908835
+	mycmakeargs+=(
+		-DCMAKE_C_FLAGS_RELEASE_OVERRIDE="-DNDEBUG"
+		-DCMAKE_CXX_FLAGS_RELEASE_OVERRIDE="-DNDEBUG"
+		-DCMAKE_Fortran_FLAGS_RELEASE_OVERRIDE="-DNDEBUG"
+	)
 
 	cmake_src_configure
 }
