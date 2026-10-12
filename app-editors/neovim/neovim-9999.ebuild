@@ -57,7 +57,6 @@ DEPEND="${LUA_DEPS}
 	=dev-libs/tree-sitter-c-0.24*
 	=dev-libs/tree-sitter-lua-0.5*
 	=dev-libs/tree-sitter-markdown-0.5*
-	=dev-libs/tree-sitter-markdown-inline-0.5*
 	=dev-libs/tree-sitter-query-0.8.0*
 	=dev-libs/tree-sitter-vim-0.8*
 	=dev-libs/tree-sitter-vimdoc-4*
@@ -109,8 +108,8 @@ src_install() {
 
 	# symlink tree-sitter parsers
 	dodir /usr/share/nvim/runtime
-	for parser in c lua markdown query vim vimdoc; do
-		dosym ../../../../$(get_libdir)/libtree-sitter-${parser}.so /usr/share/nvim/runtime/parser/${parser}.so
+	for parser in c lua markdown markdown_inline query vim vimdoc; do
+		dosym ../../../../$(get_libdir)/libtree-sitter-${parser/_/-}.so /usr/share/nvim/runtime/parser/${parser}.so
 	done
 
 	# conditionally install a symlink for nvimpager
