@@ -66,7 +66,7 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}/${PN}-17.0.0-drop_boost_system.patch"
-	"${FILESDIR}/${P}-fix_compilation.patch"
+	"${FILESDIR}/${PN}-17.1.0-fix_compilation.patch"
 	)
 
 pkg_pretend() {
