@@ -604,7 +604,7 @@ src_configure() {
 		remap-debuginfo = true
 		lld = $(usex system-llvm false $(toml_usex rust_sysroots_wasm))
 		$(if use lto && tc-is-clang && ! tc-ld-is-mold; then
-			echo "use-lld = true"
+			echo "bootstrap-override-lld = true"
 		fi)
 		# only deny warnings if doc+wasm are NOT requested, documenting stage0 wasm std fails without it
 		# https://github.com/rust-lang/rust/issues/74976
