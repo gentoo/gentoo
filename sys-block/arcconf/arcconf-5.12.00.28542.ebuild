@@ -24,7 +24,7 @@ QA_PREBUILT="usr/bin/arcconf"
 
 pkg_nofetch() {
 	elog "Please download ${A} from"
-	elog "https://www.touslesdrivers.com/index.php?v_page=23&v_code=866449"
+	elog "https://www.touslesdrivers.com/index.php?v_page=23&v_code=86644"
 	elog "and place it in your DISTDIR directory."
 }
 
