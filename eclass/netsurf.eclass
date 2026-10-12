@@ -35,6 +35,9 @@ netsurf_define_makeconf() {
 		CCOPT=
 		CCNOOPT=
 		CCDBG=
+		CXXOPT=
+		CXXNOOPT=
+		CXXDBG=
 		LDDBG=
 		AR="$(tc-getAR)"
 		WARNFLAGS=
