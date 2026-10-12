@@ -4,7 +4,7 @@
 EAPI=8
 
 WX_GTK_VER="3.2-gtk3"
-inherit desktop eapi9-ver linux-info pax-utils toolchain-funcs wxwidgets xdg
+inherit eapi9-ver linux-info pax-utils toolchain-funcs wxwidgets xdg
 
 DESCRIPTION="Disk encryption with strong security based on TrueCrypt"
 HOMEPAGE="https://veracrypt.io/en/Home.html"
@@ -40,7 +40,7 @@ CONFIG_CHECK="~BLK_DEV_DM ~CRYPTO ~CRYPTO_XTS ~DM_CRYPT ~FUSE_FS"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-fix-release-date.patch
-	"${FILESDIR}"/${PN}-1.26.29-argon2-avx2-avx512f.patch
+	"${FILESDIR}"/${P}-Argon2-fix-build-with-march-x86-64-v3-v4-and-XOP.patch
 	"${FILESDIR}"/${PN}-1.26.29-fix-nosse2.patch
 )
 
