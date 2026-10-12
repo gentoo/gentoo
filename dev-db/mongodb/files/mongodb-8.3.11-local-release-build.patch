@@ -1,0 +1,17 @@
+As of mongodb-8.0.32, the public-release-local config no longer disables the remote cache.
+Switch to local config but add the release tag/stamp and remove the jobs=auto override.
+
+diff '--color=auto' -ur a/.bazelrc b/.bazelrc
+--- a/.bazelrc	2026-09-11 15:14:29.000000000 -0400
++++ b/.bazelrc	2026-09-17 15:48:37.676065902 -0400
+@@ -580,7 +580,9 @@
+ common:local --remote_cache_compression=false
+ common:local --grpc_keepalive_time=0s
+ common:local --legacy_important_outputs
+-common:local --jobs=auto
++common:local --//bazel/config:release=True
++common:local --//bazel/config:extensions_signature_verification_secure=True
++common:local --stamp
+ 
+ # Disable remote execution but keep remote cache enabled
+ --config=no-remote-exec
