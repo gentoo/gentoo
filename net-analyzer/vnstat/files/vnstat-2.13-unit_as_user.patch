@@ -1,0 +1,11 @@
+launch the unit service as the unprivileged user vnstat
+--- a/examples/systemd/simple/vnstat.service
++++ b/examples/systemd/simple/vnstat.service
+@@ -4,6 +4,7 @@
+ After=network.target
+ 
+ [Service]
++User=vnstat
+ ExecStart=/usr/sbin/vnstatd --nodaemon
+ ExecReload=/bin/kill -HUP $MAINPID
+ Restart=on-failure
