@@ -14,7 +14,7 @@ else
 	SRC_URI="https://github.com/rui314/mold/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 	# -alpha: alpha support was dropped upstream:
 	# https://github.com/rui314/mold/commit/3711ddb95e23c12991f6b8c7bfeba4f1421d19d4
-	KEYWORDS="-alpha ~amd64 ~arm ~arm64 ~loong ~ppc ~riscv ~sparc ~x86"
+	KEYWORDS="-alpha amd64 ~arm ~arm64 ~loong ~ppc ~riscv ~sparc ~x86"
 fi
 
 # mold (MIT)
