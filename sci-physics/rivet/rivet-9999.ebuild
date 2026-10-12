@@ -5,7 +5,7 @@ EAPI=8
 
 MY_P=Rivet-${PV}
 PYTHON_COMPAT=( python3_{12..14} )
-inherit python-single-r1 flag-o-matic autotools optfeature bash-completion-r1
+inherit python-single-r1 autotools optfeature shell-completion
 
 DESCRIPTION="Robust Independent Validation of Experiment and Theory toolkit"
 HOMEPAGE="
@@ -17,14 +17,14 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://gitlab.com/hepcedar/rivet"
 	EGIT_BRANCH="main"
 else
-	SRC_URI="https://www.hepforge.org/archive/rivet/${MY_P}.tar.gz"
+	SRC_URI="https://cedar-tools.web.cern.ch/downloads/${MY_P}.tar.bz2"
 	S="${WORKDIR}/${MY_P}"
 	KEYWORDS="~amd64"
 fi
 
 LICENSE="GPL-3+"
 SLOT="4/${PV}"
-IUSE="+zlib +python +highfive"
+IUSE="+analyses +highfive +python +zlib"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 DEPEND="
@@ -70,14 +70,12 @@ src_prepare() {
 }
 
 src_configure() {
-	# Eigen complains about alignment (see https://gitlab.com/libeigen/eigen/-/issues/2523).
-	# does this affect more cpus?
-	replace-cpu-flags znver1 x86-64
 	# not posix compatible, only bash
 	CONFIG_SHELL=${ESYSROOT}/bin/bash econf \
 		$(use_with zlib zlib "${ESYSROOT}/usr") \
 		--with-hepmc3="${ESYSROOT}/usr" \
 		$(use_enable highfive h5) \
+		$(use_enable analyses) \
 		--with-yoda="${ESYSROOT}/usr" \
 		--with-fastjet="${ESYSROOT}/usr" \
 		--with-yaml-cpp="${EPREFIX}/usr" \
