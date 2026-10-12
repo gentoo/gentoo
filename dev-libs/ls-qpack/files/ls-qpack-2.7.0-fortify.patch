@@ -1,0 +1,38 @@
+From 3da1d2b6c230ea97ca5819a4c743b8813e0555b8 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Sun, 11 Oct 2026 22:10:36 +0200
+Subject: [PATCH] Explicitly disable `_FORTIFY_FORCE` for `fuzz-decode.c`
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Explicitly disable `_FORTIFY_FORCE` in `fuzz-decode.c`, to fix build
+failures with optimizations enabled.  The file disables optimizations
+halfway through, so we need to ensure that the standard library headers
+are included with fortification disabled.
+
+Fixes #91
+
+Thanks to @thesamesam and @amonakov for help.
+
+Signed-off-by: Michał Górny <mgorny@gentoo.org>
+---
+ bin/fuzz-decode.c | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/bin/fuzz-decode.c b/bin/fuzz-decode.c
+index 222167b..a215662 100644
+--- a/bin/fuzz-decode.c
++++ b/bin/fuzz-decode.c
+@@ -4,6 +4,11 @@
+  * forgoes several advanced options.
+  */
+ 
++/* _FORTIFY_SOURCE cannot be used with non-optimized code, and the code
++ * is using pragmas to disable optimization below
++ */
++#undef _FORTIFY_SOURCE
++
+ #ifdef WIN32
+ 
+ #include <stdio.h>
