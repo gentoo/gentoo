@@ -36,7 +36,10 @@
 	<use>
 		<flag name="client">Build Minetest client</flag>
 		<flag name="prometheus">Enable Prometheus monitoring system support in the server via <pkg>dev-cpp/prometheus-cpp</pkg></flag>
+		<flag name="curl">Enable use of online mod repo, public serverlist and remote media with <pkg>net-misc/curl</pkg></flag>
 		<flag name="leveldb">Enable LevelDB map backend via <pkg>dev-libs/leveldb</pkg></flag>
+		<flag name="ncurses">Enable server side ncurses terminal</flag>
+		<flag name="postgres">Enable PostgreSQL map backend with <pkg>dev-db/postgresql</pkg></flag>
 		<flag name="redis">Enable Redis map backend via <pkg>dev-libs/hiredis</pkg></flag>
 		<flag name="server">Build Minetest server</flag>
 		<flag name="spatial">Speed up AreaStores via <pkg>sci-libs/libspatialindex</pkg></flag>
