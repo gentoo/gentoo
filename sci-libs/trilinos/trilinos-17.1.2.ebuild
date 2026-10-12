@@ -20,7 +20,7 @@ KEYWORDS="~amd64 ~x86"
 
 IUSE="
 	adolc all-packages arprec clp cuda eigen glpk gtest hdf5 hwloc hypre
-	matio metis mkl mumps netcdf openmp petsc qd scalapack scotch sparse
+	int64 matio metis mkl mumps netcdf openmp petsc qd scalapack scotch sparse
 	superlu taucs tbb test threads tvmet yaml zlib X
 "
 
@@ -150,9 +150,9 @@ src_configure() {
 		# unconditionally enforces that no newer version is installed.
 		# Thus, disable this check:
 		-DTpetra_IGNORE_KOKKOS_COMPATIBILITY=ON
-		# Enable support for 32bit ordinals which is required for some
-		# dependencies such as sci-libs/dealii
-		-DTpetra_INST_INT_INT=ON
+		# Tpetra supports a single global ordinal type which we select via USE=int64
+		-DTpetra_INST_INT_INT="$(usex int64 OFF ON)"
+		-DTpetra_INST_INT_LONG_LONG="$(usex int64 ON OFF)"
 		-DTPL_ENABLE_LAPACK=ON
 		-DTPL_ENABLE_Matio="$(usex matio)"
 		-DTPL_ENABLE_METIS="$(usex metis)"
