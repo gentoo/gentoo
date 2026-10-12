@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: lua-utils.eclass
@@ -7,7 +7,7 @@
 # @AUTHOR:
 # Marek Szuba <marecki@gentoo.org>
 # Based on python-utils-r1.eclass by Michał Górny <mgorny@gentoo.org> et al.
-# @SUPPORTED_EAPIS: 7 8
+# @SUPPORTED_EAPIS: 7 8 9
 # @BLURB: Utility functions for packages with Lua parts
 # @DESCRIPTION:
 # A utility eclass providing functions to query Lua implementations,
@@ -16,13 +16,13 @@
 # This eclass neither sets any metadata variables nor exports any phase
 # functions. It can be inherited safely.
 
-case ${EAPI} in
-	7|8) ;;
-	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
-esac
-
 if [[ -z ${_LUA_UTILS_ECLASS} ]]; then
 _LUA_UTILS_ECLASS=1
+
+case ${EAPI} in
+	7|8|9) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
 
 inherit toolchain-funcs
 
