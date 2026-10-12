@@ -62,7 +62,7 @@ S="${WORKDIR}/mongo-${MY_PV}"
 
 LICENSE="Apache-2.0 SSPL-1"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 ~arm64"
 IUSE="debug ssl cpu_flags_x86_sse4_2 cpu_flags_x86_ssse3"
 
 # https://github.com/mongodb/mongo/wiki/Test-The-Mongodb-Server
