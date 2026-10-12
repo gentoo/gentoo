@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,8 +6,8 @@ EAPI=7
 inherit toolchain-funcs
 
 DESCRIPTION="Generate Encapsulated Postscript Format files from one-page Postscript documents"
-HOMEPAGE="http://www.tm.uka.de/~bless/ps2eps"
-SRC_URI="http://www.tm.uka.de/~bless/${P}.tar.gz"
+HOMEPAGE="https://telematics.tm.kit.edu/staff_bless.php?tab=%5B1512%5D#tabpanel-1512"
+SRC_URI="https://tm.kit.edu/~bless/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
