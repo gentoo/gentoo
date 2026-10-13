@@ -287,11 +287,6 @@ dev-python/pywlroots
 # Removal on 2026-10-05.  Bug #952388.
 dev-python/python3-saml
 
-# Michał Górny <mgorny@gentoo.org> (2026-09-05)
-# Stuck on Python 3.12.  No activity upstream.
-# Removal on 2026-10-05.  Bug #952340.
-dev-python/ioflo
-
 # Ulrich Müller <ulm@gentoo.org> (2026-08-31)
 # Snapshot versions, masked for testing.
 <app-editors/emacs-32.0.9999:32-vcs
