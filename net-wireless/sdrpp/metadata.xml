@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+        <maintainer type="project">
+                <email>radio@gentoo.org</email>
+                <name>Radio</name>
+        </maintainer>
+        <use>
+                <flag name="airspy">Build Airspy source module</flag>
+                <flag name="atv">Build ATV decoder module</flag>
+                <flag name="audio-sink">Build Audio sink module</flag>
+                <flag name="audio-src">Build Audio source module</flag>
+                <flag name="badgesdr">Build BadgeSDR source module</flag>
+                <flag name="bladerf">Build BladeRF source module</flag>
+                <flag name="falcon9">Build the falcon9 live decoder module</flag>
+                <flag name="hackrf">Build HackRF source module</flag>
+                <flag name="hermes">Build Hermes source module</flag>
+                <flag name="limesdr">Build LimeSDR source module</flag>
+                <flag name="m17">Build the M17 decoder module</flag>
+                <flag name="pager">Build the pager decoder module</flag>
+                <flag name="plutosdr">Build PlutoSDR source module</flag>
+                <flag name="portaudio-sink">Build the PortAudio sink module</flag>
+                <flag name="portaudio-new-sink">Build the new PortAudio sink module</flag>
+                <flag name="rtlsdr">Build RTL-SDR source module</flag>
+                <flag name="ryfi">Build RyFi data link decoder module</flag>
+                <flag name="sched">Build the scheduler module</flag>
+                <flag name="sdrplay">Build SDRplay source module</flag>
+                <flag name="soapysdr">Build SoapySDR source module</flag>
+                <flag name="uhd">Build USRP source module</flag>
+                <flag name="wsat">Build the HRPT decoder module</flag>
+        </use>
+        <upstream>
+                <remote-id type="github">AlexandreRouma/SDRPlusPlus</remote-id>
+        </upstream>
+</pkgmetadata>
