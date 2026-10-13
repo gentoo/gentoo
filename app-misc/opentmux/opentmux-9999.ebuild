@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools eapi9-ver systemd
+inherit eapi9-ver meson systemd
 
 DESCRIPTION="Terminal multiplexer, slop-free fork of app-misc/tmux"
 HOMEPAGE="https://codeberg.org/opentmux/opentmux"
@@ -21,9 +21,6 @@ fi
 LICENSE="ISC"
 SLOT="0"
 IUSE="debug jemalloc selinux sixel systemd utempter vim-syntax"
-# Tests fail but not yet clear why. They weren't ever wired up for
-# tmux so not too worried about it.
-RESTRICT="test"
 
 DEPEND="
 	dev-libs/libevent:=
@@ -44,53 +41,36 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
-QA_CONFIG_IMPL_DECL_SKIP=(
-	# BSD only functions
-	strtonum recallocarray
-	# missing on musl, tmux has fallback impl which it uses
-	b64_ntop
-)
+if [[ ${PV} == 9999 ]] ; then
+	BDEPEND+=" app-text/lowdown"
+fi
 
 DOCS=( CHANGES README.md )
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-2.4-flags.patch
 	"${FILESDIR}"/${PN}-3.6a-race-fork.patch
 	"${FILESDIR}"/${PN}-3.6a-pane-color.patch
 	"${FILESDIR}"/${PN}-3.6a-sixel.patch
 )
 
-src_prepare() {
-	default
-	eautoreconf
-}
-
 src_configure() {
-	local myeconfargs=(
-		--sysconfdir="${EPREFIX}"/etc
-		$(use_enable debug)
-		$(use_enable jemalloc)
-		$(use_enable sixel)
-		$(use_enable systemd)
-		$(use_enable utempter)
+	local emesonargs=(
+		$(meson_feature jemalloc)
+		$(meson_use sixel)
+		$(meson_feature systemd)
+		$(meson_feature utempter)
 
 		# For now, we only expose this for macOS, because
 		# upstream strongly encourage it. I'm not sure it's
 		# needed on Linux right now.
-		$(use_enable kernel_Darwin utf8proc)
+		$(meson_feature kernel_Darwin utf8proc)
 	)
 
-	econf "${myeconfargs[@]}"
-}
-
-src_test() {
-	emake -C regress -Onone
+	meson_src_configure
 }
 
 src_install() {
-	default
-
-	einstalldocs
+	meson_src_install
 
 	dodoc example_tmux.conf
 	docompress -x /usr/share/doc/${PF}/example_tmux.conf
