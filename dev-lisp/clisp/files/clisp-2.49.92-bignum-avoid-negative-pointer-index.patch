@@ -1,0 +1,452 @@
+https://gitlab.com/gnu-clisp/clisp/-/commit/e6b9b9548c5fad2c9f14134669ebc73f2599105a
+
+From e6b9b9548c5fad2c9f14134669ebc73f2599105a Mon Sep 17 00:00:00 2001
+From: Bruno Haible <bruno@clisp.org>
+Date: Tue, 6 Oct 2026 17:16:38 +0200
+Subject: [PATCH] Don't write pointer[-(uintP)offset].
+
+Reported by clang's undefined-behaviour sanitizer.
+
+* intlog.d (I_I_logbitp): Write 'pointer-(uintP)offset' instead of
+'&pointer[-(uintP)offset]'.
+* intplus.d (I_I_plus_I, I_I_minus_I): Likewise.
+* intmal.d (square_2bigloop_down, mulu_2bigloop_down, DS_DS_mult_DS):
+Likewise.
+* intdiv.d (UDS_divide_): Likewise.
+* intgcd.d (I_I_gcd_I, partial_gcd, NUDS_likobi0_NUDS,
+NUDS_likobi1_NUDS, NUDS_likobi2_NUDS, I_I_xgcd_I_I_I): Likewise.
+* intsqrt.d (I_rootp): Likewise.
+
+diff --git a/src/intdiv.d b/src/intdiv.d
+index 30296f934..699d22c3f 100644
+--- a/src/intdiv.d
++++ b/src/intdiv.d
+@@ -164,7 +164,7 @@
+       }
+       # Nun r = r_MSDptr/a_len+1/r_LSDptr.
+       var uintC j = a_len-b_len; # m-n
+-      var uintD* r_ptr = &r_LSDptr[-(uintP)j]; # Pointer oberhalb von r[j]
++      var uintD* r_ptr = r_LSDptr-(uintP)j; # Pointer oberhalb von r[j]
+       var uintD* q_MSDptr = r_MSDptr;
+       var uintC q_len = j = j+1; # q wird m-n+1 Digits haben
+       var uintD b_msd = b_MSDptr[0]; # b[n-1]
+diff --git a/src/intgcd.d b/src/intgcd.d
+index 24f4e3b06..fac1b0371 100644
+--- a/src/intgcd.d
++++ b/src/intgcd.d
+@@ -223,7 +223,7 @@
+       label_3: # a,b >0, beide ungerade, a>b
+         # subtrahiere a := a - b
+         if (!( subfrom_loop_down(b_LSDptr,a_LSDptr,b_len) ==0))
+-          dec_loop_down(&a_LSDptr[-(uintP)b_len],a_len-b_len);
++          dec_loop_down(a_LSDptr-(uintP)b_len,a_len-b_len);
+         # normalisieren
+         while (a_MSDptr[0] == 0) {
+           a_MSDptr++; a_len--;
+@@ -735,11 +735,11 @@
+               }
+               # c := x1*a-y1*b bilden:
+               mulu_loop_down(likobi.x1,a_LSDptr,c_LSDptr,a_len);
+-              /* c_LSDptr[-(uintP)a_len-1] -= */
++              /* *(c_LSDptr-(uintP)a_len-1) -= */
+                 mulusub_loop_down(likobi.y1,b_LSDptr,c_LSDptr,a_len);
+               # d := -x2*a+y2*b bilden:
+               mulu_loop_down(likobi.y2,b_LSDptr,d_LSDptr,a_len);
+-              /* d_LSDptr[-(uintP)a_len-1] -= */
++              /* *(d_LSDptr-(uintP)a_len-1) -= */
+                 mulusub_loop_down(likobi.x2,a_LSDptr,d_LSDptr,a_len);
+               # Wir wissen, dass 0 < c < b und 0 < d < a. Daher müssten
+               # c_LSDptr[-a_len-1] und d_LSDptr[-a_len-1] =0 sein.
+@@ -823,15 +823,15 @@
+     var uintC v_len = v->len;
+     if (u_len >= v_len) {
+       if (!( addto_loop_down(v->LSDptr,u->LSDptr,v_len) ==0)) {
+-        if (!( inc_loop_down(&(u->LSDptr)[-(uintP)v_len],u_len-v_len) ==0)) {
++        if (!( inc_loop_down((u->LSDptr)-(uintP)v_len,u_len-v_len) ==0)) {
+           *--(u->MSDptr) = 1; u->len++;
+         }
+       }
+     } else { # u_len <= v_len
+-      u->MSDptr = copy_loop_down(&(v->LSDptr)[-(uintP)u_len],&(u->LSDptr)[-(uintP)u_len],v_len-u_len);
++      u->MSDptr = copy_loop_down((v->LSDptr)-(uintP)u_len,(u->LSDptr)-(uintP)u_len,v_len-u_len);
+       u->len = v_len;
+       if (!( addto_loop_down(v->LSDptr,u->LSDptr,u_len) ==0)) {
+-        if (!( inc_loop_down(&(u->LSDptr)[-(uintP)u_len],v_len-u_len) ==0)) {
++        if (!( inc_loop_down((u->LSDptr)-(uintP)u_len,v_len-u_len) ==0)) {
+           *--(u->MSDptr) = 1; u->len++;
+         }
+       }
+@@ -851,7 +851,7 @@
+       } # Nun ist u_len > v_len.
+       carry = muluadd_loop_down(q,v->LSDptr,u->LSDptr,v_len);
+       if (!(carry==0)) {
+-        var uintD* ptr = &(u->LSDptr)[-(uintP)v_len-1];
++        var uintD* ptr = (u->LSDptr)-(uintP)v_len-1;
+         if ((ptr[0] += carry) < carry) {
+           if (!( inc_loop_down(ptr,u_len-v_len-1) ==0)) {
+             *--(u->MSDptr) = 1; u->len++;
+@@ -880,10 +880,10 @@
+           var uintD carry =
+             muluadd_loop_down(q->y1,v->LSDptr,c_LSDptr,v_len);
+           if (!(carry==0)) {
+-            var uintD* ptr = &c_LSDptr[-(uintP)v_len-1];
++            var uintD* ptr = c_LSDptr-(uintP)v_len-1;
+             if ((ptr[0] += carry) < carry) {
+               if (!( inc_loop_down(ptr,u_len-v_len) ==0)) {
+-                c_len++; c_LSDptr[-(uintP)c_len] = 1;
++                c_len++; *(c_LSDptr-(uintP)c_len) = 1;
+               }
+             }
+           }
+@@ -892,10 +892,10 @@
+           var uintD carry =
+             muluadd_loop_down(q->y2,v->LSDptr,d_LSDptr,v_len);
+           if (!(carry==0)) {
+-            var uintD* ptr = &d_LSDptr[-(uintP)v_len-1];
++            var uintD* ptr = d_LSDptr-(uintP)v_len-1;
+             if ((ptr[0] += carry) < carry) {
+               if (!(inc_loop_down(ptr,u_len-v_len) ==0)) {
+-                d_len++; d_LSDptr[-(uintP)d_len] = 1;
++                d_len++; *(d_LSDptr-(uintP)d_len) = 1;
+               }
+             }
+           }
+@@ -909,10 +909,10 @@
+           var uintD carry =
+             muluadd_loop_down(q->x1,u->LSDptr,c_LSDptr,u_len);
+           if (!(carry==0)) {
+-            var uintD* ptr = &c_LSDptr[-(uintP)u_len-1];
++            var uintD* ptr = c_LSDptr-(uintP)u_len-1;
+             if ((ptr[0] += carry) < carry) {
+               if (!( inc_loop_down(ptr,v_len-u_len) ==0)) {
+-                c_len++; c_LSDptr[-(uintP)c_len] = 1;
++                c_len++; *(c_LSDptr-(uintP)c_len) = 1;
+               }
+             }
+           }
+@@ -921,10 +921,10 @@
+           var uintD carry =
+             muluadd_loop_down(q->x2,u->LSDptr,d_LSDptr,u_len);
+           if (!(carry==0)) {
+-            var uintD* ptr = &d_LSDptr[-(uintP)u_len-1];
++            var uintD* ptr = d_LSDptr-(uintP)u_len-1;
+             if ((ptr[0] += carry) < carry) {
+               if (!( inc_loop_down(ptr,v_len-u_len) ==0)) {
+-                d_len++; d_LSDptr[-(uintP)d_len] = 1;
++                d_len++; *(d_LSDptr-(uintP)d_len) = 1;
+               }
+             }
+           }
+@@ -1154,11 +1154,11 @@
+               }
+               # c := x1*a-y1*b bilden:
+               mulu_loop_down(likobi.x1,a_LSDptr,c_LSDptr,a_len);
+-              /* c_LSDptr[-(uintP)a_len-1] -= */
++              /* *(c_LSDptr-(uintP)a_len-1) -= */
+                 mulusub_loop_down(likobi.y1,b_LSDptr,c_LSDptr,a_len);
+               # d := -x2*a+y2*b bilden:
+               mulu_loop_down(likobi.y2,b_LSDptr,d_LSDptr,a_len);
+-              /* d_LSDptr[-(uintP)a_len-1] -= */
++              /* *(d_LSDptr-(uintP)a_len-1) -= */
+                 mulusub_loop_down(likobi.x2,a_LSDptr,d_LSDptr,a_len);
+               # Wir wissen, dass 0 < c < b und 0 < d < a. Daher müssten
+               # c_LSDptr[-a_len-1] und d_LSDptr[-a_len-1] =0 sein.
+@@ -1199,7 +1199,7 @@
+             mulu_2loop_down(q.LSDptr,q.len,uAb.LSDptr,uAb.len,c_LSDptr); # q * uAb
+             var DS c;
+             c.LSDptr = c_LSDptr; c.len = q.len + uAb.len;
+-            if (c_LSDptr[-(uintP)c.len]==0) { c.len--; } # normalisieren
++            if (*(c_LSDptr-(uintP)c.len)==0) { c.len--; } # normalisieren
+             NUDS_likobi0_NUDS(&uAa,&c); # zu uAa addieren
+           } # noch uAa,uAb vertauschen (später)
+           # (uBa,uBb) := (uBb,uBa+q*uBb) :
+@@ -1207,7 +1207,7 @@
+             mulu_2loop_down(q.LSDptr,q.len,uBb.LSDptr,uBb.len,c_LSDptr); # q * uBb
+             var DS c;
+             c.LSDptr = c_LSDptr; c.len = q.len + uBb.len;
+-            if (c_LSDptr[-(uintP)c.len]==0) { c.len--; } # normalisieren
++            if (*(c_LSDptr-(uintP)c.len)==0) { c.len--; } # normalisieren
+             NUDS_likobi0_NUDS(&uBa,&c); # zu uBa addieren
+           } # noch uBa,uBb vertauschen (später)
+           goto a_greater_b_swap; # Nun ist a>b>0
+diff --git a/src/intlog.d b/src/intlog.d
+index a7c77ee6c..a170efce9 100644
+--- a/src/intlog.d
++++ b/src/intlog.d
+@@ -514,7 +514,7 @@ local bool I_I_logbitp (object x, object y)
+       I_to_NDS_nocopy(y, _EMA_,ylen=,yLSDptr=); /* DS for y */
+       if (x_ < intDsize*(uintL)ylen) {
+         /* x is a fixnum >=0, < intDsize*ylen */
+-        if (yLSDptr[-(uintP)floor(x_,intDsize)-1] & bit(x_%intDsize))
++        if (*(yLSDptr-(uintP)floor(x_,intDsize)-1) & bit(x_%intDsize))
+           return true;
+         else
+           return false;
+diff --git a/src/intmal.d b/src/intmal.d
+index 43c8b89f9..0e17ffcbc 100644
+--- a/src/intmal.d
++++ b/src/intmal.d
+@@ -176,7 +176,7 @@ local _Noreturn void mal_ueberlauf (void) {
+         add_loop_down(sourceptr-k_lo,sourceptr,sum_LSDptr,k_hi);
+       if (!(k_lo==k_hi)) {
+         # noch k_lo-k_hi = 1 Digits abzulegen
+-        sum_MSDptr[0] = sourceptr[-(uintP)k_lo]; # = sourceptr[-(uintP)k_hi-1]
++        sum_MSDptr[0] = *(sourceptr-(uintP)k_lo); # = *(sourceptr-(uintP)k_hi-1)
+         if (!(carry==0)) {
+           if (++(sum_MSDptr[0]) == 0)
+             carry=1;
+@@ -224,7 +224,7 @@ local _Noreturn void mal_ueberlauf (void) {
+         # Falls Carry: Produkt beansprucht 2*k_lo+1 Digits.
+         # Carry um maximal 1 Digit weitertragen:
+         if (!(carry==0))
+-          prodmid_LSDptr[-2*(uintP)k_lo-1] -= 1;
++          *(prodmid_LSDptr-2*(uintP)k_lo-1) -= 1;
+       }
+       # prodmid_LSDptr[-prodmid_len..-1] enthält nun 2*x0*x1.
+       # Dies ist < 2 * b^k_lo * b^k_hi = 2 * b^len,
+@@ -441,10 +441,10 @@ local _Noreturn void mal_ueberlauf (void) {
+       sum1_MSDptr++; # 1 Digit vorne als Reserve
+       {
+         var uintD carry = # Hauptteile von x1 und x0 addieren:
+-          add_loop_down(&sourceptr1[-(uintP)k_lo],sourceptr1,sum1_LSDptr,k_lo);
++          add_loop_down(sourceptr1-(uintP)k_lo,sourceptr1,sum1_LSDptr,k_lo);
+         if (!(k_lo==k_hi)) {
+           # noch k_hi-k_lo = 1 Digits abzulegen
+-          sum1_MSDptr[0] = sourceptr1[-(uintP)len1]; # = sourceptr1[-2*(uintP)k_lo-1]
++          sum1_MSDptr[0] = *(sourceptr1-(uintP)len1); # = *(sourceptr1-2*(uintP)k_lo-1)
+           if (!(carry==0)) {
+             if (++(sum1_MSDptr[0]) == 0)
+               carry=1;
+@@ -466,7 +466,7 @@ local _Noreturn void mal_ueberlauf (void) {
+       var uintD* prod_LSDptr;
+       var uintD* prodhi_LSDptr;
+       num_stack_need(2*(uintL)len1,prod_MSDptr=,prod_LSDptr=);
+-      prodhi_LSDptr = &prod_LSDptr[-2*(uintP)k_lo];
++      prodhi_LSDptr = prod_LSDptr-2*(uintP)k_lo;
+       # prod_MSDptr/2*len1/prod_LSDptr wird zuerst die beiden
+       # Produkte x1*y1 in prod_MSDptr/2*k_hi/prodhi_LSDptr
+       #      und x0*y0 in prodhi_LSDptr/2*k_lo/prod_LSDptr,
+@@ -480,17 +480,17 @@ local _Noreturn void mal_ueberlauf (void) {
+         # Produkt x0*y0 berechnen:
+         mulu_2loop_down(sourceptr1,k_lo,sourceptr2,k_lo,prod_LSDptr);
+         # Produkt x1*y1 berechnen:
+-        mulu_2loop_down(&sourceptr1[-(uintP)k_lo],k_hi,&sourceptr2[-(uintP)k_lo],k_hi,prodhi_LSDptr);
++        mulu_2loop_down(sourceptr1-(uintP)k_lo,k_hi,sourceptr2-(uintP)k_lo,k_hi,prodhi_LSDptr);
+         # Summe y1+y0 berechnen:
+         {
+           var uintC sum2_len = k_hi; # = max(k_lo,k_hi)
+-          var uintD* sum2_MSDptr = &sum2_LSDptr[-(uintP)sum2_len];
++          var uintD* sum2_MSDptr = sum2_LSDptr-(uintP)sum2_len;
+           {
+             var uintD carry = # Hauptteile von y1 und y0 addieren:
+-              add_loop_down(&sourceptr2[-(uintP)k_lo],sourceptr2,sum2_LSDptr,k_lo);
++              add_loop_down(sourceptr2-(uintP)k_lo,sourceptr2,sum2_LSDptr,k_lo);
+             if (!(k_lo==k_hi)) {
+               # noch k_hi-k_lo = 1 Digits abzulegen
+-              sum2_MSDptr[0] = sourceptr2[-(uintP)len1]; # = sourceptr2[-2*(uintP)k_lo-1]
++              sum2_MSDptr[0] = *(sourceptr2-(uintP)len1); # = sourceptr2[-2*(uintP)k_lo-1]
+               if (!(carry==0)) {
+                 if (++(sum2_MSDptr[0]) == 0)
+                   carry=1;
+@@ -514,7 +514,7 @@ local _Noreturn void mal_ueberlauf (void) {
+             # Falls Carry: Produkt beansprucht 2*k_hi+1 Digits.
+             # Carry um maximal 1 Digit weitertragen:
+             if (!(carry==0))
+-              prodmid_LSDptr[-2*(uintP)k_hi-1] -= 1;
++              *(prodmid_LSDptr-2*(uintP)k_hi-1) -= 1;
+           }
+           # Und x0*y0 abziehen:
+           {
+@@ -522,16 +522,16 @@ local _Noreturn void mal_ueberlauf (void) {
+               subfrom_loop_down(prod_LSDptr,prodmid_LSDptr,2*k_lo);
+             # Carry um maximal prodmid_len-2*k_lo Digits weitertragen:
+             if (!(carry==0))
+-              dec_loop_down(&prodmid_LSDptr[-2*(uintP)k_lo],prodmid_len-2*k_lo);
++              dec_loop_down(prodmid_LSDptr-2*(uintP)k_lo,prodmid_len-2*k_lo);
+           }
+           # prodmid_LSDptr[-prodmid_len..-1] enthält nun x0*y1+x1*y0.
+           # Dies wird zu prod = x1*y1*b^(2*k) + x0*y0 addiert:
+           {
+             var uintD carry =
+-              addto_loop_down(prodmid_LSDptr,&prod_LSDptr[-(uintP)k_lo],prodmid_len);
++              addto_loop_down(prodmid_LSDptr,prod_LSDptr-(uintP)k_lo,prodmid_len);
+               # (Benutze dabei k_lo+prodmid_len <= k_lo+2*(k_hi+1) = 2*len1-k_lo+2 <= 2*len1 .)
+             if (!(carry==0))
+-              inc_loop_down(&prod_LSDptr[-(uintP)(k_lo+prodmid_len)],2*len1-(k_lo+prodmid_len));
++              inc_loop_down(prod_LSDptr-(uintP)(k_lo+prodmid_len),2*len1-(k_lo+prodmid_len));
+           }
+         }
+         # Das Teilprodukt zum Gesamtprodukt addieren:
+@@ -543,7 +543,7 @@ local _Noreturn void mal_ueberlauf (void) {
+           var uintD carry =
+             addto_loop_down(prod_LSDptr,destptr,len1);
+           destptr -= len1;
+-          copy_loop_down(&prod_LSDptr[-(uintP)len1],destptr,len1);
++          copy_loop_down(prod_LSDptr-(uintP)len1,destptr,len1);
+           if (!(carry==0))
+             inc_loop_down(destptr,len1);
+         }
+@@ -572,11 +572,11 @@ local _Noreturn void mal_ueberlauf (void) {
+         sum1_MSDptr++; # 1 Digit vorne als Reserve
+         {
+           var uintD carry = # x1 und unteren Teil von x0 addieren:
+-            add_loop_down(&sourceptr1[-(uintP)k_lo],sourceptr1,sum1_LSDptr,x1_len);
++            add_loop_down(sourceptr1-(uintP)k_lo,sourceptr1,sum1_LSDptr,x1_len);
+           # und den oberen Teil von x0 dazu:
+-          copy_loop_down(&sourceptr1[-(uintP)x1_len],&sum1_LSDptr[-(uintP)x1_len],k_lo-x1_len);
++          copy_loop_down(sourceptr1-(uintP)x1_len,sum1_LSDptr-(uintP)x1_len,k_lo-x1_len);
+           if (!(carry==0)) {
+-            carry = inc_loop_down(&sum1_LSDptr[-(uintP)x1_len],k_lo-x1_len);
++            carry = inc_loop_down(sum1_LSDptr-(uintP)x1_len,k_lo-x1_len);
+             if (carry) {
+               *--sum1_MSDptr = 1;
+               sum1_len++;
+@@ -591,10 +591,10 @@ local _Noreturn void mal_ueberlauf (void) {
+         sum2_MSDptr++; # 1 Digit vorne als Reserve
+         {
+           var uintD carry = # Hauptteile von y1 und y0 addieren:
+-            add_loop_down(&sourceptr2[-(uintP)k_lo],sourceptr2,sum2_LSDptr,k_hi);
++            add_loop_down(sourceptr2-(uintP)k_lo,sourceptr2,sum2_LSDptr,k_hi);
+           if (!(k_lo==k_hi)) {
+             # noch k_lo-k_hi = 1 Digits abzulegen
+-            sum2_MSDptr[0] = sourceptr2[-(uintP)k_lo]; # = sourceptr2[-(uintP)k_hi-1]
++            sum2_MSDptr[0] = *(sourceptr2-(uintP)k_lo); # = *(sourceptr2-(uintP)k_hi-1)
+             if (!(carry==0)) {
+               if (++(sum2_MSDptr[0]) == 0)
+                 carry=1;
+@@ -609,7 +609,7 @@ local _Noreturn void mal_ueberlauf (void) {
+         }
+         # Platz für Produkte x0*y0, x1*y1:
+         var uintC prodhi_len = x1_len+k_hi;
+-        var uintD* prodhi_LSDptr = &prod_LSDptr[-2*(uintP)k_lo];
++        var uintD* prodhi_LSDptr = prod_LSDptr-2*(uintP)k_lo;
+         # prod_MSDptr/len1+len2/prod_LSDptr wird zuerst die beiden
+         # Produkte x1*y1 in prod_MSDptr/x1_len+k_hi/prodhi_LSDptr
+         #      und x0*y0 in prodhi_LSDptr/2*k_lo/prod_LSDptr,
+@@ -626,14 +626,14 @@ local _Noreturn void mal_ueberlauf (void) {
+         mulu_2loop_down(sourceptr1,k_lo,sourceptr2,k_lo,prod_LSDptr);
+         # Produkt x1*y1 berechnen:
+         if (!(x1_len==0)) {
+-          mulu_2loop_down(&sourceptr1[-(uintP)k_lo],x1_len,&sourceptr2[-(uintP)k_lo],k_hi,prodhi_LSDptr);
++          mulu_2loop_down(sourceptr1-(uintP)k_lo,x1_len,sourceptr2-(uintP)k_lo,k_hi,prodhi_LSDptr);
+           # Und x1*y1 abziehen:
+           {
+             var uintD carry =
+               subfrom_loop_down(prodhi_LSDptr,prodmid_LSDptr,prodhi_len);
+             # Carry um maximal prodmid_len-prodhi_len Digits weitertragen:
+             if (!(carry==0))
+-              dec_loop_down(&prodmid_LSDptr[-(uintP)prodhi_len],prodmid_len-prodhi_len);
++              dec_loop_down(prodmid_LSDptr-(uintP)prodhi_len,prodmid_len-prodhi_len);
+           }
+         } else {
+           # Produkt x1*y1=0, nichts abzuziehen
+@@ -646,7 +646,7 @@ local _Noreturn void mal_ueberlauf (void) {
+           # Falls Carry: Produkt beansprucht 2*k_lo+1 Digits.
+           # Carry um maximal 1 Digit weitertragen:
+           if (!(carry==0))
+-            prodmid_LSDptr[-2*(uintP)k_lo-1] -= 1;
++            *(prodmid_LSDptr-2*(uintP)k_lo-1) -= 1;
+         }
+         # prodmid_LSDptr[-prodmid_len..-1] enthält nun x0*y1+x1*y0.
+         # Dies ist < b^k_lo * b^k_hi + b^x1_len * b^k_lo
+@@ -672,9 +672,9 @@ local _Noreturn void mal_ueberlauf (void) {
+         # prodmid*b^k = (x0*y1+x1*y0)*b^k zu prod = x1*y1*b^(2*k) + x0*y0 addieren:
+         {
+           var uintD carry =
+-            addto_loop_down(prodmid_LSDptr,&prod_LSDptr[-(uintP)k_lo],prodmid_len);
++            addto_loop_down(prodmid_LSDptr,prod_LSDptr-(uintP)k_lo,prodmid_len);
+           if (!(carry==0))
+-            inc_loop_down(&prod_LSDptr[-(uintP)(k_lo+prodmid_len)],prod_len-(k_lo+prodmid_len));
++            inc_loop_down(prod_LSDptr-(uintP)(k_lo+prodmid_len),prod_len-(k_lo+prodmid_len));
+         }
+       }
+       # Das Teilprodukt zum Gesamtprodukt addieren:
+@@ -684,7 +684,7 @@ local _Noreturn void mal_ueberlauf (void) {
+         var uintD carry =
+           addto_loop_down(prod_LSDptr,destptr,len1);
+         destptr -= len1;
+-        copy_loop_down(&prod_LSDptr[-(uintP)len1],destptr,len2);
++        copy_loop_down(prod_LSDptr-(uintP)len1,destptr,len2);
+         if (!(carry==0))
+           inc_loop_down(destptr,len2);
+       }
+@@ -714,10 +714,10 @@ local _Noreturn void mal_ueberlauf (void) {
+       UDS_UDS_mult_UDS(len1,LSDptr1,len2,LSDptr2, MSDptr_assignment,len_assignment,LSDptr_assignment LSDptr0 = ); \
+       if ((sintD)(MSDptr1[0]) < 0) # n<0 ?                        \
+         # muss m bzw. m+b^l subtrahieren, um k Digits verschoben: \
+-        subfrom_loop_down(LSDptr2,&LSDptr0[-(uintP)len1],len2);   \
++        subfrom_loop_down(LSDptr2,LSDptr0-(uintP)len1,len2);      \
+       if ((sintD)(MSDptr2[0]) < 0) # m<0 ?                        \
+         # muss n bzw. n+b^k subtrahieren, um l Digits verschoben: \
+-        subfrom_loop_down(LSDptr1,&LSDptr0[-(uintP)len2],len1);   \
++        subfrom_loop_down(LSDptr1,LSDptr0-(uintP)len2,len1);      \
+     }
+ 
+ # (* x y), wo x und y Integers sind. Ergebnis Integer.
+diff --git a/src/intplus.d b/src/intplus.d
+index 2d2cbccf9..ed9f1e380 100644
+--- a/src/intplus.d
++++ b/src/intplus.d
+@@ -163,7 +163,7 @@ modexp maygc object I_I_plus_I (object x, object y)
+           }
+           # y_ zu den oberen pFN_maxlength Digits von x addieren:
+           {
+-            var uintD* midptr = &LSDptr[-(uintP)pFN_maxlength];
++            var uintD* midptr = LSDptr-(uintP)pFN_maxlength;
+             var uintV x_ = pFN_maxlength_digits_at(midptr);
+             var uintV x_new = x_+(uintV)y_;
+             set_pFN_maxlength_digits_at(midptr,x_new);
+@@ -337,7 +337,7 @@ modexp maygc object I_I_minus_I (object x, object y)
+           # MSDigit ist nun = 0x0000 oder = 0xFFFF
+           # x_ zu den oberen pFN_maxlength Digits von -y addieren:
+           {
+-            var uintD* midptr = &LSDptr[-(uintP)pFN_maxlength];
++            var uintD* midptr = LSDptr-(uintP)pFN_maxlength;
+             var uintV y_ = pFN_maxlength_digits_at(midptr);
+             var uintV y_new = y_+(uintV)x_;
+             set_pFN_maxlength_digits_at(midptr,y_new);
+@@ -379,7 +379,7 @@ modexp maygc object I_I_minus_I (object x, object y)
+           }
+           # y_ von den oberen pFN_maxlength Digits von x subtrahieren:
+           {
+-            var uintD* midptr = &LSDptr[-(uintP)pFN_maxlength];
++            var uintD* midptr = LSDptr-(uintP)pFN_maxlength;
+             var uintV x_ = pFN_maxlength_digits_at(midptr);
+             var uintV x_new = x_-(uintV)y_;
+             set_pFN_maxlength_digits_at(midptr,x_new);
+diff --git a/src/intsqrt.d b/src/intsqrt.d
+index 37c0d76f2..6ff87b207 100644
+--- a/src/intsqrt.d
++++ b/src/intsqrt.d
+@@ -585,7 +585,7 @@
+           var uintD* zz_LSDptr = z2_LSDptr;
+           var uintD* z_LSDptr;
+           # Ab jetzt {zz_LSDptr,free_LSDptr} = {z1_LSDptr,z2_LSDptr}.
+-          clear_loop_down(&y_LSDptr[-(uintP)k],k2-k); # y auf k2 Digits erweitern
++          clear_loop_down(y_LSDptr-(uintP)k,k2-k); # y auf k2 Digits erweitern
+           copy_loop_down(y_LSDptr,zz_LSDptr,k2); # zz:=y
+           do {
+             var uintD* new_zz_LSDptr = free_LSDptr;
+@@ -615,16 +615,16 @@
+             zz_LSDptr = z3_LSDptr; # zz ist jetzt auch frei
+           mulu_2loop_down(z_LSDptr,k2,y_LSDptr,k2,free_LSDptr); # y^n
+           sub_loop_down(x_LSDptr,free_LSDptr,zz_LSDptr,k2); # zz:=x-y^n
+-          ASSERT(!test_loop_up(&zz_LSDptr[-(uintP)k],k)); # zz == 0 mod beta^k
++          ASSERT(!test_loop_up(zz_LSDptr-(uintP)k,k)); # zz == 0 mod beta^k
+           mulu_2loop_down(z_LSDptr,k2-k,n_LSDptr,n_len,free_LSDptr); # n*y^(n-1)
+           # Quotienten mod beta^(k2-k) bilden und an y mod beta^k ankleben:
+-          UDS_UDS_div2adic_UDS(k2-k,&zz_LSDptr[-(uintP)k],free_LSDptr,&y_LSDptr[-(uintP)k]);
++          UDS_UDS_div2adic_UDS(k2-k,zz_LSDptr-(uintP)k,free_LSDptr,y_LSDptr-(uintP)k);
+           k = k2; # jetzt gilt y^n == x sogar mod beta^k2.
+         }
+         end_arith_call();
+       }
+       # y mit y^n == x mod beta^m ist gefunden.
+-      var object y = UDS_to_I(&y_LSDptr[-(uintP)m],m); # y als Integer >=0
++      var object y = UDS_to_I(y_LSDptr-(uintP)m,m); # y als Integer >=0
+       RESTORE_NUM_STACK # num_stack zurück
+       pushSTACK(y);
+     # Stackaufbau: x, y.
+-- 
+2.49.1
+
