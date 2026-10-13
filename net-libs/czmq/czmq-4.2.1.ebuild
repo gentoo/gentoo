@@ -13,6 +13,10 @@ LICENSE="MPL-2.0"
 SLOT="0/4"
 KEYWORDS="amd64 arm arm64 ~hppa ~ppc64 ~riscv x86"
 IUSE="curl drafts http-client http-server lz4 nss systemd test +uuid"
+REQUIRED_USE="
+	http-client? ( drafts )
+	http-server? ( drafts )
+"
 RESTRICT="!test? ( test )"
 
 BDEPEND="app-text/asciidoc
