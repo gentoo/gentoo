@@ -1,0 +1,30 @@
+Subject: [PATCH] lib:replace Query libbsd.pc before bsd syslib checks
+
+Samba wired the bsd syslib without ever reading libbsd.pc, so Cflags from the
+.pc (extra -I/-isystem on multilib or similar layouts) never reached uselib
+BSD.
+
+Before those bsd syslib checks, run a non-mandatory pkg-config query for libbsd
+so libbsd.pc can populate CFLAGS_BSD, INCLUDES_BSD, and LIB_BSD when the .pc is
+installed and visible to pkg-config.
+
+global_define=False because True also writes a HAVE_* line into config.h when
+pkg-config succeeds; this call should only copy libbsd.pc flags into the build
+environment, not add a HAVE_* that exists only because this pkg-config step
+succeeded.
+
+--- a/lib/replace/wscript
++++ b/lib/replace/wscript
+@@ -441,6 +441,12 @@
+ 
+     conf.CHECK_FUNCS('dirname basename')
+ 
++    conf.check_cfg(package='libbsd', args='--cflags --libs',
++                   msg='Checking for libbsd via pkg-config',
++                   uselib_store='BSD',
++                   mandatory=False,
++                   global_define=False)
++
+     strlcpy_in_bsd = False
+ 
+     # libbsd on some platforms provides strlcpy and strlcat
