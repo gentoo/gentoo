@@ -1,0 +1,29 @@
+From ac09acefb5675b7e9eb2d4531571b619b2ff2215 Mon Sep 17 00:00:00 2001
+From: Erik Larsson <who+github@cnackers.org>
+Date: Mon, 3 Feb 2025 09:56:17 +0100
+Subject: [PATCH 2/4] scripts: fix regexp for poll stuff
+
+Support for zephyr in tpm2-tss broke the removal of poll conditionals.
+So make the matching more flexible.
+
+Signed-off-by: Erik Larsson <who+github@cnackers.org>
+---
+ scripts/prepare_headers.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/scripts/prepare_headers.py b/scripts/prepare_headers.py
+index be34fee..ecbe22f 100644
+--- a/scripts/prepare_headers.py
++++ b/scripts/prepare_headers.py
+@@ -48,7 +48,7 @@ def remove_common_guards(s):
+ 
+ def remove_poll_stuff(s, poll_handle_type):
+ 
+-    r = r"#if defined\(__linux__\) \|\| defined\(__unix__\) \|\| defined\(__APPLE__\) \|\| defined \(__QNXNTO__\) \|\| defined \(__VXWORKS__\)(\n.*)+#endif\n#endif"
++    r = r"#if defined\(__linux__\).*(\n.*)+#endif\n#endif"
+ 
+     s = re.sub(r, f"typedef struct pollfd {poll_handle_type};", s)
+     return s
+-- 
+2.54.0
+
