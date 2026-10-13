@@ -1,0 +1,15 @@
+honor LDFLAGS during build
+
+Pascal Jäger <pascal.jaeger@leimstift.de> (2023-12-07)
+
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -60,7 +60,7 @@ LIBS= @LIBS@
+ all:	$(TARGET)
+ 
+ $(TARGET):	$(TARGET).c config.h
+-	$(CC) $(CFLAGS) -o $@ $(@:%=%.c) $(LIBS)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $(@:%=%.c) $(LIBS)
+ 
+ 
+ all-optimized:		$(TARGET)-optimized
