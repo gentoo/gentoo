@@ -14,7 +14,7 @@ HOMEPAGE="https://quantumproductions.info/articles/2025-02/moving-kdes-styling-f
 
 LICENSE="|| ( LGPL-2.1 LGPL-3 ) GPL-3 BSD-2"
 SLOT="6"
-KEYWORDS="~amd64 ~ppc64 ~riscv ~x86"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
 IUSE="tools widgets"
 
 # IUSE="svg"
