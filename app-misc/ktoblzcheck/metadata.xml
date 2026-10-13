@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+	<longdescription>
+	KtoBLZCheck is a library to check account numbers and bank codes of
+	German banks. Both a library for other programs as well as a short
+	command-line tool is available. It is possible to check pairs of
+	account numbers and bank codes (BLZ) of German banks, and to map bank
+	codes (BLZ) to the clear-text name and location of the bank.
+	</longdescription>
 	<!-- maintainer-needed -->
 	<upstream>
 		<remote-id type="sourceforge">ktoblzcheck</remote-id>

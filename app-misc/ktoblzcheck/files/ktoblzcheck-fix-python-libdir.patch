@@ -1,0 +1,14 @@
+Respect external preset for Python_SITEARCH option
+
+--- a/CMakeLists.txt	2025-12-06 00:48:49.771694835 +0300
++++ b/CMakeLists.txt	2025-12-06 00:50:14.461677674 +0300
+@@ -99,7 +99,9 @@
+     if(Python3_FOUND)
+         set(Python_EXECUTABLE ${Python3_EXECUTABLE})
+         string(REGEX REPLACE "^([0-9]+.[0-9]+).*" "\\1" Python_VERSION_MAJOR_MINOR ${Python3_VERSION})
++	if(NOT Python_SITEARCH)
+         set(Python_SITEARCH "${CMAKE_INSTALL_LIBDIR}/python${Python_VERSION_MAJOR_MINOR}/site-packages")
++	endif()
+         set(Python_Interpreter_FOUND TRUE)
+         message(STATUS "found python3 version ${Python3_VERSION} with site packages installation directory '${Python_SITEARCH}'")
+     endif()
