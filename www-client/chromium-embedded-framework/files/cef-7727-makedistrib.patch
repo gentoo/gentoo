@@ -1,0 +1,11 @@
+--- cef/tools/cef_version.py	2026-05-02 11:55:07.748943451 +0200
++++ cef/tools/cef_version.py.new	2026-05-02 15:04:10.111434283 +0200
+@@ -77,7 +77,7 @@
+ 
+       # Retrieve the list of commits that have been applied on the current
+       # branch since branching from origin/master.
+-      hashes = git.get_branch_hashes(self.cef_path)
++      hashes = git.get_branch_hashes(self.cef_path, ref=@REV@)
+       for hash in hashes:
+         # Determine if the API versions file was modified by the commit.
+         found = False
