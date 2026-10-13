@@ -6,16 +6,17 @@ EAPI=8
 inherit flag-o-matic systemd
 
 if [[ ${PV} == 9999 ]] ; then
-	ESVN_REPO_URI="https://svn.code.sf.net/p/smartmontools/code/trunk/smartmontools"
-	ESVN_PROJECT="smartmontools"
-	inherit autotools subversion
+	EGIT_REPO_URI="https://github.com/smartmontools/smartmontools.git"
+	inherit autotools git-r3
 else
 	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/smartmontools.asc
 	inherit verify-sig
 
 	SRC_URI="
-		https://downloads.sourceforge.net/${PN}/${P}.tar.gz
-		verify-sig? ( https://downloads.sourceforge.net/${PN}/${P}.tar.gz.asc )
+		https://github.com/smartmontools/${PN}/releases/download/RELEASE_${PV//./_}/${P}.tar.gz
+		verify-sig? (
+				https://github.com/smartmontools/${PN}/releases/download/RELEASE_${PV//./_}/${P}.tar.gz.asc
+		)
 	"
 
 	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~sparc x86 ~x64-macos"
