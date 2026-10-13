@@ -36,6 +36,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2026-10-13)
+# The package is bloated and hostile to downstream packaging.  The two
+# latest upstream releases don't build because of various issues.
+# Removal on 2026-11-12.  Bug #984201.
+media-gfx/fotema
+
 # Matt Jolly <kangie@gentoo.org> (2026-10-09)
 # Dropped upstream, use www-client/opera or www-client/opera-developer.
 # Removal on 2026-11-09. Bug #983935.
