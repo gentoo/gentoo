@@ -397,16 +397,6 @@ app-arch/p7zip
 # Introduces backwards breaking change. Mask until downstreams adjust
 >=dev-db/lmdb-1.0.0
 
-# Michał Górny <mgorny@gentoo.org> (2026-06-19)
-# dev-python/pytrie is broken on Python 3.14 and has not been touched
-# since 2020.  dev-python/autobahn and dev-python/txaio have become
-# complete broken slop, and still depend on it.  Remove these packages,
-# their reverse dependencies and their dependencies without revdeps.
-# For magic-wormhole, use net-misc/wormhole-william or
-# net-misc/magic-wormhole-rust instead.
-# Removal on 2026-07-19.  Bug #967367.
-dev-python/magic-wormhole
-
 # Michał Górny <mgorny@gentoo.org> (2026-06-03)
 # Mike Pagano <mpagano@gentoo.org> (2026-06-03)
 # Support for 5.10.x and 5.15.x kernels in Gentoo is being discontinued.
