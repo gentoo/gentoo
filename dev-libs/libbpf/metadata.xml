@@ -14,5 +14,6 @@
   </maintainer>
   <upstream>
     <remote-id type="github">libbpf/libbpf</remote-id>
+    <remote-id type="cpe">cpe:/a:libbpf_project:libbpf</remote-id>
   </upstream>
 </pkgmetadata>
