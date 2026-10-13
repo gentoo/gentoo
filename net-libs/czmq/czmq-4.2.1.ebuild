@@ -3,7 +3,7 @@
 
 EAPI="8"
 
-inherit libtool
+inherit flag-o-matic libtool
 
 DESCRIPTION="High-level C Binding for ZeroMQ"
 HOMEPAGE="http://czmq.zeromq.org"
@@ -44,6 +44,14 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=strict-aliasing
+	# https://bugs.gentoo.org/964691
+	# https://github.com/zeromq/czmq/issues/2334
+	#
+	# Do not trust with LTO either.
+	append-flags -fno-strict-aliasing
+	filter-lto
+
 	local myeconfargs=(
 		--enable-drafts=$(usex drafts)
 		--with-docs=no
