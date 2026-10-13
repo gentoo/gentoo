@@ -16,7 +16,7 @@ HOMEPAGE="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~mips ~ppc64 ~riscv ~s390 ~x86"
+KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
 
 RDEPEND="
 	>=dev-python/prompt-toolkit-3.0.53[${PYTHON_USEDEP}]
@@ -32,6 +32,7 @@ RDEPEND="
 BDEPEND="
 	dev-python/setuptools-scm[${PYTHON_USEDEP}]
 	test? (
+		dev-python/pyte[${PYTHON_USEDEP}]
 		|| (
 			x11-misc/xclip
 			x11-misc/xsel
