@@ -63,11 +63,11 @@ BDEPEND="
 	python? (
 		${PYTHON_DEPS}
 		${DISTUTILS_DEPS}
-		test? ( >=dev-python/pytest-7.1.2[${PYTHON_USEDEP}] )
+		test? ( dev-python/pytest[${PYTHON_USEDEP}] )
 	)
 	test? (
+		app-misc/jq
 		dev-cpp/gtest
-		dev-util/cppunit
 	)
 "
 RDEPEND="${CDEPEND}
@@ -165,6 +165,7 @@ src_test() {
 		')
 		# server fails to start due to long path to unix domain socket
 		$(usev scitokens '
+			XRootD::macaroons
 			XRootD::scitokens
 			XRootD::tpc
 		')
