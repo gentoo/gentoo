@@ -161,10 +161,10 @@ src_configure() {
 	# this workaround will stop Highway from compiling RVV, and stop the host
 	# compiler from emitting RVV in non-V8 code. V8 can still emit RVV at runtime
 	# on machines that have it.
-	# 
-	# Additionally, force the EMU128 (128-bit scalar emulation) for boards 
-	# without RVV (VisionFive V2 / JH7110). 
-	# This will ensure V8's FixedTag<..., 16> in the JSON stringifier is legal. 
+	#
+	# Additionally, force the EMU128 (128-bit scalar emulation) for boards
+	# without RVV (VisionFive V2 / JH7110).
+	# This will ensure V8's FixedTag<..., 16> in the JSON stringifier is legal.
 	use riscv && append-cxxflags -DHWY_DISABLED_TARGETS=HWY_RVV -DHWY_BROKEN_EMU128=0
 
 	local myconf=(
