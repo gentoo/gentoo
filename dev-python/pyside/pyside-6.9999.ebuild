@@ -384,7 +384,7 @@ python_configure_all() {
 		--no-size-optimization
 		--openssl="${ESYSROOT}/usr/bin/openssl"
 		--qt="$(ver_cut 1-3)"
-		--qtpaths="$(qt6_get_bindir)/qtpaths"
+		--qtpaths="$(qt_get_bindir 6)/qtpaths"
 		--log-level=verbose
 		--parallel="$(makeopts_jobs)"
 		"$(usex debug "--debug" "--relwithdebinfo")"
@@ -432,8 +432,10 @@ python_compile() {
 	export PYTHONPATH="${BUILD_DIR}/build$((${#DISTUTILS_WHEELS[@]}-1))/${pyside_build_dir}/package:${BUILD_DIR}/build$((${#DISTUTILS_WHEELS[@]}-1))/${pyside_build_dir}/install/lib/${EPYTHON}/site-packages:${PYTHONPATH}"
 
 	# Copy shiboken6_generator files to shiboken6 package so we can reuse the shiboken-target-path
-	rsync -ur "${BUILD_DIR}/build$((${#DISTUTILS_WHEELS[@]}-2))/${pyside_build_dir}/package/shiboken6_generator/"* "${BUILD_DIR}/build$((${#DISTUTILS_WHEELS[@]}-1))/${pyside_build_dir}/package/shiboken6/" || die
-	ln -s shiboken6 "${BUILD_DIR}/build$((${#DISTUTILS_WHEELS[@]}-1))/${pyside_build_dir}/package/shiboken6_generator" || die
+	rsync -ur "${BUILD_DIR}/build$((${#DISTUTILS_WHEELS[@]}-2))/${pyside_build_dir}/package/shiboken6_generator/"* \
+		"${BUILD_DIR}/build$((${#DISTUTILS_WHEELS[@]}-1))/${pyside_build_dir}/package/shiboken6/" || die
+	ln -s shiboken6 \
+		"${BUILD_DIR}/build$((${#DISTUTILS_WHEELS[@]}-1))/${pyside_build_dir}/package/shiboken6_generator" || die
 
 	# If no pyside modules enabled, build just shiboken
 	if [[ ${#ENABLED_QT_MODULES[@]} -gt 0 ]]; then
@@ -497,9 +499,9 @@ python_compile() {
 	# Install misc files from inner install dir
 	find "${BUILD_DIR}"/build*/"${pyside_build_dir}"/install -type f \
 		-name libPySidePlugin.so -exec \
-		mkdir -p "${BUILD_DIR}/install/$(qt6_get_plugindir)/designer/" \; \
+		mkdir -p "${BUILD_DIR}/install/$(qt_get_plugindir 6)/designer/" \; \
 		-exec \
-		cp "{}" "${BUILD_DIR}/install/$(qt6_get_plugindir)/designer/" \; \
+		cp "{}" "${BUILD_DIR}/install/$(qt_get_plugindir 6)/designer/" \; \
 			|| die
 
 	for dir in cmake pkgconfig; do
