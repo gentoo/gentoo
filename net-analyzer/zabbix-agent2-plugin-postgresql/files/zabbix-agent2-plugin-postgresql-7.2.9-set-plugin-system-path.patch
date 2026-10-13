@@ -1,0 +1,19 @@
+From https://gitlab.alpinelinux.org/alpine/aports/-/blob/master/community/zabbix-agent2-plugin-postgresql/0001-set-plugin-system-path.patch
+From: Leonardo Arena <rnalrd@alpinelinux.org>
+Date: Thu, 22 Feb 2024 15:05:08 +0000
+Subject: [PATCH] set plugin system path
+
+--- a/postgresql.conf
++++ b/postgresql.conf
+@@ -3,7 +3,7 @@
+ #
+ # Mandatory: yes
+ # Default:
+-# Plugins.PostgreSQL.System.Path=
++Plugins.PostgreSQL.System.Path=/usr/libexec/zabbix-agent2/zabbix-agent2-plugin-postgresql
+ 
+ ### Option: Plugins.PostgreSQL.CallTimeout
+ #	The maximum time in seconds for waiting when a request has to be done.
+-- 
+2.43.1
+
