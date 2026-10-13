@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit meson systemd verify-sig xdg
+inherit meson optfeature systemd verify-sig xdg
 
 DESCRIPTION="Fast, lightweight and minimalistic Wayland terminal emulator"
 HOMEPAGE="https://codeberg.org/dnkl/foot"
@@ -89,4 +89,8 @@ src_install() {
 
 pkg_postinst() {
 	xdg_pkg_postinst
+
+	optfeature "URI launching with CTRL+SHIFT+O" x11-misc/xdg-utils
+	optfeature "sending a desktop notification when an unfocused window BELs" \
+		x11-libs/libnotify x11-misc/tinynotify-send
 }
