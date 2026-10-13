@@ -1,0 +1,17 @@
+--- a/python/lib/Variables.py	2021-01-03 04:56:44.408873296 -0700
++++ b/python/lib/Variables.py	2021-01-03 04:57:10.273872156 -0700
+@@ -47,12 +47,8 @@
+     os.environ["APPLICATION_TITLE"] = "PlayOnLinux"
+     os.environ["POL_DNS"] = "playonlinux.com"
+     os.environ["WINE_SITE"] = "https://phoenicis.playonlinux.com/index.php/wine?os=linux"
+-    if playonlinux.VersionLower(wx.VERSION_STRING, "3.0.0"):
+-        windows_add_size = 0
+-        windows_add_playonmac = 0
+-    else:
+-        windows_add_size = dpiFetcher().fetch_extra_pixel()
+-        windows_add_playonmac = 0
++    windows_add_size = dpiFetcher().fetch_extra_pixel()
++    windows_add_playonmac = 0
+ 
+     widget_borders = wx.RAISED_BORDER
+     os_name = "linux"
