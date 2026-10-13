@@ -6,6 +6,8 @@
     <name>Gentoo GNOME Desktop</name>
   </maintainer>
   <upstream>
+    <changelog>https://gitlab.gnome.org/GNOME/gcr/-/blob/main/NEWS</changelog>
+    <doc>https://gnome.pages.gitlab.gnome.org/gcr/gcr-4/</doc>
     <remote-id type="gnome-gitlab">GNOME/gcr</remote-id>
   </upstream>
 </pkgmetadata>
