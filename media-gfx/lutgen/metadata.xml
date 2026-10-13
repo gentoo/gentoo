@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>butterino@proton.me</email>
+		<name>Anton Einax</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<use>
+		<flag name="gui">Install lutgen-studio, the gui for lutgen.</flag>
+		<flag name="completions">Install shell completions (for bash, zsh and fish).</flag>
+	</use>
+	<upstream>
+		<bugs-to>https://github.com/ozwaldorf/lutgen-rs/issues</bugs-to>
+		<doc lang="en">https://lut.sh/</doc>
+		<remote-id type="github">ozwaldorf/lutgen-rs</remote-id>
+	</upstream>
+</pkgmetadata>
