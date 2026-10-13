@@ -10,6 +10,7 @@
 	</longdescription>
 	<use>
 		<flag name="avfs">Enable support for <pkg>sys-fs/avfs</pkg></flag>
+		<flag name="openssl">Enable checksum support via <pkg>dev-libs/openssl</pkg></flag>
 	</use>
 	<upstream>
 		<changelog>http://www.boomerangsworld.de/cms/worker/changes.html</changelog>
