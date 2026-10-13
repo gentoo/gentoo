@@ -1,0 +1,20 @@
+#!/sbin/openrc-run
+# Copyright 1999-2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+command="/usr/bin/ds-inhibit"
+
+depend() {
+	after display-manager
+}
+
+start() {
+	ebegin "Initializing ds-inhibit"
+	${command} --set >/dev/null 2>&1 &
+	eend $?
+}
+
+stop() {
+	# Nothing to stop
+	return 0;
+}
