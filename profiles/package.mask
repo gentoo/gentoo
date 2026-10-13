@@ -306,12 +306,6 @@ dev-python/python-axolotl
 dev-python/python-axolotl-curve25519
 dev-python/transitions
 
-# Michał Górny <mgorny@gentoo.org> (2026-09-04)
-# Test suite broken with numpy-2.  Last release in 2020.  No reverse
-# dependencies.
-# Removal on 2026-10-04.  Bug #952323.
-dev-python/chart-studio
-
 # Ulrich Müller <ulm@gentoo.org> (2026-08-31)
 # Snapshot versions, masked for testing.
 <app-editors/emacs-32.0.9999:32-vcs

@@ -68,7 +68,6 @@ dev-python/jupyter-server-proxy
 sci-misc/jupyterlab-desktop-bin
 dev-python/plotly
 dev-python/plotly-geo
-dev-python/chart-studio
 sci-visualization/dash
 >=dev-python/notebook-7
 dev-python/spyder-notebook
