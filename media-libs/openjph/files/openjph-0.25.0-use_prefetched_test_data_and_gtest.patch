@@ -1,0 +1,32 @@
+Use Gentoo dev-cpp/gtest and prefetched test data for the tests.
+
+--- a/tests/CMakeLists.txt	2025-11-08 04:42:28.044270979 +0300
++++ b/tests/CMakeLists.txt	2025-11-08 04:44:59.393583192 +0300
+@@ -1,24 +1,6 @@
+-
+-# Fetch googletest
+-include(FetchContent)
+-FetchContent_Declare(
+-  googletest
+-  URL https://github.com/google/googletest/archive/refs/tags/v1.14.0.tar.gz
+-  EXCLUDE_FROM_ALL
+-)
+-# For Windows: Prevent overriding the parent project's compiler/linker settings
+-set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+-set(BUILD_GMOCK OFF CACHE BOOL "" FORCE)
+-option(INSTALL_GTEST "Enable installation of googletest." OFF)
+-FetchContent_MakeAvailable(googletest)
+-
+-# Fetch test files
+-FetchContent_Declare(
+-  jp2k_test_codestreams
+-  URL               https://github.com/aous72/jp2k_test_codestreams/archive/refs/heads/main.zip
+-  SOURCE_DIR        jp2k_test_codestreams/
+-)
+-FetchContent_MakeAvailable(jp2k_test_codestreams)
++# find Google test
++find_package(GTest REQUIRED)
++include_directories(${GTEST_INCLUDE_DIR})
+ 
+ # create the mse_pae executable
+ include(mse_pae.cmake)
