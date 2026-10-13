@@ -4,5 +4,5 @@ command="/usr/bin/freshclam"
 pidfile="/run/${RC_SVCNAME}.pid"
 
 # Ignore the value of "PidFile" set in freshclam.conf.
-command_args="-p ${pidfile}"
+command_args="-p ${pidfile} --config-file /etc/freshclam.conf"
 command_args_background="--daemon"
