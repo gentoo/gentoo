@@ -1,0 +1,47 @@
+From: Gentoo Contributors <gentoo@gentoo.org>
+Bug: https://bugs.gentoo.org/961439
+Description: Use termios on Linux when termio.h is absent
+
+--- a/create.mk.aee	2021-06-12 10:26:59.000000000 +0200
++++ b/create.mk.aee	2026-05-31 23:51:43.954116224 +0200
+@@ -50,7 +50,7 @@
+ 
+ # test for existence of termio header (on SysV systems)
+ 
+-if [ -f /usr/include/termio.h ]
++if [ -f /usr/include/termio.h -o -f /usr/include/termios.h ]
+ then
+ 	termio="-DSYS5"
+ else
+--- a/new_curse.h	2026-05-31 23:51:43.944507822 +0200
++++ b/new_curse.h	2026-05-31 23:51:44.043369833 +0200
+@@ -42,7 +42,29 @@
+ #include <stdio.h>
+ 
+ #ifdef SYS5
++#if defined(__linux__)
++#include <sys/ioctl.h>
++#include <termios.h>
++#ifndef NCC
++#define NCC 8
++#endif
++struct termio {
++	unsigned short c_iflag;
++	unsigned short c_oflag;
++	unsigned short c_cflag;
++	unsigned short c_lflag;
++	char c_line;
++	unsigned char c_cc[NCC];
++};
++#ifndef TCGETA
++#define TCGETA 0x5405
++#endif
++#ifndef TCSETA
++#define TCSETA 0x5408
++#endif
++#else
+ #include <termio.h>
++#endif
+ #else
+ #include <sgtty.h>
+ #include <fcntl.h>
