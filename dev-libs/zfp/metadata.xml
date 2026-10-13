@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <longdescription>
+zfp is a compressed format for representing multidimensional floating-point and integer arrays. zfp provides compressed-array classes that support high throughput read and write random access to individual array elements. zfp also supports serial and parallel (OpenMP and CUDA) compression of whole arrays, e.g., for applications that read and write large data sets to and from disk.
+
+zfp uses lossy but optionally error-bounded compression to achieve high compression ratios. Bit-for-bit lossless compression is also possible through one of zfp's compression modes. zfp works best for 2D, 3D, and 4D arrays that exhibit spatial correlation, such as continuous fields from physics simulations, natural images, regularly sampled terrain surfaces, etc. zfp compression of 1D arrays is possible but generally discouraged.
+
+zfp is freely available as open source and is distributed under a BSD license. zfp is primarily written in C and C++ but also includes Python and Fortran bindings. zfp conforms to various language standards, including C89, C99, C11, C++98, C++11, and C++14, and is supported on Linux, macOS, and Windows.
+</longdescription>
+  <maintainer type="person" proxied="yes">
+    <email>lssndrbarbieri@gmail.com</email>
+    <name>Alessandro Barbieri</name>
+  </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Gentoo Proxy Maintainers Project</name>
+  </maintainer>
+  <upstream>
+    <bugs-to>https://github.com/LLNL/zfp/issues</bugs-to>
+    <remote-id type="github">LLNL/zfp</remote-id>
+  </upstream>
+  <use>
+    <flag name="aligned">Enable aligned memory allocation</flag>
+    <flag name="cfp">Build CFP arrays library</flag>
+    <!--<flag name="cuda">Enable CUDA parallel compression</flag>-->
+    <flag name="examples">Build Examples</flag>
+    <flag name="fasthash">Use a faster but more collision prone hash function</flag>
+    <flag name="fortran">Build Fortran library</flag>
+    <flag name="openmp">Enable OpenMP parallel compression</flag>
+    <flag name="strided">Enable strided access for progressive zfp streams</flag>
+    <flag name="twoway">Use two-way skew-associative cache</flag>
+    <flag name="utilities">Build command line utilities</flag>
+  </use>
+</pkgmetadata>
