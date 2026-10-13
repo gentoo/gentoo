@@ -807,12 +807,13 @@ cmake_src_test() {
 	pushd "${BUILD_DIR}" > /dev/null || die
 	[[ -e CTestTestfile.cmake ]] || { echo "No tests found. Skipping."; return 0 ; }
 
-	[[ -n ${TEST_VERBOSE} ]] && myctestargs+=( --extra-verbose --output-on-failure )
-	[[ -n ${CMAKE_SKIP_TESTS} ]] && myctestargs+=( -E '('$( IFS='|'; echo "${CMAKE_SKIP_TESTS[*]}")')'  )
+	local myctestargs_local=( "${myctestargs[@]}" )
+	[[ -n ${TEST_VERBOSE} ]] && myctestargs_local+=( --extra-verbose --output-on-failure )
+	[[ -n ${CMAKE_SKIP_TESTS} ]] && myctestargs_local+=( -E '('$( IFS='|'; echo "${CMAKE_SKIP_TESTS[*]}")')'  )
 
 	set -- ctest -j "${CTEST_JOBS:-$(get_makeopts_jobs 999)}" \
 		--test-load "${CTEST_LOADAVG:-$(get_makeopts_loadavg)}" \
-		"${myctestargs[@]}" "$@"
+		"${myctestargs_local[@]}" "$@"
 	echo "$@" >&2
 	if "$@" ; then
 		einfo "Tests succeeded."
