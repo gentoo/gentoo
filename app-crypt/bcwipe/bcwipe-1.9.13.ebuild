@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,7 +7,7 @@ MY_PV="$(ver_rs 2- -)"
 
 DESCRIPTION="Secure file removal utility"
 HOMEPAGE="https://www.jetico.com/"
-SRC_URI="https://www.jetico.com/linux/BCWipe-${MY_PV}.tar.gz"
+SRC_URI="https://www.jetico.com/file-downloads/linux/BCWipe-${MY_PV}.tar.gz"
 
 LICENSE="bestcrypt"
 SLOT="0"
@@ -17,6 +17,7 @@ RESTRICT="mirror bindist"
 PATCHES=(
 	"${FILESDIR}/${PN}-1.9.7-fix_warnings.patch"
 	"${FILESDIR}/${PN}-1.9.8-fix-flags.patch"
+	"${FILESDIR}/${P}-rand-prototypes.patch" # bug 943917
 )
 
 S="${WORKDIR}/${PN}-${MY_PV}"
