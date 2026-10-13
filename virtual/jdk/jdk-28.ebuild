@@ -5,7 +5,7 @@ EAPI=9
 
 DESCRIPTION="Virtual for Java Development Kit (JDK)"
 SLOT="${PV}"
-#	KEYWORDS="" # Not an LTS candidate
+KEYWORDS="~amd64" # Not an LTS candidate
 IUSE="headless-awt"
 
 RDEPEND="|| (
