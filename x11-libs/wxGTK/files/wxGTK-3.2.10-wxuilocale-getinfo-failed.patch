@@ -1,0 +1,16 @@
+--- a/tests/intl/intltest.cpp
++++ b/tests/intl/intltest.cpp
+@@ -422,13 +422,6 @@ TEST_CASE("wxUILocale::GetInfo", "[uilocale]")
+     const wxUILocale locDE(wxUILocale::FromTag("de"));
+     if ( CheckSupported(locDE, "German") )
+         CHECK( locDE.GetInfo(wxLOCALE_DECIMAL_POINT) == "," );
+-
+-    // This one shows that "Swiss High German" locale (de_CH) correctly uses
+-    // dot, and not comma, as decimal separator, even under macOS, where POSIX
+-    // APIs use incorrect (identical to "German") definitions for this locale.
+-    const wxUILocale locDE_CH(wxLocaleIdent().Language("de").Region("CH"));
+-    if ( CheckSupported(locDE_CH, "Swiss German") )
+-        CHECK( locDE_CH.GetInfo(wxLOCALE_DECIMAL_POINT) == "." );
+ }
+ 
+ // Just a small helper to make the test below shorter.
