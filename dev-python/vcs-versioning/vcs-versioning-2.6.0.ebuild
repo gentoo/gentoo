@@ -37,3 +37,10 @@ EPYTEST_DESELECT=(
 	# the usual nondescript gpg-agent failure
 	testing_vcs/test_git.py::test_git_getdate_signed_commit
 )
+
+src_prepare() {
+	distutils-r1_src_prepare
+
+	# increase the test timeout
+	sed -i -e '/timeout/s:10:60:' src/vcs_versioning/_test_utils.py || die
+}
