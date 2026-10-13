@@ -293,15 +293,6 @@ dev-python/python3-saml
 dev-python/ioflo
 dev-python/raet
 
-# Michał Górny <mgorny@gentoo.org> (2026-09-05)
-# dev-python/consonance has been broken since at least 2024.  Contrary
-# to PYTHON_COMPAT, the code is incompatible with Python 3.12+.
-# The protobuf file needs to be rebuilt, yet upstream never published
-# its source.  No upstream activity since 2021.  No reverse
-# dependencies.  Including a bunch of dead NIH dependencies.
-# Removal on 2026-10-05.  Bug #926610.
-dev-python/consonance
-
 # Ulrich Müller <ulm@gentoo.org> (2026-08-31)
 # Snapshot versions, masked for testing.
 <app-editors/emacs-32.0.9999:32-vcs

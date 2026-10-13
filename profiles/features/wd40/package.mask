@@ -310,7 +310,6 @@ dev-python/github3-py
 dev-python/google-auth-oauthlib
 dev-python/elasticsearch
 dev-python/dns-lexicon
-dev-python/consonance
 dev-python/pygithub
 dev-python/adblock
 dev-python/pysnmp
