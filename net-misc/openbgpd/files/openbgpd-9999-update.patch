@@ -1,0 +1,13 @@
+--- a/update.sh	2020-03-20 15:14:46.462983445 +0100
++++ b/update.sh	2020-03-20 15:14:56.473090379 +0100
+@@ -13,10 +13,6 @@
+ 		git clone "${OPENBGPD_GIT}/openbsd"
+ 	fi
+ fi
+-(cd openbsd
+- git fetch
+- git checkout "${openbsd_branch}"
+- git pull --rebase)
+ 
+ # setup source paths
+ dir=`pwd`
