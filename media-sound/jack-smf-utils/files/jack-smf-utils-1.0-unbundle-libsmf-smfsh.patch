@@ -1,0 +1,133 @@
+Subject: jack-smf-utils-1.0
+
+Fix /usr/bin/smfsh file collision with media-libs/libsmf.
+The un-bundling of libsmf/smfsh bypasses directly calling ar.
+Compile failure with newer libsmf, so function renamed;
+smf_remove_track -> smf_track_remove_from_smf.
+Remove deprecated g_thread_init calls triggering warnings.
+Remove redundant configure checks and readline dependency required in smfsh
+along with libsmf.
+
+Bug:     https://bugs.gentoo.org/427362
+Bug:     https://bugs.gentoo.org/697002
+Bug:     https://bugs.gentoo.org/724762
+PR:      https://github.com/gentoo/gentoo/pull/19010
+
+From:    Gavin Pryke <gavinlee303@gmail.com>
+==============================================================================
+--- a/configure.ac
++++ b/configure.ac
+@@ -12,27 +12,9 @@
+ AC_PROG_INSTALL
+ AC_PROG_RANLIB
+ 
+-# Checks for libraries.
+-AC_CHECK_LIB([m], [pow])
+-AC_ARG_WITH([readline],
+-	    [AS_HELP_STRING([--with-readline],
+-	    [support fancy command line editing @<:@default=check@:>@])],
+-	    [],
+-	    [with_readline=check])
+-
+-AS_IF([test "x$with_readline" != xno],
+-      [AC_CHECK_LIB([readline], [main],
+-		    [AC_SUBST([READLINE_LIBS], ["-lreadline -lncurses"])
+-		    AC_DEFINE([HAVE_LIBREADLINE], [1], [Define if you have libreadline])],
+-		    [if test "x$with_readline" != xcheck; then
+-		     AC_MSG_FAILURE(
+-				    [--with-readline was given, but test for readline failed])
+-		     fi
+-		     ], -lncurses)])
+-
+ # Checks for header files.
+ AC_HEADER_STDC
+-AC_CHECK_HEADERS([arpa/inet.h stdlib.h string.h sys/time.h unistd.h])
++AC_CHECK_HEADERS([stdlib.h string.h sys/time.h unistd.h])
+ 
+ # Checks for typedefs, structures, and compiler characteristics.
+ AC_C_CONST
+@@ -43,12 +25,13 @@
+ AC_C_VOLATILE
+ 
+ # Checks for library functions.
+-AC_FUNC_MALLOC
+-AC_FUNC_MEMCMP
+-AC_FUNC_REALLOC
+ AC_TYPE_SIGNAL
+ AC_FUNC_STRTOD
+-AC_CHECK_FUNCS([gettimeofday memset pow strdup strerror strtol])
++AC_CHECK_FUNCS([gettimeofday memcpy strdup])
++
++PKG_CHECK_MODULES(SMF, smf >= 1.3)
++AC_SUBST(SMF_CFLAGS)
++AC_SUBST(SMF_LIBS)
+ 
+ PKG_CHECK_MODULES(GLIB, glib-2.0 >= 2.2)
+ AC_SUBST(GLIB_CFLAGS)
+@@ -81,6 +64,6 @@
+ AC_SUBST(LASH_CFLAGS)
+ AC_SUBST(LASH_LIBS)
+ 
+-AC_CONFIG_FILES([Makefile libsmf/Makefile man/Makefile src/Makefile])
++AC_CONFIG_FILES([Makefile man/Makefile src/Makefile])
+ AC_OUTPUT
+ 
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -1,2 +1,2 @@
+-SUBDIRS = libsmf src man
++SUBDIRS = src man
+ 
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -1,10 +1,10 @@
+ bin_PROGRAMS = jack-smf-player jack-smf-recorder
+ jack_smf_player_SOURCES = jack-smf-player.c
+ jack_smf_recorder_SOURCES = jack-smf-recorder.c
+-jack_smf_player_LDADD = $(GLIB_LIBS) $(GTHREAD_LIBS) $(JACK_LIBS) $(LASH_LIBS) ../libsmf/libsmf.a
++jack_smf_player_LDADD = $(GLIB_LIBS) $(GTHREAD_LIBS) $(SMF_LIBS) $(JACK_LIBS) $(LASH_LIBS)
+ jack_smf_recorder_LDADD = $(jack_smf_player_LDADD)
+ jack_smf_player_CFLAGS = $(GLIB_CFLAGS) $(GTHREAD_CFLAGS) $(JACK_CFLAGS) $(LASH_CFLAGS) \
+-	-I$(top_srcdir)/libsmf -DG_LOG_DOMAIN=\"jack-smf-player\"
++	$(SMF_CFLAGS) -DG_LOG_DOMAIN=\"jack-smf-player\"
+ jack_smf_recorder_CFLAGS = $(GLIB_CFLAGS) $(GTHREAD_CFLAGS) $(JACK_CFLAGS) $(LASH_CFLAGS) \
+-	-I$(top_srcdir)/libsmf -DG_LOG_DOMAIN=\"jack-smf-recorder\"
++	$(SMF_CFLAGS) -DG_LOG_DOMAIN=\"jack-smf-recorder\"
+ 
+--- a/src/jack-smf-player.c
++++ b/src/jack-smf-player.c
+@@ -656,11 +656,6 @@
+ 
+ #ifdef WITH_LASH
+ 	lash_args_t *lash_args;
+-#endif
+-
+-	g_thread_init(NULL);
+-
+-#ifdef WITH_LASH
+ 	lash_args = lash_extract_args(&argc, &argv);
+ #endif
+ 
+--- a/src/jack-smf-recorder.c
++++ b/src/jack-smf-recorder.c
+@@ -369,7 +369,7 @@
+ 
+ 	for (i = 0; i < 16; i++) {
+ 		if (tracks[i]->number_of_events == 0) {
+-			smf_remove_track(tracks[i]);
++			smf_track_remove_from_smf(tracks[i]);
+ 			smf_track_delete(tracks[i]);
+ 		}
+ 	}
+@@ -425,11 +425,6 @@
+ 
+ #ifdef WITH_LASH
+ 	lash_args_t *lash_args;
+-#endif
+-
+-	g_thread_init(NULL);
+-
+-#ifdef WITH_LASH
+ 	lash_args = lash_extract_args(&argc, &argv);
+ #endif
+ 
