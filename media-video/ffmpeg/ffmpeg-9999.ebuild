@@ -461,6 +461,7 @@ multilib_src_configure() {
 		--disable-libaribcaption
 		--disable-libastcenc
 		--disable-libdavs2
+		--disable-libfdk-xhe-aac
 		--disable-libklvanc
 		--disable-liblcevc-dec
 		--disable-libmpeghdec
