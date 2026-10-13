@@ -18,6 +18,8 @@ IUSE="debug lazy-lock prof +stats xmalloc"
 PATCHES=(
 	"${FILESDIR}/${PN}-5.3.0-aarch64-64kib-page-size.patch" # users can override by passing `--with-lg-pagesize=foo`
 	"${FILESDIR}/${PN}-5.4.0-dont-override-cflags.patch"
+	# Bug #984178. Remove in next release, merged upstream.
+	"${FILESDIR}/${PN}-5.4.0-emap-null-in-pointer-arithmetic.patch"
 )
 
 HTML_DOCS=(
