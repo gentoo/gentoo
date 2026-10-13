@@ -95,8 +95,7 @@ src_prepare() {
 		alpha)
 			cp "${WORKDIR}/linux-${DEBIAN_COMMIT}/debian/config/config" .config || die
 			merge_configs+=(
-				"${WORKDIR}/linux-${DEBIAN_COMMIT}/debian/config/alpha/config" \
-				"${WORKDIR}/linux-${DEBIAN_COMMIT}/debian/config/alpha/config.alpha-smp"
+				"${WORKDIR}/linux-${DEBIAN_COMMIT}/debian/config/alpha/config"
 			)
 			;;
 		amd64)
@@ -128,7 +127,7 @@ src_prepare() {
 		ppc)
 			cp "${WORKDIR}/linux-${DEBIAN_COMMIT}/debian/config/config" .config || die
 			merge_configs+=(
-				"${WORKDIR}/linux-${DEBIAN_COMMIT}/debian/config/powerpc/config.powerpc"
+				"${WORKDIR}/linux-${DEBIAN_COMMIT}/debian/config/powerpc/config"
 			)
 			;;
 		ppc64)
@@ -144,8 +143,7 @@ src_prepare() {
 		sparc)
 			cp "${WORKDIR}/linux-${DEBIAN_COMMIT}/debian/config/config" .config || die
 			merge_configs+=(
-				"${WORKDIR}/linux-${DEBIAN_COMMIT}/debian/config/sparc64/config.sparc64" \
-				"${WORKDIR}/linux-${DEBIAN_COMMIT}/debian/config/sparc64/config.sparc64-smp"
+				"${WORKDIR}/linux-${DEBIAN_COMMIT}/debian/config/sparc64/config"
 			)
 			;;
 		x86)
