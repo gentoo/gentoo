@@ -1,0 +1,12 @@
+https://bugs.gentoo.org/930472
+--- a/src/event.h
++++ b/src/event.h
+@@ -20,7 +20,7 @@
+ #include <sys/time.h>
+ 
+ struct pcap_timeval {
+-    u_int32_t tv_sec;      /* seconds */
++    const time_t tv_sec;   /* seconds */
+     u_int32_t tv_usec;     /* microseconds */
+ };
+ 
