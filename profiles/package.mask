@@ -291,7 +291,6 @@ dev-python/python3-saml
 # Stuck on Python 3.12.  No activity upstream.
 # Removal on 2026-10-05.  Bug #952340.
 dev-python/ioflo
-dev-python/raet
 
 # Ulrich Müller <ulm@gentoo.org> (2026-08-31)
 # Snapshot versions, masked for testing.
