@@ -16,6 +16,11 @@ IUSE="static"
 
 RDEPEND="!net-misc/iputils[traceroute6(-)]"
 
+src_configure() {
+	# upstream tracker https://sourceforge.net/p/traceroute/bugs/15/
+	append-lfs-flags
+}
+
 src_compile() {
 	use static && append-ldflags -static
 	# bug #432116
