@@ -293,7 +293,6 @@ dev-python/sqlglot
 dev-python/spake2
 dev-python/requests-ntlm
 dev-python/python3-discogs-client
-dev-python/python-axolotl
 dev-python/pyghmi
 dev-python/omemo-dr
 dev-python/noiseprotocol

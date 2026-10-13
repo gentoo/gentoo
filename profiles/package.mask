@@ -302,7 +302,6 @@ dev-python/raet
 # Removal on 2026-10-05.  Bug #926610.
 dev-python/consonance
 dev-python/dissononce
-dev-python/python-axolotl
 
 # Ulrich Müller <ulm@gentoo.org> (2026-08-31)
 # Snapshot versions, masked for testing.
