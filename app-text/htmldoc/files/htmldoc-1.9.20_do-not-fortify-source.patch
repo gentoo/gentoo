@@ -1,0 +1,23 @@
+From: Filip Kobierski <fkobi@pm.me>
+
+https://bugs.gentoo.org/893274
+---
+ configure.ac | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index ab4a53d..9149d76 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -296,8 +296,6 @@ AS_IF([test -n "$GXX"], [
+     ], [
+ 	# Otherwise use the Fortify enhancements to catch any unbounded
+ 	# string operations...
+-	CFLAGS="$CFLAGS -D_FORTIFY_SOURCE=3"
+-	CXXFLAGS="$CXXFLAGS -D_FORTIFY_SOURCE=3"
+     ])
+ 
+     dnl Set optimization flags...
+-- 
+2.45.2
+
