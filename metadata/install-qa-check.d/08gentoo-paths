@@ -60,6 +60,10 @@ gentoo_path_check() {
 	# 4. check for unexpected /usr/share/doc subdirectories
 	local doc_dirs=( "${ED%/}"/usr/share/doc/* )
 	for x in "${doc_dirs[@]##*/}"; do
+		# Symlinks named $PN-$SLOT are ok.
+		if [[ ${x} == ${PN}-${SLOT} && -h "${ED%/}/usr/share/doc/${x}" ]]; then
+			continue
+		fi
 		if [[ ${x} != ${PF} ]]; then
 			bad_paths+=( "/usr/share/doc/${x}" )
 		fi
