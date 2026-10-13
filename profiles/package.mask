@@ -304,7 +304,6 @@ dev-python/consonance
 dev-python/dissononce
 dev-python/python-axolotl
 dev-python/python-axolotl-curve25519
-dev-python/transitions
 
 # Ulrich Müller <ulm@gentoo.org> (2026-08-31)
 # Snapshot versions, masked for testing.
