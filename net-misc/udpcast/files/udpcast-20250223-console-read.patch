@@ -1,0 +1,18 @@
+Fix warning
+
+console.c: In function ‘udpc_restoreConsole’:
+console.c:90:7: warning: ignoring return value of ‘read’ declared with attribute ‘warn_unused_result’ [-Wunused-result]
+   90 |       read(c->fd, &ch, 1);
+
+--- a/console.c	2025-06-11 17:05:56.257715935 +0300
++++ b/console.c	2025-06-11 17:10:10.870453898 +0300
+@@ -87,7 +87,8 @@
+ 
+     /* If key pressed, consume it. If letter is q, quit */
+     if(doConsume) {
+-      read(c->fd, &ch, 1);
++      if (-1 == read(c->fd, &ch, 1))
++        perror("Read error");
+     }
+ 
+     if(c->needRestore && tcsetattr(c->fd, TCSAFLUSH, &c->oldtio) < 0) {
