@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -29,7 +29,8 @@ DEPEND="
 	dev-qt/qtdeclarative:6[widgets]
 	dev-qt/qtmultimedia:6
 	dev-qt/qtcharts:6
-	>=media-libs/mlt-7.18.0[ffmpeg,frei0r,jack,opengl,sdl,xml]
+	dev-qt/qtwebsockets:6
+	>=media-libs/mlt-7.36.0[ffmpeg,frei0r,jack,opengl,sdl,xml]
 	media-video/ffmpeg
 "
 
