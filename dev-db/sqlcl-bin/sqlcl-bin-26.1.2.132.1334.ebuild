@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -22,10 +22,12 @@ RESTRICT="mirror"
 BDEPEND="app-arch/unzip"
 RDEPEND="dev-db/oracle-instantclient
 	dev-java/java-config:2
-	>=virtual/jre-11"
+	>=virtual/jre-17"
 
 src_install() {
-	java-pkg_dojar sqlcl/lib/*.jar sqlcl/lib/ext/*.jar
+	java-pkg_dojar sqlcl/lib/*.jar
+	java-pkg_jarinto "/usr/share/${PN}/lib/ext"
+	java-pkg_dojar sqlcl/lib/ext/*.jar
 
 	java-pkg_dolauncher "${MY_PN}" \
 		--main oracle.dbtools.raptor.scriptrunner.cmdline.SqlCli \
