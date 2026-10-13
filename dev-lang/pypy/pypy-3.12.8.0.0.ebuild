@@ -198,9 +198,7 @@ src_install() {
 		rm -r "${ED}${dest}"/_gdbm* || die
 	fi
 	if ! use test-install; then
-		rm -r "${ED}${dest}"/{ctypes,tkinter,unittest}/test \
-			"${ED}${dest}"/{distutils,lib2to3}/tests \
-			"${ED}${dest}"/idlelib/idle_test || die
+		rm -r "${ED}${dest}"/idlelib/idle_test || die
 	fi
 	if ! use sqlite; then
 		rm -r "${ED}${dest}"/sqlite3 \
