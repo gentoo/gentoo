@@ -5,7 +5,7 @@ EAPI=8
 
 DESCRIPTION="Official ODBC driver for PostgreSQL"
 HOMEPAGE="https://odbc.postgresql.org/"
-SRC_URI="https://ftp.postgresql.org/pub/odbc/versions/src/${P}.tar.gz"
+SRC_URI="https://ftp.postgresql.org/pub/odbc/versions.old/src/${P}.tar.gz"
 LICENSE="LGPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
