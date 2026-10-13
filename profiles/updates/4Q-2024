@@ -12,7 +12,6 @@ move dev-python/qscintilla-python dev-python/qscintilla
 move dev-python/python-netlink dev-python/netlink
 move dev-python/python-lhafile dev-python/lhafile
 move dev-python/libpillowfight dev-python/pypillowfight
-move dev-python/cchardet dev-python/faust-cchardet
 move dev-python/protobuf-python dev-python/protobuf
 move media-libs/oneVPL-intel-gpu media-libs/vpl-gpu-rt
 move net-analyzer/RustScan net-analyzer/rustscan

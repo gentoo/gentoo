@@ -359,16 +359,6 @@ dev-python/vecrec
 # Removal on 2026-09-04.  Bug #957269.
 dev-python/pyformance
 
-# Michał Górny <mgorny@gentoo.org> (2026-08-04)
-# Slop package.  The old versions bundle a very old fork of
-# app-i18n/uchardet.  The new ones require app-i18n/uchardet from git
-# that suffers from regressions (and upstream slop-patched them anyway).
-# The only revdep supports fallback to dev-python/chardet and
-# dev-python/charset-normalizer (both are also slop nowadays, but we're
-# stuck with them anyway), and uses a || dep.
-# Removal on 2026-09-03.  Bug #980354.
-dev-python/faust-cchardet
-
 # Alfred Wingate <parona@protonmail.com> (2026-07-24)
 # Renamed to libgedit-tepl upstream.
 # Unbuildable for half a year. Last revdep moved to libgedit-tepl.
