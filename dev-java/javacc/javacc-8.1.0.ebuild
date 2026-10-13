@@ -17,13 +17,17 @@ LICENSE="BSD-2"
 SLOT="8"
 KEYWORDS="~amd64 ~arm64"
 
-DEPEND=">=virtual/jdk-1.8:*"
+DEPEND="
+	>=virtual/jdk-1.8:*
+	test? ( dev-java/javacc-java:${SLOT} )
+"
+
 RDEPEND=">=virtual/jre-1.8:*"
 
 JAVA_RESOURCE_DIRS="src/main/resources"
 JAVA_SRC_DIR="src/main/java"
 JAVA_TEST_EXCLUDES=( org.javacc.JavaCCTestCase ) # This class has no tests
-JAVA_TEST_GENTOO_CLASSPATH="junit-4"
+JAVA_TEST_GENTOO_CLASSPATH="javacc-java-${SLOT} junit-4"
 JAVA_TEST_SRC_DIR="src/test/java"
 
 src_prepare() {
