@@ -1,0 +1,20 @@
+# keydb user.
+KEYDB_USER="keydb"
+
+# keydb group.
+KEYDB_GROUP="keydb"
+
+# keydb configuration file.
+KEYDB_CONF="/etc/keydb/keydb.conf"
+
+# keydb dump directory.
+KEYDB_DIR="/var/lib/keydb"
+
+# keydb options.
+# (keydb expects the first argument to be the configuration file.)
+KEYDB_OPTS="${KEYDB_CONF}"
+
+# Specify the network service that corresponds to the "bind" setting
+# in your keydb.conf. For example, if you bind to 127.0.0.1, this should
+# be set to "net.lo" which provides the loopback interface.
+rc_need="net.lo"
