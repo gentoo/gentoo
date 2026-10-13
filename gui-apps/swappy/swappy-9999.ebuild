@@ -27,7 +27,7 @@ COMMON_DEPEND="
 	x11-libs/pango
 "
 RDEPEND="${COMMON_DEPEND}
-	media-fonts/fontawesome[otf]
+	media-fonts/fontawesome
 "
 DEPEND="${COMMON_DEPEND}
 	x11-base/xorg-proto
