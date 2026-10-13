@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake kde.org
+inherit cmake flag-o-matic kde.org
 
 DESCRIPTION="Cross-platform C++ XMPP client and server library"
 HOMEPAGE="https://invent.kde.org/libraries/qxmpp"
@@ -34,6 +34,11 @@ DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
 src_configure() {
+	# -Werror=odr
+	# https://bugs.gentoo.org/982113
+	# https://invent.kde.org/libraries/qxmpp/-/work_items/723
+	filter-lto
+
 	local mycmakeargs=(
 		-DCMAKE_DISABLE_FIND_PACKAGE_ECM=ON # clang-format only
 		-DBUILD_DOCUMENTATION=OFF # $(usex doc) TODO: Port to ECMGenerateQDoc
