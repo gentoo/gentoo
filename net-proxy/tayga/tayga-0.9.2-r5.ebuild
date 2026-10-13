@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,6 +18,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-manpage-RFC.patch
 	"${FILESDIR}"/${P}-release-reserved-addr.patch
 	"${FILESDIR}"/${PN}-0.9.2-Fix-implicit-function-declaration.patch
+	"${FILESDIR}"/${PN}-0.9.2-replace-null-with-nul.patch
 )
 
 src_prepare() {
