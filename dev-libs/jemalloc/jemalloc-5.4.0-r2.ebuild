@@ -22,6 +22,10 @@ PATCHES=(
 	"${FILESDIR}/${PN}-5.4.0-emap-null-in-pointer-arithmetic.patch"
 )
 
+# We could use --includedir w/ libdir but too many consumers don't use
+# pkg-config.
+MULTILIB_WRAPPED_HEADERS=( /usr/include/jemalloc/jemalloc.h )
+
 HTML_DOCS=(
 	doc/jemalloc.html
 )
@@ -40,9 +44,6 @@ src_prepare() {
 
 multilib_src_configure() {
 	local myconf=(
-		# Jemalloc's headers have ABI constants hardcoded in them, so they are
-		# relocated to libdir.
-		--includedir="${EPREFIX}/usr/$(get_libdir)"
 		$(use_enable debug)
 		$(use_enable lazy-lock)
 		$(use_enable prof)
