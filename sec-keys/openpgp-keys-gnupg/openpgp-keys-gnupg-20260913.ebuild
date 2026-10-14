@@ -19,4 +19,4 @@ DESCRIPTION="OpenPGP keys used to sign GnuPG releases"
 HOMEPAGE="https://gnupg.org/signature_key.html"
 SRC_URI+=" https://gnupg.org/signature_key.asc -> ${P}-signature_key.asc"
 
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
