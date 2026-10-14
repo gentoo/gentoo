@@ -12,7 +12,7 @@ HOMEPAGE="https://www.libpng.org/"
 SRC_URI="
 	https://downloads.sourceforge.net/${PN}/${P}.tar.xz
 	apng? (
-		https://downloads.sourceforge.net/${APNG_REPO}/${PN}$(ver_rs 1-2 '' $(ver_cut 1-2 ${APNG_VERSION}))/${PV}/${PN}-${APNG_VERSION}-apng.patch.gz -> ${PN}-${APNG_VERSION}-${APNG_REPO}-apng.patch.gz
+		https://downloads.sourceforge.net/${APNG_REPO}/${PN}$(ver_rs 1-2 '' $(ver_cut 1-2 ${APNG_VERSION}))/${APNG_VERSION}/${PN}-${APNG_VERSION}-apng.patch.gz -> ${PN}-${APNG_VERSION}-${APNG_REPO}-apng.patch.gz
 		https://downloads.sourceforge.net/${APNG_REPO}/${PN}$(ver_rs 1-2 '' $(ver_cut 1-2 ${APNG_VERSION}))/${PN}-${APNG_VERSION}-apng.patch.gz -> ${PN}-${APNG_VERSION}-${APNG_REPO}-apng.patch.gz
 	)
 "
