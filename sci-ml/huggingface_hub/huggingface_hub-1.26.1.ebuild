@@ -29,11 +29,10 @@ RDEPEND="
 		dev-python/httpx[${PYTHON_USEDEP}]
 		dev-python/packaging[${PYTHON_USEDEP}]
 		dev-python/pyyaml[${PYTHON_USEDEP}]
-		dev-python/shellingham[${PYTHON_USEDEP}]
 		dev-python/tqdm[${PYTHON_USEDEP}]
 		dev-python/typer[${PYTHON_USEDEP}]
 		dev-python/typing-extensions[${PYTHON_USEDEP}]
-		sci-ml/hf_xet[${PYTHON_USEDEP}]
+		>=sci-ml/hf_xet-1.5.2[${PYTHON_USEDEP}]
 		torch? (
 			sci-ml/safetensors[${PYTHON_USEDEP}]
 		)
@@ -76,6 +75,8 @@ src_test() {
 		tests/test_cache_no_symlinks.py::TestCacheLayoutIfSymlinksNotSupported::test_scan_and_delete_cache_no_symlinks
 		tests/test_cli.py
 		tests/test_cli_discussions.py
+		tests/test_cli_framework.py::TestHelpRecords::test_argument_renders_help_and_required
+		tests/test_cli_framework.py::TestTyperMarkerShim::test_annotated_argument
 		tests/test_commit_scheduler.py::TestCommitScheduler::test_context_manager
 		tests/test_commit_scheduler.py::TestCommitScheduler::test_missing_folder_is_created
 		tests/test_commit_scheduler.py::TestCommitScheduler::test_mocked_push_to_hub
