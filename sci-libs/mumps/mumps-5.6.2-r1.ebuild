@@ -201,14 +201,20 @@ src_test() {
 }
 
 src_install() {
-	dolib.so lib/lib*$(get_libname)*
-	use static-libs && dolib.a lib/lib*.a
+	find lib -maxdepth 1 -name "lib*$(get_libname)*" ! -name "libmpiseq*" \
+		-exec dolib.so {} + || die
+	if use static-libs; then
+		find lib -maxdepth 1 -name "*.a" ! -name "libmpiseq*" \
+			-exec dolib.a {} + || die
+	fi
 	insinto /usr
 
 	doins -r include
 	if ! use mpi; then
+		dolib.so libseq/lib*$(get_libname)*
 		insinto /usr/include/mpiseq
 		doins libseq/*.h
+		use static-libs && dolib.a libseq/libmpiseq.a
 	fi
 
 	dodoc README ChangeLog VERSION
