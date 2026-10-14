@@ -263,7 +263,6 @@ multilib_src_configure() {
 		$(use_enable ldap ldaps)
 		$(use_enable ldap)
 		$(use_enable pop3)
-		--disable-smb # Removed upstream in late 2026
 		$(use_with ssh libssh2) # enables scp/sftp
 		--enable-rtsp
 		$(use_enable smtp)
