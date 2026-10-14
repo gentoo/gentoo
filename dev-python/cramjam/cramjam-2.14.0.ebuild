@@ -8,7 +8,7 @@ DISTUTILS_USE_PEP517=maturin
 PYPI_VERIFY_REPO=https://github.com/milesgranger/cramjam
 PYTHON_COMPAT=( python3_{12..15} )
 
-RUST_MIN_VER="1.83.0"
+RUST_MIN_VER="1.85.0"
 # Note: you need to use top-level Cargo.lock to generate the crate list.
 CRATES="
 	adler2@2.0.1
