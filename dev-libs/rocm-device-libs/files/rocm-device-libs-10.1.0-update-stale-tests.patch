@@ -1,0 +1,336 @@
+Update stale tests
+
+Backports: https://github.com/ROCm/llvm-project/commit/25affef0d99027aee4dcdf573e6b2b9d174b04eb
+--- a/test/compile/atomic_work_item_fence.cl
++++ b/test/compile/atomic_work_item_fence.cl
+@@ -48,5 +48,5 @@ kernel void test_invalid() {
+     atomic_work_item_fence(0, memory_order_acq_rel, memory_scope_device);
+ }
+ 
+-// GCN: ![[LOCAL_MMRA]]  = !{!"amdgpu-as", !"local"}
+-// GCN: ![[GLOBAL_MMRA]] = !{!"amdgpu-as", !"global"}
++// GCN: ![[LOCAL_MMRA]]  = !{!"amdgpu-synchronize-as", !"local"}
++// GCN: ![[GLOBAL_MMRA]] = !{!"amdgpu-synchronize-as", !"global"}
+--- a/test/compile/fract.cl
++++ b/test/compile/fract.cl
+@@ -1,31 +1,20 @@
+ #pragma OPENCL EXTENSION cl_khr_fp16 : enable
+ 
+ // CHECK-LABEL: test_fract_f16
+-// GFX600-DAG: s_add_u32
+-// GFX600-DAG: s_addc_u32
+-// GFX600: buffer_load_ushort
++// GFX600-DAG: s_load_dwordx2
+ // GFX600-DAG: v_lshlrev_b32
+ // GFX600-DAG: v_mov_b32
+ // GFX600-DAG: s_mov_b32
+-// GFX600-DAG: s_mov_b32
+-// GFX600: s_waitcnt
++// GFX600: buffer_load_ushort
+ // GFX600: buffer_store_short
+ 
+ 
+ // TODO: Could promote the f16 pattern to f32
+-// GFX700-DAG: s_add_i32
+-// GFX700-DAG: s_lshr_b32
+-// GFX700-DAG: s_add_u32
+-// GFX700-DAG: s_addc_u32
+-// GFX700: buffer_load_ushort
+ // GFX700-DAG: s_load_dwordx2
+ // GFX700-DAG: v_lshlrev_b32
+-// GFX700-DAG: s_mov_b32
+-// GFX700-DAG: s_waitcnt
+-// GFX700-DAG: v_mov_b32
+ // GFX700-DAG: v_add_i32
+ // GFX700-DAG: v_addc_u32
+-// GFX700: s_waitcnt
++// GFX700: flat_load_ushort
+ // GFX700: flat_store_short
+ 
+ 
+@@ -47,9 +36,7 @@ kernel void test_fract_f16(global half* restrict out0,
+ // CHECK-LABEL: test_fract_f32
+ // GFX600-DAG: v_floor_f32
+ // GFX600-DAG: v_sub_f32
+-// GFX600-DAG: v_min_f32_e32 v{{[0-9]+}}, 0x3f7fffff,
+-// GFX600-DAG: v_cmp_u_f32
+-// GFX600-DAG: v_cndmask_b32
++// GFX600-DAG: v_min_legacy_f32_e32 v{{[0-9]+}}, 0x3f7fffff,
+ // GFX600-DAG: v_cmp_neq_f32
+ // GFX600-DAG: v_cndmask_b32
+ 
+@@ -78,9 +65,10 @@ kernel void test_fract_f32(global float* restrict out0,
+ // GFX600: v_cndmask_b32
+ // GFX600: v_cndmask_b32
+ // GFX600: v_add_f64
+-// GFX600: v_cmp_u_f64
+ // GFX600: v_add_f64
+-// GFX600: v_min_f64
++// GFX600: v_cmp_nle_f64
++// GFX600: v_cndmask_b32
++// GFX600: v_cndmask_b32
+ // GFX600: v_cmp_neq_f64
+ 
+ 
+--- a/test/compile/frexp.cl
++++ b/test/compile/frexp.cl
+@@ -6,9 +6,9 @@
+ 
+ // GCN-LABEL: {{^}}test_frexp_f32:
+ 
+-// GFX600-DAG: s_movk_i32 [[INF:s[0-9]+]], 0x1f8
++// GFX600-DAG: s_mov_b32 [[INF:s[0-9]+]], 0x7f800000
+ // GFX600-DAG: v_frexp_mant_f32{{(_e32)?}} [[MANT:v[0-9]+]], [[SRC:v[0-9]+]]
+-// GFX600-DAG: v_cmp_class_f32{{(_e64)?}} [[CMP:(vcc|s{{\[[0-9]+:[0-9]+\]}})]], [[SRC]], [[INF]]
++// GFX600-DAG: v_cmp_lt_f32{{(_e64)?}} [[CMP:(vcc|s{{\[[0-9]+:[0-9]+\]}})]], |[[SRC]]|, [[INF]]
+ // GFX600-DAG: v_frexp_exp_i32_f32{{(_e32)?}} [[EXP:v[0-9]+]], [[SRC]]
+ // GFX600-DAG: v_cndmask_b32{{(_e32)?|(e64)?}} v{{[0-9]+}}, [[SRC]], [[MANT]], [[CMP]]
+ // GFX600-DAG: v_cndmask_b32{{(_e32)?|(e64)?}} v{{[0-9]+}}, 0, [[EXP]], [[CMP]]
+@@ -17,6 +17,7 @@
+ // GFX700-DAG: v_frexp_mant_f32{{(_e32)?}} [[MANT:v[0-9]+]], [[SRC:v[0-9]+]]
+ // GFX700-DAG: v_frexp_exp_i32_f32{{(_e32)?}} [[EXP:v[0-9]+]], [[SRC:v[0-9]+]]
+ // GFX700-NOT: v_cmp_class
++// GCN-LABEL: {{^}}__clang_ocl_kern_imp_test_frexp_f32:
+ kernel void test_frexp_f32(global float* restrict out0,
+                            global int* restrict out1,
+                            global float* restrict in) {
+@@ -28,11 +29,11 @@ kernel void test_frexp_f32(global float* restrict out0,
+ }
+ 
+ // GCN-LABEL: {{^}}test_frexp_f64:
+-// GFX600: s_mov_b32 s{{[0-9]+}}, 0{{$}}
+ 
+-// GFX600-DAG: s_movk_i32 [[INF:s[0-9]+]], 0x1f8
++// GFX600-DAG: s_mov_b32 [[INF:s[0-9]+]], 0x7ff00000
++// GFX600-DAG: v_and_b32{{(_e32)?}} [[ABS_HI:v[0-9]+]], 0x7fffffff, v{{[0-9]+}}
+ // GFX600-DAG: v_frexp_mant_f64{{(_e32)?}} v{{\[}}[[MANT_LO:[0-9]+]]:[[MANT_HI:[0-9]+]]{{\]}}, [[SRC:v\[[0-9]+:[0-9]+\]]]
+-// GFX600-DAG: v_cmp_class_f64{{(_e64)?}} [[CMP:(vcc|s{{\[[0-9]+:[0-9]+\]}})]], [[SRC]], [[INF]]
++// GFX600-DAG: v_cmp_gt_i32{{(_e32)?}} [[CMP:(vcc|s{{\[[0-9]+:[0-9]+\]}})]], [[INF]], [[ABS_HI]]
+ // GFX600-DAG: v_frexp_exp_i32_f64{{(_e32)?}} [[EXP:v[0-9]+]], [[SRC]]
+ // GFX600-DAG: v_cndmask_b32{{(_e32)?|(e64)?}} v{{[0-9]+}}, v{{[0-9]+}}, v[[MANT_HI]], [[CMP]]
+ // GFX600-DAG: v_cndmask_b32{{(_e32)?|(e64)?}} v{{[0-9]+}}, v{{[0-9]+}}, v[[MANT_LO]], [[CMP]]
+@@ -42,6 +43,7 @@ kernel void test_frexp_f32(global float* restrict out0,
+ // GFX700-DAG: v_frexp_mant_f64
+ // GFX700-DAG: v_frexp_exp_i32_f64
+ // GFX700-NOT: v_cmp_class
++// GCN-LABEL: {{^}}__clang_ocl_kern_imp_test_frexp_f64:
+ kernel void test_frexp_f64(global double* restrict out0,
+                            global int* restrict out1,
+                            global double* restrict in) {
+--- a/test/compile/lgamma_r.cl
++++ b/test/compile/lgamma_r.cl
+@@ -14,90 +14,94 @@ static float test_lgamma_r(float val, volatile global int* sign_out) {
+ kernel void constant_fold_lgamma_r_f32(volatile global float* out,
+                                        volatile global int* sign_out) {
+     // CONSTANTFOLD: store volatile i32 0,
+-    // CONSTANTFOLD-NEXT: store volatile float 0x7FF0000000000000
++    // CONSTANTFOLD: store volatile float +inf
+     out[0] = test_lgamma_r(0.0f, sign_out);
+ 
+-    // CONSTANTFOLD-NEXT: store volatile i32 0,
+-    // CONSTANTFOLD-NEXT: store volatile float 0x7FF0000000000000
++    // CONSTANTFOLD: store volatile i32 0,
++    // CONSTANTFOLD: store volatile float +inf
+     out[0] = test_lgamma_r(-0.0f, sign_out);
+ 
+-    // CONSTANTFOLD-NEXT: store volatile i32 0,
+-    // CONSTANTFOLD-NEXT: store volatile float 0x7FF8000000000000,
++    // CONSTANTFOLD: store volatile i32 0,
++    // CONSTANTFOLD: store volatile float -qnan,
+     out[0] = test_lgamma_r(__builtin_nanf(""), sign_out);
+ 
+-    // CONSTANTFOLD-NEXT: store volatile i32 0,
+-    // CONSTANTFOLD-NEXT: store volatile float 0x7FF4000000000000,
++    // CONSTANTFOLD: store volatile i32 0,
++    // CONSTANTFOLD: store volatile float -nan(0x200000),
+     out[0] = test_lgamma_r(__builtin_nansf(""), sign_out);
+ 
+-    // CONSTANTFOLD-NEXT: store volatile i32 1,
+-    // CONSTANTFOLD-NEXT: store volatile float 0x7FF0000000000000,
++    // CONSTANTFOLD: store volatile i32 1,
++    // CONSTANTFOLD: store volatile float +inf,
+     out[0] = test_lgamma_r(__builtin_inff(), sign_out);
+ 
+-    // CONSTANTFOLD-NEXT: store volatile i32 0,
+-    // CONSTANTFOLD-NEXT: store volatile float 0x7FF0000000000000,
++    // CONSTANTFOLD: store volatile i32 0,
++    // CONSTANTFOLD: store volatile float +inf,
+     out[0] = test_lgamma_r(-__builtin_inff(), sign_out);
+ 
+-    // CONSTANTFOLD-NEXT: store volatile i32 1,
+-    // CONSTANTFOLD-NEXT: store volatile float 0x419DE28020000000,
++    // Large arguments hit the Stirling/table path, which uses target
++    // intrinsics (e.g. amdgcn.rcp) that do not constant fold. The result is a
++    // runtime value and its computation may be interleaved with the stores, so
++    // do not use -NEXT around these.
++    // CONSTANTFOLD: store volatile i32 1,
++    // CONSTANTFOLD: store volatile float %{{.*}}
+     out[0] = test_lgamma_r(0x1.0p+23f, sign_out);
+ 
+-    // CONSTANTFOLD-NEXT: store volatile i32 0,
+-    // CONSTANTFOLD-NEXT: store volatile float 0x7FF0000000000000,
++    // CONSTANTFOLD: store volatile i32 0,
++    // CONSTANTFOLD: store volatile float +inf,
+     out[0] = test_lgamma_r(-0x1.0p+23f, sign_out);
+ 
+-    // CONSTANTFOLD-NEXT: store volatile i32 1,
+-    // CONSTANTFOLD-NEXT: store volatile float 0.000000e+00,
++    // CONSTANTFOLD: store volatile i32 1,
++    // CONSTANTFOLD: store volatile float 0.000000e+00,
+     out[0] = test_lgamma_r(1.0f, sign_out);
+ 
+-    // CONSTANTFOLD-NEXT: store volatile i32 1,
+-    // CONSTANTFOLD-NEXT: store volatile float 0.000000e+00,
++    // CONSTANTFOLD: store volatile i32 1,
++    // CONSTANTFOLD: store volatile float 0.000000e+00,
+     out[0] = test_lgamma_r(2.0f, sign_out);
+ 
+-    // CONSTANTFOLD-NEXT: store volatile i32 1,
+-    // CONSTANTFOLD-NEXT: store volatile float 0x3FE62E4300000000,
++    // CONSTANTFOLD: store volatile i32 1,
++    // CONSTANTFOLD: store volatile float f0x3F317218,
+     out[0] = test_lgamma_r(3.0f, sign_out);
+ 
+-    // CONSTANTFOLD-NEXT: store volatile i32 1,
+-    // CONSTANTFOLD-NEXT: store volatile float 0x3FE250D040000000,
++    // CONSTANTFOLD: store volatile i32 1,
++    // CONSTANTFOLD: store volatile float f0x3F128682,
+     out[0] = test_lgamma_r(0.5f, sign_out);
+ 
+-    // CONSTANTFOLD-NEXT: store volatile i32 1,
+-    // CONSTANTFOLD-NEXT: store volatile float 0x405601E680000000,
++    // CONSTANTFOLD: store volatile i32 1,
++    // CONSTANTFOLD: store volatile float f0x42B00F34,
+     out[0] = test_lgamma_r(0x1.0p-127f, sign_out);
+ 
+-    // CONSTANTFOLD-NEXT: store volatile i32 1,
+-    // CONSTANTFOLD-NEXT: store volatile float 0x419DE28060000000,
++    // CONSTANTFOLD: store volatile i32 1,
++    // CONSTANTFOLD: store volatile float %{{.*}}
+     out[0] = test_lgamma_r(nextafter(0x1.0p+23f, __builtin_inff()), sign_out);
+ 
+-    // CONSTANTFOLD-NEXT: store volatile i32 1,
+-    // CONSTANTFOLD-NEXT: store volatile float 0x419DE28000000000,
++    // CONSTANTFOLD: store volatile i32 1,
++    // CONSTANTFOLD: store volatile float %{{.*}}
+     out[0] = test_lgamma_r(nextafter(0x1.0p+23f, -__builtin_inff()), sign_out);
+ 
+-    // CONSTANTFOLD-NEXT: store volatile i32 1,
+-    // CONSTANTFOLD-NEXT: store volatile float 0xC19DE28040000000,
++    // CONSTANTFOLD: store volatile i32 1,
++    // CONSTANTFOLD: store volatile float %{{.*}}
+     out[0] = test_lgamma_r(nextafter(-0x1.0p+23f, __builtin_inff()), sign_out);
+ 
+-    // CONSTANTFOLD-NEXT: store volatile i32 0,
+-    // CONSTANTFOLD-NEXT: store volatile float 0x7FF0000000000000,
++    // CONSTANTFOLD: store volatile i32 0,
++    // CONSTANTFOLD: store volatile float +inf,
+     out[0] = test_lgamma_r(nextafter(-0x1.0p+23f, -__builtin_inff()), sign_out);
+ 
+-    // CONSTANTFOLD-NEXT: store volatile i32 0,
+-    // CONSTANTFOLD-NEXT: store volatile float 0x7FF0000000000000,
++    // CONSTANTFOLD: store volatile i32 0,
++    // CONSTANTFOLD: store volatile float +inf,
+     out[0] = test_lgamma_r(-1.0f, sign_out);
+ 
+-    // CONSTANTFOLD-NEXT: store volatile i32 0,
+-    // CONSTANTFOLD-NEXT: store volatile float 0x7FF0000000000000,
++    // CONSTANTFOLD: store volatile i32 0,
++    // CONSTANTFOLD: store volatile float +inf,
+     out[0] = test_lgamma_r(-2.0f, sign_out);
+ 
+-    // CONSTANTFOLD-NEXT: store volatile i32 0,
+-    // CONSTANTFOLD-NEXT: store volatile float 0x7FF0000000000000,
++    // CONSTANTFOLD: store volatile i32 0,
++    // CONSTANTFOLD: store volatile float +inf,
+     out[0] = test_lgamma_r(-3.0f, sign_out);
+ 
+-    // CONSTANTFOLD-NEXT: store volatile i32 1,
+-    // CONSTANTFOLD-NEXT: store volatile float 0xBFF4F1B100000000,
++    // CONSTANTFOLD: store volatile i32 1,
++    // CONSTANTFOLD: store volatile float %{{.*}}
+     out[0] = test_lgamma_r(-3.5f, sign_out);
+ 
+-    // CONSTANTFOLD-NEXT: store volatile i32 1,
+-    // CONSTANTFOLD-NEXT: store volatile float 0xC19DE28040000000,
++    // CONSTANTFOLD: store volatile i32 1,
++    // CONSTANTFOLD: store volatile float %{{.*}}
+     out[0] = test_lgamma_r(as_float(0xcaffffff), sign_out);
+ }
+--- a/test/compile/native_rcp.cl
++++ b/test/compile/native_rcp.cl
+@@ -6,29 +6,31 @@
+ 
+ half __ocml_native_rcp_f16(half);
+ 
+-// GCN: {{^}}test_native_recip_f16:
++// GCN-LABEL: {{^}}test_native_recip_f16:
+ // GFX600: v_rcp_f32
+ // GFX700: v_rcp_f32
+ 
+ 
+-// GFX803: {{(flat|global|buffer)}}_load_{{(ushort|b16)}} [[VAL:v[0-9+]]],
++// GFX803: {{(flat|global|buffer)}}_load_{{(ushort|b16)}} [[VAL:v[0-9]+]],
+ // GFX803-NOT: [[VAL]]
+ // GFX803: v_rcp_f16{{(_e32)?}} [[RESULT:v[0-9]+]], [[VAL]]
+ // GFX803-NOT: [[RESULT]]
+ // GFX803: [[RESULT]]
+ // GFX803-NOT: [[RESULT]]
++// GFX803: s_endpgm
+ kernel void test_native_recip_f16(global half* restrict out, global half* restrict in) {
+     int id = get_local_id(0);
+     out[id] = __ocml_native_rcp_f16(in[id]);
+ }
+ 
+-// GCN: {{^}}test_native_recip_f32:
+-// GCN: {{(flat|global|buffer)}}_load_{{(dword|b32)}} [[VAL:v[0-9+]]],
++// GCN-LABEL: {{^}}test_native_recip_f32:
++// GCN: {{(flat|global|buffer)}}_load_{{(dword|b32)}} [[VAL:v[0-9]+]],
+ // GCN-NOT: [[VAL]]
+ // GCN: v_rcp_f32{{(_e32)?}} [[RESULT:v[0-9]+]], [[VAL]]
+ // GCN-NOT: [[RESULT]]
+ // GCN: [[RESULT]]
+ // GCN-NOT: [[RESULT]]
++// GCN: s_endpgm
+ kernel void test_native_recip_f32(global float* restrict out, global float* restrict in) {
+     int id = get_local_id(0);
+     out[id] = native_recip(in[id]);
+--- a/test/compile/native_rsqrt.cl
++++ b/test/compile/native_rsqrt.cl
+@@ -8,30 +8,30 @@ half __ocml_native_rsqrt_f16(half);
+ 
+ // FIXME: Promoted case using full expansion
+ // GCN-LABEL: {{^}}test_native_rsqrt_f16:
+-// GFX600: v_sqrt_f32
+-// GFX600: v_rcp_f32
++// GFX600: v_rsq_f32
+ 
+-// GFX700: v_sqrt_f32
+-// GFX700: v_rcp_f32
++// GFX700: v_rsq_f32
+ 
+-// GFX803: {{(flat|global|buffer)}}_load_{{(ushort|b16)}} [[VAL:v[0-9+]]],
++// GFX803: {{(flat|global|buffer)}}_load_{{(ushort|b16)}} [[VAL:v[0-9]+]],
+ // GFX803-NOT: [[VAL]]
+ // GFX803: v_rsq_f16{{(_e32)?}} [[RESULT:v[0-9]+]], [[VAL]]
+ // GFX803-NOT: [[RESULT]]
+ // GFX803: [[RESULT]]
+ // GFX803-NOT: [[RESULT]]
++// GFX803: s_endpgm
+ kernel void test_native_rsqrt_f16(global half* restrict out, global half* restrict in) {
+     int id = get_local_id(0);
+     out[id] = __ocml_native_rsqrt_f16(in[id]);
+ }
+ 
+ // GCN-LABEL: {{^}}test_native_rsqrt_f32:
+-// GCN: {{(flat|global|buffer)}}_load_{{(dword|b32)}} [[VAL:v[0-9+]]],
++// GCN: {{(flat|global|buffer)}}_load_{{(dword|b32)}} [[VAL:v[0-9]+]],
+ // GCN-NOT: [[VAL]]
+ // GCN: v_rsq_f32{{(_e32)?}} [[RESULT:v[0-9]+]], [[VAL]]
+ // GCN-NOT: [[RESULT]]
+ // GCN: [[RESULT]]
+ // GCN-NOT: [[RESULT]]
++// GCN: s_endpgm
+ kernel void test_native_rsqrt_f32(global float* restrict out, global float* restrict in) {
+     int id = get_local_id(0);
+     out[id] = native_rsqrt(in[id]);
