@@ -1769,7 +1769,19 @@ src_install() {
 #
 # If coreutils is built with USE=multicall, some of these files
 # will just be wrapper scripts, not actual ELFs we can test.
+#
+# We allow to skip this sanity check, as insane as that may seem.
+# The one use-case I know of is changing the main ABI in-place;
+# the test runs existing binaries against the default ld.so, which
+# fails then, while the binaries should be executable just fine
+# using one of the other multilib variants that we install.
+#
 glibc_sanity_check() {
+	if [[ ${I_ALLOW_TO_BREAK_MY_SYSTEM} = yes ]] ; then
+		ewarn "Skipping glibc sanity tests. You have been warned. Last 5s to abort."
+		sleep 5
+	else
+
 	cd / #228809
 
 	# We enter ${ED} so to avoid trouble if the path contains
@@ -1804,6 +1816,8 @@ glibc_sanity_check() {
 	done
 
 	popd >/dev/null
+
+	fi
 }
 
 pkg_preinst() {
