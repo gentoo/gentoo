@@ -6,14 +6,6 @@
 
 # New entries go on top.
 
-# Joonas Niilola <juippis@gentoo.org> (2026-10-13)
-# +system-harfbuzz broken with 158.0. Could require newer version,
-# could require changes to our custom patch that enables it, could
-# be upstream adds custom patches to their bundled copy of harfbuzz.
-# Needs more investigation.
->=www-client/firefox-158.0 system-harfbuzz
->=mail-client/thunderbird-158.0 system-harfbuzz
-
 # Sam James <sam@gentoo.org> (2026-09-23)
 # Only supported on Linux.
 dev-libs/elfutils stackprof
