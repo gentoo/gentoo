@@ -3,6 +3,8 @@
 
 EAPI=8
 
+inherit flag-o-matic
+
 DESCRIPTION="GNU Wget2 is a file and recursive website downloader"
 HOMEPAGE="https://gitlab.com/gnuwget/wget2"
 SRC_URI="mirror://gnu/wget/${P}.tar.gz"
@@ -46,6 +48,11 @@ BDEPEND="
 RESTRICT="!test? ( test )"
 
 src_configure() {
+	# -Werror=lto-type-mismatch
+	# https://bugs.gentoo.org/969162
+	# https://gitlab.com/gnuwget/wget2/-/work_items/727
+	filter-lto
+
 	local myeconfargs=(
 		--disable-static
 		--disable-valgrind-tests
