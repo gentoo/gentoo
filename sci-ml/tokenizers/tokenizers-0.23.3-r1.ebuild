@@ -41,6 +41,10 @@ KEYWORDS="~amd64"
 RDEPEND="dev-libs/oniguruma"
 BDEPEND="
 	dev-python/setuptools-rust[${PYTHON_USEDEP}]
+	test? (
+		dev-python/numpy[${PYTHON_USEDEP}]
+		dev-python/tqdm[${PYTHON_USEDEP}]
+	)
 "
 
 EPYTEST_PLUGINS=( )
