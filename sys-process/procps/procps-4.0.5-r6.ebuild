@@ -99,6 +99,20 @@ multilib_src_configure() {
 		myeconfargs+=( $(multilib_native_use_enable unicode watch8bit) )
 	fi
 
+	# Needs epoll
+	if ! use kernel_linux ; then
+		myeconfargs+=(
+			--disable-pidwait
+		)
+	fi
+
+	if use kernel_Hurd ; then
+		# Provided by sys-kernel/hurd
+		myeconfargs+=(
+			--disable-w
+		)
+	fi
+
 	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
 }
 
@@ -125,6 +139,12 @@ multilib_src_install() {
 		if use kill; then
 			mv "${ED}"/usr/bin/kill "${ED}"/bin/ || die
 		fi
+	fi
+
+	if use kernel_Hurd ; then
+		# Provided by sys-kernel/hurd
+		rm "${ED}"/usr/bin/{uptime,vmstat} || die
+		rm "${ED}"/bin/ps || die
 	fi
 }
 
