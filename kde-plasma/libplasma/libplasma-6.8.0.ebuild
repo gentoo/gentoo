@@ -13,7 +13,7 @@ DESCRIPTION="Plasma library and runtime components based upon KF6 and Qt6"
 
 LICENSE="LGPL-2+"
 SLOT="6/8"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
 IUSE="activities"
 
 RESTRICT="test"
