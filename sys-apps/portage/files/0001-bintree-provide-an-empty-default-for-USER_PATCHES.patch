@@ -1,0 +1,44 @@
+From 27abd048bffaac86d6d55478e39afbc9004ac826 Mon Sep 17 00:00:00 2001
+Message-ID: <27abd048bffaac86d6d55478e39afbc9004ac826.1792023243.git.sam@gentoo.org>
+From: Kerin Millar <kfm@plushkava.net>
+Date: Thu, 15 Oct 2026 01:18:46 +0200
+Subject: [PATCH] bintree: provide an empty default for USER_PATCHES
+
+As of the referenced commit, the USER_PATCHES key is required for a
+package index entry to be trusted. However, the index writer omits empty
+values, and no default is defined for the reader to restore the key.
+
+Consequently, portage extracts metadata from every binary package built
+without user patches, even if its mtime and size be unchanged. This
+manifested as a severe regression in eclean-pkg performance, though the
+impact is not confined to that utility.
+
+Define an empty default for USER_PATCHES so that otherwise valid index
+entries can be trusted.
+
+[sam: Drop NEWS hunk for backport.]
+
+Closes: https://bugs.gentoo.org/984255
+Fixes: 2b9c9b6886b86f732d9b5b3b41cd1211c9f28713
+Reported-by: Greg Kubaryk <greg.kubaryk@gmail.com>
+Signed-off-by: Kerin Millar <kfm@plushkava.net>
+Signed-off-by: Sam James <sam@gentoo.org>
+---
+ lib/portage/dbapi/bintree.py | 1 +
+ 1 files changed, 1 insertions(+)
+
+diff --git a/lib/portage/dbapi/bintree.py b/lib/portage/dbapi/bintree.py
+index 9f52e8828..183ac9754 100644
+--- a/lib/portage/dbapi/bintree.py
++++ b/lib/portage/dbapi/bintree.py
+@@ -610,6 +610,7 @@ class binarytree:
+             "RESTRICT": "",
+             "SLOT": "0",
+             "USE": "",
++            "USER_PATCHES": "",
+         }
+         self._pkgindex_inherited_keys = ["CHOST", "repository"]
+ 
+-- 
+2.56.0
+
