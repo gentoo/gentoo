@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake
+inherit cmake flag-o-matic
 
 DESCRIPTION="Core c99 package for AWS SDK for C"
 HOMEPAGE="https://github.com/awslabs/aws-c-common"
@@ -21,6 +21,11 @@ CMAKE_SKIP_TESTS=(
 )
 
 src_configure() {
+	# -Werror=lto-type-mismatch
+	# https://bugs.gentoo.org/967010
+	# https://github.com/awslabs/aws-c-common/issues/1304
+	filter-lto
+
 	local mycmakeargs=(
 		-DBUILD_TESTING=$(usex test)
 	)
