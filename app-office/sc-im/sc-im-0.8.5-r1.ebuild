@@ -1,4 +1,4 @@
-# Copyright 2022-2025 Gentoo Authors
+# Copyright 2022-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -43,6 +43,10 @@ DEPEND="
 RDEPEND="${DEPEND}"
 BDEPEND="app-alternatives/yacc
 	virtual/pkgconfig"
+
+PATCHES=(
+	"${FILESDIR}/${P}-lto-mismatch.patch"
+)
 
 pkg_setup() {
 	CONFLICTING=$(usex tmux "tmux " "")$(usex wayland "wayland " "")$(usex X "X" "")
