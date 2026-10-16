@@ -118,7 +118,9 @@ src_install() {
 	doman docs/${PN}.6
 	docinto html/
 	dodoc docs/*.html
-	use test && rm "${D}"/usr/bin/${PN}_tests || die "Failed to remove test binary"
+	if use test; then
+		rm "${D}"/usr/bin/${PN}_tests || die "Failed to remove test binary"
+	fi
 }
 
 pkg_postinst() {

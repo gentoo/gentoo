@@ -16,7 +16,7 @@ if [[ ${PV} = 9999* ]]; then
 else
 	SRC_URI="https://github.com/Aleph-One-Marathon/alephone/archive/refs/tags/release-${PV}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${PN}-release-${PV}"
-	KEYWORDS="~amd64"
+	KEYWORDS="~amd64 -arm64"
 fi
 
 LICENSE="GPL-3+ BitstreamVera OFL-1.1"
@@ -118,7 +118,9 @@ src_install() {
 	doman docs/${PN}.6
 	docinto html/
 	dodoc docs/*.html
-	use test && rm "${D}"/usr/bin/${PN}_tests || die "Failed to remove test binary"
+	if use test; then
+		rm "${D}"/usr/bin/${PN}_tests || die "Failed to remove test binary"
+	fi
 }
 
 pkg_postinst() {
