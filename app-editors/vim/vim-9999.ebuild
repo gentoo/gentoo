@@ -316,14 +316,10 @@ src_test() {
 		Test_exrc
 		# Fragile and depends on TERM(?)
 		Test_job_tty_in_out
-		# Hangs.
-		Test_spelldump_bang
 		# Too sensitive to leaked environment variables.
 		Test_fuzzy_completion_env
 		# Hangs.
 		Test_term_mouse_multiple_clicks_to_select_mode
-		# Hangs.
-		Test_spelldump
 		# Depends on local network.
 		Test_glvs_
 		# sensitive to the terminal geometry
