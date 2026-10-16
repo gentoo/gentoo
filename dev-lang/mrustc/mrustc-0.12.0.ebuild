@@ -20,7 +20,7 @@ else
 	SRC_URI="https://github.com/thepowersgang/mrustc/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 		https://static.rust-lang.org/dist/rustc-${RUST_VERSION}-src.tar.xz
 	"
-	KEYWORDS="~amd64"
+	KEYWORDS="amd64"
 fi
 
 LICENSE="MIT"
