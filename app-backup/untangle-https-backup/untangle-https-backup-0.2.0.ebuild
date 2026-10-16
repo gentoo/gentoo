@@ -14,7 +14,7 @@ SRC_URI="https://michael.orlitzky.com/code/releases/${P}.tar.gz"
 
 LICENSE="AGPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~riscv ~x86"
+KEYWORDS="amd64 ~riscv x86"
 
 DOCS=( README.rst doc/untangle-https-backup.example.ini )
 
