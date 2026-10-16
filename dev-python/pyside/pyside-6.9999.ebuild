@@ -36,7 +36,8 @@ else
 fi
 
 LICENSE="|| ( GPL-2 GPL-3 LGPL-3 )"
-SLOT="6/${PV}"
+QT_SLOT="$(ver_cut 1)"
+SLOT="${QT_SLOT}/${PV}"
 
 # If a flag enables multiple Qt modules, they should be ordered
 # according to their dependencies, e.g. for 3d, 3DCore must be first.
@@ -150,7 +151,7 @@ for requirement in "${!QT_REQUIREMENTS[@]}"; do
 done
 
 # Minimal supported version of Qt.
-QT_PV="$(ver_cut 1-3)*:6"
+QT_PV="$(ver_cut 1-3)*:${QT_SLOT}"
 
 # USE="tools" is heavily automagic based on what other qt tools are installed at build time.
 
@@ -179,7 +180,7 @@ RDEPEND="
 	network-auth? ( =dev-qt/qtnetworkauth-${QT_PV} )
 	nfc? ( =dev-qt/qtconnectivity-${QT_PV}[nfc] )
 	numpy? ( >=dev-python/numpy-2.1.3[${PYTHON_USEDEP}] )
-	pdfium? ( dev-qt/qtwebengine:6[pdfium(-),widgets?] )
+	pdfium? ( dev-qt/qtwebengine:${QT_SLOT}[pdfium(-),widgets?] )
 	positioning? ( =dev-qt/qtpositioning-${QT_PV} )
 	printsupport? ( =dev-qt/qtbase-${QT_PV}[gui,widgets] )
 	qml? ( =dev-qt/qtdeclarative-${QT_PV}[opengl?,widgets?] )
@@ -202,8 +203,8 @@ RDEPEND="
 	webchannel? ( =dev-qt/qtwebchannel-${QT_PV} )
 	webengine? (
 		|| (
-			dev-qt/qtwebengine:6[alsa,widgets?]
-			dev-qt/qtwebengine:6[pulseaudio,widgets?]
+			dev-qt/qtwebengine:${QT_SLOT}[alsa,widgets?]
+			dev-qt/qtwebengine:${QT_SLOT}[pulseaudio,widgets?]
 		)
 	)
 	websockets? ( =dev-qt/qtwebsockets-${QT_PV} )
@@ -384,7 +385,7 @@ python_configure_all() {
 		--no-size-optimization
 		--openssl="${ESYSROOT}/usr/bin/openssl"
 		--qt="$(ver_cut 1-3)"
-		--qtpaths="$(qt_get_bindir 6)/qtpaths"
+		--qtpaths="$(qt_get_bindir ${QT_SLOT})/qtpaths"
 		--log-level=verbose
 		--parallel="$(makeopts_jobs)"
 		"$(usex debug "--debug" "--relwithdebinfo")"
@@ -499,9 +500,9 @@ python_compile() {
 	# Install misc files from inner install dir
 	find "${BUILD_DIR}"/build*/"${pyside_build_dir}"/install -type f \
 		-name libPySidePlugin.so -exec \
-		mkdir -p "${BUILD_DIR}/install/$(qt_get_plugindir 6)/designer/" \; \
+		mkdir -p "${BUILD_DIR}/install/$(qt_get_plugindir ${QT_SLOT})/designer/" \; \
 		-exec \
-		cp "{}" "${BUILD_DIR}/install/$(qt_get_plugindir 6)/designer/" \; \
+		cp "{}" "${BUILD_DIR}/install/$(qt_get_plugindir ${QT_SLOT})/designer/" \; \
 			|| die
 
 	for dir in cmake pkgconfig; do
