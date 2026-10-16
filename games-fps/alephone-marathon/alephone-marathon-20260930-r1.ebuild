@@ -5,10 +5,10 @@ EAPI=9
 
 inherit desktop
 
-DESCRIPTION="Aleph One - Marathon Infinity"
+DESCRIPTION="Aleph One - Marathon (M1A1)"
 HOMEPAGE="https://alephone.lhowon.org/"
-SRC_URI="https://github.com/Aleph-One-Marathon/alephone/releases/download/release-${PV}/MarathonInfinity-${PV}-Data.zip"
-S="${WORKDIR}/Marathon Infinity"
+SRC_URI="https://github.com/Aleph-One-Marathon/alephone/releases/download/release-${PV}/Marathon-${PV}-Data.zip"
+S="${WORKDIR}/Marathon"
 
 LICENSE="bungie-marathon"
 SLOT="0"
@@ -18,14 +18,14 @@ RESTRICT="mirror"
 RDEPEND="games-fps/alephone"
 BDEPEND="app-arch/unzip"
 
-MY_NAME="infinity"
+MY_NAME="marathon"
 MY_DIR="/usr/share/alephone-${MY_NAME}"
 
 src_install() {
 	insinto "${MY_DIR}"
 	doins -r *
 
-	make_desktop_entry "alephone.sh ${MY_NAME}" "${DESCRIPTION}"
+	make_desktop_entry "alephone.sh" -a "${MY_NAME}" -n "${DESCRIPTION}" -d "alephone-${MY_NAME}"
 
 	# Make sure the extra dirs exist in case the user wants to add some data
 	keepdir "${MY_DIR}"/{Scripts,"Physics Models",Textures,Themes}

@@ -25,7 +25,7 @@ src_install() {
 	insinto "${MY_DIR}"
 	doins -r *
 
-	make_desktop_entry "alephone.sh ${MY_NAME}" "${DESCRIPTION}"
+	make_desktop_entry "alephone.sh" -a "${MY_NAME}" -n "${DESCRIPTION}" -d "alephone-${MY_NAME}"
 
 	# Make sure the extra dirs exist in case the user wants to add some data
 	keepdir "${MY_DIR}"/{Scripts,"Physics Models",Textures,Themes}
