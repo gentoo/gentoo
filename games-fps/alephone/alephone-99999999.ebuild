@@ -16,7 +16,7 @@ if [[ ${PV} = 9999* ]]; then
 else
 	SRC_URI="https://github.com/Aleph-One-Marathon/alephone/archive/refs/tags/release-${PV}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${PN}-release-${PV}"
-	KEYWORDS="~amd64 -arm64"
+	KEYWORDS="~amd64 ~arm64"
 fi
 
 LICENSE="GPL-3+ BitstreamVera OFL-1.1"

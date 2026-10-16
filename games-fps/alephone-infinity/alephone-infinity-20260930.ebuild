@@ -12,7 +12,7 @@ S="${WORKDIR}/Marathon Infinity"
 
 LICENSE="bungie-marathon"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 RESTRICT="mirror"
 
 RDEPEND="games-fps/alephone"
