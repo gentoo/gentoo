@@ -19,7 +19,6 @@ RDEPEND="${DEPEND}"
 src_prepare() {
 	default
 	sed -i \
-		-e 's:\<ar\>:$(AR):' \
 		-e 's:\<ranlib\>:$(RANLIB):' \
 		-e "/^LIBPATH/s:/lib:/$(get_libdir):" \
 		makefile || die "Fixing makefile failed"
