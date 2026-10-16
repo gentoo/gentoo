@@ -36,7 +36,7 @@ src_prepare() {
 	sed -i 's:^server:#server:g' ntpd.conf || die
 	printf "\n# Choose servers announced from Gentoo NTP Pool\nservers 0.gentoo.pool.ntp.org\nservers 1.gentoo.pool.ntp.org\nservers 2.gentoo.pool.ntp.org\nservers 3.gentoo.pool.ntp.org\n" >> ntpd.conf || die
 
-	use constraints || sed -ie 's/^constraints/#constraints/g' ntpd.conf || die
+	use constraints || sed -ie 's/^constraint/#constraint/g' ntpd.conf || die
 }
 
 src_configure() {
@@ -44,7 +44,8 @@ src_configure() {
 		--localstatedir="${EPREFIX}"/var/lib/openntpd \
 		--runstatedir="${EPREFIX}"/run \
 		--with-privsep-user=openntpd \
-		$(use_enable constraints https-constraint)
+		$(use_enable constraints https-constraint) \
+		$(use_with constraints cacert "${EPREFIX}"/etc/ssl/certs/ca-certificates.crt)
 }
 
 src_install() {
