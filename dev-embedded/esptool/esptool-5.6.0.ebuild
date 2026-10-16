@@ -15,12 +15,13 @@ SRC_URI="https://github.com/espressif/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~riscv"
 
 RDEPEND="
 	$(python_gen_cond_dep '
 		dev-python/bitstring[${PYTHON_USEDEP}]
 		dev-python/cryptography[${PYTHON_USEDEP}]
+		dev-python/esp-pylib[${PYTHON_USEDEP}]
 		dev-python/intelhex[${PYTHON_USEDEP}]
 		dev-python/pyserial[${PYTHON_USEDEP}]
 		dev-python/pyyaml[${PYTHON_USEDEP}]
@@ -31,20 +32,20 @@ RDEPEND="
 BDEPEND="
 	$(python_gen_cond_dep '
 		dev-python/wheel[${PYTHON_USEDEP}]
+		test? (
+			dev-python/pyelftools[${PYTHON_USEDEP}]
+		)
 	')
-	test? ( $(python_gen_cond_dep '
-		dev-python/pyelftools[${PYTHON_USEDEP}]
-		dev-python/pytest[${PYTHON_USEDEP}]
-	') )
 "
+
 EPYTEST_PLUGINS=( )
-distutils_enable_tests pytest
 EPYTEST_DESELECT=(
 	# need real hardware connected
 	test/test_esptool.py
 	# need network
 	test/test_uf2_ids.py
 )
+distutils_enable_tests pytest
 
 src_prepare() {
 	default
