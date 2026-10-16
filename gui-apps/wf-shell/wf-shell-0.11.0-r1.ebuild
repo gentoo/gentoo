@@ -67,6 +67,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.11-fix-network-crash.patch
+	"${FILESDIR}"/${P}-fix-pulseaudio.patch
 )
 
 src_configure () {
