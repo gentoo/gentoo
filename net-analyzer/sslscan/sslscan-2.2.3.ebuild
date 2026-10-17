@@ -7,12 +7,12 @@ inherit toolchain-funcs
 
 # sslscan builds against a static openssl library to allow weak ciphers
 # to be enabled so that they can be tested.
-OPENSSL_RELEASE_TAG="openssl-3.5.0"
+OPENSSL_RELEASE_TAG="openssl-3.6.5"
 
 DESCRIPTION="Fast SSL configuration scanner"
 HOMEPAGE="https://github.com/rbsec/sslscan"
 SRC_URI="https://github.com/rbsec/sslscan/archive/${PV}.tar.gz -> ${P}.tar.gz
-		 https://github.com/openssl/openssl/archive/${OPENSSL_RELEASE_TAG}.tar.gz -> ${PN}-${OPENSSL_RELEASE_TAG}.tar.gz"
+		https://github.com/openssl/openssl/releases/download/${OPENSSL_RELEASE_TAG}/${OPENSSL_RELEASE_TAG}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -23,16 +23,18 @@ RESTRICT="test"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-2.2.0-use-distfile-openssl.patch"
-	"${FILESDIR}/${PN}-2.2.1-respect-makej.patch"
 )
 
 src_prepare() {
-	ln -s ../openssl-${OPENSSL_RELEASE_TAG} openssl || die
+	ln -s ../${OPENSSL_RELEASE_TAG} openssl || die
 	touch .openssl_is_fresh || die
+
+	# Don't clobber toolchain defaults
+	sed -i 's/ -D_FORTIFY_SOURCE=2/ /' Makefile || die
 
 	# Copied from dev-libs/openssl
 	# allow openssl to be cross-compiled
-	cp "${FILESDIR}"/gentoo.config-1.0.2 gentoo.config || die
+	cp "${FILESDIR}"/gentoo.config-1.0.4 gentoo.config || die
 	chmod a+rx gentoo.config || die
 
 	default
