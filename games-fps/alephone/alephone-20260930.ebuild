@@ -5,7 +5,7 @@ EAPI=8
 
 VIRTUALX_REQUIRED=test
 
-inherit autotools optfeature prefix toolchain-funcs virtualx xdg
+inherit autotools optfeature prefix virtualx xdg
 
 DESCRIPTION="Enhanced game engine version from the classic Mac game, Marathon"
 HOMEPAGE="https://alephone.lhowon.org/"
@@ -58,6 +58,11 @@ DEPEND="${RDEPEND}
 "
 BDEPEND="virtual/pkgconfig"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-configure-ar.patch
+	"${FILESDIR}"/${P}-stringop-overflow.patch
+)
+
 src_prepare() {
 	default
 	eautoreconf
@@ -85,7 +90,6 @@ src_configure() {
 }
 
 src_compile() {
-	tc-export AR
 	default
 }
 
