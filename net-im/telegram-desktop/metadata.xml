@@ -20,6 +20,7 @@
 	<use>
 		<flag name="enchant">Use the <pkg>app-text/enchant</pkg> spell-checking backend instead of <pkg>app-text/hunspell</pkg></flag>
 		<flag name="fonts">Use builtin patched copy of open-sans fonts (overrides fontconfig)</flag>
+		<flag name="pango">Render text through <pkg>x11-libs/pango</pkg> instead of the private Qt API (Recommended)</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">telegramdesktop/tdesktop</remote-id>
