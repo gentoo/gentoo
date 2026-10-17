@@ -15,7 +15,7 @@ HOMEPAGE="https://quantumproductions.info/articles/2025-02/moving-kdes-styling-f
 LICENSE="|| ( LGPL-2.1 LGPL-3 ) GPL-3 BSD-2"
 SLOT="6"
 KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
-IUSE="tools +widgets"
+IUSE="doc tools +widgets"
 
 # IUSE="svg"
 # 	svg? (
@@ -43,10 +43,20 @@ RDEPEND="${DEPEND}
 	widgets? ( kde-plasma/breeze:6 )
 "
 BDEPEND="
-	>=dev-qt/qttools-${QTMIN}:6[qdoc]
+	doc? ( >=dev-qt/qttools-${QTMIN}:6[qdoc] )
 "
 
 DOCS=( README.md )
+
+src_prepare() {
+	if ! use doc ; then
+		# Avoid automagic qttools[qdoc] dep
+		sed -i -e '/include(ECMGenerateQDoc)/d' CMakeLists.txt || die
+		sed -i -e '/ecm_generate_qdoc/d' src/CMakeLists.txt || die
+	fi
+
+	ecm_src_prepare
+}
 
 src_configure() {
 	local mycmakeargs=(
