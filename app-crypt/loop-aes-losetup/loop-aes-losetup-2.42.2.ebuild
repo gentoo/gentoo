@@ -9,7 +9,7 @@ inherit autotools flag-o-matic toolchain-funcs verify-sig
 
 MY_PV="${PV/_/-}"
 MY_P="util-linux-${MY_PV}"
-LOOPAES_P="loop-AES-v3.8e"
+LOOPAES_P="loop-AES-v3.8j"
 
 DESCRIPTION="Loop-AES losetup utility"
 HOMEPAGE="https://www.kernel.org/pub/linux/utils/util-linux/ https://github.com/util-linux/util-linux"
@@ -22,6 +22,7 @@ SRC_URI="
 	)
 "
 S="${WORKDIR}/${MY_P}"
+
 LICENSE="GPL-2 GPL-3 LGPL-2.1 BSD-4 MIT public-domain"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~hppa ~ppc ~sparc ~x86"
@@ -34,16 +35,16 @@ RDEPEND="
 		>=sec-keys/openpgp-keys-jariruusu-20240521
 	)
 "
+DEPEND="
+	${RDEPEND}
+	virtual/os-headers
+"
 BDEPEND="
 	virtual/pkgconfig
 	nls? (
 		app-text/po4a
 		sys-devel/gettext
 	)
-"
-DEPEND="
-	${RDEPEND}
-	virtual/os-headers
 "
 
 PATCHES=(
@@ -70,35 +71,36 @@ src_prepare() {
 src_configure() {
 	append-lfs-flags
 
-	ECONF_SOURCE=${S} \
-	econf \
-		--disable-all-programs \
-		--disable-libmount-mountfd-support \
-		--disable-liblastlog2 \
-		--disable-pam-lastlog2 \
-		--disable-pylibmount \
-		--disable-uuidd \
-		--enable-libblkid \
-		--enable-libmount \
-		--enable-libsmartcols \
-		--enable-losetup \
-		--enable-mount \
-		--without-btrfs \
-		--without-libz \
-		--without-libmagic \
-		--without-ncurses \
-		--without-ncursesw \
-		--without-python \
-		--without-readline \
-		--without-systemd \
-		--without-tinfo \
-		--without-udev \
-		--without-util \
-		$(use_enable nls) \
-		$(use_with selinux) \
-		$(tc-has-tls || echo --disable-tls) \
-		$(use_enable static) \
+	local myeconfargs=(
+		--disable-all-programs
+		--disable-libmount-mountfd-support
+		--disable-liblastlog2
+		--disable-pam-lastlog2
+		--disable-pylibmount
+		--disable-uuidd
+		--enable-libblkid
+		--enable-libmount
+		--enable-libsmartcols
+		--enable-losetup
+		--enable-mount
+		--without-btrfs
+		--without-libz
+		--without-libmagic
+		--without-ncurses
+		--without-ncursesw
+		--without-python
+		--without-readline
+		--without-systemd
+		--without-tinfo
+		--without-udev
+		--without-util
+		$(use_enable nls)
+		$(use_with selinux)
+		$(tc-has-tls || echo --disable-tls)
+		$(use_enable static)
 		$(use static && echo --enable-static-programs=losetup,mount)
+	)
+	ECONF_SOURCE=${S} econf "${myeconfargs[@]}"
 }
 
 src_install() {
