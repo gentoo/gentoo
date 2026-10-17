@@ -1,0 +1,20 @@
+Export functions used by rocr-runtime and kfdtest from shared libhsakmt
+
+Bug: https://github.com/ROCm/rocm-systems/issues/284
+--- a/src/libhsakmt.ver
++++ b/src/libhsakmt.ver
+@@ -112,6 +112,14 @@ hsaKmtMemoryGetCpuAddr;
+ hsaKmtMemoryCpuMap;
+ hsaKmtSetSigbusDelay;
+ hsaKmtGetAmdGPUDeviceFd;
++hsaKmtCreateQueueExt;
++hsaKmtCreateQueueV2;
++hsaKmtRegisterGraphicsHandleToNodesExt;
++hsaKmtModelEnabled;
++hsaKmtOpenKFDCtx;
++hsaKmtCloseKFDCtx;
++hsaKmtOpenSecondaryKFDCtx;
++hsaKmtCloseSecondaryKFDCtx;
+ local: *;
+ };
+ 

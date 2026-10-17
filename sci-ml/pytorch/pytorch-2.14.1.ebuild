@@ -8,12 +8,12 @@ PYTHON_COMPAT=( python3_{12..14} )
 DISTUTILS_SINGLE_IMPL=1
 DISTUTILS_EXT=1
 
-ROCM_VERSION=6.1
+ROCM_VERSION=10.1
 inherit distutils-r1 prefix cuda flag-o-matic rocm multiprocessing
 
-# pytorch-2.13.0 depends on specific commit of composable kernel
+# pytorch depends on specific commit of composable kernel
 # TODO: replace it with DEPEND in the future
-CK_COMMIT=f1746955fdaf80a3414de814bf32437686dac347
+CK_COMMIT=5a74dec07a894484b9489d0c0e00cd3b52652d18
 CK_P=composable_kernel-${CK_COMMIT:0:8}
 
 # Starting from 2.7.0 pytorch moved flash attention out-of-tree,
@@ -29,8 +29,12 @@ HOMEPAGE="https://pytorch.org/"
 SRC_URI="https://github.com/pytorch/${PN}/archive/refs/tags/v${PV}.tar.gz
 	-> ${P}.tar.gz
 	rocm? (
+		https://github.com/AngryLoki/pytorch/commit/bcb99546b6a6b57742eb0ec1705e55981ed071be.patch
+		-> ${PN}-2.14.1-aotriton-0.14.patch
 		https://github.com/ROCm/composable_kernel/archive/${CK_COMMIT}.tar.gz
 		-> ${CK_P}.tar.gz
+		https://github.com/ROCm/rocm-libraries/commit/0eab68951d3bb668e8f99beba2e2c07d7e1ca18a.patch
+		-> rocm-libraries-0eab6895.patch
 	)
 	cuda? (
 		flash? ( ${FLASH_ATT_URI} )
@@ -110,25 +114,24 @@ RDEPEND="
 		dev-libs/pthreadpool
 	)
 	rocm? (
-		nccl? ( >=dev-libs/rccl-6.3:= <dev-libs/rccl-7.3:= )
-		>=dev-util/hip-6.3:=       <dev-util/hip-7.3:=
-		>=dev-util/roctracer-6.3:= <dev-util/roctracer-7.3:=
-		>=sci-libs/hipBLAS-6.3:=   <sci-libs/hipBLAS-7.3:=[rocsolver(+)]
-		>=sci-libs/hipBLASLt-6.3:= <sci-libs/hipBLASLt-7.3:=
-		>=sci-libs/hipFFT-6.3:=    <sci-libs/hipFFT-7.3:=
-		>=sci-libs/hipRAND-6.3:=   <sci-libs/hipRAND-7.3:=
-		>=sci-libs/hipSOLVER-6.3:= <sci-libs/hipSOLVER-7.3:=
-		>=sci-libs/hipSPARSE-6.3:= <sci-libs/hipSPARSE-7.3:=
-		>=sci-libs/miopen-6.3:=    <sci-libs/miopen-7.3:=
-		>=sci-libs/rocBLAS-6.3:=   <sci-libs/rocBLAS-7.3:=
-		>=sci-libs/rocRAND-6.3:=   <sci-libs/rocRAND-7.3:=
-		>=sci-libs/rocSOLVER-6.3:= <sci-libs/rocSOLVER-7.3:=
-		memefficient? ( =sci-libs/aotriton-bin-0.13*:= )
+		nccl? ( >=dev-libs/rccl-6.3:= <dev-libs/rccl-10.2:= )
+		>=dev-util/hip-6.3:=       <dev-util/hip-10.2:=
+		>=dev-util/roctracer-6.3:= <dev-util/roctracer-10.2:=
+		>=sci-libs/hipBLAS-6.3:=   <sci-libs/hipBLAS-10.2:=[rocsolver(+)]
+		>=sci-libs/hipBLASLt-6.3:= <sci-libs/hipBLASLt-10.2:=
+		>=sci-libs/hipFFT-6.3:=    <sci-libs/hipFFT-10.2:=
+		>=sci-libs/hipRAND-6.3:=   <sci-libs/hipRAND-10.2:=
+		>=sci-libs/hipSOLVER-6.3:= <sci-libs/hipSOLVER-10.2:=
+		>=sci-libs/hipSPARSE-6.3:= <sci-libs/hipSPARSE-10.2:=
+		>=sci-libs/miopen-6.3:=    <sci-libs/miopen-10.2:=
+		>=sci-libs/rocBLAS-6.3:=   <sci-libs/rocBLAS-10.2:=
+		>=sci-libs/rocRAND-6.3:=   <sci-libs/rocRAND-10.2:=
+		>=sci-libs/rocSOLVER-6.3:= <sci-libs/rocSOLVER-10.2:=
+		memefficient? ( >=sci-libs/aotriton-bin-0.13:= <sci-libs/aotriton-bin-0.15:= )
 		distributed? (
-			>=dev-util/rocm-smi-6.3:= <dev-util/rocm-smi-7.3:=
-			>=dev-util/amdsmi-6.3:= <dev-util/amdsmi-7.3:=
+			>=dev-util/amdsmi-6.3:= <dev-util/amdsmi-10.2:=
 		)
-		cusparselt? ( >=sci-libs/hipsparselt-6.3:= <sci-libs/hipsparselt-7.3:= )
+		cusparselt? ( >=sci-libs/hipsparselt-6.3:= <sci-libs/hipsparselt-10.2:= )
 	)
 	xnnpack? (
 		>=sci-ml/XNNPACK-2024.11
@@ -152,9 +155,9 @@ DEPEND="
 	cuda? ( ~dev-libs/cutlass-4.6.1[tools(+)] )
 	onednn? ( sci-ml/ideep )
 	rocm? (
-		>=sci-libs/hipCUB-6.3:=    <sci-libs/hipCUB-7.3:=
-		>=sci-libs/rocPRIM-6.3:=   <sci-libs/rocPRIM-7.3:=
-		>=sci-libs/rocThrust-6.3:= <sci-libs/rocThrust-7.3:=
+		>=sci-libs/hipCUB-6.3:=    <sci-libs/hipCUB-10.2:=
+		>=sci-libs/rocPRIM-6.3:=   <sci-libs/rocPRIM-10.2:=
+		>=sci-libs/rocThrust-6.3:= <sci-libs/rocThrust-10.2:=
 	)
 	qnnpack? ( dev-libs/clog )
 "
@@ -248,14 +251,24 @@ src_prepare() {
 		CMakeLists.txt
 
 	if use rocm; then
+		eapply "${DISTDIR}/${PN}-2.14.1-aotriton-0.14.patch"
+
 		# TODO: delete, when caffe2 depends on systemwide composable_kernel
 		sed -e "s:third_party/composable_kernel:../composable_kernel-${CK_COMMIT}:g" \
 			-i aten/src/ATen/CMakeLists.txt || die
+		# Fix build of composable_kernel with clang-23
+		pushd "${WORKDIR}"/composable_kernel-${CK_COMMIT} > /dev/null || die
+		eapply -p3 "${DISTDIR}"/rocm-libraries-0eab6895.patch
+		popd > /dev/null || die
 
 		# Workaround for libc++ issue https://github.com/llvm/llvm-project/issues/100802
 		sed -e 's/std::memcpy/memcpy/g' \
 			-i torch/headeronly/util/Half.h \
 			-i aten/src/ATen/native/cuda/int4mm.cu || die
+
+		# hipFile (only for torch.cuda.gds) is not packaged
+		sed -e 's/find_package_and_print_version(hipfile REQUIRED)/find_package_and_print_version(hipfile)/' \
+			-i cmake/public/LoadHIP.cmake || die
 
 		ebegin "HIPifying cuda sources"
 		FBCODE_BUILD_TOOL="buck" ${EPYTHON} tools/amd_build/build_amd.py || die
@@ -353,6 +366,7 @@ python_compile() {
 		local -x CMAKE_REQUIRE_FIND_PACKAGE_HIP=ON
 		local -x USE_NCCL=$(usex nccl)
 		local -x CMAKE_DISABLE_FIND_PACKAGE_hipsparselt=$(usex !cusparselt) # disable automagic
+		local -x CMAKE_DISABLE_FIND_PACKAGE_hipfile=ON
 		local -x USE_ROCM_CK_SDPA=OFF # requires flash + aiter, works only on gfx90a/gfx942/gfx950
 		local -x ROCM_PATH=/usr
 		local -x HIP_CLANG_PATH=$(hipconfig --hipclangpath)
