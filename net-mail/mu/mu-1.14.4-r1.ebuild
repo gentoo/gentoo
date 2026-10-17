@@ -23,7 +23,7 @@ IUSE="emacs guile readline test"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="guile? ( ${GUILE_REQUIRED_USE} )"
 
-DEPEND="
+RDEPEND="
 	>=dev-cpp/cli11-2.4
 	>=dev-libs/glib-2.80:2
 	>=dev-libs/gmime-3.2.13:3.0
@@ -33,7 +33,10 @@ DEPEND="
 	guile? ( ${GUILE_DEPS} )
 	readline? ( sys-libs/readline:= )
 "
-RDEPEND="${DEPEND}"
+DEPEND="
+	${RDEPEND}
+	dev-cpp/expected
+"
 BDEPEND="
 	${PYTHON_DEPS}
 	>=dev-build/meson-1.3.2
@@ -76,11 +79,11 @@ src_prepare() {
 
 src_configure() {
 	local emesonargs=(
+		$(meson_feature guile scm)
 		$(meson_feature readline)
 		$(meson_feature test tests)
 		-Dcld2=disabled
 		-Demacs="$(usex emacs "${EMACS}" emacs-not-enabled)"
-		-Dscm=enabled
 		-Dbash-completion=enabled
 		-Dbash-completion-dir="$(get_bashcompdir)"
 		-Dfish-completion=enabled
