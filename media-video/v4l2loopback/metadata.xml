@@ -3,6 +3,6 @@
 <pkgmetadata>
   <!-- maintainer-needed -->
   <upstream>
-    <remote-id type="github">umlaeute/v4l2loopback</remote-id>
+    <remote-id type="github">v4l2loopback/v4l2loopback</remote-id>
   </upstream>
 </pkgmetadata>
