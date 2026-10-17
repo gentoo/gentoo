@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,13 +6,13 @@ EAPI=8
 inherit linux-mod-r1 toolchain-funcs
 
 DESCRIPTION="v4l2 loopback device whose output is its own input"
-HOMEPAGE="https://github.com/umlaeute/v4l2loopback"
+HOMEPAGE="https://github.com/v4l2loopback/v4l2loopback"
 
 if [[ "${PV}" == *9999* ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="https://github.com/umlaeute/v4l2loopback.git"
+	EGIT_REPO_URI="https://github.com/v4l2loopback/v4l2loopback.git"
 else
-	SRC_URI="https://github.com/umlaeute/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/v4l2loopback/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
 fi
 
@@ -37,13 +37,15 @@ src_prepare() {
 
 src_compile() {
 	local modlist=(
-		"v4l2loopback=video:::all"
+		"v4l2loopback=video"
 	)
 
 	linux-mod-r1_src_compile
 
+	tc-export CC
+	emake -C utils
 	if use examples; then
-		emake CC="$(tc-getCC)" -C examples
+		emake -C examples
 	fi
 }
 
