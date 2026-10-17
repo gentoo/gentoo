@@ -29,6 +29,7 @@ RDEPEND="
 		dev-python/colorama[${PYTHON_USEDEP}]
 		dev-python/constantly[${PYTHON_USEDEP}]
 		=dev-python/marshmallow-4*[${PYTHON_USEDEP}]
+		dev-python/pip[${PYTHON_USEDEP}]
 		>=dev-python/pyelftools-0.30[${PYTHON_USEDEP}]
 		<dev-python/pyelftools-1[${PYTHON_USEDEP}]
 		=dev-python/pyserial-3.5*[${PYTHON_USEDEP}]
