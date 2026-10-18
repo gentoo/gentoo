@@ -117,7 +117,8 @@ BDEPEND="${PYTHON_DEPS}
 	test? ( dev-debug/gdb )
 	verify-sig? ( sec-keys/openpgp-keys-rust )
 	mrustc-bootstrap? (
-		~dev-lang/mrustc-${MRUSTC_VERSION}
+		amd64? ( ~dev-lang/mrustc-${MRUSTC_VERSION} )
+		arm64? ( ~dev-lang/mrustc-0.12.0_p20261018 )
 		dev-build/cmake
 		sys-devel/gcc:*
 	)
