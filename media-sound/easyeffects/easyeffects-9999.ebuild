@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -20,7 +20,6 @@ fi
 LICENSE="GPL-3"
 SLOT="0"
 
-IUSE="webengine"
 # No real tests. ECM brings appstream test which isn't relevant downstream.
 RESTRICT="test"
 
@@ -51,10 +50,10 @@ RDEPEND="
 	media-libs/speexdsp
 	media-libs/webrtc-audio-processing:2
 	>=media-libs/zita-convolver-3.0.0:=
+	media-libs/libmysofa
 	>=media-video/pipewire-1.0.6:=[sound-server]
 	sci-libs/fftw:3.0=
 	sci-libs/gsl:=
-	webengine? ( dev-qt/qtwebengine:6[qml] )
 "
 DEPEND="${RDEPEND}
 	media-libs/ladspa-sdk
@@ -75,16 +74,6 @@ pkg_pretend() {
 			die "Since version 6.2.5, ${PN} requires GCC 11 or newer to build (bug #848072)"
 		fi
 	fi
-}
-
-src_prepare() {
-	default
-
-	if use !webengine; then
-		eapply "${FILESDIR}"/easyeffects-8.0.4-remove-webengine.patch
-	fi
-
-	cmake_prepare
 }
 
 src_configure() {

@@ -15,7 +15,7 @@ S="${WORKDIR}"/${P}-source
 
 LICENSE="AGPL-3"
 SLOT="0/${PV}"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 IUSE="archive barcode brotli +javascript +jpeg2k opengl ssl X"
 REQUIRED_USE="opengl? ( javascript )"
 
@@ -56,6 +56,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.24.8-add-desktop-pc-files.patch
 	"${FILESDIR}"/${P}-cross-fixes.patch
 	"${FILESDIR}"/${PN}-1.24.1-darwin.patch
+	"${FILESDIR}"/${PN}-1.27.2-fix-system-zxing-cpp.patch
 	# See bug #662352
 	"${FILESDIR}"/${P}-openssl-x11.patch
 	# General cross fixes from Debian (refreshed)

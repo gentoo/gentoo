@@ -163,7 +163,7 @@ pkg_postinst() {
 	einfo "https://wezfurlong.org/wezterm/faq.html?highlight=xcursor_theme#i-use-x11-or-wayland-and-my-mouse-cursor-theme-doesnt-seem-to-work"
 	einfo "It may be necessary to set the environment variable XCURSOR_PATH"
 	einfo "to the directory containing the cursor icons, for example"
-	einfo 'export XCURSOR_PATH="/usr/share/cursors/xorg-x11/"'
+	einfo 'export XCURSOR_PATH="/usr/share/icons"'
 	einfo "before starting the wayland or X11 window compositor to avoid the error:"
 	einfo "ERROR  window::os::wayland::frame > Unable to set cursor to left_ptr: cursor not found"
 	einfo "For example, in the file ~/.wezterm.lua:"

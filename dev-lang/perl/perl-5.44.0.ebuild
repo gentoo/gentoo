@@ -54,7 +54,7 @@ LICENSE="|| ( Artistic GPL-1+ )"
 SLOT="0/${SUBSLOT}"
 
 if [[ "${PV##*.}" != "9999" ]] ; then
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~arm64-macos ~x64-macos ~x64-solaris"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc ~x86 ~arm64-macos ~x64-macos ~x64-solaris"
 fi
 
 IUSE="berkdb perl_features_debug doc gdbm perl_features_ithreads minimal perl_features_quadmath"
@@ -63,6 +63,7 @@ RDEPEND="
 	berkdb? ( sys-libs/db:= )
 	gdbm? ( >=sys-libs/gdbm-1.8.3:= )
 	app-arch/bzip2
+	sys-libs/timezone-data
 	>=virtual/zlib-1.2.12:=
 	virtual/libcrypt:=
 "
@@ -239,6 +240,9 @@ src_remove_dual_man() {
 	pkg="$1"
 	ver="$2"
 	shift 2
+
+	has noman ${FEATURES} && return 0
+
 	case "${EBUILD_PHASE:-none}" in
 		postinst|postrm)
 			for i in "$@" ; do

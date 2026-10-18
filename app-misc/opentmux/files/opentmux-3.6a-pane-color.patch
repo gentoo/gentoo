@@ -1,0 +1,40 @@
+https://github.com/tmux/tmux/issues/4732
+https://github.com/tmux/tmux/commit/afa05ae15ed7129690e42a6f207b6488ff86bee9
+
+From afa05ae15ed7129690e42a6f207b6488ff86bee9 Mon Sep 17 00:00:00 2001
+From: nicm <nicm>
+Date: Mon, 8 Dec 2025 21:32:50 +0000
+Subject: [PATCH] Use correct style for bottom line when pane status line is
+ on, GitHub issue 4732.
+
+---
+ screen-redraw.c | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/screen-redraw.c b/screen-redraw.c
+index db5187088..0dda2feae 100644
+--- a/screen-redraw.c
++++ b/screen-redraw.c
+@@ -197,9 +197,11 @@ screen_redraw_pane_border(struct screen_redraw_ctx *ctx, struct window_pane *wp,
+ 		} else { /* sb_pos == PANE_SCROLLBARS_RIGHT */
+ 			if ((wp->xoff == 0 || px >= wp->xoff) &&
+ 			    (px <= ex || (sb_w != 0 && px < ex + sb_w))) {
+-				if (wp->yoff != 0 && py == wp->yoff - 1)
++				if (pane_status != PANE_STATUS_BOTTOM &&
++				    wp->yoff != 0 &&
++				    py == wp->yoff - 1)
+ 					return (SCREEN_REDRAW_BORDER_TOP);
+-				if (py == ey)
++				if (pane_status != PANE_STATUS_TOP && py == ey)
+ 					return (SCREEN_REDRAW_BORDER_BOTTOM);
+ 			}
+ 		}
+@@ -380,7 +382,6 @@ screen_redraw_check_cell(struct screen_redraw_ctx *ctx, u_int px, u_int py,
+ 
+ 		/* Check if CELL_SCROLLBAR */
+ 		if (window_pane_show_scrollbar(wp, pane_scrollbars)) {
+-
+ 			if (pane_status == PANE_STATUS_TOP)
+ 				line = wp->yoff - 1;
+ 			else
+

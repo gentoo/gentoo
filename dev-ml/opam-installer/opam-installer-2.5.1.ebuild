@@ -7,7 +7,7 @@ inherit dune
 
 DESCRIPTION="Core installer for opam packages"
 HOMEPAGE="https://opam.ocaml.org/ https://github.com/ocaml/opam"
-SRC_URI="https://github.com/ocaml/opam/releases/download/${PV}/opam-${PV}.tar.gz"
+SRC_URI="https://github.com/ocaml/opam/archive/${PV/_/-}.tar.gz -> opam-${PV}.tar.gz"
 S="${WORKDIR}/opam-${PV/_/-}"
 
 LICENSE="LGPL-2.1"
@@ -17,7 +17,6 @@ IUSE="+ocamlopt"
 RESTRICT="test" # sandbox not working
 
 RDEPEND="
-	<dev-ml/cmdliner-2.0.0:=[ocamlopt?]
 	dev-ml/jsonm:=[ocamlopt?]
 	dev-ml/ocamlgraph:=[ocamlopt?]
 	dev-ml/ocaml-sha:=[ocamlopt?]

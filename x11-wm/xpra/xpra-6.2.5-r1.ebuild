@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -155,6 +155,11 @@ src_prepare() {
 		-e 's#INSTALL_ROOT="$SRC_DIR/dist/python${PYTHON_VERSION}"#: "${INSTALL_ROOT:=$SRC_DIR/dist/python${PYTHON_VERSION}}"#' \
 		-e '/setup.py install/d' \
 		-i "${S}/tests/unittests/run" || die
+
+	# bug #981818
+	sed \
+		-e 's#"xpra.x11.gtk.bindings,xpra/x11/gtk/gdk_x11_macros.c", "gdk-3.0,#"xpra.x11.gtk.bindings,xpra/x11/gtk/gdk_x11_macros.c", "gdk-3.0,pygobject-3.0,#' \
+		-i setup.py || die
 }
 
 python_configure_all() {

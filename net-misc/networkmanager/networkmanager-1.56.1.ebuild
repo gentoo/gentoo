@@ -4,7 +4,7 @@
 EAPI=8
 
 MY_PN="NetworkManager"
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 
 inherit linux-info meson-multilib flag-o-matic python-any-r1 \
 	readme.gentoo-r1 systemd toolchain-funcs udev vala virtualx
@@ -20,7 +20,7 @@ S="${WORKDIR}"/${MY_PN}-${PV}
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="0"
 
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv ~sparc x86"
 
 IUSE="audit bluetooth +concheck connection-sharing debug dhclient dhcpcd elogind gnutls gtk-doc +introspection iptables iwd libedit +modemmanager nbft +nss nftables ofono ovs policykit +ppp psl resolvconf selinux syslog systemd teamd test +tools vala +wext +wifi"
 RESTRICT="!test? ( test )"

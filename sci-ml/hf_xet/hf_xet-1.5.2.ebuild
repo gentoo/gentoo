@@ -7,7 +7,7 @@ EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=maturin
-PYTHON_COMPAT=( python3_{11..15} )
+PYTHON_COMPAT=( python3_{12..15} )
 RUST_MIN_VER="1.89.0"
 
 CRATES=""
@@ -38,8 +38,12 @@ src_configure() {
 	distutils-r1_src_configure
 }
 
-src_compile() {
+python_compile() {
 	cargo_src_compile
+	distutils-r1_python_compile
+}
+
+src_compile() {
 	distutils-r1_src_compile
 }
 

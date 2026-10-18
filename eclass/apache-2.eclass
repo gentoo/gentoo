@@ -179,6 +179,7 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	virtual/pkgconfig
 	suexec? ( suexec-caps? ( sys-libs/libcap ) )
+	verify-sig? ( sec-keys/openpgp-keys-apache-httpd )
 "
 PDEPEND="~app-admin/apache-tools-${PV}"
 

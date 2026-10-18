@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: common-lisp-3.eclass
@@ -202,6 +202,7 @@ common-lisp-find-lisp-impl() {
 # @DESCRIPTION:
 # Export a few variables containing the switches necessary
 # to make the CL implementation perform basic functions:
+#
 #   * CL_BINARY: Common Lisp implementation
 #   * CL_NORC: don't load syste-wide or user-specific initfiles
 #   * CL_LOAD: load a certain file

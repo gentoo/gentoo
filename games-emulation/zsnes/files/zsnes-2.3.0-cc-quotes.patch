@@ -1,0 +1,6 @@
+Does not expect CC may have arguments rather than being in CFLAGS, e.g. -m32
+--- a/Makefile
++++ b/Makefile
+@@ -951 +951 @@
+-	$(Q)$(PYTHON) ./$(PSR) $(CFGDEFS) -gcc $(CC_TARGET) -compile -flags '$(CFLAGS)' -cheader $(BUILD_DIR)/$*.h -fname $(*F) $(BUILD_DIR)/$*.o $*.psr
++	$(Q)$(PYTHON) ./$(PSR) $(CFGDEFS) -gcc '$(CC_TARGET)' -compile -flags '$(CFLAGS)' -cheader $(BUILD_DIR)/$*.h -fname $(*F) $(BUILD_DIR)/$*.o $*.psr

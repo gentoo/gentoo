@@ -1,0 +1,27 @@
+commit e0a10390fbfba82ba0d94ba27fc76f135b5746a4
+Author: Stefan Petersen <spe@ciellt.se>
+Date:   Tue Mar 24 18:27:49 2026 +0100
+
+    Add release version in CMakeLists.txt
+    
+    To fallback on when git is missing in the source tree. I will also
+    add checks in the release build when to verify that the release
+    tag is the same as the version in the CMakeLists.txt.
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index c15885c..f203214 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,7 +1,11 @@
+ cmake_minimum_required(VERSION 3.28)
+ 
++# Update the release version here for when the code is built out
++# of tree. It is not optimal, but that how it is. There is a check
++# in the release build to make sure this version and the tag have
++# the same version.
+ project(gerbv
+-        VERSION 4.0
++        VERSION 2.13.0
+         DESCRIPTION "Gerber Viewer"
+         LANGUAGES C CXX)
+ 

@@ -1,0 +1,40 @@
+From: Felix W. (65278) <felix@zeynix.de> 
+Date: Fri, 11 Sep 2026 15:30:00 +0200
+Subject: [PATCH] ceph-20.2.4: fix CephKeyServer gentoo patch
+
+ceph-20.2.1-boost-1.90-intrusive_ptr_fixes.patch introduces fixes
+around boost 1.90 and intrusive_ptr. Meanwhile, in ceph 20.2.4,
+CephKeyServer now has an intrusive_ptr reference to CephContext.
+
+This does not work, because clang++ has no idea how to find the
+helper functions in ceph::common::CephContext. So while templating
+is fine, finding intrusive_ptr_{add_ref,release} can't work.
+Frankly, I have no idea how g++ does it and it should not work.
+
+I've made the namespace of CephContext explicit and included the
+relevant header.
+
+Index: ceph-20.2.4/src/auth/cephx/CephxKeyServer.h
+===================================================================
+--- ceph-20.2.4.orig/src/auth/cephx/CephxKeyServer.h
++++ ceph-20.2.4/src/auth/cephx/CephxKeyServer.h
+@@ -20,6 +20,8 @@
+ #include "auth/KeyRing.h"
+ #include "CephxProtocol.h"
+ #include "common/ceph_mutex.h"
++#include "common/ceph_context.h"
++
+ #include "include/common_fwd.h"
+ 
+ namespace ceph { class Formatter; }
+@@ -152,9 +154,8 @@ struct KeyServerData {
+ WRITE_CLASS_ENCODER(KeyServerData)
+ WRITE_CLASS_ENCODER(KeyServerData::Incremental)
+ 
+-
+ class KeyServer : public KeyStore {
+-  boost::intrusive_ptr<CephContext> kscct;
++  boost::intrusive_ptr<ceph::common::CephContext> kscct;
+   KeyServerData data;
+   std::map<EntityName, CryptoKey> used_pending_keys;
+   mutable ceph::mutex lock;

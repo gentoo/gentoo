@@ -1,0 +1,9 @@
+# Copyright 2024-2026 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+#KNOT_RESOLVER_USER=knot-resolver
+#KNOT_RESOLVER_GROUP=knot-resolver
+#KNOT_RESOLVER_CONFIG="/etc/knot-resolver/config.yaml"
+
+# see /usr/bin/knot-resolver --help
+KNOT_RESOLVER_EXTRA_ARGS="--logtarget=syslog"

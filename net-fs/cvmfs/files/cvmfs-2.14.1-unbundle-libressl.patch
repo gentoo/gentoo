@@ -1,0 +1,40 @@
+Revert upstream PR #3023 ("Bump LibreSSL and use it for libcvmfs_crypto")
+for Gentoo and unbundle libressl.
+
+libcvmfs_crypto links against the system OpenSSL again.  The symbol
+isolation the PR was aiming for is preserved: cvmfs_crypto keeps its
+existing -fvisibility=hidden and -Wl,--exclude-libs,ALL flags (used with
+the bundled static LibreSSL), so it exports only the cvmfs C++ API and no
+libcrypto symbols, and at runtime it simply DT_NEEDEDs the same
+libcrypto.so.3 that curl/cvmfs2 already use -- the same situation as
+before the PR.
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -427,6 +427,9 @@ endif ()
+ find_package (OpenSSL REQUIRED)
+ set (INCLUDE_DIRECTORIES ${INCLUDE_DIRECTORIES} ${OPENSSL_INCLUDE_DIR})
+ 
++set(Libcrypto_LIBRARIES OpenSSL::Crypto)
++set(Libcrypto_INCLUDE_DIRS ${OPENSSL_INCLUDE_DIR})
++
+ find_package (Libcrypto REQUIRED)
+ # We do not add the Libcrypto include directories to INCLUDE_DIRECTORIES
+ # to avoid a clash with the system openssl. We only use it for libcvmfs_crypto
+diff --git a/cvmfs/crypto/openssl_version.h b/cvmfs/crypto/openssl_version.h
+--- a/cvmfs/crypto/openssl_version.h
++++ b/cvmfs/crypto/openssl_version.h
+@@ -9,12 +9,6 @@
+ 
+ // Safeguard when compiling libcvmfs_crypto: make sure we pick up the built-in
+ // LibreSSL and not the system's OpenSSL
+-#ifdef CVMFS_LIBRARY
+-#ifndef LIBRESSL_VERSION_NUMBER
+-#error "picking up OpenSSL includes instead of LibreSSL"
+-#endif
+-#endif
+-
+ #if OPENSSL_VERSION_NUMBER >= 0x10100000L
+ #define OPENSSL_API_INTERFACE_V11
+ #if OPENSSL_VERSION_NUMBER >= 0x10101000L

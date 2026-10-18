@@ -33,12 +33,12 @@ declare -A BUNDLED=(
 	# Heavily patched in an incompatible way.
 	# Issues related to using system ffmpeg historically.
 	# See bug #829595 and #922828
-	[ffmpeg]="https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs2/ffmpeg-8.1.2.tar.bz2;"
+	[ffmpeg]="https://ffmpeg.org/releases/ffmpeg-9.0.2.tar.bz2;"
 	# Patched in an incompatible way
-	[x265]="https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs2/x265_4.2.tar.gz;x265"
-	[x265_8bit]="https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs2/x265_4.2.tar.gz;x265"
-	[x265_10bit]="https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs2/x265_4.2.tar.gz;x265"
-	[x265_12bit]="https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs2/x265_4.2.tar.gz;x265"
+	[x265]="https://github.com/Multicorewareinc/x265/releases/download/4.3/x265_4.3.tar.gz;x265"
+	[x265_8bit]="https://github.com/Multicorewareinc/x265/releases/download/4.3/x265_4.3.tar.gz;x265"
+	[x265_10bit]="https://github.com/Multicorewareinc/x265/releases/download/4.3/x265_4.3.tar.gz;x265"
+	[x265_12bit]="https://github.com/Multicorewareinc/x265/releases/download/4.3/x265_4.3.tar.gz;x265"
 )
 
 bundle_src_uri() {
@@ -51,9 +51,9 @@ bundle_src_uri() {
 
 		tarball=${uri##*/}
 		if [[ -n ${use} ]]; then
-			SRC_URI+=" ${use}? ( ${uri} -> handbrake-${tarball} )"
+			SRC_URI+=" ${use}? ( ${uri} )"
 		else
-			SRC_URI+=" ${uri} -> handbrake-${tarball}"
+			SRC_URI+=" ${uri}"
 		fi
 	done
 }
@@ -105,7 +105,11 @@ COMMON_DEPEND="
 		media-libs/libva:=
 		>=media-libs/libvpl-1.13.0:=
 	)
-	vaapi? ( media-libs/libva:=[X] )
+	vaapi? (
+		media-libs/libva:=[X]
+		x11-libs/libX11
+		x11-libs/libdrm
+	)
 "
 RDEPEND="
 	${COMMON_DEPEND}
@@ -113,7 +117,7 @@ RDEPEND="
 "
 DEPEND="
 	${COMMON_DEPEND}
-	amf? ( >=media-libs/amf-headers-1.4.36-r1 )
+	amf? ( >=media-libs/amf-headers-1.5.2 )
 "
 # cmake needed for custom script: bug #852701
 BDEPEND="
@@ -157,7 +161,7 @@ src_prepare() {
 		if [[ -n ${use} ]]; then
 			use ${use} || continue
 		fi
-		cp "${DISTDIR}/handbrake-${tarball}" download/${tarball} || die
+		cp "${DISTDIR}/${tarball}" download/${tarball} || die
 	done
 
 	# Get rid of leftover bundled library build definitions

@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{12..14} )
-inherit cmake llvm.org multilib-minimal python-any-r1
+inherit cmake flag-o-matic llvm.org multilib-minimal python-any-r1
 
 DESCRIPTION="Multi-Level Intermediate Representation (library only)"
 HOMEPAGE="https://mlir.llvm.org/"
@@ -69,7 +69,7 @@ check_distribution_components() {
 					MLIR)
 						;;
 					# installed test libraries
-					MLIRTestAnalysis|MLIRTestDialect|MLIRTestIR)
+					MLIRTestAliasAnalysis|MLIRTestAnalysis|MLIRTestDialect|MLIRTestIR)
 						;;
 					MLIROpenACCTestPasses)
 						;;
@@ -100,9 +100,10 @@ check_distribution_components() {
 		done
 
 		if [[ ${#add[@]} -gt 0 || ${#remove[@]} -gt 0 ]]; then
-			eqawarn "get_distribution_components() is outdated!"
-			eqawarn "   Add: ${add[*]}"
-			eqawarn "Remove: ${remove[*]}"
+			eerror "get_distribution_components() is outdated!"
+			eerror "   Add: ${add[*]}"
+			eerror "Remove: ${remove[*]}"
+			die "Update get_distribution_components()!"
 		fi
 		cd - >/dev/null || die
 	fi
@@ -129,6 +130,7 @@ get_distribution_components() {
 
 		# test libraries required by flang
 		MLIROpenACCTestPasses
+		MLIRTestAliasAnalysis
 		MLIRTestAnalysis
 		MLIRTestDialect
 		MLIRTestIR
@@ -137,6 +139,7 @@ get_distribution_components() {
 	if multilib_is_native_abi; then
 		out+=(
 			# tools
+			mlir-irdl-to-cpp
 			mlir-linalg-ods-yaml-gen
 			mlir-lsp-server
 			mlir-opt
@@ -146,6 +149,7 @@ get_distribution_components() {
 			mlir-reduce
 			mlir-rewrite
 			mlir-runner
+			mlir-src-sharder
 			mlir-tblgen
 			mlir-translate
 			tblgen-lsp-server
@@ -157,6 +161,9 @@ get_distribution_components() {
 }
 
 multilib_src_configure() {
+	# bug #956603
+	filter-lto
+
 	local mycmakeargs=(
 		-DCMAKE_INSTALL_PREFIX="${EPREFIX}/usr/lib/llvm/${LLVM_MAJOR}"
 		-DLLVM_ROOT="${ESYSROOT}/usr/lib/llvm/${LLVM_MAJOR}"
@@ -201,29 +208,8 @@ multilib_src_compile() {
 }
 
 multilib_src_test() {
-	local known_xfail=()
-
-	case ${ABI} in
-		arm|ppc|x86)
-			known_xfail+=(
-				# MLIR is full of 64-bit assumptions, sigh
-				# https://github.com/llvm/llvm-project/issues/124541
-				Dialect/Bufferization/Transforms/one-shot-bufferize-pass-statistics.mlir
-				Dialect/LLVMIR/sroa-statistics.mlir
-				Dialect/Linalg/vectorize-tensor-extract.mlir
-				Dialect/MemRef/mem2reg-statistics.mlir
-				Dialect/Tensor/fold-tensor-subset-ops.mlir
-				Dialect/Tensor/tracking-listener.mlir
-				Pass/pipeline-stats-nested.mlir
-				Pass/pipeline-stats.mlir
-			)
-			;;
-	esac
-
 	# respect TMPDIR!
 	local -x LIT_PRESERVES_TMP=1
-	local -x LIT_XFAIL="${known_xfail[*]}"
-	LIT_XFAIL=${LIT_XFAIL// /;}
 	cmake_build check-mlir
 }
 

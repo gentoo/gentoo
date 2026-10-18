@@ -1,0 +1,40 @@
+From 6a939124a9ca7ca5efbae3f803a6b9936d9adf90 Mon Sep 17 00:00:00 2001
+From: Peter Bieringer <pb@bieringer.de>
+Date: Tue, 29 Sep 2026 20:51:31 +0200
+Subject: [PATCH 1/2] change exception error in case required module is not
+ found
+
+---
+ radicale/auth/ldap.py | 2 +-
+ radicale/auth/pam.py  | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/radicale/auth/ldap.py b/radicale/auth/ldap.py
+index cede4e6cb60a..2e9e3f3e3492 100644
+--- a/radicale/auth/ldap.py
++++ b/radicale/auth/ldap.py
+@@ -82,7 +82,7 @@ class Auth(auth.BaseAuth):
+                 self._ldap_module_version = 2
+                 self.ldap = ldap
+             except ImportError as e:
+-                raise RuntimeError("LDAP authentication requires the ldap3 or ldap module") from e
++                raise ModuleNotFoundError("LDAP authentication requires the ldap3 or ldap module") from e
+ 
+         self._ldap_ignore_attribute_create_modify_timestamp = configuration.get("auth", "ldap_ignore_attribute_create_modify_timestamp")
+         self._ldap_uri = configuration.get("auth", "ldap_uri")
+diff --git a/radicale/auth/pam.py b/radicale/auth/pam.py
+index 0884fb202c0b..ba56d59655fa 100644
+--- a/radicale/auth/pam.py
++++ b/radicale/auth/pam.py
+@@ -42,7 +42,7 @@ class Auth(auth.BaseAuth):
+             import pam
+             self.pam = pam
+         except ImportError as e:
+-            raise RuntimeError("PAM authentication requires the Python pam module") from e
++            raise ModuleNotFoundError("PAM authentication requires the Python pam module") from e
+         self._service = configuration.get("auth", "pam_service")
+         logger.info("auth.pam_service: %s" % self._service)
+         self._group_membership = configuration.get("auth", "pam_group_membership")
+-- 
+2.55.0
+

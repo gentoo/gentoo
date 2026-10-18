@@ -1,0 +1,57 @@
+Don't install tests into /usr/bin
+diff --git a/test/CMakeLists.txt b/test/CMakeLists.txt
+index d94a1b1..44592a7 100644
+--- a/test/CMakeLists.txt
++++ b/test/CMakeLists.txt
+@@ -184,11 +184,6 @@ function(add_rocwmma_test TEST_TARGET TEST_SOURCE)
+   add_test(NAME ${TEST_TARGET} COMMAND ${TEST_TARGET})
+   set_property(TEST ${TEST_TARGET} PROPERTY SKIP_REGULAR_EXPRESSION "no ROCm-capable device" "unsupported host device")
+ 
+-  rocm_install_targets(
+-    TARGETS ${TEST_TARGET}
+-    COMPONENT tests
+-  )
+-
+   get_target_property(EXE_NAME ${TEST_TARGET} RUNTIME_OUTPUT_NAME)
+   if(EXE_NAME STREQUAL "EXE_NAME-NOTFOUND")
+       get_target_property(EXE_NAME ${TEST_TARGET} OUTPUT_NAME)
+@@ -261,22 +256,3 @@ if(COMMAND apply_ctest_category_labels)
+         "${INSTALL_REGRESSION_TEST_FILE}"
+     )
+ endif()
+-
+-rocm_install(
+-    FILES "${INSTALL_TEST_FILE}"
+-    DESTINATION "${CMAKE_INSTALL_BINDIR}/${PROJECT_NAME}"
+-    COMPONENT tests
+-    RENAME "CTestTestfile.cmake"
+-)
+-rocm_install(
+-    FILES "${INSTALL_SMOKE_TEST_FILE}"
+-    DESTINATION "${CMAKE_INSTALL_BINDIR}/${PROJECT_NAME}/smoke"
+-    COMPONENT tests
+-    RENAME "CTestTestfile.cmake"
+-)
+-rocm_install(
+-    FILES "${INSTALL_REGRESSION_TEST_FILE}"
+-    DESTINATION "${CMAKE_INSTALL_BINDIR}/${PROJECT_NAME}/regression"
+-    COMPONENT tests
+-    RENAME "CTestTestfile.cmake"
+-)
+diff --git a/test/regression/CMakeLists.txt b/test/regression/CMakeLists.txt
+index f06cf4e..12916da 100644
+--- a/test/regression/CMakeLists.txt
++++ b/test/regression/CMakeLists.txt
+@@ -90,12 +90,6 @@ if(REGRESSION_TEST_SOURCES)
+     add_test(NAME regression_tests COMMAND ${TEST_TARGET})
+     set_property(TEST regression_tests PROPERTY SKIP_REGULAR_EXPRESSION "no ROCm-capable device" "unsupported host device")
+ 
+-    # Install the executable
+-    rocm_install_targets(
+-        TARGETS ${TEST_TARGET}
+-        COMPONENT tests
+-    )
+-
+     # Add to install test file
+     get_target_property(EXE_NAME ${TEST_TARGET} RUNTIME_OUTPUT_NAME)
+     if(EXE_NAME STREQUAL "EXE_NAME-NOTFOUND")

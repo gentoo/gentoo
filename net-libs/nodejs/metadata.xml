@@ -5,6 +5,10 @@
 		<email>williamh@gentoo.org</email>
 		<name>William Hubbs</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>mpagano@gentoo.org</email>
+		<name>Mike Pagano</name>
+	</maintainer>
 	<use>
 		<flag name="corepack">Enable the experimental corepack package management tool</flag>
 		<flag name="inspector">Enable V8 inspector</flag>
@@ -13,6 +17,7 @@
 		<flag name="snapshot">Enable snapshot creation for faster startup</flag>
 		<flag name="system-icu">Use system <pkg>dev-libs/icu</pkg> instead of the bundled version</flag>
 		<flag name="system-ssl">Use system OpenSSL instead of the bundled one</flag>
+		<flag name="temporal">Enable the Temporal API for handling dates and times</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">nodejs/node</remote-id>

@@ -1,6 +1,18 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Alfred Wingate <parona@protonmail.com> (2026-10-12)
+# media-libs/libsdl3 not keyworded here
+media-libs/gegl sdl3
+
+# Michał Górny <mgorny@gentoo.org> (2026-10-10)
+# Requires dev-python/scipy.
+dev-python/munkres test
+
+# Michał Górny <mgorny@gentoo.org> (2026-09-29)
+# Requires virtual/pandoc.
+>=dev-libs/xmlsec-1.3.11 doc
+
 # Pacho Ramos <pacho@gentoo.org> (2026-07-05)
 # QT6 is not keyworded here, bug #977775
 dev-libs/appstream test
@@ -254,6 +266,7 @@ app-editors/emacs gui mailutils
 
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-08-25)
 # net-libs/webkit-gtk has no mips keywords
+app-editors/emacs xwidgets
 dev-util/glade webkit
 
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-08-25)
@@ -360,6 +373,10 @@ media-libs/libheif aom
 # matoro <matoro_gentoo@matoro.tk> (2023-11-19)
 # Pulls in LXDE which is not keyworded here
 x11-misc/xscreensaver new-login
+
+# Arthur Zamarin <arthurzam@gentoo.org> (2026-09-19)
+# gui-libs/gtk:4 is not keyworded here
+app-editors/gvim gtk4
 
 # matoro <matoro_gentoo@matoro.tk> (2023-11-16)
 # gui-libs/gtk:4 casualties

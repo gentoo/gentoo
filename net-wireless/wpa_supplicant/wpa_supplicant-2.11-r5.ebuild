@@ -359,7 +359,7 @@ src_compile() {
 	fi
 
 	if use eapol-test ; then
-		emake -C wpa_supplicant/eapol_test
+		emake -C wpa_supplicant eapol_test
 	fi
 }
 

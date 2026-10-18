@@ -1,0 +1,41 @@
+From d80c423c89b79742fad1d1d6762002ed3dcddf09 Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+Date: Thu, 16 Apr 2026 16:02:24 +0200
+Subject: src/Makefile: fix makefile to respect system settings
+
+Signed-off-by: Paul Zander <negril.nx+gentoo@gmail.com>
+
+diff --git a/Makefile b/Makefile
+index 3f22129..ceb0ee3 100755
+--- a/Makefile
++++ b/Makefile
+@@ -1,6 +1,6 @@
+ 
+-CFLAGS = -Wall -O2  -I ../../../SPOOLES.2.2 -DARCH="Linux" -DSPOOLES -DARPACK -DMATRIXSTORAGE -DNETWORKOUT
+-FFLAGS = -Wall -O2 -cpp 
++CFLAGS := -Wall -DARCH="Linux" -DMATRIXSTORAGE -DNETWORKOUT $(CFLAGS)
++FFLAGS := -Wall -cpp $(FFLAGS)
+ 
+ CC=cc
+ FC=gfortran
+@@ -18,15 +18,10 @@ OCCXF = $(SCCXF:.f=.o)
+ OCCXC = $(SCCXC:.c=.o)
+ OCCXMAIN = $(SCCXMAIN:.c=.o)
+ 
+-DIR=../../../SPOOLES.2.2
+-
+-LIBS = \
+-       $(DIR)/spooles.a \
+-	../../../ARPACK/libarpack_INTEL.a \
+-       -lpthread -lm -lc
++LIBS = $(ARPACKLIB) $(LAPACK) -lm -lc -lspooles -lpthread -lblas
+ 
+ ccx_2.23: $(OCCXMAIN) ccx_2.23.a  $(LIBS)
+-	./date.pl; $(CC) $(CFLAGS) -c ccx_2.23.c; $(FC)  -Wall -O2 -o $@ $(OCCXMAIN) ccx_2.23.a $(LIBS) -fopenmp
++	./date.pl; $(CC) $(CFLAGS) -c ccx_2.23.c; $(FC) $(FFLAGS) -o $@ $(OCCXMAIN) ccx_2.23.a $(LIBS)
+ 
+ ccx_2.23.a: $(OCCXF) $(OCCXC)
+ 	ar vr $@ $?
+-- 
+2.53.0
+

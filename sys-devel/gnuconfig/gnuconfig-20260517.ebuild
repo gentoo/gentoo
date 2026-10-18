@@ -9,7 +9,7 @@ if [[ ${PV} == 99999999 ]] ; then
 	inherit git-r3
 else
 	SRC_URI="https://distfiles.gentoo.org/pub/proj/base-system/gnuconfig/${P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~arm64-macos ~x64-macos ~x64-solaris"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~arm64-macos ~x64-macos ~x64-solaris"
 	S="${WORKDIR}"
 fi
 

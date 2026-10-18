@@ -1,6 +1,27 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Matt Jolly <kangie@gentoo.org> (2026-10-18)
+# We can bootstrap with mrustc on arm64.
+dev-lang/rust -mrustc-bootstrap
+
+# Sam James <sam@gentoo.org> (2026-09-23)
+# Only supported on some arches.
+dev-libs/elfutils -stackprof
+
+# Michał Górny <mgorny@gentoo.org> (2026-09-22)
+# Fortran modules require llvm-core/flang.
+llvm-runtimes/openmp -fortran
+
+# Ionen Wolkens <ionen@gentoo.org> (2026-08-19)
+# arm64 is only supported in >=wine-mono-11.3.0 which is only used by
+# >=wine-11.16 (-mono is to override global use.mask, keeping duplicate
+# mask in case it's ever unmasked given using a different package here)
+<app-emulation/wine-staging-11.16 mono
+<app-emulation/wine-vanilla-11.16 mono
+>=app-emulation/wine-staging-11.16 -mono
+>=app-emulation/wine-vanilla-11.16 -mono
+
 # Alfredo Tupone <tupone@gentoo.org> (2026-07-09)
 # dependencies not arm64 ready
 sci-ml/ggml rocm
@@ -106,20 +127,21 @@ sci-ml/datasets test
 # Alfredo Tupone <tupone@gentoo.org> (2025-05-03)
 # dependencies not arm64 ready
 sci-ml/caffe2 distributed gloo fbgemm nnpack onednn qnnpack rocm xnnpack
-sci-ml/pytorch distributed gloo fbgemm nnpack onednn qnnpack rocm xnnpack
+sci-ml/pytorch distributed fbgemm nnpack onednn qnnpack rocm xnnpack
+sci-ml/gloo rocm
 
 # Sam James <sam@gentoo.org> (2025-04-30)
 # 32-bit only (bug #951981).
 dev-cpp/highway cpu_flags_arm_neon
 
 # Ionen Wolkens <ionen@gentoo.org> (2025-04-21)
-# These are not currently supported on arm64. Porting wine-gecko and
-# wine-mono is on Wine's TODO[1], mingw64-toolchain lacks ebuild
-# support (crossdev might be usable, but users are on their own there),
+# These are not currently supported on arm64. Porting wine-gecko
+# is on Wine's TODO[1], mingw64-toolchain lacks ebuild support
+# (crossdev might be usable, but users are on their own there),
 # and dosbox is not keyworded here.
 # [1] https://gitlab.winehq.org/wine/wine/-/wikis/ARM64#todo
-app-emulation/wine-vanilla crossdev-mingw dos gecko mingw mono
-app-emulation/wine-staging crossdev-mingw dos gecko mingw mono
+app-emulation/wine-staging crossdev-mingw dos gecko mingw
+app-emulation/wine-vanilla crossdev-mingw dos gecko mingw
 
 # NRK <nrk@disroot.org> (2025-03-17)
 # media-libs/libyuv is not keyworded
@@ -199,10 +221,6 @@ sys-kernel/installkernel -ugrd
 # Only remaining use is as a requirement for dev-lang/go on arm{,64}.
 # See #934149, #934151, #936022, #936021
 <sys-devel/binutils-2.44 -gold
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2024-06-23)
-# Pulls in kde-apps/kgpg which is keyworded here
->=kde-apps/kdeutils-meta-24.05.1 -gpg
 
 # Ionen Wolkens <ionen@gentoo.org> (2024-05-19)
 # jit is supported here
@@ -458,10 +476,6 @@ net-misc/sunshine -cpu_flags_arm_neon
 # dev-libs/criterion is not keyworded yet
 app-admin/syslog-ng test
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2019-10-29)
-# Neither sys-apps/bolt nor kde-plasma/plasma-thunderbolt are keyworded
-kde-plasma/plasma-meta thunderbolt
-
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2019-09-27)
 # some testsuite deps are not keyworded
 sys-fs/zfs test-suite
@@ -526,10 +540,6 @@ mate-base/mate-applets-meta sensors
 mate-extra/caja-extensions gajim
 sci-libs/gdal armadillo netcdf
 sys-fs/btrfs-progs reiserfs
-www-client/chromium widevine
-www-client/qutebrowser widevine
-www-client/vivaldi widevine
-www-client/vivaldi-snapshot widevine
 
 # Michał Górny <mgorny@gentoo.org> (2018-02-17)
 # Requires unkeyworded dependencies.

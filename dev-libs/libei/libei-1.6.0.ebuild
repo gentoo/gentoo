@@ -14,7 +14,7 @@ SRC_URI+=" https://github.com/nemequ/munit/archive/${MUNIT_COMMIT}.tar.gz -> mun
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ~loong ~ppc ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv ~s390 ~sparc x86"
 IUSE="elogind systemd test"
 RESTRICT="!test? ( test )"
 
@@ -44,6 +44,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/1.3.0-skip-protocol-test.patch
+	"${FILESDIR}"/1.6.0-util-explicitly-reject-rejecting-negative-numbers-in.patch
 )
 
 python_check_deps() {
@@ -88,6 +89,10 @@ src_configure() {
 		emesonargs+=(-Dsd-bus-provider=basu)
 	fi
 	meson_src_configure
+}
+
+src_test() {
+	meson_src_test --timeout-multiplier=10
 }
 
 src_install() {

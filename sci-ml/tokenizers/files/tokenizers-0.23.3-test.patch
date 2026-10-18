@@ -1,0 +1,56 @@
+--- a/tests/utils.py
++++ b/tests/utils.py
+@@ -3,7 +3,11 @@
+
+ import pytest
+
+-from huggingface_hub import hf_hub_download
++try:
++    from huggingface_hub import hf_hub_download as _hf_hub_download
++    _HF_AVAILABLE = True
++except ImportError:
++    _HF_AVAILABLE = False
+
+
+ DATA_PATH = os.path.join("tests", "data")
+@@ -11,8 +15,10 @@
+
+
+ def download(filename):
++    if not _HF_AVAILABLE:
++        pytest.skip("huggingface_hub is not installed")
+     # huggingface_hub handles auth (HF_TOKEN), retry/backoff and ETag-based caching.
+-    return hf_hub_download(repo_id=HF_TEST_REPO, filename=filename, repo_type="dataset")
++    return _hf_hub_download(repo_id=HF_TEST_REPO, filename=filename, repo_type="dataset")
+
+
+ @pytest.fixture(scope="session")
+--- a/tests/test_serialization.py
++++ b/tests/test_serialization.py
+@@ -4,7 +4,10 @@
+ import unittest
+
+ import tqdm
+-from huggingface_hub import hf_hub_download
++try:
++    from huggingface_hub import hf_hub_download
++except ImportError:
++    hf_hub_download = None
+ from tokenizers import Tokenizer
+ from tokenizers.models import BPE, Unigram
+
+--- a/tests/documentation/test_tutorial_train_from_iterators.py
++++ b/tests/documentation/test_tutorial_train_from_iterators.py
+@@ -2,8 +2,11 @@
+ import gzip
+ import os
+
+-import datasets  # type: ignore[import-not-found]
+ import pytest
++try:
++    import datasets  # type: ignore[import-not-found]
++except ImportError:
++    pytest.skip("datasets is not installed", allow_module_level=True)
+
+ from ..utils import data_dir, train_files
+

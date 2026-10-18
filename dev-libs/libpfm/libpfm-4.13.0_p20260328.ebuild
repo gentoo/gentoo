@@ -23,7 +23,7 @@ fi
 LICENSE="GPL-2 MIT"
 SLOT="0/4"
 if [[ ${PV} != 9999 ]] ; then
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+	KEYWORDS="~alpha amd64 arm arm64 ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
 fi
 IUSE="static-libs"
 

@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,7 +6,7 @@ EAPI=8
 inherit flag-o-matic netsurf
 
 DESCRIPTION="C library for building efficient parsers"
-HOMEPAGE="http://www.netsurf-browser.org/projects/libparserutils/"
+HOMEPAGE="https://www.netsurf-browser.org/projects/libparserutils/"
 SRC_URI="https://download.netsurf-browser.org/libs/releases/${P}-src.tar.gz"
 
 LICENSE="MIT"

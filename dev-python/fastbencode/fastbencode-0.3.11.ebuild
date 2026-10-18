@@ -70,7 +70,8 @@ pkg_setup() {
 
 src_unpack() {
 	pypi_src_unpack
-	cargo_src_unpack
+	cargo_crate_unpack
+	cargo_gen_config
 }
 
 src_prepare() {

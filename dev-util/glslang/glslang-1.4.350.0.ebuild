@@ -12,7 +12,7 @@ if [[ ${PV} == *9999* ]]; then
 else
 	GIT_COMMIT="vulkan-sdk-${PV}"
 	SRC_URI="https://github.com/KhronosGroup/${PN}/archive/${GIT_COMMIT}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
+	KEYWORDS="amd64 arm arm64 ~loong ppc ppc64 ~riscv x86"
 	S="${WORKDIR}/${PN}-${GIT_COMMIT}"
 fi
 
@@ -28,6 +28,10 @@ BDEPEND="${PYTHON_DEPS}
 
 DEPEND="~dev-util/spirv-tools-${PV}[${MULTILIB_USEDEP}]"
 RDEPEND="${DEPEND}"
+
+PATCHES=(
+	"${FILESDIR}"/${PV}-Fix-format-specifier-for-64-bit-index-in-error-messa.patch
+)
 
 multilib_src_configure() {
 	local mycmakeargs=(

@@ -9,6 +9,7 @@
 		<bugs-to>https://bugs.kde.org/enter_bug.cgi?classification=Plasma</bugs-to>
 	</upstream>
 	<use>
+		<flag name="backup">Pull in <pkg>kde-plasma/kup</pkg> for an integrated backup/restore solution</flag>
 		<flag name="browser-integration">Enable integration with Chrome/Firefox with browser extensions</flag>
 		<flag name="crash-handler">Pull in <pkg>kde-plasma/drkonqi</pkg> for assisted upstream crash reports</flag>
 		<flag name="crypt">Pull in <pkg>kde-plasma/plasma-vault</pkg> for encrypted vaults integration</flag>

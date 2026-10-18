@@ -24,19 +24,8 @@ RDEPEND="
 	>=dev-python/jupyter-server-1.8[${PYTHON_USEDEP}]
 "
 
-BDEPEND="
-	test? (
-		dev-python/pytest-tornasync[${PYTHON_USEDEP}]
-		dev-python/pytest-jupyter[${PYTHON_USEDEP}]
-	)
-"
-
+EPYTEST_PLUGINS=( pytest-{jupyter,tornasync} )
 distutils_enable_tests pytest
-
-python_test() {
-	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
-	epytest -p pytest_tornasync.plugin
-}
 
 src_install() {
 	distutils-r1_src_install

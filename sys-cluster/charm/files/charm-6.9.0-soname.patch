@@ -1,0 +1,11 @@
+--- a/src/scripts/charmc	2026-08-21 11:20:03.592605401 +0200
++++ b/src/scripts/charmc	2026-08-21 11:20:18.959463483 +0200
+@@ -1988,7 +1988,7 @@
+ 	then
+ 	  soLibs="$soLibs -lstdc++"
+ 	fi
+-	soCmd="$soTool $CMK_LIBDIR -o $OBJECT $OPTS_LD $OPTS_LDRO $OBJECTFILES $soLibs $CMK_LD_SHARED_LIBS"
++        soCmd="$soTool $CMK_LIBDIR -o $OBJECT -Wl,-soname,$(basename $OBJECT) $OPTS_LD $OPTS_LDRO $OBJECTFILES $soLibs $CMK_LD_SHARED_LIBS"
+ 	DoNoErrCheck $soCmd
+ 	Do_res=$?
+ 	if [ $Do_res -ne 0 ]

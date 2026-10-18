@@ -1,0 +1,42 @@
+From 9e10e873affcadbad27b0b71a7a4bb9bb7644ba4 Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx@gmail.com>
+Date: Mon, 14 Jul 2025 15:18:26 +0200
+Subject: [PATCH] tests src Qt only build test for BUILD_GUI=ON
+
+Signed-off-by: Paul Zander <negril.nx+gentoo@gmail.com>
+
+diff --git a/tests/src/Base/CMakeLists.txt b/tests/src/Base/CMakeLists.txt
+index 0bdc34ba5c..850772b5b3 100644
+--- a/tests/src/Base/CMakeLists.txt
++++ b/tests/src/Base/CMakeLists.txt
+@@ -46,7 +46,9 @@ add_executable(Base_tests_run
+         XMLTools.cpp
+ )
+ 
++if(BUILD_GUI)
+ setup_qt_test(InventorBuilder)
++endif()
+ 
+ target_link_libraries(Base_tests_run PRIVATE
+     GTest::gmock_main
+diff --git a/tests/src/Gui/CMakeLists.txt b/tests/src/Gui/CMakeLists.txt
+index bf6b87d0fd..0b186fbf5c 100644
+--- a/tests/src/Gui/CMakeLists.txt
++++ b/tests/src/Gui/CMakeLists.txt
+@@ -28,11 +28,13 @@ add_executable(Gui_tests_run
+ )
+ 
+ # Qt tests
++if(BUILD_GUI)
+ setup_qt_test(ObjectSelection)
+ setup_qt_test(TranslatorLocale)
+ setup_qt_test(InputField)
+ setup_qt_test(QuantitySpinBox)
+ setup_qt_test(NumericLocaleConsumers)
++endif()
+ 
+ target_link_libraries(Gui_tests_run PRIVATE
+     GTest::gmock_main
+-- 
+2.50.1
+

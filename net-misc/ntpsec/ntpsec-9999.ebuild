@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517="flit"
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 PYTHON_REQ_USE='threads(+)'
 
 inherit dot-a distutils-r1 multiprocessing waf-utils systemd
@@ -22,7 +22,7 @@ else
 	"
 	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~ppc ~ppc64 ~riscv ~s390 ~x86"
 
-	BDEPEND="verify-sig? ( sec-keys/openpgp-keys-ntpsec )"
+	BDEPEND="verify-sig? ( >=sec-keys/openpgp-keys-ntpsec-20260731 )"
 fi
 
 DESCRIPTION="The NTP reference implementation, refactored"
@@ -47,9 +47,9 @@ DEPEND="
 	dev-python/psutil[${PYTHON_USEDEP}]
 	sys-libs/libcap
 	libbsd? ( dev-libs/libbsd:0= )
-	seccomp? ( sys-libs/libseccomp )
 	oncore? ( net-misc/pps-tools )
 	pps? ( net-misc/pps-tools )
+	seccomp? ( sys-libs/libseccomp )
 "
 RDEPEND="
 	${DEPEND}
@@ -64,10 +64,10 @@ RDEPEND="
 	selinux? ( sec-policy/selinux-ntp )
 "
 BDEPEND+="
-	>=app-text/asciidoc-8.6.8
-	dev-libs/libxslt
-	app-text/docbook-xsl-stylesheets
 	app-alternatives/yacc
+	>=app-text/asciidoc-8.6.8
+	app-text/docbook-xsl-stylesheets
+	dev-libs/libxslt
 "
 
 WAF_BINARY="${S}/waf"
@@ -118,9 +118,11 @@ src_configure() {
 	CLOCKSTRING="`echo ${string_127}|sed 's|,$||'`"
 
 	myconf=(
-		--notests
+		--docdir="/use/share/docs/${PF}"
+		--htmldir="/use/share/docs/${PF}/html"
 		--nopyc
 		--nopyo
+		--notests
 		--refclock="${CLOCKSTRING}"
 		$(use_enable doc)
 		$(usev early --enable-early-droproot)
@@ -163,35 +165,27 @@ src_install() {
 	systemd_newunit "${FILESDIR}"/ntpd-r1.service ntpd.service
 
 	# Prepare a directory for the ntp.drift file
-	mkdir -pv "${ED}"/var/lib/ntp
-	chown ntp:ntp "${ED}"/var/lib/ntp
-	chmod 770 "${ED}"/var/lib/ntp
 	keepdir /var/lib/ntp
+	fowners ntp:ntp /var/lib/ntp
+	fperms 770 /var/lib/ntp
 
 	# Ensure statsdir exists
 	keepdir /var/log/ntpstats/
 
 	# Install a logrotate script
-	mkdir -pv "${ED}"/etc/logrotate.d
-	cp -v "${S}"/etc/logrotate-config.ntpd "${ED}"/etc/logrotate.d/ntpd
+	insinto /etc/logrotate.d/ntpd
+	doins "${S}"/etc/logrotate-config.ntpd
 
 	# Install the configuration file and sample configuration
-	cp -v "${FILESDIR}"/ntp.conf "${ED}"/etc/ntp.conf
-	cp -Rv "${S}"/etc/ntp.d/ "${ED}"/etc/
+	insinto /etc
+	doins "${FILESDIR}"/ntp.conf
+	doins -r "${S}"/etc/ntp.d/
 
 	ln -svf pylib build/main/ntp || die
 	distutils-r1_src_install
 	waf-utils_src_install --notests
 	python_fix_shebang "${ED}"
 	python_optimize
-
-	# move doc files to /usr/share/doc/"${PF}"
-	# TODO check when upstream waf updated to > 2.1.9 and configure with:
-	#  --docdir="/use/share/docs/${PF}"
-	#  --htmldir="/use/share/docs/${PF}/html"
-	if use doc ; then
-		mv -v "${ED}"/usr/share/doc/"${PN}" "${ED}"/usr/share/doc/"${PF}"/html || die
-	fi
 }
 
 pkg_postinst() {

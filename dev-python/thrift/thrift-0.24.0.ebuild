@@ -22,7 +22,7 @@ S="${WORKDIR}/${P}/lib/py"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~riscv ~x86"
+KEYWORDS="amd64 ~riscv x86"
 IUSE="+native-extensions test"
 RESTRICT="!test? ( test )"
 

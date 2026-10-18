@@ -1,0 +1,192 @@
+# Copyright 1999-2026 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=9
+
+TEXLIVE_MODULE_CONTENTS="
+	collection-games.r79624
+	bartel-chess-fonts.r78101
+	cardgame.r78746
+	carom-billiards.r79624
+	chess.r78101
+	chess-problem-diagrams.r78101
+	chessboard.r79618
+	chessfss.r79618
+	chinesechess.r78101
+	crossword.r79069
+	crosswrd.r79618
+	customdice.r64089
+	egameps.r15878
+	eigo.r78101
+	gamebook.r24714
+	gamebooklib.r67772
+	go.r78101
+	hanoi.r25019
+	havannah.r36348
+	hexboard.r62102
+	hexgame.r79618
+	hmtrump.r54512
+	horoscop.r56021
+	jeuxcartes.r76966
+	jigsaw.r71923
+	labyrinth.r33454
+	logicpuzzle.r78101
+	magicthegathering.r78456
+	mahjong.r76924
+	mahjong-tiles.r79618
+	mathador.r76924
+	maze.r79180
+	multi-sudoku.r78101
+	musikui.r47472
+	nimsticks.r64118
+	onedown.r69067
+	othello.r15878
+	othelloboard.r23714
+	pas-crosswords.r32313
+	pgf-go.r78101
+	playcards.r79618
+	psgo.r79618
+	quizztex.r75977
+	realtranspose.r76924
+	reverxii.r63753
+	rouequestions.r67670
+	rpgicons.r78857
+	rubik.r46791
+	schwalbe-chess.r78101
+	scrabble.r77114
+	sgame.r30959
+	skak.r79618
+	skaknew.r79618
+	soup.r50815
+	sudoku.r79618
+	sudokubundle.r79618
+	tangramtikz.r75123
+	thematicpuzzle.r75984
+	tictactoe.r75712
+	tikz-triminos.r73533
+	trivialpursuit.r76152
+	twoxtwogame.r70423
+	wargame.r72903
+	weiqi.r78101
+	wordle.r79377
+	xq.r78101
+	xskak.r79618
+"
+TEXLIVE_MODULE_SRC_CONTENTS="
+	bartel-chess-fonts.doc.r78101
+	cardgame.doc.r78746
+	carom-billiards.doc.r79624
+	chess.doc.r78101
+	chess-problem-diagrams.doc.r78101
+	chessboard.doc.r79618
+	chessfss.doc.r79618
+	chinesechess.doc.r78101
+	crossword.doc.r79069
+	crosswrd.doc.r79618
+	customdice.doc.r64089
+	egameps.doc.r15878
+	eigo.doc.r78101
+	gamebook.doc.r24714
+	gamebooklib.doc.r67772
+	go.doc.r78101
+	havannah.doc.r36348
+	hexboard.doc.r62102
+	hexgame.doc.r79618
+	hmtrump.doc.r54512
+	horoscop.doc.r56021
+	jeuxcartes.doc.r76966
+	jigsaw.doc.r71923
+	labyrinth.doc.r33454
+	logicpuzzle.doc.r78101
+	magicthegathering.doc.r78456
+	mahjong.doc.r76924
+	mahjong-tiles.doc.r79618
+	mathador.doc.r76924
+	maze.doc.r79180
+	multi-sudoku.doc.r78101
+	musikui.doc.r47472
+	nimsticks.doc.r64118
+	onedown.doc.r69067
+	othello.doc.r15878
+	othelloboard.doc.r23714
+	pas-crosswords.doc.r32313
+	pgf-go.doc.r78101
+	playcards.doc.r79618
+	psgo.doc.r79618
+	quizztex.doc.r75977
+	realtranspose.doc.r76924
+	reverxii.doc.r63753
+	rouequestions.doc.r67670
+	rpgicons.doc.r78857
+	rubik.doc.r46791
+	schwalbe-chess.doc.r78101
+	scrabble.doc.r77114
+	sgame.doc.r30959
+	skak.doc.r79618
+	skaknew.doc.r79618
+	soup.doc.r50815
+	sudoku.doc.r79618
+	sudokubundle.doc.r79618
+	tangramtikz.doc.r75123
+	thematicpuzzle.doc.r75984
+	tictactoe.doc.r75712
+	tikz-triminos.doc.r73533
+	trivialpursuit.doc.r76152
+	twoxtwogame.doc.r70423
+	wargame.doc.r72903
+	weiqi.doc.r78101
+	wordle.doc.r79377
+	xq.doc.r78101
+	xskak.doc.r79618
+"
+TEXLIVE_MODULE_DOC_CONTENTS="
+	cardgame.source.r78746
+	chess-problem-diagrams.source.r78101
+	chessboard.source.r79618
+	chessfss.source.r79618
+	crossword.source.r79069
+	crosswrd.source.r79618
+	customdice.source.r64089
+	gamebook.source.r24714
+	gamebooklib.source.r67772
+	go.source.r78101
+	havannah.source.r36348
+	hexboard.source.r62102
+	horoscop.source.r56021
+	mahjong.source.r76924
+	mahjong-tiles.source.r79618
+	nimsticks.source.r64118
+	onedown.source.r69067
+	realtranspose.source.r76924
+	reverxii.source.r63753
+	rubik.source.r46791
+	schwalbe-chess.source.r78101
+	soup.source.r50815
+	sudoku.source.r79618
+	sudokubundle.source.r79618
+	tictactoe.source.r75712
+	wargame.source.r72903
+	weiqi.source.r78101
+	xskak.source.r79618
+"
+
+inherit texlive-module
+
+DESCRIPTION="TeXLive Games typesetting"
+
+LICENSE="Apache-2.0 CC-BY-1.0 CC-BY-4.0 CC-BY-SA-4.0 GPL-1+ LGPL-2.1 LGPL-3 LPPL-1.0 LPPL-1.2 LPPL-1.3 LPPL-1.3c MIT TeX-other-free public-domain"
+SLOT="0"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+COMMON_DEPEND="
+	>=dev-texlive/texlive-latex-2026
+"
+RDEPEND="
+	${COMMON_DEPEND}
+"
+DEPEND="
+	${COMMON_DEPEND}
+"
+
+TEXLIVE_MODULE_BINSCRIPTS="
+	texmf-dist/scripts/rubik/rubikrotation.pl
+"

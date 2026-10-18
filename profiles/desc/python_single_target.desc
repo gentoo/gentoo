@@ -3,6 +3,7 @@
 
 # This file contains descriptions of PYTHON_SINGLE_TARGET USE_EXPAND flags.
 
+pypy3_12 - Build for PyPy 3.12 only
 python3_12 - Build for Python 3.12 only
 python3_13 - Build for Python 3.13 only
 python3_14 - Build for Python 3.14 only

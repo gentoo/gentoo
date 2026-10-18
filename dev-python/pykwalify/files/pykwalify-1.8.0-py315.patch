@@ -1,0 +1,36 @@
+From 31e32d0964fcff54c1b87944370ea669581795a2 Mon Sep 17 00:00:00 2001
+From: Joost van Griethuysen <joostjm@gmail.com>
+Date: Tue, 28 Jan 2025 12:56:19 +0000
+Subject: [PATCH] BUG: Remove deprecated `load_module`
+
+In importlib's `SourceFileLoader`, the `load_module` function has been deprecated since python 3.6 and scheduled to be removed.
+Following the suggestions from https://stackoverflow.com/questions/19009932/import-arbitrary-python-source-file-python-3-3, replace this function with the `exec_module` function.
+---
+ pykwalify/core.py | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/pykwalify/core.py b/pykwalify/core.py
+index 140389c..8a14fe4 100644
+--- a/pykwalify/core.py
++++ b/pykwalify/core.py
+@@ -13,6 +13,7 @@
+ import time
+ from io import open
+ from importlib.machinery import SourceFileLoader
++import importlib.util
+ 
+ # pyKwalify imports
+ import pykwalify
+@@ -170,7 +171,11 @@ def _load_extensions(self):
+             if not os.path.exists(f):
+                 raise CoreError(u"Extension file: {0} not found on disk".format(f))
+ 
+-            self.loaded_extensions.append(SourceFileLoader("", f).load_module())
++            loader = SourceFileLoader("", f)
++            spec = importlib.util.spec_from_loader(loader.name, loader)
++            mod = importlib.util.module_from_spec(spec)
++            loader.exec_module(mod)
++            self.loaded_extensions.append(mod)
+ 
+         log.debug(self.loaded_extensions)
+         log.debug([dir(m) for m in self.loaded_extensions])

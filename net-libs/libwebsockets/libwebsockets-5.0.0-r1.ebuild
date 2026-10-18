@@ -11,7 +11,7 @@ SRC_URI="https://github.com/warmcat/libwebsockets/archive/v${PV}.tar.gz -> ${P}.
 
 LICENSE="MIT"
 SLOT="0/22" # libwebsockets.so.22
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="amd64 arm arm64 ~loong ppc ~ppc64 ~riscv ~sparc x86"
 IUSE="access-log caps cgi client dbus extensions generic-sessions http-proxy http2 ipv6
 	+lejp libev libevent libuv mbedtls peer-limits server-status smtp socks5
 	sqlite3 ssl threads zip"
@@ -62,7 +62,7 @@ src_configure() {
 		-DLWS_WITH_CGI=$(usex cgi)
 		-DLWS_WITH_GENERIC_SESSIONS=$(usex generic-sessions)
 		-DLWS_WITH_HTTP2=$(usex http2)
-        -DLWS_WITH_HTTP3=OFF
+		-DLWS_WITH_HTTP3=OFF
 		-DLWS_WITH_HTTP_PROXY=$(usex http-proxy)
 		-DLWS_WITH_HUBBUB=$(usex http-proxy)
 		-DLWS_WITH_LEJP=$(usex lejp)

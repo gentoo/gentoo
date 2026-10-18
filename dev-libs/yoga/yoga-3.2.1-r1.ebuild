@@ -11,7 +11,7 @@ SRC_URI="https://github.com/facebook/yoga/archive/refs/tags/v${PV}.tar.gz -> ${P
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 arm64 ~ppc ~ppc64 ~riscv x86"
+KEYWORDS="amd64 arm64 ~ppc ppc64 ~riscv x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 

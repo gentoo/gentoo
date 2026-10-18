@@ -1,0 +1,13 @@
+https://github.com/KhronosGroup/Vulkan-Tools/commit/462d9819e5953e064e1dcdc04d3edc5fc6bc9431
+diff --git a/vulkaninfo/vulkaninfo.cpp b/vulkaninfo/vulkaninfo.cpp
+index 571a8d6..df7ce02 100644
+--- a/vulkaninfo/vulkaninfo.cpp
++++ b/vulkaninfo/vulkaninfo.cpp
+@@ -28,6 +28,7 @@
+  *
+  */
+
++#include <ctime>
+ #include <string>
+ #ifdef _WIN32
+ #include <crtdbg.h>

@@ -25,7 +25,7 @@ else
 		https://github.com/seccomp/libseccomp/releases/download/v${PV}/${P}.tar.gz
 		verify-sig? ( https://github.com/seccomp/libseccomp/releases/download/v${PV}/${P}.tar.gz.asc )
 	"
-	KEYWORDS="-* ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~x86"
+	KEYWORDS="-* amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 x86"
 
 	BDEPEND="verify-sig? ( sec-keys/openpgp-keys-libseccomp )"
 fi

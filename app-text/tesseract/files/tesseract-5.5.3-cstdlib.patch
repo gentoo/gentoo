@@ -1,0 +1,21 @@
+From c822b4f73d0a055f3588957c320b1acf06b69da5 Mon Sep 17 00:00:00 2001
+From: tachalorah <tachalorah@proton.me>
+Date: Mon, 3 Aug 2026 11:37:55 +0700
+Subject: [PATCH] arch/simddetect.cpp: add missing <cstdlib> for getenv()
+
+---
+ src/arch/simddetect.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/arch/simddetect.cpp b/src/arch/simddetect.cpp
+index 0031556163..084a2b92f4 100644
+--- a/src/arch/simddetect.cpp
++++ b/src/arch/simddetect.cpp
+@@ -18,6 +18,7 @@
+ #ifdef HAVE_CONFIG_H
+ #  include "config_auto.h" // for HAVE_AVX, ...
+ #endif
++#include <cstdlib> // for getenv
+ #include <numeric> // for std::inner_product
+ #include "dotproduct.h"
+ #include "intsimdmatrix.h" // for IntSimdMatrix

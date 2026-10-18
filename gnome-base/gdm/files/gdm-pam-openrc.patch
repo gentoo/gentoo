@@ -1,6 +1,8 @@
-Needed to start the user daemon for newer GDM version.
+Needed to start the user daemon for newer GDM version. Also attempts to run gnome session openrc's PAM module.
 
 The latter change may be an OpenRC issue, but I haven't ruled it out. This works for now.
+
+XXX for gdm-password.pam: Technically system-local-login should take care of this. Might be an openrc bug?
 
 diff --git a/data/pam-exherbo/gdm-launch-environment.pam b/data/pam-exherbo/gdm-launch-environment.pam
 index 3f5d788b1..3bf3bd551 100644
@@ -21,7 +23,7 @@ index d462030a2..860324c53 100644
  password include  system-local-login
  password optional pam_gnome_keyring.so use_authtok
  
-+# XXX: Technically system-local-login should take care of this. Might be an openrc bug?
++-session optional pam_gnome_session_openrc.so
 +-session optional pam_openrc.so
  session  include  system-local-login
  session  optional pam_gnome_keyring.so auto_start

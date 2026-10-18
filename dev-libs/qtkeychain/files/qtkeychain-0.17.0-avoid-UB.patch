@@ -1,0 +1,27 @@
+From 404b768534a5338b2d7ffa48cc9718808bd2e217 Mon Sep 17 00:00:00 2001
+From: Ivan Akulinchev <ivan.akulinchev@gmail.com>
+Date: Mon, 21 Sep 2026 13:20:47 +0200
+Subject: [PATCH] Avoid undefined behavior while casting QObject* to Job*
+
+The destroyed() signal is emitted from the OObject destructor, *after*
+the Job destructor has been called. Casting QObject* to Job* is
+undefined behavior and useless.
+---
+ qtkeychain/keychain.cpp | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
+
+diff --git a/qtkeychain/keychain.cpp b/qtkeychain/keychain.cpp
+index 8ee6590..a5ce43b 100644
+--- a/qtkeychain/keychain.cpp
++++ b/qtkeychain/keychain.cpp
+@@ -190,9 +190,7 @@ void JobExecutor::startNextIfNoneRunning()
+ 
+ void JobExecutor::jobDestroyed(QObject *object)
+ {
+-    Job *job = static_cast<Job *>(object);
+-    Q_UNUSED(object) // for release mode
+-    job->disconnect(this);
++    object->disconnect(this);
+     m_jobRunning = false;
+     startNextIfNoneRunning();
+ }

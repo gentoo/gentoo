@@ -1,0 +1,10 @@
+--- a/Source/WebKit/UIProcess/API/glib/WebKitDownload.cpp	2026-09-16 03:58:42.840758600 -0400
++++ b/Source/WebKit/UIProcess/API/glib/WebKitDownload.cpp	2026-09-20 18:46:18.083424498 -0400
+@@ -35,6 +35,7 @@
+ #include <wtf/glib/GWeakPtr.h>
+ #include <wtf/glib/WTFGType.h>
+ #include <wtf/text/CString.h>
++#include <wtf/text/CStringView.h>
+ 
+ using namespace WebKit;
+ using namespace WebCore;

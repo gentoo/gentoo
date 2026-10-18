@@ -39,8 +39,9 @@ inherit multiprocessing toolchain-funcs
 # @DESCRIPTION:
 # All supported Python implementations, most preferred last.
 _PYTHON_ALL_IMPLS=(
-	python3_{14..15}t
-	python3_{12..15}
+	pypy3_12
+	python3_{12..13}
+	python3_{14..15}{t,}
 )
 readonly _PYTHON_ALL_IMPLS
 
@@ -137,7 +138,7 @@ _python_set_impls() {
 			# please keep them in sync with _PYTHON_ALL_IMPLS
 			# and _PYTHON_HISTORICAL_IMPLS
 			case ${i} in
-				python3_1[2-5]|python3_1[4-5]t)
+				python3_1[2-5]|python3_1[4-5]t|pypy3_12)
 					;;
 				# implementations deprecated prior to EAPI 9 are fatal
 				jython2_7|pypy|pypy1_[89]|pypy2_0|pypy3|pypy3_11|python2_[5-7]|python3_[1-9]|python3_1[01]|python3_13t)
@@ -237,18 +238,18 @@ _python_impl_matches() {
 				fi
 				return 0
 				;;
-			3.[89]|3.10)
+			3.[89]|3.1[01])
 				[[ ${EAPI} != [78] ]] &&
 					die "Please remove old implementations from ${FUNCNAME[1]} in EAPI ${EAPI}"
 				;&
-			3.1[1-5])
+			3.1[2-5])
 				[[ ${impl%t} == python${pattern/./_} || ${impl} == pypy${pattern/./_} ]] &&
 					return 0
 				;;
-			jython2_7|pypy|pypy1_[89]|pypy2_0|pypy3|python2_[5-7]|python3_[1-9]|python3_10)
+			jython2_7|pypy|pypy1_[89]|pypy2_0|pypy3|pypy3_11|python2_[5-7]|python3_[1-9]|python3_1[01]|python3_13t)
 				[[ ${EAPI} != [78] ]] &&
 					die "Please remove old implementations from ${FUNCNAME[1]} in EAPI ${EAPI}"
-				;;
+				;&
 			*)
 				# unify value style to allow lax matching
 				[[ ${impl} == ${pattern/./_} ]] && return 0

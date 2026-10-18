@@ -1,0 +1,61 @@
+# Copyright 1999-2026 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=8
+
+inherit autotools toolchain-funcs
+
+DESCRIPTION="library for nonequispaced discrete Fourier transformations"
+HOMEPAGE="https://www-user.tu-chemnitz.de/~potts/nfft/"
+SRC_URI="https://github.com/NFFT/nfft/releases/download/${PV}/${P}.tar.gz"
+
+LICENSE="GPL-2"
+SLOT="0"
+KEYWORDS="~amd64 ~x86"
+IUSE="doc openmp test"
+
+RDEPEND="sci-libs/fftw:3.0=[threads,openmp?]"
+DEPEND="${RDEPEND}"
+BDEPEND="test? ( dev-util/cunit )"
+RESTRICT="!test? ( test )"
+
+PATCHES=(
+	"${FILESDIR}/${P}-gcc15.patch"
+	"${FILESDIR}/${P}-rtc.patch"
+	"${FILESDIR}/${P}-dash.patch"
+	"${FILESDIR}/${P}-openmp.patch"
+)
+
+pkg_pretend() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+}
+
+pkg_setup() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+}
+
+src_prepare() {
+	default
+	eautoreconf
+}
+
+src_configure() {
+	econf \
+		--enable-all \
+		$(use_enable openmp)
+}
+
+src_compile() {
+	emake CFLAGS="${CFLAGS}"
+}
+
+src_test() {
+	emake check CFLAGS="${CFLAGS} -Wno-error=incompatible-pointer-types"
+}
+
+src_install() {
+	default
+
+	# no static archives
+	find "${ED}" -name '*.la' -delete || die
+}

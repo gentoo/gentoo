@@ -1,6 +1,11 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (2025-09-29)
+# dev-python/pypy:3.12 is not keyworded everywhere.
+python_single_target_pypy3_12
+python_targets_pypy3_12
+
 # Alfred Wingate <parona@protonmail.com> (2025-09-20)
 # Experimental and only available on a subset of architectures
 generic-uki
@@ -91,7 +96,7 @@ vidix
 # vdpau is currently only available with binary nvidia-drivers, thus amd64/x86*
 vdpau
 
-# Infiniband stuff should generaly work on all arches but keyworded only on amd64/x86
+# Infiniband stuff should generally work on all arches but keyworded only on amd64/x86
 infiniband
 
 # These need libieee1284 which is amd64/x86 only.
@@ -165,9 +170,6 @@ loongson2f
 # ppc64 arch specific USE flags
 ibm
 ps3
-
-# sparc arch specific USE flags
-vis
 
 # arm arch specific USE flags
 cpu_flags_arm_v4

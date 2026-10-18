@@ -5,7 +5,8 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
 PYPI_VERIFY_REPO=https://github.com/pytest-dev/pytest-asyncio
-PYTHON_COMPAT=( python3_{12..15} python3_{14..15}t )
+PYTHON_FULLY_TESTED=( python3_{12..15} python3_{14..15}t )
+PYTHON_COMPAT=( "${PYTHON_FULLY_TESTED[@]}" pypy3_12 )
 
 inherit distutils-r1 pypi
 
@@ -29,9 +30,14 @@ RDEPEND="
 "
 BDEPEND="
 	dev-python/setuptools-scm[${PYTHON_USEDEP}]
+	test? (
+		$(python_gen_cond_dep '
+			dev-python/hypothesis[${PYTHON_USEDEP}]
+		' "${PYTHON_FULLY_TESTED[@]}")
+	)
 "
 
-EPYTEST_PLUGINS=( hypothesis "${PN}" )
+EPYTEST_PLUGINS=( "${PN}" )
 EPYTEST_PLUGIN_LOAD_VIA_ENV=1
 EPYTEST_XDIST=1
 distutils_enable_tests pytest
@@ -53,4 +59,15 @@ src_prepare() {
 
 	# remove pins
 	sed -i -e 's:,<[0-9.]*::' pyproject.toml || die
+}
+
+python_test() {
+	local EPYTEST_PLUGINS=( "${EPYTEST_PLUGINS[@]}" )
+	local EPYTEST_IGNORE=()
+	if has_version "dev-python/hypothesis[${PYTHON_USEDEP}]"; then
+		EPYTEST_PLUGINS+=( hypothesis )
+	else
+		EPYTEST_IGNORE+=( tests/hypothesis/ )
+	fi
+	epytest
 }

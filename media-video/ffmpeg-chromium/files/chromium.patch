@@ -9,7 +9,7 @@ new file mode 100644
 index 0000000..992cf3c
 --- /dev/null
 +++ b/ffbuild/libffmpeg.mak
-@@ -0,0 +1,27 @@
+@@ -0,0 +1,29 @@
 +LIBFFMPEG = $(SLIBPREF)ffmpeg$(SLIBSUF)
 +LIBFFMPEG_LINK = $(LD) -shared -Wl,-soname,$(LIBFFMPEG) -Wl,-Bsymbolic -Wl,-z,now -Wl,-z,relro -Wl,-z,defs -Wl,--gc-sections $(LDFLAGS) $(LDLIBFLAGS) -o $(LIBFFMPEG)
 +
@@ -31,7 +31,9 @@ index 0000000..992cf3c
 +install-libffmpeg: $(LIBFFMPEG)
 +	$(Q)mkdir -p "$(SHLIBDIR)/chromium"
 +	$(INSTALL) -m 755 $< "$(SHLIBDIR)/chromium/$<.$(SLOT)"
++ifneq ($(STRIPTYPE),nostrip)
 +	$(STRIP) "$(SHLIBDIR)/chromium/$<.$(SLOT)"
++endif
 +
 +uninstall-libffmpeg:
 +	$(RM) "$(SHLIBDIR)/chromium/$(LIBFFMPEG).$(SLOT)"

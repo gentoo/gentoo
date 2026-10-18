@@ -8,7 +8,7 @@ PVCUT=$(ver_cut 1-3)
 KFMIN=6.22.0
 QTMIN=6.10.1
 VIRTUALDBUS_TEST=1
-inherit ecm gear.kde.org optfeature
+inherit ecm gear.kde.org
 
 DESCRIPTION="Plugins for KDE Personal Information Management Suite"
 HOMEPAGE="https://apps.kde.org/kontact/"
@@ -116,10 +116,4 @@ src_test() {
 
 	# tests can get stuck with spawned processes, 4 minutes is a reasonable timeout
 	ecm_src_test --timeout $(( 60 * 4 )) # seconds
-}
-
-pkg_postinst() {
-	if [[ -z "${REPLACING_VERSIONS}" ]]; then
-		optfeature "regex support for Sieve editor plugin" kde-misc/kregexpeditor
-	fi
 }

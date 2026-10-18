@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -38,14 +38,15 @@ inherit dotnet-pkg
 
 DESCRIPTION="Gentoo tools for .NET packages maintenance"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Dotnet
-	https://gitlab.gentoo.org/dotnet/gentoo-dotnet-maintainer-tools/"
+	https://gitweb.gentoo.org/proj/dotnet/gentoo-dotnet-maintainer-tools.git/"
 
 if [[ "${PV}" == *9999* ]] ; then
 	inherit git-r3
 
-	EGIT_REPO_URI="https://gitlab.gentoo.org/dotnet/${PN}.git"
+	EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/dotnet/${PN}.git"
 else
-	SRC_URI="https://gitlab.gentoo.org/dotnet/${PN}/-/archive/${PV}/${P}.tar.bz2"
+	SRC_URI="https://gitweb.gentoo.org/proj/dotnet/${PN}.git/snapshot/${P}.tar.bz2
+		-> ${P}.ggo.tar.bz2"
 
 	KEYWORDS="~amd64"
 fi

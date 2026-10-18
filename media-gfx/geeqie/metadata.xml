@@ -8,7 +8,9 @@
 	<longdescription>Geeqie is a lightweight image viewer. It was forked from GQview. The development is focused on features for photo collection maintenance: raw format, Exif/IPTC/XMP metadata and integration with programs like UFraw, ImageMagick, Gimp, gPhoto or ExifTool</longdescription>
 	<use>
 		<flag name="ffmpegthumbnailer">Enable video thumbnail support with <pkg>media-video/ffmpegthumbnailer</pkg></flag>
+		<flag name="fits">Enable support for NASA's <pkg>sci-libs/cfitsio</pkg> library</flag>
 		<flag name="map">Enable items GPS map display</flag>
+		<flag name="videometadata">Enable extraction of video GPS metadata using <pkg>media-video/ffmpeg</pkg> (requires exif)</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">BestImageViewer/geeqie</remote-id>

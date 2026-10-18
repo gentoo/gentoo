@@ -13,7 +13,7 @@ SRC_URI+=" https://github.com/gentoo-golang-dist/blackbox_exporter/releases/down
 
 LICENSE="Apache-2.0 BSD BSD-2 MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 COMMON_DEPEND="acct-group/blackbox_exporter
 	acct-user/blackbox_exporter"

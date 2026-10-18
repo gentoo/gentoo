@@ -44,6 +44,7 @@ PATCHES=(
 	"${FILESDIR}/pylibmc-1.6.3-doctest-libmemcached-1.0.18.patch"
 )
 
+EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
 
 # needed for docs
@@ -63,6 +64,5 @@ python_test() {
 		tests/test_autoconf.py
 	)
 
-	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	epytest --doctest-modules --doctest-glob='doctests.txt' src/pylibmc tests
 }

@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <!-- maintainer-needed -->
-  <longdescription lang="en">
-  SoQt is a Qt GUI component toolkit library for Coin. It is also compatible
-  with SGI and TGS Open Inventor, and the API is based on the API of the
-  InventorXt GUI component toolkit.
-  </longdescription>
-  <upstream>
-    <remote-id type="github">coin3d/soqt</remote-id>
-  </upstream>
+	<maintainer type="person" proxied="yes">
+		<email>negril.nx+gentoo@gmail.com</email>
+		<name>Paul Zander</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Gentoo Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+		SoQt is a Qt GUI component toolkit library for Coin. It is also compatible with SGI and TGS Open Inventor, and the API is based on the API of the InventorXt GUI component toolkit.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">coin3d/soqt</remote-id>
+	</upstream>
 </pkgmetadata>

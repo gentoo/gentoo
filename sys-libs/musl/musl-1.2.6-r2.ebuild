@@ -57,6 +57,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-getifaddrs-qemu-workaround.patch
 	"${WORKDIR}"/${P}-patches
 	"${FILESDIR}"/${P}-riscv32-syscalls.patch
+	"${FILESDIR}"/${P}-riscv32-syscalls-2.patch
 )
 
 just_headers() {

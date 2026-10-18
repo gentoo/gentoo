@@ -13,4 +13,4 @@ inherit sec-keys
 DESCRIPTION="OpenPGP keys used by the BleachBit developer"
 HOMEPAGE="https://www.bleachbit.org/"
 
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc x86"

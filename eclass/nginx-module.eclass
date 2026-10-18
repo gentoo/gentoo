@@ -29,7 +29,7 @@
 # using the ngx_mod_link_lib() function.
 #
 # If the package genuinely depends on first-party NGINX module(s), the helper
-# ngx_mod_gen_nginx_dep() might be used to generate the suitable dependency
+# ngx_gen_dep() might be used to generate the suitable dependency
 # string for depending on first-party modules. For more advanced setups,
 # ngx_force_module() and ngx_usex_module() might be of interest.
 #
@@ -111,19 +111,19 @@ inherit flag-o-matic toolchain-funcs
 # @USAGE: <prefix> <word>
 # @RETURN: 'word' with 'prefix' removed if present or added if absent
 _ngx_mod_toggle_prefix() {
-       debug-print-function "${FUNCNAME[0]}" "$@"
-       [[ $# -eq 2 ]] || die "${FUNCNAME[0]} must receive exactly two arguments"
+	debug-print-function "${FUNCNAME[0]}" "$@"
+	[[ $# -eq 2 ]] || die "${FUNCNAME[0]} must receive exactly two arguments"
 
-       local prefix="$1" word="$2"
-       case "${word}" in
-               "${prefix}"*)
-                       word="${word#"${prefix}"}"
-                       ;;
-               *)
-                       word="${prefix}${word}"
-                       ;;
-       esac
-       printf '%s\n' "${word}"
+	local prefix="$1" word="$2"
+	case "${word}" in
+		"${prefix}"*)
+			word="${word#"${prefix}"}"
+			;;
+		*)
+			word="${prefix}${word}"
+			;;
+	esac
+	printf '%s\n' "${word}"
 }
 
 # @FUNCTION: _ngx_mod_assert_argfile_exists
@@ -280,7 +280,7 @@ _ngx_mod_enforce_module_flags() {
 		# Neither target_string, nor inverse_string are found in
 		# ./configure --help: either the module genuinely does not exist or
 		# something has gone really wrong.
-		die "ngx_force_module: module \"${mod}\" not found and '-n' has not been supplied"
+		die "ngx_force_module: module \"${mod}\" not found and '-t' has not been supplied"
 	else
 		# If we do not die, we just return 1.
 		return 1
@@ -370,29 +370,37 @@ ngx_mod_pkg_to_sonames() {
 	printf "%s\0" "${dep_sonames[@]}"
 }
 
-# @FUNCTION: ngx_mod_append_libs
-# @USAGE: [<linker flags>...]
+# @FUNCTION: _ngx_mod_add_link_args
+# @INTERNAL
+# @USAGE: <prepend|append> [<linker arguments>...]
 # @DESCRIPTION:
-# Adds the passed arguments to the list of flags used for the linking the
-# module's shared objects.  Flags may be of any form accepted by linker.
-# See the nginx_src_install() function in nginx.eclass for more details.
-#
-# Example usage:
-# @CODE
-# ngx_mod_append_libs "-L/usr/$(get_libdir)/nginx/modules" \
-#		"$("$(tc-getPKG_CONFIG)" --libs luajit)"
-# @CODE
-ngx_mod_append_libs() {
+# Adds linker arguments before (prepend) or after (append) NGINX's module
+# libraries using a response file added to the corresponding environment
+# variable.
+_ngx_mod_add_link_args() {
 	debug-print-function "${FUNCNAME[0]}" "$@"
+	[[ $# -ge 1 ]] || die "${FUNCNAME[0]} must receive an argument type"
+
+	local type="$1"
+	shift
+	local suffix
+	case ${type} in
+		prepend) suffix=LDFLAGS ;;
+		append) suffix=LIBS ;;
+		*) die "${FUNCNAME[0]}: invalid argument type: ${type}" ;;
+	esac
 	[[ $# -eq 0 ]] && return 0
 
-	local resp_file="${T}/append-libs-resp-file"
+	declare -n env_var="_NGINX_GENTOO_MOD_${suffix}"
+	local state_var="_NGX_MOD_${suffix}_RESP_FILE_SET_UP"
+	local resp_file="${T}/append-${suffix,,}-resp-file"
 
-	# Setup the response file. Make sure to do it only once.
-	if [[ -z ${_NGX_MOD_RESP_FILE_SET_UP} ]]; then
-		touch "${resp_file}" || die "touch failed"
-		export _NGINX_GENTOO_MOD_LIBS+=" @${resp_file}"
-		declare -g -r _NGX_MOD_RESP_FILE_SET_UP=1
+	# Set up the response file. Make sure to do it only once.
+	if [[ -z ${!state_var} ]]; then
+		: > "${resp_file}" || die "failed to initialize response file"
+		env_var+=" @${resp_file}"
+		export env_var
+		declare -g -r "${state_var}=1"
 	fi
 
 	# If multiple arguments are passed, expand them as separate words so that
@@ -400,11 +408,45 @@ ngx_mod_append_libs() {
 	printf '%s\n' "$@" >> "${resp_file}" || die "printf failed"
 }
 
+# @FUNCTION: ngx_mod_prepend_ldflags
+# @USAGE: [<linker flags>...]
+# @DESCRIPTION:
+# Adds the passed linker arguments before NGINX's module libraries when linking
+# the module's shared objects.  Arguments may be of any form accepted by the
+# linker.
+#
+# Example usage:
+# @CODE
+# ngx_mod_prepend_ldflags "-Wl,--as-needed"
+# @CODE
+ngx_mod_prepend_ldflags() {
+	debug-print-function "${FUNCNAME[0]}" "$@"
+	_ngx_mod_add_link_args prepend "$@"
+}
+
+# @FUNCTION: ngx_mod_append_ldflags
+# @USAGE: [<linker flags>...]
+# @DESCRIPTION:
+# Adds the passed linker arguments after NGINX's module libraries when linking
+# the module's shared objects.  Arguments may be of any form accepted by the
+# linker.
+# See the nginx_src_install() function in nginx.eclass for more details.
+#
+# Example usage:
+# @CODE
+# ngx_mod_append_ldflags "-L/usr/$(get_libdir)/nginx/modules" \
+#		"$("$(tc-getPKG_CONFIG)" --libs luajit)"
+# @CODE
+ngx_mod_append_ldflags() {
+	debug-print-function "${FUNCNAME[0]}" "$@"
+	_ngx_mod_add_link_args append "$@"
+}
+
 # @FUNCTION: ngx_mod_setup_link_modules
 # @DESCRIPTION:
 # Adds necessary linker arguments for linking to other NGINX modules' share
 # objects installed in /usr/$(get_libdir)/nginx/modules by calling
-# ngx_mod_append_libs().  This function takes no arguments.
+# ngx_mod_append_ldflags().  This function takes no arguments.
 #
 # This function is called internally by the ngx_mod_link_module() function.
 # ngx_mod_setup_link_modules() keeps track whether it has already been called,
@@ -419,7 +461,7 @@ ngx_mod_setup_link_modules() {
 	moddir="${EPREFIX}/usr/$(get_libdir)/nginx/modules"
 	# Add 'moddir' to the list of directories search by linker and add 'moddir'
 	# to the module's RUNPATH.
-	ngx_mod_append_libs "-L${moddir}" "-Wl,-rpath,\${ORIGIN}"
+	ngx_mod_append_ldflags "-L${moddir}" "-Wl,-rpath,\${ORIGIN}"
 }
 
 # @FUNCTION: ngx_mod_link_module
@@ -477,7 +519,7 @@ ngx_mod_link_module() {
 	# Prepend '-l:' to each shared object name. The colon instructs the linker
 	# to link to the given name literally; i.e. '-lmylib' will look for
 	# 'libmylib.so', while '-l:mylib' will look for 'mylib'.
-	ngx_mod_append_libs "${sonames[@]/#/-l:}"
+	ngx_mod_append_ldflags "${sonames[@]/#/-l:}"
 }
 
 # @FUNCTION: ngx_mod_link_lib
@@ -496,7 +538,7 @@ ngx_mod_link_lib() {
 	"${pkgconf}" --exists "$1" || die "The pkgconfig library $1 does not exist"
 
 	append-cflags "$("${pkgconf}" --cflags "$1")"
-	ngx_mod_append_libs "$("${pkgconf}" --libs "$1")"
+	ngx_mod_append_ldflags "$("${pkgconf}" --libs "$1")"
 }
 
 # @FUNCTION: ngx_gen_dep
@@ -583,7 +625,7 @@ ngx_force_module() {
 	debug-print-function "${FUNCNAME[0]}" "$@"
 	[[ $# -ge 1 ]] ||
 		die "${FUNCNAME[0]} must receive one or more non-option arguments"
-	_ngx_mod_assert_argfile_exists "${_NGX_MOD_CONFIG_FLAGS_FILE}"
+	_ngx_mod_assert_argfile_exists "${ESYSROOT}${_NGX_MOD_CONFIG_FLAGS_FILE}"
 
 	local nonfatal=0
 	if [[ $1 = '-t' ]]; then
@@ -623,7 +665,7 @@ ngx_force_module() {
 # ngx_force_module() description.
 #
 # By default, if any of the specified modules do not exist, the build is
-# aborted.  This can be overriden by supplying '-t'.  See ngx_force_module()
+# aborted.  This can be overridden by supplying '-t'.  See ngx_force_module()
 # for behaviour when this flag is supplied.
 #
 # Example:
@@ -736,9 +778,9 @@ NGINX_S="${WORKDIR}/nginx"
 # @ECLASS_VARIABLE: _NGX_MOD_CONFIG_FLAGS_FILE
 # @INTERNAL
 # @DESCRIPTION:
-# Holds the path to the file containing NUL-separated ./configure flags used to
-# build www-servers/nginx.
-_NGX_MOD_CONFIG_FLAGS_FILE="${BROOT}/usr/src/nginx/configure-flags"
+# Holds the root-relative path to the file containing NUL-separated ./configure
+# flags used to build www-servers/nginx.
+_NGX_MOD_CONFIG_FLAGS_FILE="/usr/src/nginx/configure-flags"
 
 # @ECLASS_VARIABLE: _NGX_MOD_FORCED_MODULES
 # @INTERNAL
@@ -1000,7 +1042,7 @@ nginx-module_src_prepare() {
 
 	ebegin "Determining NGINX configuration on-disk format"
 
-	if [[ -f "${_NGX_MOD_CONFIG_FLAGS_FILE}" ]]; then
+	if [[ -f "${ESYSROOT}${_NGX_MOD_CONFIG_FLAGS_FILE}" ]]; then
 		eend 0
 		einfo "Using ./configure flags file"
 	else
@@ -1068,15 +1110,16 @@ nginx-module_src_configure() {
 	pushd "${NGINX_S}" >/dev/null || die "pushd failed"
 
 	local ngx_mod_flags=()
-	if [[ -f "${_NGX_MOD_CONFIG_FLAGS_FILE}" ]]; then
+	if [[ -f "${ESYSROOT}${_NGX_MOD_CONFIG_FLAGS_FILE}" ]]; then
 		# Restore the stored configure flags into ngx_mod_flags.
-		mapfile -d '' ngx_mod_flags < "${_NGX_MOD_CONFIG_FLAGS_FILE}"
+		mapfile -d '' ngx_mod_flags < \
+			"${ESYSROOT}${_NGX_MOD_CONFIG_FLAGS_FILE}" || die "mapfile failed"
 
 		# When we save compilation flags, NGINX passes all the -l flags to
 		# modules too, including stuff like -lperl -lcrypt etc. I am not sure
-		# what to do with this yet so for now we just pass the following to
-		# limit unnecessary linkage.
-		ngx_mod_append_libs "$(test-flags-CC '-Wl,--as-needed')"
+		# what to do with this yet so for now we prepend --as-needed to
+		# ngx_module_libs to limit unnecessary linkage.
+		ngx_mod_prepend_ldflags $(test-flags-CCLD '-Wl,--as-needed')
 	else
 		# Otherwise, just replicate a sane subset of configure flags for
 		# backwards compatibility.
@@ -1149,7 +1192,7 @@ nginx-module_src_configure() {
 		"${EXTRA_ECONF[@]}"
 
 	# Backwards compatibility.
-	if [[ ! -f "${_NGX_MOD_CONFIG_FLAGS_FILE}" ]]; then
+	if [[ ! -f "${ESYSROOT}${_NGX_MOD_CONFIG_FLAGS_FILE}" ]]; then
 		cat "${ESYSROOT}/usr/include/nginx/ngx_auto_config.h" \
 			build/__ngx_gentoo_mod_config.h > build/ngx_auto_config.h ||
 			die "cat failed"

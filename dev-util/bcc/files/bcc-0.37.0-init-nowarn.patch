@@ -1,0 +1,33 @@
+https://github.com/iovisor/bcc/pull/5555
+
+Prevent a warning caused by some typeof(x) expressions:
+
+In file included from /virtual/main.c:4:
+In file included from include/net/tcp.h:34:
+In file included from include/net/xfrm.h:26:
+include/net/ip6_fib.h:256:10: warning: default initialization of an object of type 'typeof (f6i->expires)' (aka 'const unsigned long')
+      leaves the object uninitialized [-Wdefault-const-init-var-unsafe]
+  256 |                 return time_after(jiffies, f6i->expires);
+      |                        ^
+include/linux/jiffies.h:75:3: note: expanded from macro 'time_after'
+   75 |          typecheck(unsigned long, b) && \
+      |          ^
+include/linux/typecheck.h:8:12: note: expanded from macro 'typecheck'
+    8 |         typeof(x) __dummy2; \
+      |                   ^
+1 warning generated.
+
+Add -Wno-default-const-init-var-unsafe to silence this.
+
+--- a/src/cc/frontends/clang/kbuild_helper.cc
++++ b/src/cc/frontends/clang/kbuild_helper.cc
+@@ -141,6 +141,9 @@ int KBuildHelper::get_flags(const char *
+   cflags->push_back("-fms-extensions");
+   cflags->push_back("-Wno-microsoft-anon-tag");
+ 
++  // Prevent warnings from typeof(x) expressions in some kernel headers
++  cflags->push_back("-Wno-default-const-init-var-unsafe");
++
+   /*
+    * kernel is usually build with gcc and the kernel devel header
+    * reflects that fact. However we build with clang and this must be

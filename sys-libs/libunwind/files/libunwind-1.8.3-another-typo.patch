@@ -1,0 +1,27 @@
+https://bugs.gentoo.org/982993
+https://github.com/libunwind/libunwind/commit/8e6a348b94a1b8e77ec2a086ff27ea9b78357d71
+
+From 8e6a348b94a1b8e77ec2a086ff27ea9b78357d71 Mon Sep 17 00:00:00 2001
+From: Matt Turner <mattst88@gmail.com>
+Date: Sat, 25 Apr 2026 10:14:20 -0400
+Subject: [PATCH] configure: Fix -WCClinker typo; should be -XCClinker
+
+Fixes: 5f46ba49 ("Made -nostdlib depend on exception support")
+---
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index e5907a0b9..36d21f24a 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -302,7 +302,7 @@ AM_COND_IF([SUPPORT_CXX_EXCEPTIONS],
+                            [gcc_s gcc],
+                            [AS_IF([test "$ac_cv_search__Unwind_Resume" != "none required"],
+                                   [AC_SUBST([UNW_CRT_LIBADD],  ["-lc $ac_cv_search__Unwind_Resume"])
+-                                   AC_SUBST([UNW_CRT_LDFLAGS], ["-WCClinker -nostdlib"])])
++                                   AC_SUBST([UNW_CRT_LDFLAGS], ["-XCClinker -nostdlib"])])
+                            ],,
+                            [-lc])
+             LDFLAGS="$save_LDFLAGS"]
+

@@ -1,0 +1,157 @@
+From cb1e8d12695b25886c05cb59d1dadb4e4a881d57 Mon Sep 17 00:00:00 2001
+From: Drew Parsons <dparsons@debian.org>
+Date: Sun, 5 Jan 2025 12:50:27 +0100
+Subject: [PATCH] support Catch2 v3
+
+- uses Cmake config files for Catch2
+- supports both v2 and v3 of Catch2
+- Catch2 v3 includes <catch2/catch_all.hpp> instead of <catch2/catch.hpp>
+- v3 moves Catch::Contains to Catch::Matchers::ContainsSubstring
+
+see https://github.com/catchorg/Catch2/blob/devel/docs/migrate-v2-to-v3.md
+
+Patch adapted from debian patch catch2_v3.patch
+https://salsa.debian.org/science-team/netgen/-/blob/d7ca1c564d90d00ce3d83e0b63c36fbec11cf1ce/debian/patches/catch2_v3.patch
+---
+ tests/catch/CMakeLists.txt  | 6 ++++++
+ tests/catch/archive.cpp     | 8 ++++++++
+ tests/catch/array.cpp       | 4 ++++
+ tests/catch/main.cpp        | 4 ++++
+ tests/catch/ranges.cpp      | 4 ++++
+ tests/catch/symboltable.cpp | 4 ++++
+ tests/catch/utils.cpp       | 4 ++++
+ tests/catch/version.cpp     | 4 ++++
+ 8 files changed, 38 insertions(+)
+
+diff --git a/tests/catch/CMakeLists.txt b/tests/catch/CMakeLists.txt
+index fce02cdc9..e89dc00f2 100644
+--- a/tests/catch/CMakeLists.txt
++++ b/tests/catch/CMakeLists.txt
+@@ -3,12 +3,18 @@ if(ENABLE_UNIT_TESTS)
+ add_custom_target(unit_tests)
+ 
+ # Build catch_main test object
++find_package(Catch2 REQUIRED)
+ include_directories(${CATCH_INCLUDE_DIR} ${CMAKE_CURRENT_SOURCE_DIR}/../../libsrc/include ${SPDLOG_INCLUDE_DIR})
+ add_library(catch_main STATIC main.cpp)
+ set_target_properties(catch_main PROPERTIES CXX_STANDARD 17)
+ add_dependencies(unit_tests catch_main)
+ add_dependencies(catch_main project_catch)
+ 
++if (Catch2_VERSION VERSION_GREATER_EQUAL 3)
++  target_compile_options(catch_main PUBLIC -DCATCH2_v3)
++  target_link_libraries(catch_main Catch2::Catch2WithMain)
++endif()
++
+ # ensure the test targets are built before testing
+ add_test(NAME unit_tests_built COMMAND ${CMAKE_COMMAND} --build . --target unit_tests --config ${CMAKE_BUILD_TYPE} WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/../.. )
+ 
+diff --git a/tests/catch/archive.cpp b/tests/catch/archive.cpp
+index 62f6df467..1d1b55f7a 100644
+--- a/tests/catch/archive.cpp
++++ b/tests/catch/archive.cpp
+@@ -1,5 +1,9 @@
+ 
++#ifdef CATCH2_v3
++#include "catch2/catch_all.hpp"
++#else
+ #include <catch2/catch.hpp>
++#endif
+ #include <../core/ngcore.hpp>
+ #include <core/register_archive.hpp>
+ #include <core/logging.hpp>
+@@ -354,7 +358,11 @@ void testArchive(Archive& in, Archive& out)
+   SECTION("Not registered")
+     {
+       SharedPtrAndPtrHolder* p = new NotRegisteredForArchive;
++#ifdef CATCH2_v3
++      REQUIRE_THROWS(out & p, Catch::Matchers::ContainsSubstring("not registered for archive"));
++#else
+       REQUIRE_THROWS(out & p, Catch::Contains("not registered for archive"));
++#endif
+     }
+   SECTION("Non-default constructor")
+     {
+diff --git a/tests/catch/array.cpp b/tests/catch/array.cpp
+index 63011533f..2c0eee794 100644
+--- a/tests/catch/array.cpp
++++ b/tests/catch/array.cpp
+@@ -1,5 +1,9 @@
+ 
++#ifdef CATCH2_v3
++#include "catch2/catch_all.hpp"
++#else
+ #include <catch2/catch.hpp>
++#endif
+ #include <core/array.hpp>
+ using namespace ngcore;
+ using namespace std;
+diff --git a/tests/catch/main.cpp b/tests/catch/main.cpp
+index ad4c84315..6e8f9a3a1 100644
+--- a/tests/catch/main.cpp
++++ b/tests/catch/main.cpp
+@@ -1,3 +1,7 @@
+ #define CATCH_CONFIG_MAIN
+ #define DO_NOT_USE_WMAIN
++#ifdef CATCH2_v3
++#include "catch2/catch_all.hpp"
++#else
+ #include <catch2/catch.hpp>
++#endif
+\ No newline at end of file
+diff --git a/tests/catch/ranges.cpp b/tests/catch/ranges.cpp
+index aeca69b8e..b37dbb376 100644
+--- a/tests/catch/ranges.cpp
++++ b/tests/catch/ranges.cpp
+@@ -1,5 +1,9 @@
+ 
++#ifdef CATCH2_v3
++#include "catch2/catch_all.hpp"
++#else
+ #include <catch2/catch.hpp>
++#endif
+ 
+ #include <core/array.hpp>
+ #include <core/ranges.hpp>
+diff --git a/tests/catch/symboltable.cpp b/tests/catch/symboltable.cpp
+index 10bdff121..88dbc806d 100644
+--- a/tests/catch/symboltable.cpp
++++ b/tests/catch/symboltable.cpp
+@@ -1,5 +1,9 @@
+ 
++#ifdef CATCH2_v3
++#include "catch2/catch_all.hpp"
++#else
+ #include <catch2/catch.hpp>
++#endif
+ #include <../core/ngcore.hpp>
+ using namespace ngcore;
+ using namespace std;
+diff --git a/tests/catch/utils.cpp b/tests/catch/utils.cpp
+index 74b6dd37c..50f754d4b 100644
+--- a/tests/catch/utils.cpp
++++ b/tests/catch/utils.cpp
+@@ -1,5 +1,9 @@
+ 
++#ifdef CATCH2_v3
++#include "catch2/catch_all.hpp"
++#else
+ #include <catch2/catch.hpp>
++#endif
+ #include <core/ngcore.hpp>
+ using namespace ngcore;
+ using namespace std;
+diff --git a/tests/catch/version.cpp b/tests/catch/version.cpp
+index 873636c23..ec79ecca2 100644
+--- a/tests/catch/version.cpp
++++ b/tests/catch/version.cpp
+@@ -1,5 +1,9 @@
+ 
++#ifdef CATCH2_v3
++#include "catch2/catch_all.hpp"
++#else
+ #include <catch2/catch.hpp>
++#endif
+ #include <../core/ngcore.hpp>
+ using namespace ngcore;
+ using namespace std;

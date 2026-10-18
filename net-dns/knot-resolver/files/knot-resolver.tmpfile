@@ -1,0 +1,3 @@
+d /run/knot-resolver		0750	knot-resolver	knot-resolver
+d /var/lib/knot-resolver	0750	knot-resolver	knot-resolver
+d /var/cache/knot-resolver	0750	knot-resolver	knot-resolver

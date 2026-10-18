@@ -1,6 +1,14 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Thibaud CANALE <thican@thican.net> (2026-05-17)
+# Requires dev-python/pydantic
+dev-python/cloudflare
+
+# Ionen Wolkens <ionen@gentoo.org> (2026-09-27)
+# Depends on sys-fs/inotify-tools which now uses rust.
+net-misc/owncloud-client
+
 # Michał Górny <mgorny@gentoo.org> (2025-07-04)
 # Hypothesis has now been RIIR-ed.
 >=dev-python/hypothesis-6.156
@@ -83,6 +91,7 @@ app-text/paperwork
 app-text/paperwork-backend
 dev-python/aiosmtpd
 dev-python/atpublic
+dev-python/authheaders
 dev-python/behave
 dev-python/crispy-bootstrap3
 dev-python/crispy-bootstrap4
@@ -96,15 +105,23 @@ dev-python/django-filter
 dev-python/django-polymorphic
 dev-python/django-tables2
 dev-python/djangorestframework
+dev-python/dkimpy
+dev-python/dnspython
 dev-python/easy-thumbnails
+dev-python/email-validator
 dev-python/flufl-lock
 dev-python/gherkin-official
 dev-python/guessit
+dev-python/hypothesis
 dev-python/knowit
+dev-python/liblore
 dev-python/logfury
 dev-python/narwhals
 dev-python/progressbar2
+dev-python/pydevd
 dev-python/pykwalify
+dev-python/pymongo
+dev-python/pyspf
 dev-python/pytest-bdd
 dev-python/pytest-describe
 dev-python/pytest-django
@@ -114,17 +131,22 @@ dev-python/python-utils
 dev-python/rebulk
 dev-python/scikit-learn
 dev-python/sphinxcontrib-doxylink
->=dev-python/sphinxcontrib-httpdomain-2.0
+dev-python/sphinxcontrib-httpdomain
 dev-python/sybil
 dev-python/testfixtures
 dev-python/toml-fmt-common
 dev-python/trakit
+dev-python/untangle
 dev-python/uv-build
 dev-python/vcsgraph
 dev-python/zmq-anyio
 dev-util/elf_diff
+mail-filter/spf-engine
 media-video/subliminal
 net-analyzer/fail2ban
+net-analyzer/linkchecker
+net-mail/b4
+net-voip/sipvicious
 sci-libs/cartopy
 sci-libs/pcl
 sci-visualization/pythonprop
@@ -263,7 +285,6 @@ dev-util/cargo-license
 dev-util/cargo-audit
 dev-util/bingrep
 dev-python/trimesh
-dev-python/vpython
 dev-python/treq
 dev-python/twython
 dev-python/txtorcon
@@ -272,13 +293,9 @@ dev-python/sqlglot
 dev-python/spake2
 dev-python/requests-ntlm
 dev-python/python3-discogs-client
-dev-python/python-axolotl
 dev-python/pyghmi
 dev-python/omemo-dr
 dev-python/noiseprotocol
-dev-python/magic-wormhole
-dev-python/magic-wormhole-transit-relay
-dev-python/magic-wormhole-mailbox-server
 dev-python/jwcrypto
 dev-python/websockify
 dev-python/jupyter
@@ -293,8 +310,6 @@ dev-python/github3-py
 dev-python/google-auth-oauthlib
 dev-python/elasticsearch
 dev-python/dns-lexicon
-dev-python/dissononce
-dev-python/consonance
 dev-python/pygithub
 dev-python/adblock
 dev-python/pysnmp
@@ -384,7 +399,6 @@ dev-lang/rust-bin
 >=dev-lang/spidermonkey-78
 >=dev-libs/gjs-1.66
 dev-python/aiohttp-oauthlib
-dev-python/autobahn
 dev-python/aws-sam-translator
 >=dev-python/bcrypt-4
 dev-python/cachebox
@@ -406,7 +420,6 @@ dev-python/joserfc
 dev-python/josepy
 >=dev-python/jsonschema-4.18.0
 dev-python/jsonschema-path
-dev-python/jsonschema-spec
 dev-python/jsonschema-specifications
 dev-python/jupyter-events
 dev-python/jupyter-lsp
@@ -442,9 +455,9 @@ dev-python/pydantic-settings
 dev-python/pyfuse3
 >=dev-python/pyopenssl-22
 dev-python/pymdown-extensions
+dev-python/pysequoia
 dev-python/pyspelling
 dev-python/pyspnego
-dev-python/pyproject-fmt
 dev-python/pytest-jupyter
 dev-python/pytest-localftpserver
 dev-python/pytest-salt-factories
@@ -480,7 +493,6 @@ dev-python/watchfiles
 dev-python/wcmatch
 dev-python/widgetsnbextension
 dev-ruby/selenium-webdriver
-dev-util/buildbot-worker
 dev-util/cargo-c
 dev-util/cbindgen
 dev-util/git-delta
@@ -508,6 +520,7 @@ gnome-extra/gnome-browser-connector
 gnome-extra/gnome-tweaks
 gnome-extra/sushi
 >=gnome-extra/yelp-49
+mate-extra/mate-user-guide
 >=media-gfx/libimagequant-4
 media-gfx/loupe
 <media-gfx/gimp-3.0.6
@@ -523,6 +536,7 @@ net-dns/hash-slinger
 net-dns/pdns-recursor
 net-im/gajim
 >=net-irc/polari-3.37
+>=net-libs/gnome-online-accounts-3.56
 net-libs/quiche
 net-misc/streamlink
 net-news/newsboat
@@ -532,6 +546,7 @@ sci-geosciences/gnome-maps
 sys-block/thin-provisioning-tools
 >=sys-process/glances-4.1.2.1
 sys-fs/bcachefs-tools
+>=sys-fs/inotify-tools-4.26
 sys-fs/ubi_reader
 virtual/rust
 www-apps/radicale
@@ -544,3 +559,55 @@ x11-themes/adwaita-icon-theme-legacy
 >=gnome-extra/gnome-user-share-48.2
 >=app-editors/gnome-text-editor-49.0
 >=x11-wm/mutter-49
+# libadwaita consumers
+app-arch/file-roller
+app-editors/ghex
+app-editors/gnome-text-editor
+app-i18n/ibus-cangjie
+app-misc/gnote
+app-text/gtranslator
+app-text/paper-clip
+dev-util/blueprint-compiler
+dev-util/sysprof
+games-arcade/gnome-nibbles
+games-board/gnome-mines
+games-kids/gmult
+games-puzzle/gnome-sudoku
+games-puzzle/lightsoff
+games-util/cartridges
+gnome-base/nautilus
+gnome-extra/gnome-calculator
+gnome-extra/gnome-calendar
+gnome-extra/gnome-clocks
+gnome-extra/gnome-contacts
+gnome-extra/gnome-logs
+gnome-extra/gnome-software
+gnome-extra/tecla
+gnome-extra/zenity
+gui-libs/libpanel
+media-gfx/gnome-font-viewer
+>=media-gfx/shotwell-33.0
+media-gfx/simple-scan
+media-sound/easyeffects
+media-sound/gnome-music
+media-video/celluloid
+net-wireless/gnome-bluetooth
+sys-apps/baobab
+sys-apps/xdg-desktop-portal-gnome
+www-client/epiphany
+app-misc/bijiben
+mail-client/geary
+media-gfx/gnome-photos
+net-libs/msgraph
+dev-games/aseprite
+dev-python/nautilus-python
+gnome-extra/nemo-fileroller
+media-gfx/geeqie
+x11-wm/marco
+x11-wm/muffin
+x11-wm/mutter
+mate-base/mate
+mate-base/mate-control-center
+gnome-extra/eiciel
+media-sound/pavucontrol
+net-p2p/transmission

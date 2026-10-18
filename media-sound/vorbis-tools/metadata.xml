@@ -7,6 +7,6 @@
   </maintainer>
   <use>
     <flag name="kate">Adds support for Ogg Kate subtitles via libkate.</flag>
-    <flag name="ogg123">Build ogg123 player, needs libao and curl</flag>
+    <flag name="ogg123">Build ogg123 player, needs libao opusfile and curl</flag>
   </use>
 </pkgmetadata>

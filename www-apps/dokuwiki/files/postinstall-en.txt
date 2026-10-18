@@ -3,6 +3,7 @@ To complete installation you need to perform the following steps:
     1) Configure dokuwiki base options
     2) Check the config
     3) Notes
+    4) Command line tools
 
 1 - Configure dokuwiki base options
 
@@ -44,6 +45,18 @@ To complete installation you need to perform the following steps:
     If you're updating from an older version of Dokuwiki or want to learn about
     other authentication methods, check the documentation about authentication
     backends and plugins[5].
+
+4 - Command line tools
+
+    DokuWiki's command line tools, such as indexer.php, which rebuilds the
+    search index, are installed outside the document root in
+    /usr/share/webapps/${PN}/${PVR}/bin. Run them with dokuwiki-cli from
+    the same directory, as the user the web server runs as, since they
+    write to the data directory:
+
+    $ /usr/share/webapps/${PN}/${PVR}/bin/dokuwiki-cli ${MY_INSTALLDIR} indexer
+
+    Run dokuwiki-cli without arguments for a list of the tools.
 
 [1] https://www.dokuwiki.org/config
 [2] https://www.dokuwiki.org/dokuwiki

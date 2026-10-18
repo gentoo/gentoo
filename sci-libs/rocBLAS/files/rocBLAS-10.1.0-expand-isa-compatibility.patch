@@ -1,0 +1,87 @@
+Coerce gfx902/909/912 to gfx900 and gfx1013 to gfx1010
+
+gfx1031-gfx1036 are separate amdgpu_targets since 10.x
+--- a/library/src/handle.cpp
++++ b/library/src/handle.cpp
+@@ -21,6 +21,7 @@
+  * ************************************************************************ */
+ #include "handle.hpp"
+ #include <cstdarg>
++#include <cstring>
+ #include <limits>
+ 
+ #ifdef WIN32
+@@ -372,6 +373,17 @@ Processor _rocblas_handle::getActiveArch()
+     // strip out xnack/ecc from name
+     std::string deviceFullString(device_properties.gcnArchName);
+     std::string deviceString = deviceFullString.substr(0, deviceFullString.find(":"));
++    // coerce to compatible arch
++    int gcnArch = deviceString.substr(0, 3) == "gfx" ? std::stoi(deviceString.substr(3)) : 0;
++    switch(gcnArch)
++    {
++    case 902: case 909: case 912:
++        std::strcpy(device_properties.gcnArchName, "gfx900");
++        break;
++    case 1013:
++        std::strcpy(device_properties.gcnArchName, "gfx1010");
++        break;
++    }
+ 
+     if(deviceString.find("gfx803") != std::string::npos)
+     {
+--- a/library/src/rocblas_auxiliary.cpp
++++ b/library/src/rocblas_auxiliary.cpp
+@@ -24,6 +24,7 @@
+ #include "logging.hpp"
+ #include "rocblas-auxiliary.h"
+ #include <cctype>
++#include <cstring>
+ #include <cstdlib>
+ #include <memory>
+ #include <string>
+@@ -977,6 +978,17 @@ std::string rocblas_internal_get_arch_name(int deviceId)
+ {
+     hipDeviceProp_t deviceProperties;
+     PRINT_IF_HIP_ERROR(hipGetDeviceProperties(&deviceProperties, deviceId));
++    // coerce to compatible arch
++    int gcnArch = strncmp(deviceProperties.gcnArchName, "gfx", 3) == 0 ? std::stoi(deviceProperties.gcnArchName + 3) : 0;
++    switch(gcnArch)
++    {
++    case 902: case 909: case 912:
++        std::strcpy(deviceProperties.gcnArchName, "gfx900");
++        break;
++    case 1013:
++        std::strcpy(deviceProperties.gcnArchName, "gfx1010");
++        break;
++    }
+     return ArchName<hipDeviceProp_t>{}(deviceProperties); // strips : and later
+ }
+ 
+--- a/library/src/tensile_host.cpp
++++ b/library/src/tensile_host.cpp
+@@ -53,6 +53,7 @@
+ #endif
+ #include <atomic>
+ #include <complex>
++#include <cstring>
+ #include <exception>
+ #include <future>
+ #include <iomanip>
+@@ -949,6 +950,17 @@ namespace
+ 
+                         // populate device property map, used in finding solutions based on arch
+                         HIP_CHECK_EXC(hipGetDeviceProperties(&prop, devId));
++                        // coerce to compatible arch
++                        int gcnArch = strncmp(prop.gcnArchName, "gfx", 3) == 0 ? std::stoi(prop.gcnArchName + 3) : 0;
++                        switch(gcnArch)
++                        {
++                        case 902: case 909: case 912:
++                            std::strcpy(prop.gcnArchName, "gfx900");
++                            break;
++                        case 1013:
++                            std::strcpy(prop.gcnArchName, "gfx1010");
++                            break;
++                        }
+                         m_devicePropMap[deviceString] = std::make_shared<hipDeviceProp_t>(prop);
+                         m_tensileLazyLoadInit[deviceString].push_back(
+                             deviceLazyArch); // will have only 1 entry

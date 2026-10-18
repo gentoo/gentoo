@@ -36,62 +36,265 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2026-10-13)
+# Part of removed dev-python/pyproject-fmt.  No revdeps left.
+# Removal on 2026-11-12.  Bug #984202.
+dev-python/toml-fmt-common
+
+# Michał Górny <mgorny@gentoo.org> (2026-10-13)
+# The package is bloated and hostile to downstream packaging.  The two
+# latest upstream releases don't build because of various issues.
+# Removal on 2026-11-12.  Bug #984201.
+media-gfx/fotema
+
+# Matt Jolly <kangie@gentoo.org> (2026-10-09)
+# Dropped upstream, use www-client/opera or www-client/opera-developer.
+# Removal on 2026-11-09. Bug #983935.
+www-client/opera-beta
+
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2026-10-08)
+# Blocks removal of vulnerable old slot of dev-java/commons-lang:3.6
+# Nothing depends on it.
+# HOMEPAGE is unresponsive.
+# SRC_URI is hosted in a devspace which does no longer exist.
+# Removal on 2026-11-08.  Bug #938231.
+dev-lang/tuprolog
+
+# Jaco Kroon <jkroon@gentoo.org> (2026-10-06)
+# Unmaintained, abandoned by maintainer.
+# You can look at net-misc/ntpsec or net-misc/chrony as replacement.
+# See also: https://wiki.gentoo.org/wiki/Network_Time_Protocol
+# Removal on 2027-01-04. Bug #962880, and many more.
+net-misc/ntp
+
+# Mike Pagano <mpagano@gentoo.org> (2026-10-06)
+# Unmaintained, abandoned by maintainer.
+# Keeping vulnerable dependencies in the tree.
+# Removal on 2026-11-06. Bug #983813 .
+acct-group/kibana
+acct-user/kibana
+www-apps/kibana-bin
+
+# Florian Schmaus <flow@gentoo.org> (2026-10-02)
+# TeX Live 2026 is currently masked for testing.
+# Please report issues by creating a bug report
+# at https://bugs.gentoo.org.
+>=app-test/dvipsk-2026
+>=app-text/ps2pkm-1.8_p20260301
+>=app-text/texlive-2026
+>=app-text/texlive-core-2026
+>=dev-libs/kpathsea-6.4.2
+>=dev-libs/ptexenc-1.5.2
+>=dev-tex/biber-2.21
+>=dev-tex/biblatex-3.21
+>=dev-tex/bibtexu-3.72_p20260301
+>=dev-tex/glossaries-5.1
+>=dev-tex/latexmk-4.88
+>=dev-tex/latex2pydata-0.7.0
+>=dev-tex/minted-3.8.0
+>=dev-tex/tex4ht-20260301
+>=dev-texlive/texlive-basic-2026
+>=dev-texlive/texlive-bibtexextra-2026
+>=dev-texlive/texlive-binextra-2026
+>=dev-texlive/texlive-context-2026
+>=dev-texlive/texlive-fontsextra-2026
+>=dev-texlive/texlive-fontsrecommended-2026
+>=dev-texlive/texlive-fontutils-2026
+>=dev-texlive/texlive-formatsextra-2026
+>=dev-texlive/texlive-games-2026
+>=dev-texlive/texlive-humanities-2026
+>=dev-texlive/texlive-langarabic-2026
+>=dev-texlive/texlive-langchinese-2026
+>=dev-texlive/texlive-langcjk-2026
+>=dev-texlive/texlive-langcyrillic-2026
+>=dev-texlive/texlive-langczechslovak-2026
+>=dev-texlive/texlive-langenglish-2026
+>=dev-texlive/texlive-langeuropean-2026
+>=dev-texlive/texlive-langfrench-2026
+>=dev-texlive/texlive-langgerman-2026
+>=dev-texlive/texlive-langgreek-2026
+>=dev-texlive/texlive-langitalian-2026
+>=dev-texlive/texlive-langjapanese-2026
+>=dev-texlive/texlive-langkorean-2026
+>=dev-texlive/texlive-langother-2026
+>=dev-texlive/texlive-langpolish-2026
+>=dev-texlive/texlive-langportuguese-2026
+>=dev-texlive/texlive-langspanish-2026
+>=dev-texlive/texlive-latex-2026
+>=dev-texlive/texlive-latexextra-2026
+>=dev-texlive/texlive-latexrecommended-2026
+>=dev-texlive/texlive-luatex-2026
+>=dev-texlive/texlive-mathscience-2026
+>=dev-texlive/texlive-metapost-2026
+>=dev-texlive/texlive-music-2026
+>=dev-texlive/texlive-pictures-2026
+>=dev-texlive/texlive-plaingeneric-2026
+>=dev-texlive/texlive-pstricks-2026
+>=dev-texlive/texlive-publishers-2026
+>=dev-texlive/texlive-xetex-2026
+
+# Ionen Wolkens <ionen@gentoo.org> (2026-10-01)
+# Masked for testing the new .0 version and leave time for packages
+# to catch up on support. Will likely be kept masked until 6.12.1
+# is released unless there is a notable reason to need this earlier.
+#
+# If wanted, feel welcome to add `dev-qt/*:6/6.12.0` to package.unmask
+# and report issues.
+#
+# Note: qtwebengine was "split" from Qt's main packaging and is now
+# versioned as 6.<chromium-major>.<patch> (6.140.0 here), for now it is
+# included in this mask (unmask with dev-qt/qtwebengine:6/6.140.0), but
+# in the future it will be treated separately given it is not pinned and
+# e.g. 6.140.0 can be used with Qt 6.11.x (aka not just 6.12.x).
+#
+# !!! ... however, 6.140.0 was not released yet, if you need qtwebengine
+#     either do not unmask this or use qtwebengine-6.140.9999 for now.
+=dev-python/pyside-6.12.0*
+=dev-qt/qt-docs-6.12.0*
+=dev-qt/qt3d-6.12.0*
+=dev-qt/qt5compat-6.12.0*
+=dev-qt/qtbase-6.12.0*
+=dev-qt/qtcharts-6.12.0*
+=dev-qt/qtconnectivity-6.12.0*
+=dev-qt/qtdeclarative-6.12.0*
+=dev-qt/qtgraphs-6.12.0*
+=dev-qt/qthttpserver-6.12.0*
+=dev-qt/qtimageformats-6.12.0*
+=dev-qt/qtlanguageserver-6.12.0*
+=dev-qt/qtlocation-6.12.0*
+=dev-qt/qtmultimedia-6.12.0*
+=dev-qt/qtnetworkauth-6.12.0*
+=dev-qt/qtpositioning-6.12.0*
+=dev-qt/qtquick3d-6.12.0*
+=dev-qt/qtquicktimeline-6.12.0*
+=dev-qt/qtremoteobjects-6.12.0*
+=dev-qt/qtscxml-6.12.0*
+=dev-qt/qtsensors-6.12.0*
+=dev-qt/qtserialbus-6.12.0*
+=dev-qt/qtserialport-6.12.0*
+=dev-qt/qtshadertools-6.12.0*
+=dev-qt/qtspeech-6.12.0*
+=dev-qt/qtsvg-6.12.0*
+=dev-qt/qttasktree-6.12.0*
+=dev-qt/qttools-6.12.0*
+=dev-qt/qttranslations-6.12.0*
+=dev-qt/qtvirtualkeyboard-6.12.0*
+=dev-qt/qtwayland-6.12.0*
+=dev-qt/qtwebchannel-6.12.0*
+=dev-qt/qtwebengine-6.140.0*
+=dev-qt/qtwebsockets-6.12.0*
+=dev-qt/qtwebview-6.12.0*
+
+# James Le Cuirot <chewi@gentoo.org> (2026-09-28)
+# Previously split out of games-engines/uzdoom as an external dependency but is
+# now bundled. Not used by anything else. Removal on 2026-10-28. Bug #957494.
+media-libs/zmusic
+
+# Viorel Munteanu <ceamac@gentoo.org> (2026-09-27)
+# Drupal 11.2.x is EOL, no longer receives security updates.
+# Keeping it in tree only to help upgrading from 10.6.x to 11.3.x.
+# Upgrading directly from 10.6 to 11.3 can result in this error:
+# Uncaught PHP Exception TypeError: \
+# 	"Drupal\\Core\\Utility\\ThemeRegistry::getPreprocessInvokes(): \
+# 	Return value must be of type array, null returned"
+# Will be removed when 10.6.x reaches end of life (after December 2026).
+www-apps/drupal:11.2.14
+
+# Sam James <sam@gentoo.org> (2026-09-24)
+# Increasingly challenging to maintain with increased release cadence,
+# upstream toolchain changes, and conflicts between trying to provide
+# a consistent experience for Gentoo users (avoiding bundled where possible)
+# vs. getting updates out in a timely manner.  Many unfixed vulnerabilities.
+#
+# Keeping it in ::gentoo isn't a matter of just supplying an updated ebuild,
+# but a commitment to keeping it up to date and finding a compromise between
+# users' expectations (like various USE flags & not forcing all bundled
+# components) and maintainability.
+#
+# Still supported packages include:
+#   www-client/google-chrome variants
+# Other chromium-based browsers:
+#   www-client/microsoft-edge
+#   www-client/opera
+#   www-client/vivaldi
+# qtwebengine-based browsers (uses chromium's engine):
+#   kde-apps/konqueror
+#   www-client/falkon
+#   www-client/qutebrowser
+# Other browsers:
+#   www-client/firefox and www-client/firefox-bin
+#   www-client/seamonkey
+#
+# Removal on 2026-10-24.  Bug #982204.
+www-client/chromium
+
+# Sam James <sam@gentoo.org> (2026-09-24)
+# ImageMagick 6 only receives security fixes now upstream and already
+# suffers serious bugs. EOL announcement:
+# https://github-stories.com/2026/imagemagick-6-end-of-life-announcement/
+# Please upgrade to ImageMagick 7.
+=media-gfx/imagemagick-6*
+
+# Sam James <sam@gentoo.org> (2026-09-22)
+# Substantial rewrite to drop qpdf->pdfio has introduced some bugs, too
+# many fixes to backport and some aren't fixed at all yet (bug #983080,
+# and tagged onto bug #981565 too).
+~net-print/libcupsfilters-2.2.1
+
+# Michał Górny <mgorny@gentoo.org> (2026-09-16)
+# Used only by dev-python/jupyter-server with Python < 3.12.
+# No revdeps left.  Removal on 2026-10-16.  Bug #982608.
+dev-python/overrides
+
+# Arthur Zamarin <arthurzam@gentoo.org> (2026-09-11)
+# EAPI=7, old PYTHON_COMPAT, doesn't work with spotify for a long time,
+# upstream inactive for a decade.
+# Removal on 2026-10-11.  Bugs #982278, #952501.
+gnome-extra/gnome-integration-spotify
+
+# Alexey Sokolov <alexey+gentoo@asokolov.org> (2026-09-09)
+# Upstream abandoned the project, suggests www-servers/gatling
+# by the same upstream instead.
+# Removal on 2026-10-09. Bugs #783666, #944275.
+www-servers/fnord
+acct-user/fnord
+acct-user/fnordlog
+
+# Sam James <sam@gentoo.org> (2026-09-08)
+# Changes ctest(1) behaviour to exit non-zero if no tests, which
+# may break many ebuilds. Needs some assessment.
+>=dev-build/cmake-4.4.0
+
+# David Seifert <soap@gentoo.org> (2026-09-07)
+# Unmaintained, lots of FetchContent_* hacks.
+# Removal on 2026-10-07. Bug #927149.
+sci-physics/espresso
+
+# Ulrich Müller <ulm@gentoo.org> (2026-08-31)
+# Snapshot versions, masked for testing.
+<app-editors/emacs-32.0.9999:32-vcs
+
+# Sam James <sam@gentoo.org> (2026-08-21)
+# Grave security vulnerabilities which either haven't been
+# fixed upstream or fixed insufficiently. Our version is out-of-date as
+# well though the latest version wouldn't fix all of these. Other distributions
+# have removed croc because of its poor security posture already.
+# Use net-misc/wormhole-william or net-misc/magic-wormhole-rust instead.
+# Removal on 2026-09-20.  Bug #980854 and the older bug #918091.
+acct-group/croc
+acct-user/croc
+net-misc/croc
+
+# Brett A C Sheffield <bacs@librecast.net> (2026-08-09)
+# Unmaintained by upstream for 16 years. Two unpatched security bugs
+# (Bug #906111 and Bug #916866) and many more unpatched issues upstream.
+# Removal on 2026-09-09.
+app-text/catdoc
+
 # Nowa Ammerlaan <nowa@gentoo.org> (2026-08-06)
 # This version was pulled from upstream. The reason for this is
 # unclear. But masked just as a precaution. Bug #980367.
 =sys-boot/shim-16.1_p8
-
-# Michał Górny <mgorny@gentoo.org> (2026-08-05)
-# Last released in 2017.  Carries a significant patchset already.
-# Uses pkg_resources namespaces.  No reverse dependencies.
-# Removal on 2026-09-04.  Bug #957269.
-dev-python/pyformance
-
-# Michał Górny <mgorny@gentoo.org> (2026-08-04)
-# Slop package.  The old versions bundle a very old fork of
-# app-i18n/uchardet.  The new ones require app-i18n/uchardet from git
-# that suffers from regressions (and upstream slop-patched them anyway).
-# The only revdep supports fallback to dev-python/chardet and
-# dev-python/charset-normalizer (both are also slop nowadays, but we're
-# stuck with them anyway), and uses a || dep.
-# Removal on 2026-09-03.  Bug #980354.
-dev-python/faust-cchardet
-
-# James Le Cuirot <chewi@gentoo.org> (2026-07-29)
-# These packages have been superseded by recent versions of
-# games-fps/ut2004-data, which now includes this content regardless of
-# installation source. For the XP Bonus Maps that were included in the ECE
-# package, install games-fps/ut2004-bonuspack-xp. Removal on 2026-08-29.
-games-fps/ut2004-bonuspack-ece
-games-fps/ut2004-bonuspack-mega
-
-# James Le Cuirot <chewi@gentoo.org> (2026-07-29)
-# UT2004 now has modern builds and is essentially free to download, so there is
-# no need for this ancient package that allowed you to run a server for free.
-# Use games-fps/ut2004[dedicated] instead. Removal on 2026-08-29. Bug #979392.
-games-server/ut2004-ded
-
-# James Le Cuirot <chewi@gentoo.org> (2026-07-29)
-# UT2004 now has modern builds and is essentially free to download, so there is
-# no reason to bother with this old demo. Removal on 2026-08-29. Bug #979271.
-games-fps/ut2004-demo
-
-# James Le Cuirot <chewi@gentoo.org> (2026-07-29)
-# UT2004 is basically the same as UT2003, only bigger and better. Unlike UT2003,
-# UT2004 now has modern builds and is essentially free to download, so there is
-# no reason to choose UT2003 anymore. Removal on 2026-08-29. Bug #790173.
-games-fps/ut2003
-games-fps/ut2003-bonuspack-cm
-games-fps/ut2003-bonuspack-de
-games-fps/ut2003-bonuspack-epic
-games-fps/ut2003-data
-games-fps/ut2003-demo
-games-util/uz2unpack
-
-# James Le Cuirot <chewi@gentoo.org> (2026-07-28)
-# microsoft-identity-broker no longer needs a user. Removal on 2026-09-28.
-acct-user/microsoft-identity-broker
-acct-group/microsoft-identity-broker
 
 # Alfred Wingate <parona@protonmail.com> (2026-07-24)
 # Renamed to libgedit-tepl upstream.
@@ -113,15 +316,6 @@ net-dns/bind-tools
 # Removal on 2026-08-15.  Bug #942397.
 app-arch/p7zip
 
-# Michał Górny <mgorny@gentoo.org> (2026-07-13)
-# dev-python/fields is unmaintained for 5 years.  Broken with pytest-9,
-# we already patch it for earlier pytest versions.  It is the only
-# revdep of dev-python/characteristic which was archived in 2023.
-# No revdeps left.
-# Removal on 2026-08-12.  Bug #978175.
-dev-python/characteristic
-dev-python/fields
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2026-07-07)
 # dev-embedded/ponyprog destabilisation mask, bug #978907
 =dev-embedded/ponyprog-3.1.4_p20250501-r0
@@ -129,69 +323,6 @@ dev-python/fields
 # Eray Aslan <eras@gentoo.org> (2026-07-06)
 # Introduces backwards breaking change. Mask until downstreams adjust
 >=dev-db/lmdb-1.0.0
-
-# Michał Górny <mgorny@gentoo.org> (2026-07-04)
-# Renamed to dev-python/jsonschema-path.  No revdeps left.
-# Removal on 2026-08-03.
-dev-python/jsonschema-spec
-
-# Michał Górny <mgorny@gentoo.org> (2026-06-30)
-# Backwards compatibility wrapper.  No revdeps left.
-# Removal on 2026-07-30.
-dev-python/roman-numerals-py
-
-# Michał Górny <mgorny@gentoo.org> (2026-06-29)
-# Unmaintained.  Requires patching since py3.12.  No revdeps.
-# Removal on 2026-07-29.  Bug #978274.
-dev-python/commentjson
-
-# Michał Górny <mgorny@gentoo.org> (2026-06-20)
-# No py3.14 in compat, tests lost on bump, no revdeps.
-# Removal on 2026-07-20.  Bug #973904.
-dev-python/pyx
-dev-python/sphinx-selective-exclude
-
-# Michał Górny <mgorny@gentoo.org> (2026-06-20)
-# Both packages are completely broken and do not install correctly.
-# Removal on 2026-07-20.  Bug #977003.
-sci-chemistry/GromacsWrapper
-sci-libs/numkit
-
-# Michał Górny <mgorny@gentoo.org> (2026-06-20)
-# No maintainer, no py3.14 compat, broken tests, no revdeps.
-# Removal on 2026-07-20.  Bug #973876.
-dev-python/pdoc3
-
-# Michał Górny <mgorny@gentoo.org> (2026-06-20)
-# No py3.14 compat, broken tests, no revdeps.
-# Removal on 2026-07-20.  Bug #973847.
-dev-python/django-cacheops
-
-# Michał Górny <mgorny@gentoo.org> (2026-06-20)
-# NIH package with little activity.  Last revdeps were removed
-# in Sep 2025.
-# Removal on 2026-07-20.  Bug #977772.
-dev-python/pyotherside
-
-# Michał Górny <mgorny@gentoo.org> (2026-06-19)
-# dev-python/pytrie is broken on Python 3.14 and has not been touched
-# since 2020.  dev-python/autobahn and dev-python/txaio have become
-# complete broken slop, and still depend on it.  Remove these packages,
-# their reverse dependencies and their dependencies without revdeps.
-# Removal on 2026-07-19.  Bug #967367.
-dev-python/autobahn
-dev-python/magic-wormhole
-dev-python/magic-wormhole-mailbox-server
-dev-python/magic-wormhole-transit-relay
-dev-python/py-ubjson
-dev-python/pytrie
-dev-python/txaio
-dev-python/vpython
-dev-python/wsaccel
-
-# Ulrich Müller <ulm@gentoo.org> (2026-06-05)
-# Pretest versions, masked for testing.
-<app-editors/emacs-31.0.9999:31-vcs
 
 # Michał Górny <mgorny@gentoo.org> (2026-06-03)
 # Mike Pagano <mpagano@gentoo.org> (2026-06-03)
@@ -238,64 +369,6 @@ x11-drivers/xf86-video-vmware
 # Tries to delete many files (bug #975236)
 =dev-util/jenkins-bin-2.561
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2026-05-15)
-# Qt5 qtbase module. Bug #948836
-# Removal on 2026-06-30.
-dev-qt/qtconcurrent:5
-dev-qt/qtcore:5
-dev-qt/qtdbus:5
-dev-qt/qtgui:5
-dev-qt/qtnetwork:5
-dev-qt/qtopengl:5
-dev-qt/qtprintsupport:5
-dev-qt/qtsql:5
-dev-qt/qttest:5
-dev-qt/qtwidgets:5
-dev-qt/qtxml:5
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2026-05-15)
-# Qt5 non-qtbase modules. Bugs #948836, #964253
-# Removal on 2026-06-30.
-dev-qt/linguist-tools:5
-dev-qt/qtdeclarative:5
-dev-qt/qtgraphicaleffects:5
-dev-qt/qtmultimedia:5
-dev-qt/qtquickcontrols:5
-dev-qt/qtquickcontrols2:5
-dev-qt/qtsvg:5
-dev-qt/qttranslations:5
-dev-qt/qtwayland:5
-dev-qt/qtx11extras:5
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2026-05-15)
-# USE=gui in this version depends on Qt5 and can no longer be supported.
-# VLC-4 snapshots are provided with a Qt6-based USE=gui.
-# Alternatives for stable users are media-video/mpv, media-video/haruna,
-# media-video/smplayer, media-video/qmplay2 and probably many more.
-# Bug #954006. Removal some time after 2026-05-30.
-=media-video/vlc-3.0.23
-
-# Michał Górny <mgorny@gentoo.org> (2026-05-09)
-# The buildbot packages aren't actively maintained in ::gentoo.  They
-# are stuck on Python 3.12 and obsolete dependencies.  Bug reports
-# aren't receiving any attention.
-# Removal on 2026-06-08.  Bug #952430.
-acct-group/buildbot
-acct-user/buildbot
-dev-util/buildbot
-dev-util/buildbot-badges
-dev-util/buildbot-console-view
-dev-util/buildbot-grid-view
-dev-util/buildbot-pkg
-dev-util/buildbot-react-console-view
-dev-util/buildbot-react-grid-view
-dev-util/buildbot-react-wsgi-dashboards
-dev-util/buildbot-waterfall-view
-dev-util/buildbot-worker
-dev-util/buildbot-wsgi-dashboards
-dev-util/buildbot-www
-dev-util/buildbot-www-react
-
 # Sam James <sam@gentoo.org> (2026-05-05)
 # dev-debug/pwndbg itself needs >=dev-util/unicorn-2.1.4, while
 # pwndbg also depends on dev-util/pwntools which needs <dev-util/unicorn-2.1.4.
@@ -303,11 +376,6 @@ dev-util/buildbot-www-react
 # Mask to avoid Portage wasting time trying to find a solution, when
 # the only one available is to downgrade.
 >=dev-util/pwntools-4.15.0
-
-# Daniel Pielmeier <billie@gentoo.org> (2026-04-21)
-# Mask last version with USE qt5 which is about to be last rited.
-# Bugs #950282, #961920. Remove with other Qt5 masks.
-<net-print/hplip-3.25.8-r1
 
 # Sam James <sam@gentoo.org> (2026-04-19)
 # Major new release with lots of broken packages expected. Notably, even
@@ -407,17 +475,8 @@ dev-util/buildbot-www-react
 # This version has lit a firecracker under the community and attracted
 # some ire. The situation is in a state of mild flux, and more generally
 # requires further consideration to determine the correct course of
-# action. Use at your own risk.
+# action. Use at your own risk. See bug #969475.
 >=app-text/calibre-8.11.0
-
-# Michał Górny <mgorny@gentoo.org> (2025-12-12)
-# Upstream has switched to LLM-first coding which has already caused
-# a number of suspicious bugs.  At this point, new versions
-# of the packages cannot be trusted to be safe to use.  Furthermore,
-# the maintenance cost of dealing with packaging bugs alone
-# is overwhelming to human maintainers of this package.
->=dev-python/autobahn-25.10
->=dev-python/txaio-25.10
 
 # Sam James <sam@gentoo.org> (2025-11-25)
 # Generates session keys with weak (no) randomness. Please re-encrypt
@@ -449,10 +508,6 @@ dev-util/buildbot-www-react
 # Sam James <sam@gentoo.org> (2025-05-23)
 # Severe memory leak (bug #953874)
 =app-i18n/ibus-anthy-1.5.17
-
-# Alfred Wingate <parona@protonmail.com> (2025-05-17)
-# Masked for testing
-dev-db/mysql:8.4
 
 # Norbert Norbiros <norbiros@protonmail.com> (2025-04-01)
 # Screen v5.0.0 has a lot of regressions

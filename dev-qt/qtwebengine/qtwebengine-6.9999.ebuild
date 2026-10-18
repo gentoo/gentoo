@@ -3,9 +3,11 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 inherit check-reqs flag-o-matic multiprocessing optfeature
 inherit prefix python-any-r1 qt6-build toolchain-funcs
+
+QT_PV=6.8:6
 
 DESCRIPTION="Library for rendering dynamic web content in Qt6 C++ and QML applications"
 SRC_URI+="
@@ -34,9 +36,9 @@ RDEPEND="
 	dev-libs/libxslt
 	dev-libs/nspr
 	dev-libs/nss
-	~dev-qt/qtbase-${PV}:6[accessibility=,gui,opengl=,ssl,vulkan?,widgets?]
-	~dev-qt/qtdeclarative-${PV}:6[widgets?]
-	~dev-qt/qtwebchannel-${PV}:6[qml?]
+	>=dev-qt/qtbase-${QT_PV}=[accessibility=,gui,opengl=,ssl,vulkan?,widgets?]
+	>=dev-qt/qtdeclarative-${QT_PV}=[widgets?]
+	>=dev-qt/qtwebchannel-${QT_PV}[qml?]
 	media-libs/fontconfig
 	media-libs/freetype
 	media-libs/harfbuzz:=
@@ -66,8 +68,8 @@ RDEPEND="
 	x11-libs/libxkbfile
 	alsa? ( media-libs/alsa-lib )
 	!bindist? ( >=media-libs/openh264-2.4:= )
-	designer? ( ~dev-qt/qttools-${PV}:6[designer] )
-	geolocation? ( ~dev-qt/qtpositioning-${PV}:6 )
+	designer? ( >=dev-qt/qttools-${QT_PV}[designer] )
+	geolocation? ( >=dev-qt/qtpositioning-${QT_PV} )
 	kerberos? ( virtual/krb5 )
 	opengl? ( media-libs/libglvnd[X] )
 	pulseaudio? ( media-libs/libpulse[glib] )
@@ -110,7 +112,6 @@ PATCHES=( "${WORKDIR}"/patches/${PN} )
 PATCHES+=(
 	# add extras as needed here, may merge in set if carries across versions
 	"${FILESDIR}"/${PN}-6.10.3-climits.patch
-	"${FILESDIR}"/${PN}-6.11.0-gcc17.patch
 )
 
 python_check_deps() {
@@ -204,6 +205,10 @@ src_configure() {
 		-DQT_FEATURE_webengine_ozone_x11=ON
 		-DQT_FEATURE_webengine_pepper_plugins=ON
 		-DQT_FEATURE_webengine_printing_and_pdf=ON
+		# TODO: enable rust by default to match upstream, inherit rust,
+		# and bdep on dev-util/bindgen (currently fails to link and
+		# needs looking into, may be other issues, delaying for now)
+		-DQT_FEATURE_webengine_rust_build=OFF
 		-DQT_FEATURE_webengine_spellchecker=ON
 		-DQT_FEATURE_webengine_webchannel=ON
 		-DQT_FEATURE_webengine_webrtc=ON
@@ -241,6 +246,9 @@ src_configure() {
 		# reduce default disk space usage
 		symbol_level=0
 	)
+
+	use arm64 && use elibc_musl &&
+		mygnargs+=( allow_memory_tagging=false ) #981510
 
 	if use !custom-cflags; then
 		# qtwebengine can be rather fragile with *FLAGS

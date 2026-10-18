@@ -2,6 +2,10 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 
 <pkgmetadata>
+  <maintainer type="person">
+	<email>laumann@gentoo.org</email>
+	<name>Thomas Bracht Laumann Jespersen</name>
+  </maintainer>
   <maintainer type="project">
     <email>gnu-emacs@gentoo.org</email>
     <name>Gentoo GNU Emacs project</name>

@@ -9,7 +9,4 @@ lang=${LC_MESSAGES:-${LC_ALL:-${LANG:-in}}}
 [[ ${lang} == en* ]] && lang=in
 sed -i "/^\[Engine\.Engine\]/,/^\[/s:^Language=.*:Language=${lang:0:2}t:" "${HOME}"/.ut2004/System/UT2004.ini
 
-exe=${0##*/}
-exe=${exe#ut2004-}
-exe=${exe@U}
-exec "${System}/${exe}" "${@}"
+exec "${System}/UT2004" "${@}"

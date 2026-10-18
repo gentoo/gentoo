@@ -1,0 +1,19 @@
+I get a crash 100% on Raspberry Pi 5 in th enetwork applet, this avoids it.
+
+https://github.com/WayfireWM/wf-shell/issues/495
+
+--- a/src/util/network/network-widget.cpp
++++ b/src/util/network/network-widget.cpp
+@@ -503,6 +503,12 @@ void NetworkControlWidget::remove_vpn(std::string path)
+ 
+ void NetworkControlWidget::add_device(std::shared_ptr<Network> network)
+ {
++    /* fix a crash here */
++    if (!network)
++    {
++        return;
++    }
++
+     /* GUI doesn't want our null-device */
+     if (network->get_path() == "/")
+     {

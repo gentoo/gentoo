@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit flag-o-matic multilib-minimal toolchain-funcs udev
+inherit flag-o-matic multilib-minimal toolchain-funcs
 
 FFMPEG_SOC_PATCH=
 FFMPEG_SUBSLOT=61.63.63 # avutil.avcodec.avformat SONAME
@@ -113,6 +113,7 @@ FFMPEG_IUSE_MAP=(
 	sdl:sdl2
 	snappy:libsnappy
 	sndio
+	sofa:^libmysofa # no multilib
 	speex:libspeex
 	srt:libsrt
 	ssh:libssh
@@ -268,6 +269,7 @@ COMMON_DEPEND="
 	)
 	snappy? ( app-arch/snappy:=[${MULTILIB_USEDEP}] )
 	sndio? ( media-sound/sndio:=[${MULTILIB_USEDEP}] )
+	sofa? ( media-libs/libmysofa )
 	speex? ( media-libs/speex[${MULTILIB_USEDEP}] )
 	srt? ( net-libs/srt:=[${MULTILIB_USEDEP}] )
 	ssh? ( net-libs/libssh:=[sftp,${MULTILIB_USEDEP}] )
@@ -304,7 +306,10 @@ COMMON_DEPEND="
 	zlib? ( virtual/zlib:=[${MULTILIB_USEDEP}] )
 	zvbi? ( media-libs/zvbi[${MULTILIB_USEDEP}] )
 	${FFMPEG_SOC_PATCH:+"
-		soc? ( virtual/libudev:=[${MULTILIB_USEDEP}] )
+		soc? (
+			media-video/ffmpeg-soc-udev-rules
+			virtual/libudev:=[${MULTILIB_USEDEP}]
+		)
 	"}
 "
 RDEPEND="
@@ -339,13 +344,14 @@ BDEPEND="
 	BDEPEND+=" verify-sig? ( sec-keys/openpgp-keys-ffmpeg )"
 
 DOCS=( CREDITS Changelog README.md doc/APIchanges )
+[[ ${PV} != 9999 ]] && DOCS+=( RELEASE_NOTES )
 
 MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/libavutil/avconfig.h
 )
 
 PATCHES=(
-	"${FILESDIR}"/ffmpeg-6.1-opencl-parallel-gmake-fix.patch
+	"${FILESDIR}"/ffmpeg-9.0.2-opencl-parallel-gmake-fix.patch
 )
 
 pkg_pretend() {
@@ -403,12 +409,6 @@ src_prepare() {
 		tc-ld-is-mold && tc-is-clang && FFMPEG_ENABLE_LTO= #963835
 	fi
 	filter-lto
-
-	# workaround ICE with <gcc-16.1.1_p20260606:16 (bug #973641)
-	# TODO: kept to let people update, cleanup after a few months
-	tc-is-gcc && [[ $(gcc-major-version) -eq 16 ]] &&
-		has_version -b '<sys-devel/gcc-16.1.1_p20260606:16' &&
-		append-flags -fno-tree-vectorize
 }
 
 multilib_src_configure() {
@@ -459,11 +459,12 @@ multilib_src_configure() {
 		# disabled primarily due to being unpackaged
 		--disable-decklink
 		--disable-libaribcaption
+		--disable-libastcenc
 		--disable-libdavs2
+		--disable-libfdk-xhe-aac
 		--disable-libklvanc
 		--disable-liblcevc-dec
 		--disable-libmpeghdec
-		--disable-libmysofa
 		--disable-liboapv
 		--disable-libonnxruntime
 		--disable-libopenvino
@@ -548,11 +549,13 @@ multilib_src_configure() {
 			vsynth{1,2,3}-ffvhuff420p12
 		)
 
-	# zlib-ng is not bitexact w/ zlib producing mismatching md5sum (bug #965737)
+	# zlib-ng is not bitexact w/ zlib producing mismatching md5sum
+	# (bug #965737,#983573,#983934)
 	has_version 'sys-libs/zlib-ng[compat]' &&
 		skip_tests+=(
-			lavf-{apng{,.png},gray16be.png,png,rgb48be.png}
+			lavf-{apng{,.png},gray16be.png,pdv{,-intra},png,rgb48be.png}
 			mov-mp4-frag-flush
+			seek-lavf-pdv
 			vsynth{1,2,3}-{flashsv,mpng,zlib}
 		)
 
@@ -620,17 +623,4 @@ multilib_src_install() {
 	emake V=1 DESTDIR="${D}" install
 	in_iuse chromium && use chromium && multilib_is_native_abi &&
 		emake V=1 DESTDIR="${D}" install-libffmpeg
-}
-
-multilib_src_install_all() {
-	in_iuse soc && use soc && udev_dorules "${FILESDIR}"/60-dma-heap-ffmpeg.rules
-	einstalldocs
-}
-
-pkg_postinst() {
-	in_iuse soc && use soc && udev_reload
-}
-
-pkg_postrm() {
-	in_iuse soc && use soc && udev_reload
 }

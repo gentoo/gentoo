@@ -28,5 +28,9 @@ HOMEPAGE="
 LICENSE="BSD BSD-2 MIT"
 SLOT="0"
 
+BDEPEND="
+	test? ( dev-python/sphinx[${PYTHON_USEDEP}] )
+"
+
 EPYTEST_PLUGINS=()
 distutils_enable_tests pytest

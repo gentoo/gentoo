@@ -53,6 +53,10 @@ PDEPEND="
 
 DOCS=( README.md )
 
+PATCHES=(
+	"${FILESDIR}/${PN}-255.24-lxml-6.1.3.patch" # bug 981933
+)
+
 python_check_deps() {
 	python_has_version "dev-python/jinja2[${PYTHON_USEDEP}]" &&
 	python_has_version "dev-python/lxml[${PYTHON_USEDEP}]"

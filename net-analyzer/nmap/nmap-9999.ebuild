@@ -8,7 +8,7 @@ LUA_REQ_USE="deprecated"
 DISTUTILS_OPTIONAL=1
 DISTUTILS_SINGLE_IMPL=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 PLOCALES="de es fr hi hr hu id it ja pl pt_BR pt_PR ro ru sk zh"
 PLOCALE_BACKUP="en"
 inherit autotools distutils-r1 lua-single plocale toolchain-funcs
@@ -30,7 +30,7 @@ else
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-macos"
 fi
 
-SRC_URI+=" https://distfiles.gentoo.org/pub/dev/dilfridge@gentoo.org/${CATEGORY}/${PN}/${PN}-7.99-patches-1.tar.xz"
+SRC_URI+=" https://distfiles.gentoo.org/pub/dev/sam@gentoo.org/${CATEGORY}/${PN}/${PN}-7.991-patches-1.tar.xz"
 
 # https://github.com/nmap/nmap/issues/2199
 LICENSE="NPSL-0.95"
@@ -84,7 +84,7 @@ if [[ ${PV} != *9999* ]] ; then
 fi
 
 PATCHES=(
-	"${WORKDIR}"/${PN}-7.99-patches-1
+	"${WORKDIR}"/${PN}-7.991-patches-1
 )
 
 pkg_setup() {

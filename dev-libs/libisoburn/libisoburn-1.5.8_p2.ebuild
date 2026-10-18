@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=9
+
 MY_PF=${P/_p2/}
 MY_P=${MY_PF}.pl02
 
@@ -15,7 +16,7 @@ S="${WORKDIR}/${MY_PF}"
 
 LICENSE="GPL-2 GPL-3"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
 IUSE="acl debug external-filters frontend-optional launch-frontend libedit
 	readline static-libs xattr zlib"
 

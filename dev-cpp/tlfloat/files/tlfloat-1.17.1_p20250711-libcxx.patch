@@ -1,0 +1,12 @@
+Fix build with libc++
+Upstream PR: https://github.com/shibatch/tlfloat/pull/6
+--- a/src/include/tlfloat/tlfloat.hpp
++++ b/src/include/tlfloat/tlfloat.hpp
+@@ -8,6 +8,7 @@
+ #define __TLFLOAT_HPP_INCLUDED__
+ 
+ #include <cstdio>
++#include <type_traits>
+ 
+ #include <tlfloat/bigint.hpp>
+ 

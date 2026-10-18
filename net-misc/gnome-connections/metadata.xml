@@ -6,6 +6,6 @@
     <name>Gentoo GNOME Desktop</name>
   </maintainer>
   <upstream>
-    <remote-id type="gnome-gitlab">GNOME/connections</remote-id>
+    <remote-id type="gnome-gitlab">GNOME/gnome-connections</remote-id>
   </upstream>
 </pkgmetadata>

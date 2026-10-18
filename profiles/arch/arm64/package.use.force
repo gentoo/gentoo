@@ -1,5 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Alfredo Tupone <tupone@gentoo.org> (2026-08-12)
+# Pytorch needs mimalloc on arm64
+>=sci-ml/pytorch-2.13.0 mimalloc
 
 # Paul Zander <negril.nx+gentoo@gmail.com> (2024-04-12)
 # supports 64 bit neon

@@ -29,6 +29,8 @@ src_configure() {
 	local triple=${PN#openmp-}
 	filter-flags '-m*'
 	strip-unsupported-flags
+	# incompatible with the spirv target, https://bugs.gentoo.org/981726
+	filter-flags -frecord-gcc-switches
 
 	# https://github.com/llvm/llvm-project/issues/186598
 	filter-ldflags '-Wl,*'

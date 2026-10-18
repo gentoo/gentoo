@@ -1,20 +1,21 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit toolchain-funcs
 
-if [[ ${PV} = 9999* ]]; then
-	EGIT_REPO_URI="https://github.com/mattst88/${PN}.git"
+DESCRIPTION="Alpha Linux boot loader for SRM"
+HOMEPAGE="https://github.com/alphalinux-org/aboot"
+
+if [[ ${PV} == 9999 ]] ; then
 	inherit git-r3
+	EGIT_REPO_URI="https://github.com/alphalinux-org/${PN}.git"
 else
-	SRC_URI="https://github.com/mattst88/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/alphalinux-org/${PN}/archive/refs/tags/${P}.tar.gz"
+	S="${WORKDIR}/${PN}-${P}"
 	KEYWORDS="-* ~alpha"
 fi
-
-DESCRIPTION="Alpha Linux boot loader for SRM"
-HOMEPAGE="https://github.com/mattst88/aboot https://sourceforge.net/projects/aboot/"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -23,6 +24,7 @@ BDEPEND="app-text/docbook-sgml-utils"
 
 src_compile() {
 	emake AR="$(tc-getAR)" CC="$(tc-getCC)" LD="$(tc-getLD)" \
+		HOSTCC="$(tc-getBUILD_CC)" HOSTCFLAGS="${BUILD_CFLAGS}" \
 		all netabootwrap
 
 	einfo "Building man pages"
@@ -36,11 +38,10 @@ src_install() {
 	insinto /boot
 	doins net_aboot.nh
 	dobin netabootwrap
-	dodoc ChangeLog INSTALL README TODO aboot.conf
+	dodoc INSTALL README.md aboot.conf
 
 	insinto /etc
 	newins "${FILESDIR}"/aboot.conf aboot.conf.example
-
 }
 
 pkg_postinst() {

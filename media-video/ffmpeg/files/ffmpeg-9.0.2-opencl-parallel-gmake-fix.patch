@@ -1,0 +1,10 @@
+TODO: try to figure out if this patch is still needed, may be obsolete
+https://bugs.gentoo.org/782553
+--- a/tools/source2c
++++ b/tools/source2c
+@@ -24,4 +24,5 @@
+ name=$(basename "$input" | sed 's/\./_/')
+ 
++mkdir -p "$(dirname "$output")"
+ cat >$output <<EOF
+ // Generated from $input

@@ -3,7 +3,9 @@
 
 EAPI=8
 
-inherit autotools flag-o-matic optfeature prefix toolchain-funcs xdg
+VIRTUALX_REQUIRED=test
+
+inherit autotools optfeature prefix toolchain-funcs virtualx xdg
 
 DESCRIPTION="Enhanced game engine version from the classic Mac game, Marathon"
 HOMEPAGE="https://alephone.lhowon.org/"
@@ -14,7 +16,7 @@ if [[ ${PV} = 9999* ]]; then
 else
 	SRC_URI="https://github.com/Aleph-One-Marathon/alephone/archive/refs/tags/release-${PV}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${PN}-release-${PV}"
-	KEYWORDS="~amd64"
+	KEYWORDS="~amd64 ~arm64"
 fi
 
 LICENSE="GPL-3+ BitstreamVera OFL-1.1"
@@ -47,7 +49,12 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	dev-cpp/asio
-	test? ( >=dev-cpp/catch-3:0 )
+	test? (
+		>=dev-cpp/catch-3:0
+		games-fps/alephone-durandal
+		games-fps/alephone-infinity
+		games-fps/alephone-marathon
+	)
 "
 BDEPEND="virtual/pkgconfig"
 
@@ -57,9 +64,6 @@ src_prepare() {
 }
 
 src_configure() {
-	# With LTO enabled enemies are not visible
-	# https://github.com/Aleph-One-Marathon/alephone/issues/518
-	filter-lto
 	my_econf=(
 		--enable-opengl
 		--disable-steam # not packaged?
@@ -85,6 +89,28 @@ src_compile() {
 	default
 }
 
+src_test() {
+	# We only have the replay regression tests available, but they're better than nothing.
+	for p in marathon durandal infinity; do
+		local replay_path
+		case "${p}" in
+		marathon)
+			replay_path="${S}/tests/replays/Marathon/Tooncinator Films"
+			;;
+		durandal)
+			replay_path="${S}/tests/replays/Marathon 2"
+			;;
+		infinity)
+			replay_path="${S}/tests/replays/Marathon Infinity/Tooncinator Films"
+			;;
+		esac
+		einfo "Running replay tests for alephone-${p}"
+		einfo "This will take several minutes."
+		virtx ./Source_Files/alephone_tests --replay-directory "${replay_path}" \
+			"${EPREFIX}/usr/share/alephone-${p}" || die "Replay tests for alephone-${p} failed"
+	done
+}
+
 src_install() {
 	default
 	prefixify_ro "${FILESDIR}"/${PN}.sh
@@ -92,6 +118,9 @@ src_install() {
 	doman docs/${PN}.6
 	docinto html/
 	dodoc docs/*.html
+	if use test; then
+		rm "${D}"/usr/bin/${PN}_tests || die "Failed to remove test binary"
+	fi
 }
 
 pkg_postinst() {

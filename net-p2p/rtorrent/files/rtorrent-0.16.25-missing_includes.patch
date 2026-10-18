@@ -1,0 +1,12 @@
+PR merged https://github.com/rakshasa/rtorrent/pull/2046.patch
+fix gcc-17
+--- a/src/core/download_list.h
++++ b/src/core/download_list.h
+@@ -1,6 +1,7 @@
+ #ifndef RTORRENT_CORE_DOWNLOAD_LIST_H
+ #define RTORRENT_CORE_DOWNLOAD_LIST_H
+ 
++#include <cstdint>
+ #include <iosfwd>
+ #include <list>
+ #include <memory>

@@ -1,0 +1,48 @@
+Fix build of tests with libc++
+
+- The exclusive_scan fallback for libstdc++ < 9 was selected by mistake
+  (GLIBCXX_RELEASE instead of _GLIBCXX_RELEASE), and not defined without
+  libstdc++.
+- sparse_matrix.hpp has a global "using namespace std", which makes __all
+  in the HIP headers ambiguous with std::__all from libc++. Include it
+  after the HIP headers.
+--- a/test/hipcub/test_hipcub_block_radix_rank.cpp
++++ b/test/hipcub/test_hipcub_block_radix_rank.cpp
+@@ -605,7 +605,7 @@ void rank_with_prefix_sum_kernel(const KeyType* keys_input,
+     }
+ }
+ 
+-#if defined(_GLIBCXX_RELEASE) && (GLIBCXX_RELEASE < 9)
++#if defined(_GLIBCXX_RELEASE) && (_GLIBCXX_RELEASE < 9)
+ 
+ /**
+  * name this function fall_back_exclusive_scan to prevent
+@@ -722,7 +722,7 @@ void test_radix_rank_with_prefix_sum_output()
+ 
+                     ++histogram[bit_rep];
+                 }
+-                #if defined(_WIN32) || (defined(_GLIBCXX_RELEASE) && (GLIBCXX_RELEASE >= 9))
++                #if !defined(_GLIBCXX_RELEASE) || (_GLIBCXX_RELEASE >= 9)
+                     std::exclusive_scan(histogram.begin(),
+                                         histogram.end(),
+                                         pfs_expected.begin() + pfs_offset,
+--- a/test/hipcub/test_hipcub_device_spmv.cpp
++++ b/test/hipcub/test_hipcub_device_spmv.cpp
+@@ -20,14 +20,15 @@
+ // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ // SOFTWARE.
+ 
+-#include "experimental/sparse_matrix.hpp"
+-
+ #include <hipcub/device/device_spmv.hpp>
+ #include <hipcub/util_allocator.hpp>
+ 
+ #include "common_test_header.hpp"
+ #include "test_utils_assertions.hpp"
+ 
++// after the HIP headers: it has a global "using namespace std"
++#include "experimental/sparse_matrix.hpp"
++
+ hipcub::CachingDeviceAllocator g_allocator;
+ 
+ static constexpr float alpha_const = 1.0f;

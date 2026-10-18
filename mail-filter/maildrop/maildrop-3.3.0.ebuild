@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-inherit flag-o-matic autotools
+inherit flag-o-matic autotools locale-utils
 
 DESCRIPTION="Mail delivery agent/filter"
 [[ -z ${PV/?.?/}   ]] && SRC_URI="https://downloads.sourceforge.net/courier/${P}.tar.bz2"
@@ -15,9 +15,8 @@ S=${WORKDIR}/${P%%_pre}
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~s390 ~sparc ~x86"
-IUSE="berkdb debug dovecot gdbm ldap mysql postgres static-libs authlib +tools trashquota"
-
-RESTRICT="test" # No more working
+IUSE="berkdb debug dovecot gdbm ldap mysql postgres static-libs authlib test +tools trashquota"
+RESTRICT="!test? ( test )"
 
 CDEPEND="!mail-mta/courier
 	net-mail/mailbase
@@ -37,7 +36,8 @@ CDEPEND="!mail-mta/courier
 		!<net-mail/courier-imap-5.2.6
 		net-mail/courier-common[gdbm?,berkdb?]
 	)"
-DEPEND="${CDEPEND}"
+DEPEND="${CDEPEND}
+	test? ( sys-libs/nss_wrapper )"
 RDEPEND="${CDEPEND}
 	dev-lang/perl
 	dovecot? ( net-mail/dovecot )"
@@ -47,12 +47,6 @@ REQUIRED_USE="
 	mysql? ( authlib )
 	postgres? ( authlib )
 	ldap? ( authlib )"
-
-PATCHES=(
-	"${FILESDIR}"/${PN}-3.2.1-testsuite.patch
-	"${FILESDIR}"/${PN}-3.2.1-valgrind.patch
-	"${FILESDIR}"/${PN}-3.1.6-test.patch
-)
 
 src_prepare() {
 	# Prefer gdbm over berkdb
@@ -108,6 +102,30 @@ src_configure() {
 
 	# default mailbox is $HOME/.maildir for Gentoo
 	maildrop_cv_SYS_INSTALL_MBOXDIR="./.maildir" econf "${myeconfargs[@]}"
+}
+
+src_test() {
+	local -x LOCPATH
+	if ! elocale_gen en_US.{ISO-8859-1,UTF-8}; then
+		einfo "Tests skipped, they need the en_US.ISO-8859-1 and en_US.UTF-8 locales."
+		return
+	fi
+
+	# Do not run tests under valgrind
+	find . \( -name Makefile -o -name testsuite \) \
+		-exec sed -i -e 's/which valgrind/true/' {} + || die
+
+	# maildrop takes SHELL from the passwd entry, which is nologin
+	# for the portage user
+	local -x NSS_WRAPPER_PASSWD="${T}/passwd" NSS_WRAPPER_GROUP=/etc/group
+	local passwd
+	passwd=$(getent passwd "$(id -u)") || die
+	# The first matching entry is the one that gets used
+	echo "${passwd%:*}:/bin/sh" > "${NSS_WRAPPER_PASSWD}" || die
+	getent passwd >> "${NSS_WRAPPER_PASSWD}" || die
+
+	LD_PRELOAD="libnss_wrapper.so${LD_PRELOAD:+:${LD_PRELOAD}}" \
+		emake check
 }
 
 src_install() {

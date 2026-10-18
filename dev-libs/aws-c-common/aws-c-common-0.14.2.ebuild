@@ -7,16 +7,21 @@ DESCRIPTION="Core c99 package for AWS SDK for C"
 HOMEPAGE="https://github.com/awslabs/aws-c-common"
 SRC_URI="https://github.com/awslabs/aws-c-common/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
-inherit cmake
+inherit cmake flag-o-matic
 
 LICENSE="Apache-2.0"
 SLOT="0/1"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64 ~riscv"
 IUSE="test"
 
 RESTRICT="!test? ( test )"
 
 src_configure() {
+	# -Werror=lto-type-mismatch
+	# https://bugs.gentoo.org/967010
+	# https://github.com/awslabs/aws-c-common/issues/1304
+	filter-lto
+
 	local mycmakeargs=(
 		-DBUILD_TESTING=$(usex test)
 	)

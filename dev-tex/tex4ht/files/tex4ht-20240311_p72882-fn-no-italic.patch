@@ -1,0 +1,17 @@
+Use upright font style for footnotes
+https://puszcza.gnu.org.ua/bugs/?691
+
+r1822 | michal_h21 | 2026-08-26 13:17:30 +0200 (Wed, 26 Aug 2026) | 1 line
+don't use italic text for footnotes with the fn-in option
+
+--- a/texmf/tex/generic/tex4ht/html4.4ht
++++ b/texmf/tex/generic/tex4ht/html4.4ht
+@@ -2753,7 +2753,7 @@
+    padding-bottom:1ex;
+    padding-top:0.5ex;
+    margin-right:15\%; margin-top:2ex;
+-   font-style:italic; font-size:85\%;}}
++   font-size:85\%;}}
+ \Css{div.footnotes p{margin-top:0; margin-bottom:0; text-indent:0;}}
+ \ifx \fn:box\:UnDef \csname newbox\endcsname\fn:box \fi
+ \HAssign\body:level=0

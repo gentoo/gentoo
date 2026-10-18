@@ -1,0 +1,36 @@
+From d0d2d81232711d04599751d9365510edee2a2f1e Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Sun, 11 Oct 2026 18:24:32 -0400
+Subject: [PATCH] makefiles/Makefile.tools: prefer "command -v" to "which"
+
+For finding the path to the compiler,
+
+  $ command -v <program>
+
+is preferable to the currently-used
+
+  $ which <program>
+
+in that it is standardized by POSIX 2024 (and earlier). Though it is
+quite common to find "which" installed, on a bare-bones system, it is
+an additional dependency that must be installed.
+---
+ makefiles/Makefile.tools | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/makefiles/Makefile.tools b/makefiles/Makefile.tools
+index 38a9deb..de68a1b 100644
+--- a/makefiles/Makefile.tools
++++ b/makefiles/Makefile.tools
+@@ -135,7 +135,7 @@ else
+   endif
+ 
+   # Search the path for the compiler
+-  toolpath_ := $(shell /bin/which $(CC__))
++  toolpath_ := $(shell command -v $(CC__))
+   ifeq ($(toolpath_),)
+     toolpath_ := /opt/netsurf/$(HOST)/cross/bin/
+     CC__  := $(toolpath_)$(HOST)-gcc
+-- 
+2.56.0
+

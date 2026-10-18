@@ -14,7 +14,7 @@ SRC_URI+=" https://github.com/gentoo-golang-dist/${PN}/releases/download/v${PV}/
 
 LICENSE="Apache-2.0 BSD BSD-2 ISC MIT Unlicense"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 arm x86"
 
 BDEPEND="
 	>=dev-lang/go-1.25.0

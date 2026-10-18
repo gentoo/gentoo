@@ -1,0 +1,26 @@
+From f2c0ef3e00d42e5329f4154e42e175c077bac23d Mon Sep 17 00:00:00 2001
+From: Elliott Sales de Andrade <quantum.analyst@gmail.com>
+Date: Wed, 26 Aug 2026 20:59:51 -0400
+Subject: [PATCH] Disable pickling for LineAccumulator
+
+There's not really any useful API here for Python, and we should
+probably deprecate access entirely, but disabling pickling will fix
+building with Cython 3.3.0
+
+Fixes #2722
+---
+ lib/cartopy/trace.pyx | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/lib/cartopy/trace.pyx b/lib/cartopy/trace.pyx
+index 561a16f2b..d963dc31f 100644
+--- a/lib/cartopy/trace.pyx
++++ b/lib/cartopy/trace.pyx
+@@ -47,6 +47,7 @@ cdef bool close(double a, double b):
+ 
+ 
+ @cython.final
++@cython.auto_pickle(False)
+ cdef class LineAccumulator:
+     cdef list[Line] lines
+ 

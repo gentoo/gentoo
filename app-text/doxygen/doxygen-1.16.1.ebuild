@@ -5,10 +5,10 @@ EAPI=8
 
 LLVM_COMPAT=( 18 19 20 21 22 )
 LLVM_OPTIONAL=1
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{11..15} )
 PYTHON_REQ_USE="xml(+)"
 
-inherit cmake flag-o-matic llvm-r1 python-any-r1
+inherit cmake flag-o-matic llvm-r2 python-any-r1
 
 DESCRIPTION="Documentation system for most programming languages"
 HOMEPAGE="https://www.doxygen.nl/"
@@ -19,7 +19,7 @@ if [[ ${PV} == *9999* ]]; then
 else
 	SRC_URI="https://doxygen.nl/files/${P}.src.tar.gz"
 	SRC_URI+=" https://downloads.sourceforge.net/doxygen/rel-${PV}/${P}.src.tar.gz"
-	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~x64-macos ~x64-solaris"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~arm64-macos ~x64-macos ~x64-solaris"
 fi
 
 # GPL-2 also for bundled libmscgen
@@ -78,7 +78,7 @@ PATCHES=(
 DOCS=( LANGUAGE.HOWTO README.md )
 
 pkg_setup() {
-	use clang && llvm-r1_pkg_setup
+	use clang && llvm-r2_pkg_setup
 	python-any-r1_pkg_setup
 }
 

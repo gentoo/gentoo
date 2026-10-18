@@ -1,0 +1,107 @@
+From fd4c6d1b7dfb77ecf43607ad49f17cebe1205f4b Mon Sep 17 00:00:00 2001
+From: Zhora Zmeykin <me@katze-942.ru>
+Date: Thu, 13 Aug 2026 17:04:15 +0400
+Subject: [PATCH] Reuse explicitly provided image data
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Spectacle already encodes the image for the clipboard and puts both the ready-to-use `image/<preferred format>` bytes and the original QImage into QMimeData.
+
+However, whenever an image is requested, `DataControlSource::ext_data_control_source_v1_send()` ignores the existing encoded representation and re-encodes the image using `QImage::save()`.
+
+Re-encoding large screenshots as PNG can take more than a second. This happens after the receiver has requested the MIME type and opened the pipe, while `DataControlOffer::readData()` stops waiting if the first byte does not arrive within one second. The receiver then closes the pipe, and the screenshot may become unavailable for pasting or be stored as an empty Klipper entry.
+
+On my laptop’s 3.1K display, this prevents the image from being stored in Klipper in time. This is a reduced-scope continuation of !206 although, to be honest, I only found that MR while preparing this one
+
+BUG: 519651
+
+Co-authored-by: Tom Ripley <discofan420@protonmail.com>
+---
+ src/systemclipboard/waylandclipboard.cpp    | 25 ++++++++-----------
+ src/systemclipboard/wlrwaylandclipboard.cpp | 27 ++++++++-------------
+ 2 files changed, 20 insertions(+), 32 deletions(-)
+
+diff --git a/src/systemclipboard/waylandclipboard.cpp b/src/systemclipboard/waylandclipboard.cpp
+index 1eaacf9..a83f6b5 100644
+--- a/src/systemclipboard/waylandclipboard.cpp
++++ b/src/systemclipboard/waylandclipboard.cpp
+@@ -359,24 +359,19 @@ void DataControlSource::ext_data_control_source_v1_send(const QString &mime_type
+         // if we get a request on the fallback mime, send the data from the original mime type
+         send_mime_type = QStringLiteral("text/plain");
+     }
++    if (mime_type == applicationQtXImageLiteral()) {
++        send_mime_type = QStringLiteral("image/png");
++    }
+ 
++    const auto formats = m_mimeData->formats();
+     QByteArray ba;
+-
+-    // adapted from QInternalMimeData::renderDataHelper
+-    if (mime_type == applicationQtXImageLiteral() || mime_type.startsWith(QLatin1String("image/"))) {
+-        if (m_mimeData->hasImage()) {
+-            const QImage image = qvariant_cast<QImage>(m_mimeData->imageData());
+-            QBuffer buf(&ba);
+-            buf.open(QBuffer::WriteOnly);
+-            if (mime_type == applicationQtXImageLiteral()) {
+-                // would there not be PNG ??
+-                image.save(&buf, "PNG");
+-            } else {
+-                image.save(&buf, mime_type.mid(mime_type.indexOf(QLatin1Char('/')) + 1).toLatin1().toUpper().data());
+-            }
+-        }
+-    } else { // end adapted
++    if (formats.contains(send_mime_type)) {
+         ba = m_mimeData->data(send_mime_type);
++    } else if (m_mimeData->hasImage() && send_mime_type.startsWith(QLatin1String("image/"))) {
++        const QImage image = qvariant_cast<QImage>(m_mimeData->imageData());
++        QBuffer buf(&ba);
++        buf.open(QBuffer::WriteOnly);
++        image.save(&buf, send_mime_type.mid(send_mime_type.indexOf(QLatin1Char('/')) + 1).toLatin1().toUpper().data());
+     }
+ 
+     auto rc = WaylandPipeWriterHelper::safeWriteWithTimeout(fd, ba.constData(), ba.size(), PIPE_BUF, 5s);
+diff --git a/src/systemclipboard/wlrwaylandclipboard.cpp b/src/systemclipboard/wlrwaylandclipboard.cpp
+index d257022..3f0d411 100644
+--- a/src/systemclipboard/wlrwaylandclipboard.cpp
++++ b/src/systemclipboard/wlrwaylandclipboard.cpp
+@@ -344,26 +344,19 @@ void WlrDataControlSource::zwlr_data_control_source_v1_send(const QString &mime_
+         // if we get a request on the fallback mime, send the data from the original mime type
+         send_mime_type = QStringLiteral("text/plain");
+     }
++    if (mime_type == applicationQtXImageLiteral()) {
++        send_mime_type = QStringLiteral("image/png");
++    }
+ 
++    const auto formats = m_mimeData->formats();
+     QByteArray ba;
+-    if (m_mimeData->hasImage()) {
+-        // adapted from QInternalMimeData::renderDataHelper
+-        if (mime_type == applicationQtXImageLiteral()) {
+-            QImage image = qvariant_cast<QImage>(m_mimeData->imageData());
+-            QBuffer buf(&ba);
+-            buf.open(QBuffer::WriteOnly);
+-            // would there not be PNG ??
+-            image.save(&buf, "PNG");
+-
+-        } else if (mime_type.startsWith(QLatin1String("image/"))) {
+-            QImage image = qvariant_cast<QImage>(m_mimeData->imageData());
+-            QBuffer buf(&ba);
+-            buf.open(QBuffer::WriteOnly);
+-            image.save(&buf, mime_type.mid(mime_type.indexOf(QLatin1Char('/')) + 1).toLatin1().toUpper().data());
+-        }
+-        // end adapted
+-    } else {
++    if (formats.contains(send_mime_type)) {
+         ba = m_mimeData->data(send_mime_type);
++    } else if (m_mimeData->hasImage() && send_mime_type.startsWith(QLatin1String("image/"))) {
++        const QImage image = qvariant_cast<QImage>(m_mimeData->imageData());
++        QBuffer buf(&ba);
++        buf.open(QBuffer::WriteOnly);
++        image.save(&buf, send_mime_type.mid(send_mime_type.indexOf(QLatin1Char('/')) + 1).toLatin1().toUpper().data());
+     }
+ 
+     QFile c;
+-- 
+GitLab
+

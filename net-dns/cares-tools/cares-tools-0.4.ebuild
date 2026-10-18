@@ -11,7 +11,7 @@ SRC_URI="https://gitlab.com/grobian/${PN}/-/archive/${PV}/${P}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~amd64 ~arm64 ~arm64-macos ~x64-macos ~x64-solaris"
 
 DEPEND="
 	net-dns/c-ares

@@ -14,7 +14,4 @@ lang=${LC_MESSAGES:-${LC_ALL:-${LANG:-in}}}
 [[ ${lang} == en* ]] && lang=in
 sed -i "/^\[Engine\.Engine\]/,/^\[/s:^Language=.*:Language=${lang:0:2}t:" "${MyIni}"
 
-exe=${0##*/}
-exe=${exe#unreal-tournament}
-exe=${exe#-}
-exec "${System}/${exe:-ut}-bin" "${@}"
+exec "${System}/ut-bin" "${@}"

@@ -1,97 +1,57 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit autotools multilib-minimal
+inherit cmake-multilib
+
+DESCRIPTION="Open h.265 video codec implementation"
+HOMEPAGE="https://github.com/strukturag/libde265"
 
 if [[ ${PV} == *9999 ]] ; then
-	EGIT_REPO_URI="https://github.com/strukturag/${PN}.git"
+	EGIT_REPO_URI="https://github.com/strukturag/libde265.git"
 	inherit git-r3
 else
 	SRC_URI="https://github.com/strukturag/libde265/releases/download/v${PV}/${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
 fi
 
-DESCRIPTION="Open h.265 video codec implementation"
-HOMEPAGE="https://github.com/strukturag/libde265"
-
-LICENSE="GPL-3"
+LICENSE="LGPL-3 tools? ( MIT )"
 SLOT="0"
-IUSE="enc265 dec265 sdl tools debug cpu_flags_x86_sse4_1 cpu_flags_arm_neon cpu_flags_arm_thumb"
-# IUSE+=" sherlock265" # Require libvideogfx or libswscale
+IUSE="dec265 debug sdl tools"
+IUSE+=" cpu_flags_x86_avx2 cpu_flags_x86_avx512f cpu_flags_x86_sse cpu_flags_arm_neon"
 
 RDEPEND="
 	dec265? (
 		sdl? ( media-libs/libsdl2 )
-	)"
-
-# Sherlock265 require libvideogfx or libswscale
-#RDEPEND+="
-#	sherlock265? (
-#		media-libs/libsdl
-#		dev-qt/qtcore:5
-#		dev-qt/qtgui:5
-#		dev-qt/qtwidgets:5
-#		media-libs/libswscale
-#	)
-#"
-
+	)
+"
 DEPEND="${RDEPEND}"
 BDEPEND="dec265? ( virtual/pkgconfig )"
 
-# Sherlock265 require libvideogfx or libswscale
-#BDEPEND+=" sherlock265? ( virtual/pkgconfig )"
-
-PATCHES=( "${FILESDIR}"/${PN}-1.0.2-qtbindir.patch )
-
-src_prepare() {
-	default
-
-	eautoreconf
-
-	# without this, headers would be missing and make would fail
-	multilib_copy_sources
-}
-
 multilib_src_configure() {
-	local myeconfargs=(
-		--enable-log-error
-		ax_cv_check_cflags___msse4_1=$(usex cpu_flags_x86_sse4_1)
-		ax_cv_check_cflags___mfpu_neon=$(usex cpu_flags_arm_neon)
-		$(use_enable cpu_flags_arm_thumb thumb)
-		$(use_enable debug log-info)
-		$(use_enable debug log-debug)
-		$(use_enable debug log-trace)
-		$(multilib_native_use_enable enc265 encoder)
-		$(multilib_native_use_enable dec265)
+	local mycmakeargs=(
+		-DDE265_LOG_LEVEL=$(usex debug debug error)
+
+		-DENABLE_AVX2=$(usex cpu_flags_x86_avx2)
+		-DENABLE_AVX512=$(usex cpu_flags_x86_avx512f)
+
+		-DENABLE_DECODER=$(multilib_native_usex dec265)
+
+		-DENABLE_SDL=$(usex sdl)
+
+		# dev-tools dir isn't in release tarballs
+		#-DENABLE_INTERNAL_DEVELOPMENT_TOOLS=$(usex test)
+
+		# Require libvideogfx or libswscale
+		-DENABLE_SHERLOCK265=OFF
 	)
 
-	# myeconfargs+=( $(multilib_native_use_enable sherlock265) ) # Require libvideogfx or libswscale
-	myeconfargs+=( --disable-sherlock265 )
-
-	econf "${myeconfargs[@]}"
-}
-
-multilib_src_install() {
-	default
-
-	if multilib_is_native_abi; then
-		# Remove useless, unready and test tools
-		rm "${ED}"/usr/bin/{tests,gen-enc-table,yuv-distortion} || die
-		if ! use tools; then
-			rm "${ED}"/usr/bin/{bjoentegaard,block-rate-estim,rd-curves} || die
-			# Disabled as of 1.0.16
-			# https://github.com/strukturag/libde265/commit/edf58dd61c50fb28f4b31569c250389f125bd826
-			#rm "${ED}"/usr/bin/acceleration_speed || die
-		fi
+	if use cpu_flags_x86_sse || use cpu_flags_arm_neon || use arm64 ; then
+		mycmakeargs+=( -DENABLE_SIMD=ON )
 	else
-		# Remove all non-native binary tools
-		rm "${ED}"/usr/bin/* || die
+		mycmakeargs+=( -DENABLE_SIMD=OFF )
 	fi
-}
 
-multilib_src_install_all() {
-	find "${ED}" -name '*.la' -delete || die
-	einstalldocs
+	cmake_src_configure
 }

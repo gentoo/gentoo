@@ -18,7 +18,7 @@ else
 	"
 	KEYWORDS="~alpha ~amd64 ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86"
 fi
-SRC_URI+="https://dev.gentoo.org/~matthew/distfiles/${PN}-icons.tar.bz2"
+SRC_URI+="https://librecast.net/downloads/gentoo/net-misc/putty/${PN}-icons.tar.bz2"
 
 LICENSE="MIT"
 SLOT="0"
@@ -32,6 +32,7 @@ RDEPEND="
 		x11-libs/gdk-pixbuf:2
 		x11-libs/gtk+:3[X]
 		x11-libs/libX11
+		x11-libs/libXrender
 		x11-libs/pango
 	)
 	gssapi? ( virtual/krb5 )
@@ -43,7 +44,7 @@ BDEPEND="
 	dev-lang/perl
 	virtual/pkgconfig
 	doc? ( app-text/halibut )
-	verify-sig? ( ~sec-keys/openpgp-keys-putty-release-2023 )
+	verify-sig? ( ~sec-keys/openpgp-keys-putty-release-2026 )
 "
 
 src_unpack() {

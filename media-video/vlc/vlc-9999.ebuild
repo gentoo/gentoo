@@ -498,6 +498,15 @@ src_install() {
 	fi
 }
 
+pkg_preinst() {
+	if use gui && has_version "<${CATEGORY}/${PN}-4[gui]"; then
+		ewarn "Upgrade from VLC-3 detected. If you experience runtime issues,"
+		ewarn "try cleaning up ~/.config/vlc first."
+		ewarn
+	fi
+	xdg_pkg_preinst
+}
+
 pkg_postinst() {
 	if [[ -z "${ROOT}" ]] && [[ -x "${EROOT}"/usr/libexec/vlc/vlc-cache-gen ]] ; then
 		einfo "Running ${EPREFIX}/usr/libexec/vlc/vlc-cache-gen on ${EROOT}/usr/$(get_libdir)/vlc/plugins/"
@@ -508,7 +517,12 @@ pkg_postinst() {
 		ewarn "If you do not do it, vlc will take a long time to load."
 	fi
 
-	use gui && xdg_pkg_postinst
+	if use gui; then
+		ewarn "Starting VLC GUI is only supported by using its desktop file."
+		ewarn "Manually calling vlc from command line is known to break in Wayland sessions."
+
+		xdg_pkg_postinst
+	fi
 }
 
 pkg_postrm() {

@@ -7,5 +7,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="sourceforge">xmlstar</remote-id>
+		<remote-id type="github">xmlstarlet/xmlstarlet</remote-id>
 	</upstream>
 </pkgmetadata>

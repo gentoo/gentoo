@@ -28,6 +28,8 @@
 		<flag name="dlfunc">Install local_scan.h header to compile separate
 			dlfunc libraries</flag>
 		<flag name="dmarc">Adds support for DMARC</flag>
+		<flag name="dmarc-native">Use *EXPERIMENTAL* Native DMARC implementation (Only effective with USE=dmarc).</flag>
+		<flag name="dmarc-opendmarc">Use established opendmarc based DMARC implementation (Only effective with USE=dmarc).</flag>
 		<flag name="dnsdb">Adds support for a DNS search for a record whose
 			domain name is the supplied query</flag>
 		<flag name="dovecot-sasl">Adds support for Dovecot's

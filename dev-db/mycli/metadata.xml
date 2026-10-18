@@ -14,7 +14,4 @@
 		<remote-id type="pypi">mycli</remote-id>
 	</upstream>
 	<stabilize-allarches/>
-	<use>
-		<flag name="ssh">Add support for connection over SSH tunnel</flag>
-	</use>
 </pkgmetadata>

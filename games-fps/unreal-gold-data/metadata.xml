@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>games@gentoo.org</email>
+		<name>Gentoo Games Project</name>
+	</maintainer>
+	<use>
+		<flag name="gog">Install from the GOG.com release. Note that the game is no longer sold here.</flag>
+	</use>
+	<longdescription>
+		This package installs just the data files, not the engine, for Epic's
+		popular first-person shooter game, Unreal, as well as its expansion pack
+		Return to Na Pali, released together as Unreal Gold.
+
+		Epic privately shared the engine sources with the community OldUnreal
+		team, who now maintain it and publish modern builds. Epic also, somewhat
+		informally, gave permission for OldUnreal to host a CD ISO of the game
+		for the community to download and play for free.
+
+		GamingOnLinux shared this news and confirmed it with Epic here:
+		https://www.gamingonlinux.com/2024/11/classic-unreal-tournament-and-unreal-now-easier-to-download-free-thanks-to-oldunreal/
+
+			"We can confirm that Unreal 1 and Unreal Tournament are available on
+			archive.org and people are free to independently link to and play
+			these versions."
+
+		Epic's web page for Unreal Tournament links to OldUnreal for downloads:
+		https://www.epicgames.com/unrealtournament
+
+		By default, this package will fetch that ISO from OldUnreal. If you do
+		not want to use OldUnreal's ISO, you also have the option to install
+		from CD, DVD, or GOG instead. Note that the game can no longer be
+		purchased from GOG or anywhere else. Epic even removed it from their own
+		store. Also note that the GOG edition lacks the French, German, Italian,
+		and Spanish sound files.
+	</longdescription>
+</pkgmetadata>

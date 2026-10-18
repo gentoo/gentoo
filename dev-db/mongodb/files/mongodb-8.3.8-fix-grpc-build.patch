@@ -1,0 +1,14 @@
+These include paths are invalid and crash the build process.
+
+diff '--color=auto' -ur a/src/third_party/grpc/dist/bazel/grpc_build_system.bzl b/src/third_party/grpc/dist/bazel/grpc_build_system.bzl
+--- a/src/third_party/grpc/dist/bazel/grpc_build_system.bzl	2026-06-15 18:37:04.000000000 -0400
++++ b/src/third_party/grpc/dist/bazel/grpc_build_system.bzl	2026-06-19 11:26:06.015089039 -0400
+@@ -179,8 +179,6 @@
+         linkopts = linkopts,
+         includes = [
+             include_prefix + "include",
+-            include_prefix + "src/core/ext/upb-gen",  # Once upb code-gen issue is resolved, remove this.
+-            include_prefix + "src/core/ext/upbdefs-gen",  # Once upb code-gen issue is resolved, remove this.
+         ],
+         alwayslink = alwayslink,
+         data = data,

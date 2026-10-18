@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_REQ_USE="xml(+)"
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 
 inherit gnome2 python-any-r1 vala virtualx
 
@@ -39,6 +39,11 @@ BDEPEND="
 PDEPEND="
 	net-im/telepathy-mission-control
 "
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.24.2-glib-tests.patch
+	"${FILESDIR}"/${PN}-0.24.2-c99.patch
+)
 
 src_configure() {
 	use vala && vala_setup

@@ -1,14 +1,14 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=9
 
 inherit git-r3 netsurf
 
 DESCRIPTION="implementation of the W3C DOM, written in C"
 HOMEPAGE="https://www.netsurf-browser.org/projects/libdom/"
 
-EGIT_REPO_URI="https://git.netsurf-browser.org/${PN}.git"
+EGIT_REPO_URI="git://git.netsurf-browser.org/${PN}.git"
 LICENSE="MIT"
 SLOT="0/${PV}"
 IUSE="expat test xml"

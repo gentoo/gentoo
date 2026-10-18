@@ -1,0 +1,75 @@
+Patch to unbundle dependencies to build in Gentoo.
+
+ - SHA3 -> externals/sha3 shipped in the tarball, built as a static library
+   with the same sources as the built-in externals build.
+ - JSON -> the system dev-cpp/nlohmann_json (the externals/json machinery is
+   only used with BUILTIN_EXTERNALS; without it no nlohmann_json target
+   would exist).  nlohmann_json is header-only but its C++ headers need the
+   C++ standard library, hence the C project type.
+ - Protobuf -> link the imported protobuf::libprotobuf-lite target instead of
+   the bare ${PROTOBUF_LITE_LIBRARY} path.  The imported target propagates
+   compile features from its dependencies (including absl), without
+   hardcoding a C++ standard in the ebuild.
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -443,7 +443,7 @@ if (BUILD_CVMFS OR BUILD_LIBCVMFS OR BUILD_SERVER OR BUILD_SERVER_DEBUG OR
+   find_package (ZLIB REQUIRED)
+   set (INCLUDE_DIRECTORIES ${INCLUDE_DIRECTORIES} ${ZLIB_INCLUDE_DIRS})
+ 
+-  find_package (SHA3 REQUIRED)
++  add_subdirectory(externals/sha3)
+   set (INCLUDE_DIRECTORIES ${INCLUDE_DIRECTORIES} ${SHA3_INCLUDE_DIRS})
+ endif ()
+ 
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -455,0 +457,2 @@ if (BUILD_CVMFS OR BUILD_LIBCVMFS OR BUILD_SERVER OR BUILD_SERVER_DEBUG OR
++
++  find_package (nlohmann_json REQUIRED)
++
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -498,5 +498,7 @@ if (BUILD_CVMFS OR BUILD_LIBCVMFS OR BUILD_LIBCVMFS_CACHE OR
+     BUILD_UNITTESTS OR BUILD_UNITTESTS_DEBUG OR BUILD_UBENCHMARKS OR
+     BUILD_SHRINKWRAP)
+   find_package(Protobuf REQUIRED)
++  find_package(protobuf CONFIG REQUIRED)
++  set(PROTOBUF_LITE_LIBRARY protobuf::libprotobuf-lite)
+   set (INCLUDE_DIRECTORIES ${INCLUDE_DIRECTORIES} ${PROTOBUF_INCLUDE_DIRS})
+ endif ()
+diff --git a/externals/sha3/CMakeLists.txt b/externals/sha3/CMakeLists.txt
+new file mode 100644
+--- /dev/null
++++ b/externals/sha3/CMakeLists.txt
+@@ -0,0 +1,21 @@
++project(SHA3 C CXX)
++
++# Gentoo: build the bundled Keccak/SHA3 code as a static library instead of
++# requiring a system SHA3 package (no such package exists in Gentoo).
++add_library(cvmfs_sha3 STATIC
++  src/64opt/KeccakF-1600-opt64.c
++  src/KeccakHash.c
++  src/KeccakSponge.c
++  src/SnP-FBWL-default.c
++)
++
++set_property(TARGET cvmfs_sha3 PROPERTY POSITION_INDEPENDENT_CODE TRUE)
++
++target_include_directories(cvmfs_sha3 PRIVATE
++  ${CMAKE_CURRENT_SOURCE_DIR}/src
++  ${CMAKE_CURRENT_SOURCE_DIR}/src/64opt
++)
++
++set(SHA3_LIBRARY $<TARGET_FILE:cvmfs_sha3> PARENT_SCOPE)
++set(SHA3_LIBRARIES cvmfs_sha3 PARENT_SCOPE)
++set(SHA3_INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/src ${CMAKE_CURRENT_SOURCE_DIR}/src/64opt PARENT_SCOPE)
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -455,0 +457,2 @@ if (BUILD_CVMFS OR BUILD_LIBCVMFS OR BUILD_SERVER OR BUILD_SERVER_DEBUG OR
++
++  find_package (nlohmann_json REQUIRED)

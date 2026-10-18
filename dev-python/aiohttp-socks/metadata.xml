@@ -7,7 +7,7 @@
   </maintainer>
   <stabilize-allarches/>
   <upstream>
-    <remote-id type="pypi">aiohttp-socks</remote-id>
+    <remote-id type="pypi">aiohttp_socks</remote-id>
     <remote-id type="github">romis2012/aiohttp-socks</remote-id>
   </upstream>
 </pkgmetadata>

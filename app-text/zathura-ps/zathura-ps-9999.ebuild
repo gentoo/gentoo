@@ -23,7 +23,7 @@ SLOT="0"
 RESTRICT="test"
 
 DEPEND="app-text/libspectre
-	>=app-text/zathura-2026.01.30
+	>=app-text/zathura-2026.07.18
 	dev-libs/girara:=
 	dev-libs/glib:2
 	x11-libs/cairo"

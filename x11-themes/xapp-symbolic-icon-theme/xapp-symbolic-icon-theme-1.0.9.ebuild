@@ -6,7 +6,7 @@ EAPI=8
 inherit meson xdg
 
 DESCRIPTION="XApp Symbolic Icons"
-HOMEPAGE="https://github.com/xapp-project/xapp-symbolic-icons/"
+HOMEPAGE="https://linuxmint-developer-guide.readthedocs.io/en/latest/xapps.html https://linuxmint.com/"
 
 SRC_URI="https://github.com/xapp-project/xapp-symbolic-icons/archive/${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/xapp-symbolic-icons-${PV}"

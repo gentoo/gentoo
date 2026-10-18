@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Interface around different compilers"
 
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
 	dev-perl/ExtUtils-Builder

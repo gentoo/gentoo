@@ -18,10 +18,12 @@ if [[ ${PV} == *"9999"* ]]; then
 	EGIT_REPO_URI="https://github.com/thepowersgang/mrustc.git"
 	SRC_URI="https://static.rust-lang.org/dist/rustc-${RUST_VERSION}-src.tar.xz"
 else
-	SRC_URI="https://github.com/thepowersgang/mrustc/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
+	MY_COMMIT="d85e86b199e2522d74bee19efa6ebf3af596270f"
+	SRC_URI="https://github.com/thepowersgang/mrustc/archive/${MY_COMMIT}.tar.gz -> ${P}.tar.gz
 		https://static.rust-lang.org/dist/rustc-${RUST_VERSION}-src.tar.xz
 	"
-	KEYWORDS="~amd64"
+	KEYWORDS="~amd64 ~arm64"
+	S="${WORKDIR}/${PN}-${MY_COMMIT}"
 fi
 
 LICENSE="MIT"
@@ -38,7 +40,7 @@ BDEPEND="sys-devel/gcc:*"
 PATCHES=(
 	"${FILESDIR}/${PN}-0.11.2-dont-strip-bins.patch"
 	"${FILESDIR}/${PN}-0.12.0-default-to-rust-1_90.patch"
-	"${FILESDIR}/${PN}-0.12.0-build-with-provided-rust.patch"
+	"${FILESDIR}/${PN}-20261018-build-with-provided-rust.patch"
 	"${FILESDIR}/${PN}-0.12.0-no-glibcxx-assertions-workaround.patch"
 )
 
@@ -49,9 +51,9 @@ if [[ ${PV} != *"9999"* ]]; then
 fi
 
 QA_FLAGS_IGNORED="
-	usr/lib/rust/${P}/bin/mrustc
-	usr/lib/rust/${P}/bin/minicargo
-	usr/lib/rust/${P}/lib/rustlib/$(rust_abi)/lib/*.rlib
+	usr/lib/rust/${P/_p*/}/bin/mrustc
+	usr/lib/rust/${P/_p*/}/bin/minicargo
+	usr/lib/rust/${P/_p*/}/lib/rustlib/$(rust_abi)/lib/*.rlib
 "
 
 src_unpack() {
@@ -99,13 +101,14 @@ src_test() {
 }
 
 src_install() {
+	local p=${P/_p*/}
 	# If we're installing into /usr/lib/rust we may as well be consistent
-	into /usr/lib/rust/${P}
+	into "/usr/lib/rust/${p}"
 	dobin bin/mrustc
 	dobin bin/minicargo
 	local lib patch
 	local libs=( "${S}"/output-*/*.rlib* )
-	insinto  "/usr/lib/rust/${P}/lib/rustlib/$(rust_abi)/lib"
+	insinto  "/usr/lib/rust/${p}/lib/rustlib/$(rust_abi)/lib"
 	# If we ever want to support mrustc stdlib for multiple rusts we'll need to
 	# do something more clever here.
 	for lib in "${libs[@]}"; do
@@ -115,9 +118,9 @@ src_install() {
 		fi
 	done
 	# For convenience, install files required to build various rusts
-	insinto /usr/share/${P}
+	insinto "/usr/share/${p}"
 	doins -r "${S}/script-overrides/"
-	insinto /usr/share/${P}/patches
+	insinto "/usr/share/${p}/patches"
 	for patch in "${S}"/rustc-*.patch "${S}"/rustc-*-overrides.toml; do
 		doins "${patch}"
 	done

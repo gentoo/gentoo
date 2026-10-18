@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
+	<maintainer type="project">
+		<email>codec@gentoo.org</email>
+		<name>Gentoo Codec Project</name>
+	</maintainer>
 	<use>
 	<flag name="aom">Use <pkg>media-libs/libaom</pkg> for AVIF encoding/decoding</flag>
 	<flag name="dav1d">Enable support for the dav1d codec decoding using <pkg>media-libs/dav1d</pkg></flag>
 	<flag name="de265">Enable H.265 support using <pkg>media-libs/libde265</pkg></flag>
 	<flag name="gdk-pixbuf">Enable <pkg>x11-libs/gdk-pixbuf</pkg> plugin</flag>
+	<flag name="geotiff">Print GeoTIFF metadata when encoding tiled TIFFs (requires <pkg>sci-libs/libgeotiff</pkg>)</flag>
 	<flag name="gui">Build heif-view (requires USE=tools)</flag>
 	<flag name="kvazaar">Enable H.265/HEVC encoding support via <pkg>media-libs/kvazaar</pkg></flag>
 	<flag name="openh264">Enable H.264 support using <pkg>media-libs/openh264</pkg></flag>

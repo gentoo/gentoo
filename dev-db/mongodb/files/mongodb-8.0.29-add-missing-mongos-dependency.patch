@@ -1,0 +1,14 @@
+mongos (at least as compiled by gcc) requires transaction_participant_resource_yielder.cpp
+which is defined by mongo_cc_library(name = "transaction" ...) in src/mongo/db/transaction/BUILD.bazel
+
+diff '--color=auto' -ur a/src/mongo/s/BUILD.bazel b/src/mongo/s/BUILD.bazel
+--- a/src/mongo/s/BUILD.bazel	2026-08-11 15:14:12.000000000 -0400
++++ b/src/mongo/s/BUILD.bazel	2026-08-27 13:58:47.829136136 -0400
+@@ -724,6 +724,7 @@
+         "//src/mongo/db/session:logical_session_cache_impl",
+         "//src/mongo/db/session:session_catalog",
+         "//src/mongo/db:startup_warnings_common",
++        "//src/mongo/db/transaction",
+         "//src/mongo/idl:cluster_server_parameter_refresher",
+         "//src/mongo/transport:ingress_handshake_metrics",
+         "//src/mongo/transport:service_executor",

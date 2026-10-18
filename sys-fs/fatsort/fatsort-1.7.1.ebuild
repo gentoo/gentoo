@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=9
+
 REV=683
 MY_P=${P}.${REV}
 

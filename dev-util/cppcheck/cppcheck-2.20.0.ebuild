@@ -12,7 +12,7 @@ SRC_URI="https://github.com/danmar/cppcheck/archive/refs/tags/${PV}.tar.gz -> ${
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm arm64 ~loong ppc64 ~riscv ~x86"
 IUSE="charts gui pcre test"
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
@@ -106,7 +106,7 @@ src_test() {
 		# https://github.com/danmar/cppcheck/pull/5462
 		TestFileLister
 	)
-	cmake_src_test
+	cmake_src_test -j1
 
 	rm test/cli/other_test.py || die
 	rm test/cli/lookup_test.py || die

@@ -1,0 +1,13 @@
+diff --git a/readme_renderer/__main__.py b/readme_renderer/__main__.py
+index da5444d..ddb139f 100644
+--- a/readme_renderer/__main__.py
++++ b/readme_renderer/__main__.py
+@@ -24,7 +24,7 @@ def main(cli_args: list[str] | None = None) -> None:
+     content_format = args.format
+     if args.package:
+         message = metadata(args.input)
+-        source = message.get_payload()  # type: ignore[attr-defined] # noqa: E501,RUF100 https://peps.python.org/pep-0566/
++        source = message.get("Description")
+ 
+         # Infer the format of the description from package metadata.
+         if not content_format:

@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -43,6 +43,11 @@ src_prepare() {
 		-i lib/src/Makefile MontageLib/Makefile || die
 
 	tc-export CC AR
+
+	# -Werror=lto-type-mismatch
+	# https://bugs.gentoo.org/965267
+	# https://github.com/Caltech-IPAC/Montage/issues/97
+	filter-lto
 
 	# bug #708396
 	append-cflags -fcommon

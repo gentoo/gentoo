@@ -50,7 +50,7 @@ DOCS=( CHANGELOG.md README.md )
 elisp-enable-tests buttercup ./test/specs/ -l ./flycheck.el -L . -L ./test/specs/
 
 src_prepare() {
-	rm -f -r ./test/spec/languages || die
+	rm -f -r ./test/specs/languages || die
 	elisp_src_prepare
 }
 

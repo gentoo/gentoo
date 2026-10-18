@@ -1,0 +1,28 @@
+[Unit]
+Description=Prometheus SNMP Exporter
+Documentation=https://github.com/prometheus/snmp_exporter
+After=network.target
+
+[Service]
+User=snmp_exporter
+Group=snmp_exporter
+ExecStart=/usr/bin/snmp_exporter --config.file=/etc/snmp_exporter/snmp.yml
+ExecReload=/bin/kill -HUP $MAINPID
+
+NoNewPrivileges=true
+ProtectSystem=full
+ProtectHome=true
+ProtectHostname=true
+ProtectKernelLogs=true
+ProtectKernelModules=true
+ProtectKernelTunables=true
+ProtectControlGroups=true
+PrivateTmp=true
+PrivateDevices=true
+LockPersonality=true
+MemoryDenyWriteExecute=true
+RestrictRealtime=true
+CapabilityBoundingSet=
+
+[Install]
+WantedBy=multi-user.target

@@ -2,6 +2,12 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<!-- maintainer-needed -->
+	<use>
+		<flag name="http">
+		Use <pkg>net-print/cups</pkg> to support CGI mode, HTTP/HTTPS,
+		and "data:" URI support.
+		</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">michaelrsweet/htmldoc</remote-id>
 	</upstream>

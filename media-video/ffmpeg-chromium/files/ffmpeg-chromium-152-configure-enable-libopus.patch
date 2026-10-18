@@ -1,0 +1,61 @@
+From 03a23253cba4f13b993cbd5c0bfed8c7dbe0faaa Mon Sep 17 00:00:00 2001
+From: Matt Jolly <kangie@gentoo.org>
+Date: Sat, 8 Aug 2026 09:50:12 +1000
+Subject: [PATCH] update chromium libopus patch for M152
+
+Signed-off-by: Matt Jolly <kangie@gentoo.org>
+--- a/configure
++++ b/configure
+@@ -7446,14 +7446,14 @@ enabled libopenvino       && { { check_pkg_config libopenvino openvino openvino/
+                                 { check_pkg_config libopenvino openvino c_api/ie_c_api.h ie_c_api_version ||
+                                   require libopenvino c_api/ie_c_api.h ie_c_api_version -linference_engine_c_api; } }
+ # Chromium uses a built in copy of libopus that is not visible to pkg-config.
+-# enabled libopus           && {
+-#     enabled libopus_decoder && {
+-#         require_pkg_config libopus opus opus_multistream.h opus_multistream_decoder_create
+-#     }
+-#     enabled libopus_encoder && {
+-#         require_pkg_config libopus opus opus_multistream.h opus_multistream_surround_encoder_create
+-#     }
+-# }
++enabled libopus           && {
++    enabled libopus_decoder && {
++        require_pkg_config libopus opus opus_multistream.h opus_multistream_decoder_create
++    }
++    enabled libopus_encoder && {
++        require_pkg_config libopus opus opus_multistream.h opus_multistream_surround_encoder_create
++    }
++}
+ enabled libplacebo        && require_pkg_config libplacebo "libplacebo >= 7.351.0" libplacebo/vulkan.h pl_vulkan_create
+ enabled libpulse          && require_pkg_config libpulse libpulse pulse/pulseaudio.h pa_context_new
+ enabled libqrencode       && require_pkg_config libqrencode libqrencode qrencode.h QRcode_encodeString
+--- /dev/null
++++ b/configure.rej
+@@ -0,0 +1,24 @@
++diff a/configure b/configure	(rejected hunks)
++@@ -7042,14 +7042,14 @@ enabled libopenvino       && { { check_pkg_config libopenvino openvino openvino/
++                                 { check_pkg_config libopenvino openvino c_api/ie_c_api.h ie_c_api_version ||
++                                   require libopenvino c_api/ie_c_api.h ie_c_api_version -linference_engine_c_api; } }
++ # Chromium uses a built in copy of libopus that is not visible to pkg-config.
++-# enabled libopus           && {
++-#     enabled libopus_decoder && {
++-#         require_pkg_config libopus opus opus_multistream.h opus_multistream_decoder_create
++-#     }
++-#     enabled libopus_encoder && {
++-#         require_pkg_config libopus opus opus_multistream.h opus_multistream_surround_encoder_create
++-#     }
++-# }
+++enabled libopus           && {
+++    enabled libopus_decoder && {
+++        require_pkg_config libopus opus opus_multistream.h opus_multistream_decoder_create
+++    }
+++    enabled libopus_encoder && {
+++        require_pkg_config libopus opus opus_multistream.h opus_multistream_surround_encoder_create
+++    }
+++}
++ enabled libplacebo        && require_pkg_config libplacebo "libplacebo >= 5.229.0" libplacebo/vulkan.h pl_vulkan_create
++ enabled libpulse          && require_pkg_config libpulse libpulse pulse/pulseaudio.h pa_context_new
++ enabled libqrencode       && require_pkg_config libqrencode libqrencode qrencode.h QRcode_encodeString
+-- 
+2.55.0
+

@@ -6,7 +6,7 @@ EAPI=8
 DISTUTILS_USE_PEP517=setuptools
 PYPI_VERIFY_REPO=https://github.com/pytest-dev/pytest
 PYTHON_TESTED=( python3_{12..15} python3_{14..15}t )
-PYTHON_COMPAT=( "${PYTHON_TESTED[@]}" )
+PYTHON_COMPAT=( "${PYTHON_TESTED[@]}" pypy3_12 )
 
 inherit distutils-r1 pypi
 

@@ -72,10 +72,6 @@ IDEPEND="app-eselect/eselect-zig"
 
 DOCS=( "README.md" "doc/build.zig.zon.md" )
 
-PATCHES=(
-	"${FILESDIR}/zig-9999-fix-install-prefix.patch"
-)
-
 # zig.eclass does not set this for us since we use ZIG_OPTIONAL=1
 QA_FLAGS_IGNORED="usr/.*/zig/${PV}/bin/zig"
 

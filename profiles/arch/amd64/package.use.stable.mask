@@ -83,7 +83,7 @@ dev-python/nbval -doc
 # AMDGPU enablement depends on dev-libs/rocr-runtime, ~amd64 only
 # See also: https://bugs.gentoo.org/891499
 llvm-runtimes/offload llvm_targets_AMDGPU
-llvm-runtimes/openmp llvm_targets_AMDGPU
+llvm-runtimes/openmp llvm_targets_AMDGPU rocm
 
 # Sam James <sam@gentoo.org> (2022-12-11)
 # net-libs/rustls-ffi is not yet marked stable

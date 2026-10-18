@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=9
 
-inherit edo elisp
+inherit elisp
 
 DESCRIPTION="Emacs Lisp Development Tool"
 HOMEPAGE="https://emacs-eldev.github.io/eldev/
@@ -11,12 +11,10 @@ HOMEPAGE="https://emacs-eldev.github.io/eldev/
 
 if [[ "${PV}" == *9999* ]] ; then
 	inherit git-r3
-
-	EGIT_REPO_URI="https://github.com/doublep/${PN}.git"
+	EGIT_REPO_URI="https://github.com/doublep/${PN}"
 else
 	SRC_URI="https://github.com/emacs-eldev/${PN}/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz"
-
 	KEYWORDS="~amd64 ~arm ~ppc64 ~riscv ~x86"
 fi
 
@@ -24,21 +22,19 @@ LICENSE="GPL-3+"
 SLOT="0"
 
 ELISP_REMOVE="
+	test/backtrace.el
 	test/doctor.el
 "
-
 DOCS=( README.adoc )
 SITEFILE="50${PN}-gentoo.el"
 
 src_test() {
 	local -x ELDEV_LOCAL="${S}"
-
 	edo "./bin/${PN}" test
 }
 
 src_install() {
 	elisp_src_install
-
 	exeinto /usr/bin
 	doexe "./bin/${PN}"
 
@@ -54,7 +50,6 @@ src_install() {
 
 pkg_postinst() {
 	elisp_pkg_postinst
-
 	ewarn "Remember to run \`env-update && source /etc/profile\` if you plan"
 	ewarn "to use Eldev in a shell before logging out (or restarting"
 	ewarn "your login manager)."

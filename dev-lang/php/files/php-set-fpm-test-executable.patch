@@ -1,0 +1,26 @@
+commit 37b570017659468c3b450067b0c4224b7849b395
+Author: Lothar Serra Mari <mail@serra.me>
+Date:   Thu Aug 6 14:07:33 2026 +0200
+
+    tests: Allow overriding TEST_PHP_EXECUTABLE for FPM SAPI
+    
+    The test suite derives the path to php-fpm from TEST_PHP_EXECUTABLE.
+    This fails on custom build directory layouts, leading to skipping all
+    php-fpm related tests.
+    
+    Users can provide TEST_PHP_FPM_EXECUTABLE for a custom binary path; if
+    this is unset, we'll fall back to TEST_PHP_EXECUTABLE instead.
+
+diff --git a/sapi/fpm/tests/tester.inc b/sapi/fpm/tests/tester.inc
+index 9079886543..557f8c25e1 100644
+--- a/sapi/fpm/tests/tester.inc
++++ b/sapi/fpm/tests/tester.inc
+@@ -225,7 +225,7 @@ class Tester
+      */
+     static public function findExecutable(): bool|string
+     {
+-        $phpPath = getenv("TEST_PHP_EXECUTABLE");
++        $phpPath = getenv("TEST_PHP_FPM_EXECUTABLE") ?: getenv("TEST_PHP_EXECUTABLE");
+         for ($i = 0; $i < 2; $i++) {
+             $slashPosition = strrpos($phpPath, "/");
+             if ($slashPosition) {

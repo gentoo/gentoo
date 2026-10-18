@@ -34,7 +34,7 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	sci-mathematics/clipper2
+	sci-mathematics/clipper2:=
 	assimp? ( media-libs/assimp:= )
 	tbb? ( dev-cpp/tbb:= )
 	python? ( ${PYTHON_DEPS}
@@ -60,9 +60,10 @@ pkg_setup() {
 src_configure() {
 	local mycmakeargs=(
 		-DMANIFOLD_CROSS_SECTION="yes"
+		-DMANIFOLD_CROSS_SECTION_BACKEND="clipper2" # boolean2
 		-DMANIFOLD_DEBUG="$(usex debug)"
 		-DMANIFOLD_DOWNLOADS="no"
-		-DMANIFOLD_EXPORT="$(usex assimp)"
+		-DASSIMP_ENABLE="$(usex assimp)"
 		-DMANIFOLD_JSBIND="no"
 		-DMANIFOLD_PAR="$(usex tbb ON OFF)"
 		-DMANIFOLD_STRICT="no" # adds -Werror

@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 DISTUTILS_SINGLE_IMPL=1
 DISTUTILS_EXT=1
 
@@ -163,6 +163,7 @@ BDEPEND="dev-build/cmake"
 PATCHES=(
 	"${FILESDIR}"/${P}-aotriton-fixes.patch
 	"${FILESDIR}"/${P}-glog.patch
+	"${FILESDIR}"/${P}-mimalloc.patch
 	"${FILESDIR}"/${P}-removekineto-pr178960.patch
 	"${FILESDIR}"/${P}-rocm-assert-fix.patch
 	"${FILESDIR}"/${P}-unbundle_fbgemm.patch
@@ -210,6 +211,13 @@ src_prepare() {
 
 	# Add needed file for cutlass as symbolic link
 	ln -sf /usr/share/cutlass/examples third_party/cutlass/examples || die
+
+	# cudnn_frontend is unbundled, but some targets still look for its
+	# headers under third_party/cudnn_frontend/include.
+	if use cuda; then
+		mkdir -p third_party/cudnn_frontend || die
+		ln -sf /usr/include third_party/cudnn_frontend/include || die
+	fi
 
 	distutils-r1_src_prepare
 
@@ -326,7 +334,7 @@ python_compile() {
 		addpredict "/dev/char/"
 
 		local -x CMAKE_CUDA_FLAGS="$(cuda_gccdir -f | tr -d \")"
-		local -x TORCH_CUDA_ARCH_LIST="${TORCH_CUDA_ARCH_LIST:7.0}"
+		local -x TORCH_CUDA_ARCH_LIST="${TORCH_CUDA_ARCH_LIST:-7.0}"
 		local -x USE_CUDNN=ON
 		local -x USE_FLASH_ATTENTION=OFF
 		local -x USE_MEM_EFF_ATTENTION=OFF

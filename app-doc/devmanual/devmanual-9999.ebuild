@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{11..15} )
 PYTHON_REQ_USE="xml(+)"
 inherit python-any-r1 readme.gentoo-r1
 
@@ -15,7 +15,7 @@ if [[ ${PV} == *9999 ]]; then
 	EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/devmanual.git"
 else
 	# "make dist" in devmanual repo
-	SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.tar.xz"
+	SRC_URI="https://distfiles.gentoo.org/pub/proj/qa/devmanual/${P}.tar.xz"
 	S="${WORKDIR}/${PN}"
 	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-macos"
 fi

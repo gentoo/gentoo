@@ -13,4 +13,4 @@ DESCRIPTION="OpenPGP keys used by наб (nabijaczleweli)"
 HOMEPAGE="https://nabijaczleweli.xyz/"
 SRC_URI+=" https://nabijaczleweli.xyz/pgp.txt -> ${P}-pgp.txt"
 
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~x64-macos"
+KEYWORDS="~alpha amd64 arm ~hppa ~mips ppc ppc64 ~s390 ~sparc x86 ~x64-macos"
