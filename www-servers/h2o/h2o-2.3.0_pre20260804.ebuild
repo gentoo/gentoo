@@ -17,7 +17,7 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.ta
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="brotli io-uring libh2o +mruby zstd"
 
 RDEPEND="acct-group/h2o
