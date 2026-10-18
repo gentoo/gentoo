@@ -20,7 +20,7 @@ else
 	SRC_URI="https://codeberg.org/mikf/${PN}/archive/v${PV}.tar.gz
 		-> ${P}.codeberg.tar.gz"
 	S="${WORKDIR}/${PN}"
-	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~x86"
+	KEYWORDS="amd64 arm arm64 ~hppa ppc ppc64 ~riscv x86"
 fi
 
 LICENSE="GPL-2"
