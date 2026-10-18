@@ -11,7 +11,7 @@ else
 	COMMIT=da0b64d8e2378c4bce16cbea6cac2ffc89ad1a4a
 	SRC_URI="https://github.com/${PN}/${PN}/archive/${COMMIT}.tar.gz -> ${P}-${COMMIT:0:8}.tar.gz"
 	S="${WORKDIR}/${PN}-${COMMIT}"
-	KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
+	KEYWORDS="amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
 fi
 
 inherit cmake linux-info pam systemd tmpfiles
