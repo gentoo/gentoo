@@ -25,7 +25,8 @@ SLOT="0"
 RDEPEND=">=app-editors/xemacs-21.5.35
 	app-xemacs/sh-script
 	app-xemacs/tty-format"
-BDEPEND="${RDEPEND}"
+BDEPEND="${RDEPEND}
+	sys-apps/texinfo"
 
 EMACS="${EPREFIX}/usr/bin/xemacs"
 EMACSFLAGS="-batch -q -no-site-file"
@@ -41,6 +42,8 @@ src_compile() {
 		-eval "(setq generated-autoload-file \"${S}/auto-autoloads.el\")" \
 		-l autoload -f batch-update-autoloads \
 		ebuild-mode.el gentoo-newsitem-mode.el || die
+
+	makeinfo --no-split ebuild-mode.texi || die
 }
 
 src_test() {
@@ -52,6 +55,12 @@ src_install() {
 	doins ebuild-mode.{el,elc} ebuild-mode-keywords.el \
 		gentoo-newsitem-mode.{el,elc} ebuild-mode-kw-gen.el \
 		auto-autoloads.el
+
+	insinto /usr/lib/xemacs/site-packages/info
+	doins ebuild-mode.info
+
+	docinto xemacs      # avoid file collisions with app-emacs/${PF}
+	dodoc README.org ChangeLog
 }
 
 pkg_postinst() {
