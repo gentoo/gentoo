@@ -56,17 +56,18 @@ BDEPEND="virtual/pkgconfig"
 
 src_prepare() {
 	mv texmf-dist texmf || die
+
 	default
-	cd "${S}/texmf/tex4ht/base/unix" || die
+
 	sed -i \
 		-e "s#~/tex4ht.dir#${EPREFIX}/usr/share#" \
 		-e "s#tpath/tex/texmf/fonts/tfm/!#t${EPREFIX}/usr/share/texmf-dist/fonts/tfm/!\nt${EPREFIX}/usr/local/share/texmf/fonts/tfm/!\nt${EPREFIX}/var/cache/fonts/tfm/!\nt${EPREFIX}${TEXMF}/fonts/tfm/!#" \
 		-e "s#%%~#${EPREFIX}${TEXMF}#g" \
-		tex4ht.env \
+		texmf/tex4ht/base/unix/tex4ht.env \
 		|| die "sed of tex4ht.env failed"
 
 	einfo "Removing precompiled java stuff"
-	rm "${S}/texmf/tex4ht/bin/tex4ht.jar"
+	rm texmf/tex4ht/bin/tex4ht.jar || die
 }
 
 src_compile() {
