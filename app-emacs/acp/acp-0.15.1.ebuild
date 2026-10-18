@@ -17,7 +17,7 @@ else
 	SRC_URI="https://github.com/xenodium/${PN}.el/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz"
 	S="${WORKDIR}/${PN}.el-${PV}"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 ~x86"
 fi
 
 LICENSE="GPL-3+"
