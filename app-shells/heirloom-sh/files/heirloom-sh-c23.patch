@@ -1,0 +1,50 @@
+https://bugs.gentoo.org/944352
+--- a/fault.c
++++ b/fault.c
+@@ -52,7 +52,7 @@
+ # endif
+ #endif
+ 
+-static	void (*psig0_func)() = SIG_ERR;	/* previous signal handler for signal 0 */
++static	void (*psig0_func)(int) = SIG_ERR;	/* previous signal handler for signal 0 */
+ static	char sigsegv_stack[SIGSTKSZ];
+ 
+ static BOOL sleeping = 0;
+@@ -98,7 +98,7 @@
+ };
+ 
+ void (*(
+-sigval[MAXTRAP]))() =
++sigval[MAXTRAP]))(int) =
+ {
+ 	0,
+ 	0,	/* 	done, 	   hangup */
+@@ -522,7 +522,7 @@
+ void 
+ init_sigval(void)
+ {
+-	extern void	(*(sigval[]))();
++	extern void	(*(sigval[]))(int);
+ 
+ #ifdef	SIGHUP
+ 	if (SIGHUP < MAXTRAP)
+@@ -566,7 +566,7 @@
+ #endif
+ #ifdef	SIGSEGV
+ 	if (SIGSEGV < MAXTRAP)
+-		sigval[SIGSEGV] = sigsegv;
++		sigval[SIGSEGV] = (void (*)(int))sigsegv;
+ #endif
+ #ifdef	SIGEMT
+ 	if (SIGEMT < MAXTRAP)
+--- heirloom-sh-050706/test.c.orig
++++ heirloom-sh-050706/test.c
+@@ -268,7 +268,7 @@
+ filtyp(const unsigned char *f, int field)
+ {
+ 	struct stat statb;
+-	int (*statf)() = (field == S_IFLNK) ? lstat : stat;
++	int (*statf)(const char *, struct stat *) = (field == S_IFLNK) ? lstat : stat;
+ 
+ 	if ((*statf)(f, &statb) < 0)
+ 		return(0);

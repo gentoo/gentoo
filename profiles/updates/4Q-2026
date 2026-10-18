@@ -1,0 +1,2 @@
+move app-backup/kup kde-plasma/kup
+slotmove kde-plasma/kup 0 6

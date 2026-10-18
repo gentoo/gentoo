@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -20,6 +20,7 @@ RDEPEND="
 	>=dev-perl/Cairo-1.80.0
 "
 DEPEND="
+	${RDEPEND}
 	x11-libs/cairo[glib]
 "
 BDEPEND="${RDEPEND}
@@ -27,6 +28,7 @@ BDEPEND="${RDEPEND}
 	>=dev-perl/ExtUtils-Depends-0.200.0
 	>=dev-perl/ExtUtils-PkgConfig-1.0.0
 "
+
 src_compile() {
 	mymake=(
 		"OPTIMIZE=${CFLAGS}"

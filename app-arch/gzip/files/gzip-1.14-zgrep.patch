@@ -1,0 +1,22 @@
+https://debbugs.gnu.org/80868
+
+From cd74dc30f8cc5814c7805c9cee52302b6d34d811 Mon Sep 17 00:00:00 2001
+From: Paul Eggert <eggert@cs.ucla.edu>
+Date: Mon, 20 Apr 2026 10:22:33 -0700
+Subject: [PATCH] zgrep: fix quoting typo
+
+* zgrep.in: Fix quoting typo in option parsing.
+Problem reported by Leenear (bug#80868).
+--- a/zgrep.in
++++ b/zgrep.in
+@@ -172,7 +172,7 @@ while test $# -ne 0; do
+   esac
+ 
+   case $option in
+-  (*\'?*)
++  (*\'*)
+     option=\'$(printf '%s\n' "$option" | LC_ALL=C sed "$escape");;
+   (*)
+     option="'$option'";;
+-- 
+2.51.0

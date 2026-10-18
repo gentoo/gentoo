@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..14} python3_14t )
+PYTHON_COMPAT=( python3_{10..14} python3_14t )
 DISTUTILS_EXT=1
 DISTUTILS_OPTIONAL=1
 DISTUTILS_USE_PEP517="setuptools"
@@ -49,7 +49,7 @@ CDEPEND="acct-group/xrootd
 	virtual/libcrypt:=
 	ceph? ( sys-cluster/ceph )
 	fuse? ( sys-fs/fuse:0= )
-	kerberos? ( virtual/krb5 )
+	kerberos? ( app-crypt/mit-krb5 )
 	libxml2? ( dev-libs/libxml2:2= )
 	macaroons? ( dev-libs/libmacaroons )
 	python? ( ${PYTHON_DEPS} )
@@ -63,11 +63,11 @@ BDEPEND="
 	python? (
 		${PYTHON_DEPS}
 		${DISTUTILS_DEPS}
-		test? ( >=dev-python/pytest-7.1.2[${PYTHON_USEDEP}] )
+		test? ( dev-python/pytest[${PYTHON_USEDEP}] )
 	)
 	test? (
+		app-misc/jq
 		dev-cpp/gtest
-		dev-util/cppunit
 	)
 "
 RDEPEND="${CDEPEND}

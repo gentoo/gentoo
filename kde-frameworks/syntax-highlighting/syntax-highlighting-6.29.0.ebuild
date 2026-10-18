@@ -11,7 +11,7 @@ inherit ecm frameworks.kde.org python-any-r1
 DESCRIPTION="Framework for syntax highlighting"
 
 LICENSE="MIT"
-KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 arm64 ~loong ~ppc64 ~riscv ~x86"
 IUSE=""
 
 # examples: dev-qt/qtbase[printsupport,widgets]

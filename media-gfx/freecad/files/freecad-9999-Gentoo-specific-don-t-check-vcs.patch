@@ -1,0 +1,29 @@
+From 6d08ec7f09ab47cc62d0ce20ad7bccd05b53f6cb Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+Date: Tue, 15 Sep 2026 14:33:04 +0200
+Subject: Gentoo specific don't check vcs
+
+We know the version. No need to check the source.
+
+Signed-off-by: Paul Zander <negril.nx+gentoo@gmail.com>
+
+diff --git a/src/Tools/SubWCRev.py b/src/Tools/SubWCRev.py
+index 45088371fb..0cb03b9a5d 100644
+--- a/src/Tools/SubWCRev.py
++++ b/src/Tools/SubWCRev.py
+@@ -516,12 +516,6 @@ def main():
+             bindir = a
+ 
+     vcs = [
+-        GitControl(),
+-        DebianGitHub(),
+-        BazaarControl(),
+-        Subversion(),
+-        MercurialControl(),
+-        DebianChangelog(),
+         UnknownControl(),
+     ]
+     for i in vcs:
+-- 
+2.55.0
+

@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Utilities related to prime numbers and factoring, using GMP"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 RDEPEND="
 	dev-libs/gmp:=

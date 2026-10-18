@@ -4,7 +4,7 @@
 EAPI=8
 
 MY_PN=Vulkan-Tools
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 inherit cmake-multilib python-any-r1
 
 if [[ ${PV} == *9999* ]]; then
@@ -13,7 +13,7 @@ if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/KhronosGroup/${MY_PN}/archive/vulkan-sdk-${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv"
+	KEYWORDS="amd64 arm arm64 ~loong ppc ppc64 ~riscv"
 	S="${WORKDIR}"/${MY_PN}-vulkan-sdk-${PV}
 fi
 
@@ -41,6 +41,10 @@ DEPEND="${RDEPEND}
 	X? ( x11-libs/libXrandr[${MULTILIB_USEDEP}] )
 	test? ( ~media-libs/vulkan-loader-${PV}[${MULTILIB_USEDEP},wayland?,X?] )
 "
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.4.357.0-libcxx-23.patch
+)
 
 pkg_setup() {
 	MULTILIB_CHOST_TOOLS=(

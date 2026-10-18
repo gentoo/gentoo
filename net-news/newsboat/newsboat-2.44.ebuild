@@ -18,7 +18,7 @@ LICENSE="Apache-2.0 Boost-1.0 CC-BY-4.0 MIT"
 # Dependent crate licenses
 LICENSE+=" Apache-2.0 CC0-1.0 MIT Unicode-3.0 ZLIB"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc64 x86"
 IUSE="doc"
 
 COMMON_DEPEND="

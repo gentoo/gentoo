@@ -28,7 +28,7 @@ DEPEND="
 	>=xfce-base/libxfce4ui-4.21.8:=
 	>=xfce-base/libxfce4util-4.17.2:=
 	>=xfce-base/xfconf-4.12.0:=
-	exif? ( >=media-libs/gexiv2-0.14.0 )
+	exif? ( >=media-libs/gexiv2-0.14.0:0 )
 	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 	libcanberra? ( >=media-libs/libcanberra-0.30 )
 	libnotify? ( >=x11-libs/libnotify-0.7.0 )

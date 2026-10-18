@@ -83,6 +83,9 @@
 		<flag name="surface">
 			Build the surface module and workbench
 		</flag>
+		<flag name="tbb">
+			Enable multithreading with the Intel Threads Building Block <pkg>dev-cpp/tbb</pkg>
+		</flag>
 		<flag name="techdraw">
 			Build the techdraw module and workbench, a more advanced and 
 			feature-rich successor of the drawing workbench

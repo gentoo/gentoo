@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Module for reading .ini-style configuration files"
 
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc ~x86"
+KEYWORDS="amd64 ~arm64 ppc x86"
 
 # needs List::Util and Scalar::Util
 RDEPEND="

@@ -11,7 +11,6 @@
 <description>Upstream - please CC on bugs that concern upstream</description>
 </maintainer>
 <use>
-<flag name="verbose-debug">Enable verbose debug messages</flag>
 <flag name="lfa-flags">Enable processing of Linux chattr(1) flags</flag>
 <flag name="projid">Enable processing of XFS-style project id</flag>
 </use>

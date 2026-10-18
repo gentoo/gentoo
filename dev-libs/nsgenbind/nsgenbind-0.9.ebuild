@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,7 +6,7 @@ EAPI=8
 inherit netsurf
 
 DESCRIPTION="Generate Javascript-to-DOM bindings from w3c webidl files"
-HOMEPAGE="http://www.netsurf-browser.org/"
+HOMEPAGE="https://www.netsurf-browser.org/"
 SRC_URI="https://download.netsurf-browser.org/libs/releases/${P}-src.tar.gz"
 
 LICENSE="MIT"

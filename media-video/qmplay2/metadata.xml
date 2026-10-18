@@ -20,7 +20,6 @@
 		<flag name="libopenmpt">Build with OpenMPT support</flag>
 		<flag name="notifications">Build additional notifications module</flag>
 		<flag name="pipewire">Build with PipeWire support</flag>
-		<flag name="shaders">Compile Vulkan shaders using <pkg>media-libs/shaderc</pkg></flag>
 		<flag name="videofilters">Build with VideoFilters module</flag>
 		<flag name="visualizations">Build with Visualizations module</flag>
 	</use>

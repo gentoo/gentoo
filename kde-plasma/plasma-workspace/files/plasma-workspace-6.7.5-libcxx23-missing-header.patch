@@ -1,0 +1,29 @@
+From 010006ac4771c24b3cac1b76cb133330d0afacda Mon Sep 17 00:00:00 2001
+From: Kostadin Shishmanov <kostadinshishmanov@protonmail.com>
+Date: Fri, 4 Sep 2026 15:39:22 +0300
+Subject: [PATCH] Add missing <vector> include
+
+cursortheme.h uses std::vector but doesn't include <vector> which
+causes a build failure with libc++ 23 since it's dropping such
+transitive includes.
+
+Signed-off-by: Kostadin Shishmanov <kostadinshishmanov@protonmail.com>
+---
+ kcms/cursortheme/xcursor/cursortheme.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/kcms/cursortheme/xcursor/cursortheme.h b/kcms/cursortheme/xcursor/cursortheme.h
+index 7e971a5139..e76116019f 100644
+--- a/kcms/cursortheme/xcursor/cursortheme.h
++++ b/kcms/cursortheme/xcursor/cursortheme.h
+@@ -11,6 +11,7 @@
+ 
+ #include <chrono>
+ #include <optional>
++#include <vector>
+ 
+ /**
+  * This is the abstract base class for all cursor themes stored in a
+-- 
+GitLab
+

@@ -295,6 +295,7 @@ perl-module_src_configure() {
 		fi
 
 		set -- \
+			--prefix "${EPREFIX}"/usr \
 			--installdirs=vendor \
 			--libdoc= \
 			--create_packlist=1 \

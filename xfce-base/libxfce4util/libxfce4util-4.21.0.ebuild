@@ -1,0 +1,42 @@
+# Copyright 1999-2026 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=8
+
+inherit meson vala
+
+DESCRIPTION="A basic utility library for the Xfce desktop environment"
+HOMEPAGE="
+	https://docs.xfce.org/xfce/libxfce4util/start
+	https://gitlab.xfce.org/xfce/libxfce4util/
+"
+SRC_URI="https://archive.xfce.org/src/xfce/${PN}/${PV%.*}/${P}.tar.xz"
+
+LICENSE="LGPL-2+ GPL-2+"
+SLOT="0/7"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~x64-solaris"
+IUSE="+introspection vala"
+REQUIRED_USE="vala? ( introspection )"
+
+DEPEND="
+	>=dev-libs/glib-2.72.0
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
+"
+RDEPEND="
+	${DEPEND}
+"
+BDEPEND="
+	>=sys-devel/gettext-0.19.8
+	virtual/pkgconfig
+	vala? ( $(vala_depend) )
+"
+
+src_configure() {
+	local emesonargs=(
+		$(meson_use introspection)
+		$(meson_feature vala)
+	)
+
+	use vala && vala_setup
+	meson_src_configure
+}

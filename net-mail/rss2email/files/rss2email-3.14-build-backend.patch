@@ -1,0 +1,41 @@
+From 183a17aefe4eb66f898cf088519b1e845559f2bd Mon Sep 17 00:00:00 2001
+From: "Daniel M. Capella" <polyzen@archlinux.org>
+Date: Sun, 23 Oct 2022 20:06:25 -0400
+Subject: [PATCH] Use poetry-core as build-backend
+
+From https://archlinux.org/todo/use-correct-pep517-build-system/:
+
+> The build environments in use for the various PEP517 capable tooling
+> (e.g. flit, pdm, poetry) are not part of the respective tooling (but
+> each tooling require theirs).
+>
+> Updating Python will become a more complex task in the future, as we
+> have to bootstrap the respective PEP517 backends. To not also bootstrap
+> the respective PEP517 capable tooling, please make sure to only use
+> their respective backend in makedepends:
+>
+> python-flit -> python-flit-core
+> python-poetry -> python-poetry-core
+> python-pdm -> python-pdm-pep517
+>
+> In case this is wrongly stated in the upstream pyproject.toml, make
+> sure to supply a fix to upstream.
+---
+ pyproject.toml | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index 6a14265c..b670947e 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -14,8 +14,8 @@ html2text = ">=2020.1.16"
+ update-copyright = ">=0.6.2"
+ 
+ [build-system]
+-requires = ["poetry>=0.12"]
+-build-backend = "poetry.masonry.api"
++requires = ["poetry-core>=1.0.0"]
++build-backend = "poetry.core.masonry.api"
+ 
+ [tool.poetry.scripts]
+ r2e = "rss2email.main:run"

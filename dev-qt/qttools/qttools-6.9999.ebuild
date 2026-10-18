@@ -3,7 +3,8 @@
 
 EAPI=8
 
-# match QDOC_SUPPORTED_CLANG_VERSIONS in src/qdoc/cmake/QDocConfiguration.cmake
+# see QDOC_SUPPORTED_CLANG_VERSIONS in src/qdoc/cmake/QDocConfiguration.cmake
+# for officially supported versions, but newer may work
 LLVM_COMPAT=( {17..22} )
 LLVM_OPTIONAL=1
 
@@ -64,6 +65,10 @@ DEPEND="
 		vulkan? ( dev-util/vulkan-headers )
 	)
 "
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-6.12.0-litehtml-no-unity.patch
+)
 
 src_prepare() {
 	qt6-build_src_prepare

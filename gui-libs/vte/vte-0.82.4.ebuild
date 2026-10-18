@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+
 PYTHON_COMPAT=( python3_{12..14} )
 
 inherit flag-o-matic gnome.org meson python-any-r1 vala xdg
@@ -13,7 +14,7 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/vte"
 LICENSE="LGPL-3+ GPL-3+"
 SLOT="2.91-gtk4" # vte_api_version + "-gtk4" in meson.build
 
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="amd64 ~arm arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
 IUSE="X +crypt debug gtk-doc +icu +introspection systemd +vala wayland"
 REQUIRED_USE="
 	gtk-doc? ( introspection )
@@ -63,6 +64,10 @@ src_prepare() {
 }
 
 src_configure() {
+	# Upstream build w/ -fno-strict-aliasing but >= GCC 17 makes
+	# -Werror=strict-aliasing (set by the user here) effective even with
+	# that, so disable both rather than just the error to be safe.
+	append-flags $(test-flags-CC -fno-strict-aliasing -Wno-error=strict-aliasing)
 	# Upstream don't support LTO & error out on it in meson.build (bug #926156)
 	filter-lto
 

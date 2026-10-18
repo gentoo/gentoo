@@ -1,0 +1,17 @@
+https://github.com/WayfireWM/wf-shell/commit/65a32eb299a3f2e74ffd1d5c88d96dc9d0bbf498
+https://bugs.gentoo.org/984306
+
+From 65a32eb299a3f2e74ffd1d5c88d96dc9d0bbf498 Mon Sep 17 00:00:00 2001
+From: Chris Mayo <aklhfex@gmail.com>
+Date: Sat, 12 Sep 2026 17:15:14 +0100
+Subject: [PATCH] panel: remove unused pulseaudio include from brightness
+
+--- a/src/panel/widgets/brightness/brightness.cpp
++++ b/src/panel/widgets/brightness/brightness.cpp
+@@ -1,6 +1,5 @@
+ #include <gdkmm/monitor.h>
+ #include <memory>
+-#include <pulse/proplist.h>
+ #include <wayland-client-core.h>
+ #include <wayland-client-protocol.h>
+ 

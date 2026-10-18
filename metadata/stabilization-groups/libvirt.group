@@ -1,4 +1,5 @@
 app-emulation/libvirt
 app-emulation/libvirt-glib
+app-emacs/nxml-libvirt-schemas
 dev-perl/Sys-Virt
 dev-python/libvirt-python

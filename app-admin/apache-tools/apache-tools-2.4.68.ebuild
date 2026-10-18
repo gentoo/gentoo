@@ -3,11 +3,15 @@
 
 EAPI=8
 
-inherit autotools toolchain-funcs
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/apache-httpd.asc
+inherit autotools toolchain-funcs verify-sig
 
 DESCRIPTION="Useful Apache tools - htdigest, htpasswd, ab, htdbm"
 HOMEPAGE="https://httpd.apache.org/"
-SRC_URI="mirror://apache/httpd/httpd-${PV}.tar.bz2"
+SRC_URI="
+	mirror://apache/httpd/httpd-${PV}.tar.bz2
+	verify-sig? ( mirror://apache/httpd/httpd-${PV}.tar.bz2.asc )
+"
 S="${WORKDIR}/httpd-${PV}"
 
 LICENSE="Apache-2.0"
@@ -15,17 +19,22 @@ SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~x64-macos ~x64-solaris"
 IUSE="ssl"
 
-RDEPEND=">=dev-libs/apr-1.5.0:1=
+RDEPEND="
+	>=dev-libs/apr-1.5.0:1=
 	dev-libs/apr-util:1=
 	dev-libs/expat
 	dev-libs/libpcre2
 	virtual/libcrypt:=
 	kernel_linux? ( sys-apps/util-linux )
-	ssl? ( dev-libs/openssl:0= )"
-DEPEND="${RDEPEND}
-	dev-build/libtool"
+	ssl? ( dev-libs/openssl:= )
+"
+DEPEND="
+	${RDEPEND}
+	dev-build/libtool
+"
 BDEPEND="
 	virtual/pkgconfig
+	verify-sig? ( sec-keys/openpgp-keys-apache-httpd )
 "
 
 RESTRICT="test"
@@ -76,7 +85,7 @@ src_configure() {
 		--without-pcre
 		--with-pcre2="${T}"/pcre2-config
 		$(use_enable ssl)
-		$(usex ssl '--with-ssl="${EPREFIX}"/usr' '')
+		$(use_with ssl ssl "${EPREFIX}"/usr)
 	)
 
 	# econf overwrites the stuff from config.layout.

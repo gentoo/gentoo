@@ -1,10 +1,10 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..14} )
-inherit cmake-multilib flag-o-matic multiprocessing python-any-r1
+PYTHON_COMPAT=( python3_{12..15} )
+inherit cmake-multilib edo flag-o-matic multiprocessing python-any-r1
 
 if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
@@ -14,9 +14,9 @@ else
 	# chromium-tools.git/generate-libaom-test-tarball.sh
 	SRC_URI="
 		https://storage.googleapis.com/aom-releases/${P}.tar.gz
-		test? ( https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-testdata.tar.xz )
+		test? ( https://gitlab.com/api/v4/projects/32909921/packages/generic/${PN}/${PV}/${P}-testdata.tar.xz )
 	"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
+	KEYWORDS="~amd64 ~arm64"
 fi
 
 DESCRIPTION="Alliance for Open Media AV1 Codec SDK"
@@ -41,6 +41,7 @@ BDEPEND="${PYTHON_DEPS}
 	abi_x86_64? ( dev-lang/yasm )
 	abi_x86_x32? ( dev-lang/yasm )
 	doc? ( app-text/doxygen )
+	test? ( dev-util/gtest-parallel )
 "
 
 # The PATENTS file is required to be distributed with this package, bug #682214
@@ -48,8 +49,8 @@ DOCS=( PATENTS )
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.4.0-posix-c-source-ftello.patch
-	"${FILESDIR}"/${PN}-3.7.0-allow-fortify-source.patch
-	"${FILESDIR}"/${PN}-3.8.1-tests-parallel.patch
+	"${FILESDIR}"/${PN}-3.14.1-allow-fortify-source.patch
+	"${FILESDIR}"/${PN}-3.14.1-dont-install-static.patch
 )
 
 src_prepare() {
@@ -131,9 +132,6 @@ multilib_src_configure() {
 		)
 	fi
 
-	# LIBAOM_TEST_PROCS is added by our tests-parallel.patch
-	export LIBAOM_TEST_PROCS="$(makeopts_jobs)"
-
 	cmake_src_configure
 }
 
@@ -141,7 +139,8 @@ multilib_src_test() {
 	einfo "Running quiet tests which take hours."
 	# We use ninja rather than test_libaom directly so we can run it in parallel
 	# with sharding, see https://aomedia.googlesource.com/aom/#sharded-testing.
-	LIBAOM_TEST_DATA_PATH="${WORKDIR}/${P}-testdata" eninja -C "${BUILD_DIR}" runtests
+	local -x LIBAOM_TEST_DATA_PATH="${WORKDIR}/${P}-testdata"
+	edo gtest-parallel --workers "$(get_makeopts_jobs)" "${BUILD_DIR}"/test_libaom
 }
 
 multilib_src_install() {
@@ -150,8 +149,4 @@ multilib_src_install() {
 	fi
 
 	cmake_src_install
-}
-
-multilib_src_install_all() {
-	find "${ED}" -type f \( -name "*.a" -o -name "*.la" \) -delete || die
 }

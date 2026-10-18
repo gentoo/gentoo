@@ -6,7 +6,7 @@ EAPI=8
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=poetry
 # TODO: freethreading compatible
-PYTHON_COMPAT=( python3_{12..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 
 inherit distutils-r1 virtualx
 
@@ -23,8 +23,10 @@ SRC_URI="
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 ~riscv"
+IUSE="+native-extensions"
 
 BDEPEND="
+	<dev-python/cython-3.3[${PYTHON_USEDEP}]
 	>=dev-python/cython-3[${PYTHON_USEDEP}]
 	>=dev-python/setuptools-65.4.1[${PYTHON_USEDEP}]
 	test? (
@@ -37,7 +39,12 @@ BDEPEND="
 EPYTEST_PLUGINS=( pytest-{asyncio,timeout} )
 distutils_enable_tests pytest
 
-export REQUIRE_CYTHON=1
+src_configure() {
+	export REQUIRE_CYTHON=1
+	if ! use native-extensions; then
+		export SKIP_CYTHON=1
+	fi
+}
 
 src_test() {
 	local dbus_params=(

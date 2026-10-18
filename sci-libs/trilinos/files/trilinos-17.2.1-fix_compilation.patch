@@ -1,0 +1,22 @@
+diff --git a/packages/shylu/shylu_node/basker/src/shylubasker_order_scotch.hpp b/packages/shylu/shylu_node/basker/src/shylubasker_order_scotch.hpp
+--- a/packages/shylu/shylu_node/basker/src/shylubasker_order_scotch.hpp
++++ b/packages/shylu/shylu_node/basker/src/shylubasker_order_scotch.hpp
+@@ -1207,6 +1207,9 @@
+     #if !defined(HAVE_SHYLU_NODEBASKER_SCOTCH)
+     BASKER_ASSERT(false, ">> BASKER ASSERT: Scotch is not enabled <<");
+     #else
++    Int num_levels = num_domains;
++    Int num_doms   = pow(2.0, (double)(num_levels+1)) - 1;
++
+     //----------------------INIT Scotch Graph------------//
+     sg.Ap = (graph_integral_type *)malloc((sg.m+1)     *sizeof(graph_integral_type));
+     sg.Ai = (graph_integral_type *)malloc((M.nnz)      *sizeof(graph_integral_type));
+@@ -1222,7 +1225,7 @@
+       {
+         if(M.row_idx(k) != i)
+         {
+-          BASKER_ASSERT(sptr < M.nnz);
++          // BASKER_ASSERT(sptr < M.nnz);
+           sg.Ai[sptr++] = M.row_idx(k);
+           sj++;
+         }

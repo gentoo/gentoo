@@ -16,7 +16,7 @@ else
 		https://ffado.org/files/${PN}-${PV%_p*}.tgz
 		mirror://debian/pool/main/libf/libffado/${PN}_${PV/_p/-}.debian.tar.xz
 	"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
+	KEYWORDS="~alpha amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv x86"
 	S="${WORKDIR}/${PN}-${PV%_p*}"
 fi
 

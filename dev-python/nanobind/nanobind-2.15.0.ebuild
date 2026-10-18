@@ -20,7 +20,7 @@ SRC_URI="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~s390 ~x86"
+KEYWORDS="~alpha amd64 ~arm arm64 ~ppc ppc64 ~riscv ~s390 ~x86"
 
 DEPEND="
 	>=dev-cpp/robin-map-1.3.0
@@ -28,6 +28,11 @@ DEPEND="
 RDEPEND="
 	${DEPEND}
 "
+
+PATCHES=(
+	# https://github.com/wjakob/nanobind/commit/942e75d927e3884e56d607e77c026bb4a72a4763
+	"${FILESDIR}/${PN}-cstdio.patch"
+)
 
 EPYTEST_PLUGINS=()
 EPYTEST_XDIST=1

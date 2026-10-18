@@ -1,6 +1,22 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Joonas Niilola <juippis@gentoo.org> (2026-09-01)
+# Force 'jumbo-build' on, as 155.0 doesn't build without it.
+# '-jumbo-build' is often broken, it's untested by upstream and Gentoo
+# Firefox packagers.
+# Report bugs directly to upstream if you want '-jumbo-build', or
+# "non-unified build" to work.
+# Extended to firefox-153esr, bug #982610. TB-153esr doesn't have
+# 'jumbo-build' use flag.
+>=www-client/firefox-153.0 jumbo-build
+>=mail-client/thunderbird-155.0 jumbo-build
+
+# Matt Jolly <kangie@gentoo.org> (2026-08-19)
+# Upstream has a faulty mold dependency with -official and
+# the version we need isn't stable yet; Bug #980645
+=www-client/chromium-151* official
+
 # James Le Cuirot <chewi@gentoo.org> (2026-08-09)
 # Requires FFmpeg 9.0, which isn't keyworded yet, so force Chromium fork.
 >=dev-libs/nwjs-0.114.0 ffmpeg-chromium
@@ -107,6 +123,10 @@ llvm-runtimes/libcxxabi clang
 #    echo "dev-lang/rust:${slot} llvm_slot_${_RUST_LLVM_MAP[${slot}]}"
 #    echo "dev-lang/rust-bin:${slot} llvm_slot_${_RUST_LLVM_MAP[${slot}]}"
 # done
+dev-lang/rust:1.99.0 llvm_slot_23
+dev-lang/rust-bin:1.99.0 llvm_slot_23
+dev-lang/rust:1.98.1 llvm_slot_22
+dev-lang/rust-bin:1.98.1 llvm_slot_22
 dev-lang/rust:1.97.1 llvm_slot_22
 dev-lang/rust-bin:1.97.1 llvm_slot_22
 dev-lang/rust:1.96.1 llvm_slot_22
@@ -125,42 +145,6 @@ dev-lang/rust:1.91.0 llvm_slot_21
 dev-lang/rust-bin:1.91.0 llvm_slot_21
 dev-lang/rust:1.90.0 llvm_slot_20
 dev-lang/rust-bin:1.90.0 llvm_slot_20
-dev-lang/rust:1.89.0 llvm_slot_20
-dev-lang/rust-bin:1.89.0 llvm_slot_20
-dev-lang/rust:1.88.0 llvm_slot_20
-dev-lang/rust-bin:1.88.0 llvm_slot_20
-dev-lang/rust:1.87.0 llvm_slot_20
-dev-lang/rust-bin:1.87.0 llvm_slot_20
-dev-lang/rust:1.86.0 llvm_slot_19
-dev-lang/rust-bin:1.86.0 llvm_slot_19
-dev-lang/rust:1.85.1 llvm_slot_19
-dev-lang/rust-bin:1.85.1 llvm_slot_19
-dev-lang/rust:1.85.0 llvm_slot_19
-dev-lang/rust-bin:1.85.0 llvm_slot_19
-dev-lang/rust:1.84.1 llvm_slot_19
-dev-lang/rust-bin:1.84.1 llvm_slot_19
-dev-lang/rust:1.84.0 llvm_slot_19
-dev-lang/rust-bin:1.84.0 llvm_slot_19
-dev-lang/rust:1.83.0 llvm_slot_19
-dev-lang/rust-bin:1.83.0 llvm_slot_19
-dev-lang/rust:1.82.0 llvm_slot_19
-dev-lang/rust-bin:1.82.0 llvm_slot_19
-dev-lang/rust:1.81.0 llvm_slot_18
-dev-lang/rust-bin:1.81.0 llvm_slot_18
-dev-lang/rust:1.80.1 llvm_slot_18
-dev-lang/rust-bin:1.80.1 llvm_slot_18
-dev-lang/rust:1.79.0 llvm_slot_18
-dev-lang/rust-bin:1.79.0 llvm_slot_18
-dev-lang/rust:1.78.0 llvm_slot_18
-dev-lang/rust-bin:1.78.0 llvm_slot_18
-dev-lang/rust:1.77.1 llvm_slot_17
-dev-lang/rust-bin:1.77.1 llvm_slot_17
-dev-lang/rust:1.76.0 llvm_slot_17
-dev-lang/rust-bin:1.76.0 llvm_slot_17
-dev-lang/rust:1.75.0 llvm_slot_17
-dev-lang/rust-bin:1.75.0 llvm_slot_17
-dev-lang/rust:1.74.1 llvm_slot_17
-dev-lang/rust-bin:1.74.1 llvm_slot_17
 
 # Sam James <sam@gentoo.org> (2024-06-03)
 # Poor rendering performance otherwise (bug #931215).
@@ -464,6 +448,7 @@ app-shells/bash:0 readline
 # Michał Górny <mgorny@gentoo.org> (2012-10-14)
 # Force-enable all PYTHON_TARGETS for python-exec to avoid using private
 # API. Please remember to keep it in sync with python_targets.desc.
+dev-lang/python-exec python_targets_pypy3_12
 dev-lang/python-exec python_targets_python3_12
 dev-lang/python-exec python_targets_python3_13
 dev-lang/python-exec python_targets_python3_14

@@ -27,6 +27,7 @@ DEPEND="
 	console? ( dev-libs/libedit )
 	mariadb? ( dev-db/mariadb-connector-c:= )
 	mysql? ( dev-db/mysql-connector-c:= )
+	opentelemetry? ( dev-libs/protobuf:=[protoc] )
 	postgres? ( dev-db/postgresql:= )
 	dev-libs/yajl:=
 	acct-user/icinga

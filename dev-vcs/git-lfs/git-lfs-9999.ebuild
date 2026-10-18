@@ -1,4 +1,4 @@
-# Copyright 2017-2025 Gentoo Authors
+# Copyright 2017-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,25 +18,17 @@ if [[ "${PV}" = 9999* ]]; then
 	EGIT_REPO_URI="https://${EGO_PN}"
 	inherit git-r3
 else
-	SRC_URI="https://${EGO_PN}/releases/download/v${PV}/${PN}-v${PV}.tar.gz -> ${P}.tar.gz"
-	# Add the manually vendored tarball.
-	# 1) Create a tar archive optimized to reproduced by other users or devs.
-	# 2) Compress the archive using XZ limiting decompression memory for
-	#    pretty constraint systems.
-	# Use something like:
-	# GOMODCACHE="${PWD}"/go-mod go mod download -modcacherw
-	# tar cf "${P}-deps.tar" go-mod \
-	#	--mtime="1970-01-01" --sort=name --owner=portage --group=portage
-	# xz -k -9eT0 --memlimit-decompress=256M "${P}-deps.tar"
-	SRC_URI+=" https://files.holgersson.xyz/gentoo/distfiles/golang-pkg-deps/${P}-deps.tar.xz"
+	SRC_URI="https://${EGO_PN}/releases/download/v${PV}/${PN}-vendor-v${PV}.tar.gz -> ${P}.tar.gz"
 fi
 
 LICENSE="Apache-2.0 BSD BSD-2 BSD-4 ISC MIT"
 SLOT="0"
 # KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
+
 IUSE="doc test"
 
 BDEPEND="
+	>=dev-lang/go-1.25.0
 	doc? ( dev-ruby/asciidoctor )
 "
 RDEPEND="dev-vcs/git"

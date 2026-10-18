@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
@@ -43,6 +43,8 @@ src_prepare() {
 
 	# bug #255813
 	sed -i "/^docdir/s:/doc/migemo:/share/doc/${PF}:" compile/config.mk.in || die
+	# bug #940698
+	sed -i "s/which /command -v /" configure || die
 }
 
 src_compile() {

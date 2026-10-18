@@ -1,0 +1,332 @@
+From f8d988624b8a848110596e5377a1543893872b52 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Tin=20=C5=A0vagelj?= <tin.svagelj@live.com>
+Date: Mon, 22 Jun 2026 07:18:18 +0200
+Subject: [PATCH] fix: add missing x11.h imports
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Also simplified some code by removing noisy BUILD_XDBE preprocessor guards
+that have identical branches.
+
+Fixes #2408.
+
+Signed-off-by: Tin Švagelj <tin.svagelj@live.com>
+---
+ src/conky.cc              |  9 +------
+ src/lua/x11-settings.h    |  6 +----
+ src/output/display-x11.cc | 50 ++++++++++-----------------------------
+ src/output/display-x11.hh |  9 ++-----
+ src/output/x11.cc         | 18 +++++---------
+ src/output/x11.h          | 38 ++++++++++++++++-------------
+ 6 files changed, 44 insertions(+), 86 deletions(-)
+
+Index: conky-1.24.2/src/conky.cc
+===================================================================
+--- conky-1.24.2.orig/src/conky.cc
++++ conky-1.24.2/src/conky.cc
+@@ -2404,17 +2404,10 @@ void initialisation(int argc, char **arg
+         own_window.lua_set(*state);
+         break;
+ #endif
+-#ifdef BUILD_XDBE
+       case 'b':
+         state->pushboolean(true);
+-        use_xdbe.lua_set(*state);
++        use_double_buffer.lua_set(*state);
+         break;
+-#else
+-      case 'b':
+-        state->pushboolean(true);
+-        use_xpmdb.lua_set(*state);
+-        break;
+-#endif
+ #endif /* BUILD_X11 */
+       case 't':
+         free_and_zero(global_text);
+Index: conky-1.24.2/src/lua/x11-settings.h
+===================================================================
+--- conky-1.24.2.orig/src/lua/x11-settings.h
++++ conky-1.24.2/src/lua/x11-settings.h
+@@ -51,10 +51,6 @@ extern priv::out_to_x_setting out_to_x;
+ extern conky::simple_config_setting<bool> use_xft;
+ #endif
+ 
+-#ifdef BUILD_XDBE
+-extern priv::use_xdbe_setting use_xdbe;
+-#else
+-extern priv::use_xpmdb_setting use_xpmdb;
+-#endif
++extern conky::simple_config_setting<bool> use_double_buffer;
+ 
+ #endif /* CONKY_X11_SETTINGS_H */
+Index: conky-1.24.2/src/output/display-x11.cc
+===================================================================
+--- conky-1.24.2.orig/src/output/display-x11.cc
++++ conky-1.24.2/src/output/display-x11.cc
+@@ -235,9 +235,7 @@ bool display_output_x11::detect() {
+ 
+ bool display_output_x11::initialize() {
+   X11_create_window();
+-#ifdef BUILD_LUA_CAIRO_XLIB
+   update_surface();
+-#endif /* BUILD_LUA_CAIRO_XLIB */
+   return true;
+ }
+ 
+@@ -300,9 +298,9 @@ bool display_output_x11::main_loop_wait(
+         set_transparent_background(&window);
+ #ifdef BUILD_XDBE
+         /* swap buffers */
+-        xdbe_swap_buffers();
++        swap_x11_buffers();
+ #else
+-        if (use_xpmdb.get(*state)) {
++        if (use_double_buffer.get(*state)) {
+           XFreePixmap(display, window.back_buffer);
+           unsigned int depth = window.color_depth != 0
+                                    ? window.color_depth
+@@ -331,9 +329,7 @@ bool display_output_x11::main_loop_wait(
+ #endif
+ 
+         changed++;
+-#ifdef BUILD_LUA_CAIRO_XLIB
+         update_surface();
+-#endif /* BUILD_LUA_CAIRO_XLIB */
+       }
+ 
+       /* move window if it isn't in right position */
+@@ -358,11 +354,7 @@ bool display_output_x11::main_loop_wait(
+ 
+     clear_text(1);
+ 
+-#if defined(BUILD_XDBE)
+-    if (use_xdbe.get(*state)) {
+-#else
+-    if (use_xpmdb.get(*state)) {
+-#endif
++    if (use_double_buffer.get(*state)) {
+       XRectangle rect = conky::rect<int>(text_start - border_total,
+                                          text_size + border_total * 2)
+                             .to_xrectangle();
+@@ -387,11 +379,7 @@ bool display_output_x11::main_loop_wait(
+    * all, then no swap happens and we can safely do nothing. */
+ 
+   if (XEmptyRegion(window.repaint_region) == 0) {
+-#if defined(BUILD_XDBE)
+-    if (use_xdbe.get(*state)) {
+-#else
+-    if (use_xpmdb.get(*state)) {
+-#endif
++    if (use_double_buffer.get(*state)) {
+       XRectangle rect = conky::rect<int>(text_start - border_total,
+                                          text_size + border_total * 2)
+                             .to_xrectangle();
+@@ -984,23 +972,16 @@ float display_output_x11::get_dpi_scale(
+ }
+ 
+ void display_output_x11::end_draw_stuff() {
+-#if defined(BUILD_XDBE)
+-  xdbe_swap_buffers();
+-#else
+-  xpmdb_swap_buffers();
+-#endif
++  swap_x11_buffers();
+ }
+ 
+ void display_output_x11::clear_text(int exposures) {
+-#ifdef BUILD_XDBE
+-  if (use_xdbe.get(*state)) {
++  if (use_double_buffer.get(*state)) {
+     /* The swap action is XdbeBackground, which clears */
+     return;
+   }
+-#else
+-  if (use_xpmdb.get(*state)) {
+-    return;
+-  } else
++#ifndef BUILD_XDBE
++  else
+ #endif
+   if ((display != nullptr) &&
+       (window.window != 0u)) {  // make sure these are !null
+@@ -1165,14 +1146,14 @@ void display_output_x11::load_fonts(bool
+   }
+ }
+ 
+-#ifdef BUILD_LUA_CAIRO_XLIB
+ void display_output_x11::update_surface() {
++  #ifdef BUILD_LUA_CAIRO_XLIB
+   current_surface.reset(cairo_xlib_surface_create(
+                             display, window.drawable, window.visual,
+                             window.geometry.width(), window.geometry.height()),
+                         cairo_surface_destroy);
++  #endif /* BUILD_LUA_CAIRO_XLIB */
+ }
+-#endif /* BUILD_LUA_CAIRO_XLIB */
+ 
+ std::weak_ptr<conky::draw_surface> display_output_x11::drawing_surface() {
+ #ifdef BUILD_LUA_CAIRO_XLIB
+Index: conky-1.24.2/src/output/display-x11.hh
+===================================================================
+--- conky-1.24.2.orig/src/output/display-x11.hh
++++ conky-1.24.2/src/output/display-x11.hh
+@@ -25,12 +25,8 @@
+ 
+ #include "config.h"
+ 
+-#include <limits>
+ #include <memory>
+-#include <string>
+-#include <type_traits>
+ 
+-#include "../lua/luamm.hh"
+ #include "display-output.hh"
+ 
+ namespace conky {
+@@ -85,10 +81,9 @@ class display_output_x11 : public displa
+ 
+   virtual std::weak_ptr<conky::draw_surface> drawing_surface();
+ 
+-#ifdef BUILD_LUA_CAIRO_XLIB
+-  /// (Re)create the cairo xlib surface for the current drawable/geometry.
++  /// (Re)create the cairo xlib surface for the current drawable/geometry if
++  /// `BUILD_LUA_CAIRO_XLIB` is enabled, no-op otherwise.
+   void update_surface();
+-#endif /* BUILD_LUA_CAIRO_XLIB */
+ 
+   // X11-specific
+  private:
+Index: conky-1.24.2/src/output/x11.cc
+===================================================================
+--- conky-1.24.2.orig/src/output/x11.cc
++++ conky-1.24.2/src/output/x11.cc
+@@ -109,6 +109,8 @@ xcb_errors_context_t *xcb_errors_ctx;
+ /* Window stuff */
+ struct conky_x11_window window;
+ 
++conky::simple_config_setting<bool> use_double_buffer("double_buffer", false, false);
++
+ /* local prototypes */
+ static Window find_desktop_window(Window *p_root, Window *p_desktop);
+ static Window find_desktop_window_impl(Window win, int w, int h);
+@@ -1396,19 +1398,17 @@ void set_struts() {
+ }
+ #endif /* OWN_WINDOW */
+ 
++void swap_x11_buffers() {
+ #ifdef BUILD_XDBE
+-void xdbe_swap_buffers() {
+-  if (use_xdbe.get(*state)) {
++  if (use_double_buffer.get(*state)) {
+     XdbeSwapInfo swap;
+ 
+     swap.swap_window = window.window;
+     swap.swap_action = XdbeBackground;
+     XdbeSwapBuffers(display, &swap, 1);
+   }
+-}
+-#else
+-void xpmdb_swap_buffers(void) {
+-  if (use_xpmdb.get(*state)) {
++#else /* BUILD_XDBE */
++  if (use_double_buffer.get(*state)) {
+     XCopyArea(display, window.back_buffer, window.window, window.gc, 0, 0,
+               window.geometry.width(), window.geometry.height(), 0, 0);
+     Colour c = get_background_colour_preference(*state);
+@@ -1421,8 +1421,8 @@ void xpmdb_swap_buffers(void) {
+                    window.geometry.width(), window.geometry.height());
+     XFlush(display);
+   }
+-}
+ #endif /* BUILD_XDBE */
++}
+ 
+ void print_kdb_led(const int keybit, char *p, unsigned int p_max_size) {
+   XKeyboardState x;
+Index: conky-1.24.2/src/output/x11.h
+===================================================================
+--- conky-1.24.2.orig/src/output/x11.h
++++ conky-1.24.2/src/output/x11.h
+@@ -31,7 +31,10 @@
+ #error x11.h included when BUILD_X11 is disabled
+ #endif
+ 
++extern "C" {
++#include <X11/X.h>
+ #include <X11/Xatom.h>
++#include <X11/Xutil.h>
+ #pragma GCC diagnostic push
+ #pragma GCC diagnostic ignored "-Wvariadic-macros"
+ #include <X11/Xlib.h>
+@@ -46,16 +49,16 @@
+ #ifdef BUILD_XDAMAGE
+ #include <X11/extensions/Xdamage.h>
+ #endif
++#ifdef BUILD_XFIXES
++#include <X11/extensions/Xfixes.h>
++#endif
++}
+ 
+ #include <cstdint>
+ #include <functional>
+ #include <vector>
+ 
+-// TODO: remove lua requirement from x11_init_window
+-#include "../lua/llua.h"
+-
+ #include "../geometry.h"
+-#include "gui.h"
+ #include "x11-event.h"
+ 
+ #define ATOM(a) XInternAtom(display, #a, False)
+@@ -67,9 +70,19 @@ extern int screen;
+ 
+ constexpr int argb8888_color_depth = 32;
+ 
++#ifndef BUILD_XFIXES
++using XserverRegion = XID;
++#endif
+ #ifndef BUILD_XDAMAGE
+ using Damage = XID;
+-using XserverRegion = XID;
++#endif
++#ifndef BUILD_XFT
++using XftDraw = void;
++#endif
++#ifdef BUILD_XDBE
++using back_buffer_t = XdbeBackBuffer;
++#else
++using back_buffer_t = Pixmap;
+ #endif
+ 
+ struct conky_x11_window {
+@@ -120,14 +133,9 @@ struct conky_x11_window {
+   /// is unioned into `damage_region`.
+   XserverRegion damage_scratch = 0;
+ 
+-#ifdef BUILD_XDBE
+-  XdbeBackBuffer back_buffer;
+-#else  /*BUILD_XDBE*/
+-  Pixmap back_buffer;
+-#endif /*BUILD_XDBE*/
+-#ifdef BUILD_XFT
++  back_buffer_t back_buffer;
+   XftDraw *xftdraw;
+-#endif /*BUILD_XFT*/
++
+   /// XInput2 extension opcode; 0 if unavailable.
+   std::int32_t xi_opcode;
+ 
+@@ -225,10 +233,6 @@ std::vector<Window> query_x11_windows_at
+         [](XWindowAttributes &a) { return true; },
+     bool eager = false);
+ 
+-#ifdef BUILD_XDBE
+-void xdbe_swap_buffers(void);
+-#else
+-void xpmdb_swap_buffers(void);
+-#endif /* BUILD_XDBE */
++void swap_x11_buffers();
+ 
+ #endif /* CONKY_X11_H */

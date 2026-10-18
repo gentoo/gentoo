@@ -21,14 +21,14 @@ if [[ ${PV} == 9999  ]]; then
 	GRUB_BOOTSTRAP=1
 fi
 
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{11..15} )
 WANT_LIBTOOL=none
 
 if [[ -n ${GRUB_AUTORECONF} ]]; then
 	inherit autotools
 fi
 
-inherit bash-completion-r1 eapi9-ver flag-o-matic multibuild optfeature
+inherit eapi9-ver flag-o-matic multibuild optfeature
 inherit python-any-r1 secureboot toolchain-funcs verify-sig
 
 DESCRIPTION="GNU GRUB boot loader"
@@ -39,24 +39,18 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://gitlab.freedesktop.org/gnu-grub/grub.git"
 else
-	if [[ ${PV} == *_alpha* || ${PV} == *_beta* || ${PV} == *_rc* ]]; then
-		# The quote style is to work with <=bash-4.2 and >=bash-4.3 #503860
-		MY_P=${P/_/'~'}
-		SRC_URI="
-			https://alpha.gnu.org/gnu/${PN}/${MY_P}.tar.xz
-			verify-sig? ( https://alpha.gnu.org/gnu/${PN}/${MY_P}.tar.xz.sig )
-		"
-		S=${WORKDIR}/${MY_P}
-	else
-		SRC_URI="
-			mirror://gnu/${PN}/${P}.tar.xz
-			verify-sig? ( mirror://gnu/${PN}/${P}.tar.xz.sig )
-		"
-		S=${WORKDIR}/${P%_*}
-	fi
+	BASE="https://gitlab.freedesktop.org/api/v4/projects/26558/packages/generic/source-assets"
+	# The quote style is to work with <=bash-4.2 and >=bash-4.3 #503860
+	MY_P=${P/_/'~'}
+	TAG=${P/_/-}
+	SRC_URI="
+		${BASE}/${TAG}/${MY_P}.tar.xz
+		verify-sig? ( ${BASE}/${TAG}/${MY_P}.tar.xz.sig )
+	"
+	S=${WORKDIR}/${MY_P}
 	BDEPEND="
 		verify-sig? (
-			sec-keys/openpgp-keys-grub
+			sec-keys/openpgp-keys-lsandova
 			sec-keys/openpgp-keys-unifont
 		)
 	"
@@ -65,7 +59,7 @@ fi
 
 DEJAVU_VER=2.37
 DEJAVU=dejavu-fonts-ttf-${DEJAVU_VER}
-UNIFONT=unifont-17.0.02
+UNIFONT=unifont-17.0.05
 SRC_URI+="
 	fonts? (
 		mirror://gnu/unifont/${UNIFONT}/${UNIFONT}.pcf.gz
@@ -166,7 +160,7 @@ src_unpack() {
 		popd >/dev/null || die
 	elif use verify-sig; then
 		verify-sig_verify_detached "${DISTDIR}"/${MY_P}.tar.xz{,.sig} \
-			"${BROOT}"/usr/share/openpgp-keys/grub.asc
+			"${BROOT}"/usr/share/openpgp-keys/lsandova.asc
 	fi
 	if use fonts && use verify-sig; then
 		verify-sig_verify_detached "${DISTDIR}"/${UNIFONT}.pcf.gz{,.sig} \
@@ -381,7 +375,7 @@ grub_mkstandalone_secureboot() {
 }
 
 src_install() {
-	grub_do emake install DESTDIR="${D}" bashcompletiondir="$(get_bashcompdir)"
+	grub_do emake install DESTDIR="${D}"
 	use doc && grub_do_once emake -C docs install-html DESTDIR="${D}"
 
 	einstalldocs

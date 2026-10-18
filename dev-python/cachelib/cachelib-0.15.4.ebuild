@@ -17,14 +17,13 @@ HOMEPAGE="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm arm64 ~ppc64 x86"
 
 BDEPEND="
 	test? (
 		dev-db/redis
 		dev-python/redis[${PYTHON_USEDEP}]
 		net-misc/memcached
-		www-servers/uwsgi[python,${PYTHON_USEDEP}]
 		!sparc? (
 			dev-python/pylibmc[${PYTHON_USEDEP}]
 		)

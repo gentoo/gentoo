@@ -138,7 +138,8 @@ QA_FLAGS_IGNORED="usr/lib.*/py.*/site-packages/whenever/_whenever.*.so"
 
 src_unpack() {
 	pypi_src_unpack
-	cargo_src_unpack
+	cargo_crate_unpack
+	cargo_gen_config
 }
 
 src_configure() {

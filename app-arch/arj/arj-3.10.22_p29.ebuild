@@ -17,7 +17,7 @@ S="${WORKDIR}/${PN}-${MY_PV}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ppc ppc64 ~sparc x86"
 
 DOCS=( doc/compile.txt doc/debug.txt doc/glossary.txt doc/rev_hist.txt doc/xlation.txt )
 

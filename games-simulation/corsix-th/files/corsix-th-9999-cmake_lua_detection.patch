@@ -1,0 +1,26 @@
+diff --git a/CMake/GenerateDoc.cmake b/CMake/GenerateDoc.cmake
+index f8b9ec8b..ac90134d 100644
+--- a/CMake/GenerateDoc.cmake
++++ b/CMake/GenerateDoc.cmake
+@@ -19,7 +19,7 @@ endif()
+ 
+ find_program(
+   LUA_PROGRAM_PATH
+-  ${LUA_PROGRAM_NAMES}
++  lua${LUA_VERSION}
+   PATHS
+   ENV LUA_DIR
+   /opt
+diff --git a/CorsixTH/CMakeLists.txt b/CorsixTH/CMakeLists.txt
+index b0695a78..06467177 100644
+--- a/CorsixTH/CMakeLists.txt
++++ b/CorsixTH/CMakeLists.txt
+@@ -125,7 +125,7 @@ if(VCPKG_TARGET_TRIPLET)
+   target_include_directories(CorsixTH_lib PUBLIC ${LUA_INCLUDE_DIRS})
+   target_link_libraries(CorsixTH_lib PUBLIC ${LUA_LIBRARIES})
+ else()
+-  find_package(Lua REQUIRED)
++  find_package(Lua ${LUA_VERSION} EXACT REQUIRED)
+   if(Lua_FOUND OR LUA_FOUND)
+     target_link_libraries(CorsixTH_lib PUBLIC ${LUA_LIBRARY})
+     include_directories(${LUA_INCLUDE_DIR})

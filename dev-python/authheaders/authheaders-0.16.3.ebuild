@@ -16,7 +16,7 @@ HOMEPAGE="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64 ~arm64 ~ppc64 ~x86"
 
 RDEPEND="
 	>=dev-python/authres-1.2.0-r1[${PYTHON_USEDEP}]
@@ -27,3 +27,16 @@ RDEPEND="
 
 EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
+
+python_test() {
+
+	local EPYTEST_DESELECT=()
+
+	if has network-sandbox ${FEATURES}; then
+		EPYTEST_DESELECT+=(
+			authheaders/test/test_authentication.py::TestAuthenticateMessage::test_authenticate_dmarc_psdsub
+		)
+	fi
+
+	epytest
+}

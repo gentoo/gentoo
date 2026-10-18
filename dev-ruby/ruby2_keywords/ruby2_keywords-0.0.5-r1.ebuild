@@ -16,4 +16,4 @@ HOMEPAGE="https://github.com/ruby/ruby2_keywords"
 
 LICENSE="|| ( BSD-2 Ruby-BSD )"
 SLOT="$(ver_cut 1-2)"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~arm64-macos ~x64-macos"

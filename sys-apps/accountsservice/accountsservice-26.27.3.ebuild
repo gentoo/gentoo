@@ -2,8 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+
 PYTHON_COMPAT=( python3_{12..15} )
-inherit meson python-any-r1 systemd vala
+inherit locale-utils meson python-any-r1 systemd vala
 
 DESCRIPTION="D-Bus interfaces for querying and manipulating user account information"
 HOMEPAGE="https://gitlab.freedesktop.org/accountsservice/accountsservice"
@@ -11,7 +12,7 @@ SRC_URI="https://gitlab.freedesktop.org/accountsservice/accountsservice/-/archiv
 
 LICENSE="GPL-3+"
 SLOT="0/1"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ~loong ppc ppc64 ~riscv ~sparc x86"
 
 IUSE="doc elogind gtk-doc +introspection selinux systemd test vala xcrypt"
 RESTRICT="!test? ( test )"
@@ -57,7 +58,6 @@ RDEPEND="${CDEPEND}
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-22.04.62-gentoo-system-users.patch
-	"${FILESDIR}"/${PN}-23.13.9-test-languages.patch #903347
 )
 
 python_check_deps() {
@@ -69,6 +69,10 @@ python_check_deps() {
 src_prepare() {
 	default
 
+	# Without glibc the locale the language tests need cannot be generated
+	use elibc_glibc ||
+		eapply "${FILESDIR}"/${PN}-23.13.9-test-languages.patch #903347
+
 	use vala && vala_setup
 }
 
@@ -76,6 +80,7 @@ src_configure() {
 	local emesonargs=(
 		--localstatedir="${EPREFIX}/var"
 		-Dsystemdsystemunitdir="$(systemd_get_systemunitdir)"
+		-Dwtmpfile=/var/log/wtmp
 		-Dadmin_group="wheel"
 		-Dcreate_homed=false
 		$(meson_use elogind)
@@ -87,6 +92,13 @@ src_configure() {
 		$(meson_use xcrypt libxcrypt)
 	)
 	meson_src_configure
+}
+
+src_test() {
+	# The daemon is run with LC_ALL=en_IE.UTF-8, bug #903347
+	local -x LOCPATH
+	elocale_gen en_IE.UTF-8
+	meson_src_test
 }
 
 src_install() {

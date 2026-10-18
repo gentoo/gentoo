@@ -1,7 +1,8 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+
 DIST_AUTHOR=PETDANCE
 DIST_VERSION="v${PV}"
 inherit perl-module
@@ -22,6 +23,8 @@ DEPEND="${RDEPEND}
 PATCHES=( "${FILESDIR}"/${PN}-3.3.0-gentoo.patch )
 
 src_test() {
+	# fails tests with NO_COLOR defined, bug 906142
+	unset NO_COLOR
 	# Tests fail when run in parallel and if dev-perl/IO-Tty is installed
 	# which enables interactive tests that need to read from stdin. If IO-Tty
 	# is not installed the related tests are skipped.

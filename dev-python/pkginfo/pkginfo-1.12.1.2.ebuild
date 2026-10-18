@@ -10,7 +10,7 @@ inherit distutils-r1 pypi
 
 DESCRIPTION="Provides an API for querying the distutils metadata written in a PKG-INFO file"
 HOMEPAGE="
-	https://launchpad.net/pkginfo/
+	https://github.com/tseaver/pkginfo/
 	https://pypi.org/project/pkginfo/
 "
 

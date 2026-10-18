@@ -23,11 +23,7 @@ RDEPEND="
 	dev-python/lxml[${PYTHON_USEDEP}]
 "
 
-DEPEND="test? (
-	dev-python/pytest-mock[${PYTHON_USEDEP}]
-	dev-python/pytest-qt[${PYTHON_USEDEP}]
-)"
-
+EPYTEST_PLUGINS=( pytest-{mock,qt} )
 distutils_enable_tests pytest
 
 EPYTEST_DESELECT=(

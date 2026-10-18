@@ -507,6 +507,15 @@ src_install() {
 	fi
 }
 
+pkg_preinst() {
+	if use gui && has_version "<${CATEGORY}/${PN}-4[gui]"; then
+		ewarn "Upgrade from VLC-3 detected. If you experience runtime issues,"
+		ewarn "try cleaning up ~/.config/vlc first."
+		ewarn
+	fi
+	xdg_pkg_preinst
+}
+
 pkg_postinst() {
 	if [[ -z "${ROOT}" ]] && [[ -x "${EROOT}"/usr/libexec/vlc/vlc-cache-gen ]] ; then
 		einfo "Running ${EPREFIX}/usr/libexec/vlc/vlc-cache-gen on ${EROOT}/usr/$(get_libdir)/vlc/plugins/"

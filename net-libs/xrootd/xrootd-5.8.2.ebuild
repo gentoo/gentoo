@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -51,7 +51,7 @@ CDEPEND="acct-group/xrootd
 		net-misc/curl:=
 		net-libs/davix
 	)
-	kerberos? ( virtual/krb5 )
+	kerberos? ( app-crypt/mit-krb5 )
 	libxml2? ( dev-libs/libxml2:2= )
 	macaroons? ( dev-libs/libmacaroons )
 	python? ( ${PYTHON_DEPS} )

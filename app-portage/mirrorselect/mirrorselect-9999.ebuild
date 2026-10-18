@@ -26,7 +26,6 @@ SLOT="0"
 BDEPEND="${PYTHON_DEPS}"
 RDEPEND="${PYTHON_DEPS}
 	dev-util/dialog
-	>=net-analyzer/netselect-0.4
 	$(python_gen_cond_dep '
 		dev-python/requests[${PYTHON_USEDEP}]
 		sys-apps/portage[${PYTHON_USEDEP}]

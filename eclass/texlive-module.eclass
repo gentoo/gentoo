@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: texlive-module.eclass
@@ -6,7 +6,7 @@
 # tex@gentoo.org
 # @AUTHOR:
 # Original Author: Alexis Ballier <aballier@gentoo.org>
-# @SUPPORTED_EAPIS: 7 8
+# @SUPPORTED_EAPIS: 7 8 9
 # @BLURB: Provide generic install functions so that modular texlive's texmf ebuild will only have to inherit this eclass
 # @DESCRIPTION:
 # Purpose: Provide generic install functions so that modular texlive's texmf ebuilds will
@@ -72,14 +72,15 @@
 # e.g. for enabling/disabling a feature
 
 case ${EAPI} in
-	7|8) ;;
+	7|8) inherit eapi9-pipestatus ;;
+	9) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
 if [[ -z ${_TEXLIVE_MODULE_ECLASS} ]]; then
 _TEXLIVE_MODULE_ECLASS=1
 
-inherit eapi9-pipestatus texlive-common
+inherit texlive-common
 
 HOMEPAGE="https://www.tug.org/texlive/"
 
@@ -501,6 +502,8 @@ texlive-module_src_install() {
 				texlinks.1
 				texlua.1
 				texluac.1
+				texprof.1
+				texprofile.1
 				tftopl.1
 				tie.1
 				tpic2pdftex.1
@@ -521,6 +524,7 @@ texlive-module_src_install() {
 				vptovf.1
 				weave.1
 				xdvipdfmx.1
+				xdvipsk.1
 				xelatex-dev.1
 				xetex.1
 				xml2pmx.1

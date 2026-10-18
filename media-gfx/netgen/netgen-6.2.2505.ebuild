@@ -18,7 +18,7 @@ IUSE="ffmpeg gui jpeg mpi +opencascade python test"
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="
-	${PYTHON_REQUIRED_USE}
+	python? ( ${PYTHON_REQUIRED_USE} )
 	ffmpeg? ( gui )
 	jpeg? ( gui )
 	python? ( gui )

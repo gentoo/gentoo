@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 inherit autotools prefix python-any-r1 xdg
 
 DESCRIPTION="A Doom source port that is minimalist and historically accurate"
@@ -12,7 +12,7 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/${P}.tar.gz"
 S="${WORKDIR}/${PN}-${P}"
 LICENSE="BSD GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~x86"
 IUSE="doc libsamplerate +midi png vorbis"
 
 DEPEND="

@@ -11,7 +11,7 @@ SRC_URI="https://github.com/slimm609/checksec/archive/${PV}.tar.gz -> ${P}.gh.ta
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="amd64 arm arm64 ~loong ~mips ~ppc ppc64 ~riscv ~sparc x86"
 
 RDEPEND="
 	sys-apps/grep[pcre]

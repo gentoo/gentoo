@@ -7,7 +7,7 @@ inherit xorg-meson
 
 DESCRIPTION="interchange between cut buffer and selection"
 
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
+KEYWORDS="amd64 arm ~arm64 ~hppa ~mips ppc ppc64 ~s390 ~sparc x86"
 
 RDEPEND="
 	x11-libs/libXaw

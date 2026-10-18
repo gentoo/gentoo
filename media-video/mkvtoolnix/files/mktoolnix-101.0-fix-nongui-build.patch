@@ -1,0 +1,22 @@
+https://bugs.gentoo.org/978866#c7
+
+Thanks to Bernd Feige.
+
+--- a/rake.d/gtest.rb
++++ b/rake.d/gtest.rb
+@@ -5,12 +5,12 @@ $gtest_internal = c(:GTEST_TYPE) == "int
+ 
+ namespace :tests do
+   desc "Build the unit tests"
+-  task :unit => $gtest_apps.collect { |app| "tests/unit/#{app}/#{app}" + c(:EXEEXT) }
++  task :unit => $gtest_apps.select { |app| app != 'gui' || c?(:BUILD_GUI) }.collect { |app| "tests/unit/#{app}/#{app}" + c(:EXEEXT) }
+ 
+   desc "Build and run the unit tests"
+   task :run_unit => 'tests:unit' do
+     runtime, args = $building_for[:windows] ? [ "wine", "--gtest_color=no | tr -d '\n'" ] : [ "", "" ]
+-    $gtest_apps.each { |app| run "LC_ALL=C #{runtime} ./tests/unit/#{app}/#{app}#{c(:EXEEXT)} #{args}" }
++    $gtest_apps.select { |app| app != 'gui' || c?(:BUILD_GUI) }.each { |app| run "LC_ALL=C #{runtime} ./tests/unit/#{app}/#{app}#{c(:EXEEXT)} #{args}" }
+   end
+ 
+   if !c(:VALGRIND).to_s.empty?
+

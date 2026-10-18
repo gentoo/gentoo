@@ -29,9 +29,9 @@ IUSE="s3 test"
 DEPEND="
 	app-alternatives/gpg
 	net-libs/librsync:=
+	dev-python/cryptography[${PYTHON_USEDEP}]
 	dev-python/fasteners[${PYTHON_USEDEP}]
 	dev-python/pexpect[${PYTHON_USEDEP}]
-	dev-python/python-gnupg[${PYTHON_USEDEP}]
 "
 RDEPEND="
 	${DEPEND}
@@ -50,15 +50,15 @@ BDEPEND="
 
 EPYTEST_DESELECT=(
 	# boto3
-	testing/unit/test_cli_main.py::CommandlineTest::test_intermixed_args
+	testing/unit/test_cli_main.py::TestCommandline::test_intermixed_args
 )
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-3.2.0.1-fix-docs-cmd.patch
+	"${FILESDIR}"/${PN}-3.2.1-fix-docs-cmd.patch
 	"${FILESDIR}"/${PN}-3.0.5-dont-repeat-standard-paths.patch
 )
 
-EPYTEST_PLUGINS=()
+EPYTEST_PLUGINS=( mock )
 EPYTEST_XDIST=1
 distutils_enable_tests pytest
 

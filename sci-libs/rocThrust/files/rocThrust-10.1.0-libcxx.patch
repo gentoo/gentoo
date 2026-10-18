@@ -1,0 +1,47 @@
+Fix build of tests with libc++
+
+- libc++, like the MSVC STL, rejects char types in
+  std::uniform_int_distribution.
+- Skip the std::complex<long double> reference tests: with libc++ they do
+  not compile for the device side.
+--- a/test/test_complex_various.cpp
++++ b/test/test_complex_various.cpp
+@@ -703,6 +703,10 @@ TYPED_TEST(VariousComplexTest, catan)
+     1000);
+ }
+ 
++// clang's cuda_wrappers/complex makes the libc++ std::complex functions
++// __host__ __device__; for long double they call std::isinf() etc., which
++// have no device overloads
++#ifndef _LIBCPP_VERSION
+ TEST(VariousComplexTest, acos_long_double)
+ {
+   run_trig_tests<long double>(
+@@ -792,6 +796,7 @@ TEST(VariousComplexTest, atanh_long_double)
+     0,
+     1);
+ }
++#endif
+ 
+ // ===================================================================
+ //
+--- a/test/test_utils.hpp
++++ b/test/test_utils.hpp
+@@ -389,7 +389,7 @@ inline auto get_random_data(size_t size, T, T, seed_type seed) ->
+   return data;
+ }
+ 
+-#if defined(_MSC_VER)
++#if defined(_MSC_VER) || defined(_LIBCPP_VERSION)
+ template <class T>
+ inline auto get_random_data(size_t size, T min, T max, seed_type seed) ->
+   typename std::enable_if_t<std::is_same_v<T, signed char> || (std::is_same_v<T, char> && std::is_signed_v<char>),
+@@ -426,7 +426,7 @@ inline auto get_random_data(size_t size, T min, T max, seed_type seed) ->
+ template <class T>
+ inline auto get_random_data(size_t size, T min, T max, seed_type seed) -> typename std::enable_if_t<
+   rocprim::is_integral<T>::value && !std::is_same_v<T, bool>
+-#if defined(_MSC_VER)
++#if defined(_MSC_VER) || defined(_LIBCPP_VERSION)
+     && !std::is_same_v<T, signed char> && !std::is_same_v<T, unsigned char> && !std::is_same_v<T, char>
+ #endif
+   ,

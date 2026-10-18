@@ -21,7 +21,7 @@ SRC_URI="
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 RDEPEND="
 	>=dev-python/argon2-cffi-18.1.0[${PYTHON_USEDEP}]

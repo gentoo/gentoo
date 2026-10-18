@@ -13,4 +13,5 @@
 		<remote-id type="github">Aleph-One-Marathon/alephone</remote-id>
 		<remote-id type="sourceforge">marathon</remote-id>
 	</upstream>
+	<stabilize-allarches/>
 </pkgmetadata>

@@ -1,0 +1,41 @@
+From: https://github.com/jtesta/ssh-audit/pull/377
+
+commit fcfe99834ade7a87fe5436c11284051734efabb5
+Author: ranas-mukminov <ranas@run-as-daemon.dev>
+Date: Fri, 2 Oct 2026 09:35:03 +0000
+Subject: [PATCH] fix: treat Dropbear kexguess2 as negotiation marker, not
+ PQ-unsafe KEX
+
+kexguess2@matt.ucc.asn.au is a Dropbear KEX guessing marker (data field
+NULL), not an actual key-exchange algorithm. Flagging it with
+WARN_NOT_PQ_SAFE is misleading (#375). Classify it like ext-info /
+kex-strict pseudo-algorithms with an INFO note instead.
+--- a/src/ssh_audit/ssh2_kexdb.py
++++ b/src/ssh_audit/ssh2_kexdb.py
+@@ -80,6 +80,7 @@ class SSH2_KexDB:  # pylint: disable=too-few-public-methods
+     INFO_WITHDRAWN_PQ_ALG = 'the sntrup4591761 algorithm was withdrawn, as it may not provide strong post-quantum security'
+     INFO_EXTENSION_NEGOTIATION = 'pseudo-algorithm that denotes the peer supports RFC8308 extensions'
+     INFO_STRICT_KEX = 'pseudo-algorithm that denotes the peer supports a stricter key exchange method as a counter-measure to the Terrapin attack (CVE-2023-48795)'
++    INFO_KEXGUESS2 = 'pseudo-algorithm / negotiation marker used by Dropbear to accelerate KEX guessing; not an actual key exchange'
+ 
+     # NIST PQC security levels: https://blog.cloudflare.com/pq-2025/
+     INFO_NIST_PQC_LEVEL_2 = 'rated at NIST PQC level 2 (at least as hard to break as SHA256)'
+@@ -196,7 +197,7 @@ class SSH2_KexDB:  # pylint: disable=too-few-public-methods
+             'kexAlgoECDH256': [[], [FAIL_NSA_BACKDOORED_CURVE], [WARN_NOT_PQ_SAFE]],
+             'kexAlgoECDH384': [[], [FAIL_NSA_BACKDOORED_CURVE], [WARN_NOT_PQ_SAFE]],
+             'kexAlgoECDH521': [[], [FAIL_NSA_BACKDOORED_CURVE], [WARN_NOT_PQ_SAFE]],
+-            'kexguess2@matt.ucc.asn.au': [['d2013.57'], [], [WARN_NOT_PQ_SAFE]],
++            'kexguess2@matt.ucc.asn.au': [['d2013.57'], [], [], [INFO_KEXGUESS2]],  # Dropbear KEX guessing marker (not a real algorithm).
+             'm383-sha384@libassh.org': [[], [FAIL_UNPROVEN], [WARN_NOT_PQ_SAFE]],
+             'm511-sha512@libassh.org': [[], [FAIL_UNPROVEN], [WARN_NOT_PQ_SAFE]],
+             'mlkem768x25519-sha256': [['9.9'], [], [], [INFO_DEFAULT_OPENSSH_KEX_100, INFO_HYBRID_PQ_X25519_KEX]],
+--- a/test/test_ssh2_kexdb.py
++++ b/test/test_ssh2_kexdb.py
+@@ -48,6 +48,7 @@ def test_kex_pq_unsafe(self):
+             "ext-info-s",
+             "kex-strict-c-v00@openssh.com",
+             "kex-strict-s-v00@openssh.com",
++            "kexguess2@matt.ucc.asn.au",  # Dropbear negotiation marker, not a KEX algorithm
+             "mlkem768x25519-sha256",
+             "sntrup4591761x25519-sha512@tinyssh.org",
+             "sntrup761x25519-sha512@openssh.com",

@@ -14,7 +14,7 @@ S="${WORKDIR}/spotbugs-${PV}/spotbugs-annotations"
 
 LICENSE="LGPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc64"
+KEYWORDS="amd64 arm64 ppc64"
 
 CP_DEPEND="
 	>=dev-java/jsr305-3.0.2:0

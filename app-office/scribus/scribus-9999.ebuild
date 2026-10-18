@@ -14,11 +14,15 @@ if [[ ${PV} == *9999* ]] ; then
 	EGIT_REPO_URI="https://github.com/scribusproject/scribus"
 	inherit git-r3
 else
-	SRC_URI="
-		https://downloads.sourceforge.net/project/${PN}/${PN}/${PV}/${P}.tar.xz
-		https://downloads.sourceforge.net/project/${PN}/${PN}-devel/${PV}/${P}.tar.xz
-	"
-	S="${WORKDIR}/${P}"
+	if [[ ${PV} == *_p* ]] ; then
+		SRC_URI="https://dev.gentoo.org/~asturm/distfiles/${P}.tar.xz"
+		S="${WORKDIR}/${PN^}"
+	else
+		SRC_URI="
+			https://downloads.sourceforge.net/project/${PN}/${PN}/${PV}/${P}.tar.xz
+			https://downloads.sourceforge.net/project/${PN}/${PN}-devel/${PV}/${P}.tar.xz"
+		S="${WORKDIR}/${P}"
+	fi
 	KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~x86"
 fi
 

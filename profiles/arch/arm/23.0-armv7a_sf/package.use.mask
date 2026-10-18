@@ -11,3 +11,8 @@ dev-scheme/guile -jit
 # Tests require Valgrind, available on armv7a
 dev-libs/rapidjson -test
 sys-apps/proot -test
+
+# Mike Pagano <mpagano@gentoo.org> (2026-09-26)
+# Rust (and thus Node Temporal) is unsupported on armv7 soft-float
+net-libs/nodejs temporal
+

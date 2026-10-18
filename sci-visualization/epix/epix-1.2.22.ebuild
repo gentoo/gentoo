@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools bash-completion-r1 dot-a elisp-common
+inherit autotools shell-completion dot-a elisp-common
 
 DESCRIPTION="2- and 3-D plotter for creating images (to be used in LaTeX)"
 HOMEPAGE="https://mathcs.holycross.edu/~ahwang/current/ePiX.html"

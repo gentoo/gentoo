@@ -14,7 +14,7 @@ SRC_URI="
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~mips ~ppc ~riscv ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~mips ppc ~riscv ~sparc x86"
 IUSE="doc"
 
 RDEPEND="

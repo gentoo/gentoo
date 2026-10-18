@@ -10,6 +10,7 @@
 	<flag name="eme-free">Disable EME (DRM plugin) capability at build time</flag>
 	<flag name="hwaccel">Force-enable hardware-accelerated rendering (Mozilla bug 594876)</flag>
 	<flag name="libproxy">Enable libproxy support</flag>
+	<flag name="jumbo-build">Enable unified build - combines source files to speed up build process, but requires more memory</flag>
 	<flag name="pgo">Add support for profile-guided optimization using gcc-4.5,
 		for faster binaries. This option will double the compile time.</flag>
 	<flag name="pulseaudio">Add sound server support via media-libs/libpulse (may be PulseAudio or

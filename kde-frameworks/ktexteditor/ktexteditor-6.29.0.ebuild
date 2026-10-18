@@ -9,7 +9,7 @@ inherit ecm frameworks.kde.org
 DESCRIPTION="Framework providing a full text editor component"
 
 LICENSE="LGPL-2+"
-KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 arm64 ~loong ~ppc64 ~riscv ~x86"
 IUSE="+editorconfig"
 
 RESTRICT="test"
@@ -40,6 +40,8 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 BDEPEND="test? ( >=kde-frameworks/kservice-${KDE_CATV}:6 )"
+
+PATCHES=( "${FILESDIR}/${P}-libcxx23-missing-header.patch" ) # in 6.31
 
 src_configure() {
 	local mycmakeargs=(

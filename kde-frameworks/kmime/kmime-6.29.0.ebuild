@@ -9,7 +9,7 @@ inherit ecm frameworks.kde.org
 DESCRIPTION="Library for handling mail messages and newsgroup articles"
 
 LICENSE="LGPL-2 LGPL-2+"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 arm64 ~x86"
 IUSE=""
 
 DEPEND="=kde-frameworks/kcodecs-${KDE_CATV}*:6"

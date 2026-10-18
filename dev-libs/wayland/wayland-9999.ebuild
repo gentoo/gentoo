@@ -50,14 +50,23 @@ multilib_src_configure() {
 }
 
 src_test() {
-	# We set it on purpose to only a short subdir name, as socket paths are
-	# created in there, which are 108 byte limited. With this it hopefully
-	# barely fits to the limit with /var/tmp/portage/${CATEGORY}/${PF}/temp/x
-	export XDG_RUNTIME_DIR="${T}"/x
-	mkdir "${XDG_RUNTIME_DIR}" || die
-	chmod 0700 "${XDG_RUNTIME_DIR}" || die
+	# Tests create sockets under XDG_RUNTIME_DIR, and socket paths are limited
+	# to 108 bytes. A directory under ${T} easily exceeds that, so use a short
+	# one in /tmp instead (bug #664650).
+	export XDG_RUNTIME_DIR=$(mktemp -d /tmp/wayland-XXXXXX) || die
+
+	# Sockets are created at
+	#   ${XDG_RUNTIME_DIR}/wayland-tests-XXXXXX/wayland-test-${PID}-${SEC}${USEC}
+	# With a 7 digit PID, 10 digit seconds, and 6 digit microseconds, the
+	# suffix is 59 bytes. With the NUL, that leaves 48 of the 108 byte
+	# sun_path for XDG_RUNTIME_DIR.
+	if [[ ${#XDG_RUNTIME_DIR} -gt 48 ]]; then
+		die "XDG_RUNTIME_DIR ${XDG_RUNTIME_DIR} too long for socket paths"
+	fi
 
 	multilib-minimal_src_test
+
+	rm -rf "${XDG_RUNTIME_DIR}" || die
 }
 
 src_install() {

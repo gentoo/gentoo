@@ -9,7 +9,7 @@ SRC_URI="https://imapsync.lamiral.info/dist/${P}.tgz"
 
 LICENSE="NOLIMIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="test"
 RESTRICT="!test? ( test )"
 

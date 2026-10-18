@@ -16,7 +16,7 @@ else
 		https://the.earth.li/~sgtatham/${PN}/${PV}/${P}.tar.gz
 		verify-sig? ( https://the.earth.li/~sgtatham/${PN}/${PV}/${P}.tar.gz.gpg )
 	"
-	KEYWORDS="~alpha ~amd64 ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86"
+	KEYWORDS="~alpha amd64 ~arm64 ~hppa ppc ppc64 ~riscv ~sparc x86"
 fi
 SRC_URI+="https://librecast.net/downloads/gentoo/net-misc/putty/${PN}-icons.tar.bz2"
 

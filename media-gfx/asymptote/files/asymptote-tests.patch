@@ -1,0 +1,16 @@
+diff '--color=auto' -r -U2 asymptote-3.14.orig/tests/Makefile asymptote-3.14/tests/Makefile
+--- asymptote-3.14.orig/tests/Makefile	2026-08-29 07:36:05.000000000 +0700
++++ asymptote-3.14/tests/Makefile	2026-09-03 12:40:36.276833286 +0700
+@@ -2,4 +2,5 @@
+ 
+ TESTDIRS = $(wildcard */)
++PYTHON ?= python3
+ 
+ test: $(TESTDIRS) test_collections_errors
+@@ -11,5 +12,5 @@
+ test_collections_errors:
+ 	@echo
+-	python3 test_collections_errors.py
++	$(PYTHON) test_collections_errors.py
+ 
+ $(EXTRADIRS)::

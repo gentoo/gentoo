@@ -1,0 +1,14 @@
+Patching the static library fully would need extensive changes.
+Patching it out from install means it won't be included in generated cmake config files.
+--- a/cmake/aom_install.cmake
++++ b/cmake/aom_install.cmake
+@@ -81,7 +81,7 @@ macro(setup_aom_install_targets)
+     endif()
+ 
+     if(BUILD_SHARED_LIBS)
+-      set(AOM_INSTALL_LIBS aom aom_static)
++      set(AOM_INSTALL_LIBS aom)
+     else()
+       set(AOM_INSTALL_LIBS aom)
+     endif()
+

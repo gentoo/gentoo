@@ -1,0 +1,56 @@
+backport 1/2 https://gitlab.xiph.org/xiph/vorbis-tools/-/merge_requests/27.patch
+From 4bb4fb33b25949178179f689db9afb477abeb572 Mon Sep 17 00:00:00 2001
+From: "Timothy B. Terriberry" <tterribe@xiph.org>
+Date: Tue, 24 Jun 2025 09:14:13 -0700
+Subject: [PATCH 1/2] Do not assume fgets result is non-empty
+
+If a file contains an embedded NUL ('\0') character, strlen() on
+ the result of fgets() can be 0, even when we have not reached the
+ end of the file.
+Therefore we cannot access index [strlen(buf)-1] to check a
+ character at the end of the string.
+
+Thanks to Momoko Shiraishi for the report.
+
+Fixes #2332
+--- a/ogg123/playlist.c
++++ b/ogg123/playlist.c
+@@ -265,10 +265,14 @@ int playlist_append_from_file(playlist_t *list, char *playlist_filename)
+ 
+     /* Crop off trailing newlines if present. Handle DOS (\r\n), Unix (\n)
+      * and MacOS<9 (\r) line endings. */
+-    if (filename[length - 2] == '\r' && filename[length - 1] == '\n')
++    if (length >= 2 && filename[length - 2] == '\r'
++     && filename[length - 1] == '\n') {
+       filename[length - 2] = '\0';
+-    else if (filename[length - 1] == '\n' || filename[length - 1] == '\r')
++    }
++    else if (length >= 1 && (
++     filename[length - 1] == '\n' || filename[length - 1] == '\r')) {
+       filename[length - 1] = '\0';
++    }
+ 
+     if (stat(filename, &stat_buf) == 0) {
+ 
+--- a/ogg123/remote.c
++++ b/ogg123/remote.c
+@@ -150,7 +150,7 @@ static void * remotethread(void * arg) {
+ #endif
+ 
+     fgets(buf, MAXBUF, stdin);
+-    buf[strlen(buf)-1] = 0;
++    buf[strcspn(buf, "\n")] = 0;
+ 
+     /* Lock on */
+     pthread_mutex_lock (&main_lock);
+--- a/vorbiscomment/vcomment.c
++++ b/vorbiscomment/vcomment.c
+@@ -123,7 +123,7 @@ char * read_line (FILE *input)
+                         buffers[buffer_count] = buffer;
+                         buffer_count++;
+ 
+-                        if (retval[strlen (retval) - 1] == '\n')
++                        if (strchr(retval, '\n') != NULL)
+                         {
+                                 /* End of the line */
+                                 break;

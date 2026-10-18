@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Modern module builder, author tools not included!"
 
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
 	dev-perl/ExtUtils-Builder

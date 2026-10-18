@@ -1,0 +1,84 @@
+--- a/setup.py	2026-02-26 19:04:19.000000000 +0100
++++ b/setup.py	2026-09-26 14:44:13.408959435 +0200
+@@ -22,8 +22,10 @@
+             ext.extra_compile_args = ["-std=c11", "-fvisibility=hidden"]
+         else:
+             ext.extra_compile_args = ["/std:c11", "/utf-8"]
+-        if path.exists("src/scanner.c"):
+-            ext.sources.append("src/scanner.c")
++        if path.exists("tree-sitter-markdown/src/scanner.c"):
++            ext.sources.append("tree-sitter-markdown/src/scanner.c")
++        if path.exists("tree-sitter-markdown-inline/src/scanner.c"):
++            ext.sources.append("tree-sitter-markdown-inline/src/scanner.c")
+         if ext.py_limited_api:
+             ext.define_macros.append(("Py_LIMITED_API", "0x030A0000"))
+         super().build_extension(ext)
+@@ -41,7 +43,8 @@
+     def find_sources(self):
+         super().find_sources()
+         self.filelist.recursive_include("queries", "*.scm")
+-        self.filelist.include("src/tree_sitter/*.h")
++        self.filelist.include("tree-sitter-markdown/src/tree_sitter/*.h")
++        self.filelist.include("tree-sitter-markdown-inline/src/tree_sitter/*.h")
+ 
+ 
+ setup(
+@@ -57,13 +60,17 @@
+             name="_binding",
+             sources=[
+                 "bindings/python/tree_sitter_markdown/binding.c",
+-                "src/parser.c",
++                "tree-sitter-markdown/src/parser.c",
++                "tree-sitter-markdown-inline/src/parser.c",
+             ],
+             define_macros=[
+                 ("PY_SSIZE_T_CLEAN", None),
+                 ("TREE_SITTER_HIDE_SYMBOLS", None),
+             ],
+-            include_dirs=["src"],
++            include_dirs=[
++                "tree-sitter-markdown/src",
++                "tree-sitter-markdown-inline/src"
++            ],
+             py_limited_api=not get_config_var("Py_GIL_DISABLED"),
+         )
+     ],
+--- a/bindings/python/tree_sitter_markdown/__init__.py	2026-09-29 19:29:58.719601955 +0200
++++ b/bindings/python/tree_sitter_markdown/__init__.py	2026-09-29 19:30:29.962228510 +0200
+@@ -2,7 +2,7 @@
+ 
+ from importlib.resources import files as _files
+ 
+-from ._binding import language
++from ._binding import inline_language, language
+ 
+ 
+ def _get_query(name, file):
+@@ -29,6 +29,7 @@
+ 
+ __all__ = [
+     "language",
++    "inline_language",
+     "HIGHLIGHTS_QUERY",
+     "INJECTIONS_QUERY",
+     "LOCALS_QUERY",
+--- a/bindings/python/tests/test_binding.py	2026-10-01 15:07:02.826862935 +0200
++++ b/bindings/python/tests/test_binding.py	2026-10-01 15:08:17.419947735 +0200
+@@ -1,6 +1,8 @@
+ from unittest import TestCase
+ 
+-import tree_sitter, tree_sitter_markdown
++import tree_sitter_markdown
++
++from tree_sitter import Parser, Language
+ 
+ 
+ class TestLanguage(TestCase):
+@@ -12,6 +14,6 @@
+ 
+     def test_can_load_block_grammar(self):
+         try:
+-            Parser(Language(tree_sitter_markdown.inline_language())
++            Parser(Language(tree_sitter_markdown.inline_language()))
+         except Exception:
+             self.fail("Error loading Markdown inline grammar")

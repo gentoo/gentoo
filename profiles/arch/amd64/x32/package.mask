@@ -68,13 +68,11 @@ dev-python/jupyter-server-proxy
 sci-misc/jupyterlab-desktop-bin
 dev-python/plotly
 dev-python/plotly-geo
-dev-python/chart-studio
 sci-visualization/dash
 >=dev-python/notebook-7
 dev-python/spyder-notebook
 app-emacs/emacs-ipython-notebook
 dev-python/jupyter
-dev-python/vpython
 dev-python/widgetsnbextension
 dev-python/ipywidgets
 dev-python/metakernel

@@ -1,0 +1,10 @@
+# /etc/conf.d/vnstatd: config file for /etc/init.d/vnstatd
+
+#VNSTATD_USER="vnstat"
+#VNSTATD_CONFIGFILE="/etc/vnstat.conf"
+
+# Options to vnstatd
+# See vnstatd(8) for more details
+# Notes:
+#  * Do not specify another CONFIGFILE but use the variable above to change the location
+VNSTATD_OPTS=""

@@ -1,0 +1,18 @@
+Fix build with LLVM 23
+
+Before LLVM 24, __builtin_amdgcn_fdot2_f32_bf16 takes short2 operands, and
+implicit conversions between vector types are rejected.
+--- a/src/include/miopen/conv/device_grouped_conv_fwd.hpp
++++ b/src/include/miopen/conv/device_grouped_conv_fwd.hpp
+@@ -17,7 +17,11 @@
+ {
+ #if defined(__gfx950__)
+     // gfx950 has a hardware bf16 dot; matches CK's half2_t path (v_dot2_f32_f16).
++#if __clang_major__ >= 24
+     typedef __bf16 bf16x2_t __attribute__((ext_vector_type(2)));
++#else
++    typedef short bf16x2_t __attribute__((ext_vector_type(2)));
++#endif
+     c = __builtin_amdgcn_fdot2_f32_bf16(
+         __builtin_bit_cast(bf16x2_t, a), __builtin_bit_cast(bf16x2_t, b), c, false);
+ #else

@@ -17,8 +17,22 @@
 
 #--- END OF EXAMPLES ---
 
+# Alexander Tsoy (2026-09-27)
+# Assembly optimisations are supported on amd64 for all versions
+app-crypt/veracrypt -asm
+
+# Sam James <sam@gentoo.org> (2026-09-23)
+# Only supported on some arches.
+dev-libs/elfutils -stackprof
+
+# Michał Górny <mgorny@gentoo.org> (2026-09-22)
+# Fortran modules require llvm-core/flang.
+llvm-runtimes/openmp -fortran
+
 # Sam James <sam@gentoo.org> (2026-07-22)
 # media-libs/libmysofa is keyworded here
+media-video/ffmpeg -sofa
+media-video/ffmpeg-compat -sofa
 media-video/pipewire -sofa
 
 # Alfredo Tupone <tupone@gentoo.org> (2026-05-18)
@@ -175,10 +189,6 @@ games-emulation/rmg -dynarec
 # Unmask the ugrd flag for installkernel. It is keyworded here
 sys-kernel/installkernel -ugrd
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2024-06-23)
-# Pulls in kde-apps/kgpg which is keyworded here
->=kde-apps/kdeutils-meta-24.05.1 -gpg
-
 # Jared Allard <jared@rgst.io> (2024-06-21)
 # uasm and jwasm include amd64-specific ASM
 app-arch/7zip -uasm -jwasm
@@ -215,6 +225,7 @@ llvm-core/clang-common -cet
 sys-devel/gcc -cet
 sys-libs/binutils-libs -cet
 sys-libs/glibc -cet
+media-libs/x265 -cet
 
 # Leonardo Hernández Hernández <leohdz172@proton.me> (2024-02-23)
 # net-libs/paho-mqtt-c is only available for amd64 and x86
@@ -288,7 +299,7 @@ dev-python/tables -cpudetection
 # AMDGPU enablement depends on dev-libs/rocr-runtime, ~amd64 only
 # See also: https://bugs.gentoo.org/891499
 llvm-runtimes/offload -llvm_targets_AMDGPU
-llvm-runtimes/openmp -llvm_targets_AMDGPU
+llvm-runtimes/openmp -llvm_targets_AMDGPU -rocm
 
 # Michał Górny <mgorny@gentoo.org> (2023-01-24)
 # libomptarget is only supported on 64-bit architectures.
@@ -378,7 +389,7 @@ llvm-runtimes/compiler-rt-sanitizers -asan -dfsan -lsan -msan -hwasan -tsan
 llvm-runtimes/compiler-rt-sanitizers -ubsan -safestack -cfi -scudo
 llvm-runtimes/compiler-rt-sanitizers -gwp-asan
 llvm-runtimes/compiler-rt-sanitizers -libfuzzer -memprof -orc -profile -xray
-llvm-runtimes/compiler-rt-sanitizers -ctx-profile -nsan -rtsan
+llvm-runtimes/compiler-rt-sanitizers -copyprof -ctx-profile -nsan -rtsan
 
 # Sam James <sam@gentoo.org> (2020-10-24)
 # asm redc is only available on amd64,

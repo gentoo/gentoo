@@ -45,14 +45,23 @@ src_configure() {
 	strip-unsupported-flags
 
 	local mycmakeargs=(
+		# cmake.eclass does not set if it we don't inherit fortran-2
+		# and upstream code relies on it being set before Fortran logic
+		# kicks in and reds envvars
+		-DCMAKE_Fortran_COMPILER="${FC}"
 		# we may not have a runtime yet
 		-DCMAKE_Fortran_COMPILER_WORKS=TRUE
+		# tests require modules now, and we probably want them anyway
+		-DRUNTIMES_FORTRAN_MODULES=ON
 
 		-DLLVM_ENABLE_RUNTIMES="flang-rt"
 		# this package forces NO_DEFAULT_PATHS
 		-DLLVM_BINARY_DIR="${ESYSROOT}/usr/lib/llvm/${LLVM_MAJOR}"
 		# set correct install paths
 		-DRUNTIMES_INSTALL_RESOURCE_PATH="${EPREFIX}/usr/lib/clang/${LLVM_MAJOR}"
+		# do not install flang-rt C++ headers, they cause collisions
+		# across slots and do not seem to be used by anything
+		-DLLVM_INSTALL_TOOLCHAIN_ONLY=ON
 		-DLLVM_DEFAULT_TARGET_TRIPLE="${CHOST}"
 
 		-DFLANG_RT_INCLUDE_TESTS=$(usex test)

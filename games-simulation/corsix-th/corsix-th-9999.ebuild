@@ -21,7 +21,7 @@ else
 	S="${WORKDIR}/${MY_P}"
 
 	if [[ ${PV} != *_beta* && ${PV} != *_rc* ]] ; then
-		KEYWORDS="~amd64 ~arm64 ~x86"
+		KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 	fi
 fi
 
@@ -45,7 +45,6 @@ RDEPEND="
 	virtual/zlib:=
 	midi? (
 		media-libs/rtmidi
-		media-sound/fluid-soundfont
 	)
 	videos? ( >=media-video/ffmpeg-2.2.3:0= )
 "
@@ -69,7 +68,7 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-0.67-cmake_lua_detection.patch
+	"${FILESDIR}"/${PN}-9999-cmake_lua_detection.patch
 )
 
 lua_enable_tests busted

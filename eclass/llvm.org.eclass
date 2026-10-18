@@ -72,11 +72,11 @@ if [[ -z ${_LLVM_SOURCE_TYPE+1} ]]; then
 			_LLVM_SOURCE_TYPE=snapshot
 
 			case ${PV} in
-				24.0.0_pre20260725)
-					EGIT_COMMIT=0bf3638ddfe6e8bb3b79ebe8c2a918384a5df612
+				24.0.0_pre20261010)
+					EGIT_COMMIT=53310c92e86e1c285b1fe3aaf76158addd0a2036
 					;;
-				23.1.0_pre20260724)
-					EGIT_COMMIT=bb9934d4dfef9033ded36d26827dbb6d3ac1dd92
+				24.0.0_pre20260929)
+					EGIT_COMMIT=9fe649af67007493c02108b484c8b9259e3d522e
 					;;
 				*)
 					die "Unknown snapshot: ${PV}"
@@ -182,13 +182,23 @@ case ${LLVM_MAJOR} in
 			XCore
 		)
 		;;
-	*)
+	2[0-3])
 		ALL_LLVM_EXPERIMENTAL_TARGETS=(
 			ARC CSKY DirectX M68k Xtensa
 		)
 		ALL_LLVM_PRODUCTION_TARGETS=(
 			AArch64 AMDGPU ARM AVR BPF Hexagon Lanai LoongArch Mips
 			MSP430 NVPTX PowerPC RISCV Sparc SPIRV SystemZ VE
+			WebAssembly X86 XCore
+		)
+		;;
+	*)
+		ALL_LLVM_EXPERIMENTAL_TARGETS=(
+			ARC CSKY M68k Xtensa
+		)
+		ALL_LLVM_PRODUCTION_TARGETS=(
+			AArch64 AMDGPU ARM AVR BPF DirectX Hexagon Lanai LoongArch
+			Mips MSP430 NVPTX PowerPC RISCV Sparc SPIRV SystemZ VE
 			WebAssembly X86 XCore
 		)
 		;;

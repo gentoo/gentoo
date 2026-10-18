@@ -4,7 +4,7 @@
 EAPI=8
 
 LLVM_COMPAT=( 20 )
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 
 MRUSTC_VERSION="0.12.0"
 MRUSTC_RUST_VERSION="1.90.0"
@@ -25,7 +25,7 @@ else
 	RUST_MIN_VER="$(ver_cut 1).$(($(ver_cut 2) - 1)).0"
 fi
 
-inherit check-reqs estack edo flag-o-matic llvm-r1 multiprocessing optfeature \
+inherit check-reqs estack edo flag-o-matic llvm-r2 multiprocessing optfeature \
 	multilib multilib-build python-any-r1 rust rust-toolchain toolchain-funcs verify-sig
 
 if [[ ${PV} = *9999* ]]; then
@@ -117,7 +117,8 @@ BDEPEND="${PYTHON_DEPS}
 	test? ( dev-debug/gdb )
 	verify-sig? ( sec-keys/openpgp-keys-rust )
 	mrustc-bootstrap? (
-		~dev-lang/mrustc-${MRUSTC_VERSION}
+		amd64? ( ~dev-lang/mrustc-${MRUSTC_VERSION} )
+		arm64? ( ~dev-lang/mrustc-0.12.0_p20261018 )
 		dev-build/cmake
 		sys-devel/gcc:*
 	)
@@ -269,7 +270,7 @@ pkg_setup() {
 	fi
 
 	if use system-llvm; then
-		llvm-r1_pkg_setup
+		llvm-r2_pkg_setup
 
 		local llvm_config="$(get_llvm_prefix)/bin/llvm-config"
 		export LLVM_LINK_SHARED=1

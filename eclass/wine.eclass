@@ -57,8 +57,8 @@ REQUIRED_USE="
 "
 
 RDEPEND="
-	arm64? ( wow64? ( app-emulation/fex-xtajit[wow64(+)] ) )
-	arm64ec? ( app-emulation/fex-xtajit[arm64ec(-)] )
+	arm64? ( wow64? ( >=app-emulation/fex-xtajit-2608[wow64(+)] ) )
+	arm64ec? ( >=app-emulation/fex-xtajit-2608[arm64ec(-)] )
 "
 BDEPEND="
 	|| (
@@ -408,13 +408,23 @@ wine_src_install() {
 		fi
 	fi
 
-	use arm64 && use wow64 &&
-		dosym -r /usr/lib/fex-xtajit/libwow64fex.dll \
-			${WINE_PREFIX}/wine/aarch64-windows/xtajit.dll
+	if use arm64; then
+		if use wow64; then
+			dosym -r /usr/lib/fex-xtajit/libwow64fex.dll \
+				${WINE_PREFIX}/wine/aarch64-windows/xtajit.dll
 
-	use arm64ec &&
-		dosym -r /usr/lib/fex-xtajit/libarm64ecfex.dll \
-			${WINE_PREFIX}/wine/aarch64-windows/xtajit64.dll
+			dosym -r /usr/lib/fex-xtajit/libwow64fex.so \
+				${WINE_PREFIX}/wine/aarch64-unix/libwow64fex.so
+		fi
+
+		if use arm64ec; then
+			dosym -r /usr/lib/fex-xtajit/libarm64ecfex.dll \
+				${WINE_PREFIX}/wine/aarch64-windows/xtajit64.dll
+
+			dosym -r /usr/lib/fex-xtajit/libarm64ecfex.so \
+				${WINE_PREFIX}/wine/aarch64-unix/libarm64ecfex.so
+		fi
+	fi
 
 	# delete unwanted files if requested, not done directly in ebuilds
 	# given must be done after install and before wrappers

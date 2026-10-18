@@ -1,0 +1,17 @@
+# https://sqlite.org/forum/forumpost/4150e3519a
+--- a/ext/session/changeset.c	
++++ b/ext/session/changeset.c	
+@@ -395,11 +395,11 @@
+         if( !isalnum(zTab[0]) || sqlite3_strglob("*[^a-zA-Z0-9]*",zTab)==0 ){
+           zSQLTabName = sqlite3_mprintf("\"%w\"", zTab);
+         }else{
+           zSQLTabName = sqlite3_mprintf("%s", zTab);
+         }
+-        if( zSQLTablName==0 ){
++        if( zSQLTabName==0 ){
+           printf("/***** Out Of Memory ******/\n");
+           break;
+         }
+         printf("/****** Changes for table %s ***************/\n", zSQLTabName);
+       }
+

@@ -561,7 +561,11 @@ cmake_src_configure() {
 	# Fix xdg collision with sandbox
 	xdg_environment_reset
 
-	local libdir=$(get_libdir)
+	local has_fortran=0 libdir=$(get_libdir)
+
+	if has fortran-2 ${INHERITED}; then
+		has_fortran=1
+	fi
 
 	# Prepare Gentoo override rules (set valid compiler, append CPPFLAGS etc.)
 	local build_rules=${BUILD_DIR}/gentoo_rules.cmake
@@ -571,7 +575,9 @@ cmake_src_configure() {
 		set(CMAKE_ASM-ATT_LINK_FLAGS "-nostdlib" CACHE STRING "ASM-ATT link flags" FORCE)
 		set(CMAKE_C_COMPILE_OBJECT "<CMAKE_C_COMPILER> <DEFINES> <INCLUDES> ${CPPFLAGS} <FLAGS> -o <OBJECT> -c <SOURCE>" CACHE STRING "C compile command" FORCE)
 		set(CMAKE_CXX_COMPILE_OBJECT "<CMAKE_CXX_COMPILER> <DEFINES> <INCLUDES> ${CPPFLAGS} <FLAGS> -o <OBJECT> -c <SOURCE>" CACHE STRING "C++ compile command" FORCE)
-		set(CMAKE_Fortran_COMPILE_OBJECT "<CMAKE_Fortran_COMPILER> <DEFINES> <INCLUDES> ${FCFLAGS} <FLAGS> -o <OBJECT> -c <SOURCE>" CACHE STRING "Fortran compile command" FORCE)
+		if(${has_fortran}) # if has fortran-2 inherited
+			set(CMAKE_Fortran_COMPILE_OBJECT "<CMAKE_Fortran_COMPILER> <DEFINES> <INCLUDES> ${FCFLAGS} <FLAGS> -o <OBJECT> -c <SOURCE>" CACHE STRING "Fortran compile command" FORCE)
+		endif()
 
 		# in Prefix we need rpath and must ensure cmake gets our default linker path
 		# right ... except for Darwin hosts
@@ -616,7 +622,9 @@ cmake_src_configure() {
 		set(CMAKE_ASM-ATT_COMPILER "${myCC/ /;}")
 		set(CMAKE_C_COMPILER "${myCC/ /;}")
 		set(CMAKE_CXX_COMPILER "${myCXX/ /;}")
-		set(CMAKE_Fortran_COMPILER "${myFC/ /;}")
+		if(${has_fortran}) # if has fortran-2 inherited
+			set(CMAKE_Fortran_COMPILER "${myFC/ /;}")
+		endif()
 		set(CMAKE_AR $(type -P $(tc-getAR)) CACHE FILEPATH "Archive manager" FORCE)
 		set(CMAKE_RANLIB $(type -P $(tc-getRANLIB)) CACHE FILEPATH "Archive index generator" FORCE)
 		set(CMAKE_SYSTEM_NAME "${sysname}")

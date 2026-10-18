@@ -1,0 +1,45 @@
+From 12d41a270d708e3d5b535c960abf4a1c836b870b Mon Sep 17 00:00:00 2001
+From: Bohdan Onofriichuk <bogdan.onofriuchuk@gmail.com>
+Date: Sun, 20 Sep 2026 11:14:58 +0300
+Subject: [PATCH] applets/weather: fix bbcukmet location search cancellation
+
+Decrement the pending job counter before checking whether the location
+search was canceled.
+
+Otherwise, when a search is canceled, the last job sees a non-zero
+pending job count and never finishes the promise, leaving the ion
+unusable for subsequent requests.
+
+
+(cherry picked from commit dffaef451f203293628dd4a3f1a847e8c889b678)
+
+Co-authored-by: Bohdan Onofriichuk <bogdan.onofriuchuk@gmail.com>
+---
+ applets/weather/ions/bbcukmet/ion_bbcukmet.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/applets/weather/ions/bbcukmet/ion_bbcukmet.cpp b/applets/weather/ions/bbcukmet/ion_bbcukmet.cpp
+index 03ec0939b..2323821e7 100644
+--- a/applets/weather/ions/bbcukmet/ion_bbcukmet.cpp
++++ b/applets/weather/ions/bbcukmet/ion_bbcukmet.cpp
+@@ -427,6 +427,8 @@ void UKMETIon::places_slotJobFinished(KJob *job)
+ 
+ void UKMETIon::places_slotJobAutoFinished(KJob *job)
+ {
++    --m_pendingSearchCount;
++
+     if (m_locationPromise->isCanceled()) {
+         if (!m_pendingSearchCount) {
+             m_locationPromise->finish();
+@@ -435,8 +437,6 @@ void UKMETIon::places_slotJobAutoFinished(KJob *job)
+         return;
+     }
+ 
+-    --m_pendingSearchCount;
+-
+     // If Redirected, don't go to this routine
+     if (!job->error()) {
+         readSearchData(m_locationsAutoData);
+-- 
+GitLab
+

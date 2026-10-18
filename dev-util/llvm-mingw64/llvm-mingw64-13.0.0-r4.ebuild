@@ -27,9 +27,9 @@ SLOT="0"
 KEYWORDS="~arm64"
 IUSE="+arm64ec-pe custom-cflags +strip"
 
-PATCHES="
-	${FILESDIR}/${PN}-13.0.0-r1-exclude-arm64-cflags.patch
-"
+PATCHES=(
+	"${FILESDIR}"/${PN}-13.0.0-r1-exclude-arm64-cflags.patch
+)
 
 BDEPEND="
 	dev-build/cmake

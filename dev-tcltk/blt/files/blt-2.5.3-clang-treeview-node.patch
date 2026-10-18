@@ -1,0 +1,11 @@
+--- a/generic/bltTreeViewCmd.c
++++ b/generic/bltTreeViewCmd.c
+@@ -6533,7 +6533,7 @@
+         Tcl_Obj *listObjPtr, *objPtr;
+         if (tvPtr->selAnchorPtr == NULL) return TCL_OK;
+         listObjPtr = Tcl_NewListObj(0, (Tcl_Obj **)NULL);
+-        objPtr = NodeToObj(tvPtr->selAnchorPtr);
++        objPtr = NodeToObj(tvPtr->selAnchorPtr->node);
+         Tcl_ListObjAppendElement(interp, listObjPtr, objPtr);
+         if (tvPtr->selAnchorCol != NULL) {
+             objPtr = Tcl_NewStringObj( tvPtr->selAnchorCol->key, -1);

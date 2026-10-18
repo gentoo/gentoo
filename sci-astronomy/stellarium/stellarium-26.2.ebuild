@@ -87,6 +87,10 @@ DEPEND="${RDEPEND}
 
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/stellarium.asc
 
+PATCHES=(
+	"${FILESDIR}"/stellarium-26.2-link-error.patch
+)
+
 pkg_setup() {
 	if tc-is-clang && ! use libcxx && [[ $(tc-get-cxx-stdlib) == libc++ ]]; then
 		die "When using libc++, please enable USE=libcxx"

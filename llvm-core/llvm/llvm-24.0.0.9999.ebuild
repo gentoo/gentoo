@@ -258,6 +258,7 @@ get_distribution_components() {
 			count
 			not
 			yaml-bench
+			UnicodeCharSetsGenerator
 			UnicodeNameMappingGenerator
 
 			# tools
@@ -273,6 +274,7 @@ get_distribution_components() {
 			llvm-bcanalyzer
 			llvm-bitcode-strip
 			llvm-c-test
+			llvm-calc-occupancy
 			llvm-cas
 			llvm-cat
 			llvm-cfi-verify
@@ -331,7 +333,6 @@ get_distribution_components() {
 			llvm-reduce
 			llvm-remarkutil
 			llvm-rtdyld
-			llvm-sim
 			llvm-size
 			llvm-split
 			llvm-stress
@@ -386,6 +387,9 @@ multilib_src_configure() {
 	# to avoid people grumbling. GCC is, anecdotally, more likely to miscompile
 	# LLVM with LTO anyway (which is not necessarily its fault).
 	tc-is-gcc && filter-lto
+
+	# https://github.com/llvm/llvm-project/issues/219693
+	append-flags -fno-strict-aliasing
 
 	local ffi_cflags ffi_ldflags
 	if use libffi; then

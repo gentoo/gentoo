@@ -3,7 +3,8 @@
 
 EAPI=8
 
-inherit autotools eapi9-ver linux-info xdg multilib-minimal optfeature pam toolchain-funcs
+inherit autotools eapi9-ver linux-info multilib-minimal optfeature pam
+inherit toolchain-funcs xdg
 
 MY_PV="${PV/_beta/b}"
 MY_PV="${MY_PV/_rc/rc}"
@@ -15,10 +16,19 @@ if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/OpenPrinting/cups.git"
 	[[ ${PV} != 9999 ]] && EGIT_BRANCH=branch-${PV/.9999}
 else
-	SRC_URI="https://github.com/OpenPrinting/cups/releases/download/v${MY_PV}/cups-${MY_PV}-source.tar.gz"
+	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/michaelrsweet.asc
+	inherit verify-sig
+
+	SRC_URI="
+		https://github.com/OpenPrinting/cups/releases/download/v${MY_PV}/${MY_P}-source.tar.gz
+		verify-sig? ( https://github.com/OpenPrinting/cups/releases/download/v${MY_PV}/${MY_P}-source.tar.gz.sig )
+	"
+
 	if [[ ${PV} != *_beta* && ${PV} != *_rc* ]] ; then
 		KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 	fi
+
+	BDEPEND="verify-sig? ( sec-keys/openpgp-keys-michaelrsweet )"
 fi
 
 DESCRIPTION="The Common Unix Printing System"
@@ -31,7 +41,7 @@ IUSE="acl dbus debug kerberos openssl pam selinux static-libs systemd test usb X
 
 RESTRICT="!test? ( test )"
 
-BDEPEND="
+BDEPEND+="
 	acct-group/lp
 	acct-group/lpadmin
 	virtual/pkgconfig

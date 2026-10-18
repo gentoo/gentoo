@@ -1,16 +1,16 @@
-# Copyright 2023 Gentoo Authors
+# Copyright 2023-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=9
 
-NEED_EMACS=26.1
+NEED_EMACS="26.1"
 
 inherit elisp
 
 DESCRIPTION="Gruvbox is a retro groove color scheme, now in Emacs"
 HOMEPAGE="https://github.com/greduan/emacs-theme-gruvbox/"
 
-if [[ ${PV} == *9999* ]] ; then
+if [[ "${PV}" == *9999* ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/greduan/emacs-theme-gruvbox.git"
 else

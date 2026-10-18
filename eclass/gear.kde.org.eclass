@@ -64,7 +64,7 @@ elif [[ -z ${KDE_ORG_COMMIT} ]]; then
 fi
 
 # list of applications ported to KF6 having to block SLOT=5; TODO: drop on 2026-09-01
-if $(ver_test -gt 24.01.75); then
+if $(ver_test -gt 24.01.75) && $(ver_test -lt 26.08.1); then
 	case ${PN} in
 		akonadi | \
 		akonadi-calendar | \

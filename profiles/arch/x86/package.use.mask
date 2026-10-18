@@ -1,6 +1,36 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Matthias Maier <tamiko@gentoo.org> (2026-10-12)
+# 64 bit global ordinals do not work on 32 bit
+# architectures, bug #928017
+sci-libs/trilinos int64
+sci-libs/dealii int64
+
+# Alexander Tsoy (2026-09-27)
+# Assembly optimisations are supported on x86 for all versions
+app-crypt/veracrypt -asm
+
+# Sam James <sam@gentoo.org> (2026-09-23)
+# Only supported on some arches.
+dev-libs/elfutils -stackprof
+
+# Michał Górny <mgorny@gentoo.org> (2026-09-19)
+# Dekeywording dev-python/pyarrow.
+sci-libs/gdal parquet
+
+# Michał Górny <mgorny@gentoo.org> (2026-09-19)
+# Dekeywording sci-libs/vtk.
+media-libs/opencv vtk
+sci-libs/dealii vtk
+sci-libs/opencascade vtk
+sci-mathematics/maxima vtk
+sci-physics/geant vtk
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2026-08-31)
+# Pulls in kde-apps/kgpg which is not keyworded here.
+kde-apps/kdeutils-meta gpg
+
 # Alexey Sokolov <alexey+gentoo@asokolov.org> (2026-07-07)
 # New versions of dev-cpp/cpp-httplib dropped support for 32 bits. Bug #973312
 dev-util/ccache http
@@ -71,10 +101,6 @@ app-emulation/qemu passt
 # Alfred Wingate <parona@protonmail.com> (2025-07-31)
 # mongodb not keyworded here
 sci-libs/gdal mongodb
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-07-26)
-# kde-apps/kamoso not keyworded yet, bug #946343
->=kde-apps/kdemultimedia-meta-25.04.2-r1 gstreamer
 
 # Robin H. Johnson <robbat2@gentoo.org> (2025-07-04)
 # Deeper test dependencies with Ruby 3.3 are no longer yet keyworded keyword;
@@ -386,10 +412,6 @@ app-admin/syslog-ng test
 # James Le Cuirot <chewi@gentoo.org> (2019-12-10)
 # The JIT feature only works on amd64 and x86.
 app-emulation/aranym -jit
-
-# Thomas Deutschmann <whissi@gentoo.org> (2019-11-11)
-# dev-python/pandas is keyworded for x86
-sys-block/fio -python -gnuplot
 
 # Luke Dashjr <luke-jr+gentoobugs@utopios.org> (2019-09-21)
 # iasl is stable on x86

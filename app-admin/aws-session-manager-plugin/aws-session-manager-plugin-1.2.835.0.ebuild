@@ -13,7 +13,7 @@ S=${WORKDIR}/${P#aws-}
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 
 src_prepare() {
 	default
@@ -22,11 +22,21 @@ src_prepare() {
 }
 
 src_compile() {
-	emake GO_BUILD="go build" build-linux-${GOARCH}
+	local TARGET
+	if use amd64; then
+		TARGET=build-linux-amd64
+	elif use arm64; then
+		TARGET=build-arm64
+	else
+		die "Unsupported architecture: ${GOARCH}"
+	fi
+	emake GO_BUILD="go build" ${TARGET}
 }
 
 src_install() {
-	dobin bin/linux_${GOARCH}/ssmcli bin/linux_${GOARCH}_plugin/session-manager-plugin
+	dobin bin/linux_${GOARCH}_plugin/session-manager-plugin
+	use amd64 && dobin bin/linux_amd64/ssmcli
+
 	local DOCS=( README.md RELEASENOTES.md )
 	einstalldocs
 

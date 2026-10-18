@@ -12,7 +12,7 @@ SRC_URI="https://github.com/go-gitea/gitea/releases/download/v${PV}/gitea-src-${
 S="${WORKDIR}/${PN}-src-${PV}"
 LICENSE="Apache-2.0 BSD BSD-2 CC0-1.0 ISC MIT MPL-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~riscv ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~loong ~riscv ~x86"
 IUSE="+acct gogit pam sqlite pie"
 
 DEPEND="

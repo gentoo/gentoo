@@ -22,7 +22,7 @@ RUBY_S="rails-${PV}/${PN}"
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1-2)"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
 
 ruby_add_rdepend "
 	~dev-ruby/activesupport-${PV}

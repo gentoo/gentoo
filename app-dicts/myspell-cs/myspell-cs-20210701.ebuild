@@ -24,4 +24,4 @@ SRC_URI="https://extensions.libreoffice.org/assets/downloads/57/czech-dictionari
 
 LICENSE="GPL-2 MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~sparc x86"

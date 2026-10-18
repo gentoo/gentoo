@@ -25,7 +25,8 @@ COMMON_DEPEND="
 	dev-db/sqlite:3
 	dev-libs/glib:2
 	dev-libs/icu:=
-	dev-libs/kdsingleapplication[qt6(+)]
+	dev-libs/kdsingleapplication:=[qt6(+)]
+	dev-libs/openssl:=
 	dev-qt/qtbase:6[concurrent,dbus?,gui,network,ssl,sql,sqlite,widgets,X?]
 	media-libs/taglib:=
 	media-libs/gstreamer:1.0

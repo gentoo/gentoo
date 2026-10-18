@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=9
+
 MY_PF=${P/_p2/}
 MY_P=${MY_PF}.pl02
 

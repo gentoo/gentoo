@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+
 PYTHON_COMPAT=( python3_{11..14} )
 inherit gnome.org gnome2-utils meson python-any-r1 udev xdg
 
@@ -31,7 +32,7 @@ REQUIRED_USE="
 	gtk-doc? ( introspection )
 	wayland? ( ^^ ( elogind systemd ) udev )
 	test? ( screencast wayland )
-	xwayland? ( wayland )"
+"
 RESTRICT="!test? ( test )"
 
 # gnome-settings-daemon is build checked but used at runtime only for org.gnome.settings-daemon.peripherals.keyboard

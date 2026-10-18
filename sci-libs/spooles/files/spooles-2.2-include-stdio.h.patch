@@ -1,0 +1,24 @@
+From 433b42aca312e1f44ab20366ab7748a5d8246a70 Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+Date: Thu, 16 Apr 2026 15:20:24 +0200
+Subject: include stdio.h
+
+Signed-off-by: Paul Zander <negril.nx+gentoo@gmail.com>
+
+diff --git a/Utilities/IV.h b/Utilities/IV.h
+index eb7dfcf..5890b4e 100644
+--- a/Utilities/IV.h
++++ b/Utilities/IV.h
+@@ -11,6 +11,9 @@
+    return value -- the size of the (x2[],y2[]) arrays
+    -------------------------------------------------------
+ */
++
++#include <stdio.h>
++
+ int
+ IVcompress ( 
+    int   size1, 
+-- 
+2.53.0
+

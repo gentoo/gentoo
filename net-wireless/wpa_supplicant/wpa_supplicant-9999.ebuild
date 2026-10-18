@@ -66,13 +66,6 @@ DOC_CONTENTS="
 	/usr/share/doc/${PF}/
 "
 
-PATCHES=(
-	# bug #320097
-	"${FILESDIR}/${PN}-2.6-do-not-call-dbus-functions-with-NULL-path.patch"
-	# bug #912315
-	"${FILESDIR}/${PN}-2.10-allow-legacy-renegotiation.patch"
-)
-
 Kconfig_style_config() {
 	#param 1 is CONFIG_* item
 	#param 2 is what to set it = to, defaulting in y
@@ -349,7 +342,7 @@ src_compile() {
 	fi
 
 	if use eapol-test ; then
-		emake -C wpa_supplicant/eapol_test
+		emake -C wpa_supplicant eapol_test
 	fi
 }
 

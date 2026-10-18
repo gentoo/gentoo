@@ -11,12 +11,14 @@ inherit ecm frameworks.kde.org
 DESCRIPTION="Assortment of high-level widgets for common tasks"
 
 LICENSE="LGPL-2.1+"
-KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 arm64 ~loong ppc64 ~riscv ~x86"
 IUSE=""
 
 DEPEND=">=dev-qt/qtbase-${QTMIN}:6[gui,widgets]"
 RDEPEND="${DEPEND}"
 BDEPEND=">=dev-qt/qttools-${QTMIN}:6[linguist]"
+
+PATCHES=( "${FILESDIR}/${P}-kcolorbuttontest.patch" ) # in 6.30
 
 CMAKE_SKIP_TESTS=(
 	# bug 650216

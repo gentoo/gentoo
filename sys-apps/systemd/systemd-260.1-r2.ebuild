@@ -260,6 +260,7 @@ src_prepare() {
 		"${FILESDIR}/systemd-260.1-openssl-4.patch"
 		"${FILESDIR}/systemd-260.1-gcc-17.patch"
 		"${FILESDIR}/systemd-260.1-gpt-generator.patch"
+		"${FILESDIR}/systemd-261-lxml-6.1.3.patch"
 	)
 
 	if ! use vanilla; then

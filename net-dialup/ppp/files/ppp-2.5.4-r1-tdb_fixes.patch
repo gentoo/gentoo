@@ -1,0 +1,520 @@
+https://github.com/ppp-project/ppp/pull/638
+
+From bafd1f300006993800f3e6a5661bae8380fdf0c7 Mon Sep 17 00:00:00 2001
+From: Adam Zegarek <keragez@gmail.com>
+Date: Mon, 28 Sep 2026 14:44:18 +0200
+Subject: [PATCH 1/5] pppd: Correct printf specifier in dbglog: '.*B' needs two
+ args
+
+The debug message in eaptls_send() uses "%d ... %.*B", which consumes
+three arguments: the byte count for %d, then an int precision and a
+buffer pointer for %.*B. Only two were passed, so the count was taken
+as the %d, the dummy buffer pointer was taken as the precision, and
+vslprintf() fetched the %B data pointer from whatever followed on the
+argument list. With "debug" enabled this reads through an undefined
+pointer for an effectively arbitrary number of bytes and can crash
+pppd during an EAP-TLS handshake.
+
+Pass res for %d and MIN(res, 20) as the precision, as intended.
+
+Fixes: dd5acd90f0ff ("pppd/EAP-TLS: Send zero byte as protected success indication with TLS 1.3")
+Signed-off-by: Adam Zegarek <keragez@gmail.com>
+---
+ pppd/eap-tls.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/pppd/eap-tls.c b/pppd/eap-tls.c
+index 9e4ebe7c..21fab452 100644
+--- a/pppd/eap-tls.c
++++ b/pppd/eap-tls.c
+@@ -985,7 +985,8 @@ int eaptls_send(struct eaptls_session *ets, bool is_server, u_char ** outp)
+ 	    /* This serves mainly to advance the TLS handshake process. */
+             res = SSL_read(ets->ssl, dummy, sizeof(dummy));
+ 	    if (res >= 0)
+-		dbglog("got %d bytes from SSL_read: %.*B", MIN(res, 20), dummy);
++		dbglog("got %d bytes from SSL_read: %.*B",
++		       res, MIN(res, 20), dummy);
+         }
+ 
+ 	/*
+
+From 553145c70923917b64b19c96037d422b42063433 Mon Sep 17 00:00:00 2001
+From: Adam Zegarek <keragez@gmail.com>
+Date: Mon, 28 Sep 2026 15:51:53 +0200
+Subject: [PATCH 2/5] pppd: Pass correct PPP_SCRIPT_INSTANCE name for deferred
+ ip-up, ipv6-up and auth-down
+
+run_program() exports its name argument to the script as
+PPP_SCRIPT_INSTANCE. pppd.8 documents it as "the name of the intended
+script, as documented, not as referenced", and recommends it to scripts
+because with strict-script-checks (the default) a #! script is run via
+fexecve() and its $0 no longer identifies which hook it is.
+
+Three call sites pass a name that does not match the script they run:
+
+ - link_down() runs path_auth_down labelled "auth-up". This is the
+   normal link-down path whenever the peer authenticated.
+ - ipv6cp_up() runs path_ipv6up labelled "ipv6-ip". This is every
+   time IPv6CP comes up.
+ - ipcp_script_done() runs path_ipup labelled "ip-down" when the link
+   came back up while ip-down was still running.
+
+The correct script file was always executed; only the environment
+variable was wrong. A single script installed for several hooks that
+dispatches on $PPP_SCRIPT_INSTANCE would take the wrong branch, e.g.
+re-adding rules on auth-down, or doing nothing on ipv6-up.
+
+Fixes: e87ddf0085c6 ("run_program:  Export the name of the script via PPP_SCRIPT_INSTANCE")
+Signed-off-by: Adam Zegarek <keragez@gmail.com>
+---
+ pppd/auth.c   | 2 +-
+ pppd/ipcp.c   | 2 +-
+ pppd/ipv6cp.c | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/pppd/auth.c b/pppd/auth.c
+index f017d406..696e3ba2 100644
+--- a/pppd/auth.c
++++ b/pppd/auth.c
+@@ -790,7 +790,7 @@ link_down(int unit)
+ 	if (auth_script_state == s_up && auth_script_pid == 0) {
+ 	    ppp_get_link_stats(NULL);
+ 	    auth_script_state = s_down;
+-	    auth_script(path_auth_down, "auth-up");
++	    auth_script(path_auth_down, "auth-down");
+ 	}
+     }
+     if (!mp_on())
+diff --git a/pppd/ipcp.c b/pppd/ipcp.c
+index d92f9ed5..976fef79 100644
+--- a/pppd/ipcp.c
++++ b/pppd/ipcp.c
+@@ -2153,7 +2153,7 @@ ipcp_script_done(void *arg)
+     case s_down:
+ 	if (ipcp_fsm[0].state == OPENED) {
+ 	    ipcp_script_state = s_up;
+-	    ipcp_script(path_ipup, 0, "ip-down");
++	    ipcp_script(path_ipup, 0, "ip-up");
+ 	}
+ 	break;
+     }
+diff --git a/pppd/ipv6cp.c b/pppd/ipv6cp.c
+index 7c6a0b5b..92579213 100644
+--- a/pppd/ipv6cp.c
++++ b/pppd/ipv6cp.c
+@@ -1400,7 +1400,7 @@ ipv6cp_up(fsm *f)
+      */
+     if (ipv6cp_script_state == s_down && ipv6cp_script_pid == 0) {
+ 	ipv6cp_script_state = s_up;
+-	ipv6cp_script(path_ipv6up, "ipv6-ip");
++	ipv6cp_script(path_ipv6up, "ipv6-up");
+     }
+ }
+ 
+
+From 26093eeea8c251625b6c674c849268e87f933500 Mon Sep 17 00:00:00 2001
+From: Adam Zegarek <keragez@gmail.com>
+Date: Mon, 28 Sep 2026 17:03:23 +0200
+Subject: [PATCH 3/5] pppd: Clear pppdb after tdb_close() in ppp_safe_fork()
+
+The forked child closes the TDB with tdb_close(), which zeroes and
+frees the context, but leaves the global pppdb pointing at the freed
+memory.
+
+This was harmless until e87ddf0, because nothing in the child touched
+pppdb before execve(). run_program() now calls
+ppp_script_setenv("PPP_SCRIPT_INSTANCE", ...) in the child, which sees
+pppdb != NULL and calls update_db_entry() -> tdb_store() on the freed
+context. The allocation of the new environment string can reuse that
+chunk, so the result depends on heap layout: often the child survives,
+sometimes it dies with SIGSEGV before it executes the script. The
+parent only logs "Child process ... terminated with signal 11" and
+carries on, so ip-up, ip-down, auth-up, auth-down etc. are silently
+skipped.
+
+Seen in the field on 2.5.4 with PPPoE as SIGSEGV core dumps of pppd
+(the script child), and reproduced on x86_64 with the new script-run
+test, where the auth-down child crashed.
+
+Only builds with --enable-multilink (PPP_WITH_TDB) are affected.
+
+Fixes: e87ddf0085c6 ("run_program:  Export the name of the script via PPP_SCRIPT_INSTANCE")
+Signed-off-by: Adam Zegarek <keragez@gmail.com>
+---
+ pppd/main.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/pppd/main.c b/pppd/main.c
+index fecf9a03..d9e3abea 100644
+--- a/pppd/main.c
++++ b/pppd/main.c
+@@ -1726,8 +1726,10 @@ ppp_safe_fork(int infd, int outfd, int errfd)
+ 	/* Executing in the child */
+ 	ppp_sys_close();
+ #ifdef PPP_WITH_TDB
+-	if (pppdb != NULL)
++	if (pppdb != NULL) {
+ 		tdb_close(pppdb);
++		pppdb = NULL;	/* tdb_close() can't null the caller's pointer */
++	}
+ #endif
+ 
+ 	/* make sure infd, outfd and errfd won't get tromped on below */
+
+From 2cc2d4cf48b8206f9bf5c791871ae9af1a7750af Mon Sep 17 00:00:00 2001
+From: Adam Zegarek <keragez@gmail.com>
+Date: Mon, 28 Sep 2026 17:04:12 +0200
+Subject: [PATCH 4/5] testsuite: Verify hook scripts are executed, instead of
+ crashing
+
+No existing test installs a hook script, and run_program() returns
+before forking when the script file does not exist, so the code between
+fork() and execve() was never run by the suite. That is how a SIGSEGV
+in the script child (see "pppd: Clear pppdb after tdb_close() in
+ppp_safe_fork()") went unnoticed.
+
+pppfns.py: PppPeer gains a scripts={name: text} argument. The scripts
+are staged exactly like pap-secrets/chap-secrets: on Linux they are
+copied into the root-owned tmpfs behind the bind-mounted confdir and
+symlinked from it, elsewhere they are copied into the real confdir
+(PPPD_TEST_GLOBAL_CONF=1 hosts only) and removed afterwards. They are
+installed mode 755 so ppp_check_access(PPP_FT_EXEC) accepts them.
+
+script-run_test.py installs hooks that append their name,
+$PPP_SCRIPT_INSTANCE and arguments to a marker file, then:
+
+ - brings a link up and down and checks ip-pre-up (run with wait=1),
+   ip-up and ip-down (wait=0) all ran;
+ - repeats with side a as a PAP server and checks auth-up and
+   auth-down ran;
+ - checks PPP_SCRIPT_INSTANCE matches each hook (skipped when unset,
+   so --pppd-bin2 against pre-2.5.4 pppd still works);
+ - fails if pppd logged a script child terminated by a signal.
+
+The test is skipped for builds without TDB (--enable-multilink), where
+the crash cannot happen, and on non-Linux hosts that already have one
+of the hook scripts installed. The marker file is created by the test
+user beforehand, since the script child runs with umask 077.
+
+Results on x86_64 Linux:
+  without TDB:                SKIP
+  TDB, without pppdb fix:     FAIL (auth-down child terminated with signal 11)
+  TDB, with pppdb fix:        PASS
+
+Signed-off-by: Adam Zegarek <keragez@gmail.com>
+---
+ Makefile.am                  |   3 +-
+ testsuite/pppfns.py          |  56 +++++++++------
+ testsuite/script-run_test.py | 132 +++++++++++++++++++++++++++++++++++
+ 3 files changed, 167 insertions(+), 24 deletions(-)
+ create mode 100644 testsuite/script-run_test.py
+
+diff --git a/Makefile.am b/Makefile.am
+index 31e1b179..6ec62a08 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -60,7 +60,8 @@ EXTRA_DIST= \
+     testsuite/data-transfer_test.py \
+     testsuite/link-up_test.py \
+     testsuite/mtu-negotiation_test.py \
+-    testsuite/ping_test.py
++    testsuite/ping_test.py \
++    testsuite/script-run_test.py
+ 
+ # Integration tests: bring up pairs of pppd instances and verify link
+ # negotiation, IP routing, authentication etc. Needs root or passwordless
+diff --git a/testsuite/pppfns.py b/testsuite/pppfns.py
+index d9e06fc6..329c769c 100644
+--- a/testsuite/pppfns.py
++++ b/testsuite/pppfns.py
+@@ -199,7 +199,8 @@ class PppPeer:
+ 
+     def __init__(self, name: str, binary: str, local_ip: str, remote_ip: str,
+                  options=None, noauth: bool = True,
+-                 pap_secrets: str = None, chap_secrets: str = None):
++                 pap_secrets: str = None, chap_secrets: str = None,
++                 scripts: dict = None):
+         self.name = name
+         self.binary = binary
+         self.local_ip = local_ip
+@@ -218,25 +219,34 @@ def __init__(self, name: str, binary: str, local_ip: str, remote_ip: str,
+         confdir = pppd_confdir(binary)
+         etc_ppp = self.dir / 'etc.ppp'
+         etc_ppp.mkdir(parents=True)
+-        secrets = []
++        conf_files = []         # (name, mode) pairs staged by launch.sh below
++
++        def stage(fname, text, mode):
++            (self.dir / fname).write_text(text)
++            if IS_LINUX:
++                # pppd refuses a secrets file unless its resolved path
++                # consists entirely of root-owned, non-group/other-
++                # writable components, which a scratch dir under $HOME
++                # can never satisfy. The check walks the realpath, so
++                # symlink the file into a root-owned tmpfs dir that
++                # launch.sh populates inside the mount namespace.
++                (etc_ppp / fname).symlink_to(f'/run/ppp-conf/{fname}')
++            else:
++                # No mount namespace: launch.sh copies the file into the
++                # real confdir (PPPD_TEST_GLOBAL_CONF gate); remove it
++                # again in stop().
++                self.conf_cleanup.append(f'{confdir}/{fname}')
++            conf_files.append((fname, mode))
++
+         for fname, text in (('pap-secrets', pap_secrets),
+                             ('chap-secrets', chap_secrets)):
+             if text is not None:
+-                (self.dir / fname).write_text(text)
+-                if IS_LINUX:
+-                    # pppd refuses a secrets file unless its resolved path
+-                    # consists entirely of root-owned, non-group/other-
+-                    # writable components, which a scratch dir under $HOME
+-                    # can never satisfy. The check walks the realpath, so
+-                    # symlink the secrets into a root-owned tmpfs dir that
+-                    # launch.sh populates inside the mount namespace.
+-                    (etc_ppp / fname).symlink_to(f'/run/ppp-conf/{fname}')
+-                else:
+-                    # No mount namespace: launch.sh copies the file into the
+-                    # real confdir (PPPD_TEST_GLOBAL_CONF gate); remove it
+-                    # again in stop().
+-                    self.conf_cleanup.append(f'{confdir}/{fname}')
+-                secrets.append(fname)
++                stage(fname, text, '600')
++        # Hook scripts pppd execs itself (ip-up, ip-down, ...). They must be
++        # root-owned, non-group/other-writable and executable or
++        # ppp_check_access() refuses to run them.
++        for fname, text in (scripts or {}).items():
++            stage(fname, text, '755')
+         if IS_LINUX:
+             # The bind-mounted confdir replaces the host's, so provide the
+             # files pppd reads from it. An empty options file keeps the run
+@@ -283,19 +293,19 @@ def __init__(self, name: str, binary: str, local_ip: str, remote_ip: str,
+                 f"mkdir -p {q(confdir)}",
+                 f"mount --bind {q(str(etc_ppp))} {q(confdir)}",
+                 'mkdir -m 755 /run/ppp-conf']
+-            for fname in secrets:
++            for fname, mode in conf_files:
+                 script += [f"cp {q(str(self.dir / fname))} /run/ppp-conf/{fname}",
+-                           f"chmod 600 /run/ppp-conf/{fname}"]
++                           f"chmod {mode} /run/ppp-conf/{fname}"]
+             script += ['ip link set lo up']
+         else:
+             script += [f"mkdir -p {q(confdir)}"]
+-            for fname in secrets:
++            for fname, mode in conf_files:
+                 dst = f'{confdir}/{fname}'
+-                # Never clobber a real secrets file, even on an opted-in
+-                # host.
++                # Never clobber a real secrets file or hook script, even on
++                # an opted-in host.
+                 script += [f"if [ -e {q(dst)} ]; then echo {q(dst)} already exists >&2; exit 1; fi",
+                            f"cp {q(str(self.dir / fname))} {q(dst)}",
+-                           f"chmod 600 {q(dst)}"]
++                           f"chmod {mode} {q(dst)}"]
+         script += [
+             # $$ survives the exec, so this records the watchdog's (or
+             # pppd's) pid; on Linux it also names the network namespace
+diff --git a/testsuite/script-run_test.py b/testsuite/script-run_test.py
+new file mode 100644
+index 00000000..2f7c384e
+--- /dev/null
++++ b/testsuite/script-run_test.py
+@@ -0,0 +1,132 @@
++#!/usr/bin/env python3
++# pppd must actually execute the /etc/ppp hook scripts.
++#
++# Regression test for the run_program() child dereferencing the pppdb
++# pointer that ppp_safe_fork() had already tdb_close()d (and freed): the
++# child died of SIGSEGV before reaching execve, so ip-up/ip-down silently
++# never ran while the parent daemon carried on looking healthy. Only
++# reachable when pppd is built with TDB (--enable-multilink) and a hook
++# script actually exists -- run_program() returns before forking if the
++# script is missing, which is why no other test in this suite reaches it.
++#
++# Also checks PPP_SCRIPT_INSTANCE names the script actually being run
++# (link_down() used to run auth-down labelled as "auth-up").
++
++import os
++import shlex
++import time
++
++from pppfns import (
++    IS_LINUX, PPPD, SCRATCHDIR, PppPair, pppd_confdir, require_link_env,
++    test_fail, test_skipped,
++)
++
++require_link_env()
++
++# The crash only happens in the TDB code path, so a build without it would
++# pass whether or not the bug is present. PPP_PATH_PPPDB is only compiled in
++# with PPP_WITH_TDB.
++with open(PPPD, 'rb') as f:
++    if b'/pppd2.tdb' not in f.read():
++        test_skipped(f'{PPPD} built without TDB support (--enable-multilink)')
++
++HOOK = """#!/bin/sh
++echo "hello from {name} instance=${{PPP_SCRIPT_INSTANCE:-unset}} args=$*" >> {marker}
++"""
++
++
++def make_scripts(names, marker):
++    # The script child runs with umask 077, so a marker file created by the
++    # (root) hook would be unreadable when the suite runs via sudo. Create
++    # it as the invoking user first; >> keeps the ownership.
++    marker.touch()
++    return {name: HOOK.format(name=name, marker=shlex.quote(str(marker)))
++            for name in names}
++
++
++if not IS_LINUX:
++    # Without a mount namespace the hooks go into the real confdir, and
++    # launch.sh refuses to clobber existing ones (most hosts ship ip-up).
++    confdir = pppd_confdir(PPPD)
++    for name in ('ip-pre-up', 'ip-up', 'ip-down', 'auth-up', 'auth-down'):
++        if os.path.exists(f'{confdir}/{name}'):
++            test_skipped(f'{confdir}/{name} already exists')
++
++
++def wait_for_hook(peer, marker, name, timeout=30):
++    """Wait for the named hook script to append its line to the marker file."""
++    prefix = f'hello from {name} '
++    deadline = time.time() + timeout
++    while True:
++        for line in marker.read_text().splitlines():
++            if line.startswith(prefix):
++                return line
++        if time.time() >= deadline:
++            break
++        time.sleep(0.1)
++
++    # Didn't run. The parent logs a warning when a script child dies on a
++    # signal, so surface that here -- it distinguishes "pppd never forked"
++    # from "the forked child crashed before execve".
++    detail = ''
++    for line in peer.log_text().splitlines():
++        if 'terminated with signal' in line:
++            detail = f'\npppd reported a dying script child: {line.strip()}'
++            break
++    test_fail(f'/etc/ppp/{name} did not run within {timeout}s{detail}')
++
++
++def check_hook(peer, marker, name):
++    line = wait_for_hook(peer, marker, name)
++    print(line)
++    # PPP_SCRIPT_INSTANCE is new in 2.5.4; only assert it when present so
++    # that --pppd-bin2 runs against an older binary still work.
++    got = line.split('instance=', 1)[1].split(' ', 1)[0]
++    if got == 'unset':
++        print('  PPP_SCRIPT_INSTANCE not set (pre-2.5.4 pppd?)')
++    elif got != name:
++        test_fail(f'{name}: PPP_SCRIPT_INSTANCE is {got!r}, expected {name!r}')
++
++
++def check_no_crashed_children(pair):
++    for peer in (pair.a, pair.b):
++        for line in peer.log_text().splitlines():
++            if 'terminated with signal' in line:
++                test_fail(f'pppd {peer.name}: script child died: {line.strip()}')
++
++
++# Hooks go on side 'a', which always runs the binary under test.
++
++print('ip-pre-up / ip-up / ip-down:')
++marker = SCRATCHDIR / 'ip.out'
++scripts = make_scripts(('ip-pre-up', 'ip-up', 'ip-down'), marker)
++with PppPair(a_kwargs=dict(scripts=scripts), name='ip') as pair:
++    pair.up()
++    # ip-pre-up runs synchronously (run_program(..., wait=1)), the others
++    # asynchronously -- different paths through the parent side of the fork.
++    check_hook(pair.a, marker, 'ip-pre-up')
++    check_hook(pair.a, marker, 'ip-up')
++    # Dropping the peer makes 'a' tear the link down, which must run ip-down
++    # before 'a' exits.
++    pair.b.stop()
++    check_hook(pair.a, marker, 'ip-down')
++    pair.a.stop()
++    check_no_crashed_children(pair)
++
++# auth-up/auth-down only run when 'a' authenticated its peer, so make 'a'
++# the PAP server (see auth-pap_test.py).
++print('auth-up / auth-down:')
++marker = SCRATCHDIR / 'auth.out'
++scripts = make_scripts(('auth-up', 'auth-down'), marker)
++with PppPair(a_options=['auth', 'require-pap', 'name', 'srv'],
++             a_kwargs=dict(noauth=False, scripts=scripts,
++                           pap_secrets='cli\tsrv\t"s3cret"\t*\n'),
++             b_options=['user', 'cli', 'remotename', 'srv',
++                        'password', 's3cret'],
++             name='auth') as pair:
++    pair.up()
++    check_hook(pair.a, marker, 'auth-up')
++    pair.b.stop()
++    check_hook(pair.a, marker, 'auth-down')
++    pair.a.stop()
++    check_no_crashed_children(pair)
+
+From 4358f132f56fc98a926998080b50343a519e811d Mon Sep 17 00:00:00 2001
+From: Adam Zegarek <keragez@gmail.com>
+Date: Tue, 29 Sep 2026 10:17:20 +0200
+Subject: [PATCH 5/5] testsuite: Run script-run on builds without TDB too
+
+script-run was skipped unless pppd was built with TDB
+(--enable-multilink), because only there can the pppdb use-after-free
+in the script child happen. But the test checks more than that crash:
+that ip-pre-up, ip-up, ip-down, auth-up and auth-down are executed at
+all, and that PPP_SCRIPT_INSTANCE names the hook actually being run.
+Neither depends on TDB, and the PPP_SCRIPT_INSTANCE mislabelling fixed
+in "pppd: Pass correct PPP_SCRIPT_INSTANCE name for deferred ip-up,
+ipv6-up and auth-down" affected every build.
+
+Skipping also meant the test never ran on Solaris/illumos, where
+multilink is not supported. Those are the only CI hosts where
+run_program() may exec scripts via the /dev/fd/N fallback instead of
+fexecve(), so they are worth covering.
+
+Run the test on every build, and print a note when TDB is absent so
+that a pass there is not mistaken for coverage of the pppdb fix. The
+Ubuntu CI jobs build with --enable-multilink, so they still exercise
+the crash.
+
+Results on x86_64 Linux:
+  without TDB:                PASS (with note)
+  TDB, without pppdb fix:     FAIL (auth-down child terminated with signal 11)
+  TDB, with pppdb fix:        PASS
+
+Signed-off-by: Adam Zegarek <keragez@gmail.com>
+---
+ testsuite/script-run_test.py | 10 +++++++---
+ 1 file changed, 7 insertions(+), 3 deletions(-)
+
+diff --git a/testsuite/script-run_test.py b/testsuite/script-run_test.py
+index 2f7c384e..c940219b 100644
+--- a/testsuite/script-run_test.py
++++ b/testsuite/script-run_test.py
+@@ -11,6 +11,9 @@
+ #
+ # Also checks PPP_SCRIPT_INSTANCE names the script actually being run
+ # (link_down() used to run auth-down labelled as "auth-up").
++#
++# Builds without TDB still run the test: the scripts must run and be
++# labelled correctly there too, only the pppdb crash can't happen.
+ 
+ import os
+ import shlex
+@@ -23,12 +26,13 @@
+ 
+ require_link_env()
+ 
+-# The crash only happens in the TDB code path, so a build without it would
+-# pass whether or not the bug is present. PPP_PATH_PPPDB is only compiled in
++# The crash only happens in the TDB code path, so without it a pass says
++# nothing about the pppdb fix; say so. PPP_PATH_PPPDB is only compiled in
+ # with PPP_WITH_TDB.
+ with open(PPPD, 'rb') as f:
+     if b'/pppd2.tdb' not in f.read():
+-        test_skipped(f'{PPPD} built without TDB support (--enable-multilink)')
++        print(f'note: {PPPD} built without TDB (--enable-multilink); '
++              'pppdb regression not exercised')
+ 
+ HOOK = """#!/bin/sh
+ echo "hello from {name} instance=${{PPP_SCRIPT_INSTANCE:-unset}} args=$*" >> {marker}

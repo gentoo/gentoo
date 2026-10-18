@@ -12,4 +12,4 @@ inherit sec-keys
 DESCRIPTION="OpenPGP keys used to sign ntpsec releases"
 HOMEPAGE="https://ftp.ntpsec.org/pub/releases/"
 
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"

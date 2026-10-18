@@ -32,15 +32,16 @@ RESTRICT="!test? ( test )"
 
 # check NEWS.md for build system changes entries for boost/libebml/libmatroska
 # version requirement updates and other packaging info
+# boost[nls] bug #979450
 RDEPEND="
-	>=dev-libs/boost-1.74.0:=
+	>=dev-libs/boost-1.74.0:=[nls]
 	dev-libs/gmp:=
-	>=dev-libs/libebml-1.4.5:=
+	>=dev-libs/libebml-1.4.7:=
 	>=dev-libs/libfmt-8.0.1:=
 	>=dev-libs/pugixml-1.11
 	>=dev-qt/qtbase-6.2:6[dbus?]
 	media-libs/flac:=
-	>=media-libs/libmatroska-1.7.1:=
+	>=media-libs/libmatroska-1.7.2:=
 	media-libs/libogg
 	media-libs/libvorbis
 	virtual/zlib:=
@@ -72,6 +73,11 @@ if [[ ${PV} != *9999 ]] ; then
 	BDEPEND+="verify-sig? ( sec-keys/openpgp-keys-moritzbunkus )"
 	VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/moritzbunkus.asc"
 fi
+
+PATCHES=(
+	"${FILESDIR}"/mktoolnix-101.0-optional-tests-build.patch
+	"${FILESDIR}"/mktoolnix-101.0-fix-nongui-build.patch
+)
 
 pkg_setup() {
 	if [[ ${MERGE_TYPE} != binary ]]; then
@@ -124,10 +130,11 @@ src_configure() {
 	local myeconfargs=(
 		$(use_enable dbus)
 		$(use_enable debug)
-		$(usex pch "" --disable-precompiled-headers)
-		$(use_enable gui)
 		$(use_with dvd dvdread)
+		$(use_enable gui)
 		$(use_with nls gettext)
+		$(usex pch "" --disable-precompiled-headers)
+		$(use_enable test tests)
 		#$(use_with nls po4a)
 		--disable-update-check
 		--disable-optimization

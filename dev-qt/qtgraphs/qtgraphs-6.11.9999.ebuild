@@ -8,7 +8,7 @@ inherit qt6-build
 DESCRIPTION="Graphs component library for the Qt6 framework"
 
 if [[ ${QT6_BUILD_TYPE} == release ]]; then
-	KEYWORDS="~amd64"
+	KEYWORDS="~amd64 ~arm64 ~ppc64"
 fi
 
 IUSE="quick3d"
@@ -21,6 +21,9 @@ RDEPEND="
 	quick3d? ( ~dev-qt/qtquick3d-${PV}:6 )
 "
 DEPEND="${RDEPEND}"
+BDEPEND="
+	~dev-qt/qtshadertools-${PV}:6
+"
 
 CMAKE_SKIP_TESTS=(
 	# hangs+timeout with offscreen rendering

@@ -14,7 +14,7 @@ if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://gitlab.gnome.org/GNOME/gegl.git"
 else
 	SRC_URI="https://download.gimp.org/pub/${PN}/${PV:0:3}/${P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~x86"
+	KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
 fi
 
 DESCRIPTION="A graph based image processing framework"
@@ -23,7 +23,7 @@ HOMEPAGE="https://gegl.org/"
 LICENSE="|| ( GPL-3+ LGPL-3 )"
 SLOT="0.4"
 
-IUSE="cairo debug ffmpeg gtk-doc +introspection jpeg2k lcms openexr openmp pdf raw sdl sdl2 svg test tiff umfpack vala v4l webp"
+IUSE="cairo debug ffmpeg gtk-doc +introspection jpeg2k lcms openexr openmp pdf raw sdl sdl2 sdl3 svg test tiff umfpack vala v4l webp"
 REQUIRED_USE="
 	gtk-doc? ( introspection )
 	svg? ( cairo )
@@ -34,9 +34,11 @@ REQUIRED_USE="
 RESTRICT="!test? ( test )"
 
 # See https://gegl.org/build.html for upstream instructions on dependencies.
+# opencl-3.0 =~ >=opencl-2023.02.06
 RDEPEND="
 	>=dev-libs/glib-2.44.0:2
 	>=dev-libs/json-glib-1.0.0
+	>=dev-util/opencl-headers-2023.02.06
 	>=media-libs/babl-0.1.116[introspection?,lcms?,vala?]
 	>=media-libs/libjpeg-turbo-1.0.0:=
 	>=media-libs/libnsgif-1.0.0:=
@@ -54,6 +56,7 @@ RDEPEND="
 	raw? ( >=media-libs/libraw-0.15.4:0= )
 	sdl? ( >=media-libs/libsdl-1.2.0 )
 	sdl2? ( >=media-libs/libsdl2-2.0.5 )
+	sdl3? ( >=media-libs/libsdl3-3.2.0 )
 	svg? ( >=gnome-base/librsvg-2.40.6:2 )
 	tiff? ( >=media-libs/tiff-4:= )
 	umfpack? ( sci-libs/umfpack )
@@ -165,7 +168,8 @@ src_configure() {
 		# - Test dependency
 		$(meson_feature test pygobject)
 		$(meson_feature sdl sdl1)
-		$(meson_feature sdl2 sdl2)
+		$(meson_feature sdl2)
+		$(meson_feature sdl3)
 		$(meson_feature umfpack)
 		$(meson_feature webp)
 	)
@@ -174,4 +178,5 @@ src_configure() {
 
 pkg_postinst() {
 	optfeature "'Show Image Graph' under GIMP[debug] menu 'File - Debug'" media-gfx/graphviz
+	optfeature "Optionally use OpenCL for operations" virtual/opencl
 }

@@ -1,0 +1,65 @@
+From b46f8c3bf8f05be53502381550f6c8ecfc562a50 Mon Sep 17 00:00:00 2001
+From: got3nks <got3nks@users.noreply.github.com>
+Date: Fri, 7 Aug 2026 10:53:15 +0200
+Subject: [PATCH] fix(cmake): detect libatomic with a link probe instead of
+ find_library (#454)
+
+On 32-bit targets the throttler's std::atomic<int64_t> needs libatomic
+(the ops expand to __atomic_*_8 library calls). The availability check
+used find_library(atomic), which only searches standard filesystem
+paths. With GCC, libatomic ships inside the compiler's own runtime dir
+(e.g. .../lib/gcc14/), which isn't on that path, so find_library
+false-fails and configure aborts -- even though `-latomic` links fine
+because the GCC driver resolves its internal copy (reported on MacPorts,
+#453).
+
+Replace find_library with check_library_exists(atomic __atomic_load_8),
+which links a probe with `-latomic` through the compiler driver. It
+succeeds wherever the flag actually links -- GCC's internal libatomic or
+a system libatomic (Clang / distro packages, versioned or not) -- and
+only errors when the flag genuinely can't link. The 32-bit "require
+libatomic" decision and the FATAL_ERROR guidance are unchanged; only the
+availability probe changes.
+
+Closes #453.
+---
+ CMakeLists.txt | 22 ++++++++++++++--------
+ 1 file changed, 14 insertions(+), 8 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 1a25468b9..6d41978f8 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -297,15 +297,21 @@ endif()
+ # require libatomic unconditionally on 32-bit builds.
+ set (LIBATOMIC "")
+ if (CMAKE_SIZEOF_VOID_P EQUAL 4)
+-	# Accept either the unversioned `libatomic.so` (Debian / Fedora /
+-	# Arch ship it via the -dev / -devel package) or the versioned-only
+-	# `libatomic.so.1` (openSUSE ships only the latter -- there's no
+-	# separate -devel package). Listing the unversioned name first keeps
+-	# the canonical path preferred when both are present.
+-	find_library (LIBATOMIC_LIBRARY NAMES atomic libatomic.so.1)
+-	if (LIBATOMIC_LIBRARY)
++	# Probe with a compiler-driven LINK test, not find_library. With GCC,
++	# libatomic ships inside the compiler's own runtime dir (e.g.
++	# .../lib/gcc14/) which is not on find_library's filesystem search
++	# path, so find_library false-fails even though `-latomic` links fine
++	# -- the GCC driver resolves its internal libatomic (MacPorts, #453).
++	# check_library_exists links a probe with `-latomic` through the
++	# compiler driver, so it succeeds wherever the flag actually links:
++	# GCC's internal copy, or a system libatomic (Clang / distro -dev
++	# packages, versioned or not). This replaces the earlier find_library
++	# lookup that only searched standard library paths.
++	include (CheckLibraryExists)
++	check_library_exists (atomic __atomic_load_8 "" HAVE_LIBATOMIC)
++	if (HAVE_LIBATOMIC)
+ 		set (LIBATOMIC atomic)
+-		message (STATUS "32-bit target: linking libatomic for std::atomic<int64_t> (${LIBATOMIC_LIBRARY})")
++		message (STATUS "32-bit target: linking libatomic for std::atomic<int64_t>")
+ 	else()
+ 		message (FATAL_ERROR
+ 			"32-bit target detected (sizeof(void*) == 4). aMule's "
+-- 
+2.55.0
+

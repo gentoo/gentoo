@@ -1,0 +1,159 @@
+# Copyright 1999-2026 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=8
+
+LLVM_COMPAT=( 18 19 20 21 22 )
+LLVM_OPTIONAL=1
+PYTHON_COMPAT=( python3_{11..15} )
+PYTHON_REQ_USE="xml(+)"
+
+inherit cmake flag-o-matic llvm-r2 optfeature python-any-r1
+
+DESCRIPTION="Documentation system for most programming languages"
+HOMEPAGE="https://www.doxygen.nl/"
+
+if [[ ${PV} == *9999* ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/doxygen/doxygen.git"
+else
+	SRC_URI="https://doxygen.nl/files/${P}.src.tar.gz"
+	SRC_URI+=" https://downloads.sourceforge.net/doxygen/rel-${PV}/${P}.src.tar.gz"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~arm64-macos ~x64-macos ~x64-solaris"
+fi
+
+# GPL-2 also for bundled libmscgen
+LICENSE="GPL-2"
+SLOT="0"
+IUSE="clang debug doc dot doxysearch gui test"
+# - We need TeX for tests, bug #765472
+# - We keep the odd construct of noop USE=test because of
+#   the special relationship b/t RESTRICT & USE for tests.
+#   Also, it's a hint which avoids tests being silently skipped during arch testing.
+REQUIRED_USE="clang? ( ${LLVM_REQUIRED_USE} ) test? ( doc )"
+RESTRICT="!test? ( test )"
+
+BDEPEND="
+	app-alternatives/yacc
+	app-alternatives/lex
+	${PYTHON_DEPS}
+"
+RDEPEND="
+	dev-db/sqlite:3
+	dev-lang/perl
+	dev-libs/libfmt:=
+	dev-libs/spdlog:=
+	virtual/libiconv
+	clang? (
+		$(llvm_gen_dep '
+			llvm-core/clang:${LLVM_SLOT}=
+			llvm-core/llvm:${LLVM_SLOT}=
+		')
+	)
+	dot? (
+		media-gfx/graphviz[cairo,freetype(+)]
+	)
+	doc? (
+		app-text/ghostscript-gpl
+		dev-texlive/texlive-bibtexextra
+		dev-texlive/texlive-fontsextra
+		dev-texlive/texlive-fontsrecommended
+		dev-texlive/texlive-fontutils
+		dev-texlive/texlive-latex
+		dev-texlive/texlive-latexextra
+		dev-texlive/texlive-plaingeneric
+		media-gfx/graphviz[cairo,freetype(+)]
+	)
+	doxysearch? ( dev-libs/xapian:= )
+	gui? (
+		dev-qt/qtbase:6[gui,widgets,xml]
+		dev-qt/qtsvg:6
+	)
+"
+DEPEND="${RDEPEND}"
+
+PATCHES=(
+	"${FILESDIR}/${PN}-1.15.0-link_with_pthread.patch"
+	"${FILESDIR}/${PN}-1.16.1-suppress-unused-option-libcxx.patch"
+	"${FILESDIR}/${PN}-1.17.0-test-tagfile-without-git.patch"
+)
+
+DOCS=( LANGUAGE.HOWTO README.md )
+
+pkg_setup() {
+	use clang && llvm-r2_pkg_setup
+	python-any-r1_pkg_setup
+}
+
+src_prepare() {
+	cmake_src_prepare
+
+	# fix pdf doc
+	sed -i.orig -e "s:g_kowal:g kowal:" \
+		doc/maintainers.txt || die
+
+	if is-flagq "-O3" ; then
+		# TODO: Investigate this and report a bug accordingly...
+		ewarn "Compiling with -O3 is known to produce incorrectly"
+		ewarn "optimized code which breaks doxygen. Using -O2 instead."
+		replace-flags "-O3" "-O2"
+	fi
+}
+
+src_configure() {
+	# Very slow to compile, bug #920092
+	filter-flags -fipa-pta
+	# -Wodr warnings, see bug #854357 and https://github.com/doxygen/doxygen/issues/9287
+	filter-lto
+
+	local mycmakeargs=(
+		-Duse_libclang=$(usex clang)
+		# Let the user choose instead, see also bug #822615
+		-Duse_libc++=OFF
+		-Dbuild_doc=$(usex doc)
+		-Dbuild_search=$(usex doxysearch)
+		-Dbuild_wizard=$(usex gui)
+		-Dforce_qt=Qt6
+		-Duse_sys_fmt=ON
+		-Duse_sys_spdlog=ON
+		-Duse_sys_sqlite3=ON
+		-DBUILD_SHARED_LIBS=OFF
+		-DGIT_EXECUTABLE="false"
+		# The default of 256 KiB is too small for large projects, bug #912261
+		-Denlarge_lex_buffers=1048576
+
+		# Noisy and irrelevant downstream
+		-Wno-dev
+	)
+
+	use doc && mycmakeargs+=(
+		-DDOC_INSTALL_DIR="share/doc/${PF}"
+	)
+
+	cmake_src_configure
+}
+
+src_compile() {
+	cmake_src_compile
+
+	if use doc; then
+		export VARTEXFONTS="${T}/fonts" # bug #564944
+
+		# -j1 for bug #770070
+		cmake_src_compile docs -j1
+	fi
+}
+
+src_install() {
+	cmake_src_install
+
+	# The HTML manual contains SVG images, bug #913584
+	use doc && docompress -x /usr/share/doc/${PF}/html
+}
+
+pkg_postinst() {
+	optfeature "rendering formulas as images in HTML output" \
+		"app-text/ghostscript-gpl dev-texlive/texlive-latex"
+	optfeature "converting EPS images and diagrams for PDF LaTeX output" \
+		dev-texlive/texlive-fontutils
+}

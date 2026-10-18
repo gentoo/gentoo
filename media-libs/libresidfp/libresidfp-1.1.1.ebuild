@@ -9,7 +9,7 @@ SRC_URI="https://github.com/libsidplayfp/libresidfp/releases/download/v${PV}/${P
 
 LICENSE="GPL-2+"
 SLOT="0/$(ver_cut 1-2)"
-KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~hppa ~ppc ~ppc64 ~riscv x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
