@@ -1,6 +1,10 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Matt Jolly <kangie@gentoo.org> (2026-10-18)
+# Not yet keyworded stable, but Rust is.
+dev-lang/rust mrustc-bootstrap
+
 # Sam James <sam@gentoo.org> (2026-09-11)
 # Neither sys-apps/bolt nor kde-plasma/plasma-thunderbolt are marked stable
 # here yet.
