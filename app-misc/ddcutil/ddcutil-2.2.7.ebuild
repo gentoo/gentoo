@@ -53,6 +53,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.4.1-no-werror.patch
 	"${FILESDIR}"/${PN}-2.2.7-fix-build-without-dbus.patch
 	"${FILESDIR}"/${PN}-2.2.7-fix-build-without-X.patch
+	"${FILESDIR}"/${PN}-2.2.7-remove-execinfo.patch
 )
 
 pkg_pretend() {
