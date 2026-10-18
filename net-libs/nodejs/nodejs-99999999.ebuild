@@ -37,9 +37,9 @@ RESTRICT="!test? ( test )"
 COMMON_DEPEND=">=app-arch/brotli-1.1.0:=
 	dev-db/sqlite:3
 	>=dev-cpp/ada-4.0.0:=
-	>=dev-cpp/simdutf-9.0.0:=
+	>=dev-cpp/simdutf-9.2.1:=
 	>=dev-libs/libuv-1.52.1:=
-	>=dev-libs/simdjson-4.6.11:=
+	>=dev-libs/simdjson-5.0.3:=
 	>=net-dns/c-ares-1.34.8:=
 	>=net-libs/nghttp2-1.70.0:=
 	>=net-libs/nghttp3-1.18.0:=
@@ -47,7 +47,7 @@ COMMON_DEPEND=">=app-arch/brotli-1.1.0:=
 	system-icu? ( >=dev-libs/icu-78:= )
 	system-ssl? (
 		>=net-libs/ngtcp2-1.25.0:=
-		>=dev-libs/openssl-3.5.8:0=
+		>=dev-libs/openssl-3.5.9:0=
 	)
 	!system-ssl? ( >=net-libs/ngtcp2-1.25.0:=[-gnutls] )
 	|| (
@@ -74,9 +74,10 @@ CHECKREQS_MEMORY="8G"
 CHECKREQS_DISK_BUILD="22G"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-26.3.0-gcc17.patch
-	"${FILESDIR}"/${PN}-26.3.0-format-cstdlib.patch
-	"${FILESDIR}"/${PN}-26.3.0-v8-climits.patch
+	"${FILESDIR}"/${PN}-26.11.1-add-missing-funcational-inc.patch
+	"${FILESDIR}"/${PN}-26.10.0-x86-SSE2-fix.patch
+	"${FILESDIR}"/${P}-simdutf-use-system-header.patch
+	"${FILESDIR}"/${PN}-26.11.1-include-EACCES-in-mkdir-test.patch
 )
 
 pkg_pretend() {
@@ -154,6 +155,7 @@ src_configure() {
 		--shared-nghttp3
 		--shared-ngtcp2
 		--shared-simdjson
+		--shared-simdutf
 		--shared-sqlite
 		--shared-zlib
 	)
@@ -283,6 +285,15 @@ src_test() {
 		test/sequential/test-tls-session-timeout.js
 		test/sequential/test-util-debug.js
 	)
+
+	if has_version "sys-libs/zlib-ng" ; then
+		elog "Some tests will be skipped due to being known to fail with sys-libs/zlib-ng"
+		elog
+		drop_tests+=( test/parallel/test-process-versions.js )
+		drop_tests+=( test/parallel/test-zlib-zip-interop.js )
+		elog
+	fi
+
 	use inspector ||
 		drop_tests+=(
 			test/parallel/test-inspector-emit-protocol-event.js
