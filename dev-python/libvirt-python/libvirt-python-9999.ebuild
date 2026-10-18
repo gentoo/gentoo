@@ -12,7 +12,7 @@ EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 inherit distutils-r1 verify-sig
 
 if [[ ${PV} == *9999* ]]; then
@@ -41,11 +41,12 @@ BDEPEND="
 	test? (
 		dev-python/lxml[${PYTHON_USEDEP}]
 	)
-	verify-sig? ( sec-keys/openpgp-keys-libvirt )
+	verify-sig? ( >=sec-keys/openpgp-keys-libvirt-20260831 )
 "
 
-VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/libvirt.org.asc
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/libvirt.asc
 
+EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
 
 python_compile() {

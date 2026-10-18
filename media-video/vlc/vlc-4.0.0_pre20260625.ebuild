@@ -27,7 +27,7 @@ else
 		fi
 		S="${WORKDIR}/${MY_P}"
 	fi
-	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv -sparc ~x86"
+	KEYWORDS="amd64 ~arm arm64 ~loong ~ppc ppc64 ~riscv -sparc ~x86"
 fi
 inherit autotools flag-o-matic lua-single toolchain-funcs virtualx xdg
 
@@ -291,6 +291,14 @@ src_prepare() {
 	fi
 	sed -i -e "/AX_CXX_COMPILE_STDCXX/{s/_17(/(${CXXSTD}, /}" configure.ac || die
 
+	if use kernel_linux ; then
+		if tc-is-gcc ; then
+			export QMAKESPEC="linux-g++"
+		elif tc-is-clang; then
+			export QMAKESPEC="linux-clang"
+		fi
+	fi
+
 	eautoreconf
 }
 
@@ -497,6 +505,15 @@ src_install() {
 	if ! use gui; then
 		rm "${ED}"/usr/share/applications/*desktop || die
 	fi
+}
+
+pkg_preinst() {
+	if use gui && has_version "<${CATEGORY}/${PN}-4[gui]"; then
+		ewarn "Upgrade from VLC-3 detected. If you experience runtime issues,"
+		ewarn "try cleaning up ~/.config/vlc first."
+		ewarn
+	fi
+	xdg_pkg_preinst
 }
 
 pkg_postinst() {

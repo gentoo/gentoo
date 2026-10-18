@@ -1,0 +1,134 @@
+https://bugs.gentoo.org/972401
+https://github.com/lxc/lxc/issues/4710
+https://github.com/lxc/lxc/pull/4711
+https://github.com/lxc/lxc/commit/c2809b067bbd5c63f0f78a5acd6f7af4e77e584c
+
+From c2809b067bbd5c63f0f78a5acd6f7af4e77e584c Mon Sep 17 00:00:00 2001
+From: Adrian Ratiu <adrian.ratiu@collabora.com>
+Date: Sat, 18 Jul 2026 23:11:52 +0300
+Subject: [PATCH] tree-wide: fix const-correctness issues exposed by glibc 2.43
+
+glibc 2.43 implements strchr(3), strrchr(3) and strstr(3) as
+C23-style _Generic macros which propagate the const qualifier
+of the input string to the return type.
+
+For example, a 'const char *' input now produces 'const char *'
+output types and vice-versa (non-const -> non-const).
+
+Building with clang and -Werror=incompatible-pointer-types fails:
+
+  src/lxc/confile.c:2690:4: error: assigning to 'char *' from
+      'const char *' discards qualifiers
+      [-Werror,-Wincompatible-pointer-types-discards-qualifiers]
+
+Constify the result pointers where they are only read. Where the
+code intentionally writes through the result into caller-owned
+writable storage, drop the bogus const from the parameter instead
+of casting it away: update_hwaddr() (and thus its caller
+append_unexp_config_line()) modify the string in-place via
+rand_complete_hwaddr(), so 'char *' is the honest type. The two
+call sites already pass writable buffers (a strdup()'d line and an
+internally built one), so no cast is needed.
+
+The one remaining cast is in cgroup1-only pam_cgfs code
+(cgv1_handle_cpuset_hierarchy) where the writable buffer is passed
+down through a const 'cgroup' parameter; that hierarchy is slated
+for removal, so the minimal cast is kept there.
+
+This is just a build fix, the runtime behavior is unchanged.
+
+Fixes: #4710
+Signed-off-by: Adrian Ratiu <adrian.ratiu@collabora.com>
+--- a/src/lxc/confile.c
++++ b/src/lxc/confile.c
+@@ -2675,7 +2675,7 @@ static int set_config_console_size(const char *key, const char *value,
+  * lxc.include.
+  * 'x' and 'X' are substituted in-place.
+  */
+-static void update_hwaddr(const char *line)
++static void update_hwaddr(char *line)
+ {
+ 	char *p;
+ 
+@@ -2701,7 +2701,7 @@ static void update_hwaddr(const char *line)
+ 	rand_complete_hwaddr(p);
+ }
+ 
+-int append_unexp_config_line(const char *line, struct lxc_conf *conf)
++int append_unexp_config_line(char *line, struct lxc_conf *conf)
+ {
+ 	size_t linelen;
+ 	size_t len = conf->unexpanded_len;
+@@ -4213,7 +4213,7 @@ static int get_config_uts_name(const char *key, char *retv, int inlen,
+ static int get_config_hooks(const char *key, char *retv, int inlen,
+ 			    struct lxc_conf *c, void *data)
+ {
+-	char *subkey;
++	const char *subkey;
+ 	int len, fulllen = 0, found = -1;
+ 	struct string_entry *entry;
+ 	int i;
+--- a/src/lxc/confile.h
++++ b/src/lxc/confile.h
+@@ -75,7 +75,7 @@ __hidden extern int lxc_list_net(struct lxc_conf *c, const char *key, char *retv
+ 
+ __hidden extern int lxc_config_read(const char *file, struct lxc_conf *conf, bool from_include);
+ 
+-__hidden extern int append_unexp_config_line(const char *line, struct lxc_conf *conf);
++__hidden extern int append_unexp_config_line(char *line, struct lxc_conf *conf);
+ 
+ extern int lxc_config_define_add(struct lxc_list *defines, char *arg);
+ 
+--- a/src/lxc/confile_utils.c
++++ b/src/lxc/confile_utils.c
+@@ -903,7 +903,7 @@ int lxc_inherit_namespace(const char *nsfd_path, const char *lxcpath,
+ {
+ 	__do_free char *dup = NULL;
+ 	int fd, pid;
+-	char *lastslash;
++	const char *lastslash;
+ 
+ 	if (nsfd_path[0] == '/') {
+ 		return open(nsfd_path, O_RDONLY | O_CLOEXEC);
+--- a/src/lxc/pam/pam_cgfs.c
++++ b/src/lxc/pam/pam_cgfs.c
+@@ -362,7 +362,7 @@ static char *copy_to_eol(char *s)
+ /* Check if given entry under /proc/<pid>/mountinfo is a fuse.lxcfs mount. */
+ static bool is_lxcfs(const char *line)
+ {
+-	char *p = strstr(line, " - ");
++	const char *p = strstr(line, " - ");
+ 	if (!p)
+ 		return false;
+ 
+@@ -1914,7 +1914,7 @@ static bool cgv1_handle_cpuset_hierarchy(struct cgv1_hierarchy *h,
+ 
+ 	if (*cgroup == '/')
+ 		cgroup++;
+-	slash = strchr(cgroup, '/');
++	slash = (char *)strchr(cgroup, '/');
+ 	if (slash)
+ 		*slash = '\0';
+ 
+--- a/src/lxc/storage/nbd.c
++++ b/src/lxc/storage/nbd.c
+@@ -291,7 +291,7 @@ static void nbd_detach(const char *path)
+  */
+ static int nbd_get_partition(const char *src)
+ {
+-	char *p = strchr(src, ':');
++	const char *p = strchr(src, ':');
+ 	if (!p)
+ 		return 0;
+ 
+--- a/src/lxc/storage/zfs.c
++++ b/src/lxc/storage/zfs.c
+@@ -461,7 +461,7 @@ int zfs_clonepaths(struct lxc_storage *orig, struct lxc_storage *new,
+ 			orig_src = cmd_output;
+ 		}
+ 
+-		tmp = strrchr(orig_src, '/');
++		tmp = (char *)strrchr(orig_src, '/');
+ 		if (!tmp) {
+ 			ERROR("Failed to detect \"/\" in \"%s\"", orig_src);
+ 			return -1;

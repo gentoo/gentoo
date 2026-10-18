@@ -21,7 +21,7 @@ if [[ -z ${_CARGO_ECLASS} ]]; then
 _CARGO_ECLASS=1
 
 if [[ -n ${RUST_NEEDS_LLVM} ]]; then
-		inherit llvm-r1
+	inherit llvm-r1
 fi
 
 if [[ -n ${CARGO_OPTIONAL} ]]; then
@@ -310,7 +310,7 @@ _cargo_set_crate_uris() {
 			local crate commit crate_uri crate_dir host repo_ext feat_expr
 
 			for crate in "${!GIT_CRATES[@]}"; do
-				IFS=';' read -r crate_uri commit crate_dir host <<< "${GIT_CRATES[${crate}]}"
+				IFS=';' read -rd '' crate_uri commit crate_dir host < <(printf %s "${GIT_CRATES[${crate}]}")
 
 				if [[ -z ${host} ]]; then
 					case "${crate_uri}" in
@@ -518,10 +518,10 @@ cargo_update_crates () {
 	cargo_env "${@}" || die "Failed to update crates"
 }
 
-# @FUNCTION: cargo_src_unpack
+# @FUNCTION: cargo_crate_unpack
 # @DESCRIPTION:
-# Unpacks the package and the cargo registry.
-cargo_src_unpack() {
+# Unpack the *.crate files from ${A}.
+cargo_crate_unpack() {
 	debug-print-function ${FUNCNAME} "$@"
 
 	mkdir -p "${ECARGO_VENDOR}" "${S}" || die
@@ -532,9 +532,6 @@ cargo_src_unpack() {
 		case "${archive}" in
 			*.crate)
 				crates+=( "${archive}" )
-				;;
-			*)
-				unpack "${archive}"
 				;;
 		esac
 	done
@@ -572,7 +569,27 @@ cargo_src_unpack() {
 			eqawarn "'pycargoebuild --crate-tarball' to create one."
 		fi
 	fi
+}
 
+# @FUNCTION: cargo_src_unpack
+# @DESCRIPTION:
+# Unpacks the package and the cargo registry.
+cargo_src_unpack() {
+	debug-print-function ${FUNCNAME} "$@"
+
+	mkdir -p "${ECARGO_VENDOR}" "${S}" || die
+
+	local archive
+	for archive in ${A}; do
+		case "${archive}" in
+			*.crate)
+				;;
+			*)
+				unpack "${archive}"
+				;;
+		esac
+	done
+	cargo_crate_unpack
 	cargo_gen_config
 }
 

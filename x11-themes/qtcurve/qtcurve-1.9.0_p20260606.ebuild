@@ -70,6 +70,7 @@ PATCHES=(
 
 src_configure() {
 	local mycmakeargs=(
+		-DCMAKE_DISABLE_FIND_PACKAGE_Git=ON
 		-DENABLE_QT4=OFF
 		-DENABLE_QT5=OFF
 		-DQTC_QT4_ENABLE_KDE=OFF
@@ -77,11 +78,13 @@ src_configure() {
 		-DENABLE_GTK2=$(usex gtk)
 		-DQTC_INSTALL_PO=$(usex plasma)
 		-DENABLE_QT6=$(usex qt6)
-		-DQTC_QT6_ENABLE_KDE=$(usex plasma)
 		-DBUILD_TESTING=$(usex test)
 		-DQTC_ENABLE_X11=$(usex X)
 	)
-	use plasma && mycmakeargs+=( -DQT_MAJOR_VERSION=6 )
+	use plasma && mycmakeargs+=(
+		-DQT_MAJOR_VERSION=6
+		-DQTC_QT6_ENABLE_KDE=ON
+	)
 
 	cmake_src_configure
 }

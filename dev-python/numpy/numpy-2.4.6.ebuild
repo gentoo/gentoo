@@ -124,7 +124,7 @@ python_configure_all() {
 		ppc64)
 			# every flag implies the previous one
 			for flag in '' 2 3 4; do
-				if ! use "cpu_flags_ppc_vsx${flags}"; then
+				if ! use "cpu_flags_ppc_vsx${flag}"; then
 					break
 				fi
 				cpu_baseline+=( "VSX${flag}" )

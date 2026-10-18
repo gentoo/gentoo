@@ -5,8 +5,8 @@ EAPI=8
 
 # Please bump with dev-python/btrfsutil
 
-PYTHON_COMPAT=( python3_{11..14} )
-inherit bash-completion-r1 python-any-r1 udev
+PYTHON_COMPAT=( python3_{12..15} )
+inherit python-any-r1 shell-completion udev
 
 if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/kdave/btrfs-progs.git"

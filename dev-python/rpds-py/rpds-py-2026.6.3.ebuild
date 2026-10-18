@@ -6,7 +6,7 @@ EAPI=8
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=maturin
 PYPI_VERIFY_REPO=https://github.com/crate-py/rpds
-PYTHON_COMPAT=( python3_{12..15} )
+PYTHON_COMPAT=( python3_{12..15} python3_{14..15}t )
 
 CRATES="
 	archery@1.2.2
@@ -46,7 +46,7 @@ LICENSE="MIT"
 # Dependent crate licenses
 LICENSE+=" Apache-2.0-with-LLVM-exceptions MIT Unicode-3.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="amd64 arm arm64 ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
 
 QA_FLAGS_IGNORED="usr/lib.*/py.*/site-packages/rpds/rpds.*.so"
 
@@ -57,5 +57,6 @@ export PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1
 
 src_unpack() {
 	pypi_src_unpack
-	cargo_src_unpack
+	cargo_crate_unpack
+	cargo_gen_config
 }

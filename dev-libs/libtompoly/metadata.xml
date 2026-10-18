@@ -9,7 +9,7 @@
         domain library.
       * Portable source code.
       * Provides access to polynomials of finite characteristic of varying degrees 
-        (it will grow to accomodate)
+        (it will grow to accommodate)
       * Includes several algebraic operations.
             o Usual addition, subtraction, division, multiplication.
             o Modular versions of the add/sub/mul

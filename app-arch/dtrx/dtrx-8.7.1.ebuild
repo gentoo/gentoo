@@ -37,7 +37,7 @@ src_prepare() {
 
 pkg_postinst() {
 	local -a supported_formats=(
-		arj bzip2 cpio gzip lrzip lzip p7zip rpm unrar unzip xz-utils
+		arj bzip2 cpio gzip lrzip lzip 7zip rpm unrar unzip xz-utils
 		zip zstd
 	)
 	local supported_format=""

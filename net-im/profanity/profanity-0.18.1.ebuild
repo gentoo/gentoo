@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 inherit flag-o-matic meson python-single-r1
 
 DESCRIPTION="A console based XMPP client inspired by Irssi"
@@ -12,7 +12,7 @@ SRC_URI="https://github.com/profanity-im/profanity/releases/download/${PV}/${P}.
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 ~arm64"
 IUSE="gpg gtk libnotify omemo omemo-qrcode otr python spell test xscreensaver"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="omemo-qrcode? ( omemo ) python? ( ${PYTHON_REQUIRED_USE} )"

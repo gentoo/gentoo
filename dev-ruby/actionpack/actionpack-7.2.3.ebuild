@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -61,7 +61,7 @@ all_ruby_prepare() {
 	rm ../Gemfile.lock || die
 
 	# Fix errors loading rack/session with rack 3.0 and use correct rails version.
-	sed -e '2igem "rack-session"; gem "railties", "~> 7.2.0"; gem "activemodel", "~> 7.2.0"' \
+	sed -e '2igem "rack-session"; gem "railties", "~> 7.2.0"; gem "activemodel", "~> 7.2.0"; gem "minitest", "~> 5"' \
 		-i test/abstract_unit.rb || die
 
 	# Use different timezone notation, this changed at some point due to an external dependency changing.

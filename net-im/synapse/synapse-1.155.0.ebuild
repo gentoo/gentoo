@@ -7,7 +7,7 @@ DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=maturin
 PYTHON_COMPAT=( python3_{12..14} )
 
-RUST_MIN_VER="1.82.0"
+RUST_MIN_VER="1.83"
 CRATES="
 	aho-corasick@1.1.3
 	anyhow@1.0.102

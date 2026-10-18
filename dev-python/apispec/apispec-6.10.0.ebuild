@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=flit
 PYPI_VERIFY_REPO=https://github.com/marshmallow-code/apispec
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 
 inherit distutils-r1 pypi
 
@@ -27,6 +27,7 @@ BDEPEND="
 	test? (
 		dev-python/bottle[${PYTHON_USEDEP}]
 		>=dev-python/marshmallow-3.18.0[${PYTHON_USEDEP}]
+		dev-python/openapi-spec-validator[${PYTHON_USEDEP}]
 	)
 "
 

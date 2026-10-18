@@ -13,7 +13,7 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/rhythmbox"
 LICENSE="GPL-2"
 SLOT="0"
 
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
 
 IUSE="cdr daap doc dbus keyring ipod libnotify lirc mtp +python test +udev upnp-av"
 RESTRICT="!test? ( test )"

@@ -21,7 +21,7 @@ else
 		verify-sig? ( https://github.com/nghttp2/nghttp2/releases/download/v${PV}/${P}.tar.xz.asc )
 	"
 
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~arm64-macos ~x64-macos ~x64-solaris"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~arm64-macos ~x64-macos ~x64-solaris"
 	BDEPEND="verify-sig? ( sec-keys/openpgp-keys-nghttp2 )"
 fi
 

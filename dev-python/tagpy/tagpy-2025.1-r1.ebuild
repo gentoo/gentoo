@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 
 inherit distutils-r1
 
@@ -32,8 +32,10 @@ RDEPEND="
 "
 
 PATCHES=(
-	# https://github.com/palfrey/tagpy/pull/37
-	"${FILESDIR}"/${PN}-2025.1-fix-check-taglib.patch
+	# upstream
+	"${FILESDIR}"/${P}-fix-check-taglib.patch
+	"${FILESDIR}"/${P}-fix-setuptools-0.84.patch
+	"${FILESDIR}"/${P}-fix-taglib-2.3.2.patch
 )
 
 EPYTEST_PLUGINS=()

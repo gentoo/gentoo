@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( pypy3_11 python3_{11..14} python3_{13,14}t )
+PYTHON_COMPAT=( python3_{12..15} python3_{14..15}t )
 
 inherit distutils-r1
 
@@ -27,16 +27,10 @@ KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390
 
 RDEPEND="
 	dev-python/ruamel-yaml-clibz[${PYTHON_USEDEP}]
-	!dev-python/namespace-ruamel
 "
 
 EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
-
-python_compile() {
-	distutils-r1_python_compile
-	find "${BUILD_DIR}" -name '*.pth' -delete || die
-}
 
 python_test() {
 	local EPYTEST_IGNORE=(

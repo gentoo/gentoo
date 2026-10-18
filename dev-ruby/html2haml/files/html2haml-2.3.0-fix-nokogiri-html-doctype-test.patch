@@ -1,0 +1,21 @@
+https://bugs.gentoo.org/978789
+https://salsa.debian.org/ruby-team/ruby-html2haml/-/raw/43ee4344adf16ea3888eb20afa7dcbcdbcfd74cd/debian/patches/fix-nokogiri-html-doctype-test.patch
+
+Description: update test for Nokogiri 1.18+ HTML parsing
+ Nokogiri no longer auto-inserts a default meta charset tag when parsing
+ HTML documents without a doctype.
+Bug: https://github.com/haml/html2haml/issues/97
+Bug-Debian: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1120233
+Forwarded: not-needed
+Author: Simon Quigley <tsimonq2@debian.org>
+Last-Update: 2026-07-05
+--- a/test/html2haml_test.rb
++++ b/test/html2haml_test.rb
+@@ -406,7 +406,6 @@
+ !!!
+ %html
+   %head
+-    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+     %title Hello
+   %body
+     %p Hello

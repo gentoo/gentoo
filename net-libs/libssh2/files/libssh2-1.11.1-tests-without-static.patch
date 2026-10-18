@@ -1,0 +1,74 @@
+https://github.com/libssh2/libssh2/commit/5d03b4f94ac6740e0085a6acda6fc417ca6ecc83
+
+From 5d03b4f94ac6740e0085a6acda6fc417ca6ecc83 Mon Sep 17 00:00:00 2001
+From: Viktor Szakats <commit@vsz.me>
+Date: Sun, 13 Oct 2024 22:47:25 +0200
+Subject: [PATCH] cmake: build but don't install static lib in certain
+ conditions
+
+Building 3 tests require static libssh2 lib. Some may prefer not to
+create the static lib, yet prefer to build all tests, including those
+3 that require it.
+
+Detect such intent by looking for an explicit `BUILD_TESTING=ON` and
+`BUILD_STATIC_LIBS=OFF`, then build the static lib anyway but without
+installing it.
+
+Reported-by: Eli Schwartz
+Fixes #1450
+Closes #1469
+---
+ CMakeLists.txt       | 5 +++++
+ src/CMakeLists.txt   | 8 +++++---
+ tests/CMakeLists.txt | 2 +-
+ 3 files changed, 11 insertions(+), 4 deletions(-)
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -115,6 +115,11 @@ else()
+   endif()
+ endif()
+ 
++if(BUILD_TESTING AND NOT BUILD_STATIC_LIBS)
++  # Build static for tests only, but do not install it.
++  set(BUILD_STATIC_FOR_TESTS ON)
++endif()
++
+ option(BUILD_EXAMPLES "Build libssh2 examples" ON)
+ option(BUILD_TESTING "Build libssh2 test suite" ON)
+ 
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -94,7 +94,7 @@ set(_sources ${CSOURCES} ${HHEADERS})
+ # when building both static and shared library. On Windows, with certain
+ # toolchains (e.g. MSVC) these libraries get the same by default, overwriting
+ # each other. MinGW is not affected.
+-if(WIN32 AND BUILD_STATIC_LIBS AND BUILD_SHARED_LIBS AND
++if(WIN32 AND (BUILD_STATIC_LIBS OR BUILD_STATIC_FOR_TESTS) AND BUILD_SHARED_LIBS AND
+    NOT STATIC_LIB_SUFFIX AND NOT IMPORT_LIB_SUFFIX AND
+    CMAKE_STATIC_LIBRARY_SUFFIX STREQUAL CMAKE_IMPORT_LIBRARY_SUFFIX)
+   set(STATIC_LIB_SUFFIX "_static")
+@@ -103,8 +103,10 @@ endif()
+ unset(_libssh2_export)
+ 
+ # we want it to be called libssh2 on all platforms
+-if(BUILD_STATIC_LIBS)
+-  list(APPEND _libssh2_export ${LIB_STATIC})
++if(BUILD_STATIC_LIBS OR BUILD_STATIC_FOR_TESTS)
++  if(NOT BUILD_STATIC_FOR_TESTS)
++    list(APPEND _libssh2_export ${LIB_STATIC})
++  endif()
+   add_library(${LIB_STATIC} STATIC ${_sources})
+   add_library(${PROJECT_NAME}::${LIB_STATIC} ALIAS ${LIB_STATIC})
+   target_compile_definitions(${LIB_STATIC} PRIVATE ${PRIVATE_COMPILE_DEFINITIONS} ${_libssh2_definitions})
+--- a/tests/CMakeLists.txt
++++ b/tests/CMakeLists.txt
+@@ -89,7 +89,7 @@ foreach(_test IN LISTS DOCKER_TESTS STANDALONE_TESTS SSHD_TESTS)
+   endif()
+ 
+   # We support the same target as both Docker and SSHD test. Build those just once.
+-  # Skip building tests that require the static lib when the static lib is disabled.
++  # Skip building tests that require the static lib when the static lib is not built.
+   if(NOT TARGET ${_test} AND _lib_for_tests)
+     add_executable(${_test} "${_test}.c")
+     target_compile_definitions(${_test} PRIVATE "${CRYPTO_BACKEND_DEFINE}")

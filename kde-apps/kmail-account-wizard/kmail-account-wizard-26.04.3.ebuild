@@ -14,7 +14,7 @@ HOMEPAGE+=" https://userbase.kde.org/KMail/Account_Wizard"
 
 LICENSE="GPL-2+"
 SLOT="6/$(ver_cut 1-2)"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 arm64"
 IUSE=""
 
 RESTRICT="test" # bug 926456; requires akonadi server

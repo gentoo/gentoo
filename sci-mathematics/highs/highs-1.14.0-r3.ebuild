@@ -13,7 +13,7 @@ SRC_URI="https://github.com/ERGO-Code/HiGHS/releases/download/v${PV}/source-arch
 S="${WORKDIR}/HiGHS"
 LICENSE="MIT"
 SLOT="0/1"  # soname major
-KEYWORDS="~amd64 ~riscv"
+KEYWORDS="amd64 ~riscv"
 
 # USE=zlib was removed because the profiles have it on by default and it
 # pulls in a bundled copy of the zstr library.

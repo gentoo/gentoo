@@ -362,8 +362,8 @@ pkg_postinst_check() {
 			ewarn
 			ewarn "Append --ccbin= pointing to a clang bindir to the nvcc compiler flags (NVCCFLAGS)"
 			ewarn "or set NVCC_CCBIN to the same bindir."
-			ewarn "	NVCCFLAGS=\"--ccbin=$(eval echo "${EPREFIX}/usr/lib/llvm/*/bin${CLANG_MAX_VER}")\""
-			ewarn "	NVCC_CCBIN=$(eval echo "${EPREFIX}/usr/lib/llvm/*/bin${CLANG_MAX_VER}")"
+			ewarn "	NVCCFLAGS=\"--ccbin=$(eval echo "${EPREFIX}/usr/lib/llvm/${CLANG_MAX_VER}/bin")\""
+			ewarn "	NVCC_CCBIN=$(eval echo "${EPREFIX}/usr/lib/llvm/${CLANG_MAX_VER}/bin")"
 			ewarn
 		fi
 	fi

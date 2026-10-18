@@ -83,7 +83,7 @@ src_install() {
 	keepdir /usr/lib/lessfilter.d
 	keepdir /etc/lessfilter.d
 
-	newbin "${FILESDIR}"/lesspipe-r4.sh lesspipe
+	newbin "${FILESDIR}"/lesspipe-r5.sh lesspipe
 	newenvd "${FILESDIR}"/less.envd 70less
 }
 

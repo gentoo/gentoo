@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -28,10 +28,11 @@ IUSE="btrfs systemd"
 RESTRICT="test"
 
 DEPEND="
-	app-crypt/gpgme
+	app-crypt/gpgme:1=
 	btrfs? ( sys-fs/btrfs-progs )
 "
 RDEPEND="${DEPEND}"
+BDEPEND=">=dev-lang/go-1.25.0"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.10.1-gentoo-systemd.patch"

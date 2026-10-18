@@ -50,6 +50,7 @@ DEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0_p20250111_p6-bsd-own-mk-no-sysroot.patch
+	"${FILESDIR}"/${PN}-0_p20250111_p6-host-mkdep-cross.patch
 )
 
 src_prepare() {
@@ -65,6 +66,8 @@ src_configure() {
 
 	export HOST_CC=$(tc-getBUILD_CC)
 	export HOST_CPPFLAGS=-D_GNU_SOURCE
+	export HOST_CFLAGS=${BUILD_CFLAGS}
+	export HOST_LDFLAGS=${BUILD_LDFLAGS}
 	export TARGET_AR=${CHOST}-ar
 	export TARGET_CC=${CHOST}-gcc
 	export TARGET_CXX=${CHOST}-g++

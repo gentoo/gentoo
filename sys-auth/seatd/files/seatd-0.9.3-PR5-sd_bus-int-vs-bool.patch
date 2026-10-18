@@ -1,0 +1,80 @@
+From bfa73ab87c881d32170e87a724c4ed835fa11260 Mon Sep 17 00:00:00 2001
+From: Pepper Gray <hello@peppergray.xyz>
+Date: Mon, 20 Jul 2026 23:16:21 +0200
+Subject: [PATCH] fix sd_bus get/read: use int instead of bool
+X-Archived-At: https://github.com/kennylevinsen/seatd/pull/5
+
+seatd fails to read the correct active state on ppc32/musl/llvm:
+
+the functions `sd_bus_message_read_basic` and `sd_bus_get_property_trivial`
+use `bool` to read values which fails on big endian.
+
+sd_bus_message_read / Examples / Read a boolean value:
+```C
+sd_bus_message *m;
+int x; /* Do not use C99 "bool" type here, it is typically smaller
+          in memory and would cause memory corruption */
+
+sd_bus_message_read(m, "b", &x);
+```
+
+bool is 1 byte while int is 4/8 byte, thus
+`true = 01 00 00 00 (little endian)`
+`true = 00 00 00 01 (big endian)`
+hence this always reads 0 and reports as inactive on big endian
+
+Bugs: https://bugs.gentoo.org/979604
+Signed-off-by: Pepper Gray <hello@peppergray.xyz>
+--- a/libseat/backend/logind.c
++++ b/libseat/backend/logind.c
+@@ -287,12 +287,14 @@ static const char *seat_name(struct libseat *base) {
+ 
+ static int session_get_active(struct backend_logind *session, bool *active) {
+ 	sd_bus_error error = SD_BUS_ERROR_NULL;
++	int value;
+ 	int ret = sd_bus_get_property_trivial(session->bus, "org.freedesktop.login1", session->path,
+ 					      "org.freedesktop.login1.Session", "Active", &error,
+-					      'b', active);
++					      'b', &value);
+ 	if (ret < 0) {
+ 		log_errorf("Could not check if session is active: %s", error.message);
+ 	}
++	*active = (value != 0);
+ 
+ 	sd_bus_error_free(&error);
+ 	return ret;
+@@ -441,14 +443,14 @@ static int handle_properties_changed(sd_bus_message *msg, void *userdata, sd_bus
+ 				goto error;
+ 			}
+ 
+-			bool value;
++			int value;
+ 			ret = sd_bus_message_read_basic(msg, 'b', &value);
+ 			if (ret < 0) {
+ 				goto error;
+ 			}
+ 
+ 			log_debugf("%s state changed: %d", field, value);
+-			set_active(session, value);
++			set_active(session, value != 0);
+ 			ret = sd_bus_message_exit_container(msg);
+ 			if (ret < 0) {
+ 				goto error;
+@@ -486,7 +488,7 @@ static int handle_properties_changed(sd_bus_message *msg, void *userdata, sd_bus
+ 			sd_bus_error error = SD_BUS_ERROR_NULL;
+ 			const char *obj = "org.freedesktop.login1.Session";
+ 			const char *field = "Active";
+-			bool value;
++			int value;
+ 			ret = sd_bus_get_property_trivial(session->bus, "org.freedesktop.login1",
+ 							  session->path, obj, field, &error, 'b',
+ 							  &value);
+@@ -496,7 +498,7 @@ static int handle_properties_changed(sd_bus_message *msg, void *userdata, sd_bus
+ 			}
+ 
+ 			log_debugf("%s state changed: %d", field, value);
+-			set_active(session, value);
++			set_active(session, value != 0);
+ 		}
+ 	}
+ 	if (ret < 0) {

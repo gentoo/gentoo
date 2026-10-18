@@ -10,6 +10,7 @@
 		<flag name="fluidsynth">Use <pkg>media-sound/fluidsynth</pkg> for MIDI emulation</flag>
 		<flag name="mt-32">Use <pkg>media-libs/munt-mt32emu</pkg> for MT-32 emulation</flag>
 		<flag name="network">Enable networking features (modem, ipx)</flag>
+		<flag name="sc55">Build and install the plugin for SC-55 MIDI emulation</flag>
 		<flag name="slirp">Enable Ethernet emulation using <pkg>net-libs/libslirp</pkg></flag>
 	</use>
 	<upstream>

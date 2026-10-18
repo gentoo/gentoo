@@ -1,6 +1,10 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Michael Orlitzky <mjo@gentoo.org> (2026-07-14)
+# dev-lang/php:8.5 needs new keywords, bug 977138.
+php_targets_php8-5
+
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-08-26)
 # media-libs/libheif is not keyworded here
 heif
@@ -263,5 +267,4 @@ opencl
 
 # Ben de Groot <yngwin@gentoo.org> (2015-02-01)
 # please remove when keyworded
-qt5
 qt6

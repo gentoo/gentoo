@@ -19,7 +19,10 @@ RDEPEND="
 	media-libs/tiff:=
 	mng? ( media-libs/libmng:= )
 "
-DEPEND="${RDEPEND}"
+DEPEND="
+	${RDEPEND}
+	test? ( media-libs/tiff[jpeg] )
+"
 
 CMAKE_SKIP_TESTS=(
 	# heif plugin is only for Mac, test is normally auto-skipped but may

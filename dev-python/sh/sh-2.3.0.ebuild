@@ -17,11 +17,12 @@ HOMEPAGE="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
 
-distutils_enable_tests unittest
+EPYTEST_PLUGINS=()
+distutils_enable_tests pytest
 
 python_test() {
 	local -x SH_TESTS_RUNNING=1
-	eunittest -p "*_test.py"
+	epytest
 }

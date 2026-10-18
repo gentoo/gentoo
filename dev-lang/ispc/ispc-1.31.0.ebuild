@@ -3,8 +3,8 @@
 
 EAPI=8
 
-LLVM_COMPAT=( {18..21} )
-PYTHON_COMPAT=( python3_{12..14} )
+LLVM_COMPAT=( {20..21} )
+PYTHON_COMPAT=( python3_{12..15} )
 
 inherit cmake dot-a llvm-r1 multiprocessing python-any-r1 toolchain-funcs
 
@@ -20,7 +20,7 @@ SRC_URI="
 
 LICENSE="BSD BSD-2 UoI-NCSA"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~x86"
 IUSE="examples gpu openmp test"
 RESTRICT="!test? ( test )"
 

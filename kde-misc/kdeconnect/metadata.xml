@@ -6,12 +6,13 @@
 		<name>Gentoo KDE Project</name>
 	</maintainer>
 	<upstream>
-		<bugs-to>https://bugs.kde.org/</bugs-to>
+		<bugs-to>https://bugs.kde.org/enter_bug.cgi?product=kdeconnect</bugs-to>
 		<remote-id type="cpe">cpe:/a:kde:kdeconnect</remote-id>
+		<remote-id type="kde-invent">network/kdeconnect-kde</remote-id>
 	</upstream>
 	<use>
 		<flag name="pulseaudio">Enable system volume control plugin using <pkg>media-libs/libpulse</pkg></flag>
 		<flag name="telephony">Enable telephony plugin using <pkg>kde-frameworks/modemmanager-qt</pkg></flag>
-		<flag name="X">Enable remote input mousepad plugin using <pkg>x11-libs/libfakekey</pkg></flag>
+		<flag name="X">Enable remote input mousepad/shareinputdevices plugins relying on X11 libs</flag>
 	</use>
 </pkgmetadata>

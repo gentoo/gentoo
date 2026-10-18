@@ -5,8 +5,17 @@
 		<email>arthurzam@gentoo.org</email>
 		<name>Arthur Zamarin</name>
 	</maintainer>
+	<maintainer type="person" proxied="yes">
+		<email>me@rahil.rocks</email>
+		<name>Rahil Bhimjiani</name>
+	</maintainer>
 	<stabilize-allarches/>
+	<use>
+		<flag name="extra">Pulls extra dependencies required for Podman and Buildah</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">podman-container-tools/container-libs</remote-id>
+		<bugs-to>https://github.com/podman-container-tools/container-libs/issues</bugs-to>
+		<doc>https://github.com/podman-container-tools/container-libs/blob/main/README.md</doc>
 	</upstream>
 </pkgmetadata>

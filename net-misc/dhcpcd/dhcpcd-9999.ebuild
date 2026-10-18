@@ -54,6 +54,8 @@ QA_CONFIG_IMPL_DECL_SKIP=(
 	SHA256_Init
 	hmac
 	timingsafe_bcmp
+	getpeereid
+	getprogname
 	# These may exist on some glibc versions, but the checks fail due to
 	# -Werror / undefined reference no matter what. bug #924825
 	arc4random
@@ -79,6 +81,9 @@ src_configure() {
 		--rundir=$(usex kernel_linux "${EPREFIX}/run/dhcpcd" "${EPREFIX}/var/run/dhcpcd")
 		$(usex privsep '--privsepuser=dhcpcd' '')
 		$(usex udev '' '--without-dev --without-udev')
+		# Only needed for some odd platforms, can wire up if someone
+		# identifies which.
+		--without-libpcap
 		CC="$(tc-getCC)"
 	)
 	econf "${myeconfargs[@]}"

@@ -17,4 +17,8 @@
 		<remote-id type="github">pyqtgraph/pyqtgraph</remote-id>
 		<remote-id type="pypi">pyqtgraph</remote-id>
 	</upstream>
+	<use>
+		<flag name="pyqt6">Use <pkg>dev-python/pyqt6</pkg> as Qt for Python implementation</flag>
+		<flag name="pyside6">Use <pkg>dev-python/pyside</pkg> as Qt for Python implementation</flag>
+	</use>
 </pkgmetadata>

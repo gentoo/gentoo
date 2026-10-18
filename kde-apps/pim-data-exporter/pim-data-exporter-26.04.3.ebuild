@@ -3,6 +3,7 @@
 
 EAPI=8
 
+PATCHSET="kdepim-26.04.3-ki18n-6.28-findpkg"
 ECM_HANDBOOK="optional"
 ECM_TEST="forceoptional"
 PVCUT=$(ver_cut 1-3)
@@ -13,10 +14,11 @@ inherit ecm gear.kde.org
 DESCRIPTION="Assistant to backup and archive PIM data and configuration"
 HOMEPAGE="https://apps.kde.org/pimdataexporter/
 https://userbase.kde.org/KMail/Backup_Options"
+SRC_URI+=" https://dev.gentoo.org/~asturm/distfiles/kde/${PATCHSET}.tar.xz"
 
 LICENSE="GPL-2+ handbook? ( FDL-1.2+ )"
 SLOT="6/$(ver_cut 1-2)"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 arm64"
 IUSE="telemetry"
 
 RESTRICT="test" # 11 out of 21 tests fail...
@@ -49,6 +51,8 @@ DEPEND="
 	telemetry? ( >=kde-frameworks/kuserfeedback-${KFMIN}:6 )
 "
 RDEPEND="${DEPEND}"
+
+PATCHES=( "${WORKDIR}/${PATCHSET}/${PN}.patch" ) # bug #979240
 
 src_configure() {
 	local mycmakeargs=(

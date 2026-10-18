@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{12..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 
 inherit distutils-r1
 
@@ -44,7 +44,7 @@ BDEPEND="
 		dev-python/cython[${PYTHON_USEDEP}]
 	)
 	test? (
-		>=dev-db/postgresql-8.1[server]
+		>=dev-db/postgresql-8.1[server(+)]
 		>=dev-python/dnspython-2.1[${PYTHON_USEDEP}]
 	)
 "

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">ExtUtils-Builder-Compiler</remote-id>
+    <remote-id type="cpan-module">ExtUtils::Builder::ArgumentCollector</remote-id>
+    <remote-id type="cpan-module">ExtUtils::Builder::AutoDetect::C</remote-id>
+    <remote-id type="cpan-module">ExtUtils::Builder::Binary</remote-id>
+    <remote-id type="cpan-module">ExtUtils::Builder::BuildTools::Base</remote-id>
+    <remote-id type="cpan-module">ExtUtils::Builder::BuildTools::FromPerl</remote-id>
+    <remote-id type="cpan-module">ExtUtils::Builder::Compiler</remote-id>
+    <remote-id type="cpan-module">ExtUtils::Builder::Compiler::MSVC</remote-id>
+    <remote-id type="cpan-module">ExtUtils::Builder::Compiler::Unixy</remote-id>
+    <remote-id type="cpan-module">ExtUtils::Builder::Compiler::VMS</remote-id>
+    <remote-id type="cpan-module">ExtUtils::Builder::Conf</remote-id>
+    <remote-id type="cpan-module">ExtUtils::Builder::Linker</remote-id>
+    <remote-id type="cpan-module">ExtUtils::Builder::ParseXS</remote-id>
+    <remote-id type="cpan-module">ExtUtils::Builder::Profile::Perl</remote-id>
+    <remote-id type="github">leont/extutils-builder-compiler</remote-id>
+  </upstream>
+</pkgmetadata>

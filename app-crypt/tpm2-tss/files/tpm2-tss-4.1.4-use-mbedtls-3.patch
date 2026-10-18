@@ -1,0 +1,31 @@
+diff --git a/configure.ac b/configure.ac
+index 4a1f1b02..fdbd80c3 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -170,6 +170,10 @@ AS_IF([test "x$enable_vendor" != "xyes"],
+ 
+ m4_define([ossl_min_version], [1.1.0])
+ m4_define([ossl_err], [OpenSSL libcrypto is missing or version requirements not met. OpenSSL version must be >= ossl_min_version])
++# mbedtls 2.x is obsolete
++m4_define([mbed_min_version], [3.0.0])
++m4_define([mbed_err], [mbedtls is missing or version requirements not met. mbedtls version must be >= mbed_min_version])
++
+ AS_IF([test "x$enable_esys" = xyes],
+       [AS_IF([test "x$with_crypto" = xossl], [
+            PKG_CHECK_MODULES([CRYPTO],
+@@ -185,10 +189,12 @@ AS_IF([test "x$enable_esys" = xyes],
+            TSS2_ESYS_CFLAGS_CRYPTO="$CRYPTO_CFLAGS"
+            TSS2_ESYS_LDFLAGS_CRYPTO="$CRYPTO_LIBS"
+        ], [test "x$with_crypto" = xmbed], [
+-           AC_CHECK_HEADER(mbedtls/md.h, [], [AC_MSG_ERROR([Missing required mbedTLS library])])
++           PKG_CHECK_MODULES([MBEDCRYPTO],
++                             [mbedcrypto-3 > mbed_min_version],,
++                             [AC_MSG_ERROR([mbed_err])])
+            AC_DEFINE([MBED], [1], [mbedTLS cryptographic backend])
+-           TSS2_ESYS_CFLAGS_CRYPTO="$LIBMBED_CFLAGS"
+-           TSS2_ESYS_LDFLAGS_CRYPTO="-lmbedcrypto"
++           TSS2_ESYS_CFLAGS_CRYPTO="$MBEDCRYPTO_CFLAGS"
++           TSS2_ESYS_LDFLAGS_CRYPTO="$MBEDCRYPTO_LDFLAGS"
+        ], [test "x$with_crypto" = xnone], [
+            AC_MSG_NOTICE([No crypto backend selected! Users must set crypto functions!])
+        ], [AC_MSG_ERROR([Bad value for --with-crypto $with_crypto])])])

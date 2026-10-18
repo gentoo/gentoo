@@ -1,4 +1,4 @@
-# Copyright 2021-2025 Gentoo Authors
+# Copyright 2021-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,10 +16,13 @@ if [[ ${QT6_BUILD_TYPE} == release ]]; then
 	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~x86"
 fi
 
-IUSE="accessibility +jit +network opengl qmlls +sql +ssl svg vulkan +widgets"
+IUSE="
+	accessibility +jit +network opengl qmlls +sql +ssl svg vulkan
+	wayland +widgets
+"
 
 RDEPEND="
-	~dev-qt/qtbase-${PV}:6[accessibility=,gui,network=,opengl=,sql?,ssl?,vulkan=,widgets=]
+	~dev-qt/qtbase-${PV}:6[accessibility=,gui,network=,opengl=,sql?,ssl?,vulkan=,wayland=,widgets=]
 	qmlls? ( ~dev-qt/qtlanguageserver-${PV}:6 )
 	svg? ( ~dev-qt/qtsvg-${PV}:6 )
 "

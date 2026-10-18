@@ -1,0 +1,21 @@
+--- a/torch/csrc/distributed/c10d/control_plane/WorkerServer.cpp	2026-09-18 13:16:02.333994098 +0200
++++ b/torch/csrc/distributed/c10d/control_plane/WorkerServer.cpp	2026-09-18 13:18:25.083555926 +0200
+@@ -20,12 +20,17 @@
+   }
+ 
+   const std::multimap<std::string, std::string>& params() const override {
+-    return req_.params;
++    cached_params_.clear();
++    for (const auto& pair : req_.params) {
++    	cached_params_.insert(pair);
++    }
++    return cached_params_;
+   }
+ 
+  private:
+   // NOLINTNEXTLINE(cppcoreguidelines-avoid-const-or-ref-data-members)
+   const httplib::Request& req_;
++  mutable std::multimap<std::string, std::string> cached_params_;
+ };
+ 
+ class ResponseImpl : public Response {

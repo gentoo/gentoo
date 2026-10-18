@@ -1,0 +1,170 @@
+backport 2/2 from https://gitlab.xiph.org/xiph/vorbis-tools/-/merge_requests/27.patch
+From cfc497a442f51fb4885e132deaf2e0ba067bd280 Mon Sep 17 00:00:00 2001
+From: "Timothy B. Terriberry" <tterribe@xiph.org>
+Date: Tue, 24 Jun 2025 09:38:56 -0700
+Subject: [PATCH 2/2] ogg123: Handle EOF/error in remote interface
+
+Previously, if there was an error or EOF reading commands for the
+ remote interface, the reader would loop infinitely trying to read
+ another command that will never come.
+Instead, treat error or EOF as a Quit command.
+
+We manually send an error message / log, instead of using the
+ existing error path, because we still want the main thread to
+ process the Quit.
+--- a/ogg123/remote.c
++++ b/ogg123/remote.c
+@@ -139,6 +139,7 @@ static void * remotethread(void * arg) {
+   buf[MAXBUF]=0;
+ 
+   while(!done) {
++    char *ret;
+     /* Read a line */
+     buf[0] = 0;
+     send_log("Waiting for input: ...");
+@@ -149,77 +150,86 @@ static void * remotethread(void * arg) {
+     select (1, &fd, NULL, NULL, NULL);
+ #endif
+ 
+-    fgets(buf, MAXBUF, stdin);
+-    buf[strcspn(buf, "\n")] = 0;
++    ret = fgets(buf, MAXBUF, stdin);
+ 
+     /* Lock on */
+     pthread_mutex_lock (&main_lock);
+ 
+-    send_log("Input: %s", buf);
+-    error = 0;
+-
+-    if (!strncasecmp(buf,"l",1)) {
+-	/* prepare to load */
+-      if ((b=strchr(buf,' ')) != NULL) {
+-        /* Prepare to load a new song */
+-        strcpy((char*)arg, b+1);
++    if (ret != NULL) {
++      buf[strcspn(buf, "\n")] = 0;
++      send_log("Input: %s", buf);
++      error = 0;
++
++      if (!strncasecmp(buf,"l",1)) {
++          /* prepare to load */
++        if ((b=strchr(buf,' ')) != NULL) {
++          /* Prepare to load a new song */
++          strcpy((char*)arg, b+1);
++          setstatus(NEXT);
++        }
++        else {
++          /* Invalid load command */
++          error = 1;
++        }
++      }
++      else
++      if (!strncasecmp(buf,"p",1)) {
++        /* Prepare to (un)pause */
++        invertpause();
++      }
++      else
++      if (!strncasecmp(buf,"j",1)) {
++        /* Prepare to seek */
++        if ((b=strchr(buf,' ')) != NULL) {
++          set_seek_opt(&options, b+1);
++        }
++        ignore = 1;
++      }
++      else
++      if (!strncasecmp(buf,"s",1)) {
++        /* Prepare to stop */
++        setstatus(STOP);
++      }
++          else
++      if (!strncasecmp(buf,"r",1)) {
++        /* Prepare to reload */
+         setstatus(NEXT);
+-      } 
++      }
++      else
++      if (!strncasecmp(buf,"h",1)) {
++        /* Send help */
++        send_msg("H +----------------------------------------------------+");
++        send_msg("H | Ogg123 remote interface                            |");
++        send_msg("H |----------------------------------------------------|");
++        send_msg("H | Load <file>     -  load a file and starts playing  |");
++        send_msg("H | Pause           -  pause or unpause playing        |");
++        send_msg("H | Jump [+|-]<f>   -  jump <f> seconds forth or back  |");
++        send_msg("H | Stop            -  stop playing                    |");
++        send_msg("H | Reload          -  reload last song                |");
++        send_msg("H | Quit            -  quit ogg123                     |");
++        send_msg("H |----------------------------------------------------|");
++        send_msg("H | refer to README.remote for documentation           |");
++        send_msg("H +----------------------------------------------------+");
++        ignore = 1;
++      }
++      else
++      if (!strncasecmp(buf,"q",1)) {
++        /* Prepare to quit */
++        setstatus(QUIT);
++        done = 1;
++      }
+       else {
+-        /* Invalid load command */
++        /* Unknown input received */
+         error = 1;
+       }
+     }
+-    else
+-    if (!strncasecmp(buf,"p",1)) {
+-      /* Prepare to (un)pause */
+-      invertpause();
+-    }
+-	else
+-    if (!strncasecmp(buf,"j",1)) {
+-      /* Prepare to seek */
+-      if ((b=strchr(buf,' ')) != NULL) {
+-        set_seek_opt(&options, b+1);
+-	  }
+-      ignore = 1;
+-    }
+-    else
+-    if (!strncasecmp(buf,"s",1)) {
+-      /* Prepare to stop */
+-      setstatus(STOP);
+-    }
+-	else
+-    if (!strncasecmp(buf,"r",1)) {
+-      /* Prepare to reload */
+-      setstatus(NEXT);
+-    }
+-    else
+-    if (!strncasecmp(buf,"h",1)) {
+-      /* Send help */
+-	  send_msg("H +----------------------------------------------------+");
+-	  send_msg("H | Ogg123 remote interface                            |");
+-	  send_msg("H |----------------------------------------------------|");
+-	  send_msg("H | Load <file>     -  load a file and starts playing  |");
+-	  send_msg("H | Pause           -  pause or unpause playing        |");
+-	  send_msg("H | Jump [+|-]<f>   -  jump <f> seconds forth or back  |");
+-	  send_msg("H | Stop            -  stop playing                    |");
+-	  send_msg("H | Reload          -  reload last song                |");
+-	  send_msg("H | Quit            -  quit ogg123                     |");
+-	  send_msg("H |----------------------------------------------------|");
+-	  send_msg("H | refer to README.remote for documentation           |");
+-	  send_msg("H +----------------------------------------------------+");
+-	  ignore = 1;
+-    }
+-    else
+-    if (!strncasecmp(buf,"q",1)) {
+-      /* Prepare to quit */
++    else {
++      send_err("E EOF or error reading commands");
++      send_log("EOF or error reading commands");
++      /* Treat EOF or error as a quit command. */
+       setstatus(QUIT);
+       done = 1;
+     }
+-    else {
+-      /* Unknown input received */
+-      error = 1;
+-    }
+ 
+     if (ignore) {
+       /* Unlock */

@@ -1,9 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-USE_RUBY="ruby32 ruby33 ruby34"
+USE_RUBY="ruby32 ruby33 ruby34 ruby40"
 
 RUBY_FAKEGEM_EXTRADOC="CHANGELOG.markdown README.markdown"
 
@@ -17,7 +17,7 @@ SRC_URI="https://github.com/rails/web-console/archive/v${PV}.tar.gz -> ${P}.tar.
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1)"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~riscv"
 IUSE="test"
 
 ruby_add_rdepend "

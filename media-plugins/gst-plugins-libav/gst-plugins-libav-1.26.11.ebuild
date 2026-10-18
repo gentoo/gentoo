@@ -16,7 +16,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="LGPL-2+"
 SLOT="1.0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv x86"
 
 # 1.24.11 unconditionally used new audio channel layouts added in ffmpeg-4.4;
 # 1.24.12 will build time check first. As we don't have older in tree anymore, just dep on it.
@@ -28,6 +28,10 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND=""
+
+PATCHES=(
+	"${FILESDIR}"/${P}-ffmpeg9.patch # upstreamed
+)
 
 multilib_src_test() {
 	# Homebrew test skips for meson

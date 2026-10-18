@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 
 inherit distutils-r1
 
@@ -29,6 +29,7 @@ RDEPEND="
 BDEPEND="
 	test? (
 		>=dev-python/packaging-25[${PYTHON_USEDEP}]
+		dev-python/typer[${PYTHON_USEDEP}]
 	)
 "
 

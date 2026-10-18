@@ -1,5 +1,4 @@
 #!/bin/sh
 
 # podman-auto-update(1)
-# uncomment following to auto update containers according to their auto-update policy
-# /usr/bin/podman auto-update && /usr/bin/podman image prune -f
+/usr/bin/podman auto-update && /usr/bin/podman image prune -f

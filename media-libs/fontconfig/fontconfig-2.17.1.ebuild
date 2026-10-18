@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -236,6 +236,6 @@ pkg_postinst() {
 			eend $?
 		}
 
-		multilib_parallel_foreach_abi multilib_pkg_postinst
+		multilib_foreach_abi multilib_pkg_postinst
 	fi
 }

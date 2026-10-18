@@ -15,7 +15,7 @@ SRC_URI="
 S=${WORKDIR}/${P/_p*}
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~hppa ~ppc ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~hppa ppc ~sparc x86"
 IUSE="boost +dbus debug doc pam"
 
 #Tests fail if openssl is not compiled with -DPURIFY. Gentoo's isn't. FAIL!

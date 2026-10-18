@@ -7,8 +7,8 @@ CONFIG_CHECK="~ADVISE_SYSCALLS"
 PYTHON_COMPAT=( python3_{11..14} )
 PYTHON_REQ_USE="threads(+)"
 
-inherit bash-completion-r1 check-reqs flag-o-matic linux-info
-inherit ninja-utils pax-utils python-any-r1 toolchain-funcs xdg-utils
+inherit check-reqs flag-o-matic linux-info ninja-utils pax-utils
+inherit python-any-r1 shell-completion toolchain-funcs xdg-utils
 
 DESCRIPTION="A JavaScript runtime built on Chrome's V8 JavaScript engine"
 HOMEPAGE="https://nodejs.org/"
@@ -36,20 +36,20 @@ RESTRICT="!test? ( test )"
 
 COMMON_DEPEND=">=app-arch/brotli-1.1.0:=
 	dev-db/sqlite:3
-	>=dev-cpp/ada-3.3.0:=
-	>=dev-cpp/simdutf-7.3.4:=
+	>=dev-cpp/ada-4.0.0:=
+	>=dev-cpp/simdutf-9.2.1:=
 	>=dev-libs/libuv-1.52.1:=
-	>=dev-libs/simdjson-4.6.1:=
-	>=net-dns/c-ares-1.34.5:=
-	>=net-libs/nghttp2-1.69.0:=
-	>=net-libs/nghttp3-1.14.0:=
+	>=dev-libs/simdjson-5.0.3:=
+	>=net-dns/c-ares-1.34.8:=
+	>=net-libs/nghttp2-1.70.0:=
+	>=net-libs/nghttp3-1.18.0:=
 	virtual/zlib:=
-	system-icu? ( >=dev-libs/icu-73:= )
+	system-icu? ( >=dev-libs/icu-78:= )
 	system-ssl? (
-		>=net-libs/ngtcp2-1.22.1:=
-		>=dev-libs/openssl-3.5.6:0=
+		>=net-libs/ngtcp2-1.25.0:=
+		>=dev-libs/openssl-3.5.9:0=
 	)
-	!system-ssl? ( >=net-libs/ngtcp2-1.14.0:=[-gnutls] )
+	!system-ssl? ( >=net-libs/ngtcp2-1.25.0:=[-gnutls] )
 	|| (
 		sys-devel/gcc:*
 		llvm-runtimes/libatomic-stub
@@ -74,9 +74,10 @@ CHECKREQS_MEMORY="8G"
 CHECKREQS_DISK_BUILD="22G"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-26.3.0-gcc17.patch
-	"${FILESDIR}"/${PN}-26.3.0-format-cstdlib.patch
-	"${FILESDIR}"/${PN}-26.3.0-v8-climits.patch
+	"${FILESDIR}"/${PN}-26.11.1-add-missing-funcational-inc.patch
+	"${FILESDIR}"/${PN}-26.10.0-x86-SSE2-fix.patch
+	"${FILESDIR}"/${P}-simdutf-use-system-header.patch
+	"${FILESDIR}"/${PN}-26.11.1-include-EACCES-in-mkdir-test.patch
 )
 
 pkg_pretend() {
@@ -284,6 +285,15 @@ src_test() {
 		test/sequential/test-tls-session-timeout.js
 		test/sequential/test-util-debug.js
 	)
+
+	if has_version "sys-libs/zlib-ng" ; then
+		elog "Some tests will be skipped due to being known to fail with sys-libs/zlib-ng"
+		elog
+		drop_tests+=( test/parallel/test-process-versions.js )
+		drop_tests+=( test/parallel/test-zlib-zip-interop.js )
+		elog
+	fi
+
 	use inspector ||
 		drop_tests+=(
 			test/parallel/test-inspector-emit-protocol-event.js

@@ -1,9 +1,29 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Thibaud CANALE <thican@thican.net> (2026-05-17)
+# Tests require dev-python/respx
+dev-python/cloudflare test
+
+# Sam James <sam@gentoo.org> (2026-09-23)
+# Only supported on some arches.
+dev-libs/elfutils -stackprof
+
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2026-08-16)
+# Blocks removal of vulnerable old dev-java/openjdk-bin-8.492_p09
+~sys-devel/gettext-0.21.1 java
+
+# Alfred Wingate <parona@protonmail.com> (2026-07-26)
+# Firefox not keyworded here
+dev-util/selenium-manager test
+
 # Rick Farina <zerochaos@gentoo.org> (2026-06-13)
 # net-wireless/rtl_433 and deps are not keyworded here
 net-wireless/kismet rtlsdr
+
+# Alexey Sokolov <alexey+gentoo@asokolov.org> (2026-06-04)
+# New versions of dev-cpp/cpp-httplib dropped support for 32 bits. Bug #973312
+dev-util/ccache http
 
 # Alfred Wingate <parona@protonmail.com> (2026-05-13)
 # dev-qt/qtgraphs:6 is not keyworded here
@@ -265,6 +285,7 @@ app-text/enchant nuspell
 # Adel Kara Slimane <adel.ks@zegrapher.com> (2022-03-14)
 # Untested useflag on other arches, needs keywording
 media-video/ffmpeg vmaf
+media-video/ffmpeg-compat vmaf
 
 # Sam James <sam@gentoo.org> (2022-03-10)
 # Boost has support for ARM32

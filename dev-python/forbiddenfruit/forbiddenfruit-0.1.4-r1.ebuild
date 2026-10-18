@@ -7,7 +7,7 @@ DISTUTILS_USE_PEP517=setuptools
 PYTHON_TESTED=( python3_12 )
 # tests crash on 3.13+
 # https://github.com/clarete/forbiddenfruit/issues/78
-PYTHON_COMPAT=( "${PYTHON_TESTED[@]}" python3_{13..15} )
+PYTHON_COMPAT=( "${PYTHON_TESTED[@]}" python3_{13..15} python3_{14,15}t )
 
 inherit distutils-r1 pypi
 
@@ -19,7 +19,7 @@ HOMEPAGE="
 
 LICENSE="|| ( GPL-3 MIT )"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 

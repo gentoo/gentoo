@@ -15,4 +15,4 @@ DESCRIPTION="OpenPGP keys used by sys-apps/acl"
 HOMEPAGE="https://savannah.nongnu.org/projects/acl"
 SRC_URI+=" https://savannah.nongnu.org/project/memberlist-gpgkeys.php?group=acl&download=1 -> ${P}.asc"
 
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"

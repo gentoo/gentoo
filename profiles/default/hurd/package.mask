@@ -1,6 +1,10 @@
 # Copyright 2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2026-10-11)
+# Tries to use pidfd_open Linux syscall (bug #984061)
+>=sys-process/procps-4.0.6
+
 # Broken on Hurd or needs porting to do the right thing
 sys-apps/makedev
 sys-fs/static-dev

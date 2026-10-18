@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 inherit cmake python-any-r1
 
 DESCRIPTION="High-performance file management over WebDAV/HTTP"
@@ -55,15 +55,14 @@ src_prepare() {
 src_configure() {
 	local mycmakeargs=(
 		-DPython_EXECUTABLE="${PYTHON}"
-		-DDOC_INSTALL_DIR="${EPREFIX}/usr/share/doc/${P}"
-		-DEMBEDDED_LIBCURL=OFF
+		-DDOC_INSTALL_DIR="${EPREFIX}/usr/share/doc/${PF}"
 		-DLIBCURL_BACKEND_BY_DEFAULT=OFF
 		-DENABLE_HTML_DOCS=$(usex doc)
 		-DENABLE_IPV6=TRUE
 		-DENABLE_TCP_NODELAY=TRUE
 		-DENABLE_THIRD_PARTY_COPY=TRUE
 		-DENABLE_TOOLS=$(usex tools)
-		-DHTML_INSTALL_DIR="${EPREFIX}/usr/share/doc/${P}/html"
+		-DHTML_INSTALL_DIR="${EPREFIX}/usr/share/doc/${PF}/html"
 		-DSOUND_INSTALL_DIR="${EPREFIX}/usr/share/${PN}/sounds"
 		-DSTATIC_LIBRARY=OFF
 		-DSYSCONF_INSTALL_DIR="${EPREFIX}/etc"

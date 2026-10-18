@@ -1,0 +1,36 @@
+https://github.com/simplistix/testfixtures/pull/258
+
+From 7c8dce6247d781c8fa8408e4078605df5c231796 Mon Sep 17 00:00:00 2001
+From: Alfred Wingate <parona@protonmail.com>
+Date: Sun, 19 Jul 2026 14:52:17 +0300
+Subject: [PATCH] Fix tests with Python 3.15
+
+See-Also: https://github.com/python/cpython/pull/149298
+Signed-off-by: Alfred Wingate <parona@protonmail.com>
+---
+ tests/test_shouldwarn.py | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/tests/test_shouldwarn.py b/tests/test_shouldwarn.py
+index a1d31b0..e4411f1 100644
+--- a/tests/test_shouldwarn.py
++++ b/tests/test_shouldwarn.py
+@@ -1,5 +1,6 @@
+ from unittest import TestCase
+ 
++import sys
+ import warnings
+ 
+ from testfixtures import (
+@@ -147,6 +148,8 @@ class ShouldWarnTests(TestCase):
+             message=C(DeprecationWarning('foo')),
+             source=None
+         )
++        if sys.version_info >= (3, 15):
++            expected_attrs['module']='bar_module'
+ 
+         compare(expected=C(warnings.WarningMessage, **expected_attrs),
+             actual=recorded[0])
+-- 
+2.55.0
+

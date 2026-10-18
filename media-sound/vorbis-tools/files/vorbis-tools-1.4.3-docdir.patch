@@ -1,0 +1,11 @@
+--- a/ogg123/Makefile.am
++++ b/ogg123/Makefile.am
+@@ -25,7 +25,7 @@ datadir = @datadir@
+ localedir = $(datadir)/locale
+ DEFS = -DSYSCONFDIR=\"$(sysconfdir)\" -DLOCALEDIR=\"$(localedir)\" @DEFS@
+ 
+-docdir = $(datadir)/doc/$(PACKAGE)
++docdir = @docdir@
+ mandir = @MANDIR@
+ 
+ bin_PROGRAMS = ogg123

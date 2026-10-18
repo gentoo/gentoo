@@ -33,11 +33,12 @@ SLOT=${MY_SLOT}
 MY_SUFFIX=$(ver_rs 1 '' ${SLOT})
 RUBYVERSION=${SLOT}.0
 
-IUSE="berkdb debug doc examples gdbm jemalloc jit socks5 +ssl static-libs systemtap tk valgrind xemacs"
+IUSE="berkdb debug doc examples gdbm gmp jemalloc jit socks5 +ssl static-libs systemtap tk valgrind xemacs"
 
 RDEPEND="
 	berkdb? ( sys-libs/db:= )
 	gdbm? ( sys-libs/gdbm:= )
+	gmp? ( dev-libs/gmp:= )
 	jemalloc? ( dev-libs/jemalloc:= )
 	jit? ( ${RUST_DEPEND} )
 	ssl? (
@@ -46,8 +47,8 @@ RDEPEND="
 	socks5? ( >=net-proxy/dante-1.1.13 )
 	systemtap? ( dev-debug/systemtap )
 	tk? (
-		dev-lang/tcl:0=[threads]
-		dev-lang/tk:0=[threads]
+		dev-lang/tcl:0=[threads(+)]
+		dev-lang/tk:0=[threads(+)]
 	)
 	dev-libs/libyaml
 	dev-libs/libffi:=
@@ -159,6 +160,19 @@ src_prepare() {
 	sed -e '/test_pretty_print/aomit "Fragile for output differences"' \
 		-i test/rubygems/test_gem_source_git.rb || die
 
+	# Errno::EBUSY: Device or resource busy - getaddrinfo
+	sed -e '/test_error_message/aomit "May fails in a network sandbox"' \
+		-i test/socket/test_addrinfo.rb || die
+	sed -e '/test_proxy_eh_ENV_with_user/aomit "May fails in a network sandbox"' \
+		-e '/test_proxy_eh_ENV_with_urlencoded_user/aomit "May fails in a network sandbox"' \
+		-e '/test_proxy_address_ENV/aomit "May fails in a network sandbox"' \
+		-e '/test_proxy_eh_ENV_no_proxy/aomit "May fails in a network sandbox"' \
+		-e '/test_proxy_port_ENV/aomit "May fails in a network sandbox"' \
+		-e '/test_proxy_eh_ENV/aomit "May fails in a network sandbox"' \
+		-i test/net/http/test_http.rb || die
+	sed -e '/"raises an error on unknown hostnames"/,/^  end/ s:^:#:' \
+		-i spec/ruby/library/socket/ipsocket/getaddress_spec.rb || die
+
 	if use prefix ; then
 		# Fix hardcoded SHELL var in mkmf library
 		sed -i -e "s#\(SHELL = \).*#\1${EPREFIX}/bin/sh#" lib/mkmf.rb || die
@@ -199,6 +213,8 @@ src_configure() {
 	# In many places aliasing rules are broken; play it safe
 	# as it's risky with newer compilers to leave it as it is.
 	append-flags -fno-strict-aliasing
+	# bug #972696
+	filter-lto
 
 	# Workaround for bug #938302
 	if use systemtap && has_version "dev-debug/systemtap[-dtrace-symlink(+)]" ; then
@@ -252,6 +268,7 @@ src_configure() {
 		--with-setjmp-type=setjmp
 		--enable-mkmf-verbose
 		--with-out-ext="${modules}"
+		$(use_with gmp)
 		$(use_with jemalloc jemalloc)
 		$(use_enable jit jit-support)
 		$(use_enable jit yjit)
@@ -326,7 +343,6 @@ src_install() {
 		dodoc -r sample
 	fi
 
-	[[ ${PV} != *9999* ]] && dodoc ChangeLog
 	dodoc NEWS.md README*
 	dodoc -r doc
 }

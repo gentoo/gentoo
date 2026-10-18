@@ -23,7 +23,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2" # GPL-2 only
 SLOT="0"
-IUSE="debug livecd make-symlinks math mdev pam selinux sep-usr static syslog systemd"
+IUSE="debug livecd make-symlinks math mdev pam selinux sep-usr static syslog"
 REQUIRED_USE="pam? ( !static )"
 RESTRICT="test"
 
@@ -198,7 +198,6 @@ src_configure() {
 	busybox_config_option pam PAM
 	busybox_config_option static STATIC
 	busybox_config_option syslog {K,SYS}LOGD LOGGER
-	busybox_config_option systemd FEATURE_SYSTEMD
 	busybox_config_option math FEATURE_AWK_LIBM
 
 	# all the debug options are compiler related, so punt them

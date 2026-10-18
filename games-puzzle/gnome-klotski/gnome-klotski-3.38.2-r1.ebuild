@@ -10,7 +10,7 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/gnome-klotski"
 
 LICENSE="GPL-3+ FDL-1.1+"
 SLOT="0"
-KEYWORDS="amd64 arm64 ~loong ~riscv ~x86"
+KEYWORDS="amd64 arm64 ~loong ~riscv x86"
 
 RDEPEND="
 	dev-libs/libgee:0.8=

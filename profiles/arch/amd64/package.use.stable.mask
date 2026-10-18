@@ -83,7 +83,7 @@ dev-python/nbval -doc
 # AMDGPU enablement depends on dev-libs/rocr-runtime, ~amd64 only
 # See also: https://bugs.gentoo.org/891499
 llvm-runtimes/offload llvm_targets_AMDGPU
-llvm-runtimes/openmp llvm_targets_AMDGPU
+llvm-runtimes/openmp llvm_targets_AMDGPU rocm
 
 # Sam James <sam@gentoo.org> (2022-12-11)
 # net-libs/rustls-ffi is not yet marked stable
@@ -101,7 +101,6 @@ dev-util/diffoscope haskell
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2021-05-07)
 # openjfx:8 will never be stabilized
 # openjfx:11 probably will neither
-dev-java/openjdk:8 javafx
 dev-java/openjdk:11 javafx
 
 # Thomas Deutschmann <whissi@gentoo.org> (2020-09-07)

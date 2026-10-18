@@ -1,0 +1,70 @@
+https://github.com/python-tap/pytest-tap/commit/aba9dfa88c8736e96e6af6382b2688c919600050
+
+From aba9dfa88c8736e96e6af6382b2688c919600050 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Karel=20Ko=C4=8D=C3=AD?= <cynerd@email.cz>
+Date: Thu, 30 Oct 2025 03:24:39 +0100
+Subject: [PATCH] pyproject.toml: fix missing package i wheel (#105)
+
+* pyproject.toml: fix missing package i wheel
+
+The wheel was missing package due to it not being packaged. The
+hatchling documentation specifies that packages should be set this way.
+
+The testing of this change in virtual environment:
+
+  nobody@host:pytest-tap$ python3 -m venv env                                                                                                         wheelfix+
+  nobody@host:pytest-tap$ . ./env/bin/activate                                                                                                        wheelfix+
+  ((env) ) nobody@host:pytest-tap$ pip install .                                                                                                      wheelfix+
+  Processing /home/cynerd/src/pytest-tap
+    Installing build dependencies ... done
+    Getting requirements to build wheel ... done
+    Preparing metadata (pyproject.toml) ... done
+  Requirement already satisfied: pytest>=3.0 in /nix/store/094gpcj7d1z8wdvymhxvi2rns757vb2p-python3.12-pytest-8.3.5/lib/python3.12/site-packages (from pytest-tap==3.5) (8.3.5)
+  Requirement already satisfied: tap-py<4.0,>=3.2 in /nix/store/bmvj5dimxkphyrzwl0jyvi6blz8imqpn-python3.12-tap.py-3.2.1/lib/python3.12/site-packages (from pytest-tap==3.5) (3.2.1)
+  Requirement already satisfied: iniconfig in /nix/store/8bcr5c5m8d1359k52mwjdbqjw2rzwdgq-python3.12-iniconfig-2.1.0/lib/python3.12/site-packages (from pytest>=3.0->pytest-tap==3.5) (2.1.0)
+  Requirement already satisfied: packaging in /nix/store/wr2lp9ziysxbjbf5ww09a4k7ivvnxbc4-python3.12-packaging-24.2/lib/python3.12/site-packages (from pytest>=3.0->pytest-tap==3.5) (24.2)
+  Requirement already satisfied: pluggy<2,>=1.5 in /nix/store/fbbyfni2ccjw8r7rh7ww3x8ky1yk4hi7-python3.12-pluggy-1.5.0/lib/python3.12/site-packages (from pytest>=3.0->pytest-tap==3.5) (1.5.0)
+  Building wheels for collected packages: pytest-tap
+    Building wheel for pytest-tap (pyproject.toml) ... done
+    Created wheel for pytest-tap: filename=pytest_tap-3.5-py3-none-any.whl size=6543 sha256=6733459ec7272402507031361355d4820fd799659e4102568790d9e53b2863c0
+    Stored in directory: /home/cynerd/.cache/pip/wheels/e4/ea/6f/0c79e4850b81f185670c0a561a2ebc457c7a0b4ee105c88476
+  Successfully built pytest-tap
+  Installing collected packages: pytest-tap
+  Successfully installed pytest-tap-3.5
+
+  [notice] A new release of pip is available: 25.0.1 -> 25.1.1
+  [notice] To update, run: pip install --upgrade pip
+  ((env) ) nobody@host:pytest-tap$ ls env/lib/python3.12/site-packages/pytest_tap/                                                                    wheelfix+
+  __init__.py  plugin.py
+
+The listed directory wasn't present before this change.
+
+* Remove sources entry from pyproject.toml
+
+This applies a similar fix to https://github.com/python-tap/tappy/pull/166
+
+---------
+
+Co-authored-by: Matt Layman <matthewlayman@gmail.com>
+---
+ pyproject.toml | 4 +---
+ 2 files changed, 2 insertions(+), 3 deletions(-)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index 940540c..97b9a37 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -47,11 +47,9 @@ include = [
+     "/docs",
+     "/tests",
+ ]
+-sources = ["src"]
+ 
+ [tool.hatch.build.targets.wheel]
+-sources = ["src"]
+-packages = ["pytest_tap"]
++packages = ["src/pytest_tap"]
+ 
+ [tool.pytest.ini_options]
+ pythonpath = [".", "src"]
+

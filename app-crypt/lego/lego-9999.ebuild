@@ -8,7 +8,7 @@ inherit go-module
 DESCRIPTION="Let's Encrypt/ACME client (like certbot or acme.sh) and library written in Go"
 HOMEPAGE="https://github.com/go-acme/lego/"
 
-DOCUMENTATION_COMMIT=97a2bbc957a597e7e831148142c4648a1e13f0b4
+DOCUMENTATION_COMMIT=730a4b67f540fed7c39088506f49f6b29cbfbfb8
 
 if [[ ${PV} == 9999* ]]; then
 	inherit git-r3
@@ -17,7 +17,7 @@ else
 	SRC_URI="
 	https://github.com/go-acme/lego/archive/v${PV}.tar.gz -> ${P}.tar.gz
 	https://github.com/go-acme/lego/archive/${DOCUMENTATION_COMMIT}.tar.gz -> ${P}-docs.tar.gz
-	https://github.com/rahilarious/gentoo-distfiles/releases/download/${P}/deps.tar.xz -> ${P}-deps.tar.xz
+	https://github.com/gentoo-golang-dist/lego/releases/download/v${PV}/${P}-vendor.tar.xz -> ${P}-deps.tar.xz
 "
 	KEYWORDS="~amd64 ~arm64"
 fi
@@ -34,7 +34,7 @@ SLOT="0"
 PROPERTIES="test_network"
 RESTRICT="test"
 
-BDEPEND=">=dev-lang/go-1.25.0"
+BDEPEND=">=dev-lang/go-1.26.0"
 
 src_unpack() {
 	if [[ ${PV} == 9999* ]]; then

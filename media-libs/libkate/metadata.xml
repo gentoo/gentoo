@@ -15,7 +15,4 @@
 		various semantics, like position, color, etc, so scrolling or fading
 		text can be defined.
 		More information can be found at http://wiki.xiph.org/index.php/OggKate</longdescription>
-	<upstream>
-		<remote-id type="google-code">libkate</remote-id>
-	</upstream>
 </pkgmetadata>

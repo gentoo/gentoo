@@ -1,0 +1,23 @@
+https://bugs.gentoo.org/978400
+https://github.com/novnc/websockify/issues/637
+https://github.com/novnc/websockify/pull/638
+https://github.com/novnc/websockify/commit/f1e281d2c446380a0a8af7575a92b23ad65c6d4d
+
+From f1e281d2c446380a0a8af7575a92b23ad65c6d4d Mon Sep 17 00:00:00 2001
+From: Takashi Kajinami <kajinamit@oss.nttdata.com>
+Date: Mon, 18 May 2026 08:40:09 +0900
+Subject: [PATCH] Replace test symmetric key
+
+jwcrypto 1.5.7 introduced the validation to enforce key length, which
+is not met by the existing test key.
+
+Replace it by the new one which has 256 bits length.
+
+Closes #637
+--- a/tests/fixtures/symmetric.key
++++ b/tests/fixtures/symmetric.key
+@@ -1 +1 @@
+-secret_sauce
+\ No newline at end of file
++mesGV8j0k2hJf5sl83NMrQeMsA3FOmkEOgqvVe1HBgw
+\ No newline at end of file

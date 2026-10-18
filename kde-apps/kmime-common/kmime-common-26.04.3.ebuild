@@ -10,7 +10,7 @@ inherit ecm-common gear.kde.org
 
 LICENSE="LGPL-2+"
 SLOT="6"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 arm64 ~x86"
 IUSE=""
 
 RDEPEND="

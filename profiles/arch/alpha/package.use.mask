@@ -1,6 +1,27 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Lukas Schmelting <lschmelting@posteo.com> (2026-09-10)
+# dev-util/bpftool not keyworded here
+net-misc/networkmanager clat
+
+# David Seifert <soap@gentoo.org> (2026-09-07)
+# sci-libs/libaec is not keyworded here, and >=sci-libs/hdf5-2.2.0
+# requires it directly instead of via virtual/szip
+>=sci-libs/hdf5-2.2.0 szip
+
+# Sam James <sam@gentoo.org> (2026-09-04)
+# sys-apps/xdg-desktop-portal not keyworded here
+x11-base/xwayland libei
+
+# Nicolas PARLANT <nicolas.parlant@parhuet.fr> (2026-07-30)
+# dev-python/qtpy is not keyworded here
+media-libs/libffado gui
+
+# Pacho Ramos <pacho@gentoo.org> (2026-07-05)
+# QT6 is not keyworded here, bug #977775
+dev-libs/appstream test
+
 # Ionen Wolkens <ionen@gentoo.org> (2026-06-10)
 # llvm-core/clang is not available here, and neither is nvidia
 media-video/ffmpeg cuda-clang
@@ -26,6 +47,7 @@ sys-fs/lvm2 vdo
 # Ionen Wolkens <ionen@gentoo.org> (2026-03-16)
 # media-libs/opencolorio is not keyworded here
 media-video/ffmpeg opencolorio
+media-video/ffmpeg-compat opencolorio
 
 # Sam James <sam@gentoo.org> (2026-02-11)
 # sys-libs/libnvme not keyworded here
@@ -151,6 +173,7 @@ sci-visualization/gnuplot amos
 # Leonardo Hernández Hernández <leohdz172@proton.me> (2024-07-07)
 # media-libs/quirc and media-sound/liblc3 are not keyworded here
 media-video/ffmpeg quirc liblc3
+media-video/ffmpeg-compat quirc liblc3
 
 # matoro <matoro_gentoo@matoro.tk> (2024-07-03)
 # Requires dev-util/shelltestrunner
@@ -172,10 +195,6 @@ media-video/ffmpeg-compat libplacebo
 # Michał Górny <mgorny@gentoo.org> (2024-05-08)
 # Requires sys-devel/{clang,llvm}:16.
 dev-lang/python jit
-
-# matoro <matoro_gentoo@matoro.tk> (2024-02-29)
-# sys-apps/xdg-desktop-portal is not keyworded here, #925731
-x11-base/xwayland libei
 
 # matoro <matoro_gentoo@matoro.tk> (2024-02-06)
 # Pulls in dev-python/scipy, which does not pass tests, #923067
@@ -304,6 +323,7 @@ media-libs/freetype svg
 # Adel Kara Slimane <adel.ks@zegrapher.com> (2022-03-14)
 # Untested useflag on other arches, needs keywording
 media-video/ffmpeg vmaf
+media-video/ffmpeg-compat vmaf
 
 # Sam James <sam@gentoo.org> (2022-01-29)
 # app-text/ronn-ng not keyworded here, bug #801103
@@ -414,6 +434,7 @@ media-libs/mesa video_cards_zink vulkan-overlay
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2020-07-18)
 # net-libs/webkit-gtk has no alpha keywords
+app-editors/emacs xwidgets
 gnome-extra/evolution-data-server oauth-gtk3 oauth-gtk4
 # needs gnome-extra/sushi, depends on net-libs/webkit-gtk
 gnome-base/nautilus previewer

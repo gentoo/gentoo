@@ -4,6 +4,7 @@
 EAPI=8
 
 DISTUTILS_EXT=1
+DISTUTILS_OPTIONAL=1
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{11..14} )
 inherit toolchain-funcs distutils-r1
@@ -22,7 +23,7 @@ RESTRICT="!test? ( test )"
 
 BDEPEND="
 	python? (
-		${PYTHON_DEPS}
+		${DISTUTILS_DEPS}
 		dev-lang/swig[pcre]
 	)
 "

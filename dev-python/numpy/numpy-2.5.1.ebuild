@@ -22,7 +22,7 @@ HOMEPAGE="
 LICENSE="BSD 0BSD MIT ZLIB CC0-1.0"
 SLOT="0/2"
 if [[ ${PV} != *_rc* ]]; then
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
 fi
 # +lapack because the internal fallbacks are pretty slow. Building without blas
 # is barely supported anyway, see bug #914358.
@@ -124,7 +124,7 @@ python_configure_all() {
 		ppc64)
 			# every flag implies the previous one
 			for flag in '' 2 3 4; do
-				if ! use "cpu_flags_ppc_vsx${flags}"; then
+				if ! use "cpu_flags_ppc_vsx${flag}"; then
 					break
 				fi
 				cpu_baseline+=( "VSX${flag}" )

@@ -33,22 +33,27 @@ declare -A BUNDLED=(
 	# Heavily patched in an incompatible way.
 	# Issues related to using system ffmpeg historically.
 	# See bug #829595 and #922828
-	[ffmpeg]="https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs2/ffmpeg-8.1.1.tar.bz2;"
+	[ffmpeg]="https://ffmpeg.org/releases/ffmpeg-9.0.2.tar.bz2;"
 	# Patched in an incompatible way
-	[x265]="https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs2/x265_4.2.tar.gz;x265"
-	[x265_8bit]="https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs2/x265_4.2.tar.gz;x265"
-	[x265_10bit]="https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs2/x265_4.2.tar.gz;x265"
-	[x265_12bit]="https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs2/x265_4.2.tar.gz;x265"
+	[x265]="https://github.com/Multicorewareinc/x265/releases/download/4.3/x265_4.3.tar.gz;x265"
+	[x265_8bit]="https://github.com/Multicorewareinc/x265/releases/download/4.3/x265_4.3.tar.gz;x265"
+	[x265_10bit]="https://github.com/Multicorewareinc/x265/releases/download/4.3/x265_4.3.tar.gz;x265"
+	[x265_12bit]="https://github.com/Multicorewareinc/x265/releases/download/4.3/x265_4.3.tar.gz;x265"
 )
 
 bundle_src_uri() {
+	local name
 	for name in "${!BUNDLED[@]}"; do
-		IFS=$';' read -r uri use <<< ${BUNDLED[${name}]}
-		local tarball=${uri##*/}
+		local OLDIFS splitted tarball uri use
+		OLDIFS=$IFS; IFS=';'; splitted=( ${BUNDLED[${name}]} ); IFS=$OLDIFS
+		uri=${splitted[0]}
+		use=${splitted[1]}
+
+		tarball=${uri##*/}
 		if [[ -n ${use} ]]; then
-			SRC_URI+=" ${use}? ( ${uri} -> handbrake-${tarball} )"
+			SRC_URI+=" ${use}? ( ${uri} )"
 		else
-			SRC_URI+=" ${uri} -> handbrake-${tarball}"
+			SRC_URI+=" ${uri}"
 		fi
 	done
 }
@@ -57,9 +62,12 @@ bundle_src_uri
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="amf +fdk gui libdovi numa nvenc qsv x265"
+IUSE="amf +fdk gui libdovi numa nvdec nvenc qsv vaapi x265"
 
-REQUIRED_USE="numa? ( x265 )"
+REQUIRED_USE="
+	numa? ( x265 )
+	nvdec? ( nvenc )
+"
 
 # >=media-libs/libvpl-1.13.0: bug #957811 (check libhb/qsvcommon.h for new platform codenames)
 COMMON_DEPEND="
@@ -97,6 +105,11 @@ COMMON_DEPEND="
 		media-libs/libva:=
 		>=media-libs/libvpl-1.13.0:=
 	)
+	vaapi? (
+		media-libs/libva:=[X]
+		x11-libs/libX11
+		x11-libs/libdrm
+	)
 "
 RDEPEND="
 	${COMMON_DEPEND}
@@ -104,7 +117,7 @@ RDEPEND="
 "
 DEPEND="
 	${COMMON_DEPEND}
-	amf? ( >=media-libs/amf-headers-1.4.36-r1 )
+	amf? ( >=media-libs/amf-headers-1.5.2 )
 "
 # cmake needed for custom script: bug #852701
 BDEPEND="
@@ -115,6 +128,7 @@ BDEPEND="
 		dev-build/meson
 		sys-devel/gettext
 	)
+	nvdec? ( llvm-core/clang:*[llvm_targets_NVPTX] )
 "
 if [[ ${PV} != 9999 ]]; then
 	BDEPEND+=" verify-sig? ( >=sec-keys/openpgp-keys-handbrake-20260311 )"
@@ -147,7 +161,7 @@ src_prepare() {
 		if [[ -n ${use} ]]; then
 			use ${use} || continue
 		fi
-		cp "${DISTDIR}/handbrake-${tarball}" download/${tarball} || die
+		cp "${DISTDIR}/${tarball}" download/${tarball} || die
 	done
 
 	# Get rid of leftover bundled library build definitions
@@ -189,10 +203,11 @@ src_configure() {
 		$(use_enable gui gtk)
 		$(use_enable libdovi)
 		$(use_enable numa)
+		$(use_enable nvdec)
 		$(use_enable nvenc)
-		$(use_enable nvenc nvdec)
-		$(use_enable x265)
 		$(use_enable qsv)
+		$(use_enable vaapi)
+		$(use_enable x265)
 	)
 
 	edo ./configure ${myconfargs[@]}

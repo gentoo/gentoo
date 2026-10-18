@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=flit
 PYPI_VERIFY_REPO=https://gitlab.com/takluyver/jeepney
-PYTHON_COMPAT=( pypy3_11 python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 
 inherit distutils-r1 pypi
 
@@ -18,19 +18,19 @@ HOMEPAGE="
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv ~s390 ~sparc x86"
-IUSE="examples"
+IUSE="examples test-rust"
 
 BDEPEND="
 	test? (
-		$(python_gen_cond_dep '
-			dev-python/async-timeout[${PYTHON_USEDEP}]
-		' 3.10)
-		>=dev-python/pytest-asyncio-0.7.1[${PYTHON_USEDEP}]
 		dev-python/testpath[${PYTHON_USEDEP}]
 		sys-apps/dbus
+		test-rust? (
+			dev-python/pytest-trio[${PYTHON_USEDEP}]
+		)
 	)
 "
 
+EPYTEST_PLUGINS=( pytest-asyncio )
 distutils_enable_tests pytest
 
 distutils_enable_sphinx docs \
@@ -49,7 +49,9 @@ src_test() {
 
 python_test() {
 	local EPYTEST_IGNORE=()
-	if ! has_version "dev-python/pytest-trio[${PYTHON_USEDEP}]"; then
+	if has_version "dev-python/pytest-trio[${PYTHON_USEDEP}]"; then
+		local EPYTEST_PLUGINS=( "${EPYTEST_PLUGINS[@]}" pytest-trio )
+	else
 		EPYTEST_IGNORE+=( jeepney/io/tests/test_trio.py )
 	fi
 	epytest

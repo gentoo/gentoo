@@ -1,0 +1,121 @@
+first try PKG_CONFIG instead of hardcoded pkg-config
+see https://bugs.gentoo.org/791724
+--- a/SConstruct
++++ b/SConstruct
+@@ -198,7 +198,7 @@ int main() {
+ 
+ def CheckPKG(context, name):
+     context.Message( 'Checking for %s... ' % name )
+-    ret = context.TryAction('pkg-config --exists \'%s\'' % name)[0]
++    ret = context.TryAction("%s --exists '%s'" % (context.env['PKG_CONFIG'], name))[0]
+     context.Result( ret )
+     return ret
+ 
+--- a/admin/pkgconfig.py
++++ b/admin/pkgconfig.py
+@@ -26,6 +26,7 @@
+ # and heavily modified
+ #
+ 
++import os
+ import subprocess
+ 
+ #
+@@ -33,7 +34,7 @@ import subprocess
+ #
+ def CheckForPKGConfig( context, version='0.0.0' ):
+ 	context.Message( "Checking for pkg-config (at least version %s)... " % version )
+-	ret = context.TryAction( "pkg-config --atleast-pkgconfig-version=%s" %version )[0]
++	ret = context.TryAction( "%s --atleast-pkgconfig-version=%s" % (context.env['PKG_CONFIG'], version) )[0]
+ 	context.Result( ret )
+ 	return ret
+ 
+@@ -49,13 +50,13 @@ def CheckForPKG( context, name, version="" ):
+ 
+ 	if version == "":
+ 		context.Message( "Checking for %s... \t" % name )
+-		ret = context.TryAction( "pkg-config --exists '%s'" % name )[0]
++		ret = context.TryAction( "%s --exists '%s'" % (context.env['PKG_CONFIG'], name) )[0]
+ 	else:
+ 		context.Message( "Checking for %s (%s or higher)... \t" % (name,version) )
+-		ret = context.TryAction( "pkg-config --atleast-version=%s '%s'" % (version,name) )[0]
++		ret = context.TryAction( "%s --atleast-version=%s '%s'" % (context.env['PKG_CONFIG'], version, name) )[0]
+ 
+ 	if ret:
+-		context.env['%s_FLAGS' % name2.upper()] = context.env.ParseFlags("!pkg-config --cflags --libs %s" % name)
++		context.env['%s_FLAGS' % name2.upper()] = context.env.ParseFlags("!%s --cflags --libs %s" % (context.env['PKG_CONFIG'], name))
+ 
+ 	context.Result( ret )
+ 	return ret
+@@ -66,20 +67,18 @@ def CheckForPKG( context, name, version="" ):
+ # This should allow caching of the flags so that pkg-config is called only once.
+ #
+ def GetPKGFlags( context, name, version="" ):
+-	import os
+-
+ 	if version == "":
+ 		context.Message( "Checking for %s... \t" % name )
+-		ret = context.TryAction( "pkg-config --exists '%s'" % name )[0]
++		ret = context.TryAction( "%s --exists '%s'" % (context.env['PKG_CONFIG'], name) )[0]
+ 	else:
+ 		context.Message( "Checking for %s (%s or higher)... \t" % (name,version) )
+-		ret = context.TryAction( "pkg-config --atleast-version=%s '%s'" % (version,name) )[0]
++		ret = context.TryAction( "%s --atleast-version=%s '%s'" % (context.env['PKG_CONFIG'], version, name) )[0]
+ 
+ 	if not ret:
+ 		context.Result( ret )
+ 		return ret
+ 
+-	out = subprocess.Popen(['pkg-config', '--cflags', '--libs', name], stdout=subprocess.PIPE)
++	out = subprocess.Popen([context.env['PKG_CONFIG'], '--cflags', '--libs', name], stdout=subprocess.PIPE)
+ 	ret = out.stdout.read()
+ 
+ 	context.Result( True )
+@@ -89,23 +88,22 @@ def GetPKGFlags( context, name, version="" ):
+ # Checks for the existance of the package and returns the value of the specified variable.
+ #
+ def GetPKGVariable( context, name, variable ):
+-	import os
+-
+ 	context.Message( "Checking for variable %s in package %s... \t" % (variable,name) )
+ 
+-	ret = context.TryAction( "pkg-config --exists '%s'" % name )[0]
++	ret = context.TryAction( "%s --exists '%s'" % (context.env['PKG_CONFIG'], name) )[0]
+ 	if not ret:
+ 		context.Result( ret )
+ 		return ret
+ 
+-	out = subprocess.Popen(['pkg-config', '--variable=%s' % variable, name], stdout=subprocess.PIPE)
++	out = subprocess.Popen([context.env['PKG_CONFIG'], '--variable=%s' % variable, name], stdout=subprocess.PIPE)
+ 	ret = out.stdout.read()
+ 
+ 	context.Result( True )
+ 	return ret
+ 
+ def generate( env, **kw ):
+-	env['PKGCONFIG_TESTS' ] = { 'CheckForPKGConfig' : CheckForPKGConfig, 'CheckForPKG' : CheckForPKG, 'GetPKGFlags' : GetPKGFlags, 'GetPKGVariable' : GetPKGVariable }
++       env.setdefault('PKG_CONFIG', os.environ.get('PKG_CONFIG', 'pkg-config'))
++       env['PKGCONFIG_TESTS' ] = { 'CheckForPKGConfig' : CheckForPKGConfig, 'CheckForPKG' : CheckForPKG, 'GetPKGFlags' : GetPKGFlags, 'GetPKGVariable' : GetPKGVariable }
+ 
+ def exists( env ):
+ 	return 1
+--- a/support/tools/ffado-diag.in
++++ b/support/tools/ffado-diag.in
+@@ -22,7 +22,7 @@ static_info = "$LIBDATADIR/static_info.txt"
+ # Test for common FFADO problems
+ 
+ import glob
+-import os.path
++import os
+ import re
+ import subprocess
+ import sys
+@@ -96,7 +96,7 @@ if path:
+     version = version.decode ("utf8")
+     show_pair ('', version [:version.find ("\n")])
+ 
+-pkg_config = which ("pkg-config")
++pkg_config = os.environ.get("PKG_CONFIG") or which("pkg-config")
+ show_pair ("pkg-config", pkg_config)
+ 
+ if pkg_config:

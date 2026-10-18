@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -20,7 +20,7 @@ BANK_LOC="${EPREFIX}/usr/share/sounds/sf2"
 
 DOCS=( AUTHORS ChangeLog README SBKtoSF2.txt samples/README-bank )
 
-PATCHES="${FILESDIR}/${P}-return-type.patch"
+PATCHES=( "${FILESDIR}"/${P}-return-type.patch )
 
 src_prepare() {
 	default

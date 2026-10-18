@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_SINGLE_IMPL=1
-DISTUTILS_USE_PEP517=poetry
+DISTUTILS_USE_PEP517=hatchling
 PYTHON_COMPAT=( python3_{12..14} )
 PYTHON_REQ_USE="sqlite"
 
@@ -25,7 +25,7 @@ else
 	inherit pypi
 	MY_PV=${PV/_beta/-beta.}
 	MY_P=${PN}-${MY_PV}
-	KEYWORDS="~amd64"
+	KEYWORDS="~amd64 ~x86"
 	S="${WORKDIR}/${MY_P}"
 fi
 
@@ -103,12 +103,11 @@ DOCS=( README.rst docs/changelog.rst )
 EPYTEST_PLUGINS=( pytest-flask )
 EPYTEST_IGNORE=(
 	# Not relevant downstream
-	test/test_release.py
+	test/extra/test_release.py
 	# Unpackaged test dependencies: titlecase and pytest-factoryboy
 	# (These tests aren't included in the sdist)
 	test/plugins
 )
-EPYTEST_XDIST=1
 distutils_enable_tests pytest
 
 python_prepare_all() {
@@ -133,6 +132,7 @@ python_compile_all() {
 	# We could install mans from the sphinx build path, but to be consistent with pypi for src_install
 	# we'll instead generate them and copy to the same install location if building from VCS sources.
 	if [[ ${PV} == "9999" ]] || [[ ${IS_VCS_SOURCE} == "yes" ]]; then
+		local -x PYTHONPATH=.
 		einfo "Building man pages"
 		sphinx-build -b man docs docs/build/man || die "Failed to generate man pages"
 		mkdir "${S}/man" || die

@@ -216,13 +216,13 @@ go-module_set_globals() {
 	# Now parse EGO_SUM
 	for line in "${EGO_SUM[@]}"; do
 		local module version modfile version_modfile kvs x
-		read -r module version_modfile kvs <<< "${line}"
+		read -rd '' module version_modfile kvs < <(printf %s "${line}")
 		# kvs contains the hash and may contain other data from
 		# upstream in the future. We do not currently use any of this data.
 
 		# Split 'v0.3.0/go.mod' into 'v0.3.0' and '/go.mod'
 		# It might NOT have the trailing /go.mod
-		IFS=/ read -r version modfile x <<<"${version_modfile}"
+		IFS=/ read -rd '' version modfile x < <(printf %s "${version_modfile}")
 		# Reject multiple slashes
 		if [[ -n ${x} ]]; then
 			error_in_gosum=1

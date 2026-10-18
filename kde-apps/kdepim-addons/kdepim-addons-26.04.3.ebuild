@@ -8,14 +8,14 @@ PVCUT=$(ver_cut 1-3)
 KFMIN=6.22.0
 QTMIN=6.10.1
 VIRTUALDBUS_TEST=1
-inherit ecm gear.kde.org optfeature
+inherit ecm gear.kde.org
 
 DESCRIPTION="Plugins for KDE Personal Information Management Suite"
 HOMEPAGE="https://apps.kde.org/kontact/"
 
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="6"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 arm64"
 IUSE="activities importwizard itinerary markdown test"
 
 RESTRICT="!test? ( test )"
@@ -99,23 +99,21 @@ src_configure() {
 src_test() {
 	local CMAKE_SKIP_TESTS=(
 		# Locale differences in date display.
-		"fancyheaderstyleplugintest"
-		"grantleeheaderstyleplugintest"
+		fancyheaderstyleplugintest
+		grantleeheaderstyleplugintest
 		# Comparison files outdated, also affected by changes in other packages.
-		"messageviewerplugins-rendertest"
+		messageviewerplugins-rendertest
 		# Tests pass but segfault when they exit.
-		"kdepim-addons-eventedittest"
-		"messageviewer-dkimauthenticationverifiedserverdialogtest"
+		kdepim-addons-eventedittest
+		messageviewer-dkimauthenticationverifiedserverdialogtest
 		# Test pass but get stuck indefinetly afterwards.
-		"kdepim-addons-todoedittest"
+		kdepim-addons-todoedittest
+		# shrug ... bugs #967519, 977513
+		briefheaderstyleplugintest
+		markdowncreateimagewidgettest
+		messageviewerplugins-viewerpluginexternalscriptparseargumenttest
 	)
 
 	# tests can get stuck with spawned processes, 4 minutes is a reasonable timeout
 	ecm_src_test --timeout $(( 60 * 4 )) # seconds
-}
-
-pkg_postinst() {
-	if [[ -z "${REPLACING_VERSIONS}" ]]; then
-		optfeature "regex support for Sieve editor plugin" kde-misc/kregexpeditor
-	fi
 }

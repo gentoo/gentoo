@@ -9,7 +9,7 @@ inherit ecm kde.org optfeature xdg
 
 if [[ ${KDE_BUILD_TYPE} == release ]]; then
 	SRC_URI="mirror://kde/stable/${PN}/${PV}/${P}.tar.xz"
-	KEYWORDS="~amd64"
+	KEYWORDS="~amd64 ~arm64"
 fi
 
 DESCRIPTION="Video player built with Qt/QML and libmpv"
@@ -17,7 +17,6 @@ HOMEPAGE="https://apps.kde.org/haruna/"
 
 LICENSE="GPL-2+ GPL-3+"
 SLOT="0"
-IUSE=""
 
 DEPEND="
 	dev-libs/kdsingleapplication

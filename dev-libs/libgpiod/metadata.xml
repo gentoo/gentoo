@@ -6,6 +6,7 @@
 		<name>Yixun Lan</name>
 	</maintainer>
 	<use>
+		<flag name="glib">Enable <pkg>dev-libs/glib</pkg> support</flag>
 		<flag name="tools">Build some useful gpio tools that use libgpiod.</flag>
 	</use>
 </pkgmetadata>

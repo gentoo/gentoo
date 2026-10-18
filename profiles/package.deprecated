@@ -17,9 +17,23 @@
 
 #--- END OF EXAMPLES ---
 
-# Michał Górny <mgorny@gentoo.org> (2026-06-10)
-# Part of stdlib since Python 3.11 (as tomllib).
-dev-python/tomli
+# Michał Górny <mgorny@gentoo.org> (2026-08-01)
+# Used only by old dev-python/feedparser versions.  To be last-rited
+# once they're gone.
+dev-python/sgmllib3k
+
+# Michał Górny <mgorny@gentoo.org> (2026-07-27)
+# The project is not actively developed since 2020, when the developer
+# switched to Rust.  The maintenance currently seems to be limited to
+# mass merging slop security fixes.  dev-python/dulwich seems to be
+# the best available alternative right now.
+dev-python/gitpython
+
+# Alfred Wingate <parona@protonmail.com> (2026-07-26)
+# Discontinued upstream since 2019.
+# Replaced by dev-ruby/sassc
+# https://sass-lang.com/blog/ruby-sass-is-unsupported/
+dev-ruby/sass
 
 # Michał Górny <mgorny@gentoo.org> (2026-06-06)
 # Discontinued upstream, with explicit note that they will not be fixing
@@ -52,12 +66,6 @@ dev-python/httpx
 # importlib.{metadata,resources} and/or dev-python/packaging.
 dev-python/pkg-resources
 
-# Michał Górny <mgorny@gentoo.org> (2025-11-25)
-# The package has turned into complete AI slop.  Every subsequent
-# release introduces serious quality issues, and potential security
-# concerns.  Please ask upstreams to move away from it.
-dev-python/autobahn
-
 # Michał Górny <mgorny@gentoo.org> (2025-11-04)
 # Please depend on virtual/zlib, unless you are sure that the package
 # in question is not compatible with sys-libs/zlib-ng[compat] and/or
@@ -76,21 +84,6 @@ dev-python/httpretty
 # Only exists temporarily to facilitate upgrades for exaile.
 # Bug 892854
 dev-python/berkeleydb
-
-# Michał Górny <mgorny@gentoo.org> (2025-10-01)
-# dev-python/libpass is unmaintained upstream (last release in 2020),
-# and we keep having to patch breakage out.  Packages really need
-# to migrate out of it.
-dev-python/libpass
-
-# Michał Górny <mgorny@gentoo.org> (2025-07-29)
-# dev-python/flaky and dev-python/pytest-rerunfailurse have conflicting
-# pytest fixtures, with the latter providing a more powerful fixture
-# (and the former breaking packages requiring it).  If your package
-# uses `@pytest.mark.flaky`, use pytest-rerunfailures instead.
-# If it uses `@flaky.flaky`, send a patch upstream to switch
-# to `@pytest.mark.flaky`.
-dev-python/flaky
 
 # Michał Górny <mgorny@gentoo.org> (2025-06-28)
 # versioningit does not provide any support for building via GitHub

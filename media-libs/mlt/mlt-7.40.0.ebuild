@@ -12,7 +12,7 @@ SRC_URI="https://github.com/mltframework/${PN}/releases/download/v${PV}/${P}.tar
 
 LICENSE="GPL-3"
 SLOT="0/7"
-KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 arm64 ~loong ~ppc64 ~riscv ~x86"
 
 IUSE="debug ffmpeg frei0r gtk jack libsamplerate opencv opengl python qt6
 rtaudio rnnoise rubberband sdl sox test vdpau vidstab vorbis xine xml"
@@ -95,6 +95,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-6.10.0-swig-underlinking.patch
 	"${FILESDIR}"/${PN}-6.22.1-no_lua_bdepend.patch
 	"${FILESDIR}"/${PN}-7.0.1-cmake-symlink.patch
+	"${FILESDIR}"/${P}-ffmpeg-9.patch # in git master
 )
 
 pkg_setup() {

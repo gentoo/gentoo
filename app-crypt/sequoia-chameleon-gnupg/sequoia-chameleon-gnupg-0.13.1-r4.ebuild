@@ -62,6 +62,7 @@ QA_FLAGS_IGNORED="usr/bin/gpg-sq usr/bin/gpgv-sq"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-tests.patch
+	"${FILESDIR}"/${P}-no-cargo-profile.patch
 )
 
 pkg_setup() {

@@ -26,7 +26,7 @@ else
 	# 27.0.90              upstream prerelease snapshot (27-vcs)
 	# 27.0.50_pre20191223  snapshot by Gentoo developer (27-vcs)
 	if [[ ${PV} == *_pre* ]]; then
-		SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.tar.xz"
+		SRC_URI="https://distfiles.gentoo.org/pub/proj/emacs/${P}.tar.xz"
 		S="${WORKDIR}/emacs"
 	elif [[ ${PV//[0-9]} != "." ]]; then
 		SRC_URI="https://alpha.gnu.org/gnu/emacs/pretest/${PN}-${PV/_/-}.tar.xz"
@@ -40,7 +40,7 @@ DESCRIPTION="The advanced, extensible, customizable, self-documenting editor"
 HOMEPAGE="https://www.gnu.org/software/emacs/"
 
 LICENSE="GPL-3+ FDL-1.3+ Boost-1.0 BSD CC-BY-SA-3.0 CC-BY-SA-4.0 HPND MIT MPL-2.0 PCRE PSF-2 unicode W3C"
-IUSE="acl alsa aqua athena cairo dbus dynamic-loading games gfile gif +gmp gpm gsettings gtk gui gzip-el harfbuzz imagemagick +inotify jit jpeg kerberos lcms libxml2 livecd m17n-lib mailutils motif png selinux sound source sqlite ssl svg systemd +threads tiff toolkit-scroll-bars tree-sitter valgrind webp wide-int +X xattr Xaw3d xft +xpm zlib"
+IUSE="acl alsa aqua athena cairo dbus dynamic-loading games gfile gif +gmp gpm gsettings gtk gui gzip-el harfbuzz imagemagick +inotify jit jpeg lcms libxml2 livecd m17n-lib mailutils motif png selinux sound source sqlite ssl svg systemd +threads tiff toolkit-scroll-bars tree-sitter valgrind webp wide-int +X xattr Xaw3d xft +xpm xwidgets zlib"
 
 X_DEPEND="x11-libs/libICE
 	x11-libs/libSM
@@ -67,7 +67,13 @@ X_DEPEND="x11-libs/libICE
 			>=dev-libs/m17n-lib-1.5.1
 		)
 	)
-	gtk? ( x11-libs/gtk+:3[X] )
+	gtk? (
+		x11-libs/gtk+:3[X]
+		xwidgets? (
+			net-libs/webkit-gtk:4.1=
+			x11-libs/libXcomposite
+		)
+	)
 	!gtk? (
 		motif? (
 			>=x11-libs/motif-2.3:0=
@@ -102,7 +108,6 @@ RDEPEND=">=app-emacs/emacs-common-1.11[games?,gui?]
 		sys-devel/gcc:=[jit(-)]
 		virtual/zlib:=
 	)
-	kerberos? ( virtual/krb5 )
 	lcms? ( media-libs/lcms:2 )
 	libxml2? ( >=dev-libs/libxml2-2.2.0:= )
 	mailutils? ( net-mail/mailutils[clients] )
@@ -111,10 +116,7 @@ RDEPEND=">=app-emacs/emacs-common-1.11[games?,gui?]
 	sqlite? ( dev-db/sqlite:3 )
 	ssl? ( net-libs/gnutls:0= )
 	systemd? ( sys-apps/systemd )
-	tree-sitter? (
-		dev-libs/tree-sitter:=
-		dev-libs/tree-sitter-jsdoc
-	)
+	tree-sitter? ( dev-libs/tree-sitter:= )
 	valgrind? ( dev-debug/valgrind )
 	xattr? ( sys-apps/attr )
 	zlib? ( virtual/zlib:= )
@@ -135,12 +137,13 @@ RDEPEND=">=app-emacs/emacs-common-1.11[games?,gui?]
 				media-libs/fontconfig
 				media-libs/freetype
 				>=x11-libs/cairo-1.12.18
-				x11-libs/gtk+:3
+				x11-libs/gtk+:3[wayland]
 				harfbuzz? ( media-libs/harfbuzz:0= )
 				m17n-lib? (
 					>=dev-libs/libotf-0.9.4
 					>=dev-libs/m17n-lib-1.5.1
 				)
+				xwidgets? ( net-libs/webkit-gtk:4.1= )
 			) )
 			!gtk? ( ${X_DEPEND} )
 			X? ( ${X_DEPEND} )
@@ -237,7 +240,6 @@ src_configure() {
 		--localstatedir="${EPREFIX}"/var
 		--enable-locallisppath="${EPREFIX}/etc/emacs:${EPREFIX}${SITELISP}"
 		--without-compress-install
-		--without-hesiod
 		--without-pop
 		--without-systemduserunitdir
 		--with-file-notification=$(usev inotify || usev gfile || echo no)
@@ -250,7 +252,6 @@ src_configure() {
 		$(use_with gmp libgmp)
 		$(use_with gpm)
 		$(use_with jit native-compilation aot)
-		$(use_with kerberos) $(use_with kerberos kerberos5)
 		$(use_with lcms lcms2)
 		$(use_with libxml2 xml2)
 		$(use_with mailutils)
@@ -307,11 +308,11 @@ src_configure() {
 			--with-pgtk --without-x --without-ns
 			--with-toolkit-scroll-bars #836392
 			--without-gconf
-			--without-xwidgets
 			$(use_with gsettings)
 			$(use_with harfbuzz)
 			$(use_with m17n-lib libotf)
 			$(use_with m17n-lib m17n-flt)
+			$(use_with xwidgets)
 		)
 	else
 		# X11
@@ -358,7 +359,7 @@ src_configure() {
 				it with the Athena/Lucid or the Motif toolkit instead,
 				i.e. with USE="athena Xaw3d -gtk -motif" or USE="motif -gtk".
 			EOF
-			myconf+=( --with-x-toolkit=gtk3 --without-xwidgets )
+			myconf+=( --with-x-toolkit=gtk3 $(use_with xwidgets) )
 			for f in motif Xaw3d athena; do
 				use ${f} && ewarn \
 					"USE flag \"${f}\" has no effect if \"gtk\" is set."
@@ -377,6 +378,8 @@ src_configure() {
 			einfo "Configuring to build with no toolkit"
 			myconf+=( --with-x-toolkit=no )
 		fi
+		! use gtk && use xwidgets && ewarn \
+			"USE flag \"xwidgets\" has no effect if \"gtk\" is not set."
 	fi
 
 	if use gui; then
@@ -399,9 +402,6 @@ src_configure() {
 		popd >/dev/null || die
 		# Don't try to execute the binary for dumping during the build
 		myconf+=( --with-dumping=none )
-	#elif use m68k; then
-	#	# Workaround for https://debbugs.gnu.org/44531
-	#	myconf+=( --with-dumping=unexec )
 	else
 		myconf+=( --with-dumping=pdumper )
 	fi
@@ -466,6 +466,9 @@ src_test() {
 		# Reason: tries to access network
 		# internet-is-working
 		%src/process-tests.el
+
+		# Reason: fails with app-crypt/freepg
+		%lisp/epg-tests.el
 	)
 	use threads || exclude_tests+=(
 			%src/emacs-module-tests.el

@@ -1,0 +1,34 @@
+From 4bfe8732477fe3b29d8ecca8362cde669fcbdf4b Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx@gmail.com>
+Date: Tue, 16 Jun 2026 16:20:33 +0200
+Subject: gcc-17 include fstream
+
+Signed-off-by: Paul Zander <negril.nx@gmail.com>
+
+diff --git a/src/3rdParty/salomesmesh/inc/UNV164_Structure.hxx b/src/3rdParty/salomesmesh/inc/UNV164_Structure.hxx
+index 2dab980215..95a1d79e6e 100644
+--- a/src/3rdParty/salomesmesh/inc/UNV164_Structure.hxx
++++ b/src/3rdParty/salomesmesh/inc/UNV164_Structure.hxx
+@@ -67,6 +67,7 @@
+ 
+ #include "SMESH_DriverUNV.hxx"
+ 
++#include <fstream>
+ #include <string>
+ 
+ namespace UNV164
+diff --git a/src/3rdParty/salomesmesh/inc/UNV2420_Structure.hxx b/src/3rdParty/salomesmesh/inc/UNV2420_Structure.hxx
+index 60dd28afe2..9bea40a4df 100644
+--- a/src/3rdParty/salomesmesh/inc/UNV2420_Structure.hxx
++++ b/src/3rdParty/salomesmesh/inc/UNV2420_Structure.hxx
+@@ -78,6 +78,7 @@
+ 
+ #include "SMESH_DriverUNV.hxx"
+ 
++#include <fstream>
+ #include <string>
+ #include <vector>
+ 
+-- 
+2.54.0
+

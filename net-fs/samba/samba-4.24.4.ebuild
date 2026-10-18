@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 PYTHON_REQ_USE="threads(+),xml(+)"
 inherit python-single-r1 flag-o-matic waf-utils multilib-minimal linux-info optfeature systemd pam tmpfiles
 
@@ -16,7 +16,7 @@ if [[ ${PV} == *_rc* ]]; then
 	SRC_URI="https://download.samba.org/pub/samba/rc/${MY_P}.tar.gz"
 else
 	SRC_URI="https://download.samba.org/pub/samba/stable/${MY_P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~sparc x86"
 fi
 S="${WORKDIR}/${MY_P}"
 

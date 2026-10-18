@@ -34,6 +34,8 @@ RESTRICT="!cpudetection? ( bindist )"
 
 BDEPEND="
 	app-arch/xz-utils
+	sys-devel/bison
+	sys-devel/flex
 	sys-devel/m4
 	verify-sig? ( sec-keys/openpgp-keys-gmp )
 "

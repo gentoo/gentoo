@@ -14,6 +14,6 @@ LICENSE="GPL-3"
 SLOT="0"
 
 SRC_URI="https://github.com/a13xp0p0v/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.gh.tar.gz"
-KEYWORDS="~amd64 ~riscv"
+KEYWORDS="~amd64 ~arm64 ~riscv"
 
 distutils_enable_tests pytest

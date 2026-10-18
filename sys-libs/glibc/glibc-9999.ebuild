@@ -20,8 +20,11 @@ GCC_BOOTSTRAP_VER=20201208
 # systemd integration version
 GLIBC_SYSTEMD_VER=20210729
 
-# Minimum kernel version that glibc requires
-MIN_KERN_VER="3.2.0"
+# Minimum kernel version that glibc requires (used with USE=old-kernel)
+MIN_KERN_VER_UPSTREAM="3.2.0"
+
+# Minimum kernel version that Gentoo recommends (oldest in the tree)
+MIN_KERN_VER_GENTOO="6.1.0"
 
 # Minimum pax-utils version needed (which contains any new syscall changes for
 # its seccomp filter!). Please double check this!
@@ -53,7 +56,7 @@ SRC_URI+=" systemd? ( https://gitweb.gentoo.org/proj/toolchain/glibc-systemd.git
 
 LICENSE="LGPL-2.1+ BSD HPND ISC inner-net rc PCRE"
 SLOT="2.2"
-IUSE="audit caps cet clang compile-locales custom-cflags doc gd hash-sysv-compat headers-only +multiarch multilib multilib-bootstrap nscd perl profile selinux sframe +ssp stack-realign +static-libs suid systemd systemtap test vanilla"
+IUSE="audit caps cet clang compile-locales custom-cflags doc gd hash-sysv-compat headers-only +multiarch multilib multilib-bootstrap nscd old-kernel perl profile selinux sframe +ssp stack-realign +static-libs suid systemd systemtap test vanilla"
 
 # Here's how the cross-compile logic breaks down ...
 #  CTARGET - machine that will target the binaries
@@ -199,9 +202,6 @@ XFAIL_TEST_LIST=(
 
 	# Fails regularly, unreliable
 	tst-valgrind-smoke
-
-	# https://sourceware.org/bugzilla/show_bug.cgi?id=31877 (bug #927973)
-	tst-shstk-legacy-1g
 
 	# https://sourceware.org/bugzilla/show_bug.cgi?id=33239
 	test-double-compoundn
@@ -569,6 +569,9 @@ setup_flags() {
 	# https://sourceware.org/glibc/wiki/FAQ#Why_do_I_get:.60.23error_.22glibc_cannot_be_compiled_without_optimization.22.27.2C_when_trying_to_compile_GNU_libc_with_GNU_CC.3F
 	replace-flags -O0 -O1
 
+	# bug #982652 (PR34672)
+	is_hurd && replace-flags -Os -O2
+
 	# Similar issues as with SSP. Can't inject yourself that early.
 	filter-flags '-fsanitize=*'
 
@@ -924,6 +927,12 @@ sanity_prechecks() {
 		fi
 
 		if is_linux ; then
+			if use old-kernel ; then
+				MIN_KERN_VER=${MIN_KERN_VER_UPSTREAM}
+			else
+				MIN_KERN_VER=${MIN_KERN_VER_GENTOO}
+			fi
+
 			local run_kv build_kv want_kv
 
 			run_kv=$(g_get_running_KV)
@@ -937,7 +946,7 @@ sanity_prechecks() {
 					eend 1
 					echo
 					eerror "You need a kernel of at least ${want_kv}!"
-					die "Kernel version too low!"
+					die "Kernel version too low! Maybe setting USE=old-kernel helps."
 				fi
 				eend 0
 			fi
@@ -1108,6 +1117,11 @@ glibc_do_configure() {
 
 	[[ $(tc-is-softfloat) == "yes" ]] && myconf+=( --without-fp )
 
+	if use old-kernel ; then
+		MIN_KERN_VER=${MIN_KERN_VER_UPSTREAM}
+	else
+		MIN_KERN_VER=${MIN_KERN_VER_GENTOO}
+	fi
 	myconf+=( --enable-kernel=${MIN_KERN_VER} )
 
 	# Since SELinux support is only required for nscd, only enable it if:
@@ -1752,7 +1766,19 @@ src_install() {
 #
 # If coreutils is built with USE=multicall, some of these files
 # will just be wrapper scripts, not actual ELFs we can test.
+#
+# We allow to skip this sanity check, as insane as that may seem.
+# The one use-case I know of is changing the main ABI in-place;
+# the test runs existing binaries against the default ld.so, which
+# fails then, while the binaries should be executable just fine
+# using one of the other multilib variants that we install.
+#
 glibc_sanity_check() {
+	if [[ ${I_ALLOW_TO_BREAK_MY_SYSTEM} = yes ]] ; then
+		ewarn "Skipping glibc sanity tests. You have been warned. Last 5s to abort."
+		sleep 5
+	else
+
 	cd / #228809
 
 	# We enter ${ED} so to avoid trouble if the path contains
@@ -1787,6 +1813,8 @@ glibc_sanity_check() {
 	done
 
 	popd >/dev/null
+
+	fi
 }
 
 pkg_preinst() {

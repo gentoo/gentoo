@@ -18,7 +18,7 @@ HOMEPAGE="
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="amd64"
+KEYWORDS="amd64 ~x86"
 
 RDEPEND="
 	>=dev-python/numpy-1.21.6[${PYTHON_USEDEP}]

@@ -150,7 +150,7 @@ multilib_src_configure() {
 		$(use_enable nls)
 		$(use_enable openmp)
 		$(use_enable static-libs static)
-		$(use_enable xattr attr)
+		$(use_enable xattr)
 	)
 
 	local ECONF_SOURCE="${S}"

@@ -4,6 +4,7 @@
 # Ionen Wolkens <ionen@gentoo.org> (2026-03-16)
 # media-libs/opencolorio is available on ppc64le
 media-video/ffmpeg -opencolorio
+media-video/ffmpeg-compat -opencolorio
 
 # Marek Szuba <marecki@gentoo.org> (2023-12-05)
 # Needs USE=video_cards_amdgpu, which IS available on ppc64le.
@@ -27,7 +28,6 @@ app-containers/crun -criu
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-09-19)
 # openjfx is keyworded on ppc64le
-dev-java/openjdk:8 -javafx
 dev-java/openjdk:11 -javafx
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-05-03)

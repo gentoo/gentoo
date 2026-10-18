@@ -13,7 +13,7 @@ S="${WORKDIR}/${MY_P}/xdelta3"
 
 LICENSE="GPL-2"
 SLOT="3"
-KEYWORDS="~alpha ~amd64 ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm64 ~hppa ~loong ppc ppc64 ~riscv ~sparc x86"
 IUSE="examples lzma test"
 RESTRICT="!test? ( test )"
 

@@ -1,0 +1,41 @@
+https://github.com/json-c/json-c/pull/948
+
+From fb9608372a51de64b9b3eeb9cea21a4e285db4b0 Mon Sep 17 00:00:00 2001
+Message-ID: <fb9608372a51de64b9b3eeb9cea21a4e285db4b0.1784352847.git.sam@gentoo.org>
+In-Reply-To: <54879ed79afd031faf086ca4507dbfd180e4e3bc.1784352847.git.sam@gentoo.org>
+References: <54879ed79afd031faf086ca4507dbfd180e4e3bc.1784352847.git.sam@gentoo.org>
+From: Sam James <sam@gentoo.org>
+Date: Sat, 18 Jul 2026 06:32:31 +0100
+Subject: [PATCH 2/2] meson: conditionally build tests with an option, not
+ build type
+
+Distros may want to test production builds before shipping.
+---
+ meson.build       | 2 +-
+ meson_options.txt | 1 +
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/meson.build b/meson.build
+index 973d4be..9ba3a45 100644
+--- a/meson.build
++++ b/meson.build
+@@ -307,6 +307,6 @@ if get_option('build_apps') and host_machine.system() != 'windows'
+ endif
+ 
+ # Optional tests
+-if get_option('buildtype') == 'debug'
++if get_option('build_tests')
+   subdir('tests')
+ endif 
+diff --git a/meson_options.txt b/meson_options.txt
+index 94205b0..63b5167 100644
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -9,3 +9,4 @@ option('disable_json_pointer', type: 'boolean', value: false, description: 'Disa
+ option('disable_json_patch', type: 'boolean', value: false, description: 'Disable JSON patch support')
+ option('newlocale_needs_freelocale', type: 'boolean', value: false, description: 'FreeBSD workaround for newlocale')
+ option('build_apps', type: 'boolean', value: true, description: 'Build command-line apps')
++option('build_tests', type: 'boolean', value: true, description: 'Build testsuite')
+-- 
+2.55.0
+

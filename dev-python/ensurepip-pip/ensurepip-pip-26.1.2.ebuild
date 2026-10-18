@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=flit-core
 # PYTHON_COMPAT is used only for testing
-PYTHON_COMPAT=( python3_{12..15} )
+PYTHON_COMPAT=( python3_{12..15} python3_{14,15}t )
 PYTHON_REQ_USE="ssl(+),threads(+)"
 
 inherit distutils-r1 pypi
@@ -153,22 +153,6 @@ python_test() {
 		# requires proxy.py
 		tests/functional/test_proxy.py
 	)
-
-	case ${EPYTHON} in
-		pypy3*)
-			EPYTEST_DESELECT+=(
-				# unexpected tempfiles?
-				tests/functional/test_install_config.py::test_do_not_prompt_for_authentication
-				tests/functional/test_install_config.py::test_prompt_for_authentication
-				# wrong path
-				tests/functional/test_install.py::test_install_editable_with_prefix_setup_py
-				# wrong exception assumptions
-				tests/unit/test_utils_datetime.py::test_parse_iso_datetime_invalid
-				# TODO
-				tests/functional/test_install.py::test_install_warns_on_unexpected_post_install_import
-			)
-			;;
-	esac
 
 	if ! has_version "dev-python/cryptography[${PYTHON_USEDEP}]"; then
 		EPYTEST_DESELECT+=(

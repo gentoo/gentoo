@@ -3,9 +3,9 @@
 
 EAPI=8
 
-DISTUTILS_USE_PEP517=flit
+DISTUTILS_USE_PEP517=flit-core
 PYPI_VERIFY_REPO=https://github.com/Kozea/WeasyPrint
-PYTHON_COMPAT=( python3_{12..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 
 inherit distutils-r1 pypi
 

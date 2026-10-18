@@ -218,6 +218,10 @@ src_configure() {
 		-x test_gdb
 		# this is actually test_gdb.test_pretty_print
 		-x test_pretty_print
+		# broken w/ >=linux-7.1, fixed w/ >=3.13
+		# https://github.com/python/cpython/issues/149078
+		# https://github.com/python/cpython/issues/149776
+		-x test_socket
 	)
 
 	# Arch-specific skips.  See #931888 for a collection of these.

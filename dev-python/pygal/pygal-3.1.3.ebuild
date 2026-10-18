@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{12..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 PYTHON_REQ_USE="xml(+)"
 
 inherit distutils-r1 optfeature
@@ -21,7 +21,7 @@ SRC_URI="
 
 LICENSE="LGPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
+KEYWORDS="amd64 arm64 ~riscv x86"
 
 RDEPEND="
 	dev-python/importlib-metadata[${PYTHON_USEDEP}]
@@ -52,5 +52,5 @@ python_prepare_all() {
 
 pkg_postinst() {
 	optfeature "improving rendering speed" "dev-python/lxml"
-	optfeature "png rendering" "dev-python/cairosvg"
+	optfeature "png rendering" "media-gfx/cairosvg"
 }

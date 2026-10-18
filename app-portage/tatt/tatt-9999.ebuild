@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{12..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 DISTUTILS_USE_PEP517=setuptools
 inherit distutils-r1 git-r3
 
@@ -21,6 +21,7 @@ RDEPEND="
 	app-portage/gentoolkit[${PYTHON_USEDEP}]
 	app-portage/nattka[${PYTHON_USEDEP}]
 	dev-python/configobj[${PYTHON_USEDEP}]
+	dev-python/pkg-resources[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]
 	www-client/pybugz
 "

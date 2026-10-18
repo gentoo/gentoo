@@ -1,0 +1,25 @@
+From d5f71e598ef63dadf718413b9d8d6e6dffd98d26 Mon Sep 17 00:00:00 2001
+From: Conrad Kostecki <conrad@kostecki.com>
+Date: Sun, 13 Sep 2026 17:21:44 +0200
+Subject: [PATCH] IGC/AdaptorOCL/dllInterfaceCompute.cpp: guard
+ LLVMModule->dump();
+
+---
+ IGC/AdaptorOCL/dllInterfaceCompute.cpp | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/IGC/AdaptorOCL/dllInterfaceCompute.cpp b/IGC/AdaptorOCL/dllInterfaceCompute.cpp
+index 01bc19e421ad..c2be50bf7746 100644
+--- a/IGC/AdaptorOCL/dllInterfaceCompute.cpp
++++ b/IGC/AdaptorOCL/dllInterfaceCompute.cpp
+@@ -454,8 +454,10 @@ bool TranslateSPIRVToLLVM(const STB_TranslateInputArgs &InputArgs, llvm::LLVMCon
+     // Parse SPIRV extensions and encode them as 'igc.spirv.extensions' metadata
+     GenerateSPIRVExtensionsMD(Context, *LLVMModule, SPIRVBinary.str());
+ 
++#if !defined(NDEBUG) || defined(LLVM_ENABLE_DUMP)
+     if (IGC_IS_FLAG_ENABLED(ShaderDumpTranslationOnly))
+       LLVMModule->dump();
++#endif
+   }
+ 
+   return success;

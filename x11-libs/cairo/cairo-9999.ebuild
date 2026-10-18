@@ -1,10 +1,10 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 PYTHON_COMPAT=( python3_{11..14} )
-inherit meson-multilib python-any-r1
+inherit flag-o-matic meson-multilib python-any-r1
 
 if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
@@ -53,6 +53,14 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-respect-fontconfig.patch
 )
+
+src_configure() {
+	# Upstream build w/ -fno-strict-aliasing but >= GCC 17 makes
+	# -Werror=strict-aliasing (set by the user here) effective even with
+	# that, so disable both rather than just the error to be safe.
+	append-flags $(test-flags-CC -fno-strict-aliasing -Wno-error=strict-aliasing)
+	multilib-minimal_src_configure
+}
 
 multilib_src_configure() {
 	local emesonargs=(

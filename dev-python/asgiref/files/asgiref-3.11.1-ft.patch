@@ -1,0 +1,206 @@
+From 05125d34a139db0d5b9392786ba3bc6d00c79826 Mon Sep 17 00:00:00 2001
+From: Carlton Gibson <carlton.gibson@noumenal.es>
+Date: Fri, 19 Jun 2026 12:25:46 +0200
+Subject: [PATCH] Test free-threading builds and fix Local data leak for
+ thread_inherit_context.
+
+--- a/asgiref/local.py
++++ b/asgiref/local.py
+@@ -2,21 +2,58 @@
+ import contextlib
+ import contextvars
+ import threading
+-from typing import Any, Dict, Union
++from typing import Any, Union
++
++
++class _Storage:
++    """Thread-tagged storage for a non-thread-critical ``Local``.
++
++    The data is tagged with the identity of the thread that owns it. This lets
++    ``_CVar`` ignore data that leaked into an unrelated thread.
++
++    Python 3.14 added ``sys.flags.thread_inherit_context``, which is enabled by
++    default on free-threaded builds. When set, a new thread starts with a copy
++    of the spawning thread's context instead of an empty one, so the contextvar
++    backing a ``Local`` would otherwise be visible in any thread spawned from
++    one that had set it -- breaking the documented "thread-local in sync
++    threads" behaviour. asgiref re-homes the storage to the current thread at
++    the points where it *intentionally* moves work between threads (see
++    ``asgiref.sync._restore_context``); data merely inherited by an unrelated
++    thread is never re-homed and so stays isolated.
++    """
++
++    __slots__ = ("thread_id", "data")
++
++    def __init__(self, thread_id: int, data: dict[str, Any]) -> None:
++        self.thread_id = thread_id
++        self.data = data
++
++
++def _rehome(storage: "_Storage") -> "_Storage":
++    """Return a copy of *storage* owned by the current thread."""
++    return _Storage(threading.get_ident(), storage.data)
+ 
+ 
+ class _CVar:
+     """Storage utility for Local."""
+ 
+     def __init__(self) -> None:
+-        self._data: "contextvars.ContextVar[Dict[str, Any]]" = contextvars.ContextVar(
++        self._data: "contextvars.ContextVar[_Storage]" = contextvars.ContextVar(
+             "asgiref.local"
+         )
+ 
++    def _storage(self) -> "_Storage":
++        # Only return storage that belongs to the current thread. Storage with
++        # a different thread id was inherited by this thread (rather than
++        # intentionally moved here by asgiref) and must not be visible.
++        storage = self._data.get(None)
++        if storage is None or storage.thread_id != threading.get_ident():
++            return _Storage(threading.get_ident(), {})
++        return storage
++
+     def __getattr__(self, key):
+-        storage_object = self._data.get({})
+         try:
+-            return storage_object[key]
++            return self._storage().data[key]
+         except KeyError:
+             raise AttributeError(f"{self!r} object has no attribute {key!r}")
+ 
+@@ -24,15 +61,15 @@ def __setattr__(self, key: str, value: Any) -> None:
+         if key == "_data":
+             return super().__setattr__(key, value)
+ 
+-        storage_object = self._data.get({}).copy()
+-        storage_object[key] = value
+-        self._data.set(storage_object)
++        data = self._storage().data.copy()
++        data[key] = value
++        self._data.set(_Storage(threading.get_ident(), data))
+ 
+     def __delattr__(self, key: str) -> None:
+-        storage_object = self._data.get({}).copy()
+-        if key in storage_object:
+-            del storage_object[key]
+-            self._data.set(storage_object)
++        data = self._storage().data.copy()
++        if key in data:
++            del data[key]
++            self._data.set(_Storage(threading.get_ident(), data))
+         else:
+             raise AttributeError(f"{self!r} object has no attribute {key!r}")
+ 
+--- a/asgiref/sync.py
++++ b/asgiref/sync.py
+@@ -23,7 +23,7 @@
+ )
+ 
+ from .current_thread_executor import CurrentThreadExecutor
+-from .local import Local
++from .local import Local, _rehome, _Storage
+ 
+ if TYPE_CHECKING:
+     # This is not available to import at runtime
+@@ -39,6 +39,12 @@ def _restore_context(context: contextvars.Context) -> None:
+     # context for downstream consumers
+     for cvar in context:
+         cvalue = context.get(cvar)
++        # asgiref is deliberately moving this context onto the current thread,
++        # so re-home any Local storage to it. This keeps Local data visible
++        # across async_to_sync / sync_to_async boundaries while leaving data
++        # merely inherited by an unrelated thread isolated (see asgiref.local).
++        if isinstance(cvalue, _Storage):
++            cvalue = _rehome(cvalue)
+         try:
+             if cvar.get() != cvalue:
+                 cvar.set(cvalue)
+@@ -486,7 +492,15 @@ async def __call__(self, *args: _P.args, **kwargs: _P.kwargs) -> _R:
+             executor = self._executor
+ 
+         context = contextvars.copy_context() if self.context is None else self.context
+-        child = functools.partial(self.func, *args, **kwargs)
++        inner = functools.partial(self.func, *args, **kwargs)
++
++        def child() -> _R:
++            # The sync function runs inside ``context`` (a copy of the calling
++            # async context) on a worker thread. Re-home any Local storage to
++            # this thread so it stays visible here (see _restore_context).
++            _restore_context(context)
++            return inner()
++
+         func = context.run
+         task_context: list[asyncio.Task[Any]] = []
+ 
+--- a/tests/test_garbage_collection.py
++++ b/tests/test_garbage_collection.py
+@@ -35,6 +35,14 @@ def clean_up_after_garbage_collection_test() -> None:
+ @pytest.mark.skipif(
+     sys.implementation.name == "pypy", reason="Test relies on CPython GC internals"
+ )
++@pytest.mark.skipif(
++    not getattr(sys, "_is_gil_enabled", lambda: True)(),
++    reason=(
++        "On a free-threaded build the cyclic collector may reclaim objects that "
++        "are freed immediately by reference counting under the GIL, so they show "
++        "up in gc.garbage with DEBUG_SAVEALL even without a real leak."
++    ),
++)
+ def test_thread_critical_Local_remove_all_reference_cycles() -> None:
+     try:
+         # given
+--- a/tests/test_local.py
++++ b/tests/test_local.py
+@@ -1,4 +1,5 @@
+ import asyncio
++import contextvars
+ import gc
+ import threading
+ from threading import Thread
+@@ -359,6 +360,45 @@ def _test() -> None:
+     assert test_local.value == 0
+ 
+ 
++def test_local_not_inherited_by_new_thread() -> None:
++    """
++    A value set in one sync thread must not be visible in a separately spawned
++    sync thread.
++
++    On Python 3.14+ a new thread inherits a copy of the spawning thread's
++    context when ``sys.flags.thread_inherit_context`` is enabled. That flag
++    defaults to on for free-threaded builds and off for the regular GIL build
++    (where it is opt-in via ``-X thread_inherit_context=1`` /
++    ``PYTHON_THREAD_INHERIT_CONTEXT=1``). When enabled it would otherwise leak
++    non-thread-critical ``Local`` data across unrelated threads.
++    """
++    test_local = Local()
++    test_local.value = "parent"
++
++    # Capture the child's observation in the parent so an in-thread assertion
++    # failure actually fails the test.
++    observed: "dict[str, object]" = {}
++
++    def child() -> None:
++        observed["has_value"] = hasattr(test_local, "value")
++        # The child gets its own isolated storage.
++        test_local.value = "child"
++        observed["child_value"] = test_local.value
++
++    # Force the worst case by running the child in a copy of this thread's
++    # context (mirroring thread_inherit_context), so the test exercises the leak
++    # path on every build regardless of the flag default.
++    parent_context = contextvars.copy_context()
++    thread = Thread(target=lambda: parent_context.run(child))
++    thread.start()
++    thread.join()
++
++    assert observed["has_value"] is False
++    assert observed["child_value"] == "child"
++    # The child's write must not leak back to the parent either.
++    assert test_local.value == "parent"
++
++
+ @pytest.mark.asyncio
+ async def test_visibility_task() -> None:
+     """Check visibility with asyncio tasks."""

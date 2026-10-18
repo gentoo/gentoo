@@ -1,10 +1,10 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 MY_COMMIT=a578956
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{12..14} )
 PYTHON_REQ_USE="threads(+)"
 
 inherit python-any-r1 waf-utils
@@ -16,7 +16,7 @@ S="${WORKDIR}"/${P}-${MY_COMMIT}
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 # It is possible to run the tests using virtualx, but it seems to take
 # screenshots of the terminal window, and compares checksums that never

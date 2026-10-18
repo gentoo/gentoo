@@ -6,6 +6,8 @@
     <name>Joonas Niilola</name>
   </maintainer>
   <stabilize-allarches/>
+  <!-- website changes can leave the stable version immediately broken -->
+  <straight-to-stable/>
   <upstream>
     <remote-id type="github">aajanki/yle-dl</remote-id>
   </upstream>

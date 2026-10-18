@@ -76,7 +76,12 @@ else
 	fi
 
 	_QT6_P=${QT6_MODULE}-everywhere-src-${PV/_/-}
-	SRC_URI="https://download.qt.io/${_QT6_SRC}_releases/qt/${PV%.*}/${PV/_/-}/submodules/${_QT6_P}.tar.xz"
+	# TODO: cleanup ver_test bit at some point after <6.12 is gone
+	if [[ ${PN} == qtwebengine ]] && ver_test -ge 6.12; then
+		SRC_URI="https://download.qt.io/${_QT6_SRC}_releases/qtwebengine/${PV/_/-}/${_QT6_P}.tar.xz"
+	else
+		SRC_URI="https://download.qt.io/${_QT6_SRC}_releases/qt/${PV%.*}/${PV/_/-}/submodules/${_QT6_P}.tar.xz"
+	fi
 	S=${WORKDIR}/${_QT6_P}
 
 	unset _QT6_P _QT6_SRC
@@ -93,9 +98,6 @@ else
 	IUSE+=" test"
 	RESTRICT="!test? ( test )"
 fi
-
-# workaround for portage bug #921333
-[[ ${PN} != @(qtbase|qttranslations) ]] && RDEPEND="dev-qt/qtbase:6="
 
 BDEPEND="
 	dev-lang/perl
@@ -120,20 +122,6 @@ qt6-build_src_unpack() {
 # QT6_PREFIX, QT6_LIBDIR, and others), and handle anything else
 # generic as needed.
 qt6-build_src_prepare() {
-	# There is a suspicion that there "may" still be portage ordering issues
-	# when Qt's complex depgraph is involved, e.g. build a package with USE=qml
-	# before (matching) qtdeclarative version is updated despite all these
-	# packages DEPEND on ~qtdeclarative-${PV}. Tentatively assert to see if
-	# if the issue really exists (bug #959567).
-	if in_iuse qml && use qml && [[ ${PN} != qtwayland ]] &&
-		! has_version -d "~dev-qt/qtdeclarative-${PV}"
-	then
-		eerror "${CATEGORY}/${PN}[qml] depends on ~dev-qt/qtdeclarative-${PV}"
-		eerror "but it has not been upgraded/installed yet, implies that there"
-		eerror "is a bug in the package manager assuming normal usage."
-		die "aborting to avoid installing a broken package"
-	fi
-
 	# Qt has quite a lot of unused (false positive) CMakeLists.txt
 	local CMAKE_QA_COMPAT_SKIP=1
 
@@ -153,17 +141,7 @@ qt6-build_src_prepare() {
 
 	_qt6-build_prepare_env
 
-	if use !custom-cflags; then
-		_qt6-build_sanitize_cpu_flags
-
-		# lto+gcc used to break a lot of tests, but this has improved so
-		# tentatively allow again for Qt >=6.10 + GCC >=15.2 (bug #955531)
-		if ver_test ${PV} -lt 6.10 ||
-			{ tc-is-gcc && ver_test $(gcc-version) -lt 15.2; };
-		then
-			filter-lto
-		fi
-	fi
+	use custom-cflags || _qt6-build_sanitize_cpu_flags
 
 	[[ ${QT6_HAS_STATIC_LIBS} ]] && lto-guarantee-fat
 }
@@ -172,24 +150,22 @@ qt6-build_src_prepare() {
 # @DESCRIPTION:
 # Run cmake_src_configure and handle anything else generic as needed.
 qt6-build_src_configure() {
-	if [[ ${PN} == qttranslations ]]; then
-		# does not compile anything, further options would be unrecognized
-		cmake_src_configure
-		return
-	fi
-
 	local defaultcmakeargs=(
 		# cmake defaults to "STATUS" but Qt changes that to "NOTICE" which
 		# hides a lot of information that is useful for bug reports
 		--log-level=STATUS
 		# ...but dev messages are noisy and not really useful downstream
 		-Wno-dev
+		# generally unwanted on Gentoo, portage handles tracking licenses
+		-DQT_GENERATE_SBOM=OFF
 		# see _qt6-build_create_user_facing_links
 		-DINSTALL_PUBLICBINDIR="${QT6_PREFIX}"/bin
+	)
+
+	# avoid QA warning for unused options when not compiling anything
+	[[ ${PN} != qttranslations ]] && defaultcmakeargs+=(
 		# note that if qtbase was built with tests, this is default ON
 		-DQT_BUILD_TESTS=$(in_iuse test && use test && echo ON || echo OFF)
-		# generally unwated on Gentoo, portage handles tracking licenses
-		-DQT_GENERATE_SBOM=OFF
 		# avoid appending -O2 after user's C(XX)FLAGS (bug #911822)
 		-DQT_USE_DEFAULT_CMAKE_OPTIMIZATION_FLAGS=ON
 	)
@@ -276,12 +252,14 @@ _qt6-build_create_user_facing_links() {
 # @DESCRIPTION:
 # Prepares the environment for building Qt.
 _qt6-build_prepare_env() {
-	# setup installation directories
-	# note: keep paths in sync with qmake-utils.eclass
+	# setup variables for installation directories
+	# note: qt-utils.eclass should be kept in sync, eclass is not used
+	# here for clarity and for paths that are only defined here
 	QT6_PREFIX=${EPREFIX}/usr
-	QT6_DATADIR=${QT6_PREFIX}/share/qt6
 	QT6_LIBDIR=${QT6_PREFIX}/$(get_libdir)
+	QT6_SYSCONFDIR=${EPREFIX}/etc/xdg
 
+	QT6_DATADIR=${QT6_PREFIX}/share/qt6
 	QT6_ARCHDATADIR=${QT6_LIBDIR}/qt6
 
 	QT6_BINDIR=${QT6_ARCHDATADIR}/bin
@@ -293,7 +271,6 @@ _qt6-build_prepare_env() {
 	QT6_MKSPECSDIR=${QT6_ARCHDATADIR}/mkspecs
 	QT6_PLUGINDIR=${QT6_ARCHDATADIR}/plugins
 	QT6_QMLDIR=${QT6_ARCHDATADIR}/qml
-	QT6_SYSCONFDIR=${EPREFIX}/etc/xdg
 	QT6_TRANSLATIONDIR=${QT6_DATADIR}/translations
 }
 
@@ -335,9 +312,17 @@ _qt6-build_sanitize_cpu_flags() {
 	# so users will not lose *all* CPU-specific optimizations
 	local march=$(
 		$(tc-getCXX) -x c++ -E -P ${CXXFLAGS} ${CPPFLAGS} - <<-EOF | sed -n '/^-march=/p' | tail -n 1
-			#if !defined(__EVEX512__) && !defined(__clang__) && __GNUC__ >= 16
-			#  define __EVEX512__ 1 /* removed in gcc-16 (bug #956750,#969664) */
+			/* ignore evex* for >=gcc-16 and >=clang-22 (bug #956750,#969664) */
+			/* TODO: drop this and v4's EVEX* when both compilers been stable for a while */
+			#if (!defined(__clang__) && __GNUC__ >= 16) || __clang_major__ >= 22
+			#  ifndef __EVEX256__
+			#    define __EVEX256__ 1
+			#  endif
+			#  ifndef __EVEX512__
+			#    define __EVEX512__ 1
+			#  endif
 			#endif
+
 			#if (__CRC32__ + __LAHF_SAHF__ + __POPCNT__ + __SSE3__ + __SSE4_1__ + __SSE4_2__ + __SSSE3__) == 7
 			-march=x86-64-v2
 			#  if (__AVX__ + __AVX2__ + __BMI__ + __BMI2__ + __F16C__ + __FMA__ + __LZCNT__ + __MOVBE__ + __XSAVE__) == 9

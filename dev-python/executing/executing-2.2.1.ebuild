@@ -1,23 +1,18 @@
-# Copyright 2020-2025 Gentoo Authors
+# Copyright 2020-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_TESTED=( python3_{11..14} )
-# pypy3.11: https://github.com/alexmojaki/executing/issues/92
-PYTHON_COMPAT=( "${PYTHON_TESTED[@]}" pypy3_11 )
+PYTHON_TESTED=( python3_{12..14} )
+PYTHON_COMPAT=( "${PYTHON_TESTED[@]}" python3_15 )
 
-inherit distutils-r1 optfeature
+inherit distutils-r1 optfeature pypi
 
 DESCRIPTION="Get information about what a Python frame is currently doing"
 HOMEPAGE="
 	https://github.com/alexmojaki/executing/
 	https://pypi.org/project/executing/
-"
-SRC_URI="
-	https://github.com/alexmojaki/executing/archive/v${PV}.tar.gz
-		-> ${P}.gh.tar.gz
 "
 
 LICENSE="MIT"

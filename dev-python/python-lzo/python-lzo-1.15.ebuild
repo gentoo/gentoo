@@ -26,6 +26,11 @@ DEPEND="
 RDEPEND="
 	${DEPEND}
 "
+BDEPEND="
+	test? (
+		dev-python/pkg-resources[${PYTHON_USEDEP}]
+	)
+"
 
 EPYTEST_PLUGINS=()
 distutils_enable_tests pytest

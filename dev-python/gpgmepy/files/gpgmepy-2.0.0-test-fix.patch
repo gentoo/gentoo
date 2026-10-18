@@ -1,0 +1,27 @@
+From a4b0c9f6e285c0a56b758f73cc4ee38c0b3e5c46 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ingo=20Kl=C3=B6cker?= <dev@ingo-kloecker.de>
+Date: Wed, 22 Jul 2026 09:28:09 +0200
+Subject: [PATCH] tests: Increase size of buffer for signed data
+
+* tests/t-idiomatic.py: Increase buffer size to 256.
+--
+
+This fixes the failure of this test. Due to changes in gpg the size of
+the signed data increased to more than 128 bytes.
+---
+ tests/t-idiomatic.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/t-idiomatic.py b/tests/t-idiomatic.py
+index faa4190..c02fe2d 100755
+--- a/tests/t-idiomatic.py
++++ b/tests/t-idiomatic.py
+@@ -79,7 +79,7 @@ def sign_and_verify(source, signed, sink):
+     bio.truncate(1)
+     if len(bio.getvalue()) != 1:
+         # This version of Python is affected, preallocate buffer.
+-        preallocate = 128 * b'\x00'
++        preallocate = 256 * b'\x00'
+     else:
+         preallocate = b''
+ 

@@ -8,7 +8,6 @@
   <stabilize-allarches/>
   <upstream>
     <remote-id type="pypi">webencodings</remote-id>
-    <doc>https://pythonhosted.org/webencodings/</doc>
-    <remote-id type="github">gsnedders/python-webencodings</remote-id>
+    <remote-id type="github">CourtBouillon/webencodings</remote-id>
   </upstream>
 </pkgmetadata>

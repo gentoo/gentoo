@@ -22,7 +22,7 @@ if [[ ${PV} = *9999* ]]; then
 else
 	SRC_URI="https://download.libvirt.org/${P}.tar.xz
 		verify-sig? ( https://download.libvirt.org/${P}.tar.xz.asc )"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+	KEYWORDS="amd64 ~arm arm64 ppc64 x86"
 fi
 
 DESCRIPTION="C toolkit to manipulate virtual machines"
@@ -54,7 +54,7 @@ BDEPEND="
 	dev-python/docutils
 	virtual/pkgconfig
 	bash-completion? ( >=app-shells/bash-completion-2.0 )
-	verify-sig? ( sec-keys/openpgp-keys-libvirt )"
+	verify-sig? ( <sec-keys/openpgp-keys-libvirt-20260831 )"
 
 # gettext.sh command is used by the libvirt command wrappers, and it's
 # non-optional, so put it into RDEPEND.

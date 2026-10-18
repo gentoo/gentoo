@@ -7,6 +7,10 @@
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
 
+# Michael Orlitzky <mjo@gentoo.org> (2026-07-14)
+# dev-lang/php:8.5 needs new keywords, bug 977138.
+php_targets_php8-5
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-06-12)
 # x11-drivers/xf86-input-wacom is not keyworded here
 input_devices_wacom

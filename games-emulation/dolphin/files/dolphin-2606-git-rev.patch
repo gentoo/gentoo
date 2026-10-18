@@ -1,0 +1,13 @@
+https://bugs.gentoo.org/979791
+
+--- a/CMake/ScmRevGen.cmake
++++ b/CMake/ScmRevGen.cmake
+@@ -41,7 +41,7 @@ set(DOLPHIN_VERSION_PATCH ${DOLPHIN_WC_REVISION})
+ # reasonable values.
+ if(NOT DOLPHIN_WC_REVISION)
+   set(DOLPHIN_WC_DESCRIBE "${DOLPHIN_VERSION_MAJOR}.${DOLPHIN_VERSION_MINOR}")
+-  set(DOLPHIN_WC_REVISION "${DOLPHIN_WC_DESCRIBE} (no further info)")
++  set(DOLPHIN_WC_REVISION "@@GENTOO_DOLPHIN_COMMIT@@")
+   set(DOLPHIN_WC_BRANCH "master")
+   set(DOLPHIN_WC_COMMITS_AHEAD_MASTER 0)
+ endif()

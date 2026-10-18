@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=hatchling
-PYTHON_COMPAT=( python3_{12..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 
 inherit distutils-r1
 
@@ -21,7 +21,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="amd64 arm arm64 ~loong ppc ppc64 ~riscv ~sparc x86"
 
 RDEPEND="
 	>=dev-python/pytest-8[${PYTHON_USEDEP}]
@@ -30,9 +30,13 @@ BDEPEND="
 	test? (
 		dev-python/myst-parser[${PYTHON_USEDEP}]
 		dev-python/seedir[${PYTHON_USEDEP}]
-		dev-python/testfixtures[${PYTHON_USEDEP}]
+		>=dev-python/testfixtures-12[${PYTHON_USEDEP}]
 	)
 "
+
+PATCHES=(
+	"${FILESDIR}"/sybil-10.1.0-fix-tests-against-testfixtures-12.patch
+)
 
 EPYTEST_PLUGINS=()
 distutils_enable_tests pytest

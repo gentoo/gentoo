@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -28,7 +28,7 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
-PATCHES="${FILESDIR}/${P}-Fix-build-with-ffmpeg-5.patch"
+PATCHES=( "${FILESDIR}"/${P}-Fix-build-with-ffmpeg-5.patch )
 
 src_prepare() {
 	default

@@ -1,0 +1,19 @@
+--- a/cmake/Modules/FindMKLDNN.cmake	2026-08-02 19:43:26.710474163 +0200
++++ b/cmake/Modules/FindMKLDNN.cmake	2026-08-02 19:45:24.546256910 +0200
+@@ -12,7 +12,7 @@
+ #  MKLDNN_USE_NATIVE_ARCH : Whether native CPU instructions should be used in MKLDNN. This should be turned off for
+ #  general packaging to avoid incompatible CPU instructions. Default: OFF.
+ 
+-IF(NOT MKLDNN_FOUND)
++IF(FALSE)
+   SET(MKLDNN_LIBRARIES)
+   SET(MKLDNN_INCLUDE_DIR)
+ 
+@@ -193,4 +193,6 @@
+   SET(MKLDNN_FOUND TRUE)
+   MESSAGE(STATUS "Found MKL-DNN: TRUE")
+ 
+-ENDIF(NOT MKLDNN_FOUND)
++ENDIF(FALSE)
++SET(MKLDNN_FOUND TRUE)
++SET(MKLDNN_LIBRARIES dnnl)

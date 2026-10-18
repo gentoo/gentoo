@@ -130,11 +130,11 @@ src_configure() {
 	# and can't resolve native target, so we pass target in exact form.
 	declare -r -g ZIG_HOST_AS_TARGET="$(zig-utils_c_env_to_zig_target "${CBUILD:-${CHOST}}" "${CFLAGS}"})"
 
+	export ZIG_LIB_DIR="${S}/lib/"
+
 	# Note that if we are building with CMake, "my_zbs_args"
 	# are used only after compiling zig2.
 	local my_zbs_args=(
-		--zig-lib-dir "${S}/lib/"
-
 		--prefix "${EPREFIX}/${ZIG_SYS_INSTALL_DEST}/"
 		--prefix-lib-dir lib/
 

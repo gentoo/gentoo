@@ -1,0 +1,32 @@
+From d2983668300dd2a598e5a7dc40e71ce0678cc270 Mon Sep 17 00:00:00 2001
+From: Kyle Gospodnetich <me@kylegospodneti.ch>
+Date: Sat, 15 Aug 2026 10:43:41 -0700
+Subject: [PATCH] Fix cpuid include on 7.2+ kernels (#53)
+
+---
+ smu.c | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
+
+diff --git a/smu.c b/smu.c
+index 3636bb6..e6bf768 100755
+--- a/smu.c
++++ b/smu.c
+@@ -8,6 +8,18 @@
+ #include <linux/pci.h>
+ #include <linux/time.h>
+ 
++#ifdef __has_include
++#if __has_include(<asm/cpuid/api.h>)
++#include <asm/cpuid/api.h>
++#elif __has_include(<asm/cpuid.h>)
++#include <asm/cpuid.h>
++#else
++#include <asm/processor.h>
++#endif
++#else
++#include <asm/processor.h>
++#endif
++
+ #include "smu.h"
+ 
+ static struct {

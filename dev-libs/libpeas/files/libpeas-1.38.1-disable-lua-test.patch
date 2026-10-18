@@ -1,0 +1,31 @@
+From b8a0c5e5bd5971dd0f7db3bfae16daacc70d5699 Mon Sep 17 00:00:00 2001
+From: Christian Hergert <chergert@redhat.com>
+Date: Mon, 8 Sep 2025 17:15:44 -0700
+Subject: [PATCH] build: disable Lua tests until we have girepository-2.0
+ support
+
+Upstream LGI has not yet made a release with girepository-2.0 support. We
+may need to transition to something other than LGI if this does not change.
+
+Related: #62
+---
+ tests/libpeas/meson.build | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/tests/libpeas/meson.build b/tests/libpeas/meson.build
+index 23a0c86..96b7dc6 100644
+--- a/tests/libpeas/meson.build
++++ b/tests/libpeas/meson.build
+@@ -13,7 +13,8 @@ if build_gjs_loader == true
+ endif
+ 
+ if build_lua51_loader == true
+-  libpeas_tests_sources += [['extension-lua', [lua51_dep, luajit_dep]]]
++  warning('Lua51 tests are currently disabled due to LGI lacking girepository-2.0 support')
++  # libpeas_tests_sources += [['extension-lua', [lua51_dep, luajit_dep]]]
+ endif
+ 
+ if build_python3_loader == true
+-- 
+GitLab
+

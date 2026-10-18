@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=standalone
-PYTHON_COMPAT=( python3_{12..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 inherit distutils-r1
 
 if [[ ${PV} == *9999 ]] ; then
@@ -25,12 +25,13 @@ SLOT="0"
 if [[ ${PV} == *9999 ]]; then
 	RDEPEND="~dev-python/snakeoil-9999[${PYTHON_USEDEP}]"
 else
-	RDEPEND=">=dev-python/snakeoil-0.11.1[${PYTHON_USEDEP}]"
+	RDEPEND=">=dev-python/snakeoil-0.11.6[${PYTHON_USEDEP}]"
 fi
 
 RDEPEND+="
 	>=app-shells/bash-5.3[readline]
 	dev-python/lxml[${PYTHON_USEDEP}]
+	amd64? ( dev-python/py-landlock[${PYTHON_USEDEP}] )
 "
 BDEPEND="${RDEPEND}
 	>=dev-python/flit-core-3.8[${PYTHON_USEDEP}]
@@ -39,6 +40,7 @@ BDEPEND="${RDEPEND}
 	)
 "
 
+EPYTEST_PLUGINS=( pkgcore )
 distutils_enable_tests pytest
 
 python_install_all() {

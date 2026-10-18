@@ -30,10 +30,8 @@ fi
 LICENSE="GPL-2+ FVWM
 	go? ( Apache-2.0 BSD MIT )"
 SLOT="0"
-IUSE="bidi +go nls readline svg"
-# Strictly speaking readline is not required for go,
-# but as most systems already have it installed we don't users to stub their toe on REQUIRED_USE
-REQUIRED_USE="${PYTHON_REQUIRED_USE} !go? ( readline )"
+IUSE="bidi +go nls svg"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DOCS=( NEWS )
 
@@ -51,7 +49,7 @@ fi
 BDEPEND="
 	virtual/pkgconfig
 	app-arch/unzip
-	go? ( >=dev-lang/go-1.20 )
+	go? ( >=dev-lang/go-1.21 )
 "
 
 if [[ ${FVWM3_DOCS_PREBUILT} -ne 1 ]]; then
@@ -67,6 +65,7 @@ COMMON_DEPEND="
 	dev-libs/libevent:=
 	media-libs/fontconfig
 	media-libs/libpng:=
+	sys-libs/readline:=
 	x11-base/xorg-proto
 	x11-libs/libICE
 	x11-libs/libSM
@@ -82,9 +81,6 @@ COMMON_DEPEND="
 	x11-libs/libXrender
 	x11-libs/xtrans
 	bidi? ( dev-libs/fribidi )
-	readline? (
-		sys-libs/readline:=
-	)
 	svg? (
 		gnome-base/librsvg:2
 		x11-libs/cairo
@@ -111,7 +107,6 @@ src_configure() {
 		$(meson_feature go golang)
 		$(meson_feature nls iconv)
 		$(meson_feature nls)
-		$(meson_feature readline) # not required for go but it won't hurt to enable it
 		$(meson_feature svg cairo) # Pick 1 of 'cairo', 'cairo-svg', or 'libsvg-cairo'; add the appropriate dependency
 		$(meson_feature svg)
 		"-Dcairo-svg=disabled"
@@ -154,17 +149,24 @@ src_install() {
 pkg_postinst() {
 
 	einfo "For compatibility with existing fvwm2 configurations, the ebuild will install a FvwmCommand wrapper."
+	einfo
 
 	if use go; then
-		einfo "FvwmPrompt has been installed, it provides the functionality of both FvwmCommand and FvwmConsole."
-		einfo "If you need FvwmConsole, install ${PN} with USE=\"-go\"; however FvwmPrompt will not be installed."
-	else
-		einfo "FvwmConsole has been installed, hovever it is a legacy tool."
-		einfo "Consider installing with USE=\"go\" which will have FvwmPrompt replace FvwmConsole to"
-		einfo "provide the same functionality in a more flexible way."
+		einfo "FvwmPrompt has been installed, it provides the functionality of both FvwmCommand and FvwmConsole."doa
+		einfo
+	fi
+
+	if [[ -n "${REPLACING_VERSIONS}" ]] ; then
+		if [[ $(ver_cut 3 ${REPLACING_VERSIONS}) -lt 5 ]] ; then
+			einfo "FvwmConsole has been removed from fvwm3-1.1.5 onwards."
+			einfo "The supported upstream alternative is to use FvwmPrompt."
+			einfo "Users may also use the FvwmCommand wrapper installed by this ebuild to run commands from the command line."
+			einfo
+		fi
 	fi
 
 	optfeature_header "Useful optional features:"
 	optfeature "Screen locking" x11-misc/xlockmore
 	optfeature "NetPBM support (used by FvwmScript-ScreenDump)" media-libs/netpbm
+	optfeature "Xterm (used by default config)" x11-terms/xterm
 }

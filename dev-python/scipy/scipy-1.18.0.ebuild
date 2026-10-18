@@ -7,7 +7,7 @@ FORTRAN_NEEDED=fortran
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=meson-python
 PYPI_VERIFY_REPO=https://github.com/scipy/scipy-release
-PYTHON_COMPAT=( python3_{12..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 PYTHON_REQ_USE="threads(+)"
 
 inherit flag-o-matic fortran-2 distutils-r1
@@ -39,8 +39,7 @@ else
 	"
 
 	if [[ ${PV} != *rc* ]]; then
-		# due to dev-libs/boost being not keyworded
-		# KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+		KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 		:
 	fi
 fi

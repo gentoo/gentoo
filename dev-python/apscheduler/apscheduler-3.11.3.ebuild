@@ -6,7 +6,7 @@ EAPI=8
 DISTUTILS_USE_PEP517=setuptools
 PYPI_PN=APScheduler
 PYPI_VERIFY_REPO=https://github.com/agronholm/apscheduler
-PYTHON_COMPAT=( python3_{12..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 
 inherit distutils-r1 pypi
 
@@ -33,6 +33,7 @@ BDEPEND="
 "
 
 EPYTEST_PLUGINS=( anyio pytest-timeout )
+EPYTEST_RERUNS=10
 distutils_enable_tests pytest
 
 PATCHES=(
@@ -40,7 +41,6 @@ PATCHES=(
 	"${FILESDIR}"/apscheduler-3.11.3-external-server-tests.patch
 )
 
-EPYTEST_RERUNS=10
 EPYTEST_DESELECT=(
 	# require etcd3
 	tests/test_jobstores.py::test_etcd_client_ref

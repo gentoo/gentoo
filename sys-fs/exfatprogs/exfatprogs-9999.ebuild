@@ -24,6 +24,8 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
+IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	!sys-fs/exfat-utils
@@ -42,6 +44,6 @@ src_prepare() {
 }
 
 src_configure() {
-	# bash for https://github.com/exfatprogs/exfatprogs/pull/372
-	CONFIG_SHELL="${BROOT}"/bin/bash econf
+	# https://github.com/exfatprogs/exfatprogs/issues/391 wrt tests
+	econf $(use_enable test tests)
 }

@@ -14,7 +14,7 @@ HOMEPAGE="https://apps.kde.org/ark/"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="6"
-KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 arm64 ~loong ~ppc64 ~riscv ~x86"
 IUSE="zip"
 
 RDEPEND="
@@ -72,7 +72,7 @@ pkg_postinst() {
 	if [[ -z "${REPLACING_VERSIONS}" ]]; then
 		optfeature "rar archive creation/extraction" "app-arch/rar"
 		optfeature "rar archive extraction only" "app-arch/unar" "app-arch/unrar"
-		optfeature "7-Zip archive support" ">=app-arch/7zip-24.09[symlink(+)]" "app-arch/p7zip"
+		optfeature "7-Zip archive support" ">=app-arch/7zip-24.09[symlink(+)]"
 		optfeature "lrz archive support" "app-arch/lrzip"
 		optfeature "Markdown support in text previews" "kde-misc/markdownpart:${SLOT}"
 	fi

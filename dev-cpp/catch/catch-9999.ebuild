@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 
 inherit cmake-multilib python-any-r1
 
@@ -15,7 +15,7 @@ else
 	SRC_URI="https://github.com/catchorg/Catch2/archive/v${PV}.tar.gz -> ${MY_P}.tar.gz"
 	S="${WORKDIR}/${MY_P}"
 
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 fi
 
 DESCRIPTION="Modern C++ header-only framework for unit-tests"
@@ -39,7 +39,7 @@ multilib_src_configure() {
 		-DCATCH_BUILD_TESTING=$(usex test)
 	)
 	use test && mycmakeargs+=(
-		-DPYTHON_EXECUTABLE="${PYTHON}"
+		-DPython3_EXECUTABLE="${PYTHON}"
 	)
 
 	cmake_src_configure

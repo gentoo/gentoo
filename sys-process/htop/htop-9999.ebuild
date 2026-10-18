@@ -21,7 +21,7 @@ S="${WORKDIR}/${P/_}"
 
 LICENSE="GPL-2+"
 SLOT="0"
-IUSE="bfd caps debug delayacct hwloc lm-sensors llvm-libunwind openvz unicode unwind vserver"
+IUSE="bfd caps debug delayacct hwloc lm-sensors llvm-libunwind unicode unwind"
 
 RDEPEND="
 	sys-libs/ncurses:=[unicode(+)?]
@@ -69,11 +69,9 @@ src_configure() {
 		$(use_enable debug)
 		$(use_enable hwloc)
 		$(use_enable !hwloc affinity)
-		$(use_enable openvz)
 		$(use_enable unicode)
 		$(use_enable unwind backtrace)
 		$(use_with unwind libunwind)
-		$(use_enable vserver)
 	)
 
 	if use kernel_linux ; then

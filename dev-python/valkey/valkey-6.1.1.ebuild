@@ -17,11 +17,12 @@ HOMEPAGE="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="amd64 ~arm arm64 ~ppc64 ~riscv ~sparc x86"
 
 BDEPEND="
 	test? (
 		dev-db/valkey
+		dev-python/cachetools[${PYTHON_USEDEP}]
 	)
 "
 

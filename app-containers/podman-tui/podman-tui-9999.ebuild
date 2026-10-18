@@ -23,6 +23,9 @@ LICENSE+=" BSD-2 BSD MIT MPL-2.0"
 SLOT="0"
 RESTRICT="test"
 
+RDEPEND=">=app-containers/podman-6.0.0"
+BDEPEND=">=dev-lang/go-1.25.0"
+
 src_compile() {
 	local -x CGO_ENABLED=0
 	# parse tags from Makefile & make them comma-seperated as space-seperated list is deprecated

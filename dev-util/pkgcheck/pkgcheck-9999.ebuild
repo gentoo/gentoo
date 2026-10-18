@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=standalone
-PYTHON_COMPAT=( python3_{12..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 inherit elisp-common distutils-r1 optfeature
 
 if [[ ${PV} == *9999 ]] ; then
@@ -29,8 +29,8 @@ if [[ ${PV} == *9999 ]]; then
 		~sys-apps/pkgcore-9999[${PYTHON_USEDEP}]"
 else
 	RDEPEND="
-		>=dev-python/snakeoil-0.11.1[${PYTHON_USEDEP}]
-		>=sys-apps/pkgcore-0.12.34[${PYTHON_USEDEP}]"
+		>=dev-python/snakeoil-0.11.6[${PYTHON_USEDEP}]
+		>=sys-apps/pkgcore-0.12.42[${PYTHON_USEDEP}]"
 fi
 RDEPEND+="
 	app-arch/zstd

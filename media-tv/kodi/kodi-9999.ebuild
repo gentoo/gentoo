@@ -9,45 +9,32 @@ CODENAME="Piers"
 
 # Versions for the forked projects that are bundled
 # See tools/depends/target/<project>/<project>-VERSION
-LIBDVDCSS_VERSION="1.4.3-Next-Nexus-Alpha2-2"
-LIBDVDREAD_VERSION="6.1.3-Next-Nexus-Alpha2-2"
-LIBDVDNAV_VERSION="6.1.1-Next-Nexus-Alpha2-2"
-FFMPEG_VERSION="8.1"
+LIBDVDCSS_VERSION="1.5.0"
+LIBDVDNAV_VERSION="7.0.0"
+LIBDVDREAD_VERSION="7.0.1"
+FFMPEG_VERSION="9.0.2"
 
-# Java bundles from xbmc/interfaces/swig/CMakeLists.txt
-GROOVY_VERSION="4.0.30"
-APACHE_COMMON_LANG_VERSION="3.20.0"
-APACHE_COMMON_TEXT_VERSION="1.15.0"
-
-_JAVA_PKG_WANT_BUILD_VM=( {openjdk{,-jre},icedtea}{,-bin}-{8,11,17,21,25} )
-JAVA_PKG_WANT_BUILD_VM=${_JAVA_PKG_WANT_BUILD_VM[@]}
-# Required to be set, but not used.
-JAVA_PKG_WANT_SOURCE="21"
-JAVA_PKG_WANT_TARGET="21"
+# Allow bundled swig to avoid pins
+# See tools/depends/native/<project>/<project>-VERSION
+SWIG_VERSION="4.5.0"
 
 PYTHON_REQ_USE="sqlite,ssl"
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 
 # See cmake/scripts/common/ArchSetup.cmake for available options
 CPU_FLAGS="cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_sse3 cpu_flags_x86_sse4_1 cpu_flags_x86_sse4_2 cpu_flags_x86_avx cpu_flags_x86_avx2 cpu_flags_arm_neon"
 
-inherit autotools cmake desktop flag-o-matic java-pkg-2 libtool linux-info optfeature pax-utils python-single-r1 \
+inherit autotools cmake desktop flag-o-matic libtool linux-info optfeature pax-utils python-single-r1 \
 	toolchain-funcs xdg
 
 DESCRIPTION="A free and open source media-player and entertainment hub"
 HOMEPAGE="https://kodi.tv/"
 
 SRC_URI="
-	https://github.com/xbmc/libdvdnav/archive/${LIBDVDNAV_VERSION}.tar.gz
-		-> libdvdnav-${LIBDVDNAV_VERSION}.tar.gz
-	https://github.com/xbmc/libdvdread/archive/${LIBDVDREAD_VERSION}.tar.gz
-		-> libdvdread-${LIBDVDREAD_VERSION}.tar.gz
-	https://mirrors.kodi.tv/build-deps/sources/apache-groovy-binary-${GROOVY_VERSION}.zip
-	https://mirrors.kodi.tv/build-deps/sources/commons-lang3-${APACHE_COMMON_LANG_VERSION}-bin.tar.gz
-	https://mirrors.kodi.tv/build-deps/sources/commons-text-${APACHE_COMMON_TEXT_VERSION}-bin.tar.gz
+	https://mirrors.kodi.tv/build-deps/sources/libdvdnav-${LIBDVDNAV_VERSION}.tar.bz2
+	https://mirrors.kodi.tv/build-deps/sources/libdvdread-${LIBDVDREAD_VERSION}.tar.bz2
 	css? (
-		https://github.com/xbmc/libdvdcss/archive/${LIBDVDCSS_VERSION}.tar.gz
-			-> libdvdcss-${LIBDVDCSS_VERSION}.tar.gz
+		https://mirrors.kodi.tv/build-deps/sources/libdvdcss-${LIBDVDCSS_VERSION}.tar.bz2
 	)
 	!system-ffmpeg? (
 		https://ffmpeg.org/releases/ffmpeg-${FFMPEG_VERSION}.tar.xz
@@ -55,6 +42,9 @@ SRC_URI="
 	system-ffmpeg? ( postproc? (
 		https://ffmpeg.org/releases/ffmpeg-${FFMPEG_VERSION}.tar.xz
 	) )
+	!system-swig? (
+		https://mirrors.kodi.tv/build-deps/sources/swig-${SWIG_VERSION}.tar.gz
+	)
 "
 if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/xbmc/xbmc.git"
@@ -79,8 +69,6 @@ fi
 
 LICENSE="GPL-2+"
 # vendored dependencies
-# apache-groovy, common-lang3 and commons-text
-LICENSE+=" Apache-2.0"
 # libdvdnav, libdvdread and libdvdcss.
 LICENSE+=" GPL-2+"
 # ffmpeg built as USE="gpl"
@@ -90,7 +78,7 @@ SLOT="0"
 # use flag is called libusb so that it doesn't fool people in thinking that
 # it is _required_ for USB support. Otherwise they'll disable udev and
 # that's going to be worse.
-IUSE="airplay alsa bluetooth bluray caps cec +css dbus doc eventclients gbm gles lcms libusb lirc mariadb mysql nfs +optical pipewire postproc pulseaudio samba soc +system-ffmpeg test udf udev upnp vaapi vdpau wayland webserver X +xslt zeroconf ${CPU_FLAGS}"
+IUSE="airplay alsa bluetooth bluray caps cec +css dbus doc eventclients gbm gles lcms libusb lirc mariadb mysql nfs +optical pipewire postproc pulseaudio samba soc +system-ffmpeg system-swig test udf udev upnp vaapi vdpau wayland webserver X +xslt zeroconf ${CPU_FLAGS}"
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
 	|| ( gbm wayland X )
@@ -104,7 +92,6 @@ REQUIRED_USE="
 "
 RESTRICT="!test? ( test )"
 
-# dev-libs/libcec[-cubox] bug #818262
 COMMON_DEPEND="
 	>=dev-libs/flatbuffers-23.3.3:=
 	>=dev-libs/lzo-2.04:2
@@ -160,7 +147,7 @@ COMMON_TARGET_DEPEND="${PYTHON_DEPS}
 		sys-libs/libcap
 	)
 	cec? (
-		>=dev-libs/libcec-4.0[-cubox(-)]
+		>=dev-libs/libcec-7.0.0:=
 	)
 	dbus? (
 		sys-apps/dbus
@@ -266,21 +253,27 @@ DEPEND="
 		x11-libs/libXrender
 	)
 "
+# Rationale for swig pins
+# https://github.com/xbmc/xbmc/blob/master/xbmc/interfaces/swig/README.md#requirements
+# See _verified in xbmc/interfaces/swig/fix-swig-3535.cmake
 BDEPEND="
 	${COMMON_DEPEND}
 	app-arch/unzip
 	dev-build/cmake
-	dev-lang/swig
 	virtual/pkgconfig
-	<=virtual/jre-25-r9999:*
 	doc? (
 		app-text/doxygen
+	)
+	system-swig? (
+		|| (
+			~dev-lang/swig-4.5.1
+			~dev-lang/swig-4.5.0
+		)
 	)
 "
 
 PATCHES=(
 	"${FILESDIR}"/kodi-21-optional-ffmpeg-libx11.patch
-	"${FILESDIR}"/kodi-22-silence-libdvdread-git.patch
 )
 
 # bug #544020
@@ -292,7 +285,6 @@ Please consider enabling IP_MULTICAST under Networking options.
 
 pkg_setup() {
 	check_extra_config
-	ROOT= java-pkg-2_pkg_setup
 	python-single-r1_pkg_setup
 }
 
@@ -302,10 +294,6 @@ src_unpack() {
 	else
 		unpack ${MY_P}.tar.gz
 	fi
-
-	unpack apache-groovy-binary-${GROOVY_VERSION}.zip
-	unpack commons-lang3-${APACHE_COMMON_LANG_VERSION}-bin.tar.gz
-	unpack commons-text-${APACHE_COMMON_TEXT_VERSION}-bin.tar.gz
 
 	if use system-ffmpeg && use postproc; then
 		unpack ffmpeg-${FFMPEG_VERSION}.tar.xz
@@ -430,24 +418,26 @@ src_configure() {
 		-DENABLE_INTERNAL_FMT=OFF
 		-DENABLE_INTERNAL_FSTRCMP=OFF
 		-DENABLE_INTERNAL_GTEST=OFF
+		-DENABLE_INTERNAL_LCMS2=OFF
 		-DENABLE_INTERNAL_LZO2=OFF
 		-DENABLE_INTERNAL_NLOHMANNJSON=OFF
+		-DENABLE_INTERNAL_SWIG=$(usex !system-swig)
 		-DENABLE_INTERNAL_PCRE2=OFF
 		-DENABLE_INTERNAL_SPDLOG=OFF
 		-DENABLE_INTERNAL_TAGLIB=OFF
 
 		-DTARBALL_DIR="${DISTDIR}"
-		-Dlibdvdnav_URL="${DISTDIR}/libdvdnav-${LIBDVDNAV_VERSION}.tar.gz"
-		-Dlibdvdread_URL="${DISTDIR}/libdvdread-${LIBDVDREAD_VERSION}.tar.gz"
-		-Dgroovy_SOURCE_DIR="${WORKDIR}/groovy-${GROOVY_VERSION}"
-		-Dapache-commons-lang_SOURCE_DIR="${WORKDIR}/commons-lang3-${APACHE_COMMON_LANG_VERSION}"
-		-Dapache-commons-text_SOURCE_DIR="${WORKDIR}/commons-text-${APACHE_COMMON_TEXT_VERSION}"
+		-DLIBDVDNAV_URL="${DISTDIR}/libdvdnav-${LIBDVDNAV_VERSION}.tar.bz2"
+		-DLIBDVDREAD_URL="${DISTDIR}/libdvdread-${LIBDVDREAD_VERSION}.tar.bz2"
 	)
 
 	# Separated to avoid "Manually-specified variables were not used by the project:"
-	use bluray && mycmakeargs+=( -DENABLE_INTERNAL_BLURAY=OFF )
+	use bluray && mycmakeargs+=(
+		-DENABLE_INTERNAL_BLURAY=OFF
+		-DENABLE_BLURAY_JAR=OFF # applies to internal bluray build
+	)
 	use cec && mycmakeargs+=( -DENABLE_INTERNAL_CEC=OFF )
-	use css && mycmakeargs+=( -Dlibdvdcss_URL="${DISTDIR}/libdvdcss-${LIBDVDCSS_VERSION}.tar.gz" )
+	use css && mycmakeargs+=( -DLIBDVDCSS_URL="${DISTDIR}/libdvdcss-${LIBDVDCSS_VERSION}.tar.bz2" )
 	use mariadb && mycmakeargs+=( -DENABLE_INTERNAL_MARIADBCLIENT=OFF )
 	use !system-ffmpeg && mycmakeargs+=(
 		# Additional find_package on top of core_optional_deps for whatever reason
@@ -456,6 +446,7 @@ src_configure() {
 		-DENABLE_INTERNAL_DAV1D=OFF
 		-DFFMPEG_URL="${DISTDIR}/ffmpeg-${FFMPEG_VERSION}.tar.xz"
 	)
+	use !system-swig && mycmakeargs+=( -DSWIG_URL="${DISTDIR}/swig-${SWIG_VERSION}.tar.gz" )
 	use nfs && mycmakeargs+=( -DENABLE_INTERNAL_NFS=OFF )
 	use !udev && mycmakeargs+=( -DENABLE_LIBUSB=$(usex libusb) )
 	use udf && mycmakeargs+=( -DENABLE_INTERNAL_UDFREAD=OFF )

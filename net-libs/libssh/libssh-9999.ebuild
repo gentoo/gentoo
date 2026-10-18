@@ -24,25 +24,31 @@ fi
 
 LICENSE="LGPL-2.1"
 SLOT="0/4" # subslot = soname major version
-IUSE="debug doc examples gssapi mbedtls pcap server +sftp static-libs test zlib"
+IUSE="debug examples fido2 gssapi mbedtls pcap server +sftp static-libs test zlib"
 # Maintainer: check IUSE-defaults at DefineOptions.cmake
 RESTRICT="!test? ( test )"
 
 RDEPEND="
 	!mbedtls? ( >=dev-libs/openssl-1.0.1h-r2:0=[${MULTILIB_USEDEP}] )
+	fido2? ( dev-libs/libfido2:= )
 	gssapi? ( >=virtual/krb5-0-r1[${MULTILIB_USEDEP}] )
 	mbedtls? ( net-libs/mbedtls:3=[${MULTILIB_USEDEP},threads] )
 	zlib? ( >=virtual/zlib-1.2.8-r1:=[${MULTILIB_USEDEP}] )
 "
-DEPEND="${RDEPEND}
+DEPEND="
+	${RDEPEND}
 	test? (
 		>=dev-util/cmocka-0.3.1[${MULTILIB_USEDEP}]
 		elibc_musl? ( sys-libs/argp-standalone )
 	)
 "
-BDEPEND+=" doc? ( app-text/doxygen[dot] )"
 
 DOCS=( AUTHORS CHANGELOG README )
+
+MULTILIB_WRAPPED_HEADERS=(
+	# No multilib for libfido2
+	/usr/include/libssh/sk_api.h
+)
 
 src_unpack() {
 	if [[ ${PV} == *9999* ]] ; then
@@ -108,6 +114,7 @@ multilib_src_configure() {
 		-DWITH_STACK_PROTECTOR_STRONG=OFF
 		-DWITH_DEBUG_CALLTRACE=$(usex debug)
 		-DWITH_DEBUG_CRYPTO=$(usex debug)
+		-DWITH_FIDO2=$(multilib_native_usex fido2)
 		# Deprecated per CMakeLists.txt
 		-DWITH_GCRYPT=OFF
 		-DWITH_GSSAPI=$(usex gssapi)
@@ -117,8 +124,18 @@ multilib_src_configure() {
 		-DWITH_SERVER=$(usex server)
 		-DWITH_SFTP=$(usex sftp)
 		-DBUILD_STATIC_LIB=$(usex static-libs)
-		# TODO: try enabling {CLIENT,SERVER}_TESTING
+
+		# dropbear's dhclient tries to open /dev/urandom for writing in
+		# seedrandom. And we don't do client/server testing yet anyway (bug #964307)
+		-DDROPBEAR_EXECUTABLE=
+		# TODO: Still needs some work, some tests hang and some fail
+		# Would need net-misc/openssh and net-misc/putty too
+		#-DCLIENT_TESTING=$(multilib_native_usex test)
+		#-DSERVER_TESTING=$(multilib_native_usex test)
+		-DCLIENT_TESTING=OFF
+		-DSERVER_TESTING=OFF
 		-DUNIT_TESTING=$(usex test)
+
 		-DWITH_ZLIB=$(usex zlib)
 	)
 
@@ -127,18 +144,13 @@ multilib_src_configure() {
 	cmake_src_configure
 }
 
-multilib_src_compile() {
-	cmake_src_compile
-	multilib_is_native_abi && use doc && cmake_src_compile docs
-}
-
 multilib_src_test() {
-	cmake_src_test --timeout 3000
+	# torture_server_direct_tcpip fails in parallel
+	cmake_src_test -j1 --timeout 3000
 }
 
 multilib_src_install() {
 	cmake_src_install
-	multilib_is_native_abi && use doc && local HTML_DOCS=( "${BUILD_DIR}"/doc/html/. )
 
 	use static-libs && dolib.a src/libssh.a
 

@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -44,11 +44,15 @@ ruby_add_bdepend "
 		dev-ruby/activerecord:$(ver_cut 1-2)
 		dev-ruby/test-unit:2
 		dev-ruby/mocha
+		dev-ruby/minitest:5
 		>=dev-ruby/pg-1.1:1
 		www-servers/puma
 	)"
 
 all_ruby_prepare() {
+	sed -e '3igem "minitest", "~> 5"' \
+		-i test/test_helper.rb || die
+
 	# Avoid tests for unpackaged dependencies: websocket-client-simple
 	rm -f test/client_test.rb || die
 

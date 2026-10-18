@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>ruby@gentoo.org</email>
+		<name>Gentoo Ruby Project</name>
+	</maintainer>
+	<upstream>
+		<doc>https://www.rubydoc.info/gems/ruby-vips</doc>
+		<remote-id type="github">libvips/ruby-vips</remote-id>
+		<remote-id type="rubygems">ruby-vips</remote-id>
+	</upstream>
+</pkgmetadata>

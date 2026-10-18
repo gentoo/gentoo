@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: cdrom.eclass
@@ -25,6 +25,10 @@ esac
 
 inherit portability
 
+# For extracting image files referenced in CD_ROOT. This is optional, but users
+# are likely to have it anyway.
+BDEPEND="app-arch/libarchive"
+
 # @ECLASS_VARIABLE: CDROM_OPTIONAL
 # @DEFAULT_UNSET
 # @PRE_INHERIT
@@ -35,6 +39,7 @@ inherit portability
 # conditionally based on USE="cdinstall".
 if [[ ${CDROM_OPTIONAL} == "yes" ]] ; then
 	IUSE="cdinstall"
+	BDEPEND="cdinstall? ( ${BDEPEND} )"
 	PROPERTIES+=" cdinstall? ( interactive )"
 else
 	PROPERTIES+=" interactive"
@@ -99,8 +104,13 @@ cdrom_get_cds() {
 		einfo "the variable CD_ROOT so that it points to the"
 		einfo "directory containing the files."
 		echo
+		einfo "Alternatively, CD_ROOT can point to an image file of"
+		einfo "the CD in ISO format or any supported by libarchive."
+		einfo "Ensure that the file is readable by the Portage user."
+		echo
 		einfo "For example:"
 		einfo "export CD_ROOT=/mnt/cdrom"
+		einfo "export CD_ROOT=/home/user/${PN}.iso"
 		echo
 
 	# Multi disc info.
@@ -118,6 +128,10 @@ cdrom_get_cds() {
 		einfo "the following variables so they point to the right place:"
 		einfo $(printf "CD_ROOT_%d " $(seq ${#}))
 		echo
+		einfo "Alternatively, these variables can point to image files"
+		einfo "of the CDs in ISO format or any supported by libarchive."
+		einfo "Ensure that the files are readable by the Portage user."
+		echo
 		einfo "Or, if you have all the files in the same place, or"
 		einfo "you only have one CD, you can export CD_ROOT"
 		einfo "and that place will be used as the same data source"
@@ -125,6 +139,7 @@ cdrom_get_cds() {
 		echo
 		einfo "For example:"
 		einfo "export CD_ROOT=/mnt/cdrom"
+		einfo "export CD_ROOT_1=/home/user/${PN}-1.iso"
 		echo
 	fi
 
@@ -150,6 +165,10 @@ cdrom_get_cds() {
 # CD_ROOT_# variables for each disc starting from 1.  If no match is
 # found then the function dies with an error as a rescan will not help
 # in this instance.
+#
+# CD_ROOT and CD_ROOT_# can point at an image file instead of a directory.  The
+# file will be extracted (not mounted) on demand.  The file does not have be an
+# ISO image, but anything that libarchive can handle.
 #
 # Users wanting to set CD_ROOT or CD_ROOT_# for specific packages
 # persistently can do so using Portage's /etc/portage/env feature.
@@ -191,7 +210,7 @@ cdrom_get_cds() {
 # directory before calling this function again, otherwise the user won't
 # be able to unmount the current disc.
 cdrom_load_next_cd() {
-	local showedmsg=0 showjolietmsg=0
+	local showedmsg=0 showjolietmsg=0 orig_cdrom_root
 
 	unset CDROM_ROOT
 	((++CDROM_CURRENT_CD))
@@ -217,6 +236,14 @@ cdrom_load_next_cd() {
 					export CDROM_ROOT=${point}
 				done <<< "$(get_mounts)"
 			else
+				if [[ -f ${CDROM_ROOT} ]]; then
+					rm -rf "${T}/cdrom-root" || die
+					mkdir "${T}/cdrom-root" || die
+					bsdtar -C "${T}/cdrom-root" -xf "${CDROM_ROOT}" || die
+					orig_cdrom_root=${CDROM_ROOT}
+					CDROM_ROOT=${T}/cdrom-root
+				fi
+
 				export CDROM_MATCH=$(_cdrom_glob_match "${CDROM_ROOT}" "${f}")
 			fi
 
@@ -231,7 +258,7 @@ cdrom_load_next_cd() {
 		# CDROM_ROOT is non-empty then this implies that a CD_ROOT
 		# variable was given and we should therefore abort immediately.
 		if [[ -n ${CDROM_ROOT} ]] ; then
-			die "unable to locate CD #${CDROM_CURRENT_CD} root at ${CDROM_ROOT}"
+			die "unable to locate CD #${CDROM_CURRENT_CD} root at ${orig_cdrom_root:-${CDROM_ROOT}}"
 		fi
 
 		if [[ ${showedmsg} -eq 0 ]] ; then
@@ -263,7 +290,7 @@ cdrom_load_next_cd() {
 		read || die "something is screwed with your system"
 	done
 
-	einfo "Found CD #${CDROM_CURRENT_CD} root at ${CDROM_ROOT}"
+	einfo "Found CD #${CDROM_CURRENT_CD} root at ${orig_cdrom_root:-${CDROM_ROOT}}"
 }
 
 # @FUNCTION: _cdrom_glob_match

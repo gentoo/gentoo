@@ -71,6 +71,7 @@ CONFIG_CHECK="~HIDRAW"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.17-basename.patch
+	"${FILESDIR}"/${PN}-0.18-swig-4.5.patch
 )
 
 pkg_setup() {

@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake-multilib
+inherit meson-multilib
 
 DESCRIPTION="A JSON implementation in C"
 HOMEPAGE="https://github.com/json-c/json-c/wiki"
@@ -12,61 +12,45 @@ if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/json-c/json-c.git"
 	inherit git-r3
 else
+	# https://github.com/json-c/json-c/wiki#obtain-sources
 	SRC_URI="https://s3.amazonaws.com/json-c_releases/releases/${P}.tar.gz"
 
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-solaris"
 fi
 
 LICENSE="MIT"
 # .1 is a fudge factor for 0.18 fixing compat w/ 0.16, drop on next
 # SONAME change.
 SLOT="0/5.1"
-IUSE="cpu_flags_x86_rdrand doc static-libs test threads"
+IUSE="cpu_flags_x86_rdrand static-libs test threads"
 RESTRICT="!test? ( test )"
-
-BDEPEND="doc? ( >=app-text/doxygen-1.8.13 )"
 
 MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/json-c/config.h
 )
 
-PATCHES=( "${FILESDIR}/0.18.0-cmake4.patch" )
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.19-meson.patch
+	"${FILESDIR}"/${PN}-0.19-meson-conditionally-build-tests-with-an-option-not-b.patch
+	"${FILESDIR}"/${PN}-0.19-meson-wire-up-disable_extra_libs-option.patch
+	"${FILESDIR}"/${PN}-0.19-meson-fix-version-numbers.patch
+	"${FILESDIR}"/${PN}-0.19-meson-fix-pkgconfig-file.patch
+)
 
 multilib_src_configure() {
 	# Tests use Valgrind automagically otherwise (bug #927027)
 	export USE_VALGRIND=0
 
-	local mycmakeargs=(
-		# apps are not installed, so disable unconditionally.
-		# https://github.com/json-c/json-c/blob/json-c-0.17-20230812/apps/CMakeLists.txt#L119...L121
-		-DBUILD_APPS=OFF
-		-DBUILD_STATIC_LIBS=$(usex static-libs)
-		-DDISABLE_EXTRA_LIBS=ON
-		-DDISABLE_WERROR=ON
-		-DENABLE_RDRAND=$(usex cpu_flags_x86_rdrand)
-		-DENABLE_THREADING=$(usex threads)
-		-DBUILD_TESTING=$(usex test)
+	local emesonargs=(
+		# apps are not installed, so disable w/o tests.
+		# https://github.com/json-c/json-c/blob/json-c-0.17-20230812/apps/mesonLists.txt#L119...L121
+		$(meson_use test build_apps)
+		$(meson_use test build_tests)
+		-Ddefault_library=$(multilib_native_usex static-libs both shared)
+		-Dextra_libs=disabled
+		$(meson_use cpu_flags_x86_rdrand enable_rdrand)
+		$(meson_use threads enable_threading)
 	)
 
-	cmake_src_configure
-}
-
-multilib_src_compile() {
-	cmake_src_compile
-	if use doc && multilib_is_native_abi; then
-		cmake_build doc
-	fi
-}
-
-multilib_src_test() {
-	multilib_is_native_abi && cmake_src_test
-}
-
-multilib_src_install() {
-	cmake_src_install
-
-	if multilib_is_native_abi; then
-		use doc && HTML_DOCS=( "${BUILD_DIR}"/doc/html/. )
-		einstalldocs
-	fi
+	meson_src_configure
 }

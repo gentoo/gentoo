@@ -17,7 +17,7 @@ S="${WORKDIR}/${PN}-${MY_PV}"
 
 LICENSE="Apache-2.0 BSD-2 BSD MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm arm64 ppc64 ~riscv ~x86"
 IUSE="apparmor +seccomp selinux test"
 
 COMMON_DEPEND="
@@ -100,7 +100,6 @@ pkg_setup() {
 		~CGROUP_NET_PRIO
 		~CFS_BANDWIDTH
 		~FAIR_GROUP_SCHED
-		~RT_GROUP_SCHED
 		~IP_NF_TARGET_REDIRECT
 		~IP_VS
 		~IP_VS_NFCT

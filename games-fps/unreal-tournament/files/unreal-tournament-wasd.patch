@@ -1,0 +1,35 @@
+It's not 1999 anymore. Let's make WASD work out of the box. Apologies to AZERTY
+users, but I didn't want to change the binding for Q (Translocator).
+
+--- System/DefUser.ini
++++ System/DefUser.ini
+@@ -81,7 +81,7 @@
+ L=Taunt wave
+ M=Look
+ O=
+-S=Axis aUp Speed=+300.0
++S=MoveBackward
+ T=Talk
+ Z=Strafe
+ F1=ShowScores
+@@ -117,9 +117,9 @@
+ Execute=
+ PrintScrn=
+ Help=
+-A=
++A=StrafeLeft
+ B=
+-D=
++D=StrafeRight
+ E=
+ f=Feigndeath
+ H=Taunt Thrust
+@@ -132,7 +132,7 @@
+ R=TeamTalk
+ U=
+ V=
+-W=
++W=MoveForward
+ X=
+ NumPad0=ViewPlayerNum 0
+ NumPad1=ViewPlayerNum 1

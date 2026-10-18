@@ -1,0 +1,10 @@
+--- a/lapack-missing/CMakeLists.txt	2026-08-29 21:24:10.905952999 +0200
++++ b/lapack-missing/CMakeLists.txt	2026-08-29 21:24:19.856860318 +0200
+@@ -1,6 +1,6 @@
+ PROJECT(LAPACK_MISSING Fortran)
+ IF(${CMAKE_SOURCE_DIR} STREQUAL ${PROJECT_SOURCE_DIR})
+-	cmake_minimum_required(VERSION 3.0)
++	cmake_minimum_required(VERSION 3.10)
+ 	LIST(APPEND CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/CMakeModules")
+ 
+ 	MESSAGE(STATUS "essl-lapack standalone build")

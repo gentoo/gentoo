@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{12..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 
 inherit distutils-r1 pypi
 
@@ -20,11 +20,11 @@ SLOT="0"
 KEYWORDS="amd64 ~arm arm64 ~riscv x86"
 
 RDEPEND="
-	>dev-python/pbr-2.1.0[${PYTHON_USEDEP}]
+	>=dev-python/pbr-2.1.0[${PYTHON_USEDEP}]
 	>=dev-python/openstacksdk-0.13.0[${PYTHON_USEDEP}]
 "
 BDEPEND="
-	>dev-python/pbr-2.1.0[${PYTHON_USEDEP}]
+	>=dev-python/pbr-2.1.0[${PYTHON_USEDEP}]
 	test? (
 		>=dev-python/fixtures-3.0.0[${PYTHON_USEDEP}]
 		>=dev-python/jsonschema-3.2.0[${PYTHON_USEDEP}]

@@ -1,0 +1,59 @@
+https://github.com/awslabs/aws-crt-cpp/pull/889
+From dc7b4a22c97cb534e12af25034aff81e25b5f1f5 Mon Sep 17 00:00:00 2001
+From: Jaco Kroon <jaco@uls.co.za>
+Date: Thu, 23 Jul 2026 00:46:43 +0200
+Subject: [PATCH] Use AWS_WARNINGS_ARE_ERRORS to restrict -Werror
+
+This is in some of the sub folders.
+
+Found by Gentoo tinderbox: https://bugs.gentoo.org/977183
+
+Signed-off-by: Jaco Kroon <jaco@uls.co.za>
+---
+ bin/elasticurl_cpp/CMakeLists.txt | 2 +-
+ bin/mqtt5_app/CMakeLists.txt      | 2 +-
+ bin/mqtt5_canary/CMakeLists.txt   | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/bin/elasticurl_cpp/CMakeLists.txt b/bin/elasticurl_cpp/CMakeLists.txt
+index a96f94e..b0c5482 100644
+--- a/bin/elasticurl_cpp/CMakeLists.txt
++++ b/bin/elasticurl_cpp/CMakeLists.txt
+@@ -20,7 +20,7 @@ if (MSVC)
+         target_compile_options(${ELASTICURL_CPP_PROJECT_NAME} PRIVATE "/MD$<$<CONFIG:Debug>:d>")
+     endif()
+     target_compile_options(${ELASTICURL_CPP_PROJECT_NAME} PRIVATE /W4 /WX)
+-else ()
++elseif (AWS_WARNINGS_ARE_ERRORS)
+     target_compile_options(${ELASTICURL_CPP_PROJECT_NAME} PRIVATE -Wall -Wno-long-long -pedantic -Werror)
+ endif ()
+ 
+diff --git a/bin/mqtt5_app/CMakeLists.txt b/bin/mqtt5_app/CMakeLists.txt
+index 931e07e..60358a2 100644
+--- a/bin/mqtt5_app/CMakeLists.txt
++++ b/bin/mqtt5_app/CMakeLists.txt
+@@ -20,7 +20,7 @@ if (MSVC)
+         target_compile_options(${MQTT5_APP_PROJECT_NAME} PRIVATE "/MD$<$<CONFIG:Debug>:d>")
+     endif()
+     target_compile_options(${MQTT5_APP_PROJECT_NAME} PRIVATE /W4 /WX)
+-else ()
++elseif (AWS_WARNINGS_ARE_ERRORS)
+     target_compile_options(${MQTT5_APP_PROJECT_NAME} PRIVATE -Wall -Wno-long-long -pedantic -Werror)
+ endif ()
+ 
+diff --git a/bin/mqtt5_canary/CMakeLists.txt b/bin/mqtt5_canary/CMakeLists.txt
+index 4426053..e41ed00 100644
+--- a/bin/mqtt5_canary/CMakeLists.txt
++++ b/bin/mqtt5_canary/CMakeLists.txt
+@@ -21,7 +21,7 @@ if (MSVC)
+         target_compile_options(${MQTT5_CANARY_PROJECT_NAME} PRIVATE "/MD$<$<CONFIG:Debug>:d>")
+     endif()
+     target_compile_options(${MQTT5_CANARY_PROJECT_NAME} PRIVATE /W4 /WX)
+-else ()
++elseif (AWS_WARNINGS_ARE_ERRORS)
+     target_compile_options(${MQTT5_CANARY_PROJECT_NAME} PRIVATE -Wall -Wno-long-long -pedantic -Werror)
+ endif ()
+ 
+-- 
+2.54.0
+

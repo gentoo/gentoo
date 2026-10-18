@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="person">
-<email>aballier@gentoo.org</email>
-<name>Alexis Ballier</name>
-</maintainer>
+<!-- maintainer-needed -->
   <use>
     <flag name="designer">Installs <pkg>dev-qt/qttools</pkg>[designer] plugin.</flag>
   </use>

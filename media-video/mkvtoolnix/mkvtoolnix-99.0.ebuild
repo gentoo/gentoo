@@ -17,7 +17,7 @@ else
 		https://mkvtoolnix.download/sources/${P}.tar.xz
 		verify-sig? ( https://mkvtoolnix.download/sources/${P}.tar.xz.sig )
 	"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
+	KEYWORDS="amd64 ~arm ~arm64 ppc ppc64 x86"
 fi
 
 DESCRIPTION="Tools to create, alter, and inspect Matroska files"

@@ -1,6 +1,40 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2026-10-11)
+# Needed here specifically while we have a general mask for the target
+# on sparc.
+dev-python/python-tests -python_targets_python3_15
+dev-python/python-tests -python_targets_python3_15t
+dev-lang/python-exec -python_targets_python3_15
+dev-lang/python-exec -python_targets_python3_15t
+
+# Lukas Schmelting <lschmelting@posteo.com> (2026-09-10)
+# dev-util/bpftool not keyworded here
+net-misc/networkmanager clat
+
+# David Seifert <soap@gentoo.org> (2026-09-07)
+# sci-libs/libaec is not keyworded here, and >=sci-libs/hdf5-2.2.0
+# requires it directly instead of via virtual/szip
+>=sci-libs/hdf5-2.2.0 szip
+
+# James Le Cuirot <chewi@gentoo.org> (2026-09-05)
+# VIS is a sparc-specific SIMD optimisation.
+media-libs/libggi -vis
+media-libs/xine-lib -vis
+
+# Sam James <sam@gentoo.org> (2026-09-04)
+# sys-apps/xdg-desktop-portal not keyworded here
+x11-base/xwayland libei
+
+# Alfred Wingate <parona@protonmail.com> (2026-07-26)
+# Firefox not keyworded here
+dev-util/selenium-manager test
+
+# Pacho Ramos <pacho@gentoo.org> (2026-07-05)
+# QT6 is not keyworded here, bug #977775
+dev-libs/appstream test
+
 # Viorel Munteanu <ceamac@gentoo.org> (2026-05-14)
 # dev-libs/efl not keyworded here
 app-misc/fastfetch efl
@@ -33,6 +67,7 @@ sys-fs/lvm2 vdo
 # Ionen Wolkens <ionen@gentoo.org> (2026-03-16)
 # media-libs/opencolorio is not keyworded here
 media-video/ffmpeg opencolorio
+media-video/ffmpeg-compat opencolorio
 
 # Jaco Kroon <jaco@uls.co.za> (2026-02-06)
 # Requires sys-auth/libyubikey
@@ -249,10 +284,6 @@ sys-libs/libnvme keyutils
 # dev-libs/capstone not keyworded here
 dev-lang/php capstone
 
-# Mart Raudsepp <leio@gentoo.org> (2023-12-25)
-# sys-apps/xdg-desktop-portal not keyworded here yet
-x11-base/xwayland libei
-
 # Rolf Eike Beer <eike@sf-mail.de> (2023-12-22)
 # media-video/rav1e isn't keyworded here
 media-libs/libavif rav1e
@@ -335,10 +366,6 @@ dev-libs/libpcre2 jit
 # Unkeyworded dependencies
 dev-util/diffoscope opendocument pascal pdf R
 
-# Matt Turner <mattst88@gentoo.org> (2022-12-16)
-# gui-libs/gtk is not keyworded here
-app-crypt/gcr:4 gtk
-
 # Sam James <sam@gentoo.org> (2022-11-24)
 # Pulls in gjs which is broken on sparc, bug #882071
 dev-libs/libpeas javascript
@@ -396,6 +423,7 @@ media-libs/freetype svg
 # Adel Kara Slimane <adel.ks@zegrapher.com> (2022-03-14)
 # Untested useflag on other arches, needs keywording
 media-video/ffmpeg vmaf
+media-video/ffmpeg-compat vmaf
 
 # Sam James <sam@gentoo.org> (2022-03-06)
 # Unkeyworded dependencies

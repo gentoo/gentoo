@@ -16,7 +16,7 @@ HOMEPAGE="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
@@ -29,6 +29,9 @@ BDEPEND="
 python_test() {
 	local -x PYTHONIOENCODING='utf8'
 	"${EPYTHON}" commonmark/tests/run_spec_tests.py || die
+	"${EPYTHON}" -m unittest -v -b \
+		commonmark.tests.unit_tests \
+		commonmark.tests.rst_tests || die
 }
 
 src_prepare() {

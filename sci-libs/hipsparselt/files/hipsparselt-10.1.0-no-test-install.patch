@@ -1,0 +1,39 @@
+Don't install tests into /usr/bin
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -285,35 +285,6 @@
+ )
+ 
+ if(HIPSPARSELT_ENABLE_CLIENT)
+-    if(HIPSPARSELT_BUILD_TESTING OR BUILD_TESTING)
+-        rocm_install(
+-            TARGETS hipsparselt-test COMPONENT "tests" DESTINATION "${CMAKE_INSTALL_BINDIR}"
+-        )
+-
+-        if(TARGET hipsparselt-test-files)
+-            get_target_property(
+-                TEST_YAML_FILES hipsparselt-test-files HIPSPARSELT_INSTALL_YAML_FILES
+-            )
+-            get_target_property(TEST_DATA_FILE hipsparselt-test-files HIPSPARSELT_INSTALL_DATA_FILE)
+-            get_target_property(TEST_PROGRAM hipsparselt-test-files HIPSPARSELT_INSTALL_PROGRAM)
+-            if(TEST_YAML_FILES)
+-                rocm_install(
+-                    FILES ${TEST_YAML_FILES} DESTINATION "${CMAKE_INSTALL_BINDIR}" COMPONENT tests
+-                )
+-            endif()
+-            if(TEST_DATA_FILE)
+-                rocm_install(
+-                    FILES ${TEST_DATA_FILE} DESTINATION "${CMAKE_INSTALL_BINDIR}" COMPONENT tests
+-                )
+-            endif()
+-            if(TEST_PROGRAM)
+-                rocm_install(
+-                    PROGRAMS ${TEST_PROGRAM} DESTINATION "${CMAKE_INSTALL_BINDIR}" COMPONENT tests
+-                )
+-            endif()
+-        endif()
+-    endif()
+-
+     if(HIPSPARSELT_ENABLE_BENCHMARKS)
+         rocm_install(
+             TARGETS hipsparselt-bench COMPONENT benchmarks DESTINATION "${CMAKE_INSTALL_BINDIR}"

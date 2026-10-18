@@ -22,7 +22,7 @@ else
 		${FFMPEG_SOC_PATCH:+"
 			soc? ( https://dev.gentoo.org/~chewi/distfiles/${FFMPEG_SOC_PATCH} )
 		"}
-		https://distfiles.gentoo.org/pub/dev/ionen@gentoo.org/ffmpeg-$(ver_cut 1-2)-patchset-4.tar.xz
+		https://distfiles.gentoo.org/pub/dev/ionen@gentoo.org/ffmpeg-$(ver_cut 1-2)-patchset-5.tar.xz
 	"
 	S=${WORKDIR}/ffmpeg-${PV} # avoid ${P} for ffmpeg-compat
 	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~sparc x86 ~arm64-macos ~x64-macos"
@@ -106,6 +106,7 @@ FFMPEG_IUSE_MAP=(
 	shaderc:libshaderc
 	snappy:libsnappy
 	sndio
+	sofa:^libmysofa # no multilib
 	speex:libspeex
 	srt:libsrt
 	ssh:libssh
@@ -250,6 +251,7 @@ COMMON_DEPEND="
 	shaderc? ( media-libs/shaderc[${MULTILIB_USEDEP}] )
 	snappy? ( app-arch/snappy:=[${MULTILIB_USEDEP}] )
 	sndio? ( media-sound/sndio:=[${MULTILIB_USEDEP}] )
+	sofa? ( media-libs/libmysofa )
 	speex? ( media-libs/speex[${MULTILIB_USEDEP}] )
 	srt? ( net-libs/srt:=[${MULTILIB_USEDEP}] )
 	ssh? ( net-libs/libssh:=[sftp,${MULTILIB_USEDEP}] )
@@ -440,7 +442,6 @@ multilib_src_configure() {
 		--disable-libaribcaption
 		--disable-libdavs2
 		--disable-libklvanc
-		--disable-libmysofa
 		--disable-libopenvino
 		--disable-libshine
 		--disable-libtls

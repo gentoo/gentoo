@@ -45,7 +45,7 @@ RDEPEND="${LUA_DEPS}
 	dev-db/sqlite:3
 	dev-games/recastnavigation:=
 	dev-libs/collada-dom:=
-	>=dev-games/mygui-3.4.3:=
+	<dev-games/mygui-3.5.0:=
 	dev-libs/boost:=[zlib]
 	dev-libs/icu:=
 	dev-libs/tinyxml[stl]

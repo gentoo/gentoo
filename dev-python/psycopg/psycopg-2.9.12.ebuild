@@ -6,7 +6,7 @@ EAPI=8
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
 PYPI_PN="psycopg2"
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 
 inherit distutils-r1 pypi
 
@@ -26,7 +26,7 @@ RESTRICT="!test? ( test )"
 RDEPEND=">=dev-db/postgresql-8.1:*"
 DEPEND="${RDEPEND}"
 BDEPEND="
-	test? ( >=dev-db/postgresql-8.1[server] )
+	test? ( >=dev-db/postgresql-8.1[server(+)] )
 "
 
 python_prepare_all() {

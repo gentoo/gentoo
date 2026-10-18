@@ -1,3 +1,7 @@
+https://github.com/pytest-dev/pytest-forked/issues/89
+https://github.com/pytest-dev/pytest-forked/pull/90
+https://github.com/pytest-dev/pytest-forked/commit/b2742322d39ebda97d5170922520f3bb9c73f614
+
 From 398f003660dda242b97217390718a2a90c3d7a88 Mon Sep 17 00:00:00 2001
 From: Stanislav Levin <slev@altlinux.org>
 Date: Tue, 13 Feb 2024 12:44:53 +0300
@@ -10,12 +14,6 @@ https://docs.pytest.org/en/stable/changelog.html#pytest-8-0-0rc2-2024-01-17
 
 Fixes: https://github.com/pytest-dev/pytest-forked/issues/89
 Signed-off-by: Stanislav Levin <slev@altlinux.org>
----
- testing/test_xfail_behavior.py | 11 +++++------
- 1 file changed, 5 insertions(+), 6 deletions(-)
-
-diff --git a/testing/test_xfail_behavior.py b/testing/test_xfail_behavior.py
-index 15edd93..d4e5ee7 100644
 --- a/testing/test_xfail_behavior.py
 +++ b/testing/test_xfail_behavior.py
 @@ -7,6 +7,7 @@ import pytest

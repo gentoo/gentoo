@@ -1,0 +1,25 @@
+From b7f6612df54eef86f1e9cf8391bafefce52667c6 Mon Sep 17 00:00:00 2001
+From: Yuri Konotopov <ykonotopov@gnome.org>
+Date: Sat, 4 Jul 2026 11:33:39 +0000
+Subject: [PATCH] Fix node source assertion
+
+---
+ src/node_source.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/node_source.c b/src/node_source.c
+index f1698849..8141daae 100644
+--- a/src/node_source.c
++++ b/src/node_source.c
+@@ -301,7 +301,7 @@ feed_list_node_source_type_dialog (void)
+ 	GtkTreeIter		treeiter;
+ 	nodeSourceTypePtr	type;
+ 
+-	g_assert (!nodeSourceTypes);
++	g_assert (nodeSourceTypes);
+ 
+ 	/* set up the dialog */
+ 	dialog = liferea_dialog_new ("node_source");
+-- 
+2.47.3
+

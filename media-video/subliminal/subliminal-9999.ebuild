@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -70,6 +70,9 @@ EPYTEST_DESELECT=(
 
 	# TODO
 	tests/test_core.py::test_refine_video_metadata
+
+	# https://github.com/guessit-io/guessit/issues/796 (fixed in guessit-4.0.0)
+	tests/test_video.py::test_episode_fromname_guessit_bug
 )
 
 EPYTEST_IGNORE=(
@@ -81,6 +84,7 @@ EPYTEST_IGNORE=(
 
 export SETUPTOOLS_SCM_PRETEND_VERSION=${PV}
 
+EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
 
 src_unpack() {

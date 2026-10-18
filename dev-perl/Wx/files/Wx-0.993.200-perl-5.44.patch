@@ -1,0 +1,129 @@
+https://bugs.gentoo.org/978889
+https://rt.cpan.org/Public/Bug/Display.html?id=179905
+
+From: Niko Tyni <ntyni@debian.org>
+Date: Sat, 4 Jul 2026 11:53:26 +0100
+X-Dgit-Generated: 1:0.9932-9 57cbaa9c628fe982d9d781ea6a51a211cd2bab95
+Subject: Fix header includes for compatibility with newer EU::ParseXS versions
+
+These modules had a latent bug: they were relying on other modules
+to be included first to bring the required headers in.
+
+ExtUtils::ParseXS changed its processing order of INCLUDE: directives
+in the Perl 5.44 development cycle, triggering the bug.
+
+
+Bug-Debian: https://bugs.debian.org/1141461
+
+---
+
+diff --git a/XS/Animation.xsp b/XS/Animation.xsp
+index 15df85e..86dee1c 100644
+--- a/XS/Animation.xsp
++++ b/XS/Animation.xsp
+@@ -15,6 +15,7 @@
+ #if WXPERL_W_VERSION_GE( 2, 7, 2 )
+ 
+ #include <wx/animate.h>
++#include "cpp/streams.h"
+ 
+ %name{Wx::Animation} class wxAnimation
+ {
+diff --git a/XS/Bitmap.xs b/XS/Bitmap.xs
+index 71d3211..44407c7 100644
+--- a/XS/Bitmap.xs
++++ b/XS/Bitmap.xs
+@@ -11,6 +11,7 @@
+ #############################################################################
+ 
+ #include <wx/bitmap.h>
++#include <wx/icon.h>
+ 
+ MODULE=Wx PACKAGE=Wx::Mask
+ 
+diff --git a/XS/Colour.xs b/XS/Colour.xs
+index c74ab7d..5001a04 100644
+--- a/XS/Colour.xs
++++ b/XS/Colour.xs
+@@ -10,6 +10,8 @@
+ ##              modify it under the same terms as Perl itself
+ #############################################################################
+ 
++#include "cpp/overload.h"
++
+ MODULE=Wx PACKAGE=Wx::Colour
+ 
+ void
+diff --git a/XS/DirDialog.xs b/XS/DirDialog.xs
+index 79fdefc..87c076e 100644
+--- a/XS/DirDialog.xs
++++ b/XS/DirDialog.xs
+@@ -11,6 +11,7 @@
+ #############################################################################
+ 
+ #include <wx/dirdlg.h>
++#include <wx/filedlg.h>
+ 
+ MODULE=Wx PACKAGE=Wx::DirDialog
+ 
+diff --git a/XS/Frame.xs b/XS/Frame.xs
+index 1c72162..dfe8d68 100644
+--- a/XS/Frame.xs
++++ b/XS/Frame.xs
+@@ -13,6 +13,7 @@
+ #include <wx/frame.h>
+ #include <wx/menu.h>
+ #include <wx/icon.h>
++#include <wx/toolbar.h>
+ #if wxPERL_USE_MINIFRAME
+ #include <wx/minifram.h>
+ #endif
+diff --git a/XS/ImageList.xsp b/XS/ImageList.xsp
+index 1e6666a..39ef794 100644
+--- a/XS/ImageList.xsp
++++ b/XS/ImageList.xsp
+@@ -11,6 +11,7 @@
+ #############################################################################
+ 
+ %{
++#include <wx/icon.h>
+ #include <wx/imaglist.h>
+ 
+ #define wxNullBitmapPtr (wxBitmap*) &wxNullBitmap
+diff --git a/XS/Log.xs b/XS/Log.xs
+index 6dc0cfe..89c3b92 100644
+--- a/XS/Log.xs
++++ b/XS/Log.xs
+@@ -10,6 +10,7 @@
+ ##              modify it under the same terms as Perl itself
+ #############################################################################
+ 
++#include <wx/frame.h>
+ #include <wx/log.h>
+ #include "cpp/log.h"
+ 
+diff --git a/XS/StaticLine.xs b/XS/StaticLine.xs
+index f4580c6..f48178c 100644
+--- a/XS/StaticLine.xs
++++ b/XS/StaticLine.xs
+@@ -13,6 +13,7 @@
+ MODULE=Wx PACKAGE=Wx::StaticLine
+ 
+ #include <wx/statline.h>
++#include <wx/stattext.h>
+ 
+ wxStaticLine*
+ wxStaticLine::new( parent, id = wxID_ANY, pos = wxDefaultPosition, size = wxDefaultSize, style = wxLI_HORIZONTAL, name = wxStaticTextNameStr )
+diff --git a/ext/grid/XS/Grid.xs b/ext/grid/XS/Grid.xs
+index e76e9a1..fa10d2f 100644
+--- a/ext/grid/XS/Grid.xs
++++ b/ext/grid/XS/Grid.xs
+@@ -11,6 +11,7 @@
+ #############################################################################
+ 
+ #include <wx/grid.h>
++#include <wx/pen.h>
+ #include "cpp/overload.h"
+ 
+ #if WXPERL_W_VERSION_GE( 2, 9, 0 )
+

@@ -1,0 +1,78 @@
+From e9d6b1fa4aada9b622a028981d8c71870d974b2b Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Sat, 16 Nov 2024 22:55:07 -0500
+Subject: [PATCH 1/2] ext/iconv/tests/eucjp2iso2022jp.phpt: skip for "unknown"
+ iconv
+
+This test does a byte comparison of the expected ISO-2022-JP encoding
+with the result of iconv(). The ISO-2022-JP encoding, however, is
+stateful; there are many ways to arrive at a correct answer. Musl is
+known to have an inefficient encoding that causes it to fail this
+test, so we add a SKIPIF for the "unknown" iconv implementation that
+musl has.
+
+Nothing is wrong here per se, but to support the musl output (and that
+of other iconvs), an expert would need to verify it.
+---
+ ext/iconv/tests/eucjp2iso2022jp.phpt | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
+
+diff --git a/ext/iconv/tests/eucjp2iso2022jp.phpt b/ext/iconv/tests/eucjp2iso2022jp.phpt
+index 6c1a8ec1214b..c3260c370f08 100644
+--- a/ext/iconv/tests/eucjp2iso2022jp.phpt
++++ b/ext/iconv/tests/eucjp2iso2022jp.phpt
+@@ -2,6 +2,16 @@
+ EUC-JP to ISO-2022-JP
+ --EXTENSIONS--
+ iconv
++--SKIPIF--
++<?php
++// ISO-2022-JP is a stateful encoding, so the right answer is not
++// unique. In particular, musl (type "unknown") is known to have an
++// inefficient encoding for it that does not agree with the expected
++// output below.
++if (ICONV_IMPL == "unknown") {
++    die("skip byte-comparison of stateful encoding with unknown iconv");
++}
++?>
+ --INI--
+ error_reporting=2039
+ --FILE--
+
+From d2f17feb1392219698ced5e4da36dff33dcd0ea3 Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Sat, 16 Nov 2024 23:13:42 -0500
+Subject: [PATCH 2/2] ext/iconv/tests/iconv_mime_encode.phpt: skip for
+ "unknown" iconv
+
+This test checks the output of iconv_mime_encode() with a target
+charset of ISO-2022-JP. That charset is stateful, though, and there
+are many ways to arrive at a correct answer. Musl has an inefficient
+encoding of it that causes this to fail because the actual output
+differs from (and is much longer than) the expected output. We add a
+SKIPIF for the "unknown" iconv implementation that musl has.
+---
+ ext/iconv/tests/iconv_mime_encode.phpt | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
+
+diff --git a/ext/iconv/tests/iconv_mime_encode.phpt b/ext/iconv/tests/iconv_mime_encode.phpt
+index e055f53b016a..c6f41c56ad90 100644
+--- a/ext/iconv/tests/iconv_mime_encode.phpt
++++ b/ext/iconv/tests/iconv_mime_encode.phpt
+@@ -2,6 +2,16 @@
+ iconv_mime_encode()
+ --EXTENSIONS--
+ iconv
++--SKIPIF--
++<?php
++// ISO-2022-JP is a stateful encoding, so the right answer is not
++// unique. In particular, musl (type "unknown") is known to have an
++// inefficient encoding for it that does not agree with the expected
++// output below.
++if (ICONV_IMPL == "unknown") {
++    die("skip byte-comparison of stateful encoding with unknown iconv");
++}
++?>
+ --INI--
+ iconv.internal_charset=iso-8859-1
+ --FILE--

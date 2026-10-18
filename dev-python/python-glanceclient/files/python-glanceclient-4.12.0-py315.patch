@@ -1,0 +1,67 @@
+From 98fa6a7ffcb128e406922ac8520180fc05c21648 Mon Sep 17 00:00:00 2001
+From: Steve Traylen <steve.traylen@cern.ch>
+Date: Sun, 26 Apr 2026 16:49:34 +0200
+Subject: [PATCH] fix hashlib ValueError message check for py3.15
+
+I realise python3.15 is is not supported yet but this allows tests
+to pass on 3.15a8.
+
+Python 3.15 changed the ValueError message raised by hashlib.new() for
+unknown algorithms from "unsupported hash type <name>" to "unsupported
+hash algorithm <name>",
+
+Replace the prefix check with a test for the algorithm name in
+the exception message
+
+Python change:
+
+https://github.com/python/cpython/commit/6be49ee517258281357aa6846d2564bc5626b7ca
+Change-Id: I69b1b0fb2ac18c0a590b9d375b88030361251935
+Signed-off-by: Steve Traylen <steve.traylen@cern.ch>
+---
+
+diff --git a/glanceclient/tests/unit/v2/test_images.py b/glanceclient/tests/unit/v2/test_images.py
+index 33626fd..839d7fe 100644
+--- a/glanceclient/tests/unit/v2/test_images.py
++++ b/glanceclient/tests/unit/v2/test_images.py
+@@ -1184,12 +1184,12 @@
+                                     do_checksum=False)
+         body = ''.join([b for b in body])
+         self.assertEqual('BB', body)
+-        try:
+-            body = self.controller.data('badalgo-db27-11e1-a1eb-080027cbe205')
+-            self.fail('bad os_hash_algo did not raise an error.')
+-        except ValueError as e:
+-            msg = 'unsupported hash type not_an_algo'
+-            self.assertIn(msg, str(e))
++        self.assertRaisesRegex(
++            ValueError,
++            r'unsupported hash (type|algorithm) not_an_algo',
++            self.controller.data,
++            'badalgo-db27-11e1-a1eb-080027cbe205'
++        )
+ 
+     def test_data_with_checksum(self):
+         for prefix in ['headeronly', 'chkonly', 'multihash']:
+@@ -1207,7 +1207,7 @@
+     @ddt.data('headeronly', 'chkonly', 'multihash')
+     def test_data_with_checksum_but_no_md5_algo(self, prefix):
+         with mock.patch('hashlib.new', mock.MagicMock(
+-                side_effect=ValueError('unsupported hash type'))):
++                side_effect=ValueError('unsupported hash algorithm sha384'))):
+             body = self.controller.data(prefix +
+                                         '-dd57-11e1-af0f-02163e68b1d8',
+                                         allow_md5_fallback=True)
+diff --git a/glanceclient/v2/images.py b/glanceclient/v2/images.py
+index 3c658fa..6cff610 100644
+--- a/glanceclient/v2/images.py
++++ b/glanceclient/v2/images.py
+@@ -278,7 +278,7 @@
+                                                     meta_hash_value)
+                 check_md5sum = False
+             except ValueError as ve:
+-                if (str(ve).startswith('unsupported hash type') and
++                if (str(meta_hash_algo) in str(ve) and
+                         allow_md5_fallback):
+                     check_md5sum = True
+                 else:

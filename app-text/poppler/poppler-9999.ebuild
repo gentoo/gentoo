@@ -14,19 +14,19 @@ else
 	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/aacid.asc
 	inherit verify-sig
 
-	TEST_COMMIT="b85e4d1ce75636b3e727555a9d31da34ad771c1c"
+	TEST_COMMIT="48b6219b84fc0a708040cb279d51095cc4e1c603"
 	SRC_URI="https://poppler.freedesktop.org/${P}.tar.xz"
 	SRC_URI+=" test? ( https://gitlab.freedesktop.org/poppler/test/-/archive/${TEST_COMMIT}/test-${TEST_COMMIT}.tar.bz2 -> ${PN}-test-${TEST_COMMIT}.tar.bz2 )"
 	SRC_URI+=" verify-sig? ( https://poppler.freedesktop.org/${P}.tar.xz.sig )"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~arm64-macos ~x64-macos ~x64-solaris"
-	SLOT="0/160"   # CHECK THIS WHEN BUMPING!!! SUBSLOT IS libpoppler.so SOVERSION
+	SLOT="0/164"   # CHECK THIS WHEN BUMPING!!! SUBSLOT IS libpoppler.so SOVERSION
 fi
 
 DESCRIPTION="PDF rendering library based on the xpdf-3.0 code base"
 HOMEPAGE="https://poppler.freedesktop.org/"
 
 LICENSE="GPL-2"
-IUSE="boost cairo cjk curl +cxx debug doc gpg +introspection +jpeg +jpeg2k +lcms nss png qt6 test tiff +utils"
+IUSE="boost cairo cjk curl +cxx debug doc gpg +harfbuzz +introspection +jpeg +jpeg2k +lcms nss png qt6 test tiff +utils"
 RESTRICT="!test? ( test )"
 
 COMMON_DEPEND="
@@ -40,6 +40,7 @@ COMMON_DEPEND="
 	)
 	curl? ( net-misc/curl )
 	gpg? ( dev-cpp/gpgmepp:= )
+	harfbuzz? ( media-libs/harfbuzz:= )
 	jpeg? ( >=media-libs/libjpeg-turbo-1.1.0:= )
 	jpeg2k? ( >=media-libs/openjpeg-2.3.0-r1:2= )
 	lcms? ( media-libs/lcms:2 )
@@ -53,11 +54,15 @@ RDEPEND="${COMMON_DEPEND}
 "
 DEPEND="${COMMON_DEPEND}
 	boost? ( >=dev-libs/boost-1.83 )
-	test? ( qt6? ( dev-qt/qtbase:6[widgets] ) )
+	test? (
+		media-fonts/noto-cjk
+		qt6? ( dev-qt/qtbase:6[widgets] )
+	)
 "
 BDEPEND="${PYTHON_DEPS}
 	>=dev-util/glib-utils-2.80
 	virtual/pkgconfig
+	qt6? ( dev-qt/qtbase:6 )
 "
 
 if [[ ${PV} != *9999* ]] ; then
@@ -67,9 +72,7 @@ fi
 DOCS=( AUTHORS NEWS README.md README-XPDF )
 
 PATCHES=(
-	"${FILESDIR}/${PN}-26.05.0-qt-deps.patch"
-	"${FILESDIR}/${PN}-26.01.0-respect-cflags.patch"
-	"${FILESDIR}/${PN}-0.57.0-disable-internal-jpx.patch"
+	"${FILESDIR}/${PN}-26.08.0-respect-cflags.patch"
 )
 
 src_unpack() {
@@ -115,9 +118,9 @@ src_configure() {
 		-DENABLE_LIBCURL=$(usex curl)
 		-DENABLE_CPP=$(usex cxx)
 		-DENABLE_GPGME=$(usex gpg)
-		-DWITH_JPEG=$(usex jpeg)
-		-DENABLE_DCTDECODER=$(usex jpeg libjpeg none)
-		-DENABLE_LIBOPENJPEG=$(usex jpeg2k openjpeg2 none)
+		-DENABLE_HARFBUZZ=$(usex harfbuzz)
+		-DENABLE_LIBJPEG=$(usex jpeg)
+		-DENABLE_LIBOPENJPEG=$(usex jpeg2k)
 		-DENABLE_LCMS=$(usex lcms)
 		-DENABLE_NSS3=$(usex nss)
 		-DWITH_PNG=$(usex png)
@@ -127,6 +130,7 @@ src_configure() {
 		-DENABLE_UTILS=$(usex utils)
 	)
 	use cairo && mycmakeargs+=( -DWITH_GObjectIntrospection=$(usex introspection) )
+	use qt6 && tc-is-cross-compiler && mycmakeargs+=( -DQT_HOST_PATH="${BROOT}" )
 
 	cmake_src_configure
 }

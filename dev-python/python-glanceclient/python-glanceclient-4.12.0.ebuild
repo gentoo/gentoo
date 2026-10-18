@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{12..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 
 inherit distutils-r1 pypi
 
@@ -43,6 +43,11 @@ BDEPEND="
 "
 
 distutils_enable_tests unittest
+
+PATCHES=(
+	# https://review.opendev.org/c/openstack/python-glanceclient/+/986313
+	"${FILESDIR}/${P}-py315.patch"
+)
 
 python_test() {
 	# functional tests require cloud instance access

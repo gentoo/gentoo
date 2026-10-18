@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 
 inherit distutils-r1
 
@@ -24,6 +24,8 @@ LICENSE="LGPL-3"
 SLOT="0"
 KEYWORDS="amd64"
 IUSE="examples"
+
+PATCHES=( "${FILESDIR}"/15-setup.patch )
 
 python_install_all() {
 	if use examples; then

@@ -7,7 +7,7 @@ EAPI=8
 DISTUTILS_USE_PEP517=flit
 # NB: this package extends beyond built-in importlib stuff in py3.8+
 # new entry_point API not yet included in cpython release
-PYTHON_COMPAT=( pypy3_11 python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 
 inherit distutils-r1 pypi
 

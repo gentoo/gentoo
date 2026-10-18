@@ -1,0 +1,13 @@
+# Patch created by Quincy Fleming
+# This helps to be able to control wether or not to find and build with libgpiod
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -236,7 +236,7 @@
+ 
+ # -------------------------------------
+ # Find libgpiod using pkg-config, if needed
+-if(HAVE_LINUXGPIO)
++if(HAVE_LINUXGPIO AND HAVE_LIBGPIOD)
+     # defaults/fallbacks
+     set(HAVE_LIBGPIOD 0)
+     set(HAVE_LIBGPIOD_V2 0)

@@ -58,7 +58,7 @@ PATCHES=(
 
 src_prepare() {
 	cmake_src_prepare
-	sed -e "/QHG_LOCATION/s:\".*\":""$(qt6_get_libexecdir)/qhelpgenerator"":" -i Doxyfile || die
+	sed -e "/QHG_LOCATION/s:\".*\":""$(qt_get_broot_binary 6 qhelpgenerator)"":" -i Doxyfile || die
 }
 
 src_configure() {

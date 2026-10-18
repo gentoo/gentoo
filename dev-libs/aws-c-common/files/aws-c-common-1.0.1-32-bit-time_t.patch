@@ -1,0 +1,138 @@
+https://github.com/awslabs/aws-c-common/pull/1282
+From: Arthur Zamarin <arthurzam@gentoo.org>
+Subject: [PATCH] Fix 32-bit time_t overflow in condition variable wait and
+ thread sleep
+
+On platforms with a 32-bit time_t, aws_condition_variable_wait_for()
+computed the absolute deadline in seconds as a uint64_t and cast it to
+time_t. For large timeouts the value doesn't fit, wraps to a negative
+time in the past, and pthread_cond_timedwait() times out immediately
+instead of waiting.
+
+aws_thread_current_sleep() had the same truncation, so very long sleeps
+passed a wrapped tv_sec to nanosleep(), which either fails with EINVAL
+(negative) or sleeps far shorter than requested.
+
+Clamp the seconds value to the maximum time_t in both places, and add a
+regression test that waits with an INT64_MAX timeout.
+
+Signed-off-by: Arthur Zamarin <arthurzam@gentoo.org>
+--- a/source/posix/condition_variable.c
++++ b/source/posix/condition_variable.c
+@@ -9,6 +9,7 @@
+ #include <aws/common/mutex.h>
+
+ #include <errno.h>
++#include <limits.h>
+
+ static int process_error_code(int err) {
+     switch (err) {
+@@ -95,8 +96,16 @@ int aws_condition_variable_wait_for(
+
+     struct timespec ts;
+     uint64_t remainder = 0;
+-    ts.tv_sec = (time_t)aws_timestamp_convert(
++    uint64_t secs = aws_timestamp_convert(
+         (uint64_t)(time_to_wait + current_sys_time), AWS_TIMESTAMP_NANOS, AWS_TIMESTAMP_SECS, &remainder);
++
++    /* time_t may be 32-bit: clamp far-future deadlines instead of letting them wrap into the past */
++    const uint64_t time_t_max = ((uint64_t)1 << (sizeof(time_t) * CHAR_BIT - 1)) - 1;
++    if (secs > time_t_max) {
++        secs = time_t_max;
++        remainder = 0;
++    }
++    ts.tv_sec = (time_t)secs;
+     ts.tv_nsec = (long)remainder;
+
+     int err_code = pthread_cond_timedwait(&condition_variable->condition_handle, &mutex->mutex_handle, &ts);
+--- a/source/posix/thread.c
++++ b/source/posix/thread.c
+@@ -478,10 +478,17 @@ bool aws_thread_thread_id_equal(aws_thread_id_t t1, aws_thread_id_t t2) {
+
+ void aws_thread_current_sleep(uint64_t nanos) {
+     uint64_t nano = 0;
+-    time_t seconds = (time_t)aws_timestamp_convert(nanos, AWS_TIMESTAMP_NANOS, AWS_TIMESTAMP_SECS, &nano);
++    uint64_t seconds = aws_timestamp_convert(nanos, AWS_TIMESTAMP_NANOS, AWS_TIMESTAMP_SECS, &nano);
++
++    /* time_t may be 32-bit: clamp long sleeps instead of letting them wrap to a negative (invalid) value */
++    const uint64_t time_t_max = ((uint64_t)1 << (sizeof(time_t) * CHAR_BIT - 1)) - 1;
++    if (seconds > time_t_max) {
++        seconds = time_t_max;
++        nano = 0;
++    }
+
+     struct timespec tm = {
+-        .tv_sec = seconds,
++        .tv_sec = (time_t)seconds,
+         .tv_nsec = (long)nano,
+     };
+     struct timespec output;
+--- a/tests/CMakeLists.txt
++++ b/tests/CMakeLists.txt
+@@ -52,6 +52,7 @@ add_test_case(mutex_try_lock_is_correct_test)
+
+ add_test_case(conditional_notify_one)
+ add_test_case(conditional_notify_all)
++add_test_case(conditional_wait_for_max_timeout)
+
+ add_test_case(error_code_cross_thread_test)
+
+--- a/tests/condition_variable_test.c
++++ b/tests/condition_variable_test.c
+@@ -146,3 +146,56 @@ static int s_test_conditional_notify_all_fn(struct aws_allocator *allocator, voi
+ }
+
+ AWS_TEST_CASE(conditional_notify_all, s_test_conditional_notify_all_fn)
++
++struct wait_for_max_test_data {
++    struct aws_mutex mutex;
++    struct aws_condition_variable condition_variable;
++    bool done;
++};
++
++static bool s_wait_for_max_predicate(void *arg) {
++    struct wait_for_max_test_data *test_data = arg;
++    return test_data->done;
++}
++
++static void s_wait_for_max_thread_fn(void *arg) {
++    struct wait_for_max_test_data *test_data = arg;
++
++    aws_thread_current_sleep(aws_timestamp_convert(100, AWS_TIMESTAMP_MILLIS, AWS_TIMESTAMP_NANOS, NULL));
++
++    aws_mutex_lock(&test_data->mutex);
++    test_data->done = true;
++    aws_condition_variable_notify_one(&test_data->condition_variable);
++    aws_mutex_unlock(&test_data->mutex);
++}
++
++/* Regression test: with a 32-bit time_t, a huge timeout used to wrap the deadline into the past,
++ * so the wait timed out immediately instead of waiting to be notified. */
++static int s_test_conditional_wait_for_max_timeout_fn(struct aws_allocator *allocator, void *ctx) {
++    (void)ctx;
++
++    struct wait_for_max_test_data test_data = {
++        .mutex = AWS_MUTEX_INIT,
++        .condition_variable = AWS_CONDITION_VARIABLE_INIT,
++        .done = false,
++    };
++
++    ASSERT_SUCCESS(aws_mutex_lock(&test_data.mutex));
++
++    struct aws_thread thread;
++    ASSERT_SUCCESS(aws_thread_init(&thread, allocator));
++    ASSERT_SUCCESS(aws_thread_launch(&thread, s_wait_for_max_thread_fn, &test_data, NULL));
++
++    ASSERT_SUCCESS(aws_condition_variable_wait_for_pred(
++        &test_data.condition_variable, &test_data.mutex, INT64_MAX, s_wait_for_max_predicate, &test_data));
++    ASSERT_TRUE(test_data.done);
++
++    ASSERT_SUCCESS(aws_mutex_unlock(&test_data.mutex));
++
++    aws_thread_join(&thread);
++    aws_thread_clean_up(&thread);
++
++    return AWS_OP_SUCCESS;
++}
++
++AWS_TEST_CASE(conditional_wait_for_max_timeout, s_test_conditional_wait_for_max_timeout_fn)

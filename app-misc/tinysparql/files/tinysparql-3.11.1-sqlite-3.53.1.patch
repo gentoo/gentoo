@@ -1,0 +1,109 @@
+From: Carlos Garnacho <carlosg@gnome.org>
+Date: Tue, 12 May 2026 14:25:09 +0200
+Subject: tests: Handle double values precision changes in SQLite 3.53.1
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+
+The release news of this SQLite version (https://sqlite.org/releaselog/3_53_1.html)
+has the following item:
+
+9. Improvements to floating-point ↔ text conversions.
+   a. Reimplemented to improve performance.
+   b. Rounding is now done by default to 17 significant digits, instead
+      of 15, as was the case for all prior versions. The
+      sqlite3_db_config(SQLITE_DBCONFIG_FP_DIGITS) API (item 6g above)
+      can change this, if desired.
+
+This is generally great, but these precision changes seep in our
+test suite. Adapt the SPARQL query tests that are returning double
+values so that these are converted to a string up to a precision defined
+in the query itself, and less dependent on implementation details.
+
+Ideally, these tests should use cursor getters for double values and
+compare with an epsilon, instead of these rough string comparisons we
+do. This is left as something for the future.
+
+(cherry picked from commit 47d5bf9313d0ccb1feb7169eed9047d0e1597a39)
+
+Origin: upstream, after 3.11.1
+---
+ tests/core/aggregates/aggregate-1.out          | 2 +-
+ tests/core/aggregates/aggregate-1.rq           | 2 +-
+ tests/core/aggregates/aggregate-distinct-1.out | 2 +-
+ tests/core/aggregates/aggregate-distinct-1.rq  | 2 +-
+ tests/core/bind/bind3.out                      | 4 ++--
+ tests/core/bind/bind3.rq                       | 2 +-
+ tests/core/update/delete-where-query-3.out     | 2 +-
+ tests/core/update/delete-where-query-3.rq      | 2 +-
+ 8 files changed, 9 insertions(+), 9 deletions(-)
+
+diff --git a/tests/core/aggregates/aggregate-1.out b/tests/core/aggregates/aggregate-1.out
+index 8ea62e7..77a7791 100644
+--- a/tests/core/aggregates/aggregate-1.out
++++ b/tests/core/aggregates/aggregate-1.out
+@@ -1 +1 @@
+-"9"	"3.33333333333333"	"5"	"1"
++"9"	"3.333333333333"	"5"	"1"
+diff --git a/tests/core/aggregates/aggregate-1.rq b/tests/core/aggregates/aggregate-1.rq
+index b9aee27..598b08b 100755
+--- a/tests/core/aggregates/aggregate-1.rq
++++ b/tests/core/aggregates/aggregate-1.rq
+@@ -1,5 +1,5 @@
+ PREFIX : <http://example/> 
+ 
+-SELECT SUM(?v) AVG(?w) MAX(?v) MIN(?v)
++SELECT SUM(?v) (SUBSTR(STR(AVG(?w)), 0, 15) AS $avg) MAX(?v) MIN(?v)
+ { ?_x :i1 ?v ;
+       :i2 ?w }
+diff --git a/tests/core/aggregates/aggregate-distinct-1.out b/tests/core/aggregates/aggregate-distinct-1.out
+index e5cb99d..71d3c39 100644
+--- a/tests/core/aggregates/aggregate-distinct-1.out
++++ b/tests/core/aggregates/aggregate-distinct-1.out
+@@ -1 +1 @@
+-"3.33333333333333"	"4.0"
++"3.333333333333"	"4.0"
+diff --git a/tests/core/aggregates/aggregate-distinct-1.rq b/tests/core/aggregates/aggregate-distinct-1.rq
+index 3363920..95fb850 100755
+--- a/tests/core/aggregates/aggregate-distinct-1.rq
++++ b/tests/core/aggregates/aggregate-distinct-1.rq
+@@ -1,4 +1,4 @@
+ PREFIX : <http://example/> 
+ 
+-SELECT AVG(?w) AVG(DISTINCT ?w) 
++SELECT (SUBSTR(STR(AVG(?w)), 0, 15) AS $avg1) (SUBSTR(STR(AVG(DISTINCT ?w)), 0, 15) AS ?avg2)
+ { ?_x :i2 ?w }
+diff --git a/tests/core/bind/bind3.out b/tests/core/bind/bind3.out
+index 77909cd..19a2fb3 100644
+--- a/tests/core/bind/bind3.out
++++ b/tests/core/bind/bind3.out
+@@ -1,2 +1,2 @@
+-"http://example.org/ns#a2"	"42"	"0.0238095238095238"
+-"http://example.org/ns#e"	"17"	"0.0588235294117647"
++"http://example.org/ns#a2"	"42"	"0.023809523809"
++"http://example.org/ns#e"	"17"	"0.058823529411"
+diff --git a/tests/core/bind/bind3.rq b/tests/core/bind/bind3.rq
+index 2d9405a..30f114c 100644
+--- a/tests/core/bind/bind3.rq
++++ b/tests/core/bind/bind3.rq
+@@ -1,5 +1,5 @@
+ PREFIX  : <http://example.org/ns#>
+-SELECT  ?a ?b ?x
++SELECT  ?a ?b (SUBSTR(STR(?x), 0, 15) AS $val)
+ WHERE
+     { ?a :integer ?b .
+       BIND ((1 / xsd:double (?b)) AS ?x) .
+diff --git a/tests/core/update/delete-where-query-3.out b/tests/core/update/delete-where-query-3.out
+index 14e945c..3bc290a 100644
+--- a/tests/core/update/delete-where-query-3.out
++++ b/tests/core/update/delete-where-query-3.out
+@@ -1 +1 @@
+-"http://example/b"	"0.444444444444444"
++"http://example/b"	"0.444444444444"
+diff --git a/tests/core/update/delete-where-query-3.rq b/tests/core/update/delete-where-query-3.rq
+index ee1e9e4..65c22bf 100644
+--- a/tests/core/update/delete-where-query-3.rq
++++ b/tests/core/update/delete-where-query-3.rq
+@@ -1 +1 @@
+-SELECT ?s ?o { ?s example:double ?o }
++SELECT ?s (SUBSTR(STR(?o), 0, 15) AS $val) { ?s example:double ?o }

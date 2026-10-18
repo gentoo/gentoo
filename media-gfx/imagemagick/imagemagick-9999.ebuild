@@ -128,11 +128,6 @@ src_prepare() {
 	done
 	shopt -u nullglob
 	addpredict /dev/nvidiactl
-
-	if use hardened ; then
-		# https://github.com/ImageMagick/ImageMagick/issues/8646 (bug #971784)
-		sed -i -e 's:not ok:ok:' tests/cli-svg.tap || die
-	fi
 }
 
 src_configure() {
@@ -143,9 +138,6 @@ src_configure() {
 	use perl && perl_check_env
 
 	[[ ${CHOST} == *-solaris* ]] && append-ldflags -lnsl -lsocket
-
-	# Workaround for bug #941208 (gcc PR117100)
-	tc-is-gcc && [[ $(gcc-major-version) == 13 ]] && append-flags -fno-unswitch-loops
 
 	local myeconfargs=(
 		$(use_enable static-libs static)
@@ -211,27 +203,31 @@ src_compile() {
 }
 
 src_test() {
-	# Install default (unrestricted) policy in $HOME for test suite, bug #664238
-	local _im_local_config_home="${HOME}/.config/ImageMagick"
-	mkdir -p "${_im_local_config_home}" || \
-		die "Failed to create IM config dir in '${_im_local_config_home}'"
-	cp "${FILESDIR}"/policy.test.xml "${_im_local_config_home}/policy.xml" || \
-		die "Failed to install default blank policy.xml in '${_im_local_config_home}'"
+	# Install default (unrestricted) policy for the test suite, bug #664238
+	#
+	# IM has to be coerced into not looking at the system policy.xml
+	# last. With this, it will look at the one in ${S}/config, the system
+	# one if it exists, then our generous one for tests.
+	local -x XDG_CONFIG_HOME="${T}"
+	local -x MAGICK_HOME="${T}"/ImageMagick
+	local -x MAGICK_CONFIGURE_PATH="${T}"/ImageMagick
 
-	local im_command= IM_COMMANDS=()
-	if [[ ${PV} == 9999 ]] ; then
-		IM_COMMANDS+=( "magick -version" ) # Show version we are using -- cannot verify because of live ebuild
-	else
-		IM_COMMANDS+=( "magick -version | grep -q -- \"${MY_PV}\"" ) # Verify that we are using version we just built
-	fi
-	IM_COMMANDS+=( "magick -list policy" ) # Verify that policy.xml is used
-	IM_COMMANDS+=( "emake check" ) # Run tests
+	sed -i -e '/MAGICK_CONFIGURE_PATH/d' magick.sh common.shi || die
 
-	for im_command in "${IM_COMMANDS[@]}"; do
-		eval "${S}"/magick.sh \
-			${im_command} || \
-			die "Failed to run \"${im_command}\""
-	done
+	mkdir "${XDG_CONFIG_HOME}"/ImageMagick || die
+	mv "${S}"/config/policy.xml{,.bak} || die
+	cp "${S}"/config/policy{-open,}.xml || die
+	cp "${FILESDIR}"/policy.test.xml "${XDG_CONFIG_HOME}"/ImageMagick/policy.xml || die
+
+	local ret=0
+	(
+		# Make sure we use the just-built IM
+		. "${S}"/magick.sh
+		nonfatal emake check
+	) || ret=$?
+
+	mv "${S}"/config/policy.xml{.bak,} || die
+	(( ${ret} == 0 )) || die "emake check failed"
 }
 
 src_install() {
@@ -255,7 +251,7 @@ src_install() {
 	find "${ED}" -name '*.la' -exec sed -i -e "/^dependency_libs/s:=.*:='':" {} + || die
 
 	if use opencl; then
-		cat <<-EOF > "${T}"/99${PN}
+		cat <<-EOF > "${T}"/99${PN} || die
 		SANDBOX_PREDICT="/dev/nvidiactl:/dev/nvidia-uvm:/dev/ati/card:/dev/dri/card:/dev/dri/card0:/dev/dri/renderD128"
 		EOF
 

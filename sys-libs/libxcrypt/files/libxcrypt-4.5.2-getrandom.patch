@@ -1,0 +1,96 @@
+https://github.com/besser82/libxcrypt/commit/d6faad7de2bdbff18da4c5379e97871ec3839e7f
+
+From d6faad7de2bdbff18da4c5379e97871ec3839e7f Mon Sep 17 00:00:00 2001
+From: Nathaniel Wesley Filardo <nwfilardo@gmail.com>
+Date: Sat, 22 Nov 2025 15:32:08 +0000
+Subject: [PATCH] test/getrandom-fallbacks: fix open shim types
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+In C, functions taking a variable number of arguments are not guaranteed to have
+the same calling convention as functions taking a fixed number of arguments
+[^0].  Since `open()` and `open64()` are defined as taking a variable number of
+arguments, the `__wrap_open()` and `__wrap_open64()` mocks must be as well.
+
+[^0]: C23 §6.7.7.4¶14 says: "For two function types to be compatible, both shall
+specify compatible return types. Moreover, the parameter type lists shall agree
+in the number of parameters and in use of the final ellipsis; corresponding
+parameters shall have compatible types."
+
+This fixes the test on my powerpc64el machine building nixpkgs a8d610af3f1.
+---
+ test/getrandom-fallbacks.c | 46 +++++++++++++++++++++++++++++++++-----
+ 1 file changed, 40 insertions(+), 6 deletions(-)
+
+diff --git a/test/getrandom-fallbacks.c b/test/getrandom-fallbacks.c
+index b124c181..4048ae29 100644
+--- a/test/getrandom-fallbacks.c
++++ b/test/getrandom-fallbacks.c
+@@ -151,13 +151,38 @@ __wrap_syscall(long number, ...)
+    there's no way to _clear_ that flag again.  This test chooses to
+    exercise the read-failure path, not the open-failure path.  */
+ #if defined HAVE_SYS_STAT_H && defined HAVE_FCNTL_H && defined HAVE_UNISTD_H
++
++static bool open_needs_mode(int flags)
++{
++  if (flags & O_CREAT)
++  {
++    return true;
++  }
++#if defined(O_TMPFILE)
++  if ((flags & O_TMPFILE) == O_TMPFILE)
++  {
++    return true;
++  }
++#endif
++  return false;
++}
++
+ static bool urandom_should_fail = false;
+ static int urandom_fd = -1;
+-extern int __wrap_open (const char *, int, mode_t);
+-extern int __real_open (const char *, int, mode_t);
++extern int __wrap_open (const char *, int, ...);
++extern int __real_open (const char *, int, ...);
+ int
+-__wrap_open (const char *path, int flags, mode_t mode)
++__wrap_open (const char *path, int flags, ...)
+ {
++  int mode = 0;
++  if (open_needs_mode(flags))
++  {
++    va_list args;
++    va_start(args, flags);
++    mode = va_arg(args, int);
++    va_end(args);
++  }
++
+   int ret = __real_open (path, flags, mode);
+   if (ret == -1)
+     return ret;
+@@ -167,11 +192,20 @@ __wrap_open (const char *path, int flags, mode_t mode)
+ }
+ 
+ #ifdef HAVE_OPEN64
+-extern int __wrap_open64 (const char *, int, mode_t);
+-extern int __real_open64 (const char *, int, mode_t);
++extern int __wrap_open64 (const char *, int, ...);
++extern int __real_open64 (const char *, int, ...);
+ int
+-__wrap_open64 (const char *path, int flags, mode_t mode)
++__wrap_open64 (const char *path, int flags, ...)
+ {
++  int mode = 0;
++  if (open_needs_mode(flags))
++  {
++    va_list args;
++    va_start(args, flags);
++    mode = va_arg(args, int);
++    va_end(args);
++  }
++
+   int ret = __real_open64 (path, flags, mode);
+   if (ret == -1)
+     return ret;
+

@@ -1,0 +1,39 @@
+From 420158b5b0715f3340ae8fadbb203ae268625061 Mon Sep 17 00:00:00 2001
+From: Adel KARA SLIMANE <adel.ks@zegrapher.com>
+Date: Sun, 27 Sep 2026 11:38:31 +0200
+Subject: [PATCH] applets/brightness: fix brigthness slider binding in
+ PopupDialog.qml
+
+The commit right before this one 97d9a96bc, prepended two spurious
+dialog.<foo> in two bindings, drop them.
+
+BUG: 526256
+---
+ applets/brightness/PopupDialog.qml | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/applets/brightness/PopupDialog.qml b/applets/brightness/PopupDialog.qml
+index 7c4f07494..a3696dba4 100644
+--- a/applets/brightness/PopupDialog.qml
++++ b/applets/brightness/PopupDialog.qml
+@@ -79,7 +79,7 @@ PlasmaExtras.Representation {
+ 
+                     stepSize: maxBrightness/100
+ 
+-                    onMoved: value => dialog.screenBrightnessControl.setBrightness(displayName, value)
++                    onMoved: value => screenBrightnessControl.setBrightness(displayName, value)
+                     onActiveFocusChanged: if (activeFocus) scrollView.positionViewAtItem(this)
+                 }
+ 
+@@ -132,7 +132,7 @@ PlasmaExtras.Representation {
+                 KeyNavigation.backtab: KeyNavigation.up
+                 KeyNavigation.tab: KeyNavigation.down
+ 
+-                onMoved: value => dialog.keyboardBrightnessControl.brightness = value
++                onMoved: value => keyboardBrightnessControl.brightness = value
+                 onActiveFocusChanged: if (activeFocus) scrollView.positionViewAtItem(this)
+             }
+ 
+-- 
+GitLab
+

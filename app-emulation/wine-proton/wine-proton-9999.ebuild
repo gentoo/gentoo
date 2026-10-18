@@ -3,13 +3,13 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 inherit eapi9-ver flag-o-matic optfeature python-any-r1
 inherit readme.gentoo-r1 toolchain-funcs wine
 
 WINE_GECKO=2.47.4
 WINE_MONO=10.4.1
-WINE_PV=$(ver_rs 2-3 -)
+WINE_PV=$(ver_rs 2 -)
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3

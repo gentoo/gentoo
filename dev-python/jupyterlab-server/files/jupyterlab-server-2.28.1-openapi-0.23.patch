@@ -1,0 +1,139 @@
+From 204d494f1961ada729937a4df26afe4111b5a24a Mon Sep 17 00:00:00 2001
+From: Evgeniy Martynenko <enimalojd@altlinux.org>
+Date: Mon, 17 Aug 2026 14:00:52 +0300
+Subject: [PATCH] openapi: support openapi-core 0.19 through 0.23
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+openapi-core 0.23 removed the openapi_core.spec module and its Spec class.
+
+Use the public OpenAPI API for loading specifications and validating requests
+and responses. Update the dependency constraints and add coverage for
+get_openapi_spec().
+
+Signed-off-by: Michał Górny <mgorny@gentoo.org>
+---
+ jupyterlab_server/spec.py       |  8 ++++----
+ jupyterlab_server/test_utils.py | 21 ++++++++++++---------
+ pyproject.toml                  |  6 +++---
+ 3 files changed, 19 insertions(+), 16 deletions(-)
+
+diff --git a/jupyterlab_server/spec.py b/jupyterlab_server/spec.py
+index 94347b9..3c07466 100644
+--- a/jupyterlab_server/spec.py
++++ b/jupyterlab_server/spec.py
+@@ -9,17 +9,17 @@ import typing
+ from pathlib import Path
+ 
+ if typing.TYPE_CHECKING:
+-    from openapi_core.spec.paths import Spec
++    from jsonschema_path import SchemaPath
+ 
+ HERE = Path(os.path.dirname(__file__)).resolve()
+ 
+ 
+-def get_openapi_spec() -> Spec:
++def get_openapi_spec() -> SchemaPath:
+     """Get the OpenAPI spec object."""
+-    from openapi_core.spec.paths import Spec
++    from openapi_core import OpenAPI
+ 
+     openapi_spec_dict = get_openapi_spec_dict()
+-    return Spec.from_dict(openapi_spec_dict)  # type:ignore[arg-type]
++    return OpenAPI.from_dict(openapi_spec_dict).spec
+ 
+ 
+ def get_openapi_spec_dict() -> dict[str, typing.Any]:
+diff --git a/jupyterlab_server/test_utils.py b/jupyterlab_server/test_utils.py
+index 094f020..a19c022 100644
+--- a/jupyterlab_server/test_utils.py
++++ b/jupyterlab_server/test_utils.py
+@@ -7,19 +7,22 @@ from __future__ import annotations
+ import json
+ import os
+ import sys
++import typing
+ from http.cookies import SimpleCookie
+ from pathlib import Path
+ from urllib.parse import parse_qs, urlparse
+ 
+ import tornado.httpclient
+ import tornado.web
+-from openapi_core import V30RequestValidator, V30ResponseValidator
+-from openapi_core.spec.paths import Spec
++from openapi_core import OpenAPI
+ from openapi_core.validation.request.datatypes import RequestParameters
+ from tornado.httpclient import HTTPRequest, HTTPResponse
+ from werkzeug.datastructures import Headers, ImmutableMultiDict
+ 
+-from jupyterlab_server.spec import get_openapi_spec
++from jupyterlab_server.spec import get_openapi_spec_dict
++
++if typing.TYPE_CHECKING:
++    from jsonschema_path import SchemaPath
+ 
+ HERE = Path(os.path.dirname(__file__)).resolve()
+ 
+@@ -32,7 +35,7 @@ class TornadoOpenAPIRequest:
+     Converts a torando request to an OpenAPI one
+     """
+ 
+-    def __init__(self, request: HTTPRequest, spec: Spec):
++    def __init__(self, request: HTTPRequest, spec: SchemaPath):
+         """Initialize the request."""
+         self.request = request
+         self.spec = spec
+@@ -76,7 +79,7 @@ class TornadoOpenAPIRequest:
+         # https://github.com/OAI/OpenAPI-Specification/issues/892
+         url = None
+         o = urlparse(self.request.url)
+-        for path_ in self.spec["paths"]:
++        for path_ in self.spec["paths"].keys():  # noqa: SIM118
+             if url:
+                 continue  # type:ignore[unreachable]
+             has_arg = "{" in path_
+@@ -152,16 +155,16 @@ class TornadoOpenAPIResponse:
+ 
+ def validate_request(response: HTTPResponse) -> None:
+     """Validate an API request"""
+-    openapi_spec = get_openapi_spec()
++    openapi = OpenAPI.from_dict(get_openapi_spec_dict())
+ 
+     # openapi_core 0.18 declares body, data and headers as str and Mapping in its
+     # Request and Response protocols. Tornado hands over bytes and a Headers object,
+     # and the validators read both, so the adapters above return what tornado gives.
+-    request = TornadoOpenAPIRequest(response.request, openapi_spec)
+-    V30RequestValidator(openapi_spec).validate(request)  # type: ignore[arg-type]
++    request = TornadoOpenAPIRequest(response.request, openapi.spec)
++    openapi.validate_request(request)
+ 
+     torn_response = TornadoOpenAPIResponse(response)
+-    V30ResponseValidator(openapi_spec).validate(request, torn_response)  # type: ignore[arg-type]
++    openapi.validate_response(request, torn_response)
+ 
+ 
+ def maybe_patch_ioloop() -> None:
+diff --git a/pyproject.toml b/pyproject.toml
+index 0dd1bca..f48ecf9 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -64,15 +64,15 @@ docs = [
+   "jinja2<3.2.0"
+ ]
+ openapi = [
+-  "openapi_core~=0.18.0",
++  "openapi_core>=0.19,<0.24",
+   "ruamel.yaml",
+ ]
+ test = [
+   "hatch",
+   "ipykernel",
+   "pytest-jupyter[server]>=0.6.2",
+-  "openapi_core~=0.18.0",
+-  "openapi-spec-validator>=0.6.0,<0.8.0",
++  "openapi_core>=0.19,<0.24",
++  "openapi-spec-validator>=0.6.0,<0.9.0",
+   "sphinxcontrib_spelling",
+   "requests_mock",
+   "ruamel.yaml",

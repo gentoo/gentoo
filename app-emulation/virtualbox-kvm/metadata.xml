@@ -13,7 +13,6 @@
     <flag name="udev">Controls installation of special USB udev rules.</flag>
     <flag name="vboxwebsrv">Build and install the VirtualBox webservice</flag>
     <flag name="vde">Support for VDE networking via <pkg>net-misc/vde</pkg></flag>
-    <flag name="vmmraw">Enable 32-bit support on a 64-bit kernel.</flag>
   </use>
   <upstream>
     <remote-id type="github">cyberus-technology/virtualbox-kvm</remote-id>

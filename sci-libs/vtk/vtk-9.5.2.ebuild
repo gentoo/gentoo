@@ -7,7 +7,7 @@ EAPI=8
 # - add USE flag for remote modules? Those modules can be downloaded properly before building.
 # - vtkm was renamed to viskores. Rename once usemove is implemented.
 
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 PYTHON_REQ_USE="tk?"
 
 WEBAPP_OPTIONAL=yes
@@ -40,7 +40,7 @@ S="${WORKDIR}/VTK-${PV}"
 
 LICENSE="BSD LGPL-2"
 SLOT="0/${MY_PV}"
-KEYWORDS="amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64"
 
 # TODO: Like to simplify these. Mostly the flags related to Groups.
 IUSE="all-modules boost +cgns cuda debug doc examples ffmpeg gdal gles2-only imaging
@@ -88,6 +88,7 @@ RDEPEND="
 	media-libs/tiff:=
 	sci-libs/hdf5:=[mpi=]
 	virtual/zlib:=
+	virtual/opengl[X]
 	boost? ( dev-libs/boost:=[mpi?] )
 	cgns? (
 		>=sci-libs/cgnslib-4.1.1:=[hdf5,mpi=]
@@ -164,6 +165,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-9.5.0-cuda-13-1.patch"
 	"${FILESDIR}/${PN}-9.5.0-cuda-13-2.patch"
 	"${FILESDIR}/${PN}-9.5.2-gdal-3.13.patch"
+	"${FILESDIR}/${PN}-9.5.2-gcc17-include-string.patch"
 )
 
 DOCS=( CONTRIBUTING.md README.md )
@@ -330,7 +332,7 @@ vtk_add_sandbox() {
 }
 
 pkg_pretend() {
-	[[ ${MERGE_TYPE} != binary ]] && has openmp && tc-check-openmp
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 
 	vtk_check_reqs
 
@@ -342,7 +344,7 @@ pkg_pretend() {
 }
 
 pkg_setup() {
-	[[ ${MERGE_TYPE} != binary ]] && has openmp && tc-check-openmp
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 
 	vtk_check_reqs
 
@@ -351,6 +353,16 @@ pkg_setup() {
 		# so __nvcc_device_query does not fail later.
 
 		nvidia-smi -L || true
+
+		if has_version ">=dev-util/nvidia-cuda-toolkit-12.6.0"; then
+			# NOTE Without this ptxas will consume large amounts of memory.
+			# The user can override this using NVCC_APPREND_FLAGS.
+			# #973279
+			# TODO Should go into the eclass.
+			export NVCC_PREPREND_FLAGS="${NVCC_PREPREND_FLAGS:+"${NVCC_PREPREND_FLAGS} "} -Ofc min --threads $(makeopts_jobs)"
+			einfo "Using NVCC_PREPREND_FLAGS=\"${NVCC_PREPREND_FLAGS}\""
+			einfo "You can override this using NVCC_APPREND_FLAGS"
+		fi
 	fi
 
 	use java && java-pkg-opt-2_pkg_setup
@@ -375,12 +387,6 @@ src_prepare() {
 	fi
 
 	cmake_src_prepare
-
-	# 14 GiB is the highest single process ram usage seen
-	# 932464
-	sed \
-		-e "/EXPR viskores_pool_size/s/3072/$(( 14 * 1024 ))/g" \
-		-i ThirdParty/viskores/vtkviskores/viskores/CMake/ViskoresWrappers.cmake || die
 
 	if use test; then
 		ebegin "Copying data files to ${BUILD_DIR}"
@@ -470,6 +476,8 @@ src_configure() {
 		# -DVTK_MODULE_ENABLE_VTK_glad
 		# -DVTK_MODULE_ENABLE_VTK_h5part
 		-DVTK_MODULE_ENABLE_VTK_hdf5="YES"
+		# bug #982169
+		-DHDF5_IS_PARALLEL="$(usex mpi "YES" "NO")"
 		# -DVTK_MODULE_ENABLE_VTK_ioss
 		-DVTK_MODULE_ENABLE_VTK_jpeg="YES"
 		-DVTK_MODULE_ENABLE_VTK_jsoncpp="YES"

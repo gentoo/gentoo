@@ -3,7 +3,7 @@
 
 EAPI="8"
 
-inherit bash-completion-r1 systemd
+inherit shell-completion systemd
 
 DESCRIPTION="Security and system auditing tool"
 HOMEPAGE="https://cisofy.com/lynis/"

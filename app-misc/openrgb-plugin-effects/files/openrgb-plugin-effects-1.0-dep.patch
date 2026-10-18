@@ -1,0 +1,9 @@
+Fix dependency on app-misc/openrgb
+
+--- a/OpenRGBEffectsPlugin.pro
++++ b/OpenRGBEffectsPlugin.pro
+@@ -107,4 +107,2 @@ HEADERS +=
+ 
+-SOURCES +=                                                                                      \
+-    OpenRGB/qt/hsv.cpp                                                                          \
+ 

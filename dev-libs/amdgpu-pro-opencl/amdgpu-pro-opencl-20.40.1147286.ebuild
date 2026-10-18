@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -44,7 +44,7 @@ src_unpack() {
 	local patchlevel=$(ver_cut 3)
 	cd "${S}" || die
 	unpack_deb "${S}/libdrm-amdgpu-common_${ids_ver}-${patchlevel}_all.deb"
-	multilib_parallel_foreach_abi multilib_src_unpack
+	multilib_foreach_abi multilib_src_unpack
 }
 
 multilib_src_unpack() {

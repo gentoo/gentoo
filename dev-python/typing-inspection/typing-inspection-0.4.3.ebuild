@@ -1,0 +1,27 @@
+# Copyright 2025-2026 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=8
+
+DISTUTILS_USE_PEP517=hatchling
+PYPI_VERIFY_REPO=https://github.com/pydantic/typing-inspection
+PYTHON_COMPAT=( python3_{12..15} python3_{14,15}t )
+
+inherit distutils-r1 pypi
+
+DESCRIPTION="Runtime typing introspection tools"
+HOMEPAGE="
+	https://github.com/pydantic/typing-inspection/
+	https://pypi.org/project/typing-inspection/
+"
+
+LICENSE="MIT"
+SLOT="0"
+KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+
+RDEPEND="
+	>=dev-python/typing-extensions-4.15.0[${PYTHON_USEDEP}]
+"
+
+EPYTEST_PLUGINS=()
+distutils_enable_tests pytest

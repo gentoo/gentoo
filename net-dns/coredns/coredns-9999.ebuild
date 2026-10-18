@@ -32,7 +32,6 @@ BDEPEND=">=dev-lang/go-1.25.0"
 FILECAPS=(
 	-m 755 'cap_net_bind_service=+ep' usr/bin/${PN}
 )
-QA_PRESTRIPPED="usr/bin/${PN}"
 
 src_unpack() {
 	if [[ ${PV} == 9999* ]]; then
@@ -46,7 +45,7 @@ src_unpack() {
 src_compile() {
 	[[ ${PV} == 9999* ]] &&	local GIT_COMMIT="$(git describe --dirty --always)"
 	# mimicking upstream's Makefile
-	ego build -ldflags="-s -w -X github.com/coredns/coredns/coremain.GitCommit=${GIT_COMMIT}" -tags="grpcnotrace"
+	ego build -ldflags="-X github.com/coredns/coredns/coremain.GitCommit=${GIT_COMMIT}" -tags="grpcnotrace"
 }
 
 src_install() {

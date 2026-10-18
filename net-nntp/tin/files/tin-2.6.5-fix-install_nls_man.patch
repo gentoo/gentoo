@@ -1,0 +1,19 @@
+# create relative symlinks instead of absolute
+--- a/src/Makefile.in	2026-07-16 21:09:38.220815650 -0000
++++ b/src/Makefile.in	2026-07-16 21:14:08.738660301 -0000
+@@ -373,13 +373,13 @@
+ 	@MSG_DIR_MAKE@ 			$(INSTALL) -m 444 $(POMANDIR)/$${lang}/$(PROJECT).$${manext} \
+ 	@MSG_DIR_MAKE@ 				$(DEST_MAN)/$${lang}/man$${manext}/$(PROJECT).$${manext} && \
+ 	@MSG_DIR_MAKE@ 			$(RM) -f $(DEST_MAN)/$${lang}/man$${manext}/r$(PROJECT).$${manext} && \
+-	@MSG_DIR_MAKE@ 			$(LN) $(DEST_MAN)/$${lang}/man$${manext}/$(PROJECT).$${manext} \
++	@MSG_DIR_MAKE@ 			$(LN) -r $(DEST_MAN)/$${lang}/man$${manext}/$(PROJECT).$${manext} \
+ 	@MSG_DIR_MAKE@ 				$(DEST_MAN)/$${lang}/man$${manext}/r$(PROJECT).$${manext} ;\
+ 	@MSG_DIR_MAKE@ 			mkdir -p $(DEST_MAN)/$${lang}$(UTF8SUFF)/man$${manext} ; \
+ 	@MSG_DIR_MAKE@ 			$(INSTALL) -m 444 $(POMANDIR)/$${lang}/$(PROJECT).$${manext} \
+ 	@MSG_DIR_MAKE@ 				$(DEST_MAN)/$${lang}$(UTF8SUFF)/man$${manext}/$(PROJECT).$${manext} && \
+ 	@MSG_DIR_MAKE@ 			$(RM) -f $(DEST_MAN)/$${lang}$(UTF8SUFF)/man$${manext}/r$(PROJECT).$${manext} && \
+-	@MSG_DIR_MAKE@ 			$(LN) $(DEST_MAN)/$${lang}$(UTF8SUFF)/man$${manext}/$(PROJECT).$${manext} \
++	@MSG_DIR_MAKE@ 			$(LN) -r $(DEST_MAN)/$${lang}$(UTF8SUFF)/man$${manext}/$(PROJECT).$${manext} \
+ 	@MSG_DIR_MAKE@ 				$(DEST_MAN)/$${lang}$(UTF8SUFF)/man$${manext}/r$(PROJECT).$${manext} ;\
+ 	@MSG_DIR_MAKE@ 		fi; \
+ 	@MSG_DIR_MAKE@ 	done; \

@@ -1,6 +1,10 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2026-08-31)
+# Pulls in kde-apps/kgpg which is not yet keyworded here. Bug #981747
+kde-apps/kdeutils-meta gpg
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2026-05-10)
 # dev-qt/qtwebengine not available here
 net-irc/quassel urlpreview
@@ -12,6 +16,7 @@ net-irc/quassel urlpreview
 # Ionen Wolkens <ionen@gentoo.org> (2026-03-16)
 # media-libs/opencolorio is masked on ppc64(be)
 media-video/ffmpeg opencolorio
+media-video/ffmpeg-compat opencolorio
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2026-02-14)
 # <dev-cpp/opentelemetry-cpp-1.10 not keyworded here, bug #961188
@@ -232,11 +237,6 @@ net-vpn/tor seccomp
 # Jeroen Roovers <jer@gentoo.org> (2015-12-26)
 # Mask until >sys-cluster/ceph-0.94 goes stable
 net-analyzer/rrdtool rados
-
-# Michael Sterrett <mr_bones_@gentoo.org> (2013-11-12)
-# Mask openmedia use flag because the content generation tools
-# are missing keywords.
-games-simulation/openttd openmedia
 
 # Kacper Kowalik <xarthisius@gentoo.org> (2011-09-02)
 # Mask www-client/seamonkey[ipc] on ppc64 wrt #381191

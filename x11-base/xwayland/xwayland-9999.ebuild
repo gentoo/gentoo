@@ -14,7 +14,7 @@ else
 fi
 
 DESCRIPTION="Standalone X server running under Wayland"
-HOMEPAGE="https://www.x.org/wiki/ https://gitlab.freedesktop.org/xorg/xserver/xorg-server"
+HOMEPAGE="https://www.x.org/ https://gitlab.freedesktop.org/xorg/xserver/xorg-server"
 
 LICENSE="MIT"
 SLOT="0"
@@ -78,6 +78,7 @@ src_configure() {
 	local emesonargs=(
 		$(meson_use selinux xselinux)
 		$(meson_use systemd systemd_notify)
+		$(meson_use test tests)
 		$(meson_use unwind libunwind)
 		$(meson_use xcsecurity)
 		-Ddpms=true

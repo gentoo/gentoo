@@ -1,0 +1,37 @@
+# Copyright 1999-2026 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=8
+
+USE_RUBY="ruby32 ruby33 ruby34 ruby40"
+
+RUBY_FAKEGEM_EXTRAINSTALL="data"
+RUBY_FAKEGEM_GEMSPEC="public_suffix.gemspec"
+RUBY_FAKEGEM_BINWRAP=""
+
+inherit ruby-fakegem
+
+DESCRIPTION="Parse and decompose a domain name into top level domain, domain and subdomains"
+HOMEPAGE="https://simonecarletti.com/code/publicsuffix-ruby/"
+SRC_URI="https://github.com/weppos/publicsuffix-ruby/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
+RUBY_S="publicsuffix-ruby-${PV}"
+
+LICENSE="MIT"
+SLOT="$(ver_cut 1)"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-macos ~x64-solaris"
+
+ruby_add_bdepend "test? (
+	dev-ruby/minitest
+	dev-ruby/mocha:3
+)"
+
+all_ruby_prepare() {
+	sed -e 's:_relative ": "./:' \
+		-e 's/__dir__/"."/' \
+		-e 's/git ls-files -z/find * -print0/' \
+		-i ${RUBY_FAKEGEM_GEMSPEC} || die
+
+	sed -i -e '/require/ s:\(yard\|rubocop\):no-exist:' \
+		-e '/bundler/ s:^:#:' Rakefile || die
+	sed -i -e '/reporters/I s:^:#:' test/test_helper.rb || die
+}

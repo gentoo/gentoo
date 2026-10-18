@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,7 +13,7 @@ inherit sec-keys
 DESCRIPTION="OpenPGP keys used by logging.apache.org"
 HOMEPAGE="https://logging.apache.org/log4j/2.x/download.html"
 
-KEYWORDS="amd64 arm64 ppc64"
+KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ~ppc ppc64 ~x86"
 
 src_install() {
 	sec-keys_src_install

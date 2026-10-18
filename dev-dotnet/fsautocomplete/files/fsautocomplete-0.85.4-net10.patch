@@ -1,0 +1,66 @@
+Build only net10.0 to prevent different target frameworks from writing
+concurrently to the shared output directory used by dotnet-pkg.
+
+--- a/src/FsAutoComplete/FsAutoComplete.fsproj
++++ b/src/FsAutoComplete/FsAutoComplete.fsproj
+@@ -6,5 +6,5 @@
+          net9.0-only tool the .NET 8 SDK can't restore); CI legs differ only in which
+          runtime the tests run on (dotnet test -f <tfm>). -->
+-    <TargetFrameworks>net8.0;net9.0;net10.0</TargetFrameworks>
++    <TargetFrameworks>net10.0</TargetFrameworks>
+     <AssemblyName>fsautocomplete</AssemblyName>
+     <ServerGarbageCollection>true</ServerGarbageCollection>
+--- a/src/FsAutoComplete.Core/FsAutoComplete.Core.fsproj
++++ b/src/FsAutoComplete.Core/FsAutoComplete.Core.fsproj
+@@ -2,5 +2,5 @@
+   <PropertyGroup>
+     <!-- All supported runtimes; everything builds with the .NET 10 SDK. -->
+-    <TargetFrameworks>net8.0;net9.0;net10.0</TargetFrameworks>
++    <TargetFrameworks>net10.0</TargetFrameworks>
+     <IsPackable>false</IsPackable>
+     <NoWarn>$(NoWarn);FS0057</NoWarn>
+--- a/src/FsAutoComplete.Logging/FsAutoComplete.Logging.fsproj
++++ b/src/FsAutoComplete.Logging/FsAutoComplete.Logging.fsproj
+@@ -2,5 +2,5 @@
+ <Project Sdk="Microsoft.NET.Sdk">
+   <PropertyGroup>
+-    <TargetFramework>net8.0</TargetFramework>
++    <TargetFramework>net10.0</TargetFramework>
+     <IsPackable>false</IsPackable>
+   </PropertyGroup>
+--- a/benchmarks/benchmarks.fsproj
++++ b/benchmarks/benchmarks.fsproj
+@@ -4,5 +4,5 @@
+     <OutputType>Exe</OutputType>
+     <!-- All supported runtimes; everything builds with the .NET 10 SDK. -->
+-    <TargetFrameworks>net8.0;net9.0;net10.0</TargetFrameworks>
++    <TargetFrameworks>net10.0</TargetFrameworks>
+   </PropertyGroup>
+   <ItemGroup>
+--- a/test/FsAutoComplete.Tests.Lsp/FsAutoComplete.Tests.Lsp.fsproj
++++ b/test/FsAutoComplete.Tests.Lsp/FsAutoComplete.Tests.Lsp.fsproj
+@@ -3,5 +3,5 @@
+     <OutputType>Exe</OutputType>
+     <!-- All supported runtimes; everything builds with the .NET 10 SDK. -->
+-    <TargetFrameworks>net8.0;net9.0;net10.0</TargetFrameworks>
++    <TargetFrameworks>net10.0</TargetFrameworks>
+     <GenerateProgramFile>false</GenerateProgramFile>
+     <RollForward>Minor</RollForward>
+--- a/test/FsAutoComplete.Tests.TestExplorer/FsAutoComplete.Tests.TestExplorer.fsproj
++++ b/test/FsAutoComplete.Tests.TestExplorer/FsAutoComplete.Tests.TestExplorer.fsproj
+@@ -2,5 +2,5 @@
+   <PropertyGroup>
+     <OutputType>Exe</OutputType>
+-    <TargetFrameworks>net8.0</TargetFrameworks>
++    <TargetFrameworks>net10.0</TargetFrameworks>
+     <GenerateProgramFile>false</GenerateProgramFile>
+   </PropertyGroup>
+--- a/test/OptionAnalyzer/OptionAnalyzer.fsproj
++++ b/test/OptionAnalyzer/OptionAnalyzer.fsproj
+@@ -1,5 +1,5 @@
+ <Project Sdk="Microsoft.NET.Sdk">
+   <PropertyGroup>
+-    <TargetFramework>net8.0</TargetFramework>
++    <TargetFramework>net10.0</TargetFramework>
+   </PropertyGroup>
+   <ItemGroup>

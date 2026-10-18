@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=hatchling
 PYPI_VERIFY_REPO=https://github.com/python-jsonschema/referencing
-PYTHON_COMPAT=( pypy3_11 python3_{11..15} )
+PYTHON_COMPAT=( python3_{12..15} python3_{14,15}t )
 
 inherit distutils-r1 pypi
 
@@ -24,7 +24,7 @@ RDEPEND="
 	>=dev-python/rpds-py-0.7.0[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep '
 		>=dev-python/typing-extensions-4.4.0[${PYTHON_USEDEP}]
-	' 3.{11..12})
+	' 3.12)
 "
 BDEPEND="
 	dev-python/hatch-vcs[${PYTHON_USEDEP}]

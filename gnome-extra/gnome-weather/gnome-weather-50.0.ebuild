@@ -10,7 +10,7 @@ HOMEPAGE="https://apps.gnome.org/Weather/"
 
 LICENSE="GPL-2+ LGPL-2+ MIT CC-BY-3.0 CC-BY-SA-3.0"
 SLOT="0"
-KEYWORDS="~amd64 arm64 ~ppc64 ~riscv"
+KEYWORDS="amd64 arm64 ~ppc64 ~riscv"
 
 DEPEND="
 	>=dev-libs/glib-2.32:2

@@ -1,33 +1,34 @@
-# Copyright 2020-2025 Gentoo Authors
+# Copyright 2020-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit check-reqs flag-o-matic qmake-utils udev xdg-utils
+inherit check-reqs flag-o-matic qmake-utils tmpfiles udev xdg-utils
 
 if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
-	EGIT_REPO_URI=${EGIT_REPO_URI:-"https://gitlab.com/CalcProgrammer1/OpenRGB"}
+	EGIT_REPO_URI=${EGIT_REPO_URI:-"https://codeberg.org/OpenRGB/OpenRGB.git"}
 else
-	MY_PV=$(ver_rs 2 "")
-	SRC_URI="https://gitlab.com/CalcProgrammer1/OpenRGB/-/archive/release_${MY_PV}/OpenRGB-release_${MY_PV}.tar.bz2"
-	S="${WORKDIR}/OpenRGB-release_${MY_PV}"
-	KEYWORDS="~amd64 ~loong ~x86"
+	SRC_URI="https://codeberg.org/OpenRGB/OpenRGB/archive/release_${PV}.tar.gz -> ${P}.tar.gz"
+	S="${WORKDIR}/openrgb"
+	KEYWORDS="~amd64 ~loong"
 fi
 
 DESCRIPTION="Open source RGB lighting control"
-HOMEPAGE="https://openrgb.org https://gitlab.com/CalcProgrammer1/OpenRGB/"
-LICENSE="GPL-2"
+HOMEPAGE="https://openrgb.org https://gitlab.com/CalcProgrammer1/OpenRGB/ https://codeberg.org/OpenRGB/OpenRGB"
+LICENSE="GPL-2+"
 # subslot is OPENRGB_PLUGIN_API_VERSION from
-# https://gitlab.com/CalcProgrammer1/OpenRGB/-/blob/master/OpenRGBPluginInterface.h
-SLOT="0/4"
+# https://codeberg.org/OpenRGB/OpenRGB/src/branch/master/OpenRGBPluginInterface.h
+SLOT="0/5"
+IUSE="+hotplug"
 
 RDEPEND="
 	dev-cpp/cpp-httplib:=
-	dev-libs/hidapi
 	dev-qt/qtbase:6[gui,widgets]
-	net-libs/mbedtls:0=
+	net-libs/mbedtls:3=
 	virtual/libusb:1
+	hotplug? ( dev-libs/hidapi-hotplug )
+	!hotplug? ( dev-libs/hidapi )
 "
 DEPEND="
 	${RDEPEND}
@@ -41,8 +42,7 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}"/OpenRGB-0.7-r1-udev.patch
-	"${FILESDIR}"/OpenRGB-0.9-udev-check.patch
+	"${FILESDIR}"/OpenRGB-1.0rc3-mbedtls-20260825.patch
 )
 if [[ ${PV} != *9999* ]]; then
 	PATCHES+=( "${FILESDIR}"/openrgb-0.9_p20250802-build-system.patch )
@@ -55,6 +55,10 @@ src_prepare() {
 
 	rm -r dependencies/{httplib,hidapi,libusb,mdns,json,mbedtls,stb}* \
 		|| die "Failed to remove unneded deps"
+
+	if ! use hotplug; then
+		sed -i -e 's/packagesExist.hidapi-hotplug-hidraw./false/' OpenRGB.pro || die
+	fi
 }
 
 src_configure() {
@@ -88,7 +92,7 @@ src_install() {
 
 	dodoc README.md
 
-	rm -r "${ED}"/usr/lib/udev/ || die
+	./openrgb --generate-udev-rules 60-openrgb.rules || die
 	udev_dorules 60-openrgb.rules
 
 	# This is for plugins. Upstream doesn't install any headers at all.
@@ -99,6 +103,7 @@ src_install() {
 pkg_postinst() {
 	xdg_icon_cache_update
 	udev_reload
+	tmpfiles_process openrgb.conf
 }
 
 pkg_postrm() {

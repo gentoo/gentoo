@@ -25,7 +25,7 @@ HOMEPAGE="
 LICENSE="BitstreamVera BSD matplotlib MIT OFL-1.1"
 SLOT="0"
 if [[ ${PV} != *_rc* ]]; then
-	KEYWORDS="~alpha ~amd64 ~arm64 ~ppc ~riscv ~x86"
+	KEYWORDS="~alpha amd64 arm64 ppc ~riscv x86"
 fi
 IUSE="cairo excel gtk3 latex qt6 tk webagg wxwidgets"
 

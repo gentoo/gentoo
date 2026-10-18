@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -21,6 +21,7 @@ DEPEND="acct-group/lxd
 	>=app-containers/lxc-5.0.0:=[apparmor?,seccomp(+)]
 	dev-db/sqlite:3
 	>=dev-libs/dqlite-1.16.4:=[lz4]
+	<dev-libs/dqlite-1.18.3
 	dev-libs/lzo
 	>=dev-util/xdelta-3.0[lzma(+)]
 	net-dns/dnsmasq[dhcp]

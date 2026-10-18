@@ -1,0 +1,44 @@
+https://github.com/palfrey/tagpy/pull/73.patch
+apply upstream fix for taglib-2.3.2
+see https://bugs.gentoo.org/983026
+--- a/src/wrapper/rest.cpp
++++ b/src/wrapper/rest.cpp
+@@ -80,6 +80,10 @@ namespace
+   // WAV
+   MF_OL(strip, 0, 1);
+ 
++  // Ogg
++  // Really should be 2, but the second variant is protected
++  MF_OL(packet, 1, 1);
++
+   #if TAGLIB_HEX_VERSION >= CHECK_VERSION(1,10,0)
+   // MP4
+   TagLib::MP4::CoverArtList mp4_Tag_GetCovers(TagLib::MP4::Tag &t) {
+@@ -129,10 +133,8 @@ void exposeRest()
+       .DEF_OVERLOADED_METHOD(addField, void (cl::*)(const String &, const String &, bool))
+       #if TAGLIB_HEX_VERSION < CHECK_VERSION(1,11,0)
+       .DEF_OVERLOADED_METHOD(removeField, void (cl::*)(const String &, const String &))
+-      .DEF_OVERLOADED_METHOD(removeField, void (cl::*)(const String &, const String &))
+       #else
+       .DEF_OVERLOADED_METHOD(removeFields, void (cl::*)(const String &, const String &))
+-      .DEF_OVERLOADED_METHOD(removeFields, void (cl::*)(const String &, const String &))
+       #endif
+       .DEF_OVERLOADED_METHOD(render, ByteVector (cl::*)(bool) const)
+       #if TAGLIB_HEX_VERSION >= CHECK_VERSION(1,11,0)
+@@ -146,9 +148,15 @@ void exposeRest()
+ 
+   {
+     typedef Ogg::File cl;
++
++    ByteVector (Ogg::File::*pk1)(unsigned int) = &cl::packet;
++    // FIXME: second variant is protected, so don't have access
++    // ByteVector (Ogg::File::*pk2)(unsigned int, unsigned int) = &cl::packet;
++
+     class_<cl, bases<File>, boost::noncopyable>
+       ("ogg_File", no_init)
+-      .DEF_SIMPLE_METHOD(packet)
++      .def("packet", pk1, packet_overloads())
++      // .def("packet", pk2, packet_overloads())
+       .DEF_SIMPLE_METHOD(setPacket)
+       // MISSING: page headers
+       ;

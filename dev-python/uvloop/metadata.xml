@@ -11,6 +11,6 @@
 	</longdescription>
 	<upstream>
 		<remote-id type="pypi">uvloop</remote-id>
-		<remote-id type="github">magicstack/uvloop</remote-id>
+		<remote-id type="github">MagicStack/uvloop</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -18,9 +18,6 @@ are supported. SFTP client mode is now supported too.
 アントもサポートされています。
   </longdescription>
   <stabilize-allarches/>
-  <use>
-    <flag name="server">Enable server feature</flag>
-  </use>
   <upstream>
     <remote-id type="pypi">paramiko</remote-id>
     <remote-id type="github">paramiko/paramiko</remote-id>

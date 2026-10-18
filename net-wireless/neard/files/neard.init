@@ -1,0 +1,23 @@
+#!/sbin/openrc-run
+# Copyright 1999-2026 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+name="NFC daemon"
+
+command="/usr/libexec/nfc/neard"
+command_args="${NEARD_OPTS}"
+
+depend() {
+	need dbus
+}
+
+start_pre() {
+	if grep -qs NFC_RAW /proc/net/protocols; then
+		return 0
+	fi
+	if [ -e /proc/modules ] && modprobe -q nfc; then
+		return 0
+	fi
+	eerror "Failed to load NFC kernel support!"
+	return 1
+}

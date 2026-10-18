@@ -16,7 +16,7 @@ S="${WORKDIR}/${PN}-${MY_PV}"
 
 LICENSE="BSD-2"
 SLOT="0/${MY_PV}"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="test"
 
 DEPEND="test? ( ${PYTHON_DEPS} )"

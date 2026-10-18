@@ -1,0 +1,28 @@
+https://github.com/kismetwireless/lorcon/commit/b7ea84e39d1177fabd5e290be7d8e20ee6e41c4f
+
+From b7ea84e39d1177fabd5e290be7d8e20ee6e41c4f Mon Sep 17 00:00:00 2001
+From: Mike Kershaw / Dragorn <dragorn@kismetwireless.net>
+Date: Thu, 26 Feb 2026 23:20:02 -0500
+Subject: [PATCH] merge python3 patch from pentoo
+ (net-wireless/lorcon/files/python_3.13.patch)
+
+--- a/pylorcon2/PyLorcon2.c
++++ b/pylorcon2/PyLorcon2.c
+@@ -1325,7 +1325,7 @@ void pylorcon2_multi_error_handler(lorcon_multi_t *ctx, lorcon_t *lorcon_interfa
+ 
+     /* Call the error cb function */
+     cb_arg = Py_BuildValue("(O)", lorcon_obj);
+-    pyresult = PyEval_CallObject(multi->error_cb_func, cb_arg);
++    pyresult = PyObject_Call(multi->error_cb_func, cb_arg, NULL);
+     Py_DECREF(cb_arg);
+ 
+     if (pyresult == NULL) {
+@@ -1425,7 +1425,7 @@ void pylorcon2_multi_handler(lorcon_t *ctx, lorcon_packet_t *pkt, u_char *aux) {
+     Py_DECREF(packet_tuple_arg);
+ 
+     cb_arg = Py_BuildValue("(O)", pypacket);
+-    pyresult = PyEval_CallObject(multi->cb_func, cb_arg);
++    pyresult = PyObject_Call(multi->cb_func, cb_arg, NULL);
+     Py_DECREF(cb_arg);
+ 
+     if (pyresult == NULL) {

@@ -79,6 +79,7 @@ fi
 PATCHES=(
 	"${FILESDIR}/${PN}-drop-dia.patch" # bugs 836730, 967742
 	"${FILESDIR}/${PN}-no-class.patch" # from Portage
+	"${FILESDIR}/${P}-cxxflags.patch" # merged
 )
 
 python_check_deps() {

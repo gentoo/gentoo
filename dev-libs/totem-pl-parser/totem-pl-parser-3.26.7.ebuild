@@ -9,7 +9,7 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/totem-pl-parser"
 LICENSE="LGPL-2+"
 
 SLOT="0/18"
-KEYWORDS="~alpha ~amd64 ~arm arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm arm64 ~loong ppc ppc64 ~riscv ~sparc x86"
 IUSE="archive crypt gtk-doc +introspection test +uchardet"
 RESTRICT="!test? ( test )"
 

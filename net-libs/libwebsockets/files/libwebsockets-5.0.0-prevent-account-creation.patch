@@ -1,0 +1,13 @@
+--- a/CMakeLists.txt	2026-07-27 18:15:20.553012842 -0400
++++ b/CMakeLists.txt	2026-07-27 18:17:19.784931509 -0400
+@@ -1496,10 +1496,6 @@ install(DIRECTORY include/libwebsockets
+ 	DESTINATION "${LWS_INSTALL_INCLUDE_DIR}" COMPONENT dev)
+ install(FILES ${PROJECT_BINARY_DIR}/include/libwebsockets.h ${PROJECT_BINARY_DIR}/include/lws_config.h
+ 	DESTINATION "${LWS_INSTALL_INCLUDE_DIR}" COMPONENT dev)
+-install(CODE "
+-	execute_process(COMMAND useradd -r -M lwsws-priv ERROR_QUIET)
+-	execute_process(COMMAND useradd -r -M lwsws ERROR_QUIET)
+-")
+ 
+ # Generate the config file for the installation tree.
+ get_filename_component(LWS_ABSOLUTE_INSTALL_CMAKE_DIR ${LWS_INSTALL_CMAKE_DIR} ABSOLUTE)

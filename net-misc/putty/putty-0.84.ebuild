@@ -18,7 +18,7 @@ else
 	"
 	KEYWORDS="~alpha amd64 ~arm64 ~hppa ppc ppc64 ~riscv ~sparc x86"
 fi
-SRC_URI+="https://dev.gentoo.org/~matthew/distfiles/${PN}-icons.tar.bz2"
+SRC_URI+="https://librecast.net/downloads/gentoo/net-misc/putty/${PN}-icons.tar.bz2"
 
 LICENSE="MIT"
 SLOT="0"

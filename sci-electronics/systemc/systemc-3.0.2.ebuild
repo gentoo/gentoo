@@ -16,7 +16,7 @@ if [[ "${PV}" == "9999" ]] ; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/accellera-official/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
+	KEYWORDS="amd64 ~arm ~arm64 ~riscv ~x86"
 fi
 
 LICENSE="Apache-2.0"

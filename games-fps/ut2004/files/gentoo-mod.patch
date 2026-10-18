@@ -1,0 +1,25 @@
+This allows us to run `ut2004-ucc exportcache -mod=Gentoo` in other ebuilds.
+It will find the resources in WORKDIR and write the .ucl files there,
+regardless of whether they already exist system-wide.
+
+--- System/Default.ini	2026-06-08 08:14:27.000000000 +0100
++++ Gentoo/System/Gentoo.ini	2026-07-29 10:53:59.543115044 +0100
+@@ -53,11 +53,17 @@
+ SavePath=../Save
+ CachePath=../Cache
+ CacheExt=.uxx
+-CacheRecordPath=../System/*.ucl
++CacheRecordPath=../../../work/System/*.ucl
+ KarmaPath=../KarmaData
+ MusicPath=../Music
+ SpeechPath=../Speech
++Paths=../../../work/System/*.u
++Paths=../../../work/Maps/*.ut2
++Paths=../../../work/Textures/*.utx
++Paths=../../../work/Sounds/*.uax
++Paths=../../../work/StaticMeshes/*.usx
++Paths=../../../work/Animations/*.ukx
+ Paths=../System/*.u
+ Paths=../Maps/*.ut2
+ Paths=../Textures/*.utx
+ Paths=../Sounds/*.uax

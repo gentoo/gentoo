@@ -1,0 +1,17 @@
+Attempt to fix a parallel make issue (code here depends on included sdk/bindings/xpcom
+		but can run before the sdk is copied to out/linux)
+
+https://bugs.gentoo.org/973421
+https://bugs.gentoo.org/950489
+https://bugs.gentoo.org/675646
+
+--- a/src/VBox/HostServices/SharedFolders/Makefile.kmk
++++ b/src/VBox/HostServices/SharedFolders/Makefile.kmk
+@@ -67,5 +67,7 @@
+ VBoxSharedFolders_LIBS = \
+ 	$(LIB_RUNTIME)
+ 
++VBoxSharedFolders_DEPS = $(VBOX_PATH_SDK)/bindings/xpcom/include/xpcom/xpcom-config.h
++
+ include $(FILE_KBUILD_SUB_FOOTER)
+ 

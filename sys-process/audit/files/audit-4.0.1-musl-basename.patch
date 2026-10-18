@@ -1,3 +1,5 @@
+https://github.com/linux-audit/audit-userspace/commit/b6e0c6eb88a4d866bc8316706277dbc33670022a
+
 Since musl 1.2.5, basename(3) is strict-POSIX compliant, and
 needs #include <libgen.h>, instead of the GNU version included
 with <string.h>

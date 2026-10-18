@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{9..13} )
+
+PYTHON_COMPAT=( python3_{12..13} )
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
 
@@ -23,9 +24,10 @@ KEYWORDS="~amd64"
 
 RESTRICT="test"
 
-PATCHES="
-	${FILESDIR}/${P}-Fix-build.patch
-	${FILESDIR}/606_gamma_table_type.patch"
+PATCHES=(
+	"${FILESDIR}"/${P}-Fix-build.patch
+	"${FILESDIR}"/606_gamma_table_type.patch
+)
 
 DEPEND="
 	dev-python/build[${PYTHON_USEDEP}]

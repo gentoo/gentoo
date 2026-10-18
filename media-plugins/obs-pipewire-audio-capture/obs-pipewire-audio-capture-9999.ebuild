@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -20,11 +20,11 @@ LICENSE="GPL-2"
 SLOT="0"
 
 COMMON_DEPENDS="
-	>=media-video/obs-studio-30.2.0[pipewire]
+	>=media-video/obs-studio-30.2.0
 "
 DEPEND="${COMMON_DEPENDS}
 	>=media-video/wireplumber-0.5.3
 "
 RDEPEND="${COMMON_DEPENDS}
-	media-video/pipewire:=
+	media-video/pipewire:=[sound-server]
 "

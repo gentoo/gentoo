@@ -1,9 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-# ideally only stabilize versions that work for all non-masked nvidia-drivers
+# only stabilize versions that work for all widely used nvidia-drivers branches
 NV_MIN_VERSION=530.41.03 # see README
 
 DESCRIPTION="FFmpeg version of headers required to interface with Nvidias codec APIs"

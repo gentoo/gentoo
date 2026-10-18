@@ -1,11 +1,11 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_SINGLE_IMPL=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{11..14} pypy3_11 )
+PYTHON_COMPAT=( python3_{12..15} )
 inherit distutils-r1 optfeature readme.gentoo-r1
 
 DESCRIPTION="A plain text human readable/writable document format"
@@ -25,17 +25,13 @@ RDEPEND="
 	dev-libs/libxslt
 	dev-libs/libxml2:2
 "
-BDEPEND="
-	test? ( $(python_gen_cond_dep '
-		dev-python/pytest-mock[${PYTHON_USEDEP}]
-	') )
-"
 
 DOC_CONTENTS="
 If you are going to use a2x, please also look at a2x(1) under
 REQUISITES for a list of runtime dependencies.
 "
 
+EPYTEST_PLUGINS=( pytest-mock )
 distutils_enable_tests pytest
 
 src_install() {

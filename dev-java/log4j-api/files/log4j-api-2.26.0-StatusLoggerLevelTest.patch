@@ -1,0 +1,21 @@
+Bug https://bugs.gentoo.org/979765
+
+--- a/log4j-api-test/src/test/java/org/apache/logging/log4j/status/StatusLoggerLevelTest.java
++++ b/log4j-api-test/src/test/java/org/apache/logging/log4j/status/StatusLoggerLevelTest.java
+@@ -32,6 +32,7 @@ import java.util.Properties;
+ import org.apache.logging.log4j.Level;
+ import org.apache.logging.log4j.message.ParameterizedNoReferenceMessageFactory;
+ import org.junit.jupiter.api.Test;
++import org.junit.jupiter.api.Disabled;
+ import org.junit.jupiter.params.ParameterizedTest;
+ import org.junit.jupiter.params.provider.Arguments;
+ import org.junit.jupiter.params.provider.MethodSource;
+@@ -98,7 +99,7 @@ class StatusLoggerLevelTest {
+         assertThat(logger.getLevel()).isEqualTo(fallbackListenerLevel); // Verify that the level is changed
+     }
+ 
+-    @Test
++    @Test @Disabled
+     void invalid_level_should_cause_fallback_to_defaults() throws Exception {
+ 
+         // Create a `StatusLogger` configuration using an invalid level

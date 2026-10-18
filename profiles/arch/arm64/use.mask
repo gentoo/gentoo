@@ -4,6 +4,11 @@
 # Unmask the flag which corresponds to ARCH.
 -arm64
 
+# Michał Górny <mgorny@gentoo.org> (2025-09-29)
+# dev-python/pypy:3.12 is not keyworded everywhere.
+-python_single_target_pypy3_12
+-python_targets_pypy3_12
+
 # Paul Zander <negril.nx+gentoo@gmail.com> (2025-05-01)
 # media-libs/libspng only keyworded on amd64, arm64
 -spng

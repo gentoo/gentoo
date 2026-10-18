@@ -9,6 +9,8 @@
     <flag name="msgpack">Support ActiveSupport::MessagePack module</flag>
   </use>
   <upstream>
+    <doc>https://api.rubyonrails.org/</doc>
     <remote-id type="github">rails/rails</remote-id>
+    <remote-id type="rubygems">activesupport</remote-id>
   </upstream>
 </pkgmetadata>

@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # When you add an entry to the top of this file, add your name, the date, and
@@ -16,6 +16,14 @@
 #
 
 #--- END OF EXAMPLES ---
+
+# Sam James <sam@gentoo.org. (2026-09-04)
+# sys-apps/flatpak is not marked stable here
+sys-apps/xdg-desktop-portal flatpak
+
+# Sam James <sam@gentoo.org> (2026-09-04)
+# sys-apps/xdg-desktop-portal not marked stable here
+x11-base/xwayland libei
 
 # Sam James <sam@gentoo.org> (2025-11-30)
 # sci-libs/blis does not have stable keywords

@@ -19,7 +19,7 @@ SLOT=$(ver_cut 1-2)
 MY_SUFFIX=$(ver_rs 1 '' ${SLOT})
 RUBYVERSION=${SLOT}.0
 
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~loong ~mips ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~arm64-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~arm64-macos ~x64-macos ~x64-solaris"
 IUSE="berkdb debug doc examples gdbm jemalloc jit socks5 +ssl static-libs systemtap tk valgrind xemacs"
 
 RDEPEND="
@@ -33,8 +33,8 @@ RDEPEND="
 	socks5? ( >=net-proxy/dante-1.1.13 )
 	systemtap? ( dev-debug/systemtap )
 	tk? (
-		dev-lang/tcl:0=[threads]
-		dev-lang/tk:0=[threads]
+		dev-lang/tcl:0=[threads(+)]
+		dev-lang/tk:0=[threads(+)]
 	)
 	dev-libs/libyaml
 	dev-libs/libffi:=

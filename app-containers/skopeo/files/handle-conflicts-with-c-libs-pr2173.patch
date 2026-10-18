@@ -1,0 +1,166 @@
+From d1a787869a6b2b3407717013ba6065def9d9db7b Mon Sep 17 00:00:00 2001
+From: Rahil Bhimjiani <me@rahil.rocks>
+Date: Sat, 4 Jul 2026 20:26:56 +0530
+Subject: [PATCH 1/2] Migrating default-policy.json & default.yaml to
+ container-libs/image
+
+a step towards addressing
+https://github.com/podman-container-tools/skopeo/issues/2170
+
+all these files and a dir is already being installed by
+containers-common package which skopeo depends on. No need to install by skopeo
+
+Signed-off-by: Rahil Bhimjiani <me@rahil.rocks>
+---
+ .cirrus.yml         |  1 +
+ Makefile            | 12 ------------
+ default-policy.json | 14 --------------
+ default.yaml        | 28 ----------------------------
+ 4 files changed, 1 insertion(+), 54 deletions(-)
+ delete mode 100644 default-policy.json
+ delete mode 100644 default.yaml
+
+diff --git a/.cirrus.yml b/.cirrus.yml
+index 366deccaa0..421f074cf1 100644
+--- a/.cirrus.yml
++++ b/.cirrus.yml
+@@ -160,6 +160,7 @@ ostree-rs-ext_task:
+         - dnf builddep -y skopeo
+         - make
+         - make install
++        - echo '{"default":[{"type":"insecureAcceptAnything"}],"transports":{"docker-daemon":{"":[{"type":"insecureAcceptAnything"}]}}}' > /etc/containers/policy.json
+     proxy_ostree_ext_build_script:
+         - git clone --depth 1 $EXT_REPO $EXT_REPO_HOME
+         - cd $EXT_REPO_HOME
+diff --git a/Makefile b/Makefile
+index ecc63c651f..8b60c91d2f 100644
+--- a/Makefile
++++ b/Makefile
+@@ -5,13 +5,6 @@ export GOPROXY=https://proxy.golang.org
+ # The following variables very roughly follow https://www.gnu.org/prep/standards/standards.html#Makefile-Conventions .
+ DESTDIR ?=
+ PREFIX ?= /usr/local
+-ifeq ($(shell uname -s),FreeBSD)
+-CONTAINERSCONFDIR ?= /usr/local/etc/containers
+-else
+-CONTAINERSCONFDIR ?= /etc/containers
+-endif
+-REGISTRIESDDIR ?= ${CONTAINERSCONFDIR}/registries.d
+-LOOKASIDEDIR ?= /var/lib/containers/sigstore
+ BINDIR ?= ${PREFIX}/bin
+ MANDIR ?= ${PREFIX}/share/man
+ 
+@@ -159,11 +152,6 @@ clean:
+ 	rm -rf bin docs/*.1 completions/
+ 
+ install: install-binary install-docs install-completions
+-	install -d -m 755 ${DESTDIR}${LOOKASIDEDIR}
+-	install -d -m 755 ${DESTDIR}${CONTAINERSCONFDIR}
+-	install -m 644 default-policy.json ${DESTDIR}${CONTAINERSCONFDIR}/policy.json
+-	install -d -m 755 ${DESTDIR}${REGISTRIESDDIR}
+-	install -m 644 default.yaml ${DESTDIR}${REGISTRIESDDIR}/default.yaml
+ 
+ install-binary: bin/skopeo
+ 	install -d -m 755 ${DESTDIR}${BINDIR}
+diff --git a/default-policy.json b/default-policy.json
+deleted file mode 100644
+index dffc54a626..0000000000
+--- a/default-policy.json
++++ /dev/null
+@@ -1,14 +0,0 @@
+-{
+-    "default": [
+-        {
+-            "type": "insecureAcceptAnything"
+-        }
+-    ],
+-    "transports":
+-        {
+-            "docker-daemon":
+-                {
+-                    "": [{"type":"insecureAcceptAnything"}]
+-                }
+-        }
+-}
+diff --git a/default.yaml b/default.yaml
+deleted file mode 100644
+index a7f3d28231..0000000000
+--- a/default.yaml
++++ /dev/null
+@@ -1,28 +0,0 @@
+-# This is a default registries.d configuration file.  You may
+-# add to this file or create additional files in registries.d/.
+-#
+-# lookaside: for reading/writing simple signing signatures
+-# lookaside-staging: for writing simple signing signatures, preferred over lookaside
+-#
+-# lookaside and lookaside-staging take a value of the following:
+-#   lookaside:  {schema}://location
+-#
+-# For reading signatures, schema may be http, https, or file.
+-# For writing signatures, schema may only be file.
+-
+-# The default locations are built-in, for both reading and writing:
+-# /var/lib/containers/sigstore for root, or
+-# ~/.local/share/containers/sigstore for non-root users.
+-default-docker:
+-#  lookaside: https://…
+-#  lookaside-staging: file:///…
+-
+-# The 'docker' indicator here is the start of the configuration
+-# for docker registries.
+-#
+-# docker:
+-#
+-#   privateregistry.com:
+-#    lookaside: https://privateregistry.com/sigstore/
+-#    lookaside-staging: /mnt/nfs/privateregistry/sigstore
+-
+
+From c104491f2c46246fa52bad5fd2994e725a809b91 Mon Sep 17 00:00:00 2001
+From: Rahil Bhimjiani <me@rahil.rocks>
+Date: Mon, 6 Jul 2026 13:10:54 +0530
+Subject: [PATCH 2/2] Improvements to Makefile
+
+generate completions along with docs when runnning `make all` & don't
+build binary while installing anything. Installation phase should only
+install and compile phase should only compile
+
+this makes `make` && `make install` sufficient
+
+Signed-off-by: Rahil Bhimjiani <me@rahil.rocks>
+---
+ Makefile | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 8b60c91d2f..c552ab42ac 100644
+--- a/Makefile
++++ b/Makefile
+@@ -97,7 +97,7 @@ endif
+ #     Note: Uses the -N -l go compiler options to disable compiler optimizations
+ #           and inlining. Using these build options allows you to subsequently
+ #           use source debugging tools like delve.
+-all: bin/skopeo docs
++all: bin/skopeo docs completions
+ 
+ codespell:
+ 	codespell -S Makefile,build,buildah,buildah.spec,imgtype,copy,AUTHORS,bin,vendor,.git,go.sum,CHANGELOG.md,changelog.txt,seccomp.json,"*.xz,*.gz,*.tar,*.tgz,*ico,*.png,*.1,*.5,*.orig,*.rej" -L fpr,uint,iff,od,ERRO -w
+@@ -153,7 +153,7 @@ clean:
+ 
+ install: install-binary install-docs install-completions
+ 
+-install-binary: bin/skopeo
++install-binary:
+ 	install -d -m 755 ${DESTDIR}${BINDIR}
+ 	install -m 755 bin/skopeo ${DESTDIR}${BINDIR}/skopeo
+ 
+@@ -163,7 +163,7 @@ ifneq ($(DISABLE_DOCS), 1)
+ 	install -m 644 docs/*.1 ${DESTDIR}${MANDIR}/man1
+ endif
+ 
+-install-completions: completions
++install-completions:
+ 	install -d -m 755 ${DESTDIR}${BASHINSTALLDIR}
+ 	install -m 644 completions/bash/skopeo ${DESTDIR}${BASHINSTALLDIR}
+ 	install -d -m 755 ${DESTDIR}${ZSHINSTALLDIR}

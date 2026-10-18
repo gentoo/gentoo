@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
 PYPI_VERIFY_REPO=https://github.com/pylint-dev/astroid
-PYTHON_COMPAT=( pypy3_11 python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 
 inherit distutils-r1 pypi
 
@@ -26,9 +26,7 @@ BDEPEND="
 		dev-python/attrs[${PYTHON_USEDEP}]
 		>=dev-python/numpy-1.17.0[${PYTHON_USEDEP}]
 		dev-python/python-dateutil[${PYTHON_USEDEP}]
-		$(python_gen_cond_dep '
-			dev-python/regex[${PYTHON_USEDEP}]
-		' 'python*')
+		dev-python/regex[${PYTHON_USEDEP}]
 	)
 "
 
@@ -68,14 +66,16 @@ python_test() {
 	fi
 
 	case ${EPYTHON} in
-		pypy3.11)
+		python3.15)
 			EPYTEST_DESELECT+=(
-				tests/brain/test_gi.py::GiBrainClassificationTest::test_gi_function_classification
+				tests/brain/test_brain.py::TypingBrain::test_typing_object_notsubscriptable_3
+				tests/brain/test_dataclasses.py::test_kw_only_sentinel
+				tests/test_regrtest.py::test_regression_parse_deeply_nested_parentheses
 			)
 			;;
 	esac
 
-	if has_version ">=dev-python/setuptools-82[${PYTHON_USEDEP}]"; then
+	if ! has_version "dev-python/pkg-resources[${PYTHON_USEDEP}]"; then
 		EPYTEST_DESELECT+=(
 			# tests a package using pkg_resources
 			tests/test_manager.py::AstroidManagerTest::test_identify_old_namespace_package_protocol

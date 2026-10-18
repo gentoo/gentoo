@@ -1,0 +1,355 @@
+Bug: https://github.com/boostorg/optional/issues/146
+Patch: https://github.com/boostorg/optional/commit/1fb60cb53bb2b86b2a9739a26a8be2c5e4c9e8fc
+File paths adapted to match dist layout.
+
+From: Andrzej Krzemienski <akrzemi1@gmail.com>
+Date: Sun, 26 Apr 2026 21:57:08 +0200
+Subject: [PATCH] fix bug in copy construction of optional<bool>
+
+--- a/libs/optional/doc/92_relnotes.qbk
++++ b/libs/optional/doc/92_relnotes.qbk
+@@ -11,6 +11,10 @@
+ 
+ [section:relnotes Release Notes]
+ 
++[heading Boost Release 1.xx]
++
++* Fixed regression in the copy-initialization of `optional<bool>`. This fixes [@https://github.com/boostorg/optional/issues/146 issue #146].
++
+ [heading Boost Release 1.91]
+ 
+ * For compilers with full C++11 support (including "unrestricted  unions" and ref-qualifiers)
+diff --git a/include/boost/optional/detail/optional_select_implementation.hpp b/include/boost/optional/detail/optional_select_implementation.hpp
+index 8a69eeac..53a75f87 100644
+--- a/boost/optional/detail/optional_select_implementation.hpp
++++ b/boost/optional/detail/optional_select_implementation.hpp
+@@ -23,7 +23,8 @@
+     !defined(BOOST_NO_CXX11_TRAILING_RESULT_TYPES) && \
+     !defined(BOOST_NO_CXX11_UNRESTRICTED_UNION) &&    \
+     !defined(BOOST_NO_CXX11_NOEXCEPT) &&              \
+-    !defined(BOOST_NO_CXX11_DEFAULTED_MOVES)
++    !defined(BOOST_NO_CXX11_DEFAULTED_MOVES) &&       \
++    !defined(BOOST_OPTIONAL_CONFIG_DISABLE_UNION_OPTIONAL)
+ # define BOOST_OPTIONAL_USES_UNION_IMPLEMENTATION
+ #endif
+ 
+diff --git a/include/boost/optional/detail/union_optional.hpp b/include/boost/optional/detail/union_optional.hpp
+index 16e150f4..b735d5ab 100644
+--- a/boost/optional/detail/union_optional.hpp
++++ b/boost/optional/detail/union_optional.hpp
+@@ -391,7 +391,9 @@ namespace boost {
+     template <typename U,
+               BOOST_OPTIONAL_REQUIRES(::std::is_constructible<T, U&&>),
+               BOOST_OPTIONAL_REQUIRES(!optional_detail::is_typed_in_place_factory<U>),
+-              BOOST_OPTIONAL_REQUIRES(!optional_detail::is_in_place_factory<U>)>
++              BOOST_OPTIONAL_REQUIRES(!optional_detail::is_in_place_factory<U>),
++              BOOST_OPTIONAL_REQUIRES(!BOOST_OPTIONAL_IS_TAGGED(optional_detail::optional_tag, U))
++              >
+     constexpr explicit optional(U&& v)
+     : storage(optional_ns::in_place_init, optional_detail::forward_<U>(v))
+     {}
+diff --git a/test/Jamfile.v2 b/test/Jamfile.v2
+index f625e581..c17a7110 100644
+--- a/libs/optional/test/Jamfile.v2
++++ b/libs/optional/test/Jamfile.v2
+@@ -40,6 +40,7 @@ compile optional_test_constexpr.cpp ;
+ compile optional_test_wuninitialized.cpp ;
+ compile optional_test_fwd_header.cpp ;
+ run optional_test_conversions_from_U.cpp ;
++run optional_test_constructors.cpp ;
+ run optional_test_convert_from_T.cpp ;
+ run optional_test_convert_assign.cpp ;
+ run optional_test_empty_braces.cpp ;
+diff --git a/test/optional_test_constructors.cpp b/test/optional_test_constructors.cpp
+new file mode 100644
+index 00000000..e3483a69
+--- /dev/null
++++ b/libs/optional/test/optional_test_constructors.cpp
+@@ -0,0 +1,287 @@
++// Copyright (C) 2026 Andrzej Krzemienski.
++//
++// Use, modification, and distribution is subject to the Boost Software
++// License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at
++// http://www.boost.org/LICENSE_1_0.txt)
++//
++// See http://www.boost.org/lib/optional for documentation.
++//
++// You are welcome to contact the author at:
++//  akrzemi1@gmail.com
++
++#include "boost/optional/optional.hpp"
++#include "boost/core/lightweight_test.hpp"
++#include <string>
++
++
++using boost::optional;
++using boost::none;
++
++struct MyBool
++{
++  bool b;
++  MyBool (bool b) : b(b) {}
++  operator bool() const { return b; };
++};
++
++struct MyExplicitBool
++{
++  bool b;
++  MyExplicitBool (bool b) : b(b) {}
++  operator bool() const { return b; };
++};
++
++struct Any
++{
++  template <typename... T>
++  Any(T&&...) {}
++};
++
++struct JustCopyMoveCtor
++{
++  JustCopyMoveCtor(JustCopyMoveCtor&&) = default;
++  JustCopyMoveCtor(JustCopyMoveCtor const&) = default;
++  JustCopyMoveCtor& operator=(JustCopyMoveCtor&&) = delete;
++  JustCopyMoveCtor& operator=(JustCopyMoveCtor const&) = delete;
++  JustCopyMoveCtor() = delete;
++};
++
++struct JustDefault
++{
++  JustDefault() = default;
++  JustDefault(JustDefault&&) = delete;
++};
++
++template <typename T>
++optional<T> empty_optional()
++{
++    return optional<T>(); // this is to avoid "the most vexing parse"
++}
++
++
++template <typename T, typename U>
++void direct_test_ctor_optional_T_from_empty_optional_T()
++{
++  optional<U> om;
++  const optional<U> oc;
++  BOOST_TEST(!om);
++  BOOST_TEST(!oc);
++
++  {
++    optional<T> ox = om;
++    BOOST_TEST(!ox);
++
++    optional<T> oy = oc;
++    BOOST_TEST(!oy);
++
++    optional<T> oz = empty_optional<U>();
++    BOOST_TEST(!oz);
++  }
++
++  {
++    optional<T> ox = {om};
++    BOOST_TEST(!ox);
++
++    optional<T> oy = {oc};
++    BOOST_TEST(!oy);
++
++    optional<T> oz = {empty_optional<U>()};
++    BOOST_TEST(!oz);
++  }
++
++  {
++    optional<T> ox{om};
++    BOOST_TEST(!ox);
++
++    optional<T> oy{oc};
++    BOOST_TEST(!oy);
++
++    optional<T> oz{empty_optional<U>()};
++    BOOST_TEST(!oz);
++  }
++
++  {
++    optional<T> ox(om);
++    BOOST_TEST(!ox);
++
++    optional<T> oy(oc);
++    BOOST_TEST(!oy);
++
++    optional<T> oz(empty_optional<U>());
++    BOOST_TEST(!oz);
++  }
++}
++
++template <typename T, typename U>
++void test_ctor_optional_T_from_empty_optional_T()
++{
++  direct_test_ctor_optional_T_from_empty_optional_T<T, U>();
++  direct_test_ctor_optional_T_from_empty_optional_T<const T, const U>();
++  direct_test_ctor_optional_T_from_empty_optional_T<optional<T>, optional<U>>();
++  direct_test_ctor_optional_T_from_empty_optional_T<optional<const T>, optional<const U>>();
++  direct_test_ctor_optional_T_from_empty_optional_T<const optional<T>, const optional<U>>();
++}
++
++template <typename T, typename U>
++void direct_test_ctor_optional_T_from_optional_U(U val)
++{
++  optional<U> om;
++  const optional<U> oc;
++  BOOST_TEST(!om);
++  BOOST_TEST(!oc);
++
++  {
++    optional<T> ox{om};
++    BOOST_TEST(!ox);
++
++    optional<T> oy{oc};
++    BOOST_TEST(!oy);
++
++    optional<T> oz{empty_optional<U>()};
++    BOOST_TEST(!oz);
++  }
++
++  {
++    optional<T> ox(om);
++    BOOST_TEST(!ox);
++
++    optional<T> oy(oc);
++    BOOST_TEST(!oy);
++
++    optional<T> oz(empty_optional<U>());
++    BOOST_TEST(!oz);
++  }
++
++  {
++    optional<U> om {val};
++    const optional<U> oc {val};
++
++    {
++      optional<T> ox{om};
++      BOOST_TEST(ox);
++
++      optional<T> oy{oc};
++      BOOST_TEST(oy);
++
++      optional<T> oz{boost::make_optional(val)};
++      BOOST_TEST(oz);
++    }
++    {
++      optional<T> ox(om);
++      BOOST_TEST(ox);
++
++      optional<T> oy(oc);
++      BOOST_TEST(oy);
++
++      optional<T> oz(boost::make_optional(val));
++      BOOST_TEST(oz);
++    }
++  }
++}
++
++template <typename T, typename U>
++void test_ctor_optional_T_from_optional_U(U val)
++{
++  direct_test_ctor_optional_T_from_optional_U<T>(val);
++}
++
++template <typename T>
++void direct_test_ctor_optional_T_from_valued_optional_T(T val)
++{
++  optional<T> om(val);
++  const optional<T> oc(val);
++  BOOST_TEST(om);
++  BOOST_TEST(oc);
++
++  {
++    optional<T> ox = om;
++    BOOST_TEST(ox);
++
++    optional<T> oy = oc;
++    BOOST_TEST(oy);
++
++    optional<T> oz = optional<T>(val);
++    BOOST_TEST(oz);
++  }
++  {
++    optional<T> ox = {om};
++    BOOST_TEST(ox);
++
++    optional<T> oy = {oc};
++    BOOST_TEST(oy);
++
++    optional<T> oz = {optional<T>(val)};
++    BOOST_TEST(oz);
++  }
++}
++
++template <typename T>
++void test_ctor_optional_T_from_valued_optional_T(T val)
++{
++  direct_test_ctor_optional_T_from_valued_optional_T<T>(val);
++  direct_test_ctor_optional_T_from_valued_optional_T<optional<T>>(val);
++  direct_test_ctor_optional_T_from_valued_optional_T<const T>(val);
++  direct_test_ctor_optional_T_from_optional_U<T, T>(val);
++  direct_test_ctor_optional_T_from_optional_U<optional<T>, optional<T>>(val);
++}
++
++template <typename T>
++void direct_test_inplace_tag_constructor()
++{
++  {
++    optional<T> ox (boost::in_place_init);
++    BOOST_TEST(ox);
++  }
++  {
++    optional<T> ox {boost::in_place_init};
++    BOOST_TEST(ox);
++  }
++}
++
++template <typename T>
++void test_inplace_tag_constructor()
++{
++  direct_test_inplace_tag_constructor<T>();
++  direct_test_inplace_tag_constructor<optional<T>>();
++}
++
++
++int main()
++{
++    test_ctor_optional_T_from_empty_optional_T<int, int>();
++    test_ctor_optional_T_from_empty_optional_T<long, long>();
++    test_ctor_optional_T_from_empty_optional_T<std::string, std::string>();
++    test_ctor_optional_T_from_empty_optional_T<JustCopyMoveCtor, JustCopyMoveCtor>();
++    test_ctor_optional_T_from_empty_optional_T<MyBool, MyBool>();
++
++    test_ctor_optional_T_from_empty_optional_T<MyExplicitBool, MyExplicitBool>();
++
++    test_ctor_optional_T_from_empty_optional_T<bool, bool>();
++    test_ctor_optional_T_from_empty_optional_T<Any, Any>();
++
++    test_inplace_tag_constructor<int>();
++    test_inplace_tag_constructor<Any>();
++    test_inplace_tag_constructor<JustDefault>();
++
++    test_ctor_optional_T_from_optional_U<int>(1);
++    test_ctor_optional_T_from_optional_U<long>(1);
++    test_ctor_optional_T_from_optional_U<bool>(MyBool{true});
++    test_ctor_optional_T_from_optional_U<bool>(MyBool{false});
++    test_ctor_optional_T_from_optional_U<MyBool>(true);
++    test_ctor_optional_T_from_optional_U<MyBool>(false);
++    test_ctor_optional_T_from_optional_U<bool>(MyExplicitBool{true});
++    test_ctor_optional_T_from_optional_U<bool>(MyExplicitBool{false});
++    test_ctor_optional_T_from_optional_U<MyExplicitBool>(true);
++    test_ctor_optional_T_from_optional_U<MyExplicitBool>(false);
++    test_ctor_optional_T_from_optional_U<Any>(true);
++    test_ctor_optional_T_from_optional_U<Any>(Any{});
++
++    test_ctor_optional_T_from_valued_optional_T(1);
++
++    optional<MyBool> ob;
++    optional<bool> oa;
++    oa = ob;
++    BOOST_TEST(!oa);
++
++    return boost::report_errors();
++}

@@ -12,7 +12,7 @@ SRC_URI="https://packages.groonga.org/source/groonga/${P}.tar.gz"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 IUSE="apache-arrow blosc curl debug json libedit lz4 +mecab msgpack stemmer suggest-learner xxhash zstd"
 CPU_USE=(
 	cpu_flags_x86_{avx,avx2,avx512dq}

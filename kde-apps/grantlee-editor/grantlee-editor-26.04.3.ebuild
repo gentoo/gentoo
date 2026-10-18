@@ -3,6 +3,7 @@
 
 EAPI=8
 
+PATCHSET="kdepim-26.04.3-ki18n-6.28-findpkg"
 ECM_HANDBOOK="forceoptional"
 PVCUT=$(ver_cut 1-3)
 KFMIN=6.22.0
@@ -10,10 +11,11 @@ QTMIN=6.10.1
 inherit ecm gear.kde.org
 
 DESCRIPTION="Utilities and tools to manage themes in KDE PIM applications"
+SRC_URI+=" https://dev.gentoo.org/~asturm/distfiles/kde/${PATCHSET}.tar.xz"
 
 LICENSE="GPL-2+ handbook? ( FDL-1.2+ )"
 SLOT="6/$(ver_cut 1-2)"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 arm64"
 IUSE=""
 
 DEPEND="
@@ -40,3 +42,5 @@ DEPEND="
 	>=kde-frameworks/kxmlgui-${KFMIN}:6
 "
 RDEPEND="${DEPEND}"
+
+PATCHES=( "${WORKDIR}/${PATCHSET}/${PN}.patch" ) # bug #979240

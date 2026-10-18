@@ -4,7 +4,7 @@
 EAPI=8
 
 LUA_COMPAT=( lua5-1 luajit )
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 
 inherit gnome.org lua-single meson python-single-r1 vala virtualx xdg
 
@@ -13,7 +13,7 @@ HOMEPAGE="https://wiki.gnome.org/Projects/Libpeas https://gitlab.gnome.org/GNOME
 
 LICENSE="LGPL-2.1+"
 SLOT="0/1"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc x86"
 
 IUSE="glade +gtk gtk-doc lua +python vala"
 REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )
@@ -52,6 +52,9 @@ PATCHES=(
 	# Gentoo-specific lua tweak hack
 	"${FILESDIR}"/1.26.0-lua.patch
 	"${FILESDIR}"/${PN}-1.38.1-test-extension.patch
+
+	# https://gitlab.gnome.org/GNOME/libpeas/-/work_items/62
+	"${FILESDIR}"/${PN}-1.38.1-disable-lua-test.patch
 )
 
 pkg_setup() {

@@ -63,7 +63,6 @@ SERVER_DEPEND="
 	syslog? ( virtual/logger )
 "
 GUI_DEPEND="
-	dev-qt/qt5compat:6
 	dev-qt/qtbase:6[dbus?,gui,widgets]
 	dev-qt/qtmultimedia:6
 	kde? (
@@ -84,6 +83,7 @@ GUI_DEPEND="
 "
 RDEPEND="
 	dev-libs/boost:=
+	dev-qt/qt5compat:6
 	dev-qt/qtbase:6[network,ssl]
 	virtual/zlib:=
 	monolithic? (
