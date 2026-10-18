@@ -19,7 +19,6 @@ SLOT="0"
 KEYWORDS="amd64 arm arm64 ~loong ppc64 ~riscv x86"
 
 RDEPEND="
-	dev-python/entrypoints[${PYTHON_USEDEP}]
 	>=dev-python/jupyter-server-1.1.2[${PYTHON_USEDEP}]
 "
 
