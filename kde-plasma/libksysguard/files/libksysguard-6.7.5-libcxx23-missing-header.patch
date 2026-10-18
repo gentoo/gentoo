@@ -1,0 +1,30 @@
+From 870b318b1045c7fea45046ed4d48256b593a2629 Mon Sep 17 00:00:00 2001
+From: Kostadin Shishmanov <kostadinshishmanov@protonmail.com>
+Date: Fri, 4 Sep 2026 13:21:18 +0300
+Subject: [PATCH] Add missing <algorithm> include
+
+Accumulator.cpp uses std::for_each but doesn't include <algorithm>
+which causes a build failure with libc++ 23 since it's dropping such
+transitive includes.
+
+Signed-off-by: Kostadin Shishmanov <kostadinshishmanov@protonmail.com>
+---
+ processcore/plugins/network/helper/Accumulator.cpp | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/processcore/plugins/network/helper/Accumulator.cpp b/processcore/plugins/network/helper/Accumulator.cpp
+index 21530868..0577c773 100644
+--- a/processcore/plugins/network/helper/Accumulator.cpp
++++ b/processcore/plugins/network/helper/Accumulator.cpp
+@@ -4,6 +4,8 @@
+     SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
+ */
+ 
++#include <algorithm>
++
+ #include "Accumulator.h"
+ 
+ #include "Capture.h"
+-- 
+GitLab
+

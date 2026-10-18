@@ -11,16 +11,16 @@ DESCRIPTION="TLS/SSL - Port Wrapper"
 HOMEPAGE="https://www.stunnel.org/index.html"
 SRC_URI="
 	https://www.stunnel.org/downloads/${P}.tar.gz
-	https://www.stunnel.org/stunnel/archive/${PV%%.*}.x/${P}.tar.gz
+	https://www.stunnel.org/archive/${PV%%.*}.x/${P}.tar.gz
 	verify-sig? (
 		https://www.stunnel.org/downloads/${P}.tar.gz.asc
-		https://www.stunnel.org/stunnel/archive/${PV%%.*}.x/${P}.tar.gz.asc
+		https://www.stunnel.org/archive/${PV%%.*}.x/${P}.tar.gz.asc
 	)
 "
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~mips ppc ppc64 ~s390 ~sparc x86"
 IUSE="selinux stunnel3 systemd tcpd test"
 RESTRICT="!test? ( test )"
 

@@ -75,7 +75,8 @@ python_test() {
 		# https://github.com/MagicStack/uvloop/issues/574
 		tests/test_cython.py::TestCythonIntegration::test_cython_coro_is_coroutine
 		# Internet
-		tests/test_dns.py::Test_UV_DNS::test_getaddrinfo_{8,9}
+		tests/test_dns.py::Test_AIO_DNS::test_getaddrinfo_{1,2,3,5,6,8,9,11,21}
+		tests/test_dns.py::Test_UV_DNS::test_getaddrinfo_{1,2,3,5,6,8,9,11,21}
 	)
 
 	rm -rf uvloop || die

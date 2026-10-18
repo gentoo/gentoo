@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,7 +6,7 @@ EAPI=8
 MY_P="${P/-bindings}"
 MY_P="${MY_P/_/-}"
 
-USE_RUBY="ruby31 ruby32 ruby33 ruby34"
+USE_RUBY="ruby32 ruby33 ruby34 ruby40"
 RUBY_FAKEGEM_TASK_DOC=""
 
 inherit ruby-ng

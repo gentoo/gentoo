@@ -4,6 +4,13 @@
 # Unmask the flag which corresponds to ARCH.
 -sparc
 
+# Sam James <sam@gentoo.org> (2026-10-11)
+# Missing keywords w/ 3.15 support (bug #983998, bug #970341).
+python_targets_python3_15
+python_single_target_python3_15
+python_targets_python3_15t
+python_single_target_python3_15t
+
 # Pacho Ramos <pacho@gentoo.org> (2026-05-09)
 # Newer gedit versions were not keyworded, bug #948858
 gedit
@@ -20,7 +27,6 @@ memcached
 # Ionen Wolkens <ionen@gentoo.org> (2024-01-27)
 # dev-qt/* is not keyworded here, and is mostly known buggy so that is
 # unlikely to change without real interest (e.g. bug #914033, #916867).
-qt5
 qt6
 
 # matoro <matoro_gentoo@matoro.tk> (2023-06-17)
@@ -226,9 +232,6 @@ alsa_cards_sb16
 alsa_cards_sbawe
 alsa_cards_sscape
 alsa_cards_wavefront
-
-# Copied over from default-linux/sparc/sparc64
--vis
 
 # The default on SPARC is non-multilib
 # if a sub-profile want's it, it can -use.mask it

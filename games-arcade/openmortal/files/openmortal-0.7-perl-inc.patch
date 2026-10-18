@@ -1,0 +1,15 @@
+Search in /usr/share/openmortal/script rather than relying on the (very)
+old behaviour of @INC including '.'.
+
+https://bugs.gentoo.org/979367
+--- a/src/Backend.cpp
++++ b/src/Backend.cpp
+@@ -163,7 +163,7 @@ bool Backend::Construct()
+ 	
+ //	char *perl_argv[] = {"", "-d:Trace", "Backend.pl"};
+ //	int perl_argc = 3;
+-	char *perl_argv[] = {"", "Backend.pl"};
++	char *perl_argv[] = {"", "-I" DATADIR "/script", "Backend.pl"};
+ 	int perl_argc = 2;
+ 	my_perl = perl_alloc();
+ 	if ( my_perl == NULL )

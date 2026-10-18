@@ -18,10 +18,14 @@
 		something else.
 	</longdescription>
 	<use>
+		<flag name="drm">Enable support for <pkg>gui-libs/wlroots</pkg> compiled with USE=drm</flag>
+		<flag name="libinput">Enable support for <pkg>gui-libs/wlroots</pkg> compiled with USE=libinput</flag>
+		<flag name="session">Enable support for <pkg>gui-libs/wlroots</pkg> compiled with USE=session</flag>
 		<flag name="swaybar">Install 'swaybar': sway's status bar component</flag>
 		<flag name="swaynag">Install 'swaynag': shows a message with buttons</flag>
 		<flag name="tray">Enable support for StatusNotifierItem tray specification</flag>
 		<flag name="wallpapers">Install sway's default wallpaper image</flag>
+		<flag name="x11-backend">Enable support for <pkg>gui-libs/wlroots</pkg> compiled with USE=x11-backend</flag>
 		<flag name="X">Enable support for X11 applications (XWayland)</flag>
 	</use>
 	<upstream>

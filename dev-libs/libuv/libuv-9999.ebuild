@@ -6,7 +6,7 @@ EAPI=8
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/libuv.asc
 inherit autotools verify-sig
 
-DESCRIPTION="Cross-platform asychronous I/O"
+DESCRIPTION="Cross-platform asynchronous I/O"
 HOMEPAGE="https://github.com/libuv/libuv"
 
 if [[ ${PV} = 9999* ]]; then

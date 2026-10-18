@@ -1,0 +1,20 @@
+--- a/cmake/Dependencies.cmake	2026-08-04 10:54:55.396437127 +0200
++++ b/cmake/Dependencies.cmake	2026-08-04 11:02:44.251900961 +0200
+@@ -541,7 +541,8 @@
+ endif()
+ 
+ # ---[ XNNPACK
+-if(USE_XNNPACK AND NOT USE_SYSTEM_XNNPACK)
++if(USE_XNNPACK)
++if(NOT USE_SYSTEM_XNNPACK)
+   if(NOT DEFINED XNNPACK_SOURCE_DIR)
+     set(XNNPACK_SOURCE_DIR "${CAFFE2_THIRD_PARTY_ROOT}/XNNPACK" CACHE STRING "XNNPACK source directory")
+   endif()
+@@ -615,6 +616,7 @@
+   message("-- Found XNNPACK: ${XNNPACK_LIBRARY}")
+   list(APPEND Caffe2_DEPENDENCY_LIBS XNNPACK microkernels-prod)
+ endif()
++endif()
+ 
+ # ---[ Vulkan deps
+ if(USE_VULKAN)

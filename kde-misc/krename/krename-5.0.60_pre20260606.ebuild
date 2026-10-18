@@ -13,7 +13,7 @@ SRC_URI="https://dev.gentoo.org/~asturm/distfiles/kde/${P}.tar.xz" # at dc5d1eeb
 
 LICENSE="GPL-2"
 SLOT="6"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 ~x86"
 IUSE="exif office pdf taglib truetype"
 
 DEPEND="

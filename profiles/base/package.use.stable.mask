@@ -9,10 +9,6 @@
 # The tests are wired up so we can test compilers.
 dev-cpp/eigen test
 
-# Sam James <sam@gentoo.org> (2026-05-03)
-# Needs not-yet-stable GCC 16.
-dev-lang/python tail-call-interp
-
 # Alfred Wingate <parona@protonmail.com> (2026-01-31)
 # Experimental upstream.
 # lgi in a weird state where tests either fail for the last real release
@@ -42,7 +38,8 @@ app-arch/mt-st test
 >=dev-java/protobuf-java-4.28.3 system-protoc
 
 # Joonas Niilola <juippis@gentoo.org> (2023-07-14)
-# Calendar is broken with some languages on 115.0 release with <icu-75.
+# Calendar is broken with some languages on 115.0 release with >=icu-74.
+# https://unicode-org.atlassian.net/browse/ICU-22132
 # Bug #910229, #920713
 >=mail-client/thunderbird-115.0 system-icu
 

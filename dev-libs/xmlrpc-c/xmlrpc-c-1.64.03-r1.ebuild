@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools flag-o-matic toolchain-funcs
+inherit autotools toolchain-funcs
 
 # Upstream maintains 3 release channels: https://xmlrpc-c.sourceforge.net/release.html
 # 1. Only the "Super Stable" series is released as a tarball
@@ -41,6 +41,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.64.03-use-stdbool.patch
 	"${FILESDIR}"/${PN}-1.64.03-use-system-expat.patch
 	"${FILESDIR}"/${PN}-1.64.03-fix-pkgconfig.patch
+	"${FILESDIR}"/${PN}-1.64.03-fix_hardcoded_pkg-config.patch
 )
 
 pkg_setup() {

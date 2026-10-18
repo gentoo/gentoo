@@ -1,8 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
-	<email>games@gentoo.org</email>
-	<name>Gentoo Games Project</name>
-</maintainer>
+	<maintainer type="project">
+		<email>games@gentoo.org</email>
+		<name>Gentoo Games Project</name>
+	</maintainer>
+	<use>
+		<flag name="gog">Install from the GOG.com release. Note that the game is no longer sold here.</flag>
+		<flag name="megapack">Download the Mega Pack content. Mandatory unless using the OldUnreal, Unreal Anthology, or GOG editions.</flag>
+	</use>
+	<longdescription>
+		This package installs just the data files, not the engine, for Epic's
+		popular first-person shooter game, Unreal Tournament 2004.
+
+		Epic privately shared the engine sources with the community OldUnreal
+		team, who now maintain it and publish modern builds. Epic also, somewhat
+		informally, gave permission for OldUnreal to host a DVD ISO of the game
+		for the community to download and play for free.
+
+		This was announced by OldUnreal on Reddit here:
+		https://www.reddit.com/r/unrealtournament/comments/1pdbcc3/oldunreal_takes_over_maintenance_of_unreal
+
+		Epic had already confirmed their permission to do this with their
+		earlier Unreal titles to GamingOnLinux here:
+		https://www.gamingonlinux.com/2024/11/classic-unreal-tournament-and-unreal-now-easier-to-download-free-thanks-to-oldunreal/
+
+			"We can confirm that Unreal 1 and Unreal Tournament are available on
+			archive.org and people are free to independently link to and play
+			these versions."
+
+		Epic's web page for Unreal Tournament links to OldUnreal for downloads:
+		https://www.epicgames.com/unrealtournament
+
+		By default, this package will fetch that ISO from OldUnreal. It lacks
+		the French, German, Italian, and Spanish sound files, as well as the
+		wider French, Italian, and Korean text files, included in other physical
+		editions. If you have these files and wish to use them or otherwise do
+		not want to use OldUnreal's ISO, you also have the option to install
+		from CD, DVD, or GOG instead. Note that the game can no longer be
+		purchased from GOG or anywhere else. Epic even removed it from their own
+		store.
+
+		If the CD or DVD you are installing from lacks the Mega Pack content
+		that is included in other editions, you must enable the megapack USE
+		flag to download it.
+	</longdescription>
 </pkgmetadata>

@@ -13,6 +13,7 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
+	<straight-to-stable/>
 	<use>
 		<flag name="egl">Use EGL platform, enables smooth rendering in high refresh rate monitors on X11/Xwayland</flag>
 		<flag name="wayland">Run in wayland mode under wayland sessions, xwayland otherwise. This flag doesn't affect x11 sessions.</flag>

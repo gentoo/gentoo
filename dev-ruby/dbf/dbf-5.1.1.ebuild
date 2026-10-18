@@ -17,6 +17,6 @@ HOMEPAGE="https://github.com/infused/dbf"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 ruby_add_depend "dev-ruby/csv"

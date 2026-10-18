@@ -6,7 +6,7 @@ EAPI=8
 PYTHON_COMPAT=( python3_{12..14} )
 ROCM_VERSION=${PV}
 
-inherit cmake check-reqs edo multiprocessing python-r1 rocm
+inherit cmake check-reqs edo flag-o-matic multiprocessing python-r1 rocm
 
 DESCRIPTION="Next generation FFT implementation for ROCm"
 HOMEPAGE="https://github.com/ROCm/rocm-libraries/tree/develop/projects/rocfft"
@@ -105,6 +105,10 @@ src_prepare() {
 
 src_configure() {
 	rocm_use_clang
+
+	# #977921: LTO is not compatible with -fgpu-rtc
+	# See also: https://github.com/ROCm/hip/issues/3879
+	filter-lto
 
 	local mycmakeargs=(
 		-DCMAKE_SKIP_RPATH=ON

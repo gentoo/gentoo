@@ -26,36 +26,40 @@ LICENSE="GPL-3"
 SLOT="0"
 IUSE="s3 test"
 
-COMMON_DEPEND="
+DEPEND="
 	app-alternatives/gpg
 	net-libs/librsync:=
+	dev-python/cryptography[${PYTHON_USEDEP}]
 	dev-python/fasteners[${PYTHON_USEDEP}]
 	dev-python/pexpect[${PYTHON_USEDEP}]
 "
-DEPEND="
-	${COMMON_DEPEND}
+RDEPEND="
+	${DEPEND}
+	dev-python/paramiko[${PYTHON_USEDEP}]
+	s3? ( dev-python/boto3[${PYTHON_USEDEP}] )
+"
+BDEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
+	dev-python/setuptools-gettext[${PYTHON_USEDEP}]
 	dev-python/setuptools-scm[${PYTHON_USEDEP}]
+	sys-devel/gettext
 	test? (
 		|| ( app-arch/par2cmdline app-arch/par2cmdline-turbo )
 	)
 "
-RDEPEND="
-	${COMMON_DEPEND}
-	dev-python/paramiko[${PYTHON_USEDEP}]
-	s3? ( dev-python/boto3[${PYTHON_USEDEP}] )
-"
 
 EPYTEST_DESELECT=(
 	# boto3
-	testing/unit/test_cli_main.py::CommandlineTest::test_intermixed_args
+	testing/unit/test_cli_main.py::TestCommandline::test_intermixed_args
 )
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-3.0.4.0-fix-docs-cmd.patch
+	"${FILESDIR}"/${PN}-3.2.1-fix-docs-cmd.patch
 	"${FILESDIR}"/${PN}-3.0.5-dont-repeat-standard-paths.patch
 )
 
+EPYTEST_PLUGINS=( mock )
+EPYTEST_XDIST=1
 distutils_enable_tests pytest
 
 python_prepare_all() {
@@ -77,6 +81,7 @@ python_test() {
 }
 
 pkg_postinst() {
+	# TODO: optfeature
 	elog "Duplicity has many optional dependencies to support various backends."
 	elog "Currently it's up to you to install them as necessary."
 }

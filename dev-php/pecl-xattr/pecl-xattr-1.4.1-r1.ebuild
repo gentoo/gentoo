@@ -1,0 +1,19 @@
+# Copyright 1999-2026 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=8
+
+PHP_EXT_INI="yes"
+PHP_EXT_NAME="xattr"
+PHP_EXT_NEEDED_USE=""
+PHP_EXT_ZENDEXT="no"
+USE_PHP="php8-2 php8-3 php8-4 php8-5"
+
+inherit php-ext-pecl-r3
+
+DESCRIPTION="Extended attributes for PHP"
+SRC_URI="${SRC_URI} -> ${P}.tgz"
+
+LICENSE="PHP-3.01"
+SLOT="8"
+KEYWORDS="~amd64 ~x86"

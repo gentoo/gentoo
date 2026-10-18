@@ -1,0 +1,45 @@
+From d8144b3f27e32f4e2aaa2c6045fc962c623efbac Mon Sep 17 00:00:00 2001
+From: Jasem Mutlaq <mutlaqja@ikarustech.com>
+Date: Fri, 28 Aug 2026 11:35:42 +0300
+Subject: [PATCH] KColorMimeData: guard against a null QMimeData pointer
+
+This is a recent regression that caused all KStars tests to crash locally in Wayland.
+
+QClipboard::mimeData() can return nullptr when the clipboard has never been set in the current session (e.g. the offscreen QPA platform, or a
+freshly started Wayland session with no clipboard manager). Since the KColorButton/KColorCombo copy & paste context menu added in
+00866bc50fa32c280db443fc14e5294dcabfdeb4, KAbstractColorEditPrivate's Q_GLOBAL_STATIC KColorClipboardWatcher passes that pointer straight
+into KColorMimeData::canDecode()/fromMimeData(), which dereferenced it unconditionally, crashing on construction of the very first
+KColorButton/KColorCombo in the process.
+---
+ src/kcolormimedata.cpp | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/src/kcolormimedata.cpp b/src/kcolormimedata.cpp
+index 960bf09e..96227ca6 100644
+--- a/src/kcolormimedata.cpp
++++ b/src/kcolormimedata.cpp
+@@ -24,6 +24,11 @@ void populateMimeData(QMimeData *mimeData, const QColor &color)
+ 
+ bool canDecode(const QMimeData *mimeData)
+ {
++    // QClipboard::mimeData() can return nullptr when the clipboard has never
++    // been set (e.g. no clipboard manager, or the "offscreen" QPA platform).
++    if (!mimeData) {
++        return false;
++    }
+     if (mimeData->hasColor()) {
+         return true;
+     }
+@@ -38,6 +43,9 @@ bool canDecode(const QMimeData *mimeData)
+ 
+ QColor fromMimeData(const QMimeData *mimeData)
+ {
++    if (!mimeData) {
++        return QColor();
++    }
+     if (mimeData->hasColor()) {
+         return mimeData->colorData().value<QColor>();
+     }
+-- 
+GitLab
+

@@ -9,7 +9,7 @@ PYTHON_REQ_USE="xml(+)"
 inherit meson gnome2-utils optfeature pax-utils python-single-r1 xdg
 
 DESCRIPTION="A fork of GNOME Shell with layout similar to GNOME 2"
-HOMEPAGE="https://projects.linuxmint.com/cinnamon/ https://github.com/linuxmint/cinnamon"
+HOMEPAGE="https://linuxmint-developer-guide.readthedocs.io/en/latest/cinnamon.html https://linuxmint.com/"
 SRC_URI="https://github.com/linuxmint/cinnamon/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD GPL-2+ GPL-3+ GPL-3-with-openssl-exception LGPL-2+ LGPL-2.1 LGPL-2.1+ MIT"

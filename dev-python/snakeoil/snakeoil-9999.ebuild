@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=flit
 PYPI_VERIFY_REPO=https://github.com/pkgcore/snakeoil
-PYTHON_COMPAT=( python3_{11..14} pypy3_11 )
+PYTHON_COMPAT=( python3_{12..15} )
 PYTHON_REQ_USE="threads(+)"
 
 inherit distutils-r1
@@ -27,6 +27,10 @@ HOMEPAGE="
 
 LICENSE="BSD BSD-2 MIT"
 SLOT="0"
+
+BDEPEND="
+	test? ( dev-python/sphinx[${PYTHON_USEDEP}] )
+"
 
 EPYTEST_PLUGINS=()
 distutils_enable_tests pytest

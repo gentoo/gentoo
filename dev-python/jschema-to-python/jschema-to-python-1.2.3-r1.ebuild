@@ -16,7 +16,7 @@ HOMEPAGE="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 arm64 ~riscv x86"
+KEYWORDS="amd64 arm64 ~riscv"
 
 RDEPEND="
 	dev-python/attrs[${PYTHON_USEDEP}]
@@ -27,4 +27,5 @@ BDEPEND="
 	dev-python/pbr[${PYTHON_USEDEP}]
 "
 
+EPYTEST_PLUGINS=()
 distutils_enable_tests pytest

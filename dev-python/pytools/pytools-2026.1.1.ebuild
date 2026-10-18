@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=hatchling
 PYPI_VERIFY_REPO=https://github.com/inducer/pytools
-PYTHON_COMPAT=( python3_{12..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 PYTHON_REQ_USE='sqlite'
 
 inherit distutils-r1 pypi
@@ -19,7 +19,7 @@ HOMEPAGE="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv"
+KEYWORDS="amd64 arm64 ~ppc64 ~riscv"
 
 # NB: numpy are an "extra" (optional) deps
 RDEPEND="

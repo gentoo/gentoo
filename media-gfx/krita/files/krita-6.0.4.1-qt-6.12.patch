@@ -1,0 +1,34 @@
+https://invent.kde.org/graphics/krita/-/merge_requests/2966
+
+From 3f5b2882017f4e12c9b021de0ea24e6dd2eb26dd Mon Sep 17 00:00:00 2001
+From: Jonas Rakebrandt <xarblu@protonmail.com>
+Date: Fri, 2 Oct 2026 14:40:22 +0200
+Subject: [PATCH] Fix invalid widget class name
+
+Caused a build failure during the Qt 6.11 -> 6.12 rebuild:
+
+  [1707/3599] Generating ui_AssistantsToolOptions.h
+  /var/tmp/portage/media-gfx/krita-6.0.4/work/krita-6.0.4/plugins/assistants/Assistants/AssistantsToolOptions.ui: Warning: The name 'verticalLayout' (QVBoxLayout) is already in use, defaulting to 'verticalLayout1'.
+  /var/tmp/portage/media-gfx/krita-6.0.4/work/krita-6.0.4/plugins/assistants/Assistants/AssistantsToolOptions.ui: Invalid class name: " QWidget"
+  File '/var/tmp/portage/media-gfx/krita-6.0.4/work/krita-6.0.4/plugins/assistants/Assistants/AssistantsToolOptions.ui' is not valid
+
+Signed-off-by: Jonas Rakebrandt <xarblu@protonmail.com>
+---
+ plugins/assistants/Assistants/AssistantsToolOptions.ui | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/plugins/assistants/Assistants/AssistantsToolOptions.ui b/plugins/assistants/Assistants/AssistantsToolOptions.ui
+index 5d048fef40e..848f4a11c41 100644
+--- a/plugins/assistants/Assistants/AssistantsToolOptions.ui
++++ b/plugins/assistants/Assistants/AssistantsToolOptions.ui
+@@ -284,7 +284,7 @@
+       </layout>
+      </item>
+    <item>
+-    <widget class=" QWidget" name="showDockerOptionsPanel">
++    <widget class="QWidget" name="showDockerOptionsPanel">
+       <property name="visible">
+           <bool>false</bool>
+         </property>
+-- 
+GitLab

@@ -1,20 +1,20 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{12..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 
 inherit distutils-r1
 
 DESCRIPTION="Add support for multiple versions to sphinx"
 HOMEPAGE="
-	https://github.com/Holzhaus/sphinx-multiversion/
+	https://github.com/sphinx-contrib/multiversion/
 	https://pypi.org/project/sphinx-multiversion/
 "
 SRC_URI="
-	https://github.com/Holzhaus/sphinx-multiversion/archive/v${PV}.tar.gz
+	https://github.com/sphinx-contrib/sphinx-multiversion/archive/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 
@@ -26,5 +26,6 @@ DEPEND="
 	dev-python/sphinx[${PYTHON_USEDEP}]
 "
 
+EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
 distutils_enable_sphinx docs dev-python/alabaster

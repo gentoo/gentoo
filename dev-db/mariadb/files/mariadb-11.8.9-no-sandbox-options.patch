@@ -1,0 +1,17 @@
+https://bugs.gentoo.org/982642#c9
+
+Don't try to examine the config directory of the live system.
+--- a/extra/generate_option_list.cc
++++ b/extra/generate_option_list.cc
+@@ -83,7 +83,10 @@
+     command << "\"";
+   }
+   command << " --verbose"
+-             " --help";
++             " --help"
++             " --datadir=";
++  command << plugin_dir << "";
++
+ #ifdef _WIN32
+   command << "\"";
+ #endif

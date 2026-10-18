@@ -3,6 +3,7 @@
 
 EAPI=8
 
+PATCHSET="kdepim-26.04.3-ki18n-6.28-findpkg"
 ECM_TEST="forceoptional"
 PVCUT=$(ver_cut 1-3)
 KFMIN=6.22.0
@@ -11,10 +12,11 @@ inherit ecm gear.kde.org xdg
 
 DESCRIPTION="Runtime plugin collection to extend the functionality of KDE PIM"
 HOMEPAGE="https://apps.kde.org/kontact/"
+SRC_URI+=" https://dev.gentoo.org/~asturm/distfiles/kde/${PATCHSET}.tar.xz"
 
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="6/$(ver_cut 1-2)"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 arm64"
 IUSE="activities +ews speech"
 
 RESTRICT="test"
@@ -71,8 +73,10 @@ DEPEND="${RDEPEND}
 	)
 "
 
-# Pending https://invent.kde.org/pim/kdepim-runtime/-/merge_requests/324
-PATCHES=( "${FILESDIR}/${PN}-26.04.2-ews-optional.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-26.04.2-ews-optional.patch" # in 26.12
+	"${WORKDIR}/${PATCHSET}/${PN}.patch" # bug #979240
+)
 
 src_prepare() {
 	ecm_src_prepare

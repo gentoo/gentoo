@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person" proxied="yes">
+    <name>Alexis</name>
+    <email>flexibeast@gmail.com</email>
+  </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <name>Proxy Maintainers</name>
+    <email>proxy-maint@gentoo.org</email>
+  </maintainer>
+  <upstream>
+    <maintainer status="active">
+      <name>Steffen Nurpmeso</name>
+      <email>steffen@sdaoden.eu</email>
+    </maintainer>
+    <bugs-to>mailto:steffen@sdaoden.eu</bugs-to>
+  </upstream>
+</pkgmetadata>

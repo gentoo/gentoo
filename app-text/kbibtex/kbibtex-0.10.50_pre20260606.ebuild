@@ -5,7 +5,7 @@ EAPI=8
 
 ECM_HANDBOOK="optional"
 ECM_TEST="true"
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 KFMIN=6.16.0
 QTMIN=6.8.1
 inherit ecm kde.org optfeature python-any-r1 xdg
@@ -16,7 +16,7 @@ SRC_URI="https://dev.gentoo.org/~asturm/distfiles/kde/${P}.tar.xz" # at 694c8e7d
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="webengine"
 
 RESTRICT="test"

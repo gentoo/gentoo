@@ -56,7 +56,7 @@
                 o Montgomery, Diminished Radix and Barrett based modular
                 exponentiation.
                 o Karatsuba and Toom-Cook multiplication algorithms.
-                o Many pointer aliasing optimiztions throughout the entire library.
+                o Many pointer aliasing optimizations throughout the entire library.
         </longdescription>
         <upstream>
                 <remote-id type="github">libtom/libtommath</remote-id>

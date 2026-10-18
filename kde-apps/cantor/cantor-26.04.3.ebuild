@@ -8,7 +8,7 @@ CMAKE_QA_COMPAT_SKIP=1 # bug 965858
 ECM_HANDBOOK="optional"
 ECM_TEST="forceoptional"
 LUA_COMPAT=( luajit )
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 PVCUT=$(ver_cut 1-3)
 KFMIN=6.22.0
 QTMIN=6.10.1
@@ -19,7 +19,7 @@ HOMEPAGE="https://apps.kde.org/cantor/"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="6"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 arm64"
 IUSE="+analitza julia lua postscript python qalculate R webengine"
 
 REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} ) python? ( ${PYTHON_REQUIRED_USE} )"
@@ -82,7 +82,10 @@ pkg_setup() {
 }
 
 src_configure() {
-	use julia && addpredict /proc/self/mem # bug 602894
+	if use julia; then
+		addpredict /proc/self/mem # bug 602894
+		addpredict /proc/self/fd # bug 909435
+	fi
 
 	local mycmakeargs=(
 		$(cmake_use_find_package analitza Analitza6)

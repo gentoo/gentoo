@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517="poetry"
-PYTHON_COMPAT=( python3_{12..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 
 inherit distutils-r1
 
@@ -42,4 +42,5 @@ EPYTEST_DESELECT=(
 	"tbump/test/test_init.py"
 )
 
+EPYTEST_PLUGINS=()
 distutils_enable_tests pytest

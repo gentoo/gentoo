@@ -1,0 +1,89 @@
+From 080936641de41f2ba533f3ce02832be14330686b Mon Sep 17 00:00:00 2001
+From: p1c2u <maciag.artur@gmail.com>
+Date: Fri, 29 May 2026 11:20:19 +0100
+Subject: [PATCH] Upgrade jsonschema-path 0.5 schema-validator 0.9
+ spec-validator 0.9
+
+--- a/openapi_core/templating/paths/finders.py
++++ b/openapi_core/templating/paths/finders.py
+@@ -18,6 +18,8 @@
+ from openapi_core.templating.paths.protocols import PathsIterator
+ from openapi_core.templating.paths.protocols import ServersIterator
+ 
++DEFAULT_SERVER = SchemaPath.from_dict({"url": "/"})
++
+ 
+ class BasePathFinder:
+     paths_iterator: PathsIterator = NotImplemented
+@@ -63,7 +65,7 @@ def find(self, method: str, name: str) -> PathOperationServer:
+ class APICallPathFinder(BasePathFinder):
+     paths_iterator: PathsIterator = TemplatePathsIterator("paths")
+     operations_iterator: OperationsIterator = SimpleOperationsIterator()
+-    servers_iterator: ServersIterator = TemplateServersIterator()
++    servers_iterator: ServersIterator = TemplateServersIterator(DEFAULT_SERVER)
+ 
+ 
+ class WebhookPathFinder(APICallPathFinder):
+--- a/openapi_core/templating/paths/iterators.py
++++ b/openapi_core/templating/paths/iterators.py
+@@ -122,6 +122,9 @@ def __call__(
+ 
+ 
+ class TemplateServersIterator:
++    def __init__(self, default_server: SchemaPath):
++        self.default_server = default_server
++
+     def __call__(
+         self,
+         name: str,
+@@ -136,7 +139,7 @@ def __call__(
+                 or spec.get("servers", None)
+             )
+             if not servers:
+-                servers = [SchemaPath.from_dict({"url": "/"})]
++                servers = [self.default_server]
+             for server in servers:
+                 server_url_pattern = name.rsplit(path_result.resolved, 1)[0]
+                 server_url = server["url"]
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -67,11 +67,11 @@ aiohttp = {version = ">=3.0", optional = true}
+ starlette = {version = ">=0.40.0,<1.1.0", optional = true}
+ isodate = "*"
+ more-itertools = "*"
+-openapi-schema-validator = ">=0.7.0,<0.9.0"
+-openapi-spec-validator = "^0.8.0"
++openapi-schema-validator = "^0.9.0"
++openapi-spec-validator = "^0.9.0"
+ requests = {version = "*", optional = true}
+ werkzeug = ">=2.1.0"
+-jsonschema-path = "^0.4.5"
++jsonschema-path = "^0.5.0"
+ jsonschema = "^4.23.0"
+ multidict = {version = "^6.0.4", optional = true}
+ aioitertools = {version = ">=0.11,<0.14", optional = true}
+--- a/tests/unit/templating/test_paths_finders.py
++++ b/tests/unit/templating/test_paths_finders.py
+@@ -6,6 +6,7 @@
+ from openapi_core.templating.paths.exceptions import PathNotFound
+ from openapi_core.templating.paths.exceptions import PathsNotFound
+ from openapi_core.templating.paths.exceptions import ServerNotFound
++from openapi_core.templating.paths.finders import DEFAULT_SERVER
+ from openapi_core.templating.paths.finders import APICallPathFinder
+ 
+ 
+@@ -195,13 +196,12 @@ def test_returns_default_server(self, finder, spec):
+ 
+         path = spec / "paths" / self.path_name
+         operation = spec / "paths" / self.path_name / method
+-        server = SchemaPath.from_dict({"url": "/"})
+         path_result = TemplateResult(self.path_name, {})
+         server_result = TemplateResult("/", {})
+         assert result == (
+             path,
+             operation,
+-            server,
++            DEFAULT_SERVER,
+             path_result,
+             server_result,
+         )

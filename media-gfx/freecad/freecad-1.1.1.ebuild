@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python3_{12..14} )
 # The added asserts break on mem leaks, so tests fail.
 # PYTHON_REQ_USE="-debug"
 
-inherit check-reqs cmake cuda edo flag-o-matic optfeature python-single-r1 qmake-utils toolchain-funcs xdg virtualx branding
+inherit check-reqs cmake cuda edo flag-o-matic optfeature python-single-r1 qt-utils toolchain-funcs xdg virtualx branding
 
 DESCRIPTION="Qt based Computer Aided Design application"
 HOMEPAGE="https://www.freecad.org/ https://github.com/FreeCAD/FreeCAD"
@@ -48,7 +48,6 @@ REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
 	bim? ( mesh )
 	cam? ( mesh )
-	gui? ( bim )
 	designer? ( gui )
 	fem? ( smesh )
 	inspection? ( points )
@@ -57,7 +56,6 @@ REQUIRED_USE="
 	reverse? ( mesh points )
 	test? ( techdraw )
 "
-# Draft Workbench needs BIM
 
 RESTRICT="!test? ( test )"
 
@@ -136,8 +134,8 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-9999-tests-src-Qt-only-build-test-for-BUILD_GUI-ON.patch
-	"${FILESDIR}"/${PN}-9999-Gentoo-specific-don-t-check-vcs.patch
+	"${FILESDIR}"/${PN}-1.1.1-tests-src-Qt-only-build-test-for-BUILD_GUI-ON.patch
+	"${FILESDIR}"/${PN}-1.1.1-Gentoo-specific-don-t-check-vcs.patch
 	"${FILESDIR}"/${PN}-1.1.1-fix-sketcher-toolbars.patch
 	"${FILESDIR}"/${PN}-1.1.1-qt-6.11.patch
 	"${FILESDIR}"/${PN}-1.0.2-pybind11-latent-slots-macro-conflicts-with-Qt.patch # fixed in pybind-3.0.1
@@ -411,8 +409,8 @@ src_configure() {
 			-DFREECAD_QT_MAJOR_VERSION=6
 			-DFREECAD_QT_VERSION=6
 			-DQT_DEFAULT_MAJOR_VERSION=6
-			-DQt6Core_MOC_EXECUTABLE="$(qt6_get_bindir)/moc"
-			-DQt6Core_RCC_EXECUTABLE="$(qt6_get_bindir)/rcc"
+			-DQt6Core_MOC_EXECUTABLE="$(qt_get_broot_binary 6 moc)"
+			-DQt6Core_RCC_EXECUTABLE="$(qt_get_broot_binary 6 rcc)"
 			-DBUILD_QT5=OFF
 			# Drawing module unmaintained and not ported to qt6
 			-DBUILD_DRAWING=OFF

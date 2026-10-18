@@ -1,11 +1,11 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 inherit autotools desktop xdg
 
-DESCRIPTION="Updated clone of Westood Studios' Dune II"
+DESCRIPTION="Updated clone of Westwood Studios' Dune II"
 HOMEPAGE="https://dunelegacy.sourceforge.net"
 
 COMMIT="6ea9ac96854daa8c75ba429e78dc6716b147e106"
@@ -15,13 +15,18 @@ S="${WORKDIR}/${PN}-code-${COMMIT}"
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~riscv ~x86"
+IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	media-libs/libsdl2[sound,threads(+),video]
 	media-libs/sdl2-mixer[midi]
 	media-libs/sdl2-ttf
 "
-DEPEND="${RDEPEND}"
+DEPEND="
+	${RDEPEND}
+	test? ( dev-util/cppunit )
+"
 BDEPEND="
 	app-arch/unzip
 	virtual/pkgconfig

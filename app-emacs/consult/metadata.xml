@@ -24,6 +24,7 @@
   </longdescription>
   <upstream>
     <bugs-to>https://github.com/minad/consult/issues/</bugs-to>
+    <changelog>https://raw.githubusercontent.com/minad/consult/refs/heads/main/CHANGELOG.org</changelog>
     <remote-id type="github">minad/consult</remote-id>
   </upstream>
 </pkgmetadata>

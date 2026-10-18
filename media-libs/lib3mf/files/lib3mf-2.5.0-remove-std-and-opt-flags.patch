@@ -1,0 +1,32 @@
+From 5989c293eb369742afff546173e7ec96b00d050d Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx@gmail.com>
+Date: Tue, 22 Apr 2025 13:28:03 +0200
+Subject: remove optimization flags and C++ standard
+
+Signed-off-by: Paul Zander <negril.nx@gmail.com>
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index ec1d7dde..201f5aa2 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -74,9 +74,7 @@ set (CMAKE_CXX_STANDARD 17)
+ 		  add_compile_options(-Wall)
+ 		  if (CMAKE_BUILD_TYPE MATCHES DEBUG)
+ 		    add_compile_options(-g)
+-	    SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17 -Og")
+ 	  else()
+-    SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17 -O2")
+   endif(CMAKE_BUILD_TYPE MATCHES DEBUG)
+   
+ 		elseif ("${CMAKE_SYSTEM_NAME}" MATCHES "Darwin")
+@@ -85,7 +83,6 @@ set (CMAKE_CXX_STANDARD 17)
+ 		    add_definitions(-DBUILD_DLL)
+ 		  endif()
+ 		  add_compile_options(-Wall) 
+-		  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17 -O2")
+ 		  set(CMAKE_MACOSX_RPATH ON)
+ 	endif()
+ 
+-- 
+2.53.0
+

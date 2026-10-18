@@ -1,0 +1,15 @@
+Applied by upstream w/ https://codeberg.org/ciberandy/qiv/commit/d8917ba.patch
+tiff is only required w/ lcms enabled
+https://bugs.gentoo.org/980178
+--- a/utils.c
++++ b/utils.c
+@@ -18,7 +18,9 @@
+ #include <dirent.h>
+ #include <fcntl.h>
+ #include <errno.h>
++#ifdef SUPPORT_LCMS
+ #include <tiffio.h>
++#endif
+ #include <X11/extensions/dpms.h>
+ #ifdef HAVE_EXIF
+ #include <libexif/exif-loader.h>

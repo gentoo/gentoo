@@ -1,0 +1,42 @@
+https://bugs.gentoo.org/978070
+https://gitlab.freedesktop.org/gstreamer/gstreamer/-/commit/be9bdb67f
+--- a/ext/libav/gstavviddec.c
++++ b/ext/libav/gstavviddec.c
+@@ -2891,8 +2891,11 @@
+     /* no quasi codecs, please */
+-    if (in_plugin->id == AV_CODEC_ID_RAWVIDEO ||
+-        in_plugin->id == AV_CODEC_ID_V210 ||
+-        in_plugin->id == AV_CODEC_ID_V210X ||
+-        in_plugin->id == AV_CODEC_ID_V308 ||
+-        in_plugin->id == AV_CODEC_ID_V408 ||
+-        in_plugin->id == AV_CODEC_ID_V410 || in_plugin->id == AV_CODEC_ID_R210
++    if (in_plugin->id == AV_CODEC_ID_RAWVIDEO
++        || in_plugin->id == AV_CODEC_ID_V210
++        || in_plugin->id == AV_CODEC_ID_V210X
++        || in_plugin->id == AV_CODEC_ID_R210
++#if LIBAVCODEC_VERSION_MAJOR < 63
++        || in_plugin->id == AV_CODEC_ID_V308
++        || in_plugin->id == AV_CODEC_ID_V408
++        || in_plugin->id == AV_CODEC_ID_V410
++#endif
+ #if LIBAVCODEC_VERSION_MAJOR < 61
+--- a/ext/libav/gstavvidenc.c
++++ b/ext/libav/gstavvidenc.c
+@@ -1032,8 +1032,11 @@
+     /* no quasi codecs, please */
+-    if (in_plugin->id == AV_CODEC_ID_RAWVIDEO ||
+-        in_plugin->id == AV_CODEC_ID_V210 ||
+-        in_plugin->id == AV_CODEC_ID_V210X ||
+-        in_plugin->id == AV_CODEC_ID_V308 ||
+-        in_plugin->id == AV_CODEC_ID_V408 ||
+-        in_plugin->id == AV_CODEC_ID_V410 || in_plugin->id == AV_CODEC_ID_R210
++    if (in_plugin->id == AV_CODEC_ID_RAWVIDEO
++        || in_plugin->id == AV_CODEC_ID_V210
++        || in_plugin->id == AV_CODEC_ID_V210X
++        || in_plugin->id == AV_CODEC_ID_R210
++#if LIBAVCODEC_VERSION_MAJOR < 63
++        || in_plugin->id == AV_CODEC_ID_V308
++        || in_plugin->id == AV_CODEC_ID_V408
++        || in_plugin->id == AV_CODEC_ID_V410
++#endif
+ #if LIBAVCODEC_VERSION_MAJOR < 61

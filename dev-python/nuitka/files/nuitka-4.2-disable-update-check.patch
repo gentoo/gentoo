@@ -1,0 +1,13 @@
+diff --git a/nuitka/options/OptionParsing.py b/nuitka/options/OptionParsing.py
+index b6b16d6..bebe1fd 100644
+--- a/nuitka/options/OptionParsing.py
++++ b/nuitka/options/OptionParsing.py
+@@ -803,7 +803,7 @@ warnings_group.add_option(
+     type="choice",
+     choices=("never", "force", "error", "warning", "info"),
+     dest="update_check",
+-    default="warning",
++    default="never",
+     environment_variable_name="NUITKA_UPDATE_CHECK",
+     help="""\
+ Control checking for newer Nuitka releases. Use "never" to disable it,

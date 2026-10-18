@@ -1,0 +1,40 @@
+#!/bin/sh
+# Run one of DokuWiki's command line tools against an installed instance.
+#
+# The tools are installed outside the document root (bug #146800). Each
+# finds the wiki relative to its own location unless DOKU_INC is already
+# defined, so define it here and load the tool.
+
+bindir=$(dirname "$(readlink -f "$0")")
+
+if [ $# -lt 2 ]; then
+	echo "usage: ${0##*/} <dokuwiki directory> <tool> [options]" >&2
+	printf 'tools:' >&2
+	for tool in "${bindir}"/*.php; do
+		tool=${tool##*/}
+		printf ' %s' "${tool%.php}" >&2
+	done
+	echo >&2
+	exit 1
+fi
+
+dir=$1
+script=${bindir}/${2%.php}.php
+shift 2
+
+if [ ! -f "${script}" ]; then
+	echo "${0##*/}: no such tool: ${script##*/}" >&2
+	exit 1
+fi
+if [ ! -f "${dir}/inc/init.php" ]; then
+	echo "${0##*/}: not a DokuWiki directory: ${dir}" >&2
+	exit 1
+fi
+
+exec php -r '
+	define("DOKU_INC", realpath($argv[1]) . "/");
+	$script = $argv[2];
+	array_splice($argv, 0, 3, [basename($script)]);
+	$argc = count($argv);
+	require $script;
+' -- "${dir}" "${script}" "$@"

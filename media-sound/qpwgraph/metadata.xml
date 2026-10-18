@@ -11,6 +11,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="freedesktop-gitlab">rncbc/qpwgraph</remote-id>
-		<bugs-to>https://gitlab.freedesktop.org/rncbc/qpwgraph/-/issues</bugs-to>
+		<bugs-to>https://gitlab.freedesktop.org/rncbc/qpwgraph/-/work_items</bugs-to>
 	</upstream>
 </pkgmetadata>

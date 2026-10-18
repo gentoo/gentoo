@@ -1,0 +1,23 @@
+https://github.com/Stellarium/stellarium/pull/5067
+
+From 4248e0e65ee57ba17bbda9f49999de4934f14865 Mon Sep 17 00:00:00 2001
+From: Ivan Lloro <Ivan.Lloro.Boada@gmail.com>
+Date: Tue, 4 Aug 2026 09:56:20 +0100
+Subject: [PATCH] Fix link error when --as-needed linker flag set
+
+---
+ plugins/TelescopeControl/src/gui/CMakeLists.txt | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/plugins/TelescopeControl/src/gui/CMakeLists.txt b/plugins/TelescopeControl/src/gui/CMakeLists.txt
+index bd5343581070c..b3c6c79eb1a93 100644
+--- a/plugins/TelescopeControl/src/gui/CMakeLists.txt
++++ b/plugins/TelescopeControl/src/gui/CMakeLists.txt
+@@ -31,6 +31,7 @@ target_link_libraries(TelescopeControl_gui
+     Qt${QT_VERSION_MAJOR}::Network
+     Qt${QT_VERSION_MAJOR}::Gui
+     Qt${QT_VERSION_MAJOR}::OpenGL
++    Qt${QT_VERSION_MAJOR}::SerialPort
+     TelescopeControl_common
+     )
+ 

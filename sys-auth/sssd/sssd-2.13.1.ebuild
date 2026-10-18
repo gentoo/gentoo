@@ -16,7 +16,7 @@ HOMEPAGE="https://github.com/SSSD/sssd"
 if [[ ${PV} != 9999 ]]; then
 	SRC_URI="https://github.com/SSSD/sssd/releases/download/${PV}/${P}.tar.gz
 		https://github.com/SSSD/sssd/releases/download/${PV}/${P}.tar.gz.asc"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~sparc ~x86"
+	KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~sparc x86"
 else
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/SSSD/sssd.git"
@@ -193,6 +193,11 @@ src_prepare() {
 
 src_configure() {
 	local native_dbus_cflags=$($(tc-getPKG_CONFIG) --cflags dbus-1 || die)
+
+	# Workaround for bug #938302
+	if use systemtap && has_version "dev-debug/systemtap[-dtrace-symlink(+)]" ; then
+		export DTRACE="${BROOT}"/usr/bin/stap-dtrace
+	fi
 
 	multilib-minimal_src_configure
 }

@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -27,6 +27,7 @@ RESTRICT="!test? ( test )"
 
 BDEPEND="${PYTHON_DEPS}
 	cube? ( ~dev-util/glslang-${PV}:=[${MULTILIB_USEDEP}] )
+	test? ( dev-cpp/gtest )
 "
 RDEPEND="
 	wayland? ( dev-libs/wayland[${MULTILIB_USEDEP}] )

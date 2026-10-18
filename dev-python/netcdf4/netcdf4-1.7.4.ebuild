@@ -43,10 +43,13 @@ BDEPEND="
 	)
 "
 
+EPYTEST_PLUGINS=()
+EPYTEST_XDIST=1
+distutils_enable_tests pytest
+
 python_test() {
 	local -x NO_NET=1
-	cd test || die
-	"${EPYTHON}" run_all.py || die
+	epytest test
 }
 
 pkg_postinst() {

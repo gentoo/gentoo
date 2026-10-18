@@ -2,15 +2,16 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+
 PYTHON_COMPAT=( python3_{11..14} )
-inherit flag-o-matic gnome.org meson-multilib python-any-r1
+inherit gnome.org meson-multilib python-any-r1
 
 DESCRIPTION="C++ interface for glib2"
 HOMEPAGE="https://gnome.pages.gitlab.gnome.org/glibmm/"
 
 LICENSE="LGPL-2.1+"
 SLOT="2.68"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~sparc x86"
 IUSE="gtk-doc debug test"
 RESTRICT="!test? ( test )"
 

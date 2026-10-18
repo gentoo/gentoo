@@ -1,5 +1,9 @@
-# Copyright 2022-2025 Gentoo Authors
+# Copyright 2022-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Michael Orlitzky <mjo@gentoo.org> (2026-07-14)
+# dev-lang/php:8.5 needs new keywords, bug 977138.
+php_targets_php8-5
 
 # WANG Xuerui <xen0n@gentoo.org> (2025-01-24)
 # dev-util/sysprof-capture is keyworded on loong

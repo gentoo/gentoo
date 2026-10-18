@@ -62,7 +62,7 @@ src_prepare() {
 	fi
 
 	cd "${S}" || die
-	eapply_user
+	default
 
 	# Collect only those files needed for this particular module
 	for mod in ${MODS}; do

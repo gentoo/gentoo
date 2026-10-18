@@ -3,6 +3,8 @@
 
 EAPI=8
 
+# NOTE: Bump with dev-ruby/rrdtool-bindings
+
 LUA_COMPAT=( lua5-{1..4} luajit )
 PYTHON_COMPAT=( python3_{11..15} )
 DISTUTILS_EXT=1

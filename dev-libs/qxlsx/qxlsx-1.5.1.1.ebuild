@@ -14,7 +14,7 @@ CMAKE_USE_DIR="${S}/QXlsx"
 LICENSE="MIT"
 # soversion
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~ppc ppc64 ~riscv ~x86"
 
 RDEPEND="
 	dev-qt/qtbase:6=[gui]

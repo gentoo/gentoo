@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,6 +18,7 @@ BDEPEND="sys-apps/texinfo"
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.22.6-docdirs.patch
 	"${FILESDIR}"/${PN}-2.23.1-fix-c17.patch
+	"${FILESDIR}"/${PN}-2.23.1-fix_tests_order.patch
 )
 
 src_prepare() {

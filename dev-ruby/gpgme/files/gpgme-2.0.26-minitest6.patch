@@ -1,0 +1,19 @@
+https://bugs.gentoo.org/978788
+
+--- a/test/data_test.rb
++++ b/test/data_test.rb
+@@ -121,10 +121,10 @@ describe GPGME::Data do
+ 
+     it "can set file_name" do
+       data = GPGME::Data.new("wadus")
+-      [ "foo.bar", nil ].each do |file_name|
+-        data.file_name = file_name
+-        assert_equal file_name, data.file_name
+-      end
++      data.file_name = "foo.bar"
++      assert_equal "foo.bar", data.file_name
++      data.file_name = nil
++      assert_nil data.file_name
+     end
+   end
+ 

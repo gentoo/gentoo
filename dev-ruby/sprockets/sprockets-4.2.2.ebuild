@@ -1,9 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-USE_RUBY="ruby32 ruby33 ruby34"
+USE_RUBY="ruby32 ruby33 ruby34 ruby40"
 
 RUBY_FAKEGEM_EXTRADOC="README.md"
 
@@ -28,13 +28,17 @@ ruby_add_rdepend "
 "
 
 ruby_add_bdepend "test? (
+		dev-ruby/bundler
 		dev-ruby/json
 		dev-ruby/rack-test
 		=dev-ruby/coffee-script-2*
 		=dev-ruby/execjs-2*
+		dev-ruby/minitest:5
 		=dev-ruby/sass-3* >=dev-ruby/sass-3.1
 		dev-ruby/sassc
 		dev-ruby/uglifier
+		dev-ruby/timecop
+		dev-ruby/nokogiri
 	)"
 
 all_ruby_prepare() {
@@ -54,6 +58,23 @@ all_ruby_prepare() {
 	sed -i -e "/bundler/d" Rakefile || die
 
 	sed -i -e 's/MiniTest/Minitest/' test/sprockets_test.rb test/test*.rb || die
+
+	cat <<-EOF > "${T}/Gemfile" || die
+	gem "coffee-script", "~> 2"
+	gem "concurrent-ruby", "~> 1"
+	gem "execjs", "~> 2"
+	gem "json"
+	gem "logger"
+	gem "minitest", "~> 5"
+	gem "nokogiri"
+	gem "rack"
+	gem "rack-test"
+	gem "rake"
+	gem "sass", "~> 3"
+	gem "sassc"
+	gem "timecop"
+	gem "uglifier"
+	EOF
 }
 
 each_ruby_prepare() {
@@ -67,5 +88,5 @@ each_ruby_test() {
 	rm -rf test || die
 	mv test-new test || die
 
-	each_fakegem_test
+	BUNDLE_GEMFILE="${T}/Gemfile" ${RUBY} -S bundle exec ${RUBY} -S rake || die
 }

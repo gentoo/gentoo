@@ -1,0 +1,41 @@
+From 0d4da5e66c5913f6fe748baf91f6ad466131c3c7 Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+Date: Thu, 16 Apr 2026 15:19:59 +0200
+Subject: NULL is not int
+
+Signed-off-by: Paul Zander <negril.nx+gentoo@gmail.com>
+
+diff --git a/ETree/src/transform.c b/ETree/src/transform.c
+index 1e36981..dbdfc70 100644
+--- a/ETree/src/transform.c
++++ b/ETree/src/transform.c
+@@ -291,7 +291,7 @@ etree2 = ETree_compress(etree, mapIV) ;
+    remap the nzeros[] vector
+    -------------------------
+ */
+-temp = IVinit(nfront, NULL) ;
++temp = IVinit(nfront, 0) ;
+ IVcopy(nfront, temp, nzeros) ;
+ IV_setSize(nzerosIV, nnew) ;
+ nzeros = IV_entries(nzerosIV) ;
+@@ -453,7 +453,7 @@ etree2 = ETree_compress(etree, mapIV) ;
+    remap the nzeros[] vector
+    -------------------------
+ */
+-temp = IVinit(nfront, NULL) ;
++temp = IVinit(nfront, 0) ;
+ IVcopy(nfront, temp, nzeros) ;
+ IV_setSize(nzerosIV, nnew) ;
+ nzeros = IV_entries(nzerosIV) ;
+@@ -614,7 +614,7 @@ etree2 = ETree_compress(etree, mapIV) ;
+    remap the nzeros[] vector
+    -------------------------
+ */
+-temp = IVinit(nfront, NULL) ;
++temp = IVinit(nfront, 0) ;
+ IVcopy(nfront, temp, nzeros) ;
+ IV_setSize(nzerosIV, nnew) ;
+ nzeros = IV_entries(nzerosIV) ;
+-- 
+2.53.0
+

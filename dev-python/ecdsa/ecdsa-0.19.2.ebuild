@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{11..14} pypy3_11 )
+PYTHON_COMPAT=( python3_{12..15} )
 
 inherit distutils-r1 pypi
 
@@ -27,3 +27,8 @@ RDEPEND="
 
 EPYTEST_PLUGINS=( hypothesis )
 distutils_enable_tests pytest
+
+PATCHES=(
+	# https://github.com/tlsfuzzer/python-ecdsa/commit/f8e0f3a0035b44fa2541e2c447ed1599f220c4b5
+	"${FILESDIR}/${P}-py315.patch"
+)

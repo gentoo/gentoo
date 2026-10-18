@@ -19,7 +19,7 @@ HOMEPAGE="https://amule-org.github.io/"
 
 LICENSE="GPL-2+"
 SLOT="0"
-IUSE="daemon debug geoip +gui nls remote stats test upnp"
+IUSE="bfd daemon debug geoip +gui nls remote stats test upnp"
 # Make the package useful and simplify dependency management
 REQUIRED_USE="|| ( daemon gui remote )"
 
@@ -27,10 +27,10 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-libs/crypto++:=
-	sys-libs/binutils-libs:0=
 	sys-libs/readline:0=
 	virtual/zlib:=
 	x11-libs/wxGTK:${WX_GTK_VER}=[curl]
+	bfd? ( sys-libs/binutils-libs:0= )
 	daemon? (
 		acct-user/amule
 		dev-libs/boost:=
@@ -53,11 +53,6 @@ BDEPEND="
 	nls? ( sys-devel/gettext )
 "
 
-PATCHES=(
-	"${FILESDIR}/${PN}-3.0.0-disable-version-check.patch"
-	"${FILESDIR}/${PN}-3.0.0-use-xdg-open-as-preview-default.patch"
-)
-
 src_configure() {
 	setup-wxwidgets
 
@@ -67,6 +62,7 @@ src_configure() {
 	local mycmakeargs=(
 		-DBUILD_ALCC=YES
 		-DBUILD_ED2K=YES
+		-DDEFAULT_VERSION_CHECK=NO
 		-DBUILD_ALC="$(usex gui)"
 		-DBUILD_AMULECMD="$(usex remote)"
 		-DBUILD_DAEMON="$(usex daemon)"
@@ -74,6 +70,7 @@ src_configure() {
 		-DBUILD_MONOLITHIC="$(usex gui)"
 		-DBUILD_TESTING="$(usex test)"
 		-DBUILD_WEBSERVER="$(usex remote)"
+		-DENABLE_BFD="$(usex bfd)"
 		-DENABLE_NLS="$(usex nls)"
 		-DENABLE_UPNP="$(usex upnp)"
 	)

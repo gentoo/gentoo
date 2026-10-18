@@ -1,0 +1,35 @@
+From 4c08d2c8e1aa6af786a0653d5e2f2e896e9196b3 Mon Sep 17 00:00:00 2001
+From: Lukas Mai <lukasmai.403@gmail.com>
+Date: Sun, 5 Jul 2026 08:40:16 +0200
+Subject: [PATCH 2/2] fix compilation with recent ExtUtils::ParseXS
+
+Recent versions of ExtUtils::ParseXS (since 3.58 or so?) have started
+being pickier about the XS syntax they accept. Anyone who is using Perl
+5.44 (or has upgraded ExtUtils::ParseXS) may see this error:
+
+    Error: unrecognised line: '#include "../../../chanserv/chanserv.h"' in config.xs, line 11
+      (possible start of a truncated XSUB definition?)
+
+Fix: Leave an empty line between MODULE and a following preprocessor
+directive.
+
+(See also <https://bugs.gentoo.org/978484>.)
+---
+ modules/scripting/perl/api/config.xs | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/modules/scripting/perl/api/config.xs b/modules/scripting/perl/api/config.xs
+index 637fcbf51..e93bd6c8e 100644
+--- a/modules/scripting/perl/api/config.xs
++++ b/modules/scripting/perl/api/config.xs
+@@ -8,6 +8,7 @@ OUTPUT:
+     RETVAL
+ 
+ MODULE = Atheme			PACKAGE = Atheme::ChanServ::Config
++
+ #include "../../../chanserv/chanserv.h"
+ 
+ char *
+-- 
+2.53.0
+

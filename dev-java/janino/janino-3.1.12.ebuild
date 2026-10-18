@@ -15,7 +15,7 @@ S="${WORKDIR}/${P}/janino"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc64"
+KEYWORDS="amd64 arm64 ppc64"
 
 DEPEND="
 	>=virtual/jdk-1.8:*

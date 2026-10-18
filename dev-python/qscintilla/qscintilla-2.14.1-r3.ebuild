@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 inherit python-r1 qmake-utils out-of-source-utils
 
 DESCRIPTION="Python bindings for QScintilla"

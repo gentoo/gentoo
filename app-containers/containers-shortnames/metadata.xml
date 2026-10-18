@@ -13,6 +13,7 @@
     <email>proxy-maint@gentoo.org</email>
     <name>Proxy Maintainers</name>
   </maintainer>
+  <stabilize-allarches/>
   <upstream>
     <remote-id type="github">containers/shortnames</remote-id>
     <bugs-to>https://github.com/containers/shortnames/issues</bugs-to>

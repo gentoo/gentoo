@@ -1,0 +1,26 @@
+This attempts to determine the compiler name to use for c++ files, but fails
+because it expects the c compiler to be named just "gcc" or "clang" without any prefixes.
+Fix to work regardless of prefixes in the compiler name.
+
+diff '--color=auto' -ur a/src/mongo/util/version_constants_gen.py b/src/mongo/util/version_constants_gen.py
+--- a/src/mongo/util/version_constants_gen.py	2026-05-13 19:17:03.000000000 -0400
++++ b/src/mongo/util/version_constants_gen.py	2026-05-29 12:34:58.590571165 -0400
+@@ -36,12 +36,12 @@
+     if tool == "CC":
+         return compiler_path
+     elif tool == "CXX":
+-        if os.path.basename(compiler_path) == "gcc":
+-            return os.path.join(os.path.dirname(compiler_path), "g++")
+-        elif os.path.basename(compiler_path) == "clang":
+-            return os.path.join(os.path.dirname(compiler_path), "clang++")
+-        elif os.path.basename(compiler_path) == "wrapped_clang":
+-            return os.path.join(os.path.dirname(compiler_path), "wrapped_clang_pp")
++        if compiler_path.endswith("gcc"):
++            return os.path.join(os.path.dirname(compiler_path), os.path.basename(compiler_path).replace("cc", "++"))
++        elif compiler_path.endswith("clang"):
++            return os.path.join(os.path.dirname(compiler_path), os.path.basename(compiler_path) + "++")
++        elif compiler_path.endswith("wrapped_clang"):
++            return os.path.join(os.path.dirname(compiler_path), os.path.basename(compiler_path) + "_pp")
+         else:
+             return
+ 

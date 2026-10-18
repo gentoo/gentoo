@@ -138,6 +138,7 @@ qt6_get_qmake_args() {
 		QMAKE_LINK="$(tc-getCXX)"
 		QMAKE_LINK_SHLIB="$(tc-getCXX)"
 		QMAKE_OBJCOPY="$(tc-getOBJCOPY)"
+		QMAKE_PKG_CONFIG="$(tc-getPKG_CONFIG)"
 		QMAKE_RANLIB=
 		QMAKE_STRIP=
 		QMAKE_CFLAGS="${CFLAGS}"
@@ -173,7 +174,11 @@ eqmake6() {
 	local -a args
 	mapfile -t args <<<"$(qt6_get_qmake_args)"
 	# NB: we're passing literal quotes in but qmake doesn't seem to mind
-	"$(qt6_get_bindir)"/qmake -makefile "${args[@]}" "$@"
+	if [[ ${EAPI} == 8 ]]; then
+		"$(qt6_get_bindir)"/qmake -makefile "${args[@]}" "$@"
+	else
+		"$(qt_get_broot_binary 6 qmake)" -makefile "${args[@]}" "$@"
+	fi
 
 	if ! eend $? ; then
 		echo

@@ -4,21 +4,16 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( pypy3_11 python3_{11..14} )
+PYPI_VERIFY_REPO=https://github.com/pylint-dev/astroid
+PYTHON_COMPAT=( python3_{12..15} )
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
-MY_P=${P/_/}
 DESCRIPTION="Abstract Syntax Tree for logilab packages"
 HOMEPAGE="
 	https://github.com/pylint-dev/astroid/
 	https://pypi.org/project/astroid/
 "
-SRC_URI="
-	https://github.com/pylint-dev/astroid/archive/v${PV/_/}.tar.gz
-		-> ${P}.gh.tar.gz
-"
-S=${WORKDIR}/${MY_P}
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
@@ -31,9 +26,7 @@ BDEPEND="
 		dev-python/attrs[${PYTHON_USEDEP}]
 		>=dev-python/numpy-1.17.0[${PYTHON_USEDEP}]
 		dev-python/python-dateutil[${PYTHON_USEDEP}]
-		$(python_gen_cond_dep '
-			dev-python/regex[${PYTHON_USEDEP}]
-		' 'python*')
+		dev-python/regex[${PYTHON_USEDEP}]
 	)
 "
 
@@ -69,6 +62,23 @@ python_test() {
 	if ! has_version "dev-python/mypy[${PYTHON_USEDEP}]"; then
 		EPYTEST_IGNORE+=(
 			tests/test_raw_building.py
+		)
+	fi
+
+	case ${EPYTHON} in
+		python3.15)
+			EPYTEST_DESELECT+=(
+				tests/brain/test_brain.py::TypingBrain::test_typing_object_notsubscriptable_3
+				tests/brain/test_dataclasses.py::test_kw_only_sentinel
+				tests/test_regrtest.py::test_regression_parse_deeply_nested_parentheses
+			)
+			;;
+	esac
+
+	if ! has_version "dev-python/pkg-resources[${PYTHON_USEDEP}]"; then
+		EPYTEST_DESELECT+=(
+			# tests a package using pkg_resources
+			tests/test_manager.py::AstroidManagerTest::test_identify_old_namespace_package_protocol
 		)
 	fi
 

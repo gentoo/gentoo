@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=no
 PYPI_PN=setuptools
-PYTHON_COMPAT=( python3_{12..15} )
+PYTHON_COMPAT=( python3_{12..15} python3_{14,15}t )
 PYTHON_REQ_USE="xml(+)"
 
 inherit distutils-r1 pypi
@@ -43,7 +43,7 @@ EPYTEST_IGNORE=(
 python_test() {
 	# needed only by setuptools
 	rm -f conftest.py || die
-	epytest -o filterwarnings= pkg_resources
+	epytest pkg_resources
 }
 
 python_install() {

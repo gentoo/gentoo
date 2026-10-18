@@ -31,7 +31,7 @@ else
 	S="${WORKDIR}"/${P/_rc/-rc}
 
 	if [[ ${PV} != *_rc* ]] ; then
-		KEYWORDS="amd64 ~arm ~arm64 ~hppa ~loong ~mips ppc ~ppc64 ~riscv ~s390 -sparc x86"
+		KEYWORDS="amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 -sparc x86"
 	fi
 fi
 
@@ -77,6 +77,7 @@ MULTILIB_WRAPPED_HEADERS=(
 
 PATCHES=(
 	"${FILESDIR}"/${P}-typo.patch
+	"${FILESDIR}"/${P}-another-typo.patch
 )
 
 src_prepare() {

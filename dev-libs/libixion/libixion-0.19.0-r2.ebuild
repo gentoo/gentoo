@@ -37,6 +37,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-0.19.0-fix-win32-ifdef.patch # bug 939807
 	"${FILESDIR}"/${PN}-0.19.0-boost-m4.patch # bug 961528
 	"${FILESDIR}"/${PN}-0.19.0-gcc17.patch
+	"${FILESDIR}"/${PN}-0.19.0-libcxx23.patch # bug 981871
 )
 
 pkg_setup() {

@@ -1,0 +1,62 @@
+# HG changeset patch
+# User Antonio Muci <a.mux@inwind.it>
+# Date 1782306386 -7200
+#      Wed Jun 24 15:06:26 2026 +0200
+# Branch stable
+# Node ID ff01aa72ea781c0dc689a9fa82931b15afccedb8
+# Parent  15d028aec364def81d4b2fb952db5dbeec5bf128
+commit: fix wrong size of commit button on Qt6
+
+On my system (Fedora 44, PyQt6) this change fixes the visual issue, without
+breaking when run under PyQt5. However, I only tested on my system (linux,
+Fedora 44). For example, I did not do any Windows testing.
+
+The patch also removes the functions menuButtonWidth() and styleOption(), which
+have no callers left. The introduction of menuButtonWidth() can be tracked back
+to afe08b4e6fd6 from 2011.
+
+Discussions at:
+    https://groups.google.com/g/thg-dev/c/rdFlpNnMVto (2026)
+    https://groups.google.com/g/thg-dev/c/o0AgzdVKazo/m/4soNAHtFBgAJ (2024)
+
+Fixes #5968 (that also contains screenshots before and after the change).
+
+diff --git a/tortoisehg/hgqt/commit.py b/tortoisehg/hgqt/commit.py
+--- a/tortoisehg/hgqt/commit.py
++++ b/tortoisehg/hgqt/commit.py
+@@ -48,7 +48,6 @@
+     QSizePolicy,
+     QStyle,
+     QStyleFactory,
+-    QStyleOptionToolButton,
+     QSplitter,
+     QToolBar,
+     QToolButton,
+@@ -482,17 +481,6 @@
+         acts = tuple(acts)
+ 
+         class CommitToolButton(QToolButton):
+-            def styleOption(self):
+-                opt = QStyleOptionToolButton()
+-                opt.initFrom(self)
+-                return opt
+-            def menuButtonWidth(self):
+-                style = self.style()
+-                opt = self.styleOption()
+-                opt.features = QStyleOptionToolButton.ToolButtonFeature.MenuButtonPopup
+-                rect = style.subControlRect(QStyle.ComplexControl.CC_ToolButton, opt,
+-                                            QStyle.SubControl.SC_ToolButtonMenu, self)
+-                return rect.width()
+             def setBold(self):
+                 f = self.font()
+                 f.setWeight(QFont.Weight.Bold)
+@@ -505,8 +493,7 @@
+         committb.setBold()
+         committb.setPopupMode(QToolButton.ToolButtonPopupMode.MenuButtonPopup)
+         fmk = lambda s: committb.fontMetrics().horizontalAdvance(hglib.tounicode(s[2]))
+-        committb._width = (max(pycompat.maplist(fmk, acts))
+-                           + 4*committb.menuButtonWidth())
++        committb._width = max(pycompat.maplist(fmk, acts)) + 50
+ 
+         class CommitButtonMenu(QMenu):
+             def __init__(self, parent, repo):

@@ -14,7 +14,7 @@ S="${WORKDIR}/${MY_PN}-${PV}"
 
 LICENSE="Boost-1.0"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 # NOTE: Dependents MUST add this package's DEPENDs as RDEPENDs, to ensure SLOT
 #       rebuilds function correctly.

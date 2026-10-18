@@ -1,0 +1,35 @@
+https://gitlab.freedesktop.org/telepathy/telepathy-glib/-/commit/aa858698d7ede76b3b4c825ca14b8061c24f14e1
+
+From aa858698d7ede76b3b4c825ca14b8061c24f14e1 Mon Sep 17 00:00:00 2001
+From: Mamoru TASAKA <mtasaka@fedoraproject.org>
+Date: Mon, 4 Sep 2023 17:56:15 +0900
+Subject: [PATCH] test: make test-cm accepted with newer GLib
+
+With GLib 2.77.3, the key value "foo\;bar" is no longer accepted
+with g_key_file_get_string and it returns null string result.
+
+Modify key value in test file to get it accepted by new GLib.
+---
+ tests/dbus/telepathy/managers/test_manager_file.manager | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
+
+diff --git a/tests/dbus/telepathy/managers/test_manager_file.manager b/tests/dbus/telepathy/managers/test_manager_file.manager
+index 426ad4a7e..bdb3f90f1 100644
+--- a/tests/dbus/telepathy/managers/test_manager_file.manager
++++ b/tests/dbus/telepathy/managers/test_manager_file.manager
+@@ -79,11 +79,9 @@ default-triply-escaped-semicolon-in-list = list\\\;of;misc;
+ param-empty-list = as
+ default-empty-list =
+ 
+-# this is probably technically a Desktop Entry spec violation?
+-# we should be permissive, interpreting this as either "foo\;bar" or "foo;bar"
+-# seems reasonable
++# the value is "foo\\;bar"
+ param-escaped-semicolon = s
+-default-escaped-semicolon = foo\;bar
++default-escaped-semicolon = foo\\;bar
+ 
+ # all the other types
+ param-object = o
+-- 
+GitLab

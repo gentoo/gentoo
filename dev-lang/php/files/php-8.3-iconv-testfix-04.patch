@@ -1,0 +1,78 @@
+From 659d9779b553d2e4cfb892dbfca7d63b4f85fe9e Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Wed, 1 Jul 2026 22:55:56 -0400
+Subject: [PATCH] ext/iconv/tests/bug48147.phpt: whitelist iconvs with //IGNORE
+
+This test is for the behavior of iconv's magic "//IGNORE" suffix. The
+output it expects agrees with POSIX 2024 even when the underlying
+implementation (glibc) does not. A comment has been added to this
+effect, and two calls to urlencode() have been removed so that two
+(expected) errors are not swallowed.
+
+Afterwards, we whitelist the two iconv implementations that are known
+to support //IGNORE. While POSIX standardizes its behavior, it falls
+short of requiring implementations to support it. Musl in particular
+does not support any suffix.
+---
+ ext/iconv/tests/bug48147.phpt | 32 ++++++++++++++++++++++++++++----
+ 1 file changed, 28 insertions(+), 4 deletions(-)
+
+diff --git a/ext/iconv/tests/bug48147.phpt b/ext/iconv/tests/bug48147.phpt
+index ce304eecfb3c..434f71e517bb 100644
+--- a/ext/iconv/tests/bug48147.phpt
++++ b/ext/iconv/tests/bug48147.phpt
+@@ -2,17 +2,41 @@
+ Bug #48147 (iconv with //IGNORE cuts the string)
+ --EXTENSIONS--
+ iconv
++--SKIPIF--
++<?php
++/*
++ * POSIX 2024 specifies how the "//IGNORE" suffix should behave, but
++ * falls short of requiring implementations to support it (iconv_open
++ * is allowed to return EINVAL for a suffix it does not recognize).
++ *
++ * Many implementations still do not support it, which is OK. We
++ * whitelist the ones that are known to.
++ */
++if (ICONV_IMPL != "glibc" && ICONV_IMPL != "libiconv") {
++    die("skip iconv implementation may not support //IGNORE");
++}
++?>
+ --FILE--
+ <?php
++/*
++ * POSIX says that when //IGNORE is specified, invalid bytes followed
++ * by valid bytes "shall not be treated as an error." GNU iconv does
++ * not follow this convention, but PHP does the right thing. In the
++ * examples below, invalid bytes in the middle of the string get
++ * dropped, and a string is returned. The two examples where the
++ * problem is at the end do not qualify for the "shall not" exception
++ * because there are no VALID bytes after the error. So PHP is morally
++ * correct in those cases to return an error (false).
++ */
+ $text = "aa\xC3\xC3\xC3\xB8aa";
+ var_dump(iconv("UTF-8", "UTF-8", $text));
+ var_dump(urlencode(iconv("UTF-8", "UTF-8//IGNORE", $text)));
+ // only invalid
+-var_dump(urlencode(iconv("UTF-8", "UTF-8//IGNORE", "\xC3")));
++var_dump(iconv("UTF-8", "UTF-8//IGNORE", "\xC3"));
+ // start invalid
+ var_dump(urlencode(iconv("UTF-8", "UTF-8//IGNORE", "\xC3\xC3\xC3\xB8aa")));
+ // finish invalid
+-var_dump(urlencode(iconv("UTF-8", "UTF-8//IGNORE", "aa\xC3\xC3\xC3")));
++var_dump(iconv("UTF-8", "UTF-8//IGNORE", "aa\xC3\xC3\xC3"));
+ ?>
+ --EXPECTF--
+ Notice: iconv(): Detected an illegal character in input string in %s on line %d
+@@ -20,8 +44,8 @@ bool(false)
+ string(10) "aa%C3%B8aa"
+ 
+ Notice: iconv(): Detected an incomplete multibyte character in input string in %s on line %d
+-string(0) ""
++bool(false)
+ string(8) "%C3%B8aa"
+ 
+ Notice: iconv(): Detected an incomplete multibyte character in input string in %s on line %d
+-string(0) ""
++bool(false)

@@ -1,0 +1,12 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 19b0f65..e1568ee 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -11,6 +11,7 @@ option(ZMIJ_EXAMPLE "Generate the example targets" ON)
+ 
+ add_library(zmij zmij.cc zmij-int.cc zmij.h)
+ add_library(zmij::zmij ALIAS zmij)
++set_target_properties(zmij PROPERTIES SOVERSION 1)
+ target_include_directories(
+   zmij PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
+               $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>)

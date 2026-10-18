@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 inherit distutils-r1
 
 DESCRIPTION="The official Python library for Shodan"
@@ -17,7 +17,7 @@ if [[ ${PV} = "9999" ]]; then
 	EGIT_REPO_URI="https://github.com/achillean/shodan-python.git"
 else
 	inherit pypi
-	KEYWORDS="amd64 ~loong x86"
+	KEYWORDS="amd64 ~arm64 ~loong ~ppc64 x86"
 fi
 
 LICENSE="MIT"

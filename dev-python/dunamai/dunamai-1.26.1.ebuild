@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=poetry
-PYTHON_COMPAT=( python3_{12..15} )
+PYTHON_COMPAT=( python3_{12..15} python3_{14,15}t )
 
 inherit distutils-r1 pypi
 
@@ -16,7 +16,7 @@ HOMEPAGE="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc ~riscv ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
 
 RDEPEND="
 	>=dev-python/packaging-20.9[${PYTHON_USEDEP}]

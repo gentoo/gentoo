@@ -20,7 +20,7 @@
 		<flag name="mod">Basic support for MOD files</flag>
 		<flag name="modplug">Support MOD via <pkg>media-libs/libmodplug</pkg></flag>
 		<flag name="playtools">Install playwave and playmus tools (useful for testing)</flag>
-		<flag name="stb">Use <pkg>dev-libs/stb</pkg> instead of <pkg>media-libs/libvorbis</pkg> for OGG Vorbis support</flag>
+		<flag name="stb">Use bundled stb instead of <pkg>media-libs/libvorbis</pkg> for OGG Vorbis support</flag>
 		<flag name="tremor">Use <pkg>media-libs/tremor</pkg> instead of <pkg>media-libs/libvorbis</pkg> for OGG Vorbis support</flag>
 		<flag name="wav">Support WAVE files</flag>
 		<flag name="wavpack">Support WavPack files</flag>

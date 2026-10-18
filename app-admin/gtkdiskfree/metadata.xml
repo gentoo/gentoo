@@ -12,4 +12,7 @@
 	<use>
 		<flag name="gtk2">Support GTK+ 2.x instead of GTK+ 3.x</flag>
 	</use>
+	<upstream>
+		<remote-id type="gitlab">mazes_80/gtkdiskfree</remote-id>
+	</upstream>
 </pkgmetadata>

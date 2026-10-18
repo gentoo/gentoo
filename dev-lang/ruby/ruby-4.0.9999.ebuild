@@ -34,11 +34,12 @@ SLOT=${MY_SLOT}
 MY_SUFFIX=$(ver_rs 1 '' ${SLOT})
 RUBYVERSION=${SLOT}.0
 
-IUSE="berkdb debug doc examples gdbm jemalloc jit socks5 +ssl static-libs systemtap tk valgrind xemacs"
+IUSE="berkdb debug doc examples gdbm gmp jemalloc jit socks5 +ssl static-libs systemtap tk valgrind xemacs"
 
 RDEPEND="
 	berkdb? ( sys-libs/db:= )
 	gdbm? ( sys-libs/gdbm:= )
+	gmp? ( dev-libs/gmp:= )
 	jemalloc? ( dev-libs/jemalloc:= )
 	jit? ( ${RUST_DEPEND} )
 	ssl? (
@@ -47,8 +48,8 @@ RDEPEND="
 	socks5? ( >=net-proxy/dante-1.1.13 )
 	systemtap? ( dev-debug/systemtap )
 	tk? (
-		dev-lang/tcl:0=[threads]
-		dev-lang/tk:0=[threads]
+		dev-lang/tcl:0=[threads(+)]
+		dev-lang/tk:0=[threads(+)]
 	)
 	dev-libs/libyaml
 	dev-libs/libffi:=
@@ -164,6 +165,19 @@ src_prepare() {
 	sed -e '/test_prelude_gems_and_loaded_features/aomit "Does not match ruby40"' \
 		-i test/ruby/test_box.rb
 
+	# Errno::EBUSY: Device or resource busy - getaddrinfo
+	sed -e '/test_error_message/aomit "May fails in a network sandbox"' \
+		-i test/socket/test_addrinfo.rb || die
+	sed -e '/test_proxy_eh_ENV_with_user/aomit "May fails in a network sandbox"' \
+		-e '/test_proxy_eh_ENV_with_urlencoded_user/aomit "May fails in a network sandbox"' \
+		-e '/test_proxy_address_ENV/aomit "May fails in a network sandbox"' \
+		-e '/test_proxy_eh_ENV_no_proxy/aomit "May fails in a network sandbox"' \
+		-e '/test_proxy_port_ENV/aomit "May fails in a network sandbox"' \
+		-e '/test_proxy_eh_ENV/aomit "May fails in a network sandbox"' \
+		-i test/net/http/test_http.rb || die
+	sed -e '/"raises an error on unknown hostnames"/,/^  end/ s:^:#:' \
+		-i spec/ruby/library/socket/ipsocket/getaddress_spec.rb || die
+
 	# Have ruby --version print out ${PV}
 	if [[ ${PV} == *9999* ]]; then
 		sed -i "s/#define RUBY_VERSION_TEENY.*/#define RUBY_VERSION_TEENY 9999/" version.h || die
@@ -263,6 +277,7 @@ src_configure() {
 		--with-setjmp-type=setjmp
 		--enable-mkmf-verbose
 		--with-out-ext="${modules}"
+		$(use_with gmp)
 		$(use_with jemalloc jemalloc)
 		$(use_enable jit jit-support)
 		$(use_enable jit yjit)

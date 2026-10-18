@@ -14,7 +14,7 @@ SRC_URI="
 
 LICENSE="ErlPL-1.1"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~sparc ~x86"
+KEYWORDS="amd64 ~arm ~sparc ~x86"
 
 DEPEND="
 	>=dev-erlang/stringprep-1.0.34

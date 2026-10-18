@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake db-use flag-o-matic gnome2 vala virtualx
+inherit cmake db-use flag-o-matic gnome2 locale-utils vala virtualx
 
 DESCRIPTION="Evolution groupware backend"
 HOMEPAGE="https://gitlab.gnome.org/GNOME/evolution/-/wikis/home https://gitlab.gnome.org/GNOME/evolution-data-server"
@@ -12,7 +12,7 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/evolution/-/wikis/home https://gitlab.g
 LICENSE="|| ( LGPL-2 LGPL-3 ) BSD Sleepycat"
 
 SLOT="0/67-11-21-5-3-27-2-27-4-0" # subslot = libcamel-1.2/libebackend-1.2/libebook-1.2/libebook-contacts-1.2/libecal-2.0/libedata-book-1.2/libedata-cal-2.0/libedataserver-1.2/libedataserverui-1.2/libedataserverui4-1.0 soname version
-KEYWORDS="~alpha ~amd64 ~arm arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc x86"
 
 IUSE="berkdb +gnome-online-accounts +gtk gtk-doc +introspection ldap kerberos +oauth-gtk3 oauth-gtk4 sound vala +weather"
 REQUIRED_USE="
@@ -78,8 +78,7 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
-# Some tests fail due to missing locales.
-# Also, dbus tests are flaky, bugs #397975 #501834
+# dbus tests are flaky, bugs #397975 #501834
 # It looks like a nightmare to disable those for now.
 RESTRICT="!test? ( test )"
 
@@ -153,6 +152,8 @@ src_compile() {
 }
 
 src_test() {
+	local -x LOCPATH
+	elocale_gen en_US.UTF-8
 	virtx cmake_src_test
 }
 

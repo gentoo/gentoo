@@ -3,7 +3,7 @@
 
 EAPI=8
 
-USE_RUBY="ruby31 ruby32 ruby33"
+USE_RUBY="ruby31 ruby32 ruby33 ruby34 ruby40"
 
 RUBY_FAKEGEM_BINWRAP=""
 RUBY_FAKEGEM_EXTRADOC="CHANGELOG.md CONTRIBUTING.md HISTORY.md README.md"
@@ -27,7 +27,7 @@ SRC_URI="https://github.com/puppetlabs/puppet-resource_api/archive/refs/tags/v${
 LICENSE="MIT"
 
 SLOT="$(ver_cut 1)"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 
 all_ruby_prepare() {
 	# the gemspec tries to system(git ls-files) but has a meaningful fallback, so just make it not run git.

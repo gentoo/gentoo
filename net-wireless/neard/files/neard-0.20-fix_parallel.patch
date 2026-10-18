@@ -1,0 +1,13 @@
+PR pending https://github.com/linux-nfc/neard/pull/34.patch
+fix parallel with tools, that requires generated local_headers
+see https://bugs.gentoo.org/978294
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -263,6 +263,7 @@ $(se_seeld_OBJECTS) \
+ $(unit_test_ndef_parse_OBJECTS) \
+ $(unit_test_ndef_build_OBJECTS) \
+ $(unit_test_snep-read_OBJECTS) \
++$(tools_nciattach_OBJECTS) \
+ $(tools_snep_send_OBJECTS): $(local_headers)
+ 
+ include/near/version.h: include/version.h

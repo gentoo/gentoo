@@ -14,7 +14,7 @@ SRC_URI="
 
 LICENSE="BSD GPL-2 MPL-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc ~riscv ~sparc ~x86 ~x64-macos"
+KEYWORDS="amd64 ~arm64 ~ppc ~riscv ~sparc ~x86 ~x64-macos"
 IUSE="X debug deprecated doc examples fftw +klu openmp +readline +shared tcl"
 RESTRICT="!test? ( test )"
 

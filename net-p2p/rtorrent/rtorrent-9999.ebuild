@@ -55,6 +55,10 @@ pkg_setup() {
 }
 
 src_prepare() {
+	if use elibc_musl; then
+		QA_CONFIG_IMPL_DECL_SKIP=( posix_spawn_file_actions_addclosefrom_np )
+	fi
+
 	default
 
 	# use system-json

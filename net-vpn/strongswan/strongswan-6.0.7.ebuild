@@ -15,7 +15,7 @@ SRC_URI="
 
 LICENSE="GPL-2 RSA DES"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
 IUSE="+caps curl +constraints debug dhcp eap farp gcrypt +gmp ldap mysql networkmanager +non-root +openssl selinux sqlite systemd pam pkcs11"
 
 STRONGSWAN_PLUGINS_STD="aes cmac curve25519 des dnskey drbg eap-radius fips-prf gcm hmac led lookip md5 nonce pem pgp
@@ -105,6 +105,7 @@ src_configure() {
 		$(use_enable eap eap-aka-3gpp2)
 		$(use_enable eap md4)
 		$(use_enable eap eap-mschapv2)
+		$(use_enable eap eap-peap)
 		$(use_enable eap eap-radius)
 		$(use_enable eap eap-tls)
 		$(use_enable eap eap-ttls)

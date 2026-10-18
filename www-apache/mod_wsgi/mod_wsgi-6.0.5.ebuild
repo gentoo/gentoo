@@ -14,7 +14,7 @@ SRC_URI="https://github.com/GrahamDumpleton/mod_wsgi/releases/download/${P}/${P}
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ppc ~ppc64 x86"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}"

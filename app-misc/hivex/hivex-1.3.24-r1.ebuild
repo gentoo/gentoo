@@ -3,9 +3,9 @@
 
 EAPI=8
 
-USE_RUBY="ruby32 ruby33"
+USE_RUBY="ruby32 ruby33 ruby34 ruby40"
 RUBY_OPTIONAL=yes
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 
 inherit dot-a libtool perl-module ruby-ng python-single-r1 strip-linguas
 

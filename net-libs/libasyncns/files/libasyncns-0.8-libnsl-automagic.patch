@@ -1,0 +1,13 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -76,7 +76,9 @@
+ 
+ AC_SYS_LARGEFILE
+ 
+-AC_CHECK_LIB(nsl, gethostbyname)
++AC_SEARCH_LIBS([gethostbyname], [nsl],
++  [], [AC_MSG_ERROR([gethostbyname not found])]
++)
+ AC_CHECK_LIB(socket, connect)
+ 
+ ACF_SEARCH_FUNCTION([res_query], [-lresolv, -lbind],

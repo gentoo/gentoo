@@ -14,10 +14,9 @@ LICENSE="MIT Apache-2.0 BSD BSD-2 MPL-2.0 ISC"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
 
-BDEPEND="dev-vcs/git"
-
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.0.15-no-strip.patch
+	"${FILESDIR}"/${PN}-2.0.15-remove-git-depend.patch
 )
 
 src_compile() {

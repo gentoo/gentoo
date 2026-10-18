@@ -1,0 +1,58 @@
+From 98a9ffcaa6b40f32c202830eb90327f4a5dcf8ec Mon Sep 17 00:00:00 2001
+From: Lukas Schmelting <lschmelting@posteo.com>
+Date: Mon, 13 Jul 2026 23:37:21 +0200
+Subject: [PATCH] meson: Don't export Vulkan as an installed dependency
+
+The Vulkan dependency added in 1b5149eab addressed builds where GTK was
+built with Vulkan support but the Vulkan SDK was discovered by Meson's
+native dependency lookup instead of pkg-config. In that configuration
+GTK headers may include Vulkan headers, so gtkmm needs the Vulkan
+include path during its build.
+
+However, adding `vulkan_dep` to the exported dependency objects also
+records Vulkan in the installed pkg-config metadata. The resulting
+gtkmm-4.0.pc contains a private dependency on Vulkan, requiring
+consumers to resolve `vulkan.pc` even though gtkmm's installed interface
+does not expose Vulkan.
+
+Build environments where Vulkan headers are available to GTK but
+Vulkan's pkg-config metadata is not installed are affected by this. In
+particular, this was observed in Gentoo, where gtkmm consumers failed to
+configure because pkg-config could not resolve the Vulkan dependency
+from gtkmm-4.0.pc.
+
+Use a partial dependency containing only compile arguments for the
+library targets, and avoid exporting Vulkan through the installed
+dependency metadata.
+
+This retains the Vulkan include path handling needed when building gtkmm
+against GTK builds with Vulkan support, while avoiding a Vulkan
+dependency for gtkmm consumers.
+---
+ meson.build | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/meson.build b/meson.build
+index dea3af35..c6da14af 100644
+--- a/meson.build
++++ b/meson.build
+@@ -150,6 +150,7 @@ epoxy_dep = dependency('epoxy', version: epoxy_req, required: build_demos)
+ # to use a custom path for the Vulkan SDK. Bugs that are found with it should
+ # be reported upstream and fixed.
+ vulkan_dep = dependency('vulkan', required: false)
++vulkan_compile_dep = vulkan_dep.partial_dependency(compile_args: true)
+ 
+ # The -mm libraries do not yet have pkg-config files for MSVC builds,
+ # so check for them manually
+@@ -163,7 +164,7 @@ gmmproc_dir = glibmm_dep.get_variable('gmmprocdir')
+ 
+ gmmproc_extra_m4_dirs = [pangomm_dep.get_variable('gmmprocm4dir')]
+ 
+-gdkmm_build_dep = [giomm_dep, gtk_dep, cairomm_dep, pangomm_dep, gdk_pixbuf_dep, vulkan_dep]
++gdkmm_build_dep = [giomm_dep, gtk_dep, cairomm_dep, pangomm_dep, gdk_pixbuf_dep, vulkan_compile_dep]
+ gskmm_build_dep = gdkmm_build_dep
+ gtkmm_build_dep = gdkmm_build_dep
+ 
+-- 
+GitLab
+

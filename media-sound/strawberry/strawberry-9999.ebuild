@@ -25,7 +25,8 @@ COMMON_DEPEND="
 	dev-db/sqlite:3
 	dev-libs/glib:2
 	dev-libs/icu:=
-	dev-libs/kdsingleapplication[qt6(+)]
+	dev-libs/kdsingleapplication:=[qt6(+)]
+	dev-libs/openssl:=
 	dev-qt/qtbase:6[concurrent,dbus?,gui,network,ssl,sql,sqlite,widgets,X?]
 	media-libs/taglib:=
 	media-libs/gstreamer:1.0
@@ -87,8 +88,9 @@ src_configure() {
 		-DENABLE_DEBUG_OUTPUT="$(usex debug)"
 		-DENABLE_DISCORD_RPC="$(usex discord)"
 		-DENABLE_KGLOBALACCEL_GLOBALSHORTCUTS=$(usex kde)
-		-DENABLE_SONGFINGERPRINTING="$(usex chromaprint)"
-		-DENABLE_MUSICBRAINZ="$(usex chromaprint)"
+		-DENABLE_CHROMAPRINT="$(usex chromaprint)"
+		-DENABLE_SONGTRACKING="$(usex chromaprint)"
+		-DENABLE_TAGFETCHER="$(usex chromaprint)"
 		-DENABLE_X11_GLOBALSHORTCUTS="$(usex X)"
 		-DENABLE_AUDIOCD="$(usex cdda)"
 		-DENABLE_MTP="$(usex mtp)"

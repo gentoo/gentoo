@@ -5,10 +5,8 @@ EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=sip
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 inherit distutils-r1 flag-o-matic multiprocessing pypi qmake-utils
-
-QT_PV=$(ver_cut 1-2):6
 
 DESCRIPTION="Python bindings for QtWebEngine"
 HOMEPAGE="https://www.riverbankcomputing.com/software/pyqtwebengine/"
@@ -19,12 +17,12 @@ KEYWORDS="amd64 arm64"
 IUSE="debug quick +widgets"
 
 RDEPEND="
-	>=dev-python/pyqt6-${QT_PV%:*}[gui,ssl,webchannel,${PYTHON_USEDEP}]
-	>=dev-qt/qtbase-${QT_PV}[gui,widgets?]
-	>=dev-qt/qtwebengine-${QT_PV}[widgets]
+	>=dev-python/pyqt6-$(ver_cut 1-2)[gui,ssl,webchannel,${PYTHON_USEDEP}]
+	dev-qt/qtbase:6[gui,widgets?]
+	dev-qt/qtwebengine:6[widgets]
 	quick? (
 		dev-python/pyqt6[qml]
-		>=dev-qt/qtwebengine-${QT_PV}[qml]
+		dev-qt/qtwebengine:6[qml]
 	)
 	widgets? ( dev-python/pyqt6[network,printsupport,widgets] )
 "
@@ -32,7 +30,7 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	>=dev-python/pyqt-builder-1.19[${PYTHON_USEDEP}]
 	>=dev-python/sip-6.15[${PYTHON_USEDEP}]
-	>=dev-qt/qtbase-${QT_PV}
+	dev-qt/qtbase:6
 "
 
 src_prepare() {
@@ -54,7 +52,7 @@ python_configure_all() {
 
 	DISTUTILS_ARGS=(
 		--jobs="$(makeopts_jobs)"
-		--qmake="$(qt6_get_bindir)"/qmake
+		--qmake="$(qt_get_broot_binary 6 qmake)"
 		--qmake-setting="$(qt6_get_qmake_args)"
 		--verbose
 

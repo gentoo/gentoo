@@ -1,0 +1,29 @@
+https://github.com/nodejs/node/pull/63934
+https://bugs.gentoo.org/977376
+
+From e0fc1b5348f478287d17ddcddc419f1a0f426acd Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Andr=C3=A9?= <aschwarz@usp.br>
+Date: Mon, 15 Jun 2026 19:36:15 -0300
+Subject: [PATCH] Add express <cstdlib> inclusion to format.h
+
+This is preventing nodejs to compile with LLVM's libcxx, missing definition to malloc.
+
+Reference: Gentoo bug 977376 at https://bugs.gentoo.org/977376
+---
+ .../LIEF/third-party/spdlog/include/spdlog/fmt/bundled/format.h | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/deps/LIEF/third-party/spdlog/include/spdlog/fmt/bundled/format.h b/deps/LIEF/third-party/spdlog/include/spdlog/fmt/bundled/format.h
+index 50e571442e5393..88f32c5f75744f 100644
+--- a/deps/LIEF/third-party/spdlog/include/spdlog/fmt/bundled/format.h
++++ b/deps/LIEF/third-party/spdlog/include/spdlog/fmt/bundled/format.h
+@@ -39,6 +39,8 @@
+ #endif
+ 
+ #include "base.h"
++#include <cstdlib>	// Needed for malloc support
++              			// when using clang compiler
+ 
+ #ifndef FMT_MODULE
+ #  include <cmath>    // std::signbit
+

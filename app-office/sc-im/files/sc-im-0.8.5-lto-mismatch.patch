@@ -1,0 +1,39 @@
+https://github.com/andmarti1424/sc-im/pull/972
+https://bugs.gentoo.org/962947
+
+From d172a436ced0839ad7ea4f3549f952216e050fb6 Mon Sep 17 00:00:00 2001
+From: cntrmx <strwlf@proton.me>
+Date: Wed, 17 Sep 2025 22:36:08 -0500
+Subject: [PATCH] Fix LTO mismatch: match sig_winchg() declaration with
+ definition
+
+When building with LTO, GCC ( 15.2.0 ) reports a type mismatch
+between the declaration in 'color.c' and definition in 'tui.c'.
+This patch updates the declaration to take an 'int' parameter
+and passes a dummy value to avoid build failure.
+---
+ color.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/color.c b/src/color.c
+index 4f368a09..654d9fb1 100644
+--- a/color.c
++++ b/color.c
+@@ -586,7 +586,7 @@ int same_ucolor(struct ucolor * u, struct ucolor * v) {
+ int redefine_color(char * color, int r, int g, int b) {
+     struct roman * roman = session->cur_doc;
+     #if defined(NCURSES) && defined(USECOLORS)
+-    extern void sig_winchg();
++    extern void sig_winchg(int signum);
+     if (
+         ! get_conf_int("nocurses")
+         && has_colors() && can_change_color()
+@@ -601,7 +601,7 @@ int redefine_color(char * color, int r, int g, int b) {
+ #else
+            if (init_color(atoi(s), RGB(r, g, b)) == 0) {
+ #endif
+-               sig_winchg();
++               sig_winchg(0);
+                if (! roman->loading) sc_info("Color %s redefined to %d %d %d.", color, r, g, b);
+                return 0;
+            }

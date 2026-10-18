@@ -1,0 +1,50 @@
+From 834bde2837ba2989db9e1c746d3d25bcb062dc48 Mon Sep 17 00:00:00 2001
+From: Serhii Hatsan <serhiihatcan@gmail.com>
+Date: Tue, 8 Sep 2026 20:16:21 +0000
+Subject: [PATCH] Add missing QtQml link library
+
+During build process of kcron on Gentoo system (QtBase 6.11.2-r1, QtDeclarative 6.11.2) build system tells that "qqml.h" not found because linking directive for QtQml is missing (header is located under /usr/include/qt6/QtQml/qqml.h):
+
+```bash
+In file included from /var/tmp/portage/kde-apps/kcron-9999/work/kcron-9999/src/taskvalidator.cpp:9:
+/var/tmp/portage/kde-apps/kcron-9999/work/kcron-9999/src/taskvalidator.h:12:10: fatal error: qqml.h: No such file or directory
+   12 | #include <qqml.h>
+      |          ^~~~~~~~
+compilation terminated.
+```
+
+Adding QtQml to target_link_libraries resolves the issue and produces successful build.
+
+(cherry picked from commit 0a03a7317ad34299c1cef9f128ffd0b99b98136d)
+---
+ CMakeLists.txt     | 1 +
+ src/CMakeLists.txt | 1 +
+ 2 files changed, 2 insertions(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 349af78..8321c20 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -28,6 +28,7 @@ kde_clang_format(${ALL_CLANG_FORMAT_SOURCE_FILES})
+ 
+ find_package (Qt6 ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS
+     Core
++    Qml
+     PrintSupport
+     Quick
+ )
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 36a9768..a0af619 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -49,6 +49,7 @@ target_sources(kcm_cron PRIVATE
+ 
+ target_link_libraries(kcm_cron
+     Qt6::Core
++    Qt6::Qml
+     Qt6::PrintSupport
+     KF6::ConfigWidgets
+     KF6::I18n
+-- 
+GitLab
+

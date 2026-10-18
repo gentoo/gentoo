@@ -3,9 +3,9 @@
 
 EAPI=8
 
-LLVM_COMPAT=( {16..22} )
+LLVM_COMPAT=( {17..23} )
 LLVM_OPTIONAL=1
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 inherit cmake flag-o-matic llvm-r2 python-any-r1 readme.gentoo-r1 xdg
 
 if [[ ${PV} == 9999 ]]; then
@@ -96,8 +96,8 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-16.0.0-musl-no-execinfo.patch
-	"${FILESDIR}"/${PN}-12.0.0-musl-no-malloc-trim.patch
+	"${FILESDIR}"/${PN}-21.0.0-musl-no-execinfo.patch
+	"${FILESDIR}"/${PN}-20.0.1-libcxx23.patch
 )
 
 src_prepare() {
@@ -121,6 +121,8 @@ src_prepare() {
 
 src_configure() {
 	use clang && llvm_chost_setup
+
+	replace-flags '-O[sz]' -O2 #980116
 
 	# -Werror=lto-type-mismatch issues, needs looking into
 	filter-lto

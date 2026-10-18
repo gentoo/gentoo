@@ -16,8 +16,6 @@ else
 			-> ${P}.tar.gz
 	"
 	S=${WORKDIR}/${PN}
-	# note that yt-dlp bumps are typically done straight-to-stable (unless some
-	# major/breaking changes) given website changes breaks it on a whim
 	KEYWORDS="amd64 arm arm64 ~hppa ppc ppc64 ~riscv x86 ~arm64-macos ~x64-macos"
 fi
 

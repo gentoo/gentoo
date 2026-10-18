@@ -40,7 +40,7 @@ RDEPEND="${DEPEND}
 	sys-apps/iproute2
 	sys-fs/fuse:*
 	>=sys-fs/lxcfs-5.0.0
-	sys-fs/squashfs-tools[lzma]
+	sys-fs/squashfs-tools[lzma,zstd]
 	virtual/acl
 	apparmor? ( sec-policy/apparmor-profiles )
 	qemu? (
@@ -49,7 +49,7 @@ RDEPEND="${DEPEND}
 		sys-apps/gptfdisk
 	)
 	selinux? ( sec-policy/selinux-incus )"
-BDEPEND=">=dev-lang/go-1.25.10
+BDEPEND=">=dev-lang/go-1.26.7
 	nls? ( sys-devel/gettext )
 	verify-sig? ( sec-keys/openpgp-keys-linuxcontainers )"
 

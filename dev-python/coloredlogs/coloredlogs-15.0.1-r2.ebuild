@@ -3,8 +3,9 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( pypy3_11 python3_{11..14} )
 DISTUTILS_USE_PEP517=setuptools
+PYTHON_COMPAT=( python3_{12..14} )
+
 inherit distutils-r1 pypi
 
 DESCRIPTION="Colored stream handler for the logging module"
@@ -35,6 +36,7 @@ PATCHES=(
 )
 
 distutils_enable_sphinx docs
+EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
 
 EPYTEST_DESELECT=(

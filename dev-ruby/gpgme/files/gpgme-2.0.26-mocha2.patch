@@ -1,0 +1,12 @@
+--- a/test/test_helper.rb
++++ b/test/test_helper.rb
+@@ -15,7 +15,7 @@ require 'bundler/setup'
+ require 'minitest/autorun'
+ require 'minitest/spec'
+ require 'minitest/pride'
+-require 'mocha'
++require 'mocha/minitest'
+ require 'gpgme'
+ 
+ if RUBY_VERSION.split('.').first.to_i > 1
+

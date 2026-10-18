@@ -1,9 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit autotools
+inherit autotools toolchain-funcs
 
 DESCRIPTION="Tool for conversion of MSWord doc and rtf files to something readable"
 HOMEPAGE="http://wvware.sourceforge.net/"
@@ -11,7 +11,7 @@ SRC_URI="http://abiword.org/downloads/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~mips ppc ppc64 ~riscv ~sparc x86 ~x64-solaris"
+KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ~mips ppc ppc64 ~riscv ~sparc x86 ~x64-solaris"
 IUSE="tools wmf"
 
 RDEPEND="
@@ -57,6 +57,7 @@ src_prepare() {
 }
 
 src_configure() {
+	export ac_cv_path_PKG_CONFIG="$(tc-getPKG_CONFIG)"
 	econf $(use_with wmf libwmf)
 }
 

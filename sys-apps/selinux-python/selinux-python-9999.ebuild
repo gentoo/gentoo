@@ -4,7 +4,7 @@
 EAPI="8"
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{12..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 PYTHON_REQ_USE="xml(+)"
 
 inherit distutils-r1 toolchain-funcs
@@ -21,7 +21,7 @@ if [[ ${PV} == 9999 ]] ; then
 	S="${WORKDIR}/${P}/${PN#selinux-}"
 else
 	SRC_URI="https://github.com/SELinuxProject/selinux/releases/download/${MY_PV}/${MY_P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
 	S="${WORKDIR}/${MY_P}"
 fi
 
@@ -30,13 +30,16 @@ SLOT="0"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-RDEPEND=">=sys-libs/libselinux-${PV}:=[python]
+RDEPEND="
+	>=sys-libs/libselinux-${PV}:=[python,${PYTHON_USEDEP}]
 	>=sys-libs/libsemanage-${PV}:=[python(+)]
 	>=sys-libs/libsepol-${PV}:=[static-libs(+)]
 	>=app-admin/setools-4.2.0[${PYTHON_USEDEP}]
-	>=sys-process/audit-1.5.1[python,${PYTHON_USEDEP}]"
+	>=sys-process/audit-1.5.1[python,${PYTHON_USEDEP}]
+"
 DEPEND="${RDEPEND}"
 BDEPEND="
+	dev-python/build[${PYTHON_USEDEP}]
 	test? (
 		${RDEPEND}
 		sec-policy/selinux-base
@@ -80,6 +83,7 @@ python_test() {
 	# PYTHONPATH, so they get actually found and used. In
 	# particular, already installed versions on the system are not
 	# used.
+	local dir
 	for dir in audit2allow chcat semanage sepolgen/src sepolicy ; do
 		PYTHONPATH="${S}/${dir}:${PYTHONPATH}"
 	done

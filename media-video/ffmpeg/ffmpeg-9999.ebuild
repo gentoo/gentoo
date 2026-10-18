@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit flag-o-matic multilib-minimal toolchain-funcs udev
+inherit flag-o-matic multilib-minimal toolchain-funcs
 
 FFMPEG_SOC_PATCH=
 FFMPEG_SUBSLOT=61.63.63 # avutil.avcodec.avformat SONAME
@@ -52,6 +52,9 @@ FFMPEG_IUSE_MAP=(
 	chromaprint
 	codec2:libcodec2
 	cuda-clang:cuda-llvm
+	# TODO?: currently curl is not used by default even if enabled but, if that
+	# changes, should consider swapping defaults from gnutls to +curl
+	curl:libcurl
 	+dav1d:libdav1d
 	${FFMPEG_UNSLOTTED:+doc:^htmlpages}
 	+drm:libdrm
@@ -110,6 +113,7 @@ FFMPEG_IUSE_MAP=(
 	sdl:sdl2
 	snappy:libsnappy
 	sndio
+	sofa:^libmysofa # no multilib
 	speex:libspeex
 	srt:libsrt
 	ssh:libssh
@@ -125,10 +129,8 @@ FFMPEG_IUSE_MAP=(
 	vmaf:libvmaf
 	vorbis:libvorbis
 	vpx:libvpx
-	# libshaderc: merged here given shaderc is needed at build-time
-	# either way and many vulkan features depend on spirv_library
 	# vulkan-static: it still uses shared, only means no dlopen()
-	vulkan:libshaderc,vulkan,vulkan-static
+	vulkan:vulkan,vulkan-static
 	webp:libwebp
 	x264:libx264
 	x265:libx265
@@ -194,6 +196,7 @@ COMMON_DEPEND="
 	cdio? ( dev-libs/libcdio-paranoia:=[${MULTILIB_USEDEP}] )
 	chromaprint? ( media-libs/chromaprint:=[${MULTILIB_USEDEP}] )
 	codec2? ( media-libs/codec2:=[${MULTILIB_USEDEP}] )
+	curl? (  net-misc/curl[${MULTILIB_USEDEP}] )
 	dav1d? ( media-libs/dav1d:=[${MULTILIB_USEDEP}] )
 	dvd? (
 		media-libs/libdvdnav[${MULTILIB_USEDEP}]
@@ -266,6 +269,7 @@ COMMON_DEPEND="
 	)
 	snappy? ( app-arch/snappy:=[${MULTILIB_USEDEP}] )
 	sndio? ( media-sound/sndio:=[${MULTILIB_USEDEP}] )
+	sofa? ( media-libs/libmysofa )
 	speex? ( media-libs/speex[${MULTILIB_USEDEP}] )
 	srt? ( net-libs/srt:=[${MULTILIB_USEDEP}] )
 	ssh? ( net-libs/libssh:=[sftp,${MULTILIB_USEDEP}] )
@@ -291,10 +295,7 @@ COMMON_DEPEND="
 	vmaf? ( media-libs/libvmaf:=[${MULTILIB_USEDEP}] )
 	vorbis? ( media-libs/libvorbis[${MULTILIB_USEDEP}] )
 	vpx? ( media-libs/libvpx:=[${MULTILIB_USEDEP}] )
-	vulkan? (
-		media-libs/shaderc[${MULTILIB_USEDEP}]
-		media-libs/vulkan-loader[${MULTILIB_USEDEP}]
-	)
+	vulkan? ( media-libs/vulkan-loader[${MULTILIB_USEDEP}] )
 	webp? ( media-libs/libwebp:=[${MULTILIB_USEDEP}] )
 	x264? ( media-libs/x264:=[${MULTILIB_USEDEP}] )
 	x265? ( media-libs/x265:=[${MULTILIB_USEDEP}] )
@@ -305,7 +306,10 @@ COMMON_DEPEND="
 	zlib? ( virtual/zlib:=[${MULTILIB_USEDEP}] )
 	zvbi? ( media-libs/zvbi[${MULTILIB_USEDEP}] )
 	${FFMPEG_SOC_PATCH:+"
-		soc? ( virtual/libudev:=[${MULTILIB_USEDEP}] )
+		soc? (
+			media-video/ffmpeg-soc-udev-rules
+			virtual/libudev:=[${MULTILIB_USEDEP}]
+		)
 	"}
 "
 RDEPEND="
@@ -347,7 +351,7 @@ MULTILIB_WRAPPED_HEADERS=(
 )
 
 PATCHES=(
-	"${FILESDIR}"/ffmpeg-6.1-opencl-parallel-gmake-fix.patch
+	"${FILESDIR}"/ffmpeg-9.0.2-opencl-parallel-gmake-fix.patch
 )
 
 pkg_pretend() {
@@ -405,12 +409,6 @@ src_prepare() {
 		tc-ld-is-mold && tc-is-clang && FFMPEG_ENABLE_LTO= #963835
 	fi
 	filter-lto
-
-	# workaround ICE with <gcc-16.1.1_p20260606:16 (bug #973641)
-	# TODO: kept to let people update, cleanup after a few months
-	tc-is-gcc && [[ $(gcc-major-version) -eq 16 ]] &&
-		has_version -b '<sys-devel/gcc-16.1.1_p20260606:16' &&
-		append-flags -fno-tree-vectorize
 }
 
 multilib_src_configure() {
@@ -461,11 +459,12 @@ multilib_src_configure() {
 		# disabled primarily due to being unpackaged
 		--disable-decklink
 		--disable-libaribcaption
+		--disable-libastcenc
 		--disable-libdavs2
+		--disable-libfdk-xhe-aac
 		--disable-libklvanc
 		--disable-liblcevc-dec
 		--disable-libmpeghdec
-		--disable-libmysofa
 		--disable-liboapv
 		--disable-libonnxruntime
 		--disable-libopenvino
@@ -488,7 +487,6 @@ multilib_src_configure() {
 
 		# disabled for other or additional reasons
 		--disable-cuda-nvcc # prefer cuda-llvm for less issues
-		--disable-libglslang # prefer shaderc (bug #918989,#920283,#922333)
 		--disable-liblensfun # https://trac.ffmpeg.org/ticket/9112 (abandoned?)
 		--disable-libmfx # prefer libvpl for USE=qsv
 		--disable-libopencv # leaving for later due to circular opencv[ffmpeg]
@@ -551,11 +549,13 @@ multilib_src_configure() {
 			vsynth{1,2,3}-ffvhuff420p12
 		)
 
-	# zlib-ng is not bitexact w/ zlib producing mismatching md5sum (bug #965737)
+	# zlib-ng is not bitexact w/ zlib producing mismatching md5sum
+	# (bug #965737,#983573,#983934)
 	has_version 'sys-libs/zlib-ng[compat]' &&
 		skip_tests+=(
-			lavf-{apng{,.png},gray16be.png,png,rgb48be.png}
+			lavf-{apng{,.png},gray16be.png,pdv{,-intra},png,rgb48be.png}
 			mov-mp4-frag-flush
+			seek-lavf-pdv
 			vsynth{1,2,3}-{flashsv,mpng,zlib}
 		)
 
@@ -623,17 +623,4 @@ multilib_src_install() {
 	emake V=1 DESTDIR="${D}" install
 	in_iuse chromium && use chromium && multilib_is_native_abi &&
 		emake V=1 DESTDIR="${D}" install-libffmpeg
-}
-
-multilib_src_install_all() {
-	in_iuse soc && use soc && udev_dorules "${FILESDIR}"/60-dma-heap-ffmpeg.rules
-	einstalldocs
-}
-
-pkg_postinst() {
-	in_iuse soc && use soc && udev_reload
-}
-
-pkg_postrm() {
-	in_iuse soc && use soc && udev_reload
 }

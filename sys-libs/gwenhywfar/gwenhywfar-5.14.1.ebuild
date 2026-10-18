@@ -53,15 +53,17 @@ src_configure() {
 		$(use_enable debug)
 		#$(use_enable doc full-doc)
 	)
-	use qt6 && myeconfargs+=(
-		--with-qmake="$(qt6_get_bindir)/qmake"
-	)
+
+	if use qt6; then
+		myeconfargs+=( --with-qmake="$(qt_get_broot_binary 6 qmake)" )
+		local -x QTPATHS=$(qt_get_broot_binary 6 qtpaths)
+	fi
 
 	local guis=()
 	use gtk && guis+=( gtk3 )
 	use qt6 && guis+=( qt5 ) # yes. qt5.
-	QTPATHS="$(qt6_get_bindir)/qtpaths" \
-		econf "${myeconfargs[@]}" "--with-guis=${guis[*]}"
+
+	econf "${myeconfargs[@]}" "--with-guis=${guis[*]}"
 }
 
 src_compile() {

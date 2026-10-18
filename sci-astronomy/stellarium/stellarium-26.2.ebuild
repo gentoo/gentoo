@@ -37,7 +37,7 @@ SRC_URI="
 
 LICENSE="GPL-2+ SGI-B-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~riscv ~x86"
+KEYWORDS="amd64 ~riscv ~x86"
 IUSE="debug deep-sky doc +gui gps +lens-distortion libcxx media nls +scripting +show-my-sky stars telescope test webengine +xlsx"
 RESTRICT="!test? ( test )"
 
@@ -86,6 +86,10 @@ DEPEND="${RDEPEND}
 "
 
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/stellarium.asc
+
+PATCHES=(
+	"${FILESDIR}"/stellarium-26.2-link-error.patch
+)
 
 pkg_setup() {
 	if tc-is-clang && ! use libcxx && [[ $(tc-get-cxx-stdlib) == libc++ ]]; then

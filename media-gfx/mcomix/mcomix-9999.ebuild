@@ -54,7 +54,7 @@ pkg_postinst() {
 	xdg_pkg_postinst
 
 	optfeature "RAR (.cbr) archives" app-arch/unrar
-	optfeature "7Zip archives" app-arch/p7zip
+	optfeature "7Zip archives" app-arch/7zip
 	optfeature "LHA/LZA archives" app-arch/lha
 	optfeature "PDF files" app-text/mupdf
 }

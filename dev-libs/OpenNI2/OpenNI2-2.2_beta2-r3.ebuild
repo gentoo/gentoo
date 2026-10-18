@@ -11,7 +11,7 @@ fi
 inherit flag-o-matic toolchain-funcs java-pkg-opt-2
 
 if [[ ${PV} != 9999 ]]; then
-	KEYWORDS="~amd64 ~arm"
+	KEYWORDS="amd64 ~arm"
 	SRC_URI="https://github.com/structureio/OpenNI2/archive/${PV/_/-}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${P/_/-}"
 fi

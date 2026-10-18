@@ -57,7 +57,7 @@ LLVM_VERSION=$(ver_cut 1-3)
 # @DESCRIPTION:
 # The major version of current LLVM trunk.  Used to determine
 # the correct branch to use.
-_LLVM_MAIN_MAJOR=23
+_LLVM_MAIN_MAJOR=24
 
 # @ECLASS_VARIABLE: _LLVM_SOURCE_TYPE
 # @INTERNAL
@@ -72,17 +72,11 @@ if [[ -z ${_LLVM_SOURCE_TYPE+1} ]]; then
 			_LLVM_SOURCE_TYPE=snapshot
 
 			case ${PV} in
-				23.0.0_pre20260628)
-					EGIT_COMMIT=49de424f45389cb757c3cc8c50daf38d024e2314
+				24.0.0_pre20261010)
+					EGIT_COMMIT=53310c92e86e1c285b1fe3aaf76158addd0a2036
 					;;
-				23.0.0_pre20260605)
-					EGIT_COMMIT=6d4cd34d861baec5a761d15b81395fbe88f4391b
-					;;
-				23.0.0_pre20260512)
-					EGIT_COMMIT=8789401c6f0b2c53ba348860c1b0c5df1fa40c8c
-					;;
-				23.0.0_pre20260507)
-					EGIT_COMMIT=0f3ca6bb9ca514518c55fc02855a6083312ddfe2
+				24.0.0_pre20260929)
+					EGIT_COMMIT=9fe649af67007493c02108b484c8b9259e3d522e
 					;;
 				*)
 					die "Unknown snapshot: ${PV}"
@@ -188,13 +182,23 @@ case ${LLVM_MAJOR} in
 			XCore
 		)
 		;;
-	*)
+	2[0-3])
 		ALL_LLVM_EXPERIMENTAL_TARGETS=(
 			ARC CSKY DirectX M68k Xtensa
 		)
 		ALL_LLVM_PRODUCTION_TARGETS=(
 			AArch64 AMDGPU ARM AVR BPF Hexagon Lanai LoongArch Mips
 			MSP430 NVPTX PowerPC RISCV Sparc SPIRV SystemZ VE
+			WebAssembly X86 XCore
+		)
+		;;
+	*)
+		ALL_LLVM_EXPERIMENTAL_TARGETS=(
+			ARC CSKY M68k Xtensa
+		)
+		ALL_LLVM_PRODUCTION_TARGETS=(
+			AArch64 AMDGPU ARM AVR BPF DirectX Hexagon Lanai LoongArch
+			Mips MSP430 NVPTX PowerPC RISCV Sparc SPIRV SystemZ VE
 			WebAssembly X86 XCore
 		)
 		;;

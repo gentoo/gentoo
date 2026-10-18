@@ -11,30 +11,32 @@ HOMEPAGE="https://pwmt.org/projects/zathura/"
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/pwmt/zathura.git"
+	BDEPEND="dev-python/sphinx"
 else
-	SRC_URI="https://github.com/pwmt/zathura/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="
+		https://github.com/pwmt/zathura/archive/${PV}.tar.gz -> ${P}.tar.gz
+		https://oss.turretllc.us/manpages/${P}-manpages.tar.xz
+	"
 	KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
 fi
 
 LICENSE="ZLIB"
-SLOT="0/6.7" # plugin versions api.abi (see meson.build)
-IUSE="+man landlock seccomp synctex test wayland X"
+SLOT="0/8.9" # plugin versions api.abi (see meson.build)
+IUSE="landlock seccomp synctex test wayland X"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="
-	test? ( wayland X )
 	|| ( wayland X )
 "
 
 RDEPEND="
 	dev-libs/json-glib
-	dev-db/sqlite:3
-	>=dev-libs/girara-2026.02.03:=[X?]
-	>=dev-libs/glib-2.76:2
+	>=dev-db/sqlite-3.35:3
+	>=dev-libs/girara-2026.07.07:=[X?]
+	>=dev-libs/glib-2.84:2
 	sys-apps/file
 	x11-libs/cairo
-	>=x11-libs/gtk+-3.24:3[wayland?,X?]
+	>=gui-libs/gtk-4.12[wayland?,X?]
 	x11-libs/pango
-	man? ( dev-python/sphinx )
 	seccomp? ( sys-libs/libseccomp )
 	synctex? ( app-text/texlive-core )
 "
@@ -42,13 +44,13 @@ DEPEND="
 	${RDEPEND}
 	>=sys-kernel/linux-headers-5.13
 "
-BDEPEND="
+BDEPEND+="
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
 	test? (
 		dev-libs/appstream
-		dev-libs/weston[headless]
-		x11-misc/xvfb-run
+		wayland? ( dev-libs/weston[headless] )
+		X? ( x11-misc/xvfb-run )
 	)
 "
 
@@ -59,13 +61,30 @@ src_configure() {
 
 	local emesonargs=(
 		-Dconvert-icon=disabled
-		$(meson_feature man manpages)
+		-Dmanpages=enabled
 		$(meson_feature landlock)
 		$(meson_feature seccomp)
 		$(meson_feature synctex)
-		$(meson_feature test tests)
 	)
+
+	if use test ; then
+		emesonargs+=(
+			$(meson_feature X tests-x11)
+			$(meson_feature wayland tests-wayland)
+		)
+	else
+		emesonargs+=(
+			-Dtests-x11=disabled
+			-Dtests-wayland=disabled
+		)
+	fi
+
 	meson_src_configure
+}
+
+src_test() {
+	addwrite /dev/dri
+	meson_src_test
 }
 
 src_install() {
@@ -75,6 +94,8 @@ src_install() {
 		mv "${ED}"/usr/bin/zathura{,-full} || die
 		dosym zathura-sandbox /usr/bin/zathura
 	fi
+
+	[[ ${PV} != *9999 ]] && doman "${WORKDIR}"/man/zathura*
 }
 
 pkg_postinst() {

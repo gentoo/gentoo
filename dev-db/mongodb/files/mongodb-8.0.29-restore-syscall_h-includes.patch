@@ -1,0 +1,38 @@
+These cpp files reference SYS_* macros but do not explicitly include syscall.h as required.
+
+diff '--color=auto' -ur a/src/mongo/util/concurrency/ticket_pool.cpp b/src/mongo/util/concurrency/ticket_pool.cpp
+--- a/src/mongo/util/concurrency/ticket_pool.cpp	2026-05-13 19:17:03.000000000 -0400
++++ b/src/mongo/util/concurrency/ticket_pool.cpp	2026-05-29 12:44:21.118990277 -0400
+@@ -34,7 +34,7 @@
+ #include <ctime>
+ #include <mutex>
+ #include <string>
+-// IWYU pragma: no_include "syscall.h"
++#include "syscall.h"
+ 
+ 
+ #ifndef _WIN32
+diff '--color=auto' -ur a/src/mongo/util/stacktrace_test.cpp b/src/mongo/util/stacktrace_test.cpp
+--- a/src/mongo/util/stacktrace_test.cpp	2026-05-13 19:17:03.000000000 -0400
++++ b/src/mongo/util/stacktrace_test.cpp	2026-05-29 12:44:21.119199643 -0400
+@@ -33,7 +33,7 @@
+ // IWYU pragma: no_include "bits/types/stack_t.h"
+ #include <fmt/format.h>
+ #include <fmt/printf.h>  // IWYU pragma: keep
+-// IWYU pragma: no_include "syscall.h"
++#include "syscall.h"
+ // IWYU pragma: no_include "cxxabi.h"
+ #include <algorithm>
+ #include <array>
+diff '--color=auto' -ur a/src/mongo/util/stacktrace_threads.cpp b/src/mongo/util/stacktrace_threads.cpp
+--- a/src/mongo/util/stacktrace_threads.cpp	2026-05-13 19:17:03.000000000 -0400
++++ b/src/mongo/util/stacktrace_threads.cpp	2026-05-29 12:44:21.118737175 -0400
+@@ -53,7 +53,7 @@
+ #include <string>
+ #include <utility>
+ #include <vector>
+-// IWYU pragma: no_include <syscall.h>
++#include <syscall.h>
+ // IWYU pragma: no_include "bits/types/siginfo_t.h"
+ 
+ #include "mongo/base/parse_number.h"

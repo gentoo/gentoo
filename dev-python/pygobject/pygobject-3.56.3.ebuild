@@ -18,7 +18,7 @@ HOMEPAGE="
 
 LICENSE="LGPL-2.1+"
 SLOT="3"
-KEYWORDS="~alpha ~amd64 arm arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~x64-macos ~x64-solaris"
 IUSE="+cairo test"
 RESTRICT="!test? ( test )"
 
@@ -67,8 +67,9 @@ python_test() {
 	local -x GIO_USE_VOLUME_MONITOR="unix" # prevent udisks-related failures in chroots, bug #449484
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	local -x XDG_CACHE_HOME="${T}/${EPYTHON}"
-	# Timeout
-	local -x PYTEST_ADDOPTS="-k 'not test_python_calls_sync'"
+	# test_python_calls_sync: timeout
+	# test_pointer_array_struct_with_guint8: broken on BE but test is dodgy anyway, bug #978759
+	local -x PYTEST_ADDOPTS="-k 'not test_python_calls_sync' -k 'not test_pointer_array_struct_with_guint8'"
 
 	meson_src_test --timeout-multiplier 3 || die "test for ${EPYTHON}"
 }

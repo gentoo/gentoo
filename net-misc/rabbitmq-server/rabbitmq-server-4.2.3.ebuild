@@ -46,7 +46,7 @@ BDEPEND="
 	${ERLANG_DEPEND}
 	sys-apps/which
 	|| (
-		app-arch/7zip
+		>=app-arch/7zip-24.09[symlink(+)]
 		app-arch/p7zip
 	)
 "

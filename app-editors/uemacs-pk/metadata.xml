@@ -22,4 +22,9 @@
   fixes, adds some new functionality and comfort but does not sacrifice the
   best things (small size and portability).
 </longdescription>
+<use>
+  <flag name="hunspell">
+    Enable spell checking support (<pkg>app-text/hunspell</pkg>)
+  </flag>
+</use>
 </pkgmetadata>

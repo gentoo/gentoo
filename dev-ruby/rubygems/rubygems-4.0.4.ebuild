@@ -60,6 +60,10 @@ all_ruby_prepare() {
 	sed -e '/test_execute_rdoc/aomit "no longer needed with rdoc 6.9.0"' \
 		-i test/rubygems/test_gem_commands_{install,update}_command.rb || die
 
+	# Add more conditions to network skip condition, bug #951636
+	sed -e 's|rescue Errno::ENOENT,|rescue Errno::ENOENT, Errno::EBUSY, Errno::ENETUNREACH,|' \
+		-i test/rubygems/test_bundled_ca.rb || die
+
 	# Update manifest after changing files to avoid a test failure. Set
 	# RUBYLIB to ensure that we consistently use the new code for
 	# rubygems and the bundled bundler.

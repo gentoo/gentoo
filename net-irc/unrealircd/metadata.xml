@@ -7,8 +7,9 @@
 	</maintainer>
 	<use>
 		<flag name="class-nofakelag">Enable an unsupported class::options flag called “nofakelag” allowing you to grant fakelag exemption to normal user (instead of just opers).</flag>
-		<flag name="operoverride-verify">Enable requiring opers to invite themselves to +s/+p channels</flag>
+		<flag name="geoip-classic">Use legacy dev-libs/geoip for geoip.</flag>
 		<flag name="operoverride">Enable OperOverride extension</flag>
+		<flag name="operoverride-verify">Enable requiring opers to invite themselves to +s/+p channels</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">unrealircd/unrealircd</remote-id>

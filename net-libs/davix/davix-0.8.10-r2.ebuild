@@ -12,7 +12,7 @@ SRC_URI="https://github.com/cern-fts/${PN}/releases/download/R_${PV//./_}/${P}.t
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="doc test tools"
 
 REQUIRED_USE="test? ( tools )"

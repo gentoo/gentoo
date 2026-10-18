@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( pypy3_11 python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 
 inherit distutils-r1
 
@@ -30,8 +30,6 @@ BDEPEND="
 		dev-python/anyio[${PYTHON_USEDEP}]
 		>=dev-python/docutils-0.12[${PYTHON_USEDEP}]
 		>=dev-python/pygments-2.0[${PYTHON_USEDEP}]
-		>=dev-python/pytest-asyncio-0.15.1[${PYTHON_USEDEP}]
-		dev-python/pytest-rerunfailures[${PYTHON_USEDEP}]
 	)
 "
 

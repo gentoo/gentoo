@@ -1,0 +1,11 @@
+Bug: https://bugs.gentoo.org/982517
+--- a/src/extractor/tracker-extract-tiff.c
++++ b/src/extractor/tracker-extract-tiff.c
+@@ -34,6 +34,7 @@
+ #include <tracker-common.h>
+ 
+ #include "utils/tracker-extract.h"
++#include "utils/tracker-exif.h"
+ 
+ #ifdef HAVE_EXEMPI
+ #include "tracker-xmp.h"

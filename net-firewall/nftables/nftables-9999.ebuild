@@ -1,11 +1,11 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_OPTIONAL=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{11..15} )
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/netfilter.org.asc
 inherit eapi9-ver edo linux-info distutils-r1 systemd verify-sig
 
@@ -22,7 +22,7 @@ else
 		https://netfilter.org/projects/nftables/files/${P}.tar.xz
 		verify-sig? ( https://netfilter.org/projects/nftables/files/${P}.tar.xz.sig )
 	"
-	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 	BDEPEND="verify-sig? ( >=sec-keys/openpgp-keys-netfilter-20240415 )"
 fi
 
@@ -34,7 +34,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=net-libs/libmnl-1.0.4:=
-	>=net-libs/libnftnl-1.3.0:=
+	>=net-libs/libnftnl-1.3.2:=
 	gmp? ( dev-libs/gmp:= )
 	json? ( dev-libs/jansson:= )
 	python? ( ${PYTHON_DEPS} )
@@ -77,6 +77,7 @@ src_configure() {
 	local myeconfargs=(
 		--sbindir="${EPREFIX}"/sbin
 		--with-unitdir=$(systemd_get_systemunitdir)
+		--enable-distcheck
 		$(use_enable debug)
 		$(use_enable doc man-doc)
 		$(use_with !gmp mini_gmp)
@@ -87,7 +88,8 @@ src_configure() {
 		$(use_with xtables)
 	)
 
-	econf "${myeconfargs[@]}"
+	# bash until 1.1.7 (https://git.netfilter.org/nftables/commit/?id=2e3c68f26d5bd60c8ea7467fa9018c282a7d8c47)
+	CONFIG_SHELL="${BROOT}"/bin/bash econf "${myeconfargs[@]}"
 
 	if use python; then
 		pushd py >/dev/null || die

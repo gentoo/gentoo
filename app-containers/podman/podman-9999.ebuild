@@ -3,18 +3,18 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 
 inherit go-module python-any-r1 tmpfiles toolchain-funcs linux-info
 
 DESCRIPTION="A tool for managing OCI containers and pods with Docker-compatible CLI"
-HOMEPAGE="https://github.com/containers/podman/ https://podman.io/"
+HOMEPAGE="https://github.com/podman-container-tools/podman/ https://podman.io/"
 
 if [[ ${PV} == 9999* ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="https://github.com/containers/podman.git"
+	EGIT_REPO_URI="https://github.com/podman-container-tools/podman.git"
 else
-	SRC_URI="https://github.com/containers/podman/archive/v${PV/_rc/-rc}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/podman-container-tools/podman/archive/v${PV/_rc/-rc}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${P/_rc/-rc}"
 	[[ ${PV} != *rc* ]] && \
 		KEYWORDS="~amd64 ~arm64 ~loong ~riscv"
@@ -25,14 +25,15 @@ LICENSE="Apache-2.0"
 # deps
 LICENSE+=" BSD BSD-2 CC-BY-SA-4.0 ISC MIT MPL-2.0"
 SLOT="0"
-IUSE="apparmor btrfs +seccomp selinux systemd wrapper"
+IUSE="apparmor btrfs cron +seccomp selinux systemd wrapper"
 RESTRICT="test"
 
 RDEPEND="
 	app-containers/catatonit
 	>=app-containers/conmon-2.1.10
-	>=app-containers/containers-common-0.58.0-r1
+	>=app-containers/container-libs-0.68.0[extra(-)]
 	app-crypt/gpgme:=
+	dev-db/sqlite:3
 	dev-libs/libassuan:=
 	dev-libs/libgpg-error:=
 	sys-apps/shadow:=
@@ -41,13 +42,14 @@ RDEPEND="
 	btrfs? ( sys-fs/btrfs-progs )
 	wrapper? ( !app-containers/docker-cli )
 	seccomp? ( sys-libs/libseccomp:= )
-	selinux? ( sec-policy/selinux-podman sys-libs/libselinux:= )
+	selinux? ( sec-policy/selinux-podman )
 	systemd? ( sys-apps/systemd:= )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
 	${PYTHON_DEPS}
 	dev-go/go-md2man
+	>=dev-lang/go-1.25.9
 "
 
 PATCHES=(
@@ -85,6 +87,9 @@ src_prepare() {
 	#!/usr/bin/env bash
 	$(usex btrfs echo 'echo exclude_graphdriver_btrfs')
 	EOF
+
+	# hardcode using system sqlite instead of bundled one
+	[[ -f hack/sqlite_tag.sh ]] && echo -e '#!/usr/bin/env bash\necho libsqlite3' > hack/sqlite_tag.sh || die
 }
 
 src_compile() {
@@ -107,30 +112,28 @@ src_compile() {
 src_install() {
 	emake DESTDIR="${D}" SELINUXOPT= install install.completions $(usev wrapper install.docker-full)
 
-	if use !systemd; then
-		newconfd "${FILESDIR}"/podman-5.0.0_rc4.confd podman
-		newinitd "${FILESDIR}"/podman-5.0.0_rc4.initd podman
+	newconfd "${FILESDIR}"/podman-5.0.0_rc4.confd podman
+	newinitd "${FILESDIR}"/podman-5.0.0_rc4.initd podman
 
-		newinitd "${FILESDIR}"/podman-restart-5.0.0_rc4.initd podman-restart
-		newconfd "${FILESDIR}"/podman-restart-5.0.0_rc4.confd podman-restart
+	newinitd "${FILESDIR}"/podman-restart-5.0.0_rc4.initd podman-restart
+	newconfd "${FILESDIR}"/podman-restart-5.0.0_rc4.confd podman-restart
 
-		newinitd "${FILESDIR}"/podman-clean-transient-5.0.0_rc6.initd podman-clean-transient
-		newconfd "${FILESDIR}"/podman-clean-transient-5.0.0_rc6.confd podman-clean-transient
+	newinitd "${FILESDIR}"/podman-clean-transient-5.0.0_rc6.initd podman-clean-transient
+	newconfd "${FILESDIR}"/podman-clean-transient-5.0.0_rc6.confd podman-clean-transient
 
+	if use cron; then
 		exeinto /etc/cron.daily
 		newexe "${FILESDIR}"/podman-auto-update-5.0.0.cron podman-auto-update
-
-		insinto /etc/logrotate.d
-		newins "${FILESDIR}/podman.logrotated" podman
-
-		exeinto /etc/user/init.d
-		newexe "${FILESDIR}/podman-5.0.0_rc4.user.initd" podman
-
-		insinto /etc/user/conf.d
-		newins "${FILESDIR}/podman-5.0.0_rc4.user.confd" podman
 	fi
 
-	keepdir /var/lib/containers
+	insinto /etc/logrotate.d
+	newins "${FILESDIR}/podman.logrotated" podman
+
+	exeinto /etc/user/init.d
+	newexe "${FILESDIR}/podman-5.0.0_rc4.user.initd" podman
+
+	insinto /etc/user/conf.d
+	newins "${FILESDIR}/podman-5.0.0_rc4.user.confd" podman
 }
 
 pkg_postinst() {

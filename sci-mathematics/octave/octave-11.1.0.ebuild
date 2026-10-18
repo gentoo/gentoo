@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit flag-o-matic fortran-2 java-pkg-opt-2 pax-utils qmake-utils toolchain-funcs xdg
+inherit flag-o-matic fortran-2 java-pkg-opt-2 pax-utils qt-utils toolchain-funcs xdg
 
 DESCRIPTION="High-level interactive language for numerical computations"
 HOMEPAGE="https://octave.org"
@@ -180,11 +180,11 @@ src_configure() {
 
 	# Tell autoconf where to find qt binaries, fix bug #837752
 	if use gui ; then
-		export MOC="$(qt6_get_libexecdir)/moc" \
-			UIC="$(qt6_get_libexecdir)/uic" \
-			RCC="$(qt6_get_libexecdir)/rcc" \
-			LRELEASE="$(qt6_get_bindir)/lrelease" \
-			QHELPGENERATOR="$(qt6_get_libexecdir)/qhelpgenerator"
+		export MOC="$(qt_get_broot_binary 6 moc)" \
+			UIC="$(qt_get_broot_binary 6 uic)" \
+			RCC="$(qt_get_broot_binary 6 rcc)" \
+			LRELEASE="$(qt_get_broot_binary 6 lrelease)" \
+			QHELPGENERATOR="$(qt_get_broot_binary 6 qhelpgenerator)"
 	fi
 
 	econf "${myeconfargs[@]}"

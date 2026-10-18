@@ -1,0 +1,57 @@
+https://github.com/rmagick/rmagick/pull/1712
+
+From 4f072008e8fe3cb97d6d537dd7d0a44b9a1b5be1 Mon Sep 17 00:00:00 2001
+From: Shizuo Fujita <fujita@clear-code.com>
+Date: Wed, 15 Oct 2025 10:58:26 +0900
+Subject: [PATCH] CI: Support Ruby 3.5
+
+--- a/spec/magick_spec.rb
++++ b/spec/magick_spec.rb
+@@ -76,7 +76,14 @@
+             img.new_image(200, 200, Magick::GradientFill.new(100, 50, 100, 50, 'khaki1', 'turquoise'))
+             img.resize(20, 20)
+           end
+-          r.take
++
++          if r.respond_to?(:take)
++            r.take
++          else
++            # Ractor#take was replaced at Ruby 3.5.
++            # https://bugs.ruby-lang.org/issues/21262
++            r.join
++          end
+         end.not_to raise_error
+ 
+         expect do
+@@ -90,7 +97,14 @@
+             gc.text(5, 20, "'20,20'")
+             gc.draw(img)
+           end
+-          r.take
++
++          if r.respond_to?(:take)
++            r.take
++          else
++            # Ractor#take was replaced at Ruby 3.5.
++            # https://bugs.ruby-lang.org/issues/21262
++            r.join
++          end
+         end.not_to raise_error
+ 
+         unless RUBY_PLATFORM.include?('mingw')
+@@ -99,7 +113,14 @@
+             r = Ractor.new do
+               Magick.formats # rubocop:disable RSpec/DescribedClass
+             end
+-            r.take
++
++            if r.respond_to?(:take)
++              r.take
++            else
++              # Ractor#take was replaced at Ruby 3.5.
++              # https://bugs.ruby-lang.org/issues/21262
++              r.join
++            end
+           end.not_to raise_error
+         end
+       end

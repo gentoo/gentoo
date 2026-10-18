@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<name>Florian Schmaus</name>
+		<email>flow@gentoo.org</email>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">OfflineIMAP/offlineimap3</remote-id>
+		<changelog>https://github.com/OfflineIMAP/offlineimap3/blob/master/Changelog.md</changelog>
+		<bugs-to>https://github.com/OfflineIMAP/offlineimap3/issues</bugs-to>
+	</upstream>
+</pkgmetadata>

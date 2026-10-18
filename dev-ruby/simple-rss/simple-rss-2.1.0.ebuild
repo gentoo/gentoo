@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -32,4 +32,8 @@ all_ruby_prepare() {
 	sed -i -e '/@\(media_rss\|rss20_utf8\)/ s:^:#:' \
 		-e '/test_rss_utf8/aomit "missing data"' \
 		test/base/base_test.rb || die
+
+	# Network sandbox
+	sed -e '/def test_fetch_raises_on_invalid_host/,/^  end/ s:^:#:' \
+		-i test/base/fetch_test.rb || die
 }

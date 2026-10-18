@@ -6,6 +6,7 @@
 		<name>Gentoo TeX Project</name>
 	</maintainer>
 	<upstream>
+		<remote-id type="pypi">psutils</remote-id>
 		<remote-id type="github">rrthomas/psutils</remote-id>
 	</upstream>
 </pkgmetadata>

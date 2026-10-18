@@ -117,8 +117,8 @@ multilib_src_configure() {
 
 	local nostdlib_flags=( -nostdlib++ )
 	if ! test_compiler && test_compiler "${nostdlib_flags[@]}"; then
-		local -x LDFLAGS="${LDFLAGS} ${nort_flags[*]}"
-		ewarn "${CXX} seems to lack runtime, trying with ${nort_flags[*]}"
+		local -x LDFLAGS="${LDFLAGS} ${nostdlib_flags[*]}"
+		ewarn "${CXX} seems to lack runtime, trying with ${nostdlib_flags[*]}"
 	fi
 
 	local libdir=$(get_libdir)
@@ -162,6 +162,10 @@ multilib_src_configure() {
 			# Install inside the cross sysroot.
 			-DCMAKE_INSTALL_PREFIX="${EPREFIX}/usr/${CTARGET}/usr"
 		)
+	fi
+	if use kernel_Darwin; then
+		# For Darwin it ships libc++ in system by default, conflicting prefix
+		mycmakeargs+=( -DLIBCXX_ABI_NAMESPACE=__gentoo1 )
 	fi
 	if use test; then
 		mycmakeargs+=(

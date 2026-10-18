@@ -3,7 +3,7 @@
 
 EAPI=8
 
-USE_RUBY="ruby32 ruby33 ruby34"
+USE_RUBY="ruby32 ruby33 ruby34 ruby40"
 
 # This gem includes a bundled version of app-arch/zstd. It requires
 # features that are only available with a statically linked zstd library
@@ -26,6 +26,10 @@ SRC_URI="https://github.com/SpringMT/zstd-ruby/archive/refs/tags/v${PV}.tar.gz -
 LICENSE="BSD"
 SLOT="$(ver_cut 1)"
 KEYWORDS="amd64 ~ppc64"
+
+PATCHES=(
+	"${FILESDIR}"/zstd-ruby-1.5.7.1-ruby35.patch
+)
 
 all_ruby_prepare() {
 	sed -e 's/git ls-files -z/find * -print0/' \

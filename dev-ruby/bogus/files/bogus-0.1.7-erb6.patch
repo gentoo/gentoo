@@ -1,0 +1,15 @@
+https://github.com/ruby/erb/pull/95
+
+diff --git a/lib/bogus/stubbing/not_all_expectations_satisfied.rb b/lib/bogus/stubbing/not_all_expectations_satisfied.rb
+index e358beb..af67652 100644
+--- a/lib/bogus/stubbing/not_all_expectations_satisfied.rb
++++ b/lib/bogus/stubbing/not_all_expectations_satisfied.rb
+@@ -15,7 +15,7 @@ module Bogus
+       <% end %>
+       EOF
+       str = str.gsub(/ {6}/, '')
+-      template = ERB.new(str, nil, "<>")
++      template = ERB.new(str, trim_mode: "<>")
+       new(template.result(binding))
+     end
+ 

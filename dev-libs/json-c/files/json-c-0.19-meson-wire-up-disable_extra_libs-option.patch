@@ -1,0 +1,48 @@
+https://github.com/json-c/json-c/pull/948
+
+From 8e9ee20bf010f6332544d450b0d89ade71652cb1 Mon Sep 17 00:00:00 2001
+Message-ID: <8e9ee20bf010f6332544d450b0d89ade71652cb1.1784353509.git.sam@gentoo.org>
+From: Sam James <sam@gentoo.org>
+Date: Sat, 18 Jul 2026 06:29:19 +0100
+Subject: [PATCH] meson: wire up `extra_libs` option
+
+This is more elegant as a meson feature option because feature options
+propagate in a useful way to `dependency(..., required: ...)`.
+
+Without this, the option was ignored. Wiring it up naively meant that
+disabling it still searched for libbsd as well, so a feature option
+is the best fit.
+---
+ meson.build       | 2 +-
+ meson_options.txt | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/meson.build b/meson.build
+index ebc9e46..559d082 100644
+--- a/meson.build
++++ b/meson.build
+@@ -20,7 +20,7 @@ if has_std_lib and has_std_arg and has_string and has_float
+   conf_data.set('STDC_HEADERS', 1, description : 'Define to 1 if you have the ANSI C header files.')
+ endif
+ 
+-bsd_dep = dependency('libbsd', required: false)
++bsd_dep = dependency('libbsd', required: get_option('extra_libs'))
+ 
+ headers = {
+   'bsd/stdlib.h': bsd_dep,
+diff --git a/meson_options.txt b/meson_options.txt
+index 94205b0..e7c6372 100644
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -4,7 +4,7 @@ option('disable_thread_local_storage', type: 'boolean', value: false, descriptio
+ option('enable_rdrand', type: 'boolean', value: false, description: 'Enable RDRAND Hardware RNG')
+ option('enable_threading', type: 'boolean', value: false, description: 'Enable partial threading support')
+ option('override_get_random_seed', type: 'boolean', value: false, description: 'Override json_c_get_random_seed()')
+-option('disable_extra_libs', type: 'boolean', value: false, description: 'Avoid linking extra libraries like libbsd')
++option('extra_libs', type: 'feature', value: 'enabled', description: 'Allow linking extra libraries like libbsd')
+ option('disable_json_pointer', type: 'boolean', value: false, description: 'Disable JSON pointer support')
+ option('disable_json_patch', type: 'boolean', value: false, description: 'Disable JSON patch support')
+ option('newlocale_needs_freelocale', type: 'boolean', value: false, description: 'FreeBSD workaround for newlocale')
+-- 
+2.55.0
+

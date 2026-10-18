@@ -1,0 +1,95 @@
+From b370c92fcad556dd50f0e584ac2bad5845072c93 Mon Sep 17 00:00:00 2001
+From: aokblast <i19780219111@kimo.com>
+Date: Wed, 26 Aug 2026 16:58:20 +0000
+Subject: [PATCH] Fix libcxx build on Linux
+
+---
+ include/json_common.h                              | 8 +++++---
+ thirdparty/compoundfilereader/compoundfilereader.h | 8 ++++----
+ thirdparty/nanodbc/nanodbc/nanodbc.cpp             | 6 +++---
+ 3 files changed, 12 insertions(+), 10 deletions(-)
+
+diff --git a/include/json_common.h b/include/json_common.h
+index 5c042b97190..75d6d90d05a 100644
+--- a/include/json_common.h
++++ b/include/json_common.h
+@@ -21,7 +21,7 @@
+ #define JSON_COMMON_H
+ 
+ /***********************************************************************************************************************
+- * If we are compiling on Apple with Clang >= 17, the version of LLVM no longer includes a generic template for
++ * If we are compiling against libc++ >= 19, the version of LLVM no longer includes a generic template for
+  * char_traits for char types which are not specified in the C++ standard. We define our own here for types required by
+  * the JSON library.
+  *
+@@ -33,8 +33,10 @@
+  *
+  **********************************************************************************************************************/
+ 
+-#ifdef __APPLE__
+-#if __clang_major__ >= 17
++#include <version>
++
++#if defined( _LIBCPP_VERSION )
++#if _LIBCPP_VERSION >= 190102
+ 
+ #include <wx/unichar.h>
+ 
+diff --git a/thirdparty/compoundfilereader/compoundfilereader.h b/thirdparty/compoundfilereader/compoundfilereader.h
+index 9d04a1cfd73..c5fa2c54839 100644
+--- a/thirdparty/compoundfilereader/compoundfilereader.h
++++ b/thirdparty/compoundfilereader/compoundfilereader.h
+@@ -39,7 +39,7 @@
+ #include <functional>
+ 
+ /***********************************************************************************************************************
+- * If we are compiling on Apple with Clang >= 17, the version of LLVM no longer includes a generic template for
++ * If we are compiling against libc++ >= 19, the version of LLVM no longer includes a generic template for
+  * char_traits for char types which are not specified in the C++ standard. We define our own here for types required by
+  * the JSON library.
+  *
+@@ -51,8 +51,8 @@
+  *
+  **********************************************************************************************************************/
+ 
+-#ifdef __APPLE__
+-#if __clang_major__ >= 17
++#if defined( _LIBCPP_VERSION )
++#if _LIBCPP_VERSION >= 190102
+ 
+ template <>
+ struct std::char_traits<uint16_t>
+@@ -655,4 +655,4 @@ private:
+     const PROPERTY_SET_STREAM_HDR* m_hdr;
+ };
+ 
+-}
+\ No newline at end of file
++}
+diff --git a/thirdparty/nanodbc/nanodbc/nanodbc.cpp b/thirdparty/nanodbc/nanodbc/nanodbc.cpp
+index 04f86025e45..038b393950e 100644
+--- a/thirdparty/nanodbc/nanodbc/nanodbc.cpp
++++ b/thirdparty/nanodbc/nanodbc/nanodbc.cpp
+@@ -157,7 +157,7 @@ using nanodbc::wide_string;
+  *
+  * KICAD-SPECIFIC ADDITION
+  *
+- * If we are compiling on Apple with Clang >= 17, the version of LLVM no longer includes a generic template for
++ * If we are compiling against libc++ >= 19, the version of LLVM no longer includes a generic template for
+  * char_traits for char types which are not specified in the C++ standard. We define our own here for types required by
+  * the database library.
+  *
+@@ -169,8 +169,8 @@ using nanodbc::wide_string;
+  *
+  **********************************************************************************************************************/
+ 
+-#ifdef __APPLE__
+-#if __clang_major__ >= 17
++#if defined( _LIBCPP_VERSION )
++#if _LIBCPP_VERSION >= 190102
+ 
+ template <>
+ struct std::char_traits<NANODBC_SQLCHAR>
+-- 
+GitLab
+

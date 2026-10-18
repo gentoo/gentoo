@@ -1,0 +1,47 @@
+https://bugs.gentoo.org/978797
+https://github.com/hsbt/minitest-power_assert/pull/18
+
+From 602239cc2afb5d8782139393e56ddb37d140f8fa Mon Sep 17 00:00:00 2001
+From: Hiroshi SHIBATA <hsbt@ruby-lang.org>
+Date: Thu, 6 Nov 2025 08:57:07 +0900
+Subject: [PATCH 1/2] Handle assertion failure with Ruby 3.4
+
+--- a/test/test_power_assert.rb
++++ b/test/test_power_assert.rb
+@@ -10,10 +10,15 @@ def test_power_assert
+   def test_power_assert_failed
+     assert { "0".class == "3".to_i.times.map {|i| i + 1 }.class }
+   rescue Minitest::Assertion => e
+-    assert_match(/Array/, e.message)
+-    assert_match(/\[1, 2, 3\]/, e.message)
+-    assert_match(/#<Enumerator: 3:times>/, e.message)
+-    assert_match(/String/, e.message)
++    begin
++      assert_match(/Array/, e.message)
++      assert_match(/\[1, 2, 3\]/, e.message)
++      assert_match(/#<Enumerator: 3:times>/, e.message)
++      assert_match(/String/, e.message)
++    rescue Minitest::Assertion
++      # https://github.com/ruby/power_assert/issues/53
++      omit if RUBY_VERSION >= '3.4'
++    end
+   end
+ 
+   def test_assert
+
+From dc7042488cbac8eeab5332711e9e6c21a534bb75 Mon Sep 17 00:00:00 2001
+From: Hiroshi SHIBATA <hsbt@ruby-lang.org>
+Date: Thu, 6 Nov 2025 09:02:15 +0900
+Subject: [PATCH 2/2] Use skip instead of omit
+
+--- a/test/test_power_assert.rb
++++ b/test/test_power_assert.rb
+@@ -17,7 +17,7 @@ def test_power_assert_failed
+       assert_match(/String/, e.message)
+     rescue Minitest::Assertion
+       # https://github.com/ruby/power_assert/issues/53
+-      omit if RUBY_VERSION >= '3.4'
++      skip if RUBY_VERSION >= '3.4'
+     end
+   end
+ 

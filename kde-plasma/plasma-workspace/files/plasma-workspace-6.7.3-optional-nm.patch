@@ -1,0 +1,41 @@
+From e9f63462ab77816b9de8f8e9f884701f9bb5bd87 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Thu, 25 Jun 2026 20:41:08 +0200
+Subject: [PATCH] CMake: Provide BUILD_GEOTIMEZONED option for
+ KF6NetworkManagerQt dep
+
+Done as CMakeDependentOption based on "LINUX" to slot in for the
+existing conditional.
+
+Amends 933d301b1dd8cd9e2b873ad7337f0bf4d4e5a526
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 537f25dc31..c4e71662d2 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -25,6 +25,7 @@ include(KDECMakeSettings)
+ include(KDECompilerSettings NO_POLICY_SCOPE)
+ include(ECMMarkNonGuiExecutable)
+ include(CMakePackageConfigHelpers)
++include(CMakeDependentOption)
+ include(WriteBasicConfigVersionFile)
+ include(CheckIncludeFiles)
+ include(FeatureSummary)
+@@ -98,7 +99,8 @@ set_package_properties(KF6KirigamiAddons PROPERTIES
+ )
+ 
+ # there's no NetworkManager on FreeBSD'
+-if (LINUX)
++cmake_dependent_option(BUILD_GEOTIMEZONED "Support location-based system time zone changes" TRUE "LINUX" FALSE)
++if (BUILD_GEOTIMEZONED)
+     find_package(KF6NetworkManagerQt ${KF6_MIN_VERSION} CONFIG REQUIRED)
+ endif()
+ 
+-- 
+GitLab
+

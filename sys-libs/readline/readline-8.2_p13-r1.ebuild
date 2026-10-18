@@ -126,7 +126,7 @@ src_prepare() {
 
 	is_release || eautoreconf
 
-	if use prefix && [[ -n ${STAGE} ]] ; then
+	if use prefix && ! type -P $(tc-getPKG_CONFIG) > /dev/null ; then
 		# If we're bootstrapping, make a guess. We don't have pkg-config
 		# around yet. bug #818103.
 		# Incorrectly populating this leads to underlinked libreadline.

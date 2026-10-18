@@ -1,0 +1,35 @@
+these lines add dev-lang/go and cc as BDEPEND unnecessarily so remove them
+--- a/image/Makefile
++++ b/image/Makefile
+@@ -1,11 +1,6 @@
+ export GOPROXY=https://proxy.golang.org
+ 
+ 
+-GOBIN := $(shell go env GOBIN)
+-ifeq ($(GOBIN),)
+-GOBIN := $(shell go env GOPATH)/bin
+-endif
+-
+ # when cross compiling _for_ a Darwin or windows host, then we must use openpgp
+ BUILD_TAGS_WINDOWS_CROSS = containers_image_openpgp
+ BUILD_TAGS_DARWIN_CROSS = containers_image_openpgp
+@@ -18,7 +13,6 @@ BUILDFLAGS := -tags "$(BUILDTAGS)" -ldflags '-X go.podman.io/image/v5/signature/
+ TESTFLAGS :=
+ TEST_PACKAGES := ./...
+ 
+-PACKAGES := $(shell go list $(BUILDFLAGS) ./...)
+ SOURCE_DIRS = $(shell echo $(PACKAGES) | awk 'BEGIN{FS="/"; RS=" "}{print $$4}' | uniq)
+ 
+ PREFIX ?= ${DESTDIR}/usr
+--- a/storage/Makefile
++++ b/storage/Makefile
+@@ -21,9 +21,7 @@
+ 	test-unit
+ 
+ NATIVETAGS :=
+-AUTOTAGS := $(shell ./hack/btrfs_tag.sh) $(shell ./hack/libsubid_tag.sh)
+ BUILDFLAGS := -tags "$(AUTOTAGS) $(TAGS)" $(FLAGS)
+-GO ?= go
+ TESTFLAGS := $(shell $(GO) test -race $(BUILDFLAGS) ./pkg/stringutils 2>&1 > /dev/null && echo -race)
+ 
+ default all: local-binary docs local-cross ## build and cross-build\nbinaries and docs

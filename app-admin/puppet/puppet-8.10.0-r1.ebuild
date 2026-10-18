@@ -3,7 +3,7 @@
 
 EAPI="7"
 
-USE_RUBY="ruby31 ruby32 ruby33"
+USE_RUBY="ruby32 ruby33 ruby34 ruby40"
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 RUBY_FAKEGEM_TASK_DOC="doc:all"
 RUBY_FAKEGEM_EXTRAINSTALL="locales"
@@ -47,7 +47,12 @@ ruby_add_bdepend "
 #   dev-ruby/rspec-collection_matchers
 
 RDEPEND+=" ${RDEPEND}
-	rrdtool? ( >=net-analyzer/rrdtool-1.2.23[ruby] )
+	rrdtool? (
+		|| (
+			>=dev-ruby/rrdtool-bindings-1.2.23
+			>=net-analyzer/rrdtool-1.2.23[ruby(-)]
+		)
+	)
 	selinux? (
 		sys-libs/libselinux[ruby]
 		sec-policy/selinux-puppet

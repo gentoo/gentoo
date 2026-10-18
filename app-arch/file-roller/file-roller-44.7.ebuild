@@ -10,7 +10,7 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/file-roller"
 
 LICENSE="GPL-2+ CC-BY-SA-3.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm arm64 ~loong ~ppc ~ppc64 ~riscv x86"
 IUSE="gtk-doc +introspection nautilus"
 REQUIRED_USE="gtk-doc? ( introspection )"
 
@@ -72,7 +72,7 @@ pkg_postinst() {
 	xdg_pkg_postinst
 	gnome2_schemas_update
 	if [[ -z "${REPLACING_VERSIONS}" ]]; then
-		optfeature "7-zip archive support" "app-arch/7zip" "app-arch/p7zip"
+		optfeature "7-zip archive support" "app-arch/7zip"
 		optfeature "ace archive support" "app-arch/unace"
 		optfeature "arj archive support" "app-arch/arj"
 		optfeature "brotli archive support" "app-arch/brotli"

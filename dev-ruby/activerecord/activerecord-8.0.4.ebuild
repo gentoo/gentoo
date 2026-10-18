@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -66,7 +66,7 @@ all_ruby_prepare() {
 	# earlier that implicitly required it.
 	sed -i -e '$agem "json"' ../Gemfile || die
 
-	sed -e '3igem "activemodel", "~> 8.0.0"; gem "actionpack", "~> 8.0.0"; gem "activejob", "~> 8.0.0"' \
+	sed -e '3igem "activemodel", "~> 8.0.0"; gem "actionpack", "~> 8.0.0"; gem "activejob", "~> 8.0.0"; gem "minitest", "~>5"' \
 		-i test/cases/helper.rb || die
 
 	# Avoid single tests using mysql or postgres dependencies.

@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-USE_RUBY="ruby32 ruby33"
+USE_RUBY="ruby32 ruby33 ruby34 ruby40"
 RUBY_FAKEGEM_GEMSPEC="facter.gemspec"
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 RUBY_FAKEGEM_RECIPE_DOC="yard"
@@ -33,6 +33,7 @@ ruby_add_bdepend "test? ( dev-ruby/simplecov dev-ruby/timecop dev-ruby/webmock )
 PATCHES=(
 	"${FILESDIR}"/facter-4.7.0-gentoo-thor-gemspec.patch
 	"${FILESDIR}"/facter-4.10.0-gentoo-os-release.patch
+	"${FILESDIR}"/facter-4.10.0-ruby34.patch
 )
 
 src_unpack() {

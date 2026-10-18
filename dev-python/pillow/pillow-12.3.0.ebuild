@@ -6,7 +6,7 @@ EAPI=8
 DISTUTILS_EXT=1
 # setuptools wrapper
 DISTUTILS_USE_PEP517=standalone
-PYTHON_COMPAT=( python3_{12..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 PYTHON_REQ_USE='tk?,threads(+)'
 
 inherit distutils-r1 multiprocessing toolchain-funcs virtualx
@@ -35,7 +35,7 @@ S=${WORKDIR}/${MY_P}
 
 LICENSE="HPND"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ppc ppc64 ~riscv x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
 IUSE="avif examples imagequant +jpeg jpeg2k lcms raqm test tiff tk truetype webp xcb zlib"
 REQUIRED_USE="
 	raqm? ( truetype )
@@ -122,7 +122,13 @@ python_configure_all() {
 	EOF
 
 	tc-export PKG_CONFIG
+
 	export MAX_CONCURRENCY=$(makeopts_jobs)
+	# For 32-bit, just cap at 4 jobs to avoid pybind11 allocating
+	# like crazy (bug #970414).
+	if [[ $(tc-get-ptr-size) == 4 ]]; then
+		MAX_CONCURRENCY=$(( MAX_CONCURRENCY < 4 ? MAX_CONCURRENCY : 4 ))
+	fi
 }
 
 src_test() {

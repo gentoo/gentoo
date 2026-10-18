@@ -1,0 +1,7 @@
+https://github.com/qt/qtmultimedia/commit/2b9809c832e
+--- a/src/3rdparty/resonance-audio/resonance_audio/utils/wav.h
++++ b/src/3rdparty/resonance-audio/resonance_audio/utils/wav.h
+@@ -20,2 +20,3 @@
+ #include <cstdint>
++#include <istream>
+ #include <memory>

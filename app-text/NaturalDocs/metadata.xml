@@ -9,10 +9,7 @@
 		easily as the generated documentation. It also focuses on automation
 		and high-quality generated output.
 	</longdescription>
-	<maintainer type="person">
-		<email>titanofold@gentoo.org</email>
-		<name>Aaron W. Swenson</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<upstream>
 		<remote-id type="sourceforge">naturaldocs</remote-id>
 	</upstream>

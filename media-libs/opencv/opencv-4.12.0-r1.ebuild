@@ -75,7 +75,7 @@ else
 		https://github.com/opencv/opencv/commit/353b4ddf52db48ba85d2efaa33310afa0eb73a72.patch
 		-> ${PN}-4.12.0-eigen5.patch
 	"
-	KEYWORDS="amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
+	KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64 ~riscv x86"
 fi
 
 LICENSE="Apache-2.0"

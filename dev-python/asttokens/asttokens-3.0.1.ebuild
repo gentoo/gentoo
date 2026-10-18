@@ -4,18 +4,14 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( pypy3_11 python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="Annotate Python AST trees with source text and token information"
 HOMEPAGE="
 	https://github.com/gristlabs/asttokens/
 	https://pypi.org/project/asttokens/
-"
-SRC_URI="
-	https://github.com/gristlabs/asttokens/archive/v${PV}.tar.gz
-		-> ${P}.gh.tar.gz
 "
 
 LICENSE="Apache-2.0"
@@ -31,5 +27,3 @@ BDEPEND="
 
 EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
-
-export SETUPTOOLS_SCM_PRETEND_VERSION=${PV}

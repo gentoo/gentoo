@@ -23,7 +23,7 @@ SLOT="0"
 RESTRICT="test"
 
 RDEPEND="app-text/djvu
-	>=app-text/zathura-2026.02.03:=
+	>=app-text/zathura-2026.07.18:=
 	dev-libs/girara:=
 	dev-libs/glib:2
 	x11-libs/cairo"

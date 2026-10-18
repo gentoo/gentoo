@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,15 +19,17 @@ SLOT="0"
 KEYWORDS="amd64 ~arm64 ~riscv"
 IUSE="+webui"
 
+DEPEND="
+	acct-group/vault
+	acct-user/vault
+"
+RDEPEND="${DEPEND}"
 BDEPEND="
 	app-arch/zip
-	>=dev-go/enumer-1.5.11
+	dev-go/enumer
 	dev-go/gox
-	>=dev-lang/go-1.21"
-COMMON_DEPEND="acct-group/vault
-	acct-user/vault"
-	DEPEND="${COMMON_DEPEND}"
-	RDEPEND="${COMMON_DEPEND}"
+	<dev-lang/go-1.27
+"
 
 FILECAPS=(
 	-m 755 'cap_ipc_lock=+ep' usr/bin/${PN}

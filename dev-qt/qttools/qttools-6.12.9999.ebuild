@@ -3,7 +3,8 @@
 
 EAPI=8
 
-# match QDOC_SUPPORTED_CLANG_VERSIONS in src/qdoc/cmake/QDocConfiguration.cmake
+# see QDOC_SUPPORTED_CLANG_VERSIONS in src/qdoc/cmake/QDocConfiguration.cmake
+# for officially supported versions, but newer may work
 LLVM_COMPAT=( {17..22} )
 LLVM_OPTIONAL=1
 
@@ -38,22 +39,14 @@ REQUIRED_USE="
 
 RDEPEND="
 	~dev-qt/qtbase-${PV}:6[widgets?]
-	assistant? (
-		~dev-qt/qtbase-${PV}:6[concurrent,network,sql,sqlite]
-		!dev-qt/assistant:5
-	)
+	assistant? ( ~dev-qt/qtbase-${PV}:6[concurrent,network,sql,sqlite] )
 	designer? (
 		~dev-qt/qtbase-${PV}:6[network,xml,zstd=]
 		zstd? ( app-arch/zstd:= )
-		!<dev-qt/designer-5.15.18-r1:5
 	)
 	kmap2qmap? ( ~dev-qt/qtbase-${PV}:6[evdev] )
-	linguist? (
-		widgets? ( !dev-qt/linguist:5 )
-	)
 	qdbus? (
 		~dev-qt/qtbase-${PV}:6[dbus,xml]
-		widgets? ( !dev-qt/qdbusviewer:5 )
 	)
 	qdoc? (
 		$(llvm_gen_dep '
@@ -72,6 +65,10 @@ DEPEND="
 		vulkan? ( dev-util/vulkan-headers )
 	)
 "
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-6.12.0-litehtml-no-unity.patch
+)
 
 src_prepare() {
 	qt6-build_src_prepare

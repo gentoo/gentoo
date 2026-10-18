@@ -1,0 +1,42 @@
+--- a/c10/util/Exception.cpp	2026-07-20 08:01:49.241949729 +0200
++++ b/c10/util/Exception.cpp	2026-07-20 08:02:53.751321052 +0200
+@@ -15,9 +15,7 @@
+ // (e.g. Torch, common/init). See also Logging.cpp in this directory.
+ #ifdef C10_USE_GLOG
+ namespace google {
+-namespace glog_internal_namespace_ {
+ bool IsGoogleLoggingInitialized();
+-} // namespace glog_internal_namespace_
+ } // namespace google
+ #endif
+ 
+@@ -265,7 +263,7 @@
+   // During static initialization (before InitGoogleLogging), glog's global
+   // flags may not be constructed yet. Accessing them causes SIOF crashes
+   // (T253115013, D96553733). Fall back to stderr in that case.
+-  if (!::google::glog_internal_namespace_::IsGoogleLoggingInitialized()) {
++  if (!::google::IsGoogleLoggingInitialized()) {
+     std::cerr << warning.source_location().file << ':'
+               << warning.source_location().line
+               << ": Warning: " << warning.msg() << " (function "
+--- a/c10/util/Logging.cpp	2026-08-04 17:56:50.870727752 +0200
++++ b/c10/util/Logging.cpp	2026-08-04 18:04:50.369891538 +0200
+@@ -390,9 +390,7 @@
+ // declaring it here. This is a hack but has been used by a bunch of others too
+ // (e.g. Torch).
+ namespace google {
+-namespace glog_internal_namespace_ {
+ bool IsGoogleLoggingInitialized();
+-} // namespace glog_internal_namespace_
+ } // namespace google
+ 
+ namespace c10 {
+@@ -401,7 +399,7 @@
+ void initGoogleLogging(char const* name) {
+ #if !defined(_MSC_VER)
+   // This trick can only be used on UNIX platforms
+-  if (!::google::glog_internal_namespace_::IsGoogleLoggingInitialized())
++  if (!::google::IsGoogleLoggingInitialized())
+ #endif
+   {
+     ::google::InitGoogleLogging(name);

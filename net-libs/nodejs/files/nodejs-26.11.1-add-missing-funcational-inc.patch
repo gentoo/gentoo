@@ -1,0 +1,10 @@
+--- a/deps/LIEF/third-party/frozen/include/frozen/map.h	2026-10-08 07:42:21.315084488 -0400
++++ b/deps/LIEF/third-party/frozen/include/frozen/map.h	2026-10-08 07:42:43.067301020 -0400
+@@ -30,6 +30,7 @@
+ #include "frozen/bits/version.h"
+ 
+ #include <iterator>
++#include <functional>
+ #include <utility>
+ 
+ namespace frozen {

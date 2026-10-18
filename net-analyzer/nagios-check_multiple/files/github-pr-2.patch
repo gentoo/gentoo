@@ -1,0 +1,172 @@
+Most of https://github.com/clarkbox/check_multiple/pull/2, without the
+version bump or changed to README.md. Waited as long as I could, but
+we need this for python-3.14.
+
+diff --git a/bin/check_multiple b/bin/check_multiple
+deleted file mode 100755
+index e43a800..0000000
+--- a/bin/check_multiple
++++ /dev/null
+@@ -1,30 +0,0 @@
+-#!/usr/bin/python3
+-import argparse
+-import sys
+-
+-from check_multiple.check_multiple import (MODE_BEST,
+-                                           MODE_WORST,
+-                                           process_results,
+-                                           run_commands)
+-
+-
+-parser = argparse.ArgumentParser(
+-    description='Run multiple Nagios checks and combine the results.')
+-parser.add_argument(
+-    "--mode",
+-    default='worst',
+-    choices=['worst', 'best'],
+-    help="which individual check result should be the overall result; "
+-         "either the \"worst\" one or the \"best\" one (default: worst)")
+-parser.add_argument(
+-    "command",
+-    nargs="+",
+-    help="check to run, enclosed in quotes")
+-
+-args = parser.parse_args()
+-mode = MODE_WORST
+-if args.mode == "best":
+-    mode = MODE_BEST
+-exitcode,output = process_results(run_commands(args.command), mode)
+-print(output)
+-sys.exit(exitcode)
+diff --git a/lib/check_multiple/__main__.py b/lib/check_multiple/__main__.py
+new file mode 100644
+index 0000000..f2ae908
+--- /dev/null
++++ b/lib/check_multiple/__main__.py
+@@ -0,0 +1,40 @@
++import sys
++
++def main():
++    import argparse
++
++    from check_multiple.check_multiple import (
++        MODE_BEST,
++        MODE_WORST,
++        process_results,
++        run_commands
++    )
++
++
++    parser = argparse.ArgumentParser(
++        description='Run multiple Nagios checks and combine the results.'
++    )
++    parser.add_argument(
++        "--mode",
++        default='worst',
++        choices=['worst', 'best'],
++        help="which individual check result should be the overall result; "
++             "either the \"worst\" one or the \"best\" one (default: worst)"
++    )
++    parser.add_argument(
++        "command",
++        nargs="+",
++        help="check to run, enclosed in quotes"
++    )
++
++    args = parser.parse_args()
++    mode = MODE_WORST
++    if args.mode == "best":
++        mode = MODE_BEST
++    exitcode,output = process_results(run_commands(args.command), mode)
++    print(output)
++    return exitcode
++
++
++if __name__ == '__main__':
++    sys.exit(main())
+diff --git a/lib/check_multiple/check_multiple.py b/lib/check_multiple/check_multiple.py
+index 7670690..e27401e 100644
+--- a/lib/check_multiple/check_multiple.py
++++ b/lib/check_multiple/check_multiple.py
+@@ -55,15 +55,7 @@ def run_command(c):
+ 
+     Returns a single CompletedProcess instance.
+     """
+-    # The "capture_output=True" keyword argument that we would like to
+-    # pass to run() doesn't exist before python-3.7. Likewise, the
+-    # "universal_newlines" argument has been renamed to "text", but
+-    # only in python 3.7.
+-    return subprocess.run(c,
+-                          shell=True,
+-                          stdout=subprocess.PIPE,
+-                          stderr=subprocess.PIPE,
+-                          universal_newlines=True)
++    return subprocess.run(c, shell=True, capture_output=True, text=True)
+ 
+ 
+ def run_commands(command_list):
+diff --git a/pyproject.toml b/pyproject.toml
+new file mode 100644
+index 0000000..a6d4d0b
+--- /dev/null
++++ b/pyproject.toml
+@@ -0,0 +1,30 @@
++[build-system]
++requires = ["setuptools >= 61.0"]
++build-backend = "setuptools.build_meta"
++
++[project]
++name = "nagios-check_multiple"
++version = "0.0.1"
++description = "Run multiple Nagios checks and combine the results"
++requires-python = ">=3.9"
++license = "MIT"
++classifiers  = [
++  'Environment :: Console',
++  'Intended Audience :: System Administrators'
++]
++
++[project.readme]
++content-type = "text/markdown"
++file = "README.md"
++
++[project.scripts]
++check_multiple = "check_multiple.__main__:main"
++
++[project.urls]
++Homepage = "https://github.com/clarkbox/check_multiple"
++Documentation = "https://github.com/clarkbox/check_multiple/blob/master/README.md"
++Repository = "https://github.com/clarkbox/check_multiple.git"
++Issues = "https://github.com/clarkbox/check_multiple/issues"
++
++[tool.setuptools.packages.find]
++where = ["lib"]
+diff --git a/setup.py b/setup.py
+deleted file mode 100644
+index 8034e65..0000000
+--- a/setup.py
++++ /dev/null
+@@ -1,23 +0,0 @@
+-from distutils.core import setup
+-
+-setup(
+-  name         = 'nagios-check_multiple',
+-  version      = '0.0.1',
+-  maintainer       = 'Clark A',
+-  maintainer_email = 'clarka@gmail.com',
+-  url          = 'https://github.com/clarkbox/check_multiple',
+-  scripts      = ['bin/check_multiple'],
+-  packages     = ['check_multiple'],
+-  package_dir  = {'check_multiple': 'lib/check_multiple'},
+-  description  = 'Run multiple Nagios checks and combine the results',
+-  long_description=open('README.md').read(),
+-  classifiers  = [
+-    'Programming Language :: Python :: 3.5',
+-    'Programming Language :: Python :: 3.6',
+-    'Programming Language :: Python :: 3.7',
+-    'Programming Language :: Python :: 3.8',
+-    'Environment :: Console',
+-    'Intended Audience :: System Administrators',
+-    'License :: OSI Approved :: MIT License',
+-  ]
+-)

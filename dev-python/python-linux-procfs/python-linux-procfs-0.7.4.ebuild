@@ -16,7 +16,7 @@ SRC_URI="https://cdn.kernel.org/pub/software/libs/python/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64"
+KEYWORDS="amd64 ~arm64"
 
 python_test() {
 	"${EPYTHON}" ./bitmasklist_test.py || die "Tests failed with ${EPYTHON}"

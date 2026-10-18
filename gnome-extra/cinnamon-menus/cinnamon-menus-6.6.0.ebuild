@@ -6,7 +6,7 @@ EAPI=8
 inherit meson xdg
 
 DESCRIPTION="Cinnamon's library for the Desktop Menu fd.o specification"
-HOMEPAGE="https://projects.linuxmint.com/cinnamon/ https://github.com/linuxmint/cinnamon-menus"
+HOMEPAGE="https://linuxmint-developer-guide.readthedocs.io/en/latest/cinnamon.html https://linuxmint.com/"
 SRC_URI="https://github.com/linuxmint/cinnamon-menus/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+ LGPL-2+"

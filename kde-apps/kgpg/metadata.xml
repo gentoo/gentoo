@@ -8,4 +8,7 @@
 	<upstream>
 		<bugs-to>https://bugs.kde.org/</bugs-to>
 	</upstream>
+	<use>
+		<flag name="pim">Enable addressbook support using <pkg>kde-apps/akonadi</pkg></flag>
+	</use>
 </pkgmetadata>

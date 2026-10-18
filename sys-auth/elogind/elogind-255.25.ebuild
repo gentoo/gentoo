@@ -61,6 +61,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-255.17-revert-s2idle.patch" # bug 939042
 	"${FILESDIR}/${PN}-255.22-musl.patch" # bug 967191
 	"${FILESDIR}/${PN}-255.22-musl-deux.patch" # bug 967711
+	"${FILESDIR}/${PN}-255.24-lxml-6.1.3.patch" # bug 981933
 )
 
 python_check_deps() {

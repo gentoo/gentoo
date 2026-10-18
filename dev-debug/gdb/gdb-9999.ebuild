@@ -7,6 +7,7 @@ EAPI=8
 # tips & notes.
 
 GUILE_COMPAT=( 2-2 3-0 )
+GUILE_REQ_USE="deprecated"
 PYTHON_COMPAT=( python3_{11..14} )
 inherit flag-o-matic guile-single linux-info python-single-r1 strip-linguas toolchain-funcs
 

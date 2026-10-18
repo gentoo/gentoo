@@ -1,0 +1,37 @@
+From 06ad5f059f551e78aba257bbb20e17f218139301 Mon Sep 17 00:00:00 2001
+From: Rahil Bhimjiani <me@rahil.rocks>
+Date: Wed, 22 Jul 2026 11:16:15 +0530
+Subject: [PATCH] Makefile: add install.nobuild target to install ONLY.
+
+Current behaviour is `make install` builds binary as well as installs
+it. This stays the same. But in scenario when one just want to install and not compile, there was no option but to patch source.
+
+Adding new target accomodates such scenario.
+
+Signed-off-by: Rahil Bhimjiani <me@rahil.rocks>
+---
+ Makefile | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index c024f0e5b3..5d29f24fe6 100644
+--- a/Makefile
++++ b/Makefile
+@@ -165,12 +165,15 @@ install.go-md2man:
+ install.golangci-lint:
+ 	$(MAKE) -C tests/tools build/golangci-lint
+ 
+-.PHONY: install
+-install: bin/buildah
++.PHONY: install.nobuild
++install.nobuild:
+ 	install -d -m 755 $(DESTDIR)/$(BINDIR)
+ 	install -m 755 bin/buildah $(DESTDIR)/$(BINDIR)/buildah
+ 	$(MAKE) -C docs install
+ 
++.PHONY: install
++install: bin/buildah install.nobuild
++
+ .PHONY: uninstall
+ uninstall:
+ 	rm -f $(DESTDIR)/$(BINDIR)/buildah

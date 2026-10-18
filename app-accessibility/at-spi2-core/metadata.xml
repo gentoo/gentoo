@@ -10,5 +10,6 @@
   </upstream>
   <use>
     <flag name="dbus-broker">Use DBus broker implementation instead of default DBus daemon</flag>
+    <flag name="dbus-glib">Use dbus-glib for main loop integration</flag>
   </use>
 </pkgmetadata>

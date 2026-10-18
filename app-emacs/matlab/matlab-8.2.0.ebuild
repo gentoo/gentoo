@@ -17,7 +17,7 @@ else
 	   -> ${P}.gh.tar.gz"
 	S="${WORKDIR}/Emacs-MATLAB-Mode-${PN}-mode-${PV}"
 
-	KEYWORDS="~amd64 ~ppc ~x86"
+	KEYWORDS="amd64 ~ppc x86"
 fi
 
 LICENSE="GPL-3+"

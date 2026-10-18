@@ -1,9 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-USE_RUBY="ruby32 ruby33 ruby34"
+USE_RUBY="ruby32 ruby33 ruby34 ruby40"
 
 RUBY_FAKEGEM_TASK_DOC=""
 RUBY_FAKEGEM_DOCDIR="doc"
@@ -22,7 +22,7 @@ RUBY_S="ruby-sass-${PV}"
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1-2)"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="amd64 arm arm64 ~hppa ppc ppc64 ~riscv ~sparc ~x86"
 IUSE="doc test"
 
 ruby_add_bdepend "

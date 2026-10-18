@@ -4,8 +4,8 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=flit-core
-PYTHON_TESTED=( python3_{12..14} )
-PYTHON_COMPAT=( "${PYTHON_TESTED[@]}" python3_15 )
+PYTHON_TESTED=( python3_{12..15} )
+PYTHON_COMPAT=( "${PYTHON_TESTED[@]}" python3_{14,15}t )
 
 inherit distutils-r1
 
@@ -51,5 +51,6 @@ python_test() {
 	fi
 
 	local EPYTEST_PLUGINS=( pytest-{asyncio,httpserver,rerunfailures} )
+	local EPYTEST_RERUNS=5
 	epytest
 }

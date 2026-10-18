@@ -27,6 +27,7 @@ IUSE="+native-extensions"
 BDEPEND="
 	test? (
 		dev-python/objgraph[${PYTHON_USEDEP}]
+		dev-python/psutil[${PYTHON_USEDEP}]
 	)
 "
 
@@ -51,6 +52,7 @@ python_compile() {
 
 python_test() {
 	local EPYTEST_IGNORE=(
+		tests/isolated
 		tests/test_multidict_benchmarks.py
 		tests/test_views_benchmarks.py
 	)

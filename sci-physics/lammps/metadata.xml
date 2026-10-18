@@ -23,10 +23,6 @@
 		<flag name="extra">Additional compute, dump, fix, molecular, pair styles</flag>
 		<!--<flag name="kokkos">Enable kokkos non-bonded kernels</flag>-->
 	</use>
-	<maintainer type="person">
-		<email>nicolasbock@gentoo.org</email>
-		<name>Nicolas Bock</name>
-	</maintainer>
 	<maintainer type="project">
 		<email>sci-physics@gentoo.org</email>
 		<name>Gentoo Physics Project</name>

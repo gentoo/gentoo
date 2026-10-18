@@ -14,7 +14,7 @@ VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/gnupg.asc
 inherit toolchain-funcs out-of-source verify-sig libtool
 
 DESCRIPTION="X.509 and CMS (PKCS#7) library"
-HOMEPAGE="https://www.gnupg.org/related_software/libksba"
+HOMEPAGE="https://www.gnupg.org/related_software/libksba/"
 SRC_URI="mirror://gnupg/${PN}/${P}.tar.bz2"
 SRC_URI+=" verify-sig? ( mirror://gnupg/${PN}/${P}.tar.bz2.sig )"
 

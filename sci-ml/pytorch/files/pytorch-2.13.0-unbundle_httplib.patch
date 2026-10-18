@@ -1,0 +1,51 @@
+Link to system shared httplib instead of using bundled header-only version
+
+Bug: https://bugs.gentoo.org/980398
+--- a/caffe2/CMakeLists.txt
++++ b/caffe2/CMakeLists.txt
+@@ -1338,8 +1338,9 @@ if(USE_KINETO)
+     ${TORCH_ROOT}/third_party/kineto/libkineto/src)
+ endif()
+ 
+-target_include_directories(torch_cpu PRIVATE
+-  ${TORCH_ROOT}/third_party/cpp-httplib)
++if(USE_DISTRIBUTED)
++  target_link_libraries(torch_cpu PRIVATE httplib::httplib)
++endif()
+ 
+ target_include_directories(torch_cpu PRIVATE
+   ${TORCH_ROOT}/third_party/nlohmann/include)
+--- a/cmake/Dependencies.cmake
++++ b/cmake/Dependencies.cmake
+@@ -1717,8 +1717,9 @@ endif()
+ include(${CMAKE_CURRENT_LIST_DIR}/FlatBuffers.cmake)
+ 
+ # Include cpp-httplib
+-add_library(httplib INTERFACE IMPORTED)
+-target_include_directories(httplib SYSTEM INTERFACE ${PROJECT_SOURCE_DIR}/third_party/cpp-httplib)
++if(USE_DISTRIBUTED)
++  find_package(httplib REQUIRED)
++endif()
+ 
+ # Include nlohmann-json
+ add_library(nlohmann INTERFACE IMPORTED)
+--- a/torch/CMakeLists.txt
++++ b/torch/CMakeLists.txt
+@@ -78,13 +78,16 @@ list(APPEND TORCH_PYTHON_INCLUDE_DIRECTORIES ${LIBSHM_SRCDIR})
+ set(TORCH_PYTHON_LINK_LIBRARIES
+     Python::Module
+     pybind::pybind11
+-    httplib
+     nlohmann
+     moodycamel
+     shm
+     fmt
+     ATEN_CPU_FILES_GEN_LIB)
+ 
++if(USE_DISTRIBUTED)
++  list(APPEND TORCH_PYTHON_LINK_LIBRARIES httplib::httplib)
++endif()
++
+ if(USE_ASAN AND TARGET Sanitizer::address)
+   list(APPEND TORCH_PYTHON_LINK_LIBRARIES Sanitizer::address)
+ endif()

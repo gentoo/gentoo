@@ -1,4 +1,4 @@
-# Copyright 2021-2024 Gentoo Authors
+# Copyright 2021-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -23,11 +23,19 @@ HOMEPAGE="https://sr.ht/~mcf/cproc/"
 LICENSE="ISC"
 SLOT="0"
 
-DEPEND="sys-devel/qbe"
+DEPEND=">=sys-devel/qbe-1.3"
 RDEPEND="${DEPEND}"
 
 src_configure() {
 	tc-export CC
 
-	edo ./configure --prefix=/usr
+	local toolprefix="${CTARGET:-${CBUILD}}"
+
+	edo ./configure \
+		--prefix=/usr \
+		--host="${CHOST}" \
+		--target="${CTARGET:-${CBUILD}}" \
+		--with-cpp="${toolprefix}-cpp" \
+		--with-as="${toolprefix}-as" \
+		--with-ld="${toolprefix}-ld"
 }

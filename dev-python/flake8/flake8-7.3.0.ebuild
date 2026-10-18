@@ -1,10 +1,10 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( pypy3_11 python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 
 inherit distutils-r1
 
@@ -39,27 +39,10 @@ BDEPEND="
 distutils_enable_sphinx docs/source \
 	dev-python/sphinx-prompt \
 	dev-python/sphinx-rtd-theme
+EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
 
-python_test() {
-	local EPYTEST_DESELECT=(
-		# fails if additional flake8 plugins are installed
-		tests/integration/test_plugins.py::test_local_plugin_can_add_option
-	)
-	case ${EPYTHON} in
-		pypy3*)
-			EPYTEST_DESELECT+=(
-				# problem from pyflakes:
-				# upstream aims only to support long dead pypy3.9
-				# https://github.com/PyCQA/pyflakes/issues/779
-				# https://github.com/PyCQA/pyflakes/pull/802
-				# https://github.com/PyCQA/pyflakes/issues/828
-				tests/integration/test_main.py::test_malformed_per_file_ignores_error
-				tests/integration/test_main.py::test_tokenization_error_but_not_syntax_error
-				tests/integration/test_main.py::test_tokenization_error_is_a_syntax_error
-			)
-			;;
-	esac
-
-	epytest
-}
+EPYTEST_DESELECT=(
+	# fails if additional flake8 plugins are installed
+	tests/integration/test_plugins.py::test_local_plugin_can_add_option
+)

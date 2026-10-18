@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools flag-o-matic
+inherit autotools
 
 MY_PV="${PV/_/}"
 MY_P="${PN}-${MY_PV}"
@@ -14,13 +14,15 @@ S="${WORKDIR}/${PN}-${MY_P}"
 
 LICENSE="MIT icu CC-BY-3.0"
 SLOT="0/1"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~arm64-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~arm64-macos ~x64-macos ~x64-solaris"
 IUSE="+oniguruma static-libs test"
+RESTRICT="!test? ( test )"
+REQUIRED_USE="test? ( oniguruma )"
 
 ONIGURUMA_MINPV='>=dev-libs/oniguruma-6.9.10' # Keep this in sync with bundled vendor/oniguruma/
 DEPEND="
-	>=sys-devel/bison-3.0
 	app-alternatives/lex
+	>=sys-devel/bison-3.0
 	oniguruma? ( ${ONIGURUMA_MINPV}:=[static-libs?] )
 "
 RDEPEND="
@@ -28,12 +30,10 @@ RDEPEND="
 		oniguruma? ( ${ONIGURUMA_MINPV}[static-libs?] )
 	)
 "
+
 PATCHES=(
 	"${FILESDIR}"/jq-1.6-r3-never-bundle-oniguruma.patch
 )
-
-RESTRICT="!test? ( test )"
-REQUIRED_USE="test? ( oniguruma )"
 
 src_prepare() {
 	sed -e '/^dist_doc_DATA/d; s:-Wextra ::' -i Makefile.am || die
@@ -53,10 +53,6 @@ src_prepare() {
 }
 
 src_configure() {
-	# TODO: Drop on next release > 1.7.1
-	# bug #944014
-	append-cflags -std=gnu17
-
 	local econfargs=(
 		# don't try to rebuild docs
 		--disable-docs

@@ -55,6 +55,7 @@ DOCS=( README.md )
 
 PATCHES=(
 	"${FILESDIR}/${PN}-257.14-dbus-service.patch" #975147
+	"${FILESDIR}/${PN}-255.24-lxml-6.1.3.patch" #981933
 )
 
 python_check_deps() {

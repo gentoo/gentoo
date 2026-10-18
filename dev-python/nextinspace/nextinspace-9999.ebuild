@@ -1,10 +1,10 @@
-# Copyright 2022-2025 Gentoo Authors
+# Copyright 2022-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=poetry
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 inherit distutils-r1
 
 DESCRIPTION="A command-line tool for seeing the latest in space"
@@ -25,11 +25,6 @@ RDEPEND="
 	>=dev-python/colorama-0.4.3[${PYTHON_USEDEP}]
 	>=dev-python/requests-2.24[${PYTHON_USEDEP}]
 "
-BDEPEND="
-	test? (
-		dev-python/pytest-lazy-fixtures[${PYTHON_USEDEP}]
-		>=dev-python/requests-mock-1.8[${PYTHON_USEDEP}]
-	)
-"
 
+EPYTEST_PLUGINS=( pytest-lazy-fixtures requests-mock )
 distutils_enable_tests pytest

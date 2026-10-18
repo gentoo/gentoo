@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -25,6 +25,7 @@ IUSE="pkgcore"
 RDEPEND="
 	app-shells/bash
 	dev-lang/perl
+	sys-apps/gentoo-functions
 	pkgcore? ( sys-apps/pkgcore )
 	!pkgcore? (
 		app-portage/portage-utils

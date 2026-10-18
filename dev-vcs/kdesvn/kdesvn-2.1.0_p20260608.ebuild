@@ -13,7 +13,7 @@ SRC_URI="https://dev.gentoo.org/~asturm/distfiles/kde/${P}.tar.xz" # at 3bf8e6ce
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="+man"
 
 DEPEND="

@@ -1,9 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-USE_RUBY="ruby32 ruby33 ruby34"
+USE_RUBY="ruby32 ruby33 ruby34 ruby40"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 RUBY_FAKEGEM_EXTRADOC="README.md"
@@ -31,6 +31,10 @@ RDEPEND="media-gfx/imagemagick"
 DEPEND="test? ( virtual/imagemagick-tools[jpeg,png,tiff] )"
 
 ruby_add_bdepend "test? ( dev-ruby/mocha dev-ruby/webmock )"
+
+PATCHES=(
+	"${FILESDIR}"/mini_magick-4.13.2-fix-imagemagick-7.patch
+)
 
 all_ruby_prepare() {
 	# remove executable bit from all files

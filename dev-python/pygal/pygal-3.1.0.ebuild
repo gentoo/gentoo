@@ -52,5 +52,5 @@ python_prepare_all() {
 
 pkg_postinst() {
 	optfeature "improving rendering speed" "dev-python/lxml"
-	optfeature "png rendering" "dev-python/cairosvg"
+	optfeature "png rendering" "media-gfx/cairosvg"
 }

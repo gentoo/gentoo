@@ -179,10 +179,6 @@ src_configure() {
 		-DENABLE_CCACHE=OFF
 
 		$(use androiddump && use pcap && echo -DEXTCAP_ANDROIDDUMP_LIBPCAP=yes)
-		$(usex gui LRELEASE=$(qt6_get_bindir)/lrelease '')
-		$(usex gui MOC=$(qt6_get_bindir)/moc '')
-		$(usex gui RCC=$(qt6_get_bindir)/rcc '')
-		$(usex gui UIC=$(qt6_get_bindir)/uic '')
 
 		-DBUILD_androiddump=$(usex androiddump)
 		-DBUILD_capinfos=$(usex capinfos)

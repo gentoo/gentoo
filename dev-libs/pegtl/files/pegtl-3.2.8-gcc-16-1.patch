@@ -1,0 +1,39 @@
+From 479dd5726da0df75bc9fc96f6fa8aa33e2104621 Mon Sep 17 00:00:00 2001
+From: Sebastian Pipping <sebastian@pipping.org>
+Date: Tue, 11 Aug 2026 02:30:40 +0200
+Subject: [PATCH] Work around compilation isues with GCC 16.1.x
+
+Related:
+- https://github.com/taocpp/PEGTL/issues/382#issuecomment-4587769241
+- https://gcc.gnu.org/bugzilla/show_bug.cgi?id=91155
+- https://github.com/taocpp/PEGTL/commit/0176e87da3a02d0ab40ce39f03e0e4108d1bbba5
+---
+ include/tao/pegtl/demangle.hpp | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/include/tao/pegtl/demangle.hpp b/include/tao/pegtl/demangle.hpp
+index 389d00c..b1e1500 100644
+--- a/include/tao/pegtl/demangle.hpp
++++ b/include/tao/pegtl/demangle.hpp
+@@ -85,15 +85,15 @@ template< typename T >
+    return tmp.substr( 0, end );
+ }
+ 
+-#elif( __GNUC__ == 9 ) && ( __GNUC_MINOR__ < 3 )
++#elif( ( __GNUC__ == 9 ) && ( __GNUC_MINOR__ < 3 ) ) || ( ( __GNUC__ == 16 ) && ( __GNUC_MINOR__ < 2 ) )
+ 
+ #if !defined( __cpp_rtti )
+-#error "RTTI support required for GCC 9.1/9.2"
++#error "RTTI support required for GCC 9.1/9.2/16.1"
+ #else
+ 
+ #include <typeinfo>
+ 
+-// GCC 9.1 and 9.2 have a bug that leads to truncated __PRETTY_FUNCTION__ names,
++// GCC 9.1/9.2/16.1 have a bug that leads to truncated __PRETTY_FUNCTION__ names,
+ // see https://gcc.gnu.org/bugzilla/show_bug.cgi?id=91155
+ template< typename T >
+ [[nodiscard]] constexpr std::string_view TAO_PEGTL_NAMESPACE::demangle() noexcept
+-- 
+2.55.0
+

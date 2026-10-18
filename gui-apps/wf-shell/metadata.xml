@@ -5,6 +5,11 @@
 		<email>ceamac@gentoo.org</email>
 		<name>Viorel Munteanu</name>
 	</maintainer>
+	<use>
+		<flag name="ddcutil">Build monitor brightness widget</flag>
+		<flag name="pipewire">Build pipewire mixer widget</flag>
+		<flag name="pulseaudio">Build pulseaudio volume widget</flag>
+	</use>
 	<longdescription>
 		Basic desktop environment for use with wayfire
 		which showcases all its plugins and desktop

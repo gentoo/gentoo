@@ -52,6 +52,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-18.10.0-tests.patch
 )
 
+EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
 
 python_prepare_all() {
@@ -65,7 +66,6 @@ python_prepare_all() {
 
 python_test() {
 	local EPYTEST_DESELECT=()
-	local opts=()
 
 	# These tests are gracefully skipped when pylibmc is missing but not
 	# if pytest-services is missing -- even though that's the only test
@@ -75,9 +75,8 @@ python_test() {
 			cherrypy/test/test_session.py::MemcachedSessionTest
 		)
 	else
-		opts+=( -p pytest-services )
+		local EPYTEST_PLUGINS=( "${EPYTEST_PLUGINS[@]}" pytest-services )
 	fi
 
-	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
-	epytest "${opts[@]}"
+	epytest
 }

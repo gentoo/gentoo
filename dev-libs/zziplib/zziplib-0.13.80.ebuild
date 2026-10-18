@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,7 +7,7 @@ EAPI=8
 # may set) because the upstream CMake sets a different library name (!)
 # with Release.
 CMAKE_BUILD_TYPE=RelWithDebInfo
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 # Needed for docs, bug #8357553
 PYTHON_REQ_USE="xml(+)"
 inherit cmake flag-o-matic python-any-r1

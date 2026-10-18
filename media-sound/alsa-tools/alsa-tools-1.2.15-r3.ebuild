@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/alsa.asc
 inherit autotools flag-o-matic libtool linux-info python-single-r1 verify-sig xdg
 
@@ -16,7 +16,7 @@ SRC_URI="
 
 LICENSE="GPL-2"
 SLOT="0.9"
-KEYWORDS="~alpha ~amd64 ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm64 ~hppa ppc ppc64 ~riscv ~sparc x86"
 
 IUSE="fltk gtk alsa_cards_hdsp alsa_cards_hdspm alsa_cards_mixart
 alsa_cards_vx222 alsa_cards_usb-usx2y alsa_cards_sb16 alsa_cards_sbawe

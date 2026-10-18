@@ -1,0 +1,39 @@
+From a1bea0d8bf9f562f8add2a2b8c8f97c9094ac63a Mon Sep 17 00:00:00 2001
+From: Jakob Petsovits <jpetso@petsovits.com>
+Date: Mon, 10 Aug 2026 17:09:15 -0400
+Subject: [PATCH] Icon: Don't try to load empty fallback icons
+
+If the source of a Kirigami.Icon doesn't exist, and its fallback
+is an empty string, Qt (at least in version 6.11.1) will try to
+access numerous non-existent paths such as:
+
+* `$prefix/share/icons/breeze/actions/12/.png`
+* `$prefix/share/icons/breeze/apps/22@2x/.svg`
+
+Ideally Qt shouldn't do this. But in Kirigami, an empty icon fallback
+string is common, and keeping the pixmap empty in this case is an
+easy shortcut to take early.
+
+This was observed with `strace plasma-systemmonitor` on app startup.
+---
+ src/primitives/icon.cpp | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/src/primitives/icon.cpp b/src/primitives/icon.cpp
+index 8ad726e68..fc5308bb8 100644
+--- a/src/primitives/icon.cpp
++++ b/src/primitives/icon.cpp
+@@ -493,7 +493,9 @@ QImage Icon::findIcon(const QSize &size)
+ 
+     if (!iconSource.isEmpty() && img.isNull()) {
+         setStatus(Error);
+-        img = iconPixmap(QIcon::fromTheme(m_fallback));
++        // Qt as of 6.11.1 will try accessing icon files even when given an empty icon name.
++        // Reported upstream: https://qt-project.atlassian.net/browse/QTBUG-149099
++        img = m_fallback.isEmpty() ? QImage{} : iconPixmap(QIcon::fromTheme(m_fallback));
+     }
+     return img;
+ }
+-- 
+GitLab
+

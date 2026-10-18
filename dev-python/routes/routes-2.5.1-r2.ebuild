@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{12..15} )
+PYTHON_COMPAT=( python3_{12..15} python3_{14,15}t )
 
 inherit distutils-r1
 
@@ -37,6 +37,7 @@ BDEPEND="
 	)
 "
 
+EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
 
 PATCHES=(

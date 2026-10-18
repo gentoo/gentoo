@@ -1,0 +1,47 @@
+Fix compilation failures for targets like gfx1100.
+Loss.cu has a distinctive pattern of using CUDA_KERNEL_ASSERT after 64-bit getelementptr,
+which causes LLVM backend error. The problem is addressed in https://github.com/llvm/llvm-project/pull/174774,
+but requires a workaround for LLVM-22 (e.g., using __assert_fail, which does not emit llvm.trap()).
+
+See also: https://bugs.gentoo.org/978229
+--- a/aten/src/ATen/native/cuda/Loss.cu
++++ b/aten/src/ATen/native/cuda/Loss.cu
+@@ -157,12 +157,38 @@ int nll_loss_threads(int64_t nframe){
+   AT_PRIVATE_CASE_TYPE_USING_HINT(at::ScalarType::Byte, index_t, __VA_ARGS__) \
+   AT_PRIVATE_CASE_TYPE_USING_HINT(at::ScalarType::Long, index_t, __VA_ARGS__))
+ 
++// Workaround for LLVM bug in insertSimulatedTrap (fixed in
++// https://github.com/llvm/llvm-project/pull/174774): abort() generates
++// llvm.trap() which causes FinalizeISel to skip subsequent blocks containing
++// S_ADD_U64_PSEUDO, leaving it unexpanded. Using __assert_fail avoids
++// llvm.trap() while preserving the same assertion behavior.
++#ifdef USE_ROCM
++#define CHECK_INDEX_IN_CLASS(INDEX, N_CLASSES)                           \
++  if constexpr(std::is_unsigned_v<decltype(INDEX)>) {                    \
++    if (C10_UNLIKELY(!(INDEX < N_CLASSES))) {                            \
++      __assert_fail(                                                     \
++          #INDEX " < " #N_CLASSES,                                       \
++          __FILE__,                                                      \
++          static_cast<unsigned int>(__LINE__),                           \
++          __func__);                                                     \
++    }                                                                    \
++  } else {                                                               \
++    if (C10_UNLIKELY(!(INDEX >= 0 && INDEX < N_CLASSES))) {              \
++      __assert_fail(                                                     \
++          #INDEX " >= 0 && " #INDEX " < " #N_CLASSES,                    \
++          __FILE__,                                                      \
++          static_cast<unsigned int>(__LINE__),                           \
++          __func__);                                                     \
++    }                                                                    \
++  }
++#else
+ #define CHECK_INDEX_IN_CLASS(INDEX, N_CLASSES)                           \
+   if constexpr(std::is_unsigned_v<decltype(INDEX)>) {                    \
+     CUDA_KERNEL_ASSERT(INDEX < N_CLASSES);                               \
+   } else {                                                               \
+     CUDA_KERNEL_ASSERT(INDEX >= 0 && INDEX < N_CLASSES);                 \
+   }
++#endif
+ 
+ template <typename scalar_t, typename index_t>
+ __global__ void nll_loss_forward_no_reduce_cuda_kernel(

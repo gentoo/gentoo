@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -27,6 +27,9 @@ RESTRICT="strip" #269221
 
 PATCHES=(
 	"${FILESDIR}/${P}-sparc-find-libs.patch"
+	"${FILESDIR}/${P}-arm64-fix-__libc_csu_-symbols.patch"
+	"${FILESDIR}/${P}-x86-fix-__libc_csu_-symbols.patch"
+	"${FILESDIR}/${P}-pas2js-textrels.patch"
 )
 
 # fpc is special: it can't use CFLAGS and LDFLAGS directly
@@ -76,6 +79,11 @@ src_unpack() {
 
 src_prepare() {
 	default
+
+	# https://bugs.gentoo.org/712580#c18
+	pushd "${WORKDIR}/${P}" >/dev/null || die
+	eapply "${FILESDIR}/${P}-arm64-fix-__libc_csu_-symbols.patch"
+	popd >/dev/null || die
 
 	find "${WORKDIR}" -name Makefile -exec sed -i 's/ -Xs / /' {} + || die
 

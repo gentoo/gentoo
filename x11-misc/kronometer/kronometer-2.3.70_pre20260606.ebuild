@@ -14,7 +14,7 @@ SRC_URI="https://dev.gentoo.org/~asturm/distfiles/kde/${P}.tar.xz" # at 2f328db4
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 DEPEND="
 	>=dev-qt/qtbase-${QTMIN}:6[dbus,gui,widgets]

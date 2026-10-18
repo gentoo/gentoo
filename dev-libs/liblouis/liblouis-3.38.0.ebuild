@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 DISTUTILS_OPTIONAL=1
 DISTUTILS_SINGLE_IMPL=1
 DISTUTILS_USE_PEP517=setuptools
@@ -15,7 +15,7 @@ SRC_URI="https://github.com/liblouis/liblouis/releases/download/v${PV}/${P}.tar.
 
 LICENSE="LGPL-2.1+ tools? ( GPL-3+ )"
 SLOT="0/21" # follows LIBLOUIS_CURRENT in configure.ac
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm arm64 ~loong ~ppc ppc64 ~riscv ~sparc x86"
 IUSE="test +tools"
 REQUIRED_USE="
 	test? ( tools )

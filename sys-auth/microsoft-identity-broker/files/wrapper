@@ -4,6 +4,6 @@ exec bwrap \
     --bind / / \
     --dev-bind /dev /dev \
     --ro-bind /etc/microsoft/identity-broker/etc/lsb-release /etc/lsb-release \
-    --ro-bind /etc/microsoft/identity-broker/etc/os-release /etc/os-release \
+    --ro-bind /etc/microsoft/identity-broker/usr/lib/os-release /usr/lib/os-release \
     -- \
     /opt/microsoft/identity-broker/libexec/"${0##*/}" "${@}"

@@ -16,7 +16,7 @@ else
 	https://github.com/dani-garcia/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz
 	https://github.com/gentoo-crate-dist/${PN}/releases/download/${PV}/${P}-crates.tar.xz -> ${P}-deps.tar.xz
 "
-	KEYWORDS="~amd64"
+	KEYWORDS="~amd64 ~arm64"
 fi
 
 LICENSE="AGPL-3"
@@ -41,9 +41,9 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
+RUST_MIN_VER="1.97.1"
 QA_FLAGS_IGNORED="usr/bin/${PN}"
 QA_PRESTRIPPED="usr/bin/${PN}"
-ECARGO_VENDOR="${WORKDIR}/vendor"
 
 PATCHES=(
 	"${FILESDIR}"/vaultwarden-envfile-1.34.1.patch
@@ -71,18 +71,10 @@ pkg_setup() {
 
 src_unpack() {
 	if [[ ${PV} == 9999* ]]; then
-		# clone vaultwarden
 		git-r3_src_unpack
-
-		# clone vaultwarden.wiki
-		EGIT_REPO_URI="https://github.com/dani-garcia/vaultwarden.wiki.git"
-		EGIT_CHECKOUT_DIR="${WORKDIR}/${PN}.wiki"
-		git-r3_src_unpack
-
 		cargo_live_src_unpack
 	else
 		cargo_src_unpack
-		mv cargo_home ${P}/ || die
 	fi
 }
 
@@ -101,7 +93,7 @@ src_prepare() {
 				mysqld.service
 			)
 		use postgres && DB_UNIT+=(
-				postgresql-{13..17}.service
+				postgresql-{14..19}.service
 			)
 		cat <<-EOF > "${T}/${PN}-db.conf"
 			[Unit]
@@ -114,7 +106,7 @@ src_prepare() {
 
 src_configure() {
 	local myfeatures=(
-		$(usev sqlite)
+		$(usev sqlite sqlite_system)
 		$(usev mysql)
 		$(usev postgres postgresql )
 	)
@@ -140,14 +132,16 @@ src_install() {
 	newtmpfiles "${FILESDIR}"/vaultwarden-tmpfiles-1.33.2.conf "${PN}".conf
 	insinto /etc/logrotate.d
 	newins "${FILESDIR}/"vaultwarden-1.33.2.logrotated "${PN}"
-	insinto /etc/"${PN}"
-	newins .env.template "${PN}".conf
 	keepdir /var/lib/"${PN}"
 	fowners "${PN}":"${PN}" /var/lib/"${PN}"
 	fperms 750 /var/lib/"${PN}"
 	keepdir /var/log/"${PN}"
 	fowners "${PN}":"${PN}" /var/log/"${PN}"
 	fperms 750 /var/log/"${PN}"
+	# Do last due to insopts modifications
+	insopts -m0640 -g "${PN}"
+	insinto /etc/"${PN}"
+	newins .env.template "${PN}".conf
 
 	readme.gentoo_create_doc
 	einstalldocs

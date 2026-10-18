@@ -1,0 +1,85 @@
+From 4231592c42da76fb8ed8ccf9dd4c717c6d22171d Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Jos=C3=A9=20Valim?= <jose.valim@gmail.com>
+Date: Tue, 9 Jun 2026 13:25:22 +0200
+Subject: [PATCH 1/3] Cap width in strftime to 1024 characters
+
+---
+ lib/elixir/lib/calendar.ex               | 11 ++++++++--
+ lib/elixir/test/elixir/calendar_test.exs | 26 ++++++++++++++++++++++++
+ 2 files changed, 35 insertions(+), 2 deletions(-)
+
+diff --git a/lib/elixir/lib/calendar.ex b/lib/elixir/lib/calendar.ex
+index 63af4f158..fe30f16bd 100644
+--- a/lib/elixir/lib/calendar.ex
++++ b/lib/elixir/lib/calendar.ex
+@@ -1,4 +1,6 @@
+ defmodule Calendar do
++  @strftime_max_width 1024
++
+   @moduledoc """
+   This module defines the responsibilities for working with
+   calendars, dates, times and datetimes in Elixir.
+@@ -484,6 +486,7 @@ def get_time_zone_database() do
+     * `%`: indicates the start of a formatted section
+     * `<padding>`: set the padding (see below)
+     * `<width>`: a number indicating the minimum size of the formatted section
++      (maximum #{@strftime_max_width})
+     * `<format>`: the format itself (see below)
+ 
+   ### Accepted padding options
+@@ -605,9 +608,13 @@ defp parse_modifiers("_" <> rest, width, nil, parser_data) do
+   end
+ 
+   defp parse_modifiers(<<digit, rest::binary>>, width, pad, parser_data) when digit in ?0..?9 do
+-    new_width = (width || 0) * 10 + (digit - ?0)
++    width = (width || 0) * 10 + (digit - ?0)
++
++    if width > @strftime_max_width do
++      raise ArgumentError, "invalid strftime format: width must be at most #{@strftime_max_width}"
++    end
+ 
+-    parse_modifiers(rest, new_width, pad, parser_data)
++    parse_modifiers(rest, width, pad, parser_data)
+   end
+ 
+   # set default padding if none was specified
+diff --git a/lib/elixir/test/elixir/calendar_test.exs b/lib/elixir/test/elixir/calendar_test.exs
+index 2d427214f..779cbf1ca 100644
+--- a/lib/elixir/test/elixir/calendar_test.exs
++++ b/lib/elixir/test/elixir/calendar_test.exs
+@@ -336,6 +336,32 @@ test "handles `0` both as padding and as part of a width" do
+       assert Calendar.strftime(~N[2019-08-15 17:07:57], "%010A") == "00Thursday"
+     end
+ 
++    test "limits width to at most 1024 characters" do
++      assert Calendar.strftime(~D[2019-08-15], "%1024d") |> byte_size() == 1024
++
++      assert_raise ArgumentError, "invalid strftime format: width must be at most 1024", fn ->
++        Calendar.strftime(~D[2019-08-15], "%1025d")
++      end
++
++      assert_raise ArgumentError, "invalid strftime format: width must be at most 1024", fn ->
++        Calendar.strftime(~D[2019-08-15], "%10000d")
++      end
++    end
++
++    test "limits width in preferred formats" do
++      assert_raise ArgumentError, "invalid strftime format: width must be at most 1024", fn ->
++        Calendar.strftime(~N[2019-08-15 17:07:57], "%c", preferred_datetime: "%1025d")
++      end
++
++      assert_raise ArgumentError, "invalid strftime format: width must be at most 1024", fn ->
++        Calendar.strftime(~N[2019-08-15 17:07:57], "%x", preferred_date: "%1025d")
++      end
++
++      assert_raise ArgumentError, "invalid strftime format: width must be at most 1024", fn ->
++        Calendar.strftime(~N[2019-08-15 17:07:57], "%X", preferred_time: "%1025H")
++      end
++    end
++
+     test "formats Epoch time with %s" do
+       assert Calendar.strftime(~N[2019-08-15 17:07:57], "%s") == "1565888877"
+ 
+-- 
+2.52.0
+

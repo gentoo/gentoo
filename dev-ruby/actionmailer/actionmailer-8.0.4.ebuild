@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -41,7 +41,7 @@ all_ruby_prepare() {
 	# Set test environment to our hand.
 	rm "${S}/../Gemfile" || die "Unable to remove Gemfile"
 	sed -e '/\/load_paths/d' \
-		-e '3igem "actionpack", "~> 8.0.0"; gem "activejob", "~> 8.0.0"' \
+		-e '3igem "actionpack", "~> 8.0.0"; gem "activejob", "~> 8.0.0"; gem "minitest", "~> 5"' \
 		-i test/abstract_unit.rb || die "Unable to remove load paths"
 
 	# Avoid a test failing only on attachment ordering, since this is a

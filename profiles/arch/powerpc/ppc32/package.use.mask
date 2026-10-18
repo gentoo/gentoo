@@ -1,6 +1,21 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Bernard Cafarelli <voyageur@gentoo.org> (2026-10-09)
+# Requires unkeyworded media-libs/libshumate and app-text/libspelling
+media-gfx/geeqie map spell
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2026-08-31)
+# Requires unkeyworded dependencies
+dev-vcs/subversion kwallet
+sys-auth/polkit kde
+sys-block/gparted kde
+virtual/notification-daemon kde
+
+# Alfred Wingate <parona@protonmail.com> (2026-07-26)
+# Firefox not keyworded here
+dev-util/selenium-manager test
+
 # Ionen Wolkens <ionen@gentoo.org> (2026-05-31)
 # dev-qt/qtmultimedia:6 was dekeyworded due to notable test failures
 # which stalled stabilizations (bug #973096) and there is low interest
@@ -28,6 +43,7 @@ dev-util/ccache http
 # Ionen Wolkens <ionen@gentoo.org> (2026-03-16)
 # media-libs/opencolorio is not keyworded here
 media-video/ffmpeg opencolorio
+media-video/ffmpeg-compat opencolorio
 
 # Sam James <sam@gentoo.org> (2025-08-29)
 # net-misc/passt not yet keyworded here

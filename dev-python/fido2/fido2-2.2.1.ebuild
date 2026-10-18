@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=poetry-core
-PYTHON_COMPAT=( python3_{12..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 
 inherit distutils-r1
 
@@ -19,7 +19,7 @@ SRC_URI="
 
 LICENSE="Apache-2.0 BSD-2 MIT MPL-2.0"
 SLOT="0/1.0" # Bumped every time a backwards-incompatible version is released
-KEYWORDS="~amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="amd64 arm arm64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc x86"
 IUSE="examples"
 
 RDEPEND="

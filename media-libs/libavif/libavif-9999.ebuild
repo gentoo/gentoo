@@ -1,17 +1,35 @@
-# Copyright 2020-2025 Gentoo Authors
+# Copyright 2020-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit cmake-multilib git-r3 gnome2-utils
+inherit cmake-multilib gnome2-utils
 
+ARGPARSE_COMMIT="ee74d1b53bd680748af14e737378de57e2a0a954"
 DESCRIPTION="Library for encoding and decoding .avif files"
 HOMEPAGE="https://github.com/AOMediaCodec/libavif"
-EGIT_REPO_URI="https://github.com/AOMediaCodec/libavif.git"
 
-LICENSE="BSD-2"
+if [[ ${PV} == 9999 ]] ; then
+	EGIT_REPO_URI="https://github.com/AOMediaCodec/libavif.git"
+	inherit git-r3
+else
+	SRC_URI="
+		https://github.com/AOMediaCodec/libavif/archive/v${PV}.tar.gz -> ${P}.tar.gz
+		extras? (
+			https://github.com/kmurray/libargparse/archive/${ARGPARSE_COMMIT}.tar.gz -> libargparse-${ARGPARSE_COMMIT}.tar.gz
+		)
+	"
+
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
+fi
+
+LICENSE="
+	BSD-2
+	extras? ( MIT )
+"
 # See bug #822336 re subslot
-SLOT="0/${PV}"
+# See LIBRARY_VERSION_MAJOR, LIBRARY_VERSION_MINOR in CMakeLists.txt
+SLOT="0/16.4"
 IUSE="+aom dav1d examples extras gdk-pixbuf rav1e svt-av1 libyuv test"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="|| ( aom dav1d )"
@@ -21,12 +39,6 @@ DEPEND="
 	media-libs/libpng:=[${MULTILIB_USEDEP}]
 	aom? ( >=media-libs/libaom-3.3.0:=[${MULTILIB_USEDEP}] )
 	dav1d? ( >=media-libs/dav1d-1.0.0:=[${MULTILIB_USEDEP}] )
-	extras? (
-		test? (
-			dev-cpp/gtest
-			media-gfx/imagemagick[lcms]
-		)
-	)
 	gdk-pixbuf? (
 		dev-libs/glib:2[${MULTILIB_USEDEP}]
 		x11-libs/gdk-pixbuf:2[${MULTILIB_USEDEP}]
@@ -40,7 +52,23 @@ RDEPEND="
 "
 BDEPEND="
 	virtual/pkgconfig
+	extras? (
+		test? (
+			dev-cpp/gtest
+			virtual/imagemagick-tools[jpeg,png]
+		)
+	)
 "
+
+src_prepare() {
+	cmake_src_prepare
+
+	# bug #951614
+	if use extras; then
+		mv "${WORKDIR}/libargparse-${ARGPARSE_COMMIT}" "${S}/ext/libargparse" ||
+			die "mv failed"
+	fi
+}
 
 multilib_src_configure() {
 	local mycmakeargs=(
@@ -52,7 +80,6 @@ multilib_src_configure() {
 		-DAVIF_CODEC_DAV1D=$(usex dav1d SYSTEM OFF)
 		-DAVIF_ZLIBPNG=SYSTEM
 		-DAVIF_JPEG=SYSTEM
-		-DAVIF_LIBYUV=$(usex libyuv SYSTEM OFF)
 
 		-DAVIF_BUILD_GDK_PIXBUF=$(usex gdk-pixbuf ON OFF)
 
@@ -63,22 +90,22 @@ multilib_src_configure() {
 		mycmakeargs+=(
 			-DAVIF_CODEC_RAV1E=$(usex rav1e SYSTEM OFF)
 			-DAVIF_CODEC_SVT=$(usex svt-av1 SYSTEM OFF)
+			-DAVIF_LIBYUV=$(usex libyuv SYSTEM OFF)
 
 			-DAVIF_BUILD_EXAMPLES=$(usex examples ON OFF)
 			-DAVIF_BUILD_APPS=$(usex extras ON OFF)
 			-DAVIF_BUILD_TESTS=$(usex test ON OFF)
-			-DAVIF_ENABLE_GTEST=$(usex extras $(usex test ON OFF) OFF)
 			-DAVIF_GTEST=$(usex extras $(usex test SYSTEM OFF) OFF)
 		)
 	else
 		mycmakeargs+=(
 			-DAVIF_CODEC_RAV1E=OFF
 			-DAVIF_CODEC_SVT=OFF
+			-DAVIF_LIBYUV=OFF
 
 			-DAVIF_BUILD_EXAMPLES=OFF
 			-DAVIF_BUILD_APPS=OFF
 			-DAVIF_BUILD_TESTS=OFF
-			-DAVIF_ENABLE_GTEST=OFF
 			-DAVIF_GTEST=OFF
 		)
 

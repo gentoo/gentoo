@@ -1,0 +1,41 @@
+Upstream: https://github.com/musescore/MuseScore/pull/34204
+
+From https://github.com/musescore/MuseScore/pull/34204/changes/f273501e418842351c4bda10cce32b0e329eaff1 Mon Sep 17 00:00:00 2001
+From: Doron Behar <doron.behar@gmail.com>
+Date: Wed, 15 Jul 2026 13:19:36 +0300
+Subject: [PATCH] uicomponents: fix StyledDropdown navigation/label/dropIcon
+ resolving to null
+
+StyledDropdown exposed these three properties as aliases into an alias
+declared on its internal mainItem (e.g. `property alias navigation:
+mainItem.navigation`, where mainItem itself has `property alias
+navigation: navCtrl`). With Qt 6.11, this two-hop alias chain resolves
+to null whenever the StyledDropdown instance is created dynamically
+(Qt.createComponent().createObject(), a Loader, or a ListView
+delegate), which is how most dialogs including "New score" are built.
+The null grouped-property writes this caused were severe enough to
+abort construction of the whole enclosing dynamically-created object
+tree.
+
+Point the properties directly at the leaf items instead, bypassing the
+broken two-hop resolution.
+
+Resolves: #34091
+
+Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
+--- a/src/framework/uicomponents/qml/Muse/UiComponents/StyledDropdown.qml
++++ b/src/framework/uicomponents/qml/Muse/UiComponents/StyledDropdown.qml
+@@ -50,10 +50,10 @@ Item {
+ 
+     property int popupItemsCount: 18
+ 
+-    property alias dropIcon: mainItem.dropIcon
+-    property alias label: mainItem.label
++    property alias dropIcon: dropIconItem
++    property alias label: labelItem
+ 
+-    property alias navigation: mainItem.navigation
++    property alias navigation: navCtrl
+ 
+     property alias isOpened: dropdownLoader.isOpened
+     property alias dropdown: dropdownLoader.dropdown

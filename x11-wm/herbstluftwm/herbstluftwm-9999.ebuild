@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{10..14} )
 DISTUTILS_USE_PEP517=setuptools
 DISTUTILS_OPTIONAL=1
 
-inherit cmake desktop distutils-r1
+inherit cmake desktop distutils-r1 systemd
 
 DESCRIPTION="A manual tiling window manager for X"
 HOMEPAGE="https://herbstluftwm.org/"
@@ -149,6 +149,17 @@ src_install() {
 	# also in applications/. This allows herbstluftwm to be used as
 	# window manager of a Gnome flashback session.
 	domenu "${ED}"/usr/share/xsessions/herbstluftwm.desktop
+
+	systemd_newuserunit - herbstluftwm.service <<-EOF
+	[Unit]
+	Description=Herbstluftwm Window Manager
+	PartOf=graphical-session.target
+	After=graphical-session-pre.target
+
+	[Service]
+	ExecStart=/usr/bin/herbstluftwm
+	Restart=on-failure
+	EOF
 }
 
 distutils_enable_tests pytest

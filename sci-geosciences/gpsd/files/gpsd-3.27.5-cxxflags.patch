@@ -1,0 +1,14 @@
+PR merged https://gitlab.com/gpsd/gpsd/-/merge_requests/578.patch
+Subject: [PATCH] build: use CXXFLAGS for Qt
+ensuring Qt C++ objects are compiled with the proper flag set
+--- a/SConscript
++++ b/SConscript
+@@ -1938,7 +1938,7 @@ libraries = [libgps_shared, packet_ffi_shared]
+ # otherwise we have a mismash of objects in library
+ if qt_env:
+     qtobjects = []
+-    qt_flags = qt_env['CFLAGS']
++    qt_flags = qt_env['CXXFLAGS']
+     for c_only in ('--disable-excess-fp-precision',
+                    '-fexcess-precision=standard',
+                    '-Wmissing-prototypes',

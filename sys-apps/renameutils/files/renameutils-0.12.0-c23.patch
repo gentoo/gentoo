@@ -1,0 +1,146 @@
+https://bugs.gentoo.org/944428#c2
+
+--- a/src/common/hmap.c
++++ b/src/common/hmap.c
+@@ -363,7 +363,7 @@ hmap_iterator(HMap *map, HMapIterator *it)
+  * function. But no other entry.
+  */
+ void
+-hmap_foreach_value(HMap *map, void (*iterator)())
++hmap_foreach_value(HMap *map, void (*iterator)(void*))
+ {
+     uint32_t c;
+ 
+@@ -378,7 +378,7 @@ hmap_foreach_value(HMap *map, void (*iterator)())
+ }
+ 
+ void
+-hmap_foreach_key(HMap *map, void (*iterator)())
++hmap_foreach_key(HMap *map, void (*iterator)(void*))
+ {
+     uint32_t c;
+ 
+--- a/src/common/hmap.h
++++ b/src/common/hmap.h
+@@ -50,8 +50,8 @@ void *hmap_put(HMap *map, void *key, void *value);
+ bool hmap_contains_key(HMap *map, const void *key);
+ void *hmap_remove(HMap *map, const void *key);
+ void hmap_iterator(HMap *map, HMapIterator *it);
+-void hmap_foreach_key(HMap *map, void (*iterator)());
+-void hmap_foreach_value(HMap *map, void (*iterator)());
++void hmap_foreach_key(HMap *map, void (*iterator)(void*));
++void hmap_foreach_value(HMap *map, void (*iterator)(void*));
+ void hmap_clear(HMap *map);
+ size_t hmap_size(HMap *map);
+ void hmap_set_hash_fn(HMap *map, hash_fn_t hash);
+--- a/src/common/llist.c
++++ b/src/common/llist.c
+@@ -445,7 +445,7 @@ llist_is_empty(LList *list)
+ }
+ 
+ void
+-llist_iterate(LList *list, void (*iterator_func)())
++llist_iterate(LList *list, void (*iterator_func)(void*))
+ {
+ 	LNode *entry;
+ 	for (entry = list->first; entry != NULL; entry = entry->next)
+--- a/src/common/llist.h
++++ b/src/common/llist.h
+@@ -68,7 +68,7 @@ LList *llist_clone(LList *list);
+ void **llist_to_array(LList *list);
+ void **llist_to_null_terminated_array(LList *list);
+ 
+-void llist_iterate(LList *list, void (*iterator_func)());
++void llist_iterate(LList *list, void (*iterator_func)(void*));
+ void llist_iterator(LList *list, LListIterator *it);
+ 
+ void llist_reverse(LList *list);
+--- a/src/common/tmap.c
++++ b/src/common/tmap.c
+@@ -507,7 +507,7 @@ predecessor(TMapNode *node)
+ #endif
+ 
+ static void
+-tmap_foreach_nodes_key(TMapNode *node, void (*iterator)())
++tmap_foreach_nodes_key(TMapNode *node, void (*iterator)(void*))
+ {
+     if (node->left != &nil)
+     	tmap_foreach_nodes_key(node->left, iterator);
+@@ -517,7 +517,7 @@ tmap_foreach_nodes_key(TMapNode *node, void (*iterator)())
+ }
+ 
+ static void
+-tmap_foreach_nodes_value(TMapNode *node, void (*iterator)())
++tmap_foreach_nodes_value(TMapNode *node, void (*iterator)(void*))
+ {
+     if (node->left != &nil)
+     	tmap_foreach_nodes_value(node->left, iterator);
+@@ -527,14 +527,14 @@ tmap_foreach_nodes_value(TMapNode *node, void (*iterator)())
+ }
+ 
+ void
+-tmap_foreach_key(TMap *map, void (*iterator)())
++tmap_foreach_key(TMap *map, void (*iterator)(void*))
+ {
+     if (map->root != &nil)
+ 	tmap_foreach_nodes_key(map->root, iterator);
+ }
+ 
+ void
+-tmap_foreach_value(TMap *map, void (*iterator)())
++tmap_foreach_value(TMap *map, void (*iterator)(void*))
+ {
+     if (map->root != &nil)
+ 	tmap_foreach_nodes_value(map->root, iterator);
+--- a/src/common/tmap.h
++++ b/src/common/tmap.h
+@@ -51,8 +51,8 @@ void *tmap_remove(TMap *map, const void *key);
+ void tmap_iterator(TMap *map, TMapIterator *it); /* value iterator */
+ bool tmap_iterator_partial(TMap *map, TMapIterator *it, const void *match, comparison_fn_t comparator);
+ void tmap_clear(TMap *map);
+-void tmap_foreach_key(TMap *map, void (*iterator)());
+-void tmap_foreach_value(TMap *map, void (*iterator)());
++void tmap_foreach_key(TMap *map, void (*iterator)(void*));
++void tmap_foreach_value(TMap *map, void (*iterator)(void*));
+ 
+ #ifdef ENABLE_TMAP_TESTING
+ #include <stdio.h>
+--- a/src/list.c
++++ b/src/list.c
+@@ -166,14 +166,14 @@ import_command(char **args)
+     hmap_free(map_files);
+     if (ferror(fh)) {
+         warn(_("%s: cannot read from file: %s\n"), quotearg(args[1]), errstr);
+-        llist_iterate(new_files, free_file_spec);
++        llist_iterate(new_files, (void(*)(void *))free_file_spec);
+         llist_free(new_files);
+         fclose(fh);
+         return;
+     }
+     fclose(fh);
+ 
+-    llist_iterate(work_files, free_file_spec);
++    llist_iterate(work_files, (void(*)(void *))free_file_spec);
+     llist_free(work_files);
+     work_files = new_files;
+ }
+@@ -370,7 +370,7 @@ list_files(char **args)
+         free_plan(plan);
+         plan = NULL;
+     }
+-    llist_iterate(work_files, free_file_spec);
++    llist_iterate(work_files, (void(*)(void *))free_file_spec);
+     llist_clear(work_files);
+ 
+     if (!process_ls_output(firstdir, work_files, ls_fd)) {
+--- a/src/qcmd.c
++++ b/src/qcmd.c
+@@ -263,7 +263,7 @@ main(int argc, char **argv)
+ 	free_plan(plan);
+ 
+     /*dump_spec_list(work_files);*/
+-    llist_iterate(work_files, free_file_spec);
++    llist_iterate(work_files, (void(*)(void *))free_file_spec);
+     llist_free(work_files);
+     free(all_options);
+     free(editor_program);

@@ -6,7 +6,7 @@ EAPI=8
 DISTUTILS_EXT=1
 DISTUTILS_OPTIONAL="1"
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 
 inherit cmake-multilib distutils-r1 flag-o-matic
 
@@ -14,7 +14,7 @@ if [[ ${PV} == *9999* ]] ; then
 	EGIT_REPO_URI="https://github.com/google/${PN}.git"
 	inherit git-r3
 else
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-macos ~x64-solaris"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~arm64-macos ~x64-macos ~x64-solaris"
 	SRC_URI="
 		https://github.com/google/${PN}/archive/v${PV}.tar.gz
 			-> ${P}.tar.gz

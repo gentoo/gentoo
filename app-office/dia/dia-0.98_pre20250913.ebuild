@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 inherit flag-o-matic meson python-single-r1 xdg
 
 COMMIT_HASH="22534d16c317ee11714ef7221f9b635df233be9b"
@@ -56,6 +56,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-0.98-fix_poppler_2510.patch #965768
 	"${FILESDIR}"/${PN}-0.98-fix_poppler_2601.patch
 	"${FILESDIR}"/${PN}-0.98-fix_poppler_2602.patch #970103
+	"${FILESDIR}"/${PN}-0.98-fix_poppler_2606.patch #983078
+	"${FILESDIR}"/${PN}-0.98-fix_crash_pdf.patch #983078
 )
 
 pkg_setup() {

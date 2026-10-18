@@ -22,6 +22,7 @@
 # Not overly worth extra stabilizations over new still scarcely used
 # colour filters. Can revisit if someone wants this.
 media-video/ffmpeg opencolorio
+media-video/ffmpeg-compat opencolorio
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-12-13)
 # media-gfx/asymptote is not stable here, bug #961740
@@ -103,12 +104,6 @@ sci-libs/gsl cblas-external
 # Hans de Graaff <graaff@gentoo.org> (2023-03-28)
 # dev-ruby/stringex is not marked stable here yet
 dev-ruby/kramdown unicode
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2022-09-14)
-# sci-libs/vtk is not stable on x86 and we don't want to complicate
-# newer maxima and geant stabilisation, bug #867547, #886975
-sci-mathematics/maxima vtk
-sci-physics/geant vtk
 
 # Sam James <sam@gentoo.org> (2022-07-06)
 # sci-libs/sundials is not marked stable on x86

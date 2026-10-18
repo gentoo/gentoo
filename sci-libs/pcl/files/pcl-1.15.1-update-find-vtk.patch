@@ -1,0 +1,55 @@
+From 0cc63c4e426c516db835bc323c22ecc72e0bf82f Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+Date: Thu, 8 Jan 2026 22:02:00 +0100
+Subject: [PATCH] update find vtk
+
+Signed-off-by: Paul Zander <negril.nx+gentoo@gmail.com>
+
+diff --git a/cmake/pcl_find_vtk.cmake b/cmake/pcl_find_vtk.cmake
+index ab48e74..adba979 100644
+--- a/cmake/pcl_find_vtk.cmake
++++ b/cmake/pcl_find_vtk.cmake
+@@ -28,7 +28,14 @@ endfunction()
+ # the version of VTK. As the module names were changed from VTK 8.2 to 9.0, we don't
+ # search explicitly for modules. Furthermore we don't pass required minimum version 6.2
+ # to find_package because then it only accept versions with same major version.
+-find_package(VTK)
++
++# Module names changed between 8 and 9, so do a QUIET find for 9 and its module name first, and fall back
++# to v7 minimum with the old component name if it is not found.
++find_package(VTK COMPONENTS CommonCore QUIET NO_MODULE)
++if(NOT VTK_FOUND)
++  message(STATUS "Did not find VTK 9, trying for an older version")
++  find_package(VTK COMPONENTS vtkCommonCore REQUIRED NO_MODULE)
++endif()
+ 
+ if(NOT VTK_FOUND)
+     return()
+@@ -44,7 +51,6 @@ set(NON_PREFIX_PCL_VTK_COMPONENTS
+   ChartsCore
+   CommonColor
+   CommonComputationalGeometry
+-  CommonCore
+   CommonDataModel
+   CommonExecutionModel
+   CommonMath
+@@ -79,7 +85,7 @@ set(VTK_RENDERING_BACKEND "OpenGL2")
+ set(VTK_RENDERING_BACKEND_OPENGL_VERSION "2")
+ list(APPEND NON_PREFIX_PCL_VTK_COMPONENTS Rendering${VTK_RENDERING_BACKEND} RenderingContext${VTK_RENDERING_BACKEND})
+ 
+-#Append vtk to components if version is <9.0
++# Append vtk to components if version is <9.0
+ if(VTK_VERSION VERSION_LESS 9.0)
+   foreach(vtkComponent ${NON_PREFIX_PCL_VTK_COMPONENTS})
+     set(vtkComponent "vtk${vtkComponent}")
+@@ -90,6 +96,7 @@ else()
+ endif()
+ 
+ # Check if requested modules are available
++find_package(VTK COMPONENTS ${PCL_VTK_COMPONENTS} REQUIRED NO_MODULE)
+ checkVTKComponents(COMPONENTS ${PCL_VTK_COMPONENTS} MISSING_COMPONENTS vtkMissingComponents)
+ 
+ if (vtkMissingComponents)
+-- 
+2.52.0
+

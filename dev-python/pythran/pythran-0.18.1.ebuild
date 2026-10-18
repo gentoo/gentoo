@@ -76,6 +76,9 @@ python_test() {
 		pythran/tests/test_distutils.py::TestMeson::test_meson_build
 		# numpy.distutils is dead and broken
 		pythran/tests/test_distutils.py::TestDistutils
+		# numpy changes
+		pythran/tests/test_numpy_func0.py::TestNumpyFunc0::test_cross1
+		pythran/tests/test_numpy_func0.py::TestNumpyFunc0::test_cross4
 	)
 	local EPYTEST_IGNORE=(
 		pythran/benchmarks

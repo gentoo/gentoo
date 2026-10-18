@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,9 +18,10 @@ SLOT="0/${PV}"
 KEYWORDS="~amd64"
 IUSE="ocamlopt test"
 
+# <cryptokit-1.21, bug #971205
 RDEPEND="
 	dev-ml/ocurl:=[ocamlopt?]
-	dev-ml/cryptokit:=[ocamlopt?]
+	<dev-ml/cryptokit-1.21:=[ocamlopt?]
 	dev-ml/yojson:=[ocamlopt?]
 	dev-ml/camlp-streams:=[ocamlopt?]
 "

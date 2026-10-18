@@ -4,16 +4,16 @@
 # @ECLASS: optfeature.eclass
 # @MAINTAINER:
 # base-system@gentoo.org
-# @SUPPORTED_EAPIS: 7 8
+# @SUPPORTED_EAPIS: 7 8 9
 # @BLURB: Advertise optional functionality that might be useful to users
-
-case ${EAPI} in
-	7|8) ;;
-	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
-esac
 
 if [[ -z ${_OPTFEATURE_ECLASS} ]]; then
 _OPTFEATURE_ECLASS=1
+
+case ${EAPI} in
+	7|8|9) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
 
 # @ECLASS_VARIABLE: _OPTFEATURE_DEFAULT_HEADER
 # @INTERNAL

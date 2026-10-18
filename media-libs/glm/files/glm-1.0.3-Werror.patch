@@ -1,0 +1,19 @@
+--- a/test/CMakeLists.txt	2026-08-04 20:29:32.869810039 +0200
++++ b/test/CMakeLists.txt	2026-08-04 20:32:56.481716625 +0200
+@@ -23,7 +23,7 @@
+ 
+ 	add_definitions(-D_CRT_SECURE_NO_WARNINGS)
+ 	if(NOT GLM_DISABLE_AUTO_DETECTION)
+-		add_compile_options(-Werror -Weverything)
++		add_compile_options(-Weverything)
+ 	endif()
+ 
+ elseif(CMAKE_CXX_COMPILER_ID MATCHES "GNU")
+@@ -32,7 +32,6 @@
+ 	endif()
+ 
+ 	if(NOT GLM_DISABLE_AUTO_DETECTION)
+-		add_compile_options(-Werror)
+ #		add_compile_options(-Wpedantic)
+ #		add_compile_options(-Wall)
+ #		add_compile_options(-Wextra)

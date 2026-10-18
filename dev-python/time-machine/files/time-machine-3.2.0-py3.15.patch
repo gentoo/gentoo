@@ -1,0 +1,237 @@
+https://github.com/adamchainz/time-machine/issues/610
+https://github.com/adamchainz/time-machine/pull/618
+https://github.com/adamchainz/time-machine/commit/83c385186424c920228cd38d819f2488de617be2
+
+From 83c385186424c920228cd38d819f2488de617be2 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Lum=C3=ADr=20=27Frenzy=27=20Balhar?=
+ <frenzy.madness@gmail.com>
+Date: Wed, 29 Jul 2026 23:52:51 +0200
+Subject: [PATCH] Mock `datetime.date.today()` directly (#618)
+
+Co-authored-by: Adam Johnson <me@adamj.eu>
+--- a/docs/usage.rst
++++ b/docs/usage.rst
+@@ -89,7 +89,9 @@ Main API
+ 
+   All datetime functions in the standard library are mocked to move to the destination current datetime:
+ 
++  * ``datetime.date.today()``
+   * ``datetime.datetime.now()``
++  * ``datetime.datetime.today()``
+   * ``datetime.datetime.utcnow()``
+   * ``time.clock_gettime()`` (only for ``CLOCK_REALTIME``)
+   * ``time.clock_gettime_ns()`` (only for ``CLOCK_REALTIME``)
+@@ -355,6 +357,8 @@ Main API
+           with time_machine.travel(...):
+               ...
+ 
++.. _escape-hatch:
++
+ Escape hatch API
+ ================
+ 
+@@ -373,10 +377,18 @@ The functions are:
+ 
+   Returns ``True`` if ``time_machine.travel()`` is active, ``False`` otherwise.
+ 
++* ``escape_hatch.datetime.date.today()``
++
++  Wraps the real ``datetime.date.today()``.
++
+ * ``escape_hatch.datetime.datetime.now()``
+ 
+   Wraps the real ``datetime.datetime.now()``.
+ 
++* ``escape_hatch.datetime.datetime.today()``
++
++  Wraps the real ``datetime.datetime.today()``.
++
+ * ``escape_hatch.datetime.datetime.utcnow()``
+ 
+   Wraps the real ``datetime.datetime.utcnow()``.
+--- a/src/_time_machine.c
++++ b/src/_time_machine.c
+@@ -10,6 +10,7 @@ typedef struct {
+     PyObject *datetime_class;
+     PyCFunctionObject *datetime_datetime_now;
+     PyCFunctionObject *datetime_datetime_utcnow;
++    PyCFunctionObject *date_today;
+     PyCFunctionObject *time_clock_gettime;
+     PyCFunctionObject *time_clock_gettime_ns;
+     PyCFunctionObject *time_gmtime;
+@@ -24,6 +25,7 @@ typedef struct {
+     _PyCFunctionFastWithKeywords original_now;
+ #endif
+     PyCFunction original_utcnow;
++    PyCFunction original_date_today;
+     PyCFunction original_clock_gettime;
+     PyCFunction original_clock_gettime_ns;
+     PyCFunction original_gmtime;
+@@ -130,6 +132,33 @@ PyDoc_STRVAR(original_utcnow_doc,
+ \n\
+ Call datetime.datetime.utcnow() after patching.");
+ 
++/* datetime.date.today() and datetime.datetime.today()
++ * Note: datetime.datetime doesn't define its own today(), it inherits from date.
++ * So we patch date.today() with a wrapper that calls cls.fromtimestamp(), which
++ * returns the right type for date, datetime, and subclasses of either.
++ */
++
++static PyObject *
++_time_machine_today(PyObject *cls, PyObject *args)
++{
++    PyObject *time_machine_module = PyImport_ImportModule("time_machine");
++    if (time_machine_module == NULL) {
++        return NULL;  // Propagate ImportError
++    }
++
++    PyObject *timestamp = PyObject_CallMethod(time_machine_module, "time", NULL);
++    Py_DECREF(time_machine_module);
++    if (timestamp == NULL) {
++        return NULL;
++    }
++
++    PyObject *result = PyObject_CallMethod(cls, "fromtimestamp", "O", timestamp);
++
++    Py_DECREF(timestamp);
++
++    return result;
++}
++
+ /* time.clock_gettime() */
+ 
+ static PyObject *
+@@ -446,6 +475,9 @@ _time_machine_patch(PyObject *module, PyObject *unused)
+     if (state->original_time)
+         Py_RETURN_NONE;
+ 
++    state->original_date_today = state->date_today->m_ml->ml_meth;
++    state->date_today->m_ml->ml_meth = _time_machine_today;
++
+ #if PY_VERSION_HEX >= 0x030d00a4
+     state->original_now =
+         (PyCFunctionFastWithKeywords)state->datetime_datetime_now->m_ml->ml_meth;
+@@ -517,6 +549,9 @@ _time_machine_unpatch(PyObject *module, PyObject *unused)
+     state->datetime_datetime_utcnow->m_ml->ml_meth = state->original_utcnow;
+     state->original_utcnow = NULL;
+ 
++    state->date_today->m_ml->ml_meth = state->original_date_today;
++    state->original_date_today = NULL;
++
+     /*
+         time.clock_gettime(), only available on Unix platforms.
+     */
+@@ -637,6 +672,17 @@ _time_machine_exec(PyObject *module)
+         goto error;
+     }
+ 
++    PyObject *date_class = PyObject_GetAttrString(state->datetime_module, "date");
++    if (date_class == NULL) {
++        goto error;
++    }
++
++    state->date_today = (PyCFunctionObject *)PyObject_GetAttrString(date_class, "today");
++    Py_DECREF(date_class);
++    if (state->date_today == NULL) {
++        goto error;
++    }
++
+     state->time_module = PyImport_ImportModule("time");
+     if (state->time_module == NULL) {
+         goto error;
+@@ -702,6 +748,7 @@ _time_machine_exec(PyObject *module)
+     Py_CLEAR(state->datetime_class);
+     Py_CLEAR(state->datetime_datetime_now);
+     Py_CLEAR(state->datetime_datetime_utcnow);
++    Py_CLEAR(state->date_today);
+     Py_CLEAR(state->time_module);
+     Py_CLEAR(state->time_clock_gettime);
+     Py_CLEAR(state->time_clock_gettime_ns);
+@@ -721,6 +768,7 @@ _time_machine_traverse(PyObject *module, visitproc visit, void *arg)
+     Py_VISIT(state->datetime_class);
+     Py_VISIT(state->datetime_datetime_now);
+     Py_VISIT(state->datetime_datetime_utcnow);
++    Py_VISIT(state->date_today);
+     Py_VISIT(state->time_module);
+     Py_VISIT(state->time_clock_gettime);
+     Py_VISIT(state->time_clock_gettime_ns);
+@@ -740,6 +788,7 @@ _time_machine_clear(PyObject *module)
+     Py_CLEAR(state->datetime_class);
+     Py_CLEAR(state->datetime_datetime_now);
+     Py_CLEAR(state->datetime_datetime_utcnow);
++    Py_CLEAR(state->date_today);
+     Py_CLEAR(state->time_module);
+     Py_CLEAR(state->time_clock_gettime);
+     Py_CLEAR(state->time_clock_gettime_ns);
+--- a/src/time_machine/__init__.py
++++ b/src/time_machine/__init__.py
+@@ -535,11 +535,23 @@ def time_machine_fixture(
+ # escape hatch
+ 
+ 
++class _EscapeHatchDatetimeDate:
++    def today(self) -> dt.date:
++        # date.today() is equivalent to datetime.now().date().
++        result: dt.datetime = _time_machine.original_now(None)
++        return result.date()
++
++
+ class _EscapeHatchDatetimeDatetime:
+     def now(self, tz: dt.tzinfo | None = None) -> dt.datetime:
+         result: dt.datetime = _time_machine.original_now(tz)
+         return result
+ 
++    def today(self) -> dt.datetime:
++        # datetime.today() is equivalent to datetime.now() without a timezone.
++        result: dt.datetime = _time_machine.original_now(None)
++        return result
++
+     def utcnow(self) -> dt.datetime:
+         result: dt.datetime = _time_machine.original_utcnow()
+         return result
+@@ -547,6 +559,7 @@ def utcnow(self) -> dt.datetime:
+ 
+ class _EscapeHatchDatetime:
+     def __init__(self) -> None:
++        self.date = _EscapeHatchDatetimeDate()
+         self.datetime = _EscapeHatchDatetimeDatetime()
+ 
+ 
+--- a/tests/test_time_machine.py
++++ b/tests/test_time_machine.py
+@@ -1317,6 +1317,17 @@ def test_is_travelling_true(self):
+         with time_machine.travel(EPOCH):
+             assert time_machine.escape_hatch.is_travelling() is True
+ 
++    def test_date_today(self):
++        real_today = dt.date.today()
++
++        with time_machine.travel(EPOCH):
++            eh_today = time_machine.escape_hatch.datetime.date.today()
++            assert eh_today >= real_today
++
++        with pytest.raises(ValueError) as excinfo:
++            time_machine.escape_hatch.datetime.date.today()
++        assert excinfo.value.args == ("Not currently time-travelling.",)
++
+     def test_datetime_now(self):
+         real_now = dt.datetime.now()
+ 
+@@ -1335,6 +1346,17 @@ def test_datetime_now_tz(self):
+             eh_now = time_machine.escape_hatch.datetime.datetime.now(tz=dt.timezone.utc)
+             assert eh_now >= real_now
+ 
++    def test_datetime_today(self):
++        real_today = dt.datetime.today()
++
++        with time_machine.travel(EPOCH):
++            eh_today = time_machine.escape_hatch.datetime.datetime.today()
++            assert eh_today >= real_today
++
++        with pytest.raises(ValueError) as excinfo:
++            time_machine.escape_hatch.datetime.datetime.today()
++        assert excinfo.value.args == ("Not currently time-travelling.",)
++
+     def test_datetime_utcnow(self):
+         real_now = dt.datetime.utcnow()
+ 

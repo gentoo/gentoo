@@ -1,6 +1,10 @@
 # Copyright 2023-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Pacho Ramos <pacho@gentoo.org> (2026-08-10)
+# gnome-shell cannot be used with their latest versions
+gnome-shell
+
 # Eli Schwartz <eschwartz@gentoo.org> (2025-12-09)
 # libyuv is Google code, fails on "fringe" arches.
 # Bug #959389.

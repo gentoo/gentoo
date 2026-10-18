@@ -11,7 +11,7 @@ SRC_URI="https://gitlab.gnome.org/World/gedit/${PN}/-/archive/${PV}/${P}.tar.bz2
 
 LICENSE="LGPL-3+"
 SLOT="6/4"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64 ~riscv x86"
 IUSE="gtk-doc"
 RESTRICT="!test? ( test )"
 

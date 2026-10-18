@@ -14,6 +14,6 @@ fi
 RDEPEND="
 	~dev-qt/qtbase-${PV}:6[gui]
 	~dev-qt/qtdeclarative-${PV}:6
-	~dev-qt/qtwebengine-${PV}:6[qml]
+	dev-qt/qtwebengine:6=[qml]
 "
 DEPEND="${RDEPEND}"

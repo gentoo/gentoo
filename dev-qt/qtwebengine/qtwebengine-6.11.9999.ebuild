@@ -3,13 +3,13 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 inherit check-reqs flag-o-matic multiprocessing optfeature
 inherit prefix python-any-r1 qt6-build toolchain-funcs
 
 DESCRIPTION="Library for rendering dynamic web content in Qt6 C++ and QML applications"
 SRC_URI+="
-	https://distfiles.gentoo.org/pub/dev/ionen@gentoo.org/${PN}-6.11-patchset-3.tar.xz
+	https://distfiles.gentoo.org/pub/dev/ionen@gentoo.org/${PN}-6.11-patchset-5.tar.xz
 "
 
 if [[ ${QT6_BUILD_TYPE} == release ]]; then
@@ -110,8 +110,9 @@ PATCHES=( "${WORKDIR}"/patches/${PN} )
 PATCHES+=(
 	# add extras as needed here, may merge in set if carries across versions
 	"${FILESDIR}"/${PN}-6.10.3-climits.patch
-	"${FILESDIR}"/${PN}-6.11.0-gcc17.patch
 	"${FILESDIR}"/${PN}-6.11.1-musl-missing-includes.patch
+	"${FILESDIR}"/${PN}-6.11.1-musl-arm64-mte.patch
+	"${FILESDIR}"/${PN}-6.11.2-libcxx23.patch
 )
 
 python_check_deps() {
@@ -203,7 +204,6 @@ src_configure() {
 		-DQT_FEATURE_webengine_extensions=ON
 		# TODO: it may be possible to make x11 optional since 6.8+
 		-DQT_FEATURE_webengine_ozone_x11=ON
-		-DQT_FEATURE_webengine_pass_extra_flags=ON
 		-DQT_FEATURE_webengine_pepper_plugins=ON
 		-DQT_FEATURE_webengine_printing_and_pdf=ON
 		-DQT_FEATURE_webengine_spellchecker=ON
@@ -243,6 +243,9 @@ src_configure() {
 		# reduce default disk space usage
 		symbol_level=0
 	)
+
+	use arm64 && use elibc_musl &&
+		mygnargs+=( allow_memory_tagging=false ) #981510
 
 	if use !custom-cflags; then
 		# qtwebengine can be rather fragile with *FLAGS

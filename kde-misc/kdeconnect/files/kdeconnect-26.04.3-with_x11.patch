@@ -1,0 +1,133 @@
+From 60cf7a728916f719551dd3d1cb8aafcb64aae08f Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Sun, 19 Jul 2026 15:55:02 +0200
+Subject: [PATCH] Use WITH_X11 more often
+
+Reuse config-mousepad.h globally as config-X11.h for use by other plugins.
+
+WITH_X11=ON is already synonymous with UNIX AND NOT APPLE as defined in
+root CMakeLists.txt.
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt                                                | 2 ++
+ .../mousepad/config-mousepad.h.cmake => config-X11.h.cmake    | 0
+ plugins/mousepad/CMakeLists.txt                               | 4 ++--
+ plugins/mousepad/mousepadplugin.h                             | 2 +-
+ plugins/notifications/CMakeLists.txt                          | 4 +++-
+ plugins/notifications/notificationsplugin.cpp                 | 4 ++--
+ plugins/notifications/notificationsplugin.h                   | 1 +
+ 7 files changed, 11 insertions(+), 6 deletions(-)
+ rename plugins/mousepad/config-mousepad.h.cmake => config-X11.h.cmake (100%)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index efdbdc90b..a2ed4f414 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -138,6 +138,8 @@ if (WIN32)
+     add_compile_definitions(WIN_SDK_VERSION=${WIN_SDK_VERSION})
+ endif()
+ 
++configure_file(config-X11.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/config-X11.h)
++
+ add_subdirectory(core)
+ add_subdirectory(plugins)
+ add_subdirectory(dbusinterfaces)
+diff --git a/plugins/mousepad/config-mousepad.h.cmake b/config-X11.h.cmake
+similarity index 100%
+rename from plugins/mousepad/config-mousepad.h.cmake
+rename to config-X11.h.cmake
+diff --git a/plugins/mousepad/CMakeLists.txt b/plugins/mousepad/CMakeLists.txt
+index 66c489b6e..82651f90a 100644
+--- a/plugins/mousepad/CMakeLists.txt
++++ b/plugins/mousepad/CMakeLists.txt
+@@ -1,5 +1,7 @@
+ kdeconnect_add_plugin(kdeconnect_mousepad SOURCES mousepadplugin.cpp abstractremoteinput.cpp)
+ 
++target_include_directories(kdeconnect_mousepad PRIVATE ${CMAKE_BINARY_DIR})
++
+ if(UNIX AND NOT APPLE)
+     pkg_check_modules(PKG_libei REQUIRED IMPORTED_TARGET libei-1.0)
+     target_sources(kdeconnect_mousepad PUBLIC waylandremoteinput.cpp ${SRCS})
+@@ -21,8 +23,6 @@ if(UNIX AND NOT APPLE)
+     endif()
+ endif()
+ 
+-configure_file(config-mousepad.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/config-mousepad.h)
+-
+ target_link_libraries(kdeconnect_mousepad kdeconnectcore kdeconnectdbusinterfaces Qt::Gui KF6::I18n)
+ 
+ if (WIN32)
+diff --git a/plugins/mousepad/mousepadplugin.h b/plugins/mousepad/mousepadplugin.h
+index 97f975710..2a896689e 100644
+--- a/plugins/mousepad/mousepadplugin.h
++++ b/plugins/mousepad/mousepadplugin.h
+@@ -8,10 +8,10 @@
+ 
+ #pragma once
+ 
+-#include <config-mousepad.h>
+ #include <core/kdeconnectplugin.h>
+ 
+ #include "abstractremoteinput.h"
++#include "config-X11.h"
+ 
+ #define PACKET_TYPE_MOUSEPAD_KEYBOARDSTATE QLatin1String("kdeconnect.mousepad.keyboardstate")
+ 
+diff --git a/plugins/notifications/CMakeLists.txt b/plugins/notifications/CMakeLists.txt
+index 511d0413d..a502eebf2 100644
+--- a/plugins/notifications/CMakeLists.txt
++++ b/plugins/notifications/CMakeLists.txt
+@@ -1,5 +1,7 @@
+ kdeconnect_add_plugin(kdeconnect_notifications SOURCES sendreplydialog.cpp notificationsplugin.cpp notification.cpp)
+ 
++target_include_directories(kdeconnect_notifications PRIVATE ${CMAKE_BINARY_DIR})
++
+ ki18n_wrap_ui(kdeconnect_notifications sendreplydialog.ui)
+ target_link_libraries(kdeconnect_notifications
+     kdeconnectcore
+@@ -11,6 +13,6 @@ target_link_libraries(kdeconnect_notifications
+     KF6::WindowSystem
+ )
+ 
+-if (UNIX AND NOT APPLE)
++if (WITH_X11)
+     target_link_libraries(kdeconnect_notifications Qt6::GuiPrivate)
+ endif()
+diff --git a/plugins/notifications/notificationsplugin.cpp b/plugins/notifications/notificationsplugin.cpp
+index a19154f2e..b6c245679 100644
+--- a/plugins/notifications/notificationsplugin.cpp
++++ b/plugins/notifications/notificationsplugin.cpp
+@@ -15,7 +15,7 @@
+ #include <KPluginFactory>
+ #include <KSystemClipboard>
+ 
+-#if !defined(Q_OS_WIN) && !defined(Q_OS_MAC)
++#if WITH_X11
+ #include <KStartupInfo>
+ #include <private/qtx11extras_p.h>
+ #endif
+@@ -158,7 +158,7 @@ void NotificationsPlugin::replyRequested(Notification *noti)
+     SendReplyDialog *dialog = new SendReplyDialog(originalMessage, replyId, appName);
+     connect(dialog, &SendReplyDialog::sendReply, this, &NotificationsPlugin::sendReply);
+     dialog->show();
+-#if !defined(Q_OS_WIN) && !defined(Q_OS_MAC)
++#if WITH_X11
+     auto window = qobject_cast<QWindow *>(dialog->windowHandle());
+     if (window && QX11Info::isPlatformX11()) {
+         KStartupInfo::setNewStartupId(window, QX11Info::nextStartupId());
+diff --git a/plugins/notifications/notificationsplugin.h b/plugins/notifications/notificationsplugin.h
+index 7afff6170..cb133f719 100644
+--- a/plugins/notifications/notificationsplugin.h
++++ b/plugins/notifications/notificationsplugin.h
+@@ -8,6 +8,7 @@
+ 
+ #include <core/kdeconnectplugin.h>
+ 
++#include "config-X11.h"
+ #include "notification.h"
+ 
+ #define PACKET_TYPE_NOTIFICATION_REQUEST QStringLiteral("kdeconnect.notification.request")
+-- 
+2.55.0
+

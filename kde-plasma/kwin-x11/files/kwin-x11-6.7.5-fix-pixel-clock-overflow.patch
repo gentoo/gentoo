@@ -1,0 +1,38 @@
+From b3ac4f9295d36f14da53417d416afbcaf9146685 Mon Sep 17 00:00:00 2001
+From: Piotr Wojnarowski <piotr@wojnarow.ski>
+Date: Wed, 9 Sep 2026 23:39:47 +0200
+Subject: [PATCH] backends/x11: Fix pixel clock overflow
+
+XCB exposes dot_clock as uint32_t, and storing it in int overflows for
+high-bandwidth modes. For example, 3840x2160 at 240 Hz has a dot clock
+of 2332000000.
+
+The resulting negative refresh rate wraps to 4294765262 mHz and creates
+a zero-interval offscreen frame callback timer, making kwin_x11
+consume an entire CPU core.
+
+Use 64-bit arithmetic for the refresh-rate calculation.
+
+BUG: 525454
+---
+ src/backends/x11/standalone/x11_standalone_backend.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/backends/x11/standalone/x11_standalone_backend.cpp b/src/backends/x11/standalone/x11_standalone_backend.cpp
+index 82baf4c0a3..415da7ab38 100644
+--- a/src/backends/x11/standalone/x11_standalone_backend.cpp
++++ b/src/backends/x11/standalone/x11_standalone_backend.cpp
+@@ -305,8 +305,8 @@ void X11StandaloneBackend::doUpdateOutputs()
+                     if (info->mode == mode.id) {
+                         if (mode.htotal != 0 && mode.vtotal != 0) { // BUG 313996
+                             // refresh rate calculation - WTF was wikipedia 1998 when I needed it?
+-                            int dotclock = mode.dot_clock,
+-                                vtotal = mode.vtotal;
++                            uint64_t dotclock = mode.dot_clock,
++                                     vtotal = mode.vtotal;
+                             if (mode.mode_flags & XCB_RANDR_MODE_FLAG_INTERLACE) {
+                                 dotclock *= 2;
+                             }
+-- 
+GitLab
+

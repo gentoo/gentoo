@@ -194,14 +194,17 @@ selinux-policy-2_src_prepare() {
 
 	# Patch the sources with the base patchbundle
 	if [[ -n ${BASEPOL} && "${BASEPOL}" != "9999" ]]; then
-		cd "${S}" || die "Could not enter ${S}"
+		pushd "${S}" >/dev/null || die "Could not enter ${S}"
 		einfo "Applying SELinux policy updates ... "
 		eapply -p0 -- "${WORKDIR}/0001-full-patch-against-stable-release.patch"
+		popd >/dev/null || die
 	fi
 
 	# Call in eapply_user. We do this early on as we start moving
 	# files left and right hereafter.
+	pushd "${WORKDIR}"/refpolicy >/dev/null || die
 	eapply_user
+	popd >/dev/null || die
 
 	# Copy additional files to the 3rd_party/ location
 	if [[ "$(declare -p POLICY_FILES 2>/dev/null 2>&1)" = "declare -a"* || -n ${POLICY_FILES} ]]; then

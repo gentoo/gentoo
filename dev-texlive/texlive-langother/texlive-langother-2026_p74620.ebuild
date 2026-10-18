@@ -1,0 +1,169 @@
+# Copyright 1999-2026 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=9
+
+TEXLIVE_MODULE_CONTENTS="
+	collection-langother.r78607
+	aalok.r76924
+	akshar.r76924
+	aramaic-serto.r74548
+	babel-azerbaijani.r79618
+	babel-esperanto.r77682
+	babel-georgian.r79618
+	babel-hebrew.r77914
+	babel-indonesian.r77682
+	babel-interlingua.r77682
+	babel-malay.r77682
+	babel-sorbian.r77682
+	babel-thai.r30564
+	babel-vietnamese.r39246
+	bangla.r76924
+	bangtex.r55475
+	bengali.r79618
+	burmese.r25185
+	chhaya.r61719
+	cjhebrew.r43444
+	ctib.r15878
+	culmus.r76924
+	ebong.r76924
+	ethiop.r79618
+	ethiop-t1.r15878
+	fc.r32796
+	fonts-arundina.r78421
+	fonts-tlwg.r79529
+	hebrew-fonts.r68038
+	hyphen-afrikaans.r78069
+	hyphen-armenian.r78069
+	hyphen-coptic.r78069
+	hyphen-esperanto.r78069
+	hyphen-ethiopic.r78069
+	hyphen-georgian.r78069
+	hyphen-hebrew.r74032
+	hyphen-indic.r78069
+	hyphen-indonesian.r78069
+	hyphen-interlingua.r78069
+	hyphen-sanskrit.r78069
+	hyphen-thai.r78069
+	hyphen-turkmen.r78069
+	hyphen-vietnamese.r74032
+	latexbangla.r55475
+	latino-sine-flexione.r69568
+	marathi.r61719
+	quran-bn.r74830
+	quran-id.r74874
+	quran-ur.r74829
+	sanskrit.r79618
+	sanskrit-t1.r79618
+	thaienum.r44140
+	thaispec.r77682
+	tuzuk.r74620
+	unicode-alphabets.r66225
+	vntex.r79618
+	wnri.r22459
+	wnri-latex.r22338
+"
+TEXLIVE_MODULE_SRC_CONTENTS="
+	aalok.doc.r76924
+	akshar.doc.r76924
+	amsldoc-vn.doc.r21855
+	aramaic-serto.doc.r74548
+	babel-azerbaijani.doc.r79618
+	babel-esperanto.doc.r77682
+	babel-georgian.doc.r79618
+	babel-hebrew.doc.r77914
+	babel-indonesian.doc.r77682
+	babel-interlingua.doc.r77682
+	babel-malay.doc.r77682
+	babel-sorbian.doc.r77682
+	babel-thai.doc.r30564
+	babel-vietnamese.doc.r39246
+	bangla.doc.r76924
+	bangtex.doc.r55475
+	bengali.doc.r79618
+	burmese.doc.r25185
+	chhaya.doc.r61719
+	cjhebrew.doc.r43444
+	ctib.doc.r15878
+	culmus.doc.r76924
+	ebong.doc.r76924
+	ethiop.doc.r79618
+	ethiop-t1.doc.r15878
+	fc.doc.r32796
+	fonts-arundina.doc.r78421
+	fonts-tlwg.doc.r79529
+	hebrew-fonts.doc.r68038
+	hindawi-latex-template.doc.r57757
+	hyphen-sanskrit.doc.r78069
+	latex-mr.doc.r55475
+	latexbangla.doc.r55475
+	latino-sine-flexione.doc.r69568
+	lshort-thai.doc.r55643
+	lshort-vietnamese.doc.r79461
+	marathi.doc.r61719
+	ntheorem-vn.doc.r79618
+	quran-bn.doc.r74830
+	quran-id.doc.r74874
+	quran-ur.doc.r74829
+	sanskrit.doc.r79618
+	sanskrit-t1.doc.r79618
+	thaienum.doc.r44140
+	thaispec.doc.r77682
+	tuzuk.doc.r74620
+	unicode-alphabets.doc.r66225
+	vntex.doc.r79618
+	wnri.doc.r22459
+	wnri-latex.doc.r22338
+"
+TEXLIVE_MODULE_DOC_CONTENTS="
+	aalok.source.r76924
+	akshar.source.r76924
+	babel-azerbaijani.source.r79618
+	babel-esperanto.source.r77682
+	babel-hebrew.source.r77914
+	babel-indonesian.source.r77682
+	babel-interlingua.source.r77682
+	babel-malay.source.r77682
+	babel-sorbian.source.r77682
+	babel-thai.source.r30564
+	babel-vietnamese.source.r39246
+	bengali.source.r79618
+	burmese.source.r25185
+	chhaya.source.r61719
+	ctib.source.r15878
+	culmus.source.r76924
+	ethiop.source.r79618
+	fonts-arundina.source.r78421
+	fonts-tlwg.source.r79529
+	hebrew-fonts.source.r68038
+	hyphen-armenian.source.r78069
+	hyphen-ethiopic.source.r78069
+	hyphen-turkmen.source.r78069
+	marathi.source.r61719
+	sanskrit.source.r79618
+	thaispec.source.r77682
+	tuzuk.source.r74620
+	vntex.source.r79618
+	wnri-latex.source.r22338
+"
+
+inherit texlive-module
+
+DESCRIPTION="TeXLive Other languages"
+
+LICENSE="CC-BY-SA-4.0 FDL-1.1+ GPL-1+ GPL-2 GPL-2+ GPL-3+ LPPL-1.0 LPPL-1.3 LPPL-1.3c OFL-1.1 TeX-other-free public-domain"
+SLOT="0"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+COMMON_DEPEND="
+	>=dev-texlive/texlive-basic-2026
+"
+RDEPEND="
+	${COMMON_DEPEND}
+"
+DEPEND="
+	${COMMON_DEPEND}
+"
+
+TEXLIVE_MODULE_BINSCRIPTS="
+	texmf-dist/scripts/ebong/ebong.py
+"

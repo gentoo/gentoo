@@ -1,0 +1,146 @@
+From 3014498630b534e4dd790635bce8fb1b8968e1c6 Mon Sep 17 00:00:00 2001
+Message-ID: <3014498630b534e4dd790635bce8fb1b8968e1c6.1790625327.git.sam@gentoo.org>
+In-Reply-To: <42386bcf8861f04c1bdec5cbb139a03da83d8ef9.1790625327.git.sam@gentoo.org>
+References: <42386bcf8861f04c1bdec5cbb139a03da83d8ef9.1790625327.git.sam@gentoo.org>
+From: Werner Koch <wk@gnupg.org>
+Date: Mon, 28 Sep 2026 16:47:46 +0200
+Subject: [PATCH GnuPG 3/3] tests: Add a test for T8469
+
+* tests/openpgp/samplemsgs/basic-encrypted.eml: New,
+* tests/openpgp/issue8469.scm: New test.
+* tests/openpgp/Makefile.am (XTESTS): Add test.
+--
+
+GnuPG-bug-id: 8469
+---
+ tests/openpgp/Makefile.am                    |  6 +-
+ tests/openpgp/issue8469.scm                  | 58 ++++++++++++++++++++
+ tests/openpgp/samplemsgs/basic-encrypted.eml | 27 +++++++++
+ 3 files changed, 89 insertions(+), 2 deletions(-)
+ create mode 100644 tests/openpgp/issue8469.scm
+ create mode 100644 tests/openpgp/samplemsgs/basic-encrypted.eml
+
+diff --git a/tests/openpgp/Makefile.am b/tests/openpgp/Makefile.am
+index e761f69d4..fbb951055 100644
+--- a/tests/openpgp/Makefile.am
++++ b/tests/openpgp/Makefile.am
+@@ -108,7 +108,8 @@ XTESTS = \
+ 	issue2419.scm \
+ 	issue2929.scm \
+ 	issue2941.scm \
+-	issue8049.scm
++	issue8049.scm \
++	issue8469.scm
+ 
+ 
+ # XXX: Currently, one cannot override automake's 'check' target.  As a
+@@ -319,7 +320,8 @@ sample_msgs = samplemsgs/clearsig-1-key-1.asc \
+               samplemsgs/pqc-mlk1024_np521.enc.asc \
+               samplemsgs/pqc-mlk768_np384.enc.asc \
+               samplemsgs/pqc-mlk1024_bp512.enc.asc \
+-              samplemsgs/pqc-mlk768_bp384.enc.asc
++              samplemsgs/pqc-mlk768_bp384.enc.asc \
++              samplemsgs/basic-encrypted.eml
+ 
+ EXTRA_DIST = defs.scm trust-pgp/common.scm $(XTESTS) $(TEST_FILES) \
+ 	     mkdemodirs signdemokey $(priv_keys) $(sample_keys)   \
+diff --git a/tests/openpgp/issue8469.scm b/tests/openpgp/issue8469.scm
+new file mode 100644
+index 000000000..081ad427e
+--- /dev/null
++++ b/tests/openpgp/issue8469.scm
+@@ -0,0 +1,58 @@
++#!/usr/bin/env gpgscm
++
++;; Regression tests for importing unprotected ECDH keys
++
++;; Copyright (C) 2026 g10 Code GmbH
++;;
++;; This file is part of GnuPG.
++;;
++;; GnuPG is free software; you can redistribute it and/or modify
++;; it under the terms of the GNU General Public License as published by
++;; the Free Software Foundation; either version 3 of the License, or
++;; (at your option) any later version.
++;;
++;; GnuPG is distributed in the hope that it will be useful,
++;; but WITHOUT ANY WARRANTY; without even the implied warranty of
++;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++;; GNU General Public License for more details.
++;;
++;; You should have received a copy of the GNU General Public License
++;; along with this program; if not, see <http://www.gnu.org/licenses/>.
++
++(load (in-srcdir "tests" "openpgp" "defs.scm"))
++(setup-legacy-environment)
++
++;; A secret key taken from the not-much MUA configure test
++(define secret-key-unprotected "-----BEGIN PGP PRIVATE KEY BLOCK-----
++
++lFgEYxhtlxYJKwYBBAHaRw8BAQdA0PoNKr90DaQV1dIK77wbWm4RT+JQzqBkwIjA
++HQM9RHYAAQDQ5wSfkOGXvKYroALWgibztISzXS5b8boGXykcHERo6w/ctDtOb3Rt
++dWNoIFRlc3QgU3VpdGUgKElOU0VDVVJFISkgPHRlc3Rfc3VpdGVAbm90bXVjaG1h
++aWwub3JnPoiQBBMWCAA4AhsDBQsJCAcCBhUKCQgLAgQWAgMBAh4BAheAFiEEmjr+
++bGAGWhSP1LWKfmq+kkZFzGAFAmMYbZwACgkQfmq+kkZFzGDtrwEAjQRn3xhEomah
++wICjQjfi4RKNbvnRViZgosijDBANUAgA/28GrK1tPnQsXWqmuZxQ1Cd5ry4NAnj/
++4jsxD3cTbnEHnF0EYxhtlxIKKwYBBAGXVQEFAQEHQEOd3EyCD5qo4+QuHz0lruCG
++VM6n6RI4dtAh3cX9uHwiAwEIBwAA/1oe+p5jNjNE5lEj4yTpYjCxCeC98MolbiAy
++0yY7526wECqIeAQYFggAIBYhBJo6/mxgBloUj9S1in5qvpJGRcxgBQJjGG2XAhsM
++AAoJEH5qvpJGRcxgBdsA/R9ZECoxai5QhOitDIAUZVCRr59Pm1VMPiJOOIla2N1p
++AQCNESwJ9IJOdO/06q+bR2GG4WyEkB4VoVBiA3hFx/zZAA==
++=uGTo
++-----END PGP PRIVATE KEY BLOCK-----")
++
++
++(define plaintext "Content-Type: text/plain
++
++The password is \"abcd1234!\", please do not tell anyone.
++")
++
++
++;; Import the key
++(pipe:do
++ (pipe:echo secret-key-unprotected)
++ (pipe:gpg '(--import)))
++
++;; Check decryption
++(tr:do
++ (tr:open (in-srcdir "tests" "openpgp" "samplemsgs" "basic-encrypted.eml"))
++ (tr:gpg "" '(--yes --decrypt))
++ (tr:assert-same plaintext))
+diff --git a/tests/openpgp/samplemsgs/basic-encrypted.eml b/tests/openpgp/samplemsgs/basic-encrypted.eml
+new file mode 100644
+index 000000000..b139a7354
+--- /dev/null
++++ b/tests/openpgp/samplemsgs/basic-encrypted.eml
+@@ -0,0 +1,27 @@
++From: test_suite@notmuchmail.org
++To: test_suite@notmuchmail.org
++Subject: Here is the password
++Date: Sat, 01 Jan 2000 12:00:00 +0000
++Message-ID: <basic-encrypted@crypto.notmuchmail.org>
++MIME-Version: 1.0
++Content-Type: multipart/encrypted; boundary="=-=-=";
++	protocol="application/pgp-encrypted"
++
++--=-=-=
++Content-Type: application/pgp-encrypted
++
++Version: 1
++
++--=-=-=
++Content-Type: application/octet-stream
++
++-----BEGIN PGP MESSAGE-----
++
++hF4DHXHP849rSK8SAQdAYbv9NFaU2Fbd6JbfE87h/yZNyWLJYZ2EseU0WyOz7Agw
++/+KTbbIqRcEYhnpQhQXBQ2wqIN5gmdRhaqrj5q0VLV2BOKNJKqXGs/W4DghXwfAu
++0oMBqjTd/mMbF0nJLw3bPX+LW47RHQdZ8vUVPlPr0ALg8kqgcfy95Qqy5h796Uyq
++xs+I/UUOt7fzTDAw0B4qkRbdSangwYy80N4X43KrAfKSstBH3/7O4285XZr86YhF
++rEtsBuwhoXI+DaG3uYZBBMTkzfButmBKHwB2CmWutmVpQL087A==
++=lhSz
++-----END PGP MESSAGE-----
++--=-=-=--
+-- 
+2.55.0
+

@@ -17,6 +17,24 @@
 
 #--- END OF EXAMPLES ---
 
+# Alexander Tsoy (2026-09-27)
+# Assembly optimisations are supported on amd64 for all versions
+app-crypt/veracrypt -asm
+
+# Sam James <sam@gentoo.org> (2026-09-23)
+# Only supported on some arches.
+dev-libs/elfutils -stackprof
+
+# Michał Górny <mgorny@gentoo.org> (2026-09-22)
+# Fortran modules require llvm-core/flang.
+llvm-runtimes/openmp -fortran
+
+# Sam James <sam@gentoo.org> (2026-07-22)
+# media-libs/libmysofa is keyworded here
+media-video/ffmpeg -sofa
+media-video/ffmpeg-compat -sofa
+media-video/pipewire -sofa
+
 # Alfredo Tupone <tupone@gentoo.org> (2026-05-18)
 # Unmask on specific arches where it's available.
 media-video/obs-studio -mpegts
@@ -32,6 +50,7 @@ llvm-runtimes/clang-runtime -llvm_targets_AMDGPU -llvm_targets_NVPTX -llvm_targe
 # Ionen Wolkens <ionen@gentoo.org> (2026-02-11)
 # net-libs/librist is available here
 media-video/ffmpeg -rist
+media-video/ffmpeg-compat -rist
 
 # Andrey Grozin <grozin@gentoo.org> (2026-01-08)
 # dev-python/pyside[tools] is available here
@@ -170,10 +189,6 @@ games-emulation/rmg -dynarec
 # Unmask the ugrd flag for installkernel. It is keyworded here
 sys-kernel/installkernel -ugrd
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2024-06-23)
-# Pulls in kde-apps/kgpg which is keyworded here
->=kde-apps/kdeutils-meta-24.05.1 -gpg
-
 # Jared Allard <jared@rgst.io> (2024-06-21)
 # uasm and jwasm include amd64-specific ASM
 app-arch/7zip -uasm -jwasm
@@ -191,6 +206,7 @@ media-gfx/blender -gnome -renderdoc
 dev-qt/qtdeclarative:6 -qmlls
 dev-qt/qttools:6 -qmlls
 dev-python/pyside -tools
+dev-python/pyqtgraph -pyside6
 
 # Nowa Ammerlaan <nowa@gentoo.org> (2024-03-17)
 # virt-firmware is keyworded here
@@ -209,6 +225,7 @@ llvm-core/clang-common -cet
 sys-devel/gcc -cet
 sys-libs/binutils-libs -cet
 sys-libs/glibc -cet
+media-libs/x265 -cet
 
 # Leonardo Hernández Hernández <leohdz172@proton.me> (2024-02-23)
 # net-libs/paho-mqtt-c is only available for amd64 and x86
@@ -282,7 +299,7 @@ dev-python/tables -cpudetection
 # AMDGPU enablement depends on dev-libs/rocr-runtime, ~amd64 only
 # See also: https://bugs.gentoo.org/891499
 llvm-runtimes/offload -llvm_targets_AMDGPU
-llvm-runtimes/openmp -llvm_targets_AMDGPU
+llvm-runtimes/openmp -llvm_targets_AMDGPU -rocm
 
 # Michał Górny <mgorny@gentoo.org> (2023-01-24)
 # libomptarget is only supported on 64-bit architectures.
@@ -372,7 +389,7 @@ llvm-runtimes/compiler-rt-sanitizers -asan -dfsan -lsan -msan -hwasan -tsan
 llvm-runtimes/compiler-rt-sanitizers -ubsan -safestack -cfi -scudo
 llvm-runtimes/compiler-rt-sanitizers -gwp-asan
 llvm-runtimes/compiler-rt-sanitizers -libfuzzer -memprof -orc -profile -xray
-llvm-runtimes/compiler-rt-sanitizers -ctx-profile -nsan -rtsan
+llvm-runtimes/compiler-rt-sanitizers -copyprof -ctx-profile -nsan -rtsan
 
 # Sam James <sam@gentoo.org> (2020-10-24)
 # asm redc is only available on amd64,
@@ -439,7 +456,6 @@ mail-client/claws-mail -litehtml
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2019-06-22)
 # openjfx is keyworded on amd64
-dev-java/openjdk:8 -javafx
 dev-java/openjdk:11 -javafx
 
 # Matt Turner <mattst88@gentoo.org> (2019-06-20)

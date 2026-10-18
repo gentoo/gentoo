@@ -63,14 +63,6 @@ DEPEND="${RDEPEND}
 	test? ( dev-cpp/gtest )
 "
 
-PATCHES=(
-	# unbundle 3rd libs
-	"${FILESDIR}/${PN}-4.7-unbundle-gtest.patch"
-	"${FILESDIR}/${PN}-4.7-unbundle-lame.patch"
-	"${FILESDIR}/${PN}-4.7-unbundle-pugixml.patch"
-	"${FILESDIR}/${PN}-4.7-unbundle-utfcpp.patch"
-)
-
 src_unpack() {
 	if [[ ${PV} == "9999" ]]; then
 		git-r3_src_unpack

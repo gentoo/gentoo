@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit systemd toolchain-funcs
+inherit systemd toolchain-funcs eapi9-ver
 
 DESCRIPTION="A small SSH server with state-of-the-art cryptography"
 HOMEPAGE="https://tinyssh.org"
@@ -35,6 +35,11 @@ src_prepare() {
 	default
 
 	echo 'gentoo-autoheaders: $(AUTOHEADERS)' >> Makefile || die
+
+	# test-subprocess-auth.sh depends on checks if (sub)directories are
+	# owned either by current user or root, and not group-writable
+	# (/var/tmp/portage typically is g=rwX)
+	sed -i '/TESTS=/s,test-subprocess-auth[.]sh,,' tests/Makefile || die
 }
 
 src_configure() {
@@ -65,4 +70,10 @@ src_install() {
 pkg_postinst() {
 	einfo "TinySSH is in beta stage, and ready for production use."
 	einfo "See https://tinyssh.org for more information."
+
+	if ver_replacing -lt "20260906"; then
+		elog "Starting with TinySSH-20260906 subdirectories of .ssh/authorized_keys"
+		elog "are checked against group-write permissions and owner not matching"
+		elog "root or target user"
+	fi
 }

@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: tree-sitter-grammar.eclass
@@ -46,7 +46,7 @@ for _BINDING in "${TS_BINDINGS[@]}"; do
 			DISTUTILS_EXT=1
 			DISTUTILS_OPTIONAL=1
 			DISTUTILS_USE_PEP517=setuptools
-			PYTHON_COMPAT=( python3_{11..14} )
+			PYTHON_COMPAT=( python3_{12..15} )
 			inherit distutils-r1
 
 			IUSE+=" python"
@@ -81,7 +81,7 @@ _get_tsg_abi_ver() {
 	# This sed script finds ABI definition string in parser source file,
 	# substitutes all the string until the ABI number, and prints remains
 	# (the ABI number itself)
-	sed -n 's/#define LANGUAGE_VERSION //p' "${S}"/src/parser.c ||
+	find "${S}" -name parser.c -exec sed -n 's/#define LANGUAGE_VERSION //p' {} \; -quit ||
 		die "Unable to extract ABI version for this grammar"
 }
 

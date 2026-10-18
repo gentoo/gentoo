@@ -1,0 +1,31 @@
+miscmods: don't directly use `ld`
+
+Avoid using ld directly.  It is done purposely in this case to
+apparently work around some issues with Solaris linker.  While we could
+resolve it here by simply using $LD, use the compiler as the commented
+out original would, for it is even better.
+
+Bug: https://bugs.gentoo.org/976375
+Bug: https://bugs.gentoo.org/982617
+Signed-off-by: Fabian Groffen <grobian@bitzolder.nl>
+
+--- a/src/miscmods/Makefile
++++ b/src/miscmods/Makefile
+@@ -96,7 +96,7 @@
+ 	$(FE)$(CC) -c $(CFLAGS) $(INCLUDE) $*.c
+ 	$(FE)$(CC) -c $(CFLAGS) $(INCLUDE) dmarc_common.c
+ 	$(FE)mv $@ dmarc_tmp.o
+-	$(FE)ld -r -o $@ $(LDFLAGS_PARTIAL) dmarc_tmp.o dmarc_common.o
++	$(FE)$(CC) -r -o $@ $(LDFLAGS_PARTIAL) dmarc_tmp.o dmarc_common.o
+ 
+ # dmarc_native is special in the same way as spf_perl
+ dmarc.so dmarc_native.so:
+@@ -112,7 +112,7 @@
+ 	$(FE)$(CC) -c $(CFLAGS) $(INCLUDE) sieve_filter_body.c
+ 	$(FE)$(CC) -c $(CFLAGS) $(INCLUDE) sieve_filter_input.c
+ 	$(FE)mv sieve_filter.o sieve_filter_tmp.o
+-	$(FE)ld -r -o sieve_filter.o $(LDFLAGS_PARTIAL) \
++	$(FE)$(CC) -r -o sieve_filter.o $(LDFLAGS_PARTIAL) \
+ 		sieve_filter_tmp.o sieve_filter_body.o sieve_filter_input.o
+ 
+ sieve_filter.so:

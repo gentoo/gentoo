@@ -21,27 +21,34 @@ SLOT="0"
 IUSE="+seccomp selinux systemd"
 RESTRICT="test"
 
-RDEPEND="dev-libs/glib:=
+DEPEND="
+	dev-libs/glib:=
 	seccomp? ( sys-libs/libseccomp )
-	systemd? ( sys-apps/systemd:= )"
-DEPEND="${RDEPEND}"
+	systemd? ( sys-apps/systemd:= )
+"
+RDEPEND="${DEPEND}
+	selinux? ( sec-policy/selinux-podman )
+"
 BDEPEND="dev-go/go-md2man"
-RDEPEND+=" selinux? ( sec-policy/selinux-podman )"
 
 src_prepare() {
 	default
-	sed -i -e "s|shell.*--exists libsystemd.* && echo \"0\"|shell echo $(usex systemd 0 1)|g;" Makefile || die
+	sed -i \
+		-e "s|shell.*--exists libsystemd.* && echo \"0\"|shell echo $(usex systemd 0 1)|g;" \
+		-e "s|install.bin: bin/conmon|install.bin:|g;" \
+		-e "s|install: install.bin docs|install: install.bin|g;" Makefile || die
 	echo -e "#!/usr/bin/env bash\necho $(usex seccomp 0 1)" > hack/seccomp-notify.sh || die
 }
 
 src_compile() {
 	tc-export CC PKG_CONFIG
 	export PREFIX="${EPREFIX}/usr" GOMD2MAN=$(command -v go-md2man)
-	default
+	[[ "${PV}" == 9999* ]] && { local ADD_GIT_INFO=git-vars || die ; }
+	emake "${ADD_GIT_INFO}" bin bin/conmon docs
 }
 
 src_install() {
 	default
-	dodir /usr/libexec/podman
-	dosym ../../bin/"${PN}" /usr/libexec/podman/"${PN}"
+	dosym -r /usr/bin/"${PN}" /usr/libexec/crio/"${PN}"
+	dosym -r /usr/bin/"${PN}" /usr/libexec/podman/"${PN}"
 }
