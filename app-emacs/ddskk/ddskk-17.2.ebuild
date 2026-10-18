@@ -12,7 +12,7 @@ SRC_URI="https://github.com/skk-dev/${PN}/archive/${P}_Mena.tar.gz -> ${P}.tar.g
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ppc ~ppc64 ~x86"
+KEYWORDS="~amd64 ppc ppc64 ~x86"
 IUSE="ruby"
 RESTRICT="test"
 
