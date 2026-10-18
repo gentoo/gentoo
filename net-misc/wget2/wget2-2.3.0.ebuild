@@ -51,6 +51,8 @@ src_configure() {
 	# -Werror=lto-type-mismatch
 	# https://bugs.gentoo.org/969162
 	# https://gitlab.com/gnuwget/wget2/-/work_items/727
+	#
+	# Fixed in git master, post-2.3.0.
 	filter-lto
 
 	local myeconfargs=(
