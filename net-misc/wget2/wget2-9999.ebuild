@@ -41,6 +41,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
+	app-alternatives/lzip
 	virtual/pkgconfig
 	doc? ( app-text/doxygen[dot] )
 "
