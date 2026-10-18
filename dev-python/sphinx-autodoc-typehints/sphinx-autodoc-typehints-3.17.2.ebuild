@@ -17,7 +17,7 @@ HOMEPAGE="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
 
 RDEPEND="
 	>=dev-python/sphinx-9.0.4[${PYTHON_USEDEP}]
@@ -30,8 +30,10 @@ RDEPEND="
 BDEPEND="
 	dev-python/hatch-vcs[${PYTHON_USEDEP}]
 	test? (
+		>=dev-python/annotated-doc-0.0.5[${PYTHON_USEDEP}]
 		>=dev-python/attrs-25.4[${PYTHON_USEDEP}]
 		>=dev-python/numpydoc-1.10[${PYTHON_USEDEP}]
+		>=dev-python/pydantic-2[${PYTHON_USEDEP}]
 		>=dev-python/sphobjinv-2.3.1[${PYTHON_USEDEP}]
 		>=dev-python/typing-extensions-4.5[${PYTHON_USEDEP}]
 	)
