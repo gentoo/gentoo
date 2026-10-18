@@ -36,6 +36,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Arthur Zamarin <arthurzam@gentoo.org> (2026-10-18)
+# The built from source package, app-admin/awscli, can be used now.
+# Removal on 2026-11-17.  Bug #984525.
+app-admin/awscli-bin
+
 # Michał Górny <mgorny@gentoo.org> (2026-10-13)
 # Part of removed dev-python/pyproject-fmt.  No revdeps left.
 # Removal on 2026-11-12.  Bug #984202.
