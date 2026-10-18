@@ -1,0 +1,12 @@
+PR merged https://github.com/MusicPlayerDaemon/MPD/pull/2600.patch
+fix linker failure
+--- a/src/lib/smbclient/meson.build
++++ b/src/lib/smbclient/meson.build
+@@ -11,6 +11,7 @@ smbclient = static_library(
+   'Context.cxx',
+   include_directories: inc,
+   dependencies: [
++    protocol_dep,
+     smbclient_dep,
+   ],
+ )
