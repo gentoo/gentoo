@@ -106,6 +106,7 @@ _emake() {
 		STRIP="$(tc-getSTRIP)" \
 		HOST_CC="$(tc-getBUILD_CC)" \
 		VERSION="Gentoo/${EGIT_COMMIT:-${PVR}}" \
+		PYTHON="${EPYTHON}" \
 		"$@"
 }
 
