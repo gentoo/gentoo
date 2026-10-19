@@ -6,6 +6,9 @@
 		<name>Michał Górny</name>
 	</maintainer>
 	<use>
+		<flag name="gles3-only">
+			Use GLES 3.0 (OpenGL for Embedded Systems) or later instead of full OpenGL
+		</flag>
 		<flag name="ppapi">Install the PPAPI plugin (for Chromium)</flag>
 		<flag name="rtmp">Enable Real Time Messaging Protocol using librtmp</flag>
 	</use>
