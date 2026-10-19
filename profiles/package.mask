@@ -36,6 +36,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Eli Schwartz <eschwartz@gentoo.org> (2026-10-18)
+# Unmaintained in gentoo, formally abandoned upstream in favor of
+# media-libs/libv4l[dvb]. Sources no longer available upstream.
+# Fails to build with modern gcc.
+# Removal on 2026-11-17.  Bug #969753.
+media-tv/linuxtv-dvb-apps
+
 # Arthur Zamarin <arthurzam@gentoo.org> (2026-10-18)
 # The built from source package, app-admin/awscli, can be used now.
 # Removal on 2026-11-17.  Bug #984525.
