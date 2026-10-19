@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -30,6 +30,7 @@ IUSE="+ocamlopt test"
 RESTRICT="test"
 
 RDEPEND="
+	<dev-lang/ocaml-5.5.0:=[ocamlopt?]
 	dev-ml/cmdliner:=[ocamlopt?]
 	dev-ml/ocaml-compiler-libs:=[ocamlopt?]
 	dev-ml/ppx_derivers:=[ocamlopt?]
