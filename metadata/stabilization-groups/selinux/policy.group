@@ -263,7 +263,6 @@ sec-policy/selinux-uptime
 sec-policy/selinux-usbguard
 sec-policy/selinux-usbmuxd
 sec-policy/selinux-uucp
-sec-policy/selinux-uwimap
 sec-policy/selinux-uwsgi
 sec-policy/selinux-varnishd
 sec-policy/selinux-vbetool
