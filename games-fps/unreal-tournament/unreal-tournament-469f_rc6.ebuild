@@ -18,7 +18,7 @@ S="${WORKDIR}"
 LICENSE="Epic-TOS Apache-2.0 BSD BSD-2 HappyBunny libpng2 MIT OFL-1.1 ZLIB" # See LICENSE.md
 SLOT="0"
 KEYWORDS="-* ~amd64 ~arm64 ~x86"
-IUSE="dedicated l10n_ca l10n_de l10n_el l10n_es l10n_fr l10n_it l10n_nl l10n_pt l10n_ru opengl vulkan video_cards_lima video_cards_panfrost"
+IUSE="dedicated l10n_ca l10n_de l10n_el l10n_es l10n_fr l10n_it l10n_nl l10n_pt l10n_ru opengl swr vulkan video_cards_lima video_cards_panfrost"
 RESTRICT="bindist mirror strip"
 
 UT_DEPEND="games-fps/unreal-tournament-data-436_p4"
@@ -44,22 +44,23 @@ PDEPEND="
 DIR="/opt/${PN}"
 QA_PREBUILT="*"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-wasd.patch
+	"${FILESDIR}"/${PN}-winsys.patch
+)
+
 src_prepare() {
-	declare -g System="System"
 	default
 
 	# Fix NEEDED entry for libmpg123.
 	# https://github.com/OldUnreal/UnrealTournamentPatches/issues/2053
-	patchelf --replace-needed libmpg123.so{,.0} "${System}"/ALAudio.so || die
+	patchelf --replace-needed libmpg123.so{,.0} System/ALAudio.so || die
 
 	# Remove bundled libraries. LAME doesn't seem to be used.
-	rm -v "${System}"/lib{mp3lame,mpg123,openal,SDL3*,sndfile,xmp}.so* || die
+	rm -v System/lib{mp3lame,mpg123,openal,SDL3*,sndfile,xmp}.so* || die
 
 	# This audio driver requires libfmod, which is missing on amd64 and arm64.
-	if ! use x86; then rm -v "${System}"/Cluster.so || die; fi
-
-	# Make WASD work out of the box.
-	patch -p0 "${System}"/DefUser.ini "${FILESDIR}"/${PN}-wasd.patch || die
+	if ! use x86; then rm -v System/Cluster.so || die; fi
 
 	# Drop unwanted localisation files.
 	local dir lang
@@ -83,6 +84,8 @@ src_configure() {
 		else
 			declare -g GameRenderDevice="XOpenGLDrv.XOpenGLRenderDevice"
 		fi
+	elif use swr; then
+		declare -g GameRenderDevice="SoftDrv.SoftwareRenderDevice"
 	else
 		unset GameRenderDevice
 	fi
@@ -98,17 +101,16 @@ src_install() {
 	insinto "${DIR}"
 	doins -r */
 
-	local exes=( "${System}"/{*-bin,*.so*} )
+	local exes=( System/{*-bin,*.so*} )
 	fperms a+x "${exes[@]/#/${DIR}/}"
 
 	sed \
 		-e "s:@EPREFIX@:${EPREFIX}:g" \
-		-e "s:@System@:${System}:g" \
 		-e "s:@GameRenderDevice@:${GameRenderDevice}:g" \
 		"${FILESDIR}/wrapper.sh" | newbin - ${PN}
 
 	# ucc does not benefit from the wrapper.
-	dosym -r "${DIR}/${System}"/ucc-bin /usr/bin/${PN}-ucc
+	dosym -r "${DIR}/System"/ucc-bin /usr/bin/${PN}-ucc
 
 	doicon -s 128 "${DISTDIR}/${PN}.png"
 	make_desktop_entry --eapi9 ${PN} -n "Unreal Tournament" \

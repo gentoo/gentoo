@@ -8,4 +8,7 @@
 	<upstream>
 		<remote-id type="github">OldUnreal/UnrealTournamentPatches</remote-id>
 	</upstream>
+	<use>
+		<flag name="swr">Enforce the SoftDrv software renderer</flag>
+	</use>
 </pkgmetadata>
