@@ -99,7 +99,7 @@ src_prepare() {
 
 	# As per https://blog.jetbrains.com/platform/2024/07/wayland-support-preview-in-2024-2/ for full wayland support
 	if use wayland; then
-		echo "-Dawt.toolkit.name=WLToolkit" >> bin/webstorm64.vmoptions || die
+		echo "-Dawt.toolkit.name=WLToolkit" >> bin/goland64.vmoptions || die
 	fi
 }
 
@@ -108,13 +108,15 @@ src_install() {
 
 	insinto "${dir}"
 	doins -r *
-	fperms 755 "${dir}"/bin/{format.sh,goland.sh,inspect.sh,ltedit.sh,remote-dev-server.sh,restarter,fsnotifier}
-	fperms 755 "${dir}"/jbr/bin/{java,javac,javadoc,jcmd,jdb,jfr,jhsdb,jinfo,jmap,jps,jrunscript,jstack,jstat,keytool,rmiregistry,serialver}
+	fperms 755 "${dir}"/bin/{format.sh,goland,goland.sh,inspect.sh,jetbrains_client.sh,ltedit.sh,remote-dev-server,remote-dev-server.sh,restarter,fsnotifier}
+	fperms 755 "${dir}"/jbr/bin/{java,javac,javadoc,jcmd,jdb,jfr,jhsdb,jinfo,jmap,jps,jrunscript,jstack,jstat,jwebserver,keytool,rmiregistry,serialver}
 	fperms 755 "${dir}"/jbr/lib/{jexec,jspawnhelper}
-	fperms 755 "${dir}"/plugins/jcef-plugin/jcef/{libjcef.so,jcef_helper}
+	fperms 755 "${dir}"/plugins/jcef-plugin/jcef/{cef_server,chrome-sandbox,libjcef.so,jcef_helper}
 	fperms 755 "${dir}"/plugins/go-plugin/lib/dlv/linux/dlv
+	fperms 755 "${dir}"/plugins/remote-dev-server/bin/launcher.sh
+	fperms 755 "${dir}"/plugins/remote-dev-server/selfcontained/bin/{Xvfb,xkbcomp}
 
-	make_wrapper "${PN}" "${dir}/bin/${PN}.sh"
+	make_wrapper "${PN}" "${dir}/bin/${PN}"
 	newicon "bin/${PN}.png" "${PN}.png"
 	make_desktop_entry "${PN}" "Goland ${PV}" "${PN}" "Development;IDE;"
 
