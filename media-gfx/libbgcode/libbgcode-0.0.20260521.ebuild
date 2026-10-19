@@ -27,6 +27,10 @@ DEPEND="${RDEPEND}
 	test? ( >=dev-cpp/catch-3 )
 "
 
+PATCHES=(
+	"${FILESDIR}"/libbgcode-0.0.20260521-meatpack-tests.patch
+)
+
 src_configure() {
 	local mycmakeargs=(
 		-DLibBGCode_BUILD_TESTS=$(usex test)
