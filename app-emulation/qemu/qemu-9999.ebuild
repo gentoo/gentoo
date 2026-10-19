@@ -342,7 +342,7 @@ RDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-10.1.2-fix_passt.patch
 	"${FILESDIR}"/${PN}-9.0.0-disable-keymap.patch
-	"${FILESDIR}"/${PN}-9.2.0-capstone-include-path.patch
+	"${FILESDIR}"/${PN}-11.1.50-capstone-include-path.patch
 	"${FILESDIR}"/${PN}-8.1.0-skip-tests.patch
 	"${FILESDIR}"/${PN}-8.1.0-find-sphinx.patch
 	"${FILESDIR}"/${PN}-10.2.2-optionrom-pass-Wl-no-error-rwx-segments.patch
