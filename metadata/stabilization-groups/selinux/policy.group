@@ -101,7 +101,6 @@ sec-policy/selinux-gpm
 sec-policy/selinux-gpsd
 sec-policy/selinux-gssproxy
 sec-policy/selinux-haproxy
-sec-policy/selinux-hddtemp
 sec-policy/selinux-hostapd
 sec-policy/selinux-hwloc
 sec-policy/selinux-icecast
@@ -173,7 +172,6 @@ sec-policy/selinux-obfs4proxy
 sec-policy/selinux-oddjob
 sec-policy/selinux-ofono
 sec-policy/selinux-oident
-sec-policy/selinux-openct
 sec-policy/selinux-openrc
 sec-policy/selinux-opensm
 sec-policy/selinux-openvpn
@@ -184,7 +182,6 @@ sec-policy/selinux-phpfpm
 sec-policy/selinux-plymouthd
 sec-policy/selinux-podman
 sec-policy/selinux-policykit
-sec-policy/selinux-portmap
 sec-policy/selinux-postfix
 sec-policy/selinux-postgresql
 sec-policy/selinux-postgrey
@@ -207,7 +204,6 @@ sec-policy/selinux-radvd
 sec-policy/selinux-rasdaemon
 sec-policy/selinux-razor
 sec-policy/selinux-redis
-sec-policy/selinux-remotelogin
 sec-policy/selinux-resolvconf
 sec-policy/selinux-rkhunter
 sec-policy/selinux-rngd
@@ -215,7 +211,6 @@ sec-policy/selinux-rootlesskit
 sec-policy/selinux-rpc
 sec-policy/selinux-rpcbind
 sec-policy/selinux-rpm
-sec-policy/selinux-rssh
 sec-policy/selinux-rtkit
 sec-policy/selinux-rtorrent
 sec-policy/selinux-salt
@@ -250,7 +245,6 @@ sec-policy/selinux-sysstat
 sec-policy/selinux-tboot
 sec-policy/selinux-tcpd
 sec-policy/selinux-tcsd
-sec-policy/selinux-telnet
 sec-policy/selinux-tftp
 sec-policy/selinux-tgtd
 sec-policy/selinux-thunderbird
@@ -282,14 +276,12 @@ sec-policy/selinux-vnstatd
 sec-policy/selinux-vpn
 sec-policy/selinux-watchdog
 sec-policy/selinux-wayland
-sec-policy/selinux-wdmd
 sec-policy/selinux-webalizer
 sec-policy/selinux-wine
 sec-policy/selinux-wireguard
 sec-policy/selinux-wireshark
 sec-policy/selinux-wm
 sec-policy/selinux-xen
-sec-policy/selinux-xfs
 sec-policy/selinux-xscreensaver
 sec-policy/selinux-xserver
 sec-policy/selinux-zabbix
