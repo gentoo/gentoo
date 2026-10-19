@@ -11,7 +11,7 @@ QT_PV=6.8:6
 
 DESCRIPTION="Library for rendering dynamic web content in Qt6 C++ and QML applications"
 SRC_URI+="
-	https://distfiles.gentoo.org/pub/dev/ionen@gentoo.org/${PN}-6.11-patchset-5.tar.xz
+	https://distfiles.gentoo.org/pub/dev/ionen@gentoo.org/${PN}-6.11-patchset-6.tar.xz
 "
 
 if [[ ${QT6_BUILD_TYPE} == release ]]; then
@@ -111,10 +111,6 @@ PATCHES=( "${WORKDIR}"/patches/${PN} )
 
 PATCHES+=(
 	# add extras as needed here, may merge in set if carries across versions
-	"${FILESDIR}"/${PN}-6.10.3-climits.patch
-	"${FILESDIR}"/${PN}-6.11.1-musl-missing-includes.patch
-	"${FILESDIR}"/${PN}-6.11.1-musl-arm64-mte.patch
-	"${FILESDIR}"/${PN}-6.11.2-libcxx23.patch
 )
 
 python_check_deps() {
