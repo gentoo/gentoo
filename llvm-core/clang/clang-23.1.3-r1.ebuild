@@ -78,6 +78,8 @@ src_prepare() {
 	# Bug: https://github.com/llvm/llvm-project/pull/211587
 	sed -e "s/llvm::sys::path::append(LibPath, \"lib\");/llvm::sys::path::append(LibPath, \"$(get_libdir)\");/" \
 		-i lib/Driver/ToolChains/AMDGPU.cpp || die
+	sed -e "s@\([/*]\)lib\(/libamdhip64\.so\|]]\|}}\)@\1$(get_libdir)\2@g" \
+		-i test/Driver/{hip-runtime-libs-{linux,msvc},rocm-detect}.hip || die
 
 	# add Gentoo Portage Prefix for Darwin (see prefix-dirs.patch)
 	eprefixify \
