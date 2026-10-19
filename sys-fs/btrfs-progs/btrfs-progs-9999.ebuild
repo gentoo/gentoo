@@ -35,7 +35,7 @@ HOMEPAGE="https://btrfs.readthedocs.io/en/latest/"
 
 LICENSE="GPL-2"
 SLOT="0/0" # libbtrfs soname
-IUSE="+convert +man experimental reiserfs static static-libs udev +zstd"
+IUSE="+convert +man experimental +lzo reiserfs static static-libs udev +zstd"
 # Could support it with just !systemd => eudev, see mdadm, but let's
 # see if someone asks for it first.
 REQUIRED_USE="static? ( !udev )"
@@ -44,7 +44,6 @@ REQUIRED_USE="static? ( !udev )"
 RESTRICT="test"
 
 RDEPEND="
-	dev-libs/lzo:2=
 	sys-apps/util-linux:=[static-libs(+)?]
 	virtual/zlib:=
 	convert? (
@@ -53,6 +52,7 @@ RDEPEND="
 			>=sys-fs/reiserfsprogs-3.6.27
 		)
 	)
+	lzo? ( dev-libs/lzo:2= )
 	udev? ( virtual/libudev:= )
 	zstd? ( app-arch/zstd:= )
 "
@@ -61,7 +61,6 @@ DEPEND="
 	>=sys-kernel/linux-headers-5.10
 	convert? ( sys-apps/acl )
 	static? (
-		dev-libs/lzo:2[static-libs(+)]
 		sys-apps/util-linux:0[static-libs(+)]
 		virtual/zlib:=[static-libs(+)]
 		convert? (
@@ -70,6 +69,7 @@ DEPEND="
 				>=sys-fs/reiserfsprogs-3.6.27[static-libs(+)]
 			)
 		)
+		lzo? ( dev-libs/lzo:2[static-libs(+)] )
 		zstd? ( app-arch/zstd[static-libs(+)] )
 	)
 "
@@ -127,10 +127,10 @@ src_configure() {
 	local myeconfargs=(
 		--bindir="${EPREFIX}"/sbin
 
-		--enable-lzo
 		$(use_enable experimental)
 		--disable-python
 		$(use_enable convert)
+		$(use_enable lzo)
 		$(use_enable man documentation)
 		$(use_enable elibc_glibc backtrace)
 		$(use_enable static-libs static)
