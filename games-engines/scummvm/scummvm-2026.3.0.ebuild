@@ -92,6 +92,13 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=strict-aliasing, -Werror=odr, -Werror=lto-type-mismatch
+	# https://bugs.gentoo.org/968927
+	# https://bugs.gentoo.org/965158
+	# https://bugs.scummvm.org/ticket/17412
+	append-flags -fno-strict-aliasing
+	filter-lto
+
 	use x86 && append-ldflags -Wl,-z,noexecstack
 	tc-export STRINGS
 
