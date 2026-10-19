@@ -37,7 +37,7 @@ src_compile() {
 }
 
 src_test() {
-	emake -Onone check TESTSUITEFLAGS="--jobs=$(makeopts_jobs)"
+	emake -Onone check TESTSUITEFLAGS="--jobs=$(get_makeopts_jobs)"
 }
 
 src_install() {
