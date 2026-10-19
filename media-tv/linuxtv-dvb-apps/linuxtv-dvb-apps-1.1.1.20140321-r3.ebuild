@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -62,6 +62,9 @@ src_install() {
 	emake V=1 prefix="${EPREFIX}/usr" libdir="${EPREFIX}/usr/$(get_libdir)" \
 		$(usex usb "ttusb_dec_reset=1" "") \
 		DESTDIR="${D}" INSTDIR="${T}" install
+
+	# clean up static+dynamic libraries doubling-up. bug #891453
+	rm "${ED}/usr/$(get_libdir)"/lib*.a || die
 
 	if use alevt ; then
 		dodir /usr/share/{applications,man/man1}
