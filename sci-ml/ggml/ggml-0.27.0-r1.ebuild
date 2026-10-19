@@ -56,6 +56,10 @@ DEPEND="${RDEPEND}
 "
 BDEPEND="vulkan? ( media-libs/shaderc )"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-llvm-23.patch
+)
+
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 }
@@ -116,6 +120,12 @@ src_configure() {
 		cuda_sanitize
 		mycmakeargs+=(
 			-DCMAKE_CUDA_FLAGS="${NVCCFLAGS}"
+		)
+	fi
+
+	if use rocm; then
+		mycmakeargs+=(
+			-DGPU_TARGETS=$(get_amdgpu_flags)
 		)
 	fi
 
