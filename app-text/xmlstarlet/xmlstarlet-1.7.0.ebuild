@@ -11,7 +11,7 @@ SRC_URI="https://github.com/xmlstarlet/xmlstarlet/releases/download/${PV}/${P}.t
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ppc ~s390 ~sparc x86"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ppc ~s390 ~sparc x86"
 
 RDEPEND="
 	dev-libs/libxml2:=
