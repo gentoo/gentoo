@@ -3,8 +3,10 @@
 
 EAPI=8
 
+DISTUTILS_EXT=1
+DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{11..15} )
-inherit flag-o-matic linux-info python-r1 systemd
+inherit flag-o-matic linux-info distutils-r1 systemd
 
 DESCRIPTION="shared storage lock manager"
 HOMEPAGE="https://codeberg.org/sanlock/sanlock"
@@ -27,14 +29,11 @@ RDEPEND="
 	acct-group/${PN}
 	selinux? (
 		sec-policy/selinux-sanlock
-		sec-policy/selinux-wdmd
 	)
 	${DEPEND}
 "
-BDEPEND="sys-apps/which"
 
 PATCHES=(
-	"${FILESDIR}/sanlock-fence_sanlock-LDFLAGS.patch"
 	"${FILESDIR}/sanlock-3.8.4-implicit-func-decls.patch"
 )
 
@@ -46,22 +45,24 @@ src_compile() {
 	# https://pagure.io/sanlock/issue/10
 	filter-lto
 
-	for d in wdmd src fence_sanlock reset; do
+	for d in wdmd src reset; do
 		emake -C ${d}
 	done
 
 	if use python; then
-		python_foreach_impl emake -C python
+		pushd python
+		distutils-r1_src_compile
+		popd
 	fi
 }
 
 src_install() {
-	for d in wdmd src fence_sanlock reset; do
+	for d in wdmd src reset; do
 		emake -C ${d} DESTDIR="${D}" LIBDIR="${EPREFIX}/usr/$(get_libdir)" install
 	done
 
 	if use python; then
-		python_foreach_impl emake -C python DESTDIR="${D}" install
+		distutils-r1_src_install
 	fi
 
 	# config
@@ -76,12 +77,12 @@ src_install() {
 	newinitd "${FILESDIR}"/sanlock.initd sanlock
 	newinitd "${FILESDIR}"/wdmd.initd wdmd
 	#doinitd ${FILESDIR}/sanlk-resetd.initd
-	#doinitd ${FILESDIR}/fence_sanlockd.initd
 
 	# systemd
+	local utildir="$(systemd_get_utildir)"
+	exeinto "${utildir#"${EPREFIX}"}"
+	doexe init.d/systemd-wdmd
 	systemd_newunit init.d/sanlock.service.native sanlock.service
-	sed -i 's,^ExecStartPre=,#ExecStartPre=,' init.d/wdmd.service.native || die
-	systemd_newunit init.d/wdmd.service.native wdmd.service
+	systemd_dounit init.d/wdmd.service
 	systemd_dounit init.d/sanlk-resetd.service
-	#systemd_dounit ${FILESDIR}/fence_sanlockd.service
 }
