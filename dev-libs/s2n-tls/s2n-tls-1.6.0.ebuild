@@ -29,6 +29,7 @@ src_configure()
 {
 	local mycmakeargs=(
 		-DBUILD_TESTING=$(usex test ON OFF)
+		-DUNSAFE_TREAT_WARNINGS_AS_ERRORS=OFF
 	)
 
 	cmake_src_configure
