@@ -7,8 +7,8 @@ inherit go-module shell-completion
 
 DESCRIPTION="Distributed, offline-first bug tracker embedded in git"
 HOMEPAGE="https://github.com/git-bug/git-bug"
-SRC_URI="https://github.com/git-bug/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
-	https://dev.gentoo.org/~laumann/distfiles/${CATEGORY}/${PN}/${P}-vendor.tar.xz"
+SRC_URI="https://github.com/git-bug/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI+=" https://github.com/gentoo-golang-dist/git-bug/releases/download/v${PV}/git-bug-${PV}-vendor.tar.xz"
 
 LICENSE="GPL-3"
 # Dependent licenses
