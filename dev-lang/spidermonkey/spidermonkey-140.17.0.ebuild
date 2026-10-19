@@ -73,10 +73,10 @@ RESTRICT="!test? ( test )"
 
 BDEPEND="${PYTHON_DEPS}
 	$(llvm_gen_dep '
+		llvm-core/llvm:${LLVM_SLOT}
 		clang? (
 			llvm-core/clang:${LLVM_SLOT}
 			llvm-core/lld:${LLVM_SLOT}
-			llvm-core/llvm:${LLVM_SLOT}
 		)
 	')
 	>=dev-util/cbindgen-0.27.0
