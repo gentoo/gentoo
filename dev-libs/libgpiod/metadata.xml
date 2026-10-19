@@ -9,4 +9,7 @@
 		<flag name="glib">Enable <pkg>dev-libs/glib</pkg> support</flag>
 		<flag name="tools">Build some useful gpio tools that use libgpiod.</flag>
 	</use>
+	<upstream>
+		<doc>https://libgpiod.readthedocs.io/</doc>
+	</upstream>
 </pkgmetadata>
