@@ -74,6 +74,7 @@ COMMON_TARGETS="
 	aarch64
 	alpha
 	arm
+	hexagon
 	hppa
 	i386
 	loongarch64
@@ -107,7 +108,6 @@ IUSE_USER_TARGETS="
 	${COMMON_TARGETS}
 	aarch64_be
 	armeb
-	hexagon
 	microblazeel
 	mipsn32
 	mipsn32el
