@@ -4,7 +4,7 @@
 EAPI=8
 
 LUA_COMPAT=( lua5-4 )
-PYTHON_COMPAT=( python3_{10..14} )
+PYTHON_COMPAT=( python3_{10..15} )
 
 inherit lua-single meson python-any-r1 readme.gentoo-r1 xdg-utils
 
@@ -37,7 +37,7 @@ REQUIRED_USE="
 RDEPEND="
 	>=dev-libs/libinput-1.2.0
 	>=dev-libs/wayland-1.22.0
-	<media-libs/libdisplay-info-0.4.0:=
+	<media-libs/libdisplay-info-0.5.0:=
 	media-libs/libpng:0=
 	sys-auth/seatd:=
 	>=x11-libs/cairo-1.11.3
