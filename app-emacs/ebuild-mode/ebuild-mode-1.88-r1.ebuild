@@ -30,6 +30,12 @@ DOCS="README.org ChangeLog"
 ELISP_TEXINFO="${PN}.texi"
 SITEFILE="50${PN}-gentoo-1.81.el"
 
+src_install() {
+	DOCS="" elisp_src_install
+	docinto emacs       # avoid file collisions with app-xemacs/${PF}
+	dodoc ${DOCS}
+}
+
 pkg_postinst() {
 	elisp_pkg_postinst
 	optfeature "ebuild commands support" sys-apps/portage
