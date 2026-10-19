@@ -177,10 +177,9 @@ RDEPEND="
 	)
 	zeroconf? ( net-dns/avahi )
 "
-
 DEPEND="${RDEPEND}"
-
 PDEPEND=">=media-video/wireplumber-0.5.2"
+RDEPEND+=" selinux? ( sec-policy/selinux-pipewire )"
 
 # Present RDEPEND that are currently always disabled due to the PW
 # code using them being required to be disabled by Gentoo guidelines
