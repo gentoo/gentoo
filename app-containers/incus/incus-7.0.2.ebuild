@@ -90,8 +90,6 @@ VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/linuxcontainers.asc
 # make: *** [Makefile:156: check] Error 1
 RESTRICT="test"
 
-GOPATH="${S}/_dist"
-
 src_unpack() {
 	if [[ "${PV}" == 9999* ]]; then
 		git-r3_src_unpack
@@ -104,8 +102,6 @@ src_unpack() {
 }
 
 src_prepare() {
-	export GOPATH="${S}/_dist"
-
 	default
 
 	sed -i \
@@ -157,22 +153,24 @@ src_compile() {
 	# Needs to be built statically
 	CGO_ENABLED=0 go install -v -tags agent,netgo,static -buildmode default "${S}"/cmd/incus-migrate
 
-	local bindir=$(incus_get_bindir "$(go-env_goarch "${CBUILD}")")
+	bindir="${GOPATH}/bin"
+	GOHOSTARCH=$(go-env_goarch "${CBUILD}")
+	agentbindir=$(incus_get_bindir "${GOHOSTARCH}")
 
 	# Build the VM agents, statically too
 	if use amd64 ; then
-		GOARCH=amd64 CGO_ENABLED=0 ego build -o "${bindir}"/incus-agent.linux.x86_64 -v \
+		GOARCH=amd64 CGO_ENABLED=0 ego build -o "${agentbindir}"/incus-agent.linux.x86_64 -v \
 			-tags agent,netgo,static -buildmode default "${S}"/cmd/incus-agent
-		GOARCH=386 CGO_ENABLED=0 ego build -o "${bindir}"/incus-agent.linux.i686 -v \
+		GOARCH=386 CGO_ENABLED=0 ego build -o "${agentbindir}"/incus-agent.linux.i686 -v \
 			-tags agent,netgo,static -buildmode default "${S}"/cmd/incus-agent
-		GOARCH=amd64 GOOS=windows CGO_ENABLED=0 ego build -o "${bindir}"/incus-agent.windows.x86_64 -v \
+		GOARCH=amd64 GOOS=windows CGO_ENABLED=0 ego build -o "${agentbindir}"/incus-agent.windows.x86_64 -v \
 			-tags agent,netgo,static -buildmode default "${S}"/cmd/incus-agent
-		GOARCH=386 GOOS=windows CGO_ENABLED=0 ego build -o "${bindir}"/incus-agent.windows.i686 -v \
+		GOARCH=386 GOOS=windows CGO_ENABLED=0 ego build -o "${agentbindir}"/incus-agent.windows.i686 -v \
 			-tags agent,netgo,static -buildmode default "${S}"/cmd/incus-agent
 	elif use arm64 ; then
-		GOARCH=arm64 CGO_ENABLED=0 ego build -o "${bindir}"/incus-agent.linux.aarch64 -v \
+		GOARCH=arm64 CGO_ENABLED=0 ego build -o "${agentbindir}"/incus-agent.linux.aarch64 -v \
 			-tags agent,netgo,static -buildmode default "${S}"/cmd/incus-agent
-		GOARCH=arm64 GOOS=windows CGO_ENABLED=0 ego build -o "${bindir}"/incus-agent.windows.aarch64 -v \
+		GOARCH=arm64 GOOS=windows CGO_ENABLED=0 ego build -o "${agentbindir}"/incus-agent.windows.aarch64 -v \
 			-tags agent,netgo,static -buildmode default "${S}"/cmd/incus-agent
 	else
 		echo "No VM support for this arch."
@@ -187,12 +185,6 @@ src_test() {
 }
 
 src_install() {
-	export GOPATH="${S}/_dist"
-
-	local bindir="${GOPATH}/bin"
-	export GOHOSTARCH=$(go-env_goarch "${CBUILD}")
-	local agentbindir=$(incus_get_bindir "${GOHOSTARCH}")
-
 	newsbin "${FILESDIR}"/incus-startup-0.4.sh incus-startup
 
 	# Admin tools
