@@ -174,7 +174,6 @@ src_compile() {
 			-tags agent,netgo,static -buildmode default "${S}"/cmd/incus-agent
 	else
 		echo "No VM support for this arch."
-		return
 	fi
 
 	use nls && emake build-mo
