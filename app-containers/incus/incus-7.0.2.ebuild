@@ -92,6 +92,17 @@ RESTRICT="test"
 
 GOPATH="${S}/_dist"
 
+src_unpack() {
+	if [[ "${PV}" == 9999* ]]; then
+		git-r3_src_unpack
+		go-module_live_vendor
+		go-env_set_compile_environment
+	else
+		verify-sig_src_unpack
+		go-module_src_unpack
+	fi
+}
+
 src_prepare() {
 	export GOPATH="${S}/_dist"
 
