@@ -304,15 +304,17 @@ BDEPEND="
 	app-alternatives/ninja
 	virtual/pkgconfig
 	doc? (
-		>=dev-python/sphinx-1.6.0[${PYTHON_USEDEP}]
-		dev-python/sphinx-rtd-theme[${PYTHON_USEDEP}]
+		>=dev-python/sphinx-7.2.7[${PYTHON_USEDEP}]
+		>=dev-python/sphinx-rtd-theme-1.2.2[${PYTHON_USEDEP}]
 	)
 	gtk? ( nls? ( sys-devel/gettext ) )
 	test? (
 		app-alternatives/bc
 		dev-libs/glib[utils]
-		dev-python/pycotap[${PYTHON_USEDEP}]
-		dev-python/qemu-qmp[${PYTHON_USEDEP}]
+		>=dev-python/pycotap-1.1.0[${PYTHON_USEDEP}]
+		>=dev-python/qemu-qmp-0.0.5[${PYTHON_USEDEP}]
+		>=dev-python/setuptools-63.1.0[${PYTHON_USEDEP}]
+		>=dev-python/wheel-0.41.2[${PYTHON_USEDEP}]
 	)
 "
 if [[ ${PV} != 9999 ]]; then
