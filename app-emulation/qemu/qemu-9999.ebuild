@@ -516,9 +516,6 @@ src_prepare() {
 		EOF
 	fi
 
-	# Verbose builds
-	MAKEOPTS+=" V=1"
-
 	# Remove bundled modules
 	rm -r roms/*/ || die
 }
@@ -786,23 +783,23 @@ src_configure() {
 src_compile() {
 	if [[ -n ${user_targets} ]]; then
 		cd "${S}/user-build" || die
-		default
+		emake V=1
 	fi
 
 	if [[ -n ${softmmu_targets} ]]; then
 		cd "${S}/softmmu-build" || die
-		default
+		emake V=1
 	fi
 
 	cd "${S}/tools-build" || die
-	default
+	emake V=1
 }
 
 src_test() {
 	if [[ -n ${softmmu_targets} ]]; then
 		cd "${S}/softmmu-build" || die
 		pax-mark m */qemu-system-* #515550
-		emake check
+		emake V=1 check
 	fi
 }
 
