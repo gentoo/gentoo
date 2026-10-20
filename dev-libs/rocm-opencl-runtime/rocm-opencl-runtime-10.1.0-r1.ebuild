@@ -66,6 +66,12 @@ src_configure() {
 	append-flags -fno-strict-aliasing
 	filter-lto
 
+	use debug && CMAKE_BUILD_TYPE="Debug"
+	# upstream release builds have assertions disabled; some are reachable
+	# (e.g. Isa::isCompatible on gfx90c), aborting otherwise working programs
+	# Bug: https://bugs.gentoo.org/984577
+	use debug || append-cppflags -DNDEBUG
+
 	# Fix ld.lld linker error: https://github.com/RadeonOpenCompute/ROCm-OpenCL-Runtime/issues/155
 	append-ldflags $(test-flags-CCLD -Wl,--undefined-version)
 
