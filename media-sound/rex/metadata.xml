@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>adisveletanlic@proton.me</email>
+    <name>Adis Veletanlic</name>
+  </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="github">defaultdino/rex</remote-id>
+    <bugs-to>https://github.com/defaultdino/rex/issues</bugs-to>
+  </upstream>
+  <use>
+    <flag name="cast">Enables casting functionality using castv2 protocol. Requires <pkg>
+      dev-libs/openssl</pkg></flag>
+  </use>
+</pkgmetadata>
