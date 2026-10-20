@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{11..15} )
 ROCM_SKIP_GLOBALS=1
-inherit cmake linux-info python-r1 rocm
+inherit cmake dot-a linux-info python-r1 rocm toolchain-funcs
 
 ESMI_PN=esmi_pkg_ver
 ESMI_PV=5.2.1.1
@@ -56,6 +56,14 @@ src_prepare() {
 	sed -e "s/-Wall -Wextra//" \
 		-i CMakeLists.txt "${ESMI_S}"/CMakeLists.txt goamdsmi_shim/CMakeLists.txt || die
 
+	# Bug: https://bugs.gentoo.org/984514
+	sed -e "/check_cxx_compiler_flag/!s/ -Werror\(=[a-z-]*\)\?//g" \
+		-i CMakeLists.txt cmake_modules/help_package.cmake \
+		src/nic/ai-nic/amdsmi_unified/CMakeLists.txt || die
+
+	# Bug: https://bugs.gentoo.org/984513
+	sed -e "s/COMMAND objdump/COMMAND $(tc-getOBJDUMP)/" -i CMakeLists.txt || die
+
 	# Reset custom installation path
 	sed -e "/generic_add_rocm/d" -i CMakeLists.txt || die
 
@@ -73,6 +81,8 @@ src_prepare() {
 
 src_configure() {
 	python_setup
+	# Bug: https://bugs.gentoo.org/984518
+	lto-guarantee-fat
 
 	local mycmakeargs=(
 		-DBUILD_TESTS=$(usex test)
@@ -83,14 +93,20 @@ src_configure() {
 }
 
 src_test() {
-	# GPU access in GpuFunctionalReadOnly tests
-	addwrite /dev/dri/renderD128
+	# Bug: https://bugs.gentoo.org/984527
+	if [[ -c /dev/kfd ]]; then
+		check_amdgpu
+	else
+		ewarn "/dev/kfd is missing, skipping functional tests"
+		local -x GTEST_FILTER="*Unit.*"
+	fi
 
 	"${BUILD_DIR}/tests/amd_smi_test/amdsmitst" || die "Test failed"
 }
 
 src_install() {
 	cmake_src_install
+	strip-lto-bytecode
 
 	# Reinstalled below with python_domodule
 	rm -r "${D}$(python_get_sitedir)"/amdsmi "${ED}"/usr/bin/amd-smi || die
