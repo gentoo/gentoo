@@ -1,0 +1,117 @@
+From 4b045ba2c8b2bda899a7ef77a3a68666d62a8423 Mon Sep 17 00:00:00 2001
+From: Volker Krause <vkrause@kde.org>
+Date: Fri, 3 Jul 2026 20:52:27 +0200
+Subject: [PATCH] Adapt to Poppler 26.08 API changes
+
+---
+ src/lib/pdf/pdfdocument.cpp | 48 +++++++++++++++++++++++++++----------
+ 1 file changed, 35 insertions(+), 13 deletions(-)
+
+diff --git a/src/lib/pdf/pdfdocument.cpp b/src/lib/pdf/pdfdocument.cpp
+index dd37122a..59fa46f2 100644
+--- a/src/lib/pdf/pdfdocument.cpp
++++ b/src/lib/pdf/pdfdocument.cpp
+@@ -300,12 +300,9 @@ int PdfDocument::fileSize() const
+     return d->m_pdfData.size();
+ }
+ 
+-[[nodiscard]] static QDateTime parsePdfDateTime(const GooString *str)
++template <typename StrT>
++[[nodiscard]] static QDateTime parsePdfDateTime(const StrT &str)
+ {
+-    if (!str) {
+-        return {};
+-    }
+-
+     int year;
+     int month;
+     int day;
+@@ -316,7 +313,7 @@ int PdfDocument::fileSize() const
+     int tzMins;
+     char tz;
+ 
+-#if KPOPPLER_VERSION < QT_VERSION_CHECK(26, 3, 90)
++#if KPOPPLER_VERSION < QT_VERSION_CHECK(26, 3, 90) || KPOPPLER_VERSION >= QT_VERSION_CHECK(26, 7, 90)
+     if (!parseDateString(str, &year, &month, &day, &hour, &min, &sec, &tz, &tzHours, &tzMins)) {
+ #else
+     if (!parseDateString(str->toStr(), &year, &month, &day, &hour, &min, &sec, &tz, &tzHours, &tzMins)) {
+@@ -341,18 +338,42 @@ int PdfDocument::fileSize() const
+ 
+ QDateTime PdfDocument::creationTime() const
+ {
++#if KPOPPLER_VERSION < QT_VERSION_CHECK(26, 7, 90)
+     std::unique_ptr<GooString> dt(d->m_popplerDoc->getDocInfoCreatDate());
+-    return parsePdfDateTime(dt.get());
++    return dt ? parsePdfDateTime(dt.get()) : QDateTime();
++#else
++    const auto dt = d->m_popplerDoc->getDocInfoCreatDate();
++    return dt ? parsePdfDateTime(*dt) : QDateTime();
++#endif
+ }
+ 
+ QDateTime PdfDocument::modificationTime() const
+ {
++#if KPOPPLER_VERSION < QT_VERSION_CHECK(26, 7, 90)
+     std::unique_ptr<GooString> dt(d->m_popplerDoc->getDocInfoModDate());
+-    return parsePdfDateTime(dt.get());
++    return dt ? parsePdfDateTime(dt.get()) : QDateTime();
++#else
++    const auto dt = d->m_popplerDoc->getDocInfoModDate();
++    return dt ? parsePdfDateTime(*dt) : QDateTime();
++#endif
+ }
+ 
++#if KPOPPLER_VERSION >= QT_VERSION_CHECK(26, 7, 90)
++[[nodiscard]] static QString fromPdfString(const std::string &s)
++{
++    if (hasUnicodeByteOrderMark(s) || hasUnicodeByteOrderMarkLE(s)) {
++        return QString::fromUtf16(reinterpret_cast<const char16_t*>(s.c_str()), (qsizetype)s.size() / 2);
++    }
++    const auto utf16Data = pdfDocEncodingToUTF16(s);
++    return QString::fromUtf16(reinterpret_cast<const char16_t *>(utf16Data.c_str()), (qsizetype)utf16Data.size() / 2);
++}
+ 
+-QString gooStringToUnicode(const std::unique_ptr<GooString> &s)
++[[nodiscard]] static QString fromPdfString(const std::optional<std::string> &s)
++{
++    return s ? fromPdfString(*s) : QString();
++}
++#else
++[[nodiscard]] static QString fromPdfString(const std::unique_ptr<GooString> &s)
+ {
+     if (!s) {
+         return {};
+@@ -377,25 +398,26 @@ QString gooStringToUnicode(const std::unique_ptr<GooString> &s)
+ 
+     return QString::fromUtf8(s->c_str());
+ }
++#endif
+ 
+ QString PdfDocument::title() const
+ {
+-    return gooStringToUnicode(d->m_popplerDoc->getDocInfoTitle());
++    return fromPdfString(d->m_popplerDoc->getDocInfoTitle());
+ }
+ 
+ QString PdfDocument::producer() const
+ {
+-    return gooStringToUnicode(d->m_popplerDoc->getDocInfoProducer());
++    return fromPdfString(d->m_popplerDoc->getDocInfoProducer());
+ }
+ 
+ QString PdfDocument::creator() const
+ {
+-    return gooStringToUnicode(d->m_popplerDoc->getDocInfoCreator());
++    return fromPdfString(d->m_popplerDoc->getDocInfoCreator());
+ }
+ 
+ QString PdfDocument::author() const
+ {
+-    return gooStringToUnicode(d->m_popplerDoc->getDocInfoAuthor());
++    return fromPdfString(d->m_popplerDoc->getDocInfoAuthor());
+ }
+ 
+ QVariantList PdfDocument::pagesVariant() const
+-- 
+GitLab
+
