@@ -37,7 +37,7 @@ src_prepare() {
 
 	# Automagically detects python2/python3. In the latter case, without
 	# python_setup it goes nowhere anyway. For modern python it needs python3-embed.
-	sed -i 's/python-2.7/notpython-do-not-find/' configure configure.ac || die
+	sed -i 's/python-2.7/notpython-do-not-find/' configure || die
 
 	# bug #236205
 	rm -f "${WORKDIR}"/maps/Info/combine.pl || die
