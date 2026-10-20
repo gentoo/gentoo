@@ -29,7 +29,10 @@ REQUIRED_USE="
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	benchmark? ( dev-util/hip:${SLOT} )
+	benchmark? (
+		dev-util/amdsmi:${SLOT}
+		dev-util/hip:${SLOT}
+	)
 "
 DEPEND="
 	${RDEPEND}
@@ -44,9 +47,11 @@ PATCHES=(
 )
 
 src_prepare() {
-	# primbench comes from its own tarball
+	# primbench comes from its own tarball; git only provides a branch name and
+	# commit hash for benchmark results
 	if use benchmark; then
 		sed -e "s:\.\./\.\./\.\./shared/primbench:${WORKDIR}/primbench:" \
+			-e "/find_package(Git REQUIRED)/d" \
 			-i benchmark/CMakeLists.txt || die
 	fi
 
