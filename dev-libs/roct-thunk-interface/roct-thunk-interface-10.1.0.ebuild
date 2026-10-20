@@ -88,6 +88,10 @@ src_configure() {
 		filter-lto
 
 		export LIBHSAKMT_PATH="${BUILD_DIR}"
+		mycmakeargs+=(
+			-DCMAKE_DISABLE_FIND_PACKAGE_hsakmt=ON
+			-DHSAKMT_LIBRARY="${BUILD_DIR}/libhsakmt.so"
+		)
 		test_wrapper "${S}/tests/kfdtest" cmake_src_configure
 	fi
 }
@@ -125,5 +129,5 @@ src_test() {
 		KFDQMTest.QueueLatency
 	)
 	local IFS=:
-	./run_kfdtest.sh -e "${skipped_tests[*]}" || die
+	LD_LIBRARY_PATH="${BUILD_DIR}" ./run_kfdtest.sh -e "${skipped_tests[*]}" || die
 }
