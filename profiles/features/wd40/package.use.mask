@@ -4,6 +4,7 @@
 # Andreas Sturmlechner <asturm@gentoo.org> (2026-10-20)
 # Requires dev-build/corrosion, iow rust/cargo.
 kde-plasma/kdeplasma-addons led
+>=kde-plasma/kwin-6.8.0 lock
 virtual/notification-daemon kde
 
 # Michał Górny <mgorny@gentoo.org> (2025-10-09)
