@@ -158,7 +158,10 @@ done
 ALL_DEPEND="
 	dev-libs/glib:2[static-libs(+)]
 	virtual/zlib:=[static-libs(+)]
-	python? ( ${PYTHON_DEPS} )
+	python? (
+		${PYTHON_DEPS}
+		>=dev-python/qemu-qmp-0.0.5[${PYTHON_USEDEP}]
+	)
 	systemtap? ( dev-debug/systemtap )
 	xattr? ( sys-apps/attr[static-libs(+)] )
 "
@@ -309,6 +312,7 @@ BDEPEND="
 		app-alternatives/bc
 		dev-libs/glib[utils]
 		dev-python/pycotap[${PYTHON_USEDEP}]
+		dev-python/qemu-qmp[${PYTHON_USEDEP}]
 	)
 "
 if [[ ${PV} != 9999 ]]; then
