@@ -27,7 +27,10 @@ REQUIRED_USE="
 "
 
 RDEPEND="
-	benchmark? ( dev-util/hip:${SLOT} )
+	benchmark? (
+		dev-util/amdsmi:${SLOT}
+		dev-util/hip:${SLOT}
+	)
 "
 DEPEND="
 	${RDEPEND}
