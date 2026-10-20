@@ -5,6 +5,7 @@
 # KDE Plasma is not keyworded here. Bug #969360
 gui-apps/sddm-gentoo-config kwin
 lxqt-base/lxqt-meta screengrab
+sys-auth/polkit kde
 virtual/notification-daemon kde
 
 # Mike Gilbert <floppym@gentoo.org> (2026-10-06)
