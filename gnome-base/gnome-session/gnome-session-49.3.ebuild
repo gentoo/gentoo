@@ -97,7 +97,7 @@ pkg_postinst() {
 	xdg_pkg_postinst
 	gnome2_schemas_update
 
-	if ! has_version gnome-base/gdm && ! has_version x11-misc/sddm; then
+	if ! has_version gnome-base/gdm && ! has_version gui-apps/sddm; then
 		ewarn "If you use a custom .xinitrc for your X session,"
 		ewarn "make sure that the commands in the xinitrc.d scripts are run."
 	fi

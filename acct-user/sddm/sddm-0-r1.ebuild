@@ -5,7 +5,7 @@ EAPI=8
 
 inherit acct-user
 
-DESCRIPTION="A user for x11-misc/sddm"
+DESCRIPTION="A user for gui-apps/sddm"
 
 ACCT_USER_GROUPS=( "sddm" "video" )
 ACCT_USER_HOME="/var/lib/sddm"

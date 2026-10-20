@@ -15,7 +15,7 @@ IUSE="custom-compositor kwin systemd weston"
 REQUIRED_USE="?? ( custom-compositor kwin weston )"
 
 RDEPEND="
-	!<x11-misc/sddm-0.21.0_p20250818
+	!<gui-apps/sddm-0.21.0_p20250818
 	kwin? ( kde-plasma/kwin:6 )
 	weston? ( dev-libs/weston[kiosk] )
 	!custom-compositor? ( !kwin? ( !weston? ( x11-base/xorg-server ) ) )

@@ -24,7 +24,7 @@
 		<flag name="oxygen-theme">Pull in Oxygen icons, sound theme and visual style for KDE Plasma</flag>
 		<flag name="plymouth">Pull in Breeze theme for <pkg>sys-boot/plymouth</pkg></flag>
 		<flag name="pulseaudio">Install Plasma applet for PulseAudio volume management</flag>
-		<flag name="sddm">Pull in the <pkg>x11-misc/sddm</pkg> display manager and system settings module</flag>
+		<flag name="sddm">Pull in the <pkg>gui-apps/sddm</pkg> display manager and system settings module</flag>
 		<flag name="sdk">Pull in <pkg>kde-plasma/plasma-sdk</pkg> for Plasma development</flag>
 		<flag name="smart">Pull in <pkg>kde-plasma/plasma-disks</pkg> for disk health monitoring</flag>
 		<flag name="thunderbolt">Pull in <pkg>kde-plasma/plasma-thunderbolt</pkg> control center module</flag>

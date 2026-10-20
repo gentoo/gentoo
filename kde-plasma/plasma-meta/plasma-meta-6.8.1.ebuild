@@ -77,7 +77,7 @@ RDEPEND="
 	display-manager? (
 		sddm? (
 			>=kde-plasma/sddm-kcm-${PV}:${SLOT}
-			>=x11-misc/sddm-0.21.0_p20240302[elogind?,systemd?]
+			>=gui-apps/sddm-0.21.0_p20240302[elogind?,systemd?]
 		)
 		!sddm? ( x11-misc/lightdm )
 	)

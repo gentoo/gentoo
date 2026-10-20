@@ -128,7 +128,7 @@ pkg_postinst() {
 	ewarn "a session initiated by a display manager." #799137
 	optfeature_header "Install one of the following display managers:"
 	optfeature "an example display manager" x11-misc/cdm gnome-base/gdm gui-apps/gtkgreet x11-misc/lightdm \
-		lxde-base/lxdm sys-apps/qingy x11-misc/sddm x11-misc/slim x11-misc/wdm x11-apps/xdm
+		lxde-base/lxdm sys-apps/qingy gui-apps/sddm x11-misc/slim x11-misc/wdm x11-apps/xdm
 
 	if [[ -z ${REPLACING_VERSIONS} ]]; then
 		elog
