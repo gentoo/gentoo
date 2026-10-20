@@ -14,7 +14,7 @@ HOMEPAGE="https://apps.kde.org/yakuake/"
 LICENSE="GPL-2 LGPL-2"
 SLOT="6"
 KEYWORDS="amd64 arm64 ~loong ~ppc64 ~riscv ~x86"
-IUSE="absolute-position"
+IUSE="wayland"
 
 # slot op: Uses Qt6::GuiPrivate for qtx11extras_p.h
 # kde-frameworks/kwindowsystem[X]: Unconditional use of KX11Extras
@@ -45,7 +45,7 @@ RDEPEND="
 	x11-libs/libX11
 	x11-libs/libxcb
 	x11-libs/xcb-util
-	absolute-position? ( kde-plasma/kwayland:6 )
+	wayland? ( kde-plasma/kwayland:6 )
 "
 DEPEND="${RDEPEND}
 	dev-libs/plasma-wayland-protocols
@@ -56,7 +56,7 @@ src_configure() {
 	# TODO: start to use WITH_X11 option? but there's still the
 	# KX11Extras use...
 	local mycmakeargs=(
-		$(cmake_use_find_package absolute-position KWayland)
+		$(cmake_use_find_package wayland KWayland)
 	)
 
 	ecm_src_configure

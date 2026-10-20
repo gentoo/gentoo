@@ -30,9 +30,6 @@ dev-python/pyside webchannel
 # Required by sys-apps/flatpak, a dependency of kde-plasma/discover
 dev-util/ostree curl
 
-# Enable by default, requires kde-frameworks/kwayland
-kde-apps/yakuake absolute-position
-
 # Required by media-gfx/graphviz which is required by kde-apps/kcachegrind
 media-libs/gd fontconfig
 

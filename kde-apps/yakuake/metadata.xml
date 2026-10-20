@@ -13,7 +13,4 @@
 		key press (defaults to F12) with a konsole window, supports multiple tabs,
 		tabs, multiple screens and mouse wheel tab navigation amongst other features.
 	</longdescription>
-	<use>
-		<flag name="absolute-position">Use <pkg>kde-plasma/kwayland</pkg> for absolute window positioning in KWin</flag>
-	</use>
 </pkgmetadata>

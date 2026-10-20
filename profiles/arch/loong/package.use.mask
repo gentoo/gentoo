@@ -8,7 +8,7 @@ gui-apps/sddm-gentoo-config kwin
 kde-apps/gwenview activities
 kde-apps/kdeadmin-meta cron
 kde-apps/kio-extras activities
-kde-apps/yakuake absolute-position
+kde-apps/yakuake wayland
 kde-frameworks/kauth policykit
 lxqt-base/lxqt-meta screengrab
 sys-auth/polkit kde
