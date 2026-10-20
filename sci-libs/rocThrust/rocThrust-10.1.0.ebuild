@@ -35,7 +35,10 @@ RDEPEND="dev-util/hip:${SLOT}
 		dev-cpp/gtest
 		>=dev-db/sqlite-3.51.3:3
 	)
-	benchmark? ( sci-libs/rocRAND:${SLOT} )
+	benchmark? (
+		dev-util/amdsmi:${SLOT}
+		sci-libs/rocRAND:${SLOT}
+	)
 "
 DEPEND="${RDEPEND}"
 BDEPEND=">=dev-build/cmake-3.22"
@@ -47,9 +50,11 @@ PATCHES=(
 )
 
 src_prepare() {
-	# primbench comes from its own tarball
+	# primbench comes from its own tarball; git only provides a branch name and
+	# commit hash for benchmark results
 	if use benchmark; then
 		sed -e "s:\${PROJECT_SOURCE_DIR}/\.\./\.\./shared/primbench:${WORKDIR}/primbench:" \
+			-e "/find_package(Git REQUIRED)/d" \
 			-i benchmark/CMakeLists.txt || die
 	fi
 
