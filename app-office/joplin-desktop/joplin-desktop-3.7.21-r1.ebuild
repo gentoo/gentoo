@@ -102,5 +102,5 @@ src_install() {
 
 	dosym -r "${apphome}/joplin" "/usr/bin/${PN}"
 	make_desktop_entry "${PN}" Joplin joplin "Office;" \
-		"StartupWMClass=Joplin\nMimeType=x-scheme-handler/joplin;"
+		"StartupWMClass=appimagekit-joplin\nMimeType=x-scheme-handler/joplin;"
 }
