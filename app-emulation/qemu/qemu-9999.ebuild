@@ -14,6 +14,7 @@ QEMU_DOCS_VERSION=$(ver_cut 1-2).0
 QEMU_DOC_USEFLAG="+doc"
 
 PYTHON_COMPAT=( python3_{13..15} )
+# See bug #913084 for ensurepip
 PYTHON_REQ_USE="ensurepip(-),ncurses,readline"
 
 inherit eapi9-ver flag-o-matic linux-info toolchain-funcs python-r1 udev fcaps \
@@ -294,7 +295,6 @@ PPC_FIRMWARE_DEPEND="
 	)
 "
 
-# See bug #913084 for pip dep
 BDEPEND="
 	${PYTHON_DEPS}
 	dev-python/distlib[${PYTHON_USEDEP}]
