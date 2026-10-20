@@ -1,13 +1,11 @@
 # Copyright 2022-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2026-08-31)
-# kde-plasma/layer-shell-qt is not keyworded here. Bug #969360
-lxqt-base/lxqt-meta screengrab
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2026-08-31)
-# kde-plasma/libplasma is not keyworded here. Bug #969360
+# Andreas Sturmlechner <asturm@gentoo.org> (2026-10-20)
+# KDE Plasma is not keyworded here. Bug #969360
 gui-apps/sddm-gentoo-config kwin
+lxqt-base/lxqt-meta screengrab
+virtual/notification-daemon kde
 
 # Mike Gilbert <floppym@gentoo.org> (2026-10-06)
 # Support missing upstream, bug 983796.
