@@ -3,6 +3,8 @@
 
 EAPI=8
 
+inherit libtool
+
 MY_P="${P/-server/}"
 DESCRIPTION="Server for the crossfire clients"
 HOMEPAGE="https://crossfire.real-time.com/"
@@ -30,6 +32,8 @@ PATCHES=( "${FILESDIR}/${P}-incompatible-func-pointers.patch" )
 
 src_prepare() {
 	default
+
+	elibtoolize
 
 	# Automagically detects python2/python3. In the latter case, without
 	# python_setup it goes nowhere anyway. For modern python it needs python3-embed.
