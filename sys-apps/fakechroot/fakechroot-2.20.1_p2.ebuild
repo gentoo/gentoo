@@ -22,6 +22,10 @@ KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~spa
 
 RESTRICT="test"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.20.1-fix-build-for-clang.patch
+)
+
 src_prepare() {
 	default
 
