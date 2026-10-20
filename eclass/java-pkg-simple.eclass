@@ -51,7 +51,8 @@ if has test ${JAVA_PKG_IUSE}; then
 			junit-jupiter)
 				test_deps+=" dev-java/junit:5";;
 			junit-vintage)
-				test_deps+=" dev-java/junit:5[vintage]";;
+				test_deps+=" dev-java/junit:5[vintage]"
+				test_deps+=" dev-java/junit:4";;
 			pkgdiff)
 				test_deps+=" amd64? ( dev-util/pkgdiff
 					dev-util/japi-compliance-checker )";;
