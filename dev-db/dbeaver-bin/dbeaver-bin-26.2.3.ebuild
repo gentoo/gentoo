@@ -40,7 +40,7 @@ src_configure() {
 	# Remove JRE bundled
 	rm -r "${S}/jre" || die
 	# Remove unused plugins for other platforms
-	local JNA_DIR="${S}/plugins/com.sun.jna_5.18.1.v20251001-0800/com/sun/jna"
+	local JNA_DIR="${S}/plugins/com.sun.jna_5.19.1.v20260612-1000/com/sun/jna"
 	pushd "${JNA_DIR}" || die
 	for i in *-*; do
 		use amd64 && [[ ${i} == linux-x86-64 ]] && continue
