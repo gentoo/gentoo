@@ -111,6 +111,8 @@ PATCHES=(
 )
 
 pkg_setup() {
+	python-single-r1_pkg_setup
+
 	use modules && [[ ${MERGE_TYPE} != binary ]] || return
 
 	# do early before linux-mod-r1 so can use chkconfig to setup CONFIG_CHECK
@@ -151,7 +153,6 @@ pkg_setup() {
 	ignoring this."
 
 	linux-mod-r1_pkg_setup
-	python-single-r1_pkg_setup
 }
 
 src_prepare() {
