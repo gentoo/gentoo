@@ -6,6 +6,7 @@
 app-i18n/fcitx-configtool kcm
 gui-apps/sddm-gentoo-config kwin
 kde-apps/gwenview activities
+kde-apps/kdeadmin-meta cron
 kde-apps/kio-extras activities
 kde-apps/yakuake absolute-position
 kde-frameworks/kauth policykit
