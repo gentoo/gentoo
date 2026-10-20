@@ -26,7 +26,10 @@ REQUIRED_USE="${ROCM_REQUIRED_USE}"
 
 RESTRICT="!test? ( test )"
 
-RDEPEND="dev-util/hip:${SLOT}"
+RDEPEND="
+	dev-util/hip:${SLOT}
+	benchmark? ( dev-util/amdsmi:${SLOT} )
+"
 DEPEND="${RDEPEND}
 	dev-build/rocm-cmake
 	test? ( dev-cpp/gtest )"
