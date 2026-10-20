@@ -138,7 +138,7 @@ multilib_src_configure() {
 		$(use_enable valgrind valgrind-annotations)
 
 		# TODO: This can become unconditional in a release after
-		# 0.196 depending on upstream progress.
+		# 0.197 depending on upstream progress.
 		$(use_enable threads thread-safety)
 
 		# Valgrind option is just for running tests under it; dodgy under sandbox
