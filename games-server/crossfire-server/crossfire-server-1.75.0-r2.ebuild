@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -30,6 +30,10 @@ PATCHES=( "${FILESDIR}/${P}-incompatible-func-pointers.patch" )
 
 src_prepare() {
 	default
+
+	# Automagically detects python2/python3. In the latter case, without
+	# python_setup it goes nowhere anyway. For modern python it needs python3-embed.
+	sed -i 's/python-2.7/notpython-do-not-find/' configure configure.ac || die
 
 	# bug #236205
 	rm -f "${WORKDIR}"/maps/Info/combine.pl || die
