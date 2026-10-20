@@ -48,6 +48,7 @@ RESTRICT="!test? ( test )"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-no-roctx.patch
+	"${FILESDIR}"/${P}-llvm-23-gfx942.patch
 )
 
 src_prepare() {
