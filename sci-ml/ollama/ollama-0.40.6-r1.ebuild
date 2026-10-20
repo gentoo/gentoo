@@ -26,7 +26,7 @@ RESTRICT="mirror test"
 DEPEND="
 	acct-group/ollama
 	acct-user/ollama
-	>=sci-ml/ggml-0.25.3:=
+	>=sci-ml/ggml-0.27.0:=
 "
 RDEPEND="
 	${DEPEND}
