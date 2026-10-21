@@ -1,0 +1,28 @@
+#!/sbin/openrc-run
+# Copyright 1999-2026 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# NB: Config is in /etc/conf.d/portsentry
+
+# portsentry 2.x is a single, config-driven daemon that runs in the
+# foreground, so it is managed with supervise-daemon. Runtime behaviour is
+# configured in /etc/portsentry/portsentry.conf; command-line switches go in
+# /etc/conf.d/portsentry via PORTSENTRY_OPTS.
+
+command="/usr/sbin/portsentry"
+command_args="${PORTSENTRY_OPTS}"
+supervisor="supervise-daemon"
+pidfile="/run/portsentry.pid"
+
+depend() {
+	need net
+	use logger
+}
+
+start_pre() {
+	if [ ! -e /etc/portsentry/portsentry.conf ]; then
+		eerror "Missing /etc/portsentry/portsentry.conf"
+		eerror "A sample is installed in /usr/share/doc/${RC_SVCNAME}"
+		return 1
+	fi
+}
