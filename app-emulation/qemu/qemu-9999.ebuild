@@ -666,6 +666,7 @@ qemu_src_configure() {
 		$(conf_notuser virgl virglrenderer)
 		$(conf_softmmu virtfs)
 		$(conf_notuser vnc)
+		--disable-qemu-vnc # fails to build, otherwise automagically enabled for dbus+vnc+tools
 		$(conf_notuser vte)
 		$(conf_softmmu xdp af-xdp)
 		$(conf_notuser xen)
