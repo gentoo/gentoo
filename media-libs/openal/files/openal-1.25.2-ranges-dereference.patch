@@ -1,0 +1,161 @@
+https://github.com/kcat/openal-soft/commit/7f9c6de1162b1d4604b9a2f8bcd6c53021566221
+
+From: Chris Robinson <chris.kcat@gmail.com>
+Date: Thu, 9 Jul 2026 06:05:24 -0700
+Subject: [PATCH] Use a dereference type to access smart pointer objects with
+ ranges
+
+Instead of taking the address of standard member functions, which is invalid.
+--- a/alc/alc.cpp
++++ b/alc/alc.cpp
+@@ -1781,7 +1781,7 @@ auto UpdateDeviceParams(gsl::not_null<al::Device*> device,
+          * configuration in aluInitEffectPanning.
+          */
+         std::ranges::for_each(context->mEffectSlotClusters
+-            | std::views::transform(&ContextBase::EffectSlotCluster::operator*)
++            | std::views::transform(al::dereference{})
+             | std::views::join, [](EffectSlotBase &slot)
+         {
+             slot.mWetBuffer.clear();
+--- a/alc/backends/pipewire.cpp
++++ b/alc/backends/pipewire.cpp
+@@ -1408,7 +1408,7 @@ void EventManager::removeCallback(uint32_t const id) noexcept
+     RemoveDevice(id);
+ 
+     auto node_end = std::ranges::remove_if(mNodeList, [id](NodeProxy const &node) noexcept
+-    { return node.mId == id; }, &std::unique_ptr<NodeProxy>::operator*);
++    { return node.mId == id; }, al::dereference{});
+     mNodeList.erase(node_end.begin(), node_end.end());
+ 
+     if(mDefaultMetadata && mDefaultMetadata->mId == id)
+--- a/alc/backends/wasapi.cpp
++++ b/alc/backends/wasapi.cpp
+@@ -1437,9 +1437,9 @@ FORCE_ALIGN void WasapiPlayback::mixerProc(SpatialDevice const &audio)
+             {
+                 auto *buffer = LPBYTE{};
+                 auto size = UINT32{};
+-                obj.GetBuffer(&buffer, &size);
++                std::ignore = obj.GetBuffer(&buffer, &size);
+                 return buffer;
+-            }, &ComPtr<ISpatialAudioObject>::operator*);
++            }, al::dereference{});
+ 
+             if(!mResampler)
+                 mDevice->renderSamples(buffers, framesToDo);
+--- a/common/opthelpers.h
++++ b/common/opthelpers.h
+@@ -74,6 +74,12 @@ template<typename T>
+ constexpr std::underlying_type_t<T> to_underlying(T e) noexcept
+ { return static_cast<std::underlying_type_t<T>>(e); }
+ 
++struct dereference {
++    template<typename T> [[nodiscard]] constexpr
++    auto operator()(T&& p) const noexcept(noexcept(*std::forward<T>(p))) -> decltype(auto)
++    { return *std::forward<T>(p); }
++};
++
+ /**
+  * Gets a not_null<T*> from a not_null<SmartPtr<T>>, hopefully avoiding ths
+  * extraneous null check from not_null's constructor.
+--- a/router/alc.cpp
++++ b/router/alc.cpp
+@@ -17,6 +17,7 @@
+ 
+ #include "altypes.hpp"
+ #include "alstring.h"
++#include "opthelpers.h"
+ #include "strutils.hpp"
+ 
+ #if HAVE_CXXMODULES
+@@ -574,7 +575,7 @@ ALC_API auto ALC_APIENTRY alcOpenDevice(ALCchar const *const devicename) noexcep
+                 return true;
+             }
+             return false;
+-        }, &DriverIfacePtr::operator*);
++        }, al::dereference{});
+         if(iter == DriverList.end())
+         {
+             LastError.store(ALC_INVALID_DEVICE);
+@@ -827,7 +828,7 @@ ALC_API auto ALC_APIENTRY alcGetString(ALCdevice *const device, ALCenum const pa
+                 || drv.alcIsExtensionPresent(nullptr, "ALC_ENUMERATION_EXT"))
+                 DevicesList.appendDeviceList(drv.alcGetString(nullptr, ALC_DEVICE_SPECIFIER), idx);
+             ++idx;
+-        }, &DriverIfacePtr::operator*);
++        }, al::dereference{});
+         DevicesList.finishEnumeration();
+         return DevicesList.getNameData();
+     }
+@@ -851,7 +852,7 @@ ALC_API auto ALC_APIENTRY alcGetString(ALCdevice *const device, ALCenum const pa
+                 AllDevicesList.appendDeviceList(
+                     drv.alcGetString(nullptr, ALC_DEVICE_SPECIFIER), idx);
+             ++idx;
+-        }, &DriverIfacePtr::operator*);
++        }, al::dereference{});
+         AllDevicesList.finishEnumeration();
+         return AllDevicesList.getNameData();
+     }
+@@ -869,7 +870,7 @@ ALC_API auto ALC_APIENTRY alcGetString(ALCdevice *const device, ALCenum const pa
+                 CaptureDevicesList.appendDeviceList(
+                     drv.alcGetString(nullptr, ALC_CAPTURE_DEVICE_SPECIFIER), idx);
+             ++idx;
+-        }, &DriverIfacePtr::operator*);
++        }, al::dereference{});
+         CaptureDevicesList.finishEnumeration();
+         return CaptureDevicesList.getNameData();
+     }
+@@ -880,7 +881,7 @@ ALC_API auto ALC_APIENTRY alcGetString(ALCdevice *const device, ALCenum const pa
+         {
+             return drv.ALCVer >= MakeALCVer(1, 1)
+                 || drv.alcIsExtensionPresent(nullptr, "ALC_ENUMERATION_EXT");
+-        }, &DriverIfacePtr::operator*);
++        }, al::dereference{});
+         if(iter != DriverList.end())
+             return (*iter)->alcGetString(nullptr, ALC_DEFAULT_DEVICE_SPECIFIER);
+         return "";
+@@ -891,7 +892,7 @@ ALC_API auto ALC_APIENTRY alcGetString(ALCdevice *const device, ALCenum const pa
+         auto const iter = std::ranges::find_if(DriverList, [](const DriverIface &drv)
+         {
+             return drv.alcIsExtensionPresent(nullptr, "ALC_ENUMERATE_ALL_EXT") != ALC_FALSE;
+-        }, &DriverIfacePtr::operator*);
++        }, al::dereference{});
+         if(iter != DriverList.end())
+             return (*iter)->alcGetString(nullptr, ALC_DEFAULT_ALL_DEVICES_SPECIFIER);
+         return "";
+@@ -903,7 +904,7 @@ ALC_API auto ALC_APIENTRY alcGetString(ALCdevice *const device, ALCenum const pa
+         {
+             return drv.ALCVer >= MakeALCVer(1, 1)
+                 || drv.alcIsExtensionPresent(nullptr, "ALC_EXT_CAPTURE");
+-        }, &DriverIfacePtr::operator*);
++        }, al::dereference{});
+         if(iter != DriverList.end())
+             return (*iter)->alcGetString(nullptr, ALC_CAPTURE_DEFAULT_DEVICE_SPECIFIER);
+         return "";
+@@ -1011,7 +1012,7 @@ ALC_API auto ALC_APIENTRY alcCaptureOpenDevice(ALCchar const *const devicename,
+                 return true;
+             }
+             return false;
+-        }, &DriverIfacePtr::operator*);
++        }, al::dereference{});
+         if(iter == DriverList.end())
+         {
+             LastError.store(ALC_INVALID_DEVICE);
+@@ -1156,7 +1157,7 @@ ALC_API auto ALC_APIENTRY alcLoopbackOpenDeviceSOFT(ALCchar const *const deviceN
+                 return true;
+             }
+             return false;
+-        }, &DriverIfacePtr::operator*);
++        }, al::dereference{});
+         if(iter == DriverList.end())
+         {
+             LastError.store(ALC_INVALID_DEVICE);
+--- a/router/router.cpp
++++ b/router/router.cpp
+@@ -417,7 +417,7 @@ void LoadDriverList()
+         return drv.ALCVer >= MakeALCVer(1, 1)
+             || drv.alcIsExtensionPresent(nullptr, "ALC_ENUMERATE_ALL_EXT")
+             || drv.alcIsExtensionPresent(nullptr, "ALC_ENUMERATION_EXT");
+-    }, &DriverIfacePtr::operator*);
++    }, al::dereference{});
+ 
+     /* HACK: rapture3d_oal.dll isn't likely to work if it's one distributed for
+      * specific games licensed to use it. It will enumerate a Rapture3D device
