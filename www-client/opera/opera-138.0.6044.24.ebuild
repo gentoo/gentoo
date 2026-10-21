@@ -31,13 +31,16 @@ fi
 # Commit ref from `strings libffmpeg.so | grep -F "FFmpeg version"` matches this Chromium version
 # or use Chromicler to handle bumps.
 # Does not _need_ to be updated for every new version of Opera, only when it breaks.
-CHROMIUM_VERSION="142"
-SRC_URI="${SRC_URI_BASE[*]/%//${PV}/linux/${MY_PN}_${PV}_amd64.deb}"
+CHROMIUM_VERSION="153"
+SRC_URI="
+	amd64? ( ${SRC_URI_BASE[*]/%//${PV}/linux/${MY_PN}_${PV}_amd64.deb} )
+	arm64? ( https://deb.opera.com/opera-stable/pool/non-free/o/${MY_PN}/${MY_PN}_${PV}_arm64.deb )
+"
 S=${WORKDIR}
 
 LICENSE="OPERA-2018"
 SLOT="0"
-KEYWORDS="-* amd64"
+KEYWORDS="-* amd64 arm64"
 IUSE="+ffmpeg-chromium +proprietary-codecs +suid qt6"
 RESTRICT="bindist mirror strip"
 
@@ -80,7 +83,7 @@ OPERA_HOME="opt/${MY_PN}"
 
 pkg_pretend() {
 	# Protect against people using autounmask overzealously
-	use amd64 || die "opera only works on amd64"
+	use amd64 || use arm64 || die "opera only works on amd64 or arm64"
 }
 
 pkg_setup() {
@@ -92,13 +95,16 @@ src_unpack() {
 }
 
 src_install() {
+	local deb_libdir="x86_64-linux-gnu"
+	use arm64 && deb_libdir="aarch64-linux-gnu"
+
 	dodir /
 	cd "${ED}" || die
 	unpacker
 
 	# move to /opt, bug #573052
 	mkdir opt || die
-	mv "usr/lib/x86_64-linux-gnu/${MY_PN}" "${OPERA_HOME}" || die
+	mv "usr/lib/${deb_libdir}/${MY_PN}" "${OPERA_HOME}" || die
 	rm -r "usr/lib" || die
 
 	# disable auto update
