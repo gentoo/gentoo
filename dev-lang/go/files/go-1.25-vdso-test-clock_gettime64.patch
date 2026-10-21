@@ -1,0 +1,66 @@
+https://bugs.gentoo.org/972637
+https://github.com/golang/go/commit/834214f787ad8a70fa3011dc28a03f397ff31f64
+From: Brad Fitzpatrick <bradfitz@golang.org>
+Subject: [PATCH] runtime: fix TestUsingVDSO on Linux ARMv6 (Pi 1)
+--- a/src/runtime/vdso_test.go
++++ b/src/runtime/vdso_test.go
+@@ -53,8 +53,13 @@ func TestUsingVDSO(t *testing.T) {
+ 		t.Skipf("skipping because Executable failed: %v", err)
+ 	}
+
+-	t.Logf("GO_WANT_HELPER_PROCESS=1 %s -f -e clock_gettime %s -test.run=^TestUsingVDSO$", strace, exe)
+-	cmd := testenv.Command(t, strace, "-f", "-e", "clock_gettime", exe, "-test.run=^TestUsingVDSO$")
++	// Trace both clock_gettime and clock_gettime64: 32-bit Linux glibc uses
++	// the y2038-safe clock_gettime64 syscall, and strace's -e filter is an
++	// exact match, not a prefix.
++	const traceFilter = "clock_gettime,clock_gettime64"
++
++	t.Logf("GO_WANT_HELPER_PROCESS=1 %s -f -e %s %s -test.run=^TestUsingVDSO$", strace, traceFilter, exe)
++	cmd := testenv.Command(t, strace, "-f", "-e", traceFilter, exe, "-test.run=^TestUsingVDSO$")
+ 	cmd = testenv.CleanCmdEnv(cmd)
+ 	cmd.Env = append(cmd.Env, "GO_WANT_HELPER_PROCESS=1")
+ 	out, err := cmd.CombinedOutput()
+@@ -107,8 +112,8 @@ func TestUsingVDSO(t *testing.T) {
+ 			t.Skipf("can't verify VDSO status, C compiled failed: %v", err)
+ 		}
+
+-		t.Logf("%s -f -e clock_gettime %s", strace, cexe)
+-		cmd = testenv.Command(t, strace, "-f", "-e", "clock_gettime", cexe)
++		t.Logf("%s -f -e %s %s", strace, traceFilter, cexe)
++		cmd = testenv.Command(t, strace, "-f", "-e", traceFilter, cexe)
+ 		cmd = testenv.CleanCmdEnv(cmd)
+ 		out, err = cmd.CombinedOutput()
+ 		if len(out) > 0 {
+https://github.com/golang/go/commit/2568174249aeb5d747656735ecc28535ac4e58c3
+From: Paul Murphy <murp@redhat.com>
+Date: Fri, 8 May 2026 14:42:29 -0500
+Subject: [PATCH] runtime: fix TestUsingVDSO on linux/ppc64le
+--- a/src/runtime/vdso_test.go
++++ b/src/runtime/vdso_test.go
+@@ -9,6 +9,7 @@ package runtime_test
+ import (
+ 	"bytes"
+ 	"internal/asan"
++	"internal/goarch"
+ 	"internal/testenv"
+ 	"os"
+ 	"os/exec"
+@@ -53,10 +54,14 @@ func TestUsingVDSO(t *testing.T) {
+ 		t.Skipf("skipping because Executable failed: %v", err)
+ 	}
+
+-	// Trace both clock_gettime and clock_gettime64: 32-bit Linux glibc uses
+-	// the y2038-safe clock_gettime64 syscall, and strace's -e filter is an
+-	// exact match, not a prefix.
+-	const traceFilter = "clock_gettime,clock_gettime64"
++	traceFilter := "clock_gettime"
++
++	if goarch.PtrSize == 4 {
++		// Trace both clock_gettime and clock_gettime64: 32-bit Linux glibc uses
++		// the y2038-safe clock_gettime64 syscall, and strace's -e filter is an
++		// exact match, not a prefix.
++		traceFilter += ",clock_gettime64"
++	}
+
+ 	t.Logf("GO_WANT_HELPER_PROCESS=1 %s -f -e %s %s -test.run=^TestUsingVDSO$", strace, traceFilter, exe)
+ 	cmd := testenv.Command(t, strace, "-f", "-e", traceFilter, exe, "-test.run=^TestUsingVDSO$")

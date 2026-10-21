@@ -73,6 +73,7 @@ PATCHES=(
 	"${FILESDIR}"/go-1.25-no-dwarf5.patch
 	"${FILESDIR}"/go-1.25-strip-top-level-const.patch
 	"${FILESDIR}"/go-never-download-newer-toolchains.patch
+	"${FILESDIR}"/go-1.25-vdso-test-clock_gettime64.patch
 )
 
 src_compile() {
