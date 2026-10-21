@@ -35,7 +35,7 @@ LICENSE+="
 	CDLA-Permissive-2.0 GPL-3+ ISC MIT MPL-2.0 MPL-2.0 Unicode-3.0 ZLIB
 "
 SLOT="0"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 ~arm64"
 
 DEPEND="
 	>=dev-libs/glib-2.86
