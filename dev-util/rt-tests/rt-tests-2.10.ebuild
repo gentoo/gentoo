@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..14} )
+PYTHON_COMPAT=( python3_{10..15} )
 
 inherit python-single-r1 toolchain-funcs flag-o-matic
 

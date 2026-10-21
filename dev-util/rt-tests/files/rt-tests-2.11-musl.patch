@@ -16,16 +16,16 @@ Signed-off-by: Kurt Kanzenbach <kurt@kmk-computers.de>
 ---
  Makefile                              |    5 --
  src/backfire/sendme.c                 |    1 
- src/cyclictest/cyclictest.c           |   68 ++++------------------------------
- src/hackbench/hackbench.c             |   12 +++---
- src/include/musl.h                    |   28 ++++++++++++++
+ src/cyclictest/cyclictest.c           |   70 +++-------------------------------
+ src/hackbench/hackbench.c             |   12 +++--
+ src/include/musl.h                    |   28 +++++++++++++
  src/lib/rt-utils.c                    |    1 
- src/pi_tests/tst-mutexpi10.c          |    2 +
+ src/pi_tests/tst-mutexpi10.c          |    2 
  src/pmqtest/pmqtest.c                 |    1 
  src/ptsematest/ptsematest.c           |    1 
  src/rt-migrate-test/rt-migrate-test.c |    1 
  src/sched_deadline/cyclicdeadline.c   |    1 
- 11 files changed, 51 insertions(+), 70 deletions(-)
+ 11 files changed, 51 insertions(+), 72 deletions(-)
  create mode 100644 src/include/musl.h
 
 --- a/Makefile
@@ -68,7 +68,7 @@ Signed-off-by: Kurt Kanzenbach <kurt@kmk-computers.de>
  
 --- a/src/cyclictest/cyclictest.c
 +++ b/src/cyclictest/cyclictest.c
-@@ -33,6 +33,7 @@
+@@ -34,6 +34,7 @@
  #include <sys/utsname.h>
  #include <sys/mman.h>
  #include <sys/syscall.h>
@@ -76,7 +76,7 @@ Signed-off-by: Kurt Kanzenbach <kurt@kmk-computers.de>
  #include "rt_numa.h"
  
  #include "rt-utils.h"
-@@ -633,12 +634,8 @@ static void *timerthread(void *param)
+@@ -644,12 +645,8 @@ static void *timerthread(void *param)
  {
  	struct thread_param *par = param;
  	struct sched_param schedp;
@@ -87,9 +87,9 @@ Signed-off-by: Kurt Kanzenbach <kurt@kmk-computers.de>
 -	struct itimerval itimer;
 -	struct itimerspec tspec;
  	struct thread_stat *stat = par->stats;
+ 	bool need_refresh_max = false;
  	int stopped = 0;
- 	cpu_set_t mask;
-@@ -667,14 +664,6 @@ static void *timerthread(void *param)
+@@ -679,16 +676,6 @@ static void *timerthread(void *param)
  	sigaddset(&sigset, par->signal);
  	sigprocmask(SIG_BLOCK, &sigset, NULL);
  
@@ -97,14 +97,16 @@ Signed-off-by: Kurt Kanzenbach <kurt@kmk-computers.de>
 -		sigev.sigev_notify = SIGEV_THREAD_ID | SIGEV_SIGNAL;
 -		sigev.sigev_signo = par->signal;
 -		sigev.sigev_notify_thread_id = stat->tid;
--		timer_create(par->clock, &sigev, &timer);
+-		if (timer_create(par->clock, &sigev, &timer))
+-			fatal("timerthread%d: failed to create timer for clock %d, errno: %d\n",
+-			      par->cpu, par->clock, errno);
 -		tspec.it_interval = interval;
 -	}
 -
  	memset(&schedp, 0, sizeof(schedp));
  	schedp.sched_priority = par->prio;
  	if (setscheduler(0, par->policy, &schedp))
-@@ -728,20 +717,6 @@ static void *timerthread(void *param)
+@@ -742,20 +729,6 @@ static void *timerthread(void *param)
  		stop = now;
  		stop.tv_sec += duration;
  	}
@@ -125,7 +127,7 @@ Signed-off-by: Kurt Kanzenbach <kurt@kmk-computers.de>
  
  	stat->threadstarted++;
  
-@@ -749,16 +724,10 @@ static void *timerthread(void *param)
+@@ -763,16 +736,10 @@ static void *timerthread(void *param)
  
  		uint64_t diff;
  		unsigned long diff_smi = 0;
@@ -143,7 +145,7 @@ Signed-off-by: Kurt Kanzenbach <kurt@kmk-computers.de>
  		case MODE_CLOCK_NANOSLEEP:
  			if (par->timermode == TIMER_ABSTIME) {
  				ret = clock_nanosleep(par->clock, TIMER_ABSTIME,
-@@ -872,11 +841,6 @@ static void *timerthread(void *param)
+@@ -894,11 +861,6 @@ static void *timerthread(void *param)
  
  		next.tv_sec += interval.tv_sec;
  		next.tv_nsec += interval.tv_nsec;
@@ -155,7 +157,7 @@ Signed-off-by: Kurt Kanzenbach <kurt@kmk-computers.de>
  		tsnorm(&next);
  
  		while (tsgreater(&now, &next)) {
-@@ -901,17 +865,6 @@ out:
+@@ -923,17 +885,6 @@ out:
  		pthread_mutex_unlock(&refresh_on_max_lock);
  	}
  
@@ -173,7 +175,7 @@ Signed-off-by: Kurt Kanzenbach <kurt@kmk-computers.de>
  	/* close msr file */
  	if (smi)
  		close(par->msr_fd);
-@@ -1314,7 +1267,8 @@ static void process_options(int argc, ch
+@@ -1354,7 +1305,8 @@ static void process_options(int argc, ch
  		case OPT_VERBOSE: verbose = 1; break;
  		case 'x':
  		case OPT_POSIX_TIMERS:
@@ -183,7 +185,7 @@ Signed-off-by: Kurt Kanzenbach <kurt@kmk-computers.de>
  		case '?':
  		case OPT_HELP:
  			display_help(0); break;
-@@ -1350,13 +1304,6 @@ static void process_options(int argc, ch
+@@ -1390,13 +1342,6 @@ static void process_options(int argc, ch
  		}
  	}
  
@@ -197,7 +199,7 @@ Signed-off-by: Kurt Kanzenbach <kurt@kmk-computers.de>
  	/* if smp wasn't requested, test for numa automatically */
  	if (!smp) {
  		numa = numa_initialize();
-@@ -2070,7 +2017,6 @@ int main(int argc, char **argv)
+@@ -2112,7 +2057,6 @@ int main(int argc, char **argv)
  
  	}
  
@@ -205,7 +207,7 @@ Signed-off-by: Kurt Kanzenbach <kurt@kmk-computers.de>
  	mode = use_nanosleep + use_system;
  
  	sigemptyset(&sigset);
-@@ -2125,6 +2071,7 @@ int main(int argc, char **argv)
+@@ -2167,6 +2111,7 @@ int main(int argc, char **argv)
  			void *currstk;
  			size_t stksize;
  			int node_cpu = cpu;
@@ -213,7 +215,7 @@ Signed-off-by: Kurt Kanzenbach <kurt@kmk-computers.de>
  
  			if (node_cpu == -1)
  				node_cpu = cpu_for_thread_ua(i, max_cpus);
-@@ -2133,11 +2080,12 @@ int main(int argc, char **argv)
+@@ -2175,11 +2120,12 @@ int main(int argc, char **argv)
  			node = rt_numa_numa_node_of_cpu(node_cpu);
  
  			/* get the stack size set for this thread */
