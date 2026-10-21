@@ -1,0 +1,21 @@
+Patch status: fixed in >=qtwebengine-6.11.3 (incl. 6.140.0)
+
+https://bugs.gentoo.org/984271
+https://qt-project.atlassian.net/browse/QTBUG-149946
+https://codereview.qt-project.org/c/qt/qtwebengine-chromium/+/768932
+--- a/src/3rdparty/chromium/third_party/blink/renderer/platform/wtf/text/text_codec_icu.cc
++++ b/src/3rdparty/chromium/third_party/blink/renderer/platform/wtf/text/text_codec_icu.cc
+@@ -167,5 +167,5 @@
+     }
+ 
+-    registrar(standard_name, canonical_name.Ascii().c_str());
++    registrar(standard_name, standard_name);
+ 
+     UErrorCode error = U_ZERO_ERROR;
+@@ -179,5 +179,5 @@
+         DCHECK(U_SUCCESS(error));
+         if (U_SUCCESS(error) && alias != standard_name && IncludeAlias(alias)) {
+-          registrar(alias, canonical_name.Ascii().c_str());
++          registrar(alias, standard_name);
+         }
+       }
