@@ -38,7 +38,7 @@ IUSE="+deno"
 RDEPEND="
 	dev-python/pycryptodome[${PYTHON_USEDEP}]
 	=dev-python/yt-dlp-ejs-0.8*[${PYTHON_USEDEP}]
-	deno? ( >=dev-lang/deno-bin-2.6.6 )
+	deno? ( >=dev-lang/deno-bin-2.9.8 )
 "
 BDEPEND="
 	test? ( media-video/ffmpeg[webp] )
