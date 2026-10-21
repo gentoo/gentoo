@@ -1,0 +1,11 @@
+--- a/eval/lex.h	2026-06-01 01:06:48.695581612 +0200
++++ b/eval/lex.h	2026-06-01 01:06:48.698038808 +0200
+@@ -7,6 +7,7 @@
+ void lex_delete_buffer(void *buffer);
+ void *lex_scan_string_buffer(const char *str);
+ 
+-int yylex();
++union YYSTYPE;
++int yylex(union YYSTYPE *lvalp);
+ 
+ #endif /* __LEX_H__ */
