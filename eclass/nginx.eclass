@@ -436,6 +436,11 @@ _ngx_set_mod_depend() {
 		[stream_geoip]="dev-libs/geoip"
 		[stream_ssl]="dev-libs/openssl:="
 	)
+	if ver_test -ge "1.31.7-r1" && ver_test -lt "1.31.100"; then
+		# Bug 984654.
+		COMMON_DEPEND[http_geoip]+=" dev-libs/libmaxminddb:="
+		COMMON_DEPEND[stream_geoip]+=" dev-libs/libmaxminddb:="
+	fi
 	local COMMON_DEPEND_DEF
 	# Bash does not have an easy way to copy an associative array, so its value
 	# is obtained using the 'declare' builtin.
