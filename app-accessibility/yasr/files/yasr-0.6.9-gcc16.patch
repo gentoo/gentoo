@@ -1,0 +1,21 @@
+Fix Func function pointer signature for GCC 16 / Clang strict.
+
+GCC 16 treats -Wincompatible-pointer-types as an error. Clang rejects
+calls to functions without a prototype (-Wdeprecated-non-prototype).
+In C23, void (*f)() means void (*)(void), but yasr command handlers
+take int *argp.
+
+Bug: https://bugs.gentoo.org/943766
+Bug: https://bugs.gentoo.org/881865
+
+--- a/yasr/yasr.h
++++ b/yasr/yasr.h
+@@ -87,7 +87,7 @@ struct Opt
+ typedef struct Func Func;
+ struct Func
+ {
+-    void (*f) ();
++    void (*f)(int *);
+     char *desc;
+ };
+ 
