@@ -44,4 +44,5 @@ src_configure() {
 src_install() {
 	cmake_src_install
 	python_optimize
+	mv "${ED}/usr/share/doc/${PN}" "${ED}/usr/share/doc/${PF}"
 }
