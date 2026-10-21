@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{10..14} )
 
-inherit cmake flag-o-matic multilib-minimal python-any-r1
+inherit cmake multilib-minimal python-any-r1
 
 DESCRIPTION="Cryptographic library for embedded systems"
 HOMEPAGE="https://www.trustedfirmware.org/projects/mbed-tls/"
@@ -30,11 +30,10 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}/mbedtls-3.6.2-allow-install-headers-to-different-location.patch"
-	"${FILESDIR}/mbedtls-3.6.5-add-version-suffix-for-all-installable-targets.patch"
-	"${FILESDIR}/mbedtls-3.6.2-add-version-suffix-for-pkg-config-files.patch"
+	"${FILESDIR}/mbedtls-3.6.7-add-version-suffix-for-all-installable-targets.patch"
+	"${FILESDIR}/mbedtls-3.6.7-add-version-suffix-for-pkg-config-files.patch"
+	"${FILESDIR}/mbedtls-3.6.7-allow-install-headers-to-different-location.patch"
 	"${FILESDIR}/mbedtls-3.6.2-exclude-static-3dparty.patch"
-	"${FILESDIR}/mbedtls-3.6.5-slotted-version.patch"
 )
 
 enable_mbedtls_option() {
