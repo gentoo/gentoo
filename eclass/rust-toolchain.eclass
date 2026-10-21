@@ -37,7 +37,8 @@ rust_abi() {
 		armv6j*s*)        echo arm-unknown-linux-gnueabi;;
 		armv7a*h*)        echo armv7-unknown-linux-gnueabihf;;
 		i?86*)            echo i686-unknown-linux-gnu;;
-		loongarch64*)     echo loongarch64-unknown-linux-gnu;;
+		loongarch64*gnu)  echo loongarch64-unknown-linux-gnu;;
+		loongarch64*musl) echo loongarch64-unknown-linux-musl;;
 		mips64el*)        echo mips64el-unknown-linux-gnuabi64;;
 		mips64*)          echo mips64-unknown-linux-gnuabi64;;
 		mipsel*)          echo mipsel-unknown-linux-gnu;;
@@ -117,6 +118,9 @@ rust_all_arch_uris()
 	)
 	riscv? ( elibc_glibc? ( $(rust_arch_uri riscv64gc-unknown-linux-gnu "${alt_basename}" "${rename_param}") ) )
 	s390?  ( elibc_glibc? ( $(rust_arch_uri s390x-unknown-linux-gnu     "${alt_basename}" "${rename_param}") ) )
-	loong? ( elibc_glibc? ( $(rust_arch_uri loongarch64-unknown-linux-gnu "${alt_basename}" "${rename_param}") ) )
+	loong? (
+		elibc_glibc? ( $(rust_arch_uri loongarch64-unknown-linux-gnu  "${alt_basename}" "${rename_param}") )
+		elibc_musl?  ( $(rust_arch_uri loongarch64-unknown-linux-musl "${alt_basename}" "${rename_param}") )
+	)
 	"
 }
