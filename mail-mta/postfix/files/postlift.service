@@ -1,0 +1,16 @@
+[Unit]
+Description=Postfix postlift helper
+Documentation=man:postlift(8)
+Requires=postlift.socket
+
+[Service]
+# DO NOT run as "postfix" (i.e. core daemon privilege).
+User=postdrop
+Group=postdrop
+ExecStart=/usr/libexec/postfix/postlift
+Type=simple
+StandardInput=socket
+StandardOutput=socket
+# Only stderr goes to journal for logging
+StandardError=journal
+SyslogFacility=mail

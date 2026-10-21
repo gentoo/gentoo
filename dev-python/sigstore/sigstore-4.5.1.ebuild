@@ -3,7 +3,7 @@
 
 EAPI=8
 
-DISTUTILS_USE_PEP517=flit-core
+DISTUTILS_USE_PEP517=uv-build
 PYTHON_COMPAT=( python3_{12..15} )
 
 inherit distutils-r1
@@ -26,11 +26,9 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 
 RDEPEND="
-	>=dev-python/cryptography-42[${PYTHON_USEDEP}]
+	>=dev-python/cryptography-47[${PYTHON_USEDEP}]
 	>=dev-python/id-1.1.0[${PYTHON_USEDEP}]
 	>=dev-python/platformdirs-4.2[${PYTHON_USEDEP}]
-	>=dev-python/pyopenssl-23.0.0[${PYTHON_USEDEP}]
-	>=dev-python/pyasn1-0.6[${PYTHON_USEDEP}]
 	>=dev-python/pydantic-2[${PYTHON_USEDEP}]
 	>=dev-python/pyjwt-2.1[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]

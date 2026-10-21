@@ -128,5 +128,10 @@ src_install() {
 		#
 		# https://docs.astral.sh/uv/reference/settings/#python-preference
 		python-preference = "system"
+
+		# Always use system certificates.
+		#
+		# https://docs.astral.sh/uv/reference/settings/#system-certs
+		system-certs = true
 	EOF
 }

@@ -20,7 +20,7 @@ case ${PV}  in
 *)
 	SRC_URI="https://go.dev/dl/go${MY_PV}.src.tar.gz "
 	S="${WORKDIR}"/go
-	KEYWORDS="-* amd64 ~arm ~arm64 ~loong ~mips ~ppc64 ~riscv ~s390 x86 ~x64-macos ~x64-solaris"
+	KEYWORDS="-* amd64 ~arm arm64 ~loong ~mips ~ppc64 ~riscv ~s390 x86 ~x64-macos ~x64-solaris"
 	;;
 esac
 
@@ -73,6 +73,7 @@ PATCHES=(
 	"${FILESDIR}"/go-1.25-no-dwarf5.patch
 	"${FILESDIR}"/go-1.25-strip-top-level-const.patch
 	"${FILESDIR}"/go-never-download-newer-toolchains.patch
+	"${FILESDIR}"/go-1.25-vdso-test-clock_gettime64.patch
 )
 
 src_compile() {

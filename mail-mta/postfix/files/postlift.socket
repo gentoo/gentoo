@@ -1,0 +1,13 @@
+[Unit]
+Description=Postfix postlift Socket
+Documentation=man:postlift(8)
+
+[Socket]
+Accept=yes
+RemoveOnStop=yes
+ListenStream=/run/postfix/postlift.socket
+# MaxConnectionsPerSource must be less than MaxConnections (default 64)
+MaxConnectionsPerSource=30
+
+[Install]
+WantedBy=sockets.target

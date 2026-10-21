@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit go-env go-module linux-info optfeature systemd toolchain-funcs verify-sig
+inherit go-env go-module linux-info optfeature shell-completion sysroot systemd verify-sig
 
 DESCRIPTION="Modern, secure and powerful system container and virtual machine manager"
 HOMEPAGE="https://linuxcontainers.org/incus/introduction/ https://github.com/lxc/incus"
@@ -181,10 +181,14 @@ src_compile() {
 			-tags agent,netgo,static -buildmode default "${S}"/cmd/incus-agent
 	else
 		echo "No VM support for this arch."
-		return
 	fi
 
 	use nls && emake build-mo
+
+	# Generate shell completion files.
+	sysroot_try_run_prefixed "${bindir}"/incus completion bash > incus.bash || die
+	sysroot_try_run_prefixed "${bindir}"/incus completion fish > incus.fish || die
+	sysroot_try_run_prefixed "${bindir}"/incus completion zsh > incus.zsh || die
 }
 
 src_test() {
@@ -237,15 +241,10 @@ src_install() {
 	systemd_newunit "${FILESDIR}"/incus-user-0.4.service incus-user.service
 	systemd_newunit "${FILESDIR}"/incus-user-0.4.socket incus-user.socket
 
-	if ! tc-is-cross-compiler; then
-		# Generate and install shell completion files.
-		mkdir -p "${D}"/usr/share/{bash-completion/completions/,fish/vendor_completions.d/,zsh/site-functions/} || die
-		"${bindir}"/incus completion bash > "${D}"/usr/share/bash-completion/completions/incus || die
-		"${bindir}"/incus completion fish > "${D}"/usr/share/fish/vendor_completions.d/incus.fish || die
-		"${bindir}"/incus completion zsh > "${D}"/usr/share/zsh/site-functions/_incus || die
-	else
-		ewarn "Shell completion files not installed! Install them manually with incus completion --help"
-	fi
+	# Install shell completion files.
+	[[ -s incus.bash ]] && newbashcomp incus.bash incus
+	[[ -s incus.fish ]] && dofishcomp incus.fish
+	[[ -s incus.zsh ]] && newzshcomp incus.zsh _incus
 
 	dodoc AUTHORS
 	dodoc -r doc/*
