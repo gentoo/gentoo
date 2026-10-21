@@ -26,7 +26,8 @@ fi
 RDEPEND="
 	!<dev-python/setuptools-67
 "
-DEPEND="
+BDEPEND="
+	>=dev-python/flit-core-3.12.0[${PYTHON_USEDEP}]
 	test? (
 		dev-python/pretend[${PYTHON_USEDEP}]
 		dev-python/tomli-w[${PYTHON_USEDEP}]
