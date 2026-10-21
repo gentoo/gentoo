@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{12..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 
 CHECKREQS_DISK_BUILD="6200M"
 CHECKREQS_DISK_USR="350M"
@@ -108,6 +108,7 @@ BDEPEND="
 	')
 	sys-apps/ripgrep
 	dev-lang/perl
+	app-arch/unzip
 "
 
 PATCHES=(
@@ -116,7 +117,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-8.0.29-fix-compiler-names.patch"
 	"${FILESDIR}/${PN}-8.0.29-fix-toolchain-environment.patch"
 	"${FILESDIR}/${PN}-8.3.8-fix-grpc-build.patch"
-	"${FILESDIR}/${P}-local-release-build.patch"
+	"${FILESDIR}/${PN}-8.3.11-local-release-build.patch"
 	"${FILESDIR}/${PN}-8.3.8-override-distro.patch"
 	"${FILESDIR}/${PN}-8.3.8-remove-mtune-march-cflags.patch"
 	"${FILESDIR}/${PN}-8.3.8-restore-syscall_h-includes.patch"

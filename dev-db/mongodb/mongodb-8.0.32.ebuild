@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{12..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 
 CHECKREQS_DISK_BUILD="2500M"
 CHECKREQS_DISK_USR="256M"
@@ -84,14 +84,15 @@ BDEPEND="
 		dev-python/packaging[${PYTHON_USEDEP}]
 	')
 	dev-lang/perl
+	app-arch/unzip
 "
 PATCHES=(
-	"${FILESDIR}/${P}-add-missing-mongos-dependency.patch"
+	"${FILESDIR}/${PN}-8.0.32-add-missing-mongos-dependency.patch"
 	"${FILESDIR}/${PN}-8.0.29-disable-bazelisk-check.patch"
 	"${FILESDIR}/${PN}-8.0.29-fix-build-with-gcc-15.patch"
 	"${FILESDIR}/${PN}-8.0.29-fix-compiler-names.patch"
 	"${FILESDIR}/${PN}-8.0.29-fix-toolchain-environment.patch"
-	"${FILESDIR}/${P}-local-release-build.patch"
+	"${FILESDIR}/${PN}-8.0.32-local-release-build.patch"
 	"${FILESDIR}/${PN}-8.0.29-override-distro.patch"
 	"${FILESDIR}/${PN}-8.0.29-remove-mtune-march-cflags.patch"
 	"${FILESDIR}/${PN}-8.0.29-restore-syscall_h-includes.patch"
