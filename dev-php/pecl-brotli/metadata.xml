@@ -9,6 +9,11 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
+	<use>
+		<flag name="apcu">
+			Enables support for <pkg>dev-php/pecl-apcu</pkg>
+		</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">kjdev/php-ext-brotli</remote-id>
 		<bugs-to>https://github.com/kjdev/php-ext-brotli/issues</bugs-to>
