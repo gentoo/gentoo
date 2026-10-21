@@ -18,7 +18,7 @@ restore() {
 		eend 0
 		return 0
 	fi
-	xbacklight "$(cat "${state_dir}/state")"
+	xbacklight ${XBACKLIGHT_ARGS} "$(cat "${state_dir}/state")"
 	ewend $? "Could not restore brightness. The state file ${state_dir}/state is invalid or the system cannot apply the value."
 }
 
@@ -26,7 +26,7 @@ save() {
 	local newValue
 	ebegin "Saving brightness level"
 	# Save the value here so an error won't record an empty/invalid value
-	newValue=$(xbacklight -get) && \
+	newValue=$(xbacklight ${XBACKLIGHT_ARGS} -get) && \
 		mkdir -p "${state_dir}" && \
 		echo "${newValue}" > "${state_dir}/state"
 	if [ $? -gt 0 ]; then
