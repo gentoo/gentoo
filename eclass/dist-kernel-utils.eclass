@@ -19,6 +19,12 @@
 # CONFIG_EFI_ZBOOT enabled. This effects the name of the kernel image on
 # arm64 and riscv. Mainly useful for sys-kernel/gentoo-kernel-bin.
 
+# @ECLASS_VARIABLE: KERNEL_VERBOSE
+# @USER_VARIABLE
+# @DESCRIPTION:
+# Set to 0 to disable verbose messages during compilation.
+: "${KERNEL_VERBOSE:=1}"
+
 if [[ ! ${_DIST_KERNEL_UTILS} ]]; then
 
 case ${EAPI} in
@@ -95,7 +101,10 @@ dist-kernel_install_kernel() {
 		"${version}" "${image}" "${map}" "${dir}"
 	)
 	if has_version ">=sys-kernel/installkernel-56"; then
-		installkernel_args+=( "${@:5}" --verbose )
+		installkernel_args+=( "${@:5}" )
+		if [[ ${KERNEL_VERBOSE} != 0 ]]; then
+			installkernel_args+=( --verbose )
+		fi
 	fi
 
 	local success=

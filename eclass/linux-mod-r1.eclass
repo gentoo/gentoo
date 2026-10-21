@@ -166,6 +166,12 @@ fi
 #
 # Default if unset: auto-detection, typically same as the current CHOST
 
+# @ECLASS_VARIABLE: KERNEL_VERBOSE
+# @USER_VARIABLE
+# @DESCRIPTION:
+# Set to 0 to disable verbose messages during compilation.
+: "${KERNEL_VERBOSE:=1}"
+
 # @ECLASS_VARIABLE: MODULES_EXTRA_EMAKE
 # @USER_VARIABLE
 # @DEFAULT_UNSET
@@ -1314,12 +1320,15 @@ _modules_sanity_objtool() {
 # @DESCRIPTION:
 # Sets the MODULES_MAKEARGS global array.
 _modules_set_makeargs() {
+	local v
+	[[ ${KERNEL_VERBOSE^^} != 0 ]] && v=1
+
 	MODULES_MAKEARGS=(
 		ARCH="$(tc-arch-kernel)"
 
-		V=1
+		${v+V=1}
 		# normally redundant with V, but some custom Makefiles override it
-		KBUILD_VERBOSE=1
+		${v+KBUILD_VERBOSE=1}
 
 		# unrealistic when building modules that often have slow releases,
 		# but note that the kernel will still pass some -Werror=bad-thing
