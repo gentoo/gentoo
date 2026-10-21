@@ -35,6 +35,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-0.19-meson-wire-up-disable_extra_libs-option.patch
 	"${FILESDIR}"/${PN}-0.19-meson-fix-version-numbers.patch
 	"${FILESDIR}"/${PN}-0.19-meson-fix-pkgconfig-file.patch
+	"${FILESDIR}"/${PN}-0.19-meson-fix-lld-version-script-detection.patch
 )
 
 multilib_src_configure() {
