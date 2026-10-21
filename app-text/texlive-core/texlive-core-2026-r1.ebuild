@@ -175,10 +175,7 @@ DEPEND="
 RDEPEND="
 	${COMMON_DEPEND}
 	app-misc/ca-certificates
-	dev-perl/File-HomeDir
-	dev-perl/Log-Dispatch
-	dev-perl/Unicode-LineBreak
-	dev-perl/YAML-Tiny
+	dev-lang/perl
 	tk? (
 		dev-lang/tk
 		dev-perl/Tk
