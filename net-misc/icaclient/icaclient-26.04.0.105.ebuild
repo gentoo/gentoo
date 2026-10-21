@@ -1,23 +1,32 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit desktop wrapper xdg-utils
+inherit desktop ffmpeg-compat wrapper xdg-utils
 
 DESCRIPTION="ICA Client for Citrix Presentation servers"
 HOMEPAGE="https://www.citrix.com/"
-SRC_URI="amd64? ( linuxx64-${PV}.tar.gz )"
+SRC_URI="
+	amd64? ( linuxx64-gcc-8-${PV}.tar.gz )
+	arm64? ( linuxarm64-${PV}.tar.gz )
+"
 
 LICENSE="icaclient"
 SLOT="0"
-KEYWORDS="-* ~amd64"
+KEYWORDS="-* ~amd64 ~arm64"
 IUSE="l10n_de l10n_es l10n_fr l10n_ja l10n_zh-CN hdx usb selfservice"
+REQUIRED_USE="arm64? ( !hdx )"
 RESTRICT="mirror strip fetch"
 
 ICAROOT="/opt/Citrix/ICAClient"
+FFMPEG_SLOT=6
 
 QA_PREBUILT="${ICAROOT#/}/*"
+
+QA_FLAGS_IGNORED="${ICAROOT#/}/lib/HdxRtcEngine_ext/libwebrpc.so"
+QA_TEXTRELS="${ICAROOT#/}/lib/HdxRtcEngine_ext/libwebrpc.so"
+QA_RUNPATH="${ICAROOT#/}/lib/HdxRtcEngine_ext/libwebrpc.so"
 
 # we have binaries for two conflicting kerberos implementations
 # https://bugs.gentoo.org/792090
@@ -38,26 +47,44 @@ REQUIRES_EXCLUDE="${REQUIRES_EXCLUDE}
 	libgstpbutils-0.10.so.0
 	libgstreamer-0.10.so.0
 "
-
-# video background blurring, optional
+# video background blurring + webkit dependencies, optional
+# upstream recommends both webkit 4.0 and 4.1 variants
 REQUIRES_EXCLUDE="${REQUIRES_EXCLUDE}
-	libopencv_core.so.407
-	libopencv_imgcodecs.so.407
-	libopencv_imgproc.so.407
+	libopencv_core.so.410
+	libopencv_imgcodecs.so.410
+	libopencv_imgproc.so.410
+	libwebkit2gtk-4.0.so.37
+	libjavascriptcoregtk-4.0.so.18
+	libwebkit2gtk-4.1.so.0
+	libjavascriptcoregtk-4.1.so.0
+"
+# touch input support, optional
+REQUIRES_EXCLUDE="${REQUIRES_EXCLUDE}
+	libinput.so.10
+"
+# scanner support, optional
+REQUIRES_EXCLUDE="${REQUIRES_EXCLUDE}
+	libsane.so.1
+"
+# smartcard support, optional
+REQUIRES_EXCLUDE="${REQUIRES_EXCLUDE}
+	libpcsclite.so.1
 "
 
 BDEPEND="
-	hdx? ( media-plugins/hdx-realtime-media-engine )
+	hdx? ( amd64? ( media-plugins/hdx-realtime-media-engine ) )
 "
 
 RDEPEND="
 	>=app-accessibility/at-spi2-core-2.46.0:2
 	app-crypt/libsecret
+	dev-db/sqlite
 	dev-libs/glib:2
 	|| (
 		dev-libs/libxml2:2/2
 		dev-libs/libxml2-compat
 	)
+	net-misc/curl
 	media-fonts/font-adobe-100dpi
 	media-fonts/font-cursor-misc
 	media-fonts/font-misc-ethiopic
@@ -66,6 +93,7 @@ RDEPEND="
 	media-libs/alsa-lib
 	media-libs/fontconfig
 	media-libs/freetype
+	media-video/ffmpeg-compat:${FFMPEG_SLOT}
 	media-libs/gst-plugins-base:1.0
 	media-libs/gstreamer:1.0
 	media-libs/libogg
@@ -76,16 +104,14 @@ RDEPEND="
 	media-libs/mesa
 	media-libs/speex
 	media-libs/speexdsp
-	media-video/ffmpeg-compat:6
 	sys-apps/util-linux
 	llvm-runtimes/libcxx
 	llvm-runtimes/libcxxabi
-	virtual/zlib:=
+	virtual/zlib
 	virtual/krb5
 	virtual/libudev
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf:2
-	x11-libs/gtk+:2
 	x11-libs/gtk+:3
 	x11-libs/libX11
 	x11-libs/libXaw
@@ -119,6 +145,9 @@ pkg_setup() {
 		amd64)
 			ICAARCH=linuxx64
 		;;
+		arm64)
+			ICAARCH=linuxarm64
+		;;
 		*)
 			eerror "Given architecture is not supported by Citrix."
 		;;
@@ -132,7 +161,6 @@ src_unpack() {
 
 src_prepare() {
 	default
-	rm lib/UIDialogLibWebKit.so || die
 
 	cp nls/en/module.ini . || die
 	if use usb; then
@@ -171,10 +199,12 @@ src_install() {
 
 	exeinto "${ICAROOT}"/lib
 	doexe lib/*.so
-
-	# ffmpeg-compat libraries are not in LDPATH, symlink them (bug #967025)
-	dosym -r {/usr/lib/ffmpeg6/$(get_libdir),"${ICAROOT}"/lib}/libavutil.so.58
-	dosym -r {/usr/lib/ffmpeg6/$(get_libdir),"${ICAROOT}"/lib}/libavcodec.so.60
+	local ext_dir
+	for ext_dir in lib/*_ext; do
+		if [[ -d "$ext_dir" ]]; then
+			cp -a "$ext_dir" "${ED}/${ICAROOT}/lib/" || die
+		fi
+	done
 
 	for dest in "${ICAROOT}"{,/nls/en{,.UTF-8}} ; do
 		insinto "${dest}"
@@ -269,7 +299,7 @@ src_install() {
 		make_wrapper ${bin} "${ICAROOT}"/util/${bin} . "${ICAROOT}"/util
 	done
 
-	make_wrapper wfica "${ICAROOT}"/wfica . "${ICAROOT}"
+	make_wrapper wfica "${ICAROOT}"/wfica . "${ICAROOT}:$(ffmpeg_compat_get_prefix ${FFMPEG_SLOT})/lib64"
 
 	dodir /etc/revdep-rebuild/
 	echo "SEARCH_DIRS_MASK=\"${ICAROOT}\"" \
@@ -312,6 +342,7 @@ src_install() {
 		    "${ICAROOT}/nls/nl/LC_MESSAGES/selfservice.mo"
 		    "${ICAROOT}/site/selfservice.html"
 		)
+		local f
 		for f in "${selfservice_files[@]}"; do
 			rm -f "${ED}${f}" || die
 		done
