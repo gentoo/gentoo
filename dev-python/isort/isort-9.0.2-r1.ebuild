@@ -19,12 +19,14 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 
+RDEPEND="
+	>=dev-python/mypy-extensions-1.1.0[${PYTHON_USEDEP}]
+"
 BDEPEND="
 	dev-python/hatch-vcs[${PYTHON_USEDEP}]
 	test? (
 		dev-python/black[${PYTHON_USEDEP}]
 		>=dev-python/colorama-0.4.6[${PYTHON_USEDEP}]
-		>=dev-python/mypy-extensions-1.1.0[${PYTHON_USEDEP}]
 		dev-python/natsort[${PYTHON_USEDEP}]
 		dev-vcs/git
 	)
