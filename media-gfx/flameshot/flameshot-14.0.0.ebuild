@@ -30,6 +30,10 @@ BDEPEND="
 	dev-qt/qttools:6[linguist]
 "
 
+PATCHES=(
+	"${FILESDIR}"/${P}-strfparse-include-iterator.patch
+)
+
 src_configure() {
 	# -Werror=strict-aliasing
 	# https://bugs.gentoo.org/859613
