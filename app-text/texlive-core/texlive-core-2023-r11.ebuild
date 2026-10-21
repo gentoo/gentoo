@@ -1,86 +1,87 @@
-# Copyright 1999-2026 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=9
+EAPI=8
 
-TL_SOURCE_VERSION=20260301
-inherit branding flag-o-matic toolchain-funcs libtool texlive-common
+TL_SOURCE_VERSION=20230311
+inherit flag-o-matic toolchain-funcs libtool texlive-common
 
 MY_P=${PN%-core}-${TL_SOURCE_VERSION}-source
 
 DESCRIPTION="A complete TeX distribution"
 HOMEPAGE="https://tug.org/texlive/"
-GENTOO_TEX_PATCHES_NUM=9
+GENTOO_TEX_PATCHES_NUM=5
 SRC_URI="
 	https://mirrors.ctan.org/systems/texlive/Source/${MY_P}.tar.xz
 	https://gitweb.gentoo.org/proj/tex-patches.git/snapshot/tex-patches-${GENTOO_TEX_PATCHES_NUM}.tar.bz2
 		-> gentoo-tex-patches-${GENTOO_TEX_PATCHES_NUM}.tar.bz2
+	https://raw.githubusercontent.com/debian-tex/texlive-bin/58a00e704a15ec3dd8abbf3826f28207eb095251/debian/patches/1054218.patch
+		-> ${PN}-2023-pdflatex-big-endian-fix.patch
 	https://bugs.gentoo.org/attachment.cgi?id=908573
 		-> ${PN}-2023-mplib-h.patch
-	https://github.com/Flowdalic/texlive-source/commit/19e9eb6dab7c192b0f5dcee5fc87d46ae63296f0.patch
-		-> ${PN}-2026-xdvipsk-kpathsea.patch
 "
 
 # Macros that are not a part of texlive-sources or or pulled in from collection-binextra
 # but still needed for other packages during installation.
 TL_CORE_EXTRA_CONTENTS="
-	autosp.r77851
-	axodraw2.r77682
-	chktex.r78219
-	detex.r79618
+	autosp.r58211
+	axodraw2.r58155
+	chktex.r64797
+	detex.r66186
 	dvi2tty.r66186
-	dvidvi.r75712
+	dvidvi.r65952
 	dviljk.r66186
-	dvipdfmx.r78409
+	dvipdfmx.r69127
 	dvipos.r66186
-	extractbb.r77855
-	gsftopk.r79618
-	hyphen-base.r78076
-	lacheck.r75712
-	m-tx.r79618
-	makeindex.r75712
-	pmx.r79618
+	gsftopk.r52851
+	hyphen-base.r68321
+	lacheck.r66186
+	m-tx.r64182
+	makeindex.r62517
+	pmx.r65926
 	texdoctk.r62186
-	texlive-scripts.r79766
-	texlive-scripts-extra.r78162
-	texlive.infra.r79653
-	tpic2pdftex.r75712
-	upmendex.r77845
+	texlive-scripts.r69754
+	texlive-scripts-extra.r62517
+	texlive.infra.r69740
+	tpic2pdftex.r52851
+	upmendex.r66381
 	velthuis.r66186
-	vlna.r73908
-	xindy.r78957
-	xml2pmx.r79618
+	vlna.r66186
+	xindy.r65958
+	xml2pmx.r57972
+"
+TL_CORE_EXTRA_DOC_CONTENTS="
+	autosp.doc.r58211
+	axodraw2.doc.r58155
+	chktex.doc.r64797
+	detex.doc.r66186
+	dvi2tty.doc.r66186
+	dvidvi.doc.r65952
+	dviljk.doc.r66186
+	dvipdfmx.doc.r69127
+	dvipos.doc.r66186
+	gsftopk.doc.r52851
+	lacheck.doc.r66186
+	m-tx.doc.r64182
+	makeindex.doc.r62517
+	pmx.doc.r65926
+	texdoctk.doc.r62186
+	texlive-scripts.doc.r69754
+	texlive-scripts-extra.doc.r62517
+	texlive.infra.doc.r69740
+	tpic2pdftex.doc.r52851
+	upmendex.doc.r66381
+	velthuis.doc.r66186
+	vlna.doc.r66186
+	xindy.doc.r65958
+	xml2pmx.doc.r57972
 "
 TL_CORE_EXTRA_SRC_CONTENTS="
-	autosp.doc.r77851
-	axodraw2.doc.r77682
-	chktex.doc.r78219
-	detex.doc.r79618
-	dvi2tty.doc.r66186
-	dvidvi.doc.r75712
-	dviljk.doc.r66186
-	dvipdfmx.doc.r78409
-	dvipos.doc.r66186
-	extractbb.doc.r77855
-	gsftopk.doc.r79618
-	lacheck.doc.r75712
-	m-tx.doc.r79618
-	makeindex.doc.r75712
-	pmx.doc.r79618
-	texdoctk.doc.r62186
-	texlive-scripts.doc.r79766
-	texlive-scripts-extra.doc.r78162
-	texlive.infra.doc.r79653
-	tpic2pdftex.doc.r75712
-	upmendex.doc.r77845
-	velthuis.doc.r66186
-	vlna.doc.r73908
-	xindy.doc.r78957
-	xml2pmx.doc.r79618
+	axodraw2.source.r58155
 "
 
 TEXLIVE_MODULE_BINSCRIPTS="
-	texmf-dist/scripts/extractbb/extractbb.lua
+	texmf-dist/scripts/m-tx/m-tx.lua
 	texmf-dist/scripts/texlive/fmtutil-sys.sh
 	texmf-dist/scripts/texlive/fmtutil-user.sh
 	texmf-dist/scripts/texlive/fmtutil.pl
@@ -109,7 +110,6 @@ TEXLIVE_MODULE_BINSCRIPTS="
 "
 
 TEXLIVE_MODULE_BINLINKS="
-	extractbb:ebb
 	fmtutil:mktexfmt
 	mktexlsr:texhash
 	allcm:allec
@@ -118,14 +118,18 @@ TEXLIVE_MODULE_BINLINKS="
 "
 texlive-common_append_to_src_uri TL_CORE_EXTRA_CONTENTS
 
+SRC_URI+=" doc? ( "
+texlive-common_append_to_src_uri TL_CORE_EXTRA_DOC_CONTENTS
+SRC_URI+=" )"
+
 SRC_URI+=" source? ( "
 texlive-common_append_to_src_uri TL_CORE_EXTRA_SRC_CONTENTS
 SRC_URI+=" )"
 
 S="${WORKDIR}/${MY_P}"
-LICENSE="BSD CC-BY-SA-4.0 GPL-1+ GPL-2 GPL-2+ GPL-3+ MIT TeX-other-free"
+LICENSE="BSD GPL-1+ GPL-2 GPL-2+ GPL-3+ MIT TeX-other-free"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
 IUSE="cjk X doc source tk +luajittex xetex xindy"
 
 TEXMF_PATH=/usr/share/texmf-dist
@@ -137,7 +141,6 @@ MODULAR_X_DEPEND="
 
 COMMON_DEPEND="
 	${MODULAR_X_DEPEND}
-	sci-libs/mpfi
 	virtual/zlib:=
 	>=media-libs/harfbuzz-1.4.5:=[icu,graphite]
 	>=media-libs/libpng-1.2.43-r2:0=
@@ -150,7 +153,7 @@ COMMON_DEPEND="
 	app-text/libpaper:=
 	dev-libs/gmp:=
 	dev-libs/mpfr:=
-	>=dev-libs/ptexenc-1.5.2
+	>=dev-libs/ptexenc-1.4.3
 	xetex? (
 		>=app-text/teckit-2.5.10
 		media-libs/fontconfig
@@ -158,7 +161,7 @@ COMMON_DEPEND="
 	xindy? ( dev-lisp/clisp:= )
 	media-libs/freetype:2
 	>=dev-libs/icu-50:=
-	>=dev-libs/kpathsea-6.4.2:=
+	>=dev-libs/kpathsea-6.3.5:=
 "
 
 BDEPEND="
@@ -174,6 +177,8 @@ DEPEND="
 # !<dev-texlive/texlive-langother-2023 see https://bugs.gentoo.org/928307
 RDEPEND="
 	${COMMON_DEPEND}
+	virtual/perl-Getopt-Long
+	app-misc/ca-certificates
 	dev-perl/File-HomeDir
 	dev-perl/Log-Dispatch
 	dev-perl/Unicode-LineBreak
@@ -187,11 +192,6 @@ RDEPEND="
 	!<dev-texlive/texlive-langother-2023
 	!<dev-texlive/texlive-music-2023
 "
-
-PATCHES=(
-	# https://github.com/TeX-Live/texlive-source/pull/85
-	"${DISTDIR}"/${PN}-2026-xdvipsk-kpathsea.patch
-)
 
 BUILDDIR="${WORKDIR}/${P}_build"
 
@@ -223,16 +223,21 @@ src_prepare() {
 	local patch_dir="${WORKDIR}/tex-patches-${GENTOO_TEX_PATCHES_NUM}"
 	eapply "${patch_dir}"
 
+	# Can be dropped in texlive 2024
+	# https://git.texlive.info/texlive/commit/?id=c45afdc843154fcb09b583f54a2f802c6069b50e
+	eapply "${DISTDIR}"/texlive-core-2023-pdflatex-big-endian-fix.patch
+
+	# bug #837875
+	eapply "${DISTDIR}"/texlive-core-2023-mplib-h.patch
+
 	default
 
 	elibtoolize
-	# ${PN}-2026-xdvipsk-kpathsea.patch modifies configure.ac, rerun autoreconf
-	"${S}"/reautoconf texk/xdvipsk || die
 
 	# Drop this once cairo's and mplibdir's (texlive-core-2023-mplib-h.patch)
 	# autoconf patches are gone. See bug #927714#c4, bug #853121 for cairo,
 	# and bug #837875 for mplibdir (in web2c).
-	"${S}"/reautoconf libs/cairo || die
+	"${S}"/reautoconf libs/cairo texk/web2c || die
 }
 
 src_configure() {
@@ -241,20 +246,12 @@ src_configure() {
 	append-flags -fno-strict-aliasing
 	filter-lto
 
-	# bug #946142
-	append-cflags -std=gnu17
-
 	# Needed for 32bit architectures, bug 928096
 	# This is upstream recommendation for the moment, see also
 	# https://www.tug.org/texlive/build.html
 	# I'm fairly sure it just hides a real bug in pdftex, keeping 928096
 	# thus open, but hey, at least it's not a regression...
 	append-cflags -Wno-incompatible-pointer-types
-
-	# bug #966834
-	# running reautoconf would also fix the issue; however, there are several
-	# configure scripts, so adding the flag is a much faster approach.
-	append-cxxflags $(test-flags-CXX -std=gnu++17)
 
 	# It fails on alpha without this
 	use alpha && append-ldflags "-Wl,--no-relax"
@@ -287,7 +284,6 @@ src_configure() {
 		--with-system-libpaper
 		--with-system-gmp
 		--with-system-gd
-		--with-system-mpfi
 		--with-system-mpfr
 		--with-system-potrace
 		--disable-multiplatform
@@ -321,7 +317,7 @@ src_configure() {
 		--disable-largefile
 		--disable-xindy-docs
 		--disable-xindy-rules
-		--with-banner-add=" ${BRANDING_OS_PRETTY_NAME}"
+		--with-banner-add=" Gentoo Linux"
 		$(use_enable luajittex)
 		$(use_enable luajittex luajithbtex)
 		$(use_enable luajittex mfluajit)
@@ -338,6 +334,7 @@ src_configure() {
 		$(use_enable tk texdoctk)
 		$(use_with X x)
 		$(use_enable xindy)
+		--enable-ptex=no
 		--enable-autosp=yes
 		--enable-axodraw2=yes
 		--enable-devnag=yes
@@ -411,8 +408,10 @@ src_test() {
 	sed -i \
 		-e 's;dvispc.test;;' \
 		texk/dviout-util/Makefile || die
-	local -x KpsDir="${ESYSROOT}"/usr/bin
-	emake check
+
+	# TODO: Drop -j1 when bumping to texlive-2024
+	# https://bugs.gentoo.org/935825
+	emake check -j1
 }
 
 src_install() {
@@ -425,6 +424,12 @@ src_install() {
 	dodir /usr/share # just in case
 	cp -pR texmf-dist "${ED}/usr/share/" || die "failed to install texmf trees"
 	cp -pR "${WORKDIR}"/tlpkg "${ED}/usr/share/" || die "failed to install tlpkg files"
+
+	# Use the system CA bundle instead of the stale bundled copy
+	# (used by tlmgr), bug #984637.
+	rm "${ED}"/usr/share/tlpkg/installer/curl/curl-ca-bundle.crt || die
+	dosym -r /etc/ssl/certs/ca-certificates.crt \
+		/usr/share/tlpkg/installer/curl/curl-ca-bundle.crt
 
 	# When X is disabled mf-nowin doesn't exist but some scripts expect it to
 	# exist. Instead, it is called mf, so we symlink it to please everything.
@@ -465,7 +470,7 @@ src_install() {
 	rm "${ED}${TEXMF_PATH}/web2c/fmtutil.cnf" || die
 
 	if use cjk; then
-		rm "${ED}/usr/bin/"uptex || die
+		rm "${ED}/usr/bin/"{,u}ptex || die
 	fi
 
 	if ! use xindy; then
