@@ -44,7 +44,10 @@ BDEPEND="
 
 DOCS=( README.md CONTRIBUTING.md )
 
-PATCHES=( "${FILESDIR}/${PV}-fix-loong-build.patch" )
+PATCHES=(
+	"${FILESDIR}/${PV}-fix-loong-build.patch"
+	"${FILESDIR}/${P}-detect-invalid-stream.patch" # merged upstream
+)
 
 src_prepare() {
 	cmake_src_prepare
