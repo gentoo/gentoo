@@ -1,0 +1,2605 @@
+Add missing headers and declarations for GCC 16.
+
+Based on Nuitari netqmail-c14.patch (bug #885061).
+Bug: https://bugs.gentoo.org/944901
+
+diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/bouncesaying.c /tmp/tmpab2ykks0/netqmail-1.06/bouncesaying.c
+--- a/bouncesaying.c	1998-06-15 12:53:16.000000000 +0200
++++ b/bouncesaying.c	2026-05-31 18:51:39.964182899 +0200
+@@ -1,3 +1,4 @@
++#include <unistd.h>
+ #include "fork.h"
+ #include "strerr.h"
+ #include "error.h"
+diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/cdb_seek.c /tmp/tmpab2ykks0/netqmail-1.06/cdb_seek.c
+--- a/cdb_seek.c	2007-11-30 21:22:54.000000000 +0100
++++ b/cdb_seek.c	2026-05-31 18:51:39.988996297 +0200
+@@ -1,5 +1,6 @@
+ #include <sys/types.h>
+ #include <errno.h>
++#include <unistd.h>
+ #include "cdb.h"
+ 
+ #ifndef SEEK_SET
+diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/cdbmss.h /tmp/tmpab2ykks0/netqmail-1.06/cdbmss.h
+--- a/cdbmss.h	1998-06-15 12:53:16.000000000 +0200
++++ b/cdbmss.h	2026-05-31 18:51:39.979145270 +0200
+@@ -13,4 +13,8 @@
+   int fd;
+ } ;
+ 
++extern int cdbmss_start();
++extern int cdbmss_add();
++extern int cdbmss_finish();
++
+ #endif
+diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/chkshsgr.c /tmp/tmpab2ykks0/netqmail-1.06/chkshsgr.c
+--- a/chkshsgr.c	1998-06-15 12:53:16.000000000 +0200
++++ b/chkshsgr.c	2026-05-31 18:51:39.999253769 +0200
+@@ -1,7 +1,11 @@
++#include <unistd.h>
++#include <grp.h>
++#include <sys/types.h>
+ #include "exit.h"
++
+ void main()
+ {
+- short x[4];
++ gid_t x[4];
+ 
+  x[0] = x[1] = 0;
+  if (getgroups(1,x) == 0) if (setgroups(1,x) == -1) _exit(1);
+diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/dnsmxip.c /tmp/tmpab2ykks0/netqmail-1.06/dnsmxip.c
+--- a/dnsmxip.c	1998-06-15 12:53:16.000000000 +0200
++++ b/dnsmxip.c	2026-05-31 18:51:40.471854779 +0200
+@@ -1,3 +1,4 @@
++#include <unistd.h>
+ #include "substdio.h"
+ #include "subfd.h"
+ #include "stralloc.h"
+diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/dnsmxip.c.orig /tmp/tmpab2ykks0/netqmail-1.06/dnsmxip.c.orig
+--- a/dnsmxip.c.orig	1970-01-01 01:00:00.000000000 +0100
++++ b/dnsmxip.c.orig	1998-06-15 12:53:16.000000000 +0200
+@@ -0,0 +1,40 @@
++#include "substdio.h"
++#include "subfd.h"
++#include "stralloc.h"
++#include "fmt.h"
++#include "dns.h"
++#include "dnsdoe.h"
++#include "ip.h"
++#include "ipalloc.h"
++#include "now.h"
++#include "exit.h"
++
++char temp[IPFMT + FMT_ULONG];
++
++stralloc sa = {0};
++ipalloc ia = {0};
++
++void main(argc,argv)
++int argc;
++char **argv;
++{
++ int j;
++ unsigned long r;
++
++ if (!argv[1]) _exit(100);
++
++ if (!stralloc_copys(&sa,argv[1]))
++  { substdio_putsflush(subfderr,"out of memory\n"); _exit(111); }
++
++ r = now() + getpid();
++ dns_init(0);
++ dnsdoe(dns_mxip(&ia,&sa,r));
++ for (j = 0;j < ia.len;++j)
++  {
++   substdio_put(subfdout,temp,ip_fmt(temp,&ia.ix[j].ip));
++   substdio_puts(subfdout," ");
++   substdio_put(subfdout,temp,fmt_ulong(temp,(unsigned long) ia.ix[j].pref));
++   substdio_putsflush(subfdout,"\n");
++  }
++ _exit(0);
++}
+diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/except.c /tmp/tmpab2ykks0/netqmail-1.06/except.c
+--- a/except.c	1998-06-15 12:53:16.000000000 +0200
++++ b/except.c	2026-05-31 18:51:40.012931255 +0200
+@@ -1,3 +1,4 @@
++#include <unistd.h>
+ #include "fork.h"
+ #include "strerr.h"
+ #include "wait.h"
+diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/fd_copy.c /tmp/tmpab2ykks0/netqmail-1.06/fd_copy.c
+--- a/fd_copy.c	1998-06-15 12:53:16.000000000 +0200
++++ b/fd_copy.c	2026-05-31 18:51:40.026231789 +0200
+@@ -1,4 +1,5 @@
+ #include <fcntl.h>
++#include <unistd.h>
+ #include "fd.h"
+ 
+ int fd_copy(to,from)
+diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/fd_move.c /tmp/tmpab2ykks0/netqmail-1.06/fd_move.c
+--- a/fd_move.c	1998-06-15 12:53:16.000000000 +0200
++++ b/fd_move.c	2026-05-31 18:51:40.037038011 +0200
+@@ -1,4 +1,5 @@
+ #include "fd.h"
++#include <unistd.h>
+ 
+ int fd_move(to,from)
+ int to;
+diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/hier.c /tmp/tmpab2ykks0/netqmail-1.06/hier.c
+--- a/hier.c	1998-06-15 12:53:16.000000000 +0200
++++ b/hier.c	2026-05-31 18:51:40.046753153 +0200
+@@ -3,6 +3,7 @@
+ #include "auto_uids.h"
+ #include "fmt.h"
+ #include "fifo.h"
++#include "install.h"
+ 
+ char buf[100 + FMT_ULONG];
+ 
+diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/idedit.c /tmp/tmpab2ykks0/netqmail-1.06/idedit.c
+--- a/idedit.c	1998-06-15 12:53:16.000000000 +0200
++++ b/idedit.c	2026-05-31 18:51:40.055719743 +0200
+@@ -9,6 +9,7 @@
+ #include "open.h"
+ #include "seek.h"
+ #include "fork.h"
++#include "wait.h"
+ 
+ #define FATAL "idedit: fatal: "
+ #define WARNING "idedit: warning: "
+diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/install-big.c /tmp/tmpab2ykks0/netqmail-1.06/install-big.c
+--- a/install-big.c	1998-06-15 12:53:16.000000000 +0200
++++ b/install-big.c	2026-05-31 18:51:40.074323984 +0200
+@@ -3,6 +3,7 @@
+ #include "auto_uids.h"
+ #include "fmt.h"
+ #include "fifo.h"
++#include "install.h"
+ 
+ char buf[100 + FMT_ULONG];
+ 
+diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/install.c /tmp/tmpab2ykks0/netqmail-1.06/install.c
+--- a/install.c	1998-06-15 12:53:16.000000000 +0200
++++ b/install.c	2026-05-31 18:51:40.087843087 +0200
+@@ -1,9 +1,11 @@
++#include <sys/stat.h>
+ #include "substdio.h"
+ #include "strerr.h"
+ #include "error.h"
+ #include "open.h"
+ #include "readwrite.h"
+ #include "exit.h"
++#include "fifo.h"
+ 
+ extern void hier();
+ 
+diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/install.h /tmp/tmpab2ykks0/netqmail-1.06/install.h
+--- a/install.h	1970-01-01 01:00:00.000000000 +0100
++++ b/install.h	2026-05-31 18:51:40.102539476 +0200
+@@ -0,0 +1,10 @@
++#ifndef INSTALL_H
++#define INSTALL_H
++
++extern void d();  /* create directory with specified permissions */
++extern void h();  /* create hierarchy root directory */
++extern void z();  /* create empty file of specified size */
++extern void p();  /* create named pipe (FIFO) */
++extern void c();  /* copy file with specified permissions */
++
++#endif
+diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/ipme.c /tmp/tmpab2ykks0/netqmail-1.06/ipme.c
+--- a/ipme.c	2026-05-31 18:51:40.562353614 +0200
++++ b/ipme.c	2026-05-31 18:51:40.122424249 +0200
+@@ -8,6 +8,7 @@
+ #ifndef SIOCGIFCONF /* whatever works */
+ #include <sys/sockio.h>
+ #endif
++#include <unistd.h>
+ #include "hassalen.h"
+ #include "byte.h"
+ #include "ip.h"
+diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/maildir.c /tmp/tmpab2ykks0/netqmail-1.06/maildir.c
+--- a/maildir.c	1998-06-15 12:53:16.000000000 +0200
++++ b/maildir.c	2026-05-31 18:51:40.144920242 +0200
+@@ -1,5 +1,6 @@
+ #include <sys/types.h>
+ #include <sys/stat.h>
++#include <unistd.h>
+ #include "prioq.h"
+ #include "env.h"
+ #include "stralloc.h"
+diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/maildir2mbox.c /tmp/tmpab2ykks0/netqmail-1.06/maildir2mbox.c
+--- a/maildir2mbox.c	1998-06-15 12:53:16.000000000 +0200
++++ b/maildir2mbox.c	2026-05-31 18:51:40.138243683 +0200
+@@ -1,3 +1,5 @@
++#include <stdio.h>
++#include <sys/stat.h>
+ #include "readwrite.h"
+ #include "prioq.h"
+ #include "env.h"
+diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/maildirmake.c /tmp/tmpab2ykks0/netqmail-1.06/maildirmake.c
+--- a/maildirmake.c	1998-06-15 12:53:16.000000000 +0200
++++ b/maildirmake.c	2026-05-31 18:51:40.166110750 +0200
+@@ -1,3 +1,5 @@
++#include <sys/stat.h>
++#include <unistd.h>
+ #include "strerr.h"
+ #include "exit.h"
+ 
+diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/newfield.c /tmp/tmpab2ykks0/netqmail-1.06/newfield.c
+--- a/newfield.c	1998-06-15 12:53:16.000000000 +0200
++++ b/newfield.c	2026-05-31 18:51:40.174991177 +0200
+@@ -1,3 +1,4 @@
++#include <unistd.h>
+ #include "fmt.h"
+ #include "datetime.h"
+ #include "stralloc.h"
+diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/predate.c /tmp/tmpab2ykks0/netqmail-1.06/predate.c
+--- a/predate.c	1998-06-15 12:53:16.000000000 +0200
++++ b/predate.c	2026-05-31 18:51:40.193843431 +0200
+@@ -10,6 +10,7 @@
+ #include "subfd.h"
+ #include "readwrite.h"
+ #include "exit.h"
++#include "sig.h"
+ 
+ #define FATAL "predate: fatal: "
+ 
+diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/prot.c /tmp/tmpab2ykks0/netqmail-1.06/prot.c
+--- a/prot.c	1998-06-15 12:53:16.000000000 +0200
++++ b/prot.c	2026-05-31 18:51:40.218232928 +0200
+@@ -1,5 +1,7 @@
+ #include "hasshsgr.h"
+ #include "prot.h"
++#include <unistd.h>
++#include <grp.h>
+ 
+ /* XXX: there are more portability problems here waiting to leap out at me */
+ 
+diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/qmail-inject.c /tmp/tmpab2ykks0/netqmail-1.06/qmail-inject.c
+--- a/qmail-inject.c	1998-06-15 12:53:16.000000000 +0200
++++ b/qmail-inject.c	2026-05-31 18:51:40.450651893 +0200
+@@ -1,3 +1,4 @@
++#include <unistd.h>
+ #include "sig.h"
+ #include "substdio.h"
+ #include "stralloc.h"
+diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/qmail-inject.c.orig /tmp/tmpab2ykks0/netqmail-1.06/qmail-inject.c.orig
+--- a/qmail-inject.c.orig	1970-01-01 01:00:00.000000000 +0100
++++ b/qmail-inject.c.orig	1998-06-15 12:53:16.000000000 +0200
+@@ -0,0 +1,773 @@
++#include "sig.h"
++#include "substdio.h"
++#include "stralloc.h"
++#include "subfd.h"
++#include "sgetopt.h"
++#include "getln.h"
++#include "alloc.h"
++#include "str.h"
++#include "fmt.h"
++#include "hfield.h"
++#include "token822.h"
++#include "control.h"
++#include "env.h"
++#include "gen_alloc.h"
++#include "gen_allocdefs.h"
++#include "error.h"
++#include "qmail.h"
++#include "now.h"
++#include "exit.h"
++#include "quote.h"
++#include "headerbody.h"
++#include "auto_qmail.h"
++#include "newfield.h"
++#include "constmap.h"
++
++#define LINELEN 80
++
++datetime_sec starttime;
++
++char *qmopts;
++int flagdeletesender = 0;
++int flagdeletefrom = 0;
++int flagdeletemessid = 0;
++int flagnamecomment = 0;
++int flaghackmess = 0;
++int flaghackrecip = 0;
++char *mailhost;
++char *mailuser;
++int mailusertokentype;
++char *mailrhost;
++char *mailruser;
++
++stralloc control_idhost = {0};
++stralloc control_defaultdomain = {0};
++stralloc control_defaulthost = {0};
++stralloc control_plusdomain = {0};
++
++stralloc sender = {0};
++stralloc envsbuf = {0};
++token822_alloc envs = {0};
++int flagrh;
++
++int flagqueue;
++struct qmail qqt;
++
++void put(s,len) char *s; int len;
++{ if (flagqueue) qmail_put(&qqt,s,len); else substdio_put(subfdout,s,len); }
++void puts(s) char *s; { put(s,str_len(s)); }
++
++void perm() { _exit(100); }
++void temp() { _exit(111); }
++void die_nomem() {
++ substdio_putsflush(subfderr,"qmail-inject: fatal: out of memory\n"); temp(); }
++void die_invalid(sa) stralloc *sa; {
++ substdio_putsflush(subfderr,"qmail-inject: fatal: invalid header field: ");
++ substdio_putflush(subfderr,sa->s,sa->len); perm(); }
++void die_qqt() {
++ substdio_putsflush(subfderr,"qmail-inject: fatal: unable to run qmail-queue\n"); temp(); }
++void die_chdir() {
++ substdio_putsflush(subfderr,"qmail-inject: fatal: internal bug\n"); temp(); }
++void die_read() {
++ if (errno == error_nomem) die_nomem();
++ substdio_putsflush(subfderr,"qmail-inject: fatal: read error\n"); temp(); }
++void doordie(sa,r) stralloc *sa; int r; {
++ if (r == 1) return; if (r == -1) die_nomem();
++ substdio_putsflush(subfderr,"qmail-inject: fatal: unable to parse this line:\n");
++ substdio_putflush(subfderr,sa->s,sa->len); perm(); }
++
++GEN_ALLOC_typedef(saa,stralloc,sa,len,a)
++GEN_ALLOC_readyplus(saa,stralloc,sa,len,a,i,n,x,10,saa_readyplus)
++
++static stralloc sauninit = {0};
++
++saa savedh = {0};
++saa hrlist = {0};
++saa tocclist = {0};
++saa hrrlist = {0};
++saa reciplist = {0};
++int flagresent;
++
++void exitnicely()
++{
++ char *qqx;
++
++ if (!flagqueue) substdio_flush(subfdout);
++
++ if (flagqueue)
++  {
++   int i;
++
++   if (!stralloc_0(&sender)) die_nomem();
++   qmail_from(&qqt,sender.s);
++
++   for (i = 0;i < reciplist.len;++i)
++    {
++     if (!stralloc_0(&reciplist.sa[i])) die_nomem();
++     qmail_to(&qqt,reciplist.sa[i].s);
++    }
++   if (flagrh)
++     if (flagresent)
++       for (i = 0;i < hrrlist.len;++i)
++	{
++         if (!stralloc_0(&hrrlist.sa[i])) die_nomem();
++	 qmail_to(&qqt,hrrlist.sa[i].s);
++	}
++     else
++       for (i = 0;i < hrlist.len;++i)
++	{
++         if (!stralloc_0(&hrlist.sa[i])) die_nomem();
++	 qmail_to(&qqt,hrlist.sa[i].s);
++	}
++
++   qqx = qmail_close(&qqt);
++   if (*qqx)
++     if (*qqx == 'D') {
++       substdio_puts(subfderr,"qmail-inject: fatal: ");
++       substdio_puts(subfderr,qqx + 1);
++       substdio_puts(subfderr,"\n");
++       substdio_flush(subfderr);
++       perm();
++     }
++     else {
++       substdio_puts(subfderr,"qmail-inject: fatal: ");
++       substdio_puts(subfderr,qqx + 1);
++       substdio_puts(subfderr,"\n");
++       substdio_flush(subfderr);
++       temp();
++     }
++  }
++
++ _exit(0);
++}
++
++void savedh_append(h)
++stralloc *h;
++{
++ if (!saa_readyplus(&savedh,1)) die_nomem();
++ savedh.sa[savedh.len] = sauninit;
++ if (!stralloc_copy(savedh.sa + savedh.len,h)) die_nomem();
++ ++savedh.len;
++}
++
++void savedh_print()
++{
++ int i;
++
++ for (i = 0;i < savedh.len;++i)
++   put(savedh.sa[i].s,savedh.sa[i].len);
++}
++
++stralloc defaultdomainbuf = {0};
++token822_alloc defaultdomain = {0};
++stralloc defaulthostbuf = {0};
++token822_alloc defaulthost = {0};
++stralloc plusdomainbuf = {0};
++token822_alloc plusdomain = {0};
++
++void rwroute(addr)
++token822_alloc *addr;
++{
++ if (addr->t[addr->len - 1].type == TOKEN822_AT)
++   while (addr->len)
++     if (addr->t[--addr->len].type == TOKEN822_COLON)
++       return;
++}
++
++void rwextraat(addr)
++token822_alloc *addr;
++{
++ int i;
++ if (addr->t[0].type == TOKEN822_AT)
++  {
++   --addr->len;
++   for (i = 0;i < addr->len;++i)
++     addr->t[i] = addr->t[i + 1];
++  }
++}
++
++void rwextradot(addr)
++token822_alloc *addr;
++{
++ int i;
++ if (addr->t[0].type == TOKEN822_DOT)
++  {
++   --addr->len;
++   for (i = 0;i < addr->len;++i)
++     addr->t[i] = addr->t[i + 1];
++  }
++}
++
++void rwnoat(addr)
++token822_alloc *addr;
++{
++ int i;
++ int shift;
++
++ for (i = 0;i < addr->len;++i)
++   if (addr->t[i].type == TOKEN822_AT)
++     return;
++ shift = defaulthost.len;
++ if (!token822_readyplus(addr,shift)) die_nomem();
++ for (i = addr->len - 1;i >= 0;--i)
++   addr->t[i + shift] = addr->t[i];
++ addr->len += shift;
++ for (i = 0;i < shift;++i)
++   addr->t[i] = defaulthost.t[shift - 1 - i];
++}
++
++void rwnodot(addr)
++token822_alloc *addr;
++{
++ int i;
++ int shift;
++ for (i = 0;i < addr->len;++i)
++  {
++   if (addr->t[i].type == TOKEN822_DOT)
++     return;
++   if (addr->t[i].type == TOKEN822_AT)
++     break;
++  }
++ for (i = 0;i < addr->len;++i)
++  {
++   if (addr->t[i].type == TOKEN822_LITERAL)
++     return;
++   if (addr->t[i].type == TOKEN822_AT)
++     break;
++  }
++ shift = defaultdomain.len;
++ if (!token822_readyplus(addr,shift)) die_nomem();
++ for (i = addr->len - 1;i >= 0;--i)
++   addr->t[i + shift] = addr->t[i];
++ addr->len += shift;
++ for (i = 0;i < shift;++i)
++   addr->t[i] = defaultdomain.t[shift - 1 - i];
++}
++
++void rwplus(addr)
++token822_alloc *addr;
++{
++ int i;
++ int shift;
++
++ if (addr->t[0].type != TOKEN822_ATOM) return;
++ if (!addr->t[0].slen) return;
++ if (addr->t[0].s[addr->t[0].slen - 1] != '+') return;
++
++ --addr->t[0].slen; /* remove + */
++
++ shift = plusdomain.len;
++ if (!token822_readyplus(addr,shift)) die_nomem();
++ for (i = addr->len - 1;i >= 0;--i)
++   addr->t[i + shift] = addr->t[i];
++ addr->len += shift;
++ for (i = 0;i < shift;++i)
++   addr->t[i] = plusdomain.t[shift - 1 - i];
++}
++
++void rwgeneric(addr)
++token822_alloc *addr;
++{
++ if (!addr->len) return; /* don't rewrite <> */
++ if (addr->len >= 2)
++   if (addr->t[1].type == TOKEN822_AT)
++     if (addr->t[0].type == TOKEN822_LITERAL)
++       if (!addr->t[0].slen) /* don't rewrite <foo@[]> */
++	 return;
++ rwroute(addr);
++ if (!addr->len) return; /* <@foo:> -> <> */
++ rwextradot(addr);
++ if (!addr->len) return; /* <.> -> <> */
++ rwextraat(addr);
++ if (!addr->len) return; /* <@> -> <> */
++ rwnoat(addr);
++ rwplus(addr);
++ rwnodot(addr);
++}
++
++int setreturn(addr)
++token822_alloc *addr;
++{
++ if (!sender.s)
++  {
++   token822_reverse(addr);
++   if (token822_unquote(&sender,addr) != 1) die_nomem();
++   if (flaghackrecip)
++     if (!stralloc_cats(&sender,"-@[]")) die_nomem();
++   token822_reverse(addr);
++  }
++ return 1;
++}
++
++int rwreturn(addr)
++token822_alloc *addr;
++{
++ rwgeneric(addr);
++ setreturn(addr);
++ return 1;
++}
++
++int rwsender(addr)
++token822_alloc *addr;
++{
++ rwgeneric(addr);
++ return 1;
++}
++
++void rwappend(addr,xl)
++token822_alloc *addr;
++saa *xl;
++{
++ token822_reverse(addr);
++ if (!saa_readyplus(xl,1)) die_nomem();
++ xl->sa[xl->len] = sauninit;
++ if (token822_unquote(&xl->sa[xl->len],addr) != 1) die_nomem();
++ ++xl->len;
++ token822_reverse(addr);
++}
++
++int rwhrr(addr) token822_alloc *addr;
++{ rwgeneric(addr); rwappend(addr,&hrrlist); return 1; }
++int rwhr(addr) token822_alloc *addr;
++{ rwgeneric(addr); rwappend(addr,&hrlist); return 1; }
++int rwtocc(addr) token822_alloc *addr;
++{ rwgeneric(addr); rwappend(addr,&hrlist); rwappend(addr,&tocclist); return 1; }
++
++int htypeseen[H_NUM];
++stralloc hfbuf = {0};
++token822_alloc hfin = {0};
++token822_alloc hfrewrite = {0};
++token822_alloc hfaddr = {0};
++
++void doheaderfield(h)
++stralloc *h;
++{
++  int htype;
++  int (*rw)() = 0;
++ 
++  htype = hfield_known(h->s,h->len);
++  if (flagdeletefrom) if (htype == H_FROM) return;
++  if (flagdeletemessid) if (htype == H_MESSAGEID) return;
++  if (flagdeletesender) if (htype == H_RETURNPATH) return;
++ 
++  if (htype)
++    htypeseen[htype] = 1;
++  else
++    if (!hfield_valid(h->s,h->len))
++      die_invalid(h);
++ 
++  switch(htype) {
++    case H_TO: case H_CC:
++      rw = rwtocc; break;
++    case H_BCC: case H_APPARENTLYTO:
++      rw = rwhr; break;
++    case H_R_TO: case H_R_CC: case H_R_BCC:
++      rw = rwhrr; break;
++    case H_RETURNPATH:
++      rw = rwreturn; break;
++    case H_SENDER: case H_FROM: case H_REPLYTO:
++    case H_RETURNRECEIPTTO: case H_ERRORSTO:
++    case H_R_SENDER: case H_R_FROM: case H_R_REPLYTO:
++      rw = rwsender; break;
++  }
++
++  if (rw) {
++    doordie(h,token822_parse(&hfin,h,&hfbuf));
++    doordie(h,token822_addrlist(&hfrewrite,&hfaddr,&hfin,rw));
++    if (token822_unparse(h,&hfrewrite,LINELEN) != 1)
++      die_nomem();
++  }
++ 
++  if (htype == H_BCC) return;
++  if (htype == H_R_BCC) return;
++  if (htype == H_RETURNPATH) return;
++  if (htype == H_CONTENTLENGTH) return; /* some things are just too stupid */
++  savedh_append(h);
++}
++
++void dobody(h)
++stralloc *h;
++{
++ put(h->s,h->len);
++}
++
++stralloc torecip = {0};
++token822_alloc tr = {0};
++
++void dorecip(s)
++char *s;
++{
++ if (!quote2(&torecip,s)) die_nomem();
++ switch(token822_parse(&tr,&torecip,&hfbuf))
++  {
++   case -1: die_nomem();
++   case 0:
++     substdio_puts(subfderr,"qmail-inject: fatal: unable to parse address: ");
++     substdio_puts(subfderr,s);
++     substdio_putsflush(subfderr,"\n");
++     perm();
++  }
++ token822_reverse(&tr);
++ rwgeneric(&tr);
++ rwappend(&tr,&reciplist);
++}
++
++stralloc defaultfrom = {0};
++token822_alloc df = {0};
++
++void defaultfrommake()
++{
++ char *fullname;
++ fullname = env_get("QMAILNAME");
++ if (!fullname) fullname = env_get("MAILNAME");
++ if (!fullname) fullname = env_get("NAME");
++ if (!token822_ready(&df,20)) die_nomem();
++ df.len = 0;
++ df.t[df.len].type = TOKEN822_ATOM;
++ df.t[df.len].s = "From";
++ df.t[df.len].slen = 4;
++ ++df.len;
++ df.t[df.len].type = TOKEN822_COLON;
++ ++df.len;
++ if (fullname && !flagnamecomment)
++  {
++   df.t[df.len].type = TOKEN822_QUOTE;
++   df.t[df.len].s = fullname;
++   df.t[df.len].slen = str_len(fullname);
++   ++df.len;
++   df.t[df.len].type = TOKEN822_LEFT;
++   ++df.len;
++  }
++ df.t[df.len].type = mailusertokentype;
++ df.t[df.len].s = mailuser;
++ df.t[df.len].slen = str_len(mailuser);
++ ++df.len;
++ if (mailhost)
++  {
++   df.t[df.len].type = TOKEN822_AT;
++   ++df.len;
++   df.t[df.len].type = TOKEN822_ATOM;
++   df.t[df.len].s = mailhost;
++   df.t[df.len].slen = str_len(mailhost);
++   ++df.len;
++  }
++ if (fullname && !flagnamecomment)
++  {
++   df.t[df.len].type = TOKEN822_RIGHT;
++   ++df.len;
++  }
++ if (fullname && flagnamecomment)
++  {
++   df.t[df.len].type = TOKEN822_COMMENT;
++   df.t[df.len].s = fullname;
++   df.t[df.len].slen = str_len(fullname);
++   ++df.len;
++  }
++ if (token822_unparse(&defaultfrom,&df,LINELEN) != 1) die_nomem();
++ doordie(&defaultfrom,token822_parse(&df,&defaultfrom,&hfbuf));
++ doordie(&defaultfrom,token822_addrlist(&hfrewrite,&hfaddr,&df,rwsender));
++ if (token822_unparse(&defaultfrom,&hfrewrite,LINELEN) != 1) die_nomem();
++}
++
++stralloc defaultreturnpath = {0};
++token822_alloc drp = {0};
++stralloc hackedruser = {0};
++char strnum[FMT_ULONG];
++
++void dodefaultreturnpath()
++{
++ if (!stralloc_copys(&hackedruser,mailruser)) die_nomem();
++ if (flaghackmess)
++  {
++   if (!stralloc_cats(&hackedruser,"-")) die_nomem();
++   if (!stralloc_catb(&hackedruser,strnum,fmt_ulong(strnum,(unsigned long) starttime))) die_nomem();
++   if (!stralloc_cats(&hackedruser,".")) die_nomem();
++   if (!stralloc_catb(&hackedruser,strnum,fmt_ulong(strnum,(unsigned long) getpid()))) die_nomem();
++  }
++ if (flaghackrecip)
++   if (!stralloc_cats(&hackedruser,"-")) die_nomem();
++ if (!token822_ready(&drp,10)) die_nomem();
++ drp.len = 0;
++ drp.t[drp.len].type = TOKEN822_ATOM;
++ drp.t[drp.len].s = "Return-Path";
++ drp.t[drp.len].slen = 11;
++ ++drp.len;
++ drp.t[drp.len].type = TOKEN822_COLON;
++ ++drp.len;
++ drp.t[drp.len].type = TOKEN822_QUOTE;
++ drp.t[drp.len].s = hackedruser.s;
++ drp.t[drp.len].slen = hackedruser.len;
++ ++drp.len;
++ if (mailrhost)
++  {
++   drp.t[drp.len].type = TOKEN822_AT;
++   ++drp.len;
++   drp.t[drp.len].type = TOKEN822_ATOM;
++   drp.t[drp.len].s = mailrhost;
++   drp.t[drp.len].slen = str_len(mailrhost);
++   ++drp.len;
++  }
++ if (token822_unparse(&defaultreturnpath,&drp,LINELEN) != 1) die_nomem();
++ doordie(&defaultreturnpath,token822_parse(&drp,&defaultreturnpath,&hfbuf));
++ doordie(&defaultreturnpath
++   ,token822_addrlist(&hfrewrite,&hfaddr,&drp,rwreturn));
++ if (token822_unparse(&defaultreturnpath,&hfrewrite,LINELEN) != 1) die_nomem();
++}
++
++int flagmft = 0;
++stralloc mft = {0};
++struct constmap mapmft;
++
++void mft_init()
++{
++  char *x;
++  int r;
++
++  x = env_get("QMAILMFTFILE");
++  if (!x) return;
++
++  r = control_readfile(&mft,x,0);
++  if (r == -1) die_read(); /*XXX*/
++  if (!r) return;
++
++  if (!constmap_init(&mapmft,mft.s,mft.len,0)) die_nomem();
++  flagmft = 1;
++}
++
++void finishmft()
++{
++  int i;
++  static stralloc sa = {0};
++  static stralloc sa2 = {0};
++
++  if (!flagmft) return;
++  if (htypeseen[H_MAILFOLLOWUPTO]) return;
++
++  for (i = 0;i < tocclist.len;++i)
++    if (constmap(&mapmft,tocclist.sa[i].s,tocclist.sa[i].len))
++      break;
++
++  if (i == tocclist.len) return;
++
++  puts("Mail-Followup-To: ");
++  i = tocclist.len;
++  while (i--) {
++    if (!stralloc_copy(&sa,&tocclist.sa[i])) die_nomem();
++    if (!stralloc_0(&sa)) die_nomem();
++    if (!quote2(&sa2,sa.s)) die_nomem();
++    put(sa2.s,sa2.len);
++    if (i) puts(",\n  ");
++  }
++  puts("\n");
++}
++
++void finishheader()
++{
++ flagresent =
++   htypeseen[H_R_SENDER] || htypeseen[H_R_FROM] || htypeseen[H_R_REPLYTO]
++   || htypeseen[H_R_TO] || htypeseen[H_R_CC] || htypeseen[H_R_BCC]
++   || htypeseen[H_R_DATE] || htypeseen[H_R_MESSAGEID];
++
++ if (!sender.s)
++   dodefaultreturnpath();
++
++ if (!flagqueue)
++  {
++   static stralloc sa = {0};
++   static stralloc sa2 = {0};
++
++   if (!stralloc_copy(&sa,&sender)) die_nomem();
++   if (!stralloc_0(&sa)) die_nomem();
++   if (!quote2(&sa2,sa.s)) die_nomem();
++
++   puts("Return-Path: <");
++   put(sa2.s,sa2.len);
++   puts(">\n");
++  }
++
++ /* could check at this point whether there are any recipients */
++ if (flagqueue)
++   if (qmail_open(&qqt) == -1) die_qqt();
++
++ if (flagresent)
++  {
++   if (!htypeseen[H_R_DATE])
++    {
++     if (!newfield_datemake(starttime)) die_nomem();
++     puts("Resent-");
++     put(newfield_date.s,newfield_date.len);
++    }
++   if (!htypeseen[H_R_MESSAGEID])
++    {
++     if (!newfield_msgidmake(control_idhost.s,control_idhost.len,starttime)) die_nomem();
++     puts("Resent-");
++     put(newfield_msgid.s,newfield_msgid.len);
++    }
++   if (!htypeseen[H_R_FROM])
++    {
++     defaultfrommake();
++     puts("Resent-");
++     put(defaultfrom.s,defaultfrom.len);
++    }
++   if (!htypeseen[H_R_TO] && !htypeseen[H_R_CC])
++     puts("Resent-Cc: recipient list not shown: ;\n");
++  }
++ else
++  {
++   if (!htypeseen[H_DATE])
++    {
++     if (!newfield_datemake(starttime)) die_nomem();
++     put(newfield_date.s,newfield_date.len);
++    }
++   if (!htypeseen[H_MESSAGEID])
++    {
++     if (!newfield_msgidmake(control_idhost.s,control_idhost.len,starttime)) die_nomem();
++     put(newfield_msgid.s,newfield_msgid.len);
++    }
++   if (!htypeseen[H_FROM])
++    {
++     defaultfrommake();
++     put(defaultfrom.s,defaultfrom.len);
++    }
++   if (!htypeseen[H_TO] && !htypeseen[H_CC])
++     puts("Cc: recipient list not shown: ;\n");
++   finishmft();
++  }
++
++ savedh_print();
++}
++
++void getcontrols()
++{
++ static stralloc sa = {0};
++ char *x;
++
++ mft_init();
++
++ if (chdir(auto_qmail) == -1) die_chdir();
++ if (control_init() == -1) die_read();
++
++ if (control_rldef(&control_defaultdomain,"control/defaultdomain",1,"defaultdomain") != 1)
++   die_read();
++ x = env_get("QMAILDEFAULTDOMAIN");
++ if (x) if (!stralloc_copys(&control_defaultdomain,x)) die_nomem();
++ if (!stralloc_copys(&sa,".")) die_nomem();
++ if (!stralloc_cat(&sa,&control_defaultdomain)) die_nomem();
++ doordie(&sa,token822_parse(&defaultdomain,&sa,&defaultdomainbuf));
++
++ if (control_rldef(&control_defaulthost,"control/defaulthost",1,"defaulthost") != 1)
++   die_read();
++ x = env_get("QMAILDEFAULTHOST");
++ if (x) if (!stralloc_copys(&control_defaulthost,x)) die_nomem();
++ if (!stralloc_copys(&sa,"@")) die_nomem();
++ if (!stralloc_cat(&sa,&control_defaulthost)) die_nomem();
++ doordie(&sa,token822_parse(&defaulthost,&sa,&defaulthostbuf));
++
++ if (control_rldef(&control_plusdomain,"control/plusdomain",1,"plusdomain") != 1)
++   die_read();
++ x = env_get("QMAILPLUSDOMAIN");
++ if (x) if (!stralloc_copys(&control_plusdomain,x)) die_nomem();
++ if (!stralloc_copys(&sa,".")) die_nomem();
++ if (!stralloc_cat(&sa,&control_plusdomain)) die_nomem();
++ doordie(&sa,token822_parse(&plusdomain,&sa,&plusdomainbuf));
++
++ if (control_rldef(&control_idhost,"control/idhost",1,"idhost") != 1)
++   die_read();
++ x = env_get("QMAILIDHOST");
++ if (x) if (!stralloc_copys(&control_idhost,x)) die_nomem();
++}
++
++#define RECIP_DEFAULT 1
++#define RECIP_ARGS 2
++#define RECIP_HEADER 3
++#define RECIP_AH 4
++
++void main(argc,argv)
++int argc;
++char **argv;
++{
++ int i;
++ int opt;
++ int recipstrategy;
++
++ sig_pipeignore();
++
++ starttime = now();
++
++ qmopts = env_get("QMAILINJECT");
++ if (qmopts)
++   while (*qmopts)
++     switch(*qmopts++)
++      {
++       case 'c': flagnamecomment = 1; break;
++       case 's': flagdeletesender = 1; break;
++       case 'f': flagdeletefrom = 1; break;
++       case 'i': flagdeletemessid = 1; break;
++       case 'r': flaghackrecip = 1; break;
++       case 'm': flaghackmess = 1; break;
++      }
++
++ mailhost = env_get("QMAILHOST");
++ if (!mailhost) mailhost = env_get("MAILHOST");
++ mailrhost = env_get("QMAILSHOST");
++ if (!mailrhost) mailrhost = mailhost;
++
++ mailuser = env_get("QMAILUSER");
++ if (!mailuser) mailuser = env_get("MAILUSER");
++ if (!mailuser) mailuser = env_get("USER");
++ if (!mailuser) mailuser = env_get("LOGNAME");
++ if (!mailuser) mailuser = "anonymous";
++ mailusertokentype = TOKEN822_ATOM;
++ if (quote_need(mailuser,str_len(mailuser))) mailusertokentype = TOKEN822_QUOTE;
++ mailruser = env_get("QMAILSUSER");
++ if (!mailruser) mailruser = mailuser;
++
++ for (i = 0;i < H_NUM;++i) htypeseen[i] = 0;
++
++ recipstrategy = RECIP_DEFAULT;
++ flagqueue = 1;
++
++ getcontrols();
++
++ if (!saa_readyplus(&hrlist,1)) die_nomem();
++ if (!saa_readyplus(&tocclist,1)) die_nomem();
++ if (!saa_readyplus(&hrrlist,1)) die_nomem();
++ if (!saa_readyplus(&reciplist,1)) die_nomem();
++
++ while ((opt = getopt(argc,argv,"aAhHnNf:")) != opteof)
++   switch(opt)
++    {
++     case 'a': recipstrategy = RECIP_ARGS; break;
++     case 'A': recipstrategy = RECIP_DEFAULT; break;
++     case 'h': recipstrategy = RECIP_HEADER; break;
++     case 'H': recipstrategy = RECIP_AH; break;
++     case 'n': flagqueue = 0; break;
++     case 'N': flagqueue = 1; break;
++     case 'f':
++       if (!quote2(&sender,optarg)) die_nomem();
++       doordie(&sender,token822_parse(&envs,&sender,&envsbuf));
++       token822_reverse(&envs);
++       rwgeneric(&envs);
++       token822_reverse(&envs);
++       if (token822_unquote(&sender,&envs) != 1) die_nomem();
++       break;
++     case '?':
++     default:
++       perm();
++    }
++ argc -= optind;
++ argv += optind;
++
++ if (recipstrategy == RECIP_DEFAULT)
++   recipstrategy = (*argv ? RECIP_ARGS : RECIP_HEADER);
++
++ if (recipstrategy != RECIP_HEADER)
++   while (*argv)
++     dorecip(*argv++);
++
++ flagrh = (recipstrategy != RECIP_ARGS);
++
++ if (headerbody(subfdin,doheaderfield,finishheader,dobody) == -1)
++   die_read();
++ exitnicely();
++}
+diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/qmail-lspawn.c /tmp/tmpab2ykks0/netqmail-1.06/qmail-lspawn.c
+--- a/qmail-lspawn.c	1998-06-15 12:53:16.000000000 +0200
++++ b/qmail-lspawn.c	2026-05-31 18:51:40.477970213 +0200
+@@ -1,3 +1,4 @@
++#include <unistd.h>
+ #include "fd.h"
+ #include "wait.h"
+ #include "prot.h"
+@@ -13,6 +14,8 @@
+ #include "auto_qmail.h"
+ #include "auto_uids.h"
+ #include "qlx.h"
++#include "open.h"
++#include "byte.h"
+ 
+ char *aliasempty;
+ 
+diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/qmail-lspawn.c.orig /tmp/tmpab2ykks0/netqmail-1.06/qmail-lspawn.c.orig
+--- a/qmail-lspawn.c.orig	1970-01-01 01:00:00.000000000 +0100
++++ b/qmail-lspawn.c.orig	2026-05-31 18:51:40.226362138 +0200
+@@ -0,0 +1,236 @@
++#include "fd.h"
++#include "wait.h"
++#include "prot.h"
++#include "substdio.h"
++#include "stralloc.h"
++#include "scan.h"
++#include "exit.h"
++#include "fork.h"
++#include "error.h"
++#include "cdb.h"
++#include "case.h"
++#include "slurpclose.h"
++#include "auto_qmail.h"
++#include "auto_uids.h"
++#include "qlx.h"
++#include "open.h"
++#include "byte.h"
++
++char *aliasempty;
++
++void initialize(argc,argv)
++int argc;
++char **argv;
++{
++  aliasempty = argv[1];
++  if (!aliasempty) _exit(100);
++}
++
++int truncreport = 3000;
++
++void report(ss,wstat,s,len)
++substdio *ss;
++int wstat;
++char *s;
++int len;
++{
++ int i;
++ if (wait_crashed(wstat))
++  { substdio_puts(ss,"Zqmail-local crashed.\n"); return; }
++ switch(wait_exitcode(wstat))
++  {
++   case QLX_CDB:
++     substdio_puts(ss,"ZTrouble reading users/cdb in qmail-lspawn.\n"); return;
++   case QLX_NOMEM:
++     substdio_puts(ss,"ZOut of memory in qmail-lspawn.\n"); return;
++   case QLX_SYS:
++     substdio_puts(ss,"ZTemporary failure in qmail-lspawn.\n"); return;
++   case QLX_NOALIAS:
++     substdio_puts(ss,"ZUnable to find alias user!\n"); return;
++   case QLX_ROOT:
++     substdio_puts(ss,"ZNot allowed to perform deliveries as root.\n"); return;
++   case QLX_USAGE:
++     substdio_puts(ss,"ZInternal qmail-lspawn bug.\n"); return;
++   case QLX_NFS:
++     substdio_puts(ss,"ZNFS failure in qmail-local.\n"); return;
++   case QLX_EXECHARD:
++     substdio_puts(ss,"DUnable to run qmail-local.\n"); return;
++   case QLX_EXECSOFT:
++     substdio_puts(ss,"ZUnable to run qmail-local.\n"); return;
++   case QLX_EXECPW:
++     substdio_puts(ss,"ZUnable to run qmail-getpw.\n"); return;
++   case 111: case 71: case 74: case 75:
++     substdio_put(ss,"Z",1); break;
++   case 0:
++     substdio_put(ss,"K",1); break;
++   case 100:
++   default:
++     substdio_put(ss,"D",1); break;
++  }
++
++ for (i = 0;i < len;++i) if (!s[i]) break;
++ substdio_put(ss,s,i);
++}
++
++stralloc lower = {0};
++stralloc nughde = {0};
++stralloc wildchars = {0};
++
++void nughde_get(local)
++char *local;
++{
++ char *(args[3]);
++ int pi[2];
++ int gpwpid;
++ int gpwstat;
++ int r;
++ int fd;
++ int flagwild;
++
++ if (!stralloc_copys(&lower,"!")) _exit(QLX_NOMEM);
++ if (!stralloc_cats(&lower,local)) _exit(QLX_NOMEM);
++ if (!stralloc_0(&lower)) _exit(QLX_NOMEM);
++ case_lowerb(lower.s,lower.len);
++
++ if (!stralloc_copys(&nughde,"")) _exit(QLX_NOMEM);
++
++ fd = open_read("users/cdb");
++ if (fd == -1)
++   if (errno != error_noent)
++     _exit(QLX_CDB);
++
++ if (fd != -1)
++  {
++   uint32 dlen;
++   unsigned int i;
++
++   r = cdb_seek(fd,"",0,&dlen);
++   if (r != 1) _exit(QLX_CDB);
++   if (!stralloc_ready(&wildchars,(unsigned int) dlen)) _exit(QLX_NOMEM);
++   wildchars.len = dlen;
++   if (cdb_bread(fd,wildchars.s,wildchars.len) == -1) _exit(QLX_CDB);
++
++   i = lower.len;
++   flagwild = 0;
++
++   do
++    {
++     /* i > 0 */
++     if (!flagwild || (i == 1) || (byte_chr(wildchars.s,wildchars.len,lower.s[i - 1]) < wildchars.len))
++      {
++       r = cdb_seek(fd,lower.s,i,&dlen);
++       if (r == -1) _exit(QLX_CDB);
++       if (r == 1)
++        {
++         if (!stralloc_ready(&nughde,(unsigned int) dlen)) _exit(QLX_NOMEM);
++         nughde.len = dlen;
++         if (cdb_bread(fd,nughde.s,nughde.len) == -1) _exit(QLX_CDB);
++         if (flagwild)
++	   if (!stralloc_cats(&nughde,local + i - 1)) _exit(QLX_NOMEM);
++         if (!stralloc_0(&nughde)) _exit(QLX_NOMEM);
++         close(fd);
++         return;
++        }
++      }
++     --i;
++     flagwild = 1;
++    }
++   while (i);
++
++   close(fd);
++  }
++
++ if (pipe(pi) == -1) _exit(QLX_SYS);
++ args[0] = "bin/qmail-getpw";
++ args[1] = local;
++ args[2] = 0;
++ switch(gpwpid = vfork())
++  {
++   case -1:
++     _exit(QLX_SYS);
++   case 0:
++     if (prot_gid(auto_gidn) == -1) _exit(QLX_USAGE);
++     if (prot_uid(auto_uidp) == -1) _exit(QLX_USAGE);
++     close(pi[0]);
++     if (fd_move(1,pi[1]) == -1) _exit(QLX_SYS);
++     execv(*args,args);
++     _exit(QLX_EXECPW);
++  }
++ close(pi[1]);
++
++ if (slurpclose(pi[0],&nughde,128) == -1) _exit(QLX_SYS);
++
++ if (wait_pid(&gpwstat,gpwpid) != -1)
++  {
++   if (wait_crashed(gpwstat)) _exit(QLX_SYS);
++   if (wait_exitcode(gpwstat) != 0) _exit(wait_exitcode(gpwstat));
++  }
++}
++
++int spawn(fdmess,fdout,s,r,at)
++int fdmess; int fdout;
++char *s; char *r; int at;
++{
++ int f;
++
++ if (!(f = fork()))
++  {
++   char *(args[11]);
++   unsigned long u;
++   int n;
++   int uid;
++   int gid;
++   char *x;
++   unsigned int xlen;
++   
++   r[at] = 0;
++   if (!r[0]) _exit(0); /* <> */
++
++   if (chdir(auto_qmail) == -1) _exit(QLX_USAGE);
++
++   nughde_get(r);
++
++   x = nughde.s;
++   xlen = nughde.len;
++
++   args[0] = "bin/qmail-local";
++   args[1] = "--";
++   args[2] = x;
++   n = byte_chr(x,xlen,0); if (n++ == xlen) _exit(QLX_USAGE); x += n; xlen -= n;
++
++   scan_ulong(x,&u);
++   uid = u;
++   n = byte_chr(x,xlen,0); if (n++ == xlen) _exit(QLX_USAGE); x += n; xlen -= n;
++
++   scan_ulong(x,&u);
++   gid = u;
++   n = byte_chr(x,xlen,0); if (n++ == xlen) _exit(QLX_USAGE); x += n; xlen -= n;
++
++   args[3] = x;
++   n = byte_chr(x,xlen,0); if (n++ == xlen) _exit(QLX_USAGE); x += n; xlen -= n;
++
++   args[4] = r;
++   args[5] = x;
++   n = byte_chr(x,xlen,0); if (n++ == xlen) _exit(QLX_USAGE); x += n; xlen -= n;
++
++   args[6] = x;
++   n = byte_chr(x,xlen,0); if (n++ == xlen) _exit(QLX_USAGE); x += n; xlen -= n;
++
++   args[7] = r + at + 1;
++   args[8] = s;
++   args[9] = aliasempty;
++   args[10] = 0;
++
++   if (fd_move(0,fdmess) == -1) _exit(QLX_SYS);
++   if (fd_move(1,fdout) == -1) _exit(QLX_SYS);
++   if (fd_copy(2,1) == -1) _exit(QLX_SYS);
++   if (prot_gid(gid) == -1) _exit(QLX_USAGE);
++   if (prot_uid(uid) == -1) _exit(QLX_USAGE);
++   if (!getuid()) _exit(QLX_ROOT);
++
++   execv(*args,args);
++   if (error_temp(errno)) _exit(QLX_EXECSOFT);
++   _exit(QLX_EXECHARD);
++  }
++ return f;
++}
+diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/qmail-newmrh.c /tmp/tmpab2ykks0/netqmail-1.06/qmail-newmrh.c
+--- a/qmail-newmrh.c	1998-06-15 12:53:16.000000000 +0200
++++ b/qmail-newmrh.c	2026-05-31 18:51:40.245973771 +0200
+@@ -1,3 +1,5 @@
++#include <stdio.h>
++#include <sys/stat.h>
+ #include "strerr.h"
+ #include "stralloc.h"
+ #include "substdio.h"
+@@ -7,6 +9,7 @@
+ #include "open.h"
+ #include "auto_qmail.h"
+ #include "cdbmss.h"
++#include "case.h"
+ 
+ #define FATAL "qmail-newmrh: fatal: "
+ 
+diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/qmail-newu.c /tmp/tmpab2ykks0/netqmail-1.06/qmail-newu.c
+--- a/qmail-newu.c	1998-06-15 12:53:16.000000000 +0200
++++ b/qmail-newu.c	2026-05-31 18:51:40.263931042 +0200
+@@ -1,3 +1,5 @@
++#include <sys/stat.h>
++#include <stdio.h>
+ #include "stralloc.h"
+ #include "subfd.h"
+ #include "getln.h"
+@@ -9,6 +11,7 @@
+ #include "error.h"
+ #include "case.h"
+ #include "auto_qmail.h"
++#include "byte.h"
+ 
+ void die_temp() { _exit(111); }
+ 
+diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/qmail-pw2u.c /tmp/tmpab2ykks0/netqmail-1.06/qmail-pw2u.c
+--- a/qmail-pw2u.c	2026-05-31 18:51:40.536295313 +0200
++++ b/qmail-pw2u.c	2026-05-31 18:51:40.275322695 +0200
+@@ -17,6 +17,7 @@
+ #include "auto_break.h"
+ #include "auto_qmail.h"
+ #include "auto_usera.h"
++#include "byte.h"
+ 
+ void die_chdir()
+ {
+diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/qmail-qmqpc.c /tmp/tmpab2ykks0/netqmail-1.06/qmail-qmqpc.c
+--- a/qmail-qmqpc.c	1998-06-15 12:53:16.000000000 +0200
++++ b/qmail-qmqpc.c	2026-05-31 18:51:40.283960008 +0200
+@@ -135,7 +135,7 @@
+ 
+ stralloc servers = {0};
+ 
+-main()
++int main(void)
+ {
+   int i;
+   int j;
+diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/qmail-qmqpd.c /tmp/tmpab2ykks0/netqmail-1.06/qmail-qmqpd.c
+--- a/qmail-qmqpd.c	1998-06-15 12:53:16.000000000 +0200
++++ b/qmail-qmqpd.c	2026-05-31 18:51:40.301820955 +0200
+@@ -8,6 +8,8 @@
+ #include "now.h"
+ #include "fmt.h"
+ #include "env.h"
++#include "byte.h"
++#include "str.h"
+ 
+ void resources() { _exit(111); }
+ 
+@@ -105,7 +107,7 @@
+ 
+ int flagok = 1;
+ 
+-main()
++int main(void)
+ {
+   char *result;
+   unsigned long qp;
+diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/qmail-qmtpd.c /tmp/tmpab2ykks0/netqmail-1.06/qmail-qmtpd.c
+--- a/qmail-qmtpd.c	2026-05-31 18:51:40.540973785 +0200
++++ b/qmail-qmtpd.c	2026-05-31 18:51:40.314232393 +0200
+@@ -12,6 +12,7 @@
+ #include "readwrite.h"
+ #include "control.h"
+ #include "received.h"
++#include "scan.h"
+ 
+ void badproto() { _exit(100); }
+ void resources() { _exit(111); }
+@@ -75,7 +76,7 @@
+ char *relayclient;
+ int relayclientlen;
+ 
+-main()
++int main(void)
+ {
+   char ch;
+   int i;
+diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/qmail-rspawn.c /tmp/tmpab2ykks0/netqmail-1.06/qmail-rspawn.c
+--- a/qmail-rspawn.c	1998-06-15 12:53:16.000000000 +0200
++++ b/qmail-rspawn.c	2026-05-31 18:51:40.442896892 +0200
+@@ -1,3 +1,4 @@
++#include <unistd.h>
+ #include "fd.h"
+ #include "wait.h"
+ #include "substdio.h"
+diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/qmail-rspawn.c.orig /tmp/tmpab2ykks0/netqmail-1.06/qmail-rspawn.c.orig
+--- a/qmail-rspawn.c.orig	1970-01-01 01:00:00.000000000 +0100
++++ b/qmail-rspawn.c.orig	1998-06-15 12:53:16.000000000 +0200
+@@ -0,0 +1,103 @@
++#include "fd.h"
++#include "wait.h"
++#include "substdio.h"
++#include "exit.h"
++#include "fork.h"
++#include "error.h"
++#include "tcpto.h"
++
++void initialize(argc,argv)
++int argc;
++char **argv;
++{
++ tcpto_clean();
++}
++
++int truncreport = 0;
++
++void report(ss,wstat,s,len)
++substdio *ss;
++int wstat;
++char *s;
++int len;
++{
++ int j;
++ int k;
++ int result;
++ int orr;
++
++ if (wait_crashed(wstat))
++  { substdio_puts(ss,"Zqmail-remote crashed.\n"); return; }
++ switch(wait_exitcode(wstat))
++  {
++   case 0: break;
++   case 111: substdio_puts(ss,"ZUnable to run qmail-remote.\n"); return;
++   default: substdio_puts(ss,"DUnable to run qmail-remote.\n"); return;
++  }
++ if (!len)
++  { substdio_puts(ss,"Zqmail-remote produced no output.\n"); return; }
++
++ result = -1;
++ j = 0;
++ for (k = 0;k < len;++k)
++   if (!s[k])
++    {
++     if (s[j] == 'K') { result = 1; break; }
++     if (s[j] == 'Z') { result = 0; break; }
++     if (s[j] == 'D') break;
++     j = k + 1;
++    }
++
++ orr = result;
++ switch(s[0])
++  {
++   case 's': orr = 0; break;
++   case 'h': orr = -1;
++  }
++
++ switch(orr)
++  {
++   case 1: substdio_put(ss,"K",1); break;
++   case 0: substdio_put(ss,"Z",1); break;
++   case -1: substdio_put(ss,"D",1); break;
++  }
++
++ for (k = 1;k < len;)
++   if (!s[k++])
++    {
++     substdio_puts(ss,s + 1);
++     if (result <= orr)
++       if (k < len)
++	 switch(s[k])
++	  {
++	   case 'Z': case 'D': case 'K':
++             substdio_puts(ss,s + k + 1);
++	  }
++     break;
++    }
++}
++
++int spawn(fdmess,fdout,s,r,at)
++int fdmess; int fdout;
++char *s; char *r; int at;
++{
++ int f;
++ char *(args[5]);
++
++ args[0] = "qmail-remote";
++ args[1] = r + at + 1;
++ args[2] = s;
++ args[3] = r;
++ args[4] = 0;
++
++ if (!(f = vfork()))
++  {
++   if (fd_move(0,fdmess) == -1) _exit(111);
++   if (fd_move(1,fdout) == -1) _exit(111);
++   if (fd_copy(2,1) == -1) _exit(111);
++   execvp(*args,args);
++   if (error_temp(errno)) _exit(111);
++   _exit(100);
++  }
++ return f;
++}
+diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/qmail-send.c /tmp/tmpab2ykks0/netqmail-1.06/qmail-send.c
+--- a/qmail-send.c	1998-06-15 12:53:16.000000000 +0200
++++ b/qmail-send.c	2026-05-31 18:51:40.331974253 +0200
+@@ -1,5 +1,6 @@
+ #include <sys/types.h>
+ #include <sys/stat.h>
++#include <utime.h>
+ #include "readwrite.h"
+ #include "sig.h"
+ #include "direntry.h"
+@@ -452,15 +453,15 @@
+ {
+  int c;
+  struct prioq_elt pe;
+- time_t ut[2]; /* XXX: more portable than utimbuf, but still worrisome */
++ struct utimbuf ut;
+ 
+  for (c = 0;c < CHANNELS;++c)
+    while (prioq_min(&pqchan[c],&pe))
+     {
+      prioq_delmin(&pqchan[c]);
+      fnmake_chanaddr(pe.id,c);
+-     ut[0] = ut[1] = pe.dt;
+-     if (utime(fn.s,ut) == -1)
++     ut.actime = ut.modtime = pe.dt;
++     if (utime(fn.s,&ut) == -1)
+        log3("warning: unable to utime ",fn.s,"; message will be retried too soon\n");
+     }
+ }
+diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/qmail-showctl.c /tmp/tmpab2ykks0/netqmail-1.06/qmail-showctl.c
+--- a/qmail-showctl.c	1998-06-15 12:53:16.000000000 +0200
++++ b/qmail-showctl.c	2026-05-31 18:51:40.483759431 +0200
+@@ -1,5 +1,6 @@
+ #include <sys/types.h>
+ #include <sys/stat.h>
++#include <unistd.h>
+ #include "substdio.h"
+ #include "subfd.h"
+ #include "exit.h"
+diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/qmail-showctl.c.orig /tmp/tmpab2ykks0/netqmail-1.06/qmail-showctl.c.orig
+--- a/qmail-showctl.c.orig	1970-01-01 01:00:00.000000000 +0100
++++ b/qmail-showctl.c.orig	1998-06-15 12:53:16.000000000 +0200
+@@ -0,0 +1,306 @@
++#include <sys/types.h>
++#include <sys/stat.h>
++#include "substdio.h"
++#include "subfd.h"
++#include "exit.h"
++#include "fmt.h"
++#include "str.h"
++#include "control.h"
++#include "constmap.h"
++#include "stralloc.h"
++#include "direntry.h"
++#include "auto_uids.h"
++#include "auto_qmail.h"
++#include "auto_break.h"
++#include "auto_patrn.h"
++#include "auto_spawn.h"
++#include "auto_split.h"
++
++stralloc me = {0};
++int meok;
++
++stralloc line = {0};
++char num[FMT_ULONG];
++
++void safeput(buf,len)
++char *buf;
++unsigned int len;
++{
++  char ch;
++
++  while (len > 0) {
++    ch = *buf;
++    if ((ch < 32) || (ch > 126)) ch = '?';
++    substdio_put(subfdout,&ch,1);
++    ++buf;
++    --len;
++  }
++}
++
++void do_int(fn,def,pre,post)
++char *fn;
++char *def;
++char *pre;
++char *post;
++{
++  int i;
++  substdio_puts(subfdout,"\n");
++  substdio_puts(subfdout,fn);
++  substdio_puts(subfdout,": ");
++  switch(control_readint(&i,fn)) {
++    case 0:
++      substdio_puts(subfdout,"(Default.) ");
++      substdio_puts(subfdout,pre);
++      substdio_puts(subfdout,def);
++      substdio_puts(subfdout,post);
++      substdio_puts(subfdout,".\n");
++      break;
++    case 1:
++      if (i < 0) i = 0;
++      substdio_puts(subfdout,pre);
++      substdio_put(subfdout,num,fmt_uint(num,i));
++      substdio_puts(subfdout,post);
++      substdio_puts(subfdout,".\n");
++      break;
++    default:
++      substdio_puts(subfdout,"Oops! Trouble reading this file.\n");
++      break;
++  }
++}
++
++void do_str(fn,flagme,def,pre)
++char *fn;
++int flagme;
++char *def;
++char *pre;
++{
++  substdio_puts(subfdout,"\n");
++  substdio_puts(subfdout,fn);
++  substdio_puts(subfdout,": ");
++  switch(control_readline(&line,fn)) {
++    case 0:
++      substdio_puts(subfdout,"(Default.) ");
++      if (!stralloc_copys(&line,def)) {
++	substdio_puts(subfdout,"Oops! Out of memory.\n");
++	break;
++      }
++      if (flagme && meok)
++	if (!stralloc_copy(&line,&me)) {
++	  substdio_puts(subfdout,"Oops! Out of memory.\n");
++	  break;
++	}
++    case 1:
++      substdio_puts(subfdout,pre);
++      safeput(line.s,line.len);
++      substdio_puts(subfdout,".\n");
++      break;
++    default:
++      substdio_puts(subfdout,"Oops! Trouble reading this file.\n");
++      break;
++  }
++}
++
++int do_lst(fn,def,pre,post)
++char *fn;
++char *def;
++char *pre;
++char *post;
++{
++  int i;
++  int j;
++
++  substdio_puts(subfdout,"\n");
++  substdio_puts(subfdout,fn);
++  substdio_puts(subfdout,": ");
++  switch(control_readfile(&line,fn)) {
++    case 0:
++      substdio_puts(subfdout,"(Default.) ");
++      substdio_puts(subfdout,def);
++      substdio_puts(subfdout,"\n");
++      return 0;
++    case 1:
++      substdio_puts(subfdout,"\n");
++      i = 0;
++      for (j = 0;j < line.len;++j)
++	if (!line.s[j]) {
++          substdio_puts(subfdout,pre);
++          safeput(line.s + i,j - i);
++          substdio_puts(subfdout,post);
++          substdio_puts(subfdout,"\n");
++	  i = j + 1;
++	}
++      return 1;
++    default:
++      substdio_puts(subfdout,"Oops! Trouble reading this file.\n");
++      return -1;
++  }
++}
++
++void main()
++{
++  DIR *dir;
++  direntry *d;
++  struct stat stmrh;
++  struct stat stmrhcdb;
++
++  substdio_puts(subfdout,"qmail home directory: ");
++  substdio_puts(subfdout,auto_qmail);
++  substdio_puts(subfdout,".\n");
++
++  substdio_puts(subfdout,"user-ext delimiter: ");
++  substdio_puts(subfdout,auto_break);
++  substdio_puts(subfdout,".\n");
++
++  substdio_puts(subfdout,"paternalism (in decimal): ");
++  substdio_put(subfdout,num,fmt_ulong(num,(unsigned long) auto_patrn));
++  substdio_puts(subfdout,".\n");
++
++  substdio_puts(subfdout,"silent concurrency limit: ");
++  substdio_put(subfdout,num,fmt_ulong(num,(unsigned long) auto_spawn));
++  substdio_puts(subfdout,".\n");
++
++  substdio_puts(subfdout,"subdirectory split: ");
++  substdio_put(subfdout,num,fmt_ulong(num,(unsigned long) auto_split));
++  substdio_puts(subfdout,".\n");
++
++  substdio_puts(subfdout,"user ids: ");
++  substdio_put(subfdout,num,fmt_ulong(num,(unsigned long) auto_uida));
++  substdio_puts(subfdout,", ");
++  substdio_put(subfdout,num,fmt_ulong(num,(unsigned long) auto_uidd));
++  substdio_puts(subfdout,", ");
++  substdio_put(subfdout,num,fmt_ulong(num,(unsigned long) auto_uidl));
++  substdio_puts(subfdout,", ");
++  substdio_put(subfdout,num,fmt_ulong(num,(unsigned long) auto_uido));
++  substdio_puts(subfdout,", ");
++  substdio_put(subfdout,num,fmt_ulong(num,(unsigned long) auto_uidp));
++  substdio_puts(subfdout,", ");
++  substdio_put(subfdout,num,fmt_ulong(num,(unsigned long) auto_uidq));
++  substdio_puts(subfdout,", ");
++  substdio_put(subfdout,num,fmt_ulong(num,(unsigned long) auto_uidr));
++  substdio_puts(subfdout,", ");
++  substdio_put(subfdout,num,fmt_ulong(num,(unsigned long) auto_uids));
++  substdio_puts(subfdout,".\n");
++
++  substdio_puts(subfdout,"group ids: ");
++  substdio_put(subfdout,num,fmt_ulong(num,(unsigned long) auto_gidn));
++  substdio_puts(subfdout,", ");
++  substdio_put(subfdout,num,fmt_ulong(num,(unsigned long) auto_gidq));
++  substdio_puts(subfdout,".\n");
++
++  if (chdir(auto_qmail) == -1) {
++    substdio_puts(subfdout,"Oops! Unable to chdir to ");
++    substdio_puts(subfdout,auto_qmail);
++    substdio_puts(subfdout,".\n");
++    substdio_flush(subfdout);
++    _exit(111);
++  }
++  if (chdir("control") == -1) {
++    substdio_puts(subfdout,"Oops! Unable to chdir to control.\n");
++    substdio_flush(subfdout);
++    _exit(111);
++  }
++
++  dir = opendir(".");
++  if (!dir) {
++    substdio_puts(subfdout,"Oops! Unable to open current directory.\n");
++    substdio_flush(subfdout);
++    _exit(111);
++  }
++
++  meok = control_readline(&me,"me");
++  if (meok == -1) {
++    substdio_puts(subfdout,"Oops! Trouble reading control/me.");
++    substdio_flush(subfdout);
++    _exit(111);
++  }
++
++  do_lst("badmailfrom","Any MAIL FROM is allowed.",""," not accepted in MAIL FROM.");
++  do_str("bouncefrom",0,"MAILER-DAEMON","Bounce user name is ");
++  do_str("bouncehost",1,"bouncehost","Bounce host name is ");
++  do_int("concurrencylocal","10","Local concurrency is ","");
++  do_int("concurrencyremote","20","Remote concurrency is ","");
++  do_int("databytes","0","SMTP DATA limit is "," bytes");
++  do_str("defaultdomain",1,"defaultdomain","Default domain name is ");
++  do_str("defaulthost",1,"defaulthost","Default host name is ");
++  do_str("doublebouncehost",1,"doublebouncehost","2B recipient host: ");
++  do_str("doublebounceto",0,"postmaster","2B recipient user: ");
++  do_str("envnoathost",1,"envnoathost","Presumed domain name is ");
++  do_str("helohost",1,"helohost","SMTP client HELO host name is ");
++  do_str("idhost",1,"idhost","Message-ID host name is ");
++  do_str("localiphost",1,"localiphost","Local IP address becomes ");
++  do_lst("locals","Messages for me are delivered locally.","Messages for "," are delivered locally.");
++  do_str("me",0,"undefined! Uh-oh","My name is ");
++  do_lst("percenthack","The percent hack is not allowed.","The percent hack is allowed for user%host@",".");
++  do_str("plusdomain",1,"plusdomain","Plus domain name is ");
++  do_lst("qmqpservers","No QMQP servers.","QMQP server: ",".");
++  do_int("queuelifetime","604800","Message lifetime in the queue is "," seconds");
++
++  if (do_lst("rcpthosts","SMTP clients may send messages to any recipient.","SMTP clients may send messages to recipients at ","."))
++    do_lst("morercpthosts","No effect.","SMTP clients may send messages to recipients at ",".");
++  else
++    do_lst("morercpthosts","No rcpthosts; morercpthosts is irrelevant.","No rcpthosts; doesn't matter that morercpthosts has ",".");
++  /* XXX: check morercpthosts.cdb contents */
++  substdio_puts(subfdout,"\nmorercpthosts.cdb: ");
++  if (stat("morercpthosts",&stmrh) == -1)
++    if (stat("morercpthosts.cdb",&stmrhcdb) == -1)
++      substdio_puts(subfdout,"(Default.) No effect.\n");
++    else
++      substdio_puts(subfdout,"Oops! morercpthosts.cdb exists but morercpthosts doesn't.\n");
++  else
++    if (stat("morercpthosts.cdb",&stmrhcdb) == -1)
++      substdio_puts(subfdout,"Oops! morercpthosts exists but morercpthosts.cdb doesn't.\n");
++    else
++      if (stmrh.st_mtime > stmrhcdb.st_mtime)
++        substdio_puts(subfdout,"Oops! morercpthosts.cdb is older than morercpthosts.\n");
++      else
++        substdio_puts(subfdout,"Modified recently enough; hopefully up to date.\n");
++
++  do_str("smtpgreeting",1,"smtpgreeting","SMTP greeting: 220 ");
++  do_lst("smtproutes","No artificial SMTP routes.","SMTP route: ","");
++  do_int("timeoutconnect","60","SMTP client connection timeout is "," seconds");
++  do_int("timeoutremote","1200","SMTP client data timeout is "," seconds");
++  do_int("timeoutsmtpd","1200","SMTP server data timeout is "," seconds");
++  do_lst("virtualdomains","No virtual domains.","Virtual domain: ","");
++
++  while (d = readdir(dir)) {
++    if (str_equal(d->d_name,".")) continue;
++    if (str_equal(d->d_name,"..")) continue;
++    if (str_equal(d->d_name,"bouncefrom")) continue;
++    if (str_equal(d->d_name,"bouncehost")) continue;
++    if (str_equal(d->d_name,"badmailfrom")) continue;
++    if (str_equal(d->d_name,"bouncefrom")) continue;
++    if (str_equal(d->d_name,"bouncehost")) continue;
++    if (str_equal(d->d_name,"concurrencylocal")) continue;
++    if (str_equal(d->d_name,"concurrencyremote")) continue;
++    if (str_equal(d->d_name,"databytes")) continue;
++    if (str_equal(d->d_name,"defaultdomain")) continue;
++    if (str_equal(d->d_name,"defaulthost")) continue;
++    if (str_equal(d->d_name,"doublebouncehost")) continue;
++    if (str_equal(d->d_name,"doublebounceto")) continue;
++    if (str_equal(d->d_name,"envnoathost")) continue;
++    if (str_equal(d->d_name,"helohost")) continue;
++    if (str_equal(d->d_name,"idhost")) continue;
++    if (str_equal(d->d_name,"localiphost")) continue;
++    if (str_equal(d->d_name,"locals")) continue;
++    if (str_equal(d->d_name,"me")) continue;
++    if (str_equal(d->d_name,"morercpthosts")) continue;
++    if (str_equal(d->d_name,"morercpthosts.cdb")) continue;
++    if (str_equal(d->d_name,"percenthack")) continue;
++    if (str_equal(d->d_name,"plusdomain")) continue;
++    if (str_equal(d->d_name,"qmqpservers")) continue;
++    if (str_equal(d->d_name,"queuelifetime")) continue;
++    if (str_equal(d->d_name,"rcpthosts")) continue;
++    if (str_equal(d->d_name,"smtpgreeting")) continue;
++    if (str_equal(d->d_name,"smtproutes")) continue;
++    if (str_equal(d->d_name,"timeoutconnect")) continue;
++    if (str_equal(d->d_name,"timeoutremote")) continue;
++    if (str_equal(d->d_name,"timeoutsmtpd")) continue;
++    if (str_equal(d->d_name,"virtualdomains")) continue;
++    substdio_puts(subfdout,"\n");
++    substdio_puts(subfdout,d->d_name);
++    substdio_puts(subfdout,": I have no idea what this file does.\n");
++  }
++
++  substdio_flush(subfdout);
++  _exit(0);
++}
+diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/qmail-start.c /tmp/tmpab2ykks0/netqmail-1.06/qmail-start.c
+--- a/qmail-start.c	1998-06-15 12:53:16.000000000 +0200
++++ b/qmail-start.c	2026-05-31 18:51:40.342665830 +0200
+@@ -1,3 +1,5 @@
++#include <unistd.h>
++#include <sys/stat.h>
+ #include "fd.h"
+ #include "prot.h"
+ #include "exit.h"
+diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/qmail-tcpto.c /tmp/tmpab2ykks0/netqmail-1.06/qmail-tcpto.c
+--- a/qmail-tcpto.c	1998-06-15 12:53:16.000000000 +0200
++++ b/qmail-tcpto.c	2026-05-31 18:51:40.455568144 +0200
+@@ -1,3 +1,4 @@
++#include <unistd.h>
+ /* XXX: this program knows quite a bit about tcpto's internals */
+ 
+ #include "substdio.h"
+@@ -10,6 +11,8 @@
+ #include "exit.h"
+ #include "datetime.h"
+ #include "now.h"
++#include "byte.h"
++#include "open.h"
+ 
+ void die(n) int n; { substdio_flush(subfdout); _exit(n); }
+ 
+diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/qmail-tcpto.c.orig /tmp/tmpab2ykks0/netqmail-1.06/qmail-tcpto.c.orig
+--- a/qmail-tcpto.c.orig	1970-01-01 01:00:00.000000000 +0100
++++ b/qmail-tcpto.c.orig	2026-05-31 18:51:40.349254697 +0200
+@@ -0,0 +1,87 @@
++/* XXX: this program knows quite a bit about tcpto's internals */
++
++#include "substdio.h"
++#include "subfd.h"
++#include "auto_qmail.h"
++#include "fmt.h"
++#include "ip.h"
++#include "lock.h"
++#include "error.h"
++#include "exit.h"
++#include "datetime.h"
++#include "now.h"
++#include "byte.h"
++#include "open.h"
++
++void die(n) int n; { substdio_flush(subfdout); _exit(n); }
++
++void warn(s) char *s;
++{
++ char *x;
++ x = error_str(errno);
++ substdio_puts(subfdout,s);
++ substdio_puts(subfdout,": ");
++ substdio_puts(subfdout,x);
++ substdio_puts(subfdout,"\n");
++}
++
++void die_chdir() { warn("fatal: unable to chdir"); die(111); }
++void die_open() { warn("fatal: unable to open tcpto"); die(111); }
++void die_lock() { warn("fatal: unable to lock tcpto"); die(111); }
++void die_read() { warn("fatal: unable to read tcpto"); die(111); }
++
++char tcpto_buf[1024];
++
++char tmp[FMT_ULONG + IPFMT];
++
++void main()
++{
++ int fdlock;
++ int fd;
++ int r;
++ int i;
++ char *record;
++ struct ip_address ip;
++ datetime_sec when;
++ datetime_sec start;
++
++ if (chdir(auto_qmail) == -1) die_chdir();
++ if (chdir("queue/lock") == -1) die_chdir();
++
++ fdlock = open_write("tcpto");
++ if (fdlock == -1) die_open();
++ fd = open_read("tcpto");
++ if (fd == -1) die_open();
++ if (lock_ex(fdlock) == -1) die_lock();
++ r = read(fd,tcpto_buf,sizeof(tcpto_buf));
++ close(fd);
++ close(fdlock);
++
++ if (r == -1) die_read();
++ r >>= 4;
++
++ start = now();
++
++ record = tcpto_buf;
++ for (i = 0;i < r;++i)
++  {
++   if (record[4] >= 1)
++    {
++     byte_copy(&ip,4,record);
++     when = (unsigned long) (unsigned char) record[11];
++     when = (when << 8) + (unsigned long) (unsigned char) record[10];
++     when = (when << 8) + (unsigned long) (unsigned char) record[9];
++     when = (when << 8) + (unsigned long) (unsigned char) record[8];
++
++     substdio_put(subfdout,tmp,ip_fmt(tmp,&ip));
++     substdio_puts(subfdout," timed out ");
++     substdio_put(subfdout,tmp,fmt_ulong(tmp,(unsigned long) (start - when)));
++     substdio_puts(subfdout," seconds ago; # recent timeouts: ");
++     substdio_put(subfdout,tmp,fmt_ulong(tmp,(unsigned long) (unsigned char) record[4]));
++     substdio_puts(subfdout,"\n");
++    }
++   record += 16;
++  }
++
++ die(0);
++}
+diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/rcpthosts.c /tmp/tmpab2ykks0/netqmail-1.06/rcpthosts.c
+--- a/rcpthosts.c	1998-06-15 12:53:16.000000000 +0200
++++ b/rcpthosts.c	2026-05-31 18:51:40.359101294 +0200
+@@ -6,6 +6,7 @@
+ #include "constmap.h"
+ #include "stralloc.h"
+ #include "rcpthosts.h"
++#include "case.h"
+ 
+ static int flagrh = 0;
+ static stralloc rh = {0};
+diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/remoteinfo.c /tmp/tmpab2ykks0/netqmail-1.06/remoteinfo.c
+--- a/remoteinfo.c	1998-06-15 12:53:16.000000000 +0200
++++ b/remoteinfo.c	2026-05-31 18:51:40.464195011 +0200
+@@ -2,6 +2,7 @@
+ #include <sys/socket.h>
+ #include <netinet/in.h>
+ #include <fcntl.h>
++#include <unistd.h>
+ #include "byte.h"
+ #include "substdio.h"
+ #include "ip.h"
+diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/remoteinfo.c.orig /tmp/tmpab2ykks0/netqmail-1.06/remoteinfo.c.orig
+--- a/remoteinfo.c.orig	1970-01-01 01:00:00.000000000 +0100
++++ b/remoteinfo.c.orig	1998-06-15 12:53:16.000000000 +0200
+@@ -0,0 +1,77 @@
++#include <sys/types.h>
++#include <sys/socket.h>
++#include <netinet/in.h>
++#include <fcntl.h>
++#include "byte.h"
++#include "substdio.h"
++#include "ip.h"
++#include "fmt.h"
++#include "timeoutconn.h"
++#include "timeoutread.h"
++#include "timeoutwrite.h"
++#include "remoteinfo.h"
++
++static char line[999];
++static int t;
++
++static int mywrite(fd,buf,len) int fd; char *buf; int len;
++{
++  return timeoutwrite(t,fd,buf,len);
++}
++static int myread(fd,buf,len) int fd; char *buf; int len;
++{
++  return timeoutread(t,fd,buf,len);
++}
++
++char *remoteinfo_get(ipr,rp,ipl,lp,timeout)
++struct ip_address *ipr;
++unsigned long rp;
++struct ip_address *ipl;
++unsigned long lp;
++int timeout;
++{
++  char *x;
++  int s;
++  struct sockaddr_in sin;
++  substdio ss;
++  char buf[32];
++  unsigned int len;
++  int numcolons;
++  char ch;
++
++  t = timeout;
++ 
++  s = socket(AF_INET,SOCK_STREAM,0);
++  if (s == -1) return 0;
++ 
++  byte_zero(&sin,sizeof(sin));
++  sin.sin_family = AF_INET;
++  byte_copy(&sin.sin_addr,4,ipl);
++  sin.sin_port = 0;
++  if (bind(s,(struct sockaddr *) &sin,sizeof(sin)) == -1) { close(s); return 0; }
++  if (timeoutconn(s,ipr,113,timeout) == -1) { close(s); return 0; }
++  fcntl(s,F_SETFL,fcntl(s,F_GETFL,0) & ~O_NDELAY);
++ 
++  len = 0;
++  len += fmt_ulong(line + len,rp);
++  len += fmt_str(line + len," , ");
++  len += fmt_ulong(line + len,lp);
++  len += fmt_str(line + len,"\r\n");
++ 
++  substdio_fdbuf(&ss,mywrite,s,buf,sizeof buf);
++  if (substdio_putflush(&ss,line,len) == -1) { close(s); return 0; }
++ 
++  substdio_fdbuf(&ss,myread,s,buf,sizeof buf);
++  x = line;
++  numcolons = 0;
++  for (;;) {
++    if (substdio_get(&ss,&ch,1) != 1) { close(s); return 0; }
++    if ((ch == ' ') || (ch == '\t') || (ch == '\r')) continue;
++    if (ch == '\n') break;
++    if (numcolons < 3) { if (ch == ':') ++numcolons; }
++    else { *x++ = ch; if (x == line + sizeof(line) - 1) break; }
++  }
++  *x = 0;
++  close(s);
++  return line;
++}
+diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/scan.h /tmp/tmpab2ykks0/netqmail-1.06/scan.h
+--- a/scan.h	1998-06-15 12:53:16.000000000 +0200
++++ b/scan.h	2026-05-31 18:51:40.367949787 +0200
+@@ -23,5 +23,6 @@
+ extern unsigned int scan_memcmp();
+ 
+ extern unsigned int scan_long();
++extern unsigned int scan_8long();
+ 
+ #endif
+diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/seek_cur.c /tmp/tmpab2ykks0/netqmail-1.06/seek_cur.c
+--- a/seek_cur.c	1998-06-15 12:53:16.000000000 +0200
++++ b/seek_cur.c	2026-05-31 18:51:40.381723439 +0200
+@@ -1,4 +1,5 @@
+ #include <sys/types.h>
++#include <unistd.h>
+ #include "seek.h"
+ 
+ #define CUR 1 /* sigh */
+diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/seek_end.c /tmp/tmpab2ykks0/netqmail-1.06/seek_end.c
+--- a/seek_end.c	1998-06-15 12:53:16.000000000 +0200
++++ b/seek_end.c	2026-05-31 18:51:40.387553963 +0200
+@@ -1,4 +1,5 @@
+ #include <sys/types.h>
++#include <unistd.h>
+ #include "seek.h"
+ 
+ #define END 2 /* sigh */
+diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/seek_set.c /tmp/tmpab2ykks0/netqmail-1.06/seek_set.c
+--- a/seek_set.c	1998-06-15 12:53:16.000000000 +0200
++++ b/seek_set.c	2026-05-31 18:51:40.396552494 +0200
+@@ -1,4 +1,5 @@
+ #include <sys/types.h>
++#include <unistd.h>
+ #include "seek.h"
+ 
+ #define SET 0 /* sigh */
+diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/seek_trunc.c /tmp/tmpab2ykks0/netqmail-1.06/seek_trunc.c
+--- a/seek_trunc.c	1998-06-15 12:53:16.000000000 +0200
++++ b/seek_trunc.c	2026-05-31 18:51:40.405496343 +0200
+@@ -1,4 +1,5 @@
+ #include <sys/types.h>
++#include <unistd.h>
+ #include "seek.h"
+ 
+ int seek_trunc(fd,pos) int fd; seek_pos pos;
+diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/sendmail.c /tmp/tmpab2ykks0/netqmail-1.06/sendmail.c
+--- a/sendmail.c	2007-11-30 21:22:54.000000000 +0100
++++ b/sendmail.c	2026-05-31 18:51:40.458117740 +0200
+@@ -1,3 +1,4 @@
++#include <unistd.h>
+ #include "sgetopt.h"
+ #include "substdio.h"
+ #include "subfd.h"
+diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/sendmail.c.orig /tmp/tmpab2ykks0/netqmail-1.06/sendmail.c.orig
+--- a/sendmail.c.orig	1970-01-01 01:00:00.000000000 +0100
++++ b/sendmail.c.orig	2007-11-30 21:22:54.000000000 +0100
+@@ -0,0 +1,162 @@
++#include "sgetopt.h"
++#include "substdio.h"
++#include "subfd.h"
++#include "alloc.h"
++#include "auto_qmail.h"
++#include "exit.h"
++#include "env.h"
++#include "str.h"
++
++void nomem()
++{
++  substdio_putsflush(subfderr,"sendmail: fatal: out of memory\n");
++  _exit(111);
++}
++
++void die_usage()
++{
++  substdio_putsflush(subfderr,"sendmail: usage: sendmail [ -t ] [ -fsender ] [ -Fname ] [ -bp ] [ -bs ] [ arg ... ]\n");
++  _exit(100);
++}
++
++char *smtpdarg[] = { "bin/qmail-smtpd", 0 };
++void smtpd()
++{
++  if (!env_get("PROTO")) {
++    if (!env_put("RELAYCLIENT=")) nomem();
++    if (!env_put("DATABYTES=0")) nomem();
++    if (!env_put("PROTO=TCP")) nomem();
++    if (!env_put("TCPLOCALIP=127.0.0.1")) nomem();
++    if (!env_put("TCPLOCALHOST=localhost")) nomem();
++    if (!env_put("TCPREMOTEIP=127.0.0.1")) nomem();
++    if (!env_put("TCPREMOTEHOST=localhost")) nomem();
++    if (!env_put("TCPREMOTEINFO=sendmail-bs")) nomem();
++  }
++  execv(*smtpdarg,smtpdarg);
++  substdio_putsflush(subfderr,"sendmail: fatal: unable to run qmail-smtpd\n");
++  _exit(111);
++}
++
++char *qreadarg[] = { "bin/qmail-qread", 0 };
++void mailq()
++{
++  execv(*qreadarg,qreadarg);
++  substdio_putsflush(subfderr,"sendmail: fatal: unable to run qmail-qread\n");
++  _exit(111);
++}
++
++void do_sender(s)
++const char *s;
++{
++  char *x;
++  int n;
++  int a;
++  int i;
++  
++  env_unset("QMAILNAME");
++  env_unset("MAILNAME");
++  env_unset("NAME");
++  env_unset("QMAILHOST");
++  env_unset("MAILHOST");
++
++  n = str_len(s);
++  a = str_rchr(s, '@');
++  if (a == n)
++  {
++    env_put2("QMAILUSER", s);
++    return;
++  }
++  env_put2("QMAILHOST", s + a + 1);
++
++  x = (char *) alloc((a + 1) * sizeof(char));
++  if (!x) nomem();
++  for (i = 0; i < a; i++)
++    x[i] = s[i];
++  x[i] = 0;
++  env_put2("QMAILUSER", x);
++  alloc_free(x);
++}
++
++int flagh;
++char *sender;
++
++void main(argc,argv)
++int argc;
++char **argv;
++{
++  int opt;
++  char **qiargv;
++  char **arg;
++  int i;
++ 
++  if (chdir(auto_qmail) == -1) {
++    substdio_putsflush(subfderr,"sendmail: fatal: unable to switch to qmail home directory\n");
++    _exit(111);
++  }
++
++  flagh = 0;
++  sender = 0;
++  while ((opt = getopt(argc,argv,"vimte:f:p:o:B:F:EJxb:")) != opteof)
++    switch(opt) {
++      case 'B': break;
++      case 't': flagh = 1; break;
++      case 'f': sender = optarg; break;
++      case 'F': if (!env_put2("MAILNAME",optarg)) nomem(); break;
++      case 'p': break; /* could generate a Received line from optarg */
++      case 'v': break;
++      case 'i': break; /* what an absurd concept */
++      case 'x': break; /* SVR4 stupidity */
++      case 'm': break; /* twisted-paper-path blindness, incompetent design */
++      case 'e': break; /* qmail has only one error mode */
++      case 'o':
++        switch(optarg[0]) {
++	  case 'd': break; /* qmail has only one delivery mode */
++	  case 'e': break; /* see 'e' above */
++	  case 'i': break; /* see 'i' above */
++	  case 'm': break; /* see 'm' above */
++	}
++        break;
++      case 'E': case 'J': /* Sony NEWS-OS */
++        while (argv[optind][optpos]) ++optpos; /* skip optional argument */
++        break;
++      case 'b':
++	switch(optarg[0]) {
++	  case 'm': break;
++	  case 'p': mailq();
++	  case 's': smtpd();
++	  default: die_usage();
++	}
++	break;
++      default:
++	die_usage();
++    }
++  argc -= optind;
++  argv += optind;
++ 
++  if (str_equal(optprogname,"mailq"))
++    mailq();
++
++  if (str_equal(optprogname,"newaliases")) {
++    substdio_putsflush(subfderr,"sendmail: fatal: please use fastforward/newaliases instead\n");
++    _exit(100);
++  }
++
++  qiargv = (char **) alloc((argc + 10) * sizeof(char *));
++  if (!qiargv) nomem();
++ 
++  arg = qiargv;
++  *arg++ = "bin/qmail-inject";
++  *arg++ = (flagh ? "-H" : "-a");
++  if (sender) {
++    *arg++ = "-f";
++    *arg++ = sender;
++    do_sender(sender);
++  }
++  *arg++ = "--";
++  for (i = 0;i < argc;++i) *arg++ = argv[i];
++  *arg = 0;
++ 
++  execv(*qiargv,qiargv);
++  substdio_putsflush(subfderr,"sendmail: fatal: unable to run qmail-inject\n");
++  _exit(111);
++}
+diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/spawn.c /tmp/tmpab2ykks0/netqmail-1.06/spawn.c
+--- a/spawn.c	2007-11-30 21:22:54.000000000 +0100
++++ b/spawn.c	2026-05-31 18:51:40.487321182 +0200
+@@ -1,5 +1,6 @@
+ #include <sys/types.h>
+ #include <sys/stat.h>
++#include <unistd.h>
+ #include "sig.h"
+ #include "wait.h"
+ #include "substdio.h"
+diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/spawn.c.orig /tmp/tmpab2ykks0/netqmail-1.06/spawn.c.orig
+--- a/spawn.c.orig	1970-01-01 01:00:00.000000000 +0100
++++ b/spawn.c.orig	2007-11-30 21:22:54.000000000 +0100
+@@ -0,0 +1,260 @@
++#include <sys/types.h>
++#include <sys/stat.h>
++#include "sig.h"
++#include "wait.h"
++#include "substdio.h"
++#include "byte.h"
++#include "str.h"
++#include "alloc.h"
++#include "stralloc.h"
++#include "select.h"
++#include "exit.h"
++#include "coe.h"
++#include "open.h"
++#include "error.h"
++#include "auto_qmail.h"
++#include "auto_uids.h"
++#include "auto_spawn.h"
++
++extern int truncreport;
++extern int spawn();
++extern void report();
++extern void initialize();
++
++struct delivery
++ {
++  int used;
++  int fdin; /* pipe input */
++  int pid; /* zero if child is dead */
++  int wstat; /* if !pid: status of child */
++  int fdout; /* pipe output, -1 if !pid; delays eof until after death */
++  stralloc output;
++ }
++;
++
++struct delivery *d;
++
++void sigchld()
++{
++ int wstat;
++ int pid;
++ int i;
++ while ((pid = wait_nohang(&wstat)) > 0)
++   for (i = 0;i < auto_spawn;++i) if (d[i].used)
++     if (d[i].pid == pid)
++      {
++       close(d[i].fdout); d[i].fdout = -1;
++       d[i].wstat = wstat; d[i].pid = 0;
++      }
++}
++
++int flagwriting = 1;
++
++int okwrite(fd,buf,n) int fd; char *buf; int n;
++{
++ int w;
++ if (!flagwriting) return n;
++ w = write(fd,buf,n);
++ if (w != -1) return w;
++ if (errno == error_intr) return -1;
++ flagwriting = 0; close(fd);
++ return n;
++}
++
++int flagreading = 1;
++char outbuf[1024]; substdio ssout;
++
++int stage = 0; /* reading 0:delnum 1:messid 2:sender 3:recip */
++int flagabort = 0; /* if 1, everything except delnum is garbage */
++int delnum;
++stralloc messid = {0};
++stralloc sender = {0};
++stralloc recip = {0};
++
++void err(s) char *s;
++{
++ char ch; ch = delnum; substdio_put(&ssout,&ch,1);
++ substdio_puts(&ssout,s); substdio_putflush(&ssout,"",1);
++}
++
++void docmd()
++{
++ int f;
++ int i;
++ int j;
++ int fdmess;
++ int pi[2];
++ struct stat st;
++
++ if (flagabort) { err("Zqmail-spawn out of memory. (#4.3.0)\n"); return; }
++ if (delnum < 0) { err("ZInternal error: delnum negative. (#4.3.5)\n"); return; }
++ if (delnum >= auto_spawn) { err("ZInternal error: delnum too big. (#4.3.5)\n"); return; }
++ if (d[delnum].used) { err("ZInternal error: delnum in use. (#4.3.5)\n"); return; }
++ for (i = 0;i < messid.len;++i)
++   if (messid.s[i])
++     if (!i || (messid.s[i] != '/'))
++       if ((unsigned char) (messid.s[i] - '0') > 9)
++        { err("DInternal error: messid has nonnumerics. (#5.3.5)\n"); return; }
++ if (messid.len > 100) { err("DInternal error: messid too long. (#5.3.5)\n"); return; }
++ if (!messid.s[0]) { err("DInternal error: messid too short. (#5.3.5)\n"); return; }
++
++ if (!stralloc_copys(&d[delnum].output,""))
++  { err("Zqmail-spawn out of memory. (#4.3.0)\n"); return; }
++
++ j = byte_rchr(recip.s,recip.len,'@');
++ if (j >= recip.len) { err("DSorry, address must include host name. (#5.1.3)\n"); return; }
++
++ fdmess = open_read(messid.s);
++ if (fdmess == -1) { err("Zqmail-spawn unable to open message. (#4.3.0)\n"); return; }
++
++ if (fstat(fdmess,&st) == -1)
++  { close(fdmess); err("Zqmail-spawn unable to fstat message. (#4.3.0)\n"); return; }
++ if ((st.st_mode & S_IFMT) != S_IFREG)
++  { close(fdmess); err("ZSorry, message has wrong type. (#4.3.5)\n"); return; }
++ if (st.st_uid != auto_uidq) /* aaack! qmailq has to be trusted! */
++  /* your security is already toast at this point. damage control... */
++  { close(fdmess); err("ZSorry, message has wrong owner. (#4.3.5)\n"); return; }
++
++ if (pipe(pi) == -1)
++  { close(fdmess); err("Zqmail-spawn unable to create pipe. (#4.3.0)\n"); return; }
++
++ coe(pi[0]);
++
++ f = spawn(fdmess,pi[1],sender.s,recip.s,j);
++ close(fdmess);
++ if (f == -1)
++  { close(pi[0]); close(pi[1]); err("Zqmail-spawn unable to fork. (#4.3.0)\n"); return; }
++
++ d[delnum].fdin = pi[0];
++ d[delnum].fdout = pi[1]; coe(pi[1]);
++ d[delnum].pid = f;
++ d[delnum].used = 1;
++}
++
++char cmdbuf[1024];
++
++void getcmd()
++{
++ int i;
++ int r;
++ char ch;
++
++ r = read(0,cmdbuf,sizeof(cmdbuf));
++ if (r == 0)
++  { flagreading = 0; return; }
++ if (r == -1)
++  {
++   if (errno != error_intr)
++     flagreading = 0;
++   return;
++  }
++ 
++ for (i = 0;i < r;++i)
++  {
++   ch = cmdbuf[i];
++   switch(stage)
++    {
++     case 0:
++       delnum = (unsigned int) (unsigned char) ch;
++       messid.len = 0; stage = 1; break;
++     case 1:
++       if (!stralloc_append(&messid,&ch)) flagabort = 1;
++       if (ch) break;
++       sender.len = 0; stage = 2; break;
++     case 2:
++       if (!stralloc_append(&sender,&ch)) flagabort = 1;
++       if (ch) break;
++       recip.len = 0; stage = 3; break;
++     case 3:
++       if (!stralloc_append(&recip,&ch)) flagabort = 1;
++       if (ch) break;
++       docmd();
++       flagabort = 0; stage = 0; break;
++    }
++  }
++}
++
++char inbuf[128];
++
++void main(argc,argv)
++int argc;
++char **argv;
++{
++ char ch;
++ int i;
++ int r;
++ fd_set rfds;
++ int nfds;
++
++ if (chdir(auto_qmail) == -1) _exit(111);
++ if (chdir("queue/mess") == -1) _exit(111);
++ if (!stralloc_copys(&messid,"")) _exit(111);
++ if (!stralloc_copys(&sender,"")) _exit(111);
++ if (!stralloc_copys(&recip,"")) _exit(111);
++
++ d = (struct delivery *) alloc((auto_spawn + 10) * sizeof(struct delivery));
++ if (!d) _exit(111);
++
++ substdio_fdbuf(&ssout,okwrite,1,outbuf,sizeof(outbuf));
++
++ sig_pipeignore();
++ sig_childcatch(sigchld);
++
++ initialize(argc,argv);
++
++ ch = auto_spawn; substdio_putflush(&ssout,&ch,1);
++
++ for (i = 0;i < auto_spawn;++i) { d[i].used = 0; d[i].output.s = 0; }
++
++ for (;;)
++  {
++   if (!flagreading)
++    {
++     for (i = 0;i < auto_spawn;++i) if (d[i].used) break;
++     if (i >= auto_spawn) _exit(0);
++    }
++   sig_childunblock();
++
++   FD_ZERO(&rfds);
++   if (flagreading) FD_SET(0,&rfds);
++   nfds = 1;
++   for (i = 0;i < auto_spawn;++i) if (d[i].used)
++    { FD_SET(d[i].fdin,&rfds); if (d[i].fdin >= nfds) nfds = d[i].fdin + 1; }
++
++   r = select(nfds,&rfds,(fd_set *) 0,(fd_set *) 0,(struct timeval *) 0);
++   sig_childblock();
++
++   if (r != -1)
++    {
++     if (flagreading)
++       if (FD_ISSET(0,&rfds))
++	 getcmd();
++     for (i = 0;i < auto_spawn;++i) if (d[i].used)
++       if (FD_ISSET(d[i].fdin,&rfds))
++	{
++	 r = read(d[i].fdin,inbuf,128);
++	 if (r == -1)
++	   continue; /* read error on a readable pipe? be serious */
++	 if (r == 0)
++	  {
++           ch = i; substdio_put(&ssout,&ch,1);
++	   report(&ssout,d[i].wstat,d[i].output.s,d[i].output.len);
++	   substdio_put(&ssout,"",1);
++	   substdio_flush(&ssout);
++	   close(d[i].fdin); d[i].used = 0;
++	   continue;
++	  }
++	 while (!stralloc_readyplus(&d[i].output,r)) sleep(10); /*XXX*/
++	 byte_copy(d[i].output.s + d[i].output.len,r,inbuf);
++	 d[i].output.len += r;
++	 if (truncreport > 100)
++	   if (d[i].output.len > truncreport)
++	    {
++	     char *truncmess = "\nError report too long, sorry.\n";
++	     d[i].output.len = truncreport - str_len(truncmess) - 3;
++	     stralloc_cats(&d[i].output,truncmess);
++	    }
++	}
++    }
++  }
++}
+diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/tcp-env.c /tmp/tmpab2ykks0/netqmail-1.06/tcp-env.c
+--- a/tcp-env.c	1998-06-15 12:53:16.000000000 +0200
++++ b/tcp-env.c	2026-05-31 18:51:40.410773274 +0200
+@@ -2,6 +2,7 @@
+ #include <sys/socket.h>
+ #include <sys/param.h>
+ #include <netinet/in.h>
++#include <unistd.h>
+ #include "sig.h"
+ #include "stralloc.h"
+ #include "str.h"
+diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/trigger.c /tmp/tmpab2ykks0/netqmail-1.06/trigger.c
+--- a/trigger.c	1998-06-15 12:53:16.000000000 +0200
++++ b/trigger.c	2026-05-31 18:51:40.421269274 +0200
+@@ -1,3 +1,4 @@
++#include <unistd.h>
+ #include "select.h"
+ #include "open.h"
+ #include "trigger.h"
+diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/triggerpull.c /tmp/tmpab2ykks0/netqmail-1.06/triggerpull.c
+--- a/triggerpull.c	1998-06-15 12:53:16.000000000 +0200
++++ b/triggerpull.c	2026-05-31 18:51:40.435417975 +0200
+@@ -1,3 +1,4 @@
++#include <unistd.h>
+ #include "ndelay.h"
+ #include "open.h"
+ #include "triggerpull.h"
