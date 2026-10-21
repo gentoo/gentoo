@@ -19,7 +19,7 @@ if [[ ${PV} != 9999* ]]; then
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 fi
 
-VIDEO_CARDS="amdgpu exynos freedreno intel nouveau omap radeon tegra vc4 vivante vmware"
+VIDEO_CARDS="amdgpu exynos intel nouveau omap radeon tegra vc4 vivante vmware"
 for card in ${VIDEO_CARDS}; do
 	IUSE_VIDEO_CARDS+=" video_cards_${card}"
 done
@@ -55,7 +55,6 @@ multilib_src_configure() {
 		-Dcairo-tests=disabled
 		$(meson_feature video_cards_amdgpu amdgpu)
 		$(meson_feature video_cards_exynos exynos)
-		$(meson_feature video_cards_freedreno freedreno)
 		$(meson_feature video_cards_intel intel)
 		$(meson_feature video_cards_nouveau nouveau)
 		$(meson_feature video_cards_omap omap)
