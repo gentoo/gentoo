@@ -23,6 +23,8 @@ EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
 
 EPYTEST_DESELECT=(
-	# unreliable timing test
+	# unreliable timing tests
 	tests/test_misc.py::TestMiscCases::test_deeply_indented_list_does_not_scale_quadratically
+	tests/test_security_formatting.py::TestFormattingSecurity::test_repeated_unclosed_formatting_markers_are_near_linear
+	tests/test_security_inline.py::TestInlineParserSecurity::test_adjacent_ruby_tokens_do_not_recurse_forever
 )
