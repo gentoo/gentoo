@@ -13,7 +13,8 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://gitlab.freedesktop.org/xkeyboard-config/xkeyboard-config.git"
 	inherit git-r3
 else
-	SRC_URI="https://www.x.org/releases/individual/data/${PN}/${P}.tar.xz"
+	SRC_URI="https://gitlab.freedesktop.org/${PN}/${PN}/-/archive/${P}/${PN}-${P}.tar.bz2 -> ${P}.tar.bz2"
+	S="${WORKDIR}/${PN}-${P}"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 fi
 
@@ -51,7 +52,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	eapply_user
+	default
 
 	# Remove pytest timeout
 	sed -i -e "/test('pytest'/,/)$/ { s/timeout: [0-9]*/timeout: 0/ }" meson.build || die
