@@ -41,11 +41,10 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="
 	dev-go/go-md2man
-	>=dev-lang/go-1.25.9
+	>=dev-lang/go-1.26.8
 "
 
 DOCS=( CHANGELOG.md troubleshooting.md docs/tutorials )
-PATCHES=( "${FILESDIR}/buildah-1.44.1-pr6984-dontbuild-on-install.patch" )
 
 pkg_pretend() {
 	if use btrfs; then
