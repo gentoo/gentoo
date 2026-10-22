@@ -6,7 +6,7 @@
 	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
-		<remote-id type="github">projg2/hypothesis-gentoo</remote-id>
+		<remote-id type="github">gentoo/hypothesis-gentoo</remote-id>
 		<remote-id type="pypi">hypothesis-gentoo</remote-id>
 	</upstream>
 </pkgmetadata>
