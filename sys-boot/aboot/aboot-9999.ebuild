@@ -1,18 +1,18 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=9
 
 inherit toolchain-funcs
 
 DESCRIPTION="Alpha Linux boot loader for SRM"
-HOMEPAGE="https://github.com/alphalinux-org/aboot"
+HOMEPAGE="https://github.com/alphalinux/aboot"
 
 if [[ ${PV} == 9999 ]] ; then
 	inherit git-r3
-	EGIT_REPO_URI="https://github.com/alphalinux-org/${PN}.git"
+	EGIT_REPO_URI="https://github.com/alphalinux/${PN}.git"
 else
-	SRC_URI="https://github.com/alphalinux-org/${PN}/archive/refs/tags/${P}.tar.gz"
+	SRC_URI="https://github.com/alphalinux/${PN}/archive/refs/tags/${P}.tar.gz"
 	S="${WORKDIR}/${PN}-${P}"
 	KEYWORDS="-* ~alpha"
 fi

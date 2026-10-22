@@ -6,6 +6,6 @@
 		<name>Alpha architecture team</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">alphalinux-org/aboot</remote-id>
+		<remote-id type="github">alphalinux/aboot</remote-id>
 	</upstream>
 </pkgmetadata>
