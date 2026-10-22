@@ -23,8 +23,8 @@ LICENSE="GPL-3+"
 SLOT="0"
 
 RDEPEND="
-	>=app-emacs/acp-0.12.2
-	>=app-emacs/shell-maker-0.93.3
+	>=app-emacs/acp-0.18.1
+	>=app-emacs/shell-maker-0.98.2
 "
 BDEPEND="
 	${RDEPEND}
