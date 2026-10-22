@@ -70,7 +70,7 @@ SLOT="0"
 IUSE="brain video_cards_nvidia"
 RESTRICT=test
 
-DEPEND="app-arch/lzma
+RDEPEND="app-arch/lzma
 	app-arch/unrar
 	virtual/minizip:=
 	brain? ( dev-libs/xxhash )
@@ -82,7 +82,9 @@ DEPEND="app-arch/lzma
 		)
 	)
 	!video_cards_nvidia? ( virtual/opencl )"
-RDEPEND="${DEPEND}"
+# src_prepare removes the bundled OpenCL headers
+DEPEND="${RDEPEND}
+	dev-util/opencl-headers"
 
 src_unpack() {
 	if [[ ${PV} == "9999" ]]; then
