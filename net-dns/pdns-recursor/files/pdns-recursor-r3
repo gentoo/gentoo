@@ -24,6 +24,10 @@ depend() {
 	need net
 }
 
+start_pre() {
+	checkpath -q -d -m 0700 -o pdns:pdns /run/pdns-recursor
+}
+
 ping() {
 	ebegin "Pinging ${name}"
 	${control_command} ${control_command_args} ping >/dev/null 2>&1
