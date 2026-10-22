@@ -96,7 +96,6 @@ FFMPEG_IUSE_MAP=(
 	ocr:libtesseract
 	openal
 	opencl
-	opengl
 	openh264:libopenh264
 	openmpt:libopenmpt
 	openssl:openssl,!gnutls@v3ifgpl # still LGPL2.1+ if USE=-gpl
@@ -249,7 +248,6 @@ COMMON_DEPEND="
 	ocr? ( app-text/tesseract:=[${MULTILIB_USEDEP}] )
 	openal? ( media-libs/openal[${MULTILIB_USEDEP}] )
 	opencl? ( virtual/opencl[${MULTILIB_USEDEP}] )
-	opengl? ( media-libs/libglvnd[X,${MULTILIB_USEDEP}] )
 	openh264? ( media-libs/openh264:=[${MULTILIB_USEDEP}] )
 	openmpt? ( media-libs/libopenmpt[${MULTILIB_USEDEP}] )
 	openssl? ( >=dev-libs/openssl-3:=[${MULTILIB_USEDEP}] )
