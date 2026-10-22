@@ -3,7 +3,7 @@
 
 EAPI=8
 
-CHECKREQS_DISK_BUILD="20G"
+CHECKREQS_DISK_BUILD="32G"
 
 inherit cmake dot-a check-reqs
 
