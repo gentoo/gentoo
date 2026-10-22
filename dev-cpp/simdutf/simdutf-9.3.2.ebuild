@@ -5,7 +5,7 @@ EAPI=8
 
 DOCS_BUILDER="doxygen"
 
-PYTHON_COMPAT=( python3_{12..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 
 inherit cmake docs python-any-r1
 
