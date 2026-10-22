@@ -73,6 +73,7 @@ dev-python/srt test
 dev-python/sympy test
 dev-python/textdistance test
 dev-python/time-machine test
+dev-python/tornado test
 dev-python/wcag-contrast-ratio test
 dev-python/xarray test
 dev-python/yarl test
