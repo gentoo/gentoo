@@ -65,6 +65,13 @@ src_configure() {
 	# https://github.com/ygrek/mldonkey/pull/153
 	filter-lto
 
+	# https://bugs.gentoo.org/944981
+	# https://github.com/ygrek/mldonkey/issues/130
+	#
+	# Ancient vendored md4 library requires passing a define "if and only if
+	# the compiler supports function argument prototyping".
+	append-cflags -DPROTOTYPES
+
 	local myconf=()
 
 	local my_extra_libs
