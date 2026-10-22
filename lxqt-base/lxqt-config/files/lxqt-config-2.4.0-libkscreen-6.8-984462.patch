@@ -1,0 +1,37 @@
+https://bugs.gentoo.org/984462
+https://github.com/lxqt/lxqt-config/commit/8efdae223bb
+
+From 8efdae223bbea13a653d66a1bca6004df77d7033 Mon Sep 17 00:00:00 2001
+From: n3rdopolis <bluescreenavenger@gmail.com>
+Date: Fri, 2 Oct 2026 13:30:17 -0400
+Subject: [PATCH] Fix KScreen compile against latest KScreen changes (#1227)
+
+---
+ lxqt-config-monitor/kscreenutils.cpp   | 1 +
+ lxqt-config-monitor/monitorpicture.cpp | 1 +
+ 2 files changed, 2 insertions(+)
+
+diff --git a/lxqt-config-monitor/kscreenutils.cpp b/lxqt-config-monitor/kscreenutils.cpp
+index c7d8f867..9f34959d 100644
+--- a/lxqt-config-monitor/kscreenutils.cpp
++++ b/lxqt-config-monitor/kscreenutils.cpp
+@@ -3,6 +3,7 @@
+ 
+ #include <KScreen/Output>
+ #include <KScreen/Mode>
++#include <KScreen/Screen>
+ #include <KScreen/Config>
+ #include <KScreen/GetConfigOperation>
+ #include <KScreen/SetConfigOperation>
+diff --git a/lxqt-config-monitor/monitorpicture.cpp b/lxqt-config-monitor/monitorpicture.cpp
+index c43bf232..11b6d4c9 100644
+--- a/lxqt-config-monitor/monitorpicture.cpp
++++ b/lxqt-config-monitor/monitorpicture.cpp
+@@ -25,6 +25,7 @@
+ #include <QVector2D>
+ #include <QRectF>
+ #include <KScreen/Mode>
++#include <KScreen/Screen>
+ #include <QScrollBar>
+ #include <QResizeEvent>
+ #include <QTransform>
