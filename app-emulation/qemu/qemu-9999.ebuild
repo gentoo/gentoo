@@ -13,11 +13,13 @@ QEMU_DOCS_VERSION=$(ver_cut 1-2).0
 # bug #830088
 QEMU_DOC_USEFLAG="+doc"
 
+DISTUTILS_USE_PEP517=setuptools
+DISTUTILS_OPTIONAL=1
 PYTHON_COMPAT=( python3_{13..15} )
 # See bug #913084 for ensurepip
 PYTHON_REQ_USE="ensurepip(-),ncurses,readline"
 
-inherit eapi9-ver flag-o-matic linux-info toolchain-funcs python-r1 udev fcaps \
+inherit distutils-r1 eapi9-ver flag-o-matic linux-info toolchain-funcs udev fcaps \
 		readme.gentoo-r1 pax-utils xdg-utils
 
 if [[ ${PV} == *9999* ]]; then
@@ -147,6 +149,8 @@ REQUIRED_USE="
 for smname in ${IUSE_SOFTMMU_TARGETS} ; do
 	REQUIRED_USE+=" qemu_softmmu_targets_${smname}? ( kernel_linux? ( seccomp ) )"
 done
+
+# TODO: python bindings have an optional unpackaged dependency 'pyfuse'
 
 # Dependencies required for qemu tools (qemu-nbd, qemu-img, qemu-io, ...)
 # and user/softmmu targets (qemu-*, qemu-system-*).
@@ -312,6 +316,7 @@ BDEPEND="
 		>=dev-python/sphinx-rtd-theme-1.2.2[${PYTHON_USEDEP}]
 	)
 	gtk? ( nls? ( sys-devel/gettext ) )
+	python? ( ${DISTUTILS_DEPS} )
 	test? (
 		app-alternatives/bc
 		dev-libs/glib[utils]
@@ -524,6 +529,12 @@ src_prepare() {
 		[binaries]
 		dtrace='stap-dtrace'
 		EOF
+	fi
+
+	if use python; then
+		pushd python >/dev/null || die
+		distutils-r1_src_prepare
+		popd >/dev/null || die
 	fi
 
 	# Remove bundled modules
@@ -790,6 +801,12 @@ src_configure() {
 	[[ -n ${softmmu_targets} ]] && qemu_src_configure "softmmu"
 	[[ -n ${user_targets}    ]] && qemu_src_configure "user"
 	qemu_src_configure "tools"
+
+	if use python; then
+		pushd python >/dev/null || die
+		distutils-r1_src_configure
+		popd >/dev/null || die
+	fi
 }
 
 src_compile() {
@@ -805,6 +822,12 @@ src_compile() {
 
 	cd "${S}/tools-build" || die
 	emake V=1
+
+	if use python; then
+		pushd python >/dev/null || die
+		distutils-r1_src_compile
+		popd >/dev/null || die
+	fi
 }
 
 src_test() {
@@ -815,12 +838,10 @@ src_test() {
 	fi
 }
 
-qemu_python_install() {
-	python_domodule "${S}/python/qemu"
+python_install() {
+	distutils-r1_python_install
 
 	python_doscript "${S}/scripts/kvm/vmxcap"
-	python_doscript "${S}/scripts/qmp/qmp-shell"
-	python_doscript "${S}/scripts/qmp/qemu-ga-client"
 }
 
 # Generate binfmt support files.
@@ -900,10 +921,12 @@ src_install() {
 		if use kernel_linux; then
 			udev_newrules "${FILESDIR}"/65-kvm.rules-r2 65-kvm.rules
 		fi
+	fi
 
-		if use python; then
-			python_foreach_impl qemu_python_install
-		fi
+	if use python; then
+		pushd python >/dev/null || die
+		distutils-r1_src_install
+		popd >/dev/null || die
 	fi
 
 	cd "${S}/tools-build" || die
