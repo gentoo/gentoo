@@ -37,6 +37,12 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2026-10-22)
+# Not ported to py3.13.  Ton of other bugs reported, including build
+# failures and a version bump request.
+# Removal on 2026-11-21.  Bug #952686.
+sci-mathematics/gsl-shell
+
+# Michał Górny <mgorny@gentoo.org> (2026-10-22)
 # Not ported to py3.13.  Indirectly depends on dev-python/sphinx that
 # dropped py3.12 support.
 # Removal on 2026-11-21.  Bug #956588.
