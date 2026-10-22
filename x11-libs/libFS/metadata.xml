@@ -6,6 +6,6 @@
     <name>X11</name>
   </maintainer>
   <upstream>
-    <remote-id type="freedesktop-gitlab">xorg/lib/libFS</remote-id>
+    <remote-id type="freedesktop-gitlab">xorg/lib/libfs</remote-id>
   </upstream>
 </pkgmetadata>

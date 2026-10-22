@@ -6,6 +6,6 @@
     <name>X11</name>
   </maintainer>
   <upstream>
-    <remote-id type="freedesktop-gitlab">xorg/lib/libICE</remote-id>
+    <remote-id type="freedesktop-gitlab">xorg/lib/libice</remote-id>
   </upstream>
 </pkgmetadata>

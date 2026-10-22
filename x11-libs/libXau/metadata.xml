@@ -6,6 +6,6 @@
     <name>X11</name>
   </maintainer>
   <upstream>
-    <remote-id type="freedesktop-gitlab">xorg/lib/libXau</remote-id>
+    <remote-id type="freedesktop-gitlab">xorg/lib/libxau</remote-id>
   </upstream>
 </pkgmetadata>

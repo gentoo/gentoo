@@ -6,6 +6,6 @@
     <name>X11</name>
   </maintainer>
   <upstream>
-    <remote-id type="freedesktop-gitlab">xorg/lib/libXvMC</remote-id>
+    <remote-id type="freedesktop-gitlab">xorg/lib/libxvmc</remote-id>
   </upstream>
 </pkgmetadata>

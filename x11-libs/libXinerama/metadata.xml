@@ -6,6 +6,6 @@
     <name>X11</name>
   </maintainer>
   <upstream>
-    <remote-id type="freedesktop-gitlab">xorg/lib/libXinerama</remote-id>
+    <remote-id type="freedesktop-gitlab">xorg/lib/libxinerama</remote-id>
   </upstream>
 </pkgmetadata>

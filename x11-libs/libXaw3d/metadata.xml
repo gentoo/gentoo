@@ -6,6 +6,6 @@
     <name>X11</name>
   </maintainer>
   <upstream>
-    <remote-id type="freedesktop-gitlab">xorg/lib/libXaw3d</remote-id>
+    <remote-id type="freedesktop-gitlab">xorg/lib/libxaw3d</remote-id>
   </upstream>
 </pkgmetadata>
