@@ -36,6 +36,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2026-10-22)
+# Replaced by importlib, no reverse dependencies (bug #984696). Removal
+# on 2026-11-22.
+dev-python/entrypoints
+
 # Sam James <sam@gentoo.org> (2026-10-20)
 # Breaks one of its major reverse dependencies, so mask for now as nothing
 # needs a newer version yet (bug #984580).
