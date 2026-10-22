@@ -28,7 +28,7 @@ BDEPEND="
 
 CP_DEPEND="
 	>=dev-java/ant-1.10.15-r1:0
-	~dev-java/batik-1.19:0
+	~dev-java/batik-1.20:0
 	>=dev-java/bcpkix-1.84:0
 	>=dev-java/bcprov-1.84:0
 	>=dev-java/bcutil-1.84:0
@@ -39,7 +39,7 @@ CP_DEPEND="
 	dev-java/qdox:1.12
 	dev-java/sun-jai-bin:0
 	dev-java/xml-commons-external:1.4
-	~dev-java/xmlgraphics-commons-2.11:0
+	~dev-java/xmlgraphics-commons-2.12:0
 "
 
 # Min jdk-11 in order to avoid test failures like:
@@ -65,6 +65,8 @@ PATCHES=(
 	"${FILESDIR}/fop-2.11-PDFDocumentInformationElementTestCase.patch"
 	"${FILESDIR}/fop-2.11-PDFLinearizationTestCase.patch"
 	"${FILESDIR}/fop-2.11-PDFStructureTreeTestCase.patch"
+	"${FILESDIR}/fop-2.12-IFRendererTestCase.patch"
+	"${FILESDIR}/fop-2.12-PDFPainterTestCase.patch"
 )
 
 JAVADOC_SRC_DIRS=( fop-{util,events,core}/src/main/java )
@@ -113,7 +115,8 @@ src_prepare() {
 	# ant-task to create "event-model.xml" files directly into target/classes
 	local extract_core="$(sed -n '/taskdef/,/\/collectEvents/p' fop-core/pom.xml |
 		sed -e 's:${project.basedir}\/::' \
-			-e 's:${project.build.outputDirectory}:../target/classes:' |
+			-e 's:${project.build.outputDirectory}:../target/classes:' \
+			-e '/maven.test.classpath/d' |
 		cut -d' ' -f 15-25 ; pipestatus || die)"
 	# The first three lines are manually copied headers needed for a build.xml
 	# but are not given in the pom.xml.
