@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=hatchling
 PYPI_VERIFY_REPO=https://github.com/oprypin/pytest-golden
-PYTHON_COMPAT=( python3_{12..15} )
+PYTHON_COMPAT=( python3_{13..15} )
 
 inherit distutils-r1 pypi
 
