@@ -184,7 +184,9 @@ SOFTMMU_TOOLS_DEPEND="
 	fdt? ( >=sys-apps/dtc-1.5.1[static-libs(+)] )
 	fuse? ( >=sys-fs/fuse-3.1:3=[static-libs(+)] )
 	gnutls? (
+		dev-libs/gmp[static-libs(+)]
 		>=net-libs/gnutls-3.7.5:=[static-libs(+)]
+		>=dev-libs/nettle-3.7.3:=[gmp]
 		>=dev-libs/nettle-3.7.3:=[static-libs(+)]
 	)
 	gtk? (
