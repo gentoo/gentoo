@@ -9,6 +9,7 @@
 		<name>Gentoo Games Project</name>
 	</maintainer>
 	<use>
+		<flag name="fluidsynth">enable the fluidsynth sound module</flag>
 		<flag name="midi">basic support for MIDI files</flag>
 	</use>
 	<upstream>

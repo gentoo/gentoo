@@ -13,12 +13,13 @@ S="${WORKDIR}/${PN}-${P}"
 LICENSE="BSD GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~x86"
-IUSE="doc libsamplerate +midi png vorbis"
+IUSE="doc fluidsynth libsamplerate +midi png vorbis"
 
 DEPEND="
 	media-libs/libsdl2[video]
 	media-libs/sdl2-mixer[midi?,vorbis?]
 	media-libs/sdl2-net
+	fluidsynth? ( media-sound/fluidsynth:= )
 	libsamplerate? ( media-libs/libsamplerate )
 	png? ( media-libs/libpng:= )
 "
@@ -60,6 +61,7 @@ src_configure() {
 	econf \
 		--enable-bash-completion \
 		$(use_enable doc) \
+		$(use_with fluidsynth) \
 		--disable-fonts \
 		--disable-icons \
 		$(use_with libsamplerate) \
