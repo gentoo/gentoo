@@ -37,7 +37,9 @@ RDEPEND="${PYTHON_DEPS}
 	virtual/opencl
 	virtual/opengl
 "
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	dev-util/opencl-headers
+"
 BDEPEND="$(python_gen_cond_dep 'dev-python/pybind11[${PYTHON_USEDEP}]')"
 
 PATCHES=(
