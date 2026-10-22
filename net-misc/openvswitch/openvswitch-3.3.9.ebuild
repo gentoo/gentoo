@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{12..14} )
+PYTHON_COMPAT=( python3_{13..14} )
 inherit autotools dot-a linux-info multiprocessing python-single-r1
 inherit systemd tmpfiles
 
