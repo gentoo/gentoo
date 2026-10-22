@@ -23,7 +23,7 @@ BDEPEND="verify-sig? ( sec-keys/openpgp-keys-apache-xmlgraphics )"
 CP_DEPEND="
 	>=dev-java/rhino-1.9.1:0
 	dev-java/xml-commons-external:1.4
-	~dev-java/xmlgraphics-commons-2.11:0
+	~dev-java/xmlgraphics-commons-2.12:0
 "
 
 DEPEND="
@@ -82,6 +82,9 @@ src_prepare() {
 			xargs cp --parent -t "${S}"/resources || die "copy resources"
 		popd >/dev/null || die
 	done
+
+	mkdir -p src/test/resources || die "test-resources"
+	mv {batik-bridge/,}src/test/resources/circular.svg || die "circular.svg"
 }
 
 src_test() {
