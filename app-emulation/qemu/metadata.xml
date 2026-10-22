@@ -16,6 +16,7 @@
 		<flag name="bpf">Enable eBPF support for RSS implementation.</flag>
 		<flag name="capstone">Enable disassembly support with <pkg>dev-libs/capstone</pkg></flag>
 		<flag name="curl">Support ISOs / -cdrom directives via HTTP or HTTPS.</flag>
+		<flag name="elfutils">Enable debuginfo support with <pkg>dev-libs/elfutils</pkg></flag>
 		<flag name="fdt">Enables firmware device tree support</flag>
 		<flag name="fuse">Enables FUSE block device export</flag>
 		<flag name="glusterfs">Enables GlusterFS cluster fileystem via

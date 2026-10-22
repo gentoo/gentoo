@@ -61,7 +61,7 @@ SLOT="0"
 [[ ${QEMU_DOCS_PREBUILT} == 1 ]] && QEMU_DOC_USEFLAG="doc"
 
 IUSE="accessibility +aio alsa bpf bzip2 capstone +curl debug ${QEMU_DOC_USEFLAG}
-	+fdt fuse +gnutls gtk infiniband iscsi io-uring
+	elfutils +fdt fuse +gnutls gtk infiniband iscsi io-uring
 	jack +jpeg keyutils
 	lzo multipath
 	ncurses nfs nls numa opengl +oss pam passt +pin-upstream-blobs pipewire
@@ -181,6 +181,7 @@ SOFTMMU_TOOLS_DEPEND="
 	bzip2? ( app-arch/bzip2[static-libs(+)] )
 	capstone? ( dev-libs/capstone:=[static-libs(+)] )
 	curl? ( >=net-misc/curl-7.15.4[static-libs(+)] )
+	elfutils? ( dev-libs/elfutils[static-libs(+)] )
 	fdt? ( >=sys-apps/dtc-1.5.1[static-libs(+)] )
 	fuse? ( >=sys-fs/fuse-3.1:3=[static-libs(+)] )
 	gnutls? (
@@ -631,6 +632,7 @@ qemu_src_configure() {
 		$(conf_notuser capstone)
 		$(conf_notuser curl)
 		$(conf_tools doc docs)
+		$(conf_notuser elfutils libdw)
 		$(conf_notuser fdt)
 		$(conf_notuser fuse)
 		$(conf_notuser gnutls)
