@@ -117,7 +117,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-8.0.29-fix-compiler-names.patch"
 	"${FILESDIR}/${PN}-8.0.29-fix-toolchain-environment.patch"
 	"${FILESDIR}/${PN}-8.3.8-fix-grpc-build.patch"
-	"${FILESDIR}/${PN}-8.3.11-local-release-build.patch"
+	"${FILESDIR}/${PN}-8.3.13-local-release-build.patch"
 	"${FILESDIR}/${PN}-8.3.8-override-distro.patch"
 	"${FILESDIR}/${PN}-8.3.8-remove-mtune-march-cflags.patch"
 	"${FILESDIR}/${PN}-8.3.8-restore-syscall_h-includes.patch"
