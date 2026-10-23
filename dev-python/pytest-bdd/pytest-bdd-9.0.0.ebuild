@@ -34,8 +34,3 @@ EPYTEST_PLUGIN_LOAD_VIA_ENV=1
 distutils_enable_tests pytest
 
 DOCS=( AUTHORS.rst CHANGES.rst README.rst )
-
-python_test() {
-	local -x COLUMNS=80
-	epytest
-}
