@@ -11,7 +11,7 @@ SRC_URI="https://downloads.sourceforge.net/courier/${P}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~ppc ppc64 ~riscv x86"
+KEYWORDS="amd64 arm64 ~ppc ppc64 ~riscv x86"
 IUSE="postgres ldap mysql pam nls ipv6 spell fax crypt norewrite \
 	fam web webmail gnutls split-usr test"
 RESTRICT="!test? ( test )"
