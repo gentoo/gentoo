@@ -68,7 +68,7 @@ src_test() {
 		-DAESNI="$(check_x86_opt __AES__)"
 		-DSSE="$(check_x86_opt __SSSE3__)"
 
-		-DVALGRIND=VALGRIND_NOT_FOUND
+		-DVALGRIND=FALSE
 	)
 
 	cmake_src_configure
