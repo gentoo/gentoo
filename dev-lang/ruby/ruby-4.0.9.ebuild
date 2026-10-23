@@ -311,6 +311,11 @@ src_compile() {
 }
 
 src_test() {
+	# flaky jobserver implementation for tests
+	# tool/lib/test/jobserver.rb:32:in 'IO#close':
+	# No space left on device @ fptr_finalize_flush - /dev/steve (Errno::ENOSPC)
+	unset MAKEFLAGS
+
 	local -x LD_LIBRARY_PATH="${S}${LD_LIBRARY_PATH+:}${LD_LIBRARY_PATH}"
 	emake V=1 check
 }
