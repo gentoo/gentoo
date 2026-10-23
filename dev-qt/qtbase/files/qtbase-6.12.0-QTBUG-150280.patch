@@ -1,0 +1,18 @@
+https://qt-project.atlassian.net/browse/QTBUG-150280
+https://mail.kde.org/pipermail/distributions/2026-October/001745.html
+https://codereview.qt-project.org/c/qt/qtbase/+/778943
+--- a/src/plugins/platforms/wayland/qwaylandinputdevice.cpp
++++ b/src/plugins/platforms/wayland/qwaylandinputdevice.cpp
+@@ -415,11 +415,8 @@
+         auto *pointerGestures = mQDisplay->pointerGestures();
+         if (pointerGestures) {
+-              QInputDevice::Capabilities  pointerCapabilities = QInputDevice::Capability::Position
+-                                                             | QInputDevice::Capability::PixelScroll
+-                                                             | QInputDevice::Capability::Scroll;
+             // NOTE: The name of the device and its system ID are not exposed on Wayland.
+             mTouchPadDevice = new QPointingDevice(
+                     QLatin1StringView("touchpad"), 0, QInputDevice::DeviceType::TouchPad,
+-                    QPointingDevice::PointerType::Finger, pointerCapabilities,
++                    QPointingDevice::PointerType::Finger, QInputDevice::Capability::Position,
+                     MaxTouchPoints, 0, mSeatName, QPointingDeviceUniqueId(), this);
+             QWindowSystemInterface::registerInputDevice(mTouchPadDevice);
