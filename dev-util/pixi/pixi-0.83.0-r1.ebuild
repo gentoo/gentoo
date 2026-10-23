@@ -100,4 +100,10 @@ src_test() {
 
 src_install() {
 	dobin "$(cargo_target_dir)/pixi"
+
+	insinto /etc/pixi
+	newins - config.toml <<-EOF
+		# Use system certificates.
+		tls-root-certs = "system"
+	EOF
 }
