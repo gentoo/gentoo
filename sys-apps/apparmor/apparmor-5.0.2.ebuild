@@ -67,7 +67,7 @@ src_configure() {
 }
 
 src_compile() {
-	pushd parser
+	pushd parser || die
 	emake \
 		AR="$(tc-getAR)" \
 		CC="$(tc-getCC)" \
@@ -76,7 +76,7 @@ src_compile() {
 		USE_SYSTEM=1 \
 		arch manpages
 	use doc && emake pdf
-	popd
+	popd || die
 }
 
 src_test() {
@@ -84,19 +84,18 @@ src_test() {
 }
 
 src_install() {
-
-	pushd parser
+	pushd parser || die
 	emake \
 		CPP="$(tc-getCPP) -" \
 		DESTDIR="${D}" \
 		DISTRO="unknown" \
 		USE_SYSTEM=1 \
-		install;
+		install
 
 	use doc && dodoc techdoc.pdf
-	popd
+	popd || die
 
-	pushd init
+	pushd init || die
 	emake \
 		CPP="$(tc-getCPP) -" \
 		DESTDIR="${D}" \
