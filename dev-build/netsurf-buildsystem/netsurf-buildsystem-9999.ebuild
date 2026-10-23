@@ -13,11 +13,6 @@ EGIT_REPO_URI="git://git.netsurf-browser.org/${MY_PN}.git"
 LICENSE="MIT"
 SLOT="0"
 
-PATCHES=(
-	"${FILESDIR}/${PN}-1.10-command-v.patch"
-	"${FILESDIR}/${PN}-1.10-newline-quoting.patch"
-)
-
 src_install() {
 	emake DESTDIR="${D}" PREFIX="${EPREFIX}/usr" install
 
