@@ -28,7 +28,8 @@ DEPEND="${RDEPEND}
 BDEPEND="man? ( dev-ruby/asciidoctor )"
 
 PATCHES=( "${FILESDIR}"/librnp-0.18.1-fix-build-with-botan-3.11.patch
-	"${FILESDIR}"/librnp-0.18.1-switch-defines-for-botan-3.11.patch )
+	"${FILESDIR}"/librnp-0.18.1-switch-defines-for-botan-3.11.patch
+	"${FILESDIR}"/librnp-0.18.1-include-stdlib.patch )
 
 src_configure() {
 	local mycmakeargs=(
