@@ -1,0 +1,14 @@
+https://github.com/keepassxreboot/keepassxc/pull/13848
+From: Arthur Zamarin <arthurzam@gentoo.org>
+Date: Fri, 23 Oct 2026 14:09:33 +0300
+Subject: [PATCH] Fix Polkit Quick Unlock when built without FdoSecrets
+--- a/src/quickunlock/PolkitDbusTypes.cpp
++++ b/src/quickunlock/PolkitDbusTypes.cpp
+@@ -26,6 +26,7 @@ void PolkitAuthorizationResults::registerMetaType()
+ {
+     qRegisterMetaType<PolkitAuthorizationResults>("PolkitAuthorizationResults");
+     qDBusRegisterMetaType<PolkitAuthorizationResults>();
++    qDBusRegisterMetaType<QMap<QString, QString>>();
+ }
+
+ QDBusArgument& operator<<(QDBusArgument& argument, const PolkitAuthorizationResults& res)
