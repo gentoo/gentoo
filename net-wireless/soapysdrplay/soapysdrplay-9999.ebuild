@@ -10,7 +10,6 @@ HOMEPAGE="https://github.com/pothosware/SoapySDRPlay3"
 
 if [ "${PV}" = "9999" ]; then
 	EGIT_REPO_URI="https://github.com/pothosware/SoapySDRPlay3.git"
-	EGIT_CLONE_TYPE="shallow"
 	inherit git-r3
 else
 	KEYWORDS="~amd64"
