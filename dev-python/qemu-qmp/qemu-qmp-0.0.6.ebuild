@@ -16,7 +16,7 @@ HOMEPAGE="
 
 LICENSE="GPL-2 LGPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="~amd64 ~arm64 ~ppc64"
 
 RDEPEND="!<app-emulation/qemu-11.1.2-r0[python]"
 BDEPEND="
