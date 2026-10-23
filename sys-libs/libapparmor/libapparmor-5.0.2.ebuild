@@ -17,8 +17,7 @@ DESCRIPTION="Library to support AppArmor userspace utilities"
 HOMEPAGE="https://gitlab.com/apparmor/apparmor/wikis/home"
 SRC_URI="
 	https://gitlab.com/apparmor/apparmor/-/archive/v${PV}/apparmor-v${PV}.tar.bz2
-	verify-sig? ( https://gitlab.com/api/v4/projects/4484878/packages/generic/signatures/${PV}/apparmor-v${PV}.tar.bz2.asc
-		-> ${P}.tar.bz2.asc )
+	verify-sig? ( https://gitlab.com/api/v4/projects/4484878/packages/generic/signatures/${PV}/apparmor-v${PV}.tar.bz2.asc )
 "
 
 S=${WORKDIR}/apparmor-v${PV}/libraries/${PN}
