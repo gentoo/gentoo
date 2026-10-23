@@ -34,7 +34,6 @@ PATCHES=(
 	"${FILESDIR}"/${P}-tinfo.patch
 	"${FILESDIR}"/0001-Fix-signal-handlers.patch
 	"${FILESDIR}"/0002-Fix-Wformat-security.patch
-	"${FILESDIR}"/${P}-getcwd.patch
 )
 
 src_prepare() {
@@ -49,6 +48,7 @@ src_prepare() {
 	# for some reason some build 32bit x86 objects are bundled
 	rm src/*.o
 	eautopoint --force || die # bug #944362
+	eapply "${FILESDIR}"/${P}-getcwd.patch
 	eautoreconf
 }
 
