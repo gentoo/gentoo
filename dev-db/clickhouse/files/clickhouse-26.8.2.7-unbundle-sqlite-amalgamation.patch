@@ -1,0 +1,12 @@
+--- a/contrib/sqlite-cmake/CMakeLists.txt
++++ b/contrib/sqlite-cmake/CMakeLists.txt
+@@ -1,3 +1,9 @@
++find_package(PkgConfig REQUIRED)
++pkg_check_modules(SQLITE REQUIRED IMPORTED_TARGET sqlite3)
++add_library(_sqlite INTERFACE)
++target_link_libraries(_sqlite INTERFACE PkgConfig::SQLITE)
++add_library(ch_contrib::sqlite ALIAS _sqlite)
++return()
+ option(ENABLE_SQLITE "Enable sqlite" ${ENABLE_LIBRARIES})
+ 
+ if (NOT ENABLE_SQLITE)
