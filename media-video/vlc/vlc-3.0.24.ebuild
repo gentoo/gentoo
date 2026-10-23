@@ -27,7 +27,7 @@ else
 		fi
 		S="${WORKDIR}/${MY_P}"
 	fi
-	KEYWORDS="~amd64"
+	KEYWORDS="~amd64 ~arm64"
 fi
 inherit autotools flag-o-matic lua-single toolchain-funcs virtualx xdg
 
