@@ -10,7 +10,6 @@ HOMEPAGE="https://github.com/pothosware/SoapyRemote"
 
 if [ "${PV}" = "9999" ]; then
 	EGIT_REPO_URI="https://github.com/pothosware/SoapyRemote.git"
-	EGIT_CLONE_TYPE="shallow"
 	inherit git-r3
 else
 	KEYWORDS="~amd64 ~x86"
