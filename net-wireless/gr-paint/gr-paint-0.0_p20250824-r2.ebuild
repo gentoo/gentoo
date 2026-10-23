@@ -41,6 +41,7 @@ DEPEND="${RDEPEND}
 	dev-libs/spdlog
 "
 BDEPEND="
+	${PYTHON_DEPS}
 	$(python_gen_cond_dep 'dev-python/pybind11[${PYTHON_USEDEP}]')
 	virtual/pkgconfig
 	doc? ( app-text/doxygen )
