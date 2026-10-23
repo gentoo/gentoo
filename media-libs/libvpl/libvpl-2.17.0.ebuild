@@ -11,7 +11,7 @@ SRC_URI="https://github.com/intel/libvpl/archive/refs/tags/v${PV}.tar.gz -> ${P}
 
 LICENSE="MIT"
 SLOT="0/2"
-KEYWORDS="amd64 ~arm64"
+KEYWORDS="amd64 ~arm ~arm64"
 
 IUSE="examples test"
 RESTRICT="!test? ( test )"
