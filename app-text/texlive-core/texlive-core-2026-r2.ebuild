@@ -132,7 +132,6 @@ TEXMF_PATH=/usr/share/texmf-dist
 MODULAR_X_DEPEND="
 	X? (
 		x11-libs/libX11
-		x11-libs/libXmu
 	)"
 
 COMMON_DEPEND="
@@ -319,6 +318,7 @@ src_configure() {
 		--disable-largefile
 		--disable-xindy-docs
 		--disable-xindy-rules
+		--disable-xpdfopen # https://bugs.gentoo.org/652212
 		--with-banner-add=" ${BRANDING_OS_PRETTY_NAME}"
 		$(use_enable luajittex)
 		$(use_enable luajittex luajithbtex)
@@ -345,7 +345,6 @@ src_configure() {
 		--enable-tpic2pdftex=yes
 		--with-clisp-runtime=system
 		--enable-xml2pmx=yes
-		$(use_enable X xpdfopen)
 		--enable-web2c=yes
 		--enable-afm2pl=yes
 		--enable-dvidvi=yes
