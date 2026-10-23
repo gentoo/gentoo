@@ -22,7 +22,7 @@ LICENSE+="
 " # crates
 SLOT="0"
 KEYWORDS="amd64 arm arm64 ~loong ppc64 ~riscv ~s390 ~sparc x86"
-IUSE="doc"
+IUSE="doc serve"
 
 QA_FLAGS_IGNORED="usr/bin/${PN}"
 
@@ -36,6 +36,16 @@ src_compile() {
 			"$(cargo_target_dir)"/${PN} build -d "${T}"/html guide || die
 		fi
 	fi
+}
+
+src_configure() {
+	local myfeatures=(
+		watch
+		search
+		$(usev serve)
+	)
+
+	cargo_src_configure --no-default-features
 }
 
 src_test() {
