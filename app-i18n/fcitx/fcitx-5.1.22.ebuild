@@ -12,7 +12,7 @@ HOMEPAGE="https://fcitx-im.org/ https://github.com/fcitx/fcitx5"
 SRC_URI="https://download.fcitx-im.org/fcitx5/fcitx5/fcitx5-${PV}_dict.tar.zst -> ${P}.tar.zst"
 
 S="${WORKDIR}/${MY_PN}-${PV}"
-LICENSE="LGPL-2+ Unicode-DFS-2016"
+LICENSE="LGPL-2.1+ Unicode-DFS-2016"
 SLOT="5"
 KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~riscv ~x86"
 IUSE="+autostart doc +emoji +enchant +keyboard presage +server systemd system-yoga test wayland +X"
