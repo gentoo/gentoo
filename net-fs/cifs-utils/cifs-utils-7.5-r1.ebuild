@@ -79,7 +79,8 @@ src_configure() {
 	local myeconfargs=(
 		--enable-man
 		--enable-smbinfo
-		$(use_enable acl cifsacl cifsidmap)
+		$(use_enable acl cifsacl)
+		$(use_enable acl cifsidmap)
 		$(use_enable ads cifsupcall)
 		$(use_with caps libcap)
 		$(use_with caps libcap-ng)
