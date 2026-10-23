@@ -27,20 +27,19 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 #< drmpeg> What tests?
 RESTRICT="test"
 
-DEPEND="${PYTHON_DEPS}
-	$(python_gen_cond_dep '
-		dev-libs/boost:=[python,${PYTHON_USEDEP}]
-	')
-	dev-libs/gmp
-	dev-libs/spdlog:=
+RDEPEND="${PYTHON_DEPS}
 	sci-libs/volk:=
-	sci-libs/fftw
 	>=net-wireless/gnuradio-3.9:=[${PYTHON_SINGLE_USEDEP}]
-	$(python_gen_cond_dep 'dev-python/pygccxml[${PYTHON_USEDEP}]')
+	$(python_gen_cond_dep '
+		dev-python/numpy[${PYTHON_USEDEP}]
+		dev-python/pillow[${PYTHON_USEDEP}]
+	')
 "
-
-RDEPEND="${DEPEND}"
-
+DEPEND="${RDEPEND}
+	dev-libs/boost:=
+	dev-libs/gmp
+	dev-libs/spdlog
+"
 BDEPEND="
 	$(python_gen_cond_dep 'dev-python/pybind11[${PYTHON_USEDEP}]')
 	virtual/pkgconfig
@@ -59,5 +58,8 @@ src_install() {
 	cmake_src_install
 	find "${D}" -name '*.py[oc]' -delete || die
 	python_optimize
-	mv "${ED}/usr/share/doc/gr-paint" "${ED}/usr/share/doc/${PF}"
+	if use doc; then
+		mv "${ED}"/usr/share/doc/${PN}/* "${ED}"/usr/share/doc/${PF}/ || die
+		rmdir "${ED}"/usr/share/doc/${PN} || die
+	fi
 }
