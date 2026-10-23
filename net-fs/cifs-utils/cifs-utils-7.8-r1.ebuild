@@ -3,9 +3,9 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 
-inherit autotools bash-completion-r1 flag-o-matic linux-info pam python-single-r1
+inherit autotools flag-o-matic linux-info pam python-single-r1 shell-completion
 
 DESCRIPTION="Tools for Managing Linux CIFS Client Filesystems"
 HOMEPAGE="https://wiki.samba.org/index.php/LinuxCIFS_utils https://git.samba.org/cifs-utils.git/?p=cifs-utils.git"
@@ -18,6 +18,7 @@ IUSE="+acl +ads +caps creds pam +python systemd"
 
 RDEPEND="
 	sys-libs/talloc
+	acl? ( >=net-fs/samba-4.0.0_alpha1 )
 	ads? (
 		sys-apps/keyutils:=
 		virtual/krb5
@@ -32,9 +33,6 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="dev-python/docutils"
-PDEPEND="
-	acl? ( >=net-fs/samba-4.0.0_alpha1 )
-"
 
 REQUIRED_USE="
 	python? ( ${PYTHON_REQUIRED_USE} )
@@ -124,11 +122,6 @@ src_install() {
 }
 
 pkg_postinst() {
-	# Inform about set-user-ID bit of mount.cifs
-	ewarn "setuid use flag was dropped due to multiple security implications"
-	ewarn "such as CVE-2009-2948, CVE-2011-3585 and CVE-2012-1586"
-	ewarn "You are free to set setuid flags by yourself"
-
 	# Inform about upcall usage
 	if use acl ; then
 		einfo "The cifs.idmap utility has been enabled by creating the"
