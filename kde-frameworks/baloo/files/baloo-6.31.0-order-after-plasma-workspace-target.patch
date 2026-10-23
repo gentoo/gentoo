@@ -1,0 +1,37 @@
+From a5431882c8cb36116907f59c97b0d2d92a7fe543 Mon Sep 17 00:00:00 2001
+From: Harald Sitter <sitter@kde.org>
+Date: Fri, 16 Oct 2026 10:50:37 +0200
+Subject: [PATCH] service: make sure to order After plasma-workspace.target
+
+plasma-workspace.target somewhat unfortunately sets up a Wants (with
+implicit After) relationship on kde-baloo.service. This then can lead to
+a dependency loop where graphical-session.target is After
+plasma-workspace.target is After kde-baloo.service is After
+graphical-session.target...
+
+resolve this dependency loop by **explicitly** putting us after
+plasma-workspace.target
+
+this is necessary to prevent breakage with older Plasma versions. 6.9
+onwards removes this unnecessary relationship from the Plasma side. we
+are already WantedBy=graphical-session.target anyway
+---
+ src/file/kde-baloo.service.in | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/file/kde-baloo.service.in b/src/file/kde-baloo.service.in
+index e0f39606..dad53b93 100644
+--- a/src/file/kde-baloo.service.in
++++ b/src/file/kde-baloo.service.in
+@@ -3,6 +3,8 @@ Description=Baloo File Indexer Daemon
+ PartOf=graphical-session.target
+ # We need the compositor to be running since we fork QGuiApplications.
+ After=graphical-session.target
++# Plasma < 6.9 is implicitly ordering After us. Explicitly specify the correct order to avoid a dependency loop
++After=plasma-workspace.target
+ 
+ [Service]
+ ExecStart=@KDE_INSTALL_FULL_LIBEXECDIR_KF@/baloo_file
+-- 
+2.56.0
+
