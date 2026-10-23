@@ -1,0 +1,10 @@
+--- a/swig/python/test/test_python.py.in
++++ b/swig/python/test/test_python.py.in
+@@ -138,6 +138,7 @@
+     # extern int aa_query_file_path(uint32_t mask, const char *label,
+     #                 const char *path, int *allowed, int *audited);
+     @unittest.skipUnless(libapparmor.aa_is_enabled(), "AppArmor is not enabled")
++    @unittest.skip("Permission denied error to handle, see https://bugs.gentoo.org/979789")
+     def test_aa_query_file_path(self):
+         aa_query_mask = libapparmor.AA_MAY_EXEC | libapparmor.AA_MAY_READ | libapparmor.AA_MAY_WRITE
+         allowed, audited = libapparmor.aa_query_file_path(aa_query_mask, "unconfined", "/tmp/hello")
