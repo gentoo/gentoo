@@ -89,6 +89,7 @@ MAKEOPTS+=" SAMPLES="
 
 PATCHES=(
 	"${FILESDIR}/CVE-2026-96512.patch"
+	"${FILESDIR}"/${P}-openssl-4.patch
 )
 
 src_prepare() {
