@@ -4,7 +4,7 @@
 EAPI=8
 
 LLVM_COMPAT=( {15..21} )
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 inherit flag-o-matic toolchain-funcs llvm-r2 optfeature python-single-r1
 
 AFL_PATCHSET="${PN}-4.35c-patches"
@@ -16,7 +16,7 @@ S="${WORKDIR}"/AFLplusplus-${PV}
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc64"
+KEYWORDS="~amd64 arm64 ~ppc64"
 IUSE="test"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 # Tests involve heavy use of LD_PRELOAD in some cases
