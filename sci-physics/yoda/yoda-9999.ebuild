@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{12..14} )
 
-inherit bash-completion-r1 python-single-r1 optfeature autotools
+inherit shell-completion python-single-r1 optfeature autotools
 
 DESCRIPTION="Yet more Objects for (High Energy Physics) Data Analysis"
 HOMEPAGE="https://yoda.hepforge.org/"
@@ -15,7 +15,7 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://gitlab.com/hepcedar/yoda"
 	EGIT_BRANCH="main"
 else
-	SRC_URI="https://yoda.hepforge.org/downloads?f=${P^^}.tar.bz2 -> ${P^^}.tar.bz2"
+	SRC_URI="https://cedar-tools.web.cern.ch/downloads/${P^^}.tar.bz2 -> ${P}.tar.bz2"
 	S="${WORKDIR}/${P^^}"
 	KEYWORDS="~amd64 ~x86"
 fi
