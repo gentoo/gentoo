@@ -36,6 +36,51 @@
 
 #--- END OF EXAMPLES ---
 
+# Michael Orlitzky <mjo@gentoo.org> (2026-10-24)
+# dev-php packages that were added to support composer, phpunit,
+# etc. and are now abandoned. All are outdated and several have known
+# security issues. Removal on 2026-12-01 if no one complains.
+dev-php/File_Iterator
+dev-php/SabreAMF
+dev-php/Text_Template
+dev-php/ca-bundle
+dev-php/cli-prompt
+dev-php/doctrine
+dev-php/doctrine-instantiator
+dev-php/fedora-autoloader
+dev-php/jsonlint
+dev-php/json-schema
+dev-php/metadata-minifier
+dev-php/mmslib
+dev-php/myclabs-deepcopy
+dev-php/nikic-php-parser
+dev-php/phar-io-manifest
+dev-php/phar-io-version
+dev-php/phar-utils
+dev-php/psr-log
+dev-php/reactphp-promise
+dev-php/sebastian-code-unit-reverse-lookup
+dev-php/sebastian-complexity
+dev-php/sebastian-diff
+dev-php/sebastian-environment
+dev-php/sebastian-lines-of-code
+dev-php/sebastian-resource-operations
+dev-php/sebastian-type
+dev-php/sebastian-version
+dev-php/semver
+dev-php/spdx-licenses
+dev-php/symfony-filesystem
+dev-php/symfony-finder
+dev-php/symfony-process
+dev-php/theseer-Autoload
+dev-php/theseer-DirectoryScanner
+dev-php/theseer-tokenizer
+dev-php/twig
+dev-php/webmozart-assert
+dev-php/xdebug-handler
+dev-php/zetacomponents-Base
+dev-php/zetacomponents-ConsoleTools
+
 # David Seifert <soap@gentoo.org> (2026-10-24)
 # Upstream abandoned, GTK+2 based, blocks openssl-4 migration.
 # zoitechat is a maintained GTK+3 fork, but not in tree.
