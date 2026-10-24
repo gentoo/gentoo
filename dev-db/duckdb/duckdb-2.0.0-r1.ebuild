@@ -19,10 +19,19 @@ KEYWORDS="~amd64"
 
 RESTRICT="test"
 
+DEPEND="app-arch/brotli:="
+RDEPEND="${DEPEND}"
+BDEPEND="virtual/pkgconfig"
+
+PATCHES=(
+	"${FILESDIR}/${P}-system-brotli.patch"
+)
+
 src_prepare() {
 	cd third_party/thrift/thrift/transport/
 	eapply "${FILESDIR}/thrift-cstdint.patch"
 	cd "${S}"
+	rm -r third_party/brotli || die
 	eapply_user
 	cmake_src_prepare
 }
