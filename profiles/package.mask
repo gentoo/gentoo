@@ -36,6 +36,13 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (2026-10-24)
+# Unmaintained, blocks openssl-4 transition, tons of bugs, X.509 + HPN
+# patches are a lost cause. For X.509, use net-misc/pkixssh. HPN-SSH is
+# not packaged as a separate fork, and requires a dedicated commitment.
+# Removal on 2026-11-23. Bug #978473.
+net-misc/openssh-contrib
+
 # Michał Górny <mgorny@gentoo.org> (2026-10-22)
 # Not ported to py3.13.  No revdeps.
 # Removal on 2026-11-21.  Bug #952389.
