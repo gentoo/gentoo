@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>salah.coronya@gmail.com</email>
+		<name>Christopher Byrne</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	<use>
+		<flag name="libcanberra">Enable sound event support using
+			<pkg>media-libs/libcanberra-gtk3</pkg></flag>
+		<flag name="perl-legacy">Allows legacy HexChat scripts to work with ZoiteChat</flag>
+		<flag name="plugin-checksum">Build Checksum plugin (needs plugins)</flag>
+		<flag name="plugin-fishlim">Build FiSHLiM plugin (needs plugins)</flag>
+		<flag name="plugin-sysinfo">Build SysInfo plugin (needs plugins)</flag>
+		<flag name="trayicon">Enable system tray icon</flag>
+	</use>
+	<upstream>
+		<bugs-to>https://github.com/ZoiteChat/zoitechat</bugs-to>
+		<remote-id type="github">ZoiteChat/zoitechat</remote-id>
+		<doc lang="en">https://docs.zoitechat.org/en/latest/</doc>
+	</upstream>
+</pkgmetadata>
