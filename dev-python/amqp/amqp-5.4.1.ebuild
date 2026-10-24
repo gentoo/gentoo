@@ -22,6 +22,11 @@ IUSE="extras"
 RDEPEND="
 	>=dev-python/vine-5.0.0[${PYTHON_USEDEP}]
 "
+BDEPEND="
+	test? (
+		net-misc/rabbitmq-server
+	)
+"
 
 distutils_enable_sphinx docs \
 	'>=dev-python/sphinx-celery-2.1.3'
@@ -44,9 +49,12 @@ src_test() {
 	/usr/libexec/rabbitmq/rabbitmq-server -p 5672:5672 &
 
 	einfo "Waiting for rabbitmq to fully load"
-	while ! { echo >/dev/tcp/localhost/5672 ; } &> /dev/null; do
+	local i
+	for (( i = 0; i < 60; i++ )); do
+		{ echo >/dev/tcp/localhost/5672 ; } &> /dev/null && break
 		sleep 1
 	done
+	[[ ${i} -lt 60 ]] || die "rabbitmq failed to start within 60 seconds"
 	einfo "rabbitmq is ready"
 
 	distutils-r1_src_test
