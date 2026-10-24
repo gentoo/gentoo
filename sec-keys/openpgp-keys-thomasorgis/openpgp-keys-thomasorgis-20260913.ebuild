@@ -13,4 +13,4 @@ DESCRIPTION="OpenPGP keys used by Thomas Orgis"
 HOMEPAGE="https://thomas.orgis.org/ https://www.mpg123.org/download.shtml"
 SRC_URI+=" http://thomas.orgis.org/public_key -> ${P}.asc"
 
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
