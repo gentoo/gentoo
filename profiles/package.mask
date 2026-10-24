@@ -670,11 +670,6 @@ x11-drivers/nvidia-drivers:0/390
 # should update to that. #841437
 ~sci-physics/bullet-3.22b
 
-# Brian Evans <grknight@gentoo.org> (2022-01-07)
-# The main consumer, phpunit, does not initiate the new timer correctly
-# This is likely to cause issues in tests; Unmask if using for other purposes
->=dev-php/PHP_Timer-5.0
-
 # Ionen Wolkens <ionen@gentoo.org> (2021-10-09)
 # Vulkan beta driver branch aimed at Vulkan developers for testing
 # new features. Beside vulkan, it is typically behind the main branch
