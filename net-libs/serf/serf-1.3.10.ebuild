@@ -31,6 +31,7 @@ DEPEND="${RDEPEND}"
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.3.8-static-lib.patch
 	"${FILESDIR}"/${PN}-1.3.10-multilib-link-path.patch
+	"${FILESDIR}"/${PN}-1.3.10-openssl-4.patch
 )
 
 src_prepare() {
