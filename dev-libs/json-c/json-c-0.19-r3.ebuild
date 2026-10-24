@@ -15,7 +15,7 @@ else
 	# https://github.com/json-c/json-c/wiki#obtain-sources
 	SRC_URI="https://s3.amazonaws.com/json-c_releases/releases/${P}.tar.gz"
 
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-solaris"
+	KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-solaris"
 fi
 
 LICENSE="MIT"
