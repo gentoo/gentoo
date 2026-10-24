@@ -216,6 +216,7 @@ src_prepare() {
 	eapply "${FILESDIR}"/${PN}-10.6.12-gcc-13.patch
 	eapply "${FILESDIR}"/${PN}-wsrep-gcc-15.patch
 	eapply "${FILESDIR}"/${PN}-11.8.9-no-sandbox-options.patch
+	eapply "${FILESDIR}"/${PN}-12.3.3-gcc-17.patch
 
 	eapply_user
 

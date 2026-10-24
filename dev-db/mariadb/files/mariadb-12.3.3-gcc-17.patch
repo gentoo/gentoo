@@ -1,0 +1,12 @@
+diff --git a/storage/duckdb/convertor/ddl_convertor.h b/storage/duckdb/convertor/ddl_convertor.h
+index 6cb3363..25a1089 100644
+--- a/storage/duckdb/convertor/ddl_convertor.h
++++ b/storage/duckdb/convertor/ddl_convertor.h
+@@ -19,6 +19,7 @@
+ 
+ #pragma once
+ 
++#include <sstream>
+ #include <string>
+ #include <vector>
+ 
