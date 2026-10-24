@@ -1,0 +1,15 @@
+[Unit]
+Description=OpenSSH server daemon
+After=network.target auditd.service
+
+[Service]
+Type=notify-reload
+ExecStartPre=/usr/lib/openssh-legacy/bin/ssh-keygen -A
+ExecStart=/usr/lib/openssh-legacy/sbin/sshd -D -e
+KillMode=process
+OOMPolicy=continue
+Restart=on-failure
+RestartSec=42s
+
+[Install]
+WantedBy=multi-user.target
