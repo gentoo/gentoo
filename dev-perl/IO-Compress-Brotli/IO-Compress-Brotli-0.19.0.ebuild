@@ -1,4 +1,4 @@
-# Copyright 2020-2025 Gentoo Authors
+# Copyright 2020-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -28,3 +28,10 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.019-unbundle.patch
 )
+
+src_prepare() {
+	# Delete bundled copy, just in case (test data has to be kept)
+	rm -r brotli/c || die
+
+	perl-module_src_prepare
+}
