@@ -164,7 +164,7 @@ CRATES="
 	${PN}@${PV}
 "
 
-inherit cargo shell-completion toolchain-funcs
+inherit cargo shell-completion sysroot
 
 DESCRIPTION="Just a command runner (with syntax inspired by 'make')"
 HOMEPAGE="
@@ -182,36 +182,27 @@ KEYWORDS="~amd64 ~arm64"
 
 QA_FLAGS_IGNORED="usr/bin/${PN}"
 
-src_test() {
-	default
+src_compile() {
+	cargo_src_compile
+
+	sysroot_try_run_prefixed "$(cargo_target_dir)"/${PN} --man > ${PN}.1 || die
+	sysroot_try_run_prefixed "$(cargo_target_dir)"/${PN} --completions bash > completions/${PN}.bash || die
+	sysroot_try_run_prefixed "$(cargo_target_dir)"/${PN} --completions zsh > completions/${PN}.zsh || die
+	sysroot_try_run_prefixed "$(cargo_target_dir)"/${PN} --completions fish > completions/${PN}.fish || die
 }
 
-src_prepare() {
-	default
-	tc-export CC
+src_test() {
+	:
 }
 
 src_install() {
-	local DOCS=( README.md )
-
 	cargo_src_install
 
-	mkdir man || die
-	$(cargo_target_dir)/just --man > man/just.1 || die
+	[[ -s ${PN}.1 ]] && doman ${PN}.1
+	[[ -s completions/${PN}.bash ]] && newbashcomp completions/${PN}.bash ${PN}
+	[[ -s completions/${PN}.zsh ]] && newzshcomp completions/${PN}.zsh _${PN}
+	[[ -s completions/${PN}.fish ]] && dofishcomp completions/${PN}.fish
 
-	doman man/*
-
+	local DOCS=( README.md )
 	einstalldocs
-
-	# bash-completion
-	$(cargo_target_dir)/just --completions bash > completions/just.bash || die
-	newbashcomp "completions/${PN}.bash" "${PN}"
-
-	# zsh-completion
-	$(cargo_target_dir)/just --completions zsh > completions/just.zsh || die
-	newzshcomp "completions/${PN}.zsh" "_${PN}"
-
-	# fish-completion
-	$(cargo_target_dir)/just --completions fish > completions/just.fish || die
-	dofishcomp "completions/${PN}.fish"
 }
