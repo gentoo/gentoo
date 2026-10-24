@@ -25,6 +25,10 @@ BDEPEND="
 	doc? ( >=app-text/doxygen-1.4.7 )
 "
 
+PATCHES=(
+	"${FILESDIR}"/${P}-openssl-4.patch
+)
+
 src_configure() {
 	local myeconfargs=(
 		--disable-crypto-engine-polarssl
