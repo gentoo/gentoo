@@ -80,6 +80,7 @@ VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/alexeysokolov.asc
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.7.1-inttest-dir.patch"
+	"${FILESDIR}/${PN}-1.10.3-openssl-4.patch"
 )
 
 pkg_setup() {
