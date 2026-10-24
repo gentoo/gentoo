@@ -30,6 +30,7 @@ BDEPEND="
 	dev-python/hatch-vcs[${PYTHON_USEDEP}]
 	test? (
 		app-arch/unzip
+		dev-python/packaging[${PYTHON_USEDEP}]
 		dev-python/rarfile[${PYTHON_USEDEP}]
 		dev-python/sympy[${PYTHON_USEDEP}]
 		>=dev-python/vcrpy-1.6.1[${PYTHON_USEDEP}]
@@ -52,6 +53,7 @@ RDEPEND="
 	>=dev-python/srt-3.5[${PYTHON_USEDEP}]
 	>=dev-python/stevedore-3.0[${PYTHON_USEDEP}]
 	>=dev-python/tomlkit-0.13.2[${PYTHON_USEDEP}]
+	>=dev-python/typing-extensions-4.10[${PYTHON_USEDEP}]
 "
 
 EPYTEST_DESELECT=(
