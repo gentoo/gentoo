@@ -14,7 +14,7 @@ if [[ ${PV} == 9999* ]]; then
 	EGIT_REPO_URI="https://opendev.org/openstack/diskimage-builder.git"
 else
 	inherit pypi
-	KEYWORDS="amd64 ~arm64 ~x86"
+	KEYWORDS="amd64 ~arm64 x86"
 fi
 
 LICENSE="Apache-2.0"
