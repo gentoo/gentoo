@@ -8,6 +8,7 @@ inherit go-module
 DESCRIPTION="A command-line client and tunneling daemon for Cloudflare Tunnel"
 HOMEPAGE="https://github.com/cloudflare/cloudflared"
 SRC_URI="https://github.com/cloudflare/cloudflared/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI+=" https://github.com/gentoo-zh-drafts/cloudflared/releases/download/${PV}/${P}-vendor.tar.xz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
@@ -16,7 +17,7 @@ KEYWORDS="~amd64 ~arm64"
 # "make test" fails since cloudflared-2024.12.1, and fails with network-sanbox
 RESTRICT="test"
 
-BDEPEND=">=dev-lang/go-1.26.4"
+BDEPEND=">=dev-lang/go-1.27.2"
 
 src_compile(){
 	local ldflags="
