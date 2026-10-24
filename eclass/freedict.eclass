@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: freedict.eclass
@@ -6,19 +6,19 @@
 # maintainer-needed@gentoo.org
 # @AUTHOR:
 # Original author: Seemant Kulleen <seemant@gentoo.org>
-# @SUPPORTED_EAPIS: 7 8
+# @SUPPORTED_EAPIS: 7 8 9
 # @BLURB: Ease the installation of freedict translation dictionaries
 # @DESCRIPTION:
 # This eclass exists to ease the installation of freedict translation
 # dictionaries.
 
-case ${EAPI} in
-	7|8) ;;
-	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
-esac
-
 if [[ -z ${_FREEDICT_ECLASS} ]]; then
 _FREEDICT_ECLASS=1
+
+case ${EAPI} in
+	7|8|9) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
 
 # @ECLASS_VARIABLE: FREEDICT_P
 # @DESCRIPTION:

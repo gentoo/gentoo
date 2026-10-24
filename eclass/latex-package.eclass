@@ -7,7 +7,7 @@
 # @AUTHOR:
 # Matthew Turk <satai@gentoo.org>
 # Martin Ehmsen <ehmsen@gentoo.org>
-# @SUPPORTED_EAPIS: 7 8
+# @SUPPORTED_EAPIS: 7 8 9
 # @BLURB: An eclass for easy installation of LaTeX packages
 # @DESCRIPTION:
 # This eClass is designed to be easy to use and implement.  The vast majority of
@@ -51,16 +51,15 @@
 # you must either grab each file individually, or find a place to mirror an
 # archive of them.  (iBiblio)
 
-case ${EAPI} in
-	7) inherit eapi8-dosym ;;
-	8) ;;
-	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
-esac
-
 if [[ -z ${_LATEX_PACKAGE_ECLASS} ]]; then
 _LATEX_PACKAGE_ECLASS=1
 
-inherit edo
+case ${EAPI} in
+	7) inherit eapi8-dosym edo ;;
+	8) inherit edo ;;
+	9) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
 
 RDEPEND="virtual/latex-base"
 BDEPEND="${RDEPEND}

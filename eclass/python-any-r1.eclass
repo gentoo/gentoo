@@ -7,7 +7,7 @@
 # @AUTHOR:
 # Author: Michał Górny <mgorny@gentoo.org>
 # Based on work of: Krzysztof Pawlik <nelchael@gentoo.org>
-# @SUPPORTED_EAPIS: 7 8
+# @SUPPORTED_EAPIS: 7 8 9
 # @PROVIDES: python-utils-r1
 # @BLURB: An eclass for packages having build-time dependency on Python.
 # @DESCRIPTION:
@@ -38,13 +38,13 @@
 # For more information, please see the Python Guide:
 # https://projects.gentoo.org/python/guide/
 
-case ${EAPI} in
-	7|8) ;;
-	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
-esac
-
 if [[ -z ${_PYTHON_ANY_R1_ECLASS} ]]; then
 _PYTHON_ANY_R1_ECLASS=1
+
+case ${EAPI} in
+	7|8|9) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
 
 if [[ ${_PYTHON_R1_ECLASS} ]]; then
 	die 'python-any-r1.eclass can not be used with python-r1.eclass.'
