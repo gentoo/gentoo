@@ -114,6 +114,12 @@ src_configure() {
 		-DBUILD_TESTS=$(usex test)
 	)
 
+	if use prefix; then
+		mycmakeargs+=(
+			-DTARGET_DIR_ROOT="${EPREFIX}"/
+		)
+	fi
+
 	append-cppflags -DNDEBUG
 
 	cmake_src_configure
