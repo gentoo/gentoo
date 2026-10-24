@@ -1,0 +1,86 @@
+https://bugs.gentoo.org/713372#c7
+
+From 45a9a61a7aec59d58bda5ef260ea969b5921eee6 Mon Sep 17 00:00:00 2001
+From: Stephan Hartmann <stephan.hartmann@tu-dresden.de>
+Date: Wed, 25 Mar 2020 17:54:44 +0100
+Subject: [PATCH] fix build with musl-libc
+
+Signed-off-by: Stephan Hartmann <stha09@googlemail.com>
+---
+ echo/defs.h        |  1 +
+ libcommon/getdir.c | 10 ++++++----
+ ls/ls.c            |  4 +++-
+ test/defs.h        |  1 +
+ 4 files changed, 11 insertions(+), 5 deletions(-)
+
+diff --git a/echo/defs.h b/echo/defs.h
+index e97bccc..be4b9e6 100644
+--- a/echo/defs.h
++++ b/echo/defs.h
+@@ -31,6 +31,7 @@
+ #include <string.h>
+ #include <wchar.h>
+ #include <unistd.h>
++#include <sys/stat.h>
+ 
+ #if defined (__GLIBC__) && defined (_IO_getc_unlocked)
+ #undef	putchar
+diff --git a/libcommon/getdir.c b/libcommon/getdir.c
+index 245b764..fcc3dc9 100644
+--- a/libcommon/getdir.c
++++ b/libcommon/getdir.c
+@@ -42,19 +42,21 @@
+ #define	getdents(a, b, c)	__getdents64(a, b, c)
+ #define	dirent	dirent64
+ extern int	getdents(int, struct dirent *, size_t);
+-#elif defined	(__GLIBC__) || defined (__FreeBSD__) || defined (_AIX) || \
++#elif defined	(__dietlibc__)
++#include	<dirent.h>
++#include	<unistd.h>
++#elif defined	(__linux__) || defined (__FreeBSD__) || defined (_AIX) || \
+ 	defined (__NetBSD__) || defined (__OpenBSD__) || \
+ 	defined (__DragonFly__) || defined (__APPLE__)
+ #include	<dirent.h>
++#if !defined (__linux__) || defined(__GLIBC__)
+ #define	getdents(a, b, c)	getdirentries((a), (char *)(b), (c), &(db->g_offs))
++#endif
+ #if defined (__FreeBSD__) || defined (__NetBSD__) || defined (__OpenBSD__) || \
+ 	defined (__DragonFly__) || defined (__APPLE__)
+ #undef	d_ino
+ #endif	/* __FreeBSD__ || __NetBSD__ || __OpenBSD__ || __DragonFly__
+ 	 || __APPLE__ */
+-#elif defined	(__dietlibc__)
+-#include	<dirent.h>
+-#include	<unistd.h>
+ #else		/* !__GLIBC__, !__dietlibc__ */
+ #ifdef	__hpux
+ #define		_KERNEL
+diff --git a/ls/ls.c b/ls/ls.c
+index 17186ba..5a1bfdb 100644
+--- a/ls/ls.c
++++ b/ls/ls.c
+@@ -119,7 +119,9 @@ static char ifmt_c[] = "-pc-d-b--nl-SD--";
+ #include <termcap.h>
+ #endif	/* USE_TERMCAP */
+ 
+-#if defined (_AIX) || defined (__GLIBC__)
++#if defined (_AIX) || \
++    ( defined (__linux__) && !defined(__dietlibc__) && \
++      !defined(__UCLIBC__) )
+ #include <sys/sysmacros.h>
+ #endif
+ 
+diff --git a/test/defs.h b/test/defs.h
+index e97bccc..be4b9e6 100644
+--- a/test/defs.h
++++ b/test/defs.h
+@@ -31,6 +31,7 @@
+ #include <string.h>
+ #include <wchar.h>
+ #include <unistd.h>
++#include <sys/stat.h>
+ 
+ #if defined (__GLIBC__) && defined (_IO_getc_unlocked)
+ #undef	putchar
+-- 
+2.23.0
