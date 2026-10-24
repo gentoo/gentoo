@@ -10,4 +10,7 @@
 			Use c-ares as the DNS backend instead of evdns (libevent).
 		</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">pgbouncer/pgbouncer</remote-id>
+	</upstream>
 </pkgmetadata>
