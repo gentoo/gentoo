@@ -11,7 +11,8 @@ else
 
 	# ffmpeg with amf USE enabled
 	# - can only built with amf-headers installed.
-	# - can only use AMF ( the 'XXXX_amf' codecs) at runtime when 'amdgpu-pro-amf' is installed (the shared libs it installs are dlopen'ed by ffmpeg)
+	# - can only use AMF ( the 'XXXX_amf' codecs) at runtime when 'amdgpu-pro-amf' is installed
+	#   (the shared libs it installs are dlopen'ed by ffmpeg)
 	# - can only use the AMF features that it has explicit code for
 	#
 	# -> Runtime behavior entirely depends on closed source amdgpu-pro-amf binary that we have no control over
