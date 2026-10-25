@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,7 +9,7 @@ MY_P="tcl${P}"
 
 DESCRIPTION="TLS OpenSSL extension to Tcl"
 HOMEPAGE="http://tls.sourceforge.net/"
-SRC_URI="https://core.tcl.tk/tcltls/uv/${MY_P}.tar.gz"
+SRC_URI="https://core.tcl-lang.org/tcltls/uv/${MY_P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
