@@ -12,6 +12,7 @@
 	<use>
 		<flag name="cuda">Enable accelerated video encoding on NVIDIA hardware</flag>
 		<flag name="libdrm">Enable KMS video capture via <pkg>x11-libs/libdrm</pkg></flag>
+		<flag name="kde">Enable KWin Screencast video capture via <pkg>kde-plasma/kwin</pkg></flag>
 		<flag name="pipewire">Enable XDG Desktop Portal video capture via <pkg>media-video/pipewire</pkg></flag>
 		<flag name="svt-av1">Enable software AV1 encoding via <pkg>media-libs/svt-av1</pkg></flag>
 		<flag name="trayicon">Enable system tray icon</flag>

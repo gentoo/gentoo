@@ -63,7 +63,7 @@ DESCRIPTION="Self-hosted game stream host for Moonlight"
 HOMEPAGE="https://github.com/LizardByte/Sunshine"
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="cuda debug +libdrm pipewire svt-av1 systemd trayicon vaapi vulkan wayland X x264 x265"
+IUSE="cuda debug kde +libdrm pipewire svt-av1 systemd trayicon vaapi vulkan wayland X x264 x265"
 
 # Strings for CPU features in the useflag[:configure_option] form
 # if :configure_option isn't set, it will use 'useflag' as configure option
@@ -134,6 +134,7 @@ CPU_REQUIRED_USE="
 REQUIRED_USE="
 	${CPU_REQUIRED_USE}
 	|| ( cuda libdrm wayland X )
+	kde? ( pipewire wayland )
 	pipewire? ( wayland )
 "
 
@@ -171,6 +172,7 @@ RDEPEND="
 	${CDEPEND}
 	media-libs/mesa[vaapi?]
 	cuda? ( x11-drivers/nvidia-drivers )
+	kde? ( kde-plasma/kwin[screencast(-)] )
 	vulkan? ( media-libs/vulkan-loader )
 	X? (
 		x11-libs/libxcb
@@ -194,6 +196,7 @@ DEPEND="
 		>=dev-util/nvidia-cuda-toolkit-13.4
 		<dev-util/nvidia-cuda-toolkit-12.10
 	)
+	kde? ( >=dev-libs/plasma-wayland-protocols-1.21 )
 	pipewire? ( x11-libs/libdrm )
 	vulkan? (
 		>=dev-util/vulkan-headers-1.4.317
@@ -261,8 +264,10 @@ src_unpack() {
 		default
 		find moonlight-common-c-${MOONLIGHT_COMMIT} "${S}"/third-party \
 			build-deps-${BUILD_DEPS_COMMIT#v}/third-party/FFmpeg -mindepth 1 -type d -empty -delete || die
+
 		mv enet-${ENET_COMMIT} moonlight-common-c-${MOONLIGHT_COMMIT}/enet || die
 		mv nanors-${NANORS_COMMIT} moonlight-common-c-${MOONLIGHT_COMMIT}/nanors || die
+
 		mv build-deps-${BUILD_DEPS_COMMIT#v} "${S}"/third-party/build-deps || die
 		mv libdisplaydevice-${DISPLAYDEV_COMMIT#v} "${S}"/third-party/libdisplaydevice || die
 		mv glad-${GLAD_COMMIT#v} "${S}"/third-party/glad || die
@@ -289,9 +294,10 @@ src_prepare() {
 src_configure() {
 	local build_deps="${S}"/third-party/build-deps/dist
 
-	# The build assumes the nv-codec-headers are bundled.
-	mkdir -p "${build_deps}"/ffmpeg/include || die
+	# The build assumes these files are bundled.
+	mkdir -p "${build_deps}"/ffmpeg/include third-party/plasma-wayland-protocols/src || die
 	ln -snf "${ESYSROOT}"/usr/include/ffnvcodec "${build_deps}"/ffmpeg/include/ || die
+	ln -snf "${ESYSROOT}"/usr/share/plasma-wayland-protocols third-party/plasma-wayland-protocols/src/protocols || die
 
 	local mycmakeargs=(
 		-DBASH_EXECUTABLE="${BROOT}"/bin/true
@@ -407,7 +413,7 @@ src_configure() {
 		-DSUNSHINE_ASSETS_DIR=share/${PN}
 		-DSUNSHINE_ENABLE_CUDA=$(usex cuda)
 		-DSUNSHINE_ENABLE_DRM=$(usex libdrm)
-		-DSUNSHINE_ENABLE_KWIN=no # Not in any KWin release yet
+		-DSUNSHINE_ENABLE_KWIN=$(usex kde)
 		-DSUNSHINE_ENABLE_PORTAL=$(usex pipewire)
 		-DSUNSHINE_ENABLE_VAAPI=$(usex vaapi)
 		-DSUNSHINE_ENABLE_VULKAN=$(usex vulkan)
