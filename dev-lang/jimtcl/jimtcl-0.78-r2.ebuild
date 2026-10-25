@@ -4,7 +4,7 @@
 EAPI="7"
 
 DESCRIPTION="Small footprint implementation of Tcl programming language"
-HOMEPAGE="https://jim.tcl.tk/"
+HOMEPAGE="https://jim.tcl-lang.org/"
 SRC_URI="https://github.com/msteveb/jimtcl/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2"
