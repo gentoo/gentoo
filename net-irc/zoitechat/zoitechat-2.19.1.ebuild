@@ -18,7 +18,7 @@ SRC_URI="https://github.com/ZoiteChat/zoitechat/archive/refs/tags/v${PV}.tar.gz 
 
 LICENSE="GPL-2 plugin-fishlim? ( MIT )"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="~amd64 ~arm64 ~x86"
 
 IUSE="dbus debug +gtk libcanberra lua perl perl-legacy plugin-checksum plugin-fishlim plugin-sysinfo python ssl trayicon ${GENTOO_PERL_USESTRING}"
 REQUIRED_USE="
