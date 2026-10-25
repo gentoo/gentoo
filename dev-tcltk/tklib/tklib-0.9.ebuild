@@ -6,7 +6,7 @@ EAPI=8
 CODE=17f1d6d5fdad54ee
 
 DESCRIPTION="Collection of utility modules for Tk, and a companion to Tcllib"
-HOMEPAGE="http://www.tcl.tk/software/tklib"
+HOMEPAGE="http://www.tcl-lang.org/software/tklib"
 SRC_URI="https://core.tcl-lang.org/${PN}/raw/${P}.tar.bz2?name=${CODE} -> ${P}.tar.bz2"
 
 LICENSE="BSD"
