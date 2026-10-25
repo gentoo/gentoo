@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=standalone
-PYTHON_COMPAT=( python3_{12..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 
 inherit distutils-r1 shell-completion
 
@@ -63,6 +63,10 @@ src_prepare() {
 		# upstream is inconsistent over using certifi.which() and their
 		# own bundle, force the former to use system certs
 		"${FILESDIR}/${PN}-2.38.5-always-use-certifi.patch"
+
+		# backport from dev-python/botocore (don't get me started
+		# on the bundled forks here)
+		"${FILESDIR}/${PN}-2.38.5-py315.patch"
 	)
 
 	distutils-r1_src_prepare
@@ -93,6 +97,15 @@ python_test() {
 		tests/unit/test_compat.py::TestGetPreferredEncoding::test_getpreferredencoding_with_env_var
 	)
 
+	case ${EPYTHON} in
+		python3.15*)
+			EPYTEST_DESELECT+=(
+				# different quoting in exception message
+				tests/functional/codeartifact/test_codeartifact_login.py::TestCodeArtifactLogin::test_pip_login_command_failed_auth_token_redacted
+			)
+			;;
+	esac
+
 	# Some tests take a lot of memory, so run parallel-safe tests first.
 	local awscli_parallel_tests=(
 		tests/functional/[ac-z]*/
@@ -102,7 +115,7 @@ python_test() {
 		tests/functional/botocore/*/
 		tests/functional/botocore/test_[cds-z]*.py
 	)
-	#epytest "${botocore_parallel_tests[@]}"
+	epytest "${botocore_parallel_tests[@]}"
 	epytest "${awscli_parallel_tests[@]}"
 
 	local EPYTEST_IGNORE=(
