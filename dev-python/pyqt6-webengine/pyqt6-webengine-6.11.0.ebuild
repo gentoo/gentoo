@@ -19,7 +19,7 @@ IUSE="debug quick +widgets"
 RDEPEND="
 	>=dev-python/pyqt6-$(ver_cut 1-2)[gui,ssl,webchannel,${PYTHON_USEDEP}]
 	dev-qt/qtbase:6[gui,widgets?]
-	dev-qt/qtwebengine:6[widgets]
+	>=dev-qt/qtwebengine-$(ver_cut 1-2):6[widgets]
 	quick? (
 		dev-python/pyqt6[qml]
 		dev-qt/qtwebengine:6[qml]
