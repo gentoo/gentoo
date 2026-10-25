@@ -16,4 +16,4 @@ inherit php-ext-pecl-r3
 DESCRIPTION="A reusable, persistent handle and resource factory API"
 LICENSE="BSD-2"
 SLOT="7"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 x86"
