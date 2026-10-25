@@ -135,6 +135,7 @@ src_configure() {
 		-DENABLE_XCB_RANDR=$(usex xcb)
 		-DENABLE_XRANDR=$(usex xrandr)
 		-DBUILD_TESTS=$(usex test)
+		-DTARGET_DIR_ROOT="${EPREFIX}"
 	)
 
 	if use vaapi && use X; then
