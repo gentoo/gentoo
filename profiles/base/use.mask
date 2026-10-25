@@ -4,6 +4,11 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Alfred Wingate <parona@protonmail.com> (2026-10-25)
+# Ruby 3.2 is no longer supported upstream and will no longer
+# receive security updates.
+ruby_targets_ruby32
+
 # Michał Górny <mgorny@gentoo.org> (2026-05-07)
 # Python implementations without keywords.
 python_targets_python3_15
