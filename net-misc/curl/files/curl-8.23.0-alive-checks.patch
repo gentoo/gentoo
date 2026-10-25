@@ -1,0 +1,172 @@
+https://curl.se/mail/lib-2026-10/0012.html
+https://github.com/curl/curl/pull/23412
+https://github.com/curl/curl/commit/ef6b17cf12d4af4dfb2af4f9bc35861772be71c7
+
+From ef6b17cf12d4af4dfb2af4f9bc35861772be71c7 Mon Sep 17 00:00:00 2001
+From: Rhino <195818135+1rhino2@users.noreply.github.com>
+Date: Thu, 15 Oct 2026 06:41:54 -0400
+Subject: [PATCH] conncache: poll an idle connection for pending input on every
+ reuse
+
+Since 2f1e94eaed the alive check in Curl_cpool_conn_seems_healthy() is
+skipped when it last ran less than a second ago, and that also skipped
+the pending input check that follows it. An idle HTTP/1.1 connection
+that had received unsolicited data from the server was then reused
+within that second and the stray bytes came back as the response to the
+next request, so every later response on that connection was shifted by
+one. 8.21.0 refused to reuse a connection with input pending on every
+reuse, and with 8.22.0 the tool reproduces it at a 900 ms gap between
+requests while 1100 ms gets a fresh connection.
+
+RFC 9112 section 9.2 says a client must not treat data received with no
+outstanding request as a response, so poll for pending input on every
+reuse of an idle non-multiplexed connection and keep the once a second
+limit only for the other checks, the protocol specific
+connection_is_dead callback and multiplexed connections.
+
+Test 1701 reproduces it with sws sending a second response after the
+first one completed and the tool starting the next request inside the
+window.
+
+Follow-up to 2f1e94eaed
+Ref: #22169
+Bug: https://hackerone.com/reports/4098761
+Closes #23412
+---
+ lib/conncache.c        | 14 ++++++--
+ tests/data/Makefile.am |  1 +
+ tests/data/test1701    | 75 ++++++++++++++++++++++++++++++++++++++++++
+ 3 files changed, 87 insertions(+), 3 deletions(-)
+ create mode 100644 tests/data/test1701
+
+diff --git a/lib/conncache.c b/lib/conncache.c
+index 2f759bed2f01..157db0f2d83a 100644
+--- a/lib/conncache.c
++++ b/lib/conncache.c
+@@ -1044,11 +1044,20 @@ bool Curl_cpool_conn_seems_healthy(struct connectdata *conn,
+ {
+   struct Curl_easy *admin;
+   bool healthy = TRUE;
++  bool poll_input;
+ 
+   DEBUGASSERT(!data->conn);
+   if(cpool_conn_can_be_closed(conn) && cpool_conn_too_old(data, conn, pnow))
+     return FALSE;
+-  if((curlx_ptimediff_ms(pnow, &conn->created) - conn->lastchecked_ms) < 1000)
++
++  /* An idle, non-multiplexed connection must not be reused when it has
++   * input pending (RFC 9112, section 9.2), so that is polled on every
++   * reuse. The once a second limit only applies to the other checks. */
++  poll_input = cpool_conn_can_be_closed(conn) &&
++    !Curl_conn_is_multiplex(conn, FIRSTSOCKET) &&
++    !conn->scheme->run->connection_is_dead;
++  if(!poll_input &&
++     (curlx_ptimediff_ms(pnow, &conn->created) - conn->lastchecked_ms) < 1000)
+     return TRUE;
+ 
+   admin = Curl_get_admin(data);
+@@ -1063,8 +1072,7 @@ bool Curl_cpool_conn_seems_healthy(struct connectdata *conn,
+     Curl_attach_connection(admin, conn, FALSE);
+     healthy = Curl_conn_is_alive(admin, conn, &input_pending);
+     Curl_detach_connection(admin);
+-    if(healthy && input_pending && cpool_conn_can_be_closed(conn) &&
+-       !Curl_conn_is_multiplex(conn, FIRSTSOCKET)) {
++    if(healthy && input_pending && poll_input) {
+       /* Non-multiplexed connections without attached transfers should
+        * not have input pending. The input might be a TLS Notify Close,
+        * for all we know. */
+diff --git a/tests/data/Makefile.am b/tests/data/Makefile.am
+index d066f2db583d..0f4ce61062c2 100644
+--- a/tests/data/Makefile.am
++++ b/tests/data/Makefile.am
+@@ -1716,6 +1716,7 @@ TESTCASES = \
+   test1693 \
+   \
+   test1700 \
++  test1701 \
+   test1702 \
+   test1703 \
+   test1704 \
+diff --git a/tests/data/test1701 b/tests/data/test1701
+new file mode 100644
+index 000000000000..e4e3d044302a
+--- /dev/null
++++ b/tests/data/test1701
+@@ -0,0 +1,75 @@
++<?xml version="1.0" encoding="US-ASCII"?>
++<testcase>
++<info>
++<keywords>
++HTTP
++HTTP GET
++DELAY
++</keywords>
++</info>
++# Server-side
++<reply>
++# the first response is exactly 60 bytes so that with writedelay the server
++# sends it in three 20 byte writes and the unsolicited second response only
++# starts arriving after the first transfer is complete and the connection
++# has been returned to the pool
++<data nocheck="yes">
++HTTP/1.1 200 OK
++Funny-head: yesyes
++Content-Length: 6
++
++first
++HTTP/1.1 200 OK
++Content-Length: 6
++
++stray
++</data>
++<data2>
++HTTP/1.1 200 OK
++Content-Length: 7
++
++second
++</data2>
++<servercmd>
++writedelay: 150
++</servercmd>
++</reply>
++
++# Client-side
++<client>
++<server>
++http
++</server>
++<name>
++HTTP/1.1 idle connection with unsolicited data is not reused
++</name>
++# --rate 1/s starts the second request 1000 ms after the first one started,
++# which is about 700 ms after the first response completed and the
++# connection went back to the pool, inside the one second window where the
++# pool used to skip the alive check. The stray response has fully arrived
++# about 750 ms in.
++<command option="no-include">
++http://%HOSTIP:%HTTPPORT/%TESTNUMBER http://%HOSTIP:%HTTPPORT/%TESTNUMBER0002 --rate 1/s
++</command>
++</client>
++
++# Verify data after the test has been "shot"
++<verify>
++<protocol crlf="yes">
++GET /%TESTNUMBER HTTP/1.1
++Host: %HOSTIP:%HTTPPORT
++User-Agent: curl/%VERSION
++Accept: */*
++
++GET /%TESTNUMBER0002 HTTP/1.1
++Host: %HOSTIP:%HTTPPORT
++User-Agent: curl/%VERSION
++Accept: */*
++
++</protocol>
++<stdout>
++first
++second
++</stdout>
++</verify>
++</testcase>
+
+
