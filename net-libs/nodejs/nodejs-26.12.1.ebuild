@@ -40,7 +40,7 @@ RESTRICT="!test? ( test )"
 COMMON_DEPEND=">=app-arch/brotli-1.2.1:=
 	dev-db/sqlite:3
 	>=dev-cpp/ada-4.0.0:=
-	>=dev-cpp/simdutf-9.2.1:=
+	>=dev-cpp/simdutf-9.2.1-r1:=[atomic-base64(+)]
 	>=dev-libs/libuv-1.52.1:=
 	>=dev-libs/simdjson-5.0.3:=
 	>=net-dns/c-ares-1.34.8:=
