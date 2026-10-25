@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,7 +16,7 @@ DESCRIPTION="PHP extension for interfacing with Redis"
 S="${WORKDIR}/${MY_P}"
 LICENSE="PHP-3.01"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~riscv"
+KEYWORDS="amd64 ~arm ~arm64 ~riscv"
 IUSE="igbinary +json lz4 +session zstd"
 
 DEPEND="
