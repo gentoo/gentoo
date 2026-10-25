@@ -1,0 +1,12 @@
+--- a/contrib/simdjson-cmake/CMakeLists.txt
++++ b/contrib/simdjson-cmake/CMakeLists.txt
+@@ -1,3 +1,9 @@
++find_package(PkgConfig REQUIRED)
++pkg_check_modules(SIMDJSON REQUIRED IMPORTED_TARGET simdjson)
++add_library(_simdjson INTERFACE)
++target_link_libraries(_simdjson INTERFACE PkgConfig::SIMDJSON)
++add_library(ch_contrib::simdjson ALIAS _simdjson)
++return()
+ option (ENABLE_SIMDJSON "Use simdjson" ${ENABLE_LIBRARIES})
+ 
+ if (NOT ENABLE_SIMDJSON)

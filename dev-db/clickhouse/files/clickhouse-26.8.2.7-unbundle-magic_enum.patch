@@ -1,0 +1,11 @@
+--- a/contrib/magic-enum-cmake/CMakeLists.txt
++++ b/contrib/magic-enum-cmake/CMakeLists.txt
+@@ -1,3 +1,8 @@
++find_path(MAGIC_ENUM_INCLUDE NAMES magic_enum.hpp PATH_SUFFIXES magic_enum REQUIRED)
++add_library(_magic_enum INTERFACE)
++target_include_directories(_magic_enum SYSTEM INTERFACE ${MAGIC_ENUM_INCLUDE})
++add_library(ch_contrib::magic_enum ALIAS _magic_enum)
++return()
+ set(LIBRARY_DIR "${ClickHouse_SOURCE_DIR}/contrib/magic_enum")
+ add_library(_magic_enum INTERFACE)
+ target_include_directories(_magic_enum SYSTEM INTERFACE ${LIBRARY_DIR}/include/magic_enum)
