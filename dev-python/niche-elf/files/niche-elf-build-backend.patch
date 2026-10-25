@@ -1,0 +1,15 @@
+From: Jeremy Karagania <jeremykaragania@icloud.com>
+Date: Fri, 27 Feb 2026 00:59:27 +0800
+Subject: [PATCH] Add Hatch build backend to `pyproject.toml`
+Upstream: https://github.com/pwndbg/niche-elf/pull/7
+
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -25,3 +25,7 @@ ignore = ["D101", "D102", "D107", "D103", "D203", "D212", "D203", "D212", "D100"
+ 
+ [tool.setuptools.package-data]
+ niche_elf = ["py.typed"]
++
++[build-system]
++requires = ["hatchling"]
++build-backend = "hatchling.build"
