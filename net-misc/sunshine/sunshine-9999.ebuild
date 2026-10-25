@@ -217,10 +217,6 @@ BDEPEND="
 	')
 "
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-new-cuda.patch
-)
-
 # Make this mess a bit simpler.
 CMAKE_IN_SOURCE_BUILD=1
 

@@ -218,7 +218,6 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-new-cuda.patch
 	"${FILESDIR}"/${PN}-new-boost.patch
 	"${FILESDIR}"/${PN}-fix-pairing.patch
 )
