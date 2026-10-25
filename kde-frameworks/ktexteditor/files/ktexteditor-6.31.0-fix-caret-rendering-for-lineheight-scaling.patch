@@ -1,0 +1,49 @@
+From c8e141588adce66f26835a7c5d4c1046651abd6e Mon Sep 17 00:00:00 2001
+From: Christoph Cullmann <christoph@cullmann.dev>
+Date: Sun, 11 Oct 2026 19:15:29 +0200
+Subject: [PATCH] rendering: fix caret rendering for line height scaling
+
+pass lineHeight to ensure we work fine with wrapped lines
+and lineHeightMultiplier != 1.0
+
+BUG: 524760
+---
+ src/render/katerenderer.cpp | 8 +++++---
+ 1 file changed, 5 insertions(+), 3 deletions(-)
+
+diff --git a/src/render/katerenderer.cpp b/src/render/katerenderer.cpp
+index a8d5fde13..636b98db4 100644
+--- a/src/render/katerenderer.cpp
++++ b/src/render/katerenderer.cpp
+@@ -951,7 +951,7 @@ void KateRenderer::paintTextLine(QPainter &paint,
+     }
+ }
+ 
+-static void drawCursor(const QTextLayout &layout, QPainter *p, const QPointF &pos, int cursorPosition, int width, const int height)
++static void drawCursor(const QTextLayout &layout, QPainter *p, const QPointF &pos, int cursorPosition, int width, const int height, const int lineHeight)
+ {
+     cursorPosition = qBound(0, cursorPosition, layout.text().length());
+     const QTextLine l = layout.lineForTextPosition(cursorPosition);
+@@ -966,7 +966,7 @@ static void drawCursor(const QTextLayout &layout, QPainter *p, const QPointF &po
+ 
+     const QPointF position = pos + layout.position();
+     const qreal x = position.x() + l.cursorToX(cursorPosition);
+-    const qreal y = position.y() + (l.lineNumber() * l.height());
++    const qreal y = position.y() + (l.lineNumber() * lineHeight);
+     p->fillRect(QRectF(x, y, (qreal)width, (qreal)height), p->pen().brush());
+     p->setCompositionMode(origCompositionMode);
+ }
+@@ -1045,7 +1045,9 @@ void KateRenderer::paintCaret(KTextEditor::Cursor cursor, KateLineLayout *range,
+                 }
+             }
+         }
+-        drawCursor(range->layout(), &paint, QPoint(-xStart - width, lineHeight() - caretHeight), cursor.column(), caretWidth, caretHeight);
++
++        // pass lineHeight to ensure we work fine with wrapped lines and lineHeightMultiplier != 1.0, bug 524760
++        drawCursor(range->layout(), &paint, QPoint(-xStart - width, lineHeight() - caretHeight), cursor.column(), caretWidth, caretHeight, lineHeight());
+     } else {
+         // Off the end of the line... must be block mode. Draw the caret ourselves.
+         const KateTextLayout &lastLine = range->viewLine(range->viewLineCount() - 1);
+-- 
+GitLab
+
