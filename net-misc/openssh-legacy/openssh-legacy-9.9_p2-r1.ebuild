@@ -89,6 +89,8 @@ PATCHES=(
 	"${WORKDIR}/${MY_P}-backports"
 	# Our own backports
 	"${FILESDIR}/${MY_PN}-9.9_p1-x-forwarding-slow.patch"
+	"${FILESDIR}/0001-Accept-OpenSSL-4.0.0-dev-versions.patch"
+	"${FILESDIR}/0001-upstream-pkcs11_fetch_ecdsa_pubkey-use-ASN1_STRING-a.patch"
 )
 
 pkg_pretend() {
@@ -190,6 +192,7 @@ src_configure() {
 		--sysconfdir="${EPREFIX}"/usr/lib/${PN}/etc/ssh
 		--datadir="${EPREFIX}"/usr/lib/${PN}/share/${MY_PN}
 		--libexecdir="${EPREFIX}"/usr/lib/${PN}/$(get_libdir)/misc
+		--mandir="${EPREFIX}"/usr/lib/${PN}/man
 		--with-privsep-path="${EPREFIX}"/var/empty
 		--with-privsep-user=sshd
 		# optional at runtime; guarantee a known path
@@ -223,8 +226,12 @@ src_configure() {
 		$(use_with selinux)
 		$(use_with security-key security-key-builtin)
 		$(use_with ssl openssl)
-		$(use_with ssl ssl-engine)
 	)
+
+	if has_version "<dev-libs/openssl-4" ; then
+		# bug #973058
+		myconf+=( $(use_with ssl ssl-engine) )
+	fi
 
 	if use elibc_musl; then
 		# musl defines bogus values for UTMP_FILE and WTMP_FILE (bug #753230)
@@ -324,24 +331,24 @@ src_test() {
 src_install() {
 	emake install-nokeys DESTDIR="${D}"
 	fperms 600 /usr/lib/${PN}/etc/ssh/sshd_config
-	dobin contrib/ssh-copy-id
-	newinitd "${FILESDIR}"/sshd-r1.initd sshd
-	newconfd "${FILESDIR}"/sshd-r1.confd sshd
+	newbin contrib/ssh-copy-id ssh-copy-id-legacy
+	newinitd "${FILESDIR}"/sshd-r1.initd sshd-legacy
+	newconfd "${FILESDIR}"/sshd-r1.confd sshd-legacy
 	exeinto /etc/user/init.d
-	newexe "${FILESDIR}"/ssh-agent.initd ssh-agent
+	newexe "${FILESDIR}"/ssh-agent.initd ssh-agent-legacy
 
 	if use pam; then
-		newpamd "${FILESDIR}"/sshd.pam_include.2 sshd
+		newpamd "${FILESDIR}"/sshd.pam_include.2 sshd-legacy
 	fi
 
-	doman contrib/ssh-copy-id.1
+	newman contrib/ssh-copy-id.1 ssh-copy-id-legacy.1
 	dodoc ChangeLog CREDITS OVERVIEW README* TODO sshd_config
 
 	rmdir "${ED}"/var/empty || die
 
-	systemd_dounit "${FILESDIR}"/sshd.socket
-	systemd_newunit "${FILESDIR}"/sshd.service.2 sshd.service
-	systemd_newunit "${FILESDIR}"/sshd_at.service.1 'sshd@.service'
+	systemd_newunit "${FILESDIR}"/sshd.socket sshd-legacy.socket
+	systemd_newunit "${FILESDIR}"/sshd.service.2 sshd-legacy.service
+	systemd_newunit "${FILESDIR}"/sshd_at.service.1 'sshd-legacy@.service'
 
 	# Install dropins with explicit mode, bug 906638, 915840
 	diropts -m0755

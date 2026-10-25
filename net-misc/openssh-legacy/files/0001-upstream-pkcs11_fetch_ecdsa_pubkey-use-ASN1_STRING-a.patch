@@ -1,0 +1,51 @@
+From c21a98b190db7e00028af793ec6c2541c09a119f Mon Sep 17 00:00:00 2001
+Message-ID: <c21a98b190db7e00028af793ec6c2541c09a119f.1792954106.git.sam@gentoo.org>
+From: "tb@openbsd.org" <tb@openbsd.org>
+Date: Sun, 23 Nov 2025 07:04:18 +0000
+Subject: [PATCH] upstream: pkcs11_fetch_ecdsa_pubkey: use ASN1_STRING
+ accessors
+
+In anticipation of davidben and beck making ASN1_STRING opaque in
+OpenSSL 4 with the aim of enabling surgery to make the X509 data
+structure less bad [1], we need to use dumb accessors to avoid build
+breakage. Fortunately only in one spot.
+
+This is OpenSSL 1.1 API and available in all members of the fork family.
+
+ok beck djm
+
+[1]: https://github.com/openssl/openssl/issues/29117
+
+OpenBSD-Commit-ID: 0bcaf691d20624ef43f3515c983cd5aa69547d4f
+(cherry picked from commit 2238c48dc90dc56af1d86b298d2cb25fa0c7ef14)
+---
+ ssh-pkcs11.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/ssh-pkcs11.c b/ssh-pkcs11.c
+index fadf9c9c6..0b1603027 100644
+--- a/ssh-pkcs11.c
++++ b/ssh-pkcs11.c
+@@ -1,4 +1,4 @@
+-/* $OpenBSD: ssh-pkcs11.c,v 1.63 2024/08/15 00:51:51 djm Exp $ */
++/* $OpenBSD: ssh-pkcs11.c,v 1.75 2025/11/23 07:04:18 tb Exp $ */
+ /*
+  * Copyright (c) 2010 Markus Friedl.  All rights reserved.
+  * Copyright (c) 2014 Pedro Martelletto. All rights reserved.
+@@ -786,8 +786,8 @@ pkcs11_fetch_ecdsa_pubkey(struct pkcs11_provider *p, CK_ULONG slotidx,
+ 		ossl_error("d2i_ASN1_OCTET_STRING failed");
+ 		goto fail;
+ 	}
+-	attrp = octet->data;
+-	if (o2i_ECPublicKey(&ec, &attrp, octet->length) == NULL) {
++	attrp = ASN1_STRING_get0_data(octet);
++	if (o2i_ECPublicKey(&ec, &attrp, ASN1_STRING_length(octet)) == NULL) {
+ 		ossl_error("o2i_ECPublicKey failed");
+ 		goto fail;
+ 	}
+
+base-commit: 3eeda15eb9d3b9f2fd762ba3493ba88abe6bbcd9
+prerequisite-patch-id: b0535b884e44bd6b577a78cecf754fa8ee6d21ce
+-- 
+2.56.0
+
