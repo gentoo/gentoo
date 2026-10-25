@@ -21,7 +21,7 @@ SRC_URI+="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~x86"
 
 # https://github.com/ratoaq2/knowit/blob/d7135a4797440838bca94e76326fc9d4019d8f9a/README.md?plain=1#L224
 RDEPEND="
