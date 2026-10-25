@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,6 +12,5 @@ IUSE="ssl"
 RDEPEND="
 	|| (
 		>=net-misc/openssh-9.3_p1-r1[ssl?]
-		>=net-misc/openssh-contrib-9.3_p1[ssl?]
 		>=net-misc/pkixssh-14.1.1
 	)"
