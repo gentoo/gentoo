@@ -57,7 +57,7 @@ fi
 
 PYTHON_COMPAT=( python3_{12..15} )
 
-inherit cmake fcaps flag-o-matic python-any-r1 systemd toolchain-funcs udev xdg
+inherit cmake fcaps flag-o-matic optfeature python-any-r1 systemd toolchain-funcs udev xdg
 
 DESCRIPTION="Self-hosted game stream host for Moonlight"
 HOMEPAGE="https://github.com/LizardByte/Sunshine"
@@ -191,7 +191,7 @@ DEPEND="
 	>=media-libs/amf-headers-1.5.2
 	=media-libs/nv-codec-headers-13*
 	cuda? (
-		>=dev-util/nvidia-cuda-toolkit-12
+		>=dev-util/nvidia-cuda-toolkit-13.4
 		<dev-util/nvidia-cuda-toolkit-12.10
 	)
 	pipewire? ( x11-libs/libdrm )
@@ -210,7 +210,7 @@ BDEPEND="
 	net-libs/nodejs[npm]
 	virtual/pkgconfig
 	cpu_flags_x86_mmx? ( >=dev-lang/nasm-2.13 )
-	cuda? ( >=llvm-core/clang-22[llvm_targets_NVPTX] )
+	cuda? ( >=llvm-core/clang-23[llvm_targets_NVPTX] )
 	wayland? ( dev-util/wayland-scanner )
 	$(python_gen_any_dep '
 		dev-python/jinja2[${PYTHON_USEDEP}]
@@ -457,6 +457,8 @@ pkg_postinst() {
 	local caps="cap_sys_nice"
 	use libdrm && caps+=",cap_sys_admin"
 	fcaps "${caps}+p" usr/bin/${PN}
+
+	optfeature "hardware encoding with AMD's Advanced Media Framework" media-video/amdgpu-pro-amf
 
 	elog "At upstream's request, please report any issues to https://bugs.gentoo.org"
 	elog "rather than going directly to them."
