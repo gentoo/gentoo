@@ -28,7 +28,7 @@ REQUIRED_USE="
 "
 RESTRICT="!test? ( test )"
 
-RDEPEND="
+DEPEND="
 	>=media-gfx/exiv2-0.28:=
 	>=dev-libs/glib-2.46.0:2
 	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
@@ -37,7 +37,9 @@ RDEPEND="
 		dev-python/pygobject:3[${PYTHON_USEDEP}]
 	)
 "
-DEPEND="${RDEPEND}"
+RDEPEND="${DEPEND}
+	python? ( !<media-libs/gexiv2-0.14.7-r1:0[python] )
+"
 BDEPEND="
 	>=dev-build/meson-1.4
 	dev-util/glib-utils
