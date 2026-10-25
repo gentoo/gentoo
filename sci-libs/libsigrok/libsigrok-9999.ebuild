@@ -86,11 +86,6 @@ BDEPEND="
 "
 [[ ${PV} == *_p* ]] && BDEPEND+=" app-arch/unzip"
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-0.6.0_pre20241020-swig.patch
-	"${FILESDIR}"/${PN}-0.6.0_pre20241020-serial.patch
-)
-
 pkg_setup() {
 	use python && python_setup
 	use ruby && ruby-ng_pkg_setup
