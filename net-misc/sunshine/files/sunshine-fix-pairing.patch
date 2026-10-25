@@ -1,0 +1,145 @@
+From 0daeb0e35bd320ccea758fca35342661a79d56b1 Mon Sep 17 00:00:00 2001
+From: Dave Lane <42013603+ReenigneArcher@users.noreply.github.com>
+Date: Thu, 17 Sep 2026 11:23:38 -0400
+Subject: [PATCH] fix(pairing): replace duplicate client certificates (#5737)
+
+--- a/src/nvhttp.cpp
++++ b/src/nvhttp.cpp
+@@ -434,29 +434,36 @@ namespace nvhttp {
+   /**
+    * @brief Add authorized client data.
+    *
++   * A completed pairing replaces all records with the same exact X.509 identity so legacy duplicate records cannot make the newly paired client fail authorization.
++   *
+    * @param name Human-readable name to assign.
+    * @param cert Certificate data or object used by the operation.
+    * @return Persistent UUID for the added client, or an empty string when the certificate is invalid.
+    */
+   std::string add_authorized_client(const std::string &name, std::string &&cert) {
+-    auto canonical_certificate = canonical_certificate_pem(cert);
+-    if (canonical_certificate.empty()) {
++    auto certificate = crypto::x509(cert);
++    if (!certificate) {
+       return {};
+     }
+ 
+     named_cert_t named_cert;
+     named_cert.name = name;
+-    named_cert.cert = std::move(canonical_certificate);
++    named_cert.cert = crypto::pem(certificate);
+     named_cert.uuid = uuid_util::uuid_t::generate().string();
++    const auto uuid = named_cert.uuid;
+ 
+     std::lock_guard lock {client_auth_mutex()};
++    std::erase_if(client_root.named_devices, [&certificate](const named_cert_t &existing_client) {
++      auto existing_certificate = crypto::x509(existing_client.cert);
++      return existing_certificate && X509_cmp(existing_certificate.get(), certificate.get()) == 0;
++    });
+     client_root.named_devices.emplace_back(std::move(named_cert));
+     rebuild_client_cert_chain();
+ 
+     if (!config::sunshine.flags[config::flag::FRESH_STATE]) {
+       save_state();
+     }
+-    return client_root.named_devices.back().uuid;
++    return uuid;
+   }
+ 
+   /**
+@@ -1832,6 +1839,21 @@ namespace nvhttp {
+       return uuid;
+     }
+ 
++    bool duplicate_client(const std::string_view uuid) {
++      std::lock_guard lock {client_auth_mutex()};
++      const auto client_it = std::ranges::find(client_root.named_devices, uuid, &named_cert_t::uuid);
++      if (client_it == client_root.named_devices.end()) {
++        return false;
++      }
++
++      auto duplicate = *client_it;
++      duplicate.uuid = uuid_util::uuid_t::generate().string();
++      client_root.named_devices.emplace_back(std::move(duplicate));
++      rebuild_client_cert_chain();
++      save_state();
++      return true;
++    }
++
+     bool authorize_client_certificate(const std::string_view cert) {
+       auto certificate = crypto::x509(cert);
+       if (!certificate) {
+--- a/src/nvhttp.h
++++ b/src/nvhttp.h
+@@ -393,6 +393,14 @@ namespace nvhttp {
+      */
+     std::string add_client(const std::string &name, std::string cert, bool enabled);
+ 
++    /**
++     * @brief Duplicate a paired-client record to simulate legacy conflicting state.
++     *
++     * @param uuid Persistent UUID of the record to duplicate.
++     * @return `true` when the source record was found and duplicated.
++     */
++    bool duplicate_client(std::string_view uuid);
++
+     /**
+      * @brief Run the production certificate authorization checks against PEM input.
+      *
+--- a/tests/unit/test_nvhttp_client_auth.cpp
++++ b/tests/unit/test_nvhttp_client_auth.cpp
+@@ -65,6 +65,7 @@ TEST_F(ClientAuthorizationTest, CanonicalIdentityFailsClosedAndTracksEnableState
+   const auto unknown_credentials = crypto::gen_creds("Sunshine Unknown Client", 2048);
+   const auto uuid = nvhttp::test_support::add_client("paired", crlf_certificate, true);
+ 
++  EXPECT_TRUE(nvhttp::test_support::add_client("invalid", "not a certificate", true).empty());
+   ASSERT_FALSE(uuid.empty());
+   EXPECT_EQ(nvhttp::get_cert_by_uuid(uuid), paired_credentials.x509);
+   EXPECT_TRUE(nvhttp::test_support::authorize_client_certificate(paired_credentials.x509));
+@@ -133,12 +134,45 @@ TEST_F(ClientAuthorizationTest, MultipleClientsPersistAndUnpairIndependently) {
+ 
+ TEST_F(ClientAuthorizationTest, DuplicateCertificateIdentityFailsClosed) {
+   const auto credentials = test_utils::certificates::generate_ca_credentials();
+-  ASSERT_FALSE(nvhttp::test_support::add_client("first", credentials.x509, true).empty());
+-  ASSERT_FALSE(nvhttp::test_support::add_client("second", credentials.x509, true).empty());
++  const auto uuid = nvhttp::test_support::add_client("first", credentials.x509, true);
++  ASSERT_FALSE(uuid.empty());
++  EXPECT_FALSE(nvhttp::test_support::duplicate_client("missing"));
++  ASSERT_TRUE(nvhttp::test_support::duplicate_client(uuid));
+ 
+   EXPECT_FALSE(nvhttp::test_support::authorize_client_certificate(credentials.x509));
+ }
+ 
++TEST_F(ClientAuthorizationTest, RePairingReplacesDuplicateCertificateIdentity) {
++  const auto paired_credentials = test_utils::certificates::generate_ca_credentials();
++  const auto other_credentials = test_utils::certificates::generate_ca_credentials("Sunshine Other Client");
++  const auto original_uuid = nvhttp::test_support::add_client("original", paired_credentials.x509, true);
++  const auto other_uuid = nvhttp::test_support::add_client("other", other_credentials.x509, true);
++  ASSERT_FALSE(original_uuid.empty());
++  ASSERT_FALSE(other_uuid.empty());
++  ASSERT_TRUE(nvhttp::test_support::duplicate_client(original_uuid));
++  ASSERT_EQ(nvhttp::get_all_clients().size(), 3);
++  EXPECT_FALSE(nvhttp::test_support::authorize_client_certificate(paired_credentials.x509));
++
++  const auto repaired_uuid = nvhttp::test_support::add_client(
++    "repaired",
++    test_utils::certificates::to_crlf_pem(paired_credentials.x509),
++    true
++  );
++
++  ASSERT_FALSE(repaired_uuid.empty());
++  EXPECT_NE(repaired_uuid, original_uuid);
++  EXPECT_EQ(nvhttp::get_all_clients().size(), 2);
++  EXPECT_EQ(nvhttp::get_cert_by_uuid(repaired_uuid), paired_credentials.x509);
++  EXPECT_TRUE(nvhttp::test_support::authorize_client_certificate(paired_credentials.x509));
++  EXPECT_TRUE(nvhttp::test_support::authorize_client_certificate(other_credentials.x509));
++
++  nvhttp::test_support::reset_client_state();
++  nvhttp::test_support::reload_client_state();
++  EXPECT_EQ(nvhttp::get_all_clients().size(), 2);
++  EXPECT_TRUE(nvhttp::test_support::authorize_client_certificate(paired_credentials.x509));
++  EXPECT_TRUE(nvhttp::test_support::authorize_client_certificate(other_credentials.x509));
++}
++
+ TEST_F(ClientAuthorizationTest, ConcurrentStateChangesRemainConsistent) {
+   const auto credentials = test_utils::certificates::generate_ca_credentials();
+   const auto uuid = nvhttp::test_support::add_client("concurrent", credentials.x509, true);

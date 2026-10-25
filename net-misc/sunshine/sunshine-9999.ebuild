@@ -4,22 +4,23 @@
 EAPI=8
 
 # These don't necessarily have to align with the upstream release.
-BUILD_DEPS_COMMIT="d8b1d18b7e82f8ee396bdd05e226896fa523b0df"
-DISPLAYDEV_COMMIT="v2026.322.2407"
-ENET_COMMIT="115a10baa1d7f291ff5b870765610fd3b4a6e43c"
+BUILD_DEPS_COMMIT="v2026.910.121303"
+DISPLAYDEV_COMMIT="v2026.630.230908"
+ENET_COMMIT="aca87840b57f045a1f7f9299e4b1b9b8e2a5e2f1"
 GLAD_COMMIT="v2.0.8"
-INPUTTINO_COMMIT="f4ce2b0df536ef309e9ff318f75b460f7097d7c1"
-MOONLIGHT_COMMIT="62687809b1f7410c3db4be2527503a54ae408d70"
-NANORS_COMMIT="19f07b513e924e471cadd141943c1ec4adc8d0e0"
-TRAY_COMMIT="563dee475f8878d252ab2b9938d3a014e776ed08"
+LZBC_COMMIT="v2026.905.172735"
+MOONLIGHT_COMMIT="62e066388f1a1b133e0bee947b9a374311a3354b"
+NANORS_COMMIT="b1e3c22ca0cdc0bb83e3cd6ed1a2fc77869ed99a"
+TRAY_COMMIT="v2026.906.164042"
+VHID_COMMIT="v2026.914.1218.10"
 SWS_COMMIT="546895a93a29062bb178367b46c7afb72da9881e"
-WLRP_COMMIT="a741f0ac5d655338a5100fc34bc8cec87d237346"
-FFMPEG_VERSION="8.1.2"
+WLRP_COMMIT="bf4fc79abc359eea5a0edec0ac6d4a2b2955f82a"
+FFMPEG_VERSION="9.0.2"
 
 # To make the assets tarball:
 # PV=
 # EGIT_OVERRIDE_COMMIT_LIZARDBYTE_SUNSHINE=v$PV ebuild sunshine-9999.ebuild clean compile
-# XZ_OPT=-9 tar --xform="s:^:Sunshine-$PV/:" -Jcf /var/cache/distfiles/sunshine-assets-$PV.tar.xz -C /var/tmp/portage/net-misc/sunshine-9999/work/sunshine-9999 assets/
+# XZ_OPT=-9 gtar --xform="s:^:Sunshine-$PV/:" -Jcf /var/cache/distfiles/sunshine-assets-$PV.tar.xz -C /var/tmp/portage/net-misc/sunshine-9999/work/sunshine-9999 assets/
 
 if [[ ${PV} = 9999* ]]; then
 	inherit git-r3
@@ -35,14 +36,16 @@ else
 			-> moonlight-enet-${ENET_COMMIT}.tar.gz
 		https://github.com/Dav1dde/glad/archive/${GLAD_COMMIT}.tar.gz
 			-> glad-${GLAD_COMMIT}.tar.gz
-		https://github.com/games-on-whales/inputtino/archive/${INPUTTINO_COMMIT}.tar.gz
-			-> inputtino-${INPUTTINO_COMMIT}.tar.gz
+		https://github.com/LizardByte/lizardbyte-common/archive/${LZBC_COMMIT}.tar.gz
+			-> lizardbyte-common-${LZBC_COMMIT}.tar.gz
 		https://github.com/moonlight-stream/moonlight-common-c/archive/${MOONLIGHT_COMMIT}.tar.gz
 			-> moonlight-common-c-${MOONLIGHT_COMMIT}.tar.gz
 		https://github.com/sleepybishop/nanors/archive/${NANORS_COMMIT}.tar.gz
 			-> nanors-${NANORS_COMMIT}.tar.gz
 		https://github.com/LizardByte/tray/archive/${TRAY_COMMIT}.tar.gz
 			-> LizardByte-tray-${TRAY_COMMIT}.tar.gz
+		https://github.com/LizardByte/libvirtualhid/archive/${VHID_COMMIT}.tar.gz
+			-> libvirtualhid-${VHID_COMMIT}.tar.gz
 		https://gitlab.com/eidheim/Simple-Web-Server/-/archive/${SWS_COMMIT}/Simple-Web-Server-${SWS_COMMIT}.tar.bz2
 		https://gitlab.freedesktop.org/wlroots/wlr-protocols/-/archive/${WLRP_COMMIT}/wlr-protocols-${WLRP_COMMIT}.tar.bz2
 		https://ffmpeg.org/releases/ffmpeg-${FFMPEG_VERSION}.tar.xz
@@ -185,7 +188,7 @@ RDEPEND="
 DEPEND="
 	${CDEPEND}
 	dev-cpp/nlohmann_json
-	>=media-libs/amf-headers-1.4.36-r1
+	>=media-libs/amf-headers-1.5.2
 	=media-libs/nv-codec-headers-13*
 	cuda? (
 		>=dev-util/nvidia-cuda-toolkit-12
@@ -215,8 +218,6 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-2026.516.143833-nvcodec.patch
-	"${FILESDIR}"/${PN}-new-boost.patch
 	"${FILESDIR}"/${PN}-new-cuda.patch
 )
 
@@ -253,7 +254,7 @@ src_unpack() {
 		git-r3_src_unpack
 
 		local EGIT_REPO_URI="https://github.com/LizardByte/Sunshine.git"
-		local EGIT_SUBMODULES=( third-party/{glad,inputtino,libdisplaydevice,lizardbyte-common,moonlight-common-c{,/enet,/nanors},tray,Simple-Web-Server,wlr-protocols} )
+		local EGIT_SUBMODULES=( third-party/{glad,libdisplaydevice,libvirtualhid,lizardbyte-common,moonlight-common-c{,/enet,/nanors},tray,Simple-Web-Server,wlr-protocols} )
 		unset EGIT_CHECKOUT_DIR EGIT_COMMIT EGIT_BRANCH
 		git-r3_src_unpack
 
@@ -263,17 +264,18 @@ src_unpack() {
 	else
 		default
 		find moonlight-common-c-${MOONLIGHT_COMMIT} "${S}"/third-party \
-			build-deps-${BUILD_DEPS_COMMIT}/third-party/FFmpeg -mindepth 1 -type d -empty -delete || die
+			build-deps-${BUILD_DEPS_COMMIT#v}/third-party/FFmpeg -mindepth 1 -type d -empty -delete || die
 		mv enet-${ENET_COMMIT} moonlight-common-c-${MOONLIGHT_COMMIT}/enet || die
-		mv glad-${GLAD_COMMIT#v} "${S}"/third-party/glad || die
+		mv nanors-${NANORS_COMMIT} moonlight-common-c-${MOONLIGHT_COMMIT}/nanors || die
+		mv build-deps-${BUILD_DEPS_COMMIT#v} "${S}"/third-party/build-deps || die
 		mv libdisplaydevice-${DISPLAYDEV_COMMIT#v} "${S}"/third-party/libdisplaydevice || die
-		mv inputtino-${INPUTTINO_COMMIT} "${S}"/third-party/inputtino || die
+		mv glad-${GLAD_COMMIT#v} "${S}"/third-party/glad || die
+		mv lizardbyte-common-${LZBC_COMMIT#v} "${S}"/third-party/lizardbyte-common || die
 		mv moonlight-common-c-${MOONLIGHT_COMMIT} "${S}"/third-party/moonlight-common-c || die
-		mv nanors-${NANORS_COMMIT} "${S}"/third-party/nanors || die
-		mv tray-${TRAY_COMMIT} "${S}"/third-party/tray || die
+		mv tray-${TRAY_COMMIT#v} "${S}"/third-party/tray || die
+		mv libvirtualhid-${VHID_COMMIT#v} "${S}"/third-party/libvirtualhid || die
 		mv Simple-Web-Server-${SWS_COMMIT} "${S}"/third-party/Simple-Web-Server || die
 		mv wlr-protocols-${WLRP_COMMIT} "${S}"/third-party/wlr-protocols || die
-		mv build-deps-${BUILD_DEPS_COMMIT} "${S}"/third-party/build-deps || die
 		mv ffmpeg-${FFMPEG_VERSION} "${S}"/third-party/build-deps/third-party/FFmpeg/FFmpeg || die
 	fi
 }
@@ -289,6 +291,12 @@ src_prepare() {
 }
 
 src_configure() {
+	local build_deps="${S}"/third-party/build-deps/dist
+
+	# The build assumes the nv-codec-headers are bundled.
+	mkdir -p "${build_deps}"/ffmpeg/include || die
+	ln -snf "${ESYSROOT}"/usr/include/ffnvcodec "${build_deps}"/ffmpeg/include/ || die
+
 	local mycmakeargs=(
 		-DBASH_EXECUTABLE="${BROOT}"/bin/true
 		-DBUILD_ALL_SUNSHINE=no
@@ -297,15 +305,18 @@ src_configure() {
 		-DBUILD_FFMPEG_ALL_PATCHES=yes
 		-DBUILD_FFMPEG_AMF=no
 		-DBUILD_FFMPEG_CBS=yes
+		-DBUILD_FFMPEG_DAV1D=no
 		-DBUILD_FFMPEG_LIBVA=no
 		-DBUILD_FFMPEG_MF=no
 		-DBUILD_FFMPEG_NV_CODEC_HEADERS=no
+		-DBUILD_FFMPEG_OPUS=no
 		-DBUILD_FFMPEG_SVT_AV1=no
+		-DBUILD_FFMPEG_TOOLS=no
 		-DBUILD_FFMPEG_VULKAN=no
 		-DBUILD_FFMPEG_X264=no
 		-DBUILD_FFMPEG_X265=no
 		-DBUILD_SHARED_LIBS=no
-		-DCMAKE_INSTALL_PREFIX="${S}"/third-party/build-deps/dist
+		-DCMAKE_INSTALL_PREFIX="${build_deps}"
 	)
 	CMAKE_USE_DIR="${S}"/third-party/build-deps cmake_src_configure
 
@@ -395,7 +406,7 @@ src_configure() {
 		-DBUILD_TESTS=no
 		-DCCACHE_FOUND=no
 		-DFFMPEG_PLATFORM_LIBRARIES="$(usev svt-av1 SvtAv1Enc);$(usev vaapi 'va;va-drm');$(usev vulkan);$(usev x264);$(usev x265)"
-		-DFFMPEG_PREPARED_BINARIES="${S}"/third-party/build-deps/dist/ffmpeg
+		-DFFMPEG_PREPARED_BINARIES="${build_deps}"/ffmpeg
 		-DGLAD_SKIP_PIP_INSTALL=yes
 		-DSUNSHINE_ASSETS_DIR=share/${PN}
 		-DSUNSHINE_ENABLE_CUDA=$(usex cuda)
