@@ -1,0 +1,33 @@
+https://git.gnupg.org/cgi-bin/gitweb.cgi?p=scute.git;a=commit;h=bc53a3e54f6a66e76888b370906d53f933d41f91
+
+From bc53a3e54f6a66e76888b370906d53f933d41f91 Mon Sep 17 00:00:00 2001
+From: NIIBE Yutaka <gniibe@fsij.org>
+Date: Thu, 6 Jul 2023 10:20:32 +0900
+Subject: [PATCH] agent: Fix off-by-one error for the length of CMD buffer.
+
+* src/agent.c (scute_agent_sign): 151 is needed for sha512 hash.
+Raise a correct error when it's not enough.
+
+Signed-off-by: NIIBE Yutaka <gniibe@fsij.org>
+[soap@gentoo.org: backported to 1.7.0]
+--- a/src/agent.c
++++ b/src/agent.c
+@@ -1116,7 +1116,7 @@
+                   unsigned char *data, int len,
+ 		  unsigned char *sig_result, unsigned int *sig_len)
+ {
+-  char cmd[150];
++  char cmd[151];
+   gpg_error_t err;
+   const char *hash;
+   const unsigned char *raw_data;
+@@ -1179,6 +1179,9 @@
+     }
+   else
+     {
++      if (strlen ("SETHASH --hash=sha512 ") + 2 * raw_len + 1 > sizeof (cmd))
++        return gpg_error (GPG_ERR_BUFFER_TOO_SHORT);
++
+       for (i = 0; i < raw_len; i++)
+         snprintf (&pretty_data[2 * i], 3, "%02X", raw_data[i]);
+       pretty_data[2 * raw_len] = '\0';

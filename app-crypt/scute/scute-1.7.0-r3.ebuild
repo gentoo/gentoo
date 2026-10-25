@@ -39,7 +39,10 @@ BDEPEND+="
 	verify-sig? ( sec-keys/openpgp-keys-gnupg )
 "
 
-PATCHES=( "${FILESDIR}"/${P}-fno-common.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-fno-common.patch
+	"${FILESDIR}"/${P}-sha512.patch
+)
 
 src_unpack() {
 	use verify-sig && verify-sig_verify_detached "${DISTDIR}"/${P}.tar.bz2{,.sig}
