@@ -8,6 +8,11 @@ DISTUTILS_USE_PEP517=sip
 PYTHON_COMPAT=( python3_{12..15} )
 inherit distutils-r1 flag-o-matic multiprocessing pypi qmake-utils
 
+# TODO: this will need adjustment next pyqt6-webengine version given
+# that in Qt 6.12, qtwebengine will use e.g. qtwebengine-6.140.0 which
+# mismatches with Qt and it is unclear what pyqt6-webengine will be
+# versioned as (match pyqt6 x.y, or qtwebengine x.y -- may need to
+# store a flat version for one)
 QT_PV=$(ver_cut 1-2):6
 
 DESCRIPTION="Python bindings for QtWebEngine"
