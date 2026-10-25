@@ -31,7 +31,7 @@ REQUIRED_USE="test? ( tofu )"
 # Existence of executables is checked during configuration
 DEPEND="
 	>=dev-libs/libassuan-3.0.0-r1:=
-	>=dev-libs/libgcrypt-1.11.0:=
+	>=dev-libs/libgcrypt-1.12.0:=
 	>=dev-libs/libgpg-error-1.56
 	>=dev-libs/libksba-1.6.3
 	>=dev-libs/npth-1.2
