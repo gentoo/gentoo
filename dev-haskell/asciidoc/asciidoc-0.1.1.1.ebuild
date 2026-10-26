@@ -16,7 +16,6 @@ SLOT="0/${PV}"
 KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
 
 RDEPEND="dev-haskell/aeson:=[profile?]
-	dev-haskell/attoparsec:=[profile?]
 	dev-haskell/optparse-applicative:=[profile?]
 	dev-haskell/pretty-show:=[profile?]
 	dev-haskell/tagsoup:=[profile?]
