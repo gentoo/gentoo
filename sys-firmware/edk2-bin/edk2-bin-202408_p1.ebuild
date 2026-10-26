@@ -1,11 +1,12 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 inherit readme.gentoo-r1 secureboot
 
-BINPKG="${P/-bin/}-1"
+BINPKG="${P/_p/-r}"
+BINPKG="${BINPKG/-bin/}-1"
 ARCHES="amd64 arm64"
 
 DESCRIPTION="TianoCore EDK II UEFI firmware for virtual machines"
