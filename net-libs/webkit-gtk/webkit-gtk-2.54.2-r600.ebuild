@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+
 PYTHON_REQ_USE="xml(+)"
 PYTHON_COMPAT=( python3_{12..14} )
 USE_RUBY="ruby32 ruby33 ruby34 ruby40"
@@ -16,7 +17,7 @@ SRC_URI="https://www.webkitgtk.org/releases/${MY_P}.tar.xz"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="LGPL-2+ BSD"
-SLOT="4.1/0" # soname version of libwebkit2gtk-4.1
+SLOT="6/0" # soname version of libwebkit2gtk-6.0
 KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
 
 IUSE="aqua avif cpu_flags_x86_sse cpu_flags_x86_sse2 custom-cflags examples gamepad keyring +gstreamer +introspection pdf jpegxl lcms seccomp spell systemd wayland X"
@@ -37,6 +38,10 @@ RESTRICT="test"
 # * TODO: gst-plugins-base[X] is only needed when build configuration ends up
 #         with GLX set, but that's a bit automagic too to fix
 #
+# * at-spi2-core (atspi-2.pc) is checked at build time, but not linked
+#   to in the gtk4 SLOT - is it an upstream check bug and only gtk-4.14
+#   a11y support is used?
+#
 # * Cairo is only needed on big-endian systems, where Skia is not officially
 #   supported (the build system will choose a backend for you). We could probably
 #   hard-code a list of BE arches here, to avoid the extra dependency? But I am
@@ -56,6 +61,7 @@ RDEPEND="
 	dev-libs/libtasn1:=
 	dev-libs/libxml2:2=
 	dev-libs/libxslt
+	>=gui-libs/gtk-4.14.0:4[aqua?,introspection?,wayland?,X?]
 	media-libs/fontconfig:1.0
 	media-libs/freetype:2
 	media-libs/harfbuzz:=[icu(+)]
@@ -70,7 +76,6 @@ RDEPEND="
 	net-libs/libsoup:3.0[introspection?]
 	virtual/zlib:=
 	x11-libs/cairo[X?]
-	x11-libs/gtk+:3[aqua?,introspection?,wayland?,X?]
 	x11-libs/libdrm
 	avif? ( media-libs/libavif:= )
 	gamepad? ( dev-libs/libmanette )
@@ -224,11 +229,7 @@ src_configure() {
 		-DENABLE_VIDEO=$(usex gstreamer)
 		-DENABLE_WEB_AUDIO=$(usex gstreamer)
 		-DENABLE_WEB_CODECS=$(usex gstreamer) # https://bugs.webkit.org/show_bug.cgi?id=269147
-		# Since 2.44 the GTK4(6.0) SLOT also
-		# ships the WebKitWebDriver binary; WebKitWebDriver is an automation
-		# tool for web developers, which lets  one control the browser via
-		# WebDriver API - only one SLOT can ship it
-		-DENABLE_WEBDRIVER=OFF
+		-DENABLE_WEBDRIVER=OFF # build failure otherwise in 2.54.0
 		-DENABLE_WEBGL=ON
 		-DUSE_AVIF=$(usex avif)
 		# Source/cmake/GStreamerDependencies.cmake
@@ -243,7 +244,7 @@ src_configure() {
 		-DENABLE_WAYLAND_TARGET=$(usex wayland)
 		-DENABLE_X11_TARGET=$(usex X)
 		-DUSE_GBM=ON
-		-DUSE_GTK4=OFF
+		-DUSE_GTK4=ON # webkit2gtk-6.0
 		-DUSE_JPEGXL=$(usex jpegxl)
 		-DUSE_LCMS=$(usex lcms)
 		-DUSE_LIBBACKTRACE=OFF
@@ -291,6 +292,14 @@ src_configure() {
 	append-cppflags -DNDEBUG
 
 	WK_USE_CCACHE=NO cmake_src_configure
+}
+
+src_install() {
+	cmake_src_install
+
+	insinto /usr/share/gtk-doc/html
+	# This will install API docs specific to webkit2gtk-6.0
+	doins -r "${S}"/Documentation/{jsc-glib,webkitgtk,webkitgtk-web-process-extension}-6.0
 }
 
 pkg_postinst() {
