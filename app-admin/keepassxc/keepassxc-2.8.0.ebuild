@@ -25,7 +25,7 @@ else
 	"
 	S="${WORKDIR}/${MY_P}"
 
-	KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
+	KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv ~x86"
 
 	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/keepassxc.asc
 	BDEPEND="verify-sig? ( sec-keys/openpgp-keys-keepassxc )"
