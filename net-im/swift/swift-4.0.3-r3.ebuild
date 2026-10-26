@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_{11..14} )
 
 inherit lua-single python-any-r1 scons-utils toolchain-funcs
 
-DESCRIPTION="An elegant, secure, adaptable and intuitive XMPP Client"
+DESCRIPTION="Cross-platform C++ library for implementing XMPP applications"
 HOMEPAGE="https://www.swift.im/"
 SRC_URI="
 	https://swift.im/git/${PN}/snapshot/${PN}-${P}.tar.bz2 -> ${P}.tar.bz2
