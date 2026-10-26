@@ -1,4 +1,4 @@
-# Copyright 2014-2025 Gentoo Authors
+# Copyright 2014-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,10 +19,7 @@ BDEPEND="
 	app-text/mandoc
 	test? ( sys-boot/grub:2 )
 "
-RDEPEND="
-	dev-libs/popt
-"
-DEPEND="${RDEPEND}
+DEPEND="
 	>=sys-kernel/linux-headers-3.18
 	virtual/pkgconfig
 "
