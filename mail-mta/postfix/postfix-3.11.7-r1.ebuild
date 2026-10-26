@@ -32,7 +32,7 @@ DEPEND="
 	acct-group/postdrop
 	acct-user/postfix
 	dev-libs/libpcre2:0
-	berkdb? ( >=sys-libs/db-3.2:* )
+	berkdb? ( >=sys-libs/db-3.2:= )
 	cdb? ( || ( >=dev-db/tinycdb-0.76 >=dev-db/cdb-0.75-r4 ) )
 	eai? ( dev-libs/icu:= )
 	ldap? ( net-nds/openldap:= )
