@@ -11,21 +11,21 @@ inherit edo flag-o-matic multiprocessing prefix python-any-r1 readme.gentoo-r1 s
 DESCRIPTION="TianoCore EDK II UEFI firmware for virtual machines"
 HOMEPAGE="https://github.com/tianocore/edk2"
 
-BUNDLED_BROTLI_SUBMODULE_SHA="e230f474b87134e8c6c85b630084c612057f253e"
+BUNDLED_BROTLI_SUBMODULE_SHA="v1.2.1"
 BUNDLED_LIBFDT_SUBMODULE_SHA="cfff805481bdea27f900c32698171286542b8d3c"
 BUNDLED_LIBSPDM_SUBMODULE_SHA="f55cf6d48ec69b4ac60a63903e9c6a2cb0fd155d"
 BUNDLED_MBEDTLS_SUBMODULE_SHA="0bebf8b8c7f07abe3571ded48a11aa907a1ffb20"
 BUNDLED_MIPI_SYS_T_SUBMODULE_SHA="370b5944c046bab043dd8b133727b2135af7747a"
-BUNDLED_OPENSSL_SUBMODULE_P="openssl-3.5.8"
+BUNDLED_OPENSSL_SUBMODULE_P="openssl-3.5.9"
 
-SBO_VER="1.6.5" # https://github.com/microsoft/secureboot_objects/releases
+SBO_VER="1.7.1" # https://github.com/microsoft/secureboot_objects/releases
 DBX_URI="https://github.com/microsoft/secureboot_objects/raw/refs/tags/v${SBO_VER}/PostSignedObjects/DBX/@ARCH@/DBXUpdate.bin -> @ARCH@_DBXUpdate_v${SBO_VER}.bin"
 
 SRC_URI="
 	https://github.com/tianocore/${PN}/archive/${PN}-stable${PV}.tar.gz
 		-> ${P}.tar.gz
 	https://github.com/google/brotli/archive/${BUNDLED_BROTLI_SUBMODULE_SHA}.tar.gz
-		-> brotli-${BUNDLED_BROTLI_SUBMODULE_SHA}.tar.gz
+		-> brotli-${BUNDLED_BROTLI_SUBMODULE_SHA#v}.tar.gz
 	https://github.com/DMTF/libspdm/archive/${BUNDLED_LIBSPDM_SUBMODULE_SHA}.tar.gz
 		-> libspdm-${BUNDLED_LIBSPDM_SUBMODULE_SHA}.tar.gz
 	https://github.com/Mbed-TLS/mbedtls/archive/${BUNDLED_MBEDTLS_SUBMODULE_SHA}.tar.gz
@@ -146,9 +146,9 @@ link_mod() {
 
 src_prepare() {
 	# Bundled submodules
-	link_mod "${WORKDIR}/brotli-${BUNDLED_BROTLI_SUBMODULE_SHA}" \
+	link_mod "${WORKDIR}/brotli-${BUNDLED_BROTLI_SUBMODULE_SHA#v}" \
 		BaseTools/Source/C/BrotliCompress/brotli
-	link_mod "${WORKDIR}/brotli-${BUNDLED_BROTLI_SUBMODULE_SHA}" \
+	link_mod "${WORKDIR}/brotli-${BUNDLED_BROTLI_SUBMODULE_SHA#v}" \
 		MdeModulePkg/Library/BrotliCustomDecompressLib/brotli
 	link_mod "${WORKDIR}/libspdm-${BUNDLED_LIBSPDM_SUBMODULE_SHA}" \
 		SecurityPkg/DeviceSecurity/SpdmLib/libspdm
