@@ -17,7 +17,7 @@ done
 S="${WORKDIR}"
 LICENSE="BSD-2-with-patent MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 arm64 ~loong ~ppc ppc64 ~riscv x86"
 printf -v IUSE ' qemu_softmmu_targets_%s' ${EDK2_QEMU_TARGETS}
 REQUIRED_USE="|| ( ${IUSE} )"
 
