@@ -16,10 +16,10 @@ IUSE="tk"
 DEPEND="
 	dev-lang/tcl:=
 	dev-libs/openssl:=
-	dev-tcltk/tcllib
 	tk? ( dev-lang/tk:= )
 "
 RDEPEND="${DEPEND}"
+BDEPEND="dev-tcltk/tcllib"
 
 RESTRICT="test"
 
