@@ -8,7 +8,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 LLVM_COMPAT=( {18..22} )
 DISTUTILS_USE_PEP517=setuptools
 DISTUTILS_EXT=1
@@ -242,6 +242,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-6.10.1-pass-ninja-opts.patch"
 	"${FILESDIR}/${PN}-6.11.0-find-cmake-helpers.patch"
 	"${FILESDIR}/${PN}-6.11.2-fix-llvm-version.patch"
+	"${FILESDIR}/${PN}-6.11.3-py315.patch"
 )
 
 # Build system duplicates system libraries. TODO: fix

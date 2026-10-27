@@ -1,0 +1,358 @@
+From b633787e11a672ea73dbab6f152e25a9dbed45e2 Mon Sep 17 00:00:00 2001
+From: Friedemann Kleint <Friedemann.Kleint@qt.io>
+Date: Fri, 17 Apr 2026 14:18:25 +0200
+Subject: [PATCH 1/6] Enumerations: Enable the forgiveness feature
+ ENOPT_NO_ZERODEFAULT for 3.15
+
+Adapt the op codes for detecting a parameterless __init__() call in
+enum code to 3.15.
+
+Task-number: PYSIDE-3221
+Task-number: PYSIDE-1735
+Change-Id: I21b8b8108e2d74e13ff4cb0f7fe2f41121361422
+Reviewed-by: Shyamnath Premnadh <Shyamnath.Premnadh@qt.io>
+Reviewed-by: Ece Cinucen <ece.cinucen@qt.io>
+--- a/sources/pyside6/tests/pysidetest/enum_test.py
++++ b/sources/pyside6/tests/pysidetest/enum_test.py
+@@ -209,8 +209,27 @@ class InvestigateOpcodesTest(unittest.TestCase):
+                         ('LOAD_CONST',    82, 0),
+                         ('RETURN_VALUE',  35, None)]
+ 
+-        self.assertEqual(self.read_code(self.probe_function1), result_1)
+-        self.assertEqual(self.read_code(self.probe_function2), result_2)
++        if sys.version_info[:2] >= (3, 15):
++            result_1 = [('RESUME', 128, 0),
++                        ('LOAD_GLOBAL', 91, 0),
++                        ('LOAD_ATTR', 79, 2),
++                        ('STORE_FAST', 111, 1),
++                        ('LOAD_CONST', 81, 0),
++                        ('RETURN_VALUE', 33, None)
++                        ]
++            result_2 = [('RESUME', 128, 0),
++                        ('LOAD_GLOBAL', 91, 0),
++                        ('LOAD_ATTR', 79, 2),
++                        ('PUSH_NULL', 31, None),
++                        ('CALL', 50, 0),
++                        ('STORE_FAST', 111, 1),
++                        ('LOAD_CONST', 81, 0),
++                        ('RETURN_VALUE', 33, None)]
++
++        actual1 = self.read_code(self.probe_function1)
++        actual2 = self.read_code(self.probe_function2)
++        self.assertEqual(actual1, result_1)
++        self.assertEqual(actual2, result_2)
+ 
+ 
+ if __name__ == '__main__':
+--- a/sources/shiboken6/libshiboken/sbkfeature_base.cpp
++++ b/sources/shiboken6/libshiboken/sbkfeature_base.cpp
+@@ -114,10 +114,12 @@ void disassembleFrame(const char *marker)
+ 
+ // OpCodes: Adapt for each Python version by checking the defines in the generated header opcode_ids.h
+ // egrep '( LOAD_ATTR | CALL | PUSH_NULL )' opcode_ids.h
+-// See also test sources/pyside6/tests/pysidetest/enum_test.py
++// See also test sources/pyside6/tests/pysidetest/enum_test.py, sbkmodule.cpp:300
+ 
+ static int constexpr LOAD_ATTR_OpCode(long pyVersion)
+ {
++    if (pyVersion >= 0x030F00) // 3.15
++        return 79;
+     if (pyVersion >= 0x030E00) // 3.14
+         return 80;
+     if (pyVersion >= 0x030D00) // 3.13
+@@ -127,6 +129,8 @@ static int constexpr LOAD_ATTR_OpCode(long pyVersion)
+ 
+ static int constexpr CALL_OpCode(long pyVersion)
+ {
++    if (pyVersion >= 0x030F00) // 3.15
++        return 50;
+     if (pyVersion >= 0x030E00) // 3.14
+         return 52;
+     if (pyVersion >= 0x030D00) // 3.13
+@@ -136,6 +140,8 @@ static int constexpr CALL_OpCode(long pyVersion)
+ 
+ static int constexpr PUSH_NULL_OpCode(long pyVersion)
+ {
++    if (pyVersion >= 0x030F00) // 3.15
++        return 31;
+     if (pyVersion >= 0x030E00) // 3.14
+         return 33;
+     return 34;
+--- a/sources/shiboken6/libshiboken/sbkmodule.cpp
++++ b/sources/shiboken6/libshiboken/sbkmodule.cpp
+@@ -309,6 +309,8 @@ static int constexpr LOAD_CONST_OpCode(long pyVersion)
+ 
+ static int constexpr IMPORT_NAME_OpCode(long pyVersion)
+ {
++    if (pyVersion >= 0x030F00) // 3.15
++        return 72;
+     if (pyVersion >= 0x030E00) // 3.14
+         return 73;
+     if (pyVersion >= 0x030D00) // 3.13
+-- 
+2.56.0
+
+
+From dc5fb42358a129c9f2ebf9c8f155f13870793803 Mon Sep 17 00:00:00 2001
+From: Friedemann Kleint <Friedemann.Kleint@qt.io>
+Date: Mon, 20 Apr 2026 08:59:12 +0200
+Subject: [PATCH 2/6] Fix the star import test for 3.15
+
+Adapt the op codes for star import detection and adapt the oparg2
+parameter handling to cpython/46d5106cfa903329821c097c3bf309e3efcd718f
+(lazy import freature in 3.15).
+
+Task-number: PYSIDE-3221
+Task-number: PYSIDE-1735
+Change-Id: Ief2a742c21d5073d5fae7ae409f0779cdd6adb77
+Reviewed-by: Shyamnath Premnadh <Shyamnath.Premnadh@qt.io>
+--- a/sources/shiboken6/libshiboken/sbkmodule.cpp
++++ b/sources/shiboken6/libshiboken/sbkmodule.cpp
+@@ -297,9 +297,12 @@ static PyMethodDef module_methods[] = {
+ 
+ // OpCodes: Adapt for each Python version by checking the defines in the generated header opcode_ids.h
+ // egrep '( LOAD_CONST | IMPORT_NAME )' opcode_ids.h
++// See also sbkfeature_base.cpp:115
+ 
+ static int constexpr LOAD_CONST_OpCode(long pyVersion)
+ {
++    if (pyVersion >= 0x030F00) // 3.15
++        return 81;
+     if (pyVersion >= 0x030E00) // 3.14
+         return 82;
+     if (pyVersion >= 0x030D00) // 3.13
+@@ -361,6 +364,10 @@ static bool detectImportStar(PyObject *dec_frame, PyObject *module)
+     }
+ 
+     Py_ssize_t oparg2 = uint8_t(co_code[f_lasti + 1]);
++    // Cf cpython/46d5106cfa903329821c097c3bf309e3efcd718f, Lazy import in 3.15,
++    //cpython/Python/generated_cases.c.h:6410
++    if (pyVersion >= 0x030F00) // 3.15
++        oparg2 >>= 2;
+     AutoDecRef dec_co_names(PyObject_GetAttr(dec_f_code, _co_names));
+     if (dec_co_names.isNull() || PyTuple_Check(dec_co_names.object()) == 0
+         || oparg2 >= PyTuple_Size(dec_co_names.object())) {
+-- 
+2.56.0
+
+
+From 606369c2c2383fa49ee86902cad8149ef7d449bd Mon Sep 17 00:00:00 2001
+From: Friedemann Kleint <Friedemann.Kleint@qt.io>
+Date: Mon, 15 Jun 2026 09:00:08 +0200
+Subject: [PATCH 3/6] enum_test.py: Adapt to 3.15.0b2+dev
+
+Adapt the op codes used to check for enumerations.
+
+Complements ccdba08a37998bbbabadf42abfae871af5df8ac3.
+
+Task-number: PYSIDE-3221
+Task-number: PYSIDE-1735
+Change-Id: I3ac4d397299d32ab2e49a00f7165659792a04092
+Reviewed-by: Cristian Maureira-Fredes <cristian.maureira-fredes@qt.io>
+--- a/sources/pyside6/tests/pysidetest/enum_test.py
++++ b/sources/pyside6/tests/pysidetest/enum_test.py
+@@ -214,7 +214,7 @@ class InvestigateOpcodesTest(unittest.TestCase):
+                         ('LOAD_GLOBAL', 91, 0),
+                         ('LOAD_ATTR', 79, 2),
+                         ('STORE_FAST', 111, 1),
+-                        ('LOAD_CONST', 81, 0),
++                        ('LOAD_COMMON_CONSTANT', 80, 7),
+                         ('RETURN_VALUE', 33, None)
+                         ]
+             result_2 = [('RESUME', 128, 0),
+@@ -223,7 +223,7 @@ class InvestigateOpcodesTest(unittest.TestCase):
+                         ('PUSH_NULL', 31, None),
+                         ('CALL', 50, 0),
+                         ('STORE_FAST', 111, 1),
+-                        ('LOAD_CONST', 81, 0),
++                        ('LOAD_COMMON_CONSTANT', 80, 7),
+                         ('RETURN_VALUE', 33, None)]
+ 
+         actual1 = self.read_code(self.probe_function1)
+-- 
+2.56.0
+
+
+From c66af962f1e3e341de858436f64285cdbebc44c0 Mon Sep 17 00:00:00 2001
+From: Friedemann Kleint <Friedemann.Kleint@qt.io>
+Date: Tue, 13 Jan 2026 10:13:55 +0100
+Subject: [PATCH 4/6] Bump Python supported version to 3.15
+
+Task-number: PYSIDE-3221
+Change-Id: I0b3d7bb5bb1c4857c8d37551df587eaf80111c6a
+Reviewed-by: Shyamnath Premnadh <Shyamnath.Premnadh@qt.io>
+--- a/wheel_artifacts/pyproject.toml.base
++++ b/wheel_artifacts/pyproject.toml.base
+@@ -10,7 +10,7 @@ authors = [
+ description = "PROJECT_DESCRIPTION"
+ readme = "PROJECT_README"
+ dynamic = ["version"]
+-requires-python = ">=3.10, <3.15"
++requires-python = ">=3.10, <3.16"
+ keywords = ["Qt"]
+ license = {text="LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only"}
+ dependencies = "PROJECT_DEPENDENCIES"
+@@ -34,6 +34,7 @@ classifiers = [
+     "Programming Language :: Python :: 3.12",
+     "Programming Language :: Python :: 3.13",
+     "Programming Language :: Python :: 3.14",
++    "Programming Language :: Python :: 3.15",
+     "Topic :: Database",
+     "Topic :: Software Development",
+     "Topic :: Software Development :: Code Generators",
+-- 
+2.56.0
+
+
+From 83da7eb97a6f9b8463f5b277b4944dd037f3ad5e Mon Sep 17 00:00:00 2001
+From: Friedemann Kleint <Friedemann.Kleint@qt.io>
+Date: Thu, 17 Sep 2026 13:41:51 +0200
+Subject: [PATCH 5/6] Fix QtAsyncio to work with Python 3.15
+
+Import class ThreadPoolExecutor directly, fixing:
+
+ File ".../pyside6/PySide6/QtAsyncio/events.py", line 213, in __init__
+    self._default_executor = concurrent.futures.ThreadPoolExecutor()
+                             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+TypeError: 'lazy_import' object is not callable
+
+Task-number: PYSIDE-3221
+Change-Id: I26a5730d6bbd15114c6deb17e468db6778513708
+Reviewed-by: Cristian Maureira-Fredes <cristian.maureira-fredes@qt.io>
+--- a/sources/pyside6/PySide6/QtAsyncio/events.py
++++ b/sources/pyside6/PySide6/QtAsyncio/events.py
+@@ -13,7 +13,7 @@ from typing import Any, Callable, TypeVar
+ 
+ import asyncio
+ import collections.abc
+-import concurrent.futures
++from concurrent.futures import ThreadPoolExecutor
+ import contextvars
+ import enum
+ import os
+@@ -210,7 +210,7 @@ class QAsyncioEventLoop(asyncio.BaseEventLoop, QObject):
+ 
+         # Starting with Python 3.11, this must be an instance of
+         # ThreadPoolExecutor.
+-        self._default_executor = concurrent.futures.ThreadPoolExecutor()
++        self._default_executor = ThreadPoolExecutor()
+ 
+         # The exception handler, if set with set_exception_handler(). The
+         # exception handler is currently called in two places: One, if an
+@@ -576,7 +576,7 @@ class QAsyncioEventLoop(asyncio.BaseEventLoop, QObject):
+ 
+     # Executing code in thread or process pools
+ 
+-    def run_in_executor(self, executor: concurrent.futures.ThreadPoolExecutor | None,
++    def run_in_executor(self, executor: ThreadPoolExecutor | None,
+                         func: Callable[[Unpack[_Ts]], _T],
+                         *args: Unpack[_Ts]) -> asyncio.Future[_T]:
+         if self.is_closed():
+@@ -594,8 +594,8 @@ class QAsyncioEventLoop(asyncio.BaseEventLoop, QObject):
+         return asyncio.futures.wrap_future(executor.submit(wrapper.do), loop=self)
+ 
+     def set_default_executor(self,
+-                             executor: concurrent.futures.ThreadPoolExecutor | None) -> None:
+-        if not isinstance(executor, concurrent.futures.ThreadPoolExecutor):
++                             executor: ThreadPoolExecutor | None) -> None:
++        if not isinstance(executor, ThreadPoolExecutor):
+             raise TypeError("The executor must be a ThreadPoolExecutor")
+         self._default_executor = executor
+ 
+-- 
+2.56.0
+
+
+From 88c7baba4ff611331b094a615a485f151e92d5f1 Mon Sep 17 00:00:00 2001
+From: Friedemann Kleint <Friedemann.Kleint@qt.io>
+Date: Mon, 5 Oct 2026 08:56:12 +0200
+Subject: [PATCH 6/6] Fix Python 3.15 lazy imports to work with PySide lazy
+ imports
+
+Move the check whether the module in questions is ours to the
+top since PyObject_GenericGetAttr() no longer works in the case
+of lazy import proxies.
+
+Fixes: PYSIDE-3471
+Task-number: PYSIDE-3221
+Change-Id: Iff35d8ece0f3ce239545cc767e73b27e0e32ef14
+Reviewed-by: Cristian Maureira-Fredes <cristian.maureira-fredes@qt.io>
+(cherry picked from commit 43ad3e3656b09bbe7f33f2463e6a2912c3c31188)
+Reviewed-by: Qt Cherry-pick Bot <cherrypick_bot@qt-project.org>
+--- a/sources/pyside6/tests/QtAsyncio/CMakeLists.txt
++++ b/sources/pyside6/tests/QtAsyncio/CMakeLists.txt
+@@ -5,6 +5,7 @@ PYSIDE_TEST(qasyncio_test_cancel_task.py)
+ PYSIDE_TEST(qasyncio_test_cancel_taskgroup.py)
+ PYSIDE_TEST(qasyncio_test_chain.py)
+ PYSIDE_TEST(qasyncio_test_executor.py)
++PYSIDE_TEST(qasyncio_lazy_import.py)
+ PYSIDE_TEST(qasyncio_test_queues.py)
+ PYSIDE_TEST(qasyncio_test_threadsafe.py)
+ PYSIDE_TEST(qasyncio_test_time.py)
+--- /dev/null
++++ b/sources/pyside6/tests/QtAsyncio/qasyncio_lazy_import.py
+@@ -0,0 +1,31 @@
++# Copyright (C) 2026 The Qt Company Ltd.
++# SPDX-License-Identifier: LicenseRef-Qt-Commercial OR GPL-3.0-only WITH Qt-GPL-exception-1.0
++from __future__ import annotations
++
++'''Test cases for QtAsyncio'''
++
++import os
++import sys
++import unittest
++
++from pathlib import Path
++sys.path.append(os.fspath(Path(__file__).resolve().parents[1]))
++from init_paths import init_test_paths  # noqa: E402
++init_test_paths(True)
++
++import shiboken6  # noqa: F401, E402
++import asyncio  # noqa: E402
++
++
++class QAsyncioLazyImportTestCase(unittest.TestCase):
++    """PYSIDE-3471: Verify that the libshiboken's module import hook for lazy class
++       loading does not interfere with the lazy import introduced in Python 3.15,
++       which results in a lazy import being returned for concurrent.futures.ThreadPoolExecutor
++       in the asyncio code."""
++    def test(self):
++        v = asyncio.run(asyncio.to_thread(lambda: 42))
++        self.assertEqual(v, 42)
++
++
++if __name__ == '__main__':
++    unittest.main()
+--- a/sources/shiboken6/libshiboken/sbkmodule.cpp
++++ b/sources/shiboken6/libshiboken/sbkmodule.cpp
+@@ -238,18 +238,21 @@ static getattrofunc origModuleGetattro{};
+ //              This modifies _all_ modules but should have no impact.
+ static PyObject *PyModule_lazyGetAttro(PyObject *module, PyObject *name)
+ {
+-    // - check if the attribute is present and return it.
++    // - locate the module in the moduleTofuncs mapping
++    auto tableIter = moduleToFuncs.find(module);
++    // - if this is not our module, use the original. As of 3.15, this needs to be
++    //   done first since PyObject_GenericGetAttr() no longer works in the case
++    //   of lazy import proxies (PYSIDE-3471).
++    if (tableIter == moduleToFuncs.end())
++        return origModuleGetattro(module, name);
++
++    // - check if the attribute is present (non-class items) and return it.
+     auto *attr = PyObject_GenericGetAttr(module, name);
+     // - we handle AttributeError, only.
+     if (attr != nullptr || PyErr_ExceptionMatches(PyExc_AttributeError) == 0)
+         return attr;
+ 
+     PyErr_Clear();
+-    // - locate the module in the moduleTofuncs mapping
+-    auto tableIter = moduleToFuncs.find(module);
+-    // - if this is not our module, use the original
+-    if (tableIter == moduleToFuncs.end())
+-        return origModuleGetattro(module, name);
+ 
+     // - locate the name and retrieve the generating function
+     const char *attrNameStr = Shiboken::String::toCString(name);
+-- 
+2.56.0
+
