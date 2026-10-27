@@ -1,0 +1,31 @@
+diff --git a/stripe/__init__.py b/stripe/__init__.py
+index b1e4ffa..2796a15 100644
+--- a/stripe/__init__.py
++++ b/stripe/__init__.py
+@@ -37,9 +37,8 @@ default_http_client: Optional["HTTPClient"] = None
+ app_info: Optional[AppInfo] = None
+ enable_telemetry: bool = True
+ max_network_retries: int = 2
+-ca_bundle_path: str = os.path.join(
+-    os.path.dirname(__file__), "data", "ca-certificates.crt"
+-)
++import certifi
++ca_bundle_path: str = certifi.where()
+ 
+ # Lazily initialized stripe.default_http_client
+ default_http_client = None
+diff --git a/tests/test_http_client.py b/tests/test_http_client.py
+index 8b3ab71..33bda97 100644
+--- a/tests/test_http_client.py
++++ b/tests/test_http_client.py
+@@ -601,8 +601,9 @@ class RequestsVerify(object):
+     def __eq__(self, other):
+         if not other:
+             return False
+         normalized = other.replace("\\", "/")
+-        return normalized.endswith("stripe/data/ca-certificates.crt")
++        import certifi
++        return normalized == certifi.where()
+ 
+ 
+ class TestRequestsClient(ClientTestBase):
