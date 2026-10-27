@@ -202,6 +202,9 @@ src_configure() {
 	fi
 	! use temporal && myconf+=( --v8-disable-temporal-support )
 
+	# https://bugs.gentoo.org/985006
+	use ppc64 && myconf+=( --without-lief )
+
 	local myarch=""
 	case "${ARCH}:${ABI}" in
 		*:amd64) myarch="x64";;
