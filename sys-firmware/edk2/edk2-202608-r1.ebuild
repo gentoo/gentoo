@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_REQ_USE="sqlite"
-PYTHON_COMPAT=( python3_{12..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 
 inherit edo flag-o-matic multiprocessing prefix python-any-r1 readme.gentoo-r1 secureboot toolchain-funcs
 
