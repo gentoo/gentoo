@@ -31,6 +31,7 @@ RDEPEND="
 BDEPEND="
 	virtual/pkgconfig
 	test? (
+		>=dev-vcs/git-2.56.0-r1
 		dev-lang/python:3.9
 		dev-lang/python:3.10
 		dev-lang/python:3.11
