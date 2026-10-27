@@ -48,7 +48,7 @@ RDEPEND="
 	)
 	opengl? ( media-libs/libglvnd )
 	pipewire? (
-		~dev-qt/qtbase-${PV}:6[dbus?]
+		~dev-qt/qtbase-${PV}:6[dbus=]
 		media-video/pipewire:=
 	)
 	pulseaudio? ( media-libs/libpulse )
