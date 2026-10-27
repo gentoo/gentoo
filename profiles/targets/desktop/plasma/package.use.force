@@ -1,0 +1,8 @@
+# Copyright 1999-2026 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2026-10-27)
+# Implication of disabled feature on revdeps with non-optional activities
+# support (plasma-workspace, plasma-desktop) was not explored yet.
+kde-plasma/kwin activities
+kde-plasma/kwin-x11 activities
