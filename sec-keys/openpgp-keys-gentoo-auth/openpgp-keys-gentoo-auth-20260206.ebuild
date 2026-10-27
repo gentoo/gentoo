@@ -24,6 +24,8 @@ KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390
 #    the changes look expected.
 # 5. gzip gentoo-auth.asc.${PV}
 #
+# Once done, please upload to public keyservers too.
+#
 # Keys included:
 # ABD00913019D6354BA1D9A132839FE0D796198B1
 # 18F703D702B1B9591373148C55D3238EC050396E
