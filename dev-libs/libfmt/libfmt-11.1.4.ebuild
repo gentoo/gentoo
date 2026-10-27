@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -21,6 +21,11 @@ LICENSE="MIT"
 SLOT="0/${PV}"
 IUSE="test"
 RESTRICT="!test? ( test )"
+
+PATCHES=(
+	"${FILESDIR}/libfmt-11.2.0-libcxx-21-cstdlib.patch"
+	"${FILESDIR}/${P}-libcxx-no-specialize-is-floating-point.patch"
+)
 
 multilib_src_configure() {
 	append-lfs-flags
