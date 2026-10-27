@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 DISTUTILS_USE_PEP517=setuptools
 inherit distutils-r1
 
@@ -20,8 +20,6 @@ DEPEND="${RDEPEND}"
 
 EPYTEST_PLUGINS=( pytest-asyncio )
 distutils_enable_tests pytest
-
-PATCHES=( "${FILESDIR}"/${P}-test.patch )
 
 src_test() {
 	local EPYTEST_DESELECT=(
