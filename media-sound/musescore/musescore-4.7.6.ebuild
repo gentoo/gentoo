@@ -162,9 +162,12 @@ src_test() {
 		iex_musicxml_tests
 		# fixed in master
 		converter_tests
+		# crashes during logging initialization before tests execute.
+		muse_audio_rpcpacker_tests
 	)
 
-	QT_QPA_PLATFORM=offscreen cmake_src_test
+	# the mei test fails on same-content xml, canonicalization the xml would resolve the issue
+	QT_QPA_PLATFORM=offscreen GTEST_FILTER=-Mei_Tests.mei_ftrem_01 cmake_src_test
 }
 
 pkg_preinst() {
