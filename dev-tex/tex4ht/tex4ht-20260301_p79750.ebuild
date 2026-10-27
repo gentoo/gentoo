@@ -43,7 +43,9 @@ RDEPEND="
 	${COMMON_DEPEND}
 	app-text/ghostscript-gpl
 	dev-lang/perl
-	media-gfx/imagemagick
+	dev-texlive/texlive-binextra
+	dev-texlive/texlive-luatex
+	virtual/imagemagick-tools
 	java? ( >=virtual/jre-1.8:* )
 "
 
