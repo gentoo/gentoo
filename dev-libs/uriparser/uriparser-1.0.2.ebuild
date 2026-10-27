@@ -11,7 +11,7 @@ SRC_URI="https://github.com/${PN}/${PN}/releases/download/${P}/${P}.tar.bz2"
 
 LICENSE="test? ( LGPL-2.1+ ) BSD"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~loong ~mips ppc ~ppc64 ~riscv ~s390 ~sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~loong ~mips ppc ~ppc64 ~riscv ~s390 ~sparc x86"
 IUSE="doc qt6 test unicode"
 
 REQUIRED_USE="qt6? ( doc ) test? ( unicode )"
