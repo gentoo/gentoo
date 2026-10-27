@@ -39,6 +39,8 @@ BDEPEND="
 #    the changes look expected.
 # 7. gzip gentoo-release.asc.${PV}
 #
+# Once done, please upload to public keyservers too.
+#
 # Keys included:
 # DCD05B71EAB94199527F44ACDB6B8C1F96D8BF6D
 # D99EAC7379A850BCE47DA5F29E6438C817072058
