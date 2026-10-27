@@ -4,6 +4,12 @@
 # New entries go on top.
 # Please use the same syntax as in use.mask.
 
+# Michael Orlitzky <mjo@gentoo.org> (2026-10-27)
+# Override the mask in the base profile on arches that have
+# stable php8-4 and php8-5.
+-php_targets_php8-4
+-php_targets_php8-5
+
 # Michał Górny <mgorny@gentoo.org> (2025-09-29)
 # dev-python/pypy:3.12 is not a stable target.
 python_single_target_pypy3_12
