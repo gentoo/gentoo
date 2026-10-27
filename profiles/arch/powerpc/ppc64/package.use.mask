@@ -1,6 +1,10 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Joonas Niilola <juippis@gentoo.org> (2026-10-27)
+# Dependency libaom >= 3.14.1 doesn't have ~ppc64 keyword.
+>=www-client/firefox-159.0 system-av1
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2026-08-31)
 # Pulls in kde-apps/kgpg which is not yet keyworded here. Bug #981747
 kde-apps/kdeutils-meta gpg
