@@ -244,6 +244,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-6.10.1-pass-ninja-opts.patch"
 	"${FILESDIR}/${PN}-6.11.0-find-cmake-helpers.patch"
 	"${FILESDIR}/${PN}-6.11.2-fix-llvm-version.patch"
+	"${FILESDIR}/${PN}-6.11.3-libcxx23.patch"
 )
 
 # Build system duplicates system libraries. TODO: fix
