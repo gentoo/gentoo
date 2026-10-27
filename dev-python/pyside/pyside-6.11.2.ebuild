@@ -463,7 +463,7 @@ python_compile() {
 	# Link libraries to the usual location for backwards compatibility
 	pushd "${BUILD_DIR}/install/$(python_get_sitedir)" >/dev/null ||
 		die
-	mkdir -p "${BUILD_DIR}/install/usr/$(get_libdir)" || die
+	mkdir -p "${BUILD_DIR}/install${EPREFIX}/usr/$(get_libdir)" || die
 	local lib
 	for lib in */*.cpython-*.so
 	do
@@ -479,7 +479,7 @@ python_compile() {
 	done
 	for lib in */*.so*; do
 		ln -s "../../$(python_get_sitedir)/${lib}" \
-			"${BUILD_DIR}/install/usr/$(get_libdir)/${lib#*/}" || die
+			"${BUILD_DIR}/install${EPREFIX}/usr/$(get_libdir)/${lib#*/}" || die
 	done
 	popd >/dev/null || die
 
@@ -489,20 +489,20 @@ python_compile() {
 	then
 		pushd "${BUILD_DIR}/install/$(python_get_sitedir)/PySide6" \
 			>/dev/null || die
-		mkdir -p "${BUILD_DIR}/install/usr/share/PySide6" || die
+		mkdir -p "${BUILD_DIR}/install${EPREFIX}/usr/share/PySide6" || die
 		for dir in doc glue typesystems; do
 			ln -s "../../../$(python_get_sitedir)/PySide6/${dir}" \
-				"${BUILD_DIR}/install/usr/share/PySide6/${dir}" ||
+				"${BUILD_DIR}/install${EPREFIX}/usr/share/PySide6/${dir}" ||
 					die
 		done
 		popd >/dev/null || die
 	fi
-	mkdir -p "${BUILD_DIR}/install/usr/include"
+	mkdir -p "${BUILD_DIR}/install${EPREFIX}/usr/include"
 	for dir in PySide6 shiboken6 shiboken6_generator; do
 		if [[ -d ${BUILD_DIR}/install/$(python_get_sitedir)/${dir}/include ]]
 		then
 			ln -s "../../$(python_get_sitedir)/${dir}/include" \
-				"${BUILD_DIR}/install/usr/include/${dir//_generator}" ||
+				"${BUILD_DIR}/install${EPREFIX}/usr/include/${dir//_generator}" ||
 					die
 		fi
 	done
@@ -517,59 +517,59 @@ python_compile() {
 
 	for dir in cmake pkgconfig; do
 		find "${BUILD_DIR}"/build*/"${pyside_build_dir}"/install/lib -type d -path "*/lib/${dir}" \
-			-exec cp -nr "{}" "${BUILD_DIR}/install/usr/lib/" \; \
+			-exec cp -nr "{}" "${BUILD_DIR}/install${EPREFIX}/usr/lib/" \; \
 				|| die
 	done
 
 	# Uniquify the pkgconfigs file for the current Python target,
 	# preserving an unversioned "shiboken6.pc" file arbitrarily
 	# associated with the last Python target.
-	if [[ -f ${BUILD_DIR}/install/usr/lib/pkgconfig/shiboken6.pc ]]
+	if [[ -f ${BUILD_DIR}/install${EPREFIX}/usr/lib/pkgconfig/shiboken6.pc ]]
 	then
-		sed -e 's~prefix=.*~prefix=/usr~g' \
+		sed -e "s~prefix=.*~prefix=${EPREFIX}/usr~g" \
 			-e 's~exec_prefix=.*~exec_prefix=${prefix}~g' \
 			-e "s~libdir=.*~libdir=$(python_get_sitedir)/shiboken6~g" \
 			-e "s~includedir=.*~includedir=$(python_get_sitedir)/shiboken6_generator/include~g" \
-			-i "${BUILD_DIR}/install/usr/lib/pkgconfig/shiboken6.pc" || die
-		cp "${BUILD_DIR}/install/usr/lib/pkgconfig/"shiboken6{,-${EPYTHON}}.pc || die
+			-i "${BUILD_DIR}/install${EPREFIX}/usr/lib/pkgconfig/shiboken6.pc" || die
+		cp "${BUILD_DIR}/install${EPREFIX}/usr/lib/pkgconfig/"shiboken6{,-${EPYTHON}}.pc || die
 	fi
-	if [[ -f ${BUILD_DIR}/install/usr/lib/pkgconfig/pyside6.pc ]]
+	if [[ -f ${BUILD_DIR}/install${EPREFIX}/usr/lib/pkgconfig/pyside6.pc ]]
 	then
 		sed -e 's~^Requires: shiboken6$~&-'${EPYTHON}'~' \
-			-e 's~prefix=.*~prefix=/usr~g' \
+			-e "s~prefix=.*~prefix=${EPREFIX}/usr~g" \
 			-e 's~exec_prefix=.*~exec_prefix=${prefix}~g' \
 			-e "s~libdir=.*~libdir=$(python_get_sitedir)/PySide6~g" \
 			-e "s~includedir=.*~includedir=$(python_get_sitedir)/PySide6/include~g" \
 			-e "s~typesystemdir=.*~typesystemdir=$(python_get_sitedir)/PySide6/typesystems~g" \
 			-e "s~gluedir=.*~gluedir=$(python_get_sitedir)/PySide6/glue~g" \
 			-e "s~pythonpath=.*~pythonpath=$(python_get_sitedir)~g" \
-			-i "${BUILD_DIR}/install/usr/lib/pkgconfig/pyside6.pc" || die
-		cp "${BUILD_DIR}/install/usr/lib/pkgconfig/"pyside6{,-${EPYTHON}}.pc || die
+			-i "${BUILD_DIR}/install${EPREFIX}/usr/lib/pkgconfig/pyside6.pc" || die
+		cp "${BUILD_DIR}/install${EPREFIX}/usr/lib/pkgconfig/"pyside6{,-${EPYTHON}}.pc || die
 	fi
 
 	# _IMPORT_PREFIX breaks on split-usr/merged-usr plus weird random issues.
 	# These are not duplicates, the generated files are somehow different on
 	# different systems.
 	sed \
-		-e "s~\${_IMPORT_PREFIX}/lib/libshiboken6\.cpython~/usr/$(get_libdir)/libshiboken6\.cpython~g" \
-		-e "s~\${_IMPORT_PREFIX}/shiboken6/libshiboken6\.cpython~/usr/$(get_libdir)/libshiboken6\.cpython~g" \
-		-e "s~\${_IMPORT_PREFIX}/bin/shiboken6~/usr/bin/shiboken6~g" \
-		-e "s~\${_IMPORT_PREFIX}/shiboken6_generator/shiboken6~/usr/bin/shiboken6~g" \
-		-e "s~\${_IMPORT_PREFIX}/lib/libpyside6\.cpython~/usr/$(get_libdir)/libpyside6\.cpython~g" \
-		-e "s~\${_IMPORT_PREFIX}/PySide6/libpyside6\.cpython~/usr/$(get_libdir)/libpyside6\.cpython~g" \
-		-e "s~\${_IMPORT_PREFIX}/lib/libpyside6qml\.cpython~/usr/$(get_libdir)/libpyside6qml\.cpython~g" \
-		-e "s~\${_IMPORT_PREFIX}/PySide6/libpyside6qml\.cpython~/usr/$(get_libdir)/libpyside6qml\.cpython~g" \
+		-e "s~\${_IMPORT_PREFIX}/lib/libshiboken6\.cpython~${EPREFIX}/usr/$(get_libdir)/libshiboken6\.cpython~g" \
+		-e "s~\${_IMPORT_PREFIX}/shiboken6/libshiboken6\.cpython~${EPREFIX}/usr/$(get_libdir)/libshiboken6\.cpython~g" \
+		-e "s~\${_IMPORT_PREFIX}/bin/shiboken6~${EPREFIX}/usr/bin/shiboken6~g" \
+		-e "s~\${_IMPORT_PREFIX}/shiboken6_generator/shiboken6~${EPREFIX}/usr/bin/shiboken6~g" \
+		-e "s~\${_IMPORT_PREFIX}/lib/libpyside6\.cpython~${EPREFIX}/usr/$(get_libdir)/libpyside6\.cpython~g" \
+		-e "s~\${_IMPORT_PREFIX}/PySide6/libpyside6\.cpython~${EPREFIX}/usr/$(get_libdir)/libpyside6\.cpython~g" \
+		-e "s~\${_IMPORT_PREFIX}/lib/libpyside6qml\.cpython~${EPREFIX}/usr/$(get_libdir)/libpyside6qml\.cpython~g" \
+		-e "s~\${_IMPORT_PREFIX}/PySide6/libpyside6qml\.cpython~${EPREFIX}/usr/$(get_libdir)/libpyside6qml\.cpython~g" \
 		-e "s~libshiboken6\.cpython.*\.so\.$(ver_cut 1-3)~libshiboken6\${PYTHON_CONFIG_SUFFIX}\.so\.$(ver_cut 1-2)~g" \
 		-e "s~libpyside6\.cpython.*\.so\.$(ver_cut 1-3)~libpyside6\${PYTHON_CONFIG_SUFFIX}\.so\.$(ver_cut 1-2)~g" \
 		-e "s~libpyside6qml\.cpython.*\.so\.$(ver_cut 1-3)~libpyside6qml\${PYTHON_CONFIG_SUFFIX}\.so\.$(ver_cut 1-2)~g" \
 		-e "s~libshiboken6\.cpython.*\.so\.$(ver_cut 1-2)~libshiboken6\${PYTHON_CONFIG_SUFFIX}\.so\.$(ver_cut 1-2)~g" \
 		-e "s~libpyside6\.cpython.*\.so\.$(ver_cut 1-2)~libpyside6\${PYTHON_CONFIG_SUFFIX}\.so\.$(ver_cut 1-2)~g" \
 		-e "s~libpyside6qml\.cpython.*\.so\.$(ver_cut 1-2)~libpyside6qml\${PYTHON_CONFIG_SUFFIX}\.so\.$(ver_cut 1-2)~g" \
-		-e "s~\${_IMPORT_PREFIX}/shiboken6/include~/usr/include/shiboken6~g" \
-		-e "s~\${_IMPORT_PREFIX}/PySide6/include~/usr/include/PySide6~g" \
-		-i "${BUILD_DIR}/install/usr/lib/cmake/"*/*.cmake || die
+		-e "s~\${_IMPORT_PREFIX}/shiboken6/include~${EPREFIX}/usr/include/shiboken6~g" \
+		-e "s~\${_IMPORT_PREFIX}/PySide6/include~${EPREFIX}/usr/include/PySide6~g" \
+		-i "${BUILD_DIR}/install${EPREFIX}/usr/lib/cmake/"*/*.cmake || die
 	local file
-	for file in "${BUILD_DIR}/install/usr/lib/cmake/"*/*.cpython-*.cmake
+	for file in "${BUILD_DIR}/install${EPREFIX}/usr/lib/cmake/"*/*.cpython-*.cmake
 	do
 		local base=${file##*/}
 		ln -s "${base}" "${file%/*}/${base%%.*}-${EPYTHON}.cmake" ||
