@@ -310,7 +310,7 @@ LICENSE+="
 SLOT="0"
 KEYWORDS="~amd64"
 
-RDEPEND="~sys-kernel/scx-${PV}"
+RDEPEND=">=sys-kernel/scx-${PV}"
 
 QA_PREBUILT="
 	usr/bin/scx_loader
