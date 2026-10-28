@@ -3,6 +3,7 @@
 
 # Joonas Niilola <juippis@gentoo.org> (2026-10-27)
 # Dependency libaom >= 3.14.1 doesn't have ~ppc64 keyword.
+>=mail-client/thunderbird-159.0 system-av1
 >=www-client/firefox-159.0 system-av1
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2026-08-31)
