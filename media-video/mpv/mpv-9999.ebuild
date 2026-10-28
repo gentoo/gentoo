@@ -45,7 +45,7 @@ RESTRICT="!test? ( test )"
 
 COMMON_DEPEND="
 	media-libs/libass:=[fontconfig]
-	>=media-libs/libplacebo-7.360.1:=[vulkan?]
+	>=media-libs/libplacebo-7.387.0:=[vulkan?]
 	>=media-video/ffmpeg-6.1:=[encode(+),threads(+),vaapi?,vdpau?]
 	X? (
 		x11-libs/libX11
