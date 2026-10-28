@@ -62,13 +62,14 @@ for card in ${VIDEO_CARDS}; do
 done
 
 IUSE="${IUSE_VIDEO_CARDS}
-	cpu_flags_x86_sse2 debug +llvm
+	amdgpu-virtio cpu_flags_x86_sse2 debug +llvm
 	lm-sensors opencl +opengl +proprietary-codecs
 	sysprof test unwind vaapi valgrind vulkan
 	wayland +X +zstd"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="
 	llvm? ( ${LLVM_REQUIRED_USE} )
+	amdgpu-virtio? ( video_cards_radeonsi )
 	video_cards_i915? ( llvm )
 	video_cards_lavapipe? ( llvm vulkan )
 	video_cards_radeon? ( x86? ( llvm ) amd64? ( llvm ) )
@@ -303,6 +304,11 @@ multilib_src_configure() {
 	use wayland && platforms+=",wayland"
 	emesonargs+=(-Dplatforms=${platforms#,})
 
+	local amd_options
+	use llvm && amd_options+="use-llvm"
+	use amdgpu-virtio && amd_options+=",virtio"
+	emesonargs+=(-Damd-options=${amd_options#,})
+
 	if use video_cards_d3d12 ||
 	   use video_cards_nouveau ||
 	   use video_cards_r600 ||
@@ -411,7 +417,6 @@ multilib_src_configure() {
 		$(meson_feature unwind libunwind)
 		$(meson_feature vulkan display-info)
 		$(meson_feature zstd)
-		$(meson_use llvm amd-use-llvm)
 		$(meson_use sysprof)
 		$(meson_use cpu_flags_x86_sse2 sse2)
 		-Dvalgrind=$(usex valgrind auto disabled)

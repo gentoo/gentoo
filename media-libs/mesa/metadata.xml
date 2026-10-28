@@ -6,6 +6,7 @@
     <name>X11</name>
   </maintainer>
   <use>
+    <flag name="amdgpu-virtio">Enable the experimental virtio-gpu native-context backend for radeonsi/RADV (VM guests)</flag>
     <flag name="llvm">Enable LLVM backend for Gallium3D.</flag>
     <flag name="lm-sensors">Enable Gallium HUD lm-sensors support.</flag>
     <flag name="opencl">Enable the Rusticl Gallium OpenCL state tracker.</flag>
