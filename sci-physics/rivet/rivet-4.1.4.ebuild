@@ -59,6 +59,10 @@ BDEPEND="
 	)
 "
 
+PATCHES=(
+	"${FILESDIR}"/${P}-make.patch
+)
+
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
 }
