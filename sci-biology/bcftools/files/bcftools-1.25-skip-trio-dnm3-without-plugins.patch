@@ -1,0 +1,13 @@
+test_trio_dnm3 needs the trio-dnm3 plugin, but unlike every other
+plugin test it is not guarded by --plugins, so it fails when bcftools
+is built with --disable-bcftools-plugins.
+
+--- a/test/test.pl
++++ b/test/test.pl
+@@ -2471,5 +2471,6 @@
+ sub test_trio_dnm3
+ {
+     my ($opts,%args) = @_;
++    if ( !$$opts{test_plugins} ) { return; }
+     test_cmd($opts,%args,cmd=>qq[export BCFTOOLS_PLUGINS=$$opts{bin}/plugins; $$opts{path}/trio-dnm3/test.sh $$opts{bin}/bcftools],out=>'trio-dnm3.1.out');
+ }
