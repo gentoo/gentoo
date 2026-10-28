@@ -193,8 +193,8 @@ DEPEND="
 	>=media-libs/amf-headers-1.5.2
 	=media-libs/nv-codec-headers-13*
 	cuda? (
-		>=dev-util/nvidia-cuda-toolkit-13.4
-		<dev-util/nvidia-cuda-toolkit-12.10
+		>=dev-util/nvidia-cuda-toolkit-12
+		<dev-util/nvidia-cuda-toolkit-13.5
 	)
 	kde? ( >=dev-libs/plasma-wayland-protocols-1.21 )
 	pipewire? ( x11-libs/libdrm )
