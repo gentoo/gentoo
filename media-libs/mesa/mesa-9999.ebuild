@@ -62,14 +62,14 @@ for card in ${VIDEO_CARDS}; do
 done
 
 IUSE="${IUSE_VIDEO_CARDS}
-	amdgpu-virtio cpu_flags_x86_sse2 debug +llvm
+	cpu_flags_x86_sse2 debug +llvm
 	lm-sensors opencl +opengl +proprietary-codecs
-	sysprof test unwind vaapi valgrind vulkan
+	sysprof test unwind vaapi valgrind virtio vulkan
 	wayland +X +zstd"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="
 	llvm? ( ${LLVM_REQUIRED_USE} )
-	amdgpu-virtio? ( video_cards_radeonsi )
+	virtio? ( || ( video_cards_freedreno video_cards_intel video_cards_panfrost video_cards_radeonsi ) )
 	video_cards_i915? ( llvm )
 	video_cards_lavapipe? ( llvm vulkan )
 	video_cards_radeon? ( x86? ( llvm ) amd64? ( llvm ) )
@@ -306,7 +306,14 @@ multilib_src_configure() {
 
 	local amd_options
 	use llvm && amd_options+="use-llvm"
-	use amdgpu-virtio && amd_options+=",virtio"
+
+	if use virtio; then
+		use video_cards_freedreno && emesonargs+=(-Dfreedreno-kmds=msm,virtio)
+		use video_cards_intel && emesonargs+=(-Dintel-virtio-experimental=true)
+		use video_cards_panfrost && emesonargs+=(-Dpanfrost-virtio=true)
+		use video_cards_radeonsi && amd_options+=",virtio"
+	fi
+
 	emesonargs+=(-Damd-options=${amd_options#,})
 
 	if use video_cards_d3d12 ||
