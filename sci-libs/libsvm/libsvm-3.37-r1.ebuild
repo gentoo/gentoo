@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 
 inherit java-pkg-opt-2 python-r1 toolchain-funcs
 
@@ -15,7 +15,7 @@ S="${WORKDIR}/${PN}-${PV/0}"
 LICENSE="BSD"
 SLOT="0/2"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
-IUSE="openmp python tools"
+IUSE="octave openmp python tools"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 DEPEND="
@@ -27,6 +27,7 @@ RDEPEND="
 	python? ( ${PYTHON_DEPS} )
 	tools? ( sci-visualization/gnuplot )
 "
+BDEPEND="octave? ( sci-mathematics/octave )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.37-makefile.patch
@@ -67,6 +68,9 @@ src_configure() {
 src_compile() {
 	default
 	use java && emake -C java
+	if use octave ; then
+		octave --no-gui -q --eval "cd matlab; make;" 2>/dev/null || die
+	fi
 }
 
 src_install() {
@@ -106,6 +110,11 @@ src_install() {
 	HTML_DOCS=( FAQ.html )
 	if use java; then
 		java-pkg_dojar java/libsvm.jar
+	fi
+
+	if use octave ; then
+		insinto $(octave-config --oct-site-dir)/libsvm
+		doins matlab/*mex
 	fi
 
 	einstalldocs
