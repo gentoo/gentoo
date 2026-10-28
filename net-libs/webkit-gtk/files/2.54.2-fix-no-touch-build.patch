@@ -1,0 +1,22 @@
+Fix the build with -DENABLE_TOUCH_EVENTS=OFF
+
+The ebuilds enable touch events unconditionally, but users can
+override it with MYCMAKEARGS.
+
+Upstream-bug: https://bugs.webkit.org/show_bug.cgi?id=329222
+
+--- a/Source/WebKit/UIProcess/API/gtk/WebKitWebViewBase.cpp	2026-10-22 08:54:12.862838700 -0400
++++ b/Source/WebKit/UIProcess/API/gtk/WebKitWebViewBase.cpp	2026-10-27 21:28:31.916572684 -0400
+@@ -2391,10 +2391,12 @@
+     g_signal_connect_object(controller, "key-released", G_CALLBACK(webkitWebViewBaseKeyReleased), viewWidget, G_CONNECT_SWAPPED);
+     gtk_widget_add_controller(viewWidget, controller);
+ 
++#if ENABLE(TOUCH_EVENTS)
+     controller = gtk_event_controller_legacy_new();
+     gtk_event_controller_set_propagation_phase(GTK_EVENT_CONTROLLER(controller), GTK_PHASE_TARGET);
+     g_signal_connect_object(controller, "event", G_CALLBACK(webkitWebViewBaseTouchEvent), viewWidget, G_CONNECT_SWAPPED);
+     gtk_widget_add_controller(viewWidget, GTK_EVENT_CONTROLLER(controller));
++#endif
+ 
+     auto* gesture = gtk_gesture_click_new();
+     gtk_gesture_single_set_button(GTK_GESTURE_SINGLE(gesture), 0);

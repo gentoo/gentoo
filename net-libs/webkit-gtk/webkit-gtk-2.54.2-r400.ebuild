@@ -125,6 +125,7 @@ PATCHES=(
 	"${FILESDIR}"/2.52.1-documentloader-eventloop-h.patch
 	"${FILESDIR}"/2.52.3-disable-nvidia-dmabuf.patch
 	"${FILESDIR}"/2.52.6-no-sse2.patch
+	"${FILESDIR}"/2.54.2-fix-no-touch-build.patch
 )
 
 pkg_pretend() {
