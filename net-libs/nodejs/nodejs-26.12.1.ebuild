@@ -62,7 +62,7 @@ BDEPEND="${PYTHON_DEPS}
 	pax-kernel? ( sys-apps/elfix )
 	sys-apps/coreutils
 	temporal? ( ${RUST_DEPEND} )
-	test? ( net-misc/curl )
+	test? ( net-misc/curl app-arch/unzip )
 	virtual/pkgconfig"
 DEPEND="${COMMON_DEPEND}"
 RDEPEND="${COMMON_DEPEND}"
@@ -309,6 +309,7 @@ src_test() {
 		test/parallel/test-strace-openat-openssl.js
 		test/sequential/test-tls-session-timeout.js
 		test/sequential/test-util-debug.js
+		test/sequential/test-watch-mode.mjs
 	)
 
 	if has_version "sys-libs/zlib-ng" ; then
@@ -317,6 +318,13 @@ src_test() {
 		drop_tests+=( test/parallel/test-process-versions.js )
 		drop_tests+=( test/parallel/test-zlib-zip-interop.js )
 		elog
+	fi
+
+	# Skip the ZIP interop test when system unzip lacks natspec
+	# (zipinfo can't handle the Unicode filename otherwise)
+	if ! has_version "app-arch/unzip[natspec]" ; then
+		elog "Skipping test-zlib-zip-interop.js: system unzip was built without natspec"
+		drop_tests+=( test/parallel/test-zlib-zip-interop.js )
 	fi
 
 	use inspector ||
