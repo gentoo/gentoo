@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{10..14} )
-inherit autotools pam python-single-r1 systemd
+inherit out-of-source autotools pam python-single-r1 systemd
 
 DESCRIPTION="The FRRouting Protocol Suite"
 HOMEPAGE="https://frrouting.org/"
@@ -15,7 +15,7 @@ S="${WORKDIR}/frr-${P}"
 LICENSE="GPL-2+"
 SLOT="0/$(ver_cut 1-2)"
 KEYWORDS="~amd64 ~arm64 ~x86"
-IUSE="doc fpm grpc nhrp ospfapi pam rpki snmp test"
+IUSE="doc fpm grpc nhrp ospfapi pam rpki snmp test zeromq"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RESTRICT="!test? ( test )"
 
@@ -33,11 +33,14 @@ COMMON_DEPEND="
 	pam? ( sys-libs/pam )
 	rpki? ( >=net-libs/rtrlib-0.8.0[ssh] )
 	snmp? ( net-analyzer/net-snmp:= )
+	zeromq? ( net-libs/zeromq:= )
 "
 BDEPEND="
 	sys-devel/flex
 	app-alternatives/yacc
+	dev-libs/elfutils
 	doc? ( dev-python/sphinx )
+	grpc? ( sys-apps/which )
 "
 DEPEND="
 	${COMMON_DEPEND}
@@ -70,7 +73,7 @@ src_prepare() {
 	eautoreconf
 }
 
-src_configure() {
+my_src_configure() {
 	local myconf=(
 		ac_cv_prog_VALGRIND_CHECK=no
 		LEX=flex
@@ -95,23 +98,24 @@ src_configure() {
 		$(usex ospfapi '--enable-ospfclient' '' '' '')
 		$(use_enable rpki)
 		$(use_enable snmp)
+		$(use_enable zeromq)
 	)
 
 	econf "${myconf[@]}"
 }
 
-src_compile() {
+my_src_compile() {
 	emake GRPC_CFLAGS=-std=gnu++23 GRPC_CXXFLAGS=-std=gnu++23
 
 	use doc && emake html
 }
 
-src_test() {
+my_src_test() {
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	emake GRPC_CFLAGS=-std=gnu++23 GRPC_CXXFLAGS=-std=gnu++23 check
 }
 
-src_install() {
+my_src_install() {
 	default
 	find "${ED}" -name '*.la' -delete || die
 
@@ -125,7 +129,7 @@ src_install() {
 
 	# Install the default configuration files
 	insinto /etc/frr
-	doins tools/etc/frr/{vtysh.conf,frr.conf,daemons}
+	doins "${S}"/tools/etc/frr/{vtysh.conf,frr.conf,daemons}
 
 	# Fix permissions/owners.
 	fowners frr:frr /etc/frr/{vtysh.conf,frr.conf,daemons}

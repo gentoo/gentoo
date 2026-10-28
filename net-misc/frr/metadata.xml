@@ -20,6 +20,7 @@
 		<flag name="rpki">Enable RPKI</flag>
 		<flag name="pam">Add support for PAM (via <pkg>sys-libs/pam</pkg>) to the Virtual Terminal Interface Shell (vtysh)</flag>
 		<flag name="ospfapi">Build OSPFAPI support</flag>
+		<flag name="zeromq">Enable the ZeroMQ handler (libfrrzmq)</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">FRRouting/frr</remote-id>

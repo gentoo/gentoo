@@ -15,7 +15,7 @@ S="${WORKDIR}/frr-${P}"
 LICENSE="GPL-2+"
 SLOT="0/$(ver_cut 1-2)"
 KEYWORDS="~amd64 ~arm64 ~x86"
-IUSE="doc fpm grpc nhrp ospfapi pam rpki snmp test"
+IUSE="doc fpm grpc nhrp ospfapi pam rpki snmp test zeromq"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RESTRICT="!test? ( test )"
 
@@ -33,6 +33,7 @@ COMMON_DEPEND="
 	pam? ( sys-libs/pam )
 	rpki? ( >=net-libs/rtrlib-0.8.0[ssh] )
 	snmp? ( net-analyzer/net-snmp:= )
+	zeromq? ( net-libs/zeromq:= )
 "
 BDEPEND="
 	sys-devel/flex
@@ -56,6 +57,8 @@ RDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-7.5-ipctl-forwarding.patch
 	"${FILESDIR}"/${PN}-9.1-mimic-gnu-basename-api-for-non-glibc.patch
+	"${FILESDIR}"/${PN}-tests-abs_srcdir.patch
+	"${FILESDIR}"/${PN}-tests-grpc.patch
 )
 
 QA_CONFIG_IMPL_DECL_SKIP=(
@@ -95,6 +98,7 @@ my_src_configure() {
 		$(usex ospfapi '--enable-ospfclient' '' '' '')
 		$(use_enable rpki)
 		$(use_enable snmp)
+		$(use_enable zeromq)
 	)
 
 	econf "${myconf[@]}"
