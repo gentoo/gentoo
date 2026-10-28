@@ -8,16 +8,16 @@ inherit desktop xdg
 DESCRIPTION="Digital audio workstation"
 HOMEPAGE="https://www.reaper.fm"
 
-WDL_COMMIT="61c5553aad0d257775a4dd7bf36b8be617ec8281"
-WAYLAND_WDL_TAG="0.6.6"
+X11_WDL_COMMIT="61c5553aad0d257775a4dd7bf36b8be617ec8281"
+WAYLAND_WDL_COMMIT="ef8b198273a3738fa5ff570d255b604eab7d4dae"
 
 SRC_URI="
 	amd64? ( https://www.reaper.fm/files/$(ver_cut 1).x/reaper$(ver_cut 1)$(printf %02d $(( 10#$(ver_cut 2) )))_linux_x86_64.tar.xz )
 	x86? ( https://www.reaper.fm/files/$(ver_cut 1).x/reaper$(ver_cut 1)$(printf %02d $(( 10#$(ver_cut 2) )))_linux_i686.tar.xz )
 	arm64? ( https://www.reaper.fm/files/$(ver_cut 1).x/reaper$(ver_cut 1)$(printf %02d $(( 10#$(ver_cut 2) )))_linux_aarch64.tar.xz )
 	arm? ( https://www.reaper.fm/files/$(ver_cut 1).x/reaper$(ver_cut 1)$(printf %02d $(( 10#$(ver_cut 2) )))_linux_armv7l.tar.xz )
-	!wayland? ( https://github.com/justinfrankel/WDL/archive/${WDL_COMMIT}.tar.gz -> WDL-${WDL_COMMIT}.tar.gz )
-	wayland? ( https://github.com/GoranKovac/WDL/archive/refs/tags/${WAYLAND_WDL_TAG}.tar.gz -> WDL-wayland-${WAYLAND_WDL_TAG}.tar.gz )
+	!wayland? ( https://github.com/justinfrankel/WDL/archive/${X11_WDL_COMMIT}.tar.gz -> WDL-${X11_WDL_COMMIT}.tar.gz )
+	wayland? ( https://github.com/justinfrankel/WDL/archive/${WAYLAND_WDL_COMMIT}.tar.gz -> WDL-${WAYLAND_WDL_COMMIT}.tar.gz )
 "
 
 LICENSE="Cockos"
