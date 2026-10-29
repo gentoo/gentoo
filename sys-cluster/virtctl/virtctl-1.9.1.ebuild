@@ -1,12 +1,12 @@
 # Copyright 2025-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=9
 
 inherit go-module optfeature shell-completion
 
 # git rev-parse HEAD
-MY_GIT_COMMIT="85b6a25964132b0d578184598fb3c00d00d71f61"
+MY_GIT_COMMIT="c3d19093f9c7b843b3879b18dc088911c081c39e"
 
 MY_PN="kubevirt"
 MY_P="${MY_PN}-${PV}"
@@ -14,14 +14,14 @@ MY_P="${MY_PN}-${PV}"
 DESCRIPTION="Control virtual machine related operations on your kubernetes cluster"
 HOMEPAGE="https://kubevirt.io https://github.com/kubevirt/kubevirt"
 SRC_URI="https://github.com/kubevirt/${MY_PN}/archive/v${PV}.tar.gz -> ${MY_P}.tar.gz"
-SRC_URI+=" https://dev.gentoo.org/~concord/distfiles/${MY_P}-deps.tar.xz"
+SRC_URI+=" https://distfiles.gentoo.org/pub/dev/concord@gentoo.org/${MY_P}-deps.tar.xz"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="Apache-2.0 BSD-2 BSD ISC MIT"
 SLOT="0"
 KEYWORDS="~amd64"
 
-BDEPEND=">=dev-lang/go-1.24:="
+BDEPEND=">=dev-lang/go-1.26.0:="
 
 RESTRICT="test"
 
