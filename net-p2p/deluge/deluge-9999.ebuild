@@ -35,7 +35,7 @@ BDEPEND="
 RDEPEND="
 	acct-group/deluge
 	acct-user/deluge
-	net-libs/libtorrent-rasterbar:=[python,${PYTHON_SINGLE_USEDEP}]
+	<net-libs/libtorrent-rasterbar-2.1:=[python,${PYTHON_SINGLE_USEDEP}]
 	$(python_gen_cond_dep '
 		gui? (
 			sound? ( dev-python/pygame[${PYTHON_USEDEP}] )

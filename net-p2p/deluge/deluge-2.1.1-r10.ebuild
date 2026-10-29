@@ -3,10 +3,10 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{10..13} )
 DISTUTILS_USE_PEP517=setuptools
 DISTUTILS_SINGLE_IMPL=1
-inherit distutils-r1 greadme systemd xdg
+inherit distutils-r1 systemd xdg
 
 DESCRIPTION="BitTorrent client with a client/server model"
 HOMEPAGE="https://deluge-torrent.org/"
@@ -16,14 +16,13 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://git.deluge-torrent.org/${PN}"
 else
 	SRC_URI="http://download.deluge-torrent.org/source/$(ver_cut 1-2)/${P}.tar.xz"
-	KEYWORDS="amd64 ~arm ~arm64 ~riscv ~x86"
+	KEYWORDS="amd64 ~arm ~arm64 ~riscv x86"
 fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="appindicator console gui libnotify sound webinterface"
+IUSE="console gui libnotify sound webinterface"
 REQUIRED_USE="
-	appindicator? ( gui )
 	libnotify? ( gui )
 	sound? ( gui )
 "
@@ -35,11 +34,13 @@ BDEPEND="
 RDEPEND="
 	acct-group/deluge
 	acct-user/deluge
-	net-libs/libtorrent-rasterbar:=[python,${PYTHON_SINGLE_USEDEP}]
+	<net-libs/libtorrent-rasterbar-2.1:=[python,${PYTHON_SINGLE_USEDEP}]
 	$(python_gen_cond_dep '
 		gui? (
 			sound? ( dev-python/pygame[${PYTHON_USEDEP}] )
-			dev-python/pygobject:3[cairo,${PYTHON_USEDEP}]
+			dev-python/pygobject:3[${PYTHON_USEDEP}]
+			gnome-base/librsvg
+			libnotify? ( x11-libs/libnotify )
 		)
 		dev-python/chardet[${PYTHON_USEDEP}]
 		dev-python/distro[${PYTHON_USEDEP}]
@@ -54,12 +55,16 @@ RDEPEND="
 		>=dev-python/zope-interface-4.4.2[${PYTHON_USEDEP}]
 		dev-python/mako[${PYTHON_USEDEP}]
 	')
-	appindicator? ( dev-libs/libayatana-appindicator )
-	gui? (
-		gnome-base/librsvg:2
-		libnotify? ( x11-libs/libnotify )
-	)
 "
+
+PATCHES=(
+	"${FILESDIR}/${P}-twisted-22.10.patch"
+	# https://dev.deluge-torrent.org/ticket/3598
+	"${FILESDIR}/${P}-ayatana.patch"
+	# https://dev.deluge-torrent.org/ticket/3582
+	"${FILESDIR}/${P}-consoleui-deferred.patch"
+	"${FILESDIR}/${P}-email-module-replace.patch"
+)
 
 EPYTEST_PLUGINS=( pytest-twisted )
 distutils_enable_tests pytest
@@ -81,9 +86,6 @@ python_test() {
 		deluge/plugins/Stats/deluge_stats/tests/test_stats.py
 		# Skipped upstream
 		deluge/tests/test_security.py
-		# Broken
-		deluge/tests/test_ui_entry.py
-		deluge/tests/test_webserver.py
 	)
 	local EPYTEST_DESELECT=(
 		# Skipped upstream
@@ -125,7 +127,7 @@ python_install_all() {
 		mkdir -p "${ED}/usr/share/applications/" || die
 		cp "${WORKDIR}/${P}/deluge/ui/data/share/applications/deluge.desktop" "${ED}/usr/share/applications/" || die
 		mkdir -p "${ED}/usr/share/metainfo" || die
-		cp "${WORKDIR}/${P}/deluge/ui/data/share/metainfo/deluge.metainfo.xml" "${ED}/usr/share/metainfo/" || die
+		cp "${WORKDIR}/${P}/deluge/ui/data/share/appdata/deluge.appdata.xml" "${ED}/usr/share/metainfo/" || die
 	fi
 
 	if use webinterface; then
@@ -145,27 +147,27 @@ python_install_all() {
 	systemd_install_serviced "${FILESDIR}"/deluged.service.conf
 
 	python_optimize
-
-	greadme_stdin <<-EOF
-	To start only the daemon either run 'deluged' as user or modify
-	/etc/conf.d/deluged and run '/etc/init.d/deluged start' as root
-	if you use OpenRC or 'systemctl start deluged.service' if you use systemd.
-
-	Systemd unit files for deluged and deluge-web no longer source
-	/etc/conf.d/deluge* files. Environment variable customization now happens in
-	/etc/systemd/system/deluged.service.d/00gentoo.conf and
-	/etc/systemd/system/deluge-web.service.d/00gentoo.conf
-
-	For more information see https://deluge-torrent.org/faq/
-EOF
-}
-
-pkg_preinst() {
-	xdg_pkg_preinst
-	greadme_pkg_preinst
 }
 
 pkg_postinst() {
 	xdg_pkg_postinst
-	greadme_pkg_postinst
+
+	elog
+	elog "If, after upgrading, deluge doesn't work please back up and then"
+	elog "remove your '~/.config/deluge' directory and try again"
+	elog
+	elog "To start the daemon either run 'deluged' as user"
+	elog "or modify /etc/conf.d/deluged and run"
+	elog "'/etc/init.d/deluged start' as root if you use OpenRC"
+	elog "or"
+	elog "'systemctl start deluged.service' as root if you use systemd"
+	elog "You can still use deluge the old way"
+	elog
+	elog "Systemd unit files for deluged and deluge-web no longer source"
+	elog "/etc/conf.d/deluge* files. Environment variable customization now"
+	elog "happens in /etc/systemd/system/deluged.service.d/00gentoo.conf"
+	elog "and /etc/systemd/system/deluge-web.service.d/00gentoo.conf"
+	elog
+	elog "For more information see https://dev.deluge-torrent.org/wiki/Faq"
+	elog
 }
