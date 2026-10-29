@@ -1,0 +1,44 @@
+Fix K&R rand.h prototypes for modern GCC.
+
+GCC 15+ treats comment-style prototypes as zero-argument declarations,
+breaking calls from prng.c and K&R definitions in rand.c.
+
+Bug: https://bugs.gentoo.org/943917
+
+--- a/rand.h
++++ b/rand.h
+@@ -40,9 +40,9 @@
+  If (flag==TRUE), then use the contents of randrsl[0..RANDSIZ-1] as the seed.
+ ------------------------------------------------------------------------------
+ */
+-void randinit(/*_ randctx *r, word flag _*/);
++void randinit(randctx *r, word flag);
+ 
+-void isaac(/*_ randctx *r _*/);
++void isaac(randctx *r);
+ 
+ 
+ /*
+--- a/rand.c
++++ b/rand.c
+@@ -25,8 +25,7 @@
+   *(r++) = b = ind(mm,y>>RANDSIZL) + x; \
+ }
+ 
+-void     isaac(ctx)
+-randctx *ctx;
++void isaac(randctx *ctx)
+ {
+    register ub4 a,b,x,y,*m,*mm,*m2,*r,*mend;
+    mm=ctx->randmem; r=ctx->randrsl;
+@@ -62,9 +61,7 @@
+ }
+ 
+ /* if (flag==TRUE), then use the contents of randrsl[] to initialize mm[]. */
+-void randinit(ctx, flag)
+-randctx *ctx;
+-word     flag;
++void randinit(randctx *ctx, word flag)
+ {
+    word i;
+    ub4 a,b,c,d,e,f,g,h;
