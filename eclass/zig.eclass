@@ -54,7 +54,7 @@ case ${EAPI} in
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
-inherit multiprocessing zig-utils
+inherit multiprocessing zig-utils toolchain-funcs
 
 # @ECLASS_VARIABLE: ZIG_OPTIONAL
 # @PRE_INHERIT
@@ -272,6 +272,18 @@ zig_get_jobs() {
 zig_init_base_args() {
 	[[ "${ZBS_ARGS_BASE}" ]] && return
 
+	local gcc_dir=""
+	# As of Zig 0.17.0, the cc_dir (currently gcc_dir for compatibility with
+	# older Zig versions) parameter is required on Linux.
+	if ver_test "${ZIG_SLOT}" -ge 0.17 && use kernel_linux; then
+		local target_cc="$(tc-getCC)"
+		local crtbegin="$("$target_cc" --sysroot="${ESYSROOT}" -print-file-name=crtbeginS.o)"
+		if [[ ! -f "$crtbegin" ]]; then
+			die "Failed to determine gcc_dir for zig_libc.txt"
+		fi
+		gcc_dir="$(dirname "$crtbegin")"
+	fi
+
 	# Sync with the output format of `zig libc`.
 	# TODO maybe add to upstream to use ZON format instead...
 	# Will also help "https://github.com/ziglang/zig/issues/20327",
@@ -288,8 +300,16 @@ zig_init_base_args() {
 		# Windows with MSVC only.
 		kernel32_lib_dir=
 		# Haiku only.
-		gcc_dir=
+		gcc_dir=${gcc_dir}
 	_EOF_
+
+	if ver_test "${ZIG_SLOT}" -ge 0.17; then
+		cat <<- _EOF_ >> "${T}/zig_libc.txt" || die "Failed to provide Zig libc info"
+			# The directory that contains \`SDKSettings.json\`
+			# Only needed when targeting Darwin.
+			darwin_sdk_dir=
+		_EOF_
+	fi
 
 	declare -g -a ZBS_ARGS_BASE=(
 		-j$(zig_get_jobs)
