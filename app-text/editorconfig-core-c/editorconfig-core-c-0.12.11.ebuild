@@ -21,7 +21,7 @@ RDEPEND="
 	cli? ( !dev-python/editorconfig[cli] !<dev-python/editorconfig-editorconfig-0.12.4-r1 )
 "
 # Header-only
-DEPEND+=" dev-libs/uthash"
+DEPEND+=" <dev-libs/uthash-2.4.0"
 
 src_prepare() {
 	# Don't install the static library.
