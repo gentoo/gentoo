@@ -20,7 +20,7 @@ RDEPEND=">=dev-haskell/ansi-terminal-0.6.2:=[profile?]
 	dev-haskell/haskell-lexer:=[profile?]
 	>=dev-haskell/hspec-expectations-0.8.4:=[profile?] <dev-haskell/hspec-expectations-0.8.5:=[profile?]
 	>=dev-haskell/hunit-1.6:=[profile?] <dev-haskell/hunit-1.7:=[profile?]
-	>=dev-haskell/quickcheck-2.13.1:=[profile?] <dev-haskell/quickcheck-2.18:=[profile?]
+	>=dev-haskell/quickcheck-2.13.1:=[profile?] <dev-haskell/quickcheck-2.20:=[profile?]
 	>=dev-haskell/quickcheck-io-0.2.0:=[profile?]
 	dev-haskell/random:=[profile?]
 	>=dev-lang/ghc-9.0.2:=
@@ -28,7 +28,7 @@ RDEPEND=">=dev-haskell/ansi-terminal-0.6.2:=[profile?]
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-3.4.1.0
 	test? ( dev-haskell/base-orphans
-		~dev-haskell/hspec-meta-2.11.16
+		~dev-haskell/hspec-meta-2.11.18
 		>=dev-haskell/quickcheck-2.14
 		>=dev-haskell/silently-1.2.4
 		dev-haskell/temporary )
