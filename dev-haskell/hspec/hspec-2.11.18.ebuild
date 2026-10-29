@@ -15,8 +15,8 @@ LICENSE="MIT"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
 
-RDEPEND="~dev-haskell/hspec-core-2.11.16:=[profile?]
-	~dev-haskell/hspec-discover-2.11.16:=[profile?]
+RDEPEND="~dev-haskell/hspec-core-2.11.18:=[profile?]
+	~dev-haskell/hspec-discover-2.11.18:=[profile?]
 	>=dev-haskell/hspec-expectations-0.8.4:=[profile?] <dev-haskell/hspec-expectations-0.8.5:=[profile?]
 	>=dev-haskell/quickcheck-2.12:=[profile?]
 	>=dev-lang/ghc-9.0.2:=
