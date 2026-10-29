@@ -29,8 +29,6 @@ HOMEPAGE="https://pytorch.org/"
 SRC_URI="https://github.com/pytorch/${PN}/archive/refs/tags/v${PV}.tar.gz
 	-> ${P}.tar.gz
 	rocm? (
-		https://github.com/AngryLoki/pytorch/commit/bcb99546b6a6b57742eb0ec1705e55981ed071be.patch
-		-> ${PN}-2.14.1-aotriton-0.14.patch
 		https://github.com/ROCm/composable_kernel/archive/${CK_COMMIT}.tar.gz
 		-> ${CK_P}.tar.gz
 		https://github.com/ROCm/rocm-libraries/commit/0eab68951d3bb668e8f99beba2e2c07d7e1ca18a.patch
@@ -251,8 +249,6 @@ src_prepare() {
 		CMakeLists.txt
 
 	if use rocm; then
-		eapply "${DISTDIR}/${PN}-2.14.1-aotriton-0.14.patch"
-
 		# TODO: delete, when caffe2 depends on systemwide composable_kernel
 		sed -e "s:third_party/composable_kernel:../composable_kernel-${CK_COMMIT}:g" \
 			-i aten/src/ATen/CMakeLists.txt || die
@@ -266,8 +262,9 @@ src_prepare() {
 			-i torch/headeronly/util/Half.h \
 			-i aten/src/ATen/native/cuda/int4mm.cu || die
 
-		# hipFile (only for torch.cuda.gds) is not packaged
+		# hipFile (only for torch.cuda.gds) is not packaged, amd_smi is needed only for distributed
 		sed -e 's/find_package_and_print_version(hipfile REQUIRED)/find_package_and_print_version(hipfile)/' \
+			-e 's/find_package_and_print_version(amd_smi REQUIRED)/find_package_and_print_version(amd_smi)/' \
 			-i cmake/public/LoadHIP.cmake || die
 
 		ebegin "HIPifying cuda sources"
