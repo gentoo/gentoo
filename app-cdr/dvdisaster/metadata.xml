@@ -8,6 +8,7 @@
 		</flag>
 	</use>
 	<upstream>
+		<remote-id type="github">speed47/dvdisaster</remote-id>
 		<remote-id type="sourceforge">dvdisaster</remote-id>
 	</upstream>
 </pkgmetadata>
