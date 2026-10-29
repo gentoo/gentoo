@@ -1,7 +1,8 @@
 # Copyright 2023-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=9
+
 inherit go-module
 
 MY_PN="sealed-secrets"
@@ -10,7 +11,7 @@ MY_P="${MY_PN}-${PV}"
 DESCRIPTION="Client-side utility for one-way encrypted secrets in kubernetes"
 HOMEPAGE="https://github.com/bitnami-labs/sealed-secrets"
 SRC_URI="https://github.com/bitnami-labs/${MY_PN}/archive/v${PV}.tar.gz -> ${MY_P}.tar.gz"
-SRC_URI+=" https://dev.gentoo.org/~concord/distfiles/${MY_P}-deps.tar.xz"
+SRC_URI+=" https://distfiles.gentoo.org/pub/dev/concord@gentoo.org/${MY_P}-deps.tar.xz"
 
 S="${WORKDIR}/${MY_P}"
 
@@ -19,7 +20,7 @@ SLOT="0"
 
 KEYWORDS="~amd64"
 
-BDEPEND=">=dev-lang/go-1.26.1:="
+BDEPEND=">=dev-lang/go-1.27.3:="
 
 RESTRICT+=" test"
 
