@@ -17,6 +17,7 @@ DEPEND="
 	dev-libs/libevent:=
 	sys-apps/hwloc:=
 	>=sys-cluster/pmix-6.1.0:=
+	dev-libs/libnl:=
 "
 RDEPEND="${DEPEND}"
 
