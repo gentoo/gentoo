@@ -90,7 +90,7 @@ src_test() {
 		"test_remove_torrent"
 	)
 
-	local LD_LIBRARY_PATH="${BUILD_DIR}:${LD_LIBRARY_PATH}"
+	local -x LD_LIBRARY_PATH="${BUILD_DIR}:${LD_LIBRARY_PATH}"
 	cmake_src_test
 }
 
