@@ -1,15 +1,16 @@
-# Copyright 2021-2025 Gentoo Authors
+# Copyright 2021-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
+RPM_COMPRESS_TYPE=xz
 inherit rpm systemd xdg-utils
 
 MY_PN="${PN/-bin/}"
 
 DESCRIPTION="Tool to control performance, energy, fan and comfort settings on TUXEDO laptops"
 HOMEPAGE="https://github.com/tuxedocomputers/tuxedo-control-center"
-SRC_URI="https://rpm.tuxedocomputers.com/opensuse/15.4/x86_64/${MY_PN}_${PV}.rpm"
+SRC_URI="https://rpm.tuxedocomputers.com/opensuse/16.0/x86_64/${MY_PN}_${PV}.rpm"
 
 S="${WORKDIR}"
 
@@ -19,9 +20,8 @@ KEYWORDS="-* ~amd64"
 
 RESTRICT="strip splitdebug"
 
-DEPEND=">=app-laptop/tuxedo-drivers-3.2.14"
 RDEPEND="
-	${DEPEND}
+	>=app-laptop/tuxedo-drivers-4.0.0
 	app-accessibility/at-spi2-core
 	dev-libs/nss
 	dev-libs/nspr
@@ -49,6 +49,8 @@ src_prepare() {
 	default
 	rm -rf usr/lib || die "could not remove usr/lib"
 	mkdir files || die "could not create files dir"
+	sed -i -e '/^Categories=/ s/\bTUXEDO\b/X-TUXEDO/' \
+		usr/share/applications/com.tuxedocomputers.tcc.desktop || die "could not replace category"
 }
 
 src_install() {
@@ -59,12 +61,6 @@ src_install() {
 	done
 
 	dosym ../../opt/tuxedo-control-center/tuxedo-control-center /usr/bin/tuxedo-control-center
-
-	insinto /usr/share/dbus-1/system.d/
-	doins opt/tuxedo-control-center/resources/dist/tuxedo-control-center/data/dist-data/com.tuxedocomputers.tccd.conf
-
-	insinto /usr/share/polkit-1/actions
-	doins opt/tuxedo-control-center/resources/dist/tuxedo-control-center/data/dist-data/com.tuxedocomputers.tccd.policy
 
 	systemd_dounit opt/tuxedo-control-center/resources/dist/tuxedo-control-center/data/dist-data/tccd.service
 	systemd_dounit opt/tuxedo-control-center/resources/dist/tuxedo-control-center/data/dist-data/tccd-sleep.service
