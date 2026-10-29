@@ -1,4 +1,4 @@
-# Copyright 2024-2025 Gentoo Authors
+# Copyright 2024-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,17 +11,20 @@ SRC_URI="https://github.com/openpmix/prrte/releases/download/v${PV}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/$(ver_cut 1)"
-KEYWORDS="~amd64 ~arm64 ~ppc64"
+KEYWORDS="amd64 arm64 ppc64"
 
+# <sys-cluster/prrte-4.0.0 has a file conflict with net-misc/putty
+# we block this here so the block is dropped when this version leaves the tree.
 DEPEND="
+	!net-misc/putty
 	dev-libs/libevent:=
 	sys-apps/hwloc:=
 	>=sys-cluster/pmix-4.2.4
+	<sys-cluster/pmix-6.0.0
 "
 RDEPEND="${DEPEND}"
 
-# Tests are only in the repo, not in release tarballs
-# They also seem to be just examples
+# There is no testsuite at least today.
 RESTRICT="test"
 
 src_prepare() {
