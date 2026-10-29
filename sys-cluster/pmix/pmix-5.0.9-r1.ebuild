@@ -1,16 +1,27 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=9
+EAPI=8
 
 inherit flag-o-matic libtool
 
 DESCRIPTION="The Process Management Interface (PMI) Exascale"
-HOMEPAGE="https://openpmix.org/"
+HOMEPAGE="https://openpmix.github.io/"
 SRC_URI="https://github.com/openpmix/openpmix/releases/download/v${PV}/${P}.tar.bz2"
 
 LICENSE="BSD"
-SLOT="0"
+# https://github.com/openpmix/openpmix/issues/4322
+#
+# > the .so number is based on the official API symbols, not on all symbols in
+# > the library. [...] Unfortunately, abidiff doesn't understand any of that - it's
+# > just a blind symbol comparison. PMIx has quite a few symbols exposed because
+# > PRRTE re-uses them. This saves on maintenance for us and causes no harm to
+# > anyone else.
+#
+# So, impossible situation. Export subslot for prrte, instead. In theory, nothing else
+# should need subslot rebuilds, as they say the official API is "never modified,
+# forever".
+SLOT="0/${PV}"
 # No support for 32-bit systems as of 4.2.8 (https://github.com/open-mpi/ompi/issues/11248)
 KEYWORDS="~amd64 ~arm64 ~ppc64 -x86"
 IUSE="debug +munge pmi"
@@ -38,11 +49,11 @@ src_configure() {
 		# These are alternatives. We must use the one in DEPEND, and also
 		# prevent automagic fallbacks.
 		--with-libevent
+		--without-libev
 
 		# tries to build both zlib and zlib-ng
 		--without-zlibng
 
-		--enable-ipv6
 		$(use_enable debug)
 		$(use_with munge)
 	)
