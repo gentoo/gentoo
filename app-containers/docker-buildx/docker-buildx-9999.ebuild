@@ -23,7 +23,7 @@ LICENSE+=" Apache-2.0 BSD BSD-2 ISC MIT MPL-2.0"
 SLOT="0"
 
 RDEPEND="app-containers/docker-cli"
-BDEPEND=">=dev-lang/go-1.25.5"
+BDEPEND=">=dev-lang/go-1.26.9:="
 
 src_compile() {
 	local _buildx_r='github.com/docker/buildx'
