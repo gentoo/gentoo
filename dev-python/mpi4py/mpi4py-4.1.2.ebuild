@@ -18,6 +18,8 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
 IUSE="doc examples"
+RESTRICT="test"
+PROPERTIES="test_network"
 
 RDEPEND="
 	dev-python/numpy[${PYTHON_USEDEP}]
