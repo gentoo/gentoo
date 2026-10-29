@@ -1,9 +1,7 @@
-Source: https://invent.kde.org/utilities/kgpg/-/merge_requests/38 (pending)
-
-From a4333eadd5b9992cfc6b553999d08b8e2134303c Mon Sep 17 00:00:00 2001
+From 0748f61e7bab1518750d1ae087e9d23f7983cdb8 Mon Sep 17 00:00:00 2001
 From: Andreas Sturmlechner <asturm@gentoo.org>
 Date: Wed, 26 Aug 2026 19:11:04 +0200
-Subject: [PATCH] CMake: Add KGPG_WITH_ADDRESSBOOK option
+Subject: [PATCH] CMake: Add ENABLE_AKONADICONTACTSUPPORT option
 
 kgpg is not strictly a PIM application, so akonadi should be optional,
 similarly to how kleopatra has these dependencies not required. Except
@@ -22,7 +20,7 @@ Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
  create mode 100644 config-kgpg.h.cmake
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index a548a4f0..bc211940 100644
+index d7cd7062..a0400d72 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -51,11 +51,15 @@ find_package(KF6 ${KF_MIN_VERSION} REQUIRED
@@ -34,9 +32,9 @@ index a548a4f0..bc211940 100644
  )
  
 -find_package(KPim6AkonadiContactWidgets 5.24.40 REQUIRED)
-+option(KGPG_WITH_ADDRESSBOOK "Support addressbook integration (uses akonadi)" ON)
++option(ENABLE_AKONADICONTACTSUPPORT "Support addressbook integration (uses akonadi)" ON)
 +
-+if(KGPG_WITH_ADDRESSBOOK)
++if(ENABLE_AKONADICONTACTSUPPORT)
 +  find_package(KF6Contacts ${KF_MIN_VERSION} REQUIRED)
 +  find_package(KPim6AkonadiContactWidgets 5.24.40 REQUIRED)
 +endif()
@@ -50,7 +48,7 @@ index a548a4f0..bc211940 100644
 +configure_file (config-kgpg.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/config-kgpg.h)
 +
  add_subdirectory( icons )
- include_directories(  ${KDEPIMLIBS_INCLUDE_DIR} ${GPGME_INCLUDES} )
+ include_directories( ${GPGME_INCLUDES} )
  
 @@ -253,7 +259,6 @@ set_property(SOURCE main.cpp APPEND PROPERTY COMPILE_DEFINITIONS "KGPG_VERSION=\
  target_link_libraries(kgpg_lib
@@ -67,7 +65,7 @@ index a548a4f0..bc211940 100644
 -    KPim6::AkonadiContactWidgets
      Qt6::PrintSupport
  )
-+if(KGPG_WITH_ADDRESSBOOK)
++if(ENABLE_AKONADICONTACTSUPPORT)
 +    target_link_libraries(kgpg_lib
 +        KF6::Contacts
 +        KPim6::AkonadiContactWidgets
@@ -78,20 +76,20 @@ index a548a4f0..bc211940 100644
    add_subdirectory(tests)
 diff --git a/config-kgpg.h.cmake b/config-kgpg.h.cmake
 new file mode 100644
-index 00000000..e5f7988e
+index 00000000..978af63b
 --- /dev/null
 +++ b/config-kgpg.h.cmake
 @@ -0,0 +1 @@
-+#cmakedefine01 KGPG_WITH_ADDRESSBOOK
++#cmakedefine01 ENABLE_AKONADICONTACTSUPPORT
 diff --git a/keysmanager.cpp b/keysmanager.cpp
-index 4edff077..5a4a27f0 100644
+index 4edff077..058ba9ab 100644
 --- a/keysmanager.cpp
 +++ b/keysmanager.cpp
 @@ -52,11 +52,13 @@
  #include "transactions/customstyleditemdelegate.h"
  
  #include <algorithm>
-+#if KGPG_WITH_ADDRESSBOOK
++#if ENABLE_AKONADICONTACTSUPPORT
  #include <Akonadi/ContactEditor>
  #include <Akonadi/ContactEditorDialog>
  #include <Akonadi/ContactSearchJob>
@@ -106,7 +104,7 @@ index 4edff077..5a4a27f0 100644
  	m_sendEmail->setIcon(QIcon::fromTheme(QLatin1String("mail-send")));
  	m_sendEmail->setText(i18n("Send Ema&il"));
  
-+#if KGPG_WITH_ADDRESSBOOK
++#if ENABLE_AKONADICONTACTSUPPORT
  	QAction *newContact = actionCollection()->addAction(QLatin1String("add_kab"), this, &KeysManager::addToKAB);
  	newContact->setIcon(QIcon::fromTheme( QLatin1String( "contact-new" )));
  	newContact->setText(i18n("&Create New Contact in Address Book"));
@@ -118,7 +116,7 @@ index 4edff077..5a4a27f0 100644
  	}
  }
  
-+#if KGPG_WITH_ADDRESSBOOK
++#if ENABLE_AKONADICONTACTSUPPORT
  void KeysManager::addToKAB()
  {
  	KGpgNode *nd = iview->selectedNode();
@@ -131,7 +129,7 @@ index 4edff077..5a4a27f0 100644
  void KeysManager::slotManpage()
  {
 diff --git a/keysmanager.h b/keysmanager.h
-index 0d4b9895..300407ee 100644
+index 0d4b9895..4d233d0c 100644
 --- a/keysmanager.h
 +++ b/keysmanager.h
 @@ -7,6 +7,8 @@
@@ -147,7 +145,7 @@ index 0d4b9895..300407ee 100644
      void slotSendEmail();
      void slotedit();
  
-+#if KGPG_WITH_ADDRESSBOOK
++#if ENABLE_AKONADICONTACTSUPPORT
      /**
       * @brief start an "add to addressbook" operation
       *
@@ -160,5 +158,5 @@ index 0d4b9895..300407ee 100644
      void editGroup();
      void createNewGroup();
 -- 
-2.55.0
+2.56.0
 

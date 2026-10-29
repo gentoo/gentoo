@@ -50,11 +50,11 @@ RDEPEND="${COMMON_DEPEND}
 	app-crypt/gnupg
 "
 
-PATCHES=( "${FILESDIR}/${PN}-26.04.3-optional-akonadi.patch" )
+PATCHES=( "${FILESDIR}/${PN}-26.08.2-optional-akonadi.patch" )
 
 src_configure() {
 	local mycmakeargs=(
-		-DKGPG_WITH_ADDRESSBOOK=$(usex pim)
+		-DENABLE_AKONADICONTACTSUPPORT=$(usex pim)
 	)
 	ecm_src_configure
 }
