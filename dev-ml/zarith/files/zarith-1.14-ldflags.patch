@@ -1,0 +1,44 @@
+From 9d3ecffc4189d440b10c3942eed2213b6cfc8fbc Mon Sep 17 00:00:00 2001
+From: Donjuanplatinum <donplat@barrensea.org>
+Date: Sun, 18 Oct 2026 12:18:52 +0800
+Subject: [PATCH] Fix LDFLAGS forwarding to ocamlmklib
+
+project.mak passed LDFLAGS directly to ocamlmklib, causing linker
+options such as -Wl,-O1 to be rejected as unknown ocamlmklib options.
+Forward them through -cclib when creating OCaml archives and -ldopt
+when creating the C stub library.
+
+Bug: https://bugs.gentoo.org/984049
+
+Signed-off-by: Donjuanplatinum <donplat@barrensea.org>
+---
+ project.mak | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/project.mak b/project.mak
+index 3d5a837..aab5544 100644
+--- a/project.mak
++++ b/project.mak
+@@ -71,16 +71,16 @@ tests:
+ 	make -C tests test
+ 
+ zarith.cma: $(MLSRC:%.ml=%.cmo)
+-	$(OCAMLMKLIB) $(DEBUG) -failsafe -o zarith $+ $(LIBS) $(LDFLAGS)
++	$(OCAMLMKLIB) $(DEBUG) -failsafe -o zarith $+ $(LIBS) $(foreach flag,$(LDFLAGS),-cclib $(flag))
+ 
+ zarith.cmxa: $(MLSRC:%.ml=%.cmx)
+-	$(OCAMLMKLIB) $(DEBUG) -failsafe -o zarith $+ $(LIBS) $(LDFLAGS)
++	$(OCAMLMKLIB) $(DEBUG) -failsafe -o zarith $+ $(LIBS) $(foreach flag,$(LDFLAGS),-cclib $(flag))
+ 
+ zarith.cmxs: zarith.cmxa libzarith.$(LIBSUFFIX)
+ 	$(OCAMLOPT) -shared -o $@ -I . zarith.cmxa -linkall
+ 
+ libzarith.$(LIBSUFFIX): $(CSRC:%.c=%.$(OBJSUFFIX))
+-	$(OCAMLMKLIB) $(DEBUG) -failsafe -o zarith $+ $(LIBS) $(LDFLAGS)
++	$(OCAMLMKLIB) $(DEBUG) -failsafe -o zarith $+ $(LIBS) -ldopt "$(LDFLAGS)"
+ 
+ zarith_top.cma: zarith_top.cmo
+ 	$(OCAMLC) $(DEBUG) -o $@ -a $<
+-- 
+2.56.0
+
