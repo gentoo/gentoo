@@ -2,8 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+
 ROCM_VERSION=6.3
-inherit cmake cuda flag-o-matic rocm
+inherit cmake cuda flag-o-matic rocm toolchain-funcs
 
 CommitId=3135b0b41b67dde590eef0938a0bf3d6238df5f7
 
@@ -78,6 +79,7 @@ src_configure() {
 		)
 	fi
 	if use rocm; then
+		tc-is-gcc && filter-lto # bug 968410
 		export ROCM_PATH="${EPREFIX}/usr"
 		export GLOO_ROCM_ARCH="$(get_amdgpu_flags)"
 		mycmakeargs+=(
