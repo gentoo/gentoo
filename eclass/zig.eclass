@@ -637,7 +637,7 @@ zig_src_test() {
 	# UPSTREAM std.testing.tmpDir and a lot of other functions
 	# do not respect --cache-dir or ZIG_LOCAL_CACHE_DIR:
 	# https://github.com/ziglang/zig/issues/19874
-	mkdir ".zig-cache/" || die
+	mkdir -p ".zig-cache/" || die
 
 	# UPSTREAM Currently, step name can have any characters in it,
 	# including whitespaces, so splitting names and descriptions
