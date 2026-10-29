@@ -19,7 +19,7 @@ DEPEND="
 	!net-misc/putty
 	dev-libs/libevent:=
 	sys-apps/hwloc:=
-	>=sys-cluster/pmix-4.2.4
+	>=sys-cluster/pmix-4.2.4:=
 	<sys-cluster/pmix-6.0.0
 "
 RDEPEND="${DEPEND}"
