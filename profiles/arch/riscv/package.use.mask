@@ -1,12 +1,17 @@
 # Copyright 2019-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Thibaud CANALE <thican@thican.net> (2026-10-04)
+# dev-python/cloudflare doesn’t have ~riscv keyword.
+app-crypt/certbot certbot-dns-cloudflare
+
 # Joonas Niilola <juippis@gentoo.org> (2026-10-27)
 # libaom >= 3.14 doesn't have ~riscv keyword.
 >=www-client/firefox-159.0 system-av1
 
 # Thibaud CANALE <thican@thican.net> (2026-05-17)
 # Tests require dev-python/respx
+app-crypt/certbot test
 dev-python/cloudflare test
 
 # Michael Orlitzky <mjo@gentoo.org> (2026-09-19)
