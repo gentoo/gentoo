@@ -6,6 +6,7 @@
 		<name>Cjk</name>
 	</maintainer>
 	<upstream>
+		<remote-id type="codeberg">chewing/libchewing</remote-id>
 		<remote-id type="github">chewing/libchewing</remote-id>
 	</upstream>
 </pkgmetadata>
