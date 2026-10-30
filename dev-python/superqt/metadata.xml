@@ -6,10 +6,6 @@
     <remote-id type="github">pyapp-kit/superqt</remote-id>
   </upstream>
   <stabilize-allarches/>
-  <maintainer type="person">
-    <email>nowa@gentoo.org</email>
-    <name>Nowa Ammerlaan</name>
-  </maintainer>
   <maintainer type="project">
     <email>python@gentoo.org</email>
     <name>Python</name>
