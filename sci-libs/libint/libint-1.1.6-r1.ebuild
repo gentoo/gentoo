@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit autotools fortran-2 toolchain-funcs
+inherit autotools fortran-2 toolchain-funcs flag-o-matic
 
 MY_PV="$(ver_rs 0- -)"
 
@@ -16,7 +16,10 @@ LICENSE="GPL-2"
 SLOT="1"
 KEYWORDS="amd64 ~x86"
 
-PATCHES=( "${FILESDIR}"/${P}-as-needed.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-as-needed.patch
+	"${FILESDIR}"/${P}-cflags.patch
+)
 
 src_prepare() {
 	mv configure.{in,ac} || die
@@ -25,6 +28,7 @@ src_prepare() {
 }
 
 src_configure() {
+	append-cflags -std=gnu17
 	local myeconfargs=(
 		--enable-deriv
 		--enable-r12
