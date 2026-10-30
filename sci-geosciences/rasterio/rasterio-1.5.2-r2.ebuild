@@ -28,8 +28,10 @@ RDEPEND="
 BDEPEND="
 	dev-python/cython[${PYTHON_USEDEP}]
 	test? (
-		dev-python/fsspec[${PYTHON_USEDEP}]
 		dev-python/boto3[${PYTHON_USEDEP}]
+		dev-python/fsspec[${PYTHON_USEDEP}]
+		dev-python/hypothesis[${PYTHON_USEDEP}]
+		dev-python/matplotlib[${PYTHON_USEDEP}]
 	)
 "
 
