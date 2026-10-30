@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -32,7 +32,7 @@ RDEPEND="
 	mpg123? ( media-sound/mpg123 )
 	musepack? ( media-sound/musepack-tools )
 	openmpt? ( media-libs/libopenmpt )
-	opus? ( media-libs/opusfile )
+	opus? ( media-libs/opusfile[float] )
 	sndfile? ( media-libs/libsndfile )
 	soxr? ( media-libs/soxr )
 	vorbis? ( media-libs/libvorbis )
