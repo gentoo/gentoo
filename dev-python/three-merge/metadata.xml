@@ -5,9 +5,6 @@
     <remote-id type="pypi">three-merge</remote-id>
     <remote-id type="github">spyder-ide/three-merge</remote-id>
   </upstream>
-  <maintainer type="person">
-    <email>nowa@gentoo.org</email>
-    <name>Nowa Ammerlaan</name>
-  </maintainer>
+  <!-- maintainer-needed -->
   <stabilize-allarches/>
 </pkgmetadata>
