@@ -16,7 +16,7 @@ else
 		https://storage.googleapis.com/aom-releases/${P}.tar.gz
 		test? ( https://gitlab.com/api/v4/projects/32909921/packages/generic/${PN}/${PV}/${P}-testdata.tar.xz )
 	"
-	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
 fi
 
 DESCRIPTION="Alliance for Open Media AV1 Codec SDK"
