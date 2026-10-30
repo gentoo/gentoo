@@ -27,11 +27,9 @@ RDEPEND="
 	sys-apps/dbus
 	x11-libs/pango
 	x11-libs/cairo
-	|| (
-		systemd? ( sys-apps/systemd )
-		elogind? ( sys-auth/elogind )
-		sys-libs/basu
-	)
+	systemd? ( sys-apps/systemd )
+	elogind? ( sys-auth/elogind )
+	!systemd? ( !elogind? ( sys-libs/basu ) )
 	icons? ( x11-libs/gdk-pixbuf:2 )
 "
 DEPEND="${RDEPEND}
