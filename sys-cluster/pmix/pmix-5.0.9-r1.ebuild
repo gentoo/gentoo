@@ -23,7 +23,7 @@ LICENSE="BSD"
 # forever".
 SLOT="0/${PV}"
 # No support for 32-bit systems as of 4.2.8 (https://github.com/open-mpi/ompi/issues/11248)
-KEYWORDS="~amd64 ~arm64 ~ppc64 -x86"
+KEYWORDS="~amd64 ~arm64 ppc64 -x86"
 IUSE="debug +munge pmi"
 
 RDEPEND="
