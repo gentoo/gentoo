@@ -9,7 +9,7 @@ DESCRIPTION="Digital audio workstation"
 HOMEPAGE="https://www.reaper.fm"
 
 X11_WDL_COMMIT="61c5553aad0d257775a4dd7bf36b8be617ec8281"
-WAYLAND_WDL_COMMIT="ef8b198273a3738fa5ff570d255b604eab7d4dae"
+WAYLAND_WDL_COMMIT="f6190086374d8cbddafbc220c7ddbfd32e53b2ea"
 
 SRC_URI="
 	amd64? ( https://www.reaper.fm/files/$(ver_cut 1).x/reaper$(ver_cut 1)$(printf %02d $(( 10#$(ver_cut 2) )))_linux_x86_64.tar.xz )
