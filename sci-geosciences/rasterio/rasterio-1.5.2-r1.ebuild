@@ -29,6 +29,7 @@ BDEPEND="
 	dev-python/cython[${PYTHON_USEDEP}]
 	test? (
 		dev-python/fsspec[${PYTHON_USEDEP}]
+		dev-python/boto3[${PYTHON_USEDEP}]
 	)
 "
 
