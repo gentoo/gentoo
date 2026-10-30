@@ -4,6 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{12..15} )
+SPHINX_PYTHON_COMPAT=( python3_{13..15} )
 PYTHON_REQ_USE='bzip2(+),threads(+)'
 TMPFILES_OPTIONAL=1
 
@@ -26,7 +27,10 @@ fi
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="apidoc build doc gentoo-dev +ipc +native-extensions +rsync-verify selinux test xattr"
-REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+REQUIRED_USE="
+	${PYTHON_REQUIRED_USE}
+	apidoc? ( || ( $(python_gen_useflags "${SPHINX_PYTHON_COMPAT[@]}") ) )
+"
 RESTRICT="!test? ( test )"
 
 BDEPEND="
@@ -37,8 +41,10 @@ BDEPEND="
 	sys-devel/patch
 	!build? ( $(python_gen_impl_dep 'ssl(+)') )
 	apidoc? (
-		dev-python/sphinx[${PYTHON_USEDEP}]
-		dev-python/sphinx-epytext[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			dev-python/sphinx[${PYTHON_USEDEP}]
+			dev-python/sphinx-epytext[${PYTHON_USEDEP}]
+		' "${SPHINX_PYTHON_COMPAT[@]}")
 	)
 	doc? (
 		~app-text/docbook-xml-dtd-4.4
@@ -98,6 +104,12 @@ pkg_pretend() {
 	check_extra_config
 }
 
+my_python_check_deps() {
+	use apidoc || return 0
+	python_has_version -b "dev-python/sphinx[${PYTHON_USEDEP}]" &&
+		python_has_version -b "dev-python/sphinx-epytext[${PYTHON_USEDEP}]"
+}
+
 src_prepare() {
 	default
 
@@ -112,11 +124,11 @@ src_prepare() {
 src_configure() {
 	local code_only=false
 	python_foreach_impl my_src_configure
+	[[ ${code_only} == false ]] && die "Documentation and additional configuration aren't getting built as expected"
 }
 
 my_src_configure() {
 	local emesonargs=(
-		-Dcode-only=${code_only}
 		-Deprefix="${EPREFIX}"
 		-Dportage-bindir="${EPREFIX}/usr/lib/portage/${EPYTHON}"
 		-Ddocdir="${EPREFIX}/usr/share/doc/${PF}"
@@ -139,8 +151,14 @@ my_src_configure() {
 		emesonargs+=( $(meson_use rsync-verify) )
 	fi
 
+	if [[ "${code_only}" == "false" ]] && my_python_check_deps; then
+		emesonargs+=( -Dcode-only=false )
+		code_only=true
+	else
+		emesonargs+=( -Dcode-only=true )
+	fi
+
 	meson_src_configure
-	code_only=true
 }
 
 src_compile() {
