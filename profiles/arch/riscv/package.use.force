@@ -6,6 +6,7 @@
 # not keyworded).
 gui-libs/xdg-desktop-portal-wlr elogind
 gui-wm/sway elogind
+dev-libs/libei elogind
 
 # Andrey Grozin <grozin@gentoo.org> (2025-05-15)
 # binary sbcl for bootstrap is not available

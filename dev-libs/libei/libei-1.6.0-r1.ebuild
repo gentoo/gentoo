@@ -20,11 +20,9 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-libs/libevdev-1.9.902
-	|| (
-		systemd? ( >=sys-apps/systemd-237 )
-		elogind? ( >=sys-auth/elogind-237 )
-		sys-libs/basu
-	)
+	systemd? ( >=sys-apps/systemd-237 )
+	elogind? ( >=sys-auth/elogind-237 )
+	!systemd? ( !elogind? ( sys-libs/basu ) )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="

@@ -6,6 +6,7 @@
 gui-libs/xdg-desktop-portal-wlr systemd
 gui-apps/mako systemd
 gui-wm/sway systemd
+dev-libs/libei systemd
 
 # Sam James <sam@gentoo.org> (2022-01-03)
 # Need systemd enabled here for depgraph: bug #830485

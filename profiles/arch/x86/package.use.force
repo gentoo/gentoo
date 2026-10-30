@@ -7,6 +7,7 @@
 gui-libs/xdg-desktop-portal-wlr elogind
 gui-apps/mako elogind
 gui-wm/sway elogind
+dev-libs/libei elogind
 
 # Sam James <sam@gentoo.org> (2026-04-05)
 # openblas[-cpudetection] runs a program during the build w/ cpuid to
