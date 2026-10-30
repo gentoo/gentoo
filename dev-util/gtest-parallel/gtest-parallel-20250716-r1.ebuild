@@ -29,7 +29,7 @@ src_test() {
 }
 
 src_install() {
-	python_foreach_impl python_doexe gtest-parallel
+	python_foreach_impl python_doscript gtest-parallel
 	python_foreach_impl python_domodule gtest_parallel.py
 	einstalldocs
 }
