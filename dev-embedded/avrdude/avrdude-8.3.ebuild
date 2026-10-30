@@ -12,7 +12,7 @@ SRC_URI="https://github.com/avrdudes/avrdude/archive/refs/tags/v${PV}.tar.gz -> 
 
 LICENSE="GPL-2+"
 SLOT="0/5" # SOVERSION in src/CMakeLists.txt
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
+KEYWORDS="~amd64 arm ~ppc ~ppc64 ~x86"
 IUSE="ftdi gpiod python readline"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
