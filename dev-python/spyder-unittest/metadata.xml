@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>nowa@gentoo.org</email>
-		<name>Nowa Ammerlaan</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<upstream>
 		<remote-id type="pypi">spyder-unittest</remote-id>
 		<remote-id type="github">spyder-ide/spyder-unittest</remote-id>
