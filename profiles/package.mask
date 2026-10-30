@@ -36,6 +36,11 @@
 
 #--- END OF EXAMPLES ---
 
+# James Le Cuirot <chewi@gentoo.org> (2026-10-30)
+# This version is widely reported to be broken. Upstream has been silent on the
+# issue. Bug #983634.
+=media-video/makemkv-2.0.0
+
 # Alfred Wingate <parona@protonmail.com> (2026-10-25)
 # Ruby 3.2 is no longer supported upstream and will no longer
 # receive security updates. This mask also includes any
