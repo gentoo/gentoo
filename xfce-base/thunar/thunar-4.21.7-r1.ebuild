@@ -68,6 +68,11 @@ BDEPEND="
 	gtk-doc? ( dev-util/gtk-doc )
 "
 
+PATCHES=(
+	# https://gitlab.xfce.org/xfce/thunar/-/merge_requests/811
+	"${FILESDIR}/${P}-scaling.patch"
+)
+
 src_configure() {
 	local emesonargs=(
 		$(meson_use gtk-doc)

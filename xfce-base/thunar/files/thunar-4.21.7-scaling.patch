@@ -1,0 +1,138 @@
+From 54f601edcb77e17d0a27eda29093d5a48f0bd7ac Mon Sep 17 00:00:00 2001
+From: Manu Cornet <m@ma.nu>
+Date: Fri, 16 Oct 2026 16:04:47 +0900
+Subject: [PATCH] Guard text size scaling behind a new preference
+
+---
+ thunar/thunar-enum-types.c         | 14 +++++++++++++-
+ thunar/thunar-preferences-dialog.c | 14 ++++++++++++++
+ thunar/thunar-preferences.c        | 14 ++++++++++++++
+ thunar/thunar-standard-view.c      | 12 ++++++++++++
+ 4 files changed, 53 insertions(+), 1 deletion(-)
+
+diff --git a/thunar/thunar-enum-types.c b/thunar/thunar-enum-types.c
+index 1712bb63f..da5b62292 100644
+--- a/thunar/thunar-enum-types.c
++++ b/thunar/thunar-enum-types.c
+@@ -20,6 +20,8 @@
+ 
+ #include "thunar/thunar-enum-types.h"
+ 
++#include "thunar/thunar-preferences.h"
++
+ #include <libxfce4util/libxfce4util.h>
+ 
+ 
+@@ -661,7 +663,17 @@ static void
+ thunar_font_scale_from_zoom_level (const GValue *src_value,
+                                    GValue       *dst_value)
+ {
+-  g_value_set_double (dst_value, thunar_zoom_level_to_font_scale (g_value_get_enum (src_value)));
++  ThunarPreferences *preferences;
++  gboolean           text_size_follows_zoom_level;
++
++  preferences = thunar_preferences_get ();
++  g_object_get (G_OBJECT (preferences), "misc-text-size-follows-zoom-level", &text_size_follows_zoom_level, NULL);
++  g_object_unref (preferences);
++
++  if (text_size_follows_zoom_level)
++    g_value_set_double (dst_value, thunar_zoom_level_to_font_scale (g_value_get_enum (src_value)));
++  else
++    g_value_set_double (dst_value, 1.0);
+ }
+ 
+ 
+diff --git a/thunar/thunar-preferences-dialog.c b/thunar/thunar-preferences-dialog.c
+index 43919195c..b85586b76 100644
+--- a/thunar/thunar-preferences-dialog.c
++++ b/thunar/thunar-preferences-dialog.c
+@@ -416,6 +416,20 @@ thunar_preferences_dialog_init (ThunarPreferencesDialog *dialog)
+   gtk_grid_attach (GTK_GRID (grid), button, 0, row, 1, 1);
+   gtk_widget_show (button);
+ 
++  /* next row */
++  row++;
++
++  button = gtk_check_button_new_with_mnemonic (_("Text size follows _zoom level"));
++  g_object_bind_property (G_OBJECT (dialog->preferences),
++                          "misc-text-size-follows-zoom-level",
++                          G_OBJECT (button),
++                          "active",
++                          G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
++  gtk_widget_set_tooltip_text (button, _("Select this option to increase the font size of file names along with icons when zooming in."));
++  gtk_widget_set_hexpand (button, TRUE);
++  gtk_grid_attach (GTK_GRID (grid), button, 0, row, 1, 1);
++  gtk_widget_show (button);
++
+   frame = g_object_new (GTK_TYPE_FRAME, "border-width", 0, "shadow-type", GTK_SHADOW_NONE, NULL);
+   gtk_box_pack_start (GTK_BOX (vbox), frame, FALSE, TRUE, 0);
+   gtk_widget_show (frame);
+diff --git a/thunar/thunar-preferences.c b/thunar/thunar-preferences.c
+index 2bef0e0b3..54d5b7d91 100644
+--- a/thunar/thunar-preferences.c
++++ b/thunar/thunar-preferences.c
+@@ -148,6 +148,7 @@ enum
+   PROP_MISC_SUPPORT_OVERLAY_SCROLLING,
+   PROP_SMART_SORT,
+   PROP_MISC_FILE_DRAG_MODE,
++  PROP_MISC_TEXT_SIZE_FOLLOWS_ZOOM_LEVEL,
+ #ifdef HAVE_VTE
+   PROP_TERMINAL_HEIGHT,
+   PROP_TERMINAL_VISIBLE,
+@@ -1515,6 +1516,19 @@ thunar_preferences_class_init (ThunarPreferencesClass *klass)
+                      THUNAR_FILE_DRAG_MODE_MENU_ALWAYS,
+                      G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+ 
++  /**
++   * ThunarPreferences:misc-text-size-follows-zoom-level:
++   *
++   * If true, the text size of file names scales along with the icon size
++   * when changing the zoom level.
++   **/
++  preferences_props[PROP_MISC_TEXT_SIZE_FOLLOWS_ZOOM_LEVEL] =
++  g_param_spec_boolean ("misc-text-size-follows-zoom-level",
++                        "MiscTextSizeFollowsZoomLevel",
++                        NULL,
++                        FALSE,
++                        G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
++
+ #ifdef HAVE_VTE
+   /**
+    * ThunarPreferences:terminal-height:
+diff --git a/thunar/thunar-standard-view.c b/thunar/thunar-standard-view.c
+index 047016775..55c28cfaa 100644
+--- a/thunar/thunar-standard-view.c
++++ b/thunar/thunar-standard-view.c
+@@ -138,6 +138,8 @@ thunar_standard_view_scale_changed (GObject    *object,
+                                     GParamSpec *pspec,
+                                     gpointer    user_data);
+ static void
++thunar_standard_view_text_size_follows_zoom_level_changed (ThunarStandardView *standard_view);
++static void
+ thunar_standard_view_realize (GtkWidget *widget);
+ static void
+ thunar_standard_view_unrealize (GtkWidget *widget);
+@@ -1081,6 +1083,7 @@ thunar_standard_view_init (ThunarStandardView *standard_view)
+                 NULL);
+   g_object_ref_sink (G_OBJECT (standard_view->name_renderer));
+   g_object_bind_property (G_OBJECT (standard_view), "zoom-level", G_OBJECT (standard_view->name_renderer), "scale", G_BINDING_SYNC_CREATE);
++  g_signal_connect_swapped (G_OBJECT (standard_view->preferences), "notify::misc-text-size-follows-zoom-level", G_CALLBACK (thunar_standard_view_text_size_follows_zoom_level_changed), standard_view);
+   g_object_bind_property (G_OBJECT (standard_view->preferences), "misc-highlighting-enabled", G_OBJECT (standard_view->name_renderer), "highlighting-enabled", G_BINDING_SYNC_CREATE);
+ 
+   /* this is required in order to disable foreground & background colors on the text renderers when the feature is disabled */
+@@ -5398,3 +5401,12 @@ thunar_standard_view_select_first_file (ThunarStandardView *standard_view)
+       gtk_tree_selection_select_iter (selection, &iter);
+     }
+ }
++
++
++
++static void
++thunar_standard_view_text_size_follows_zoom_level_changed (ThunarStandardView *standard_view)
++{
++  /* Do as if the zoom level changed to trigger a text scale update. */
++  g_object_notify_by_pspec (G_OBJECT (standard_view), standard_view_props[PROP_ZOOM_LEVEL]);
++}
+-- 
+GitLab
+
