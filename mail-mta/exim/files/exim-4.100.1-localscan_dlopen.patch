@@ -124,7 +124,7 @@
 +local_scan_lib = dlopen(local_scan_path, RTLD_NOW);
 +if (!local_scan_lib)
 +  {
-+  log_write(0, LOG_MAIN|LOG_REJECT, "local_scan() library open failed - "
++  log_write(LOG_MAIN|LOG_REJECT, "local_scan() library open failed - "
 +    "message temporarily rejected");
 +  return FALSE;
 +  }
@@ -133,7 +133,7 @@
 +if (!local_scan_version_fn)
 +  {
 +  dlclose(local_scan_lib);
-+  log_write(0, LOG_MAIN|LOG_REJECT, "local_scan() library doesn't contain "
++  log_write(LOG_MAIN|LOG_REJECT, "local_scan() library doesn't contain "
 +    "local_scan_version_major() function - message temporarily rejected");
 +  return FALSE;
 +  }
@@ -146,7 +146,7 @@
 +if (!local_scan_version_fn)
 +  {
 +  dlclose(local_scan_lib);
-+  log_write(0, LOG_MAIN|LOG_REJECT, "local_scan() library doesn't contain "
++  log_write(LOG_MAIN|LOG_REJECT, "local_scan() library doesn't contain "
 +    "local_scan_version_minor() function - message temporarily rejected");
 +  return FALSE;
 +  }
@@ -160,7 +160,7 @@
 +  {
 +  dlclose(local_scan_lib);
 +  local_scan_lib = NULL;
-+  log_write(0, LOG_MAIN|LOG_REJECT, "local_scan() has an incompatible major"
++  log_write(LOG_MAIN|LOG_REJECT, "local_scan() has an incompatible major"
 +    "version number, you need to recompile your module for this version"
 +    "of exim (The module was compiled for version %d.%d and this exim provides"
 +    "ABI version %d.%d)", vers_maj, vers_min, LOCAL_SCAN_ABI_VERSION_MAJOR,
@@ -171,7 +171,7 @@
 +  {
 +  dlclose(local_scan_lib);
 +  local_scan_lib = NULL;
-+  log_write(0, LOG_MAIN|LOG_REJECT, "local_scan() has an incompatible minor"
++  log_write(LOG_MAIN|LOG_REJECT, "local_scan() has an incompatible minor"
 +    "version number, you need to recompile your module for this version"
 +    "of exim (The module was compiled for version %d.%d and this exim provides"
 +    "ABI version %d.%d)", vers_maj, vers_min, LOCAL_SCAN_ABI_VERSION_MAJOR,
@@ -183,7 +183,7 @@
 +if (!local_scan_fn)
 +  {
 +  dlclose(local_scan_lib);
-+  log_write(0, LOG_MAIN|LOG_REJECT, "local_scan() library doesn't contain "
++  log_write(LOG_MAIN|LOG_REJECT, "local_scan() library doesn't contain "
 +    "local_scan() function - message temporarily rejected");
 +  return FALSE;
 +  }
