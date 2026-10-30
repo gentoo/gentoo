@@ -3,6 +3,7 @@
 
 # Joonas Niilola <juippis@gentoo.org> (2026-10-30)
 # Dependency not stable on arm.
+app-crypt/libsecret test-rust
 dev-util/glade gjs
 
 # Ionen Wolkens <ionen@gentoo.org> (2026-04-16)
