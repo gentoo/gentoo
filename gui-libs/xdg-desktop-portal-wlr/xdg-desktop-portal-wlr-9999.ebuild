@@ -29,11 +29,9 @@ DEPEND="
 	dev-libs/wayland
 	media-libs/mesa
 	x11-libs/libdrm
-	|| (
-		systemd? ( >=sys-apps/systemd-237 )
-		elogind? ( >=sys-auth/elogind-237 )
-		sys-libs/basu
-	)
+	systemd? ( >=sys-apps/systemd-237 )
+	elogind? ( >=sys-auth/elogind-237 )
+	!systemd? ( !elogind? ( sys-libs/basu ) )
 "
 # mesa is needed for gbm dep (which it hards sets to 'on')
 RDEPEND="
