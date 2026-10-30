@@ -2,10 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person">
-    <email>nowa@gentoo.org</email>
-    <name>Nowa Ammerlaan</name>
-  </maintainer>
-  <maintainer type="person">
     <email>grozin@gentoo.org</email>
     <name>Andrey Grozin</name>
   </maintainer>
