@@ -33,7 +33,7 @@ RDEPEND="
 	net-misc/curl:=
 "
 BDEPEND="
-	>=dev-lang/go-1.26.0
+	>=dev-lang/go-1.26.10
 	dev-libs/stb
 "
 
