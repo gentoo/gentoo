@@ -6,6 +6,7 @@
 # not keyworded).
 gui-libs/xdg-desktop-portal-wlr elogind
 gui-apps/mako elogind
+gui-wm/sway elogind
 
 # Ionen Wolkens <ionen@gentoo.org> (2024-03-31)
 # MPV currently[1] has no plans to support >=lua5-3 making luajit

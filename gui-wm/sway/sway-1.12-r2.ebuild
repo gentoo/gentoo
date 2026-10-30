@@ -15,14 +15,14 @@ else
 	MY_PV=${PV/_rc/-rc}
 	inherit verify-sig
 	SRC_URI="https://github.com/swaywm/${PN}/releases/download/${PV}/${P}.tar.gz -> ${P}.gh.tar.gz
-		https://github.com/swaywm/${PN}/releases/download/${PV}/${P}.tar.gz.sig -> ${P}.gh.tar.gz.sig"
+		verify-sig? ( https://github.com/swaywm/${PN}/releases/download/${PV}/${P}.tar.gz.sig -> ${P}.gh.tar.gz.sig )"
 	KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64 ~riscv x86"
 	S="${WORKDIR}/${PN}-${MY_PV}"
 fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="+libinput +drm +session +swaybar +swaynag tray wallpapers x11-backend X"
+IUSE="+libinput +drm elogind +session +swaybar +swaynag systemd tray wallpapers x11-backend X"
 REQUIRED_USE="tray? ( swaybar )"
 
 DEPEND="
@@ -40,11 +40,11 @@ DEPEND="
 	x11-libs/pixman
 	media-libs/libglvnd
 	swaybar? ( x11-libs/gdk-pixbuf:2 )
-	tray? ( || (
-		sys-apps/systemd
-		sys-auth/elogind
-		sys-libs/basu
-	) )
+	tray? (
+		systemd? ( sys-apps/systemd )
+		elogind? ( sys-auth/elogind )
+		!systemd? ( !elogind? ( sys-libs/basu ) )
+	)
 	wallpapers? ( gui-apps/swaybg[gdk-pixbuf(+)] )
 	X? (
 		x11-libs/libxcb:0=
@@ -58,7 +58,7 @@ if [[ ${PV} == 9999 ]]; then
 	"
 else
 	DEPEND+="
-		gui-libs/wlroots:0.19[drm=,libinput=,session=,X=,x11-backend=]
+		gui-libs/wlroots:0.20[drm=,libinput=,session=,X=,x11-backend=]
 	"
 fi
 RDEPEND="
@@ -66,7 +66,7 @@ RDEPEND="
 	x11-misc/xkeyboard-config
 "
 BDEPEND="
-	>=dev-libs/wayland-protocols-1.24
+	>=dev-libs/wayland-protocols-1.41
 	>=dev-build/meson-1.3
 	virtual/pkgconfig
 "
@@ -74,7 +74,7 @@ if [[ ${PV} == 9999 ]]; then
 	BDEPEND+=" ~app-text/scdoc-9999"
 else
 	BDEPEND+=" >=app-text/scdoc-1.11.3
-		verify-sig? ( sec-keys/openpgp-keys-emersion )"
+		verify-sig? ( >=sec-keys/openpgp-keys-emersion-20260503 )"
 	VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/emersion.asc"
 fi
 
@@ -94,6 +94,14 @@ src_configure() {
 		-Dzsh-completions=true
 		-Dbash-completions=true
 	)
+
+	if use systemd ; then
+		emesonargs+=( -Dsd-bus-provider=libsystemd )
+	elif use elogind ; then
+		emesonargs+=( -Dsd-bus-provider=libelogind )
+	else
+		emesonargs+=( -Dsd-bus-provider=basu )
+	fi
 
 	meson_src_configure
 }

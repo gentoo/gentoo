@@ -5,7 +5,7 @@
 # Need systemd enabled here for depgraph (otherwise uses basu).
 gui-libs/xdg-desktop-portal-wlr systemd
 gui-apps/mako systemd
-
+gui-wm/sway systemd
 
 # Sam James <sam@gentoo.org> (2022-01-03)
 # Need systemd enabled here for depgraph: bug #830485
