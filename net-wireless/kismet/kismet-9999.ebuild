@@ -113,8 +113,6 @@ src_prepare() {
 	if [ "${PV}" = "9999" ]; then
 		sed -i -e 's#-Wno-dangling-reference##g' configure.ac || die
 		eautoreconf
-	else
-		sed -i -e 's#-Wno-unknown-warning-option ##g' configure || die
 	fi
 }
 
