@@ -11,7 +11,7 @@ SRC_URI="https://github.com/openpmix/prrte/releases/download/v${PV}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/$(ver_cut 1)"
-KEYWORDS="~amd64 ~arm64 ~ppc64"
+KEYWORDS="~amd64 ~arm64 ppc64"
 
 # <sys-cluster/prrte-4.0.0 has a file conflict with net-misc/putty
 # we block this here so the block is dropped when this version leaves the tree.
