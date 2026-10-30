@@ -1,0 +1,39 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index a8e5914..a1a129c 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -55,7 +55,6 @@
+     OriginObj.h
+     OriginFile.h
+     OriginParser.h
+-    tree.hh
+ )
+ 
+ # object library
+@@ -104,6 +103,7 @@
+ endif ()
+ 
+ # command line util
++if(ENABLE_TOOLS)
+ if (BUILD_STATIC_LIBS)
+     add_executable(opj2dat opj2dat.cpp)
+     target_link_libraries (opj2dat origin_static)
+@@ -111,6 +111,7 @@
+     add_executable(opj2dat opj2dat.cpp)
+     target_link_libraries (opj2dat origin_shared)
+ endif ()
++endif ()
+ 
+ # Generate a pkg-config file matching this config
+ configure_file("liborigin.pc.in" "liborigin.pc" @ONLY)
+@@ -120,8 +121,10 @@
+ # install pkg-config file
+ if (BUILD_STATIC_LIBS OR BUILD_SHARED_LIBS)
+     install(FILES ${CMAKE_CURRENT_BINARY_DIR}/liborigin.pc DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig)
++if(ENABLE_TOOLS)
+     install(TARGETS opj2dat DESTINATION ${CMAKE_INSTALL_BINDIR} OPTIONAL)
+ endif ()
++endif ()
+ 
+ # documentation
+ install(FILES COPYING FORMAT README
