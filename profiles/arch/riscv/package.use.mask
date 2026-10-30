@@ -1,10 +1,6 @@
 # Copyright 2019-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Joonas Niilola <juippis@gentoo.org> (2026-10-27)
-# libaom >= 3.14 doesn't have ~riscv keyword.
->=www-client/firefox-159.0 system-av1
-
 # Thibaud CANALE <thican@thican.net> (2026-05-17)
 # Tests require dev-python/respx
 dev-python/cloudflare test
