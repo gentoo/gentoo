@@ -6,7 +6,7 @@
 # fonts@gentoo.org
 # @AUTHOR:
 # Robin H. Johnson <robbat2@gentoo.org>
-# @SUPPORTED_EAPIS: 7
+# @SUPPORTED_EAPIS: 7 8 9
 # @BLURB: Eclass to make PCF font generator from BDF uniform and optimal
 # @DESCRIPTION:
 # The manpage for this eclass is in media-gfx/ebdftopcf.
@@ -15,13 +15,13 @@
 # In EAPI 9 and newer, this eclass is deprecated in favor of font.eclass's
 # native BDF to OTB conversion via FONT_OPENTYPE_COMPAT=1.
 
-case ${EAPI} in
-	7) ;;
-	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
-esac
-
 if [[ -z ${_FONT_EBDFTOPCF_ECLASS} ]]; then
 _FONT_EBDFTOPCF_ECLASS=1
+
+case ${EAPI} in
+	7|8|9) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
 
 # Make dependence on Xorg optional
 IUSE="X"

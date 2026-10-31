@@ -7,7 +7,7 @@
 # @AUTHOR:
 # Anna Figueiredo Gomes <navi@vlhl.dev>
 # Maciej Barć <xgqt@gentoo.org>
-# @SUPPORTED_EAPIS: 8
+# @SUPPORTED_EAPIS: 8 9
 # @BLURB: common functions and variables for handling .NET NuGets
 # @DESCRIPTION:
 # This eclass is designed to provide support for .NET NuGet's ".nupkg" files.
@@ -17,13 +17,13 @@
 # This eclass does not export any phase functions, for that see
 # the "dotnet-pkg" eclass.
 
-case ${EAPI} in
-	8) ;;
-	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
-esac
-
 if [[ -z ${_NUGET_ECLASS} ]] ; then
 _NUGET_ECLASS=1
+
+case ${EAPI} in
+	8|9) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
 
 # @ECLASS_VARIABLE: NUGET_SYSTEM_NUGETS
 # @DESCRIPTION:
