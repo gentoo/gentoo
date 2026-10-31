@@ -3,7 +3,7 @@
 
 EAPI=8
 
-POSTGRES_COMPAT=( {12..18} )
+POSTGRES_COMPAT=( {14..18} )
 POSTGRES_USEDEP="server(+)"
 inherit autotools postgres-multi toolchain-funcs
 
@@ -15,7 +15,7 @@ if [[ ${PV} = *9999* ]] ; then
 else
 	PGIS="$(ver_cut 1-2)"
 	SRC_URI="https://download.osgeo.org/postgis/source/${MY_P}.tar.gz"
-	KEYWORDS=""
+	KEYWORDS="~amd64 ~x86"
 fi
 
 DESCRIPTION="Geographic Objects for PostgreSQL"
@@ -36,7 +36,7 @@ RDEPEND="${POSTGRES_DEP}
 	dev-libs/json-c:=
 	dev-libs/libxml2:2=
 	dev-libs/protobuf-c:=
-	>=sci-libs/geos-3.9.0
+	>=sci-libs/geos-3.10.0
 	>=sci-libs/proj-6.1.0:=
 	>=sci-libs/gdal-1.10.0:=
 	gtk? ( x11-libs/gtk+:2 )
