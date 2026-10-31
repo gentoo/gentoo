@@ -63,6 +63,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-1.1-configure-lua-version.patch"
 	"${FILESDIR}/${PN}-2.0-configure.patch"
 	"${FILESDIR}/${P}-ffmpeg8.patch"
+	"${FILESDIR}/${P}-error-constants.patch"
 )
 
 pkg_setup() {

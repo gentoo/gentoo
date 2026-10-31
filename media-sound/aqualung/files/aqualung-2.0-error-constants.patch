@@ -1,0 +1,35 @@
+From 668285ea523a4adecbae78ec0e6bedc3640ca6b3 Mon Sep 17 00:00:00 2001
+From: Adam Sampson <ats@offog.org>
+Date: Wed, 21 Oct 2026 15:08:03 +0100
+Subject: [PATCH] Fix build with Monkey's Audio 1340
+
+The error constants were renamed from ERROR_x to APE_ERROR_x.
+---
+ src/decoder/dec_mac.cpp | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/src/decoder/dec_mac.cpp b/src/decoder/dec_mac.cpp
+index f89450d4..f70e04dd 100644
+--- a/src/decoder/dec_mac.cpp
++++ b/src/decoder/dec_mac.cpp
+@@ -32,6 +32,11 @@
+ #include "../undef_ac_pkg.h"
+ #include <config.h>	/* re-establish undefined autoconf macros */
+ 
++/* error macros were renamed in MAC 1340 */
++#ifndef APE_ERROR_SUCCESS
++#define APE_ERROR_SUCCESS ERROR_SUCCESS
++#endif
++
+ #include "../i18n.h"
+ #include "../metadata.h"
+ #include "../metadata_ape.h"
+@@ -180,7 +185,7 @@ mac_decoder_open(decoder_t * dec, char * filename) {
+         pdecompress = CreateIAPEDecompress(filename_utf16, &ret, FALSE, FALSE, FALSE);
+         delete [] filename_utf16;
+ 
+-        if (!pdecompress || ret != ERROR_SUCCESS) {
++        if (!pdecompress || ret != APE_ERROR_SUCCESS) {
+                 return DECODER_OPEN_BADLIB;
+         }
+ 
