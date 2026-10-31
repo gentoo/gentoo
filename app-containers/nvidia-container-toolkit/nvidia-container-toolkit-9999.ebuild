@@ -5,7 +5,7 @@ EAPI=8
 
 EGO_PN="github.com/NVIDIA/${PN}"
 
-inherit go-module systemd
+inherit flag-o-matic go-module systemd
 
 DESCRIPTION="NVIDIA container runtime toolkit"
 HOMEPAGE="https://github.com/NVIDIA/nvidia-container-toolkit"
@@ -35,6 +35,12 @@ src_prepare() {
 	default
 	# grep lives in /bin on split-usr
 	sed -i 's|/usr/bin/grep|grep|g' deployments/systemd/nvidia-cdi-refresh.service || die
+}
+
+src_configure() {
+	# -fno-plt causes NVML symbols to be resolved before go-nvml can dlopen libnvidia-ml.so.1.
+	filter-flags -fno-plt
+	go-module_src_configure
 }
 
 src_compile() {
