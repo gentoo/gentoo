@@ -20,6 +20,7 @@
     <flag name="json">Enable lottie animation support</flag>
     <flag name="mono">Enable mono bindings</flag>
     <flag name="physics">Enable Bullet physics effects and support</flag>
+    <flag name="pipewire">Enable support for PipeWire audio backend</flag>
     <flag name="pmaps">Enable PMAPS image loader</flag>
     <flag name="psd">Enable PSD image loader</flag>
     <flag name="scim">Enable Smart Common Input Method</flag>
