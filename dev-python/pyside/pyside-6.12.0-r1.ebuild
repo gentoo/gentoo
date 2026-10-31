@@ -492,9 +492,9 @@ python_compile() {
 	fi
 	mkdir -p "${BUILD_DIR}/install${EPREFIX}/usr/include"
 	for dir in PySide6 shiboken6 shiboken6_generator; do
-		if [[ -d ${BUILD_DIR}/install/$(python_get_sitedir)/${dir}/include ]]
+		if [[ -d ${BUILD_DIR}/install/$(python_get_sitedir)/${dir}/include/${dir} ]]
 		then
-			ln -s "../../$(python_get_sitedir)/${dir}/include" \
+			ln -s "../../$(python_get_sitedir)/${dir}/include/${dir}" \
 				"${BUILD_DIR}/install${EPREFIX}/usr/include/${dir//_generator}" ||
 					die
 		fi
