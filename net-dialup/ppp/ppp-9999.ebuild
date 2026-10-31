@@ -82,8 +82,9 @@ src_configure() {
 	local args=(
 		--localstatedir="${EPREFIX}"/var
 		--runstatedir="${EPREFIX}"/run
+		--with-external-atm
 		$(use_enable systemd)
-		$(use_with atm)
+		$(use_enable atm)
 		$(use_with pam)
 		$(use_with activefilter pcap)
 		--enable-cbcp
