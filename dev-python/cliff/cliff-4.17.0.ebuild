@@ -30,14 +30,23 @@ RDEPEND="
 BDEPEND="
 	test? (
 		>=dev-python/fixtures-3.0.0[${PYTHON_USEDEP}]
-		>=dev-python/sphinx-5.0.0[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			>=dev-python/sphinx-5.0.0[${PYTHON_USEDEP}]
+		' 3.{13..15})
 		>=dev-python/testtools-2.8.0[${PYTHON_USEDEP}]
 	)
 "
 
-distutils_enable_tests unittest
+EPYTEST_PLUGINS=()
+distutils_enable_tests pytest
 
 python_test() {
 	local -x COLUMNS=80
-	eunittest
+
+	local EPYTEST_IGNORE=()
+	if ! has_version "dev-python/sphinx[${PYTHON_USEDEP}]"; then
+		EPYTEST_IGNORE+=( cliff/tests/test_sphinxext.py )
+	fi
+
+	epytest
 }
