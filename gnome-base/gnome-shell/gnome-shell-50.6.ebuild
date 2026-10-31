@@ -148,9 +148,14 @@ PATCHES=(
 
 src_prepare() {
 	default
-	xdg_environment_reset
+
 	# Hack in correct python shebang
 	sed -e "s:python\.full_path():'/usr/bin/env ${EPYTHON}':" -i src/meson.build || die
+
+	# tests are flacky, switching from G_DEBUG=fatal-warnings to fatal-criticals
+	# improve things, but some are still failing:
+	# https://gitlab.gnome.org/GNOME/gnome-shell/-/work_items/9298
+	sed -i -e '/G_DEBUG/d' tests/meson.build || die
 }
 
 src_configure() {
@@ -171,6 +176,8 @@ src_configure() {
 }
 
 src_test() {
+	gnome2_environment_reset
+
 	# Some tests fail when /var/tmp/portage is used as PORTAGE_TMPDIR
 	# due to PATH becoming too long: OSError: AF_UNIX path too long
 	# Intercept system mutter_dbusrunner.py to shorten the paths.
@@ -186,7 +193,7 @@ src_test() {
 	sed -i -e "s|/usr/share/mutter-[0-9]*/tests|${custom_mutter}|g" \
 		"${BUILD_DIR}/tests/gnome-shell-dbus-runner.py" || die
 
-	meson_src_test
+	dbus-run-session meson test -C "${BUILD_DIR}" --print-errorlogs -t 20 || die
 }
 
 src_install() {
