@@ -36,7 +36,9 @@ BDEPEND="
 		>=dev-python/oslo-log-3.36.0[${PYTHON_USEDEP}]
 		>=dev-python/oslotest-3.2.0[${PYTHON_USEDEP}]
 		>=dev-python/requests-mock-1.5.0[${PYTHON_USEDEP}]
-		>=dev-python/sphinx-1.8.0[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			>=dev-python/sphinx-1.8.0[${PYTHON_USEDEP}]
+		' 3.{13..15})
 		>=dev-python/testscenarios-0.4[${PYTHON_USEDEP}]
 		>=dev-python/testtools-2.2.0[${PYTHON_USEDEP}]
 	)
@@ -54,5 +56,16 @@ src_prepare() {
 
 python_test() {
 	local -x COLUMNS=80
+	local moved_sphinx=
+
+	if ! has_version "dev-python/sphinx[${PYTHON_USEDEP}]"; then
+		moved_sphinx=1
+		mv oslo_config/tests/test_sphinx*.py "${T}" || die
+	fi
+
 	eunittest -b
+
+	if [[ ${moved_sphinx} ]]; then
+		mv "${T}"/test_sphinx*.py oslo_config/tests/ || die
+	fi
 }
