@@ -223,6 +223,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-new-boost.patch
 	"${FILESDIR}"/${PN}-fix-pairing.patch
+	"${FILESDIR}"/${PN}-no-va-headers.patch
 )
 
 # Make this mess a bit simpler.
