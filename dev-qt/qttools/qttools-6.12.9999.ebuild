@@ -68,6 +68,7 @@ DEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-6.12.0-litehtml-no-unity.patch
+	"${FILESDIR}"/${PN}-6.12.0-litehtml-libcxx23.patch
 )
 
 src_prepare() {
