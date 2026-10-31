@@ -16,7 +16,7 @@ if [[ ${PV} == "9999" ]] ; then
 else
 	SRC_URI="https://chromium.googlesource.com/chromium/third_party/ffmpeg/+archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}"
-	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64"
+	KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64"
 fi
 
 LICENSE="
