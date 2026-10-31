@@ -86,6 +86,7 @@ PATCHES=(
 	"${FILESDIR}"/tdesktop-5.7.2-cstring.patch
 	"${FILESDIR}"/tdesktop-5.8.3-cstdint.patch
 	"${FILESDIR}"/tdesktop-5.14.3-system-cppgir.patch
+	"${FILESDIR}"/tdesktop-7.1.2-cxx23.patch
 	"${DISTDIR}"/CVE-2026-107181.patch
 )
 
