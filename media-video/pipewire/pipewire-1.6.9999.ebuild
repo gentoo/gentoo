@@ -145,8 +145,8 @@ RDEPEND="
 	flatpak? ( dev-libs/glib )
 	gstreamer? (
 		>=dev-libs/glib-2.32.0:2
-		>=media-libs/gstreamer-1.10.0:1.0
-		media-libs/gst-plugins-base:1.0
+		>=media-libs/gstreamer-1.22.0:1.0
+		>=media-libs/gst-plugins-base-1.22.0:1.0
 	)
 	gsettings? ( >=dev-libs/glib-2.26.0:2 )
 	ieee1394? ( media-libs/libffado[${MULTILIB_USEDEP}] )
