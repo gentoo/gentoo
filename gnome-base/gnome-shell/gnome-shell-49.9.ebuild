@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+
 PYTHON_COMPAT=( python3_{12..14} )
 
 inherit flag-o-matic gnome.org gnome2-utils meson optfeature python-single-r1 xdg
@@ -11,7 +12,7 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/gnome-shell"
 
 LICENSE="GPL-2+ LGPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~riscv ~x86"
 
 IUSE="X elogind gtk-doc +ibus +networkmanager pipewire selinux systemd test wayland"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
