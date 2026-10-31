@@ -21,7 +21,9 @@ KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ~mips ~ppc64 ~riscv ~s390 ~sparc x86"
 
 BDEPEND="
 	test? (
-		dev-python/sphinx[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			dev-python/sphinx[${PYTHON_USEDEP}]
+		' 3.{13..15})
 		dev-python/testtools[${PYTHON_USEDEP}]
 	)
 "
