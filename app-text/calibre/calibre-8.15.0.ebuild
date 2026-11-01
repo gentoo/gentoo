@@ -127,6 +127,7 @@ PATCHES=(
 	# (last commit in 2017)
 	"${FILESDIR}/${PN}-7.0.0-jxr-test.patch"
 	"${FILESDIR}/${PN}-8.9.0-piper.patch"
+	"${FILESDIR}/${PN}-ffmpeg9.patch"
 )
 
 src_prepare() {
