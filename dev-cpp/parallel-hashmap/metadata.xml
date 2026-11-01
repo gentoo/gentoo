@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM 'https://www.gentoo.org/dtd/metadata.dtd'>
+<pkgmetadata>
+	<maintainer type="person">
+		<email>apn-pucky@gentoo.org</email>
+		<name>Alexander Puck Neuwirth</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>sci@gentoo.org</email>
+		<name>Gentoo Science Project</name>
+	</maintainer>
+
+	<longdescription lang="en">
+	This repository aims to provide a set of excellent hash map implementations, as well as a btree alternative to std::map and std::set, with the following characteristics:
+
+	Header only: nothing to build, just copy the parallel_hashmap directory to your project and you are good to go.
+
+	drop-in replacement for std::unordered_map, std::unordered_set, std::map and std::set
+
+	Compiler with C++11 support required, C++14 and C++17 APIs are provided (such as try_emplace)
+	
+	Very efficient, significantly faster than your compiler's unordered map/set or Boost's, or than sparsepp
+	
+	Memory friendly: low memory usage, although a little higher than sparsepp
+	
+	Supports heterogeneous lookup
+	
+	Easy to forward declare: just include phmap_fwd_decl.h in your header files to forward declare Parallel Hashmap containers [note: this does not work currently for hash maps with pointer keys]
+	
+	Dump/load feature: when a flat hash map stores data that is std::trivially_copyable, the table can be dumped to disk and restored as a single array, very efficiently, and without requiring any hash computation. This is typically about 10 times faster than doing element-wise serialization to disk, but it will use 10% to 60% extra disk space. See examples/serialize.cc. (flat hash map/set only)
+	
+	Automatic support for boost's hash_value() method for providing the hash function (see examples/hash_value.h). Also default hash support for std::pair and std::tuple.
+	
+	natvis visualization support in Visual Studio (hash map/set only)
+	</longdescription>
+
+	<upstream>
+		<bugs-to>https://github.com/greg7mdp/parallel-hashmap/issues</bugs-to>
+		<remote-id type="github">greg7mdp/parallel-hashmap</remote-id>
+	</upstream>
+</pkgmetadata>
