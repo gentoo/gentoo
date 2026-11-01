@@ -19,6 +19,7 @@ DEPEND="
 	dev-cpp/cpp-httplib:=
 	dev-db/sqlite:3
 	dev-qt/qtbase:6[concurrent,gui,network,widgets]
+	dev-qt/qtsvg:6
 	dev-qt/qtwebchannel:6
 	dev-qt/qtwebengine:6[widgets]
 	X? (
