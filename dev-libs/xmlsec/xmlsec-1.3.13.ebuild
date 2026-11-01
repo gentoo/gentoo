@@ -60,6 +60,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.3.13-optimisation.patch
 )
 
+QA_CONFIG_IMPL_DECL_SKIP=( memset_s ) # 985351
+
 src_unpack() {
 	if use verify-sig; then
 		verify-sig_verify_detached "${DISTDIR}"/${PN}1-${MY_PV}.{tar.gz,sig}
