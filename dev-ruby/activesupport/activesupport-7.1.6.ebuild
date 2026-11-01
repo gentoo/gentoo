@@ -48,7 +48,7 @@ ruby_add_rdepend "
 # but there are tests using this code.
 ruby_add_bdepend "test? (
 	<dev-ruby/dalli-5
-	>=dev-ruby/dalli-3.0.1
+	>=dev-ruby/dalli-3.0.1:*
 	>=dev-ruby/nokogiri-1.8.1
 	>=dev-ruby/builder-3.1.0
 	>=dev-ruby/listen-3.3:3
