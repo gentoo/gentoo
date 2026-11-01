@@ -1,0 +1,25 @@
+From 82620b8ecbfb37868a5be63e5f7d4444fd3e7425 Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx@gmail.com>
+Date: Sun, 8 Feb 2026 16:09:21 +0100
+Subject: [PATCH] tbb link private
+
+Signed-off-by: Paul Zander <negril.nx@gmail.com>
+
+diff --git a/src/lib/IlmThread/CMakeLists.txt b/src/lib/IlmThread/CMakeLists.txt
+index 2eefd05a..e4dd3c65 100644
+--- a/src/lib/IlmThread/CMakeLists.txt
++++ b/src/lib/IlmThread/CMakeLists.txt
+@@ -28,8 +28,8 @@ openexr_define_library(IlmThread
+ 
+ if(OPENEXR_ENABLE_THREADING)
+   if (ILMTHREAD_USE_TBB)
+-    target_link_libraries(IlmThread PUBLIC TBB::tbb)
++    target_link_libraries(IlmThread PRIVATE TBB::tbb)
+   endif()
+-  target_link_libraries(IlmThread PUBLIC Threads::Threads)
++  target_link_libraries(IlmThread PRIVATE Threads::Threads)
+ endif()
+ 
+-- 
+2.52.0
+

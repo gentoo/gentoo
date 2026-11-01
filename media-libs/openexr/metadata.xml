@@ -16,6 +16,12 @@
 		<flag name="large-stack">
 			Enables code to take advantage of large stack support.
 		</flag>
+		<flag name="tbb">
+			Enable multithreading with the Intel Threads Building Block <pkg>dev-cpp/tbb</pkg>
+		</flag>
+		<flag name="tools">
+			Build several binary tools for verifying and manipulating EXR files.
+		</flag>
 		<flag name="utils">
 			Build several binary tools for verifying and manipulating EXR files.
 		</flag>
