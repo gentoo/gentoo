@@ -27,7 +27,7 @@ if [[ ${PV} == 9999 && $EGIT_OVERRIDE_BRANCH_DWL_DWL == "wlroots-next" ]]
 then
 	COMMON_DEPEND="~gui-libs/wlroots-9999:=[libinput,session,X?]"
 else
-	COMMON_DEPEND="gui-libs/wlroots:0.19[libinput,session,X?]"
+	COMMON_DEPEND="gui-libs/wlroots:0.20[libinput,session,X?]"
 fi
 
 COMMON_DEPEND+="
