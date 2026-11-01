@@ -35,6 +35,8 @@ RDEPEND="${DEPEND}"
 
 DOCS=( "README.md" "README.Android" "TODO" "syscalls.txt" )
 
+PATCHES=( "${FILESDIR}/${PN}-0.22.01-fix-to-mismatch.patch" )
+
 pkg_pretend() {
 	if use apparmor; then
 		CONFIG_CHECK="SECURITY_APPARMOR"
