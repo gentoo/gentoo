@@ -5,7 +5,7 @@ EAPI=8
 
 WANT_AUTOMAKE="none"
 POSTGRES_COMPAT=( {15..18} )
-inherit autotools flag-o-matic multilib postgres systemd
+inherit autotools flag-o-matic multilib multiprocessing postgres systemd
 
 DESCRIPTION="The PHP language runtime engine"
 HOMEPAGE="https://www.php.net/"
@@ -746,6 +746,7 @@ src_test() {
 	SKIP_IO_CAPTURE_TESTS=1 SKIP_PERF_SENSITIVE=1 REPORT_EXIT_STATUS=1 \
 		"${TEST_PHP_EXECUTABLE}" -n \
 		"${WORKDIR}/sapis-build/cli/run-tests.php" --offline -n -q \
+		-j$(get_makeopts_jobs) \
 		-d "session.save_path=${T}" \
 		|| die "tests failed"
 }

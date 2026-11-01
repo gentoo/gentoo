@@ -5,7 +5,7 @@ EAPI=8
 
 WANT_AUTOMAKE="none"
 POSTGRES_COMPAT=( {15..18} )
-inherit flag-o-matic multilib postgres systemd toolchain-funcs
+inherit flag-o-matic multilib multiprocessing postgres systemd toolchain-funcs
 
 DESCRIPTION="The PHP language runtime engine"
 HOMEPAGE="https://www.php.net/"
@@ -787,6 +787,7 @@ src_test() {
 		"${TEST_PHP_EXECUTABLE}" -n \
 		"${WORKDIR}/sapis-build/cli/run-tests.php" --offline -n -q --show-diff \
 		$(usex test-full "--set-timeout 300" "") \
+		-j$(get_makeopts_jobs) \
 		-d "session.save_path=${T}" \
 		|| die "tests failed"
 }

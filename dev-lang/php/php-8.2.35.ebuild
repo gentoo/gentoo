@@ -5,7 +5,7 @@ EAPI=8
 
 WANT_AUTOMAKE="none"
 
-inherit flag-o-matic multilib systemd autotools
+inherit flag-o-matic multilib multiprocessing systemd autotools
 
 DESCRIPTION="The PHP language runtime engine"
 HOMEPAGE="https://www.php.net/"
@@ -831,6 +831,7 @@ src_test() {
 	SKIP_IO_CAPTURE_TESTS=1 SKIP_PERF_SENSITIVE=1 REPORT_EXIT_STATUS=1 \
 		"${TEST_PHP_EXECUTABLE}" -n \
 		"${WORKDIR}/sapis-build/cli/run-tests.php" --offline -n -q \
+		-j$(get_makeopts_jobs) \
 		-d "session.save_path=${T}" \
 		-d "sendmail_path=echo >/dev/null" \
 		|| die "tests failed"
