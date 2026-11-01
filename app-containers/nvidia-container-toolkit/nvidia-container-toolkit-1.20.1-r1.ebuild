@@ -48,6 +48,8 @@ src_prepare() {
 src_configure() {
 	# -fno-plt causes NVML symbols to be resolved before go-nvml can dlopen libnvidia-ml.so.1.
 	filter-flags -fno-plt
+	# Gentoo enables immediate binding by default; NVML requires lazy binding.
+	append-ldflags -Wl,-z,lazy
 	go-module_src_configure
 }
 
