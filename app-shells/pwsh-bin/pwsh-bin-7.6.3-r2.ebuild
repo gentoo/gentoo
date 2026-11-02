@@ -26,6 +26,10 @@ RESTRICT="splitdebug"
 RDEPEND="
 	app-crypt/mit-krb5:0/0
 	dev-libs/icu
+	|| (
+		dev-libs/openssl-compat:3
+		dev-libs/openssl:0/3
+	)
 	sys-libs/pam:0/0
 	virtual/zlib:0/1
 	|| (
