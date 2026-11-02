@@ -20,7 +20,10 @@ RDEPEND="
 	app-crypt/libsecret
 	app-crypt/p11-kit
 	dev-libs/glib:2
-	dev-libs/openssl:0/3
+	|| (
+		dev-libs/openssl-compat:3
+		dev-libs/openssl:0/3
+	)
 	net-libs/libsoup:3.0
 	net-libs/webkit-gtk:4.1/0
 	net-misc/curl
