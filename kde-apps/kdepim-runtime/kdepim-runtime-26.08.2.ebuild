@@ -71,6 +71,10 @@ DEPEND="${RDEPEND}
 	)
 "
 
+PATCHES=(
+	"${FILESDIR}/${PN}-26.08.2-ews-optional.patch" # in 26.12
+)
+
 src_configure() {
 	local mycmakeargs=(
 		-DOPTION_USE_PLASMA_ACTIVITIES=$(usex activities)
