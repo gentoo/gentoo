@@ -19,7 +19,10 @@ RDEPEND="
 	app-crypt/libsecret
 	dev-db/sqlite:3
 	dev-libs/glib:2
-	dev-libs/openssl:0/3
+	|| (
+		dev-libs/openssl-compat:3
+		dev-libs/openssl:0/3
+	)
 	media-libs/fontconfig:1.0
 	media-libs/libepoxy
 	net-misc/curl
