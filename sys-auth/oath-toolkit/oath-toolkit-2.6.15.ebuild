@@ -80,6 +80,19 @@ src_configure() {
 }
 
 src_test() {
+	# Whitespace changes with xmlsec-1.3.13 (bug #985400)
+	# https://codeberg.org/oath-toolkit/oath-toolkit/issues/121
+	if has_version ">=dev-libs/xmlsec-1.3.13" ; then
+		cat <<-EOF > pskctool/tests/tst_libexamples2.sh || die
+		#!/bin/sh
+		exit 77
+		EOF
+		cat <<-EOF > pskctool/tests/tst_sign.sh || die
+		#!/bin/sh
+		exit 77
+		EOF
+	fi
+
 	# Without -k, it will bail out after the first testsuite failure,
 	# skipping the other testsuites. as they are mostly independent, this sucks.
 	emake -k check
