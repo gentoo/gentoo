@@ -3,12 +3,15 @@
 
 EAPI=8
 
+# bench/btl: off by default, gone in master
+CMAKE_QA_COMPAT_SKIP=1
+
+FORTRAN_NEEDED="no"
+
 LLVM_COMPAT=( {21..23} )
 LLVM_OPTIONAL="cuda-clang"
 
 PYTHON_COMPAT=( python3_{12..14} )
-
-FORTRAN_NEEDED="no"
 
 LAPACK_ADDONS_PV="3.4.1"
 
