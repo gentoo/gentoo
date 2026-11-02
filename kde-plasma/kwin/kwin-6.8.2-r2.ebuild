@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PATCHSET="${P}-patchset"
+PATCHSET="${P}-patchset-1"
 ECM_HANDBOOK="optional"
 # TODO: ECMGenerateQDoc
 ECM_TEST="true"
