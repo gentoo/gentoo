@@ -4,6 +4,10 @@
 # New entries go on top.
 # Please use the same syntax as in package.use.mask.
 
+# Alfredo Tupone <tupone@gentoo.org> (2024-01-20)
+# dev-util/hip not yet stable
+sci-ml/gloo rocm
+
 # Paul Zander <negril.nx+gentoo@gmail.com> (2026-05-04)
 # Not intended for general use.
 # The tests are wired up so we can test compilers.

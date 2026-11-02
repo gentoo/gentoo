@@ -26,7 +26,7 @@ PYTORCH_S="${WORKDIR}"/${PYTORCH_P}
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 arm64"
 IUSE="cuda libuv mpi redis rocm ssl test"
 
 RDEPEND="
