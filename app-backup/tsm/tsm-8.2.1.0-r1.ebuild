@@ -3,6 +3,7 @@
 
 EAPI=8
 
+RPM_COMPRESS_TYPE=bzip2,lzma,xz
 MODULES_OPTIONAL_IUSE=journal
 MODULES_KERNEL_MAX=6.1
 inherit desktop linux-mod-r1 rpm toolchain-funcs pax-utils xdg
@@ -41,7 +42,7 @@ LICENSE="
 "
 
 SLOT="0"
-KEYWORDS="amd64" # ppc64 s390 -*
+KEYWORDS="~amd64" # ppc64 s390 -*
 
 IUSE="gpfs gui"
 # GPFS is not supported for journal-based backups on Linux
@@ -74,7 +75,10 @@ RDEPEND="
 	acct-group/tsm
 	dev-libs/expat
 	dev-libs/json-c:0/5.1
-	>=dev-libs/openssl-3.3.0:0/3
+	|| (
+		dev-libs/openssl-compat:3
+		>=dev-libs/openssl-3.3.0:0/3
+	)
 	dev-libs/libxml2:2
 	net-misc/curl[openssl]
 	sys-apps/acl
@@ -136,7 +140,7 @@ src_unpack() {
 
 	mkdir rpms_unpacked || die
 	pushd rpms_unpacked >/dev/null || die
-	rpmunpack "${S}/"*.rpm
+	rpm_unpack ./../*.rpm
 	popd >/dev/null || die
 
 	use journal && unpack "${S}/TIVsm-filepath-source.tar.gz"
@@ -164,10 +168,7 @@ src_compile() {
 }
 
 src_install() {
-	local i
-	for i in rpms_unpacked/*; do
-		rsync -a "${i}/"* "${ED}" || die
-	done
+	mv rpms_unpacked/* "${ED}" || die
 
 	# Don't bundle java
 	if [[ -e "${ED}/opt/tivoli/tsm/tdpvmware/common/jre" ]]; then
@@ -208,7 +209,9 @@ src_install() {
 	# Now on to some more Gentoo-specific installation.
 
 	rm -rf "${ED}/usr/lib/.build-id" &> /dev/null
-	[[ -d "${ED}/usr/lib" ]] && rmdir "${ED}/usr/lib" || die "Using 32bit lib dir in 64bit only system"
+	if [[ -d "${ED}/usr/lib" ]]; then
+		rmdir "${ED}/usr/lib" || die "Using 32bit lib dir in 64bit only system"
+	fi
 
 	# Avoid "QA Notice: Found an absolute symlink in a library directory"
 	local target

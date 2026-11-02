@@ -3,7 +3,7 @@
 
 EAPI=8
 
-RPM_COMPRESS_TYPE=bzip2,lzma,xz
+RPM_COMPRESS_TYPE=bzip2,lzma,xz,zstd
 MODULES_OPTIONAL_IUSE=journal
 MODULES_KERNEL_MAX=6.1
 inherit desktop linux-mod-r1 rpm toolchain-funcs pax-utils xdg
@@ -75,7 +75,10 @@ RDEPEND="
 	acct-group/tsm
 	dev-libs/expat
 	dev-libs/json-c:0/5.1
-	>=dev-libs/openssl-3.3.0:0/3
+	|| (
+		dev-libs/openssl-compat:3
+		>=dev-libs/openssl-3.3.0:0/3
+	)
 	dev-libs/libxml2:2
 	net-misc/curl[openssl]
 	sys-apps/acl
