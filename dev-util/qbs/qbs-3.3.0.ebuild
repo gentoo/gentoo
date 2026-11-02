@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 inherit cmake flag-o-matic python-any-r1 toolchain-funcs
 
 DESCRIPTION="Modern build tool for software projects"
