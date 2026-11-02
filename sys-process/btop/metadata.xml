@@ -13,4 +13,7 @@
 		<remote-id type="github">aristocratos/btop</remote-id>
 		<bugs-to>https://github.com/aristocratos/btop/issues</bugs-to>
 	</upstream>
+	<use>
+		<flag name="gpu">Enable or disable optional GPU support.</flag>
+	</use>
 </pkgmetadata>
