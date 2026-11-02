@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,7 +13,7 @@ S="${WORKDIR}/${PN}-source-${PV}"
 # ISC is only for cpdfxmlm.ml{,i}
 LICENSE="AGPL-3 ISC"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 IUSE="doc"
 
 RDEPEND="dev-lang/ocaml:=[ocamlopt]
@@ -29,7 +29,7 @@ src_install() {
 	findlib_src_install
 
 	dobin cpdf
-	dodoc Changes README.md cpdfmanual.pdf
+	dodoc Changes.txt README.md cpdfmanual.pdf
 	doman cpdf.1
 
 	use doc && dodoc -r doc/cpdf/html
