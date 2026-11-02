@@ -196,6 +196,7 @@ SOFTMMU_TOOLS_DEPEND="
 	)
 	gtk? (
 		x11-libs/gtk+:3[wayland?,X?]
+		x11-libs/libX11
 		vte? ( x11-libs/vte:2.91 )
 	)
 	infiniband? ( sys-cluster/rdma-core[static-libs(+)] )
@@ -229,6 +230,7 @@ SOFTMMU_TOOLS_DEPEND="
 	sdl? (
 		media-libs/libsdl2[video]
 		media-libs/libsdl2[static-libs(+)]
+		x11-libs/libX11
 	)
 	sdl-image? ( media-libs/sdl2-image[static-libs(+)] )
 	seccomp? ( >=sys-libs/libseccomp-2.1.0[static-libs(+)] )
@@ -246,7 +248,6 @@ SOFTMMU_TOOLS_DEPEND="
 	vde? ( net-misc/vde[static-libs(+)] )
 	virgl? ( media-libs/virglrenderer[static-libs(+)] )
 	virtfs? ( sys-libs/libcap )
-	X? ( x11-libs/libX11 )
 	xdp? ( net-libs/xdp-tools )
 	xen? ( app-emulation/xen-tools:= )
 	zstd? ( >=app-arch/zstd-1.4.0[static-libs(+)] )

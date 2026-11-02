@@ -48,7 +48,7 @@ else
 	fi
 
 	S="${WORKDIR}/${MY_P}"
-	[[ "${PV}" != *_rc* ]] && KEYWORDS="amd64 ~arm arm64 ~loong ~ppc ppc64 ~riscv x86"
+	[[ "${PV}" != *_rc* ]] && KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
 fi
 
 DESCRIPTION="QEMU + Kernel-based Virtual Machine userland tools"
@@ -186,6 +186,7 @@ SOFTMMU_TOOLS_DEPEND="
 	)
 	gtk? (
 		x11-libs/gtk+:3[wayland?,X?]
+		x11-libs/libX11
 		vte? ( x11-libs/vte:2.91 )
 	)
 	infiniband? ( sys-cluster/rdma-core[static-libs(+)] )
@@ -219,6 +220,7 @@ SOFTMMU_TOOLS_DEPEND="
 	sdl? (
 		media-libs/libsdl2[video]
 		media-libs/libsdl2[static-libs(+)]
+		x11-libs/libX11
 	)
 	sdl-image? ( media-libs/sdl2-image[static-libs(+)] )
 	seccomp? ( >=sys-libs/libseccomp-2.1.0[static-libs(+)] )
@@ -518,9 +520,6 @@ src_prepare() {
 		EOF
 	fi
 
-	# Verbose builds
-	MAKEOPTS+=" V=1"
-
 	# Remove bundled modules
 	rm -r roms/*/ || die
 }
@@ -789,23 +788,23 @@ src_configure() {
 src_compile() {
 	if [[ -n ${user_targets} ]]; then
 		cd "${S}/user-build" || die
-		default
+		emake V=1
 	fi
 
 	if [[ -n ${softmmu_targets} ]]; then
 		cd "${S}/softmmu-build" || die
-		default
+		emake V=1
 	fi
 
 	cd "${S}/tools-build" || die
-	default
+	emake V=1
 }
 
 src_test() {
 	if [[ -n ${softmmu_targets} ]]; then
 		cd "${S}/softmmu-build" || die
 		pax-mark m */qemu-system-* #515550
-		emake check
+		emake V=1 check
 	fi
 }
 
