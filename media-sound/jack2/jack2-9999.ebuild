@@ -4,7 +4,6 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{12..15} )
-PYTHON_REQ_USE="threads(+)"
 inherit flag-o-matic python-single-r1 waf-utils multilib-minimal
 
 if [[ ${PV} == 9999 ]]; then
