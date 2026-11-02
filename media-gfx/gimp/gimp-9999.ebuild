@@ -217,7 +217,6 @@ src_configure() {
 		-Denable-multiproc=true
 		-Dappdata-test=disabled
 		-Dbug-report-url="${BRANDING_OS_BUG_REPORT_URL}"
-		-Dilbm=disabled
 		-Dlibbacktrace=false
 		$(meson_feature aalib aa)
 		$(meson_feature alsa)
