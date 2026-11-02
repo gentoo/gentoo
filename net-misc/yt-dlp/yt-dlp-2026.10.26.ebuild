@@ -55,6 +55,10 @@ fi
 EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
 
+PATCHES=(
+	"${FILESDIR}"/${P}-pytest-9.2.patch
+)
+
 python_compile() {
 	if [[ ${PV} == 9999 ]]; then
 		# generate missing files in live, not in compile_all nor prepare
