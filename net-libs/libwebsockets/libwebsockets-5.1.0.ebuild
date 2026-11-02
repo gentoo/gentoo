@@ -72,7 +72,6 @@ src_configure() {
 		-DLWS_WITH_MBEDTLS=$(usex mbedtls)
 		-DLWS_WITH_PEER_LIMITS=$(usex peer-limits)
 		-DLWS_WITH_SERVER_STATUS=$(usex server-status)
-		-DLWS_WITH_SMTP=$(usex smtp)
 		-DLWS_WITH_SOCKS5=$(usex socks5)
 		-DLWS_WITH_SQLITE3=$(usex sqlite3)
 		-DLWS_WITH_SSL=$(usex ssl)
