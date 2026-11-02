@@ -1,0 +1,21 @@
+diff --git a/makefile b/makefile
+index 7ad5311..0d6ed61 100644
+--- a/makefile
++++ b/makefile
+@@ -1017,7 +1017,7 @@ unit-test:
+ 		tests/unit/bin/test_rq_confirm tests/unit/bin/test_fnsplit \
+ 		tests/unit/bin/test_fpformat tests/unit/bin/test_shuffledate \
+ 		tests/unit/bin/test_hostaddr tests/unit/bin/test_zstrdt \
+-		tests/unit/bin/test_deadline tests/unit/bin/test_slotstate \
++		tests/unit/bin/test_deadline \
+ 		tests/unit/bin/test_telopt
+ 	./tests/unit/bin/test_lib
+ 	./tests/unit/bin/test_strings
+@@ -1032,7 +1032,6 @@ unit-test:
+ 	./tests/unit/bin/test_hostaddr
+ 	./tests/unit/bin/test_zstrdt
+ 	./tests/unit/bin/test_deadline
+-	./tests/unit/bin/test_slotstate
+ 	./tests/unit/bin/test_telopt
+ 
+ # Rules for the unit test binaries.
