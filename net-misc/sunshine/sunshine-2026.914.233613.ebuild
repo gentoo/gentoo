@@ -409,7 +409,6 @@ src_configure() {
 		-DBOOST_USE_STATIC=no
 		-DBUILD_DOCS=no
 		-DBUILD_TESTS=no
-		-DCCACHE_FOUND=no
 		-DFFMPEG_PLATFORM_LIBRARIES="$(usev svt-av1 SvtAv1Enc);$(usev vaapi 'va;va-drm');$(usev vulkan);$(usev x264);$(usev x265)"
 		-DFFMPEG_PREPARED_BINARIES="${build_deps}"/ffmpeg
 		-DGLAD_SKIP_PIP_INSTALL=yes
