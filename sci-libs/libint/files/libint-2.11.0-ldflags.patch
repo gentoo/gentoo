@@ -1,0 +1,11 @@
+--- a/src/lib/libint/Makefile.library	2026-11-02 21:24:16.975444316 +0100
++++ b/src/lib/libint/Makefile.library	2026-11-02 21:24:38.888157355 +0100
+@@ -24,7 +24,7 @@
+ # this is how shared library is made
+ $(TOPDIR)/lib/$(NAME).la: $(LIBOBJ)
+ 	find . -name '*.$(OBJSUF)' -print | sort > libobjlist
+-	$(LTLINK) $(CXX) -o $@ -objectlist libobjlist $(LTLINKLIBOPTS)
++	$(LTLINK) $(CXX) -o $@ -objectlist libobjlist $(LTLINKLIBOPTS) $(LDFLAGS)
+ 	-rm -f libobjlist
+ 
+ # the library is to be compiled using cxxgen

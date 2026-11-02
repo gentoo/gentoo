@@ -26,6 +26,7 @@ DEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/libint-2.9.0-gcc15-include.patch
+	"${FILESDIR}"/${P}-ldflags.patch
 )
 
 src_prepare() {
