@@ -1,0 +1,79 @@
+# Copyright 1999-2026 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=8
+
+inherit systemd toolchain-funcs eapi9-ver
+
+DESCRIPTION="A small SSH server with state-of-the-art cryptography"
+HOMEPAGE="https://tinyssh.org"
+if [[ "${PV}" == "99999999" ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/janmojzis/tinyssh.git"
+else
+	inherit verify-sig
+	SRC_URI="
+		https://github.com/janmojzis/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
+		verify-sig? ( https://github.com/janmojzis/tinyssh/releases/download/${PV}/${PV}.tar.gz.asc -> ${P}.tar.gz.asc )
+	"
+	KEYWORDS="~amd64 ~arm64 ~x86"
+fi
+
+LICENSE="|| ( CC0-1.0 0BSD MIT-0 MIT )"
+SLOT="0"
+
+RDEPEND="
+	${DEPEND}
+	sys-apps/ucspi-tcp
+"
+if [[ "${PV}" != "99999999" ]]; then
+	BDEPEND="${BDEPEND} verify-sig? ( sec-keys/openpgp-keys-janmojzis )"
+	VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/janmojzis.asc"
+fi
+
+src_prepare() {
+	default
+
+	echo 'gentoo-autoheaders: $(AUTOHEADERS)' >> Makefile || die
+
+	# test-subprocess-auth.sh depends on checks if (sub)directories are
+	# owned either by current user or root, and not group-writable
+	# (/var/tmp/portage typically is g=rwX)
+	sed -i '/TESTS=/s,test-subprocess-auth[.]sh,,' tests/Makefile || die
+}
+
+src_configure() {
+	tc-export CC
+
+	emake gentoo-autoheaders
+
+	local i
+	for i in has*.log
+	do
+		einfo "$i"
+		cat "$i"
+	done
+}
+
+src_install() {
+	einstalldocs
+	emake install DESTDIR="${D}" PREFIX=/usr
+
+	newinitd "${FILESDIR}/${PN}.initd" "${PN}"
+	newconfd "${FILESDIR}/${PN}.confd" "${PN}"
+
+	systemd_newunit "${FILESDIR}/${PN}.service" "${PN}@.service"
+	systemd_newunit "${FILESDIR}/${PN}.socket" "${PN}@.socket"
+	systemd_dounit "${FILESDIR}/${PN}-makekey.service"
+}
+
+pkg_postinst() {
+	einfo "TinySSH is in beta stage, and ready for production use."
+	einfo "See https://tinyssh.org for more information."
+
+	if ver_replacing -lt "20260906"; then
+		elog "Starting with TinySSH-20260906 subdirectories of .ssh/authorized_keys"
+		elog "are checked against group-write permissions and owner not matching"
+		elog "root or target user"
+	fi
+}
