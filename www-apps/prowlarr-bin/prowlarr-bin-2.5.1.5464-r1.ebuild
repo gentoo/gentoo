@@ -46,6 +46,10 @@ RDEPEND="
 	acct-group/prowlarr
 	acct-user/prowlarr
 	dev-libs/icu
+	|| (
+		dev-libs/openssl-compat:3
+		dev-libs/openssl:0/3
+	)
 	dev-db/sqlite
 "
 
