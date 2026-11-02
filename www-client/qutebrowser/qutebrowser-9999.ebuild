@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_SINGLE_IMPL=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{13..14} )
+PYTHON_COMPAT=( python3_{13..15} )
 inherit distutils-r1 xdg
 
 if [[ ${PV} == 9999 ]]; then
@@ -65,6 +65,10 @@ fi
 
 EPYTEST_PLUGINS=( hypothesis pytest-{bdd,mock,qt,rerunfailures,xvfb} )
 distutils_enable_tests pytest
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-3.7.0-py315.patch
+)
 
 src_prepare() {
 	distutils-r1_src_prepare
