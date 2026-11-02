@@ -37,7 +37,7 @@ src_prepare() {
 	_compositorcommand() {
 		local cc=()
 		if use kwin; then
-			cc=( kwin_wayland --drm --no-lockscreen --no-global-shortcuts )
+			cc=( kwin_wayland --drm --no-lockscreen --no-global-shortcuts --no-kactivities )
 			use systemd && cc+=( --locale1 )
 		elif use weston; then
 			cc=( weston --shell=kiosk )
