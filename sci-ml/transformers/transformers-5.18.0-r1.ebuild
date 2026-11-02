@@ -23,8 +23,8 @@ IUSE="test torch"
 RESTRICT="test" # Need network to download models parameters
 
 RDEPEND="
-	>=sci-ml/huggingface_hub-1.5.0[${PYTHON_SINGLE_USEDEP}]
-	<sci-ml/huggingface_hub-2
+	>=sci-ml/huggingface_hub-1.31.0[${PYTHON_SINGLE_USEDEP}]
+	<sci-ml/huggingface_hub-3
 	$(python_gen_cond_dep '
 		dev-python/filelock[${PYTHON_USEDEP}]
 		dev-python/numpy[${PYTHON_USEDEP}]
