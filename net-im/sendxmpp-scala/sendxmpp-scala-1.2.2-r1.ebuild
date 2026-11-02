@@ -33,7 +33,13 @@ src_unpack() {
 
 src_install() {
 	java-pkg_newjar "${DISTDIR}"/sendxmpp-dist-${PV}.jar sendxmpp.jar
-	java-pkg_dolauncher sendxmpp -jar sendxmpp.jar
+	# scallop and os-lib are compiled with Scala < 3.8, whose lazy vals use
+	# sun.misc.Unsafe, which causes a warning on JDK 24+. Use the system
+	# property instead of --sun-misc-unsafe-memory-access=allow, since it is
+	# ignored by older JDKs.
+	java-pkg_dolauncher sendxmpp \
+		--java_args -Dsun.misc.unsafe.memory.access=allow \
+		-jar sendxmpp.jar
 
 	insinto /var/lib/${PN}
 	newins - version <<-EOF
