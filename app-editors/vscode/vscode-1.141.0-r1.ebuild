@@ -54,6 +54,10 @@ RDEPEND="
 	dev-libs/glib:2
 	dev-libs/nspr
 	dev-libs/nss
+	|| (
+		dev-libs/openssl-compat:3
+		dev-libs/openssl:0/3
+	)
 	media-libs/alsa-lib
 	media-libs/libglvnd
 	media-libs/mesa
