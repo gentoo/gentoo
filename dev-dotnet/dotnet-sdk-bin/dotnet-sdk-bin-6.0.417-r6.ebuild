@@ -1,67 +1,45 @@
-# Copyright 1999-2026 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 SDK_SLOT="$(ver_cut 1-2)"
-RUNTIME_SLOT="${SDK_SLOT}.11"
+RUNTIME_SLOT="${SDK_SLOT}.25"
 
 DESCRIPTION=".NET is a free, cross-platform, open-source developer platform"
 HOMEPAGE="https://dotnet.microsoft.com/
 	https://github.com/dotnet/dotnet/"
 SRC_URI="
 amd64? (
-	elibc_glibc? (
-		https://builds.dotnet.microsoft.com/dotnet/Sdk/${PV}/dotnet-sdk-${PV}-linux-x64.tar.gz
-	)
-	elibc_musl? (
-		https://builds.dotnet.microsoft.com/dotnet/Sdk/${PV}/dotnet-sdk-${PV}-linux-musl-x64.tar.gz
-	)
+	elibc_glibc? ( https://builds.dotnet.microsoft.com/dotnet/Sdk/${PV}/dotnet-sdk-${PV}-linux-x64.tar.gz )
+	elibc_musl? ( https://builds.dotnet.microsoft.com/dotnet/Sdk/${PV}/dotnet-sdk-${PV}-linux-musl-x64.tar.gz )
 )
 arm? (
-	elibc_glibc? (
-		https://builds.dotnet.microsoft.com/dotnet/Sdk/${PV}/dotnet-sdk-${PV}-linux-arm.tar.gz
-	)
-	elibc_musl? (
-		https://builds.dotnet.microsoft.com/dotnet/Sdk/${PV}/dotnet-sdk-${PV}-linux-musl-arm.tar.gz
-	)
+	elibc_glibc? ( https://builds.dotnet.microsoft.com/dotnet/Sdk/${PV}/dotnet-sdk-${PV}-linux-arm.tar.gz )
+	elibc_musl? ( https://builds.dotnet.microsoft.com/dotnet/Sdk/${PV}/dotnet-sdk-${PV}-linux-musl-arm.tar.gz )
 )
 arm64? (
-	elibc_glibc? (
-		https://builds.dotnet.microsoft.com/dotnet/Sdk/${PV}/dotnet-sdk-${PV}-linux-arm64.tar.gz
-	)
-	elibc_musl? (
-		https://builds.dotnet.microsoft.com/dotnet/Sdk/${PV}/dotnet-sdk-${PV}-linux-musl-arm64.tar.gz
-	)
+	elibc_glibc? ( https://builds.dotnet.microsoft.com/dotnet/Sdk/${PV}/dotnet-sdk-${PV}-linux-arm64.tar.gz )
+	elibc_musl? ( https://builds.dotnet.microsoft.com/dotnet/Sdk/${PV}/dotnet-sdk-${PV}-linux-musl-arm64.tar.gz )
 )
 "
 S="${WORKDIR}"
 
 LICENSE="MIT"
 SLOT="${SDK_SLOT}/${RUNTIME_SLOT}"
-# See bug https://bugs.gentoo.org/932377
-# KEYWORDS="~amd64 ~arm ~arm64"
+KEYWORDS="amd64 arm arm64"
 
 # STRIP="llvm-strip" corrupts some executables when using the patchelf hack,
 # bug https://bugs.gentoo.org/923430
 RESTRICT="splitdebug strip"
 
-CURRENT_NUGETS_DEPEND="
-	~dev-dotnet/dotnet-runtime-nugets-${RUNTIME_SLOT}
-"
-EXTRA_NUGETS_DEPEND="
-	~dev-dotnet/dotnet-runtime-nugets-6.0.36
-	~dev-dotnet/dotnet-runtime-nugets-7.0.20
-	~dev-dotnet/dotnet-runtime-nugets-8.0.22
-"
-NUGETS_DEPEND="
-	${CURRENT_NUGETS_DEPEND}
-	${EXTRA_NUGETS_DEPEND}
-"
-
 RDEPEND="
 	app-crypt/mit-krb5:0/0
 	dev-libs/icu
+	|| (
+		dev-libs/openssl-compat:3
+		dev-libs/openssl:0/3
+	)
 	|| (
 		dev-util/lttng-ust-compat:0/2.12
 		dev-util/lttng-ust:0/2.12
@@ -75,7 +53,7 @@ IDEPEND="
 	app-eselect/eselect-dotnet
 "
 PDEPEND="
-	${NUGETS_DEPEND}
+	~dev-dotnet/dotnet-runtime-nugets-${RUNTIME_SLOT}
 "
 
 QA_PREBUILT="*"

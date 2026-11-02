@@ -1,10 +1,10 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=9
+EAPI=8
 
 SDK_SLOT="$(ver_cut 1-2)"
-RUNTIME_SLOT="${SDK_SLOT}.13"
+RUNTIME_SLOT="${SDK_SLOT}.11"
 
 DESCRIPTION=".NET is a free, cross-platform, open-source developer platform"
 HOMEPAGE="https://dotnet.microsoft.com/
@@ -52,8 +52,7 @@ CURRENT_NUGETS_DEPEND="
 EXTRA_NUGETS_DEPEND="
 	~dev-dotnet/dotnet-runtime-nugets-6.0.36
 	~dev-dotnet/dotnet-runtime-nugets-7.0.20
-	~dev-dotnet/dotnet-runtime-nugets-8.0.32
-	~dev-dotnet/dotnet-runtime-nugets-9.0.21
+	~dev-dotnet/dotnet-runtime-nugets-8.0.22
 "
 NUGETS_DEPEND="
 	${CURRENT_NUGETS_DEPEND}
@@ -63,11 +62,15 @@ NUGETS_DEPEND="
 RDEPEND="
 	app-crypt/mit-krb5:0/0
 	dev-libs/icu
-	virtual/zlib:0/1
+	|| (
+		dev-libs/openssl-compat:3
+		dev-libs/openssl:0/3
+	)
 	|| (
 		dev-util/lttng-ust-compat:0/2.12
 		dev-util/lttng-ust:0/2.12
 	)
+	virtual/zlib:0/1
 "
 BDEPEND="
 	dev-util/patchelf
