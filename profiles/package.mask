@@ -36,13 +36,6 @@
 
 #--- END OF EXAMPLES ---
 
-# Mike Pagano <mpagano@gentoo.org> (2026-11-02)
-# nginx-unit was removed from the gentoo tree on 2026-04-13
-# This completes the process with the removal of the user and
-# group.
-acct-group/nginx-unit
-acct-user/nginx-unit
-
 # James Le Cuirot <chewi@gentoo.org> (2026-10-30)
 # This version is widely reported to be broken. Upstream has been silent on the
 # issue. Bug #983634.
