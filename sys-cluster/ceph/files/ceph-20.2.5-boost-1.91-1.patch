@@ -1,0 +1,28 @@
+diff --git a/src/rgw/driver/rados/rgw_zone.cc b/src/rgw/driver/rados/rgw_zone.cc
+index c71656838df..67997d00b4b 100644
+--- a/src/rgw/driver/rados/rgw_zone.cc
++++ b/src/rgw/driver/rados/rgw_zone.cc
+@@ -195,7 +195,8 @@ int RGWZoneGroup::add_zone(const DoutPrefixProvider *dpp,
+     zone.sync_from.erase(rm);
+   }
+ 
+-  zone.supported_features.insert(enable_features.begin(),
++  zone.supported_features.insert(boost::container::ordered_unique_range,
++                                 enable_features.begin(),
+                                  enable_features.end());
+ 
+   for (const auto& feature : disable_features) {
+diff --git a/src/rgw/rgw_zone.cc b/src/rgw/rgw_zone.cc
+index 24247fc6a2b..e0b7e5c50e3 100644
+--- a/src/rgw/rgw_zone.cc
++++ b/src/rgw/rgw_zone.cc
+@@ -1445,7 +1445,8 @@ int add_zone_to_group(const DoutPrefixProvider* dpp, RGWZoneGroup& zonegroup,
+   }
+ 
+   // add/remove supported features
+-  zone.supported_features.insert(enable_features.begin(),
++  zone.supported_features.insert(boost::container::ordered_unique_range,
++                                 enable_features.begin(),
+                                  enable_features.end());
+ 
+   for (const auto& feature : disable_features) {
