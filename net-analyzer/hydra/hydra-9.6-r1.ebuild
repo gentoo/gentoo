@@ -90,7 +90,7 @@ src_configure() {
 		fi
 	}
 
-	hydra_sed gcrypt '-lgcrypt' '$( ${CTARGET:-${CHOST}}-libgcrypt-config --libs )' '-DHAVE_GCRYPT'
+	hydra_sed gcrypt '-lgcrypt' '$( "${PKG_CONFIG}" --libs libgcrypt )' '-DHAVE_GCRYPT'
 	hydra_sed idn '-lidn' '$( "${PKG_CONFIG}" --libs libidn )' '-DLIBIDN -DHAVE_PR29_H'
 	hydra_sed libssh '-lssh' '$( "${PKG_CONFIG}" --libs libssh )' '-DLIBSSH'
 	hydra_sed memcached '-lmemcached' '$( "${PKG_CONFIG}" --libs libmemcached )' '-DLIBMCACHED'
