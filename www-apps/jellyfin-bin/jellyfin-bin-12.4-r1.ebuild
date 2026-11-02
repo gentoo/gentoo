@@ -44,6 +44,10 @@ DEPEND="acct-user/jellyfin
 	virtual/zlib:="
 RDEPEND="${DEPEND}
 	dev-libs/icu
+	|| (
+		dev-libs/openssl-compat:3
+		dev-libs/openssl:0/3
+	)
 	media-video/ffmpeg[vpx,x264]"
 BDEPEND="acct-user/jellyfin"
 
