@@ -81,6 +81,10 @@ RDEPEND="
 	x11-misc/xdg-utils
 	kerberos? ( app-crypt/mit-krb5 )
 	webkit? (
+		|| (
+			dev-libs/openssl-compat:3
+			dev-libs/openssl:0/3
+		)
 		net-libs/libsoup:3.0
 		net-libs/webkit-gtk:4.1
 	)
