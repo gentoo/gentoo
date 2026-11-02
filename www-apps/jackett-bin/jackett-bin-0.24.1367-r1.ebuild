@@ -52,6 +52,10 @@ RDEPEND="
 	acct-user/jackett
 	media-video/mediainfo
 	dev-libs/icu
+	|| (
+		dev-libs/openssl-compat:3
+		dev-libs/openssl:0/3
+	)
 	dev-db/sqlite
 "
 
