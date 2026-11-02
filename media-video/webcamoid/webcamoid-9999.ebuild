@@ -1,13 +1,16 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit cmake flag-o-matic xdg
+inherit cmake flag-o-matic toolchain-funcs xdg
 
 DESCRIPTION="Full featured webcam capture application"
 HOMEPAGE="https://webcamoid.github.io"
 if [[ ${PV} == *9999* ]]; then
+	EGIT_SUBMODULES=(
+		-"libAvKys/ExtraPlugins" # git@github.com:webcamoid_WebcamoidPrivate.git
+	)
 	EGIT_REPO_URI="https://github.com/webcamoid/webcamoid.git"
 	inherit git-r3
 else
@@ -17,8 +20,8 @@ fi
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="alsa aom debug faac fdk-aac ffmpeg gstreamer headers jack lame libusb libuvc mp4
-opus portaudio pulseaudio qtmedia rav1e screencast sdl svt-av1 v4l vlc vorbis vpx X x264"
+IUSE="alsa debug ffmpeg headers libusb openmp portaudio
+	pulseaudio qtmedia screencast v4l wayland X"
 
 COMMON_DEPEND="
 	media-libs/libmikmod
@@ -26,34 +29,19 @@ COMMON_DEPEND="
 	dev-qt/qtdeclarative:6
 	dev-qt/qtsvg:6
 	alsa? ( media-libs/alsa-lib )
-	aom? ( media-libs/libaom:= )
-	faac? ( media-libs/faac )
-	fdk-aac? ( media-libs/fdk-aac:= )
 	ffmpeg? ( media-video/ffmpeg:= )
-	gstreamer? ( >=media-libs/gstreamer-1.6.0 )
-	jack? ( virtual/jack )
-	lame? ( media-sound/lame )
 	libusb? ( dev-libs/libusb:1 )
-	libuvc? ( >=media-libs/libuvc-0.0.7 )
-	mp4? ( media-libs/libmp4v2 )
-	opus? ( media-libs/opus )
 	portaudio? ( media-libs/portaudio )
 	pulseaudio? ( media-libs/libpulse )
 	qtmedia? ( dev-qt/qtmultimedia:6 )
-	rav1e? ( media-video/rav1e:= )
 	screencast? ( media-video/pipewire:= )
-	sdl? ( media-libs/libsdl2 )
-	svt-av1? ( media-libs/svt-av1:= )
 	v4l? ( media-libs/libv4l )
-	vlc? ( media-video/vlc:= )
-	vorbis? ( media-libs/libvorbis )
-	vpx? ( media-libs/libvpx:= )
+	wayland? ( dev-libs/wayland )
 	X? (
 		x11-libs/libX11
 		x11-libs/libXext
 		x11-libs/libXfixes
 	)
-	x264? ( media-libs/x264:= )
 "
 DEPEND="${COMMON_DEPEND}
 	>=sys-kernel/linux-headers-3.6
@@ -61,6 +49,14 @@ DEPEND="${COMMON_DEPEND}
 RDEPEND="${COMMON_DEPEND}
 	virtual/opengl
 "
+
+pkg_pretend() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+}
+
+pkg_setup() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+}
 
 src_configure() {
 	# -Werror=odr
@@ -79,36 +75,43 @@ src_configure() {
 		-DNODSHOW=1
 		-DNOWASAPI=1
 		-DNOALSA=$(usex !alsa)
-		-DNOAOMAV1=$(usex !aom)
-		-DNOFAAC=$(usex !faac)
-		-DNOFDKAAC=$(usex !fdk-aac)
 		-DNOFFMPEG=$(usex !ffmpeg)
-		-DNOGSTREAMER=$(usex !gstreamer)
-		-DNOJACK=$(usex !jack)
-		-DNOLAME=$(usex !lame)
 		-DNOLIBUSB=$(usex !libusb)
-		-DNOLIBUVC=$(usex !libuvc)
-		-DNOLIBMP4V2=$(usex !mp4)
-		-DNOLIBOPUS=$(usex !opus)
+		-DNOOPENMP=$(usex !openmp)
 		-DNOPORTAUDIO=$(usex !portaudio)
 		-DNOPULSEAUDIO=$(usex !pulseaudio)
-		-DNOQTAUDIO=$(usex !qtmedia)
 		-DNOQTCAMERA=$(usex !qtmedia)
 		-DNOQTSCREENCAPTURE=$(usex !qtmedia)
-		-DNORAVIE=$(usex !rav1e)
 		-DNOPIPEWIRE=$(usex !screencast)
-		-DNOSDL=$(usex !sdl)
-		-DNOSVTAV1=$(usex !svt-av1)
 		-DNOV4L2=$(usex !v4l)
 		-DNOV4LUTILS=$(usex !v4l)
-		-DNOVLC=$(usex !vlc)
-		-DNOLIBVORBIS=$(usex !vorbis)
-		-DNOLIBWEBM=$(usex !vpx)
-		-DNOLIBVPX=$(usex !vpx)
+		-DNOWLROOTS=$(usex !wayland)
 		-DNOXLIBSCREENCAP=$(usex !X)
-		-DNOX264=$(usex !x264)
 	)
-	cmake_src_configure
+
+	# Control QML debugging with the 'debug' USE flag #981081
+	#
+	# ```
+	# $ webcamoid --help
+	# QML debugging is enabled. Only use this in a safe environment.
+	# ```
+	# RelWithDebInfo enables QT_QML_DEBUG in StandAlone/src/CMakeLists.txt:
+	# PRIVATE $<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:QT_QML_DEBUG>
+	#
+	# Set CMAKE_BUILD_TYPE to RelWithDebInfo when the 'debug' USE flag is
+	# enabled, which activates QT_QML_DEBUG; otherwise, set it to Release
+	# to keep QT_QML_DEBUG disabled.
+	#
+	# Alternatively, patch CMakeLists.txt to enable QT_QML_DEBUG only for
+	# the Debug configuration:
+	# PRIVATE $<$<CONFIG:Debug>:QT_QML_DEBUG>
+	#
+	# References:
+	# - https://doc.qt.io/qt-6/qtquick-debugging.html#qml-debugging-infrastructure
+	# - https://github.com/gentoo/gentoo/commit/e4a5df48b83e36dfe929eb6ef71abd064380e17c
+	#
+	# Needs to be here, otherwise gets overriden by cmake.eclass
+	CMAKE_BUILD_TYPE=$(usex debug RelWithDebInfo Release) cmake_src_configure
 }
 
 src_install() {
