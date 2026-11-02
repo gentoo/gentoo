@@ -1,0 +1,25 @@
+diff --git a/cmake/modules/DispatchCompilerWarnings.cmake b/cmake/modules/DispatchCompilerWarnings.cmake
+index b106444..bdb3f28 100644
+--- a/cmake/modules/DispatchCompilerWarnings.cmake
++++ b/cmake/modules/DispatchCompilerWarnings.cmake
+@@ -6,7 +6,6 @@ elseif(WIN32)
+   # so that we can use __popcnt64
+   add_compile_options($<$<COMPILE_LANGUAGE:C,CXX>:-fms-extensions>)
+ else()
+-  add_compile_options($<$<COMPILE_LANGUAGE:C,CXX>:-Werror>)
+   add_compile_options($<$<COMPILE_LANGUAGE:C,CXX>:-Wall>)
+   add_compile_options($<$<COMPILE_LANGUAGE:C,CXX>:-Wextra>)
+ 
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index c105830..f9ac23f 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -140,7 +140,7 @@ endif()
+ # FIXME(compnerd) add check for -fblocks?
+ target_compile_options(dispatch PRIVATE -fblocks)
+ 
+-check_c_compiler_flag("-momit-leaf-frame-pointer -Werror -Wall -O3" C_SUPPORTS_OMIT_LEAF_FRAME_POINTER)
++check_c_compiler_flag("-momit-leaf-frame-pointer -Wall -O3" C_SUPPORTS_OMIT_LEAF_FRAME_POINTER)
+ if (C_SUPPORTS_OMIT_LEAF_FRAME_POINTER)
+   target_compile_options(dispatch PRIVATE -momit-leaf-frame-pointer)
+ endif()
