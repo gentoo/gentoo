@@ -18,6 +18,8 @@ LICENSE="BSD public-domain"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~arm64-macos ~x64-macos ~x64-solaris"
 IUSE="nls leaps-timezone zic-slim"
+# https://lists.iana.org/hyperkitty/list/tz@iana.org/thread/CBEK3HXYBOXGD34ZFDSF64QIDT7ZWGBB/ (bug #985408)
+RESTRICT="test"
 
 DEPEND="nls? ( virtual/libintl )"
 RDEPEND="
