@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -36,6 +36,7 @@ RDEPEND="
 	dev-libs/libgpg-error
 	dev-libs/libpcre:3
 	dev-libs/libxml2-compat:2
+	dev-libs/openssl-compat:1.1.1
 	media-libs/fontconfig:1.0
 	media-libs/freetype:2
 	media-libs/flac:0/10-12
