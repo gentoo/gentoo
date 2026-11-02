@@ -18,7 +18,10 @@ RESTRICT="bindist mirror"
 QA_PREBUILT="*"
 
 RDEPEND="
-	dev-libs/openssl:0/3
+	|| (
+		dev-libs/openssl-compat:3
+		dev-libs/openssl:0/3
+	)
 	sys-auth/libfprint[tod(-)]
 "
 
