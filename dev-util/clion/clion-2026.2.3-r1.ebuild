@@ -36,6 +36,10 @@ RDEPEND="
 	)
 	dev-libs/nspr
 	dev-libs/nss
+	|| (
+		dev-libs/openssl-compat:3
+		dev-libs/openssl:0/3
+	)
 	dev-libs/wayland
 	dev-build/cmake
 	app-alternatives/ninja
