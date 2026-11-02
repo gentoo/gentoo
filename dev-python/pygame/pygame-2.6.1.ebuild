@@ -61,6 +61,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${P}-py314-tests.patch
 	"${FILESDIR}"/${P}-py315.patch
+	"${FILESDIR}"/${P}-cython330.patch
 )
 
 src_prepare() {
