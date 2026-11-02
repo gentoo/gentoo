@@ -33,6 +33,7 @@ BDEPEND="
 	test? (
 		${RDEPEND}
 		dev-python/hypothesis[${PYTHON_USEDEP}]
+		dev-python/simplejson[${PYTHON_USEDEP}]
 	)
 "
 
