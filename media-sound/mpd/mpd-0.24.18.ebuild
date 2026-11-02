@@ -11,7 +11,7 @@ DESCRIPTION="The Music Player Daemon (mpd)"
 HOMEPAGE="https://www.musicpd.org https://github.com/MusicPlayerDaemon/MPD"
 SRC_URI="
 	https://www.musicpd.org/download/${PN}/$(ver_cut 1-2)/${P}.tar.xz
-	!doc? ( https://raw.githubusercontent.com/PPN-SD/gentoo-manpages/refs/tags/${P}/${PN}-${PV_MAN}-manpages.tar.xz )
+	!doc? ( https://raw.githubusercontent.com/PPN-SD/gentoo-manpages/refs/tags/${PN}-${PV_MAN}/${PN}-${PV_MAN}-manpages.tar.xz )
 	verify-sig? ( https://www.musicpd.org/download/${PN}/$(ver_cut 1-2)/${P}.tar.xz.sig )
 "
 
@@ -70,7 +70,7 @@ RDEPEND="
 	dbus? ( sys-apps/dbus )
 	expat? ( dev-libs/expat )
 	faad? ( media-libs/faad2 )
-	ffmpeg? ( media-video/ffmpeg:= )
+	ffmpeg? ( >=media-video/ffmpeg-6:= )
 	flac? ( media-libs/flac:= )
 	fluidsynth? ( media-sound/fluidsynth:= )
 	gme? ( media-libs/game-music-emu )
@@ -102,7 +102,7 @@ RDEPEND="
 	pipewire? ( media-video/pipewire:= )
 	qobuz? (
 		!ffmpeg? ( dev-libs/libgcrypt:= )
-		ffmpeg? ( media-video/ffmpeg )
+		ffmpeg? ( >=media-video/ffmpeg-6:= )
 	)
 	recorder? ( ${COMMON_ENCODERS} )
 	samba? ( net-fs/samba:= )
