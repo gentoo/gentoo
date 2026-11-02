@@ -496,13 +496,6 @@ x11-drivers/xf86-video-vmware
 # the only one available is to downgrade.
 >=dev-util/pwntools-4.15.0
 
-# Sam James <sam@gentoo.org> (2026-04-19)
-# Major new release with lots of broken packages expected. Notably, even
-# dev-lang/python isn't yet. Please use with caution and file bugs for
-# any issues, blocking bug #972902.
-=dev-libs/openssl-4*
-=dev-libs/openssl-compat-3*
-
 # Sam James <sam@gentoo.org> (2026-04-17)
 # app-misc/tmux fails to open with newer ncurses (bug #972804)
 >=sys-libs/ncurses-6.6_p20260411
