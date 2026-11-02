@@ -7,7 +7,7 @@ inherit pax-utils
 
 DESCRIPTION="The swiss army knife of lossless video/audio editing"
 HOMEPAGE="
-	https://mifi.no/losslesscut/
+	https://losslesscut.app/
 	https://github.com/mifi/lossless-cut
 "
 SRC_URI="
