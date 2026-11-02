@@ -18,5 +18,6 @@
 		<flag name="fingerprints">Enable calculation and lookup of AcoustID fingerprints</flag>
 		<flag name="markdown">Enable enhanced internal documentation (scripting, plugins, etc.)</flag>
 		<flag name="multimedia">Enable embedded audio player</flag>
+		<flag name="plugins">Enable plugins support</flag>
 	</use>
 </pkgmetadata>
