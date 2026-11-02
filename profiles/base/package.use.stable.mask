@@ -4,6 +4,11 @@
 # New entries go on top.
 # Please use the same syntax as in package.use.mask.
 
+# Sam James <sam@gentoo.org> (2026-11-02)
+# =dev-libs/openssl-4* is not yet marked stable
+net-misc/curl ech
+net-proxy/haproxy ech
+
 # Alfredo Tupone <tupone@gentoo.org> (2024-01-20)
 # dev-util/hip not yet stable
 sci-ml/gloo rocm
