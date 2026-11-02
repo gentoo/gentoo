@@ -26,7 +26,10 @@ RESTRICT="mirror splitdebug"
 RDEPEND="
 	!app-editors/logseq-desktop-bin:0
 	dev-libs/nss
-	dev-libs/openssl:0/3
+	|| (
+		dev-libs/openssl-compat:3
+		dev-libs/openssl:0/3
+	)
 	media-libs/alsa-lib
 	media-libs/mesa
 	net-misc/curl
