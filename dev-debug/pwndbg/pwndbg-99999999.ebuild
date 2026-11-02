@@ -29,9 +29,10 @@ RDEPEND="
 	dev-debug/gdb[python,${PYTHON_SINGLE_USEDEP}]
 	~dev-python/gdb-pt-dump-0.0.0_p20240401[${PYTHON_SINGLE_USEDEP}]
 	$(python_gen_cond_dep '
-		>=dev-libs/capstone-6.0.0_alpha5[python,${PYTHON_USEDEP}]
+		>=dev-libs/capstone-6.0.0_alpha6[python,${PYTHON_USEDEP}]
+		>=dev-python/niche-elf-0.3.7[${PYTHON_USEDEP}]
 		>=dev-python/psutil-7.0.0[${PYTHON_USEDEP}]
-		>=dev-python/pycparser-2.23[${PYTHON_USEDEP}]
+		>=dev-python/pycparser-3.0[${PYTHON_USEDEP}]
 		>=dev-python/pyelftools-0.32[${PYTHON_USEDEP}]
 		>=dev-python/pygments-2.19.2[${PYTHON_USEDEP}]
 		>=dev-python/requests-2.32.5[${PYTHON_USEDEP}]
