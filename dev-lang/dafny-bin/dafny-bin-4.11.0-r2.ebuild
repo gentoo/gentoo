@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,6 +17,10 @@ RESTRICT="strip"
 
 RDEPEND="
 	!dev-lang/dafny
+	|| (
+		dev-libs/openssl-compat:3
+		dev-libs/openssl:0/3
+	)
 	dev-libs/userspace-rcu
 	|| (
 		dev-util/lttng-ust-compat:0/2.12
