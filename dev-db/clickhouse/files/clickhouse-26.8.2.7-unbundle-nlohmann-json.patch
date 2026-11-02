@@ -1,0 +1,12 @@
+--- a/contrib/nlohmann-json-cmake/CMakeLists.txt
++++ b/contrib/nlohmann-json-cmake/CMakeLists.txt
+@@ -1,3 +1,9 @@
++find_package(PkgConfig REQUIRED)
++pkg_check_modules(NLOHMANN_JSON REQUIRED IMPORTED_TARGET nlohmann_json)
++add_library(_nlohmann_json INTERFACE)
++target_link_libraries(_nlohmann_json INTERFACE PkgConfig::NLOHMANN_JSON)
++add_library(ch_contrib::nlohmann_json ALIAS _nlohmann_json)
++return()
+ set(JSON_DIR ${ClickHouse_SOURCE_DIR}/contrib/nlohmann-json)
+ add_library(_nlohmann_json INTERFACE)
+ set_property(

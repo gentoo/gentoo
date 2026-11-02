@@ -1,0 +1,12 @@
+--- a/contrib/libxml2-cmake/CMakeLists.txt
++++ b/contrib/libxml2-cmake/CMakeLists.txt
+@@ -1,3 +1,9 @@
++find_package(PkgConfig REQUIRED)
++pkg_check_modules(LIBXML2 REQUIRED IMPORTED_TARGET libxml-2.0)
++add_library(_libxml2 INTERFACE)
++target_link_libraries(_libxml2 INTERFACE PkgConfig::LIBXML2)
++add_library(ch_contrib::libxml2 ALIAS _libxml2)
++return()
+ set(LIBXML2_SOURCE_DIR "${ClickHouse_SOURCE_DIR}/contrib/libxml2")
+ set(LIBXML2_BINARY_DIR "${ClickHouse_BINARY_DIR}/contrib/libxml2")
+ 

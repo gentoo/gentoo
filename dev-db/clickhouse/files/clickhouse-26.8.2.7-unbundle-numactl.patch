@@ -1,0 +1,12 @@
+--- a/contrib/numactl-cmake/CMakeLists.txt
++++ b/contrib/numactl-cmake/CMakeLists.txt
+@@ -1,3 +1,9 @@
++find_package(PkgConfig REQUIRED)
++pkg_check_modules(NUMA REQUIRED IMPORTED_TARGET numa)
++add_library(_numactl INTERFACE)
++target_link_libraries(_numactl INTERFACE PkgConfig::NUMA)
++add_library(ch_contrib::numactl ALIAS _numactl)
++return()
+ if (NOT (
+     OS_LINUX AND (ARCH_AMD64 OR ARCH_AARCH64 OR ARCH_LOONGARCH64))
+ )

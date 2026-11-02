@@ -1,0 +1,12 @@
+--- a/contrib/simdutf-cmake/CMakeLists.txt
++++ b/contrib/simdutf-cmake/CMakeLists.txt
+@@ -1,3 +1,9 @@
++find_package(PkgConfig REQUIRED)
++pkg_check_modules(SIMDUTF REQUIRED IMPORTED_TARGET simdutf)
++add_library(_simdutf INTERFACE)
++target_link_libraries(_simdutf INTERFACE PkgConfig::SIMDUTF)
++add_library(ch_contrib::simdutf ALIAS _simdutf)
++return()
+ option (ENABLE_SIMDUTF "Use simdutf" ${ENABLE_LIBRARIES})
+ 
+ if (NOT ENABLE_SIMDUTF)
