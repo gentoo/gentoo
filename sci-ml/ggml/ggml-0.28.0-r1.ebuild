@@ -3,8 +3,9 @@
 
 EAPI=8
 
+PYTHON_COMPAT=( python3_{12..15} )
 ROCM_VERSION=7.2
-inherit cuda cmake rocm toolchain-funcs flag-o-matic
+inherit cuda cmake python-any-r1 rocm toolchain-funcs flag-o-matic
 
 DESCRIPTION="Tensor library for machine learning"
 HOMEPAGE="https://ggml.ai/"
@@ -33,7 +34,7 @@ X86_CPU_FLAGS=(
 	sse4_2
 )
 CPU_FLAGS=( "${X86_CPU_FLAGS[@]/#/cpu_flags_x86_}" )
-IUSE="${CPU_FLAGS[*]} cuda openmp rocm test vulkan"
+IUSE="${CPU_FLAGS[*]} cuda opencl openmp rocm test vulkan"
 
 REQUIRED_USE="rocm? ( ${ROCM_REQUIRED_USE} )"
 
@@ -47,14 +48,23 @@ RDEPEND="
 	)
 	vulkan? ( media-libs/vulkan-loader )
 	rocm? (
-		>=dev-util/hip-${ROCM_VERSION}
-		>=sci-libs/hipBLAS-${ROCM_VERSION}
+		>=dev-util/hip-${ROCM_VERSION}:=
+		>=sci-libs/hipBLAS-${ROCM_VERSION}:=
 	)
 "
 DEPEND="${RDEPEND}
+	opencl? ( dev-util/opencl-headers )
 	vulkan? ( dev-util/vulkan-headers )
 "
-BDEPEND="vulkan? ( media-libs/shaderc )"
+BDEPEND="
+	opencl? (
+		${PYTHON_DEPS}
+		dev-libs/opencl-icd-loader
+	)
+	vulkan? ( media-libs/shaderc )
+"
+
+DOCS=( AUTHORS CONTRIBUTING.md docs/gguf.md README.md )
 
 PATCHES=(
 	"${FILESDIR}"/${P}-llvm-23.patch
@@ -65,6 +75,10 @@ pkg_pretend() {
 }
 
 pkg_setup() {
+	if use opencl; then
+		python-any-r1_pkg_setup
+	fi
+
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 }
 
@@ -82,7 +96,9 @@ src_configure() {
 		-DGGML_BACKEND_DL=OFF
 		-DGGML_BUILD_EXAMPLES=OFF
 		-DGGML_NATIVE=OFF
+		-DGGML_LTO="$({ tc-is-lto && ! use cuda ; } && echo ON || echo OFF)"
 		-DGGML_HIP_MMQ_MFMA=OFF
+		-DGGML_CCACHE=OFF
 
 		# CPU Flags
 		-DGGML_AMX_BF16=$(usex cpu_flags_x86_amx_bf16)
@@ -100,8 +116,9 @@ src_configure() {
 		-DGGML_SSE42=$(usex cpu_flags_x86_sse4_2)
 
 		-DGGML_CUDA=$(usex cuda)
-		-DGGML_OPENMP=$(usex openmp)
 		-DGGML_HIP=$(usex rocm)
+		-DGGML_OPENCL=$(usex opencl)
+		-DGGML_OPENMP=$(usex openmp)
 		-DGGML_VULKAN=$(usex vulkan)
 
 		-DGGML_BUILD_TESTS=$(usex test)
