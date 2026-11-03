@@ -158,10 +158,6 @@ app-crypt/certbot -certbot-dns-google
 # Not part of the arm64 archive
 dev-util/nvidia-cuda-toolkit -examples -rdma
 
-# Alfred Wingate <parona@protonmail.com> (2025-02-22)
-# media-libs/zint is not keyworded here
-media-libs/zxing-cpp experimental
-
 # Nowa Ammerlaan <nowa@gentoo.org> (2025-02-03)
 # QtWebView is available here
 dev-python/pyside -webview
