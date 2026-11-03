@@ -372,6 +372,9 @@ ceph_src_configure() {
 	use systemd && mycmakeargs+=( -DSYSTEMD_SYSTEM_UNIT_DIR:PATH=$(systemd_get_systemunitdir) )
 
 	if use amd64 || use x86; then
+		# isa-l does not support arbitrary assemblers on amd64 and x86
+		unset AS  # avoid AS="clang -c" from the LLVM profile
+
 		local flag
 		for flag in "${CPU_FLAGS_X86[@]}"; do
 			case "${flag}" in
