@@ -21,7 +21,8 @@ SLOT="0"
 KEYWORDS="amd64"
 
 RDEPEND="
-	dev-python/pyqt6[gui,pdfium,printsupport,svg,widgets,${PYTHON_USEDEP}]
+	dev-python/pyqt6[gui,printsupport,svg,widgets,${PYTHON_USEDEP}]
+	dev-python/pyqt6-pdf[${PYTHON_USEDEP}]
 "
 
 pkg_postinst() {
