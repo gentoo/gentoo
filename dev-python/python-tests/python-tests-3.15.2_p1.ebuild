@@ -29,7 +29,7 @@ S="${WORKDIR}/${MY_P}/Lib"
 
 LICENSE="PSF-2"
 SLOT="${PYVER}"
-if [[ ${PV} != *_* ]]; then
+if [[ ${PV} != *_[abr]* ]]; then
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 fi
 # enable by default to help CI handle it (we have no additional deps)
