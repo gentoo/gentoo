@@ -234,6 +234,7 @@ PATCHES=(
 	"${FILESDIR}/ceph-20.1.1-boost-url-linking.patch"
 	# https://bugs.gentoo.org/969039
 	"${FILESDIR}"/ceph-20.1.1-boost-1.89-{1,2,3}.patch
+	"${FILESDIR}/ceph-20.2.1-boost-1.90-intrusive_ptr_fixes.patch"
 )
 
 check-reqs_export_vars() {
