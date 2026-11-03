@@ -1,11 +1,11 @@
 # Copyright 2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=9
 
 inherit toolchain-funcs
 
-tagId="6.0-r0"
+tagId="6.0-r3"
 DESCRIPTION="Simple Realtime media Server"
 HOMEPAGE="https://ossrs.io/"
 SRC_URI="https://github.com/ossrs/${PN}/archive/refs/tags/v${tagId}.tar.gz
@@ -26,15 +26,15 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-6.0.85-cmake.patch
 	"${FILESDIR}"/${PN}-6.0.101-configure.patch
 	"${FILESDIR}"/${PN}-6.0.48-execStack.patch
 	"${FILESDIR}"/${PN}-6.0.48-fixAliasing.patch
 	"${FILESDIR}"/${PN}-6.0.181-edgeFix.patch
-	"${FILESDIR}"/${P}-noWhich.patch
-	"${FILESDIR}"/${P}-parallel.patch
-	"${FILESDIR}"/${P}-noGCC.patch
-	"${FILESDIR}"/${P}-gcc17.patch
+	"${FILESDIR}"/${PN}-6.0.184-noWhich.patch
+	"${FILESDIR}"/${PN}-6.0.184-parallel.patch
+	"${FILESDIR}"/${PN}-6.0.184-noGCC.patch
+	"${FILESDIR}"/${PN}-6.0.184-gcc17.patch
+	"${FILESDIR}"/${P}-openssl4.patch
 )
 
 src_prepare() {
