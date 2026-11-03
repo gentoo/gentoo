@@ -9,6 +9,7 @@
   </description>
 </maintainer>
 <stabilize-allarches/>
+<straight-to-stable/>
 <use>
   <flag name="offline">
     Use alternative minimal stylesheet instead of Tyrian theme
