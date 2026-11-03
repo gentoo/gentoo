@@ -21,14 +21,21 @@ SRC_URI="
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86"
-IUSE="ncurses"
+IUSE="ncurses test"
 
-DEPEND="ncurses? ( >=sys-libs/ncurses-5.2:= )"
+RESTRICT="!test? ( test )"
+
+DEPEND="
+	ncurses? ( >=sys-libs/ncurses-5.2:= )
+"
 RDEPEND="
 	${DEPEND}
 	net-dialup/lrzsz
+	test? ( dev-libs/check )
 "
-BDEPEND="ncurses? ( virtual/pkgconfig )"
+BDEPEND="
+	ncurses? ( virtual/pkgconfig )
+"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-10.0.416_beta12-build-wart.patch
