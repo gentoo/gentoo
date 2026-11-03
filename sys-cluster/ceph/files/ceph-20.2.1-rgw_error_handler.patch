@@ -1,8 +1,9 @@
+http://github.com/ceph/ceph/pull/69166
+
 From 868fdd8120790ef453692604fff910e29c56cee1 Mon Sep 17 00:00:00 2001
 From: Sun Yuechi <sunyuechi@iscas.ac.cn>
 Date: Fri, 29 May 2026 18:39:51 +0800
-Subject: [PATCH 0213/1946] rgw: move SWIFT error_handler out-of-line to fix
- link failure
+Subject: [PATCH] rgw: move SWIFT error_handler out-of-line to fix link failure
 
 The two error_handler overrides are defined inline in rgw_rest_swift.h
 and delegate to RGWSwiftWebsiteHandler::error_handler, a non-virtual
@@ -21,7 +22,6 @@ call, so the ODR-use stays within the same object and the build no
 longer depends on archive scan order. No functional change.
 
 Signed-off-by: Sun Yuechi <sunyuechi@iscas.ac.cn>
-Signed-off-by: Daniel Baumann <mail@daniel-baumann.ch>
 ---
  src/rgw/rgw_rest_swift.cc | 14 ++++++++++++++
  src/rgw/rgw_rest_swift.h  |  9 ++-------
@@ -77,5 +77,5 @@ index 0fdf055e95a..cafcda23434 100644
    int retarget(RGWOp* op, RGWOp** new_op, optional_yield) override {
      return website_handler->retarget_object(op, new_op);
 -- 
-2.55.0
+2.49.1
 
