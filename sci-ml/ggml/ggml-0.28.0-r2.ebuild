@@ -46,6 +46,9 @@ RDEPEND="
 	cuda? (
 		dev-util/nvidia-cuda-toolkit:=
 	)
+	opencl? (
+		dev-libs/opencl-icd-loader
+	)
 	vulkan? ( media-libs/vulkan-loader )
 	rocm? (
 		>=dev-util/hip-${ROCM_VERSION}:=
@@ -57,10 +60,7 @@ DEPEND="${RDEPEND}
 	vulkan? ( dev-util/vulkan-headers )
 "
 BDEPEND="
-	opencl? (
-		${PYTHON_DEPS}
-		dev-libs/opencl-icd-loader
-	)
+	opencl? ( ${PYTHON_DEPS} )
 	vulkan? ( media-libs/shaderc )
 "
 
@@ -96,7 +96,7 @@ src_configure() {
 		-DGGML_BACKEND_DL=OFF
 		-DGGML_BUILD_EXAMPLES=OFF
 		-DGGML_NATIVE=OFF
-		-DGGML_LTO="$({ tc-is-lto && ! use cuda ; } && echo ON || echo OFF)"
+		-DGGML_LTO=OFF
 		-DGGML_HIP_MMQ_MFMA=OFF
 		-DGGML_CCACHE=OFF
 
