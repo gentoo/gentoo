@@ -400,6 +400,13 @@ ceph_src_configure() {
 
 	use elibc_musl && mycmakeargs+=( -DWITH_REENTRANT_STRSIGNAL:BOOL=ON )
 
+	if tc-is-clang && tc-ld-is-lld; then
+		mycmakeargs+=(
+			-DHAVE_ASM_SYMVER=OFF
+			-DHAVE_ATTR_SYMVER=OFF
+		)
+	fi
+
 	rm -f "${BUILD_DIR:-${S}}/CMakeCache.txt" \
 		|| die "failed to remove cmake cache"
 
