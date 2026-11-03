@@ -15,7 +15,7 @@ else
 	SRC_URI="https://github.com/jorgenschaefer/emacs-${PN}/archive/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz"
 	S="${WORKDIR}/emacs-${P}"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
+	KEYWORDS="~alpha amd64 ~arm arm64 ~loong ppc ~ppc64 ~riscv ~sparc x86"
 fi
 
 LICENSE="GPL-3+"
