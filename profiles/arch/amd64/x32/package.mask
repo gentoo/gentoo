@@ -92,6 +92,7 @@ media-gfx/freecad
 # reverse-dependencies.
 dev-qt/qtwebengine
 dev-qt/qtwebview
+dev-python/pyqt6-pdf
 dev-python/pyqt6-webengine
 dev-python/qpageview
 app-text/zeal
