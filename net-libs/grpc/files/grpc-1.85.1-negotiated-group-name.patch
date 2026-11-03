@@ -1,0 +1,29 @@
+From: David Seifert <soap@gentoo.org>
+Subject: [PATCH] tsi: report negotiated key exchange group for NID-less groups
+
+OpenSSL has no NID for ML-KEM groups such as X25519MLKEM768 and MLKEM1024;
+SSL_get_negotiated_group() returns TLSEXT_nid_unknown | group_id for them, so
+OBJ_nid2sn() yields nullptr and TSI_SSL_NEGOTIATED_KEY_EXCHANGE_GROUP is never
+set. Fall back to SSL_group_to_name(), which resolves these ids.
+
+Fixes the KeyExchangeGroupMlkem* tests in tls_credentials_test and the
+*Mlkem* handshake tests in ssl_transport_security_test.
+
+diff --git a/src/core/tsi/ssl_transport_security.cc b/src/core/tsi/ssl_transport_security.cc
+index 82a8694..d3a8236 100644
+--- a/src/core/tsi/ssl_transport_security.cc
++++ b/src/core/tsi/ssl_transport_security.cc
+@@ -2308,6 +2308,13 @@ static tsi_result ssl_handshaker_result_extract_peer(
+   int nid = SSL_get_negotiated_group(impl->ssl);
+   const char* negotiated_group_name =
+       (nid != NID_undef && nid != 0) ? OBJ_nid2sn(nid) : nullptr;
++#if !defined(OPENSSL_IS_BORINGSSL)
++  // Groups without an OpenSSL NID (e.g. X25519MLKEM768, MLKEM1024) come back
++  // as TLSEXT_nid_unknown | group_id, for which OBJ_nid2sn() returns nullptr.
++  if (negotiated_group_name == nullptr && (nid & TLSEXT_nid_unknown) != 0) {
++    negotiated_group_name = SSL_group_to_name(impl->ssl, nid);
++  }
++#endif
+   if (negotiated_group_name != nullptr) new_property_count++;
+ #endif
+   tsi_peer_property* new_properties = static_cast<tsi_peer_property*>(
