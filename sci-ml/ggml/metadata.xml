@@ -6,6 +6,8 @@
 		<name>Tupone Alfredo</name>
 	</maintainer>
 	<use>
+		<flag name="blas">Build ggml-blas backend</flag>
+		<flag name="flexiblas">Use <pkg>sci-libs/flexiblas</pkg> as BLAS provider for ggml-blas</flag>
 		<flag name="opencl">Build an OpenCL backend, so far only works on Adreno and Intel GPUs</flag>
 		<flag name="rocm">Enable ROCm gpu computing support</flag>
 	</use>
