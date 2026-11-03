@@ -5,18 +5,17 @@ EAPI=8
 
 _SRCURI_P="${P/%_beta1/-beta.1}"
 
-inherit cmake fcaps systemd tmpfiles
+inherit cmake dot-a fcaps systemd tmpfiles
 
 DESCRIPTION="Modern asynchronous DNS API"
 HOMEPAGE="https://getdnsapi.net/"
 SRC_URI="https://getdnsapi.net/releases/${_SRCURI_P//./-}/${_SRCURI_P}.tar.gz"
+S="${WORKDIR}/${_SRCURI_P}"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
-IUSE="doc examples +getdns-query +getdns-server-mon gnutls +idn libev libevent libuv minimal static-libs stubby test +unbound"
-
-S="${WORKDIR}/${_SRCURI_P}"
+KEYWORDS="~amd64 ~x86"
+IUSE="doc +getdns-query +getdns-server-mon gnutls +idn libev libevent libuv minimal static-libs stubby test +unbound"
 
 # https://bugs.gentoo.org/661760
 # https://github.com/getdnsapi/getdns/issues/407
@@ -24,41 +23,44 @@ S="${WORKDIR}/${_SRCURI_P}"
 RESTRICT="test"
 #RESTRICT="!test? ( test )"
 
-DEPEND="
-	dev-libs/libbsd
-	dev-libs/libyaml
+COMMON_DEPEND="
 	dev-libs/openssl:=
-	idn? ( net-dns/libidn2:= )
+	elibc_musl? ( dev-libs/libbsd )
 	gnutls? (
-		net-libs/gnutls:0=[dane,openssl]
 		dev-libs/nettle:0=
+		net-libs/gnutls:0=[dane,openssl]
 	)
-	libev? ( dev-libs/libev:= )
+	idn? ( net-dns/libidn2:= )
+	libev? ( dev-libs/libev )
 	libevent? ( dev-libs/libevent:= )
 	libuv? ( dev-libs/libuv:= )
-	test? ( dev-libs/check )
 	!minimal? ( >=net-dns/unbound-1.5.9:= )
+	stubby? ( dev-libs/libyaml )
+"
+DEPEND="
+	${COMMON_DEPEND}
+	test? ( dev-libs/check )
 "
 RDEPEND="
-	${DEPEND}
+	${COMMON_DEPEND}
 	stubby? (
 		acct-group/stubby
 		acct-user/stubby
-		sys-libs/libcap
 	)
 "
-BDEPEND="
-	doc? ( app-text/doxygen )
-"
+BDEPEND="doc? ( app-text/doxygen )"
+IDEPEND="stubby? ( sys-libs/libcap )"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.4.2-stubby.service.patch"
 	"${FILESDIR}/${PN}-1.7.3-cmake-linking.patch"
 	"${FILESDIR}/${PN}-1.7.3-openssl-4.patch"
+	"${FILESDIR}/${PN}-1.7.3-cmake_min.patch"
 	"${FILESDIR}/stubby-0.4.3-install-dir.patch"
 )
 
 src_configure() {
+	use static-libs && lto-guarantee-fat
 	local mycmakeargs=(
 		-DCMAKE_INSTALL_RUNSTATEDIR=/var/run/stubby
 		-DBUILD_DOXYGEN=$(usex doc)
@@ -70,10 +72,10 @@ src_configure() {
 		-DENABLE_UNBOUND_EVENT_API=$(usex unbound)
 		-DENABLE_STUB_ONLY=$(usex minimal)
 		-DUSE_GNUTLS=$(usex gnutls)
-		-DUSE_LIBEV=$(usex libev)
-		-DUSE_LIBEVENT2=$(usex libevent)
+		-DBUILD_LIBEV=$(usex libev)
+		-DBUILD_LIBEVENT2=$(usex libevent)
 		-DUSE_LIBIDN2=$(usex idn)
-		-DUSE_LIBUV=$(usex libuv)
+		-DBUILD_LIBUV=$(usex libuv)
 	)
 	cmake_src_configure
 }
@@ -81,13 +83,14 @@ src_configure() {
 src_install() {
 	cmake_src_install
 	if use stubby; then
-		newinitd "${FILESDIR}"/stubby.initd-r2 stubby
+		newinitd "${FILESDIR}"/stubby.initd-r3 stubby
 		newconfd "${FILESDIR}"/stubby.confd-r1 stubby
 		insinto /etc/logrotate.d
 		newins "${FILESDIR}"/stubby.logrotate stubby
 		systemd_dounit "${S}"/stubby/systemd/stubby.service
 		dotmpfiles "${S}"/stubby/systemd/stubby.conf
 	fi
+	use static-libs && strip-lto-bytecode
 }
 
 pkg_postinst() {
