@@ -38,7 +38,7 @@ RDEPEND="${LUA_DEPS}
 	x11-libs/wxGTK:${WX_GTK_VER}=[X,opengl,debug?]
 	dev-libs/boost:=[icu,nls]
 	dev-libs/icu:=
-	media-libs/ffmpegsource:=
+	>=media-libs/ffmpegsource-5.0:=
 	media-libs/fontconfig
 	media-libs/freetype
 	media-libs/libass:=[fontconfig]

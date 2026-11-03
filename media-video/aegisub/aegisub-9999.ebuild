@@ -21,7 +21,7 @@ if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/TypesettingTools/Aegisub/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64 ~arm64 ~x86"
 fi
 LICENSE="BSD MIT"
 SLOT="0"
@@ -38,7 +38,7 @@ RDEPEND="${LUA_DEPS}
 	x11-libs/wxGTK:${WX_GTK_VER}=[X,opengl,debug?]
 	dev-libs/boost:=[icu,nls]
 	dev-libs/icu:=
-	media-libs/ffmpegsource:=
+	>=media-libs/ffmpegsource-5.0:=
 	media-libs/fontconfig
 	media-libs/freetype
 	media-libs/libass:=[fontconfig]
