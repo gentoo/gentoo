@@ -12,4 +12,7 @@
 		<flag name="libuv">Enable <pkg>dev-libs/libuv</pkg> support</flag>
 		<flag name="minimal">Only build stub resolution mode</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">getdnsapi/getdns</remote-id>
+	</upstream>
 </pkgmetadata>
