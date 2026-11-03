@@ -277,7 +277,7 @@ else
 	SRC_URI="https://github.com/ionide/${APP_PN}/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz"
 	S="${WORKDIR}/${APP_PN}-${PV}"
-	KEYWORDS="~amd64"
+	KEYWORDS="amd64"
 fi
 
 SRC_URI+=" ${NUGET_URIS} "
