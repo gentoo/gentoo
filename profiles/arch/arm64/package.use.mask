@@ -546,10 +546,6 @@ net-libs/gnutls test-full
 media-sound/rhythmbox upnp-av
 >=media-plugins/grilo-plugins-0.3.5 upnp-av
 
-# Mart Raudsepp <leio@gentoo.org> (2018-02-13)
-# USE=lua requires dev-lua/lgi that is not keyworded yet.
-dev-libs/libpeas lua
-
 # Michał Górny <mgorny@gentoo.org> (2018-01-23)
 # USE=eds requires USE=gnome that is masked here.
 # USE=postgres requires dev-db/postgresql[kerberos] (USE masked).
