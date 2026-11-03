@@ -21,8 +21,6 @@ RESTRICT="test"
 PROPERTIES="test_network"
 
 DEPEND="
-	app-arch/bzip2:=
-	app-arch/xz-utils:=
 	app-arch/zstd:=
 "
 RDEPEND="
