@@ -240,6 +240,7 @@ PATCHES=(
 	"${FILESDIR}/ceph-20.1.1-build-add-Mold-linker-compatibility.patch"
 	"${FILESDIR}/ceph-20.1.1-qatlib-autogen-shebang.patch"
 	"${FILESDIR}/ceph-20.1.1-musl-fixes.patch"
+	"${FILESDIR}/ceph-20.1.1-librados-drop-unused-Boost.Asio-symbols.patch"
 )
 
 check-reqs_export_vars() {

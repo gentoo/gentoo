@@ -1,0 +1,44 @@
+https://github.com/ceph/ceph/pull/73439
+
+From 131a9f4ea647f1377733e7f30e9e854d5fadfcd0 Mon Sep 17 00:00:00 2001
+From: "Z. Liu" <zhixu.liu@gmail.com>
+Date: Sun, 1 Nov 2026 18:14:05 +0800
+Subject: [PATCH] librados: drop unused Boost.Asio symbols
+
+librados.map, the linker version script for librados.so, explicitly
+lists several Boost.Asio internal symbols to keep them visible while
+localizing other symbols.
+
+Two of these symbols belong to
+call_stack<strand_service::strand_impl, unsigned char>::top_:
+the static member itself and its guard variable. They are used by the
+deprecated io_context::strand implementation.
+
+When ceph is built with BOOST_ASIO_NO_TS_EXECUTORS, the legacy
+io_context::strand implementation is disabled. Consequently, these two
+symbols are no longer emitted, but remain listed in the version script.
+This causes lld to fail during linking:
+
+> ld.lld: error: version script assignment of 'LIBRADOS_PRIVATE' to
+> symbol 'boost::asio::detail::call_stack<boost::asio::detail::strand_service::strand_impl, unsigned char>::top_' failed: symbol not defined
+
+Signed-off-by: Z. Liu <zhixu.liu@gmail.com>
+
+diff --git a/src/librados/librados.map b/src/librados/librados.map
+index 96dd5072d94..9441ebe414f 100644
+--- a/src/librados/librados.map
++++ b/src/librados/librados.map
+@@ -4,10 +4,8 @@ LIBRADOS_PRIVATE {
+ 		_rados_*;
+ 		extern "C++" {
+ 			"guard variable for boost::asio::detail::call_stack<boost::asio::detail::strand_executor_service::strand_impl, unsigned char>::top_";
+-			"guard variable for boost::asio::detail::call_stack<boost::asio::detail::strand_service::strand_impl, unsigned char>::top_";
+ 			"guard variable for boost::asio::detail::call_stack<boost::asio::detail::thread_context, boost::asio::detail::thread_info_base>::top_";
+ 			"boost::asio::detail::call_stack<boost::asio::detail::strand_executor_service::strand_impl, unsigned char>::top_";
+-			"boost::asio::detail::call_stack<boost::asio::detail::strand_service::strand_impl, unsigned char>::top_";
+ 			"boost::asio::detail::call_stack<boost::asio::detail::thread_context, boost::asio::detail::thread_info_base>::top_";
+ 
+ 		};
+-- 
+2.49.1
+
