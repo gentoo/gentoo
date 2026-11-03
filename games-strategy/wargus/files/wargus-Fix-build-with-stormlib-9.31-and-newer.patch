@@ -1,0 +1,51 @@
+From e8a14378cfb5579f340baf7d2f49ee9de6043227 Mon Sep 17 00:00:00 2001
+From: Matthias Schwarzott <zzam@gentoo.org>
+Date: Tue, 3 Nov 2026 11:34:10 +0100
+Subject: [PATCH] Fix build with stormlib 9.31 and newer
+
+Only compile tested
+
+Closes https://github.com/Wargus/wargus/issues/508
+---
+ wartool.cpp | 13 +++++++++++--
+ 1 file changed, 11 insertions(+), 2 deletions(-)
+
+diff --git a/wartool.cpp b/wartool.cpp
+index 7084d38b0582..8e6bfa4b3511 100644
+--- a/wartool.cpp
++++ b/wartool.cpp
+@@ -499,6 +499,15 @@ int CloseArchive(void)
+ }
+ 
+ #ifdef USE_STORMLIB
++
++// added in StormLib 9.31
++#if STORMLIB_VERSION < 0x091F
++DWORD SErrGetLastError()
++{
++	return GetLastError();
++}
++#endif
++
+ int ExtractMPQFile(char *szArchiveName, char *szArchivedFile, char *szFileName, bool compress)
+ {
+ 	HANDLE hMpq   = NULL;          // Open archive handle
+@@ -510,13 +519,13 @@ int ExtractMPQFile(char *szArchiveName, char *szArchivedFile, char *szFileName,
+ 	// Open an archive, e.g. "d2music.mpq"
+ 	if(nError == ERROR_SUCCESS) {
+ 		if(!SFileOpenArchive(szArchiveName, 0, STREAM_FLAG_READ_ONLY, &hMpq))
+-			nError = GetLastError();
++			nError = SErrGetLastError();
+ 	}
+ 
+ 	// Open a file in the archive, e.g. "data\global\music\Act1\tristram.wav"
+ 	if(nError == ERROR_SUCCESS) {
+ 		if(!SFileOpenFileEx(hMpq, szArchivedFile, 0, &hFile))
+-			nError = GetLastError();
++			nError = SErrGetLastError();
+ 	}
+ 
+ 	// Create the target file
+-- 
+2.56.0
+

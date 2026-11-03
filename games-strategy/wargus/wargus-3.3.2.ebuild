@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -35,6 +35,8 @@ RDEPEND="
 BDEPEND="
 	virtual/pkgconfig
 "
+
+PATCHES=( "${FILESDIR}/${PN}-Fix-build-with-stormlib-9.31-and-newer.patch" )
 
 pkg_pretend() {
 	if has_version games-strategy/wargus-data; then
