@@ -372,7 +372,7 @@ ceph_src_configure() {
 	fi
 
 	# conditionally used cmake args
-	use test && mycmakearts+=( -DWITH_SYSTEM_GTEST:BOOL=$(usex test) )
+	use test && mycmakeargs+=( -DWITH_SYSTEM_GTEST:BOOL=$(usex test) )
 	use systemd && mycmakeargs+=( -DSYSTEMD_SYSTEM_UNIT_DIR:PATH=$(systemd_get_systemunitdir) )
 
 	if use amd64 || use x86; then
