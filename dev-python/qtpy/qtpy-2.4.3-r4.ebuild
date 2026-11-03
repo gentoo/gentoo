@@ -46,18 +46,19 @@ REQUIRED_USE="
 # to work. The package only checks whether PyQt5/pyside2 is installed, it does
 # not verify whether they have the necessary modules (i.e. satisfy the USE dep).
 #
-# Webengine is a special case, because PyQt6 provides this in a separate package
-# while PySide6 ships it in the same package.
+# webengine+pdfium are special cases, because PyQt6 provides them in separate
+# packages while PySide6 does so in the same one.
 RDEPEND="
 	dev-python/packaging[${PYTHON_USEDEP}]
 	pyqt6? (
 		dev-python/pyqt6[${PYTHON_USEDEP}]
 		dev-python/pyqt6[bluetooth?,dbus?,designer?,gui?,help?,multimedia?]
-		dev-python/pyqt6[network?,nfc?,opengl?,pdfium?,positioning?]
+		dev-python/pyqt6[network?,nfc?,opengl?,positioning?]
 		dev-python/pyqt6[printsupport?,qml?,quick?,quick3d?,remoteobjects?]
 		dev-python/pyqt6[scxml(-)?,sensors?,serialport?,spatialaudio?,speech?]
 		dev-python/pyqt6[sql?,svg?,testlib?,vulkan?,webchannel?,websockets?]
 		dev-python/pyqt6[widgets?,xml?]
+		pdfium? ( dev-python/pyqt6-pdf[${PYTHON_USEDEP},widgets?] )
 		webengine? ( dev-python/pyqt6-webengine[${PYTHON_USEDEP},widgets?,quick?] )
 
 	)
@@ -80,10 +81,11 @@ BDEPEND="
 		pyqt6? (
 			dev-python/pyqt6[${PYTHON_USEDEP}]
 			dev-python/pyqt6[bluetooth,dbus,designer,gui,help,multimedia]
-			dev-python/pyqt6[network,nfc,opengl,pdfium,positioning,printsupport]
+			dev-python/pyqt6[network,nfc,opengl,positioning,printsupport]
 			dev-python/pyqt6[qml,quick,quick3d,scxml(-),sensors,serialport]
 			dev-python/pyqt6[spatialaudio,speech,sql,svg,testlib,webchannel]
 			dev-python/pyqt6[vulkan(-),websockets,widgets,xml]
+			dev-python/pyqt6-pdf[${PYTHON_USEDEP},widgets]
 			dev-python/pyqt6-webengine[${PYTHON_USEDEP},widgets,quick]
 			dev-qt/qtbase:6[sqlite]
 		)
