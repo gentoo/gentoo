@@ -14,14 +14,13 @@ SRC_URI="https://git.thanosapollo.org/${PN}/snapshot/${P}.tar.gz"
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64"
+RESTRICT="test"  # some tests are fragile
 
 RDEPEND=">=app-editors/emacs-29.1:*[dynamic-loading,sqlite]
 	app-emacs/fsm
 	app-emacs/keymap-popup
 	net-libs/mbedtls:3="
 DEPEND="${RDEPEND}"
-
-RESTRICT="test"  # some tests are fragile
 
 SITEFILE="50${PN}-gentoo-0.11.0.el"
 
