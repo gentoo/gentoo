@@ -24,6 +24,13 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64"
 
+BDEPEND="
+	test? (
+		dev-python/attrs[${PYTHON_USEDEP}]
+		dev-python/jsonpath-ng[${PYTHON_USEDEP}]
+	)
+"
+
 EPYTEST_PLUGIN_LOAD_VIA_ENV=1
 EPYTEST_PLUGINS=( "${PN}" hypothesis pytest-{cov,xdist} )
 EPYTEST_XDIST=1
