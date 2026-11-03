@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -20,7 +20,7 @@ BDEPEND="
 	doc? ( dev-python/sphinx )
 "
 RDEPEND="
-	dev-libs/libfmt
+	<dev-libs/libfmt-12.2.0
 	media-libs/libmpdclient
 	sys-libs/ncurses:=[unicode(+)]
 	lirc? ( app-misc/lirc )
