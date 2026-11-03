@@ -22,6 +22,11 @@ SLOT="0/${PV}"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
+PATCHES=(
+	# https://github.com/fmtlib/fmt/pull/4813
+	"${FILESDIR}/${P}-32bit.patch"
+)
+
 multilib_src_configure() {
 	append-lfs-flags
 	local mycmakeargs=(
