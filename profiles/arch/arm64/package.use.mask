@@ -139,10 +139,6 @@ dev-cpp/highway cpu_flags_arm_neon
 app-emulation/wine-staging crossdev-mingw dos gecko mingw
 app-emulation/wine-vanilla crossdev-mingw dos gecko mingw
 
-# NRK <nrk@disroot.org> (2025-03-17)
-# media-libs/libyuv is not keyworded
-media-libs/libavif libyuv
-
 # Sam James <sam@gentoo.org> (2025-03-11)
 # The COBOL frontend only allows building on a small number of platforms
 # for now until more testing and integration is done.
