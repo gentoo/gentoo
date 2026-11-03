@@ -296,9 +296,11 @@ SLOT="0/0"
 IUSE=""
 DOCS=( COPYING README.md )
 
+BDEPEND="
+	dev-build/cmake
+"
 DEPEND=""
 RDEPEND=""
-
 BUILD_DIR="${WORKDIR}/${P}"
 
 src_unpack() {
