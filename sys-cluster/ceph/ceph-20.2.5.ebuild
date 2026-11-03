@@ -233,6 +233,7 @@ PATCHES=(
 	"${FILESDIR}"/ceph-20.1.1-boost-1.89-{2,3}.patch
 	"${WORKDIR}/ceph-20.2.0-libarrow-20.0.0.patch"
 	"${FILESDIR}/ceph-20.2.1-boost-1.90-intrusive_ptr_fixes.patch"
+	"${FILESDIR}/ceph-20.2.5-bluestore-onode-intrusive-ptr.patch"
 	"${FILESDIR}/ceph-20.2.1-rgw_error_handler.patch"
 	"${FILESDIR}/ceph-20.1.1-libcxx-exp-features.patch"
 	"${FILESDIR}/ceph-20.2.1-clang++-libcxx.patch"
