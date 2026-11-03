@@ -1,0 +1,40 @@
+From 7bc5223ed71bdee422c01c67b0456c4238b4a36e Mon Sep 17 00:00:00 2001
+From: Janne Grunau <j@jannau.net>
+Date: Sat, 18 May 2024 11:47:46 +0200
+Subject: [PATCH 1/1] config: gentoo: Drop RANDSTRUCT from
+ GENTOO_KERNEL_SELF_PROTECTION_COMMON
+
+It is incompatible with RUST and the current method of selected it
+results in Kconfig breakage due to circular dependencies. Drop it for
+asahi-kernel.
+
+Signed-off-by: Janne Grunau <j@jannau.net>
+---
+ distro/Kconfig | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
+
+diff --git a/distro/Kconfig b/distro/Kconfig
+index 9166e4a9abe6..ad4b417e0da7 100644
+--- a/distro/Kconfig
++++ b/distro/Kconfig
+@@ -174,7 +174,7 @@ if GENTOO_KERNEL_SELF_PROTECTION
+ config GENTOO_KERNEL_SELF_PROTECTION_COMMON
+ 	bool "Enable Kernel Self Protection Project Recommendations"
+ 
+-	depends on GENTOO_LINUX && !ACPI_CUSTOM_METHOD && !COMPAT_BRK && !PROC_KCORE && !COMPAT_VDSO && !KEXEC && !HIBERNATION && !LEGACY_PTYS && !X86_X32_ABI && !MODIFY_LDT_SYSCALL && GCC_PLUGINS && !IOMMU_DEFAULT_DMA_LAZY && !IOMMU_DEFAULT_PASSTHROUGH && IOMMU_DEFAULT_DMA_STRICT && SECURITY && !ARCH_EPHEMERAL_INODES  && RANDSTRUCT_PERFORMANCE
++	depends on GENTOO_LINUX && !ACPI_CUSTOM_METHOD && !COMPAT_BRK && !PROC_KCORE && !COMPAT_VDSO && !KEXEC && !HIBERNATION && !LEGACY_PTYS && !X86_X32_ABI && !MODIFY_LDT_SYSCALL && GCC_PLUGINS && !IOMMU_DEFAULT_DMA_LAZY && !IOMMU_DEFAULT_PASSTHROUGH && IOMMU_DEFAULT_DMA_STRICT && SECURITY && !ARCH_EPHEMERAL_INODES
+ 
+ 	select BUG
+ 	select STRICT_KERNEL_RWX
+@@ -221,8 +221,6 @@ config GENTOO_KERNEL_SELF_PROTECTION_COMMON
+ 	select GCC_PLUGIN_LATENT_ENTROPY
+ 	select GCC_PLUGIN_STRUCTLEAK
+ 	select GCC_PLUGIN_STRUCTLEAK_BYREF_ALL
+-	select GCC_PLUGIN_RANDSTRUCT 
+-	select GCC_PLUGIN_RANDSTRUCT_PERFORMANCE
+ 	select ZERO_CALL_USED_REGS if CC_HAS_ZERO_CALL_USED_REGS
+ 
+ 	help
+-- 
+2.45.0
+
