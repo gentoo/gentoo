@@ -1,6 +1,10 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2026-11-03)
+# dev-libs/criterion is not marked stable here yet
+app-admin/syslog-ng test
+
 # Matt Jolly <kangie@gentoo.org> (2026-10-18)
 # Not yet keyworded stable, but Rust is.
 dev-lang/rust mrustc-bootstrap
