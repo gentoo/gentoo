@@ -243,6 +243,7 @@ PATCHES=(
 	"${FILESDIR}/ceph-20.1.1-rgw-cast-time-spans-to-ceph-timespan-before-adding.patch"
 	"${FILESDIR}/ceph-20.1.1-common-io_exerciser-add-missing-includes.patch"
 	"${FILESDIR}/ceph-20.1.1-qatlib-autogen-shebang.patch"
+	"${FILESDIR}/ceph-20.1.1-musl-fixes.patch"
 )
 
 check-reqs_export_vars() {

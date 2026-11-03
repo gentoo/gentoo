@@ -1,0 +1,163 @@
+https://github.com/ceph/ceph/pull/73442
+
+From e21836a46dc8d615fe63abbe4eda30915878d1fe Mon Sep 17 00:00:00 2001
+From: "Z. Liu" <zhixu.liu@gmail.com>
+Date: Sun, 1 Nov 2026 18:29:30 +0800
+Subject: [PATCH 1/5] cmake: define _LARGEFILE64_SOURCE
+
+Define _LARGEFILE64_SOURCE to expose LFS64 interfaces such as
+lseek64() and off64_t.
+
+musl only provides these compatibility definitions when
+_LARGEFILE64_SOURCE is defined. Defining _GNU_SOURCE alone is
+not sufficient.
+
+This fixes build failures on musl without adding libc-specific
+compatibility definitions.
+
+This was previously handled by Autotools but appears to have
+been lost during the migration to CMake.
+
+See also: https://github.com/ceph/ceph/pull/8402
+
+Signed-off-by: Z. Liu <zhixu.liu@gmail.com>
+
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 46226c6bbe8..86c19833e8c 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -94,6 +94,7 @@ add_definitions(
+ 
+ if(LINUX)
+   add_definitions("-D_GNU_SOURCE")
++  add_definitions("-D_LARGEFILE64_SOURCE")
+ endif()
+ 
+ add_compile_options(
+-- 
+2.49.1
+
+
+From d5e95af7a83682e70a42550c73988ca86cb67fa4 Mon Sep 17 00:00:00 2001
+From: "Z. Liu" <zhixu.liu@gmail.com>
+Date: Sun, 1 Nov 2026 18:50:34 +0800
+Subject: [PATCH 2/5] pretty_binary: include cstdint for int32_t
+
+pretty_binary.cc uses int32_t without explicitly including its
+defining header. This happened to work due to transitive includes
+on some standard library implementations, but fails on musl.
+
+Include <cstdint> explicitly to avoid relying on transitive
+header dependencies.
+
+Signed-off-by: Z. Liu <zhixu.liu@gmail.com>
+
+diff --git a/src/common/pretty_binary.cc b/src/common/pretty_binary.cc
+index 62f68b3efa4..b2ee0a30369 100644
+--- a/src/common/pretty_binary.cc
++++ b/src/common/pretty_binary.cc
+@@ -2,6 +2,7 @@
+ // vim: ts=8 sw=2 sts=2 expandtab
+ 
+ #include "pretty_binary.h"
++#include <cstdint>
+ #include <stdexcept>
+ #include <sstream>
+ 
+-- 
+2.49.1
+
+
+From 8c001ce00dced554ebdc244eb0be03c71403bad3 Mon Sep 17 00:00:00 2001
+From: "Z. Liu" <zhixu.liu@gmail.com>
+Date: Sun, 1 Nov 2026 19:06:38 +0800
+Subject: [PATCH 3/5] common: define missing TCP option constants
+
+musl's <netinet/tcp.h> does not define TCPI_OPT_ECN_SEEN or
+TCPI_OPT_SYN_DATA. These constants are defined in <linux/tcp.h>,
+which conflicts with <netinet/tcp.h>. Define them locally to avoid
+including the conflicting Linux UAPI header.
+
+Signed-off-by: Z. Liu <zhixu.liu@gmail.com>
+
+diff --git a/src/common/tcp_info.cc b/src/common/tcp_info.cc
+index 85a34877457..69cccbefadf 100644
+--- a/src/common/tcp_info.cc
++++ b/src/common/tcp_info.cc
+@@ -15,6 +15,15 @@
+ 
+ #include "common/tcp_info.h"
+ 
++// musl's <netinet/tcp.h> lacks these Linux TCP ABI constants.
++// Avoid including <linux/tcp.h>, which conflicts with <netinet/tcp.h>.
++#ifndef TCPI_OPT_ECN_SEEN
++# define TCPI_OPT_ECN_SEEN 16 /* we received at least one packet with ECT */
++#endif
++#ifndef TCPI_OPT_SYN_DATA
++# define TCPI_OPT_SYN_DATA 32 /* SYN-ACK acked data in SYN sent or rcvd */
++#endif
++
+ #include "common/Formatter.h"
+ 
+ namespace ceph {
+-- 
+2.49.1
+
+
+From 5723d95eae147d87082ea0a043155be46b49d556 Mon Sep 17 00:00:00 2001
+From: "Z. Liu" <zhixu.liu@gmail.com>
+Date: Sun, 1 Nov 2026 10:14:38 +0800
+Subject: [PATCH 4/5] client: include cstdint for int64_t
+
+Trace.h uses int64_t without explicitly including its
+defining header. This happened to work due to transitive includes
+on some standard library implementations, but fails on musl.
+
+Include <cstdint> explicitly to avoid relying on transitive
+header dependencies.
+
+Signed-off-by: Z. Liu <zhixu.liu@gmail.com>
+
+diff --git a/src/client/Trace.h b/src/client/Trace.h
+index e3f5eca9617..f9d9d89b82b 100644
+--- a/src/client/Trace.h
++++ b/src/client/Trace.h
+@@ -19,6 +19,7 @@
+ 
+ #include <stdlib.h>
+ 
++#include <cstdint>
+ #include <list>
+ #include <string>
+ #include <fstream>
+-- 
+2.49.1
+
+
+From c950be991ef8582550111c427b94d4e6cd47e959 Mon Sep 17 00:00:00 2001
+From: "Z. Liu" <zhixu.liu@gmail.com>
+Date: Sun, 1 Nov 2026 10:40:37 +0800
+Subject: [PATCH 5/5] libcephfs_proxy: include <limits.h> explicitly for
+ PATH_MAX
+
+PATH_MAX is defined in <limits.h>. Although glibc exposes it
+indirectly through <stdio.h>, musl requires <limits.h> to be
+included explicitly.
+
+Signed-off-by: Z. Liu <zhixu.liu@gmail.com>
+
+diff --git a/src/libcephfs_proxy/proxy_mount.c b/src/libcephfs_proxy/proxy_mount.c
+index aedaa5bc907..e9baa3e5e3c 100644
+--- a/src/libcephfs_proxy/proxy_mount.c
++++ b/src/libcephfs_proxy/proxy_mount.c
+@@ -2,6 +2,7 @@
+ #include "proxy_mount.h"
+ #include "proxy_helpers.h"
+ 
++#include <limits.h>
+ #include <stdio.h>
+ #include <unistd.h>
+ #include <sys/stat.h>
+-- 
+2.49.1
+
