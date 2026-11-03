@@ -1,0 +1,29 @@
+https://github.com/ceph/ceph/pull/63516
+
+From a1f6173cfd0bf611b5a38acb950708cd46a72d7b Mon Sep 17 00:00:00 2001
+From: Mohit Agrawal <moagrawa@redhat.com>
+Date: Mon, 9 Jun 2025 17:20:52 +0530
+Subject: [PATCH] dmclock: use std::invoke_result instead of std::result_of
+
+std::result_of is removed in c++20 so replace it with
+std::invoke_result
+
+Fixes: https://tracker.ceph.com/issues/71445
+Signed-off-by: Mohit Agrawal <moagrawa@redhat.com>
+
+diff --git a/src/dmclock/support/src/indirect_intrusive_heap.h b/src/dmclock/support/src/indirect_intrusive_heap.h
+index d84a4878441..21beeb0a536 100644
+--- a/src/dmclock/support/src/indirect_intrusive_heap.h
++++ b/src/dmclock/support/src/indirect_intrusive_heap.h
+@@ -60,7 +60,7 @@ namespace crimson {
+ 
+     static_assert(
+       std::is_same<bool,
+-      typename std::result_of<C(const T&,const T&)>::type>::value,
++      typename std::invoke_result<C, const T&,const T&>::type>::value,
+       "class C must define operator() to take two const T& and return a bool");
+ 
+     static_assert(K >= 2, "K (degree of branching) must be at least 2");
+-- 
+2.49.1
+

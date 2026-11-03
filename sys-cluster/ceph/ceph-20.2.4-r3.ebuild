@@ -237,6 +237,7 @@ PATCHES=(
 	"${FILESDIR}/ceph-20.2.1-clang++-libcxx.patch"
 	"${FILESDIR}/ceph-20.2.4-clang++-libcxx.patch"
 	"${FILESDIR}/ceph-20.2.1-qatzip-werror.patch"
+	"${FILESDIR}/ceph-20.1.1-build-add-Mold-linker-compatibility.patch"
 )
 
 check-reqs_export_vars() {

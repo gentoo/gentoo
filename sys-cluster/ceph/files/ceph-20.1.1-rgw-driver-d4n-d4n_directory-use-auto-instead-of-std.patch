@@ -1,0 +1,50 @@
+https://github.com/ceph/ceph/pull/72591
+
+From 0301fd1a394c6d0d225f04782f9980c1d1b593af Mon Sep 17 00:00:00 2001
+From: Max Kellermann <max.kellermann@ionos.com>
+Date: Mon, 12 Oct 2026 13:34:14 +0200
+Subject: [PATCH] rgw/driver/d4n/d4n_directory: use `auto` instead of
+ std::__cxx11::basic_string
+
+Fixes build failure with clang 24:
+
+ src/rgw/driver/d4n/d4n_directory.cc:263:54: error: no member named '__cxx11' in namespace 'std'
+   263 |     std::vector<boost::redis::resp3::basic_node<std::__cxx11::basic_string<char> > > root_array;
+       |                                                 ~~~~~^
+
+
+Signed-off-by: Max Kellermann <max.kellermann@ionos.com>
+
+diff --git a/src/rgw/driver/d4n/d4n_directory.cc b/src/rgw/driver/d4n/d4n_directory.cc
+index 2f66e2bd332..f9d8f688c52 100644
+--- a/src/rgw/driver/d4n/d4n_directory.cc
++++ b/src/rgw/driver/d4n/d4n_directory.cc
+@@ -260,9 +260,8 @@ int BucketDirectory::zscan(const DoutPrefixProvider* dpp, const std::string& buc
+       return -ec.value();
+     }
+ 
+-    std::vector<boost::redis::resp3::basic_node<std::__cxx11::basic_string<char> > > root_array;
+     if (resp.has_value()) {
+-      root_array = resp.value();
++      const auto root_array = resp.value();
+       ldpp_dout(dpp, 20) << "BucketDirectory::" << __func__ << "() aggregate size is: " << root_array.size() << dendl;
+       auto size = root_array.size();
+       if (size >= 2) {
+diff --git a/src/test/rgw/test_d4n_directory.cc b/src/test/rgw/test_d4n_directory.cc
+index d41b389bee2..9fdf28d8f78 100644
+--- a/src/test/rgw/test_d4n_directory.cc
++++ b/src/test/rgw/test_d4n_directory.cc
+@@ -706,9 +706,8 @@ TEST_F(BlockDirectoryFixture, ZScan)
+       conn->async_exec(req, resp, yield[ec]);
+       ASSERT_EQ((bool)ec, false);
+ 
+-      std::vector<boost::redis::resp3::basic_node<std::__cxx11::basic_string<char> > > root_array;
+       if (resp.has_value()) {
+-        root_array = resp.value();
++        const auto root_array = resp.value();
+         std::cout << "ZADD aggregate size is: " << root_array.size() << std::endl;
+         auto size = root_array.size();
+         if (size >= 2) {
+-- 
+2.49.1
+
