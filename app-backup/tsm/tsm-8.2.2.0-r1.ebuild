@@ -20,17 +20,17 @@ fi
 
 SRC_URI="
 	amd64? (
-		!gpfs? ( ${BASE_URI}LinuxX86/BA/v$(ver_rs 1-3 '' $(ver_cut 1-3))/${PV}-TIV-TSMBAC-LinuxX86.tar )
-		gpfs? ( ${BASE_URI}LinuxX86/HSMGPFS/v$(ver_rs 1-3 '' $(ver_cut 1-3))/${PV}-TIV-TSMHSM-LinuxX86GPFS.tar )
+		!gpfs? ( ${BASE_URI}LinuxX86/BA/v$(ver_rs 1-3 '' $(ver_cut 1-3))/${PV}-TIV-TSMBAC-LinuxX86.tar -> ${PF}-TIV-TSMBAC-LinuxX86.tar )
+		gpfs? ( ${BASE_URI}LinuxX86/HSMGPFS/v$(ver_rs 1-3 '' $(ver_cut 1-3))/${PV}-TIV-TSMHSM-LinuxX86GPFS.tar -> ${PF}-TIV-TSMHSM-LinuxX86GPFS.tar )
 	)
 	ppc64? (
 		!gpfs? (
-			${BASE_URI}LinuxPPC/v$(ver_rs 1-3 '' $(ver_cut 1-3))/${PV}-TIV-TSMBAC-LinuxPPC.tar
-			${BASE_URI}LinuxPLE/BA/v$(ver_rs 1-3 '' $(ver_cut 1-3))/${PV}-TIV-TSMBAC-LinuxPLE.tar
+			${BASE_URI}LinuxPPC/v$(ver_rs 1-3 '' $(ver_cut 1-3))/${PV}-TIV-TSMBAC-LinuxPPC.tar -> ${PF}-TIV-TSMBAC-LinuxPPC.tar
+			${BASE_URI}LinuxPLE/BA/v$(ver_rs 1-3 '' $(ver_cut 1-3))/${PV}-TIV-TSMBAC-LinuxPLE.tar -> ${PF}-TIV-TSMBAC-LinuxPLE.tar
 		)
-		gpfs? ( ${BASE_URI}LinuxPLE/HSMGPFS/v$(ver_rs 1-3 '' $(ver_cut 1-3))/${PV}-TIV-TSMHSM-LinuxPLEGPFS.tar )
+		gpfs? ( ${BASE_URI}LinuxPLE/HSMGPFS/v$(ver_rs 1-3 '' $(ver_cut 1-3))/${PV}-TIV-TSMHSM-LinuxPLEGPFS.tar -> ${PF}-TIV-TSMHSM-LinuxPLEGPFS.tar )
 	)
-	s390? ( ${BASE_URI}LinuxzSeries/BA/v$(ver_rs 1-3 '' $(ver_cut 1-3))/${PV}-TIV-TSMBAC-LinuxS390.tar )
+	s390? ( ${BASE_URI}LinuxzSeries/BA/v$(ver_rs 1-3 '' $(ver_cut 1-3))/${PV}-TIV-TSMBAC-LinuxS390.tar -> ${PF}-TIV-TSMBAC-LinuxS390.tar )
 "
 S="${WORKDIR}"
 
@@ -102,29 +102,29 @@ RDEPEND="
 src_unpack() {
 	if use amd64; then
 		if use gpfs; then
-			unpack "${PV}-TIV-TSMHSM-LinuxX86GPFS.tar"
+			unpack "${PF}-TIV-TSMHSM-LinuxX86GPFS.tar"
 		else
-			unpack "${PV}-TIV-TSMBAC-LinuxX86.tar"
+			unpack "${PF}-TIV-TSMBAC-LinuxX86.tar"
 		fi
 	elif use ppc64; then
 		if [[ $(tc-endian) == big ]]; then
 			if use gpfs; then
 				die "GPFS not supported on big endian"
 			else
-				unpack "${PV}-TIV-TSMBAC-LinuxPPC.tar"
+				unpack "${PF}-TIV-TSMBAC-LinuxPPC.tar"
 			fi
 		else
 			if use gpfs; then
-				unpack "${PV}-TIV-TSMHSM-LinuxPLEGPFS.tar"
+				unpack "${PF}-TIV-TSMHSM-LinuxPLEGPFS.tar"
 			else
-				unpack "${PV}-TIV-TSMBAC-LinuxPLE.tar"
+				unpack "${PF}-TIV-TSMBAC-LinuxPLE.tar"
 			fi
 		fi
 	elif use s390; then
 		if use gpfs; then
 			die "GPFS not supported on s390"
 		else
-			unpack "${PV}-TIV-TSMBAC-LinuxS390.tar"
+			unpack "${PF}-TIV-TSMBAC-LinuxS390.tar"
 		fi
 	else
 		die "Unsupported architecture"
