@@ -509,10 +509,6 @@ dev-embedded/urjtag ftd2xx
 # dev-libs/libmanette not keyworded, limited usefulness
 net-libs/webkit-gtk gamepad
 
-# Joonas Niilola <juippis@gentoo.org> (2020-11-16)
-# app-text/libgepub not yet keyworded on this arch. #754762
-xfce-base/tumbler epub
-
 # Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (2020-10-14)
 # app-i18n/fcitx:4 not keyworded.
 media-libs/libsdl2 fcitx
