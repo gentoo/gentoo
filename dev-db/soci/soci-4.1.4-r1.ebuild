@@ -27,6 +27,7 @@ CMAKE_SKIP_TESTS=(
 	soci_postgresql_test_static
 	soci_mysql_test
 	soci_mysql_test_static
+	soci_oracle_test
 )
 
 RDEPEND="
@@ -35,7 +36,7 @@ RDEPEND="
 	mysql? ( dev-db/mysql-connector-c:0= )
 	mariadb? ( dev-db/mariadb-connector-c:0= )
 	odbc? ( dev-db/unixODBC )
-	oracle? ( dev-db/oracle-instantclient:=[sdk] )
+	oracle? ( >=dev-db/oracle-instantclient-21.18.0.0.0-r1:=[sdk] )
 	postgres? ( dev-db/postgresql:= )
 	sqlite? ( dev-db/sqlite )
 "
