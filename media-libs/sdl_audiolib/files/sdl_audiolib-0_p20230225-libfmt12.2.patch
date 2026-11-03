@@ -1,0 +1,7 @@
+https://bugs.gentoo.org/985488
+--- a/src/aulib_log.h
++++ b/src/aulib_log.h
+@@ -4,2 +4,3 @@
+ #include <fmt/core.h>
++#include <fmt/format.h>
+ 

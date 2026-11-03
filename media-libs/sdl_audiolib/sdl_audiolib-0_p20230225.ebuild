@@ -46,6 +46,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0_p20230225-cmake4.patch
+	"${FILESDIR}"/${PN}-0_p20230225-libfmt12.2.patch
 )
 
 src_configure() {
