@@ -41,6 +41,7 @@ REQUIRED_USE="
 
 RDEPEND="
 	!<=sys-kernel/installkernel-systemd-3
+	sys-apps/gentoo-functions
 	dracut? (
 		>=sys-kernel/dracut-110
 		uki? (
