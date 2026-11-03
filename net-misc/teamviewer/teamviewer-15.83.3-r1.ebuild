@@ -27,6 +27,7 @@ RDEPEND="
 	dev-libs/glib:2
 	dev-libs/nspr
 	dev-libs/nss
+	dev-libs/wayland
 	media-libs/fontconfig
 	media-libs/freetype
 	media-libs/libglvnd[X]
