@@ -20,15 +20,16 @@ KEYWORDS="~amd64"
 IUSE="static-libs"
 
 BDEPEND="verify-sig? ( ~sec-keys/openpgp-keys-apache-tomcat-11 )"
+# configure has a minimum version of OpenSSL but native/srclib/VERSIONS contains
+# a recommended version too.
 DEPEND="
+	>=dev-libs/apr-1.7.6:1=
+	>=dev-libs/openssl-3.5.9:=
 	>=virtual/jdk-1.8:*
 "
 RDEPEND="
-	dev-libs/apr:1=
-	|| (
-		dev-libs/openssl-compat:3
-		>=dev-libs/openssl-3.5.9:0/3
-	)
+	>=dev-libs/apr-1.7.6:1=
+	>=dev-libs/openssl-3.5.9:=
 	>=virtual/jre-1.8:*
 "
 
@@ -39,6 +40,10 @@ JAVA_TEST_SRC_DIR="../test"
 VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/tomcat-11.apache.org.asc"
 
 DOCS=( ../{CHANGELOG.txt,NOTICE,README.txt} )
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.3.10-openssl4.patch
+)
 
 src_prepare() {
 	java-pkg-2_src_prepare
