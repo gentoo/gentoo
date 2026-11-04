@@ -36,7 +36,10 @@ RDEPEND="
 	mysql? ( dev-db/mysql-connector-c:0= )
 	mariadb? ( dev-db/mariadb-connector-c:0= )
 	odbc? ( dev-db/unixODBC )
-	oracle? ( >=dev-db/oracle-instantclient-21.18.0.0.0-r1:=[sdk] )
+	oracle? (
+		amd64? ( >=dev-db/oracle-instantclient-21.18.0.0.0-r1:=[sdk] )
+		!amd64? ( dev-db/oracle-instantclient:=[sdk] )
+	)
 	postgres? ( dev-db/postgresql:= )
 	sqlite? ( dev-db/sqlite )
 "
