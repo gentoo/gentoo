@@ -1,0 +1,189 @@
+From 7c637d4fbb47b261f5aa5b85b39f9c2f44a59fd2 Mon Sep 17 00:00:00 2001
+From: Erik Larsson <who+github@cnackers.org>
+Date: Sun, 9 Feb 2025 16:27:29 +0100
+Subject: [PATCH 3/4] scripts: use raw strings for regular expressions
+
+Use raw strings for all regular expressions.
+This fixes the related syntax warnings during the build process.
+
+Signed-off-by: Erik Larsson <who+github@cnackers.org>
+---
+ scripts/prepare_headers.py | 80 ++++++++++++++++++++------------------
+ 1 file changed, 43 insertions(+), 37 deletions(-)
+
+diff --git a/scripts/prepare_headers.py b/scripts/prepare_headers.py
+index ecbe22f..792c8bb 100644
+--- a/scripts/prepare_headers.py
++++ b/scripts/prepare_headers.py
+@@ -12,36 +12,36 @@ import textwrap
+ def remove_common_guards(s):
+ 
+     # Remove includes and guards
+-    s = re.sub("#ifndef.*", "", s)
+-    s = re.sub("#if .*", "", s)
+-    s = re.sub("#define .*_H_*?\n", "", s)
+-    s = re.sub("#endif.*", "", s)
+-    s = re.sub("#error.*", "", s)
+-    s = re.sub('#ifdef __cplusplus\nextern "C" {', "", s, flags=re.MULTILINE)
+-    s = re.sub("#ifdef __cplusplus\n}", "", s, flags=re.MULTILINE)
+-    s = re.sub("#include.*", "", s)
++    s = re.sub(r"#ifndef.*", r"", s)
++    s = re.sub(r"#if .*", r"", s)
++    s = re.sub(r"#define .*_H_*?\n", r"", s)
++    s = re.sub(r"#endif.*", r"", s)
++    s = re.sub(r"#error.*", r"", s)
++    s = re.sub(r'#ifdef __cplusplus\nextern "C" {', r"", s, flags=re.MULTILINE)
++    s = re.sub(r"#ifdef __cplusplus\n}", r"", s, flags=re.MULTILINE)
++    s = re.sub(r"#include.*", "", s)
+ 
+     # Remove certain macros
+-    s = re.sub("#define TSS2_API_VERSION.*", "", s)
+-    s = re.sub("#define TSS2_ABI_VERSION.*", "", s)
+-    s = re.sub("#define TSS2_RC_LAYER\(level\).*", "", s)
+-    s = re.sub("(#define.*)TSS2_RC_LAYER\(0xff\)", "\g<1>0xff0000", s)
++    s = re.sub(r"#define TSS2_API_VERSION.*", r"", s)
++    s = re.sub(r"#define TSS2_ABI_VERSION.*", r"", s)
++    s = re.sub(r"#define TSS2_RC_LAYER\(level\).*", r"", s)
++    s = re.sub(r"(#define.*)TSS2_RC_LAYER\(0xff\)", r"\g<1>0xff0000", s)
+ 
+     # Remove comments
+-    s = re.sub("/\*.*?\*/", "", s, flags=re.MULTILINE)
++    s = re.sub(r"/\*.*?\*/", "", s, flags=re.MULTILINE)
+ 
+     # Restructure #defines with ...
+-    s = re.sub("(#define [A-Za-z0-9_]+) +\(\(.*?\) \(.*?\)\)", "\g<1>...", s)
+-    s = re.sub("(#define [A-Za-z0-9_]+) +\(\(\(.*?\) .*\)", "\g<1>...", s)
+-    s = re.sub("(#define [A-Za-z0-9_]+) +\(\(.*?\).*?\) ", "\g<1>...", s)
++    s = re.sub(r"(#define [A-Za-z0-9_]+) +\(\(.*?\) \(.*?\)\)", r"\g<1>...", s)
++    s = re.sub(r"(#define [A-Za-z0-9_]+) +\(\(\(.*?\) .*\)", r"\g<1>...", s)
++    s = re.sub(r"(#define [A-Za-z0-9_]+) +\(\(.*?\).*?\) ", r"\g<1>...", s)
+     s = re.sub(
+-        "(#define [A-Za-z0-9_]+) .*\n.*?.*\)\)", "\g<1>...", s, flags=re.MULTILINE
++        r"(#define [A-Za-z0-9_]+) .*\n.*?.*\)\)", r"\g<1>...", s, flags=re.MULTILINE
+     )
+-    s = re.sub("(#define +[A-Za-z0-9_]+) +\((-?\d+)\)", "\g<1> \g<2>", s)
+-    s = re.sub("(#define [A-Za-z0-9_]+) .*", "\g<1>...", s)
++    s = re.sub(r"(#define +[A-Za-z0-9_]+) +\((-?\d+)\)", r"\g<1> \g<2>", s)
++    s = re.sub(r"(#define [A-Za-z0-9_]+) .*", r"\g<1>...", s)
+ 
+     # Restructure structs and untions with ...
+-    s = re.sub("\[.+?\]", "[...]", s)
++    s = re.sub(r"\[.+?\]", r"[...]", s)
+ 
+     return s
+ 
+@@ -50,7 +50,7 @@ def remove_poll_stuff(s, poll_handle_type):
+ 
+     r = r"#if defined\(__linux__\).*(\n.*)+#endif\n#endif"
+ 
+-    s = re.sub(r, f"typedef struct pollfd {poll_handle_type};", s)
++    s = re.sub(r, rf"typedef struct pollfd {poll_handle_type};", s)
+     return s
+ 
+ 
+@@ -58,9 +58,9 @@ def remove_INTERNALBUILD(s):
+ 
+     r = r"#if\s+defined\(INTERNALBUILD\)(?:(?!endif).)*#endif"
+     s = re.sub(r, "", s, flags=re.MULTILINE | re.DOTALL)
+-    s = re.sub(r"DEPRECATED", "", s)
++    s = re.sub(r"DEPRECATED", r"", s)
+ 
+-    return re.sub(r"__attribute__\(\(deprecated\)\)", "", s)
++    return re.sub(r"__attribute__\(\(deprecated\)\)", r"", s)
+ 
+ 
+ def prepare_common(dirpath):
+@@ -76,8 +76,8 @@ def prepare_types(dirpath):
+ 
+     # Remove false define (workaround)
+     s = re.sub(
+-        "#define TPM2_MAX_TAGGED_POLICIES.*\n.*TPMS_TAGGED_POLICY\)\)",
+-        "",
++        r"#define TPM2_MAX_TAGGED_POLICIES.*\n.*TPMS_TAGGED_POLICY\)\)",
++        r"",
+         s,
+         flags=re.MULTILINE,
+     )
+@@ -85,11 +85,13 @@ def prepare_types(dirpath):
+     s = remove_INTERNALBUILD(s)
+ 
+     s = re.sub(
+-        "typedef struct TPMS_ALGORITHM_DESCRIPTION TPMS_ALGORITHM_DESCRIPTION ;", "", s
++        r"typedef struct TPMS_ALGORITHM_DESCRIPTION TPMS_ALGORITHM_DESCRIPTION ;",
++        r"",
++        s,
+     )
+ 
+     s = re.sub(
+-        r"struct TPMS_ALGORITHM_DESCRIPTION {\n.*\n.*\n} ;", "", s, flags=re.MULTILINE
++        r"struct TPMS_ALGORITHM_DESCRIPTION {\n.*\n.*\n} ;", r"", s, flags=re.MULTILINE
+     )
+ 
+     return remove_common_guards(s)
+@@ -99,12 +101,12 @@ def prepare_tcti(dirpath):
+ 
+     s = pathlib.Path(dirpath, "tss2_tcti.h").read_text(encoding="utf-8")
+ 
+-    s = re.sub("#ifndef TSS2_API_VERSION.*\n.*\n#endif", "", s, flags=re.MULTILINE)
++    s = re.sub(r"#ifndef TSS2_API_VERSION.*\n.*\n#endif", r"", s, flags=re.MULTILINE)
+ 
+     s = remove_poll_stuff(s, "TSS2_TCTI_POLL_HANDLE")
+ 
+-    s = re.sub(r"#define TSS2_TCTI_.*\n.*", "", s, flags=re.MULTILINE)
+-    s = re.sub(r"^\s*#define Tss2_Tcti_(?:.*\\\r?\n)*.*$", "", s, flags=re.MULTILINE)
++    s = re.sub(r"#define TSS2_TCTI_.*\n.*", r"", s, flags=re.MULTILINE)
++    s = re.sub(r"^\s*#define Tss2_Tcti_(?:.*\\\r?\n)*.*$", r"", s, flags=re.MULTILINE)
+ 
+     s += """
+     struct pollfd {
+@@ -269,20 +271,24 @@ def prepare_mu(dirpath):
+     # At least tpm2-tss 3.0.3 have duplicated BYTE (un)marshal functions which break cffi
+     # So removing them is needed until 3.1.x has reached most distributions
+     n = re.findall(
+-        "TSS2_RC\s+Tss2_MU_BYTE_Marshal\(.+?\);", s, re.DOTALL | re.MULTILINE
++        r"TSS2_RC\s+Tss2_MU_BYTE_Marshal\(.+?\);", s, re.DOTALL | re.MULTILINE
+     )
+     if len(n) > 1:
+         s = re.sub(
+-            "TSS2_RC\s+Tss2_MU_BYTE_Marshal\(.+?\);", "", s, 1, re.DOTALL | re.MULTILINE
++            r"TSS2_RC\s+Tss2_MU_BYTE_Marshal\(.+?\);",
++            r"",
++            s,
++            1,
++            re.DOTALL | re.MULTILINE,
+         )
+ 
+     n = re.findall(
+-        "TSS2_RC\s+Tss2_MU_BYTE_Unmarshal\(.+?\);", s, re.DOTALL | re.MULTILINE
++        r"TSS2_RC\s+Tss2_MU_BYTE_Unmarshal\(.+?\);", s, re.DOTALL | re.MULTILINE
+     )
+     if len(n) > 1:
+         s = re.sub(
+-            "TSS2_RC\s+Tss2_MU_BYTE_Unmarshal\(.+?\);",
+-            "",
++            r"TSS2_RC\s+Tss2_MU_BYTE_Unmarshal\(.+?\);",
++            r"",
+             s,
+             1,
+             re.DOTALL | re.MULTILINE,
+@@ -290,7 +296,7 @@ def prepare_mu(dirpath):
+ 
+     s = re.sub(
+         r"TSS2_RC\s+Tss2_MU_TPMS_ALGORITHM_DESCRIPTION_Marshal\(.+?\)\s+;",
+-        "",
++        r"",
+         s,
+         1,
+         re.DOTALL | re.MULTILINE,
+@@ -312,7 +318,7 @@ def prepare_policy(dirpath):
+     s = remove_common_guards(s)
+     # cparser complains if a typedef of an enum is before the definition of the enum
+     s = re.sub(
+-        "typedef enum TSS2_POLICY_PCR_SELECTOR TSS2_POLICY_PCR_SELECTOR;", "", s, 1
++        r"typedef enum TSS2_POLICY_PCR_SELECTOR TSS2_POLICY_PCR_SELECTOR;", r"", s, 1
+     )
+     s = re.sub(
+         r"(enum TSS2_POLICY_PCR_SELECTOR.*?\};)",
+-- 
+2.54.0
+

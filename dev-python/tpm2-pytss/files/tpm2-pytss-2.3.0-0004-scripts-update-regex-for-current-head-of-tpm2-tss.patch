@@ -1,0 +1,118 @@
+From f2f2cfb7553fdba24708712919a0f50eb662ece4 Mon Sep 17 00:00:00 2001
+From: Erik Larsson <who+github@cnackers.org>
+Date: Wed, 12 Nov 2025 14:50:40 +0100
+Subject: [PATCH 4/4] scripts: update regex for current head of tpm2-tss
+
+There have some more changes to the tpm2-tss headers, so we need to update the regular expressions.
+Also cleaned up the code a bit and added comments.
+
+Signed-off-by: Erik Larsson <who+github@cnackers.org>
+---
+ scripts/prepare_headers.py | 42 +++++++++++++++++++++-----------------
+ 1 file changed, 23 insertions(+), 19 deletions(-)
+
+diff --git a/scripts/prepare_headers.py b/scripts/prepare_headers.py
+index 792c8bb..2488ef0 100644
+--- a/scripts/prepare_headers.py
++++ b/scripts/prepare_headers.py
+@@ -10,6 +10,8 @@ import textwrap
+ 
+ 
+ def remove_common_guards(s):
++    # merge split lines
++    s = s.replace("\\\n", "")
+ 
+     # Remove includes and guards
+     s = re.sub(r"#ifndef.*", r"", s)
+@@ -28,18 +30,17 @@ def remove_common_guards(s):
+     s = re.sub(r"(#define.*)TSS2_RC_LAYER\(0xff\)", r"\g<1>0xff0000", s)
+ 
+     # Remove comments
+-    s = re.sub(r"/\*.*?\*/", "", s, flags=re.MULTILINE)
++    s = re.sub(r"/\*.*\n*\*/", "", s, flags=re.MULTILINE)
+ 
+     # Restructure #defines with ...
+-    s = re.sub(r"(#define [A-Za-z0-9_]+) +\(\(.*?\) \(.*?\)\)", r"\g<1>...", s)
+-    s = re.sub(r"(#define [A-Za-z0-9_]+) +\(\(\(.*?\) .*\)", r"\g<1>...", s)
+-    s = re.sub(r"(#define [A-Za-z0-9_]+) +\(\(.*?\).*?\) ", r"\g<1>...", s)
++    # handles ((TYPE)NUMBER)
+     s = re.sub(
+-        r"(#define [A-Za-z0-9_]+) .*\n.*?.*\)\)", r"\g<1>...", s, flags=re.MULTILINE
++        r"(#define +[A-Za-z0-9_]+)\s+\(\(\w+\)([0-9A-Fa-fxX]+)\)\)*", r"\g<1> \g<2>", s
+     )
+-    s = re.sub(r"(#define +[A-Za-z0-9_]+) +\((-?\d+)\)", r"\g<1> \g<2>", s)
+-    s = re.sub(r"(#define [A-Za-z0-9_]+) .*", r"\g<1>...", s)
+-
++    # handles other defines
++    s = re.sub(r"(#define +[A-Za-z0-9_]+)\s+[^0-9\s].*", r"\g<1>...", s)
++    # remove macros
++    s = re.sub(r"(#define +[A-Za-z0-9_]+)\s*\(.*?\).*", r"", s)
+     # Restructure structs and untions with ...
+     s = re.sub(r"\[.+?\]", r"[...]", s)
+ 
+@@ -278,8 +279,8 @@ def prepare_mu(dirpath):
+             r"TSS2_RC\s+Tss2_MU_BYTE_Marshal\(.+?\);",
+             r"",
+             s,
+-            1,
+-            re.DOTALL | re.MULTILINE,
++            count=1,
++            flags=re.DOTALL | re.MULTILINE,
+         )
+ 
+     n = re.findall(
+@@ -290,24 +291,24 @@ def prepare_mu(dirpath):
+             r"TSS2_RC\s+Tss2_MU_BYTE_Unmarshal\(.+?\);",
+             r"",
+             s,
+-            1,
+-            re.DOTALL | re.MULTILINE,
++            count=1,
++            flags=re.DOTALL | re.MULTILINE,
+         )
+ 
+     s = re.sub(
+         r"TSS2_RC\s+Tss2_MU_TPMS_ALGORITHM_DESCRIPTION_Marshal\(.+?\)\s+;",
+         r"",
+         s,
+-        1,
+-        re.DOTALL | re.MULTILINE,
++        count=1,
++        flags=re.DOTALL | re.MULTILINE,
+     )
+ 
+     s = re.sub(
+         r"TSS2_RC\s+Tss2_MU_TPMS_ALGORITHM_DESCRIPTION_Unmarshal\(.+?\)\s+;",
+         "",
+         s,
+-        1,
+-        re.DOTALL | re.MULTILINE,
++        count=1,
++        flags=re.DOTALL | re.MULTILINE,
+     )
+ 
+     return s
+@@ -318,14 +319,17 @@ def prepare_policy(dirpath):
+     s = remove_common_guards(s)
+     # cparser complains if a typedef of an enum is before the definition of the enum
+     s = re.sub(
+-        r"typedef enum TSS2_POLICY_PCR_SELECTOR TSS2_POLICY_PCR_SELECTOR;", r"", s, 1
++        r"typedef enum TSS2_POLICY_PCR_SELECTOR TSS2_POLICY_PCR_SELECTOR;",
++        r"",
++        s,
++        count=1,
+     )
+     s = re.sub(
+         r"(enum TSS2_POLICY_PCR_SELECTOR.*?\};)",
+         r"\1" + "\ntypedef enum TSS2_POLICY_PCR_SELECTOR TSS2_POLICY_PCR_SELECTOR;",
+         s,
+-        1,
+-        re.DOTALL | re.MULTILINE,
++        count=1,
++        flags=re.DOTALL | re.MULTILINE,
+     )
+     s += """
+     extern "Python" TSS2_RC _policy_cb_calc_pcr(
+-- 
+2.54.0
+

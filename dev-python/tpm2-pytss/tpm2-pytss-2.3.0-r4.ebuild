@@ -39,6 +39,10 @@ BDEPEND="
 "
 
 PATCHES=(
+	"${FILESDIR}/${PN}-2.3.0-0001-scripts-fix-regex-for-header-preparation.patch"
+	"${FILESDIR}/${PN}-2.3.0-0002-scripts-fix-regexp-for-poll-stuff.patch"
+	"${FILESDIR}/${PN}-2.3.0-0003-scripts-use-raw-strings-for-regular-expressions.patch"
+	"${FILESDIR}/${PN}-2.3.0-0004-scripts-update-regex-for-current-head-of-tpm2-tss.patch"
 	"${FILESDIR}/${PN}-2.3.0-preprocess-as-C99.patch"
 	"${FILESDIR}/${PN}-2.3.0-use-CC-enviromental-variable.patch"
 	"${FILESDIR}/${PN}-2.3.0-cryptography-45.patch"
