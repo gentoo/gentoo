@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>gnu-emacs@gentoo.org</email>
+    <name>Gentoo GNU Emacs project</name>
+  </maintainer>
+  <stabilize-allarches/>
+  <upstream>
+    <bugs-to>https://github.com/tekai/gntp.el/issues/</bugs-to>
+    <remote-id type="github">tekai/gntp.el</remote-id>
+  </upstream>
+  <longdescription>
+    This package implements the Growl Notification Protocol GNTP described at
+    http://www.growlforwindows.com/gfw/help/gntp.aspx It is incomplete as it
+    only lets you send but not receive notifications.
+  </longdescription>
+</pkgmetadata>
