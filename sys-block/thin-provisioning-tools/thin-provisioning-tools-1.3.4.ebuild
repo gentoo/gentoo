@@ -227,7 +227,7 @@ else
 	if [[ ${PKGBUMPING} != ${PVR} ]]; then
 		SRC_URI+=" ${CARGO_CRATE_URIS}"
 	fi
-	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~sparc ~x86"
+	KEYWORDS="amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~sparc x86"
 fi
 
 LICENSE="GPL-3"
