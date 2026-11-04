@@ -57,6 +57,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-4.2.0-flags.patch"
 	"${FILESDIR}/${PN}-4.2.1-x86-time.patch"
 	"${FILESDIR}/${PN}-4.2.2-setuppy.patch"
+	"${FILESDIR}/${PN}-4.2.5-wxPGSortCallback.patch"
 )
 
 python_prepare_all() {
