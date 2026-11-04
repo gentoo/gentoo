@@ -122,6 +122,8 @@ PATCHES=(
 	"${FILESDIR}/${PN}-8.3.8-remove-mtune-march-cflags.patch"
 	"${FILESDIR}/${PN}-8.3.8-restore-syscall_h-includes.patch"
 	"${FILESDIR}/${PN}-8.3.8-use-system-python.patch"
+	"${FILESDIR}/${PN}-8.3.13-openssl4.patch"
+	"${FILESDIR}/${PN}-8.3.13-openssl4-grpc.patch"
 )
 
 python_check_deps() {
