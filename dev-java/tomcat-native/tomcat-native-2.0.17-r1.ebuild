@@ -15,17 +15,19 @@ SRC_URI="mirror://apache/tomcat/tomcat-connectors/native/${PV}/source/${P}-src.t
 S=${WORKDIR}/${P}-src/native
 
 LICENSE="Apache-2.0"
-SLOT="0"
-KEYWORDS="amd64"
+SLOT="2"
+KEYWORDS="~amd64"
 IUSE="static-libs"
 
 BDEPEND="verify-sig? ( ~sec-keys/openpgp-keys-apache-tomcat-11 )"
-DEPEND="
-	>=virtual/jdk-1.8:*
-"
+DEPEND=">=virtual/jdk-17:*"	#958655
+
 RDEPEND="
 	dev-libs/apr:1=
-	dev-libs/openssl:0/3
+	|| (
+		dev-libs/openssl-compat:3
+		>=dev-libs/openssl-3.5.9:0/3
+	)
 	>=virtual/jre-1.8:*
 "
 
@@ -60,11 +62,8 @@ src_compile() {
 }
 
 src_test() {
-	# Adjusting "String testFile =" path in TestFile.java:29 to match ${S}
-	sed \
-		-e '/String testFile =/s&test/&../test/&' \
-		-i ../test/org/apache/tomcat/jni/TestFile.java || die
-
+	# WARNING: A restricted method in java.lang.System has been called
+	# WARNING: Restricted methods will be blocked in a future release unless native access is enabled
 	JAVA_TEST_EXTRA_ARGS=(
 		-Djava.library.path=".libs"
 		--enable-native-access=ALL-UNNAMED

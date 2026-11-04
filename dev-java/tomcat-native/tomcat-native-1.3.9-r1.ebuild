@@ -16,7 +16,7 @@ S=${WORKDIR}/${P}-src/native
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="static-libs"
 
 BDEPEND="verify-sig? ( ~sec-keys/openpgp-keys-apache-tomcat-11 )"
@@ -25,7 +25,10 @@ DEPEND="
 "
 RDEPEND="
 	dev-libs/apr:1=
-	>=dev-libs/openssl-3.5.9:0/3
+	|| (
+		dev-libs/openssl-compat:3
+		dev-libs/openssl:0/3
+	)
 	>=virtual/jre-1.8:*
 "
 
