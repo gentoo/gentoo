@@ -78,7 +78,7 @@ src_configure() {
 	use elibc_musl && append-cppflags -D_LARGEFILE64_SOURCE
 
 	local mycmakeargs=(
-		-DPLUGINDIR=$(qt6_get_plugindir)
+		-DPLUGINDIR=$(qt_get_plugindir 6)
 		-DCMAKE_INSTALL_DOCDIR=/usr/share/doc/${PF}
 		-DBUILD_UPDATER=OFF
 		-DBUILD_SHELL_INTEGRATION_DOLPHIN=$(usex dolphin)
