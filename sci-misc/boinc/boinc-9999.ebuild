@@ -6,7 +6,7 @@ EAPI=8
 MY_PV=$(ver_cut 1-2)
 WX_GTK_VER=3.2-gtk3
 
-inherit autotools bash-completion-r1 linux-info optfeature wxwidgets xdg-utils
+inherit autotools linux-info optfeature shell-completion wxwidgets xdg-utils
 
 DESCRIPTION="The Berkeley Open Infrastructure for Network Computing"
 HOMEPAGE="https://boinc.berkeley.edu/"
@@ -95,7 +95,10 @@ src_prepare() {
 	default
 
 	# prevent bad changes in compile flags, bug 286701
-	sed -i -e "s:BOINC_SET_COMPILE_FLAGS::" configure.ac || die "sed failed"
+	sed -e "s:BOINC_SET_COMPILE_FLAGS::" \
+		-e "/-mavx/d" \
+		-e "/-msse3/d" \
+		-i configure.ac || die "sed failed"
 
 	eautoreconf
 }
