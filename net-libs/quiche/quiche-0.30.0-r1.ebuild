@@ -293,15 +293,12 @@ LICENSE="|| ( Apache-2.0 Boost-1.0 )
 	|| ( Unlicense MIT )
 	openssl"
 SLOT="0/0"
-IUSE=""
 DOCS=( COPYING README.md )
 
 BDEPEND="
 	dev-build/cmake
 	llvm-core/clang
 "
-DEPEND=""
-RDEPEND=""
 BUILD_DIR="${WORKDIR}/${P}"
 
 src_unpack() {
