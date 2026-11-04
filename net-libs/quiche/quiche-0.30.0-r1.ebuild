@@ -269,7 +269,7 @@ zmij@1.0.23
 
 RUST_MULTILIB=1
 
-inherit cargo flag-o-matic multilib-minimal
+inherit cargo multilib-minimal
 
 DESCRIPTION="Implementation of the QUIC transport protocol and HTTP/3"
 HOMEPAGE="https://github.com/cloudflare/quiche"
