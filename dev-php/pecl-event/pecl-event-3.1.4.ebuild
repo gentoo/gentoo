@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
@@ -24,7 +24,12 @@ DEPEND=">=dev-libs/libevent-2.0.2[ssl?]
 RDEPEND="${DEPEND}"
 
 src_configure() {
+	# Pass `--with-libdir="$(get_libdir)"` explicitly because PHP's configure defaults
+	# to "lib', which on multilib amd64 is the 32-bit libdir; GNU ld ignores the bogus
+	# -L/usr/lib, but lld picks up the 32-bit /usr/lib/libc.so linker script and switches
+	# to i386.
 	local PHP_EXT_ECONF_ARGS=(
+		--with-libdir="$(get_libdir)"
 		--with-event-core
 		$(use_enable debug event-debug)
 		$(use_with extra event-extra)
