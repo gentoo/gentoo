@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>gnu-emacs@gentoo.org</email>
+    <name>Gentoo GNU Emacs project</name>
+  </maintainer>
+  <stabilize-allarches/>
+  <upstream>
+    <bugs-to>https://codeberg.org/martianh/fj.el/issues/</bugs-to>
+    <remote-id type="codeberg">martianh/fj.el</remote-id>
+  </upstream>
+  <longdescription>
+    A client for Forgejo instances. Forgejo is a self-hostable software
+    forge.  The client is based on tabulated listings for issues, PRs,
+    repos, users, etc., and attempts to implement a fairly rich interface
+    for item (issue, PR) timelines, as well as for composing items and
+    comments. It is built with fedi.el, which in turn is based on
+    mastodon.el.  To get started, first set fj-host and fj-user. Then either
+    set your Forgejo access token in your auth-source file or set fj-token
+    to it.
+  </longdescription>
+</pkgmetadata>
