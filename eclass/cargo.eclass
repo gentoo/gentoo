@@ -637,8 +637,6 @@ cargo_live_src_unpack() {
 		umask "${EVCS_UMASK}" || die "Bad options to umask: ${EVCS_UMASK}"
 	fi
 
-	pushd "${S}" > /dev/null || die
-
 	# Respect user settings before cargo_gen_config is called.
 	if [[ ! ${CARGO_TERM_COLOR} ]]; then
 		[[ "${NOCOLOR}" = true || "${NOCOLOR}" = yes ]] && export CARGO_TERM_COLOR=never
@@ -668,8 +666,6 @@ cargo_live_src_unpack() {
 	if [[ -d ${ECARGO_REGISTRY_DIR}/git && ! -L "${ECARGO_HOME}/git" ]]; then
 		ln -sv "${ECARGO_REGISTRY_DIR}/git" "${ECARGO_HOME}/git" || die
 	fi
-
-	popd > /dev/null || die
 
 	# Restore settings if needed.
 	[[ ${unset_color} ]] && unset CARGO_TERM_COLOR
