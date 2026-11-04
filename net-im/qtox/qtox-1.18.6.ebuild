@@ -16,7 +16,10 @@ else
 fi
 
 DESCRIPTION="Instant messaging client using the encrypted p2p Tox protocol"
-HOMEPAGE="https://qtox.github.io/"
+HOMEPAGE="
+	https://qtox.github.io/
+	https://github.com/TokTok/qTox/
+"
 
 LICENSE="GPL-3+"
 SLOT="0"
