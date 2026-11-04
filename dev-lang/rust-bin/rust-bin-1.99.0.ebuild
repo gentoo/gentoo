@@ -23,6 +23,7 @@ else
 	# curl -Ls static.rust-lang.org/dist/channel-rust-${PV}.toml | grep "xz_url.*rust-src"
 	SRC_URI="$(rust_all_arch_uris "rust-${PV}")
 		rust-src? ( ${RUST_TOOLCHAIN_BASEURL%/}/2026-10-01/rust-src-${PV}.tar.xz )
+		rustc-dev? ( $(rust_all_arch_uris "rustc-dev-${PV}") )
 	"
 	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 fi
@@ -55,7 +56,7 @@ fi
 
 LICENSE="|| ( MIT Apache-2.0 ) BSD BSD-1 BSD-2 BSD-4"
 SLOT="${PV%%_*}" # Beta releases get to share the same SLOT as the eventual stable
-IUSE="big-endian +clippy cpu_flags_x86_sse2 doc prefix rust-analyzer rust-src +rustfmt"
+IUSE="big-endian +clippy cpu_flags_x86_sse2 doc prefix rust-analyzer rust-src rustc-dev +rustfmt"
 
 # net-misc/curl is needed for our own bootstrapped rustc, since cross-compiling bundled curl is not supported
 RDEPEND="
@@ -119,6 +120,19 @@ src_unpack() {
 		local v
 		for v in $(multilib_get_enabled_abi_pairs); do
 			rust_target="$(rust_abi $(get_abi_CHOST ${v##*.}))"
+
+			if use rustc-dev; then
+				local rustc_dev_url=$(grep "xz_url.*rustc-dev-nightly-${rust_target}" "${WORKDIR}/channel-rust-nightly.toml" | cut -d '"' -f 2)
+				einfo "Fetching nightly rustc-dev for ${rust_target} ..."
+				curl --progress-bar -L "${rustc_dev_url}" -O || die "Failed to fetch nightly rustc-dev"
+
+				if use verify-sig; then
+					curl --progress-bar -L "${rustc_dev_url}.asc" -O || die "Failed to fetch nightly rustc-dev signature"
+					verify-sig_verify_detached "${WORKDIR}/rustc-dev-nightly-${rust_target}.tar.xz" \
+						"${WORKDIR}/rustc-dev-nightly-${rust_target}.tar.xz.asc"
+				fi
+				tar -xf "${WORKDIR}/rustc-dev-nightly-${rust_target}.tar.xz" || die "Failed to unpack nightly rustc-dev"
+			fi
 			rust_bin_url=$(grep "xz_url.*rust-nightly-${rust_target}" "${WORKDIR}/channel-rust-nightly.toml" | cut -d '"' -f 2)
 			einfo "Using nightly Rust from ${rust_bin_url} for ${rust_target}"
 

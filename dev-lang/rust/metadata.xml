@@ -12,6 +12,7 @@
 		<flag name="mrustc-bootstrap">Use <pkg>dev-lang/mrustc</pkg> to build the bootstrap Rust sysroot from this package's source</flag>
 		<flag name="rust-analyzer">Install rust-analyzer, A Rust compiler front-end for IDEs (language server)</flag>
 		<flag name="rust-src">Install rust-src, needed by developer tools and for build-std (cross)</flag>
+		<flag name="rustc-dev">Install rustc-dev, internal compiler libraries needed to link to compiler internals (e.g. for crubit)</flag>
 		<flag name="rustfmt">Install rustfmt, Rust code formatter</flag>
 		<flag name="system-llvm">Use the system LLVM installation</flag>
 	</use>
