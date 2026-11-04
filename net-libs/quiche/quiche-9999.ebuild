@@ -298,6 +298,7 @@ DOCS=( COPYING README.md )
 
 BDEPEND="
 	dev-build/cmake
+	llvm-core/clang
 "
 DEPEND=""
 RDEPEND=""
