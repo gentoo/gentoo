@@ -88,7 +88,7 @@ multilib_src_configure() {
 		$(use_enable text)
 		$(use_enable tools progs)
 		$(use_with tiff)
-		$(use_with uscaler)
+		$(use_enable uscaler)
 		$(use_with webp)
 		$(multilib_native_use_with y4m)
 		$(use_with zlib)
