@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,7 +13,9 @@ LIBBSON_DOCS_USEFLAG="+man"
 
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/mongo-c-driver.asc
 
-inherit cmake dot-a verify-sig
+PYTHON_COMPAT=( python3_{12..14} )
+
+inherit cmake dot-a python-any-r1 verify-sig
 
 DESCRIPTION="Library routines related to building,parsing and iterating BSON documents"
 HOMEPAGE="https://github.com/mongodb/mongo-c-driver/tree/master/src/libbson"
@@ -40,8 +42,10 @@ RESTRICT="test"
 
 BDEPEND="
 	man? (
-		dev-python/docutils
-		dev-python/sphinx
+		$(python_gen_any_dep '
+			dev-python/docutils[${PYTHON_USEDEP}]
+			dev-python/sphinx[${PYTHON_USEDEP}]
+		')
 	)
 	verify-sig? ( sec-keys/openpgp-keys-mongo-c-driver )
 "
@@ -50,6 +54,16 @@ PATCHES=(
 	"${FILESDIR}"/libbson-1.30.6-cmake4.patch
 	"${FILESDIR}"/libbson-1.30.6-docutils-0.22.patch
 )
+
+python_check_deps() {
+	python_has_version -b \
+		"dev-python/docutils[${PYTHON_USEDEP}]" \
+		"dev-python/sphinx[${PYTHON_USEDEP}]"
+}
+
+pkg_setup() {
+	use man && python-any-r1_pkg_setup
+}
 
 src_unpack() {
 	if use verify-sig; then
