@@ -1,0 +1,309 @@
+https://bugs.gentoo.org/985448
+https://github.com/mongodb/mongo-c-driver/pull/2299 (rebased for 1.x)
+
+From 546c4f0bf4b8e57b9c562df007c220bd152bbbcf Mon Sep 17 00:00:00 2001
+From: Ezra Chung <88335979+eramongodb@users.noreply.github.com>
+Date: Tue, 12 May 2026 12:39:19 -0500
+Subject: [PATCH 2/2] CDRIVER-6319 Improve handling `EAGAIN` errors in OpenSSL
+ BIO read callbacks (#2297)
+
+* Extend ssl_test API to support client stream wrappers
+* Add regression test for EAGAIN behavior
+* Re-enable "run auth tests" for OpenSSL compat matrix
+---
+ .../mongoc/mongoc-stream-tls-openssl-bio.c    |  13 ++-
+ src/libmongoc/tests/ssl-test.c                |  77 +++++++------
+ src/libmongoc/tests/ssl-test.h                |   9 ++
+ src/libmongoc/tests/test-mongoc-stream-tls.c  | 104 +++++++++++++++++-
+ 4 files changed, 165 insertions(+), 38 deletions(-)
+
+diff --git a/src/libmongoc/src/mongoc/mongoc-stream-tls-openssl-bio.c b/src/libmongoc/src/mongoc/mongoc-stream-tls-openssl-bio.c
+index ba77ec3..8cb0732 100644
+--- a/src/libmongoc/src/mongoc/mongoc-stream-tls-openssl-bio.c
++++ b/src/libmongoc/src/mongoc/mongoc-stream-tls-openssl-bio.c
+@@ -224,15 +224,18 @@ mongoc_stream_tls_openssl_bio_read (BIO *b, char *buf, int len)
+    openssl = (mongoc_stream_tls_openssl_t *) tls->ctx;
+ 
+    errno = 0;
+-   const ssize_t ret = mongoc_stream_read (tls->base_stream, buf, (size_t) len, 0, (int32_t) tls->timeout_msec);
++   ssize_t ret = mongoc_stream_read(tls->base_stream, buf, (size_t)len, 0, (int32_t)tls->timeout_msec);
+    BIO_clear_retry_flags (b);
+ 
+    if ((ret <= 0) && MONGOC_ERRNO_IS_AGAIN (errno)) {
+-      /* this BIO is not the same as "b", which openssl passed in to this func.
+-       * set its retry flag, which we check with BIO_should_retry in
+-       * mongoc-stream-tls-openssl.c
+-       */
++      // Set the retry flag for the BIO used by functions in mongoc-stream-tls-openssl.c.
+       BIO_set_retry_read (openssl->bio);
++
++      // Also set the retry flag for the BIO used by OpenSSL.
++      BIO_set_retry_read(b);
++
++      // EAGAIN is an error (negative value), not an EOF (zero).
++      ret = -1;
+    }
+ 
+    BSON_ASSERT (mcommon_in_range_signed (int, ret));
+diff --git a/src/libmongoc/tests/ssl-test.c b/src/libmongoc/tests/ssl-test.c
+index 5c84548..5fb4d22 100644
+--- a/src/libmongoc/tests/ssl-test.c
++++ b/src/libmongoc/tests/ssl-test.c
+@@ -196,6 +196,9 @@ static BSON_THREAD_FUN (ssl_test_client, ptr)
+ 
+    sock_stream = mongoc_stream_socket_new (conn_sock);
+    BSON_ASSERT (sock_stream);
++   if (data->client_stream_wrapper) {
++      sock_stream = data->client_stream_wrapper(sock_stream);
++   }
+    ssl_stream = mongoc_stream_tls_new_with_hostname (sock_stream, data->host, data->client, 1);
+    if (!ssl_stream) {
+ #ifdef MONGOC_ENABLE_SSL_OPENSSL
+@@ -263,14 +266,25 @@ static BSON_THREAD_FUN (ssl_test_client, ptr)
+    BSON_THREAD_RETURN;
+ }
+ 
++static void
++_ssl_test_run(ssl_test_data_t *data)
++{
++   bson_thread_t server;
++   bson_thread_t client;
++
++   bson_mutex_init(&data->cond_mutex);
++   mongoc_cond_init(&data->cond);
++
++   ASSERT_CMPINT(mcommon_thread_create(&server, &ssl_test_server, data), ==, 0);
++   ASSERT_CMPINT(mcommon_thread_create(&client, &ssl_test_client, data), ==, 0);
++
++   mcommon_thread_join(server);
++   mcommon_thread_join(client);
++
++   bson_mutex_destroy(&data->cond_mutex);
++   mongoc_cond_destroy(&data->cond);
++}
+ 
+-/** This is the testing function for the ssl-test lib
+- *
+- * The basic idea is that you spin up a client and server, which will
+- * communicate over a mongoc-stream-tls, with varying mongoc_ssl_opt's.  The
+- * client and server speak a simple echo protocol, so all we're really testing
+- * here is that any given configuration succeeds or fails as it should
+- */
+ void
+ ssl_test (mongoc_ssl_opt_t *client,
+           mongoc_ssl_opt_t *server,
+@@ -278,30 +292,29 @@ ssl_test (mongoc_ssl_opt_t *client,
+           ssl_test_result_t *client_result,
+           ssl_test_result_t *server_result)
+ {
+-   ssl_test_data_t data = {0};
+-   bson_thread_t threads[2];
+-   int i, r;
+-
+-   data.server = server;
+-   data.client = client;
+-   data.client_result = client_result;
+-   data.server_result = server_result;
+-   data.host = host;
+-
+-   bson_mutex_init (&data.cond_mutex);
+-   mongoc_cond_init (&data.cond);
+-
+-   r = mcommon_thread_create (threads, &ssl_test_server, &data);
+-   BSON_ASSERT (r == 0);
+-
+-   r = mcommon_thread_create (threads + 1, &ssl_test_client, &data);
+-   BSON_ASSERT (r == 0);
+-
+-   for (i = 0; i < 2; i++) {
+-      r = mcommon_thread_join (threads[i]);
+-      BSON_ASSERT (r == 0);
+-   }
++   _ssl_test_run(&(ssl_test_data_t){
++      .client = client,
++      .server = server,
++      .client_result = client_result,
++      .server_result = server_result,
++      .host = host,
++   });
++}
+ 
+-   bson_mutex_destroy (&data.cond_mutex);
+-   mongoc_cond_destroy (&data.cond);
++void
++ssl_test_with_client_stream_wrapper(mongoc_ssl_opt_t *client,
++                                    mongoc_ssl_opt_t *server,
++                                    const char *host,
++                                    ssl_test_result_t *client_result,
++                                    ssl_test_result_t *server_result,
++                                    mongoc_stream_t *(*wrapper)(mongoc_stream_t *stream))
++{
++   _ssl_test_run(&(ssl_test_data_t){
++      .client = client,
++      .server = server,
++      .client_result = client_result,
++      .server_result = server_result,
++      .host = host,
++      .client_stream_wrapper = wrapper,
++   });
+ }
+diff --git a/src/libmongoc/tests/ssl-test.h b/src/libmongoc/tests/ssl-test.h
+index 382a0a2..8151991 100644
+--- a/src/libmongoc/tests/ssl-test.h
++++ b/src/libmongoc/tests/ssl-test.h
+@@ -33,6 +33,7 @@ typedef struct ssl_test_data {
+    bson_mutex_t cond_mutex;
+    ssl_test_result_t *client_result;
+    ssl_test_result_t *server_result;
++   mongoc_stream_t *(*client_stream_wrapper)(mongoc_stream_t *stream); /* optional */
+ } ssl_test_data_t;
+ 
+ void
+@@ -41,3 +42,11 @@ ssl_test (mongoc_ssl_opt_t *client,
+           const char *host,
+           ssl_test_result_t *client_result,
+           ssl_test_result_t *server_result);
++
++void
++ssl_test_with_client_stream_wrapper(mongoc_ssl_opt_t *client,
++                                    mongoc_ssl_opt_t *server,
++                                    const char *host,
++                                    ssl_test_result_t *client_result,
++                                    ssl_test_result_t *server_result,
++                                    mongoc_stream_t *(*wrapper)(mongoc_stream_t *stream));
+diff --git a/src/libmongoc/tests/test-mongoc-stream-tls.c b/src/libmongoc/tests/test-mongoc-stream-tls.c
+index 904af42..13ac7ac 100644
+--- a/src/libmongoc/tests/test-mongoc-stream-tls.c
++++ b/src/libmongoc/tests/test-mongoc-stream-tls.c
+@@ -1,5 +1,11 @@
+ #include <mongoc/mongoc.h>
+ 
++// <bson/memory.h> is libbson-2 only
++
++#include <errno.h>
++#include <stddef.h>
++#include <stdint.h>
++
+ 
+ #ifdef MONGOC_ENABLE_SSL_OPENSSL
+ #include <openssl/err.h>
+@@ -387,6 +393,99 @@ test_mongoc_tls_trust_dir (void)
+ }
+ #endif
+ 
++#if defined(MONGOC_ENABLE_SSL_OPENSSL)
++typedef struct {
++   mongoc_stream_t base;
++   mongoc_stream_t *wrapped;
++   int eagain_remaining;
++} _eagain_stream_t;
++
++static ssize_t
++_eagain_readv(mongoc_stream_t *s, mongoc_iovec_t *iov, size_t iovcnt, size_t min_bytes, int32_t timeout_msec)
++{
++   _eagain_stream_t *const es = (_eagain_stream_t *)s;
++   if (es->eagain_remaining > 0) {
++      --es->eagain_remaining;
++      errno = EAGAIN;
++      return 0;
++   }
++   return mongoc_stream_readv(es->wrapped, iov, iovcnt, min_bytes, timeout_msec);
++}
++
++static ssize_t
++_eagain_writev(mongoc_stream_t *s, mongoc_iovec_t *iov, size_t iovcnt, int32_t timeout_msec)
++{
++   return mongoc_stream_writev(((_eagain_stream_t *)s)->wrapped, iov, iovcnt, timeout_msec);
++}
++
++static int
++_eagain_close(mongoc_stream_t *s)
++{
++   return mongoc_stream_close(((_eagain_stream_t *)s)->wrapped);
++}
++
++static int
++_eagain_flush(mongoc_stream_t *s)
++{
++   return mongoc_stream_flush(((_eagain_stream_t *)s)->wrapped);
++}
++
++static void
++_eagain_destroy(mongoc_stream_t *s)
++{
++   _eagain_stream_t *const es = (_eagain_stream_t *)s;
++   mongoc_stream_destroy(es->wrapped);
++   bson_free(es);
++}
++
++static bool
++_eagain_check_closed(mongoc_stream_t *s)
++{
++   return mongoc_stream_check_closed(((_eagain_stream_t *)s)->wrapped);
++}
++
++static mongoc_stream_t *
++_eagain_get_base_stream(mongoc_stream_t *s)
++{
++   return ((_eagain_stream_t *)s)->wrapped;
++}
++
++static mongoc_stream_t *
++_eagain_stream_new(mongoc_stream_t *base)
++{
++   _eagain_stream_t *const es = bson_malloc0(sizeof(*es));
++   es->base.type = base->type;
++   es->base.destroy = _eagain_destroy;
++   es->base.close = _eagain_close;
++   es->base.flush = _eagain_flush;
++   es->base.writev = _eagain_writev;
++   es->base.readv = _eagain_readv;
++   es->base.get_base_stream = _eagain_get_base_stream;
++   es->base.check_closed = _eagain_check_closed;
++   es->wrapped = base;
++   es->eagain_remaining = 3; // Return EAGAIN three times, then succeed.
++   return (mongoc_stream_t *)es;
++}
++
++static mongoc_stream_t *
++_eagain_stream_wrapper(mongoc_stream_t *s)
++{
++   return _eagain_stream_new(s);
++}
++
++static void
++test_mongoc_tls_eagain(void)
++{
++   mongoc_ssl_opt_t sopt = {.ca_file = CERT_CA, .pem_file = CERT_SERVER};
++   mongoc_ssl_opt_t copt = {.ca_file = CERT_CA, .pem_file = CERT_CLIENT};
++   ssl_test_result_t sr;
++   ssl_test_result_t cr;
++   ssl_test_with_client_stream_wrapper(&copt, &sopt, "localhost", &cr, &sr, _eagain_stream_wrapper);
++   ASSERT_CMPINT((int)cr.result, ==, SSL_TEST_SUCCESS);
++   ASSERT_CMPINT((int)sr.result, ==, SSL_TEST_SUCCESS);
++}
++#endif // defined(MONGOC_ENABLE_SSL_OPENSSL)
++
+ #endif /* !MONGOC_ENABLE_SSL_SECURE_CHANNEL && !MONGOC_ENABLE_SSL_LIBRESSL */
+ 
+ void
+@@ -435,6 +534,7 @@ test_stream_tls_install (TestSuite *suite)
+    TestSuite_Add (suite, "/TLS/bad_password", test_mongoc_tls_bad_password);
+    TestSuite_Add (suite, "/TLS/weak_cert_validation", test_mongoc_tls_weak_cert_validation);
+    TestSuite_Add (suite, "/TLS/crl", test_mongoc_tls_crl);
++   TestSuite_Add (suite, "/TLS/eagain", test_mongoc_tls_eagain);
+ #endif
+ 
+ #if !defined(__APPLE__) && !defined(_WIN32) && defined(MONGOC_ENABLE_SSL_OPENSSL) && \
+@@ -443,5 +543,7 @@ test_stream_tls_install (TestSuite *suite)
+ #endif
+ 
+    TestSuite_AddLive (suite, "/TLS/insecure_nowarning", test_mongoc_tls_insecure_nowarning);
+-#endif
++
++#endif // !defined(MONGOC_ENABLE_SSL_SECURE_CHANNEL) && !defined(MONGOC_ENABLE_SSL_LIBRESSL)
+ }
++
+-- 
+2.56.0
+
