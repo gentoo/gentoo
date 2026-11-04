@@ -54,6 +54,10 @@ DEPEND="${RDEPEND}
 
 DOCS=( CHANGELOG.md README.md doc/user_manual_en.md )
 
+PATCHES=(
+	"$FILESDIR/${PN}-1.18.5-clang-23.patch"
+)
+
 # Skip tests which require network access.
 CMAKE_SKIP_TESTS=(
 	test_bsu
