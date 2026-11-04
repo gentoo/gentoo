@@ -15,7 +15,7 @@ LICENSE="
 	Apache-2.0 BSD-2 Boost-1.0 CC-BY-4.0 MIT Unlicense UoI-NCSA
 "
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~arm64 ~riscv"
+KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
 
 # needs an annoying submodule that fetches many things, tests seem to
 # do runtime compilation that fail due to missing headers, and they
@@ -38,7 +38,6 @@ DEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-2026.14.1-includedir.patch
 	"${FILESDIR}"/${PN}-2026.14.1-libdir.patch
-	"${FILESDIR}"/${PN}-2026.14.1-lz4.patch
 	"${FILESDIR}"/${PN}-2026.14.1-system-glslang.patch
 )
 
