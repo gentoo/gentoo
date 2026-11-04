@@ -24,6 +24,10 @@ else
 	SRC_URI="$(rust_all_arch_uris "rust-${PV}")
 		rust-src? ( ${RUST_TOOLCHAIN_BASEURL%/}/2026-07-16/rust-src-${PV}.tar.xz )
 		rustc-dev? ( $(rust_all_arch_uris "rustc-dev-${PV}") )
+		rust_sysroots_aarch64_unknown_none? (
+			$(rust_arch_uri aarch64-unknown-none "rust-std-${PV}")
+			$(rust_arch_uri aarch64-unknown-none-softfloat "rust-std-${PV}")
+		)
 	"
 	KEYWORDS="amd64 arm arm64 ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
 fi
@@ -56,7 +60,11 @@ fi
 
 LICENSE="|| ( MIT Apache-2.0 ) BSD BSD-1 BSD-2 BSD-4"
 SLOT="${PV%%_*}" # Beta releases get to share the same SLOT as the eventual stable
-IUSE="big-endian +clippy cpu_flags_x86_sse2 doc prefix rust-analyzer rust-src rustc-dev +rustfmt"
+IUSE="
+	big-endian +clippy cpu_flags_x86_sse2
+	doc prefix rust-analyzer rust-src rustc-dev
+	rust_sysroots_aarch64_unknown_none +rustfmt
+"
 
 # net-misc/curl is needed for our own bootstrapped rustc, since cross-compiling bundled curl is not supported
 RDEPEND="
@@ -118,18 +126,42 @@ src_unpack() {
 		fi
 
 		if use rustc-dev; then
-				local rustc_dev_url=$(grep "xz_url.*rustc-dev-nightly-${rust_target}" "${WORKDIR}/channel-rust-nightly.toml" | cut -d '"' -f 2)
-				einfo "Fetching nightly rustc-dev for ${rust_target} ..."
-				curl --progress-bar -L "${rustc_dev_url}" -O || die "Failed to fetch nightly rustc-dev"
-				
-				if use verify-sig; then
-					curl --progress-bar -L "${rustc_dev_url}.asc" -O || die "Failed to fetch nightly rustc-dev signature"
-					verify-sig_verify_detached "${WORKDIR}/rustc-dev-nightly-${rust_target}.tar.xz" \
-						"${WORKDIR}/rustc-dev-nightly-${rust_target}.tar.xz.asc"
-				fi
-				tar -xf "${WORKDIR}/rustc-dev-nightly-${rust_target}.tar.xz" || die "Failed to unpack nightly rustc-dev"
-		fi
+			local rustc_dev_url=$(
+				grep "xz_url.*rustc-dev-nightly-${rust_target}" \
+					"${WORKDIR}/channel-rust-nightly.toml" | cut -d '"' -f 2
+			)
+			einfo "Fetching nightly rustc-dev for ${rust_target} ..."
+			curl --progress-bar -L "${rustc_dev_url}" -O || \
+				die "Failed to fetch nightly rustc-dev"
 
+			if use verify-sig; then
+				curl --progress-bar -L "${rustc_dev_url}.asc" -O || \
+					die "Failed to fetch nightly rustc-dev signature"
+				verify-sig_verify_detached "${WORKDIR}/rustc-dev-nightly-${rust_target}.tar.xz" \
+					"${WORKDIR}/rustc-dev-nightly-${rust_target}.tar.xz.asc"
+			fi
+			tar -xf "${WORKDIR}/rustc-dev-nightly-${rust_target}.tar.xz" || \
+				die "Failed to unpack nightly rustc-dev"
+		fi
+		if use rust_sysroots_aarch64_unknown_none; then
+			for rust_std_target in aarch64-unknown-none aarch64-unknown-none-softfloat; do
+				local rust_std_url=$(
+					grep -m 1 "xz_url.*rust-std-nightly-${rust_std_target}\\.tar\\.xz\"" \
+						"${WORKDIR}/channel-rust-nightly.toml" | cut -d '"' -f 2
+				)
+				einfo "Using nightly Rust std for ${rust_std_target} from ${rust_std_url}"
+				curl --progress-bar -L "${rust_std_url}" -O || \
+					die "Failed to fetch nightly rust-std tarball for ${rust_std_target}"
+				if use verify-sig; then
+					curl --progress-bar -L "${rust_std_url}.asc" -O || \
+						die "Failed to fetch nightly rust-std signature for ${rust_std_target}"
+					verify-sig_verify_detached "${WORKDIR}/rust-std-nightly-${rust_std_target}.tar.xz" \
+						"${WORKDIR}/rust-std-nightly-${rust_std_target}.tar.xz.asc"
+				fi
+				tar -xf "${WORKDIR}/rust-std-nightly-${rust_std_target}.tar.xz" || \
+					die "Failed to unpack nightly rust-std tarball for ${rust_std_target}"
+			done
+		fi
 		local v
 		for v in $(multilib_get_enabled_abi_pairs); do
 			rust_target="$(rust_abi $(get_abi_CHOST ${v##*.}))"
@@ -149,7 +181,8 @@ src_unpack() {
 		done
 	else
 		# sadly rust-src tarball does not have corresponding .asc file
-		# so do partial verification
+		# so do partial verification for the remaining distfiles, including
+		# rustc-dev and the aarch64-unknown-none softfloat std tarballs.
 		if use verify-sig; then
 			for f in ${A}; do
 				if [[ -f ${DISTDIR}/${f}.asc ]]; then
@@ -322,6 +355,22 @@ multilib_src_install() {
 		dodir "/opt/${P}/lib/rustlib"
 		cp -vr "${WORKDIR}/rust-${version}-${rust_target}/rust-std-${rust_target}/lib/rustlib/${rust_target}"\
 			"${ED}/opt/${P}/lib/rustlib" || die
+	fi
+
+	if use rust_sysroots_aarch64_unknown_none; then
+		local rust_std_dir rust_std_target
+		for rust_std_target in aarch64-unknown-none aarch64-unknown-none-softfloat; do
+			for rust_std_dir in \
+				"${WORKDIR}/rust-std-${PV}-${rust_std_target}" \
+				"${WORKDIR}/rust-std-nightly-${rust_std_target}"; do
+				if [[ -d "${rust_std_dir}/rust-std-${rust_std_target}/lib/rustlib/${rust_std_target}" ]]; then
+					cp -vr \
+					"${rust_std_dir}/rust-std-${rust_std_target}/lib/rustlib/${rust_std_target}" \
+					"${ED}/opt/${P}/lib/rustlib" || die
+					break
+				fi
+			done
+		done
 	fi
 
 	# BUG: installs x86_64 binary on other arches

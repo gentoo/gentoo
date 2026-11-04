@@ -83,7 +83,7 @@ done
 
 # Bare metal targets which can be built on the host system and have no
 # dependency on compiler runtime, libc and unwinder.
-ALL_RUST_SYSROOTS=( bpf wasm )
+ALL_RUST_SYSROOTS=( aarch64_unknown_none bpf wasm )
 ALL_RUST_SYSROOTS=( "${ALL_RUST_SYSROOTS[@]/#/rust_sysroots_}" )
 
 LICENSE="|| ( MIT Apache-2.0 ) BSD BSD-1 BSD-2 BSD-4"
@@ -163,6 +163,7 @@ REQUIRED_USE="
 	|| ( ${ALL_LLVM_TARGETS[*]} )
 	rust-analyzer? ( rust-src )
 	test? ( ${ALL_LLVM_TARGETS[*]} )
+	rust_sysroots_aarch64_unknown_none? ( llvm_targets_AArch64 )
 	rust_sysroots_bpf? ( llvm_targets_BPF )
 	rust_sysroots_wasm? ( llvm_targets_WebAssembly )
 	x86? ( cpu_flags_x86_sse2 )
@@ -208,6 +209,33 @@ toml_usex() {
 	usex "${1}" true false
 }
 
+# Returns "host" (if native arm64 or host CC is clang), "clang" (if clang is
+# available), or the crossdev tuple prefix for an installed aarch64 GCC.
+rust_get_aarch64_baremetal_tc() {
+	if use arm64 || tc-is-clang; then
+		echo "host"
+		return 0
+	fi
+
+	if command -v "${CHOST}-clang" >/dev/null 2>&1; then
+		if "${CHOST}-clang" --print-targets 2>/dev/null | grep -q "aarch64"; then
+			echo "clang"
+			return 0
+		fi
+	fi
+
+	local tuple
+	# Just try some common crossdev toolchain prefixes for aarch64
+	for tuple in aarch64-unknown-none aarch64-none-elf aarch64-elf aarch64-unknown-linux-gnu aarch64-linux-gnu; do
+		if command -v "${tuple}-gcc" >/dev/null 2>&1; then
+			echo "${tuple}"
+			return 0
+		fi
+	done
+
+	return 1
+}
+
 pre_build_checks() {
 	local M=9216
 	# multiply requirements by 1.3 if we are doing x86-multilib
@@ -227,6 +255,7 @@ pre_build_checks() {
 			M=$(( $(usex ${ltarget} 256 0) + ${M} ))
 		done
 	fi
+	M=$(( $(usex rust_sysroots_aarch64_unknown_none 256 0) + ${M} ))
 	M=$(( $(usex rust_sysroots_bpf 256 0) + ${M} ))
 	M=$(( $(usex rust_sysroots_wasm 256 0) + ${M} ))
 	M=$(( $(usex debug 2 1) * ${M} ))
@@ -237,6 +266,17 @@ pre_build_checks() {
 	eshopts_pop
 	M=$(( $(usex doc 256 0) + ${M} ))
 	CHECKREQS_DISK_BUILD=${M}M check-reqs_pkg_${EBUILD_PHASE}
+
+	# This is best-effort - There _will_ be footguns / edge cases when detecting the baremetal toolchain
+	# if we don't want to _force_ users into installing Clang either way via BDEPEND.
+	# We can assume that users wanting rust_sysroots_aarch64_unknown_none are aware
+	# of the requirements for a baremetal AArch64 toolchain
+	if use rust_sysroots_aarch64_unknown_none && ! rust_get_aarch64_baremetal_tc >/dev/null; then
+		eerror "USE=rust_sysroots_aarch64_unknown_none on non-arm64 requires either:"
+		eerror "  1. llvm-core/clang installed with LLVM_TARGETS=\"AArch64\", OR"
+		eerror "  2. An aarch64 crossdev toolchain (e.g. 'crossdev -s1 -t aarch64-unknown-none')"
+		die "No suitable AArch64 C compiler found for rust_sysroots_aarch64_unknown_none"
+	fi
 }
 
 llvm_check_deps() {
@@ -287,8 +327,11 @@ pkg_setup() {
 		llvm-r2_pkg_setup
 
 		local llvm_config="$(get_llvm_prefix)/bin/llvm-config"
+		# ebuild ... protection (developers)
+		[[ -x "${llvm_config}" ]] || die "system-llvm selected but llvm-config is unavailable: ${llvm_config}"
+		local llvm_libdir="$(${llvm_config} --libdir)"
 		export LLVM_LINK_SHARED=1
-		export RUSTFLAGS="${RUSTFLAGS} -Lnative=$("${llvm_config}" --libdir)"
+		export RUSTFLAGS="${RUSTFLAGS} -Lnative=${llvm_libdir}"
 	fi
 }
 
@@ -448,6 +491,9 @@ src_configure() {
 	done
 	if use rust_sysroots_bpf; then
 		rust_targets+=",\"bpfeb-unknown-none\",\"bpfel-unknown-none\""
+	fi
+	if use rust_sysroots_aarch64_unknown_none; then
+		rust_targets+=",\"aarch64-unknown-none\",\"aarch64-unknown-none-softfloat\""
 	fi
 	if use rust_sysroots_wasm; then
 		rust_targets+=",\"wasm32-unknown-unknown\""
@@ -620,6 +666,13 @@ src_configure() {
 		compression-profile = "balanced"
 	_EOF_
 
+	local host_ar host_cc host_cxx host_linker host_ranlib
+	host_ar="$(tc-getAR)"
+	host_cc="$(tc-getCC)"
+	host_cxx="$(tc-getCXX)"
+	host_linker="$(tc-getCC)"
+	host_ranlib="$(tc-getRANLIB)"
+
 	for v in $(multilib_get_enabled_abi_pairs); do
 		rust_target=$(rust_abi $(get_abi_CHOST ${v##*.}))
 		arch_cflags="$(get_abi_CFLAGS ${v##*.})"
@@ -628,11 +681,11 @@ src_configure() {
 
 		cat <<- _EOF_ >> "${S}"/bootstrap.toml
 			[target.${rust_target}]
-			ar = "$(tc-getAR)"
-			cc = "$(tc-getCC)"
-			cxx = "$(tc-getCXX)"
-			linker = "$(tc-getCC)"
-			ranlib = "$(tc-getRANLIB)"
+			ar = "${host_ar}"
+			cc = "${host_cc}"
+			cxx = "${host_cxx}"
+			linker = "${host_linker}"
+			ranlib = "${host_ranlib}"
 			llvm-libunwind = "$(usex llvm-libunwind $(usex system-llvm system in-tree) no)"
 		_EOF_
 		if use system-llvm; then
@@ -673,6 +726,60 @@ src_configure() {
 			profiler = false
 		_EOF_
 	fi
+	if use rust_sysroots_aarch64_unknown_none; then
+		local bm_tc="$(rust_get_aarch64_baremetal_tc)"
+		local baremetal_ar baremetal_cc baremetal_cxx baremetal_linker baremetal_ranlib
+
+		case "${bm_tc}" in
+			host) # host toolchain if suitable (native [armg64] gcc or tc-is-clang)
+				baremetal_ar="$(tc-getAR)"
+				baremetal_cc="$(tc-getCC)"
+				baremetal_cxx="$(tc-getCXX)"
+				baremetal_linker="$(tc-getCC)"
+				baremetal_ranlib="$(tc-getRANLIB)"
+				;;
+			clang) # host toolchain is GCC but we have a valid Clang for baremetal
+				baremetal_ar="llvm-ar"
+				baremetal_cc="${CHOST}-clang"
+				baremetal_cxx="${CHOST}-clang++"
+				baremetal_linker="$(usex system-llvm lld rust-lld)"
+				baremetal_ranlib="llvm-ranlib"
+				;;
+			*) # crossdev (have fun, best effort detecting on tuple)
+				baremetal_ar="${bm_tc}-ar"
+				baremetal_cc="${bm_tc}-gcc"
+				baremetal_cxx="${bm_tc}-g++"
+				baremetal_linker="${bm_tc}-gcc"
+				baremetal_ranlib="${bm_tc}-ranlib"
+				;;
+		esac
+
+		local target
+		for target in aarch64-unknown-none aarch64-unknown-none-softfloat; do
+			export CFLAGS_${target//-/_}="$(
+				if [[ ${bm_tc} == "clang" ]] || ( [[ ${bm_tc} == "host" ]] && tc-is-clang ); then
+					CC="${baremetal_cc} --target=aarch64-unknown-none" # no softfloat clang target
+				else
+					CC="${baremetal_cc}"
+				fi
+				# CC set above is used to strip any unsupported flags from environment CFLAGS for the target
+				if ! use arm64; then
+					filter-flags '-mcpu*' '-march*' '-mtune*'
+				fi
+				strip-unsupported-flags
+				echo "${CFLAGS}"
+			)"
+			cat <<- _EOF_ >> "${S}"/bootstrap.toml
+				[target.${target}]
+				ar = "${baremetal_ar}"
+				cc = "${baremetal_cc}"
+				cxx = "${baremetal_cxx}"
+				linker = "${baremetal_linker}"
+				ranlib = "${baremetal_ranlib}"
+				profiler = false
+			_EOF_
+		done
+	fi
 
 	if [[ -n ${I_KNOW_WHAT_I_AM_DOING_CROSS} ]]; then # whitespace intentionally shifted below
 	# experimental cross support
@@ -687,12 +794,12 @@ src_configure() {
 	# best place would be /etc/portage/env/dev-lang/rust
 	# Example:
 	# RUST_CROSS_TARGETS=(
-	#	"AArch64:aarch64-unknown-linux-gnu:aarch64-unknown-linux-gnu"
+	#   "AArch64:aarch64-unknown-linux-gnu:aarch64-unknown-linux-gnu"
 	# )
 	# no extra hand holding is done, no target transformations, all
 	# values are passed as-is with just basic checks, so it's up to user to supply correct values
 	# valid rust targets can be obtained with
-	# 	rustc --print target-list
+	#   rustc --print target-list
 	# matching cross toolchain has to be installed
 	# matching LLVM_TARGET has to be enabled for both rust and llvm (if using system one)
 	# only gcc toolchains installed with crossdev are checked for now.
@@ -845,7 +952,8 @@ src_install() {
 	DESTDIR="${D}" "${EPYTHON}" ./x.py install -v \
 		--config="${S}"/bootstrap.toml -j$(get_makeopts_jobs) || die
 
-	# Not required for general use, installs rustc-dev component (i.e. internal rlibs) needed to link to compiler internals for (e.g.) crubit
+	# Not required for general use, installs rustc-dev component (i.e. internal rlibs)
+	# needed to link to compiler internals for (e.g.) crubit
 	use rustc-dev && DESTDIR="${D}" "${EPYTHON}" ./x.py install rustc-dev -v \
 		--config="${S}"/bootstrap.toml -j$(get_makeopts_jobs) || die
 
