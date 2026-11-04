@@ -44,6 +44,7 @@ RDEPEND="
 	app-arch/snappy:=
 	app-arch/zstd:=
 	~dev-libs/libbson-${PV}[static-libs?]
+	dev-libs/libutf8proc:=
 	virtual/zlib:=
 	sasl? (
 		dev-libs/cyrus-sasl:=
