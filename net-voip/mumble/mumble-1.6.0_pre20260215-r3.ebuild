@@ -80,6 +80,10 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+PATCHES=(
+	"${FILESDIR}/openssl-4.patch"
+)
+
 pkg_setup() {
 	python-any-r1_pkg_setup
 }
