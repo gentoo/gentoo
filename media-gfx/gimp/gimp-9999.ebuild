@@ -197,6 +197,9 @@ src_prepare() {
 
 	# Disable automagic pandoc use that isn't relevant for a package build
 	sed -e '/pandoc/ s/ = .*/ = disabler()/' -i docs/meson.build || die
+
+	# Needs to be properly hooked up to USE="test-full"
+	sed -e "s|subdir('app/tests/uitests')|ui_tests_status = 'disabled by ebuild'|" -i meson.build || die
 }
 
 src_configure() {
