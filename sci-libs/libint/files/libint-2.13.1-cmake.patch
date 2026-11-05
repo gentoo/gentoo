@@ -1,0 +1,36 @@
+--- a/cmake/modules/int_am.cmake	2026-11-04 16:11:40.829499575 +0100
++++ b/cmake/modules/int_am.cmake	2026-11-04 16:12:24.119939162 +0100
+@@ -262,7 +262,7 @@
+             if (LIBINT2_${class}_OPT_AM EQUAL -1)
+                 set(LIBINT_${class}_OPT_AM "")
+             else()
+-                set($LIBINT_{class}_OPT_AM ${LIBINT2_${class}_OPT_AM})
++                set(LIBINT_${class}_OPT_AM ${LIBINT2_${class}_OPT_AM})
+             endif()
+         endif()
+         if (LIBINT_OPT_AM_LIST)
+--- a/src/lib/libint/CMakeLists.txt	2026-11-04 23:58:22.720992461 +0100
++++ b/src/lib/libint/CMakeLists.txt	2026-11-05 00:05:34.149984849 +0100
+@@ -226,13 +226,15 @@
+         )
+     endforeach()
+ 
+-    # generate basis.h at install time so LIBINT_DATADIR_ABSOLUTE reflects any --prefix override
+-    install(CODE "
+-      set(LIBINT_VERSION \"${LIBINT_VERSION}\")
+-      set(LIBINT_DATADIR_ABSOLUTE \"\${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_DATADIR}/libint/${LIBINT_VERSION}\")
++    set(LIBINT_VERSION "${LIBINT_VERSION}")
++    set(LIBINT_DATADIR_ABSOLUTE "${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_DATADIR}/libint/${LIBINT_VERSION}")
+       configure_file(
+-        \"${PROJECT_SOURCE_DIR}/include/libint2/basis.h.in\"
+-        \"\${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_INCLUDEDIR}/libint2/basis.h\"
++        "${PROJECT_SOURCE_DIR}/include/libint2/basis.h.in"
++        "${PROJECT_BINARY_DIR}/include/libint2/basis.h"
+         @ONLY)
+-    ")
++
++    install(
++      FILES "${PROJECT_BINARY_DIR}/include/libint2/basis.h"
++      DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/libint2"
++    )
+ endif()
