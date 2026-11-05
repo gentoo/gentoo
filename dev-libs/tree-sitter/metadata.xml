@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person" proxied="yes">
-		<email>abdelqaderali@protonmail.com</email>
-		<name>Ali Abdel-Qader</name>
-	</maintainer>
 	<maintainer type="project">
 		<email>pkgcore@gentoo.org</email>
 		<name>Pkgcore</name>
