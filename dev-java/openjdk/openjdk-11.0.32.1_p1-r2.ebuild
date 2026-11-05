@@ -95,6 +95,7 @@ DEPEND="
 	media-libs/alsa-lib
 	net-print/cups
 	!headless-awt? ( x11-base/xorg-proto )
+	javafx? ( dev-java/openjfx:${SLOT}= )
 	system-bootstrap? (
 		|| (
 			dev-java/openjdk-bin:${SLOT}[gentoo-vm(+)]
