@@ -80,12 +80,13 @@ dev-python/httpx
 dev-python/pkg-resources
 
 # Michał Górny <mgorny@gentoo.org> (2025-11-04)
-# Please depend on virtual/zlib, unless you are sure that the package
-# in question is not compatible with sys-libs/zlib-ng[compat] and/or
-# sys-libs/minizip-ng[compat].  In the latter case, please report a bug,
-# so that upstream can improve the API/ABI compatibility.
+# Please depend on virtual/zlib instead of sys-libs/zlib directly, unless
+# you are sure that the package in question is not compatible with
+# sys-libs/zlib-ng[compat] and/or sys-libs/minizip-ng[compat].  In the
+# latter case, please report a bug, so that upstream can improve the
+# API/ABI compatibility.
 # This is a temporary deprecation to aid transitioning packages imported
-# from other repositories.
+# from other repositories. The sys-libs/zlib package itself is not deprecated!
 sys-libs/zlib
 
 # Michał Górny <mgorny@gentoo.org> (2025-10-26)
