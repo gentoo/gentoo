@@ -15,7 +15,7 @@ KEYWORDS="~amd64"
 
 RDEPEND="media-libs/gst-plugins-bad
 	media-libs/libglvnd
-	>=media-libs/libva-1.8.0
+	>=media-libs/libva-2.23.0-r1
 	>=x11-libs/libdrm-2.4.60"
 DEPEND="${RDEPEND}
 	>=media-libs/nv-codec-headers-11.1.5.1"
