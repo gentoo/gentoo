@@ -1233,18 +1233,20 @@ _distutils-r1_find_best_wheel() {
 		whl_fn=${whl_fn%-*}
 		local python_tag=${whl_fn##*-}
 
-		# Verify whether the Python tag is compatible.  We should
+		# Verify that the tags we're getting are incrementing, to make
+		# sure the matching logic below won't break.  We should
 		# be running from the oldest to the newest Python version,
 		# so it should always hold.  We short-circuit py3 tag.
 		if [[ .${python_tag}. != *.py3.* ]]; then
-			[[ ${EPYTHON} != python3.* ]] &&
+			[[ ${EPYTHON} != python3.* && ${EPYTHON} != pypy3.* ]] &&
 				die "Update the python_tag check for ${EPYTHON}"
-			local minor=${EPYTHON#python3.}
+			local minor=${EPYTHON#py*3.}
 			minor=${minor%t}
 			local is_compatible=
 			while [[ ${minor} -ge 0 ]]; do
 				if [[
 					.${python_tag}. == *.cp3${minor}.* ||
+					.${python_tag}. == *.pp3${minor}.* ||
 					.${python_tag}. == *.py3${minor}.*
 				]]; then
 					is_compatible=1
