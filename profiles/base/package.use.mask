@@ -383,11 +383,6 @@ sci-mathematics/why3-for-spark doc
 # Requires sys-block/hpacucli
 net-analyzer/nagios-plugin-check_raid hpa
 
-# Michał Górny <mgorny@gentoo.org> (2023-12-22)
-# Requires LLVM 14 that is being removed.
-<dev-lang/ghc-9.4 llvm
-sys-devel/sparse llvm
-
 # Takuya Wakazono <pastalian46@gmail.com> (2023-11-21)
 # app-crypt/rpm-sequoia is not keyworded on most architectures.
 app-arch/rpm sequoia
