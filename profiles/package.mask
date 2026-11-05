@@ -295,7 +295,7 @@ www-apps/drupal:11.2.14
 #   www-client/seamonkey
 #
 # Removal on 2026-10-24.  Bug #982204.
-www-client/chromium
+<www-client/chromium-151.0.7922.169-r1
 
 # Sam James <sam@gentoo.org> (2026-09-24)
 # ImageMagick 6 only receives security fixes now upstream and already
