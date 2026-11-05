@@ -9,6 +9,10 @@
 		<email>g.braeunlich@disroot.org</email>
 		<name>Gerhard Bräunlich</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>arthurzam@gentoo.org</email>
+		<name>Arthur Zamarin</name>
+	</maintainer>
 	<upstream>
 		<remote-id type="github">rootless-containers/slirp4netns</remote-id>
 	</upstream>
