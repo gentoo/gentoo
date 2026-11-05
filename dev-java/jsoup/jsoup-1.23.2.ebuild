@@ -15,7 +15,7 @@ S="${WORKDIR}/jsoup-${P}"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 ~arm64"
 
 # package io.netty.handler.codec.http.cookie does not exist
 # package io.netty.handler.ssl does not exist
