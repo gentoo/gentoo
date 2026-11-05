@@ -411,6 +411,7 @@ sys-apps/tas
 sys-block/arcconf
 sys-block/hpssacli
 sys-block/megacli
+virtual/amdgpu-pro-amf
 www-apps/chromedriver-bin
 www-apps/jellyfin-bin
 www-apps/kibana-bin
