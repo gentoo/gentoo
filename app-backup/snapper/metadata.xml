@@ -6,17 +6,9 @@
 		It can create, delete and compare snapshots and undo changes done
 		between  snapshots. It supports both btrfs and ext4.
 	</longdescription>
-	<maintainer type="person" proxied="yes">
-		<email>pastas4@gmail.com</email>
-		<name>Dainius Masiliūnas (GreatEmerald)</name>
-	</maintainer>
 	<maintainer type="person">
 		<email>dlan@gentoo.org</email>
 		<name>Yixun Lan</name>
-	</maintainer>
-	<maintainer type="project" proxied="proxy">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
 	</maintainer>
 	<upstream>
 		<maintainer status="active">
