@@ -24,6 +24,7 @@
     <flag name="test-input">Build and install input sources used for testing.</flag>
     <flag name="vlc">Build with VLC media source support.</flag>
     <flag name="websocket">Build with WebSocket API support.</flag>
+    <flag name="webrtc">Build with WebRTC/WHIP protocol support.</flag>
   </use>
   <upstream>
     <remote-id type="github">obsproject/obs-studio</remote-id>
