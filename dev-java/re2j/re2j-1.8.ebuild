@@ -15,7 +15,7 @@ S="${WORKDIR}/re2j-re2j-${PV}"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 ~arm64"
 
 DEPEND="
 	>=virtual/jdk-1.8:*
