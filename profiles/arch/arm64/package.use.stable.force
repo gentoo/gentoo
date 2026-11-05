@@ -1,5 +1,12 @@
-# Copyright 2018-2019 Gentoo Authors
+# Copyright 2018-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Eli Schwartz <eschwartz@gentoo.org> (2026-10-29)
+# Need elogind enabled here for depgraph (otherwise uses basu, which is
+# not stable).
+gui-apps/mako elogind
+gui-wm/sway elogind
+dev-libs/libei elogind
 
 # Luke Dashjr <luke-jr+gentoobugs@utopios.org> (2018-11-19)
 # iasl is keyworded ~arm64

@@ -7,8 +7,7 @@ PYTHON_COMPAT=( python3_{12..15} )
 inherit desktop dot-a edo elisp-common multiprocessing python-any-r1 savedconfig toolchain-funcs xdg
 
 # USE_BAZEL_VERSION in .bazeliskrc
-# Downgrade from 9.0.2 to 8.6.0 to solve gcc issue (see https://github.com/bazelbuild/bazel/issues/21334)
-BAZEL_VER="8.6.0"
+BAZEL_VER="9.0.2"
 # 2026-06-27, release of mozc-3.34.6239, bump only if required
 BAZEL_BCR_HASH="4a07120f4a17edc0c7dd4d93c7f76eabccdf8864"
 # Merge remote just after the tag of mozc or 'Sync mozc version to metainfo'
@@ -60,7 +59,7 @@ SRC_URI="
 	https://github.com/bazelbuild/rules_android_ndk/releases/download/v0.1.5/rules_android_ndk-v0.1.5.tar.gz
 	https://github.com/bazel-contrib/rules_go/releases/download/v0.60.0/rules_go-v0.60.0.zip
 	https://github.com/bazel-contrib/rules_python/releases/download/${RPYTHON_VER}/rules_python-${RPYTHON_VER}.tar.gz
-	https://github.com/bazel-contrib/bazel_features/releases/download/v1.36.0/bazel_features-v1.36.0.tar.gz
+	https://github.com/bazel-contrib/bazel_features/releases/download/v1.42.1/bazel_features-v1.42.1.tar.gz
 	https://github.com/bazel-contrib/bazel-lib/releases/download/v2.22.5/bazel-lib-v2.22.5.tar.gz
 	https://github.com/bazel-contrib/bazel-lib/releases/download/v3.0.0/bazel-lib-v3.0.0.tar.gz
 	https://github.com/bazel-contrib/tar.bzl/releases/download/v0.5.1/tar.bzl-v0.5.1.tar.gz
@@ -268,6 +267,10 @@ src_configure() {
 		--strip="$(usex debug never always)"
 		--subcommands # be verbose
 		--verbose_failures
+
+		# pass PATH through bazel (e.g. to find ld)
+		--action_env=PATH="${PATH}"
+		--host_action_env=PATH="${PATH}"
 	)
 
 	if use fcitx5; then

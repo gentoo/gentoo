@@ -9,4 +9,8 @@
 		<email>printing@gentoo.org</email>
 		<name>Gentoo Printing Project</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">roland-bless/ps2eps</remote-id>
+		<bugs-to>https://github.com/roland-bless/ps2eps/issues</bugs-to>
+	</upstream>
 </pkgmetadata>

@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -189,8 +189,6 @@ CRATES="
 	yansi@0.5.1
 "
 
-# bug #961269
-RUST_MAX_VER=1.88.0
 inherit cargo go-module systemd
 
 DESCRIPTION="Scalable datastore for metrics, events, and real-time analytics"
@@ -231,6 +229,10 @@ src_prepare() {
 	data_dir="${S}/static/data"
 	mkdir "${data_dir}" || die
 	mv "${WORKDIR}/build" "${data_dir}" || die
+
+	pushd "${WORKDIR}/go-mod/github.com/influxdata/flux@v${FLUX_PV}" >/dev/null || die
+	eapply "${FILESDIR}"/${PN}-2.7.10-flux-no-deny-warnings.patch
+	popd >/dev/null || die
 }
 
 src_compile() {

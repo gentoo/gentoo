@@ -1,0 +1,22 @@
+Build only net10.0 to prevent different target frameworks from writing
+concurrently to the shared output directory used by dotnet-pkg.
+
+--- a/src/Shared.msbuild
++++ b/src/Shared.msbuild
+@@ -1,7 +1,7 @@
+ <Project>
+   <!-- General package metadata -->
+   <PropertyGroup>
+-    <TargetFrameworks>net8.0;net9.0;net10.0</TargetFrameworks>
++    <TargetFrameworks>net10.0</TargetFrameworks>
+     <PackageId>$(AssemblyName)</PackageId>
+     <Copyright>Copyright (c) .NET Foundation and contributors</Copyright>
+     <Authors>Patrik Svensson, Mattias Karlsson, Gary Ewan Park, Alistair Chapman, Martin Björkström, Dave Glick, Pascal Berger, Jérémie Desautels, Enrico Campidoglio, C. Augusto Proiete, Nils Andresen, and contributors</Authors>
+--- a/tests/integration/Cake.Frosting/build/Build.csproj
++++ b/tests/integration/Cake.Frosting/build/Build.csproj
+@@ -3,4 +3,4 @@
+   <PropertyGroup>
+     <OutputType>Exe</OutputType>
+-    <TargetFrameworks>net8.0;net9.0;net10.0</TargetFrameworks>
++    <TargetFrameworks>net10.0</TargetFrameworks>
+     <PackAsTool>true</PackAsTool>

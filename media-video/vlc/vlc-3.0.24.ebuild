@@ -27,7 +27,7 @@ else
 		fi
 		S="${WORKDIR}/${MY_P}"
 	fi
-	KEYWORDS="~amd64"
+	KEYWORDS="amd64 ~arm arm64"
 fi
 inherit autotools flag-o-matic lua-single toolchain-funcs virtualx xdg
 
@@ -242,6 +242,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.0.6-fdk-aac-2.0.0.patch # bug 672290
 	"${FILESDIR}"/${PN}-3.0.11.1-configure_lua_version.patch
 	"${FILESDIR}"/${PN}-3.0.18-drop-minizip-dep.patch
+	"${FILESDIR}"/${P}-libupnp-1.18.patch # in 3.0.25; bug 984947
 )
 
 pkg_setup() {

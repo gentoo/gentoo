@@ -1,0 +1,24 @@
+--- a/modules/codec/avcodec/avcommon_compat.h
++++ b/modules/codec/avcodec/avcommon_compat.h
+@@ -76,2 +76,6 @@
+ 
++#ifndef FF_API_V408_CODECID // removed in ffmpeg 9
++# define FF_API_V408_CODECID (LIBAVCODEC_VERSION_MAJOR < 63)
++#endif
++
+ # include <libavutil/avutil.h>
+--- a/modules/codec/avcodec/fourcc.c
++++ b/modules/codec/avcodec/fourcc.c
+@@ -239,3 +239,5 @@
+     { VLC_CODEC_DXTORY, AV_CODEC_ID_DXTORY },
++#if FF_API_V408_CODECID
+     { VLC_CODEC_V410, AV_CODEC_ID_V410 },
++#endif
+     /* AV_CODEC_ID_XWD */
+@@ -295,4 +297,6 @@
+ 
++#if FF_API_V408_CODECID
+     { VLC_CODEC_V308, AV_CODEC_ID_V308 },
+     { VLC_CODEC_V408, AV_CODEC_ID_V408 },
++#endif
+     { VLC_CODEC_YUV4, AV_CODEC_ID_YUV4 },

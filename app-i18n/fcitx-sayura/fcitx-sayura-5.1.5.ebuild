@@ -11,7 +11,7 @@ HOMEPAGE="https://github.com/fcitx/fcitx5-sayura"
 SRC_URI="https://download.fcitx-im.org/fcitx5/${MY_PN}/${MY_PN}-${PV}.tar.zst -> ${P}.tar.zst"
 
 S="${WORKDIR}/${MY_PN}-${PV}"
-LICENSE="LGPL-2.1+ MIT"
+LICENSE="GPL-2+"
 SLOT="5"
 KEYWORDS="~amd64"
 

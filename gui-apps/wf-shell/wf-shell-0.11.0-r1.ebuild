@@ -14,7 +14,7 @@ if [[ ${PV} == 9999 ]]; then
 	SLOT="0/0.12"
 else
 	SRC_URI="https://github.com/WayfireWM/wf-shell/releases/download/v${PV}/${P}.tar.xz"
-	KEYWORDS="~amd64 ~arm64"
+	KEYWORDS="amd64 arm64"
 	SLOT="0/$(ver_cut 1-2)"
 fi
 
@@ -67,6 +67,8 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.11-fix-network-crash.patch
+	"${FILESDIR}"/${P}-fix-pulseaudio.patch
+	"${FILESDIR}"/${P}-fix-clang.patch
 )
 
 src_configure () {

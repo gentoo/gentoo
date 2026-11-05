@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -26,7 +26,8 @@ REQUIRED_USE="
 	mpi? ( hdf5 )
 	openmp? ( !threads )
 	png? ( zlib )
-	pdf? ( png )"
+	pdf? ( png )
+	doc? ( png )"
 
 RDEPEND="
 	virtual/opengl

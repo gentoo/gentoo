@@ -2,6 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
+
+CMAKE_QA_COMPAT_SKIP=1
 SSL_DEPS_SKIP=1
 USE_RUBY="ruby32 ruby33 ruby34"
 

@@ -24,6 +24,7 @@
 		<flag name="monitor">Add a Qt6 gui monitor.</flag>
 		<flag name="serial">Includes all UPS drivers that use SERIAL.</flag>
 		<flag name="snmp">Includes all UPS drivers that use SNMP.</flag>
+		<flag name="upower">Monitor UPS and battery devices managed by the UPower daemon.</flag>
 		<flag name="usb">Includes all UPS drivers that use USB.</flag>
 		<flag name="xml">Includes all UPS drivers that use XML.</flag>
 	</use>

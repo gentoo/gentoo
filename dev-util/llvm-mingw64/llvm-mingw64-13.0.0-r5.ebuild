@@ -32,9 +32,9 @@ REQUIRED_USE="
 	|| ( arm64-pe arm64ec-pe i686-pe x86-64-pe )
 "
 
-PATCHES="
-	${FILESDIR}/${PN}-13.0.0-r1-exclude-arm64-cflags.patch
-"
+PATCHES=(
+	"${FILESDIR}"/${PN}-13.0.0-r1-exclude-arm64-cflags.patch
+)
 
 BDEPEND="
 	dev-build/cmake

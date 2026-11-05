@@ -8,8 +8,8 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..14} )
-LLVM_COMPAT=( {18..22} )
+PYTHON_COMPAT=( python3_{12..15} )
+LLVM_COMPAT=( {18..23} )
 DISTUTILS_USE_PEP517=setuptools
 DISTUTILS_EXT=1
 
@@ -36,12 +36,13 @@ else
 fi
 
 LICENSE="|| ( GPL-2 GPL-3 LGPL-3 )"
-SLOT="6/${PV}"
+QT_SLOT="$(ver_cut 1)"
+SLOT="${QT_SLOT}/${PV}"
 
 # If a flag enables multiple Qt modules, they should be ordered
 # according to their dependencies, e.g. for 3d, 3DCore must be first.
 # Widgets for various modules are handled as a special case later
-declare -A QT_MODULES=(
+declare -gA QT_MODULES=(
 	["3d"]="3DCore 3DRender 3DLogic 3DInput 3DAnimation 3DExtras"
 	["bluetooth"]="Bluetooth"
 	["charts"]="Charts"
@@ -87,7 +88,7 @@ declare -A QT_MODULES=(
 # Manually reextract these requirements on version bumps by running the
 # following one-liner from within "${S}":
 #     $ grep -E '(set|list).*_deps' sources/pyside6/PySide6/Qt*/CMakeLists.txt
-declare -A QT_REQUIREMENTS=(
+declare -gA QT_REQUIREMENTS=(
 	["3d"]="gui network"
 	["bluetooth"]="core"
 	["charts"]="core gui widgets"
@@ -132,7 +133,7 @@ declare -A QT_REQUIREMENTS=(
 # Manually reextract these requirements on version bumps by running the
 # following one-liner from within "${S}":
 #     $ grep 'check_qt_opengl' sources/pyside6/PySide6/Qt*/CMakeLists.txt
-declare -a CONDITIONAL_OPENGL=(
+declare -ga CONDITIONAL_OPENGL=(
 	3d graphs quick
 )
 
@@ -150,7 +151,7 @@ for requirement in "${!QT_REQUIREMENTS[@]}"; do
 done
 
 # Minimal supported version of Qt.
-QT_PV="$(ver_cut 1-3)*:6"
+QT_PV="$(ver_cut 1-3)*:${QT_SLOT}"
 
 # USE="tools" is heavily automagic based on what other qt tools are installed at build time.
 
@@ -179,7 +180,7 @@ RDEPEND="
 	network-auth? ( =dev-qt/qtnetworkauth-${QT_PV} )
 	nfc? ( =dev-qt/qtconnectivity-${QT_PV}[nfc] )
 	numpy? ( >=dev-python/numpy-2.1.3[${PYTHON_USEDEP}] )
-	pdfium? ( =dev-qt/qtwebengine-${QT_PV}[pdfium(-),widgets?] )
+	pdfium? ( dev-qt/qtwebengine:${QT_SLOT}[pdfium(-),widgets?] )
 	positioning? ( =dev-qt/qtpositioning-${QT_PV} )
 	printsupport? ( =dev-qt/qtbase-${QT_PV}[gui,widgets] )
 	qml? ( =dev-qt/qtdeclarative-${QT_PV}[opengl?,widgets?] )
@@ -200,9 +201,10 @@ RDEPEND="
 	)
 	uitools? ( =dev-qt/qttools-${QT_PV}[gles2-only=,widgets] )
 	webchannel? ( =dev-qt/qtwebchannel-${QT_PV} )
-	webengine? ( || (
-		=dev-qt/qtwebengine-${QT_PV}[alsa,widgets?]
-		=dev-qt/qtwebengine-${QT_PV}[pulseaudio,widgets?]
+	webengine? (
+		|| (
+			dev-qt/qtwebengine:${QT_SLOT}[alsa,widgets?]
+			dev-qt/qtwebengine:${QT_SLOT}[pulseaudio,widgets?]
 		)
 	)
 	websockets? ( =dev-qt/qtwebsockets-${QT_PV} )
@@ -280,9 +282,6 @@ python_prepare_all() {
 
 	# blacklist.txt works like XFAIL
 	cat <<- EOF >> build_history/blacklist.txt || die
-	# segfaults with QOpenGLContext::create
-	[pysidetest::qapp_like_a_macro_test]
-		linux
 	# no mypy
 	[pysidetest::mypy_correctness_test]
 		linux
@@ -291,18 +290,8 @@ python_prepare_all() {
 		linux
 	[pyside6-android-deploy::test_pyside6_android_deploy]
 		linux
-	# Behavior changed and test not changed to accomodate
-	# https://bugreports.qt.io/projects/PYSIDE/issues/PYSIDE-3135
-	[registry::existence_test]
-		linux
-	# Doesn't appear to play well with virtualx as it tries to use wayland
-	[QtUiTools::loadUiType_test]
-		linux
-	# py3.14?
-	[sample::multiple_derived]
-		linux
-	# Doesn't appear to play well with virtualx as it tries to use wayland
-	[QtWidgets::qapp_issue_585]
+	# FIXME: timeout, complains about wayland
+	[pysidetest::new_inherited_functions_test]
 		linux
 	EOF
 
@@ -383,6 +372,7 @@ python_configure_all() {
 	if use quick; then
 		use webengine && ENABLED_QT_MODULES+=( WebEngineQuick )
 		use testlib && ENABLED_QT_MODULES+=( QuickTest )
+		use qml && ENABLED_QT_MODULES+=( QuickControls2 )
 	fi
 
 	# Arguments listed in options.py
@@ -395,7 +385,7 @@ python_configure_all() {
 		--no-size-optimization
 		--openssl="${ESYSROOT}/usr/bin/openssl"
 		--qt="$(ver_cut 1-3)"
-		--qtpaths="$(qt6_get_bindir)/qtpaths"
+		--qtpaths="$(qt_get_bindir ${QT_SLOT})/qtpaths"
 		--log-level=verbose
 		--parallel="$(makeopts_jobs)"
 		"$(usex debug "--debug" "--relwithdebinfo")"
@@ -443,8 +433,10 @@ python_compile() {
 	export PYTHONPATH="${BUILD_DIR}/build$((${#DISTUTILS_WHEELS[@]}-1))/${pyside_build_dir}/package:${BUILD_DIR}/build$((${#DISTUTILS_WHEELS[@]}-1))/${pyside_build_dir}/install/lib/${EPYTHON}/site-packages:${PYTHONPATH}"
 
 	# Copy shiboken6_generator files to shiboken6 package so we can reuse the shiboken-target-path
-	rsync -ur "${BUILD_DIR}/build$((${#DISTUTILS_WHEELS[@]}-2))/${pyside_build_dir}/package/shiboken6_generator/"* "${BUILD_DIR}/build$((${#DISTUTILS_WHEELS[@]}-1))/${pyside_build_dir}/package/shiboken6/" || die
-	ln -s shiboken6 "${BUILD_DIR}/build$((${#DISTUTILS_WHEELS[@]}-1))/${pyside_build_dir}/package/shiboken6_generator" || die
+	rsync -ur "${BUILD_DIR}/build$((${#DISTUTILS_WHEELS[@]}-2))/${pyside_build_dir}/package/shiboken6_generator/"* \
+		"${BUILD_DIR}/build$((${#DISTUTILS_WHEELS[@]}-1))/${pyside_build_dir}/package/shiboken6/" || die
+	ln -s shiboken6 \
+		"${BUILD_DIR}/build$((${#DISTUTILS_WHEELS[@]}-1))/${pyside_build_dir}/package/shiboken6_generator" || die
 
 	# If no pyside modules enabled, build just shiboken
 	if [[ ${#ENABLED_QT_MODULES[@]} -gt 0 ]]; then
@@ -461,7 +453,7 @@ python_compile() {
 	# Link libraries to the usual location for backwards compatibility
 	pushd "${BUILD_DIR}/install/$(python_get_sitedir)" >/dev/null ||
 		die
-	mkdir -p "${BUILD_DIR}/install/usr/$(get_libdir)" || die
+	mkdir -p "${BUILD_DIR}/install${EPREFIX}/usr/$(get_libdir)" || die
 	local lib
 	for lib in */*.cpython-*.so
 	do
@@ -477,7 +469,7 @@ python_compile() {
 	done
 	for lib in */*.so*; do
 		ln -s "../../$(python_get_sitedir)/${lib}" \
-			"${BUILD_DIR}/install/usr/$(get_libdir)/${lib#*/}" || die
+			"${BUILD_DIR}/install${EPREFIX}/usr/$(get_libdir)/${lib#*/}" || die
 	done
 	popd >/dev/null || die
 
@@ -487,20 +479,20 @@ python_compile() {
 	then
 		pushd "${BUILD_DIR}/install/$(python_get_sitedir)/PySide6" \
 			>/dev/null || die
-		mkdir -p "${BUILD_DIR}/install/usr/share/PySide6" || die
+		mkdir -p "${BUILD_DIR}/install${EPREFIX}/usr/share/PySide6" || die
 		for dir in doc glue typesystems; do
 			ln -s "../../../$(python_get_sitedir)/PySide6/${dir}" \
-				"${BUILD_DIR}/install/usr/share/PySide6/${dir}" ||
+				"${BUILD_DIR}/install${EPREFIX}/usr/share/PySide6/${dir}" ||
 					die
 		done
 		popd >/dev/null || die
 	fi
-	mkdir -p "${BUILD_DIR}/install/usr/include"
+	mkdir -p "${BUILD_DIR}/install${EPREFIX}/usr/include"
 	for dir in PySide6 shiboken6 shiboken6_generator; do
 		if [[ -d ${BUILD_DIR}/install/$(python_get_sitedir)/${dir}/include ]]
 		then
 			ln -s "../../$(python_get_sitedir)/${dir}/include" \
-				"${BUILD_DIR}/install/usr/include/${dir//_generator}" ||
+				"${BUILD_DIR}/install${EPREFIX}/usr/include/${dir//_generator}" ||
 					die
 		fi
 	done
@@ -508,66 +500,66 @@ python_compile() {
 	# Install misc files from inner install dir
 	find "${BUILD_DIR}"/build*/"${pyside_build_dir}"/install -type f \
 		-name libPySidePlugin.so -exec \
-		mkdir -p "${BUILD_DIR}/install/$(qt6_get_plugindir)/designer/" \; \
+		mkdir -p "${BUILD_DIR}/install/$(qt_get_plugindir ${QT_SLOT})/designer/" \; \
 		-exec \
-		cp "{}" "${BUILD_DIR}/install/$(qt6_get_plugindir)/designer/" \; \
+		cp "{}" "${BUILD_DIR}/install/$(qt_get_plugindir ${QT_SLOT})/designer/" \; \
 			|| die
 
 	for dir in cmake pkgconfig; do
 		find "${BUILD_DIR}"/build*/"${pyside_build_dir}"/install/lib -type d -path "*/lib/${dir}" \
-			-exec cp -nr "{}" "${BUILD_DIR}/install/usr/lib/" \; \
+			-exec cp -nr "{}" "${BUILD_DIR}/install${EPREFIX}/usr/lib/" \; \
 				|| die
 	done
 
 	# Uniquify the pkgconfigs file for the current Python target,
 	# preserving an unversioned "shiboken6.pc" file arbitrarily
 	# associated with the last Python target.
-	if [[ -f ${BUILD_DIR}/install/usr/lib/pkgconfig/shiboken6.pc ]]
+	if [[ -f ${BUILD_DIR}/install${EPREFIX}/usr/lib/pkgconfig/shiboken6.pc ]]
 	then
-		sed -e 's~prefix=.*~prefix=/usr~g' \
+		sed -e "s~prefix=.*~prefix=${EPREFIX}/usr~g" \
 			-e 's~exec_prefix=.*~exec_prefix=${prefix}~g' \
 			-e "s~libdir=.*~libdir=$(python_get_sitedir)/shiboken6~g" \
 			-e "s~includedir=.*~includedir=$(python_get_sitedir)/shiboken6_generator/include~g" \
-			-i "${BUILD_DIR}/install/usr/lib/pkgconfig/shiboken6.pc" || die
-		cp "${BUILD_DIR}/install/usr/lib/pkgconfig/"shiboken6{,-${EPYTHON}}.pc || die
+			-i "${BUILD_DIR}/install${EPREFIX}/usr/lib/pkgconfig/shiboken6.pc" || die
+		cp "${BUILD_DIR}/install${EPREFIX}/usr/lib/pkgconfig/"shiboken6{,-${EPYTHON}}.pc || die
 	fi
-	if [[ -f ${BUILD_DIR}/install/usr/lib/pkgconfig/pyside6.pc ]]
+	if [[ -f ${BUILD_DIR}/install${EPREFIX}/usr/lib/pkgconfig/pyside6.pc ]]
 	then
 		sed -e 's~^Requires: shiboken6$~&-'${EPYTHON}'~' \
-			-e 's~prefix=.*~prefix=/usr~g' \
+			-e "s~prefix=.*~prefix=${EPREFIX}/usr~g" \
 			-e 's~exec_prefix=.*~exec_prefix=${prefix}~g' \
 			-e "s~libdir=.*~libdir=$(python_get_sitedir)/PySide6~g" \
 			-e "s~includedir=.*~includedir=$(python_get_sitedir)/PySide6/include~g" \
 			-e "s~typesystemdir=.*~typesystemdir=$(python_get_sitedir)/PySide6/typesystems~g" \
 			-e "s~gluedir=.*~gluedir=$(python_get_sitedir)/PySide6/glue~g" \
 			-e "s~pythonpath=.*~pythonpath=$(python_get_sitedir)~g" \
-			-i "${BUILD_DIR}/install/usr/lib/pkgconfig/pyside6.pc" || die
-		cp "${BUILD_DIR}/install/usr/lib/pkgconfig/"pyside6{,-${EPYTHON}}.pc || die
+			-i "${BUILD_DIR}/install${EPREFIX}/usr/lib/pkgconfig/pyside6.pc" || die
+		cp "${BUILD_DIR}/install${EPREFIX}/usr/lib/pkgconfig/"pyside6{,-${EPYTHON}}.pc || die
 	fi
 
 	# _IMPORT_PREFIX breaks on split-usr/merged-usr plus weird random issues.
 	# These are not duplicates, the generated files are somehow different on
 	# different systems.
 	sed \
-		-e "s~\${_IMPORT_PREFIX}/lib/libshiboken6\.cpython~/usr/$(get_libdir)/libshiboken6\.cpython~g" \
-		-e "s~\${_IMPORT_PREFIX}/shiboken6/libshiboken6\.cpython~/usr/$(get_libdir)/libshiboken6\.cpython~g" \
-		-e "s~\${_IMPORT_PREFIX}/bin/shiboken6~/usr/bin/shiboken6~g" \
-		-e "s~\${_IMPORT_PREFIX}/shiboken6_generator/shiboken6~/usr/bin/shiboken6~g" \
-		-e "s~\${_IMPORT_PREFIX}/lib/libpyside6\.cpython~/usr/$(get_libdir)/libpyside6\.cpython~g" \
-		-e "s~\${_IMPORT_PREFIX}/PySide6/libpyside6\.cpython~/usr/$(get_libdir)/libpyside6\.cpython~g" \
-		-e "s~\${_IMPORT_PREFIX}/lib/libpyside6qml\.cpython~/usr/$(get_libdir)/libpyside6qml\.cpython~g" \
-		-e "s~\${_IMPORT_PREFIX}/PySide6/libpyside6qml\.cpython~/usr/$(get_libdir)/libpyside6qml\.cpython~g" \
+		-e "s~\${_IMPORT_PREFIX}/lib/libshiboken6\.cpython~${EPREFIX}/usr/$(get_libdir)/libshiboken6\.cpython~g" \
+		-e "s~\${_IMPORT_PREFIX}/shiboken6/libshiboken6\.cpython~${EPREFIX}/usr/$(get_libdir)/libshiboken6\.cpython~g" \
+		-e "s~\${_IMPORT_PREFIX}/bin/shiboken6~${EPREFIX}/usr/bin/shiboken6~g" \
+		-e "s~\${_IMPORT_PREFIX}/shiboken6_generator/shiboken6~${EPREFIX}/usr/bin/shiboken6~g" \
+		-e "s~\${_IMPORT_PREFIX}/lib/libpyside6\.cpython~${EPREFIX}/usr/$(get_libdir)/libpyside6\.cpython~g" \
+		-e "s~\${_IMPORT_PREFIX}/PySide6/libpyside6\.cpython~${EPREFIX}/usr/$(get_libdir)/libpyside6\.cpython~g" \
+		-e "s~\${_IMPORT_PREFIX}/lib/libpyside6qml\.cpython~${EPREFIX}/usr/$(get_libdir)/libpyside6qml\.cpython~g" \
+		-e "s~\${_IMPORT_PREFIX}/PySide6/libpyside6qml\.cpython~${EPREFIX}/usr/$(get_libdir)/libpyside6qml\.cpython~g" \
 		-e "s~libshiboken6\.cpython.*\.so\.$(ver_cut 1-3)~libshiboken6\${PYTHON_CONFIG_SUFFIX}\.so\.$(ver_cut 1-2)~g" \
 		-e "s~libpyside6\.cpython.*\.so\.$(ver_cut 1-3)~libpyside6\${PYTHON_CONFIG_SUFFIX}\.so\.$(ver_cut 1-2)~g" \
 		-e "s~libpyside6qml\.cpython.*\.so\.$(ver_cut 1-3)~libpyside6qml\${PYTHON_CONFIG_SUFFIX}\.so\.$(ver_cut 1-2)~g" \
 		-e "s~libshiboken6\.cpython.*\.so\.$(ver_cut 1-2)~libshiboken6\${PYTHON_CONFIG_SUFFIX}\.so\.$(ver_cut 1-2)~g" \
 		-e "s~libpyside6\.cpython.*\.so\.$(ver_cut 1-2)~libpyside6\${PYTHON_CONFIG_SUFFIX}\.so\.$(ver_cut 1-2)~g" \
 		-e "s~libpyside6qml\.cpython.*\.so\.$(ver_cut 1-2)~libpyside6qml\${PYTHON_CONFIG_SUFFIX}\.so\.$(ver_cut 1-2)~g" \
-		-e "s~\${_IMPORT_PREFIX}/shiboken6/include~/usr/include/shiboken6~g" \
-		-e "s~\${_IMPORT_PREFIX}/PySide6/include~/usr/include/PySide6~g" \
-		-i "${BUILD_DIR}/install/usr/lib/cmake/"*/*.cmake || die
+		-e "s~\${_IMPORT_PREFIX}/shiboken6/include~${EPREFIX}/usr/include/shiboken6~g" \
+		-e "s~\${_IMPORT_PREFIX}/PySide6/include~${EPREFIX}/usr/include/PySide6~g" \
+		-i "${BUILD_DIR}/install${EPREFIX}/usr/lib/cmake/"*/*.cmake || die
 	local file
-	for file in "${BUILD_DIR}/install/usr/lib/cmake/"*/*.cpython-*.cmake
+	for file in "${BUILD_DIR}/install${EPREFIX}/usr/lib/cmake/"*/*.cpython-*.cmake
 	do
 		local base=${file##*/}
 		ln -s "${base}" "${file%/*}/${base%%.*}-${EPYTHON}.cmake" ||

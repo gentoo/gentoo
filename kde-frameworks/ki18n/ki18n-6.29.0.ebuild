@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{12..15} )
 QTMIN=6.10.1
-inherit ecm frameworks.kde.org python-single-r1
+inherit ecm frameworks.kde.org locale-utils python-single-r1
 
 DESCRIPTION="Framework based on Gettext for internationalizing user interface text"
 
@@ -31,9 +31,6 @@ RDEPEND="${COMMON_DEPEND}
 CMAKE_SKIP_TESTS=(
 	# bug 876496
 	kcatalogtest
-	# requires LANG fr_CH. bugs 823816
-	kcountrytest
-	kcountrysubdivisiontest
 	# flaky, bug 948895
 	ki18n-klocalizedstringtest
 )
@@ -43,4 +40,13 @@ src_configure() {
 		-DPython3_EXECUTABLE="${PYTHON}"
 	)
 	ecm_src_configure
+}
+
+src_test() {
+	# bug #823816
+	local -x LOCPATH
+	elocale_gen fr_CH.UTF-8
+	# LC_MESSAGES would take precedence over the LANG set by the tests
+	local -x LC_MESSAGES=
+	ecm_src_test
 }

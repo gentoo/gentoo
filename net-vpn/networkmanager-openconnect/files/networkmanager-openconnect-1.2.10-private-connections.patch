@@ -1,0 +1,158 @@
+From 0078c320fc2f8342613b5ea849cc697778e1fa6a Mon Sep 17 00:00:00 2001
+From: Josephine Pfeiffer <josie@redhat.com>
+Date: Thu, 23 Jul 2026 22:27:58 +0200
+Subject: [PATCH] service: support private connections
+
+Since NetworkManager 1.58 the daemon refuses to activate a private VPN
+connection (one with a user in connection.permissions) unless the plugin
+declares supports-safe-private-file-access, so per-user openconnect
+connections broke on upgrade with "The 'openconnect' plugin doesn't
+support private connections."
+
+The service runs as root and passes the CA certificate (--cafile) to the
+openconnect binary. Read it via nm_utils_copy_cert_as_user() (libnm
+1.52.2) so a private connection's file is accessed as the owning user, and
+declare the capability in the .name file.
+
+https://gitlab.freedesktop.org/NetworkManager/NetworkManager/-/issues/1989
+---
+ configure.ac                   |  2 +-
+ nm-openconnect-service.name.in |  1 +
+ src/nm-openconnect-service.c   | 54 +++++++++++++++++++++++++++++++++-
+ 3 files changed, 55 insertions(+), 2 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index b1cc414..c712ec2 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -145,7 +145,7 @@ if test x"$with_gtk4" != xno; then
+ 	PKG_CHECK_MODULES(LIBNMA_GTK4, libnma-gtk4 >= 1.8.33)
+ fi
+ 
+-PKG_CHECK_MODULES(LIBNM, libnm >= 1.2.0)
++PKG_CHECK_MODULES(LIBNM, libnm >= 1.52.2)
+ LIBNM_CFLAGS="$LIBNM_CFLAGS -DNM_VERSION_MIN_REQUIRED=NM_VERSION_1_2"
+ LIBNM_CFLAGS="$LIBNM_CFLAGS -DNM_VERSION_MAX_ALLOWED=NM_VERSION_1_4"
+ 
+diff --git a/nm-openconnect-service.name.in b/nm-openconnect-service.name.in
+index 78d8535..bc2c7e2 100644
+--- a/nm-openconnect-service.name.in
++++ b/nm-openconnect-service.name.in
+@@ -3,6 +3,7 @@ name=openconnect
+ service=org.freedesktop.NetworkManager.openconnect
+ program=@LIBEXECDIR@/nm-openconnect-service
+ supports-multiple-connections=true
++supports-safe-private-file-access=true
+ 
+ [libnm]
+ plugin=@PLUGINDIR@/libnm-vpn-plugin-openconnect.so
+diff --git a/src/nm-openconnect-service.c b/src/nm-openconnect-service.c
+index 0005534..ccf3476 100644
+--- a/src/nm-openconnect-service.c
++++ b/src/nm-openconnect-service.c
+@@ -122,6 +122,7 @@ static struct {
+ 	gboolean debug;
+ 	int log_level;
+ 	GMainLoop *loop;
++	GPtrArray *tmp_file_paths;
+ } gl/*obal*/;
+ 
+ /*****************************************************************************/
+@@ -424,6 +425,43 @@ openconnect_watch_cb (GPid pid, gint status, gpointer user_data)
+ 	}
+ }
+ 
++static const char *
++get_connection_permission_user (NMSettingConnection *s_con)
++{
++	const char *ptype;
++	const char *pitem;
++	const char *pdetail;
++	guint num_perms;
++	guint i;
++
++	num_perms = nm_setting_connection_get_num_permissions (s_con);
++	for (i = 0; i < num_perms; i++) {
++		if (!nm_setting_connection_get_permission (s_con, i, &ptype, &pitem, &pdetail))
++			continue;
++		if (nm_streq0 (ptype, "user"))
++			return pitem;
++	}
++	return NULL;
++}
++
++/* On a private connection the daemon runs us as root, but a file the
++ * connection references must be read with the owning user's privileges. */
++static char *
++access_file (const char *filename, const char *user, GError **error)
++{
++	char *tmp;
++
++	if (!user)
++		return g_strdup (filename);
++
++	tmp = nm_utils_copy_cert_as_user (filename, user, error);
++	if (!tmp)
++		return NULL;
++
++	g_ptr_array_add (gl.tmp_file_paths, g_strdup (tmp));
++	return tmp;
++}
++
+ static gint
+ nm_openconnect_start_openconnect_binary (NMOpenconnectPlugin *plugin,
+                                          NMSettingConnection *s_con,
+@@ -442,6 +480,8 @@ nm_openconnect_start_openconnect_binary (NMOpenconnectPlugin *plugin,
+ 	const char *props_disable_udp;
+ 	const char *protocol;
+ 	const char *props_tun_name;
++	const char *user;
++	gs_free char *cafile = NULL;
+ 
+ 	/* Find openconnect */
+ 	openconnect_binary = openconnect_binary_paths;
+@@ -484,6 +524,8 @@ nm_openconnect_start_openconnect_binary (NMOpenconnectPlugin *plugin,
+ 	props_gwcert = nm_setting_vpn_get_secret (s_vpn, NM_OPENCONNECT_KEY_GWCERT);
+ 	props_resolve = nm_setting_vpn_get_secret (s_vpn, NM_OPENCONNECT_KEY_RESOLVE);
+ 
++	user = get_connection_permission_user (s_con);
++
+ 	props_cacert = nm_setting_vpn_get_data_item (s_vpn, NM_OPENCONNECT_KEY_CACERT);
+ 	props_mtu = nm_setting_vpn_get_data_item (s_vpn, NM_OPENCONNECT_KEY_MTU);
+ 
+@@ -507,8 +549,13 @@ nm_openconnect_start_openconnect_binary (NMOpenconnectPlugin *plugin,
+ 		g_ptr_array_add (openconnect_argv, (gpointer) "--servercert");
+ 		g_ptr_array_add (openconnect_argv, (gpointer) props_gwcert);
+ 	} else if (props_cacert && strlen(props_cacert)) {
++		cafile = access_file (props_cacert, user, error);
++		if (!cafile) {
++			g_ptr_array_free (openconnect_argv, TRUE);
++			return -1;
++		}
+ 		g_ptr_array_add (openconnect_argv, (gpointer) "--cafile");
+-		g_ptr_array_add (openconnect_argv, (gpointer) props_cacert);
++		g_ptr_array_add (openconnect_argv, (gpointer) cafile);
+ 	}
+ 
+ 	if (props_mtu && strlen(props_mtu)) {
+@@ -839,6 +886,7 @@ int main (int argc, char *argv[])
+ 		exit (EXIT_FAILURE);
+ 
+ 	gl.loop = g_main_loop_new (NULL, FALSE);
++	gl.tmp_file_paths = g_ptr_array_new_with_free_func (g_free);
+ 
+ 	if (!persist)
+ 		g_signal_connect (plugin, "quit", G_CALLBACK (quit_mainloop), gl.loop);
+@@ -849,5 +897,9 @@ int main (int argc, char *argv[])
+ 	g_clear_pointer (&gl.loop, g_main_loop_unref);
+ 	g_object_unref (plugin);
+ 
++	for (guint i = 0; i < gl.tmp_file_paths->len; i++)
++		unlink ((const char *) gl.tmp_file_paths->pdata[i]);
++	g_ptr_array_unref (gl.tmp_file_paths);
++
+ 	exit (EXIT_SUCCESS);
+ }
+-- 
+GitLab
+

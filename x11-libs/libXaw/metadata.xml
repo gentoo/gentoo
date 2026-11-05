@@ -9,6 +9,6 @@
     <flag name="deprecated">Install deprecated Xaw6 library.</flag>
   </use>
   <upstream>
-    <remote-id type="freedesktop-gitlab">xorg/lib/libXaw</remote-id>
+    <remote-id type="freedesktop-gitlab">xorg/lib/libxaw</remote-id>
   </upstream>
 </pkgmetadata>

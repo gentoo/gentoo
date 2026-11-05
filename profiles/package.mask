@@ -36,10 +36,228 @@
 
 #--- END OF EXAMPLES ---
 
-# James Le Cuirot <chewi@gentoo.org> (2026-09-28)
-# Previously split out of games-engines/uzdoom as an external dependency but is
-# now bundled. Not used by anything else. Removal on 2026-10-28. Bug #957494.
-media-libs/zmusic
+# Michał Górny <mgorny@gentoo.org> (2026-11-03)
+# Low quality, unmaintained package.  No revdeps.
+# Removal on 2026-12-03.  Bug #985546.
+dev-cpp/libjson-rpc-cpp
+
+# James Le Cuirot <chewi@gentoo.org> (2026-10-30)
+# This version is widely reported to be broken. Upstream has been silent on the
+# issue. Bug #983634.
+=media-video/makemkv-2.0.0
+
+# Alfred Wingate <parona@protonmail.com> (2026-10-25)
+# Ruby 3.2 is no longer supported upstream and will no longer
+# receive security updates. This mask also includes any
+# remaining ruby32-only packages.
+dev-lang/ruby:3.2
+=dev-libs/Ice-3.7.10-r1
+app-admin/fluentd
+dev-ruby/blinkstick
+dev-ruby/faraday-httpclient
+dev-ruby/faraday-patron
+dev-ruby/faraday-rack
+dev-ruby/faraday_middleware-multi_json
+dev-ruby/faraday_middleware
+dev-ruby/faraday-net_http_persistent:1
+dev-ruby/faraday-retry:1
+dev-ruby/faraday:1
+dev-ruby/faraday-net_http:1
+dev-ruby/faraday-net_http:2
+dev-ruby/io-event:1.1
+dev-ruby/rantly:2
+net-misc/mikutter
+
+# Michael Orlitzky <mjo@gentoo.org> (2026-10-24)
+# dev-php packages that were added to support composer, phpunit,
+# etc. and are now abandoned. All are outdated and several have known
+# security issues. Removal on 2026-12-01 if no one complains.
+dev-php/File_Iterator
+dev-php/SabreAMF
+dev-php/Text_Template
+dev-php/ca-bundle
+dev-php/cli-prompt
+dev-php/doctrine
+dev-php/doctrine-instantiator
+dev-php/fedora-autoloader
+dev-php/jsonlint
+dev-php/json-schema
+dev-php/metadata-minifier
+dev-php/mmslib
+dev-php/myclabs-deepcopy
+dev-php/nikic-php-parser
+dev-php/phar-io-manifest
+dev-php/phar-io-version
+dev-php/phar-utils
+dev-php/psr-log
+dev-php/reactphp-promise
+dev-php/sebastian-code-unit-reverse-lookup
+dev-php/sebastian-complexity
+dev-php/sebastian-diff
+dev-php/sebastian-environment
+dev-php/sebastian-lines-of-code
+dev-php/sebastian-resource-operations
+dev-php/sebastian-type
+dev-php/sebastian-version
+dev-php/semver
+dev-php/spdx-licenses
+dev-php/symfony-filesystem
+dev-php/symfony-finder
+dev-php/symfony-process
+dev-php/theseer-Autoload
+dev-php/theseer-DirectoryScanner
+dev-php/theseer-tokenizer
+dev-php/twig
+dev-php/webmozart-assert
+dev-php/xdebug-handler
+dev-php/zetacomponents-Base
+dev-php/zetacomponents-ConsoleTools
+
+# David Seifert <soap@gentoo.org> (2026-10-24)
+# Upstream abandoned, GTK+2 based, blocks openssl-4 migration.
+# net-irc/zoitechat is a maintained GTK+3 fork, please switch to that.
+# Removal on 2026-11-23. Bug #977173.
+net-irc/hexchat
+
+# David Seifert <soap@gentoo.org> (2026-10-24)
+# Unmaintained, blocks openssl-4 transition, tons of bugs, X.509 + HPN
+# patches are a lost cause. For X.509, use net-misc/pkixssh. HPN-SSH is
+# not packaged as a separate fork, and requires a dedicated commitment.
+# Removal on 2026-11-23. Bug #978473.
+net-misc/openssh-contrib
+
+# Michał Górny <mgorny@gentoo.org> (2026-10-22)
+# Not ported to py3.13.  No revdeps.
+# Removal on 2026-11-21.  Bug #952389.
+dev-python/pythondialog
+
+# Michał Górny <mgorny@gentoo.org> (2026-10-22)
+# Not ported to py3.13.  Ton of other bugs reported, including build
+# failures and a version bump request.
+# Removal on 2026-11-21.  Bug #952686.
+sci-mathematics/gsl-shell
+
+# Michał Górny <mgorny@gentoo.org> (2026-10-22)
+# Not ported to py3.13.  Indirectly depends on dev-python/sphinx that
+# dropped py3.12 support.
+# Removal on 2026-11-21.  Bug #956588.
+mail-client/alot
+
+# Sam James <sam@gentoo.org> (2026-10-22)
+# Replaced by importlib, no reverse dependencies (bug #984696). Removal
+# on 2026-11-22.
+dev-python/entrypoints
+
+# Sam James <sam@gentoo.org> (2026-10-20)
+# Breaks one of its major reverse dependencies, so mask for now as nothing
+# needs a newer version yet (bug #984580).
+>=app-text/podofo-1
+
+# Eli Schwartz <eschwartz@gentoo.org> (2026-10-18)
+# Unmaintained in gentoo, formally abandoned upstream in favor of
+# media-libs/libv4l[dvb]. Sources no longer available upstream.
+# Fails to build with modern gcc.
+# Removal on 2026-11-17.  Bug #969753.
+media-tv/linuxtv-dvb-apps
+
+# Arthur Zamarin <arthurzam@gentoo.org> (2026-10-18)
+# The built from source package, app-admin/awscli, can be used now.
+# Removal on 2026-11-17.  Bug #984525.
+app-admin/awscli-bin
+
+# Michał Górny <mgorny@gentoo.org> (2026-10-13)
+# Part of removed dev-python/pyproject-fmt.  No revdeps left.
+# Removal on 2026-11-12.  Bug #984202.
+dev-python/toml-fmt-common
+
+# Michał Górny <mgorny@gentoo.org> (2026-10-13)
+# The package is bloated and hostile to downstream packaging.  The two
+# latest upstream releases don't build because of various issues.
+# Removal on 2026-11-12.  Bug #984201.
+media-gfx/fotema
+
+# Matt Jolly <kangie@gentoo.org> (2026-10-09)
+# Dropped upstream, use www-client/opera or www-client/opera-developer.
+# Removal on 2026-11-09. Bug #983935.
+www-client/opera-beta
+
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2026-10-08)
+# Blocks removal of vulnerable old slot of dev-java/commons-lang:3.6
+# Nothing depends on it.
+# HOMEPAGE is unresponsive.
+# SRC_URI is hosted in a devspace which does no longer exist.
+# Removal on 2026-11-08.  Bug #938231.
+dev-lang/tuprolog
+
+# Jaco Kroon <jkroon@gentoo.org> (2026-10-06)
+# Unmaintained, abandoned by maintainer.
+# You can look at net-misc/ntpsec or net-misc/chrony as replacement.
+# See also: https://wiki.gentoo.org/wiki/Network_Time_Protocol
+# Removal on 2027-01-04. Bug #962880, and many more.
+net-misc/ntp
+
+# Mike Pagano <mpagano@gentoo.org> (2026-10-06)
+# Unmaintained, abandoned by maintainer.
+# Keeping vulnerable dependencies in the tree.
+# Removal on 2026-11-06. Bug #983813 .
+acct-group/kibana
+acct-user/kibana
+www-apps/kibana-bin
+
+# Ionen Wolkens <ionen@gentoo.org> (2026-10-01)
+# Masked for testing the new .0 version and leave time for packages
+# to catch up on support. Will likely be kept masked until 6.12.1
+# is released unless there is a notable reason to need this earlier.
+#
+# If wanted, feel welcome to add `dev-qt/*:6/6.12.0` to package.unmask
+# and report issues.
+#
+# Note: qtwebengine was "split" from Qt's main packaging and is now
+# versioned as 6.<chromium-major>.<patch> (6.140.0 here), for now it is
+# included in this mask (unmask with dev-qt/qtwebengine:6/6.140.0), but
+# in the future it will be treated separately given it is not pinned and
+# e.g. 6.140.0 can be used with Qt 6.11.x (aka not just 6.12.x).
+#
+# !!! ... however, 6.140.0 was not released yet, if you need qtwebengine
+#     either do not unmask this or use qtwebengine-6.140.9999 for now.
+=dev-python/pyqt6-6.12*
+=dev-python/pyqt6-pdf-6.140*
+=dev-python/pyqt6-webengine-6.140*
+=dev-python/pyside-6.12.0*
+=dev-qt/qt-docs-6.12.0*
+=dev-qt/qt3d-6.12.0*
+=dev-qt/qt5compat-6.12.0*
+=dev-qt/qtbase-6.12.0*
+=dev-qt/qtcharts-6.12.0*
+=dev-qt/qtconnectivity-6.12.0*
+=dev-qt/qtdeclarative-6.12.0*
+=dev-qt/qtgraphs-6.12.0*
+=dev-qt/qthttpserver-6.12.0*
+=dev-qt/qtimageformats-6.12.0*
+=dev-qt/qtlanguageserver-6.12.0*
+=dev-qt/qtlocation-6.12.0*
+=dev-qt/qtmultimedia-6.12.0*
+=dev-qt/qtnetworkauth-6.12.0*
+=dev-qt/qtpositioning-6.12.0*
+=dev-qt/qtquick3d-6.12.0*
+=dev-qt/qtquicktimeline-6.12.0*
+=dev-qt/qtremoteobjects-6.12.0*
+=dev-qt/qtscxml-6.12.0*
+=dev-qt/qtsensors-6.12.0*
+=dev-qt/qtserialbus-6.12.0*
+=dev-qt/qtserialport-6.12.0*
+=dev-qt/qtshadertools-6.12.0*
+=dev-qt/qtspeech-6.12.0*
+=dev-qt/qtsvg-6.12.0*
+=dev-qt/qttasktree-6.12.0*
+=dev-qt/qttools-6.12.0*
+=dev-qt/qttranslations-6.12.0*
+=dev-qt/qtvirtualkeyboard-6.12.0*
+=dev-qt/qtwayland-6.12.0*
+=dev-qt/qtwebchannel-6.12.0*
+=dev-qt/qtwebengine-6.140.0*
+=dev-qt/qtwebsockets-6.12.0*
+=dev-qt/qtwebview-6.12.0*
 
 # Viorel Munteanu <ceamac@gentoo.org> (2026-09-27)
 # Drupal 11.2.x is EOL, no longer receives security updates.
@@ -92,40 +310,16 @@ www-client/chromium
 # and tagged onto bug #981565 too).
 ~net-print/libcupsfilters-2.2.1
 
-# Ionen Wolkens <ionen@gentoo.org> (2026-09-21)
-# Breaks dev-qt/qtbase at build time (runtime is fine I believe) and
-# hasn't been looked into yet, mask for the time being.
->=dev-libs/md4c-0.6.0
-
-# Jaco Kroon <jkroon@gentoo.org> (2026-09-16)
-# Intention was for STIR/SHAKEN, which has proven to have extremely limited
-# usability outside of NANP.  No revdeps.  Outdated.  Three different APIs and
-# unable to properly SLOT.  Removal on 2026-10-16.  Bugs #929073, #939530.
-dev-libs/libjwt
-
 # Michał Górny <mgorny@gentoo.org> (2026-09-16)
 # Used only by dev-python/jupyter-server with Python < 3.12.
 # No revdeps left.  Removal on 2026-10-16.  Bug #982608.
 dev-python/overrides
-
-# Lukas Schmelting <lschmelting@posteo.com> (2026-09-06)
-# Most revdeps still need gexiv2-0.16 compatibility fixes
-# See: https://bugs.gentoo.org/982084
-=media-libs/gexiv2-0.16*
->=gnome-base/nautilus-50
->=media-gfx/shotwell-33
->=app-misc/localsearch-3.12
 
 # Arthur Zamarin <arthurzam@gentoo.org> (2026-09-11)
 # EAPI=7, old PYTHON_COMPAT, doesn't work with spotify for a long time,
 # upstream inactive for a decade.
 # Removal on 2026-10-11.  Bugs #982278, #952501.
 gnome-extra/gnome-integration-spotify
-
-# Arthur Zamarin <arthurzam@gentoo.org> (2026-09-11)
-# EAPI=7, uses deprecated golang eclass, fails to compile.
-# Removal on 2026-10-11.  Bugs #982277, #657284, #739422, #844712, #926030.
-net-analyzer/kapacitor
 
 # Alexey Sokolov <alexey+gentoo@asokolov.org> (2026-09-09)
 # Upstream abandoned the project, suggests www-servers/gatling
@@ -144,48 +338,6 @@ acct-user/fnordlog
 # Unmaintained, lots of FetchContent_* hacks.
 # Removal on 2026-10-07. Bug #927149.
 sci-physics/espresso
-
-# Michał Górny <mgorny@gentoo.org> (2026-09-05)
-# Broken with current dev-python/pywayland version.  Stuck on old
-# gui-libs/wlroots.  Used only by old versions of x11-wm/qtile.
-# Removal on 2026-10-05.  Bug #982020.
-dev-python/pywlroots
-
-# Michał Górny <mgorny@gentoo.org> (2026-09-05)
-# Stuck on Python 3.12, broken tests, no reverse dependencies.
-# Removal on 2026-10-05.  Bug #952388.
-dev-python/python3-saml
-
-# Michał Górny <mgorny@gentoo.org> (2026-09-05)
-# Stuck on Python 3.12.  No activity upstream.
-# Removal on 2026-10-05.  Bug #952340.
-dev-python/ioflo
-dev-python/raet
-
-# Michał Górny <mgorny@gentoo.org> (2026-09-05)
-# dev-python/consonance has been broken since at least 2024.  Contrary
-# to PYTHON_COMPAT, the code is incompatible with Python 3.12+.
-# The protobuf file needs to be rebuilt, yet upstream never published
-# its source.  No upstream activity since 2021.  No reverse
-# dependencies.  Including a bunch of dead NIH dependencies.
-# Removal on 2026-10-05.  Bug #926610.
-dev-python/consonance
-dev-python/dissononce
-dev-python/python-axolotl
-dev-python/python-axolotl-curve25519
-dev-python/transitions
-
-# Michał Górny <mgorny@gentoo.org> (2026-09-04)
-# Test suite broken with numpy-2.  Last release in 2020.  No reverse
-# dependencies.
-# Removal on 2026-10-04.  Bug #952323.
-dev-python/chart-studio
-
-# Michał Górny <mgorny@gentoo.org> (2026-09-01)
-# Low quality slop package with high code churn and frequently changing
-# results.  All the most recent releases are broken.
-# No reverse dependencies.  Removal on 2026-10-01.  Bug #981756.
-dev-python/pyproject-fmt
 
 # Ulrich Müller <ulm@gentoo.org> (2026-08-31)
 # Snapshot versions, masked for testing.
@@ -208,35 +360,10 @@ net-misc/croc
 # Removal on 2026-09-09.
 app-text/catdoc
 
-# Michał Górny <mgorny@gentoo.org> (2026-08-08)
-# A chain of NIH packages that have seen no upstream activity in 3+
-# years.  They are all broken with >=dev-python/flit-core-4, and have
-# no reverse dependencies outside the chain.
-# Removal on 2026-09-07.  Bug #980500.
-dev-python/autoprop
-dev-python/signature-dispatch
-dev-python/vecrec
-
 # Nowa Ammerlaan <nowa@gentoo.org> (2026-08-06)
 # This version was pulled from upstream. The reason for this is
 # unclear. But masked just as a precaution. Bug #980367.
 =sys-boot/shim-16.1_p8
-
-# Michał Górny <mgorny@gentoo.org> (2026-08-05)
-# Last released in 2017.  Carries a significant patchset already.
-# Uses pkg_resources namespaces.  No reverse dependencies.
-# Removal on 2026-09-04.  Bug #957269.
-dev-python/pyformance
-
-# Michał Górny <mgorny@gentoo.org> (2026-08-04)
-# Slop package.  The old versions bundle a very old fork of
-# app-i18n/uchardet.  The new ones require app-i18n/uchardet from git
-# that suffers from regressions (and upstream slop-patched them anyway).
-# The only revdep supports fallback to dev-python/chardet and
-# dev-python/charset-normalizer (both are also slop nowadays, but we're
-# stuck with them anyway), and uses a || dep.
-# Removal on 2026-09-03.  Bug #980354.
-dev-python/faust-cchardet
 
 # Alfred Wingate <parona@protonmail.com> (2026-07-24)
 # Renamed to libgedit-tepl upstream.
@@ -265,16 +392,6 @@ app-arch/p7zip
 # Eray Aslan <eras@gentoo.org> (2026-07-06)
 # Introduces backwards breaking change. Mask until downstreams adjust
 >=dev-db/lmdb-1.0.0
-
-# Michał Górny <mgorny@gentoo.org> (2026-06-19)
-# dev-python/pytrie is broken on Python 3.14 and has not been touched
-# since 2020.  dev-python/autobahn and dev-python/txaio have become
-# complete broken slop, and still depend on it.  Remove these packages,
-# their reverse dependencies and their dependencies without revdeps.
-# For magic-wormhole, use net-misc/wormhole-william or
-# net-misc/magic-wormhole-rust instead.
-# Removal on 2026-07-19.  Bug #967367.
-dev-python/magic-wormhole
 
 # Michał Górny <mgorny@gentoo.org> (2026-06-03)
 # Mike Pagano <mpagano@gentoo.org> (2026-06-03)
@@ -328,13 +445,6 @@ x11-drivers/xf86-video-vmware
 # Mask to avoid Portage wasting time trying to find a solution, when
 # the only one available is to downgrade.
 >=dev-util/pwntools-4.15.0
-
-# Sam James <sam@gentoo.org> (2026-04-19)
-# Major new release with lots of broken packages expected. Notably, even
-# dev-lang/python isn't yet. Please use with caution and file bugs for
-# any issues, blocking bug #972902.
-=dev-libs/openssl-4*
-=dev-libs/openssl-compat-3*
 
 # Sam James <sam@gentoo.org> (2026-04-17)
 # app-misc/tmux fails to open with newer ncurses (bug #972804)
@@ -575,11 +685,6 @@ x11-drivers/nvidia-drivers:0/390
 # Apparently the "b" in version means "beta". 3.24 is available, we
 # should update to that. #841437
 ~sci-physics/bullet-3.22b
-
-# Brian Evans <grknight@gentoo.org> (2022-01-07)
-# The main consumer, phpunit, does not initiate the new timer correctly
-# This is likely to cause issues in tests; Unmask if using for other purposes
->=dev-php/PHP_Timer-5.0
 
 # Ionen Wolkens <ionen@gentoo.org> (2021-10-09)
 # Vulkan beta driver branch aimed at Vulkan developers for testing

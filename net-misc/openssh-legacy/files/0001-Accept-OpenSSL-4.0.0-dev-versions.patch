@@ -1,0 +1,33 @@
+From 8e49fa7454e75cdd1537358fb7288d3db05404c3 Mon Sep 17 00:00:00 2001
+Message-ID: <8e49fa7454e75cdd1537358fb7288d3db05404c3.1792953928.git.sam@gentoo.org>
+From: Darren Tucker <dtucker@dtucker.net>
+Date: Sun, 7 Sep 2025 13:35:22 +1000
+Subject: [PATCH] Accept OpenSSL 4.0.0-dev versions.
+
+They seem to work, at least for now.
+
+(cherry picked from commit 54abadd3f286efea0dbbdbfea8011d5e1e30c074)
+---
+ configure.ac | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index dbe189066..73d5c5d4b 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -2915,8 +2915,8 @@ if test "x$openssl" = "xyes" ; then
+ 				*) ;;	# Assume all other versions are good.
+ 				esac
+ 				;;
+-			30*)
+-				# OpenSSL 3; we use the 1.1x API
++			30*|40*)
++				# OpenSSL 3 & 4; we use the 1.1x API
+ 				# https://openssl.org/policies/general/versioning-policy.html
+ 				CPPFLAGS="$CPPFLAGS -DOPENSSL_API_COMPAT=0x10100000L"
+ 				;;
+
+base-commit: 3eeda15eb9d3b9f2fd762ba3493ba88abe6bbcd9
+-- 
+2.56.0
+

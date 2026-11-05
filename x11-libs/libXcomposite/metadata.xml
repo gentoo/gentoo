@@ -6,6 +6,6 @@
     <name>X11</name>
   </maintainer>
   <upstream>
-    <remote-id type="freedesktop-gitlab">xorg/lib/libXcomposite</remote-id>
+    <remote-id type="freedesktop-gitlab">xorg/lib/libxcomposite</remote-id>
   </upstream>
 </pkgmetadata>

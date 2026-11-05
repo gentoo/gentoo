@@ -17,7 +17,7 @@ LICENSE="
 "
 SLOT="0"
 IUSE="branding"
-KEYWORDS="~alpha arm ~hppa ~s390 ~sparc x86"
+KEYWORDS="~alpha arm ~hppa ppc ~s390 ~sparc x86"
 
 # gtk+:3 is needed for build for the gtk-encode-symbolic-svg utility
 # librsvg is needed for gtk-encode-symbolic-svg to be able to read the source SVG via

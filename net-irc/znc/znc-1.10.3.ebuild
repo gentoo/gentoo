@@ -18,7 +18,7 @@ else
 	MY_PV=${PV/_/-}
 	MY_P=${PN}-${MY_PV}
 	SRC_URI="
-		https://files.asokolov.org/${MY_P}.tar.gz
+		https://znc.in/releases/archive/${MY_P}.tar.gz
 		test? ( ${GTEST_URL} )
 	"
 	KEYWORDS="amd64 arm arm64 ~ppc64 ~riscv x86"

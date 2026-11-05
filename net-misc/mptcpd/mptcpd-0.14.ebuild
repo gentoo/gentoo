@@ -34,7 +34,7 @@ if [[ ${PV} == 9999* ]]; then
 	EGIT_REPO_URI="https://github.com/intel/mptcpd.git"
 else
 	SRC_URI="https://github.com/intel/mptcpd/releases/download/v${PV}/${P}.tar.gz"
-	KEYWORDS="~amd64"
+	KEYWORDS="amd64"
 fi
 
 CONFIG_CHECK="MPTCP"

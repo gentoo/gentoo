@@ -7,7 +7,7 @@ LUA_COMPAT=( luajit )
 PYTHON_COMPAT=( python3_{12..15} )
 VALA_USE_DEPEND=vapigen
 
-inherit branding flag-o-matic lua-single meson python-single-r1 shell-completion toolchain-funcs vala xdg
+inherit branding flag-o-matic locale-utils lua-single meson python-single-r1 shell-completion toolchain-funcs vala xdg
 
 DESCRIPTION="GNU Image Manipulation Program"
 HOMEPAGE="https://www.gimp.org/"
@@ -62,6 +62,7 @@ COMMON_DEPEND="
 	>=app-text/poppler-0.69.0[cairo]
 	>=app-text/poppler-data-0.4.9
 	>=dev-libs/appstream-0.16.1:=
+	>=dev-libs/fribidi-1.0.8:=
 	>=dev-libs/glib-2.70.0:2[introspection]
 	>=dev-libs/gobject-introspection-1.82.0-r2
 	>=dev-libs/json-glib-1.2.6
@@ -162,24 +163,7 @@ pkg_pretend() {
 }
 
 pkg_setup() {
-	if [[ ${MERGE_TYPE} != binary ]]; then
-		use openmp && tc-check-openmp
-
-		# bug #969468
-		local locales="$(locale -a)"
-		if ! has "en_US.utf8" ${locales} && ! has "en_US.UTF-8" ${locales}; then
-			# portage splits and unset LC_ALL. Cannot rely on that
-			if [[ "${LANG}" != "C" ]] && [[ "${LANG}" != "POSIX" ]] && [[ "${LANG}" == "${LANG#C\.}" ]]; then
-				# Set LC_ALL to avoid locales breaking due to the profile setting LC_MESSAGES=C
-				# and portage itself setting LC_COLLATE=C
-				einfo "Setting LC_ALL=${LANG} based on LANG because en_US.UTF-8 isn't available, bug #968468"
-				export LC_ALL="${LANG}"
-			else
-				eerror "Cannot use LANG=${LANG} as it cannot be C or POSIX"
-				die "en_US.UTF-8 isn't available and cannot fallback to user locale, bug #969468"
-			fi
-		fi
-	fi
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 
 	python-single-r1_pkg_setup
 	use lua && lua-single_pkg_setup
@@ -213,6 +197,9 @@ src_prepare() {
 
 	# Disable automagic pandoc use that isn't relevant for a package build
 	sed -e '/pandoc/ s/ = .*/ = disabler()/' -i docs/meson.build || die
+
+	# Needs to be properly hooked up to USE="test-full"
+	sed -e "s|subdir('app/tests/uitests')|ui_tests_status = 'disabled by ebuild'|" -i meson.build || die
 }
 
 src_configure() {
@@ -232,7 +219,6 @@ src_configure() {
 		-Denable-multiproc=true
 		-Dappdata-test=disabled
 		-Dbug-report-url="${BRANDING_OS_BUG_REPORT_URL}"
-		-Dilbm=disabled
 		-Dlibbacktrace=false
 		$(meson_feature aalib aa)
 		$(meson_feature alsa)
@@ -265,6 +251,10 @@ src_configure() {
 }
 
 src_compile() {
+	# gen-languages needs en_US.UTF-8, bug #969468
+	local -x LOCPATH
+	elocale_gen en_US.UTF-8
+
 	export XDG_DATA_DIRS="${EPREFIX}"/usr/share  # bug 587004
 	meson_src_compile
 }

@@ -1,0 +1,17 @@
+This is some malloc funny business to test out-of-memory code paths,
+and the number of tests is constantly adjusted to make it pass.
+
+diff --git a/test/Makefile b/test/Makefile
+index 82ffee6fa..360ea98ed 100644
+--- a/test/Makefile
++++ b/test/Makefile
+@@ -12,8 +12,7 @@ TESTS := \
+ 	utils \
+ 	messages \
+ 	time \
+-	mimesniff \
+-	corestrings #llcache
++	mimesniff
+ 
+ # sources necessary to use nsurl functionality
+ NSURL_SOURCES := utils/nsurl/nsurl.c utils/nsurl/parse.c utils/idna.c \

@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{10..13} )
-USE_RUBY=( ruby3{2..3} )
+USE_RUBY="ruby32 ruby33"
 LUA_COMPAT=( lua5-{1..4} luajit )
 
 inherit autotools bash-completion-r1 dot-a linux-info lua-single perl-functions\

@@ -24,7 +24,7 @@ PYTHON_COMPAT=( python3_{12..15} )
 # See cmake/scripts/common/ArchSetup.cmake for available options
 CPU_FLAGS="cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_sse3 cpu_flags_x86_sse4_1 cpu_flags_x86_sse4_2 cpu_flags_x86_avx cpu_flags_x86_avx2 cpu_flags_arm_neon"
 
-inherit autotools cmake desktop flag-o-matic java-pkg-2 libtool linux-info optfeature pax-utils python-single-r1 \
+inherit autotools cmake desktop flag-o-matic libtool linux-info optfeature pax-utils python-single-r1 \
 	toolchain-funcs xdg
 
 DESCRIPTION="A free and open source media-player and entertainment hub"
@@ -286,7 +286,6 @@ Please consider enabling IP_MULTICAST under Networking options.
 
 pkg_setup() {
 	check_extra_config
-	ROOT= java-pkg-2_pkg_setup
 	python-single-r1_pkg_setup
 }
 

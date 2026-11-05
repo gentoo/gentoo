@@ -16,7 +16,7 @@ S="${WORKDIR}/cli-v${PV}-${GIT_COMMIT}"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 # tests communicate with gitlab.com and require a personal access token
 RESTRICT="test"

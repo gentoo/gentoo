@@ -122,9 +122,11 @@ fi
 
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:SELinux"
 if [[ -n ${BASEPOL} && "${BASEPOL}" != "9999" ]]; then
+	# TODO: move this to distfiles.gentoo.org/pub/proj
 	SRC_URI="
 		https://github.com/SELinuxProject/refpolicy/releases/download/RELEASE_${_SELINUX_POLICY_UPSTREAM_PV/./_}/refpolicy-${_SELINUX_POLICY_UPSTREAM_PV}.tar.bz2
 		https://dev.gentoo.org/~perfinion/patches/selinux-base-policy/patchbundle-selinux-base-policy-${BASEPOL}.tar.bz2
+		https://dev.gentoo.org/~sam/patches/selinux-base-policy/patchbundle-selinux-base-policy-${BASEPOL}.tar.bz2
 	"
 elif [[ "${BASEPOL}" != "9999" ]]; then
 	SRC_URI="https://github.com/SELinuxProject/refpolicy/releases/download/RELEASE_${_SELINUX_POLICY_UPSTREAM_PV/./_}/refpolicy-${_SELINUX_POLICY_UPSTREAM_PV}.tar.bz2"

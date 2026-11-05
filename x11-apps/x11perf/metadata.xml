@@ -6,6 +6,6 @@
     <name>X11</name>
   </maintainer>
   <upstream>
-    <remote-id type="freedesktop-gitlab">xorg/app/x11perf</remote-id>
+    <remote-id type="freedesktop-gitlab">xorg/test/x11perf</remote-id>
   </upstream>
 </pkgmetadata>

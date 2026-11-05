@@ -18,6 +18,7 @@ HOMEPAGE="https://github.com/sekrit-twc/zimg"
 
 LICENSE="WTFPL-2"
 SLOT="0"
+
 IUSE="debug static-libs test"
 RESTRICT="!test? ( test )"
 
@@ -35,7 +36,5 @@ multilib_src_configure() {
 
 multilib_src_install_all() {
 	einstalldocs
-	if ! use static-libs; then
-		find "${ED}" -type f -name '*.la' -delete || die
-	fi
+	find "${ED}" -type f -name '*.la' -delete || die
 }

@@ -8,6 +8,13 @@ DISTUTILS_USE_PEP517=sip
 PYTHON_COMPAT=( python3_{12..15} )
 inherit distutils-r1 flag-o-matic multiprocessing pypi qmake-utils
 
+# TODO: this will need adjustment next pyqt6-webengine version given
+# that in Qt 6.12, qtwebengine will use e.g. qtwebengine-6.140.0 which
+# mismatches with Qt and it is unclear what pyqt6-webengine will be
+# versioned as (match pyqt6 x.y, or qtwebengine x.y -- may need to
+# store a flat version for one)
+QT_PV=$(ver_cut 1-2):6
+
 DESCRIPTION="Python bindings for QtWebEngine"
 HOMEPAGE="https://www.riverbankcomputing.com/software/pyqtwebengine/"
 
@@ -17,12 +24,12 @@ KEYWORDS="amd64 arm64"
 IUSE="debug quick +widgets"
 
 RDEPEND="
-	>=dev-python/pyqt6-$(ver_cut 1-2)[gui,ssl,webchannel,${PYTHON_USEDEP}]
-	dev-qt/qtbase:6[gui,widgets?]
-	dev-qt/qtwebengine:6[widgets]
+	>=dev-python/pyqt6-${QT_PV%:*}[gui,ssl,webchannel,${PYTHON_USEDEP}]
+	>=dev-qt/qtbase-${QT_PV}[gui,widgets?]
+	>=dev-qt/qtwebengine-${QT_PV}[widgets]
 	quick? (
 		dev-python/pyqt6[qml]
-		dev-qt/qtwebengine:6[qml]
+		>=dev-qt/qtwebengine-${QT_PV}[qml]
 	)
 	widgets? ( dev-python/pyqt6[network,printsupport,widgets] )
 "
@@ -30,7 +37,7 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	>=dev-python/pyqt-builder-1.19[${PYTHON_USEDEP}]
 	>=dev-python/sip-6.15[${PYTHON_USEDEP}]
-	dev-qt/qtbase:6
+	>=dev-qt/qtbase-${QT_PV}
 "
 
 src_prepare() {

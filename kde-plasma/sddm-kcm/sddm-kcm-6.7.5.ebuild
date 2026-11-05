@@ -32,7 +32,7 @@ DEPEND="
 RDEPEND="${DEPEND}
 	>=kde-frameworks/kirigami-${KFMIN}:6
 	>=kde-frameworks/kitemmodels-${KFMIN}:6
-	x11-misc/sddm
+	gui-apps/sddm
 "
 BDEPEND=">=kde-frameworks/kcmutils-${KFMIN}:6"
 

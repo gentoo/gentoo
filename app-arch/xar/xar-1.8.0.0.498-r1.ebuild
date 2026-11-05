@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -34,6 +34,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.8.0.0.487-non-darwin.patch
 	"${FILESDIR}"/${PN}-1.8.0.0.487-variable-sized-object.patch
 	"${FILESDIR}"/${PN}-1.8.0.0.498-impl-decls.patch
+	"${FILESDIR}"/${PN}-1.8.0.0.498-strmode-knr.patch
 )
 
 src_prepare() {

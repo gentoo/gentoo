@@ -16,7 +16,7 @@ S="${WORKDIR}/${P/_}"
 
 LICENSE="ISC BSD BSD-1 BSD-2 BSD-4"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm arm64 ppc64 ~riscv x86"
 IUSE="berkdb +mta pam split-usr"
 
 DEPEND="

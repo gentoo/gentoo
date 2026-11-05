@@ -3,7 +3,8 @@
 
 EAPI=8
 
-CODENAME="Piers"
+# No new codename for 23.x as of 2026/10/24
+CODENAME=
 
 # libdvd{css,read,nav} are not unbundlable without patching the buildsystem.
 
@@ -22,9 +23,9 @@ PYTHON_REQ_USE="sqlite,ssl"
 PYTHON_COMPAT=( python3_{12..15} )
 
 # See cmake/scripts/common/ArchSetup.cmake for available options
-CPU_FLAGS="cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_sse3 cpu_flags_x86_sse4_1 cpu_flags_x86_sse4_2 cpu_flags_x86_avx cpu_flags_x86_avx2 cpu_flags_arm_neon"
+declare -ga CPU_FLAGS=( cpu_flags_{x86_{sse,sse2,sse3,ssse3,sse4_1,sse4_2,avx,avx2},arm_neon} )
 
-inherit autotools cmake desktop flag-o-matic java-pkg-2 libtool linux-info optfeature pax-utils python-single-r1 \
+inherit autotools cmake desktop flag-o-matic libtool linux-info optfeature pax-utils python-single-r1 \
 	toolchain-funcs xdg
 
 DESCRIPTION="A free and open source media-player and entertainment hub"
@@ -78,7 +79,7 @@ SLOT="0"
 # use flag is called libusb so that it doesn't fool people in thinking that
 # it is _required_ for USB support. Otherwise they'll disable udev and
 # that's going to be worse.
-IUSE="airplay alsa bluetooth bluray caps cec +css dbus doc eventclients gbm gles lcms libusb lirc mariadb mysql nfs +optical pipewire postproc pulseaudio samba soc +system-ffmpeg system-swig test udf udev upnp vaapi vdpau wayland webserver X +xslt zeroconf ${CPU_FLAGS}"
+IUSE="airplay alsa bluetooth bluray caps cec +css dbus doc eventclients gbm gles lcms libusb lirc mariadb mysql nfs +optical pipewire postproc pulseaudio samba soc +system-ffmpeg system-swig test udf udev upnp vaapi vdpau wayland webserver X +xslt zeroconf ${CPU_FLAGS[@]}"
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
 	|| ( gbm wayland X )
@@ -198,6 +199,7 @@ COMMON_TARGET_DEPEND="${PYTHON_DEPS}
 		app-arch/bzip2
 		app-arch/xz-utils
 		media-libs/dav1d:=
+		media-libs/opus:=
 		net-libs/gnutls:=
 	)
 	udf? (
@@ -285,7 +287,6 @@ Please consider enabling IP_MULTICAST under Networking options.
 
 pkg_setup() {
 	check_extra_config
-	ROOT= java-pkg-2_pkg_setup
 	python-single-r1_pkg_setup
 }
 
@@ -363,6 +364,7 @@ src_configure() {
 		-DENABLE_CLANGTIDY=OFF
 		-DENABLE_CPPCHECK=OFF
 		-DENABLE_INCLUDEWHATYOUUSE=OFF
+		-DENABLE_PCH=OFF # doesn't make sense for Gentoo
 		# https://bugs.gentoo.org/show_bug.cgi?id=606124
 		-DENABLE_GOLD=OFF
 		-DENABLE_LLD=OFF
@@ -418,14 +420,15 @@ src_configure() {
 		-DENABLE_INTERNAL_FLATBUFFERS=OFF
 		-DENABLE_INTERNAL_FMT=OFF
 		-DENABLE_INTERNAL_FSTRCMP=OFF
-		-DENABLE_INTERNAL_GTEST=OFF
 		-DENABLE_INTERNAL_LCMS2=OFF
 		-DENABLE_INTERNAL_LZO2=OFF
 		-DENABLE_INTERNAL_NLOHMANNJSON=OFF
-		-DENABLE_INTERNAL_SWIG=$(usex !system-swig)
+		-DENABLE_INTERNAL_OPUS=OFF
 		-DENABLE_INTERNAL_PCRE2=OFF
 		-DENABLE_INTERNAL_SPDLOG=OFF
+		-DENABLE_INTERNAL_SWIG=$(usex !system-swig)
 		-DENABLE_INTERNAL_TAGLIB=OFF
+		#-DENABLE_INTERNAL_ZSTD=OFF # could be used by other vendored deps
 
 		-DTARBALL_DIR="${DISTDIR}"
 		-DLIBDVDNAV_URL="${DISTDIR}/libdvdnav-${LIBDVDNAV_VERSION}.tar.bz2"
@@ -449,6 +452,7 @@ src_configure() {
 	)
 	use !system-swig && mycmakeargs+=( -DSWIG_URL="${DISTDIR}/swig-${SWIG_VERSION}.tar.gz" )
 	use nfs && mycmakeargs+=( -DENABLE_INTERNAL_NFS=OFF )
+	use test && mycmakeargs+=( -DENABLE_INTERNAL_GTEST=OFF )
 	use !udev && mycmakeargs+=( -DENABLE_LIBUSB=$(usex libusb) )
 	use udf && mycmakeargs+=( -DENABLE_INTERNAL_UDFREAD=OFF )
 	use webserver && mycmakeargs+=( -DENABLE_INTERNAL_LIBMICROHTTPD=OFF )

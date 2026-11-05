@@ -1,0 +1,44 @@
+From 085e316fd1353216815189cd45a8cc516561abe2 Mon Sep 17 00:00:00 2001
+From: Matt Jolly <kangie@gentoo.org>
+Date: Tue, 3 Nov 2026 13:30:58 +1000
+Subject: [PATCH] auto.def: fix getloadavg() feature detection with strict
+ C99/C23
+
+Modern compilers treat implicit function declarations as errors by default
+(e.g., GCC 14+, Clang 16+). The previous check failed because:
+
+1. Generic cc-check-functions can clash with incompatible types.
+2. getloadavg() requires _DEFAULT_SOURCE on glibc to be visible in
+   system headers, and may reside in <stdlib.h> rather than <unistd.h>.
+
+Without these headers and macros defined in the right order, the test
+failed with -Werror=implicit-function-declaration, leading autosetup
+to incorrectly define FOSSIL_OMIT_LOAD_AVERAGE.
+
+Replace the check with a direct cctest defining _DEFAULT_SOURCE before
+including <stdlib.h> and <unistd.h>.
+
+Signed-off-by: Matt Jolly <kangie@gentoo.org>
+--- a/auto.def
++++ b/auto.def
+@@ -802,9 +802,14 @@ if {[cctest -link 1 -includes {unistd.h} -code "getpass(0);"]} {
+   msg-result "Found getpass() with unistd.h"
+ }
+ 
+-# Check for getloadavg(), and if it doesn't exist, define FOSSIL_OMIT_LOAD_AVERAGE
+-if {![cc-check-functions getloadavg] ||
+-    ![cctest -link 1 -includes {unistd.h} -code "double a\[3\]; getloadavg(a,3);"]} {
++# Check for getloadavg(), ensuring feature macros and appropriate headers are present
++if {![cctest -link 1 -declare {
++  #ifndef _DEFAULT_SOURCE
++  #define _DEFAULT_SOURCE 1
++  #endif
++  #include <stdlib.h>
++  #include <unistd.h>
++} -code "double a\[3\]; return getloadavg(a, 3) < 0;"]} {
+   define FOSSIL_OMIT_LOAD_AVERAGE 1
+   msg-result "Load average support unavailable"
+ }
+-- 
+2.56.0
+

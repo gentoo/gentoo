@@ -3,7 +3,8 @@
 
 EAPI=8
 
-inherit cmake flag-o-matic toolchain-funcs
+RUST_MIN_VER="1.95"
+inherit cargo toolchain-funcs
 
 DESCRIPTION="A Modern Linker"
 HOMEPAGE="https://github.com/rui314/mold"
@@ -22,105 +23,83 @@ fi
 #  - siphash ( MIT CC0-1.0 )
 LICENSE="MIT BSD-2 CC0-1.0"
 SLOT="0"
-IUSE="debug mimalloc test"
-
+IUSE="test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
 	app-arch/zstd:=
-	>=dev-cpp/tbb-2021.7.0-r1:=
-	dev-libs/blake3:=
-	dev-libs/xxhash:=
 	virtual/zlib:=
-	mimalloc? ( >=dev-libs/mimalloc-3:= )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
+	virtual/pkgconfig
 	test? ( llvm-core/clang:* )
 "
 
-pkg_pretend() {
-	# Requires a c++20 compiler, see #831473
-	if [[ ${MERGE_TYPE} != binary ]]; then
-		if tc-is-gcc && [[ $(gcc-major-version) -lt 10 ]]; then
-			die "${PN} needs at least gcc 10"
-		elif tc-is-clang && [[ $(clang-major-version) -lt 12 ]]; then
-			die "${PN} needs at least clang 12"
-		fi
+src_unpack() {
+	if [[ ${PV} == 9999 ]] ; then
+		git-r3_src_unpack
+		cargo_live_src_unpack
+	else
+		cargo_src_unpack
 	fi
 }
 
 src_prepare() {
-	# remove unused vendored deps to be sure we don't use them
-	# do this before running cmake_src_prepare to avoid warnings
-	# being picked up by tinderbox etc. (#964723)
-	# we keep rust-demangle for now as this isn't packaged in gentoo
-	rm -rf third-party/{blake3,mimalloc,tbb,xxhash,zlib,zstd} || die
-
-	cmake_src_prepare
-
-	# use dev-libs/xxhash instead of vendored lib
-	sed -i 's#../third-party/xxhash/##' lib/lib.h || die
+	default
 
 	# Needs unpackaged dwarfdump
-	rm test/{{dead,compress}-debug-sections,compressed-debug-info}.sh || die
+	rm tests/{{dead,compress}-debug-sections,compressed-debug-info}.sh || die
 
 	# Heavy tests, need qemu
-	rm test/gdb-index-{compress-output,dwarf{2,3,4,5}}.sh || die
-	rm test/lto-{archive,dso,gcc,llvm,version-script}.sh || die
+	rm tests/gdb-index-{compress-output,dwarf{2,3,4,5}}.sh || die
+	rm tests/lto-{archive,dso,gcc,llvm,version-script}.sh || die
 
 	# Sandbox sadness
-	rm test/run.sh || die
+	rm tests/run.sh || die
 	sed -i 's|`pwd`/mold-wrapper.so|"& ${LD_PRELOAD}"|' \
-		test/mold-wrapper{,2}.sh || die
+		tests/mold-wrapper{,2}.sh || die
 
 	# Fails if binutils errors out on textrels by default
-	rm test/textrel.sh test/textrel2.sh || die
+	rm tests/textrel.sh tests/textrel2.sh || die
+
+	# Fails with -mno-direct-extern-access
+	rm tests/copyrel-{protected,alignment,norelro}.sh tests/nocopyreloc.sh || die
+	# TODO
+	rm tests/abs-reloc-promotion.sh tests/arch-x86_64-z-dynamic-undefined-weak.sh || die
+	rm tests/linker-script-group-as-needed.sh tests/gdb-index-dwarf64.sh || die
+	rm tests/mold-wrapper2.sh || die
 
 	# Don't let the default linker config affect the tests, bug #974439
-	sed -e 's:\(clang\|clang\+\+\):\1 --no-default-config:' -i test/*.sh || die
+	sed -e 's:\(clang\|clang\+\+\):\1 --no-default-config:' -i tests/*.sh || die
 
 	# static-pie tests require glibc built with static-pie support
 	if ! has_version -d 'sys-libs/glibc[static-pie(+)]'; then
-		rm test/{,ifunc-}static-pie.sh || die
+		rm tests/{,ifunc-}static-pie.sh || die
 	fi
 }
 
 src_configure() {
-	use debug || append-cppflags "-DNDEBUG"
+	export ZSTD_SYS_USE_PKG_CONFIG=1
 
-	local mycmakeargs=(
-		-DBUILD_TESTING=$(usex test)
-		-DMOLD_LTO=OFF # Should be up to the user to decide this with CXXFLAGS.
-		-DMOLD_USE_MIMALLOC=$(usex mimalloc)
-		-DMOLD_USE_SYSTEM_MIMALLOC=$(usex mimalloc)
-		-DMOLD_USE_SYSTEM_TBB=ON
+	local myfeatures=(
+		mold/system-allocator
 	)
 
-	if use test ; then
-		mycmakeargs+=(
-			-DMOLD_ENABLE_QEMU_TESTS=OFF
-		)
-	fi
-
-	cmake_src_configure
+	cargo_src_configure
 }
 
 src_test() {
 	export TEST_CC="$(tc-getCC)" TEST_GCC="$(tc-getCC)" \
 		TEST_CXX="$(tc-getCXX)" TEST_GXX="$(tc-getCXX)"
-	cmake_src_test
+	cargo_src_test
 }
 
 src_install() {
-	dobin "${BUILD_DIR}"/${PN}
+	dobin "$(cargo_target_dir)"/${PN}
 
-	# https://bugs.gentoo.org/872773
-	insinto /usr/$(get_libdir)/mold
-	doins "${BUILD_DIR}"/${PN}-wrapper.so
-
-	dodoc docs/{design,execstack}.md
-	doman docs/${PN}.1
+	doman docs/mold.1
+	dodoc docs/mold.md
 
 	dosym ${PN} /usr/bin/ld.${PN}
 	dosym ${PN} /usr/bin/ld64.${PN}

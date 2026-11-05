@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -10,7 +10,7 @@ inherit autotools flag-o-matic multilib-minimal multilib toolchain-funcs
 MY_P="${PN}${PV}"
 
 DESCRIPTION="Tool Command Language"
-HOMEPAGE="http://www.tcl.tk/"
+HOMEPAGE="http://www.tcl-lang.org/"
 SRC_URI="https://downloads.sourceforge.net/tcl/${PN}-core${PV}-src.tar.gz"
 
 SPARENT="${WORKDIR}/${MY_P}"

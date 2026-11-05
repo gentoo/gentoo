@@ -5,9 +5,8 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
 PYPI_VERIFY_REPO=https://github.com/The-Compiler/pytest-xvfb
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 PYTHON_REQ_USE="tk"
-
 inherit distutils-r1 pypi
 
 DESCRIPTION="Pytest plugin to run Xvfb for tests"

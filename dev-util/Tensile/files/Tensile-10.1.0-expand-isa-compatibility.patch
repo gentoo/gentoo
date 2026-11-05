@@ -1,0 +1,32 @@
+Coerce gfx902/909/912 to gfx900 and gfx1013 to gfx1010
+
+gfx1031-gfx1036 are separate amdgpu_targets since 10.x
+--- a/Tensile/Source/lib/source/hip/HipHardware.cpp
++++ b/Tensile/Source/lib/source/hip/HipHardware.cpp
+@@ -24,6 +24,8 @@
+  *
+  *******************************************************************************/
+ 
++#include <cstring>
++
+ #include <Tensile/AMDGPU.hpp>
+ #include <Tensile/hip/HipHardware.hpp>
+ #include <Tensile/hip/HipUtils.hpp>
+@@ -57,6 +59,17 @@ namespace Tensile
+         {
+             hipDeviceProp_t prop;
+             HIP_CHECK_EXC(hipGetDeviceProperties(&prop, deviceId));
++            // coerce to compatible arch
++            int gcnArch = strncmp(prop.gcnArchName, "gfx", 3) == 0 ? std::stoi(prop.gcnArchName + 3) : 0;
++            switch(gcnArch)
++            {
++            case 902: case 909: case 912:
++                std::strcpy(prop.gcnArchName, "gfx900");
++                break;
++            case 1013:
++                std::strcpy(prop.gcnArchName, "gfx1010");
++                break;
++            }
+ #if HIP_VERSION >= 50220730
+             int hip_version;
+             HIP_CHECK_EXC(hipRuntimeGetVersion(&hip_version));

@@ -22,7 +22,7 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="+libinput +drm +session +swaybar +swaynag tray wallpapers x11-backend X"
+IUSE="+libinput +drm elogind +session +swaybar +swaynag systemd tray wallpapers x11-backend X"
 REQUIRED_USE="tray? ( swaybar )"
 
 DEPEND="
@@ -40,11 +40,11 @@ DEPEND="
 	x11-libs/pixman
 	media-libs/libglvnd
 	swaybar? ( x11-libs/gdk-pixbuf:2 )
-	tray? ( || (
-		sys-apps/systemd
-		sys-auth/elogind
-		sys-libs/basu
-	) )
+	tray? (
+		systemd? ( sys-apps/systemd )
+		elogind? ( sys-auth/elogind )
+		!systemd? ( !elogind? ( sys-libs/basu ) )
+	)
 	wallpapers? ( gui-apps/swaybg[gdk-pixbuf(+)] )
 	X? (
 		x11-libs/libxcb:0=
@@ -94,6 +94,14 @@ src_configure() {
 		-Dzsh-completions=true
 		-Dbash-completions=true
 	)
+
+	if use systemd ; then
+		emesonargs+=( -Dsd-bus-provider=libsystemd )
+	elif use elogind ; then
+		emesonargs+=( -Dsd-bus-provider=libelogind )
+	else
+		emesonargs+=( -Dsd-bus-provider=basu )
+	fi
 
 	meson_src_configure
 }

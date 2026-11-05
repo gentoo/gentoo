@@ -4,7 +4,7 @@
   <maintainer type="project">
     <email>perl@gentoo.org</email>
   </maintainer>
-  <maintainer type="person">
+  <maintainer type="person" proxied="yes">
     <email>azamat.hackimov@gmail.com</email>
     <name>Azamat H. Hackimov</name>
   </maintainer>

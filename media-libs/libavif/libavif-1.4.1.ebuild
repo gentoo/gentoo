@@ -8,14 +8,20 @@ inherit cmake-multilib gnome2-utils
 ARGPARSE_COMMIT="ee74d1b53bd680748af14e737378de57e2a0a954"
 DESCRIPTION="Library for encoding and decoding .avif files"
 HOMEPAGE="https://github.com/AOMediaCodec/libavif"
-SRC_URI="
-	https://github.com/AOMediaCodec/libavif/archive/v${PV}.tar.gz
-		-> ${P}.tar.gz
-	extras? (
-		https://github.com/kmurray/libargparse/archive/${ARGPARSE_COMMIT}.tar.gz
-			-> libargparse-${ARGPARSE_COMMIT}.tar.gz
-	)
-"
+
+if [[ ${PV} == 9999 ]] ; then
+	EGIT_REPO_URI="https://github.com/AOMediaCodec/libavif.git"
+	inherit git-r3
+else
+	SRC_URI="
+		https://github.com/AOMediaCodec/libavif/archive/v${PV}.tar.gz -> ${P}.tar.gz
+		extras? (
+			https://github.com/kmurray/libargparse/archive/${ARGPARSE_COMMIT}.tar.gz -> libargparse-${ARGPARSE_COMMIT}.tar.gz
+		)
+	"
+
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
+fi
 
 LICENSE="
 	BSD-2
@@ -24,7 +30,6 @@ LICENSE="
 # See bug #822336 re subslot
 # See LIBRARY_VERSION_MAJOR, LIBRARY_VERSION_MINOR in CMakeLists.txt
 SLOT="0/16.4"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
 IUSE="+aom dav1d examples extras gdk-pixbuf rav1e svt-av1 libyuv test"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="|| ( aom dav1d )"

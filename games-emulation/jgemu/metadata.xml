@@ -12,6 +12,7 @@
 	<use>
 		<flag name="bsnes">Install bsnes for Super Nintendo</flag>
 		<flag name="cega">Install Cega for SG-1000, Sega Master System and Game Gear</flag>
+		<flag name="cen64">Install cen64 for Nintendo 64 and the 64DD</flag>
 		<flag name="gambatte">Install Gambatte for Game Boy and Game Boy Color</flag>
 		<flag name="geolith">Install Geolith for Neo Geo AES/MVS</flag>
 		<flag name="jollycv">Install JollyCV for ColecoVision</flag>

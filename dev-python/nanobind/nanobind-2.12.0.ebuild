@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=scikit-build-core
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 
 inherit cmake distutils-r1
 
@@ -28,6 +28,11 @@ DEPEND="
 RDEPEND="
 	${DEPEND}
 "
+
+PATCHES=(
+	# https://github.com/wjakob/nanobind/commit/942e75d927e3884e56d607e77c026bb4a72a4763
+	"${FILESDIR}/${PN}-cstdio.patch"
+)
 
 EPYTEST_PLUGINS=()
 EPYTEST_XDIST=1

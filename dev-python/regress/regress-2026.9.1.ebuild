@@ -47,7 +47,7 @@ LICENSE+="
 	|| ( MIT Unlicense )
 "
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 arm arm64 ppc64 ~riscv x86"
 
 EPYTEST_PLUGINS=()
 distutils_enable_tests pytest

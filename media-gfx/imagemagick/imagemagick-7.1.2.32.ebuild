@@ -212,6 +212,8 @@ src_test() {
 	local -x MAGICK_HOME="${T}"/ImageMagick
 	local -x MAGICK_CONFIGURE_PATH="${T}"/ImageMagick
 
+	sed -i -e '/MAGICK_CONFIGURE_PATH/d' magick.sh common.shi || die
+
 	mkdir "${XDG_CONFIG_HOME}"/ImageMagick || die
 	mv "${S}"/config/policy.xml{,.bak} || die
 	cp "${S}"/config/policy{-open,}.xml || die

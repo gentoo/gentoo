@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -26,7 +26,11 @@ fi
 LICENSE="ISC"
 SLOT="0"
 IUSE="+acme +curl debug +http +json +openssl postgres +threads"
-REQUIRED_USE="acme? ( curl openssl )"
+REQUIRED_USE="
+	acme? ( curl http openssl )
+	curl? ( http )
+	json? ( http )
+"
 
 RDEPEND="
 	curl? ( net-misc/curl:= )

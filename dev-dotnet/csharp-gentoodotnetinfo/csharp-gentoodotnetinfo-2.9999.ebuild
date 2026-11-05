@@ -24,7 +24,7 @@ system.reflection.metadata@1.6.0
 inherit dotnet-pkg
 
 DESCRIPTION=".NET information tool for Gentoo"
-HOMEPAGE="https://gitlab.gentoo.org/dotnet/csharp-gentoodotnetinfo/"
+HOMEPAGE="https://gitweb.gentoo.org/proj/dotnet/csharp-gentoodotnetinfo.git/"
 
 if [[ "${PV}" == *9999* ]] ; then
 	inherit git-r3

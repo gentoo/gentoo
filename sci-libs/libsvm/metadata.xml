@@ -13,6 +13,7 @@
     researchers and artificial intelligence application developers.
   </longdescription>
   <use>
+    <flag name="octave">Add plugin for <pkg>sci-mathematics/octave</pkg></flag>
     <flag name="tools">Install python based tool scripts for data selection and visualization with <pkg>sci-visualization/gnuplot</pkg></flag>
   </use>
 </pkgmetadata>

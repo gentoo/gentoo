@@ -1,7 +1,0 @@
-# Copyright 2024 Gentoo Authors
-# Distributed under the terms of the GNU General Public License v2
-
-# Ben Kohler <bkohler@gentoo.org> (2024-04-18)
-# Force system-mitkrb5, as the bundled copy requires sys-apps/keyutils which
-# is not stable here due to test failures, bug #636252
-net-fs/samba system-mitkrb5

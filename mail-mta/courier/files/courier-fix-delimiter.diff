@@ -1,0 +1,21 @@
+https://github.com/svarshavchik/courier-libs/pull/61
+
+diff '--color=auto' -Naurp a/libs/rfc2045/rfc2045.h b/libs/rfc2045/rfc2045.h
+--- a/libs/rfc2045/rfc2045.h	2026-09-08 14:08:15.000000000 +0200
++++ b/libs/rfc2045/rfc2045.h	2026-10-19 20:34:14.276333481 +0200
+@@ -2526,7 +2526,14 @@ void rfc2045::entity::parse(line_iter_ty
+ 
+ 			// We know that the line starts with --, at least.
+ 
+-			if (e-b >= 4 && e[-2] == '-' && e[-1] == '-')
++			// Closing delimiter only if "--" immediately follows
++			// the boundary (RFC 2046 5.1.1). The boundary itself
++			// may end in '-', as Foxmail's do.
++
++			auto bl=content_type_boundary().size();
++
++			if (static_cast<size_t>(e-b) >= bl+4 &&
++			    b[bl+2] == '-' && b[bl+3] == '-')
+ 			{
+ 				// Terminating boundary delimiter. We'll
+ 				// consume it, below, then swallow things up

@@ -69,7 +69,7 @@ DEPEND="${RDEPEND}"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.15.0-link_with_pthread.patch"
-	"${FILESDIR}/${PN}-1.14.0-suppress-unused-option-libcxx.patch"
+	"${FILESDIR}/${PN}-1.16.1-suppress-unused-option-libcxx.patch"
 )
 
 DOCS=( LANGUAGE.HOWTO README.md )

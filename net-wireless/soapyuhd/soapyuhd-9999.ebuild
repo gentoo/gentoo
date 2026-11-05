@@ -12,10 +12,9 @@ if [ "${PV}" = "9999" ]; then
 	EGIT_REPO_URI="https://github.com/pothosware/SoapyUHD.git"
 	inherit git-r3
 else
-	KEYWORDS="amd64 ~arm ~riscv ~x86"
-	COMMIT="2a5d381f68fd05d5b3c0e7db56c36892ea99b4ae"
-	SRC_URI="https://github.com/pothosware/SoapyUHD/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
-	S="${WORKDIR}"/SoapyUHD-${COMMIT}
+	KEYWORDS="~amd64 ~arm ~riscv ~x86"
+	SRC_URI="https://github.com/pothosware/SoapyUHD/archive/soapy-uhd-${PV}.tar.gz -> ${P}.tar.gz"
+	S="${WORKDIR}"/SoapyUHD-soapy-uhd-${PV}
 fi
 
 LICENSE="MIT"
@@ -26,7 +25,7 @@ RDEPEND="net-wireless/soapysdr:=
 		dev-libs/boost:="
 DEPEND="${RDEPEND}"
 
-PATCHES=( "${FILESDIR}"/${PN}-cxx17.patch
+PATCHES=(
 	"${FILESDIR}"/${PN}-lexical_cast.patch
 )
 

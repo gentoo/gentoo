@@ -12,7 +12,6 @@
 	<use>
 		<flag name="debug">Enable debugging informations</flag>
 		<flag name="experimental">Enable experimental features</flag>
-		<flag name="ntp">Enable NTPD cooperation</flag>
 		<flag name="snmp">Require <pkg>net-analyzer/net-snmp</pkg> to enable SNMP configuration</flag>
 		<flag name="statistics">Enable compution of statistics</flag>
 		<flag name="pcap">Require <pkg>net-libs/libpcap</pkg> to allow layer 2 (raw Ethernet) transport</flag>

@@ -218,7 +218,7 @@ COMMON_DEPEND="
 	)
 	contribovis? ( >=dev-games/ogre-1.12:= )
 	eigen? ( >=dev-cpp/eigen-3.3.8-r1:= )
-	ffmpeg? ( media-video/ffmpeg:0=[${MULTILIB_USEDEP}] )
+	ffmpeg? ( <media-video/ffmpeg-9:=[${MULTILIB_USEDEP}] )
 	gdal? ( sci-libs/gdal:= )
 	gflags? ( dev-cpp/gflags:=[${MULTILIB_USEDEP}] )
 	glog? ( dev-cpp/glog:=[${MULTILIB_USEDEP}] )

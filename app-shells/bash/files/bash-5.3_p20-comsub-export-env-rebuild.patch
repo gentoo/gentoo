@@ -1,0 +1,53 @@
+https://lists.gnu.org/archive/html/bug-bash/2026-05/msg00037.html (https://lists.gnu.org/archive/html/bug-bash/2026-05/msg00063.html)
+https://lists.gnu.org/archive/html/bug-bash/2026-05/msg00054.html
+
+From b1d9695f781bd53f1d30781b26f1fbbcbb6d2eb6 Mon Sep 17 00:00:00 2001
+Message-ID: <b1d9695f781bd53f1d30781b26f1fbbcbb6d2eb6.1791680029.git.sam@gentoo.org>
+From: Kerin Millar <kfm@plushkava.net>
+Date: Sun, 31 May 2026 19:55:28 +0200
+Subject: [PATCH] execute_cmd.c: avoid export-environment rebuilds in comsubs
+
+This is a partial backport of commit 2d4ba0c61858 from the devel branch.
+It addresses a performance regression affecting command substitutions
+with large exported environments.
+
+execute_cmd.c
+    - execute_disk_command: if we update SHLVL, do it after (maybe)
+      making the export environment and then update the export env in
+      place, so we don't have to rebuild it twice or rebuild it more
+      times than necessary
+
+Link: https://git.savannah.gnu.org/cgit/bash.git/commit/?id=2d4ba0c61858
+Signed-off-by: Kerin Millar <kfm@plushkava.net>
+---
+ execute_cmd.c | 14 +++++++++++---
+ 1 file changed, 11 insertions(+), 3 deletions(-)
+
+diff --git a/execute_cmd.c b/execute_cmd.c
+index 6a22395e..739991f9 100644
+--- execute_cmd.c
++++ execute_cmd.c
+@@ -5814,9 +5814,17 @@ execute_disk_command (WORD_LIST *words, REDIRECT *redirects, char *command_line,
+ 	 shell level like `exec' would do. Don't do this if we are already
+ 	 in a pipeline environment, assuming it's already been done. */
+       if (nofork && pipe_in == NO_PIPE && pipe_out == NO_PIPE && (subshell_environment & SUBSHELL_PIPE) == 0)
+-	adjust_shell_level (-1);
+-
+-      maybe_make_export_env ();
++	{
++	  maybe_make_export_env ();
++	  adjust_shell_level (-1);
++	  update_export_env_inplace ("SHLVL=", 6, get_string_value ("SHLVL"));
++	  /* adjust_shell_level() marks the export environment dirty because SHLVL is
++	     exported. Since we have already built the environment, update SHLVL in place
++	     below and avoid forcing a full rebuild here. */
++	  array_needs_making = 0;
++	}
++      else
++	maybe_make_export_env ();
+       put_command_name_into_env (command);
+     }
+   else if (command == 0 && notfound_str == 0)	/* make sure */
+
+-- 
+2.56.0

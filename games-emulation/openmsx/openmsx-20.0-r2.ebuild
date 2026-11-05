@@ -36,6 +36,9 @@ DOC_CONTENTS="If you want to if you want to emulate real MSX systems and not onl
 PATCHES=(
 	# Drop this after 20.0
 	"${FILESDIR}"/${P}-template.patch
+	# bug #958971
+	# https://github.com/openMSX/openMSX/issues/1873
+	"${FILESDIR}"/${P}-odr.patch
 )
 
 src_prepare() {

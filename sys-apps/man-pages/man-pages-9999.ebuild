@@ -20,7 +20,6 @@ inherit eapi9-ver
 #   encourage distros to make their own. Set MAN_PAGES_GENTOO_DIST to 1 if none is
 #   available, 0 otherwise.
 MAN_PAGES_GENTOO_DIST=0
-GENTOO_PATCH=2
 
 DESCRIPTION="A somewhat comprehensive collection of Linux man pages"
 HOMEPAGE="https://www.kernel.org/doc/man-pages/"
@@ -55,11 +54,6 @@ else
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~arm64-macos"
 fi
 
-SRC_URI+="
-	mirror://gentoo/man-pages-gentoo-${GENTOO_PATCH}.tar.bz2
-	https://dev.gentoo.org/~cardoe/files/man-pages-gentoo-${GENTOO_PATCH}.tar.bz2
-"
-
 LICENSE="man-pages GPL-2+ BSD"
 SLOT="0"
 # Keep the following in sync with app-i18n/man-pages-l10n
@@ -82,11 +76,9 @@ unset lang
 src_unpack() {
 	if [[ ${PV} == 9999 ]] ; then
 		git-r3_src_unpack
-		unpack man-pages-gentoo-${GENTOO_PATCH}.tar.bz2
 	elif [[ ${PV} != *_rc* ]] && ! [[ ${MAN_PAGES_GENTOO_DIST} -eq 1 ]] && use verify-sig ; then
 		verify-sig_uncompress_verify_unpack "${DISTDIR}"/${P}.tar.xz \
 			"${DISTDIR}"/${P}.tar.sign
-		unpack man-pages-gentoo-${GENTOO_PATCH}.tar.bz2
 	else
 		default
 	fi
@@ -119,11 +111,6 @@ src_test() {
 src_install() {
 	emake -R DESTDIR="${D}" install
 	dodoc README Changes*
-
-	# Override with Gentoo specific or additional Gentoo pages
-	cd "${WORKDIR}"/man-pages-gentoo || die
-	doman */*
-	dodoc README.Gentoo
 }
 
 pkg_postinst() {

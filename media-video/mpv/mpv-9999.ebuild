@@ -4,7 +4,7 @@
 EAPI=8
 
 LUA_COMPAT=( lua5-1 luajit )
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 inherit flag-o-matic lua-single meson optfeature pax-utils python-single-r1 xdg
 
 if [[ ${PV} == 9999 ]]; then
@@ -45,7 +45,7 @@ RESTRICT="!test? ( test )"
 
 COMMON_DEPEND="
 	media-libs/libass:=[fontconfig]
-	>=media-libs/libplacebo-7.360.1:=[vulkan?]
+	>=media-libs/libplacebo-7.387.0:=[vulkan?]
 	>=media-video/ffmpeg-6.1:=[encode(+),threads(+),vaapi?,vdpau?]
 	X? (
 		x11-libs/libX11

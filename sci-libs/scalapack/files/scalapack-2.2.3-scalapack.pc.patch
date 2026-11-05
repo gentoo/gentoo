@@ -1,0 +1,29 @@
+--- a/scalapack.pc.in	2026-10-11 15:53:16.065386553 +0200
++++ b/scalapack.pc.in	2026-10-11 15:53:53.300923025 +0200
+@@ -1,9 +1,9 @@
+ prefix=@CMAKE_INSTALL_PREFIX@
+-libdir=${prefix}/@CMAKE_INSTALL_LIBDIR@
++libdir=@CMAKE_INSTALL_FULL_LIBDIR@
+ 
+ Name: scalapack
+ Description: SCALAPACK reference implementation
+ Version: @SCALAPACK_VERSION@
+ URL: http://www.netlib.org/scalapack/
+ Libs: -L${libdir} -lscalapack
+-Requires: mpi lapack blas
++Requires: lapack blas
+--- a/CMakeLists.txt	2026-10-11 15:56:39.370855590 +0200
++++ b/CMakeLists.txt	2026-10-11 15:57:19.940350502 +0200
+@@ -306,7 +306,11 @@
+ configure_file(${SCALAPACK_SOURCE_DIR}/CMAKE/scalapack-config-build.cmake.in
+   ${SCALAPACK_BINARY_DIR}/scalapack-config.cmake @ONLY)
+ 
+-configure_file(${CMAKE_CURRENT_SOURCE_DIR}/scalapack.pc.in ${CMAKE_CURRENT_BINARY_DIR}/scalapack.pc)
++configure_file(
++  ${CMAKE_CURRENT_SOURCE_DIR}/scalapack.pc.in
++  ${CMAKE_CURRENT_BINARY_DIR}/scalapack.pc
++  @ONLY
++)
+  install(FILES
+   ${CMAKE_CURRENT_BINARY_DIR}/scalapack.pc
+   DESTINATION ${PKG_CONFIG_DIR}

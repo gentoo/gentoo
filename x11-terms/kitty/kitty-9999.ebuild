@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 inherit edo go-env optfeature multiprocessing python-single-r1
 inherit shell-completion toolchain-funcs xdg
 
@@ -130,8 +130,10 @@ src_prepare() {
 		kitty_tests/child.py
 		# broken with nspawn defaults, skip for convenience (bug #954176)
 		kitty_tests/crypto.py
-		# depends on crypto.py
+		# depends on crypto.py (TODO?: the growing list may make it difficult
+		# to keep removing crypto.py and may need to look at alternatives)
 		kitty_tests/file_transmission.py
+		kitty_tests/sessions.py
 		# relies on 'who' command which doesn't detect users with pid-sandbox
 		kitty_tests/utmp.py
 		# may fail/hang depending on environment and shell initialization

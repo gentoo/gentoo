@@ -1,0 +1,14 @@
+Only use CPU and GPU agents in the HSA copy test
+
+AIE (NPU) agents are listed by HSA on Strix systems with amdxdna;
+hsa_amd_agents_allow_access fails for them.
+--- a/test/hsa/copy.cpp
++++ b/test/hsa/copy.cpp
+@@ -154,6 +154,7 @@ bool DeviceDiscovery() {
+         hsa_device_type_t type;
+         err = hsa_agent_get_info(agent, HSA_AGENT_INFO_DEVICE, &type);
+         CHECK(err);
++        if (type != HSA_DEVICE_TYPE_CPU && type != HSA_DEVICE_TYPE_GPU) return HSA_STATUS_SUCCESS;
+ 
+         err = hsa_amd_agent_iterate_memory_pools(
+             agent,

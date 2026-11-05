@@ -34,7 +34,7 @@ S="${WORKDIR}"/vim-${PV}
 
 LICENSE="vim"
 SLOT="0"
-IUSE="acl crypt cscope debug gtk4 lua minimal motif netbeans nls +pango perl python racket ruby selinux session sound tcl wayland ${GENTOO_PERL_USESTRING}"
+IUSE="acl crypt cscope debug gtk4 images lua minimal motif netbeans nls +pango perl python racket ruby selinux session sound tcl wayland ${GENTOO_PERL_USESTRING}"
 REQUIRED_USE="
 	lua? ( ${LUA_REQUIRED_USE} )
 	python? ( ${PYTHON_REQUIRED_USE} )
@@ -59,6 +59,7 @@ RDEPEND="
 			x11-libs/libXft
 		)
 	)
+	images? ( x11-libs/pixman )
 	pango? (
 		x11-libs/cairo
 		>=x11-libs/pango-1.44
@@ -251,6 +252,9 @@ src_configure() {
 
 	# Render hardcopy with system Pango/Cairo instead of Vim's own PostScript generator
 	myconf+=( $(use_enable pango hardcopy-pango) )
+
+	# Image rendering in popup windows; needs pixman
+	myconf+=( $(use_enable images pixman) )
 
 	# let package manager strip binaries
 	export ac_cv_prog_STRIP="$(type -P true ) faking strip"

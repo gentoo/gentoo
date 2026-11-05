@@ -1,0 +1,104 @@
+Use system app-arch/brotli instead of the bundled copy.
+
+Bug: https://bugs.gentoo.org/984841
+--- a/extension/parquet/CMakeLists.txt
++++ b/extension/parquet/CMakeLists.txt
+@@ -8,8 +8,11 @@
+ 
+ include_directories(
+   include ../../third_party/lz4 ../../third_party/parquet
+-  ../../third_party/thrift ../../third_party/snappy
+-  ../../third_party/brotli/include)
++  ../../third_party/thrift ../../third_party/snappy)
++
++find_package(PkgConfig REQUIRED)
++pkg_check_modules(BROTLI REQUIRED libbrotlienc libbrotlidec)
++include_directories(${BROTLI_INCLUDE_DIRS})
+ 
+ add_subdirectory(decoder)
+ add_subdirectory(reader)
+@@ -51,44 +54,11 @@
+   # lz4
+   set(PARQUET_EXTENSION_FILES ${PARQUET_EXTENSION_FILES}
+                               ../../third_party/lz4/lz4.cpp)
+-  # brotli
+-  set(PARQUET_EXTENSION_FILES
+-      ${PARQUET_EXTENSION_FILES}
+-      ../../third_party/brotli/enc/dictionary_hash.cpp
+-      ../../third_party/brotli/enc/backward_references_hq.cpp
+-      ../../third_party/brotli/enc/histogram.cpp
+-      ../../third_party/brotli/enc/memory.cpp
+-      ../../third_party/brotli/enc/entropy_encode.cpp
+-      ../../third_party/brotli/enc/compound_dictionary.cpp
+-      ../../third_party/brotli/enc/compress_fragment_two_pass.cpp
+-      ../../third_party/brotli/enc/block_splitter.cpp
+-      ../../third_party/brotli/enc/command.cpp
+-      ../../third_party/brotli/enc/encode.cpp
+-      ../../third_party/brotli/enc/encoder_dict.cpp
+-      ../../third_party/brotli/enc/cluster.cpp
+-      ../../third_party/brotli/enc/backward_references.cpp
+-      ../../third_party/brotli/enc/utf8_util.cpp
+-      ../../third_party/brotli/enc/compress_fragment.cpp
+-      ../../third_party/brotli/enc/fast_log.cpp
+-      ../../third_party/brotli/enc/brotli_bit_stream.cpp
+-      ../../third_party/brotli/enc/bit_cost.cpp
+-      ../../third_party/brotli/enc/static_dict.cpp
+-      ../../third_party/brotli/enc/literal_cost.cpp
+-      ../../third_party/brotli/enc/metablock.cpp
+-      ../../third_party/brotli/common/dictionary.cpp
+-      ../../third_party/brotli/common/constants.cpp
+-      ../../third_party/brotli/common/transform.cpp
+-      ../../third_party/brotli/common/platform.cpp
+-      ../../third_party/brotli/common/shared_dictionary.cpp
+-      ../../third_party/brotli/common/context.cpp
+-      ../../third_party/brotli/dec/state.cpp
+-      ../../third_party/brotli/dec/decode.cpp
+-      ../../third_party/brotli/dec/huffman.cpp
+-      ../../third_party/brotli/dec/bit_reader.cpp)
+ endif()
+ 
+ build_extension_library(parquet ${PARQUET_EXTENSION_FILES})
+ target_link_libraries(parquet_loadable_extension duckdb_mbedtls duckdb_zstd)
++target_link_libraries(parquet_extension ${BROTLI_LIBRARIES})
+ 
+ install(
+   TARGETS parquet_extension
+--- a/extension/parquet/column_reader.cpp
++++ b/extension/parquet/column_reader.cpp
+@@ -650,18 +650,18 @@
+ 		break;
+ 	}
+ 	case CompressionCodec::BROTLI: {
+-		auto state = duckdb_brotli::BrotliDecoderCreateInstance(nullptr, nullptr, nullptr);
++		auto state = BrotliDecoderCreateInstance(nullptr, nullptr, nullptr);
+ 		size_t total_out = 0;
+ 		auto src_size_size_t = NumericCast<size_t>(src_size);
+ 		auto dst_size_size_t = NumericCast<size_t>(dst_size);
+ 
+-		auto res = duckdb_brotli::BrotliDecoderDecompressStream(state, &src_size_size_t, &src, &dst_size_size_t, &dst,
++		auto res = BrotliDecoderDecompressStream(state, &src_size_size_t, &src, &dst_size_size_t, &dst,
+ 		                                                        &total_out);
+-		if (res != duckdb_brotli::BROTLI_DECODER_RESULT_SUCCESS) {
++		if (res != BROTLI_DECODER_RESULT_SUCCESS) {
+ 			throw InvalidInputException("Failed to read file \"%s\": Brotli Decompression failure",
+ 			                            Reader().GetFileName());
+ 		}
+-		duckdb_brotli::BrotliDecoderDestroyInstance(state);
++		BrotliDecoderDestroyInstance(state);
+ 		break;
+ 	}
+ 
+--- a/extension/parquet/column_writer.cpp
++++ b/extension/parquet/column_writer.cpp
+@@ -214,9 +214,9 @@
+ 		break;
+ 	}
+ 	case CompressionCodec::BROTLI: {
+-		compressed_size = duckdb_brotli::BrotliEncoderMaxCompressedSize(temp_writer.GetPosition());
++		compressed_size = BrotliEncoderMaxCompressedSize(temp_writer.GetPosition());
+ 		compressed_buf = BufferAllocator::Get(writer.GetContext()).Allocate(compressed_size);
+-		duckdb_brotli::BrotliEncoderCompress(BROTLI_DEFAULT_QUALITY, BROTLI_DEFAULT_WINDOW, BROTLI_DEFAULT_MODE,
++		BrotliEncoderCompress(BROTLI_DEFAULT_QUALITY, BROTLI_DEFAULT_WINDOW, BROTLI_DEFAULT_MODE,
+ 		                                     temp_writer.GetPosition(), temp_writer.GetData(), &compressed_size,
+ 		                                     compressed_buf.get());
+ 		compressed_data = compressed_buf.get();

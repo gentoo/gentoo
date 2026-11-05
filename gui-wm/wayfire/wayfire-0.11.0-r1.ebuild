@@ -37,7 +37,7 @@ if [[ ${PV} == 9999 ]]; then
 	"
 else
 	SRC_URI="https://github.com/WayfireWM/${PN}/releases/download/v${PV}/${P}.tar.xz"
-	KEYWORDS="~amd64 ~arm64 ~riscv"
+	KEYWORDS="amd64 arm64 ~riscv"
 	SLOT="0/$(ver_cut 1-2)"
 
 	COMMON_DEPEND="gui-libs/wlroots:0.20[drm(+),libinput(+),x11-backend,X?]"

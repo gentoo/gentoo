@@ -7,6 +7,6 @@
   </maintainer>
   <upstream>
     <remote-id type="cpe">cpe:/a:x.org:libxdmcp</remote-id>
-    <remote-id type="freedesktop-gitlab">xorg/lib/libXdmcp</remote-id>
+    <remote-id type="freedesktop-gitlab">xorg/lib/libxdmcp</remote-id>
   </upstream>
 </pkgmetadata>

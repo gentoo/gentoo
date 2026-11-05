@@ -21,7 +21,7 @@ MOZ_PV="${PV}"
 MOZ_PV="${MOZ_PV/_beta/b}"
 MOZ_P="${P}"
 MY_MOZ_P="${PN}-${MOZ_PV}"
-PATCH_PV="2.53.24"
+PATCH_PV="2.53.24-r1"
 PATCH="${PN}-${PATCH_PV}-patches"
 PATCH_S="${WORKDIR}/gentoo-${PN}-patches-${PATCH_PV}"
 
@@ -41,7 +41,7 @@ inherit autotools check-reqs desktop edos2unix flag-o-matic llvm-r2 mozcoreconf-
 
 LICENSE="MPL-2.0 GPL-2 LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~ppc64 ~x86"
 SYSTEM_IUSE=( +system-{av1,harfbuzz,icu,jpeg,libevent,libvpx,png,sqlite} )
 IUSE="+chatzilla cpu_flags_arm_neon dbus +gmp-autoupdate +ipc jack
 pulseaudio selinux startup-notification test webrtc wifi"

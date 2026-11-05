@@ -1,0 +1,13 @@
+https://bugs.gentoo.org/981860
+
+--- a/sources/shiboken6_generator/generator/shiboken/cppgenerator.cpp
++++ b/sources/shiboken6_generator/generator/shiboken/cppgenerator.cpp
+@@ -521,6 +521,7 @@ void CppGenerator::generateIncludes(TextStream &s, const GeneratorContext &class
+ 
+     QByteArrayList cppIncludes{"typeinfo", "iterator", // for containers
+                                "cctype", "cstring",
++                               "algorithm", // std::fill
+                                "type_traits"}; // enum/underlying type
+     // headers
+     s << "// default includes\n";
+

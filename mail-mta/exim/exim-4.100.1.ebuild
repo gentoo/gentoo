@@ -21,7 +21,7 @@ S=${WORKDIR}/${P//_rc/-RC}
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ppc ppc64 ~sparc x86"
 
 IUSE="arc berkdb +dane dcc +dkim dlfunc dmarc dmarc-native +dmarc-opendmarc
 	+dnsdb doc dovecot-sasl dsn gdbm gnutls gsasl idn ldap lmtp maildir mbx
@@ -113,7 +113,7 @@ src_prepare() {
 	eapply     "${FILESDIR}"/exim-4.99.3-as-needed-ldflags.patch # 352265, 391279
 	eapply -p0 "${FILESDIR}"/exim-4.76-crosscompile.patch # 266591
 	eapply     "${FILESDIR}"/exim-4.69-r1.27021.patch
-	eapply     "${FILESDIR}"/exim-4.97-localscan_dlopen.patch
+	eapply     "${FILESDIR}"/exim-4.100.1-localscan_dlopen.patch
 	eapply     "${FILESDIR}"/exim-4.97-no-exim_id_update.patch
 	eapply     "${FILESDIR}"/exim-4.100.1-miscmods-no-direct-ld.patch # 982617
 

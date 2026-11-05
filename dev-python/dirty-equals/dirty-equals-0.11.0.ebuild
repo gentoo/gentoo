@@ -4,8 +4,8 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=hatchling
-PYTHON_FULLY_TESTED=( python3_{12..14} )
-PYTHON_COMPAT=( "${PYTHON_FULLY_TESTED[@]}" python3_15 )
+PYTHON_FULLY_TESTED=( python3_{12..15} )
+PYTHON_COMPAT=( "${PYTHON_FULLY_TESTED[@]}" )
 
 inherit distutils-r1
 

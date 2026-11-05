@@ -12,8 +12,10 @@ if [[ ${PV} == 9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/coredns/coredns.git"
 else
-	SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	SRC_URI+=" https://github.com/rahilarious/gentoo-distfiles/releases/download/${P}/deps.tar.xz -> ${P}-deps.tar.xz"
+	SRC_URI="
+	https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
+	https://github.com/gentoo-golang-dist/coredns/releases/download/v${PV}/${P}-vendor.tar.xz -> ${P}-deps.tar.xz
+"
 	KEYWORDS="~amd64"
 fi
 
@@ -28,7 +30,7 @@ RESTRICT="test"
 
 RDEPEND="acct-user/coredns
 	acct-group/coredns"
-BDEPEND=">=dev-lang/go-1.25.0"
+BDEPEND=">=dev-lang/go-1.26.0"
 FILECAPS=(
 	-m 755 'cap_net_bind_service=+ep' usr/bin/${PN}
 )

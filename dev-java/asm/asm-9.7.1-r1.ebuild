@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,9 +13,6 @@ MAVEN_PROVIDES="
 	org.ow2.asm:asm-tree:${PV}
 	org.ow2.asm:asm-util:${PV}
 "
-
-# Avoid circular dependency
-JAVA_DISABLE_DEPEND_ON_JAVA_DEP_CHECK="true"
 
 inherit java-pkg-2 java-pkg-simple
 

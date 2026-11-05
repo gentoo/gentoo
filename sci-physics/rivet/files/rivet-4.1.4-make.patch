@@ -1,0 +1,27 @@
+From 362689e4985b71ff09cce8dd63a1f3fc7893b236 Mon Sep 17 00:00:00 2001
+From: Alexander Puck Neuwirth <alexander@neuwirth-informatik.de>
+Date: Fri, 2 Oct 2026 19:40:05 +0200
+Subject: [PATCH] fix CPU and MEM parallel compile explosion
+
+---
+ analyses/Makefile.am | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/analyses/Makefile.am b/analyses/Makefile.am
+index d52d724d8..f8880b406 100644
+--- a/analyses/Makefile.am
++++ b/analyses/Makefile.am
+@@ -63,6 +63,10 @@ endif
+ 
+ if ENABLE_ANALYSES
+ 
++# rivet-build already runs in parallel with specified -jN
++# hence we avoid running NxN instances here.
++.NOTPARALLEL: all-local install-exec-local
++
+ all-local: $(PLUGIN_LIBS) $(PLUGIN_DATAFILES)
+ 	mkdir -p $(builddir)/data
+ 	for pdir in $(abs_srcdir)/plugin*; do $(LN_S) -f $${pdir}/*.* $(builddir)/data; done
+-- 
+GitLab
+

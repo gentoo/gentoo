@@ -12,7 +12,7 @@ S=${WORKDIR}/${P^}
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="bluetooth curl dbi debug irda mysql nls odbc postgres usb"
 
 COMMON_DEPEND="
@@ -58,7 +58,7 @@ src_configure() {
 }
 
 src_test() {
-	addwrite "/var/lock/LCK..bar"
+	addwrite "/run/lock/LCK..bar"
 	LD_LIBRARY_PATH="${BUILD_DIR}/libgammu" cmake_src_test -j1
 }
 

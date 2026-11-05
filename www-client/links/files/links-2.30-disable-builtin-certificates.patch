@@ -1,0 +1,11 @@
+diff '--color=auto' -ur links-2.30/links.h links-2.30.new/links.h
+--- links-2.30/links.h	2026-11-03 10:42:00.458838386 -0600
++++ links-2.30.new/links.h	2026-11-03 10:42:36.715146949 -0600
+@@ -1677,7 +1677,6 @@
+ #ifdef HAVE_SSL_CERTIFICATES
+ int verify_ssl_certificate(links_ssl *ssl, unsigned char *host);
+ int verify_ssl_cipher(links_ssl *ssl);
+-#define HAVE_BUILTIN_SSL_CERTIFICATES
+ #endif
+ int ssl_not_reusable(links_ssl *ssl);
+ unsigned char *get_cipher_string(links_ssl *ssl);

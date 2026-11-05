@@ -23,8 +23,3 @@ python_targets_python3_15t
 python_single_target_python3_15t
 python_targets_python3_14t
 python_single_target_python3_14t
-
-# Michael Orlitzky <mjo@gentoo.org> (2023-12-05)
-# New unstable PHP slots.
-php_targets_php8-4
-php_targets_php8-5

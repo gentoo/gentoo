@@ -5,6 +5,10 @@
 		<email>gentoo.org@id.powerman.name</email>
 		<name>Alex Efros</name>
 	</maintainer>
+	<maintainer type="person" proxied="yes">
+		<email>nicolas.parlant@parhuet.fr</email>
+		<name>Nicolas PARLANT</name>
+	</maintainer>
 	<maintainer type="project" proxied="proxy">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
@@ -17,9 +21,15 @@
 		combined program (3proxy). Combined proxy additionally supports
 		features like access control, bandwidth limiting, limiting
 		daily/weekly/monthly traffic amount, proxy chaining, log rotation,
-		sylog and ODBC logging, etc.  It's created to be small, simple (I'd
-		like to say secure - but it's just a beta) and yet functional.
+		sylog and ODBC logging, etc.  It's created to be small, simple and yet
+		very functional.
 	</longdescription>
+	<use>
+		<flag name="ftp">enable FTP proxy (ftppr) and FTP over HTTP proxy</flag>
+		<flag name="http-server">enable httpsrv service to serve both a site and a proxy, also required by administration pages</flag>
+		<flag name="mail">enable IMAP/POP3/SMTP proxies (imapp/pop3/smtpp)</flag>
+		<flag name="modules">build standalone modules in addition to the combined proxy 3proxy</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">3proxy/3proxy</remote-id>
 	</upstream>

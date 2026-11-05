@@ -1,0 +1,19 @@
+Fix build of test_tracker_manager with -Dlogging=OFF.
+
+aux::session_logger is only defined when logging or asserts are enabled.
+
+--- a/test/test_tracker_manager.cpp
++++ b/test/test_tracker_manager.cpp
+@@ -18,7 +18,11 @@
+ using namespace lt::aux;
+ using namespace std::placeholders;
+ 
+-struct tracker_manager_handler : aux::session_logger {
++struct tracker_manager_handler
++#if !defined TORRENT_DISABLE_LOGGING || TORRENT_USE_ASSERTS
++	: aux::session_logger
++#endif
++{
+ 
+ 	tracker_manager_handler(io_context& ios, aux::session_settings& sett)
+ 		: m_host_resolver(ios)

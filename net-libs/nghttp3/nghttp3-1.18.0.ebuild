@@ -18,7 +18,7 @@ else
 		verify-sig? ( https://github.com/ngtcp2/nghttp3/releases/download/v${PV}/${P}.tar.xz.asc )
 	"
 
-	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~arm64-macos ~x64-macos ~x64-solaris"
+	KEYWORDS="amd64 arm arm64 ~hppa ~loong ~m68k ~mips ~ppc ppc64 ~riscv ~sparc x86 ~arm64-macos ~x64-macos ~x64-solaris"
 	BDEPEND="verify-sig? ( sec-keys/openpgp-keys-nghttp3 )"
 fi
 

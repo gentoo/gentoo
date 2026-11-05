@@ -3,8 +3,8 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..14} )
-LLVM_COMPAT=( {16..21} )
+PYTHON_COMPAT=( python3_{12..15} )
+LLVM_COMPAT=( {18..23} )
 inherit cmake llvm-r2 optfeature python-single-r1
 
 DESCRIPTION="Super-parallel Python port of the C-Reduce"

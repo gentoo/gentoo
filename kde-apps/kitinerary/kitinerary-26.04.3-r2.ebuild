@@ -40,6 +40,8 @@ DEPEND="
 RDEPEND="${DEPEND}"
 BDEPEND="x11-misc/shared-mime-info"
 
+PATCHES=( "${FILESDIR}/${P}-poppler-26.08.patch" ) # bug #984515
+
 src_configure() {
 	local mycmakeargs=(
 		# sci-geosciences/osmctools; TODO: useful at all?

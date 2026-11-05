@@ -105,6 +105,7 @@ src_configure() {
 		$(use_enable eap eap-aka-3gpp2)
 		$(use_enable eap md4)
 		$(use_enable eap eap-mschapv2)
+		$(use_enable eap eap-peap)
 		$(use_enable eap eap-radius)
 		$(use_enable eap eap-tls)
 		$(use_enable eap eap-ttls)

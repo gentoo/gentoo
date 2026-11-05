@@ -9,10 +9,10 @@
 description="kea ${KEA_SVC} services"
 command="/usr/sbin/kea-${KEA_SVC}"
 command_args="-c ${KEA_CONFIG}"
+command_background=yes
 command_user="${KEA_USER}:${KEA_GROUP}"
-pidfile="/run/kea/$(basename ${KEA_CONFIG%.*}).kea-${KEA_SVC}.pid"
-required_files="${KEA_CONFIG}"
-start_stop_daemon_args="--background"
+pidfile="/run/${RC_SVCNAME}.pid"
+pidfile_kea="/run/kea/$(basename ${KEA_CONFIG%.*}).kea-${KEA_SVC}.pid"
 
 extra_commands="check_kea_svc checkconfig"
 extra_started_commands="reload"
@@ -54,21 +54,21 @@ reload() {
 start_pre() {
 	check_kea_svc || return 1
 
+	if [ "${RC_CMD}" != "restart" ]; then
+		checkconfig || return 1
+	fi
+
 	if [ $(stat -c "%U:%G" ${KEA_CONFIG}) != "root:${KEA_GROUP}" ] ; then
 		eerror "${KEA_CONFIG} config file is not owned by root:${KEA_GROUP}"
 		eerror "you should reset the ownership:"
 		eerror "chown root:${KEA_GROUP} ${KEA_CONFIG}"
 		return 1
 	fi
-
-	if [ "${RC_CMD}" != "restart" ]; then
-		checkconfig || return 1
-	fi
 }
 
 start_post() {
-	# Kea creates the pidfile only after it has started successfully.
-	ewaitfile "${STARTUP_TIMEOUT:-1}" "${pidfile}"
+	# Kea creates itself a pidfile only after it has started successfully.
+	ewaitfile "${STARTUP_TIMEOUT:-1}" "${pidfile_kea}"
 }
 
 stop_pre() {

@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -14,7 +14,10 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="nls debug"
 
-BDEPEND="virtual/pkgconfig"
+BDEPEND="
+	sys-devel/gettext
+	virtual/pkgconfig
+"
 DEPEND="
 	dev-libs/popt
 	net-fs/samba
@@ -31,7 +34,6 @@ PATCHES=(
 	"${FILESDIR}"/${P}-tinfo.patch
 	"${FILESDIR}"/0001-Fix-signal-handlers.patch
 	"${FILESDIR}"/0002-Fix-Wformat-security.patch
-	"${FILESDIR}"/${P}-getcwd.patch
 )
 
 src_prepare() {
@@ -45,6 +47,8 @@ src_prepare() {
 	mv configure.{in,ac} || die
 	# for some reason some build 32bit x86 objects are bundled
 	rm src/*.o
+	eautopoint --force || die # bug #944362
+	eapply "${FILESDIR}"/${P}-getcwd.patch
 	eautoreconf
 }
 

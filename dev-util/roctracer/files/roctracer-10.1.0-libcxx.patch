@@ -1,0 +1,33 @@
+Fix build with libc++
+
+libc++ does not include <functional> and <stdlib.h> transitively.
+--- a/src/roctracer/memory_pool.h
++++ b/src/roctracer/memory_pool.h
+@@ -28,6 +28,7 @@
+ #include <cstdlib>
+ #include <cstddef>
+ #include <cstring>
++#include <functional>
+ #include <future>
+ #include <mutex>
+ #include <type_traits>
+--- a/src/roctracer/roctracer.cpp
++++ b/src/roctracer/roctracer.cpp
+@@ -32,6 +32,7 @@
+ #include <unistd.h>
+ 
+ #include <atomic>
++#include <functional>
+ #include <mutex>
+ #include <stack>
+ #include <type_traits>
+--- a/test/hsa/copy.cpp
++++ b/test/hsa/copy.cpp
+@@ -24,6 +24,7 @@
+ 
+ #include <fcntl.h>
+ #include <assert.h>
++#include <stdlib.h>
+ #include <stdio.h>
+ #include <string.h>
+ #include <unistd.h>

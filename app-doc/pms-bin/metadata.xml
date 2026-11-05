@@ -6,6 +6,7 @@
   <name>Package Manager Specification</name>
 </maintainer>
 <stabilize-allarches/>
+<straight-to-stable/>
 <use>
   <flag name="html">Install PMS as .html as well</flag>
 </use>

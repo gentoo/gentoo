@@ -1,0 +1,59 @@
+# Copyright 1999-2026 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=8
+
+DISTUTILS_USE_PEP517=setuptools
+PYPI_VERIFY_REPO=https://github.com/dateutil/dateutil
+PYTHON_FULLY_TESTED=( python3_{12..15} python3_{14..15}t )
+# TODO: restore pypy3.12 somehow
+PYTHON_COMPAT=( "${PYTHON_FULLY_TESTED[@]}" )
+
+inherit distutils-r1 pypi
+
+DESCRIPTION="Extensions to the standard Python datetime module"
+HOMEPAGE="
+	https://dateutil.readthedocs.io/
+	https://pypi.org/project/python-dateutil/
+	https://github.com/dateutil/dateutil/
+"
+
+LICENSE="BSD"
+SLOT="0"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~arm64-macos ~x64-macos"
+
+RDEPEND="
+	>=dev-python/six-1.5[${PYTHON_USEDEP}]
+	dev-python/tzdata[${PYTHON_USEDEP}]
+"
+BDEPEND="
+	dev-python/setuptools-scm[${PYTHON_USEDEP}]
+	test? (
+		dev-python/attrs[${PYTHON_USEDEP}]
+		dev-python/freezegun[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			dev-python/hypothesis[${PYTHON_USEDEP}]
+		' "${PYTHON_FULLY_TESTED[@]}")
+	)
+"
+
+PATCHES=(
+	"${FILESDIR}/python-dateutil-2.9.0-no-pytest-cov.patch"
+)
+
+EPYTEST_PLUGINS=()
+distutils_enable_tests pytest
+
+python_test() {
+	local EPYTEST_IGNORE=()
+	local EPYTEST_PLUGINS=( "${EPYTEST_PLUGINS[@]}" )
+	if has_version "dev-python/hypothesis[${PYTHON_USEDEP}]"; then
+		EPYTEST_PLUGINS+=( hypothesis )
+	else
+		EPYTEST_IGNORE+=(
+			tests/property
+		)
+	fi
+
+	epytest
+}

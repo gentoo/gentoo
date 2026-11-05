@@ -13,7 +13,7 @@ SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~mips ~ppc ~sparc ~x86"
+KEYWORDS="amd64 ~arm64 ~mips ppc ~sparc x86"
 
 PATCHES=( "${FILESDIR}"/${PN}-2.0.18-setup.patch )
 

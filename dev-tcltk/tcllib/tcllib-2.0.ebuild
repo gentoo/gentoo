@@ -6,7 +6,7 @@ EAPI=8
 inherit virtualx
 
 DESCRIPTION="Tcl Standard Library"
-HOMEPAGE="http://www.tcl.tk/software/tcllib/"
+HOMEPAGE="http://www.tcl-lang.org/software/tcllib/"
 SRC_URI="https://downloads.sourceforge.net/${PN}/${PN}/${PV}/${P}.tar.xz"
 
 LICENSE="BSD"

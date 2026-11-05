@@ -6,6 +6,10 @@
 
 # New entries go on top.
 
+# Michał Górny <mgorny@gentoo.org> (2026-10-30)
+# Packages needing dev-python/sphinx on py3.12.
+<dev-lang/ghc-9.8 doc
+
 # Sam James <sam@gentoo.org> (2026-09-23)
 # Only supported on Linux.
 dev-libs/elfutils stackprof
@@ -33,11 +37,6 @@ dev-libs/libevent mbedtls
 # See bug #974434
 <llvm-runtimes/compiler-rt-sanitizers-19 clang
 
-# Christian Ruppert <idl0r@gentoo.org> (2026-06-08)
-# dev-libs/openssl-4.0.0/0.4 is currently masked
-net-misc/curl ech
-net-proxy/haproxy ech
-
 # Sam James <sam@gentoo.org> (2026-06-01)
 # Broken with new dev-python/pathspec (bug #973108)
 <dev-python/mypy-2.1.0 native-extensions
@@ -57,8 +56,9 @@ dev-cpp/eigen:3/3.4 test
 ~sci-libs/adolc-9999 -mpi
 
 # Michał Górny <mgorny@gentoo.org> (2026-05-07)
-# Force-enable all PYTHON_TARGETS for python-exec to avoid using private
-# API. Please remember to keep it in sync with python_targets.desc.
+# Unmask the flags where we need them while the flag is masked globally.
+dev-python/python-tests -python_targets_python3_15
+dev-python/python-tests -python_targets_python3_15t
 dev-lang/python-exec -python_targets_python3_15
 dev-lang/python-exec -python_targets_python3_15t
 
@@ -315,11 +315,6 @@ dev-lang/python jit
 # bug #887223, bug #891367, bug #903891, bug #917139
 dev-lang/ruby static-libs
 
-# Sam James <sam@gentoo.org> (2024-05-09)
-# Experimental option upstream which seems undertested and underdocumented.
-# Fails to build with stricter C compilers too (bug #919685).
-net-misc/openssh xmss
-
 # Matt Turner <mattst88@gentoo.org> (2024-05-08)
 # Brand new, introduces lots of new aspects to the build.
 # Masked for further testing.
@@ -362,6 +357,7 @@ llvm-core/clang-common cet
 sys-devel/gcc cet
 sys-libs/binutils-libs cet
 sys-libs/glibc cet
+media-libs/x265 cet
 
 # Matthew Turnbull <sparky@bluefang-logic.com> (2024-01-24)
 # Cinnamon wayland support is experimental and incomplete.

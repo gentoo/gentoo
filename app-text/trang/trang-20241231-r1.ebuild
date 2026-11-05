@@ -9,7 +9,7 @@ JAVA_TESTING_FRAMEWORKS="testng"
 inherit java-pkg-2 java-pkg-simple prefix
 
 DESCRIPTION="Multi-format schema converter based on RELAX NG"
-HOMEPAGE="http://thaiopensource.com/relaxng/trang.html"
+HOMEPAGE="https://relaxng.org/jclark/trang.html"
 SRC_URI="https://github.com/relaxng/jing-trang/archive/V${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/jing-${P}"
 

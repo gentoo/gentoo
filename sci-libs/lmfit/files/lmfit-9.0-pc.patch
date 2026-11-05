@@ -1,0 +1,12 @@
+--- a/lmfit.pc.in	2026-10-23 22:39:09.245775330 +0200
++++ b/lmfit.pc.in	2026-10-23 22:39:56.992195999 +0200
+@@ -1,7 +1,7 @@
+ prefix=@destination@
+ exec_prefix=${prefix}
+-libdir=${prefix}/lib
+-includedir=${prefix}/include
++libdir=${prefix}/@CMAKE_INSTALL_LIBDIR@
++includedir=${prefix}/@CMAKE_INSTALL_INCLUDEDIR@
+ 
+ Name: lmfit
+ Description: Levenberg-Marquardt mean-squares minimization and curve fitting

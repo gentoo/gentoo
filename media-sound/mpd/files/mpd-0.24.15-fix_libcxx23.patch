@@ -1,0 +1,22 @@
+PR merged https://github.com/MusicPlayerDaemon/MPD/pull/2584.patch
+add missing headers (fix libcxx23)
+--- a/src/CommandLine.cxx
++++ b/src/CommandLine.cxx
+@@ -55,6 +55,7 @@
+ #include "archive/ArchivePlugin.hxx"
+ #endif
+ 
++#include <cstdlib>
+ #include <fmt/core.h>
+ 
+ namespace {
+--- a/src/input/plugins/SmbclientInputPlugin.cxx
++++ b/src/input/plugins/SmbclientInputPlugin.cxx
+@@ -10,6 +10,7 @@
+ #include "PluginUnavailable.hxx"
+ #include "system/Error.hxx"
+ 
++#include <exception>
+ #include <libsmbclient.h>
+ 
+ class SmbclientInputStream final : public InputStream {

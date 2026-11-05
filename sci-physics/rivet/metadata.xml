@@ -17,6 +17,7 @@
 	<use>
 		<flag name="zlib">Build with <pkg>virtual/zlib</pkg></flag>
 		<flag name="highfive">Build with <pkg>sci-libs/highfive</pkg> and <pkg>sci-libs/hdf5</pkg></flag>
+		<flag name="analyses">Build all of Rivet's analyses</flag>
 	</use>
 	<upstream>
 		<remote-id type="gitlab">hepcedar/rivet</remote-id>

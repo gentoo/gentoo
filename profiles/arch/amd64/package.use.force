@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Eric Joldasov <bratishkaerik@landless-city.net> (2025-03-11)
@@ -13,6 +13,7 @@ sys-devel/binutils cet
 # Michał Górny <mgorny@gentoo.org> (2023-10-06)
 # Require ABIs matching MULTILIB_ABIS in gcc dependencies -- otherwise
 # sys-devel/gcc[multilib] (which is forced) will fail late in build.
+app-arch/zstd abi_x86_32
 dev-libs/libatomic_ops abi_x86_32
 dev-libs/boehm-gc abi_x86_32
 

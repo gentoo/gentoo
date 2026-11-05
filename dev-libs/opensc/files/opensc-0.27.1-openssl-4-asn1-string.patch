@@ -1,0 +1,43 @@
+From 86c5005b246360f8e0ab1edfac19d568a949bfa1 Mon Sep 17 00:00:00 2001
+From: Simo Sorce <simo@redhat.com>
+Date: Wed, 29 Apr 2026 16:36:41 -0400
+Subject: [PATCH] Replace direct ASN1_STRING field access
+
+Update the terminal authentication code to use ASN1_STRING_get0_data and
+ASN1_STRING_length instead of directly reading the data and length fields.
+This ensures compatibility with modern OpenSSL versions where these structures
+are opaque and must be accessed via their official API to prevent compilation
+errors.
+
+Co-authored-by: Gemini <gemini@google.com>
+Signed-off-by: Simo Sorce <simo@redhat.com>
+---
+ src/sm/sm-eac.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/src/sm/sm-eac.c b/src/sm/sm-eac.c
+index 123f90a36c..9ba3f81cda 100644
+--- a/src/sm/sm-eac.c
++++ b/src/sm/sm-eac.c
+@@ -1186,8 +1186,8 @@ int perform_terminal_authentication(sc_card_t *card,
+ 		cert = *certs;
+ 
+ 		r = eac_mse_set_dst(card,
+-				cvc_cert->body->certificate_authority_reference->data,
+-				cvc_cert->body->certificate_authority_reference->length);
++				ASN1_STRING_get0_data(cvc_cert->body->certificate_authority_reference),
++				ASN1_STRING_length(cvc_cert->body->certificate_authority_reference));
+ 		if (r < 0) {
+ 			sc_debug(card->ctx, SC_LOG_DEBUG_VERBOSE, "Could not select protocol properties "
+ 					"(MSE: Set AT failed).");
+@@ -1198,8 +1198,8 @@ int perform_terminal_authentication(sc_card_t *card,
+ 		if (r < 0)
+ 			goto err;
+ 
+-		chr = cvc_cert->body->certificate_holder_reference->data;
+-		chr_len = cvc_cert->body->certificate_holder_reference->length;
++		chr = ASN1_STRING_get0_data(cvc_cert->body->certificate_holder_reference);
++		chr_len = ASN1_STRING_length(cvc_cert->body->certificate_holder_reference);
+ 
+ 		certs++;
+ 		certs_lens++;

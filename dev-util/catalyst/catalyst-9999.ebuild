@@ -15,7 +15,7 @@ else
 	S="${WORKDIR}/${MY_P/_/-}"
 fi
 
-PYTHON_COMPAT=( python3_{12..14} )
+PYTHON_COMPAT=( python3_{13..14} )
 DISTUTILS_USE_PEP517=setuptools
 
 inherit distutils-r1 linux-info optfeature tmpfiles ${SRC_ECLASS}
@@ -31,7 +31,7 @@ BDEPEND="
 	app-text/asciidoc
 "
 DEPEND="
-	app-portage/gemato
+	app-portage/gemato[${PYTHON_USEDEP}]
 	sys-apps/portage[${PYTHON_USEDEP}]
 	>=dev-python/snakeoil-0.6.5[${PYTHON_USEDEP}]
 	dev-python/fasteners[${PYTHON_USEDEP}]

@@ -4,7 +4,7 @@
 EAPI=8
 
 QTMIN=6.10.1
-inherit ecm frameworks.kde.org
+inherit ecm flag-o-matic frameworks.kde.org
 
 DESCRIPTION="Framework to let applications perform actions as a privileged user"
 
@@ -35,6 +35,11 @@ CMAKE_SKIP_TESTS=(
 )
 
 src_configure() {
+	# -Werror=odr, -Werror=lto-type-mismatch
+	# https://bugs.gentoo.org/973328
+	# https://bugs.kde.org/show_bug.cgi?id=527117
+	filter-lto
+
 	local mycmakeargs=(
 		$(cmake_use_find_package policykit PolkitQt6-1)
 	)

@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,6 +17,8 @@ IUSE="cpu_flags_x86_fma3 cpu_flags_x86_fma4 cpu_flags_x86_sse2 doc fortran mpi o
 RDEPEND="mpi? ( virtual/mpi )"
 DEPEND="${RDEPEND}"
 BDEPEND="app-arch/unzip"
+
+REQUIRED_USE="saamg? ( fortran )"
 
 PATCHES=( "${FILESDIR}"/${PN}-2.1.3-autotools.patch )
 
@@ -40,6 +42,9 @@ src_configure() {
 	# https://github.com/anishida/lis/issues/37
 	filter-lto
 
+	append-cflags -std=gnu17
+	use fortran && append-libs -lgfortran
+
 	econf \
 		--enable-shared \
 		$(use_enable static-libs static) \
@@ -50,6 +55,14 @@ src_configure() {
 		$(use_enable cpu_flags_x86_sse2 sse2) \
 		$(use_enable saamg) \
 		$(use_enable mpi)
+}
+
+src_compile() {
+	if use mpi; then
+		emake CC="mpicc" CCLD="mpif90"
+	else
+		default
+	fi
 }
 
 src_install() {

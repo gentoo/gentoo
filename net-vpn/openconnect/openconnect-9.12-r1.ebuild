@@ -6,7 +6,7 @@ EAPI=8
 PYTHON_COMPAT=( python3_{11..14} )
 PYTHON_REQ_USE="xml(+)"
 
-inherit linux-info python-any-r1
+inherit linux-info locale-utils python-any-r1
 
 if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://gitlab.com/openconnect/openconnect.git"
@@ -128,15 +128,12 @@ src_configure() {
 }
 
 src_test() {
-	local charset
-	for charset in UTF-8 ISO-8859-2; do
-		if [[ $(LC_ALL=cs_CZ.${charset} locale charmap 2>/dev/null) != ${charset} ]]; then
-			# If we don't have valid cs_CZ locale data, auth-nonascii will fail.
-			# Force a test skip by exiting with status 77.
-			sed -i -e '2i exit 77' tests/auth-nonascii || die
-			break
-		fi
-	done
+	local -x LOCPATH
+	if ! elocale_gen cs_CZ.{UTF-8,ISO-8859-2}; then
+		# If we don't have valid cs_CZ locale data, auth-nonascii will fail.
+		# Force a test skip by exiting with status 77.
+		sed -i -e '2i exit 77' tests/auth-nonascii || die
+	fi
 	addwrite /proc
 	default
 }

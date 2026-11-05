@@ -96,6 +96,7 @@ FFMPEG_IUSE_MAP=(
 	sdl:sdl2
 	snappy:libsnappy
 	sndio
+	sofa:^libmysofa # no multilib
 	speex:libspeex
 	srt:libsrt
 	ssh:libssh
@@ -223,6 +224,7 @@ RDEPEND="
 	sdl? ( media-libs/libsdl2[sound(+),video(+),${MULTILIB_USEDEP}] )
 	snappy? ( app-arch/snappy:=[${MULTILIB_USEDEP}] )
 	sndio? ( media-sound/sndio:=[${MULTILIB_USEDEP}] )
+	sofa? ( media-libs/libmysofa )
 	speex? ( media-libs/speex[${MULTILIB_USEDEP}] )
 	srt? ( net-libs/srt:=[${MULTILIB_USEDEP}] )
 	ssh? ( net-libs/libssh:=[sftp,${MULTILIB_USEDEP}] )
@@ -390,7 +392,6 @@ multilib_src_configure() {
 		--disable-decklink
 		--disable-libdavs2
 		--disable-libklvanc
-		--disable-libmysofa
 		--disable-libopenvino
 		--disable-libshine
 		--disable-libtls

@@ -10,6 +10,7 @@ alpha - system emulation target
 arm - system emulation target
 avr - system emulation target
 cris - system emulation target
+hexagon - system emulation target
 hppa - system emulation target
 i386 - system emulation target
 loongarch64 - system emulation target

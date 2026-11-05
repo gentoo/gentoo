@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
+	<maintainer type="person" proxied="yes">
 		<name>Adel Kara Slimane</name>
 		<email>adel.ks@zegrapher.com</email>
 	</maintainer>
-	<maintainer type="person">
+	<maintainer type="person" proxied="yes">
 		<name>Mazunki Hoksaas</name>
 		<email>rolferen@gmail.com</email>
 	</maintainer>

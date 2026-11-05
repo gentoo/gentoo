@@ -8,9 +8,6 @@
     <flag name="xcursor">
       Add support for cursors (<pkg>x11-libs/libXcursor</pkg>)
     </flag>
-    <flag name="xrandr">
-      Add support for monitor information (<pkg>x11-libs/libXrandr</pkg>)
-    </flag>
     <flag name="xrender">
       Add support for transparency (<pkg>x11-libs/libXrender</pkg>)
     </flag>

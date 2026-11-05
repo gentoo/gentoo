@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,9 +16,9 @@ else
 	KEYWORDS="~amd64 ~arm64"
 fi
 
-LICENSE="Apache-2.0 GPL-3+ MIT"
+LICENSE="GPL-3+ Apache-2.0 MIT"
 SLOT="0"
-IUSE="cpu_flags_x86_sse4_1 donate hwloc opencl +ssl"
+IUSE="cpu_flags_x86_avx2 cpu_flags_x86_sse4_1 donate hwloc opencl +ssl"
 
 DEPEND="
 	dev-libs/libuv:=
@@ -45,6 +45,7 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
+		-DWITH_AVX2=$(usex cpu_flags_x86_avx2)
 		-DWITH_SSE4_1=$(usex cpu_flags_x86_sse4_1)
 		-DWITH_HWLOC=$(usex hwloc)
 		-DWITH_TLS=$(usex ssl)

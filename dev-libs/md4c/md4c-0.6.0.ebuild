@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 inherit cmake python-any-r1
 
 DESCRIPTION="C Markdown parser. Fast, SAX-like interface, CommonMark Compliant"
@@ -15,7 +15,7 @@ SRC_URI="
 
 LICENSE="MIT test? ( CC-BY-SA-4.0 )"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv x86"
 
 IUSE="+md2html test"
 REQUIRED_USE="test? ( md2html )"

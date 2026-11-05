@@ -54,7 +54,7 @@ fi
 
 LICENSE="MIT"
 SLOT="0/0.5"
-IUSE="${WIREPLUMBER_DOCS_USEFLAG} doc elogind system-service systemd test"
+IUSE="${WIREPLUMBER_DOCS_USEFLAG} doc elogind selinux system-service systemd test"
 
 REQUIRED_USE="
 	${LUA_REQUIRED_USE}
@@ -90,6 +90,7 @@ DEPEND="
 "
 RDEPEND="
 	${DEPEND}
+	selinux? ( sec-policy/selinux-wireplumber )
 	system-service? (
 		acct-user/pipewire
 		acct-group/pipewire

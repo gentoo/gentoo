@@ -1,9 +1,9 @@
 # Copyright 2015-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit meson-multilib
+inherit locale-utils meson-multilib
 
 DESCRIPTION="GObject bindings for libudev"
 HOMEPAGE="https://wiki.gnome.org/Projects/libgudev"
@@ -44,6 +44,10 @@ multilib_src_configure() {
 }
 
 src_test() {
+	# test-double is skipped without this locale, bug #809359
+	local -x LOCPATH
+	elocale_gen fr_FR.UTF-8
+
 	# libsandbox interferes somehow.
 	# There are no access violations, but tests fail.
 	# https://bugs.gentoo.org/805449

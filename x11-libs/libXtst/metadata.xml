@@ -6,6 +6,6 @@
     <name>X11</name>
   </maintainer>
   <upstream>
-    <remote-id type="freedesktop-gitlab">xorg/lib/libXtst</remote-id>
+    <remote-id type="freedesktop-gitlab">xorg/lib/libxtst</remote-id>
   </upstream>
 </pkgmetadata>

@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+
 inherit dist-kernel-utils eapi9-ver linux-info mount-boot savedconfig
 
 # In case this is a real snapshot, fill in commit below.
@@ -65,7 +66,7 @@ IDEPEND="
 
 QA_PREBUILT="*"
 PATCHES=(
-	"${FILESDIR}"/${PN}-copy-firmware-r9.patch
+	"${FILESDIR}"/${PN}-copy-firmware-r10.patch
 )
 
 pkg_pretend() {

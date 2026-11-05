@@ -1,0 +1,294 @@
+From 6974e8c3bf4a9bde98f1e24b882675412f7de9cf Mon Sep 17 00:00:00 2001
+From: Simon Marchi <simon.marchi@polymtl.ca>
+Date: Mon, 26 Oct 2026 10:45:56 -0400
+Subject: [PATCH] gdb/macrotab: catch exception and rethrow around
+ splay_tree_foreach
+
+Bug 34876 talks about a crash that happens with "-O3 -flto", when
+completing and reaching the maximum number of completions.
+
+It can be reproduced by building GDB in this configuration:
+
+    $ ./configure CFLAGS="-march=x86-64-v3 -flto -O3" CXXFLAGS="-march=x86-64-v3 -flto -O3" --disable-nls
+
+Then, using a dummy C program compiled with "gcc -g3", this crashes GDB:
+
+    $ ./gdb -q -nx --data-directory data-directory ./a.out -ex list -ex "complete macro expand "
+
+The crash manifests as an invalid free, reported by glibc:
+
+    free(): invalid pointer
+
+It is reported here:
+
+    #0  0x00007ffff6a9a11c in ?? () from /usr/lib/libc.so.6
+    #1  0x00007ffff6a3e5d0 in raise () from /usr/lib/libc.so.6
+    #2  0x00007ffff6a25685 in abort () from /usr/lib/libc.so.6
+    #3  0x00007ffff6a26704 in ?? () from /usr/lib/libc.so.6
+    #4  0x00007ffff6aa47ec in ?? () from /usr/lib/libc.so.6
+    #5  0x00007ffff6aa4804 in ?? () from /usr/lib/libc.so.6
+    #6  0x00005555556e07ac in operator delete (p=<optimized out>) at /home/simark/src/binutils-gdb/gdbsupport/new-op.cc:108
+    #7  operator delete (p=<optimized out>) at /home/simark/src/binutils-gdb/gdbsupport/new-op.cc:114
+    #8  operator delete (p=<optimized out>) at /home/simark/src/binutils-gdb/gdbsupport/new-op.cc:120
+    #9  std::__new_allocator<char>::deallocate (this=0x555555caa4f8 <completion_list_add_fields(completion_tracker&, symbol*, lookup_name_info const&, char const*, char const*)+136>, __p=<optimized out>, __n=<optimized out>) at /usr/include/c++/16/bits/new_allocator.h:183
+    #10 std::allocator<char>::deallocate (this=0x555555caa4f8 <completion_list_add_fields(completion_tracker&, symbol*, lookup_name_info const&, char const*, char const*)+136>, __p=<optimized out>, __n=<optimized out>) at /usr/include/c++/16/bits/allocator.h:218
+    #11 std::allocator_traits<std::allocator<char> >::deallocate (__a=..., __p=<optimized out>, __n=<optimized out>) at /usr/include/c++/16/bits/alloc_traits.h:689
+    #12 std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_destroy (this=0x555555caa4f8 <completion_list_add_fields(completion_tracker&, symbol*, lookup_name_info const&, char const*, char const*)+136>, __size=<optimized out>) at /usr/include/c++/16/bits/basic_string.h:304
+    #13 std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_dispose (this=0x555555caa4f8 <completion_list_add_fields(completion_tracker&, symbol*, lookup_name_info const&, char const*, char const*)+136>) at /usr/include/c++/16/bits/basic_string.h:298
+    #14 std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::~basic_string (this=0x555555caa4f8 <completion_list_add_fields(completion_tracker&, symbol*, lookup_name_info const&, char const*, char const*)+136>, this=<optimized out>) at /usr/include/c++/16/bits/basic_string.h:920
+    #15 demangle_for_lookup_info::~demangle_for_lookup_info (this=0x555555caa4f8 <completion_list_add_fields(completion_tracker&, symbol*, lookup_name_info const&, char const*, char const*)+136>, this=<optimized out>) at /home/simark/src/binutils-gdb/gdb/symtab.h:183
+    #16 std::_Optional_payload_base<demangle_for_lookup_info>::_M_destroy (this=0x555555caa4f8 <completion_list_add_fields(completion_tracker&, symbol*, lookup_name_info const&, char const*, char const*)+136>) at /usr/include/c++/16/optional:325
+    #17 std::_Optional_payload_base<demangle_for_lookup_info>::_M_reset (this=0x555555caa4f8 <completion_list_add_fields(completion_tracker&, symbol*, lookup_name_info const&, char const*, char const*)+136>) at /usr/include/c++/16/optional:361
+    #18 std::_Optional_payload<demangle_for_lookup_info, false, false, false>::~_Optional_payload (this=0x555555caa4f8 <completion_list_add_fields(completion_tracker&, symbol*, lookup_name_info const&, char const*, char const*)+136>, this=<optimized out>) at /usr/include/c++/16/optional:484
+    #19 std::_Optional_base<demangle_for_lookup_info, false, false>::~_Optional_base (this=0x555555caa4f8 <completion_list_add_fields(completion_tracker&, symbol*, lookup_name_info const&, char const*, char const*)+136>, this=<optimized out>) at /usr/include/c++/16/optional:508
+    #20 std::optional<demangle_for_lookup_info>::~optional (this=0x555555caa4f8 <completion_list_add_fields(completion_tracker&, symbol*, lookup_name_info const&, char const*, char const*)+136>, this=<optimized out>) at /usr/include/c++/16/optional:812
+    #21 lookup_name_info::~lookup_name_info (this=0x555555caa440 <gdb::function_view<void (char const*, macro_definition const*, macro_source_file*, int)>::bind<default_collect_symbol_completion_matches_break_on(completion_tracker&, complete_symbol_mode, symbol_name_match_type, char const*, char const*, char const*, type_code)::{lambda(char const*, macro_definition const*, macro_source_file*, int)#1}>(default_collect_symbol_completion_matches_break_on(completion_tracker&, complete_symbol_mode, symbol_name_match_type, char const*, char const*, char const*, type_code)::{lambda(char const*, macro_definition const*, macro_source_file*, int)#1}&)::{lambda(gdb::fv_detail::erased_callable, char const*, macro_definition const*, macro_source_file*, int)#1}::_FUN(gdb::fv_detail::erased_callable, char const*, macro_definition const*, macro_source_file*, int)>, this=<optimized out>) at /home/simark/src/binutils-gdb/gdb/symtab.h:210
+    #22 0x000055555569ca89 in default_collect_symbol_completion_matches_break_on (tracker=..., mode=<optimized out>, name_match_type=<optimized out>, text=<optimized out>, word=<optimized out>, break_on=<optimized out>, code=<optimized out>) at /home/simark/src/binutils-gdb/gdb/symtab.c:6111
+    #23 0x0000555555826c22 in language_defn::collect_symbol_completion_matches (this=<optimized out>, tracker=..., mode=<optimized out>, name_match_type=<optimized out>, text=<optimized out>, word=<optimized out>, code=<optimized out>, this=<optimized out>, tracker=..., mode=<optimized out>, name_match_type=<optimized out>, text=<optimized out>, word=<optimized out>, code=<optimized out>) at /home/simark/src/binutils-gdb/gdb/language.h:477
+    #24 collect_symbol_completion_matches (tracker=..., mode=complete_symbol_mode::EXPRESSION, name_match_type=symbol_name_match_type::EXPRESSION, text=<optimized out>, word=<optimized out>) at /home/simark/src/binutils-gdb/gdb/symtab.c:6122
+    #25 symbol_completer (ignore=<optimized out>, tracker=..., text=<optimized out>, word=<optimized out>) at /home/simark/src/binutils-gdb/gdb/completer.c:1533
+    #26 0x000055555583ef85 in complete_line_internal_normal_command (command=0x7fffffffd880 "macro expand ", tracker=..., word=0x7fffffffd88d "", cmd_args=<optimized out>, reason=handle_completions, c=0x5555563b02c0) at /home/simark/src/binutils-gdb/gdb/completer.c:1620
+    #27 complete_line_internal_1 (tracker=..., text=text@entry=0x7fffffffe7e2 "", line_buffer=line_buffer@entry=0x7fffffffe7d5 "macro expand ", point=<optimized out>, reason=reason@entry=handle_completions) at /home/simark/src/binutils-gdb/gdb/completer.c:1843
+    #28 0x000055555583fe81 in complete_line_internal (tracker=..., text=0x7fffffffe7e2 "", line_buffer=<optimized out>, point=<optimized out>, reason=handle_completions) at /home/simark/src/binutils-gdb/gdb/completer.c:1862
+    #29 complete_line (tracker=..., text=0x7fffffffe7e2 "", line_buffer=<optimized out>, point=<optimized out>) at /home/simark/src/binutils-gdb/gdb/completer.c:2157
+    #30 complete_line (tracker=..., text=0x7fffffffe7e2 "", line_buffer=<optimized out>, point=<optimized out>) at /home/simark/src/binutils-gdb/gdb/completer.c:2152
+    #31 complete(char const*, char const**, int*) [clone .constprop.0] (line=0x7fffffffe7d5 "macro expand ", word=0x7fffffffdb88, quote_char=<optimized out>) at /home/simark/src/binutils-gdb/gdb/completer.c:2126
+    #32 0x00005555557e16db in complete_command (arg=0x7fffffffe7d5 "macro expand ", from_tty=<optimized out>) at /home/simark/src/binutils-gdb/gdb/cli/cli-cmds.c:425
+
+I asked Claude to find the root cause, and it came up with the following
+explanation:
+
+  1. With -batch, or after 200 matches interactively,
+     completion_tracker::add_completion throws
+     MAX_COMPLETIONS_REACHED_ERROR.
+
+  2. That throw happens inside the add_macro_name callback, which is called
+     from libiberty's splay_tree_foreach (C code) via
+     foreach_macro_in_scope in gdb/macrotab.c.
+
+  3. libiberty is compiled as C without -fexceptions, so GCC treats
+     splay_tree_foreach as nothrow. With LTO, GCC can see that across
+     translation units, so it decides macro_for_each_in_scope can't throw
+     either. It then compiles the call at symtab.c:6052 as non-throwing.
+
+  4. At runtime the exception still unwinds, because x86-64 has CFI
+     everywhere. But it lands in a landing pad that doesn't belong to that
+     call site. That pad runs ~lookup_name_info() with this = %rbx. At the
+     throwing call, %rbx actually holds the function_view invoker address
+     (0x555555b32780, a code address), so it destroys garbage and hands a
+     bogus pointer to free().
+
+I can't tell for sure that it's correct, but it sounds very plausible to
+me (the address 0x555555b32780 is from another run on another computer, not
+related to the backtrace above).
+
+On x86-64, the psABI mandates that all programs and libraries have an async
+unwind table (.eh_frame), so the exception is able to go through the C
+frames unnoticed most of the time.  But on ARM, for example, programs don't
+have unwind tables by default.  I was able to reproduce the bug on my old
+Raspberry Pi running an outdated Debian:
+
+    (gdb) show version
+    GNU gdb (Raspbian 10.1-1.7) 10.1.90.20210103-git
+    ...
+    (gdb) list
+    1	int main()
+    2	{
+    3	}
+    (gdb) complete macro expand
+    terminate called after throwing an instance of 'gdb_exception_error'
+    Aborted
+
+There, the exception causes std::terminate to be called as soon as it
+reaches the libiberty C frame.
+
+This patch updates the two callbacks passed to splay_tree_foreach in
+this file (foreach_macro and foreach_macro_in_scope) to catch any
+exception that would escape, stash it in macro_for_each_data::exception,
+and return 1 to stop the splay tree iteration.  The caller of
+splay_tree_foreach then rethrows the exception if there is one.
+
+Since I'm re-indenting the code anyway, I took the opportunity to
+modernize it a bit.
+
+Improve gdb.base/macscp.exp to kind of cover this.  The test won't catch
+the bug on a regular x86-64 build, but it would in an LTO build like in
+the bug report, or on ARM without unwind tables.  It would also catch it
+if we just added "noexcept" to the callbacks.
+
+There is another latent instance of this bug in addrmap.c, where we call
+splay_tree_foreach and the callback can throw.  And probably more when
+using other APIs.  As future work, I propose that we go over all the
+callbacks that we pass to a C API to mark them "noexcept", so that these
+cases of exceptions crossing C frames consistently crash GDB on any
+configuration.  And fix them if necessary to catch and rethrow
+exceptions like done in this patch.
+
+Change-Id: Ie7c4515a4dee1c93b04271f1d5057be23c96c039
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=34876
+Approved-By: Andrew Burgess <aburgess@redhat.com>
+---
+ gdb/macrotab.c                    | 75 ++++++++++++++++++++-----------
+ gdb/testsuite/gdb.base/macscp.exp | 27 +++++++++++
+ 2 files changed, 76 insertions(+), 26 deletions(-)
+
+diff --git a/gdb/macrotab.c b/gdb/macrotab.c
+index 078eb5cb..ef5b700b 100644
+--- a/gdb/macrotab.c
++++ b/gdb/macrotab.c
+@@ -945,22 +945,31 @@ struct macro_for_each_data
+   gdb::function_view<macro_callback_fn> fn;
+   struct macro_source_file *file;
+   int line;
++  std::exception_ptr exception;
+ };
+ 
+ /* Helper function for macro_for_each.  */
+ static int
+-foreach_macro (splay_tree_node node, void *arg)
++foreach_macro (splay_tree_node node, void *arg) noexcept
+ {
+-  struct macro_for_each_data *datum = (struct macro_for_each_data *) arg;
+-  struct macro_key *key = (struct macro_key *) node->key;
+-  struct macro_definition *def;
++  auto datum = static_cast<macro_for_each_data *> (arg);
+ 
+-  std::string key_fullname = macro_source_fullname (key->start_file);
+-  def = fixup_definition (key_fullname.c_str (), key->start_line,
+-			  (struct macro_definition *) node->value);
++  try
++    {
++      auto key = reinterpret_cast<macro_key *> (node->key);
++      auto value = reinterpret_cast<macro_definition *> (node->value);
++      std::string key_fullname = macro_source_fullname (key->start_file);
++      macro_definition *def = fixup_definition (key_fullname.c_str (),
++						key->start_line, value);
+ 
+-  datum->fn (key->name, def, key->start_file, key->start_line);
+-  return 0;
++      datum->fn (key->name, def, key->start_file, key->start_line);
++      return 0;
++    }
++  catch (...)
++    {
++      datum->exception = std::current_exception ();
++      return 1;
++    }
+ }
+ 
+ /* Call FN for every macro in TABLE.  */
+@@ -971,31 +980,42 @@ macro_for_each (struct macro_table *table,
+   struct macro_for_each_data datum;
+ 
+   datum.fn = fn;
+-  datum.file = NULL;
++  datum.file = nullptr;
+   datum.line = 0;
+   splay_tree_foreach (table->definitions, foreach_macro, &datum);
++
++  if (datum.exception != nullptr)
++    std::rethrow_exception (datum.exception);
+ }
+ 
+ static int
+-foreach_macro_in_scope (splay_tree_node node, void *info)
++foreach_macro_in_scope (splay_tree_node node, void *info) noexcept
+ {
+-  struct macro_for_each_data *datum = (struct macro_for_each_data *) info;
+-  struct macro_key *key = (struct macro_key *) node->key;
+-  struct macro_definition *def;
++  auto datum = static_cast<macro_for_each_data *> (info);
+ 
+-  std::string datum_fullname = macro_source_fullname (datum->file);
+-  def = fixup_definition (datum_fullname.c_str (), datum->line,
+-			  (struct macro_definition *) node->value);
++  try
++    {
++      auto key = reinterpret_cast<macro_key *> (node->key);
++      auto value = reinterpret_cast<macro_definition *> (node->value);
++      std::string datum_fullname = macro_source_fullname (datum->file);
++      macro_definition *def = fixup_definition (datum_fullname.c_str (),
++						datum->line, value);
+ 
+-  /* See if this macro is defined before the passed-in line, and
+-     extends past that line.  */
+-  if (compare_locations (key->start_file, key->start_line,
+-			 datum->file, datum->line) < 0
+-      && (!key->end_file
+-	  || compare_locations (key->end_file, key->end_line,
+-				datum->file, datum->line) >= 0))
+-    datum->fn (key->name, def, key->start_file, key->start_line);
+-  return 0;
++      /* See if this macro is defined before the passed-in line, and
++	 extends past that line.  */
++      if (compare_locations (key->start_file, key->start_line,
++			     datum->file, datum->line) < 0
++	  && (key->end_file == nullptr
++	      || compare_locations (key->end_file, key->end_line,
++				    datum->file, datum->line) >= 0))
++	datum->fn (key->name, def, key->start_file, key->start_line);
++      return 0;
++    }
++  catch (...)
++    {
++      datum->exception = std::current_exception ();
++      return 1;
++    }
+ }
+ 
+ /* Call FN for every macro is visible in SCOPE.  */
+@@ -1010,6 +1030,9 @@ macro_for_each_in_scope (struct macro_source_file *file, int line,
+   datum.line = line;
+   splay_tree_foreach (file->table->definitions,
+ 		      foreach_macro_in_scope, &datum);
++
++  if (datum.exception != nullptr)
++    std::rethrow_exception (datum.exception);
+ }
+ 
+ 
+diff --git a/gdb/testsuite/gdb.base/macscp.exp b/gdb/testsuite/gdb.base/macscp.exp
+index e40bfb63..e0bcddb9 100644
+--- a/gdb/testsuite/gdb.base/macscp.exp
++++ b/gdb/testsuite/gdb.base/macscp.exp
+@@ -14,6 +14,7 @@
+ # You should have received a copy of the GNU General Public License
+ # along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ 
++load_lib completion-support.exp
+ 
+ standard_testfile macscp1.c
+ set objfile [standard_output_file ${testfile}.o]
+@@ -750,3 +751,29 @@ gdb_test "macro expand siginfo.si_addr" \
+ gdb_test "print __FILE__" " = \".*macscp1.c\""
+ gdb_test "print __LINE__" \
+     " = [gdb_get_line_number {stopping point for line test}]"
++
++# Regression test for bug 34876.
++
++with_test_prefix "max-completions reached" {
++    with_set max-completions 2 {
++	# Macros from the program, visited by foreach_macro_in_scope.  All
++	# the BEFORE_<func> macros are in scope at this point.  The macros
++	# are visited in alphabetical order.
++	test_gdb_complete_multiple "macro expand " "BEFORE_" "MACSCP1_" {
++	    "BEFORE_MACSCP1_1"
++	    "BEFORE_MACSCP1_2"
++	} "" "" true "program macros"
++
++	# User-defined macros, visited by foreach_macro.
++	gdb_test_no_output "macro define USER_MACRO_A 1"
++	gdb_test_no_output "macro define USER_MACRO_B 2"
++	gdb_test_no_output "macro define USER_MACRO_C 3"
++	test_gdb_complete_multiple "macro expand " "USER_MACRO_" "" {
++	    "USER_MACRO_A"
++	    "USER_MACRO_B"
++	} "" "" true "user macros"
++	gdb_test_no_output "macro undef USER_MACRO_A"
++	gdb_test_no_output "macro undef USER_MACRO_B"
++	gdb_test_no_output "macro undef USER_MACRO_C"
++    }
++}
+-- 
+2.56.0
+

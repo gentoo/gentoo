@@ -1,0 +1,44 @@
+# Copyright 2024-2026 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=8
+
+DISTUTILS_USE_PEP517=hatchling
+PYPI_VERIFY_REPO=https://github.com/secure-systems-lab/securesystemslib
+PYTHON_COMPAT=( python3_{12..15} )
+
+inherit distutils-r1 pypi
+
+DESCRIPTION="Cryptographic routines for Secure Systems Lab projects at NYU"
+HOMEPAGE="
+	https://github.com/secure-systems-lab/securesystemslib/
+	https://pypi.org/project/securesystemslib/
+"
+
+LICENSE="MIT"
+SLOT="0"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
+
+RDEPEND="
+	>=dev-python/cryptography-48.0.0[${PYTHON_USEDEP}]
+"
+
+EPYTEST_PLUGINS=()
+distutils_enable_tests pytest
+
+# TODO: unbundle https://github.com/pyca/ed25519 (wtf? not on PyPI?)
+
+python_test() {
+	local EPYTEST_DESELECT=(
+		# requires pyspx
+		tests/test_signer.py::TestSphincs::test_sphincs
+	)
+	local EPYTEST_IGNORE=(
+		# requires PyKCS11
+		tests/test_hsm_signer.py
+		# requires keylet
+		tests/test_tkey_signer.py
+	)
+
+	epytest tests
+}

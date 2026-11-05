@@ -10,7 +10,7 @@ HOMEPAGE="https://elpa.gnu.org/packages/rainbow-mode.html"
 SRC_URI="https://dev.gentoo.org/~xgqt/distfiles/repackaged/${P}.tar.xz"
 
 LICENSE="GPL-3+"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 SLOT="0"
 
 SITEFILE="50${PN}-gentoo.el"

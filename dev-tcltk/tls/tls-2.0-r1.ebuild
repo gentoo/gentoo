@@ -5,7 +5,7 @@ EAPI=8
 
 DESCRIPTION="TLS OpenSSL extension to Tcl"
 HOMEPAGE="http://tls.sourceforge.net/"
-SRC_URI="https://core.tcl.tk/tcltls/uv/tcl${P}-src.tar.gz"
+SRC_URI="https://core.tcl-lang.org/tcltls/uv/tcl${P}-src.tar.gz"
 
 S="${WORKDIR}"/tcltls-20260121024900-5d3e3c3bf8
 

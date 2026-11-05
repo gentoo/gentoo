@@ -13,6 +13,10 @@
 		<email>tamiko@gentoo.org</email>
 		<name>Matthias Maier</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>arthurzam@gentoo.org</email>
+		<name>Arthur Zamarin</name>
+	</maintainer>
 	<use>
 		<flag name="autotype">Add support to autotype the passwords into other applications</flag>
 		<flag name="browser">Enable communication with web browser plugins</flag>

@@ -37,7 +37,7 @@ RDEPEND="
 	>=dev-libs/boost-1.76:=
 	>=dev-libs/openssl-3.0.2:=
 	>=dev-qt/qtbase-6.6:6[network,ssl,sql,sqlite,xml]
-	>=net-libs/libtorrent-rasterbar-2.0.10:=
+	>=net-libs/libtorrent-rasterbar-2.1:=
 	>=virtual/zlib-1.2.11:=
 	gui? (
 		>=dev-qt/qtbase-6.6:6[dbus?,gui,widgets]
@@ -105,8 +105,7 @@ src_test() {
 	my_src_test() {
 		# cmake does not detect tests by default, if you use enable_testing
 		# in a subdirectory instead of the root CMakeLists.txt
-		cd "${BUILD_DIR}"/test || die
-		edo ctest .
+		edo ctest --test-dir=test
 	}
 
 	multibuild_foreach_variant my_src_test

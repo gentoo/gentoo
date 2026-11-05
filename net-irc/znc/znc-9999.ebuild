@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{12..14} )
 
-inherit cmake python-single-r1 readme.gentoo-r1 systemd
+inherit cmake python-single-r1 readme.gentoo-r1 systemd verify-sig
 
 GTEST_VER="1.14.0"
 GTEST_URL="https://github.com/google/googletest/archive/v${GTEST_VER}.tar.gz -> gtest-${GTEST_VER}.tar.gz"
@@ -19,6 +19,7 @@ else
 	MY_P=${PN}-${MY_PV}
 	SRC_URI="
 		https://znc.in/releases/archive/${MY_P}.tar.gz
+		verify-sig? ( https://znc.in/releases/archive/${MY_P}.tar.gz.sig )
 		test? ( ${GTEST_URL} )
 	"
 	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
@@ -55,6 +56,7 @@ BDEPEND="
 		${PYTHON_DEPS}
 		dev-qt/qtbase:6[network]
 	)
+	verify-sig? ( sec-keys/openpgp-keys-alexeysokolov )
 "
 DEPEND="
 	dev-cpp/cctz:=
@@ -74,6 +76,8 @@ RDEPEND="
 	acct-group/znc
 "
 
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/alexeysokolov.asc
+
 PATCHES=(
 	"${FILESDIR}/${PN}-1.7.1-inttest-dir.patch"
 )
@@ -82,6 +86,21 @@ pkg_setup() {
 	if use python || use test; then
 		python-single-r1_pkg_setup
 	fi
+}
+
+src_unpack() {
+	if [[ ${PV} == *9999* ]]; then
+		git-r3_src_unpack
+		return
+	fi
+	if use verify-sig; then
+		# gtest tarball has different upstream, and system gtest crashes
+		# when compile flags are mismatched
+		verify-sig_verify_detached \
+			"${DISTDIR}/${MY_P}.tar.gz" \
+			"${DISTDIR}/${MY_P}.tar.gz.sig"
+	fi
+	default
 }
 
 src_prepare() {
@@ -94,7 +113,9 @@ src_prepare() {
 	sed -i -e "s|DZNC_BIN_DIR:path=|DZNC_BIN_DIR:path=${T}/inttest|" \
 		test/CMakeLists.txt || die
 
-	sed -i "s|--datadir=|&${EPREFIX}|" znc.service.in || die
+	if [[ -n "${EPREFIX}" ]]; then
+		sed -i "s|--datadir=|&${EPREFIX}|" znc.service.in || die
+	fi
 
 	cmake_src_prepare
 }

@@ -248,6 +248,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-4.0.0_pre20260320-configure-lua-version.patch
 	"${FILESDIR}"/${PN}-4.0.0_pre20260215-force-x11.patch # crashes w/ wayland platform plugin
 	"${FILESDIR}"/${PN}-4.0.0_pre20260515-no-libprojectm4.patch
+	"${FILESDIR}"/${P}-ffmpeg9.patch
 )
 
 pkg_setup() {

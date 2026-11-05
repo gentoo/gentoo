@@ -1,0 +1,119 @@
+From 5ce121dd841e2dc2594d0ed3954278f4101d3521 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Tue, 14 Jul 2026 12:07:37 +0200
+Subject: [PATCH] Replace the use of private `monkeypatch` fixture API
+
+---
+ tests/conftest.py | 43 +++++++++++++------------------------------
+ tests/test_cli.py |  8 ++++----
+ 2 files changed, 17 insertions(+), 34 deletions(-)
+
+diff --git a/tests/conftest.py b/tests/conftest.py
+index 214f520338..60bf5f4baf 100644
+--- a/tests/conftest.py
++++ b/tests/conftest.py
+@@ -2,43 +2,26 @@
+ import sys
+ 
+ import pytest
+-from _pytest import monkeypatch
+ 
+ from flask import Flask
+ from flask.globals import request_ctx
+ 
+ 
+-@pytest.fixture(scope="session", autouse=True)
+-def _standard_os_environ():
+-    """Set up ``os.environ`` at the start of the test session to have
+-    standard values. Returns a list of operations that is used by
+-    :func:`._reset_os_environ` after each test.
+-    """
+-    mp = monkeypatch.MonkeyPatch()
+-    out = (
+-        (os.environ, "FLASK_ENV_FILE", monkeypatch.notset),
+-        (os.environ, "FLASK_APP", monkeypatch.notset),
+-        (os.environ, "FLASK_DEBUG", monkeypatch.notset),
+-        (os.environ, "FLASK_RUN_FROM_CLI", monkeypatch.notset),
+-        (os.environ, "WERKZEUG_RUN_MAIN", monkeypatch.notset),
+-    )
+-
+-    for _, key, value in out:
+-        if value is monkeypatch.notset:
+-            mp.delenv(key, False)
+-        else:
+-            mp.setenv(key, value)
+-
+-    yield out
+-    mp.undo()
+-
+-
+ @pytest.fixture(autouse=True)
+-def _reset_os_environ(monkeypatch, _standard_os_environ):
+-    """Reset ``os.environ`` to the standard environ after each test,
+-    in case a test changed something without cleaning up.
++def _standard_os_environ(monkeypatch):
++    """Set up ``os.environ`` at the start of every test to have
++    standard values.
+     """
+-    monkeypatch._setitem.extend(_standard_os_environ)
++    for key in (
++        "FLASK_ENV_FILE",
++        "FLASK_APP",
++        "FLASK_DEBUG",
++        "FLASK_RUN_FROM_CLI",
++        "WERKZEUG_RUN_MAIN",
++    ):
++        monkeypatch.delenv(key, False)
++
++    yield
+ 
+ 
+ @pytest.fixture
+diff --git a/tests/test_cli.py b/tests/test_cli.py
+index e254c1dd8e..79025dda7f 100644
+--- a/tests/test_cli.py
++++ b/tests/test_cli.py
+@@ -11,7 +11,6 @@
+ 
+ import click
+ import pytest
+-from _pytest.monkeypatch import notset
+ from click.testing import CliRunner
+ 
+ from flask import Blueprint
+@@ -534,9 +533,8 @@ def dotenv_not_available():
+ 
+ @need_dotenv
+ def test_load_dotenv(monkeypatch):
+-    # can't use monkeypatch.delitem since the keys don't exist yet
+     for item in ("FOO", "BAR", "SPAM", "HAM"):
+-        monkeypatch._setitem.append((os.environ, item, notset))
++        monkeypatch.delenv(item, False)
+ 
+     monkeypatch.setenv("EGGS", "3")
+     monkeypatch.chdir(test_path)
+@@ -559,7 +557,7 @@ def test_load_dotenv(monkeypatch):
+ @need_dotenv
+ def test_dotenv_path(monkeypatch):
+     for item in ("FOO", "BAR", "EGGS"):
+-        monkeypatch._setitem.append((os.environ, item, notset))
++        monkeypatch.delenv(item, False)
+ 
+     load_dotenv(test_path / ".flaskenv")
+     assert Path.cwd() == cwd
+@@ -567,6 +565,7 @@ def test_dotenv_path(monkeypatch):
+ 
+ 
+ def test_dotenv_optional(monkeypatch):
++    monkeypatch.delenv("FOO", False)
+     monkeypatch.setitem(sys.modules, "dotenv", None)
+     monkeypatch.chdir(test_path)
+     load_dotenv()
+@@ -575,6 +574,7 @@ def test_dotenv_optional(monkeypatch):
+ 
+ @need_dotenv
+ def test_disable_dotenv_from_env(monkeypatch, runner):
++    monkeypatch.delenv("FOO", False)
+     monkeypatch.chdir(test_path)
+     monkeypatch.setitem(os.environ, "FLASK_SKIP_DOTENV", "1")
+     runner.invoke(FlaskGroup())

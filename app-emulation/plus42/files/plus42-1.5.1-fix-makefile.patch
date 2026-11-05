@@ -1,0 +1,21 @@
+--- a/gtk/Makefile
++++ b/gtk/Makefile
+@@ -33,7 +33,8 @@
+ 	 -DHAVE_SINCOS=1
+ 
+ CXXFLAGS = $(CFLAGS) \
+-	 -fno-rtti
++	 -fno-rtti \
++	 ${EXTRA_CXXFLAGS}
+ 
+ LIBS = $(shell $(PKG_CONFIG) --libs gtk+-3.0)
+ 
+@@ -192,7 +193,7 @@
+ 	./keymap2cc
+ 
+ gcc111libbid.a:
+-	sh ./build-intel-lib.sh
++	+sh ./build-intel-lib.sh
+ 	ln -s IntelRDFPMathLib20U1/TESTS/readtest.c
+ 
+ symlinks:

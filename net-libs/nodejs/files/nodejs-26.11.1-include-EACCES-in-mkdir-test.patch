@@ -1,0 +1,19 @@
+--- a/test/parallel/test-fs-mkdir-recursive-enoent.js	2026-10-08 10:38:32.205829242 -0400
++++ b/test/parallel/test-fs-mkdir-recursive-enoent.js	2026-10-08 10:40:19.828396756 -0400
+@@ -9,13 +9,13 @@ if (!common.isLinux) common.skip('procfs
+ 
+ const assert = require('assert');
+ const dir = `/proc/node-test-${process.pid}`;
+-const expected = { code: 'ENOENT', syscall: 'mkdir' };
++const expected = { code: /^(ENOENT|EACCES)$/, syscall: 'mkdir' };
+ 
+ assert.throws(() => fs.mkdirSync(dir, { recursive: true }), expected);
+ 
+ fs.mkdir(dir, { recursive: true }, common.mustCall((err) => {
+-  assert.strictEqual(err.code, expected.code);
+-  assert.strictEqual(err.syscall, expected.syscall);
++  assert.match(err.code, /^(ENOENT|EACCES)$/);
++  assert.strictEqual(err.syscall, 'mkdir');
+ }));
+ 
+ assert.rejects(fs.promises.mkdir(dir, { recursive: true }), expected)

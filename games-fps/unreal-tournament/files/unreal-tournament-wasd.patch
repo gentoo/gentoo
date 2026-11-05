@@ -1,8 +1,8 @@
 It's not 1999 anymore. Let's make WASD work out of the box. Apologies to AZERTY
 users, but I didn't want to change the binding for Q (Translocator).
 
---- System/DefUser.ini
-+++ System/DefUser.ini
+--- a/System/DefUser.ini
++++ b/System/DefUser.ini
 @@ -81,7 +81,7 @@
  L=Taunt wave
  M=Look

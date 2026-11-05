@@ -62,3 +62,23 @@
      "HIGHLIGHTS_QUERY",
      "INJECTIONS_QUERY",
      "LOCALS_QUERY",
+--- a/bindings/python/tests/test_binding.py	2026-10-01 15:07:02.826862935 +0200
++++ b/bindings/python/tests/test_binding.py	2026-10-01 15:08:17.419947735 +0200
+@@ -1,6 +1,8 @@
+ from unittest import TestCase
+ 
+-import tree_sitter, tree_sitter_markdown
++import tree_sitter_markdown
++
++from tree_sitter import Parser, Language
+ 
+ 
+ class TestLanguage(TestCase):
+@@ -12,6 +14,6 @@
+ 
+     def test_can_load_block_grammar(self):
+         try:
+-            Parser(Language(tree_sitter_markdown.inline_language())
++            Parser(Language(tree_sitter_markdown.inline_language()))
+         except Exception:
+             self.fail("Error loading Markdown inline grammar")

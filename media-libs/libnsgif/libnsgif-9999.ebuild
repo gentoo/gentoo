@@ -1,16 +1,18 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=9
 
 inherit git-r3 netsurf
 
-DESCRIPTION="decoding library for the GIF image file format, written in C"
+DESCRIPTION="Decoding library for the GIF image file format, written in C"
 HOMEPAGE="https://www.netsurf-browser.org/projects/libnsgif/"
 
-EGIT_REPO_URI="https://git.netsurf-browser.org/${PN}.git"
+EGIT_REPO_URI="git://git.netsurf-browser.org/${PN}.git"
 LICENSE="MIT"
-SLOT="0"
+# The soname is $PV, which usually means it can't be trusted, which
+# ironically means that it's the correct subslot.
+SLOT="0/${PV}"
 
 BDEPEND="
 	dev-build/netsurf-buildsystem

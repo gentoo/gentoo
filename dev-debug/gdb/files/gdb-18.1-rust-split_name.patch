@@ -1,0 +1,527 @@
+https://sourceware.org/bugzilla/show_bug.cgi?id=34776#c1
+https://sourceware.org/git/?p=binutils-gdb.git;a=commit;h=d0c1aa7eff5970dc5068c781b2b8d4b3f330e8e6
+https://sourceware.org/git/?p=binutils-gdb.git;a=commit;h=341175e096b44059615bf7de53d3997259294e92
+
+From d0c1aa7eff5970dc5068c781b2b8d4b3f330e8e6 Mon Sep 17 00:00:00 2001
+From: Simon Marchi <simon.marchi@efficios.com>
+Date: Wed, 14 Oct 2026 12:46:58 -0400
+Subject: [PATCH] gdb: add selftests for split_name
+
+Add selftests for split_name, covering all splitting styles.  Some
+output is questionable, but the goal is to document the current
+behavior.
+
+Approved-By: Tom Tromey <tom@tromey.com>
+Change-Id: Ib31a6f01762e84eefff647e0c141975ea23d469f
+(cherry picked from commit 7815eeb0eeb1f52f302bfaf532472a5b39d2be2e)
+---
+ gdb/split-name.c | 189 +++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 189 insertions(+)
+
+diff --git a/gdb/split-name.c b/gdb/split-name.c
+index bc145909c2e..cb740a968d4 100644
+--- a/gdb/split-name.c
++++ b/gdb/split-name.c
+@@ -19,6 +19,8 @@
+ 
+ #include "split-name.h"
+ #include "cp-support.h"
++#include "gdbsupport/enumerate.h"
++#include "gdbsupport/selftest.h"
+ 
+ /* See split-name.h.  */
+ 
+@@ -64,3 +66,190 @@ split_name (const char *name, split_style style)
+   result.emplace_back (&name[previous_len]);
+   return result;
+ }
++
++#if GDB_SELF_TEST
++
++namespace selftests {
++
++/* Return a string representation of COMPONENTS, for debugging.  */
++
++static std::string
++components_to_string (const std::vector<std::string_view> &components)
++{
++  std::string str = "{";
++
++  for (auto [i, component] : gdb::ranges::views::enumerate (components))
++    {
++      if (i > 0)
++	str += ",";
++
++      str += " \"";
++      str += component;
++      str += "\"";
++    }
++
++  str += " }";
++  return str;
++}
++
++/* Check that splitting NAME using STYLE gives EXPECTED.  */
++
++static void
++check_split_name (const char *name, split_style style,
++		  const std::vector<std::string_view> &expected)
++{
++  std::vector<std::string_view> result = split_name (name, style);
++
++  if (result != expected)
++    debug_printf ("split_name (\"%s\"): got %s, expected %s\n", name,
++		  components_to_string (result).c_str (),
++		  components_to_string (expected).c_str ());
++
++  SELF_CHECK (result == expected);
++}
++
++static void
++test_split_name_none ()
++{
++  /* No splitting is ever done.  */
++  check_split_name ("", split_style::NONE, { "" });
++  check_split_name ("foo", split_style::NONE, { "foo" });
++  check_split_name ("a::b", split_style::NONE, { "a::b" });
++  check_split_name ("a.b", split_style::NONE, { "a.b" });
++  check_split_name ("a..b", split_style::NONE, { "a..b" });
++  check_split_name ("::", split_style::NONE, { "::" });
++  check_split_name (".", split_style::NONE, { "." });
++}
++
++static void
++test_split_name_cxx ()
++{
++  /* Simple names.  */
++  check_split_name ("", split_style::CXX, { "" });
++  check_split_name ("foo", split_style::CXX, { "foo" });
++  check_split_name ("a::b", split_style::CXX, { "a", "b" });
++  check_split_name ("a::b::c", split_style::CXX, { "a", "b", "c" });
++
++  /* Dots are not separators.  */
++  check_split_name ("a.b", split_style::CXX, { "a.b" });
++  check_split_name ("a..b::c", split_style::CXX, { "a..b", "c" });
++
++  /* A single colon is not a separator.  */
++  check_split_name ("a:b", split_style::CXX, { "a:b" });
++  check_split_name ("a:::b", split_style::CXX, { "a", ":b" });
++
++  /* Templates.  */
++  check_split_name ("a<b::c>", split_style::CXX, { "a<b::c>" });
++  check_split_name ("a<b::c>::d", split_style::CXX, { "a<b::c>", "d" });
++  check_split_name ("a::b<c::d, e::f>::g", split_style::CXX,
++		    { "a", "b<c::d, e::f>", "g" });
++  check_split_name ("a<b::c<d::e>>::f", split_style::CXX,
++		    { "a<b::c<d::e>>", "f" });
++  check_split_name ("std::vector<int, std::allocator<int> >::size",
++		    split_style::CXX,
++		    { "std", "vector<int, std::allocator<int> >", "size" });
++
++  /* Parentheses: function parameters, function-local names,
++     anonymous namespaces.  */
++  check_split_name ("a::b(c::d)", split_style::CXX, { "a", "b(c::d)" });
++  check_split_name ("a::b(c::d) const", split_style::CXX,
++		    { "a", "b(c::d) const" });
++  check_split_name ("foo(int)::bar", split_style::CXX,
++		    { "foo(int)", "bar" });
++  check_split_name ("(anonymous namespace)::foo", split_style::CXX,
++		    { "(anonymous namespace)", "foo" });
++  check_split_name ("a::(anonymous namespace)::foo", split_style::CXX,
++		    { "a", "(anonymous namespace)", "foo" });
++
++  /* Operators, which can contain characters that would otherwise
++     be treated specially.  */
++  check_split_name ("A::operator<", split_style::CXX,
++		    { "A", "operator<" });
++  check_split_name ("A::operator<<", split_style::CXX,
++		    { "A", "operator<<" });
++  check_split_name ("A::operator>", split_style::CXX,
++		    { "A", "operator>" });
++  check_split_name ("A::operator>>", split_style::CXX,
++		    { "A", "operator>>" });
++  check_split_name ("A::operator->", split_style::CXX,
++		    { "A", "operator->" });
++  check_split_name ("A::operator()", split_style::CXX,
++		    { "A", "operator()" });
++  check_split_name ("A::operator< <int>", split_style::CXX,
++		    { "A", "operator< <int>" });
++  check_split_name ("A::operator<(A const&, A const&)", split_style::CXX,
++		    { "A", "operator<(A const&, A const&)" });
++
++  /* "operator" as part of an identifier is not an operator.  */
++  check_split_name ("cooperator::x", split_style::CXX,
++		    { "cooperator", "x" });
++  check_split_name ("operator_foo::x", split_style::CXX,
++		    { "operator_foo", "x" });
++
++  /* Malformed names are returned as a single component.  */
++  check_split_name ("a<b::c", split_style::CXX, { "a<b::c" });
++  check_split_name ("a(b::c", split_style::CXX, { "a(b::c" });
++  check_split_name ("a>b::c", split_style::CXX, { "a>b::c" });
++  check_split_name ("a)b::c", split_style::CXX, { "a)b::c" });
++
++  /* Leading, trailing or consecutive separators produce empty
++     components.  */
++  check_split_name ("::", split_style::CXX, { "", "" });
++  check_split_name ("::a", split_style::CXX, { "", "a" });
++  check_split_name ("a::", split_style::CXX, { "a", "" });
++  check_split_name ("a::::b", split_style::CXX, { "a", "", "b" });
++}
++
++static void
++test_split_name_dot_style ()
++{
++  /* Simple names.  */
++  check_split_name ("", split_style::DOT_STYLE, { "" });
++  check_split_name ("foo", split_style::DOT_STYLE, { "foo" });
++  check_split_name ("a.b", split_style::DOT_STYLE, { "a", "b" });
++  check_split_name ("a.b.c", split_style::DOT_STYLE, { "a", "b", "c" });
++  check_split_name ("pkg.sub.func", split_style::DOT_STYLE,
++		    { "pkg", "sub", "func" });
++
++  /* "::" is not a separator.  */
++  check_split_name ("a::b", split_style::DOT_STYLE, { "a::b" });
++  check_split_name ("a::b.c", split_style::DOT_STYLE, { "a::b", "c" });
++
++  /* Go method names.  */
++  check_split_name ("main.(*T).Method", split_style::DOT_STYLE,
++		    { "main", "(*T)", "Method" });
++
++  /* Ada operator names.  */
++  check_split_name ("pkg.\"+\"", split_style::DOT_STYLE,
++		    { "pkg", "\"+\"" });
++
++  /* Leading, trailing or consecutive dots produce empty components.  */
++  check_split_name (".", split_style::DOT_STYLE, { "", "" });
++  check_split_name ("..", split_style::DOT_STYLE, { "", "", "" });
++  check_split_name (".a", split_style::DOT_STYLE, { "", "a" });
++  check_split_name ("a.", split_style::DOT_STYLE, { "a", "" });
++  check_split_name ("a..b", split_style::DOT_STYLE, { "a", "", "b" });
++  check_split_name (".a.b", split_style::DOT_STYLE, { "", "a", "b" });
++  check_split_name ("a.b.", split_style::DOT_STYLE, { "a", "b", "" });
++  check_split_name ("a.b..c", split_style::DOT_STYLE,
++		    { "a", "b", "", "c" });
++  check_split_name ("a..b.c", split_style::DOT_STYLE,
++		    { "a", "", "b", "c" });
++  check_split_name ("a...b", split_style::DOT_STYLE, { "a", "", "", "b" });
++}
++
++} /* namespace selftests */
++
++#endif /* GDB_SELF_TEST */
++
++INIT_GDB_FILE (split_name)
++{
++#if GDB_SELF_TEST
++  selftests::register_test ("split_name_none",
++			    selftests::test_split_name_none);
++  selftests::register_test ("split_name_cxx",
++			    selftests::test_split_name_cxx);
++  selftests::register_test ("split_name_dot_style",
++			    selftests::test_split_name_dot_style);
++#endif
++}
+-- 
+2.43.7
+
+From 341175e096b44059615bf7de53d3997259294e92 Mon Sep 17 00:00:00 2001
+From: Simon Marchi <simon.marchi@polymtl.ca>
+Date: Wed, 14 Oct 2026 12:46:59 -0400
+Subject: [PATCH] gdb/dwarf: fix crash when .gdb_index contains Rust legacy
+ mangled names
+
+PR 34707 reports that loading the separate debug file of
+/usr/lib/libglycin-2.so from Arch Linux crashes GDB (when built with
+-D_GLIBCXX_DEBUG):
+
+    $ ./gdb -q -nx --data-directory data-directory $(DEBUGINFOD_URLS=https://debuginfod.archlinux.org debuginfod-find debuginfo /usr/lib/libglycin-2.so)
+    /usr/include/c++/16/string_view:291: ... Assertion 'this->_M_len > 0' failed.
+
+This catches a case of calling string_view::back() when the string_view is
+empty.
+
+The file in question contains a .gdb_index with some Rust symbol names that are
+mangled with the legacy mangling style.
+
+The legacy mangling style was the default one until the Rust 1.97 release
+in July 2026, so it's still very much in use, even though it's called
+"legacy".
+
+Source: https://blog.rust-lang.org/2026/07/09/Rust-1.97.0/
+
+An example of a problematic symbol is:
+
+    _ZN4core3ptr271drop_in_place$LT$core..iter..adapters..filter..Filter$LT$alloc..vec..into_iter..IntoIter$LT$core..net..socket_addr..SocketAddr$GT$$C$zbus..address..transport..tcp..Tcp..connect..$u7b$$u7b$closure$u7d$$u7d$..$u7b$$u7b$closure$u7d$$u7d$..$u7b$$u7b$closure$u7d$$u7d$$GT$$GT$17h57c03bb201e55682E
+
+Method mapped_gdb_index::build_name_components attempts to split the
+demangled fully-qualified symbol names into parts (it does not know in
+advance whether a symbol name is a mangled (linkage) name or a demangled
+one).
+
+Since this name does not match the C++ and Ada special cases, it falls into
+the DOT_STYLE else:
+
+    components = split_name (name, split_style::DOT_STYLE);
+
+Because of the consecutive dots in the symbol name, `components` (an
+std::vector<std::string_view>) contains some empty components.  Some code
+later calls .back() on one of those empty string_views, which is invalid.
+
+It seems like it's only caught when gdb is built with _GLIBCXX_DEBUG /
+_GLIBCXX_ASSERTIONS, which apparently is the case for the official Arch
+Linux packages.
+
+This patch fixes the problem in split_name: with DOT_STYLE, if splitting
+would produce an empty component (because of leading, trailing or
+consecutive dots), we assume that we are probably not looking at a fully
+qualified dot-separated demangled symbol name.  split_name then bails
+out and returns the whole name as a single component.  In
+build_name_components, the name is therefore treated like other names
+without separators (a single component with an unknown language).
+
+Update the split_name selftests accordingly.
+
+This is a regression introduced by commit 486bc5ac812f ("Rewrite the
+.gdb_index reader", 2025-03-06).  Before that, the reader only split names
+on "::" and "__".  This is new in the GDB 18.1 release, so this patch would be a
+candidate for the gdb-18-branch.
+
+Add a gdb.dwarf2 test that builds a Rust CU with such a linkage name, adds
+an index using gdb-add-index, and verifies that GDB can load it and find
+the function.  The test is done with both .gdb_index and .debug_names,
+although only the .gdb_index reader was affected.  Like the original
+crash, the test only fails without the fix if GDB is built with libstdc++
+assertions.
+
+One last thing, I don't know if it's expected for Rust mangled names to
+appear in the index.  For C++, index-write.c does not write them:
+
+      else if (entry->lang == language_cplus
+	       && (entry->flags & IS_LINKAGE) != 0)
+	{
+	  /* GDB never put C++ linkage names into .gdb_index.  The
+	     theory here is that a linkage name will normally be in
+	     the minimal symbols anyway, so including it in the index
+	     is usually redundant -- and the cases where it would not
+	     be redundant are rare and not worth supporting.  */
+	  continue;
+	}
+
+Perhaps this is the real root of the problem: maybe those names should not
+have been in the index in the first place, if the same rationale applies to
+Rust.  We could make that change, but even if we do, there are already
+indexes out there with those mangled names, so we have to handle them.
+
+Change-Id: I2c346dfba25edecda970af0726f9d77216838cbd
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=34707
+Approved-By: Tom Tromey <tom@tromey.com>
+(cherry picked from commit 8f7fb58377a9a50c668190a4a740a4078355076d)
+---
+ gdb/split-name.c                              | 36 ++++---
+ .../gdb-index-rust-legacy-linkage-name.c      | 29 ++++++
+ .../gdb-index-rust-legacy-linkage-name.exp    | 98 +++++++++++++++++++
+ 3 files changed, 150 insertions(+), 13 deletions(-)
+ create mode 100644 gdb/testsuite/gdb.dwarf2/gdb-index-rust-legacy-linkage-name.c
+ create mode 100644 gdb/testsuite/gdb.dwarf2/gdb-index-rust-legacy-linkage-name.exp
+
+diff --git a/gdb/split-name.c b/gdb/split-name.c
+index cb740a968d4..b8605c4040f 100644
+--- a/gdb/split-name.c
++++ b/gdb/split-name.c
+@@ -52,11 +52,22 @@ split_name (const char *name, split_style style)
+ 	   iter != nullptr;
+ 	   iter = strchr (iter, '.'))
+ 	{
++	  /* If the name contains a leading dot or consecutive dots, it's not a
++	     valid qualified dot-separated name.  */
++	  if (iter == &name[previous_len])
++	    return { name };
++
+ 	  result.emplace_back (&name[previous_len],
+ 			       iter - &name[previous_len]);
+ 	  ++iter;
+ 	  previous_len = iter - name;
+ 	}
++
++      /* If there is a trailing dot, it's not a valid qualified dot-separated
++	 name either.  */
++      if (name[previous_len] == '\0')
++	return { name };
++
+       break;
+ 
+     default:
+@@ -223,19 +234,18 @@ test_split_name_dot_style ()
+   check_split_name ("pkg.\"+\"", split_style::DOT_STYLE,
+ 		    { "pkg", "\"+\"" });
+ 
+-  /* Leading, trailing or consecutive dots produce empty components.  */
+-  check_split_name (".", split_style::DOT_STYLE, { "", "" });
+-  check_split_name ("..", split_style::DOT_STYLE, { "", "", "" });
+-  check_split_name (".a", split_style::DOT_STYLE, { "", "a" });
+-  check_split_name ("a.", split_style::DOT_STYLE, { "a", "" });
+-  check_split_name ("a..b", split_style::DOT_STYLE, { "a", "", "b" });
+-  check_split_name (".a.b", split_style::DOT_STYLE, { "", "a", "b" });
+-  check_split_name ("a.b.", split_style::DOT_STYLE, { "a", "b", "" });
+-  check_split_name ("a.b..c", split_style::DOT_STYLE,
+-		    { "a", "b", "", "c" });
+-  check_split_name ("a..b.c", split_style::DOT_STYLE,
+-		    { "a", "", "b", "c" });
+-  check_split_name ("a...b", split_style::DOT_STYLE, { "a", "", "", "b" });
++  /* Names with leading, trailing or consecutive dots are not recognized as
++     qualified names are are returned as-is.  */
++  check_split_name (".", split_style::DOT_STYLE, { "." });
++  check_split_name ("..", split_style::DOT_STYLE, { ".." });
++  check_split_name (".a", split_style::DOT_STYLE, { ".a" });
++  check_split_name ("a.", split_style::DOT_STYLE, { "a." });
++  check_split_name ("a..b", split_style::DOT_STYLE, { "a..b" });
++  check_split_name (".a.b", split_style::DOT_STYLE, { ".a.b" });
++  check_split_name ("a.b.", split_style::DOT_STYLE, { "a.b." });
++  check_split_name ("a.b..c", split_style::DOT_STYLE, { "a.b..c" });
++  check_split_name ("a..b.c", split_style::DOT_STYLE, { "a..b.c" });
++  check_split_name ("a...b", split_style::DOT_STYLE, { "a...b" });
+ }
+ 
+ } /* namespace selftests */
+diff --git a/gdb/testsuite/gdb.dwarf2/gdb-index-rust-legacy-linkage-name.c b/gdb/testsuite/gdb.dwarf2/gdb-index-rust-legacy-linkage-name.c
+new file mode 100644
+index 00000000000..ea6d1257523
+--- /dev/null
++++ b/gdb/testsuite/gdb.dwarf2/gdb-index-rust-legacy-linkage-name.c
+@@ -0,0 +1,29 @@
++/* This testcase is part of GDB, the GNU debugger.
++
++   Copyright 2026 Free Software Foundation, Inc.
++
++   This program is free software; you can redistribute it and/or modify
++   it under the terms of the GNU General Public License as published by
++   the Free Software Foundation; either version 3 of the License, or
++   (at your option) any later version.
++
++   This program is distributed in the hope that it will be useful,
++   but WITHOUT ANY WARRANTY; without even the implied warranty of
++   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++   GNU General Public License for more details.
++
++   You should have received a copy of the GNU General Public License
++   along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
++
++void
++func (void)
++{
++  asm ("func_label: .globl func_label");
++}
++
++int
++main (void)
++{
++  func ();
++  return 0;
++}
+diff --git a/gdb/testsuite/gdb.dwarf2/gdb-index-rust-legacy-linkage-name.exp b/gdb/testsuite/gdb.dwarf2/gdb-index-rust-legacy-linkage-name.exp
+new file mode 100644
+index 00000000000..b995e986355
+--- /dev/null
++++ b/gdb/testsuite/gdb.dwarf2/gdb-index-rust-legacy-linkage-name.exp
+@@ -0,0 +1,98 @@
++# Copyright 2026 Free Software Foundation, Inc.
++
++# This program is free software; you can redistribute it and/or modify
++# it under the terms of the GNU General Public License as published by
++# the Free Software Foundation; either version 3 of the License, or
++# (at your option) any later version.
++#
++# This program is distributed in the hope that it will be useful,
++# but WITHOUT ANY WARRANTY; without even the implied warranty of
++# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++# GNU General Public License for more details.
++#
++# You should have received a copy of the GNU General Public License
++# along with this program.  If not, see <http://www.gnu.org/licenses/>.
++
++# Test reading an index containing a Rust "legacy" mangled linkage
++# name.  These names contain ".." sequences, which the .gdb_index
++# reader used to split into empty components, leading to a crash.
++# The .debug_names index is tested too, for completeness.
++#
++# Note that the crash only happened with libstdc++ assertions enabled
++# (e.g. with -D_GLIBCXX_DEBUG).  Otherwise, it was silent undefined
++# behavior.
++
++load_lib dwarf.exp
++
++require dwarf2_support
++require !readnow
++
++standard_testfile .c -dw.S
++
++set asm_file [standard_output_file $srcfile2]
++Dwarf::assemble $asm_file {
++    cu {} {
++	DW_TAG_compile_unit {
++	    DW_AT_language @DW_LANG_Rust
++	    DW_AT_name lib.rs
++	} {
++	    DW_TAG_namespace {
++		DW_AT_name foo
++	    } {
++		# The linkage name demangles to foo::bar<foo::Baz>.
++		DW_TAG_subprogram {
++		    DW_AT_name "bar<foo::Baz>"
++		    DW_AT_linkage_name \
++			"_ZN3foo19bar\$LT\$foo..Baz\$GT\$17h0123456789abcdefE"
++		    DW_AT_external 1 DW_FORM_flag
++		    MACRO_AT_range {func}
++		}
++	    }
++	}
++    }
++}
++
++if { [build_executable "failed to prepare" ${testfile} \
++	  [list $srcfile $asm_file] {nodebug}] == -1 } {
++    return
++}
++
++# For simplicity, skip the test if the executable already has an index (e.g.
++# with the cc-with-gdb-index board).  The test will be covered when running
++# with the unix board.
++clean_restart $testfile
++if { [get_index_type $binfile "check index type"] ne "cooked" } {
++    unsupported "executable already has an index"
++    return
++}
++
++foreach_with_prefix index_type { gdb_index debug_names } {
++    set testfile_with_index ${testfile}-${index_type}
++    set binfile_with_index [standard_output_file $testfile_with_index]
++    remote_exec build "cp $binfile $binfile_with_index"
++
++    if { $index_type eq "gdb_index" } {
++	set style ""
++    } else {
++	set style "-dwarf-5"
++    }
++
++    if { [add_gdb_index $binfile_with_index $style] != 1 } {
++	untested "error adding index"
++	continue
++    }
++
++    clean_restart $testfile_with_index
++    gdb_assert { [have_index $binfile_with_index] eq $index_type } \
++	"index used"
++
++    # Check that the function can be found.
++    set re "^foo::bar<foo::Baz>$"
++    gdb_test "info functions $re" \
++	[multi_line \
++	     [string_to_regexp \
++		  "All functions matching regular expression \"$re\":"] \
++	     "" \
++	     "File lib.rs:" \
++	     "\[^\r\n\]*[string_to_regexp "fn foo::bar<foo::Baz>();"]"]
++}
+-- 
+2.43.7

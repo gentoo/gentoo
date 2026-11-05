@@ -9,7 +9,7 @@ SRC_URI="https://github.com/adah1972/libunibreak/releases/download/${PN}_${PV/./
 
 LICENSE="ZLIB"
 SLOT="0/$(ver_cut 1)"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86 ~arm64-macos ~x64-macos"
 IUSE="doc man static-libs test"
 RESTRICT="!test? ( test )"
 

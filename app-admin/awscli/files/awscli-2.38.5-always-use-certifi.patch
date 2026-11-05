@@ -1,0 +1,14 @@
+diff --git a/awscli/botocore/httpsession.py b/awscli/botocore/httpsession.py
+index ae657c6..0155958 100644
+--- a/awscli/botocore/httpsession.py
++++ b/awscli/botocore/httpsession.py
+@@ -87,7 +87,9 @@ if hasattr(PoolKey, 'key_blocksize'):
+ 
+ try:
+     from certifi import where
++    DEFAULT_CA_BUNDLE = where()
+ except ImportError:
++    raise
+ 
+     def where():
+         return DEFAULT_CA_BUNDLE

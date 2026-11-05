@@ -1,0 +1,60 @@
+--- a/tools/v8_gypfiles/simdutf.gyp	2026-09-30 10:54:37.164866050 -0400
++++ b/tools/v8_gypfiles/simdutf.gyp	2026-09-30 10:55:43.969994995 -0400
+@@ -3,19 +3,21 @@
+   'targets': [
+     {
+       'target_name': 'simdutf',
+-      'type': 'static_library',
++      'type': 'shared_library',
+       'toolsets': ['host', 'target'],
++      'link_settings': {
++        'libraries': ['-lsimdutf', ],
++      },
+       'variables': {
+         'SIMDUTF_ROOT': '../../deps/v8/third_party/simdutf',
+       },
+       'all_dependent_settings': {
+         'include_dirs': [
+-          '<(SIMDUTF_ROOT)',
+         ],
+       },
+       'include_dirs': ['.'],
++      'include_dirs': ['/usr/include'],
+       'sources': [
+-        '<(SIMDUTF_ROOT)/simdutf.cpp',
+       ],
+     },  # simdutf
+   ],
+--- a/deps/v8/src/objects/string.h	2026-09-30 10:56:41.906309114 -0400
++++ b/deps/v8/src/objects/string.h	2026-09-30 10:57:36.167463245 -0400
+@@ -8,7 +8,7 @@
+ #include <memory>
+ #include <optional>
+ 
+-#include "simdutf.h"
++#include <simdutf.h>
+ #include "src/base/bits.h"
+ #include "src/base/export-template.h"
+ #include "src/base/small-vector.h"
+--- a/deps/v8/src/builtins/builtins-typed-array.cc	2026-09-30 10:58:38.884896629 -0400
++++ b/deps/v8/src/builtins/builtins-typed-array.cc	2026-09-30 10:59:00.621410872 -0400
+@@ -2,7 +2,7 @@
+ // Use of this source code is governed by a BSD-style license that can be
+ // found in the LICENSE file.
+ 
+-#include "simdutf.h"
++#include <simdutf.h>
+ #include "src/base/logging.h"
+ #include "src/base/macros.h"
+ #include "src/builtins/builtins-utils-inl.h"
+--- a/deps/merve/merve.gyp	2026-09-30 12:23:39.179506178 -0400
++++ b/deps/merve/merve.gyp	2026-09-30 12:24:53.610319727 -0400
+@@ -8,7 +8,7 @@
+       'type': 'static_library',
+       'include_dirs': [
+         '.',
+-        '../v8/third_party/simdutf',
++        '/usr/include',
+       ],
+       'direct_dependent_settings': {
+         'include_dirs': ['.'],

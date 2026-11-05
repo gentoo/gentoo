@@ -1,0 +1,16 @@
+From: Gentoo Authors
+Subject: [PATCH] Write test output to the build directory
+
+Keep the source tree read-only, as required by cmake.eclass.
+
+--- a/test/CMakeLists.txt
++++ b/test/CMakeLists.txt
+@@ -4,7 +4,7 @@
+     return()
+ endif()
+ 
+-set(PDF_TEST_OUTPUT_PATH "${CMAKE_CURRENT_SOURCE_DIR}/out")
++set(PDF_TEST_OUTPUT_PATH "${CMAKE_CURRENT_BINARY_DIR}/out")
+ make_directory(${PDF_TEST_OUTPUT_PATH})
+ 
+ file(TO_NATIVE_PATH "${PDF_TEST_RESOURCE_PATH}" PDF_TEST_RESOURCE_PATH)

@@ -9,7 +9,7 @@ DESCRIPTION="Fcitx5 Next generation of fcitx"
 HOMEPAGE="https://fcitx-im.org/"
 SRC_URI="https://download.fcitx-im.org/fcitx5/libime/libime-${PV}_dict.tar.zst"
 
-LICENSE="LGPL-2+"
+LICENSE="LGPL-2.1+"
 SLOT="5"
 KEYWORDS="~amd64 arm64 ~loong ppc64 ~riscv x86"
 IUSE="+data doc test"

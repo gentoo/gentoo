@@ -1,0 +1,21 @@
+https://bugs.gentoo.org/984145
+https://github.com/rockowitz/ddcutil/commit/ebff872
+---
+ src/util/linux_util.c | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/src/util/linux_util.c b/src/util/linux_util.c
+index 2d36afbcc..21849e2df 100644
+--- a/src/util/linux_util.c
++++ b/src/util/linux_util.c
+@@ -10,7 +10,6 @@
+ 
+ /** \cond */
+ #include <assert.h>
+-#include <execinfo.h>      // for segv handler
+ #include <fcntl.h>
+ #include <glib-2.0/glib.h>
+ #include <inttypes.h>
+-- 
+2.55.0
+

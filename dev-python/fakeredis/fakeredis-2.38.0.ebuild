@@ -25,7 +25,7 @@ RDEPEND="
 "
 BDEPEND="
 	test? (
-		dev-db/redis
+		>=dev-db/redis-8.6
 		dev-db/valkey
 		dev-python/packaging[${PYTHON_USEDEP}]
 		dev-python/valkey[${PYTHON_USEDEP}]

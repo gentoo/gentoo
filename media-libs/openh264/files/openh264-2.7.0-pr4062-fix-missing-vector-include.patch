@@ -1,0 +1,22 @@
+From 83451b1e999404b478123bbcbae68c7719200fa1 Mon Sep 17 00:00:00 2001
+From: Joonas Niilola <juippis@gentoo.org>
+Date: Fri, 23 Oct 2026 09:14:14 +0300
+Subject: [PATCH] gmp-openh264.cpp: add missing vector include
+
+Signed-off-by: Joonas Niilola <juippis@gentoo.org>
+---
+ module/gmp-openh264.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/module/gmp-openh264.cpp b/module/gmp-openh264.cpp
+index db9b057782..97ab31f7db 100644
+--- a/module/gmp-openh264.cpp
++++ b/module/gmp-openh264.cpp
+@@ -91,6 +91,7 @@
+ #endif
+ 
+ #include "task_utils.h"
++#include <vector>
+ 
+ static int g_log_level = 0;
+ 

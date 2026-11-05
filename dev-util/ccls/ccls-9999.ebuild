@@ -1,4 +1,4 @@
-# Copyright 2020-2025 Gentoo Authors
+# Copyright 2020-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,9 +7,9 @@ EGIT_REPO_URI="https://github.com/MaskRay/${PN}"
 
 if [[ ${PV} = 9999* ]]; then
 	GIT_ECLASS="git-r3"
-	LLVM_COMPAT=( {18..21} )
+	LLVM_COMPAT=( {18..24} )
 else
-	LLVM_COMPAT=( {18..21} )
+	LLVM_COMPAT=( {18..24} )
 fi
 
 inherit cmake llvm-r2 ${GIT_ECLASS}

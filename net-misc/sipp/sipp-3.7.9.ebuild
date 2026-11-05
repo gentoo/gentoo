@@ -40,8 +40,8 @@ src_configure() {
 		-DUSE_GSL=$(usex gsl ON OFF)
 		-DUSE_PCAP=$(usex pcap ON OFF)
 		-DUSE_SCTP=$(usex sctp ON OFF)
-		-DUSE_SYSTEM_GTEST=$(usex test ON OFF)
 	)
+	use test && mycmakeargs+=(-DUSE_SYSTEM_GTEST=ON)
 
 	cmake_src_configure
 }

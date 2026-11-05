@@ -1,0 +1,28 @@
+From 49af1f0904e00351ffbf9ad430a37bfe66226bae Mon Sep 17 00:00:00 2001
+From: Lukas Fleischer <lfleischer@lfos.de>
+Date: Tue, 4 Aug 2026 21:57:58 -0400
+Subject: [PATCH] Fix avcodec_get_supported_config() version check
+
+Fixes compilation with ffmpeg 9.
+
+The previous attempt to fix this in commit eccf33a2c2 (ffmpeg plugin:
+correct the version check for avcodec_get_supported_config, 2025-02-04)
+didn't properly account for the case where LIBAVCODEC_VERSION_MAJOR is
+strictly larger than 61 and LIBAVCODEC_VERSION_MINOR is smaller than 14.
+---
+ src/calibre/utils/ffmpeg.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/calibre/utils/ffmpeg.c b/src/calibre/utils/ffmpeg.c
+index db9091f40a70..9a7eed4c1b2a 100644
+--- a/src/calibre/utils/ffmpeg.c
++++ b/src/calibre/utils/ffmpeg.c
+@@ -240,7 +240,7 @@ open_output_file(Transcoder *t) {
+     av_channel_layout_default(&t->enc_ctx->ch_layout, t->dec_ctx->ch_layout.nb_channels);
+     t->enc_ctx->sample_rate = t->dec_ctx->sample_rate;
+     int ret;
+-#if LIBAVCODEC_VERSION_MAJOR >= 61 && LIBAVCODEC_VERSION_MINOR >= 14
++#if LIBAVCODEC_VERSION_INT >= AV_VERSION_INT(61, 13, 100)
+     const enum AVSampleFormat *sample_fmts = NULL;
+     ret = avcodec_get_supported_config(t->dec_ctx, output_codec, AV_CODEC_CONFIG_SAMPLE_FORMAT, 0, (const void**)&sample_fmts, NULL);
+     t->enc_ctx->sample_fmt = (ret >= 0 && sample_fmts) ? sample_fmts[0] : t->dec_ctx->sample_fmt;

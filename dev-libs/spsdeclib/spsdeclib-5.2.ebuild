@@ -13,7 +13,7 @@ S="${WORKDIR}/SPStudio_Dev/"
 
 LICENSE="Kryoflux-MAME"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 
 BDEPEND="app-arch/unzip"
 

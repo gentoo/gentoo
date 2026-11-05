@@ -6,9 +6,6 @@ EAPI=9
 JAVA_PKG_IUSE="doc source test"
 JAVA_TESTING_FRAMEWORKS="junit-jupiter"
 
-# Avoid circular dependency
-JAVA_DISABLE_DEPEND_ON_JAVA_DEP_CHECK="true"
-
 inherit java-pkg-2 java-pkg-simple junit5
 
 MY_P="ASM_${PV//./_}"

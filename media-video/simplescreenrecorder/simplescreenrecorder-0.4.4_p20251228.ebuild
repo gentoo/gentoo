@@ -45,7 +45,10 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="dev-qt/qttools:6[linguist]"
 
-PATCHES=( "${FILESDIR}"/${PN}-0.4.4_p20251228-cmake4.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.4.4_p20251228-cmake4.patch
+	"${FILESDIR}"/${P}-ffmpeg9.patch
+)
 
 pkg_pretend() {
 	if use amd64 && ! use abi_x86_32 ; then

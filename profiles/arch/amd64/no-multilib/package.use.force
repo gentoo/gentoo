@@ -1,8 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Michał Górny <mgorny@gentoo.org> (2023-10-06)
 # Undo multilib forcing.
+app-arch/zstd -abi_x86_32
 dev-libs/libatomic_ops -abi_x86_32
 dev-libs/boehm-gc -abi_x86_32
 

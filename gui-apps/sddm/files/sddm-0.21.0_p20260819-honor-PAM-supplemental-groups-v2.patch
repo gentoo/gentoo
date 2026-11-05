@@ -1,0 +1,263 @@
+Source: https://github.com/sddm/sddm/pull/1165
+See also: https://github.com/sddm/sddm/issues/1159
+
+From 456992561978dc70e1e0ddb96f582d1d486324e4 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Sun, 3 Jan 2021 21:57:18 +0100
+Subject: [PATCH 1/2] Revert "Honor PAM's ambient supplemental groups. (#834)"
+
+This reverts commit 1bc813d08b8130e458a6550ec47fb2bfbe6de080, which
+misuses PAM and leads to pulling in all of root's supplemental groups
+during session initialization instead of only adding PAM's extra
+groups. The problem was masked due to the root user not having any
+supplemental groups in some common contexts, like running sddm from a
+systemd unit.
+---
+ src/helper/UserSession.cpp | 50 --------------------------------------
+ 1 file changed, 50 deletions(-)
+
+diff --git a/src/helper/UserSession.cpp b/src/helper/UserSession.cpp
+index 03fd396..d9ed370 100644
+--- a/src/helper/UserSession.cpp
++++ b/src/helper/UserSession.cpp
+@@ -288,56 +288,6 @@ namespace SDDM {
+             qCritical() << "setgid(" << pw.pw_gid << ") failed for user: " << username;
+             exit(Auth::HELPER_OTHER_ERROR);
+         }
+-
+-        // fetch ambient groups from PAM's environment;
+-        // these are set by modules such as pam_groups.so
+-        int n_pam_groups = getgroups(0, NULL);
+-        gid_t *pam_groups = NULL;
+-        if (n_pam_groups > 0) {
+-            pam_groups = new gid_t[n_pam_groups];
+-            if ((n_pam_groups = getgroups(n_pam_groups, pam_groups)) == -1) {
+-                qCritical() << "getgroups() failed to fetch supplemental"
+-                            << "PAM groups for user:" << username;
+-                exit(Auth::HELPER_OTHER_ERROR);
+-            }
+-        } else {
+-            n_pam_groups = 0;
+-        }
+-
+-        // fetch session's user's groups
+-        int n_user_groups = 0;
+-        gid_t *user_groups = NULL;
+-        if (-1 == getgrouplist(pw.pw_name, pw.pw_gid,
+-                               NULL, &n_user_groups)) {
+-            user_groups = new gid_t[n_user_groups];
+-            if ((n_user_groups = getgrouplist(pw.pw_name,
+-                                              pw.pw_gid, user_groups,
+-                                              &n_user_groups)) == -1 ) {
+-                qCritical() << "getgrouplist(" << pw.pw_name << ", " << pw.pw_gid
+-                            << ") failed";
+-                exit(Auth::HELPER_OTHER_ERROR);
+-            }
+-        }
+-
+-        // set groups to concatenation of PAM's ambient
+-        // groups and the session's user's groups
+-        int n_groups = n_pam_groups + n_user_groups;
+-        if (n_groups > 0) {
+-            gid_t *groups = new gid_t[n_groups];
+-            memcpy(groups, pam_groups, (n_pam_groups * sizeof(gid_t)));
+-            memcpy((groups + n_pam_groups), user_groups,
+-                   (n_user_groups * sizeof(gid_t)));
+-
+-            // setgroups(2) handles duplicate groups
+-            if (setgroups(n_groups, groups) != 0) {
+-                qCritical() << "setgroups() failed for user: " << username;
+-                exit (Auth::HELPER_OTHER_ERROR);
+-            }
+-            delete[] groups;
+-        }
+-        delete[] pam_groups;
+-        delete[] user_groups;
+-
+         if (setuid(pw.pw_uid) != 0) {
+             qCritical() << "setuid(" << pw.pw_uid << ") failed for user: " << username;
+             exit(Auth::HELPER_OTHER_ERROR);
+-- 
+2.56.0
+
+
+From fdf884a0da9594a5b773730e9d8cd3a012278144 Mon Sep 17 00:00:00 2001
+From: "J. Konrad Tegtmeier-Rottach" <jktr@0x16.de>
+Date: Fri, 11 Feb 2022 15:21:56 +0100
+Subject: [PATCH 2/2] Honor PAM's supplemental groups (v2) (#834, #1159)
+
+This moves the supplemental group initialization step from
+UserSession.cpp to the Backend system, so that the Pam Backend can
+inject additional supplemental groups via modules like pam_group.so.
+
+pam_setcred(3) assumes that it operates on an already initialized
+supplemental group list. However, PamBackend calls
+pam_setcred(PAM_ESTABLISH_CRED) earlier, at the start
+PamBackend::openSession, so a pam_setcred(PAM_REINITIALIZE_CRED) call
+must be issued to repeat the injection of PAM's supplemental groups.
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ src/helper/Backend.cpp            |  5 +++++
+ src/helper/Backend.h              |  3 +++
+ src/helper/HelperApp.cpp          |  4 ++++
+ src/helper/HelperApp.h            |  1 +
+ src/helper/UserSession.cpp        |  8 +++++++-
+ src/helper/backend/PamBackend.cpp | 18 ++++++++++++++++++
+ src/helper/backend/PamBackend.h   |  2 ++
+ 7 files changed, 40 insertions(+), 1 deletion(-)
+
+diff --git a/src/helper/Backend.cpp b/src/helper/Backend.cpp
+index 5a1dd60..69ecce1 100644
+--- a/src/helper/Backend.cpp
++++ b/src/helper/Backend.cpp
+@@ -28,6 +28,7 @@
+ #include <QtCore/QProcessEnvironment>
+ 
+ #include <pwd.h>
++#include <grp.h>
+ 
+ #if defined(Q_OS_FREEBSD)
+ #include <sys/types.h>
+@@ -125,4 +126,8 @@ namespace SDDM {
+     bool Backend::closeSession() {
+         return true;
+     }
++
++    bool Backend::setupSupplementalGroups(struct passwd *pw) {
++        return !initgroups(pw->pw_name, pw->pw_gid);
++    }
+ }
+diff --git a/src/helper/Backend.h b/src/helper/Backend.h
+index 915d09c..0a38210 100644
+--- a/src/helper/Backend.h
++++ b/src/helper/Backend.h
+@@ -22,6 +22,7 @@
+ #define BACKEND_H
+ 
+ #include <QtCore/QObject>
++#include <pwd.h>
+ 
+ namespace SDDM {
+     class HelperApp;
+@@ -39,6 +40,8 @@ namespace SDDM {
+         void setDisplayServer(bool on = true);
+         void setGreeter(bool on = true);
+ 
++        virtual bool setupSupplementalGroups(struct passwd *pw);
++
+     public slots:
+         virtual bool start(const QString &user = QString()) = 0;
+         virtual bool authenticate() = 0;
+diff --git a/src/helper/HelperApp.cpp b/src/helper/HelperApp.cpp
+index 32da42d..3304c42 100644
+--- a/src/helper/HelperApp.cpp
++++ b/src/helper/HelperApp.cpp
+@@ -273,6 +273,10 @@ namespace SDDM {
+         return m_session;
+     }
+ 
++    Backend *HelperApp::backend() {
++        return m_backend;
++    }
++
+     const QString& HelperApp::user() const {
+         return m_user;
+     }
+diff --git a/src/helper/HelperApp.h b/src/helper/HelperApp.h
+index 64ea0e1..f1f4dee 100644
+--- a/src/helper/HelperApp.h
++++ b/src/helper/HelperApp.h
+@@ -39,6 +39,7 @@ namespace SDDM {
+         virtual ~HelperApp();
+ 
+         UserSession *session();
++        Backend *backend();
+         const QString &user() const;
+         const QByteArray &cookie() const;
+ 
+diff --git a/src/helper/UserSession.cpp b/src/helper/UserSession.cpp
+index d9ed370..187e909 100644
+--- a/src/helper/UserSession.cpp
++++ b/src/helper/UserSession.cpp
+@@ -21,6 +21,7 @@
+ 
+ #include <QSocketNotifier>
+ 
++#include "Backend.h"
+ #include "Configuration.h"
+ #include "Constants.h"
+ #include "UserSession.h"
+@@ -250,7 +251,8 @@ namespace SDDM {
+ #endif
+ 
+         // switch user
+-        const QByteArray username = qobject_cast<HelperApp*>(parent())->user().toLocal8Bit();
++        HelperApp* app = qobject_cast<HelperApp*>(parent());
++        const QByteArray username = app->user().toLocal8Bit();
+         struct passwd pw;
+         struct passwd *rpw;
+         long bufsize = sysconf(_SC_GETPW_R_SIZE_MAX);
+@@ -284,6 +286,10 @@ namespace SDDM {
+             exit(Auth::HELPER_OTHER_ERROR);
+         }
+ #else
++        if (!app->backend()->setupSupplementalGroups(&pw)) {
++            qCritical() << "failed to set up supplemental groups for user: " << username;
++            exit(Auth::HELPER_OTHER_ERROR);
++        }
+         if (setgid(pw.pw_gid) != 0) {
+             qCritical() << "setgid(" << pw.pw_gid << ") failed for user: " << username;
+             exit(Auth::HELPER_OTHER_ERROR);
+diff --git a/src/helper/backend/PamBackend.cpp b/src/helper/backend/PamBackend.cpp
+index f371c33..efa33bf 100644
+--- a/src/helper/backend/PamBackend.cpp
++++ b/src/helper/backend/PamBackend.cpp
+@@ -295,6 +295,24 @@ namespace SDDM {
+         return QString::fromLocal8Bit((const char*) m_pam->getItem(PAM_USER));
+     }
+ 
++    bool PamBackend::setupSupplementalGroups(struct passwd *pw) {
++        if (!Backend::setupSupplementalGroups(pw))
++            return false;
++
++        // pam_setcred(3) may inject additional groups into the user's
++        // list of supplemental groups, and assumes that the user's
++        // supplemental groups have already been initialized before
++        // its invocation. Since pam_setcred was already called at the
++        // start of openSession, we need to repeat this step here as
++        // the user's groups have only just now been initialized.
++
++        if (!m_pam->setCred(PAM_REINITIALIZE_CRED)) {
++            m_app->error(m_pam->errorString(), Auth::ERROR_AUTHENTICATION);
++            return false;
++        }
++        return true;
++    }
++
+     int PamBackend::converse(int n, const struct pam_message **msg, struct pam_response **resp) {
+         qDebug() << "[PAM] Conversation with" << n << "messages";
+ 
+diff --git a/src/helper/backend/PamBackend.h b/src/helper/backend/PamBackend.h
+index 4aba328..386006a 100644
+--- a/src/helper/backend/PamBackend.h
++++ b/src/helper/backend/PamBackend.h
+@@ -28,6 +28,7 @@
+ #include <QtCore/QObject>
+ 
+ #include <security/pam_appl.h>
++#include <pwd.h>
+ 
+ namespace SDDM {
+     class PamHandle;
+@@ -61,6 +62,7 @@ namespace SDDM {
+         explicit PamBackend(HelperApp *parent);
+         virtual ~PamBackend();
+         int converse(int n, const struct pam_message **msg, struct pam_response **resp);
++        virtual bool setupSupplementalGroups(struct passwd *pw);
+ 
+     public slots:
+         virtual bool start(const QString &user = QString());
+-- 
+2.56.0
+

@@ -1,0 +1,16 @@
+https://github.com/labwc/labwc-tweaks/commit/34be8daf52dd708deb350ed8f3c9ad3a2047e657
+
+From: Johan Malm <jgm323@gmail.com>
+Date: Sat, 31 Oct 2026 21:24:25 +0000
+Subject: [PATCH] build: require cmake 3.10
+
+...as compatibility with CMake <3.10 will be removed from future
+versions of CMake.
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.5)
++cmake_minimum_required(VERSION 3.10)
+ project(labwc-tweaks
+     VERSION 0.2.0
+     LANGUAGES CXX

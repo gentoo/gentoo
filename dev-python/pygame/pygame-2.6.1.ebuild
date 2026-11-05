@@ -1,11 +1,11 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{11..14} pypy3_11 )
+PYTHON_COMPAT=( python3_{12..15} )
 
 inherit distutils-r1
 
@@ -60,6 +60,8 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${P}-py314-tests.patch
+	"${FILESDIR}"/${P}-py315.patch
+	"${FILESDIR}"/${P}-cython330.patch
 )
 
 src_prepare() {
@@ -87,8 +89,8 @@ python_test() {
 	# https://github.com/pygame/pygame/pull/4267
 	local -x PYGAME_MSYS2=1
 
-	local -x SDL_VIDEODRIVER=dummy
-	local -x SDL_AUDIODRIVER=disk
+	local -x SDL_{AUDIO,VIDEO}DRIVER=dummy
+	local -x SHELL=${SHELL} # stop script from using /etc/passwd's
 	script -eqc "${EPYTHON} -m pygame.tests -v" || die
 }
 

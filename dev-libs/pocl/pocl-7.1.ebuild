@@ -6,7 +6,7 @@ EAPI=8
 # LLVM-21 broken for nvtpx
 # https://github.com/llvm/llvm-project/issues/154772
 LLVM_COMPAT=( {18..20} )
-inherit cmake cuda llvm-r1 verify-sig
+inherit cmake cuda flag-o-matic llvm-r1 verify-sig
 
 DESCRIPTION="Portable Computing Language (an implementation of OpenCL)"
 HOMEPAGE="http://portablecl.org https://github.com/pocl/pocl"
@@ -67,6 +67,14 @@ src_prepare() {
 }
 
 src_configure() {
+	if use server; then
+		# -Werror=strict-aliasing
+		# https://bugs.gentoo.org/964295
+		# https://github.com/pocl/pocl/issues/2413
+		append-flags -fno-strict-aliasing
+		filter-lto
+	fi
+
 	local host_cpu_variants="generic"
 
 	if use amd64 ; then

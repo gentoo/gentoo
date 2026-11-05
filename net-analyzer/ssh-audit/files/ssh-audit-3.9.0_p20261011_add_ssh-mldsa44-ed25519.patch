@@ -1,0 +1,125 @@
+Derived from: https://github.com/jtesta/ssh-audit/pull/379
+
+commit ae16f4e55128d3dfaa11bcc231bf93cca9181a0f Mon Sep 17 00:00:00 2001
+Author: =?UTF-8?q?Nicol=C3=B2=20Sala?= <me@niceo.org>
+Date: Wed, 7 Oct 2026 11:17:41 +0200
+Subject: [PATCH] Add ssh-mldsa44-ed25519 host key (OpenSSH 10.6)
+
+OpenSSH 10.6 enables the hybrid post-quantum ssh-mldsa44-ed25519
+signature algorithm without the "@openssh.com" suffix used by the
+previous experimental implementation, which was removed.
+
+- Add ssh-mldsa44-ed25519 (available since OpenSSH 10.6).
+- Mark ssh-mldsa44-ed25519@openssh.com as available in OpenSSH
+  10.4-10.5 only, with a note that it was removed in 10.6.
+- Don't recommend adding algorithms to software newer than the last
+  version that supports them, so OpenSSH 10.6+ no longer gets the old
+  name suggested.
+- Add a test covering the recommendations for OpenSSH 10.3 to 10.7.
+
+Fixes #378
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+--- a/README.md
++++ b/README.md
+@@ -257,6 +257,7 @@
+  - Added support for Python 3.15.
+  - Fixed a perhaps rare crash when performing connection rate tests during standard audits.
+  - Added `-V`/`--version` flag to print version and terminate; credit [Christian Krause](https://github.com/wookietreiber).
++ - Added 1 new host key: `ssh-mldsa44-ed25519` (the final name used since OpenSSH 10.6).  The experimental `ssh-mldsa44-ed25519@openssh.com` was removed in OpenSSH 10.6, so it is now marked as such and is no longer recommended for OpenSSH 10.6 and later.
+ 
+ ### v3.9.0 (2026-07-04)
+  - BIG THANKS to [realmiwi](https://github.com/realmiwi) for being the project's *very first sponsor!!*
+--- a/src/ssh_audit/algorithms.py
++++ b/src/ssh_audit/algorithms.py
+@@ -141,6 +141,17 @@
+                             break
+                         if not matches:
+                             continue
++                    removed = False
++                    if (software is not None) and (len(versions) > 1):
++                        # The last version supporting this algorithm is the second entry for servers, and the last entry for clients.
++                        till_versions = versions[1] if for_server else versions[-1]
++                        for v in (till_versions or '').split(','):
++                            ssh_prefix, ssh_version, is_cli = Algorithm.get_ssh_version(v)
++                            if (not ssh_version) or (ssh_prefix != software.product) or (is_cli and for_server):
++                                continue
++                            if software.compare_version(ssh_version) > 0:
++                                removed = True
++                            break
+                     adl, faults = len(alg_desc), 0
+                     for i in range(1, 3):
+                         if not adl > i:
+@@ -153,7 +164,7 @@
+                         if faults > 0 or \
+                            (alg_type == 'key' and (('-cert-' in n) or (n.startswith('sk-')))) or \
+                            (alg_type == 'kex' and (n.startswith('ext-info-') or n.startswith('kex-strict-'))) or \
+-                           empty_version:
++                           empty_version or removed:
+                             continue
+                         rec[sshv][alg_type]['add'][n] = 0
+                     else:
+--- a/src/ssh_audit/ssh2_kexdb.py
++++ b/src/ssh_audit/ssh2_kexdb.py
+@@ -77,6 +77,7 @@
+     INFO_REMOVED_IN_OPENSSH61 = 'removed since OpenSSH 6.1, removed from specification'
+     INFO_REMOVED_IN_OPENSSH69 = 'removed in OpenSSH 6.9: https://www.openssh.com/txt/release-6.9'
+     INFO_REMOVED_IN_OPENSSH70 = 'removed in OpenSSH 7.0: https://www.openssh.com/txt/release-7.0'
++    INFO_REMOVED_IN_OPENSSH106 = 'removed in OpenSSH 10.6 (replaced by ssh-mldsa44-ed25519): https://www.openssh.com/txt/release-10.6'
+     INFO_WITHDRAWN_PQ_ALG = 'the sntrup4591761 algorithm was withdrawn, as it may not provide strong post-quantum security'
+     INFO_EXTENSION_NEGOTIATION = 'pseudo-algorithm that denotes the peer supports RFC8308 extensions'
+     INFO_STRICT_KEX = 'pseudo-algorithm that denotes the peer supports a stricter key exchange method as a counter-measure to the Terrapin attack (CVE-2023-48795)'
+@@ -272,7 +273,8 @@
+             'ssh-mldsa-65': [[], [], [], [INFO_NIST_PQC_LEVEL_3]],
+             'ssh-mldsa-87': [[], [], [], [INFO_NIST_PQC_LEVEL_5]],
+             'ssh-mldsa44': [[], [], [], [INFO_NIST_PQC_LEVEL_2]],
+-            'ssh-mldsa44-ed25519@openssh.com': [['10.4'], [], [], [INFO_NIST_PQC_LEVEL_2]],
++            'ssh-mldsa44-ed25519': [['10.6'], [], [], [INFO_NIST_PQC_LEVEL_2]],
++            'ssh-mldsa44-ed25519@openssh.com': [['10.4', '10.5'], [], [], [INFO_NIST_PQC_LEVEL_2, INFO_REMOVED_IN_OPENSSH106]],
+             'ssh-mldsa65': [[], [], [], [INFO_NIST_PQC_LEVEL_3]],
+             'ssh-mldsa87': [[], [], [], [INFO_NIST_PQC_LEVEL_5]],
+             'ssh-rsa1': [[], [FAIL_SHA1]],
+--- a/test/test_algorithms.py
++++ b/test/test_algorithms.py
+@@ -0,0 +1,41 @@
++import os
++import pytest
++
++from ssh_audit.algorithms import Algorithms
++from ssh_audit.outputbuffer import OutputBuffer
++from ssh_audit.product import Product
++from ssh_audit.software import Software
++from ssh_audit.ssh2_kex import SSH2_Kex
++from ssh_audit.ssh2_kexparty import SSH2_KexParty
++
++
++# pylint: disable=attribute-defined-outside-init
++class TestAlgorithms:
++    @pytest.fixture(autouse=True)
++    def init(self, ssh_audit):
++        cli = SSH2_KexParty([], [], ['none'], [])
++        srv = SSH2_KexParty([], [], ['none'], [])
++        kex = SSH2_Kex(OutputBuffer(), os.urandom(16), ['mlkem768x25519-sha256'], ['ssh-ed25519'], cli, srv, False)
++        self.algs = Algorithms(kex)
++
++    def _key_additions(self, openssh_version):
++        software = Software(None, Product.OpenSSH, openssh_version, None, None)
++        _, rec = self.algs.get_recommendations(software)
++        return rec[2]['key']['add']
++
++    def test_mldsa44_ed25519_recommendations(self):
++        '''Ensures that the experimental "@openssh.com" name is only recommended for OpenSSH 10.4 & 10.5, and the final name from 10.6 onwards.'''
++
++        add = self._key_additions('10.3')
++        assert 'ssh-mldsa44-ed25519@openssh.com' not in add
++        assert 'ssh-mldsa44-ed25519' not in add
++
++        for version in ['10.4', '10.5']:
++            add = self._key_additions(version)
++            assert 'ssh-mldsa44-ed25519@openssh.com' in add
++            assert 'ssh-mldsa44-ed25519' not in add
++
++        for version in ['10.6', '10.7']:
++            add = self._key_additions(version)
++            assert 'ssh-mldsa44-ed25519@openssh.com' not in add
++            assert 'ssh-mldsa44-ed25519' in add

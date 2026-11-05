@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 
 inherit flag-o-matic multilib multiprocessing toolchain-funcs
 inherit cuda java-pkg-opt-2 cmake-multilib python-r1 virtualx xdg-utils
@@ -192,6 +192,7 @@ RESTRICT="!test? ( test )"
 
 # NOTE
 # dev-libs/flatbuffers is header only, but we still want to rebuild on sub-slot changes
+# <media-video/ffmpeg-9 is due to bug #980612, should be fixed next release
 COMMON_DEPEND="
 	dev-libs/protobuf:=[protoc(+),protobuf(+),${MULTILIB_USEDEP}]
 	virtual/zlib:=[${MULTILIB_USEDEP}]
@@ -211,7 +212,7 @@ COMMON_DEPEND="
 		media-libs/harfbuzz:=[${MULTILIB_USEDEP}]
 	)
 	contribovis? ( >=dev-games/ogre-1.12:= )
-	ffmpeg? ( media-video/ffmpeg:0=[${MULTILIB_USEDEP}] )
+	ffmpeg? ( <media-video/ffmpeg-9:=[${MULTILIB_USEDEP}] )
 	gdal? ( sci-libs/gdal:= )
 	gflags? ( dev-cpp/gflags:=[${MULTILIB_USEDEP}] )
 	glog? ( dev-cpp/glog:=[${MULTILIB_USEDEP}] )
@@ -380,6 +381,7 @@ PATCHES=(
 
 	"${FILESDIR}/${PN}-4.14.0-use-system-flatbuffers.patch"
 	"${FILESDIR}/${PN}-4.14.0-openjpeg-version.patch"
+	"${FILESDIR}/${PN}-4.14.0-clang23-build-fix.patch"
 
 	# TODO applied in src_prepare
 	# "${FILESDIR}/${PN}_contrib-4.8.1-rgbd.patch"

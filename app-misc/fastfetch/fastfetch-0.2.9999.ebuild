@@ -21,18 +21,17 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="X chafa dbus ddcutil drm efl elf gnome imagemagick lua opencl opengl pulseaudio sqlite test vaapi vdpau vulkan wayland xcb xrandr"
+IUSE="X chafa dbus drm efl elf gnome imagemagick lua opencl opengl sqlite test vaapi vdpau vulkan wayland xcb xrandr"
 RESTRICT="!test? ( test )"
 
 # note - qa-vdb will always report errors because fastfetch loads the libs dynamically
 # make sure to crank yyjson minimum version to match bundled version
 RDEPEND="
-	>=dev-libs/yyjson-0.12.0:=
+	>=dev-libs/yyjson-0.13.0:=
 	sys-apps/hwdata
 	virtual/zlib:=
 	chafa? ( media-gfx/chafa )
 	dbus? ( sys-apps/dbus )
-	ddcutil? ( app-misc/ddcutil:= )
 	drm? ( x11-libs/libdrm )
 	elf? ( virtual/libelf:= )
 	gnome? (
@@ -46,7 +45,6 @@ RDEPEND="
 		media-libs/libglvnd[X?]
 		X? ( x11-libs/libX11 )
 	)
-	pulseaudio? ( media-libs/libpulse )
 	sqlite? ( dev-db/sqlite:3 )
 	vaapi? ( media-libs/libva:=[X?] )
 	vdpau? ( x11-libs/libvdpau )
@@ -100,9 +98,6 @@ src_configure() {
 	fi
 
 	local mycmakeargs=(
-		# requires >=dev-libs/quickjs-ng-0.15
-		-DENABLE_QUICKJS=no
-
 		-DENABLE_RPM=no
 		-DENABLE_ZLIB=yes
 		-DENABLE_SYSTEM_YYJSON=yes
@@ -111,10 +106,10 @@ src_configure() {
 		-DBUILD_FLASHFETCH=no
 		-DPACKAGES_REMOVE_DISABLED=yes
 
+		-DENABLE_IMAGE_LOGO=$(usex imagemagick)
 		-DENABLE_CHAFA=$(usex chafa)
 		-DENABLE_DBUS=$(usex dbus)
 		-DENABLE_DCONF=$(usex gnome)
-		-DENABLE_DDCUTIL=$(usex ddcutil)
 		-DENABLE_DRM=$(usex drm)
 		-DENABLE_EET=$(usex efl)
 		-DENABLE_ELF=$(usex elf)
@@ -125,7 +120,6 @@ src_configure() {
 		-DENABLE_IMAGEMAGICK7=${fastfetch_enable_imagemagick7}
 		-DENABLE_LUA=$(usex lua)
 		-DENABLE_OPENCL=$(usex opencl)
-		-DENABLE_PULSE=$(usex pulseaudio)
 		-DENABLE_SQLITE3=$(usex sqlite)
 		-DENABLE_VADRM=$(usex vaapi)
 		-DENABLE_VDPAU=$(usex vdpau)
@@ -134,6 +128,7 @@ src_configure() {
 		-DENABLE_XCB_RANDR=$(usex xcb)
 		-DENABLE_XRANDR=$(usex xrandr)
 		-DBUILD_TESTS=$(usex test)
+		-DTARGET_DIR_ROOT="${EPREFIX}"
 	)
 
 	if use vaapi && use X; then

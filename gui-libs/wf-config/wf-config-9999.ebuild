@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit meson
+inherit locale-utils meson
 
 DESCRIPTION="library for managing wayfire configuration files"
 HOMEPAGE="https://github.com/WayfireWM/wf-config"
@@ -40,8 +40,14 @@ BDEPEND="
 src_configure() {
 	local emesonargs=(
 		$(meson_feature test tests)
-		-Dlocale_test=false # requires de_DE locale to be installed
+		$(meson_use elibc_glibc locale_test)
 	)
 
 	meson_src_configure
+}
+
+src_test() {
+	local -x LOCPATH
+	elocale_gen fr_FR.UTF-8
+	meson_src_test
 }

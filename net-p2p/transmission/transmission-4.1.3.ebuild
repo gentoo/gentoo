@@ -11,7 +11,7 @@ if [[ ${PV} == 9999 ]]; then
 else
 	S="${WORKDIR}/${P}"
 	SRC_URI="https://github.com/transmission/transmission/releases/download/${PV}/${P}.tar.xz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
+	KEYWORDS="amd64 ~arm ~arm64 ppc ppc64 ~riscv x86"
 fi
 
 DESCRIPTION="A fast, easy, and free BitTorrent client"

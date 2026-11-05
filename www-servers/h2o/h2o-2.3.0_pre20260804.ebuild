@@ -2,6 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
+
+CMAKE_QA_COMPAT_SKIP=1
 SSL_DEPS_SKIP=1
 USE_RUBY="ruby32 ruby33 ruby34"
 
@@ -15,7 +17,7 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.ta
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="brotli io-uring libh2o +mruby zstd"
 
 RDEPEND="acct-group/h2o

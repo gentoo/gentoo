@@ -1,6 +1,14 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Ionen Wolkens <ionen@gentoo.org> (2026-10-23)
+# Makes use of non-portable atomics broken on ppc32 (bug #981875).
+app-text/mdbook serve
+
+# Bernard Cafarelli <voyageur@gentoo.org> (2026-10-09)
+# Requires unkeyworded media-libs/libshumate and app-text/libspelling
+media-gfx/geeqie map spell
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2026-08-31)
 # Requires unkeyworded dependencies
 dev-vcs/subversion kwallet

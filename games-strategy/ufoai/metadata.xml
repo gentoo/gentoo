@@ -10,6 +10,7 @@
     <flag name="server">Build the dedicated server</flag>
   </use>
   <upstream>
+    <remote-id type="github">ufoaiorg/ufoai</remote-id>
     <remote-id type="sourceforge">ufoai</remote-id>
   </upstream>
 </pkgmetadata>

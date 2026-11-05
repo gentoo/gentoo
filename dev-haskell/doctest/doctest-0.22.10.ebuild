@@ -33,6 +33,11 @@ DEPEND="${RDEPEND}
 		>=dev-haskell/silently-1.2.4
 		>=dev-haskell/stringbuilder-0.4 )
 "
+BDEPEND="
+	test? (
+		dev-haskell/cabal-install
+	)
+"
 
 src_configure() {
 	haskell-cabal_src_configure \

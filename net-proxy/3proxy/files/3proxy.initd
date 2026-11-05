@@ -1,15 +1,27 @@
 #!/sbin/openrc-run
-# Copyright 2025 Gentoo Authors
+# Copyright 2025-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+: ${PROXY_CFGFILE:=/etc/3proxy/3proxy.cfg}
+: ${PROXY_USER:=3proxy}
 
 name="3proxy daemon"
 description="A really tiny cross-platform proxy servers set"
 command=/usr/bin/3proxy
-command_args="/etc/3proxy/3proxy.cfg"
-command_user="3proxy:3proxy"
+command_args="${PROXY_CFGFILE}"
+command_user="${PROXY_USER}"
 command_background=yes
 pidfile="/run/3proxy.pid"
 
 depend() {
-use dns
+	use dns
+}
+
+start_pre() {
+	# check config file as 3proxy won't report if the specified file fails
+	# to load and will thus read stdin instead
+	if ! su -s /bin/sh -c "test -r ${PROXY_CFGFILE}" "${PROXY_USER}" 1>/dev/null 2>&1 ; then
+		eerror "Config file ${PROXY_CFGFILE} does not exist or is not accessible for user ${PROXY_USER}!"
+		return 1
+	fi
 }

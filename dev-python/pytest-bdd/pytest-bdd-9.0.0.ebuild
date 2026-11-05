@@ -17,7 +17,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 arm64"
 
 RDEPEND="
 	>=dev-python/gherkin-official-33[${PYTHON_USEDEP}]
@@ -34,8 +34,3 @@ EPYTEST_PLUGIN_LOAD_VIA_ENV=1
 distutils_enable_tests pytest
 
 DOCS=( AUTHORS.rst CHANGES.rst README.rst )
-
-python_test() {
-	local -x COLUMNS=80
-	epytest
-}

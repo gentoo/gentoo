@@ -1,0 +1,440 @@
+https://bugs.gentoo.org/984697
+https://foss.heptapod.net/xemacs/xemacs/-/commit/e602fe874535935e876396d03e12798948579a2f
+
+# HG changeset patch
+# User Aidan Kehoe <kehoea@parhasard.net>
+# Date 1793029584 0
+#      Mon Oct 26 15:46:24 2026 +0000
+# Node ID e602fe874535935e876396d03e12798948579a2f
+# Parent  683ab55500ed88635f0bbfb237a59cb2123e6075
+Remove support for old backquotes from the Lisp reader, easing pcase support.
+
+src/ChangeLog addition:
+
+2026-10-26  Aidan Kehoe  <kehoea@parhasard.net>
+
+	Remove support for old backquotes from the Lisp reader.
+	Generate a list starting with the backtick symbol rather than the
+	symbol BACKQUOTE when reading `.
+	Both changes necessary for pcase support; thank you Ulrich
+	Müller.
+
+	* lread.c:
+	* lread.c (backquote_depth): New name for BACKQUOTE_FLAG. Update
+	comment now GNU's behaviour isn't quite as silly.
+	Remove declaration for OLD_BACKQUOTE_FLAG.
+	* lread.c (read1):
+	No longer handle old backquotes at the beginng of a list.
+	Bind, check backquote_depth with its new name
+	* lread.c (syms_of_lread):
+	Remove a DEFSYMBOL for Qbackquote, no longer needed.
+	* lread.c (vars_of_lread):
+	Remove initialization for old_backquote_flag (removed),
+	backquote_flag (can be left to the C implementation now unexec is
+	gone).
+
+lisp/ChangeLog addition:
+
+2026-10-26  Aidan Kehoe  <kehoea@parhasard.net>
+
+	Remove support for old backquotes, need for more robust handling
+	of #'pcase. Thank you Ulrich Müller.
+
+	* backquote.el:
+	Use '\` as the canonical name for the backquote macro. Preserve
+	backquote as an alias.
+	Update docstring to reflect the new canonical name.
+	Support for old backquotes has been removed, update the docstring
+	to reflect this.
+	* help.el:
+	* help.el (function-arglist):
+	No longer pass NOESCAPE to #'prin1-to-string, so '\` is quoted
+	correctly.
+
+tests/ChangeLog addition:
+
+2026-10-26  Aidan Kehoe  <kehoea@parhasard.net>
+
+	* automated/lisp-reader-tests.el:
+	Test that the Lisp reader no longer produces BACKQUOTE as the
+	first element of the list when ` is encountered.
+	Test that an attempt to use old backquotes errors appropriately.
+
+# diff -r 683ab55500ed -r e602fe874535 lisp/ChangeLog
+# --- a/lisp/ChangeLog	Mon Oct 26 10:47:17 2026 +0000
+# +++ b/lisp/ChangeLog	Mon Oct 26 15:46:24 2026 +0000
+# @@ -1,3 +1,19 @@
+# +2026-10-26  Aidan Kehoe  <kehoea@parhasard.net>
+# +
+# +	Remove support for old backquotes, need for more robust handling
+# +	of #'pcase. Thank you Ulrich M�ller.
+# +
+# +	* backquote.el:
+# +	Use '\` as the canonical name for the backquote macro. Preserve
+# +	backquote as an alias.
+# +	Update docstring to reflect the new canonical name.
+# +	Support for old backquotes has been removed, update the docstring
+# +	to reflect this.
+# +	* help.el:
+# +	* help.el (function-arglist):
+# +	No longer pass NOESCAPE to #'prin1-to-string, so '\` is quoted
+# +	correctly.
+# +
+#  2026-10-15  Aidan Kehoe  <kehoea@parhasard.net>
+# 
+#  	Some maintenance on byte-optimize.el.
+diff -r 683ab55500ed -r e602fe874535 lisp/backquote.el
+--- a/lisp/backquote.el	Mon Oct 26 10:47:17 2026 +0000
++++ b/lisp/backquote.el	Mon Oct 26 15:46:24 2026 +0000
+@@ -102,7 +102,8 @@
+        ;; #'macrolet, #'symbol-macrolet unavailable at the point this is
+        ;; loaded, this literal macro definition-and-call is an alternative.
+        (sublis '((bq-backquote-marker . 'backquote)
+-		 (bq-backtick-marker . '\`)	; remnant of the old lossage
++		 (bq-backtick-marker . '\`) ;; Now preferred over the former,
++					    ;; for compatibility with pcase.
+ 		 (bq-comma-marker . '\,)
+ 		 (bq-at-marker . '\,@)
+ 		 (bq-dot-marker . '\,\.)
+@@ -162,14 +163,17 @@
+ 
+       (proclaim-inline bq-process-1 bq-comma)))
+ 
+- (fset '\` 'backquote)
++ (fset 'backquote bq-backtick-marker)
+ 
+- (defalias 'backquote
++ ;; Don't use bq-backtick-marker for the following for the sake of
++ ;; #'find-function:
++
++ (defalias '\`
+      (cons
+       'macro
+       #'(lambda (template)
+ 	 "Expand the internal representation of a backquoted TEMPLATE \
+-into a lisp form.
++into a Lisp form.
+ 
+ The backquote character is like the quote character in that it prevents the
+ template which follows it from being evaluated, except that backquote
+@@ -186,13 +190,13 @@
+   `(a . b)      -> (a . b)
+   `(a . ,p)     -> (a . b)
+ 
+-The XEmacs lisp reader expands lisp backquotes as it reads them.
++The XEmacs Lisp reader expands Lisp backquotes as it reads them.
+ Examples:
+-  `atom             is read as (backquote atom)
+-  `(a ,b ,@(c d e)) is read as (backquote (a (\\, b) (\\,\\@ (c d e))))
+-  `(a . ,p)         is read as (backquote (a \\, p))
++  `atom             is read as (\\` atom)
++  `(a ,b ,@(c d e)) is read as (\\` (a (\\, b) (\\,\\@ (c d e))))
++  `(a . ,p)         is read as (\\` (a \\, p))
+ 
+-\(backquote TEMPLATE) is a macro that produces code to construct TEMPLATE.
++\(\\` TEMPLATE) is a macro that produces code to construct TEMPLATE.
+ 
+ This is relative slow in interpreted code, but fast if compiled; compilation
+ is encouraged and usual for all Emacs Lisp code, for reasons of correctness
+@@ -201,12 +205,12 @@
+ 
+ TEMPLATE is one or more nested lists or vectors, which are `almost quoted'.
+ They are copied recursively, with elements preceded by comma evaluated.
+- (backquote (a b))     == (list 'a 'b)
+- (backquote (a [b c])) == (list 'a (vector 'b 'c))
++ (\\` (a b))     == (list 'a 'b)
++ (\\` (a [b c])) == (list 'a (vector 'b 'c))
+ 
+ However, certain special lists are not copied.  They specify substitution.
+ Lists that look like (\\, EXP) are evaluated and the result is substituted.
+- (backquote (a (\\, (+ x 5)))) == (list 'a (+ x 5))
++ (\\` (a (\\, (+ x 5)))) == (list 'a (+ x 5))
+ 
+ Elements of the form (\\,\\@ EXP) are evaluated and then all the elements
+ of the result are substituted.  This result must be a list; it may
+@@ -224,17 +228,11 @@
+    (defmacro push (v l)
+      `(setq ,l (cons ,v ,l)))
+ 
+-The following obsolete and non-standard syntax is accepted for the moment.
+-Support for it will be removed soon as of October 2021:
+-     OLD STYLE                        NEW STYLE
+-     (` (foo (, bar) (,@ bing)))      `(foo ,bar ,@bing)
++The following obsolete and non-standard syntax was previously accepted. Support
++for it was removed in October 2026.
+ 
+-Because of the old-style backquote support, for the moment you cannot use a
+-new-style backquoted form as the first element of a list.  This restriction
+-will go away, but for now you should be wary of it:
+-    (`(this ,will ,@fail))
+-    ((` (but (, this) will (,@ work))))
+-This is an extremely rare thing to need to do in lisp."
++     OLD STYLE                        NEW STYLE
++     (` (foo (, bar) (,@ bing)))      `(foo ,bar ,@bing)"
+ 	 (bq-process template))))
+ 
+ ;;; ----------------------------------------------------------------
+@@ -284,7 +282,7 @@
+ 	    ((eq (car code) bq-comma-marker)
+ 	     (bq-comma (nth 1 code)))
+ 	    ((or (eq (car code) bq-backquote-marker)
+-		 (eq (car code) bq-backtick-marker))	; old lossage
++		 (eq (car code) bq-backtick-marker))
+ 	     (bq-process-2 (bq-process (nth 1 code))))
+ 	    (t (let* ((aflag-a (bq-process-2 (car code)))
+ 		      (aflag (car aflag-a))
+@@ -327,7 +325,8 @@
+ 			  (cons 'list*
+ 				(list a (bq-process-1 dflag d))))))))))))
+ 
+- (if (eq 'compiled-function (type-of (cdr (symbol-function 'backquote))))
++ (if (eq 'compiled-function
++	 (type-of (cdr (symbol-function bq-backtick-marker))))
+      (mapc
+       #'(lambda (first second)
+ 	  ;; Do what the byte compiler would have done with #'labels.
+@@ -335,7 +334,7 @@
+ 		  first (symbol-function second) :test #'eq
+ 		  :descend-structures t))
+       '(bq-process-2 bq-process-2 bq-process bq-process)
+-      '(bq-process bq-process-2 backquote bq-process-2))))
++      '(bq-process bq-process-2 \` bq-process-2))))
+ 
+ (provide 'backquote)
+ 
+diff -r 683ab55500ed -r e602fe874535 lisp/help.el
+--- a/lisp/help.el	Mon Oct 26 10:47:17 2026 +0000
++++ b/lisp/help.el	Mon Oct 26 15:46:24 2026 +0000
+@@ -1236,13 +1236,11 @@
+                              collect (if (memq arg '(&optional &rest))
+                                          arg
+                                        (make-symbol (upcase (symbol-name
+-                                                             arg))))))
+-
+-	    t))
++                                                             arg))))))))
+ 	  ((stringp arglist)
+ 	   (if (> (length arglist) 0)
+-	       (format "(%s %s)" function arglist)
+-	     (format "(%s)" function))))))
++	       (format "(%S %s)" function arglist)
++	     (format "(%S)" function))))))
+ 
+ ;; If STRIP-ARGLIST is true, return a cons (DOC . ARGS) of the documentation
+ ;; with any embedded arglist stripped out, and the arglist that was stripped
+# diff -r 683ab55500ed -r e602fe874535 src/ChangeLog
+# --- a/src/ChangeLog	Mon Oct 26 10:47:17 2026 +0000
+# +++ b/src/ChangeLog	Mon Oct 26 15:46:24 2026 +0000
+# @@ -1,3 +1,25 @@
+# +2026-10-26  Aidan Kehoe  <kehoea@parhasard.net>
+# +
+# +	Remove support for old backquotes from the Lisp reader.
+# +	Generate a list starting with the backtick symbol rather than the
+# +	symbol BACKQUOTE when reading `.
+# +	Both changes necessary for pcase support; thank you Ulrich
+# +	M�ller.
+# +
+# +	* lread.c:
+# +	* lread.c (backquote_depth): New name for BACKQUOTE_FLAG. Update
+# +	comment now GNU's behaviour isn't quite as silly.
+# +	Remove declaration for OLD_BACKQUOTE_FLAG.
+# +	* lread.c (read1):
+# +	No longer handle old backquotes at the beginng of a list.
+# +	Bind, check backquote_depth with its new name
+# +	* lread.c (syms_of_lread):
+# +	Remove a DEFSYMBOL for Qbackquote, no longer needed.
+# +	* lread.c (vars_of_lread):
+# +	Remove initialization for old_backquote_flag (removed),
+# +	backquote_flag (can be left to the C implementation now unexec is
+# +	gone).
+# +
+#  2026-10-24  Aidan Kehoe  <kehoea@parhasard.net>
+# 
+#  	Use a separate arena for Lisp storage if the system malloc()
+diff -r 683ab55500ed -r e602fe874535 src/lread.c
+--- a/src/lread.c	Mon Oct 26 10:47:17 2026 +0000
++++ b/src/lread.c	Mon Oct 26 15:46:24 2026 +0000
+@@ -43,21 +43,12 @@
+ Lisp_Object Qread_char, Qstandard_input;
+ Lisp_Object Qvariable_documentation;
+ 
+-/*
+-   Nonzero means inside a new-style backquote
+-   with no surrounding parentheses.
+-   Fread initializes this to zero, so we need not specbind it
+-   or worry about what happens to it when there is an error.
+-
+-XEmacs:
+-   Nested backquotes are perfectly legal and fail utterly with
+-   this silliness. */
+-static int backquote_flag;
+-Lisp_Object Qbackquote, Qbacktick, Qcomma, Qcomma_at, Qcomma_dot;
+-
+-#ifdef NEED_TO_HANDLE_21_4_CODE
+-static int old_backquote_flag;
+-#endif
++/* Nonzero means inside a backquote with no surrounding parentheses.
++
++   Nested backquotes are achieved by incrementing this number in the reader
++   and specbinding it. */
++static int backquote_depth;
++Lisp_Object Qbacktick, Qcomma, Qcomma_at, Qcomma_dot;
+ 
+ Lisp_Object Qvariable_domain;	/* I18N3 */
+ Lisp_Object Vvalues, Vstandard_input, Vafter_load_alist;
+@@ -2486,69 +2477,22 @@
+ 	Ichar ch = reader_nextchar (readcharfun);
+ 	switch (ch)
+ 	  {
+-#ifdef NEED_TO_HANDLE_21_4_CODE
+-	  case '`':
+-	    {
+-	      Lisp_Object tem;
+-	      int speccount = internal_bind_int (&old_backquote_flag,
+-						 1 + old_backquote_flag);
+-	      tem = read0 (readcharfun);
+-	      unbind_to (speccount);
+-	      ch = reader_nextchar (readcharfun);
+-	      if (ch != ')')
+-		{
+-		  unreadchar (readcharfun, ch);
+-		  return Fsignal (Qinvalid_read_syntax,
+-				  list1 (build_msg_string
+-					 ("Weird old-backquote syntax")));
+-		}
+-	      return list2 (Qbacktick, tem);
+-	    }
+-#endif /* NEED_TO_HANDLE_21_4_CODE */
+ 	  case ',':
+ 	    {
+-#ifdef NEED_TO_HANDLE_21_4_CODE
+-	      if (old_backquote_flag)
+-		{
+-		  Lisp_Object tem, comma_type;
+-		  ch = readchar (readcharfun);
+-		  if (ch == '@')
+-		    comma_type = Qcomma_at;
+-		  else
+-		    {
+-		      if (ch >= 0)
+-			unreadchar (readcharfun, ch);
+-		      comma_type = Qcomma;
+-		    }
+-		  tem = read0 (readcharfun);
+-		  ch = reader_nextchar (readcharfun);
+-		  if (ch != ')')
+-		    {
+-		      unreadchar (readcharfun, ch);
+-		      return Fsignal (Qinvalid_read_syntax,
+-				      list1 (build_msg_string
+-					     ("Weird old-backquote syntax")));
+-		    }
+-		  return list2 (comma_type, tem);
+-		}
+-	      else
+-#endif /* NEED_TO_HANDLE_21_4_CODE */
+-		{
+-		  unreadchar (readcharfun, ch);
++	      unreadchar (readcharfun, ch);
+ #if 0
+-		  return Fsignal (Qinvalid_read_syntax,
+-		       list1 (build_msg_string ("Comma outside of backquote")));
++	      return Fsignal (Qinvalid_read_syntax,
++			      list1 (build_msg_string
++				     ("Comma outside of backquote")));
+ #else
+-		  /* #### - yuck....but this is reverse compatible. */
+-		  /* mostly this is required by edebug, which does its own
+-		     annotated reading.  We need to have an annotated_read
+-		     function that records (with markers) the buffer
+-		     positions of the elements that make up lists, then that
+-		     can be used in edebug and bytecomp and the check above
+-		     can go back in. --Stig */
+-		  break;
++	      /* #### - yuck....but this is reverse compatible. */
++	      /* mostly this is required by edebug, which does its own
++		 annotated reading.  We need to have an annotated_read function
++		 that records (with markers) the buffer positions of the
++		 elements that make up lists, then that can be used in edebug
++		 and bytecomp and the check above can go back in. --Stig */
++	      break;
+ #endif
+-		}
+ 	    }
+ 	  default:
+ 	    unreadchar (readcharfun, ch);
+@@ -2844,15 +2788,15 @@
+       {
+ 	Lisp_Object tem;
+ 	int speccount
+-	  = internal_bind_int (&backquote_flag, 1 + backquote_flag);
++	  = internal_bind_int (&backquote_depth, 1 + backquote_depth);
+ 	tem = read0 (readcharfun);
+ 	unbind_to (speccount);
+-	return list2 (Qbackquote, tem);
++	return list2 (Qbacktick, tem);
+       }
+ 
+     case ',':
+       {
+-	if (backquote_flag)
++	if (backquote_depth)
+ 	  {
+ 	    Lisp_Object comma_type = Qnil;
+ 	    int ch = readchar (readcharfun);
+@@ -3328,7 +3272,6 @@
+   DEFSYMBOL (Qload_internal);
+   DEFSYMBOL (Qfset);
+ 
+-  DEFSYMBOL (Qbackquote);
+   defsymbol (&Qbacktick, "`");
+   defsymbol (&Qcomma, ",");
+   defsymbol (&Qcomma_at, ",@");
+@@ -3525,11 +3468,6 @@
+   Fprovide (intern ("xemacs"));
+ #endif /* FEATUREP_SYNTAX */
+ 
+-#ifdef NEED_TO_HANDLE_21_4_CODE
+-  old_backquote_flag = 
+-#endif
+-  backquote_flag = 0;
+-
+ #ifdef I18N3
+   Vfile_domain = Qnil;
+   staticpro (&Vfile_domain);
+# diff -r 683ab55500ed -r e602fe874535 tests/ChangeLog
+# --- a/tests/ChangeLog	Mon Oct 26 10:47:17 2026 +0000
+# +++ b/tests/ChangeLog	Mon Oct 26 15:46:24 2026 +0000
+# @@ -1,3 +1,10 @@
+# +2026-10-26  Aidan Kehoe  <kehoea@parhasard.net>
+# +
+# +	* automated/lisp-reader-tests.el:
+# +	Test that the Lisp reader no longer produces BACKQUOTE as the
+# +	first element of the list when ` is encountered.
+# +	Test that an attempt to use old backquotes errors appropriately.
+# +
+#  2026-10-16  Aidan Kehoe  <kehoea@parhasard.net>
+# 
+#  	* automated/lisp-tests.el (test-harness-risk-infloops):
+diff -r 683ab55500ed -r e602fe874535 tests/automated/lisp-reader-tests.el
+--- a/tests/automated/lisp-reader-tests.el	Mon Oct 26 10:47:17 2026 +0000
++++ b/tests/automated/lisp-reader-tests.el	Mon Oct 26 15:46:24 2026 +0000
+@@ -1,4 +1,4 @@
+-;; Copyright (C) 2005 Martin Kuehl.
++;; Copyright (C) 2005 Martin Kuehl. -*- coding: utf-8 -*-
+ 
+ ;; Author: Martin Kuehl <martin.kuehl@gmail.com>
+ ;; Maintainer: Martin Kuehl <martin.kuehl@gmail.com>
+@@ -367,4 +367,12 @@
+ 
+ (Check-Error args-out-of-range (read "#@4294967296 hello"))
+ 
++;; Change made to better support #'pcase, thank you Ulrich Müller.
++(Assert (eq '\` (caadr '(list `(a))))
++	"checking the reader no longer generates the symbol BACKQUOTE")
++
++;; Removal of support for old backquotes, good practice generally and
++;; made to better support #'pcase, thank you Ulrich Müller.
++(Check-Error invalid-function (let ((x 1)) (`(a (,x) x)))
++
+ ;;; end of lisp-reader-tests.el

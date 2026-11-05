@@ -215,7 +215,7 @@ COMMON_DEPEND="
 		media-libs/harfbuzz:=[${MULTILIB_USEDEP}]
 	)
 	contribovis? ( >=dev-games/ogre-1.12:= )
-	ffmpeg? ( media-video/ffmpeg:0=[${MULTILIB_USEDEP}] )
+	ffmpeg? ( <media-video/ffmpeg-9:=[${MULTILIB_USEDEP}] )
 	gdal? ( sci-libs/gdal:= )
 	gflags? ( dev-cpp/gflags:=[${MULTILIB_USEDEP}] )
 	glog? ( dev-cpp/glog:=[${MULTILIB_USEDEP}] )

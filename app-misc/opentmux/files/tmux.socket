@@ -1,0 +1,8 @@
+[Socket]
+ListenStream=/tmp/tmux-%U/%i
+DirectoryMode=0700
+SocketMode=0660
+
+[Install]
+WantedBy=sockets.target
+DefaultInstance=default

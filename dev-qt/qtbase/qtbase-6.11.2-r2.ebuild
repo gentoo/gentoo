@@ -190,6 +190,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-6.9.0-no-direct-extern-access.patch
 	"${FILESDIR}"/${PN}-6.11.2-QTBUG-149431.patch
 	"${FILESDIR}"/${PN}-6.11.2-mimeinfo2.5.patch
+	"${FILESDIR}"/${PN}-6.11.2-md4c-0.6.patch
 )
 
 src_prepare() {

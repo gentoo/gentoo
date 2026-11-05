@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=flit-core
-PYTHON_COMPAT=( python3_{12..14} )
+PYTHON_COMPAT=( python3_{13..14} )
 
 inherit distutils-r1 pypi
 
@@ -20,4 +20,7 @@ KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390
 
 RDEPEND="
 	dev-python/sphinx[${PYTHON_USEDEP}]
+"
+BDEPEND="
+	<dev-python/flit-core-4[${PYTHON_USEDEP}]
 "

@@ -1,6 +1,10 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Matt Jolly <kangie@gentoo.org> (2026-10-18)
+# We can bootstrap with mrustc on arm64.
+dev-lang/rust -mrustc-bootstrap
+
 # Sam James <sam@gentoo.org> (2026-09-23)
 # Only supported on some arches.
 dev-libs/elfutils -stackprof
@@ -112,10 +116,6 @@ media-libs/svt-av1 -test
 # Pulls in sci-libs/linux-gpib which is not yet keyworded here
 sci-libs/libsigrok gpib
 
-# Paul Zander <negril.nx+gentoo@gmail.com> (2025-05-06)
-# dev-python/nanobind is not keyworded here
-media-gfx/openvdb python
-
 # Alfredo Tupone <tupone@gentoo.org> (2025-05-03)
 # test add dependency on torchvision, not read for arm64
 sci-ml/datasets test
@@ -139,10 +139,6 @@ dev-cpp/highway cpu_flags_arm_neon
 app-emulation/wine-staging crossdev-mingw dos gecko mingw
 app-emulation/wine-vanilla crossdev-mingw dos gecko mingw
 
-# NRK <nrk@disroot.org> (2025-03-17)
-# media-libs/libyuv is not keyworded
-media-libs/libavif libyuv
-
 # Sam James <sam@gentoo.org> (2025-03-11)
 # The COBOL frontend only allows building on a small number of platforms
 # for now until more testing and integration is done.
@@ -161,10 +157,6 @@ app-crypt/certbot -certbot-dns-google
 # Paul Zander <negril.nx+gentoo@gmail.com> (2025-02-23)
 # Not part of the arm64 archive
 dev-util/nvidia-cuda-toolkit -examples -rdma
-
-# Alfred Wingate <parona@protonmail.com> (2025-02-22)
-# media-libs/zint is not keyworded here
-media-libs/zxing-cpp experimental
 
 # Nowa Ammerlaan <nowa@gentoo.org> (2025-02-03)
 # QtWebView is available here
@@ -260,7 +252,7 @@ sys-kernel/installkernel -grub
 
 # Ionen Wolkens <ionen@gentoo.org> (2023-12-02)
 # dev-qt/qtwebengine:6 is keyworded here.
-dev-python/pyqt6 -pdfium
+<dev-python/pyqt6-6.12.0 -pdfium
 dev-python/qtpy -pdfium
 
 # Takuya Wakazono <pastalian46@gmail.com> (2023-11-21)
@@ -468,10 +460,6 @@ net-wireless/kismet ubertooth
 media-video/ffmpeg-chromium -cpu_flags_arm_neon
 net-misc/sunshine -cpu_flags_arm_neon
 
-# Tomáš Mózes <hydrapolic@gmail.com> (2019-12-19)
-# dev-libs/criterion is not keyworded yet
-app-admin/syslog-ng test
-
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2019-09-27)
 # some testsuite deps are not keyworded
 sys-fs/zfs test-suite
@@ -549,10 +537,6 @@ net-libs/gnutls test-full
 # USE=upnp-av requires net-libs/dleyna that is not keyworded yet.
 media-sound/rhythmbox upnp-av
 >=media-plugins/grilo-plugins-0.3.5 upnp-av
-
-# Mart Raudsepp <leio@gentoo.org> (2018-02-13)
-# USE=lua requires dev-lua/lgi that is not keyworded yet.
-dev-libs/libpeas lua
 
 # Michał Górny <mgorny@gentoo.org> (2018-01-23)
 # USE=eds requires USE=gnome that is masked here.

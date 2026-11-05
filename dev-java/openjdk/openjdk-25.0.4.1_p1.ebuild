@@ -6,6 +6,7 @@ EAPI=8
 inherit check-reqs dot-a flag-o-matic java-pkg-2 java-vm-2 multiprocessing toolchain-funcs
 
 # variable name format: <UPPERCASE_KEYWORD>_XPAK
+ARM_XPAK="25.0.4.1_p1"
 PPC64_XPAK="25_p36" # big-endian bootstrap tarball
 
 # Usage: bootstrap_uri <keyword> <version> [extracond]
@@ -61,6 +62,7 @@ SRC_URI="
 	https://github.com/${PN}/${JDK_REPO}/archive/jdk-${MY_PV}.tar.gz
 		-> ${P}.tar.gz
 	!system-bootstrap? (
+		$(bootstrap_uri arm ${ARM_XPAK})
 		$(bootstrap_uri ppc64 ${PPC64_XPAK} big-endian)
 	)
 "
@@ -68,13 +70,13 @@ S="${WORKDIR}/${JDK_REPO}-jdk-${MY_PV//+/-}"
 
 LICENSE="GPL-2-with-classpath-exception"
 SLOT="$(ver_cut 1)"
-KEYWORDS="amd64 arm64 ppc64 ~riscv"
+KEYWORDS="amd64 ~arm arm64 ppc64 ~riscv"
 
 IUSE="alsa big-endian cups debug doc examples headless-awt +jbootstrap selinux source static-libs +system-bootstrap systemtap"
 
 REQUIRED_USE="
 	!system-bootstrap? ( jbootstrap )
-	!system-bootstrap? ( ppc64 )
+	!system-bootstrap? ( || ( arm ppc64 ) )
 "
 
 COMMON_DEPEND="

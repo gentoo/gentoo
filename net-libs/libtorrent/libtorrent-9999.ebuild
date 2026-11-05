@@ -24,10 +24,9 @@ SLOT="0"
 IUSE="debug test"
 RESTRICT="!test? ( test )"
 
-# Use the bundled and patched version of udns while waiting for a new release,
-# as libtorrent has submitted its patches for review.
 RDEPEND="
 	dev-libs/openssl:=
+	net-libs/udns
 	net-misc/curl
 	virtual/zlib:=
 "
@@ -36,13 +35,25 @@ DEPEND="${RDEPEND}
 "
 BDEPEND="virtual/pkgconfig"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.16.27-skip_tests_system_udns.patch
+)
+
 src_prepare() {
 	default
+
+	# use system-udns
+	rm -r src/net/udns || die
+	sed -e 's@"net/udns/udns.h"@<udns.h>@' \
+		-e '\@^#include "net/udns/udns_.*.c"@d' \
+		-i src/net/udns_library.cc src/net/udns_library.h src/net/udns_resolver.cc || die
+
 	[[ ${PV} == *9999 ]] && eautoreconf
 }
 
 src_configure() {
 	local myeconfargs=(
+		LIBS="-ludns"
 		$(use_enable debug)
 	)
 

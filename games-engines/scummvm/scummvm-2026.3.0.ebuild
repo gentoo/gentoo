@@ -13,7 +13,7 @@ if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/scummvm/scummvm"
 else
 	SRC_URI="https://downloads.scummvm.org/frs/scummvm/${PV}/${P}.tar.xz"
-	KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~riscv ~x86"
+	KEYWORDS="~amd64 arm64 ~ppc ~ppc64 ~riscv ~x86"
 	S=${WORKDIR}/${P/_/}
 fi
 
@@ -92,6 +92,13 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=strict-aliasing, -Werror=odr, -Werror=lto-type-mismatch
+	# https://bugs.gentoo.org/968927
+	# https://bugs.gentoo.org/965158
+	# https://bugs.scummvm.org/ticket/17412
+	append-flags -fno-strict-aliasing
+	filter-lto
+
 	use x86 && append-ldflags -Wl,-z,noexecstack
 	tc-export STRINGS
 

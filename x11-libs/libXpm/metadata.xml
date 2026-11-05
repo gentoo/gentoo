@@ -6,6 +6,6 @@
     <name>X11</name>
   </maintainer>
   <upstream>
-    <remote-id type="freedesktop-gitlab">xorg/lib/libXpm</remote-id>
+    <remote-id type="freedesktop-gitlab">xorg/lib/libxpm</remote-id>
   </upstream>
 </pkgmetadata>

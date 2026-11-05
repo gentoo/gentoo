@@ -147,7 +147,7 @@ powershellget@${NUGETV_POWERSHELLGET}
 psreadline@${NUGETV_PSREADLINE}
 "
 
-inherit check-reqs desktop dotnet-pkg xdg-utils
+inherit check-reqs desktop dotnet-pkg locale-utils xdg-utils
 
 DESCRIPTION="Cross-platform automation and configuration tool"
 HOMEPAGE="https://microsoft.com/powershell/
@@ -199,42 +199,19 @@ DOCS=(
 	docs
 )
 
-check_requirements_locale() {
-	if [[ "${MERGE_TYPE}" != binary ]] ; then
-		if use elibc_glibc ; then
-			local locales="$(locale -a)"
-
-			if has en_US.utf8 ${locales} ; then
-				LC_ALL="en_US.utf8"
-			elif has en_US.UTF-8 ${locales} ; then
-				LC_ALL="en_US.UTF-8"
-			else
-				eerror "The locale en_US.utf8 or en_US.UTF-8 is not available."
-				eerror "Please generate en_US.UTF-8 before building ${CATEGORY}/${P}."
-
-				die "Could not switch to the en_US.UTF-8 locale."
-			fi
-		else
-			LC_ALL="en_US.UTF-8"
-		fi
-
-		export LC_ALL
-		einfo "Successfully switched to the ${LC_ALL} locale."
-	fi
-}
-
 pkg_pretend() {
 	check-reqs_pkg_pretend
-	check_requirements_locale
 }
 
 pkg_setup() {
 	check-reqs_pkg_setup
 	dotnet-pkg_pkg_setup
-	check_requirements_locale
 }
 
 src_prepare() {
+	local -x LOCPATH LC_ALL
+	elocale_gen --set LC_ALL en_US.UTF-8
+
 	if ! use vanilla ; then
 		PATCHES+=(
 			"${FILESDIR}/pwsh-7.5.0-disable-telemetry.patch"
@@ -251,12 +228,18 @@ src_prepare() {
 }
 
 src_compile() {
+	local -x LOCPATH LC_ALL
+	elocale_gen --set LC_ALL en_US.UTF-8
+
 	einfo 'Copying DLL files for the missing "ref" directory'
 	efsi "${FILESDIR}/pwsh-7.3.3-copy-ref.fsx" "${WORKDIR}/${P}_ref"
 	dotnet-pkg_src_compile
 }
 
 src_test() {
+	local -x LOCPATH LC_ALL
+	elocale_gen --set LC_ALL en_US.UTF-8
+
 	local -a test_args=(
 		"${DOTNET_PKG_RESTORE_EXTRA_ARGS[@]}"
 		-p:"RuntimeIdentifier=${DOTNET_PKG_RUNTIME}"
@@ -267,6 +250,9 @@ src_test() {
 }
 
 src_install() {
+	local -x LOCPATH LC_ALL
+	elocale_gen --set LC_ALL en_US.UTF-8
+
 	local dest_root="/usr/share/${PN}-${SLOT}"
 
 	# Install additional PowerShell Gallery modules.

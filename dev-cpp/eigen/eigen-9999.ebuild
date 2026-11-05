@@ -214,7 +214,7 @@ DEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}/${PN}-3.4.0-doc-nocompress.patch" # bug 830064
+	"${FILESDIR}/${PN}-9999-doc-nocompress.patch" # bug 830064
 	"${FILESDIR}/${PN}-3.4.0-buildstring.patch"
 
 	"${FILESDIR}/${PN}-5.0.1-cmake-GNUInstallDirs.patch"

@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+
 inherit go-module shell-completion
 
 DESCRIPTION="kubectl plugin for Kubernetes OpenID Connect authentication"
@@ -11,7 +12,7 @@ SRC_URI+=" https://distfiles.gentoo.org/pub/dev/concord@gentoo.org/${P}-deps.tar
 
 LICENSE="Apache-2.0 BSD BSD-2 ISC MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 arm64"
 
 BDEPEND=">=dev-lang/go-1.26.4:="
 

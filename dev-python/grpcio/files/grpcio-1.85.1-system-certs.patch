@@ -1,0 +1,44 @@
+diff --git a/setup.py b/setup.py
+index 0a811c9..0b59574 100644
+--- a/setup.py
++++ b/setup.py
+@@ -595,16 +595,6 @@ COMMAND_CLASS = {
+     "clean": commands.Clean,
+ }
+ 
+-# Ensure that package data is copied over before any commands have been run:
+-credentials_dir = os.path.join(PYTHON_STEM, "grpc", "_cython", "_credentials")
+-try:
+-    os.mkdir(credentials_dir)
+-except OSError:
+-    pass
+-shutil.copyfile(
+-    os.path.join("etc", "roots.pem"), os.path.join(credentials_dir, "roots.pem")
+-)
+-
+ if __name__ == "__main__":
+     setuptools.setup(
+         classifiers=CLASSIFIERS,
+diff --git a/src/python/grpcio/grpc/_cython/_cygrpc/security.pyx.pxi b/src/python/grpcio/grpc/_cython/_cygrpc/security.pyx.pxi
+index 29d2143..5277073 100644
+--- a/src/python/grpcio/grpc/_cython/_cygrpc/security.pyx.pxi
++++ b/src/python/grpcio/grpc/_cython/_cygrpc/security.pyx.pxi
+@@ -14,16 +14,13 @@
+ 
+ from libc.string cimport memcpy
+ 
+-import pkgutil
++import certifi
+ 
+ 
+ cdef grpc_ssl_roots_override_result ssl_roots_override_callback(
+     char **pem_root_certs) noexcept nogil:
+   with gil:
+-    pkg = __name__
+-    if pkg.endswith('.cygrpc'):
+-      pkg = pkg[:-len('.cygrpc')]
+-    temporary_pem_root_certs = pkgutil.get_data(pkg, '_credentials/roots.pem')
++    temporary_pem_root_certs = certifi.contents().encode()
+     pem_root_certs[0] = <char *>gpr_malloc(len(temporary_pem_root_certs) + 1)
+     memcpy(
+         pem_root_certs[0], <char *>temporary_pem_root_certs,

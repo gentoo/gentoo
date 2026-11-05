@@ -1,0 +1,15 @@
+Add the missing dependency so the binary is guaranteed to exist before
+the pytest is executed.
+
+Bug: https://bugs.gentoo.org/963846
+--- a/lib/krb5/krb/Makefile.in
++++ b/lib/krb5/krb/Makefile.in
+@@ -512,7 +512,7 @@
+ 	$(RUN_TEST) ./t_sname_match
+ 	$(RUN_TEST) ./t_valid_times
+ 
+-check-pytests: t_expire_warn t_get_etype_info t_vfy_increds
++check-pytests: t_expire_warn t_get_etype_info t_vfy_increds t_cc_config
+ 	$(RUNPYTEST) $(srcdir)/t_expire_warn.py $(PYTESTFLAGS)
+ 	$(RUNPYTEST) $(srcdir)/t_vfy_increds.py $(PYTESTFLAGS)
+ 	$(RUNPYTEST) $(srcdir)/t_in_ccache_patypes.py $(PYTESTFLAGS)

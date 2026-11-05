@@ -1,0 +1,30 @@
+Replace bash arithmetic with POSIX shell constructs, so that
+configure works with a POSIX /bin/sh such as dash.
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -250,12 +250,12 @@
+ # only one "with_gtkX" option allowed
+ num_gtk_args=0
+ if test "$with_gtk4" = "yes" ; then
+-   (( num_gtk_args += 1 ))
++   num_gtk_args=$((num_gtk_args + 1))
+ fi
+ if test "$with_gtk3" = "yes" ; then
+-   (( num_gtk_args += 1 ))
++   num_gtk_args=$((num_gtk_args + 1))
+ fi
+-if (( $num_gtk_args > 1 )); then
++if test "$num_gtk_args" -gt 1; then
+    AC_MSG_ERROR('cannot set multiple "with-gtkX" option')
+ fi
+ 
+@@ -263,7 +263,7 @@
+ if test "$no_x" = "yes" ; then
+    with_gtk3="no"
+    with_gtk4="no"
+-   if (( $num_gtk_args > 0 )); then
++   if test "$num_gtk_args" -gt 0; then
+       AC_MSG_WARN('"with-gtkX" option is ignored when "no_x" option is set')
+    fi
+ fi

@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools desktop xdg
+inherit autotools desktop flag-o-matic xdg
 
 DESCRIPTION="Multiple Streaming Engine, an icecast source streamer"
 HOMEPAGE="https://dyne.org/software/muse/"
@@ -41,6 +41,12 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=odr
+	# https://bugs.gentoo.org/941588
+	#
+	# Effectively no upstream, so unreported.
+	filter-lto
+
 	econf \
 		--without-dmalloc \
 		--disable-profiling \

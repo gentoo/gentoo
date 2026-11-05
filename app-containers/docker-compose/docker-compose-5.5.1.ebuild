@@ -15,7 +15,7 @@ LICENSE="Apache-2.0"
 # Dependent licenses
 LICENSE+=" Apache-2.0 BSD BSD-2 MIT MPL-2.0"
 SLOT="2"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 arm64"
 RESTRICT="test"
 
 RDEPEND="

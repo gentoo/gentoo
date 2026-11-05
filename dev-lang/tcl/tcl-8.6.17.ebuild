@@ -10,7 +10,7 @@ inherit autotools flag-o-matic multilib-minimal multilib toolchain-funcs
 MY_P="${PN}${PV}"
 
 DESCRIPTION="Tool Command Language"
-HOMEPAGE="http://www.tcl.tk/"
+HOMEPAGE="http://www.tcl-lang.org/"
 SRC_URI="https://downloads.sourceforge.net/tcl/${PN}-core${PV}-src.tar.gz"
 
 SPARENT="${WORKDIR}/${MY_P}"

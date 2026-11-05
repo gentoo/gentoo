@@ -3,17 +3,35 @@
 # See gitmailmap(5) for format details.
 # Please keep this list sorted.
 # Use "grep -v '^#' .mailmap | LC_ALL=en_US.utf-8 sort".
+Alexander Moch <gentoo@alexmoch.com> <mail@alexmoch.com>
+Alex Efros <gentoo.org@id.powerman.name> <powerman-asdf@yandex.ru>
 Alexey Shvetsov <alexxy@gentoo.org> <alexxy@omrb.pnpi.spb.ru>
 Alexey Sokolov <alexey+gentoo@asokolov.org> <sokolov@google.com>
 Arsen Arsenović <arsen@gentoo.org> <arsen@aarsen.me>
+Brahmajit Das <brahmajit.xyz@gmail.com> <listout@listout.xyz>
+Brett Alcox <gentoo.usable109@simplelogin.com> <brettalcox@gmail.com>
 Christopher Bayliss <cjbdev@icloud.com> <cjb@cjb.sh>
 Christopher Fore <csfore@gentoo.org> <csfore@posteo.net>
+Christopher Head <bugs@chead.ca> <chead@chead.ca>
+Daniel Scheller <d.scheller.oss@gmail.com> <d.scheller@gmx.net>
 Emi <emi@genchu.org> <reedy.sailors.8t@icloud.com>
 Eric Joldasov <bratishkaerik@landless-city.net> BratishkaErik <bratishkaerik@getgoogleoff.me>
 Eric Joldasov <bratishkaerik@landless-city.net> <bratishkaerik@getgoogleoff.me>
 Florian Schmaus <flow@gentoo.org> <flo@geekplace.eu>
+Frederic Culot <gentoo@culot.org> <culot@FreeBSD.org>
+Fredrik Eriksson <gentoo@wb9.se> <feffe@fulh.ax>
+Graham Ramsey <graham@ulsterit.com> <graham.ramsey@gmail.com>
 Ionen Wolkens <ionen@gentoo.org> <sudinave@gmail.com>
+Jan Henke <gentoo@taujhe.de> <Jan.Henke@taujhe.de>
+Joakim Tjernlund <joakim.tjernlund@nokia.com> <Joakim.Tjernlund@infinera.com>
+John Turner <jturner.usa+gentoo@gmail.com> <jturner.usa@gmail.com>
+Jonas Frei <freijon@kagimail.com> <freijon@pm.me>
 Joonas Niilola <juippis@gentoo.org> <juippis@gmail.com>
+Kai Krakow <hurikhan77+bgo@gmail.com> <kai@kaishome.de>
+Kalin KOZHUHAROV <kalin@thinrope.net> <me.kalin@gmail.com>
+Karl-Johan Karlsson <creideiki+gentoo-bugzilla@lysator.liu.se> <creideiki@lysator.liu.se>
+Luigi Mantellini <luigi.mantellini+gentoo@gmail.com> <luigi.mantellini@gmail.com>
+Luke Dashjr <luke-jr+gentoobugs@utopios.org> <luke-jr+git@utopios.org>
 Maciej Barć <xgqt@gentoo.org> <xgqt@protonmail.com>
 Maciej Barć <xgqt@gentoo.org> <xgqt@riseup.net>
 Marek Szuba <marecki@gentoo.org> <Marek.Szuba@cern.ch>
@@ -27,11 +45,28 @@ Nowa Ammerlaan <nowa@gentoo.org> <andrewammerlaan@gentoo.org>
 Nowa Ammerlaan <nowa@gentoo.org> <andrewammerlaan@riseup.net>
 Nowa Ammerlaan <nowa@gentoo.org> <andrew.ammerlaan@ru.nl>
 Nowa Ammerlaan <nowa@gentoo.org> <nowa-ammerlaan@riseup.net>
+Octiabrina Terrien-Puig <myrvogna@electrosphe.re> <octiabrina@myrvogna.net>
+Ovidiu - Dan Bogat <ovi@ovidiu.at> <4z0r@ovidiu.at>
+Pavel Balaev <mail@void.so> <balaev@tarantool.org>
+Pavel Kalugin <paul.kalug@gmail.com> <pavel@pavelthebest.me>
+Peter Alfredsen <crabbedhaloablution@pm.me> <crabbedhaloablution@icloud.com>
 Petr Vaněk <arkamar@gentoo.org> <arkamar () atlas ! cz>
 Petr Vaněk <arkamar@gentoo.org> <arkamar@atlas.cz>
 Petr Vaněk <arkamar@gentoo.org> <pv@excello.cz>
+Pratham K <prathamIN@proton.me> <e817509a-8ee9-4332-b0ad-3a6bdf9ab63f@aleeas.com>
+Richard Fröhning <misanthropos@gmx.net> <misanthropos@gmx.de>
+Robert Günzler <robert@gnzler.io> <r@gnzler.io>
+Robert Kirkman <tacokoneko@gmail.com> <rkirkman@termux.dev>
+Robert Pearce <bugs.gentoo@flitspace.org.uk> <gentoo@flitspace.org.uk>
 Sam James <sam@gentoo.org> Sam James (sam_c) <sam@cmpct.info>
 Sam James <sam@gentoo.org> Sam James (sam_c) <sam@gentoo.org>
+Sebastian Hamann <gentoo-bugs@ares-macrotechnology.com> <code@ares-macrotechnology.com>
+Sebastian Parborg <darkdefende@gmail.com> <sebastian@blender.org>
+Simon Levermann <simon-bgo@slevermann.de> <simon@slevermann.de>
+Stéphane Veyret <sveyret@gmail.com> <stephane@neptura.org>
 Thomas Bracht Laumann Jespersen <laumann@gentoo.org> Thomas Bracht Laumann Jespersen <t@laumann.xyz>
+Thomas Juerges <stories.process3k@icloud.com> <aliens.satin0y@icloud.com>
 Ulrich Müller <ulm@gentoo.org> <ulm@kph.uni-mainz.de>
 Viorel Munteanu <ceamac@gentoo.org> <ceamac.paragon@gmail.com>
+Yumi Tanaka <yumi.tanaka@miraclelinux.com> <myknt1184@gmail.com>
+Zen <dev@pyl.onl> <z@pyl.onl>

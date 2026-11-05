@@ -3,9 +3,9 @@
 
 EAPI=8
 
-LLVM_COMPAT=( {17..23} )
+LLVM_COMPAT=( {20..23} )
 LLVM_OPTIONAL=1
-PYTHON_COMPAT=( python3_{12..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 inherit cmake flag-o-matic llvm-r2 python-any-r1 readme.gentoo-r1 xdg
 
 if [[ ${PV} == 9999 ]]; then

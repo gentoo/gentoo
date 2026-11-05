@@ -7,10 +7,10 @@ EAPI=8
 # * Update DOLPHIN_TAG_COMMIT to match commit used in tag.
 # * Update *_COMMIT for the vendored packages based on their submodules in Externals/.
 
-LLVM_COMPAT=( {18..22} )
+LLVM_COMPAT=( {18..23} )
 LLVM_OPTIONAL=1
 
-inherit branding cmake llvm-r2 pax-utils xdg
+inherit branding cmake llvm-r2 pax-utils toolchain-funcs xdg
 
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
@@ -175,7 +175,58 @@ add_bundled_licenses() {
 }
 add_bundled_licenses
 
+# TODO: use eclass function when it exists, bug #892331
+tc-check-cxx-min_ver() {
+	do_check() {
+		debug-print "C++ library version check for ${1}"
+		debug-print "Detected: ${2}"
+		debug-print "Required: ${3}"
+		if ver_test ${2} -lt ${3}; then
+			eerror "Your current C++ library is too old for this package!"
+			die "Active C++ library is too old for this package (found ${1} ${2})."
+		fi
+	}
+
+	get_cxx_version() {
+		$(tc-getCXX) -x c++ -E -P ${CXXFLAGS} ${CPPFLAGS} - <<-EOF | sed -n 's/^GENTOO_CXX_VERSION \(.*\)$/\1/p'
+		#if __cplusplus >= 202002L
+		#include <version>
+		#else
+		#include <ciso646>
+		#endif
+		GENTOO_CXX_VERSION ${1}
+		EOF
+	}
+
+	case ${1} in
+		libc++)
+			[[ $(tc-get-cxx-stdlib) == libc++ ]] || return
+			do_check libc++ $(get_cxx_version _LIBCPP_VERSION) ${2}
+			;;
+		libstdc++)
+			[[ $(tc-get-cxx-stdlib) == libstdc++ ]] || return
+			do_check libstdc++ $(get_cxx_version _GLIBCXX_RELEASE) ${2}
+			;;
+		*)
+			eerror "Unknown first parameter for ${FUNCNAME} - must be libc++ or libstdc++"
+			die "${FUNCNAME}: Parameter ${1} unknown"
+			;;
+	esac
+}
+
+is_toolchain_new_enough() {
+	# See libstdc++_min_version and libc++_min_version in CMakeLists.txt
+	tc-check-cxx-min_ver libstdc++ 12
+	tc-check-cxx-min_ver libc++ 180000
+}
+
+pkg_pretend() {
+	[[ ${MERGE_TYPE} != binary ]] && is_toolchain_new_enough
+}
+
 pkg_setup() {
+	[[ ${MERGE_TYPE} != binary ]] && is_toolchain_new_enough
+
 	use llvm && llvm-r2_pkg_setup
 }
 
@@ -211,10 +262,6 @@ src_prepare() {
 
 	einfo "removing sources: ${remove[*]}"
 	rm -r "${remove[@]}" || die
-
-	# Use ccache only when user did set FEATURES=ccache (or similar)
-	# # not when ccache binary is present in system (automagic).
-	sed -e '/include(CCache)/d' -i CMakeLists.txt || die
 
 	# Remove dirty suffix: needed for netplay
 	sed -i -e 's/--dirty/&=""/' CMake/ScmRevGen.cmake || die
@@ -272,6 +319,9 @@ src_configure() {
 		-DUSE_SYSTEM_HIDAPI=ON
 
 		-DDISTRIBUTOR="${BRANDING_OS_NAME}"
+
+		# Use ccache only when user did set FEATURES=ccache (or similar)
+		-DENABLE_CCACHE=OFF
 
 		# Undo cmake.eclass's defaults.
 		# All dolphin's libraries are private

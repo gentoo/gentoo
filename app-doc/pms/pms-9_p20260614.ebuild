@@ -3,13 +3,21 @@
 
 EAPI=9
 
+if [[ ${PV} = 9999 ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/${PN}.git"
+	EGIT_BRANCH="master"
+	SLOT="live"
+else
+	SRC_URI="https://distfiles.gentoo.org/pub/proj/pms/${P}.tar.xz"
+	SLOT="0"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~m68k ~mips ppc ppc64 ~s390 ~sparc x86 ~x64-macos ~x64-solaris"
+fi
+
 DESCRIPTION="Gentoo Package Manager Specification"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Package_Manager_Specification"
-SRC_URI="https://distfiles.gentoo.org/pub/proj/pms/${P}.tar.xz"
 
 LICENSE="CC-BY-SA-4.0"
-SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~m68k ~mips ppc ppc64 ~s390 ~sparc x86 ~x64-macos ~x64-solaris"
 IUSE="html twoside"
 
 # texlive-bibtexextra for unsrturl.bst

@@ -23,7 +23,7 @@ SRC_URI="https://codeberg.org/Calamares/${PN}/releases/download/v${PV}/${P}.tar.
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 IUSE="livecd"
 

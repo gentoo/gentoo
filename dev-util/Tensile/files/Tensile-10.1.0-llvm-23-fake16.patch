@@ -1,0 +1,30 @@
+Fix build with llvm-23
+
+LLVM 23 assembles gfx11/gfx12 with +real-true16 by default and rejects the
+fake16 syntax that Tensile generates (e.g. v_cvt_f16_f32 v1, v2)
+--- a/Tensile/Common.py
++++ b/Tensile/Common.py
+@@ -2178,6 +2178,10 @@ def tryAssembler(isaVersion, asmString, debug=False, *options):
+   if isaVersion[0] >= 10 and '-mno-wavefrontsize64' not in options:
+     options += ['-mwavefrontsize64']
+ 
++  # LLVM 23 defaults to true16 syntax on gfx11/gfx12, Tensile emits fake16
++  if isaVersion[0] in (11, 12):
++    options += ['-Xclangas', '-target-feature', '-Xclangas', '-real-true16']
++
+   assembler = globalParameters['AssemblerPath']
+   if assembler is None:
+     raise ValueError('No assembler available; set TENSILE_ROCM_ASSEMBLER_PATH to point to ROCm Clang.')
+--- a/Tensile/KernelWriterAssembly.py
++++ b/Tensile/KernelWriterAssembly.py
+@@ -285,6 +285,10 @@ class KernelWriterAssembly(KernelWriter):
+ 
+     rv += ['-mcpu=' + gfxName(isa)]
+ 
++    # LLVM 23 defaults to true16 syntax on gfx11/gfx12, Tensile emits fake16
++    if isa[0] in (11, 12):
++      rv += ['-Xclangas', '-target-feature', '-Xclangas', '-real-true16']
++
+     if wavefrontSize == 64:
+       rv += ['-mwavefrontsize64']
+     else:

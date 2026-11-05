@@ -1,6 +1,14 @@
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -52,9 +52,10 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
+@@ -1,4 +1,6 @@
+-cmake_minimum_required(VERSION 3.6 FATAL_ERROR)
++cmake_minimum_required(VERSION 3.10 FATAL_ERROR)
+ 
++include(GNUInstallDirs)
++
+ list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
+ include(PreventInSourceBuilds)
+@@ -52,7 +52,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
  set(destination ${CMAKE_INSTALL_PREFIX})
  configure_file("lmfit.pc.in" "lmfit.pc" @ONLY)
  install(FILES "${CMAKE_CURRENT_BINARY_DIR}/lmfit.pc"
@@ -8,10 +16,7 @@
 +	DESTINATION "${CMAKE_INSTALL_LIBDIR}/pkgconfig/")
  
  include(CTest)
-+include(GNUInstallDirs)
  
- add_subdirectory(lib)
- add_subdirectory(demo)
 --- a/lib/CMakeLists.txt
 +++ b/lib/CMakeLists.txt
 @@ -19,13 +19,13 @@ link_libm(${lib})
@@ -21,14 +26,14 @@
 -    LIBRARY DESTINATION ${destination}/lib
 -    RUNTIME DESTINATION ${destination}/lib
 -    ARCHIVE DESTINATION ${destination}/lib
-+    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}/lib
-+    RUNTIME DESTINATION ${CMAKE_INSTALL_LIBDIR}/lib
-+    ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}/lib
++    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
++    RUNTIME DESTINATION ${CMAKE_INSTALL_LIBDIR}
++    ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
      COMPONENT Libraries)
  install(
      FILES ${inc_files}
 -    DESTINATION ${destination}/include
-+    DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/include
++    DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
      COMPONENT Headers)
  
  if(WIN32)

@@ -44,9 +44,6 @@ distutils_enable_tests unittest
 src_test() {
 	# requires eventlet
 	rm oslo_log/tests/unit/test_pipe_mutex.py || die
-	# suddenly started failing on py3.13 (also in old version)
-	sed -i -e 's:test_rate_limit:_&:' \
-		oslo_log/tests/unit/test_rate_limit.py || die
 
 	distutils-r1_src_test
 }

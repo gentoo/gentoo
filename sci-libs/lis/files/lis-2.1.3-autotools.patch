@@ -356,6 +356,12 @@ diff --git a/test/Makefile.am b/test/Makefile.am
 index 1a3e25a..3bc26fb 100755
 --- a/test/Makefile.am
 +++ b/test/Makefile.am
+@@ -1,4 +1,4 @@
+-LDADD = -L$(top_builddir)/src -llis@LIBSUFFIX@
++LDADD = $(top_builddir)/src/liblis@LIBSUFFIX@.la
+ AM_CPPFLAGS = -I$(top_builddir) -I$(top_srcdir)/include
+ AM_FFLAGS = -I$(top_builddir) -I$(top_srcdir)/include
+ AM_LDFLAGS = $(AMDEFS)
 @@ -5,21 +5,21 @@ AM_LDFLAGS = $(AMDEFS)
  
  EXTRA_DIST = defs test.sh testmat.mtx testmat2.mtx testmat3.mtx testmat4.mtx testmat0.mtx testvec0.mtx

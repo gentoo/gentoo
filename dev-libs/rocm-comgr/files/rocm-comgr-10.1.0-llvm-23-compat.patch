@@ -1,0 +1,57 @@
+Fix build with llvm-23
+
+SGPR helpers in AMDGPUTargetParser and EF_AMDGPU_MACH_AMDGCN_GFX1250_STRICT
+are only available since LLVM 24
+
+--- a/src/comgr-isa-metadata.def
++++ b/src/comgr-isa-metadata.def
+@@ -75,7 +75,10 @@ HANDLE_ISA("amdgcn-amd-amdhsa-", "gfx1172",         EF_AMDGPU_MACH_AMDGCN_GFX117
+ HANDLE_ISA("amdgcn-amd-amdhsa-", "gfx1200",         EF_AMDGPU_MACH_AMDGCN_GFX1200,         true, true,   65536,   32,   4,    40, 1024,    24, 1536,  256)
+ HANDLE_ISA("amdgcn-amd-amdhsa-", "gfx1201",         EF_AMDGPU_MACH_AMDGCN_GFX1201,         true, true,   65536,   32,   4,    40, 1024,    24, 1536,  256)
+ HANDLE_ISA("amdgcn-amd-amdhsa-", "gfx1250",         EF_AMDGPU_MACH_AMDGCN_GFX1250,         true, false, 327680,   64,   4,    40, 1024,    16, 1024, 1024)
++#include "llvm/Config/llvm-config.h"
++#if LLVM_VERSION_MAJOR >= 24
+ HANDLE_ISA("amdgcn-amd-amdhsa-", "gfx1250-strict",  EF_AMDGPU_MACH_AMDGCN_GFX1250_STRICT,  true, false, 327680,   64,   4,    40, 1024,    16, 1024, 1024)
++#endif
+ HANDLE_ISA("amdgcn-amd-amdhsa-", "gfx1251",         EF_AMDGPU_MACH_AMDGCN_GFX1251,         true, false, 327680,   64,   4,    40, 1024,    16, 1024, 1024)
+ HANDLE_ISA("amdgcn-amd-amdhsa-", "gfx1310",         EF_AMDGPU_MACH_AMDGCN_GFX1310,         true, true,   65536,   32,   4,    40, 1024,    24, 1536,  256)
+ 
+--- a/src/comgr-metadata.cpp
++++ b/src/comgr-metadata.cpp
+@@ -21,6 +21,7 @@
+ #include "llvm/ADT/SmallVector.h"
+ #include "llvm/BinaryFormat/ELF.h"
+ #include "llvm/BinaryFormat/MsgPackDocument.h"
++#include "llvm/Config/llvm-config.h"
+ #include "llvm/Object/ELFObjectFile.h"
+ #include "llvm/Support/AMDGPUMetadata.h"
+ #include "llvm/Support/BinaryStreamReader.h"
+@@ -36,6 +37,28 @@
+ using namespace llvm;
+ using namespace llvm::object;
+ 
++#if LLVM_VERSION_MAJOR < 24
++// Added to AMDGPUTargetParser in LLVM 24
++namespace llvm::AMDGPU {
++static unsigned getTotalNumSGPRs(GPUKind AK) {
++  return getIsaVersion(getSubArch(AK)).Major >= 8 ? 800 : 512;
++}
++
++static unsigned getAddressableNumSGPRs(GPUKind AK) {
++  // SGPR init bug
++  if (AK == GK_GFX802 || AK == GK_GFX805)
++    return 96;
++  unsigned Major = getIsaVersion(getSubArch(AK)).Major;
++  return Major >= 10 ? 106 : Major >= 8 ? 102 : 104;
++}
++
++static unsigned getSGPRAllocGranule(GPUKind AK) {
++  unsigned Major = getIsaVersion(getSubArch(AK)).Major;
++  return Major >= 10 ? getAddressableNumSGPRs(AK) : Major >= 8 ? 16 : 8;
++}
++} // namespace llvm::AMDGPU
++#endif
++
+ namespace COMGR {
+ namespace metadata {
+ 

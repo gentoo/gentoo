@@ -22,4 +22,7 @@
 			between sessions</flag>
 		<flag name="smime">Enable support for S/MIME</flag>
 	</use>
+	<upstream>
+		<remote-id type="cpe">cpe:/a:alpine_project:alpine</remote-id>
+	</upstream>
 </pkgmetadata>

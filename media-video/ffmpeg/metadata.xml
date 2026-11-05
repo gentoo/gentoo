@@ -90,6 +90,7 @@
 		</flag>
 		<flag name="sndio">Enable audio output support via <pkg>media-sound/sndio</pkg></flag>
 		<flag name="soc">Apply additional patches for efficient playback on some SoCs (e.g. ARM, RISC-V)</flag>
+		<flag name="sofa">Enable Spatially Oriented Format for Acoustics (SOFA) audio filters via <pkg>media-libs/libmysofa</pkg></flag>
 		<flag name="srt">Enable Secure Reliable Transport (SRT) support via <pkg>net-libs/srt</pkg></flag>
 		<flag name="ssh">Enable SSH/SFTP support via <pkg>net-libs/libssh</pkg></flag>
 		<flag name="svt-av1">Enable AV1 encoding support via <pkg>media-libs/svt-av1</pkg></flag>

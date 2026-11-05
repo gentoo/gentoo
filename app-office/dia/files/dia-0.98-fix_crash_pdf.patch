@@ -1,0 +1,93 @@
+PR pending https://gitlab.gnome.org/GNOME/dia/-/merge_requests/149
+see also https://bugs.gentoo.org/983078
+Fix crash when importing pdf
+From 72fad360a06c46214b81081ec7778c8e3a0313c7 Mon Sep 17 00:00:00 2001
+From: Ted Rodgers <ted.d.rodgers@gmail.com>
+Date: Tue, 29 Sep 2026 09:51:23 -0400
+Subject: [PATCH] apply this first:
+ https://gitlab.gnome.org/GNOME/dia/-/merge_requests/146
+
+pdf:
+- Modern Poppler matrix handling and coordinate scaling
+- Update updateCTM to use const auto& to match modern Poppler APIs
+- Fix undefined behavior in restoreState by checking for an empty matrix stack before poppin
+- Remove redundant scaling factors from subpath points and text positioning
+- Correct coordinate scaling in doPath for starting points and Bezier curves
+--- a/plug-ins/pdf/pdf-import.cpp
++++ b/plug-ins/pdf/pdf-import.cpp
+@@ -144,17 +144,13 @@ public :
+ 		 double m21, double m22,
+ 		 double m31, double m32)
+   {
+-    DiaMatrix mat;
+-
+-    mat.xx = m11;
+-    mat.yx = m12;
+-    mat.xy = m21;
+-    mat.yy = m22;
+-    mat.x0 = m31 * scale;
+-    mat.y0 = m32 * scale;
+-
+-    //this->matrix = mat;
+-    dia_matrix_multiply (&this->matrix, &mat, &this->matrix);
++    const auto& ctm = state->getCTM();
++    this->matrix.xx = ctm[0];
++    this->matrix.yx = ctm[1];
++    this->matrix.xy = ctm[2];
++    this->matrix.yy = ctm[3];
++    this->matrix.x0 = ctm[4] * scale;
++    this->matrix.y0 = ctm[5] * scale;
+ 
+     updateLineDash(state);
+     updateLineJoin(state);
+@@ -437,9 +433,12 @@ public :
+   //! Change back to the old state
+   void restoreState(GfxState *state)
+   {
+-    // just restore the matrix for now
+-    this->matrices.pop_back();
+-    this->matrix = this->matrices.back();
++    if (!this->matrices.empty()) {
++      this->matrix = this->matrices.back();
++      this->matrices.pop_back();
++    } else {
++      g_warning("PDF import: restoreState called with an empty matrix stack");
++    }
+     // should contain all of our update*() methods?
+     updateLineWidth(state);
+     updateLineDash(state);
+@@ -467,6 +466,7 @@ public :
+   startPage (int pageNum, GfxState *state G_GNUC_UNUSED)
+   {
+     this->pageNum = pageNum;
++    this->matrices.clear();
+   }
+ 
+ 
+@@ -474,7 +474,8 @@ public :
+   void endPage()
+   {
+     DiaObject *group;
+-    g_return_if_fail (objects != NULL);
++    if (this->objects == NULL)
++      return;
+ 
+     /* approx 4:3 page distribution */
+     int m = (int)sqrt (num_pages / 0.75);
+@@ -839,13 +840,9 @@ DiaOutputDev::drawString(GfxState *state, GooString *s)
+     text_color.alpha = 0.0;
+ 
+   // not sure how state->getLineX() is related, it's 0 in my test cases
+-  double tx = state->getCurX();
+-  double ty = state->getCurY();
+-  int rot = state->getRotate();
+-  if (rot == 0)
+-    obj = create_standard_text (tx * scale, page_height - ty * scale);
+-  else /* XXX: at least for rot==90 */
+-    obj = create_standard_text (ty * scale, tx * scale);
++  Point p = { state->getCurX(), state->getCurY() };
++  transform_point(&p, &this->matrix);
++  obj = create_standard_text (p.x, p.y);
+   //not applyStyle (obj, TEXT);
+   GPtrArray *plist = g_ptr_array_new ();
+   // the "text" property is special, it must be initialized with text

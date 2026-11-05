@@ -5,7 +5,7 @@
 		<email>xgqt@gentoo.org</email>
 		<name>Maciej Barć</name>
 	</maintainer>
-	<maintainer type="person">
+	<maintainer type="person" proxied="yes">
 		<email>zappel@simple-co.de</email>
 		<name>Armas Spann</name>
 	</maintainer>

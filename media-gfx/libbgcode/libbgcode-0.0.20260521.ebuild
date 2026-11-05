@@ -14,7 +14,7 @@ SRC_URI="https://github.com/prusa3d/libbgcode/archive/${LIBBGCODE_COMMIT}.tar.gz
 S="${WORKDIR}/${PN}-${LIBBGCODE_COMMIT}"
 LICENSE="AGPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
@@ -24,8 +24,12 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	dev-libs/boost
-	test? ( >=dev-cpp/catch-3 )
+	test? ( >=dev-cpp/catch-3.8 )
 "
+
+PATCHES=(
+	"${FILESDIR}"/libbgcode-0.0.20260521-meatpack-tests.patch
+)
 
 src_configure() {
 	local mycmakeargs=(

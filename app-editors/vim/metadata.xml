@@ -20,6 +20,8 @@
   <use>
     <flag name="crypt">Use <pkg>dev-libs/libsodium</pkg> for crypto support</flag>
     <flag name="cscope">Enable cscope interface</flag>
+    <flag name="images">Render images in the terminal with the Sixel and Kitty
+      graphics protocols, using <pkg>x11-libs/pixman</pkg></flag>
     <flag name="pango">Render |:hardcopy| output with <pkg>x11-libs/pango</pkg>
       and <pkg>x11-libs/cairo</pkg> rather than Vim's own PostScript generator</flag>
     <flag name="racket">Enable support for Scheme using <pkg>dev-scheme/racket</pkg></flag>

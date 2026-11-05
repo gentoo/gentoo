@@ -1,0 +1,80 @@
+From f49e6094a5504a697f7dcc29096db294326f09af Mon Sep 17 00:00:00 2001
+From: HougeLangley <hougelangley1987@gmail.com>
+Date: Sat, 17 Oct 2026 08:24:31 +0800
+Subject: [PATCH] ALSA: run the hotplug regression test under CTest only
+
+The hotplug regression test added in 6.1.0 was wired as an ALL custom
+target that the library target also depends on, so it ran on every
+build - including 'cmake --install'. The test probes the real ALSA
+sequencer (/dev/snd/seq): packaging sandboxes and CI cannot open it,
+and the abort kills the install (Gentoo Portage: ACCESS DENIED
+/dev/snd/seq, RtMidiError, src_install dies). It also ran regardless
+of RTMIDI_BUILD_TESTING.
+
+- only call rtmidi_add_hotplug_test() when RTMIDI_BUILD_TESTING is on,
+  with the other test programs
+- drop ALL from the rtmidi_hotplug_check custom target and drop its
+  add_dependencies() on the library, so the test runs via CTest (or on
+  demand with 'cmake --build . --target rtmidi_hotplug_check'), never
+  during the default build or install
+
+Verified with -DRTMIDI_BUILD_TESTING=no (no test target, clean
+DESTDIR install, no sequencer access) and with the default (test
+fixture builds, build and install do not probe the sequencer,
+'ctest -R rtmidi_alsahotplug' passes).
+---
+ CMakeLists.txt          | 14 ++++++++------
+ tests/AlsaHotplug.cmake |  7 +++++--
+ 2 files changed, 13 insertions(+), 8 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index b4ca1015..5a80b9c1 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -362,12 +362,6 @@ if(RTMIDI_BUILD_MODULES)
+   endif()
+ endif()
+ 
+-# Compile and run hotplug regression tests whenever the ALSA library is built.
+-if("alsa" IN_LIST API_LIST)
+-  include(tests/AlsaHotplug.cmake)
+-  rtmidi_add_hotplug_test(rtmidi "${CMAKE_CURRENT_SOURCE_DIR}")
+-endif()
+-
+ # Add tests if requested.
+ option(RTMIDI_BUILD_TESTING "Build test programs" ON)
+ if (NOT DEFINED RTMIDI_BUILD_TESTING OR RTMIDI_BUILD_TESTING STREQUAL "")
+@@ -397,6 +391,14 @@ if(RTMIDI_BUILD_TESTING)
+   set_tests_properties(cgetmessage PROPERTIES SKIP_RETURN_CODE 77)
+   add_test(NAME sysexinterleaved COMMAND sysexinterleaved)
+   set_tests_properties(sysexinterleaved PROPERTIES SKIP_RETURN_CODE 77)
++  # The ALSA hotplug regression test probes the real ALSA sequencer, so it
++  # builds with the other test programs and runs under CTest only - never
++  # as part of the default build or of 'install' (packaging sandboxes and
++  # CI have no usable /dev/snd/seq; Gentoo Portage aborts src_install on it).
++  if("alsa" IN_LIST API_LIST)
++    include(tests/AlsaHotplug.cmake)
++    rtmidi_add_hotplug_test(rtmidi "${CMAKE_CURRENT_SOURCE_DIR}")
++  endif()
+ endif()
+ 
+ # Set standard installation directories.
+diff --git a/tests/AlsaHotplug.cmake b/tests/AlsaHotplug.cmake
+index 8cce9675..afbb70b3 100644
+--- a/tests/AlsaHotplug.cmake
++++ b/tests/AlsaHotplug.cmake
+@@ -23,9 +23,12 @@ function(rtmidi_add_hotplug_test library source_dir)
+   enable_testing()
+   add_test(NAME rtmidi_alsahotplug COMMAND rtmidi_alsahotplug)
+   set_tests_properties(rtmidi_alsahotplug PROPERTIES SKIP_RETURN_CODE 77 TIMEOUT 30)
+-  add_custom_target(rtmidi_hotplug_check ALL
++  # Deliberately not in ALL and not a dependency of the library: this runs the
++  # test against the real ALSA sequencer, which is not available in packaging
++  # sandboxes or CI. Run it on demand (`cmake --build . --target
++  # rtmidi_hotplug_check`) or through CTest.
++  add_custom_target(rtmidi_hotplug_check
+     COMMAND "${CMAKE_COMMAND}" "-DTEST_EXECUTABLE=$<TARGET_FILE:rtmidi_alsahotplug>"
+       -P "${source_dir}/tests/RunAlsaHotplug.cmake"
+     DEPENDS rtmidi_alsahotplug VERBATIM)
+-  add_dependencies(${library} rtmidi_hotplug_check)
+ endfunction()

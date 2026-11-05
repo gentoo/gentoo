@@ -17,7 +17,6 @@
 		<flag name="clamapp">
 			Build applications (clamscan, clamd, clamdscan, clamonacc (also has its own USE flag), sigtool, clambc, clamav-milter (also requires milter USE flag), clamdtop, clamsubmit, clamconf).
 		</flag>
-		<flag name="clamdtop">A Top like tool which shows what clamd is currently scanning amongst other things</flag>
 		<flag name="clamonacc">Build the clamonacc on-access scanner</flag>
 		<flag name="clamsubmit">A tool to submit false positives / negatives</flag>
 		<flag name="experimental">Enable experimental features</flag>

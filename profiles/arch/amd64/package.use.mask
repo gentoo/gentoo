@@ -31,6 +31,8 @@ llvm-runtimes/openmp -fortran
 
 # Sam James <sam@gentoo.org> (2026-07-22)
 # media-libs/libmysofa is keyworded here
+media-video/ffmpeg -sofa
+media-video/ffmpeg-compat -sofa
 media-video/pipewire -sofa
 
 # Alfredo Tupone <tupone@gentoo.org> (2026-05-18)
@@ -223,6 +225,7 @@ llvm-core/clang-common -cet
 sys-devel/gcc -cet
 sys-libs/binutils-libs -cet
 sys-libs/glibc -cet
+media-libs/x265 -cet
 
 # Leonardo Hernández Hernández <leohdz172@proton.me> (2024-02-23)
 # net-libs/paho-mqtt-c is only available for amd64 and x86
@@ -246,7 +249,8 @@ dev-lang/ispc -gpu
 
 # Ionen Wolkens <ionen@gentoo.org> (2023-12-02)
 # dev-qt/qtwebengine:6 and dev-qt/qtremoteobjects:6 are keyworded here.
-dev-python/pyqt6 -pdfium -remoteobjects
+<dev-python/pyqt6-6.12.0 -pdfium
+dev-python/pyqt6 -remoteobjects
 dev-python/qtpy -pdfium -remoteobjects
 
 # Jimi Huotari <chiitoo@gentoo.org> (2023-11-22)

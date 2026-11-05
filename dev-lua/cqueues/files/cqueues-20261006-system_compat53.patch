@@ -1,0 +1,40 @@
+use system compat53
+--- a/src/GNUmakefile
++++ b/src/GNUmakefile
+@@ -22,7 +22,7 @@ VENDOR_$(d) = $(or $(CQUEUES_VENDOR),$(shell $(<D)/../mk/changelog author))
+ VERSION_$(d) = $(or $(CQUEUES_VERSION),$(shell $(<D)/../mk/changelog version))
+ COMMIT_$(d) = $(shell $(<D)/../mk/changelog commit)
+ 
+-CPPFLAGS_$(d) = $(ALL_CPPFLAGS) -DCOMPAT53_PREFIX=cqueues
++CPPFLAGS_$(d) = $(ALL_CPPFLAGS)
+ CFLAGS_$(d) = $(ALL_CFLAGS)
+ SOFLAGS_$(d) = $(ALL_SOFLAGS)
+ LDFLAGS_$(d) = $(ALL_LDFLAGS)
+@@ -50,7 +50,7 @@ define BUILD_$(d)
+ $$(d)/$(1)/cqueues.so: $$(addprefix $$(d)/$(1)/, $$(OBJS_$(d))) $$(d)/lib/libnonlua.a
+ 	$$(CC) -o $$@ $$^ $$(SOFLAGS_$$(abspath $$(@D)/..)) $$(LDFLAGS_$$(abspath $$(@D)/..)) $$(LIBS_$$(abspath $$(@D)/..))
+ 
+-$$(d)/$(1)/%.o: $$(d)/%.c $$(d)/cqueues.h $$(d)/../vendor/compat53/c-api/compat-5.3.h $$(d)/config.h
++$$(d)/$(1)/%.o: $$(d)/%.c $$(d)/cqueues.h $$(d)/config.h
+ 	$$(MKDIR) -p $$(@D)
+ 	$$(CC) $$(CFLAGS_$$(<D)) $$(ALL_LUA$(subst .,,$(1))_CPPFLAGS) $$(CPPFLAGS_$$(<D)) -c -o $$@ $$<
+ 
+@@ -73,7 +73,6 @@ $$(d)/$(1)/compat53.o: $$(d)/../vendor/compat53/c-api/compat-5.3.c $$(d)/../vend
+ 	$$(MKDIR) -p $$(@D)
+ 	$$(CC) $$(CFLAGS_$(d)) $$(ALL_LUA$(subst .,,$(1))_CPPFLAGS) $$(CPPFLAGS_$(d)) -c -o $$@ $$<
+ 
+-$$(d)/$(1)/cqueues.so: $$(d)/$(1)/compat53.o
+ endif
+ endif
+ endif
+--- a/src/cqueues.h
++++ b/src/cqueues.h
+@@ -40,7 +40,7 @@
+ #include <lualib.h>
+ #include <lauxlib.h>
+ 
+-#include "../vendor/compat53/c-api/compat-5.3.h"
++#include <compat-5.3.h>
+ 
+ 
+ /*

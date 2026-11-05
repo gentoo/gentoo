@@ -1,0 +1,18 @@
+--- a/apparmor.d/zgrep
++++ b/apparmor.d/zgrep
+@@ -26,6 +26,7 @@
+   /usr/bin/expr ix,
+   /usr/bin/fgrep Cx -> helper,
+   /usr/bin/grep Cx -> helper,
++  /usr/bin/gsed Cx -> sed,
+   /usr/bin/gzip{,-reference} Cx -> helper,
+   /usr/bin/pigz Cx -> helper,
+   /usr/bin/mktemp ix,
+@@ -66,6 +67,7 @@
+
+     /dev/tty rw,
+     /usr/bin/{ba,da,}sh ix,
++    /usr/bin/gsed mr,
+     /usr/bin/sed mr,
+
+   }

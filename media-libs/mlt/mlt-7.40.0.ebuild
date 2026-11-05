@@ -144,7 +144,7 @@ src_configure() {
 		#-DMOD_NORMALIZE=
 		#-DMOD_OLDFILM=
 		-DMOD_OPENCV=$(usex opencv)
-		# -DMOD_OPENFX=
+		-DMOD_OPENFX=OFF # bug 978732
 		-DMOD_PLUS=ON
 		#-DMOD_PLUSGPL=
 		-DMOD_QT6=$(usex qt6)

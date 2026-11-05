@@ -1,0 +1,135 @@
+https://github.com/bbidulock/blackboxwm/pull/55
+
+From f633728d02dab8e45de9441248041cf60aa8b89d Mon Sep 17 00:00:00 2001
+From: "Z. Liu" <zhixu.liu@gmail.com>
+Date: Mon, 23 Mar 2026 21:30:43 +0800
+Subject: [PATCH 1/2] SCreen.cc & blackbox.cc: replace mem_fun by mem_fn
+
+std::mem_fun was removed in C++17.
+
+Signed-off-by: Z. Liu <zhixu.liu@gmail.com>
+
+diff --git a/src/Screen.cc b/src/Screen.cc
+index 79a1108..2dfd6f0 100644
+--- a/src/Screen.cc
++++ b/src/Screen.cc
+@@ -52,7 +52,7 @@
+ #include <dirent.h>
+ 
+ #include <cstring>
+-
++#include <functional>
+ 
+ static bool running = true;
+ static int anotherWMRunning(Display *, XErrorEvent *) {
+@@ -2081,12 +2081,12 @@ void BScreen::unmapNotifyEvent(const XUnmapEvent * const event) {
+ 
+ void BScreen::toggleFocusModel(FocusModel model) {
+   std::for_each(windowList.begin(), windowList.end(),
+-                std::mem_fun(&BlackboxWindow::ungrabButtons));
++                std::mem_fn(&BlackboxWindow::ungrabButtons));
+ 
+   _blackbox->resource().setFocusModel(model);
+ 
+   std::for_each(windowList.begin(), windowList.end(),
+-                std::mem_fun(&BlackboxWindow::grabButtons));
++                std::mem_fn(&BlackboxWindow::grabButtons));
+ }
+ 
+ 
+@@ -2130,7 +2130,7 @@ void BScreen::updateClientListHint(void) const {
+   bt::EWMH::WindowList clientList(windowList.size());
+ 
+   std::transform(windowList.begin(), windowList.end(), clientList.begin(),
+-                 std::mem_fun(&BlackboxWindow::clientWindow));
++                 std::mem_fn(&BlackboxWindow::clientWindow));
+ 
+   _blackbox->ewmh().setClientList(screen_info.rootWindow(), clientList);
+ }
+diff --git a/src/blackbox.cc b/src/blackbox.cc
+index e7083aa..5441d1f 100644
+--- a/src/blackbox.cc
++++ b/src/blackbox.cc
+@@ -32,6 +32,8 @@
+ #include <PixmapCache.hh>
+ #include <Util.hh>
+ 
++#include <functional>
++
+ extern "C" {
+ #include <X11/Xresource.h>
+ #include <sys/types.h>
+@@ -130,7 +132,7 @@ void Blackbox::shutdown(void) {
+   XSetInputFocus(XDisplay(), PointerRoot, RevertToPointerRoot, XTime());
+ 
+   std::for_each(screen_list, screen_list + screen_list_count,
+-                std::mem_fun(&BScreen::shutdown));
++                std::mem_fn(&BScreen::shutdown));
+ 
+   XSync(XDisplay(), false);
+ 
+@@ -399,7 +401,7 @@ void Blackbox::timeout(bt::Timer *) {
+   menuTimestamps.clear();
+ 
+   std::for_each(screen_list, screen_list + screen_list_count,
+-                std::mem_fun(&BScreen::reconfigure));
++                std::mem_fn(&BScreen::reconfigure));
+ 
+   bt::Color::clearCache();
+   bt::Font::clearCache();
+@@ -658,5 +660,5 @@ void Blackbox::rereadMenu(void) {
+   menuTimestamps.clear();
+ 
+   std::for_each(screen_list, screen_list + screen_list_count,
+-                std::mem_fun(&BScreen::rereadMenu));
++                std::mem_fn(&BScreen::rereadMenu));
+ }
+-- 
+2.49.1
+
+
+From 5f79122cf2210bf168ac8abbb7622db6b57a39b9 Mon Sep 17 00:00:00 2001
+From: "Z. Liu" <zhixu.liu@gmail.com>
+Date: Tue, 13 Oct 2026 11:31:15 +0800
+Subject: [PATCH 2/2] Unicode.hh: enable char_traits workaround for libc++
+
+Some versions of libc++ do not provide all required std::char_traits<>
+operations, similar to older versions of GCC.
+
+Reuse the existing workaround when building with libc++ by checking
+_LIBCPP_VERSION.
+
+Signed-off-by: Z. Liu <zhixu.liu@gmail.com>
+
+diff --git a/lib/Unicode.hh b/lib/Unicode.hh
+index c5b7fce..33a3af7 100644
+--- a/lib/Unicode.hh
++++ b/lib/Unicode.hh
+@@ -69,11 +69,11 @@ namespace bt
+ } // namespace bt
+ 
+ /*
+- * Workaround incomplete std::char_traits<> implementation in come
+- * versions of the GNU C++ compiler.
++ * Workaround incomplete std::char_traits<> implementation in some
++ * versions of the GNU C++ compiler or libc++.
+  */
+-#if defined(__GNUC__) && !defined(__INTEL_COMPILER)
+-#  if __GNUC__ == 3
++#if defined(_LIBCPP_VERSION) || \
++    (defined(__GNUC__) && !defined(__INTEL_COMPILER) && __GNUC__ == 3)
+ namespace std {
+ 
+   template<>
+@@ -167,7 +167,6 @@ namespace std {
+   };
+ 
+ } // namespace std
+-#  endif // __GNUC__ == 3
+-#endif // __GNUC__ && !__INTEL_COMPILER
++#endif // _LIBCPP_VERSION || __GNUC__ == 3)
+ 
+ #endif // __Unicode_hh
+-- 
+2.49.1
+

@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,7 +7,7 @@ GENTOO_DEPEND_ON_PERL=no
 
 LUA_COMPAT=( lua5-{1,3,4} luajit )
 
-PYTHON_COMPAT=( python3_{12..13} )
+PYTHON_COMPAT=( python3_13 )
 PYTHON_REQ_USE="threads(+)"
 
 USE_PHP="php8-2 php8-3"

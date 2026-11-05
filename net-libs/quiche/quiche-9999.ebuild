@@ -269,7 +269,7 @@ zmij@1.0.23
 
 RUST_MULTILIB=1
 
-inherit cargo cmake flag-o-matic multilib-minimal
+inherit cargo multilib-minimal
 
 DESCRIPTION="Implementation of the QUIC transport protocol and HTTP/3"
 HOMEPAGE="https://github.com/cloudflare/quiche"
@@ -277,12 +277,10 @@ HOMEPAGE="https://github.com/cloudflare/quiche"
 if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/cloudflare/${PN}.git"
 	inherit git-r3
-	CMAKE_USE_DIR="${S}/quiche/deps/boringssl"
 else
 	SRC_URI="${CARGO_CRATE_URIS}"
 	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 	S="${WORKDIR}/${P//_/-}"
-	CMAKE_USE_DIR="${S}/deps/boringssl"
 fi
 
 LICENSE="|| ( Apache-2.0 Boost-1.0 )
@@ -295,16 +293,12 @@ LICENSE="|| ( Apache-2.0 Boost-1.0 )
 	|| ( Unlicense MIT )
 	openssl"
 SLOT="0/0"
-IUSE=""
 DOCS=( COPYING README.md )
 
 BDEPEND="
 	dev-build/cmake
-	dev-util/patchelf
+	llvm-core/clang
 "
-DEPEND=""
-RDEPEND=""
-
 BUILD_DIR="${WORKDIR}/${P}"
 
 src_unpack() {
@@ -339,7 +333,7 @@ src_test() {
 }
 
 multilib_src_test() {
-	QUICHE_BSSL_PATH="${BUILD_DIR}/deps/boringssl" cargo_src_test
+	cargo_src_test
 }
 
 src_install() {
@@ -350,9 +344,7 @@ multilib_src_install() {
 	sed -i -e "s:libdir=.\+:libdir=${EPREFIX}/usr/$(get_libdir):" -e "s:includedir=.\+:includedir=${EPREFIX}/usr/include:" "$(cargo_target_dir)"/quiche.pc || die
 	insinto "/usr/$(get_libdir)/pkgconfig"
 	doins "$(cargo_target_dir)"/quiche.pc
-	doheader -r include/*
-	# remove dodgy RPATH to boringssl build directory: https://bugs.gentoo.org/954868
-	patchelf --remove-rpath "$(cargo_target_dir)"/libquiche.so || die
+	doheader -r quiche/include/*
 	# install libquiche.so as as .0.0.0
 	newlib.so "$(cargo_target_dir)"/libquiche.so libquiche.so.0.0.0 || die
 	# manually create .so symlinks: https://github.com/cloudflare/quiche/issues/165

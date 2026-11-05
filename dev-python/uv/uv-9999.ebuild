@@ -3,7 +3,7 @@
 
 EAPI=8
 
-RUST_MIN_VER="1.95.0"
+RUST_MIN_VER="1.97.0"
 
 inherit cargo check-reqs git-r3
 
@@ -21,8 +21,6 @@ RESTRICT="test"
 PROPERTIES="test_network"
 
 DEPEND="
-	app-arch/bzip2:=
-	app-arch/xz-utils:=
 	app-arch/zstd:=
 "
 RDEPEND="
@@ -31,6 +29,8 @@ RDEPEND="
 BDEPEND="
 	virtual/pkgconfig
 	test? (
+		>=dev-vcs/git-2.56.0-r1
+		dev-lang/python:3.9
 		dev-lang/python:3.10
 		dev-lang/python:3.11
 		dev-lang/python:3.12
@@ -127,5 +127,10 @@ src_install() {
 		#
 		# https://docs.astral.sh/uv/reference/settings/#python-preference
 		python-preference = "system"
+
+		# Always use system certificates.
+		#
+		# https://docs.astral.sh/uv/reference/settings/#system-certs
+		system-certs = true
 	EOF
 }

@@ -16,7 +16,7 @@ LIBABIGAIL_DOCS_USEFLAG="+doc"
 
 PYTHON_COMPAT=( python3_{11..14} )
 
-inherit libtool bash-completion-r1 python-any-r1 out-of-source
+inherit libtool out-of-source python-any-r1 shell-completion
 
 DESCRIPTION="Suite of tools for checking ABI differences between ELF objects"
 HOMEPAGE="https://sourceware.org/libabigail/"
@@ -28,7 +28,7 @@ if [[ ${PV} == 9999 ]] ; then
 else
 	SRC_URI="https://mirrors.kernel.org/sourceware/libabigail/${P}.tar.xz"
 	if [[ ${LIBABIGAIL_DOCS_PREBUILT} == 1 ]] ; then
-		SRC_URI+=" !doc? ( https://dev.gentoo.org/~${LIBABIGAIL_DOCS_PREBUILT_DEV}/distfiles/${CATEGORY}/${PN}/${PN}-${LIBABIGAIL_DOCS_VERSION}-docs.tar.xz )"
+		SRC_URI+=" !doc? ( https://distfiles.gentoo.org/pub/dev/${LIBABIGAIL_DOCS_PREBUILT_DEV}@gentoo.org/${CATEGORY}/${PN}/${PN}-${LIBABIGAIL_DOCS_VERSION}-docs.tar.xz )"
 		LIBABIGAIL_DOCS_USEFLAG="doc"
 	fi
 
@@ -36,17 +36,18 @@ else
 fi
 
 LICENSE="Apache-2.0-with-LLVM-exceptions"
-SLOT="0/9"
-IUSE="btf debug ${LIBABIGAIL_DOCS_USEFLAG} test"
+SLOT="0/10"
+IUSE="btf debug ${LIBABIGAIL_DOCS_USEFLAG} +threads test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
 	app-arch/xz-utils
-	dev-libs/elfutils[lzma]
+	>=dev-libs/elfutils-0.171[lzma,threads(-)?]
 	dev-libs/libxml2:2=
 	dev-libs/xxhash
 	btf? ( dev-libs/libbpf:= )
 	elibc_musl? ( sys-libs/fts-standalone )
+	threads? ( >=dev-cpp/tbb-2018.2:= )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
@@ -84,6 +85,7 @@ my_src_configure() {
 		$(use_enable btf)
 		$(use_enable doc apidoc)
 		$(use_enable doc manual)
+		$(use_enable threads multithreading)
 	)
 
 	econf "${myeconfargs[@]}"

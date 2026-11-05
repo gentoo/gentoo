@@ -62,3 +62,16 @@ index 4e7216ee..dd901497 100644
 +    char* szUnusualRoot = getenv("ZNC_UNUSUAL_ROOT");
 +    return szUnusualRoot ? szUnusualRoot : "";
 +}
+diff --git a/src/Translation.cpp b/src/Translation.cpp
+index 33a2ab38..9acf20eb 100644
+--- a/src/Translation.cpp
++++ b/src/Translation.cpp
+@@ -26,7 +26,7 @@ namespace {
+ std::map<CString, CTranslationInfo> FillTranslations() {
+     std::map<CString, CTranslationInfo> mTranslations;
+     CDir Dir;
+-    Dir.Fill(_DATADIR_ "/translations");
++    Dir.Fill(CZNC::UnusualRoot() + _DATADIR_ "/translations");
+     for (CFile* pFile : Dir) {
+         CString sName = pFile->GetShortName();
+         CTranslationInfo& translation = mTranslations[sName];

@@ -10,7 +10,7 @@ DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{12..15} )
 
-inherit distutils-r1 pypi
+inherit distutils-r1 pypi toolchain-funcs
 
 GH_PV=$(ver_cut 2-3)
 GH_P=${PN}-${GH_PV}
@@ -31,7 +31,7 @@ SRC_URI="
 
 LICENSE="BSD"
 SLOT="0/$(ver_cut 1-3)"
-KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~sparc x86"
 
 # need protobuf compiler
 BDEPEND="
@@ -87,6 +87,15 @@ python_test() {
 			)
 			;;
 	esac
+
+	if [[ $(tc-get-ptr-size) == 4 ]]; then
+		EPYTEST_DESELECT+=(
+			# overflows 32-bit time_t in the test's own precondition check (not in protobuf code)
+			# https://github.com/protocolbuffers/protobuf/issues/17003
+			google/protobuf/internal/well_known_types_test.py::TimeUtilTest::testTimezoneAwareDatetimeConversionWhereTimestampLosesPrecision
+			google/protobuf/internal/well_known_types_test.py::TimeUtilTest::testTimezoneNaiveDatetimeConversionWhereTimestampLosesPrecision
+		)
+	fi
 
 	cp -r "${BUILD_DIR}"/{install,test} || die
 	local -x PATH="${BUILD_DIR}/test${EPREFIX}/usr/bin:${PATH}"

@@ -128,6 +128,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-7.0.0-jxr-test.patch"
 	"${FILESDIR}/${PN}-8.9.0-piper.patch"
 	"${FILESDIR}/${PN}-8.9-qt6.10.patch"
+	"${FILESDIR}/${PN}-ffmpeg9.patch"
 )
 
 src_prepare() {

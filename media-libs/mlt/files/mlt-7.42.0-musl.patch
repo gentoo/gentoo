@@ -1,0 +1,71 @@
+https://bugs.gentoo.org/981271
+
+The header inclusion on its own is upstreamable, but the rest are getting into the unsupported territory.
+Ideally musl locales would be properly supported, I looked at the options and build vise it can be done.
+I stopped with that attempt as locales refused to work at runtime for Musl.
+
+Maybe when getlocalename_l gets buy-in from Glibc and Musl this could be revisited.
+https://austingroupbugs.net/view.php?id=1220
+https://pubs.opengroup.org/onlinepubs/9799919799.2024edition/functions/getlocalename_l.html
+
+See also
+https://gitlab.alpinelinux.org/alpine/aports/-/blob/master/community/mlt/musl.patch
+
+--- a/src/melt/io.c
++++ b/src/melt/io.c
+@@ -27,6 +27,7 @@
+ #include <stdlib.h>
+ #include <string.h>
+ #ifndef _WIN32
++#include <sys/time.h>
+ #include <termios.h>
+ #include <unistd.h>
+ #else
+--- a/src/tests/test_filter/test_filter.cpp
++++ b/src/tests/test_filter/test_filter.cpp
+@@ -28,7 +28,7 @@ class TestFilter : public QObject
+ public:
+     TestFilter()
+     {
+-#if defined(__linux__) || defined(__APPLE__)
++#if defined(__GLIBC__) || defined(__APPLE__)
+         locale = newlocale(LC_NUMERIC_MASK, "POSIX", NULL);
+ #endif
+         Factory::init();
+@@ -36,7 +36,7 @@ public:
+ 
+     ~TestFilter()
+     {
+-#if defined(__linux__) || defined(__APPLE__)
++#if defined(__GLIBC__) || defined(__APPLE__)
+         freelocale(locale);
+ #endif
+     }
+--- a/src/tests/test_properties/test_properties.cpp
++++ b/src/tests/test_properties/test_properties.cpp
+@@ -24,7 +24,6 @@
+ using namespace Mlt;
+ 
+ extern "C" {
+-#define __APPLE__
+ #include <framework/mlt_animation.h>
+ #include <framework/mlt_property.h>
+ }
+@@ -547,6 +546,7 @@ private Q_SLOTS:
+ 
+     void RadixRespondsToLocale()
+     {
++#if !defined(_WIN32) && (defined(__GLIBC__) || defined(__APPLE__))
+         Properties p;
+         p.set_lcnumeric("en_US.UTF-8");
+         p.set("key", "0.125");
+@@ -555,6 +555,9 @@ private Q_SLOTS:
+         p.set_lcnumeric("de_DE.UTF-8");
+         p.set("key", "0,125");
+         QCOMPARE(p.get_double("key"), double(1) / double(8));
++#endif
++#else
++        QSKIP("Doesn't work on Musl");
+ #endif
+     }
+ 

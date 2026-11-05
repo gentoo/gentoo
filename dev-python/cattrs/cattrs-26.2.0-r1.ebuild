@@ -20,7 +20,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64"
+KEYWORDS="~alpha amd64"
 IUSE="test-rust"
 
 RDEPEND="

@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -10,21 +10,34 @@ HOMEPAGE="https://www.x265.org/ https://bitbucket.org/multicoreware/x265_git/"
 
 if [[ ${PV} = 9999* ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="https://bitbucket.org/multicoreware/x265_git/"
-	MY_P="${PN}-${PV}"
+	EGIT_REPO_URI="https://github.com/Multicorewareinc/x265.git"
 else
-	SRC_URI="https://bitbucket.org/multicoreware/x265_git/downloads/${PN}_${PV}.tar.gz -> ${PN}-${PV}.tar.gz"
+	SRC_URI="https://github.com/Multicorewareinc/x265/releases/download/${PV}/x265_${PV}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~x86"
-	MY_P="${PN}_${PV}"
+	S="${WORKDIR}/${PN}_${PV}"
 fi
 
-S="${WORKDIR}/${MY_P}/source"
-unset MY_P
+S="${S}/source"
 
 LICENSE="GPL-2"
 # subslot = libx265 soname
-SLOT="0/215"
-IUSE="+10bit +12bit cpu_flags_ppc_vsx2 numa test vmaf"
+# See X265_BUILD in CMakeLists.txt
+SLOT="0/217"
+
+IUSE="+10bit +12bit numa test vmaf"
+# amd64
+IUSE+=" cet"
+# arm64
+IUSE+=" cpu_flags_arm_asimd cpu_flags_arm_asimddp cpu_flags_arm_i8mm cpu_flags_arm_sve cpu_flags_arm_sve2"
+REQUIRED_USE+="
+	cpu_flags_arm_asimddp? ( cpu_flags_arm_asimd )
+	cpu_flags_arm_i8mm? ( cpu_flags_arm_asimddp )
+	cpu_flags_arm_sve? ( cpu_flags_arm_i8mm )
+	cpu_flags_arm_sve2? ( cpu_flags_arm_sve )
+"
+# ppc*
+IUSE+=" cpu_flags_ppc_vsx2"
+
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -52,8 +65,6 @@ PATCHES=(
 	"${FILESDIR}/${PN}-3.6-code-cleanup_3.patch"
 
 	"${FILESDIR}/${PN}-4.1-vmaf.patch"
-
-	"${FILESDIR}/${PN}-cmake-min-version-3.28.patch"
 )
 
 pkg_setup() {
@@ -72,8 +83,14 @@ src_prepare() {
 	# libvmaf ERROR could not read model from path: "/usr/local/share/model/vmaf_v0.6.1.json"
 	sed -e "s#/usr/local/share/model/#${EPREFIX}/usr/share/vmaf/model/#g" -i x265.h || die
 
-	# TODO check so_name via
-	# X265_BUILD 215
+	if [[ ${PV} != 9999 ]]; then
+		# sanity check subslot to kick would be drive by bumpers
+		local detected_soversion
+		detected_soversion="$(sed -n -e 's/set(X265_BUILD \(.*\))/\1/p' CMakeLists.txt)"
+		if [[ "${SLOT#0/}" != "${detected_soversion}" ]]; then
+			die "Sub slot ${SLOT#0/} doesn't match upstream specified ABI ${detected_soversion}."
+		fi
+	fi
 }
 
 # By default, the library and the encoder is configured for only one output bit
@@ -157,6 +174,26 @@ multilib_src_configure() {
 		)
 	fi
 
+	if [[ ${ABI} == amd64 ]]; then
+		mycmakeargs+=(
+			-DENABLE_CET=$(usex cet)
+		)
+	fi
+
+	if [[ ${ABI} == arm64 ]]; then
+		mycmakeargs+=(
+			-DENABLE_NEON=$(usex cpu_flags_arm_asimd)
+			-DENABLE_NEON_DOTPROD=$(usex cpu_flags_arm_asimddp)
+			-DENABLE_NEON_I8MM=$(usex cpu_flags_arm_i8mm)
+			-DENABLE_SVE=$(usex cpu_flags_arm_sve)
+			-DENABLE_SVE2=$(usex cpu_flags_arm_sve2)
+			-DENABLE_SVE2_BITPERM=OFF # TODO: cpu_flags_arm_sve_bitperm?
+
+			# Requires simd extensions (neon being a proxy for the bare minimum)
+			-DENABLE_TESTS=$(usex test $(usex !cpu_flags_arm_asimd) OFF)
+		)
+	fi
+
 	if [[ ${ABI} = ppc* ]] ; then
 		# upstream uses mix of altivec + power8 vectors
 		# it's impossible to enable altivec without CPU_POWER8
@@ -166,6 +203,13 @@ multilib_src_configure() {
 			-DCPU_POWER8="$(usex cpu_flags_ppc_vsx2)"
 			-DENABLE_ALTIVEC="$(usex cpu_flags_ppc_vsx2)"
 		)
+	fi
+
+	# Explicitly only supports 64-bit RISC-V
+	if [[ ${ARCH} == riscv ]] && [[ ${ABI} =~ 64 ]]; then
+		# RISC-V Vector Extension
+		-DENABLE_RVV=OFF # TODO: cpu_flags_risvc_v?
+		-DENABLE_TESTS=OFF # Requires the above extension
 	fi
 
 	local MULTIBUILD_VARIANTS=( "${variants[@]}" )

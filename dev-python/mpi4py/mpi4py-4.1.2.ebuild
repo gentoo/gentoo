@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=meson-python
 inherit distutils-r1 pypi
@@ -18,6 +18,8 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
 IUSE="doc examples"
+RESTRICT="test"
+PROPERTIES="test_network"
 
 RDEPEND="
 	dev-python/numpy[${PYTHON_USEDEP}]

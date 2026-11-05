@@ -1,0 +1,44 @@
+From 45b491ce13fcf7dbc0b3bd6df986c9cf59190721 Mon Sep 17 00:00:00 2001
+From: Jordan R Abrahams-Whitehead <ajordanr@google.com>
+Date: Tue, 12 Dec 2023 22:54:02 +0000
+Subject: [PATCH] Allow MAP_NORESERVE in sandbox seccomp filter maps
+
+While debugging Scudo on ChromeOS, we found that the no reserve mode
+immediately crashed `sshd`. We tracked it down to the
+sandbox-seccomp-filter.
+
+Being able to mmap with MAP_NORESERVE is useful (if not necessary) for
+some overcommitting allocators.
+
+During mmap calls, the flag MAP_NORESERVE is used by some allocators
+such as LLVM's Scudo for layout optimisation. This causes the sandbox
+seccomp filter for the client subprocess to die with some Scudo
+configurations.
+
+Upstream patch submission:
+https://lists.mindrot.org/pipermail/openssh-unix-dev/2023-December/041095.html
+---
+ sandbox-seccomp-filter.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/sandbox-seccomp-filter.c b/sandbox-seccomp-filter.c
+index 23b40b643..a49c5ca99 100644
+--- a/sandbox-seccomp-filter.c
++++ b/sandbox-seccomp-filter.c
+@@ -190,9 +190,11 @@
+ 
+ #if defined(__NR_mmap) || defined(__NR_mmap2)
+ # ifdef MAP_FIXED_NOREPLACE
+-#  define SC_MMAP_FLAGS MAP_PRIVATE|MAP_ANONYMOUS|MAP_FIXED|MAP_FIXED_NOREPLACE
++#  define SC_MMAP_FLAGS MAP_PRIVATE|MAP_ANONYMOUS|MAP_FIXED \
++		|MAP_NORESERVE|MAP_FIXED_NOREPLACE
+ # else
+-#  define SC_MMAP_FLAGS MAP_PRIVATE|MAP_ANONYMOUS|MAP_FIXED
++#  define SC_MMAP_FLAGS MAP_PRIVATE|MAP_ANONYMOUS|MAP_FIXED \
++		|MAP_NORESERVE
+ # endif /* MAP_FIXED_NOREPLACE */
+ /* Use this for both __NR_mmap and __NR_mmap2 variants */
+ # define SC_MMAP(_nr) \
+-- 
+2.43.0.472.g3155946c3a-goog
+

@@ -1,9 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit systemd tmpfiles
+inherit eapi9-ver systemd
 
 DESCRIPTION="Console-based network traffic monitor that keeps statistics of network usage"
 HOMEPAGE="https://humdi.net/vnstat/"
@@ -24,21 +24,21 @@ else
 		)
 	"
 
-	KEYWORDS="~amd64 arm arm64 ~hppa ~mips ppc ~ppc64 ~riscv ~sparc ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
 
 	BDEPEND="verify-sig? ( sec-keys/openpgp-keys-teemutoivola )"
 fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="gd selinux test"
+IUSE="gd selinux test truetype"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
 	acct-group/vnstat
 	acct-user/vnstat
-	dev-db/sqlite
-	gd? ( media-libs/gd[png] )
+	dev-db/sqlite:3
+	gd? ( media-libs/gd:2=[png,truetype?] )
 "
 DEPEND="
 	${RDEPEND}
@@ -47,11 +47,14 @@ DEPEND="
 RDEPEND+=" selinux? ( sec-policy/selinux-vnstatd )"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-2.9-conf.patch
+	"${FILESDIR}"/${PN}-2.13-unit_as_user.patch
 )
 
 src_configure() {
+	use truetype || export ac_cv_have_decl_gdImageStringFT=no
 	local myeconfargs=(
+		# do not pass /usr/local
+		--disable-extra-paths
 		$(use_enable gd image-output)
 	)
 
@@ -61,19 +64,27 @@ src_configure() {
 src_install() {
 	default
 
-	exeinto /usr/share/${PN}
-	newexe "${FILESDIR}"/vnstat.cron-r2 vnstat.cron
+	# `vnstat --showconfig` generates the configfile if not crosscompiling
+	# use the same file in anycase
+	insinto /etc/
+	doins cfg/vnstat.conf
 
-	newconfd "${FILESDIR}"/vnstatd.confd-r1 vnstatd
-	newinitd "${FILESDIR}"/vnstatd.initd-r3 vnstatd
+	keepdir /var/lib/${PN}
+	fowners -R vnstat:vnstat /var/lib/${PN}
 
-	systemd_newunit "${FILESDIR}"/vnstatd.systemd-r1 vnstatd.service
-	newtmpfiles "${FILESDIR}"/vnstatd.tmpfile vnstatd.conf
+	newconfd "${FILESDIR}"/vnstatd.confd-r2 vnstatd
+	newinitd "${FILESDIR}"/vnstatd.initd-r4 vnstatd
 
-	newdoc INSTALL README.setup
-	dodoc CHANGES README UPGRADE FAQ examples/vnstat.cgi
+	systemd_newunit examples/systemd/simple/vnstat.service vnstatd.service
+
+	dodoc examples/*.{cgi,php}
 }
 
 pkg_postinst() {
-	tmpfiles_process vnstatd.conf
+	if ver_replacing -lt 2.13-r3; then
+		ewarn "The daemon is now started directly as an unprivileged user."
+		ewarn "Update VNSTATD_USER in ${EROOT}/etc/conf.d/vnstatd to override the default user 'vnstat'."
+		ewarn "Please adjust permissions on ${EROOT}/var/lib/vnstat to be owned by vnstat:vnstat"
+		ewarn "e.g. chown -R vnstat:vnstat ${EROOT}/var/lib/vnstat"
+	fi
 }

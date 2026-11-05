@@ -51,7 +51,7 @@ RDEPEND="
 		)
 		>=dev-python/requests-2.30.0[${PYTHON_USEDEP}]
 		dev-python/isodate[${PYTHON_USEDEP}]
-		>=dev-python/lxml-4.6.4[${PYTHON_USEDEP}]
+		>=dev-python/lxml-5.0.0[${PYTHON_USEDEP}]
 		>=dev-python/websocket-client-1.2.1[${PYTHON_USEDEP}]
 		dev-python/pycountry[${PYTHON_USEDEP}]
 		>=dev-python/pycryptodome-3.4.3[${PYTHON_USEDEP}]

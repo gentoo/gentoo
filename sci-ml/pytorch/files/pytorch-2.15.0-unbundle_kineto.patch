@@ -1,0 +1,33 @@
+--- a/torch/CMakeLists.txt	2024-11-09 20:50:21.806784527 +0100
++++ b/torch/CMakeLists.txt	2024-11-09 20:52:56.303892418 +0100
+@@ -63,7 +63,7 @@
+ 
+     ${TORCH_ROOT}/third_party/gloo
+     ${TORCH_ROOT}/third_party/onnx
+-    ${TORCH_ROOT}/third_party/kineto/libkineto/include
++    "/usr/include/kineto"
+     ${TORCH_ROOT}/third_party/cpp-httplib
+     ${TORCH_ROOT}/third_party/nlohmann/include
+ 
+--- a/caffe2/CMakeLists.txt	2024-11-09 20:58:37.698085144 +0100
++++ b/caffe2/CMakeLists.txt	2024-11-09 20:59:15.771391643 +0100
+@@ -1426,7 +1426,7 @@
+   ${TORCH_ROOT}/third_party/miniz-3.0.2)
+ 
+ target_include_directories(torch_cpu PRIVATE
+-  ${TORCH_ROOT}/third_party/kineto/libkineto/include)
++  "/usr/include/kineto")
+ 
+ if(USE_KINETO)
+   target_include_directories(torch_cpu PRIVATE
+--- a/cmake/Dependencies.cmake	2025-05-04 15:30:00.268862558 +0200
++++ b/cmake/Dependencies.cmake	2025-05-04 15:30:13.275934233 +0200
+@@ -1762,7 +1762,7 @@
+     endif()
+   endif()
+ 
+-  if(NOT TARGET kineto)
++  if(FALSE)
+     # Send Kineto's test binaries to their own subdirectory of build/bin so
+     # the CI runner can glob them without sweeping up PyTorch's tests too.
+     set(_kineto_saved_runtime_output_dir "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}")

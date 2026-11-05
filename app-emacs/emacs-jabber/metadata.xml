@@ -8,6 +8,5 @@
 <stabilize-allarches restrict="&lt;app-emacs/emacs-jabber-0.10.0"/>
 <upstream>
   <remote-id type="sourceforge">emacs-jabber</remote-id>
-  <remote-id type="codeberg">emacs-jabber/emacs-jabber</remote-id>
 </upstream>
 </pkgmetadata>

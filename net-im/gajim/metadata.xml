@@ -3,7 +3,8 @@
 <pkgmetadata>
   <!-- maintainer-needed -->
   <upstream>
-    <doc>https://dev.gajim.org/gajim/gajim/-/wikis/home</doc>
+    <doc>https://gitlab.com/gajim/gajim/-/wikis/home</doc>
+    <remote-id type="gitlab">gajim/gajim</remote-id>
   </upstream>
   <use>
     <flag name="voice">Support for video calls, audio calls and voice messages</flag>

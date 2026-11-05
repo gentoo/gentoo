@@ -1,6 +1,10 @@
 # Copyright 2023-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Bernard Cafarelli <voyageur@gentoo.org> (2026-10-10)
+# Upstream removed big-endian code paths
+>=games-emulation/dosbox-staging-0.83.0
+
 # James Le Cuirot <chewi@gentoo.org> (2026-07-30)
 # UT2004 is supported on ppc64le but not ppc64be. I doubt we'll ever see this on
 # any other big endian platform.
@@ -168,6 +172,7 @@ gnome-base/gnome
 media-gfx/gthumb
 media-sound/rhythmbox
 media-sound/sound-juicer
+>=x11-wm/mutter-50
 
 # matoro <matoro_gentoo@matoro.tk> (2023-04-10)
 # Explicit no-support for BE (#801238)

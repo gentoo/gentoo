@@ -1,0 +1,230 @@
+https://bugs.gentoo.org/984004
+https://github.com/lttng/lttng-modules/commit/e96c35671c743ed334afa94f1d3b109f39e36a20
+https://github.com/lttng/lttng-modules/commit/f55fed66cfdc5fd17c5f60455d2df2661fa8562f
+
+From e96c35671c743ed334afa94f1d3b109f39e36a20 Mon Sep 17 00:00:00 2001
+From: Michael Jeanson <mjeanson@efficios.com>
+Date: Mon, 22 Jun 2026 10:38:12 -0400
+Subject: [PATCH] fix: x86/msr: Remove rdmsrl() / wrmsrl() (v7.2)
+
+See upstream commits:
+
+  commit 666a5742b72133e219e989855e87d32fd8c95677
+  Author: Juergen Gross <jgross@suse.com>
+  Date:   Mon Jun 8 10:28:07 2026 +0200
+
+    x86/msr: Remove rdmsrl()
+
+    rdmsrl() has no users left. Delete it.
+
+  commit b5884070f9da9ffecd5141b5811cfdbaa274809a
+  Author: Juergen Gross <jgross@suse.com>
+  Date:   Mon Jun 8 10:28:09 2026 +0200
+
+    x86/msr: Remove wrmsrl()
+
+    wrmsrl() has no users left. Delete it.
+
+  commit c435e608cf59ffab815aa2571182dc8c50fe4112
+  Author: Ingo Molnar <mingo@kernel.org>
+  Date:   Wed Apr 9 22:28:54 2025 +0200
+
+    x86/msr: Rename 'rdmsrl()' to 'rdmsrq()'
+
+  commit 78255eb23973323633432d9ec40b65c15e41888a
+  Author: Ingo Molnar <mingo@kernel.org>
+  Date:   Wed Apr 9 22:28:55 2025 +0200
+
+    x86/msr: Rename 'wrmsrl()' to 'wrmsrq()'
+
+Change-Id: Idf16225a146119986fb5fa811b527873d5581804
+Signed-off-by: Michael Jeanson <mjeanson@efficios.com>
+Signed-off-by: Mathieu Desnoyers <mathieu.desnoyers@efficios.com>
+--- a/include/wrapper/ibt.h
++++ b/include/wrapper/ibt.h
+@@ -8,6 +8,8 @@
+ #ifndef _LTTNG_WRAPPER_IBT_H
+ #define _LTTNG_WRAPPER_IBT_H
+ 
++#include <lttng/kernel-version.h>
++
+ struct irq_ibt_state {
+ 	u64 msr;
+ 	unsigned long flags;
+@@ -22,6 +24,15 @@ struct irq_ibt_state {
+ #ifdef CONFIG_X86_KERNEL_IBT
+ # include <asm/cpufeature.h>
+ # include <asm/msr.h>
++
++# if (LTTNG_LINUX_VERSION_CODE >= LTTNG_KERNEL_VERSION(6,16,0))
++#  define lttng_rdmsrq rdmsrq
++#  define lttng_wrmsrq wrmsrq
++# else
++#  define lttng_rdmsrq rdmsrl
++#  define lttng_wrmsrq wrmsrl
++# endif
++
+ static inline __attribute__((always_inline))
+ struct irq_ibt_state wrapper_irq_ibt_save(void)
+ {
+@@ -31,8 +42,8 @@ struct irq_ibt_state wrapper_irq_ibt_save(void)
+ 	if (!cpu_feature_enabled(X86_FEATURE_IBT))
+ 		goto end;
+ 	local_irq_save(state.flags);
+-	rdmsrl(MSR_IA32_S_CET, msr);
+-	wrmsrl(MSR_IA32_S_CET, msr & ~CET_ENDBR_EN);
++	lttng_rdmsrq(MSR_IA32_S_CET, msr);
++	lttng_wrmsrq(MSR_IA32_S_CET, msr & ~CET_ENDBR_EN);
+ 	state.msr = msr;
+ end:
+ 	return state;
+@@ -45,10 +56,10 @@ void wrapper_irq_ibt_restore(struct irq_ibt_state state)
+ 
+ 	if (!cpu_feature_enabled(X86_FEATURE_IBT))
+ 		return;
+-	rdmsrl(MSR_IA32_S_CET, msr);
++	lttng_rdmsrq(MSR_IA32_S_CET, msr);
+ 	msr &= ~CET_ENDBR_EN;
+ 	msr |= (state.msr & CET_ENDBR_EN);
+-	wrmsrl(MSR_IA32_S_CET, msr);
++	lttng_wrmsrq(MSR_IA32_S_CET, msr);
+ 	local_irq_restore(state.flags);
+ }
+ #else
+From f55fed66cfdc5fd17c5f60455d2df2661fa8562f Mon Sep 17 00:00:00 2001
+From: Michael Jeanson <mjeanson@efficios.com>
+Date: Tue, 23 Jun 2026 13:38:45 -0400
+Subject: [PATCH] fix: string: Remove strncpy() from the kernel (v7.2)
+
+See upstream commits:
+
+  commit 079a028d6327e68cfa5d38b36123637b321c19a7
+  Author: Kees Cook <kees@kernel.org>
+  Date:   Mon Mar 23 01:27:25 2026 +0000
+
+    string: Remove strncpy() from the kernel
+
+    strncpy() has been a persistent source of bugs due to its ambiguous
+    intended usage and frequently counter-intuitive semantics: it may not
+    NUL-terminate the destination, and it unconditionally zero-pads to the
+    full length, which isn't always needed. All former callers have been
+    migrated[1] to:
+
+      - strscpy()        for NUL-terminated destinations
+      - strscpy_pad()    for NUL-terminated destinations needing zero-padding
+      - strtomem_pad()   for non-NUL-terminated fixed-width fields
+      - memcpy_and_pad() for bounded copies with explicit padding
+      - memcpy()         for known-length copies
+
+    Remove the generic implementation, its declaration, the FORTIFY_SOURCE
+    wrapper, and associated tests.
+
+  commit 458a3bf82df4fe1f951d0f52b1e0c1e9d5a88a3b
+  Author: Tobin C. Harding <tobin@kernel.org>
+  Date:   Fri Apr 5 12:58:58 2019 +1100
+
+    lib/string: Add strscpy_pad() function
+
+    We have a function to copy strings safely and we have a function to copy
+    strings and zero the tail of the destination (if source string is
+    shorter than destination buffer) but we do not have a function to do
+    both at once.  This means developers must write this themselves if they
+    desire this functionality.  This is a chore, and also leaves us open to
+    off by one errors unnecessarily.
+
+    Add a function that calls strscpy() then memset()s the tail to zero if
+    the source string is shorter than the destination buffer.
+
+Change-Id: Ia80045fab7b0a75feedc8301d251584295c1ed4e
+Signed-off-by: Michael Jeanson <mjeanson@efficios.com>
+Signed-off-by: Mathieu Desnoyers <mathieu.desnoyers@efficios.com>
+--- /dev/null
++++ b/include/wrapper/string.h
+@@ -0,0 +1,57 @@
++// SPDX-FileCopyrightText: 2026 Michael Jeanson <mjeanson@efficios.com>
++// SPDX-License-Identifier: GPL-2.0-only
++
++#ifndef _LTTNG_WRAPPER_STRING_H
++#define _LTTNG_WRAPPER_STRING_H
++
++#include <lttng/kernel-version.h>
++#include <linux/string.h>
++
++/**
++ * strscpy_pad() - Copy a C-string into a sized buffer
++ * @dst: Where to copy the string to
++ * @src: Where to copy the string from
++ * @size: Size of destination buffer
++ *
++ * Copy the string, or as much of it as fits, into the dest buffer. The
++ * behavior is undefined if the string buffers overlap. The destination
++ * buffer is always %NUL terminated, unless it's zero-sized.
++ *
++ * If the source string is shorter than the destination buffer, the
++ * remaining bytes in the buffer will be filled with %NUL bytes.
++ *
++ * For full explanation of why you may want to consider using the
++ * 'strscpy' functions please see the function docstring for strscpy().
++ *
++ * Returns:
++ * * The number of characters copied (not including the trailing %NULs)
++ * * -E2BIG if count is 0 or @src was truncated.
++ */
++#if (LTTNG_LINUX_VERSION_CODE >= LTTNG_KERNEL_VERSION(5,2,0))
++static inline
++ssize_t lttng_strscpy_pad(char *dst, const char *src, size_t count)
++{
++	return strscpy_pad(dst, src, count);
++}
++#else
++static inline
++ssize_t lttng_strscpy_pad(char *dst, const char *src, size_t count)
++{
++	ssize_t ret;
++
++	if (count == 0)
++		 return -E2BIG;
++
++	strncpy(dst, src, count);
++
++	ret = strnlen(dst, count);
++	if (ret >= count) {
++		dst[count - 1] = '\0';
++		ret = -E2BIG;
++	}
++
++	return ret;
++}
++#endif
++
++#endif /* _LTTNG_WRAPPER_STRING_H */
+--- a/src/lttng-syscalls.c
++++ b/src/lttng-syscalls.c
+@@ -28,6 +28,7 @@
+ #include <wrapper/rcu.h>
+ #include <wrapper/syscall.h>
+ #include <wrapper/limits.h>
++#include <wrapper/string.h>
+ #include <lttng/events.h>
+ #include <lttng/events-internal.h>
+ #include <lttng/utils.h>
+@@ -609,8 +610,7 @@ void lttng_syscall_event_enabler_create_event(struct lttng_event_enabler_common
+ 			ev.u.syscall.abi = LTTNG_KERNEL_ABI_SYSCALL_ABI_COMPAT;
+ 			break;
+ 		}
+-		strncpy(ev.name, desc->event_name, LTTNG_KERNEL_ABI_SYM_NAME_LEN - 1);
+-		ev.name[LTTNG_KERNEL_ABI_SYM_NAME_LEN - 1] = '\0';
++		lttng_strscpy_pad(ev.name, desc->event_name, LTTNG_KERNEL_ABI_SYM_NAME_LEN);
+ 		ev.instrumentation = LTTNG_KERNEL_ABI_SYSCALL;
+ 		ev.token = syscall_event_enabler->user_token;
+ 		event_recorder_enabler = lttng_event_recorder_enabler_create(LTTNG_ENABLER_FORMAT_NAME, &ev,
+@@ -701,8 +701,7 @@ void lttng_syscall_event_enabler_create_event(struct lttng_event_enabler_common
+ 			ev.u.syscall.abi = LTTNG_KERNEL_ABI_SYSCALL_ABI_COMPAT;
+ 			break;
+ 		}
+-		strncpy(ev.name, desc->event_name, LTTNG_KERNEL_ABI_SYM_NAME_LEN - 1);
+-		ev.name[LTTNG_KERNEL_ABI_SYM_NAME_LEN - 1] = '\0';
++		lttng_strscpy_pad(ev.name, desc->event_name, LTTNG_KERNEL_ABI_SYM_NAME_LEN);
+ 		ev.instrumentation = LTTNG_KERNEL_ABI_SYSCALL;
+ 		ev.token = syscall_event_enabler->user_token;
+ 		event_counter_enabler = lttng_event_counter_enabler_create(LTTNG_ENABLER_FORMAT_NAME, &ev,

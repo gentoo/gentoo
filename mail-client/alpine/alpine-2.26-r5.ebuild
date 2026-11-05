@@ -25,6 +25,11 @@ RDEPEND="${DEPEND}
 	app-misc/mime-types
 "
 
+PATCHES=(
+	"${FILESDIR}"/2.29.9-openssl4.patch
+	"${FILESDIR}"/2.29.9-smime-openssl4.patch
+)
+
 src_prepare() {
 	default
 

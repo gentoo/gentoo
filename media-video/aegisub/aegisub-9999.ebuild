@@ -7,7 +7,7 @@ LUA_COMPAT=( luajit )
 LUA_REQ_USE="lua52compat"
 
 WX_GTK_VER=3.2-gtk3
-PLOCALES="ar be bg ca cs da de el es eu fa fi fr_FR gl hu id it ja ko nl pl pt_BR pt_PT ru sr_RS sr_RS@latin tr uk_UA vi zh_CN zh_TW"
+PLOCALES="ar be bg ca cs da de el es eu fa fi fr_FR gl hu id it ja ko lt nl pl pt_BR pt_PT ru sr_RS@latin sr_RS th tr uk_UA vi zh_CN zh_TW"
 
 inherit meson flag-o-matic lua-single plocale wxwidgets xdg-utils vcs-snapshot toolchain-funcs
 
@@ -21,7 +21,7 @@ if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/TypesettingTools/Aegisub/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64 ~arm64 ~x86"
 fi
 LICENSE="BSD MIT"
 SLOT="0"
@@ -38,7 +38,7 @@ RDEPEND="${LUA_DEPS}
 	x11-libs/wxGTK:${WX_GTK_VER}=[X,opengl,debug?]
 	dev-libs/boost:=[icu,nls]
 	dev-libs/icu:=
-	media-libs/ffmpegsource:=
+	>=media-libs/ffmpegsource-5.0:=
 	media-libs/fontconfig
 	media-libs/freetype
 	media-libs/libass:=[fontconfig]
@@ -70,11 +70,6 @@ BDEPEND="
 	)
 "
 
-PATCHES=(
-	"${FILESDIR}"/3.4.0/Fix-build-without-pch.patch
-	"${FILESDIR}"/3.4.0/Use-generated-git-version.patch
-)
-
 BUILD_DIR="${WORKDIR}/${P}-build"
 
 aegisub_check_compiler() {
@@ -105,7 +100,8 @@ src_prepare() {
 
 	plocale_find_changes 'po' '' '.po'
 	plocale_for_each_disabled_locale remove_locale
-
+	sed -i "s|#ifdef WITH_UPDATE_CHECKER| #if WITH_UPDATE_CHECKER == 1|g" "${S}"/src/dialog_version_check.cpp \
+	                                                      "${S}"/src/command/app.cpp "${S}"/src/main.cpp || die
 	use test || sed -i "s|subdir('tests')||g" "${S}"/meson.build || die
 
 	mkdir "${BUILD_DIR}" || die

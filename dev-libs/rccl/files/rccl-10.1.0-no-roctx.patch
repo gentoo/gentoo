@@ -1,0 +1,75 @@
+Fix build without roctx
+
+With ROCTX=OFF (or roctracer not found) rccl defines NVTX_NO_IMPL and core.h
+includes nvtx_stub.h, but several sources include nvtx.h directly and rely on
+headers that only roctx.h pulls in.
+diff --git a/src/algorithms/dda/ipc/ipc_init.cu b/src/algorithms/dda/ipc/ipc_init.cu
+index 73faafd..ce7bee5 100644
+--- a/src/algorithms/dda/ipc/ipc_init.cu
++++ b/src/algorithms/dda/ipc/ipc_init.cu
+@@ -13,6 +13,7 @@
+ #include "debug.h"
+ #include "algorithms/dda/dda_init_detail.h"
+ #include "algorithms/dda/ipc/ipc_mem_handler.h"
++#include <iostream>
+ 
+ #include <cuda_runtime.h>
+ 
+diff --git a/src/include/nvtx.h b/src/include/nvtx.h
+index 16e815f..8b733a4 100644
+--- a/src/include/nvtx.h
++++ b/src/include/nvtx.h
+@@ -8,6 +8,10 @@
+ #ifndef NCCL_NVTX_H_
+ #define NCCL_NVTX_H_
+ 
++#ifdef NVTX_NO_IMPL
++#include "nvtx_stub.h"
++#else
++
+ #include "nvtx3/nvtx3.hpp"
+ #include "roctx.h"
+ 
+@@ -243,4 +247,6 @@ private:
+ 
+ extern void initNvtxRegisteredEnums();
+ 
++#endif // NVTX_NO_IMPL
++
+ #endif
+diff --git a/src/include/nvtx_stub.h b/src/include/nvtx_stub.h
+index d393371..23a989b 100644
+--- a/src/include/nvtx_stub.h
++++ b/src/include/nvtx_stub.h
+@@ -14,6 +14,7 @@ struct nccl_domain {
+ };
+ 
+ #define NVTX3_FUNC_RANGE_IN(domain)
++#define NCCL_NVTX3_FUNC_RANGE
+ #define nvtxNameOsThreadA(syscall, thread)
+ #define NVTX3_FUNC_WITH_PARAMS(N, T, P)
+ #define NVTX3_PAYLOAD(...) __VA_ARGS__
+diff --git a/src/include/rccl_common.h b/src/include/rccl_common.h
+index 5cca28d..a276a55 100644
+--- a/src/include/rccl_common.h
++++ b/src/include/rccl_common.h
+@@ -22,6 +22,7 @@ THE SOFTWARE.
+ #ifndef RCCL_COMMON_H_
+ #define RCCL_COMMON_H_
+ #include "nccl_common.h"
++#include "nccl_tuner.h"
+ #include "nccl.h"
+ #include "param.h"
+ #include "core.h"
+diff --git a/src/transport/net.cc b/src/transport/net.cc
+index 9b08181..7f7ba6c 100644
+--- a/src/transport/net.cc
++++ b/src/transport/net.cc
+@@ -21,6 +21,7 @@
+ #include "shm.h"
+ #include "compiler.h"
+ #include <atomic>
++#include <map>
+ #include <assert.h>
+ #include "graph.h"
+ #include "graph/topo.h"

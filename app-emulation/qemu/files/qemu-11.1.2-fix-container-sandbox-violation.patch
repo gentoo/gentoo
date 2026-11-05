@@ -1,0 +1,56 @@
+https://bugs.gentoo.org/984747
+https://bugs.gentoo.org/984747#c3
+
+From bfd8cd877b563bc27263f1384843fb669baae509 Mon Sep 17 00:00:00 2001
+From: Matthew White <mehw.is.me@proton.me>
+Date: Fri, 23 Oct 2026 23:24:14 +0000
+Subject: [PATCH] configure: --disable-containers should prevent `docker.py
+ probe`
+
+Upstream commit c4ce04cfb7460d46c0262d437a7f35bb5c5fc449 changed the
+configure file to set container_command regardless of use_containers.
+As a result, it runs `docker.py probe` to detect a Docker-compatible
+application, such as Podman, even when --disable-containers is used.
+
+On Gentoo, this reopens https://bugs.gentoo.org/732972.  As reported
+in https://bugs.gentoo.org/984747, the `docker.py probe` command can
+trigger SANDBOX ACCESS VIOLATION errors under QEMU v11.1.2:
+
+ * ACCESS DENIED:  open_wr_creat: /var/lib/rpm/rpmdb.sqlite-wal
+ * ACCESS DENIED:  fchown:        /var/lib/rpm/rpmdb.sqlite-wal
+ ...
+
+This patch is to prevent `docker.py probe` from running and to clear
+container_command when --disable-containers is used.
+
+Buglink: https://bugs.gentoo.org/984747
+Signed-off-by: Matthew White <mehw.is.me@proton.me>
+--- a/configure
++++ b/configure
+@@ -1277,12 +1277,17 @@ fi
+ ##########################################
+ # functions to probe cross compilers
+ 
+-if test "$container_command" = ""; then
+-    container_command=$($python "$source_path"/tests/docker/docker.py probe)
+-    test "$container_command" = "no" && container_command=""
+-fi
+-if test $use_containers = "yes" && test "$container_command" != ""; then
+-    docker_py="$python $source_path/tests/docker/docker.py --command $container_command"
++if test $use_containers = "yes"; then
++    if test "$container_command" = ""; then
++        container_command=$($python "$source_path"/tests/docker/docker.py probe)
++        test "$container_command" = "no" && container_command=""
++    fi
++    if test "$container_command" != ""; then
++        docker_py="$python $source_path/tests/docker/docker.py --command $container_command"
++    fi
++else
++    # the option --disable-containers should override and disable --container-command
++    container_command=""
+ fi
+ 
+ # cross compilers defaults, can be overridden with --cross-cc-ARCH
+-- 
+2.56.0
+

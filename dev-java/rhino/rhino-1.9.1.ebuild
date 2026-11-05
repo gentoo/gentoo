@@ -19,10 +19,6 @@ KEYWORDS="amd64 arm64 ppc64"
 
 DEPEND="
 	>=virtual/jdk-17
-	test? (
-		dev-java/junit:4
-		dev-java/junit:5[vintage]
-	)
 "
 
 # rhino/src/main/java/org/mozilla/javascript/Slot.java:29: error: cannot find symbol
@@ -37,16 +33,15 @@ PATCHES=( "${FILESDIR}/rhino-1.9.0-ClassCompilerTest.patch" )
 JAVA_RESOURCE_DIRS="src/main/resources"
 JAVA_SRC_DIR="src/main/java"
 JAVA_TEST_EXTRA_ARGS=( -Dtest.file.rhino-test-config.loaded=true -Dtest.config.bar=value4-mod )
-JAVA_TEST_GENTOO_CLASSPATH="junit-4 junit-5"
 JAVA_TEST_RESOURCE_DIRS="src/test/resources"
 JAVA_TEST_SRC_DIR="src/test/java"
 
 src_test() {
-	JAVA_GENTOO_CLASSPATH_EXTRA="rhino.jar"
+	JAVA_CLASSPATH_EXTRA="junit-5"
+	JAVA_GENTOO_CLASSPATH_EXTRA="rhino.jar:testutils.jar"
 	JAVA_JAR_FILENAME="testutils.jar"
 	JAVA_SRC_DIR="../testutils/src/main/java"
 	java-pkg-simple_src_compile
-	JAVA_GENTOO_CLASSPATH_EXTRA+=":testutils.jar"
 
 	# One test needs to run first, otherwise it would fail.
 	JAVA_TEST_RUN_ONLY=( org.mozilla.javascript.tests.ErrorHandlingTest )

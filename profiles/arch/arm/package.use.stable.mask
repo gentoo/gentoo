@@ -1,6 +1,11 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Joonas Niilola <juippis@gentoo.org> (2026-10-30)
+# Dependency not stable on arm.
+app-crypt/libsecret test-rust
+dev-util/glade gjs
+
 # Ionen Wolkens <ionen@gentoo.org> (2026-04-16)
 # media-libs/opencolorio is not stable here and has many dependencies.
 # Not overly worth extra stabilizations over new still scarcely used

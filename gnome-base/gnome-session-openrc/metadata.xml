@@ -5,7 +5,7 @@
     <email>gnome@gentoo.org</email>
     <name>Gentoo GNOME Desktop</name>
   </maintainer>
-  <maintainer type="person">
+  <maintainer type="person" proxied="yes">
     <email>me@ow.swag.toys</email>
     <name>Hyland B. (Swagtoy)</name>
   </maintainer>

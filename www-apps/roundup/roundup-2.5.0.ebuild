@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{12..14} )
+PYTHON_COMPAT=( python3_{13..14} )
 
 DISTUTILS_USE_PEP517=setuptools
 inherit distutils-r1 pypi
@@ -12,7 +12,7 @@ HOMEPAGE="https://roundup.sourceforge.io https://pypi.org/project/roundup/"
 
 LICENSE="MIT ZPL"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~sparc ~x86"
+KEYWORDS="amd64 ~ppc ~sparc x86"
 IUSE="+tz sqlite mysql postgres xapian whoosh ssl jinja pyjwt markdown test"
 
 RDEPEND="

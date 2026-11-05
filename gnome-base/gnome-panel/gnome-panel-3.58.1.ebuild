@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+
 inherit gnome2 toolchain-funcs
 
 DESCRIPTION="The GNOME Flashback Panel"
@@ -67,9 +68,9 @@ src_configure() {
 	if use elogind; then
 		local pkgconfig="$(tc-getPKG_CONFIG)"
 
-		local action_modules="gio-unix-2.0 gtk+-3.0 libgnome-menu-3.0 libelogind x11"
-		local launcher_modules="gio-unix-2.0 gtk+-3.0 libgnome-menu-3.0 libelogind"
-		local menu_modules="gdm gio-unix-2.0 gtk+-3.0 libgnome-menu-3.0 libelogind"
+		local action_modules="gio-unix-2.0 gtk+-3.0 gnome-desktop-3.0 libgnome-menu-3.0 libelogind x11"
+		local launcher_modules="gio-unix-2.0 gtk+-3.0 gnome-desktop-3.0 libgnome-menu-3.0 libelogind"
+		local menu_modules="gdm gio-unix-2.0 gtk+-3.0 gnome-desktop-3.0 libgnome-menu-3.0 libelogind"
 
 		myconf+=(
 			ACTION_BUTTON_CFLAGS="$(${pkgconfig} --cflags ${action_modules})"

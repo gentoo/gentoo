@@ -11,7 +11,7 @@ SRC_URI="https://github.com/rwpenney/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE="argv0switch cswap fsck +gcrypt +largefile mount +nls +luks +openssl systemd"
 REQUIRED_USE="
 	luks? ( gcrypt )

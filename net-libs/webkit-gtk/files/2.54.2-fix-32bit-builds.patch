@@ -1,0 +1,42 @@
+From 01ad7b234c18074132e50cddc3c35eb6f4db5132 Mon Sep 17 00:00:00 2001
+From: Carlos Alberto Lopez Perez <clopez@igalia.com>
+Date: Thu, 15 Oct 2026 19:49:50 -0700
+Subject: [PATCH] REGRESSION(320000@main): [libpas][GCC] Build broken on
+ 32-bits. https://bugs.webkit.org/show_bug.cgi?id=327757
+
+Reviewed by Yusuke Suzuki.
+
+Building with GCC for any 32-bit target fails in pas_mte.c with "unknown type name '__uint128_t'".
+libpas has no 32-bit support since 318383@main, which also made sure that it is not included in
+32-bit builds, and every libpas source starts with #if LIBPAS_ENABLED, so that it compiles to
+nothing there. However, pas_mte.c doesn't have that guard. Before 320000@main this didn't matter,
+because pas_mte.h only included pas_utils.h when MTE was enabled. Since 320000@main it includes it
+unconditionally, so pas_mte.c now compiles pas_utils.h, whose definition of pas_pair for GCC only
+covers 64-bit targets: it is a __uint128_t, which GCC doesn't provide on 32-bit targets.
+Clang builds are not affected, because with Clang pas_pair is a struct.
+
+Add the same LIBPAS_ENABLED guard that the other libpas sources have, so that pas_mte.c compiles
+to nothing when libpas is disabled.
+
+* Source/bmalloc/libpas/src/libpas/pas_mte.c:
+
+Canonical link: https://commits.webkit.org/323902@main
+--- a/Source/bmalloc/libpas/src/libpas/pas_mte.c
++++ b/Source/bmalloc/libpas/src/libpas/pas_mte.c
+@@ -23,6 +23,10 @@
+  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
+  */
+ 
++#include "pas_config.h"
++
++#if LIBPAS_ENABLED
++
+ #include "pas_mte.h"
+ 
+ #if defined(PAS_USE_OPENSOURCE_MTE) && PAS_USE_OPENSOURCE_MTE
+@@ -42,3 +46,5 @@ void* pas_mte_system_heap_realloc_zero_tagged(malloc_zone_t* zone, void* ptr, si
+ }
+ #endif // PAS_ENABLE_MTE
+ #endif // defined(PAS_USE_OPENSOURCE_MTE) && PAS_USE_OPENSOURCE_MTE
++
++#endif /* LIBPAS_ENABLED */

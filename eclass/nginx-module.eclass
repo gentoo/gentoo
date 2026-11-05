@@ -370,29 +370,30 @@ ngx_mod_pkg_to_sonames() {
 	printf "%s\0" "${dep_sonames[@]}"
 }
 
-# @FUNCTION: _ngx_mod_append_link_args
+# @FUNCTION: _ngx_mod_add_link_args
 # @INTERNAL
-# @USAGE: <ldflags|libs> [<linker arguments>...]
+# @USAGE: <prepend|append> [<linker arguments>...]
 # @DESCRIPTION:
-# Appends linker arguments to the response file associated with the specified
-# argument type and adds the response file to the corresponding environment
+# Adds linker arguments before (prepend) or after (append) NGINX's module
+# libraries using a response file added to the corresponding environment
 # variable.
-_ngx_mod_append_link_args() {
+_ngx_mod_add_link_args() {
 	debug-print-function "${FUNCNAME[0]}" "$@"
 	[[ $# -ge 1 ]] || die "${FUNCNAME[0]} must receive an argument type"
 
 	local type="$1"
 	shift
+	local suffix
 	case ${type} in
-		ldflags|libs) ;;
+		prepend) suffix=LDFLAGS ;;
+		append) suffix=LIBS ;;
 		*) die "${FUNCNAME[0]}: invalid argument type: ${type}" ;;
 	esac
 	[[ $# -eq 0 ]] && return 0
 
-	local suffix="${type^^}"
 	declare -n env_var="_NGINX_GENTOO_MOD_${suffix}"
 	local state_var="_NGX_MOD_${suffix}_RESP_FILE_SET_UP"
-	local resp_file="${T}/append-${type}-resp-file"
+	local resp_file="${T}/append-${suffix,,}-resp-file"
 
 	# Set up the response file. Make sure to do it only once.
 	if [[ -z ${!state_var} ]]; then
@@ -420,7 +421,7 @@ _ngx_mod_append_link_args() {
 # @CODE
 ngx_mod_prepend_ldflags() {
 	debug-print-function "${FUNCNAME[0]}" "$@"
-	_ngx_mod_append_link_args ldflags "$@"
+	_ngx_mod_add_link_args prepend "$@"
 }
 
 # @FUNCTION: ngx_mod_append_ldflags
@@ -438,7 +439,7 @@ ngx_mod_prepend_ldflags() {
 # @CODE
 ngx_mod_append_ldflags() {
 	debug-print-function "${FUNCNAME[0]}" "$@"
-	_ngx_mod_append_link_args libs "$@"
+	_ngx_mod_add_link_args append "$@"
 }
 
 # @FUNCTION: ngx_mod_setup_link_modules

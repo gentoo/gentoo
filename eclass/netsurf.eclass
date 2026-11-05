@@ -1,16 +1,16 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: netsurf.eclass
 # @MAINTAINER:
 # mjo@gentoo.org
-# @SUPPORTED_EAPIS: 7 8
+# @SUPPORTED_EAPIS: 7 8 9
 # @BLURB: Handle buildsystem of www.netsurf-browser.org components
 # @DESCRIPTION:
 # Handle settings build environment for netsurf build system
 
 case ${EAPI} in
-	7|8) ;;
+	7|8|9) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
@@ -22,6 +22,7 @@ inherit toolchain-funcs
 # This function sets NETSURF_MAKECONF as needed by the netsurf build system
 netsurf_define_makeconf() {
 	NETSURF_MAKECONF=(
+		VARIANT=release
 		PREFIX="${EPREFIX}/usr"
 		NSSHARED="${EPREFIX}/usr/share/netsurf-buildsystem"
 		LIBDIR="$(get_libdir)"
@@ -35,6 +36,9 @@ netsurf_define_makeconf() {
 		CCOPT=
 		CCNOOPT=
 		CCDBG=
+		CXXOPT=
+		CXXNOOPT=
+		CXXDBG=
 		LDDBG=
 		AR="$(tc-getAR)"
 		WARNFLAGS=

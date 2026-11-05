@@ -5,7 +5,7 @@
 		<email>tupone@gentoo.org</email>
 		<name>Tupone Alfredo</name>
 	</maintainer>
-	<maintainer type="person">
+	<maintainer type="person" proxied="yes">
 		<email>lockalsash@gmail.com</email>
 		<name>Sv. Lockal</name>
 	</maintainer>

@@ -6,6 +6,6 @@
     <name>X11</name>
   </maintainer>
   <upstream>
-    <remote-id type="freedesktop-gitlab">xorg/lib/libXft</remote-id>
+    <remote-id type="freedesktop-gitlab">xorg/lib/libxft</remote-id>
   </upstream>
 </pkgmetadata>

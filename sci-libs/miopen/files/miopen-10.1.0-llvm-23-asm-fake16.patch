@@ -1,0 +1,20 @@
+Fix assembling MIOpen asm kernels for gfx11/gfx12 with LLVM 23
+
+LLVM 23 enables real-true16 on gfx11/gfx12 and rejects the fake16 syntax
+(e.g. v_cvt_f16_f32 v1, s32) used by the Winograd asm kernels, which comgr
+assembles at runtime.
+--- a/src/comgr.cpp
++++ b/src/comgr.cpp
+@@ -514,6 +514,12 @@
+             optAsm.emplace_back("-mno-xnack");
+ #endif
+         compiler::lc::gcnasm::RemoveOptionsUnwanted(optAsm);
++        // The asm kernels use fake16 syntax, which LLVM 23 rejects in real-true16 mode.
++        if(StartsWith(target.Name(), "gfx11") || StartsWith(target.Name(), "gfx12"))
++        {
++            for(const auto* opt : {"-Xclangas", "-target-feature", "-Xclangas", "-real-true16"})
++                optAsm.emplace_back(opt);
++        }
+ 
+         action.SetOptionList(optAsm);
+ 

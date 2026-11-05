@@ -68,7 +68,6 @@ dev-python/jupyter-server-proxy
 sci-misc/jupyterlab-desktop-bin
 dev-python/plotly
 dev-python/plotly-geo
-dev-python/chart-studio
 sci-visualization/dash
 >=dev-python/notebook-7
 dev-python/spyder-notebook
@@ -93,6 +92,7 @@ media-gfx/freecad
 # reverse-dependencies.
 dev-qt/qtwebengine
 dev-qt/qtwebview
+dev-python/pyqt6-pdf
 dev-python/pyqt6-webengine
 dev-python/qpageview
 app-text/zeal

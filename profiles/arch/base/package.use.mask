@@ -20,6 +20,8 @@ media-libs/xine-lib vis
 
 # Sam James <sam@gentoo.org> (2026-07-22)
 # media-libs/libmysofa not keyworded in most places
+media-video/ffmpeg sofa
+media-video/ffmpeg-compat sofa
 media-video/pipewire sofa
 
 # Michał Górny <mgorny@gentoo.org> (2026-03-14)
@@ -213,7 +215,8 @@ dev-lang/ispc gpu
 
 # Ionen Wolkens <ionen@gentoo.org> (2023-12-02)
 # dev-qt/qtwebengine:6 and dev-qt/qtremoteobjects:6 have few keywords.
-dev-python/pyqt6 pdfium remoteobjects
+<dev-python/pyqt6-6.12.0 pdfium
+dev-python/pyqt6 remoteobjects
 dev-python/qtpy pdfium remoteobjects
 
 # Jimi Huotari <chiitoo@gentoo.org> (2023-11-22)

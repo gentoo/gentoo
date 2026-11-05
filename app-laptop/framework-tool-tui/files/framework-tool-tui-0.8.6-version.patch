@@ -1,0 +1,12 @@
+diff --git a/Cargo.toml b/Cargo.toml
+index 65c5213..6283301 100644
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -1,6 +1,6 @@
+ [package]
+ name = "framework-tool-tui"
+-version = "0.8.5"
++version = "0.8.6"
+ edition = "2021"
+ rust-version = "1.88"
+ description = "TUI for controlling and monitoring Framework Computers hardware built in Rust"

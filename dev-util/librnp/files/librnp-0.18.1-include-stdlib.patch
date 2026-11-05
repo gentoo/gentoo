@@ -1,0 +1,19 @@
+https://github.com/rnpgp/rnp/pull/2453
+
+From 69a0115cba33c783b3e84b5a51d64fd1a565d485 Mon Sep 17 00:00:00 2001
+From: tachalorah <tachalorah@proton.me>
+Date: Mon, 3 Aug 2026 17:02:13 +0700
+Subject: [PATCH] common/file-utils.cpp: include <stdlib.h> unconditionally
+
+--- a/src/common/file-utils.cpp
++++ b/src/common/file-utils.cpp
+@@ -29,8 +29,8 @@
+ 
+ #include "file-utils.h"
+ #include "config.h"
+-#ifdef _MSC_VER
+ #include <stdlib.h>
++#ifdef _MSC_VER
+ #include <stdio.h>
+ #include "uniwin.h"
+ #include <errno.h>

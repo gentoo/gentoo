@@ -22,7 +22,7 @@ HOMEPAGE="https://virgil3d.github.io/"
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="static-libs test venus vaapi video_cards_amdgpu video_cards_asahi video_cards_freedreno X"
+IUSE="static-libs test venus vaapi video_cards_amdgpu video_cards_asahi video_cards_freedreno video_cards_intel X"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -56,6 +56,7 @@ src_configure() {
 	use video_cards_amdgpu && gpus+=( amdgpu-experimental )
 	use video_cards_asahi && gpus+=( asahi )
 	use video_cards_freedreno && gpus+=( msm )
+	use video_cards_intel && gpus+=( i915-experimental )
 
 	# Build egl unconditionally. Tests and vaapi require it.
 	local -a platforms=( egl )

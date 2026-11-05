@@ -1,4 +1,4 @@
-From ae7f3d718258cc1e5a2efa192a8af3bb3420231b Mon Sep 17 00:00:00 2001
+From 3c3ef66518cfb8caed7edb0cbc636eb64e6f65cb Mon Sep 17 00:00:00 2001
 From: Matt Turner <mattst88@gmail.com>
 Date: Thu, 18 Apr 2024 13:24:18 -0400
 Subject: [PATCH] Disable things we don't want
@@ -15,30 +15,36 @@ v10: Rebase
 v11: Rebase
 v12: Rebase
 v13: Rebase
+v14: Rebase
 ---
- meson.build                   | 17 ++-------------
+ meson.build                   | 22 ++-----------------
  src/egl/opengl/meson.build    | 41 -----------------------------------
  src/egl/opengles2/meson.build | 11 ----------
  src/meson.build               |  2 --
  src/util/gl_wrap.h            |  2 --
- src/util/meson.build          | 10 ++-------
+ src/util/meson.build          |  9 +-------
  src/xdemos/meson.build        | 31 ++------------------------
- 7 files changed, 6 insertions(+), 108 deletions(-)
+ 7 files changed, 5 insertions(+), 113 deletions(-)
 
 diff --git ./meson.build ./meson.build
-index c3d3db5a..b7dd4733 100644
+index 014bea82..ed8c3696 100644
 --- ./meson.build
 +++ ./meson.build
-@@ -56,7 +56,7 @@ dep_png = dependency(
+@@ -56,12 +56,7 @@ dep_png = dependency(
  )
  
  dep_drm = dependency('libdrm', required: get_option('libdrm'), disabler: true)
--dep_x11 = dependency('x11, xext', required: get_option('x11'), disabler: true)
+-dep_x11 = declare_dependency(
+-  dependencies : [
+-    dependency('x11', required: get_option('x11'), disabler: true),
+-    dependency('xext', required: get_option('x11'), disabler: true),
+-  ]
+-)
 +dep_x11 = dependency('x11', required: get_option('x11'), disabler: true)
- dep_wayland = dependency(
-   'wayland-client, wayland-egl, xkbcommon',
-   required: get_option('wayland'),
-@@ -78,20 +78,7 @@ endif
+ dep_wayland = declare_dependency(
+   dependencies: [
+     dependency('wayland-client', required: get_option('wayland'), disabler: true),
+@@ -87,20 +82,7 @@ endif
  
  dep_threads = dependency('threads')
  
@@ -61,7 +67,7 @@ index c3d3db5a..b7dd4733 100644
  dep_glx = dependency('glx', required: false, disabler: true)
  if not dep_glx.found()
 diff --git ./src/egl/opengl/meson.build ./src/egl/opengl/meson.build
-index 5ebdaa5a..8a9a4878 100644
+index 26f9415c..bbcfd498 100644
 --- ./src/egl/opengl/meson.build
 +++ ./src/egl/opengl/meson.build
 @@ -3,50 +3,9 @@
@@ -79,19 +85,19 @@ index 5ebdaa5a..8a9a4878 100644
  executable(
    'eglgears',
    files('eglgears.c'),
-   dependencies: [_deps, dep_glu, idep_eglut],
+   dependencies: [dep_glu, _deps, idep_eglut],
    install: true,
  )
 -executable(
 -  'egltri',
 -  files('egltri.c'),
--  dependencies: [_deps, dep_glu, idep_eglut],
+-  dependencies: [dep_glu, _deps, idep_eglut],
 -  install: true,
 -)
 -executable(
 -  'xeglgears',
 -  files('xeglgears.c'),
--  dependencies: [_deps, dep_glu, dep_egl, dep_x11],
+-  dependencies: [dep_glu, _deps, dep_egl, dep_x11],
 -  install: true,
 -)
 -executable(
@@ -111,7 +117,7 @@ index 5ebdaa5a..8a9a4878 100644
 -executable(
 -  'peglgears',
 -  'peglgears.c',
--  dependencies: [dep_gl, dep_glu, dep_egl, dep_m, idep_util],
+-  dependencies: [dep_glu, dep_gl, dep_egl, dep_m, idep_util],
 -  install: true,
 -)
 -
@@ -160,10 +166,10 @@ index b2ff9c8f..f482df5e 100644
  
  #ifndef GLAPIENTRY
 diff --git ./src/util/meson.build ./src/util/meson.build
-index 9a482a43..abf66afc 100644
+index 6be99daa..ab5c0e32 100644
 --- ./src/util/meson.build
 +++ ./src/util/meson.build
-@@ -3,15 +3,9 @@
+@@ -3,14 +3,7 @@
  
  inc_util = include_directories('.')
  
@@ -173,14 +179,12 @@ index 9a482a43..abf66afc 100644
 -  'shaderutil.c',
 -  'showbuffer.c',
 -  'trackball.c',
+-  'uuid.c'
 -)
-+files_libutil = files('glinfo_common.c', 'matrix.c')
++files_libutil = files('glinfo_common.c', 'matrix.c', 'uuid.c')
  
--_deps = [dep_glu, dep_m]
-+_deps = [dep_m]
+ _deps = [dep_m]
  
- _libutil = static_library(
-   'util',
 diff --git ./src/xdemos/meson.build ./src/xdemos/meson.build
 index fdb91eb2..ad136c9c 100644
 --- ./src/xdemos/meson.build
@@ -239,5 +243,5 @@ index fdb91eb2..ad136c9c 100644
    executable(
      p,
 -- 
-2.53.0
+2.55.0
 

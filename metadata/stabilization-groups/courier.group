@@ -1,0 +1,5 @@
+mail-mta/courier
+net-libs/courier-authlib
+net-libs/courier-unicode
+net-mail/courier-common
+net-mail/courier-imap

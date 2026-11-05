@@ -138,6 +138,7 @@ qt6_get_qmake_args() {
 		QMAKE_LINK="$(tc-getCXX)"
 		QMAKE_LINK_SHLIB="$(tc-getCXX)"
 		QMAKE_OBJCOPY="$(tc-getOBJCOPY)"
+		QMAKE_PKG_CONFIG="$(tc-getPKG_CONFIG)"
 		QMAKE_RANLIB=
 		QMAKE_STRIP=
 		QMAKE_CFLAGS="${CFLAGS}"

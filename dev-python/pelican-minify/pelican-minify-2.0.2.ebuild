@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=pdm-backend
 PYPI_VERIFY_REPO=https://github.com/pelican-plugins/minify
-PYTHON_COMPAT=( python3_{12..14} )
+PYTHON_COMPAT=( python3_{13..14} )
 
 inherit distutils-r1 pypi
 

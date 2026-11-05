@@ -1,0 +1,43 @@
+
+# HG changeset patch
+# User John Schanck <jschanck@mozilla.com>
+# Date 1786596808 0
+# Node ID 9536521ea91cd4248428377e96edb926fbace3d6
+# Parent  03e30a8373e4afb785fe2247a58c7f670136cbc5
+Bug 2063071 - make selfserv listen on IPv6 wildcard on dual-stack hosts. r=keeler
+
+Differential Revision: https://phabricator.services.mozilla.com/D318205
+
+diff --git a/cmd/selfserv/selfserv.c b/cmd/selfserv/selfserv.c
+--- a/cmd/selfserv/selfserv.c
++++ b/cmd/selfserv/selfserv.c
+@@ -1757,16 +1757,28 @@ getBoundListenSocket(unsigned short port
+     // tstclnt uses PR_GetPrefLoopbackAddrInfo to decide, if it's
+     // asked to connect to localhost.
+ 
+     prStatus = PR_GetPrefLoopbackAddrInfo(&addr, port);
+     if (prStatus == PR_FAILURE) {
+         addr.inet.family = PR_AF_INET;
+         addr.inet.ip = PR_htonl(PR_INADDR_ANY);
+         addr.inet.port = PR_htons(port);
++    } else if (addr.raw.family == PR_AF_INET6) {
++        // Check if this is a dual-stack host. If it is, listen on the IPv6
++        // wildcard, instead of loopback, so that we can receive connections
++        // from IPv4 clients.
++        PRFileDesc *ipv4_probe = PR_NewTCPSocket();
++        if (ipv4_probe) {
++            PR_Close(ipv4_probe);
++            prStatus = PR_SetNetAddr(PR_IpAddrAny, PR_AF_INET6, port, &addr);
++            if (prStatus != PR_SUCCESS) {
++                errExit("PR_SetNetAddr");
++            }
++        }
+     }
+ 
+     if (addr.inet.family == PR_AF_INET6) {
+         listen_sock = PR_OpenTCPSocket(PR_AF_INET6);
+     } else if (addr.inet.family == PR_AF_INET) {
+         listen_sock = PR_NewTCPSocket();
+     }
+     if (listen_sock == NULL) {
+

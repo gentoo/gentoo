@@ -96,7 +96,6 @@ FFMPEG_IUSE_MAP=(
 	ocr:libtesseract
 	openal
 	opencl
-	opengl
 	openh264:libopenh264
 	openmpt:libopenmpt
 	openssl:openssl,!gnutls@v3ifgpl # still LGPL2.1+ if USE=-gpl
@@ -113,6 +112,7 @@ FFMPEG_IUSE_MAP=(
 	sdl:sdl2
 	snappy:libsnappy
 	sndio
+	sofa:^libmysofa # no multilib
 	speex:libspeex
 	srt:libsrt
 	ssh:libssh
@@ -235,7 +235,7 @@ COMMON_DEPEND="
 	libcaca? ( media-libs/libcaca[${MULTILIB_USEDEP}] )
 	libilbc? ( media-libs/libilbc:=[${MULTILIB_USEDEP}] )
 	liblc3? ( >=media-sound/liblc3-1.1[${MULTILIB_USEDEP}] )
-	libplacebo? ( media-libs/libplacebo:=[vulkan,${MULTILIB_USEDEP}] )
+	libplacebo? ( >=media-libs/libplacebo-7.386.0:=[vulkan,${MULTILIB_USEDEP}] )
 	librtmp? ( media-video/rtmpdump[${MULTILIB_USEDEP}] )
 	libsoxr? ( media-libs/soxr[${MULTILIB_USEDEP}] )
 	lv2? (
@@ -248,7 +248,6 @@ COMMON_DEPEND="
 	ocr? ( app-text/tesseract:=[${MULTILIB_USEDEP}] )
 	openal? ( media-libs/openal[${MULTILIB_USEDEP}] )
 	opencl? ( virtual/opencl[${MULTILIB_USEDEP}] )
-	opengl? ( media-libs/libglvnd[X,${MULTILIB_USEDEP}] )
 	openh264? ( media-libs/openh264:=[${MULTILIB_USEDEP}] )
 	openmpt? ( media-libs/libopenmpt[${MULTILIB_USEDEP}] )
 	openssl? ( >=dev-libs/openssl-3:=[${MULTILIB_USEDEP}] )
@@ -268,6 +267,7 @@ COMMON_DEPEND="
 	)
 	snappy? ( app-arch/snappy:=[${MULTILIB_USEDEP}] )
 	sndio? ( media-sound/sndio:=[${MULTILIB_USEDEP}] )
+	sofa? ( media-libs/libmysofa )
 	speex? ( media-libs/speex[${MULTILIB_USEDEP}] )
 	srt? ( net-libs/srt:=[${MULTILIB_USEDEP}] )
 	ssh? ( net-libs/libssh:=[sftp,${MULTILIB_USEDEP}] )
@@ -459,10 +459,10 @@ multilib_src_configure() {
 		--disable-libaribcaption
 		--disable-libastcenc
 		--disable-libdavs2
+		--disable-libfdk-xhe-aac
 		--disable-libklvanc
 		--disable-liblcevc-dec
 		--disable-libmpeghdec
-		--disable-libmysofa
 		--disable-liboapv
 		--disable-libonnxruntime
 		--disable-libopenvino
@@ -547,11 +547,13 @@ multilib_src_configure() {
 			vsynth{1,2,3}-ffvhuff420p12
 		)
 
-	# zlib-ng is not bitexact w/ zlib producing mismatching md5sum (bug #965737)
+	# zlib-ng is not bitexact w/ zlib producing mismatching md5sum
+	# (bug #965737,#983573,#983934)
 	has_version 'sys-libs/zlib-ng[compat]' &&
 		skip_tests+=(
-			lavf-{apng{,.png},gray16be.png,png,rgb48be.png}
+			lavf-{apng{,.png},gray16be.png,pdv{,-intra},png,rgb48be.png}
 			mov-mp4-frag-flush
+			seek-lavf-pdv
 			vsynth{1,2,3}-{flashsv,mpng,zlib}
 		)
 

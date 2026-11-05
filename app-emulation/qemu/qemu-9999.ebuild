@@ -13,10 +13,13 @@ QEMU_DOCS_VERSION=$(ver_cut 1-2).0
 # bug #830088
 QEMU_DOC_USEFLAG="+doc"
 
-PYTHON_COMPAT=( python3_{12..14} )
+DISTUTILS_USE_PEP517=setuptools
+DISTUTILS_OPTIONAL=1
+PYTHON_COMPAT=( python3_{13..15} )
+# See bug #913084 for ensurepip
 PYTHON_REQ_USE="ensurepip(-),ncurses,readline"
 
-inherit eapi9-ver flag-o-matic linux-info toolchain-funcs python-r1 udev fcaps \
+inherit distutils-r1 eapi9-ver flag-o-matic linux-info toolchain-funcs udev fcaps \
 		readme.gentoo-r1 pax-utils xdg-utils
 
 if [[ ${PV} == *9999* ]]; then
@@ -48,7 +51,7 @@ else
 	fi
 
 	S="${WORKDIR}/${MY_P}"
-	[[ "${PV}" != *_rc* ]] && KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
+	[[ "${PV}" != *_rc* ]] && KEYWORDS="-alpha ~amd64 -arm ~arm64 -hppa ~loong -m68k -mips -ppc ~ppc64 ~riscv -x86"
 fi
 
 DESCRIPTION="QEMU + Kernel-based Virtual Machine userland tools"
@@ -60,7 +63,7 @@ SLOT="0"
 [[ ${QEMU_DOCS_PREBUILT} == 1 ]] && QEMU_DOC_USEFLAG="doc"
 
 IUSE="accessibility +aio alsa bpf bzip2 capstone +curl debug ${QEMU_DOC_USEFLAG}
-	+fdt fuse +gnutls gtk infiniband iscsi io-uring
+	elfutils +fdt fuse +gnutls gtk infiniband iscsi io-uring
 	jack +jpeg keyutils
 	lzo multipath
 	ncurses nfs nls numa opengl +oss pam passt +pin-upstream-blobs pipewire
@@ -74,6 +77,7 @@ COMMON_TARGETS="
 	aarch64
 	alpha
 	arm
+	hexagon
 	hppa
 	i386
 	loongarch64
@@ -107,7 +111,6 @@ IUSE_USER_TARGETS="
 	${COMMON_TARGETS}
 	aarch64_be
 	armeb
-	hexagon
 	microblazeel
 	mipsn32
 	mipsn32el
@@ -147,6 +150,8 @@ for smname in ${IUSE_SOFTMMU_TARGETS} ; do
 	REQUIRED_USE+=" qemu_softmmu_targets_${smname}? ( kernel_linux? ( seccomp ) )"
 done
 
+# TODO: python bindings have an optional unpackaged dependency 'pyfuse'
+
 # Dependencies required for qemu tools (qemu-nbd, qemu-img, qemu-io, ...)
 # and user/softmmu targets (qemu-*, qemu-system-*).
 #
@@ -158,7 +163,10 @@ done
 ALL_DEPEND="
 	dev-libs/glib:2[static-libs(+)]
 	virtual/zlib:=[static-libs(+)]
-	python? ( ${PYTHON_DEPS} )
+	python? (
+		${PYTHON_DEPS}
+		>=dev-python/qemu-qmp-0.0.5[${PYTHON_USEDEP}]
+	)
 	systemtap? ( dev-debug/systemtap )
 	xattr? ( sys-apps/attr[static-libs(+)] )
 "
@@ -177,14 +185,18 @@ SOFTMMU_TOOLS_DEPEND="
 	bzip2? ( app-arch/bzip2[static-libs(+)] )
 	capstone? ( dev-libs/capstone:=[static-libs(+)] )
 	curl? ( >=net-misc/curl-7.15.4[static-libs(+)] )
+	elfutils? ( dev-libs/elfutils[static-libs(+)] )
 	fdt? ( >=sys-apps/dtc-1.5.1[static-libs(+)] )
 	fuse? ( >=sys-fs/fuse-3.1:3=[static-libs(+)] )
 	gnutls? (
+		dev-libs/gmp[static-libs(+)]
 		>=net-libs/gnutls-3.7.5:=[static-libs(+)]
+		>=dev-libs/nettle-3.7.3:=[gmp]
 		>=dev-libs/nettle-3.7.3:=[static-libs(+)]
 	)
 	gtk? (
 		x11-libs/gtk+:3[wayland?,X?]
+		x11-libs/libX11
 		vte? ( x11-libs/vte:2.91 )
 	)
 	infiniband? ( sys-cluster/rdma-core[static-libs(+)] )
@@ -218,6 +230,7 @@ SOFTMMU_TOOLS_DEPEND="
 	sdl? (
 		media-libs/libsdl2[video]
 		media-libs/libsdl2[static-libs(+)]
+		x11-libs/libX11
 	)
 	sdl-image? ( media-libs/sdl2-image[static-libs(+)] )
 	seccomp? ( >=sys-libs/libseccomp-2.1.0[static-libs(+)] )
@@ -256,12 +269,12 @@ SOFTMMU_TOOLS_DEPEND="
 #
 
 FIRMWARE_ABI_VERSION="10.0.2"
-EDK2_OVMF_VERSION="202408"
+EDK2_OVMF_VERSION="202608"
 SEABIOS_VERSION="1.16.3"
 
 X86_FIRMWARE_DEPEND="
 	pin-upstream-blobs? (
-		~sys-firmware/edk2-bin-${EDK2_OVMF_VERSION}[qemu_softmmu_targets_x86_64(+)]
+		=sys-firmware/edk2-bin-${EDK2_OVMF_VERSION}*[qemu_softmmu_targets_x86_64(+)]
 		~sys-firmware/ipxe-1.21.1_p20230601[binary,qemu]
 		~sys-firmware/seabios-bin-${SEABIOS_VERSION}
 		~sys-firmware/sgabios-0.1_pre10[binary]
@@ -291,7 +304,6 @@ PPC_FIRMWARE_DEPEND="
 	)
 "
 
-# See bug #913084 for pip dep
 BDEPEND="
 	${PYTHON_DEPS}
 	dev-python/distlib[${PYTHON_USEDEP}]
@@ -301,14 +313,18 @@ BDEPEND="
 	app-alternatives/ninja
 	virtual/pkgconfig
 	doc? (
-		>=dev-python/sphinx-1.6.0[${PYTHON_USEDEP}]
-		dev-python/sphinx-rtd-theme[${PYTHON_USEDEP}]
+		>=dev-python/sphinx-7.2.7[${PYTHON_USEDEP}]
+		>=dev-python/sphinx-rtd-theme-1.2.2[${PYTHON_USEDEP}]
 	)
 	gtk? ( nls? ( sys-devel/gettext ) )
+	python? ( ${DISTUTILS_DEPS} )
 	test? (
 		app-alternatives/bc
 		dev-libs/glib[utils]
-		dev-python/pycotap[${PYTHON_USEDEP}]
+		>=dev-python/pycotap-1.1.0[${PYTHON_USEDEP}]
+		>=dev-python/qemu-qmp-0.0.5[${PYTHON_USEDEP}]
+		>=dev-python/setuptools-63.1.0[${PYTHON_USEDEP}]
+		>=dev-python/wheel-0.41.2[${PYTHON_USEDEP}]
 	)
 "
 if [[ ${PV} != 9999 ]]; then
@@ -342,7 +358,7 @@ RDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-10.1.2-fix_passt.patch
 	"${FILESDIR}"/${PN}-9.0.0-disable-keymap.patch
-	"${FILESDIR}"/${PN}-9.2.0-capstone-include-path.patch
+	"${FILESDIR}"/${PN}-11.1.50-capstone-include-path.patch
 	"${FILESDIR}"/${PN}-8.1.0-skip-tests.patch
 	"${FILESDIR}"/${PN}-8.1.0-find-sphinx.patch
 	"${FILESDIR}"/${PN}-10.2.2-optionrom-pass-Wl-no-error-rwx-segments.patch
@@ -516,8 +532,11 @@ src_prepare() {
 		EOF
 	fi
 
-	# Verbose builds
-	MAKEOPTS+=" V=1"
+	if use python; then
+		pushd python >/dev/null || die
+		distutils-r1_src_prepare
+		popd >/dev/null || die
+	fi
 
 	# Remove bundled modules
 	rm -r roms/*/ || die
@@ -625,6 +644,7 @@ qemu_src_configure() {
 		$(conf_notuser capstone)
 		$(conf_notuser curl)
 		$(conf_tools doc docs)
+		$(conf_notuser elfutils libdw)
 		$(conf_notuser fdt)
 		$(conf_notuser fuse)
 		$(conf_notuser gnutls)
@@ -663,6 +683,7 @@ qemu_src_configure() {
 		$(conf_notuser virgl virglrenderer)
 		$(conf_softmmu virtfs)
 		$(conf_notuser vnc)
+		--disable-qemu-vnc # fails to build, otherwise automagically enabled for dbus+vnc+tools
 		$(conf_notuser vte)
 		$(conf_softmmu xdp af-xdp)
 		$(conf_notuser xen)
@@ -781,37 +802,47 @@ src_configure() {
 	[[ -n ${softmmu_targets} ]] && qemu_src_configure "softmmu"
 	[[ -n ${user_targets}    ]] && qemu_src_configure "user"
 	qemu_src_configure "tools"
+
+	if use python; then
+		pushd python >/dev/null || die
+		distutils-r1_src_configure
+		popd >/dev/null || die
+	fi
 }
 
 src_compile() {
 	if [[ -n ${user_targets} ]]; then
 		cd "${S}/user-build" || die
-		default
+		emake V=1
 	fi
 
 	if [[ -n ${softmmu_targets} ]]; then
 		cd "${S}/softmmu-build" || die
-		default
+		emake V=1
 	fi
 
 	cd "${S}/tools-build" || die
-	default
+	emake V=1
+
+	if use python; then
+		pushd python >/dev/null || die
+		distutils-r1_src_compile
+		popd >/dev/null || die
+	fi
 }
 
 src_test() {
 	if [[ -n ${softmmu_targets} ]]; then
 		cd "${S}/softmmu-build" || die
 		pax-mark m */qemu-system-* #515550
-		emake check
+		emake V=1 check
 	fi
 }
 
-qemu_python_install() {
-	python_domodule "${S}/python/qemu"
+python_install() {
+	distutils-r1_python_install
 
 	python_doscript "${S}/scripts/kvm/vmxcap"
-	python_doscript "${S}/scripts/qmp/qmp-shell"
-	python_doscript "${S}/scripts/qmp/qemu-ga-client"
 }
 
 # Generate binfmt support files.
@@ -891,10 +922,12 @@ src_install() {
 		if use kernel_linux; then
 			udev_newrules "${FILESDIR}"/65-kvm.rules-r2 65-kvm.rules
 		fi
+	fi
 
-		if use python; then
-			python_foreach_impl qemu_python_install
-		fi
+	if use python; then
+		pushd python >/dev/null || die
+		distutils-r1_src_install
+		popd >/dev/null || die
 	fi
 
 	cd "${S}/tools-build" || die

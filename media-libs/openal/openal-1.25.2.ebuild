@@ -53,6 +53,7 @@ DOCS=( alsoftrc.sample docs/env-vars.txt docs/hrtf.txt ChangeLog README.md )
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.25.2-gcc17.patch
+	"${FILESDIR}"/${PN}-1.25.2-ranges-dereference.patch
 )
 
 src_prepare() {

@@ -3,6 +3,9 @@
 
 EAPI=8
 
+# Avoid spurious reports about LTO (bug #938436), but check carefully
+# on bumps.
+CMAKE_WARN_UNUSED_CLI=no
 DISTUTILS_USE_PEP517=scikit-build-core
 PYTHON_COMPAT=( python3_{12..15} )
 
@@ -51,6 +54,8 @@ python_configure() {
 	DISTUTILS_ARGS=(
 		# disable forced lto
 		-DHAS_FLTO=OFF
+		-DHAS_FLTO_AUTO=OFF
+		-DHAS_FLTO_THIN=OFF
 		# https://github.com/pybind/pybind11/issues/5087
 		-DPYBIND11_FINDPYTHON=OFF
 		-DPYBIND11_INSTALL=ON

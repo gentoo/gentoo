@@ -1,0 +1,78 @@
+https://bugs.gentoo.org/985134
+Remove tests running under asan and ubsan. Running them under portage is misguided.
+--- a/main.mk
++++ b/main.mk
+@@ -2316,22 +2316,6 @@
+ fuzzy: fuzzcheck$(T.exe)
+ xbin: fuzzcheck$(T.exe)
+ 
+-# -fsanitize=... flags for fuzzcheck-asan.
+-CFLAGS.fuzzcheck-asan.fsanitize ?= -fsanitize=address
+-
+-fuzzcheck-asan$(T.exe):	$(FUZZCHECK_SRC) $(FUZZCHECK_DEP)
+-	$(T.link) -o $@ $(CFLAGS.fuzzcheck-asan.fsanitize) $(FUZZCHECK_OPT) $(FUZZCHECK_SRC) \
+-		$(LDFLAGS.libsqlite3)
+-fuzzy: fuzzcheck-asan$(T.exe)
+-xbin: fuzzcheck-asan$(T.exe)
+-
+-fuzzcheck-ubsan$(T.exe):	$(FUZZCHECK_SRC) $(FUZZCHECK_DEP)
+-	$(T.link) -o $@ -fsanitize=undefined $(FUZZCHECK_OPT) $(FUZZCHECK_SRC) \
+-		$(LDFLAGS.libsqlite3)
+-fuzzy: fuzzcheck-ubsan$(T.exe)
+-xbin: fuzzcheck-ubsan$(T.exe)
+-
+-
+ ossshell$(T.exe):	$(TOP)/test/ossfuzz.c $(TOP)/test/ossshell.c sqlite3.c sqlite3.h
+ 	$(T.link) -o $@ $(FUZZCHECK_OPT) $(TOP)/test/ossshell.c \
+ 		$(TOP)/test/ossfuzz.c sqlite3.c $(LDFLAGS.libsqlite3)
+--- a/test/testrunner_estwork.tcl
++++ b/test/testrunner_estwork.tcl
+@@ -2,8 +2,6 @@
+ # Computed by the "test/testrunner.tcl estwork" command.
+ #
+ set estwork((fuzzcheck)) 1291
+-set estwork((fuzzcheck-asan)) 2427
+-set estwork((fuzzcheck-ubsan)) 2749
+ set estwork((sessionfuzz)) 1276
+ set estwork((sqlite3)) 1281
+ set estwork((testfixture)) 1546
+@@ -197,24 +195,6 @@
+ set {estwork(fuzzcheck fuzzdata6.db)} 91
+ set {estwork(fuzzcheck fuzzdata7.db)} 201
+ set {estwork(fuzzcheck fuzzdata8.db)} 331
+-set {estwork(fuzzcheck-asan --slice)} 2037
+-set {estwork(fuzzcheck-asan fuzzdata1.db)} 3112
+-set {estwork(fuzzcheck-asan fuzzdata2.db)} 8753
+-set {estwork(fuzzcheck-asan fuzzdata3.db)} 459
+-set {estwork(fuzzcheck-asan fuzzdata4.db)} 123
+-set {estwork(fuzzcheck-asan fuzzdata5.db)} 1178
+-set {estwork(fuzzcheck-asan fuzzdata6.db)} 1356
+-set {estwork(fuzzcheck-asan fuzzdata7.db)} 938
+-set {estwork(fuzzcheck-asan fuzzdata8.db)} 1451
+-set {estwork(fuzzcheck-ubsan --slice)} 1729
+-set {estwork(fuzzcheck-ubsan fuzzdata1.db)} 1180
+-set {estwork(fuzzcheck-ubsan fuzzdata2.db)} 876
+-set {estwork(fuzzcheck-ubsan fuzzdata3.db)} 306
+-set {estwork(fuzzcheck-ubsan fuzzdata4.db)} 95
+-set {estwork(fuzzcheck-ubsan fuzzdata5.db)} 1356
+-set {estwork(fuzzcheck-ubsan fuzzdata6.db)} 333
+-set {estwork(fuzzcheck-ubsan fuzzdata7.db)} 883
+-set {estwork(fuzzcheck-ubsan fuzzdata8.db)} 1124
+ set estwork(fuzzer1.test) 6
+ set estwork(gencol1.test) 3
+ set estwork(hook.test) 2
+--- a/test/testrunner_data.tcl
++++ b/test/testrunner_data.tcl
+@@ -456,12 +456,6 @@
+     return [list fuzzcheck.exe $lFuzzDb]
+   } else {
+     set lRet [list [trd_get_bin_name fuzzcheck] $lFuzzDb]
+-    if {$bNoSan==0 && [lsearch $sanBuilds $buildname]>=0} {
+-      lappend lRet [trd_get_bin_name fuzzcheck-asan] $lFuzzDb 
+-      if {$::tcl_platform(os) ne "OpenBSD"} {
+-        lappend lRet [trd_get_bin_name fuzzcheck-ubsan] $lFuzzDb 
+-      }
+-    }
+     lappend lRet {sessionfuzz run} $lSessionDb
+     return $lRet
+   }

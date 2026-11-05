@@ -1,6 +1,26 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Pacho Ramos <pacho@gentoo.org> (2026-10-31)
+# tests need rustified librsvg
+>=gui-libs/gtk-4.22 test
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2026-10-20)
+# Requires dev-build/corrosion, iow rust/cargo.
+kde-plasma/kdeplasma-addons led
+>=kde-plasma/kwin-6.8.0 lock
+virtual/notification-daemon kde
+
+# Michał Górny <mgorny@gentoo.org> (2025-10-09)
+# Need dev-python/dnspython -> uv-build.
+dev-python/psycopg test
+dev-python/wtforms test
+
+# Thibaud CANALE <thican@thican.net> (2026-05-17)
+# Tests require dev-python/trio
+dev-python/cloudflare test
+dev-python/httpx-aiohttp test
+
 # Michał Górny <mgorny@gentoo.org> (2025-08-29)
 # Need dev-python/hypothesis.
 dev-python/accessible-pygments test
@@ -24,11 +44,13 @@ dev-python/iso8601 test
 dev-python/isoduration test
 dev-python/isort test
 dev-python/jsondiff test
+dev-python/jsonpatch test
 dev-python/jsonpath-ng test
 dev-python/kombu test
 dev-python/mccabe test
-dev-python/multidict test
 dev-python/mpmath test
+dev-python/multidict test
+dev-python/munkres test
 dev-python/natsort test
 dev-python/numpy test
 dev-python/packaging test
@@ -55,6 +77,7 @@ dev-python/srt test
 dev-python/sympy test
 dev-python/textdistance test
 dev-python/time-machine test
+dev-python/tornado test
 dev-python/wcag-contrast-ratio test
 dev-python/xarray test
 dev-python/yarl test
@@ -89,11 +112,6 @@ dev-python/tldextract test
 # Requires >= on gtk/libadwaita, which is masked for librsvg
 # reasons.
 >=dev-util/sysprof-50.0 gtk
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2026-06-08)
-# Requires dev-build/corrosion, iow rust/cargo.
-kde-plasma/kdeplasma-addons led
-kde-plasma/plasma-integration union
 
 # Michał Górny <mgorny@gentoo.org> (2025-05-23)
 # dev-python/pytest-socket now requires dev-python/uv-build.

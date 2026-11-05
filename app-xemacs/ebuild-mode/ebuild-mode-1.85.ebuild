@@ -13,7 +13,7 @@ if [[ ${PV} = 9999 ]]; then
 	S="${WORKDIR}/${PN}"
 else
 	SRC_URI="https://distfiles.gentoo.org/pub/proj/emacs/${P}.tar.xz"
-	KEYWORDS="~amd64 ~hppa ~x86"
+	KEYWORDS="amd64 ~hppa x86"
 fi
 
 DESCRIPTION="Emacs modes for editing ebuilds and other Gentoo specific files"

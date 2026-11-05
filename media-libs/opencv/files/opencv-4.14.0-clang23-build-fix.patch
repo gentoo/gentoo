@@ -1,0 +1,20 @@
+--- a/modules/gapi/include/opencv2/gapi/gasync_context.hpp
++++ b/modules/gapi/include/opencv2/gapi/gasync_context.hpp
+@@ -13,6 +13,7 @@
+ #  include <opencv2/gapi/own/cvdefs.hpp>
+ #endif // !defined(GAPI_STANDALONE)
+ 
++#include <atomic>
+ #include <opencv2/gapi/own/exports.hpp>
+ 
+ namespace cv {
+--- a/modules/gapi/include/opencv2/gapi/infer/ie.hpp
++++ b/modules/gapi/include/opencv2/gapi/infer/ie.hpp
+@@ -13,6 +13,7 @@
+ #include <array>
+ #include <tuple> // tuple, tuple_size
+ #include <map>
++#include <iterator>
+ 
+ #include <opencv2/gapi/opencv_includes.hpp>
+ #include <opencv2/gapi/util/any.hpp>

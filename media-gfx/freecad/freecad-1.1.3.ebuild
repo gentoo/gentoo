@@ -150,6 +150,8 @@ PATCHES=(
 	"${FILESDIR}/${PN}-1.1.3-fix-COIN3D_MICRO_VERSION-regex-for-coin-4.0.10.patch"
 	"${FILESDIR}/${PN}-1.1.3-gcc-17-fstream.patch"
 	"${FILESDIR}/${PN}-1.1.3-skip-unicode-test.patch"
+	"${FILESDIR}/${PN}-1.1.3-geoelementid-less.patch"
+	"${FILESDIR}/${PN}-1.1.3-techdraw-abs.patch"
 )
 
 DOCS=( CODE_OF_CONDUCT.md README.md )

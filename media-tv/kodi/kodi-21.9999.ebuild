@@ -29,7 +29,7 @@ PYTHON_REQ_USE="sqlite,ssl"
 PYTHON_COMPAT=( python3_{11..14} )
 
 # See cmake/scripts/common/ArchSetup.cmake for available options
-CPU_FLAGS="cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_sse3 cpu_flags_x86_sse4_1 cpu_flags_x86_sse4_2 cpu_flags_x86_avx cpu_flags_x86_avx2 cpu_flags_arm_neon"
+declare -ga CPU_FLAGS=( cpu_flags_{x86_{sse,sse2,sse3,ssse3,sse4_1,sse4_2,avx,avx2},arm_neon} )
 
 inherit autotools cmake desktop ffmpeg-compat flag-o-matic java-pkg-2 libtool
 inherit linux-info optfeature pax-utils python-single-r1 toolchain-funcs xdg
@@ -84,7 +84,7 @@ SLOT="0"
 # use flag is called libusb so that it doesn't fool people in thinking that
 # it is _required_ for USB support. Otherwise they'll disable udev and
 # that's going to be worse.
-IUSE="airplay alsa bluetooth bluray caps cec +css dbus doc eventclients gbm gles lcms libusb lirc mariadb mysql nfs +optical pipewire pulseaudio samba soc +system-ffmpeg test udf udev upnp vaapi vdpau wayland webserver X +xslt zeroconf ${CPU_FLAGS}"
+IUSE="airplay alsa bluetooth bluray caps cec +css dbus doc eventclients gbm gles lcms libusb lirc mariadb mysql nfs +optical pipewire pulseaudio samba soc +system-ffmpeg test udf udev upnp vaapi vdpau wayland webserver X +xslt zeroconf ${CPU_FLAGS[@]}"
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
 	|| ( gbm wayland X )

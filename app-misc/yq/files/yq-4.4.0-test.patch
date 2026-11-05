@@ -1,0 +1,13 @@
+diff --git a/test/test.py b/test/test.py
+index f3ffb27..f6442bf 100755
+--- a/test/test.py
++++ b/test/test.py
+@@ -777,7 +777,7 @@ with mock.patch("yq.parse_cli_args_and_run_yq", run):
+                     if process.poll() is None:
+                         process.kill()
+ 
+-    @unittest.skipUnless(sys.platform.startswith("linux"), "Linux process state checks")
++    @unittest.skipUnless(sys.platform.startswith("linux") and 'SANDBOX' not in os.environ, "Linux process state checks")
+     def test_interrupt_reaps_jq(self):
+         import signal
+         import time

@@ -1,0 +1,250 @@
+From 34f120e7edfcf73e29d7fe2d00ab1e25be35e5d5 Mon Sep 17 00:00:00 2001
+From: Jaco Kroon <jaco@uls.co.za>
+Date: Sat, 31 Oct 2026 09:52:20 +0200
+Subject: [PATCH 2/2] plugins/pppoatm: Add --disable-atm, and
+ --with-external-atm.
+
+Partially revert "plugins/pppoatm: Always use the bundled ATM address parsers"
+
+commit: e5c5bf21a35b3627538853fa734cae048392bd9c.
+
+This makes the default to use the bundled libs, but allows for:
+
+1. Completely disabling building and installation of pppoatm; and
+2. For using the external linux-atm supplied libatm if preferred.
+
+To be clear:  This meant needing to move the libatm related sources and
+files into a separate folder to be able to accurately control which
+atm.h is being used - for the sake of compleness and clarity as to which
+portions of code came from libatm vs what is local I moved the source
+files too.
+
+Closes: #656
+Signed-off-by: Jaco Kroon <jaco@uls.co.za>
+---
+ configure.ac                                 | 16 +++-
+ m4/ax_check_atm.m4                           | 93 ++++++++++++++++++++
+ pppd/plugins/Makefile.am                     |  5 +-
+ pppd/plugins/pppoatm/Makefile.am             | 11 ++-
+ pppd/plugins/pppoatm/{ => libatm}/atm.h      |  0
+ pppd/plugins/pppoatm/{ => libatm}/misc.c     |  0
+ pppd/plugins/pppoatm/{ => libatm}/text2atm.c |  0
+ pppd/plugins/pppoatm/{ => libatm}/text2qos.c |  0
+ 9 files changed, 122 insertions(+), 5 deletions(-)
+ create mode 100644 m4/ax_check_atm.m4
+ rename pppd/plugins/pppoatm/{ => libatm}/atm.h (100%)
+ rename pppd/plugins/pppoatm/{ => libatm}/misc.c (100%)
+ rename pppd/plugins/pppoatm/{ => libatm}/text2atm.c (100%)
+ rename pppd/plugins/pppoatm/{ => libatm}/text2qos.c (100%)
+
+diff --git a/configure.ac b/configure.ac
+index 4d1217e..a7428ee 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -7,7 +7,7 @@ AC_USE_SYSTEM_EXTENSIONS
+ m4_ifdef([AM_SILENT_RULES],[AM_SILENT_RULES([yes])])
+ AC_CONFIG_MACRO_DIR([m4])
+ 
+-AM_INIT_AUTOMAKE
++AM_INIT_AUTOMAKE([subdir-objects])
+ AM_MAINTAINER_MODE([enable])
+ 
+ AC_LANG(C)
+@@ -152,6 +152,14 @@ AC_ARG_ENABLE([mslanman],
+ AS_IF([test "x${enable_mslanman}" = "xyes" && test "x${enable_microsoft_extensions}" != "xno"],
+     AC_DEFINE([PPP_WITH_MSLANMAN], 1, [Have Microsoft LAN Manager support]))
+ 
++#
++# Disable ATM support
++AC_ARG_ENABLE([atm],
++    AS_HELP_STRING([--disable-atm], [Disable PPPoATM]))
++AM_CONDITIONAL(PPP_WITH_ATM, test "x${enable_atm}" != "xno")
++AM_COND_IF([PPP_WITH_ATM],
++    AC_DEFINE(PPP_WITH_ATM, 1, [Have PPPoATM support]))
++
+ #
+ # Disable IPv6 support
+ AC_ARG_ENABLE([ipv6cp],
+@@ -291,6 +299,10 @@ AM_CONDITIONAL([OPENSSL_HAVE_DES], test "x${ac_cv_openssl_des}" = "xyes")
+ AM_COND_IF([OPENSSL_HAVE_DES],
+     AC_DEFINE([OPENSSL_HAVE_DES], 1, [Use DES included with openssl]))
+ 
++#
++# With libatm support
++AX_CHECK_ATM
++
+ #
+ # With libpam support
+ AX_CHECK_PAM(AC_DEFINE([PPP_WITH_PAM], 1, [Support for Pluggable Authentication Modules]))
+@@ -340,6 +352,7 @@ $PACKAGE_NAME version $PACKAGE_VERSION
+     Plugin Dir...........: $PPPD_PLUGIN_DIR
+     System CA Path ......: ${SYSTEM_CA_PATH:-not set}
+     With OpenSSL.........: ${with_openssl:-yes}
++    With libatm..........: ${with_external_atm:-no}
+     With libpam..........: ${with_pam:-no}
+     With libpcap.........: ${with_pcap:-no}
+     C Compiler...........: $CC $CFLAGS
+@@ -352,6 +365,7 @@ Features enabled
+     CBCP.................: ${enable_cbcp:-no}
+     IPV6CP...............: ${enable_ipv6cp:-yes}
+     EAP-TLS..............: ${enable_eaptls:-yes}
++    PPPoATM..............: ${enable_atm:-yes}
+     systemd notifications: ${enable_systemd:-no}
+ "
+ 
+diff --git a/m4/ax_check_atm.m4 b/m4/ax_check_atm.m4
+new file mode 100644
+index 0000000..21d1c90
+--- /dev/null
++++ b/m4/ax_check_atm.m4
+@@ -0,0 +1,93 @@
++# SYNOPSIS
++#
++#   AX_CHECK_ATM([action-if-found[, action-if-not-found]])
++#
++# DESCRIPTION
++#
++#   Look for libatm in a number of default locations, or in a provided location
++#   (via --with-atm=). Sets
++#       ATM_CFLAGS
++#       ATM_LDFLAGS
++#       ATM_LIBS
++#
++#   and calls ACTION-IF-FOUND or ACTION-IF-NOT-FOUND appropriately
++#
++# LICENSE
++#
++#   Copyright (c) 2021 Eivind Naess <eivnaes@yahoo.com>
++#
++#   Copying and distribution of this file, with or without modification, are
++#   permitted in any medium without royalty provided the copyright notice
++#   and this notice are preserved. This file is offered as-is, without any
++#   warranty.
++
++#serial 1
++
++AC_DEFUN([AX_CHECK_ATM], [
++    AC_ARG_WITH([external-atm],
++        [AS_HELP_STRING([--with-external-atm=DIR],
++            [With libatm support, see http://linux-atm.sourceforge.net])],
++        [
++            case "$withval" in
++            "" | y | ye | yes)
++                atmdirs="/usr/local /usr/lib /usr"
++              ;;
++            n | no)
++                with_external_atm="no"
++              ;;
++            *)
++                atmdirs="$withval"
++              ;;
++            esac
++        ])
++
++    if [ test "x${with_external_atm:-no}" != "xno" ] ; then
++        ATM_LIBS="-latm"
++        for atmdir in $atmdirs; do
++            AC_MSG_CHECKING([for atm.h in $atmdir])
++            if test -f "$atmdir/include/atm.h"; then
++                ATM_CFLAGS="-I$atmdir/include"
++                ATM_LDFLAGS="-L$atmdir/lib"
++                AC_MSG_RESULT([yes])
++                break
++            else
++                AC_MSG_RESULT([no])
++            fi
++        done
++
++        # try the preprocessor and linker with our new flags,
++        # being careful not to pollute the global LIBS, LDFLAGS, and CPPFLAGS
++
++        AC_MSG_CHECKING([if compiling and linking against libatm works])
++
++        save_LIBS="$LIBS"
++        save_LDFLAGS="$LDFLAGS"
++        save_CPPFLAGS="$CPPFLAGS"
++        LDFLAGS="$LDFLAGS $ATM_LDFLAGS"
++        LIBS="$ATM_LIBS $LIBS"
++        CPPFLAGS="$ATM_CFLAGS $CPPFLAGS"
++        AC_LINK_IFELSE(
++            [AC_LANG_PROGRAM(
++                [#include <atm.h>
++                 #include <stddef.h>],
++                [text2atm(NULL,NULL,0,0);])],
++            [
++                AC_MSG_RESULT([yes])
++                with_atm=yes
++                $1
++            ], [
++                AC_MSG_RESULT([no])
++                with_atm="no"
++                $2
++            ])
++        CPPFLAGS="$save_CPPFLAGS"
++        LDFLAGS="$save_LDFLAGS"
++        LIBS="$save_LIBS"
++
++        AC_SUBST([ATM_CFLAGS])
++        AC_SUBST([ATM_LIBS])
++        AC_SUBST([ATM_LDFLAGS])
++    fi
++    AM_CONDITIONAL(WITH_EXTERNAL_LIBATM, test "x${with_external_atm:-no}" != "xno")
++])
++
+diff --git a/pppd/plugins/Makefile.am b/pppd/plugins/Makefile.am
+index 267d669..b92ea54 100644
+--- a/pppd/plugins/Makefile.am
++++ b/pppd/plugins/Makefile.am
+@@ -17,5 +17,8 @@ winbind_la_LDFLAGS = $(PLUGIN_LDFLAGS)
+ winbind_la_SOURCES = winbind.c
+ 
+ if !SUNOS
+-SUBDIRS = pppoe pppoatm pppol2tp radius dhcpv6relay
++SUBDIRS = pppoe pppol2tp radius dhcpv6relay
++if PPP_WITH_ATM
++SUBDIRS += pppoatm
++endif
+ endif
+diff --git a/pppd/plugins/pppoatm/Makefile.am b/pppd/plugins/pppoatm/Makefile.am
+index a82ff05..41059ac 100644
+--- a/pppd/plugins/pppoatm/Makefile.am
++++ b/pppd/plugins/pppoatm/Makefile.am
+@@ -2,10 +2,17 @@ pppd_plugin_LTLIBRARIES = pppoatm.la
+ pppd_plugindir = $(PPPD_PLUGIN_DIR)
+ 
+ noinst_HEADERS = \
+-    atm.h \
++    libatm/atm.h \
+     atmres.h \
+     atmsap.h
+ 
+ pppoatm_la_CPPFLAGS = -I${top_srcdir}
+ pppoatm_la_LDFLAGS = -module -avoid-version
+-pppoatm_la_SOURCES = pppoatm.c text2qos.c text2atm.c misc.c
++pppoatm_la_SOURCES = pppoatm.c
++
++if WITH_EXTERNAL_LIBATM
++pppoatm_la_LIBADD = -latm
++else
++pppoatm_la_CPPFLAGS += -I${srcdir}/libatm
++pppoatm_la_SOURCES += libatm/text2qos.c libatm/text2atm.c libatm/misc.c
++endif
+diff --git a/pppd/plugins/pppoatm/atm.h b/pppd/plugins/pppoatm/libatm/atm.h
+similarity index 100%
+rename from pppd/plugins/pppoatm/atm.h
+rename to pppd/plugins/pppoatm/libatm/atm.h
+diff --git a/pppd/plugins/pppoatm/misc.c b/pppd/plugins/pppoatm/libatm/misc.c
+similarity index 100%
+rename from pppd/plugins/pppoatm/misc.c
+rename to pppd/plugins/pppoatm/libatm/misc.c
+diff --git a/pppd/plugins/pppoatm/text2atm.c b/pppd/plugins/pppoatm/libatm/text2atm.c
+similarity index 100%
+rename from pppd/plugins/pppoatm/text2atm.c
+rename to pppd/plugins/pppoatm/libatm/text2atm.c
+diff --git a/pppd/plugins/pppoatm/text2qos.c b/pppd/plugins/pppoatm/libatm/text2qos.c
+similarity index 100%
+rename from pppd/plugins/pppoatm/text2qos.c
+rename to pppd/plugins/pppoatm/libatm/text2qos.c
+-- 
+2.55.0
+

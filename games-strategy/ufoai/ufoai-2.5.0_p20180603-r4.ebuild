@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -25,7 +25,7 @@ S="${WORKDIR}/${PN}-code-${COMMIT}"
 # https://ufoai.org/licenses/
 LICENSE="GPL-2 GPL-3 public-domain CC-BY-3.0 CC-BY-SA-3.0 MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="+client cpu_flags_x86_sse debug server"
 REQUIRED_USE="|| ( client server )"
 
@@ -64,6 +64,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-mxml4.patch
 	"${FILESDIR}"/${P}-flags.patch
 	"${FILESDIR}"/${P}-no-register.patch
+	"${FILESDIR}"/${P}-odr.patch
 )
 
 src_unpack() {

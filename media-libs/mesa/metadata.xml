@@ -11,6 +11,7 @@
     <flag name="opencl">Enable the Rusticl Gallium OpenCL state tracker.</flag>
     <flag name="proprietary-codecs">Enable codecs for patent-encumbered audio and video formats.</flag>
     <flag name="sysprof">Enable profiling data capture support using <pkg>dev-util/sysprof-capture</pkg></flag>
+    <flag name="virtio">Enable the experimental virtio-gpu native context backends of the freedreno, intel, panfrost, and radeonsi drivers, for use in virtual machine guests</flag>
     <flag name="wayland">Enable support for <pkg>dev-libs/wayland</pkg></flag>
   </use>
   <upstream>

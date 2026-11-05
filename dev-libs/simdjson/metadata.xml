@@ -6,8 +6,9 @@
 		<name>Patrick McLean</name>
 	</maintainer>
 	<use>
+		<flag name="all-impls">Enable all implementations rather than only one</flag>
+		<flag name="nan">Allow parsing of NaN and Infinity JSON values</flag>
 		<flag name="tools">Build and install extra command line tools</flag>
-		<flag name="all-impls">Enable all implementations rather than only onem</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">simdjson/simdjson</remote-id>

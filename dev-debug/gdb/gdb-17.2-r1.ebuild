@@ -8,7 +8,7 @@ EAPI=8
 
 GUILE_COMPAT=( 2-2 3-0 )
 PYTHON_COMPAT=( python3_{11..14} )
-inherit flag-o-matic guile-single linux-info python-single-r1 strip-linguas toolchain-funcs
+inherit dot-a flag-o-matic guile-single linux-info python-single-r1 strip-linguas toolchain-funcs
 
 export CTARGET=${CTARGET:-${CHOST}}
 
@@ -78,7 +78,7 @@ LICENSE="GPL-3+ LGPL-2.1+"
 SLOT="0"
 IUSE="babeltrace cet +debuginfod guile lzma multitarget nls +python rocm +server sim source-highlight test vanilla +xml xxhash zstd"
 if [[ -n ${REGULAR_RELEASE} ]] ; then
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-macos ~x64-solaris"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~x64-macos ~x64-solaris"
 fi
 REQUIRED_USE="
 	guile? ( ${GUILE_REQUIRED_USE} )
@@ -181,6 +181,7 @@ gdb_branding() {
 
 src_configure() {
 	strip-unsupported-flags
+	use sim && use multitarget && lto-guarantee-fat
 
 	# See https://www.gnu.org/software/make/manual/html_node/Parallel-Output.html
 	# Avoid really confusing logs from subconfigure spam, makes logs far
@@ -290,6 +291,8 @@ src_install() {
 	emake DESTDIR="${D}" install
 
 	find "${ED}"/usr -name libiberty.a -delete || die
+
+	use sim && use multitarget && strip-lto-bytecode
 
 	# Delete translations that conflict with binutils-libs. bug #528088
 	# Note: Should figure out how to store these in an internal gdb dir.

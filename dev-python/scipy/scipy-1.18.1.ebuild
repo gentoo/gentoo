@@ -39,8 +39,7 @@ else
 	"
 
 	if [[ ${PV} != *rc* ]]; then
-		# due to dev-libs/boost being not keyworded
-		# KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+		KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 		:
 	fi
 fi
@@ -107,7 +106,10 @@ src_prepare() {
 	distutils-r1_src_prepare
 
 	# unpin system dependencies
-	sed -i -e "s@version : '@&>=@" meson.build || die
+	sed -i \
+		-e "s@boost_version = '@&>=@" \
+		-e "s@version : '@&>=@" \
+		meson.build || die
 }
 
 python_configure_all() {

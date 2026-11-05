@@ -1,21 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE policymap [
-  <!ELEMENT policymap (policy)+>
-  <!ATTLIST policymap xmlns CDATA #FIXED ''>
+  <!ELEMENT policymap (policy)*>
+  <!ATTLIST policymap
+    xmlns CDATA #FIXED ""
+  >
+
   <!ELEMENT policy EMPTY>
-  <!ATTLIST policy xmlns CDATA #FIXED '' domain NMTOKEN #REQUIRED
-    name NMTOKEN #IMPLIED pattern CDATA #IMPLIED rights NMTOKEN #IMPLIED
-    stealth NMTOKEN #IMPLIED value CDATA #IMPLIED>
+  <!ATTLIST policy
+    xmlns   CDATA   #FIXED ""
+    domain  NMTOKEN #REQUIRED
+    name    NMTOKEN #IMPLIED
+    pattern CDATA   #IMPLIED
+    rights  NMTOKEN #IMPLIED
+    stealth NMTOKEN #IMPLIED
+    value   CDATA   #IMPLIED
+  >
 ]>
 <policymap>
   <!-- Policy used for test suite only to allow passing test suite
        in case user has installed a restriction which would prevent
        the execution of some tests -->
-  <policy domain="system"   rights="all" pattern="*" />
-  <policy domain="delegate" rights="all" pattern="*" />
-  <policy domain="coder"    rights="all" pattern="*" />
-  <policy domain="filter"   rights="all" pattern="*" />
-  <policy domain="module"   rights="all" pattern="*" />
-  <policy domain="path"     rights="all" pattern="*" />
-  <policy domain="resource" rights="all" pattern="*" />
+  <policy domain="system"    rights="all" pattern="*" />
+  <policy domain="delegate"  rights="all" pattern="*" />
+  <policy domain="coder"     rights="all" pattern="*" />
+  <policy domain="filter"    rights="all" pattern="*" />
+  <policy domain="module"    rights="all" pattern="*" />
+  <policy domain="path"      rights="all" pattern="*" />
+  <policy domain="resource" name="area" value="64KiP"  pattern="*" />
+  <policy domain="resource" name="height" value="64KiP" pattern="*"/>
+  <policy domain="resource" name="width" value="64KiP" pattern="*" />
+  <policy domain="Undefined" rights="all" pattern="*" />
 </policymap>

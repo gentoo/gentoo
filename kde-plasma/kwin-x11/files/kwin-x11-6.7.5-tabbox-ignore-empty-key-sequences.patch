@@ -1,0 +1,30 @@
+From f73f8c899f7c3ebd675b8a5818cc46a8f5b63adc Mon Sep 17 00:00:00 2001
+From: David Edmundson <kde@davidedmundson.co.uk>
+Date: Wed, 20 May 2026 11:26:41 +0100
+Subject: [PATCH] tabbox: Ignore empty key sequences
+
+If a user has ended up with an empty key sequence in their list of
+shortcuts, we cannot look up a key combination for any index.
+
+BUG: 520331
+---
+ src/tabbox/tabbox.cpp | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/src/tabbox/tabbox.cpp b/src/tabbox/tabbox.cpp
+index 6574bae028..caec2ad545 100644
+--- a/src/tabbox/tabbox.cpp
++++ b/src/tabbox/tabbox.cpp
+@@ -740,6 +740,9 @@ static bool areModKeysDepressedX11(const QList<QKeySequence> &shortcuts)
+     for (const QKeySequence &seq : shortcuts) {
+         uint rgKeySyms[10];
+         int nKeySyms = 0;
++        if (seq.isEmpty()) {
++            continue;
++        }
+         Qt::KeyboardModifiers mod = seq[seq.count() - 1].keyboardModifiers();
+ 
+         if (mod & Qt::ShiftModifier) {
+-- 
+GitLab
+

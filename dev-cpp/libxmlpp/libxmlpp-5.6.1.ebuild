@@ -1,0 +1,59 @@
+# Copyright 1999-2026 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=8
+
+inherit gnome2 meson
+
+DESCRIPTION="C++ wrapper for the libxml2 XML parser library"
+HOMEPAGE="https://libxmlplusplus.github.io/libxmlplusplus/"
+SRC_URI="https://github.com/libxmlplusplus/libxmlplusplus/releases/download/${PV}/${P/pp/++}.tar.xz"
+S="${WORKDIR}/${P/pp/++}"
+
+LICENSE="LGPL-2.1"
+SLOT="5.0"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
+IUSE="doc test"
+RESTRICT="!test? ( test )"
+
+RDEPEND="
+	>=dev-libs/libxml2-2.7.7:2=
+"
+DEPEND="${RDEPEND}"
+BDEPEND="
+	virtual/pkgconfig
+	doc? (
+		dev-cpp/mm-common
+		app-text/doxygen
+		media-gfx/graphviz
+		dev-libs/libxslt
+	)
+"
+
+src_prepare() {
+	default
+
+	sed -i \
+		-e "/install_docdir = /s/'doc'/'gtk-doc'/" \
+		docs/reference/meson.build || die
+	sed -i \
+		-e "/install_tutorialdir = /s/'doc'/'gtk-doc'/" \
+		docs/manual/meson.build || die
+}
+
+src_configure() {
+	local emesonargs=(
+		-Dmaintainer-mode=false
+		-Dwarnings=min
+		-Ddist-warnings=max
+		-Dbuild-deprecated-api=true
+		$(meson_use doc build-documentation)
+		-Dvalidation=false
+		-Dbuild-pdf=false
+		-Dbuild-examples=false
+		-Dbuild-manual=false
+		$(meson_use test build-tests)
+		-Dmsvc14x-parallel-installable=false
+	)
+	meson_src_configure
+}

@@ -11,12 +11,15 @@ if [[ ${PV} == 9999 ]]; then
 else
 	MY_P="qTox-${PV}"
 	SRC_URI="https://github.com/TokTok/qTox/archive/v${PV}/v${PV}.tar.gz -> ${MY_P}.tar.gz"
-	KEYWORDS="~amd64"
+	KEYWORDS="amd64"
 	S="${WORKDIR}/qTox-${PV}"
 fi
 
 DESCRIPTION="Instant messaging client using the encrypted p2p Tox protocol"
-HOMEPAGE="https://qtox.github.io/"
+HOMEPAGE="
+	https://qtox.github.io/
+	https://github.com/TokTok/qTox/
+"
 
 LICENSE="GPL-3+"
 SLOT="0"
@@ -53,6 +56,10 @@ DEPEND="${RDEPEND}
 "
 
 DOCS=( CHANGELOG.md README.md doc/user_manual_en.md )
+
+PATCHES=(
+	"$FILESDIR/${PN}-1.18.5-clang-23.patch"
+)
 
 # Skip tests which require network access.
 CMAKE_SKIP_TESTS=(

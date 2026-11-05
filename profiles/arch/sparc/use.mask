@@ -4,6 +4,13 @@
 # Unmask the flag which corresponds to ARCH.
 -sparc
 
+# Sam James <sam@gentoo.org> (2026-10-11)
+# Missing keywords w/ 3.15 support (bug #983998, bug #970341).
+python_targets_python3_15
+python_single_target_python3_15
+python_targets_python3_15t
+python_single_target_python3_15t
+
 # Pacho Ramos <pacho@gentoo.org> (2026-05-09)
 # Newer gedit versions were not keyworded, bug #948858
 gedit

@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
+	<maintainer type="person" proxied="yes">
+		<email>dek.devel@baisenvar.info</email>
+		<name>Bill Prendergast</name>
+	</maintainer>
+	<maintainer type="person" proxied="proxy">
+		<email>jkroon@gentoo.org</email>
+		<name>Jaco Kroon</name>
+	</maintainer>
 	<upstream>
 		<remote-id type="github">platformio/platformio-core</remote-id>
 	</upstream>

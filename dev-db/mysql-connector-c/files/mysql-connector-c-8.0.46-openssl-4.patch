@@ -1,0 +1,23 @@
+Treat OpenSSL >= 4 like OpenSSL 3 when parsing the version.
+Otherwise the version is detected as ".." and configure fails.
+
+--- a/cmake/ssl.cmake
++++ b/cmake/ssl.cmake
+@@ -146,7 +146,7 @@ MACRO(FIND_OPENSSL_VERSION)
+       "^.*${version_part}[\t ]+([0-9]+).*" "\\1"
+       ${version_part} "${${version_part}}")
+   ENDFOREACH()
+-  IF(OPENSSL_VERSION_MAJOR VERSION_EQUAL 3)
++  IF(OPENSSL_VERSION_MAJOR VERSION_GREATER_EQUAL 3)
+     # OpenSSL 3
+     SET(OPENSSL_FIX_VERSION "${OPENSSL_VERSION_PATCH}")
+   ELSE()
+@@ -800,7 +800,7 @@ ENDMACRO(MYSQL_CHECK_SSL_DLLS)
+ 
+ # Downgrade OpenSSL 3 deprecation warnings.
+ MACRO(DOWNGRADE_OPENSSL3_DEPRECATION_WARNINGS)
+-  IF(OPENSSL_VERSION_MAJOR VERSION_EQUAL 3)
++  IF(OPENSSL_VERSION_MAJOR VERSION_GREATER_EQUAL 3)
+     IF(MY_COMPILER_IS_GNU_OR_CLANG)
+       ADD_COMPILE_FLAGS(${ARGV}
+         COMPILE_FLAGS "-Wno-error=deprecated-declarations")

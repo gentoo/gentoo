@@ -1,0 +1,19 @@
+#!/sbin/openrc-run
+# Copyright 1999-2026 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+: ${MPD_CFGFILE:=${XDG_CONFIG_HOME:-${HOME}/.config}/mpd/mpd.conf}
+
+command=/usr/bin/mpd
+command_args="${MPD_EXTRA_ARGS} ${MPD_CFGFILE}"
+command_args_foreground="--no-daemon"
+required_files="${MPD_CFGFILE}"
+supervisor="supervise-daemon"
+
+extra_started_commands="reload"
+
+reload() {
+	ebegin "Reloading ${RC_SVCNAME}"
+	supervise-daemon "${RC_SVCNAME}" --signal HUP
+	eend $?
+}

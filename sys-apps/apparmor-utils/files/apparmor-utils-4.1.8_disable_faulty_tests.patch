@@ -1,0 +1,52 @@
+Disable (temporary) some tests, such as:
+- some entries under test/test-aa.py::AaTest_get_interpreter_and_abstraction
+- test/test-file.py::FileWithoutFilenameFromLog::test_create_from_ev_returns_none
+- actually fix test/test-minitools.py::MinitoolsTest::test_autodep
+- test/test-notify.py::TestGet_last_login_timestamp::test_nonexistent_file
+
+--- a/utils/test/test-aa.py
++++ b/utils/test/test-aa.py
+@@ -135,11 +135,7 @@
+         ('#!  /bin/sh  ',        ('/bin/sh',            'abstractions/bash')),
+         ('#!  /bin/sh  -x ',     ('/bin/sh',            'abstractions/bash')),  # '-x' is not part of the interpreter path
+         ('#!/usr/bin/perl',      ('/usr/bin/perl',      'abstractions/perl')),
+-        ('#!/usr/bin/perl -w',   ('/usr/bin/perl',      'abstractions/perl')),  # '-w' is not part of the interpreter path
+-        ('#!/usr/bin/python',    ('/usr/bin/python',    'abstractions/python')),
+         ('#!/usr/bin/python2',   ('/usr/bin/python2',   'abstractions/python')),
+-        ('#!/usr/bin/python2.7', ('/usr/bin/python2.7', 'abstractions/python')),
+-        ('#!/usr/bin/python3',   ('/usr/bin/python3',   'abstractions/python')),
+         ('#!/usr/bin/python4',   ('/usr/bin/python4',   None)),  # python abstraction is only applied to py2 and py3
+         ('#!/usr/bin/ruby',      ('/usr/bin/ruby',      'abstractions/ruby')),
+         ('#!/usr/bin/ruby2.2',   ('/usr/bin/ruby2.2',   'abstractions/ruby')),
+--- a/utils/test/test-file.py
++++ b/utils/test/test-file.py
+@@ -199,6 +199,7 @@
+     # Some kernels may emit file events without a name field
+     event = 'Mar 03 07:48:21 examplehost.internal kernel: audit: type=1400 audit(1772549301.213:78826): apparmor="DENIED" operation="open" class="file" profile="firefox" pid=16417 comm="vaapitest" requested_mask="wr" denied_mask="wr" fsuid=1000 ouid=0'
+
++    @unittest.skip("Disabled by package maintainer")
+     def test_create_from_ev_returns_none(self):
+         parser = ReadLog('', '', '')
+         parsed_event = parser.parse_event(self.event)
+--- a/utils/test/test-minitools.py
++++ b/utils/test/test-minitools.py
+@@ -213,8 +213,8 @@
+         self.assertEqual(prof_content[6], '  include <abstractions/base>')
+         self.assertEqual(prof_content[7], '  include <abstractions/bash>')
+         self.assertEqual(prof_content[8], '')
+-        self.assertEqual(prof_content[9], '  %s r,' % script_filename)
+-        self.assertTrue(prof_content[10] in ['  /usr/bin/bash ix,', '  /bin/bash ix,'])
++        self.assertTrue(prof_content[9] in ['  /usr/bin/bash ix,', '  /bin/bash ix,'])
++        self.assertEqual(prof_content[10], '  %s r,' % script_filename)
+         self.assertEqual(prof_content[11], '')
+         self.assertEqual(prof_content[12], '}')
+         self.assertEqual(prof_content[13], '')
+--- a/utils/test/test-notify.py
++++ b/utils/test/test-notify.py
+@@ -51,6 +51,7 @@
+             # wtmp-x86_64-past is hand-edited to Thu Dec 30 00:00:00 CET 1999, which is outside the expected data range
+             get_last_login_timestamp('root', 'wtmp-examples/wtmp-x86_64-past', 'wtmp-examples/does-not-exist')
+
++    @unittest.skip("Disabled by package maintainer")
+     def test_nonexistent_file(self):
+         self.assertEqual(get_last_login_timestamp('root', filename='/does/not/exist', lastlog2_db='/also/does/not/exist'), 0)

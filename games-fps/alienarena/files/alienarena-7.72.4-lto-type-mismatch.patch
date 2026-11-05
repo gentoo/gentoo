@@ -1,0 +1,52 @@
+From 1d314f271baad08b310df7f7a6d5e5569967fe72 Mon Sep 17 00:00:00 2001
+From: Matt Jolly <kangie@gentoo.org>
+Date: Tue, 3 Nov 2026 19:10:26 +1000
+Subject: [PATCH] fix lto type mismatch
+
+---
+ source/client/cl_view.c    | 6 +++++-
+ source/client/snd_openal.c | 7 +++++--
+ 2 files changed, 10 insertions(+), 3 deletions(-)
+
+diff --git a/source/client/cl_view.c b/source/client/cl_view.c
+index 63d11e8..aa3ae61 100755
+--- a/source/client/cl_view.c
++++ b/source/client/cl_view.c
+@@ -35,7 +35,11 @@ beam_t	r_beams[MAX_BEAMS];
+ 
+ extern cvar_t *cl_showPlayerNames;
+ extern cvar_t *name;
+-extern char map_music[260];
++#if defined WIN32_VARIANT
++extern char map_music[MAX_PATH];
++#else
++extern char map_music[MAX_OSPATH];
++#endif
+ extern cvar_t *background_music;
+ extern qboolean IsVisible(vec3_t org1,vec3_t org2);
+ extern void R_TransformVectorToScreen( refdef_t *rd, vec3_t in, vec2_t out );
+diff --git a/source/client/snd_openal.c b/source/client/snd_openal.c
+index bad98b9..6fba7de 100644
+--- a/source/client/snd_openal.c
++++ b/source/client/snd_openal.c
+@@ -2287,7 +2287,11 @@ void S_StartMenuMusic( void )
+ 	S_StartMusic( "music/menumusic.wav" );
+ }
+ 
+-extern char map_music[260]; // declared and set in r_model.c
++#if defined WIN32_VARIANT
++extern char map_music[MAX_PATH]; // declared and set in r_model.c
++#else
++extern char map_music[MAX_OSPATH]; // declared and set in r_model.c
++#endif
+ 
+ void S_StartMapMusic( void )
+ {
+@@ -2907,4 +2911,3 @@ void sndCvarInit( void )
+ 	snd_developer = Cvar_Get( "snd_developer", "0", 0);
+ 
+ }
+-
+-- 
+2.56.0
+

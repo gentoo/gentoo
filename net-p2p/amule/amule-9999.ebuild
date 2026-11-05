@@ -2,9 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+
 WX_GTK_VER="3.2-gtk3"
 
-inherit cmake flag-o-matic wxwidgets xdg-utils
+inherit cmake flag-o-matic wxwidgets xdg
 
 if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/amule-org/amule"
@@ -19,7 +20,7 @@ HOMEPAGE="https://amule-org.github.io/"
 
 LICENSE="GPL-2+"
 SLOT="0"
-IUSE="bfd daemon debug geoip +gui nls remote stats test upnp"
+IUSE="bfd daemon debug geoip +gui mediainfo nls remote stats test upnp"
 # Make the package useful and simplify dependency management
 REQUIRED_USE="|| ( daemon gui remote )"
 
@@ -40,6 +41,7 @@ RDEPEND="
 		x11-libs/wxGTK:${WX_GTK_VER}=[X]
 		geoip? ( dev-libs/libmaxminddb )
 	)
+	mediainfo? ( media-libs/libmediainfo )
 	nls? ( virtual/libintl )
 	remote? (
 		acct-user/amule
@@ -59,13 +61,15 @@ src_configure() {
 	use debug || append-cppflags -DwxDEBUG_LEVEL=0
 	CMAKE_BUILD_TYPE=$(usex debug Debug ${CMAKE_BUILD_TYPE})
 
+	# TODO: replace amuleweb with amuleapi
 	local mycmakeargs=(
 		-DBUILD_ALCC=YES
 		-DBUILD_ED2K=YES
-		-DDEFAULT_VERSION_CHECK=NO
+		-DENABLE_VERSION_CHECK=NO
 		-DBUILD_ALC="$(usex gui)"
 		-DBUILD_AMULECMD="$(usex remote)"
 		-DBUILD_DAEMON="$(usex daemon)"
+		-DENABLE_MEDIA_PROBE="$(usex mediainfo)"
 		-DBUILD_CAS="$(usex stats)"
 		-DBUILD_MONOLITHIC="$(usex gui)"
 		-DBUILD_TESTING="$(usex test)"
@@ -112,15 +116,9 @@ src_install() {
 }
 
 pkg_postinst() {
-	if use gui; then
-		xdg_desktop_database_update
-		xdg_icon_cache_update
-	fi
+	use gui && xdg_pkg_postinst
 }
 
 pkg_postrm() {
-	if use gui; then
-		xdg_desktop_database_update
-		xdg_icon_cache_update
-	fi
+	use gui && xdg_pkg_postrm
 }

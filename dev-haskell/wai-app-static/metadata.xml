@@ -6,7 +6,6 @@
 		<name>Gentoo Haskell</name>
 	</maintainer>
 	<use>
-		<flag name="crypton">Use the crypton library for MD5 computation</flag>
 		<flag name="print">print debug info</flag>
 	</use>
 	<upstream>

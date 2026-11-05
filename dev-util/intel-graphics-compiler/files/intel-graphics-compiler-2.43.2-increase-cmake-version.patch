@@ -1,0 +1,36 @@
+From be7aca630867f939f6333565a5260a2568b8be7e Mon Sep 17 00:00:00 2001
+From: Conrad Kostecki <conrad@kostecki.com>
+Date: Sat, 31 Oct 2026 23:00:01 +0100
+Subject: [PATCH] Increase CMake version to minimum 3.10
+
+---
+ IGC/AdaptorOCL/cif/CMakeLists.txt    | 2 +-
+ IGC/ZEBinWriter/tools/CMakeLists.txt | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/IGC/AdaptorOCL/cif/CMakeLists.txt b/IGC/AdaptorOCL/cif/CMakeLists.txt
+index af49689a1276..78919839044e 100644
+--- a/IGC/AdaptorOCL/cif/CMakeLists.txt
++++ b/IGC/AdaptorOCL/cif/CMakeLists.txt
+@@ -6,7 +6,7 @@
+ #
+ #============================ end_copyright_notice =============================
+ 
+-CMAKE_MINIMUM_REQUIRED( VERSION 3.1 )
++CMAKE_MINIMUM_REQUIRED( VERSION 3.10 )
+ 
+ PROJECT( CIF )
+ 
+diff --git a/IGC/ZEBinWriter/tools/CMakeLists.txt b/IGC/ZEBinWriter/tools/CMakeLists.txt
+index 011c37c17764..457a8bb2c176 100644
+--- a/IGC/ZEBinWriter/tools/CMakeLists.txt
++++ b/IGC/ZEBinWriter/tools/CMakeLists.txt
+@@ -6,7 +6,7 @@
+ #
+ #============================ end_copyright_notice =============================
+ 
+-cmake_minimum_required (VERSION 3.8)
++cmake_minimum_required (VERSION 3.10)
+ 
+ set (ZEInfoReader_Source
+      main.cpp

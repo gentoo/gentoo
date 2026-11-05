@@ -40,7 +40,11 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
 	>=dev-libs/elfutils-0.178
-	virtual/zlib:="
+	virtual/zlib:=
+	elibc_musl? (
+		sys-libs/obstack-standalone
+		sys-libs/argp-standalone
+	)"
 DEPEND="${RDEPEND}"
 
 DOCS=( README README.ctracer NEWS )

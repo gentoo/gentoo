@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -38,7 +38,11 @@ BDEPEND="
 	)
 "
 
-PATCHES=( "${FILESDIR}/fuzion-0.092-Makefile.patch" )
+PATCHES=(
+	"${FILESDIR}/fuzion-0.092-Makefile.patch"
+	"${FILESDIR}/fuzion-0.092-parallel-build.patch"
+)
+
 DOCS=( README.md release_notes.md )
 
 src_prepare() {

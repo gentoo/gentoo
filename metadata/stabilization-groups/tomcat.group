@@ -1,0 +1,5 @@
+www-servers/tomcat:9
+www-servers/tomcat:10.1
+www-servers/tomcat:11
+dev-java/tomcat-native:0
+dev-java/tomcat-native:2

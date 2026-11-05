@@ -1,0 +1,65 @@
+Upstream PR: https://github.com/milkytracker/MilkyTracker/pull/423
+
+From fe29c2be199642feda3254a89280a72ec7ebf7be Mon Sep 17 00:00:00 2001
+From: Matthew White <mehw.is.me@proton.me>
+Date: Sun, 1 Nov 2026 14:08:24 +0000
+Subject: [PATCH] Fix incomplete type error for class RtMidiIn
+
+This error was found while compiling MilkyTracker v1.05.01 on Gentoo.
+
+It can be fixed by replacing the forward declaration of RtMidiIn with
+its definition from RtMidi.h header.
+
+Additionally, mark RTMIDI_INCLUDE_DIRS as PUBLIC, so that the correct
+include directory (e.g. '/usr/include/rtmidi' on Gentoo) is available
+when compiling.
+
+Buglink: https://bugs.gentoo.org/985348
+Signed-off-by: Matthew White <mehw.is.me@proton.me>
+---
+ src/midi/CMakeLists.txt                 | 1 +
+ src/midi/posix/MidiReceiver_pthread.cpp | 1 -
+ src/midi/posix/MidiReceiver_pthread.h   | 3 +--
+ 3 files changed, 2 insertions(+), 3 deletions(-)
+
+diff --git a/src/midi/CMakeLists.txt b/src/midi/CMakeLists.txt
+index ceb850e..d737c84 100644
+--- a/src/midi/CMakeLists.txt
++++ b/src/midi/CMakeLists.txt
+@@ -111,6 +111,7 @@ else()
+     target_include_directories(midi
+         PRIVATE
+             ${CMAKE_CURRENT_SOURCE_DIR}/../ppui/osinterface/posix
++        PUBLIC
+             ${RTMIDI_INCLUDE_DIRS}
+     )
+ 
+diff --git a/src/midi/posix/MidiReceiver_pthread.cpp b/src/midi/posix/MidiReceiver_pthread.cpp
+index 43a5148..f9e7f50 100644
+--- a/src/midi/posix/MidiReceiver_pthread.cpp
++++ b/src/midi/posix/MidiReceiver_pthread.cpp
+@@ -31,7 +31,6 @@
+ #include "MidiReceiver_pthread.h"
+ #include "Tracker.h"
+ #include "PPMutex.h"
+-#include "RtMidi.h"
+ #include "PPSystem.h"
+ #include <iostream>
+ #include "MidiTools.h"
+diff --git a/src/midi/posix/MidiReceiver_pthread.h b/src/midi/posix/MidiReceiver_pthread.h
+index 23b7aba..a8e2abe 100644
+--- a/src/midi/posix/MidiReceiver_pthread.h
++++ b/src/midi/posix/MidiReceiver_pthread.h
+@@ -32,8 +32,7 @@
+ #define __MIDIRECEIVER_H__
+ 
+ #include <vector>
+-
+-class RtMidiIn;
++#include "RtMidi.h"
+ 
+ class MidiReceiver
+ {
+-- 
+2.56.0
+

@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,14 +13,13 @@ SLOT="0"
 KEYWORDS="amd64 arm arm64 ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
 
 # gtk+:3 is needed for build for the gtk-encode-symbolic-svg utility
-# librsvg is needed for gtk-encode-symbolic-svg to be able to read the source SVG via
-# its pixbuf loader and at runtime for rendering scalable icons shipped by the theme
+# librsvg > 2.40 is needed at runtime for rendering scalable icons shipped by
+# the theme: https://viruta.org/do-not-use-librsvg-2.40.x.html
 DEPEND=">=x11-themes/hicolor-icon-theme-0.10"
 RDEPEND="${DEPEND}
 	>=gnome-base/librsvg-2.48:2
 "
 BDEPEND="
-	>=gnome-base/librsvg-2.48:2
 	sys-devel/gettext
 	virtual/pkgconfig
 	x11-libs/gtk+:3

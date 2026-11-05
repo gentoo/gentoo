@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+
 WX_GTK_VER="3.2-gtk3"
 
 inherit cmake flag-o-matic wxwidgets xdg-utils
@@ -55,6 +56,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}/${P}-32-bit-libatomic.patch"
+	"${FILESDIR}"/${P}-gcc16-lto.patch
 )
 
 src_configure() {

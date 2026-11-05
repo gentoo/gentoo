@@ -1,0 +1,19 @@
+Fix build with LLVM 23 for gfx942 and gfx950
+
+LLVM 23 fails with "Cannot scavenge register in FI elimination" on some
+kernels (fixed by llvm/llvm-project@c003bfba6158); together, disabling the
+machine scheduler and the basic SGPR allocator avoid it.
+
+Bug: https://bugs.gentoo.org/984543
+--- a/cmake/DeviceLinker.cmake
++++ b/cmake/DeviceLinker.cmake
+@@ -288,6 +288,9 @@ foreach(DL_GPU_TARGET ${DL_GPU_TARGETS})
+     -fPIC
+     ${DL_INHERITED_FLAGS}
+   )
++  if(DL_GPU_TARGET MATCHES "^gfx9(42|50)$")
++    target_compile_options(${_dev_target} PRIVATE -mllvm=-enable-misched=false -mllvm=-sgpr-regalloc=basic)
++  endif()
+   target_compile_definitions(${_dev_target} PRIVATE RCCL_DEVICE_LINKER)
+   target_link_libraries(${_dev_target} PRIVATE rccl_device_defs)
+

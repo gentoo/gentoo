@@ -1,0 +1,48 @@
+# Copyright 1999-2026 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# please keep this ebuild at EAPI 8 -- sys-apps/portage dep
+EAPI=8
+
+DISTUTILS_USE_PEP517=setuptools
+PYTHON_COMPAT=( python3_{12..15} python3_{14..15}t )
+
+inherit distutils-r1 pypi
+
+DESCRIPTION="C parser and AST generator written in Python"
+HOMEPAGE="
+	https://github.com/eliben/pycparser/
+	https://pypi.org/project/pycparser/
+"
+
+LICENSE="BSD"
+SLOT="0"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~arm64-macos ~x64-macos ~x64-solaris"
+
+RDEPEND="
+	dev-python/ply:=[${PYTHON_USEDEP}]
+"
+BDEPEND="
+	${RDEPEND}
+"
+
+distutils_enable_tests unittest
+
+# c_ast.py is preprocessed from _c_ast.cfg, really no point
+# in regenerating it
+
+python_test() {
+	# Skip tests if cpp is not in PATH
+	type -P cpp >/dev/null || return 0
+
+	# Ensure that 'cpp' is called with the right arguments
+	# Tests don't seem to always pass the include they intend to use.
+	mkdir -p "${T}"/bin || die
+	cat > "${T}"/bin/cpp <<-EOF || die
+	#!${BROOT}/bin/bash
+	exec ${BROOT}/usr/bin/cpp -I${S}/utils/fake_libc_include/ \$@
+	EOF
+	chmod +x "${T}"/bin/cpp || die
+
+	PATH="${T}/bin:${PATH}" eunittest
+}

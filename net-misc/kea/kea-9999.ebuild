@@ -13,13 +13,14 @@ HOMEPAGE="https://www.isc.org/kea/"
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="https://gitlab.isc.org/isc-projects/kea.git"
 else
 	SRC_URI="
 		https://downloads.isc.org/isc/kea/${PV}/${P}.tar.xz
+		https://gitlab.isc.org/isc-projects/kea-packaging/-/archive/Kea-${PV}/kea-packaging-Kea-${PV}.tar.bz2
+		!doc? ( https://codeberg.org/peter1010/kea-manpages/archive/kea-manpages-${PV}.tar.gz )
 		verify-sig? ( https://downloads.isc.org/isc/kea/${PV}/${P}.tar.xz.asc )
 	"
-	KEYWORDS="amd64 arm arm64 ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 fi
 
 LICENSE="MPL-2.0"
@@ -30,7 +31,6 @@ REQUIRED_USE="shell? ( ${PYTHON_REQUIRED_USE} )"
 RESTRICT="!test? ( test )"
 
 COMMON_DEPEND="
-	>=dev-libs/boost-1.66:=
 	dev-libs/log4cplus:=
 	kerberos? ( virtual/krb5 )
 	mysql? (
@@ -45,6 +45,7 @@ COMMON_DEPEND="
 	shell? ( ${PYTHON_DEPS} )
 "
 DEPEND="${COMMON_DEPEND}
+	>=dev-libs/boost-1.66:=
 	test? ( dev-cpp/gtest )
 "
 RDEPEND="${COMMON_DEPEND}
@@ -72,12 +73,19 @@ python_check_deps() {
 }
 
 pkg_setup() {
-	python_setup
+	[[ ${MERGE_TYPE} != binary ]] && python_setup
 }
 
 src_unpack() {
 	if [[ ${PV} == 9999 ]]; then
-		git-r3_src_unpack
+		local base_uri
+		base_uri="https://gitlab.isc.org/isc-projects"
+
+		git-r3_fetch "${base_uri}"/kea.git
+		git-r3_checkout "${base_uri}"/kea.git kea-${PV}
+
+		git-r3_fetch "${base_uri}"/kea-packaging.git
+		git-r3_checkout "${base_uri}"/kea-packaging.git kea-packaging-${P^}
 		return
 	fi
 
@@ -243,8 +251,7 @@ install_shell() {
 src_install() {
 	meson_install
 
-	# Remove build metadata and unused database files
-	rm -r "${ED}"/usr/share/kea/meson-info || die
+	# Remove unused database files
 	if use !mysql; then
 		rm -r "${ED}"/usr/share/kea/scripts/mysql || die
 	fi
@@ -255,8 +262,9 @@ src_install() {
 	# No easy way to control how meson_install sets permissions in meson < 1.9
 	# So make sure permissions are same as in previous versions of kea
 	# To avoid any differences between an update vers first time install
+	# /usr/bin only contains the extra native compilation tool kea-msg-compiler,
+	# that is not built with cross-compile
 	fperms -R 0755 /usr/sbin
-	fperms -R 0755 /usr/bin
 	fperms -R 0755 /usr/$(get_libdir)
 
 	if use shell; then
@@ -276,18 +284,20 @@ src_install() {
 
 	# Install a conf per service and a linked init script per service
 	newinitd "${FILESDIR}"/${PN}-initd-r5 ${PN}
-
 	local svc
 	for svc in dhcp4 dhcp6 dhcp-ddns; do
 		newconfd "${FILESDIR}"/${PN}-confd-r4 kea-${svc}
 		sed -e "s:@KEA_SVC@:${svc}:g" \
 			-i "${ED}"/etc/conf.d/kea-${svc} || die
 		dosym kea "${EPREFIX}"/etc/init.d/kea-${svc}
+		sed -e 's/User=kea/User=dhcp/' \
+			-i "${WORKDIR}/kea-packaging-${P^}/rpm/kea-${svc}.service" || die
+		systemd_dounit "${WORKDIR}"/kea-packaging-${P^}/rpm/kea-${svc}.service
 	done
 
-	systemd_newunit "${FILESDIR}"/${PN}-dhcp-ddns.service-r2 ${PN}-dhcp-ddns.service
-	systemd_newunit "${FILESDIR}"/${PN}-dhcp4.service-r2 ${PN}-dhcp4.service
-	systemd_newunit "${FILESDIR}"/${PN}-dhcp6.service-r2 ${PN}-dhcp6.service
+	if ! [[ ${PV} == 9999 ]]; then
+		use doc || doman "${WORKDIR}"/kea-manpages/man/*
+	fi
 
 	newtmpfiles "${FILESDIR}"/${PN}.tmpfiles.conf ${PN}.conf
 

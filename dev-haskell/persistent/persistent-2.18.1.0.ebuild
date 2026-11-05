@@ -16,6 +16,10 @@ LICENSE="MIT"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
 
+CABAL_CHDEPS=(
+	'template-haskell      >=2.13     && <2.24' 'template-haskell      >=2.13     && <2.25'
+)
+
 RDEPEND=">=dev-haskell/aeson-1.0:=[profile?] <dev-haskell/aeson-2.3:=[profile?]
 	dev-haskell/attoparsec:=[profile?]
 	>=dev-haskell/attoparsec-aeson-2.1.0.0:=[profile?] <dev-haskell/attoparsec-aeson-2.3:=[profile?]

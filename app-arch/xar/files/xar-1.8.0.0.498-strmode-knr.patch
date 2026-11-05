@@ -1,0 +1,37 @@
+From d2847eb0e0623568e07cab88717c480f3194d229 Mon Sep 17 00:00:00 2001
+From: "Z. Liu" <zhixu.liu@gmail.com>
+Date: Tue, 27 Oct 2026 11:05:35 +0800
+Subject: [PATCH] Use an ANSI prototype for the bundled strmode()
+ implementation
+
+glibc does not provide strmode(), so configure leaves HAVE_STRMODE
+undefined and lib/util.c falls back to include/strmode.h which uses
+a K&R style function definition. This is invalid in C23 and cause
+compilation to fail with recent GCC/Clang when using the default
+-std=gnu23:
+
+    strmode.h:39:9: error: unknown type name 'mode'
+    strmode.h:39:15: error: unknown type name 'p'
+
+Signed-off-by: Z. Liu <zhixu.liu@gmail.com>
+
+diff --git a/lib/strmode.h b/lib/strmode.h
+index 9d94933..f2d1f19 100755
+--- a/lib/strmode.h
++++ b/lib/strmode.h
+@@ -35,10 +35,8 @@ static char sccsid[] = "@(#)strmode.c	8.3 (Berkeley) 8/15/94";
+ #include <sys/stat.h>
+ #include <string.h>
+ 
+-void
+-strmode(mode, p)
+-	mode_t mode;
+-	char *p;
++static void
++strmode(mode_t mode, char *p)
+ {
+ 	 /* print type */
+ 	switch (mode & S_IFMT) {
+-- 
+2.49.1
+

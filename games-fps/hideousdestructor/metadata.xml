@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<longdescription lang="en">
+		A gameplay modification for <pkg>games-engines/uzdoom</pkg>
+		that adds more detailed and (arguably) realistic movement, physics,
+		weapon behaviour and monster attacks.
+	</longdescription>
+	<maintainer type="person" proxied="yes">
+		<email>fedja@protonmail.ch</email>
+		<name>Fedja Beader</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>games@gentoo.org</email>
+		<name>Gentoo Games Project</name>
+	</maintainer>
+	<upstream>
+		<bugs-to>https://codeberg.org/mc776/HideousDestructor/issues</bugs-to>
+		<remote-id type="codeberg">mc776/HideousDestructor</remote-id>
+	</upstream>
+</pkgmetadata>

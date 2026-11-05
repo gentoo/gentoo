@@ -1,0 +1,93 @@
+Fix build failure with openssl-4
+https://bugs.gentoo.org/985564
+Patch from upstream, backported to 14.9.25
+
+commit 74761c6283f6fbd0f03e5e385323ee65c0ed0a9f
+Author: Steffen Nurpmeso <steffen@sdaoden.eu>
+Date:   Sat, 30 May 2026 23:42:00 +0200
+
+    Compat with OpenSSL 4.0.0 (Sebastian Andrzej Siewior)
+
+--- s-nail-14.9.25/src/mx/xtls.c
++++ s-nail-14.9.25/src/mx/xtls.c
+@@ -50,6 +50,7 @@
+ #ifdef mx_HAVE_XTLS /* Shorthand for mx_HAVE_TLS==mx_TLS_IMPL{...} */
+ #include <sys/socket.h>
+ 
++#include <openssl/asn1.h>
+ #include <openssl/crypto.h>
+ #include <openssl/err.h>
+ #include <openssl/evp.h>
+@@ -150,15 +151,22 @@
+ # endif
+ #endif
+ 
+-/* More cute compatibility sighs */
+-#if mx_HAVE_XTLS >= 0x10100
++/* More cute compatibility sighs; LibreSSL is "faked" (could use earlier one) */
++#if mx_HAVE_XTLS >= 0x10100 || \
++      (mx_HAVE_TLS == mx_TLS_IMPL_RESSL && LIBRESSL_VERSION_NUMBER >= 0x4000000fL)
+ # define a_xtls_X509_get_notBefore X509_get0_notBefore
+ # define a_xtls_X509_get_notAfter X509_get0_notAfter
+ # define a_xtls_SSL_get_verified_chain SSL_get0_verified_chain
++
++# define a_xtls_ASN1_STRING_get0_data(X) ((char const*)ASN1_STRING_get0_data(X))
++# define a_xtls_ASN1_STRING_length(X) ASN1_STRING_length(X)
+ #else
+ # define a_xtls_X509_get_notBefore X509_get_notBefore
+ # define a_xtls_X509_get_notAfter X509_get_notAfter
+ # define a_xtls_SSL_get_verified_chain SSL_get_peer_cert_chain
++
++# define a_xtls_ASN1_STRING_get0_data(X) ((char const*)(X)->data)
++# define a_xtls_ASN1_STRING_length(X) ((int)(X)->length)
+ #endif
+ 
+ #if mx_HAVE_XTLS >= 0x30000
+@@ -702,12 +710,13 @@
+ 
+    mbp = BIO_new(BIO_s_mem());
+ 
+-   if (ASN1_TIME_print(mbp, C(ASN1_TIME*,atp)) &&
++   if(ASN1_TIME_print(mbp, C(ASN1_TIME*,atp)) &&
+          (l = BIO_get_mem_data(mbp, &mcp)) > 0)
+       snprintf(bdat, blen, "%.*s", (int)l, mcp);
+    else {
+       snprintf(bdat, blen, _("Bogus certificate date: %.*s"),
+-         /*is (int)*/atp->length, (char const*)atp->data);
++         /*is (int)*/a_xtls_ASN1_STRING_length(atp),
++         a_xtls_ASN1_STRING_get0_data(atp));
+       mcp = NULL;
+    }
+ 
+@@ -1398,9 +1407,9 @@
+          if(gen->type == GEN_DNS){
+             if(n_poption & n_PO_D_V)
+                n_err(_("Comparing subject_alt_name: need<%s> is<%s>\n"),
+-                  urlp->url_host.s, (char*)gen->d.ia5->data);
++                  urlp->url_host.s, a_xtls_ASN1_STRING_get0_data(gen->d.ia5));
+             if((rv = n_tls_rfc2595_hostname_match(urlp->url_host.s,
+-                  (char*)gen->d.ia5->data)))
++                  a_xtls_ASN1_STRING_get0_data(gen->d.ia5))))
+                goto jleave;
+          }
+       }
+@@ -1434,7 +1443,7 @@
+    a_XTLS_STACKOF(X509) *certs;
+    a_XTLS_STACKOF(GENERAL_NAME) *gens;
+    X509 *cert;
+-   X509_NAME *subj;
++   X509_NAME const *subj;
+    GENERAL_NAME *gen;
+    NYD_IN;
+ 
+@@ -1522,8 +1531,8 @@
+             if (gen->type == GEN_EMAIL) {
+                if (n_poption & n_PO_D_V)
+                   n_err(_("Comparing subject_alt_name: need<%s> is<%s>)\n"),
+-                     sender, (char*)gen->d.ia5->data);
+-               if (!su_cs_cmp_case((char*)gen->d.ia5->data, sender))
++                     sender, a_xtls_ASN1_STRING_get0_data(gen->d.ia5));
++               if (!su_cs_cmp_case(a_xtls_ASN1_STRING_get0_data(gen->d.ia5), sender))
+                   goto jfound;
+             }
+          }

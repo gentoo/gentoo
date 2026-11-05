@@ -1,0 +1,49 @@
+Source: https://invent.kde.org/plasma/kwin/-/merge_requests/10304
+
+From 52f93d11a0f123bef76e402bc4d0e5a1e1963f16 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Mon, 2 Nov 2026 17:39:29 +0100
+Subject: [PATCH] CMake: Add KWIN_BUILD_SET_CAP_SYS_NICE option
+
+Amends e643a37327c29a2dadceff5ce504164591e7a3ac so that it can be disabled
+as previously possible with 7c8003f7f6212ccad7de652943f94d501365d30f, just
+explicitly this time.
+
+See also: https://invent.kde.org/plasma/kwin/-/merge_requests/9222
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt     | 3 ++-
+ src/CMakeLists.txt | 2 +-
+ 2 files changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 9d2362ff16..2ecbe8b28e 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -146,7 +146,8 @@ set_package_properties(KWayland PROPERTIES
+     TYPE REQUIRED
+ )
+ 
+-if(CMAKE_SYSTEM_NAME MATCHES "Linux")
++cmake_dependent_option(KWIN_BUILD_SET_CAP_SYS_NICE "Set CAP_SYS_NICE during build (Linux default: ON)" ON LINUX OFF)
++if(KWIN_BUILD_SET_CAP_SYS_NICE)
+     find_package(Libcap)
+     set_package_properties(Libcap PROPERTIES
+         PURPOSE "Needed for setting CAP_SYS_NICE on kwin_wayland."
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index e9f768311a..5ec80f2972 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -698,7 +698,7 @@ install(FILES
+     DESTINATION ${KDE_INSTALL_INCLUDEDIR}/kwin/vulkan COMPONENT Devel
+ )
+ 
+-if(CMAKE_SYSTEM_NAME MATCHES "Linux")
++if(KWIN_BUILD_SET_CAP_SYS_NICE)
+     install(
+         CODE "execute_process(
+         COMMAND ${SETCAP_EXECUTABLE}
+-- 
+2.56.0
+

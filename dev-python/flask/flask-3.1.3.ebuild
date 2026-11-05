@@ -34,11 +34,9 @@ RDEPEND="
 	>=dev-python/jinja2-3.1.2[${PYTHON_USEDEP}]
 	>=dev-python/werkzeug-3.1.0[${PYTHON_USEDEP}]
 "
-# pytest-9.1: https://github.com/pallets/flask/issues/6071
 BDEPEND="
 	test? (
 		>=dev-python/asgiref-3.2[${PYTHON_USEDEP}]
-		<dev-python/pytest-9.1[${PYTHON_USEDEP}]
 		!!dev-python/shiboken2[${PYTHON_USEDEP}]
 	)
 "
@@ -55,6 +53,11 @@ distutils_enable_tests pytest
 EPYTEST_DESELECT=(
 	# removed in a31e6b73469cb2bf7eb8f70b5ff21f710fd2e23c
 	tests/test_reqctx.py::test_bad_environ_raises_bad_request
+)
+
+PATCHES=(
+	# https://github.com/pallets/flask/pull/6095
+	"${FILESDIR}/${P}-pytest9.1.patch"
 )
 
 python_install_all() {

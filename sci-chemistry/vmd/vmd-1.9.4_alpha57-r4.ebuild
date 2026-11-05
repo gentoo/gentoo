@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{11..14} )
+
+PYTHON_COMPAT=( python3_{12..14} )
 
 inherit cuda desktop prefix python-single-r1 toolchain-funcs xdg
 
@@ -134,6 +135,8 @@ src_prepare() {
 	# https://www.ks.uiuc.edu/Research/vmd/mailing_list/vmd-l/34831.html
 	# https://bugs.gentoo.org/952657
 	eapply "${FILESDIR}"/${P}-py3.13.patch
+
+	eapply "${FILESDIR}"/${P}-cuda13.patch
 
 	# PREFIX
 	sed \

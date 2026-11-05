@@ -140,9 +140,11 @@ DEPEND="${COMMON_DEPEND}
 		)
 	)"
 RDEPEND="${COMMON_DEPEND}
-	client? ( net-fs/cifs-utils[ads?] )
 	python? ( ${PYTHON_DEPS} )
 	selinux? ( sec-policy/selinux-samba )
+"
+PDEPEND="
+	client? ( net-fs/cifs-utils[ads?] )
 "
 BDEPEND="${PYTHON_DEPS}
 	app-text/docbook-xsl-stylesheets

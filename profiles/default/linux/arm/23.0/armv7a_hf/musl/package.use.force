@@ -1,0 +1,7 @@
+# Copyright 2026 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Arthur Zamarin <arthurzam@gentoo.org> (2026-10-10)
+# Our build snapshot is for glibc only, so force system bootstrap
+dev-java/openjdk:21 system-bootstrap
+dev-java/openjdk:25 system-bootstrap

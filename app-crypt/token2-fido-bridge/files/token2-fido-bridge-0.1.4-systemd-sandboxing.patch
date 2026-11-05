@@ -1,0 +1,74 @@
+From 2b69bd8d0d128a1c612ac3ee984fed16c9eaca73 Mon Sep 17 00:00:00 2001
+From: David Seifert <soap@gentoo.org>
+Date: Sun, 1 Nov 2026 13:58:32 +0100
+Subject: [PATCH] Sandbox the systemd service
+
+The daemon only needs /dev/uhid and the pcscd socket, so drop all
+capabilities and confine it, keeping modprobe outside the sandbox.
+---
+ README.md                            |  3 ++-
+ packaging/token2-fido-bridge.service | 30 +++++++++++++++++++++++++++-
+ 2 files changed, 31 insertions(+), 2 deletions(-)
+
+diff --git a/README.md b/README.md
+index cc4a049..94f1802 100644
+--- a/README.md
++++ b/README.md
+@@ -55,7 +55,8 @@ project has none of that: install the `.deb`, and it just runs.
+ 
+ - Linux with the `uhid` kernel module (standard on Ubuntu/Debian/Fedora)
+ - `pcscd` running, a PC/SC reader, and a FIDO2-capable smartcard
+-- Runs as root (needs `/dev/uhid`)
++- Runs as root (needs `/dev/uhid`), but the systemd service drops all
++  capabilities and sandboxes the daemon
+ 
+ ## Install
+ 
+diff --git a/packaging/token2-fido-bridge.service b/packaging/token2-fido-bridge.service
+index 605cf9c..60adb99 100644
+--- a/packaging/token2-fido-bridge.service
++++ b/packaging/token2-fido-bridge.service
+@@ -6,11 +6,39 @@ Wants=pcscd.service
+ [Service]
+ Type=simple
+ # Ensure the uhid kernel module is available before we open /dev/uhid.
+-ExecStartPre=-/sbin/modprobe uhid
++# "+" runs this outside the sandbox below, which forbids module loading.
++ExecStartPre=-+/sbin/modprobe uhid
+ ExecStart=/usr/bin/token2-fido-bridge
+ Restart=on-failure
+ RestartSec=2
++# root only because /dev/uhid is root:root 0600 and pcscd's polkit policy
++# refuses session-less users; as the owner, root needs no capabilities.
+ User=root
+ 
++# The daemon only opens /dev/uhid and talks to pcscd over its UNIX socket.
++CapabilityBoundingSet=
++NoNewPrivileges=yes
++DevicePolicy=closed
++DeviceAllow=/dev/uhid rw
++PrivateNetwork=yes
++RestrictAddressFamilies=AF_UNIX
++ProtectSystem=strict
++ProtectHome=yes
++PrivateTmp=yes
++ProtectClock=yes
++ProtectHostname=yes
++ProtectKernelLogs=yes
++ProtectKernelModules=yes
++ProtectKernelTunables=yes
++ProtectControlGroups=yes
++RestrictNamespaces=yes
++RestrictRealtime=yes
++RestrictSUIDSGID=yes
++LockPersonality=yes
++MemoryDenyWriteExecute=yes
++SystemCallArchitectures=native
++SystemCallFilter=@system-service
++SystemCallErrorNumber=EPERM
++
+ [Install]
+ WantedBy=multi-user.target
+-- 
+2.56.0
+
