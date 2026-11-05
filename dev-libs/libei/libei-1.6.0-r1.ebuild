@@ -71,6 +71,7 @@ src_prepare() {
 	default
 
 	sed -i -e 's:^valgrind = .*:valgrind = disabler():g' test/meson.build || die
+	sed -i -e 's:^ruff = .*:ruff = disabler():g' meson.build || die
 }
 
 src_configure() {
