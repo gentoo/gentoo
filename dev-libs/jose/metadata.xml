@@ -5,10 +5,6 @@
 		<email>salah.coronya@gmail.com</email>
 		<name>Christopher Byrne</name>
 	</maintainer>
-	<maintainer type="person" proxied="yes">
-		<email>julien@jroy.ca</email>
-		<name>Julien Roy</name>
-	</maintainer>
 	<maintainer type="project" proxied="proxy">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
