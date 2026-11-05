@@ -2,10 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person" proxied="yes">
-    <email>mh@emlix.com</email>
-    <name>Martin Homuth</name>
-  </maintainer>
-  <maintainer type="person" proxied="yes">
     <email>stkw0@disroot.org</email>
     <name>David Roman</name>
   </maintainer>
