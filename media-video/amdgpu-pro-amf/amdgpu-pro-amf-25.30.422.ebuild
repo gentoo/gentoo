@@ -38,6 +38,7 @@ REQUIRED_USE="
 RESTRICT="bindist mirror"
 
 RDEPEND="
+	!media-video/amdgpu-pro-amf-legacy
 	x11-libs/libdrm
 	media-libs/mesa[proprietary-codecs,vulkan]
 "
