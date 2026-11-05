@@ -369,6 +369,7 @@ media-sound/baudline
 media-sound/teamspeak-server
 media-tv/plex-media-server
 media-video/amdgpu-pro-amf
+media-video/amdgpu-pro-amf-legacy
 media-video/dvbackup
 media-video/makemkv
 media-video/popcorntime-bin
