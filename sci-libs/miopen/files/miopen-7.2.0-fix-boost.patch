@@ -1,0 +1,33 @@
+Fix build with boost-1.91 (backwards compatible, already fixed in upstream)
+Bug: https://bugs.gentoo.org/983886
+--- a/src/find_controls.cpp
++++ b/src/find_controls.cpp
+@@ -161,7 +161,7 @@ boost::optional<std::vector<solver::Id>> GetEnvFindOnlySolverImpl()
+     if(res.empty())
+         return boost::none;
+     else
+-        return {res};
++        return res;
+ }
+ 
+ } // namespace
+--- a/src/include/miopen/sqlite_db.hpp
++++ b/src/include/miopen/sqlite_db.hpp
+@@ -463,7 +463,7 @@ public:
+                 ovr_rec.SetValues(vals.at(0), vals.at(1));
+             }
+             if(success)
+-                return {ovr_rec};
++                return ovr_rec;
+         }
+         std::string clause;
+         std::vector<std::string> values;
+@@ -498,7 +498,7 @@ public:
+         if(rec.GetSize() == 0)
+             return boost::none;
+         else
+-            return {rec};
++            return rec;
+     }
+ 
+     /// Removes ID with associated VALUES from record with key PROBLEM_CONFIG from db.
