@@ -1,0 +1,14 @@
+Fixes checksetup.pl failing on a fresh SQLite database.
+Fixes taken from upstream development branches.
+
+--- a/Bugzilla/DB/Schema/Sqlite.pm
++++ b/Bugzilla/DB/Schema/Sqlite.pm
+@@ -10,7 +10,7 @@
+ use 5.14.0;
+ use Moo;
+
+-use base qw(Bugzilla::DB::Schema);
++extends qw(Bugzilla::DB::Schema);
+
+ use Bugzilla::Error;
+ use Bugzilla::Util qw(generate_random_password);
