@@ -27,6 +27,7 @@ RDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.5-hatchling-wheel.patch
+	"${FILESDIR}"/${P}-pytest-9.2.0.patch
 )
 
 EPYTEST_PLUGINS=( "${PN}" )
