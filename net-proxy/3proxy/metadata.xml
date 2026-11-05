@@ -2,10 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person" proxied="yes">
-		<email>gentoo.org@id.powerman.name</email>
-		<name>Alex Efros</name>
-	</maintainer>
-	<maintainer type="person" proxied="yes">
 		<email>nicolas.parlant@parhuet.fr</email>
 		<name>Nicolas PARLANT</name>
 	</maintainer>
