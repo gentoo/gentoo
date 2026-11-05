@@ -3,9 +3,10 @@
 
 EAPI=8
 
+RPM_COMPRESS_TYPE="zstd"
 inherit rpm systemd
 
-MY_P="NessusAgent-${PV}-el8"
+MY_P="NessusAgent-${PV}-el9"
 
 DESCRIPTION="A remote security scanner for Linux - agent component"
 HOMEPAGE="https://www.tenable.com/"
@@ -26,6 +27,11 @@ QA_PREBUILT="opt/nessus_agent/bin/*
 	opt/nessus_agent/lib/nessus/libjemalloc.so.*
 	opt/nessus_agent/var/nessus/mod/com.tenable.*
 	opt/nessus_agent/sbin/*"
+
+BDEPEND="
+	app-arch/rpm
+	app-arch/zstd
+"
 
 src_install() {
 	# Using doins -r would strip executable bits from all binaries
