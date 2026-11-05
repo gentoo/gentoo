@@ -161,8 +161,6 @@ multilib_src_configure() {
 multilib_src_install_all() {
 	find "${ED}" -type f -name '*.la' -delete || die
 
-	rm -r "${ED}"/var/run || die
-
 	fowners :shadow /sbin/unix_chkpwd
 	fperms g+s /sbin/unix_chkpwd
 
@@ -173,9 +171,13 @@ multilib_src_install_all() {
 	cat ->> "${ED}"/usr/lib/tmpfiles.d/${CATEGORY}-${PN}.conf <<-_EOF_
 		d /run/faillock 0755 root root
 	_EOF_
-	use selinux && cat ->> "${ED}"/usr/lib/tmpfiles.d/${CATEGORY}-${PN}-selinux.conf <<-_EOF_
-		d /run/sepermit 0755 root root
-	_EOF_
+
+	if use selinux; then
+		rm -r "${ED}"/var/run || die
+		cat ->> "${ED}"/usr/lib/tmpfiles.d/${CATEGORY}-${PN}-selinux.conf <<-_EOF_
+			d /run/sepermit 0755 root root
+		_EOF_
+	fi
 }
 
 pkg_postinst() {
