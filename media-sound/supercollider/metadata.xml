@@ -7,14 +7,7 @@
 		working with sound. It is free and open source software
 		available for Windows, Mac OS X, and Linux.
 	</longdescription>
-	<maintainer type="person" proxied="yes">
-		<email>andieverbus@gmail.com</email>
-		<name>Andie Verbus</name>
-	</maintainer>
-	<maintainer type="project" proxied="proxy">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<upstream>
 		<remote-id type="github">supercollider/supercollider</remote-id>
 	</upstream>
