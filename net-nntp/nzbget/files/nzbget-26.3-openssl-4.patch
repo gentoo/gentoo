@@ -1,0 +1,43 @@
+commit f81d3f4de58fbfae9e0657a7eb3041ff6ab5adfd
+Author: Denis <146707790+dnzbk@users.noreply.github.com>
+Date:   Mon Oct 12 14:01:16 2026 +0300
+
+    Chore: log ENABLE_LTO, fix libnzbget library target OUTPUT_NAME, and const-correctness for OpenSSL 3.x (#1051)
+
+--- a/daemon/connect/TlsSocket.cpp
++++ b/daemon/connect/TlsSocket.cpp
+@@ -258,11 +258,11 @@ bool TlsSocket::ValidateCert()
+ 		if (common_name_loc >= 0)
+ 		{
+ 			// Extract the CN field
+-			X509_NAME_ENTRY* common_name_entry = X509_NAME_get_entry(X509_get_subject_name(cert.get()), common_name_loc);
++			const X509_NAME_ENTRY* common_name_entry = X509_NAME_get_entry(X509_get_subject_name(cert.get()), common_name_loc);
+ 			if (common_name_entry != nullptr)
+ 			{
+ 				// Convert the CN field to a C string
+-				ASN1_STRING* common_name_asn1 = X509_NAME_ENTRY_get_data(common_name_entry);
++				const ASN1_STRING* common_name_asn1 = X509_NAME_ENTRY_get_data(common_name_entry);
+ 				if (common_name_asn1 != nullptr)
+ 				{
+ 					certHost = ASN1_STRING_get0_data(common_name_asn1);
+commit 29ecf0d8699d26e505111d9b08b101f89eb34757
+Author: Denis <146707790+dnzbk@users.noreply.github.com>
+Date:   Thu Oct 15 16:05:06 2026 +0300
+
+    Rely on OpenSSL protocol negotiation prioritizing TLS 1.3 (#1056)
+
+--- a/daemon/connect/TlsSocket.cpp
++++ b/daemon/connect/TlsSocket.cpp
+@@ -177,12 +177,6 @@
+ 		return false;
+ 	}
+ 
+-	if (!SSL_CTX_set_min_proto_version(m_context.get(), SSL3_VERSION))
+-	{
+-		ReportError("Could not set minimum protocol to SSL3", false);
+-		return false;
+-	}
+-
+ 	int ec = m_isClient ? SSL_connect(m_session.get()) : SSL_accept(m_session.get());
+ 	bool shouldVerify = m_X509Store && m_certVerifLevel > Options::ECertVerifLevel::cvNone;
+ 	if (ec < 1)
