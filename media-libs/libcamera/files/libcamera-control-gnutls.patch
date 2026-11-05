@@ -1,0 +1,29 @@
+diff --git a/meson_options.txt b/meson_options.txt
+index e829ebe60..7a39d725e 100644
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -46,6 +46,11 @@ option('gstreamer',
+         value : 'auto',
+         description : 'Compile libcamera GStreamer plugin')
+ 
++option('gnutls',
++        type : 'feature',
++        value : 'disabled',
++        description : 'compile libcamera with IPA module signing support using GNU TLS library')
++
+ option('ipas',
+         type : 'array',
+         choices : ['ipu3', 'mali-c55', 'rkisp1', 'rpi/pisp', 'rpi/vc4',
+diff --git a/src/libcamera/meson.build b/src/libcamera/meson.build
+index 17c1b2cb3..d970cccdd 100644
+--- a/src/libcamera/meson.build
++++ b/src/libcamera/meson.build
+@@ -88,7 +88,7 @@ libyaml = dependency('yaml-0.1', default_options : [
+ ])
+ 
+ # Use one of gnutls or libcrypto (provided by OpenSSL), trying gnutls first.
+-libcrypto = dependency('gnutls', required : false)
++libcrypto = dependency('gnutls', required : get_option('gnutls'))
+ if libcrypto.found()
+     config_h.set('HAVE_GNUTLS', 1)
+ else
