@@ -10,7 +10,7 @@ inherit verify-sig
 
 MY_P=openssl-${PV/_/-}
 
-DESCRIPTION="Full-strength general purpose cryptography library (including SSL and TLS)"
+DESCRIPTION="Library-only copy of old dev-libs/openssl for prebuilt binaries"
 HOMEPAGE="https://openssl-library.org/"
 SRC_URI="
 	https://github.com/openssl/openssl/releases/download/${MY_P}/${MY_P}.tar.gz

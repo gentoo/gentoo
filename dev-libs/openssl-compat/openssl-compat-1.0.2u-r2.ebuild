@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -21,7 +21,7 @@ MY_P=openssl-${PV/_/-}
 # - openssl-1.1.1-ec-curves.patch (PATCH37) -- MODIFIED
 BINDIST_PATCH_SET="openssl-1.0.2t-bindist-1.0.tar.xz"
 
-DESCRIPTION="full-strength general purpose cryptography library (including SSL and TLS)"
+DESCRIPTION="Library-only copy of old dev-libs/openssl for prebuilt binaries"
 HOMEPAGE="https://www.openssl.org/"
 SRC_URI="mirror://openssl/source/${MY_P}.tar.gz
 	bindist? (
