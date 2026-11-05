@@ -5,14 +5,6 @@
 		<email>nowa@gentoo.org</email>
 		<name>Nowa Ammerlaan</name>
 	</maintainer>
-	<maintainer type="person" proxied="yes">
-		<email>xp.vit.blr@gmail.com</email>
-		<name>Viktar Patotski</name>
-	</maintainer>
-	<maintainer type="project" proxied="proxy">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
-	</maintainer>
 	<maintainer type="project">
 		<email>python@gentoo.org</email>
 		<name>Python</name>
