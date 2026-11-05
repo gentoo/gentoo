@@ -1748,7 +1748,7 @@ glibc_do_src_install() {
 	# creation of the "factory" symlink in pkg_postinst().
 	rm -f "${ED}"/etc/localtime
 
-	# Generate all locales if this is a native build as locale generation
+	# Compile all locales when requested, but only for native builds.
 	if use compile-locales && ! is_crosscompile; then
 		# The build host's localedef(1) utility may be too old to
 		# compile the newly supplied set of locales (bug #985583).
