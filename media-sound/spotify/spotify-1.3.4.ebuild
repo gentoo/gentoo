@@ -15,7 +15,7 @@ S="${WORKDIR}/"
 LICENSE="Spotify"
 SLOT="0"
 KEYWORDS="amd64"
-IUSE="libnotify local-playback pax-kernel pulseaudio"
+IUSE="libnotify local-playback pax-kernel pulseaudio X"
 RESTRICT="mirror strip"
 
 BDEPEND="
@@ -33,7 +33,7 @@ RDEPEND="
 	media-libs/alsa-lib
 	media-libs/fontconfig
 	media-libs/harfbuzz
-	media-libs/mesa[X(+)]
+	media-libs/mesa[X?]
 	net-misc/curl[ssl]
 	net-print/cups[ssl(+)]
 	sys-apps/dbus
