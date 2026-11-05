@@ -5,10 +5,6 @@
 		<email>parona@protonmail.com</email>
 		<name>Alfred Wingate</name>
 	</maintainer>
-	<maintainer type="person" proxied="yes">
-		<email>Dessa@gmake.de</email>
-		<name>Robert Förster</name>
-	</maintainer>
 	<maintainer type="project" proxied="proxy">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
