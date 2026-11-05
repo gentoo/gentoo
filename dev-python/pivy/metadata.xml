@@ -5,10 +5,6 @@
 	<email>fordfrog@gentoo.org</email>
 	<name>Miroslav Šulc</name>
 </maintainer>
-<maintainer type="person" proxied="yes">
-	<email>waebbl-gentoo@posteo.net</email>
-	<name>Bernd Waibel</name>
-</maintainer>
 <use>
 	<flag name="quarter">
 		Use <pkg>media-libs/quarter</pkg> for GUI bindings
