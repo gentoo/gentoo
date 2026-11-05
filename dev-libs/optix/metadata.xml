@@ -5,10 +5,6 @@
     <email>negril.nx+gentoo@gmail.com</email>
     <name>Paul Zander</name>
   </maintainer>
-  <maintainer type="person" proxied="yes">
-    <email>mathy@vanvoorden.be</email>
-    <name>Mathy Vanvoorden</name>
-  </maintainer>
   <maintainer type="person" proxied="proxy">
     <email>ionen@gentoo.org</email>
     <name>Ionen Wolkens</name>
