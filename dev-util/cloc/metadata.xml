@@ -5,14 +5,6 @@
     <email>tamiko@gentoo.org</email>
     <name>Matthias Maier</name>
   </maintainer>
-  <maintainer type="person" proxied="yes">
-    <email>foerster.florianjr@gmail.com</email>
-    <name>Florian Förster</name>
-  </maintainer>
-  <maintainer type="project" proxied="proxy">
-    <email>proxy-maint@gentoo.org</email>
-    <name>Proxy Maintainers</name>
-  </maintainer>
   <upstream>
     <remote-id type="github">AlDanial/cloc</remote-id>
     <bugs-to>https://github.com/AlDanial/cloc/issues</bugs-to>
