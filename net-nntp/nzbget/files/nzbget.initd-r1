@@ -6,6 +6,7 @@ extra_started_commands="reload"
 
 description="A command-line based binary newsgrabber supporting .nzb files"
 pidfile=/run/nzbget/nzbget.pid
+retry="${NZBGET_TERMTIMEOUT:-TERM/30/KILL/5}"
 command=/usr/bin/nzbget
 command_args="--configfile \"${NZBGET_CONFIGFILE}\" \
   --daemon --option LockFile=${pidfile} \
