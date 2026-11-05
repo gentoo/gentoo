@@ -19,6 +19,10 @@ else
 		KEYWORDS="amd64"
 	fi
 fi
+SRC_URI+="
+		https://github.com/intel/media-driver/commit/ffd10f98c74ada499f8cb171fd28a6f8a6ad47a0.patch ->
+			${PN}-26.2.4-fix-argument-list-too-long.patch
+"
 
 DESCRIPTION="Intel Media Driver for VA-API (iHD)"
 HOMEPAGE="https://github.com/intel/media-driver"
@@ -37,6 +41,8 @@ RDEPEND="${DEPEND}"
 PATCHES=(
 	"${FILESDIR}"/${PN}-23.3.4-Remove-unwanted-CFLAGS.patch
 	"${FILESDIR}"/${PN}-23.3.4_testing_in_src_test.patch
+	# https://bugs.gentoo.org/985076 https://github.com/intel/media-driver/pull/2060
+	"${DISTDIR}"/${PN}-26.2.4-fix-argument-list-too-long.patch
 )
 
 multilib_src_configure() {
