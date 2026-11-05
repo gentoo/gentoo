@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person" proxied="yes">
-		<email>john.einar@gmail.com</email>
-		<name>John Einar Reitan</name>
-	</maintainer>
 	<maintainer type="person">
 		<email>conikost@gentoo.org</email>
 		<name>Conrad Kostecki</name>
