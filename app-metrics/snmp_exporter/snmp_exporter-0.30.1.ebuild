@@ -15,7 +15,7 @@ SRC_URI+=" https://github.com/gentoo-golang-dist/${PN}/releases/download/v${PV}/
 
 LICENSE="Apache-2.0 BSD BSD-2 MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 DEPEND="acct-group/snmp_exporter
 	acct-user/snmp_exporter
