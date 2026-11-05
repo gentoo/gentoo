@@ -35,7 +35,10 @@ PATCHES=(
 
 src_prepare() {
 	default
+
+	# Needs network access
 	rm modules/httpd/httpd.test || die
+	rm modules/http/autoproxy.test || die
 }
 
 src_compile() {
@@ -43,7 +46,7 @@ src_compile() {
 }
 
 src_test() {
-	USER= virtx emake test_batch
+	USER= virtx emake -Onone test_batch
 }
 
 src_install() {
