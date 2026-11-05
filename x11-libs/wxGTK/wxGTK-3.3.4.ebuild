@@ -73,7 +73,6 @@ RDEPEND="
 	wayland? ( ${COMMON_GUI_RDEPEND} )
 "
 DEPEND="${RDEPEND}
-	opengl? ( virtual/glu[${MULTILIB_USEDEP}] )
 	X? ( x11-base/xorg-proto )"
 BDEPEND="
 	test? ( >=dev-util/cppunit-1.8.0 )
@@ -85,10 +84,6 @@ BDEPEND="
 # X11/Wayland support is decided by testing GDK in build/cmake/modules/FindGTK3.cmake
 # and is configured by -DGENTOO_GTK_HIDE_WAYLAND and -DGENTOO_GTK_HIDE_X11
 # -DwxUSE_WAYLAND can disable Wayland support
-
-PATCHES=(
-	"${FILESDIR}/${PN}-3.2.1-prefer-lib64-in-tests.patch"
-)
 
 src_prepare() {
 	# tests that require network access
