@@ -5,10 +5,6 @@
 		<email>Dessa@gmake.de</email>
 		<name>Robert Förster</name>
 	</maintainer>
-	<maintainer type="person" proxied="yes">
-		<email>chris@christopherpritchard.co.uk</email>
-		<name>Chris Pritchard</name>
-	</maintainer>
 	<maintainer type="project" proxied="proxy">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
