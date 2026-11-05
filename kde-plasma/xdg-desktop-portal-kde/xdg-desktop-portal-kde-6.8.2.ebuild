@@ -56,9 +56,10 @@ RDEPEND="${COMMON_DEPEND}
 BDEPEND="
 	>=dev-qt/qtbase-${QTMIN}:6[wayland]
 	virtual/pkgconfig
+	test? ( >=kde-plasma/plasma-keyboard-${KDE_CATV}:6 )
 "
 
 CMAKE_SKIP_TESTS=(
-	# bugs: 926483, wants dbus/X11
-	colorschemetest
+	colorschemetest # bug #926483, wants dbus/X11
+	settingsportaltest # bug #984272, wants dbus
 )
