@@ -1,0 +1,34 @@
+https://bugs.gentoo.org/658536
+https://github.com/madler/zlib/pull/229
+
+From e490ddad3091574a0c2e3b5a66a8fee9a7ab212f Mon Sep 17 00:00:00 2001
+From: Pavel Raiskup <praiskup@redhat.com>
+Date: Sun, 19 Feb 2017 16:42:12 +0100
+Subject: [PATCH] minizip: don't install crypt.h
+
+People did mistakenly or unintentionally include crypt.h before,
+don't install this internal header from now.
+---
+ contrib/minizip/Makefile.am | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+--- a/contrib/minizip/Makefile.am
++++ b/contrib/minizip/Makefile.am
+@@ -26,7 +26,6 @@ libminizip_la_LDFLAGS = $(AM_LDFLAGS) -version-info 1:0:0 -lz
+ 
+ minizip_includedir = $(includedir)/minizip
+ minizip_include_HEADERS = \
+-	crypt.h \
+ 	ints.h \
+ 	ioapi.h \
+ 	mztools.h \
+@@ -34,6 +33,9 @@ minizip_include_HEADERS = \
+ 	zip.h \
+ 	${iowin32_h}
+ 
++noinst_HEADERS = \
++	crypt.h
++
+ pkgconfigdir = $(libdir)/pkgconfig
+ pkgconfig_DATA = minizip.pc
+ 
