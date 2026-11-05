@@ -512,6 +512,7 @@ zig-utils_find_installation() {
 	# Upstream skipped releasing 0.15.0
 	local zig_supported_versions=(
 		"9999"
+		"0.17.1"
 		"0.16.0"
 		"0.15.2"
 		"0.15.1"
