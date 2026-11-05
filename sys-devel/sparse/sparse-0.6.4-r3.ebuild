@@ -1,10 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-LLVM_MAX_SLOT=14
-inherit llvm toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="C semantic parser"
 HOMEPAGE="https://sparse.wiki.kernel.org/index.php/Main_Page"
@@ -19,25 +18,15 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="gtk llvm sqlite test xml"
+IUSE="gtk sqlite test xml"
 RESTRICT="!test? ( test )"
 
 RDEPEND="gtk? ( x11-libs/gtk+:3 )
-	llvm? ( <llvm-core/llvm-$((${LLVM_MAX_SLOT} + 1)):= )
 	sqlite? ( dev-db/sqlite:= )
 	xml? ( dev-libs/libxml2:= )"
 DEPEND="${RDEPEND}"
 BDEPEND="gtk? ( virtual/pkgconfig )
 	xml? ( virtual/pkgconfig )"
-
-llvm_check_deps() {
-	has_version "llvm-core/llvm:${LLVM_SLOT}" && \
-		has_version -r "llvm-core/llvm:${LLVM_SLOT}"
-}
-
-pkg_setup() {
-	use llvm && llvm_pkg_setup
-}
 
 _emake() {
 	# Makefile does not allow for an easy override of flags.
@@ -49,7 +38,7 @@ _emake() {
 		CFLAGS="${CFLAGS}" \
 		PKG_CONFIG="$(tc-getPKG_CONFIG)" \
 		HAVE_GTK=$(usex gtk) \
-		HAVE_LLVM=$(usex llvm) \
+		HAVE_LLVM=0 \
 		HAVE_SQLITE=$(usex sqlite) \
 		HAVE_LIBXML=$(usex xml) \
 		V=1 \
