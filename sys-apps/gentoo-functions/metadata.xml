@@ -8,7 +8,7 @@
 		<email>base-system@gentoo.org</email>
 		<name>Gentoo Base System</name>
 	</maintainer>
-	<maintainer type="person">
+	<maintainer type="person" proxied="yes">
 		<email>kfm@plushkava.net</email>
 		<name>Kerin Millar</name>
 	</maintainer>

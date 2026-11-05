@@ -5,7 +5,7 @@
 		<email>toolchain@gentoo.org</email>
 		<name>Gentoo Toolchain Project</name>
 	</maintainer>
-	<maintainer type="person">
+	<maintainer type="person" proxied="yes">
 		<email>kfm@plushkava.net</email>
 		<name>Kerin Millar</name>
 	</maintainer>

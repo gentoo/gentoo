@@ -5,7 +5,7 @@
     <email>grozin@gentoo.org</email>
     <name>Andrey Grozin</name>
   </maintainer>
-  <maintainer type="person">
+  <maintainer type="person" proxied="yes">
     <email>valexlin@gmail.com</email>
     <name>Aleksey Chernov</name>
     <description>upstream</description>

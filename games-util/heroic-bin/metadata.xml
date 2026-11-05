@@ -6,7 +6,7 @@
     <email>voyageur@gentoo.org</email>
     <name>Bernard Cafarelli</name>
   </maintainer>
-  <maintainer type="person">
+  <maintainer type="person" proxied="yes">
     <email>gonegrier.duarte@gmail.com</email>
     <name>Gonçalo Negrier Duarte</name>
   </maintainer>
