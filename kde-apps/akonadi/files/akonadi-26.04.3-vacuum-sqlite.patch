@@ -1,0 +1,48 @@
+From a64ee80cdd5a70b3bcc2f2b8acb935c2fec4ef6d Mon Sep 17 00:00:00 2001
+From: snow flurry <snow@flurry.sh>
+Date: Thu, 9 Jul 2026 13:08:22 -0700
+Subject: [PATCH] StorageJanitor: VACUUM full Sqlite database
+
+Sqlite has long supported VACUUM, but requires the full database be
+vacuumed at once.
+
+Based on !393.
+
+BUG: 516868
+(cherry picked from commit eeb4e8ffece7aeb9623f326b68b05a3e309c11af)
+---
+ src/server/storagejanitor.cpp | 17 ++++++++++++++++-
+ 1 file changed, 16 insertions(+), 1 deletion(-)
+
+diff --git a/src/server/storagejanitor.cpp b/src/server/storagejanitor.cpp
+index 1606b83b3..8bef20ede 100644
+--- a/src/server/storagejanitor.cpp
++++ b/src/server/storagejanitor.cpp
+@@ -728,8 +728,23 @@ void StorageJanitor::vacuum()
+             }
+         }
+         inform("vacuum done");
++    } else if (dbType == DbType::Sqlite) {
++        inform(
++            "vacuuming database, that'll take some time and require a lot of "
++            "temporary disk space...");
++        QSqlQuery q(m_dataStore->database());
++        if (!q.exec(QLatin1StringView("VACUUM"))) {
++            qCCritical(AKONADISERVER_LOG) << "failed to optimize database:" << q.lastError().text();
++        }
++        if (!q.exec(QLatin1StringView("PRAGMA wal_checkpoint(TRUNCATE)"))) {
++            // Not critical since the WAL will eventually truncate, but it does
++            // mean the total database size is twice its actual size
++            qCWarning(AKONADISERVER_LOG) << "Unable to clear the write-ahead log:" << q.lastError().text()
++                                         << ". Restart akonadi to free up additional disk space.";
++        }
++        inform("vacuum done");
+     } else {
+-        inform("Vacuum not supported for this database backend. (Sqlite backend)");
++        inform("Vacuum not supported for this database backend.");
+     }
+ 
+     Q_EMIT done();
+-- 
+2.56.0
+
