@@ -95,6 +95,10 @@ src_prepare() {
 		-e 's:;pidfile=:pidfile=/run/murmur/murmur.pid:' \
 		-i auxiliary_files/mumble-server.ini || die
 
+	# Fix path to server config file in the systemd unit
+	sed -e 's|mumble-server\.ini|murmur.ini|' \
+		-i auxiliary_files/config_files/mumble-server.service.in || die
+
 	# Replace the default group and user _mumble-server with murmur
 	grep -r -l _mumble-server auxiliary_files/ | xargs sed -i 's/_mumble-server/murmur/g' || die
 
@@ -149,16 +153,17 @@ src_install() {
 	fi
 
 	newinitd "${T}"/murmur.initd murmur
-	newconfd "${FILESDIR}"/murmur.confd-r2 murmur
+	newconfd "${FILESDIR}"/murmur.confd-r3 murmur
 
 	keepdir /var/lib/murmur /var/log/murmur
 	fowners -R murmur /var/lib/murmur /var/log/murmur
 	fperms 750 /var/lib/murmur /var/log/murmur
 
 	mv "${ED}"/etc/murmur/mumble-server.ini "${ED}"/etc/murmur/murmur.ini || die
+	fperms 640 /etc/murmur/murmur.ini
+
 	mv "${D}/$(systemd_get_systemunitdir)/mumble-server.service" \
 		"${D}/$(systemd_get_systemunitdir)/murmur.service" || die
-	sed -i 's|mumble-server\.ini|murmur.ini|' "${D}/$(systemd_get_systemunitdir)/murmur.service" || die
 
 	readme.gentoo_create_doc
 }
