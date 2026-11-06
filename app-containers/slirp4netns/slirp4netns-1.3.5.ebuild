@@ -11,7 +11,7 @@ SRC_URI="https://github.com/rootless-containers/slirp4netns/archive/v${PV}.tar.g
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv"
+KEYWORDS="amd64 arm64 ~ppc64 ~riscv"
 RESTRICT="test"
 
 DEPEND="
