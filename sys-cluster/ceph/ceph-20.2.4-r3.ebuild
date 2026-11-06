@@ -218,7 +218,6 @@ PATCHES=(
 	"${FILESDIR}/ceph-19.2.1-isa-l.patch"
 	"${FILESDIR}/ceph-19.2.2-QATAPP-Fix-clang-16-compiling-issue.patch"
 	"${FILESDIR}/ceph-19.2.2-add-option-to-build-agains-system-opentelemetry.patch"
-	"${FILESDIR}/ceph-19.2.2-common-add-dependency-on-legacy-option-headers.patch"
 	"${FILESDIR}/ceph-19.2.2-rbd-make-enums-statically-castable.patch"
 	"${FILESDIR}/ceph-19.2.2-rgw-remove-FMT_STRING-to-fix-clang-20-build-failure.patch"
 	# https://bugs.gentoo.org/960812
@@ -237,6 +236,7 @@ PATCHES=(
 	"${FILESDIR}/ceph-20.2.1-clang++-libcxx.patch"
 	"${FILESDIR}/ceph-20.2.4-clang++-libcxx.patch"
 	"${FILESDIR}/ceph-20.2.1-qatzip-werror.patch"
+	"${FILESDIR}/ceph-20.1.1-fix-legacy-options-order.patch"
 	"${FILESDIR}/ceph-20.1.1-build-add-Mold-linker-compatibility.patch"
 	"${FILESDIR}/ceph-20.1.1-qatlib-autogen-shebang.patch"
 	"${FILESDIR}/ceph-20.1.1-musl-fixes.patch"
