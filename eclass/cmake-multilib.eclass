@@ -6,7 +6,7 @@
 # Michał Górny <mgorny@gentoo.org>
 # @AUTHOR:
 # Author: Michał Górny <mgorny@gentoo.org>
-# @SUPPORTED_EAPIS: 8
+# @SUPPORTED_EAPIS: 8 9
 # @PROVIDES: cmake multilib-minimal
 # @BLURB: cmake wrapper for multilib builds
 # @DESCRIPTION:
@@ -27,7 +27,7 @@
 : "${CMAKE_ECLASS:=cmake}"
 
 case ${EAPI} in
-	8)
+	8|9)
 		case ${CMAKE_ECLASS} in
 			cmake) ;;
 			*)

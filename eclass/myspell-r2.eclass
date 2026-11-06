@@ -6,7 +6,7 @@
 # Conrad Kostecki <conikost@gentoo.org>
 # @AUTHOR:
 # Tomáš Chvátal <scarabeus@gentoo.org>
-# @SUPPORTED_EAPIS: 7 8
+# @SUPPORTED_EAPIS: 7 8 9
 # @BLURB: An eclass to streamline the construction of ebuilds for new Myspell dictionaries.
 # @DESCRIPTION:
 # The myspell-r2 eclass is designed to streamline the construction of ebuilds for
@@ -37,7 +37,7 @@
 # @CODE
 
 case ${EAPI} in
-	7|8) ;;
+	7|8|9) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
