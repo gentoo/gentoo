@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+
 inherit autotools readme.gentoo-r1 systemd
 
 DESCRIPTION="An IMAP daemon designed specifically for maildirs"
@@ -65,6 +66,7 @@ and rerun mkdhparams if needed. Location has changed
 PATCHES=(
 	"${FILESDIR}/${PN}-5.1.8-aclocal-fix.patch"
 	"${FILESDIR}/${PN}-5.0.8-ar-fix.patch"
+	"${FILESDIR}/${P}-openssl4.patch"
 )
 
 src_prepare() {
