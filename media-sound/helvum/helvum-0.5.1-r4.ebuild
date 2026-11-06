@@ -109,7 +109,7 @@ CRATES="
 	winnow@0.5.15
 "
 
-LLVM_COMPAT=( {16..19} )
+LLVM_COMPAT=( {19..21} )
 
 inherit cargo desktop llvm-r1 xdg
 
