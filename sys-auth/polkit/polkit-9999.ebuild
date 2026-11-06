@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{12..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 inherit meson pam python-any-r1 systemd tmpfiles xdg-utils
 
 DESCRIPTION="Policy framework for controlling privileges for system-wide services"
@@ -28,7 +28,7 @@ SLOT="0"
 if [[ ${PV} != 9999 ]] ; then
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 fi
-IUSE="elogind examples gtk +introspection kde pam nls selinux systemd test"
+IUSE="elogind examples +introspection pam nls selinux systemd test"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="?? ( elogind systemd )"
 
@@ -67,13 +67,6 @@ RDEPEND="
 	${DEPEND}
 	acct-user/polkitd
 	selinux? ( sec-policy/selinux-policykit )
-"
-PDEPEND="
-	gtk? ( || (
-		>=gnome-extra/polkit-gnome-0.105
-		>=lxde-base/lxsession-0.5.2
-	) )
-	kde? ( kde-plasma/polkit-kde-agent )
 "
 
 DOCS=(
