@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/dominate/
 "
 
-LICENSE="GPL-3+"
+LICENSE="LGPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
 
