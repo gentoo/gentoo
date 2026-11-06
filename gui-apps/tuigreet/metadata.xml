@@ -6,7 +6,7 @@
 		<name>Michael Mair-Keimberger</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">apognu/tuigreet</remote-id>
-		<bugs-to>https://github.com/apognu/tuigreet/issues</bugs-to>
+		<remote-id type="github">tuigreet/tuigreet</remote-id>
+		<bugs-to>https://github.com/tuigreet/tuigreet/issues</bugs-to>
 	</upstream>
 </pkgmetadata>
