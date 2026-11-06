@@ -127,16 +127,26 @@ exceptions like done in this patch.
 Change-Id: Ie7c4515a4dee1c93b04271f1d5057be23c96c039
 Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=34876
 Approved-By: Andrew Burgess <aburgess@redhat.com>
+[Gentoo: add missing #include <exception>, fixes build with libc++]
 ---
- gdb/macrotab.c                    | 75 ++++++++++++++++++++-----------
+ gdb/macrotab.c                    | 77 ++++++++++++++++++++-----------
  gdb/testsuite/gdb.base/macscp.exp | 27 +++++++++++
- 2 files changed, 76 insertions(+), 26 deletions(-)
+ 2 files changed, 78 insertions(+), 26 deletions(-)
 
 diff --git a/gdb/macrotab.c b/gdb/macrotab.c
-index 078eb5cb..ef5b700b 100644
+index 078eb5cb..88b38b56 100644
 --- a/gdb/macrotab.c
 +++ b/gdb/macrotab.c
-@@ -945,22 +945,31 @@ struct macro_for_each_data
+@@ -29,6 +29,8 @@
+ #include "complaints.h"
+ #include "macroexp.h"
+ 
++#include <exception>
++
+ 
+ /* The macro table structure.  */
+ 
+@@ -945,22 +947,31 @@ struct macro_for_each_data
    gdb::function_view<macro_callback_fn> fn;
    struct macro_source_file *file;
    int line;
@@ -177,7 +187,7 @@ index 078eb5cb..ef5b700b 100644
  }
  
  /* Call FN for every macro in TABLE.  */
-@@ -971,31 +980,42 @@ macro_for_each (struct macro_table *table,
+@@ -971,31 +982,42 @@ macro_for_each (struct macro_table *table,
    struct macro_for_each_data datum;
  
    datum.fn = fn;
@@ -237,7 +247,7 @@ index 078eb5cb..ef5b700b 100644
  }
  
  /* Call FN for every macro is visible in SCOPE.  */
-@@ -1010,6 +1030,9 @@ macro_for_each_in_scope (struct macro_source_file *file, int line,
+@@ -1010,6 +1032,9 @@ macro_for_each_in_scope (struct macro_source_file *file, int line,
    datum.line = line;
    splay_tree_foreach (file->table->definitions,
  		      foreach_macro_in_scope, &datum);
