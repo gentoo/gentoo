@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -26,13 +26,6 @@ RDEPEND="${DEPEND}
 	acct-user/nagios
 	acct-group/nagios
 	virtual/mysql"
-
-PATCHES=(
-	"${FILESDIR}"/format-security.patch
-	"${FILESDIR}"/sample-config-piddir.patch
-	"${FILESDIR}"/openrc-init.patch
-	"${FILESDIR}"/c23-compatibility.patch
-)
 
 src_prepare() {
 	default
