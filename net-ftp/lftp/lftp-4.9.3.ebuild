@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -61,6 +61,9 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-4.9.2-socks.patch
 	"${FILESDIR}"/${PN}-4.9.3-gnulib.patch
 	"${FILESDIR}"/${PN}-4.9.3-gnulib-stdlib.h.patch
+	# Fix build with OpenSSL 4
+	# https://github.com/lavv17/lftp/commit/e5d53bcb3
+	"${FILESDIR}"/${PN}-4.9.3-openssl-4.patch
 )
 
 # Gnulib false positive #900064
