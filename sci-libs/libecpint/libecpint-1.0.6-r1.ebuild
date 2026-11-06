@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -23,7 +23,7 @@ src_prepare() {
 	cmake_src_prepare
 
 	find . -name CMakeLists.txt -exec \
-		sed -i -e 's/CXX_STANDARD 11/CXX_STANDARD 14/g' {} \; || die
+		sed -i -e 's/CXX_STANDARD 11/CXX_STANDARD 17/g' {} \; || die
 }
 
 src_configure() {
