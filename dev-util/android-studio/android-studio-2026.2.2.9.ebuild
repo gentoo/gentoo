@@ -38,7 +38,7 @@ LICENSE="Apache-2.0 android BSD BSD-2 CDDL-1.1 CPL-0.5
 	MPL-1.1 MPL-2.0 NPL-1.1 OFL-1.1 ZLIB"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="selinux"
+IUSE="selinux X"
 RESTRICT="bindist mirror strip"
 
 RDEPEND="${DEPEND}
@@ -49,7 +49,7 @@ RDEPEND="${DEPEND}
 	>=media-libs/fontconfig-2.14.0-r1
 	>=media-libs/freetype-2.12.1-r1
 	>=media-libs/libpng-1.6.39
-	>=media-libs/mesa-22.2.5[X(+)]
+	>=media-libs/mesa-22.2.5[X?]
 	|| ( gnome-extra/zenity kde-apps/kdialog x11-apps/xmessage x11-libs/libnotify )
 	sys-libs/ncurses-compat:5[tinfo]
 	>=virtual/zlib-1.2.13-r1:=
