@@ -1,0 +1,23 @@
+From 00c988743adc95a14e7f39abe8419d766e540398 Mon Sep 17 00:00:00 2001
+From: 0xC0ncord <me@concord.sh>
+Date: Fri, 6 Nov 2026 10:49:47 -0500
+Subject: [PATCH] FIX(database): add missing exception include
+
+Add a missing include for <exception>, needed by the use of
+std::throw_with_nested.
+---
+ src/database/MetaTable.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/database/MetaTable.cpp b/src/database/MetaTable.cpp
+index 3b553f67f72..572d470b685 100644
+--- a/src/database/MetaTable.cpp
++++ b/src/database/MetaTable.cpp
+@@ -15,6 +15,7 @@
+ #include <soci/soci.h>
+ 
+ #include <cassert>
++#include <exception>
+ #include <optional>
+ #include <string>
+ 
