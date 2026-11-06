@@ -1,0 +1,98 @@
+https://github.com/intel/qatlib/pull/167
+
+From 5b755a8fcab0f77deff3a7093d8b3f898e439fb6 Mon Sep 17 00:00:00 2001
+From: "Z. Liu" <zhixu.liu@gmail.com>
+Date: Wed, 4 Nov 2026 20:07:35 +0800
+Subject: [PATCH] qatlib: fix musl build errors in sample code and OSAL
+
+GLIBC_VERSION_AT_LEAST and __GLIBC_PREREQ are glibc-specific
+macros and cause build failures on musl. Use HAVE_CLOCK_GETTIME
+instead, which is already detected by Autotools.
+
+TIMEVAL_TO_TIMESPEC is a GNU/BSD extension unavailable on musl.
+Replace it with the equivalent inline conversion.
+
+Include config.h in both source files to make the Autotools
+feature-test macros available.
+
+Signed-off-by: Z. Liu <zhixu.liu@gmail.com>
+---
+ .../framework/linux/user_space/cpa_sample_code_utils.c   | 9 +++++++--
+ .../utilities/osal/src/linux/user_space/OsalServices.c   | 6 +++++-
+ 2 files changed, 12 insertions(+), 3 deletions(-)
+
+diff --git a/src/qatlib/quickassist/lookaside/access_layer/src/sample_code/performance/framework/linux/user_space/cpa_sample_code_utils.c b/src/qatlib/quickassist/lookaside/access_layer/src/sample_code/performance/framework/linux/user_space/cpa_sample_code_utils.c
+index a2a93a6..c7c15b2 100644
+--- a/src/qatlib/quickassist/lookaside/access_layer/src/sample_code/performance/framework/linux/user_space/cpa_sample_code_utils.c
++++ b/src/qatlib/quickassist/lookaside/access_layer/src/sample_code/performance/framework/linux/user_space/cpa_sample_code_utils.c
+@@ -69,6 +69,10 @@
+ *
+ *****************************************************************************/
+ 
++#ifdef HAVE_CONFIG_H
++#include "config.h"
++#endif
++
+ #include "cpa_sample_code_utils.h"
+ #include "cpa_sample_code_utils_common.h"
+ #include "icp_sal_poll.h"
+@@ -117,10 +121,6 @@ sample_code_thread_barrier_t barr;
+ 
+ #define UPPER_HALF_OF_REGISTER (32)
+ 
+-// check GLIBC version used.
+-#define GLIBC_VERSION_AT_LEAST(major, minor)                                   \
+-    (__GLIBC__ > major || (__GLIBC__ == major && __GLIBC_MINOR__ >= minor))
+-
+ static __inline__ Cpa64U sampleCoderdtsc(void)
+ {
+     volatile unsigned long a, d;
+@@ -591,7 +591,7 @@ CpaStatus sampleCodeThreadTimedJoin(sample_code_thread_t *thread,
+ {
+     struct timespec ts = {0};
+     Cpa32S status = 0;
+-#if GLIBC_VERSION_AT_LEAST(2, 17)
++#ifdef HAVE_CLOCK_GETTIME
+     status = clock_gettime(CLOCK_REALTIME, &ts);
+     if (status != 0)
+     {
+@@ -610,8 +610,10 @@ CpaStatus sampleCodeThreadTimedJoin(sample_code_thread_t *thread,
+                   strerror(status));
+         return CPA_STATUS_FAIL;
+     }
+-    // converting results from msec to nanonseconds
+-    TIMEVAL_TO_TIMESPEC(&tv, &ts);
++    /* converting results from microsec to nanonseconds; TIMEVAL_TO_TIMESPEC()
++     * is a GNU/BSD extension, so do the conversion by hand */
++    ts.tv_sec = tv.tv_sec;
++    ts.tv_nsec = tv.tv_usec * 1000;
+ #endif
+ 
+     ts.tv_sec += *pTimeOutInMs / 1000;
+diff --git a/src/qatlib/quickassist/utilities/osal/src/linux/user_space/OsalServices.c b/src/qatlib/quickassist/utilities/osal/src/linux/user_space/OsalServices.c
+index d9d0a24..377ef67 100644
+--- a/src/qatlib/quickassist/utilities/osal/src/linux/user_space/OsalServices.c
++++ b/src/qatlib/quickassist/utilities/osal/src/linux/user_space/OsalServices.c
+@@ -38,6 +38,10 @@
+  * 
+  */
+ 
++#ifdef HAVE_CONFIG_H
++#include "config.h"
++#endif
++
+ #define __STDC_WANT_LIB_EXT1__ 1
+ #include <stdarg.h>
+ #include <stdio.h>
+@@ -359,7 +363,7 @@ OSAL_PUBLIC UINT64 osalTimestampGet(void)
+ OSAL_PUBLIC UINT64 osalTimestampGetNs(void)
+ {
+     OsalTimeval ptime;
+-#if __GLIBC_PREREQ(2, 17)
++#ifdef HAVE_CLOCK_GETTIME
+     struct timespec tspec;
+ 
+     if (clock_gettime(CLOCK_REALTIME, &tspec) == 0)
+-- 
+2.49.1
+
