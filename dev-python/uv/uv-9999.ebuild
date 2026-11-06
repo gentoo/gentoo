@@ -5,7 +5,7 @@ EAPI=8
 
 RUST_MIN_VER="1.97.0"
 
-inherit cargo check-reqs git-r3
+inherit cargo check-reqs git-r3 shell-completion
 
 DESCRIPTION="A Python package installer and resolver, written in Rust"
 HOMEPAGE="
@@ -18,7 +18,7 @@ LICENSE="|| ( Apache-2.0 MIT )"
 SLOT="0"
 IUSE="test"
 RESTRICT="test"
-PROPERTIES="test_network"
+PROPERTIES="test? ( test_network )"
 
 DEPEND="
 	app-arch/zstd:=
@@ -133,4 +133,9 @@ src_install() {
 		# https://docs.astral.sh/uv/reference/settings/#system-certs
 		system-certs = true
 	EOF
+
+	local uv_bin=$(cargo_target_dir)/uv
+	newbashcomp - uv < <("${uv_bin}" generate-shell-completion bash)
+	newfishcomp - uv < <("${uv_bin}" generate-shell-completion fish)
+	newzshcomp - uv < <("${uv_bin}" generate-shell-completion zsh)
 }
