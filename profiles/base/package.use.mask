@@ -6,6 +6,10 @@
 
 # New entries go on top.
 
+# Michał Górny <mgorny@gentoo.org> (2026-11-06)
+# Needs clang-19.
+<dev-util/nvidia-cuda-toolkit-13 clang
+
 # Michał Górny <mgorny@gentoo.org> (2026-10-30)
 # Packages needing dev-python/sphinx on py3.12.
 <dev-lang/ghc-9.8 doc
