@@ -1,0 +1,47 @@
+From 3aae197d80f13a5c7ae64f84260cd8439db594d6 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Fri, 6 Nov 2026 15:08:12 +0100
+Subject: [PATCH] Lower minimum PIM dependencies to 6.7.3 (26.04.3) except for
+ libkleo
+
+Amends upstream commits:
+fe29ed3ef85f1f56a336247a78ccfd0c56e3af63 (6.8.3 auto-bump)
+83153f31757727f91e72c38114cef82d295b5201 (6.8.2 auto-bump)
+26708ccab81c29c12362398152032cf8fb35091f (6.8.1 auto-bump)
+f247b7f800f4740f89d09d8fa5a11e656c6b8d85 (6.8.0 auto-bump)
+98107e209b9aeab1999d1246f2a7525e31cda8e5 (6.7.90 auto-bump)
+03a20a3e4988a1c0fc4686e967df819a989ffd0f (6.7.80 auto-bump)
+3d388bc2c1359c5c059ddef10e19d5f6802b204d (6.7.40 auto-bump)
+... etc.
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 25ff0f971..f6b9f986f 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -50,13 +50,13 @@ option(DISABLE_KWATCHGNUPG "Don't build the kwatchgnupg tool [default=OFF]" OFF)
+ 
+ # Standalone build. Find / include everything necessary.
+ set(KF_MIN_VERSION "6.25.0")
+-set(KIDENTITYMANAGEMENT_VERSION "6.8.3")
+-set(KMAILTRANSPORT_VERSION "6.8.3")
+-set(AKONADI_MIME_VERSION "6.8.3")
+-set(KMIME_VERSION "6.8.3")
++set(KIDENTITYMANAGEMENT_VERSION "6.7.3")
++set(KMAILTRANSPORT_VERSION "6.7.3")
++set(AKONADI_MIME_VERSION "6.7.3")
++set(KMIME_VERSION "6.7.3")
+ set(LIBKLEO_VERSION "6.8.3")
+ set(QT_REQUIRED_VERSION "6.7.0")
+-set(MIMETREEPARSER_VERSION "6.8.3")
++set(MIMETREEPARSER_VERSION "6.7.3")
+ set(GPGME_REQUIRED_VERSION "2.0.0")
+ set(LIBASSUAN_REQUIRED_VERSION "2.4.2")
+ set(GPG_ERROR_REQUIRED_VERSION "1.47")
+-- 
+2.56.0
+
