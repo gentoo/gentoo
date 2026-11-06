@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Jimi Huotari <chiitoo@gentoo.org> (2026-11-06)
+# Tested working on amd64.
+lxqt-base/lxqt-meta -clip
+
 # Alexander Tsoy (2026-09-27)
 # Assembly optimisations are supported on amd64 for all versions
 app-crypt/veracrypt -asm

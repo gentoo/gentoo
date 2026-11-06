@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>lxqt@gentoo.org</email>
+		<name>LXQt</name>
+	</maintainer>
+	<longdescription>
+		Based on Qlipper, lxqt-clip is a light-weight clip-board
+		history application created, and maintained by the LXQt project
+		and contributors.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">lxqt/lxqt-clip</remote-id>
+	</upstream>
+</pkgmetadata>

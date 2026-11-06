@@ -1,6 +1,10 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Jimi Huotari <chiitoo@gentoo.org> (2026-11-06)
+# gui-apps/lxqt-clip is only keyworded for amd64 and arm64 at this time.
+lxqt-base/lxqt-meta clip
+
 # Alexander Tsoy (2026-09-27)
 # Mask assembly optimisations that are platform-specific
 app-crypt/veracrypt asm
