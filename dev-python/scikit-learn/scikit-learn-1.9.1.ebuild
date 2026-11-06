@@ -32,12 +32,12 @@ DEPEND="
 	virtual/blas:=
 	virtual/cblas:=
 	>=dev-python/numpy-1.24.1:=[${PYTHON_USEDEP}]
+	>=dev-python/scipy-1.10.0[${PYTHON_USEDEP}]
 "
 RDEPEND="
 	${DEPEND}
 	>=dev-python/joblib-1.4.0[${PYTHON_USEDEP}]
 	>=dev-python/narwhals-2.0.1[${PYTHON_USEDEP}]
-	>=dev-python/scipy-1.10.0[${PYTHON_USEDEP}]
 	>=dev-python/threadpoolctl-3.5.0[${PYTHON_USEDEP}]
 "
 BDEPEND="
