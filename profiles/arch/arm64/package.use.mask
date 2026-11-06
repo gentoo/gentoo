@@ -434,9 +434,11 @@ sys-block/fio -io-uring
 # for imagemagick.
 media-gfx/inkscape dia
 
+# Jimi Huotari <chiitoo@gentoo.org> (2026-11-06)
+# Unmask for '2.5.0' and later.
 # Jimi Huotari <chiitoo@gentoo.org> (2020-05-17)
 # Mask until 'app-arch/lxqt-archiver' is keyworded.
-lxqt-base/lxqt-meta archiver
+<lxqt-base/lxqt-meta-2.5.0 archiver
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-04-26)
 # static-pie works on arm64, #719444
