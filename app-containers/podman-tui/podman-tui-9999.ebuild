@@ -24,7 +24,7 @@ SLOT="0"
 RESTRICT="test"
 
 RDEPEND=">=app-containers/podman-6.0.0"
-BDEPEND=">=dev-lang/go-1.25.0"
+BDEPEND=">=dev-lang/go-1.25.9"
 
 src_compile() {
 	local -x CGO_ENABLED=0
