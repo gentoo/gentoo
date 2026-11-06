@@ -16,6 +16,6 @@
 	<upstream>
 		<remote-id type="github">containers/podman-tui</remote-id>
 		<bugs-to>https://github.com/containers/podman-tui/issues</bugs-to>
-		<doc>https://github.com/containers/podman-tui/blob/main/README.md</doc>
+		<doc>https://github.com/containers/podman-tui/blob/main/docs/README.md</doc>
 	</upstream>
 </pkgmetadata>
