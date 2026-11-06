@@ -3,7 +3,7 @@
 
 EAPI=8
 
-LLVM_COMPAT=( {16..19} )
+LLVM_COMPAT=( {19..23} )
 RUST_MIN_VER="1.94"
 inherit cargo desktop llvm-r2 xdg
 
