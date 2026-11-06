@@ -1,0 +1,78 @@
+https://github.com/intel/QATzip/pull/156
+
+From 36752270141fbf5225d6b586135fd10a8902e780 Mon Sep 17 00:00:00 2001
+From: "Z. Liu" <zhixu.liu@gmail.com>
+Date: Wed, 4 Nov 2026 21:09:15 +0800
+Subject: [PATCH] fix build on musl
+
+* `<bits/types.h>` is glibc-specific and unavailable on musl.
+* `__GLIBC_PREREQ` is glibc-specific.
+* `secure_getenv()` is not specific to glibc, so add it to
+  `AC_CHECK_FUNCS`.
+* `stdout` is declared as `extern FILE *const` in musl, so it
+  cannot be reassigned. glibc declares it as `extern FILE *`.
+  Since `freopen()` is part of ISO C and is available on musl,
+  simply discard its return value instead of assigning it back
+  to `stdout`.
+
+Signed-off-by: Z. Liu <zhixu.liu@gmail.com>
+---
+ configure.ac      | 2 +-
+ src/qatzip.c      | 3 +--
+ utils/qzip_main.c | 5 ++++-
+ 3 files changed, 6 insertions(+), 4 deletions(-)
+
+diff --git a/src/qatzip/configure.ac b/src/qatzip/configure.ac
+index dff0670..c55a201 100644
+--- a/src/qatzip/configure.ac
++++ b/src/qatzip/configure.ac
+@@ -79,7 +79,8 @@ AC_CHECK_HEADERS([stdio.h stdarg.h fcntl.h limits.h memory.h \
+ AC_CHECK_FUNCS([atexit getcwd gettimeofday \
+     memmove memset mkdir munmap \
+     realpath strdup strerror strrchr \
+-    strtol strtoul utime fork malloc mmap])
++    strtol strtoul utime fork malloc mmap
++    secure_getenv])
+ 
+ # Checks for pthread.
+ AC_CHECK_LIB([pthread], [pthread_create], ,
+diff --git a/src/qatzip/src/qatzip.c b/src/qatzip/src/qatzip.c
+index b18d1ab..acd2d7c 100755
+--- a/src/qatzip/src/qatzip.c
++++ b/src/qatzip/src/qatzip.c
+@@ -43,7 +43,6 @@
+ #include <stdlib.h>
+ #include <assert.h>
+ #include <sys/time.h>
+-#include <bits/types.h>
+ #include <stdio.h>
+ #include <sys/types.h>
+ #include <sys/syscall.h>
+@@ -522,7 +521,7 @@ const char *getSectionName(void)
+     static char section_name[QAT_SECTION_NAME_SIZE];
+     int len;
+     char *pre_section_name;
+-#if __GLIBC_PREREQ(2, 17)
++#ifdef HAVE_SECURE_GETENV
+     pre_section_name = secure_getenv("QAT_SECTION_NAME");
+ #else
+     pre_section_name = getenv("QAT_SECTION_NAME");
+diff --git a/src/qatzip/utils/qzip_main.c b/src/qatzip/utils/qzip_main.c
+index 9b93591..4b07e0d 100644
+--- a/src/qatzip/utils/qzip_main.c
++++ b/src/qatzip/utils/qzip_main.c
+@@ -194,7 +194,10 @@ int main(int argc, char **argv)
+                 exit(ERROR);
+             }
+             stream_out = stdout;
+-            stdout = freopen(NULL, "w", stdout);
++            if (NULL == freopen(NULL, "w", stdout)) {
++                fprintf(stderr, "freopen: %s\n", strerror(errno));
++                exit(ERROR);
++            }
+             processStream(&g_sess, stdin, stream_out, g_decompress == 0);
+         }
+     } else if (g_params_th.data_fmt == QZIP_DEFLATE_RAW &&
+-- 
+2.49.1
+
