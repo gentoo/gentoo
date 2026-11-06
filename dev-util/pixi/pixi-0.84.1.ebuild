@@ -11,7 +11,7 @@ declare -A GIT_CRATES=(
 	[version-ranges]='https://github.com/astral-sh/pubgrub;d8efd77673c9a90792da9da31b6c0da7ea8a324b;pubgrub-%commit%/version-ranges'
 )
 
-inherit cargo multiprocessing
+inherit cargo multiprocessing shell-completion
 
 CRATE_P=${P}
 DESCRIPTION="A package management and workflow tool"
@@ -99,11 +99,16 @@ src_test() {
 }
 
 src_install() {
-	dobin "$(cargo_target_dir)/pixi"
+	local pixi_bin=$(cargo_target_dir)/pixi
+	dobin "${pixi_bin}"
 
 	insinto /etc/pixi
 	newins - config.toml <<-EOF
 		# Use system certificates.
 		tls-root-certs = "system"
 	EOF
+
+	newbashcomp - pixi < <("${pixi_bin}" completion --shell=bash)
+	newfishcomp - pixi < <("${pixi_bin}" completion --shell=fish)
+	newzshcomp - pixi < <("${pixi_bin}" completion --shell=zsh)
 }
