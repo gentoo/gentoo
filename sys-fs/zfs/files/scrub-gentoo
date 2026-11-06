@@ -1,0 +1,45 @@
+#!/bin/sh -eu
+
+# scrub script
+# based on https://wiki.alpinelinux.org/wiki/ZFS_scrub_and_trim
+
+# directly exit successfully when zfs module is not loaded
+if ! [ -d /sys/module/zfs ]; then
+	exit 0
+fi
+
+# [auto] / enable / disable
+PROPERTY_NAME="org.gentoo:periodic-scrub"
+
+get_property () {
+	# Detect the ${PROPERTY_NAME} property on a given pool.
+	pool="$1"
+	zpool get -pH -o value "${PROPERTY_NAME}" "${pool}" 2>/dev/null || return 1
+}
+
+scrub_if_not_scrub_in_progress () {
+	pool="$1"
+	if ! zpool status "${pool}" | grep -q "scrub in progress"; then
+		# Ignore errors and continue with scrubbing other pools.
+		zpool scrub "${pool}" || true
+	fi
+}
+
+# Scrub all healthy pools that are not already scrubbing as per their configs.
+zpool list -H -o health,name 2>&1 | awk -F'\t' '$1 == "ONLINE" {print $2}' | \
+while read pool
+do
+	# read user-defined config
+	ret=$(get_property "${pool}")
+	if [ $? -ne 0 ] || [ "disable" = "${ret}" ]; then
+		:
+	elif [ "-" = "${ret}" ] || [ "auto" = "${ret}" ] || [ "enable" = "${ret}" ]; then
+		scrub_if_not_scrub_in_progress "${pool}"
+	else
+		cat > /dev/stderr <<EOF
+$0: [WARNING] illegal value "${ret}" for property "${PROPERTY_NAME}" of ZFS dataset "${pool}".
+$0: Acceptable choices for this property are: auto, enable, disable. The default is auto.
+EOF
+	fi
+done
+
