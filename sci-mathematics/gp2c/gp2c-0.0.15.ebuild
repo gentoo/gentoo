@@ -1,7 +1,7 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=9
 
 MY_P="${PN}-"$(ver_rs  3 'pl')
 DESCRIPTION="A GP to C translator"
@@ -12,8 +12,6 @@ S="${WORKDIR}/${MY_P}"
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~riscv"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
 # Perl is run on the build host to compile the descriptions in desc/,
 # see for example desc/Makefile.am.
