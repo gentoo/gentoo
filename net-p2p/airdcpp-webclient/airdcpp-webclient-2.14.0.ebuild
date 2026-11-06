@@ -41,6 +41,12 @@ BDEPEND="
 "
 PDEPEND="webui? ( www-apps/airdcpp-webui )"
 
+PATCHES=(
+	# Fix build with OpenSSL 4
+	# https://github.com/airdcpp/airdcpp-core/commit/c7a85311d
+	"${FILESDIR}/${PN}-2.14.0-openssl-4.patch"
+)
+
 src_configure() {
 	local mycmakeargs=(
 		-DENABLE_NATPMP=$(usex nat-pmp)
