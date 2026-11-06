@@ -312,7 +312,7 @@ COMMON_DEPEND="
 "
 RDEPEND="
 	${COMMON_DEPEND}
-	amf? ( media-video/amdgpu-pro-amf )
+	amf? ( virtual/amdgpu-pro-amf )
 "
 DEPEND="
 	${COMMON_DEPEND}
