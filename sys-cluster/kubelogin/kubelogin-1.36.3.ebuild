@@ -38,3 +38,9 @@ src_install() {
 	newbashcomp ${PN}.bash ${PN}
 	newzshcomp ${PN}.zsh _${PN}
 }
+
+src_test() {
+	# Avoid -buildmode=pie incompatibility with -race on amd64
+	GOFLAGS=${GOFLAGS//-buildmode=pie}
+	default
+}
