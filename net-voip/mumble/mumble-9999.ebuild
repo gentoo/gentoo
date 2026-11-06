@@ -44,7 +44,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-cpp/cli11
-	>=dev-db/soci-4.1.2-r2[sqlite]
+	>=dev-db/soci-4.1.4[sqlite]
 	>=dev-libs/openssl-1.0.0b:0=
 	dev-libs/poco:=[util,xml,zip]
 	>=dev-libs/protobuf-2.2.0:=
