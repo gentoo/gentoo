@@ -29,9 +29,11 @@ else
 	S="${WORKDIR}"/findutils-${PV}
 fi
 
-SRC_URI+="
-	https://github.com/gentoo-crate-dist/findutils/releases/download/${PV}/findutils-${PV}-crates.tar.xz
-"
+if [[ ${PV} != 9999 ]] ; then
+	SRC_URI+="
+		https://github.com/gentoo-crate-dist/findutils/releases/download/${PV}/findutils-${PV}-crates.tar.xz
+	"
+fi
 
 LICENSE="MIT"
 # Dependent crate licenses
