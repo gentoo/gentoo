@@ -25,7 +25,7 @@ DEPEND="acct-user/miniflux"
 RDEPEND="${DEPEND}
 	>=dev-db/postgresql-9.5
 "
-BDEPEND=">=dev-lang/go-1.26:="
+BDEPEND=">=dev-lang/go-1.26.0:="
 
 QA_PRESTRIPPED="usr/bin/miniflux"
 
