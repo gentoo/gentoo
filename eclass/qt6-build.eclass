@@ -59,8 +59,8 @@ inherit cmake flag-o-matic toolchain-funcs
 if [[ ${PV} == *.9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI=(
-		"https://code.qt.io/qt/${QT6_MODULE}.git"
 		"https://github.com/qt/${QT6_MODULE}.git"
+		"https://code.qt.io/qt/${QT6_MODULE}.git"
 	)
 
 	QT6_BUILD_TYPE=live
