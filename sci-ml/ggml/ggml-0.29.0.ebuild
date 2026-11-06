@@ -67,7 +67,7 @@ BDEPEND="
 DOCS=( AUTHORS CONTRIBUTING.md docs/gguf.md README.md )
 
 PATCHES=(
-	"${FILESDIR}"/${P}-llvm-23.patch
+	"${FILESDIR}"/${PN}-0.28.0-llvm-23.patch
 )
 
 pkg_pretend() {
