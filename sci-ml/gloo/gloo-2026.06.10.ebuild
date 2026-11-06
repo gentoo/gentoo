@@ -47,7 +47,7 @@ RESTRICT="test" # For some test the network is needed
 
 PATCHES=(
 	"${FILESDIR}"/${P}-gentoo.patch
-	"${FILESDIR}"/${PN}-2025.06.04-ssl3.patch
+	"${FILESDIR}"/${P}-ssl4.patch
 	"${FILESDIR}"/${PN}-2023.12.03-gcc15.patch
 )
 
