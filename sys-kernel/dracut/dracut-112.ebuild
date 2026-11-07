@@ -5,7 +5,7 @@ EAPI=8
 
 CARGO_OPTIONAL=1
 
-inherit cargo flag-o-matic bash-completion-r1 edo optfeature systemd toolchain-funcs
+inherit cargo flag-o-matic edo optfeature shell-completion systemd toolchain-funcs
 
 if [[ ${PV} == 9999 ]] ; then
 	inherit git-r3
