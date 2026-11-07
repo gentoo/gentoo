@@ -39,7 +39,7 @@ CDEPEND="
 	dev-libs/hidapi
 	dev-libs/mpfr:=
 	media-gfx/openvdb:=
-	media-gfx/libbgcode
+	>=media-gfx/libbgcode-0.0.20260722-r1
 	net-misc/curl[adns]
 	media-libs/glew:0=
 	media-libs/libjpeg-turbo:=
