@@ -16,9 +16,7 @@ if [[ ${PV} == *9999 ]] ; then
 
 	REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 else
-	# For >3.5.1, see https://github.com/RsyncProject/rsync/issues/1097
-	# releases might be signed by non-tridge.
-	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/andrewtridgell.asc
+	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/zendodd.asc
 	inherit verify-sig
 
 	if [[ -n ${RSYNC_NEEDS_AUTOCONF} ]] ; then
@@ -99,7 +97,7 @@ if [[ ${PV} == *9999 ]] ; then
 		')
 	"
 else
-	BDEPEND+=" verify-sig? ( sec-keys/openpgp-keys-andrewtridgell )"
+	BDEPEND+=" verify-sig? ( sec-keys/openpgp-keys-zendodd )"
 fi
 
 pkg_setup() {
