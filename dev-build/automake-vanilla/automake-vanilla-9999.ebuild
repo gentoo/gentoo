@@ -6,7 +6,7 @@ EAPI=8
 # Please do not apply any patches which affect the generated output from
 # `automake`, as this package is used to submit patches upstream.
 
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 
 inherit python-any-r1
 
@@ -18,14 +18,15 @@ if [[ ${PV} == 9999 ]] ; then
 	inherit git-r3
 else
 	SRC_URI="mirror://gnu/${MY_PN}/${MY_P}.tar.xz"
-
 	S="${WORKDIR}/${MY_P}"
+
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~arm64-macos"
 fi
 
 DESCRIPTION="Used to generate Makefile.in from Makefile.am"
 HOMEPAGE="https://www.gnu.org/software/automake/"
 
-LICENSE="GPL-2+ FSFAP"
+LICENSE="GPL-3+ FSFAP"
 # Use Gentoo versioning for slotting.
 SLOT="${PV:0:4}"
 IUSE="test"
@@ -57,10 +58,13 @@ pkg_setup() {
 src_prepare() {
 	default
 
-	export WANT_AUTOCONF=2.5
-	# Don't try wrapping the autotools - this thing runs as it tends
-	# to be a bit esoteric, and the script does `set -e` itself.
-	./bootstrap || die
+	if [[ ${PV} == 9999 ]] ; then
+		export WANT_AUTOCONF=2.5
+		# Don't try wrapping the autotools - this thing runs as it tends
+		# to be a bit esoteric, and the script does `set -e` itself.
+		./bootstrap || die
+	fi
+
 	sed -i -e "/APIVERSION=/s:=.*:=${SLOT}:" configure || die
 
 	# bug #628912
