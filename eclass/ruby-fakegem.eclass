@@ -48,7 +48,6 @@ RUBY_FAKEGEM_TASK_DOC="${RUBY_FAKEGEM_TASK_DOC-rdoc}"
 # @DESCRIPTION:
 # Specify one of the default testing function for ruby-fakegem:
 #  - rake (default; see also RUBY_FAKEGEM_TASK_TEST)
-#  - rspec (calls ruby-ng_rspec, adds dev-ruby/rspec:2 to the dependencies)
 #  - rspec3 (calls ruby-ng_rspec, adds dev-ruby/rspec:3 to the dependencies)
 #  - cucumber (calls ruby-ng_cucumber, adds dev-util/cucumber to the
 #    dependencies)
@@ -174,11 +173,7 @@ case ${RUBY_FAKEGEM_RECIPE_TEST} in
 		ruby_add_bdepend "test? ( dev-ruby/rake )"
 		;;
 	rspec)
-		IUSE+=" test"
-		RESTRICT+=" !test? ( test )"
-		# Also require a new enough rspec-core version that installs the
-		# rspec-2 wrapper.
-		ruby_add_bdepend "test? ( dev-ruby/rspec:2 >=dev-ruby/rspec-core-2.14.8-r2 )"
+		die "${ECLASS}: ${CATEGORY}/${PF}: RUBY_FAKEGEM_RECIPE_TEST=rspec is no longer supported, port to rspec3!"
 		;;
 	rspec3)
 		IUSE+=" test"
@@ -547,9 +542,6 @@ each_fakegem_test() {
 	case ${RUBY_FAKEGEM_RECIPE_TEST} in
 		rake)
 			MT_NO_PLUGINS=true ${RUBY} --disable=did_you_mean -S rake ${RUBY_FAKEGEM_TASK_TEST} || die -n "tests failed"
-			;;
-		rspec)
-			RSPEC_VERSION=2 ruby-ng_rspec
 			;;
 		rspec3)
 			RSPEC_VERSION=3 ruby-ng_rspec
