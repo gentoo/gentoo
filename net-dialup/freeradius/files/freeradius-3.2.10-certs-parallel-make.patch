@@ -1,0 +1,23 @@
+Fix parallel make race: the .vrfy targets verify the .pem but do not
+depend on it, so "make -C raddb/certs" can run them before it exists.
+
+--- a/raddb/certs/Makefile
++++ b/raddb/certs/Makefile
+@@ -106,7 +106,7 @@
+ 	chmod g+r server.pem
+ 
+ .PHONY: server.vrfy
+-server.vrfy: ca.pem
++server.vrfy: ca.pem server.pem
+ 	@$(OPENSSL) verify $(PARTIAL) -CAfile ca.pem server.pem
+ 
+ ######################################################################
+@@ -158,7 +158,7 @@
+ 	chmod g+r inner-server.pem
+ 
+ .PHONY: inner-server.vrfy
+-inner-server.vrfy: ca.pem
++inner-server.vrfy: ca.pem inner-server.pem
+ 	@$(OPENSSL) verify $(PARTIAL) -CAfile ca.pem inner-server.pem
+ 
+ ######################################################################

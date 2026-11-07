@@ -92,6 +92,8 @@ QA_CONFIG_IMPL_DECL_SKIP=(
 PATCHES=(
 	"${FILESDIR}/${PN}-3.2.8-systemd-service.patch"
 	"${FILESDIR}/${PN}-3.2.3-configure-c99.patch"
+	"${FILESDIR}/${PN}-3.2.10-certs-parallel-make.patch"
+	"${FILESDIR}/${PN}-3.2.10-openssl-4.patch"
 )
 
 pkg_setup() {
