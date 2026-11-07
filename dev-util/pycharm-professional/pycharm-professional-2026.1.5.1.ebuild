@@ -37,8 +37,8 @@ else
 	OFL-1.1 UPL-1.0 ZLIB"
 fi
 
-SLOT="0/2025"
-KEYWORDS="-* amd64 ~arm64 ~x86"
+SLOT="0/2026"
+KEYWORDS="-* ~amd64 ~arm64 ~x86"
 IUSE="+bundled-jdk"
 
 if [[ ${PN} == *-professional ]]; then
@@ -68,6 +68,7 @@ RDEPEND="
 		media-libs/freetype
 		media-libs/mesa
 		net-print/cups
+		>=sys-apps/baselayout-java-0.1.0-r1
 		sys-apps/dbus
 		virtual/zlib:=
 		x11-libs/cairo
@@ -137,7 +138,7 @@ src_prepare() {
 
 	# excepting files from different architectures that should be kept for remote plugins
 	if ! use arm64; then
-		local skip_remote_files=(
+		skip_remote_files=(
 			"plugins/platform-ijent-impl/ijent-aarch64-unknown-linux-musl-release"
 			"plugins/clion-radler/DotFiles/linux-musl-arm64/jb_zip_unarchiver"
 			"plugins/clion-radler/DotFiles/linux-arm/jb_zip_unarchiver"
@@ -145,7 +146,7 @@ src_prepare() {
 			"plugins/gateway-plugin/lib/remote-dev-workers/remote-dev-worker-linux-arm64"
 		)
 	elif ! use amd64 ; then
-		local skip_remote_files=(
+		skip_remote_files=(
 			"plugins/platform-ijent-impl/ijent-x86_64-unknown-linux-musl-release"
 			"plugins/clion-radler/DotFiles/linux-musl-x64/jb_zip_unarchiver"
 			"plugins/clion-radler/DotFiles/linux-x86/jb_zip_unarchiver"
@@ -170,6 +171,7 @@ src_prepare() {
 		patchelf --set-rpath '$ORIGIN/../lib' "jbr/bin/"* || die
 		patchelf --set-rpath '$ORIGIN' "jbr/lib/"{libjcef.so,jcef_helper} || die
 		patchelf --set-rpath '$ORIGIN:$ORIGIN/server' jbr/lib/lib*.so* || die
+		rm -v jbr/lib/security/cacerts || die
 	else
 		rm -r "jbr" || die
 	fi
@@ -206,6 +208,7 @@ src_install() {
 	if use bundled-jdk; then
 		fperms 755 "${DIR}/${JRE_DIR}"/bin/{java,javac,javadoc,jcmd,jdb,jfr,jhsdb,jinfo,jmap,jps,jrunscript,jstack,jstat,jwebserver,keytool,rmiregistry,serialver}
 		fperms 755 "${DIR}"/"${JRE_DIR}"/lib/{cef_server,chrome-sandbox,jcef_helper,jexec,jspawnhelper}
+		dosym -r /etc/ssl/certs/java/cacerts "${DIR}/${JRE_DIR}"/lib/security/cacerts
 	fi
 
 	if [[ ${PN} == *-professional ]]; then

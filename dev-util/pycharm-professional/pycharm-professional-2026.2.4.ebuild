@@ -68,6 +68,7 @@ RDEPEND="
 		media-libs/freetype
 		media-libs/mesa
 		net-print/cups
+		>=sys-apps/baselayout-java-0.1.0-r1
 		sys-apps/dbus
 		virtual/zlib:=
 		x11-libs/cairo
@@ -139,6 +140,7 @@ src_prepare() {
 	if ! use arm64; then
 		skip_remote_files=(
 			"plugins/platform-ijent-impl/ijent-aarch64-unknown-linux-musl-release"
+			"plugins/platform-ijent-bundledBinaries/ijent-aarch64-unknown-linux-musl-release"
 			"plugins/clion-radler/DotFiles/linux-musl-arm64/jb_zip_unarchiver"
 			"plugins/clion-radler/DotFiles/linux-arm/jb_zip_unarchiver"
 			"plugins/clion-radler/DotFiles/linux-musl-arm/jb_zip_unarchiver"
@@ -147,6 +149,7 @@ src_prepare() {
 	elif ! use amd64 ; then
 		skip_remote_files=(
 			"plugins/platform-ijent-impl/ijent-x86_64-unknown-linux-musl-release"
+			"plugins/platform-ijent-bundledBinaries/ijent-x86_64-unknown-linux-musl-release"
 			"plugins/clion-radler/DotFiles/linux-musl-x64/jb_zip_unarchiver"
 			"plugins/clion-radler/DotFiles/linux-x86/jb_zip_unarchiver"
 			"plugins/clion-radler/DotFiles/linux-musl-x86/jb_zip_unarchiver"
@@ -166,10 +169,12 @@ src_prepare() {
 		fi
 	done
 
+	patchelf --set-rpath '$ORIGIN' "plugins/jcef-plugin/jcef/"{libjcef.so,libcef.so,jcef_helper} || die
+
 	if use bundled-jdk; then
 		patchelf --set-rpath '$ORIGIN/../lib' "jbr/bin/"* || die
-		patchelf --set-rpath '$ORIGIN' "jbr/lib/"{libjcef.so,jcef_helper} || die
 		patchelf --set-rpath '$ORIGIN:$ORIGIN/server' jbr/lib/lib*.so* || die
+		rm -v jbr/lib/security/cacerts || die
 	else
 		rm -r "jbr" || die
 	fi
@@ -205,8 +210,11 @@ src_install() {
 
 	if use bundled-jdk; then
 		fperms 755 "${DIR}/${JRE_DIR}"/bin/{java,javac,javadoc,jcmd,jdb,jfr,jhsdb,jinfo,jmap,jps,jrunscript,jstack,jstat,jwebserver,keytool,rmiregistry,serialver}
-		fperms 755 "${DIR}"/"${JRE_DIR}"/lib/{cef_server,chrome-sandbox,jcef_helper,jexec,jspawnhelper}
+		fperms 755 "${DIR}"/"${JRE_DIR}"/lib/{jexec,jspawnhelper}
+		dosym -r /etc/ssl/certs/java/cacerts "${DIR}/${JRE_DIR}"/lib/security/cacerts
 	fi
+
+	fperms 755 "${DIR}"/plugins/jcef-plugin/jcef/{cef_server,chrome-sandbox,jcef_helper}
 
 	if [[ ${PN} == *-professional ]]; then
 		if use bundled-xvfb; then
