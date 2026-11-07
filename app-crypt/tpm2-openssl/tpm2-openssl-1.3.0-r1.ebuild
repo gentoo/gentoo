@@ -1,7 +1,7 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=9
 
 inherit autotools
 
@@ -32,6 +32,8 @@ PATCHES=(
 	"${FILESDIR}/${PN}-1.1.1-build-Fix-undefined-references-when-using-slibtool.patch"
 	"${FILESDIR}/${PN}-1.3.0-tests-remove-systemd-ism.patch"
 	"${FILESDIR}/${PN}-1.3.0-no-Werror.patch"
+	"${FILESDIR}/${PN}-1.3.0-openssl-4.patch"
+	"${FILESDIR}/${PN}-1.3.0-openssl-4.1.patch"
 )
 
 src_prepare() {
