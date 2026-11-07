@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 
 # Upstream is moving tags repeatedly, then we use commit hash.
 RELEASE_COMMIT="ed7b992dbd0b5c8946ce3d9a3fdf2239dcb75a58" #tag v3.3-latest
