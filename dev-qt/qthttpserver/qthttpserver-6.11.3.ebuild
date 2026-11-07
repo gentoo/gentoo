@@ -8,7 +8,7 @@ inherit qt6-build
 DESCRIPTION="HTTP server functionality for the Qt6 framework"
 
 if [[ ${QT6_BUILD_TYPE} == release ]]; then
-	KEYWORDS="amd64 arm64 ~loong ppc64 ~x86"
+	KEYWORDS="amd64 arm64 ~loong ppc64 x86"
 fi
 
 IUSE="+ssl websockets"
