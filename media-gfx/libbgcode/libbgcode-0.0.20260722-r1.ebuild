@@ -5,11 +5,14 @@ EAPI=8
 
 inherit cmake
 
-LIBBGCODE_COMMIT=d4da9073616d70a43c151e8c1d7fbff879d2e08a
+# normally we use the main branch, but the fixes in lm_fixes branch are not merged to the main
+# branch yet even though pinned by prusaslicer 2.9.7 so for the purpose of this ebuild we apply
+# the patches from the branch through the complete tarball instead of picking them separately
+LIBBGCODE_COMMIT=167c8e19a26e74de42bbb3622480ee04a9420394
 
 DESCRIPTION="Prusa Block & Binary G-code reader / writer / converter"
 HOMEPAGE="https://github.com/prusa3d/libbgcode"
-SRC_URI="https://github.com/prusa3d/libbgcode/archive/${LIBBGCODE_COMMIT}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/prusa3d/libbgcode/archive/${LIBBGCODE_COMMIT}.tar.gz -> ${PF}.tar.gz"
 
 S="${WORKDIR}/${PN}-${LIBBGCODE_COMMIT}"
 LICENSE="AGPL-3"
@@ -28,7 +31,7 @@ DEPEND="${RDEPEND}
 "
 
 PATCHES=(
-	"${FILESDIR}"/libbgcode-0.0.20260521-meatpack-tests.patch
+	"${FILESDIR}/libbgcode-0.0.20260722-r1-meatpack-tests.patch"
 )
 
 src_configure() {
