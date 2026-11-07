@@ -24,9 +24,10 @@ SRC_URI="
 	${CARGO_CRATE_URIS}
 "
 if [[ ${PKGBUMPING} != ${PVR} ]]; then
+	kup=https://distfiles.gentoo.org/pub/dev/tupone@gentoo.org/${CATEGORY}/${PN}
 	SRC_URI+="
-		https://dev.gentoo.org/~tupone/distfiles/${PN}-0.22.0-crates.tar.xz
-		https://dev.gentoo.org/~tupone/distfiles/${PN}-python-${PV}-crates.tar.xz
+		${kup}/${PN}-0.22.0-crates.tar.xz
+		${kup}/${PN}-python-${PV}-crates.tar.xz
 	"
 fi
 
