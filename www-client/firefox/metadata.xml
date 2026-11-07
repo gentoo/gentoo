@@ -43,4 +43,7 @@
 	<flag name="wifi">Enable necko-wifi for NetworkManager integration, and access point MAC
 		address scanning for better precision with opt-in geolocation services</flag>
 </use>
+	<upstream>
+		<remote-id type="cpe">cpe:/a:mozilla:firefox</remote-id>
+	</upstream>
 </pkgmetadata>
