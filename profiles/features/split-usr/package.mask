@@ -5,6 +5,7 @@
 # Requires systemd.
 app-admin/mkosi
 app-admin/systemdgenie
+app-containers/snapd
 dev-python/python-systemd
 gnome-extra/gnome-logs
 gnome-extra/office-runner

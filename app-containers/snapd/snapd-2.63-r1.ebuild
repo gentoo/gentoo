@@ -1,37 +1,35 @@
-# Copyright 2020-2024 Gentoo Authors
+# Copyright 2020-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit autotools bash-completion-r1 flag-o-matic go-module linux-info readme.gentoo-r1 systemd tmpfiles xdg-utils
+inherit autotools flag-o-matic go-module linux-info readme.gentoo-r1 shell-completion systemd tmpfiles xdg-utils
 
 DESCRIPTION="Service and tools for management of snap packages"
-HOMEPAGE="http://snapcraft.io/"
-
+HOMEPAGE="https://snapcraft.io/"
 SRC_URI="https://github.com/snapcore/snapd/releases/download/${PV}/snapd_${PV}.vendor.tar.xz -> ${P}.tar.xz"
 SRC_URI+=" https://github.com/snapcore/snapd/commit/1b035da5d873518ee4be31dacb1191c77ce0b644.patch -> ${P}-bug-933073-GNU_SOURCE.patch"
-PATCHES=("${DISTDIR}/${P}-bug-933073-GNU_SOURCE.patch")
-MY_PV=${PV}
+
 LICENSE="GPL-3 Apache-2.0 BSD BSD-2 LGPL-3-with-linking-exception MIT"
 SLOT="0"
 KEYWORDS="amd64"
+IUSE="apparmor +forced-devmode"
+REQUIRED_USE="!forced-devmode? ( apparmor )"
 
-IUSE="apparmor +forced-devmode gtk kde systemd"
-REQUIRED_USE="!forced-devmode? ( apparmor ) systemd"
+CONFIG_CHECK="
+	~CGROUPS
+	~CGROUP_DEVICE
+	~CGROUP_FREEZER
+	~NAMESPACES
+	~SQUASHFS
+	~SQUASHFS_ZLIB
+	~SQUASHFS_LZO
+	~SQUASHFS_XZ
+	~BLK_DEV_LOOP
+	~SECCOMP
+	~SECCOMP_FILTER"
 
-CONFIG_CHECK="~CGROUPS
-		~CGROUP_DEVICE
-		~CGROUP_FREEZER
-		~NAMESPACES
-		~SQUASHFS
-		~SQUASHFS_ZLIB
-		~SQUASHFS_LZO
-		~SQUASHFS_XZ
-		~BLK_DEV_LOOP
-		~SECCOMP
-		~SECCOMP_FILTER"
-
-RDEPEND="
+DEPEND="
 	sys-libs/libseccomp:=
 	apparmor? (
 		sec-policy/apparmor-profiles
@@ -39,11 +37,12 @@ RDEPEND="
 	)
 	dev-libs/glib
 	virtual/libudev
-	systemd? ( sys-apps/systemd )
+	sys-apps/systemd
 	sys-libs/libcap:=
 	sys-fs/squashfs-tools[lzma,lzo]"
 
-DEPEND="${RDEPEND}"
+RDEPEND="${DEPEND}
+	sys-auth/polkit"
 
 BDEPEND="
 	>=dev-lang/go-1.9
@@ -51,7 +50,7 @@ BDEPEND="
 	sys-devel/gettext
 	sys-fs/xfsprogs"
 
-PDEPEND="sys-auth/polkit[gtk?,kde?]"
+PATCHES=( "${DISTDIR}/${P}-bug-933073-GNU_SOURCE.patch" )
 
 README_GENTOO_SUFFIX=""
 
@@ -152,9 +151,7 @@ src_install() {
 		"${S}/data/completion/bash/"{complete.sh,etelpmoc.sh,}
 
 	dobashcomp "${S}/data/completion/bash/snap"
-
-	insinto /usr/share/zsh/site-functions
-	doins "${S}/data/completion/zsh/_snap"
+	dozshcomp "${S}/data/completion/zsh/_snap"
 
 	insinto "/usr/share/polkit-1/actions"
 	doins "${S}/data/polkit/io.snapcraft.snapd.policy"

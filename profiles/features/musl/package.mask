@@ -1,6 +1,10 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2026-11-07)
+# Requires systemd, so specifically unmasked only in targets/systemd.
+app-containers/snapd
+
 # Maciej Barć <xgqt@gentoo.org> (2026-06-22)
 # Binary compiled against glibc
 dev-lang/unison-lang-bin

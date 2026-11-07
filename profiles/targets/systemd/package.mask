@@ -5,6 +5,10 @@
 # gdm breaks on systemd if this user is provided.
 acct-user/gdm-greeter
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2026-11-07)
+# Requires systemd, so specifically unmasked only in targets/systemd.
+-app-containers/snapd
+
 # Sam James <sam@gentoo.org> (2026-02-18)
 # Requires systemd, so specifically unmasked only in targets/systemd.
 -kde-plasma/plasma-login-manager
