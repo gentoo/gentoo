@@ -1,0 +1,11 @@
+--- a/lemon/path.h	2026-11-07 21:45:29.164271929 +0100
++++ b/lemon/path.h	2026-11-07 21:49:25.131534571 +0100
+@@ -228,7 +228,7 @@
+       int len = path.length();
+       head.reserve(len);
+       for (typename CPath::RevArcIt it(path); it != INVALID; ++it) {
+-        head.push_back(it);
++        head.push_back(static_cast<const Arc&>(it));
+       }
+     }
+ 
