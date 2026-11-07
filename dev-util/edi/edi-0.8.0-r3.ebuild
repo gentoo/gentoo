@@ -3,7 +3,7 @@
 
 EAPI=8
 
-LLVM_COMPAT=( 18 19 )
+LLVM_COMPAT=( {19..22} )
 
 inherit llvm-r2 meson xdg
 
