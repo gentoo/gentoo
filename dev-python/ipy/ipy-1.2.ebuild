@@ -17,7 +17,7 @@ HOMEPAGE="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="amd64 ~arm arm64 ~mips ~ppc ~ppc64 ~sparc x86"
 IUSE="examples"
 
 PATCHES=( "${FILESDIR}/${PN}-1.01-setDaemon-daemon.patch" )
