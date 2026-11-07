@@ -18,7 +18,7 @@ LICENSE="|| ( IDEA IDEA_Academic IDEA_Classroom IDEA_OpenSource IDEA_Personal )
 	LGPL-2.1+ LGPL-3 MIT MPL-1.0 MPL-1.1 OFL-1.1 public-domain PSF-2
 	UoI-NCSA ZLIB"
 SLOT="0/2025"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 ~arm64"
 RESTRICT="bindist mirror"
 
 BDEPEND="
