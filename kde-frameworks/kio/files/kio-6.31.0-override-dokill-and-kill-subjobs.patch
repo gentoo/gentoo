@@ -1,0 +1,53 @@
+From ea07e1bd96b0d0af57c8d272c106faa4ddc045c6 Mon Sep 17 00:00:00 2001
+From: David Edmundson <kde@davidedmundson.co.uk>
+Date: Tue, 13 Oct 2026 11:43:25 +0100
+Subject: [PATCH] FilePreviewJob: Override doKill and kill subjobs
+
+FilePreviewjob has multiple sub-jobs that are not technically registers
+as subjobs to kjob. The kill signal needs forwarding manually.
+
+BUG: 526997
+---
+ src/gui/filepreviewjob.cpp | 11 +++++++++++
+ src/gui/filepreviewjob.h   |  3 +++
+ 2 files changed, 14 insertions(+)
+
+diff --git a/src/gui/filepreviewjob.cpp b/src/gui/filepreviewjob.cpp
+index 6c9d393245..79bb2b8437 100644
+--- a/src/gui/filepreviewjob.cpp
++++ b/src/gui/filepreviewjob.cpp
+@@ -85,6 +85,17 @@ FilePreviewJob::~FilePreviewJob()
+     }
+ }
+ 
++bool FilePreviewJob::doKill()
++{
++    if (m_standardThumbnailJob) {
++        m_standardThumbnailJob->kill();
++    }
++    if (m_transferjob) {
++        m_transferjob->kill();
++    }
++    return KIO::Job::doKill();
++}
++
+ QString FilePreviewJob::parentDirPath(const QString &path)
+ {
+     if (!path.isEmpty()) {
+diff --git a/src/gui/filepreviewjob.h b/src/gui/filepreviewjob.h
+index e3eff99b60..fcf2d6083c 100644
+--- a/src/gui/filepreviewjob.h
++++ b/src/gui/filepreviewjob.h
+@@ -122,6 +122,9 @@ private Q_SLOTS:
+     void slotGetOrCreateThumbnail(KJob *job);
+     void slotTimeout();
+ 
++protected:
++    bool doKill() override;
++
+ private:
+     friend class ::FilePreviewJobTest;
+ 
+-- 
+GitLab
+
