@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,7 +7,7 @@ MY_P=${PN}-${PV/./-}
 DESCRIPTION="The GNU Emacs Lisp Reference Manual"
 HOMEPAGE="https://www.gnu.org/software/emacs/manual/"
 SRC_URI="https://ftp.gnu.org/old-gnu/emacs/${MY_P}.tar.gz
-	https://dev.gentoo.org/~ulm/emacs/${P}-patches.tar.gz"
+	https://distfiles.gentoo.org/pub/proj/emacs/${P}-patches.tar.gz"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="Texinfo-manual"
