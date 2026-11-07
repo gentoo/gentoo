@@ -5,10 +5,6 @@
 		<email>kernlpanic@dennis-eisele.de</email>
 		<name>Dennis Eisele</name>
 	</maintainer>
-	<maintainer type="person" proxied="yes">
-		<email>rndxelement@protonmail.com</email>
-		<name>Philipp Rösner</name>
-	</maintainer>
 	<maintainer type="project" proxied="proxy">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
