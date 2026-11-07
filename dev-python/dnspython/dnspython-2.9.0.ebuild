@@ -18,7 +18,7 @@ HOMEPAGE="
 
 LICENSE="ISC"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~s390 ~x86 ~x64-macos"
+KEYWORDS="amd64 arm arm64 ~loong ppc ppc64 ~riscv ~s390 x86 ~x64-macos"
 IUSE="dnssec examples https quic"
 
 RDEPEND="
