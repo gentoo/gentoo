@@ -14,6 +14,10 @@
 		<name>Nowa Ammerlaan</name>
 	</maintainer>
 	<use>
+		<flag name="asciidoctor">
+			Build manpages using <pkg>dev-ruby/asciidoctor</pkg>
+			instead of <pkg>app-text/asciidoc</pkg>.
+		</flag>
 		<flag name="dracut-cpio">Build the enhanced 'dracut-cpio' program</flag>
 	</use>
 	<upstream>
