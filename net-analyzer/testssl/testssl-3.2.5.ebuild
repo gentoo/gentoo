@@ -1,7 +1,7 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=9
 
 VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/testssl.asc"
 inherit optfeature verify-sig
@@ -12,8 +12,8 @@ MY_PV="${PV/_p/-}"
 DESCRIPTION="Tool to check TLS/SSL cipher support"
 HOMEPAGE="https://testssl.sh/"
 SRC_URI="
-	https://testssl.sh/${MY_PN}-${MY_PV}.tar.gz
-	verify-sig? ( https://testssl.sh/${MY_PN}-${MY_PV}.tar.gz.asc )
+	https://testssl.sh/${MY_PN}-v${MY_PV}.tar.gz
+	verify-sig? ( https://testssl.sh/${MY_PN}-v${MY_PV}.tar.gz.asc )
 "
 S=${WORKDIR}/${MY_PN}-${MY_PV}
 
@@ -63,6 +63,7 @@ src_install() {
 	dodoc openssl-iana.mapping.html
 
 	dobin ${PN}.sh
+	doman doc/${PN}.1
 
 	insinto /etc/${PN}
 	doins etc/*
@@ -75,5 +76,5 @@ src_install() {
 
 pkg_postinst() {
 	optfeature "Check for STARTTLS injection issues" net-misc/socat
-	optfeature "Faster conversions from hexdump to binary" dev-util/xxd app-editors/vim-core
+	optfeature "Faster conversions from hexdump to binary" dev-util/xxd
 }
