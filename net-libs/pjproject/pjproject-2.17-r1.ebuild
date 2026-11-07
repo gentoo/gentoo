@@ -49,6 +49,7 @@ BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}/pjproject-2.17-r1-ice-early-terminate-pr5031.patch"
+	"${FILESDIR}/pjproject-2.17-openssl-4.patch"
 )
 
 export PJ_SONAME_VERSION="${MY_SLOTVERSION}"
