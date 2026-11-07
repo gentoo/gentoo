@@ -20,7 +20,6 @@
 		<flag name="grub">Pull in Breeze theme for <pkg>sys-boot/grub</pkg></flag>
 		<flag name="gtk">Enable Breeze widget style and system settings module for GTK+</flag>
 		<flag name="kwallet">Enable support for KWallet auto-unlocking via <pkg>kde-plasma/kwallet-pam</pkg></flag>
-		<flag name="ocr">Enable Optical Character Recognition support via <pkg>app-text/tesseract</pkg></flag>
 		<flag name="oxygen-theme">Pull in Oxygen icons, sound theme and visual style for KDE Plasma</flag>
 		<flag name="plymouth">Pull in Breeze theme for <pkg>sys-boot/plymouth</pkg></flag>
 		<flag name="pulseaudio">Install Plasma applet for PulseAudio volume management</flag>
