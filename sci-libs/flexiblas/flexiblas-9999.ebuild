@@ -1,4 +1,4 @@
-# Copyright 2025 Gentoo Authors
+# Copyright 2025-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -70,6 +70,7 @@ src_prepare() {
 
 src_configure() {
 	# bug #963667
+	append-flags $(test-flags-CC -fsemantic-interposition)
 	filter-flags -fno-semantic-interposition
 
 	BACKENDS=( $(usev blis) $(usev openblas) )
