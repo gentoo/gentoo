@@ -164,6 +164,9 @@ src_configure() {
 	append-cppflags -D_GNU_SOURCE
 	# https://lists.gnu.org/archive/html/bug-readline/2010-07/msg00013.html
 	append-cppflags -Dxrealloc=_rl_realloc -Dxmalloc=_rl_malloc -Dxfree=_rl_free
+	# sh_set_lines_and_columns relies on interposition (bug #985814)
+	append-flags $(test-flags-CC -fsemantic-interposition)
+	filter-flags -fno-semantic-interposition
 
 	# Make sure configure picks a better ar than `ar`, bug #484866
 	export ac_cv_prog_AR="$(tc-getAR)"
