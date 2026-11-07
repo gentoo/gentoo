@@ -6,6 +6,6 @@
 		<name>Jason Zaman</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">GoogleCloudPlatform/google-cloud-cpp</remote-id>
+		<remote-id type="github">googleapis/google-cloud-cpp</remote-id>
 	</upstream>
 </pkgmetadata>
