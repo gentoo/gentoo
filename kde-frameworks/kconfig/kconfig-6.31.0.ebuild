@@ -9,7 +9,7 @@ inherit ecm frameworks.kde.org
 DESCRIPTION="Framework for reading and writing configuration"
 
 LICENSE="LGPL-2+"
-KEYWORDS="~amd64 arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="~amd64 arm64 ~loong ppc64 ~riscv ~x86"
 IUSE="dbus qml"
 REQUIRED_USE="test? ( qml )"
 
