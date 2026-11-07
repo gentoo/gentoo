@@ -52,6 +52,9 @@ FFMPEG_IUSE_MAP=(
 	chromaprint
 	codec2:libcodec2
 	cuda-clang:cuda-llvm
+	# TODO?: currently curl is not used by default even if enabled but, if that
+	# changes, should consider swapping defaults from gnutls to +curl
+	curl:libcurl
 	+dav1d:libdav1d
 	${FFMPEG_UNSLOTTED:+doc:^htmlpages}
 	+drm:libdrm
@@ -93,7 +96,6 @@ FFMPEG_IUSE_MAP=(
 	ocr:libtesseract
 	openal
 	opencl
-	opengl
 	openh264:libopenh264
 	openmpt:libopenmpt
 	openssl:openssl,!gnutls@v3ifgpl # still LGPL2.1+ if USE=-gpl
@@ -193,6 +195,7 @@ COMMON_DEPEND="
 	cdio? ( dev-libs/libcdio-paranoia:=[${MULTILIB_USEDEP}] )
 	chromaprint? ( media-libs/chromaprint:=[${MULTILIB_USEDEP}] )
 	codec2? ( media-libs/codec2:=[${MULTILIB_USEDEP}] )
+	curl? (  net-misc/curl[${MULTILIB_USEDEP}] )
 	dav1d? ( media-libs/dav1d:=[${MULTILIB_USEDEP}] )
 	dvd? (
 		media-libs/libdvdnav[${MULTILIB_USEDEP}]
@@ -232,7 +235,7 @@ COMMON_DEPEND="
 	libcaca? ( media-libs/libcaca[${MULTILIB_USEDEP}] )
 	libilbc? ( media-libs/libilbc:=[${MULTILIB_USEDEP}] )
 	liblc3? ( >=media-sound/liblc3-1.1[${MULTILIB_USEDEP}] )
-	libplacebo? ( media-libs/libplacebo:=[vulkan,${MULTILIB_USEDEP}] )
+	libplacebo? ( >=media-libs/libplacebo-7.386.0:=[vulkan,${MULTILIB_USEDEP}] )
 	librtmp? ( media-video/rtmpdump[${MULTILIB_USEDEP}] )
 	libsoxr? ( media-libs/soxr[${MULTILIB_USEDEP}] )
 	lv2? (
@@ -245,7 +248,6 @@ COMMON_DEPEND="
 	ocr? ( app-text/tesseract:=[${MULTILIB_USEDEP}] )
 	openal? ( media-libs/openal[${MULTILIB_USEDEP}] )
 	opencl? ( virtual/opencl[${MULTILIB_USEDEP}] )
-	opengl? ( media-libs/libglvnd[X,${MULTILIB_USEDEP}] )
 	openh264? ( media-libs/openh264:=[${MULTILIB_USEDEP}] )
 	openmpt? ( media-libs/libopenmpt[${MULTILIB_USEDEP}] )
 	openssl? ( >=dev-libs/openssl-3:=[${MULTILIB_USEDEP}] )
@@ -310,7 +312,7 @@ COMMON_DEPEND="
 "
 RDEPEND="
 	${COMMON_DEPEND}
-	amf? ( media-video/amdgpu-pro-amf )
+	amf? ( virtual/amdgpu-pro-amf )
 "
 DEPEND="
 	${COMMON_DEPEND}
@@ -348,7 +350,6 @@ MULTILIB_WRAPPED_HEADERS=(
 
 PATCHES=(
 	"${FILESDIR}"/ffmpeg-9.0.2-opencl-parallel-gmake-fix.patch
-	"${FILESDIR}"/ffmpeg-9.0.2-prores-mismatch.patch
 )
 
 pkg_pretend() {
@@ -456,7 +457,9 @@ multilib_src_configure() {
 		# disabled primarily due to being unpackaged
 		--disable-decklink
 		--disable-libaribcaption
+		--disable-libastcenc
 		--disable-libdavs2
+		--disable-libfdk-xhe-aac
 		--disable-libklvanc
 		--disable-liblcevc-dec
 		--disable-libmpeghdec
