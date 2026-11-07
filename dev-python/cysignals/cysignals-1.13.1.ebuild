@@ -18,7 +18,7 @@ HOMEPAGE="
 
 LICENSE="LGPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~riscv"
+KEYWORDS="amd64 ~riscv"
 
 BDEPEND="
 	>=dev-python/cython-3.0.0[${PYTHON_USEDEP}]
