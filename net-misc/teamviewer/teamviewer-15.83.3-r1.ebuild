@@ -12,13 +12,12 @@ HOMEPAGE="https://www.teamviewer.com"
 MY_URI="https://dl.teamviewer.com/download/linux/version_${MY_MAJOR}x/${PN}_${PV}"
 SRC_URI="
 	amd64? ( ${MY_URI}_amd64.tar.xz )
-	arm? ( ${MY_URI}_armhf.tar.xz )
 	arm64? ( ${MY_URI}_arm64.tar.xz )"
 S="${WORKDIR}"/teamviewer
 
 LICENSE="TeamViewer MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64"
+KEYWORDS="~amd64 ~arm64"
 RESTRICT="bindist mirror strip"
 
 # Unpack will fail without app-arch/xz-utils[extra-filters], bug #798027
@@ -28,6 +27,7 @@ RDEPEND="
 	dev-libs/glib:2
 	dev-libs/nspr
 	dev-libs/nss
+	dev-libs/wayland
 	media-libs/fontconfig
 	media-libs/freetype
 	media-libs/libglvnd[X]
