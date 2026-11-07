@@ -9,7 +9,7 @@ inherit ecm frameworks.kde.org
 DESCRIPTION="Framework for manipulating strings using various encodings"
 
 LICENSE="GPL-2+ LGPL-2+"
-KEYWORDS="~amd64 arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="~amd64 arm64 ~loong ppc64 ~riscv ~x86"
 IUSE=""
 
 BDEPEND=">=dev-qt/qttools-${QTMIN}:6[linguist]"
