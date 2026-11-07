@@ -1,7 +1,7 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit autotools
 
@@ -25,7 +25,10 @@ BDEPEND="
 	doc? ( dev-util/gtk-doc )
 	test? ( media-libs/netpbm )"
 
-PATCHES=( "${FILESDIR}"/${PN}-20121130-autotools.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-20121130-autotools.patch
+	"${FILESDIR}"/${PN}-20121130-c23-knr.patch
+)
 
 src_prepare() {
 	default
