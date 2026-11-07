@@ -64,5 +64,3 @@ BDEPEND="
 	>=dev-qt/qtbase-${QTMIN}:6[wayland]
 	dev-util/wayland-scanner
 "
-
-PATCHES=( "${FILESDIR}/${PN}-6.7.5-kcmutils-6.31-qml-link.patch" ) # in 6.8
