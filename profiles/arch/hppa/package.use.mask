@@ -4,6 +4,10 @@
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
 
+# David Seifert <soap@gentoo.org> (2026-11-07)
+# app-i18n/ibus is not keyworded here.
+app-i18n/uim ibus
+
 # Lukas Schmelting <lschmelting@posteo.com> (2026-09-10)
 # dev-util/bpftool not keyworded here
 net-misc/networkmanager clat

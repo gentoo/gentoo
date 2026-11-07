@@ -16,6 +16,8 @@
     <flag name="anthy">Enable support for <pkg>app-i18n/anthy-unicode</pkg> or <pkg>app-i18n/anthy</pkg> if prior 1.9.0</flag>
     <flag name="eb">Enable support for <pkg>dev-libs/eb</pkg></flag>
     <flag name="gtk2">Enable support for <pkg>x11-libs/gtk+</pkg>:2</flag>
+    <flag name="gtk4">Build the GTK 4 input method module</flag>
+    <flag name="ibus">Build the <pkg>app-i18n/ibus</pkg> engine (ibus-engine-uim)</flag>
     <flag name="skk">Enable support for <pkg>app-i18n/skk-jisyo</pkg></flag>
   </use>
   <upstream>
