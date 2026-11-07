@@ -1,7 +1,7 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=9
 
 inherit autotools
 
@@ -19,6 +19,10 @@ BDEPEND="
 	virtual/pkgconfig"
 DEPEND="dev-libs/openssl:="
 RDEPEND="${DEPEND}"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-openssl-4.patch
+)
 
 src_prepare() {
 	default
