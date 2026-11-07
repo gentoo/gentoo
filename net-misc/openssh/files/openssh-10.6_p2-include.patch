@@ -1,0 +1,33 @@
+https://bugs.gentoo.org/985802
+https://github.com/openssh/openssh-portable/commit/102bee7f3a873b39784c909ba238c90b0b4c395f
+
+From 102bee7f3a873b39784c909ba238c90b0b4c395f Mon Sep 17 00:00:00 2001
+From: Michael Forney <mforney@mforney.org>
+Date: Fri, 6 Nov 2026 08:31:32 +1100
+Subject: [PATCH] include stdlib.h for free/freezero
+
+This fixes the build with --without-openssl, where stdlib.h is not
+implicitly included by openssl/crypto.h.
+
+While the CI tests --without-openssl, this configuration is only
+run on ubuntu-22.04 which uses gcc < 14, so implicit functions are
+only warnings (see [0]) by default.
+
+[0] https://github.com/openssh/openssh-portable/actions/runs/41998802982/job/127148570075#step:11:550
+---
+ auth-passwd.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/auth-passwd.c b/auth-passwd.c
+index 5406e2d55a8a..2fafba4fdcdb 100644
+--- a/auth-passwd.c
++++ b/auth-passwd.c
+@@ -41,6 +41,7 @@
+ #include <sys/types.h>
+ 
+ #include <pwd.h>
++#include <stdlib.h>
+ #include <stdio.h>
+ #include <string.h>
+ #include <stdarg.h>
+

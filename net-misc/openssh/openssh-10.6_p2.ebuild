@@ -79,6 +79,7 @@ PATCHES=(
 	# Backports from upstream release branch
 	#"${FILESDIR}/${PV}"
 	# Our own backports
+	"${FILESDIR}/${PN}-10.6_p2-include.patch"
 )
 
 pkg_pretend() {
