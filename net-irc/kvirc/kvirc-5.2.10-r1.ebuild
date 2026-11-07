@@ -3,7 +3,7 @@
 
 EAPI="8"
 
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{11..15} )
 inherit cmake python-single-r1 xdg
 
 DESCRIPTION="Advanced IRC Client"
@@ -63,6 +63,10 @@ RDEPEND="${DEPEND}
 	gsm? ( media-sound/gsm )"
 
 DOCS=()
+
+PATCHES=(
+	"${FILESDIR}"/${P}-openssl-4.patch
+)
 
 pkg_setup() {
 	if use python; then
