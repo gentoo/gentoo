@@ -1,11 +1,11 @@
-# Copyright 2025 Gentoo Authors
+# Copyright 2025-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 
-inherit meson python-any-r1 toolchain-funcs
+inherit flag-o-matic meson python-any-r1 toolchain-funcs
 
 LAPACK_VER=3.12.1
 DESCRIPTION="BLAS/LAPACK wrappers for FlexiBLAS"
@@ -44,6 +44,9 @@ src_configure() {
 	if ! tc-ld-is-bfd && ! tc-ld-is-lld; then
 		tc-ld-force-bfd
 	fi
+
+	# bug #974853
+	filter-flags -fno-plt
 
 	local emesonargs=(
 		-Dilp64=$(usex index64 true false)
