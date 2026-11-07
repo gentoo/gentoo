@@ -13,8 +13,8 @@ SRC_URI+=" https://github.com/snapcore/snapd/commit/1b035da5d873518ee4be31dacb11
 LICENSE="GPL-3 Apache-2.0 BSD BSD-2 LGPL-3-with-linking-exception MIT"
 SLOT="0"
 KEYWORDS="amd64"
-IUSE="apparmor +forced-devmode systemd"
-REQUIRED_USE="!forced-devmode? ( apparmor ) systemd"
+IUSE="apparmor +forced-devmode"
+REQUIRED_USE="!forced-devmode? ( apparmor )"
 
 CONFIG_CHECK="
 	~CGROUPS
@@ -37,7 +37,7 @@ DEPEND="
 	)
 	dev-libs/glib
 	virtual/libudev
-	systemd? ( sys-apps/systemd )
+	sys-apps/systemd
 	sys-libs/libcap:=
 	sys-fs/squashfs-tools[lzma,lzo]"
 
