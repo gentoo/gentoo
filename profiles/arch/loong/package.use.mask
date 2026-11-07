@@ -1,6 +1,10 @@
 # Copyright 2022-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Mike Gilbert <floppym@gentoo.org> (2026-11-07)
+# dev-ruby/asciidoctor is not keyworded.
+sys-kernel/dracut asciidoctor
+
 # Joonas Niilola <juippis@gentoo.org> (2026-10-27)
 # Dependency libaom >= 3.14.1 doesn't have ~loong keyword.
 >=mail-client/thunderbird-159.0 system-av1
