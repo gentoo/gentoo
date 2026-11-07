@@ -17,7 +17,7 @@ LICENSE="|| ( IDEA IDEA_Academic IDEA_Classroom IDEA_OpenSource IDEA_Personal )
 	EPL-1.0 EPL-2.0 GPL-2 GPL-2-with-classpath-exception GPL-3 ISC JDOM
 	LGPL-2.1+ LGPL-3 MIT MPL-1.0 MPL-1.1 OFL-1.1 public-domain PSF-2
 	UoI-NCSA ZLIB"
-SLOT="0/2026"
+SLOT="0/2025"
 KEYWORDS="~amd64 ~arm64"
 RESTRICT="bindist mirror"
 
@@ -48,6 +48,7 @@ RDEPEND="
 	media-libs/freetype:2
 	media-libs/mesa
 	net-print/cups
+	>=sys-apps/baselayout-java-0.1.0-r1
 	sys-apps/dbus
 	x11-libs/cairo
 	x11-libs/libdrm
@@ -94,15 +95,11 @@ src_prepare() {
 		bin/ninja
 		plugins/remote-dev-server/selfcontained
 		plugins/nativeDebug-plugin/bin/lldb/linux/${my_arch_suffix}/bin/LLDBFrontend
-		plugins/clion-radler/DotFiles/runtimes/osx-*
-		plugins/clion-radler/DotFiles/runtimes/win*
 	)
 	remove_me+=(
 		lib/async-profiler/${other_arch_amd64_aarch64}
 		plugins/clion-radler/DotFiles/linux-${other_arch_radler}
-		plugins/clion-radler/DotFiles/runtimes/linux-${other_arch_radler}/native/
-		plugins/clion-radler/DotFiles/runtimes/linux-$(usex amd64 arm amd64)/native/
-		plugins/clion-radler/DotFiles/runtimes/linux-musl-$(usex amd64 arm amd64)/native/
+		plugins/clion-radler/dotCommon/DotFiles/linux-${other_arch_radler}
 		plugins/clion-radler/dotTrace.dotMemory/DotFiles/linux-${other_arch_radler}
 		plugins/nativeDebug-plugin/bin/lldb/linux/${other_arch_amd64_aarch64}
 		plugins/python-ce/helpers/pydev/pydevd_attach_to_process/attach_linux_${other_arch_amd64_aarch64}.so
@@ -112,12 +109,9 @@ src_prepare() {
 		plugins/python-ce/helpers/coveragepy_old/coverage/tracer.cpython-310-x86_64-linux-gnu.so
 		plugins/python-ce/helpers/pydev/pydevd_attach_to_process/attach_linux_x86.so
 	)
-	use !elibc_musl && remove_me+=(
-		plugins/clion-radler/DotFiles/runtimes/linux-musl-arm64
-		plugins/clion-radler/DotFiles/runtimes/linux-musl-x64
-	)
 
 	rm -rv "${remove_me[@]}" || die
+	rm -v jbr/lib/security/cacerts || die
 
 	# excepting files that should be kept for remote plugins
 	skip_remote_files=(
@@ -125,8 +119,6 @@ src_prepare() {
 		"plugins/clion-radler/DotFiles/linux-musl-${other_arch_radler}/jb_zip_unarchiver"
 		"plugins/clion-radler/DotFiles/linux-arm/jb_zip_unarchiver"
 		"plugins/clion-radler/DotFiles/linux-musl-arm/jb_zip_unarchiver"
-		"plugins/clion-radler/DotFiles/runtimes/linux-musl-${other_arch_radler}/native/libdbgshim.so"
-		"plugins/clion-radler/DotFiles/runtimes/linux-arm/native/"
 		"plugins/gateway-plugin/lib/remote-dev-workers/remote-dev-worker-linux-$(usex amd64 arm64 amd64)"
 	)
 	# removing debug symbols and relocating debug files as per #876295
@@ -152,7 +144,7 @@ src_install() {
 
 	insinto "${dir}"
 	doins -r *
-	fperms 755 "${dir}"/bin/{clion.sh,format.sh,fsnotifier,inspect.sh,jetbrains_client.sh,ltedit.sh,remote-dev-server.sh,restarter,clang/linux/${my_arch_suffix}/bin/{clangd,clang-tidy,clazy-standalone,llvm-symbolizer}}
+	fperms 755 "${dir}"/bin/{clion,clion.sh,format.sh,fsnotifier,inspect.sh,jetbrains_client.sh,ltedit.sh,remote-dev-server,remote-dev-server.sh,restarter,clang/linux/${my_arch_suffix}/bin/{clangd,clang-tidy,clazy-standalone,llvm-symbolizer}}
 
 	if [[ -d jbr ]]; then
 		fperms 755 "${dir}"/jbr/bin/{java,javac,javadoc,jcmd,jdb,jfr,jhsdb,jinfo,jmap,jps,jrunscript,jstack,jstat,keytool,rmiregistry,serialver}
@@ -163,8 +155,9 @@ src_install() {
 	fperms 755 "${dir}"/plugins/clion-radler/DotFiles/linux-${my_arch_radler}/Rider.Backend
 
 	dosym -r "${EPREFIX}/usr/bin/ninja" "${dir}"/bin/ninja/linux/${my_arch_suffix}/ninja
+	dosym -r /etc/ssl/certs/java/cacerts "${dir}"/jbr/lib/security/cacerts
 
-	make_wrapper "${PN}" "${dir}/bin/${PN}.sh"
+	make_wrapper "${PN}" "${dir}/bin/${PN}"
 	newicon "bin/${PN}.svg" "${PN}.svg"
 	make_desktop_entry "${PN}" "CLion" "${PN}" "Development;IDE;"
 

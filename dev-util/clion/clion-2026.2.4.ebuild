@@ -49,6 +49,7 @@ RDEPEND="
 	media-libs/libglvnd
 	media-libs/mesa
 	net-print/cups
+	>=sys-apps/baselayout-java-0.1.0-r1
 	sys-apps/dbus
 	|| (
 		sys-apps/systemd
@@ -139,6 +140,7 @@ src_prepare() {
 	)
 
 	rm -rv "${remove_me[@]}" || die
+	rm -v jbr/lib/security/cacerts || die
 
 	# excepting files that should be kept for remote plugins
 	skip_remote_files=(
@@ -178,7 +180,7 @@ src_install() {
 
 	insinto "${dir}"
 	doins -r *
-	fperms 755 "${dir}"/bin/{clion.sh,format.sh,fsnotifier,inspect.sh,jetbrains_client.sh,ltedit.sh,remote-dev-server.sh,restarter,clang/linux/${my_arch_suffix}/bin/{clangd,clang-tidy,clazy-standalone,llvm-symbolizer}}
+	fperms 755 "${dir}"/bin/{clion,clion.sh,format.sh,fsnotifier,inspect.sh,jetbrains_client.sh,ltedit.sh,remote-dev-server,remote-dev-server.sh,restarter,clang/linux/${my_arch_suffix}/bin/{clangd,clang-tidy,clazy-standalone,llvm-symbolizer}}
 
 	if [[ -d jbr ]]; then
 		fperms 755 "${dir}"/jbr/bin/{java,javac,javadoc,jcmd,jdb,jfr,jhsdb,jinfo,jmap,jps,jrunscript,jstack,jstat,keytool,rmiregistry,serialver}
@@ -190,8 +192,9 @@ src_install() {
 	fperms 755 "${dir}"/plugins/clion-radler/DotFiles/linux-${my_arch_radler}/Rider.Backend
 
 	dosym -r "${EPREFIX}/usr/bin/ninja" "${dir}"/bin/ninja/linux/${my_arch_suffix}/ninja
+	dosym -r /etc/ssl/certs/java/cacerts "${dir}"/jbr/lib/security/cacerts
 
-	make_wrapper "${PN}" "${dir}/bin/${PN}.sh"
+	make_wrapper "${PN}" "${dir}/bin/${PN}"
 	newicon "bin/${PN}.svg" "${PN}.svg"
 	make_desktop_entry "${PN}" "CLion" "${PN}" "Development;IDE;"
 
