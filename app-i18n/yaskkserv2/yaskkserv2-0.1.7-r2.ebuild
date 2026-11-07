@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
@@ -75,10 +75,10 @@ CRATES="
 	num_cpus@1.16.0
 	object@0.32.1
 	once_cell@1.18.0
-	openssl@0.10.57
+	openssl@0.10.78
 	openssl-macros@0.1.1
 	openssl-probe@0.1.5
-	openssl-sys@0.9.93
+	openssl-sys@0.9.114
 	os_str_bytes@6.5.1
 	percent-encoding@2.3.0
 	pin-project-lite@0.2.13
@@ -189,6 +189,10 @@ BDEPEND="test? (
 )"
 
 QA_FLAGS_IGNORED=".*"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-openssl-4.patch
+)
 
 src_prepare() {
 	default

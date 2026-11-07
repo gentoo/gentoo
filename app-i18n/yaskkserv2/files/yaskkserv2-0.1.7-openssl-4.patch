@@ -1,0 +1,29 @@
+Bump openssl/openssl-sys for OpenSSL 4 support.
+https://bugs.gentoo.org/985637
+
+--- a/Cargo.lock
++++ b/Cargo.lock
+@@ -631,9 +631,9 @@
+ 
+ [[package]]
+ name = "openssl"
+-version = "0.10.57"
++version = "0.10.78"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "bac25ee399abb46215765b1cb35bc0212377e58a061560d8b29b024fd0430e7c"
++checksum = "f38c4372413cdaaf3cc79dd92d29d7d9f5ab09b51b10dded508fb90bb70b9222"
+ dependencies = [
+  "bitflags 2.4.0",
+  "cfg-if",
+@@ -663,9 +663,9 @@
+ 
+ [[package]]
+ name = "openssl-sys"
+-version = "0.9.93"
++version = "0.9.114"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "db4d56a4c0478783083cfafcc42493dd4a981d41669da64b4572a2a089b51b1d"
++checksum = "13ce1245cd07fcc4cfdb438f7507b0c7e4f3849a69fd84d52374c66d83741bb6"
+ dependencies = [
+  "cc",
+  "libc",
