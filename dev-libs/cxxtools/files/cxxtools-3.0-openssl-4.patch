@@ -1,0 +1,49 @@
+From 826994baf778d219ed6d8f45be9d8a7220575abc Mon Sep 17 00:00:00 2001
+From: Ravi Kant Sharma <ravi.kant.sharma@canonical.com>
+Date: Fri, 5 Jun 2026 11:56:32 +0200
+Subject: [PATCH] Fix for OpenSSL4 compatibility
+
+---
+ src/sslcertificateimpl.cpp | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/src/sslcertificateimpl.cpp b/src/sslcertificateimpl.cpp
+index bd079fe9..1b35275e 100644
+--- a/src/sslcertificateimpl.cpp
++++ b/src/sslcertificateimpl.cpp
+@@ -37,7 +37,7 @@
+ 
+ namespace cxxtools
+ {
+-static String str(X509_NAME* a)
++static String str(const X509_NAME* a)
+ {
+     class MemBIO
+     {
+@@ -64,7 +64,7 @@ static String str(X509_NAME* a)
+     return Utf8Codec::decode(&buf[0], buf.size());
+ }
+ 
+-static std::string str(ASN1_INTEGER* a)
++static std::string str(const ASN1_INTEGER* a)
+ {
+     BIGNUM* bn = ASN1_INTEGER_to_BN(a, 0);
+     if (bn == 0)
+@@ -84,7 +84,7 @@ static std::string str(ASN1_INTEGER* a)
+ }
+ 
+ #ifdef HAVE_ASN1_TIME_diff
+-static DateTime dt(ASN1_TIME* t)
++static DateTime dt(const ASN1_TIME* t)
+ {
+     class Asn1Time
+     {
+@@ -112,7 +112,7 @@ static DateTime dt(ASN1_TIME* t)
+     return DateTime::fromMSecsSinceEpoch(Seconds(secs));
+ }
+ #else
+-static DateTime dt(ASN1_TIME* time)
++static DateTime dt(const ASN1_TIME* time)
+ {
+     const char* str = (const char*) time->data;
+     size_t i = 0;

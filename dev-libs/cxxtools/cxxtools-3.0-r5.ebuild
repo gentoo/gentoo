@@ -28,6 +28,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.0-gcc12-time.patch
 	"${FILESDIR}"/${PN}-3.0-lld-linking-openssl.patch
 	"${FILESDIR}"/${PN}-3.0-gcc16-cxx20.patch
+	"${FILESDIR}"/${PN}-3.0-openssl-4.patch
 )
 
 src_prepare() {
