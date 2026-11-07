@@ -1,0 +1,12 @@
+See PR pending https://github.com/softhsm/SoftHSMv2/pull/916.patch
+fix libcxx23
+--- a/src/lib/slot_mgr/Token.cpp
++++ b/src/lib/slot_mgr/Token.cpp
+@@ -32,6 +32,7 @@
+ #include "ByteString.h"
+ #include "SecureDataManager.h"
+ #include <cstdio>
++#include <ctime>
+ 
+ #ifndef _WIN32
+ #include <sys/time.h>
