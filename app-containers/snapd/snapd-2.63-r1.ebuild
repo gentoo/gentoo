@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools bash-completion-r1 flag-o-matic go-module linux-info readme.gentoo-r1 systemd tmpfiles xdg-utils
+inherit autotools flag-o-matic go-module linux-info readme.gentoo-r1 shell-completion systemd tmpfiles xdg-utils
 
 DESCRIPTION="Service and tools for management of snap packages"
 HOMEPAGE="https://snapcraft.io/"
@@ -151,9 +151,7 @@ src_install() {
 		"${S}/data/completion/bash/"{complete.sh,etelpmoc.sh,}
 
 	dobashcomp "${S}/data/completion/bash/snap"
-
-	insinto /usr/share/zsh/site-functions
-	doins "${S}/data/completion/zsh/_snap"
+	dozshcomp "${S}/data/completion/zsh/_snap"
 
 	insinto "/usr/share/polkit-1/actions"
 	doins "${S}/data/polkit/io.snapcraft.snapd.policy"
