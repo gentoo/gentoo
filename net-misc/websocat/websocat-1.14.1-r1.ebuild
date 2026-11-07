@@ -3,13 +3,17 @@
 
 EAPI=8
 
-CRATES=""
+CRATES="
+	openssl@0.10.78
+	openssl-sys@0.9.114
+"
 inherit cargo
 
 DESCRIPTION="Command-line client for WebSockets, like netcat, with socat-like functions"
 HOMEPAGE="https://github.com/vi/websocat"
 SRC_URI="https://github.com/vi/websocat/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 SRC_URI+=" https://github.com/gentoo-crate-dist/${PN}/releases/download/v${PV}/${P}-crates.tar.xz"
+SRC_URI+=" ${CARGO_CRATE_URIS}"
 
 LICENSE="MIT"
 # Dependent crate licenses
@@ -26,9 +30,13 @@ DEPEND="${RDEPEND}"
 
 QA_FLAGS_IGNORED="/usr/bin/websocat"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-openssl-4.patch
+)
+
 src_configure() {
 	local myfeatures=(
-		$(usex ssl ssl '')
+		$(usev ssl)
 		seqpacket
 		signal_handler
 		tokio-process
