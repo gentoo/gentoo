@@ -668,11 +668,19 @@ if [[ ${ETYPE} == sources ]]; then
 		dev-build/make
 		sys-devel/bison
 		sys-devel/flex
-		sys-libs/binutils-libs
 		>=sys-libs/ncurses-5.2
 		virtual/libelf
 		virtual/pkgconfig
 	)"
+
+	# Required for objtool / libbfd on kernels < 7.3
+	# Upstream commit (7e61560628d1) removes need for dependency
+	# See Bug 984648
+	if kernel_is lt 7 3; then
+		RDEPEND+="
+			!build? ( sys-libs/binutils-libs )
+		"
+	fi
 
 	SLOT=${SLOT:=${PVR}}
 	DESCRIPTION="Sources based on the Linux Kernel"
