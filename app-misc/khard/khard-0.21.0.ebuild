@@ -14,7 +14,7 @@ HOMEPAGE="
 "
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
+KEYWORDS="amd64 arm64 ~riscv x86"
 
 RDEPEND="
 	>=dev-python/configobj-5.0.6[${PYTHON_USEDEP}]
