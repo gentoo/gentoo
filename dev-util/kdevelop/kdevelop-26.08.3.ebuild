@@ -18,17 +18,16 @@ HOMEPAGE="https://kdevelop.org/"
 LICENSE="GPL-2 LGPL-2"
 SLOT="6/$(ver_cut 1-2)"
 KEYWORDS="~amd64 ~arm64"
-IUSE="gdbui plasma +qmake +share subversion"
+IUSE="gdbui plasma +qmake +share subversion +webengine"
 
 # UPSTREAM: not ported yet, check plugins/CMakeLists.txt
 # IUSE="hex"
-# 	hex? ( app-editors/okteta:6 )
+# hex? ( app-editors/okteta:6 )
 COMMON_DEPEND="
 	>=dev-qt/qt5compat-${QTMIN}:6
 	>=dev-qt/qtbase-${QTMIN}:6[dbus,gui,network,widgets,xml]
 	>=dev-qt/qtdeclarative-${QTMIN}:6[widgets]
 	>=dev-qt/qttools-${QTMIN}:6[assistant]
-	>=dev-qt/qtwebengine-${QTMIN}:6[widgets]
 	>=dev-util/astyle-3.1:=
 	kde-apps/libkomparediff2:6
 	>=kde-frameworks/karchive-${KFMIN}:6
@@ -73,6 +72,7 @@ COMMON_DEPEND="
 		dev-libs/apr-util:1
 		dev-vcs/subversion
 	)
+	webengine? ( >=dev-qt/qtwebengine-${QTMIN}:6[widgets] )
 "
 DEPEND="${COMMON_DEPEND}
 	dev-libs/boost
@@ -85,6 +85,8 @@ RDEPEND="${COMMON_DEPEND}
 	kde-apps/kapptemplate:*
 	kde-apps/kio-extras:6
 "
+
+PATCHES=( "${FILESDIR}/${P}-webengine-optional.patch" ) # bug #925719
 
 CMAKE_SKIP_TESTS=(
 	# D-Bus required
@@ -110,6 +112,7 @@ src_configure() {
 		$(cmake_use_find_package qmake KDevelopPGQt)
 		$(cmake_use_find_package share KF6Purpose)
 		$(cmake_use_find_package subversion SubversionLibrary)
+		-DBUILD_DOC_VIEWER=$(usex webengine)
 	)
 #		$(cmake_use_find_package hex OktetaKastenControllers)
 
