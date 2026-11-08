@@ -1,6 +1,10 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Eli Schwartz <eschwartz@gentoo.org> (2026-11-07)
+# sys-block/libfabric not keyworded here
+sys-cluster/openmpi libfabric
+
 # Thibaud CANALE <thican@thican.net> (2026-05-17)
 # Tests require dev-python/respx
 app-crypt/certbot test

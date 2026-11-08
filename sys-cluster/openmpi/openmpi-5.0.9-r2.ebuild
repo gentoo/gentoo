@@ -24,7 +24,7 @@ S="${WORKDIR}/${MY_P}"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 -arm arm64 -ppc ppc64 -x86"
-IUSE="cma cuda fortran peruse romio ucx valgrind
+IUSE="cma cuda fortran libfabric peruse romio ucx valgrind
 	${IUSE_OPENMPI_FABRICS} ${IUSE_OPENMPI_RM}"
 
 REQUIRED_USE="
@@ -47,6 +47,7 @@ RDEPEND="
 		>=dev-util/nvidia-cuda-toolkit-6.5.19-r1:=
 		x11-drivers/nvidia-drivers
 	)
+	libfabric? ( sys-block/libfabric )
 	openmpi_fabrics_ofed? ( sys-cluster/rdma-core )
 	openmpi_fabrics_knem? ( sys-cluster/knem )
 	openmpi_rm_pbs? ( sys-cluster/torque )
@@ -134,6 +135,7 @@ src_configure() {
 		$(use_with openmpi_rm_pbs tm)
 		$(use_with openmpi_rm_slurm slurm)
 		$(use_with ucx)
+		$(use_with libfabric ofi)
 	)
 
 	CONFIG_SHELL="${BROOT}"/bin/bash econf "${myconf[@]}"

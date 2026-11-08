@@ -1,6 +1,10 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Eli Schwartz <eschwartz@gentoo.org> (2026-11-07)
+# sys-block/libfabric not keyworded here
+sys-cluster/openmpi libfabric
+
 # Jimi Huotari <chiitoo@gentoo.org> (2026-11-06)
 # Tested working on arm64.
 lxqt-base/lxqt-meta -clip

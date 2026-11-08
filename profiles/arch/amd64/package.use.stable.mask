@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Eli Schwartz <eschwartz@gentoo.org> (2026-11-07)
+# sys-block/libfabric not stable here
+sys-cluster/openmpi libfabric
+
 # Paul Zander <negril.nx+gentoo@gmail.com> (2026-04-28)
 # SPIRV target requires dev-libs/level-zero.
 llvm-runtimes/openmp level-zero
