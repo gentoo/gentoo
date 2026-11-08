@@ -14,7 +14,7 @@ IUSE="doc static-libs"
 
 BDEPEND="virtual/pkgconfig
 	doc? ( virtual/latex-base )"
-DEPEND="sci-libs/suitesparseconfig"
+DEPEND="<sci-libs/suitesparseconfig-7"
 RDEPEND="${DEPEND}"
 
 src_configure() {
