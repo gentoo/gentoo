@@ -1,6 +1,11 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Gilles Dartiguelongue <gilles.dartiguelongue@esiee.org> (2026-11-08)
+# Requires gnome-weather which requires nodejs. See masks below.
+>=gnome-base/gnome-49
+>=gnome-base/gnome-extra-apps-49
+
 # Alfredo Tupone <tupone@gentoo.org> (2026-04-23)
 # Requires qtwebengine
 sci-visualization/xyscan
