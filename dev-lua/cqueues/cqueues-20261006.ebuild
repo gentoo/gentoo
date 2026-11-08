@@ -16,7 +16,7 @@ S="${WORKDIR}/${PN}-rel-${PV}"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 ~arm64"
 
 REQUIRED_USE="${LUA_REQUIRED_USE}"
 
