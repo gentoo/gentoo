@@ -39,7 +39,10 @@ BDEPEND="
 	virtual/pkgconfig
 	test? ( dev-cpp/gtest )"
 
-PATCHES=( "${FILESDIR}/passwordsafe-1.20.0-CMake.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-1.20.0-CMake.patch"
+	"${FILESDIR}/${P}-CMake.patch"
+	)
 
 src_configure() {
 	setup-wxwidgets
