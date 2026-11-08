@@ -78,10 +78,6 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
-PATCHES=(
-	"${FILESDIR}/mumble-1.6.1001-database-exception-include.patch"
-)
-
 DISABLE_AUTOFORMATTING="yes"
 DOC_CONTENTS="
 The default 'SuperUser' password will be written into the log file
