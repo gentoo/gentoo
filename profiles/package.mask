@@ -306,11 +306,6 @@ www-apps/drupal:11.2.14
 # and tagged onto bug #981565 too).
 ~net-print/libcupsfilters-2.2.1
 
-# Michał Górny <mgorny@gentoo.org> (2026-09-16)
-# Used only by dev-python/jupyter-server with Python < 3.12.
-# No revdeps left.  Removal on 2026-10-16.  Bug #982608.
-dev-python/overrides
-
 # Sam James <sam@gentoo.org> (2026-09-08)
 # Changes ctest(1) behaviour to exit non-zero if no tests, which
 # may break many ebuilds. Needs some assessment.
