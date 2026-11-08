@@ -513,7 +513,11 @@ zig_src_unpack() {
 		touch build.zig || die
 		for zig_dep in "${zig_deps[@]}"; do
 			# Hide now-spammy hash from stdout
-			ezig fetch --save-exact="${zig_dep##-*}" "${DISTDIR}/${zig_dep}" > /dev/null
+			if [[ -f "${WORKDIR}/${zig_dep}" ]]; then
+				ezig fetch --save-exact="${zig_dep##-*}" "${WORKDIR}/${zig_dep}" > /dev/null
+			else
+				ezig fetch --save-exact="${zig_dep##-*}" "${DISTDIR}/${zig_dep}" > /dev/null
+			fi
 		done
 
 		# For 0.17 and later:
