@@ -367,14 +367,6 @@ app-text/catdoc
 # Removal on 2026-07-27. Bug #949068.
 gui-libs/tepl
 
-# Sam James <sam@gentoo.org> (2026-07-16)
-# Stub since Bind 9.18. Maintaining a separate build just for the client
-# binaries proved brittle and unsustainable (see discussion in
-# bug #832218 for details). Please use net-dns/bind instead. Other options
-# include net-dns/cares-tools, net-libs/ldns's drill, and net-dns/doggo.
-# Removal on 2026-08-15.  Bug #977172.
-net-dns/bind-tools
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2026-07-07)
 # dev-embedded/ponyprog destabilisation mask, bug #978907
 =dev-embedded/ponyprog-3.1.4_p20250501-r0
