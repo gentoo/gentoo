@@ -126,6 +126,11 @@ src_prepare() {
 		sed -i "/configure_file/i set (BPFTRACE_VERSION \"${rev}\")" cmake/Version.cmake || die
 	fi
 
+	# https://github.com/bpftrace/bpftrace/pull/5423
+	sed -i \
+		's/^\(find_package(Clang \)${CLANG_VERSION} /\1${LLVM_VERSION_MAJOR}.${LLVM_VERSION_MINOR}.${LLVM_VERSION_PATCH} /' \
+		CMakeLists.txt || die
+
 	cmake_src_prepare
 }
 

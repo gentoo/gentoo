@@ -1,0 +1,45 @@
+https://github.com/bpftrace/bpftrace/commit/c0810774c790a257481e79db894854fccf06a360
+
+From c0810774c790a257481e79db894854fccf06a360 Mon Sep 17 00:00:00 2001
+From: cp0613 <cp0613@linux.alibaba.com>
+Date: Sun, 20 Sep 2026 13:10:45 +0800
+Subject: [PATCH] Correctly split LLVM_DEFINITIONS before adding compile
+ definitions (#5353)
+
+LLVM_DEFINITIONS is exported by LLVMConfig.cmake as a space separated
+string rather than a CMake list. Passing it to add_definitions()
+unquoted makes CMake treat the whole string as a single compile option,
+which is then emitted verbatim and only happens to work when a shell
+splits it back apart. That breaks for generators that quote arguments
+and for definitions whose value contains spaces.
+
+Split the string with separate_arguments(NATIVE_COMMAND) first, as the
+LLVM documentation recommends, so that each definition becomes its own
+properly quoted compile definition. If LLVM_DEFINITIONS is already a
+CMake list, pass it through unchanged.
+
+Fixes #5348
+
+Signed-off-by: Chen Pei <cp0613@linux.alibaba.com>
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index a781bf34..60466a21 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -167,7 +167,12 @@ endif()
+ 
+ message(STATUS "Found LLVM ${LLVM_PACKAGE_VERSION}: ${LLVM_CMAKE_DIR}")
+ include_directories(SYSTEM ${LLVM_INCLUDE_DIRS})
+-add_definitions(${LLVM_DEFINITIONS})
++if(LLVM_DEFINITIONS MATCHES ";")
++  set(LLVM_DEFINITIONS_LIST ${LLVM_DEFINITIONS})
++else()
++  separate_arguments(LLVM_DEFINITIONS_LIST NATIVE_COMMAND "${LLVM_DEFINITIONS}")
++endif()
++add_definitions(${LLVM_DEFINITIONS_LIST})
+ 
+ string(REGEX REPLACE "(-rc[0-9]+|git)" "" CLANG_VERSION ${LLVM_PACKAGE_VERSION})
+ 
+-- 
+2.49.1
+
