@@ -16,7 +16,7 @@ PYTHON_REQ_USE="ncurses,ssl,xml(+)"
 
 WANT_AUTOCONF="2.1"
 
-inherit check-reqs flag-o-matic llvm-r1 multiprocessing python-any-r1 rust toolchain-funcs
+inherit check-reqs flag-o-matic llvm-r2 multiprocessing python-any-r1 rust toolchain-funcs
 
 MY_PN="mozjs"
 MY_PV="${PV/_pre*}"
@@ -196,7 +196,7 @@ pkg_setup() {
 		fi
 
 		check-reqs_pkg_setup
-		llvm-r1_pkg_setup
+		llvm-r2_pkg_setup
 		rust_pkg_setup
 		python-any-r1_pkg_setup
 

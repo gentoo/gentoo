@@ -41,7 +41,7 @@ MOZ_P="${MOZ_PN}-${MOZ_PV}"
 MOZ_PV_DISTFILES="${MOZ_PV}${MOZ_PV_SUFFIX}"
 MOZ_P_DISTFILES="${MOZ_PN}-${MOZ_PV_DISTFILES}"
 
-inherit check-reqs desktop eapi9-ver flag-o-matic gnome2-utils linux-info llvm-r1 \
+inherit check-reqs desktop eapi9-ver flag-o-matic gnome2-utils linux-info llvm-r2 \
 	multiprocessing optfeature pax-utils python-any-r1 rust toolchain-funcs virtualx xdg
 
 DESCRIPTION="Thunderbird Mail Client"
@@ -395,7 +395,7 @@ pkg_setup() {
 		fi
 
 		check-reqs_pkg_setup
-		llvm-r1_pkg_setup
+		llvm-r2_pkg_setup
 		rust_pkg_setup
 		python-any-r1_pkg_setup
 

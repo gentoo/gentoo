@@ -21,7 +21,7 @@ if [[ -z ${_CARGO_ECLASS} ]]; then
 _CARGO_ECLASS=1
 
 if [[ -n ${RUST_NEEDS_LLVM} ]]; then
-	inherit llvm-r1
+	inherit llvm-r2
 fi
 
 if [[ -n ${CARGO_OPTIONAL} ]]; then

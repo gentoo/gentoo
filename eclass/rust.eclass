@@ -52,7 +52,7 @@ if [[ -z ${_RUST_ECLASS} ]]; then
 _RUST_ECLASS=1
 
 if [[ -n ${RUST_NEEDS_LLVM} ]]; then
-	inherit llvm-r1
+	inherit llvm-r2
 fi
 
 if [[ -n ${RUST_MULTILIB} ]]; then
@@ -161,7 +161,7 @@ declare -a -g -r _RUST_SLOTS_ORDERED=(
 # packages that need a tight coupling between Rust and LLVM but don't
 # really care _which_ version of Rust is selected. Combine with
 # RUST_MAX_VER and RUST_MIN_VER to limit the range of Rust versions
-# that are acceptable. Will `die` if llvm-r1 is not inherited or
+# that are acceptable. Will `die` if llvm-r2 is not inherited or
 # an invalid combination of RUST and LLVM slots is detected; this probably
 # means that a LLVM slot in LLVM_COMPAT has had all of its Rust slots filtered.
 
