@@ -27,6 +27,10 @@ DEPEND="
 "
 BDEPEND="nls? ( sys-devel/gettext )"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-libxfs-remove-stale-xfs_trans_mod_sb.patch
+)
+
 src_prepare() {
 	default
 
