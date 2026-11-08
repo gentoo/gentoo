@@ -24,7 +24,7 @@ IUSE="+native-extensions"
 BDEPEND="
 	test? (
 		dev-python/numpy[${PYTHON_USEDEP}]
-		dev-python/scipy[${PYTHON_USEDEP}]
+		!ppc? ( dev-python/scipy[${PYTHON_USEDEP}] )
 	)
 "
 
