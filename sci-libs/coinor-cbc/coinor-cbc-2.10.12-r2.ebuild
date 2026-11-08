@@ -29,7 +29,7 @@ BDEPEND="virtual/fortran
 	virtual/pkgconfig
 	doc? ( app-text/doxygen[dot] )
 	test? ( sci-libs/coinor-sample )"
-DEPEND="sci-libs/coinor-clp:=
+DEPEND="sci-libs/coinor-clp:=[asl=]
 	sci-libs/coinor-cgl:=
 	sci-libs/coinor-osi:=
 	sci-libs/coinor-utils:=
