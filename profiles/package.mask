@@ -375,12 +375,6 @@ gui-libs/tepl
 # Removal on 2026-08-15.  Bug #977172.
 net-dns/bind-tools
 
-# Sam James <sam@gentoo.org> (2026-07-16)
-# Outdated and replaced by app-arch/7zip. Many unfixed bugs including
-# severe vulnerabilities.
-# Removal on 2026-08-15.  Bug #942397.
-app-arch/p7zip
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2026-07-07)
 # dev-embedded/ponyprog destabilisation mask, bug #978907
 =dev-embedded/ponyprog-3.1.4_p20250501-r0
