@@ -5,8 +5,16 @@ EAPI=8
 
 inherit cmake
 
-DESCRIPTION="A reference implementation of the Russian GOST crypto algorithms for OpenSSL"
+DESCRIPTION="Reference implementation of the Russian GOST crypto algorithms for OpenSSL"
 HOMEPAGE="https://github.com/gost-engine/engine"
+if [[ ${PV} == "9999" ]] ; then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/gost-engine/engine.git"
+else
+	KEYWORDS="~amd64 ~hppa"
+	SRC_URI="https://github.com/gost-engine/engine/releases/download/v${PV}/v${PV}.tar.gz -> ${P}.tar.gz"
+	S="${WORKDIR}/engine-${PV}"
+fi
 
 # libprov is linked in statically
 LICENSE="Apache-2.0 CC0-1.0"
@@ -14,25 +22,11 @@ SLOT="0/${PV}"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-COMMON_DEPEND=">=dev-libs/openssl-3.4:0="
-DEPEND="${COMMON_DEPEND}
-	test? (
-		dev-lang/perl
-	)"
-RDEPEND="${COMMON_DEPEND}"
+DEPEND=">=dev-libs/openssl-3.4:0="
+RDEPEND="${DEPEND}"
+BDEPEND="test? ( dev-lang/perl )"
 
 DOCS=( INSTALL.md README.gost README.md README.prov.md )
-
-LIBPROV_COMMIT="d5d381f71c90fe0c91f861784b715b189554f1f2"
-if [[ ${PV} == "9999" ]] ; then
-	EGIT_REPO_URI="https://github.com/gost-engine/engine.git"
-	inherit git-r3
-else
-	KEYWORDS="~amd64 ~hppa"
-	SRC_URI="https://github.com/gost-engine/engine/archive/v${PV}.tar.gz -> ${P}.tar.gz
-		https://github.com/provider-corner/libprov/archive/${LIBPROV_COMMIT}.tar.gz -> libprov-${LIBPROV_COMMIT}.tar.gz"
-	S="${WORKDIR}/engine-${PV}"
-fi
 
 src_prepare() {
 	if [[ ${PV} != "9999" ]] ; then
