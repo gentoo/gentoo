@@ -953,8 +953,10 @@ src_install() {
 
 	# Not required for general use, installs rustc-dev component (i.e. internal rlibs)
 	# needed to link to compiler internals for (e.g.) crubit
-	use rustc-dev && DESTDIR="${D}" "${EPYTHON}" ./x.py install rustc-dev -v \
-		--config="${S}"/bootstrap.toml -j$(get_makeopts_jobs) || die
+	if use rustc-dev ; then
+		DESTDIR="${D}" "${EPYTHON}" ./x.py install rustc-dev -v \
+			--config="${S}"/bootstrap.toml -j$(get_makeopts_jobs) || die
+	fi
 
 	docompress /usr/lib/${PN}/${SLOT}/share/man/
 
