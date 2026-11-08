@@ -108,6 +108,7 @@ src_configure() {
 
 		--with-hwloc=external
 		--with-libevent=external
+		--with-pmix=external
 		--with-prrte=external
 
 		# Originally supposed to be re-enabled for 5.0!
