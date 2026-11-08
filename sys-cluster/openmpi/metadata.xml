@@ -10,6 +10,7 @@
 		<flag name="libompitrace">Enable support for contributed package libompitrace</flag>
 		<flag name="peruse">Enable PERUSE interface</flag>
 		<flag name="romio">Build the ROMIO MPI-IO component</flag>
+		<flag name="ucx">Enable Unified Communication X library support</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">open-mpi/ompi</remote-id>
