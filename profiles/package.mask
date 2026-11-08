@@ -361,12 +361,6 @@ app-text/catdoc
 # unclear. But masked just as a precaution. Bug #980367.
 =sys-boot/shim-16.1_p8
 
-# Alfred Wingate <parona@protonmail.com> (2026-07-24)
-# Renamed to libgedit-tepl upstream.
-# Unbuildable for half a year. Last revdep moved to libgedit-tepl.
-# Removal on 2026-07-27. Bug #949068.
-gui-libs/tepl
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2026-07-07)
 # dev-embedded/ponyprog destabilisation mask, bug #978907
 =dev-embedded/ponyprog-3.1.4_p20250501-r0
