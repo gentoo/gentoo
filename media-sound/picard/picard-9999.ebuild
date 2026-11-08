@@ -64,7 +64,6 @@ DEPEND="test? ( $(python_gen_cond_dep 'dev-python/pyqt6[testlib,${PYTHON_USEDEP}
 BDEPEND="nls? ( dev-qt/qttools:6[linguist] )"
 
 EPYTEST_PLUGINS=()  # pytest-randomly
-EPYTEST_XDIST=0
 distutils_enable_tests pytest
 
 python_compile() {
