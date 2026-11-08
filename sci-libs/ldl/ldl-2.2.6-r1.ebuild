@@ -22,3 +22,10 @@ src_configure() {
 		$(use_with doc) \
 		$(use_enable static-libs static)
 }
+
+src_install() {
+	default
+	if ! use static-libs; then
+		rm "${ED}"/usr/$(get_libdir)/libldl.la || die
+	fi
+}
