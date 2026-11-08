@@ -1,0 +1,103 @@
+Upstream PR: https://github.com/lxqt/libdbusmenu-lxqt/pull/29
+
+From 453cc0cdf6a088484231b3dd090f60f5b45ff3b9 Mon Sep 17 00:00:00 2001
+From: Jimi Huotari <chiitoo@gentoo.org>
+Date: Thu, 6 Aug 2026 12:05:10 +0300
+Subject: [PATCH 1/2] cmake: fix pkgconfig libdir path and use more
+ GNUInstallDirs
+
+Adapted from: https://gitweb.gentoo.org/repo/gentoo.git/tree/dev-libs/libdbusmenu-qt/files/libdbusmenu-qt-0.9.3_pre20160218-cmake.patch
+
+Signed-off-by: Jimi Huotari <chiitoo@gentoo.org>
+---
+ CMakeLists.txt      | 10 ++++------
+ dbusmenu-lxqt.pc.in |  6 +++---
+ src/CMakeLists.txt  | 10 +++++-----
+ 3 files changed, 12 insertions(+), 14 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 1805106..6720378 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -34,14 +34,12 @@ include (CheckCXXCompilerFlag)
+ include(CMakePackageConfigHelpers)
+ include(GNUInstallDirs)
+ 
+-set(LIB_DESTINATION "${CMAKE_INSTALL_LIBDIR}")
+-set(CMAKECONFIG_INSTALL_DIR "${LIB_DESTINATION}/cmake/dbusmenu-lxqt")
+-set(INCLUDE_INSTALL_DIR "include/dbusmenu-lxqt")
++set(INCLUDE_INSTALL_DIR "${CMAKE_INSTALL_INCLUDEDIR}/dbusmenu-lxqt")
+ 
+ configure_file(dbusmenu-lxqt.pc.in ${CMAKE_BINARY_DIR}/dbusmenu-lxqt.pc @ONLY)
+ 
+ install(FILES ${CMAKE_BINARY_DIR}/dbusmenu-lxqt.pc
+-        DESTINATION ${LIB_DESTINATION}/pkgconfig
++        DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig
+ )
+ 
+ add_subdirectory(src)
+@@ -51,7 +49,7 @@ add_subdirectory(tests)
+ configure_package_config_file(
+     dbusmenu-lxqt-config.cmake.in
+     ${CMAKE_BINARY_DIR}/dbusmenu-lxqt-config.cmake
+-    INSTALL_DESTINATION ${CMAKECONFIG_INSTALL_DIR}
++    INSTALL_DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/dbusmenu-lxqt
+     PATH_VARS INCLUDE_INSTALL_DIR
+ )
+ 
+@@ -65,6 +63,6 @@ write_basic_package_version_file(
+ install(FILES
+     ${CMAKE_BINARY_DIR}/dbusmenu-lxqt-config.cmake
+     ${CMAKE_BINARY_DIR}/dbusmenu-lxqt-config-version.cmake
+-    DESTINATION "${CMAKECONFIG_INSTALL_DIR}"
++    DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/dbusmenu-lxqt"
+     COMPONENT Devel
+ )
+diff --git a/dbusmenu-lxqt.pc.in b/dbusmenu-lxqt.pc.in
+index d437851..60e81ad 100644
+--- a/dbusmenu-lxqt.pc.in
++++ b/dbusmenu-lxqt.pc.in
+@@ -1,7 +1,7 @@
+ prefix=@CMAKE_INSTALL_PREFIX@
+-exec_prefix=@CMAKE_INSTALL_PREFIX@
+-libdir=@CMAKE_INSTALL_PREFIX@/lib
+-includedir=@CMAKE_INSTALL_PREFIX@/include/dbusmenu-lxqt
++exec_prefix=${prefix}
++libdir=${exec_prefix}/@CMAKE_INSTALL_LIBDIR@
++includedir=${prefix}/dbusmenu-lxqt
+ 
+ Name: libdbusmenu-lxqt
+ Description: Qt implementation of dbusmenu spec
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index a2839b3..2bf27ce 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -30,23 +30,23 @@ target_link_libraries(dbusmenu-lxqt
+ 
+ # Make sure linking to the target adds dbusmenu-lxqt install directory
+ target_include_directories(dbusmenu-lxqt
+-    INTERFACE "$<INSTALL_INTERFACE:${INCLUDE_INSTALL_DIR}>")
++    INTERFACE "$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/dbusmenu-lxqt>")
+ 
+ install(TARGETS dbusmenu-lxqt
+     EXPORT dbusmenu-lxqt-targets
+-    LIBRARY DESTINATION ${LIB_DESTINATION}
++    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+     RUNTIME DESTINATION bin
+ )
+ 
+ install(EXPORT dbusmenu-lxqt-targets
+-    DESTINATION ${CMAKECONFIG_INSTALL_DIR})
++    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/dbusmenu-lxqt)
+ 
+ install(DIRECTORY .
+-    DESTINATION ${INCLUDE_INSTALL_DIR}
++    DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/dbusmenu-lxqt
+     FILES_MATCHING PATTERN "*.h"
+     PATTERN "*_p.h" EXCLUDE
+ )
+ 
+ install(FILES ${CMAKE_CURRENT_BINARY_DIR}/dbusmenu_version.h
+-    DESTINATION ${INCLUDE_INSTALL_DIR}
++    DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/dbusmenu-lxqt
+ )
