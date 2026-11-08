@@ -350,12 +350,6 @@ acct-group/croc
 acct-user/croc
 net-misc/croc
 
-# Brett A C Sheffield <bacs@librecast.net> (2026-08-09)
-# Unmaintained by upstream for 16 years. Two unpatched security bugs
-# (Bug #906111 and Bug #916866) and many more unpatched issues upstream.
-# Removal on 2026-09-09.
-app-text/catdoc
-
 # Nowa Ammerlaan <nowa@gentoo.org> (2026-08-06)
 # This version was pulled from upstream. The reason for this is
 # unclear. But masked just as a precaution. Bug #980367.
