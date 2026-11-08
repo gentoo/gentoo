@@ -1,0 +1,33 @@
+From 395d24f0fa2d68420cd2b72bdf68ed533b4b83b0 Mon Sep 17 00:00:00 2001
+From: Yaroslav Stepanchuk <torwigua@gmail.com>
+Date: Mon, 12 Feb 2024 11:24:56 -0800
+Subject: [PATCH] Fix build on alpine 3.19 (#12345)
+
+Summary:
+Add missing include of the cstdint header.
+
+Pull Request resolved: https://github.com/facebook/rocksdb/pull/12345
+
+Reviewed By: ltamasi
+
+Differential Revision: D53672261
+
+Pulled By: cbi42
+
+fbshipit-source-id: 758944c0b51b9701a129e7b88f692103bbce11d3
+
+diff --git a/options/offpeak_time_info.h b/options/offpeak_time_info.h
+index 75d61abb4..f42ef6dc2 100644
+--- a/options/offpeak_time_info.h
++++ b/options/offpeak_time_info.h
+@@ -5,6 +5,7 @@
+ 
+ #pragma once
+ 
++#include <cstdint>
+ #include <string>
+ 
+ #include "rocksdb/rocksdb_namespace.h"
+-- 
+2.49.1
+

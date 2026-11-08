@@ -1,0 +1,43 @@
+https://github.com/meta/rocksdb/pull/15613
+
+From d9ab30a2a0521d13d3da576592228b82074dfc04 Mon Sep 17 00:00:00 2001
+From: "Z. Liu" <zhixu.liu@gmail.com>
+Date: Sun, 8 Nov 2026 18:50:43 +0800
+Subject: [PATCH] fix missing <cstdint> include
+
+Explicitly include <cstdint> in transaction_db_mutex.h, which
+uses int64_t without including its defining header.
+
+This avoids relying on transitive header dependencies and fixes
+the build on musl-based systems.
+
+For example, release 7 failed with:
+
+> include/rocksdb/utilities/transaction_db_mutex.h:35:29: error: 'int64_t' has not been declared
+>    35 |   virtual Status TryLockFor(int64_t timeout_time) = 0;
+>       |                             ^~~~~~~
+> include/rocksdb/utilities/transaction_db_mutex.h:12:1: note: 'int64_t' is defined in header '<cstdint>'; this is probably fixable by adding '#include <cstdint>'
+>    11 | #include "rocksdb/status.h"
+>   +++ |+#include <cstdint>
+>    12 |
+
+The current version builds successfully only because other
+headers happen to include <cstdint> indirectly.
+
+Signed-off-by: Z. Liu <zhixu.liu@gmail.com>
+
+diff --git a/include/rocksdb/utilities/transaction_db_mutex.h b/include/rocksdb/utilities/transaction_db_mutex.h
+index 751d3c9ee..7f47332c4 100644
+--- a/include/rocksdb/utilities/transaction_db_mutex.h
++++ b/include/rocksdb/utilities/transaction_db_mutex.h
+@@ -5,6 +5,7 @@
+ 
+ #pragma once
+ 
++#include <cstdint>
+ #include <memory>
+ 
+ #include "rocksdb/status.h"
+-- 
+2.49.1
+
