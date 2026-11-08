@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,7 +19,7 @@ S="${WORKDIR}/${MY_PN}-releases-${PV}/${MY_PN}"
 LICENSE="EPL-1.0"
 SLOT="0/1" # major soname component
 KEYWORDS="~amd64 ~loong ~riscv ~x86"
-IUSE="examples glpk metis mpi mumps sparse static-libs test"
+IUSE="asl examples glpk metis mpi mumps sparse static-libs test"
 REQUIRED_USE="mpi? ( mumps )"
 RESTRICT="!test? ( test )"
 
@@ -36,6 +36,7 @@ BDEPEND="
 DEPEND="
 	sci-libs/coinor-osi:=
 	sci-libs/coinor-utils:=
+	asl? ( sci-libs/coinasl )
 	glpk? ( sci-mathematics/glpk:= sci-libs/amd )
 	metis? ( sci-libs/metis )
 	mumps? ( sci-libs/mumps[mpi?] )
@@ -80,6 +81,7 @@ src_configure() {
 	local myeconfargs=(
 		--enable-dependency-linking
 		--with-coin-instdir="${ED}"/usr
+		$(use_with asl)
 		$(use_with doc dot)
 	)
 	if use glpk; then

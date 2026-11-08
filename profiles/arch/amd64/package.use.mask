@@ -20,6 +20,7 @@
 # Alfredo Tupone <tupone@gentoo.org> (2026-11-8)
 # sci-libs/coinasl only available on amd64/x86
 sci-libs/coinor-cbc -asl
+sci-libs/coinor-clp -asl
 
 # Jimi Huotari <chiitoo@gentoo.org> (2026-11-06)
 # Tested working on amd64.

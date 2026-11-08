@@ -9,6 +9,7 @@
 # Alfredo Tupone <tupone@gentoo.org> (2026-11-8)
 # only for specific arch
 sci-libs/coinor-cbc asl
+sci-libs/coinor-clp asl
 
 # Michał Górny <mgorny@gentoo.org> (2026-11-06)
 # Needs clang-19.
