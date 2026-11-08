@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,13 +9,15 @@ DESCRIPTION="COIN-OR branch-and-cut mixed integer program solver"
 HOMEPAGE="https://github.com/coin-or/Cbc/"
 SRC_URI="https://github.com/coin-or/${MY_PN}/archive/releases/${PV}.tar.gz
 	-> ${P}.tar.gz"
+S="${WORKDIR}/${MY_PN}-releases-${PV}/${MY_PN}"
+
 LICENSE="EPL-1.0"
 
 # major soname component
 SLOT="0/3"
 
 KEYWORDS="~amd64 ~loong ~riscv ~x86"
-IUSE="doc examples static-libs test"
+IUSE="asl doc examples static-libs test"
 RESTRICT="!test? ( test )"
 
 # Fortran is NOT needed, but the ./configure scripts for all of the CoinOR
@@ -32,10 +34,10 @@ DEPEND="sci-libs/coinor-clp:=
 	sci-libs/coinor-dylp:=
 	sci-libs/coinor-osi:=
 	sci-libs/coinor-utils:=
-	sci-libs/coinor-vol:="
+	sci-libs/coinor-vol:=
+	asl? ( sci-libs/coinasl )
+"
 RDEPEND="${DEPEND}"
-
-S="${WORKDIR}/${MY_PN}-releases-${PV}/${MY_PN}"
 
 src_prepare() {
 	# Needed to make the --with-coin-instdir in src_configure happy.
@@ -53,6 +55,7 @@ src_configure() {
 	local myeconfargs=(
 		--enable-dependency-linking
 		--with-coin-instdir="${ED}/usr"
+		$(use_with asl)
 		$(use_with doc dot)
 	)
 

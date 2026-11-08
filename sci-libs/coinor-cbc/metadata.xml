@@ -5,6 +5,9 @@
     <email>sci@gentoo.org</email>
     <name>Gentoo Science Project</name>
   </maintainer>
+  <use>
+    <flag name="asl">Use <pkg>sci-libs/coinasl</pkg></flag>
+  </use>
   <longdescription lang="en">
     COIN-OR Branch-and-Cut is a Mixed integer linear programming
     solver. It uses many of the COIN-OR components and is designed to be

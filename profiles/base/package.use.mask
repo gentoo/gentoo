@@ -6,6 +6,10 @@
 
 # New entries go on top.
 
+# Alfredo Tupone <tupone@gentoo.org> (2026-11-8)
+# only for specific arch
+sci-libs/coinor-cbc asl
+
 # Michał Górny <mgorny@gentoo.org> (2026-11-06)
 # Needs clang-19.
 <dev-util/nvidia-cuda-toolkit-13 clang

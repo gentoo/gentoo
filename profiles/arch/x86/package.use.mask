@@ -1,6 +1,10 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Alfredo Tupone <tupone@gentoo.org> (2026-11-8)
+# sci-libs/coinasl only available on amd64/x86
+sci-libs/coinor-cbc -asl
+
 # Matthias Maier <tamiko@gentoo.org> (2026-10-12)
 # 64 bit global ordinals do not work on 32 bit
 # architectures, bug #928017
