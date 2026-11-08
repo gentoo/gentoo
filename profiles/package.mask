@@ -424,12 +424,6 @@ media-libs/svgalib
 # to many breakages
 dev-cpp/eigen:3/5.0
 
-# Matt Turner <mattst88@gentoo.org> (2026-05-22)
-# Deprecated upstream. Relies on removed XA support in Mesa. Use the built-in
-# modesetting driver instead. Bug #957955.
-# Removal on 2026-06-21.
-x11-drivers/xf86-video-vmware
-
 # Sam James <sam@gentoo.org> (2026-05-17)
 # Tries to delete many files (bug #975236)
 =dev-util/jenkins-bin-2.561
