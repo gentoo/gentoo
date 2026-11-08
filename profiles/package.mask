@@ -321,7 +321,6 @@ gnome-extra/gnome-integration-spotify
 # Upstream abandoned the project, suggests www-servers/gatling
 # by the same upstream instead.
 # Removal on 2026-10-09. Bugs #783666, #944275.
-www-servers/fnord
 acct-user/fnord
 acct-user/fnordlog
 
