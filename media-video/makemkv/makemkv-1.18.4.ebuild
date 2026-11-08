@@ -42,6 +42,7 @@ CONFIG_CHECK="~CHR_DEV_SG"
 PATCHES=(
 	"${FILESDIR}"/${PN}-qt6.patch
 	"${FILESDIR}"/${PN}-path.patch
+	"${FILESDIR}"/${PN}-ffmpeg-9.patch
 )
 
 src_prepare() {
