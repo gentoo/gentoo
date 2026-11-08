@@ -317,12 +317,6 @@ dev-python/overrides
 # Removal on 2026-10-11.  Bugs #982278, #952501.
 gnome-extra/gnome-integration-spotify
 
-# Alexey Sokolov <alexey+gentoo@asokolov.org> (2026-09-09)
-# Upstream abandoned the project, suggests www-servers/gatling
-# by the same upstream instead.
-# Removal on 2026-10-09. Bugs #783666, #944275.
-acct-user/fnordlog
-
 # Sam James <sam@gentoo.org> (2026-09-08)
 # Changes ctest(1) behaviour to exit non-zero if no tests, which
 # may break many ebuilds. Needs some assessment.
