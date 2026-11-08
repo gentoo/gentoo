@@ -50,6 +50,7 @@ CMAKE_QA_COMPAT_SKIP=1 #957952
 
 PATCHES=(
 	"${FILESDIR}"/${P}-missing-include.patch
+	"${FILESDIR}"/${P}-libfmt12.2.patch
 )
 
 src_prepare() {
