@@ -7,7 +7,7 @@ inherit latex-package
 
 DESCRIPTION="Font for Gentoo e.V. logo"
 HOMEPAGE="https://gentoo-ev.org/"
-SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.tar.xz"
+SRC_URI="https://distfiles.gentoo.org/pub/dev/ulm@gentoo.org/${P}.tar.xz"
 
 LICENSE="|| ( GPL-2+-with-font-exception CC-BY-SA-4.0 )"
 SLOT="0"
