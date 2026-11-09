@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{12..14} )
-inherit meson pam pax-utils python-any-r1 systemd tmpfiles xdg-utils
+inherit meson pam python-any-r1 systemd tmpfiles xdg-utils
 
 DESCRIPTION="Policy framework for controlling privileges for system-wide services"
 HOMEPAGE="https://github.com/polkit-org/polkit"
@@ -142,13 +142,6 @@ src_configure() {
 		$(meson_use test tests)
 	)
 	meson_src_configure
-}
-
-src_compile() {
-	meson_src_compile
-
-	# Required for polkitd on hardened/PaX due to spidermonkey's JIT
-	pax-mark mr src/polkitbackend/.libs/polkitd test/polkitbackend/.libs/polkitbackendjsauthoritytest
 }
 
 src_install() {
