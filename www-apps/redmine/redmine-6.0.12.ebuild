@@ -3,7 +3,7 @@
 
 EAPI=8
 
-USE_RUBY="ruby32 ruby33"
+USE_RUBY="ruby33 ruby34"
 inherit depend.apache ruby-ng
 
 DESCRIPTION="Flexible project management web application using the Ruby on Rails framework"
@@ -15,7 +15,18 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE="fastcgi imagemagick ldap +minimagick mysql passenger pdf postgres +standalone sqlite"
 
-ruby_add_bdepend "
+RDEPEND="
+	acct-group/redmine
+	acct-user/redmine
+	imagemagick? ( media-gfx/imagemagick )
+	pdf? (
+		app-text/ghostscript-gpl
+		media-gfx/imagemagick
+	)
+	standalone? ( www-servers/puma )
+"
+
+ruby_add_rdepend "
 	fastcgi? ( dev-ruby/fcgi )
 	ldap? ( >=dev-ruby/ruby-net-ldap-0.17.0 )
 	minimagick? ( >=dev-ruby/mini_magick-5.0.1 )
@@ -29,6 +40,7 @@ ruby_add_bdepend "
 	dev-ruby/actionpack-xml_parser:2
 	dev-ruby/addressable
 	>=dev-ruby/commonmarker-0.23.8
+	<dev-ruby/commonmarker-1
 	>=dev-ruby/csv-3.2.8:3
 	>=dev-ruby/deckar01-task_list-2.3.2
 	>=dev-ruby/html-pipeline-2.13.2
@@ -36,34 +48,20 @@ ruby_add_bdepend "
 	>=dev-ruby/mail-2.8.1
 	dev-ruby/marcel
 	>=dev-ruby/mini_mime-1.1.0
-	>=dev-ruby/net-imap-0.5.7
+	>=dev-ruby/net-imap-0.4.25:0.4
 	>=dev-ruby/net-pop-0.1.2
 	>=dev-ruby/net-smtp-0.4.0
-	>=dev-ruby/nokogiri-1.19.1
+	>=dev-ruby/nokogiri-1.19.4
 	>=dev-ruby/propshaft-1.1.0:1
-	>=dev-ruby/rack-3.1.3:3.1
-	>=dev-ruby/rails-7.2.3:7.2
+	>=dev-ruby/rack-3.2.8:3.2
+	>=dev-ruby/rails-7.2.3.2:7.2
 	>=dev-ruby/rbpdf-1.21.4
-	>=dev-ruby/redcarpet-3.6.0
-	>=dev-ruby/request_store-1.5.0:0
-	dev-ruby/rexml
 	>=dev-ruby/roadie-rails-3.2.0:3
 	>=dev-ruby/rotp-5.0.0
 	>=dev-ruby/rouge-4.5.0
 	dev-ruby/rqrcode
 	>=dev-ruby/rubyzip-2.3.0:2
 	>=dev-ruby/sanitize-6.0:6
-"
-
-RDEPEND="
-	acct-group/redmine
-	acct-user/redmine
-	imagemagick? ( media-gfx/imagemagick )
-	pdf? (
-		app-text/ghostscript-gpl
-		media-gfx/imagemagick
-	)
-	standalone? ( www-servers/puma )
 "
 
 REDMINE_DIR="/var/lib/${PN}"
@@ -255,4 +253,6 @@ pkg_config() {
 		einfo "# chown redmine:redmine db/ db/*.sqlite3"
 		einfo
 	fi
+	# Fix Gemfile.lock permissions, #981456
+	chown redmine:redmine "${EROOT}${REDMINE_DIR}/Gemfile.lock"
 }
