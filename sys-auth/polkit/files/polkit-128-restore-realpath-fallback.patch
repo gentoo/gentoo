@@ -1,0 +1,101 @@
+From 06ea86c6e2e9cf127ba970b83f4da7ad3d014bd7 Mon Sep 17 00:00:00 2001
+From: Xarblu <xarblu@protonmail.com>
+Date: Wed, 26 Aug 2026 15:02:35 +0200
+Subject: [PATCH] pkexec: Allow fallback to user path when realpath has no
+ action
+
+This restores the old (< v127) behaviour as a fallback
+to keep backwards compatibility with old actions
+(see https://bugs.gentoo.org/959152).
+
+The canonical (real-)path is still preferred if it has a matches an action.
+
+Signed-off-by: Xarblu <xarblu@protonmail.com>
+---
+ src/programs/pkexec.c | 59 +++++++++++++++++++++++++++++--------------
+ 1 file changed, 40 insertions(+), 19 deletions(-)
+
+diff --git a/src/programs/pkexec.c b/src/programs/pkexec.c
+index 9028fe5b..f78742d4 100644
+--- a/src/programs/pkexec.c
++++ b/src/programs/pkexec.c
+@@ -361,11 +361,6 @@ find_action_for_path (PolkitAuthority *authority,
+   g_list_foreach (actions, (GFunc) g_object_unref, NULL);
+   g_list_free (actions);
+ 
+-  /* Fall back to org.freedesktop.policykit.exec */
+-
+-  if (action_id == NULL)
+-    action_id = g_strdup ("org.freedesktop.policykit.exec");
+-
+   return action_id;
+ }
+ 
+@@ -705,16 +700,6 @@ main (int argc, char *argv[])
+       }
+     }
+ 
+-  s = realpath(path, NULL);
+-  if (s != NULL)
+-    {
+-      /* The called program resolved to the canonical location. We don't update
+-       * argv[n] this time. The called program still sees the original
+-       * called path. This is very important for multi-call binaries like
+-       * busybox. */
+-      g_free (path);
+-      path = s;
+-    }
+   if (access (path, F_OK) != 0)
+     {
+       g_printerr ("Error accessing %s: %s\n", path, g_strerror (errno));
+@@ -844,10 +829,46 @@ main (int argc, char *argv[])
+ 
+   g_assert (path != NULL);
+   g_assert (exec_argv != NULL);
+-  action_id = find_action_for_path (authority,
+-                                    path,
+-                                    exec_argv[1],
+-                                    &allow_gui);
++
++  s = realpath(path, NULL);
++  if (s != NULL)
++    {
++      /* The called program resolved to the canonical location. We don't update
++       * argv[n] this time. The called program still sees the original
++       * called path. This is very important for multi-call binaries like
++       * busybox. */
++      action_id = find_action_for_path (authority,
++                                        s,
++                                        exec_argv[1],
++                                        &allow_gui);
++
++      /* Commit to the canonical only when it has a match.
++       * Else we want to preserve and try the original path. */
++      if (action_id != NULL)
++        {
++          g_free (path);
++          path = s;
++        }
++      else
++        {
++          g_free (s);
++        }
++    }
++
++  /* Canonical path had no match.
++   * Fall back to user provided path. */
++  if (action_id == NULL)
++    {
++      action_id = find_action_for_path (authority,
++                                        path,
++                                        exec_argv[1],
++                                        &allow_gui);
++    }
++
++  /* Fall back to org.freedesktop.policykit.exec */
++  if (action_id == NULL)
++    action_id = g_strdup ("org.freedesktop.policykit.exec");
++
+   g_assert (action_id != NULL);
+ 
+   details = polkit_details_new ();

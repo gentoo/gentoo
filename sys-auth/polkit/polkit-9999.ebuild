@@ -3,11 +3,11 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 inherit meson pam pax-utils python-any-r1 systemd tmpfiles xdg-utils
 
 DESCRIPTION="Policy framework for controlling privileges for system-wide services"
-HOMEPAGE="https://www.freedesktop.org/wiki/Software/polkit https://github.com/polkit-org/polkit"
+HOMEPAGE="https://github.com/polkit-org/polkit"
 if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/polkit-org/polkit"
 	inherit git-r3
@@ -36,7 +36,7 @@ BDEPEND="
 	acct-user/polkitd
 	app-text/docbook-xml-dtd:4.1.2
 	app-text/docbook-xsl-stylesheets
-	>=dev-libs/glib-2.32
+	>=dev-libs/glib-2.44
 	dev-libs/libxslt
 	dev-util/glib-utils
 	virtual/pkgconfig
@@ -74,7 +74,23 @@ PDEPEND="
 	kde? ( kde-plasma/polkit-kde-agent )
 "
 
-DOCS=( docs/TODO HACKING.md NEWS.md README.md )
+DOCS=(
+	AGENTS.md
+	AUTHORS
+	NEWS.md
+	README.md
+	docs/ARCHITECTURE.md
+	docs/BUILDING.md
+	docs/CODING_STYLE.md
+	docs/HACKING.md
+	docs/polkit-1-diagrams.svg
+	docs/polkit-architecture.png
+	docs/polkit-authentication-agent-example.png
+	docs/polkit-authentication-agent-example-wheel.png
+	docs/PORTING-GUIDE
+	docs/TESTING.md
+	docs/TODO
+)
 
 QA_MULTILIB_PATHS="
 	usr/lib/polkit-1/polkit-agent-helper-1
