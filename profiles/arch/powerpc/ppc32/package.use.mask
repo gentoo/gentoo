@@ -1,6 +1,10 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2026-11-24)
+# Dependencies are not keyworded here
+xfce-base/xfce4-polkit kde lxqt
+
 # Ionen Wolkens <ionen@gentoo.org> (2026-10-23)
 # Makes use of non-portable atomics broken on ppc32 (bug #981875).
 app-text/mdbook serve
