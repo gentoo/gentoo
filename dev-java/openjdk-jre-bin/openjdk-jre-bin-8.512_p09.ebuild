@@ -7,20 +7,20 @@ inherit java-vm-2
 
 abi_uri() {
 	echo "${2-$1}? (
-			https://github.com/adoptium/temurin${SLOT}-binaries/releases/download/jdk${MY_PV}/OpenJDK8U-jre_${1}_linux_hotspot_${MY_PV/-/}.tar.gz
+			https://github.com/adoptium/temurin${MY_T}-binaries/releases/download/jdk${MY_PV}/OpenJDK8U-jre_${1}_linux_hotspot_${MY_PV/-/}.tar.gz
 		)"
 }
 
 MY_PV=$(ver_rs 1 'u' 2 '-' ${PV//p/b})
-SLOT="$(ver_cut 1)"
+MY_T="$(ver_cut 1)"
 
 DESCRIPTION="Prebuilt Java JRE binaries provided by Eclipse Temurin"
 HOMEPAGE="https://adoptium.net/"
-SRC_URI="
-	$(abi_uri x64 amd64)
-"
+SRC_URI="$(abi_uri x64 amd64)"
+S="${WORKDIR}/jdk${MY_PV}-jre"
 
 LICENSE="GPL-2-with-classpath-exception"
+SLOT="8"
 KEYWORDS="~amd64"
 
 IUSE="alsa cups headless-awt selinux"
@@ -28,7 +28,7 @@ IUSE="alsa cups headless-awt selinux"
 RDEPEND="
 	media-libs/fontconfig:1.0
 	media-libs/freetype:2
-	>net-libs/libnet-1.1
+	>net-libs/libnet-1.1-r0
 	>=sys-apps/baselayout-java-0.1.0-r1
 	>=sys-libs/glibc-2.2.5:*
 	virtual/zlib:=
@@ -45,8 +45,6 @@ RDEPEND="
 
 RESTRICT="preserve-libs splitdebug"
 QA_PREBUILT="*"
-
-S="${WORKDIR}/jdk${MY_PV}-jre"
 
 src_install() {
 	local dest="/opt/${P}"
