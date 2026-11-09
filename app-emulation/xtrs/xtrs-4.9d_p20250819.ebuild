@@ -11,7 +11,7 @@ HOMEPAGE="https://www.tim-mann.org/xtrs.html"
 SRC_URI="https://github.com/TimothyPMann/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz
 	ls-dos? (
 		https://www.tim-mann.org/trs80/ld4-631.zip
-		https://dev.gentoo.org/~ulm/distfiles/ld4-631l.xd3
+		https://distfiles.gentoo.org/pub/dev/ulm@gentoo.org/ld4-631l.xd3
 	)"
 S="${WORKDIR}/${PN}-${COMMIT}"
 

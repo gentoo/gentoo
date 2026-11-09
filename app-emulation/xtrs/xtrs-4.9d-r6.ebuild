@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -10,7 +10,7 @@ HOMEPAGE="https://www.tim-mann.org/xtrs.html"
 SRC_URI="https://www.tim-mann.org/trs80/${P}.tar.gz
 	ls-dos? (
 		https://www.tim-mann.org/trs80/ld4-631.zip
-		https://dev.gentoo.org/~ulm/distfiles/ld4-631l.xd3
+		https://distfiles.gentoo.org/pub/dev/ulm@gentoo.org/ld4-631l.xd3
 	)"
 
 LICENSE="xtrs ls-dos? ( freedist )"
