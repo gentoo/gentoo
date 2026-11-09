@@ -66,6 +66,7 @@ CMAKE_SKIP_TESTS=(
 	eventhandlertest
 	# bug 909816, tries access /proc/PID/mem
 	actionstest # bug 972783
+	chatbarcachetest # bug 985442, failed to listen to a port
 	modeltest # bug 972783
 	texthandlertest # ki18n (KLocalizedString) failure
 	roommanagertest # bug 969837, who cares
