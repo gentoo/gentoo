@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake
+inherit cmake flag-o-matic
 
 DESCRIPTION="C++ library of mathematical, signal processing and communication"
 HOMEPAGE="https://itpp.sourceforge.net"
@@ -32,6 +32,8 @@ PATCHES=(
 )
 
 src_configure() {
+	append-cxxflags -std=c++14
+
 	local mycmakeargs=(
 		-DBLA_VENDOR=Generic
 		-DHTML_DOCS=$(usex doc)
