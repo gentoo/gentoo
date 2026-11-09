@@ -3,38 +3,44 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..15} )
 
 inherit cmake desktop flag-o-matic python-any-r1 toolchain-funcs xdg-utils
 
-SKIA_VER="m102"
-# Last commit in ${SKIA_VER} feature branch
-# Don't use skia.googlesource.com, it produces non-reproducible tarballs
-SKIA_REV="3338e90707323d2cd3a150276acb9f39933deee2"
+SKIA_VER="m124-08a5439a6b"
 
 DESCRIPTION="Animated sprite editor & pixel art tool"
 HOMEPAGE="https://www.aseprite.org"
+# Use forked skia sources with local shanges
+# Precompiled skia required only for icudtl.dat
 SRC_URI="https://github.com/aseprite/aseprite/releases/download/v${PV}/Aseprite-v${PV}-Source.zip
-	https://github.com/google/skia/archive/${SKIA_REV}.tar.gz -> skia-${SKIA_VER}-${SKIA_REV}.gh.tar.gz"
+	https://github.com/aseprite/skia/archive/refs/tags/${SKIA_VER}.tar.gz ->
+		skia-${SKIA_VER}-aseprite.tar.gz
+	https://github.com/aseprite/skia/releases/download/${SKIA_VER}/Skia-Linux-Release-x64.zip ->
+		Skia-Linux-Release-x64-${SKIA_VER}.zip
+"
 
 # See https://github.com/aseprite/aseprite#license
-LICENSE="Aseprite-EULA MIT"
+LICENSE="Aseprite-EULA BSD MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-IUSE="test webp"
+IUSE="test"
 
 RESTRICT="bindist mirror !test? ( test )"
 
 COMMON_DEPEND="
 	app-arch/libarchive:=
 	app-text/cmark:=
+	dev-libs/icu:=
 	dev-libs/libfmt:=
 	dev-libs/tinyxml2:=
+	media-libs/fontconfig
 	media-libs/freetype
 	media-libs/giflib:=
 	media-libs/harfbuzz:=[truetype]
 	media-libs/libjpeg-turbo:=
+	media-libs/libwebp:=
 	media-libs/libpng:=
 	net-misc/curl
 	virtual/zlib:=
@@ -43,7 +49,6 @@ COMMON_DEPEND="
 	x11-libs/libXcursor
 	x11-libs/libXi
 	x11-libs/libxcb:=
-	webp? ( media-libs/libwebp:= )
 "
 RDEPEND="
 	${COMMON_DEPEND}
@@ -67,13 +72,19 @@ DOCS=(
 )
 
 PATCHES=(
-	"${FILESDIR}/skia-${SKIA_VER}_remove_angle2.patch"
-	"${FILESDIR}/aseprite-1.3.13_shared_libarchive.patch"
-	"${FILESDIR}/aseprite-1.3.8.1_shared_json11.patch"
-	"${FILESDIR}/aseprite-1.3.13_shared_webp.patch"
-	"${FILESDIR}/aseprite-1.2.35_laf_fixes.patch"
-	"${FILESDIR}/aseprite-1.3.8.1_shared_fmt.patch"
-	"${FILESDIR}/aseprite-1.3.13_shared_tinyxml2.patch"
+	"${FILESDIR}/aseprite-1.3.16.1_shared_libarchive.patch"
+	"${FILESDIR}/aseprite-1.3.16.1_shared_json11.patch"
+	"${FILESDIR}/aseprite-1.3.16.1_shared_webp.patch"
+	"${FILESDIR}/aseprite-1.3.18.6_laf_fixes.patch"
+	"${FILESDIR}/aseprite-1.3.16.1_shared_fmt.patch"
+	"${FILESDIR}/aseprite-1.3.16.1_shared_tinyxml2.patch"
+	"${FILESDIR}/aseprite-1.3.16.1_shared_libjpeg-turbo.patch"
+	"${FILESDIR}/aseprite-1.3.16.1_shared_icu.patch"
+)
+
+CMAKE_SKIP_TESTS=(
+	app_tests					# SEGFAULT (cannot create window)
+	keyboard_shortcuts_tests	# SEGFAULT (cannot create window)
 )
 
 src_unpack() {
@@ -84,10 +95,22 @@ src_unpack() {
 }
 
 src_prepare() {
+	# Silence cmake-4 warnings
+	rm -fr \
+		laf/third_party/googletest \
+		third_party/cmark \
+		third_party/giflib \
+		third_party/harfbuzz \
+		third_party/freetype2 \
+		third_party/libpng \
+		third_party/libwebp \
+		third_party/tinyxml2 \
+		third_party/zlib \
+		|| die
 	cmake_src_prepare
 	# Skia: remove custom optimizations
 	sed -i -e 's:"\/\/gn\/skia\:optimize",::g' \
-		"skia-${SKIA_REV}/gn/BUILDCONFIG.gn" || die
+		"skia-${SKIA_VER}/gn/BUILDCONFIG.gn" || die
 	# Aseprite: don't install targets from third_party projects
 	sed -i -e \
 		's:add_subdirectory(tga):add_subdirectory(tga EXCLUDE_FROM_ALL):g' \
@@ -97,11 +120,14 @@ src_prepare() {
 		-e 's:add_subdirectory(TinyEXIF):add_subdirectory(TinyEXIF EXCLUDE_FROM_ALL):g' \
 			third_party/CMakeLists.txt || die
 	# Aseprite: don't use bundled gtest
-	sed -i -e '/add_subdirectory(googletest)/d' \
-		laf/third_party/CMakeLists.txt || die
+	cmake_comment_add_subdirectory -f laf/third_party googletest
 	# Fix shebang in thumbnailer
 	sed -i -e 's:#!/usr/bin/sh:#!/bin/sh:' \
 		src/desktop/linux/aseprite-thumbnailer || die
+	# Move icudtl.dat to expected location
+	mkdir -p "skia-${SKIA_VER}/third_party/externals/icu/flutter" || die
+	cp third_party/externals/icu/flutter/icudtl.dat \
+		"skia-${SKIA_VER}/third_party/externals/icu/flutter" || die
 }
 
 src_configure() {
@@ -116,10 +142,11 @@ src_configure() {
 	#
 	# There are a lot of issues, so don't trust any fixes without thorough
 	# testing.
+	append-flags -fno-strict-aliasing
 	filter-lto
 
 	einfo "Skia configuration"
-	pushd skia-${SKIA_REV} > /dev/null || die
+	pushd "skia-${SKIA_VER}" > /dev/null || die
 		tc-export AR CC CXX
 
 		passflags() {
@@ -142,24 +169,24 @@ src_configure() {
 			skia_use_dawn=false
 			skia_use_dng_sdk=false
 			skia_use_metal=false
-			skia_use_sfntly=false
 			skia_use_wuffs=false
 
 			skia_enable_pdf=false
 			skia_enable_svg=false
+			skia_enable_skunicode=true
 			skia_use_expat=false
 			skia_use_ffmpeg=false
-			skia_use_fontconfig=false
+			skia_use_fontconfig=true
 			skia_use_freetype=true
 			skia_use_gl=true
 			skia_use_harfbuzz=true
-			skia_use_icu=false
+			skia_use_icu=true
 			skia_use_libjpeg_turbo_decode=true
 			skia_use_libjpeg_turbo_encode=true
 			skia_use_libpng_decode=true
 			skia_use_libpng_encode=true
-			skia_use_libwebp_decode=$(usex webp true false)
-			skia_use_libwebp_encode=$(usex webp true false)
+			skia_use_libwebp_decode=true
+			skia_use_libwebp_encode=true
 			skia_use_lua=false
 			skia_use_vulkan=false
 			skia_use_x11=false
@@ -178,28 +205,30 @@ src_configure() {
 
 	einfo "Aseprite configuration"
 	local mycmakeargs=(
+		-DGit_FOUND=OFF
 		-DENABLE_CCACHE=OFF
 		-DENABLE_DESKTOP_INTEGRATION=ON
 		-DENABLE_I18N_STRINGS=OFF
+		-DENABLE_SCRIPTING=OFF
 		-DENABLE_STEAM=OFF
 		-DENABLE_TESTS="$(usex test)"
 		-DENABLE_QT_THUMBNAILER=OFF
 		-DENABLE_UPDATER=OFF
-		-DENABLE_WEBP="$(usex webp)"
+		-DENABLE_WEBP=ON
 		-DLAF_WITH_EXAMPLES=OFF
 		-DLAF_WITH_TESTS="$(usex test)"
 		-DFULLSCREEN_PLATFORM=ON
-		-DSKIA_DIR="${S}/skia-${SKIA_REV}/"
-		-DSKIA_LIBRARY_DIR="${S}/skia-${SKIA_REV}/out/Static/"
-		-DSKIA_LIBRARY="${S}/skia-${SKIA_REV}/out/Static/libskia.a"
-		-DSKSHAPER_LIBRARY="${S}/skia-${SKIA_REV}/out/Static/libskshaper.a"
+		-DSKIA_DIR="${S}/skia-${SKIA_VER}/"
+		-DSKIA_LIBRARY_DIR="${S}/skia-${SKIA_VER}/out/Static/"
+		-DSKIA_LIBRARY="${S}/skia-${SKIA_VER}/out/Static/libskia.a"
+		-DSKSHAPER_LIBRARY="${S}/skia-${SKIA_VER}/out/Static/libskshaper.a"
+		-DSKUNICODE_LIBRARY="${S}/skia-${SKIA_VER}/out/Static/libskunicode.a"
 		-DUSE_SHARED_CMARK=ON
 		-DUSE_SHARED_CURL=ON
 		-DUSE_SHARED_FMT=ON
 		-DUSE_SHARED_FREETYPE=ON
 		-DUSE_SHARED_GIFLIB=ON
 		-DUSE_SHARED_HARFBUZZ=ON
-		-DUSE_SHARED_JPEGLIB=ON
 		-DUSE_SHARED_JSON11=OFF		# Custom methods added to bundled version
 		-DUSE_SHARED_LIBARCHIVE=ON
 		-DUSE_SHARED_LIBPNG=ON
@@ -213,7 +242,7 @@ src_configure() {
 
 src_compile() {
 	einfo "Skia compilation"
-	pushd skia-${SKIA_REV} > /dev/null || die
+	pushd "skia-${SKIA_VER}" > /dev/null || die
 		eninja -C out/Static
 	popd > /dev/null || die
 
