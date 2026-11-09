@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>xfce@gentoo.org</email>
+		<name>XFCE Team</name>
+	</maintainer>
+	<use>
+		<flag name="kde">Use <pkg>kde-plasma/polkit-kde-agent</pkg> agent</flag>
+		<flag name="lxde">Use <pkg>lxde-base/lxsession</pkg> polkit agent</flag>
+		<flag name="lxqt">Use <pkg>lxqt-base/lxqt-policykit</pkg> agent</flag>
+	</use>
+</pkgmetadata>
