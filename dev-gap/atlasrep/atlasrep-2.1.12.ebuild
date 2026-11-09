@@ -6,6 +6,7 @@ EAPI=8
 inherit gap-pkg
 
 DESCRIPTION="GAP Interface to the Atlas of Group Representations"
+HOMEPAGE="https://www.math.rwth-aachen.de/homes/Thomas.Breuer/atlasrep/"
 
 # How to make the test data:
 #
