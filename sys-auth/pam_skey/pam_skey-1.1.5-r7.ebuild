@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,7 +8,7 @@ inherit autotools readme.gentoo-r1
 DESCRIPTION="PAM interface for the S/Key authentication system"
 HOMEPAGE="https://web.archive.org/web/20041223070454/http://kreator.esa.fer.hr/projects/pam_skey/"
 SRC_URI="https://dkorunic.net/tarballs/${P}.tar.gz
-	https://dev.gentoo.org/~ulm/distfiles/${P}-patches-8.tar.xz"
+	https://distfiles.gentoo.org/pub/dev/ulm@gentoo.org/${P}-patches-8.tar.xz"
 
 LICENSE="GPL-2+"
 SLOT="0"
