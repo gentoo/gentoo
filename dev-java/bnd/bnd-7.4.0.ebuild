@@ -14,7 +14,7 @@ S="${WORKDIR}/${P/_rc/.RC}"
 
 LICENSE="Apache-2.0 EPL-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 ~arm64"
 
 CP_DEPEND="
 	~dev-java/bndlib-${PV}:0
