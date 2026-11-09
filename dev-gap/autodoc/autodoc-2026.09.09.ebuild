@@ -6,6 +6,7 @@ EAPI=8
 inherit gap-pkg
 
 DESCRIPTION="Generate documentation from GAP source code"
+HOMEPAGE="https://gap-packages.github.io/AutoDoc/"
 SRC_URI="https://github.com/gap-packages/${PN}/releases/download/v${PV}/${P}.tar.gz"
 S="${WORKDIR}/AutoDoc-${PV}"
 
