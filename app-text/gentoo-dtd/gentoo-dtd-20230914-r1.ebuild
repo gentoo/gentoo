@@ -8,7 +8,7 @@ if [[ ${PV} == 99999999 ]]; then
 	EGIT_REPO_URI="https://anongit.gentoo.org/git/data/dtd.git"
 else
 	# git archive --prefix=${P}/ HEAD | xz >${P}.tar.xz
-	SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.tar.xz"
+	SRC_URI="https://distfiles.gentoo.org/pub/dev/ulm@gentoo.org/${P}.tar.xz"
 	KEYWORDS="~amd64 ~x86"
 fi
 
