@@ -1,0 +1,22 @@
+Bug: https://bugs.gentoo.org/985654
+
+--- a/gsoap/stdsoap2.cpp
++++ b/gsoap/stdsoap2.cpp
+@@ -6386,7 +6386,7 @@
+       }
+       if (!(soap->ssl_flags & SOAP_SSL_SKIP_HOST_CHECK))
+       {
+-        X509_NAME *subj;
++        const X509_NAME *subj;
+         STACK_OF(CONF_VALUE) *val = NULL;
+ #if OPENSSL_VERSION_NUMBER >= 0x0090800fL
+         GENERAL_NAMES *names = NULL;
+@@ -6502,7 +6502,7 @@
+           int i = -1;
+           do
+           {
+-            ASN1_STRING *name;
++            const ASN1_STRING *name;
+             i = X509_NAME_get_index_by_NID(subj, NID_commonName, i);
+             if (i == -1)
+               break;
