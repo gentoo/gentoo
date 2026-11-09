@@ -6,6 +6,7 @@ EAPI=8
 inherit gap-pkg
 
 DESCRIPTION="Computing the Automorphism Group of a p-Group"
+HOMEPAGE="https://gap-packages.github.io/autpgrp/"
 SRC_URI="https://github.com/gap-packages/${PN}/releases/download/v${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2+"
