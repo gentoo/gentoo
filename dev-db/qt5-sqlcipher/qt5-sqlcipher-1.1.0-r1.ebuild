@@ -9,7 +9,7 @@ DESCRIPTION="Qt SQL driver plugin for SQLCipher"
 HOMEPAGE="https://github.com/blizzard4591/qt5-sqlcipher"
 QT6_PV="6.11.1"
 SRC_URI="https://github.com/blizzard4591/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz
-	https://dev.gentoo.org/~ulm/distfiles/${PN}-${PV%_*}-qt-6.11.1.tar.xz"
+	https://distfiles.gentoo.org/pub/dev/ulm@gentoo.org/${PN}-${PV%_*}-qt-6.11.1.tar.xz"
 
 LICENSE="LGPL-2.1" # version 2.1 only
 SLOT="6"
