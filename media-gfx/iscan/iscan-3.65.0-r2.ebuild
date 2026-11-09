@@ -51,6 +51,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.65.0-sane-backends-1.1.patch
 	"${FILESDIR}"/${PN}-3.65.0-boost-1.84-headers.patch
 	"${FILESDIR}"/${PN}-3.65.0-boost-1.89.patch # bug 963413
+	"${FILESDIR}"/${PN}-3.65.0-gcc-16.patch # bug 967771
 )
 
 src_prepare() {
