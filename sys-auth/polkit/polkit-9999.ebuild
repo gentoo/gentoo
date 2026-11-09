@@ -36,6 +36,7 @@ BDEPEND="
 	acct-user/polkitd
 	app-text/docbook-xml-dtd:4.1.2
 	app-text/docbook-xsl-stylesheets
+	dev-lang/perl
 	>=dev-libs/glib-2.44
 	dev-libs/libxslt
 	dev-util/glib-utils
