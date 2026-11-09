@@ -9,6 +9,7 @@ MY_PN=Browse
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="GAP ncurses interface for browsing two-dimensional data"
+HOMEPAGE="https://www.math.rwth-aachen.de/homes/Browse/"
 SRC_URI="https://www.math.rwth-aachen.de/homes/${MY_PN}/${MY_P}.tar.gz"
 S="${WORKDIR}/${MY_P}"
 
