@@ -1,14 +1,14 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DESCRIPTION="Protocol adapter to run UCI chess engines under xboard"
-HOMEPAGE="http://hgm.nubati.net/"
+HOMEPAGE="https://hgm.nubati.net/"
 # Released upstream version + patch created from git repo
 MY_P="${PN}-${PV%_p*}"
-SRC_URI="http://hgm.nubati.net/releases/${MY_P}.tar.gz
-	https://dev.gentoo.org/~ulm/distfiles/${P}.patch.gz"
+SRC_URI="https://hgm.nubati.net/releases/${MY_P}.tar.gz
+	https://distfiles.gentoo.org/pub/dev/ulm@gentoo.org/${P}.patch.gz"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2+"
