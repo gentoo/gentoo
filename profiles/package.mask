@@ -36,6 +36,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2026-11-09)
+# Regressions causing test failures:
+# https://github.com/gorakhargosh/watchdog/issues/1432
+=dev-python/watchdog-7.1.0
+
 # Ulrich Müller <ulm@gentoo.org> (2026-11-08)
 # Pretest versions, masked for testing.
 <app-editors/emacs-31.1.9999:31-vcs
