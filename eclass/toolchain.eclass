@@ -410,9 +410,14 @@ fi
 
 if tc_has_feature sanitize ; then
 	# libsanitizer relies on 'crypt.h' to be present
-	# on target. glibc user to provide it unconditionally.
+	# on target. glibc used to provide it unconditionally.
 	# Nowadays it's a standalone library: bug #802648
-	DEPEND+=" sanitize? ( virtual/libcrypt )"
+	DEPEND+="
+		sanitize? (
+			virtual/libcrypt
+			virtual/os-headers
+		)
+	"
 fi
 
 if tc_has_feature systemtap ; then
