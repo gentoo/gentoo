@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,7 +9,7 @@ DESCRIPTION="The Motif user interface component toolkit"
 HOMEPAGE="https://sourceforge.net/projects/motif/
 	https://motif.ics.com/"
 SRC_URI="https://downloads.sourceforge.net/project/motif/Motif%20${PV}%20Source%20Code/${P}.tar.gz
-	https://dev.gentoo.org/~ulm/distfiles/${P}-patches-5.tar.xz"
+	https://distfiles.gentoo.org/pub/dev/ulm@gentoo.org/${P}-patches-5.tar.xz"
 
 LICENSE="LGPL-2.1+ MIT"
 SLOT="0"
