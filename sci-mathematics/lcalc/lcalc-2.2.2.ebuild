@@ -12,7 +12,7 @@ SRC_URI="https://gitlab.com/-/project/12934202/uploads/79611ba9b2a4ca214df935f43
 LICENSE="GPL-2+"
 # The subslot is the libLfunction soname major version
 SLOT="0/2"
-KEYWORDS="~amd64 ~riscv"
+KEYWORDS="amd64 ~riscv"
 
 # Omit USE=mpfr and USE=openmp for now because they're broken upstream:
 #
