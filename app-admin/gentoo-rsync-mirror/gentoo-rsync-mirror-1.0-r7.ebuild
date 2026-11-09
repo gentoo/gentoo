@@ -1,16 +1,15 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DESCRIPTION="Ebuild for setting up a Gentoo rsync mirror"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Infrastructure/Rsync"
+S="${WORKDIR}"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~hppa ppc ppc64 ~sparc x86"
-
-S="${WORKDIR}"
 
 src_install() {
 	exeinto /opt/gentoo-rsync
@@ -24,7 +23,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	elog "The rsync-mirror is now installed into /opt/gentoo-rsync"
+	elog "The rsync-mirror is now installed into /opt/gentoo-rsync."
 	elog "The local portage copy resides in /opt/gentoo-rsync/portage"
 	elog "Please change /opt/gentoo-rsync/rsync-gentoo-portage.sh for"
 	elog "configuration of your main rsync server and use it to sync."
