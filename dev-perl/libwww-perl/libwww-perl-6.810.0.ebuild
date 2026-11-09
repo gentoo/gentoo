@@ -59,3 +59,15 @@ pkg_postinst() {
 		ln -s lwp-request "${EROOT}"/usr/bin/HEAD
 	fi
 }
+
+pkg_postrm() {
+	if [[ -z ${REPLACED_BY_VERSION} ]]; then
+		local f
+		for f in GET POST HEAD; do
+			if [[ -L ${EROOT}/usr/bin/${f} \
+				&& $(readlink "${EROOT}/usr/bin/${f}") == lwp-request ]]; then
+				rm -f "${EROOT}/usr/bin/${f}" || die
+			fi
+		done
+	fi
+}
