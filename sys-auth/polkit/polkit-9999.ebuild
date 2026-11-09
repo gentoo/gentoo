@@ -167,8 +167,15 @@ src_install() {
 pkg_postinst() {
 	tmpfiles_process polkit-tmpfiles.conf
 
-	if [[ ${EUID} == 0 ]]; then
-		chmod 0700 "${EROOT}"/{etc,usr/share}/polkit-1/rules.d
-		chown polkitd "${EROOT}"/{etc,usr/share}/polkit-1/rules.d
+	if [[ ${EUID} == 0 ]] && [[ -n ${REPLACING_VERSIONS} ]]; then
+		local old
+
+		for old in ${REPLACING_VERSIONS}; do
+			if ver_test ${old} -lt '120-r1'; then
+				chmod 0700 "${EROOT}"/{etc,usr/share}/polkit-1/rules.d
+				chown polkitd "${EROOT}"/{etc,usr/share}/polkit-1/rules.d
+				break
+			fi
+		done
 	fi
 }
