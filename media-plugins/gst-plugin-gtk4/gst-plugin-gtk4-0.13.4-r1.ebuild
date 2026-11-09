@@ -159,7 +159,7 @@ IUSE="+egl +gles2 opengl wayland +X" # Keep default IUSE mirrored with gst-plugi
 
 DEPEND="
 	dev-libs/glib
-	>=gui-libs/gtk-4.16:4
+	>=gui-libs/gtk-4.16:4[wayland?,X?]
 	>=media-libs/gstreamer-1.24:1.0
 	>=media-libs/gst-plugins-base-1.24:${SLOT}[egl=,gles2=,opengl=,wayland=,X=]
 "
