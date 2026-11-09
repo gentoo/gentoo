@@ -80,7 +80,7 @@ COMMON_DEPEND="
 		x11-libs/libX11
 		x11-libs/libXt
 	)
-	vboxwebsrv? ( net-libs/gsoap[-gnutls(-),debug?] )
+	vboxwebsrv? ( <=net-libs/gsoap-2.8.130-r9999[-gnutls(-),debug?] )
 	vde? ( net-misc/vde )
 	vnc? ( >=net-libs/libvncserver-0.9.9 )
 "
