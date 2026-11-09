@@ -19,6 +19,7 @@
     stand-alone Info reader refers to it.
   </longdescription>
   <stabilize-allarches/>
+  <straight-to-stable/>
   <upstream>
     <remote-id type="savannah">emacs</remote-id>
   </upstream>
