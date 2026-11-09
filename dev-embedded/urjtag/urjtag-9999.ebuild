@@ -1,18 +1,21 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{12..15} )
+DISTUTILS_EXT=1
+DISTUTILS_OPTIONAL=1
+DISTUTILS_USE_PEP517=setuptools
 
-inherit python-r1
+inherit distutils-r1
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://git.code.sf.net/p/urjtag/git"
 	inherit git-r3 autotools
 	S="${WORKDIR}/${P}/${PN}"
 else
-	SRC_URI="https://downloads.sourceforge.net/urjtag/${P}.tar.xz"
+	SRC_URI="https://downloads.sourceforge.net/project/${PN}/${PN}/${PV}/${P}.tar.xz"
 	KEYWORDS="~amd64 ~ppc ~sparc ~x86"
 fi
 
@@ -32,7 +35,7 @@ DEPEND="ftdi? ( dev-embedded/libftdi:1 )
 	usb? ( virtual/libusb:1 )"
 RDEPEND="${DEPEND}"
 BDEPEND="
-	python? ( dev-python/setuptools[${PYTHON_USEDEP}] )
+	python? ( ${DISTUTILS_DEPS} )
 "
 
 PATCHES=(
@@ -47,6 +50,11 @@ src_prepare() {
 		eautopoint
 		eautoreconf
 	fi
+
+	if use python; then
+		cd bindings/python || die
+		distutils-r1_src_prepare
+	fi
 }
 
 src_configure() {
@@ -60,24 +68,20 @@ src_configure() {
 }
 
 src_compile() {
-	use python && python_copy_sources
+	default
 
-	emake
+	if use python; then
+		cd bindings/python || die
+		distutils-r1_src_compile
+	fi
 }
 
 src_install() {
 	default
 
 	if use python; then
-		installation() {
-			cd bindings/python || die
-			ln -s "${S}"/src/.libs ../../src/.libs || die
-			"${EPYTHON}" setup.py install \
-				--root="${D}" \
-				--prefix="${EPREFIX}/usr" || die
-		}
-		python_foreach_impl run_in_build_dir installation
-		python_foreach_impl python_optimize
+		cd bindings/python || die
+		distutils-r1_src_install
 	fi
 
 	find "${ED}" -name '*.la' -delete || die
