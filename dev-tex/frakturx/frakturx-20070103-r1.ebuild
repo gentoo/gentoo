@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,19 +7,19 @@ inherit latex-package
 
 DESCRIPTION="Collection of blackletter fonts for LaTeX"
 HOMEPAGE="https://www.gaehrken.de/fraktur/"
-SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}-base.zip
-	https://dev.gentoo.org/~ulm/distfiles/${P}-tfrak.zip
-	https://dev.gentoo.org/~ulm/distfiles/${P}-obibel.zip
-	https://dev.gentoo.org/~ulm/distfiles/${P}-odedruck.zip
-	https://dev.gentoo.org/~ulm/distfiles/${P}-odeschmk.zip
-	https://dev.gentoo.org/~ulm/distfiles/${P}-oweissfr.zip
-	https://dev.gentoo.org/~ulm/distfiles/${P}-oweissgo.zip
-	https://dev.gentoo.org/~ulm/distfiles/${P}-talteswab.zip
-	https://dev.gentoo.org/~ulm/distfiles/${P}-tbrtkpf.zip
-	https://dev.gentoo.org/~ulm/distfiles/${P}-tkngsbg.zip
-	https://dev.gentoo.org/~ulm/distfiles/${P}-twieynk.zip
-	https://dev.gentoo.org/~ulm/distfiles/${P}-twieyvig.zip
-	https://dev.gentoo.org/~ulm/distfiles/${P}-tzentenar.zip"
+SRC_URI="https://distfiles.gentoo.org/pub/dev/ulm@gentoo.org/${P}-base.zip
+	https://distfiles.gentoo.org/pub/dev/ulm@gentoo.org/${P}-tfrak.zip
+	https://distfiles.gentoo.org/pub/dev/ulm@gentoo.org/${P}-obibel.zip
+	https://distfiles.gentoo.org/pub/dev/ulm@gentoo.org/${P}-odedruck.zip
+	https://distfiles.gentoo.org/pub/dev/ulm@gentoo.org/${P}-odeschmk.zip
+	https://distfiles.gentoo.org/pub/dev/ulm@gentoo.org/${P}-oweissfr.zip
+	https://distfiles.gentoo.org/pub/dev/ulm@gentoo.org/${P}-oweissgo.zip
+	https://distfiles.gentoo.org/pub/dev/ulm@gentoo.org/${P}-talteswab.zip
+	https://distfiles.gentoo.org/pub/dev/ulm@gentoo.org/${P}-tbrtkpf.zip
+	https://distfiles.gentoo.org/pub/dev/ulm@gentoo.org/${P}-tkngsbg.zip
+	https://distfiles.gentoo.org/pub/dev/ulm@gentoo.org/${P}-twieynk.zip
+	https://distfiles.gentoo.org/pub/dev/ulm@gentoo.org/${P}-twieyvig.zip
+	https://distfiles.gentoo.org/pub/dev/ulm@gentoo.org/${P}-tzentenar.zip"
 S="${WORKDIR}"
 
 LICENSE="LPPL-1.2 free-noncomm"
