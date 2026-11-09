@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -84,4 +84,10 @@ src_test() {
 
 src_install() {
 	multibuild_foreach_variant cmake_src_install
+
+	# Add kissfft.pc so pkgconfig kissft --libs is ok
+	local float_pc
+	float_pc=$(basename "${ED}"/usr/$(get_libdir)/pkgconfig/kissfft-float*.pc)
+	[[ -f "${ED}/usr/$(get_libdir)/pkgconfig/${float_pc}" ]] || die
+	dosym ${float_pc} /usr/$(get_libdir)/pkgconfig/kissfft.pc
 }
