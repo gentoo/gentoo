@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,7 +7,7 @@ inherit elisp flag-o-matic toolchain-funcs
 
 DESCRIPTION="Emacs front-end to mpg123 audio player and OggVorbis audio player"
 HOMEPAGE="https://www.gentei.org/~yuuji/software/mpg123el/"
-SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.tar.xz"
+SRC_URI="https://distfiles.gentoo.org/pub/proj/emacs/${P}.tar.xz"
 
 LICENSE="mpg123-el"
 SLOT="0"
