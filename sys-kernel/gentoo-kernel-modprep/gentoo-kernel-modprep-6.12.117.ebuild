@@ -29,7 +29,7 @@ S=${WORKDIR}
 
 LICENSE="GPL-2"
 SLOT=${PV}
-KEYWORDS="amd64 arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 arm64 ppc64 ~x86"
 
 RDEPEND="
 	virtual/libelf
