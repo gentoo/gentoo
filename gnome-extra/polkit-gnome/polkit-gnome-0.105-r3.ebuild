@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit gnome.org
+inherit gnome.org pkagent-autostart
 
 DESCRIPTION="A dbus session bus service that is used to bring up authentication dialogs"
 HOMEPAGE="https://gitlab.freedesktop.org/polkit/polkit/"
@@ -25,20 +25,5 @@ DOCS=( AUTHORS HACKING NEWS README TODO )
 
 src_install() {
 	default
-
-	cat <<-EOF > "${T}"/polkit-gnome-authentication-agent-1.desktop
-	[Desktop Entry]
-	Name=PolicyKit Authentication Agent
-	Comment=PolicyKit Authentication Agent
-	Exec=/usr/libexec/polkit-gnome-authentication-agent-1
-	Terminal=false
-	Type=Application
-	Categories=
-	NoDisplay=true
-	OnlyShowIn=GNOME
-	AutostartCondition=GNOME3 if-session gnome-fallback
-	EOF
-
-	insinto /etc/xdg/autostart
-	doins "${T}"/polkit-gnome-authentication-agent-1.desktop
+	make_pkagent_autostart_entry GNOME-Flashback ${PN}
 }
