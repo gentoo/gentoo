@@ -6,6 +6,7 @@ EAPI=8
 inherit gap-pkg
 
 DESCRIPTION="GAP package for semigroups and monoids"
+HOMEPAGE="https://semigroups.github.io/Semigroups/"
 SRC_URI="https://github.com/semigroups/Semigroups/releases/download/v${PV}/${P}.tar.gz"
 
 LICENSE="GPL-3+"
