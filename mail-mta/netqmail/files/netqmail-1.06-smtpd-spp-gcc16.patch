@@ -1,0 +1,24 @@
+Add missing includes for TLS+SPP smtpd auth paths.
+
+Bug: https://bugs.gentoo.org/885061
+
+--- a/qmail-smtpd.c
++++ b/qmail-smtpd.c
+@@ -25,6 +25,8 @@
+ #include "commands.h"
+ #include "wait.h"
+ #include "qmail-spp.h"
++#include "base64.h"
++#include "fd.h"
+ 
+ int spp_val;
+
+--- a/qmail-spp.h
++++ b/qmail-spp.h
+@@ -10,5 +10,6 @@
+ extern int spp_rcpt();
+ extern int spp_data();
+ extern int spp_auth();
++extern void spp_rcpt_accepted();
+ 
+ #endif
