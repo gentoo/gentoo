@@ -8,7 +8,7 @@ inherit toolchain-funcs
 DESCRIPTION="uEmacs/PK is an enhanced version of MicroEMACS"
 HOMEPAGE="https://git.kernel.org/pub/scm/editors/uemacs/uemacs.git"
 # snapshot from git repo
-SRC_URI="https://dev.gentoo.org/~ulm/distfiles/uemacs-${PV}.tar.xz"
+SRC_URI="https://distfiles.gentoo.org/pub/proj/emacs/uemacs-${PV}.tar.xz"
 S="${WORKDIR}/uemacs"
 
 LICENSE="free-noncomm"
