@@ -1,0 +1,212 @@
+https://bugs.gentoo.org/986083
+https://github.com/taglib/taglib/issues/1446
+https://github.com/taglib/taglib/pull/1453
+
+From 1b56c77c67651daa99d9e6e946c871db5dbce286 Mon Sep 17 00:00:00 2001
+From: Urs Fleisch <ufleisch@users.sourceforge.net>
+Date: Sun, 27 Sep 2026 12:14:14 +0200
+Subject: [PATCH 2/3] Fix sign-compare warnings when building for 32-bit
+
+--- a/taglib/matroska/ebml/ebmlbinaryelement.cpp
++++ b/taglib/matroska/ebml/ebmlbinaryelement.cpp
+@@ -53,7 +53,7 @@ void EBML::BinaryElement::setValue(const ByteVector& val)
+ bool EBML::BinaryElement::read(File &file)
+ {
+   value = file.readBlock(dataSize);
+-  if(value.size() != dataSize) {
++  if(static_cast<offset_t>(value.size()) != dataSize) {
+     debug("Failed to read binary element");
+     return false;
+   }
+--- a/taglib/matroska/ebml/ebmlfloatelement.cpp
++++ b/taglib/matroska/ebml/ebmlfloatelement.cpp
+@@ -70,7 +70,7 @@ void EBML::FloatElement::setValue(FloatVariantType val)
+ bool EBML::FloatElement::read(File &file)
+ {
+   const ByteVector buffer = file.readBlock(dataSize);
+-  if(buffer.size() != dataSize) {
++  if(static_cast<offset_t>(buffer.size()) != dataSize) {
+     debug("Failed to read EBML Float element");
+     return false;
+   }
+--- a/taglib/matroska/ebml/ebmlmasterelement.cpp
++++ b/taglib/matroska/ebml/ebmlmasterelement.cpp
+@@ -162,7 +162,7 @@ ByteVector EBML::MasterElement::render()
+   buffer.append(data);
+   if(minRenderSize) {
+     if(const auto bufferSize = buffer.size();
+-       minRenderSize >= bufferSize + MIN_VOID_ELEMENT_SIZE)
++       minRenderSize >= static_cast<offset_t>(bufferSize + MIN_VOID_ELEMENT_SIZE))
+       buffer.append(VoidElement::renderSize(minRenderSize - bufferSize));
+   }
+   return buffer;
+--- a/taglib/matroska/ebml/ebmlstringelement.cpp
++++ b/taglib/matroska/ebml/ebmlstringelement.cpp
+@@ -46,7 +46,7 @@ void EBML::StringElement::setValue(const String& val)
+ bool EBML::StringElement::read(File &file)
+ {
+   ByteVector buffer = file.readBlock(dataSize);
+-  if(buffer.size() != dataSize) {
++  if(static_cast<offset_t>(buffer.size()) != dataSize) {
+     debug("Failed to read string");
+     return false;
+   }
+--- a/taglib/matroska/ebml/ebmluintelement.cpp
++++ b/taglib/matroska/ebml/ebmluintelement.cpp
+@@ -55,7 +55,7 @@ void EBML::UIntElement::setValue(unsigned long long val)
+ bool EBML::UIntElement::read(File &file)
+ {
+   const ByteVector buffer = file.readBlock(dataSize);
+-  if(buffer.size() != dataSize) {
++  if(static_cast<offset_t>(buffer.size()) != dataSize) {
+     debug("Failed to read EBML Uint element");
+     return false;
+   }
+--- a/taglib/matroska/matroskaelement.cpp
++++ b/taglib/matroska/matroskaelement.cpp
+@@ -129,9 +129,9 @@ bool Matroska::Element::render()
+   const auto beforeSize = sizeRenderedOrWritten();
+   const auto data = renderInternal();
+   setNeedsRender(false);
+-  if(const auto afterSize = data.size(); afterSize != beforeSize) {
++  if(const auto afterSize = data.size(); static_cast<offset_t>(afterSize) != beforeSize) {
+     if(e->writeStyle == WriteStyle::AvoidInsert && !e->isLastElement
+-       && afterSize > beforeSize && beforeSize > 0) {
++       && static_cast<offset_t>(afterSize) > beforeSize && beforeSize > 0) {
+       // Record old slot for void-overwrite, move element to end of segment.
+       e->voidAtOffset = e->offset;
+       e->voidAtSize = beforeSize;
+--- a/taglib/matroska/matroskasegment.cpp
++++ b/taglib/matroska/matroskasegment.cpp
+@@ -44,7 +44,7 @@ bool Matroska::Segment::render()
+   const auto beforeSize = sizeLength;
+   auto data = renderInternal();
+   setNeedsRender(false);
+-  if(auto afterSize = data.size(); afterSize != beforeSize) {
++  if(auto afterSize = data.size(); static_cast<offset_t>(afterSize) != beforeSize) {
+     sizeLength = 8;
+     data = renderInternal();
+     setNeedsRender(false);
+--- a/taglib/mp4/mp4qtchapterlist.cpp
++++ b/taglib/mp4/mp4qtchapterlist.cpp
+@@ -905,7 +905,7 @@ namespace
+     if(chunkOffsets.empty())
+       return {};
+     // Sample count cannot be > file length / 4 as every sample consumes 4 bytes in stsz
+-    if(sizeInfo.sampleCount == 0 || sizeInfo.sampleCount > file->length() / 4)
++    if(sizeInfo.sampleCount == 0 || static_cast<offset_t>(sizeInfo.sampleCount) > file->length() / 4)
+       return {};
+ 
+     // Read stsc entries
+@@ -1052,7 +1052,7 @@ namespace
+       const unsigned int trakSize = file->readBlock(4).toUInt();
+       if(static_cast<offset_t>(trefSize) != trefLen
+          || static_cast<offset_t>(trakSize) != audioTrak->length()
+-         || trefSize < cutLen || trakSize < cutLen)
++         || static_cast<offset_t>(trefSize) < cutLen || static_cast<offset_t>(trakSize) < cutLen)
+         return;
+ 
+       file->removeBlock(cutOff, cutLen);
+--- a/taglib/toolkit/tbytevectorstream.cpp
++++ b/taglib/toolkit/tbytevectorstream.cpp
+@@ -73,7 +73,7 @@ ByteVector ByteVectorStream::readBlock(size_t length)
+ void ByteVectorStream::writeBlock(const ByteVector &data)
+ {
+   unsigned int size = data.size();
+-  if(d->position + size > length()) {
++  if(static_cast<offset_t>(d->position + size) > length()) {
+     truncate(d->position + size);
+   }
+   memcpy(d->data.data() + d->position, data.data(), size);
+
+From 7b54383b846047cf7620f23d6947185ced5716e1 Mon Sep 17 00:00:00 2001
+From: Boyuan Yang <byang@debian.org>
+Date: Sun, 27 Sep 2026 11:23:04 +0200
+Subject: [PATCH 3/3] RIFF: avoid 32-bit offset_t overflow in chunk size
+ clamping (#1446)
+
+TagLib::offset_t is off_t on POSIX, which is a 32-bit signed type on
+32-bit platforms built without _FILE_OFFSET_BITS=64 (e.g. Debian i386).
+The RF64 support introduced in 2.3.2 clamps chunk sizes with
+std::min<offset_t>(size, 0xffffffff): with a 32-bit offset_t the constant
+converts to -1 and becomes the result, so chunkDataSize() returns
+4294967295 and the WAV/AIFF/RIFF parsers misbehave. In read(), a declared
+size above 2 GiB likewise turns negative before the clamping check.
+
+Perform the clamping in 64-bit types instead. Fixes the test suite
+failures (TestRIFF, TestWAV, TestAIFF) observed on Debian i386. The same
+clamp in WAV::Properties is fixed as well.
+--- a/taglib/riff/rifffile.cpp
++++ b/taglib/riff/rifffile.cpp
+@@ -109,7 +109,11 @@ unsigned int RIFF::File::chunkCount() const
+ 
+ unsigned int RIFF::File::chunkDataSize(unsigned int i) const
+ {
+-  return static_cast<unsigned int>(std::min<offset_t>(chunkDataSize64(i), 0xffffffff));
++  // Do the clamping in an unsigned 64-bit type: offset_t may be a 32-bit
++  // signed off_t (e.g. i386 without _FILE_OFFSET_BITS=64), where 0xffffffff
++  // would convert to -1 and std::min<offset_t>() would return it.
++  const auto size64 = static_cast<unsigned long long>(std::max<offset_t>(chunkDataSize64(i), 0));
++  return static_cast<unsigned int>(std::min<unsigned long long>(size64, 0xffffffffULL));
+ }
+ 
+ offset_t RIFF::File::chunkDataSize64(unsigned int i) const
+@@ -163,7 +167,8 @@ ByteVector RIFF::File::chunkData(unsigned int i)
+ 
+   // A ByteVector is limited to 32 bits. The only chunk that can be larger is the
+   // "data" chunk of an RF64 file, which no caller reads through this API.
+-  return readBlock(static_cast<size_t>(std::min<offset_t>(d->chunks[i].size, 0xffffffff)));
++  const auto size64 = static_cast<unsigned long long>(std::max<offset_t>(d->chunks[i].size, 0));
++  return readBlock(static_cast<size_t>(std::min<unsigned long long>(size64, 0xffffffffULL)));
+ }
+ 
+ void RIFF::File::setChunkData(unsigned int i, const ByteVector &data)
+@@ -358,18 +363,20 @@ void RIFF::File::read()
+     }
+ 
+     const offset_t available = fileLength - offset - 8;
+-    offset_t chunkSize = declaredSize;
++    // Work in 64 bits: a declared size above 2 GiB does not fit a 32-bit
++    // signed offset_t and would turn negative before the clamping below.
++    long long chunkSize = declaredSize;
+ 
+     if(d->isLongForm && chnkName == "data" && declaredSize == 0xffffffff && d->dataSize64 > 0) {
+       // ds64 stores an unsigned 64-bit size, while the I/O API uses signed
+       // offsets. Clamp before converting so a crafted value cannot become a
+       // negative offset or overflow the chunk extent arithmetic below.
+       chunkSize = d->dataSize64 > static_cast<unsigned long long>(available)
+-        ? available
+-        : static_cast<offset_t>(d->dataSize64);
++        ? static_cast<long long>(available)
++        : static_cast<long long>(d->dataSize64);
+     }
+ 
+-    if(chunkSize > available) {
++    if(chunkSize > static_cast<long long>(available)) {
+       // Clamp to available bytes rather than rejecting the chunk outright.
+       // Some encoders write a correct data chunk but with a slightly too-large
+       // declared size, or place the data chunk outside the declared RIFF boundary.
+@@ -380,7 +387,7 @@ void RIFF::File::read()
+ 
+     Chunk chunk;
+     chunk.name    = chnkName;
+-    chunk.size    = chunkSize;
++    chunk.size    = static_cast<offset_t>(chunkSize);
+     chunk.offset  = offset + 8;
+     chunk.padding = 0;
+ 
+--- a/taglib/riff/wav/wavproperties.cpp
++++ b/taglib/riff/wav/wavproperties.cpp
+@@ -167,8 +167,10 @@ void RIFF::WAV::Properties::read(File *file)
+   if(d->format != FORMAT_PCM && (d->format != FORMAT_IEEE_FLOAT || totalSamples != 0))
+     d->sampleFrames = totalSamples;
+   else if(d->channels > 0 && d->bitsPerSample > 0) {
+-    const offset_t frames = streamLength / (d->channels * ((d->bitsPerSample + 7) / 8));
+-    d->sampleFrames = static_cast<unsigned int>(std::min<offset_t>(frames, 0xffffffff));
++    // Clamp in 64 bits: with a 32-bit offset_t, 0xffffffff would become -1.
++    const auto frames = static_cast<unsigned long long>(
++      std::max<offset_t>(streamLength / (d->channels * ((d->bitsPerSample + 7) / 8)), 0));
++    d->sampleFrames = static_cast<unsigned int>(std::min<unsigned long long>(frames, 0xffffffffULL));
+   }
+ 
+   if(d->sampleFrames > 0 && d->sampleRate > 0) {

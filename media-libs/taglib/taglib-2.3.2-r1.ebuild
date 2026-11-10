@@ -30,6 +30,10 @@ MULTILIB_CHOST_TOOLS=(
 	/usr/bin/taglib-config
 )
 
+PATCHES=(
+	"${FILESDIR}"/taglib-2.3.2-fix-32bit.patch # merged in master
+)
+
 multilib_src_configure() {
 	local mycmakeargs=(
 		-DENABLE_CCACHE=OFF
