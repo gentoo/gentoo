@@ -36,6 +36,7 @@ BDEPEND="
 	acct-user/polkitd
 	app-text/docbook-xml-dtd:4.1.2
 	app-text/docbook-xsl-stylesheets
+	>=dev-build/meson-1.4.0
 	dev-lang/perl
 	>=dev-libs/glib-2.44
 	dev-libs/libxslt
@@ -76,13 +77,11 @@ PDEPEND="
 "
 
 DOCS=(
-	AGENTS.md
 	AUTHORS
 	NEWS.md
 	README.md
 	docs/ARCHITECTURE.md
 	docs/BUILDING.md
-	docs/CODING_STYLE.md
 	docs/HACKING.md
 	docs/polkit-1-diagrams.svg
 	docs/polkit-architecture.png
