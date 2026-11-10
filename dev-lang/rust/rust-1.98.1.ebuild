@@ -732,11 +732,11 @@ src_configure() {
 
 		case "${bm_tc}" in
 			host) # host toolchain if suitable (native [armg64] gcc or tc-is-clang)
-				baremetal_ar="$(tc-getAR)"
-				baremetal_cc="$(tc-getCC)"
-				baremetal_cxx="$(tc-getCXX)"
-				baremetal_linker="$(tc-getCC)"
-				baremetal_ranlib="$(tc-getRANLIB)"
+				baremetal_ar="${host_ar}"
+				baremetal_cc="${host_cc}"
+				baremetal_cxx="${host_cxx}"
+				baremetal_linker="${host_linker}"
+				baremetal_ranlib="${host_ranlib}"
 				;;
 			clang) # host toolchain is GCC but we have a valid Clang for baremetal
 				baremetal_ar="llvm-ar"
