@@ -35,10 +35,12 @@ LICENSE="imagemagick"
 # Please check this on bumps, SONAME is often not updated! Use abidiff on old/new.
 # If ABI is broken, change the bit after the '-'.
 SLOT="0/$(ver_cut 1-3)-18"
-IUSE="bzip2 corefonts +cxx djvu fftw fontconfig fpx graphviz hardened hdri heif"
-IUSE+=" jbig jpeg jpeg2k jpegxl lcms lqr lzma opencl openexr openmp pango perl ${GENTOO_PERL_USESTRING}"
-IUSE+=" +png postscript q32 q8 raw static-libs svg test tiff truetype webp wmf"
-IUSE+=" X xml zip zlib"
+IUSE="
+	bzip2 corefonts +cxx djvu fftw fontconfig fpx graphviz hardened hdri heif
+	jbig jpeg jpeg2k jpegxl lcms lqr lzma opencl openexr openmp pango perl ${GENTOO_PERL_USESTRING}
+	+png postscript q32 q8 raw static-libs svg test tiff truetype webp wmf
+	X xml zip zlib
+"
 
 REQUIRED_USE="
 	corefonts? ( truetype )
@@ -156,7 +158,7 @@ src_configure() {
 		$(use_with zip)
 		$(use_with zlib)
 		--without-autotrace
-		--with-uhdr
+		--without-uhdr
 		$(use_with postscript dps)
 		$(use_with djvu)
 		--with-dejavu-font-dir="${EPREFIX}"/usr/share/fonts/dejavu
