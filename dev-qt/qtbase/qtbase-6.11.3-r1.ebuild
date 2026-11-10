@@ -190,6 +190,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-6.9.0-no-direct-extern-access.patch
 	"${FILESDIR}"/${PN}-6.11.2-mimeinfo2.5.patch
 	"${FILESDIR}"/${PN}-6.11.3-skip-gentoo-chainload.patch
+	"${FILESDIR}"/${PN}-6.11.3-CVE-2026-116337.patch
 )
 
 src_prepare() {
