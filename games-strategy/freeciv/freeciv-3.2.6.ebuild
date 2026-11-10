@@ -135,8 +135,8 @@ src_configure() {
 
 	# the client and fpmc arrays are now populated (or not for dedicated); let's add them to emesonargs
 	emesonargs+=(
-		-Dclients="$(meson-format-array "${myclient[*]}")"
-		-Dfcmp="$(meson-format-array "${myfcmp[*]}")"
+		-Dclients="$(meson_format_array "${myclient[*]}")"
+		-Dfcmp="$(meson_format_array "${myfcmp[*]}")"
 	)
 
 	if use sound; then
@@ -156,7 +156,7 @@ src_configure() {
 	# default-enabled upstream
 	use rule-editor && tools+=( ruledit ruleup )
 	emesonargs+=(
-		-Dtools="$(meson-format-array "${tools[*]}")"
+		-Dtools="$(meson_format_array "${tools[*]}")"
 	)
 
 	# Anything that can be trivially set by meson_use goes here
