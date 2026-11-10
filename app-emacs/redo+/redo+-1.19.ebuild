@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,7 +9,7 @@ DESCRIPTION="Redo/undo system for Emacs"
 HOMEPAGE="https://www.emacswiki.org/emacs/RedoPlus
 	https://www11.atwiki.jp/s-irie/pages/18.html"
 # taken from http://www.emacswiki.org/emacs/${PN}.el
-SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.el.xz"
+SRC_URI="https://distfiles.gentoo.org/pub/proj/emacs/${P}.el.xz"
 
 LICENSE="GPL-2+"
 SLOT="0"
