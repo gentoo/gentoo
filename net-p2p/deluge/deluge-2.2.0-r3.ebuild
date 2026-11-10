@@ -41,6 +41,7 @@ RDEPEND="
 			sound? ( dev-python/pygame[${PYTHON_USEDEP}] )
 			dev-python/pygobject:3[cairo,${PYTHON_USEDEP}]
 		)
+		dev-python/pyasn1[${PYTHON_USEDEP}]
 		dev-python/chardet[${PYTHON_USEDEP}]
 		dev-python/distro[${PYTHON_USEDEP}]
 		dev-python/pillow[${PYTHON_USEDEP}]
