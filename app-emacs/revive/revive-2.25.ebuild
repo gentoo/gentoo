@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,7 +8,7 @@ inherit elisp
 DESCRIPTION="Resume Emacs"
 HOMEPAGE="https://www.gentei.org/~yuuji/software/"
 # taken from https://www.gentei.org/~yuuji/software/euc/revive.el
-SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.el.xz"
+SRC_URI="https://distfiles.gentoo.org/pub/proj/emacs/${P}.el.xz"
 
 LICENSE="BSD-2"
 SLOT="0"
