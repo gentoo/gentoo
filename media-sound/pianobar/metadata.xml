@@ -6,6 +6,6 @@
 		<name>Gentoo Sound project</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">PromyLOPh/pianobar</remote-id>
+		<remote-id type="codeberg">purplesym/pianobar</remote-id>
 	</upstream>
 </pkgmetadata>

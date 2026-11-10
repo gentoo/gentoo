@@ -7,7 +7,7 @@ inherit flag-o-matic toolchain-funcs verify-sig
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="https://github.com/PromyLOPh/pianobar.git"
+	EGIT_REPO_URI="https://codeberg.org/purplesym/pianobar.git"
 else
 	SRC_URI="
 		https://6xq.net/${PN}/${P}.tar.bz2
