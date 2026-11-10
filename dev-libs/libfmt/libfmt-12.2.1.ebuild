@@ -24,7 +24,7 @@ RESTRICT="!test? ( test )"
 
 PATCHES=(
 	# https://github.com/fmtlib/fmt/pull/4813
-	"${FILESDIR}/${P}-32bit.patch"
+	"${FILESDIR}/${PN}-12.2.0-32bit.patch"
 )
 
 multilib_src_configure() {
