@@ -48,6 +48,8 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
+PATCHES=( "${FILESDIR}/${P}-fix-testFd.patch" ) # bug 986078
+
 src_configure() {
 	local mycmakeargs=(
 		# kapsule is not yet packaged

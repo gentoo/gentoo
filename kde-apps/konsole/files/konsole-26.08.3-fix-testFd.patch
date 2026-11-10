@@ -1,0 +1,44 @@
+From a7b065a14798aed1c9ecbbff825b7f3d1a7ea293 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Tue, 10 Nov 2026 23:03:31 +0100
+Subject: [PATCH] autotests: testFd: Use QStandardPaths::findExecutable to find
+ ping binary
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ src/autotests/PartTest.cpp | 12 ++----------
+ 1 file changed, 2 insertions(+), 10 deletions(-)
+
+diff --git a/src/autotests/PartTest.cpp b/src/autotests/PartTest.cpp
+index 1c7108a13..de46b76d6 100644
+--- a/src/autotests/PartTest.cpp
++++ b/src/autotests/PartTest.cpp
+@@ -11,6 +11,7 @@
+ #include <QDialog>
+ #include <QFileInfo>
+ #include <QLabel>
++#include <QStandardPaths>
+ #include <QTimer>
+ #include <QVBoxLayout>
+ // KDE
+@@ -60,16 +61,7 @@ void PartTest::testFdStandalone()
+ void PartTest::testFd(bool runShell)
+ {
+     // find ping
+-    QStringList pingList;
+-    QFileInfo info;
+-    QString pingExe;
+-    pingList << QStringLiteral("/bin/ping") << QStringLiteral("/sbin/ping");
+-    for (int i = 0; i < pingList.size(); ++i) {
+-        info.setFile(pingList.at(i));
+-        if (info.exists() && info.isExecutable()) {
+-            pingExe = pingList.at(i);
+-        }
+-    }
++    QString pingExe = QStandardPaths::findExecutable(QStringLiteral("ping"));
+ 
+     if (pingExe.isEmpty()) {
+         QSKIP("ping command not found.");
+-- 
+2.56.0
+
