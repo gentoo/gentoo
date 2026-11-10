@@ -6,6 +6,7 @@ EAPI=8
 inherit gap-pkg
 
 DESCRIPTION="Bindings for low level C library I/O routines"
+HOMEPAGE="https://gap-packages.github.io/io/"
 SRC_URI="https://github.com/gap-packages/${PN}/releases/download/v${PV}/${P}.tar.bz2"
 
 LICENSE="GPL-3+"
