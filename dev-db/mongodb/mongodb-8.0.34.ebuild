@@ -97,6 +97,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-8.0.29-remove-mtune-march-cflags.patch"
 	"${FILESDIR}/${PN}-8.0.29-restore-syscall_h-includes.patch"
 	"${FILESDIR}/${PN}-8.0.29-use-system-python.patch"
+	"${FILESDIR}/${PN}-8.0.34-rules_js-tar-fix.patch"
 )
 
 python_check_deps() {
