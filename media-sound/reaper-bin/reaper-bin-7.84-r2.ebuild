@@ -62,7 +62,7 @@ src_prepare() {
 src_compile() {
 	emake -C "WDL-${WDL_COMMIT}/WDL/swell" \
 		PRELOAD_GDK=1 \
-		WAYLAND=$(usex wayland 1 0)
+		$(usev wayland WAYLAND=1)
 }
 
 QA_PREBUILT="*/*.so */reaper */reaper_host_*"
