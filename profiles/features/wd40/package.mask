@@ -1,6 +1,10 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (2025-11-10)
+# Requires dev-python/pydantic.
+dev-python/typer
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2026-10-20)
 # kde-plasma/union requires dev-build/corrosion, iow rust/cargo.
 >=kde-plasma/kscreenlocker-6.8.0
