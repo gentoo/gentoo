@@ -36,7 +36,7 @@ _PKAGENT_AUTOSTART_ECLASS=1
 #   XFCE polkit-gnome
 # @CODE
 make_pkagent_autostart_entry() {
-	local execpath name onlyshowin
+	local execpath fname name onlyshowin
 	if [[ $# -ne 2 ]]; then
 		die "${FUNCNAME[0]} must be passed exactly two arguments"
 	fi
@@ -96,7 +96,13 @@ make_pkagent_autostart_entry() {
 			execpath="${2}" ;;
 	esac
 
-	local fname="polkit-${name,,}-authentication-agent.desktop"
+	# preserve existing filename for a de facto legacy standard in GTK world
+	if [[ ${PN} == polkit-gnome ]]; then
+		fname="polkit-gnome-authentication-agent-1.desktop"
+	else
+		fname="polkit-${name,,}-authentication-agent.desktop"
+	fi
+
 	cat > "${T}/${fname}" <<- _EOF_ || die
 		[Desktop Entry]
 		Name=PolicyKit Authentication Agent
