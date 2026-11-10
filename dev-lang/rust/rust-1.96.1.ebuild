@@ -40,10 +40,8 @@ CRATE_PATHS_OVERRIDE="
 	openssl-sys@0.9.117
 "
 
-inherit cargo
-inherit check-reqs estack flag-o-matic llvm-r2 multiprocessing optfeature
-inherit multilib multilib-build python-any-r1 rust rust-toolchain toolchain-funcs
-inherit verify-sig
+inherit cargo check-reqs estack flag-o-matic llvm-r2 multiprocessing optfeature
+inherit multilib multilib-build python-any-r1 rust-toolchain toolchain-funcs verify-sig
 
 if [[ ${PV} = *9999* ]]; then
 	inherit git-r3
