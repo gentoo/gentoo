@@ -1,0 +1,387 @@
+https://github.com/boostorg/container/issues/334
+https://github.com/boostorg/container/commit/d41012163e4b05e5cb0e6c9f823964f2780b38d7
+
+From ce12d2aec53a17f982febcd7c3e83deb97b1b593 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ion=20Gazta=C3=B1aga?= <igaztanaga@gmail.com>
+Date: Sun, 22 Mar 2026 17:26:15 +0100
+Subject: [PATCH] Fixes #334 ("Wrong overload resolution protection in
+ implementation of P2363R5") and adds tests with transparent comparator for
+ associative containers.
+
+
+diff --git a/include/boost/container/flat_set.hpp b/include/boost/container/flat_set.hpp
+index 15d1018f13f..15d86b702f0 100644
+--- a/boost/container/flat_set.hpp
++++ b/boost/container/flat_set.hpp
+@@ -411,7 +411,7 @@ class flat_set
+    flat_set& operator=(std::initializer_list<value_type> il)
+    {
+        this->clear();
+-       this->insert(il.begin(), il.end());
++       this->tree_t::insert_unique_range(il.begin(), il.end());
+        return *this;
+    }
+ #endif
+@@ -737,10 +737,12 @@ class flat_set
+    template <class K>
+    inline BOOST_CONTAINER_DOC1ST
+       ( iterator
+-      , typename dtl::enable_if_transparent< key_compare
+-                                             BOOST_MOVE_I K
+-                                             BOOST_MOVE_I iterator
+-                                           >::type)  //transparent
++         , typename dtl::enable_if_c<
++            dtl::is_transparent<key_compare>::value &&                  //transparent
++            !dtl::is_convertible<K BOOST_MOVE_I iterator>::value &&     //not convertible to iterator
++            !dtl::is_convertible<K BOOST_MOVE_I const_iterator>::value  //not convertible to const_iterator
++            BOOST_MOVE_I iterator
++       >::type)
+       insert(const_iterator p, K &&x)
+    {  return this->tree_t::insert_unique(p, boost::forward<K>(x)); }
+ 
+@@ -1549,7 +1551,7 @@ class flat_multiset
+    flat_multiset& operator=(std::initializer_list<value_type> il)
+    {
+        this->clear();
+-       this->insert(il.begin(), il.end());
++       this->tree_t::insert_equal_range(il.begin(), il.end());
+        return *this;
+    }
+ #endif
+diff --git a/include/boost/container/set.hpp b/include/boost/container/set.hpp
+index 6aee281ffee..d912c138779 100644
+--- a/boost/container/set.hpp
++++ b/boost/container/set.hpp
+@@ -656,10 +656,12 @@ class set
+    template <class K>
+    inline BOOST_CONTAINER_DOC1ST
+       ( iterator
+-      , typename dtl::enable_if_transparent< key_compare
+-                                             BOOST_MOVE_I K
+-                                             BOOST_MOVE_I iterator
+-                                           >::type)  //transparent
++      , typename dtl::enable_if_c<
++         dtl::is_transparent<key_compare>::value &&                  //transparent
++         !dtl::is_convertible<K BOOST_MOVE_I iterator>::value &&     //not convertible to iterator
++         !dtl::is_convertible<K BOOST_MOVE_I const_iterator>::value  //not convertible to const_iterator
++         BOOST_MOVE_I iterator
++         >::type)
+       insert(const_iterator p, K &&x)
+    {  return this->base_t::insert_unique_hint_convertible(p, boost::forward<K>(x)); }
+ 
+diff --git a/libs/container/test/flat_map_test.cpp b/libs/container/test/flat_map_test.cpp
+index ec6d1047293..fa63626e012 100644
+--- a/libs/container/test/flat_map_test.cpp
++++ b/libs/container/test/flat_map_test.cpp
+@@ -193,7 +193,7 @@ bool constructor_template_auto_deduction_test()
+ 
+ }}}
+ 
+-template<class VoidAllocatorOrContainer>
++template<class VoidAllocatorOrContainer, bool Transparent = false>
+ struct GetMapContainer
+ {
+    template<class ValueType>
+@@ -202,21 +202,21 @@ struct GetMapContainer
+       typedef std::pair<ValueType, ValueType> type_t;
+       typedef flat_map< ValueType
+                  , ValueType
+-                 , std::less<ValueType>
++                 , typename dtl::if_c<Transparent, test::less_transparent, std::less<ValueType> >::type
+                  , typename boost::container::dtl::container_or_allocator_rebind<VoidAllocatorOrContainer, type_t>::type
+                  > map_type;
+ 
+       typedef flat_multimap< ValueType
+                  , ValueType
+-                 , std::less<ValueType>
++                 , typename dtl::if_c<Transparent, test::less_transparent, std::less<ValueType> >::type
+                  , typename boost::container::dtl::container_or_allocator_rebind<VoidAllocatorOrContainer, type_t>::type
+                  > multimap_type;
+    };
+ };
+ 
+ //To test default parameters
+-template<>
+-struct GetMapContainer<void>
++template<bool Transparent>
++struct GetMapContainer<void, Transparent>
+ {
+    template<class ValueType>
+    struct apply
+@@ -389,15 +389,6 @@ int main()
+          return 1;
+       }
+ 
+-      if (0 != test::flat_map_test
+-         < GetMapContainer<void>::apply<int>::map_type
+-         , MyStdMap
+-         , GetMapContainer<void>::apply<int>::multimap_type
+-         , MyStdMultiMap>()) {
+-         std::cout << "Error in flat_map_test<new_allocator<void> >" << std::endl;
+-         return 1;
+-      }
+-
+       if (0 != test::flat_map_test
+          < GetMapContainer<new_allocator<void> >::apply<int>::map_type
+          , MyStdMap
+@@ -433,6 +424,15 @@ int main()
+          std::cout << "Error in flat_map_test<new_allocator<void> >" << std::endl;
+          return 1;
+       }
++
++      if (0 != test::flat_map_test
++         < GetMapContainer<new_allocator<void>, true>::apply<test::movable_and_copyable_int>::map_type
++         , MyStdMap
++         , GetMapContainer<new_allocator<void>, true>::apply<test::movable_and_copyable_int>::multimap_type
++         , MyStdMultiMap>()) {
++         std::cout << "Error in flat_map_test<new_allocator<void>, transparent >" << std::endl;
++         return 1;
++      }
+    }
+ 
+    if(!boost::container::test::test_map_support_for_initialization_list_for<flat_map<int, int> >())
+diff --git a/test/flat_set_test.cpp b/test/flat_set_test.cpp
+index ff62d20345b..10112437542 100644
+--- a/libs/container/test/flat_set_test.cpp
++++ b/libs/container/test/flat_set_test.cpp
+@@ -532,19 +532,19 @@ bool test_heterogeneous_lookup_by_partial_key()
+ 
+ }}}
+ 
+-template<class VoidAllocatorOrContainer>
++template<class VoidAllocatorOrContainer, bool Transparent = false>
+ struct GetSetContainer
+ {
+    template<class ValueType>
+    struct apply
+    {
+       typedef flat_set < ValueType
+-                       , std::less<ValueType>
++                       , typename dtl::if_c<Transparent, test::less_transparent, std::less<ValueType> >::type
+                        , typename boost::container::dtl::container_or_allocator_rebind<VoidAllocatorOrContainer, ValueType>::type
+                         > set_type;
+ 
+       typedef flat_multiset < ValueType
+-                            , std::less<ValueType>
++                            , typename dtl::if_c<Transparent, test::less_transparent, std::less<ValueType> >::type
+                             , typename boost::container::dtl::container_or_allocator_rebind<VoidAllocatorOrContainer, ValueType>::type
+                             > multiset_type;
+    };
+@@ -733,6 +733,15 @@ int main()
+          std::cout << "Error in set_test<new_allocator<void> >" << std::endl;
+          return 1;
+       }
++
++      if (0 != test::set_test
++         < GetSetContainer<new_allocator<void>, true>::apply<test::movable_and_copyable_int>::set_type
++         , MyStdSet
++         , GetSetContainer<new_allocator<void>, true>::apply<test::movable_and_copyable_int>::multiset_type
++         , MyStdMultiSet>()) {
++         std::cout << "Error in set_test<new_allocator<void> >>, transparent" << std::endl;
++         return 1;
++      }
+    }
+ 
+    ////////////////////////////////////
+diff --git a/test/map_test.cpp b/test/map_test.cpp
+index cb0ba235ed9..dd27164fa60 100644
+--- a/libs/container/test/map_test.cpp
++++ b/libs/container/test/map_test.cpp
+@@ -220,7 +220,7 @@ bool node_type_test()
+    return true;
+ }
+ 
+-template<class VoidAllocator, boost::container::tree_type_enum tree_type_value>
++template<class VoidAllocator, boost::container::tree_type_enum tree_type_value, bool Transparent = false>
+ struct GetAllocatorMap
+ {
+    template<class ValueType>
+@@ -228,7 +228,7 @@ struct GetAllocatorMap
+    {
+       typedef map< ValueType
+                  , ValueType
+-                 , std::less<ValueType>
++                 , typename dtl::if_c<Transparent, test::less_transparent, std::less<ValueType> >::type
+                  , typename allocator_traits<VoidAllocator>
+                     ::template portable_rebind_alloc< std::pair<const ValueType, ValueType> >::type
+                   , typename boost::container::tree_assoc_options
+@@ -238,7 +238,7 @@ struct GetAllocatorMap
+ 
+       typedef multimap< ValueType
+                  , ValueType
+-                 , std::less<ValueType>
++                 , typename dtl::if_c<Transparent, test::less_transparent, std::less<ValueType> >::type
+                  , typename allocator_traits<VoidAllocator>
+                     ::template portable_rebind_alloc< std::pair<const ValueType, ValueType> >::type
+                   , typename boost::container::tree_assoc_options
+@@ -489,6 +489,15 @@ int main ()
+          std::cout << "Error in map_test<new_allocator<void>, red_black_tree>" << std::endl;
+          return 1;
+       }
++
++      if (0 != test::map_test
++         < GetAllocatorMap<new_allocator<void>, red_black_tree, true>::apply<test::movable_and_copyable_int>::map_type
++         , MyStdMap
++         , GetAllocatorMap<new_allocator<void>, red_black_tree, true>::apply<test::movable_and_copyable_int>::multimap_type
++         , MyStdMultiMap>()) {
++         std::cout << "Error in map_test<new_allocator<void>, red_black_tree>>, transparent" << std::endl;
++         return 1;
++      }
+    }
+ 
+    ////////////////////////////////////
+diff --git a/test/set_test.cpp b/test/set_test.cpp
+index a91abfa86b9..1087a60b74e 100644
+--- a/libs/container/test/set_test.cpp
++++ b/libs/container/test/set_test.cpp
+@@ -1,3 +1,4 @@
++
+ //////////////////////////////////////////////////////////////////////////////
+ //
+ // (C) Copyright Ion Gaztanaga 2004-2013. Distributed under the Boost
+@@ -346,14 +347,14 @@ bool constructor_template_auto_deduction_test()
+ 
+ }}}   //boost::container::test
+ 
+-template<class VoidAllocator, boost::container::tree_type_enum tree_type_value>
++template<class VoidAllocator, boost::container::tree_type_enum tree_type_value, bool Transparent = false>
+ struct GetAllocatorSet
+ {
+    template<class ValueType>
+    struct apply
+    {
+       typedef set < ValueType
+-                  , std::less<ValueType>
++                  , typename dtl::if_c<Transparent, test::less_transparent, std::less<ValueType> >::type
+                   , typename allocator_traits<VoidAllocator>
+                      ::template portable_rebind_alloc<ValueType>::type
+                   , typename boost::container::tree_assoc_options
+@@ -362,7 +363,7 @@ struct GetAllocatorSet
+                   > set_type;
+ 
+       typedef multiset < ValueType
+-                  , std::less<ValueType>
++                  , typename dtl::if_c<Transparent, test::less_transparent, std::less<ValueType> >::type
+                   , typename allocator_traits<VoidAllocator>
+                      ::template portable_rebind_alloc<ValueType>::type
+                   , typename boost::container::tree_assoc_options
+@@ -504,6 +505,24 @@ int main ()
+          std::cout << "Error in set_test<new_allocator<void>, red_black_tree>" << std::endl;
+          return 1;
+       }
++
++      if (0 != test::set_test
++         < GetAllocatorSet<new_allocator<void>, red_black_tree>::apply<test::moveconstruct_int>::set_type
++         , MyStdSet
++         , GetAllocatorSet<new_allocator<void>, red_black_tree>::apply<test::moveconstruct_int>::multiset_type
++         , MyStdMultiSet>()) {
++         std::cout << "Error in set_test<new_allocator<void>, red_black_tree>" << std::endl;
++         return 1;
++      }
++
++      if (0 != test::set_test
++         < GetAllocatorSet<new_allocator<void>, red_black_tree, true>::apply<test::movable_and_copyable_int>::set_type
++         , MyStdSet
++         , GetAllocatorSet<new_allocator<void>, red_black_tree, true>::apply<test::movable_and_copyable_int>::multiset_type
++         , MyStdMultiSet>()) {
++         std::cout << "Error in set_test<new_allocator<void>, red_black_tree>>, transparent" << std::endl;
++         return 1;
++      }
+    }
+ 
+    ////////////////////////////////////
+@@ -621,3 +640,17 @@ int main ()
+ 
+    return 0;
+ }
++
++/*
++#include <boost/container/set.hpp>
++#include <functional>
++
++int main()
++{
++  using set = boost::container::set<int, std::less<>>;
++
++  set s;
++  const set cs;
++  s.insert(cs.begin(), cs.end());
++}
++*/
+\ No newline at end of file
+-- 
+2.49.1
+
+From d41012163e4b05e5cb0e6c9f823964f2780b38d7 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ion=20Gazta=C3=B1aga?= <igaztanaga@gmail.com>
+Date: Thu, 18 Jun 2026 18:59:11 +0200
+Subject: [PATCH] Fix test failure of default_init with advanced optimizers
+ like GCC-16, since operator new ends the lifetime of the previous value.
+
+
+diff --git a/test/allocator_traits_test.cpp b/test/allocator_traits_test.cpp
+index e4ffc03087d..65b54e95df8 100644
+--- a/libs/container/test/allocator_traits_test.cpp
++++ b/libs/container/test/allocator_traits_test.cpp
+@@ -237,6 +237,16 @@ class copymovable
+    {  return moved_;  }
+ };
+ 
++//'default_init' must leave the storage uninitialized, unlike 'value_init' which
++//zero-initializes it. Observing "left as-is" means reading the bytes written before
++//construct(); but construct() ends the previous object's lifetime, so that read is of an
++//indeterminate value and a modern optimizer may legally drop the prior store
++//and fold the read to anything. Routing the pre-store and the post-read through volatile
++//glvalues prevents the store from being elided and forces a real memory load, so the test
++//observes the actual (untouched) bytes.
++inline void test_volatile_store(int &i, int v){ *static_cast<volatile int *>(&i) = v; }
++inline int  test_volatile_load (int &i){ return *static_cast<volatile int *>(&i); }
++
+ void test_void_allocator()
+ {
+    boost::container::allocator_traits<std::allocator<void>   > stdtraits; (void)stdtraits;
+@@ -379,9 +389,19 @@ int main()
+       BOOST_TEST(c_alloc.construct_called() && !c.copymoveconstructed() && !c.moved());
+    }
+    {
+-      int i = 5;
++      //gcc-16 considers the object uninitialized after the default-init placement-new and warns
++      //on the (intentional) volatile read-back below; the warning is spurious here, so silence it.
++      #if defined(__GNUC__)
++      #pragma GCC diagnostic push
++      #pragma GCC diagnostic ignored "-Wuninitialized"
++      #endif
++      int i = 0;
++      test_volatile_store(i, 5);
+       CAllocTraits::construct(c_alloc, &i, boost::container::default_init);
+-      BOOST_TEST(c_alloc.construct_called() && i == 5);
++      BOOST_TEST(c_alloc.construct_called() && test_volatile_load(i) == 5);
++      #if defined(__GNUC__)
++      #pragma GCC diagnostic pop
++      #endif
+    }
+    {
+       copymovable c;
+@@ -403,9 +423,17 @@ int main()
+       BOOST_TEST(!c.copymoveconstructed() && !c.moved());
+    }
+    {
+-      int i = 4;
++      #if defined(__GNUC__)
++      #pragma GCC diagnostic push
++      #pragma GCC diagnostic ignored "-Wuninitialized"
++      #endif
++      int i = 0;
++      test_volatile_store(i, 4);
+       SAllocTraits::construct(s_alloc, &i, boost::container::default_init);
+-      BOOST_TEST(i == 4);
++      BOOST_TEST(test_volatile_load(i) == 4);
++      #if defined(__GNUC__)
++      #pragma GCC diagnostic pop
++      #endif
+    }
+    {
+       copymovable c;
+-- 
+2.49.1
+
