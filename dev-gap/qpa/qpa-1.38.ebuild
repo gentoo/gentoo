@@ -6,6 +6,7 @@ EAPI=8
 inherit gap-pkg
 
 DESCRIPTION="Quivers and Path Algebras in GAP"
+HOMEPAGE="https://gap-packages.github.io/qpa/"
 SRC_URI="https://github.com/gap-packages/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"
