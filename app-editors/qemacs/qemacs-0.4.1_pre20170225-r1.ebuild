@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,7 +8,7 @@ inherit toolchain-funcs
 DESCRIPTION="QEmacs is a very small but powerful UNIX editor"
 HOMEPAGE="https://savannah.nongnu.org/projects/qemacs/"
 # snapshot of http://cvs.savannah.gnu.org/viewvc/?root=qemacs
-SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.tar.xz"
+SRC_URI="https://distfiles.gentoo.org/pub/proj/emacs/${P}.tar.xz"
 S="${WORKDIR}/${PN}"
 
 LICENSE="LGPL-2.1+ GPL-2+"
