@@ -53,8 +53,8 @@ src_configure() {
 	fi
 	if use mumps; then
 		myeconfargs+=(
-			--with-mumps-incdir="${EPREFIX}"/usr/include$(usex mpi '' '/mpiseq')
-			--with-mumps-lib="-lmumps_common -ldmumps -lzmumps -lsmumps -lcmumps" )
+			--with-mumps-cflags=-I"${EPREFIX}"/usr/include$(usex mpi '' '/mpiseq')
+			--with-mumps-lflags="-lmumps_common -ldmumps -lzmumps -lsmumps -lcmumps" )
 	else
 		myeconfargs+=( --without-mumps )
 	fi
