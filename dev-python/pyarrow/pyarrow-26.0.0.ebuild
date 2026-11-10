@@ -33,7 +33,7 @@ S="${WORKDIR}/apache-arrow-${PV}/python"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~riscv"
+KEYWORDS="amd64 arm64 ~riscv"
 IUSE="+parquet +snappy ssl"
 
 RDEPEND="
