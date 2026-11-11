@@ -13,7 +13,7 @@ if [[ "${PV}" == "9999" ]] || [[ -n "${EGIT_COMMIT_ID}" ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/Flowdalic/sendxmpp/releases/download/${PV}/sendxmpp-dist-${PV}.jar"
-	KEYWORDS="~amd64 ~arm64"
+	KEYWORDS="amd64 arm64"
 	S="${WORKDIR}"
 fi
 
