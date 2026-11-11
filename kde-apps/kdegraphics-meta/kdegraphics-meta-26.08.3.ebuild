@@ -8,7 +8,7 @@ HOMEPAGE="https://apps.kde.org/graphics/"
 
 LICENSE="metapackage"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv ~x86"
 IUSE="color-management scanner +webengine"
 
 RDEPEND="
