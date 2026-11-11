@@ -60,6 +60,9 @@ src_prepare() {
 	sed \
 		-e "s:^JNA_JNI_VERSION=.*$:JNA_JNI_VERSION=${PV}:" \
 		-i native/Makefile || die
+
+	# bug #986155
+	use ppc64 && eapply "${FILESDIR}"/jna-5.19.1-ArgumentsMarshalTest.patch
 }
 
 src_compile() {
