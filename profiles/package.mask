@@ -36,11 +36,6 @@
 
 #--- END OF EXAMPLES ---
 
-# Mike Gilbert <floppym@gentoo.org> (2026-11-11)
-# Replaced by meson_format_array function in meson.eclass.
-# Removal on 2026-12-11.
-dev-build/meson-format-array
-
 # Michał Górny <mgorny@gentoo.org> (2026-11-09)
 # Regressions causing test failures:
 # https://github.com/gorakhargosh/watchdog/issues/1432
