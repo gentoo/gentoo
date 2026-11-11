@@ -15,7 +15,7 @@ HOMEPAGE="https://invent.kde.org/libraries/kweathercore"
 
 LICENSE="LGPL-2+"
 SLOT="6"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm64 ~ppc64 ~x86"
 
 DEPEND="
 	>=dev-qt/qtbase-${QTMIN}:6[network]
