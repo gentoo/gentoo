@@ -1,0 +1,34 @@
+https://github.com/shevek/libspf2/pull/61
+
+From 3857992da7e06b7bcb6fb77619929a2898c6a22c Mon Sep 17 00:00:00 2001
+From: "Z. Liu" <zhixu.liu@gmail.com>
+Date: Wed, 11 Nov 2026 22:00:00 +0800
+Subject: [PATCH] libreplace: convert K&R-style definition to ANSI C
+
+C23 removes support for K&R-style function definitions, causing
+__ns_get16.c to fail to compile when the compiler defaults to
+or is explicitly invoked with that option:
+
+> __ns_get16.c:15:12: error: unknown type name 'src'
+> __ns_get16.c:15:16: error: expected ';' after top level declarator
+> __ns_get16.c:17:1: error: expected identifier or '('
+
+Signed-off-by: Z. Liu <zhixu.liu@gmail.com>
+
+diff --git a/src/libreplace/__ns_get16.c b/src/libreplace/__ns_get16.c
+index 805345d..21c9883 100644
+--- a/src/libreplace/__ns_get16.c
++++ b/src/libreplace/__ns_get16.c
+@@ -12,8 +12,7 @@
+ 
+ 
+ u_int
+-__ns_get16(src)
+-	const u_char *src;
++__ns_get16(const u_char *src)
+ {
+         u_int dst;
+ 
+-- 
+2.49.1
+

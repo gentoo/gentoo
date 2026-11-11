@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit autotools
 
@@ -19,6 +19,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.2.11-undefined-dn_.patch
 	"${FILESDIR}"/${PN}-1.2.11-musl.patch
 	"${FILESDIR}"/${PN}-1.2.11-integer-underflow.patch
+	"${FILESDIR}"/${PN}-1.2.11-libreplace-convert-K-R-style-definition-to-ANSI-C.patch
 )
 
 S=${WORKDIR}/${PN}-${GHASH}
