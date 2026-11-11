@@ -21,7 +21,7 @@ fi
 
 LICENSE="Apache-2.0 vim"
 SLOT="0"
-IUSE="+nvimpager test"
+IUSE="+nls +nvimpager test"
 
 # Upstream say the test library needs LuaJIT
 # https://github.com/neovim/neovim/blob/91109ffda23d0ce61cec245b1f4ffb99e7591b62/CMakeLists.txt#L377
@@ -32,9 +32,8 @@ RESTRICT="!test? ( test ) test"
 # Upstream build scripts invoke the Lua interpreter
 BDEPEND="${LUA_DEPS}
 	>=dev-util/gperf-3.1
-	>=sys-devel/gettext-0.20.1
+	nls? ( >=sys-devel/gettext-0.20.1 )
 	virtual/libiconv
-	virtual/libintl
 	virtual/pkgconfig
 "
 # Check https://github.com/neovim/neovim/blob/master/third-party/CMakeLists.txt for
@@ -61,6 +60,7 @@ DEPEND="${LUA_DEPS}
 	=dev-libs/tree-sitter-vim-0.8*
 	=dev-libs/tree-sitter-vimdoc-4*
 	>=dev-libs/unibilium-2.1.2:0=
+	nls? ( virtual/libintl )
 "
 RDEPEND="
 	${DEPEND}
@@ -91,6 +91,7 @@ src_configure() {
 	local mycmakeargs=(
 		# appends -flto
 		-DENABLE_LTO=OFF
+		-DENABLE_LIBINTL=$(usex nls)
 		-DPREFER_LUA=$(usex lua_single_target_luajit no "$(lua_get_version)")
 		-DLUA_PRG="${LUA}"
 		# bug 906019: fix hardcoded usage of ccache
