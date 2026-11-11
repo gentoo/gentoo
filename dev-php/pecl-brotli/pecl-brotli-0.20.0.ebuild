@@ -1,9 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-USE_PHP="php8-2 php8-3"
+USE_PHP="php8-2 php8-3 php8-4 php8-5"
 
 inherit php-ext-pecl-r3
 
@@ -24,12 +24,23 @@ DESCRIPTION="Brotli compression extension for PHP"
 HOMEPAGE+=" https://github.com/kjdev/php-ext-brotli"
 
 LICENSE="MIT"
-SLOT="0"
+SLOT="0/0.20"
 
-RDEPEND="app-arch/brotli:="
+IUSE="apcu"
+RDEPEND="app-arch/brotli:= apcu? ( dev-php/pecl-apcu )"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
-PHP_EXT_ECONF_ARGS=(
+src_configure() {
+local PHP_EXT_ECONF_ARGS=(
 	--with-libbrotli
+	--enable-apcu=$(usex apcu)
 )
+	php-ext-source-r3_src_configure
+}
+
+src_test(){
+	export SKIP_ONLINE_TESTS="yes"
+	php-ext-pecl-r3_src_test
+	unset SKIP_ONLINE_TESTS
+}
