@@ -1,8 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-inherit gnome2
+
+inherit flag-o-matic gnome2
 
 DESCRIPTION="a free multithreaded file transfer client"
 HOMEPAGE="https://github.com/masneyb/gftp"
@@ -41,6 +42,7 @@ src_prepare() {
 }
 
 src_configure() {
+	append-cflags -std=gnu17 #944912
 	gnome2_src_configure \
 		$(use_enable gtk gtkport) \
 		$(use_enable ssl)
