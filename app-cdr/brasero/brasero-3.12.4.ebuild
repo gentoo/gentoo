@@ -51,6 +51,7 @@ BDEPEND="
 	>=dev-util/intltool-0.50
 	dev-util/itstool
 	>=dev-build/gtk-doc-am-1.12
+	dev-util/gtk-doc
 	sys-devel/gettext
 	virtual/pkgconfig
 "
