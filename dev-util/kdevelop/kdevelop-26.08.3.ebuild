@@ -17,7 +17,7 @@ HOMEPAGE="https://kdevelop.org/"
 
 LICENSE="GPL-2 LGPL-2"
 SLOT="6/$(ver_cut 1-2)"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 ~arm64"
 IUSE="gdbui plasma +qmake +share subversion +webengine"
 
 # see bug 366471, 986079, etc...
