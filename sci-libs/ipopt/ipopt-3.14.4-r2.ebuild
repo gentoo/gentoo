@@ -69,4 +69,8 @@ src_compile() {
 src_install() {
 	default
 	dodoc -r examples
+
+	if ! use static-libs; then
+		find "${ED}" -name '*.la' -exec rm -f {} + || die
+	fi
 }
