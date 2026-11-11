@@ -29,10 +29,6 @@ BDEPEND="${PYTHON_DEPS}
 DEPEND="~dev-util/spirv-tools-${PV}[${MULTILIB_USEDEP}]"
 RDEPEND="${DEPEND}"
 
-PATCHES=(
-	"${FILESDIR}"/1.4.357.0-Fix-format-specifier-for-64-bit-index-in-error-messa.patch
-)
-
 multilib_src_configure() {
 	local mycmakeargs=(
 		-DENABLE_PCH=OFF
