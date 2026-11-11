@@ -74,6 +74,17 @@ src_configure() {
 		--processing:"off"
 	EOF
 
+	# Append the main "nim.cfg" to some tools that do not respect the main one
+	local extra_cfg_pkg=""
+	local extra_cfg=""
+	for extra_cfg_pkg in nifler nifmake ; do
+		extra_cfg="./dist/nimony/src/${extra_cfg_pkg}/nim.cfg"
+		[[ -f "${extra_cfg}" ]] && \
+			echo "" >> "${extra_cfg}" && \
+			cat ./nim.cfg >> "${extra_cfg}" \
+				|| die "failed to update extra config ${extra_cfg}"
+	done
+
 	cp -r "${WORKDIR}/atlas-${ATLAS_V}" "${S}/dist/atlas" || die
 
 	mkdir -p "${S}/dist/atlas/dist" || die
