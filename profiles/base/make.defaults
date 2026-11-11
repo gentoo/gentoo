@@ -153,18 +153,10 @@ POSTGRES_TARGETS="postgres17"
 
 # Michael Orlitzky <mjo@gentoo.org> (2017-11-17)
 #
-# Default PHP targets, used only for extensions at the moment.
-#
-# The value of this variable should be chosen to be "least annoying by
-# default." For example, some packages support only php-5.x and some
-# only php-7.x. By having both "php5-6" and php7-0" in PHP_TARGETS, we
-# ensure that users who don't care one way or the other don't have to
-# mess with this variable in order to install those packages.
-#
-# Moreover, it should only contain targets that have a stable version
-# of PHP, to avoid pulling in an unstable PHP on stable systems.
-#
-PHP_TARGETS="php8-3"
+# Default PHP targets used when building extensions. This will generally
+# be the latest stable dev-lang/php slot, taking into consideration how
+# many dev-php/* extensions have support for that slot.
+PHP_TARGETS="php8-5"
 
 # Sam James <sam@gentoo.org> (2025-12-03)
 #
