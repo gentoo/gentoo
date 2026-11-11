@@ -13,7 +13,7 @@ HOMEPAGE="https://apps.kde.org/tokodon/"
 
 LICENSE="CC-BY-SA-4.0 GPL-2+ GPL-3+ || ( LGPL-2.1+ LGPL-3+ ) MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm64 ~ppc64 ~x86"
 IUSE="webengine"
 
 # TODO: Add kunifiedpush support once packaged (cd01eb31d1ec298d4c1e10d25a0781d799161bfc)
