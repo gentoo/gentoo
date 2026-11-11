@@ -187,6 +187,10 @@ src_install() {
 		doinitd "${T}/init.d/${f}"
 	done
 
+	for f in nfs nfsclient ; do
+		newconfd "${FILESDIR}"/${f}.confd ${f}
+	done
+
 	local systemd_systemunitdir="$(systemd_get_systemunitdir)"
 	sed -i \
 		-e 's:/usr/sbin/rpc.statd:/sbin/rpc.statd:' \
