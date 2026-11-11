@@ -1,0 +1,49 @@
+From 827637a85bb51f7c77cb61de75ddaba51e289504 Mon Sep 17 00:00:00 2001
+From: Matt Turner <mattst88@gmail.com>
+Date: Wed, 11 Nov 2026 15:35:30 -0500
+Subject: [PATCH] test-tty: Skip "tty normal" if stdin or stdout can't be
+ opened as a tty
+
+uv.new_tty() fails with EINVAL on a regular file or character device,
+e.g. stdin from /dev/null or stdout redirected to a log in a package
+build. The test then fails with:
+
+  bad argument #1 to 'is_readable' (Expected uv_stream userdata)
+
+3e7182b911 ("test-tty: Don't depend on stdin/stdout handle type")
+dropped the guess_handle() assertions, but the test still needs both
+fds to be ttys.
+
+Link: https://bugs.gentoo.org/955710
+Upstream-PR: https://github.com/luvit/luv/pull/840
+---
+ tests/test-tty.lua | 13 +++++++++++--
+ 1 file changed, 11 insertions(+), 2 deletions(-)
+
+diff --git a/tests/test-tty.lua b/tests/test-tty.lua
+index 165e58d..f272030 100644
+--- a/tests/test-tty.lua
++++ b/tests/test-tty.lua
+@@ -13,8 +13,17 @@ end
+ return require('lib/tap')(function (test)
+ 
+   test("tty normal", function (print, p, expect, uv)
+-    local stdin = uv.new_tty(0, true)
+-    local stdout = uv.new_tty(1, false)
++    local stdin, err = uv.new_tty(0, true)
++    if not stdin then
++      print("Skip, stdin: " .. err)
++      return
++    end
++    local stdout, err2 = uv.new_tty(1, false)
++    if not stdout then
++      print("Skip, stdout: " .. err2)
++      uv.close(stdin)
++      return
++    end
+ 
+     assert(uv.is_readable(stdin))
+     assert(uv.is_writable(stdout))
+-- 
+2.56.1
+
