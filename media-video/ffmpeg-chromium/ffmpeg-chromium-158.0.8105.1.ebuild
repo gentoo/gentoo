@@ -15,7 +15,7 @@ if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://chromium.googlesource.com/chromium/third_party/ffmpeg"
 else
 	SRC_URI="https://deps.gentoo.zip/media-video/${P}.tar.xz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64"
+	KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64"
 fi
 
 LICENSE="
