@@ -14,7 +14,7 @@ S="${WORKDIR}/${P}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 DEPEND=">=virtual/jdk-21:*"
 RDEPEND=">=virtual/jre-21:*"
