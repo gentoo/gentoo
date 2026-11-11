@@ -18,7 +18,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-libs/glib-2.80:2
-	>=net-libs/libsoup-3.2.0:3.0
+	>=net-libs/libsoup-3.2.0:3.0[introspection?]
 	dev-libs/libxml2:=
 	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 	zeroconf? ( net-dns/avahi[dbus] )
@@ -46,6 +46,7 @@ src_configure() {
 	local emesonargs=(
 		-Dlitmus=disabled
 		$(meson_feature gtk-doc docs)
+		$(meson_feature introspection)
 		$(meson_feature zeroconf avahi)
 		-Dsystemdsystemunitdir="$(systemd_get_systemunitdir)"
 		-Dudevrulesdir="$(get_udevdir)/rules.d"
