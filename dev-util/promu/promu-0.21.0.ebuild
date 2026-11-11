@@ -19,7 +19,7 @@ fi
 LICENSE="Apache-2.0"
 LICENSE+=" BSD BSD-2 MIT"
 SLOT="0"
-
+BDEPEND=">=dev-lang/go-1.26.0"
 RESTRICT+=" test"
 DOCS=(
 	"doc/examples"
