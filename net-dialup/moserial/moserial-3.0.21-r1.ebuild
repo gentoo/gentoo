@@ -19,6 +19,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
+	$(vala_depend)
 	>=dev-util/intltool-0.35
 	dev-util/itstool
 	virtual/pkgconfig
