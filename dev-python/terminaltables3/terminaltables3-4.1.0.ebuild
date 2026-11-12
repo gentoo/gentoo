@@ -30,7 +30,7 @@ BDEPEND="
 	)
 "
 
-EPYTEST_PLUGINS=()
+EPYTEST_PLUGINS=( hypothesis )
 distutils_enable_tests pytest
 
 python_test() {

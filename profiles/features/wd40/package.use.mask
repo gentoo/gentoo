@@ -76,6 +76,7 @@ dev-python/rfc3986-validator test
 dev-python/scipy test
 dev-python/srt test
 dev-python/sympy test
+dev-python/terminaltables3 test
 dev-python/textdistance test
 dev-python/time-machine test
 dev-python/tornado test
