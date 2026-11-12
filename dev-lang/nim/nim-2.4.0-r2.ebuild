@@ -186,8 +186,9 @@ src_install() {
 	done < \
 		 <(find ./bin -type f -not -iname nim)
 
-	# Create "dist" dir, see: https://bugs.gentoo.org/985314
-	keepdir /usr/lib/nim/dist
+	# Copy the "dist" dir needed to build 3rd-party programs, see: #985314
+	insinto /usr/lib/nim/
+	doins -r dist
 
 	newbashcomp dist/nimble/nimble.bash-completion nimble
 	newbashcomp tools/nim.bash-completion nim
