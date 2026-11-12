@@ -1,6 +1,11 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Brett A C Sheffield <bacs@librecast.net> (2026-11-12)
+# dev-scheme/racket not keyworded here
+app-editors/vim-classic racket
+app-editors/gvim-classic racket
+
 # Eli Schwartz <eschwartz@gentoo.org> (2026-11-07)
 # sys-block/libfabric not keyworded here
 sys-cluster/openmpi libfabric
