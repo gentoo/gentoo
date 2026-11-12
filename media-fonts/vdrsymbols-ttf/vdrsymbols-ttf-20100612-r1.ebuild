@@ -12,7 +12,7 @@ S="${WORKDIR}/vdrsymbols"
 
 LICENSE="BitstreamVera"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~loong x86"
+KEYWORDS="amd64 ~arm ~loong x86"
 
 FONT_S="${S}"
 FONT_SUFFIX="ttf"
