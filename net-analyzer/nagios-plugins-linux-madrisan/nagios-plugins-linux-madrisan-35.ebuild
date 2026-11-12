@@ -24,6 +24,12 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
+PATCHES=(
+	# Fix build failure: SCHAR_MAX undeclared
+	# https://github.com/madrisan/nagios-plugins-linux/commit/fce20da20
+	"${FILESDIR}/${P}-limits.patch"
+)
+
 src_prepare() {
 	default
 	# Avoid collision with net-analyzer/monitoring-plugins
