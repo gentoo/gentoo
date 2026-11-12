@@ -46,11 +46,14 @@ COMMON_DEPEND="
 		x11-libs/pango
 	)
 "
+# xorg-server: explicit dependency given these old drivers only
+# support up to the 21.1 ABI
 RDEPEND="
 	${COMMON_DEPEND}
 	sys-libs/glibc
 	X? (
 		media-libs/libglvnd[X,abi_x86_32(-)?]
+		<x11-base/xorg-server-22
 		x11-libs/libX11[abi_x86_32(-)?]
 		x11-libs/libXext[abi_x86_32(-)?]
 	)
