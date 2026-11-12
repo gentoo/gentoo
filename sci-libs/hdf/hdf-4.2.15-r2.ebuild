@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -55,7 +55,7 @@ src_configure() {
 	#
 	# Do not trust with LTO either, just because of strict-aliasing.
 	# But also because it does have blatant LTO errors too.
-	append-flags -fno-strict-aliasing
+	append-flags -fno-strict-aliasing -std=gnu89
 	filter-lto
 
 	[[ $(tc-getFC) = *gfortran ]] && append-fflags -fno-range-check
