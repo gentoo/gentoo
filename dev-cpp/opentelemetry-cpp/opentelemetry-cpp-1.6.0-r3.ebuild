@@ -1,4 +1,4 @@
-# Copyright 2022-2025 Gentoo Authors
+# Copyright 2022-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -36,6 +36,7 @@ PATCHES=(
 	"${FILESDIR}/opentelemetry-cpp-1.6.0-cmake4.patch"
 	"${FILESDIR}/opentelemetry-cpp-1.6.0-gcc13.patch"
 	"${FILESDIR}/opentelemetry-cpp-1.6.0-add-benchmark-option.patch"
+	"${FILESDIR}/opentelemetry-cpp-1.6.0-close-socket.patch"
 )
 
 src_configure() {
