@@ -32,8 +32,16 @@ RDEPEND="${DEPEND}
 src_prepare() {
 	default
 
+	# If the test phase is enabled, we'll be using dev-cpp/catch from
+	# the system. If not, we don't want the build system to reference
+	# this stuff at all.
+	sed -e 's/@USE_BUNDLED_CATCH_TRUE@/@_NOPE_@/g' \
+		-i Makefile.in || die
+
 	# Ensure that these are unbundled.
-	rm -r third_party/{Catch2-3.14.0,HPCombi-1.1.2,backward-cpp,eigen-5.0.1,fmt-11.1.4,magic_enum-0.9.7} \
+	cd third_party || die
+	rm -r Catch2-3.14.0 HPCombi-1.1.2 backward-cpp \
+		eigen-5.0.1 fmt-11.1.4 magic_enum-0.9.7 \
 		|| die
 }
 
