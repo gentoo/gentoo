@@ -24,8 +24,8 @@ pre_src_configure() {
 	case ${CATEGORY}/${PN} in
 		sys-apps/groff |\
 		app-editors/vim)
-			[[ ${CFLAGS}   == *-O[23456789]* ]] &&   CFLAGS="${CFLAGS} -O1"
-			[[ ${CXXFLAGS} == *-O[23456789]* ]] && CXXFLAGS="${CFLAGS} -O1"
+			[[ ${CFLAGS}   == *-O[2-9]* ]] &&   CFLAGS+=" -O1"
+			[[ ${CXXFLAGS} == *-O[2-9]* ]] && CXXFLAGS+=" -O1"
 		;;
 	esac
 
