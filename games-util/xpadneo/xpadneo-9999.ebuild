@@ -25,7 +25,7 @@ CONFIG_CHECK="
 	~UHID
 "
 ERROR_BT_LE="CONFIG_BT_LE: is not set, not needed for the original Xbox One
-	controller but note that newer ones are likely to require it"
+	controller but note that some newer ones like X|S require it"
 ERROR_UHID="CONFIG_UHID:${ERROR_BT_LE#*:}"
 
 src_compile() {
@@ -49,6 +49,8 @@ pkg_postinst() {
 	if [[ ! ${REPLACING_VERSIONS} ]]; then
 		elog "To pair the gamepad and view module options, see documentation in:"
 		elog "  ${EROOT}/usr/share/doc/${PF}/"
+		elog "Notably consult TROUBLESHOOTING.md if have problems. Note that some"
+		elog "controllers may require a firmware update to work properly."
 	fi
 }
 
