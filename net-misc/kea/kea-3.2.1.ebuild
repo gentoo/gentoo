@@ -15,10 +15,9 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://gitlab.isc.org/isc-projects/kea.git"
 else
-	# man pages unchanged since 3.2.0, no 3.2.1 tag upstream
 	SRC_URI="
 		https://downloads.isc.org/isc/kea/${PV}/${P}.tar.xz
-		!doc? ( https://codeberg.org/peter1010/kea-manpages/archive/kea-manpages-3.2.0.tar.gz )
+		!doc? ( https://codeberg.org/peter1010/kea-manpages/archive/kea-manpages-${PV}.tar.gz )
 		verify-sig? ( https://downloads.isc.org/isc/kea/${PV}/${P}.tar.xz.asc )
 	"
 	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
@@ -158,29 +157,14 @@ src_compile() {
 }
 
 src_test() {
-	# Get list of all test suites into an associative array
-	# the meson test --list returns either "kea / test_suite", "kea:shell-tests / test_suite" or
-	# "kea:python-tests / test_suite"
-	# Note: In meson >= 1.10 the format has changed to
-	# the meson test --list returns either "kea:test_suite", "shell-tests - kea:test_suite" or
-	# "python-tests - kea:test_suite"
-	#
-	# Discard the shell tests as we can't run shell tests in sandbox
-
-	pushd "${BUILD_DIR}" || die
-
-	local -A test_suites
-	local -a words
-	while IFS="/: " read -ra words ; do
-		if [[ "${words[0]}" != "shell-tests" ]] && [[ "${words[2]}" != "shell-tests" ]]; then
-			test_suites["${words[-1]}"]=1
-		fi
-	done < <(meson test --list || die)
-	popd || die
+	local -a EMESON_SKIP_TEST_SUITES=(
+		# Discard the shell tests as we can't run shell tests in sandbox
+		shell-tests
+	)
 
 	# Some other tests will fail for interface access restrictions, we have to remove the test suites those tests
 	# belong to
-	local -a skip_tests=(
+	local -a EMESON_SKIP_TESTS=(
 		dhcp-radius-tests
 		kea-log-buffer_logger_test.sh
 		kea-log-console_test.sh
@@ -192,7 +176,7 @@ src_test() {
 
 	# skip shell tests that require a running instance of MySQL
 	if use mysql; then
-		skip_tests+=(
+		EMESON_SKIP_TESTS+=(
 			kea-mysql-tests
 			dhcp-mysql-lib-tests
 			dhcp-forensic-log-libload-tests
@@ -201,7 +185,7 @@ src_test() {
 
 	# skip shell tests that require a running instance of PgSQL
 	if use postgres; then
-		skip_tests+=(
+		EMESON_SKIP_TESTS+=(
 			kea-pgsql-tests
 			dhcp-pgsql-lib-tests
 			dhcp-forensic-log-libload-tests
@@ -209,14 +193,14 @@ src_test() {
 	fi
 
 	if use kerberos; then
-		skip_tests+=(
+		EMESON_SKIP_TESTS+=(
 			ddns-gss-tsig-tests
 		)
 	fi
 
 	if [[ $(tc-get-ptr-size) -eq 4 ]]; then
 		# see https://bugs.gentoo.org/958171 for reason for skipping these tests
-		skip_tests+=(
+		EMESON_SKIP_TESTS+=(
 			kea-util-tests
 			kea-dhcpsrv-tests
 			dhcp-ha-lib-tests
@@ -224,12 +208,7 @@ src_test() {
 		)
 	fi
 
-	local name
-	for name in ${skip_tests[@]}; do
-		unset -v 'test_suites[${name}]'
-	done
-
-	meson_src_test "${!test_suites[@]}"
+	meson_src_test
 }
 
 install_shell() {
