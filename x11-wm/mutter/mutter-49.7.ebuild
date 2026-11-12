@@ -164,6 +164,10 @@ BDEPEND="
 	)
 "
 
+PATCHES=(
+	"${FILESDIR}"/mutter-49.7-pango-1.58.2.patch
+)
+
 python_check_deps() {
 	if use test; then
 		python_has_version ">=dev-python/python-dbusmock-0.28[${PYTHON_USEDEP}]"

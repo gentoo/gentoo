@@ -1,0 +1,30 @@
+https://gitlab.gnome.org/GNOME/mutter/-/commit/ba64e055b5159a3acd5b4e4bc3d381066b26c62c
+
+From ba64e055b5159a3acd5b4e4bc3d381066b26c62c Mon Sep 17 00:00:00 2001
+From: Michael Catanzaro <mcatanzaro@gnome.org>
+Date: Tue, 2 Jun 2026 15:13:36 -0500
+Subject: [PATCH] clutter: Fix build with pango master
+
+Pango defines autocleanups since pango!908.
+
+Part-of: <https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/5102>
+---
+ clutter/clutter/pango/clutter-pango-private.h | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/clutter/clutter/pango/clutter-pango-private.h b/clutter/clutter/pango/clutter-pango-private.h
+index 9f6d9bee23b..6c40dec1ad4 100644
+--- a/clutter/clutter/pango/clutter-pango-private.h
++++ b/clutter/clutter/pango/clutter-pango-private.h
+@@ -79,7 +79,9 @@ void clutter_show_layout (ClutterContext    *context,
+                           ClutterColorState *color_state,
+                           ClutterColorState *target_color_state);
+ 
++#if !PANGO_VERSION_CHECK(1, 57, 2)
+ G_DEFINE_AUTOPTR_CLEANUP_FUNC (PangoRenderer, g_object_unref)
++#endif
+ 
+ static inline PangoDirection
+ clutter_text_direction_to_pango_direction (ClutterTextDirection dir)
+-- 
+GitLab
