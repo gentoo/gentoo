@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -28,9 +28,3 @@ RDEPEND="
 DEPEND="
 	${RDEPEND}
 "
-
-src_install() {
-	cmake_src_install
-
-	find "${ED}" -type f -iname "*.a" -delete || die
-}

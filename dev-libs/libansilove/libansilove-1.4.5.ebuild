@@ -26,8 +26,3 @@ RDEPEND="
 DEPEND="
 	${RDEPEND}
 "
-
-src_install() {
-	cmake_src_install
-	find "${ED}" -type f -iname "*.a" -delete || die
-}
