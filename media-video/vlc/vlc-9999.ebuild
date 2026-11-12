@@ -246,7 +246,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-4.0.0_pre20260320-no-vlc-cache-gen.patch # bugs 564842, 608256
 	"${FILESDIR}"/${PN}-4.0.0_pre20260418-fix-libtremor-libs.patch # build system
 	"${FILESDIR}"/${PN}-4.0.0_pre20260320-configure-lua-version.patch
-	"${FILESDIR}"/${PN}-4.0.0_pre20260215-force-x11.patch # crashes w/ wayland platform plugin
+	"${FILESDIR}"/${PN}-4.0.0_pre20260625-wayland-duplicate-viewport.patch # bug 29934
 )
 
 pkg_setup() {
@@ -517,12 +517,7 @@ pkg_postinst() {
 		ewarn "If you do not do it, vlc will take a long time to load."
 	fi
 
-	if use gui; then
-		ewarn "Starting VLC GUI is only supported by using its desktop file."
-		ewarn "Manually calling vlc from command line is known to break in Wayland sessions."
-
-		xdg_pkg_postinst
-	fi
+	use gui && xdg_pkg_postinst
 }
 
 pkg_postrm() {

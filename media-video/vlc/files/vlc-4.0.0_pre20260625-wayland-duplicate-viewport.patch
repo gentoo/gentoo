@@ -1,0 +1,149 @@
+From: Oliver <okicks@users.noreply.github.com>
+Subject: [PATCH] vlc: fix Wayland duplicate viewport protocol crash and fractional scaling
+
+On KDE Plasma 6 (and other Wayland compositors supporting fractional scaling),
+VLC 4.0 crashes immediately on startup with a fatal protocol error:
+  wp_viewporter#60: error 0: the specified surface already has a viewport
+
+Root Cause:
+1. Under Qt 6.5+ (QT_HAS_WAYLAND_FRACTIONAL_SCALING), the Qt GUI compositor
+   integration (compositor_wayland_module.c) attaches a wp_viewport to the
+   video subsurface (sys->video_surface).
+2. Concurrently, VLC's video output plugin wl_shm (shm.c) also attempts to
+   bind a wp_viewport to the same surface pointer (sys->embed->handle.wl).
+3. The Wayland wp_viewporter protocol strictly forbids more than one viewport
+   object on any single wl_surface, causing compositors to terminate VLC.
+4. Furthermore, when shm.c held a viewport, its PlacementChanged() callback
+   did not trigger picture reallocation via vout_display_Reset(), leading to
+   buffer stride distortion and horizontal scanline shearing when dragged
+   across monitors of differing device pixel ratios (e.g. 1.0x <-> 1.45x).
+
+Solution:
+1. In compositor_wayland_module.c, maintain viewport ownership uniformly whenever
+   the viewporter protocol is supported, with wl_surface_set_buffer_scale set to 1.
+2. In shm.c, drop the duplicate wp_viewporter binding. When sys->viewport is NULL,
+   PlacementChanged() returns VLC_EGENERIC, prompting VLC core to call
+   vout_display_Reset() -> ResetPictures(), recreating swscale with the exact
+   buffer pitch and dimensions on monitor boundary crossings.
+3. This allows dropping vlc-4.0.0_pre20260215-force-x11.patch, enabling pure
+   native Wayland execution for both desktop and CLI launches.
+
+Upstream-Bug: https://code.videolan.org/videolan/vlc/-/issues/29934
+Signed-off-by: Oliver <okicks@users.noreply.github.com>
+--- a/modules/gui/qt/maininterface/compositor_wayland_module.c
++++ b/modules/gui/qt/maininterface/compositor_wayland_module.c
+@@ -154,66 +154,29 @@
+     qtwayland_priv_t* const sys = (qtwayland_priv_t*)obj->p_sys;
+     assert(sys);
+
+-    // Once the scale becomes fractional, viewport is used.
+-    // If the scale becomes an integer number after that,
+-    // viewport is still used.
+-    if (sys->fractional_scale)
+-    {
+ #ifdef QT_HAS_WAYLAND_FRACTIONAL_SCALING
+-        if (sys->viewporter)
+-        {
+-            if (!sys->viewport)
+-            {
+-                sys->viewport = wp_viewporter_get_viewport(sys->viewporter, sys->video_surface);
+-
+-                // The buffer scale must remain 1 when fractional scaling is used:
+-                // If compositor has viewport support, it should be at least version 3:
+-                if (likely(sys->compositor_interface_version >= 3))
+-                {
+-                    wl_surface_set_buffer_scale(sys->video_surface, 1);
+-                    wl_surface_commit(sys->video_surface);
+-                }
+-
+-                // Started using viewport, commit size so that viewport destination is set:
+-                CommitSize(obj, true);
+-            }
+-        }
+-        else
+-#endif
++    if (sys->viewporter)
++    {
++        if (!sys->viewport)
+         {
+-            msg_Dbg(obj, "Viewporter protocol is not available or Qt version is less than " \
+-                         "6.5.0, and scale is fractional. Only integer scaling may be possible.");
++            sys->viewport = wp_viewporter_get_viewport(sys->viewporter, sys->video_surface);
+
+-            if (sys->compositor_interface_version >= 3)
++            if (likely(sys->compositor_interface_version >= 3))
+             {
+-                wl_surface_set_buffer_scale(sys->video_surface, sys->buffer_scale);
++                wl_surface_set_buffer_scale(sys->video_surface, 1);
+                 wl_surface_commit(sys->video_surface);
+             }
+-            else
+-            {
+-                msg_Dbg(obj, "Compositor interface version is below 3, integer scaling " \
+-                             "is not possible.");
+-            }
++
++            CommitSize(obj, true);
+         }
++        return;
+     }
+-    else
+-    {
+-#ifdef QT_HAS_WAYLAND_FRACTIONAL_SCALING
+-        // Scale is not fractional, but if viewport has been initialized before, keep using it:
+-        if (!sys->viewport)
+ #endif
+-        {
+-            if (sys->compositor_interface_version >= 3)
+-            {
+-                wl_surface_set_buffer_scale(sys->video_surface, sys->buffer_scale);
+-                wl_surface_commit(sys->video_surface);
+-            }
+-            else
+-            {
+-                msg_Dbg(obj, "Compositor interface version is below 3, integer scaling " \
+-                             "is not possible.");
+-            }
+-        }
++
++    if (sys->compositor_interface_version >= 3)
++    {
++        wl_surface_set_buffer_scale(sys->video_surface, sys->buffer_scale);
++        wl_surface_commit(sys->video_surface);
+     }
+ }
+
+--- a/modules/video_output/wayland/shm.c
++++ b/modules/video_output/wayland/shm.c
+@@ -154,6 +154,7 @@
+ {
+     video_format_t src;
+     vout_display_sys_t *sys = vd->sys;
++    (void)sys;
+     assert(sys->viewport == NULL);
+
+     video_format_ApplyRotation(&src, vd->source);
+@@ -301,18 +302,15 @@
+     if (sys->shm == NULL)
+         goto error;
+
+-    sys->viewporter = (struct wp_viewporter *)
+-                      vlc_wl_interface_bind(registry, "wp_viewporter",
+-                                            &wp_viewporter_interface, NULL);
+-
+     wl_shm_add_listener(sys->shm, &shm_cbs, vd);
+     wl_display_roundtrip_queue(display, sys->eventq);
+
+     struct wl_surface *surface = sys->embed->handle.wl;
+-    if (sys->viewporter != NULL)
+-        sys->viewport = wp_viewporter_get_viewport(sys->viewporter, surface);
+-    else
+-        sys->viewport = NULL;
++    /* Video surface viewport is owned and managed by the window provider
++     * (e.g. compositor_wayland_module.c under Qt). Attaching a second
++     * wp_viewport to the same surface causes a fatal protocol error. */
++    sys->viewporter = NULL;
++    sys->viewport = NULL;
+
+     /* Determine our pixel format */
+     static const enum wl_output_transform transforms[8] = {
