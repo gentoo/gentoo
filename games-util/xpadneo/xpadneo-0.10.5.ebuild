@@ -20,7 +20,14 @@ HOMEPAGE="https://atar-axis.github.io/xpadneo/"
 LICENSE="GPL-2 GPL-3+"
 SLOT="0"
 
-CONFIG_CHECK="INPUT_FF_MEMLESS"
+CONFIG_CHECK="
+	INPUT_FF_MEMLESS
+	~BT_LE
+	~UHID
+"
+ERROR_BT_LE="CONFIG_BT_LE: is not set, not needed for the original Xbox One
+	controller but note that newer ones are likely to require it"
+ERROR_UHID="CONFIG_UHID:${ERROR_BT_LE#*:}"
 
 src_compile() {
 	local modlist=( hid-${PN}=kernel/drivers/hid:hid-${PN}:hid-${PN}/src )
