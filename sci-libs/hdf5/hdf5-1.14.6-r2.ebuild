@@ -66,6 +66,14 @@ pkg_setup() {
 	fi
 }
 
+src_prepare() {
+	sed -i \
+		-e '/-Wstrict-overflow=/d' \
+		config/gnu-warnings/*-4.8 \
+		|| die
+	cmake_src_prepare
+}
+
 src_configure() {
 	# bug #686620
 	use sparc && tc-is-gcc && append-flags -fno-tree-ccp
