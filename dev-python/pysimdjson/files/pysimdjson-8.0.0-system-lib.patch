@@ -1,0 +1,15 @@
+diff --git a/pyproject.toml b/pyproject.toml
+index 1165aeb..97c0352 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -28,8 +28,9 @@ pysimdjson = { workspace = true }
+ 
+ [[tool.setuptools.ext-modules]]
+ name = "csimdjson"
+-sources = ["simdjson/simdjson.cpp", "simdjson/util.cpp", "simdjson/csimdjson.pyx"]
++sources = ["simdjson/util.cpp", "simdjson/csimdjson.pyx"]
+ define-macros = [["SIMDJSON_IMPLEMENTATION_FALLBACK", "1"]]
++libraries = ["simdjson"]
+ 
+ [tool.setuptools.packages.find]
+ include = ["simdjson"]
