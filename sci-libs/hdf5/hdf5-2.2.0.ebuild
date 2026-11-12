@@ -113,4 +113,7 @@ src_configure() {
 src_install() {
 	cmake_src_install
 	rm -r "${ED}/usr/tmp" || die
+
+	sed -i -e "s|Module Directory:.*|Module Directory: ${EPREFIX}/usr/include|" \
+		"${ED}/usr/$(get_libdir)/libhdf5.settings" || die
 }
