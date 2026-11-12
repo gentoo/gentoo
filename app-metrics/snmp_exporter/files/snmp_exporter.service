@@ -1,11 +1,13 @@
 [Unit]
 Description=Prometheus SNMP Exporter
 Documentation=https://github.com/prometheus/snmp_exporter
-After=network.target
+Wants=network-online.target
+After=network-online.target
 
 [Service]
 User=snmp_exporter
 Group=snmp_exporter
+Restart=on-failure
 ExecStart=/usr/bin/snmp_exporter --config.file=/etc/snmp_exporter/snmp.yml
 ExecReload=/bin/kill -HUP $MAINPID
 
