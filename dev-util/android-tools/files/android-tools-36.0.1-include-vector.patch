@@ -1,0 +1,20 @@
+--- a/vendor/adb/fdevent/fdevent.h
++++ b/vendor/adb/fdevent/fdevent.h
+@@ -29,6 +29,7 @@
+ #include <optional>
+ #include <set>
+ #include <variant>
++#include <vector>
+ 
+ #include <android-base/thread_annotations.h>
+ #include <android-base/threads.h>
+--- a/vendor/core/fastboot/fastboot_driver_interface.h
++++ b/vendor/core/fastboot/fastboot_driver_interface.h
+@@ -18,6 +18,7 @@
+ #include <stdint.h>
+ 
+ #include <string>
++#include <vector>
+ 
+ #include <sparse/sparse.h>
+ #include "android-base/unique_fd.h"
