@@ -64,7 +64,7 @@ COMMON_DEPEND="
 	apparmor? ( >=sys-libs/libapparmor-2.13 )
 	audit? ( >=sys-process/audit-2 )
 	bpf? ( >=dev-libs/libbpf-1.4.0 )
-	cryptsetup? ( >=sys-fs/cryptsetup-2.4.0:= )
+	cryptsetup? ( >=sys-fs/cryptsetup-2.4.0:=[udev] )
 	curl? ( >=net-misc/curl-7.32.0:0= )
 	elfutils? ( >=dev-libs/elfutils-0.177 )
 	elibc_glibc? (
