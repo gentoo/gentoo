@@ -1,15 +1,12 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{12..13} )
+PYTHON_COMPAT=( python3_{13..14} )
 PYTHON_REQ_USE="sqlite"
 
-DOCS_BUILDER=mkdocs
-DOCS_DEPEND="dev-python/mkdocs-material dev-python/regex"
-
-inherit python-single-r1 desktop docs optfeature
+inherit python-single-r1 desktop optfeature
 
 DESCRIPTION="A booru-like media organizer for the desktop"
 HOMEPAGE="https://hydrusnetwork.github.io/hydrus/ https://github.com/hydrusnetwork/hydrus"
@@ -19,10 +16,7 @@ if [[ "${PV}" == "9999" ]]; then
 
 	EGIT_REPO_URI="https://github.com/hydrusnetwork/hydrus.git"
 else
-	SRC_URI="
-		https://github.com/hydrusnetwork/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
-		https://github.com/vaartis/hydrus/commit/cea10a10832dac21b247c3042d47c99fa2d52fa3.patch -> hydrus-637-test-fix.patch
-"
+	SRC_URI="https://github.com/hydrusnetwork/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 	KEYWORDS="~amd64"
 fi
@@ -53,13 +47,14 @@ RDEPEND="
 		dev-python/pillow[${PYTHON_USEDEP},lcms]
 		dev-python/psutil[${PYTHON_USEDEP}]
 		dev-python/pyopenssl[${PYTHON_USEDEP}]
+		dev-python/python-dateutil[${PYTHON_USEDEP}]
 		dev-python/python-mpv[${PYTHON_USEDEP}]
 		dev-python/pyyaml[${PYTHON_USEDEP}]
 		dev-python/requests[${PYTHON_USEDEP}]
 		dev-python/send2trash[${PYTHON_USEDEP}]
 		dev-python/service-identity[${PYTHON_USEDEP}]
+		dev-python/tldextract[${PYTHON_USEDEP}]
 		dev-python/twisted[${PYTHON_USEDEP}]
-		dev-python/python-dateutil[${PYTHON_USEDEP}]
 
 		dev-python/qtpy[widgets,gui,svg,multimedia,${PYTHON_USEDEP}]
 
@@ -76,10 +71,10 @@ BDEPEND="
 		)
 	')
 "
+# doc? ( dev-python/zensical )
 
 PATCHES=(
 	"${FILESDIR}/userpath-in-local-share.patch"
-	"${DISTDIR}/hydrus-637-test-fix.patch"
 )
 
 src_prepare() {
@@ -87,15 +82,17 @@ src_prepare() {
 
 	# Contains pre-built binaries for other systems and a broken swf renderer for linux
 	rm -r bin/ || die
-	# Python requirements file, not needed
-	rm requirements.txt || die
 	# Remove unneeded additional scripts
 	rm *.command *.sh *.bat || die
 }
 
 src_compile() {
 	python_optimize "${S}"
-	docs_compile
+
+	# if use doc; then
+	# 	zensical build || die
+	# 	mv site html || die
+	# fi
 }
 
 src_test() {
@@ -107,32 +104,35 @@ src_test() {
 
 src_install() {
 	local doc="${EPREFIX}/usr/share/doc/${PF}"
-	elog "Hydrus includes an excellent manual, that can either be viewed at"
-	elog "${doc}/html/help/index.html"
-	elog "or accessed through the hydrus help menu."
+	# elog "Hydrus includes an excellent manual, that can either be viewed at"
+	# elog "${doc}/html/help/index.html"
+	# elog "or accessed through the hydrus help menu."
 
-	mv "help my client will not boot.txt" "help_my_client_will_not_boot.txt" || die
-
-	local DOCS=(COPYING README.md help_my_client_will_not_boot.txt db/)
+	local DOCS=(LICENSE README.md)
+	# if use doc; then
+	#    DOCS+=(html/)
+	# fi
 	einstalldocs
 
 	# Files only needed for testing
-	rm hydrus_test.py hydrus/hydrus_test_boot.py || die
+	rm -r hydrus_test.py hydrus/hydrus_test_boot.py || die
+	# Files only needed running from a git repo, or developer files
+	rm -r git_pull.py setup_help.py setup_venv.py .editorconfig .vscode || die
 	rm -r hydrus/test/ static/testing/ || die
 	# Build files used for CI and development, not actually needed. Has to be deleted after src_compile.
 	# because it contains documentation
-	rm -r static/build_files static/requirements || die
+	rm -r static/build_files || die
 
 	# ${DOCS[@]} files are copied into doc
 	# ${S}/docs/ is the markdown source code for documentation
 	# .gitignore/.github files aren't needed for the program to work, same with mkdocs files
 	rm -r "${DOCS[@]}" "${S}/docs/" .gitignore .github/ mkdocs.yml mkdocs-gh-pages.yml || die
-	if use doc; then
-		# ${S}/_build = ${DOCS_OUTDIR}/.. , these have already been copied, remove before installation
-		rm -r "${S}/_build" || die
-		# The program expects to find documentation here, so add a symlink to doc
-		dosym "${doc}/html" /opt/hydrus/help
-	fi
+	#if use doc; then
+	#	# This is the cache directory from building documentation
+	#	rm -r "${S}/.cache" || die
+	#	# The program expects to find documentation here, so add a symlink to doc
+	#	dosym "${doc}/html" /opt/hydrus/help
+	#fi
 
 	insinto /opt/hydrus
 	doins -r "${S}"/.
