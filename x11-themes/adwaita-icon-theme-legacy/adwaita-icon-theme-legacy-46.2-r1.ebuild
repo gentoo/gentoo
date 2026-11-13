@@ -10,7 +10,7 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/adwaita-icon-theme-legacy"
 
 LICENSE="LGPL-3 CC-BY-SA-3.0"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
 
 # librsvg > 2.40 or gtk >= 4.22 are needed at runtime for rendering scalable
 # icons shipped by the theme: https://viruta.org/do-not-use-librsvg-2.40.x.html
