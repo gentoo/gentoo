@@ -1,0 +1,44 @@
+# Copyright 1999-2026 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=8
+
+DISTUTILS_USE_PEP517=setuptools
+PYTHON_COMPAT=( python3_{12..15} )
+
+inherit distutils-r1 pypi
+
+DESCRIPTION="A WSGI HTTP Server for UNIX"
+HOMEPAGE="
+	https://gunicorn.org/
+	https://github.com/benoitc/gunicorn/
+	https://pypi.org/project/gunicorn/
+"
+
+LICENSE="MIT PSF-2"
+SLOT="0"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-macos"
+
+RDEPEND="
+	dev-python/packaging[${PYTHON_USEDEP}]
+	dev-python/setproctitle[${PYTHON_USEDEP}]
+"
+BDEPEND="
+	test? (
+		>=dev-python/h2-4.4.1[${PYTHON_USEDEP}]
+		dev-python/httpx[${PYTHON_USEDEP}]
+	)
+"
+
+EPYTEST_PLUGINS=( pytest-asyncio )
+EPYTEST_XDIST=1
+distutils_enable_tests pytest
+
+python_test() {
+	local EPYTEST_IGNORE=(
+		# removed deps
+		tests/workers/test_ggevent.py
+	)
+
+	epytest -o addopts=
+}
