@@ -7,7 +7,7 @@
 # @AUTHOR:
 # Anna Figueiredo Gomes <navi@vlhl.dev>
 # Maciej Barć <xgqt@gentoo.org>
-# @SUPPORTED_EAPIS: 8
+# @SUPPORTED_EAPIS: 8 9
 # @PROVIDES: nuget
 # @BLURB: common functions and variables for builds using .NET SDK
 # @DESCRIPTION:
@@ -22,15 +22,16 @@
 # This eclass does not export any phase functions, for that see
 # the "dotnet-pkg" eclass.
 
-case ${EAPI} in
-	8) ;;
-	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
-esac
-
 if [[ -z ${_DOTNET_PKG_BASE_ECLASS} ]] ; then
 _DOTNET_PKG_BASE_ECLASS=1
 
-inherit edo multiprocessing nuget
+case ${EAPI} in
+	8) inherit edo ;;
+	9) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
+
+inherit multiprocessing nuget
 
 # @ECLASS_VARIABLE: DOTNET_VERBOSITY
 # @USER_VARIABLE
