@@ -7,7 +7,7 @@ inherit elisp
 
 DESCRIPTION="Fast file finder for Emacs"
 HOMEPAGE="http://www.splode.com/~friedman/software/emacs-lisp/"
-SRC_URI="mirror://gentoo/${P}.tar.bz2"
+SRC_URI="https://distfiles.gentoo.org/pub/proj/emacs/${P}.tar.bz2"
 
 LICENSE="GPL-2+"
 SLOT="0"
