@@ -23,7 +23,7 @@ S="${WORKDIR}"
 
 LICENSE="AGPL-3"
 SLOT="0"
-KEYWORDS="-* ~amd64 ~arm64"
+KEYWORDS="-* amd64 ~arm64"
 RESTRICT="mirror strip test"
 
 # Qt5Gui links directly against harfbuzz on arm64, not amd64 for whatever reason
