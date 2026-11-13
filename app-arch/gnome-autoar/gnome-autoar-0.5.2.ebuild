@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+
 VALA_USE_DEPEND="vapigen"
 
 inherit gnome.org meson vala
@@ -23,6 +24,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
+	>=dev-build/meson-1.8.0
 	virtual/pkgconfig
 	dev-util/glib-utils
 	gtk-doc? (
