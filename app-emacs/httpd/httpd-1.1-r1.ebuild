@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,7 +9,7 @@ DESCRIPTION="A HTTP server embedded in the Emacs"
 HOMEPAGE="http://www.chez.com/emarsden/downloads/"
 
 # taken from contrib/httpd.el in app-emacs/muse
-SRC_URI="mirror://gentoo/${P}.tar.gz"
+SRC_URI="https://distfiles.gentoo.org/pub/proj/emacs/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
