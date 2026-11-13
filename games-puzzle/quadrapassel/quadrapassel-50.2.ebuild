@@ -10,7 +10,7 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/quadrapassel"
 
 LICENSE="GPL-3+ CC-BY-SA-3.0"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ~loong ~riscv ~x86"
+KEYWORDS="amd64 ~arm arm64 ~loong ~riscv x86"
 
 RDEPEND="
 	>=gui-libs/gtk-4.4:4
