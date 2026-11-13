@@ -11,7 +11,7 @@ SRC_URI="https://downloads.sourceforge.net/${PN}/grisbi%20stable/3.0.x/${PV}/${P
 LICENSE="GPL-2+"
 
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc ~x86"
 IUSE="goffice nls ofx ssl"
 
 RDEPEND="
