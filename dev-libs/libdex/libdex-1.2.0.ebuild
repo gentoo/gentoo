@@ -11,7 +11,7 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/libdex"
 
 LICENSE="LGPL-2.1+"
 SLOT="0/1"
-KEYWORDS="~amd64 ~arm64 ~loong x86"
+KEYWORDS="amd64 ~arm64 ~loong x86"
 
 IUSE="+eventfd gtk-doc +introspection +liburing python sysprof test vala"
 REQUIRED_USE="
