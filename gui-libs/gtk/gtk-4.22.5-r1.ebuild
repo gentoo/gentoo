@@ -16,7 +16,7 @@ REQUIRED_USE="
 	gtk-doc? ( introspection )
 	test? ( introspection )
 "
-KEYWORDS="~alpha ~amd64 ~arm arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm arm64 ~hppa ~loong ~ppc ppc64 ~riscv ~sparc ~x86"
 IUSE="aqua broadway cloudproviders colord cups examples gstreamer gtk-doc +introspection sysprof test vulkan wayland +X cpu_flags_x86_f16c"
 
 # NOTE: Add below libcloudproviders once accesskit-c is in ::gentoo:
