@@ -12,7 +12,7 @@ SRC_URI="https://github.com/JuliaMath/openlibm/archive/v${PV}.tar.gz -> ${P}.tar
 LICENSE="public-domain MIT ISC BSD-2 LGPL-2.1+"
 # See https://abi-laboratory.pro/index.php?view=timeline&l=openlibm
 SLOT="0/4"
-KEYWORDS="amd64 arm arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~s390 ~x86"
+KEYWORDS="amd64 arm arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~s390 x86"
 IUSE="static-libs"
 
 src_prepare() {
