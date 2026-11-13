@@ -15,6 +15,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.4.7-lto.patch
+	"${FILESDIR}"/${P}-buildfix.patch
 )
 
 src_prepare() {
