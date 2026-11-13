@@ -1,9 +1,7 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
-
-inherit edo
+EAPI=9
 
 if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://git.code.sf.net/p/libwpd/libodfgen"
@@ -14,7 +12,7 @@ else
 fi
 
 DESCRIPTION="Library to generate ODF documents from libwpd and libwpg"
-HOMEPAGE="http://libwpd.sourceforge.net/"
+HOMEPAGE="https://libwpd.sourceforge.net/"
 
 LICENSE="|| ( LGPL-2.1 MPL-2.0 )"
 SLOT="0"
@@ -47,6 +45,7 @@ src_configure() {
 src_test() {
 	cd test || die
 
+	# TODO: send patch upstream to have 'make check' run these
 	while read -r test_name ; do
 		edo "${test_name}"
 	done < <(find . -maxdepth 1  -type f -executable || die)
