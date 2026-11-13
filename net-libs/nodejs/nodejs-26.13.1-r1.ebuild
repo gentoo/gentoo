@@ -312,6 +312,8 @@ src_test() {
 		test/parallel/test-socket-write-after-fin-error.js
 		test/parallel/test-strace-openat-openssl.js
 		test/parallel/test-x509-escaping.js
+		test/parallel/test-util-styletext.js
+		test/parallel/test-util-styletext-hex.js
 		test/sequential/test-tls-session-timeout.js
 		test/sequential/test-util-debug.js
 		test/sequential/test-watch-mode.mjs
