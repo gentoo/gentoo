@@ -5,4 +5,7 @@
 		<email>office@gentoo.org</email>
 		<name>Gentoo Office project</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="sourceforge">libepubgen</remote-id>
+	</upstream>
 </pkgmetadata>
