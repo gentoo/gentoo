@@ -12,7 +12,6 @@ containers-common package which skopeo depends on. No need to install by skopeo
 
 Signed-off-by: Rahil Bhimjiani <me@rahil.rocks>
 ---
- .cirrus.yml         |  1 +
  Makefile            | 12 ------------
  default-policy.json | 14 --------------
  default.yaml        | 28 ----------------------------
@@ -20,18 +19,6 @@ Signed-off-by: Rahil Bhimjiani <me@rahil.rocks>
  delete mode 100644 default-policy.json
  delete mode 100644 default.yaml
 
-diff --git a/.cirrus.yml b/.cirrus.yml
-index 366deccaa0..421f074cf1 100644
---- a/.cirrus.yml
-+++ b/.cirrus.yml
-@@ -160,6 +160,7 @@ ostree-rs-ext_task:
-         - dnf builddep -y skopeo
-         - make
-         - make install
-+        - echo '{"default":[{"type":"insecureAcceptAnything"}],"transports":{"docker-daemon":{"":[{"type":"insecureAcceptAnything"}]}}}' > /etc/containers/policy.json
-     proxy_ostree_ext_build_script:
-         - git clone --depth 1 $EXT_REPO $EXT_REPO_HOME
-         - cd $EXT_REPO_HOME
 diff --git a/Makefile b/Makefile
 index ecc63c651f..8b60c91d2f 100644
 --- a/Makefile

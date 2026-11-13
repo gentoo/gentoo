@@ -34,7 +34,7 @@ RDEPEND="${DEPEND}
 "
 BDEPEND="
 	dev-go/go-md2man
-	>=dev-lang/go-1.25.7
+	>=dev-lang/go-1.26.0
 "
 PATCHES=( "${FILESDIR}"/handle-conflicts-with-c-libs-pr2173.patch )
 
