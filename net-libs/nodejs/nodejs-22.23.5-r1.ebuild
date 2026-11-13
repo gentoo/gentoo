@@ -278,6 +278,7 @@ src_test() {
 		test/parallel/test-tls-ocsp-callback.js
 		test/sequential/test-tls-session-timeout.js
 		test/sequential/test-util-debug.js
+		test/parallel/test-util-styletext.js
 	)
 
 	if has_version "sys-libs/zlib-ng" ; then
