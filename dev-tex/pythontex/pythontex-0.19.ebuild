@@ -13,7 +13,7 @@ SRC_URI="https://github.com/gpoore/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}
 
 LICENSE="LPPL-1.3 BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~riscv ~x86"
+KEYWORDS="amd64 ppc ~riscv x86"
 IUSE="doc highlighting"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
