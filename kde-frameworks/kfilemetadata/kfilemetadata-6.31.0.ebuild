@@ -58,7 +58,6 @@ src_configure() {
 
 pkg_postinst() {
 	if [[ -z "${REPLACING_VERSIONS}" ]]; then
-		optfeature "Microsoft Word/Powerpoint file indexing" app-text/catdoc
 		optfeature "Microsoft Excel file indexing" dev-libs/libxls
 	fi
 }
