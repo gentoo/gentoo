@@ -11,7 +11,7 @@ SRC_URI="https://gitlab.com/tuxedocomputers/development/packages/${PN}/-/archive
 
 S="${WORKDIR}/${PN}-v${PV}"
 
-LICENSE="GPL-3"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
@@ -74,11 +74,11 @@ src_compile() {
 
 src_install() {
 	insinto /usr/lib/udev/hwdb.d
-	doins usr/lib/udev/hwdb.d/*.hwdb
-	udev_dorules usr/lib/udev/rules.d/*.rules
+	doins files/usr/lib/udev/hwdb.d/*.hwdb
+	udev_dorules files/usr/lib/udev/rules.d/*.rules
 
 	insinto /usr/lib/modprobe.d
-	doins usr/lib/modprobe.d/tuxedo-drivers-backlist-upstream-conflicts.conf
+	doins files/usr/lib/modprobe.d/tuxedo-drivers-backlist-upstream-conflicts.conf
 	linux-mod-r1_src_install
 }
 
