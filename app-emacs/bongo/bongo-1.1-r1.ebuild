@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -21,7 +21,7 @@ fi
 
 SRC_URI+="
 	mplayer? (
-		mirror://gentoo/${PN}-mplayer-20070204.tar.bz2
+		https://distfiles.gentoo.org/pub/proj/emacs/${PN}-mplayer-20070204.tar.bz2
 	)
 "
 
