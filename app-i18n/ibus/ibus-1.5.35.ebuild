@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{12..14} )
 
-inherit autotools bash-completion-r1 flag-o-matic gnome2-utils python-r1 toolchain-funcs vala virtualx
+inherit autotools flag-o-matic gnome2-utils python-r1 shell-completion toolchain-funcs vala virtualx
 
 DESCRIPTION="Intelligent Input Bus for Linux / Unix OS"
 HOMEPAGE="https://github.com/ibus/ibus/wiki"
