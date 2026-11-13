@@ -374,8 +374,9 @@ src_test() {
 		tst_qprocess #936484
 		tst_qtimer
 		tst_wayland_cursor
-		# haystacksWithMoreThan4GiBWork can easily OOM (16GB ram not enough)
-		tst_qlatin1stringmatcher
+		# troublesome tests that intentionally use large amounts of memory
+		tst_qlatin1stringmatcher # haystacksWithMoreThan4GiBWork
+		tst_qbytearray_large #986170
 		# these can be flaky depending on the environment/toolchain
 		tst_qlogging # backtrace log test can easily vary
 		tst_q{,raw}font # affected by available fonts / settings (bug #914737)
