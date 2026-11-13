@@ -16,7 +16,7 @@ S="${WORKDIR}/${PN}.hh-${PV}"
 
 LICENSE="|| ( GPL-2 GPL-3 )"
 SLOT="0"
-KEYWORDS="amd64 ~ppc64 x86"
+KEYWORDS="amd64 ppc64 x86"
 
 PATCHES=(
 	"${FILESDIR}"/3.18-add-missing-insert.patch
