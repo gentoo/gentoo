@@ -218,9 +218,6 @@ net-misc/ntp
 # included in this mask (unmask with dev-qt/qtwebengine:6/6.140.0), but
 # in the future it will be treated separately given it is not pinned and
 # e.g. 6.140.0 can be used with Qt 6.11.x (aka not just 6.12.x).
-#
-# !!! ... however, 6.140.0 was not released yet, if you need qtwebengine
-#     either do not unmask this or use qtwebengine-6.140.9999 for now.
 =dev-python/pyqt6-6.12*
 =dev-python/pyqt6-pdf-6.140*
 =dev-python/pyqt6-webengine-6.140*
