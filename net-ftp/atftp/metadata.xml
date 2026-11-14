@@ -10,5 +10,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="sourceforge">atftp</remote-id>
+		<remote-id type="github">madmartin/atftp</remote-id>
 	</upstream>
 </pkgmetadata>
