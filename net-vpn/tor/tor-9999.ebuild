@@ -190,8 +190,8 @@ src_install() {
 	default
 	readme.gentoo_create_doc
 
-	newconfd "${FILESDIR}"/tor.confd tor
-	newinitd "${FILESDIR}"/tor.initd-r9 tor
+	newconfd "${FILESDIR}"/tor.confd-r1 tor
+	newinitd "${FILESDIR}"/tor.initd-r10 tor
 	systemd_newunit "${FILESDIR}"/tor.service-r1 "${PN}.service"
 	systemd_newunit "${FILESDIR}"/tor_at.service "${PN}@.service"
 

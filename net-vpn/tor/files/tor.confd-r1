@@ -1,0 +1,5 @@
+torrc=/etc/tor/torrc
+
+#
+# Set the file limit
+rc_ulimit="-n 30000"
