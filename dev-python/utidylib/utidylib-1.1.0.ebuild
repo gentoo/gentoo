@@ -21,7 +21,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="~amd64 arm64 ~ppc ~ppc64 ~riscv ~x86"
 
 RDEPEND="
 	>=app-text/htmltidy-5.0.0
