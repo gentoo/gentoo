@@ -113,7 +113,7 @@ src_configure() {
 }
 
 src_compile() {
-	local -a CROSS_ARGS
+	CROSS_ARGS=()
 	tc-is-cross-compiler && CROSS_ARGS+=(
 		GROFFBIN="$(type -P groff)"
 		TROFFBIN="$(type -P troff)"
@@ -125,8 +125,8 @@ src_compile() {
 }
 
 src_install() {
-	# Avoid race with parallel install, bug 983579
-	emake -j1 DESTDIR="${D}" install
+	# Avoid race with parallel install, bug #983579
+	emake -j1 DESTDIR="${D}" "${CROSS_ARGS[@]}" install
 	einstalldocs
 
 	# .ms, .ps files shouldn't be compressed and other files are tiny (bug #542624)
