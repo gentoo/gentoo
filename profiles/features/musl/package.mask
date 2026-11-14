@@ -276,6 +276,7 @@ app-admin/bitwarden-desktop-bin
 app-admin/puppet-agent
 app-admin/puppetserver
 app-admin/winbox
+app-antivirus/mdatp
 app-arch/rar
 app-backup/tsm
 app-benchmarks/geekbench
