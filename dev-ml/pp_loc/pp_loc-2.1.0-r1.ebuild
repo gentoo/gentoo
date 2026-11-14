@@ -10,6 +10,6 @@ HOMEPAGE="https://github.com/Armael/pp_loc"
 SRC_URI="https://github.com/Armael/${PN}/releases/download/v${PV}/${P}.tbz"
 
 LICENSE="MIT"
-SLOT="0"
+SLOT="0/${PV}"
 KEYWORDS="~amd64"
-IUSE="ocamlopt"
+IUSE="+ocamlopt"
