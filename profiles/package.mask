@@ -36,6 +36,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Jonas Stein <jstein@gentoo.org> (2026-11-14)
+# Removal on 2026-12-14.  Bug #986570.
+x11-themes/gentoo-artwork
+
 # Michał Górny <mgorny@gentoo.org> (2026-11-09)
 # Regressions causing test failures:
 # https://github.com/gorakhargosh/watchdog/issues/1432
