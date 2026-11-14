@@ -201,5 +201,5 @@ src_install() {
 	fowners tor:tor /var/lib/tor
 
 	insinto /etc/tor/
-	newins "${FILESDIR}"/torrc-r2 torrc
+	newins "${FILESDIR}"/torrc-r3 torrc
 }
