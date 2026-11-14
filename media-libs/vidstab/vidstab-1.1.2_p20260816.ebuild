@@ -1,4 +1,4 @@
-# Copyright 2018-2024 Gentoo Authors
+# Copyright 2018-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,17 +12,14 @@ if [[ ${PV} == *9999* ]] ; then
 	EGIT_REPO_URI="https://github.com/georgmartius/vid.stab.git"
 	inherit git-r3
 else
-	SRC_URI="https://github.com/georgmartius/vid.stab/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~x86"
-	S="${WORKDIR}/vid.stab-${PV}"
+	COMMIT="e2445c4081658318223762a696eb1c645c2d7168"
+	SRC_URI="https://github.com/georgmartius/vid.stab/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="~amd64"
+	S="${WORKDIR}/vid.stab-${COMMIT}"
 fi
-
-LICENSE="GPL-2+"
+LICENSE="LGPL-2.1+"
 SLOT="0"
-IUSE="openmp cpu_flags_x86_sse2 test"
-
-RESTRICT="!test? ( test )"
-DEPEND="test? ( dev-lang/orc )"
+IUSE="openmp cpu_flags_x86_sse2"
 
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
@@ -30,18 +27,6 @@ pkg_pretend() {
 
 pkg_setup() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
-}
-
-src_prepare() {
-	# USE=cpu_flags_x86_sse2 instead
-	sed -E 's#include (FindSSE)##' -i CMakeLists.txt || die
-	sed -E 's#include (FindSSE)##' -i tests/CMakeLists.txt || die
-	# strip some CFLAGS
-	for FILE_TO_PATCH in {,transcode/,tests/}CMakeLists.txt; do
-		sed -E 's#(add_definitions.* )-g #\1#' -i ${FILE_TO_PATCH} || die
-		sed -E 's#(add_definitions.* )-O3 #\1#' -i ${FILE_TO_PATCH} || die
-	done
-	cmake_src_prepare
 }
 
 src_configure() {
