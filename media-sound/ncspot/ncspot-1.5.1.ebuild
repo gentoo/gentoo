@@ -4,7 +4,7 @@
 EAPI=8
 
 CRATES=""
-PYTHON_COMPAT=( python3_{12..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 
 RUST_MIN_VER="1.89.0"
 
