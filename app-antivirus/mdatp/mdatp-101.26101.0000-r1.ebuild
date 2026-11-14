@@ -35,6 +35,7 @@ RDEPEND="
 	net-libs/libnfnetlink
 	net-misc/curl
 	sys-apps/acl
+	sys-apps/systemd
 	sys-apps/util-linux
 	sys-libs/libseccomp
 	sys-libs/libselinux
