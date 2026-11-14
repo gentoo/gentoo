@@ -15,7 +15,7 @@ S="${WORKDIR}/${P/_p*}"
 
 LICENSE="LGPL-2.1+"
 SLOT="0/4"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ~ppc ppc64 ~riscv ~sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~sparc x86"
 
 RDEPEND="virtual/libudev:="
 DEPEND="${RDEPEND}"
