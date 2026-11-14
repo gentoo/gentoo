@@ -1,0 +1,193 @@
+From 39942a743263265f3db464b74b3bcfed4785af03 Mon Sep 17 00:00:00 2001
+From: Matthew White <mehw.is.me@proton.me>
+Date: Thu, 5 Nov 2026 14:43:23 +0000
+Subject: [PATCH] Fix compiling Python 2.7.18 with OpenSSL 4
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Compilation tested with OpenSSL 4.1.0 on Gentoo GNU/Linux (amd64).
+
+Upstream commit references:
+
+Remove an unneeded call into OpenSSL (GH-6887)
+https://github.com/python/cpython/commit/55e53c309359327e54eb74b101c5a3240ea9cd45
+
+bpo-40457: Support OpenSSL without TLS 1.0/1.1 (GH-19862)
+https://github.com/python/cpython/commit/6e8cda91d92da72800d891b2fc2073ecbc134d98
+
+bpo-43669: PEP 644: Require OpenSSL 1.1.1 or newer (GH-23014)
+https://github.com/python/cpython/commit/39258d3595300bc7b952854c915f63ae2d4b9c3e
+
+gh-146207: Add support for OpenSSL 4.0.0 alpha1 (#146217)
+https://github.com/python/cpython/commit/3364e7e62fa24d0e19133fb0f90b1c24ef1110c5
+
+gh-159387: Fix TLS 1.0–1.2 availability detection with OpenSSL 4.0 (GH-159388)
+https://github.com/python/cpython/commit/e7acd6a82f2feec196b84fdfc1d1533e37024221
+
+gh-141801: Use accessors for ASN1_STRING fields in libssl
+https://github.com/python/cpython/commit/c41fce08a5d7aae8fd9e3fa25e0ba521600e097c
+
+Remove SSLv2 support
+https://github.com/openssl/openssl/commit/45f55f6a5bdcec411ef08a6f8aae41d5d3d234ad
+
+Removes fixed version TLS methods
+https://github.com/openssl/openssl/commit/9a46c4c595f32e9bf09e5fbabc586690bfdb66e1
+
+Describe X509 constification and ASN1_STRING changes
+https://github.com/openssl/openssl/commit/c0f82d915f3864fb44867303f316778f82077681
+
+Constify X509_NAME
+https://github.com/openssl/openssl/commit/b0f2107b44049805b39434d104c8bb0daf8ae079
+
+Make ASN1_STRING opaque
+https://github.com/openssl/openssl/commit/46dbd7faa0886875ac3ea17d156d61aad6d5aecf
+
+Closes: https://bugs.gentoo.org/985562
+Signed-off-by: Matthew White <mehw.is.me@proton.me>
+---
+ Modules/_ssl.c | 48 ++++++++++++++++++++++++++++++++++++++++++------
+ 1 file changed, 42 insertions(+), 6 deletions(-)
+
+diff --git a/Modules/_ssl.c b/Modules/_ssl.c
+index 98c8a5a4a95..526f368c9f9 100644
+--- a/Modules/_ssl.c
++++ b/Modules/_ssl.c
+@@ -165,6 +165,14 @@ struct py_ssl_library_code {
+ #define OPENSSL_NO_SSL2
+ #endif
+ 
++#if (OPENSSL_VERSION_NUMBER >= 0x40000000L)
++#define OPENSSL_NO_SSL2
++#define OPENSSL_NO_SSL3
++#define TLSv1_method   TLS_method
++#define TLSv1_1_method TLS_method
++#define TLSv1_2_method TLS_method
++#endif
++
+ #ifndef PY_OPENSSL_1_1_API
+ /* OpenSSL 1.1 API shims for OpenSSL < 1.1.0 and LibreSSL < 2.7.0 */
+ 
+@@ -592,7 +600,9 @@ newPySSLSocket(PySSLContext *sslctx, PySocketSockObject *sock,
+     Py_INCREF(sslctx);
+ 
+     /* Make sure the SSL error state is initialized */
++#if (OPENSSL_VERSION_NUMBER < 0x40000000L)
+     (void) ERR_get_state();
++#endif
+     ERR_clear_error();
+ 
+     PySSL_BEGIN_ALLOW_THREADS
+@@ -786,7 +796,7 @@ _asn1obj2py(const ASN1_OBJECT *name, int no_name)
+ }
+ 
+ static PyObject *
+-_create_tuple_for_attribute(ASN1_OBJECT *name, ASN1_STRING *value)
++_create_tuple_for_attribute(const ASN1_OBJECT *name, const ASN1_STRING *value)
+ {
+     Py_ssize_t buflen;
+     unsigned char *valuebuf = NULL;
+@@ -806,16 +816,16 @@ _create_tuple_for_attribute(ASN1_OBJECT *name, ASN1_STRING *value)
+ }
+ 
+ static PyObject *
+-_create_tuple_for_X509_NAME (X509_NAME *xname)
++_create_tuple_for_X509_NAME (const X509_NAME *xname)
+ {
+     PyObject *dn = NULL;    /* tuple which represents the "distinguished name" */
+     PyObject *rdn = NULL;   /* tuple to hold a "relative distinguished name" */
+     PyObject *rdnt;
+     PyObject *attr = NULL;   /* tuple to hold an attribute */
+     int entry_count = X509_NAME_entry_count(xname);
+-    X509_NAME_ENTRY *entry;
+-    ASN1_OBJECT *name;
+-    ASN1_STRING *value;
++    const X509_NAME_ENTRY *entry;
++    const ASN1_OBJECT *name;
++    const ASN1_STRING *value;
+     int index_counter;
+     int rdn_level = -1;
+     int retcode;
+@@ -916,7 +926,7 @@ _get_peer_alt_names (X509 *certificate) {
+     int i, j;
+     PyObject *peer_alt_names = Py_None;
+     PyObject *v = NULL, *t;
+-    X509_EXTENSION *ext = NULL;
++    const X509_EXTENSION *ext = NULL;
+     GENERAL_NAMES *names = NULL;
+     GENERAL_NAME *name;
+     const X509V3_EXT_METHOD *method;
+@@ -956,18 +966,30 @@ _get_peer_alt_names (X509 *certificate) {
+             goto fail;
+         }
+ 
++#if (OPENSSL_VERSION_NUMBER >= 0x40000000L)
++        p = ASN1_STRING_get0_data(X509_EXTENSION_get_data(ext));
++#else
+         p = X509_EXTENSION_get_data(ext)->data;
++#endif
+         if (method->it)
+             names = (GENERAL_NAMES*)
+               (ASN1_item_d2i(NULL,
+                              &p,
++#if (OPENSSL_VERSION_NUMBER >= 0x40000000L)
++                             ASN1_STRING_length(X509_EXTENSION_get_data(ext)),
++#else
+                              X509_EXTENSION_get_data(ext)->length,
++#endif
+                              ASN1_ITEM_ptr(method->it)));
+         else
+             names = (GENERAL_NAMES*)
+               (method->d2i(NULL,
+                            &p,
++#if (OPENSSL_VERSION_NUMBER >= 0x40000000L)
++                           ASN1_STRING_length(X509_EXTENSION_get_data(ext))));
++#else
+                            X509_EXTENSION_get_data(ext)->length));
++#endif
+ 
+         for(j = 0; j < sk_GENERAL_NAME_num(names); j++) {
+             /* get a rendering of each name in the set of names */
+@@ -1028,7 +1050,11 @@ _get_peer_alt_names (X509 *certificate) {
+                     goto fail;
+                 }
+                 PyTuple_SET_ITEM(t, 0, v);
++#if (OPENSSL_VERSION_NUMBER >= 0x40000000L)
++                v = PyString_FromStringAndSize((const char *)ASN1_STRING_get0_data(as),
++#else
+                 v = PyString_FromStringAndSize((char *)ASN1_STRING_data(as),
++#endif
+                                                ASN1_STRING_length(as));
+                 if (v == NULL) {
+                     Py_DECREF(t);
+@@ -1173,8 +1199,13 @@ _get_aia_uri(X509 *certificate, int nid) {
+             continue;
+         }
+         uri = ad->location->d.uniformResourceIdentifier;
++#if (OPENSSL_VERSION_NUMBER >= 0x40000000L)
++        ostr = PyUnicode_FromStringAndSize((const char *)ASN1_STRING_get0_data(uri),
++                                           ASN1_STRING_length(uri));
++#else
+         ostr = PyUnicode_FromStringAndSize((char *)uri->data,
+                                            uri->length);
++#endif
+         if (ostr == NULL) {
+             goto fail;
+         }
+@@ -1240,8 +1271,13 @@ _get_crl_dp(X509 *certificate) {
+                 continue;
+             }
+             uri = gn->d.uniformResourceIdentifier;
++#if (OPENSSL_VERSION_NUMBER >= 0x40000000L)
++            ouri = PyUnicode_FromStringAndSize((const char *)ASN1_STRING_get0_data(uri),
++                                               ASN1_STRING_length(uri));
++#else
+             ouri = PyUnicode_FromStringAndSize((char *)uri->data,
+                                                uri->length);
++#endif
+             if (ouri == NULL)
+                 goto done;
+ 
+-- 
+2.56.0
+

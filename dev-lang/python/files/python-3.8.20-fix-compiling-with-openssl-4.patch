@@ -1,0 +1,178 @@
+From 0cd3420cd1d5936f4ed6577c85214bac9f8c23d6 Mon Sep 17 00:00:00 2001
+From: Matthew White <mehw.is.me@proton.me>
+Date: Fri, 6 Nov 2026 13:53:09 +0000
+Subject: [PATCH] Fix compiling Python v3.8.20 with OpenSSL 4
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Compilation tested with OpenSSL 4.1.0 on Gentoo GNU/Linux (amd64).
+
+Upstream commit references:
+
+bpo-43799: Also define SSLv3_method() (GH-25481)
+https://github.com/python/cpython/commit/3309113d6131e4bbac570c4f54175ecca02d025a
+
+bpo-43669: PEP 644: Require OpenSSL 1.1.1 or newer (GH-23014)
+https://github.com/python/cpython/commit/39258d3595300bc7b952854c915f63ae2d4b9c3e
+
+gh-146207: Add support for OpenSSL 4.0.0 alpha1 (#146217)
+https://github.com/python/cpython/commit/3364e7e62fa24d0e19133fb0f90b1c24ef1110c5
+
+gh-159387: Fix TLS 1.0–1.2 availability detection with OpenSSL 4.0 (GH-159388)
+https://github.com/python/cpython/commit/e7acd6a82f2feec196b84fdfc1d1533e37024221
+
+gh-141801: Use accessors for ASN1_STRING fields in libssl
+https://github.com/python/cpython/commit/c41fce08a5d7aae8fd9e3fa25e0ba521600e097c
+
+Remove SSLv2 support
+https://github.com/openssl/openssl/commit/45f55f6a5bdcec411ef08a6f8aae41d5d3d234ad
+
+Removes fixed version TLS methods
+https://github.com/openssl/openssl/commit/9a46c4c595f32e9bf09e5fbabc586690bfdb66e1
+
+Describe X509 constification and ASN1_STRING changes
+https://github.com/openssl/openssl/commit/c0f82d915f3864fb44867303f316778f82077681
+
+Constify X509_NAME
+https://github.com/openssl/openssl/commit/b0f2107b44049805b39434d104c8bb0daf8ae079
+
+Make ASN1_STRING opaque
+https://github.com/openssl/openssl/commit/46dbd7faa0886875ac3ea17d156d61aad6d5aecf
+
+Closes: https://bugs.gentoo.org/985710
+Signed-off-by: Matthew White <mehw.is.me@proton.me>
+---
+ Modules/_ssl.c | 46 ++++++++++++++++++++++++++++++++--------------
+ 1 file changed, 32 insertions(+), 14 deletions(-)
+
+diff --git a/Modules/_ssl.c b/Modules/_ssl.c
+index 25f92d948a5..e51b1cfec97 100644
+--- a/Modules/_ssl.c
++++ b/Modules/_ssl.c
+@@ -149,10 +149,22 @@ static void _PySSLFixErrno(void) {
+ #  define PY_OPENSSL_1_1_API 1
+ #endif
+ 
++#if (OPENSSL_VERSION_NUMBER >= 0x40000000L)
++#  define OPENSSL_NO_SSL2
++#  define OPENSSL_NO_SSL3
++#  define OPENSSL_NO_SSL3_METHOD
++#  define OPENSSL_NO_TLS1_METHOD
++#  define OPENSSL_NO_TLS1_1_METHOD
++#  define OPENSSL_NO_TLS1_2_METHOD
++#endif
++
+ /* OpenSSL API 1.1.0+ does not include version methods. Define the methods
+  * unless OpenSSL is compiled without the methods. It's the easiest way to
+  * make 1.0.2, 1.1.0, 1.1.1, and 3.0.0 happy without deprecation warnings.
+  */
++#ifndef OPENSSL_NO_SSL3_METHOD
++extern const SSL_METHOD *SSLv3_method(void);
++#endif
+ #ifndef OPENSSL_NO_TLS1_METHOD
+ extern const SSL_METHOD *TLSv1_method(void);
+ #endif
+@@ -1201,7 +1213,7 @@ _asn1obj2py(const ASN1_OBJECT *name, int no_name)
+ }
+ 
+ static PyObject *
+-_create_tuple_for_attribute(ASN1_OBJECT *name, ASN1_STRING *value)
++_create_tuple_for_attribute(const ASN1_OBJECT *name, const ASN1_STRING *value)
+ {
+     Py_ssize_t buflen;
+     unsigned char *valuebuf = NULL;
+@@ -1218,16 +1230,16 @@ _create_tuple_for_attribute(ASN1_OBJECT *name, ASN1_STRING *value)
+ }
+ 
+ static PyObject *
+-_create_tuple_for_X509_NAME (X509_NAME *xname)
++_create_tuple_for_X509_NAME (const X509_NAME *xname)
+ {
+     PyObject *dn = NULL;    /* tuple which represents the "distinguished name" */
+     PyObject *rdn = NULL;   /* tuple to hold a "relative distinguished name" */
+     PyObject *rdnt;
+     PyObject *attr = NULL;   /* tuple to hold an attribute */
+     int entry_count = X509_NAME_entry_count(xname);
+-    X509_NAME_ENTRY *entry;
+-    ASN1_OBJECT *name;
+-    ASN1_STRING *value;
++    const X509_NAME_ENTRY *entry;
++    const ASN1_OBJECT *name;
++    const ASN1_STRING *value;
+     int index_counter;
+     int rdn_level = -1;
+     int retcode;
+@@ -1413,7 +1425,7 @@ _get_peer_alt_names (X509 *certificate) {
+                     goto fail;
+                 }
+                 PyTuple_SET_ITEM(t, 0, v);
+-                v = PyUnicode_FromStringAndSize((char *)ASN1_STRING_get0_data(as),
++                v = PyUnicode_FromStringAndSize((const char *)ASN1_STRING_get0_data(as),
+                                                 ASN1_STRING_length(as));
+                 if (v == NULL) {
+                     Py_DECREF(t);
+@@ -1466,15 +1478,15 @@ _get_peer_alt_names (X509 *certificate) {
+                 }
+                 PyTuple_SET_ITEM(t, 0, v);
+ 
+-                if (name->d.ip->length == 4) {
+-                    unsigned char *p = name->d.ip->data;
++                if (ASN1_STRING_length(name->d.ip) == 4) {
++                    const unsigned char *p = ASN1_STRING_get0_data(name->d.ip);
+                     v = PyUnicode_FromFormat(
+                         "%d.%d.%d.%d",
+                         p[0], p[1], p[2], p[3]
+                     );
+-                } else if (name->d.ip->length == 16) {
++                } else if (ASN1_STRING_length(name->d.ip) == 16) {
+                     /* PyUnicode_FromFormat() does not support %X */
+-                    unsigned char *p = name->d.ip->data;
++                    const unsigned char *p = ASN1_STRING_get0_data(name->d.ip);
+                     len = sprintf(
+                         buf,
+                         "%X:%X:%X:%X:%X:%X:%X:%X",
+@@ -1607,8 +1619,8 @@ _get_aia_uri(X509 *certificate, int nid) {
+             continue;
+         }
+         uri = ad->location->d.uniformResourceIdentifier;
+-        ostr = PyUnicode_FromStringAndSize((char *)uri->data,
+-                                           uri->length);
++        ostr = PyUnicode_FromStringAndSize((const char *)ASN1_STRING_get0_data(uri),
++                                           ASN1_STRING_length(uri));
+         if (ostr == NULL) {
+             goto fail;
+         }
+@@ -1674,8 +1686,8 @@ _get_crl_dp(X509 *certificate) {
+                 continue;
+             }
+             uri = gn->d.uniformResourceIdentifier;
+-            ouri = PyUnicode_FromStringAndSize((char *)uri->data,
+-                                               uri->length);
++            ouri = PyUnicode_FromStringAndSize((const char *)ASN1_STRING_get0_data(uri),
++                                               ASN1_STRING_length(uri));
+             if (ouri == NULL)
+                 goto done;
+ 
+@@ -6342,12 +6354,18 @@ PyInit__ssl(void)
+                             PY_SSL_VERSION_TLS_CLIENT);
+     PyModule_AddIntConstant(m, "PROTOCOL_TLS_SERVER",
+                             PY_SSL_VERSION_TLS_SERVER);
++#if !defined(OPENSSL_NO_TLS1) && !defined(OPENSSL_NO_TLS1_METHOD)
+     PyModule_AddIntConstant(m, "PROTOCOL_TLSv1",
+                             PY_SSL_VERSION_TLS1);
++#endif
++#if !defined(OPENSSL_NO_TLS1_1) && !defined(OPENSSL_NO_TLS1_1_METHOD)
+     PyModule_AddIntConstant(m, "PROTOCOL_TLSv1_1",
+                             PY_SSL_VERSION_TLS1_1);
++#endif
++#if !defined(OPENSSL_NO_TLS1_2) && !defined(OPENSSL_NO_TLS1_2_METHOD)
+     PyModule_AddIntConstant(m, "PROTOCOL_TLSv1_2",
+                             PY_SSL_VERSION_TLS1_2);
++#endif
+ 
+     /* protocol options */
+     PyModule_AddIntConstant(m, "OP_ALL",
+-- 
+2.56.0
+
