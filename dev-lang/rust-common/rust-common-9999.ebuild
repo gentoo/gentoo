@@ -68,6 +68,6 @@ src_compile() {
 }
 
 src_install() {
-	newbashcomp src/tools/cargo/src/etc/cargo.bashcomp.sh cargo
-	dozshcomp src/tools/cargo/src/etc/_cargo
+	newbashcomp src/tools/cargo/etc/cargo.bashcomp.sh cargo
+	dozshcomp src/tools/cargo/etc/_cargo
 }
