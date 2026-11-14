@@ -9,6 +9,9 @@
 		OpenCC is a library for converting characters and phrases between
 		Traditional Chinese and Simplified Chinese.
 	</longdescription>
+	<use>
+		<flag name="jieba">Build the Jieba word segmentation plugin</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">BYVoid/OpenCC</remote-id>
 	</upstream>
