@@ -1,0 +1,101 @@
+From 465dbb2fa4927d3249fdf7a9b577e782881a09d4 Mon Sep 17 00:00:00 2001
+From: "Z. Liu" <zhixu.liu@gmail.com>
+Date: Sat, 14 Nov 2026 21:34:17 +0800
+Subject: [PATCH] remove unavailable feature in C++ 17+
+
+* replace std::bind2nd with lambda
+* std::vector::const_iterator cannot be constructed from
+  a null pointer. Use a default-constructed iterator instead.
+
+Signed-off-by: Z. Liu <zhixu.liu@gmail.com>
+
+diff --git a/libpp/xml_utils.cpp b/libpp/xml_utils.cpp
+index 3de41e58..ba05daea 100644
+--- a/libpp/xml_utils.cpp
++++ b/libpp/xml_utils.cpp
+@@ -73,7 +73,7 @@ void dump_symbol(string const & prefix, sym_iterator it, bool want_nl = true)
+ 
+ void dump_symbols(string const & prefix, sym_iterator b, sym_iterator e)
+ {
+-	if (b == (sym_iterator)0)
++	if (b == sym_iterator())
+ 		return;
+ 
+ 	for (sym_iterator it = b; it != e; ++it)
+@@ -406,7 +406,7 @@ xml_utils::output_summary_data(ostream & out, count_array_t const & summary, siz
+ class module_info {
+ public:
+ 	module_info()
+-		{ lo = hi = 0; name = ""; begin = end = (sym_iterator)0;}
++		{ lo = hi = 0; name = ""; begin = end = sym_iterator();}
+ 	void dump();
+ 	void build_module(string const & n, sym_iterator it,
+ 	                  size_t l, size_t h);
+@@ -540,21 +540,21 @@ void module_info::add_to_summary(count_array_t const & counts)
+ 
+ void module_info::set_begin(sym_iterator b)
+ {
+-	if (begin == (sym_iterator)0)
++	if (begin == sym_iterator())
+ 		begin = b;
+ }
+ 
+ 
+ void module_info::set_end(sym_iterator e)
+ {
+-	if (end == (sym_iterator)0)
++	if (end == sym_iterator())
+ 		end = e;
+ }
+ 
+ 
+ bool module_info::is_closed(string const & n)
+ {
+-	return (name == n) && end != (sym_iterator)0;
++	return (name == n) && end != sym_iterator();
+ }
+ 
+ 
+@@ -585,7 +585,7 @@ void module_info::output_summary(ostream & out)
+ 
+ void module_info::output_symbols(ostream & out, bool is_module)
+ {
+-	if (begin == (sym_iterator)0)
++	if (begin == sym_iterator())
+ 		return;
+ 
+ 	for (sym_iterator it = begin; it != end; ++it)
+@@ -606,7 +606,7 @@ void binary_info::close_binary(sym_iterator it)
+ void binary_info::dump()
+ {
+ 	cverb << vxml << "app_name=" << name << endl;
+-	if (begin != (sym_iterator)0)
++	if (begin != sym_iterator())
+ 		dump_symbols("	", begin, end);
+ 
+ 	for (size_t i = 0; i < nr_modules; ++i)
+@@ -648,7 +648,7 @@ add_module_symbol(string const & module, string const & app,
+ 		// mark end of enclosing binary symbols if there have been any
+ 		// NOTE: it is possible for the binary's symbols to follow its
+ 		// module symbols
+-		if (begin != (sym_iterator)0 && end == (sym_iterator)0)
++		if (begin != sym_iterator() && end == sym_iterator())
+ 			set_end(it);
+ 
+ 		// build the new module
+diff --git a/libutil++/growable_vector.h b/libutil++/growable_vector.h
+index 350246a9..877d7e3d 100644
+--- a/libutil++/growable_vector.h
++++ b/libutil++/growable_vector.h
+@@ -94,7 +94,7 @@ public:
+ 	/// return true if all elements have the default constructed value
+ 	bool zero() const {
+ 		return std::find_if(container.begin(), container.end(),
+-	                            std::bind2nd(std::not_equal_to<T>(), T()))
++	                            [](T const & v) { return v != T(); })
+ 					== container.end();
+ 	}
+ 
+-- 
+2.49.1
+
