@@ -144,6 +144,9 @@ src_configure() {
 		-Demit-docs=$(usex man true false)
 		-Dstrip=false
 		-Dversion-string="${PV}"
+		# Without this, the desktop, D-Bus and systemd files name a bare
+		# "ghostty", which non-systemd D-Bus activation cannot execute.
+		-Dinstalled-exe-path="${EPREFIX}/usr/bin/ghostty"
 		-Demit-terminfo=false
 		-Demit-termcap=false
 		# https://github.com/mbadolato/iTerm2-Color-Schemes/issues/638
