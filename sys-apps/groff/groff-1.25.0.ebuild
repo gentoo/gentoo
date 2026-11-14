@@ -116,6 +116,7 @@ src_compile() {
 	tc-is-cross-compiler && CROSS_ARGS+=(
 		GROFFBIN="$(type -P groff)"
 		TROFFBIN="$(type -P troff)"
+		SOELIMBIN="$(type -P soelim)"
 		GROFF_BIN_DIR=
 		GROFF_BIN_PATH=
 	)
