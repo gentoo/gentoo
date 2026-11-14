@@ -565,6 +565,7 @@ qemu_src_configure() {
 		--localstatedir=/var
 		--disable-bsd-user
 		--disable-containers # bug #732972
+		--container-command=false # bug #984747
 		--disable-guest-agent
 		--disable-strip
 		--disable-download
