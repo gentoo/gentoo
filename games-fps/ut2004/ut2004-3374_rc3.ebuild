@@ -5,11 +5,12 @@ EAPI=8
 
 inherit desktop xdg
 
-COMMIT="094b94dc"
+COMMIT="fc0484d6"
 DESCRIPTION="Modern build of the Unreal Tournament 2004 engine"
 HOMEPAGE="https://github.com/OldUnreal/UT2004Patches"
+MY_PV="${PV//_/-}"
 SRC_URI="
-	https://github.com/OldUnreal/UT2004Patches/releases/download/${PV/_pre/-preview-}/OldUnreal-UT2004Patch${PV%_*}-Linux-${COMMIT}.tar.bz2
+	https://github.com/OldUnreal/UT2004Patches/releases/download/${MY_PV/-pre/-preview-}/OldUnreal-UT2004Patch${PV%_*}-Linux-${COMMIT}.tar.bz2
 	mirror+https://dev.gentoo.org/~chewi/distfiles/${PN}.png
 "
 S="${WORKDIR}"
@@ -52,14 +53,11 @@ src_prepare() {
 	declare -g System="System${SYSTEMS[${ARCH}]}"
 	default
 
-	# https://github.com/OldUnreal/FullGameInstallers/issues/93
-	ln -s ../System/{CacheRecords.ucl,Packages.md5,xaplayersl3.upl,xplayersL{1,2}.upl} SystemARM64/ || die
-
 	# https://github.com/OldUnreal/UT2004Patches/issues/508
 	patchelf --remove-needed libGLX.so.0 "${System}"/{Anti,OpenGL}Drv.so || die
 
 	# This shouldn't be executable.
-	chmod a-x System/CacheRecords.ucl || die
+	chmod -v a-x System/CacheRecords.ucl || die
 
 	# Remove the non-native files. The main System directory is shared, it's not
 	# just for amd64, so we cannot delete it entirely.
