@@ -1,0 +1,15 @@
+--- a/bin/ged2gwb/dune	2026-11-13 12:00:47.031133248 +0100
++++ b/bin/ged2gwb/dune	2026-11-13 12:03:07.127288339 +0100
+@@ -6,11 +6,7 @@
+  (preprocess
+   (action
+    (run
+-    not-ocamlfind
+-    preprocess
+-    -package
+-    camlp5.extend,camlp5.quotations,camlp5.pr_o
+-    -syntax
+     camlp5o
++    -I +camlp5 pa_extend.cmo q_MLast.cmo o_keywords.cmo pr_o.cmo
+     %{input-file})))
+  (libraries camlp5 unix str geneweb_db geneweb))
