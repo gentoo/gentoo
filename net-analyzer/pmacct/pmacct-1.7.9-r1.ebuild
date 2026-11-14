@@ -21,7 +21,7 @@ fi
 LICENSE="GPL-2"
 SLOT="0"
 
-IUSE="+bgp-bins +bmp-bins geoipv2 jansson kafka +l2 mysql ndpi nflog postgres rabbitmq sqlite +st-bins +traffic-bins zmq"
+IUSE="+bgp-bins +bmp-bins geoipv2 jansson kafka +l2 mysql nflog postgres rabbitmq sqlite +st-bins +traffic-bins zmq"
 
 REQUIRED_USE="
 	kafka? ( jansson )
@@ -37,7 +37,6 @@ RDEPEND="dev-libs/libcdada
 		dev-db/mysql-connector-c:0=
 		sys-process/numactl
 	)
-	ndpi? ( >=net-libs/nDPI-3.2:= )
 	nflog? ( net-libs/libnetfilter_log )
 	postgres? ( dev-db/postgresql:* )
 	rabbitmq? ( net-libs/rabbitmq-c )
@@ -59,6 +58,9 @@ DOCS=(
 src_prepare() {
 	default
 	eautoreconf
+
+	# keep a pristine copy, the build leaves objects and binaries in examples/
+	cp -r examples "${T}"/examples || die
 }
 
 src_configure() {
@@ -72,7 +74,6 @@ src_configure() {
 		$(use_enable kafka)
 		$(use_enable l2)
 		$(use_enable mysql)
-		$(use_enable ndpi)
 		$(use_enable nflog)
 		$(use_enable postgres pgsql)
 		$(use_enable rabbitmq)
@@ -85,6 +86,10 @@ src_configure() {
 		--disable-ebpf
 		--disable-debug
 		--disable-mongodb
+		# relies on nDPI internals, upstream only supports nDPI 4.14 through
+		# a copy of its private header, bug #970106
+		# https://github.com/pmacct/pmacct/commit/4cf7ce47cabcc5c452de9ba9b356c52d6eb3fcc6
+		--disable-ndpi
 	)
 
 	econf "${myeconfargs[@]}"
@@ -93,10 +98,10 @@ src_configure() {
 src_install() {
 	default
 
-	local dirname
-	for dirname in examples sql; do
-		dodoc -r ${dirname}
-	done
+	# only a .la for a static library that isn't installed, bug #848729
+	rm -r "${ED}"/usr/$(get_libdir)/pmacct/examples/custom || die
+
+	dodoc -r "${T}"/examples sql
 
 	newinitd "${FILESDIR}"/pmacctd-init.d pmacctd
 	newconfd "${FILESDIR}"/pmacctd-conf.d pmacctd
