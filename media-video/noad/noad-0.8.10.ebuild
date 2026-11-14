@@ -1,4 +1,4 @@
-# Copyright 2021-2024 Gentoo Authors
+# Copyright 2021-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,14 +11,13 @@ SRC_URI="https://github.com/madmartin/noad/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="+ffmpeg imagemagick libmpeg2"
 REQUIRED_USE="|| ( ffmpeg libmpeg2 )"
 
-# <ffmpeg-5 dep for bug #834408, https://github.com/madmartin/noad/issues/2
 DEPEND="
 	libmpeg2? ( media-libs/libmpeg2 )
-	ffmpeg? ( <media-video/ffmpeg-5:= )
+	ffmpeg? ( media-video/ffmpeg:= )
 	imagemagick? ( media-gfx/imagemagick:= )"
 RDEPEND="${DEPEND}"
 BDEPEND="virtual/pkgconfig"
