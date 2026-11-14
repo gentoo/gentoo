@@ -108,18 +108,30 @@ src_configure() {
 		$(use_with X x)
 	)
 
+	if tc-is-cross-compiler ; then
+		mkdir -p "${WORKDIR}"/build-cross || die
+		cd "${WORKDIR}"/build-cross || die
+		ECONF_SOURCE="${S}" econf_build --without-uchardet --without-x
+	fi
+
+	cd "${S}" || die
 	econf "${myeconfargs[@]}"
 }
 
 src_compile() {
 	CROSS_ARGS=()
-	tc-is-cross-compiler && CROSS_ARGS+=(
-		GROFFBIN="$(type -P groff)"
-		TROFFBIN="$(type -P troff)"
-		SOELIMBIN="$(type -P soelim)"
-		GROFF_BIN_DIR=
-		GROFF_BIN_PATH=
-	)
+
+	if tc-is-cross-compiler ; then
+		emake -C "${WORKDIR}"/build-cross
+		local -x PATH="${WORKDIR}/build-cross:${PATH}"
+
+		CROSS_ARGS+=(
+			GROFFBIN="$(type -P groff)"
+			TROFFBIN="$(type -P troff)"
+			SOELIMBIN="$(type -P soelim)"
+			GROFF_BIN_PATH="${WORKDIR}/build-cross"
+		)
+	fi
 
 	emake AR="$(tc-getAR)" "${CROSS_ARGS[@]}"
 }
