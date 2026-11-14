@@ -43,7 +43,7 @@ DEPEND="
 	dev-ml/uucp:=
 	dev-ml/uunf:=
 	dev-ml/uutf:=[ocamlopt?]
-
+	dev-ml/yojson:=[ocamlopt?]
 	dev-ml/zarith:=[ocamlopt?]
 "
 RDEPEND="${DEPEND}"
