@@ -13,11 +13,6 @@ LICENSE="BSD-2"
 SLOT="0/1"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-3.4.7-lto.patch
-	"${FILESDIR}"/${P}-buildfix.patch
-)
-
 src_prepare() {
 	default
 
