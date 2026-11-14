@@ -1,4 +1,4 @@
-# Copyright 2021-2025 Gentoo Authors
+# Copyright 2021-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -26,6 +26,10 @@ BDEPEND="
 	virtual/pkgconfig
 	doc? ( app-text/doxygen[dot] )"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-openssl-4.patch
+)
+
 src_configure() {
 	local mycmakeargs=(
 		-DENABLE_TESTS=$(usex test)
@@ -39,6 +43,19 @@ src_compile() {
 	cmake_src_compile
 
 	use doc && cmake_src_compile doc
+}
+
+src_test() {
+	local CMAKE_SKIP_TESTS=(
+		# OpenSSL >= 4.1 no longer matches the hostname against the subject CN,
+		# and the test server certificate has no subjectAltName
+		test_cert_exp_notif
+		test_endpt_share_clients
+		test_ks_ts
+		test_runtime_changes
+		test_tls
+	)
+	cmake_src_test
 }
 
 src_install() {
