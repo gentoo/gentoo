@@ -14,7 +14,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE="+dialogs +gtk p11-kit"
 
-RDEPEND="sys-apps/pcsc-lite
+RDEPEND="dev-libs/openssl:=
+	sys-apps/pcsc-lite
 	gtk? (
 		x11-libs/gdk-pixbuf[jpeg]
 		x11-libs/gtk+:3
@@ -34,6 +35,7 @@ PATCHES=(
 	"${FILESDIR}/0001-Do-not-build-xpi-module.patch"
 	"${FILESDIR}/0001-Fix-libdir-for-manifestdir.patch"
 	"${FILESDIR}/0001-Remove-uml-build.patch"
+	"${FILESDIR}/${P}-openssl-4.patch"
 	)
 
 src_prepare() {
