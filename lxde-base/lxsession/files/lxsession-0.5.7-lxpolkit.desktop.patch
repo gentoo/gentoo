@@ -1,0 +1,9 @@
+--- a/data/lxpolkit.desktop.in.in
++++ b/data/lxpolkit.desktop.in.in
+@@ -5,5 +5,5 @@
+ Exec=lxpolkit
+ TryExec=lxpolkit
+ Icon=gtk-dialog-authentication
+-OnlyShowIn=LXDE;OPENBOX;
++OnlyShowIn=LXDE;
+ NoDisplay=true
