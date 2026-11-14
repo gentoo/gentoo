@@ -156,7 +156,7 @@ multilib_src_test() {
 multilib_src_install_all() {
 	newinitd "${T}"/dbus.initd dbus
 	exeinto /etc/user/init.d
-	newexe "${FILESDIR}/dbus.user.initd-r1" dbus
+	newexe "${FILESDIR}/dbus.user.initd-r2" dbus
 
 	if use X; then
 		# dbus X session script (bug #77504)

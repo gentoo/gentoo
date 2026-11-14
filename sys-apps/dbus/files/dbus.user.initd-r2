@@ -1,5 +1,5 @@
 #!/sbin/openrc-run
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License, v2 or later
 
 supervisor=supervise-daemon
@@ -9,7 +9,7 @@ export DBUS_SESSION_BUS_ADDRESS="unix:path=$dbus_socket"
 
 description="An IPC message bus daemon"
 command="/usr/bin/dbus-daemon"
-command_args="--session --syslog --nofork --address ${DBUS_SESSION_BUS_ADDRESS} --print-address"
+command_args="--session --syslog --nofork --address ${DBUS_SESSION_BUS_ADDRESS} --print-address 3"
 
 extra_started_commands="reload"
 
