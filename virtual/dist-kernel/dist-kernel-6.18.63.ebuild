@@ -9,8 +9,8 @@ KEYWORDS="amd64 ~arm arm64 ~hppa ~loong ppc ppc64 ~riscv ~s390 ~sparc x86"
 
 RDEPEND="
 	|| (
-		~sys-kernel/gentoo-kernel-${PV}
 		~sys-kernel/gentoo-kernel-bin-${PV}
+		~sys-kernel/gentoo-kernel-${PV}
 		~sys-kernel/vanilla-kernel-${PV%_p*}
 	)
 "

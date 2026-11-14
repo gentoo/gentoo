@@ -9,8 +9,8 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv 
 
 RDEPEND="
 	|| (
-		~sys-kernel/gentoo-kernel-${PV}
 		~sys-kernel/gentoo-kernel-bin-${PV}
+		~sys-kernel/gentoo-kernel-${PV}
 		~sys-kernel/vanilla-kernel-${PV%_p*}
 		~sys-kernel/gentoo-kernel-modprep-${PV}
 	)
