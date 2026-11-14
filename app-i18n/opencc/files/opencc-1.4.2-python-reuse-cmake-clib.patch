@@ -1,0 +1,15 @@
+Reuse the opencc_clib built by the cmake ebuild phase instead of
+re-running a full cmake configure/build from setup.py's build_ext.
+
+--- a/setup.py
++++ b/setup.py
+@@ -152,7 +152,8 @@ class BuildExtCommand(setuptools.command.build_ext.build_ext, object):
+         else:
+             output_path = os.path.abspath(os.path.join(self.build_lib, 'opencc', 'clib'))
+         if isinstance(ext, OpenCCExtension):
+-            build_libopencc(output_path)
++            self.copy_file(os.path.join(_this_dir, 'python', self.get_ext_filename(ext.name)),
++                           self.get_ext_fullpath(ext.name))
+         else:
+             super(BuildExtCommand, self).build_extension(ext)
+ 
