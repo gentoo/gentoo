@@ -6,7 +6,8 @@
 		<name>Gentoo KDE Project</name>
 	</maintainer>
 	<upstream>
-		<bugs-to>https://bugs.kde.org/</bugs-to>
+		<bugs-to>https://bugs.kde.org/enter_bug.cgi?product=k3b</bugs-to>
+		<remote-id type="kde-invent">multimedia/k3b</remote-id>
 	</upstream>
 	<use>
 		<flag name="webengine">Use <pkg>dev-qt/qtwebengine</pkg> for fancy k3bdiskinfoview</flag>
