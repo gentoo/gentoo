@@ -32,6 +32,6 @@ src_install() {
 	doman targetcli.8
 	systemd_dounit systemd/targetclid.{service,socket}
 
-	doinitd "${FILESDIR}"/targetcli.initd
-	doconfd "${FILESDIR}"/targetcli.confd
+	newinitd "${FILESDIR}"/targetcli.initd targetcli
+	newconfd "${FILESDIR}"/targetcli.confd targetcli
 }
