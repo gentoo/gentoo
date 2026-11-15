@@ -1,0 +1,8 @@
+#!/sbin/openrc-run
+
+name="Network Block Device Server"
+description="Serve a block device as a file to other computers"
+
+command=/usr/bin/nbd-server
+pidfile=/run/nbd-server.pid
+command_args="-p ${pidfile}"
