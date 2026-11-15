@@ -6,7 +6,8 @@
 		<name>Gentoo KDE Project</name>
 	</maintainer>
 	<upstream>
-		<bugs-to>https://bugs.kde.org/</bugs-to>
+		<bugs-to>https://bugs.kde.org/enter_bug.cgi?product=kteatime</bugs-to>
+		<remote-id type="kde-invent">utilities/kteatime</remote-id>
 	</upstream>
 	<longdescription>Kteatime alerts when the given time is over.
 	Different times for black tea, green tea, pizza and more.</longdescription>
