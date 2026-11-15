@@ -1,0 +1,352 @@
+# Copyright 2023-2026 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=8
+
+CRATES="
+	addr2line@0.27.1
+	adler2@2.0.1
+	advapi32-sys@0.2.0
+	aho-corasick@1.1.5
+	anstream@1.0.0
+	anstyle-parse@1.0.0
+	anstyle-query@1.1.5
+	anstyle-wincon@3.0.11
+	anstyle@1.0.14
+	anyhow@1.0.104
+	arrayvec@0.7.8
+	autocfg@1.5.1
+	backtrace@0.3.77
+	basic-toml@0.1.10
+	benchmarking@0.4.15
+	bindgen@0.69.5
+	bitflags@2.13.2
+	block-buffer@0.10.4
+	block-buffer@0.12.1
+	block2@0.6.2
+	btoi@0.5.0
+	built@0.7.7
+	bumpalo@3.20.3
+	bytefmt@0.1.7
+	byteorder@1.5.0
+	bzip2-sys@0.1.13+1.0.8
+	bzip2@0.5.2
+	cc@1.11.1
+	cexpr@0.6.0
+	cfg-if@1.0.5
+	cfg_aliases@0.2.2
+	cipher@0.4.4
+	clang-sys@1.9.1
+	clap@4.6.7
+	clap_builder@4.6.7
+	clap_lex@1.1.1
+	colorchoice@1.0.5
+	console@0.16.6
+	const-oid@0.10.3
+	cpufeatures@0.2.17
+	cpufeatures@0.3.1
+	crc32fast@1.5.5
+	crossbeam-channel@0.5.17
+	crossbeam-deque@0.8.8
+	crossbeam-epoch@0.9.21
+	crossbeam-queue@0.3.14
+	crossbeam-utils@0.8.23
+	crossbeam@0.8.5
+	crypto-common@0.1.7
+	crypto-common@0.2.2
+	ctrlc@3.5.2
+	des@0.8.1
+	dialoguer@0.12.0
+	digest@0.10.7
+	digest@0.11.3
+	dirs-next@2.0.0
+	dirs-sys-next@0.1.2
+	dispatch2@0.3.1
+	displaydoc@0.2.7
+	either@1.19.0
+	encode_unicode@1.0.0
+	encoding-index-japanese@1.20141219.5
+	encoding-index-korean@1.20141219.5
+	encoding-index-simpchinese@1.20141219.5
+	encoding-index-singlebyte@1.20141219.5
+	encoding-index-tradchinese@1.20141219.5
+	encoding@0.2.33
+	encoding_index_tests@0.1.4
+	errno@0.3.14
+	fallible-iterator@0.3.0
+	fallible-streaming-iterator@0.1.9
+	fastrand@2.5.0
+	find-crate@0.6.3
+	find-msvc-tools@0.1.15
+	flate2@1.1.11
+	fluent-langneg@0.13.1
+	foldhash@0.2.0
+	form_urlencoded@1.2.2
+	futures-core@0.3.34
+	futures-task@0.3.34
+	futures-util@0.3.34
+	generic-array@0.14.7
+	getrandom@0.2.17
+	getrandom@0.3.4
+	getrandom@0.4.3
+	gettext@0.4.0
+	gimli@0.34.0
+	git2@0.20.4
+	glob@0.3.4
+	hashbrown@0.16.1
+	hashbrown@0.17.1
+	hashlink@0.12.2
+	hermit-abi@0.5.3
+	hostname@0.4.2
+	human-panic@2.0.8
+	hybrid-array@0.4.15
+	i18n-config@0.4.8
+	i18n-embed-impl@0.8.4
+	i18n-embed@0.16.0
+	icu_collections@2.4.0
+	icu_locale_core@2.4.0
+	icu_normalizer@2.4.0
+	icu_normalizer_data@2.4.0
+	icu_properties@2.4.0
+	icu_properties_data@2.4.0
+	icu_provider@2.4.0
+	idna@1.1.0
+	idna_adapter@1.2.2
+	indicatif@0.18.6
+	inout@0.1.4
+	intl-memoizer@0.5.3
+	is-terminal@0.4.17
+	is_terminal_polyfill@1.70.2
+	itertools@0.12.1
+	itertools@0.15.0
+	itoa@1.0.19
+	jobserver@0.1.35
+	js-sys@0.3.107
+	lazy_static@1.5.1
+	lazycell@1.3.0
+	libc@0.2.191
+	libgit2-sys@0.18.8+1.9.7
+	libloading@0.8.9
+	libredox@0.1.25
+	librocksdb-sys@0.16.0+8.10.0
+	libsqlite3-sys@0.38.2
+	libz-sys@1.1.33
+	linux-raw-sys@0.12.1
+	litemap@0.8.3
+	lock_api@0.4.14
+	log@0.4.35
+	lz4-sys@1.11.1+lz4-1.10.0
+	lz4@1.28.1
+	lzma-sys@0.1.20
+	memchr@2.8.3
+	memmap@0.7.0
+	mime@0.3.18
+	mime_guess@2.0.5
+	minimal-lexical@0.2.1
+	miniz_oxide@0.9.1
+	nix@0.31.3
+	nohash-hasher@0.2.0
+	nom@7.1.3
+	ntapi@0.4.3
+	num-traits@0.2.19
+	num_cpus@1.17.0
+	objc2-core-foundation@0.3.2
+	objc2-encode@4.1.0
+	objc2-io-kit@0.3.2
+	objc2@0.6.5
+	object@0.40.0
+	once_cell@1.21.4
+	once_cell_polyfill@1.70.2
+	parking_lot@0.12.5
+	parking_lot_core@0.9.12
+	percent-encoding@2.3.2
+	pgcopy@0.0.2
+	pgn-reader@0.29.0
+	pin-project-lite@0.2.17
+	pkg-config@0.3.34
+	portable-atomic@1.15.0
+	potential_utf@0.1.6
+	ppv-lite86@0.2.21
+	prettytable-rs@0.10.0
+	proc-macro2@1.0.107
+	quick-csv@0.1.6
+	quote@1.0.47
+	r-efi@5.3.0
+	r-efi@6.0.0
+	rand@0.9.5
+	rand_chacha@0.9.0
+	rand_core@0.9.5
+	rand_xorshift@0.4.0
+	rayon-core@1.13.0
+	rayon@1.12.0
+	redox_syscall@0.5.18
+	redox_users@0.4.6
+	regex-automata@0.4.18
+	regex-syntax@0.8.11
+	regex@1.13.1
+	rocksdb@0.22.0
+	rsqlite-vfs@0.1.1
+	rusqlite@0.40.2
+	rust-embed-impl@8.14.0
+	rust-embed-utils@8.14.0
+	rust-embed@8.14.0
+	rustc-demangle@0.1.28
+	rustc-hash@1.1.0
+	rustc-hash@2.1.3
+	rustc-serialize@0.3.25
+	rustix@1.1.6
+	rustversion@1.0.23
+	same-file@1.0.6
+	scopeguard@1.2.0
+	serde@1.0.229
+	serde_core@1.0.229
+	serde_derive@1.0.229
+	serde_json@1.0.154
+	serde_spanned@1.1.3
+	sha2@0.10.9
+	sha2@0.11.1
+	shakmaty-syzygy@0.28.0
+	shakmaty@0.30.0
+	shell-escape@0.1.5
+	shell-words@1.1.1
+	shlex@1.3.0
+	shlex@2.0.1
+	simd-adler32@0.3.10
+	slab@0.4.12
+	smallvec@1.16.5
+	sqlite-wasm-rs@0.5.5
+	stable_deref_trait@1.2.1
+	strsim@0.11.1
+	syn@2.0.119
+	syn@3.0.10
+	synstructure@0.14.0
+	sys-locale@0.3.2
+	sysinfo@0.38.4
+	tempfile@3.27.0
+	term@0.7.0
+	termtree@0.4.1
+	textwrap@0.16.4
+	thiserror-impl@1.0.69
+	thiserror-impl@2.0.21
+	thiserror@1.0.69
+	thiserror@2.0.21
+	tikv-jemalloc-sys@0.5.4+5.3.0-patched
+	tinystr@0.8.5
+	toml@0.5.11
+	toml@1.2.1+spec-1.1.0
+	toml_datetime@1.1.3+spec-1.1.0
+	toml_writer@1.2.0+spec-1.1.0
+	tr@0.1.11
+	tracing-attributes@0.1.31
+	tracing-core@0.1.36
+	tracing@0.1.44
+	type-map@0.5.1
+	typenum@1.20.1
+	unic-langid-impl@0.9.6
+	unic-langid@0.9.6
+	unicase@2.10.0
+	unicode-ident@1.0.27
+	unicode-width@0.1.14
+	unicode-width@0.2.3
+	unit-prefix@0.5.2
+	url@2.5.8
+	username@0.2.0
+	utf8_iter@1.1.0
+	utf8parse@0.2.2
+	utf_types@1.0.0
+	uuid@1.26.1
+	vcpkg@0.2.15
+	version_check@0.9.5
+	walkdir@2.5.0
+	wasi@0.11.1+wasi-snapshot-preview1
+	wasip2@1.0.4+wasi-0.2.12
+	wasm-bindgen-macro-support@0.2.130
+	wasm-bindgen-macro@0.2.130
+	wasm-bindgen-shared@0.2.130
+	wasm-bindgen@0.2.130
+	web-time@1.1.0
+	winapi-build@0.1.1
+	winapi-i686-pc-windows-gnu@0.4.0
+	winapi-util@0.1.11
+	winapi-x86_64-pc-windows-gnu@0.4.0
+	winapi@0.2.8
+	winapi@0.3.9
+	windows-collections@0.3.2
+	windows-core@0.62.2
+	windows-future@0.3.2
+	windows-implement@0.60.2
+	windows-interface@0.59.3
+	windows-link@0.2.1
+	windows-numerics@0.3.1
+	windows-result@0.4.1
+	windows-strings@0.5.1
+	windows-sys@0.61.2
+	windows-threading@0.2.1
+	windows@0.62.2
+	wit-bindgen@0.57.1
+	writeable@0.6.4
+	xz2@0.1.7
+	yoke-derive@0.8.4
+	yoke@0.8.4
+	zerocopy-derive@0.8.63
+	zerocopy@0.8.63
+	zerofrom-derive@0.1.8
+	zerofrom@0.1.8
+	zeroize@1.9.1
+	zerotrie@0.2.5
+	zerovec-derive@0.11.7
+	zerovec@0.11.9
+	zlib-rs@0.6.8
+	zmij@1.0.23
+	zstd-safe@8.2.0
+	zstd-sys@2.1.2+zstd.1.5.7
+	zstd@0.14.3
+"
+
+LLVM_COMPAT=( {19..23} )
+
+inherit cargo llvm-r2
+
+DESCRIPTION="swiss army knife for chess file formats"
+HOMEPAGE="https://git.sr.ht/~alip/jja"
+
+if [[ "${PV}" == "9999" ]] ; then
+	EGIT_REPO_URI="https://git.sr.ht/~alip/${PN}"
+	inherit git-r3
+	S="${WORKDIR}/${P}"
+else
+	SRC_URI="https://git.sr.ht/~alip/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
+	${CARGO_CRATE_URIS}
+	"
+
+	KEYWORDS="~amd64"
+fi
+
+# rocksdb needs clang
+DEPEND+="$(llvm_gen_dep '
+	llvm-core/clang:${LLVM_SLOT}
+	llvm-core/llvm:${LLVM_SLOT}
+	')
+	sys-libs/liburing"
+RDEPEND=${DEPEND}
+LICENSE="GPL-3+"
+
+# Dependent crate licenses
+LICENSE+=" Apache-2.0 BSD CC0-1.0 GPL-3+ ISC MIT Unicode-DFS-2016"
+SLOT="0"
+
+pkg_setup() {
+	llvm-r2_pkg_setup
+	rust_pkg_setup
+}
+
+src_unpack() {
+
+	if [[ "${PV}" == "9999" ]] ; then
+		git-r3_src_unpack
+		cargo_live_src_unpack
+	else
+		cargo_src_unpack
+	fi
+
+}
