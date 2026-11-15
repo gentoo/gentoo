@@ -11,7 +11,7 @@ SRC_URI="https://github.com/mirage/checkseum/archive/v${PV}.tar.gz -> ${P}.gh.ta
 
 LICENSE="MIT"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE="+ocamlopt test"
 RESTRICT="!test? ( test )"
 
