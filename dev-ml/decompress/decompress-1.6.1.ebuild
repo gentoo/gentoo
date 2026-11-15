@@ -11,7 +11,7 @@ SRC_URI="https://github.com/mirage/decompress/archive/v${PV}.tar.gz -> ${P}.gh.t
 
 LICENSE="MIT"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE="+ocamlopt test"
 RESTRICT="!test? ( test )"
 
