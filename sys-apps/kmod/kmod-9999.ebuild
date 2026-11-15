@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,7 +18,7 @@ fi
 
 LICENSE="LGPL-2.1+ tools? ( GPL-2+ )"
 SLOT="0"
-IUSE="debug doc +lzma pkcs7 +tools +zlib +zstd"
+IUSE="debug doc +lzma mbedtls pkcs7 +tools +zlib +zstd"
 
 # - >=zlib-1.2.6 required because of bug #427130
 # - >=zstd-1.5.2-r1 required for bug #771078
@@ -27,6 +27,7 @@ RDEPEND="
 	pkcs7? ( >=dev-libs/openssl-1.1.0:= )
 	zlib? ( >=virtual/zlib-1.2.6:= )
 	zstd? ( >=app-arch/zstd-1.5.2-r1:= )
+	mbedtls? ( >=net-libs/mbedtls-3.6.4:= )
 "
 DEPEND="${RDEPEND}"
 
@@ -39,6 +40,10 @@ BDEPEND="
 	lzma? ( virtual/pkgconfig )
 	zlib? ( virtual/pkgconfig )
 "
+
+PATCHES=(
+	"${FILESDIR}/${P}-mbedtls-pkgconfig-name.patch"
+)
 
 pkg_setup() {
 	:
@@ -61,6 +66,7 @@ src_configure() {
 		$(meson_feature pkcs7 openssl)
 		$(meson_feature zlib)
 		$(meson_feature zstd)
+		$(meson_feature mbedtls)
 	)
 
 	meson_src_configure
