@@ -30,6 +30,10 @@ BDEPEND="test? ( dev-util/cmocka )"
 
 DOCS=( jffsX-utils/device_table.txt )
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.3.1-ub.patch
+)
+
 src_configure() {
 	# Tests fail with LTO (cmocka, bug #943725)
 	filter-lto
