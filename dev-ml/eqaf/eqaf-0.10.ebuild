@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit dune
+inherit dune multiprocessing
 
 DESCRIPTION="Constant time equal function to avoid timing attacks in OCaml"
 HOMEPAGE="https://github.com/mirage/eqaf"
@@ -11,7 +11,7 @@ SRC_URI="https://github.com/mirage/${PN}/archive/v${PV}.tar.gz -> ${P}.gh.tar.gz
 
 LICENSE="MIT"
 SLOT="0/${PV}"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE="+ocamlopt test"
 RESTRICT="!test? ( test )"
 
