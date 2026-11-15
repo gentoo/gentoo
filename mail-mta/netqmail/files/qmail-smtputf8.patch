@@ -4,7 +4,7 @@ email.
 Thanks for CNNIC for sponsoring this work.
 
 --- /dev/null
-+++ netqmail-1.06/Makefile
++++ b/Makefile
 @@ -1446,7 +1446,7 @@ substdio.a error.a str.a fs.a auto_qmail.o dns.lib socket.lib
  	timeoutwrite.o timeoutconn.o tcpto.o now.o dns.o ip.o \
  	ipalloc.o ipme.o quote.o ndelay.a case.a sig.a open.a \
@@ -15,7 +15,7 @@ Thanks for CNNIC for sponsoring this work.
  qmail-remote.0: \
  qmail-remote.8
 --- /dev/null
-+++ netqmail-1.06/qmail-remote.c
++++ b/qmail-remote.c
 @@ -2,6 +2,7 @@
  #include <sys/socket.h>
  #include <netinet/in.h>
@@ -196,7 +196,7 @@ Thanks for CNNIC for sponsoring this work.
      case DNS_SOFT: temp_dns();
      case DNS_HARD: perm_dns();
 --- /dev/null
-+++ netqmail-1.06/qmail-smtpd.c
++++ b/qmail-smtpd.c
 @@ -273,6 +273,7 @@
  stralloc rcptto = {0};
  stralloc fuser = {0};

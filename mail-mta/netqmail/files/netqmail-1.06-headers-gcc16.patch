@@ -3,17 +3,15 @@ Add missing headers and declarations for GCC 16.
 Based on Nuitari netqmail-c14.patch (bug #885061).
 Bug: https://bugs.gentoo.org/944901
 
-diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/bouncesaying.c /tmp/tmpab2ykks0/netqmail-1.06/bouncesaying.c
---- a/bouncesaying.c	1998-06-15 12:53:16.000000000 +0200
-+++ b/bouncesaying.c	2026-05-31 18:51:39.964182899 +0200
+--- a/bouncesaying.c
++++ b/bouncesaying.c
 @@ -1,3 +1,4 @@
 +#include <unistd.h>
  #include "fork.h"
  #include "strerr.h"
  #include "error.h"
-diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/cdb_seek.c /tmp/tmpab2ykks0/netqmail-1.06/cdb_seek.c
---- a/cdb_seek.c	2007-11-30 21:22:54.000000000 +0100
-+++ b/cdb_seek.c	2026-05-31 18:51:39.988996297 +0200
+--- a/cdb_seek.c
++++ b/cdb_seek.c
 @@ -1,5 +1,6 @@
  #include <sys/types.h>
  #include <errno.h>
@@ -21,9 +19,8 @@ diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/cdb_seek.c /tmp/tmpab2ykks0/netqmail-1.
  #include "cdb.h"
  
  #ifndef SEEK_SET
-diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/cdbmss.h /tmp/tmpab2ykks0/netqmail-1.06/cdbmss.h
---- a/cdbmss.h	1998-06-15 12:53:16.000000000 +0200
-+++ b/cdbmss.h	2026-05-31 18:51:39.979145270 +0200
+--- a/cdbmss.h
++++ b/cdbmss.h
 @@ -13,4 +13,8 @@
    int fd;
  } ;
@@ -33,9 +30,8 @@ diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/cdbmss.h /tmp/tmpab2ykks0/netqmail-1.06
 +extern int cdbmss_finish();
 +
  #endif
-diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/chkshsgr.c /tmp/tmpab2ykks0/netqmail-1.06/chkshsgr.c
---- a/chkshsgr.c	1998-06-15 12:53:16.000000000 +0200
-+++ b/chkshsgr.c	2026-05-31 18:51:39.999253769 +0200
+--- a/chkshsgr.c
++++ b/chkshsgr.c
 @@ -1,7 +1,11 @@
 +#include <unistd.h>
 +#include <grp.h>
@@ -49,43 +45,38 @@ diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/chkshsgr.c /tmp/tmpab2ykks0/netqmail-1.
  
   x[0] = x[1] = 0;
   if (getgroups(1,x) == 0) if (setgroups(1,x) == -1) _exit(1);
-diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/dnsmxip.c /tmp/tmpab2ykks0/netqmail-1.06/dnsmxip.c
---- a/dnsmxip.c	1998-06-15 12:53:16.000000000 +0200
-+++ b/dnsmxip.c	2026-05-31 18:51:40.471854779 +0200
+--- a/dnsmxip.c
++++ b/dnsmxip.c
 @@ -1,3 +1,4 @@
 +#include <unistd.h>
  #include "substdio.h"
  #include "subfd.h"
  #include "stralloc.h"
-diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/except.c /tmp/tmpab2ykks0/netqmail-1.06/except.c
---- a/except.c	1998-06-15 12:53:16.000000000 +0200
-+++ b/except.c	2026-05-31 18:51:40.012931255 +0200
+--- a/except.c
++++ b/except.c
 @@ -1,3 +1,4 @@
 +#include <unistd.h>
  #include "fork.h"
  #include "strerr.h"
  #include "wait.h"
-diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/fd_copy.c /tmp/tmpab2ykks0/netqmail-1.06/fd_copy.c
---- a/fd_copy.c	1998-06-15 12:53:16.000000000 +0200
-+++ b/fd_copy.c	2026-05-31 18:51:40.026231789 +0200
+--- a/fd_copy.c
++++ b/fd_copy.c
 @@ -1,4 +1,5 @@
  #include <fcntl.h>
 +#include <unistd.h>
  #include "fd.h"
  
  int fd_copy(to,from)
-diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/fd_move.c /tmp/tmpab2ykks0/netqmail-1.06/fd_move.c
---- a/fd_move.c	1998-06-15 12:53:16.000000000 +0200
-+++ b/fd_move.c	2026-05-31 18:51:40.037038011 +0200
+--- a/fd_move.c
++++ b/fd_move.c
 @@ -1,4 +1,5 @@
  #include "fd.h"
 +#include <unistd.h>
  
  int fd_move(to,from)
  int to;
-diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/hier.c /tmp/tmpab2ykks0/netqmail-1.06/hier.c
---- a/hier.c	1998-06-15 12:53:16.000000000 +0200
-+++ b/hier.c	2026-05-31 18:51:40.046753153 +0200
+--- a/hier.c
++++ b/hier.c
 @@ -3,6 +3,7 @@
  #include "auto_uids.h"
  #include "fmt.h"
@@ -94,9 +85,8 @@ diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/hier.c /tmp/tmpab2ykks0/netqmail-1.06/h
  
  char buf[100 + FMT_ULONG];
  
-diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/idedit.c /tmp/tmpab2ykks0/netqmail-1.06/idedit.c
---- a/idedit.c	1998-06-15 12:53:16.000000000 +0200
-+++ b/idedit.c	2026-05-31 18:51:40.055719743 +0200
+--- a/idedit.c
++++ b/idedit.c
 @@ -9,6 +9,7 @@
  #include "open.h"
  #include "seek.h"
@@ -105,9 +95,8 @@ diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/idedit.c /tmp/tmpab2ykks0/netqmail-1.06
  
  #define FATAL "idedit: fatal: "
  #define WARNING "idedit: warning: "
-diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/install-big.c /tmp/tmpab2ykks0/netqmail-1.06/install-big.c
---- a/install-big.c	1998-06-15 12:53:16.000000000 +0200
-+++ b/install-big.c	2026-05-31 18:51:40.074323984 +0200
+--- a/install-big.c
++++ b/install-big.c
 @@ -3,6 +3,7 @@
  #include "auto_uids.h"
  #include "fmt.h"
@@ -116,9 +105,8 @@ diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/install-big.c /tmp/tmpab2ykks0/netqmail
  
  char buf[100 + FMT_ULONG];
  
-diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/install.c /tmp/tmpab2ykks0/netqmail-1.06/install.c
---- a/install.c	1998-06-15 12:53:16.000000000 +0200
-+++ b/install.c	2026-05-31 18:51:40.087843087 +0200
+--- a/install.c
++++ b/install.c
 @@ -1,9 +1,11 @@
 +#include <sys/stat.h>
  #include "substdio.h"
@@ -131,9 +119,8 @@ diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/install.c /tmp/tmpab2ykks0/netqmail-1.0
  
  extern void hier();
  
-diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/install.h /tmp/tmpab2ykks0/netqmail-1.06/install.h
---- a/install.h	1970-01-01 01:00:00.000000000 +0100
-+++ b/install.h	2026-05-31 18:51:40.102539476 +0200
+--- a/install.h
++++ b/install.h
 @@ -0,0 +1,10 @@
 +#ifndef INSTALL_H
 +#define INSTALL_H
@@ -145,9 +132,8 @@ diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/install.h /tmp/tmpab2ykks0/netqmail-1.0
 +extern void c();  /* copy file with specified permissions */
 +
 +#endif
-diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/ipme.c /tmp/tmpab2ykks0/netqmail-1.06/ipme.c
---- a/ipme.c	2026-05-31 18:51:40.562353614 +0200
-+++ b/ipme.c	2026-05-31 18:51:40.122424249 +0200
+--- a/ipme.c
++++ b/ipme.c
 @@ -8,6 +8,7 @@
  #ifndef SIOCGIFCONF /* whatever works */
  #include <sys/sockio.h>
@@ -156,9 +142,8 @@ diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/ipme.c /tmp/tmpab2ykks0/netqmail-1.06/i
  #include "hassalen.h"
  #include "byte.h"
  #include "ip.h"
-diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/maildir.c /tmp/tmpab2ykks0/netqmail-1.06/maildir.c
---- a/maildir.c	1998-06-15 12:53:16.000000000 +0200
-+++ b/maildir.c	2026-05-31 18:51:40.144920242 +0200
+--- a/maildir.c
++++ b/maildir.c
 @@ -1,5 +1,6 @@
  #include <sys/types.h>
  #include <sys/stat.h>
@@ -166,35 +151,31 @@ diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/maildir.c /tmp/tmpab2ykks0/netqmail-1.0
  #include "prioq.h"
  #include "env.h"
  #include "stralloc.h"
-diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/maildir2mbox.c /tmp/tmpab2ykks0/netqmail-1.06/maildir2mbox.c
---- a/maildir2mbox.c	1998-06-15 12:53:16.000000000 +0200
-+++ b/maildir2mbox.c	2026-05-31 18:51:40.138243683 +0200
+--- a/maildir2mbox.c
++++ b/maildir2mbox.c
 @@ -1,3 +1,5 @@
 +#include <stdio.h>
 +#include <sys/stat.h>
  #include "readwrite.h"
  #include "prioq.h"
  #include "env.h"
-diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/maildirmake.c /tmp/tmpab2ykks0/netqmail-1.06/maildirmake.c
---- a/maildirmake.c	1998-06-15 12:53:16.000000000 +0200
-+++ b/maildirmake.c	2026-05-31 18:51:40.166110750 +0200
+--- a/maildirmake.c
++++ b/maildirmake.c
 @@ -1,3 +1,5 @@
 +#include <sys/stat.h>
 +#include <unistd.h>
  #include "strerr.h"
  #include "exit.h"
  
-diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/newfield.c /tmp/tmpab2ykks0/netqmail-1.06/newfield.c
---- a/newfield.c	1998-06-15 12:53:16.000000000 +0200
-+++ b/newfield.c	2026-05-31 18:51:40.174991177 +0200
+--- a/newfield.c
++++ b/newfield.c
 @@ -1,3 +1,4 @@
 +#include <unistd.h>
  #include "fmt.h"
  #include "datetime.h"
  #include "stralloc.h"
-diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/predate.c /tmp/tmpab2ykks0/netqmail-1.06/predate.c
---- a/predate.c	1998-06-15 12:53:16.000000000 +0200
-+++ b/predate.c	2026-05-31 18:51:40.193843431 +0200
+--- a/predate.c
++++ b/predate.c
 @@ -10,6 +10,7 @@
  #include "subfd.h"
  #include "readwrite.h"
@@ -203,9 +184,8 @@ diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/predate.c /tmp/tmpab2ykks0/netqmail-1.0
  
  #define FATAL "predate: fatal: "
  
-diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/prot.c /tmp/tmpab2ykks0/netqmail-1.06/prot.c
---- a/prot.c	1998-06-15 12:53:16.000000000 +0200
-+++ b/prot.c	2026-05-31 18:51:40.218232928 +0200
+--- a/prot.c
++++ b/prot.c
 @@ -1,5 +1,7 @@
  #include "hasshsgr.h"
  #include "prot.h"
@@ -214,17 +194,15 @@ diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/prot.c /tmp/tmpab2ykks0/netqmail-1.06/p
  
  /* XXX: there are more portability problems here waiting to leap out at me */
  
-diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/qmail-inject.c /tmp/tmpab2ykks0/netqmail-1.06/qmail-inject.c
---- a/qmail-inject.c	1998-06-15 12:53:16.000000000 +0200
-+++ b/qmail-inject.c	2026-05-31 18:51:40.450651893 +0200
+--- a/qmail-inject.c
++++ b/qmail-inject.c
 @@ -1,3 +1,4 @@
 +#include <unistd.h>
  #include "sig.h"
  #include "substdio.h"
  #include "stralloc.h"
-diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/qmail-lspawn.c /tmp/tmpab2ykks0/netqmail-1.06/qmail-lspawn.c
---- a/qmail-lspawn.c	1998-06-15 12:53:16.000000000 +0200
-+++ b/qmail-lspawn.c	2026-05-31 18:51:40.477970213 +0200
+--- a/qmail-lspawn.c
++++ b/qmail-lspawn.c
 @@ -1,3 +1,4 @@
 +#include <unistd.h>
  #include "fd.h"
@@ -239,9 +217,8 @@ diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/qmail-lspawn.c /tmp/tmpab2ykks0/netqmai
  
  char *aliasempty;
  
-diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/qmail-newmrh.c /tmp/tmpab2ykks0/netqmail-1.06/qmail-newmrh.c
---- a/qmail-newmrh.c	1998-06-15 12:53:16.000000000 +0200
-+++ b/qmail-newmrh.c	2026-05-31 18:51:40.245973771 +0200
+--- a/qmail-newmrh.c
++++ b/qmail-newmrh.c
 @@ -1,3 +1,5 @@
 +#include <stdio.h>
 +#include <sys/stat.h>
@@ -256,9 +233,8 @@ diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/qmail-newmrh.c /tmp/tmpab2ykks0/netqmai
  
  #define FATAL "qmail-newmrh: fatal: "
  
-diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/qmail-newu.c /tmp/tmpab2ykks0/netqmail-1.06/qmail-newu.c
---- a/qmail-newu.c	1998-06-15 12:53:16.000000000 +0200
-+++ b/qmail-newu.c	2026-05-31 18:51:40.263931042 +0200
+--- a/qmail-newu.c
++++ b/qmail-newu.c
 @@ -1,3 +1,5 @@
 +#include <sys/stat.h>
 +#include <stdio.h>
@@ -273,9 +249,8 @@ diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/qmail-newu.c /tmp/tmpab2ykks0/netqmail-
  
  void die_temp() { _exit(111); }
  
-diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/qmail-pw2u.c /tmp/tmpab2ykks0/netqmail-1.06/qmail-pw2u.c
---- a/qmail-pw2u.c	2026-05-31 18:51:40.536295313 +0200
-+++ b/qmail-pw2u.c	2026-05-31 18:51:40.275322695 +0200
+--- a/qmail-pw2u.c
++++ b/qmail-pw2u.c
 @@ -17,6 +17,7 @@
  #include "auto_break.h"
  #include "auto_qmail.h"
@@ -284,9 +259,8 @@ diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/qmail-pw2u.c /tmp/tmpab2ykks0/netqmail-
  
  void die_chdir()
  {
-diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/qmail-qmqpc.c /tmp/tmpab2ykks0/netqmail-1.06/qmail-qmqpc.c
---- a/qmail-qmqpc.c	1998-06-15 12:53:16.000000000 +0200
-+++ b/qmail-qmqpc.c	2026-05-31 18:51:40.283960008 +0200
+--- a/qmail-qmqpc.c
++++ b/qmail-qmqpc.c
 @@ -135,7 +135,7 @@
  
  stralloc servers = {0};
@@ -296,9 +270,8 @@ diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/qmail-qmqpc.c /tmp/tmpab2ykks0/netqmail
  {
    int i;
    int j;
-diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/qmail-qmqpd.c /tmp/tmpab2ykks0/netqmail-1.06/qmail-qmqpd.c
---- a/qmail-qmqpd.c	1998-06-15 12:53:16.000000000 +0200
-+++ b/qmail-qmqpd.c	2026-05-31 18:51:40.301820955 +0200
+--- a/qmail-qmqpd.c
++++ b/qmail-qmqpd.c
 @@ -8,6 +8,8 @@
  #include "now.h"
  #include "fmt.h"
@@ -317,9 +290,8 @@ diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/qmail-qmqpd.c /tmp/tmpab2ykks0/netqmail
  {
    char *result;
    unsigned long qp;
-diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/qmail-qmtpd.c /tmp/tmpab2ykks0/netqmail-1.06/qmail-qmtpd.c
---- a/qmail-qmtpd.c	2026-05-31 18:51:40.540973785 +0200
-+++ b/qmail-qmtpd.c	2026-05-31 18:51:40.314232393 +0200
+--- a/qmail-qmtpd.c
++++ b/qmail-qmtpd.c
 @@ -12,6 +12,7 @@
  #include "readwrite.h"
  #include "control.h"
@@ -337,17 +309,15 @@ diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/qmail-qmtpd.c /tmp/tmpab2ykks0/netqmail
  {
    char ch;
    int i;
-diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/qmail-rspawn.c /tmp/tmpab2ykks0/netqmail-1.06/qmail-rspawn.c
---- a/qmail-rspawn.c	1998-06-15 12:53:16.000000000 +0200
-+++ b/qmail-rspawn.c	2026-05-31 18:51:40.442896892 +0200
+--- a/qmail-rspawn.c
++++ b/qmail-rspawn.c
 @@ -1,3 +1,4 @@
 +#include <unistd.h>
  #include "fd.h"
  #include "wait.h"
  #include "substdio.h"
-diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/qmail-send.c /tmp/tmpab2ykks0/netqmail-1.06/qmail-send.c
---- a/qmail-send.c	1998-06-15 12:53:16.000000000 +0200
-+++ b/qmail-send.c	2026-05-31 18:51:40.331974253 +0200
+--- a/qmail-send.c
++++ b/qmail-send.c
 @@ -1,5 +1,6 @@
  #include <sys/types.h>
  #include <sys/stat.h>
@@ -374,9 +344,8 @@ diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/qmail-send.c /tmp/tmpab2ykks0/netqmail-
         log3("warning: unable to utime ",fn.s,"; message will be retried too soon\n");
      }
  }
-diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/qmail-showctl.c /tmp/tmpab2ykks0/netqmail-1.06/qmail-showctl.c
---- a/qmail-showctl.c	1998-06-15 12:53:16.000000000 +0200
-+++ b/qmail-showctl.c	2026-05-31 18:51:40.483759431 +0200
+--- a/qmail-showctl.c
++++ b/qmail-showctl.c
 @@ -1,5 +1,6 @@
  #include <sys/types.h>
  #include <sys/stat.h>
@@ -384,18 +353,16 @@ diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/qmail-showctl.c /tmp/tmpab2ykks0/netqma
  #include "substdio.h"
  #include "subfd.h"
  #include "exit.h"
-diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/qmail-start.c /tmp/tmpab2ykks0/netqmail-1.06/qmail-start.c
---- a/qmail-start.c	1998-06-15 12:53:16.000000000 +0200
-+++ b/qmail-start.c	2026-05-31 18:51:40.342665830 +0200
+--- a/qmail-start.c
++++ b/qmail-start.c
 @@ -1,3 +1,5 @@
 +#include <unistd.h>
 +#include <sys/stat.h>
  #include "fd.h"
  #include "prot.h"
  #include "exit.h"
-diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/qmail-tcpto.c /tmp/tmpab2ykks0/netqmail-1.06/qmail-tcpto.c
---- a/qmail-tcpto.c	1998-06-15 12:53:16.000000000 +0200
-+++ b/qmail-tcpto.c	2026-05-31 18:51:40.455568144 +0200
+--- a/qmail-tcpto.c
++++ b/qmail-tcpto.c
 @@ -1,3 +1,4 @@
 +#include <unistd.h>
  /* XXX: this program knows quite a bit about tcpto's internals */
@@ -410,9 +377,8 @@ diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/qmail-tcpto.c /tmp/tmpab2ykks0/netqmail
  
  void die(n) int n; { substdio_flush(subfdout); _exit(n); }
  
-diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/rcpthosts.c /tmp/tmpab2ykks0/netqmail-1.06/rcpthosts.c
---- a/rcpthosts.c	1998-06-15 12:53:16.000000000 +0200
-+++ b/rcpthosts.c	2026-05-31 18:51:40.359101294 +0200
+--- a/rcpthosts.c
++++ b/rcpthosts.c
 @@ -6,6 +6,7 @@
  #include "constmap.h"
  #include "stralloc.h"
@@ -421,9 +387,8 @@ diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/rcpthosts.c /tmp/tmpab2ykks0/netqmail-1
  
  static int flagrh = 0;
  static stralloc rh = {0};
-diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/remoteinfo.c /tmp/tmpab2ykks0/netqmail-1.06/remoteinfo.c
---- a/remoteinfo.c	1998-06-15 12:53:16.000000000 +0200
-+++ b/remoteinfo.c	2026-05-31 18:51:40.464195011 +0200
+--- a/remoteinfo.c
++++ b/remoteinfo.c
 @@ -2,6 +2,7 @@
  #include <sys/socket.h>
  #include <netinet/in.h>
@@ -432,9 +397,8 @@ diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/remoteinfo.c /tmp/tmpab2ykks0/netqmail-
  #include "byte.h"
  #include "substdio.h"
  #include "ip.h"
-diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/scan.h /tmp/tmpab2ykks0/netqmail-1.06/scan.h
---- a/scan.h	1998-06-15 12:53:16.000000000 +0200
-+++ b/scan.h	2026-05-31 18:51:40.367949787 +0200
+--- a/scan.h
++++ b/scan.h
 @@ -23,5 +23,6 @@
  extern unsigned int scan_memcmp();
  
@@ -442,53 +406,47 @@ diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/scan.h /tmp/tmpab2ykks0/netqmail-1.06/s
 +extern unsigned int scan_8long();
  
  #endif
-diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/seek_cur.c /tmp/tmpab2ykks0/netqmail-1.06/seek_cur.c
---- a/seek_cur.c	1998-06-15 12:53:16.000000000 +0200
-+++ b/seek_cur.c	2026-05-31 18:51:40.381723439 +0200
+--- a/seek_cur.c
++++ b/seek_cur.c
 @@ -1,4 +1,5 @@
  #include <sys/types.h>
 +#include <unistd.h>
  #include "seek.h"
  
  #define CUR 1 /* sigh */
-diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/seek_end.c /tmp/tmpab2ykks0/netqmail-1.06/seek_end.c
---- a/seek_end.c	1998-06-15 12:53:16.000000000 +0200
-+++ b/seek_end.c	2026-05-31 18:51:40.387553963 +0200
+--- a/seek_end.c
++++ b/seek_end.c
 @@ -1,4 +1,5 @@
  #include <sys/types.h>
 +#include <unistd.h>
  #include "seek.h"
  
  #define END 2 /* sigh */
-diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/seek_set.c /tmp/tmpab2ykks0/netqmail-1.06/seek_set.c
---- a/seek_set.c	1998-06-15 12:53:16.000000000 +0200
-+++ b/seek_set.c	2026-05-31 18:51:40.396552494 +0200
+--- a/seek_set.c
++++ b/seek_set.c
 @@ -1,4 +1,5 @@
  #include <sys/types.h>
 +#include <unistd.h>
  #include "seek.h"
  
  #define SET 0 /* sigh */
-diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/seek_trunc.c /tmp/tmpab2ykks0/netqmail-1.06/seek_trunc.c
---- a/seek_trunc.c	1998-06-15 12:53:16.000000000 +0200
-+++ b/seek_trunc.c	2026-05-31 18:51:40.405496343 +0200
+--- a/seek_trunc.c
++++ b/seek_trunc.c
 @@ -1,4 +1,5 @@
  #include <sys/types.h>
 +#include <unistd.h>
  #include "seek.h"
  
  int seek_trunc(fd,pos) int fd; seek_pos pos;
-diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/sendmail.c /tmp/tmpab2ykks0/netqmail-1.06/sendmail.c
---- a/sendmail.c	2007-11-30 21:22:54.000000000 +0100
-+++ b/sendmail.c	2026-05-31 18:51:40.458117740 +0200
+--- a/sendmail.c
++++ b/sendmail.c
 @@ -1,3 +1,4 @@
 +#include <unistd.h>
  #include "sgetopt.h"
  #include "substdio.h"
  #include "subfd.h"
-diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/spawn.c /tmp/tmpab2ykks0/netqmail-1.06/spawn.c
---- a/spawn.c	2007-11-30 21:22:54.000000000 +0100
-+++ b/spawn.c	2026-05-31 18:51:40.487321182 +0200
+--- a/spawn.c
++++ b/spawn.c
 @@ -1,5 +1,6 @@
  #include <sys/types.h>
  #include <sys/stat.h>
@@ -496,9 +454,8 @@ diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/spawn.c /tmp/tmpab2ykks0/netqmail-1.06/
  #include "sig.h"
  #include "wait.h"
  #include "substdio.h"
-diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/tcp-env.c /tmp/tmpab2ykks0/netqmail-1.06/tcp-env.c
---- a/tcp-env.c	1998-06-15 12:53:16.000000000 +0200
-+++ b/tcp-env.c	2026-05-31 18:51:40.410773274 +0200
+--- a/tcp-env.c
++++ b/tcp-env.c
 @@ -2,6 +2,7 @@
  #include <sys/socket.h>
  #include <sys/param.h>
@@ -507,17 +464,15 @@ diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/tcp-env.c /tmp/tmpab2ykks0/netqmail-1.0
  #include "sig.h"
  #include "stralloc.h"
  #include "str.h"
-diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/trigger.c /tmp/tmpab2ykks0/netqmail-1.06/trigger.c
---- a/trigger.c	1998-06-15 12:53:16.000000000 +0200
-+++ b/trigger.c	2026-05-31 18:51:40.421269274 +0200
+--- a/trigger.c
++++ b/trigger.c
 @@ -1,3 +1,4 @@
 +#include <unistd.h>
  #include "select.h"
  #include "open.h"
  #include "trigger.h"
-diff -ruN /tmp/tmp_3eyy89w/netqmail-1.06/triggerpull.c /tmp/tmpab2ykks0/netqmail-1.06/triggerpull.c
---- a/triggerpull.c	1998-06-15 12:53:16.000000000 +0200
-+++ b/triggerpull.c	2026-05-31 18:51:40.435417975 +0200
+--- a/triggerpull.c
++++ b/triggerpull.c
 @@ -1,3 +1,4 @@
 +#include <unistd.h>
  #include "ndelay.h"

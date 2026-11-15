@@ -4,12 +4,6 @@ Date: Thu, 29 Aug 2019 20:35:48 +0200
 Subject: [PATCH 1/2] ask kernel for the correct buffer size to satisfy
  SIOCGIFCONF before looping
 
----
- ipme.c | 41 ++++++++++++++++++++++++++++-------------
- 1 file changed, 28 insertions(+), 13 deletions(-)
-
-diff --git a/ipme.c b/ipme.c
-index 3c86127..d88785d 100644
 --- a/ipme.c
 +++ b/ipme.c
 @@ -52,20 +52,35 @@ int ipme_init()
@@ -75,13 +69,6 @@ actually up, and when doing this overwrites the information it is currently
 looking at. The code when sa_len is available copies the current IP address out
 before checking if the link is up. Reorder the code so both branches share more
 code and both work.
----
- CHANGES |  2 ++
- ipme.c  | 14 +++-----------
- 2 files changed, 5 insertions(+), 11 deletions(-)
-
-diff --git a/ipme.c b/ipme.c
-index d88785d..e163f5b 100644
 --- a/ipme.c
 +++ b/ipme.c
 @@ -89,6 +89,9 @@ int ipme_init()
