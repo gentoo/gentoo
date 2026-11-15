@@ -73,7 +73,7 @@ src_install() {
 	docinto ts3server
 	dodoc doc/*.{md,txt}
 
-	newinitd "${FILESDIR}"/teamspeak.initd-r1 teamspeak3-server
+	newinitd "${FILESDIR}"/teamspeak.initd-r2 teamspeak3-server
 	systemd_newunit "${FILESDIR}"/teamspeak.service teamspeak3-server.service
 
 	newenvd - 99teamspeak3-server <<- EOF

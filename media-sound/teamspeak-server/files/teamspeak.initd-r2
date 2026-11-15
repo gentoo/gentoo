@@ -3,9 +3,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 config="/etc/teamspeak3-server/ts3server.ini"
+directory="/opt/teamspeak3-server"
 name="TeamSpeak3 Server"
 pidfile="/run/${RC_SVCNAME}.pid"
-start_stop_daemon_args="--chdir /opt/teamspeak3-server --env TS3SERVER_LICENSE=accept"
+start_stop_daemon_args="--env TS3SERVER_LICENSE=accept"
 
 command="/opt/bin/ts3server"
 command_args="inifile=${config}"
