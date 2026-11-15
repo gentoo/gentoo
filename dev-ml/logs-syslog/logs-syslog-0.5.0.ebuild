@@ -11,7 +11,7 @@ SRC_URI="https://github.com/hannesm/${PN}/releases/download/v${PV}/${P}.tbz"
 
 LICENSE="ISC"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE="+ocamlopt"
 
 RDEPEND="
