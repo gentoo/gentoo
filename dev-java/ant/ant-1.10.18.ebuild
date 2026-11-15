@@ -332,6 +332,13 @@ src_test() {
 		org.apache.tools.ant.taskdefs.GetTest	# needs network access
 	)
 
+	# testBindingOfServices(org.apache.tools.ant.taskdefs.modules.LinkTest)
+	# Caused by: java.nio.file.NoSuchFileException: /opt/openjdk-bin-25.0.4.1_p1/man/man1/java.1
+	local vm_version="$(java-config -g PROVIDES_VERSION)"
+	if ver_test "${vm_version}" -ge 25; then
+		JAVA_TEST_EXCLUDES+=( org.apache.tools.ant.taskdefs.modules.LinkTest )
+	fi
+
 #	tests with patches to be revisited
 #	JAVA_TEST_RUN_ONLY=(
 #		org.apache.tools.ant.taskdefs.AntlibTest			# Tests run: 6,  Failures: 1 test2-antlib.jar?
