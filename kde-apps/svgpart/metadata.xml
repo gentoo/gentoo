@@ -6,6 +6,7 @@
 		<name>Gentoo KDE Project</name>
 	</maintainer>
 	<upstream>
-		<bugs-to>https://bugs.kde.org/</bugs-to>
+		<bugs-to>https://bugs.kde.org/</bugs-to> <!-- FIXME uppstream? -->
+		<remote-id type="kde-invent">graphics/svgpart</remote-id>
 	</upstream>
 </pkgmetadata>
