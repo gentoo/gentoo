@@ -12,7 +12,7 @@ SRC_URI="https://github.com/mirage/ocaml-tar/archive/v${PV}.tar.gz -> ${P}.gh.ta
 
 LICENSE="ISC"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~arm ~arm64"
+KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE="+ocamlopt"
 
 RDEPEND="
