@@ -1,0 +1,230 @@
+From d436517b67b57639111c1916bd469e49ef733da6 Mon Sep 17 00:00:00 2001
+From: "Z. Liu" <zhixu.liu@gmail.com>
+Date: Sun, 15 Nov 2026 19:27:59 +0800
+Subject: [PATCH 3/4] replace ERE by BRE to support back-reference on both
+ glibc & musl
+
+Back-reference support in ERE is not required by POSIX, and musl does not
+support it. Consequently, on musl, even if the build succeeds,
+--demangle=smart silently degrades.
+
+However, BRE back-reference support is defined by POSIX, so replace ERE
+with BRE.
+
+Note: unsigned short[ ]**\** becomes unsigned short[ ]*\**. In BRE,
+the doubled * is rejected by glibc (REG_BADRPT), while the accepted
+form matches exactly the same strings.
+
+Signed-off-by: Z. Liu <zhixu.liu@gmail.com>
+
+diff --git a/libregex/op_regex.cpp b/libregex/op_regex.cpp
+index 9140ec5b..dd7dc476 100644
+--- a/libregex/op_regex.cpp
++++ b/libregex/op_regex.cpp
+@@ -36,7 +36,7 @@ string op_regerror(int err, regex_t const & regexp)
+ 
+ void op_regcomp(regex_t & regexp, string const & pattern)
+ {
+-	int err = regcomp(&regexp, pattern.c_str(), REG_EXTENDED);
++	int err = regcomp(&regexp, pattern.c_str(), 0);
+ 	if (err) {
+ 		throw bad_regex("regcomp error: " + op_regerror(err, regexp)
+ 				+ " for pattern : " + pattern);
+@@ -263,14 +263,14 @@ void setup_regex(regular_expression_replace & regex,
+ 	}
+ 
+ 	regular_expression_replace var_name_rule;
+-	var_name_rule.add_pattern("^\\$([_a-zA-Z][_a-zA-Z0-9]*)[ ]*=.*", "\\1");
++	var_name_rule.add_pattern("^\\$\\([_a-zA-Z][_a-zA-Z0-9]*\\)[ ]*=.*", "\\1");
+ 	regular_expression_replace var_value_rule;
+-	var_value_rule.add_pattern(".*=[ ]*\"(.*)\"", "\\1");
++	var_value_rule.add_pattern(".*=[ ]*\"\\(.*\\)\"", "\\1");
+ 
+ 	regular_expression_replace left_rule;
+-	left_rule.add_pattern("[ ]*\"(.*)\"[ ]*=.*", "\\1");
++	left_rule.add_pattern("[ ]*\"\\(.*\\)\"[ ]*=.*", "\\1");
+ 	regular_expression_replace right_rule;
+-	right_rule.add_pattern(".*=[ ]*\"(.*)\"", "\\1");
++	right_rule.add_pattern(".*=[ ]*\"\\(.*\\)\"", "\\1");
+ 
+ 	string line;
+ 	while (getline(in, line)) {
+diff --git a/libregex/stl.pat.in b/libregex/stl.pat.in
+index 109235a8..d4cf47dd 100644
+--- a/libregex/stl.pat.in
++++ b/libregex/stl.pat.in
+@@ -16,10 +16,10 @@
+ 
+ # man regex is a friend, is it your ?
+ 
+-$integer = "\<[0-9]+"
++$integer = "\<[0-9]\{1,\}"
+ $identifier = "\<[_a-zA-Z][_a-zA-Z0-9]*"
+-$typename = "${identifier}(::${identifier})*"
+-$typename = "${typename}(<${typename}(, ${typename})*>)*"
++$typename = "${identifier}\(::${identifier}\)*"
++$typename = "${typename}\(<${typename}\(, ${typename}\)*>\)*"
+ # adding more substitution allow more nested templated type but we run out of
+ # \digit which is a wall. Indeed if you add more () grouping you need to
+ # rename all relevant \digit in pattern which use this regular definition
+@@ -27,37 +27,37 @@ $typename = "${typename}(<${typename}(, ${typename})*>)*"
+ # finally add standard C type not recognized by above patterns, the way to add
+ # pointer is ugly but we can't add any grouping to not overrun 9 max group
+ # in left pattern rules side..
+-$typename = "(${typename}[ ]*\**|unsigned short[ ]**\**|unsigned int[ ]*\**|unsigned long[ ]*\**|unsigned char[ ]*\**|signed char[ ]*\**|long long[ ]*\**|unsigned long long[ ]*\**|long double[ ]*\**)"
+-$ptrdiff_t_type = "(int|long)"
++$typename = "\(${typename}[ ]*\**\|unsigned short[ ]*\**\|unsigned int[ ]*\**\|unsigned long[ ]*\**\|unsigned char[ ]*\**\|signed char[ ]*\**\|long long[ ]*\**\|unsigned long long[ ]*\**\|long double[ ]*\**\)"
++$ptrdiff_t_type = "\(int\|long\)"
+ 
+ 
+ # FIXME: really discussable but simplify output and the next pattern.
+ "\<std::" = ""
+ " >" = ">"
+ # for these two we can't match begin of word.
+-"\{anonymous\}::" = ""
+-"\(anonymous namespace\)::" = ""
++"{anonymous}::" = ""
++"(anonymous namespace)::" = ""
+ 
+ # specific to gcc 2.95
+ "\<basic_string<char, string_char_traits<char>, __default_alloc_template<true, 0>>" = "string"
+ # two pass, first shrink allocator<> then less<> allowing map with user defined
+ # comparator
+-"\<(multi)?map<${typename}, ${typename}, ${typename}, allocator<\8>>" = "\1map<\2, \8, \e>"
+-"\<(multi)?map<${typename}, ${typename}, less<\2>>" = "\1map<\2, \8>"
++"\<\(multi\)\{0,1\}map<${typename}, ${typename}, ${typename}, allocator<\8>>" = "\1map<\2, \8, \e>"
++"\<\(multi\)\{0,1\}map<${typename}, ${typename}, less<\2>>" = "\1map<\2, \8>"
+ 
+-"\<bitset<(${integer}), unsigned long>" = "bitset<\1>"
+-"\<([io]stream_iterator)<char, ${ptrdiff_t_type}>" = "\1<char>"
++"\<bitset<\(${integer}\), unsigned long>" = "bitset<\1>"
++"\<\([io]stream_iterator\)<char, ${ptrdiff_t_type}>" = "\1<char>"
+ 
+ # common to all supported gcc version.
+ "\<deque<${typename}, allocator<\1>, 0>" = "deque<\1>"
+-"\<(stack|queue)<${typename}, deque<\2>>" = "\1<\2>"
+-"\<(vector|list|deque)<${typename}, allocator<\2>>" = "\1<\2>"
++"\<\(stack\|queue\)<${typename}, deque<\2>>" = "\1<\2>"
++"\<\(vector\|list\|deque\)<${typename}, allocator<\2>>" = "\1<\2>"
+ # strictly speaking 3rd parameters is less<ContainerType::value_type>
+ "\<priority_queue<${typename}, vector<\1>, less<\1>>" = "priority_queue<\1>"
+ # two pass, first shrink allocator<> then less<> allowing map with user defined
+ # comparator
+-"\<(multi)?set<${typename}, ${typename}, allocator<\2>>" = "\1set<\2, \8>"
+-"\<(multi)?set<${typename}, less<\2>>" = "\1set<\2>"
++"\<\(multi\)\{0,1\}set<${typename}, ${typename}, allocator<\2>>" = "\1set<\2, \8>"
++"\<\(multi\)\{0,1\}set<${typename}, less<\2>>" = "\1set<\2>"
+ 
+ # get ride of _Rb_tree iterator typedef, these are also mapped by map/set but
+ # we can't distinguish a set<pair<int, int>>::iterator and a
+@@ -66,39 +66,39 @@ $ptrdiff_t_type = "(int|long)"
+ "\<_Rb_tree_iterator<${typename}, \1 const[ ]*&, \1 const[ ]*\*>" = "_Rb_tree<\1>::const_iterator"
+ "\<_Rb_tree_iterator<${typename}, \1[ ]*&, \1[ ]*\*>" = "_Rb_tree<\1>::iterator"
+ # important special case for map/multimap iterator
+-"\<_Rb_tree_iterator<(pair<${typename} const, ${typename}>), \1 const[ ]*&, \1 const[ ]*\*>" = "_Rb_tree<\1>::const_iterator"
+-"\<_Rb_tree_iterator<(pair<${typename} const, ${typename}>), \1[ ]*&, \1[ ]*\*>" = "_Rb_tree<\1>::iterator"
++"\<_Rb_tree_iterator<\(pair<${typename} const, ${typename}>\), \1 const[ ]*&, \1 const[ ]*\*>" = "_Rb_tree<\1>::const_iterator"
++"\<_Rb_tree_iterator<\(pair<${typename} const, ${typename}>\), \1[ ]*&, \1[ ]*\*>" = "_Rb_tree<\1>::iterator"
+ # 2.95/3.2 set/multiset implementation
+ "\<_Rb_tree<${typename}, \1, _Identity<\1>, ${typename}, allocator<\1>>" = "_Rb_tree<\1, \1, _Identity<\1>, \7>"
+ "_Rb_tree<${typename}, \1, _Identity<\1>, less<\1>>" = "_Rb_tree<\1, \1, _Identity<\1>>"
+ # 2.95 map/multimap implementation
+-"\<_Rb_tree<${typename}, pair<\1 const, (${typename}( const)?)>, _Select1st<pair<\1 const, \7>>, less<\1>, allocator<\7>>" = "_Rb_tree<\1, pair<\1 const, \7>, _Select1st<pair<\1 const, \7>>, less<\1>>"
++"\<_Rb_tree<${typename}, pair<\1 const, \(${typename}\( const\)\{0,1\}\)>, _Select1st<pair<\1 const, \7>>, less<\1>, allocator<\7>>" = "_Rb_tree<\1, pair<\1 const, \7>, _Select1st<pair<\1 const, \7>>, less<\1>>"
+ # 3.2 map/multimap implementation
+ "\<_Rb_tree<${typename}, pair<\1 const, ${typename}>, _Select1st<pair<\1 const, \7>>, less<\1>, allocator<pair<\1 const, \7>>>" = "_Rb_tree<\1, pair<\1 const, \7>, _Select1st<pair<\1 const, \7>>, less<\1>>"
+ # now we can shrink default comparator.
+-"\<_Rb_tree<${typename}, pair<\1 const, (${typename}( const)?)>, _Select1st<pair<\1 const, \7>>, less<\1>>" = "_Rb_tree<\1, pair<\1 const, \7>, _Select1st<pair<\1 const, \7>>>"
++"\<_Rb_tree<${typename}, pair<\1 const, \(${typename}\( const\)\{0,1\}\)>, _Select1st<pair<\1 const, \7>>, less<\1>>" = "_Rb_tree<\1, pair<\1 const, \7>, _Select1st<pair<\1 const, \7>>>"
+ # get rid of _Select1st and _Identity
+ # FIXME: the presence od _Identity<> and _Select1st<> allowed to quickly
+ # differentiate a set or a map, the rule now to differentiate them is:
+ # second parameter to _Rb_tree* is a pair<> ==> map else set<>. Either we need
+ # to document this or remove _Identity and _Select1st pattern
+ "\<_Identity<${typename}>" = "\1"
+-"\<_Select1st<pair<${typename} const, ${typename}( const)?>>" = "\1 const"
++"\<_Select1st<pair<${typename} const, ${typename}\( const\)\{0,1\}>>" = "\1 const"
+ 
+ "\<_List_base<${typename}, allocator<\1>>" = "_List_base<\1>"
+ 
+ # 2.95 templatized operator<< and >> exist only for std::string
+-"\<ostream & operator<<<char, string_char_traits<char>, __default_alloc_template<true, 0>>\(ostream &, string const &\)" = "ostream & operator<<(ostream &, string const &)"
+-"\<istream & (operator>>|getline)<char, string_char_traits<char>, __default_alloc_template<true, 0>>\(istream &, string &\)" = "istream & \1(istream &, string &)"
++"\<ostream & operator<<<char, string_char_traits<char>, __default_alloc_template<true, 0>>(ostream &, string const &)" = "ostream & operator<<(ostream &, string const &)"
++"\<istream & \(operator>>\|getline\)<char, string_char_traits<char>, __default_alloc_template<true, 0>>(istream &, string &)" = "istream & \1(istream &, string &)"
+ 
+ # 3.0 templatized operator<< and >> exist only for std::string
+-"\<ostream& operator<< <char, char_traits<char>, allocator<char>>\(ostream&, string const&\)" = "ostream & operator<<(ostream &, string const &)"
+-"\<istream& (operator>>|getline) <char, char_traits<char>, allocator<char>>\(istream&, string&\)" = "istream & \1(istream &, string &)"
++"\<ostream& operator<< <char, char_traits<char>, allocator<char>>(ostream&, string const&)" = "ostream & operator<<(ostream &, string const &)"
++"\<istream& \(operator>>\|getline\) <char, char_traits<char>, allocator<char>>(istream&, string&)" = "istream & \1(istream &, string &)"
+ 
+ # 2.95/3.2 algorithm
+-"\<(${typename}( const)?) \* find<\1 \*, ${typename}>\(\1 \*, \1 \*, \9 const &, ${typename}\)" = "\1 * find(\1 *, \1 *, \9 const &, \f)"
++"\<\(${typename}\( const\)\{0,1\}\) \* find<\1 \*, ${typename}>(\1 \*, \1 \*, \9 const &, ${typename})" = "\1 * find(\1 *, \1 *, \9 const &, \f)"
+ 
+-"\<(${typename}( const)?) \* find_if<\1 \*, ${typename}>\(\1 \*, \1 \*, \9, random_access_iterator_tag)" = "\1 * find_if(\1 *, \1 *, \9, random_access_iterator_tag)"
++"\<\(${typename}\( const\)\{0,1\}\) \* find_if<\1 \*, ${typename}>(\1 \*, \1 \*, \9, random_access_iterator_tag)" = "\1 * find_if(\1 *, \1 *, \9, random_access_iterator_tag)"
+ 
+ # gcc 3.2, not tested on 3.0, 3.1 but probably work.
+ # FIXME: there is a potential problem here with map<int const, long>
+@@ -106,16 +106,16 @@ $ptrdiff_t_type = "(int|long)"
+ # is it legal ?
+ # two pass, first shrink allocator<> then less<> allowing map with user defined
+ # comparator
+-"\<(multi)?map<${typename}, ${typename}, ${typename}, allocator<pair<\2 const, \8>>>" = "\1map<\2, \8, \e>"
++"\<\(multi\)\{0,1\}map<${typename}, ${typename}, ${typename}, allocator<pair<\2 const, \8>>>" = "\1map<\2, \8, \e>"
+ # this one exist already for 2.95 the first transformation giving a common
+ # form for 2.95/3.2
+ # "\<(multi)?map<${typename}, ${typename}, less<\2>>" = "\1map<\2, \8>"
+ 
+-"\<bitset<\(unsigned( long)?\)(${integer})>" = "bitset<\2>"
++"\<bitset<(unsigned\( long\)\{0,1\})\(${integer}\)>" = "bitset<\2>"
+ 
+ # iterator
+-"\<iterator<(input|output|forward|bidirectional|random)_iterator_tag, ${typename}, (${ptrdiff_t_type}), \8\*, \8&>" = "iterator<\1_iterator_tag, \2>"
+-"\<([io]stream_iterator)<${typename}, char, char_traits<char>, ${ptrdiff_t_type}>" = "\1<\2>"
++"\<iterator<\(input\|output\|forward\|bidirectional\|random\)_iterator_tag, ${typename}, \(${ptrdiff_t_type}\), \8\*, \8&>" = "iterator<\1_iterator_tag, \2>"
++"\<\([io]stream_iterator\)<${typename}, char, char_traits<char>, ${ptrdiff_t_type}>" = "\1<\2>"
+ 
+ # __gnu_cxx::__normal_iterator are used in two context: basic_string<> and
+ # vector<T> we decay them to string::iterator, vector<T>::iterator
+@@ -134,11 +134,11 @@ $ptrdiff_t_type = "(int|long)"
+ 
+ # iosfwd, std::string and std::wstring
+ # first translate from "basic_xxx<T, char_traits<T>>" to "basic_xxx<T>"
+-"\<([io]streambuf_iterator|basic_(ios|streambuf|([io]|io)stream|filebuf|[io]?fstream))<${typename}, char_traits<\4>>" = "\1<\4>"
++"\<\([io]streambuf_iterator\|basic_\(ios\|streambuf\|\([io]\|io\)stream\|filebuf\|[io]\{0,1\}fstream\)\)<${typename}, char_traits<\4>>" = "\1<\4>"
+ # as above translate from "basic_xxx<T, char_traits<T>, ...>" to "basic_xxx<T>"
+-"\<basic_(string(buf)?|[io]?stringstream)?<${typename}, char_traits<\3>, allocator<\3>>" = "basic_\1<\3>"
++"\<basic_\(string\(buf\)\{0,1\}\|[io]\{0,1\}stringstream\)\{0,1\}<${typename}, char_traits<\3>, allocator<\3>>" = "basic_\1<\3>"
+ # now we can translate the two above for char, wchar_t to standardese typedef
+-$iosfwd_name = "\<basic_(string|ios|(stream|file|string)buf|(i|o|io)stream|[io]?(fstream|stringstream))"
++$iosfwd_name = "\<basic_\(string\|ios\|\(stream\|file\|string\)buf\|\(i\|o\|io\)stream\|[io]\{0,1\}\(fstream\|stringstream\)\)"
+ "\<${iosfwd_name}<char>" = "\1"
+ "\<${iosfwd_name}<wchar_t>" = "w\1"
+ 
+@@ -149,14 +149,14 @@ $iosfwd_name = "\<basic_(string|ios|(stream|file|string)buf|(i|o|io)stream|[io]?
+ # locale
+ # strictly speaking this accept num_put<..., istream_iterator<...> > or
+ # num_get<..., ostream_iterator<...> > but this can't compile so no big deal
+-"\<(money|time|num)_(put|get)<${typename}, (i|o)streambuf_iterator<\3>>" = "\1_\2<\3>"
+-"\<moneypunct(_byname)?<${typename}, \(bool\)0>" = "moneypunct\1<\2>"
++"\<\(money\|time\|num\)_\(put\|get\)<${typename}, \(i\|o\)streambuf_iterator<\3>>" = "\1_\2<\3>"
++"\<moneypunct\(_byname\)\{0,1\}<${typename}, (bool)0>" = "moneypunct\1<\2>"
+ 
+ # 3.2 algorithm
+-"\<(vector<${typename}>::(const_)?iterator) find<\1, ${typename}>\(\1, \1, \9 const&, ${typename}\)" = "\1 find(\1, \1, \9 const&, \f)"
++"\<\(vector<${typename}>::\(const_\)\{0,1\}iterator\) find<\1, ${typename}>(\1, \1, \9 const&, ${typename})" = "\1 find(\1, \1, \9 const&, \f)"
+ 
+-"\<((string|wstring)::(const_)?iterator) find<\1, ${typename}>\(\1, \1, \4 const&, ${typename}\)" = "\1 find(\1, \1, \4 const&, \a)"
++"\<\(\(string\|wstring\)::\(const_\)\{0,1\}iterator\) find<\1, ${typename}>(\1, \1, \4 const&, ${typename})" = "\1 find(\1, \1, \4 const&, \a)"
+ 
+-"\<(vector<${typename}>::(const_)?iterator) find_if<\1, ${typename}>\(\1, \1, \9, random_access_iterator_tag\)" = "\1 find_if(\1, \1, \9, random_access_iterator_tag)"
++"\<\(vector<${typename}>::\(const_\)\{0,1\}iterator\) find_if<\1, ${typename}>(\1, \1, \9, random_access_iterator_tag)" = "\1 find_if(\1, \1, \9, random_access_iterator_tag)"
+ 
+-"\<((string|wstring)::(const_)?iterator) find_if<\1, ${typename}>\(\1, \1, \4, random_access_iterator_tag\)" = "\1 find_if(\1, \1, \4, random_access_iterator_tag)"
++"\<\(\(string\|wstring\)::\(const_\)\{0,1\}iterator\) find_if<\1, ${typename}>(\1, \1, \4, random_access_iterator_tag)" = "\1 find_if(\1, \1, \4, random_access_iterator_tag)"
+-- 
+2.49.1
+
