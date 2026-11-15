@@ -1,0 +1,26 @@
+From b090fe60df7c7911ebf56fc13141c789296be28a Mon Sep 17 00:00:00 2001
+From: Heiko Becker <heiko.becker@kde.org>
+Date: Tue, 3 Nov 2026 13:21:58 +0100
+Subject: [PATCH] Link to KF6I18nQML instead of KF6I18n
+
+The KLocalizedQmlContext header moved to its own dir with ki18n > 6.31.
+---
+ src/calendar/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/calendar/CMakeLists.txt b/src/calendar/CMakeLists.txt
+index 8cc3dc9ac..d93a3315c 100644
+--- a/src/calendar/CMakeLists.txt
++++ b/src/calendar/CMakeLists.txt
+@@ -202,7 +202,7 @@ target_link_libraries(merkuro-calendar
+         Qt::Widgets
+         Qt::Quick
+         Qt::QuickControls2
+-        KF6::I18n
++        KF6::I18nQml
+         KF6::CoreAddons
+         KF6::DBusAddons
+         KF6::WindowSystem
+-- 
+GitLab
+
