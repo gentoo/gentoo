@@ -35,20 +35,14 @@ src_prepare() {
 	sed -i \
 		-e "/LIBS/s:-ledit:\`$(tc-getPKG_CONFIG) --libs libedit $(usex static --static '')\`:" \
 		configure || die
+
+	if [[ ${CHOST} == *-solaris* ]] ; then
+		# Solaris doesn't have dirent->d_type
+		eapply "${FILESDIR}"/dash-0.5.13-revert-d_type-solaris.patch
+	fi
 }
 
 src_configure() {
-	if [[ ${CHOST} == *-solaris* ]] ; then
-		# don't redefine stat, open, dirent, etc. on Solaris
-		export ac_cv_func_stat64=yes
-		export ac_cv_func_open64=yes
-	fi
-
-	if [[ ${CHOST} == powerpc-*-darwin* ]] ; then
-		sed -i -e 's/= stpncpy(s, \([^,]\+\), \([0-9]\+\))/+= snprintf(s, \2, "%s", \1)/' \
-			src/jobs.c || die
-	fi
-
 	use static && append-ldflags -static
 
 	append-cppflags -DJOBS=$(usex libedit 1 0)
