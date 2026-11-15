@@ -1,0 +1,40 @@
+https://github.com/OpenRC/openrc/commit/14e11b7f5b09072aa1433e790bbf832800858fec
+
+From 14e11b7f5b09072aa1433e790bbf832800858fec Mon Sep 17 00:00:00 2001
+From: navi <navi@vlhl.dev>
+Date: Wed, 7 Oct 2026 21:02:48 +0200
+Subject: [PATCH] openrc-run.sh: save old IFS instead of unsetting
+
+Closes: https://github.com/OpenRC/openrc/issues/1100
+---
+ sh/openrc-run.sh.in | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/sh/openrc-run.sh.in b/sh/openrc-run.sh.in
+index 09575deb7..846748ef9 100644
+--- a/sh/openrc-run.sh.in
++++ b/sh/openrc-run.sh.in
+@@ -245,11 +245,11 @@ reload()
+ yesno $RC_DEBUG && set -x
+ 
+ # Parse RC_PATH in reverse order, so later conf.d files override earlier ones
+-IFS=:
++_IFS=$IFS IFS=:
+ for _f in $RC_PATH; do
+ 	_conf_d="$_f $_conf_d"
+ done
+-unset IFS
++IFS=$_IFS
+ 
+ # Load configuration settings. First the global ones, then any
+ # service-specific settings.
+@@ -275,7 +275,7 @@ for _c in $_c; do
+ 	done
+ done
+ 
+-unset _c _f _conf_d
++unset _c _f _conf_d _IFS
+ 
+ # load service supervisor functions
+ sourcex "@LIBEXECDIR@/sh/runit.sh"
+
