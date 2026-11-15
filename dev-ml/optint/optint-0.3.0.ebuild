@@ -11,6 +11,6 @@ SRC_URI="https://github.com/mirage/${PN}/archive/v${PV}.tar.gz -> ${P}.gh.tar.gz
 
 LICENSE="ISC"
 SLOT="0/${PV}"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE="+ocamlopt"
 RESTRICT="test"  # test dep crowbar not packaged
