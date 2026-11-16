@@ -1,0 +1,38 @@
+--- a/qmail-remote.c
++++ b/qmail-remote.c
+@@ -488,7 +488,8 @@
+       {
+         const GENERAL_NAME *gn = sk_GENERAL_NAME_value(gens, i);
+         if (gn->type == GEN_DNS)
+-          if (match_partner(gn->d.ia5->data, gn->d.ia5->length)) break;
++          if (match_partner(ASN1_STRING_get0_data(gn->d.ia5),
++                            ASN1_STRING_length(gn->d.ia5))) break;
+       }
+       sk_GENERAL_NAME_pop_free(gens, GENERAL_NAME_free);
+     }
+@@ -500,7 +501,10 @@
+       i = X509_NAME_get_index_by_NID(subj, NID_commonName, -1);
+       if (i >= 0) {
+         const ASN1_STRING *s = X509_NAME_ENTRY_get_data(X509_NAME_get_entry(subj, i));
+-        if (s) { peer.len = s->length; peer.s = s->data; }
++        if (s) {
++          peer.len = ASN1_STRING_length(s);
++          peer.s = (char *)ASN1_STRING_get0_data(s);
++        }
+       }
+       if (peer.len <= 0) {
+         out("ZTLS unable to verify server ");
+--- a/qmail-smtpd.c
++++ b/qmail-smtpd.c
+@@ -890,7 +890,10 @@
+     n = X509_NAME_get_index_by_NID(subj, NID_pkcs9_emailAddress, -1);
+     if (n >= 0) {
+       const ASN1_STRING *s = X509_NAME_ENTRY_get_data(X509_NAME_get_entry(subj, n));
+-      if (s) { email.len = s->length; email.s = s->data; }
++      if (s) {
++        email.len = ASN1_STRING_length(s);
++        email.s = (char *)ASN1_STRING_get0_data(s);
++      }
+     }
+ 
+     if (email.len <= 0)
