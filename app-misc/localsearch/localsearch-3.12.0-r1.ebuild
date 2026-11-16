@@ -12,8 +12,8 @@ HOMEPAGE="https://gnome.pages.gitlab.gnome.org/localsearch"
 
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="3"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
-IUSE="cue exif gsf +gstreamer iptc +iso +jpeg +pdf +playlist raw seccomp test +tiff upower webp +xml xmp xps zip"
+KEYWORDS="amd64 ~arm arm64 ~loong ~ppc ~ppc64 ~riscv x86"
+IUSE="cue exif gsf +gstreamer iptc +iso +jpeg mediainfo +pdf +playlist raw seccomp test +tiff upower webp +xml xmp xps zip"
 
 REQUIRED_USE="cue? ( gstreamer )" # cue is currently only supported via gstreamer, not ffmpeg
 RESTRICT="!test? ( test )"
@@ -24,24 +24,25 @@ RDEPEND="
 	>=app-misc/tinysparql-3.11:3
 	>=sys-apps/dbus-1.3.1
 	xmp? ( >=media-libs/exempi-2.1.0:= )
-	raw? ( media-libs/gexiv2:0= )
+	raw? ( media-libs/gexiv2:0.16= )
 	>=dev-libs/glib-2.76:2
 	>=dev-libs/gobject-introspection-1.82.0-r2
 	cue? ( media-libs/libcue:= )
-	exif? ( media-libs/gexiv2:0= )
+	exif? ( media-libs/gexiv2:0.16= )
 	gsf? ( >=gnome-extra/libgsf-1.14.24:= )
 	xps? ( app-text/libgxps )
-	iptc? ( media-libs/gexiv2:0= )
+	iptc? ( media-libs/gexiv2:0.16= )
 	jpeg? ( media-libs/libjpeg-turbo:0= )
 	iso? ( >=sys-libs/libosinfo-1.10.0-r1 )
 	>=media-libs/libpng-1.2:0=
 	seccomp? ( >=sys-libs/libseccomp-2.0 )
 	tiff? ( media-libs/tiff:= )
 	xml? ( >=dev-libs/libxml2-2.6:= )
-	zip? ( dev-libs/libzip )
+	zip? ( dev-libs/libzip:= )
 	pdf? ( >=app-text/poppler-0.16.0:=[cairo] )
 	playlist? ( >=dev-libs/totem-pl-parser-3:= )
 	webp? ( media-libs/libwebp )
+	mediainfo? ( media-libs/libmediainfo )
 
 	app-arch/gzip
 
@@ -147,6 +148,7 @@ src_configure() {
 		$(meson_feature pdf)
 		$(meson_feature playlist)
 		$(meson_feature webp)
+		$(meson_feature mediainfo libmediainfo)
 		-Dbash_completion=true
 		-Dpng=enabled
 		$(meson_feature raw)
@@ -154,6 +156,7 @@ src_configure() {
 		$(meson_feature xml)
 		$(meson_feature xmp)
 		$(meson_feature xps)
+		$(meson_feature zip)
 
 		-Dbattery_detection=$(usex upower upower none)
 		# enca is a possibility, but right now we have tracker core always dep on icu and icu is preferred over enca
@@ -167,7 +170,7 @@ src_configure() {
 src_test() {
 	export GSETTINGS_BACKEND="dconf" # Tests require dconf and explicitly check for it (env_reset set it to "memory")
 	export PYTHONPATH="${ESYSROOT}"/usr/$(get_libdir)/tinysparql-3.0
-	export TRACKER_TESTS_AWAIT_TIMEOUT = 60
+	export TRACKER_TESTS_AWAIT_TIMEOUT="60"
 	# Many (extractor) tests fail since version 3.9.0 https://gitlab.gnome.org/GNOME/localsearch/-/issues/405
 	dbus-run-session meson test -C "${BUILD_DIR}" --no-suite examples --print-errorlogs || die 'tests failed'
 }
