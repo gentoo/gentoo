@@ -1,9 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit go-module
+inherit go-module systemd
 
 CONSUL_EXPORTER_COMMIT=11bf27e69d
 
@@ -22,20 +22,18 @@ COMMON_DEPEND="acct-group/consul_exporter
 	acct-user/consul_exporter"
 DEPEND="${COMMON_DEPEND}"
 RDEPEND="${COMMON_DEPEND}"
-BDEPEND="dev-util/promu"
 
 RESTRICT+=" test"
 
-src_prepare() {
-	default
-	sed -i \
-		-e "s/{{.Revision}}/${CONSUL_EXPORTER_COMMIT}/" \
-		-e "s/{{.Version}}/${PV}/" \
-		.promu.yml || die "Sed failed"
-}
-
 src_compile() {
-	promu build -v || die
+	local go_ldflags=(
+		-X github.com/prometheus/common/version.Version=${PV}
+		-X github.com/prometheus/common/version.Revision=${CONSUL_EXPORTER_COMMIT}
+		-X github.com/prometheus/common/version.Branch=master
+		-X github.com/prometheus/common/version.BuildUser=gentoo
+		-X github.com/prometheus/common/version.BuildDate="$(date +%F-%T)"
+	)
+	ego build -ldflags "${go_ldflags[*]}" -o ${PN} ./cmd/${PN}
 }
 
 src_install() {
@@ -43,6 +41,7 @@ src_install() {
 	dodoc {README,CONTRIBUTING}.md
 	newinitd "${FILESDIR}"/${PN}.initd ${PN}
 	newconfd "${FILESDIR}"/${PN}.confd ${PN}
+	systemd_dounit "${FILESDIR}"/${PN}.service
 	keepdir /var/log/consul_exporter
 	fowners ${PN}:${PN} /var/log/consul_exporter
 }
