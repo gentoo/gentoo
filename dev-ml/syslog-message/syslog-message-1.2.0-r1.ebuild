@@ -12,7 +12,11 @@ SRC_URI="https://github.com/verbosemode/${PN}/releases/download/${PV}/${P}.tbz"
 LICENSE="BSD-2"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
-IUSE="+ocamlopt"
+IUSE="+ocamlopt test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="dev-ml/ptime:=[ocamlopt?]"
 DEPEND="${RDEPEND}"
+BDEPEND="test? (
+	dev-ml/qcheck
+)"
