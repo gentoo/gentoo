@@ -6,6 +6,6 @@
 		<name>William Hubbs</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">kumina/openvpn_exporter</remote-id>
+		<remote-id type="github">natrontech/openvpn_exporter</remote-id>
 	</upstream>
 </pkgmetadata>
