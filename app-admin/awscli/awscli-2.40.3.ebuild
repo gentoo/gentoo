@@ -67,6 +67,9 @@ src_prepare() {
 		# backport from dev-python/botocore (don't get me started
 		# on the bundled forks here)
 		"${FILESDIR}/${PN}-2.38.5-py315.patch"
+
+		# prevent attempting to access the Internet during build
+		"${FILESDIR}/${PN}-2.40.3-internet.patch"
 	)
 
 	distutils-r1_src_prepare
@@ -83,7 +86,15 @@ src_prepare() {
 	rm awscli/botocore/cacert.pem || die
 }
 
+src_compile() {
+	# part of disabling Internet access
+	local -x GENTOO_BUILD=1
+	distutils-r1_src_compile
+}
+
 python_test() {
+	unset http_proxy https_proxy
+
 	local -x TZ=UTC
 
 	local EPYTEST_DESELECT=(
