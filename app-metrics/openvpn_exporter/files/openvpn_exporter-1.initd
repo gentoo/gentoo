@@ -1,0 +1,23 @@
+#!/sbin/openrc-run
+# Copyright 2016-2026 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+description="Prometheus Exporter for OpenVPN status Metrics"
+pidfile=${pidfile:-"/run/${RC_SVCNAME}.pid"}
+user=${user:-${RC_SVCNAME}}
+group=${group:-${RC_SVCNAME}}
+
+command="/usr/bin/openvpn_exporter"
+command_args="${command_args}"
+command_background="true"
+command_user="${user}:${group}"
+output_log="/var/log/${RC_SVCNAME}/${RC_SVCNAME}.log"
+error_log="/var/log/${RC_SVCNAME}/${RC_SVCNAME}.log"
+
+# The exporter reads its configuration from these environment variables
+export OPENVPN_STATUS_FILES="${OPENVPN_STATUS_FILES:-/etc/openvpn/openvpn-status.log}"
+export OPENVPN_LISTEN_ADDRESS OPENVPN_METRICS_PATH OPENVPN_LOGLEVEL OPENVPN_IGNORE_INDIVIDUALS
+
+depend() {
+	after net
+}
