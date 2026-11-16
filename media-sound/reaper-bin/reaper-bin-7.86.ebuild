@@ -8,7 +8,7 @@ inherit desktop xdg
 DESCRIPTION="Digital audio workstation"
 HOMEPAGE="https://www.reaper.fm"
 
-WDL_COMMIT="89889d2de29236f468e00f32de5ce5b7a5e6401c"
+WDL_COMMIT="88444081c3d15fa2a42af7d6ec2c904dcd866799"
 
 SRC_URI="
 	amd64? ( https://www.reaper.fm/files/$(ver_cut 1).x/reaper$(ver_cut 1)$(printf %02d $(( 10#$(ver_cut 2) )))_linux_x86_64.tar.xz )
@@ -17,41 +17,48 @@ SRC_URI="
 	arm? ( https://www.reaper.fm/files/$(ver_cut 1).x/reaper$(ver_cut 1)$(printf %02d $(( 10#$(ver_cut 2) )))_linux_armv7l.tar.xz )
 	https://github.com/justinfrankel/WDL/archive/${WDL_COMMIT}.tar.gz -> WDL-${WDL_COMMIT}.tar.gz
 "
-
+S="${WORKDIR}"
 LICENSE="Cockos"
+
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+IUSE="+jack pulseaudio mp3 ffmpeg wayland"
 RESTRICT="mirror"
 
-IUSE="+jack pulseaudio mp3 ffmpeg wayland"
-
 DEPEND="
+	dev-libs/glib
+	media-libs/fontconfig
+	media-libs/freetype
 	x11-libs/gtk+:3[X,wayland?]
 	x11-libs/libX11
 	x11-libs/libXi
-	media-libs/fontconfig
-	media-libs/freetype
+	x11-libs/libxcb
+	x11-libs/xcb-util-wm
 	wayland? (
 		dev-libs/wayland
-		x11-libs/libXcomposite
-		x11-libs/libXdamage
-		x11-libs/libXfixes
-		x11-libs/libXtst
+		dev-libs/wayland-protocols
+		gui-libs/libdecor
+		media-libs/libepoxy
+		media-libs/libglvnd
+		x11-libs/cairo
+		x11-libs/libdrm
+		x11-libs/libxcb[xkb]
+		x11-libs/libxkbcommon
+		x11-libs/xcb-util-image
+		x11-libs/xcb-util-keysyms
+		x11-libs/xcb-util-renderutil
 	)
 "
 
 RDEPEND="
 	${DEPEND}
 	media-libs/alsa-lib
-	media-libs/libglvnd
 	jack? ( virtual/jack )
 	pulseaudio? ( media-libs/libpulse )
 	mp3? ( media-sound/lame )
 	ffmpeg? ( media-video/ffmpeg )
 	wayland? ( x11-base/xwayland )
 "
-
-S="${WORKDIR}"
 
 src_prepare() {
 	default
