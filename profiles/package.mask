@@ -36,6 +36,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2026-11-16)
+# Unused sec-keys.
+# Removal on 2026-12-16.
+sec-keys/openpgp-keys-sjaranowski
+sec-keys/apache-tomcat-jakartaee-migration
+sec-keys/apache-creadur
+
 # Jonas Stein <jstein@gentoo.org> (2026-11-14)
 # Removal on 2026-12-14.  Bug #986570.
 x11-themes/gentoo-artwork
