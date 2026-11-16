@@ -89,8 +89,7 @@ src_install() {
 	pax-mark m opt/Signal/signal-desktop opt/Signal/chrome-sandbox opt/Signal/chrome_crashpad_handler
 
 	insinto /usr/share/polkit-1/actions/
-	doins /opt/Signal/resources/org.signalapp.plaintext-export.policy
-	fperms 0644 /usr/share/polkit-1/actions/org.signalapp.plaintext-export.policy
+	doins opt/Signal/resources/*.policy
 
 	dosym ../../opt/Signal/${MY_PN} /usr/bin/${MY_PN}
 }
