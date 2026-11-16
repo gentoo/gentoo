@@ -6,9 +6,9 @@ EAPI=8
 inherit flag-o-matic systemd
 
 if [[ ${PV} == 9999 ]] ; then
-	ESVN_REPO_URI="https://svn.code.sf.net/p/smartmontools/code/trunk/smartmontools"
-	ESVN_PROJECT="smartmontools"
-	inherit autotools subversion
+	EGIT_REPO_URI="https://github.com/smartmontools/smartmontools.git"
+	EGIT_BRANCH="main"
+	inherit autotools git-r3
 else
 	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/smartmontools.asc
 	inherit verify-sig
@@ -120,7 +120,7 @@ src_install() {
 		# so that we can access that file later in pkg_postinst
 		# even when dealing with binary packages (bug #575292)
 		insinto /usr/share/${PN}
-		doins "${S}"/drivedb.h
+		doins "${S}"/drivedb/drivedb.h
 	fi
 
 	# Make sure we never install drivedb.h into the db location
