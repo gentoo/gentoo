@@ -6,6 +6,7 @@ command=/usr/bin/tor
 pidfile=/run/tor/${RC_SVCNAME}.pid
 command_args="--hush -f ${torrc} --runasdaemon 1 --pidfile \"${pidfile}\""
 command_user="tor:tor"
+capabilities="^cap_net_bind_service"
 retry=${GRACEFUL_TIMEOUT:-60}
 stopsig=INT
 command_progress=yes
