@@ -83,7 +83,7 @@ BDEPEND="
 QA_FLAGS_IGNORED="usr/lib64/localsearch-3.0/extract-modules/libextract-dummy.so"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-3.11.2-build-fix.patch"
+	"${FILESDIR}"/localsearch-3.12.0-fix-tiff-with-no-exiv.patch # bug #982517
 )
 
 python_check_deps() {
