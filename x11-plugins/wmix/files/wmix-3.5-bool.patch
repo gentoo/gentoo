@@ -1,0 +1,34 @@
+https://bugs.gentoo.org/943919
+https://bugs.gentoo.org/986419
+
+From 66b50e767e4a994e064332225aa75cacb94ce08b Mon Sep 17 00:00:00 2001
+From: Jeremy Sowden <jeremy@azazel.net>
+Date: Wed, 26 Feb 2025 22:31:40 +0000
+Subject: [PATCH] wmix: replace local boolean definitions with `<stdbool.h>`
+
+In C23, `bool` has been changed from a macro defined in `<stdbool.h>` to a
+keyword; `true` and `false` are also predefined constants.  Wmix defines its own
+`bool` type and `true` and `false` constants.
+
+Remove the local definitions and include `<stdbool.h>` instead.
+
+Link: https://bugs.debian.org/1098107
+Signed-off-by: Jeremy Sowden <jeremy@azazel.net>
+---
+ wmix/include/common.h | 5 +----
+ 1 file changed, 1 insertion(+), 4 deletions(-)
+
+--- a/include/common.h
++++ b/include/common.h
+@@ -18,10 +18,7 @@
+  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+  */
+ 
+-typedef unsigned int bool;
+-
+-#define false 0
+-#define true (!false)
++#include <stdbool.h>
+ 
+ #define NULL_CURSOR 1
+ #define NORMAL_CURSOR 2
