@@ -101,12 +101,15 @@ app-portage/emlop
 # Michał Górny <mgorny@gentoo.org> (2024-05-08)
 # Pure Python packages using dev-python/uv-build, and therefore
 # requiring Rust to install, and their reverse dependencies.
+app-text/dblatex
 app-text/paperwork
 app-text/paperwork-backend
+dev-embedded/platformio
 dev-python/aiosmtpd
 dev-python/atpublic
 dev-python/authheaders
 dev-python/behave
+dev-python/cachecontrol
 dev-python/crispy-bootstrap3
 dev-python/crispy-bootstrap4
 dev-python/crispy-bootstrap5
@@ -123,18 +126,22 @@ dev-python/dkimpy
 dev-python/dnspython
 dev-python/easy-thumbnails
 dev-python/email-validator
+dev-python/flit
 dev-python/flufl-lock
 dev-python/gherkin-official
 dev-python/guessit
+dev-python/hashin
 dev-python/hypothesis
 dev-python/knowit
 dev-python/liblore
 dev-python/logfury
 dev-python/narwhals
+dev-python/pip
 dev-python/progressbar2
 dev-python/pydevd
 dev-python/pykwalify
 dev-python/pymongo
+dev-python/pypiserver
 dev-python/pyspf
 dev-python/pytest-bdd
 dev-python/pytest-describe
@@ -156,15 +163,20 @@ dev-python/vcsgraph
 dev-python/zmq-anyio
 dev-util/elf_diff
 mail-filter/spf-engine
+media-gfx/inkscape
 media-video/subliminal
 net-analyzer/fail2ban
 net-analyzer/linkchecker
 net-mail/b4
 net-voip/sipvicious
+sci-astronomy/pysiril
+sci-astronomy/siril
 sci-libs/cartopy
 sci-libs/pcl
 sci-visualization/pythonprop
 sys-auth/ssh-ldap-pubkey
+x11-themes/adapta-gtk-theme
+x11-wm/xpra
 
 # Sebastian Pipping <sping@gentoo.org> (2025-06-20)
 # Requires masked packages (bug #958030)
