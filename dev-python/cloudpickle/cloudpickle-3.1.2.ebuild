@@ -23,7 +23,6 @@ SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~arm64-macos ~x64-macos"
 
 BDEPEND="
-	<dev-python/flit-core-4[${PYTHON_USEDEP}]
 	test? (
 		dev-python/psutil[${PYTHON_USEDEP}]
 	)
@@ -31,6 +30,10 @@ BDEPEND="
 
 EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
+
+PATCHES=(
+	"${FILESDIR}/cloudpickle-3.1.2-flit4.patch" # backport
+)
 
 python_test() {
 	local -x PYTHONPATH=${PYTHONPATH}:tests/cloudpickle_testpkg
