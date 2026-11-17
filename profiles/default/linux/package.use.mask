@@ -1,11 +1,6 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Jaco Kroon <jkroon@gentoo.org> (2026-11-17)
-# net-libs/c-client is going away, so mask USE flags that needs it.
-net-misc/asterisk voicemail_storage_imap
-dev-lang/php imap
-
 # Sam James <sam@gentoo.org> (2026-09-23)
 # Only supported on Linux.
 dev-libs/elfutils -stackprof
