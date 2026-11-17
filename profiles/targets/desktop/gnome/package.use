@@ -1,6 +1,10 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Eli Schwartz <eschwartz@gentoo.org> (2026-11-17)
+# Needed by gnome-contacts >=50, which is part of gnome-core-apps meta.
+media-libs/glycin vala
+
 # Sam James <sam@gentoo.org> (2025-10-18)
 # Needed by net-misc/gnome-remote-desktop. Default +rdp needs freerdp[server].
 net-misc/freerdp server
