@@ -31,6 +31,7 @@ RDEPEND="
 	app-arch/zstd:=
 	dev-libs/blake3:=
 	>=dev-libs/capstone-5:0=
+	<dev-libs/capstone-6
 	dev-libs/libmspack
 	dev-libs/libzip:0=
 	dev-libs/openssl:0=
