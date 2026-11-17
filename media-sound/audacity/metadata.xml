@@ -6,15 +6,14 @@
     <name>Gentoo ProAudio Project</name>
   </maintainer>
   <maintainer type="person" proxied="yes">
-    <email>richard@audacityteam.org</email>
-    <name>Richard Ash</name>
-    <description>Upstream - please CC on bugs that concerns upstream</description>
-  </maintainer>
-  <maintainer type="person" proxied="yes">
     <email>mehw.is.me@proton.me</email>
     <name>Matthew White</name>
   </maintainer>
   <upstream>
+    <maintainer cc-on-bugs="yes">
+      <email>richard@audacityteam.org</email>
+      <name>Richard Ash</name>
+    </maintainer>
     <bugs-to>https://github.com/audacity/audacity/issues</bugs-to>
     <!-- There also is the changelog file and the website but only this is up to date -->
     <changelog>https://github.com/audacity/audacity/releases</changelog>
