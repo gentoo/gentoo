@@ -62,4 +62,9 @@ src_install() {
 	dodoc examples/*.c
 
 	find "${ED}" -name '*.la' -delete || die
+	if use doc; then
+		dodir /usr/share/gtk-doc/html
+		mv "${ED}/usr/share/doc/${PF}"/html \
+			"${ED}/usr/share/gtk-doc/html/${PN}" || die
+	fi
 }
