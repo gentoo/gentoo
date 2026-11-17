@@ -215,6 +215,7 @@ src_configure() {
 		-DENABLE_V4L2=$(usex v4l)
 		-DENABLE_VLC=$(usex vlc)
 		-DENABLE_VST=ON
+		-DENABLE_VST3=OFF
 		-DENABLE_WAYLAND=$(usex wayland)
 		-DENABLE_WEBRTC=OFF # Requires libdatachannel.
 		-DENABLE_WEBSOCKET=$(usex websocket)
