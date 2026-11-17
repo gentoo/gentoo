@@ -5,7 +5,7 @@
 		<email>zoltan@sinustrom.info</email>
 		<name>Zoltan Puskas</name>
 	</maintainer>
-	<maintainer type="project">
+	<maintainer type="project" proxied="maintainer-and-proxy">
 		<email>web-apps@gentoo.org</email>
 		<name>Gentoo Webapps</name>
 	</maintainer>

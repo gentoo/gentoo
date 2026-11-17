@@ -5,7 +5,7 @@
 		<email>vadorovsky@protonmail.com</email>
 		<name>Michal Rostecki</name>
 	</maintainer>
-	<maintainer type="project">
+	<maintainer type="project" proxied="maintainer-and-proxy">
 		<email>llvm@gentoo.org</email>
 	</maintainer>
 	<upstream>
