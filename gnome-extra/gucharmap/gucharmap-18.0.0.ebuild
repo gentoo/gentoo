@@ -12,7 +12,7 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/gucharmap"
 
 LICENSE="GPL-3+"
 SLOT="2.90"
-KEYWORDS="~alpha ~amd64 arm arm64 ~loong ppc ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 arm arm64 ~loong ppc ppc64 ~riscv ~sparc x86"
 
 UNICODE_VERSION="18.0.0"
 
