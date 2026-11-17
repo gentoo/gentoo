@@ -161,7 +161,6 @@ QA_FLAGS_IGNORED="usr/bin/${PN}"
 
 PATCHES=( "${FILESDIR}"/2.0-ignore-forced-color.patch )
 
-
 src_prepare() {
 	default
 
