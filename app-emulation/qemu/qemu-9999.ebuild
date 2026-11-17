@@ -601,6 +601,7 @@ qemu_src_configure() {
 		$(use_enable plugins)
 		$(use_enable pulseaudio pa)
 		$(use_enable selinux)
+		$(use_enable test tests)
 		$(use_enable xattr attr)
 		$(use_enable valgrind)
 	)
