@@ -107,7 +107,7 @@ src_configure() {
 }
 
 src_test() {
-	# bug #970495
+	# Avoid hangs with failed tests, bug #970495
 	local -x PAGER=cat
 
 	# See GAWKLOCALE=<locale> use in test/Makefile.in, bug #970495
