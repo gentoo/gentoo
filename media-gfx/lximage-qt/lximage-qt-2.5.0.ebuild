@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake xdg
+inherit cmake optfeature xdg
 
 MY_PV="$(ver_cut 1-2)"
 
@@ -39,3 +39,10 @@ DEPEND="
 	x11-libs/libXfixes
 "
 RDEPEND="${DEPEND}"
+
+pkg_postinst() {
+	xdg_pkg_postinst
+
+	optfeature "additional format plug-ins" dev-qt/qtimageformats
+	optfeature "additional format plug-ins" kde-frameworks/kimageformats
+}
