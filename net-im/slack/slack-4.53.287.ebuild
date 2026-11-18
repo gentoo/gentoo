@@ -26,7 +26,6 @@ RDEPEND="app-accessibility/at-spi2-core:2[${MULTILIB_USEDEP}]
 	dev-libs/glib:2[${MULTILIB_USEDEP}]
 	dev-libs/nspr:0[${MULTILIB_USEDEP}]
 	dev-libs/nss:0[${MULTILIB_USEDEP}]
-	dev-libs/wayland[${MULTILIB_USEDEP}]
 	media-libs/alsa-lib:0[${MULTILIB_USEDEP}]
 	media-libs/mesa:0[${MULTILIB_USEDEP}]
 	net-print/cups:0[${MULTILIB_USEDEP}]
@@ -45,7 +44,8 @@ RDEPEND="app-accessibility/at-spi2-core:2[${MULTILIB_USEDEP}]
 	x11-libs/libxkbfile:0[${MULTILIB_USEDEP}]
 	x11-libs/libXrandr:0[${MULTILIB_USEDEP}]
 	x11-libs/pango:0[${MULTILIB_USEDEP}]
-	appindicator? ( dev-libs/libayatana-appindicator )"
+	appindicator? ( dev-libs/libayatana-appindicator )
+	wayland? ( dev-libs/wayland[${MULTILIB_USEDEP}] )"
 
 QA_PREBUILT="opt/slack/chrome-sandbox
 	opt/slack/chrome_crashpad_handler
@@ -89,12 +89,6 @@ src_prepare() {
 		sed -i '/Exec/s/%U/%U --disable-seccomp-filter-sandbox/' \
 			usr/share/applications/slack.desktop \
 			|| die "sed failed for seccomp"
-	fi
-
-	if use wayland ; then
-		sed -i  -e '/Exec/s/%U/%U --ozone-platform=wayland/' \
-			usr/share/applications/slack.desktop \
-			|| die "sed failed for wayland"
 	fi
 }
 
