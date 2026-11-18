@@ -1,0 +1,2 @@
+MANPATH="/opt/intel/compilers_and_libraries_@MY_PV2@/linux/mpi/man"
+I_MPI_ROOT="/opt/intel/compilers_and_libraries_@MY_PV2@/linux/mpi"
