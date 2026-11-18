@@ -63,7 +63,7 @@ SLOT="0"
 [[ ${QEMU_DOCS_PREBUILT} == 1 ]] && QEMU_DOC_USEFLAG="doc"
 
 IUSE="accessibility +aio alsa bpf bzip2 capstone +curl debug ${QEMU_DOC_USEFLAG}
-	elfutils +fdt fuse +gnutls gtk infiniband iscsi io-uring
+	elfutils +fdt fuse +gnutls gtk +hmp infiniband iscsi io-uring
 	jack +jpeg keyutils
 	lzo multipath
 	ncurses nfs nls numa opengl +oss pam passt +pin-upstream-blobs pipewire
@@ -594,6 +594,7 @@ qemu_src_configure() {
 		$(use_enable alsa)
 		$(use_enable debug debug-info)
 		$(use_enable debug debug-tcg)
+		$(use_enable hmp)
 		$(use_enable jack)
 		$(use_enable nls gettext)
 		$(use_enable oss)
