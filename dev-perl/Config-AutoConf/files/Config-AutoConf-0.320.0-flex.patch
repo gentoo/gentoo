@@ -1,0 +1,44 @@
+From ced7abc24ed75ceb2d89afd22a914bdc0d35b498 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Alberto=20Sim=C3=B5es?= <alberto.simoes@tiobe.com>
+Date: Thu, 23 Jul 2026 14:54:14 +0100
+Subject: [PATCH] t/01.checkprog.t: resolve bare command names via PATH before
+ -x check
+
+check_prog_{lex,yacc,awk,sed} honor $ENV{LEX}/$ENV{YACC}/... verbatim,
+which is correct autoconf-style override behavior (also allows
+multi-word values like "bison -y"). But the executable-bit test ran
+-x directly on the raw value, which only works for absolute paths.
+On Gentoo, LEX/YACC etc are exported as bare command names (e.g.
+LEX=flex), so the test failed even though the program was installed
+and on PATH. Resolve bare names the same way the shell would before
+checking -x.
+
+Fixes #18
+---
+ t/01.checkprog.t | 13 +++++++++++--
+ 1 file changed, 11 insertions(+), 2 deletions(-)
+
+diff --git a/t/01.checkprog.t b/t/01.checkprog.t
+index e46b114907a82a2005d902fd80f423697321635f..c960c0c2d59a309eec21514475f9a6de5e995d1e 100644
+--- a/t/01.checkprog.t
++++ b/t/01.checkprog.t
+@@ -60,8 +60,17 @@ diag("Check for some progs to get an overview about world outside");
+ 
+ sub _is_x
+ {
+-    $^O =~ m/MSWin32/i and return $_[0] =~ m/\.(?:exe|com|bat|cmd)$/;
+-    return -x $_[0];
++    my ($bin) = @_;
++    $^O =~ m/MSWin32/i and return $bin =~ m/\.(?:exe|com|bat|cmd)$/;
++
++    # A bare command name (no directory component) is only resolvable via
++    # $PATH at exec time, not with -x on the literal string; e.g. Gentoo
++    # exports LEX=flex, YACC=bison etc without an absolute path. Resolve it
++    # the same way the shell would before checking for executability.
++    File::Spec->file_name_is_absolute($bin)
++      or $bin = Config::AutoConf->check_prog($bin) || $bin;
++
++    return -x $bin;
+ }
+ 
+ SKIP:
