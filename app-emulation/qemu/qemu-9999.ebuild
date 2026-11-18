@@ -367,6 +367,16 @@ PATCHES=(
 QA_PREBUILT="
 	usr/share/qemu/hppa-firmware.img
 	usr/share/qemu/hppa-firmware64.img
+	usr/share/qemu/hexagon_loadlinux_sa8797p_nsp0
+	usr/share/qemu/hexagon_booter_sa8797p_nsp0
+	usr/share/qemu/hexagon_loadlinux_sc8480xp_nsp0
+	usr/share/qemu/hexagon_booter_sc8480xp_nsp0
+	usr/share/qemu/hexagon_loadlinux_sa8775p_cdsp
+	usr/share/qemu/hexagon_booter_sa8775p_cdsp
+	usr/share/qemu/hexagon_loadlinux_sm8975_nsp
+	usr/share/qemu/hexagon_booter_sm8975_nsp
+	usr/share/qemu/hexagon_loadlinux_qcs6490_cdsp
+	usr/share/qemu/hexagon_booter_qcs6490_cdsp
 	usr/share/qemu/openbios-ppc
 	usr/share/qemu/openbios-sparc64
 	usr/share/qemu/openbios-sparc32
