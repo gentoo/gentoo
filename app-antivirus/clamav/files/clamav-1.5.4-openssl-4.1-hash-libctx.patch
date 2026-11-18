@@ -242,16 +242,24 @@ clamav-1.5.4-openssl-4.patch. Bug: https://bugs.gentoo.org/986152
      return (void *)ctx;
  }
  
-@@ -1855,7 +1854,7 @@
+@@ -1847,6 +1846,7 @@
+
+ int cl_update_hash(void *ctx, const void *data, size_t sz)
+ {
++    struct cl_hash_ctx *hash_ctx = (struct cl_hash_ctx *)ctx;
+ #if defined(_WIN32)
+     bool win_exception = false;
+ #endif
+@@ -1855,7 +1855,7 @@
          return -1;
- 
+
      EXCEPTION_PREAMBLE
 -    if (!EVP_DigestUpdate((EVP_MD_CTX *)ctx, data, sz))
 +    if (!EVP_DigestUpdate(hash_ctx->mdctx, data, sz))
          return -1;
      EXCEPTION_POSTAMBLE
  
-@@ -1870,23 +1869,34 @@
+@@ -1870,23 +1870,34 @@
  
  int cl_finish_hash(void *ctx, void *buf)
  {
