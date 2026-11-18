@@ -35,7 +35,7 @@ src_configure() {
 	econf \
 		--disable-opt \
 		--disable-debug \
-		$(use_enable X x11)
+		$(use_enable X x11) \
 		--enable-hotplug \
 		--enable-uinput
 }
