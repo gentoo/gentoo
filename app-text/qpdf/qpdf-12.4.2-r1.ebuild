@@ -22,8 +22,8 @@ SRC_URI="
 
 LICENSE="|| ( Apache-2.0 Artistic-2 )"
 # Subslot for libqpdf soname version (just represent via major version)
-# XXX: .1 is a fudge for bug #981565, drop w/ >=qpdf-13
-SLOT="0/$(ver_cut 1).1"
+# XXX: .2 is a fudge for bug #981565, drop when https://github.com/qpdf/qpdf/issues/1808 is fixed
+SLOT="0/$(ver_cut 1).2"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
 IUSE="doc examples gnutls test zopfli"
 RESTRICT="!test? ( test )"
@@ -66,6 +66,10 @@ src_unpack() {
 
 src_prepare() {
 	cmake_src_prepare
+
+	# bug 981565, changes ABI every time you rebuild
+	# https://github.com/qpdf/qpdf/issues/1808
+	sed -i s'/--version-script/--broken-so-die-horribly-die-die-die/' libqpdf/CMakeLists.txt || die
 
 	# broken test
 	rm qpdf/qtest/completion.test || die
