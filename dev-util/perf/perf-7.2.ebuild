@@ -36,7 +36,8 @@ S="${S_K}/tools/perf"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
-IUSE="abi_mips_o32 abi_mips_n32 abi_mips_n64 babeltrace capstone big-endian bpf caps crypt debug gtk java libpfm +libtraceevent +libtracefs lzma numa perl +python +slang systemtap tcmalloc"
+IUSE="abi_mips_o32 abi_mips_n32 abi_mips_n64 babeltrace capstone big-endian bpf caps crypt debug gtk java libpfm +libtraceevent +libtracefs lzma numa perl +python rust +slang systemtap tcmalloc"
+
 
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
@@ -59,6 +60,7 @@ BDEPEND="
 	app-text/sgml-common
 	app-text/xmlto
 	sys-process/time
+	rust? ( || ( dev-lang/rust dev-lang/rust-bin ) )
 "
 
 RDEPEND="
@@ -273,7 +275,7 @@ perf_make() {
 		NO_LZMA=$(puse lzma)
 		NO_ZLIB=
 		NO_LIBUNWIND=1
-		NO_RUST=1
+		NO_RUST=$(puse rust)
 		NO_SDT=$(puse systemtap)
 		TCMALLOC=$(usex tcmalloc 1 "")
 		WERROR=0
