@@ -384,7 +384,6 @@ QA_PREBUILT="
 	usr/share/qemu/opensbi-riscv32-generic-fw_dynamic.elf
 	usr/share/qemu/palcode-clipper
 	usr/share/qemu/s390-ccw.img
-	usr/share/qemu/s390-netboot.img
 	usr/share/qemu/u-boot.e500
 "
 
