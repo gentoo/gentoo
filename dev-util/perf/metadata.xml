@@ -20,6 +20,7 @@
     <flag name="perl">
       Add support for Perl as a scripting language for perf tools.
     </flag>
+    <flag name="rust">Enable support for Rust</flag>
     <flag name="systemtap">
       Add support to define SDT event in perf tools.
     </flag>
