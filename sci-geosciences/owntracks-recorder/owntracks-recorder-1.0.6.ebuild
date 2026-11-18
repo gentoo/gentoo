@@ -15,7 +15,7 @@ S="${WORKDIR}/${P#*-}"
 LICENSE="GPL-2+ MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64"
-IUSE="crypt +http kill lua +mqtt +ping +tours"
+IUSE="crypt +http lua +mqtt +ping +tours"
 
 REQUIRED_USE="
 	lua? ( ${LUA_REQUIRED_USE} )
@@ -62,7 +62,6 @@ src_configure() {
 		WITH_PING=$(usex ping)
 		WITH_LUA=$(usex lua)
 		WITH_ENCRYPT=$(usex crypt)
-		WITH_KILL=$(usex kill)
 		WITH_HTTP=$(usex http)
 		WITH_TOURS=$(usex tours)
 		WITH_TZ=yes
