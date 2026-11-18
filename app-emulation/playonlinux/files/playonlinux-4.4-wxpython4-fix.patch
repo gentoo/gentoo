@@ -1,0 +1,10 @@
+--- a/python/mainwindow.py	2020-05-17 07:05:33.000000000 -0700
++++ b/python/mainwindow.py	2021-01-03 05:09:52.295838555 -0700
+@@ -240,7 +240,6 @@
+ 
+         ## List game
+         self.list_game = wx.TreeCtrl(self, 105, style=wx.TR_HIDE_ROOT | wx.TR_FULL_ROW_HIGHLIGHT)
+-        self.list_game.SetSpacing(0)
+         self.list_game.SetIndent(5)
+         self.list_game.SetImageList(self.images)
+         self.menu_gauche = wx.Panel(self, -1)
