@@ -271,6 +271,9 @@ perf_make() {
 		NO_SLANG=$(puse slang)
 		NO_LZMA=$(puse lzma)
 		NO_ZLIB=
+		NO_LIBUNWIND=1
+		NO_RUST=1
+		NO_SDT=$(puse systemtap)
 		TCMALLOC=$(usex tcmalloc 1 "")
 		WERROR=0
 		DEBUG=$(usex debug 1 "")
