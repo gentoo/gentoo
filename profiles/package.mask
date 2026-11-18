@@ -36,6 +36,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2026-11-19)
+# Unused Java library
+# Removal on 2026-12-19.
+dev-java/bcmail
+
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2026-11-16)
 # Unused sec-keys.
 # Removal on 2026-12-16.
