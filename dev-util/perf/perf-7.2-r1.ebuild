@@ -38,7 +38,6 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
 IUSE="abi_mips_o32 abi_mips_n32 abi_mips_n64 babeltrace capstone big-endian bpf caps crypt debug gtk java libpfm +libtraceevent +libtracefs lzma numa perl +python rust +slang systemtap tcmalloc"
 
-
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
 	bpf? ( ${LLVM_REQUIRED_USE} )
