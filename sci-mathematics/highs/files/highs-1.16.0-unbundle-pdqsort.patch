@@ -1,0 +1,15 @@
+The rest of the replacements are in src_prepare() to keep the patch
+small.
+
+diff --git a/cmake/sources.cmake b/cmake/sources.cmake
+index 356ffba..bacd0e5 100644
+--- a/cmake/sources.cmake
++++ b/cmake/sources.cmake
+@@ -481,7 +481,6 @@ set(highs_sources
+ 
+ # add catch header?
+ set(highs_headers
+-    ../extern/pdqsort/pdqsort.h
+     ../extern/zstr/strict_fstream.hpp
+     ../extern/zstr/zstr.hpp
+     interfaces/highs_c_api.h

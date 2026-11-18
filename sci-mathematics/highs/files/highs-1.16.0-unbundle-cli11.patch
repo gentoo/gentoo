@@ -1,0 +1,33 @@
+diff --git a/app/HighsAppExternalDeps.h b/app/HighsAppExternalDeps.h
+index f9c3a7b..d3c74f4 100644
+--- a/app/HighsAppExternalDeps.h
++++ b/app/HighsAppExternalDeps.h
+@@ -13,7 +13,7 @@
+ #define HIGHS_APP_EXTERNAL_DEPS_H_
+ 
+ #include "HighsExternalApi.h"
+-#include "cli11/CLI11.hpp"
++#include <CLI/CLI.hpp>
+ 
+ namespace HighsExtras {
+ struct app_family {};
+@@ -37,4 +37,4 @@ using appAll = require<all, cli11>;
+ 
+ }  // namespace HighsExtras
+ 
+-#endif  // HIGHS_APP_EXTERNAL_DEPS_H_
+\ No newline at end of file
++#endif  // HIGHS_APP_EXTERNAL_DEPS_H_
+diff --git a/app/HighsRuntimeOptions.h b/app/HighsRuntimeOptions.h
+index d62a74d..7df01a0 100644
+--- a/app/HighsRuntimeOptions.h
++++ b/app/HighsRuntimeOptions.h
+@@ -15,7 +15,7 @@
+ #include <cassert>
+ #include <tuple>
+ 
+-#include "../extern/cli11/CLI11.hpp"
++#include <CLI/CLI.hpp>
+ #include "HConfig.h"
+ #include "HighsAppExternalDeps.h"
+ #include "io/HighsIO.h"
