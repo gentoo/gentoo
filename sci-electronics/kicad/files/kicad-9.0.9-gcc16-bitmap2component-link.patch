@@ -1,0 +1,52 @@
+From: Huang Rui <vowstar@gmail.com>
+Date: Wed, 27 May 2026 00:00:00 +0800
+Subject: [PATCH] kicad: move KICAD_MANAGER_FRAME::GetCurrentFileName() out of header
+
+The inline definition in kicad_manager_frame.h causes the compiler to
+emit a weak symbol for KICAD_MANAGER_FRAME::GetCurrentFileName() in
+every TU that includes the header (e.g. common/eda_base_frame.cpp,
+which needs the type for a static_cast). That weak symbol references
+the out-of-line KICAD_MANAGER_FRAME::GetProjectFileName(), defined in
+kicad/kicad_manager_frame.cpp.
+
+When standalone tools like bitmap2component link only libcommon.a (not
+the kicad/ project-manager sources), the linker pulls in the weak
+GetCurrentFileName symbol from eda_base_frame.cpp.o and fails on the
+unresolved GetProjectFileName.
+
+gcc <= 15 elided the weak symbol because nothing in those TUs used it.
+gcc 16 emits it, breaking the link with:
+
+  undefined reference to `KICAD_MANAGER_FRAME::GetProjectFileName() const'
+
+Backports the kicad 10.x layout: declaration in the header, definition
+in the .cpp. Same body, no behavior change.
+--- a/kicad/kicad_manager_frame.h
++++ b/kicad/kicad_manager_frame.h
+@@ -81,10 +81,7 @@
+      */
+     void RecreateBaseLeftToolbar();
+
+-    wxString GetCurrentFileName() const override
+-    {
+-        return GetProjectFileName();
+-    }
++    wxString GetCurrentFileName() const override;
+
+     /**
+      * @brief Creates a project and imports a non-KiCad Schematic and PCB
+--- a/kicad/kicad_manager_frame.cpp
++++ b/kicad/kicad_manager_frame.cpp
+@@ -491,6 +491,12 @@
+ }
+
+
++wxString KICAD_MANAGER_FRAME::GetCurrentFileName() const
++{
++    return GetProjectFileName();
++}
++
++
+ const wxString KICAD_MANAGER_FRAME::GetProjectFileName() const
+ {
+     return Pgm().GetSettingsManager().IsProjectOpen() ? Prj().GetProjectFullName() :
