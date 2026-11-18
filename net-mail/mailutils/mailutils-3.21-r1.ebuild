@@ -4,7 +4,7 @@
 EAPI=8
 
 GUILE_COMPAT=( 2-2 3-0 )
-PYTHON_COMPAT=( python3_{12..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 
 inherit autotools elisp-common flag-o-matic guile-single python-single-r1 toolchain-funcs
 
