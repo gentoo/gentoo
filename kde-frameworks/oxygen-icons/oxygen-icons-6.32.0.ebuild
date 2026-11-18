@@ -24,6 +24,10 @@ BDEPEND="
 	test? ( app-misc/fdupes )
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-6.32.0-delete-buggy-icons.patch
+)
+
 src_prepare() {
 	cmake_src_prepare
 	use test || cmake_comment_add_subdirectory autotests
