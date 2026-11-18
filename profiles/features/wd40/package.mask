@@ -101,6 +101,7 @@ app-portage/emlop
 # Michał Górny <mgorny@gentoo.org> (2024-05-08)
 # Pure Python packages using dev-python/uv-build, and therefore
 # requiring Rust to install, and their reverse dependencies.
+<app-doc/kicad-doc-10
 app-text/dblatex
 app-text/paperwork
 app-text/paperwork-backend
@@ -171,6 +172,12 @@ net-mail/b4
 net-voip/sipvicious
 sci-astronomy/pysiril
 sci-astronomy/siril
+<sci-electronics/kicad-templates-10
+<sci-electronics/kicad-packages3d-10
+<sci-electronics/kicad-footprints-10
+<sci-electronics/kicad-symbols-10
+<sci-electronics/kicad-10
+<sci-electronics/kicad-meta-10
 sci-libs/cartopy
 sci-libs/pcl
 sci-visualization/pythonprop
