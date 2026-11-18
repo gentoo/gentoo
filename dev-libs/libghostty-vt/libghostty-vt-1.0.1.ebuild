@@ -26,7 +26,7 @@ S="${WORKDIR}/ghostty-vt-${PV}"
 
 LICENSE="MIT"
 SLOT="0/1"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 IUSE="static-libs"
 RESTRICT="test"
 
