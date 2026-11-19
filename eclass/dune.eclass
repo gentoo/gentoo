@@ -165,10 +165,11 @@ dune-install() {
 
 	[[ ${#pkgs[@]} -eq 0 ]] && pkgs=( "${DUNE_PKG_NAME}" )
 
+	local -x DESTDIR="${ED}"
 	local -a myduneopts=(
-		--prefix="${ED}/usr"
-		--libdir="${D}$(ocamlc -where)"
-		--mandir="${ED}/usr/share/man"
+		--prefix="${EPREFIX}/usr"
+		--libdir="$(ocamlc -where)"
+		--mandir="${EPREFIX}/usr/share/man"
 	)
 
 	local pkg
