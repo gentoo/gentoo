@@ -431,7 +431,8 @@ documentation that is installed alongside this README."
 			dosym ${m[4]} ${into}/${m[0]}
 			continue
 		fi
-		# avoid portage warning due to missing soname links in manifest
+		# some _SYMLINK are missing from the .manifest for sonames
+		# TODO?: use scanelf -BSq to auto-create like nvidia-installer?
 		[[ ${m[0]} =~ ^libnvidia-ngx.so ]] &&
 			dosym ${m[0]} ${into}/${m[0]%.so*}.so.1
 
