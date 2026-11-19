@@ -30,16 +30,13 @@ SRC_URI+="
 	arm64? (
 		https://distfiles.gentoo.org/pub/proj/dist-kernel/binpkg/arm64/$(ver_cut 1-2)/${BINPKG}.arm64.gpkg.tar
 	)
-	ppc64? (
-		https://distfiles.gentoo.org/pub/proj/dist-kernel/binpkg/ppc64le/$(ver_cut 1-2)/${BINPKG}.ppc64le.gpkg.tar
-	)
 	x86? (
 		https://distfiles.gentoo.org/pub/proj/dist-kernel/binpkg/x86/$(ver_cut 1-2)/${BINPKG}.x86.gpkg.tar
 	)
 "
 S=${WORKDIR}
 
-KEYWORDS="amd64 arm64 ppc64 x86"
+KEYWORDS="amd64 arm64 x86"
 
 PDEPEND="
 	>=virtual/dist-kernel-${PV}

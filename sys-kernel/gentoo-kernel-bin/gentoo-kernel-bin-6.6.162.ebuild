@@ -32,16 +32,13 @@ SRC_URI+="
 	arm64? (
 		https://distfiles.gentoo.org/pub/proj/dist-kernel/binpkg/arm64/$(ver_cut 1-2)/${BINPKG}.arm64.gpkg.tar
 	)
-	ppc64? (
-		https://distfiles.gentoo.org/pub/proj/dist-kernel/binpkg/ppc64le/$(ver_cut 1-2)/${BINPKG}.ppc64le.gpkg.tar
-	)
 	x86? (
 		https://distfiles.gentoo.org/pub/proj/dist-kernel/binpkg/x86/$(ver_cut 1-2)/${BINPKG}.x86.gpkg.tar
 	)
 "
 S=${WORKDIR}
 
-KEYWORDS="amd64 arm64 ppc64 x86"
+KEYWORDS="amd64 arm64 x86"
 IUSE="debug"
 
 PDEPEND="
@@ -213,9 +210,7 @@ src_install() {
 
 	# Mirror the logic from kernel-build_src_install, for architectures
 	# where USE=debug is used.
-	if use ppc64; then
-		dostrip -x "${rel_kernel_dir}/$(dist-kernel_get_image_path)"
-	elif use debug && { use amd64 || use arm64; }; then
+	if use debug && { use amd64 || use arm64; }; then
 		dostrip -x "${rel_kernel_dir}/vmlinux"
 		dostrip -x "${rel_kernel_dir}/vmlinux.ctfa"
 	fi
