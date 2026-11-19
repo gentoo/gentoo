@@ -15,7 +15,7 @@
 # src_install for Dune-based packages.
 
 case ${EAPI} in
-	7|8) ;;
+	7|8|9) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
@@ -29,7 +29,8 @@ _DUNE_ECLASS=1
 # Set before inheriting the eclass.
 : "${DUNE_PKG_NAME:=${PN}}"
 
-inherit edo multiprocessing
+[[ ${EAPI} != 9 ]] && inherit edo
+inherit multiprocessing
 
 # Do not complain about CFLAGS etc since ml projects do not use them.
 QA_FLAGS_IGNORED='.*'
