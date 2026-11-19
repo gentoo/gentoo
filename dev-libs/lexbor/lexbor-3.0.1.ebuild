@@ -8,6 +8,7 @@ inherit cmake
 DESCRIPTION="Modular web engine (HTML/CSS parser, renderer, ...)"
 HOMEPAGE="https://lexbor.com/ https://github.com/lexbor/lexbor"
 SRC_URI="https://github.com/lexbor/lexbor/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
+
 LICENSE="Apache-2.0"
 SLOT="0/${PV/.*}"
 KEYWORDS="~amd64"
