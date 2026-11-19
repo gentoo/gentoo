@@ -1,0 +1,653 @@
+# https://github.com/monitoring-plugins/monitoring-plugins/pull/2326
+# https://bugs.gentoo.org/985491
+diff --git a/configure.ac b/configure.ac
+index 0523f7914..2bda91ab0 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -175,7 +175,7 @@ if test "$enable_libtap" = "yes" ; then
+ 	EXTRA_TEST="test_utils test_tcp test_cmd test_base64 test_generic_output"
+ 	AC_SUBST(EXTRA_TEST)
+ 
+-	EXTRA_PLUGIN_TESTS="tests/test_check_swap tests/test_check_disk"
++	EXTRA_PLUGIN_TESTS="tests/test_check_swap tests/test_check_disk tests/test_sslutils"
+ 	AC_SUBST(EXTRA_PLUGIN_TESTS)
+ fi
+ 
+diff --git a/plugins/Makefile.am b/plugins/Makefile.am
+index 326e4b3a2..5455d6fee 100644
+--- a/plugins/Makefile.am
++++ b/plugins/Makefile.am
+@@ -49,13 +49,15 @@ EXTRA_PROGRAMS = check_mysql check_radius check_pgsql check_hpjd \
+ 	\
+ 	tests/test_check_swap \
+ 	tests/test_check_snmp \
+-	tests/test_check_disk
++	tests/test_check_disk \
++	tests/test_sslutils
+ 
+ SUBDIRS = picohttpparser
+ 
+ np_test_scripts = tests/test_check_swap.t \
+ 				  tests/test_check_snmp.t \
+-				  tests/test_check_disk.t
++				  tests/test_check_disk.t \
++				  tests/test_sslutils.t
+ 
+ EXTRA_DIST = t \
+ 			 tests \
+@@ -192,6 +194,8 @@ tests_test_check_snmp_LDADD = $(BASEOBJS) $(tap_ldflags) -ltap
+ tests_test_check_snmp_SOURCES = tests/test_check_snmp.c check_snmp.d/check_snmp_helpers.c
+ tests_test_check_disk_LDADD = $(BASEOBJS) $(tap_ldflags) check_disk.d/utils_disk.c -ltap
+ tests_test_check_disk_SOURCES = tests/test_check_disk.c
++tests_test_sslutils_LDADD = $(SSLOBJS) $(tap_ldflags) -ltap
++tests_test_sslutils_SOURCES = tests/test_sslutils.c
+ 
+ ##############################################################################
+ # secondary dependencies
+diff --git a/plugins/sslutils.c b/plugins/sslutils.c
+index 9151f722a..baf7c65ae 100644
+--- a/plugins/sslutils.c
++++ b/plugins/sslutils.c
+@@ -47,6 +47,33 @@ int np_net_ssl_init_with_hostname_and_version(int sd, char *host_name, int versi
+ 	return np_net_ssl_init_with_hostname_version_and_cert(sd, host_name, version, NULL, NULL);
+ }
+ 
++#	ifdef MOPL_USE_OPENSSL
++int np_net_asn1_time_to_time_t(const ASN1_TIME *asn1_time, time_t *out) {
++	struct tm tm = {};
++	if (!ASN1_TIME_to_tm(asn1_time, &tm)) {
++		return 0;
++	}
++	*out = timegm(&tm);
++	if (*out == (time_t)-1) {
++		return 0;
++	}
++	return 1;
++}
++
++void np_net_format_timestamp(time_t t, char *buf, size_t buflen) {
++	char *tz = getenv("TZ");
++	setenv("TZ", "GMT", 1);
++	tzset();
++	strftime(buf, buflen, "%c %z", localtime(&t));
++	if (tz) {
++		setenv("TZ", tz, 1);
++	} else {
++		unsetenv("TZ");
++	}
++	tzset();
++}
++#endif /* MOPL_USE_OPENSSL */
++
+ int np_net_ssl_init_with_hostname_version_and_cert(int sd, char *host_name, int version, char *cert,
+ 												   char *privkey) {
+ 	long options = 0;
+@@ -213,55 +240,16 @@ mp_state_enum np_net_ssl_check_certificate(X509 *certificate, int days_till_exp_
+ 	}
+ 
+ 	/* Retrieve timestamp of certificate */
+-	ASN1_STRING *tm = X509_get_notAfter(certificate);
+-
+-	int offset = 0;
+-	struct tm stamp = {};
+-	/* Generate tm structure to process timestamp */
+-	if (tm->type == V_ASN1_UTCTIME) {
+-		if (tm->length < 10) {
+-			printf("%s\n", _("CRITICAL - Wrong time format in certificate."));
+-			return STATE_CRITICAL;
+-		}
+-		stamp.tm_year = (tm->data[0] - '0') * 10 + (tm->data[1] - '0');
+-		if (stamp.tm_year < 50) {
+-			stamp.tm_year += 100;
+-		}
+-		offset = 0;
+-
+-	} else {
+-		if (tm->length < 12) {
+-			printf("%s\n", _("CRITICAL - Wrong time format in certificate."));
+-			return STATE_CRITICAL;
+-		}
+-		stamp.tm_year = (tm->data[0] - '0') * 1000 + (tm->data[1] - '0') * 100 +
+-						(tm->data[2] - '0') * 10 + (tm->data[3] - '0');
+-		stamp.tm_year -= 1900;
+-		offset = 2;
++	const ASN1_TIME *asn1_not_after = X509_get_notAfter(certificate);
++	time_t expiry_time;
++	if (!np_net_asn1_time_to_time_t(asn1_not_after, &expiry_time)) {
++		printf("%s\n", _("CRITICAL - Wrong time format in certificate."));
++		return STATE_CRITICAL;
+ 	}
+-	stamp.tm_mon = (tm->data[2 + offset] - '0') * 10 + (tm->data[3 + offset] - '0') - 1;
+-	stamp.tm_mday = (tm->data[4 + offset] - '0') * 10 + (tm->data[5 + offset] - '0');
+-	stamp.tm_hour = (tm->data[6 + offset] - '0') * 10 + (tm->data[7 + offset] - '0');
+-	stamp.tm_min = (tm->data[8 + offset] - '0') * 10 + (tm->data[9 + offset] - '0');
+-	stamp.tm_sec = (tm->data[10 + offset] - '0') * 10 + (tm->data[11 + offset] - '0');
+-	stamp.tm_isdst = -1;
+-
+-	time_t tm_t = timegm(&stamp);
+-	float time_left = difftime(tm_t, time(NULL));
++	float time_left = difftime(expiry_time, time(NULL));
+ 	int days_left = time_left / 86400;
+-	char *tz = getenv("TZ");
+-	setenv("TZ", "GMT", 1);
+-	tzset();
+-
+ 	char timestamp[50] = "";
+-	strftime(timestamp, 50, "%c %z", localtime(&tm_t));
+-	if (tz) {
+-		setenv("TZ", tz, 1);
+-	} else {
+-		unsetenv("TZ");
+-	}
+-
+-	tzset();
++	np_net_format_timestamp(expiry_time, timestamp, sizeof(timestamp));
+ 
+ 	int time_remaining;
+ 	mp_state_enum status = STATE_UNKNOWN;
+@@ -341,66 +329,15 @@ retrieve_expiration_time_result np_net_ssl_get_cert_expiration(X509 *certificate
+ 	}
+ 
+ 	/* Retrieve timestamp of certificate */
+-	ASN1_STRING *expiration_timestamp = X509_get_notAfter(certificate);
+-
+-	int offset = 0;
+-	struct tm stamp = {};
+-	/* Generate tm structure to process timestamp */
+-	if (expiration_timestamp->type == V_ASN1_UTCTIME) {
+-		if (expiration_timestamp->length < 10) {
+-			result.errors = WRONG_TIME_FORMAT_IN_CERTIFICATE;
+-			return result;
+-		}
+-
+-		stamp.tm_year =
+-			(expiration_timestamp->data[0] - '0') * 10 + (expiration_timestamp->data[1] - '0');
+-		if (stamp.tm_year < 50) {
+-			stamp.tm_year += 100;
+-		}
+-		offset = 0;
+-	} else {
+-		if (expiration_timestamp->length < 12) {
+-			result.errors = WRONG_TIME_FORMAT_IN_CERTIFICATE;
+-			return result;
+-		}
+-
+-		stamp.tm_year = (expiration_timestamp->data[0] - '0') * 1000 +
+-						(expiration_timestamp->data[1] - '0') * 100 +
+-						(expiration_timestamp->data[2] - '0') * 10 +
+-						(expiration_timestamp->data[3] - '0');
+-		stamp.tm_year -= 1900;
+-		offset = 2;
++	const ASN1_TIME *asn1_not_after = X509_get_notAfter(certificate);
++	time_t expiry_time;
++	if (!np_net_asn1_time_to_time_t(asn1_not_after, &expiry_time)) {
++		result.errors = WRONG_TIME_FORMAT_IN_CERTIFICATE;
++		return result;
+ 	}
+-	stamp.tm_mon = (expiration_timestamp->data[2 + offset] - '0') * 10 +
+-				   (expiration_timestamp->data[3 + offset] - '0') - 1;
+-	stamp.tm_mday = (expiration_timestamp->data[4 + offset] - '0') * 10 +
+-					(expiration_timestamp->data[5 + offset] - '0');
+-	stamp.tm_hour = (expiration_timestamp->data[6 + offset] - '0') * 10 +
+-					(expiration_timestamp->data[7 + offset] - '0');
+-	stamp.tm_min = (expiration_timestamp->data[8 + offset] - '0') * 10 +
+-				   (expiration_timestamp->data[9 + offset] - '0');
+-	stamp.tm_sec = (expiration_timestamp->data[10 + offset] - '0') * 10 +
+-				   (expiration_timestamp->data[11 + offset] - '0');
+-	stamp.tm_isdst = -1;
+-
+-	time_t tm_t = timegm(&stamp);
+-	double time_left = difftime(tm_t, time(NULL));
++	double time_left = difftime(expiry_time, time(NULL));
+ 	result.remaining_seconds = time_left;
+ 
+-	char *timezone = getenv("TZ");
+-	setenv("TZ", "GMT", 1);
+-	tzset();
+-
+-	char timestamp[50] = "";
+-	strftime(timestamp, 50, "%c %z", localtime(&tm_t));
+-	if (timezone) {
+-		setenv("TZ", timezone, 1);
+-	} else {
+-		unsetenv("TZ");
+-	}
+-
+-	tzset();
+-
+ 	X509_free(certificate);
+ 
+ 	return result;
+@@ -482,65 +419,17 @@ mp_subcheck mp_net_ssl_check_certificate(X509 *certificate, int days_till_exp_wa
+ 	}
+ 
+ 	/* Retrieve timestamp of certificate */
+-	ASN1_STRING *expiry_timestamp = X509_get_notAfter(certificate);
+-
+-	int offset = 0;
+-	struct tm stamp = {};
+-	/* Generate tm structure to process timestamp */
+-	if (expiry_timestamp->type == V_ASN1_UTCTIME) {
+-		if (expiry_timestamp->length < 10) {
+-			xasprintf(&sc_cert.output, _("Wrong time format in certificate"));
+-			sc_cert = mp_set_subcheck_state(sc_cert, STATE_CRITICAL);
+-			return sc_cert;
+-		}
+-
+-		stamp.tm_year = (expiry_timestamp->data[0] - '0') * 10 + (expiry_timestamp->data[1] - '0');
+-		if (stamp.tm_year < 50) {
+-			stamp.tm_year += 100;
+-		}
+-
+-		offset = 0;
+-	} else {
+-		if (expiry_timestamp->length < 12) {
+-			xasprintf(&sc_cert.output, _("Wrong time format in certificate"));
+-			sc_cert = mp_set_subcheck_state(sc_cert, STATE_CRITICAL);
+-			return sc_cert;
+-		}
+-		stamp.tm_year = (expiry_timestamp->data[0] - '0') * 1000 +
+-						(expiry_timestamp->data[1] - '0') * 100 +
+-						(expiry_timestamp->data[2] - '0') * 10 + (expiry_timestamp->data[3] - '0');
+-		stamp.tm_year -= 1900;
+-		offset = 2;
++	const ASN1_TIME *asn1_not_after = X509_get_notAfter(certificate);
++	time_t expiry_time;
++	if (!np_net_asn1_time_to_time_t(asn1_not_after, &expiry_time)) {
++		xasprintf(&sc_cert.output, _("Wrong time format in certificate"));
++		sc_cert = mp_set_subcheck_state(sc_cert, STATE_CRITICAL);
++		return sc_cert;
+ 	}
+-
+-	stamp.tm_mon = (expiry_timestamp->data[2 + offset] - '0') * 10 +
+-				   (expiry_timestamp->data[3 + offset] - '0') - 1;
+-	stamp.tm_mday = (expiry_timestamp->data[4 + offset] - '0') * 10 +
+-					(expiry_timestamp->data[5 + offset] - '0');
+-	stamp.tm_hour = (expiry_timestamp->data[6 + offset] - '0') * 10 +
+-					(expiry_timestamp->data[7 + offset] - '0');
+-	stamp.tm_min = (expiry_timestamp->data[8 + offset] - '0') * 10 +
+-				   (expiry_timestamp->data[9 + offset] - '0');
+-	stamp.tm_sec = (expiry_timestamp->data[10 + offset] - '0') * 10 +
+-				   (expiry_timestamp->data[11 + offset] - '0');
+-	stamp.tm_isdst = -1;
+-
+-	time_t tm_t = timegm(&stamp);
+-	double time_left = difftime(tm_t, time(NULL));
++	double time_left = difftime(expiry_time, time(NULL));
+ 	int days_left = (int)(time_left / 86400);
+-	char *timeZone = getenv("TZ");
+-	setenv("TZ", "GMT", 1);
+-	tzset();
+-
+ 	char timestamp[50] = "";
+-	strftime(timestamp, 50, "%c %z", localtime(&tm_t));
+-	if (timeZone) {
+-		setenv("TZ", timeZone, 1);
+-	} else {
+-		unsetenv("TZ");
+-	}
+-
+-	tzset();
++	np_net_format_timestamp(expiry_time, timestamp, sizeof(timestamp));
+ 
+ 	int time_remaining;
+ 	if (days_left > 0 && days_left <= days_till_exp_warn) {
+diff --git a/plugins/tests/test_sslutils.c b/plugins/tests/test_sslutils.c
+new file mode 100644
+index 000000000..3bb0c3bd8
+--- /dev/null
++++ b/plugins/tests/test_sslutils.c
+@@ -0,0 +1,341 @@
++/*****************************************************************************
++ *
++ * This program is free software: you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation, either version 3 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
++ *
++ *
++ *****************************************************************************/
++
++#include "common.h"
++#include "netutils.h"
++#include "../tap/tap.h"
++#include "../../lib/output.h"
++
++#ifdef HAVE_SSL
++#	include <openssl/x509.h>
++#	include <openssl/pem.h>
++#	include <openssl/err.h>
++
++/* prototypes for internal functions*/
++int np_net_asn1_time_to_time_t(const ASN1_TIME *asn1_time, time_t *out);
++void np_net_format_timestamp(time_t t, char *buf, size_t buflen);
++mp_state_enum np_net_ssl_check_certificate(X509 *certificate, int days_till_exp_warn,
++										   int days_till_exp_crit);
++retrieve_expiration_time_result np_net_ssl_get_cert_expiration(X509 *certificate);
++mp_subcheck mp_net_ssl_check_certificate(X509 *certificate, int days_till_exp_warn,
++										 int days_till_exp_crit);
++#endif
++
++const char *progname = "test_sslutils";
++void print_usage(void) {}
++
++#ifdef HAVE_SSL
++static X509 *create_test_cert(long seconds) {
++	X509 *cert = X509_new();
++	if (!cert) {
++		return NULL;
++	}
++
++	ASN1_INTEGER_set(X509_get_serialNumber(cert), 1);
++	X509_set_version(cert, 2);
++
++	X509_gmtime_adj(X509_get_notBefore(cert), 0);
++	X509_gmtime_adj(X509_get_notAfter(cert), seconds);
++
++	X509_NAME *name = X509_get_subject_name(cert);
++	X509_NAME_add_entry_by_txt(name, "CN", MBSTRING_ASC, (unsigned char *)"test.example.com", -1,
++							   -1, 0);
++	X509_set_issuer_name(cert, name);
++
++	EVP_PKEY_CTX *kctx = EVP_PKEY_CTX_new_id(EVP_PKEY_RSA, NULL);
++	if (!kctx) {
++		X509_free(cert);
++		return NULL;
++	}
++	EVP_PKEY *pkey = NULL;
++	if (EVP_PKEY_keygen_init(kctx) <= 0 || EVP_PKEY_CTX_set_rsa_keygen_bits(kctx, 2048) <= 0 ||
++		EVP_PKEY_keygen(kctx, &pkey) <= 0) {
++		EVP_PKEY_CTX_free(kctx);
++		X509_free(cert);
++		return NULL;
++	}
++	EVP_PKEY_CTX_free(kctx);
++
++	X509_set_pubkey(cert, pkey);
++	X509_sign(cert, pkey, EVP_sha256());
++	EVP_PKEY_free(pkey);
++
++	return cert;
++}
++#endif
++
++int main(int argc, char **argv) {
++#ifdef HAVE_SSL
++	plan_tests(44);
++#	define TIME_DELTA 5
++
++	/* Valid cert expiring in 30 days */
++	X509 *cert = create_test_cert(60 * 60 * 24 * 30);
++	ok(cert != NULL, "Created test cert expiring in 30 days");
++	mp_state_enum mp_result;
++	if (cert) {
++		mp_result = np_net_ssl_check_certificate(cert, 14, 7);
++		ok(mp_result == STATE_OK, "Cert expiring in 30 days returns STATE_OK (threshold 14/7)");
++	} else {
++		skip(1, "Cert creation failed");
++	}
++
++	/* Valid cert expiring in 10 days */
++	cert = create_test_cert(60 * 60 * 24 * 10);
++	ok(cert != NULL, "Created test cert expiring in 10 days");
++	if (cert) {
++		mp_result = np_net_ssl_check_certificate(cert, 14, 7);
++		ok(mp_result == STATE_WARNING,
++		   "Cert expiring in 10 days returns STATE_WARNING (threshold 14/7)");
++	} else {
++		skip(1, "Cert creation failed");
++	}
++
++	/* Valid cert expiring in 5 days */
++	cert = create_test_cert(60 * 60 * 24 * 5);
++	ok(cert != NULL, "Created test cert expiring in 5 days");
++	if (cert) {
++		mp_result = np_net_ssl_check_certificate(cert, 14, 7);
++		ok(mp_result == STATE_CRITICAL,
++		   "Cert expiring in 5 days returns STATE_CRITICAL (threshold 14/7)");
++	} else {
++		skip(1, "Cert creation failed");
++	}
++
++	/* Valid cert expiring in 1 hour */
++	cert = create_test_cert(60 * 60 * 1);
++	ok(cert != NULL, "Created test cert expiring in 1 hour");
++	if (cert) {
++		mp_result = np_net_ssl_check_certificate(cert, 14, 7);
++		ok(mp_result == STATE_CRITICAL,
++		   "Cert expiring in 1 hour returns CRITICAL (threshold 14/7)");
++	} else {
++		skip(1, "Cert creation failed");
++	}
++
++	/* Cert expiring in 30 minutes */
++	cert = create_test_cert(60 * 30);
++	ok(cert != NULL, "Created test cert expiring in 30 minutes");
++	if (cert) {
++		mp_result = np_net_ssl_check_certificate(cert, 14, 7);
++		ok(mp_result == STATE_CRITICAL,
++		   "Cert expiring in 30 minutes returns CRITICAL (threshold 14/7)");
++	} else {
++		skip(1, "Cert creation failed");
++	}
++
++	/* Expired cert - should be CRITICAL */
++	cert = create_test_cert(60 * 60 * 24 * -10);
++	ok(cert != NULL, "Created test cert that expired 10 days ago");
++	if (cert) {
++		mp_result = np_net_ssl_check_certificate(cert, 14, 7);
++		ok(mp_result == STATE_CRITICAL, "Expired cert returns STATE_CRITICAL");
++	} else {
++		skip(1, "Cert creation failed");
++	}
++
++	/* np_net_ssl_get_cert_expiration - NULL certificate */
++	retrieve_expiration_time_result expiration_time_result = np_net_ssl_get_cert_expiration(NULL);
++	ok(expiration_time_result.errors == NO_SERVER_CERTIFICATE_PRESENT,
++	   "NULL certificate returns NO_SERVER_CERTIFICATE_PRESENT error");
++
++	/* np_net_ssl_get_cert_expiration - valid cert */
++	cert = create_test_cert(60 * 60 * 24 * 30);
++	if (cert) {
++		expiration_time_result = np_net_ssl_get_cert_expiration(cert);
++		ok(expiration_time_result.errors == ALL_OK, "Valid cert returns ALL_OK error code");
++		ok(expiration_time_result.remaining_seconds > (60 * 60 * 24 * 30) - TIME_DELTA &&
++			   expiration_time_result.remaining_seconds < (60 * 60 * 24 * 30) + TIME_DELTA,
++		   "remaining_seconds is 30 days +- %i", TIME_DELTA);
++	} else {
++		skip(2, "Cert creation failed");
++	}
++
++	/* np_net_ssl_get_cert_expiration - expired cert */
++	cert = create_test_cert(60 * 60 * 24 * -10);
++	if (cert) {
++		expiration_time_result = np_net_ssl_get_cert_expiration(cert);
++		ok(expiration_time_result.errors == ALL_OK, "Expired cert returns ALL_OK error code");
++		ok(expiration_time_result.remaining_seconds < 0,
++		   "remaining_seconds is negative for expired cert");
++	} else {
++		skip(2, "Cert creation failed");
++	}
++
++	struct tm target_date = {0};
++	target_date.tm_year = 2051 - 1900;
++	target_date.tm_mon = 0;
++	target_date.tm_mday = 1;
++	target_date.tm_hour = 0;
++	target_date.tm_min = 0;
++	target_date.tm_sec = 0;
++	target_date.tm_isdst = -1;
++	time_t time_2051 = mktime(&target_date);
++	time_t time_now = time(NULL);
++	long seconds_remaining = time_2051 - time_now;
++	cert = create_test_cert(seconds_remaining);
++
++	/* GENERALIZEDTIME cert (year > 2049) */
++	ok(cert != NULL, "Created GENERALIZEDTIME cert (2051)");
++	if (cert) {
++		mp_result = np_net_ssl_check_certificate(cert, 14, 7);
++		ok(mp_result == STATE_OK, "GENERALIZEDTIME cert expiring in 2051 returns STATE_OK");
++	} else {
++		skip(1, "Cert creation failed");
++	}
++
++	/* np_net_ssl_get_cert_expiration - GENERALIZEDTIME cert */
++	cert = create_test_cert(seconds_remaining);
++	if (cert) {
++		expiration_time_result = np_net_ssl_get_cert_expiration(cert);
++		ok(expiration_time_result.errors == ALL_OK,
++		   "GENERALIZEDTIME cert returns ALL_OK error code");
++		ok(expiration_time_result.remaining_seconds > seconds_remaining - TIME_DELTA &&
++			   expiration_time_result.remaining_seconds < seconds_remaining + TIME_DELTA,
++		   "remaining_seconds is correct for Midnight on January 1st 2051 +- %i", TIME_DELTA);
++	} else {
++		skip(2, "Cert creation failed");
++	}
++
++	/* mp_net_ssl_check_certificate - NULL certificate */
++	mp_subcheck sc_result = mp_net_ssl_check_certificate(NULL, 14, 7);
++	ok(sc_result.state == STATE_CRITICAL, "mp: NULL certificate returns STATE_CRITICAL");
++	ok(sc_result.output != NULL, "mp: NULL certificate sets output");
++
++	/* mp_net_ssl_check_certificate - valid cert expiring in 30 days */
++	cert = create_test_cert(60 * 60 * 24 * 30);
++	if (cert) {
++		sc_result = mp_net_ssl_check_certificate(cert, 14, 7);
++		ok(sc_result.state == STATE_OK,
++		   "mp: Cert expiring in 30 days returns STATE_OK (threshold 14/7)");
++		ok(sc_result.output != NULL, "mp: Cert expiring in 30 days sets output");
++	} else {
++		skip(2, "Cert creation failed");
++	}
++
++	/* mp_net_ssl_check_certificate - valid cert expiring in 10 days */
++	cert = create_test_cert(60 * 60 * 24 * 10);
++	if (cert) {
++		sc_result = mp_net_ssl_check_certificate(cert, 14, 7);
++		ok(sc_result.state == STATE_WARNING,
++		   "mp: Cert expiring in 10 days returns STATE_WARNING (threshold 14/7)");
++		ok(sc_result.output != NULL, "mp: Cert expiring in 10 days sets output");
++	} else {
++		skip(2, "Cert creation failed");
++	}
++
++	/*np_net_asn1_time_to_time_t with valid UTCTIME */
++	ASN1_TIME *asn1_time = ASN1_TIME_new();
++	ASN1_TIME_set_string(asn1_time, "301128210211Z"); /* Nov 28, 2030 21:02:11 UTC */
++	time_t result;
++	ok(np_net_asn1_time_to_time_t(asn1_time, &result) == 1,
++	   "np_net_asn1_time_to_time_t succeeds with valid UTCTIME");
++	struct tm *tm = gmtime(&result);
++	ok(tm->tm_year == 130 && tm->tm_mon == 10 && tm->tm_mday == 28 && tm->tm_hour == 21 &&
++		   tm->tm_min == 2 && tm->tm_sec == 11,
++	   "UTCTIME correctly converts to Nov 28, 2030 21:02:11 UTC");
++	ASN1_TIME_free(asn1_time);
++
++	/* np_net_asn1_time_to_time_t with valid GENERALIZEDTIME */
++	asn1_time = ASN1_TIME_new();
++	ASN1_TIME_set_string(asn1_time, "20510701120000Z"); /* Jul 1, 2051 12:00:00 UTC */
++	ok(np_net_asn1_time_to_time_t(asn1_time, &result) == 1,
++	   "np_net_asn1_time_to_time_t succeeds with valid GENERALIZEDTIME");
++	tm = gmtime(&result);
++	ok(tm->tm_year == 151 && tm->tm_mon == 6 && tm->tm_mday == 1 && tm->tm_hour == 12 &&
++		   tm->tm_min == 0 && tm->tm_sec == 0,
++	   "GENERALIZEDTIME correctly converts to Jul 1, 2051 12:00:00 UTC");
++	ASN1_TIME_free(asn1_time);
++
++	/* np_net_asn1_time_to_time_t fails with empty ASN1_TIME */
++	asn1_time = ASN1_TIME_new();
++	ok(np_net_asn1_time_to_time_t(asn1_time, &result) == 0,
++	   "np_net_asn1_time_to_time_t fails with empty ASN1_TIME");
++	ASN1_TIME_free(asn1_time);
++
++	/* np_net_format_timestamp produces correct GMT output */
++	asn1_time = ASN1_TIME_new();
++	ASN1_TIME_set_string(asn1_time, "301128210211Z"); /* Nov 28, 2030 21:02:11 UTC */
++	time_t t;
++	np_net_asn1_time_to_time_t(asn1_time, &t);
++	char buf[100] = "";
++	np_net_format_timestamp(t, buf, sizeof(buf));
++	ok(strlen(buf) > 0, "np_net_format_timestamp produces non-empty output");
++	ok(strstr(buf, "+0000") != NULL,
++	   "np_net_format_timestamp output contains +0000 for GMT timezone");
++	ASN1_TIME_free(asn1_time);
++
++	/* mp_net_ssl_check_certificate - valid cert expiring in 5 days */
++	cert = create_test_cert(60 * 60 * 24 * 5);
++	if (cert) {
++		sc_result = mp_net_ssl_check_certificate(cert, 14, 7);
++		ok(sc_result.state == STATE_CRITICAL,
++		   "mp: Cert expiring in 5 days returns STATE_CRITICAL (threshold 14/7)");
++		ok(sc_result.output != NULL, "mp: Cert expiring in 5 days sets output");
++	} else {
++		skip(2, "Cert creation failed");
++	}
++
++	/* mp_net_ssl_check_certificate - valid cert expiring in 1 hour */
++	cert = create_test_cert(60 * 60 * 1);
++	if (cert) {
++		sc_result = mp_net_ssl_check_certificate(cert, 14, 7);
++		ok(sc_result.state == STATE_CRITICAL,
++		   "mp: Cert expiring in 1 hour returns CRITICAL (threshold 14/7)");
++		ok(sc_result.output != NULL, "mp: Cert expiring in 1 hour sets output");
++	} else {
++		skip(2, "Cert creation failed");
++	}
++
++	/* mp_net_ssl_check_certificate - cert expiring in 30 minutes */
++	cert = create_test_cert(60 * 30);
++	if (cert) {
++		sc_result = mp_net_ssl_check_certificate(cert, 14, 7);
++		ok(sc_result.state == STATE_CRITICAL,
++		   "mp: Cert expiring in 30 minutes returns CRITICAL (threshold 14/7)");
++		ok(sc_result.output != NULL, "mp: Cert expiring in 30 minutes sets output");
++	} else {
++		skip(2, "Cert creation failed");
++	}
++
++	/* mp_net_ssl_check_certificate - expired cert */
++	cert = create_test_cert(60 * 60 * 24 * -10);
++	if (cert) {
++		sc_result = mp_net_ssl_check_certificate(cert, 14, 7);
++		ok(sc_result.state == STATE_CRITICAL, "mp: Expired cert returns STATE_CRITICAL");
++		ok(sc_result.output != NULL, "mp: Expired cert sets output");
++	} else {
++		skip(2, "Cert creation failed");
++	}
++
++	/* mp_net_ssl_check_certificate - GENERALIZEDTIME cert (year > 2049) */
++	cert = create_test_cert(seconds_remaining);
++	if (cert) {
++		sc_result = mp_net_ssl_check_certificate(cert, 14, 7);
++		ok(sc_result.state == STATE_OK,
++		   "mp: GENERALIZEDTIME cert expiring in 2051 returns STATE_OK");
++		ok(sc_result.output != NULL, "mp: GENERALIZEDTIME cert sets output");
++	} else {
++		skip(2, "Cert creation failed");
++	}
++#else
++	plan_skip_all("SSL support not compiled in");
++#endif
++
++	return exit_status();
++}
+diff --git a/plugins/tests/test_sslutils.t b/plugins/tests/test_sslutils.t
+new file mode 100644
+index 000000000..0b60a65f1
+--- /dev/null
++++ b/plugins/tests/test_sslutils.t
+@@ -0,0 +1,6 @@
++#!/usr/bin/perl
++use Test::More;
++if (! -e "./test_sslutils") {
++	plan skip_all => "./test_sslutils not compiled - please enable libtap library to test";
++}
++exec "./test_sslutils";
