@@ -177,7 +177,7 @@ BDEPEND="
 		video_cards_imagination? ( ${CLC_DEPSTRING} )
 		video_cards_nvk? (
 			>=dev-util/bindgen-0.71.1
-			>=dev-util/cbindgen-0.26.0
+			>=dev-util/cbindgen-0.28.0
 			${RUST_DEPEND}
 			${CLC_DEPSTRING}
 		)
