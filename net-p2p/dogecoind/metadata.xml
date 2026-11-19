@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<upstream>
+		<bugs-to>https://github.com/dogecoin/dogecoin/issues</bugs-to>
+		<changelog>https://github.com/dogecoin/dogecoin/tree/master/doc/release-notes</changelog>
+		<doc>https://github.com/dogecoin/dogecoin/tree/master/doc</doc>
+	</upstream>
+	<maintainer type="person" proxied="yes">
+		<email>victor3.14@yandex.com</email>
+		<name>Victor Skovorodnikov</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<use>
+		<flag name="tests">Compile with tests</flag>
+		<flag name="wallet">Build Dogecoin Core with wallet support</flag>
+		<flag name="zmq">Enables ZeroMQ notifications</flag>
+	</use>
+	<longdescription lang="en">
+		Dogecoin Core of blockchain node and RPC server with up-to-date recommended fee implementation policy.
+	</longdescription>
+</pkgmetadata>
