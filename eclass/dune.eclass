@@ -170,18 +170,12 @@ dune-install() {
 		--prefix="${EPREFIX}/usr"
 		--libdir="$(ocamlc -where)"
 		--mandir="${EPREFIX}/usr/share/man"
+		--docdir="${EPREFIX}/usr/share/doc/${PF}"
 	)
 
 	local pkg
 	for pkg in "${pkgs[@]}" ; do
 		edune install ${myduneopts[@]} ${pkg}
-
-		# Move docs to the appropriate place.
-		if [[ -d "${ED}/usr/doc/${pkg}" ]] ; then
-			mkdir -p "${ED}/usr/share/doc/${PF}/" || die
-			mv "${ED}/usr/doc/${pkg}" "${ED}/usr/share/doc/${PF}/" || die
-			rm -rf "${ED}/usr/doc" || die
-		fi
 	done
 }
 
