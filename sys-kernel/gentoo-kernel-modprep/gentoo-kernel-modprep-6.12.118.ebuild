@@ -29,7 +29,7 @@ S=${WORKDIR}
 
 LICENSE="GPL-2"
 SLOT=${PV}
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 
 RDEPEND="
 	virtual/libelf
@@ -63,7 +63,6 @@ src_unpack() {
 
 	unpack "${BASE_P}.tar.xz" "patch-${PATCH_PV}.xz" "${PATCHSET}.tar.xz"
 	local pkg_arch=${ARCH}
-	[[ ${ARCH} == ppc64 ]] && pkg_arch=ppc64le
 	tar -x -f "${DISTDIR}/${P}.tar.xz" "${P}/${pkg_arch}" || die
 }
 
