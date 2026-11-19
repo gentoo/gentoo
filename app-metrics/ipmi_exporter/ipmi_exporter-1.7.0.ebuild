@@ -6,19 +6,20 @@ EAPI=8
 inherit go-module systemd
 
 # update these on every bump
-COMMIT=b72f43d24fffa17d4f91a67ab306463211e92c76
+COMMIT=d4c93727273331772cc6aa6ee843c5c5a7e9f7e9
 
-DESCRIPTION="Prometheus exporter for MongoDB"
-HOMEPAGE="https://github.com/percona/mongodb_exporter"
+DESCRIPTION="Remote IPMI exporter for Prometheus"
+HOMEPAGE="https://github.com/prometheus-community/ipmi_exporter"
 SRC_URI="https://github.com/prometheus-community/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 SRC_URI+=" https://github.com/gentoo-golang-dist/${PN}/releases/download/v${PV}/${P}-vendor.tar.xz"
 
-LICENSE="Apache-2.0"
+LICENSE="MIT"
 # Dependent licenses
-LICENSE+=" Apache-2.0 BSD BSD-2 ISC MIT"
+LICENSE+=" Apache-2.0 BSD MIT"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="kerberos"
+
+RDEPEND="sys-libs/freeipmi"
 
 DOCS=(
 	README.md CHANGELOG.md CODE_OF_CONDUCT.md CONTRIBUTING.md SECURITY.md
@@ -30,7 +31,7 @@ src_compile() {
 	local -x CGO_ENABLED=0
 	local go_ldflags=(
 		-X github.com/prometheus/common/version.Version=${PV}
-		-X github.com/prometheus/common/version.Revision=${GIT_COMMIT}
+		-X github.com/prometheus/common/version.Revision=${COMMIT}
 		-X github.com/prometheus/common/version.Branch=master
 		-X github.com/prometheus/common/version.BuildUser=gentoo
 		-X github.com/prometheus/common/version.BuildDate="$(date +%F-%T)"
