@@ -70,6 +70,8 @@ QA_CONFIG_IMPL_DECL_SKIP=(
 DOCS=( ACKNOWLEDGEMENTS AUTHORS CODING ChangeLog FAQ \
 		NEWS README REQUIREMENTS SUPPORT THANKS )
 
+PATCHES=( "${FILESDIR}"/${P}-openssl-4.patch )
+
 src_prepare() {
 	if ! use snmp; then
 		# automagic detection becomes a much bigger problem when the
