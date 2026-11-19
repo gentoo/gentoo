@@ -271,7 +271,6 @@ net-misc/sitecopy
 
 # Nowa Ammerlaan <nowa@gentoo.org> (2024-01-20)
 # Binary package linked to glibc (rolling mask, use for all such binpkgs)
-app-admin/awscli-bin
 app-admin/bitwarden-desktop-bin
 app-admin/puppet-agent
 app-admin/puppetserver
