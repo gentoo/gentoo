@@ -1,0 +1,12 @@
+diff '--color=auto' -Naur a/gnome-commander-2.2.3/meson.build b/gnome-commander-2.2.3/meson.build
+--- a/meson.build	2026-11-11 16:08:02.000000000 +0100
++++ b/meson.build	2026-11-16 17:24:33.367520190 +0100
+@@ -100,6 +100,8 @@
+ 
+ install_data('pixmaps/gnome-commander.svg',
+   install_dir: datadir / 'icons' / 'hicolor' / 'scalable' / 'apps')
++install_data('pixmaps/gnome-commander-internal-viewer.svg',
++  install_dir: datadir / 'icons' / 'hicolor' / 'scalable' / 'apps')
+ 
+ gnome.post_install(
+   glib_compile_schemas: true,
