@@ -19,7 +19,7 @@ LICENSE="
 
 SLOT="0"
 
-KEYWORDS="amd64 ~arm arm64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm arm64 ~riscv x86"
 
 IUSE="audit debug bluetooth-sound branding elogind fprint plymouth selinux systemd tcpd test video_cards_nvidia +X"
 
