@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: postgres.eclass
@@ -27,7 +27,7 @@ _POSTGRES_ECLASS=1
 # @DESCRIPTION:
 # List of versions to reverse sort POSTGRES_COMPAT slots
 
-_POSTGRES_ALL_VERSIONS=( 9999 18 17 16 15 14 )
+_POSTGRES_ALL_VERSIONS=( 9999 19 18 17 16 15 14 )
 
 
 
