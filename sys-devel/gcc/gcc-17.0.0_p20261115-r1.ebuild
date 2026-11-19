@@ -8,7 +8,7 @@ EAPI=8
 
 TOOLCHAIN_HAS_TESTS=1
 PATCH_GCC_VER="17.0.0"
-PATCH_VER="22"
+PATCH_VER="23"
 MUSL_GCC_VER="17.0.0"
 MUSL_VER="1"
 PYTHON_COMPAT=( python3_{11..14} )
@@ -51,6 +51,7 @@ src_prepare() {
 
 	toolchain_src_prepare
 	eapply "${FILESDIR}"/${PN}-13-fix-cross-fixincludes.patch
+	eapply "${FILESDIR}"/${P}-pr128759.patch
 	[[ ${CHOST} == m68k-* ]] && eapply "${FILESDIR}"/${PN}-15-m68k-workaround.patch
 	eapply_user
 }
