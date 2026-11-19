@@ -106,6 +106,7 @@ dev-python/terminaltables3 test
 dev-python/textdistance test
 dev-python/time-machine test
 dev-python/tornado test
+dev-python/url-normalize test
 dev-python/wcag-contrast-ratio test
 dev-python/xarray test
 dev-python/yarl test
