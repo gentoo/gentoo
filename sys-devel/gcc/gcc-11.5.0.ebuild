@@ -53,6 +53,10 @@ if [[ ${CATEGORY} != cross-* ]] ; then
 	DEPEND="${RDEPEND}"
 fi
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-11-clang-static-stage1-libs.patch
+)
+
 src_prepare() {
 	local p upstreamed_patches=(
 		# add them here
@@ -62,6 +66,4 @@ src_prepare() {
 	done
 
 	toolchain_src_prepare
-
-	eapply_user
 }
