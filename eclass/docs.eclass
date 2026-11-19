@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: docs.eclass
@@ -7,7 +7,7 @@
 # @AUTHOR:
 # Author: Nowa Ammerlaan <nowa@gentoo.org>
 # Based on the work of: Michał Górny <mgorny@gentoo.org>
-# @SUPPORTED_EAPIS: 7 8
+# @SUPPORTED_EAPIS: 7 8 9
 # @BLURB: A simple eclass to build documentation.
 # @DESCRIPTION:
 # A simple eclass providing basic functions and variables to build
@@ -58,7 +58,7 @@
 # @CODE
 
 case ${EAPI} in
-	7|8) ;;
+	7|8|9) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 

@@ -4,7 +4,7 @@
 # @ECLASS: mount-boot-utils.eclass
 # @MAINTAINER:
 # base-system@gentoo.org
-# @SUPPORTED_EAPIS: 7 8
+# @SUPPORTED_EAPIS: 7 8 9
 # @BLURB: functions for packages that install files into /boot or the ESP
 # @DESCRIPTION:
 # This eclass is really only useful for bootloaders and kernel installation.
@@ -29,7 +29,7 @@
 # EFI System Partition only.
 
 case ${EAPI} in
-	7|8) ;;
+	7|8|9) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
