@@ -133,6 +133,7 @@ snapcast
 -video_cards_d3d12
 -video_cards_exynos
 -video_cards_freedreno
+-video_cards_gfxstream
 -video_cards_lima
 -video_cards_nouveau
 -video_cards_panfrost

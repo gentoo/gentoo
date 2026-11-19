@@ -167,6 +167,9 @@
 # unmask video_cards with virtgpu DRM native-context support
 -video_cards_asahi
 
+# gfxstream Vulkan driver for virtio-gpu guests
+-video_cards_gfxstream
+
 # Simon Stelling <blubb@gentoo.org> (2007-02-16)
 # Since this profile forces >=portage-2.1.2, we can unmask all
 # SIMD assembler flags
