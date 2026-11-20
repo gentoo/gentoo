@@ -37,11 +37,11 @@ RDEPEND="
 	dev-libs/libfmt:=
 	media-libs/freetype
 	media-libs/libpng:0=
-	>=media-libs/libsdl2-2.0.1[joystick,video]
+	>=media-libs/libsdl3-3.4.18
 	media-libs/libvorbis
 	media-libs/openal
-	>=media-libs/sdl2-ttf-2.0.15
-	>=media-libs/sdl2-image-2.0.0[png,jpeg]
+	>=media-libs/sdl3-ttf-3.2.2
+	>=media-libs/sdl3-image-3.2.4[png,jpeg]
 	network? (
 		>=net-misc/curl-7.21.7
 	)
