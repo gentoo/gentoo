@@ -510,7 +510,7 @@ src_configure() {
 	use clippy && tools+=',"clippy"'
 	use rustfmt && tools+=',"rustfmt"'
 	use rust-analyzer && tools+=',"rust-analyzer","rust-analyzer-proc-macro-srv"'
-	use rust-src && tools+=',"src"'
+	use rust-src && tools+=',"rust-src"'
 
 	if [[ ${PV} == *9999* ]]; then
 		use miri && tools+=',"miri"'
