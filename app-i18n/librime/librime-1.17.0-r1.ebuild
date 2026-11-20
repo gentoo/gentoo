@@ -20,14 +20,21 @@ RDEPEND="
 	dev-cpp/glog:=
 	dev-cpp/yaml-cpp:=
 	>=dev-libs/boost-1.74:=
+	dev-libs/darts
 	dev-libs/leveldb:=
 	dev-libs/marisa
 "
 DEPEND="${RDEPEND}
+	dev-libs/utfcpp
+	x11-base/xorg-proto
 	test? ( dev-cpp/gtest )
 "
 
 DOCS=( CHANGELOG.md README.md )
+
+PATCHES=(
+	"${FILESDIR}/${PN}-1.17.0-use-system-headers.patch"
+)
 
 src_configure() {
 	# -Werror=odr

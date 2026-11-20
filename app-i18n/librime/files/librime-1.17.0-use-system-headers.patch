@@ -1,0 +1,39 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 6a76fb7c..b5cd922e 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -149,13 +149,7 @@ if(Opencc_STATIC)
+   add_definitions(-DOpencc_BUILT_AS_STATIC)
+ endif()
+ 
+-find_path(X11Keysym X11/keysym.h)
+-if(X11Keysym)
+-  message(STATUS "Found X11/keysym.h at ${X11Keysym}")
+-  include_directories(${X11Keysym})
+-else()
+-  message(WARNING "X11/keysym.h not found.")
+-endif()
++find_package(utf8cpp REQUIRED)
+ 
+ configure_file(
+   "${PROJECT_SOURCE_DIR}/src/rime/build_config.h.in"
+@@ -163,7 +157,6 @@ configure_file(
+ 
+ include_directories(${PROJECT_BINARY_DIR}/src)
+ include_directories(${PROJECT_SOURCE_DIR}/src)
+-include_directories(${PROJECT_SOURCE_DIR}/include)
+ link_directories(${PROJECT_SOURCE_DIR}/lib)
+ 
+ if(MSVC)
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 8faa61f8..5299ff02 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -48,6 +48,7 @@ set(rime_core_deps
+     ${Glog_LIBRARY}
+     ${YamlCpp_LIBRARY}
+     ${CMAKE_THREAD_LIBS_INIT}
++    utf8cpp::utf8cpp
+     ${rime_optional_deps})
+ set(rime_dict_deps
+     ${LevelDb_LIBRARY}
