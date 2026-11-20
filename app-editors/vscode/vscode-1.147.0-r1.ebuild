@@ -119,7 +119,7 @@ src_install() {
 	pax-mark m code
 	mkdir -p "${ED}/opt/${PN}" || die
 	cp -r . "${ED}/opt/${PN}" || die
-	fperms 4711 /opt/${PN}/chrome-sandbox
+	fperms 4755 /opt/${PN}/chrome-sandbox
 
 	dosym -r "/opt/${PN}/bin/code" "usr/bin/vscode"
 	dosym -r "/opt/${PN}/bin/code" "usr/bin/code"
