@@ -64,6 +64,7 @@ PATCHES=(
 	"${FILESDIR}/tomcat-10.1.20-do-not-copy.patch"
 	"${FILESDIR}/tomcat-10.1.20-offline.patch"
 	"${FILESDIR}/tomcat-9.0.87-gentoo-bnd.patch"
+	"${FILESDIR}/tomcat-10.1.62-CVE-2026-133325.patch"
 )
 
 src_prepare() {
