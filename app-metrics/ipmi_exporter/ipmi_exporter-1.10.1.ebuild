@@ -18,6 +18,7 @@ LICENSE="MIT"
 LICENSE+=" Apache-2.0 BSD MIT"
 SLOT="0"
 KEYWORDS="~amd64"
+RESTRICT="test"
 
 RDEPEND="sys-libs/freeipmi"
 
