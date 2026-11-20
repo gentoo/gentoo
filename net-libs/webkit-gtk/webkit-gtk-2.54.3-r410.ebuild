@@ -38,8 +38,8 @@ RESTRICT="test"
 # * TODO: gst-plugins-base[X] is only needed when build configuration ends up
 #         with GLX set, but that's a bit automagic too to fix
 #
-#   hard-code a list of BE arches here, to avoid the extra dependency? But I am
-#   holding out hope that this might actually get fixed before we need to do that.
+# * Support for x11-libs/cairo was supposedly removed in 2.54.0, but
+#   it's still linked (https://codeberg.org/gentoo/gentoo/pulls/2450)
 #
 # * dev-util/sysprof-capture is disabled because it was a new dependency in 2.46
 #   and we don't need any more new problems.

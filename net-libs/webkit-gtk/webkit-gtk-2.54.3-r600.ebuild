@@ -42,8 +42,8 @@ RESTRICT="test"
 #   to in the gtk4 SLOT - is it an upstream check bug and only gtk-4.14
 #   a11y support is used?
 #
-#   hard-code a list of BE arches here, to avoid the extra dependency? But I am
-#   holding out hope that this might actually get fixed before we need to do that.
+# * Support for x11-libs/cairo was supposedly removed in 2.54.0, but
+#   it's still linked (https://codeberg.org/gentoo/gentoo/pulls/2450)
 #
 # * dev-util/sysprof-capture is disabled because it was a new dependency in 2.46
 #   and we don't need any more new problems.
