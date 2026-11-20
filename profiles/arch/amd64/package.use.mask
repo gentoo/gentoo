@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Matt Turner <mattst88@gentoo.org> (2026-11-20)
+# media-libs/venus-protocol is keyworded here. Bug #986872
+>=media-libs/mesa-26.3.0_rc1 -video_cards_virgl
+
 # Alfredo Tupone <tupone@gentoo.org> (2026-11-8)
 # sci-libs/coinasl only available on amd64/x86
 sci-libs/coinor-cbc -asl

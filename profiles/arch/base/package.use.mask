@@ -1,6 +1,11 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Matt Turner <mattst88@gentoo.org> (2026-11-20)
+# media-libs/venus-protocol, needed for the Venus Vulkan driver, is only
+# keyworded on amd64. Bug #986872
+>=media-libs/mesa-26.3.0_rc1 video_cards_virgl
+
 # Jimi Huotari <chiitoo@gentoo.org> (2026-11-06)
 # gui-apps/lxqt-clip is only keyworded for amd64 and arm64 at this time.
 lxqt-base/lxqt-meta clip
