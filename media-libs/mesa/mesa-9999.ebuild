@@ -143,6 +143,7 @@ DEPEND="${RDEPEND}
 	sysprof? ( >=dev-util/sysprof-capture-49.0[${MULTILIB_USEDEP}] )
 	video_cards_d3d12? ( >=dev-util/directx-headers-1.619.1[${MULTILIB_USEDEP}] )
 	valgrind? ( dev-debug/valgrind )
+	video_cards_virgl? ( vulkan? ( ~media-libs/venus-protocol-1.1.3 ) )
 	wayland? ( >=dev-libs/wayland-protocols-1.50 )
 	X? (
 		x11-libs/libXrandr[${MULTILIB_USEDEP}]
