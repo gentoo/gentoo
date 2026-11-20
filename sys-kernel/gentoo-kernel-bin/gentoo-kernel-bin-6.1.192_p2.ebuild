@@ -36,7 +36,7 @@ SRC_URI+="
 "
 S=${WORKDIR}
 
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 arm64 x86"
 
 PDEPEND="
 	>=virtual/dist-kernel-${PV}
