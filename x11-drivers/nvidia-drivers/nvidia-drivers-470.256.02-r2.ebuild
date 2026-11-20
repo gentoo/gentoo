@@ -345,8 +345,8 @@ documentation that is installed alongside this README."
 		fi
 		# some _SYMLINK are missing from the .manifest for sonames
 		# TODO?: use scanelf -BSq to auto-create like nvidia-installer?
-		[[ ${m[0]} =~ ^libnvidia-ngx.so ]] &&
-			dosym ${m[0]} ${into}/${m[0]%.so*}.so.1
+		[[ ${m[0]} =~ ((libnvidia-ngx.so).*) ]] &&
+			dosym ${BASH_REMATCH[1]} ${into}/${BASH_REMATCH[2]}.1
 
 		printf -v m[1] %o $((m[1] | 0200)) # 444->644
 		insopts -m${m[1]}

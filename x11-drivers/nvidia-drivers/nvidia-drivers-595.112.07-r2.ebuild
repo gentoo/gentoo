@@ -4,10 +4,8 @@
 EAPI=8
 
 MODULES_OPTIONAL_IUSE=+modules
-PYTHON_COMPAT=( python3_{12..15} )
-inherit desktop dot-a eapi9-pipestatus eapi9-ver flag-o-matic
-inherit linux-mod-r1 python-single-r1 readme.gentoo-r1 systemd
-inherit toolchain-funcs unpacker user-info
+inherit desktop dot-a eapi9-pipestatus eapi9-ver flag-o-matic linux-mod-r1
+inherit readme.gentoo-r1 systemd toolchain-funcs unpacker user-info
 
 MODULES_KERNEL_MAX=7.3
 NV_URI="https://download.nvidia.com/XFree86/"
@@ -29,9 +27,8 @@ LICENSE="
 	curl openssl public-domain
 "
 SLOT="0/${PV%%.*}"
-KEYWORDS="-* ~amd64 ~arm64"
+KEYWORDS="-* amd64 ~arm64"
 IUSE="+X abi_x86_32 abi_x86_64 persistenced powerd +static-libs +tools wayland"
-REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 COMMON_DEPEND="
 	acct-group/video
@@ -59,12 +56,10 @@ COMMON_DEPEND="
 # (may use one or the other depending on setup)
 RDEPEND="
 	${COMMON_DEPEND}
-	${PYTHON_DEPS}
 	|| (
 		dev-libs/openssl-compat:3
 		dev-libs/openssl:0/3
 	)
-	sys-devel/gcc:*
 	sys-libs/glibc
 	X? (
 		media-libs/libglvnd[X,abi_x86_32(-)?]
@@ -97,7 +92,6 @@ DEPEND="
 	)
 "
 BDEPEND="
-	${PYTHON_DEPS}
 	sys-devel/m4
 	virtual/pkgconfig
 "
@@ -111,8 +105,6 @@ PATCHES=(
 )
 
 pkg_setup() {
-	python-single-r1_pkg_setup
-
 	use modules && [[ ${MERGE_TYPE} != binary ]] || return
 
 	# do early before linux-mod-r1 so can use chkconfig to setup CONFIG_CHECK
@@ -175,10 +167,6 @@ src_prepare() {
 	# makefile attempts to install wayland library even if not built
 	use wayland || sed -i 's/ WAYLAND_LIB_install$//' \
 		nvidia-settings/src/Makefile || die
-
-	# .py can be called by the shell script which ignores the shebang
-	sed -i "s/python3/${EPYTHON}/g" nvidia-bug-report.sh || die
-	python_fix_shebang nvidia-networking-bug-report.py
 }
 
 src_compile() {
@@ -294,12 +282,11 @@ src_install() {
 	)
 	local skip_modules=(
 		$(usev !X "nvfbc vdpau xdriver")
-		$(usev !modules "dce gsp")
+		$(usev !modules gsp)
 		$(usev !powerd nvtopps)
 		installer nvpd # handled separately / built from source
 	)
 	local skip_types=(
-		FIRMWARE_SYMLINK # seems unnecessary?
 		GLVND_LIB GLVND_SYMLINK EGL_CLIENT.\* GLX_CLIENT.\* # media-libs/libglvnd
 		OPENCL_WRAPPER.\* # virtual/opencl
 		DOCUMENTATION DOT_DESKTOP .\*_SRC DKMS_CONF SYSTEMD_UNIT # handled separately / unused
@@ -345,7 +332,7 @@ documentation that is installed alongside this README."
 		linux-mod-r1_src_install
 
 		insinto /etc/modprobe.d
-		newins "${FILESDIR}"/nvidia-615.conf nvidia.conf
+		newins "${FILESDIR}"/nvidia-595.conf nvidia.conf
 
 		# used for gpu verification with binpkgs (not kept, see pkg_preinst)
 		insinto /usr/share/nvidia
@@ -426,8 +413,8 @@ documentation that is installed alongside this README."
 		fi
 		# some _SYMLINK are missing from the .manifest for sonames
 		# TODO?: use scanelf -BSq to auto-create like nvidia-installer?
-		[[ ${m[0]} =~ ^libnvidia-(ngx|tileiras).so ]] &&
-			dosym ${m[0]} ${into}/${m[0]%.so*}.so.1
+		[[ ${m[0]} =~ ((libnvidia-(ngx|tileiras).so).*) ]] &&
+			dosym ${BASH_REMATCH[1]} ${into}/${BASH_REMATCH[2]}.1
 
 		printf -v m[1] %o $((m[1] | 0200)) # 444->644
 		insopts -m${m[1]}
@@ -439,7 +426,6 @@ documentation that is installed alongside this README."
 	# MODULE:installer non-skipped extras
 	# (sleep services skipped, obsoleted by NVreg_UseKernelSuspendNotifiers=1)
 	dobin nvidia-bug-report.sh
-	dobin nvidia-networking-bug-report.py
 
 	insinto /usr/share/nvidia/files.d
 	doins sandboxutils-filelist.json
