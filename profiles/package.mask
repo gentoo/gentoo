@@ -36,6 +36,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2026-11-20)
+# Unused sec-keys.
+# Removal on 2026-12-20.
+sec-keys/openpgp-keys-apache-xmlgraphics-batik
+sec-keys/openpgp-keys-apache-xmlgraphics-commons
+sec-keys/openpgp-keys-apache-xmlgraphics-fop
+
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2026-11-19)
 # Unused Java library
 # Removal on 2026-12-19.
