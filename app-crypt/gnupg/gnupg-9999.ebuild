@@ -11,7 +11,10 @@ EAPI=8
 
 if [[ ${PV} == *9999 ]]; then
 	inherit autotools git-r3
-	EGIT_REPO_URI="git://git.gnupg.org/gnupg.git"
+	EGIT_REPO_URI="
+		git://git.gnupg.org/gnupg.git
+		https://github.com/gpg/gnupg
+	"
 else
 	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/gnupg.asc
 	inherit verify-sig
