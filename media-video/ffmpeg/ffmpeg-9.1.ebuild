@@ -606,6 +606,10 @@ multilib_src_compile() {
 	mkdir -p fftools/resources/ || die #965687
 	mkdir -p libav{codec,filter}/vulkan/ || die #974907
 
+	# TODO: drop this when [1] is included in the release (bug #986905)
+	# [1] https://code.ffmpeg.org/FFmpeg/FFmpeg/commit/4e3adb4225
+	mkdir -p libswscale/x86/ || die
+
 	emake V=1
 
 	in_iuse chromium && use chromium && multilib_is_native_abi &&
