@@ -65,6 +65,7 @@ VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/tomcat-$(ver_cut 1).apache.
 PATCHES=(
 	"${FILESDIR}/tomcat-9.0.104-build.xml.patch"
 	"${FILESDIR}/tomcat-9.0.87-gentoo-bnd.patch"
+	"${FILESDIR}/tomcat-9.0.124-CVE-2026-133325.patch"
 )
 
 src_prepare() {
