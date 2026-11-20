@@ -97,11 +97,11 @@ CRATES="
 	utf8parse@0.2.1
 	uuid@1.11.0
 	version_check@0.9.4
-	vhost-user-backend@0.21.0
-	vhost@0.15.0
+	vhost-user-backend@0.24.1
+	vhost@0.18.1
 	virtio-bindings@0.2.7
-	virtio-queue@0.17.0
-	vm-memory@0.17.1
+	virtio-queue@0.18.0
+	vm-memory@0.18.0
 	vmm-sys-util@0.15.0
 	wasi@0.11.0+wasi-snapshot-preview1
 	winapi-i686-pc-windows-gnu@0.4.0
@@ -123,7 +123,7 @@ CRATES="
 
 inherit cargo
 
-DESCRIPTION="A virtio-fs vhost-user device daemon"
+DESCRIPTION="Shared file system for virtual machines"
 HOMEPAGE="https://virtio-fs.gitlab.io/"
 
 if [[ ${PV} == *9999* ]]; then
@@ -156,6 +156,12 @@ RDEPEND="
 # update with proper path to binaries this crate installs, omit leading /
 QA_FLAGS_IGNORED="usr/libexec/${PN}"
 
+DOCS=(
+	doc
+	CONTRIBUTING.md
+	README.md
+)
+
 src_unpack() {
 	if [[ "${PV}" == *9999* ]]; then
 		git-r3_src_unpack
@@ -167,6 +173,8 @@ src_unpack() {
 
 src_install() {
 	cargo_src_install
+
+	dodoc -r "${DOCS[@]}"
 
 	mkdir "${ED}/usr/libexec" || die
 	mv "${ED}/usr/"{bin,libexec}/${PN} || die

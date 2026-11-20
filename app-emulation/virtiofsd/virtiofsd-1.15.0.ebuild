@@ -141,10 +141,11 @@ LICENSE="Apache-2.0 BSD"
 # Dependent crate licenses
 LICENSE+=" Apache-2.0 BSD MIT Unicode-DFS-2016"
 SLOT="0"
+IUSE="+seccomp xen"
 
 DEPEND="
 	sys-libs/libcap-ng
-	sys-libs/libseccomp
+	seccomp? ( sys-libs/libseccomp )
 "
 RDEPEND="
 	sys-apps/shadow
@@ -178,11 +179,6 @@ src_install() {
 	mkdir "${ED}/usr/libexec" || die
 	mv "${ED}/usr/"{bin,libexec}/${PN} || die
 
-	# Install 50-virtiofsd.json but to avoid conflicts with
-	# <app-emulation/qemu-8.0.0 install it under different name. In this case,
-	# smaller number means higher priority, but that's probably what users want
-	# anyway if they install this package on top of app-emulation/qemu.
-	# TODO: remove once old QEMUs are removed from the portage.
 	insinto "/usr/share/qemu/vhost-user"
-	newins "50-virtiofsd.json" "40-virtiofsd.json"
+	doins "50-virtiofsd.json"
 }
