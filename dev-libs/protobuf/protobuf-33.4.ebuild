@@ -66,6 +66,7 @@ RDEPEND="
 PATCHES=(
 	"${FILESDIR}/${PN}-23.3-static_assert-failure.patch"
 	"${FILESDIR}/${PN}-30.0-findJsonCpp.patch"
+	"${FILESDIR}/${PN}-33.1-fix-libatomic-target.patch"
 )
 
 DOCS=( CONTRIBUTORS.txt README.md )
