@@ -1,6 +1,17 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Michael Orlitzky <mjo@gentoo.org> (2026-11-21)
+# Pulls in app-antivirus/clamav.
+mail-client/claws-mail clamav
+mail-filter/MailScanner clamav
+mail-filter/amavisd-new clamav
+mail-filter/mimedefang clamav
+net-ftp/frox clamav
+net-ftp/proftpd clamav
+net-mail/cyrus-imapd clamav
+net-proxy/havp clamav
+
 # Michał Górny <mgorny@gentoo.org> (2025-11-17)
 # Needs dev-python/pip -> uv-build.
 dev-python/argcomplete test
