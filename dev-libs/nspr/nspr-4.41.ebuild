@@ -33,7 +33,6 @@ src_prepare() {
 	default
 
 	if use elibc_musl; then
-		eapply "${FILESDIR}"/${PN}-4.40-ipv6-musl-support.patch
 		eapply "${FILESDIR}"/nspr-4.35-bgo-905998-lfs64-musl.patch
 	fi
 
