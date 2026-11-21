@@ -13,6 +13,10 @@ RDEPEND="virtual/zlib:="
 DEPEND="${RDEPEND}
 	x11-base/xorg-proto"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.1.10-header-guards.patch
+)
+
 src_configure() {
 	local XORG_CONFIGURE_OPTIONS=(
 		-Dwith-encodingsdir="${EPREFIX}/usr/share/fonts/encodings"

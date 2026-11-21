@@ -1,0 +1,37 @@
+https://gitlab.freedesktop.org/xorg/lib/libfontenc/-/merge_requests/21
+
+From 80d26772aff4a32a980a97d9dc845c9509381286 Mon Sep 17 00:00:00 2001
+From: Heiko Becker <mail@heiko-becker.de>
+Date: Thu, 19 Nov 2026 08:40:05 +0100
+Subject: [PATCH] fontencI.h: Add header guard
+
+clang 22 returns an error here because of redefinition of
+_FontEncSimpleMapmultiple due to multiple inclusion of fontencI.h.
+
+Signed-off-by: Heiko Becker <mail@heiko-becker.de>
+---
+ src/fontencI.h | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/src/fontencI.h b/src/fontencI.h
+index a9c2698..938157f 100644
+--- a/src/fontencI.h
++++ b/src/fontencI.h
+@@ -23,6 +23,9 @@ THE SOFTWARE.
+ /* Private types and functions for the encoding code. */
+ /* Used by the files `fontenc.h' and `encparse.h' */
+ 
++#ifndef _FONTENC_I_H
++#define _FONTENC_I_H
++
+ typedef struct _FontEncSimpleMap {
+     unsigned len;               /* might be 0x10000 */
+     unsigned short row_size;
+@@ -42,3 +45,4 @@ char *FontEncSimpleName(unsigned, void *);
+ char *FontEncUndefinedName(unsigned, void *);
+ 
+ FontEncPtr FontEncReallyLoad(const char *, const char *);
++#endif
+-- 
+GitLab
+
