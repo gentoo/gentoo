@@ -143,7 +143,7 @@ src_configure() {
 		--without-x
 		--disable-darwin
 		--disable-perlinterp
-		--disable-pythoninterp
+		--disable-python3interp
 		--disable-rubyinterp
 		--disable-gpm
 		--disable-selinux
