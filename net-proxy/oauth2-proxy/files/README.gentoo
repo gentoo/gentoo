@@ -1,0 +1,10 @@
+Create /etc/oauth2-proxy/oauth2-proxy.cfg, see oauth2-proxy.cfg.example in
+/usr/share/doc/oauth2-proxy-* and https://oauth2-proxy.github.io/oauth2-proxy/
+
+For more instances, use /etc/oauth2-proxy/oauth2-proxy.<name>.cfg with:
+- OpenRC: ln -s oauth2-proxy /etc/init.d/oauth2-proxy.<name>
+- systemd: systemctl enable --now oauth2-proxy@<name>.service
+
+OpenRC runs the service as nobody:nobody, so keep the config root:nobody 0640.
+systemd runs it with DynamicUser and passes the config as a credential, so the
+config can stay root:root 0600.

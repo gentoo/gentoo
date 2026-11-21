@@ -1,0 +1,32 @@
+#!/sbin/openrc-run
+# Copyright 2026 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Multiple instances: ln -s oauth2-proxy /etc/init.d/oauth2-proxy.foo
+# which reads /etc/oauth2-proxy/oauth2-proxy.foo.cfg by default.
+
+description="Reverse proxy providing OAuth2/OIDC authentication"
+
+: "${OAUTH2_PROXY_CONFIG:=/etc/oauth2-proxy/${RC_SVCNAME}.cfg}"
+: "${OAUTH2_PROXY_USER:=nobody}"
+: "${OAUTH2_PROXY_GROUP:=nobody}"
+
+command="/usr/bin/oauth2-proxy"
+command_args="--config=${OAUTH2_PROXY_CONFIG} ${OAUTH2_PROXY_OPTS}"
+command_user="${OAUTH2_PROXY_USER}:${OAUTH2_PROXY_GROUP}"
+supervisor="supervise-daemon"
+respawn_delay=2
+output_logger="logger -t ${RC_SVCNAME} -p daemon.info"
+error_logger="logger -t ${RC_SVCNAME} -p daemon.err"
+
+depend() {
+	need net
+	use dns logger
+}
+
+start_pre() {
+	if [ ! -r "${OAUTH2_PROXY_CONFIG}" ]; then
+		eerror "Missing ${OAUTH2_PROXY_CONFIG}"
+		return 1
+	fi
+}

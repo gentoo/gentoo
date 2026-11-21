@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>arthurzam@gentoo.org</email>
+		<name>Arthur Zamarin</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">oauth2-proxy/oauth2-proxy</remote-id>
+		<doc>https://oauth2-proxy.github.io/oauth2-proxy/</doc>
+		<changelog>https://github.com/oauth2-proxy/oauth2-proxy/blob/master/CHANGELOG.md</changelog>
+	</upstream>
+</pkgmetadata>

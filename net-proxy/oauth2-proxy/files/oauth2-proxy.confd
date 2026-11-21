@@ -1,0 +1,10 @@
+# Configuration file, defaults to /etc/oauth2-proxy/${RC_SVCNAME}.cfg
+# It usually contains secrets: keep it root:nobody 0640.
+#OAUTH2_PROXY_CONFIG=""
+
+# User and group to run as
+#OAUTH2_PROXY_USER="nobody"
+#OAUTH2_PROXY_GROUP="nobody"
+
+# Extra command line arguments
+#OAUTH2_PROXY_OPTS=""
