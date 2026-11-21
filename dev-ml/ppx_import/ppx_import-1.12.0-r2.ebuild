@@ -18,6 +18,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-ml/ppxlib-0.34:=
+	<dev-lang/ocaml-5.5
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
