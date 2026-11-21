@@ -62,6 +62,4 @@ src_prepare() {
 	done
 
 	toolchain_src_prepare
-
-	eapply_user
 }

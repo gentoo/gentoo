@@ -53,6 +53,10 @@ if [[ ${CATEGORY} != cross-* ]] ; then
 	DEPEND="${RDEPEND}"
 fi
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-13-fix-cross-fixincludes.patch
+)
+
 src_prepare() {
 	local p upstreamed_patches=(
 		# add them here
@@ -62,7 +66,4 @@ src_prepare() {
 	done
 
 	toolchain_src_prepare
-
-	eapply "${FILESDIR}"/${PN}-13-fix-cross-fixincludes.patch
-	eapply_user
 }
