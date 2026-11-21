@@ -6,6 +6,7 @@
 		<name>Michał Górny</name>
 	</maintainer>
 	<stabilize-allarches/>
+	<straight-to-stable/>
 	<upstream>
 		<remote-id type="github">gentoo/mgorny-dev-scripts</remote-id>
 	</upstream>
