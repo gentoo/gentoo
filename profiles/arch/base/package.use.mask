@@ -3,7 +3,7 @@
 
 # Matt Turner <mattst88@gentoo.org> (2026-11-20)
 # media-libs/venus-protocol, needed for the Venus Vulkan driver, is only
-# keyworded on amd64. Bug #986872
+# keyworded on amd64 and arm64. Bugs #986872, #986923
 >=media-libs/mesa-26.3.0_rc1 video_cards_virgl
 
 # Jimi Huotari <chiitoo@gentoo.org> (2026-11-06)
