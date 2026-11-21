@@ -208,7 +208,7 @@ src_configure() {
 			--without-x
 			--disable-luainterp
 			--disable-perlinterp
-			--disable-pythoninterp
+			--disable-python3interp
 			--disable-mzschemeinterp
 			--disable-rubyinterp
 			--disable-selinux
