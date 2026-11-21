@@ -16,7 +16,7 @@ fi
 DESCRIPTION="Distributed, general purpose, network monitoring engine"
 HOMEPAGE="https://icinga.com/"
 
-LICENSE="GPL-2"
+LICENSE="GPL-3"
 SLOT="0"
 IUSE="console jumbo-build mail mariadb minimal +mysql opentelemetry +plugins postgres systemd"
 
