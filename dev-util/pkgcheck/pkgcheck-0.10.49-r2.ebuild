@@ -39,6 +39,7 @@ RDEPEND+="
 	dev-python/lxml[${PYTHON_USEDEP}]
 	>=dev-python/pathspec-1.0.0[${PYTHON_USEDEP}]
 	>=dev-python/tree-sitter-0.26.0[${PYTHON_USEDEP}]
+	dev-vcs/git
 	emacs? (
 		>=app-editors/emacs-24.1:*
 		app-emacs/ebuild-mode
@@ -50,7 +51,6 @@ BDEPEND="${RDEPEND}
 	test? (
 		dev-python/pytest[${PYTHON_USEDEP}]
 		dev-python/requests[${PYTHON_USEDEP}]
-		dev-vcs/git
 	)
 "
 
