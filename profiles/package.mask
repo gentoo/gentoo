@@ -36,12 +36,6 @@
 
 #--- END OF EXAMPLES ---
 
-# Arthur Zamarin <arthurzam@gentoo.org> (2026-11-20)
-# masked for mozilla testing
-=dev-lang/rust-1.100.0
-=dev-lang/rust-bin-1.100.0
-=dev-lang/rust-common-1.100.0
-
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2026-11-20)
 # Unused sec-keys.
 # Removal on 2026-12-20.
