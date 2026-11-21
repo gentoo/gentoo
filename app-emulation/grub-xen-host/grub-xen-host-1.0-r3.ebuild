@@ -6,9 +6,12 @@ EAPI=9
 DESCRIPTION="Grub2 built as a PV grub per the Xen PV Boot Protocol"
 HOMEPAGE="https://wiki.xenproject.org/wiki/PvGrub2"
 
+S="${WORKDIR}"
 LICENSE="BSD-2"
 SLOT="0"
+
 KEYWORDS="~amd64"
+
 IUSE="+pvh"
 
 DEPEND="
@@ -16,8 +19,6 @@ DEPEND="
 	pvh? ( >=sys-boot/grub-2.04:2=[grub_platforms_xen-pvh] )
 "
 RDEPEND="${DEPEND}"
-
-S="${WORKDIR}"
 
 RESTRICT="binchecks strip test"
 
