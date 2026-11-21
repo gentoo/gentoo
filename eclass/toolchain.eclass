@@ -660,7 +660,7 @@ toolchain_src_prepare() {
 		BRANDING_GCC_PKGVERSION="${BRANDING_GCC_PKGVERSION}, commit ${EGIT_VERSION}"
 	fi
 
-	eapply_user
+	default
 
 	# Workaround -march=native not working for stage1 with non-GCC (bug #933772).
 	if ! tc-is-gcc && [[ "${CFLAGS}${CXXFLAGS}" == *-march=native* ]] ; then
