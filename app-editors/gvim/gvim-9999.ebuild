@@ -340,6 +340,7 @@ src_install() {
 
 	# bash completion script, bug #79018.
 	newbashcomp "${FILESDIR}"/${PN}-completion ${PN}
+	bashcomp_alias gvim evim eview gview gvimdiff rgvim rgview
 
 	# don't install vim desktop file
 	rm -v "${ED}"/usr/share/applications/vim.desktop || die "failed to remove vim.desktop"
