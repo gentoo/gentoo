@@ -11,7 +11,7 @@ SRC_URI="mirror://apache/httpd/libapreq/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="2"
-KEYWORDS="~amd64 ppc ~ppc64 ~riscv x86"
+KEYWORDS="amd64 ppc ~ppc64 ~riscv x86"
 IUSE="perl test"
 RESTRICT="!test? ( test )"
 
