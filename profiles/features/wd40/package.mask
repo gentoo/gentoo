@@ -1,6 +1,12 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Michael Orlitzky <mjo@gentoo.org> (2026-11-21)
+# Requires app-antivirus/clamav.
+app-antivirus/clamtk
+dev-perl/File-Scan-ClamAV
+sys-fs/clamfs
+
 # Michał Górny <mgorny@gentoo.org> (2025-11-10)
 # Requires dev-python/pydantic.
 dev-python/typer
