@@ -28,6 +28,3 @@ SLOT="0"
 PATCHES=(
 	"${FILESDIR}/${PN}-build-backend.patch"
 )
-
-EPYTEST_PLUGINS=()
-distutils_enable_tests pytest
