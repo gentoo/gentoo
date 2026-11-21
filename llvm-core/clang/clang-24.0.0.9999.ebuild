@@ -387,8 +387,10 @@ src_install() {
 	fi
 	mv "${ED}"/usr/include "${ED}"/usr/lib/llvm/${LLVM_MAJOR}/include || die
 
-	# Apply CHOST and version suffix to clang tools
-	local clang_tools=( clang clang++ clang-cl clang-cpp )
+	# Apply CHOST and version suffix to clang symlinks
+	local clang_syms=( clang clang++ clang-cl clang-cpp )
+	# Other tools that should be prefixed.
+	local other_tools=( clang-scan-deps )
 	local abi i
 
 	# cmake gives us:
@@ -400,7 +402,7 @@ src_install() {
 	# - clang++-X, clang-cl-X, clang-cpp-X -> clang-X
 	# - clang, clang++, clang-cl, clang-cpp -> clang*-X
 	# also in CHOST variant
-	for i in "${clang_tools[@]:1}"; do
+	for i in "${clang_syms[@]:1}"; do
 		rm "${ED}/usr/lib/llvm/${LLVM_MAJOR}/bin/${i}" || die
 		dosym "clang-${LLVM_MAJOR}" "/usr/lib/llvm/${LLVM_MAJOR}/bin/${i}-${LLVM_MAJOR}"
 		dosym "${i}-${LLVM_MAJOR}" "/usr/lib/llvm/${LLVM_MAJOR}/bin/${i}"
@@ -409,11 +411,14 @@ src_install() {
 	# now create target symlinks for all supported ABIs
 	for abi in $(get_all_abis); do
 		local abi_chost=$(get_abi_CHOST "${abi}")
-		for i in "${clang_tools[@]}"; do
+		for i in "${clang_syms[@]}"; do
 			dosym "${i}-${LLVM_MAJOR}" \
 				"/usr/lib/llvm/${LLVM_MAJOR}/bin/${abi_chost}-${i}-${LLVM_MAJOR}"
 			dosym "${abi_chost}-${i}-${LLVM_MAJOR}" \
 				"/usr/lib/llvm/${LLVM_MAJOR}/bin/${abi_chost}-${i}"
+		done
+		for i in "${other_tools[@]}"; do
+			dosym "${i}" "/usr/lib/llvm/${LLVM_MAJOR}/bin/${abi_chost}-${i}"
 		done
 	done
 }
