@@ -4,10 +4,6 @@
 	<maintainer type="person">
 		<email>amynka@gentoo.org</email>
 	</maintainer>
-	<maintainer type="person" proxied="yes">
-		<email>voron1@gmail.com</email>
-		<name>Michael Corvinus</name>
-	</maintainer>
 	<use>
 		<flag name="gui">Build GUI IDE.</flag>
 		<flag name="gtk2">Use gtk:2 for widgets.</flag>

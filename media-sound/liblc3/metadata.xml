@@ -5,10 +5,6 @@
 		<email>sam@gentoo.org</email>
 		<name>Sam James</name>
 	</maintainer>
-	<maintainer type="person" proxied="yes">
-		<email>joakim.tjernlund@nokia.com</email>
-		<name>Joakim Tjernlund</name>
-	</maintainer>
 	<upstream>
 		<bugs-to>https://github.com/google/liblc3/issues</bugs-to>
 		<changelog>https://github.com/google/liblc3/releases</changelog>

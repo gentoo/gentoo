@@ -10,14 +10,6 @@
 		<email>chewi@gentoo.org</email>
 		<name>James Le Cuirot</name>
 	</maintainer>
-	<maintainer type="project">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Gentoo Proxy Maintainers</name>
-	</maintainer>
-	<maintainer type="person" proxied="yes">
-		<email>gonegrier.duarte@gmail.com</email>
-		<name>Gonçalo Negrier Duarte</name>
-	</maintainer>
 	<upstream>
 		<remote-id type="freedesktop-gitlab">libdecor/libdecor</remote-id>
 	</upstream>

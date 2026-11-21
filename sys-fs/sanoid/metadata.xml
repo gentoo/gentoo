@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person" proxied="proxy">
+	<maintainer type="person">
 		<email>mschiff@gentoo.org</email>
 		<name>Marc Schiffbauer</name>
-	</maintainer>
-	<maintainer type="person" proxied="yes">
-		<email>johnmh@johnmh.me</email>
-		<name>John M. Harris, Jr.</name>
 	</maintainer>
 	<use>
 		<flag name="cron">Installs cron file</flag>

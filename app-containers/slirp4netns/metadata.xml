@@ -5,10 +5,6 @@
 		<email>zmedico@gentoo.org</email>
 		<name>Zac Medico</name>
 	</maintainer>
-	<maintainer type="person" proxied="yes">
-		<email>g.braeunlich@disroot.org</email>
-		<name>Gerhard Bräunlich</name>
-	</maintainer>
 	<maintainer type="person">
 		<email>arthurzam@gentoo.org</email>
 		<name>Arthur Zamarin</name>

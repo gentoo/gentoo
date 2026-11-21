@@ -5,10 +5,6 @@
 		<email>java@gentoo.org</email>
 		<name>Java</name>
 	</maintainer>
-	<maintainer type="person" proxied="yes">
-		<email>kaiboma06@gmail.com</email>
-		<name>Kaibo Ma</name>
-	</maintainer>
 	<longdescription>
 	ASM is a Java bytecode manipulation framework. It can be used to
 	dynamically generate stub classes or other proxy classes, directly in

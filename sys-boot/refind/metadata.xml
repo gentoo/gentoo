@@ -5,14 +5,6 @@
 		<email>ceamac@gentoo.org</email>
 		<name>Viorel Munteanu</name>
 	</maintainer>
-	<maintainer type="person" proxied="yes">
-		<email>sveyret@gmail.com</email>
-		<name>Stéphane Veyret</name>
-	</maintainer>
-	<maintainer type="project" proxied="proxy">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
-	</maintainer>
 	<longdescription lang="en">
 A graphical boot manager for EFI- and UEFI-based computers, such as all
 Intel-based Macs and recent (most 2011 and later) PCs. rEFInd presents a
