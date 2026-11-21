@@ -12,6 +12,9 @@
 		to be fast, simple and easy to use, and should be able to run in any minimal
 		POSIX-like environment with ncurses installed.
 	</longdescription>
+	<use>
+		<flag name="symlink">Install a ncdu symlink in /usr/bin</flag>
+	</use>
 	<upstream>
 		<changelog>https://dev.yorhel.nl/ncdu/changes2</changelog>
 		<doc lang="en">https://dev.yorhel.nl/ncdu/man</doc>
