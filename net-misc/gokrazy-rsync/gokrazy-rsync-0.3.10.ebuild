@@ -19,10 +19,6 @@ KEYWORDS="~amd64"
 
 BDEPEND=">=dev-lang/go-1.26.0"
 
-PATCHES=(
-	"${FILESDIR}"/${P}-landlock.patch
-)
-
 src_configure() {
 	export GOBIN="${WORKDIR}"/bin
 	mkdir "${GOBIN}" || die
