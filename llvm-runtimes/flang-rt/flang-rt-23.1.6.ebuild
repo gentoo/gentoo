@@ -11,7 +11,7 @@ HOMEPAGE="https://flang.llvm.org/"
 
 LICENSE="Apache-2.0-with-LLVM-exceptions"
 SLOT="${LLVM_MAJOR}"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="~amd64 arm64"
 IUSE="debug test"
 RESTRICT="!test? ( test )"
 
