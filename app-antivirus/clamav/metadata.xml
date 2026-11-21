@@ -6,10 +6,6 @@
 		<name>Gentoo Antivirus Project</name>
 	</maintainer>
 	<maintainer type="person">
-		<!-- for the LTS 0.103.x branch only -->
-		<email>mjo@gentoo.org</email>
-	</maintainer>
-	<maintainer type="person">
 		<email>kangie@gentoo.org</email>
 		<name>Matt Jolly</name>
 	</maintainer>
