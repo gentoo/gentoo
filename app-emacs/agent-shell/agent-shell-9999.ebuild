@@ -33,6 +33,11 @@ BDEPEND="
 DOCS=( CONTRIBUTING.org README.org blog-post.org )
 SITEFILE="50${PN}-gentoo.el"
 
+ELISP_REMOVE="
+	tests/agent-shell-chat-mode-tests.el
+	tests/agent-shell-markdown-tests.el
+"
+
 src_compile() {
 	elisp_src_compile
 	elisp-make-autoload-file
