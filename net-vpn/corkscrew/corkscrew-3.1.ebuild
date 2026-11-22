@@ -3,7 +3,7 @@
 
 EAPI=8
 
-DESCRIPTION="a tool for tunneling SSH through HTTP proxies"
+DESCRIPTION="Tool for tunneling SSH through HTTP proxies"
 HOMEPAGE="https://github.com/patpadgett/corkscrew/"
 SRC_URI="https://github.com/patpadgett/${PN}/releases/download/${PV}/${P}.tar.gz"
 
@@ -11,4 +11,4 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~ppc ~riscv ~sparc ~x86"
 
-DOCS="CHANGELOG.md NEWS README.md SECURITY.md TODO"
+DOCS=( CHANGELOG.md NEWS README.md SECURITY.md TODO )
