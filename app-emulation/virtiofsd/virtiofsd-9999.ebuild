@@ -141,11 +141,10 @@ LICENSE="Apache-2.0 BSD"
 # Dependent crate licenses
 LICENSE+=" Apache-2.0 BSD MIT Unicode-DFS-2016"
 SLOT="0"
-IUSE="+seccomp xen"
 
 DEPEND="
 	sys-libs/libcap-ng
-	seccomp? ( sys-libs/libseccomp )
+	sys-libs/libseccomp
 "
 RDEPEND="
 	sys-apps/shadow
