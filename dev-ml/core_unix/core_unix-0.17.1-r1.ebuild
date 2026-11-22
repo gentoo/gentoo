@@ -36,6 +36,7 @@ BDEPEND=">=dev-ml/dune-3.11"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.17.0-musl.patch
+	"${FILESDIR}"/${P}-clockFallback.patch
 )
 
 src_prepare() {

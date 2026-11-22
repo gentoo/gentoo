@@ -1,0 +1,21 @@
+--- a/time_stamp_counter/src/time_stamp_counter_stubs.c	2026-11-24 19:00:17.718996470 +0100
++++ b/time_stamp_counter/src/time_stamp_counter_stubs.c	2026-11-24 19:12:59.269226987 +0100
+@@ -44,6 +44,18 @@
+   asm volatile("mrs %0, cntvct_el0" : "=r" (tsc));
+   return tsc;
+ }
++#else
++/* No cycle counter is implemented for this target: fall back to
++ *    [clock_gettime(CLOCK_MONOTONIC)] in nanoseconds, as documented in
++ *       time_stamp_counter.mli.
++ */
++static uint64_t rdtsc() {
++  struct timespec ts;
++  if (clock_gettime(CLOCK_MONOTONIC, &ts) != 0) {
++    return 0;
++  }
++  return (uint64_t)ts.tv_sec * 1000000000ULL + (uint64_t)ts.tv_nsec;
++}
+ #endif
+ 
+ CAMLprim CAMLweakdef uint64_t caml_rdtsc_unboxed(value unit) {
