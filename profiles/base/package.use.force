@@ -125,6 +125,8 @@ llvm-runtimes/libcxxabi clang
 # done
 dev-lang/rust:1.100.0 llvm_slot_23
 dev-lang/rust-bin:1.100.0 llvm_slot_23
+dev-lang/rust:1.99.1 llvm_slot_23
+dev-lang/rust-bin:1.99.1 llvm_slot_23
 dev-lang/rust:1.99.0 llvm_slot_23
 dev-lang/rust-bin:1.99.0 llvm_slot_23
 dev-lang/rust:1.98.1 llvm_slot_22
