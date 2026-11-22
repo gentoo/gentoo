@@ -5,11 +5,11 @@
 		<email>alexander@tsoy.me</email>
 		<name>Alexander Tsoy</name>
 	</maintainer>
-	<maintainer type="person">
+	<maintainer type="person" proxied="maintainer-and-proxy">
 		<email>floppym@gentoo.org</email>
 		<name>Mike Gilbert</name>
 	</maintainer>
-	<maintainer type="person">
+	<maintainer type="person" proxied="maintainer-and-proxy">
 		<email>nowa@gentoo.org</email>
 		<name>Nowa Ammerlaan</name>
 	</maintainer>
