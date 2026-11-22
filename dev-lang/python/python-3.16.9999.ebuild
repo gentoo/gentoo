@@ -221,6 +221,7 @@ build_cbuild_python() {
 		_tkinter
 		pyexpat
 		zlib
+		_zstd
 		# We disabled these for CBUILD because Python's setup.py can't handle locating
 		# libdir correctly for cross. This should be rechecked for the pure Makefile approach,
 		# and uncommented if needed.
