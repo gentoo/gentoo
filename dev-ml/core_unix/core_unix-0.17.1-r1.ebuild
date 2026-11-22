@@ -12,7 +12,8 @@ SRC_URI="https://github.com/janestreet/${PN}/archive/refs/tags/v${PV}.tar.gz
 
 LICENSE="MIT"
 SLOT="0/$(ver_cut 1-2)"
-KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~riscv"
+# #if (defined(__i386__) || defined(__x86_64__)) #elif defined(__aarch64__)
+KEYWORDS="-* ~amd64 ~arm64"
 IUSE="+ocamlopt"
 RESTRICT="test"
 
@@ -35,7 +36,6 @@ BDEPEND=">=dev-ml/dune-3.11"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.17.0-musl.patch
-	"${FILESDIR}"/${P}-riscv.patch
 )
 
 src_prepare() {
