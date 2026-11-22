@@ -9,7 +9,7 @@ EAPI=8
 TOOLCHAIN_HAS_TESTS=1
 PATCH_GCC_VER="15.2.0"
 MUSL_GCC_VER="15.2.0"
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 
 if [[ -n ${TOOLCHAIN_GCC_RC} ]] ; then
 	# Cheesy hack for RCs

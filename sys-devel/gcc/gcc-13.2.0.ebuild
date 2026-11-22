@@ -6,7 +6,7 @@ EAPI=8
 # Maintenance notes and explanations of GCC handling are on the wiki:
 # https://wiki.gentoo.org/wiki/Project:Toolchain/sys-devel/gcc
 
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 TOOLCHAIN_HAS_TESTS=1
 PATCH_GCC_VER="13.2.0"
 PATCH_VER="3"
