@@ -1,0 +1,63 @@
+https://github.com/zlin/wgetpaste/pull/65
+
+From a43fc0402c5e5ca2c258fc9eee12760e060d0fc8 Mon Sep 17 00:00:00 2001
+From: Nicholas Vinson <nvinson234@gmail.com>
+Date: Sun, 2 Aug 2026 22:58:09 -0400
+Subject: [PATCH] Add x0.at service
+
+Add x0.at service and filehost2 engine.
+
+Closes: #64
+Signed-off-by: Nicholas Vinson <nvinson234@gmail.com>
+---
+ wgetpaste | 22 +++++++++++++++++++++-
+ 1 file changed, 21 insertions(+), 1 deletion(-)
+
+diff --git a/wgetpaste b/wgetpaste
+index f96ed08..6ccc4ed 100755
+--- a/wgetpaste
++++ b/wgetpaste
+@@ -41,7 +41,7 @@ POST_generic() {
+ }
+ 
+ ### services
+-SERVICES="0x0 bpaste codepad dpaste gists ix_io pgz snippets"
++SERVICES="0x0 bpaste codepad dpaste gists ix_io pgz snippets x0_at"
+ # 0x0
+ ENGINE_0x0=0x0
+ URL_0x0="http://0x0.st"
+@@ -84,6 +84,10 @@ SIZE_sprunge="1000000 1%MB"
+ ENGINE_tinyurl=tinyurl
+ URL_tinyurl="http://tinyurl.com/ api-create.php"
+ REGEX_RAW_tinyurl='s|^\(http://[^/]*/\)\([[:alnum:]]*\)$|\1\2|'
++# x0.at
++ENGINE_x0_at=filehost2
++URL_x0_at="https://x0.at"
++SIZE_x0_at="1073741824 1073%MB"
+ 
+ ### engines
+ # 0x0
+@@ -193,6 +197,22 @@ POST_ix_io() {
+ }
+ REGEX_RAW_ix_io='s|^http.*|\0|'
+ REGEX_URL_ix_io='s|^http.*|\0|p'
++# filehost2
++escape_description_filehost2() { echo "$*"; }
++escape_input_filehost2() { echo "$*"; }
++POST_filehost2() {
++	local content="${6}" boundary="WGETPASTE-yuLr+iHOSQ+trEgDcj9UVq5R302bid"
++	printf "%s\r\n" "--$boundary"
++	printf "Content-Disposition: form-data; name=\"file\"; filename=\"wgetpaste.txt\"\r\n"
++	printf "Content-Type: text/plain\r\n"
++	printf "\r\n"
++	printf "%s\r\n" "$content"
++	printf "%s--\r\n" "--$boundary"
++	local header_var="ADDITIONAL_HEADERS_${SERVICE}"
++	eval "${header_var}=(\"Content-Type: multipart/form-data; boundary=\${boundary}\")"
++}
++REGEX_RAW_filehost2='s|^https.*|\0|'
++REGEX_URL_filehost2='s|^https.*|\0|p'
+ # lodgeit
+ LANGUAGES_lodgeit="ABAP ActionScript ActionScript%3 Ada ANTLR ANTLR%With%ActionScript%Target \
+ ANTLR%With%CPP%Target ANTLR%With%C#%Target ANTLR%With%Java%Target ANTLR%With%ObjectiveC%Target \
+
