@@ -230,15 +230,6 @@ net-misc/ntp
 #
 # If wanted, feel welcome to add `dev-qt/*:6/6.12.0` to package.unmask
 # and report issues.
-#
-# Note: qtwebengine was "split" from Qt's main packaging and is now
-# versioned as 6.<chromium-major>.<patch> (6.140.0 here), for now it is
-# included in this mask (unmask with dev-qt/qtwebengine:6/6.140.0), but
-# in the future it will be treated separately given it is not pinned and
-# e.g. 6.140.0 can be used with Qt 6.11.x (aka not just 6.12.x).
-=dev-python/pyqt6-6.12*
-=dev-python/pyqt6-pdf-6.140*
-=dev-python/pyqt6-webengine-6.140*
 =dev-python/pyside-6.12.0*
 =dev-qt/qt-docs-6.12.0*
 =dev-qt/qt3d-6.12.0*
@@ -271,7 +262,6 @@ net-misc/ntp
 =dev-qt/qtvirtualkeyboard-6.12.0*
 =dev-qt/qtwayland-6.12.0*
 =dev-qt/qtwebchannel-6.12.0*
-=dev-qt/qtwebengine-6.140.0*
 =dev-qt/qtwebsockets-6.12.0*
 =dev-qt/qtwebview-6.12.0*
 
