@@ -1,6 +1,10 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Ionen Wolkens <ionen@gentoo.org> (2026-11-23)
+# dev-qt/qtcanvaspainter:6 currently has very few keywords
+dev-qt/qtgraphs:6 canvaspainter
+
 # Matt Turner <mattst88@gentoo.org> (2026-11-20)
 # media-libs/venus-protocol, needed for the Venus Vulkan driver, is only
 # keyworded on amd64 and arm64. Bugs #986872, #986923

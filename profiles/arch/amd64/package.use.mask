@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Ionen Wolkens <ionen@gentoo.org> (2026-11-23)
+# dev-qt/qtcanvaspainter:6 is keyworded here
+dev-qt/qtgraphs:6 -canvaspainter
+
 # Matt Turner <mattst88@gentoo.org> (2026-11-20)
 # media-libs/venus-protocol is keyworded here. Bug #986872
 >=media-libs/mesa-26.3.0_rc1 -video_cards_virgl
