@@ -52,7 +52,7 @@ src_prepare() {
 
 src_compile() {
 	tc-export CC AR
-	emake build/upnpc-shared
+	emake build/upnpc-shared build/upnp-listdevices-shared
 }
 
 src_test() {
