@@ -11,5 +11,6 @@
 	</upstream>
 	<use>
 		<flag name="pim">Enable birthday import, email functions etc. using <pkg>kde-apps/akonadi</pkg></flag>
+		<flag name="vlc">Use <pkg>media-video/vlc</pkg> instead of <pkg>media-video/mpv</pkg> for audio alarms playback</flag>
 	</use>
 </pkgmetadata>
