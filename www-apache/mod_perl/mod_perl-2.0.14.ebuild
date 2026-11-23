@@ -29,8 +29,7 @@ RESTRICT="!test? ( test )"
 # default one, which will likely need threading.
 
 RDEPEND="
-	perl_features_ithreads?  ( dev-lang/perl[perl_features_ithreads] )
-	!perl_features_ithreads? ( dev-lang/perl[-perl_features_ithreads] )
+	dev-lang/perl:=[perl_features_ithreads=]
 	>=dev-perl/Apache-Test-1.420.0
 	>=www-servers/apache-2.0.47
 	>=dev-libs/apr-util-1.4
