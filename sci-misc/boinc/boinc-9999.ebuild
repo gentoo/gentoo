@@ -40,7 +40,7 @@ IUSE="X gui selinux"
 DEPEND="
 	>=acct-user/boinc-1
 	app-misc/ca-certificates
-	dev-libs/openssl:=
+	>=dev-libs/openssl-3.0:=
 	net-misc/curl[ssl]
 	virtual/zlib:=
 	X? (
