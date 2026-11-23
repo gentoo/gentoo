@@ -22,6 +22,8 @@ KEYWORDS="~amd64 ~x86"
 RDEPEND=">=dev-python/urwid-1.1.0[${PYTHON_USEDEP}]"
 
 distutils_enable_sphinx docs/source
+EPYTEST_PLUGINS=()
+distutils_enable_tests pytest
 
 src_prepare() {
 	find -name '*.py' -exec \
