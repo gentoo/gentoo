@@ -1,0 +1,10 @@
+diff '--color=auto' -r -U2 asymptote-3.16.orig/gc/Makefile.am asymptote-3.16/gc/Makefile.am
+--- asymptote-3.16.orig/gc/Makefile.am	2026-11-14 05:44:41.000000000 +0700
++++ asymptote-3.16/gc/Makefile.am	2026-11-23 13:32:03.616914764 +0700
+@@ -237,6 +237,4 @@
+ 
+ include include/include.am
+-include cord/cord.am
+-include tests/tests.am
+ include doc/doc.am
+ ## Putting these at the top causes cord to be built first, and not find
