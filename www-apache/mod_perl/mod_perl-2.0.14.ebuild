@@ -10,9 +10,10 @@ inherit depend.apache apache-module perl-module verify-sig
 
 DESCRIPTION="An embedded Perl interpreter for Apache2"
 HOMEPAGE="https://perl.apache.org/ https://projects.apache.org/project.html?perl-mod_perl"
-SRC_URI="mirror://apache/perl/${P}.tar.gz
+SRC_URI="
+	mirror://apache/perl/${P}.tar.gz
 	verify-sig? ( https://www.apache.org/dist/perl/${P}.tar.gz.asc )
-	"
+"
 
 LICENSE="Apache-2.0"
 SLOT="1"
