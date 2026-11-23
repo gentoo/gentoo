@@ -8,13 +8,15 @@ inherit desktop xdg
 DESCRIPTION="Digital audio workstation"
 HOMEPAGE="https://www.reaper.fm"
 
-WDL_COMMIT="88444081c3d15fa2a42af7d6ec2c904dcd866799"
+WDL_COMMIT="b9d2ce9f9219594e597073519776b2c221537a2e"
+VST3_PLUGINTERFACES_VERSION="3.8.1_build_84"
 
 SRC_URI="
 	amd64? ( https://www.reaper.fm/files/$(ver_cut 1).x/reaper$(ver_cut 1)$(printf %02d $(( 10#$(ver_cut 2) )))_linux_x86_64.tar.xz )
 	x86? ( https://www.reaper.fm/files/$(ver_cut 1).x/reaper$(ver_cut 1)$(printf %02d $(( 10#$(ver_cut 2) )))_linux_i686.tar.xz )
 	arm64? ( https://www.reaper.fm/files/$(ver_cut 1).x/reaper$(ver_cut 1)$(printf %02d $(( 10#$(ver_cut 2) )))_linux_aarch64.tar.xz )
 	arm? ( https://www.reaper.fm/files/$(ver_cut 1).x/reaper$(ver_cut 1)$(printf %02d $(( 10#$(ver_cut 2) )))_linux_armv7l.tar.xz )
+	wayland? ( https://github.com/steinbergmedia/vst3_pluginterfaces/archive/refs/tags/v${VST3_PLUGINTERFACES_VERSION}.tar.gz -> vst3_pluginterfaces-${VST3_PLUGINTERFACES_VERSION}.tar.gz )
 	https://github.com/justinfrankel/WDL/archive/${WDL_COMMIT}.tar.gz -> WDL-${WDL_COMMIT}.tar.gz
 "
 S="${WORKDIR}"
@@ -64,12 +66,16 @@ src_prepare() {
 	default
 	cd "WDL-${WDL_COMMIT}" || die
 	eapply "${FILESDIR}"/libSwell-makefile-cflags.patch
+	use wayland || return
+	mkdir -p vst3sdk
+	mv "../vst3_pluginterfaces-${VST3_PLUGINTERFACES_VERSION}" vst3sdk/pluginterfaces || die
 }
 
 src_compile() {
 	emake -C "WDL-${WDL_COMMIT}/WDL/swell" \
 		PRELOAD_GDK=1 \
-		$(usev wayland WAYLAND=1)
+		$(usev wayland WAYLAND=1) \
+		$(usev wayland VST3_SDK=../../vst3sdk)
 }
 
 QA_PREBUILT="*/*.so */reaper */reaper_host_*"
