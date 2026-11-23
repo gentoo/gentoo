@@ -61,7 +61,7 @@ DEPEND="
 	!vlc? ( >=media-video/mpv-0.37.0:=[libmpv] )
 "
 RDEPEND="${DEPEND}
-	pim? ( =kde-apps/kdepim-runtime-${PIMMIN}*:6 )
+	pim? ( >=kde-apps/kdepim-runtime-${PIMMIN}:6 )
 "
 
 PATCHES=(
