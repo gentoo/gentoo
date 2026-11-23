@@ -54,7 +54,7 @@ qt6_docs_generate_metadata() {
 		"
 		+3d/qt3d
 		-activeqt/qtactiveqt="activeqt"
-		-canvaspainter/qtcanvaspainter
+		+canvaspainter/qtcanvaspainter
 		+charts/qtcharts
 		+connectivity/qtbluetooth:
 		+connectivity/qtconnectivity!
