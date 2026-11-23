@@ -20,7 +20,6 @@ RDEPEND="
 	>=dev-python/pyqt6-6.12.0[gui,widgets?,${PYTHON_USEDEP}]
 	dev-qt/qtbase:6[gui,widgets?]
 	>=dev-qt/qtwebengine-$(ver_cut 1-2):6[pdfium,widgets?]
-	!dev-python/pyqt6[pdfium(-)]
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
