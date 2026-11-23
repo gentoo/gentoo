@@ -115,6 +115,7 @@ pkg_postinst() {
 	einfo ""
 	einfo "For configuration assistance, see:"
 	einfo "https://github.com/rakshasa/rtorrent/wiki"
+	einfo "https://wiki.gentoo.org/wiki/RTorrent"
 
 	if ! use ncurses; then
 		einfo "${PN} was installed without ncurses support."
