@@ -36,6 +36,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Ionen Wolkens <ionen@gentoo.org> (2026-11-24)
+# Broken at runtime failing to load kernel32.dll, possibly only with
+# certain configurations but mask until the cause can be determined.
+# Feel free to keep unmasked if it works fine for you.
+~app-emulation/wine-proton-11.0.3
+
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2026-11-20)
 # Unused sec-keys.
 # Removal on 2026-12-20.
