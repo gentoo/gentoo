@@ -21,7 +21,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="UoI-NCSA"
 SLOT="$(ver_cut 1)"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~riscv ~x86"
+KEYWORDS="~amd64 ~arm arm64 ~loong ~riscv ~x86"
 IUSE="test"
 RESTRICT="
 	!test? ( test )
