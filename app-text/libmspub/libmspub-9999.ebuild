@@ -28,6 +28,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	dev-build/libtool
 	dev-libs/boost
+	test? ( dev-util/cppunit )
 "
 BDEPEND="
 	virtual/pkgconfig
