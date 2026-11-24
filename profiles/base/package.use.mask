@@ -161,10 +161,6 @@ dev-python/scipy index64
 # Marked Beta tier upstream. Tests don't work with it.
 dev-games/ogre vulkan
 
-# Alfred Wingate (2025-07-31)
-# Missing dependency
-sci-libs/gdal mongodb
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-06-26)
 # >=kde-plasma/drkonqi-6.3.90 requires systemd, so specifically
 # unmasked only in targets/systemd.

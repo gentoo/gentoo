@@ -61,10 +61,6 @@ virtual/lapacke -flexiblas
 # These BLAS/LAPACK providers are keyworded here.
 sci-libs/flexiblas -openblas
 
-# Alfred Wingate <parona@protonmail.com> (2025-07-31)
-# mongodb not keyworded here
-sci-libs/gdal mongodb
-
 # Paul Zander <negril.nx+gentoo@gmail.com> (2025-05-02)
 # Broken bundled Eigen, fails to compile. See bug #865191.
 sci-geosciences/grass pdal
