@@ -53,8 +53,8 @@ src_install() {
 
 	doman "${T}"/${PN}.1
 
-	local build_dir=( "$(cargo_target_dir)"/build/${PN}-*/out )
-	cd ${build_dir[0]} || die
+	local build_dir=$(dirname $(find "${WORKDIR}" -type f -path '*/target/release/build/'"${PN}"'*/out/_br'))
+	cd "${build_dir}" || die
 
 	newbashcomp ${PN}.bash ${PN}
 	newbashcomp br.bash br
