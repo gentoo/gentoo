@@ -507,12 +507,6 @@ dev-cpp/eigen:3/5.0
 =sys-kernel/linux-firmware-20250917
 =sys-kernel/linux-firmware-20251011
 
-# Michał Górny <mgorny@gentoo.org> (2025-06-29)
-# File collision against gnome-base/gnome-keyring[pam], which is
-# required via pambase.  Masked until the maintainer determines a good
-# solution.  Bug #959274.
-=app-crypt/libsecret-0.21.7-r1
-
 # Sam James <sam@gentoo.ogr> (2025-06-08)
 # Masked for testing (bug #957583).
 >=sys-devel/gettext-0.24
