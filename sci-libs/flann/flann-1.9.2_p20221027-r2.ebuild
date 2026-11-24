@@ -37,7 +37,7 @@ RDEPEND="
 	mpi? (
 		virtual/mpi
 		dev-libs/boost:=[mpi]
-		sci-libs/hdf5:=
+		sci-libs/hdf5:=[mpi]
 	)
 	octave? (
 		>=sci-mathematics/octave-3.6.4-r1:=
