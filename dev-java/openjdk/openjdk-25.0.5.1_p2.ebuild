@@ -70,7 +70,7 @@ S="${WORKDIR}/${JDK_REPO}-jdk-${MY_PV//+/-}"
 
 LICENSE="GPL-2-with-classpath-exception"
 SLOT="$(ver_cut 1)"
-KEYWORDS="~amd64 ~arm arm64 ~ppc64 ~riscv"
+KEYWORDS="amd64 ~arm arm64 ~ppc64 ~riscv"
 
 IUSE="alsa big-endian cups debug doc examples headless-awt +jbootstrap selinux source static-libs +system-bootstrap systemtap"
 
