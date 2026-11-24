@@ -56,6 +56,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.9.2-boost-config-1.89.patch
 	"${FILESDIR}"/${PN}-1.9.2-system-gtest.patch
 	"${FILESDIR}"/${PN}-1.9.2-gettimeofday.patch
+	"${WORKDIR}"/${P}-patches-r1
 
 	# "${FILESDIR}/${PN}-1.9.2-lz4-dependency-fix.patch" # https://github.com/flann-lib/flann/pull/523
 	# "${FILESDIR}/${PN}-1.9.2-fix-build.patch"
@@ -76,10 +77,6 @@ pkg_setup() {
 
 src_prepare() {
 	cmake_src_prepare
-
-	for patch in "${WORKDIR}/${P}-patches-r1"/*; do
-		eapply "${patch}"
-	done
 }
 
 src_configure() {
