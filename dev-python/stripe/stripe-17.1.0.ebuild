@@ -30,6 +30,7 @@ BDEPEND="
 	test? (
 		>=dev-util/stripe-mock-0.206.0
 		dev-python/aiohttp[${PYTHON_USEDEP}]
+		dev-python/httpx[${PYTHON_USEDEP}]
 		dev-python/httpx2[${PYTHON_USEDEP}]
 		dev-python/trio[${PYTHON_USEDEP}]
 		net-misc/curl
