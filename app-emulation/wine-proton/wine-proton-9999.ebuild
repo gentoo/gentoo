@@ -231,6 +231,16 @@ src_install() {
 
 	wine_src_install
 
+	# Valve's proton expects wine64{,-preloader} under i386-unix and
+	# creates them using Proton's Makefile[1] rather than Wine's,
+	# causes `could not load kernel32.dll` errors if missing (note
+	# *also* needed for 64bit-only builds, so we skip 32bit checks)
+	# [1] https://github.com/ValveSoftware/Proton/commit/e50807ac2e9d
+	if use amd64; then
+		dosym -r ${WINE_PREFIX}/wine/{x86_64,i386}-unix/wine64
+		dosym -r ${WINE_PREFIX}/wine/{x86_64,i386}-unix/wine64-preloader
+	fi
+
 	dodoc ANNOUNCE* AUTHORS README* documentation/README*
 	readme.gentoo_create_doc
 }

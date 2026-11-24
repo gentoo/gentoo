@@ -41,12 +41,6 @@
 # Removal on 2026-12-15.
 kde-misc/kio-gdrive
 
-# Ionen Wolkens <ionen@gentoo.org> (2026-11-24)
-# Broken at runtime failing to load kernel32.dll, masking until cause
-# can be determined (mostly on our own given upstream does not support
-# using Proton's wine the way we do).
-~app-emulation/wine-proton-11.0.3
-
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2026-11-20)
 # Unused sec-keys.
 # Removal on 2026-12-20.
