@@ -1,0 +1,45 @@
+From 6200f9d214c4a09a680daae69ec7e4b0cabebc3d Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Niccol=C3=B2=20Venerandi?= <niccolo@venerandi.com>
+Date: Thu, 19 Nov 2026 20:43:54 +0100
+Subject: [PATCH] devicenotifier: Fix crash when a busy device is unplugged
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Unplugging a busy device while lsof was still checking it crashed Plasma:
+the QProcess callbacks had no context object and used the deleted
+MessageInfo. Use it as their context and as the QProcess parent.
+
+BUG: 526537
+
+
+(cherry picked from commit be9599da9b42508a7e3791671b7ca6c8e093fcf1)
+
+Co-authored-by: Niccolò Venerandi <niccolo@venerandi.com>
+---
+ applets/devicenotifier/messageinfo.cpp | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/applets/devicenotifier/messageinfo.cpp b/applets/devicenotifier/messageinfo.cpp
+index e5c987879b..6623be04b2 100644
+--- a/applets/devicenotifier/messageinfo.cpp
++++ b/applets/devicenotifier/messageinfo.cpp
+@@ -40,12 +40,12 @@ QString MessageInfo::getMessage() const
+ 
+ void MessageInfo::queryBlockingApps(const QString &devicePath)
+ {
+-    auto p = new QProcess;
+-    connect(p, &QProcess::errorOccurred, [p, this](QProcess::ProcessError) {
++    auto p = new QProcess(this);
++    connect(p, &QProcess::errorOccurred, this, [p, this](QProcess::ProcessError) {
+         Q_EMIT blockingAppsReady({});
+         p->deleteLater();
+     });
+-    connect(p, &QProcess::finished, [p, this](int, QProcess::ExitStatus) {
++    connect(p, &QProcess::finished, this, [p, this](int, QProcess::ExitStatus) {
+         QStringList blockApps;
+         const QString out = QString::fromLatin1(p->readAll());
+         const auto pidList = QStringView(out).split(QRegularExpression(QStringLiteral("\\s+")), Qt::SkipEmptyParts);
+-- 
+GitLab
+
