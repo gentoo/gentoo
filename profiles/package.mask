@@ -36,6 +36,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2026-11-24)
+# Dead upstream. KDE-bug: https://bugs.kde.org/show_bug.cgi?id=508169
+# Removal on 2026-12-15.
+kde-misc/kio-gdrive
+
 # Ionen Wolkens <ionen@gentoo.org> (2026-11-24)
 # Broken at runtime failing to load kernel32.dll, masking until cause
 # can be determined (mostly on our own given upstream does not support
