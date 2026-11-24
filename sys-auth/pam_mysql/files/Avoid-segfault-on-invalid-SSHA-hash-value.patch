@@ -1,0 +1,27 @@
+From: =?utf-8?q?Ferenc_W=C3=A1gner?= <wferi@debian.org>
+Date: Thu, 5 Nov 2026 14:42:36 +0100
+Subject: Avoid segfault on invalid SSHA hash value
+
+When the database entry was too short, salt_length suffered unsigned
+underflow and wrapped to a huge positive value, resulting in a
+segmentation fault at the dynamic allocation on the next line.
+---
+ pam_mysql.c | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/pam_mysql.c b/pam_mysql.c
+index 20f6377..2f52c54 100644
+--- a/pam_mysql.c
++++ b/pam_mysql.c
+@@ -3849,6 +3849,11 @@ static pam_mysql_err_t pam_mysql_check_passwd(pam_mysql_ctx_t *ctx,
+                                 unsigned char* hash;
+                                 size_t sha1_size;
+                                 Base64Decode(row[0], &hash, &sha1_size);
++                                if (sha1_size <= 20) {
++                                    syslog(LOG_AUTHPRIV | LOG_WARNING, PAM_MYSQL_LOG_PREFIX "wrong SSHA hash format");
++                                    err = PAM_MYSQL_ERR_MISMATCH;
++                                    goto out;
++                                }
+                                 size_t salt_length = sha1_size - 20;
+                                 unsigned char salt[salt_length];
+                                 memcpy(salt, &(hash[20]), salt_length);

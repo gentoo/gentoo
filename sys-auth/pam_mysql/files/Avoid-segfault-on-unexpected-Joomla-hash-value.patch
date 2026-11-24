@@ -1,0 +1,26 @@
+From: =?utf-8?q?Ferenc_W=C3=A1gner?= <wferi@debian.org>
+Date: Mon, 16 Nov 2020 20:48:30 +0100
+Subject: Avoid segfault on unexpected Joomla hash value
+
+For example Joomla 3.2 uses crypt-like formats (like $P$...), which
+aren't colon-separated, so salt becomes NULL and strlen() bombs.
+---
+ pam_mysql.c | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/pam_mysql.c b/pam_mysql.c
+index c2cc42b..f4dac29 100644
+--- a/pam_mysql.c
++++ b/pam_mysql.c
+@@ -3796,6 +3796,11 @@ static pam_mysql_err_t pam_mysql_check_passwd(pam_mysql_ctx_t *ctx,
+                                 char *salt = row[0];
+                                 char *hash = strsep(&salt,":");
+ 
++                                if (!salt) {
++                                    syslog(LOG_AUTHPRIV | LOG_WARNING, PAM_MYSQL_LOG_PREFIX "unknown hash format");
++                                    err = PAM_MYSQL_ERR_MISMATCH;
++                                    goto out;
++                                }
+                                 int len = strlen(passwd)+strlen(salt);
+ 
+                                 char *tmp;
