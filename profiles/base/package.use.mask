@@ -697,13 +697,6 @@ net-misc/openssh debug
 # PCRE JIT support via dev-libs/libpcre2[jit] is only available for certain architectures
 dev-lang/php jit
 
-# Sam James <sam@gentoo.org> (2021-02-07)
-# Fails to build with USE=doc for now.
-# Needs rework to use Python eclasses
-# for conditional doc dependencies.
-# bug #759523
-sci-libs/gdal doc
-
 # Lars Wendler <polynomial-c@gentoo.org> (2021-01-26)
 # Upstream considers this module being a high security risk
 # http://httpd.apache.org/docs/current/mod/mod_lua.html
