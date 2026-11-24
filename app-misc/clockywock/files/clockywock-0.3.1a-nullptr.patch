@@ -1,0 +1,39 @@
+Fix build on musl, where NULL is nullptr and cannot share ?: with int.
+Bug: https://bugs.gentoo.org/839252
+
+--- a/clockywock.cpp	2026-06-12 18:31:58.169846607 +0000
++++ b/clockywock.cpp	2026-06-12 18:32:13.653978189 +0000
+@@ -395,20 +395,20 @@
+ 
+ 	box(iwin,0,0);
+ 
+-	mvwchgat(iwin,1,32,1,A_BOLD,color==1?hour_color+8:NULL,NULL);
+-	mvwchgat(iwin,2,32,1,A_BOLD,color==1?minute_color+8:NULL,NULL); mvwchgat(iwin,2,63,6,A_BOLD,color==1?13:NULL,NULL);
+-	mvwchgat(iwin,3,32,1,A_BOLD,color==1?second_color+8:NULL,NULL); mvwchgat(iwin,3,63,6,A_BOLD,color==1?13:NULL,NULL);
+-	mvwchgat(iwin,4,26,8,A_BOLD,color==1?13:NULL,NULL); mvwchgat(iwin,4,63,6,A_BOLD,color==1?13:NULL,NULL);
+-	mvwchgat(iwin,5,26,8,A_BOLD,color==1?13:NULL,NULL); mvwchgat(iwin,5,63,6,A_BOLD,color==1?13:NULL,NULL);
+-	mvwchgat(iwin,6,26,8,A_BOLD,color==1?13:NULL,NULL);
+-	mvwchgat(iwin,7,26,8,A_BOLD,color==1?13:NULL,NULL);
+-	mvwchgat(iwin,8,26,8,A_BOLD,color==1?13:NULL,NULL);
++	mvwchgat(iwin,1,32,1,A_BOLD,color==1?hour_color+8:0,NULL);
++	mvwchgat(iwin,2,32,1,A_BOLD,color==1?minute_color+8:0,NULL); mvwchgat(iwin,2,63,6,A_BOLD,color==1?13:0,NULL);
++	mvwchgat(iwin,3,32,1,A_BOLD,color==1?second_color+8:0,NULL); mvwchgat(iwin,3,63,6,A_BOLD,color==1?13:0,NULL);
++	mvwchgat(iwin,4,26,8,A_BOLD,color==1?13:0,NULL); mvwchgat(iwin,4,63,6,A_BOLD,color==1?13:0,NULL);
++	mvwchgat(iwin,5,26,8,A_BOLD,color==1?13:0,NULL); mvwchgat(iwin,5,63,6,A_BOLD,color==1?13:0,NULL);
++	mvwchgat(iwin,6,26,8,A_BOLD,color==1?13:0,NULL);
++	mvwchgat(iwin,7,26,8,A_BOLD,color==1?13:0,NULL);
++	mvwchgat(iwin,8,26,8,A_BOLD,color==1?13:0,NULL);
+ 
+-	mvwchgat(iwin,10,26,8,A_BOLD,color==1?13:NULL,NULL); mvwchgat(iwin,10,63,6,A_BOLD,color==1?13:NULL,NULL);
+-	mvwchgat(iwin,11,26,8,A_BOLD,color==1?13:NULL,NULL); mvwchgat(iwin,11,63,6,A_BOLD,color==1?13:NULL,NULL);
+-	mvwchgat(iwin,12,26,8,A_BOLD,color==1?13:NULL,NULL); mvwchgat(iwin,12,63,6,A_BOLD,color==1?13:NULL,NULL);
+-	                                                     mvwchgat(iwin,13,63,6,A_BOLD,color==1?13:NULL,NULL);
+-	                                                     mvwchgat(iwin,14,63,6,A_BOLD,color==1?13:NULL,NULL);
++	mvwchgat(iwin,10,26,8,A_BOLD,color==1?13:0,NULL); mvwchgat(iwin,10,63,6,A_BOLD,color==1?13:0,NULL);
++	mvwchgat(iwin,11,26,8,A_BOLD,color==1?13:0,NULL); mvwchgat(iwin,11,63,6,A_BOLD,color==1?13:0,NULL);
++	mvwchgat(iwin,12,26,8,A_BOLD,color==1?13:0,NULL); mvwchgat(iwin,12,63,6,A_BOLD,color==1?13:0,NULL);
++	                                                     mvwchgat(iwin,13,63,6,A_BOLD,color==1?13:0,NULL);
++	                                                     mvwchgat(iwin,14,63,6,A_BOLD,color==1?13:0,NULL);
+ 
+ 	overwrite(iwin,clock_win);
+ 
