@@ -102,10 +102,8 @@ src_configure() {
 			impls+=("ppc64")
 		fi
 
-		local impl_list
-		IFS=';' impl_list="${impls[*]}"
 		mycmakeargs+=(
-			-DSIMDJSON_IMPLEMENTATION:STRING="${impl_list}"
+			-DSIMDJSON_IMPLEMENTATION:STRING="$(IFS=';'; printf '%s\n' "${impls[*]}")"
 		)
 	fi
 
