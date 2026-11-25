@@ -23,7 +23,7 @@ inherit desktop edo flag-o-matic java-pkg-opt-2 linux-info multilib optfeature p
 MY_PN="VirtualBox"
 MY_P=${MY_PN}-${PV^^}
 HELP_PV=${PV}
-PATCHES_PV="7.2.14"
+PATCHES_PV="7.2.22"
 
 DESCRIPTION="Family of powerful x86 virtualization products for enterprise and home use"
 HOMEPAGE="https://www.virtualbox.org/ https://github.com/VirtualBox/virtualbox"
