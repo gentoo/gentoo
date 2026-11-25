@@ -271,12 +271,12 @@ src_install() {
 
 	einstalldocs
 
-	local build_dir=( "$(cargo_target_dir)"/build/${PN}-*/out )
-	cd "${build_dir[0]}" || die "Cannot change directory to ${PN} build"
+	doman "$(find "${WORKDIR}" -type f -path "*/assets/manual/bat.1")"
 
-	doman assets/manual/bat.1
+	local completion_dir="$(dirname "$(find "${WORKDIR}" -type f -path "*/assets/completions/${PN}.bash")")"
+	cd "${completion_dir}" || die "Cannot change directory to ${PN} completions"
 
-	newbashcomp assets/completions/${PN}.bash ${PN}
-	newzshcomp assets/completions/${PN}.zsh _${PN}
-	dofishcomp assets/completions/${PN}.fish
+	newbashcomp ${PN}.bash ${PN}
+	newzshcomp ${PN}.zsh _${PN}
+	dofishcomp ${PN}.fish
 }
