@@ -16,7 +16,7 @@ S="${WORKDIR}"/${P}/build/meson
 
 LICENSE="|| ( BSD GPL-2 )"
 SLOT="0/1"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~arm64-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~arm64-macos ~x64-macos ~x64-solaris"
 IUSE="+lzma lz4 static-libs test zlib"
 RESTRICT="!test? ( test )"
 
@@ -74,9 +74,6 @@ multilib_src_configure() {
 }
 
 multilib_src_test() {
-	# Hangs with 1.6.0 for x32
-	[[ ${ABI} == x32 ]] && EMESON_SKIP_TESTS=( zstd:test-zstd-fast )
-
 	meson_src_test --timeout-multiplier=2
 }
 
