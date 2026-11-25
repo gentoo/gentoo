@@ -21,6 +21,7 @@ CRATES+="
 	gimli@0.34.0
 	hashbrown@0.16.1
 	hermit-abi@0.5.2
+	hermit-abi@0.5.3
 	libc@0.2.178
 	libc@0.2.183
 	libc@0.2.185
@@ -28,6 +29,7 @@ CRATES+="
 	miniz_oxide@0.9.1
 	moto-rt@0.16.0
 	moto-rt@0.16.4
+	moto-rt@0.17.4
 	object@0.37.3
 	r-efi-alloc@2.1.0
 	r-efi@5.3.0
@@ -35,15 +37,17 @@ CRATES+="
 	rustc-demangle@0.1.28
 	rustc-literal-escaper@0.0.7
 	rustc-literal-escaper@0.0.8
-	unwinding@0.2.8
 	unwinding@0.2.10
+	unwinding@0.2.8
 	vex-sdk@0.27.1
 	wasi@0.14.4+wasi-0.2.4
 	wasip1@1.0.0
 	wasip2@1.0.3+wasi-0.2.9
 	wasip2@1.0.4+wasi-0.2.12
+	wasip2@2.0.1+wasi-0.2.12
 	wasip3@0.6.0+wasi-0.3.0-rc-2026-03-15
 	wasip3@0.7.0+wasi-0.3.0
+	wasip3@0.9.0+wasi-0.3.0
 	windows-sys@0.60.2
 	windows-targets@0.53.5
 	windows_aarch64_gnullvm@0.53.1
@@ -54,13 +58,14 @@ CRATES+="
 	windows_x86_64_gnu@0.53.1
 	windows_x86_64_gnullvm@0.53.1
 	windows_x86_64_msvc@0.53.1
-	wit-bindgen@0.57.1
 	wit-bindgen@0.45.1
+	wit-bindgen@0.57.1
+	wit-bindgen@0.62.0
 "
 
 # Implied by crates above.
 RUST_MIN_VER=1.95.0
-RUST_MAX_VER=1.99.0
+RUST_MAX_VER=1.100.0
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=maturin
