@@ -5,16 +5,15 @@
 		<email>gentoo@retornaz.com</email>
 		<name>Quentin Retornaz</name>
 	</maintainer>
-	<maintainer type="person" proxied="yes">
-		<email>gentoo@wizzup.org</email>
-		<name>Merlijn Wajer</name>
-		<description>Whipper project developer</description>
-	</maintainer>
 	<maintainer type="project" proxied="proxy">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<upstream>
+		<maintainer cc-on-bugs="yes">
+			<email>gentoo@wizzup.org</email>
+			<name>Merlijn Wajer</name>
+		</maintainer>
 		<remote-id type="github">whipper-team/whipper</remote-id>
 	</upstream>
 </pkgmetadata>

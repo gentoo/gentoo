@@ -45,11 +45,14 @@ COMMON_DEPEND="
 		x11-libs/pango
 	)
 "
+# xorg-server: explicit dependency given these old drivers only
+# support up to the 21.1 ABI
 RDEPEND="
 	${COMMON_DEPEND}
 	sys-libs/glibc
 	X? (
 		media-libs/libglvnd[X,abi_x86_32(-)?]
+		<x11-base/xorg-server-22
 		x11-libs/libX11[abi_x86_32(-)?]
 		x11-libs/libXext[abi_x86_32(-)?]
 	)
@@ -340,8 +343,10 @@ documentation that is installed alongside this README."
 			dosym ${m[4]} ${into}/${m[0]}
 			continue
 		fi
-		[[ ${m[0]} =~ ^libnvidia-ngx.so ]] &&
-			dosym ${m[0]} ${into}/${m[0]%.so*}.so.1 # soname not in .manifest
+		# some _SYMLINK are missing from the .manifest for sonames
+		# TODO?: use scanelf -BSq to auto-create like nvidia-installer?
+		[[ ${m[0]} =~ ((libnvidia-ngx.so).*) ]] &&
+			dosym ${BASH_REMATCH[1]} ${into}/${BASH_REMATCH[2]}.1
 
 		printf -v m[1] %o $((m[1] | 0200)) # 444->644
 		insopts -m${m[1]}

@@ -15,7 +15,7 @@ HOMEPAGE="
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 
 # Upstream package is technically a Python package, but there's really
 # no point in the Python wrapper and per-Python version duplicate files.

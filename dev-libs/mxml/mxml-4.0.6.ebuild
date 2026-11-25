@@ -18,7 +18,7 @@ SRC_URI="
 
 LICENSE="Mini-XML"
 SLOT="4"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ppc ~ppc64 ~riscv ~sparc x86"
 IUSE="static-libs test threads"
 RESTRICT="!test? ( test )"
 

@@ -1,0 +1,63 @@
+https://bugs.gentoo.org/986430
+https://invent.kde.org/frameworks/oxygen-icons/-/work_items/6
+https://invent.kde.org/frameworks/oxygen-icons/-/commit/5bfe432258fff393d65442ae275f3126df90de8c
+
+From 5bfe432258fff393d65442ae275f3126df90de8c Mon Sep 17 00:00:00 2001
+From: nuno pinheiro <nuno@kdab.com>
+Date: Mon, 16 Nov 2026 19:04:25 +0000
+Subject: [PATCH] Remove duplicate go-first icons that invalidate GTK cache
+
+Remove the accidental go-first copy.svg files at 22, 24 and 48 px. The correctly named go-first.svg artwork is identical and resolves independently. GTK scans these files even when symbolic action directories are inactive in the theme index.
+
+Verified that gtk-update-icon-cache fails with the duplicates, succeeds after removal, and the generated cache passes validation.
+
+BUG: 528955
+---
+ simbolicActions/22x22/actions/go-first copy.svg | 8 --------
+ simbolicActions/24x24/actions/go-first copy.svg | 8 --------
+ simbolicActions/48x48/actions/go-first copy.svg | 1 -
+ 3 files changed, 17 deletions(-)
+ delete mode 100644 simbolicActions/22x22/actions/go-first copy.svg
+ delete mode 100644 simbolicActions/24x24/actions/go-first copy.svg
+ delete mode 120000 simbolicActions/48x48/actions/go-first copy.svg
+
+diff --git a/simbolicActions/22x22/actions/go-first copy.svg b/simbolicActions/22x22/actions/go-first copy.svg
+deleted file mode 100644
+index 33ce3ace..00000000
+--- a/simbolicActions/22x22/actions/go-first copy.svg	
++++ /dev/null
+@@ -1,8 +0,0 @@
+-<?xml version='1.0' encoding='UTF-8'?>
+-<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" version="1.1" viewBox="0 0 22 22">
+- <defs>
+-  <style id="current-color-scheme" type="text/css">.ColorScheme-Text { color:#232629; }</style>
+- </defs>
+- <path class="ColorScheme-Text" d="m4.8811 7.712v-1.7115a1.5 1.5 0 00-1.5-1.5h-1.012a.48797.48797 0 00-.48797.48797v12.012a1.5 1.5 0 001.5 1.5h1.012a.48797.48797 0 00.48797-.48797v-4.5241a.48126.48126 0 01.48792-.48122.89015.89015 0 01.58515.35434l4.4525 4.6086c.31416.32518.74606.51012 1.1982.51307 1.2033-.07731 1.854-1.4459 1.1544-2.428l-.00015-8e-5-2.038-3.3362c-.45694-.74804-.45694-1.6889 0-2.4369l2.038-3.3362c.65426-1.0711-.1166-2.4453-1.3717-2.4453-.38753.02732-.74718.21142-.99595.50981l-4.4559 4.6382a1.1455 1.1455 0 01-.82603.35189h-.2284" fill="currentColor" fill-opacity=".1" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
+- <path class="ColorScheme-Text" d="m20.367 15.776-.94849-2.9171a4.3913 4.3913 0 010-2.7157l.94849-2.9171a2.0814 2.0814 0 00-1.9794-2.7251 1.1457 1.1457 0 00-.90169.58597l-3.5307 5.2306a2.1083 2.1083 0 00.0037 2.3644l3.5418 5.2123a1.3457 1.3457 0 001.1043.58937 1.9917 1.9917 0 001.7621-2.7077z" fill="currentColor" fill-opacity=".05" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
+-</svg>
+\ No newline at end of file
+diff --git a/simbolicActions/24x24/actions/go-first copy.svg b/simbolicActions/24x24/actions/go-first copy.svg
+deleted file mode 100644
+index 758a1356..00000000
+--- a/simbolicActions/24x24/actions/go-first copy.svg	
++++ /dev/null
+@@ -1,8 +0,0 @@
+-<?xml version='1.0' encoding='UTF-8'?>
+-<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" version="1.1" viewBox="0 0 24 24">
+- <defs>
+-  <style id="current-color-scheme" type="text/css">.ColorScheme-Text { color:#232629; }</style>
+- </defs>
+- <g transform="translate(1,1)"><path class="ColorScheme-Text" d="m4.8811 7.712v-1.7115a1.5 1.5 0 00-1.5-1.5h-1.012a.48797.48797 0 00-.48797.48797v12.012a1.5 1.5 0 001.5 1.5h1.012a.48797.48797 0 00.48797-.48797v-4.5241a.48126.48126 0 01.48792-.48122.89015.89015 0 01.58515.35434l4.4525 4.6086c.31416.32518.74606.51012 1.1982.51307 1.2033-.07731 1.854-1.4459 1.1544-2.428l-.00015-8e-5-2.038-3.3362c-.45694-.74804-.45694-1.6889 0-2.4369l2.038-3.3362c.65426-1.0711-.1166-2.4453-1.3717-2.4453-.38753.02732-.74718.21142-.99595.50981l-4.4559 4.6382a1.1455 1.1455 0 01-.82603.35189h-.2284" fill="currentColor" fill-opacity=".1" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
+- <path class="ColorScheme-Text" d="m20.367 15.776-.94849-2.9171a4.3913 4.3913 0 010-2.7157l.94849-2.9171a2.0814 2.0814 0 00-1.9794-2.7251 1.1457 1.1457 0 00-.90169.58597l-3.5307 5.2306a2.1083 2.1083 0 00.0037 2.3644l3.5418 5.2123a1.3457 1.3457 0 001.1043.58937 1.9917 1.9917 0 001.7621-2.7077z" fill="currentColor" fill-opacity=".05" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
+-</g></svg>
+\ No newline at end of file
+diff --git a/simbolicActions/48x48/actions/go-first copy.svg b/simbolicActions/48x48/actions/go-first copy.svg
+deleted file mode 120000
+index 8e697af5..00000000
+--- a/simbolicActions/48x48/actions/go-first copy.svg	
++++ /dev/null
+@@ -1 +0,0 @@
+-../../24x24/actions/go-first copy.svg
+\ No newline at end of file
+-- 
+GitLab

@@ -12,11 +12,13 @@ SRC_URI="https://github.com/xavierleroy/camlzip/archive/v${PV}.tar.gz -> ${P}.ta
 LICENSE="LGPL-2.1"
 SLOT="1/${PV}"
 KEYWORDS="amd64 arm arm64 ~ppc ppc64 ~riscv x86"
-IUSE="+ocamlopt"
+IUSE="+ocamlopt test"
+RESTRICT="!test? ( test )"
 
 RDEPEND=">=dev-lang/ocaml-4.13:=[ocamlopt?]
 	>=virtual/zlib-1.1.3:="
 DEPEND="${RDEPEND}"
+BDEPEND="test? ( app-arch/zip )"
 
 QA_FLAGS_IGNORED=(
 	"usr/lib.*/ocaml/stublibs/dllcamlzip.so"

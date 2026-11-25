@@ -4,7 +4,8 @@
 EAPI=8
 
 LUA_COMPAT=( luajit )
-PYTHON_COMPAT=( python3_{12..14} )
+PYTHON_COMPAT=( python3_{12..15} )
+RUST_MAX_VER=1.99.9999 # "should" be unneeded in >=naev-1.14 (bug #987106)
 RUST_MIN_VER=1.89.0
 inherit cargo lua-single meson python-any-r1 xdg
 

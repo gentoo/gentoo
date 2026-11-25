@@ -1,0 +1,96 @@
+From a22df751eabf8f1d269fbead0ac1c19c121fdb78 Mon Sep 17 00:00:00 2001
+From: "Z. Liu" <zhixu.liu@gmail.com>
+Date: Fri, 20 Nov 2026 22:52:45 +0800
+Subject: [PATCH] configure: fix have_static_libs probe with non-gcc host
+ compilers
+
+when building gcc 11 with clang 22 (using libstdc++), the build
+failed with:
+
+> libtool: compile:  /var/tmp/portage/sys-devel/gcc-11.5.0/work/build/./gcc/xgcc -shared-libgcc -B/var/tmp/portage/sys-devel/gcc-11.5.0/work/build/./gcc -nostdinc++ -L/var/tmp/portage/sys-devel/gcc-11.5.0/work/build/x86_64-pc-linux-gnu/32/libstdc++-v3/src -L/var/tmp/portage/sys-devel/gcc-11.5.0/work/build/x86_64-pc-linux-gnu/32/libstdc++-v3/src/.libs -L/var/tmp/portage/sys-devel/gcc-11.5.0/work/build/x86_64-pc-linux-gnu/32/libstdc++-v3/libsupc++/.libs -B/usr/x86_64-pc-linux-gnu/bin/ -B/usr/x86_64-pc-linux-gnu/lib/ -isystem /usr/x86_64-pc-linux-gnu/include -isystem /usr/x86_64-pc-linux-gnu/sys-include -fno-checking -m32 -I/var/tmp/portage/sys-devel/gcc-11.5.0/work/gcc-11.5.0/libstdc++-v3/../libgcc -I/var/tmp/portage/sys-devel/gcc-11.5.0/work/build/x86_64-pc-linux-gnu/32/libstdc++-v3/include/x86_64-pc-linux-gnu -I/var/tmp/portage/sys-devel/gcc-11.5.0/work/build/x86_64-pc-linux-gnu/32/libstdc++-v3/include -I/var/tmp/portage/sys-devel/gcc-11.5.0/work/gcc-11.5.0/libstdc++-v3/libsupc++ -D_GLIBCXX_SHARED -fno-implicit-templates -Wall -Wextra -Wwrite-strings -Wcast-qual -Wabi=2 -fdiagnostics-show-location=once -ffunction-sections -fdata-sections -frandom-seed=atexit_arm.lo -pipe -g -O2 -D_GNU_SOURCE -m32 -fcf-protection -mshstk -c /var/tmp/portage/sys-devel/gcc-11.5.0/work/gcc-11.5.0/libstdc++-v3/libsupc++/atexit_arm.cc  -fPIC -DPIC -D_GLIBCXX_SHARED -o atexit_arm.o
+> /var/tmp/portage/sys-devel/gcc-11.5.0/work/build/./gcc/cc1plus: /var/tmp/portage/sys-devel/gcc-11.5.0/work/build/x86_64-pc-linux-gnu/libstdc++-v3/src/.libs/libstdc++.so.6: version `GLIBCXX_3.4.30' not found (required by /var/tmp/portage/sys-devel/gcc-11.5.0/work/build/./gcc/cc1plus)
+> make[9]: *** [Makefile:769: atexit_arm.lo] Error 1
+
+this is because cc1plus requires GLIBCXX_3.4.30, which is not
+provided by the libstdc++ built by gcc 11 (which provides up to
+GLIBCXX_3.4.29).
+
+> # ldd /var/tmp/portage/sys-devel/gcc-11.5.0/work/build/./gcc/cc1plus
+>         ...
+>         libstdc++.so.6 => /usr/lib/gcc/x86_64-pc-linux-gnu/17/libstdc++.so.6 (0x00007f4049e00000)
+>         ...
+
+The build succeeds when building with clang 22 (using libc++).
+
+The reason is that the configure: have_static_libs probe uses __GNUC__
+and __GNUC_MINOR__ to check whether -static-libstdc++ (introduced
+in gcc 4.5) is supported. However, clang defines these macros as
+4.2 for gcc compatibility, even though it supports both
+-static-libstdc++ and -static-libgcc.
+
+> # clang --version
+> clang version 22.1.8
+> ...
+> # clang -dM -E -x c /dev/null | grep '__GNUC_'
+> #define __GNUC_MINOR__ 2
+> ...
+> #define __GNUC__ 4
+
+As a consequence, the probe fails when bootstrapping gcc with clang,
+leaving stage1_ldflags and poststage1_ldflags empty. Consequently, host
+tools such as cc1plus try to load an older libstdc++ built by the
+gcc being bootstrapped, resulting in missing GLIBCXX symbol versions.
+
+Fixed by excluding clang from version check and relying on the actual
+link test to detect support for the linker options. clang support of
+these options is confirmed by test on Godbolt, the oldest version
+available for linking test on Godbolt is 3.3.
+
+This might also be a possible reason for gcc.gnu.org/PR105688, but clang
+is not mentioned there.
+
+See also https://bugs.gentoo.org/883415
+
+Signed-off-by: Z. Liu <zhixu.liu@gmail.com>
+
+diff --git a/configure b/configure
+index 0dfa20d648a..45e161612e6 100755
+--- a/configure
++++ b/configure
+@@ -5631,9 +5631,14 @@ ac_compiler_gnu=$ac_cv_cxx_compiler_gnu
+ cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+ /* end confdefs.h.  */
+ 
++#if defined(__clang__)
++// Clang supports these options; the oldest version available for linking
++// tests on Godbolt is 3.3.
++#else
+ #if (__GNUC__ < 4) || (__GNUC__ == 4 && __GNUC_MINOR__ < 5)
+ #error -static-libstdc++ not implemented
+ #endif
++#endif
+ int main() {}
+ _ACEOF
+ if ac_fn_cxx_try_link "$LINENO"; then :
+diff --git a/configure.ac b/configure.ac
+index 53ad87035e2..f211fa6d857 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -1528,9 +1528,14 @@ if test "$GCC" = yes; then
+   AC_MSG_CHECKING([whether g++ accepts -static-libstdc++ -static-libgcc])
+   AC_LANG_PUSH(C++)
+   AC_LINK_IFELSE([AC_LANG_SOURCE([
++#if defined(__clang__)
++// Clang supports these options; the oldest version available for linking
++// tests on Godbolt is 3.3.
++#else
+ #if (__GNUC__ < 4) || (__GNUC__ == 4 && __GNUC_MINOR__ < 5)
+ #error -static-libstdc++ not implemented
+ #endif
++#endif
+ int main() {}])],
+     [AC_MSG_RESULT([yes]); have_static_libs=yes],
+     [AC_MSG_RESULT([no])])
+-- 
+2.49.1
+

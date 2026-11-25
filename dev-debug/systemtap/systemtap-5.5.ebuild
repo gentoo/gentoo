@@ -20,7 +20,7 @@ else
 		verify-sig? ( https://sourceware.org/ftp/${PN}/releases/${P}.tar.gz.asc )
 	"
 
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+	KEYWORDS="~alpha amd64 arm arm64 ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
 
 	BDEPEND="verify-sig? ( sec-keys/openpgp-keys-fche )"
 fi

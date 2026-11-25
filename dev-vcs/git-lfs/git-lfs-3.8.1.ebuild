@@ -24,7 +24,7 @@ fi
 
 LICENSE="Apache-2.0 BSD BSD-2 BSD-4 ISC MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 arm64 ~ppc64 ~riscv ~x86"
 IUSE="doc test"
 
 BDEPEND="

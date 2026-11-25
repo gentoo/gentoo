@@ -1,0 +1,33 @@
+From f28618bb15d9de548736bcf63b40342fffc7d06a Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Fri, 13 Nov 2026 13:04:03 -0500
+Subject: [PATCH] extern/rcm/rcm.h: include <cstdint> for int64_t and uint64_t
+
+This happens incidentally on glibc systems, but musl won't recognize
+the types without the include.
+---
+ extern/rcm/rcm.h | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/extern/rcm/rcm.h b/extern/rcm/rcm.h
+index 8822fd3a8f..662f7a9ead 100644
+--- a/extern/rcm/rcm.h
++++ b/extern/rcm/rcm.h
+@@ -4,6 +4,7 @@
+ #include "HConfig.h"
+ 
+ #ifdef HIGHSINT64
++#include <cstdint>
+ typedef int64_t HighsInt;
+ typedef uint64_t HighsUInt;
+ #define HIGHSINT_FORMAT PRId64
+@@ -29,4 +30,4 @@ HighsInt Highs_genrcm(HighsInt node_num, HighsInt adj_num,
+                       const HighsInt adj_row[], const HighsInt adj[],
+                       HighsInt perm[]);
+ 
+-#endif
+\ No newline at end of file
++#endif
+-- 
+2.56.0
+

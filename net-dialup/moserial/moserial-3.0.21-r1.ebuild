@@ -10,7 +10,7 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/moserial"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc x86"
 
 RDEPEND="
 	>=dev-libs/glib-2.16:2[dbus]
@@ -19,6 +19,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
+	$(vala_depend)
 	>=dev-util/intltool-0.35
 	dev-util/itstool
 	virtual/pkgconfig

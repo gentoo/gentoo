@@ -33,7 +33,9 @@ __gentoo_get_profile_splitmerge() {
 	fi
 }
 
-if [[ "${EBUILD_PHASE}" == "setup" ]] ; then
+# Skip unmerge phases. Don't name a phase here: Portage would
+# serialize it for every package.
+if [[ "${EBUILD_PHASE}" != *rm ]] ; then
 	if [[ $(__gentoo_get_disk_splitmerge) == "split" ]] && [[ $(__gentoo_get_profile_splitmerge) == "merged" ]] ; then
 		eerror ""
 		eerror "Your profile is of type merged-usr, but your directories"

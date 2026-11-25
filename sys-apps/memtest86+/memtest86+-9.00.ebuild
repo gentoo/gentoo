@@ -59,10 +59,7 @@ src_compile() {
 		# a different build directory has to be selected for loong, and
 		# there's no "BIOS" support.
 		pushd build/loongarch64
-			if use uefi64; then
-				emake mt86plus
-				secureboot_sign_efi_file mt86plus
-			fi
+			use uefi64 && emake mt86plus
 			use iso64 && emake iso
 		popd
 		return
@@ -90,16 +87,27 @@ install_memtest_images() {
 	fi
 
 	if use bios32 || use uefi32; then
-		secureboot_sign_efi_file build/i586/mt86plus
 		newins build/i586/mt86plus memtest.i586
 	fi
 	if use bios64 || use uefi64; then
-		secureboot_sign_efi_file build/x86_64/mt86plus
 		newins build/x86_64/mt86plus memtest.x86_64
 	fi
 }
 
 src_install() {
+	# Sign once here rather than in install_memtest_images, which runs
+	# twice with USE=boot and would add a second signature.
+	if use loong; then
+		use uefi64 && secureboot_sign_efi_file build/loongarch64/mt86plus
+	else
+		if use bios32 || use uefi32; then
+			secureboot_sign_efi_file build/i586/mt86plus
+		fi
+		if use bios64 || use uefi64; then
+			secureboot_sign_efi_file build/x86_64/mt86plus
+		fi
+	fi
+
 	default
 	if use boot; then
 		exeinto /etc/grub.d/

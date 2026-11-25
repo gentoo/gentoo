@@ -15,7 +15,7 @@ S="${WORKDIR}/${P}"
 
 LICENSE="|| ( Apache-2.0 LGPL-2.1+ )"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc64"
+KEYWORDS="amd64 arm64 ppc64"
 
 BDEPEND="virtual/pkgconfig"
 
@@ -60,6 +60,9 @@ src_prepare() {
 	sed \
 		-e "s:^JNA_JNI_VERSION=.*$:JNA_JNI_VERSION=${PV}:" \
 		-i native/Makefile || die
+
+	# bug #986155
+	use ppc64 && eapply "${FILESDIR}"/jna-5.19.1-ArgumentsMarshalTest.patch
 }
 
 src_compile() {

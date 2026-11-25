@@ -9,7 +9,7 @@ EAPI="8"
 TOOLCHAIN_PATCH_SUFFIX="xz"
 TOOLCHAIN_HAS_TESTS=1
 PATCH_VER="5"
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 
 inherit toolchain
 

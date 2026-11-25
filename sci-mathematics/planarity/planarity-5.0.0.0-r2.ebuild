@@ -11,7 +11,7 @@ SRC_URI="https://github.com/graph-algorithms/edge-addition-planarity-suite/relea
 
 LICENSE="BSD"
 SLOT="0/4"  # soname major, may be ${PV} minus one
-KEYWORDS="~amd64 ~riscv ~x86"
+KEYWORDS="amd64 ~riscv ~x86"
 
 src_install() {
 	default

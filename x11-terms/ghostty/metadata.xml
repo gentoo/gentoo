@@ -12,7 +12,4 @@
 	<upstream>
 		<remote-id type="github">ghostty-org/ghostty</remote-id>
 	</upstream>
-	<use>
-		<flag name="adwaita">Use <pkg>gui-libs/libadwaita</pkg> for better GNOME integration</flag>
-	</use>
 </pkgmetadata>

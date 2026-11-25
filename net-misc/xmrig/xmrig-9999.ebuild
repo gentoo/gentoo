@@ -18,7 +18,7 @@ fi
 
 LICENSE="GPL-3+ Apache-2.0 MIT"
 SLOT="0"
-IUSE="cpu_flags_x86_avx2 cpu_flags_x86_sse4_1 donate hwloc opencl +ssl"
+IUSE="cpu_flags_x86_avx2 cpu_flags_x86_sse4_1 donate +hwloc opencl +ssl"
 
 DEPEND="
 	dev-libs/libuv:=

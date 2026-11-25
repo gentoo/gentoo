@@ -45,7 +45,7 @@ DEPEND="
 			introspection? ( dev-python/pygobject:3[${PYTHON_USEDEP}] )
 		')
 	)
-	qt6? ( dev-qt/qtbase:6= )
+	qt6? ( dev-qt/qtbase:6 )
 	systemd? ( sys-apps/systemd:=[${MULTILIB_USEDEP}] )
 "
 RDEPEND="${DEPEND}

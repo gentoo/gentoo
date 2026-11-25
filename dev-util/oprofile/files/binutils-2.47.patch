@@ -1,0 +1,95 @@
+From fd491083573cf8384f83950041825ebc3f34d719 Mon Sep 17 00:00:00 2001
+From: "Z. Liu" <zhixu.liu@gmail.com>
+Date: Sat, 14 Nov 2026 17:04:19 +0800
+Subject: [PATCH] bfd_boolean is removed since binutils 2.47
+
+> opagent.c:81:2: error: use of undeclared identifier 'bfd_boolean'
+>    81 |         bfd_boolean r;
+>       |         ^~~~~~~~~~~
+> opagent.c:106:2: error: use of undeclared identifier 'r'
+>   106 |         r = bfd_check_format(bfd, bfd_object);
+>       |         ^
+> opagent.c:107:7: error: use of undeclared identifier 'r'
+>   107 |         if (!r) {
+>       |              ^
+> opagent.c:111:19: warning: assigning to 'char *' from 'const char *const' discards qualifiers [-Wincompatible-pointer-types-discards-qualifiers]
+>   111 |         _bfd_target_name =  bfd->xvec->name;
+>       |                          ^  ~~~~~~~~~~~~~~~
+
+Define a bfd_boolean fallback so older binutils keep working, make
+_bfd_target_name const, and use false from stdbool.h.
+
+Signed-off-by: Z. Liu <zhixu.liu@gmail.com>
+
+diff --git a/libopagent/opagent.c b/libopagent/opagent.c
+index f280880c..146d2e05 100644
+--- a/libopagent/opagent.c
++++ b/libopagent/opagent.c
+@@ -69,8 +69,13 @@
+ #include "op_config.h"
+ #include "jitdump.h"
+ 
++// bfd_boolean and the TRUE/FALSE macros were removed from bfd.h
++#ifndef bfd_boolean
++typedef bool bfd_boolean;
++#endif
++
+ // Declare BFD-related global variables.
+-static char * _bfd_target_name;
++static const char * _bfd_target_name;
+ static int _bfd_arch;
+ static unsigned int _bfd_mach;
+ 
+diff --git a/opjitconv/create_bfd.c b/opjitconv/create_bfd.c
+index da1e6d29..18b7d3d9 100644
+--- a/opjitconv/create_bfd.c
++++ b/opjitconv/create_bfd.c
+@@ -65,7 +65,7 @@ static int fill_symtab(void)
+ 		syms[i] = s;
+ 	}
+ 	r = bfd_set_symtab(cur_bfd, syms, entry_count);
+-	if (r == FALSE) {
++	if (r == false) {
+ 		bfd_perror("bfd_set_symtab");
+ 		rc = OP_JIT_CONV_FAIL;
+ 	}
+@@ -88,11 +88,11 @@ asection * create_section(bfd * abfd, char const * section_name,
+ 		goto error;
+ 	}
+ 	op_bfd_set_section_vma(abfd, section, vma);
+-	if (op_bfd_set_section_size(abfd, section, size) == FALSE) {
++	if (op_bfd_set_section_size(abfd, section, size) == false) {
+ 		bfd_perror("bfd_set_section_size");
+ 		goto error;
+ 	}
+-	if (op_bfd_set_section_flags(abfd, section, flags) == FALSE) {
++	if (op_bfd_set_section_flags(abfd, section, flags) == false) {
+ 		bfd_perror("bfd_set_section_flags");
+ 		goto error;
+ 	}
+@@ -134,7 +134,7 @@ static int create_text_section(int start_idx, int end_idx)
+ int fill_section_content(bfd * abfd, asection * section,
+ 			 void const * b, file_ptr offset, size_t sz)
+ {
+-	if (bfd_set_section_contents(abfd, section, b, offset, sz) == FALSE) {
++	if (bfd_set_section_contents(abfd, section, b, offset, sz) == false) {
+ 		bfd_perror("bfd_set_section_contents");
+ 		return OP_JIT_CONV_FAIL;
+ 	}
+@@ -257,11 +257,11 @@ bfd * open_elf(char const * filename)
+ 		bfd_perror("bfd_openw");
+ 		goto error1;
+ 	}
+-	if (bfd_set_format(abfd, bfd_object) == FALSE) {
++	if (bfd_set_format(abfd, bfd_object) == false) {
+ 		bfd_perror("bfd_set_format");
+ 		goto error;
+ 	}
+-	if (bfd_set_arch_mach(abfd, dump_bfd_arch, dump_bfd_mach) == FALSE) {
++	if (bfd_set_arch_mach(abfd, dump_bfd_arch, dump_bfd_mach) == false) {
+ 		bfd_perror("bfd_set_arch_mach");
+ 		goto error;
+ 	}
+-- 
+2.49.1
+

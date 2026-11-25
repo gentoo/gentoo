@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -77,7 +77,6 @@ pkg_postinst() {
 	if [[ -z "${REPLACING_VERSIONS}" ]]; then
 		optfeature "konsole view" "kde-apps/konsole:6"
 		optfeature "Markdown text previews" "kde-misc/markdownpart:6"
-		optfeature "Google Drive service" "kde-misc/kio-gdrive:6"
 		optfeature "bookmarks support" "kde-apps/keditbookmarks:6"
 	fi
 	ecm_pkg_postinst

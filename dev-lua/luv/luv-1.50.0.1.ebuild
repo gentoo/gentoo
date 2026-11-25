@@ -1,4 +1,4 @@
-# Copyright 2019-2025 Gentoo Authors
+# Copyright 2019-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -35,6 +35,7 @@ RDEPEND="${DEPEND}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.43.0.0-cmake_lua_version.patch
+	"${FILESDIR}"/${PN}-1.50.0.1-test-tty-non-tty.patch
 )
 
 S="${WORKDIR}/${MY_P}"

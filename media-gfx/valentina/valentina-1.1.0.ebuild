@@ -24,13 +24,24 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 BDEPEND="
-	dev-build/meson-format-array
 	dev-qt/qttools:6[linguist]
 	dev-util/qbs
 "
 
+_qbs_format_flags() {
+	local arg args=()
+	for arg; do
+		arg="${arg//\\/\\\\}" # escape backslashes
+		arg="${arg//$'\n'/\\n}" # convert newline to \n
+		arg="${arg//\"/\\\"}" # escape quotes
+		args+=( "\"${arg}\"" )
+	done
+	local IFS=,
+	printf '%s\n' "[${args[*]}]"
+}
+
 qbs_format_flags() {
-	meson-format-array "${@}" || die
+	eval _qbs_format_flags "${@}" || die
 }
 
 qbs_config() {

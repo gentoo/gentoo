@@ -14,7 +14,7 @@ HOMEPAGE="https://apps.kde.org/konsole/ https://konsole.kde.org"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="6"
-KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 arm64 ~loong ~ppc64 ~riscv ~x86"
 IUSE="ssh X"
 
 DEPEND="
@@ -47,6 +47,8 @@ DEPEND="
 	ssh? ( >=net-libs/libssh-0.9.8:= )
 "
 RDEPEND="${DEPEND}"
+
+PATCHES=( "${FILESDIR}/${P}-fix-testFd.patch" ) # bug 986078
 
 src_configure() {
 	local mycmakeargs=(

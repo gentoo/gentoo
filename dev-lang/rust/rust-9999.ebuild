@@ -510,7 +510,7 @@ src_configure() {
 	use clippy && tools+=',"clippy"'
 	use rustfmt && tools+=',"rustfmt"'
 	use rust-analyzer && tools+=',"rust-analyzer","rust-analyzer-proc-macro-srv"'
-	use rust-src && tools+=',"src"'
+	use rust-src && tools+=',"rust-src"'
 
 	if [[ ${PV} == *9999* ]]; then
 		use miri && tools+=',"miri"'
@@ -732,11 +732,11 @@ src_configure() {
 
 		case "${bm_tc}" in
 			host) # host toolchain if suitable (native arm64 gcc or tc-is-clang)
-				baremetal_ar="$(tc-getAR)"
-				baremetal_cc="$(tc-getCC)"
-				baremetal_cxx="$(tc-getCXX)"
-				baremetal_linker="$(tc-getCC)"
-				baremetal_ranlib="$(tc-getRANLIB)"
+				baremetal_ar="${host_ar}"
+				baremetal_cc="${host_cc}"
+				baremetal_cxx="${host_cxx}"
+				baremetal_linker="${host_linker}"
+				baremetal_ranlib="${host_ranlib}"
 				;;
 			clang) # host toolchain is GCC but we have a valid Clang for baremetal
 				baremetal_ar="llvm-ar"

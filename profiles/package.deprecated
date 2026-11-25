@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Mike Gilbert <floppym@gentoo.org> (2026-11-11)
+# Replaced by meson_format_array_function in meson.eclass.
+dev-build/meson-format-array
+
 # Mike Pagano <mpagano@gentoo.org> (2026-11-02)
 # nginx-unit was removed from the gentoo tree on 2026-04-13
 # This completes the process with the removal of the user and

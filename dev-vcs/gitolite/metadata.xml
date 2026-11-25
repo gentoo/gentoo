@@ -16,5 +16,6 @@
 	</use>
 	<upstream>
 		<remote-id type="github">sitaramc/gitolite</remote-id>
+		<remote-id type="codeberg">sitaramc/gitolite</remote-id>
 	</upstream>
 </pkgmetadata>

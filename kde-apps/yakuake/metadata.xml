@@ -6,7 +6,8 @@
 		<name>Gentoo KDE Project</name>
 	</maintainer>
 	<upstream>
-		<bugs-to>https://bugs.kde.org/</bugs-to>
+		<bugs-to>https://bugs.kde.org/enter_bug.cgi?product=yakuake</bugs-to>
+		<remote-id type="kde-invent">utilities/yakuake</remote-id>
 	</upstream>
 	<longdescription>
 		YaKuake is Yet Another Kuake terminal emulator. It drops down on a configurable

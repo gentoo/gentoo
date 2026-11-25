@@ -1,0 +1,16 @@
+commit fce20da208fccb036362fc116fe08163cf289a4e
+Author: Louis Sautier <sautier.louis@gmail.com>
+Date:   Sun Oct 25 19:04:41 2026 +0100
+
+    lib/netinfo-private: include <limits.h> for SCHAR_MAX
+
+--- a/lib/netinfo-private.c
++++ b/lib/netinfo-private.c
+@@ -22,6 +22,7 @@
+
+ #include <errno.h>
+ #include <ifaddrs.h>
++#include <limits.h>
+ #include <stdlib.h>
+ #include <string.h>
+ #include <sys/ioctl.h>

@@ -5,7 +5,7 @@
 		<email>lschmelting@posteo.com</email>
 		<name>Lukas Schmelting</name>
 	</maintainer>
-	<maintainer type="person">
+	<maintainer type="person" proxied="maintainer-and-proxy">
 		<email>sam@gentoo.org</email>
 		<name>Sam James</name>
 	</maintainer>

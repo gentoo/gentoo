@@ -13,7 +13,7 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/d3adb5/stalonetray.git"
 else
-	KEYWORDS="~amd64 ~riscv ~x86"
+	KEYWORDS="amd64 ~riscv x86"
 	SRC_URI="https://github.com/d3adb5/${PN}/releases/download/${PV}/${P}.tar.xz"
 fi
 

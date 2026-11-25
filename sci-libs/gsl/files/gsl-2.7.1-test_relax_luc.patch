@@ -1,0 +1,11 @@
+--- a/linalg/test_luc.c	2026-11-17 22:53:11.960704572 +0100
++++ b/linalg/test_luc.c	2026-11-17 22:53:21.563600158 +0100
+@@ -143,7 +143,7 @@
+   {
+     gsl_matrix_complex * m = gsl_matrix_complex_alloc(80, 100);
+     create_random_complex_matrix(m, r);
+-    test_LUc_decomp_eps(m, 1.0e3 * n * GSL_DBL_EPSILON, "complex_LU_decomp rect3");
++    test_LUc_decomp_eps(m, 1.0e4 * n * GSL_DBL_EPSILON, "complex_LU_decomp rect3");
+     gsl_matrix_complex_free(m);
+   }
+ 

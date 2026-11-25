@@ -149,9 +149,12 @@ src_test() {
 	xdg_environment_reset
 	addwrite /dev/dri/
 
-	# xwayland test can fail if X11 socket already exists.
-	cd "${BUILD_DIR}" || die
-	meson test $(meson test --list | grep -Exv "weston:xwayland") || die
+	local -a EMESON_SKIP_TESTS=(
+		# xwayland test can fail if X11 socket already exists.
+		weston:xwayland
+	)
+
+	meson_src_test
 }
 
 src_install() {

@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+
 PYTHON_COMPAT=( python3_{12..14} )
 
 inherit meson python-r1 verify-sig
@@ -63,42 +64,19 @@ src_configure() {
 }
 
 src_test() {
-	# Homebrew test skips for meson
-	local -a tests
-	tests=( $(meson test --list -C "${BUILD_DIR}") )
-
-	local -a _skip_tests=(
+	local -a EMESON_SKIP_TESTS=(
 		# tests/check/ges/uriclip.c:71:F:filesource:test_filesource_basic:0: 'g_list_length (trackelements)' (0) is not equal to '1' (1)
 		# tests/check/ges/uriclip.c:244:F:filesource:test_filesource_images:0: Assertion 'ges_uri_clip_asset_is_image (GES_URI_CLIP_ASSET (asset))' failed
 		ges_uriclip
 		# tests/check/nle/common.c:50:F:tempochange:test_tempochange_play:0: Failed to make element pitch
 		# tests/check/nle/common.c:50:F:tempochange:test_tempochange_seek:0: Failed to make element pitch
-
 		nle_tempochange
 		# tests/check/ges/clip.c:2515:F:clip:test_children_max_duration:0: Assertion 'ges_layer_add_clip (layer, GES_CLIP (clip))' failed
 		# tests/check/ges/clip.c:3802:F:clip:test_rate_effects_duration_limit:0: Assertion 'ges_base_effect_is_time_effect (GES_BASE_EFFECT (pitch))' failed
-
 		ges_clip
 	)
 
-	# Add suites which in this case are the project name
-	if has_version ">=dev-build/meson-1.9.2"; then
-		local -a skip_tests=()
-		for skip_test in ${_skip_tests[@]}; do
-			skip_tests+=( "gst-editing-services:${skip_test}" )
-		done
-	else
-		local -a skip_tests=( ${_skip_tests[@]} )
-	fi
-	unset _skip_tests
-
-	for test_index in ${!tests[@]}; do
-		if [[ ${skip_tests[@]} =~ ${tests[${test_index}]} ]]; then
-			unset tests[${test_index}]
-		fi
-	done
-
-	meson_src_test ${tests[@]}
+	meson_src_test
 }
 
 src_install() {

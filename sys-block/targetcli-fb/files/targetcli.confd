@@ -1,0 +1,1 @@
+MODULES="configfs target_core_mod iscsi_target_mod"

@@ -274,14 +274,6 @@ src_configure() {
 	export LEX=flex
 	unset YACC
 
-	local sedargs=(
-		-e "s/@PV@/${PV}/"
-		-e "s/@PVR@/${PVR}/"
-		-e "s/@GEN_GRUB@/5/"
-		-e "s/@GEN_GENTOO@/1/"
-	)
-	sed "${sedargs[@]}" "${FILESDIR}/sbat.csv.in" > "${WORKDIR}/sbat.csv" || die
-
 	MULTIBUILD_VARIANTS=()
 	local p
 	for p in "${GRUB_ALL_PLATFORMS[@]}"; do
@@ -362,7 +354,7 @@ grub_mkstandalone_secureboot() {
 			--locale-directory="${ED}/usr/share/locale"
 			--format="${target}"
 			--modules="part_gpt part_msdos"
-			--sbat="${ED}/usr/share/grub/sbat.csv"
+			--sbat="${ED}/usr/lib/grub/${target}/sbat.csv"
 			--output="${ED}/usr/lib/grub/grub-${target%-efi}.efi"
 			"boot/grub/grub.cfg=${T}/grub.cfg"
 		)
@@ -390,9 +382,6 @@ src_install() {
 
 	# https://bugs.gentoo.org/231935
 	dostrip -x /usr/lib/grub
-
-	insinto /usr/share/grub
-	doins "${WORKDIR}/sbat.csv"
 
 	if use elibc_musl; then
 		# https://bugs.gentoo.org/900348

@@ -1,6 +1,4 @@
-Source: https://invent.kde.org/kdevelop/kdevelop/-/merge_requests/933
-
-From c25c2b81cc1960abd4744d0025a3874d175bc5c3 Mon Sep 17 00:00:00 2001
+From 5288fbaa90414031708849d16803e4e1c63f7336 Mon Sep 17 00:00:00 2001
 From: Luc Schrijvers <begasus@gmail.com>
 Date: Sun, 13 Sep 2026 18:08:13 +0200
 Subject: [PATCH] Make StandardDocumentationView functionality optional
@@ -8,38 +6,37 @@ Subject: [PATCH] Make StandardDocumentationView functionality optional
 Co-authored-by: Justus Ranvier justus@opentransactions.org
 
 BUG: 429358
-FIXED-IN: 6.2.250400
+FIXED-IN: 6.8.270400
+
+* asturm 2026-11-15: Fix ON/OFF condition
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
 ---
- CMakeLists.txt                                | 15 ++++
+ CMakeLists.txt                                |  3 +
  config-kdevelop.h.cmake                       |  2 +
  kdevplatform/KDevPlatformConfig.cmake.in      |  4 +-
- kdevplatform/documentation/CMakeLists.txt     | 20 ++++--
+ kdevplatform/documentation/CMakeLists.txt     | 18 +++--
  .../standarddocumentationview.cpp             | 68 +++++++++++++++++++
  plugins/qthelp/qthelpdocumentation.cpp        |  9 +++
- 6 files changed, 111 insertions(+), 7 deletions(-)
+ 6 files changed, 97 insertions(+), 7 deletions(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 3e1c8fea31..b9b2583232 100644
+index aed023afdc..474f68dfcb 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -118,6 +118,21 @@ if(BUILD_DOC)
+@@ -67,6 +67,7 @@ include(ECMGenerateHeaders)
+ include(ECMQtDeclareLoggingCategory)
+ include(ECMDeprecationSettings)
+ include(GenerateExportHeader)
++include(CMakeDependentOption)
+ include(CMakePackageConfigHelpers)
+ include(FeatureSummary)
+ include(WriteBasicConfigVersionFile)
+@@ -118,6 +119,8 @@ if(BUILD_DOC)
      )
  endif()
  
-+# shall we use Qt6WebEngineWidgets?
-+# enabled per default on Linux & BSD systems
-+set(BUILD_DOC_VIEWER OFF)
-+if(UNIX AND NOT HAIKU)
-+    set(BUILD_DOC_VIEWER ON)
-+endif()
-+option(BUILD_DOC_VIEWER "Build integrated documentation viewer" ON)
-+if(BUILD_DOC_VIEWER)
-+    find_package(Qt6WebEngineWidgets CONFIG)
-+    set_package_properties(Qt6WebEngineWidgets PROPERTIES
-+        PURPOSE "QtWebEngine, for integrated documentation"
-+        URL "https://qt.io/"
-+        TYPE REQUIRED)
-+endif()
++cmake_dependent_option(BUILD_DOC_VIEWER "Build integrated documentation viewer" ON HAIKU OFF)
 +
  set(HAVE_KSYSGUARD FALSE)
  find_package(KSysGuard CONFIG QUIET)
@@ -70,7 +67,7 @@ index 55e831bf85..71c7097bfa 100644
  
  include("${CMAKE_CURRENT_LIST_DIR}/KDevPlatformTargets.cmake")
 diff --git a/kdevplatform/documentation/CMakeLists.txt b/kdevplatform/documentation/CMakeLists.txt
-index 74759ffd50..d43db95a1b 100644
+index 74759ffd50..1fe6192f57 100644
 --- a/kdevplatform/documentation/CMakeLists.txt
 +++ b/kdevplatform/documentation/CMakeLists.txt
 @@ -1,10 +1,12 @@
@@ -91,7 +88,7 @@ index 74759ffd50..d43db95a1b 100644
  
  set(KDevPlatformDocumentation_LIB_SRCS
      standarddocumentationview.cpp
-@@ -23,10 +25,16 @@ kdevplatform_add_library(KDevPlatformDocumentation SOURCES ${KDevPlatformDocumen
+@@ -23,10 +25,14 @@ kdevplatform_add_library(KDevPlatformDocumentation SOURCES ${KDevPlatformDocumen
  target_link_libraries(KDevPlatformDocumentation
  PUBLIC
      KDev::Interfaces
@@ -100,10 +97,8 @@ index 74759ffd50..d43db95a1b 100644
      KDev::Util
  )
 +if(BUILD_DOC_VIEWER)
-+    target_compile_definitions(KDevPlatformDocumentation PUBLIC -DKDEV_STANDARD_DOCUMENTATION_VIEW_ENABLED=1)
 +    target_link_libraries(KDevPlatformDocumentation PUBLIC Qt::WebEngineWidgets)
 +else()
-+    target_compile_definitions(KDevPlatformDocumentation PUBLIC -DKDEV_STANDARD_DOCUMENTATION_VIEW_ENABLED=0)
 +    message(WARNING "Integrated documentation viewer will not function without QtWebEngine")
 +endif()
  
@@ -433,5 +428,5 @@ index 080c35dc4b..b968e44c8a 100644
  }
  
 -- 
-GitLab
+2.56.1
 

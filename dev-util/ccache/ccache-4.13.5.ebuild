@@ -76,6 +76,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.5-nvcc-test.patch
 	"${FILESDIR}"/${PN}-4.0-objdump.patch
 	"${FILESDIR}"/${PN}-4.13-avoid-run-user.patch
+	"${FILESDIR}"/${PN}-4.13.5-include-algorithm.patch
 )
 
 src_unpack() {

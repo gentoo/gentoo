@@ -4,7 +4,7 @@
 EAPI=8
 
 CMAKE_BUILD_TYPE="Release"
-LLVM_COMPAT=( {15..23} )
+LLVM_COMPAT=( {20..23} )
 MY_PN="${PN/intel-/}"
 MY_P="${MY_PN}-${PV}"
 PYTHON_COMPAT=( python3_{12..15} )
@@ -18,7 +18,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 DEPEND="
 	dev-libs/libxml2:2=

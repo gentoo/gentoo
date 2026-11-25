@@ -15,7 +15,7 @@ S="${WORKDIR}/javacc-8-core-core-${PV}"
 
 LICENSE="BSD-2"
 SLOT="8"
-KEYWORDS="~amd64 ~arm64 ~ppc64"
+KEYWORDS="amd64 arm64 ppc64"
 
 DEPEND="
 	>=virtual/jdk-1.8:*

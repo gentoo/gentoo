@@ -1,0 +1,22 @@
+# Configuration for the OpenVPN prometheus exporter.
+# These variables are passed to the exporter through its environment and
+# take precedence over the equivalent flags in command_args.
+
+# Comma separated list of OpenVPN status files
+#OPENVPN_STATUS_FILES="/etc/openvpn/openvpn-status.log"
+
+# Address to listen on for web interface and telemetry
+#OPENVPN_LISTEN_ADDRESS=":9176"
+
+# Path under which to expose metrics
+#OPENVPN_METRICS_PATH="/metrics"
+
+# Log level (debug, info)
+#OPENVPN_LOGLEVEL="info"
+
+# Don't export the connection_time, real_address, virtual_address and
+# username labels
+#OPENVPN_IGNORE_INDIVIDUALS="false"
+
+# Additional command line arguments
+#command_args=""

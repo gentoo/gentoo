@@ -1,0 +1,88 @@
+From 0e7bc012a0649b7cf8707546a00600576d9d5da8 Mon Sep 17 00:00:00 2001
+From: Craig Andrews <candrews@integralblue.com>
+Date: Mon, 16 Nov 2026 15:55:07 -0500
+Subject: [PATCH] Fix daemon on Python 3.14 and drop pkg_resources
+
+Python 3.14 changed the default multiprocessing start method on Linux
+from "fork" to "forkserver", which pickles the arguments passed to the
+child process. Two of them could not be pickled:
+
+- the rerouters namedtuple class, defined inside OnionRouter but named
+  as if it were at module level, so pickle could not find it
+- the lambda used as the non-debug resolver callback
+
+Move the namedtuple to module level and replace the lambda with a
+static method.
+
+Also replace pkg_resources.resource_filename, which is deprecated and
+removed in setuptools 81+, with a path relative to the module. The
+package is installed with zip_safe=False, so the bundled config is
+always a real file.
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01UFMig9Es6a2UqWdj2KRPqB
+---
+ onionrouter/rerouter.py | 19 +++++++++++++------
+ 1 file changed, 13 insertions(+), 6 deletions(-)
+
+diff --git a/onionrouter/rerouter.py b/onionrouter/rerouter.py
+index 71955a8..e837572 100644
+--- a/onionrouter/rerouter.py
++++ b/onionrouter/rerouter.py
+@@ -3,7 +3,7 @@
+ import argparse
+ from collections import namedtuple
+ from functools import partial
+-from pkg_resources import resource_filename
++import os
+ import sys
+ from socket import error as socket_error
+ from onionrouter.lookups import OnionServiceLookup
+@@ -14,12 +14,15 @@
+ default_config_path = "/etc/onionrouter/"
+ default_mappings_path = "/etc/onionrouter/mappings"
+ 
++# Defined at module level so instances can be pickled (required by the
++# "spawn" and "forkserver" multiprocessing start methods).
++Rerouters = namedtuple('Rerouters', ('lazy', 'onion'))
++
+ 
+ class OnionRouter(object):
+     ref_config = (olib.find_file("/etc/onionrouter/", "onionrouter.ini")
+-                  or resource_filename("onionrouter",
+-                                       "configs/onionrouter.ini"))
+-    rerouters = namedtuple('rerouters', ('lazy', 'onion'))
++                  or os.path.join(os.path.dirname(os.path.abspath(__file__)),
++                                  "configs", "onionrouter.ini"))
+ 
+     def __init__(self, config_path, map_path=""):
+         self.config_file = config_handlers.get_conffile(config_path,
+@@ -28,7 +31,7 @@ def __init__(self, config_path, map_path=""):
+         config_handlers.ConfigIntegrityChecker(
+             ref_config=self.ref_config, other_config=self.config_file).verify()
+         self.config = config_handlers.config_reader(self.config_file)
+-        self.rerouters = self.rerouters(
++        self.rerouters = Rerouters(
+             lazy=routers.LazyPostfixRerouter(self.config, self.mappings_path),
+             onion=routers.OnionPostfixRerouter(
+                 self.config, OnionServiceLookup(self.config)))
+@@ -109,6 +112,10 @@ def interactive_reroute(onion_router):
+             else:
+                 print(onion_router.run(addr))
+ 
++    @staticmethod
++    def silent_callback(question, answer):
++        return question, answer
++
+     @staticmethod
+     def reroute_debugger(question, answer):
+         print("[Q]: {q}\n"
+@@ -138,7 +145,7 @@ def main(self):
+         else:
+             resolver = self.craft_resolver(self.reroute_debugger
+                                            if args.debug
+-                                           else lambda *args: args)
++                                           else self.silent_callback)
+             msockets.daemonize_server(onion_router, args.host, args.port,
+                                       resolver=resolver)
+ 

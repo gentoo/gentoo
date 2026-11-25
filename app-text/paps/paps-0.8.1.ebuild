@@ -13,7 +13,7 @@ SRC_URI="https://github.com/dov/paps/releases/download/v${PV}/${P}.tar.xz"
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="test"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RESTRICT="!test? ( test )"

@@ -19,8 +19,8 @@ LICENSE="MPL-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="test"
-RESTRICT="test !test? ( test )"
-PROPERTIES="test_network"
+RESTRICT="test"
+PROPERTIES="test? ( test_network )"
 
 BDEPEND="
 	test? (

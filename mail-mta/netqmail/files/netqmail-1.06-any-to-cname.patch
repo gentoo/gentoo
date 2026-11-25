@@ -52,12 +52,6 @@ and proxy DNS server cache load.
    still current. Moreover: A caching proxy DNS server dedicated to
    serving qmail will not have its cache cluttered with irrelevant
    data.
----
- dns.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/dns.c b/dns.c
-index 44db25b..77e4ff7 100644
 --- a/dns.c
 +++ b/dns.c
 @@ -197,7 +197,7 @@ stralloc *sa;

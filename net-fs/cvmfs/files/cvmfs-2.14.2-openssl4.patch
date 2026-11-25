@@ -1,0 +1,52 @@
+From 5747acd54d290feebbe262d57e53cbdd9a99f380 Mon Sep 17 00:00:00 2001
+From: Guilherme Amadio <amadio@cern.ch>
+Date: Tue, 17 Nov 2026 14:10:54 +0100
+Subject: [PATCH 3/4] Fix compilation error with OpenSSL 4.x
+
+Signed-off-by: Guilherme Amadio <amadio@cern.ch>
+---
+ cvmfs/crypto/signature.cc | 12 +++++++++---
+ 1 file changed, 9 insertions(+), 3 deletions(-)
+
+diff --git a/cvmfs/crypto/signature.cc b/cvmfs/crypto/signature.cc
+index d5cfe0f1e..d11d35be4 100644
+--- a/cvmfs/crypto/signature.cc
++++ b/cvmfs/crypto/signature.cc
+@@ -534,7 +534,10 @@ void SignatureManager::GenerateCertificate(const std::string &cn) {
+       reinterpret_cast<ASN1_TIME *>(X509_get_notAfter(certificate_)),
+       3600 * 24 * 365);
+ 
+-  X509_NAME *name = X509_get_subject_name(certificate_);
++  // Build the name separately: X509_get_subject_name() returns a const
++  // pointer as of OpenSSL 4.0.  X509_set_{subject,issuer}_name() copy it.
++  X509_NAME *name = X509_NAME_new();
++  assert(name != NULL);
+ #ifdef OPENSSL_API_INTERFACE_V09
+   X509_NAME_add_entry_by_txt(
+       name, "CN", MBSTRING_ASC,
+@@ -546,8 +549,11 @@ void SignatureManager::GenerateCertificate(const std::string &cn) {
+       name, "CN", MBSTRING_ASC,
+       reinterpret_cast<const unsigned char *>(cn.c_str()), -1, -1, 0);
+ #endif
++  retval = X509_set_subject_name(certificate_, name);
++  assert(retval == 1);
+   retval = X509_set_issuer_name(certificate_, name);
+   assert(retval == 1);
++  X509_NAME_free(name);
+ 
+ #ifdef OPENSSL_API_INTERFACE_V09
+   retval = X509_sign(certificate_, pkey, EVP_sha1());
+@@ -696,8 +702,8 @@ string SignatureManager::Whois() {
+     return "No certificate loaded";
+ 
+   string result;
+-  X509_NAME *subject = X509_get_subject_name(certificate_);
+-  X509_NAME *issuer = X509_get_issuer_name(certificate_);
++  const X509_NAME *subject = X509_get_subject_name(certificate_);
++  const X509_NAME *issuer = X509_get_issuer_name(certificate_);
+   char *buffer = NULL;
+   buffer = X509_NAME_oneline(subject, NULL, 0);
+   if (buffer) {
+-- 
+2.56.1
+

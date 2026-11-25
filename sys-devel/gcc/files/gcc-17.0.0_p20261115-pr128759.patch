@@ -1,0 +1,61 @@
+From 00e5d96cb4ca1a17666a823cec041b9729960e18 Mon Sep 17 00:00:00 2001
+From: Andrea Pinski <andrew.pinski@oss.qualcomm.com>
+Date: Tue, 17 Nov 2026 14:05:15 -0800
+Subject: [PATCH] range-op: Fix operator_pointer_diff's op1_op2_relation when
+ rhs1 is undefined [PR128759]
+
+I had missed that rhs1 could be undefined and then getting
+the type of it would cause an ICE. Note this is unlike operator_minus's
+op1_op2_relation which uses overflow_free and overflow_free has the
+check there.
+
+Committed the fix as obvious after a bootstrap/test on x86_64-linux-gnu.
+
+        PR tree-optimization/128759
+
+gcc/ChangeLog:
+
+        * range-op-ptr.cc (operator_pointer_diff::op1_op2_relation): Fix
+        rhs1 being undefined.
+
+gcc/testsuite/ChangeLog:
+
+        * gcc.dg/torture/pr128759-1.c: New test.
+
+Signed-off-by: Andrea Pinski <andrew.pinski@oss.qualcomm.com>
+---
+ gcc/range-op-ptr.cc                       |  3 ++-
+ gcc/testsuite/gcc.dg/torture/pr128759-1.c | 10 ++++++++++
+ 2 files changed, 12 insertions(+), 1 deletion(-)
+ create mode 100644 gcc/testsuite/gcc.dg/torture/pr128759-1.c
+
+diff --git a/gcc/range-op-ptr.cc b/gcc/range-op-ptr.cc
+index d58769b59d426..687974d5cb89e 100644
+--- a/gcc/range-op-ptr.cc
++++ b/gcc/range-op-ptr.cc
+@@ -542,7 +542,8 @@ operator_pointer_diff::op1_op2_relation (const irange &lhs, const prange &rhs1,
+   // When a - b does not overflow and signed,
+   // we can figure out the relationship between
+   // a and b if the result is non-negative or non-positive.
+-  if (TYPE_OVERFLOW_UNDEFINED (rhs1.type ()))
++  if (!rhs1.undefined_p ()
++      && TYPE_OVERFLOW_UNDEFINED (rhs1.type ()))
+     {
+       if (lhs.nonnegative_p ())
+        return contains_z ? VREL_GE : VREL_GT;
+diff --git a/gcc/testsuite/gcc.dg/torture/pr128759-1.c b/gcc/testsuite/gcc.dg/torture/pr128759-1.c
+new file mode 100644
+index 0000000000000..0a20edf8e4f25
+--- /dev/null
++++ b/gcc/testsuite/gcc.dg/torture/pr128759-1.c
+@@ -0,0 +1,10 @@
++int b, c;
++void k() {
++  int * ak;
++  int * al;
++  b = al - ak;
++  if (b)
++  {
++    bool d = ak == al;
++  }
++}

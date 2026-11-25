@@ -17,7 +17,7 @@ else
 		https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${PN}-2.7.2-patches.tar.bz2
 	"
 	S="${WORKDIR}/ADOL-C-releases-${PV}"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~x86"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ppc ppc64 ~riscv ~x86"
 fi
 
 LICENSE="LGPL-3"

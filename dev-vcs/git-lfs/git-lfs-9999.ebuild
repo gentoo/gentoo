@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+
 EGO_PN=github.com/git-lfs/git-lfs
 # Update the ID as it's included in each build.
 COMMIT_ID=""
@@ -15,16 +16,15 @@ HOMEPAGE="
 "
 
 if [[ "${PV}" = 9999* ]]; then
-	EGIT_REPO_URI="https://${EGO_PN}"
+	EGIT_REPO_URI="https://github.com/git-lfs/${PN}"
 	inherit git-r3
 else
-	SRC_URI="https://${EGO_PN}/releases/download/v${PV}/${PN}-vendor-v${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/git-lfs/${PN}/releases/download/v${PV}/${PN}-vendor-v${PV}.tar.gz -> ${P}.tar.gz"
 fi
 
 LICENSE="Apache-2.0 BSD BSD-2 BSD-4 ISC MIT"
 SLOT="0"
 # KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
-
 IUSE="doc test"
 
 BDEPEND="
@@ -67,9 +67,9 @@ src_compile() {
 
 	# Generate auto-completion scripts.
 	# bug 914542
-	./git-lfs completion bash > "${PN}.bash" || die
-	./git-lfs completion fish > "${PN}.fish" || die
-	./git-lfs completion zsh > "${PN}.zsh" || die
+	edo ./git-lfs completion bash > "${PN}.bash"
+	edo ./git-lfs completion fish > "${PN}.fish"
+	edo ./git-lfs completion zsh > "${PN}.zsh"
 }
 
 src_install() {

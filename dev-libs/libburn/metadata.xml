@@ -5,9 +5,10 @@
 <email>billie@gentoo.org</email>
 <name>Daniel Pielmeier</name>
 </maintainer>
-<maintainer type="person" proxied="yes">
+<upstream>
+<maintainer cc-on-bugs="yes">
 <email>scdbackup@gmx.net</email>
 <name>Thomas Schmitt</name>
-<description>Upstream - please CC on bugs that concern upstream</description>
 </maintainer>
+</upstream>
 </pkgmetadata>

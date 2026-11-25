@@ -1,0 +1,51 @@
+From c1f623739f4e819d291b1ddda50d5a57674a54f5 Mon Sep 17 00:00:00 2001
+From: Vlad Zahorodnii <vlad.zahorodnii@kde.org>
+Date: Tue, 3 Nov 2026 10:50:16 +0000
+Subject: [PATCH] opengl/glshadermanager: fix a crash when shader loading fails
+
+(cherry picked from commit f186d880a7f13f6c64ab041d7570be4c993b6fcc)
+
+Co-authored-by: Xaver Hugl <xaver.hugl@kde.org>
+---
+ src/opengl/glshadermanager.cpp    | 4 ++++
+ src/scene/itemrenderer_opengl.cpp | 3 +++
+ 2 files changed, 7 insertions(+)
+
+diff --git a/src/opengl/glshadermanager.cpp b/src/opengl/glshadermanager.cpp
+index f1482e91d2e..9cc2677f60b 100644
+--- a/src/opengl/glshadermanager.cpp
++++ b/src/opengl/glshadermanager.cpp
+@@ -153,12 +153,16 @@ bool ShaderManager::isShaderBound() const
+ GLShader *ShaderManager::pushShader(ShaderTraits traits)
+ {
+     GLShader *shader = this->shader(traits);
++    if (!shader) {
++        return nullptr;
++    }
+     pushShader(shader);
+     return shader;
+ }
+ 
+ void ShaderManager::pushShader(GLShader *shader)
+ {
++    Q_ASSERT(shader);
+     // only bind shader if it is not already bound
+     if (shader != getBoundShader()) {
+         shader->bind();
+diff --git a/src/scene/itemrenderer_opengl.cpp b/src/scene/itemrenderer_opengl.cpp
+index 67b8ea3553e..7d7d9a1dda6 100644
+--- a/src/scene/itemrenderer_opengl.cpp
++++ b/src/scene/itemrenderer_opengl.cpp
+@@ -463,6 +463,9 @@ void ItemRendererOpenGL::renderItem(const RenderTarget &renderTarget, const Rend
+                 ShaderManager::instance()->popShader();
+             }
+             shader = ShaderManager::instance()->pushShader(traits);
++            if (!shader) {
++                continue;
++            }
+             if (traits & ShaderTrait::AdjustSaturation) {
+                 const auto toXYZ = renderTarget.colorDescription()->containerColorimetry().toXYZ();
+                 shader->setUniform(GLShader::FloatUniform::Saturation, data.saturation());
+-- 
+GitLab
+

@@ -32,9 +32,17 @@ else
 	RUST_MIN_VER="$(ver_cut 1).$(($(ver_cut 2) - 1)).0"
 fi
 
-inherit check-reqs estack flag-o-matic llvm-r2 multiprocessing optfeature
-inherit multilib multilib-build python-any-r1 rust rust-toolchain toolchain-funcs
-inherit verify-sig
+# Bump vendored crates for openssl-4 support, bug #977001
+# Upstream Issue: https://github.com/rust-lang/rust/issues/155397
+CRATE_PATHS_OVERRIDE="
+	curl@0.4.50
+	curl-sys@0.4.89+curl-8.20.0
+	openssl@0.10.81
+	openssl-sys@0.9.117
+"
+
+inherit cargo check-reqs estack flag-o-matic llvm-r2 multiprocessing optfeature
+inherit multilib multilib-build python-any-r1 rust-toolchain toolchain-funcs verify-sig
 
 if [[ ${PV} = *9999* ]]; then
 	inherit git-r3
@@ -63,6 +71,10 @@ else
 	S="${WORKDIR}/${MY_P}-src"
 
 	KEYWORDS="amd64 arm arm64 ~loong ~mips ppc ppc64 ~riscv ~sparc x86"
+fi
+
+if [[ ${PKGBUMPING} != ${PVR} ]]; then
+	SRC_URI+=" ${CARGO_CRATE_URIS}"
 fi
 
 DESCRIPTION="Systems programming language originally developed by Mozilla"
@@ -341,9 +353,11 @@ src_unpack() {
 	elif use verify-sig ; then
 		# Patch tarballs are not signed (but we trust Gentoo infra)
 		verify-sig_verify_detached "${DISTDIR}"/rustc-${RUST_PV}-src.tar.xz{,.asc}
-		default
+		cargo_src_unpack
+		ln -s "${ECARGO_VENDOR}"/* "${S}/vendor/"
 	else
-		default
+		cargo_src_unpack
+		ln -s "${ECARGO_VENDOR}"/* "${S}/vendor/"
 	fi
 }
 

@@ -101,12 +101,12 @@ src_configure() {
 		-DENABLE_RPM=no
 		-DENABLE_ZLIB=yes
 		-DENABLE_SYSTEM_YYJSON=yes
+		-DENABLE_IMAGE_LOGO=yes
 		-DIS_MUSL=$(usex elibc_musl)
 		-DINSTALL_LICENSE=no
 		-DBUILD_FLASHFETCH=no
 		-DPACKAGES_REMOVE_DISABLED=yes
 
-		-DENABLE_IMAGE_LOGO=$(usex imagemagick)
 		-DENABLE_CHAFA=$(usex chafa)
 		-DENABLE_DBUS=$(usex dbus)
 		-DENABLE_DCONF=$(usex gnome)

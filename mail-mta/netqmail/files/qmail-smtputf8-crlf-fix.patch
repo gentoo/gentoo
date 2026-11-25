@@ -1,7 +1,7 @@
 https://bugs.gentoo.org/611142
 
---- a/qmail-remote.c	2019-10-29 22:46:27.076000000 +0100
-+++ b/qmail-remote.c	2019-10-29 22:48:18.868000000 +0100
+--- a/qmail-remote.c
++++ b/qmail-remote.c
 @@ -556,6 +556,7 @@ void checkutf8message()
      if (r == 0) break;
      if (r == -1) temp_read();

@@ -20,7 +20,7 @@ else
 		mirror://gnu/groff/${MY_P}.tar.gz
 		verify-sig? ( mirror://gnu/groff/${MY_P}.tar.gz.sig )
 	"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~arm64-macos ~x64-macos ~x64-solaris"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~arm64-macos ~x64-macos ~x64-solaris"
 fi
 
 S="${WORKDIR}/${MY_P}"
@@ -109,24 +109,37 @@ src_configure() {
 		$(use_with X x)
 	)
 
+	if tc-is-cross-compiler ; then
+		mkdir -p "${WORKDIR}"/build-cross || die
+		cd "${WORKDIR}"/build-cross || die
+		ECONF_SOURCE="${S}" econf_build --without-uchardet --without-x
+	fi
+
+	cd "${S}" || die
 	econf "${myeconfargs[@]}"
 }
 
 src_compile() {
-	local -a CROSS_ARGS
-	tc-is-cross-compiler && CROSS_ARGS+=(
-		GROFFBIN="$(type -P groff)"
-		TROFFBIN="$(type -P troff)"
-		GROFF_BIN_DIR=
-		GROFF_BIN_PATH=
-	)
+	CROSS_ARGS=()
+
+	if tc-is-cross-compiler ; then
+		emake -C "${WORKDIR}"/build-cross
+		local -x PATH="${WORKDIR}/build-cross:${PATH}"
+
+		CROSS_ARGS+=(
+			GROFFBIN="$(type -P groff)"
+			TROFFBIN="$(type -P troff)"
+			SOELIMBIN="$(type -P soelim)"
+			GROFF_BIN_PATH="${WORKDIR}/build-cross"
+		)
+	fi
 
 	emake AR="$(tc-getAR)" "${CROSS_ARGS[@]}"
 }
 
 src_install() {
-	# Avoid race with parallel install, bug 983579
-	emake -j1 DESTDIR="${D}" install
+	# Avoid race with parallel install, bug #983579
+	emake -j1 DESTDIR="${D}" "${CROSS_ARGS[@]}" install
 	einstalldocs
 
 	# .ms, .ps files shouldn't be compressed and other files are tiny (bug #542624)

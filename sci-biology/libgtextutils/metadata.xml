@@ -5,7 +5,7 @@
 		<email>mmokrejs@gmail.com</email>
 		<name>Martin Mokrejs</name>
 	</maintainer>
-	<maintainer type="project">
+	<maintainer type="project" proxied="maintainer-and-proxy">
 		<email>sci-biology@gentoo.org</email>
 		<name>Gentoo Biology Project</name>
 	</maintainer>

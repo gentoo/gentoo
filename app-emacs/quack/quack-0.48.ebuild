@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,8 +6,8 @@ EAPI=7
 inherit elisp
 
 DESCRIPTION="Enhances Emacs support for Scheme"
-HOMEPAGE="http://www.neilvandyke.org/quack/"
-SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.el.xz"
+HOMEPAGE="https://www.neilvandyke.org/quack/"
+SRC_URI="https://distfiles.gentoo.org/pub/proj/emacs/${P}.el.xz"
 
 LICENSE="GPL-2+"
 SLOT="0"

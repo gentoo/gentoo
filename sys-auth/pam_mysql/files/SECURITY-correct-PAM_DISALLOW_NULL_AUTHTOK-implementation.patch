@@ -1,0 +1,109 @@
+From: =?utf-8?q?Ferenc_W=C3=A1gner?= <wferi@debian.org>
+Date: Wed, 4 Nov 2026 01:29:34 +0100
+Subject: SECURITY: correct PAM_DISALLOW_NULL_AUTHTOK implementation
+ (CVE-2026-124749)
+
+If an application called PAM with PAM_DISALLOW_NULL_AUTHTOK, users
+with a NULL password were authenticated by the pam_mysql module,
+contrary to the PAM specification.  This bug is now fixed.  If the
+flag was not passed, users with a NULL password were not
+authenticated.  This is now relaxed: if the freshly introduced
+"nullok" option is enabled in the configuration or on the module
+command line, users with a NULL password are authenticated unless the
+caller forbids this via the PAM_DISALLOW_NULL_AUTHTOK flag.
+
+Reported-by: Andrey Vasilevsky
+---
+ README      |  8 ++++++++
+ pam_mysql.c | 10 +++++++---
+ 2 files changed, 15 insertions(+), 3 deletions(-)
+
+diff --git a/README b/README
+index 99073f2..3e9d7f0 100644
+--- a/README
++++ b/README
+@@ -224,6 +224,7 @@ config_file
+     - users.use_md5 (md5)
+     - users.where_clause (where)
+     - users.disconnect_every_operation (disconnect_every_op) *1
++    - nullok (nullok)
+     - verbose (verbose)
+     - log.enabled (sqllog)
+     - log.table (logtable)
+@@ -262,6 +263,13 @@ try_first_pass (true)
+ 
+     This is available since 0.7pre2.
+ 
++nullok (false)
++
++    If false, users with a NULL password field are not authenticated.
++    If true, and the calling application did not specify the
++    PAM_DISALLOW_NULL_AUTHTOK flag, users with a NULL password field
++    are authenticated irrespective of the input password.
++
+ disconnect_every_op (false)
+ 
+     By default, pam_mysql keeps connection to the MySQL database until the
+diff --git a/pam_mysql.c b/pam_mysql.c
+index 11b5349..20f6377 100644
+--- a/pam_mysql.c
++++ b/pam_mysql.c
+@@ -271,6 +271,7 @@ typedef struct _pam_mysql_ctx_t {
+     int verbose;
+     int use_first_pass;
+     int try_first_pass;
++    int nullok;
+     int disconnect_every_op;
+     char *logtable;
+     char *logmsgcolumn;
+@@ -1524,6 +1525,7 @@ static pam_mysql_option_t options[] = {
+     PAM_MYSQL_DEF_OPTION(use_323_passwd, &pam_mysql_boolean_opt_accr),
+     PAM_MYSQL_DEF_OPTION(use_first_pass, &pam_mysql_boolean_opt_accr),
+     PAM_MYSQL_DEF_OPTION(try_first_pass, &pam_mysql_boolean_opt_accr),
++    PAM_MYSQL_DEF_OPTION(nullok, &pam_mysql_boolean_opt_accr),
+     PAM_MYSQL_DEF_OPTION(disconnect_every_op, &pam_mysql_boolean_opt_accr),
+     PAM_MYSQL_DEF_OPTION2(debug, verbose, &pam_mysql_boolean_opt_accr),
+     { NULL, 0, 0, NULL }
+@@ -2585,6 +2587,7 @@ static pam_mysql_option_t pam_mysql_entry_handler_options[] = {
+     PAM_MYSQL_DEF_OPTION2(log.time_column, logtimecolumn, &pam_mysql_string_opt_accr),
+     PAM_MYSQL_DEF_OPTION2(users.use_323_password, use_323_passwd, &pam_mysql_boolean_opt_accr),
+     PAM_MYSQL_DEF_OPTION2(users.disconnect_every_operation, disconnect_every_op, &pam_mysql_boolean_opt_accr),
++    PAM_MYSQL_DEF_OPTION(nullok, &pam_mysql_boolean_opt_accr),
+     { NULL, 0, 0, NULL }
+ };
+ 
+@@ -2913,6 +2916,7 @@ static pam_mysql_err_t pam_mysql_init_ctx(pam_mysql_ctx_t *ctx)
+     ctx->verbose = 0;
+     ctx->use_first_pass = 0;
+     ctx->try_first_pass = 1;
++    ctx->nullok = 0;
+     ctx->disconnect_every_op = 0;
+     ctx->logtable = NULL;
+     ctx->logmsgcolumn = NULL;
+@@ -3899,7 +3903,7 @@ static pam_mysql_err_t pam_mysql_check_passwd(pam_mysql_ctx_t *ctx,
+                 }
+             }
+         } else {
+-            vresult = null_inhibited;
++            vresult = !ctx->nullok || null_inhibited;
+         }
+ 
+         if (vresult == 0) {
+@@ -4741,7 +4745,7 @@ PAM_EXTERN int pam_sm_authenticate(pam_handle_t * pamh, int flags,
+         }
+ 
+         err = pam_mysql_check_passwd(ctx, user, passwd,
+-                !(flags & PAM_DISALLOW_NULL_AUTHTOK));
++                !!(flags & PAM_DISALLOW_NULL_AUTHTOK));
+ 
+         if (err == PAM_MYSQL_ERR_SUCCESS) {
+             pam_mysql_sql_log(ctx, "AUTHENTICATION SUCCESS (FIRST_PASS)", user, rhost);
+@@ -4832,7 +4836,7 @@ askpass:
+     }
+ 
+     err = pam_mysql_check_passwd(ctx, user, passwd,
+-            !(flags & PAM_DISALLOW_NULL_AUTHTOK));
++            !!(flags & PAM_DISALLOW_NULL_AUTHTOK));
+ 
+     if (err == PAM_MYSQL_ERR_SUCCESS) {
+         pam_mysql_sql_log(ctx, "AUTHENTICATION SUCCESS", user, rhost);

@@ -12,4 +12,4 @@ inherit sec-keys
 DESCRIPTION="OpenPGP key for Leo Sandoval"
 HOMEPAGE="https://gitlab.freedesktop.org/lsandova"
 SRC_URI+=" https://gitlab.freedesktop.org/lsandova.gpg -> ${P}.gpg"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="amd64 arm arm64 ~loong ppc ppc64 ~riscv ~sparc x86"

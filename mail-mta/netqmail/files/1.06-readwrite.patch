@@ -1,5 +1,3 @@
-diff --git a/readwrite.h b/readwrite.h
-index 2a64968..0a641a3 100644
 --- a/readwrite.h
 +++ b/readwrite.h
 @@ -1,7 +1,4 @@

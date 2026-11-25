@@ -17,7 +17,7 @@ HOMEPAGE="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 # Bindings implicitly use symengine's dependencies.
 IUSE="boost ecm +flint llvm +mpc +mpfr primesieve tcmalloc"
 

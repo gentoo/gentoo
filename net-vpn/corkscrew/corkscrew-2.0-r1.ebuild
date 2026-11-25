@@ -1,8 +1,8 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
-inherit autotools
+EAPI=8
+inherit autotools flag-o-matic
 
 DESCRIPTION="a tool for tunneling SSH through HTTP proxies"
 HOMEPAGE="https://github.com/patpadgett/corkscrew/"
@@ -13,13 +13,14 @@ SRC_URI="http://www.agroman.net/${PN}/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~ppc ~riscv ~sparc x86"
-IUSE=""
 
 DOCS="AUTHORS ChangeLog README TODO"
 
 src_prepare() {
 	# Fix \r\n per bug 652342
 	eapply "${FILESDIR}/${P}-crlf-with-authfile.patch"
+
+	append-cppflags -DANSI_FUNC
 
 	# Christoph Mende <angelos@gentoo.org (23 Jun 2010)
 	# Shipped configure doesn't work with some locales (bug #305771)

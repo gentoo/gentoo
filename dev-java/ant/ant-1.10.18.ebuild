@@ -16,7 +16,7 @@ S="${WORKDIR}/apache-${P}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~x64-macos ~x64-solaris"
+KEYWORDS="amd64 arm64 ppc64 ~x64-macos ~x64-solaris"
 IUSE="antlr bcel bsf commonslogging commonsnet imageio jai jakartamail javamail jdepend
 	jmf jsch junit junit4 junitlauncher log4j oro regexp resolver swing testutil xalan xz"
 
@@ -331,6 +331,13 @@ src_test() {
 		org.apache.tools.ant.taskdefs.condition.HttpTest	# needs network access
 		org.apache.tools.ant.taskdefs.GetTest	# needs network access
 	)
+
+	# testBindingOfServices(org.apache.tools.ant.taskdefs.modules.LinkTest)
+	# Caused by: java.nio.file.NoSuchFileException: /opt/openjdk-bin-25.0.4.1_p1/man/man1/java.1
+	local vm_version="$(java-config -g PROVIDES_VERSION)"
+	if ver_test "${vm_version}" -ge 25; then
+		JAVA_TEST_EXCLUDES+=( org.apache.tools.ant.taskdefs.modules.LinkTest )
+	fi
 
 #	tests with patches to be revisited
 #	JAVA_TEST_RUN_ONLY=(

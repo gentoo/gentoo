@@ -34,32 +34,11 @@ PATCHES=(
 )
 
 multilib_src_test() {
-	# Homebrew test skips for meson
-	local -a tests
-	tests=( $(meson test --list -C "${BUILD_DIR}") )
-
-	local -a _skip_tests=(
+	local -a EMESON_SKIP_TESTS=(
 		# flaky to hanging
 		elements_avaudenc
 	)
 
-	# Add suites which in this case are PN
-	if has_version ">=dev-build/meson-1.10.0"; then
-		local -a skip_tests=()
-		for skip_test in ${_skip_tests[@]}; do
-			skip_tests+=( "${MY_PN}:${skip_test}" )
-		done
-	else
-		local -a skip_tests=( ${_skip_tests[@]} )
-	fi
-	unset _skip_tests
-
-	for test_index in ${!tests[@]}; do
-		if [[ ${skip_tests[@]} =~ ${tests[${test_index}]} ]]; then
-			unset tests[${test_index}]
-		fi
-	done
-
 	# gstreamer_multilib_src_test doesn't pass arguments
-	GST_GL_WINDOW=x11 virtx meson_src_test --timeout-multiplier 5 ${tests[@]}
+	GST_GL_WINDOW=x11 virtx meson_src_test --timeout-multiplier 5
 }

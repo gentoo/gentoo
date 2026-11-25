@@ -78,6 +78,7 @@ COMMON_DEPEND="
 	tracing? (
 		app-arch/zstd:=
 		dev-libs/elfutils
+		>=dev-qt/qtcanvaspainter-${QT_PV}
 		>=dev-qt/qtcharts-${QT_PV}
 		>=dev-qt/qtshadertools-${QT_PV}
 	)
@@ -194,6 +195,10 @@ src_test() {
 	local -x QT_QPA_PLATFORM=offscreen
 
 	local CMAKE_SKIP_TESTS=(
+		# uses debuggers which can be messy/hang depending on setup
+		tst_debugger_backends
+		# fails with sandbox
+		tst_process
 		# skipping same tests+label as upstream's CI by default
 		# `grep ctest .github/workflows/build_cmake.yml`
 		tst_perfdata

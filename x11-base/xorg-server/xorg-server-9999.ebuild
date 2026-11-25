@@ -109,7 +109,7 @@ src_configure() {
 	# sysconfdir is used for the xorg.conf location; same applies
 	local XORG_CONFIGURE_OPTIONS=(
 		--localstatedir "${EPREFIX}/var"
-		--sysconfdir "${EPREFIX}/etc/X11"
+		--sysconfdir "${EPREFIX}/etc"
 		-Db_ndebug=$(usex debug false true)
 		$(meson_use !minimal dri1)
 		$(meson_use !minimal dri2)

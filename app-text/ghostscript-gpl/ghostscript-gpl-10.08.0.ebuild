@@ -66,6 +66,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-10.03.1-arm64-neon-tesseract.patch
 	"${FILESDIR}"/${PN}-10.06.0-tesseract-fPIC.patch
 	"${FILESDIR}"/${PN}-10.06.0-openmp.patch
+	"${FILESDIR}"/${PN}-10.08.0-libcxx23.patch
 )
 
 pkg_pretend() {

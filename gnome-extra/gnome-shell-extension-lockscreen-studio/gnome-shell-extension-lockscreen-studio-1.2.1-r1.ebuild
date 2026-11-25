@@ -12,7 +12,7 @@ S="${WORKDIR}/${P/gnome-shell-extension-}"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 RDEPEND="
 	dev-libs/glib:2

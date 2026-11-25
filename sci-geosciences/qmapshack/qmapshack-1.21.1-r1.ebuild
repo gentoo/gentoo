@@ -19,7 +19,7 @@ S="${WORKDIR}"/${PN}-V_${PV}
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="dbus"
 
 RDEPEND="

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,7 +8,7 @@ inherit elisp
 DESCRIPTION="Maintain a local Wiki using Emacs-friendly markup"
 HOMEPAGE="https://www.emacswiki.org/emacs/PlannerMode"
 # taken from http://download.gna.org/planner-el/${P}.tar.gz
-SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.tar.gz"
+SRC_URI="https://distfiles.gentoo.org/pub/proj/emacs/${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"

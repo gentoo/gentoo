@@ -1,2 +1,0 @@
-D /var/tmp/nginx 0755 root root
-x /var/tmp/nginx

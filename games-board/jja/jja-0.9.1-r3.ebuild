@@ -1,4 +1,4 @@
-# Copyright 2023-2025 Gentoo Authors
+# Copyright 2023-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -246,7 +246,7 @@ CRATES="
 
 LLVM_COMPAT=( {16..20} )
 
-inherit cargo llvm-r1
+inherit cargo llvm-r2
 
 DESCRIPTION="swiss army knife for chess file formats"
 HOMEPAGE="https://git.sr.ht/~alip/jja"
@@ -278,7 +278,7 @@ LICENSE+=" Apache-2.0 BSD CC0-1.0 GPL-3+ ISC MIT Unicode-DFS-2016"
 SLOT="0"
 
 pkg_setup() {
-	llvm-r1_pkg_setup
+	llvm-r2_pkg_setup
 	rust_pkg_setup
 }
 

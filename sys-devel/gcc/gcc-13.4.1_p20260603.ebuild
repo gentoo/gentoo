@@ -11,7 +11,7 @@ PATCH_GCC_VER="13.3.0"
 MUSL_GCC_VER="13.3.0"
 PATCH_VER="9"
 MUSL_VER="3"
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 
 if [[ ${PV} == *.9999 ]] ; then
 	MY_PV_2=$(ver_cut 2)
@@ -53,6 +53,10 @@ if [[ ${CATEGORY} != cross-* ]] ; then
 	DEPEND="${RDEPEND}"
 fi
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-13-fix-cross-fixincludes.patch
+)
+
 src_prepare() {
 	local p upstreamed_patches=(
 		# add them here
@@ -62,7 +66,4 @@ src_prepare() {
 	done
 
 	toolchain_src_prepare
-
-	eapply "${FILESDIR}"/${PN}-13-fix-cross-fixincludes.patch
-	eapply_user
 }

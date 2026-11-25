@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -32,6 +32,10 @@ src_configure() {
 	econf \
 		$(use_with X x) \
 		$(use_enable X xshogi)
+}
+
+src_compile() {
+	emake -j1
 }
 
 src_install() {

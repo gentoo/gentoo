@@ -1,0 +1,11 @@
+--- a/CMakeLists.txt	2026-11-09 21:22:59.323398114 +0100
++++ b/CMakeLists.txt	2026-11-09 21:23:14.807216991 +0100
+@@ -25,7 +25,7 @@
+ #
+ # -------------------------------------------------------------------------
+ 
+-cmake_minimum_required ( VERSION 2.8.6 )
++cmake_minimum_required ( VERSION 3.10 )
+ 
+ set ( CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake/Modules/ ${CMAKE_MODULE_PATH} )
+ 

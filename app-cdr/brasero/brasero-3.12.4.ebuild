@@ -13,7 +13,7 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/brasero"
 
 LICENSE="GPL-2+ CC-BY-SA-3.0"
 SLOT="0/3.1" # subslot is 3.suffix of libbrasero-burn3
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm arm64 ~loong ~ppc ppc64 ~riscv x86"
 IUSE="+css +introspection +libburn mp3 nautilus playlist tracker"
 
 DEPEND="
@@ -51,6 +51,7 @@ BDEPEND="
 	>=dev-util/intltool-0.50
 	dev-util/itstool
 	>=dev-build/gtk-doc-am-1.12
+	dev-util/gtk-doc
 	sys-devel/gettext
 	virtual/pkgconfig
 "

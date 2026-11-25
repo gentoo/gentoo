@@ -1,0 +1,32 @@
+# Copyright 1999-2026 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=8
+
+DISTUTILS_USE_PEP517=setuptools
+PYPI_PN=${PN/-/.}
+PYPI_VERIFY_REPO=https://github.com/zopefoundation/zope.exceptions
+PYTHON_COMPAT=( python3_{12..15} )
+
+inherit distutils-r1 pypi
+
+DESCRIPTION="General purpose exceptions for Zope packages"
+HOMEPAGE="
+	https://pypi.org/project/zope.exceptions/
+	https://github.com/zopefoundation/zope.exceptions/
+"
+
+LICENSE="ZPL"
+SLOT="0"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+
+RDEPEND="
+	dev-python/zope-interface[${PYTHON_USEDEP}]
+"
+
+distutils_enable_tests unittest
+
+python_test() {
+	distutils_write_namespace zope
+	eunittest -s "${BUILD_DIR}/install$(python_get_sitedir)"
+}

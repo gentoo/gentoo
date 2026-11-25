@@ -71,6 +71,8 @@ RDEPEND="${DEPEND}
 	>=kde-frameworks/qqc2-desktop-style-${KFMIN}:6
 "
 
+PATCHES=( "${FILESDIR}/${P}-ki18n-6.32.patch" ) # in 26.08.3
+
 src_configure() {
 	local mycmakeargs=(
 		$(cmake_use_find_package plasma Plasma)

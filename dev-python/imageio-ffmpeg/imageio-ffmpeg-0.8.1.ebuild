@@ -21,7 +21,7 @@ SRC_URI="
 LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
-PROPERTIES="test_network"
+PROPERTIES="test? ( test_network )"
 RESTRICT="test"
 
 # ffmpeg is used as an executable during runtime

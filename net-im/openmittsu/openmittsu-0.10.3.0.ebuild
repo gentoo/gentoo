@@ -58,5 +58,5 @@ src_install() {
 	newicon resources/icon.png ${my_pn}.png
 	make_desktop_entry ${my_pn} ${my_pn} ${my_pn}
 	# rm "${ED}"/usr/bin/${my_pn}VersionInfo || die
-	# rm -f "${ED}"/usr/bin/${my_pn}Tests || die
+	rm -f "${ED}"/usr/bin/${my_pn}Tests || die
 }

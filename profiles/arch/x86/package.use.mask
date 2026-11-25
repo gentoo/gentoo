@@ -103,10 +103,6 @@ sci-libs/flexiblas -blis -openblas
 # net-misc/passt not yet keyworded here
 app-emulation/qemu passt
 
-# Alfred Wingate <parona@protonmail.com> (2025-07-31)
-# mongodb not keyworded here
-sci-libs/gdal mongodb
-
 # Robin H. Johnson <robbat2@gentoo.org> (2025-07-04)
 # Deeper test dependencies with Ruby 3.3 are no longer yet keyworded keyword;
 # manually tested instead; Test dependencies work with stable Ruby 3.2.

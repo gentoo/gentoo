@@ -12,7 +12,7 @@ S="${S}-src"
 
 LICENSE="LGPL-2.1"
 SLOT="0/3.1"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="ssl"
 
 # USE=ssl merely enables the configuration options (seemingly for interactive

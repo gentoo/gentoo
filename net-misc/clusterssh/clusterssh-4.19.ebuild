@@ -17,7 +17,7 @@ else
 	DIST_AUTHOR="DUNCS"
 	DIST_NAME="App-ClusterSSH"
 
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 x86"
 fi
 
 DIST_TEST="do parallel"

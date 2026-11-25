@@ -271,11 +271,11 @@ net-misc/sitecopy
 
 # Nowa Ammerlaan <nowa@gentoo.org> (2024-01-20)
 # Binary package linked to glibc (rolling mask, use for all such binpkgs)
-app-admin/awscli-bin
 app-admin/bitwarden-desktop-bin
 app-admin/puppet-agent
 app-admin/puppetserver
 app-admin/winbox
+app-antivirus/mdatp
 app-arch/rar
 app-backup/tsm
 app-benchmarks/geekbench
@@ -369,6 +369,7 @@ media-sound/baudline
 media-sound/teamspeak-server
 media-tv/plex-media-server
 media-video/amdgpu-pro-amf
+media-video/amdgpu-pro-amf-legacy
 media-video/dvbackup
 media-video/makemkv
 media-video/popcorntime-bin
@@ -410,6 +411,7 @@ sys-apps/tas
 sys-block/arcconf
 sys-block/hpssacli
 sys-block/megacli
+virtual/amdgpu-pro-amf
 www-apps/chromedriver-bin
 www-apps/jellyfin-bin
 www-apps/kibana-bin

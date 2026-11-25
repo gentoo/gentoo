@@ -19,7 +19,7 @@ S=${WORKDIR}/${MY_P}
 
 LICENSE="sun-bcla-jai"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc64"
+KEYWORDS="amd64 arm64 ppc64"
 
 RDEPEND=">=virtual/jre-1.8:*"
 

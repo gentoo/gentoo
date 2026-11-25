@@ -1,0 +1,14 @@
+diff --git a/awscli/utils.py b/awscli/utils.py
+index 543f3a3..d0483f4 100644
+--- a/awscli/utils.py
++++ b/awscli/utils.py
+@@ -179,6 +179,9 @@ class InstanceMetadataRegionFetcher(IMDSFetcher):
+             return ``None`` if it fails to get the region from IMDS due to
+             exhausting its retries or not being able to connect.
+         """
++        # prevent Internet access
++        if "GENTOO_BUILD" in os.environ:
++            return None
+         try:
+             region = self._get_region()
+             return region

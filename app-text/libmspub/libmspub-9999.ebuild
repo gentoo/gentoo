@@ -3,7 +3,7 @@
 
 EAPI=9
 
-inherit autotools flag-o-matic
+inherit autotools
 
 if [[ ${PV} = *9999* ]]; then
 	EGIT_REPO_URI="https://git.libreoffice.org/libmspub.git"
@@ -17,7 +17,8 @@ HOMEPAGE="https://wiki.documentfoundation.org/DLP/Libraries/libmspub"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-IUSE="doc"
+IUSE="doc test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-libs/icu:=
@@ -27,6 +28,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	dev-build/libtool
 	dev-libs/boost
+	test? ( dev-util/cppunit )
 "
 BDEPEND="
 	virtual/pkgconfig
@@ -42,12 +44,10 @@ src_prepare() {
 }
 
 src_configure() {
-	# bug 619044, 932494
-	append-cxxflags -std=c++17
-
 	local myeconfargs=(
 		--disable-werror
 		$(use_with doc docs)
+		$(use_enable test tests)
 	)
 	econf "${myeconfargs[@]}"
 }

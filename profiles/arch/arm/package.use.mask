@@ -84,10 +84,6 @@ sci-libs/flexiblas -openblas
 # net-misc/passt not yet keyworded here
 app-emulation/qemu passt
 
-# Alfred Wingate <parona@protonmail.com> (2025-07-31)
-# mongodb not keyworded here
-sci-libs/gdal mongodb
-
 # Cristian Othón Martínez Vera <cfuga@cfuga.mx> (2025-07-15)
 # Needs gui-apps/grim, which is not keyworded here
 x11-misc/xscreensaver wayland

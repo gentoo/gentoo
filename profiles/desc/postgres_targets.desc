@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # This file contains descriptions of POSTGRES_TARGETS USE_EXPAND flags.
@@ -8,3 +8,4 @@ postgres15 - Build against PostgreSQL 15
 postgres16 - Build against PostgreSQL 16
 postgres17 - Build against PostgreSQL 17
 postgres18 - Build against PostgreSQL 18
+postgres19 - Build against PostgreSQL 19

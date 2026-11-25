@@ -7,6 +7,7 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="sourceforge">ebook-tools</remote-id>
+		<remote-id type="kde-invent">libraries/ebook-tools</remote-id>
 	</upstream>
 	<use>
 		<flag name="lit2epub">Install lit2epub script</flag>

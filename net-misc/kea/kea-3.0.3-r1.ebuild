@@ -161,28 +161,14 @@ src_compile() {
 }
 
 src_test() {
-	# Get list of all test suites into an associative array
-	# the meson test --list returns either "kea / test_suite", "kea:shell-tests / test_suite" or
-	# "kea:python-tests / test_suite"
-	# Note: In meson >= 1.10 the format has changed to
-	# the meson test --list returns either "kea:test_suite", "shell-tests - kea:test_suite" or
-	# "python-tests - kea:test_suite"
-	#
-	# Discard the shell tests as we can't run shell tests in sandbox
-
-	pushd "${BUILD_DIR}" || die
-	local -A TEST_SUITES
-
-	while IFS="/: " read -a words ; do
-		if [[ "${words[0]}" != "shell-tests" ]] && [[ "${words[2]}" != "shell-tests" ]]; then
-			TEST_SUITES["${words[-1]}"]=1
-		fi
-	done < <(meson test --list || die)
-	popd
+	local -a EMESON_SKIP_TEST_SUITES=(
+		# Discard the shell tests as we can't run shell tests in sandbox
+		shell-tests
+	)
 
 	# Some other tests will fail for interface access restrictions, we have to remove the test suites those tests
 	# belong to
-	local SKIP_TESTS=(
+	local -a EMESON_SKIP_TESTS=(
 		dhcp-radius-tests
 		kea-log-buffer_logger_test.sh
 		kea-log-console_test.sh
@@ -194,7 +180,7 @@ src_test() {
 
 	# skip shell tests that require a running instance of MySQL
 	if use mysql; then
-		SKIP_TESTS+=(
+		EMESON_SKIP_TESTS+=(
 			kea-mysql-tests
 			dhcp-mysql-lib-tests
 			dhcp-forensic-log-libloadtests
@@ -203,7 +189,7 @@ src_test() {
 
 	# skip shell tests that require a running instance of PgSQL
 	if use postgres; then
-		SKIP_TESTS+=(
+		EMESON_SKIP_TESTS+=(
 			kea-pgsql-tests
 			dhcp-pgsql-lib-tests
 			dhcp-forensic-log-libloadtests
@@ -211,14 +197,14 @@ src_test() {
 	fi
 
 	if use kerberos; then
-		SKIP_TESTS+=(
+		EMESON_SKIP_TESTS+=(
 			ddns-gss-tsig-tests
 		)
 	fi
 
 	if [[ $(tc-get-ptr-size) -eq 4 ]]; then
 		# see https://bugs.gentoo.org/958171 for reason for skipping these tests
-		SKIP_TESTS+=(
+		EMESON_SKIP_TESTS+=(
 			kea-util-tests
 			kea-dhcpsrv-tests
 			dhcp-ha-lib-tests
@@ -226,11 +212,7 @@ src_test() {
 		)
 	fi
 
-	for SKIP in ${SKIP_TESTS[@]}; do
-		unset TEST_SUITES["${SKIP}"]
-	done
-
-	meson_src_test ${!TEST_SUITES[@]}
+	meson_src_test
 }
 
 install_shell() {

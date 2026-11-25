@@ -19,7 +19,7 @@ S="${WORKDIR}/${P}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc64"
+KEYWORDS="amd64 ~arm64 ~ppc64"
 
 BDEPEND="
 	>=dev-java/xalan-2.7.3-r3:0

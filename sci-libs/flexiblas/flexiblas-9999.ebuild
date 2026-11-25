@@ -70,7 +70,7 @@ src_prepare() {
 
 src_configure() {
 	# bug #963667
-	append-flags $(test-flags-CC -fsemantic-interposition)
+	append-cflags $(test-flags-CC -fsemantic-interposition)
 	filter-flags -fno-semantic-interposition
 
 	BACKENDS=( $(usev blis) $(usev openblas) )

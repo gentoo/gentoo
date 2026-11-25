@@ -6,7 +6,7 @@ EAPI=8
 LUA_REQ_USE="deprecated(+)"
 LUA_COMPAT=( lua5-{1,2} luajit )
 
-PYTHON_COMPAT=( python3_{12..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 
 inherit flag-o-matic lua-single meson python-any-r1 xdg
 
@@ -18,10 +18,10 @@ LICENSE="BSD-2 GPL-2 LGPL-2.1 ZLIB"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
 IUSE="+X avif bmp connman cpu_flags_arm_neon dds debug doc drm +eet efl-one elogind examples fbcon"
-IUSE+=" +fontconfig fribidi gif glib +gstreamer harfbuzz heif hyphen ibus ico jpeg2k jpegxl json"
-IUSE+=" nls mono opengl +pdf physics pipewire pmaps postscript psd pulseaudio raw scim sdl +sound"
-IUSE+=" +svg +system-lz4 systemd tga tgv tiff tslib unwind v4l vnc wayland webp xcf xim xpm"
-IUSE+=" xpresent zeroconf"
+IUSE+=" +fontconfig fribidi glib +gstreamer harfbuzz heif hyphen ibus ico jpeg2k jpegxl json nls"
+IUSE+=" mono opengl +pdf physics pipewire pmaps postscript psd pulseaudio raw scim sdl +sound +svg"
+IUSE+=" +system-lz4 systemd tga tgv tiff tslib unwind v4l vnc wayland webp xcf xim xpm xpresent"
+IUSE+=" zeroconf"
 
 REQUIRED_USE="${LUA_REQUIRED_USE}
 	?? ( elogind systemd )

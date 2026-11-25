@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,7 +8,7 @@ inherit toolchain-funcs
 DESCRIPTION="A very minimal imitation of the famous GNU Emacs editor"
 HOMEPAGE="https://web.archive.org/web/20171126221613/http://hunter.apana.org.au/~cjb/Code/"
 # taken from http://hunter.apana.org.au/~cjb/Code/ersatz.tar.gz
-SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.tar.gz"
+SRC_URI="https://distfiles.gentoo.org/pub/proj/emacs/${P}.tar.gz"
 S="${WORKDIR}"
 
 LICENSE="public-domain"

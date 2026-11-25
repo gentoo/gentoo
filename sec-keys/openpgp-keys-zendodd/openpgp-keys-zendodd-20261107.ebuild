@@ -14,4 +14,4 @@ inherit sec-keys
 DESCRIPTION="OpenPGP keys used by Zen Dodd"
 HOMEPAGE="https://rsync.samba.org/download.html https://github.com/steadytao"
 
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"

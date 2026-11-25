@@ -1,0 +1,26 @@
+Fix SIGCHLD handler prototype for GCC 15+ default C23.
+
+Bug: https://bugs.gentoo.org/943773
+
+--- a/main.c
++++ b/main.c
+@@ -427,8 +427,9 @@
+ 	return 1;
+ }
+
+-void child_sigchld()
++void child_sigchld(int sig)
+ {
++	(void)sig;
+ 	if ( getppid() != 1 )
+ 		return;
+
+@@ -437,7 +438,7 @@ void child_sigchld()
+ 	return;
+ }
+
+-int sethandler_sigchld ( void ( *handler ) () )
++int sethandler_sigchld ( void ( *handler ) (int) )
+ {
+ 	struct sigaction sa;
+ 	sa.sa_handler = handler;

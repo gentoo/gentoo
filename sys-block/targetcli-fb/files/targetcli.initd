@@ -1,0 +1,30 @@
+#!/sbin/openrc-run
+
+description="Administration tool for managing storage targets"
+command="/usr/bin/targetcli"
+
+depend() {
+	need dbus net
+	after firewall
+}
+
+start() {
+	ebegin "Starting ${RC_SVCNAME}"
+	for mod in ${MODULES}; do
+		modprobe ${mod}
+	done
+	mount -t configfs none /sys/kernel/config
+	$command restoreconfig clear_existing=true
+	ret=$?
+	if [ ${ret} -ne 0 ]; then
+		umount /sys/kernel/config
+	fi
+	eend ${ret}
+}
+
+stop() {
+	ebegin "Stopping ${RC_SVCNAME}"
+	${command} clearconfig confirm=true
+	umount /sys/kernel/config
+	eend $?
+}

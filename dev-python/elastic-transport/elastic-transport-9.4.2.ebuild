@@ -23,7 +23,7 @@ S=${WORKDIR}/${MY_P}
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="amd64 arm64 x86"
-PROPERTIES="test_network"
+PROPERTIES="test? ( test_network )"
 RESTRICT="test"
 
 RDEPEND="

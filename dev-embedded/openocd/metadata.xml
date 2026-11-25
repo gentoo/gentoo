@@ -5,10 +5,6 @@
 		<email>embedded@gentoo.org</email>
 		<name>Embedded Gentoo</name>
 	</maintainer>
-	<maintainer type="person" proxied="yes">
-		<email>fercerpav@gmail.com</email>
-		<name>Paul Fertser</name>
-	</maintainer>
 	<maintainer type="person">
 		<email>dlan@gentoo.org</email>
 		<name>Yixun Lan</name>
@@ -24,6 +20,10 @@
 		<flag name="verbose-io">Verbose IO and comm JTAG and USB messages</flag>
 	</use>
 	<upstream>
+		<maintainer cc-on-bugs="yes">
+			<email>fercerpav@gmail.com</email>
+			<name>Paul Fertser</name>
+		</maintainer>
 		<remote-id type="sourceforge">openocd</remote-id>
 		<remote-id type="cpe">cpe:/a:openocd:open_on-chip_debugger</remote-id>
 	</upstream>

@@ -76,7 +76,7 @@ BDEPEND+="
 DOCS=()
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-0.2.7.4-torrc.sample.patch
+	"${FILESDIR}"/${PN}-0.4.9.17-torrc.sample.patch
 )
 
 QA_CONFIG_IMPL_DECL_SKIP=(
@@ -190,8 +190,8 @@ src_install() {
 	default
 	readme.gentoo_create_doc
 
-	newconfd "${FILESDIR}"/tor.confd tor
-	newinitd "${FILESDIR}"/tor.initd-r9 tor
+	newconfd "${FILESDIR}"/tor.confd-r1 tor
+	newinitd "${FILESDIR}"/tor.initd-r10 tor
 	systemd_newunit "${FILESDIR}"/tor.service-r1 "${PN}.service"
 	systemd_newunit "${FILESDIR}"/tor_at.service "${PN}@.service"
 
@@ -201,5 +201,5 @@ src_install() {
 	fowners tor:tor /var/lib/tor
 
 	insinto /etc/tor/
-	newins "${FILESDIR}"/torrc-r2 torrc
+	newins "${FILESDIR}"/torrc-r3 torrc
 }

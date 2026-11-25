@@ -1,0 +1,77 @@
+Description: Fix FTBFS with FFmpeg 9
+Author: Sébastien Noel
+
+--- a/hedgewars/avwrapper/avwrapper.c
++++ b/hedgewars/avwrapper/avwrapper.c
+@@ -233,7 +233,17 @@
+     g_pAudio->sample_fmt = AV_SAMPLE_FMT_S16;
+     g_pAudio->sample_rate = g_Frequency;
+ #if LIBAVCODEC_VERSION_MAJOR >= 60
++#if LIBAVCODEC_VERSION_MAJOR >= 63
++    const AVChannelLayout* pChLayout = NULL;
++    ret = avcodec_get_supported_config(NULL, g_pACodec, AV_CODEC_CONFIG_CHANNEL_LAYOUT, 0, (const void**)&pChLayout, NULL);
++    if (ret < 0)
++    {
++        Log("Could not get supported channel layouts: %d\n", ret);
++        return;
++    }
++#else
+     const AVChannelLayout* pChLayout = g_pACodec->ch_layouts;
++#endif
+     if (pChLayout)
+     {
+         for (; pChLayout->nb_channels; pChLayout++)
+--- a/QTfrontend/util/LibavInteraction.cpp
++++ b/QTfrontend/util/LibavInteraction.cpp
+@@ -128,14 +128,27 @@ LibavInteraction::LibavInteraction() : QObject()
+
+         if (pCodec->type == AVMEDIA_TYPE_VIDEO)
+         {
++#if LIBAVCODEC_VERSION_MAJOR >= 63
++            const void *config = NULL;
++            if (avcodec_get_supported_config(NULL, pCodec, AV_CODEC_CONFIG_FRAME_RATE, 0, &config, NULL) < 0)
++                continue;
++            if (config != NULL)
++                continue;
++
++            if (avcodec_get_supported_config(NULL, pCodec, AV_CODEC_CONFIG_PIX_FORMAT, 0, &config, NULL) < 0)
++                continue;
++            const enum AVPixelFormat* pix_fmts = static_cast<const enum AVPixelFormat*>(config);
++#else
+             if (pCodec->supported_framerates != NULL)
+                 continue;
+
+             // check if codec supports yuv 4:2:0 format
+-            if (!pCodec->pix_fmts)
++            const enum AVPixelFormat* pix_fmts = pCodec->pix_fmts;
++#endif
++            if (!pix_fmts)
+                 continue;
+             bool yuv420Supported = false;
+-            for (const enum AVPixelFormat* pfmt = pCodec->pix_fmts; *pfmt != -1; pfmt++)
++            for (const enum AVPixelFormat* pfmt = pix_fmts; *pfmt != AV_PIX_FMT_NONE; pfmt++)
+                 if (*pfmt == AV_PIX_FMT_YUV420P)
+                 {
+                     yuv420Supported = true;
+@@ -146,11 +159,19 @@ LibavInteraction::LibavInteraction() : QObject()
+         }
+         if (pCodec->type == AVMEDIA_TYPE_AUDIO)
+         {
++#if LIBAVCODEC_VERSION_MAJOR >= 63
++            const void *config = NULL;
++            if (avcodec_get_supported_config(NULL, pCodec, AV_CODEC_CONFIG_SAMPLE_FORMAT, 0, &config, NULL) < 0)
++                continue;
++            const enum AVSampleFormat* sample_fmts = static_cast<const enum AVSampleFormat*>(config);
++#else
++            const enum AVSampleFormat* sample_fmts = pCodec->sample_fmts;
++#endif
+             // check if codec supports signed 16-bit format
+-            if (!pCodec->sample_fmts)
++            if (!sample_fmts)
+                 continue;
+             bool s16Supported = false;
+-            for (const enum AVSampleFormat* pfmt = pCodec->sample_fmts; *pfmt != -1; pfmt++)
++            for (const enum AVSampleFormat* pfmt = sample_fmts; *pfmt != AV_SAMPLE_FMT_NONE; pfmt++)
+                 if (*pfmt == AV_SAMPLE_FMT_S16)
+                 {
+                     s16Supported = true;

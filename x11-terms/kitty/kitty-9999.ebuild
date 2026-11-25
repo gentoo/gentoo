@@ -35,12 +35,15 @@ REQUIRED_USE="
 "
 RESTRICT="!test? ( test )"
 
-# dlopen: fontconfig,libglvnd
+# dlopen: fontconfig,freetype,libglvnd
 RDEPEND="
 	${PYTHON_DEPS}
+	app-arch/brotli:=
+	dev-libs/fribidi
 	dev-libs/openssl:=
 	dev-libs/xxhash
 	media-fonts/symbols-nerd-font
+	media-libs/fontconfig
 	media-libs/freetype
 	media-libs/harfbuzz:=[truetype]
 	media-libs/lcms:2
@@ -56,12 +59,14 @@ RDEPEND="
 	X? (
 		x11-libs/libX11
 		x11-libs/libXcursor
+		x11-libs/libxcb:=
 	)
 	wayland? ( dev-libs/wayland )
 	!sci-mathematics/kissat
 "
 DEPEND="
 	${RDEPEND}
+	dev-util/vulkan-headers
 	amd64? ( >=dev-libs/simde-0.8.0-r1 )
 	arm64? ( dev-libs/simde )
 	x86? ( dev-libs/simde )

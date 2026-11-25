@@ -15,7 +15,7 @@ SRC_URI="https://github.com/xiaoyeli/${PN}/archive/refs/tags/v${PV}.tar.gz
 
 LICENSE="BSD"
 SLOT="0/${SOVERSION}"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
 IUSE="doc examples int64 openmp test threads"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="|| ( openmp threads )"

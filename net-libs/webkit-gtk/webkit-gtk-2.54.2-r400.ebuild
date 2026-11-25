@@ -18,7 +18,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="LGPL-2+ BSD"
 SLOT="4.1/0" # soname version of libwebkit2gtk-4.1
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="amd64 arm arm64 ~loong ~ppc ppc64 ~riscv ~sparc x86"
 
 IUSE="aqua avif cpu_flags_x86_sse cpu_flags_x86_sse2 custom-cflags examples gamepad keyring +gstreamer +introspection pdf jpegxl lcms seccomp spell systemd wayland X"
 REQUIRED_USE="|| ( aqua wayland X )"
@@ -127,6 +127,7 @@ PATCHES=(
 	"${FILESDIR}"/2.52.6-no-sse2.patch
 	"${FILESDIR}"/2.54.2-fix-no-touch-build.patch
 	"${FILESDIR}"/2.54.2-fix-32bit-builds.patch
+	"${FILESDIR}"/${PV}-fix-ftbfs-32bit.patch
 )
 
 pkg_pretend() {

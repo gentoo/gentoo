@@ -164,6 +164,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-5.22.5-krunner-cwd-at-home.patch" # TODO upstream: KDE-bug 432975, bug 767478
 	"${FILESDIR}/${PN}-6.7.3-optional-nm.patch" # in 6.8
 	"${FILESDIR}/${PN}-6.7.5-libcxx23-missing-header.patch" # in 6.8
+	"${FILESDIR}/${P}-qtbase-6.12.1.patch" # in 6.8; KDE-bug 526210, bug 987226
 )
 
 src_prepare() {

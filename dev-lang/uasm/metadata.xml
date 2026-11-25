@@ -4,11 +4,11 @@
 	<maintainer type="person" proxied="yes">
 		<email>nrk@disroot.org</email>
 	</maintainer>
-	<maintainer type="person">
+	<maintainer type="person" proxied="maintainer-and-proxy">
 		<email>arthurzam@gentoo.org</email>
 		<name>Arthur Zamarin</name>
 	</maintainer>
-	<maintainer type="person">
+	<maintainer type="person" proxied="maintainer-and-proxy">
 		<email>sam@gentoo.org</email>
 		<name>Sam James</name>
 	</maintainer>

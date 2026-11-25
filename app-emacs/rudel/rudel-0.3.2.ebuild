@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,9 +6,9 @@ EAPI=8
 inherit elisp readme.gentoo-r1
 
 DESCRIPTION="Collaborative editing environment for GNU Emacs"
-HOMEPAGE="http://rudel.sourceforge.net/
+HOMEPAGE="https://rudel.sourceforge.net/
 	https://www.emacswiki.org/emacs/Rudel"
-SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.tar.xz" # from GNU ELPA
+SRC_URI="https://distfiles.gentoo.org/pub/proj/emacs/${P}.tar.xz" # from GNU ELPA
 
 LICENSE="GPL-3+"
 SLOT="0"

@@ -1,0 +1,56 @@
+From fea6d56491354476360dfd66064a1f7d47b90f69 Mon Sep 17 00:00:00 2001
+From: "Z. Liu" <zhixu.liu@gmail.com>
+Date: Sun, 15 Nov 2026 09:10:17 +0800
+Subject: [PATCH 1/4] remove test case for musl
+
+POSIX.1-2024, 4.16 allows implementation-defined interpretation of
+pathnames beginning with two slashes. on musl, realpath("//") returns
+"//" causing test to fail.
+
+Signed-off-by: Z. Liu <zhixu.liu@gmail.com>
+
+diff --git a/libutil++/tests/file_manip_tests.cpp b/libutil++/tests/file_manip_tests.cpp
+index dfe161ba..24347e96 100644
+--- a/libutil++/tests/file_manip_tests.cpp
++++ b/libutil++/tests/file_manip_tests.cpp
+@@ -191,9 +191,15 @@ static input_output<string, string> expect_realpath[] =
+ 	{ "file_manip_tests.o", "file_manip_tests.o" },
+ 	{ "../tests/" "file_manip_tests.o", "file_manip_tests.o" },
+ 	{ ".//.//" "file_manip_tests.o", "file_manip_tests.o" },
+-	// POSIX namespaces ignored by realpath(3)
++	/*
++	 * POSIX namespace ignored by realpath(3).
++	 * POSIX.1-2017, 4.13 allows implementation-defined
++	 * interpretation of pathnames beginning with two slashes.
++	 */
++#ifdef __GLIBC__
+ 	{ "//", "/" },
+ 	{ "//usr", "/usr" },
++#endif
+ 	{ "///", "/" },
+ 	{ "", "" }
+ };
+diff --git a/libutil/tests/file_tests.c b/libutil/tests/file_tests.c
+index 052abdb9..0ee7c95c 100644
+--- a/libutil/tests/file_tests.c
++++ b/libutil/tests/file_tests.c
+@@ -34,9 +34,15 @@ static char * tests[][2] = {
+ 	{ "/usr/bin/../../..", "/" },
+ 	{ "/usr/bin/../../../", "/" },
+ 	{ "././.", "/usr" },
+-	/* POSIX namespace ignored by realpath(3) */
++	/*
++	 * POSIX namespace ignored by realpath(3).
++	 * POSIX.1-2017, 4.13 allows implementation-defined
++	 * interpretation of pathnames beginning with two slashes.
++	 */
++#ifdef __GLIBC__
+ 	{ "//", "/" },
+ 	{ "//usr", "/usr" },
++#endif
+ 	{ "///", "/" },
+ 	{ NULL, NULL },
+ };
+-- 
+2.49.1
+

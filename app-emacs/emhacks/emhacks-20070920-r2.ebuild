@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,9 +6,9 @@ EAPI=8
 inherit elisp
 
 DESCRIPTION="Useful Emacs Lisp libraries, including gdiff, jjar, jmaker, swbuff, and tabbar"
-HOMEPAGE="http://emhacks.sourceforge.net/"
+HOMEPAGE="https://emhacks.sourceforge.net/"
 # CVS snapshot
-SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.tar.bz2"
+SRC_URI="https://distfiles.gentoo.org/pub/proj/emacs/${P}.tar.bz2"
 
 LICENSE="GPL-2+"
 SLOT="0"

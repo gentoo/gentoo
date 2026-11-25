@@ -24,9 +24,9 @@ IUSE="
 	archive armadillo avif blosc cryptopp +curl cpu_flags_arm_neon cpu_flags_x86_avx
 	cpu_flags_x86_avx2 cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_sse4_1
 	cpu_flags_x86_ssse3 exprtk fits geos gif gml hdf5 heif java jpeg2k jpegxl lerc
-	libaec libdeflate lz4 lzma mongodb +muparser mysql netcdf odbc openexr oracle
-	parquet pdf png postgres python qhull spatialite sqlite system-tiff test +tools
-	webp xls zstd
+	libaec libdeflate lz4 lzma +muparser mysql netcdf odbc openexr oracle parquet
+	pdf png postgres python qhull spatialite sqlite system-tiff test +tools webp xls
+	zstd
 "
 
 # jpegxl isn't supported for system tiff
@@ -71,7 +71,6 @@ COMMON_DEPEND="
 		app-arch/xz-utils
 		app-arch/lzma
 	) )
-	mongodb? ( dev-libs/mongo-cxx-driver:= )
 	muparser? ( dev-cpp/muParser:= )
 	mysql? ( dev-db/mysql-connector-c:= )
 	netcdf? ( sci-libs/netcdf:= )
@@ -274,7 +273,7 @@ src_configure() {
 		-DGDAL_USE_LIBQB3=OFF
 		-DGDAL_USE_LIBXML2=ON
 		-DGDAL_USE_LZ4=$(usex lz4) # FIXME
-		-DGDAL_USE_MONGOCXX=$(usex mongodb)
+		-DGDAL_USE_MONGOCXX=OFF
 		-DGDAL_USE_MRSID=OFF
 		-DGDAL_USE_MSSQL_NCLI=OFF
 		-DGDAL_USE_MSSQL_ODBC=OFF

@@ -48,7 +48,6 @@ multilib_src_install() {
 
 pkg_postinst() {
 	optfeature_header "This package provides only the dispatcher, to use it install one or more implementations"
-	optfeature "CPUs" media-libs/oneVPL-cpu
-	optfeature "Intel GPUs newer then, and including, Intel Xe" media-libs/vpl-gpu-rt
-	optfeature "Intel GPUs older then Intel Xe" media-libs/intel-mediasdk
+	optfeature "Intel GPUs newer than, and including, Intel Xe" media-libs/vpl-gpu-rt
+	optfeature "Intel GPUs older than Intel Xe" media-libs/intel-mediasdk
 }

@@ -11,6 +11,7 @@
 		<remote-id type="github">qt/qtgraphs</remote-id>
 	</upstream>
 	<use>
+		<flag name="canvaspainter">Enable support for the <pkg>dev-qt/qtcanvaspainter</pkg> rendering backend</flag>
 		<flag name="quick3d">Enable support for 3D graphs using <pkg>dev-qt/qtquick3d</pkg></flag>
 	</use>
 	<slots>

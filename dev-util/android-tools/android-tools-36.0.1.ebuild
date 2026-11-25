@@ -49,6 +49,7 @@ DOCS=()
 
 src_prepare() {
 	eapply "${DISTDIR}/${PN}-31.0.3-no-gtest.patch"
+	eapply "${FILESDIR}/android-tools-36.0.1-include-vector.patch"
 
 	cd "${S}/vendor/core" || die
 	eapply "${S}/patches/core/0011-Remove-the-useless-dependency-on-gtest.patch"

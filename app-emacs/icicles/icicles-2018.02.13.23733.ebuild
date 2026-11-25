@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,7 +9,7 @@ DESCRIPTION="Minibuffer input completion and cycling"
 HOMEPAGE="https://www.emacswiki.org/emacs/Icicles"
 # Snapshot of https://github.com/emacsmirror/icicles.git
 # PV is <Version>.<Update #> from header of icicles.el
-SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.tar.xz"
+SRC_URI="https://distfiles.gentoo.org/pub/proj/emacs/${P}.tar.xz"
 
 LICENSE="GPL-3+"
 SLOT="0"

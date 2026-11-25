@@ -36,6 +36,34 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2026-11-24)
+# Dead upstream. KDE-bug: https://bugs.kde.org/show_bug.cgi?id=508169
+# Removal on 2026-12-15.
+kde-misc/kio-gdrive
+
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2026-11-20)
+# Unused sec-keys.
+# Removal on 2026-12-20.
+sec-keys/openpgp-keys-apache-xmlgraphics-batik
+sec-keys/openpgp-keys-apache-xmlgraphics-commons
+sec-keys/openpgp-keys-apache-xmlgraphics-fop
+
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2026-11-19)
+# Unused Java library
+# Removal on 2026-12-19.
+dev-java/bcmail
+
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2026-11-16)
+# Unused sec-keys.
+# Removal on 2026-12-16.
+sec-keys/openpgp-keys-sjaranowski
+sec-keys/apache-tomcat-jakartaee-migration
+sec-keys/apache-creadur
+
+# Jonas Stein <jstein@gentoo.org> (2026-11-14)
+# Removal on 2026-12-14.  Bug #986570.
+x11-themes/gentoo-artwork
+
 # Michał Górny <mgorny@gentoo.org> (2026-11-09)
 # Regressions causing test failures:
 # https://github.com/gorakhargosh/watchdog/issues/1432
@@ -169,11 +197,6 @@ dev-python/entrypoints
 # Removal on 2026-11-17.  Bug #969753.
 media-tv/linuxtv-dvb-apps
 
-# Arthur Zamarin <arthurzam@gentoo.org> (2026-10-18)
-# The built from source package, app-admin/awscli, can be used now.
-# Removal on 2026-11-17.  Bug #984525.
-app-admin/awscli-bin
-
 # Michał Górny <mgorny@gentoo.org> (2026-10-13)
 # Part of removed dev-python/pyproject-fmt.  No revdeps left.
 # Removal on 2026-11-12.  Bug #984202.
@@ -212,18 +235,6 @@ net-misc/ntp
 #
 # If wanted, feel welcome to add `dev-qt/*:6/6.12.0` to package.unmask
 # and report issues.
-#
-# Note: qtwebengine was "split" from Qt's main packaging and is now
-# versioned as 6.<chromium-major>.<patch> (6.140.0 here), for now it is
-# included in this mask (unmask with dev-qt/qtwebengine:6/6.140.0), but
-# in the future it will be treated separately given it is not pinned and
-# e.g. 6.140.0 can be used with Qt 6.11.x (aka not just 6.12.x).
-#
-# !!! ... however, 6.140.0 was not released yet, if you need qtwebengine
-#     either do not unmask this or use qtwebengine-6.140.9999 for now.
-=dev-python/pyqt6-6.12*
-=dev-python/pyqt6-pdf-6.140*
-=dev-python/pyqt6-webengine-6.140*
 =dev-python/pyside-6.12.0*
 =dev-qt/qt-docs-6.12.0*
 =dev-qt/qt3d-6.12.0*
@@ -256,7 +267,6 @@ net-misc/ntp
 =dev-qt/qtvirtualkeyboard-6.12.0*
 =dev-qt/qtwayland-6.12.0*
 =dev-qt/qtwebchannel-6.12.0*
-=dev-qt/qtwebengine-6.140.0*
 =dev-qt/qtwebsockets-6.12.0*
 =dev-qt/qtwebview-6.12.0*
 
@@ -490,12 +500,6 @@ dev-cpp/eigen:3/5.0
 # not just network. See bug #963106.
 =sys-kernel/linux-firmware-20250917
 =sys-kernel/linux-firmware-20251011
-
-# Michał Górny <mgorny@gentoo.org> (2025-06-29)
-# File collision against gnome-base/gnome-keyring[pam], which is
-# required via pambase.  Masked until the maintainer determines a good
-# solution.  Bug #959274.
-=app-crypt/libsecret-0.21.7-r1
 
 # Sam James <sam@gentoo.ogr> (2025-06-08)
 # Masked for testing (bug #957583).

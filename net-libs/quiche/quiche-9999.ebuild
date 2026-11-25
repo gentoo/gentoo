@@ -28,7 +28,7 @@ bumpalo@3.17.0
 byteorder@1.3.4
 bytes@1.12.1
 cast@0.2.3
-cc@1.4.6
+cc@1.8.0
 cdylib-link-lines@0.1.5
 cexpr@0.6.0
 cfg-if@0.1.10
@@ -55,11 +55,12 @@ debug_panic@0.2.1
 deranged@0.4.1
 displaydoc@0.2.7
 enum_dispatch@0.3.13
-either@1.18.0
+either@1.19.0
 env_logger@0.8.4
-equivalent@1.0.2
-find-msvc-tools@0.1.12
+equivalent@1.0.3
+find-msvc-tools@0.1.14
 fnv@1.0.7
+foldhash@0.2.0
 foreign-types@0.5.0
 foreign-types-macros@0.2.4
 foreign-types-shared@0.3.1
@@ -115,7 +116,7 @@ maybe-uninit@2.0.0
 memchr@2.8.3
 memoffset@0.9.1
 minimal-lexical@0.2.1
-mio@1.2.3
+mio@1.2.4
 miow@0.4.0
 net2@0.2.37
 nom@7.1.3
@@ -138,7 +139,7 @@ potential_utf@0.1.6
 powerfmt@0.2.0
 proc-macro-crate@3.5.0
 proc-macro2@1.0.107
-qlog@0.18.0
+qlog@0.18.2
 quote@1.0.47
 rayon@1.3.0
 rayon@core-1.7.0
@@ -162,19 +163,19 @@ semver-parser@0.7.0
 serde@1.0.229
 serde_core@1.0.229
 serde_derive@1.0.229
-serde_json@1.0.151
-serde_with@3.23.0
-serde_with_macros@3.23.0
+serde_json@1.0.154
+serde_with@3.24.0
+serde_with_macros@3.24.0
 shlex@1.3.0
 shlex@2.0.1
 slab@0.4.12
-smallvec@1.16.1
+smallvec@1.16.3
 spin@0.9.8
 stable_deref_trait@1.2.1
 strsim@0.8.0
 strsim@0.11.1
 syn@2.0.119
-syn@3.0.6
+syn@3.0.9
 synstructure@0.14.0
 termcolor@1.1.2
 textwrap@0.11.0
@@ -185,11 +186,11 @@ tinystr@0.8.4
 tinytemplate@1.0.3
 tinyvec@1.6.1
 tinyvec_macros@0.1.1
-toml_datetime@1.1.1+spec-1.1.0
-toml_edit@0.25.15+spec-1.1.0
-toml_parser@1.1.3+spec-1.1.0
+toml_datetime@1.1.2+spec-1.1.0
+toml_edit@0.25.17+spec-1.1.0
+toml_parser@1.1.5+spec-1.1.0
 unicode-bidi@0.3.15
-unicode-ident@1.0.26
+unicode-ident@1.0.27
 unicode-normalization@0.1.23
 unicode-width@0.1.10
 unicode-xid@0.2.4
@@ -258,7 +259,7 @@ write16@1.0.0
 writeable@0.6.4
 ws2_32-sys@0.2.1
 yoke@0.8.3
-yoke-derive@0.8.3
+yoke-derive@0.8.4
 zerofrom@0.1.8
 zerofrom-derive@0.1.8
 zerotrie@0.2.5
@@ -344,7 +345,7 @@ multilib_src_install() {
 	sed -i -e "s:libdir=.\+:libdir=${EPREFIX}/usr/$(get_libdir):" -e "s:includedir=.\+:includedir=${EPREFIX}/usr/include:" "$(cargo_target_dir)"/quiche.pc || die
 	insinto "/usr/$(get_libdir)/pkgconfig"
 	doins "$(cargo_target_dir)"/quiche.pc
-	doheader -r quiche/include/*
+	doheader -r include/*
 	# install libquiche.so as as .0.0.0
 	newlib.so "$(cargo_target_dir)"/libquiche.so libquiche.so.0.0.0 || die
 	# manually create .so symlinks: https://github.com/cloudflare/quiche/issues/165

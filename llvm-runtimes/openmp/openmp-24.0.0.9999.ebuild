@@ -149,6 +149,7 @@ multilib_src_configure() {
 			-DCMAKE_Fortran_COMPILER="${FC}"
 			-DRUNTIMES_FORTRAN_MODULES=ON
 			-DRUNTIMES_INSTALL_RESOURCE_PATH="${EPREFIX}/usr/lib/clang/${LLVM_MAJOR}"
+			-DOPENMP_TEST_Fortran_FLAGS="-I${WORKDIR}/offload/test"
 		)
 	fi
 

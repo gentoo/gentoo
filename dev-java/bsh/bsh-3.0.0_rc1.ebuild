@@ -17,7 +17,7 @@ S="${WORKDIR}/beanshell-${PV/_rc/RC}"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc64"
+KEYWORDS="amd64 arm64 ppc64"
 
 DEPEND="
 	dev-java/javacc:${JAVACC_SLOT}

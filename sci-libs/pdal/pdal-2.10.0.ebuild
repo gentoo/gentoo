@@ -12,7 +12,7 @@ S="${WORKDIR}/PDAL-${PV}-src"
 
 LICENSE="BSD"
 SLOT="0/20"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~x86"
 IUSE="debug postgres test"
 RESTRICT="!test? ( test )"
 
@@ -35,6 +35,9 @@ DEPEND="
 	${RDEPEND}
 	test? ( sci-libs/gdal[geos,jpeg(+),png,sqlite] )
 "
+
+# avoid false positive warning on deprecated CMake version in unused example files
+CMAKE_QA_COMPAT_SKIP=1
 
 src_configure() {
 	local mycmakeargs=(

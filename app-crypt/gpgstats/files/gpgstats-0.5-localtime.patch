@@ -1,0 +1,27 @@
+Fix localtime() calls for gpgme unsigned timestamps.
+
+gpgme subkey/signature timestamps are unsigned long while localtime()
+expects const time_t*; this fails to compile with GCC 16 / -std=c++14.
+
+--- a/s.cpp
++++ b/s.cpp
+@@ -265,7 +265,8 @@
+ 			/* determine subkeys per year */
+ 			if (subkeys -> timestamp > 0)
+ 			{
+-				struct tm *sts = localtime(&subkeys -> timestamp);
++				time_t ts = subkeys -> timestamp;
++				struct tm *sts = localtime(&ts);
+ 
+ 				key_per_year.addvalue(sts -> tm_year + 1900, 1);
+ 				key_per_month.addvalue(sts -> tm_mon + 1, 1);
+@@ -401,7 +402,8 @@
+ 				/* determine sigs per year/month/day */
+ 				if (sigs -> timestamp > 0)
+ 				{
+-					struct tm *sts = localtime(&sigs -> timestamp);
++					time_t ts = sigs -> timestamp;
++					struct tm *sts = localtime(&ts);
+ 
+ 					sig_per_year.addvalue(sts -> tm_year + 1900, 1);
+ 					sig_per_month.addvalue(sts -> tm_mon + 1, 1);

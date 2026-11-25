@@ -6,7 +6,7 @@ EAPI=8
 # Maintenance notes and explanations of GCC handling are on the wiki:
 # https://wiki.gentoo.org/wiki/Project:Toolchain/sys-devel/gcc
 
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 TOOLCHAIN_HAS_TESTS=1
 PATCH_GCC_VER="13.2.0"
 PATCH_VER="3"
@@ -53,6 +53,10 @@ if [[ ${CATEGORY} != cross-* ]] ; then
 	DEPEND="${RDEPEND}"
 fi
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-13-fix-cross-fixincludes.patch
+)
+
 src_prepare() {
 	local p upstreamed_patches=(
 		# add them here
@@ -62,7 +66,4 @@ src_prepare() {
 	done
 
 	toolchain_src_prepare
-
-	eapply "${FILESDIR}"/${PN}-13-fix-cross-fixincludes.patch
-	eapply_user
 }

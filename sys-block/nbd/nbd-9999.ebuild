@@ -65,4 +65,5 @@ src_configure() {
 src_install() {
 	default
 	systemd_dounit systemd/nbd@.service
+	newinitd "${FILESDIR}"/nbd-server.initd nbd-server
 }

@@ -1,0 +1,103 @@
+Rename pop3 puts() and add stdio.h for rename().
+
+Bug: https://bugs.gentoo.org/944901
+
+--- a/qmail-pop3d.c
++++ b/qmail-pop3d.c
+@@ -1,6 +1,7 @@
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ #include <stdlib.h>
++#include <stdio.h>
+ #include "commands.h"
+ #include "sig.h"
+ #include "getln.h"
+@@ -46,7 +47,7 @@
+ {
+   substdio_put(&ssout,buf,len);
+ }
+-void puts(s) char *s;
++void pop3_puts(s) char *s;
+ {
+   substdio_puts(&ssout,s);
+ }
+@@ -56,9 +57,9 @@
+ }
+ void err(s) char *s;
+ {
+-  puts("-ERR ");
+-  puts(s);
+-  puts("\r\n");
++  pop3_puts("-ERR ");
++  pop3_puts(s);
++  pop3_puts("\r\n");
+   flush();
+ }
+ 
+@@ -74,7 +75,7 @@
+ void err_nosuch() { err("unable to open that message"); }
+ void err_nounlink() { err("unable to unlink all deleted messages"); }
+ 
+-void okay(arg) char *arg; { puts("+OK \r\n"); flush(); }
++void okay(arg) char *arg; { pop3_puts("+OK \r\n"); flush(); }
+ 
+ void printfn(fn) char *fn;
+ {
+@@ -154,11 +155,11 @@
+  
+   total = 0;
+   for (i = 0;i < numm;++i) if (!m[i].flagdeleted) total += m[i].size;
+-  puts("+OK ");
++  pop3_puts("+OK ");
+   put(strnum,fmt_uint(strnum,numm));
+-  puts(" ");
++  pop3_puts(" ");
+   put(strnum,fmt_ulong(strnum,total));
+-  puts("\r\n");
++  pop3_puts("\r\n");
+   flush();
+ }
+ 
+@@ -172,9 +173,9 @@
+ 
+ void pop3_last(arg) char *arg;
+ {
+-  puts("+OK ");
++  pop3_puts("+OK ");
+   put(strnum,fmt_uint(strnum,last));
+-  puts("\r\n");
++  pop3_puts("\r\n");
+   flush();
+ }
+ 
+@@ -223,10 +224,10 @@
+ int flaguidl;
+ {
+   put(strnum,fmt_uint(strnum,i + 1));
+-  puts(" ");
++  pop3_puts(" ");
+   if (flaguidl) printfn(m[i].fn);
+   else put(strnum,fmt_ulong(strnum,m[i].size));
+-  puts("\r\n");
++  pop3_puts("\r\n");
+ }
+ 
+ void dolisting(arg,flaguidl) char *arg; int flaguidl;
+@@ -235,7 +236,7 @@
+   if (*arg) {
+     i = msgno(arg);
+     if (i == -1) return;
+-    puts("+OK ");
++    pop3_puts("+OK ");
+     list(i,flaguidl);
+   }
+   else {
+@@ -243,7 +244,7 @@
+     for (i = 0;i < numm;++i)
+       if (!m[i].flagdeleted)
+ 	list(i,flaguidl);
+-    puts(".\r\n");
++    pop3_puts(".\r\n");
+   }
+   flush();
+ }

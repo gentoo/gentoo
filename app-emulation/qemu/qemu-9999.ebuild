@@ -63,7 +63,7 @@ SLOT="0"
 [[ ${QEMU_DOCS_PREBUILT} == 1 ]] && QEMU_DOC_USEFLAG="doc"
 
 IUSE="accessibility +aio alsa bpf bzip2 capstone +curl debug ${QEMU_DOC_USEFLAG}
-	elfutils +fdt fuse +gnutls gtk infiniband iscsi io-uring
+	elfutils +fdt fuse +gnutls gtk +hmp infiniband iscsi io-uring
 	jack +jpeg keyutils
 	lzo multipath
 	ncurses nfs nls numa opengl +oss pam passt +pin-upstream-blobs pipewire
@@ -364,19 +364,76 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-10.2.2-optionrom-pass-Wl-no-error-rwx-segments.patch
 )
 
-QA_PREBUILT="
-	usr/share/qemu/hppa-firmware.img
-	usr/share/qemu/hppa-firmware64.img
-	usr/share/qemu/openbios-ppc
-	usr/share/qemu/openbios-sparc64
-	usr/share/qemu/openbios-sparc32
-	usr/share/qemu/opensbi-riscv64-generic-fw_dynamic.elf
-	usr/share/qemu/opensbi-riscv32-generic-fw_dynamic.elf
-	usr/share/qemu/palcode-clipper
-	usr/share/qemu/s390-ccw.img
-	usr/share/qemu/s390-netboot.img
-	usr/share/qemu/u-boot.e500
-"
+# see blobs in pc-bios/meson.build
+FIRMWARE_BLOBS=(
+	ast27x0_bootrom.bin
+	bios.bin
+	bios-256k.bin
+	bios-microvm.bin
+	qboot.rom
+	vgabios.bin
+	vgabios-cirrus.bin
+	vgabios-stdvga.bin
+	vgabios-vmware.bin
+	vgabios-qxl.bin
+	vgabios-virtio.bin
+	vgabios-ramfb.bin
+	vgabios-bochs-display.bin
+	vgabios-ati.bin
+	openbios-sparc32
+	openbios-sparc64
+	openbios-ppc
+	QEMU,tcx.bin
+	QEMU,cgthree.bin
+	pxe-e1000.rom
+	pxe-eepro100.rom
+	pxe-ne2k_pci.rom
+	pxe-pcnet.rom
+	pxe-rtl8139.rom
+	pxe-virtio.rom
+	efi-e1000.rom
+	efi-eepro100.rom
+	efi-ne2k_pci.rom
+	efi-pcnet.rom
+	efi-rtl8139.rom
+	efi-virtio.rom
+	efi-e1000e.rom
+	efi-vmxnet3.rom
+	qemu-nsis.bmp
+	multiboot_dma.bin
+	linuxboot_dma.bin
+	kvmvapic.bin
+	pvh.bin
+	s390-ccw.img
+	slof.bin
+	skiboot.lid
+	pnv-pnor.bin
+	palcode-clipper
+	u-boot.e500
+	u-boot-sam460.bin
+	qemu_vga.ndrv
+	edk2-licenses.txt
+	hppa-firmware.img
+	hppa-firmware64.img
+	hexagon_booter_qcs6490_cdsp
+	hexagon_loadlinux_qcs6490_cdsp
+	hexagon_booter_sm8975_nsp
+	hexagon_loadlinux_sm8975_nsp
+	hexagon_booter_sa8775p_cdsp
+	hexagon_loadlinux_sa8775p_cdsp
+	hexagon_booter_sc8480xp_nsp0
+	hexagon_loadlinux_sc8480xp_nsp0
+	hexagon_booter_sa8797p_nsp0
+	hexagon_loadlinux_sa8797p_nsp0
+	hexagon-hypervisor-license.txt
+	opensbi-riscv32-generic-fw_dynamic.bin
+	opensbi-riscv64-generic-fw_dynamic.bin
+	npcm7xx_bootrom.bin
+	npcm8xx_bootrom.bin
+	vof.bin
+	vof-nvram.bin
+)
+QA_PREBUILT="${FIRMWARE_BLOBS[@]/#/usr\/share\/qemu\/}"
 
 QA_WX_LOAD="
 	usr/bin/qemu-i386
@@ -565,6 +622,7 @@ qemu_src_configure() {
 		--localstatedir=/var
 		--disable-bsd-user
 		--disable-containers # bug #732972
+		--container-command=false # bug #984747
 		--disable-guest-agent
 		--disable-strip
 		--disable-download
@@ -593,6 +651,7 @@ qemu_src_configure() {
 		$(use_enable alsa)
 		$(use_enable debug debug-info)
 		$(use_enable debug debug-tcg)
+		$(use_enable hmp)
 		$(use_enable jack)
 		$(use_enable nls gettext)
 		$(use_enable oss)
@@ -600,6 +659,7 @@ qemu_src_configure() {
 		$(use_enable plugins)
 		$(use_enable pulseaudio pa)
 		$(use_enable selinux)
+		$(use_enable test tests)
 		$(use_enable xattr attr)
 		$(use_enable valgrind)
 	)
@@ -683,7 +743,10 @@ qemu_src_configure() {
 		$(conf_notuser virgl virglrenderer)
 		$(conf_softmmu virtfs)
 		$(conf_notuser vnc)
-		--disable-qemu-vnc # fails to build, otherwise automagically enabled for dbus+vnc+tools
+		# Fails to build, otherwise automagically enabled for dbus+vnc+tools
+		# Fixing would involve untangling ui and keymaps out of the softmmu builds,
+		# as it implicitly requires softmmu targets in the tools build.
+		--disable-qemu-vnc
 		$(conf_notuser vte)
 		$(conf_softmmu xdp af-xdp)
 		$(conf_notuser xen)

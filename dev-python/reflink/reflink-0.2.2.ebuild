@@ -19,7 +19,7 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 ~ppc64 ~x86"
 # The test suite mounts a btrfs volume on a loopback device.
-PROPERTIES="test_privileged"
+PROPERTIES="test? ( test_privileged )"
 RESTRICT="test"
 
 RDEPEND="

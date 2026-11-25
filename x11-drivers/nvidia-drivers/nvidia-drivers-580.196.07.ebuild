@@ -27,7 +27,7 @@ LICENSE="
 	curl openssl public-domain
 "
 SLOT="0/${PV%%.*}"
-KEYWORDS="-* ~amd64 ~arm64"
+KEYWORDS="-* amd64 ~arm64"
 IUSE="
 	+X abi_x86_32 abi_x86_64 kernel-open persistenced powerd
 	+static-libs +tools wayland
@@ -431,9 +431,10 @@ documentation that is installed alongside this README."
 			dosym ${m[4]} ${into}/${m[0]}
 			continue
 		fi
-		# avoid portage warning due to missing soname links in manifest
-		[[ ${m[0]} =~ ^libnvidia-ngx.so ]] &&
-			dosym ${m[0]} ${into}/${m[0]%.so*}.so.1
+		# some _SYMLINK are missing from the .manifest for sonames
+		# TODO?: use scanelf -BSq to auto-create like nvidia-installer?
+		[[ ${m[0]} =~ ((libnvidia-ngx.so).*) ]] &&
+			dosym ${BASH_REMATCH[1]} ${into}/${BASH_REMATCH[2]}.1
 
 		printf -v m[1] %o $((m[1] | 0200)) # 444->644
 		insopts -m${m[1]}

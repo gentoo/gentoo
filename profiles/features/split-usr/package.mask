@@ -5,6 +5,7 @@
 # Requires systemd.
 app-admin/mkosi
 app-admin/systemdgenie
+app-antivirus/mdatp
 app-containers/snapd
 sys-libs/snapd-glib
 dev-python/python-systemd

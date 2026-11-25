@@ -11,7 +11,7 @@ SRC_URI="https://github.com/WickedSmoke/evolvotron/archive/v${PV}.tar.gz -> ${P}
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc x86"
 
 RDEPEND="
 	dev-libs/boost:=

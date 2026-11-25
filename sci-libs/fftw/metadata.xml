@@ -15,6 +15,9 @@
   publicly available FFT software.
   </longdescription>
   <use>
+    <flag name="threads">
+      Add a simple interface to parallel transforms for SMP systems
+    </flag>
     <flag name="zbus">Adds support for ZBus cycle-counter of mips</flag>
   </use>
   <upstream>

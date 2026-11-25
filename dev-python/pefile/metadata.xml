@@ -5,7 +5,7 @@
 		<email>mario.haustein@hrz.tu-chemnitz.de</email>
 		<name>Mario Haustein</name>
 	</maintainer>
-	<maintainer type="person">
+	<maintainer type="person" proxied="maintainer-and-proxy">
 		<email>sam@gentoo.org</email>
 		<name>Sam James</name>
 	</maintainer>

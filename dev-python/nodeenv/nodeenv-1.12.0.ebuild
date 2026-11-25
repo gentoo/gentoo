@@ -24,7 +24,7 @@ KEYWORDS="~amd64 ~arm64 ~hppa ~ppc ~ppc64 ~x86"
 
 # requires network access
 RESTRICT="test"
-PROPERTIES="test_network"
+PROPERTIES="test? ( test_network )"
 
 EPYTEST_PLUGINS=()
 distutils_enable_tests pytest

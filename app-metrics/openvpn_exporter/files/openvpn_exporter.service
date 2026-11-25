@@ -1,0 +1,27 @@
+[Unit]
+Description=Prometheus Exporter for OpenVPN status Metrics
+Documentation=https://github.com/natrontech/openvpn-exporter
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+User=openvpn_exporter
+Group=openvpn_exporter
+Restart=on-failure
+ExecStart=/usr/bin/openvpn_exporter
+
+Environment=OPENVPN_STATUS_FILES=/etc/openvpn/openvpn-status.log
+# Environment=OPENVPN_LISTEN_ADDRESS=:9176
+# Environment=OPENVPN_METRICS_PATH=/metrics
+# Environment=OPENVPN_LOGLEVEL=info
+# Environment=OPENVPN_IGNORE_INDIVIDUALS=false
+
+NoNewPrivileges=true
+ProtectSystem=full
+ProtectHome=true
+PrivateTmp=true
+PrivateDevices=true
+
+[Install]
+WantedBy=multi-user.target

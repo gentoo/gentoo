@@ -9,7 +9,7 @@ EAPI=8
 TOOLCHAIN_HAS_TESTS=1
 PATCH_GCC_VER="16.2.0"
 MUSL_GCC_VER="16.2.0"
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 
 if [[ -n ${TOOLCHAIN_GCC_RC} ]] ; then
 	# Cheesy hack for RCs
@@ -39,7 +39,13 @@ if [[ ${CATEGORY} != cross-* ]] ; then
 	DEPEND="${RDEPEND}"
 fi
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-13-fix-cross-fixincludes.patch
+)
+
 src_prepare() {
+	[[ ${CHOST} == m68k-* ]] && PATCHES+=( "${FILESDIR}"/${PN}-15-m68k-workaround.patch )
+
 	local p upstreamed_patches=(
 		# add them here
 	)
@@ -48,7 +54,4 @@ src_prepare() {
 	done
 
 	toolchain_src_prepare
-	eapply "${FILESDIR}"/${PN}-13-fix-cross-fixincludes.patch
-	[[ ${CHOST} == m68k-* ]] && eapply "${FILESDIR}"/${PN}-15-m68k-workaround.patch
-	eapply_user
 }

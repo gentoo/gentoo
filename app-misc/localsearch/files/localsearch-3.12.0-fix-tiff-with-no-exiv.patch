@@ -1,0 +1,61 @@
+https://bugs.gentoo.org/982517
+https://bugs.gentoo.org/982713
+
+Expands on https://gitlab.gnome.org/GNOME/localsearch/-/commit/5e49fbce487a295292788efad6f557355d01e93d
+
+--- a/src/extractor/tracker-extract-tiff.c
++++ b/src/extractor/tracker-extract-tiff.c
+@@ -266,14 +266,16 @@ tracker_extract_get_metadata (TrackerExtractInfo  *info,
+ #endif
+ #ifdef HAVE_GEXIV2
+ 	TrackerIptcData *id = NULL;
+-#endif
+ 	TrackerExifData *ed = NULL;
++#endif
+ 	MergeData md = { 0 };
+ 	TiffData td = { 0 };
+ 	g_autofree char *resource_uri = NULL;
+ 	gchar *filename, *uri;
+ 	gchar *date;
++#ifdef HAVE_GEXIV2
+ 	glong exif_offset;
++#endif
+ 	GFile *file;
+ 	int fd;
+ 
+@@ -369,7 +371,9 @@ tracker_extract_get_metadata (TrackerExtractInfo  *info,
+ 
+ #endif /* HAVE_EXEMPI */
+ 
++#ifdef HAVE_GEXIV2
+ 	ed = g_new0 (TrackerExifData, 1);
++#endif
+ 
+ 	/* Get Tiff specifics */
+ 	td.width = tag_to_string (image, TIFFTAG_IMAGEWIDTH, TAG_TYPE_UINT32);
+@@ -410,6 +414,7 @@ tracker_extract_get_metadata (TrackerExtractInfo  *info,
+ 	TIFFClose (image);
+ 	g_free (filename);
+ 
++#ifdef HAVE_GEXIV2
+ 	md.title = tracker_coalesce_strip (2, td.title, ed->document_name);
+ 	md.orientation = tracker_coalesce_strip (2, td.orientation, ed->orientation);
+ 	md.copyright = tracker_coalesce_strip (2, td.copyright, ed->copyright);
+@@ -436,6 +441,7 @@ tracker_extract_get_metadata (TrackerExtractInfo  *info,
+ 	if (ed->user_comment) {
+ 		tracker_guarantee_resource_utf8_string (metadata, "nie:comment", ed->user_comment);
+ 	}
++#endif
+ 
+ 	if (md.x_dimension) {
+ 		tracker_resource_set_string (metadata, "nfo:width", md.x_dimension);
+@@ -585,7 +591,9 @@ tracker_extract_get_metadata (TrackerExtractInfo  *info,
+ #endif
+ 
+ 	tiff_data_free (&td);
++#ifdef HAVE_GEXIV2
+ 	tracker_exif_free (ed);
++#endif
+ 	g_free (uri);
+ 	close (fd);
+ 

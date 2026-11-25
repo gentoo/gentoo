@@ -3,19 +3,6 @@ From: Rolf Eike Beer <eike@sf-mail.de>
 Date: Mon, 11 May 2020 18:30:13 +0200
 Subject: [PATCH 4/4] fix additional length overflows
 
----
- Makefile        |  6 +++---
- alloc.c         | 21 ++++++++++++++-------
- qmail-local.c   |  3 ++-
- qmail-pop3d.c   |  3 ++-
- quote.c         | 10 +++++++++-
- stralloc_catb.c |  8 +++++++-
- stralloc_opyb.c |  8 +++++++-
- substdo.c       |  4 ++--
- 8 files changed, 46 insertions(+), 17 deletions(-)
-
-diff --git a/Makefile b/Makefile
-index 0f0e31a..4b592c6 100644
 --- a/Makefile
 +++ b/Makefile
 @@ -1673,7 +1673,7 @@ qsutil.h
@@ -45,8 +32,6 @@ index 0f0e31a..4b592c6 100644
  	./compile stralloc_opyb.c
  
  stralloc_opys.o: \
-diff --git a/alloc.c b/alloc.c
-index c661453..3ab5f6f 100644
 --- a/alloc.c
 +++ b/alloc.c
 @@ -1,7 +1,6 @@
@@ -87,8 +72,6 @@ index c661453..3ab5f6f 100644
  }
  
  void alloc_free(x)
-diff --git a/qmail-local.c b/qmail-local.c
-index 6fec288..f5e33fd 100644
 --- a/qmail-local.c
 +++ b/qmail-local.c
 @@ -1,5 +1,6 @@
@@ -107,8 +90,6 @@ index 6fec288..f5e33fd 100644
   if (!recips) temp_nomem();
   numforward = 0;
  
-diff --git a/qmail-pop3d.c b/qmail-pop3d.c
-index 0ca4f9c..1916433 100644
 --- a/qmail-pop3d.c
 +++ b/qmail-pop3d.c
 @@ -1,5 +1,6 @@
@@ -127,8 +108,6 @@ index 0ca4f9c..1916433 100644
    if (!m) die_nomem();
   
    for (i = 0;i < numm;++i) {
-diff --git a/quote.c b/quote.c
-index 659cfcd..73b7214 100644
 --- a/quote.c
 +++ b/quote.c
 @@ -1,3 +1,4 @@
@@ -153,8 +132,6 @@ index 659cfcd..73b7214 100644
   j = 0;
   saout->s[j++] = '"';
   for (i = 0;i < sain->len;++i)
-diff --git a/stralloc_catb.c b/stralloc_catb.c
-index 67dbcc0..a315810 100644
 --- a/stralloc_catb.c
 +++ b/stralloc_catb.c
 @@ -1,13 +1,19 @@
@@ -178,8 +155,6 @@ index 67dbcc0..a315810 100644
    byte_copy(sa->s + sa->len,n,s);
    sa->len += n;
    sa->s[sa->len] = 'Z'; /* ``offensive programming'' */
-diff --git a/stralloc_opyb.c b/stralloc_opyb.c
-index ac258b3..8a6f305 100644
 --- a/stralloc_opyb.c
 +++ b/stralloc_opyb.c
 @@ -1,12 +1,18 @@
@@ -202,8 +177,6 @@ index ac258b3..8a6f305 100644
    byte_copy(sa->s,n,s);
    sa->len = n;
    sa->s[n] = 'Z'; /* ``offensive programming'' */
-diff --git a/substdo.c b/substdo.c
-index bccf0d6..ad7232a 100644
 --- a/substdo.c
 +++ b/substdo.c
 @@ -38,9 +38,9 @@ register substdio *s;

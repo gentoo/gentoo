@@ -12,10 +12,10 @@ pre_src_configure() {
 	# This bit should be kept in sync with fix_config_sub in
 	# bootstrap-prefix.sh
 	# Apple Silicon doesn't use aarch64, but arm64
-	find . -name "config.sub" | \
-		${XARGS} sed -i -e 's/ arm\(-\*\)* / arm\1 | arm64\1 /'
-	find . -name "config.sub" | \
-		${XARGS} sed -i -e 's/ aarch64 / aarch64 | arm64 /'
+	find . -name "config.sub" -exec \
+		sed -i -e 's/ arm\(-\*\)* / arm\1 | arm64\1 /' {} +
+	find . -name "config.sub" -exec \
+		sed -i -e 's/ aarch64 / aarch64 | arm64 /' {} +
 
 	# currently the toolchain appears to be a bit funky, and generates
 	# code the (host) linker thinks is invalid with -O2 and up:
@@ -24,8 +24,8 @@ pre_src_configure() {
 	case ${CATEGORY}/${PN} in
 		sys-apps/groff |\
 		app-editors/vim)
-			[[ ${CFLAGS}   == *-O[23456789]* ]] &&   CFLAGS="${CFLAGS} -O1"
-			[[ ${CXXFLAGS} == *-O[23456789]* ]] && CXXFLAGS="${CFLAGS} -O1"
+			[[ ${CFLAGS}   == *-O[2-9]* ]] &&   CFLAGS+=" -O1"
+			[[ ${CXXFLAGS} == *-O[2-9]* ]] && CXXFLAGS+=" -O1"
 		;;
 	esac
 

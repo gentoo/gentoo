@@ -8,7 +8,7 @@ inherit eapi9-ver flag-o-matic optfeature python-any-r1
 inherit readme.gentoo-r1 toolchain-funcs wine
 
 WINE_GECKO=2.47.4
-WINE_MONO=10.4.1
+WINE_MONO=11.3.0
 WINE_PV=$(ver_rs 2 -)
 
 if [[ ${PV} == 9999 ]]; then
@@ -147,6 +147,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-8.0.1c-unwind.patch
 	"${FILESDIR}"/${PN}-9.0-rpath.patch
 	"${FILESDIR}"/${PN}-11.0.1-restore-menubuilder.patch
+	"${FILESDIR}"/${PN}-11.0.3-match-mono-with-proton.patch
 )
 
 src_prepare() {
@@ -230,6 +231,16 @@ src_install() {
 	)
 
 	wine_src_install
+
+	# Valve's proton expects wine64{,-preloader} under i386-unix and
+	# creates them using Proton's Makefile[1] rather than Wine's,
+	# causes `could not load kernel32.dll` errors if missing (note
+	# *also* needed for 64bit-only builds, so we skip 32bit checks)
+	# [1] https://github.com/ValveSoftware/Proton/commit/e50807ac2e9d
+	if use amd64; then
+		dosym -r ${WINE_PREFIX}/wine/{x86_64,i386}-unix/wine64
+		dosym -r ${WINE_PREFIX}/wine/{x86_64,i386}-unix/wine64-preloader
+	fi
 
 	dodoc ANNOUNCE* AUTHORS README* documentation/README*
 	readme.gentoo_create_doc

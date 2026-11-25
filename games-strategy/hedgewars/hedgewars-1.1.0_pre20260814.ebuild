@@ -62,6 +62,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-1.1.0-no-pas2c.patch"
 	"${FILESDIR}/${PN}-1.1.0-fix-linking.patch"
 	"${FILESDIR}/${PN}-1.1.0-no-strip.patch"
+	"${FILESDIR}/${PN}-1.1.0-ffmpeg9.patch"
 )
 
 src_prepare() {

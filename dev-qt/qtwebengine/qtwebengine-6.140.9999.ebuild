@@ -111,7 +111,7 @@ PATCHES=( "${WORKDIR}"/patches/${PN} )
 
 PATCHES+=(
 	# add extras as needed here, may merge in set if carries across versions
-	"${FILESDIR}"/${PN}-6.11.2-CVE-2026-111943.patch
+	"${FILESDIR}"/${PN}-6.11.0-gcc17.patch
 )
 
 python_check_deps() {

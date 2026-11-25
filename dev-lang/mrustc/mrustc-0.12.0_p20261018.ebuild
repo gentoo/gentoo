@@ -22,7 +22,7 @@ else
 	SRC_URI="https://github.com/thepowersgang/mrustc/archive/${MY_COMMIT}.tar.gz -> ${P}.tar.gz
 		https://static.rust-lang.org/dist/rustc-${RUST_VERSION}-src.tar.xz
 	"
-	KEYWORDS="~amd64 ~arm64"
+	KEYWORDS="amd64 ~arm64"
 	S="${WORKDIR}/${PN}-${MY_COMMIT}"
 fi
 

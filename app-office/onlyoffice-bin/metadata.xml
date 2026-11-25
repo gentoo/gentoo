@@ -5,7 +5,7 @@
 		<email>parona@protonmail.com</email>
 		<name>Alfred Wingate</name>
 	</maintainer>
-	<maintainer type="person">
+	<maintainer type="person" proxied="maintainer-and-proxy">
 		<email>pacho@gentoo.org</email>
 		<name>Pacho Ramos</name>
 	</maintainer>

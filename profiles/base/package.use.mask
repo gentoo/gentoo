@@ -161,10 +161,6 @@ dev-python/scipy index64
 # Marked Beta tier upstream. Tests don't work with it.
 dev-games/ogre vulkan
 
-# Alfred Wingate (2025-07-31)
-# Missing dependency
-sci-libs/gdal mongodb
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-06-26)
 # >=kde-plasma/drkonqi-6.3.90 requires systemd, so specifically
 # unmasked only in targets/systemd.
@@ -700,13 +696,6 @@ net-misc/openssh debug
 # Thomas Deutschmann <whissi@gentoo.org> (2021-02-17)
 # PCRE JIT support via dev-libs/libpcre2[jit] is only available for certain architectures
 dev-lang/php jit
-
-# Sam James <sam@gentoo.org> (2021-02-07)
-# Fails to build with USE=doc for now.
-# Needs rework to use Python eclasses
-# for conditional doc dependencies.
-# bug #759523
-sci-libs/gdal doc
 
 # Lars Wendler <polynomial-c@gentoo.org> (2021-01-26)
 # Upstream considers this module being a high security risk

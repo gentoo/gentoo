@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -38,8 +38,6 @@ RDEPEND="
 	sys-apps/util-linux
 	sys-libs/glibc
 	sys-libs/ncurses
-	virtual/libcrypt
-	x11-base/xorg-server
 	x11-libs/libICE
 	x11-libs/libSM
 	x11-libs/libX11
@@ -48,13 +46,12 @@ RDEPEND="
 	x11-libs/libXi
 	x11-libs/libXrender
 	x11-libs/libXt
-	x11-libs/libdrm
 	x11-libs/libxkbcommon
 	cuda? (
 		x11-drivers/nvidia-drivers
 	)
 	hip? (
-		=dev-util/hip-6*
+		=dev-util/hip-7*
 	)
 	oneapi? (
 		dev-libs/level-zero

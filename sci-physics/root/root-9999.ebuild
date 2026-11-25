@@ -15,8 +15,8 @@ HOMEPAGE="https://root.cern"
 LICENSE="LGPL-2.1 freedist MSttfEULA LGPL-3 libpng UoI-NCSA"
 
 IUSE="+X aqua cuda cudnn davix debug +examples fits fftw fortran +gdml graphviz
-	+gsl +http jupyter libcxx +minuit mpi +opengl pythia8 +python qt6 R +roofit
-	+root7 shadow sqlite +ssl +tbb test +tmva +unuran uring +xml xrootd"
+	+gsl http jupyter libcxx +minuit mpi +opengl pythia8 +python qt6 R +roofit
+	+root7 sqlite +ssl +tbb test +tmva +unuran uring +xml xrootd"
 
 if [[ ${PV} =~ "9999" ]] ; then
 	inherit git-r3
@@ -62,6 +62,7 @@ CDEPEND="
 	media-libs/libpng:0=
 	media-libs/giflib:=
 	media-libs/libjpeg-turbo:=
+	media-libs/tiff
 	virtual/libcrypt:=
 	sys-libs/ncurses:=
 	virtual/zlib:=
@@ -96,7 +97,6 @@ CDEPEND="
 	pythia8? ( sci-physics/pythia:8 )
 	python? ( ${PYTHON_DEPS} )
 	R? ( dev-lang/R )
-	shadow? ( sys-apps/shadow )
 	sqlite? ( dev-db/sqlite:3 )
 	ssl? ( dev-libs/openssl:0= )
 	tbb? ( dev-cpp/tbb:= )
@@ -251,13 +251,11 @@ src_configure() {
 		-Dqt6web=$(usex qt6)
 		-Dr=$(usex R)
 		-Droofit=$(usex roofit)
-		-Droofit_multiprocess=OFF
 		-Droofit_hs3_ryml=OFF
 		-Droot7=$(usex root7)
 		-Drootbench=OFF
 		-Droottest=$(usex test)
 		-Druntime_cxxmodules=ON
-		-Dshadowpw=$(usex shadow)
 		-Dspectrum=ON
 		-Dsqlite=$(usex sqlite)
 		-Dssl=$(usex ssl)
@@ -268,7 +266,6 @@ src_configure() {
 		-Dtmva-cpu=$(usex tmva)
 		-Dtmva-cudnn=$(usex cudnn)
 		-Dtmva-gpu=$(usex cuda)
-		-Dtmva-pymva=$(usex tmva)
 		-Dtmva-rmva=$(usex R)
 		-Dtmva-sofie=OFF
 		-Dtpython=$(usex python)
