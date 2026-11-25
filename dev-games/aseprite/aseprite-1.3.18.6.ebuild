@@ -80,6 +80,7 @@ PATCHES=(
 	"${FILESDIR}/aseprite-1.3.16.1_shared_tinyxml2.patch"
 	"${FILESDIR}/aseprite-1.3.16.1_shared_libjpeg-turbo.patch"
 	"${FILESDIR}/aseprite-1.3.16.1_shared_icu.patch"
+	"${FILESDIR}/aseprite-1.3.18.6_libfmt-12.2.patch"
 )
 
 CMAKE_SKIP_TESTS=(
