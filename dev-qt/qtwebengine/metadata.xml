@@ -15,7 +15,7 @@
 		<flag name="widgets">Enable QtWidgets support</flag>
 	</use>
 	<upstream>
-		<bugs-to>https://bugreports.qt.io/</bugs-to>
+		<bugs-to>https://qt-project.atlassian.net/</bugs-to>
 		<doc>https://doc.qt.io/</doc>
 		<remote-id type="github">qt/qtwebengine</remote-id>
 		<remote-id type="github">qt/qtwebengine-chromium</remote-id>

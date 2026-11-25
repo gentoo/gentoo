@@ -6,7 +6,7 @@ EAPI=8
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/libuv.asc
 inherit autotools verify-sig
 
-DESCRIPTION="Cross-platform asychronous I/O"
+DESCRIPTION="Cross-platform asynchronous I/O"
 HOMEPAGE="https://github.com/libuv/libuv"
 
 if [[ ${PV} = 9999* ]]; then
@@ -17,7 +17,7 @@ else
 		https://dist.libuv.org/dist/v${PV}/libuv-v${PV}.tar.gz -> ${P}.tar.gz
 		verify-sig? ( https://dist.libuv.org/dist/v${PV}/libuv-v${PV}.tar.gz.sign -> ${P}.tar.gz.sig )
 	"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~arm64-macos ~x64-macos ~x64-solaris"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~arm64-macos ~x64-macos ~x64-solaris"
 	S="${WORKDIR}/${PN}-v${PV}"
 fi
 
@@ -33,6 +33,8 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.52.1-test-thread-priority-portage.patch
 	"${FILESDIR}"/${PN}-1.51.0-ppc32-uring.patch
+	"${FILESDIR}"/${PN}-1.52.1-hurd.patch
+	"${FILESDIR}"/${PN}-1.52.1-test.patch
 )
 
 src_prepare() {

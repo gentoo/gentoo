@@ -1,0 +1,17 @@
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -141,6 +141,14 @@ FINAL_LDFLAGS=$(LDFLAGS) $(OPT) $(SERVER_LDFLAGS) $(DEBUG)
+ FINAL_LIBS=-lm
+ DEBUG=-g -ggdb
+ 
++ifneq (,$(filter powerpc ppc,$(uname_M)))
++        FINAL_LIBS+=-latomic
++else
++ifneq (,$(findstring ppc,$(uname_M)))
++        FINAL_LIBS+=-latomic
++endif
++endif
++
+ # Linux ARM32 needs -latomic at linking time
+ ifneq (,$(findstring armv,$(uname_M)))
+         FINAL_LIBS+=-latomic

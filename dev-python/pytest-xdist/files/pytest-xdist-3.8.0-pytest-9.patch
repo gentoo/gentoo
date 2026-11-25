@@ -1,0 +1,64 @@
+From 0c984478f39d7a01aa24c061f2581bdfd071cb6a Mon Sep 17 00:00:00 2001
+From: Bruno Oliveira <bruno@soliv.dev>
+Date: Sun, 2 Nov 2025 10:18:21 -0300
+Subject: [PATCH] Adapt test to also worth with pytest-main
+
+---
+ testing/test_newhooks.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/testing/test_newhooks.py b/testing/test_newhooks.py
+index e3a8ac6f..9091ed31 100644
+--- a/testing/test_newhooks.py
++++ b/testing/test_newhooks.py
+@@ -115,7 +115,7 @@ def pytest_handlecrashitem(crashitem, report, sched):
+         res.stdout.fnmatch_lines_random(["*HOOK: pytest_handlecrashitem"])
+         res.stdout.fnmatch_lines(
+             [
+-                "FAILED test_handlecrashitem_one.py::test_b",
+-                "FAILED test_handlecrashitem_one.py::test_b",
++                "FAILED test_handlecrashitem_one.py::test_b*",
++                "FAILED test_handlecrashitem_one.py::test_b*",
+             ]
+         )
+From 44f4bea2652e06e7cd5d4a063aa2673b5ef701ee Mon Sep 17 00:00:00 2001
+From: Bruno Oliveira <nicoddemus@gmail.com>
+Date: Tue, 11 Nov 2025 08:00:23 -0300
+Subject: [PATCH] Fix CI for pytest 9.0+ (#1272)
+
+---
+ testing/test_remote.py | 11 ++++++++---
+ 1 file changed, 8 insertions(+), 3 deletions(-)
+
+diff --git a/testing/test_remote.py b/testing/test_remote.py
+index 909f7ca2..ae82e2b7 100644
+--- a/testing/test_remote.py
++++ b/testing/test_remote.py
+@@ -378,6 +378,11 @@ def test_mainargv(request):
+ 
+ 
+ def test_remote_usage_prog(pytester: pytest.Pytester) -> None:
++    if pytest.version_tuple[:2] >= (9, 0):
++        get_optparser_expr = "get_config_parser.optparser"
++    else:
++        get_optparser_expr = "get_config_parser._getparser()"
++
+     pytester.makeconftest(
+         """
+         import pytest
+@@ -394,12 +399,12 @@ def pytest_configure(config):
+     """
+     )
+     pytester.makepyfile(
+-        """
++        f"""
+         import sys
+ 
+         def test(get_config_parser, request):
+-            get_config_parser._getparser().error("my_usage_error")
+-    """
++            {get_optparser_expr}.error("my_usage_error")
++        """
+     )
+ 
+     result = pytester.runpytest_subprocess("-n1")

@@ -15,6 +15,7 @@ SRC_URI="https://github.com/rabbitmq/rabbitmq-server/releases/download/v${PV}/${
 LICENSE="MPL-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
+IUSE="selinux"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RESTRICT="test"
 
@@ -30,6 +31,7 @@ RDEPEND="
 	${ACCT_DEPEND}
 	${ERLANG_DEPEND}
 	${PYTHON_DEPS}
+	selinux? ( sec-policy/selinux-rabbitmq )
 "
 # See https://github.com/rabbitmq/rabbitmq-server/blob/main/deps/rabbitmq_cli/mix.exs for Elixir version
 DEPEND="
@@ -46,7 +48,7 @@ BDEPEND="
 	${ERLANG_DEPEND}
 	sys-apps/which
 	|| (
-		app-arch/7zip
+		>=app-arch/7zip-24.09[symlink(+)]
 		app-arch/p7zip
 	)
 "

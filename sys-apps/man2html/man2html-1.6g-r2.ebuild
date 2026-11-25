@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,8 +15,12 @@ S="${WORKDIR}/${MY_P}"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
+IUSE="selinux"
 
-RDEPEND="!sys-apps/man"
+RDEPEND="
+	!sys-apps/man
+	selinux? ( sec-policy/selinux-man2html )
+"
 
 PATCHES=(
 	"${FILESDIR}"/man-1.6f-man2html-compression-2.patch

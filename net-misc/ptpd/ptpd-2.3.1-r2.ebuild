@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,14 +13,12 @@ S="${WORKDIR}/ptpd-${P}"
 KEYWORDS="~amd64 ~arm ~x86"
 LICENSE="BSD"
 SLOT="0"
-IUSE="debug experimental ntp +pcap snmp slave-only +statistics"
+IUSE="debug experimental +pcap snmp slave-only +statistics"
 
 RDEPEND="
 	pcap? ( net-libs/libpcap )
 	snmp? ( net-analyzer/net-snmp )"
 DEPEND="${RDEPEND}"
-RDEPEND="${RDEPEND}
-	ntp? ( net-misc/ntp )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.3.1-fix-snmp.patch

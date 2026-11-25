@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,7 +9,7 @@ DESCRIPTION="Open source chat client for Threema-style end-to-end encrypted chat
 HOMEPAGE="https://www.openmittsu.de/"
 # snapshot of https://github.com/blizzard4591/openMittsu.git
 # git-archive-all.sh --prefix ${P}/ -- - | xz > ${P}.tar.xz
-SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.tar.xz"
+SRC_URI="https://distfiles.gentoo.org/pub/dev/ulm@gentoo.org/${P}.tar.xz"
 
 LICENSE="GPL-2+ BitstreamVera OFL-1.1 Apache-2.0 CC0-1.0 MIT BSD"
 SLOT="0"
@@ -58,5 +58,5 @@ src_install() {
 	newicon resources/icon.png ${my_pn}.png
 	make_desktop_entry ${my_pn} ${my_pn} ${my_pn}
 	# rm "${ED}"/usr/bin/${my_pn}VersionInfo || die
-	# rm -f "${ED}"/usr/bin/${my_pn}Tests || die
+	rm -f "${ED}"/usr/bin/${my_pn}Tests || die
 }

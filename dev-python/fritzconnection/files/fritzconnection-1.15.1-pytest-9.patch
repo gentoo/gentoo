@@ -1,0 +1,44 @@
+From 19a0a03f1fc42b6a12118a4e431e67100a2e0489 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Wed, 8 Jul 2026 11:08:02 +0200
+Subject: [PATCH] Fix duplicate test id for pytest-9
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Running the test suite using pytest-9 yields the following error:
+
+```
+______________________________________ ERROR collecting fritzconnection/tests/test_core_utils.py ______________________________________
+Duplicate parametrization IDs detected, but strict_parametrization_ids is set.
+
+Test name:      fritzconnection/tests/test_core_utils.py::test_get_boolean_from_string
+Parameters:     value, expected_result
+Parameter sets: ['true', True], ['false', False], ['wahr', None], ['falsch', None], ['None', None], [42, None], ['', None], [None, None]
+IDs:            true-True, false-False, wahr-None, falsch-None, None-None, 42-None, -None, None-None
+Duplicates:     None-None
+
+You can fix this problem using `@pytest.mark.parametrize(..., ids=...)` or `pytest.param(..., id=...)`.
+```
+
+This is because both `"None"` and `None` resolve to the same identifier.
+Override the identifier for the latter to fix the test suite.
+
+Signed-off-by: Michał Górny <mgorny@gentoo.org>
+---
+ fritzconnection/tests/test_core_utils.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/fritzconnection/tests/test_core_utils.py b/fritzconnection/tests/test_core_utils.py
+index 657a022f..180926d5 100644
+--- a/fritzconnection/tests/test_core_utils.py
++++ b/fritzconnection/tests/test_core_utils.py
+@@ -66,7 +66,7 @@ def test_boolean_from_string_typeerror(value):
+         ("None", None),
+         (42, None),
+         ("", None),
+-        (None, None),
++        pytest.param(None, None, id="(None)-None"),
+     ]
+ )
+ def test_get_boolean_from_string(value, expected_result):

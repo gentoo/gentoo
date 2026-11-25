@@ -1,0 +1,21 @@
+commit 129bc4c7af17dd7322834fa5479a52768e282850
+Author: Martin Braun <martin.braun@ettus.com>
+Date:   Thu Jun 11 15:32:17 2026 +0200
+
+    tests: Update linking instructions for client_zero_test
+
+    On Arch Linux, users have reported linker error otherwise.
+
+diff --git a/host/CMakeLists.txt b/tests/CMakeLists.txt
+index fc0a81427c..1d3643409a 100644
+--- a/tests/CMakeLists.txt
++++ b/tests/CMakeLists.txt
+@@ -362,6 +362,8 @@ UHD_ADD_NONAPI_TEST(
+     TARGET client_zero_test.cpp
+     EXTRA_SOURCES
+     ${UHD_SOURCE_DIR}/lib/rfnoc/client_zero.cpp
++    ${UHD_SOURCE_DIR}/lib/rfnoc/chdr_packet_writer.cpp
++    ${UHD_SOURCE_DIR}/lib/rfnoc/chdr_ctrl_xport.cpp
+ )
+
+ UHD_ADD_NONAPI_TEST(

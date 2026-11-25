@@ -1,11 +1,11 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=hatchling
 DISTUTILS_SINGLE_IMPL=1
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{12..14} )
 
 inherit distutils-r1 wrapper
 
@@ -18,7 +18,7 @@ if [[ ${PV} == "99999999" ]]; then
 else
 	MY_PV="${PV:0:4}.${PV:4:2}.${PV:6:2}"
 	SRC_URI="https://github.com/pwndbg/pwndbg/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="amd64 ~arm64 x86"
+	KEYWORDS="amd64 ~arm64"
 	S="${WORKDIR}/${PN}-${MY_PV}"
 fi
 

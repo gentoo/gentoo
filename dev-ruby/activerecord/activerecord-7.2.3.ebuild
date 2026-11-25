@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -60,7 +60,7 @@ all_ruby_prepare() {
 		-i ../Gemfile || die
 	sed -i -e '/byebug/ s:^:#:' test/cases/base_prevent_writes_test.rb || die
 
-	sed -e '3igem "activemodel", "~> 7.2.0"; gem "actionpack", "~> 7.2.0"; gem "activejob", "~> 7.2.0"; gem "rack", "~> 3.2.0"' \
+	sed -e '3igem "activemodel", "~> 7.2.0"; gem "actionpack", "~> 7.2.0"; gem "activejob", "~> 7.2.0"; gem "rack", "~> 3.2.0"; gem "minitest", "~> 5"' \
 		-i test/cases/helper.rb || die
 
 	# Avoid single tests using mysql or postgres dependencies.

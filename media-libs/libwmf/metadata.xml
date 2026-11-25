@@ -2,6 +2,9 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<!-- maintainer-needed -->
+	<use>
+		<flag name="gdk-pixbuf">Build a gdk-pixbuf loader</flag>
+	</use>
 	<upstream>
 		<bugs-to>https://sourceforge.net/p/wvware/bugs/</bugs-to>
 		<remote-id type="sourceforge">wvware</remote-id>

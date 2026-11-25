@@ -1,0 +1,21 @@
+https://github.com/bleachbit/bleachbit/commit/2614948630d286847ecc843e0622d017c26e2563
+Modified to apply as a backport
+
+From 2614948630d286847ecc843e0622d017c26e2563 Mon Sep 17 00:00:00 2001
+From: Andrew Ziem <ahz001@gmail.com>
+Date: Sun, 1 Feb 2026 15:33:26 -0700
+Subject: [PATCH] Fix two GTK deprecation warnings
+
+The zebra striping was not working anyway (tested on Linux and Windows)
+--- a/bleachbit/GUI.py
++++ b/bleachbit/GUI.py
+@@ -258,7 +258,7 @@ def quit(self, _action=None, _param=None, init_configuration=False):
+ 
+     def get_system_information_dialog(self):
+         """Show system information dialog"""
+-        dialog = Gtk.Dialog(_("System information"), self._window)
++        dialog = Gtk.Dialog(title=_("System information"), transient_for=self._window)
+         dialog.set_default_size(600, 400)
+         txtbuffer = Gtk.TextBuffer()
+         from bleachbit import SystemInformation
+

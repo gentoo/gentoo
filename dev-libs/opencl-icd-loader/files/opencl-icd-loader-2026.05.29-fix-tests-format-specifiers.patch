@@ -1,0 +1,108 @@
+From d0be526adb156de7f701024acc811182c984d4c5 Mon Sep 17 00:00:00 2001
+From: Alexander Tsoy <puleglot@ya.ru>
+Date: Thu, 12 Nov 2026 23:16:30 +0300
+Subject: [PATCH] Fix printf format for cl_int values in tests (#295)
+
+Signed-off-by: Alexander Tsoy <alexander@tsoy.me>
+
+diff --git a/test/driver_stub/cl_gl.c b/test/driver_stub/cl_gl.c
+index e195463..f916b4e 100644
+--- a/test/driver_stub/cl_gl.c
++++ b/test/driver_stub/cl_gl.c
+@@ -115,7 +115,7 @@ clGetGLObjectInfo(cl_mem                 memobj,
+                        memobj,
+                        gl_object_type,
+                        gl_object_name);
+-     test_icd_stub_log("Value returned: %p\n", 
++     test_icd_stub_log("Value returned: %d\n",
+                       ret_val);
+      return ret_val;
+ }
+@@ -134,7 +134,7 @@ clGetGLTextureInfo(cl_mem                memobj,
+                        param_value_size,
+                        param_value,
+                        param_value_size_ret );
+-     test_icd_stub_log("Value returned: %p\n", 
++     test_icd_stub_log("Value returned: %d\n",
+                       ret_val);
+      return ret_val;
+ }
+@@ -156,7 +156,7 @@ clEnqueueAcquireGLObjects(cl_command_queue       command_queue,
+                       event_wait_list,
+                       event);
+ 
+-     test_icd_stub_log("Value returned: %p\n", 
++     test_icd_stub_log("Value returned: %d\n",
+                       ret_val);
+      return ret_val;
+ }
+@@ -178,7 +178,7 @@ clEnqueueReleaseGLObjects(cl_command_queue       command_queue,
+                         num_events_in_wait_list,
+                         event_wait_list,
+                         event); 
+-     test_icd_stub_log("Value returned: %p\n", 
++     test_icd_stub_log("Value returned: %d\n",
+                       ret_val);
+      return ret_val;
+ }
+@@ -198,7 +198,7 @@ clGetGLContextInfoKHR(const cl_context_properties *  properties,
+                       param_value,
+                       param_value_size_ret);
+ 
+-     test_icd_stub_log("Value returned: %p\n", 
++     test_icd_stub_log("Value returned: %d\n",
+                       ret_val);
+      return ret_val;
+ }
+diff --git a/test/loader_test/test_clgl.c b/test/loader_test/test_clgl.c
+index 76213f9..0c8a8f0 100644
+--- a/test/loader_test/test_clgl.c
++++ b/test/loader_test/test_clgl.c
+@@ -161,7 +161,7 @@ int test_clGetGLObjectInfo(const struct clGetGLObjectInfo_st* data)
+                                 data->gl_object_type,
+                                 data->gl_object_name);
+ 
+-    test_icd_app_log("Value returned: %p\n", ret_val);
++    test_icd_app_log("Value returned: %d\n", ret_val);
+ 
+     return ret_val;
+ 
+@@ -188,7 +188,7 @@ int test_clGetGLTextureInfo(const struct clGetGLTextureInfo_st* data)
+                                   data->param_value,
+                                   data->param_value_size_ret);
+ 
+-    test_icd_app_log("Value returned: %p\n", ret_val);
++    test_icd_app_log("Value returned: %d\n", ret_val);
+ 
+     return 0;
+ }
+@@ -216,7 +216,7 @@ int test_clEnqueueAcquireGLObjects(const struct clEnqueueAcquireGLObjects_st* da
+                                          &event,
+                                          &event);
+ 
+-    test_icd_app_log("Value returned: %p\n", ret_val);
++    test_icd_app_log("Value returned: %d\n", ret_val);
+ 
+     return 0;
+ }
+@@ -245,7 +245,7 @@ int test_clEnqueueReleaseGLObjects(const struct clEnqueueReleaseGLObjects_st* da
+                                          &event);
+ 
+ 
+-    test_icd_app_log("Value returned: %p\n", ret_val);
++    test_icd_app_log("Value returned: %d\n", ret_val);
+ 
+     return 0;
+ }
+@@ -319,7 +319,7 @@ int test_clGetGLContextInfoKHR(const struct clGetGLContextInfoKHR_st* data)
+                                     data->param_value,
+                                     data->param_value_size_ret);
+ 
+-    test_icd_app_log("Value returned: %p\n", ret_val);
++    test_icd_app_log("Value returned: %d\n", ret_val);
+     return 0;
+ 
+ }
+-- 
+2.56.1
+

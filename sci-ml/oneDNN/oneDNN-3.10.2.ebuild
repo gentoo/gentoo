@@ -109,7 +109,7 @@ src_compile() {
 src_test() {
 	if use openmp ; then
 		# Don't run tests in parallel, each test is already parallelized
-		OMP_NUM_THREADS=$(makeopts_jobs) cmake_src_test -j1
+		OMP_NUM_THREADS=$(get_makeopts_jobs) cmake_src_test -j1
 	else
 		cmake_src_test
 	fi

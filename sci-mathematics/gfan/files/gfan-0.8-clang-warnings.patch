@@ -1,0 +1,18 @@
+Description: fix some warnings emmitted by clang
+ - typo in macro
+ - type warning in format strings
+Author: Cédric Boutillier <boutil@debian.org>
+Forwarded: yes
+Last-Update: 2020-11-13
+
+--- a/src/vektor.cpp
++++ b/src/vektor.cpp
+@@ -96,7 +96,7 @@
+ int gcdOfVector(IntegerVector const &v)
+ {
+   int ret=0;
+-  for(int i=0;i<v.size();i++)if(ret=v[i])break;
++  for(int i=0;i<v.size();i++)if((ret=v[i]))break;
+   if(ret<0)ret=-ret;
+   assert(ret!=0);
+   for(int i=0;i<v.size();i++)ret=gcdGFAN(ret,v[i]);

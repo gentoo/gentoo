@@ -1,0 +1,54 @@
+From e0266fa48b484386b5ebeba8b3d1957ac09f013c Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Sun, 11 Aug 2024 22:04:15 +0100
+Subject: [PATCH] Respect *FLAGS, use pkg-config
+
+* Respect CFLAGS
+* Use pkg-config instead of hardcoding -lncursesw (in particular, this
+  is needed if a distribution has 'split tinfo')
+
+Signed-off-by: Sam James <sam@gentoo.org>
+---
+ Makefile | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 8ead5e9..968f13f 100644
+--- a/Makefile
++++ b/Makefile
+@@ -22,7 +22,7 @@ PMPATHD  = /usr/lib/systemd/system-sleep
+ 
+ PKG_CONFIG ?= pkg-config
+ 
+-override CFLAGS  := -I. -Wall $(shell $(PKG_CONFIG) --cflags glib-2.0) -Wmissing-prototypes -Wmissing-declarations -Wformat-security $(CFLAGS) # -DNOPERFEVENT   # -DHTTPSTATS
++override CFLAGS  := -I. -Wall $(shell $(PKG_CONFIG) --cflags glib-2.0) $(shell $(PKG_CONFIG) --cflags ncursesw) -Wmissing-prototypes -Wmissing-declarations -Wformat-security $(CFLAGS) # -DNOPERFEVENT   # -DHTTPSTATS
+ 
+ CC_CHECK := $(shell echo | $(CC) -dM -E - | grep -q __clang__ && echo clang || echo gcc)
+ ifeq ($(CC_CHECK),gcc)
+@@ -43,19 +43,19 @@ VERS     = $(shell ./atop -V 2>/dev/null| sed -e 's/^[^ ]* //' -e 's/ .*//')
+ all: 		atop atopsar atopacctd atopconvert atopcat atophide
+ 
+ atop:		atop.o    $(ALLMODS) Makefile
+-		$(CC) atop.o $(ALLMODS) -o atop -lncursesw -lz -lm -lrt $(LDFLAGS)
++		$(CC) $(CFLAGS) atop.o $(ALLMODS) -o atop $(shell ${PKG_CONFIG} --libs ncursesw) -lz -lm -lrt $(LDFLAGS)
+ 
+ atopsar:	atop
+ 		ln -sf atop atopsar
+ 
+ atopacctd:	atopacctd.o netlink.o
+-		$(CC) atopacctd.o netlink.o -o atopacctd $(LDFLAGS)
++		$(CC) $(CFLAGS) atopacctd.o netlink.o -o atopacctd $(LDFLAGS)
+ 
+ atopconvert:	atopconvert.o
+-		$(CC) atopconvert.o -o atopconvert -lz $(LDFLAGS)
++		$(CC) $(CFLAGS) atopconvert.o -o atopconvert -lz $(LDFLAGS)
+ 
+ atopcat:	atopcat.o
+-		$(CC) atopcat.o -o atopcat $(LDFLAGS)
++		$(CC) $(CFLAGS) atopcat.o -o atopcat $(LDFLAGS)
+ 
+ atophide:	atophide.o
+ 		$(CC) atophide.o -o atophide -lz $(LDFLAGS)
+-- 
+2.55.0
+

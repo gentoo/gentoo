@@ -17,7 +17,7 @@ else
 		https://github.com/PCSX2/pcsx2/archive/refs/tags/v${PV}.tar.gz
 			-> ${P}.tar.gz
 	"
-	KEYWORDS="-* ~amd64"
+	KEYWORDS="~amd64"
 fi
 
 DESCRIPTION="PlayStation 2 emulator"
@@ -29,7 +29,7 @@ LICENSE="
 "
 SLOT="0"
 IUSE="alsa cpu_flags_x86_sse4_1 +clang jack pulseaudio sndio test wayland"
-REQUIRED_USE="cpu_flags_x86_sse4_1" # dies at runtime if no support
+REQUIRED_USE="amd64? ( cpu_flags_x86_sse4_1 )" # dies at runtime if no support
 RESTRICT="!test? ( test )"
 
 # qtbase:6=[X] is due to using qtx11extras_p.h
@@ -37,6 +37,7 @@ RESTRICT="!test? ( test )"
 COMMON_DEPEND="
 	app-arch/lz4:=
 	app-arch/zstd:=
+	>=dev-cpp/rapidyaml-0.10:=
 	dev-qt/qtbase:6=[X,concurrent,gui,widgets]
 	dev-qt/qtsvg:6
 	>=gui-libs/kddockwidgets-2.3:=
@@ -51,7 +52,7 @@ COMMON_DEPEND="
 	media-libs/plutovg
 	media-libs/shaderc
 	media-libs/vulkan-loader
-	media-video/ffmpeg:=
+	>=media-video/ffmpeg-7.1:=
 	net-libs/libpcap
 	net-misc/curl
 	sys-apps/dbus
@@ -88,9 +89,11 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.7.5232-cubeb-automagic.patch
 	"${FILESDIR}"/${PN}-1.7.5835-musl-header.patch
-	"${FILESDIR}"/${PN}-1.7.5913-musl-cache.patch
 	"${FILESDIR}"/${PN}-2.5.317-flags.patch
 	"${FILESDIR}"/${PN}-2.6.3-climits.patch
+	"${FILESDIR}"/${PN}-2.6.3-cubeb-alsa.patch
+	"${FILESDIR}"/${PN}-2.8.0-musl-sysconf.patch
+	"${FILESDIR}"/${PN}-2.8.1-libcxx23.patch
 )
 
 CMAKE_QA_COMPAT_SKIP=1 #957976
@@ -110,7 +113,7 @@ src_prepare() {
 		-i cmake/SearchForStuff.cmake || die
 
 	# pluto(s)vg likewise often restrict versions and Gentoo also does not
-	# have .pc files for it, use sed to avoid rebasing on version changes
+	# have .cmake files for it, use sed to avoid rebasing on version changes
 	sed -e '/^find_package(plutovg/d' \
 		-e '/^find_package(plutosvg/c\
 			find_package(PkgConfig REQUIRED)\
@@ -122,6 +125,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# lto currently causes runtime issues (bug #980365)
+	filter-lto
+
 	# note that upstream only supports clang and ignores gcc issues, e.g.
 	# https://github.com/PCSX2/pcsx2/issues/10624#issuecomment-1890326047
 	# (CMakeLists.txt also gives a big warning if compiler is not clang)

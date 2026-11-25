@@ -1,0 +1,39 @@
+From d9f3b250e0cac90529e9dd2c6806d4f9d46901fb Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Fri, 3 Jul 2026 13:59:02 +0200
+Subject: [PATCH] require padding when decoding base64 on Python 3.15+
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Restore the old behavior of `urlsafe_b64decode()` to require padding
+when running on Python 3.15+, in order to fix raising `BadData` in some
+cases of malformed input.  This fixes the test failures in "bad payload"
+tests that incidentally surface when using zlib-ng as the compression
+library.
+
+Fixes #420
+
+Signed-off-by: Michał Górny <mgorny@gentoo.org>
+--- a/src/itsdangerous/encoding.py
++++ b/src/itsdangerous/encoding.py
+@@ -3,6 +3,7 @@
+ import base64
+ import string
+ import struct
++import sys
+ import typing as t
+ 
+ from .exc import BadData
+@@ -33,7 +34,10 @@ def base64_decode(string: str | bytes) -> bytes:
+     string += b"=" * (-len(string) % 4)
+ 
+     try:
+-        return base64.urlsafe_b64decode(string)
++        if sys.version_info >= (3, 15):
++            return base64.urlsafe_b64decode(string, padded=True)
++        else:
++            return base64.urlsafe_b64decode(string)
+     except (TypeError, ValueError) as e:
+         raise BadData("Invalid base64-encoded data") from e
+ 

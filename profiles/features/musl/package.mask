@@ -1,6 +1,10 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Maciej Barć <xgqt@gentoo.org> (2026-06-22)
+# Binary compiled against glibc
+dev-lang/unison-lang-bin
+
 # Sam James <sam@gentoo.org> (2026-02-11)
 # Fails to build on musl (bug #968134, https://sourceware.org/PR33747)
 ~dev-debug/gdb-17.1
@@ -81,10 +85,6 @@ sys-auth/libnss-pgsql
 sys-auth/libnss-mysql
 sys-auth/nss_ldap
 net-nds/nsscache
-
-# Sam James <sam@gentoo.org> (2024-09-30)
-# Needs porting to musl (bug #940130)
-~sys-auth/elogind-255.17
 
 # Sam James <sam@gentoo.org> (2024-08-31)
 # sys-devel/binutils[gprofng] is masked on musl
@@ -271,11 +271,11 @@ net-misc/sitecopy
 
 # Nowa Ammerlaan <nowa@gentoo.org> (2024-01-20)
 # Binary package linked to glibc (rolling mask, use for all such binpkgs)
-app-admin/awscli-bin
 app-admin/bitwarden-desktop-bin
 app-admin/puppet-agent
 app-admin/puppetserver
 app-admin/winbox
+app-antivirus/mdatp
 app-arch/rar
 app-backup/tsm
 app-benchmarks/geekbench
@@ -335,19 +335,15 @@ games-fps/legends
 games-fps/soldieroffortune
 games-fps/transfusion-bin
 games-fps/tribes2
-games-fps/ut2003
-games-fps/ut2003-bonuspack-cm
-games-fps/ut2003-bonuspack-de
-games-fps/ut2003-bonuspack-epic
-games-fps/ut2003-data
-games-fps/ut2003-demo
+games-fps/unreal
+games-fps/unreal-gold-data
+games-fps/unreal-tournament
+games-fps/unreal-tournament-data
 games-fps/ut2004
 games-fps/ut2004-bonuspack-cbp1
 games-fps/ut2004-bonuspack-cbp2
-games-fps/ut2004-bonuspack-ece
-games-fps/ut2004-bonuspack-mega
+games-fps/ut2004-bonuspack-xp
 games-fps/ut2004-data
-games-fps/ut2004-demo
 games-puzzle/world-of-goo-demo
 games-puzzle/world-of-goo-gog
 games-puzzle/world-of-goo-hb
@@ -358,7 +354,6 @@ games-server/bedrock-server
 games-server/etqw-ded
 games-server/mtavc
 games-server/steamcmd
-games-server/ut2004-ded
 games-simulation/slime-rancher
 games-strategy/darwinia
 games-strategy/knights-demo
@@ -374,6 +369,7 @@ media-sound/baudline
 media-sound/teamspeak-server
 media-tv/plex-media-server
 media-video/amdgpu-pro-amf
+media-video/amdgpu-pro-amf-legacy
 media-video/dvbackup
 media-video/makemkv
 media-video/popcorntime-bin
@@ -415,6 +411,7 @@ sys-apps/tas
 sys-block/arcconf
 sys-block/hpssacli
 sys-block/megacli
+virtual/amdgpu-pro-amf
 www-apps/chromedriver-bin
 www-apps/jellyfin-bin
 www-apps/kibana-bin
@@ -428,6 +425,7 @@ www-client/microsoft-edge-dev
 www-client/opera
 www-client/opera-beta
 www-client/opera-developer
+www-client/opera-gx
 www-client/vivaldi
 www-client/vivaldi-snapshot
 www-plugins/chrome-binary-plugins

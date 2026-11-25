@@ -1,0 +1,14 @@
+# Drop spaces around '=' sign (bug #980285)
+diff --git a/m4/build.m4 b/m4/build.m4
+index dfc6777..d9db8fa 100644
+--- a/m4/build.m4
++++ b/m4/build.m4
+@@ -20,7 +20,7 @@ AC_DEFUN([AC_FLRIG_BUILD_INFO], [
+ $X_CFLAGS -pipe -Wall -fexceptions $OPT_CFLAGS $DEBUG_CFLAGS $PTW32_CFLAGS"
+ 
+ #  if test "x$ac_cv_libgpiod" = "xyes"; then
+-    FLRIG_BUILD_CXXFLAGS = "$LIBGPIOD_CFLAGS $FLRIG_BUILD_CXXFLAGS"
++    FLRIG_BUILD_CXXFLAGS="$LIBGPIOD_CFLAGS $FLRIG_BUILD_CXXFLAGS"
+ #  fi
+ 
+   if test "x$ac_cv_flxmlrpc" != "xyes"; then

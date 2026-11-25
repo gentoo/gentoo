@@ -19,7 +19,7 @@ SRC_URI="https://github.com/grosser/maxitest/archive/v${PV}.tar.gz -> ${P}.tar.g
 
 LICENSE="MIT"
 SLOT="1"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86 ~x64-macos ~x64-solaris"
+KEYWORDS="amd64 arm ~arm64 ~hppa ~ppc ppc64 ~riscv ~sparc x86 ~x64-macos ~x64-solaris"
 IUSE="test"
 
 ruby_add_rdepend ">=dev-ruby/minitest-5.20.0:* <dev-ruby/minitest-5.28.0:*"
@@ -37,6 +37,8 @@ all_ruby_prepare() {
 	sed -e '/shows backtrace for/askip' \
 		-e '/describe.*line/ s/describe/xdescribe/' \
 		-e '/describe.*color/ s/describe/xdescribe/' \
+		-e '/stops on ctrl+c and prints errors/askip' \
+		-e '/shows backtraces when in verbose mode/askip' \
 		-i spec/maxitest_spec.rb || die
 }
 
@@ -45,15 +47,6 @@ each_ruby_prepare() {
 	sed -e '/\(run_cmd\|sh\)/ s:ruby :'${RUBY}' :' \
 		-e '/\(run_cmd\|sh\)/ s:mtest:'${RUBY}' -rmaxitest/version -S bin/mtest:' \
 		-i spec/maxitest_spec.rb || die
-
-	case ${RUBY} in
-		*ruby34)
-			# Avoid test failing due to changed messages in Ruby.
-			sed -e '/stops on ctrl+c and prints errors/ s/it/xit/' \
-				-e '/shows backtraces when in verbose mode/ s/it/xit/' \
-				-i spec/maxitest_spec.rb || die
-			;;
-	esac
 }
 
 each_ruby_test() {

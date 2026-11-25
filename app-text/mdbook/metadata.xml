@@ -5,6 +5,9 @@
 		<email>ionen@gentoo.org</email>
 		<name>Ionen Wolkens</name>
 	</maintainer>
+	<use>
+		<flag name="serve">Build support for the serve command (web server for testing books)</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">rust-lang/mdBook</remote-id>
 	</upstream>

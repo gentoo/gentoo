@@ -1,4 +1,4 @@
-# Copyright 2023-2025 Gentoo Authors
+# Copyright 2023-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,11 +8,14 @@ inherit autotools systemd
 DESCRIPTION="Allow firewalled/NATed host to establish a secure connection"
 HOMEPAGE="https://www.gsocket.io/"
 
+SRC_URI="https://github.com/hackerschoice/gsocket/commit/8cda659c36eea4973d54d46c59b48475fff86649.patch
+	-> ${PN}-1.4.43-openssl-4.patch"
+
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/hackerschoice/gsocket.git"
 else
-	SRC_URI="https://github.com/hackerschoice/gsocket/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI+=" https://github.com/hackerschoice/gsocket/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="amd64 ~arm64 ~riscv"
 fi
 
@@ -35,6 +38,9 @@ RDEPEND="${COMMON_DEPEND}"
 PATCHES=(
 	# https://github.com/hackerschoice/gsocket/pull/104
 	"${FILESDIR}"/gsocket-1.4.43-gs-init-secret.patch
+	# https://bugs.gentoo.org/985505
+	# https://github.com/hackerschoice/gsocket/pull/130
+	"${DISTDIR}"/${PN}-1.4.43-openssl-4.patch
 )
 
 src_prepare() {

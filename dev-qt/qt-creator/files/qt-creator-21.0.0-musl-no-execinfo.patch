@@ -1,0 +1,13 @@
+execinfo is unavailable with musl (unless opt to package+use libexecinfo)
+--- a/src/libs/utils/qtcassert.cpp
++++ b/src/libs/utils/qtcassert.cpp
+@@ -10,3 +10,3 @@
+ 
+-#if defined(Q_OS_UNIX) && !defined(__EMSCRIPTEN__)
++#if defined(Q_OS_UNIX) && !defined(__EMSCRIPTEN__) && defined(__GLIBC__)
+ #include <execinfo.h>
+@@ -29,3 +29,3 @@
+         maxdepth = ArraySize;
+-#if defined(Q_OS_UNIX) && !defined(__EMSCRIPTEN__)
++#if defined(Q_OS_UNIX) && !defined(__EMSCRIPTEN__) && defined(__GLIBC__)
+     void *bt[ArraySize] = {nullptr};

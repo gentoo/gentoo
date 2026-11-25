@@ -1,0 +1,38 @@
+From d1de244fe7b45355237a871192d2680d9d9f1e86 Mon Sep 17 00:00:00 2001
+From: ctrlaltca <ctrlaltca@gmail.com>
+Date: Sat, 13 Jun 2026 12:29:46 +0200
+Subject: [PATCH] Fix compilation with openssl 4 (#2765)
+
+---
+ src/kvilib/net/KviSSL.cpp | 13 ++++++++++++-
+ 1 file changed, 12 insertions(+), 1 deletion(-)
+
+diff --git a/src/kvilib/net/KviSSL.cpp b/src/kvilib/net/KviSSL.cpp
+index 1adaf7e28..9741373cc 100644
+--- a/src/kvilib/net/KviSSL.cpp
++++ b/src/kvilib/net/KviSSL.cpp
+@@ -953,12 +953,23 @@ void KviSSLCertificate::extractSignature()
+ 
+ 	m_szSignatureContents = "";
+ 
+-	for(i = 0; i < sig->length; i++)
++#if OPENSSL_VERSION_NUMBER >= 0x10100005L
++	int length = ASN1_STRING_length(sig);
++#else
++	int length = sig->length;
++#endif
++	for(i = 0; i < length; i++)
+ 	{
+ 		if(m_szSignatureContents.hasData())
+ 			m_szSignatureContents.append(":");
++#if OPENSSL_VERSION_NUMBER >= 0x10100005L
++		const unsigned char *data = ASN1_STRING_get0_data(sig);
++		m_szSignatureContents.append(hexdigits[(data[i] & 0xf0) >> 4]);
++		m_szSignatureContents.append(hexdigits[(data[i] & 0x0f)]);
++#else
+ 		m_szSignatureContents.append(hexdigits[(sig->data[i] & 0xf0) >> 4]);
+ 		m_szSignatureContents.append(hexdigits[(sig->data[i] & 0x0f)]);
++#endif
+ 	}
+ }
+ 

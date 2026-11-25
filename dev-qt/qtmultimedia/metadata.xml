@@ -10,10 +10,9 @@
 		<flag name="gstreamer">Enable <pkg>media-libs/gstreamer</pkg> support</flag>
 		<flag name="pipewire">Enable <pkg>media-video/pipewire</pkg> support</flag>
 		<flag name="qml">Build QML/QtQuick bindings and imports</flag>
-		<flag name="widgets">Build the QtMultimediaWidgets module</flag>
 	</use>
 	<upstream>
-		<bugs-to>https://bugreports.qt.io/</bugs-to>
+		<bugs-to>https://qt-project.atlassian.net/</bugs-to>
 		<doc>https://doc.qt.io/</doc>
 		<remote-id type="github">qt/qtmultimedia</remote-id>
 	</upstream>

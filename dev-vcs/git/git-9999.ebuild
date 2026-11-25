@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,9 +7,9 @@ GENTOO_DEPEND_ON_PERL=no
 
 # bug #329479: git-remote-testgit is not multiple-version aware
 PYTHON_COMPAT=( python3_{11..14} )
-RUST_OPTIONAL=1
-inherit flag-o-matic toolchain-funcs perl-module shell-completion optfeature
-inherit plocale python-single-r1 rust systemd meson
+CARGO_OPTIONAL=1
+inherit cargo flag-o-matic toolchain-funcs perl-module shell-completion
+inherit optfeature plocale python-single-r1 systemd meson
 
 PLOCALES="bg ca de es fr is it ko pt_PT ru sv vi zh_CN"
 
@@ -59,7 +59,7 @@ S="${WORKDIR}"/${MY_P}
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="+curl cgi cvs doc keyring +gpg highlight +iconv +nls +pcre perforce +perl rust +safe-directory selinux subversion test tk +webdav xinetd"
+IUSE="+curl cgi cvs doc keyring +gpg highlight +iconv +nls +pcre perforce +perl +rust +safe-directory selinux subversion test tk +webdav xinetd"
 
 # Common to both DEPEND and RDEPEND
 DEPEND="
@@ -144,15 +144,15 @@ REQUIRED_USE="
 RESTRICT="!test? ( test )"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-2.48.1-macos-no-fsmonitor.patch
+	"${FILESDIR}"/${PN}-2.55.0-0001-macos-no-fsmonitor.patch
 
 	# This patch isn't merged upstream but is kept in the ebuild by
 	# demand from developers. It's opt-in (needs a config option)
 	# and the documentation mentions that it is a Gentoo addition.
 	"${FILESDIR}"/${PN}-2.50.0-diff-implement-config.diff.renames-copies-harder.patch
 
-	"${FILESDIR}"/${PN}-2.52.0-0001-rust-don-t-pass-quiet-to-cargo.patch
-	"${FILESDIR}"/${PN}-2.52.0-0002-rust-respect-CARGO-environment-variable.patch
+	"${FILESDIR}"/${PN}-2.54.0-0001-rust-don-t-pass-quiet-to-cargo.patch
+	"${FILESDIR}"/${PN}-2.54.0-0002-rust-respect-CARGO-environment-variable.patch
 )
 
 pkg_setup() {
@@ -187,6 +187,7 @@ src_unpack() {
 		git-r3_src_unpack
 	fi
 
+	use rust && cargo_gen_config
 }
 
 src_prepare() {
@@ -232,6 +233,8 @@ src_configure() {
 		$(meson_feature curl)
 		$(meson_feature cgi gitweb)
 		$(meson_feature webdav expat)
+		$(meson_feature tk gitk)
+		$(meson_feature tk git_gui)
 		$(meson_feature iconv)
 		$(meson_feature nls gettext)
 		$(meson_feature pcre pcre2)
@@ -272,18 +275,6 @@ src_configure() {
 	fi
 
 	meson_src_configure
-
-	if use tk ; then
-		local tkdir
-		for tkdir in git-gui gitk-git ; do
-			(
-				EMESON_SOURCE="${S}"/${tkdir}
-				BUILD_DIR="${WORKDIR}"/${tkdir}_build
-				emesonargs=()
-				meson_src_configure
-			)
-		done
-	fi
 }
 
 git_emake() {
@@ -314,17 +305,10 @@ git_emake() {
 }
 
 src_compile() {
-	meson_src_compile
-
-	if use tk ; then
-		local tkdir
-		for tkdir in git-gui gitk-git ; do
-			(
-				EMESON_SOURCE="${S}"/${tkdir}
-				BUILD_DIR="${WORKDIR}"/${tkdir}_build
-				meson_src_compile
-			)
-		done
+	if use rust; then # bug #978391
+		cargo_env meson_src_compile
+	else
+		meson_src_compile
 	fi
 
 	if use doc ; then
@@ -444,17 +428,6 @@ src_install() {
 		newconfd "${FILESDIR}"/git-daemon.confd git-daemon
 		systemd_newunit "${FILESDIR}/git-daemon_at-r1.service" "git-daemon@.service"
 		systemd_dounit "${FILESDIR}/git-daemon.socket"
-	fi
-
-	if use tk ; then
-		local tkdir
-		for tkdir in git-gui gitk-git ; do
-			(
-				EMESON_SOURCE="${S}"/${tkdir}
-				BUILD_DIR="${WORKDIR}"/${tkdir}_build
-				meson_src_install
-			)
-		done
 	fi
 
 	perl_delete_localpod

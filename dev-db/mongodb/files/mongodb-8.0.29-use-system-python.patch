@@ -1,0 +1,139 @@
+The default build tries to download a python executable and all required python modules during
+the build process. While we can pre-populate the Bazel modules to avoid downloading them,
+we cannot prevent poetry from attempting to access PyPI.
+
+Additionally, local_host_values expects to use the downloaded python binary to get the number
+of CPUs on the local system. Since we are not using thin_lto, it is simpler to remove this
+rather than trying to force it to use the sytem python.
+
+This patch allows us to use the system python and removes the rules_poetry Bazel module.
+Additional references to poetry are removed by the ebuild.
+
+diff '--color=auto' -ur a/bazel/mongo_src_rules.bzl b/bazel/mongo_src_rules.bzl
+--- a/bazel/mongo_src_rules.bzl	2026-06-16 10:16:56.000000000 -0400
++++ b/bazel/mongo_src_rules.bzl	2026-07-23 11:50:32.370988284 -0400
+@@ -30,7 +30,6 @@
+     "extract_debuginfo_binary",
+     "extract_debuginfo_test",
+ )
+-load("@local_host_values//:local_host_values_set.bzl", "NUM_CPUS")
+ load("@evergreen_variables//:evergreen_variables.bzl", "UNSAFE_COMPILE_VARIANT", "UNSAFE_VERSION_ID")
+ load("//bazel/toolchains/cc/mongo_windows:mongo_windows_cc_toolchain_config.bzl", "MIN_VER_MAP")
+ load("@bazel_skylib//rules:common_settings.bzl", "BuildSettingInfo")
+@@ -754,10 +753,6 @@
+         }),
+         "tags": tags,
+         "linkopts": linkopts + rpath_flags + select({
+-            "//bazel/config:thin_lto_enabled": ["-Wl,--threads=" + str(NUM_CPUS)],
+-            "//bazel/config:bolt_enabled": ["-Wl,--threads=" + str(NUM_CPUS)],
+-            "//conditions:default": [],
+-        }) + select({
+             "//bazel/config:simple_build_id_enabled": ["-Wl,--build-id=0x%x%x%x" % (hash(name), hash(name), hash(str(UNSAFE_VERSION_ID) + str(UNSAFE_COMPILE_VARIANT)))],
+             "//conditions:default": [],
+         }),
+@@ -782,10 +777,6 @@
+             # Debug compression significantly reduces .o, .dwo, and .a sizes
+             "//bazel/config:compress_debug_compile_enabled": {"cpp_link.coefficient": "18.0"},
+             "//conditions:default": {"cpp_link.coefficient": "3.0"},
+-        }) | select({
+-            "//bazel/config:thin_lto_enabled": {"cpp_link.cpus": str(NUM_CPUS)},
+-            "//bazel/config:bolt_enabled": {"cpp_link.cpus": str(NUM_CPUS)},
+-            "//conditions:default": {},
+         }),
+         "env": env | SANITIZER_ENV,
+     } | kwargs
+diff '--color=auto' -ur a/MODULE.bazel b/MODULE.bazel
+--- a/MODULE.bazel	2026-06-16 10:16:56.000000000 -0400
++++ b/MODULE.bazel	2026-07-23 12:58:15.107560406 -0400
+@@ -77,13 +77,6 @@
+     version = "6.3.0",
+ )
+ 
+-bazel_dep(name = "rules_poetry", version = "")
+-git_override(
+-    module_name = "rules_poetry",
+-    commit = "917630033c736c188605cf0f558c34afc1eca540",
+-    patches = ["//bazel/rules_poetry:rules_poetry.patch"],
+-    remote = "https://github.com/mongodb-forks/rules_poetry",
+-)
+ 
+ #
+ ## We need skylib to be able to use config_setting_group in rule_poetry below
+@@ -173,20 +166,10 @@
+     "py_windows_x86_64",
+ )
+ 
+-register_toolchains(
+-    "@py_linux_arm64//:python_toolchain",
+-    "@py_linux_ppc64le//:python_toolchain",
+-    "@py_linux_s390x//:python_toolchain",
+-    "@py_linux_x86_64//:python_toolchain",
+-    "@py_macos_arm64//:python_toolchain",
+-    "@py_macos_x86_64//:python_toolchain",
+-    "@py_windows_x86_64//:python_toolchain",
+-)
+ 
+ # broken on windows currently
+ setup_local_host_values = use_repo_rule("//bazel/platforms:local_host_values.bzl", "setup_local_host_values")
+ 
+-setup_local_host_values(name = "local_host_values")
+ 
+ setup_evergreen_variables = use_repo_rule("//bazel/repository_rules:evergreen_variables.bzl", "setup_evergreen_variables")
+ 
+@@ -196,3 +179,17 @@
+ use_repo(setup_mongo_windows_toolchains_extension, "mongo_windows_toolchain")
+ 
+ register_toolchains("@mongo_windows_toolchain//...")
++
++bazel_dep(name = "rules_python", version = "1.0.0")
++single_version_override(
++    module_name = "rules_python",
++    version = "1.0.0",
++)
++
++bazel_dep(name = "rules_cc", version = "0.0.16")
++single_version_override(
++    module_name = "rules_cc",
++    version = "0.0.16",
++)
++
++register_toolchains("@rules_python//python/runtime_env_toolchains:all")
+diff '--color=auto' -ur a/WORKSPACE.bazel b/WORKSPACE.bazel
+--- a/WORKSPACE.bazel	2026-06-16 10:16:56.000000000 -0400
++++ b/WORKSPACE.bazel	2026-07-23 12:26:51.308298469 -0400
+@@ -110,19 +110,6 @@
+ 
+ rules_coverity_toolchains()
+ 
+-load("@rules_poetry//rules_poetry:poetry.bzl", "poetry")
+-
+-poetry(
+-    name = "poetry",
+-    excludes = [
+-        "mdit-py-plugins",  # plugins for markdown-it-py. Introduces an optional circular dependency that bazel does not like.
+-    ],
+-    lockfile = "//:poetry.lock",
+-    pyproject = "//:pyproject.toml",
+-    python_interpreter_target_default = "@py_host//:dist/bin/python3",
+-    python_interpreter_target_mac = "@py_host//:dist/bin/python3",
+-    python_interpreter_target_win = "@py_host//:dist/python.exe",
+-)
+ 
+ load("@aspect_rules_js//js:toolchains.bzl", "DEFAULT_NODE_VERSION", "rules_js_register_toolchains")
+ 
+@@ -174,12 +161,10 @@
+ 
+ codeowners_binary()
+ 
+-poetry(
+-    name = "poetry_bazel_rules_mongo",
+-    lockfile = "@bazel_rules_mongo//:poetry.lock",
+-    pyproject = "@bazel_rules_mongo//:pyproject.toml",
+-)
+ 
+ load("//bazel/format:shfmt.bzl", "shfmt")
+ 
+ shfmt()
++
++load("@rules_python//python:repositories.bzl", "py_repositories")
++py_repositories()

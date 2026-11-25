@@ -1,0 +1,108 @@
+From 5003d04e5987a78c8cf56b96b8d1ffbdf4c2feef Mon Sep 17 00:00:00 2001
+From: Noah Davis <noahadvs@gmail.com>
+Date: Sat, 4 Jul 2026 14:36:41 -0400
+Subject: [PATCH] Remove OpenCV dependency
+
+We don't have a reason to depend on OpenCV anymore
+since KQuickImageEditor will no longer use it soon
+and we don't really need to use a Lanczos filter.
+This change should bring a measurable if not dramatic
+improvement to startup time since a bicubic filter
+(Qt::SmoothTransformation) has a simpler algorithm than
+a Lanczos filter.
+---
+ CMakeLists.txt                      |  1 -
+ src/CMakeLists.txt                  |  5 +-
+ src/Platforms/ImagePlatformKWin.cpp | 28 +++------
+ 3 files changed, 10 insertions(+), 24 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 0eea12dbf..fb0a8aa2f 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -85,7 +85,6 @@ find_package(Wayland REQUIRED COMPONENTS Client)
+ find_package(PlasmaWaylandProtocols REQUIRED)
+ find_package(LayerShellQt REQUIRED)
+ find_package(KPipeWire)
+-find_package(OpenCV 4.7 REQUIRED core imgproc)
+ find_package(PkgConfig REQUIRED)
+ 
+ set_package_properties(KPipeWire PROPERTIES DESCRIPTION
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 953e72677..524c94b6f 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -93,11 +93,9 @@ ki18n_wrap_ui(spectacle
+     Gui/SettingsDialog/VideoSaveOptions.ui
+ )
+ 
+-# Needed to compile with OpenCV
++# Needed to compile with Tesseract
+ target_compile_options (spectacle PRIVATE -fexceptions)
+ 
+-target_include_directories(spectacle PUBLIC ${OpenCV_INCLUDE_DIRS})
+-
+ target_link_libraries(spectacle PRIVATE
+     Qt::Concurrent
+     Qt::DBus
+@@ -128,7 +126,6 @@ target_link_libraries(spectacle PRIVATE
+     Wayland::Client
+     LayerShellQt::Interface
+     KQuickImageEditor
+-    ${OpenCV_LIBRARIES}
+     PkgConfig::TESSERACT
+ )
+ 
+diff --git a/src/Platforms/ImagePlatformKWin.cpp b/src/Platforms/ImagePlatformKWin.cpp
+index 4521f0681..cd6a1e740 100644
+--- a/src/Platforms/ImagePlatformKWin.cpp
++++ b/src/Platforms/ImagePlatformKWin.cpp
+@@ -8,7 +8,6 @@
+ #include "Config.h"
+ #include "ExportManager.h"
+ #include "Geometry.h"
+-#include "QtCV.h"
+ #include "DebugUtils.h"
+ #include "ImageMetaData.h"
+ 
+@@ -104,30 +103,21 @@ QImage combinedImage(const QList<QImage> &images)
+     }
+     // We ceil to the next integer size up so that integer DPR images are always crisp.
+     const auto finalDpr = std::ceil(maxDpr);
+-    // An RGBA8888 based format is needed for compatibility with OpenCV.
+-    // If we used an ARGB32 based format, we'd need to swap red and blue.
+-    // Not sure what to do if we end up having different formats for different screens.
+     QImage finalImage{imageRect.size().toSize() * finalDpr, finalFormat};
+     finalImage.fill(Qt::transparent);
+-    auto mainMat = QtCV::qImageToMat(finalImage);
++    QPainter painter(&finalImage);
+     for (auto &image : images) {
+-        // Region Of Interest to put the image in the main image.
+-        // Prevent ROI from going out of bounds or having negative size.
+-        const auto rect = [finalDpr, &image, &finalImage] {
+-            auto pos = ImageMetaData::logicalXY(image) * finalDpr;
+-            auto size = image.deviceIndependentSize() * finalDpr;
+-            auto rect = Geometry::rectClipped(QRectF(pos, size).toRect(), //
+-                                              finalImage.rect());
+-            return cv::Rect(rect.x(), rect.y(), rect.width(), rect.height());
+-        }();
++        const auto pos = ImageMetaData::logicalXY(image) * finalDpr;
++        const auto size = (image.deviceIndependentSize() * finalDpr).toSize();
+         const auto imageDpr = image.devicePixelRatio();
+         const bool hasIntDpr = static_cast<int>(imageDpr) == imageDpr;
+-        const auto interpolation = hasIntDpr ? cv::INTER_AREA : cv::INTER_LANCZOS4;
+-        auto rgbaImage = image.format() == finalImage.format() ? image : image.convertedTo(finalFormat);
+-        const auto mat = QtCV::qImageToMat(rgbaImage);
+-        // Will just copy if there's no difference in size
+-        cv::resize(mat, mainMat(rect), rect.size(), 0, 0, interpolation);
++        const auto interpolation = hasIntDpr ? Qt::FastTransformation : Qt::SmoothTransformation;
++        painter.drawImage(QRectF{pos, size},
++                          size == image.size() //
++                              ? image
++                              : image.scaled(size, Qt::KeepAspectRatio, interpolation));
+     }
++    painter.end();
+     finalImage.setDevicePixelRatio(finalDpr);
+     ImageMetaData::setSubGeometryList(finalImage, geometryList);
+     return finalImage;
+-- 

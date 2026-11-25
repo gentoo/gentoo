@@ -38,15 +38,13 @@ inherit autotools flag-o-matic multilib prefix toolchain-funcs wrapper
 # be about always preferred over abi_x86_32, this should be removed and
 # support for 32bit-only-on-64bit be dropped matching how /no-multilib/
 # handles it
-readonly WINE_USEDEP="abi_x86_32(-)?,abi_x86_64(-)?"
+WINE_USEDEP="abi_x86_32(-)?,abi_x86_64(-)?"
 
 IUSE="+abi_x86_64 arm64ec crossdev-mingw custom-cflags +mingw +strip"
 
 # enable wow64 in wine-11+ where it is no longer considered experimental
 # and provides a better UX for Gentoo users without USE=abi_x86_32
-# TODO: drop wine-proton exception here and in wine_pkg_preinst when
-# 9999 is based on wine-11.0
-if ver_test -ge 11 && [[ ${PN} != wine-proton ]]; then
+if ver_test -ge 11; then
 	IUSE+=" abi_x86_32 +wow64"
 else
 	IUSE+=" +abi_x86_32 wow64"
@@ -59,8 +57,8 @@ REQUIRED_USE="
 "
 
 RDEPEND="
-	arm64? ( wow64? ( app-emulation/fex-xtajit[wow64(+)] ) )
-	arm64ec? ( app-emulation/fex-xtajit[arm64ec(-)] )
+	arm64? ( wow64? ( >=app-emulation/fex-xtajit-2608[wow64(+)] ) )
+	arm64ec? ( >=app-emulation/fex-xtajit-2608[arm64ec(-)] )
 "
 BDEPEND="
 	|| (
@@ -410,13 +408,23 @@ wine_src_install() {
 		fi
 	fi
 
-	use arm64 && use wow64 &&
-		dosym -r /usr/lib/fex-xtajit/libwow64fex.dll \
-			${WINE_PREFIX}/wine/aarch64-windows/xtajit.dll
+	if use arm64; then
+		if use wow64; then
+			dosym -r /usr/lib/fex-xtajit/libwow64fex.dll \
+				${WINE_PREFIX}/wine/aarch64-windows/xtajit.dll
 
-	use arm64ec &&
-		dosym -r /usr/lib/fex-xtajit/libarm64ecfex.dll \
-			${WINE_PREFIX}/wine/aarch64-windows/xtajit64.dll
+			dosym -r /usr/lib/fex-xtajit/libwow64fex.so \
+				${WINE_PREFIX}/wine/aarch64-unix/libwow64fex.so
+		fi
+
+		if use arm64ec; then
+			dosym -r /usr/lib/fex-xtajit/libarm64ecfex.dll \
+				${WINE_PREFIX}/wine/aarch64-windows/xtajit64.dll
+
+			dosym -r /usr/lib/fex-xtajit/libarm64ecfex.so \
+				${WINE_PREFIX}/wine/aarch64-unix/libarm64ecfex.so
+		fi
+	fi
 
 	# delete unwanted files if requested, not done directly in ebuilds
 	# given must be done after install and before wrappers
@@ -460,8 +468,7 @@ wine_src_install() {
 wine_pkg_preinst() {
 	# if *any* slot has it set or it is a new install, then assume
 	# user does not need a warning
-	use wow64 && ver_test -ge 11 && [[ ${PN} != wine-proton ]] &&
-		has_version "${CATEGORY}/${PN}" &&
+	use wow64 && ver_test -ge 11 && has_version "${CATEGORY}/${PN}" &&
 		! has_version "${CATEGORY}/${PN}[wow64(-)]" && WINE_WARN_WOW64=
 }
 
@@ -481,7 +488,9 @@ wine_pkg_postinst() {
 	fi
 
 	# difficult to tell what is needed from here, but try to warn anyway
-	if use abi_x86_32 && { use opengl || use vulkan; }; then
+	if use abi_x86_32 &&
+		{ ! in_iuse opengl || use opengl || ! in_iuse vulkan || use vulkan; }
+	then
 		if has_version 'x11-drivers/nvidia-drivers'; then
 			if has_version 'x11-drivers/nvidia-drivers[-abi_x86_32]'; then
 				ewarn

@@ -1,0 +1,15 @@
+Rename this file, it causes a conflict:
+
+https://bugs.gentoo.org/980039
+
+--- a/data/Makefile.am
++++ b/data/Makefile.am
+@@ -5,7 +5,7 @@
+ dist_conf_DATA = lightdm.conf users.conf keys.conf
+ 
+ dbusconfdir = $(datadir)/dbus-1/system.d
+-dist_dbusconf_DATA = org.freedesktop.DisplayManager.conf
++dist_dbusconf_DATA = org.freedesktop.lightdm.conf
+ 
+ pamdir = $(sysconfdir)/pam.d
+ dist_pam_DATA = pam/lightdm \

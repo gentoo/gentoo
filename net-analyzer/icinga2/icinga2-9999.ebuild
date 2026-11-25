@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,7 +18,7 @@ HOMEPAGE="https://icinga.com/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="console jumbo-build mail mariadb minimal +mysql +plugins postgres systemd"
+IUSE="console jumbo-build mail mariadb minimal +mysql opentelemetry +plugins postgres systemd"
 
 # Add accounts to DEPEND because of fowners in src_install
 DEPEND="
@@ -27,6 +27,7 @@ DEPEND="
 	console? ( dev-libs/libedit )
 	mariadb? ( dev-db/mariadb-connector-c:= )
 	mysql? ( dev-db/mysql-connector-c:= )
+	opentelemetry? ( dev-libs/protobuf:=[protoc] )
 	postgres? ( dev-db/postgresql:= )
 	dev-libs/yajl:=
 	acct-user/icinga
@@ -49,10 +50,6 @@ RDEPEND="
 
 REQUIRED_USE="!minimal? ( || ( mariadb mysql postgres ) )"
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-2.14.5-boost-1.87.patch
-)
-
 src_configure() {
 	local mycmakeargs=(
 		-DICINGA2_UNITY_BUILD=$(usex jumbo-build)
@@ -64,6 +61,7 @@ src_configure() {
 		-DICINGA2_GROUP=icingacmd
 		-DICINGA2_COMMAND_GROUP=icingacmd
 		-DICINGA2_RUNDIR=/run
+		-DICINGA2_WITH_OPENTELEMETRY=$(usex opentelemetry)
 		-DINSTALL_SYSTEMD_SERVICE_AND_INITSCRIPT=ON
 		-DUSE_SYSTEMD=$(usex systemd)
 		-DLOGROTATE_HAS_SU=ON

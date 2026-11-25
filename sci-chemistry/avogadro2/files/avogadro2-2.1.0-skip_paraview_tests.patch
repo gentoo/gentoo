@@ -1,0 +1,30 @@
+Skip tests with paraview requirement
+--- a/avogadro/CMakeLists.txt
++++ b/avogadro/CMakeLists.txt
+@@ -107,16 +107,6 @@ if(Avogadro_ENABLE_RPC)
+   add_definitions("-DAvogadro_ENABLE_RPC")
+ endif()
+ 
+-if(ENABLE_TESTING)
+-  if(QT_VERSION EQUAL 6)
+-    find_package(Qt6 COMPONENTS Test REQUIRED)
+-  endif()
+-  find_package(QtTesting REQUIRED NO_MODULE)
+-  include_directories(${QtTesting_INCLUDE_DIRS})
+-  link_directories(${QtTesting_LIBRARY_DIR})
+-  add_definitions(-DQTTESTING)
+-endif()
+-
+ # Need to add current binary dir to include path for UI file headers
+ include_directories(${CMAKE_CURRENT_BINARY_DIR})
+ 
+@@ -272,9 +262,6 @@ if(APPLE)
+ else()
+   set_target_properties(avogadro PROPERTIES OUTPUT_NAME "avogadro2")
+ endif()
+-if(ENABLE_TESTING)
+-  target_link_libraries(avogadro qttesting)
+-endif()
+ if(QT_VERSION EQUAL 6)
+   target_link_libraries(avogadro Qt6::OpenGL Qt6::OpenGLWidgets)
+ endif()

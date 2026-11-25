@@ -1,0 +1,88 @@
+From dad5e07d2fe3943a376fd7055a61da2816a1209c Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+Date: Tue, 12 May 2026 13:54:08 +0200
+Subject: use absl::string_view
+
+Signed-off-by: Paul Zander <negril.nx+gentoo@gmail.com>
+
+diff --git a/test/cpp/util/proto_reflection_descriptor_database.cc b/test/cpp/util/proto_reflection_descriptor_database.cc
+index 3db008a..27148cb 100644
+--- a/test/cpp/util/proto_reflection_descriptor_database.cc
++++ b/test/cpp/util/proto_reflection_descriptor_database.cc
+@@ -61,7 +61,7 @@ ProtoReflectionDescriptorDatabase::~ProtoReflectionDescriptorDatabase() {
+ }
+ 
+ bool ProtoReflectionDescriptorDatabase::FindFileByName(
+-    const string& filename, protobuf::FileDescriptorProto* output) {
++    absl::string_view filename, protobuf::FileDescriptorProto* output) {
+   if (cached_db_.FindFileByName(filename, output)) {
+     return true;
+   }
+@@ -104,7 +104,7 @@ bool ProtoReflectionDescriptorDatabase::FindFileByName(
+ }
+ 
+ bool ProtoReflectionDescriptorDatabase::FindFileContainingSymbol(
+-    const string& symbol_name, protobuf::FileDescriptorProto* output) {
++    absl::string_view symbol_name, protobuf::FileDescriptorProto* output) {
+   if (cached_db_.FindFileContainingSymbol(symbol_name, output)) {
+     return true;
+   }
+@@ -147,7 +147,7 @@ bool ProtoReflectionDescriptorDatabase::FindFileContainingSymbol(
+ }
+ 
+ bool ProtoReflectionDescriptorDatabase::FindFileContainingExtension(
+-    const string& containing_type, int field_number,
++    absl::string_view containing_type, int field_number,
+     protobuf::FileDescriptorProto* output) {
+   if (cached_db_.FindFileContainingExtension(containing_type, field_number,
+                                              output)) {
+@@ -205,7 +205,7 @@ bool ProtoReflectionDescriptorDatabase::FindFileContainingExtension(
+ }
+ 
+ bool ProtoReflectionDescriptorDatabase::FindAllExtensionNumbers(
+-    const string& extendee_type, std::vector<int>* output) {
++    absl::string_view extendee_type, std::vector<int>* output) {
+   if (cached_extension_numbers_.find(extendee_type) !=
+       cached_extension_numbers_.end()) {
+     *output = cached_extension_numbers_[extendee_type];
+diff --git a/test/cpp/util/proto_reflection_descriptor_database.h b/test/cpp/util/proto_reflection_descriptor_database.h
+index 4285e10..35c5fa0 100644
+--- a/test/cpp/util/proto_reflection_descriptor_database.h
++++ b/test/cpp/util/proto_reflection_descriptor_database.h
+@@ -47,13 +47,13 @@ class ProtoReflectionDescriptorDatabase : public protobuf::DescriptorDatabase {
+   //
+   // Find a file by file name.  Fills in *output and returns true if found.
+   // Otherwise, returns false, leaving the contents of *output undefined.
+-  bool FindFileByName(const string& filename,
++  bool FindFileByName(absl::string_view filename,
+                       protobuf::FileDescriptorProto* output) override;
+ 
+   // Find the file that declares the given fully-qualified symbol name.
+   // If found, fills in *output and returns true, otherwise returns false
+   // and leaves *output undefined.
+-  bool FindFileContainingSymbol(const string& symbol_name,
++  bool FindFileContainingSymbol(absl::string_view filename,
+                                 protobuf::FileDescriptorProto* output) override;
+ 
+   // Find the file which defines an extension extending the given message type
+@@ -61,7 +61,7 @@ class ProtoReflectionDescriptorDatabase : public protobuf::DescriptorDatabase {
+   // otherwise returns false and leaves *output undefined.  containing_type
+   // must be a fully-qualified type name.
+   bool FindFileContainingExtension(
+-      const string& containing_type, int field_number,
++      absl::string_view containing_type, int field_number,
+       protobuf::FileDescriptorProto* output) override;
+ 
+   // Finds the tag numbers used by all known extensions of
+@@ -71,7 +71,7 @@ class ProtoReflectionDescriptorDatabase : public protobuf::DescriptorDatabase {
+   // FindFileContainingExtension will return true on all of the found
+   // numbers. Returns true if the search was successful, otherwise
+   // returns false and leaves output unchanged.
+-  bool FindAllExtensionNumbers(const string& extendee_type,
++  bool FindAllExtensionNumbers(absl::string_view extendee_type,
+                                std::vector<int>* output) override;
+ 
+   // Provide a list of full names of registered services
+-- 
+2.54.0
+

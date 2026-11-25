@@ -1,0 +1,22 @@
+see https://savannah.gnu.org/bugs/index.php?68505
+fix parallel with ttf that requires bdf files
+--- a/font/Makefile
++++ b/font/Makefile
+@@ -1385,7 +1385,7 @@ truetype-stamp: ttf-stamp ttf-csur-stamp ttf-upper-stamp
+ #
+ ttf: ttf-stamp
+ 
+-ttf-stamp: hex-stamp
++ttf-stamp: hex-stamp bdf-stamp
+ 	# First, copy the ordinary version, to make a TrueType font.
+ 	# Remove the Variation Selectors, U+FE00..U+FE0F
+ 	grep -v "^FE0.:" $(COMPILED_DIR)/unifont-$(VERSION).hex \
+@@ -1474,7 +1474,7 @@ ttf-csur-stamp: hex-stamp
+ #
+ ttf-upper: ttf-upper-stamp
+ 
+-ttf-upper-stamp: hex-stamp
++ttf-upper-stamp: hex-stamp bdf-stamp
+ 	# First, copy the ordinary version, to make a TrueType font.
+ 	# Remove Variation Selectors, U+E0100..U+E01EF.
+ 	grep -v "^0E01[0-E].:" $(COMPILED_DIR)/unifont_upper-$(VERSION).hex \

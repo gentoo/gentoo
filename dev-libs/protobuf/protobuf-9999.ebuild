@@ -1,4 +1,4 @@
-# Copyright 2008-2025 Gentoo Authors
+# Copyright 2008-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -167,7 +167,7 @@ multilib_src_install_all() {
 
 	find "${ED}" -name "*.la" -delete || die
 
-	if [[ ! -f "${ED}/usr/$(get_libdir)/libprotobuf$(get_libname "${SLOT#*/}")" ]]; then
+	if ! tc-is-cross-compiler && [[ ! -f "${ED}/usr/$(get_libdir)/libprotobuf$(get_libname "${SLOT#*/}")" ]]; then
 		eerror "No matching library found with SLOT variable, currently set: ${SLOT}\n" \
 			"Expected value: ${ED}/usr/$(get_libdir)/libprotobuf$(get_libname "${SLOT#*/}")"
 		die "Please update SLOT variable"

@@ -38,7 +38,7 @@ PATCHES=(
 src_prepare() {
 	cmake_src_prepare
 
-	sed -i -e '/add_subdirectory(doc)/d' CMakeLists.txt || die
+	cmake_comment_add_subdirectory doc
 	# CMake doc building broken
 	# gentoo doc directory
 	#sed -i \
@@ -62,10 +62,10 @@ src_prepare() {
 
 	# remove targets if use flags not set
 	if ! use examples; then
-		sed -i -e '/add_subdirectory(examples)/d' CMakeLists.txt || die
+		cmake_comment_add_subdirectory examples
 	fi
 	if ! use test; then
-		sed -i -e '/add_subdirectory(test)/d' CMakeLists.txt || die
+		cmake_comment_add_subdirectory test
 	fi
 
 	# remove static libs

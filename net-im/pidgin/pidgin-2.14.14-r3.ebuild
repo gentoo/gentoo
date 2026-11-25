@@ -1,10 +1,10 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 GENTOO_DEPEND_ON_PERL=no
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{12..14} )
 
 inherit autotools gnome2-utils flag-o-matic perl-module python-single-r1 xdg
 
@@ -14,7 +14,7 @@ SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0/2" # libpurple version
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm arm64 ~loong ppc ppc64 ~riscv ~sparc x86"
 IUSE="aqua dbus debug doc eds gadu gnutls groupwise +gstreamer +gui idn
 meanwhile ncurses networkmanager nls perl prediction python sasl spell tcl
 test tk v4l +xscreensaver zephyr zeroconf ${GENTOO_PERL_USESTRING}"

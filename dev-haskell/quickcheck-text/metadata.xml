@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		The usual Arbitrary instance for Text
+		(in
+		&lt;https://hackage.haskell.org/package/quickcheck-instances quickcheck-instances&gt;)
+		only has single-byte
+		instances and so isn&#39;t an ideal representation of a valid UTF-8
+		character. This package has generators for one-, two- and three-byte
+		UTF-8 characters (all that are currently in use).
+	</longdescription>
+	<upstream>
+		<remote-id type="hackage">quickcheck-text</remote-id>
+		<remote-id type="github">olorin/quickcheck-text</remote-id>
+	</upstream>
+</pkgmetadata>

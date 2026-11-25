@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -14,7 +14,7 @@ SRC_URI="
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~mips ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm ~mips ~sparc ~x86"
 
 DEPEND=">=sys-devel/binutils-2.31.1-r4"
 BDEPEND="verify-sig? ( sec-keys/openpgp-keys-fefe )"
@@ -64,9 +64,8 @@ src_prepare() {
 }
 
 src_compile() {
+	tc-export AR CC
 	emake prefix="${EPREFIX}"${DIETHOME} \
-		AR="$(tc-getAR)" \
-		CC="$(tc-getCC)" \
 		CFLAGS="${CFLAGS}" \
 		STRIP=":"
 }

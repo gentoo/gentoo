@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,7 +15,7 @@ SRC_URI="
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0/$(ver_cut 1-2)"
 KEYWORDS="~alpha amd64 ppc ~ppc64 ~sparc x86"
-IUSE="+gnutls +iconv +icu libdispatch +libffi zeroconf"
+IUSE="+gnutls +iconv +icu libdispatch +libffi selinux zeroconf"
 
 # gnustep-make: tests use the option --timeout which was added in 2.9.3
 RDEPEND="${GNUSTEP_CORE_DEPEND}
@@ -39,6 +39,7 @@ BDEPEND="
 	virtual/pkgconfig
 	verify-sig? ( sec-keys/openpgp-keys-gnustep )
 "
+RDEPEND+=" selinux? ( sec-policy/selinux-gdomap )"
 
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/gnustep.asc
 

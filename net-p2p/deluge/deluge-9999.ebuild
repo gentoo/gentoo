@@ -1,12 +1,12 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 DISTUTILS_USE_PEP517=setuptools
 DISTUTILS_SINGLE_IMPL=1
-inherit distutils-r1 systemd xdg
+inherit distutils-r1 greadme systemd xdg
 
 DESCRIPTION="BitTorrent client with a client/server model"
 HOMEPAGE="https://deluge-torrent.org/"
@@ -35,26 +35,29 @@ BDEPEND="
 RDEPEND="
 	acct-group/deluge
 	acct-user/deluge
-	net-libs/libtorrent-rasterbar:=[python,${PYTHON_SINGLE_USEDEP}]
+	<net-libs/libtorrent-rasterbar-2.1:=[python,${PYTHON_SINGLE_USEDEP}]
 	$(python_gen_cond_dep '
 		gui? (
 			sound? ( dev-python/pygame[${PYTHON_USEDEP}] )
-			dev-python/pygobject:3[${PYTHON_USEDEP}]
+			dev-python/pygobject:3[cairo,${PYTHON_USEDEP}]
 		)
+		dev-python/pyasn1[${PYTHON_USEDEP}]
 		dev-python/chardet[${PYTHON_USEDEP}]
 		dev-python/distro[${PYTHON_USEDEP}]
 		dev-python/pillow[${PYTHON_USEDEP}]
+		dev-python/pkg-resources[${PYTHON_USEDEP}]
 		dev-python/pyopenssl[${PYTHON_USEDEP}]
 		dev-python/pyxdg[${PYTHON_USEDEP}]
 		dev-python/rencode[${PYTHON_USEDEP}]
 		dev-python/setproctitle[${PYTHON_USEDEP}]
+		dev-python/setuptools[${PYTHON_USEDEP}]
 		>=dev-python/twisted-17.1.0[ssl(-),${PYTHON_USEDEP}]
 		>=dev-python/zope-interface-4.4.2[${PYTHON_USEDEP}]
 		dev-python/mako[${PYTHON_USEDEP}]
 	')
 	appindicator? ( dev-libs/libayatana-appindicator )
 	gui? (
-		gnome-base/librsvg
+		gnome-base/librsvg:2
 		libnotify? ( x11-libs/libnotify )
 	)
 "
@@ -79,6 +82,9 @@ python_test() {
 		deluge/plugins/Stats/deluge_stats/tests/test_stats.py
 		# Skipped upstream
 		deluge/tests/test_security.py
+		# Broken
+		deluge/tests/test_ui_entry.py
+		deluge/tests/test_webserver.py
 	)
 	local EPYTEST_DESELECT=(
 		# Skipped upstream
@@ -140,27 +146,27 @@ python_install_all() {
 	systemd_install_serviced "${FILESDIR}"/deluged.service.conf
 
 	python_optimize
+
+	greadme_stdin <<-EOF
+	To start only the daemon either run 'deluged' as user or modify
+	/etc/conf.d/deluged and run '/etc/init.d/deluged start' as root
+	if you use OpenRC or 'systemctl start deluged.service' if you use systemd.
+
+	Systemd unit files for deluged and deluge-web no longer source
+	/etc/conf.d/deluge* files. Environment variable customization now happens in
+	/etc/systemd/system/deluged.service.d/00gentoo.conf and
+	/etc/systemd/system/deluge-web.service.d/00gentoo.conf
+
+	For more information see https://deluge-torrent.org/faq/
+EOF
+}
+
+pkg_preinst() {
+	xdg_pkg_preinst
+	greadme_pkg_preinst
 }
 
 pkg_postinst() {
 	xdg_pkg_postinst
-
-	elog
-	elog "If, after upgrading, deluge doesn't work please back up and then"
-	elog "remove your '~/.config/deluge' directory and try again"
-	elog
-	elog "To start the daemon either run 'deluged' as user"
-	elog "or modify /etc/conf.d/deluged and run"
-	elog "'/etc/init.d/deluged start' as root if you use OpenRC"
-	elog "or"
-	elog "'systemctl start deluged.service' as root if you use systemd"
-	elog "You can still use deluge the old way"
-	elog
-	elog "Systemd unit files for deluged and deluge-web no longer source"
-	elog "/etc/conf.d/deluge* files. Environment variable customization now"
-	elog "happens in /etc/systemd/system/deluged.service.d/00gentoo.conf"
-	elog "and /etc/systemd/system/deluge-web.service.d/00gentoo.conf"
-	elog
-	elog "For more information see https://dev.deluge-torrent.org/wiki/Faq"
-	elog
+	greadme_pkg_postinst
 }

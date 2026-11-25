@@ -1,0 +1,49 @@
+Unbundle the zstr library (under the assumption that zlib support will
+be unconditionally disabled) by removing it from some CMake lists.
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 1dc3a98..05a0a6e 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -820,7 +820,6 @@ if(NOT FAST_BUILD)
+     ${HIGHS_BINARY_DIR}
+     ${PROJECT_SOURCE_DIR}/app
+     ${PROJECT_SOURCE_DIR}/extern
+-    ${PROJECT_SOURCE_DIR}/extern/zstr
+     ${PROJECT_SOURCE_DIR}/highs
+     ${PROJECT_SOURCE_DIR}/highs/io
+     ${PROJECT_SOURCE_DIR}/highs/pdlp/cupdlp
+diff --git a/cmake/sources-python.cmake b/cmake/sources-python.cmake
+index e5039bf..4dc7be4 100644
+--- a/cmake/sources-python.cmake
++++ b/cmake/sources-python.cmake
+@@ -1,6 +1,5 @@
+ set(include_dirs_python
+     $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/extern>
+-    $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/extern/zstr>
+     $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/highs>
+     $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/highs/interfaces>
+     $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/highs/io>
+diff --git a/cmake/sources.cmake b/cmake/sources.cmake
+index 983833a..31e0630 100644
+--- a/cmake/sources.cmake
++++ b/cmake/sources.cmake
+@@ -1,6 +1,5 @@
+ set(include_dirs
+   $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/extern>
+-  $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/extern/zstr>
+   $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/highs>
+   $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/highs/interfaces>
+   $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/highs/io>
+@@ -446,8 +445,6 @@ set(highs_sources
+ 
+ # add catch header?
+ set(highs_headers
+-    ../extern/zstr/strict_fstream.hpp
+-    ../extern/zstr/zstr.hpp
+     interfaces/highs_c_api.h
+     io/Filereader.h
+     io/FilereaderLp.h
+-- 
+2.53.0
+

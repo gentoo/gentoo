@@ -1,9 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{12..14} )
 DISTUTILS_USE_PEP517=setuptools
 inherit bash-completion-r1 distutils-r1
 
@@ -16,7 +16,7 @@ if [[ ${PV} == "9999" ]]; then
 else
 	SRC_URI="https://github.com/Gallopsled/pwntools/archive/${PV/_beta/beta}.tar.gz -> ${P}.gh.tar.gz"
 	if [[ ${PV} != *_beta* ]] ; then
-		KEYWORDS="amd64 arm64 ~riscv x86"
+		KEYWORDS="amd64 arm64 ~riscv"
 	fi
 	S="${WORKDIR}/${PN}-${PV/_beta/beta}"
 fi

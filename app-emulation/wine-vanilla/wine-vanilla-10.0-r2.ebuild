@@ -27,11 +27,10 @@ HOMEPAGE="
 LICENSE="LGPL-2.1+ BSD BSD-2 IJG MIT OPENLDAP ZLIB gsm libpng2 libtiff"
 SLOT="${PV}"
 IUSE="
-	+X +alsa capi cups +dbus dos llvm-libunwind ffmpeg +fontconfig
-	+gecko gphoto2 +gstreamer kerberos +mono netapi nls odbc opencl
-	+opengl pcap perl pulseaudio samba scanner +sdl selinux smartcard
-	+ssl +truetype udev +unwind usb v4l +vulkan wayland +xcomposite
-	xinerama
+	+X +alsa cups +dbus dos llvm-libunwind ffmpeg +fontconfig +gecko
+	gphoto2 +gstreamer kerberos +mono netapi nls odbc opencl +opengl
+	pcap perl pulseaudio samba scanner +sdl selinux smartcard +ssl
+	+truetype udev +unwind usb v4l +vulkan wayland +xcomposite xinerama
 "
 REQUIRED_USE="
 	X? ( truetype )
@@ -74,7 +73,6 @@ WINE_COMMON_DEPEND="
 		x11-libs/libXext[${WINE_USEDEP}]
 	)
 	alsa? ( media-libs/alsa-lib[${WINE_USEDEP}] )
-	capi? ( net-libs/libcapi:=[${WINE_USEDEP}] )
 	ffmpeg? ( media-video/ffmpeg:=[${WINE_USEDEP}] )
 	gphoto2? ( media-libs/libgphoto2:=[${WINE_USEDEP}] )
 	gstreamer? (
@@ -155,7 +153,7 @@ src_configure() {
 
 		$(use_with X x)
 		$(use_with alsa)
-		$(use_with capi)
+		--without-capi #977907
 		$(use_with cups)
 		$(use_with dbus)
 		$(use_with ffmpeg)

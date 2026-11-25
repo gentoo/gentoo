@@ -1,0 +1,15 @@
+https://bugs.gentoo.org/980302
+https://code.vinyl-cache.org/vinyl-cache/vinyl-cache/pulls/4512
+From: Nils Goroll <nils.goroll@uplex.de>
+
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -44,7 +44,7 @@ AM_DISTCHECK_CONFIGURE_FLAGS += --with-unwind
+ endif
+ 
+ install-data-local:
+-	$(install_sh) -d -m 0755 "${VINYL_STATE_DIR}"
++	$(install_sh) -d -m 0755 "$(DESTDIR)/${VINYL_STATE_DIR}"
+ 
+ distclean-local:
+ 	-find . '(' -name '*.gcda' -o -name '*.gcda' ')' -exec rm '{}' ';'

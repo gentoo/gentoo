@@ -13,11 +13,11 @@ inherit elisp
 MY_P="eselect-${PV}"
 DESCRIPTION="Emacs major mode for editing eselect files"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Eselect"
-SRC_URI="https://dev.gentoo.org/~ulm/eselect/${MY_P}.tar.xz"
+SRC_URI="https://distfiles.gentoo.org/pub/proj/eselect/${MY_P}.tar.xz"
 S="${WORKDIR}/${MY_P}/misc"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~x64-macos"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~sparc x86 ~x64-macos"
 
 SITEFILE="50${PN}-gentoo.el"

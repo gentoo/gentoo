@@ -1,4 +1,4 @@
-# Copyright 2019-2025 Gentoo Authors
+# Copyright 2019-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -21,10 +21,10 @@ SLOT="0"
 IUSE="gbm pam test tracing"
 
 RDEPEND="
-	=dev-libs/aml-0.3*
+	=dev-libs/aml-1*:=
 	dev-libs/jansson:=
 	dev-libs/wayland
-	=gui-libs/neatvnc-0.9*[gbm?]
+	=gui-libs/neatvnc-1*:=[gbm?]
 	media-libs/mesa[egl(+),gles2(+),gbm(+)?]
 	x11-libs/libdrm
 	x11-libs/libxkbcommon

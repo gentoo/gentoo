@@ -1,0 +1,37 @@
+From 8d8d4b5b474f1ed9c19072fb0ed6df9b13ba3039 Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Sun, 5 Jul 2026 20:27:05 -0400
+Subject: [PATCH] test/test_khard.py: disable
+ test_sort_order_for_accentuated_names()
+
+This test uses a French locale and expects an accented 'E' to be
+sorted alongside an unaccented one. The test suite does skip tests
+that use nonexistent (i.e. not installed) locales, but on musl with
+the musl-locales package, you will have only a partial
+fr_FR. Mis-sorting names is not the end of the world, especially if
+it's libc that is mis-sorting them.
+---
+ test/test_khard.py | 10 ----------
+ 1 file changed, 10 deletions(-)
+
+diff --git a/test/test_khard.py b/test/test_khard.py
+index 08cdd90..87791f2 100644
+--- a/test/test_khard.py
++++ b/test/test_khard.py
+@@ -246,13 +246,3 @@ class TestSortContacts(unittest.TestCase):
+                 contact2 = next(abook2.search(query.FieldQuery("uid", "testuid2")))
+                 labels = next(abook2.search(query.NameQuery("labeled guy")))
+         self._test(category, contact1, labels, contact2, group=True)
+-
+-    def test_sort_order_for_accentuated_names(self):
+-        # reported in issue #127
+-        albert = TestContact(fn="Albert")
+-        eleanor = TestContact(fn="Eleanor")
+-        eugene = TestContact(fn="Eugene")
+-        zakari = TestContact(fn="Zakari")
+-        eric = TestContact(fn="Éric")
+-        with mock_locale(locale.LC_COLLATE, "fr"):
+-            self._test(albert, eleanor, eric, eugene, zakari, sort="formatted_name")
+-- 
+2.54.0
+

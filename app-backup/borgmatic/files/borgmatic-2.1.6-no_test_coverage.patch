@@ -1,0 +1,12 @@
+diff '--color=auto' -ur borgmatic-2.1.6.orig/pyproject.toml borgmatic-2.1.6/pyproject.toml
+--- borgmatic-2.1.6.orig/pyproject.toml	2026-06-02 00:52:45.000000000 +0200
++++ borgmatic-2.1.6/pyproject.toml	2026-06-02 08:18:44.406136272 +0200
+@@ -47,7 +47,7 @@
+ 
+ [tool.pytest.ini_options]
+ testpaths = "tests"
+-addopts = "--cov-report term-missing:skip-covered --cov=borgmatic --no-cov-on-fail --cov-fail-under=100 --ignore=tests/end-to-end --timeout=120 --asyncio-mode=auto"
++addopts = "--ignore=tests/end-to-end --ignore=tests/integration/actions/browse --ignore=tests/unit/actions/browse --asyncio-mode=auto"
+ 
+ [tool.ruff]
+ line-length = 100

@@ -1,0 +1,23 @@
+diff --git a/Makefile.in b/Makefile.in
+index 2e9404f..5ec9aed 100755
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -280,16 +280,8 @@ install-doc-n: make-docs-n
+ 	@echo "Installing nroff documentation in $(DESTDIR)$(mandir)/mann"
+ 	@list='$(srcdir)/doc/*.n'; for i in $$list; do \
+ 	    if test -f "$$i"; then \
+-		if test -f "$(DESTDIR)$(mandir)/mann/Tcl.n.gz" -o \
+-		    "$(DESTDIR)$(mandir)/mann/Tcl*.n.gz"; then \
+-		    gzip -k "$$i"; \
+-		    echo "Installing $$i.gz"; \
+-		    $(INSTALL_DATA) "$$i.gz" "$(DESTDIR)$(mandir)/mann"; \
+-		    rm -f "$$i.gz";\
+-		else \
+-		    echo "Installing $$i"; \
+-		    $(INSTALL_DATA) "$$i" "$(DESTDIR)$(mandir)/mann"; \
+-		fi; \
++		echo "Installing $$i"; \
++		$(INSTALL_DATA) "$$i" "$(DESTDIR)$(mandir)/mann"; \
+ 	    fi; \
+ 	done
+ 

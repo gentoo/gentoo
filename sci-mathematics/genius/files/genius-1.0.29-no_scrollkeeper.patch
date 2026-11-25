@@ -1,0 +1,27 @@
+--- a/configure.ac	2026-05-02 18:26:44.175402762 +0200
++++ b/configure.ac	2026-05-02 18:27:11.976085916 +0200
+@@ -241,15 +241,15 @@
+ fi
+ 
+ #dnl scrollkeeper checks 
+-#AC_ARG_ENABLE([scrollkeeper],
+-#	[AS_HELP_STRING([--disable-scrollkeeper],[#		do not make updates to the scrollkeeper database])],,
+-#		enable_scrollkeeper=yes)
+-#AM_CONDITIONAL([ENABLE_SK],[test "$enable_scrollkeeper" = "yes"])
+-#
+-#AC_PATH_PROG(SCROLLKEEPER_CONFIG, scrollkeeper-config,no)
+-#if test x$SCROLLKEEPER_CONFIG = xno; then
+-#  AC_MSG_ERROR(Couldn't find scrollkeeper-config. Please install the scrollkeeper package)
+-#fi
++dnl  AC_ARG_ENABLE([scrollkeeper],
++dnl  	[AS_HELP_STRING([--disable-scrollkeeper],[#		do not make updates to the scrollkeeper database])],,
++dnl  		enable_scrollkeeper=yes)
++dnl  AM_CONDITIONAL([ENABLE_SK],[test "$enable_scrollkeeper" = "yes"])
++dnl  
++dnl  AC_PATH_PROG(SCROLLKEEPER_CONFIG, scrollkeeper-config,no)
++dnl  if test x$SCROLLKEEPER_CONFIG = xno; then
++dnl    AC_MSG_ERROR(Couldn't find scrollkeeper-config. Please install the scrollkeeper package)
++dnl  fi
+ 
+ dnl mime checks
+ AC_ARG_ENABLE(update-mimedb,

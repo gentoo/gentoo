@@ -1,0 +1,119 @@
+src/mongo/util/net/openssl_init.cpp:88:51: error: 'ERR_remove_state' was not declared in this scope
+
+From ERR_REMOVE_STATE(3):
+> Since threads in OpenSSL are no longer identified by unsigned long values, any
+> argument to this function is ignored. Calling ERR_remove_state() is equivalent to ERR_remove_thread_state(NULL).
+
+But that is gone from OpenSSL 4 too, saying it's a noop. So away it goes.
+diff --git a/src/mongo/util/net/openssl_init.cpp b/src/mongo/util/net/openssl_init.cpp
+index ef1280b..61aff0b 100644
+--- a/src/mongo/util/net/openssl_init.cpp
++++ b/src/mongo/util/net/openssl_init.cpp
+@@ -85,7 +85,7 @@ public:
+ 
+         // The `guard` callback will cause an invocation of `getID`, so it must be destroyed first.
+         static thread_local ManagedId managedId;
+-        static thread_local ScopeGuard guard([] { ERR_remove_state(0); });
++        static thread_local ScopeGuard guard([] { });
+ 
+         return managedId.id;
+     }
+diff --git a/src/mongo/util/net/ssl_manager_openssl.cpp b/src/mongo/util/net/ssl_manager_openssl.cpp
+index b02579c..f7d2775 100644
+--- a/src/mongo/util/net/ssl_manager_openssl.cpp
++++ b/src/mongo/util/net/ssl_manager_openssl.cpp
+@@ -365,7 +365,7 @@ UniqueStackOfX509 SSLgetVerifiedChain(SSL* s) {
+     return UniqueStackOfX509(X509_STORE_CTX_get1_chain(ctx.get()));
+ }
+ 
+-SSLX509Name convertX509ToSSLX509Name(X509_NAME* x509Name) {
++SSLX509Name convertX509ToSSLX509Name(const X509_NAME* x509Name) {
+     std::vector<std::vector<SSLX509Name::Entry>> entries;
+ 
+     int count = X509_NAME_entry_count(x509Name);
+@@ -393,7 +393,7 @@ SSLX509Name convertX509ToSSLX509Name(X509_NAME* x509Name) {
+ 
+         const auto* str = X509_NAME_ENTRY_get_data(entry);
+         rdn.emplace_back(
+-            buffer, str->type, std::string(reinterpret_cast<const char*>(str->data), str->length));
++            buffer, ASN1_STRING_type(str), std::string(reinterpret_cast<const char*>(ASN1_STRING_get0_data(str)), ASN1_STRING_length(str)));
+     }
+     if (!rdn.empty()) {
+         entries.push_back(std::move(rdn));
+@@ -3456,7 +3456,7 @@ Future<SSLPeerInfo> SSLManagerOpenSSL::parseAndValidatePeerCertificate(
+             const GENERAL_NAME* currentName = sk_GENERAL_NAME_value(sanNames, i);
+             if (currentName && currentName->type == GEN_DNS) {
+                 std::string dnsName(
+-                    reinterpret_cast<char*>(ASN1_STRING_data(currentName->d.dNSName)));
++                    reinterpret_cast<const char*>(ASN1_STRING_get0_data(currentName->d.dNSName)));
+                 auto swCIDRDNSName = CIDR::parse(dnsName);
+                 if (swCIDRDNSName.isOK()) {
+                     LOGV2_WARNING(23237,
+@@ -3477,14 +3477,14 @@ Future<SSLPeerInfo> SSLManagerOpenSSL::parseAndValidatePeerCertificate(
+                 auto ipAddrStruct = currentName->d.iPAddress;
+                 struct sockaddr_storage ss;
+                 memset(&ss, 0, sizeof(ss));
+-                if (ipAddrStruct->length == 4) {
++                if (ASN1_STRING_length(ipAddrStruct) == 4) {
+                     struct sockaddr_in* sa = reinterpret_cast<struct sockaddr_in*>(&ss);
+                     sa->sin_family = AF_INET;
+-                    memcpy(&(sa->sin_addr), ipAddrStruct->data, ipAddrStruct->length);
+-                } else if (ipAddrStruct->length == 16) {
++                    memcpy(&(sa->sin_addr), ASN1_STRING_get0_data(ipAddrStruct), ASN1_STRING_length(ipAddrStruct));
++                } else if (ASN1_STRING_length(ipAddrStruct) == 16) {
+                     struct sockaddr_in6* sa = reinterpret_cast<struct sockaddr_in6*>(&ss);
+                     sa->sin6_family = AF_INET6;
+-                    memcpy(&(sa->sin6_addr), ipAddrStruct->data, ipAddrStruct->length);
++                    memcpy(&(sa->sin6_addr), ASN1_STRING_get0_data(ipAddrStruct), ASN1_STRING_length(ipAddrStruct));
+                 }
+                 auto ipAddress =
+                     SockAddr(reinterpret_cast<struct sockaddr*>(&ss), sizeof(ss)).getAddr();
+@@ -3583,22 +3583,22 @@ StatusWith<SSLManagerOpenSSL::ParsedPeerExtensions> SSLManagerOpenSSL::_parsePee
+     ParsedPeerExtensions parsed;
+     for (int i = 0; i < extCount; i++) {
+         X509_EXTENSION* ex = sk_X509_EXTENSION_value(exts, i);
+-        ASN1_OBJECT* obj = X509_EXTENSION_get_object(ex);
++        const ASN1_OBJECT* obj = X509_EXTENSION_get_object(ex);
+ 
+         if (!OBJ_cmp(obj, rolesObj)) {
+             // mongodbRoles extension.
+-            ASN1_OCTET_STRING* data = X509_EXTENSION_get_data(ex);
+-            auto ptr = reinterpret_cast<char*>(data->data);
+-            auto swRoles = parsePeerRoles(ConstDataRange(ptr, ptr + data->length));
++            const ASN1_OCTET_STRING* data = X509_EXTENSION_get_data(ex);
++            auto ptr = reinterpret_cast<const char*>(ASN1_STRING_get0_data(data));
++            auto swRoles = parsePeerRoles(ConstDataRange(ptr, ptr + ASN1_STRING_length(data)));
+             if (!swRoles.isOK()) {
+                 return std::move(swRoles.getStatus());
+             }
+             parsed.roles = std::move(swRoles.getValue());
+         } else if (!OBJ_cmp(obj, clusterMembershipObj)) {
+             // mongodbClusterMembership extension.
+-            ASN1_OCTET_STRING* data = X509_EXTENSION_get_data(ex);
+-            auto ptr = reinterpret_cast<char*>(data->data);
+-            auto swMembership = parseDERString(ConstDataRange(ptr, ptr + data->length));
++            const ASN1_OCTET_STRING* data = X509_EXTENSION_get_data(ex);
++            auto ptr = reinterpret_cast<const char*>(ASN1_STRING_get0_data(data));
++            auto swMembership = parseDERString(ConstDataRange(ptr, ptr + ASN1_STRING_length(data)));
+             if (!swMembership.isOK()) {
+                 return std::move(swMembership.getStatus());
+             }
+@@ -3622,14 +3622,14 @@ StatusWith<boost::optional<std::vector<DERInteger>>> SSLManagerOpenSSL::_parseTL
+     ASN1_OBJECT* featuresObj = OBJ_nid2obj(NID_tlsfeature);
+     for (int i = 0; i < extCount; i++) {
+         X509_EXTENSION* ex = sk_X509_EXTENSION_value(exts, i);
+-        ASN1_OBJECT* obj = X509_EXTENSION_get_object(ex);
++        const ASN1_OBJECT* obj = X509_EXTENSION_get_object(ex);
+ 
+         if (!OBJ_cmp(obj, featuresObj)) {
+             // We've found an extension which has the features OID
+-            ASN1_OCTET_STRING* data = X509_EXTENSION_get_data(ex);
++            const ASN1_OCTET_STRING* data = X509_EXTENSION_get_data(ex);
+             return parseTLSFeature(
+-                ConstDataRange(reinterpret_cast<char*>(data->data),
+-                               reinterpret_cast<char*>(data->data) + data->length));
++                ConstDataRange(reinterpret_cast<const char*>(ASN1_STRING_get0_data(data)),
++                               reinterpret_cast<const char*>(ASN1_STRING_get0_data(data)) + ASN1_STRING_length(data)));
+         }
+     }
+     return boost::none;

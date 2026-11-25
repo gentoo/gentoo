@@ -1,0 +1,14 @@
+see PR pending https://github.com/sarnold/urt/pull/14.patch
+https://bugs.gentoo.org/970475
+ensure buildlib (static) is built before buildshared
+--- a/lib/makefile.src
++++ b/lib/makefile.src
+@@ -75,7 +75,7 @@ install: buildlib
+ 
+ # Rebuild the library from all the .o files.
+ 
+-buildshared: $(OBJS)
++buildshared: buildlib $(OBJS)
+ 	$(CC) ${CFLAGS} ${LDFLAGS} -o $(SHARED) $(OBJS) $(LIBS) -shared -Wl,-soname,$(SONAME)
+ 	ln -sf $(SHARED) $(LDNAME)
+ 	ln -sf $(SHARED) $(SONAME)

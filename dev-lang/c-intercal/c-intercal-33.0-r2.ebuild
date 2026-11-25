@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -57,6 +57,11 @@ src_compile() {
 	if use emacs; then
 		elisp-compile etc/intercal.el
 	fi
+}
+
+src_test() {
+	# prevent version test from accessing the installed lib #977466
+	emake DESTDIR="${T}" check
 }
 
 src_install() {

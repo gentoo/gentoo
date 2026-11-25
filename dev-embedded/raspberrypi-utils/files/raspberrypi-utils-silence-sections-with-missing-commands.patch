@@ -1,0 +1,61 @@
+From 581cc89764c84299a630e4a61a25fec15bc84bbd Mon Sep 17 00:00:00 2001
+From: AshyPinguin <pinguinlars1105+gentoo@gmail.com>
+Date: Thu, 28 May 2026 20:32:55 +0200
+Subject: [PATCH 3/3] fix: don't show section with not installed commands
+
+This patch fixes command not found errors by not displaying the commands
+if they aren't installed.
+
+Signed-off-by: AshyPinguin <pinguinlars1105+gentoo@gmail.com>
+---
+ raspinfo/raspinfo | 25 +++++++++++++++----------
+ 1 file changed, 15 insertions(+), 10 deletions(-)
+
+diff --git a/raspinfo/raspinfo b/raspinfo/raspinfo
+index 315489b..0bcd222 100755
+--- a/raspinfo/raspinfo
++++ b/raspinfo/raspinfo
+@@ -273,25 +273,30 @@ echo
+ wifi_info
+ echo
+ 
+-echo "USB Information"
+-echo "---------------"
+-echo
++if command -v lsusb &> /dev/null; then
++  echo "USB Information"
++  echo "---------------"
++  echo
+ 
+-lsusb -t
++  lsusb -t
++
++  echo
++fi
+ 
+-echo
+ echo "Display Information"
+ echo "-------------------"
+ echo
+ 
+ display_info
+ 
+-echo
+-echo "Audio Information"
+-echo "-------------------"
+-echo
++if command -v systemctl &> /dev/null || command -v aplay &> /dev/null; then
++  echo
++  echo "Audio Information"
++  echo "-------------------"
++  echo
+ 
+-audio_info
++  audio_info
++fi
+ 
+ echo
+ echo "Firmware Configuration"
+-- 
+2.53.0
+

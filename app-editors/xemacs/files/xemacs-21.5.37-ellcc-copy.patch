@@ -1,0 +1,16 @@
+Roll back to copy ellcc to avoid absolute symlink problem.
+See https://bugs.gentoo.org/983219
+
+diff -r eb16e65de2c7 Makefile.in.in
+--- a/Makefile.in.in	Thu Sep 24 18:42:28 2026 +0100
++++ b/Makefile.in.in	Fri Sep 25 11:02:50 2026 +0100
+@@ -429,7 +429,8 @@
+ 	${INSTALL_PROGRAM} src/${PROGNAME} $(DESTDIR)${bindir}/${PROGNAME}
+ 	-chmod 0755 $(DESTDIR)${bindir}/${PROGNAME}
+ #else
+-	cd $(DESTDIR)${bindir} && $(RM) -f ./ellcc && ${LN_S} ${lispdir}/ellcc.elc ellcc
++	${INSTALL_PROGRAM} ${buildlispdir}/ellcc.elc $(DESDTIR)${bindir}/ellcc
++	-chmod 0755 $(DESTDIR)${bindir}/ellcc
+ # ifdef CYGWIN
+ 	${INSTALL_PROGRAM} src/${PROGNAME} $(DESTDIR)${bindir}/${PROGNAME}-${version}.exe
+ 	-chmod 0755 $(DESTDIR)${bindir}/${PROGNAME}-${version}.exe

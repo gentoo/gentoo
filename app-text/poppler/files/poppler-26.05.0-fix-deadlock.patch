@@ -1,0 +1,25 @@
+From 5e960ac898170f7ed74b9f66e39ab4d8e18acf95 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Wed, 10 Jun 2026 19:26:42 +0200
+Subject: [PATCH] Revert "Lock Page mutex when loading annots"
+
+This reverts commit 4aca25d63d11186846641100d8cd964cf818845a.
+---
+ poppler/Page.cc | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/poppler/Page.cc b/poppler/Page.cc
+index bd250ccb..be52e5aa 100644
+--- a/poppler/Page.cc
++++ b/poppler/Page.cc
+@@ -435,7 +435,6 @@ void Page::loadStandaloneFields(Form *form)
+ 
+ Annots *Page::getAnnots(XRef *xrefA)
+ {
+-    pageLocker();
+     if (!annots) {
+         Object obj = getAnnotsObject(xrefA);
+         annots = std::make_unique<Annots>(doc, num, &obj);
+-- 
+2.54.0
+

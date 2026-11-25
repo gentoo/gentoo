@@ -1,0 +1,29 @@
+https://bugs.gentoo.org/984294#c4
+https://github.com/wxWidgets/Phoenix/pull/2963
+
+From 911bd596087a4be61aa1da6654e2e4410f30a461 Mon Sep 17 00:00:00 2001
+From: Rui Chen <rui@chenrui.dev>
+Date: Wed, 9 Sep 2026 07:28:32 -0400
+Subject: [PATCH] Handle deduplicated property-grid callback typedef
+
+Signed-off-by: Rui Chen <rui@chenrui.dev>
+---
+ etg/propgriddefs.py | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/etg/propgriddefs.py b/etg/propgriddefs.py
+index d84f46855..f78afaf7b 100644
+--- a/etg/propgriddefs.py
++++ b/etg/propgriddefs.py
+@@ -37,7 +37,10 @@ def run():
+     module.find('wxPG_COLOUR_BLACK').ignore()
+     module.find('wxPG_COLOUR').ignore()
+     module.find('wxPG_DEFAULT_IMAGE_SIZE').ignore()
+-    module.find('wxPGSortCallback').ignore()
++    # Newer Doxygen versions only emit this duplicate typedef in propgrid.h.
++    callback = module.findItem('wxPGSortCallback')
++    if callback is not None:
++        callback.ignore()
+ 
+     module.addPyCode(
+         code="""\

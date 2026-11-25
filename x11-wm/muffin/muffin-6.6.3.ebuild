@@ -8,12 +8,12 @@ PYTHON_COMPAT=( python3_{10..14} )
 inherit flag-o-matic gnome2-utils meson python-any-r1 virtualx
 
 DESCRIPTION="Compositing window manager forked from Mutter for use with Cinnamon"
-HOMEPAGE="https://projects.linuxmint.com/cinnamon/ https://github.com/linuxmint/muffin"
+HOMEPAGE="https://linuxmint-developer-guide.readthedocs.io/en/latest/cinnamon.html https://linuxmint.com/"
 SRC_URI="https://github.com/linuxmint/muffin/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD GPL-2+ LGPL-2+ LGPL-2.1+ MIT SGI-B-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 arm64 ~loong ~ppc64 ~riscv x86"
 IUSE="input_devices_wacom +introspection screencast sysprof systemd test udev wayland video_cards_nvidia"
 REQUIRED_USE="wayland? ( udev )"
 

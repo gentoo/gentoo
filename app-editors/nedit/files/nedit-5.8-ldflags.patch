@@ -1,0 +1,17 @@
+--- a/source/Makefile.common
++++ b/source/Makefile.common
+@@ -18,12 +18,12 @@ XMLLIB = ../Microline/XmL/libXmL.a
+ all: nedit nc
+ 
+ nedit: $(OBJS) ../util/libNUtil.a $(XMLLIB) $(XLTLIB)
+-	$(CC) $(CFLAGS) $(OBJS) $(XMLLIB) \
++	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJS) $(XMLLIB) \
+ 	 $(XLTLIB) ../util/libNUtil.a $(LIBS) -o $@
+ 
+ # Note LIBS isn't quite right here; it links unnecessarily against Motif
+ nc: nc.o server_common.o ../util/libNUtil.a
+-	$(CC) $(CFLAGS) nc.o server_common.o ../util/libNUtil.a $(LIBS) -o $@
++	$(CC) $(CFLAGS) $(LDFLAGS) nc.o server_common.o ../util/libNUtil.a $(LIBS) -o $@
+ 
+ help.o: help.c
+ 	$(CC) $(CFLAGS) $(BIGGER_STRINGS) -c help.c -o $@

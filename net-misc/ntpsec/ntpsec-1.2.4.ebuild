@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517="flit"
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 PYTHON_REQ_USE='threads(+)'
 
 inherit dot-a distutils-r1 multiprocessing waf-utils systemd
@@ -20,7 +20,7 @@ else
 		https://ftp.ntpsec.org/pub/releases/${P}.tar.gz
 		verify-sig? ( https://ftp.ntpsec.org/pub/releases/${P}.tar.gz.asc )
 	"
-	KEYWORDS="amd64 arm arm64 ~loong ~m68k ~ppc ~ppc64 ~riscv ~s390 ~x86"
+	KEYWORDS="amd64 arm arm64 ~hppa ~loong ~m68k ~ppc ~ppc64 ~riscv ~s390 ~x86"
 
 	BDEPEND="verify-sig? ( sec-keys/openpgp-keys-ntpsec )"
 fi
@@ -36,7 +36,7 @@ NTPSEC_REFCLOCK=(
 	shm pps hpgps zyfer arbiter nmea modem local
 )
 
-IUSE="${NTPSEC_REFCLOCK[@]} debug doc early heat libbsd nist ntpviz samba seccomp smear test" #ionice
+IUSE="${NTPSEC_REFCLOCK[@]} debug doc early heat libbsd nist ntpviz samba seccomp selinux smear test" #ionice
 REQUIRED_USE="${PYTHON_REQUIRED_USE} nist? ( local )"
 RESTRICT="!test? ( test )"
 
@@ -61,6 +61,7 @@ RDEPEND="
 		media-fonts/liberation-fonts
 		sci-visualization/gnuplot
 	)
+	selinux? ( sec-policy/selinux-ntp )
 "
 BDEPEND+="
 	>=app-text/asciidoc-8.6.8
@@ -121,13 +122,12 @@ src_configure() {
 		--nopyc
 		--nopyo
 		--refclock="${CLOCKSTRING}"
-		#--build-epoch="$(date +%s)"
-		$(use doc	|| echo "--disable-doc")
-		$(use early	&& echo "--enable-early-droproot")
-		$(use samba	&& echo "--enable-mssntp")
-		$(use seccomp	&& echo "--enable-seccomp")
-		$(use smear	&& echo "--enable-leap-smear")
-		$(use debug	&& echo "--enable-debug")
+		$(use_enable doc)
+		$(usev early --enable-early-droproot)
+		$(usev samba --enable-mssntp)
+		$(usev seccomp --enable-seccomp)
+		$(usev smear --enable-leap-smear)
+		$(usev debug --enable-debug)
 	)
 	python_setup
 	cp -v "${FILESDIR}/flit.toml" "pylib/pyproject.toml" || die
@@ -168,6 +168,9 @@ src_install() {
 	chmod 770 "${ED}"/var/lib/ntp
 	keepdir /var/lib/ntp
 
+	# Ensure statsdir exists
+	keepdir /var/log/ntpstats/
+
 	# Install a logrotate script
 	mkdir -pv "${ED}"/etc/logrotate.d
 	cp -v "${S}"/etc/logrotate-config.ntpd "${ED}"/etc/logrotate.d/ntpd
@@ -176,14 +179,19 @@ src_install() {
 	cp -v "${FILESDIR}"/ntp.conf "${ED}"/etc/ntp.conf
 	cp -Rv "${S}"/etc/ntp.d/ "${ED}"/etc/
 
-	# move doc files to /usr/share/doc/"${P}"
-	use doc && mv -v "${ED}"/usr/share/doc/"${PN}" "${ED}"/usr/share/doc/"${P}"/html
-
 	ln -svf pylib build/main/ntp || die
 	distutils-r1_src_install
 	waf-utils_src_install --notests
 	python_fix_shebang "${ED}"
 	python_optimize
+
+	# move doc files to /usr/share/doc/"${PF}"
+	# TODO check when upstream waf updated to > 2.1.9 and configure with:
+	#  --docdir="/use/share/docs/${PF}"
+	#  --htmldir="/use/share/docs/${PF}/html"
+	if use doc ; then
+		mv -v "${ED}"/usr/share/doc/"${PN}" "${ED}"/usr/share/doc/"${PF}"/html || die
+	fi
 }
 
 pkg_postinst() {

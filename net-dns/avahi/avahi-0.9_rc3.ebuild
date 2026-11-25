@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 PYTHON_REQ_USE="gdbm"
 inherit autotools multilib-minimal python-single-r1 systemd
 
@@ -14,7 +14,7 @@ S="${WORKDIR}/${PN}-${PV/_/-}"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
 IUSE="autoipd bookmarks +dbus doc gdbm gtk howl-compat +introspection mdnsresponder-compat nls python qt6 selinux systemd test"
 
 REQUIRED_USE="
@@ -45,7 +45,7 @@ DEPEND="
 			introspection? ( dev-python/pygobject:3[${PYTHON_USEDEP}] )
 		')
 	)
-	qt6? ( dev-qt/qtbase:6= )
+	qt6? ( dev-qt/qtbase:6 )
 	systemd? ( sys-apps/systemd:=[${MULTILIB_USEDEP}] )
 "
 RDEPEND="${DEPEND}

@@ -1,9 +1,9 @@
-# Copyright 2021-2025 Gentoo Authors
+# Copyright 2021-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 inherit desktop gnome2-utils python-single-r1 readme.gentoo-r1
 
 DESCRIPTION="Fully featured markdown editor, supports github markdown dialect"

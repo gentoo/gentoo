@@ -19,7 +19,7 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="backlight evdev experimental gps jack +libinput +logind mpd mpris network niri pipewire pulseaudio sndio systemd test tray +udev upower wifi"
+IUSE="backlight evdev experimental gps jack +libinput +logind mpd mpris network niri pipewire pulseaudio screencast sndio systemd test tray +udev upower wifi"
 REQUIRED_USE="
 	upower? ( logind )
 	backlight? ( udev logind )
@@ -33,6 +33,8 @@ BDEPEND="
 	dev-util/wayland-scanner
 	virtual/pkgconfig
 "
+
+# dev-libs/date not used if C++ library supports chrono
 RDEPEND="
 	dev-cpp/cairomm:0
 	dev-cpp/glibmm:2
@@ -41,11 +43,10 @@ RDEPEND="
 	dev-libs/jsoncpp:=
 	dev-libs/libsigc++:2
 	>=dev-libs/libfmt-8.1.1:=
-	>=dev-libs/spdlog-1.10.0:=
+	>=dev-libs/spdlog-1.15.2:=
 	dev-libs/date:=
 	dev-libs/wayland
 	>=gui-libs/gtk-layer-shell-0.9.0
-	media-video/pipewire:=
 	x11-libs/gtk+:3[wayland]
 	x11-libs/libxkbcommon
 	evdev? ( dev-libs/libevdev )
@@ -61,6 +62,7 @@ RDEPEND="
 	network? ( dev-libs/libnl:3 )
 	pipewire? ( media-video/wireplumber:0/0.5 )
 	pulseaudio? ( media-libs/libpulse )
+	screencast? ( media-video/pipewire:= )
 	sndio? ( media-sound/sndio:= )
 	systemd? ( sys-apps/systemd:= )
 	tray? (
@@ -89,8 +91,8 @@ src_configure() {
 		$(meson_feature mpris)
 		$(meson_feature network libnl)
 		$(meson_feature pulseaudio)
-		$(meson_feature pipewire wireplumber)
-		$(meson_feature pipewire)
+		$(meson_feature pipewire wireplumber) # module for changing the volume for pipewire with wireplumber
+		$(meson_feature screencast pipewire) # module for checking whether the screen is recorded
 		$(meson_feature sndio)
 		$(meson_feature systemd)
 		$(meson_feature test tests)

@@ -3,9 +3,14 @@
 
 EAPI=8
 
+# Please be careful not to bump to development versions or RCs.
+# If decide to package these, please don't keyword them.
+# Stable releases are x.2.z.
+# https://docs.ceph.com/en/latest/releases/general/#understanding-the-release-cycle
+
 CMAKE_REMOVE_MODULES_LIST=( FindBoost )
 CMAKE_WARN_UNUSED_CLI=no # false positives unless all USE flags are on
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{12..13} )
 LUA_COMPAT=( lua5-{3..4} )
 
 inherit check-reqs bash-completion-r1 cmake flag-o-matic lua-single multiprocessing \
@@ -218,7 +223,6 @@ PATCHES=(
 	"${FILESDIR}/ceph-19.2.1-isa-l.patch"
 	"${FILESDIR}/ceph-19.2.2-QATAPP-Fix-clang-16-compiling-issue.patch"
 	"${FILESDIR}/ceph-19.2.2-add-option-to-build-agains-system-opentelemetry.patch"
-	"${FILESDIR}/ceph-19.2.2-common-add-dependency-on-legacy-option-headers.patch"
 	"${FILESDIR}/ceph-19.2.2-rbd-make-enums-statically-castable.patch"
 	"${FILESDIR}/ceph-19.2.2-rgw-remove-FMT_STRING-to-fix-clang-20-build-failure.patch"
 	# https://bugs.gentoo.org/960812
@@ -229,6 +233,21 @@ PATCHES=(
 	"${FILESDIR}/ceph-20.1.1-boost-url-linking.patch"
 	# https://bugs.gentoo.org/969039
 	"${FILESDIR}"/ceph-20.1.1-boost-1.89-{1,2,3}.patch
+	"${FILESDIR}/ceph-20.2.1-boost-1.90-intrusive_ptr_fixes.patch"
+	"${FILESDIR}/ceph-20.2.1-rgw_error_handler.patch"
+	"${FILESDIR}/ceph-20.1.1-libcxx-exp-features.patch"
+	"${FILESDIR}/ceph-20.2.1-qatzip-werror.patch"
+	"${FILESDIR}/ceph-20.1.1-fix-legacy-options-order.patch"
+	"${FILESDIR}/ceph-20.1.1-build-add-Mold-linker-compatibility.patch"
+	"${FILESDIR}/ceph-20.1.1-dmclock-use-std-invoke_result-instead-of-std-result_.patch"
+	"${FILESDIR}/ceph-20.1.1-rgw-driver-d4n-d4n_directory-use-auto-instead-of-std.patch"
+	"${FILESDIR}/ceph-20.1.1-rgw-cast-time-spans-to-ceph-timespan-before-adding.patch"
+	"${FILESDIR}/ceph-20.1.1-common-io_exerciser-add-missing-includes.patch"
+	"${FILESDIR}/ceph-20.1.1-qatlib-autogen-shebang.patch"
+	"${FILESDIR}/ceph-20.1.1-musl-fixes.patch"
+	"${FILESDIR}/ceph-20.1.1-librados-drop-unused-Boost.Asio-symbols.patch"
+	"${FILESDIR}/ceph-20.1.1-qatzip-glibc-prereq.patch"
+	"${FILESDIR}/ceph-20.1.1-qatlib-glibc-prereq.patch"
 )
 
 check-reqs_export_vars() {
@@ -367,10 +386,13 @@ ceph_src_configure() {
 	fi
 
 	# conditionally used cmake args
-	use test && mycmakearts+=( -DWITH_SYSTEM_GTEST:BOOL=$(usex test) )
+	use test && mycmakeargs+=( -DWITH_SYSTEM_GTEST:BOOL=$(usex test) )
 	use systemd && mycmakeargs+=( -DSYSTEMD_SYSTEM_UNIT_DIR:PATH=$(systemd_get_systemunitdir) )
 
 	if use amd64 || use x86; then
+		# isa-l does not support arbitrary assemblers on amd64 and x86
+		unset AS  # avoid AS="clang -c" from the LLVM profile
+
 		local flag
 		for flag in "${CPU_FLAGS_X86[@]}"; do
 			case "${flag}" in
@@ -387,8 +409,14 @@ ceph_src_configure() {
 		done
 	fi
 
-	# needed for >=glibc-2.32
-	has_version '>=sys-libs/glibc-2.32' && mycmakeargs+=( -DWITH_REENTRANT_STRSIGNAL:BOOL=ON )
+	use elibc_musl && mycmakeargs+=( -DWITH_REENTRANT_STRSIGNAL:BOOL=ON )
+
+	if tc-is-clang && tc-ld-is-lld; then
+		mycmakeargs+=(
+			-DHAVE_ASM_SYMVER=OFF
+			-DHAVE_ATTR_SYMVER=OFF
+		)
+	fi
 
 	rm -f "${BUILD_DIR:-${S}}/CMakeCache.txt" \
 		|| die "failed to remove cmake cache"

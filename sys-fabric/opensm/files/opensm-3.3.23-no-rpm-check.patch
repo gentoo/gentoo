@@ -1,0 +1,30 @@
+From 2644ea307db495e9c0d6f8863f5decf5d4f9ed83 Mon Sep 17 00:00:00 2001
+From: "Daniel M. Weeks" <dan@danweeks.net>
+Date: Thu, 4 Jun 2026 22:45:05 -0400
+Subject: [PATCH] Do not execute rpm during configure
+
+Signed-off-by: Daniel M. Weeks <dan@danweeks.net>
+---
+ configure.ac | 6 +-----
+ 1 file changed, 1 insertion(+), 5 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 4633fbb1..89cf0c9e 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -17,11 +17,7 @@ AC_ARG_WITH([rdma_service],
+                    [name of the RDMA service: "rdma" when using /etc/init.d/rdma to start RDMA services; "openibd" when using /etc/init.d/openibd to start RDMA services [default=${default_rdma_service}]]))
+ AC_SUBST(RDMA_SERVICE, ${with_rdma_service:-${default_rdma_service}})
+ 
+-if { rpm -q sles-release || rpm -q openSUSE-release; } >/dev/null 2>&1; then
+-   default_stop="0 1 4 6"
+-else
+-   default_stop="0 1 6"
+-fi
++default_stop="0 1 6"
+ 
+ default_start="null"
+ 
+-- 
+Daniel M. Weeks
+

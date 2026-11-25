@@ -5,7 +5,7 @@ EAPI=9
 
 inherit autotools
 
-DESCRIPTION="A cross-platform C library for decoding .smk Smacker Video files."
+DESCRIPTION="A cross-platform C library for decoding .smk Smacker Video files"
 HOMEPAGE="https://libsmacker.sourceforge.net"
 SRC_URI="https://sourceforge.net/projects/libsmacker/files/libsmacker-$(ver_cut 1-2)/${P/_p/r}.tar.gz/download -> ${P}.tar.gz"
 S="${WORKDIR}/${PN}-$(ver_cut 1-3)"

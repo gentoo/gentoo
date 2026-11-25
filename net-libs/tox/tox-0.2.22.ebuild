@@ -23,7 +23,7 @@ else
 		https://github.com/TokTok/c-toxcore/archive/v${PV}.tar.gz -> ${MY_P}.tar.gz
 		https://github.com/TokTok/cmp/archive/${CMP_COMMIT}.tar.gz -> toktok-cmp-${CMP_COMMIT}.tar.gz
 	"
-	KEYWORDS="~amd64 ~arm ~x86"
+	KEYWORDS="amd64 ~arm x86"
 	S="${WORKDIR}/${MY_P}"
 fi
 

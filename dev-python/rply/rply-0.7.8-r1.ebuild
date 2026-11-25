@@ -1,10 +1,10 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 
 inherit distutils-r1
 
@@ -25,11 +25,16 @@ KEYWORDS="amd64 arm64 x86"
 RDEPEND="
 	dev-python/appdirs[${PYTHON_USEDEP}]
 "
-BDEPEND="
-	test? (
-		dev-python/py[${PYTHON_USEDEP}]
-	)
-"
 
+EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
 distutils_enable_sphinx docs
+
+src_prepare() {
+	distutils-r1_src_prepare
+
+	# eliminate dev-python/py dep
+	sed -e 's:import py$:&test:' \
+		-e 's:py\.test:pytest:' \
+		-i tests/test_*.py || die
+}

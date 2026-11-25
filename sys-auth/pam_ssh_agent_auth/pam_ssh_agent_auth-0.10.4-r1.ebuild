@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -60,9 +60,15 @@ src_configure() {
 	# bug #725720
 	export AR="$(type -P $(tc-getAR))"
 
-	econf \
-		--without-openssl-header-check \
+	local myeconfargs=(
+		--disable-strip
+		--without-openssl-header-check
 		--libexecdir="$(getpam_mod_dir)"
+		# Needs obsolete <selinux/flask.h>
+		--without-selinux
+	)
+
+	econf "${myeconfargs[@]}"
 }
 
 src_install() {

@@ -18,8 +18,8 @@
 		<flag name="rootless">Compiles with libsubid</flag>
 	</use>
 	<upstream>
-		<remote-id type="github">containers/skopeo</remote-id>
-		<bugs-to>https://github.com/containers/skopeo/issues</bugs-to>
-		<doc>https://github.com/containers/skopeo/blob/main/README.md</doc>
+		<remote-id type="github">podman-container-tools/skopeo</remote-id>
+		<bugs-to>https://github.com/podman-container-tools/skopeo/issues</bugs-to>
+		<doc>https://github.com/podman-container-tools/skopeo/blob/main/README.md</doc>
 	</upstream>
 </pkgmetadata>

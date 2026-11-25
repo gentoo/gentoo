@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,7 +7,7 @@ inherit elisp
 
 DESCRIPTION="Tweak your sound card volume from Emacs"
 HOMEPAGE="https://github.com/dbrock/volume.el"
-SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.el.bz2"
+SRC_URI="https://distfiles.gentoo.org/pub/proj/emacs/${P}.el.bz2"
 
 LICENSE="GPL-2+"
 SLOT="0"

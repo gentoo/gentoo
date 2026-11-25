@@ -7,8 +7,9 @@ EAPI=8
 # tips & notes.
 
 GUILE_COMPAT=( 2-2 3-0 )
+GUILE_REQ_USE="deprecated"
 PYTHON_COMPAT=( python3_{11..14} )
-inherit flag-o-matic guile-single linux-info python-single-r1 strip-linguas toolchain-funcs
+inherit dot-a flag-o-matic guile-single linux-info python-single-r1 strip-linguas toolchain-funcs
 
 export CTARGET=${CTARGET:-${CHOST}}
 
@@ -37,7 +38,7 @@ case ${PV} in
 		SRC_URI="
 			https://sourceware.org/pub/gdb/snapshots/branch/gdb-weekly-${MY_PV}.tar.xz
 			https://sourceware.org/pub/gdb/snapshots/current/gdb-weekly-${MY_PV}.tar.xz
-			https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/gdb-weekly-${MY_PV}.tar.xz
+			https://distfiles.gentoo.org/pub/proj/toolchain/gdb/snapshots/gdb-weekly-${MY_PV}.tar.xz
 		"
 		S="${WORKDIR}/${PN}-${MY_PV}"
 
@@ -51,7 +52,7 @@ case ${PV} in
 		MY_PV="${PV/_p/.}"
 		SRC_URI="
 			https://sourceware.org/pub/gdb/snapshots/branch/gdb-${MY_PV}.tar.xz
-			https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/gdb-${MY_PV}.tar.xz
+			https://distfiles.gentoo.org/pub/proj/toolchain/gdb/snapshots/gdb-${MY_PV}.tar.xz
 		"
 		S="${WORKDIR}/${PN}-${MY_PV}"
 		;;
@@ -71,13 +72,12 @@ DESCRIPTION="GNU debugger"
 HOMEPAGE="https://sourceware.org/gdb/"
 SRC_URI="
 	${SRC_URI}
-	${PATCH_DEV:+https://dev.gentoo.org/~${PATCH_DEV}/distfiles/${CATEGORY}/${PN}/${P}-patches-${PATCH_VER}.tar.xz}
-	${PATCH_VER:+mirror://gentoo/${P}-patches-${PATCH_VER}.tar.xz}
+	${PATCH_DEV:+https://distfiles.gentoo.org/pub/proj/toolchain/gdb/patches/${P}-patches-${PATCH_VER}.tar.xz}
 "
 
 LICENSE="GPL-3+ LGPL-2.1+"
 SLOT="0"
-IUSE="babeltrace cet +debuginfod guile lzma multitarget nls +python rocm +server sim source-highlight test vanilla +xml xxhash zstd"
+IUSE="cet +debuginfod guile lzma multitarget nls +python rocm +server sim source-highlight test vanilla +xml xxhash zstd"
 if [[ -n ${REGULAR_RELEASE} ]] ; then
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-macos ~x64-solaris"
 fi
@@ -88,14 +88,12 @@ REQUIRED_USE="
 "
 RESTRICT="!test? ( test )"
 
-# <babeltrace-2: bug #951652
 RDEPEND="
 	dev-libs/mpfr:=
 	dev-libs/gmp:=
 	>=sys-libs/ncurses-5.2-r2:=
 	>=sys-libs/readline-7:=
 	virtual/zlib:=
-	babeltrace? ( dev-util/babeltrace:0/1 )
 	debuginfod? (
 		dev-libs/elfutils[debuginfod(-)]
 	)
@@ -180,6 +178,7 @@ gdb_branding() {
 
 src_configure() {
 	strip-unsupported-flags
+	use sim && use multitarget && lto-guarantee-fat
 
 	# See https://www.gnu.org/software/make/manual/html_node/Parallel-Output.html
 	# Avoid really confusing logs from subconfigure spam, makes logs far
@@ -199,7 +198,6 @@ src_configure() {
 		# Disable modules that are in a combined binutils/gdb tree. bug #490566
 		--disable-{binutils,etc,gas,gold,gprof,gprofng,ld}
 
-		$(use_with babeltrace)
 		$(use_with debuginfod)
 
 		$(use_enable test unit-tests)
@@ -259,7 +257,7 @@ src_configure() {
 		#
 		# Check which libraries to apply this to with:
 		# "${S}"/gdb/configure --help | grep without-lib | sort
-		--without-lib{babeltrace,expat,gmp,iconv,ipt,lzma,mpfr,xxhash}-prefix
+		--without-lib{expat,gmp,iconv,ipt,lzma,mpfr,xxhash}-prefix
 	)
 
 	# source-highlight is detected with pkg-config: bug #716558
@@ -289,6 +287,8 @@ src_install() {
 	emake DESTDIR="${D}" install
 
 	find "${ED}"/usr -name libiberty.a -delete || die
+
+	use sim && use multitarget && strip-lto-bytecode
 
 	# Delete translations that conflict with binutils-libs. bug #528088
 	# Note: Should figure out how to store these in an internal gdb dir.

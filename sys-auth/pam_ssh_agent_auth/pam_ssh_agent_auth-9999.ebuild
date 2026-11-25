@@ -1,9 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit autotools toolchain-funcs pam
+inherit autotools toolchain-funcs pam flag-o-matic
 
 DESCRIPTION="Simple module to authenticate users against their ssh-agent keys"
 HOMEPAGE="http://pamsshagentauth.sourceforge.net"
@@ -54,12 +54,21 @@ src_prepare() {
 src_configure() {
 	pammod_hide_symbols
 
+	# bug #874843, use POSIX type names
+	use elibc_musl && append-cppflags -Du_char=uint8_t -Du_int=uint32_t
+
 	# bug #725720
 	export AR="$(type -P $(tc-getAR))"
 
-	econf \
-		--without-openssl-header-check \
+	local myeconfargs=(
+		--disable-strip
+		--without-openssl-header-check
 		--libexecdir="$(getpam_mod_dir)"
+		# Needs obsolete <selinux/flask.h>
+		--without-selinux
+	)
+
+	econf "${myeconfargs[@]}"
 }
 
 src_install() {

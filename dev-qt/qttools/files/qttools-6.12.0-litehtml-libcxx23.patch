@@ -1,0 +1,9 @@
+This worked for older qttools with libcxx23 because el_font.cpp used to
+include html.h rather than document.h, which then transitively included
+stdlib.
+--- a/src/assistant/qlitehtml/src/3rdparty/litehtml/src/el_font.cpp
++++ b/src/assistant/qlitehtml/src/3rdparty/litehtml/src/el_font.cpp
+@@ -1,2 +1,3 @@
++#include <cstdlib>
+ #include "el_font.h"
+ #include "document.h"

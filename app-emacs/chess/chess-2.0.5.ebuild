@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,9 +9,9 @@ DESCRIPTION="A chess client and library for Emacs"
 HOMEPAGE="https://elpa.gnu.org/packages/chess.html
 	https://www.emacswiki.org/emacs/ChessMode"
 # Taken from https://elpa.gnu.org/packages/${P}.tar
-SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.tar.xz
-	https://dev.gentoo.org/~ulm/distfiles/emacs-chess-sounds-${PV%.*}.tar.bz2
-	https://dev.gentoo.org/~ulm/distfiles/emacs-chess-pieces-${PV%.*}.tar.bz2"
+SRC_URI="https://distfiles.gentoo.org/pub/proj/emacs/${P}.tar.xz
+	https://distfiles.gentoo.org/pub/proj/emacs/emacs-chess-sounds-${PV%.*}.tar.bz2
+	https://distfiles.gentoo.org/pub/proj/emacs/emacs-chess-pieces-${PV%.*}.tar.bz2"
 
 LICENSE="GPL-3+ FDL-1.3+"
 SLOT="0"

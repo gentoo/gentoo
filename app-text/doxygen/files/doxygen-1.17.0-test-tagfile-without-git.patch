@@ -1,0 +1,25 @@
+https://github.com/doxygen/doxygen/issues/12116
+https://github.com/doxygen/doxygen/commit/a819808ca4dd0264be2ea80fe2d08736e70eacdd
+
+From: albert-github <albert.tests@gmail.com>
+Date: Fri, 1 May 2026 14:27:24 +0200
+Subject: [PATCH] issue #12116 Test suite's test tagfile fails
+
+In case building without git the `doxygen_gitid` is not present in the tag file though the test required it.
+Added extra replacement statement
+---
+ testing/runtests.py | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/testing/runtests.py b/testing/runtests.py
+index 198aea740db..02611ee7090 100755
+--- a/testing/runtests.py
++++ b/testing/runtests.py
+@@ -346,6 +346,7 @@ def perform_test(self,testmgr):
+                     data = xpopen('%s --format --noblanks --nowarning %s' % (self.args.xmllint,check_file))
+                     if data:
+                         # strip version
++                        data = re.sub(r'<tagfile doxygen_version="[^"]+">','<tagfile doxygen_version="" doxygen_gitid="">',data)
+                         data = re.sub(r'tagfile doxygen_version="[^"]+" doxygen_gitid="[^"]+"','tagfile doxygen_version="" doxygen_gitid=""',data)
+                         data = re.sub(r'xsd" version="[0-9.-]+"','xsd" version=""',data).rstrip('\n')
+                     else:

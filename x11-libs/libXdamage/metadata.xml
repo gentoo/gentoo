@@ -6,6 +6,6 @@
     <name>X11</name>
   </maintainer>
   <upstream>
-    <remote-id type="freedesktop-gitlab">xorg/lib/libXdamage</remote-id>
+    <remote-id type="freedesktop-gitlab">xorg/lib/libxdamage</remote-id>
   </upstream>
 </pkgmetadata>

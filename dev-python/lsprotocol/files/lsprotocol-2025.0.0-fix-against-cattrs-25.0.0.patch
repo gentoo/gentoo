@@ -1,0 +1,36 @@
+https://github.com/microsoft/lsprotocol/pull/443
+
+From 7b5d4f7422bfe4c597b8124f99861e751d47f153 Mon Sep 17 00:00:00 2001
+From: Aleksandr Dovydenkov <asd@altlinux.org>
+Date: Fri, 26 Sep 2025 10:29:26 +0300
+Subject: [PATCH] Add support cattrs>=25.0.0.
+
+Breaking on update to cattrs version 25.1.0. See: https://catt.rs/en/latest/migrations.html#the-default-structure-hook-fallback-factory
+--- a/packages/python/lsprotocol/converters.py
++++ b/packages/python/lsprotocol/converters.py
+@@ -1,6 +1,7 @@
+ # Copyright (c) Microsoft Corporation. All rights reserved.
+ # Licensed under the MIT License.
+ 
++from importlib.metadata import version
+ from typing import Optional
+ 
+ import cattrs
+@@ -8,10 +9,16 @@
+ from . import _hooks
+ 
+ 
++def _get_default_converter():
++    if version("cattrs") >= "25.0.0":
++        return cattrs.Converter(structure_fallback_factory=lambda _: cattrs.fns.raise_error)
++    return cattrs.Converter()
++
++
+ def get_converter(
+     converter: Optional[cattrs.Converter] = None,
+ ) -> cattrs.Converter:
+     """Adds cattrs hooks for LSP lsp_types to the given converter."""
+     if converter is None:
+-        converter = cattrs.Converter()
++        converter = _get_default_converter()
+     return _hooks.register_hooks(converter)

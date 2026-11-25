@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
@@ -18,13 +18,14 @@ HOMEPAGE="https://sigrok.org/wiki/Sigrok-cli"
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="+decode"
+IUSE="+decode selinux"
 
 RDEPEND=">=dev-libs/glib-2.32.0
 	>=sci-libs/libsigrok-0.5.0:=
 	decode? ( >=sci-libs/libsigrokdecode-0.5.0:= )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
+RDEPEND+=" selinux? ( sec-policy/selinux-sigrok )"
 
 src_prepare() {
 	[[ ${PV} == "9999" ]] && eautoreconf

@@ -96,7 +96,6 @@ src_configure() {
 		-DLauncher_BUILD_PLATFORM="Gentoo"
 		-DLauncher_QT_VERSION_MAJOR=6
 
-		-DENABLE_LTO=$(tc-is-lto)
 		-DBUILD_TESTING=$(usex test)
 	)
 

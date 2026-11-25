@@ -7,5 +7,6 @@
 	</maintainer>
 	<use>
 		<flag name="mpv">Enable video support via <pkg>media-video/mpv</pkg>(experimental)</flag>
+		<flag name="timidity">Enable midi support via <pkg>media-libs/libtimidity</pkg></flag>
 	</use>
 </pkgmetadata>

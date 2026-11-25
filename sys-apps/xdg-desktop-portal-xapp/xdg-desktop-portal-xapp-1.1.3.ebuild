@@ -6,12 +6,12 @@ EAPI=8
 inherit meson systemd
 
 DESCRIPTION="Backend implementation for xdg-desktop-portal using Cinnamon/MATE/Xfce"
-HOMEPAGE="https://github.com/linuxmint/xdg-desktop-portal-xapp/"
+HOMEPAGE="https://linuxmint-developer-guide.readthedocs.io/en/latest/xapps.html https://linuxmint.com/"
 SRC_URI="https://github.com/linuxmint/xdg-desktop-portal-xapp/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 arm64 ~loong ~ppc64 ~riscv x86"
 
 DEPEND="
 	>=dev-libs/glib-2.44:2

@@ -16,7 +16,6 @@
 		<flag name="unit-mm">Set default unit for coordinates in status bar to mm</flag>
 	</use>
 	<upstream>
-		<remote-id type="sourceforge">gerbv</remote-id>
 		<remote-id type="github">gerbv/gerbv</remote-id>
 	</upstream>
 </pkgmetadata>

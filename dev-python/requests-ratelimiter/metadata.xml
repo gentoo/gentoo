@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>python@gentoo.org</email>
+	</maintainer>
+	<stabilize-allarches/>
+	<upstream>
+		<doc>https://requests-ratelimiter.readthedocs.io/</doc>
+		<remote-id type="github">JWCook/requests-ratelimiter</remote-id>
+		<remote-id type="pypi">requests-ratelimiter</remote-id>
+	</upstream>
+</pkgmetadata>

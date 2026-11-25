@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,7 +13,8 @@ LICENSE="MIT"
 SLOT="0/${PV}"
 KEYWORDS="amd64 ~arm64"
 IUSE="only-c-locale test"
-RESTRICT="!test? ( test )"
+# Needs network: bug #947759
+RESTRICT="!test? ( test ) test"
 
 PATCHES=( "${FILESDIR}"/${PN}-3.0.3_remove-failing-tests.patch )
 

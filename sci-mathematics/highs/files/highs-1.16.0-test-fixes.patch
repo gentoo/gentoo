@@ -1,0 +1,118 @@
+https://github.com/ERGO-Code/HiGHS/issues/3686
+
+diff --git a/check/TestIpm.cpp b/check/TestIpm.cpp
+index 4a72f70116..ae530edfe8 100644
+--- a/check/TestIpm.cpp
++++ b/check/TestIpm.cpp
+@@ -278,30 +278,3 @@ TEST_CASE("test-3397", "[highs_ipm]") {
+     h.resetThreadScheduler(true);
+   }
+ }
+-
+-TEST_CASE("test-3512", "[highs_ipm]") {
+-#ifdef __SANITIZE_THREAD__
+-  // Fails under GCC 15 TSan RelWithDebInfo only; passes everywhere else
+-  return;
+-#endif
+-  const std::vector<std::string> models = {"3512-feasible", "3512-solve-error",
+-                                           "3512-dual-cancellation"};
+-  const std::vector<double> objectives = {-24, -499999991, -33};
+-  Highs h;
+-  h.setOptionValue("output_flag", dev_run);
+-  h.setOptionValue("solver", kIpxString);
+-  HighsInt num_models = models.size();
+-  for (HighsInt iModel = 0; iModel < num_models; iModel++) {
+-    std::string filename =
+-        std::string(HIGHS_DIR) + "/check/instances/" + models[iModel] + ".lp";
+-    REQUIRE(h.readModel(filename) == HighsStatus::kOk);
+-    REQUIRE(h.run() == HighsStatus::kOk);
+-    REQUIRE(h.getModelStatus() == HighsModelStatus::kOptimal);
+-    double objective = h.getObjectiveValue();
+-    double objective_error =
+-        std::fabs(objective - objectives[iModel]) / (1 + std::fabs(objective));
+-    REQUIRE(objective_error < 1e-8);
+-  }
+-
+-  h.resetThreadScheduler(true);
+-}
+diff --git a/check/TestLpModification.cpp b/check/TestLpModification.cpp
+index 589ae2a0d2..8e3c2bba88 100644
+--- a/check/TestLpModification.cpp
++++ b/check/TestLpModification.cpp
+@@ -588,7 +588,8 @@ TEST_CASE("LP-modification", "[highs_test_lp_modification]") {
+   REQUIRE(model_status == HighsModelStatus::kOptimal);
+ 
+   highs.getInfoValue("objective_function_value", optimal_objective_value);
+-  REQUIRE(optimal_objective_value == avgas_optimal_objective_value);
++  REQUIRE(std::fabs(optimal_objective_value - avgas_optimal_objective_value) <
++          double_equal_tolerance);
+ 
+   // Delete all the columns: OK
+   REQUIRE(highs.deleteCols(0, num_col - 1) == HighsStatus::kOk);
+@@ -1893,7 +1894,7 @@ TEST_CASE("mod-duplicate-indices", "[highs_test_lp_modification]") {
+   highs.run();
+   double objective0 = highs.getInfo().objective_function_value;
+   REQUIRE(objective0 < objective1);
+-  REQUIRE(objective0 == -7.75);
++  REQUIRE(std::fabs(objective0 + 7.75) < double_equal_tolerance);
+ 
+   highs.resetThreadScheduler(true);
+ }
+diff --git a/check/TestLpOrientation.cpp b/check/TestLpOrientation.cpp
+index 6395394b8e..e9fe02c6af 100644
+--- a/check/TestLpOrientation.cpp
++++ b/check/TestLpOrientation.cpp
+@@ -6,6 +6,7 @@
+ #include "util/HighsUtils.h"
+ 
+ const bool dev_run = false;
++const double double_equal_tolerance = 1e-5;
+ 
+ // No commas in test case name.
+ TEST_CASE("LP-orientation", "[lp_orientation]") {
+@@ -70,19 +71,22 @@ TEST_CASE("LP-orientation", "[lp_orientation]") {
+   // Pass the LP
+   highs.passModel(lp);
+   highs.run();
+-  REQUIRE(info.objective_function_value == optimal_objective_function_value);
++  REQUIRE(std::fabs(info.objective_function_value - optimal_objective_function_value) <
++          double_equal_tolerance);
+ 
+   // Make the external LP row-wise then pass and solve it
+   lp.ensureRowwise();
+   highs.passModel(lp);
+   highs.run();
+-  REQUIRE(info.objective_function_value == optimal_objective_function_value);
++  REQUIRE(std::fabs(info.objective_function_value - optimal_objective_function_value) <
++          double_equal_tolerance);
+ 
+   // Make the external LP col-wise then pass and solve it
+   lp.ensureColwise();
+   highs.passModel(lp);
+   highs.run();
+-  REQUIRE(info.objective_function_value == optimal_objective_function_value);
++  REQUIRE(std::fabs(info.objective_function_value - optimal_objective_function_value) <
++          double_equal_tolerance);
+ 
+   // Clear the internal LP
+   highs.clearModel();
+@@ -93,7 +97,8 @@ TEST_CASE("LP-orientation", "[lp_orientation]") {
+                         ARstart.data(), ARindex.data(),
+                         ARvalue.data()) == HighsStatus::kOk);
+   highs.run();
+-  REQUIRE(info.objective_function_value == optimal_objective_function_value);
++  REQUIRE(std::fabs(info.objective_function_value - optimal_objective_function_value) <
++          double_equal_tolerance);
+ 
+   // Clear the internal LP
+   highs.clearModel();
+@@ -113,7 +118,8 @@ TEST_CASE("LP-orientation", "[lp_orientation]") {
+                          one_row_value.data()) == HighsStatus::kOk);
+   }
+   highs.run();
+-  REQUIRE(info.objective_function_value == optimal_objective_function_value);
++  REQUIRE(std::fabs(info.objective_function_value - optimal_objective_function_value) <
++          double_equal_tolerance);
+ 
+   //  return_status = highs.writeModel("");
+ 

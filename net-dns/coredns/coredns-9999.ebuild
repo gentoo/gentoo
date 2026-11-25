@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,8 +12,10 @@ if [[ ${PV} == 9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/coredns/coredns.git"
 else
-	SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	SRC_URI+=" https://github.com/rahilarious/gentoo-distfiles/releases/download/${P}/deps.tar.xz -> ${P}-deps.tar.xz"
+	SRC_URI="
+	https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
+	https://github.com/gentoo-golang-dist/coredns/releases/download/v${PV}/${P}-vendor.tar.xz -> ${P}-deps.tar.xz
+"
 	KEYWORDS="~amd64"
 fi
 
@@ -28,7 +30,7 @@ RESTRICT="test"
 
 RDEPEND="acct-user/coredns
 	acct-group/coredns"
-
+BDEPEND=">=dev-lang/go-1.26.0"
 FILECAPS=(
 	-m 755 'cap_net_bind_service=+ep' usr/bin/${PN}
 )
@@ -38,18 +40,14 @@ src_unpack() {
 		git-r3_src_unpack
 		go-module_live_vendor
 	else
-		default
+		go-module_src_unpack
 	fi
-}
-
-src_prepare() {
-	[[ ${PV} != 9999* ]] && { ln -sv ../vendor ./ || die ; }
-	default
 }
 
 src_compile() {
 	[[ ${PV} == 9999* ]] &&	local GIT_COMMIT="$(git describe --dirty --always)"
-	ego build -ldflags="-s -w -X github.com/coredns/coredns/coremain.GitCommit=${GIT_COMMIT}"
+	# mimicking upstream's Makefile
+	ego build -ldflags="-X github.com/coredns/coredns/coremain.GitCommit=${GIT_COMMIT}" -tags="grpcnotrace"
 }
 
 src_install() {

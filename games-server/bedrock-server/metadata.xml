@@ -12,6 +12,7 @@
 		This is the headless server for all versions of Minecraft
 		based on the bedrock engine and is not compatible with the java version.
 	</longdescription>
+	<straight-to-stable/>
 	<upstream>
 		<bugs-to>https://bugs.mojang.com/projects/BDS/issues</bugs-to>
 	</upstream>

@@ -6,6 +6,8 @@
 		<name>Ionen Wolkens</name>
 	</maintainer>
 	<stabilize-allarches/>
+	<!-- same as net-misc/yt-dlp which pins to specific ejs versions -->
+	<straight-to-stable/>
 	<upstream>
 		<remote-id type="github">yt-dlp/ejs</remote-id>
 		<remote-id type="pypi">yt-dlp-ejs</remote-id>

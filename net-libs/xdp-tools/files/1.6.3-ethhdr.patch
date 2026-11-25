@@ -1,0 +1,62 @@
+https://github.com/xdp-project/xdp-tools/issues/570
+
+From: Pepper Gray <hello@peppergray.xyz>
+Date: Sat, 11 Apr 2026 13:03:05 +0200
+Subject: [PATCH] use struct ethhdr
+
+- remove net/netinet-headers to avoid redefinition of 'ethhdr'
+- use `struct ethhdr` (linux) instead of `struct ether_header` (glibc)
+
+fixes: #570
+Signed-off-by: Pepper Gray <hello@peppergray.xyz>
+---
+ lib/util/xdpsock.c | 16 ++++++----------
+ lib/util/xdpsock.h |  1 -
+ 2 files changed, 6 insertions(+), 11 deletions(-)
+
+diff --git a/lib/util/xdpsock.c b/lib/util/xdpsock.c
+index a8937285..57c30b56 100644
+--- a/lib/util/xdpsock.c
++++ b/lib/util/xdpsock.c
+@@ -15,8 +15,6 @@
+ #include <linux/udp.h>
+ #include <locale.h>
+ #include <arpa/inet.h>
+-#include <net/ethernet.h>
+-#include <netinet/ether.h>
+ #include <net/if.h>
+ #include <poll.h>
+ #include <pthread.h>
+@@ -648,14 +646,12 @@ void xsk_ctx__destroy(struct xsk_ctx *ctx)
+ 
+ static void swap_mac_addresses(void *data)
+ {
+-	struct ether_header *eth = (struct ether_header *)data;
+-	struct ether_addr *src_addr = (struct ether_addr *)&eth->ether_shost;
+-	struct ether_addr *dst_addr = (struct ether_addr *)&eth->ether_dhost;
+-	struct ether_addr tmp;
+-
+-	tmp = *src_addr;
+-	*src_addr = *dst_addr;
+-	*dst_addr = tmp;
++	struct ethhdr *eth = data;
++	unsigned char tmp[ETH_ALEN];
++
++	memcpy(tmp, eth->h_source, ETH_ALEN);
++	memcpy(eth->h_source, eth->h_dest, ETH_ALEN);
++	memcpy(eth->h_dest, tmp, ETH_ALEN);
+ }
+ 
+ static void hex_dump(void *pkt, size_t length, __u64 addr)
+diff --git a/lib/util/xdpsock.h b/lib/util/xdpsock.h
+index eb22b5c6..a44cb68b 100644
+--- a/lib/util/xdpsock.h
++++ b/lib/util/xdpsock.h
+@@ -8,7 +8,6 @@
+ 
+ #include <linux/if_xdp.h>
+ #include <stdbool.h>
+-#include <netinet/ether.h>
+ #include <time.h>
+ #include <sched.h>
+ #include <xdp/libxdp.h>

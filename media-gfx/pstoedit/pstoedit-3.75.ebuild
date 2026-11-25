@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -33,6 +33,7 @@ HTML_DOCS=( doc/{changelog,pstoedit}.htm )
 PATCHES=(
 	"${FILESDIR}"/${P}-libdl.patch
 	"${FILESDIR}"/${P}-gcc12.patch
+	"${FILESDIR}"/${P}-gcc-16-autoconf-2.72.patch
 )
 
 src_prepare() {
@@ -48,6 +49,7 @@ src_prepare() {
 
 src_configure() {
 	local myeconfargs=(
+		--disable-docs
 		--disable-static
 		--without-swf
 		$(use_with emf)

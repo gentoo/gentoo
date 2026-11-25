@@ -1,6 +1,43 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Mike Gilbert <floppym@gentoo.org> (2026-11-07)
+# dev-ruby/asciidoctor is not keyworded.
+sys-kernel/dracut asciidoctor
+
+# Alfred Wingate <parona@protonmail.com> (2026-10-12)
+# media-libs/libsdl3 not keyworded here
+media-libs/gegl sdl3
+
+# Michał Górny <mgorny@gentoo.org> (2026-10-10)
+# Requires dev-python/scipy.
+dev-python/munkres test
+
+# Michał Górny <mgorny@gentoo.org> (2026-09-29)
+# Requires virtual/pandoc.
+>=dev-libs/xmlsec-1.3.11 doc
+
+# Pacho Ramos <pacho@gentoo.org> (2026-07-05)
+# QT6 is not keyworded here, bug #977775
+dev-libs/appstream test
+
+# Michał Górny <mgorny@gentoo.org> (2026-06-19)
+# CLI requires dev-python/black that is being dekeyworded.
+dev-python/hypothesis cli
+dev-python/isort test
+
+# Pacho Ramos <pacho@gentoo.org> (2026-05-09)
+# dev-libs/appstream not keyworded, bug #977775
+app-misc/media-player-info test
+
+# Alfred Wingate <parona@protonmail.com> (2026-05-03)
+# dev-libs/libthai not keyworded here
+x11-libs/pango libthai
+
+# Sam James <sam@gentoo.org> (2026-04-11)
+# Unkeyworded dependencies
+sys-libs/libcap-ng bpf
+
 # Robin H. Johnson <robbat2@gentoo.org> (2026-03-22)
 # sys-block/vdo not keyworded here
 sys-fs/lvm2 vdo
@@ -12,6 +49,7 @@ sys-fs/lvm2 vdo
 # Ionen Wolkens <ionen@gentoo.org> (2026-03-16)
 # media-libs/opencolorio is not keyworded here
 media-video/ffmpeg opencolorio
+media-video/ffmpeg-compat opencolorio
 
 # Sam James <sam@gentoo.org> (2026-01-16)
 # Unkeyworded dependencies (bug #968238)
@@ -232,6 +270,7 @@ app-editors/emacs gui mailutils
 
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-08-25)
 # net-libs/webkit-gtk has no mips keywords
+app-editors/emacs xwidgets
 dev-util/glade webkit
 
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-08-25)
@@ -339,11 +378,15 @@ media-libs/libheif aom
 # Pulls in LXDE which is not keyworded here
 x11-misc/xscreensaver new-login
 
+# Arthur Zamarin <arthurzam@gentoo.org> (2026-09-19)
+# gui-libs/gtk:4 is not keyworded here
+app-editors/gvim gtk4
+
 # matoro <matoro_gentoo@matoro.tk> (2023-11-16)
 # gui-libs/gtk:4 casualties
 app-i18n/ibus gtk4
 
-# Violet Purcell <vimproved@inventati.org> (2023-10-12)
+# Violet Purcell <vi@vimproved.dev> (2023-10-12)
 # dev-build/samurai is not keyworded here.
 app-alternatives/ninja samurai
 
@@ -380,6 +423,7 @@ app-text/enchant nuspell
 # Adel Kara Slimane <adel.ks@zegrapher.com> (2022-03-14)
 # Untested useflag on other arches, needs keywording
 media-video/ffmpeg vmaf
+media-video/ffmpeg-compat vmaf
 
 # James Le Cuirot <chewi@gentoo.org> (2022-02-24)
 # These GRUB platforms are only for MIPS.
@@ -472,10 +516,6 @@ dev-python/twisted conch http2 test
 # Felix Janda <felix.janda@posteo.de> (2016-09-24)
 # net-libs/libnetfilter_conntrack is not keyworded on mips
 net-dns/dnsmasq conntrack
-
-# Davide Pesavento <pesa@gentoo.org> (2015-10-26)
-# Tests require non-keyworded qt5
-dev-qt/qtchooser test
 
 # Mike Frysinger <vapier@gentoo.org> (2015-09-10)
 # Requires matplotlib which requires a bit more.

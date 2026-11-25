@@ -21,4 +21,10 @@
   <upstream>
     <remote-id type="github">CGAL/cgal</remote-id>
   </upstream>
+  <use>
+    <!--<flag name="benchmark">Build benchmarks during test (requires USE=test)</flag>-->
+    <flag name="demos">Build demos during test (requires USE=test)</flag>
+    <flag name="examples">Build examples during test (requires USE=test)</flag>
+    <flag name="test-full">Run demos and examples when testing</flag>
+  </use>
 </pkgmetadata>

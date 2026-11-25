@@ -1,0 +1,56 @@
+# Fixes https://bugs.gentoo.org/974937 ( tests fail with zlib>=1.3.2 )
+# Fix provided by karljs via https://github.com/grke/burp/commit/73d89063cd5490d7f376ccaed642f0e0bf4be85e
+# further bugfixes by grke via https://github.com/grke/burp/commit/7bff93acf6edd3e43bbcc72aa92f2c65fa6cfc0d
+# patch made via "git diff HEAD~2..HEAD" from upstream github repo
+diff --git a/utest/server/test_restore_sbuf.c b/utest/server/test_restore_sbuf.c
+index f7caeab2..3272b79c 100644
+--- a/utest/server/test_restore_sbuf.c
++++ b/utest/server/test_restore_sbuf.c
+@@ -59,6 +59,7 @@ static void setup_md5sum_match(struct asfd *asfd, struct sbuf *sb)
+ 	asfd_assert_write(asfd, &w, 0, CMD_FILE, sb->path.buf);
+ }
+ 
++#if ZLIB_VERNUM < 0x1320
+ static void setup_error_while_reading(struct asfd *asfd, const char *path)
+ {
+ 	int w=0;
+@@ -66,6 +67,7 @@ static void setup_error_while_reading(struct asfd *asfd, const char *path)
+ 	snprintf(msg, sizeof(msg), "error while reading %s\n", path);
+ 	asfd_assert_write(asfd, &w, 0, CMD_WARNING, msg);
+ }
++#endif
+ 
+ static void clean(void)
+ {
+@@ -196,7 +198,7 @@ START_TEST(test_verify_file_md5sum_match)
+ }
+ END_TEST
+ 
+-START_TEST(test_verify_file_gzip_read_failure)
++START_TEST(test_verify_file_gzip_corrupt)
+ {
+ 	struct asfd *asfd;
+ 	struct cntr *cntr;
+@@ -225,7 +227,13 @@ START_TEST(test_verify_file_gzip_read_failure)
+ 	fail_unless(!fzp_close(&fzp));
+ 
+ 	asfd=asfd_mock_setup(&areads, &awrites);
++#if ZLIB_VERNUM < 0x1320
++	// Old zlib returns a read error.
+ 	setup_error_while_reading(asfd, best);
++#else
++	// New zlib treats it as an early EOF, and therefore reads zero bytes.
++	setup_md5sum_no_match(asfd, sb);
++#endif
+ 
+ 	// Returns 0 so that the parent process continues.
+ 	fail_unless(!verify_file(asfd, sb, 0 /*patches*/, best, cntr));
+@@ -279,7 +287,7 @@ Suite *suite_server_restore_sbuf(void)
+ 	tcase_add_test(tc_core, test_verify_file_no_md5sum);
+ 	tcase_add_test(tc_core, test_verify_file_md5sum_no_match);
+ 	tcase_add_test(tc_core, test_verify_file_md5sum_match);
+-	tcase_add_test(tc_core, test_verify_file_gzip_read_failure);
++	tcase_add_test(tc_core, test_verify_file_gzip_corrupt);
+ 	tcase_add_test(tc_core, test_restore_file_not_found);
+ 	suite_add_tcase(s, tc_core);
+ 

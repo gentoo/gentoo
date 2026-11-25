@@ -26,4 +26,7 @@
   <use>
     <flag name="int64">Build the 64 bits integer library</flag>
   </use>  
+  <upstream>
+    <remote-id type="github">xiaoyeli/superlu_mt</remote-id>
+  </upstream>
 </pkgmetadata>

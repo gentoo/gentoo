@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 PYTHON_REQ_USE="threads(+),xml(+)"
 
 MY_PV="${PV/_alpha/.alpha}"
@@ -116,7 +116,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	>=app-text/libebook-0.1
 	app-text/libepubgen
 	>=app-text/libetonyek-0.1
-	app-text/libexttextcat
+	app-text/libexttextcat:=
 	app-text/liblangtag
 	>=app-text/libmspub-0.1.0
 	>=app-text/libmwaw-0.3.21
@@ -301,10 +301,15 @@ PATCHES=(
 	"${FILESDIR}/${P}-icu-78.1.patch"
 	"${FILESDIR}/${P}-poppler-26.01.patch"
 	"${FILESDIR}/${P}-poppler-26.02.patch"
+	"${FILESDIR}/${P}-poppler-26.04.patch"
+	"${FILESDIR}/${P}-poppler-26.06.patch"
 
 	# add qt6 backend as possible fallback for gtk-based desktop environments:
 	# https://bugs.gentoo.org/950170
 	"${FILESDIR}/${PN}-25.2-vcl-backend-fallback.patch"
+
+	# bug #971474
+	"${FILESDIR}/${PN}-25.2.7.2-skia-clang22.patch"
 )
 
 _check_reqs() {
@@ -469,7 +474,7 @@ src_configure() {
 	fi
 
 	# Workaround for bug #967047
-	tc-is-gcc && [[ $(gcc-major-version) -eq 16 ]] && append-cxxflags -fno-devirtualize-speculatively
+	tc-is-gcc && [[ $(gcc-major-version) -ge 16 ]] && append-cxxflags -fno-devirtualize-speculatively
 
 	# Show flags set at the end
 	einfo "  Used CFLAGS:    ${CFLAGS}"

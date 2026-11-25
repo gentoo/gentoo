@@ -1,0 +1,29 @@
+--- a/meson.build
++++ b/meson.build
+@@ -84,11 +84,10 @@ meson.add_dist_script(srcdir / 'getversion.sh')
+ optional_defines = []
+ 
+ dl = cc.find_library('dl')
+-selinux = cc.find_library('libselinux', required: false)
+-if selinux.found()
+-  if cc.check_header('selinux/selinux.h')
+-    optional_defines += ['--define=HAVE_SELINUX']
+-  endif
++selinux = cc.find_library('libselinux', required: get_option('selinux'))
++selinux_header = cc.check_header('selinux/selinux.h', required: get_option('selinux'))
++if get_option('selinux').enabled()
++  optional_defines += ['--define=HAVE_SELINUX']
+ endif
+ 
+ glib = dependency('glib-2.0', version: '>= 2.32.0')
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -2,3 +2,8 @@ option('gtk_doc',
+        type : 'boolean',
+        value : false,
+        description : 'use gtk-doc to build documentation')
++
++option('selinux',
++       type : 'feature',
++       value : 'auto',
++       description : 'SELinux support')

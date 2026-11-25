@@ -1,9 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit readme.gentoo-r1 systemd toolchain-funcs
+inherit flag-o-matic readme.gentoo-r1 systemd toolchain-funcs
 
 COMMIT="591a7834dc9f1dff3d336d769a6561138a5befe7"
 DESCRIPTION="An OpenPGP keyserver which is decentralized with highly reliable synchronization"
@@ -79,6 +79,10 @@ src_prepare() {
 
 src_compile() {
 	tc-export CC CXX RANLIB
+
+	# -Werror=lto-type-mismatch
+	# https://bugs.gentoo.org/980361
+	use optimize && filter-lto
 
 	emake dep
 	# sks build fails with parallel build in module Bdb

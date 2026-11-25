@@ -1,6 +1,69 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Michael Orlitzky <mjo@gentoo.org> (2026-11-21)
+# Requires app-antivirus/clamav.
+app-antivirus/clamtk
+dev-perl/File-Scan-ClamAV
+sys-fs/clamfs
+
+# Michał Górny <mgorny@gentoo.org> (2025-11-10)
+# Requires dev-python/pydantic.
+dev-python/typer
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2026-10-20)
+# kde-plasma/union requires dev-build/corrosion, iow rust/cargo.
+>=kde-plasma/kscreenlocker-6.8.0
+>=kde-plasma/plasma-browser-integration-6.8.0
+>=kde-plasma/plasma-desktop-6.8.0
+>=kde-plasma/plasma-integration-6.8.0
+>=kde-plasma/plasma-meta-6.8.0
+>=kde-plasma/plasma-workspace-6.8.0
+>=kde-plasma/powerdevil-6.8.0
+kde-plasma/union
+
+# Thibaud CANALE <thican@thican.net> (2026-05-17)
+# Requires dev-python/pydantic
+dev-python/cloudflare
+
+# Ionen Wolkens <ionen@gentoo.org> (2026-09-27)
+# Depends on sys-fs/inotify-tools which now uses rust.
+net-misc/owncloud-client
+
+# Michał Górny <mgorny@gentoo.org> (2025-07-04)
+# Hypothesis has now been RIIR-ed.
+>=dev-python/hypothesis-6.156
+
+# Michał Górny <mgorny@gentoo.org> (2025-07-01)
+# Requires dev-python/rpds-py.
+dev-python/octave-kernel
+
+# Michał Górny <mgorny@gentoo.org> (2025-06-02)
+# Require dev-python/pydantic.
+dev-python/syrupy
+dev-python/translate-toolkit
+
+# Michał Górny <mgorny@gentoo.org> (2025-05-07)
+# dev-python/mypy now started requiring NIH Rust packages.
+dev-ada/ada_language_server
+dev-ada/aws
+dev-ada/gnatdoc
+dev-ada/gnatformat
+dev-ada/lal-refactor
+dev-ada/langkit
+dev-ada/langkit-contrib
+dev-ada/libadalang
+dev-ada/libadalang-tools
+dev-python/ast-serialize
+dev-python/mypy
+
+# Michał Górny <mgorny@gentoo.org> (2025-05-02)
+# dev-python/cbor2 has been RIIR-ed, and the fallback Python
+# implementation was removed at the same time.  Covers its revdeps.
+dev-python/cbor2
+sys-apps/fwupd-efi
+sys-apps/uswid
+
 # Michał Górny <mgorny@gentoo.org> (2025-03-27)
 # Requires dev-python/pydantic-settings.
 dev-python/oct2py
@@ -31,6 +94,7 @@ dev-python/unicode-segmentation-rs
 >=app-i18n/ibus-chewing-2.1.7
 >=app-i18n/libchewing-0.10.3
 dev-build/corrosion
+dev-libs/cxx-rust-cssparser
 
 # Patrick McLean <chutzpah@gentoo.org> (2025-09-16)
 # New version is rewritten in rust
@@ -43,9 +107,16 @@ app-portage/emlop
 # Michał Górny <mgorny@gentoo.org> (2024-05-08)
 # Pure Python packages using dev-python/uv-build, and therefore
 # requiring Rust to install, and their reverse dependencies.
+<app-doc/kicad-doc-10
+app-text/dblatex
+app-text/paperwork
+app-text/paperwork-backend
+dev-embedded/platformio
 dev-python/aiosmtpd
 dev-python/atpublic
+dev-python/authheaders
 dev-python/behave
+dev-python/cachecontrol
 dev-python/crispy-bootstrap3
 dev-python/crispy-bootstrap4
 dev-python/crispy-bootstrap5
@@ -58,28 +129,67 @@ dev-python/django-filter
 dev-python/django-polymorphic
 dev-python/django-tables2
 dev-python/djangorestframework
+dev-python/dkimpy
+dev-python/dnspython
 dev-python/easy-thumbnails
+dev-python/email-validator
+dev-python/flit
 dev-python/flufl-lock
 dev-python/gherkin-official
+dev-python/guessit
+dev-python/hashin
+dev-python/hypothesis
+dev-python/knowit
+dev-python/liblore
 dev-python/logfury
-dev-python/mkdocs-gen-files
+dev-python/narwhals
+dev-python/pip
+dev-python/progressbar2
+dev-python/pydevd
 dev-python/pykwalify
+dev-python/pymongo
+dev-python/pypiserver
+dev-python/pyspf
 dev-python/pytest-bdd
 dev-python/pytest-describe
 dev-python/pytest-django
 dev-python/pytest-golden
+dev-python/pytest-socket
+dev-python/python-utils
+dev-python/rebulk
+dev-python/scikit-learn
 dev-python/sphinxcontrib-doxylink
->=dev-python/sphinxcontrib-httpdomain-2.0
+dev-python/sphinxcontrib-httpdomain
 dev-python/sybil
 dev-python/testfixtures
 dev-python/toml-fmt-common
+dev-python/trakit
+dev-python/untangle
 dev-python/uv-build
+dev-python/vcsgraph
 dev-python/zmq-anyio
+dev-util/elf_diff
+mail-filter/spf-engine
+media-gfx/inkscape
+media-video/subliminal
 net-analyzer/fail2ban
+net-analyzer/linkchecker
+net-mail/b4
+net-voip/sipvicious
+sci-astronomy/pysiril
+sci-astronomy/siril
+<sci-electronics/kicad-templates-10
+<sci-electronics/kicad-packages3d-10
+<sci-electronics/kicad-footprints-10
+<sci-electronics/kicad-symbols-10
+<sci-electronics/kicad-10
+<sci-electronics/kicad-meta-10
 sci-libs/cartopy
 sci-libs/pcl
 sci-visualization/pythonprop
 sys-auth/ssh-ldap-pubkey
+x11-themes/adapta-gtk-theme
+x11-wm/xpra
 
 # Sebastian Pipping <sping@gentoo.org> (2025-06-20)
 # Requires masked packages (bug #958030)
@@ -99,12 +209,10 @@ dev-python/poetry-plugin-export
 
 # Michał Górny <mgorny@gentoo.org> (2024-05-08)
 # The sigstore bundle.
-dev-python/betterproto
 dev-python/pypi-attestations
 dev-python/securesystemslib
 dev-python/sigstore
 dev-python/sigstore-models
-dev-python/sigstore-protobuf-specs
 dev-python/sigstore-rekor-types
 dev-python/rfc3161-client
 dev-python/tuf
@@ -195,8 +303,6 @@ gnome-extra/gnome-characters
 gnome-extra/cjs
 gnome-extra/cinnamon
 gnome-extra/gnome-shell-extension-dash-to-panel
-gnome-extra/gnome-shell-extension-weather-in-the-clock
-gnome-extra/gnome-shell-extension-bluetooth-quick-connect
 gnome-extra/gnome-shell-extension-gsconnect
 gnome-extra/gnome-shell-extension-desktop-icons-ng
 gnome-extra/gnome-shell-extension-appindicator
@@ -218,7 +324,6 @@ dev-util/cargo-license
 dev-util/cargo-audit
 dev-util/bingrep
 dev-python/trimesh
-dev-python/vpython
 dev-python/treq
 dev-python/twython
 dev-python/txtorcon
@@ -227,13 +332,9 @@ dev-python/sqlglot
 dev-python/spake2
 dev-python/requests-ntlm
 dev-python/python3-discogs-client
-dev-python/python-axolotl
 dev-python/pyghmi
 dev-python/omemo-dr
 dev-python/noiseprotocol
-dev-python/magic-wormhole
-dev-python/magic-wormhole-transit-relay
-dev-python/magic-wormhole-mailbox-server
 dev-python/jwcrypto
 dev-python/websockify
 dev-python/jupyter
@@ -248,8 +349,6 @@ dev-python/github3-py
 dev-python/google-auth-oauthlib
 dev-python/elasticsearch
 dev-python/dns-lexicon
-dev-python/dissononce
-dev-python/consonance
 dev-python/pygithub
 dev-python/adblock
 dev-python/pysnmp
@@ -332,18 +431,20 @@ app-eselect/eselect-rust
 app-misc/gramps
 app-misc/khal
 app-text/mdbook
+app-text/papers
 dev-embedded/esptool
 dev-lang/rust
 dev-lang/rust-bin
 >=dev-lang/spidermonkey-78
 >=dev-libs/gjs-1.66
 dev-python/aiohttp-oauthlib
-dev-python/autobahn
 dev-python/aws-sam-translator
 >=dev-python/bcrypt-4
+dev-python/cachebox
 dev-python/cfn-lint
 >=dev-python/cryptography-36
 dev-python/aioquic
+dev-python/apispec
 dev-python/apprise
 dev-python/bitstring
 dev-python/cramjam
@@ -354,10 +455,10 @@ dev-python/inline-snapshot
 dev-python/ipyparallel
 dev-python/ipywidgets
 dev-python/jaraco-itertools
+dev-python/joserfc
 dev-python/josepy
 >=dev-python/jsonschema-4.18.0
 dev-python/jsonschema-path
-dev-python/jsonschema-spec
 dev-python/jsonschema-specifications
 dev-python/jupyter-events
 dev-python/jupyter-lsp
@@ -368,16 +469,9 @@ dev-python/jupyterlab-widgets
 dev-python/jupyterlab-server
 dev-python/jupyterlab
 dev-python/keyring
+dev-python/lzallright
 dev-python/apache-libcloud
 dev-python/moto
-dev-python/mkdocs-i18n
-dev-python/mkdocs-git-authors-plugin
-dev-python/mkdocs-git-revision-date-localized-plugin
-dev-python/mkdocs-material
-dev-python/mkdocs-material-extensions
-dev-python/mkdocs-pymdownx-material-extras
-dev-python/mkdocs-redirects
-dev-python/mkdocs-static-i18n
 dev-python/nbclassic
 dev-python/nbdime
 dev-python/nbval
@@ -396,14 +490,13 @@ dev-python/paramiko
 dev-python/patiencediff
 dev-python/pooch
 dev-python/pydantic
-dev-python/pydantic-core
 dev-python/pydantic-settings
 dev-python/pyfuse3
 >=dev-python/pyopenssl-22
 dev-python/pymdown-extensions
+dev-python/pysequoia
 dev-python/pyspelling
 dev-python/pyspnego
-dev-python/pyproject-fmt
 dev-python/pytest-jupyter
 dev-python/pytest-localftpserver
 dev-python/pytest-salt-factories
@@ -411,6 +504,7 @@ dev-python/pytest-trio
 dev-python/python-glanceclient
 dev-python/python-ironicclient
 dev-python/python-jose
+dev-python/python-manilaclient
 dev-python/python-neutronclient
 dev-python/python-openstackclient
 dev-python/python-snappy
@@ -427,7 +521,6 @@ dev-python/service-identity
 dev-python/setuptools-rust
 dev-python/sshpubkeys
 dev-python/sshtunnel
-dev-python/tempest
 dev-python/tibs
 dev-python/trustme
 dev-python/trio
@@ -439,7 +532,6 @@ dev-python/watchfiles
 dev-python/wcmatch
 dev-python/widgetsnbextension
 dev-ruby/selenium-webdriver
-dev-util/buildbot-worker
 dev-util/cargo-c
 dev-util/cbindgen
 dev-util/git-delta
@@ -453,6 +545,7 @@ dev-vcs/breezy
 >=games-puzzle/swell-foop-46
 >=games-puzzle/quadrapassel-49
 gnome-base/gdm
+>=gnome-base/gnome-control-center-49
 >=gnome-base/gnome-core-apps-3.36.5
 >=gnome-base/gnome-core-libs-3.36.5
 >=gnome-base/gnome-light-3.36.5
@@ -466,17 +559,23 @@ gnome-extra/gnome-browser-connector
 gnome-extra/gnome-tweaks
 gnome-extra/sushi
 >=gnome-extra/yelp-49
+mate-extra/mate-user-guide
 >=media-gfx/libimagequant-4
+media-gfx/loupe
 <media-gfx/gimp-3.0.6
+media-libs/glycin
+media-libs/glycin-loaders
 >=media-libs/libopenraw-0.3.2
 media-libs/subrandr
 media-plugins/gimp-lqr
 media-video/rav1e
 net-analyzer/wtfis
 net-dns/dnsviz
+net-dns/hash-slinger
 net-dns/pdns-recursor
 net-im/gajim
 >=net-irc/polari-3.37
+>=net-libs/gnome-online-accounts-3.56
 net-libs/quiche
 net-misc/streamlink
 net-news/newsboat
@@ -486,13 +585,68 @@ sci-geosciences/gnome-maps
 sys-block/thin-provisioning-tools
 >=sys-process/glances-4.1.2.1
 sys-fs/bcachefs-tools
+>=sys-fs/inotify-tools-4.26
+sys-fs/ubi_reader
 virtual/rust
 www-apps/radicale
 >=www-client/epiphany-49
 >=x11-themes/adwaita-icon-theme-3.36
 x11-themes/adwaita-icon-theme-legacy
->=gui-libs/gtk-4.20.1
+=gui-libs/gtk-4.20*
 >=dev-cpp/gtkmm-4.20
 >=gui-libs/libadwaita-1.8.2
 >=gnome-extra/gnome-user-share-48.2
 >=app-editors/gnome-text-editor-49.0
+>=x11-wm/mutter-49
+# libadwaita consumers
+app-arch/file-roller
+app-editors/ghex
+app-editors/gnome-text-editor
+app-i18n/ibus-cangjie
+app-misc/gnote
+app-text/gtranslator
+app-text/paper-clip
+dev-util/blueprint-compiler
+dev-util/sysprof
+games-arcade/gnome-nibbles
+games-board/gnome-mines
+games-kids/gmult
+games-puzzle/gnome-sudoku
+games-puzzle/lightsoff
+games-util/cartridges
+gnome-base/nautilus
+gnome-extra/gnome-calculator
+gnome-extra/gnome-calendar
+gnome-extra/gnome-clocks
+gnome-extra/gnome-contacts
+gnome-extra/gnome-logs
+gnome-extra/gnome-software
+gnome-extra/tecla
+gnome-extra/zenity
+gui-libs/libpanel
+media-gfx/gnome-font-viewer
+>=media-gfx/shotwell-33.0
+media-gfx/simple-scan
+media-sound/easyeffects
+media-sound/gnome-music
+media-video/celluloid
+net-wireless/gnome-bluetooth
+sys-apps/baobab
+sys-apps/xdg-desktop-portal-gnome
+www-client/epiphany
+app-misc/bijiben
+mail-client/geary
+media-gfx/gnome-photos
+net-libs/msgraph
+dev-games/aseprite
+dev-python/nautilus-python
+gnome-extra/nemo-fileroller
+media-gfx/geeqie
+x11-wm/marco
+x11-wm/muffin
+x11-wm/mutter
+mate-base/mate
+mate-base/mate-control-center
+gnome-extra/eiciel
+media-sound/pavucontrol
+net-p2p/transmission

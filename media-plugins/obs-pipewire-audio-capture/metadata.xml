@@ -9,6 +9,10 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>chiitoo@gentoo.org</email>
+		<name>Jimi Huotari</name>
+	</maintainer>
 	<upstream>
 		<bugs-to>https://github.com/dimtpap/obs-pipewire-audio-capture/issues</bugs-to>
 		<remote-id type="github">dimtpap/obs-pipewire-audio-capture</remote-id>

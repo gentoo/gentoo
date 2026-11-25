@@ -1,0 +1,15 @@
+https://bugs.gentoo.org/976143
+Protibuf deprecated proto2::FieldDescriptor::is_optional, with recommended replacement
+Upstream patch that adds said replacement:
+https://github.com/opencv/opencv/commit/61a3d7d25d2987b9c72e072ff9d38dbcbb31ab54
+--- a/modules/dnn/src/caffe/caffe_importer.cpp
++++ b/modules/dnn/src/caffe/caffe_importer.cpp
+@@ -217,7 +217,7 @@
+ 
+             const google::protobuf::UnknownFieldSet& unknownFields = msgRefl->GetUnknownFields(msg);
+             bool hasData =  fd->is_required() ||
+-                            (fd->is_optional() && msgRefl->HasField(msg, fd)) ||
++                            ((!fd->is_required() && !fd->is_repeated()) && msgRefl->HasField(msg, fd)) ||
+                             (fd->is_repeated() && msgRefl->FieldSize(msg, fd) > 0) ||
+                             !unknownFields.empty();
+             if (!hasData)

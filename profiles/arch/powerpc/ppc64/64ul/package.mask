@@ -1,5 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Alfredo Tupone <tupone@gentoo.org> (2026-06-01)
+# depends on sympy
+sci-ml/pytorch
 
 # matoro <matoro_gentoo@matoro.tk> (2024-06-10)
 # Requires ieee-long-double, i.e. ppc64le with 23.0

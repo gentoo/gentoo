@@ -1,0 +1,22 @@
+--- a/.promu.yml
++++ b/.promu.yml
+@@ -2,15 +2,19 @@ go:
+   # Whenever the Go version is updated here,
+   # .circleci/config.yml should also be updated.
+   version: 1.26
++  cgo: true
+ repository:
+   path: github.com/superq/chrony_exporter
+ build:
++  binaries:
++    - name: chrony_exporter
+   ldflags: |
+     -X github.com/prometheus/common/version.Version={{.Version}}
+     -X github.com/prometheus/common/version.Revision={{.Revision}}
+     -X github.com/prometheus/common/version.Branch={{.Branch}}
+     -X github.com/prometheus/common/version.BuildUser={{user}}@{{host}}
+     -X github.com/prometheus/common/version.BuildDate={{date "20060102-15:04:05"}}
++  static: false
+ tarball:
+   files:
+     - LICENSE

@@ -1,0 +1,18 @@
+
+
+The legacy 32bit ABI support for IBM S390 mainframes is on the way out just
+about everywhere:
+
+* Pure 32bit hardware is by now nonexistent (64bit support exists since 2002).
+* Full 32bit kernel support is gone since 2014.
+* The 32bit ABI userspace emulation layer has been dropped in the kernel since
+  version 6.19.
+* glibc will drop 32bit ABI support in version 2.44.
+* gcc will drop 32bit ABI support in version 17.
+
+As a consequence, Gentoo will also drop support for it, effective immediately.
+There will be no stage builds anymore. The 32bit profiles will be marked
+deprecated and experimental, no longer receive any testing, and be removed
+in the next profile version. Corresponding bug reports may get ignored or
+closed immediately. If you are still using this configuration, we urge you to
+find an alternative.

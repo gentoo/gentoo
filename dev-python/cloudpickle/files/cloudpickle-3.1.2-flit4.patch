@@ -1,0 +1,55 @@
+https://bugs.gentoo.org/980403
+https://github.com/cloudpipe/cloudpickle/issues/597
+https://github.com/cloudpipe/cloudpickle/pull/598
+
+From 465ac44aa0c85c81fa21324a8c698ad86be38d18 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Wed, 5 Aug 2026 20:33:50 +0200
+Subject: [PATCH] Use PEP 621 metadata to fix building with `flit-core >= 4`
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Fixes #597
+
+Signed-off-by: Michał Górny <mgorny@gentoo.org>
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -1,19 +1,19 @@
+ [build-system]
+-requires = ["flit_core"]
++requires = ["flit_core >=3.2,<5"]
+ build-backend = "flit_core.buildapi"
+ 
+-[tool.flit.metadata]
+-module = "cloudpickle"
+-author = "The cloudpickle developer team"
+-author-email='cloudpipe@googlegroups.com'
+-home-page = "https://github.com/cloudpipe/cloudpickle"
+-description-file = "README.md"
++[project]
++name = "cloudpickle"
++authors = [
++    { name = "The cloudpickle developer team", email = "cloudpipe@googlegroups.com" },
++]
++readme = "README.md"
+ requires-python = ">=3.8"
+ license = "BSD-3-Clause"
++dynamic = ["version", "description"]
+ classifiers = [
+     'Development Status :: 5 - Production/Stable',
+     'Intended Audience :: Developers',
+-    'License :: OSI Approved :: BSD License',
+     'Operating System :: POSIX',
+     'Operating System :: Microsoft :: Windows',
+     'Operating System :: MacOS :: MacOS X',
+@@ -31,6 +31,9 @@ classifiers = [
+     'Topic :: System :: Distributed Computing',
+ ]
+ 
++[project.urls]
++Homepage = "https://github.com/cloudpipe/cloudpickle"
++
+ [tool.black]
+ line-length = 88
+ target_version = ['py38', 'py39', 'py310', 'py311', 'py312', 'py313']

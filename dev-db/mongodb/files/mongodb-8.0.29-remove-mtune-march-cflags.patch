@@ -1,0 +1,13 @@
+Allow the user to set their own mtune/march flags. There is no reason to force specific flags.
+
+diff '--color=auto' -ur a/bazel/toolchains/cc/mongo_linux/mongo_compiler_flags.bzl b/bazel/toolchains/cc/mongo_linux/mongo_compiler_flags.bzl
+--- a/bazel/toolchains/cc/mongo_linux/mongo_compiler_flags.bzl	2026-05-13 19:17:03.000000000 -0400
++++ b/bazel/toolchains/cc/mongo_linux/mongo_compiler_flags.bzl	2026-05-29 12:30:08.550864554 -0400
+@@ -364,7 +339,6 @@
+     COMPRESS_DEBUG_COPTS +
+     DEBUG_TYPES_SECTION_FLAGS +
+     IMPLICIT_FALLTHROUGH_COPTS +
+-    MTUNE_MARCH_COPTS +
+     DISABLE_SOURCE_WARNING_AS_ERRORS_COPTS +
+     THIN_LTO_FLAGS +
+     SYMBOL_ORDER_COPTS +

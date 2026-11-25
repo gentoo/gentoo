@@ -1,0 +1,36 @@
+https://github.com/rbsec/sslscan/commit/1769c47e118ecd3ab63222015f52ae89ae0976fe
+From 1769c47e118ecd3ab63222015f52ae89ae0976fe Mon Sep 17 00:00:00 2001
+From: Marc <34656315+MarcT512@users.noreply.github.com>
+Date: Fri, 17 Apr 2026 17:14:22 +0100
+Subject: [PATCH] Ignore SIGPIPE on platforms that are not Windows
+
+Ignore SIGPIPE, or otherwise we might be aborted by the OS if the remote host closes our socket and we try to write to it.
+---
+ sslscan.c | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/sslscan.c b/sslscan.c
+index 0358aca..abe3d69 100644
+--- a/sslscan.c
++++ b/sslscan.c
+@@ -91,6 +91,7 @@
+   #include <sys/socket.h>
+   #include <sys/select.h>
+   #include <fcntl.h>
++  #include <signal.h>
+ #endif
+ #include <string.h>
+ #include <sys/stat.h>
+@@ -4152,6 +4153,12 @@ int main(int argc, char *argv[])
+     // Build the list of ciphers missing from OpenSSL.
+     findMissingCiphers();
+ 
++    // Ignore SIGPIPE, or otherwise we might be aborted by the OS if the remote host closes our socket and we try to write to it
++#ifndef _WIN32
++    signal(SIGPIPE, SIG_IGN);
++#endif
++
++
+     switch (mode)
+     {
+         case mode_version:

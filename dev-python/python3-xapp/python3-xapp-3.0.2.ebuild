@@ -8,12 +8,12 @@ PYTHON_COMPAT=( python3_{10..14} )
 inherit meson python-r1
 
 DESCRIPTION="Python bindings for x11-libs/xapp"
-HOMEPAGE="https://github.com/linuxmint/python3-xapp"
+HOMEPAGE="https://linuxmint-developer-guide.readthedocs.io/en/latest/xapps.html https://linuxmint.com/"
 SRC_URI="https://github.com/linuxmint/python3-xapp/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 arm64 ~loong ~ppc64 ~riscv x86"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 # There are no tests, and src_test() needs to be overridden

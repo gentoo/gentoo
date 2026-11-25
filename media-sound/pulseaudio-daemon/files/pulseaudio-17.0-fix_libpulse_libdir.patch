@@ -1,0 +1,45 @@
+see https://gitlab.freedesktop.org/pulseaudio/pulseaudio/-/work_items/3863
+build-system uses privlibdir both for installation and for finding libpulse
+private libs at build time. It breaks with cross-compile.
+Because libdir is redefined internally and libpulsecommon_dep is used in
+many places, avoid deep changes and add a new option, privlibdir_system.
+--- a/meson.build
++++ b/meson.build
+@@ -79,6 +79,11 @@ if host_machine.system() == 'windows'
+   privlibdir = bindir
+ endif
+ 
++privlibdir_system = get_option('privlibdir_system')
++if privlibdir_system == ''
++  privlibdir_system = privlibdir
++endif
++
+ alsadatadir = get_option('alsadatadir')
+ if alsadatadir == ''
+   alsadatadir = join_paths(datadir, 'pulseaudio', 'alsa-mixer')
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -60,6 +60,9 @@ option('pulsedsp-location',
+ option('modlibexecdir',
+        type : 'string',
+        description : 'Specify location where modules will be installed')
++option('privlibdir_system',
++       type : 'string',
++       description : 'Specify location where Pulseaudio private system library is installed (defaults to ${libdir/pulseaudio})')
+ option('alsadatadir',
+        type : 'string',
+        description : 'Directory for ALSA card profiles (defaults to ${datadir}/pulseaudio/alsa-mixer)')
+--- a/src/meson.build
++++ b/src/meson.build
+@@ -194,7 +194,7 @@ endif
+ # FIXME: Do SIMD things
+ 
+ if not get_option('client')
+-  libpulsecommon_dep = cc.find_library('pulsecommon-' + pa_version_major_minor, dirs : privlibdir, required : true)
++  libpulsecommon_dep = cc.find_library('pulsecommon-' + pa_version_major_minor, dirs : privlibdir_system, required : true)
+   libpulse_dep = dependency('libpulse', required : true)
+   libpulse_simple_dep = dependency('libpulse-simple', required : true)
+ else
+-- 
+2.52.0
+

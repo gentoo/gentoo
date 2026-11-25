@@ -1,0 +1,37 @@
+--- a/Makefile
++++ b/Makefile
+@@ -574,7 +574,7 @@ $(CLASS_FILES_BE_C): $(JAVA_FILES_BE_C) $(CLASS_FILES_FUIR) $(CLASS_FILES_FUIR_
+ 	$(JAVAC) -cp $(CLASSES_DIR) -d $(CLASSES_DIR) $(JAVA_FILES_BE_C)
+ 	touch $@
+ 
+-$(CLASS_FILES_BE_EFFECTS): $(JAVA_FILES_BE_EFFECTS) $(CLASS_FILES_FUIR_CFG)
++$(CLASS_FILES_BE_EFFECTS): $(JAVA_FILES_BE_EFFECTS) $(CLASS_FILES_FUIR_CFG) $(CLASS_FILES_FUIR_ANALYSIS_DFA)
+ 	mkdir -p $(CLASSES_DIR)
+ 	$(JAVAC) -cp $(CLASSES_DIR) -d $(CLASSES_DIR) $(JAVA_FILES_BE_EFFECTS)
+ 	touch $@
+@@ -685,14 +685,14 @@ $(MOD_JAVA_BASE_FZ_FILES): $(MOD_BASE) $(FZJAVA)
+ 	$(FUZION_BIN_SH) -c "$(FZJAVA) java.base -to=$(@D) -verbose=0"
+ 	touch $@
+ 
+-$(MOD_JAVA_XML_FZ_FILES): $(FZJAVA)
++$(MOD_JAVA_XML_FZ_FILES): $(FZJAVA) $(MOD_JAVA_BASE)
+ 	rm -rf $(@D)
+ 	mkdir -p $(@D)
+ # wrapping in /bin/sh -c "..." is a workaround for building on windows (msys2)
+ 	$(FUZION_BIN_SH) -c "$(FZJAVA) java.xml -to=$(@D) -modules=java.base -verbose=0"
+ 	touch $@
+ 
+-$(MOD_JAVA_DATATRANSFER_FZ_FILES): $(FZJAVA)
++$(MOD_JAVA_DATATRANSFER_FZ_FILES): $(FZJAVA) $(MOD_JAVA_BASE) $(MOD_JAVA_XML)
+ 	rm -rf $(@D)
+ 	mkdir -p $(@D)
+ # wrapping in /bin/sh -c "..." is a workaround for building on windows (msys2)
+@@ -703,7 +703,7 @@ $(MOD_JAVA_DATATRANSFER_FZ_FILES): $(FZJAVA)
+ 	mv $(BUILD_DIR)/modules/java.datatransfer/Java/java/awt_pkg.fz  $(BUILD_DIR)/modules/java.datatransfer/
+ 	touch $@
+ 
+-$(MOD_JAVA_DESKTOP_FZ_FILES): $(FZJAVA)
++$(MOD_JAVA_DESKTOP_FZ_FILES): $(FZJAVA) $(MOD_JAVA_BASE) $(MOD_JAVA_XML) $(MOD_JAVA_DATATRANSFER)
+ 	rm -rf $(@D)
+ 	mkdir -p $(@D)
+ # wrapping in /bin/sh -c "..." is a workaround for building on windows (msys2)

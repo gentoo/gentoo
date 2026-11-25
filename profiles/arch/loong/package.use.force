@@ -1,6 +1,12 @@
 # Copyright 2022-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Eli Schwartz <eschwartz@gentoo.org> (2026-10-29)
+# Need elogind enabled here for depgraph (otherwise uses basu, which is
+# not keyworded).
+gui-wm/sway elogind
+dev-libs/libei elogind
+
 # Sam James <sam@gentoo.org> (2024-02-03)
 # We only have MariaDB on loong, not MySQL.
 dev-perl/DBD-MariaDB mariadb

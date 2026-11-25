@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>gnu-emacs@gentoo.org</email>
+    <name>Gentoo GNU Emacs project</name>
+  </maintainer>
+  <maintainer type="person">
+    <email>xgqt@gentoo.org</email>
+    <name>Maciej Barć</name>
+  </maintainer>
+  <longdescription>
+    telega is a full featured unofficial client for Telegram platform
+    for GNU Emacs. The core parts are mature enough so that it is possible
+    to use telega on daily basis.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://github.com/zevlg/telega.el/</bugs-to>
+    <remote-id type="github">zevlg/telega.el</remote-id>
+  </upstream>
+</pkgmetadata>

@@ -1,0 +1,20 @@
+# valkey user.
+VALKEY_USER="valkey"
+
+# valkey group.
+VALKEY_GROUP="valkey"
+
+# valkey configuration file.
+VALKEY_CONF="/etc/valkey/valkey.conf"
+
+# valkey dump directory.
+VALKEY_DIR="/var/lib/valkey"
+
+# valkey options.
+# (valkey expects the first argument to be the configuration file.)
+VALKEY_OPTS="${VALKEY_CONF}"
+
+# Specify the network service that corresponds to the "bind" setting
+# in your valkey.conf. For example, if you bind to 127.0.0.1, this should
+# be set to "net.lo" which provides the loopback interface.
+rc_need="net.lo"

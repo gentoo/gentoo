@@ -1,9 +1,7 @@
-# Copyright 2022-2025 Gentoo Authors
+# Copyright 2022-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-
-#CRATES=""
 
 RUST_MULTILIB=1
 RUST_MIN_VER="1.81"
@@ -11,12 +9,15 @@ inherit cargo flag-o-matic multilib-minimal rust-toolchain
 
 DESCRIPTION="C-to-rustls bindings"
 HOMEPAGE="https://github.com/rustls/rustls-ffi"
+
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/rustls/rustls-ffi.git"
 else
-	SRC_URI="https://github.com/rustls/rustls-ffi/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
-	SRC_URI+=" ${CARGO_CRATE_URIS}"
+	SRC_URI="
+		https://github.com/rustls/rustls-ffi/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
+		https://github.com/gentoo-crate-dist/rustls-ffi/releases/download/v${PV}/${P}-crates.tar.xz
+	"
 	KEYWORDS="~amd64"
 fi
 

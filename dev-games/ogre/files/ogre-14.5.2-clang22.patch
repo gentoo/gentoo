@@ -1,0 +1,20 @@
+https://github.com/OGRECave/ogre/issues/3639
+https://github.com/OGRECave/ogre/pull/3642
+https://github.com/OGRECave/ogre/commit/6ededa21899d1f76c4bb1e471b7830311c5662d8
+
+From cb25260f1171617e6e78c427fd69fbf7a0d41027 Mon Sep 17 00:00:00 2001
+From: Pavel Rojtberg <rojtberg@gmail.com>
+Date: Sun, 31 May 2026 13:36:04 +0200
+Subject: [PATCH] Main: Mesh - add missing vector include
+
+--- a/OgreMain/include/OgreMesh.h
++++ b/OgreMain/include/OgreMesh.h
+@@ -30,6 +30,8 @@ THE SOFTWARE.
+ 
+ #include "OgrePrerequisites.h"
+ 
++#include <vector>
++
+ #include "OgreResource.h"
+ #include "OgreAxisAlignedBox.h"
+ #include "OgreVertexBoneAssignment.h"

@@ -7,7 +7,7 @@ WX_GTK_VER="3.2-gtk3"
 MY_PN="PrusaSlicer"
 MY_PV="$(ver_rs 3 -)"
 
-inherit cmake wxwidgets xdg
+inherit cmake udev wxwidgets xdg
 
 if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
@@ -27,8 +27,8 @@ IUSE="test"
 
 RESTRICT="!test? ( test )"
 
-RDEPEND="
-	dev-cpp/eigen:3
+CDEPEND="
+	dev-cpp/eigen:=
 	dev-cpp/tbb:=
 	dev-cpp/nlohmann_json:=
 	dev-libs/boost:=[nls]
@@ -36,6 +36,7 @@ RDEPEND="
 	dev-libs/expat
 	dev-libs/glib:2
 	dev-libs/gmp:=
+	dev-libs/hidapi
 	dev-libs/mpfr:=
 	media-gfx/openvdb:=
 	media-gfx/libbgcode
@@ -57,7 +58,11 @@ RDEPEND="
 	x11-libs/wxGTK:${WX_GTK_VER}=[X,opengl,webkit]
 	media-libs/nanosvg:=
 "
-DEPEND="${RDEPEND}
+RDEPEND="
+	${CDEPEND}
+	virtual/udev
+"
+DEPEND="${CDEPEND}
 	media-libs/qhull[static-libs]
 	test? ( >=dev-cpp/catch-3.8 )
 "
@@ -70,6 +75,8 @@ PATCHES=(
 	"${FILESDIR}/${PN}-2.8.1-boost-1.87.patch"
 	"${FILESDIR}/${PN}-2.9.2-boost-1.88.patch"
 	"${FILESDIR}/${PN}-2.9.4-boost-1.89.patch"
+	"${FILESDIR}/${PN}-2.9.5-test_emboss-property-map.patch"
+	"${FILESDIR}/${PN}-2.9.6-catch2-3.8-resultcapture.patch"
 )
 
 src_prepare() {
@@ -111,4 +118,14 @@ src_test() {
 		"^libslic3r_tests$"
 	)
 	cmake_src_test
+}
+
+pkg_postinst() {
+	xdg_pkg_postinst
+	udev_reload
+}
+
+pkg_postrm() {
+	xdg_pkg_postrm
+	udev_reload
 }

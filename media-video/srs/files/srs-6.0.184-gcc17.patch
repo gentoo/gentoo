@@ -1,0 +1,20 @@
+--- a/src/app/srs_app_rtc_sdp.hpp	2026-07-22 07:52:49.580399183 +0200
++++ b/src/app/srs_app_rtc_sdp.hpp	2026-07-22 07:53:22.570081356 +0200
+@@ -12,6 +12,7 @@
+ 
+ #include <stdint.h>
+ 
++#include <sstream>
+ #include <string>
+ #include <vector>
+ #include <map>
+--- a/src/protocol/srs_protocol_http_stack.hpp	2026-07-22 07:44:17.429333319 +0200
++++ b/src/protocol/srs_protocol_http_stack.hpp	2026-07-22 07:44:49.640022997 +0200
+@@ -13,6 +13,7 @@
+ 
+ #include <map>
+ #include <string>
++#include <sstream>
+ #include <vector>
+ 
+ // For srs-librtmp, @see https://github.com/ossrs/srs/issues/213

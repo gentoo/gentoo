@@ -6,6 +6,6 @@
     <name>X11</name>
   </maintainer>
   <upstream>
-    <remote-id type="freedesktop-gitlab">xorg/lib/libXxf86dga</remote-id>
+    <remote-id type="freedesktop-gitlab">xorg/lib/libxxf86dga</remote-id>
   </upstream>
 </pkgmetadata>

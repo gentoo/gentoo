@@ -1,0 +1,25 @@
+From: Colin Watson <cjwatson@debian.org>
+Date: Tue, 9 Sep 2025 17:47:21 +0100
+Subject: Include subpackages in wheel
+
+Otherwise modern installation methods omit everything under `sen.tui`
+and so are broken.
+
+Forwarded: https://github.com/TomasTomecek/sen/pull/190
+Last-Update: 2025-09-09
+---
+ pyproject.toml | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index 230dc08..94f7ee7 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -36,5 +36,5 @@ Repository = "https://github.com/TomasTomecek/sen/"
+ [project.scripts]
+ sen = "sen.cli:main"
+ 
+-[tool.setuptools]
+-packages = ["sen"]
++[tool.setuptools.packages.find]
++include = ["sen*"]

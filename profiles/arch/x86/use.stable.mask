@@ -1,8 +1,13 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # New entries go on top.
 # Please use the same syntax as in use.mask.
+
+# Michał Górny <mgorny@gentoo.org> (2025-09-29)
+# dev-python/pypy:3.12 is not a stable target.
+python_single_target_pypy3_12
+python_targets_pypy3_12
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-03-07)
 # KDE Frameworks is not stable
@@ -22,8 +27,3 @@ jasper
 # ... and has failing tests right now anyway
 # bug #753566
 openvdb
-
-# Michał Górny <mgorny@gentoo.org> (2014-03-30)
-# PyPy is unstable on this arch.
-python_targets_pypy3_11
-python_single_target_pypy3_11

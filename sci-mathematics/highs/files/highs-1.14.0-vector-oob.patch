@@ -1,0 +1,13 @@
+https://src.fedoraproject.org/rpms/coin-or-HiGHS/raw/rawhide/f/coin-or-HiGHS-vector.patch
+
+--- HiGHS-1.11.0/highs/util/HFactor.cpp.orig	2025-06-05 18:22:05.000000000 -0600
++++ HiGHS-1.11.0/highs/util/HFactor.cpp	2025-06-05 19:14:45.464812414 -0600
+@@ -450,7 +450,7 @@ HighsInt HFactor::build(HighsTimerClock*
+   }
+ 
+   // Record the number of entries in the INVERT
+-  invert_num_el = l_start[num_row] + u_last_p[num_row - 1] + num_row;
++  invert_num_el = l_start[num_row] + (num_row > 0 ? u_last_p[num_row - 1] : 0) + num_row;
+ 
+   kernel_dim -= rank_deficiency;
+   debugLogRankDeficiency(highs_debug_level, log_options, rank_deficiency,

@@ -1,0 +1,72 @@
+https://github.com/fmtlib/fmt/issues/4417
+
+From 9db5e4df22d47ea6741913b5ca618687133494fe Mon Sep 17 00:00:00 2001
+From: Victor Zverovich <viz@meta.com>
+Date: Sat, 26 Apr 2025 08:17:05 -0700
+Subject: [PATCH] Don't specialize std::is_floating_point
+
+---
+ include/fmt/format.h     | 11 +++++------
+ test/format-impl-test.cc |  4 ++--
+ 2 files changed, 7 insertions(+), 8 deletions(-)
+
+diff --git a/include/fmt/format.h b/include/fmt/format.h
+index 2596e3a8..b2fdd3d6 100644
+--- a/include/fmt/format.h
++++ b/include/fmt/format.h
+@@ -721,11 +721,10 @@ struct float128 {};
+ 
+ template <typename T> using is_float128 = std::is_same<T, float128>;
+ 
+-template <typename T>
+-using is_floating_point =
+-    bool_constant<std::is_floating_point<T>::value || is_float128<T>::value>;
++template <typename T> struct is_floating_point : std::is_floating_point<T> {};
++template <> struct is_floating_point<float128> : std::true_type {};
+ 
+-template <typename T, bool = std::is_floating_point<T>::value>
++template <typename T, bool = is_floating_point<T>::value>
+ struct is_fast_float : bool_constant<std::numeric_limits<T>::is_iec559 &&
+                                      sizeof(T) <= sizeof(double)> {};
+ template <typename T> struct is_fast_float<T, false> : std::false_type {};
+@@ -2472,8 +2471,8 @@ template <typename T>
+ struct has_isfinite<T, enable_if_t<sizeof(std::isfinite(T())) != 0>>
+     : std::true_type {};
+ 
+-template <typename T, FMT_ENABLE_IF(std::is_floating_point<T>::value&&
+-                                        has_isfinite<T>::value)>
++template <typename T,
++          FMT_ENABLE_IF(is_floating_point<T>::value&& has_isfinite<T>::value)>
+ FMT_CONSTEXPR20 auto isfinite(T value) -> bool {
+   constexpr T inf = T(std::numeric_limits<double>::infinity());
+   if (is_constant_evaluated())
+diff --git a/test/format-impl-test.cc b/test/format-impl-test.cc
+index 4ebf2a6e..2be15d00 100644
+--- a/test/format-impl-test.cc
++++ b/test/format-impl-test.cc
+@@ -307,7 +307,6 @@ struct slow_float {
+ auto format_as(slow_float f) -> float { return f; }
+ 
+ namespace std {
+-template <> struct is_floating_point<double_double> : std::true_type {};
+ template <> struct numeric_limits<double_double> {
+   // is_iec559 is true for double-double in libstdc++.
+   static constexpr bool is_iec559 = true;
+@@ -315,12 +314,13 @@ template <> struct numeric_limits<double_double> {
+   static constexpr int digits10 = 33;
+ };
+ 
+-template <> struct is_floating_point<slow_float> : std::true_type {};
+ template <> struct numeric_limits<slow_float> : numeric_limits<float> {};
+ }  // namespace std
+ 
+ FMT_BEGIN_NAMESPACE
+ namespace detail {
++template <> struct is_floating_point<double_double> : std::true_type {};
++template <> struct is_floating_point<slow_float> : std::true_type {};
+ template <> struct is_fast_float<slow_float> : std::false_type {};
+ namespace dragonbox {
+ template <> struct float_info<slow_float> {
+-- 
+2.49.1
+

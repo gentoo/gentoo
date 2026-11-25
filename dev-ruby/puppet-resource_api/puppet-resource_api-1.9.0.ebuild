@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-USE_RUBY="ruby31 ruby32 ruby33"
+USE_RUBY="ruby31 ruby32 ruby33 ruby34 ruby40"
 
 RUBY_FAKEGEM_BINWRAP=""
 RUBY_FAKEGEM_EXTRADOC="CHANGELOG.md CONTRIBUTING.md HISTORY.md README.md"
@@ -20,7 +20,7 @@ RUBY_FAKEGEM_RECIPE_TEST="none"
 
 inherit ruby-fakegem
 
-DESCRIPTION="This library provides a simple way to write new native resources for puppet."
+DESCRIPTION="Library providing a simple way to write new native resources for puppet"
 HOMEPAGE="https://rubygems.org/gems/puppet-resource_api https://github.com/puppetlabs/puppet-resource_api"
 LICENSE="MIT"
 # 2023/03/19: .gem does not contain specfiles, and lags behind GitHub releases.

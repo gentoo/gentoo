@@ -1,4 +1,4 @@
-# Copyright 2024-2025 Gentoo Authors
+# Copyright 2024-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_13 )
 inherit git-r3 python-r1
 
 PYVER=$(ver_cut 1-2)
-PATCHSET="python-gentoo-patches-3.13.3"
+PATCHSET="python-gentoo-patches-3.13.14"
 
 DESCRIPTION="Test modules from dev-lang/python"
 HOMEPAGE="
@@ -16,7 +16,7 @@ HOMEPAGE="
 	https://github.com/python/cpython/
 "
 SRC_URI="
-	https://dev.gentoo.org/~mgorny/dist/python/${PATCHSET}.tar.xz
+	https://distfiles.gentoo.org/pub/proj/python/patchsets/${PYVER%t}/${PATCHSET}.tar.xz
 "
 EGIT_REPO_URI="https://github.com/python/cpython.git"
 EGIT_BRANCH=${PYVER}

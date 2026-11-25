@@ -1,0 +1,11 @@
+https://bugs.gentoo.org/977377
+--- a/deps/v8/src/base/memcopy.h
++++ b/deps/v8/src/base/memcopy.h
+@@ -5,6 +5,7 @@
+ #ifndef V8_BASE_MEMCOPY_H_
+ #define V8_BASE_MEMCOPY_H_
+
++#include <climits>
+ #include <stdlib.h>
+
+ #include <atomic>

@@ -1,0 +1,25 @@
+Source: https://github.com/DISTRHO/DPF/commit/157692d557ef3a608e95c6b40fb115d42fcdba01
+
+From 157692d557ef3a608e95c6b40fb115d42fcdba01 Mon Sep 17 00:00:00 2001
+From: falkTX <falktx@falktx.com>
+Date: Thu, 7 Aug 2025 22:34:46 +0200
+Subject: [PATCH] Fix some CMake details, be quiet if pkg-config not found
+
+Signed-off-by: falkTX <falktx@falktx.com>
+---
+ CMakeLists.txt         |  2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 02c7707de..5f0d7b97d 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -4,7 +4,7 @@
+ #
+ # SPDX-License-Identifier: ISC
+ 
+-cmake_minimum_required(VERSION 3.7)
++cmake_minimum_required(VERSION 3.8...3.31)
+ 
+ project(DPF)
+ 

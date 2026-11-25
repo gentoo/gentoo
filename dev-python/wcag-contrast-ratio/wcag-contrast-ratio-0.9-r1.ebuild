@@ -1,10 +1,11 @@
-# Copyright 2022-2025 Gentoo Authors
+# Copyright 2022-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{11..14} python3_{13,14}t pypy3_11 )
+PYTHON_TESTED=( python3_{12..15} python3_{14..15}t )
+PYTHON_COMPAT=( "${PYTHON_TESTED[@]}" pypy3_12 )
 
 inherit distutils-r1
 
@@ -21,15 +22,24 @@ SRC_URI="
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
+IUSE="test"
+RESTRICT="!test? ( test )"
 
 BDEPEND="
 	test? (
-		dev-python/hypothesis[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			dev-python/hypothesis[${PYTHON_USEDEP}]
+			dev-python/pytest[${PYTHON_USEDEP}]
+		' "${PYTHON_TESTED[@]}")
 	)
 "
 
-distutils_enable_tests pytest
-
 python_test() {
+	if ! has "${EPYTHON/./_}" "${PYTHON_TESTED[@]}"; then
+		einfo "Skipping testing on ${EPYTHON}"
+		return
+	fi
+
+	local EPYTEST_PLUGINS=( hypothesis )
 	epytest test.py
 }

@@ -14,7 +14,7 @@ PYTHON_REQ_USE="ncurses,ssl,xml(+)"
 
 WANT_AUTOCONF="2.1"
 
-inherit autotools check-reqs flag-o-matic llvm-r1 multiprocessing python-any-r1 rust toolchain-funcs
+inherit autotools check-reqs flag-o-matic llvm-r2 multiprocessing python-any-r1 rust toolchain-funcs
 
 MY_PN="mozjs"
 MY_PV="${PV/_pre*}"
@@ -59,7 +59,7 @@ DESCRIPTION="Mozilla's JavaScript engine written in C and C++"
 HOMEPAGE="https://spidermonkey.dev https://firefox-source-docs.mozilla.org/js/index.html"
 SRC_URI="${MOZ_SRC_BASE_URI}/source/${MOZ_P}.source.tar.xz -> ${MOZ_P_DISTFILES}.source.tar.xz
 	${PATCH_URIS[@]}"
-KEYWORDS="amd64 arm arm64 ~loong ~ppc ppc64 ~riscv x86"
+KEYWORDS="amd64 arm arm64 ~loong ppc ppc64 ~riscv x86"
 
 LICENSE="MPL-2.0"
 SLOT="$(ver_cut 1)"
@@ -197,7 +197,7 @@ pkg_setup() {
 		fi
 
 		check-reqs_pkg_setup
-		llvm-r1_pkg_setup
+		llvm-r2_pkg_setup
 		rust_pkg_setup
 		python-any-r1_pkg_setup
 

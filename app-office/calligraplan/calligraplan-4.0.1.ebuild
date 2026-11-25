@@ -21,9 +21,6 @@ LICENSE="GPL-2"
 SLOT="0"
 IUSE="activities +holidays kwallet"
 
-# not wired up between upstream's CMake and code:
-# https://invent.kde.org/office/calligraplan/-/issues/5
-# IUSE="X" ... X? ( x11-libs/libX11 )
 DEPEND="
 	dev-lang/perl
 	>=dev-libs/kdiagram-3.0.1:6

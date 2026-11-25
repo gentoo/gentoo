@@ -6,6 +6,6 @@
     <name>X11</name>
   </maintainer>
   <upstream>
-    <remote-id type="freedesktop-gitlab">xorg/lib/libXv</remote-id>
+    <remote-id type="freedesktop-gitlab">xorg/lib/libxv</remote-id>
   </upstream>
 </pkgmetadata>

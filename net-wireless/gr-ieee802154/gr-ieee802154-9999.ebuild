@@ -1,8 +1,8 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{9..13} )
+PYTHON_COMPAT=( python3_{12..14} )
 
 inherit cmake python-single-r1
 
@@ -12,7 +12,7 @@ HOMEPAGE="https://github.com/bastibl/gr-ieee802-15-4"
 if [[ ${PV} == 9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/bastibl/gr-ieee802-15-4.git"
-	EGIT_BRANCH="maint-3.9"
+	EGIT_BRANCH="maint-3.10"
 else
 	COMMIT="1a2999ce2778df279870f028a4ce15d94e60fbd9"
 	SRC_URI="https://github.com/bastibl/gr-ieee802-15-4/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"

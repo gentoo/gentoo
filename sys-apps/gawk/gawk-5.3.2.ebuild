@@ -1,7 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+
+inherit locale-utils
 
 #GAWK_IS_BETA=yes
 
@@ -97,6 +99,16 @@ src_configure() {
 	)
 
 	econf "${myeconfargs[@]}"
+}
+
+src_test() {
+	# Avoid hangs with failed tests, bug #970495
+	local -x PAGER=cat
+
+	# See GAWKLOCALE=<locale> use in test/Makefile.in, bug #970495
+	elocale_gen el_GR.ISO-8859-7 en_US.UTF-8 fr_FR.UTF-8 ja_JP.UTF-8 ru_RU.UTF-8
+
+	emake check
 }
 
 src_install() {

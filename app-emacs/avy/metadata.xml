@@ -9,5 +9,4 @@
 <upstream>
   <remote-id type="github">abo-abo/avy</remote-id>
 </upstream>
-<stabilize-allarches />
 </pkgmetadata>

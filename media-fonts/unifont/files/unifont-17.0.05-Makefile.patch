@@ -1,0 +1,23 @@
+bdf files are already removed by font/Makefile
+avoid the dep of imagemagick and use the precompiled picture
+--- a/font/ttfsrc/Makefile
++++ b/font/ttfsrc/Makefile
+@@ -125,7 +125,6 @@ sbit: $(FONTFILE).bdf
+ 	    Generate($$2, "ttf"); \
+ 	    Close()' \
+ 	   $(FONTFILE).bdf $(FONTFILE).ttf
+-	rm -f $(FONTFILE).bdf
+ 
+ #
+ # Delete files copied into this directory to build TTF fonts.
+--- a/Makefile
++++ b/Makefile
+@@ -174,7 +174,7 @@ install: bindir libdir
+ 	   install -m0644 -p font/compiled/unifont-$(VERSION).hex        $(PKGDEST)/unifont.hex     && \
+ 	   install -m0644 -p font/compiled/unifont_jp-$(VERSION).hex     $(PKGDEST)/unifont_jp.hex  && \
+ 	   install -m0644 -p font/compiled/unifont_all-$(VERSION).hex    $(PKGDEST)/unifont_all.hex && \
+-	   install -m0644 -p font/compiled/unifont-$(VERSION).png        $(PKGDEST)/unifont.png ; \
++	   install -m0644 -p font/precompiled/unifont-$(VERSION).png        $(PKGDEST)/unifont.png ; \
+ 	fi
+ 	gzip $(GZFLAGS) $(PKGDEST)/unifont.png
+ 

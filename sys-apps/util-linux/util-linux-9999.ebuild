@@ -6,7 +6,7 @@ EAPI=8
 PYTHON_COMPAT=( python3_{11..14} )
 TMPFILES_OPTIONAL=1
 
-inherit flag-o-matic pam python-r1 meson-multilib tmpfiles toolchain-funcs
+inherit pam python-r1 meson-multilib tmpfiles toolchain-funcs
 
 MY_PV="${PV/_/-}"
 MY_P="${PN}-${MY_PV}"
@@ -31,7 +31,9 @@ fi
 
 S="${WORKDIR}/${MY_P}"
 
-LICENSE="GPL-2 GPL-3 LGPL-2.1 BSD-4 MIT public-domain"
+# GPL-2+ first per README.licensing ("default license"), then the rest
+# are in order as listed in that file.
+LICENSE="GPL-2+ GPL-1+ GPL-2 GPL-2+ GPL-3+ LGPL-2.1+ MIT BSD-2 BSD EUPL-1.2 public-domain"
 SLOT="0"
 IUSE="audit build caps +cramfs cryptsetup fdformat +hardlink kill +logger magic ncurses nls pam python +readline rtas selinux slang static-libs +su +suid systemd test tty-helpers udev unicode uuidd"
 
@@ -86,6 +88,7 @@ RDEPEND+="
 	)
 	uuidd? (
 		acct-user/uuidd
+		selinux? ( sec-policy/selinux-uuidd )
 		systemd? ( virtual/tmpfiles )
 	)
 	!net-wireless/rfkill
@@ -125,11 +128,6 @@ src_unpack() {
 src_prepare() {
 	default
 
-	# Workaround for bug #961040 (gcc PR120006)
-	if tc-is-gcc && [[ $(gcc-major-version) == 15 && $(gcc-minor-version) -lt 2 ]] ; then
-		append-flags -fno-ipa-pta
-	fi
-
 	if use test ; then
 		# Known-failing tests
 		local known_failing_tests=(
@@ -148,7 +146,6 @@ src_prepare() {
 			findmnt/outputs
 			findmnt/filterQ
 			findmnt/filter
-			misc/mountpoint
 			lsblk/lsblk
 			lslocks/lslocks
 			# Fails with network-sandbox at least in nspawn
@@ -171,13 +168,20 @@ src_prepare() {
 
 			# Format changes?
 			lslogins/checkuser
-			misc/swaplabel
-			misc/setarch
+
+			# Permission issues with changing OOM score
+			choom/choom
+
+			# MKFDS_PID is empty
+			lsfd/option-hyperlink
+
+			# Crashes but only under sandbox
+			setarch/setarch
 		)
 
 		# debug prints confuse the tests which look for a diff
 		# in output
-		if has_version "=app-shells/bash-5.3_alpha*" ; then
+		if has_version "=app-shells/bash-5.4_alpha*" ; then
 			known_failing_tests+=(
 				lsfd/column-ainodeclass
 				lsfd/mkfds-netlink-protocol
@@ -338,6 +342,7 @@ multilib_src_configure() {
 	EOF
 	# TODO: Verify this does the right thing for releases (may need to
 	# manually install).
+	# https://github.com/util-linux/util-linux/issues/2900
 	if [[ ${PV} != *9999 ]] ; then
 		# Upstream is shipping pre-generated man-pages for releases
 		emesonargs+=(

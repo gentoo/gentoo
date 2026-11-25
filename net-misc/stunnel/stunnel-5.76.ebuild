@@ -11,10 +11,10 @@ DESCRIPTION="TLS/SSL - Port Wrapper"
 HOMEPAGE="https://www.stunnel.org/index.html"
 SRC_URI="
 	https://www.stunnel.org/downloads/${P}.tar.gz
-	https://www.stunnel.org/stunnel/archive/${PV%%.*}.x/${P}.tar.gz
+	https://www.stunnel.org/archive/${PV%%.*}.x/${P}.tar.gz
 	verify-sig? (
 		https://www.stunnel.org/downloads/${P}.tar.gz.asc
-		https://www.stunnel.org/stunnel/archive/${PV%%.*}.x/${P}.tar.gz.asc
+		https://www.stunnel.org/archive/${PV%%.*}.x/${P}.tar.gz.asc
 	)
 "
 

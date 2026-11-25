@@ -1,0 +1,12 @@
+minimal fix to build with --shuffle and -j1
+--- a/sys/unix/Makefile.top
++++ b/sys/unix/Makefile.top
+@@ -273,7 +273,7 @@ title.img:
+ check-dlb: options
+ 	@if egrep -s librarian dat/options ; then $(MAKE) dlb ; else true ; fi
+ 
+-dlb:
++dlb: $(VARDATD) spec_levs
+ 	( cd util ; $(MAKE) dlb )
+ 	( cd dat ; LC_ALL=C ; ../util/dlb cf nhdat $(DATDLB) )
+ 

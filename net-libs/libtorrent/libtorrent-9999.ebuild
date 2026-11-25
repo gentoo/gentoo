@@ -1,7 +1,7 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=9
 
 inherit autotools
 
@@ -12,7 +12,7 @@ if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/rakshasa/${PN}.git"
 else
 	SRC_URI="https://github.com/rakshasa/rtorrent/releases/download/v${PV}/${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86 ~x64-macos ~x64-solaris"
+	KEYWORDS="~amd64 ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86 ~x64-macos ~x64-solaris"
 fi
 
 LICENSE="GPL-2"
@@ -30,11 +30,14 @@ RDEPEND="
 	net-misc/curl
 	virtual/zlib:=
 "
-DEPEND="${RDEPEND}"
-BDEPEND="
-	virtual/pkgconfig
+DEPEND="${RDEPEND}
 	test? ( dev-util/cppunit )
 "
+BDEPEND="virtual/pkgconfig"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.16.27-skip_tests_system_udns.patch
+)
 
 src_prepare() {
 	default
@@ -45,19 +48,13 @@ src_prepare() {
 		-e '\@^#include "net/udns/udns_.*.c"@d' \
 		-i src/net/udns_library.cc src/net/udns_library.h src/net/udns_resolver.cc || die
 
-	if [[ ${CHOST} != *-darwin* ]]; then
-		# syslibroot is only for macos, change to sysroot for others
-		sed -i 's/Wl,-syslibroot,/Wl,--sysroot,/' "${S}/scripts/common.m4" || die
-	fi
-	eautoreconf
+	[[ ${PV} == *9999 ]] && eautoreconf
 }
 
 src_configure() {
 	local myeconfargs=(
 		LIBS="-ludns"
-		--enable-aligned
 		$(use_enable debug)
-		--with-posix-fallocate
 	)
 
 	econf "${myeconfargs[@]}"

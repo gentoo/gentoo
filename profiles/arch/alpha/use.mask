@@ -75,10 +75,6 @@ lua_single_target_luajit
 lua_targets_luajit
 luajittex
 
-# Tobias Klausmann <klausman@gentoo.org> (2016-06-07)
-# We currently do not have the resources to AT qt5 packages.
-qt5
-
 # This file masks out USE flags that are simply NOT allowed in the default
 # profile for any architecture.  This works, for example, if a non-default
 # profile (such as the selinux profiles) have a USE flag associated with

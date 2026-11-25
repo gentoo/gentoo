@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -47,7 +47,7 @@ pkg_postinst() {
 	xdg_icon_cache_update
 
 	elog "You need external programs for some formats, including:"
-	elog "7zip - app-arch/p7zip"
+	elog "7zip - app-arch/7zip"
 	elog "arj - app-arch/arj"
 	elog "lha - app-arch/lha"
 	elog "lzop - app-arch/lzop"

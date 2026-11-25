@@ -57,6 +57,25 @@ index 40edd52..bb710e3 100644
  	ASMTItemIJ::storeOnTimeSeries(os);
  }
  
+diff --git a/OndselSolver/AccNewtonRaphson.cpp b/OndselSolver/AccNewtonRaphson.cpp
+index 588d0fe..abc9ce5 100644
+--- a/OndselSolver/AccNewtonRaphson.cpp
++++ b/OndselSolver/AccNewtonRaphson.cpp
+@@ -126,12 +126,12 @@ void AccNewtonRaphson::preRun()
+ void MbD::AccNewtonRaphson::handleSingularMatrix()
+ {
+     auto& r = *matrixSolver;
+-	std::string str = typeid(r).name();
++	std::string str = demangle(typeid(r).name());
+ 	if (str.find("GESpMatParPvMarkoFast") != std::string::npos) {
+ 		matrixSolver = CREATE<GESpMatParPvPrecise>::With();
+ 		this->solveEquations();
+ 	} else {
+-		str = typeid(r).name();
++		str = demangle(typeid(r).name());
+ 		if (str.find("GESpMatParPvPrecise") != std::string::npos) {
+ 			this->logSingularMatrixMessage();
+ 			matrixSolver->throwSingularMatrixError("AccAccNewtonRaphson");
 diff --git a/OndselSolver/Array.h b/OndselSolver/Array.h
 index 636e9a5..e270795 100644
 --- a/OndselSolver/Array.h
@@ -81,6 +100,28 @@ index 636e9a5..e270795 100644
  		}
  		friend std::ostream& operator<<(std::ostream& s, const Array& array)
  		{
+diff --git a/OndselSolver/CREATE.h b/OndselSolver/CREATE.h
+index 0c6fc96..7c94b82 100644
+--- a/OndselSolver/CREATE.h
++++ b/OndselSolver/CREATE.h
+@@ -70,7 +70,7 @@ namespace MbD {
+ 		}
+ 		static std::shared_ptr<Constraint> ConstraintWith(std::shared_ptr<EndFramec> frmi, std::shared_ptr<EndFramec> frmj, size_t axis) {
+ 			std::shared_ptr<Constraint> inst;
+-			std::string str = typeid(T).name();
++			std::string str = demangle(typeid(T).name());
+ 			if (str.find("AtPointConstraintIqcJqc") != std::string::npos) {
+ 				if (std::dynamic_pointer_cast<EndFrameqct>(frmi)) {
+ 					inst = std::make_shared<AtPointConstraintIqctJqc>(frmi, frmj, axis);
+@@ -97,7 +97,7 @@ namespace MbD {
+ 		}
+ 		static std::shared_ptr<Constraint> ConstraintWith(std::shared_ptr<EndFramec> frmi, std::shared_ptr<EndFramec> frmj, size_t axisi, size_t axisj) {
+ 			std::shared_ptr<Constraint> inst;
+-			std::string str = typeid(T).name();
++			std::string str = demangle(typeid(T).name());
+ 			if (str.find("DirectionCosineConstraintIqcJqc") != std::string::npos) {
+ 				if (std::dynamic_pointer_cast<EndFrameqct>(frmi)) {
+ 					inst = std::make_shared<DirectionCosineConstraintIqctJqc>(frmi, frmj, axisi, axisj);
 diff --git a/OndselSolver/Demangle.h b/OndselSolver/Demangle.h
 new file mode 100644
 index 0000000..810936d
@@ -150,6 +191,48 @@ index 4435d5d..120cd3c 100644
  }
  
  void Item::initializeLocally()
+diff --git a/OndselSolver/PartFrame.cpp b/OndselSolver/PartFrame.cpp
+index 5219bb8..b395458 100644
+--- a/OndselSolver/PartFrame.cpp
++++ b/OndselSolver/PartFrame.cpp
+@@ -187,7 +187,7 @@ void PartFrame::constraintsReport()
+ 		std::string str = "MbD: " + part->classname() + std::string(" ") + part->name + " has the following constraint(s) removed: ";
+ 		this->logString(str);
+ 		std::for_each(redunCons->begin(), redunCons->end(), [&](auto& con) {
+-			str = "MbD: " + std::string("    ") + std::string(typeid(*con).name());
++			str = "MbD: " + std::string("    ") + std::string(demangle(typeid(*con).name()));
+ 			this->logString(str);
+ 			});
+ 	}
+diff --git a/OndselSolver/PosICNewtonRaphson.cpp b/OndselSolver/PosICNewtonRaphson.cpp
+index b581e82..87285eb 100644
+--- a/OndselSolver/PosICNewtonRaphson.cpp
++++ b/OndselSolver/PosICNewtonRaphson.cpp
+@@ -17,6 +17,7 @@
+ #include "CREATE.h"
+ #include "GESpMatParPvPrecise.h"
+ #include "GESpMatFullPvPosIC.h"
++#include "Demangle.h"
+ 
+ using namespace MbD;
+ 
+@@ -108,14 +109,14 @@ void PosICNewtonRaphson::handleSingularMatrix()
+ 	}
+ 	else {
+         auto& r = *matrixSolver;
+-		std::string str = typeid(r).name();
++		std::string str = demangle(typeid(r).name());
+ 		if (str.find("GESpMatParPvMarkoFast") != std::string::npos) {
+ 		    matrixSolver = CREATE<GESpMatParPvPrecise>::With();
+ 		    this->solveEquations();
+ 		}
+ 		else {
+             auto& msRef = *matrixSolver.get(); // extrapolated to suppress warning
+-            str = typeid(msRef).name();
++            str = demangle(typeid(msRef).name());
+             (void) msRef;                      // also for warning suppression
+ 			if (str.find("GESpMatParPvPrecise") != std::string::npos) {
+ 				this->lookForRedundantConstraints();
 diff --git a/OndselSolver/Symbolic.cpp b/OndselSolver/Symbolic.cpp
 index 75bcbb6..4961964 100644
 --- a/OndselSolver/Symbolic.cpp
@@ -174,6 +257,46 @@ index 75bcbb6..4961964 100644
  }
  
  std::shared_ptr<std::vector<Symsptr>> Symbolic::getTerms()
+diff --git a/OndselSolver/SystemNewtonRaphson.cpp b/OndselSolver/SystemNewtonRaphson.cpp
+index 1a32f85..c2e5fc5 100644
+--- a/OndselSolver/SystemNewtonRaphson.cpp
++++ b/OndselSolver/SystemNewtonRaphson.cpp
+@@ -66,13 +66,13 @@ void SystemNewtonRaphson::basicSolveEquations()
+ void SystemNewtonRaphson::handleSingularMatrix()
+ {
+     auto& r = *matrixSolver;
+-	std::string str = typeid(r).name();
++	std::string str = demangle(typeid(r).name());
+ 	if (str.find("GESpMatParPvMarkoFast") != std::string::npos) {
+ 		matrixSolver = CREATE<GESpMatParPvPrecise>::With();
+ 		this->solveEquations();
+ 	}
+ 	else {
+-		str = typeid(r).name();
++		str = demangle(typeid(r).name());
+ 		if (str.find("GESpMatParPvPrecise") != std::string::npos) {
+ 			str = "MbD: Singular Matrix Error. ";
+ 			system->logString(str);
+diff --git a/OndselSolver/VelSolver.cpp b/OndselSolver/VelSolver.cpp
+index b62cb70..a6a03da 100644
+--- a/OndselSolver/VelSolver.cpp
++++ b/OndselSolver/VelSolver.cpp
+@@ -25,13 +25,13 @@ void VelSolver::basicSolveEquations()
+ void VelSolver::handleSingularMatrix()
+ {
+     auto& r = *matrixSolver;
+-	std::string str = typeid(r).name();
++	std::string str = demangle(typeid(r).name());
+ 	if (str.find("GESpMatParPvMarkoFast") != std::string::npos) {
+ 		matrixSolver = CREATE<GESpMatParPvPrecise>::With();
+ 		this->solveEquations();
+ 	}
+ 	else {
+-		str = typeid(r).name();
++		str = demangle(typeid(r).name());
+ 		if (str.find("GESpMatParPvPrecise") != std::string::npos) {
+ 			this->logSingularMatrixMessage();
+             matrixSolver->throwSingularMatrixError("VelSolver");
 diff --git a/OndselSolver/CMakeLists.txt b/OndselSolver/CMakeLists.txt
 index 6836e72..30d5bf4 100644
 --- a/OndselSolver/CMakeLists.txt

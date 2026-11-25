@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -27,6 +27,7 @@ BDEPEND=">=dev-build/autoconf-2.71
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.77-gcc12-time.patch
+	"${FILESDIR}"/${PN}-0.77-mem_fn-and-libcxx-char_traits.patch
 )
 
 src_prepare() {

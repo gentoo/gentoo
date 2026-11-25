@@ -1,6 +1,10 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Alexey Sokolov <alexey+gentoo@asokolov.org> (2026-05-05)
+# New versions dropped support for 32 bits. Bug #973312
+dev-cpp/cpp-httplib
+
 # Joshua Kinard <kumba@gentoo.org> (2024-02-27)
 # app-arch/lrzip-next does not support 32-bit arches (#925548)
 app-arch/lrzip-next

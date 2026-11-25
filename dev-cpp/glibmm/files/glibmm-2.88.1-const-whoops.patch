@@ -1,0 +1,450 @@
+https://gitlab.gnome.org/GNOME/glibmm/-/merge_requests/77
+
+From fa0d3e3f1159f509ab3181c4a9880431eeb6539c Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Mon, 22 Jun 2026 00:23:05 +0100
+Subject: [PATCH 1/2] tools: drop G_GNUC_CONST for get_type with pointer
+ argument
+
+GCC's documentation for the `const` attribute [0] says:
+> Note that a function that has pointer arguments and examines the data pointed
+> to must not be declared const if the pointed-to data might change between
+> successive invocations of the function.
+
+Note that "might change" here is quite aggressive: it includes "if the
+pointer escapes at all", e.g. if it's some malloc'd memory that gets reused
+internally later too without something resetting its lifetime.
+
+The `pure` attribute would be appropriate here *if* there's no state
+changes even on the first run.
+
+[0] https://gcc.gnu.org/onlinedocs/gcc/Common-Attributes.html#index-const
+
+Bug: https://gitlab.gnome.org/GNOME/glib/-/work_items/3984
+Signed-off-by: Sam James <sam@gentoo.org>
+---
+ tools/m4/class_gobject.m4 | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tools/m4/class_gobject.m4 b/tools/m4/class_gobject.m4
+index bcf0572c..2f9d5f1a 100644
+--- a/tools/m4/class_gobject.m4
++++ b/tools/m4/class_gobject.m4
+@@ -302,7 +302,7 @@ _IMPORT(SECTION_DTOR_DOCUMENTATION)
+ 
+ #ifndef DOXYGEN_SHOULD_SKIP_THIS
+ ifdef(`__BOOL_DYNAMIC_GTYPE_REGISTRATION__',`
+-  static GType get_type(GTypeModule* module)      G_GNUC_CONST;
++  static GType get_type(GTypeModule* module);
+ ',`')
+ 
+   static GType get_base_type() G_GNUC_CONST;
+-- 
+GitLab
+
+
+From 287cbcf768644c49196efcb42bfca2560721331d Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Mon, 22 Jun 2026 00:46:36 +0100
+Subject: [PATCH 2/2] Drop G_GNUC_CONST as in glib
+
+This mirrors 016829559e75a1be24d637cad958a2cb00c6791d in glib, where
+the attributes were dropped because their use was invalid.
+
+This fixes glibmm being miscompiled by trunk GCC.
+
+Bug: https://gitlab.gnome.org/GNOME/glib/-/work_items/3984
+Signed-off-by: Sam James <sam@gentoo.org>
+---
+ glib/glibmm/interface.h             |  4 ++--
+ glib/glibmm/object.h                |  4 ++--
+ glib/glibmm/objectbase.h            |  2 +-
+ glib/glibmm/value.h                 | 12 ++++++------
+ glib/glibmm/value_custom.h          |  4 ++--
+ glib/src/value_basictypes.h.m4      |  2 +-
+ glib/src/variant.hg                 | 26 +++++++++++++-------------
+ glib/src/variant_basictypes.h.m4    |  2 +-
+ tools/m4/class_boxedtype.m4         |  2 +-
+ tools/m4/class_boxedtype_static.m4  |  2 +-
+ tools/m4/class_gobject.m4           |  4 ++--
+ tools/m4/class_interface.m4         |  4 ++--
+ tools/m4/class_opaque_refcounted.m4 |  2 +-
+ tools/m4/enum.m4                    |  2 +-
+ tools/m4/gerror.m4                  |  2 +-
+ 15 files changed, 37 insertions(+), 37 deletions(-)
+
+diff --git a/glib/glibmm/interface.h b/glib/glibmm/interface.h
+index 1e2189c3..8e54ed88 100644
+--- a/glib/glibmm/interface.h
++++ b/glib/glibmm/interface.h
+@@ -70,8 +70,8 @@ public:
+ // static Glib::Interface* wrap_new(GTypeInterface*);
+ 
+ #ifndef DOXYGEN_SHOULD_SKIP_THIS
+-  static GType get_type() G_GNUC_CONST;
+-  static GType get_base_type() G_GNUC_CONST;
++  static GType get_type();
++  static GType get_base_type();
+ #endif
+ 
+   inline GObject* gobj() { return gobject_; }
+diff --git a/glib/glibmm/object.h b/glib/glibmm/object.h
+index 4cb6ad91..aaf038b5 100644
+--- a/glib/glibmm/object.h
++++ b/glib/glibmm/object.h
+@@ -112,8 +112,8 @@ public:
+ // static RefPtr<Object> create(); //You must reimplement this in each derived class.
+ 
+ #ifndef DOXYGEN_SHOULD_SKIP_THIS
+-  static GType get_type() G_GNUC_CONST;
+-  static GType get_base_type() G_GNUC_CONST;
++  static GType get_type();
++  static GType get_base_type();
+ #endif
+ 
+   // GObject* gobj_copy(); //Give a ref-ed copy to someone. Use for direct struct access.
+diff --git a/glib/glibmm/objectbase.h b/glib/glibmm/objectbase.h
+index da42039b..162a051a 100644
+--- a/glib/glibmm/objectbase.h
++++ b/glib/glibmm/objectbase.h
+@@ -64,7 +64,7 @@ public:
+   // Glib::Value and _WRAP_PROPERTY in Glib::Binding without a
+   // Value<RefPtr<ObjectBase>> specialization.
+   // The Value<RefPtr<T>> specialization requires T::get_base_type().
+-  static GType get_base_type() G_GNUC_CONST;
++  static GType get_base_type();
+ #endif
+ 
+ protected:
+diff --git a/glib/glibmm/value.h b/glib/glibmm/value.h
+index 5dc322a5..eb08f56f 100644
+--- a/glib/glibmm/value.h
++++ b/glib/glibmm/value.h
+@@ -100,7 +100,7 @@ protected:
+ class GLIBMM_API ValueBase_Boxed : public ValueBase
+ {
+ public:
+-  static GType value_type() G_GNUC_CONST;
++  static GType value_type();
+ 
+ #ifndef DOXYGEN_SHOULD_SKIP_THIS
+   GParamSpec* create_param_spec(const Glib::ustring& name, const Glib::ustring& nick,
+@@ -118,7 +118,7 @@ protected:
+ class GLIBMM_API ValueBase_Object : public ValueBase
+ {
+ public:
+-  static GType value_type() G_GNUC_CONST;
++  static GType value_type();
+ 
+ #ifndef DOXYGEN_SHOULD_SKIP_THIS
+   GParamSpec* create_param_spec(const Glib::ustring& name, const Glib::ustring& nick,
+@@ -137,7 +137,7 @@ protected:
+ class GLIBMM_API ValueBase_Enum : public ValueBase
+ {
+ public:
+-  static GType value_type() G_GNUC_CONST;
++  static GType value_type();
+ 
+ #ifndef DOXYGEN_SHOULD_SKIP_THIS
+   GParamSpec* create_param_spec(const Glib::ustring& name, const Glib::ustring& nick,
+@@ -155,7 +155,7 @@ protected:
+ class GLIBMM_API ValueBase_Flags : public ValueBase
+ {
+ public:
+-  static GType value_type() G_GNUC_CONST;
++  static GType value_type();
+ 
+ #ifndef DOXYGEN_SHOULD_SKIP_THIS
+   GParamSpec* create_param_spec(const Glib::ustring& name, const Glib::ustring& nick,
+@@ -173,7 +173,7 @@ protected:
+ class GLIBMM_API ValueBase_String : public ValueBase
+ {
+ public:
+-  static GType value_type() G_GNUC_CONST;
++  static GType value_type();
+ 
+ #ifndef DOXYGEN_SHOULD_SKIP_THIS
+   GParamSpec* create_param_spec(const Glib::ustring& name, const Glib::ustring& nick,
+@@ -191,7 +191,7 @@ protected:
+ class GLIBMM_API ValueBase_Variant : public ValueBase
+ {
+ public:
+-  static GType value_type() G_GNUC_CONST;
++  static GType value_type();
+ 
+ #ifndef DOXYGEN_SHOULD_SKIP_THIS
+   GParamSpec* create_param_spec(const Glib::ustring& name, const Glib::ustring& nick,
+diff --git a/glib/glibmm/value_custom.h b/glib/glibmm/value_custom.h
+index 9f84389e..c623326a 100644
+--- a/glib/glibmm/value_custom.h
++++ b/glib/glibmm/value_custom.h
+@@ -78,7 +78,7 @@ public:
+   using T = std::remove_cv_t<std::remove_pointer_t<PtrT>>;
+   using CppType = PtrT;
+ 
+-  static inline GType value_type() G_GNUC_CONST;
++  static inline GType value_type();
+ 
+   inline void set(CppType data);
+   inline CppType get() const;
+@@ -129,7 +129,7 @@ public:
+ #endif
+   using CppType = T;
+ 
+-  static GType value_type() G_GNUC_CONST;
++  static GType value_type();
+ 
+   inline void set(const CppType& data);
+   inline CppType get() const;
+diff --git a/glib/src/value_basictypes.h.m4 b/glib/src/value_basictypes.h.m4
+index 342f1e93..32e83d06 100644
+--- a/glib/src/value_basictypes.h.m4
++++ b/glib/src/value_basictypes.h.m4
+@@ -34,7 +34,7 @@ class GLIBMM_API Value<$1> : public ValueBase
+ public:
+   using CppType = $1;
+ 
+-  static GType value_type() G_GNUC_CONST;
++  static GType value_type();
+ 
+   void set($1 data);
+   $1 get() const;
+diff --git a/glib/src/variant.hg b/glib/src/variant.hg
+index 5699f6eb..55525cc4 100644
+--- a/glib/src/variant.hg
++++ b/glib/src/variant.hg
+@@ -531,7 +531,7 @@ public:
+    * @return The VariantType.
+    * @newin{2,28}
+    */
+-  static const VariantType& variant_type() G_GNUC_CONST;
++  static const VariantType& variant_type();
+ 
+   //This must have a create() method because otherwise it would be a copy
+   //constructor.
+@@ -583,7 +583,7 @@ public:
+    * @return The VariantType.
+    * @newin{2,36}
+    */
+-  static const VariantType& variant_type() G_GNUC_CONST;
++  static const VariantType& variant_type();
+ 
+   /** Creates a new Variant< Variant<T> >.
+    * @param data The value of the new Variant.
+@@ -628,7 +628,7 @@ public:
+    * @return The VariantType.
+    * @newin{2,28}
+    */
+-  static const VariantType& variant_type() G_GNUC_CONST;
++  static const VariantType& variant_type();
+ 
+   /** Creates a new Variant<Glib::ustring>.
+    * @param data The value of the new Variant.
+@@ -675,7 +675,7 @@ public:
+    * @return The VariantType.
+    * @newin{2,54}
+    */
+-  static const VariantType& variant_type() G_GNUC_CONST;
++  static const VariantType& variant_type();
+ 
+   /** Creates a new Variant<Glib::DBusObjectPathString>.
+    * @param data The value of the new Variant.
+@@ -721,7 +721,7 @@ public:
+    * @return The VariantType.
+    * @newin{2,54}
+    */
+-  static const VariantType& variant_type() G_GNUC_CONST;
++  static const VariantType& variant_type();
+ 
+   /** Creates a new Variant<Glib::DBusSignatureString>.
+    * @param data The value of the new Variant.
+@@ -768,7 +768,7 @@ public:
+    * @return The VariantType.
+    * @newin{2,28}
+    */
+-  static const VariantType& variant_type() G_GNUC_CONST;
++  static const VariantType& variant_type();
+ 
+   /** Creates a new Variant<std::string>.
+    * @param data The value of the new Variant.
+@@ -814,7 +814,7 @@ public:
+    * @return The VariantType.
+    * @newin{2,28}
+    */
+-  static const VariantType& variant_type() G_GNUC_CONST;
++  static const VariantType& variant_type();
+ 
+   /** Creates a new Variant< std::pair<K, V> >.
+    * @param data The value of the new Variant.
+@@ -863,7 +863,7 @@ public:
+    * @return The VariantType.
+    * @newin{2,28}
+    */
+-  static const VariantType& variant_type() G_GNUC_CONST;
++  static const VariantType& variant_type();
+ 
+   /** Creates a new Variant from an array of numeric types.
+    * @param data The array to use for creation.
+@@ -927,7 +927,7 @@ public:
+    * @return The VariantType.
+    * @newin{2,28}
+    */
+-  static const VariantType& variant_type() G_GNUC_CONST;
++  static const VariantType& variant_type();
+ 
+   /** Creates a new Variant from an array of strings.
+    * @param data The array to use for creation.
+@@ -991,7 +991,7 @@ public:
+    * @return The VariantType.
+    * @newin{2,54}
+    */
+-  static const VariantType& variant_type() G_GNUC_CONST;
++  static const VariantType& variant_type();
+ 
+   /** Creates a new Variant from an array of strings.
+    * @param data The array to use for creation.
+@@ -1053,7 +1053,7 @@ public:
+    * @return The VariantType.
+    * @newin{2,28}
+    */
+-  static const VariantType& variant_type() G_GNUC_CONST;
++  static const VariantType& variant_type();
+ 
+   /** Creates a new Variant from an array of strings.
+    * @param data The array to use for creation.
+@@ -1134,7 +1134,7 @@ public:
+    * @return The VariantType.
+    * @newin{2,28}
+    */
+-  static const VariantType& variant_type() G_GNUC_CONST;
++  static const VariantType& variant_type();
+ 
+   /** Creates a new Variant containing a dictionary from a map.
+    * @param data The map to use for creation.
+@@ -1212,7 +1212,7 @@ public:
+    * @return The VariantType.
+    * @newin{2,54}
+    */
+-  static const VariantType& variant_type() G_GNUC_CONST;
++  static const VariantType& variant_type();
+ 
+   /** Gets a specific element from the tuple.
+    * It is an error if @a index is greater than or equal to the number of
+diff --git a/glib/src/variant_basictypes.h.m4 b/glib/src/variant_basictypes.h.m4
+index 7cc59d7e..0042c223 100644
+--- a/glib/src/variant_basictypes.h.m4
++++ b/glib/src/variant_basictypes.h.m4
+@@ -62,7 +62,7 @@ public:
+   /** Gets the Glib::VariantType.
+    * @return The Glib::VariantType.
+    */
+-  static const VariantType& variant_type() G_GNUC_CONST;
++  static const VariantType& variant_type();
+ 
+   /** Creates a new Glib::Variant<$1>.
+    * @param data The value of the new Glib::Variant<$1>.
+diff --git a/tools/m4/class_boxedtype.m4 b/tools/m4/class_boxedtype.m4
+index 4c2092b9..fdbdad16 100644
+--- a/tools/m4/class_boxedtype.m4
++++ b/tools/m4/class_boxedtype.m4
+@@ -208,7 +208,7 @@ public:
+ 
+   /** Get the GType for this class, for use with the underlying GObject type system.
+    */
+-  static GType get_type() G_GNUC_CONST;
++  static GType get_type();
+ 
+ ifdef(`__BOOL_CUSTOM_DEFAULT_CTOR__',`dnl
+ ',`dnl else
+diff --git a/tools/m4/class_boxedtype_static.m4 b/tools/m4/class_boxedtype_static.m4
+index bbb34411..b036412d 100644
+--- a/tools/m4/class_boxedtype_static.m4
++++ b/tools/m4/class_boxedtype_static.m4
+@@ -183,7 +183,7 @@ public:
+ 
+   /** Get the GType for this class, for use with the underlying GObject type system.
+    */
+-  static GType get_type() G_GNUC_CONST;
++  static GType get_type();
+ 
+ ifdef(`__BOOL_CUSTOM_DEFAULT_CTOR__',,`dnl else
+   __CPPNAME__`'();
+diff --git a/tools/m4/class_gobject.m4 b/tools/m4/class_gobject.m4
+index 2f9d5f1a..53f4aad4 100644
+--- a/tools/m4/class_gobject.m4
++++ b/tools/m4/class_gobject.m4
+@@ -298,14 +298,14 @@ _IMPORT(SECTION_DTOR_DOCUMENTATION)
+ 
+   /** Get the GType for this class, for use with the underlying GObject type system.
+    */
+-  static GType get_type()      G_GNUC_CONST;
++  static GType get_type();
+ 
+ #ifndef DOXYGEN_SHOULD_SKIP_THIS
+ ifdef(`__BOOL_DYNAMIC_GTYPE_REGISTRATION__',`
+   static GType get_type(GTypeModule* module);
+ ',`')
+ 
+-  static GType get_base_type() G_GNUC_CONST;
++  static GType get_base_type();
+ #endif
+ 
+   ///Provides access to the underlying C GObject.
+diff --git a/tools/m4/class_interface.m4 b/tools/m4/class_interface.m4
+index 5243b265..832d1197 100644
+--- a/tools/m4/class_interface.m4
++++ b/tools/m4/class_interface.m4
+@@ -292,10 +292,10 @@ _IMPORT(SECTION_DTOR_DOCUMENTATION)
+ 
+   /** Get the GType for this class, for use with the underlying GObject type system.
+    */
+-  static GType get_type()      G_GNUC_CONST;
++  static GType get_type();
+ 
+ #ifndef DOXYGEN_SHOULD_SKIP_THIS
+-  static GType get_base_type() G_GNUC_CONST;
++  static GType get_base_type();
+ #endif
+ 
+   ///Provides access to the underlying C GObject.
+diff --git a/tools/m4/class_opaque_refcounted.m4 b/tools/m4/class_opaque_refcounted.m4
+index 544f772e..3a5f8d7f 100644
+--- a/tools/m4/class_opaque_refcounted.m4
++++ b/tools/m4/class_opaque_refcounted.m4
+@@ -186,7 +186,7 @@ public:
+ ifdef(`__OPAQUE_FUNC_GTYPE__',`dnl
+   /** Get the GType for this class, for use with the underlying GObject type system.
+    */
+-  static GType get_type() G_GNUC_CONST;
++  static GType get_type();
+ 
+ ')dnl endif __OPAQUE_FUNC_GTYPE__
+ ifelse(__OPAQUE_FUNC_NEW,NONE,`dnl
+diff --git a/tools/m4/enum.m4 b/tools/m4/enum.m4
+index a6a27e1e..03109c1f 100644
+--- a/tools/m4/enum.m4
++++ b/tools/m4/enum.m4
+@@ -125,7 +125,7 @@ template <>
+ class __ENUM_DECL_PREFIX__ Value<__NAMESPACE__::__ENUM_CLASS_CPPNAME__> : public __ENUM_VALUE_BASE__
+ {
+ public:
+-  static GType value_type() G_GNUC_CONST;
++  static GType value_type();
+ };
+ ifelse(`$9',,,`_DEPRECATE_IFDEF_END')`'dnl
+ 
+diff --git a/tools/m4/gerror.m4 b/tools/m4/gerror.m4
+index 01036f06..55446c7b 100644
+--- a/tools/m4/gerror.m4
++++ b/tools/m4/gerror.m4
+@@ -55,7 +55,7 @@ template <>
+ class $9 Value<__NAMESPACE__::__CPPNAME__::Code> : public __VALUE_BASE__
+ {
+ public:
+-  static GType value_type() G_GNUC_CONST;
++  static GType value_type();
+ };
+ ifelse(`$8',,,`_DEPRECATE_IFDEF_END')`'dnl
+ 
+-- 
+GitLab

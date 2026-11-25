@@ -9,6 +9,7 @@
 	<use>
 		<flag name="browsed">Include support for the cups-browsed daemon.</flag>
 		<flag name="foomatic">Include support for the foomatic-rip printer driver. Strongly recommended.</flag>
+		<flag name="foomatic-db-ppds">Include foomatic-db-ppds/openprinting-ppds for PostScript printers.</flag>
 		<flag name="poppler">Include support for the <pkg>app-text/poppler</pkg> filters.</flag>
 	</use>
 </pkgmetadata>

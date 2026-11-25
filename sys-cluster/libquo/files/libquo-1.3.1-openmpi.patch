@@ -1,0 +1,11 @@
+--- a/tests/Makefile.in	2026-04-20 21:28:12.589272400 +0200
++++ b/tests/Makefile.in	2026-04-20 21:28:55.471798246 +0200
+@@ -711,7 +711,7 @@
+ ################################################################################
+ ### Minimal Fortran test.
+ @QUO_WITH_MPIFC_TRUE@quofort_SOURCES = quofort.f90
+-@QUO_WITH_MPIFC_TRUE@quofort_FCFLAGS = -I$(top_builddir)/src/fortran
++@QUO_WITH_MPIFC_TRUE@quofort_FCFLAGS = -I$(top_builddir)/src/fortran $(FCFLAGS)
+ @QUO_WITH_MPIFC_TRUE@quofort_LDADD = \
+ @QUO_WITH_MPIFC_TRUE@$(top_builddir)/src/fortran/libquo-usequo.la \
+ @QUO_WITH_MPIFC_TRUE@$(top_builddir)/src/libquo.la

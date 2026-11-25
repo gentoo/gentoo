@@ -1,0 +1,20 @@
+https://bugs.gentoo.org/975147
+
+From 1ed884548cc431a42b84ce67c600051e1f67ed09 Mon Sep 17 00:00:00 2001
+From: Sven Eden <sven@eden-worx.com>
+Date: Mon, 1 Jun 2026 12:05:28 +0200
+Subject: [PATCH] src/login/meson.build: enable install for D-Bus service file
+ (#354)
+
+--- a/src/login/meson.build
++++ b/src/login/meson.build
+@@ -208,7 +208,8 @@ if enable_logind
+                 input: 'org.freedesktop.login1.service.in',
+                 output: 'org.freedesktop.login1.service',
+                 command : [jinja2_cmdline, '@INPUT@', '@OUTPUT@'],
+-                install_dir : dbussystemservicedir)
++                install_dir : dbussystemservicedir,
++                install : true)
+ #endif // 0
+ 
+         install_data(

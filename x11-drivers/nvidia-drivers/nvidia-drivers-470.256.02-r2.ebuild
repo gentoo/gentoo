@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -45,11 +45,14 @@ COMMON_DEPEND="
 		x11-libs/pango
 	)
 "
+# xorg-server: explicit dependency given these old drivers only
+# support up to the 21.1 ABI
 RDEPEND="
 	${COMMON_DEPEND}
 	sys-libs/glibc
 	X? (
 		media-libs/libglvnd[X,abi_x86_32(-)?]
+		<x11-base/xorg-server-22
 		x11-libs/libX11[abi_x86_32(-)?]
 		x11-libs/libXext[abi_x86_32(-)?]
 	)
@@ -340,8 +343,10 @@ documentation that is installed alongside this README."
 			dosym ${m[4]} ${into}/${m[0]}
 			continue
 		fi
-		[[ ${m[0]} =~ ^libnvidia-ngx.so ]] &&
-			dosym ${m[0]} ${into}/${m[0]%.so*}.so.1 # soname not in .manifest
+		# some _SYMLINK are missing from the .manifest for sonames
+		# TODO?: use scanelf -BSq to auto-create like nvidia-installer?
+		[[ ${m[0]} =~ ((libnvidia-ngx.so).*) ]] &&
+			dosym ${BASH_REMATCH[1]} ${into}/${BASH_REMATCH[2]}.1
 
 		printf -v m[1] %o $((m[1] | 0200)) # 444->644
 		insopts -m${m[1]}
@@ -465,13 +470,13 @@ pkg_postinst() {
 		ewarn "\nYou are installing a version of ${PN} known not to work"
 		ewarn "with a GPU of the current system. If unwanted, add the mask:"
 		if [[ -d ${EROOT}/etc/portage/package.mask ]]; then
-			ewarn "  echo '${NV_LEGACY_MASK}' > ${EROOT}/etc/portage/package.mask/${PN}"
+			ewarn "\n  echo '${NV_LEGACY_MASK}' > ${EROOT}/etc/portage/package.mask/${PN}"
 		else
-			ewarn "  echo '${NV_LEGACY_MASK}' >> ${EROOT}/etc/portage/package.mask"
+			ewarn "\n  echo '${NV_LEGACY_MASK}' >> ${EROOT}/etc/portage/package.mask"
 		fi
-		ewarn "...then downgrade to a legacy[1] branch if possible (not all old versions"
+		ewarn "\n...then downgrade to a legacy[1] branch if possible (not all old versions"
 		ewarn "are available or fully functional, may need to consider nouveau[2])."
-		ewarn "[1] https://www.nvidia.com/object/IO_32667.html"
+		ewarn "\n[1] https://www.nvidia.com/object/IO_32667.html"
 		ewarn "[2] https://wiki.gentoo.org/wiki/Nouveau"
 	fi
 
@@ -481,5 +486,6 @@ pkg_postinst() {
 	ewarn "replace hardware. Will be kept in-tree while possible, but expect it"
 	ewarn "to be removed likely in late 2027 or earlier if major issues arise."
 	ewarn "\nNote that there is no plans to patch in support for kernels branches"
-	ewarn "newer than 6.6.x which will be supported upstream until December 2026."
+	ewarn "newer than 6.6.x which will be supported upstream until December 2027"
+	ewarn "albeit its support *could* end earlier in Gentoo."
 }

@@ -1,0 +1,67 @@
+diff --git a/src/predicates.c b/src/predicates.c
+index 3c850a8..dccdaf4 100644
+--- a/src/predicates.c
++++ b/src/predicates.c
+@@ -482,9 +482,7 @@ float number;
+ /*****************************************************************************/
+ 
+ /*
+-void expansion_print(elen, e)
+-int elen;
+-REAL *e;
++void expansion_print(int elen, REAL *e)
+ {
+   int i;
+ 
+@@ -912,10 +910,7 @@ static REAL orient2dadapt(REAL *pa, REAL *pb, REAL *pc, REAL detsum)
+   return(D[Dlength - 1]);
+ }
+ 
+-REAL orient2d(pa, pb, pc)
+-REAL *pa;
+-REAL *pb;
+-REAL *pc;
++REAL orient2d(REAL *pa, REAL *pb, REAL *pc)
+ {
+   REAL detleft, detright, det;
+   REAL detsum, errbound;
+@@ -1387,11 +1382,7 @@ static REAL orient3dadapt(REAL *pa, REAL *pb, REAL *pc, REAL *pd,
+   return finnow[finlength - 1];
+ }
+ 
+-REAL orient3d(pa, pb, pc, pd)
+-REAL *pa;
+-REAL *pb;
+-REAL *pc;
+-REAL *pd;
++REAL orient3d(REAL *pa, REAL *pb, REAL *pc, REAL *pd)
+ {
+   REAL adx, bdx, cdx, ady, bdy, cdy, adz, bdz, cdz;
+   REAL bdxcdy, cdxbdy, cdxady, adxcdy, adxbdy, bdxady;
+@@ -2036,11 +2027,7 @@ static REAL incircleadapt(REAL *pa, REAL *pb, REAL *pc, REAL *pd,
+   return finnow[finlength - 1];
+ }
+ 
+-REAL incircle(pa, pb, pc, pd)
+-REAL *pa;
+-REAL *pb;
+-REAL *pc;
+-REAL *pd;
++REAL incircle(REAL *pa, REAL *pb, REAL *pc, REAL *pd)
+ {
+   REAL adx, bdx, cdx, ady, bdy, cdy;
+   REAL bdxcdy, cdxbdy, cdxady, adxcdy, adxbdy, bdxady;
+@@ -2582,12 +2569,7 @@ static REAL insphereadapt(REAL *pa, REAL *pb, REAL *pc, REAL *pd, REAL *pe,
+   return insphereexact(pa, pb, pc, pd, pe);
+ }
+ 
+-REAL insphere(pa, pb, pc, pd, pe)
+-REAL *pa;
+-REAL *pb;
+-REAL *pc;
+-REAL *pd;
+-REAL *pe;
++REAL insphere(REAL *pa, REAL *pb, REAL *pc, REAL *pd, REAL *pe)
+ {
+   REAL aex, bex, cex, dex;
+   REAL aey, bey, cey, dey;

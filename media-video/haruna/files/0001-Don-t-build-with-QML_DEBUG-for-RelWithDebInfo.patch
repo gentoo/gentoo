@@ -1,0 +1,43 @@
+From 362e461d72c7f08ae63c99dc7ae28ba400436b3c Mon Sep 17 00:00:00 2001
+Message-ID: <362e461d72c7f08ae63c99dc7ae28ba400436b3c.1779317229.git.sam@gentoo.org>
+From: Sam James <sam@gentoo.org>
+Date: Wed, 20 May 2026 23:42:00 +0100
+Subject: [PATCH] Don't build with QML_DEBUG for RelWithDebInfo
+
+RelWithDebInfo is often used by distributions. It's supposed to be a
+release-level build with just debug information (i.e. not stripped).
+
+Currently, building with that gives:
+```
+$ haruna
+QML debugging is enabled. Only use this in a safe environment.
+...
+```
+
+Qt docs (https://doc.qt.io/qt-6/qtquick-debugging.html) also say:
+> Note: Enabling the debugging infrastructure may compromise the integrity
+> of your application and system, and therefore, you should only enable it
+> in a controlled environment. When the infrastructure is enabled, the
+> application displays the following warning: ...
+
+Link: https://invent.kde.org/multimedia/haruna/-/merge_requests/138
+---
+ src/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 412ae411..c7de54b5 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -144,7 +144,7 @@ target_include_directories(haruna
+         ${FFMPEG_INCLUDE_DIRS}
+ )
+ 
+-target_compile_definitions(haruna PRIVATE $<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:QT_QML_DEBUG>)
++target_compile_definitions(haruna PRIVATE $<$<CONFIG:Debug>:QT_QML_DEBUG>)
+ 
+ target_link_libraries(haruna PRIVATE
+     Qt6::Core
+-- 
+2.54.0
+

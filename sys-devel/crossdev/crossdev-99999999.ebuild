@@ -1,9 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
 
-inherit toolchain-funcs
+inherit eapi9-ver toolchain-funcs
 
 if [[ ${PV} == "99999999" ]] ; then
 	inherit git-r3
@@ -12,7 +12,7 @@ if [[ ${PV} == "99999999" ]] ; then
 		https://github.com/gentoo/crossdev
 	"
 else
-	SRC_URI="https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}.tar.xz"
+	SRC_URI="https://distfiles.gentoo.org/pub/proj/toolchain/crossdev/${P}.tar.xz"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 fi
 
@@ -43,4 +43,19 @@ src_install() {
 
 	dodir /usr/share/config.site.d
 	mv "${ED}"/usr/share/config.site{,.d/80crossdev.conf} || die
+}
+
+pkg_postinst() {
+	if [[ -z ${REPLACING_VERSIONS} ]] || ver_replacing -lt 20260501-r1; then
+		ewarn "crossdev requires another repository exist on the system for"
+		ewarn "its generated ebuilds. It uses the 'crossdev' repository by default,"
+		ewarn "and otherwise the first non-gentoo repository it finds."
+		ewarn
+		ewarn "If you do not already have a 'crossdev' repository,"
+		ewarn "it is recommended that you create one with the following steps:"
+		ewarn " installing app-eselect/eselect-repository"
+		ewarn " running eselect repository create crossdev"
+		ewarn
+		ewarn "Alternatively, always invoke crossdev with --ov-output NAME.".
+	fi
 }

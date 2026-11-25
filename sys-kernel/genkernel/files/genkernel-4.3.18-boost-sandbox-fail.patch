@@ -1,0 +1,13 @@
+diff --git a/gkbuilds/boost.gkbuild b/gkbuilds/boost.gkbuild
+index 9b7c1b5..60ecf66 100644
+--- a/gkbuilds/boost.gkbuild
++++ b/gkbuilds/boost.gkbuild
+@@ -57,7 +57,7 @@ src_configure() {
+ 		--without-context --without-coroutine --without-fiber
+ 		--without-stacktrace
+ 		--boost-build="${BROOT}"/usr/share/boost-build
+-		--prefix="/usr"
++		--prefix="${D}"/usr
+ 		--layout=system
+ 		--no-cmake-config
+ 		threading=multi

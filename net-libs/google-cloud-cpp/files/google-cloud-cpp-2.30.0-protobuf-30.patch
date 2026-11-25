@@ -1,0 +1,87 @@
+From 04f67a7d232e40b182ce4ddd15467486b590119f Mon Sep 17 00:00:00 2001
+From: evalon32 <34560232+evalon32@users.noreply.github.com>
+Date: Thu, 14 Nov 2024 16:07:45 -0500
+Subject: [PATCH] refactor: prepare for breaking change in Protobuf C++ API.
+ (#14828)
+
+---
+ google/cloud/spanner/internal/status_utils.cc | 4 +++-
+ google/cloud/spanner/proto_enum.h             | 5 ++++-
+ google/cloud/spanner/proto_message.h          | 3 ++-
+ google/cloud/spanner/testing/status_utils.cc  | 4 +++-
+ 4 files changed, 12 insertions(+), 4 deletions(-)
+
+diff --git a/google/cloud/spanner/internal/status_utils.cc b/google/cloud/spanner/internal/status_utils.cc
+index 4a93d32a5c138..cf01d5da5d108 100644
+--- a/google/cloud/spanner/internal/status_utils.cc
++++ b/google/cloud/spanner/internal/status_utils.cc
+@@ -14,6 +14,7 @@
+ 
+ #include "google/cloud/spanner/internal/status_utils.h"
+ #include "google/cloud/grpc_error_delegate.h"
++#include "google/cloud/internal/absl_str_cat_quiet.h"
+ #include "google/cloud/internal/status_payload_keys.h"
+ #include "absl/strings/match.h"
+ #include <google/rpc/error_details.pb.h>
+@@ -38,7 +39,8 @@ bool IsSessionNotFound(google::cloud::Status const& status) {
+     for (google::protobuf::Any const& any : proto.details()) {
+       if (any.UnpackTo(&resource_info)) {
+         google::spanner::v1::Session session;
+-        auto session_url = "type.googleapis.com/" + session.GetTypeName();
++        auto session_url =
++            absl::StrCat("type.googleapis.com/", session.GetTypeName());
+         return resource_info.resource_type() == session_url;
+       }
+     }
+diff --git a/google/cloud/spanner/proto_enum.h b/google/cloud/spanner/proto_enum.h
+index d43c5021a6ca9..dbcd5eb2ac9b0 100644
+--- a/google/cloud/spanner/proto_enum.h
++++ b/google/cloud/spanner/proto_enum.h
+@@ -57,7 +57,10 @@ class ProtoEnum {
+   explicit operator enum_type() const { return v_; }
+ 
+   /// The fully-qualified name of the enum type, scope delimited by periods.
+-  static std::string const& TypeName() { return Descriptor()->full_name(); }
++  static std::string const& TypeName() {
++    static std::string const kName(Descriptor()->full_name());
++    return kName;
++  }
+ 
+   /// @name Relational operators
+   ///@{
+diff --git a/google/cloud/spanner/proto_message.h b/google/cloud/spanner/proto_message.h
+index 9ca3e821e0da4..2c75dc5388973 100644
+--- a/google/cloud/spanner/proto_message.h
++++ b/google/cloud/spanner/proto_message.h
+@@ -74,7 +74,8 @@ class ProtoMessage {
+ 
+   /// The fully-qualified name of the message type, scope delimited by periods.
+   static std::string const& TypeName() {
+-    return message_type::GetDescriptor()->full_name();
++    static std::string const kName(message_type::GetDescriptor()->full_name());
++    return kName;
+   }
+ 
+   /// @name Relational operators
+diff --git a/google/cloud/spanner/testing/status_utils.cc b/google/cloud/spanner/testing/status_utils.cc
+index 4168fe7e9cd11..1629f3110bd60 100644
+--- a/google/cloud/spanner/testing/status_utils.cc
++++ b/google/cloud/spanner/testing/status_utils.cc
+@@ -14,6 +14,7 @@
+ 
+ #include "google/cloud/spanner/testing/status_utils.h"
+ #include "google/cloud/grpc_error_delegate.h"
++#include "google/cloud/internal/absl_str_cat_quiet.h"
+ #include <google/rpc/error_details.pb.h>
+ #include <google/rpc/status.pb.h>
+ #include <google/spanner/v1/spanner.pb.h>
+@@ -25,7 +26,8 @@ GOOGLE_CLOUD_CPP_INLINE_NAMESPACE_BEGIN
+ 
+ grpc::Status SessionNotFoundRpcError(std::string name) {
+   google::spanner::v1::Session session;
+-  auto session_url = "type.googleapis.com/" + session.GetTypeName();
++  auto session_url =
++      absl::StrCat("type.googleapis.com/", session.GetTypeName());
+ 
+   google::rpc::ResourceInfo resource_info;
+   resource_info.set_resource_type(session_url);

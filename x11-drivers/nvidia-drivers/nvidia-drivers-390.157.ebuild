@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -46,11 +46,14 @@ COMMON_DEPEND="
 		x11-libs/pango
 	)
 "
+# xorg-server: explicit dependency given these old drivers only
+# support up to the 21.1 ABI
 RDEPEND="
 	${COMMON_DEPEND}
 	sys-libs/glibc
 	X? (
 		media-libs/libglvnd[X,abi_x86_32(-)?]
+		<x11-base/xorg-server-22
 		x11-libs/libX11[abi_x86_32(-)?]
 		x11-libs/libXext[abi_x86_32(-)?]
 	)
@@ -447,5 +450,6 @@ pkg_postinst() {
 	ewarn "replace hardware. Will be kept in-tree while possible, but expect it"
 	ewarn "to be removed likely in late 2027 or earlier if major issues arise."
 	ewarn "\nNote that there is no plans to patch in support for kernels branches"
-	ewarn "newer than 6.1.x which will be supported upstream until December 2026."
+	ewarn "newer than 6.1.x which will be supported upstream until December 2027"
+	ewarn "albeit its support *could* end earlier in Gentoo."
 }

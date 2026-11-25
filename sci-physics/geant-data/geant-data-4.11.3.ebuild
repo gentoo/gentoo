@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -35,7 +35,7 @@ DATASETS=(
 )
 
 for DATASET in ${!DATASETS[@]}; do
-	read FILENAME VERSION ENVVAR <<< "${DATASETS[$DATASET]}"
+	read -rd '' FILENAME VERSION ENVVAR < <(printf %s "${DATASETS[$DATASET]}")
 	SRC_URI+="${SRC_DATA}/${FILENAME}.${VERSION}.tar.gz "
 done
 unset DATASET FILENAME VERSION ENVVAR

@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,8 +9,23 @@ if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://git.code.sf.net/p/zsh/code"
 else
-	SRC_URI="https://www.zsh.org/pub/${P}.tar.xz
-		doc? ( https://www.zsh.org/pub/${P}-doc.tar.xz )"
+	inherit verify-sig
+	SRC_URI="
+		https://www.zsh.org/pub/${P}.tar.xz
+		https://www.zsh.org/pub/old/${P}.tar.xz
+		verify-sig? (
+			https://www.zsh.org/pub/${P}.tar.xz.asc
+			https://www.zsh.org/pub/old/${P}.tar.xz.asc
+		)
+		doc? (
+			https://www.zsh.org/pub/${P}-doc.tar.xz
+			https://www.zsh.org/pub/old/${P}-doc.tar.xz
+			verify-sig? (
+				https://www.zsh.org/pub/${P}-doc.tar.xz.asc
+				https://www.zsh.org/pub/old/${P}-doc.tar.xz.asc
+			)
+		)
+	"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~arm64-macos ~x64-macos ~x64-solaris"
 fi
 
@@ -48,11 +63,14 @@ if [[ ${PV} == *9999 ]] ; then
 		app-text/yodl
 		doc? ( virtual/texi2dvi )
 	"
+else
+	BDEPEND+=" verify-sig? ( >=sec-keys/openpgp-keys-zsh-2026.07.12 )"
+	VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/zsh.asc"
 fi
 
 PATCHES=(
 	# Add openrc specific options for init.d completion
-	"${FILESDIR}"/${PN}-5.3-init.d-gentoo.diff
+	"${FILESDIR}"/zsh-5.9.1-init.d-gentoo.patch
 )
 
 src_prepare() {
@@ -81,7 +99,6 @@ src_configure() {
 		--enable-fndir="${EPREFIX}"/usr/share/zsh/${PV%_*}/functions
 		--enable-site-fndir="${EPREFIX}"/usr/share/zsh/site-functions
 		--enable-function-subdirs
-		--with-tcsetpgrp
 		--enable-multibyte
 		--with-term-lib='tinfow ncursesw'
 		$(use_enable maildir maildir-support)
@@ -162,9 +179,16 @@ src_test() {
 
 src_install() {
 	emake DESTDIR="${D}" install
+
+	dodoc ChangeLog* META-FAQ NEWS README config.modules
+
 	if use doc; then
-		emake -C Doc DESTDIR="${D}" install.html install.html
+		emake -C Doc DESTDIR="${D}" install.html
+		dodoc Doc/*.dvi Doc/*.pdf
 	fi
+
+	docinto StartupFiles
+	dodoc StartupFiles/z*
 
 	insinto /etc/zsh
 	export PREFIX_QUOTE_CHAR='"' PREFIX_EXTRA_REGEX="/EUID/s,0,${EUID},"
@@ -194,15 +218,6 @@ src_install() {
 			-i "${i}"
 		doins "${i}"
 	done
-
-	dodoc ChangeLog* META-FAQ NEWS README config.modules
-
-	if use doc; then
-		dodoc Doc/intro.{a4,us}.pdf Doc/zsh_{a4,us}.{dvi,pdf}
-	fi
-
-	docinto StartupFiles
-	dodoc StartupFiles/z*
 }
 
 pkg_postinst() {

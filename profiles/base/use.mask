@@ -4,10 +4,14 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
-# Michał Górny <mgorny@gentoo.org> (2026-01-13)
-# LLVM 15 is only required by masked packages.  It will be removed when
-# the reverse dependencies are gone.  Bug #920536.
-llvm_slot_15
+# Alfred Wingate <parona@protonmail.com> (2026-10-25)
+# Ruby 3.2 is no longer supported upstream and will no longer
+# receive security updates.
+ruby_targets_ruby32
+
+# Michał Górny <mgorny@gentoo.org> (2026-04-18)
+# LLVM slots with no keyworded releases yet.
+llvm_slot_24
 
 # Sam James <sam@entoo.org> (2025-12-02)
 # GCC 16 is not yet released

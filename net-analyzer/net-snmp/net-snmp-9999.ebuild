@@ -1,10 +1,10 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 GENTOO_DEPEND_ON_PERL=no
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 WANT_AUTOMAKE=none
 
 inherit autotools python-single-r1 libtool perl-module systemd
@@ -88,6 +88,13 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-5.8-pcap.patch
 	"${FILESDIR}"/${PN}-5.8.1-mysqlclient.patch
 	"${FILESDIR}"/${PN}-5.9-MakeMaker.patch
+)
+
+QA_CONFIG_IMPL_DECL_SKIP=(
+	# only exists on Windows
+	ioctlsocket
+	# removed from Linux since 5.5
+	sysctl
 )
 
 pkg_setup() {

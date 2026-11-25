@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,11 +12,10 @@ SRC_URI="https://downloads.sourceforge.net/ggi/${P}.src.tar.bz2"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~loong ppc ppc64 ~riscv ~s390 ~sparc x86"
-IUSE="3dfx aalib cpu_flags_x86_mmx debug fbcon svga vis X"
+IUSE="3dfx aalib cpu_flags_x86_mmx debug fbcon vis X"
 
 RDEPEND=">=media-libs/libgii-1.0.2
 	aalib? ( >=media-libs/aalib-1.2-r1 )
-	svga? ( >=media-libs/svgalib-1.4.2 )
 	X? (
 		x11-libs/libXt
 		x11-libs/libXxf86dga
@@ -43,9 +42,7 @@ src_prepare() {
 }
 
 src_configure() {
-	local myconf=""
-
-	use svga || myconf="${myconf} --disable-svga --disable-vgagl"
+	local myconf="--disable-svga --disable-vgagl"
 
 	if use amd64 || use ppc64 ; then
 		myconf="${myconf} --enable-64bitc"

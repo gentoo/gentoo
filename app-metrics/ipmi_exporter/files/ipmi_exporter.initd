@@ -1,0 +1,27 @@
+#!/sbin/openrc-run
+# Copyright 1999-2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+extra_started_commands="reload"
+output_log="/dev/null"
+error_log="/var/log/ipmi_exporter_error.log"
+supervisor="supervise-daemon"
+
+name="ipmi_exporter"
+command="/usr/bin/ipmi_exporter"
+command_args="${command_args:-}"
+pidfile="/run/${RC_SVCNAME}.pid"
+required_files=""
+retry="${retry:-TERM/60/KILL/5}"
+start_stop_daemon_args="${SSD_OPTS}"
+
+depend() {
+	need localmount
+	after net.lo loopback
+}
+
+reload() {
+	ebegin "Reloading ${name} configuration"
+	${supervisor} ${RC_SVCNAME} --signal HUP --pidfile "${pidfile}"
+	eend $? "Failed to reload ${name}"
+}

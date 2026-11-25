@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,11 +13,11 @@ if [[ ${CTARGET} = ${CHOST} ]] ; then
 	fi
 fi
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_12 )
 inherit python-any-r1
 inherit autotools bash-completion-r1 flag-o-matic ghc-package
 inherit multiprocessing pax-utils toolchain-funcs prefix
-inherit check-reqs llvm unpacker
+inherit check-reqs unpacker
 DESCRIPTION="The Glasgow Haskell Compiler"
 HOMEPAGE="https://www.haskell.org/ghc/"
 
@@ -140,7 +140,7 @@ BUMP_LIBRARIES=(
 LICENSE="BSD"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
-IUSE="big-endian doc elfutils ghcbootstrap ghcmakebinary +gmp llvm numa profile test unregisterised"
+IUSE="big-endian doc elfutils ghcbootstrap ghcmakebinary +gmp numa profile test unregisterised"
 IUSE+=" binary"
 RESTRICT="!test? ( test )"
 
@@ -152,12 +152,6 @@ RDEPEND="
 	elfutils? ( dev-libs/elfutils )
 	!ghcmakebinary? ( dev-libs/libffi:= )
 	numa? ( sys-process/numactl )
-	llvm? (
-		<llvm-core/llvm-$((${LLVM_MAX_SLOT} + 1)):=
-		|| (
-			llvm-core/llvm:14
-		)
-	)
 "
 
 # This set of dependencies is needed to run
@@ -209,7 +203,6 @@ needs_python() {
 REQUIRED_USE="
 	?? ( ghcbootstrap binary )
 	?? ( profile binary )
-	?? ( llvm unregisterised )
 "
 
 # haskell libraries built with cabal in configure mode, #515354
@@ -454,15 +447,6 @@ ghc-check-reqs() {
 	"$@"
 }
 
-llvmize() {
-	[[ -z "${1}" ]] && return
-	( find "${1}" -type f \
-		| file -if- \
-		| grep "text/x-shellscript" \
-		| awk -F: '{print $1}' \
-		| xargs sed -i "s#^exec #PATH=\"$(get_llvm_prefix "${LLVM_MAX_SLOT}")/bin:\${PATH}\" exec #") || die
-}
-
 ghc-check-bootstrap-version () {
 	local diemsg version python_output
 	ebegin "Checking for appropriate installed GHC version for bootstrapping"
@@ -514,8 +498,6 @@ pkg_setup() {
 	if needs_python; then
 		python-any-r1_pkg_setup
 	fi
-
-	use llvm && llvm_pkg_setup
 }
 
 src_unpack() {
@@ -566,8 +548,6 @@ src_prepare() {
 			pax-mark -m "${WORKDIR}/usr/$(get_libdir)/${PN}-${bin_pv}/bin/ghc"
 		fi
 	fi
-
-	use llvm && ! use ghcbootstrap && llvmize "${WORKDIR}/usr/bin"
 
 	# binpkg may have been built with FEATURES=splitdebug
 	if [[ -d "${WORKDIR}/usr/lib/debug" ]] ; then
@@ -907,8 +887,6 @@ src_install() {
 		#    /usr/bin/install: cannot create regular file \
 		#           '/tmp/portage-tmpdir/portage/cross-armv7a-unknown-linux-gnueabi/ghc-9999/image/usr/lib64/armv7a-unknown-linux-gnueabi-ghc-8.3.20170404': No such file or directory
 		emake -j1 install DESTDIR="${D}"
-
-		use llvm && llvmize "${ED}/usr/bin"
 
 		# Skip for cross-targets as they all share target location:
 		# /usr/share/doc/ghc-9999/

@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Note: Keep version bumps in sync with dev-libs/libintl.
@@ -135,7 +135,7 @@ multilib_src_configure() {
 		$(use_enable nls)
 		$(use_enable openmp)
 		$(use_enable static-libs static)
-		$(use_enable xattr attr)
+		$(use_enable xattr)
 	)
 
 	local ECONF_SOURCE="${S}"

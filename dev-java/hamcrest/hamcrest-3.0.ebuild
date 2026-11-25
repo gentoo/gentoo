@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,7 +9,7 @@ JAVA_TESTING_FRAMEWORKS="junit-4"
 
 inherit java-pkg-2 java-pkg-simple
 
-DESCRIPTION="Core API and libraries of hamcrest matcher framework."
+DESCRIPTION="Core API and libraries of hamcrest matcher framework"
 HOMEPAGE="https://hamcrest.org/JavaHamcrest/"
 SRC_URI="https://github.com/${PN}/JavaHamcrest/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/JavaHamcrest-${PV}"

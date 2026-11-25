@@ -1,6 +1,10 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Hyland B. <me@ow.swag.toys> (2026-05-05)
+# gdm breaks on systemd if this user is provided.
+acct-user/gdm-greeter
+
 # Sam James <sam@gentoo.org> (2026-02-18)
 # Requires systemd, so specifically unmasked only in targets/systemd.
 -kde-plasma/plasma-login-manager

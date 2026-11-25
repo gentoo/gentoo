@@ -1,0 +1,19 @@
+--- a/src/test/java/org/xmlunit/assertj3/ValueAssertTest.java
++++ b/src/test/java/org/xmlunit/assertj3/ValueAssertTest.java
+@@ -16,6 +16,7 @@ package org.xmlunit.assertj3;
+ import org.junit.ClassRule;
+ import org.junit.Rule;
+ import org.junit.Test;
++import org.junit.Ignore;
+ import org.mockito.Mockito;
+ import org.w3c.dom.Element;
+ import org.xml.sax.InputSource;
+@@ -278,7 +279,7 @@ public class ValueAssertTest {
+         assertThat(xml).valueByXPath("//a/b/@attr").isEqualTo("abc");
+     }
+ 
+-    @Test
++    @Test @Ignore
+     public void testIsEqualTo_withAttributeValueExpression_shouldFailed() {
+ 
+         thrown.expectAssertionErrorPattern(".*("

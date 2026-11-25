@@ -1,0 +1,34 @@
+From 77288e5827af2803f7957eff7e1c3f04b8245128 Mon Sep 17 00:00:00 2001
+From: Alan Coopersmith <alan.coopersmith@oracle.com>
+Date: Fri, 21 Nov 2025 13:39:22 -0800
+Subject: [PATCH] display: handle XFree86_VT property type of "None"
+
+When a property name is known, but the property is not set on the given
+window, the X server will respond with a property type of "None" and no
+value.  This fixes the code to handle that, instead of trying to read
+the non-existent property value from past the end of the allocated reply.
+
+Fixes: ca9006193 ("display: port GdmDisplay to xcb")
+Closes: #1038
+Signed-off-by: Alan Coopersmith <alan.coopersmith@oracle.com>
+---
+ daemon/gdm-display.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/daemon/gdm-display.c b/daemon/gdm-display.c
+index 54e054808..c51ce8d58 100644
+--- a/daemon/gdm-display.c
++++ b/daemon/gdm-display.c
+@@ -1864,7 +1864,8 @@ gdm_display_set_windowpath (GdmDisplay *self)
+ 
+         get_property_reply = xcb_get_property_reply (priv->xcb_connection, get_property_cookie, NULL);
+ 
+-        if (get_property_reply == NULL) {
++        if ((get_property_reply == NULL) ||
++            (get_property_reply->type == XCB_NONE)) {
+                 g_debug ("no XFree86_VT property\n");
+                 goto out;
+         }
+-- 
+GitLab
+

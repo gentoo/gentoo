@@ -3,9 +3,9 @@
 
 EAPI=8
 
-RUST_MIN_VER="1.92.0"
+RUST_MIN_VER="1.98.0"
 
-inherit cargo check-reqs git-r3
+inherit cargo check-reqs git-r3 shell-completion
 
 DESCRIPTION="A Python package installer and resolver, written in Rust"
 HOMEPAGE="
@@ -18,11 +18,9 @@ LICENSE="|| ( Apache-2.0 MIT )"
 SLOT="0"
 IUSE="test"
 RESTRICT="test"
-PROPERTIES="test_network"
+PROPERTIES="test? ( test_network )"
 
 DEPEND="
-	app-arch/bzip2:=
-	app-arch/xz-utils:=
 	app-arch/zstd:=
 "
 RDEPEND="
@@ -31,6 +29,7 @@ RDEPEND="
 BDEPEND="
 	virtual/pkgconfig
 	test? (
+		>=dev-vcs/git-2.56.0-r1
 		dev-lang/python:3.9
 		dev-lang/python:3.10
 		dev-lang/python:3.11
@@ -71,24 +70,10 @@ src_prepare() {
 
 	# enable system libraries where supported
 	export ZSTD_SYS_USE_PKG_CONFIG=1
-	# TODO: unbundle libz-ng-sys, tikv-jemalloc-sys?
+	# TODO: unbundle tikv-jemalloc-sys?
 
 	# remove unbundled sources, just in case
-	find "${ECARGO_VENDOR}"/{bzip2,lzma,zstd}-sys-*/ -name '*.c' -delete || die
-
-	# bzip2-sys requires a pkg-config file
-	# https://github.com/alexcrichton/bzip2-rs/issues/104
-	mkdir "${T}/pkg-config" || die
-	export PKG_CONFIG_PATH=${T}/pkg-config${PKG_CONFIG_PATH+:${PKG_CONFIG_PATH}}
-	cat >> "${T}/pkg-config/bzip2.pc" <<-EOF || die
-		Name: bzip2
-		Version: 9999
-		Description:
-		Libs: -lbz2
-	EOF
-
-	# uv is now forcing bundled liblzma, sigh
-	sed -i -e '/xz/s:"static"::' Cargo.toml || die
+	find "${ECARGO_VENDOR}"/zstd-sys-*/ -name '*.c' -delete || die
 }
 
 src_configure() {
@@ -99,6 +84,8 @@ src_configure() {
 	)
 
 	cargo_src_configure --no-default-features
+	# otherwise, rustc/llvm runs out of address space
+	use arm && export RUSTFLAGS="${RUSTFLAGS} -Copt-level=0"
 }
 
 src_compile() {
@@ -112,8 +99,7 @@ src_test() {
 }
 
 src_install() {
-	cd crates/uv || die
-	cargo_src_install
+	dobin "$(cargo_target_dir)"/{uv,uvx}
 
 	insinto /etc/xdg/uv
 	newins - uv.toml <<-EOF || die
@@ -141,5 +127,15 @@ src_install() {
 		#
 		# https://docs.astral.sh/uv/reference/settings/#python-preference
 		python-preference = "system"
+
+		# Always use system certificates.
+		#
+		# https://docs.astral.sh/uv/reference/settings/#system-certs
+		system-certs = true
 	EOF
+
+	local uv_bin=$(cargo_target_dir)/uv
+	newbashcomp - uv < <("${uv_bin}" generate-shell-completion bash)
+	newfishcomp - uv < <("${uv_bin}" generate-shell-completion fish)
+	newzshcomp - uv < <("${uv_bin}" generate-shell-completion zsh)
 }

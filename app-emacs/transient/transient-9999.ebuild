@@ -1,7 +1,7 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=9
 
 NEED_EMACS="28.1"
 
@@ -13,12 +13,10 @@ HOMEPAGE="https://magit.vc/manual/transient/
 
 if [[ "${PV}" == *9999* ]] ; then
 	inherit git-r3
-
 	EGIT_REPO_URI="https://github.com/magit/${PN}"
 else
 	SRC_URI="https://github.com/magit/${PN}/archive/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz"
-
 	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
 fi
 
@@ -26,8 +24,9 @@ LICENSE="GPL-3+"
 SLOT="0"
 
 RDEPEND="
-	app-emacs/compat
-	app-emacs/cond-let
+	>=app-emacs/compat-31.0
+	>=app-emacs/cond-let-1.1
+	>=app-emacs/llama-1.0
 "
 BDEPEND="
 	${RDEPEND}
@@ -38,10 +37,9 @@ DOCS=( CHANGELOG README.org "docs/${PN}.org" )
 ELISP_TEXINFO="docs/${PN}.texi"
 SITEFILE="50${PN}-gentoo.el"
 
-elisp-enable-tests ert test -l "${PN}-tests"
+elisp-enable-tests ert ./test/ -l "./test/${PN}-tests.el"
 
 src_prepare() {
 	mv ./lisp/*.el . || die
-
 	elisp_src_prepare
 }

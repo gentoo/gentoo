@@ -25,7 +25,7 @@
 	</longdescription>
 	<stabilize-allarches/>
 	<upstream>
-		<remote-id type="github">iterative/shtab</remote-id>
+		<remote-id type="github">tqdm/shtab</remote-id>
 		<remote-id type="pypi">shtab</remote-id>
 	</upstream>
 </pkgmetadata>

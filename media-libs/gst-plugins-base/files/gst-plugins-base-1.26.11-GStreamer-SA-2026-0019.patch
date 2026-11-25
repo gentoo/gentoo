@@ -1,0 +1,48 @@
+https://bugs.gentoo.org/974285
+https://gstreamer.freedesktop.org/security/sa-2026-0019.html
+https://gitlab.freedesktop.org/gstreamer/gstreamer/-/merge_requests/11238
+
+From e82a2c69f133c89ed9b0813b5e7992ea5f0360b3 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Sebastian=20Dr=C3=B6ge?= <sebastian@centricular.com>
+Date: Thu, 26 Mar 2026 19:59:42 +0200
+Subject: [PATCH] subparse: Avoid NULL-pointer dereferences in mdvdsub parsing
+ code
+
+Fixes https://gitlab.freedesktop.org/gstreamer/gstreamer/-/work_items/4995
+
+Part-of: <https://gitlab.freedesktop.org/gstreamer/gstreamer/-/merge_requests/11238>
+--- a/gst/subparse/gstsubparse.c
++++ b/gst/subparse/gstsubparse.c
+@@ -523,8 +523,13 @@ parse_mdvdsub (ParserState * state, const gchar * line)
+   }
+ 
+   /* skip the {%u}{%u} part */
+-  line = strchr (line, '}') + 1;
+-  line = strchr (line, '}') + 1;
++  line = strchr (line, '}');
++  if (!line)
++    return NULL;
++  line = strchr (line + 1, '}');
++  if (!line)
++    return NULL;
++  line++;
+ 
+   /* see if there's a first line with a framerate */
+   if (start_frame == 1 && end_frame == 1) {
+@@ -577,7 +582,12 @@ parse_mdvdsub (ParserState * state, const gchar * line)
+       line = strchr (line, '}') + 1;
+     }
+     if (sscanf (line, "{s:%u}", &fontsize) == 1) {
+-      line = strchr (line, '}') + 1;
++      line = strchr (line, '}');
++      if (!line) {
++        g_string_free (markup, TRUE);
++        return NULL;
++      }
++      line++;
+     }
+     /* forward slashes at beginning/end signify italics too */
+     if (g_str_has_prefix (line, "/")) {
+-- 
+GitLab
+

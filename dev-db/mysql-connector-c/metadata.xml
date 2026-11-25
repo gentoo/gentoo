@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
-	<email>mysql-bugs@gentoo.org</email>
-	<name>MySQL</name>
-</maintainer>
+	<maintainer type="project">
+		<email>mysql-bugs@gentoo.org</email>
+		<name>MySQL</name>
+	</maintainer>
+	<use>
+		<flag name="fido2">Build the WebAuthn client authentication plugin using <pkg>dev-libs/libfido2</pkg></flag>
+	</use>
 </pkgmetadata>

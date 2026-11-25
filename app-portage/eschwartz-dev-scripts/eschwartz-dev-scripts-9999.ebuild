@@ -1,0 +1,51 @@
+# Copyright 2025-2026 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=8
+
+PYTHON_COMPAT=( python3_{13..14} )
+
+inherit meson python-single-r1
+
+DESCRIPTION="Collection of QA scripts for ebuild development"
+HOMEPAGE="https://codeberg.org/eli-schwartz/eschwartz-dev-scripts"
+
+if [[ ${PV} = 9999 ]] ; then
+	EGIT_REPO_URI="https://codeberg.org/eli-schwartz/eschwartz-dev-scripts"
+	inherit git-r3
+else
+	inherit verify-sig
+
+	SRC_URI="
+		https://codeberg.org/eli-schwartz/eschwartz-dev-scripts/releases/download/${PV}/${P}.tar.xz
+		verify-sig? ( https://codeberg.org/eli-schwartz/eschwartz-dev-scripts/releases/download/${PV}/${P}.tar.xz.asc )
+	"
+
+	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
+
+	BDEPEND=" verify-sig? ( >=sec-keys/openpgp-keys-eschwartz-20250723-r1 )"
+fi
+
+LICENSE="GPL-2+"
+SLOT="0"
+
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+
+RDEPEND="
+	${PYTHON_DEPS}
+	sys-apps/portage
+	$(python_gen_cond_dep '
+		sys-apps/pkgcore[${PYTHON_USEDEP}]
+	')
+
+"
+BDEPEND+="
+	${PYTHON_DEPS}
+"
+
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/eschwartz.asc
+
+src_install() {
+	meson_src_install
+	python_fix_shebang "${ED}"/usr/libexec
+}

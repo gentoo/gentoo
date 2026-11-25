@@ -1,7 +1,8 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+
 PYTHON_COMPAT=( python3_{11..14} )
 
 inherit bash-completion-r1 flag-o-matic gnome.org gnome2-utils linux-info meson python-any-r1 systemd vala xdg
@@ -11,7 +12,7 @@ HOMEPAGE="https://gnome.pages.gitlab.gnome.org/tinysparql"
 
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="3/0" # libtracker-sparql-3.0 soname version
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
 IUSE="dbus gtk-doc +localsearch stemmer systemd test vala zeroconf"
 RESTRICT="!test? ( test )"
 
@@ -89,7 +90,7 @@ src_configure() {
 }
 
 src_test() {
-	dbus-run-session meson test -C "${BUILD_DIR}" || die 'tests failed'
+	dbus-run-session meson test -C "${BUILD_DIR}" --print-errorlogs || die 'tests failed'
 }
 
 src_install() {

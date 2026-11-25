@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/findutils.asc
 inherit branding flag-o-matic python-any-r1 verify-sig
 
@@ -63,6 +63,12 @@ src_configure() {
 		append-cppflags '-D__nonnull\(X\)='
 	fi
 
+	if [[ ${CHOST} == *-solaris* ]] ; then
+		# https://bugs.gentoo.org/975237 needs gnulib update, should be
+		# in next release
+		sed -i -e 's/HAVE_GETLOCALENAME_L/DISABLED/' configure || die
+	fi
+
 	local myeconfargs=(
 		$(use_enable nls)
 		$(use_with selinux)
@@ -70,6 +76,12 @@ src_configure() {
 		# rename to gfind, gxargs for better BSD compatibility
 		--program-prefix=g
 	)
+
+	# https://savannah.gnu.org/support/?111394
+	# This can be removed when we patch dev-build/autoconf, though
+	# packages w/o eautoreconf will still need it.
+	[[ ${enable_year2038} == "no" ]] && myeconfargs+=( --disable-year2038 )
+
 	econf "${myeconfargs[@]}"
 }
 

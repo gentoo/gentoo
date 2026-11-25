@@ -1,0 +1,41 @@
+https://bugs.gentoo.org/974286
+https://gstreamer.freedesktop.org/security/sa-2026-0022.html
+https://gitlab.freedesktop.org/gstreamer/gstreamer/-/merge_requests/11248
+
+From 8647118624fd14983507edbb509d0e534a0353a9 Mon Sep 17 00:00:00 2001
+From: Cameron O'Neal <tzusec@gmail.com>
+Date: Wed, 1 Apr 2026 13:39:27 +0300
+Subject: [PATCH] matroskademux: Add missing parenthesis when calculating bz2
+ buffer sizes
+
+This fixes a heap buffer overflow.
+
+Fixes https://gitlab.freedesktop.org/gstreamer/gstreamer/-/work_items/5009
+
+Part-of: <https://gitlab.freedesktop.org/gstreamer/gstreamer/-/merge_requests/11248>
+--- a/gst/matroska/matroska-read-common.c
++++ b/gst/matroska/matroska-read-common.c
+@@ -190,14 +190,14 @@ gst_matroska_decompress_data (GstMatroskaTrackEncoding * enc,
+       new_size += 4096;
+       new_data = g_realloc (new_data, new_size);
+       bzstream.next_out =
+-          (char *) (new_data + ((guint64) bzstream.total_out_hi32 << 32) +
+-          bzstream.total_out_lo32);
++          (char *) (new_data + (((guint64) bzstream.total_out_hi32 << 32) +
++              bzstream.total_out_lo32));
+       /* avail_out is an unsigned int */
+-      g_assert (new_size - ((guint64) bzstream.total_out_hi32 << 32) +
+-          bzstream.total_out_lo32 <= G_MAXUINT);
++      g_assert (new_size - (((guint64) bzstream.total_out_hi32 << 32) +
++              bzstream.total_out_lo32 <= G_MAXUINT));
+       bzstream.avail_out =
+-          new_size - ((guint64) bzstream.total_out_hi32 << 32) +
+-          bzstream.total_out_lo32;
++          new_size - (((guint64) bzstream.total_out_hi32 << 32) +
++          bzstream.total_out_lo32);
+     } while (bzstream.avail_in > 0);
+ 
+     if (result != BZ_STREAM_END) {
+-- 
+GitLab
+

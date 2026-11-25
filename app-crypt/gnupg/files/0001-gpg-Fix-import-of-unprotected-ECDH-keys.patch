@@ -1,0 +1,39 @@
+From 42386bcf8861f04c1bdec5cbb139a03da83d8ef9 Mon Sep 17 00:00:00 2001
+Message-ID: <42386bcf8861f04c1bdec5cbb139a03da83d8ef9.1790625327.git.sam@gentoo.org>
+From: Werner Koch <wk@gnupg.org>
+Date: Mon, 28 Sep 2026 15:44:44 +0200
+Subject: [PATCH GnuPG 1/3] gpg: Fix import of unprotected ECDH keys
+
+* g10/import.c (build_mode1003_sexp): Skip the correct parameter.
+--
+
+This bug was introduced when I used the new import code also for
+classic unprotected keys.
+
+GnuPG-bug-id: 8469
+Fixes-commit: 2e6549f5de5307e3e84c1ffa5e762d14266546ba
+---
+ g10/import.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/g10/import.c b/g10/import.c
+index 593995c37..793c0479d 100644
+--- a/g10/import.c
++++ b/g10/import.c
+@@ -2732,11 +2732,11 @@ build_mode1003_sexp (PKT_public_key *pk, gcry_sexp_t *result)
+       else if (openpgp_oid_is_cv25519 (pk->pkey[0]))
+         err = gcry_sexp_build
+           (&skey,NULL,"(private-key(ecc(curve %s)(flags djb-tweak)(q%m)(d%m)))",
+-           curvename, pk->pkey[2], pk->pkey[3]);
++           curvename, pk->pkey[1], pk->pkey[3]);
+       else
+         err = gcry_sexp_build
+           (&skey,NULL,"(private-key(ecc(curve %s)(q%m)(d%m)))",
+-           curvename, pk->pkey[2], pk->pkey[3]);
++           curvename, pk->pkey[1], pk->pkey[3]);
+       break;
+ 
+     case PUBKEY_ALGO_X25519:
+-- 
+2.55.0
+

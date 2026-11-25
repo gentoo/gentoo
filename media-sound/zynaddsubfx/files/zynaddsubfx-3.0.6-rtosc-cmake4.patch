@@ -1,0 +1,21 @@
+Source: https://github.com/fundamental/rtosc/commit/1310ac63ba205d6f986b26050ab875bb1f7347e8
+
+From 1310ac63ba205d6f986b26050ab875bb1f7347e8 Mon Sep 17 00:00:00 2001
+From: Johannes Lorenz <j.git@lorenz-ho.me>
+Date: Mon, 21 Jul 2025 02:05:03 +0200
+Subject: [PATCH] Update CMake to at least 3.10
+
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 40a5464..f3b2feb 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 2.8)
++cmake_minimum_required(VERSION 3.10)
+ project(RTOSC)
+ 
+ set(VERSION_MAJOR 0)

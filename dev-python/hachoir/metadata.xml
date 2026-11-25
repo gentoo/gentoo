@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<name>Joe Kappus</name>
+		<email>joe@wt.gd</email>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<name>Proxy Maintainers</name>
+		<email>proxy-maint@gentoo.org</email>
+	</maintainer>
+	<upstream>
+		<maintainer>
+			<name>Victor Stinner</name>
+			<email>vstinner@python.org</email>
+		</maintainer>
+		<changelog>https://github.com/vstinner/hachoir/releases</changelog>
+		<doc>https://hachoir.readthedocs.io/</doc>
+		<bugs-to>https://github.com/vstinner/hachoir/issues</bugs-to>
+		<remote-id type="github">vstinner/hachoir</remote-id>
+		<remote-id type="pypi">hachoir</remote-id>
+	</upstream>
+</pkgmetadata>

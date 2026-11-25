@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -25,7 +25,7 @@ RDEPEND=">=dev-haskell/primitive-0.3:=[profile?] <dev-haskell/primitive-0.8:=[pr
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.10
-	test? ( properties? ( >dev-haskell/quickcheck-2.9 <dev-haskell/quickcheck-2.15 ) )
+	test? ( properties? ( <dev-haskell/quickcheck-2.15 ) )
 "
 
 src_configure() {

@@ -1,0 +1,14 @@
+https://bugs.gentoo.org/970924
+
+CMake >= 4.0 has removed compatibility with cmake_minimum_required
+versions less than 3.5. Bump the minimum version in vendored
+thirdparty zlib code to fix the build.
+
+--- a/thirdparty/sentry-native/external/crashpad/third_party/zlib/zlib/CMakeLists.txt
++++ b/thirdparty/sentry-native/external/crashpad/third_party/zlib/zlib/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.0)
++cmake_minimum_required(VERSION 3.5)
+ set(CMAKE_ALLOW_LOOSE_LOOP_CONSTRUCTS ON)
+
+ project(zlib C)

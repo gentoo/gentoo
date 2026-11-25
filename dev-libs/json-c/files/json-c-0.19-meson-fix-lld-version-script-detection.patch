@@ -1,0 +1,37 @@
+https://github.com/json-c/json-c/pull/988
+
+From: ShengYi Hung <aokblast@FreeBSD.org>
+Date: Tue, 20 Oct 2026 23:23:48 -0500
+Subject: [PATCH] meson: Fix lld version script detection
+
+In lld, a symbol version with undefined symbol is rejected by
+default. In previous CMake, we use a wildcard for all symbol, which is
+fine for empty program. Add --undefined-version to the detection to
+fix it.
+
+---
+--- a/meson.build
++++ b/meson.build
+@@ -227,12 +227,18 @@
+ 
+ add_project_arguments(cc.get_supported_arguments('-Wno-unused-parameter'), language : 'c')
+ 
+-sym = cc.get_supported_link_arguments(
+-  '-Wl,--version-script,@0@/json-c.sym'.format(
+-    meson.current_source_dir(),
+-  ),
++version_script_arg = '-Wl,--version-script,@0@/json-c.sym'.format(
++  meson.current_source_dir(),
+ )
+ 
++sym = []
++if cc.has_link_argument(version_script_arg) or cc.has_multi_link_arguments(
++  version_script_arg,
++  '-Wl,--undefined-version',
++)
++  sym = [version_script_arg]
++endif
++
+ # Source files
+ sources = files(
+   'arraylist.c', 'debug.c', 'json_c_version.c', 'json_object.c',

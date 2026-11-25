@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -21,6 +21,7 @@ SRC_URI="
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
+IUSE="selinux"
 
 DEPEND="
 	net-libs/libnfnetlink
@@ -28,6 +29,7 @@ DEPEND="
 RDEPEND="
 	${DEPEND}
 	|| ( net-misc/miniupnpd net-libs/miniupnpc )
+	selinux? ( sec-policy/selinux-minissdpd )
 "
 BDEPEND="
 	verify-sig? ( sec-keys/openpgp-keys-miniupnp )

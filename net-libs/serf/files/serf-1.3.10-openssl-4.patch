@@ -1,0 +1,36 @@
+From b6e323525c0883f939eaf0bf662c3b61f92e7930 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Branko=20=C4=8Cibej?= <brane@apache.org>
+Date: Fri, 5 Jun 2026 13:13:06 +0000
+Subject: [PATCH] Merge r1935023 from trunk, resolving conflicts.
+
+git-svn-id: https://svn.apache.org/repos/asf/serf/branches/1.3.x-r1935023@1935028 13f79535-47bb-0310-9956-ffa450edef68
+
+* Dropped the SConstruct check and ASN1_STRING_data() fallback,
+  which only matter for OpenSSL < 1.1.0
+
+--- a/buckets/ssl_buckets.c
++++ b/buckets/ssl_buckets.c
+@@ -566,14 +566,18 @@
+ 
+             switch (nm->type) {
+                 case GEN_DNS:
+-                    if (copy_action == ErrorOnNul &&
+-                        strlen(nm->d.ia5->data) != nm->d.ia5->length)
++                {
++                    const char *const data =
++                        (const char*)ASN1_STRING_get0_data(nm->d.ia5);
++                    const int length = ASN1_STRING_length(nm->d.ia5);
++
++                    if (copy_action == ErrorOnNul && strlen(data) != length)
+                         return SERF_ERROR_SSL_CERT_FAILED;
+                     if (san_arr && *san_arr)
+-                        p = pstrdup_escape_nul_bytes((const char *)nm->d.ia5->data,
+-                                                     nm->d.ia5->length,
+-                                                     pool);
++                        p = pstrdup_escape_nul_bytes(data, length, pool);
++
+                     break;
++                }
+                 default:
+                     /* Don't know what to do - skip. */
+                     break;

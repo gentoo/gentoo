@@ -1,0 +1,7 @@
+https://bugs.gentoo.org/981804
+--- a/src/3rdparty/xatlas/xatlas.cpp
++++ b/src/3rdparty/xatlas/xatlas.cpp
+@@ -52,2 +52,3 @@
+ #include <stdint.h>
++#include <stdlib.h>
+ #include <stdio.h>

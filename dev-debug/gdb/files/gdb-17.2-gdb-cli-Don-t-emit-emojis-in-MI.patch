@@ -1,0 +1,156 @@
+https://sourceware.org/PR34501
+https://invent.kde.org/kdevelop/kdevelop/-/merge_requests/915
+
+From 615449b7e8d92ed8b9025b3591853b2517b79fa5 Mon Sep 17 00:00:00 2001
+Message-ID: <615449b7e8d92ed8b9025b3591853b2517b79fa5.1787629806.git.sam@gentoo.org>
+From: Tom de Vries <tdevries@suse.de>
+Date: Thu, 13 Aug 2026 03:59:17 +0200
+Subject: [PATCH] [gdb/cli] Don't emit emojis in MI
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+PR mi/34501 reports the following:
+...
+$ gdb -q \
+    -ex 'set charset UTF-8' \
+    -ex 'interpreter-exec mi2 "-break-insert -f foo' \
+    -ex quit
+&"�\235\214�\217 No symbol table is loaded.  Use the \"file\" command.\n"
+  ...
+$
+...
+
+The output is a bit odd, but that gets better if we use
+'set print sevenbit-strings on':
+...
+&"\342\235\214\357\270\217 No symbol table is loaded.  Use the \"file\" command.\n"
+...
+
+The output we see there is the error emoji:
+...
+$ gdb
+(gdb) b foo
+❌️ No symbol table is loaded.  Use the "file" command.
+...
+
+More specifically, two utf-8 encoded unicode characters:
+- Cross Mark [1]: 0xE2 0x9D 0x8C
+- Variation Selector-16 (VS16) [2]: 0xEF 0xB8 0x8F
+
+Now the question: is GDB doing something wrong?
+
+I think we probably should encode unicode characters in MI error strings as
+octal escapes, independent of the sevenbit-strings setting.  This patch does
+not address this part.
+
+Then there's the question whether we should emit emojis in MI error strings in
+the first place [3].  In principle they're unicode characters encoded in UTF-8,
+and we can expect other such unicode characters in translated error strings.
+
+But, given that MI has can_emit_style_escape () == false, and already filters
+out ANSI escape sequences, I think it's reasonable to also disable emojis.
+
+As for implementation, I introduced a function emoji_allowed alongside
+can_emit_style_escape, which defaults to the value of can_emit_style_escape.
+
+Tested on x86_64-linux.
+
+Approved-By: Tom Tromey <tom@tromey.com>
+
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=34501
+
+[1] https://www.compart.com/en/unicode/U+274C
+[2] https://www.compart.com/en/unicode/U+FE0F
+[3] https://sourceware.org/bugzilla/show_bug.cgi?id=33920#c1
+
+(cherry picked from commit dbf19e0f878eb592011c25c1dbbfc35eee330ec2)
+---
+ gdb/cli/cli-style.c                          |  4 +--
+ gdb/testsuite/gdb.base/style-mi-no-emoji.exp | 30 ++++++++++++++++++++
+ gdb/ui-file.h                                |  8 ++++++
+ 3 files changed, 40 insertions(+), 2 deletions(-)
+ create mode 100644 gdb/testsuite/gdb.base/style-mi-no-emoji.exp
+
+diff --git a/gdb/cli/cli-style.c b/gdb/cli/cli-style.c
+index d6829f01095..7379f9a55bc 100644
+--- a/gdb/cli/cli-style.c
++++ b/gdb/cli/cli-style.c
+@@ -468,7 +468,7 @@ show_warning_prefix (struct ui_file *file, int from_tty,
+ void
+ print_warning_prefix (ui_file *file)
+ {
+-  if (emojis_ok ())
++  if (file->emoji_allowed () && emojis_ok ())
+     gdb_puts (warning_prefix.c_str (), file);
+ }
+ 
+@@ -490,7 +490,7 @@ show_error_prefix (struct ui_file *file, int from_tty,
+ void
+ print_error_prefix (ui_file *file)
+ {
+-  if (emojis_ok ())
++  if (file->emoji_allowed () && emojis_ok ())
+     gdb_puts (error_prefix.c_str (), file);
+ }
+ 
+diff --git a/gdb/testsuite/gdb.base/style-mi-no-emoji.exp b/gdb/testsuite/gdb.base/style-mi-no-emoji.exp
+new file mode 100644
+index 00000000000..c46c35b04a6
+--- /dev/null
++++ b/gdb/testsuite/gdb.base/style-mi-no-emoji.exp
+@@ -0,0 +1,30 @@
++# Copyright (C) 2026 Free Software Foundation, Inc.
++
++# This program is free software; you can redistribute it and/or modify
++# it under the terms of the GNU General Public License as published by
++# the Free Software Foundation; either version 3 of the License, or
++# (at your option) any later version.
++#
++# This program is distributed in the hope that it will be useful,
++# but WITHOUT ANY WARRANTY; without even the implied warranty of
++# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++# GNU General Public License for more details.
++#
++# You should have received a copy of the GNU General Public License
++# along with this program.  If not, see <http://www.gnu.org/licenses/>.
++
++# Check that emojis are not printed in MI error messages.
++
++with_ansi_styling_terminal {
++    clean_restart
++
++    gdb_test "set style emoji on"
++
++    # Check that there is no emoji printed before the error.  Regression test
++    # for PR34501.
++    set re_line \
++	[string_to_regexp \
++	     {&"No symbol table is loaded.  Use the \"file\" command.\n"}]
++    gdb_test {interpreter-exec mi2 "-break-insert -f foo"} \
++	"\r\n${re_line}(?=\r\n).*"
++}
+diff --git a/gdb/ui-file.h b/gdb/ui-file.h
+index 1219bde0a75..bf44389d652 100644
+--- a/gdb/ui-file.h
++++ b/gdb/ui-file.h
+@@ -93,6 +93,14 @@ class ui_file
+   virtual bool can_emit_style_escape ()
+   { return false; }
+ 
++  /* True if emojis are allowed on STREAM.  */
++  bool emoji_allowed ()
++  {
++    /* By default, assume that emojis are not allowed on streams that don't
++       support ANSI escapes.  */
++    return can_emit_style_escape ();
++  }
++
+   virtual void flush ()
+   {}
+ 
+
+base-commit: 2636da31af44fab38c22cee0fe771761173ea64b
+-- 
+2.55.0
+

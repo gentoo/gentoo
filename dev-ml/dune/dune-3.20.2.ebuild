@@ -11,7 +11,7 @@ SRC_URI="https://github.com/ocaml/dune/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0/${PV}"
-KEYWORDS="amd64 ~arm arm64 ~ppc ppc64 ~riscv x86"
+KEYWORDS="amd64 arm arm64 ~ppc ppc64 ~riscv x86"
 IUSE="emacs"
 RESTRICT="strip test"
 
@@ -47,9 +47,9 @@ src_configure() {
 }
 
 src_compile() {
-	ocaml boot/bootstrap.ml -j $(makeopts_jobs) --verbose || die
+	ocaml boot/bootstrap.ml -j $(get_makeopts_jobs) --verbose || die
 	./_boot/dune.exe build @install -p "${PN}" --profile dune-bootstrap \
-		-j $(makeopts_jobs) --display short || die
+		-j $(get_makeopts_jobs) --display short || die
 
 	use emacs && elisp-compile editor-integration/emacs/*.el
 }

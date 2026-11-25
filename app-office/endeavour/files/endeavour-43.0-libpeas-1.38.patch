@@ -1,0 +1,31 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: "Jan Alexander Steffens (heftig)" <heftig@archlinux.org>
+Date: Tue, 7 Apr 2026 04:09:41 +0200
+Subject: [PATCH] libpeas 1.38
+
+---
+ src/gui/gtd-application.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/gui/gtd-application.c b/src/gui/gtd-application.c
+index f89e25ff9527..70fc0ad26930 100644
+--- a/src/gui/gtd-application.c
++++ b/src/gui/gtd-application.c
+@@ -32,7 +32,7 @@
+ #include <glib.h>
+ #include <glib-object.h>
+ #include <gio/gio.h>
+-#include <girepository.h>
++#include <girepository/girepository.h>
+ #include <glib/gi18n.h>
+ 
+ 
+@@ -286,7 +286,7 @@ gtd_application_local_command_line (GApplication   *application,
+                                     gchar        ***arguments,
+                                     gint           *exit_status)
+ {
+-  g_application_add_option_group (application, g_irepository_get_option_group());
++  g_application_add_option_group (application, gi_repository_get_option_group());
+ 
+   return G_APPLICATION_CLASS (gtd_application_parent_class)->local_command_line (application,
+                                                                                  arguments,

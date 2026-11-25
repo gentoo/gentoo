@@ -8,8 +8,7 @@
 	<use>
 		<flag name="dicom">Enable DICOM medical image file support via <pkg>sci-libs/dcmtk</pkg></flag>
 		<flag name="fits">Enable support for NASA's <pkg>sci-libs/cfitsio</pkg> library</flag>
-		<flag name="gui" restrict="&gt;media-libs/openimageio-3">Build iv</flag>
-		<flag name="gui" restrict="&lt;media-libs/openimageio-3">Build iv (with Qt5)</flag>
+		<flag name="gui">Build iv</flag>
 		<flag name="libcxx">Build against <pkg>llvm-runtimes/libcxx</pkg> when using clang</flag>
 		<flag name="opencv">Enable OpenCV support via <pkg>media-libs/opencv</pkg></flag>
 		<flag name="openvdb">Enable OpenVDB support via <pkg>media-gfx/openvdb</pkg></flag>

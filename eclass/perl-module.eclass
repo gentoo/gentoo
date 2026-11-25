@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: perl-module.eclass
@@ -255,7 +255,31 @@ perl-module_src_configure() {
 		local myconf_local=("${myconf[@]}")
 	fi
 
-	if [[ ( ${PREFER_BUILDPL} == yes || ! -f Makefile.PL ) && -f Build.PL ]] ; then
+	if [[ -f Build.PL ]] && grep -q '\(use\|require\)\s* Dist::Build' Build.PL ; then
+		einfo "Using Dist::Build"
+		if [[ ${BDEPEND} != *dev-perl/Dist-Build* && ${PN} != Dist-Build ]]; then
+			eerror "QA Notice: The ebuild uses Dist::Build but doesn't depend on it."
+			eerror " Add dev-perl/Dist-Build to BDEPEND!"
+		fi
+
+		# https://metacpan.org/pod/CPAN::API::BuildPL#Command-Line-Options
+		set -- \
+			--installdirs=vendor \
+			--create_packlist=1 \
+			--verbose \
+			--prefix "${EPREFIX}"/usr \
+			--config ar="$(tc-getAR)" \
+			--config cc="$(tc-getCC)" \
+			--config cpp="$(tc-getCPP)" \
+			--config ld="$(tc-getCC)" \
+			--config nm="$(tc-getNM)" \
+			--config ranlib="$(tc-getRANLIB)" \
+			--config optimize="${CFLAGS}" \
+			--config ldflags="${LDFLAGS}" \
+			"${myconf_local[@]}"
+		einfo "perl Build.PL" "$@"
+		perl Build.PL "$@" <<< "${pm_echovar}" || die "Unable to build!"
+	elif [[ ( ${PREFER_BUILDPL} == yes || ! -f Makefile.PL ) && -f Build.PL ]] ; then
 		if grep -q '\(use\|require\)\s*Module::Build::Tiny' Build.PL ; then
 			einfo "Using Module::Build::Tiny"
 			if [[ ${BDEPEND} != *dev-perl/Module-Build-Tiny* && ${PN} != Module-Build-Tiny ]]; then
@@ -271,6 +295,7 @@ perl-module_src_configure() {
 		fi
 
 		set -- \
+			--prefix "${EPREFIX}"/usr \
 			--installdirs=vendor \
 			--libdoc= \
 			--create_packlist=1 \

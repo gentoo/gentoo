@@ -1,0 +1,78 @@
+From 22957bedf39f9a9160a9bc35f2865db56455755c Mon Sep 17 00:00:00 2001
+From: Violet Purcell <vi@vimproved.dev>
+Date: Fri, 5 Jun 2026 17:12:45 -0400
+Subject: [PATCH] unbundle gtest/gmock
+
+--- a/src/framework/CMakeLists.txt
++++ b/src/framework/CMakeLists.txt
+@@ -143,7 +143,6 @@ if (MUSE_ENABLE_UNIT_TESTS)
+     )
+ 
+     set(INSTALL_GTEST OFF)
+-    add_subdirectory(testing/thirdparty/googletest)
+ endif()
+ 
+ # Stubs
+--- a/src/framework/cmake/MuseCreateModule.cmake
++++ b/src/framework/cmake/MuseCreateModule.cmake
+@@ -92,13 +92,11 @@ function(muse_create_module target_name)
+         ${MUSE_FRAMEWORK_PATH}
+         ${MUSE_FRAMEWORK_PATH}/framework
+         ${MUSE_FRAMEWORK_PATH}/framework/global
+-        ${MUSE_FRAMEWORK_PATH}/framework/testing/thirdparty/googletest/googletest/include
+ 
+         # compat
+         ${MUSE_FRAMEWORK_PATH}/src
+         ${MUSE_FRAMEWORK_PATH}/src/framework
+         ${MUSE_FRAMEWORK_PATH}/src/framework/global
+-        ${MUSE_FRAMEWORK_PATH}/src/framework/testing/thirdparty/googletest/googletest/include
+         # end compat
+     )
+ 
+--- a/src/framework/testing/gtest.cmake
++++ b/src/framework/testing/gtest.cmake
+@@ -31,9 +31,6 @@
+ 
+ message(STATUS "Configuring ${MODULE_TEST}")
+ 
+-get_property(gmock_LIBS GLOBAL PROPERTY gmock_LIBS)
+-get_property(gmock_INCLUDE_DIRS GLOBAL PROPERTY gmock_INCLUDE_DIRS)
+-
+ add_executable(${MODULE_TEST}
+     ${CMAKE_CURRENT_LIST_DIR}/gmain.cpp
+     ${CMAKE_CURRENT_LIST_DIR}/environment.cpp
+@@ -50,13 +47,11 @@ target_include_directories(${MODULE_TEST} PRIVATE
+     ${MUSE_FRAMEWORK_PATH}
+     ${MUSE_FRAMEWORK_PATH}/framework
+     ${MUSE_FRAMEWORK_PATH}/framework/global
+-    ${MUSE_FRAMEWORK_PATH}/framework/testing/thirdparty/googletest/googletest/include
+ 
+     # compat
+     ${MUSE_FRAMEWORK_PATH}/src
+     ${MUSE_FRAMEWORK_PATH}/src/framework
+     ${MUSE_FRAMEWORK_PATH}/src/framework/global
+-    ${MUSE_FRAMEWORK_PATH}/src/framework/testing/thirdparty/googletest/googletest/include
+     # end compat
+ 
+     ${MODULE_TEST_INCLUDE}
+@@ -74,11 +69,16 @@ endif()
+ 
+ find_package(Qt6Core REQUIRED)
+ find_package(Qt6Gui REQUIRED)
++find_package(PkgConfig REQUIRED)
++pkg_check_modules(gtest REQUIRED IMPORTED_TARGET gtest)
++pkg_check_modules(gmock REQUIRED IMPORTED_TARGET gmock)
++list(APPEND MODULE_TEST_INCLUDE ${gtest_INCLUDE_DIRS} ${gmock_INCLUDE_DIRS})
+ 
+ target_link_libraries(${MODULE_TEST}
+     Qt6::Core
+     Qt6::Gui
+-    gmock
++	PkgConfig::gmock
++	PkgConfig::gtest
+     muse_global
+     ${MODULE_TEST_LINK}
+     ${COVERAGE_FLAGS}
+-- 
+2.54.0
+

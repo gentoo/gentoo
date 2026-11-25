@@ -1,0 +1,445 @@
+add support for libsidplayfp-3
+backport from svn master: r13128, r13131, r13132, r13133, r13136, r13139
+--- a/src/plugins/Input/sid/CMakeLists.txt
++++ b/src/plugins/Input/sid/CMakeLists.txt
+@@ -1,8 +1,18 @@
+ project(libsid)
+ 
++include(CheckIncludeFileCXX)
++
+ # libsidplayfp
+ pkg_search_module(SIDPLAYFP libsidplayfp>=1.0.3 IMPORTED_TARGET)
+ 
++# libresidfp support
++if(SIDPLAYFP_FOUND)
++    check_include_file_cxx(sidplayfp/builders/residfp.h RESIDFP_HEADER_FOUND ${SIDPLAYFP_CFLAGS})
++    if(RESIDFP_HEADER_FOUND)
++        add_definitions(-DHAVE_RESIDFP_HEADER)
++    endif(RESIDFP_HEADER_FOUND)
++endif(SIDPLAYFP_FOUND)
++
+ SET(libsid_SRCS
+   decoder_sid.cpp
+   decodersidfactory.cpp
+--- a/src/plugins/Input/sid/decoder_sid.cpp
++++ b/src/plugins/Input/sid/decoder_sid.cpp
+@@ -24,8 +24,14 @@
+ #include <sidplayfp/SidTune.h>
+ #include <sidplayfp/sidbuilder.h>
+ #include <sidplayfp/SidConfig.h>
+-#include <sidplayfp/builders/residfp.h>
++#if LIBSIDPLAYFP_VERSION_MAJ >= 3
++#include <sidplayfp/builders/sidlite.h>
++#else
+ #include <sidplayfp/builders/resid.h>
++#endif
++#ifdef HAVE_RESIDFP_HEADER
++#include <sidplayfp/builders/residfp.h>
++#endif
+ #include <sidplayfp/SidInfo.h>
+ #include <sidplayfp/SidTuneInfo.h>
+ #include <sidplayfp/SidDatabase.h>
+@@ -52,13 +58,14 @@ bool DecoderSID::initialize()
+     int track = -1;
+     QString path = TrackInfo::pathFromUrl(m_url, &track);
+ 
+-    m_tune.load(qPrintable(path));
+-    if(!m_tune.getInfo())
++    m_tune = std::make_unique<SidTune>(nullptr);
++    m_tune->load(qPrintable(path));
++    if(!m_tune->getInfo())
+     {
+-        qCWarning(plugin, "unable to load tune, error: %s", m_tune.statusString());
++        qCWarning(plugin, "unable to load tune, error: %s", m_tune->statusString());
+         return false;
+     }
+-    int count = m_tune.getInfo()->songs();
++    int count = m_tune->getInfo()->songs();
+ 
+     if(track > count || track < 1)
+     {
+@@ -66,16 +73,16 @@ bool DecoderSID::initialize()
+         return false;
+     }
+ 
+-    m_tune.selectSong(track);
++    m_tune->selectSong(track);
+ 
+-    if(!m_tune.getStatus())
++    if(!m_tune->getStatus())
+     {
+-        qCWarning(plugin, "error: %s", m_tune.statusString());
++        qCWarning(plugin, "error: %s", m_tune->statusString());
+         return false;
+     }
+ 
+     //send metadata for pseudo-protocol
+-    const SidTuneInfo *tune_info = m_tune.getInfo();
++    const SidTuneInfo *tune_info = m_tune->getInfo();
+     QMap<Qmmp::MetaData, QString> metadata;
+     metadata.insert(Qmmp::TITLE, QString::fromUtf8(tune_info->infoString(0)));
+     metadata.insert(Qmmp::ARTIST, QString::fromUtf8(tune_info->infoString(1)));
+@@ -89,7 +96,7 @@ bool DecoderSID::initialize()
+     if(settings.value(u"use_hvsc"_s, false).toBool())
+     {
+         char md5[SidTune::MD5_LENGTH + 1];
+-        m_tune.createMD5(md5);
++        m_tune->createMD5(md5);
+         m_length = m_db->length(md5, track);
+     }
+ 
+@@ -98,26 +105,43 @@ bool DecoderSID::initialize()
+ 
+     qCDebug(plugin, "song length: %d", m_length);
+ 
+-    sidbuilder *rs = nullptr;
++#if LIBSIDPLAYFP_VERSION_MAJ >= 3
++#ifdef HAVE_RESIDFP_HEADER
++    if(settings.value(u"engine"_s, u"sidlite"_s).toString() == "residfp"_L1)
++    {
++        m_builder = std::make_unique<ReSIDfpBuilder>("ReSIDfp");
++    }
++    else
++#endif
++    {
++        m_builder = std::make_unique<SIDLiteBuilder>("SIDLite");
++    }
++#else
++#ifdef HAVE_RESIDFP_HEADER
+     if(settings.value(u"engine"_s, u"residfp"_s).toString() == "residfp"_L1)
+     {
+-        rs = new ReSIDfpBuilder("ReSIDfp builder");
+-        qCDebug(plugin, "using ReSIDfp emulation");
++        m_builder = std::make_unique<ReSIDfpBuilder>("ReSIDfp");
+     }
+     else
++#endif
+     {
+-        rs = new ReSIDBuilder("ReSID builder");
+-        qCDebug(plugin, "using ReSID emulation");
++        m_builder = std::make_unique<ReSIDBuilder>("ReSID");
+     }
+-    rs->create(m_player->info().maxsids());
++    m_builder->create(m_player->info().maxsids());
++#endif
++
++    qCDebug(plugin, "using %s emulation", m_builder->name());
+ 
+     SidConfig cfg = m_player->config();
+     cfg.frequency    = settings.value(u"sample_rate"_s, 48000).toInt();
+     int sm = settings.value(u"resampling_method"_s, SidConfig::INTERPOLATE).toInt();
+-    cfg.samplingMethod = (SidConfig::sampling_method_t) sm;
++    cfg.samplingMethod = static_cast<SidConfig::sampling_method_t>(sm);
++
++    cfg.sidEmulation = m_builder.get();
++#if LIBSIDPLAYFP_VERSION_MAJ < 3
+     cfg.playback     = SidConfig::STEREO;
+-    cfg.sidEmulation = rs;
+     cfg.fastSampling = settings.value(u"fast_resampling"_s, false).toBool();
++#endif
+     settings.endGroup();
+ 
+     if(!m_player->config(cfg))
+@@ -126,7 +150,7 @@ bool DecoderSID::initialize()
+         return false;
+     }
+ 
+-    if(!m_player->load(&m_tune))
++    if(!m_player->load(m_tune.get()))
+     {
+         qCWarning(plugin, "unable to load tune, error: %s", m_player->error());
+         return false;
+--- a/src/plugins/Input/sid/decoder_sid.h
++++ b/src/plugins/Input/sid/decoder_sid.h
+@@ -21,11 +21,13 @@
+ #ifndef DECODER_SID_H
+ #define DECODER_SID_H
+ 
++#include <memory>
+ #include <qmmp/decoder.h>
+ 
+ class sidplayfp;
+ class SidDatabase;
+ class SidTune;
++class sidbuilder;
+ 
+ /**
+    @author Ilya Kotov <forkotov02@ya.ru>
+@@ -50,7 +52,8 @@ private:
+     int m_length = 0;
+     qint64 m_length_in_bytes = 0;
+     qint64 m_read_bytes = 0;
+-    SidTune m_tune;
++    std::unique_ptr<SidTune> m_tune;
++    std::unique_ptr<sidbuilder> m_builder;
+ };
+ 
+ #endif // DECODER_SID_H
+--- a/src/plugins/Input/sid/sid.pro
++++ b/src/plugins/Input/sid/sid.pro
+@@ -17,6 +17,8 @@ RESOURCES = translations/translations.qrc
+ FORMS += \
+     sidsettingsdialog.ui
+ 
++DEFINES += HAVE_RESIDFP_HEADER
++
+ unix{
+     target.path = $$PLUGIN_DIR/Input
+     INSTALLS += target
+--- a/src/plugins/Input/sid/sidsettingsdialog.cpp
++++ b/src/plugins/Input/sid/sidsettingsdialog.cpp
+@@ -22,6 +22,7 @@
+ #include <QFileInfo>
+ #include <qmmp/qmmp.h>
+ #include <sidplayfp/SidConfig.h>
++#include <sidplayfp/sidplayfp.h>
+ #include "sidsettingsdialog.h"
+ #include "ui_sidsettingsdialog.h"
+ 
+@@ -40,20 +41,33 @@ SidSettingsDialog::SidSettingsDialog(SidDatabase *db, QWidget *parent) : QDialog
+ 
+     m_ui->sampleRateComboBox->addItem(tr("44100 Hz"), 44100);
+     m_ui->sampleRateComboBox->addItem(tr("48000 Hz"), 48000);
+-    int i = m_ui->sampleRateComboBox->findData(settings.value(u"sample_rate"_s, 48000).toInt());
+-    m_ui->sampleRateComboBox->setCurrentIndex(i);
++    int index = m_ui->sampleRateComboBox->findData(settings.value(u"sample_rate"_s, 48000).toInt());
++    m_ui->sampleRateComboBox->setCurrentIndex(index);
+ 
++#if LIBSIDPLAYFP_VERSION_MAJ >= 3
++    m_ui->emuComboBox->addItem(u"SIDLite"_s, u"sidlite"_s);
++    m_ui->emuComboBox->addItem(u"ReSIDfp"_s, u"residfp"_s);
++    index = m_ui->emuComboBox->findData(settings.value(u"engine"_s, u"sidlite"_s).toString());
++    m_ui->emuComboBox->setCurrentIndex(qMax(index, 0));
++    m_ui->fastResampligCheckBox->setVisible(false);
++#else
+     m_ui->emuComboBox->addItem(u"ReSID"_s, u"resid"_s);
+     m_ui->emuComboBox->addItem(u"ReSIDfp"_s, u"residfp"_s);
+-    i = m_ui->emuComboBox->findData(settings.value(u"engine"_s, u"residfp"_s).toString());
+-    m_ui->emuComboBox->setCurrentIndex(i);
+-
++    index = m_ui->emuComboBox->findData(settings.value(u"engine"_s, u"residfp"_s).toString());
++    m_ui->emuComboBox->setCurrentIndex(qMax(index, 0));
+     m_ui->fastResampligCheckBox->setChecked(settings.value(u"fast_resampling"_s, false).toBool());
++#endif
++
++//TODO use QFormLayout::setRowVisible
++#ifndef HAVE_RESIDFP_HEADER
++    m_ui->emulationLabel->setVisible(false);
++    m_ui->emuComboBox->setVisible(false);
++#endif
+ 
+     m_ui->resamplingComboBox->addItem(u"Interpolate"_s, SidConfig::INTERPOLATE);
+     m_ui->resamplingComboBox->addItem(u"Resample Interpolate"_s, SidConfig::RESAMPLE_INTERPOLATE);
+-    i = m_ui->resamplingComboBox->findData(settings.value(u"resampling_method"_s, SidConfig::INTERPOLATE).toInt());
+-    m_ui->resamplingComboBox->setCurrentIndex(i);
++    index = m_ui->resamplingComboBox->findData(settings.value(u"resampling_method"_s, SidConfig::INTERPOLATE).toInt());
++    m_ui->resamplingComboBox->setCurrentIndex(index);
+ 
+     settings.endGroup();
+ }
+--- a/src/plugins/Input/sid/sidsettingsdialog.ui
++++ b/src/plugins/Input/sid/sidsettingsdialog.ui
+@@ -6,14 +6,14 @@
+    <rect>
+     <x>0</x>
+     <y>0</y>
+-    <width>445</width>
+-    <height>286</height>
++    <width>475</width>
++    <height>287</height>
+    </rect>
+   </property>
+   <property name="windowTitle">
+    <string>SID Plugin Settings</string>
+   </property>
+-  <layout class="QGridLayout" name="gridLayout">
++  <layout class="QVBoxLayout" name="verticalLayout">
+    <property name="leftMargin">
+     <number>6</number>
+    </property>
+@@ -23,20 +23,102 @@
+    <property name="bottomMargin">
+     <number>6</number>
+    </property>
+-   <item row="2" column="1">
+-    <widget class="QSpinBox" name="defaultLengthSpinBox">
+-     <property name="minimum">
+-      <number>5</number>
+-     </property>
+-     <property name="maximum">
+-      <number>1000</number>
++   <item>
++    <layout class="QFormLayout" name="formLayout">
++     <item row="1" column="0">
++      <widget class="QLabel" name="label_5">
++       <property name="text">
++        <string>HVSC database file:</string>
++       </property>
++      </widget>
++     </item>
++     <item row="1" column="1">
++      <widget class="QLineEdit" name="hvscPathLineEdit">
++       <property name="enabled">
++        <bool>false</bool>
++       </property>
++      </widget>
++     </item>
++     <item row="2" column="0">
++      <widget class="QLabel" name="label">
++       <property name="text">
++        <string>Defaults song length, sec:</string>
++       </property>
++      </widget>
++     </item>
++     <item row="2" column="1">
++      <widget class="QSpinBox" name="defaultLengthSpinBox">
++       <property name="minimum">
++        <number>5</number>
++       </property>
++       <property name="maximum">
++        <number>1000</number>
++       </property>
++       <property name="value">
++        <number>180</number>
++       </property>
++      </widget>
++     </item>
++     <item row="3" column="0">
++      <widget class="QLabel" name="label_2">
++       <property name="text">
++        <string>Sample rate:</string>
++       </property>
++      </widget>
++     </item>
++     <item row="3" column="1">
++      <widget class="QComboBox" name="sampleRateComboBox"/>
++     </item>
++     <item row="4" column="0">
++      <widget class="QLabel" name="emulationLabel">
++       <property name="text">
++        <string>Emulation:</string>
++       </property>
++      </widget>
++     </item>
++     <item row="4" column="1">
++      <widget class="QComboBox" name="emuComboBox"/>
++     </item>
++     <item row="5" column="0">
++      <widget class="QLabel" name="label_4">
++       <property name="text">
++        <string>Resampling method:</string>
++       </property>
++      </widget>
++     </item>
++     <item row="5" column="1">
++      <widget class="QComboBox" name="resamplingComboBox"/>
++     </item>
++     <item row="6" column="0" colspan="2">
++      <widget class="QCheckBox" name="fastResampligCheckBox">
++       <property name="text">
++        <string>Fast resampling</string>
++       </property>
++      </widget>
++     </item>
++     <item row="0" column="0" colspan="2">
++      <widget class="QCheckBox" name="useHVSCCheckBox">
++       <property name="text">
++        <string>Enable HVSC song length database</string>
++       </property>
++      </widget>
++     </item>
++    </layout>
++   </item>
++   <item>
++    <spacer name="verticalSpacer">
++     <property name="orientation">
++      <enum>Qt::Vertical</enum>
+      </property>
+-     <property name="value">
+-      <number>180</number>
++     <property name="sizeHint" stdset="0">
++      <size>
++       <width>20</width>
++       <height>40</height>
++      </size>
+      </property>
+-    </widget>
++    </spacer>
+    </item>
+-   <item row="9" column="0" colspan="2">
++   <item>
+     <widget class="QDialogButtonBox" name="buttonBox">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+@@ -49,71 +131,6 @@
+      </property>
+     </widget>
+    </item>
+-   <item row="8" column="0" colspan="2">
+-    <widget class="QCheckBox" name="fastResampligCheckBox">
+-     <property name="text">
+-      <string>Fast resampling</string>
+-     </property>
+-    </widget>
+-   </item>
+-   <item row="3" column="0">
+-    <widget class="QLabel" name="label_2">
+-     <property name="text">
+-      <string>Sample rate:</string>
+-     </property>
+-    </widget>
+-   </item>
+-   <item row="1" column="0">
+-    <widget class="QLabel" name="label_5">
+-     <property name="text">
+-      <string>HVSC database file:</string>
+-     </property>
+-    </widget>
+-   </item>
+-   <item row="6" column="0">
+-    <widget class="QLabel" name="label_4">
+-     <property name="text">
+-      <string>Resampling method:</string>
+-     </property>
+-    </widget>
+-   </item>
+-   <item row="3" column="1">
+-    <widget class="QComboBox" name="sampleRateComboBox"/>
+-   </item>
+-   <item row="1" column="1">
+-    <widget class="QLineEdit" name="hvscPathLineEdit">
+-     <property name="enabled">
+-      <bool>false</bool>
+-     </property>
+-    </widget>
+-   </item>
+-   <item row="2" column="0">
+-    <widget class="QLabel" name="label">
+-     <property name="text">
+-      <string>Defaults song length, sec:</string>
+-     </property>
+-    </widget>
+-   </item>
+-   <item row="0" column="0" colspan="2">
+-    <widget class="QCheckBox" name="useHVSCCheckBox">
+-     <property name="text">
+-      <string>Enable HVSC song length database</string>
+-     </property>
+-    </widget>
+-   </item>
+-   <item row="5" column="0">
+-    <widget class="QLabel" name="label_3">
+-     <property name="text">
+-      <string>Emulation:</string>
+-     </property>
+-    </widget>
+-   </item>
+-   <item row="5" column="1">
+-    <widget class="QComboBox" name="emuComboBox"/>
+-   </item>
+-   <item row="6" column="1">
+-    <widget class="QComboBox" name="resamplingComboBox"/>
+-   </item>
+   </layout>
+  </widget>
+  <resources/>

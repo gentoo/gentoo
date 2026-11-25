@@ -1,0 +1,243 @@
+Fix build with LLVM 23
+
+AMDGPU builtins take ext_vector_type operands (no implicit conversion) since
+https://github.com/llvm/llvm-project/pull/176033:
+- vanilla LLVM 23 and 24 (main): gfx1250 WMMA operands need casts; the calls
+  are not dependent, so this fails for every target
+- AMD's LLVM fork (therock-10.1, amd-staging): still _Vector, builds without
+  casts; full reland pending in https://github.com/ROCm/llvm-project/pull/4184
+Cast them like https://github.com/ROCm/rocm-libraries/pull/4066 did for the
+other specializations.
+--- a/library/include/rocwmma/internal/wmma_impl.hpp
++++ b/library/include/rocwmma/internal/wmma_impl.hpp
+@@ -795,12 +795,14 @@ namespace rocwmma
+             ROCWMMA_DEVICE static inline auto
+                 exec(ARegsT const& regsA, BRegsT const& regsB, CRegsT const& regsC) -> DRegsT
+             {
++                using TypeAB = VecT<float16_t, 16>;
++
+                 DRegsT result;
+                 to_native_vector(result)
+                     = {__builtin_amdgcn_wmma_f32_16x16x32_f16((bool)InputAMod,
+-                                                              to_native_vector(regsA),
++                                                              to_native_vector(reinterpret_cast<TypeAB const&>(regsA)),
+                                                               (bool)InputBMod,
+-                                                              to_native_vector(regsB),
++                                                              to_native_vector(reinterpret_cast<TypeAB const&>(regsB)),
+                                                               (int16_t)InputCMod,
+                                                               to_native_vector(regsC),
+                                                               (bool)ReuseA,
+@@ -974,14 +976,17 @@ namespace rocwmma
+             ROCWMMA_DEVICE static inline auto
+                 exec(ARegsT const& regsA, BRegsT const& regsB, CRegsT const& regsC) -> DRegsT
+             {
++                using TypeAB = VecT<float16_t, 16>;
++                using TypeAcc = VecT<float16_t, 8>;
++
+                 DRegsT result;
+-                to_native_vector(result)
++                to_native_vector(reinterpret_cast<TypeAcc&>(result))
+                     = {__builtin_amdgcn_wmma_f16_16x16x32_f16((bool)InputAMod,
+-                                                              to_native_vector(regsA),
++                                                              to_native_vector(reinterpret_cast<TypeAB const&>(regsA)),
+                                                               (bool)InputBMod,
+-                                                              to_native_vector(regsB),
++                                                              to_native_vector(reinterpret_cast<TypeAB const&>(regsB)),
+                                                               (int16_t)InputCMod,
+-                                                              to_native_vector(regsC),
++                                                              to_native_vector(reinterpret_cast<TypeAcc const&>(regsC)),
+                                                               (bool)ReuseA,
+                                                               (bool)ReuseB)};
+                 return result;
+@@ -1148,12 +1153,14 @@ namespace rocwmma
+             ROCWMMA_DEVICE static inline auto
+                 exec(ARegsT const& regsA, BRegsT const& regsB, CRegsT const& regsC) -> DRegsT
+             {
++                using TypeAB = __bf16 __attribute__((ext_vector_type(16)));
++
+                 DRegsT result;
+                 to_native_vector(result)
+                     = {__builtin_amdgcn_wmma_f32_16x16x32_bf16((bool)InputAMod,
+-                                                               to_native_vector(regsA),
++                                                               reinterpret_cast<TypeAB const&>(regsA),
+                                                                (bool)InputBMod,
+-                                                               to_native_vector(regsB),
++                                                               reinterpret_cast<TypeAB const&>(regsB),
+                                                                (int16_t)InputCMod,
+                                                                to_native_vector(regsC),
+                                                                (bool)ReuseA,
+@@ -1327,14 +1334,17 @@ namespace rocwmma
+             ROCWMMA_DEVICE static inline auto
+                 exec(ARegsT const& regsA, BRegsT const& regsB, CRegsT const& regsC) -> DRegsT
+             {
++                using TypeAB = __bf16 __attribute__((ext_vector_type(16)));
++                using TypeAcc = __bf16 __attribute__((ext_vector_type(8)));
++
+                 DRegsT result;
+-                to_native_vector(result)
++                reinterpret_cast<TypeAcc&>(result)
+                     = {__builtin_amdgcn_wmma_bf16_16x16x32_bf16((bool)InputAMod,
+-                                                                to_native_vector(regsA),
++                                                                reinterpret_cast<TypeAB const&>(regsA),
+                                                                 (bool)InputBMod,
+-                                                                to_native_vector(regsB),
++                                                                reinterpret_cast<TypeAB const&>(regsB),
+                                                                 (int16_t)InputCMod,
+-                                                                to_native_vector(regsC),
++                                                                reinterpret_cast<TypeAcc const&>(regsC),
+                                                                 (bool)ReuseA,
+                                                                 (bool)ReuseB)};
+                 return result;
+@@ -1740,12 +1750,14 @@ namespace rocwmma
+             ROCWMMA_DEVICE static inline auto
+                 exec(ARegsT const& regsA, BRegsT const& regsB, CRegsT const& regsC) -> DRegsT
+             {
++                using TypeAB = VecT<int, 8>;
++
+                 DRegsT result;
+                 to_native_vector(result)
+                     = {__builtin_amdgcn_wmma_i32_16x16x64_iu8((bool)InputSign,
+-                                                              to_native_vector(regsA),
++                                                              to_native_vector(reinterpret_cast<TypeAB const&>(regsA)),
+                                                               (bool)InputSign,
+-                                                              to_native_vector(regsB),
++                                                              to_native_vector(reinterpret_cast<TypeAB const&>(regsB)),
+                                                               to_native_vector(regsC),
+                                                               (bool)ReuseA,
+                                                               (bool)ReuseB)};
+@@ -2070,12 +2082,14 @@ namespace rocwmma
+                 static_assert(sizeof(TypeIn) == sizeof(decay_t<decltype(regsB)>),
+                               "Inconsistent data formats");
+ 
++                using TypeAcc = VecT<float16_t, 8>;
++
+                 DRegsT result;
+-                to_native_vector(result) = {__builtin_amdgcn_wmma_f16_16x16x64_fp8_fp8(
++                to_native_vector(reinterpret_cast<TypeAcc&>(result)) = {__builtin_amdgcn_wmma_f16_16x16x64_fp8_fp8(
+                     to_native_vector(reinterpret_cast<TypeIn const&>(regsA)),
+                     to_native_vector(reinterpret_cast<TypeIn const&>(regsB)),
+                     (int16_t)InputCMod,
+-                    to_native_vector(regsC),
++                    to_native_vector(reinterpret_cast<TypeAcc const&>(regsC)),
+                     (bool)ReuseA,
+                     (bool)ReuseB)};
+                 return result;
+@@ -2114,12 +2128,14 @@ namespace rocwmma
+                 static_assert(sizeof(TypeIn) == sizeof(decay_t<decltype(regsB)>),
+                               "Inconsistent data formats");
+ 
++                using TypeAcc = VecT<float16_t, 8>;
++
+                 DRegsT result;
+-                to_native_vector(result) = {__builtin_amdgcn_wmma_f16_16x16x128_fp8_fp8(
++                to_native_vector(reinterpret_cast<TypeAcc&>(result)) = {__builtin_amdgcn_wmma_f16_16x16x128_fp8_fp8(
+                     to_native_vector(reinterpret_cast<TypeIn const&>(regsA)),
+                     to_native_vector(reinterpret_cast<TypeIn const&>(regsB)),
+                     (int16_t)InputCMod,
+-                    to_native_vector(regsC),
++                    to_native_vector(reinterpret_cast<TypeAcc const&>(regsC)),
+                     (bool)ReuseA,
+                     (bool)ReuseB)};
+                 return result;
+@@ -2442,12 +2458,14 @@ namespace rocwmma
+                 static_assert(sizeof(TypeIn) == sizeof(decay_t<decltype(regsB)>),
+                               "Inconsistent data formats");
+ 
++                using TypeAcc = VecT<float16_t, 8>;
++
+                 DRegsT result;
+-                to_native_vector(result) = {__builtin_amdgcn_wmma_f16_16x16x64_bf8_bf8(
++                to_native_vector(reinterpret_cast<TypeAcc&>(result)) = {__builtin_amdgcn_wmma_f16_16x16x64_bf8_bf8(
+                     to_native_vector(reinterpret_cast<TypeIn const&>(regsA)),
+                     to_native_vector(reinterpret_cast<TypeIn const&>(regsB)),
+                     (int16_t)InputCMod,
+-                    to_native_vector(regsC),
++                    to_native_vector(reinterpret_cast<TypeAcc const&>(regsC)),
+                     (bool)ReuseA,
+                     (bool)ReuseB)};
+                 return result;
+@@ -2486,12 +2504,14 @@ namespace rocwmma
+                 static_assert(sizeof(TypeIn) == sizeof(decay_t<decltype(regsB)>),
+                               "Inconsistent data formats");
+ 
++                using TypeAcc = VecT<float16_t, 8>;
++
+                 DRegsT result;
+-                to_native_vector(result) = {__builtin_amdgcn_wmma_f16_16x16x128_bf8_bf8(
++                to_native_vector(reinterpret_cast<TypeAcc&>(result)) = {__builtin_amdgcn_wmma_f16_16x16x128_bf8_bf8(
+                     to_native_vector(reinterpret_cast<TypeIn const&>(regsA)),
+                     to_native_vector(reinterpret_cast<TypeIn const&>(regsB)),
+                     (int16_t)InputCMod,
+-                    to_native_vector(regsC),
++                    to_native_vector(reinterpret_cast<TypeAcc const&>(regsC)),
+                     (bool)ReuseA,
+                     (bool)ReuseB)};
+                 return result;
+@@ -2785,12 +2805,14 @@ namespace rocwmma
+                 static_assert(sizeof(TypeIn) == sizeof(decay_t<decltype(regsB)>),
+                               "Inconsistent data formats");
+ 
++                using TypeAcc = VecT<float16_t, 8>;
++
+                 DRegsT result;
+-                to_native_vector(result) = {__builtin_amdgcn_wmma_f16_16x16x64_fp8_bf8(
++                to_native_vector(reinterpret_cast<TypeAcc&>(result)) = {__builtin_amdgcn_wmma_f16_16x16x64_fp8_bf8(
+                     to_native_vector(reinterpret_cast<TypeIn const&>(regsA)),
+                     to_native_vector(reinterpret_cast<TypeIn const&>(regsB)),
+                     (int16_t)InputCMod,
+-                    to_native_vector(regsC),
++                    to_native_vector(reinterpret_cast<TypeAcc const&>(regsC)),
+                     (bool)ReuseA,
+                     (bool)ReuseB)};
+                 return result;
+@@ -2829,12 +2851,14 @@ namespace rocwmma
+                 static_assert(sizeof(TypeIn) == sizeof(decay_t<decltype(regsB)>),
+                               "Inconsistent data formats");
+ 
++                using TypeAcc = VecT<float16_t, 8>;
++
+                 DRegsT result;
+-                to_native_vector(result) = {__builtin_amdgcn_wmma_f16_16x16x128_fp8_bf8(
++                to_native_vector(reinterpret_cast<TypeAcc&>(result)) = {__builtin_amdgcn_wmma_f16_16x16x128_fp8_bf8(
+                     to_native_vector(reinterpret_cast<TypeIn const&>(regsA)),
+                     to_native_vector(reinterpret_cast<TypeIn const&>(regsB)),
+                     (int16_t)InputCMod,
+-                    to_native_vector(regsC),
++                    to_native_vector(reinterpret_cast<TypeAcc const&>(regsC)),
+                     (bool)ReuseA,
+                     (bool)ReuseB)};
+                 return result;
+@@ -3127,12 +3151,14 @@ namespace rocwmma
+                 static_assert(sizeof(TypeIn) == sizeof(decay_t<decltype(regsB)>),
+                               "Inconsistent data formats");
+ 
++                using TypeAcc = VecT<float16_t, 8>;
++
+                 DRegsT result;
+-                to_native_vector(result) = {__builtin_amdgcn_wmma_f16_16x16x64_bf8_fp8(
++                to_native_vector(reinterpret_cast<TypeAcc&>(result)) = {__builtin_amdgcn_wmma_f16_16x16x64_bf8_fp8(
+                     to_native_vector(reinterpret_cast<TypeIn const&>(regsA)),
+                     to_native_vector(reinterpret_cast<TypeIn const&>(regsB)),
+                     (int16_t)InputCMod,
+-                    to_native_vector(regsC),
++                    to_native_vector(reinterpret_cast<TypeAcc const&>(regsC)),
+                     (bool)ReuseA,
+                     (bool)ReuseB)};
+                 return result;
+@@ -3171,12 +3197,14 @@ namespace rocwmma
+                 static_assert(sizeof(TypeIn) == sizeof(decay_t<decltype(regsB)>),
+                               "Inconsistent data formats");
+ 
++                using TypeAcc = VecT<float16_t, 8>;
++
+                 DRegsT result;
+-                to_native_vector(result) = {__builtin_amdgcn_wmma_f16_16x16x128_bf8_fp8(
++                to_native_vector(reinterpret_cast<TypeAcc&>(result)) = {__builtin_amdgcn_wmma_f16_16x16x128_bf8_fp8(
+                     to_native_vector(reinterpret_cast<TypeIn const&>(regsA)),
+                     to_native_vector(reinterpret_cast<TypeIn const&>(regsB)),
+                     (int16_t)InputCMod,
+-                    to_native_vector(regsC),
++                    to_native_vector(reinterpret_cast<TypeAcc const&>(regsC)),
+                     (bool)ReuseA,
+                     (bool)ReuseB)};
+                 return result;

@@ -1,0 +1,20 @@
+--- a/sentinel.conf
++++ b/sentinel.conf
+@@ -17,7 +17,7 @@ daemonize no
+ # When running daemonized, Valkey Sentinel writes a pid file in
+ # /var/run/valkey-sentinel.pid by default. You can specify a custom pid file
+ # location here.
+-pidfile /var/run/valkey-sentinel.pid
++pidfile /run/valkey-sentinel.pid
+ 
+ # Specify the server verbosity level.
+ # This can be one of:
+@@ -31,7 +31,7 @@ loglevel notice
+ # Specify the log file name. Also the empty string can be used to force
+ # Sentinel to log on the standard output. Note that if you use standard
+ # output for logging but daemonize, logs will be sent to /dev/null
+-logfile ""
++logfile "/var/log/valkey/sentinel.log"
+ 
+ # To enable logging to the system logger, just set 'syslog-enabled' to yes,
+ # and optionally update the other syslog parameters to suit your needs.

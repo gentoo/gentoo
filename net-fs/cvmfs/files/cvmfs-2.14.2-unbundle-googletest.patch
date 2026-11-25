@@ -1,0 +1,31 @@
+From 1f54ba5824d26db295d15d4537612ae2e881c38b Mon Sep 17 00:00:00 2001
+From: Guilherme Amadio <amadio@cern.ch>
+Date: Tue, 17 Nov 2026 14:11:22 +0100
+Subject: [PATCH 4/4] Fix build with external GoogleTest
+
+Signed-off-by: Guilherme Amadio <amadio@cern.ch>
+---
+ test/unittests/CMakeLists.txt | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/test/unittests/CMakeLists.txt b/test/unittests/CMakeLists.txt
+index f5e720068..5da46cb16 100644
+--- a/test/unittests/CMakeLists.txt
++++ b/test/unittests/CMakeLists.txt
+@@ -45,7 +45,12 @@ if(NOT GTest_FOUND)
+ 
+ FetchContent_MakeAvailable(GoogleTest)
+ endif()
+-get_target_property(GTEST_INCLUDE_DIRS GTest::gtest INCLUDE_DIRECTORIES)
++if(GTest_FOUND)
++  # imported targets only carry the interface include directories
++  get_target_property(GTEST_INCLUDE_DIRS GTest::gtest INTERFACE_INCLUDE_DIRECTORIES)
++else()
++  get_target_property(GTEST_INCLUDE_DIRS GTest::gtest INCLUDE_DIRECTORIES)
++endif()
+ set (INCLUDE_DIRECTORIES ${INCLUDE_DIRECTORIES} ${GTEST_INCLUDE_DIRS})
+ 
+ set (CVMFS_SOURCE_DIR "${CMAKE_SOURCE_DIR}/cvmfs")
+-- 
+2.56.1
+

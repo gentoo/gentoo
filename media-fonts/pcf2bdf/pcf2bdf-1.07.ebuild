@@ -11,7 +11,7 @@ SRC_URI="https://github.com/ganaware/pcf2bdf/archive/refs/tags/${PV}.tar.gz -> $
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~loong ~ppc ~s390 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm ~hppa ~loong ~ppc ~s390 ~sparc x86"
 
 src_compile() {
 	emake -f Makefile.gcc CC="$(tc-getCXX)" CFLAGS="${CXXFLAGS}"

@@ -1,0 +1,15 @@
+https://github.com/containers/crun/pull/2102
+Subject: [PATCH] build: export json_gen_* symbols
+
+Closes: https://github.com/containers/crun/issues/2101
+Signed-off-by: Giuseppe Scrivano <gscrivan@redhat.com>
+--- a/libcrun.lds
++++ b/libcrun.lds
+@@ -6,5 +6,6 @@
+         runtime_spec_*;
+         free_runtime_spec_*;
+         make_runtime_spec_*;
++        json_gen_*;
+   local: *;
+ };
+

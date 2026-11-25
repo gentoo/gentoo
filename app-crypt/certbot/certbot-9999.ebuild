@@ -4,9 +4,9 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..14} )
+PYTHON_COMPAT=( python3_{13..14} )
 
-inherit distutils-r1 toolchain-funcs
+inherit distutils-r1 systemd toolchain-funcs
 
 if [[ "${PV}" == *9999 ]]; then
 	inherit git-r3
@@ -19,7 +19,7 @@ else
 		https://github.com/certbot/certbot/archive/v${PV}.tar.gz
 			-> ${P}.gh.tar.gz
 	"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv"
 fi
 
 DESCRIPTION="Let's Encrypt client to automate deployment of X.509 certificates"
@@ -37,7 +37,7 @@ CERTBOT_BASE=(acme certbot)
 # List of "subpackages" from tools/_release.sh (without acme which is already above)
 CERTBOT_MODULES_EXTRA=(
 	apache
-	#dns-cloudflare # Requires missing packages, already in GURU
+	dns-cloudflare
 	#dns-digitalocean # Requires missing packages, already in GURU
 	dns-dnsimple
 	dns-dnsmadeeasy
@@ -71,8 +71,8 @@ BDEPEND="
 RDEPEND="
 	>=dev-python/configargparse-1.5.3[${PYTHON_USEDEP}]
 	>=dev-python/configobj-5.0.6[${PYTHON_USEDEP}]
-	>=dev-python/cryptography-43.0.0[${PYTHON_USEDEP}]
-	>=dev-python/distro-1.0.1[${PYTHON_USEDEP}]
+	>=dev-python/cryptography-47.0.0[${PYTHON_USEDEP}]
+	>=dev-python/distro-1.7.0[${PYTHON_USEDEP}]
 	>=dev-python/josepy-2.0.0[${PYTHON_USEDEP}]
 	>=dev-python/parsedatetime-2.6[${PYTHON_USEDEP}]
 	>=dev-python/pyopenssl-25.0.0[${PYTHON_USEDEP}]
@@ -80,6 +80,9 @@ RDEPEND="
 	>=dev-python/requests-2.20.0[${PYTHON_USEDEP}]
 	certbot-apache? (
 		dev-python/python-augeas[${PYTHON_USEDEP}]
+	)
+	certbot-dns-cloudflare? (
+		>=dev-python/cloudflare-4.0:0[${PYTHON_USEDEP}]
 	)
 	certbot-dns-dnsimple? (
 		>=dev-python/dns-lexicon-3.14.1[${PYTHON_USEDEP}]
@@ -122,20 +125,14 @@ RDEPEND="
 	selinux? ( sec-policy/selinux-certbot )
 "
 # RDEPEND+="
-#	!<app-crypt/certbot-dns-cloudflare-3.2.0-r100
-#
 # 	>=dev-python/requests-toolbelt-0.3.0[${PYTHON_USEDEP}] # @TODO is still necessary?
-# 	certbot-dns-cloudflare? (
-# 		# Available in GURU
-# 		>=dev-python/cloudflare-2.19[${PYTHON_USEDEP}]
-# 		<dev-python/cloudflare-2.20[${PYTHON_USEDEP}]
-# 	)
 # 	certbot-dns-digitalocean? (
 # 		# Available in GURU
 # 		>=dev-python/digitalocean-1.15.0[${PYTHON_USEDEP}]
 # 	)
 # "
 
+EPYTEST_PLUGINS=()
 # Note: "docs" is not an actual directory under "S", they are actually
 # under each modules, see python_compile_all redefinition, but keep
 # this instruction enabled for dependency configuration.
@@ -209,8 +206,6 @@ python_compile_all() {
 }
 
 python_test() {
-	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
-
 	tc-has-64bit-time_t || EPYTEST_DESELECT+=(
 		'certbot/_internal/tests/storage_test.py::RenewableCertTests::test_time_interval_judgments'
 	)
@@ -218,4 +213,10 @@ python_test() {
 	# Change for pytest rootdir is required.
 	cd "${BUILD_DIR}/install$(python_get_sitedir)" || die
 	epytest
+}
+
+src_install() {
+	distutils-r1_src_install
+
+	systemd_dounit "${FILESDIR}"/certbot.{service,timer}
 }

@@ -1,8 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
-	<upstream>
-		<remote-id type="osdn">tomoyo</remote-id>
-	</upstream>
+    <maintainer type="person" proxied="yes">
+        <email>iohann.s.titov@gmail.com</email>
+        <name>Ivan S. Titov</name>
+    </maintainer>
+    <maintainer type="project" proxied="proxy">
+        <email>proxy-maint@gentoo.org</email>
+        <name>Proxy Maintainers</name>
+    </maintainer>
+    <longdescription lang="en">
+        Userspace tools for the TOMOYO Linux Mandatory Access Control
+        (MAC) implementation, an in-tree LSM since kernel 2.6.30. The
+        tools provide policy editors, loaders, audit and query daemons,
+        and the initial policy generator used to bootstrap a new system.
+    </longdescription>
+    <upstream>
+        <remote-id type="sourceforge">tomoyo</remote-id>
+    </upstream>
 </pkgmetadata>

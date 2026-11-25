@@ -1,5 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Christian Ruppert <idl0r@gentoo.org> (2026-07-10)
+# Make SLZ default, disable zlib, for better performance, ratio and security
+net-proxy/haproxy -zlib
 
 # Mike Gilbert <floppym@gentoo.org> (2017-10-29)
 # Override default from make.defaults, bug 635822.

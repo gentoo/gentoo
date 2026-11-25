@@ -9,5 +9,8 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">sbosio/rla-es</remote-id>
+	</upstream>
 	<stabilize-allarches/>
 </pkgmetadata>

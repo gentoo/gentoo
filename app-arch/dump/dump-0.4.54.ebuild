@@ -14,7 +14,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~hppa ppc ppc64 ~riscv ~sparc x86"
 IUSE="bzip2 debug ermt lzo readline selinux sqlite ssl test +uuid zlib"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="
@@ -23,25 +23,29 @@ REQUIRED_USE="
 	test? (
 		lzo
 		sqlite? ( uuid )
-	)"
+	)
+"
 
 RDEPEND="
-	>=sys-fs/e2fsprogs-1.27:=
 	sys-apps/util-linux
+	>=sys-fs/e2fsprogs-1.27:=
 	bzip2? ( app-arch/bzip2:= )
-	zlib? ( >=virtual/zlib-1.1.4:= )
+	ermt? ( dev-libs/openssl:= )
 	lzo? ( dev-libs/lzo:2= )
-	sqlite? ( dev-db/sqlite:3= )
-	ermt? ( dev-libs/openssl:0= )
-	ssl? ( dev-libs/openssl:0= )
 	readline? (
-		sys-libs/readline:0=
 		sys-libs/ncurses:=
+		sys-libs/readline:=
 	)
-	test? ( dev-cpp/catch:= )"
-
-DEPEND="${RDEPEND}
-	virtual/os-headers"
+	selinux? ( sys-libs/libselinux )
+	sqlite? ( dev-db/sqlite:3= )
+	ssl? ( dev-libs/openssl:= )
+	zlib? ( >=virtual/zlib-1.1.4:= )
+"
+DEPEND="
+	${RDEPEND}
+	virtual/os-headers
+	test? ( dev-cpp/catch:= )
+"
 BDEPEND="virtual/pkgconfig"
 
 src_configure() {
@@ -50,7 +54,7 @@ src_configure() {
 		--with-rmtpath='$(sbindir)/rmt'
 		--enable-blkid
 		--disable-werror
-		$(use_enable !elibc_musl rcmd) #musl doesn't provide rcmd.
+		$(use_enable !elibc_musl rcmd) # musl doesn't provide rcmd.
 		$(use_enable bzip2)
 		$(use_enable debug)
 		$(use_enable ermt)
@@ -63,6 +67,11 @@ src_configure() {
 		$(use_enable zlib)
 	)
 	econf "${myeconfargs[@]}"
+}
+
+src_test() {
+	default
+	edo faketape/faketape_test
 }
 
 src_install() {
@@ -82,11 +91,6 @@ src_install() {
 	local DOC_CONTENTS="\n\n${CATEGORY}/${PN} installs 'rmt' as 'dump-rmt'.
 	This is to avoid conflicts with app-arch/tar 'rmt'."
 	readme.gentoo_create_doc
-}
-
-src_test() {
-	default
-	edo faketape/faketape_test
 }
 
 pkg_postinst() {

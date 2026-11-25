@@ -10,5 +10,6 @@
 	</use>
 	<upstream>
 		<remote-id type="github">logseq/logseq</remote-id>
+		<remote-id type="github">logseq/og</remote-id>
 	</upstream>
 </pkgmetadata>

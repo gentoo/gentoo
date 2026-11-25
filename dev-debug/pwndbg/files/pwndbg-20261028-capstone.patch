@@ -1,0 +1,482 @@
+--- a/pwndbg/aglib/arch_mod.py
++++ b/pwndbg/aglib/arch_mod.py
+@@ -5,35 +5,35 @@ from typing import Literal
+ 
+ import pwnlib
+ import pwnlib.context
+-from capstone6pwndbg import CS_ARCH_AARCH64
+-from capstone6pwndbg import CS_ARCH_ARM
+-from capstone6pwndbg import CS_ARCH_LOONGARCH
+-from capstone6pwndbg import CS_ARCH_M68K
+-from capstone6pwndbg import CS_ARCH_MIPS
+-from capstone6pwndbg import CS_ARCH_PPC
+-from capstone6pwndbg import CS_ARCH_RISCV
+-from capstone6pwndbg import CS_ARCH_SPARC
+-from capstone6pwndbg import CS_ARCH_SYSTEMZ
+-from capstone6pwndbg import CS_ARCH_X86
+-from capstone6pwndbg import CS_MODE_16
+-from capstone6pwndbg import CS_MODE_32
+-from capstone6pwndbg import CS_MODE_64
+-from capstone6pwndbg import CS_MODE_ARM
+-from capstone6pwndbg import CS_MODE_BIG_ENDIAN
+-from capstone6pwndbg import CS_MODE_LITTLE_ENDIAN
+-from capstone6pwndbg import CS_MODE_LOONGARCH64
+-from capstone6pwndbg import CS_MODE_M68K_060
+-from capstone6pwndbg import CS_MODE_MCLASS
+-from capstone6pwndbg import CS_MODE_MIPS32
+-from capstone6pwndbg import CS_MODE_MIPS64
+-from capstone6pwndbg import CS_MODE_RISCV32
+-from capstone6pwndbg import CS_MODE_RISCV64
+-from capstone6pwndbg import CS_MODE_RISCV_C
+-from capstone6pwndbg import CS_MODE_RISCV_ZBA
+-from capstone6pwndbg import CS_MODE_RISCV_ZBB
+-from capstone6pwndbg import CS_MODE_RISCV_ZBS
+-from capstone6pwndbg import CS_MODE_THUMB
+-from capstone6pwndbg import CS_MODE_V9
++from capstone import CS_ARCH_AARCH64
++from capstone import CS_ARCH_ARM
++from capstone import CS_ARCH_LOONGARCH
++from capstone import CS_ARCH_M68K
++from capstone import CS_ARCH_MIPS
++from capstone import CS_ARCH_PPC
++from capstone import CS_ARCH_RISCV
++from capstone import CS_ARCH_SPARC
++from capstone import CS_ARCH_SYSTEMZ
++from capstone import CS_ARCH_X86
++from capstone import CS_MODE_16
++from capstone import CS_MODE_32
++from capstone import CS_MODE_64
++from capstone import CS_MODE_ARM
++from capstone import CS_MODE_BIG_ENDIAN
++from capstone import CS_MODE_LITTLE_ENDIAN
++from capstone import CS_MODE_LOONGARCH64
++from capstone import CS_MODE_M68K_060
++from capstone import CS_MODE_MCLASS
++from capstone import CS_MODE_MIPS32
++from capstone import CS_MODE_MIPS64
++from capstone import CS_MODE_RISCV32
++from capstone import CS_MODE_RISCV64
++from capstone import CS_MODE_RISCV_C
++from capstone import CS_MODE_RISCV_ZBA
++from capstone import CS_MODE_RISCV_ZBB
++from capstone import CS_MODE_RISCV_ZBS
++from capstone import CS_MODE_THUMB
++from capstone import CS_MODE_V9
+ from typing_extensions import override
+ 
+ import pwndbg
+--- a/pwndbg/aglib/disasm/aarch64.py
++++ b/pwndbg/aglib/disasm/aarch64.py
+@@ -3,8 +3,8 @@ from __future__ import annotations
+ from collections.abc import Callable
+ from typing import TYPE_CHECKING
+ 
+-from capstone6pwndbg import *  # noqa: F403
+-from capstone6pwndbg.aarch64 import *  # noqa: F403
++from capstone import *  # noqa: F403
++from capstone.aarch64 import *  # noqa: F403
+ from typing_extensions import override
+ 
+ import pwndbg.aglib
+--- a/pwndbg/aglib/disasm/arm.py
++++ b/pwndbg/aglib/disasm/arm.py
+@@ -6,8 +6,8 @@ from collections.abc import Callable
+ from typing import TYPE_CHECKING
+ from typing import Literal
+ 
+-from capstone6pwndbg import *  # noqa: F403
+-from capstone6pwndbg.arm import *  # noqa: F403
++from capstone import *  # noqa: F403
++from capstone.arm import *  # noqa: F403
+ from pwnlib.util.misc import align_down
+ from typing_extensions import override
+ 
+--- a/pwndbg/aglib/disasm/assistant.py
++++ b/pwndbg/aglib/disasm/assistant.py
+@@ -3,7 +3,7 @@ from __future__ import annotations
+ from collections.abc import Callable
+ from typing import TYPE_CHECKING
+ 
+-from capstone6pwndbg import *  # noqa: F403
++from capstone import *  # noqa: F403
+ from pwnlib.constants import linux
+ 
+ import pwndbg.aglib
+--- a/pwndbg/aglib/disasm/disassembly.py
++++ b/pwndbg/aglib/disasm/disassembly.py
+@@ -10,7 +10,7 @@ import re
+ from collections.abc import Callable
+ from dataclasses import dataclass
+ 
+-from capstone6pwndbg import *  # noqa: F403
++from capstone import *  # noqa: F403
+ 
+ import pwndbg
+ import pwndbg.aglib
+--- a/pwndbg/aglib/disasm/instruction.py
++++ b/pwndbg/aglib/disasm/instruction.py
+@@ -10,72 +10,72 @@ from enum import auto
+ from typing import Protocol
+ 
+ import pwnlib
+-from capstone6pwndbg import *  # noqa: F403
++from capstone import *  # noqa: F403
+ 
+ # Reverse lookup tables for debug printing
+-from capstone6pwndbg import CS_AC
+-from capstone6pwndbg import CS_GRP
+-from capstone6pwndbg import CS_OP
+-from capstone6pwndbg.aarch64 import AARCH64_INS_ALIAS_RET
+-from capstone6pwndbg.aarch64 import AARCH64_INS_BL
+-from capstone6pwndbg.aarch64 import AARCH64_INS_BLR
+-from capstone6pwndbg.aarch64 import AARCH64_INS_BR
+-from capstone6pwndbg.aarch64 import AARCH64_INS_RET
+-from capstone6pwndbg.arm import ARM_INS_TBB
+-from capstone6pwndbg.arm import ARM_INS_TBH
+-from capstone6pwndbg.loongarch import LOONGARCH_INS_ALIAS_JR
+-from capstone6pwndbg.loongarch import LOONGARCH_INS_ALIAS_RET
+-from capstone6pwndbg.loongarch import LOONGARCH_INS_B
+-from capstone6pwndbg.loongarch import LOONGARCH_INS_BL
+-from capstone6pwndbg.loongarch import LOONGARCH_INS_CALL36
+-from capstone6pwndbg.loongarch import LOONGARCH_INS_JIRL
+-from capstone6pwndbg.m68k import M68K_INS_BRA
+-from capstone6pwndbg.m68k import M68K_INS_BSR
+-from capstone6pwndbg.m68k import M68K_INS_JMP
+-from capstone6pwndbg.m68k import M68K_INS_JSR
+-from capstone6pwndbg.m68k import M68K_INS_RTS
+-from capstone6pwndbg.mips import MIPS_INS_ALIAS_B
+-from capstone6pwndbg.mips import MIPS_INS_ALIAS_BAL
+-from capstone6pwndbg.mips import MIPS_INS_B
+-from capstone6pwndbg.mips import MIPS_INS_BAL
+-from capstone6pwndbg.mips import MIPS_INS_BLTZAL
+-from capstone6pwndbg.mips import MIPS_INS_J
+-from capstone6pwndbg.mips import MIPS_INS_JAL
+-from capstone6pwndbg.mips import MIPS_INS_JALR
+-from capstone6pwndbg.mips import MIPS_INS_JALR_HB
+-from capstone6pwndbg.mips import MIPS_INS_JR
+-from capstone6pwndbg.ppc import PPC_INS_B
+-from capstone6pwndbg.ppc import PPC_INS_BA
+-from capstone6pwndbg.ppc import PPC_INS_BL
+-from capstone6pwndbg.ppc import PPC_INS_BLA
+-from capstone6pwndbg.riscv import RISCV_INS_ALIAS_J
+-from capstone6pwndbg.riscv import RISCV_INS_ALIAS_JAL
+-from capstone6pwndbg.riscv import RISCV_INS_ALIAS_JALR
+-from capstone6pwndbg.riscv import RISCV_INS_ALIAS_JR
+-from capstone6pwndbg.riscv import RISCV_INS_ALIAS_RET
+-from capstone6pwndbg.riscv import RISCV_INS_C_J
+-from capstone6pwndbg.riscv import RISCV_INS_C_JAL
+-from capstone6pwndbg.riscv import RISCV_INS_C_JALR
+-from capstone6pwndbg.riscv import RISCV_INS_C_JR
+-from capstone6pwndbg.riscv import RISCV_INS_JAL
+-from capstone6pwndbg.riscv import RISCV_INS_JALR
+-from capstone6pwndbg.sparc import SPARC_INS_ALIAS_BA
+-from capstone6pwndbg.sparc import SPARC_INS_ALIAS_CALL
+-from capstone6pwndbg.sparc import SPARC_INS_CALL
+-from capstone6pwndbg.sparc import SPARC_INS_JMPL
+-from capstone6pwndbg.systemz import SYSTEMZ_INS_B
+-from capstone6pwndbg.systemz import SYSTEMZ_INS_BAL
+-from capstone6pwndbg.systemz import SYSTEMZ_INS_BALR
+-from capstone6pwndbg.systemz import SYSTEMZ_INS_BR
+-from capstone6pwndbg.systemz import SYSTEMZ_INS_BRAS
+-from capstone6pwndbg.systemz import SYSTEMZ_INS_BRASL
+-from capstone6pwndbg.systemz import SYSTEMZ_INS_J
+-from capstone6pwndbg.systemz import SYSTEMZ_INS_JL
+-from capstone6pwndbg.x86 import X86_INS_CALL
+-from capstone6pwndbg.x86 import X86_INS_JMP
+-from capstone6pwndbg.x86 import X86_INS_LJMP
+-from capstone6pwndbg.x86 import X86_INS_RET
+-from capstone6pwndbg.x86 import X86Op
++from capstone import CS_AC
++from capstone import CS_GRP
++from capstone import CS_OP
++from capstone.aarch64 import AARCH64_INS_ALIAS_RET
++from capstone.aarch64 import AARCH64_INS_BL
++from capstone.aarch64 import AARCH64_INS_BLR
++from capstone.aarch64 import AARCH64_INS_BR
++from capstone.aarch64 import AARCH64_INS_RET
++from capstone.arm import ARM_INS_TBB
++from capstone.arm import ARM_INS_TBH
++from capstone.loongarch import LOONGARCH_INS_ALIAS_JR
++from capstone.loongarch import LOONGARCH_INS_ALIAS_RET
++from capstone.loongarch import LOONGARCH_INS_B
++from capstone.loongarch import LOONGARCH_INS_BL
++from capstone.loongarch import LOONGARCH_INS_CALL36
++from capstone.loongarch import LOONGARCH_INS_JIRL
++from capstone.m68k import M68K_INS_BRA
++from capstone.m68k import M68K_INS_BSR
++from capstone.m68k import M68K_INS_JMP
++from capstone.m68k import M68K_INS_JSR
++from capstone.m68k import M68K_INS_RTS
++from capstone.mips import MIPS_INS_ALIAS_B
++from capstone.mips import MIPS_INS_ALIAS_BAL
++from capstone.mips import MIPS_INS_B
++from capstone.mips import MIPS_INS_BAL
++from capstone.mips import MIPS_INS_BLTZAL
++from capstone.mips import MIPS_INS_J
++from capstone.mips import MIPS_INS_JAL
++from capstone.mips import MIPS_INS_JALR
++from capstone.mips import MIPS_INS_JALR_HB
++from capstone.mips import MIPS_INS_JR
++from capstone.ppc import PPC_INS_B
++from capstone.ppc import PPC_INS_BA
++from capstone.ppc import PPC_INS_BL
++from capstone.ppc import PPC_INS_BLA
++from capstone.riscv import RISCV_INS_ALIAS_J
++from capstone.riscv import RISCV_INS_ALIAS_JAL
++from capstone.riscv import RISCV_INS_ALIAS_JALR
++from capstone.riscv import RISCV_INS_ALIAS_JR
++from capstone.riscv import RISCV_INS_ALIAS_RET
++from capstone.riscv import RISCV_INS_C_J
++from capstone.riscv import RISCV_INS_C_JAL
++from capstone.riscv import RISCV_INS_C_JALR
++from capstone.riscv import RISCV_INS_C_JR
++from capstone.riscv import RISCV_INS_JAL
++from capstone.riscv import RISCV_INS_JALR
++from capstone.sparc import SPARC_INS_ALIAS_BA
++from capstone.sparc import SPARC_INS_ALIAS_CALL
++from capstone.sparc import SPARC_INS_CALL
++from capstone.sparc import SPARC_INS_JMPL
++from capstone.systemz import SYSTEMZ_INS_B
++from capstone.systemz import SYSTEMZ_INS_BAL
++from capstone.systemz import SYSTEMZ_INS_BALR
++from capstone.systemz import SYSTEMZ_INS_BR
++from capstone.systemz import SYSTEMZ_INS_BRAS
++from capstone.systemz import SYSTEMZ_INS_BRASL
++from capstone.systemz import SYSTEMZ_INS_J
++from capstone.systemz import SYSTEMZ_INS_JL
++from capstone.x86 import X86_INS_CALL
++from capstone.x86 import X86_INS_JMP
++from capstone.x86 import X86_INS_LJMP
++from capstone.x86 import X86_INS_RET
++from capstone.x86 import X86Op
+ from typing_extensions import override
+ 
+ import pwndbg
+--- a/pwndbg/aglib/disasm/loongarch64.py
++++ b/pwndbg/aglib/disasm/loongarch64.py
+@@ -3,8 +3,8 @@ from __future__ import annotations
+ from collections.abc import Callable
+ from typing import TYPE_CHECKING
+ 
+-from capstone6pwndbg import *  # noqa: F403
+-from capstone6pwndbg.loongarch import *  # noqa: F403
++from capstone import *  # noqa: F403
++from capstone.loongarch import *  # noqa: F403
+ from typing_extensions import override
+ 
+ import pwndbg.aglib.disasm.assistant
+--- a/pwndbg/aglib/disasm/m68k.py
++++ b/pwndbg/aglib/disasm/m68k.py
+@@ -2,8 +2,8 @@ from __future__ import annotations
+ 
+ from collections.abc import Callable
+ 
+-from capstone6pwndbg import *  # noqa: F403
+-from capstone6pwndbg.m68k import *  # noqa: F403
++from capstone import *  # noqa: F403
++from capstone.m68k import *  # noqa: F403
+ from typing_extensions import override
+ 
+ import pwndbg.aglib.disasm.assistant
+--- a/pwndbg/aglib/disasm/mips.py
++++ b/pwndbg/aglib/disasm/mips.py
+@@ -3,8 +3,8 @@ from __future__ import annotations
+ from collections.abc import Callable
+ from typing import TYPE_CHECKING
+ 
+-from capstone6pwndbg import *  # noqa: F403
+-from capstone6pwndbg.mips import *  # noqa: F403
++from capstone import *  # noqa: F403
++from capstone.mips import *  # noqa: F403
+ from typing_extensions import override
+ 
+ import pwndbg.aglib.disasm.assistant
+--- a/pwndbg/aglib/disasm/ppc.py
++++ b/pwndbg/aglib/disasm/ppc.py
+@@ -2,8 +2,8 @@ from __future__ import annotations
+ 
+ from collections.abc import Callable
+ 
+-from capstone6pwndbg import *  # noqa: F403
+-from capstone6pwndbg.ppc_const import *  # noqa: F403
++from capstone import *  # noqa: F403
++from capstone.ppc_const import *  # noqa: F403
+ from typing_extensions import override
+ 
+ import pwndbg.aglib.disasm.assistant
+--- a/pwndbg/aglib/disasm/riscv.py
++++ b/pwndbg/aglib/disasm/riscv.py
+@@ -3,8 +3,8 @@ from __future__ import annotations
+ from collections.abc import Callable
+ from typing import TYPE_CHECKING
+ 
+-from capstone6pwndbg import *  # noqa: F403
+-from capstone6pwndbg.riscv import *  # noqa: F403
++from capstone import *  # noqa: F403
++from capstone.riscv import *  # noqa: F403
+ from typing_extensions import override
+ 
+ import pwndbg.aglib
+--- a/pwndbg/aglib/disasm/sparc.py
++++ b/pwndbg/aglib/disasm/sparc.py
+@@ -2,7 +2,7 @@ from __future__ import annotations
+ 
+ from collections.abc import Callable
+ 
+-from capstone6pwndbg.sparc import *  # noqa: F403
++from capstone.sparc import *  # noqa: F403
+ from typing_extensions import override
+ 
+ import pwndbg.aglib.disasm.assistant
+--- a/pwndbg/aglib/disasm/x86.py
++++ b/pwndbg/aglib/disasm/x86.py
+@@ -3,8 +3,8 @@ from __future__ import annotations
+ from collections.abc import Callable
+ from typing import TYPE_CHECKING
+ 
+-from capstone6pwndbg import *  # noqa: F403
+-from capstone6pwndbg.x86 import *  # noqa: F403
++from capstone import *  # noqa: F403
++from capstone.x86 import *  # noqa: F403
+ from typing_extensions import override
+ 
+ import pwndbg.aglib
+--- a/pwndbg/aglib/next.py
++++ b/pwndbg/aglib/next.py
+@@ -9,8 +9,8 @@ import re
+ from collections.abc import Callable
+ from itertools import chain
+ 
+-from capstone6pwndbg import CS_GRP_INT
+-from capstone6pwndbg import CS_GRP_RET
++from capstone import CS_GRP_INT
++from capstone import CS_GRP_RET
+ 
+ import pwndbg.aglib
+ import pwndbg.aglib.disasm.disassembly
+--- a/pwndbg/arguments.py
++++ b/pwndbg/arguments.py
+@@ -9,7 +9,7 @@ from __future__ import annotations
+ 
+ import re
+ 
+-from capstone6pwndbg import CS_GRP_INT
++from capstone import CS_GRP_INT
+ 
+ import pwndbg.aglib
+ import pwndbg.aglib.file
+--- a/pwndbg/commands/branch.py
++++ b/pwndbg/commands/branch.py
+@@ -3,7 +3,7 @@ from __future__ import annotations
+ import argparse
+ 
+ import gdb
+-from capstone6pwndbg import CS_GRP_JUMP
++from capstone import CS_GRP_JUMP
+ 
+ import pwndbg.aglib.disasm.disassembly
+ import pwndbg.commands
+--- a/pwndbg/commands/kbpf.py
++++ b/pwndbg/commands/kbpf.py
+@@ -4,10 +4,10 @@ import argparse
+ import math
+ import re
+ 
+-from capstone6pwndbg import CS_ARCH_BPF
+-from capstone6pwndbg import CS_MODE_BPF_EXTENDED
+-from capstone6pwndbg import CS_MODE_LITTLE_ENDIAN
+-from capstone6pwndbg import Cs
++from capstone import CS_ARCH_BPF
++from capstone import CS_MODE_BPF_EXTENDED
++from capstone import CS_MODE_LITTLE_ENDIAN
++from capstone import Cs
+ 
+ import pwndbg
+ import pwndbg.aglib.kernel
+--- a/pwndbg/commands/next.py
++++ b/pwndbg/commands/next.py
+@@ -7,7 +7,7 @@ from __future__ import annotations
+ import argparse
+ from collections.abc import Callable
+ 
+-from capstone6pwndbg import CS_GRP_RET
++from capstone import CS_GRP_RET
+ 
+ import pwndbg.aglib.next
+ import pwndbg.aglib.proc
+--- a/pwndbg/emu/emulator.py
++++ b/pwndbg/emu/emulator.py
+@@ -11,7 +11,7 @@ from dataclasses import dataclass
+ from enum import Enum
+ from enum import auto
+ 
+-import capstone6pwndbg as C
++import capstone as C
+ import unicorn as U
+ import unicorn.ppc_const
+ 
+--- a/pwndbg/lib/arch.py
++++ b/pwndbg/lib/arch.py
+@@ -7,23 +7,23 @@ from enum import Enum
+ from enum import auto
+ from typing import Literal
+ 
+-from capstone6pwndbg import CS_MODE_MICRO
+-from capstone6pwndbg import CS_MODE_MIPS1
+-from capstone6pwndbg import CS_MODE_MIPS2
+-from capstone6pwndbg import CS_MODE_MIPS3
+-from capstone6pwndbg import CS_MODE_MIPS4
+-from capstone6pwndbg import CS_MODE_MIPS5
+-from capstone6pwndbg import CS_MODE_MIPS32
+-from capstone6pwndbg import CS_MODE_MIPS32R2
+-from capstone6pwndbg import CS_MODE_MIPS32R3
+-from capstone6pwndbg import CS_MODE_MIPS32R5
+-from capstone6pwndbg import CS_MODE_MIPS32R6
+-from capstone6pwndbg import CS_MODE_MIPS64
+-from capstone6pwndbg import CS_MODE_MIPS64R2
+-from capstone6pwndbg import CS_MODE_MIPS64R3
+-from capstone6pwndbg import CS_MODE_MIPS64R5
+-from capstone6pwndbg import CS_MODE_MIPS64R6
+-from capstone6pwndbg import CS_MODE_NANOMIPS
++from capstone import CS_MODE_MICRO
++from capstone import CS_MODE_MIPS1
++from capstone import CS_MODE_MIPS2
++from capstone import CS_MODE_MIPS3
++from capstone import CS_MODE_MIPS4
++from capstone import CS_MODE_MIPS5
++from capstone import CS_MODE_MIPS32
++from capstone import CS_MODE_MIPS32R2
++from capstone import CS_MODE_MIPS32R3
++from capstone import CS_MODE_MIPS32R5
++from capstone import CS_MODE_MIPS32R6
++from capstone import CS_MODE_MIPS64
++from capstone import CS_MODE_MIPS64R2
++from capstone import CS_MODE_MIPS64R3
++from capstone import CS_MODE_MIPS64R5
++from capstone import CS_MODE_MIPS64R6
++from capstone import CS_MODE_NANOMIPS
+ 
+ # Names of arches that Pwndbg supports
+ # The names that GDB/LLDB recognize are converted to a name in this list
+--- a/tests/library/dbg/tests/test_commands_next.py
++++ b/tests/library/dbg/tests/test_commands_next.py
+@@ -106,7 +106,7 @@ async def test_nextret_loop(ctrl: Controller) -> None:
+     Test nextret on a program that will encounter an loop
+     """
+ 
+-    from capstone6pwndbg.x86 import X86_INS_RET
++    from capstone.x86 import X86_INS_RET
+ 
+     import pwndbg.aglib.disasm.disassembly
+ 
+--- a/tests/library/qemu_user/tests/test_aarch64.py
++++ b/tests/library/qemu_user/tests/test_aarch64.py
+@@ -2,7 +2,7 @@ from __future__ import annotations
+ 
+ import gdb
+ import pytest
+-from capstone6pwndbg.aarch64_const import AARCH64_INS_BL
++from capstone.aarch64_const import AARCH64_INS_BL
+ 
+ import pwndbg
+ import pwndbg.aglib.disasm.disassembly

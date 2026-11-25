@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 inherit edo go-env optfeature multiprocessing python-single-r1
 inherit shell-completion toolchain-funcs xdg
 
@@ -14,11 +14,11 @@ else
 	inherit verify-sig
 	SRC_URI="
 		https://github.com/kovidgoyal/kitty/releases/download/v${PV}/${P}.tar.xz
-		https://dev.gentoo.org/~ionen/distfiles/${P}-vendor.tar.xz
+		https://distfiles.gentoo.org/pub/dev/ionen@gentoo.org/${P}-vendor.tar.xz
 		verify-sig? ( https://github.com/kovidgoyal/kitty/releases/download/v${PV}/${P}.tar.xz.sig )
 	"
 	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/kovidgoyal.gpg
-	KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
+	KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
 fi
 
 DESCRIPTION="Fast, feature-rich, GPU-based terminal"
@@ -35,12 +35,15 @@ REQUIRED_USE="
 "
 RESTRICT="!test? ( test )"
 
-# dlopen: fontconfig,libglvnd
+# dlopen: fontconfig,freetype,libglvnd
 RDEPEND="
 	${PYTHON_DEPS}
+	app-arch/brotli:=
+	dev-libs/fribidi
 	dev-libs/openssl:=
 	dev-libs/xxhash
 	media-fonts/symbols-nerd-font
+	media-libs/fontconfig
 	media-libs/freetype
 	media-libs/harfbuzz:=[truetype]
 	media-libs/lcms:2
@@ -56,12 +59,14 @@ RDEPEND="
 	X? (
 		x11-libs/libX11
 		x11-libs/libXcursor
+		x11-libs/libxcb:=
 	)
 	wayland? ( dev-libs/wayland )
 	!sci-mathematics/kissat
 "
 DEPEND="
 	${RDEPEND}
+	dev-util/vulkan-headers
 	amd64? ( >=dev-libs/simde-0.8.0-r1 )
 	arm64? ( dev-libs/simde )
 	x86? ( dev-libs/simde )
@@ -77,9 +82,10 @@ DEPEND="
 BDEPEND="
 	${PYTHON_DEPS}
 	>=dev-lang/go-1.26:=
+	dev-util/shader-slang
 	sys-libs/ncurses
 	virtual/pkgconfig
-	test? ( $(python_gen_cond_dep 'dev-python/pillow[zlib,${PYTHON_USEDEP}]') )
+	test? ( $(python_gen_cond_dep 'dev-python/pillow[lcms,zlib,${PYTHON_USEDEP}]') )
 	wayland? ( dev-util/wayland-scanner )
 "
 [[ ${PV} == 9999 ]] || BDEPEND+=" verify-sig? ( sec-keys/openpgp-keys-kovidgoyal )"
@@ -119,19 +125,28 @@ src_prepare() {
 
 	sed -i setup.py "${sedargs[@]}" || die
 
-	# skip flaky font search, file is replaced in src_install (bug #971276)
+	# skip flaky font search, file is replaced in src_install (bug #971276),
+	# without this the font + fontconfig would also be needed in BDEPEND
 	mkdir fonts || die
 	:> fonts/SymbolsNerdFontMono-Regular.ttf || die
 
 	local skiptests=(
+		# needs cgroups and may not work right with portage sandbox
+		kitty_tests/child.py
 		# broken with nspawn defaults, skip for convenience (bug #954176)
 		kitty_tests/crypto.py
+		# depends on crypto.py (TODO?: the growing list may make it difficult
+		# to keep removing crypto.py and may need to look at alternatives)
+		kitty_tests/file_transmission.py
+		kitty_tests/sessions.py
 		# relies on 'who' command which doesn't detect users with pid-sandbox
 		kitty_tests/utmp.py
 		# may fail/hang depending on environment and shell initialization
 		kitty_tests/{shell_integration,ssh}.py
 		# relies on /proc/self/fd and gets confused when ran from here
 		tools/utils/tpmfile_test.go
+		# seems to randomly fail depending on timing (bug #977046)
+		tools/watch/api_test.go
 	)
 	use !test || rm "${skiptests[@]}" || die
 }
@@ -198,6 +213,7 @@ src_install() {
 pkg_postinst() {
 	xdg_pkg_postinst
 
+	optfeature "custom shaders support" dev-util/shader-slang
 	optfeature "audio-based terminal bell support" media-libs/libcanberra
 	use X && optfeature "X11 startup notification support" x11-libs/startup-notification
 	optfeature "opening links from the terminal" x11-misc/xdg-utils

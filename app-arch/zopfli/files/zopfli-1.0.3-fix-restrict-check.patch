@@ -1,0 +1,15 @@
+Fix GCC version check for restrict.
+
+We want to allow e.g. '17.0' (in-development version of 17) which
+the __GNUC_MINOR_ check was unintentionally excluding.
+--- a/src/zopflipng/lodepng/lodepng.cpp
++++ b/src/zopflipng/lodepng/lodepng.cpp
+@@ -104,7 +104,7 @@ void lodepng_free(void* ptr);
+ #endif
+ 
+ /* restrict is not available in C90, but use it when supported by the compiler */
+-#if (defined(__GNUC__) && defined(__GNUC_MINOR__) && (__GNUC__ >= 3) && (__GNUC_MINOR__ >= 1)) ||\
++#if (defined(__GNUC__) && defined(__GNUC_MINOR__) && (__GNUC__ >= 4 || ((__GNUC__ > 3) && (__GNUC_MINOR__ >= 1)))) ||\
+     (defined(_MSC_VER) && (_MSC_VER >= 1400)) || (defined(__WATCOMC__) && (__WATCOMC__ >= 1250))
+ #define LODEPNG_RESTRICT __restrict
+ #else

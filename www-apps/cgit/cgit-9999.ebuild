@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -27,7 +27,7 @@ fi
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="doc +highlight +lua test"
+IUSE="doc +highlight +lua selinux test"
 REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} ) ${PYTHON_REQUIRED_USE}"
 RESTRICT="!test? ( test )"
 
@@ -57,6 +57,7 @@ BDEPEND="
 		>=app-text/asciidoc-8.5.1
 	)
 "
+RDEPEND+=" selinux? ( sec-policy/selinux-git )"
 
 PATCHES=( "${FILESDIR}"/${PN}-highlight.patch )
 
@@ -84,6 +85,9 @@ src_configure() {
 		echo "LUA_PKGCONFIG = ${ELUA}" >> cgit.conf || die "echo LUA_PKGCONFIG failed"
 	else
 		echo "NO_LUA = 1" >> cgit.conf || die "echo NO_LUA failed"
+	fi
+	if use elibc_musl; then
+		echo 'export NO_REGEX=NeedsStartEnd' >> cgit.conf || die "echo export NO_REGEX=NeedsStartEnd failed"
 	fi
 }
 

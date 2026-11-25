@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,14 +12,13 @@ SRC_URI="https://github.com/liballeg/allegro5/releases/download/${PV}/${P}.tar.g
 LICENSE="Allegro MIT GPL-2+ ZLIB"
 SLOT="0"
 KEYWORDS="amd64 ~arm64 ~loong ~mips ppc ppc64 ~riscv x86"
-IUSE="alsa doc fbcon jack jpeg opengl oss png svga vga vorbis X"
+IUSE="alsa doc fbcon jack jpeg opengl oss png vga vorbis X"
 
 RDEPEND="
 	alsa? ( media-libs/alsa-lib[${MULTILIB_USEDEP}] )
 	jack? ( virtual/jack[${MULTILIB_USEDEP}] )
 	jpeg? ( media-libs/libjpeg-turbo:=[${MULTILIB_USEDEP}] )
 	png? ( media-libs/libpng:0=[${MULTILIB_USEDEP}] )
-	svga? ( media-libs/svgalib )
 	vorbis? ( media-libs/libvorbis[${MULTILIB_USEDEP}] )
 	X? (
 		x11-libs/libX11[${MULTILIB_USEDEP}]
@@ -72,7 +71,7 @@ src_configure() {
 		-DWANT_JPGALLEG=$(usex jpeg)
 		-DWANT_LINUX_CONSOLE=OFF
 		-DWANT_LINUX_FBCON=$(usex fbcon)
-		-DWANT_LINUX_SVGALIB=$(usex svga)
+		-DWANT_LINUX_SVGALIB=OFF
 		-DWANT_LINUX_VGA=$(usex vga)
 		-DWANT_LOADPNG=$(usex png)
 		-DWANT_LOGG=$(usex vorbis)

@@ -1,0 +1,62 @@
+diff --git a/Telegram/ThirdParty/rlottie/inc/rlottie.h b/Telegram/ThirdParty/rlottie/inc/rlottie.h
+index db81448..f8c4395 100644
+--- a/Telegram/ThirdParty/rlottie/inc/rlottie.h
++++ b/Telegram/ThirdParty/rlottie/inc/rlottie.h
+@@ -19,6 +19,7 @@
+ #ifndef _RLOTTIE_H_
+ #define _RLOTTIE_H_
+ 
++#include <functional>
+ #include <future>
+ #include <vector>
+ #include <memory>
+
+diff --git a/Telegram/ThirdParty/rlottie/src/vector/vraster.h b/Telegram/ThirdParty/rlottie/src/vector/vraster.h
+index 4f7d2ed..a801953 100644
+--- a/Telegram/ThirdParty/rlottie/src/vector/vraster.h
++++ b/Telegram/ThirdParty/rlottie/src/vector/vraster.h
+@@ -19,6 +19,7 @@
+ #ifndef VRASTER_H
+ #define VRASTER_H
+ #include <future>
++#include <memory>
+ #include "vglobal.h"
+ #include "vrect.h"
+
+diff --git a/Telegram/ThirdParty/rlottie/src/vector/vrle.cpp b/Telegram/ThirdParty/rlottie/src/vector/vrle.cpp
+index a5deee1..61c1a8f 100644
+--- a/Telegram/ThirdParty/rlottie/src/vector/vrle.cpp
++++ b/Telegram/ThirdParty/rlottie/src/vector/vrle.cpp
+@@ -21,6 +21,7 @@
+ #include <algorithm>
+ #include <array>
+ #include <cstdlib>
++#include <iterator>
+ #include <vector>
+ #include "vdebug.h"
+
+diff --git a/Telegram/ThirdParty/tgcalls/tgcalls/group/GroupJoinPayloadInternal.cpp b/Telegram/ThirdParty/tgcalls/tgcalls/group/GroupJoinPayloadInternal.cpp
+index fce5c67..d08f5c7 100644
+--- a/Telegram/ThirdParty/tgcalls/tgcalls/group/GroupJoinPayloadInternal.cpp
++++ b/Telegram/ThirdParty/tgcalls/tgcalls/group/GroupJoinPayloadInternal.cpp
+@@ -1,6 +1,7 @@
+ #include "GroupJoinPayloadInternal.h"
+
+ #include "third-party/json11.hpp"
++#include <iterator>
+ #include <sstream>
+
+ namespace tgcalls {
+
+diff --git a/Telegram/lib_base/base/unique_function.h b/Telegram/lib_base/base/unique_function.h
+index c101679..6e9224f 100644
+--- a/Telegram/lib_base/base/unique_function.h
++++ b/Telegram/lib_base/base/unique_function.h
+@@ -6,6 +6,7 @@
+ //
+ #pragma once
+
++#include <cstdlib>
+ #include <functional>
+
+ #ifndef Unexpected

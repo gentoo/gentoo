@@ -1,0 +1,25 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index a656a0c..6e28b92 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -962,7 +962,6 @@ if(NOT FAST_BUILD)
+     ${HIGHS_BINARY_DIR}
+     ${PROJECT_SOURCE_DIR}/app
+     ${PROJECT_SOURCE_DIR}/extern
+-    ${PROJECT_SOURCE_DIR}/extern/zstr
+     ${PROJECT_SOURCE_DIR}/highs
+     ${PROJECT_SOURCE_DIR}/highs/io
+     ${PROJECT_SOURCE_DIR}/highs/pdlp/cupdlp
+diff --git a/cmake/sources.cmake b/cmake/sources.cmake
+index bacd0e5..6742f70 100644
+--- a/cmake/sources.cmake
++++ b/cmake/sources.cmake
+@@ -481,8 +481,6 @@ set(highs_sources
+ 
+ # add catch header?
+ set(highs_headers
+-    ../extern/zstr/strict_fstream.hpp
+-    ../extern/zstr/zstr.hpp
+     interfaces/highs_c_api.h
+     io/Filereader.h
+     io/FilereaderLp.h

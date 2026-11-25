@@ -4,8 +4,8 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_FULLY_TESTED=( pypy3_11 python3_{11..14} )
-PYTHON_COMPAT=( "${PYTHON_FULLY_TESTED[@]}" )
+PYTHON_FULLY_TESTED=( python3_{12..14} )
+PYTHON_COMPAT=( "${PYTHON_FULLY_TESTED[@]}" python3_15 )
 
 inherit distutils-r1 optfeature pypi
 
@@ -18,7 +18,7 @@ HOMEPAGE="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~x64-macos"
+KEYWORDS="amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~sparc x86 ~x64-macos"
 IUSE="test-full"
 
 BDEPEND="

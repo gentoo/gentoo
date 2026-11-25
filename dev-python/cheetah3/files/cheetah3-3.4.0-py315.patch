@@ -1,0 +1,30 @@
+From f935b58cdf47570b288e59a8a19e157d5909f7ac Mon Sep 17 00:00:00 2001
+From: Steve Kowalik <steven@wedontsleep.org>
+Date: Fri, 17 Jul 2026 15:07:49 +1000
+Subject: [PATCH] Stop using load_module() in compat
+
+load_module() has been deprecated effectively since it was added,
+replaced by exec_module in Python 3.5, switch to using that, since
+load_module() was removed in Python 3.15.
+
+Note this effectively removes support for Python 3.4, but I can reenable
+that if you prefer.
+---
+ Cheetah/compat.py | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/Cheetah/compat.py b/Cheetah/compat.py
+index 78cfcddd..78105065 100644
+--- a/Cheetah/compat.py
++++ b/Cheetah/compat.py
+@@ -53,7 +53,9 @@ def cache_from_source(path, debug_override=None):
+ 
+     def load_module_from_file(base_name, module_name, filename):
+         specs = importlib.util.spec_from_file_location(module_name, filename)
+-        return specs.loader.load_module()
++        module = importlib.util.module_from_spec(specs)
++        specs.loader.exec_module(module)
++        return module
+ 
+     new_module = types.ModuleType
+ 

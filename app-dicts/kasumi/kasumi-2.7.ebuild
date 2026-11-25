@@ -14,7 +14,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~ppc ~riscv ~sparc ~x86"
+KEYWORDS="~alpha amd64 ppc ~riscv ~sparc x86"
 
 RDEPEND="
 	app-i18n/anthy-unicode

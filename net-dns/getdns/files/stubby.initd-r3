@@ -1,0 +1,31 @@
+#!/sbin/openrc-run
+# Copyright 1999-2026 Gentoo Authors
+# Distributed under the terms of the GNU General Public License, v2 or later
+
+: ${STUBBY_CONFIG_FILE:=/etc/stubby/stubby.yml}
+: ${STUBBY_LOGLEVEL:=5}
+
+name="DNS Privacy Daemon"
+command="/usr/bin/stubby"
+command_args="-C ${STUBBY_CONFIG_FILE} -v ${STUBBY_LOGLEVEL}"
+command_background=true
+command_user="stubby"
+error_log="/var/log/stubby.log"
+output_log="/var/log/stubby.log"
+pidfile="/run/${RC_SVCNAME}.pid"
+required_files="${STUBBY_CONFIG_FILE}"
+
+capabilities="^cap_net_bind_service"
+
+depend()
+{
+	provide dns
+	need localmount net
+	after bootmisc
+	use logger
+}
+
+start_pre()
+{
+	checkpath -f -m 0644 -o stubby:stubby /var/log/stubby.log
+}

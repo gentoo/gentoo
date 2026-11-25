@@ -28,7 +28,7 @@ fi
 
 LICENSE="|| ( GPL-2+ LGPL-3+ ) utils? ( GPL-3+ )"
 SLOT="0"
-IUSE="bzip2 +debuginfod +libarchive +lzma nls static-libs stacktrace test +utils valgrind zstd"
+IUSE="bzip2 +debuginfod +libarchive libpfm +lzma nls stackprof static-libs threads test +utils valgrind zstd"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="debuginfod? ( libarchive )"
 
@@ -44,7 +44,10 @@ RDEPEND="
 	)
 	libarchive? ( >=app-arch/libarchive-3.1.2:= )
 	lzma? ( >=app-arch/xz-utils-5.0.5-r1[static-libs?,${MULTILIB_USEDEP}] )
-	stacktrace? ( dev-util/sysprof )
+	stackprof? (
+		>=dev-libs/json-c-0.11:=
+		libpfm? ( dev-libs/libpfm:= )
+	)
 	zstd? ( app-arch/zstd:=[static-libs?,${MULTILIB_USEDEP}] )
 	elibc_musl? (
 		dev-libs/libbsd
@@ -64,8 +67,9 @@ BDEPEND+="
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-0.189-musl-aarch64-regs.patch
+	"${FILESDIR}"/${PN}-0.197-musl-aarch64-regs.patch
 	"${FILESDIR}"/${PN}-0.191-musl-macros.patch
+	"${FILESDIR}"/${PN}-0.196-skip-static-test.patch
 )
 
 src_prepare() {
@@ -77,16 +81,28 @@ src_prepare() {
 		sed -i -e '/^lib_LIBRARIES/s:=.*:=:' -e '/^%.os/s:%.o$::' lib{asm,dw,elf}/Makefile.in || die
 	fi
 
-	# TODO: Fails with some CFLAGS
+	# Fails with some CFLAGS
 	# " __divhc3: /var/tmp/portage/dev-libs/elfutils-0.193/work/elfutils-0.193-abi_x86_32.x86/tests/funcretval:
 	#	dwfl_module_return_value_location: cannot handle DWARF type description"
 	printf "#!/bin/sh\nexit 77" > tests/run-native-test.sh || die
-	# TODO: Fails for abi_x86_32 w/ DT_RELR
+	# Fails for abi_x86_32 w/ DT_RELR
 	# "section [14] '.rel.plt': relocation 55: relocation type invalid for the file type"
 	printf "#!/bin/sh\nexit 77" > tests/run-elflint-self.sh || die
 	printf "#!/bin/sh\nexit 77" > tests/run-reverse-sections-self.sh || die
-	# TODO: Fails with SFrames
+	# Fails with SFrames
 	printf "#!/bin/sh\nexit 77" > tests/run-strip-strmerge.sh || die
+	# Fails under sandbox
+	cat <<-EOF > tests/dwfl-proc-attach.c || die
+	int main() {
+		return 77;
+	}
+	EOF
+	# Requires static-libs
+	cat <<-EOF > tests/elf-from-memory.c || die
+	int main() {
+		return 77;
+	}
+	EOF
 
 	# https://sourceware.org/PR23914
 	sed -i 's:-Werror::' */Makefile.in || die
@@ -107,18 +123,23 @@ src_configure() {
 multilib_src_configure() {
 	unset LEX YACC
 
+	export ac_cv_header_perfmon_pfmlib_perf_event_h=$(multilib_native_usex libpfm)
+	export ac_cv_lib_pfm_pfm_get_os_event_encoding=$(multilib_native_usex libpfm)
+	# Only for IMA verification of RPMs
+	export ac_cv_lib_rpm_headerGet=no
+
 	local myeconfargs=(
 		$(use_enable nls)
 		$(multilib_native_use_enable debuginfod)
 		# Could do dummy if needed? We could also split libdebuginfod
 		# (client support) into its own USE if required.
 		$(multilib_native_use_enable debuginfod libdebuginfod)
-		$(multilib_native_use_enable stacktrace)
+		$(multilib_native_use_enable stackprof)
 		$(use_enable valgrind valgrind-annotations)
 
-		# Explicitly disable thread safety, it's not recommended by upstream
-		# (marked experimental in configure) and doesn't build either on musl.
-		--disable-thread-safety
+		# TODO: This can become unconditional in a release after
+		# 0.197 depending on upstream progress.
+		$(use_enable threads thread-safety)
 
 		# Valgrind option is just for running tests under it; dodgy under sandbox
 		# and indeed even w/ glibc with newer instructions.
@@ -142,7 +163,7 @@ multilib_src_configure() {
 
 multilib_src_test() {
 	env LD_LIBRARY_PATH="${BUILD_DIR}/libelf:${BUILD_DIR}/libebl:${BUILD_DIR}/libdw:${BUILD_DIR}/libasm" \
-		LC_ALL="C" \
+		LC_ALL="C.UTF-8" \
 		emake check VERBOSE=1
 }
 

@@ -1,0 +1,42 @@
+https://bugs.gentoo.org/982122
+https://git.infradead.org/mtd-utils.git/commit/d1f2d1270c15e373c4e4b5bfbe0a83c7bcf6e793
+
+From d1f2d1270c15e373c4e4b5bfbe0a83c7bcf6e793 Mon Sep 17 00:00:00 2001
+From: Bastian Germann <bage@debian.org>
+Date: Mon, 27 Apr 2026 13:24:16 +0200
+Subject: [PATCH] lib: libmtd: fix sign extension of ioctl request in mtd_xlock
+
+The req parameter of mtd_xlock() was declared as int.  On 64-bit
+big-endian architectures such as ppc64el, _IOW()-derived ioctl numbers
+have bit 31 set (because _IOC_WRITE=4 is placed at bit 29).  Storing
+such a value in a signed int and then passing it to ioctl(), whose
+second argument is unsigned long, causes implicit sign extension:
+0x80084d05 becomes 0xffffffff80084d05, which does not match the
+expected constant and fails the cmocka check_expected() assertion in
+the unit tests for mtd_lock and mtd_unlock.
+
+Fix by declaring req as unsigned long, matching the type used by the
+ioctl() syscall interface.
+
+Fixes: test_mtd_lock / test_mtd_unlock failures on ppc64el
+Signed-off-by: Bastian Germann <bage@debian.org>
+Signed-off-by: David Oberhollenzer <david.oberhollenzer@sigma-star.at>
+---
+ lib/libmtd.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/lib/libmtd.c b/lib/libmtd.c
+index f588e09..96a2167 100644
+--- a/lib/libmtd.c
++++ b/lib/libmtd.c
+@@ -902,7 +902,7 @@ static int mtd_valid_erase_block(const struct mtd_dev_info *mtd, int eb)
+ }
+ 
+ static int mtd_xlock(const struct mtd_dev_info *mtd, int fd, int eb,
+-		     int blocks, int req, const char *sreq)
++		     int blocks, unsigned long req, const char *sreq)
+ {
+ 	int ret;
+ 	struct erase_info_user ei;
+-- 
+2.56.0

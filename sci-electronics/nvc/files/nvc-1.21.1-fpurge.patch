@@ -1,0 +1,14 @@
+Thanks for the patch Lain! See: https://bugs.gentoo.org/979033
+diff --git a/configure.ac b/configure.ac
+index 3ec2938..5fb9fef 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -37,7 +37,7 @@ AC_C_RESTRICT
+ 
+ AC_CHECK_HEADERS([sys/ptrace.h sys/prctl.h])
+ AC_CHECK_FUNCS([tcgetwinsize memmem strcasestr getline fseeko ftello])
+-AC_CHECK_FUNCS([fpurge __fpurge strchrnul strndup gettid popen])
++AC_CHECK_FUNCS([__fpurge strchrnul strndup gettid popen])
+ 
+ AC_CHECK_MEMBERS([struct stat.st_mtimespec.tv_nsec])
+ AC_CHECK_MEMBERS([struct stat.st_mtim.tv_nsec])

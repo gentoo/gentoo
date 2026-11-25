@@ -154,6 +154,11 @@ src_configure() {
 		--with-zstd=zstd
 	)
 
+	# https://savannah.gnu.org/support/?111394
+	# This can be removed when we patch dev-build/autoconf, though
+	# packages w/o eautoreconf will still need it.
+	[[ ${enable_year2038} == "no" ]] && myeconfargs+=( --disable-year2038 )
+
 	case ${CHOST} in
 		*-solaris*|*-darwin*)
 			myeconfargs+=(

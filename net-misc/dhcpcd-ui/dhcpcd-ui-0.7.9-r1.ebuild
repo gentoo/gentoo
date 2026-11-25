@@ -1,13 +1,17 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit systemd toolchain-funcs xdg
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/roymarples.asc
+inherit systemd toolchain-funcs verify-sig xdg
 
 DESCRIPTION="Desktop notification and configuration for dhcpcd"
 HOMEPAGE="https://github.com/NetworkConfiguration/dhcpcd-ui https://roy.marples.name/projects/dhcpcd-ui/"
-SRC_URI="https://github.com/NetworkConfiguration/dhcpcd-ui/releases/download/v${PV}/${P}.tar.xz"
+SRC_URI="
+	https://github.com/NetworkConfiguration/dhcpcd-ui/releases/download/v${PV}/${P}.tar.xz
+	verify-sig? ( https://github.com/NetworkConfiguration/dhcpcd-ui/releases/download/v${PV}/${P}.tar.xz.asc )
+"
 
 LICENSE="BSD-2"
 SLOT="0"
@@ -19,6 +23,7 @@ REQUIRED_USE="libnotify? ( gtk )"
 BDEPEND="
 	media-gfx/cairosvg
 	virtual/libintl
+	verify-sig? ( sec-keys/openpgp-keys-roymarples )
 "
 DEPEND="
 	gtk? (
@@ -29,7 +34,8 @@ DEPEND="
 	libnotify? ( x11-libs/libnotify )
 	ncurses? ( sys-libs/ncurses:= )
 "
-RDEPEND="${DEPEND}
+RDEPEND="
+	${DEPEND}
 	>=net-misc/dhcpcd-6.4.4
 "
 

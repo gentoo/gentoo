@@ -1,0 +1,14 @@
+--- a/tests/test_parsers.py	2026-09-24 14:10:15.753263357 +0200
++++ b/tests/test_parsers.py	2026-09-24 14:11:05.104668455 +0200
+@@ -1,9 +1,8 @@
+-from tree_sitter_languages import get_parser
+-
+ from grep_ast.dump import dump  # noqa: F401
+ from grep_ast.parsers import PARSERS
++from grep_ast.tsl import get_parser, LANGUAGE_MAPPING
+ 
+ 
+ def test_get_parser_for_all_parsers():
+-    for lang in PARSERS.values():
++    for lang in LANGUAGE_MAPPING.keys():
+         assert get_parser(lang) is not None

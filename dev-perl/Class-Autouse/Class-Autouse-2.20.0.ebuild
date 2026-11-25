@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Run-time load a class the first time you call a method in it"
 
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~mips ~ppc ~x86"
+KEYWORDS="amd64 ~hppa ~mips ppc x86"
 
 RDEPEND="
 	>=virtual/perl-Scalar-List-Utils-1.180.0

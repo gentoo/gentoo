@@ -1,0 +1,29 @@
+Fix build.gradle compatibility with Gradle 9: remove the Java toolchain
+block so Gradle uses the system JDK, and replace the removed reporting.baseDir
+property with layout.buildDirectory.dir().
+
+--- a/build.gradle
++++ b/build.gradle
+@@ -52,12 +52,2 @@
+     modularity.inferModulePath.set(false)
+-
+-    toolchain {
+-        // If this is updated, also update
+-        // - .gitpod.Dockerfile
+-        // - .devcontainer/devcontainer.json#L34 and
+-        // - .github/workflows/deployment-jdk-ea.yml#L53
+-        languageVersion = JavaLanguageVersion.of(21)
+-        // See https://docs.gradle.org/current/javadoc/org/gradle/jvm/toolchain/JvmVendorSpec.html for a full list
+-        // vendor = JvmVendorSpec.AMAZON
+-    }
+ }
+@@ -545,7 +535,7 @@
+ tasks.withType(Test).configureEach {
+-    reports.html.outputLocation.set(file("${reporting.baseDir}/${name}"))
++    reports.html.outputLocation.set(layout.buildDirectory.dir("reports/${name}").get().asFile)
+     // Enable parallel tests (on desktop).
+     // See https://docs.gradle.org/8.1/userguide/performance.html#execute_tests_in_parallel for details.
+     if (!providers.environmentVariable("CI").isPresent()) {
+         maxParallelForks = Math.max(Runtime.runtime.availableProcessors() - 1, 1)
+     }
+ }

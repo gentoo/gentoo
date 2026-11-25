@@ -12,6 +12,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">atpublic</remote-id>
-		<remote-id type="gitlab">warsaw/public</remote-id>
+		<remote-id type="gitlab">flufl/public</remote-id>
 	</upstream>
 </pkgmetadata>

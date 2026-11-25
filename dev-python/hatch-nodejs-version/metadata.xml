@@ -6,7 +6,7 @@
 	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
-		<remote-id type="github">agoose77/hatch-nodejs-version</remote-id>
+		<remote-id type="github">jupyterlab/hatch-nodejs-version</remote-id>
 		<remote-id type="pypi">hatch-nodejs-version</remote-id>
 	</upstream>
 </pkgmetadata>

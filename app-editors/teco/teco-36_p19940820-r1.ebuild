@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,7 +8,7 @@ inherit toolchain-funcs flag-o-matic readme.gentoo-r1
 DESCRIPTION="Classic TECO editor, Predecessor to EMACS"
 HOMEPAGE="https://www.ibiblio.org/pub/linux/apps/editors/tty/ https://www.ibiblio.org/pub/academic/computer-science/history/pdp-11/teco/"
 SRC_URI="https://www.ibiblio.org/pub/linux/apps/editors/tty/teco.tar.gz -> ${P}.tar.gz
-	doc? ( https://dev.gentoo.org/~ulm/distfiles/tecodoc.tar.gz )"
+	doc? ( https://distfiles.gentoo.org/pub/proj/emacs/tecodoc.tar.gz )"
 S="${WORKDIR}"
 
 LICENSE="freedist"

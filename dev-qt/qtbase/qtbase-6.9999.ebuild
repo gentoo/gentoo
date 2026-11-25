@@ -12,7 +12,7 @@ if [[ ${QT6_BUILD_TYPE} == release ]]; then
 	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~x86"
 fi
 
-declare -A QT6_IUSE=(
+declare -gA QT6_IUSE=(
 	[global]="+ssl +udev zstd"
 	[core]="icu io-uring journald syslog"
 	[modules]="+concurrent +dbus +gui +network +sql +xml"
@@ -154,7 +154,6 @@ RDEPEND="
 	!<dev-qt/qtvirtualkeyboard-${PV}:6
 	!<dev-qt/qtwayland-${PV}:6
 	!<dev-qt/qtwebchannel-${PV}:6
-	!<dev-qt/qtwebengine-${PV}:6
 	!<dev-qt/qtwebsockets-${PV}:6
 	!<dev-qt/qtwebview-${PV}:6
 	syslog? ( virtual/logger )
@@ -188,6 +187,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-6.6.3-gcc14-avx512fp16.patch
 	"${FILESDIR}"/${PN}-6.8.2-cross.patch
 	"${FILESDIR}"/${PN}-6.9.0-no-direct-extern-access.patch
+	"${FILESDIR}"/${PN}-6.11.3-skip-gentoo-chainload.patch
 )
 
 src_prepare() {
@@ -195,19 +195,20 @@ src_prepare() {
 
 	if use test; then
 		# test itself has -Werror=strict-aliasing issues, drop for simplicity
-		sed -e '/add_subdirectory(qsharedpointer)/d' \
-			-i tests/auto/corelib/tools/CMakeLists.txt || die
+		cmake_comment_add_subdirectory -f tests/auto/corelib/tools qsharedpointer
 
 		# workaround for __extendhfxf2 being used for tst_qfloat16.cpp
 		# which is unavailable with compiler-rt (assume used if clang)
 		if tc-is-clang; then
-			sed -e '/add_subdirectory(qfloat16)/d' \
-				-i tests/auto/corelib/global/CMakeLists.txt || die
+			cmake_comment_add_subdirectory -f tests/auto/corelib/global qfloat16
 		fi
 	fi
 }
 
 src_configure() {
+	use elibc_musl && #980330
+		append-ldflags $(test-flags-CCLD -Wl,-z,stack-size=0x100000)
+
 	if use gtk; then
 		# defang automagic dependencies (bug #624960)
 		use X || append-cxxflags -DGENTOO_GTK_HIDE_X11
@@ -359,6 +360,9 @@ src_test() {
 		tst_xdgdecorationv1
 		# fails for unknown reasons, but seatv4 is not actually used nowadays
 		tst_seatv4
+		# sockets fail when path is too long on linux, and this uses e.g.
+		# ${T}/runtime-portage/qt_networkreply_test_fullServerName12237.sock
+		tst_qnetworkreply_local
 		# fails with network sandbox
 		tst_qdnslookup
 		# fails with sandbox
@@ -370,8 +374,9 @@ src_test() {
 		tst_qprocess #936484
 		tst_qtimer
 		tst_wayland_cursor
-		# haystacksWithMoreThan4GiBWork can easily OOM (16GB ram not enough)
-		tst_qlatin1stringmatcher
+		# troublesome tests that intentionally use large amounts of memory
+		tst_qlatin1stringmatcher # haystacksWithMoreThan4GiBWork
+		tst_qbytearray_large #986170
 		# these can be flaky depending on the environment/toolchain
 		tst_qlogging # backtrace log test can easily vary
 		tst_q{,raw}font # affected by available fonts / settings (bug #914737)
@@ -399,12 +404,16 @@ src_test() {
 		tst_qimagewriter
 		tst_qpluginloader
 		tst_quuid # >=6.6.2 had related fixes, needs retesting
+		# this test has often caused trouble depending on arch, endianness,
+		# musl, and others with some image/pixel formats and similar and,
+		# while there is likely real bugs, it's above what I'm willing to
+		# handle for now
+		tst_qimage
 		# partially broken on llvm-musl, needs looking into but skip to have
 		# a baseline for regressions (rest of dev-qt still passes with musl)
 		$(usev elibc_musl '
 			tst_qicoimageformat
 			tst_qimagereader
-			tst_qimage
 		')
 		# fails due to hppa's NaN handling, needs looking into (bug #914371)
 		$(usev hppa '

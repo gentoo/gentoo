@@ -263,5 +263,4 @@ opencl
 
 # Ben de Groot <yngwin@gentoo.org> (2015-02-01)
 # please remove when keyworded
-qt5
 qt6

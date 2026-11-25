@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -22,6 +22,11 @@ DEPEND="test? ( dev-cpp/gtest )"
 PATCHES=(
 	"${FILESDIR}/${PN}-1.0.0-disable_Werror-644042.patch"
 )
+
+src_prepare() {
+	cmake_src_prepare
+	sed -e 's/cxx_std_14/cxx_std_17/g' -i CMakeLists.txt || die
+}
 
 src_configure() {
 	local mycmakeargs=(

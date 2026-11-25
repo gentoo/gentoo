@@ -1,0 +1,13 @@
+diff --git a/src/exabgp/application/healthcheck.py b/src/exabgp/application/healthcheck.py
+index 66e5a252f..7a3a4d416 100644
+--- a/src/exabgp/application/healthcheck.py
++++ b/src/exabgp/application/healthcheck.py
+@@ -231,7 +231,7 @@ def system_ips(ip_ifnames, label, label_only, label_exact_match):
+         labelre = re.compile(r'.*\s+(?:' + '|'.join(ifnames) + r'):(?P<label>[^\\\s]+).*')
+         for ifname in ifnames:
+             cmd = subprocess.Popen(
+-                f'/sbin/ip -o address show dev {ifname}'.split(), shell=False, stdout=subprocess.PIPE
++                f'ip -o address show dev {ifname}'.split(), shell=False, stdout=subprocess.PIPE
+             )
+             output += [line for line in cmd.stdout]
+     else:

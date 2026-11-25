@@ -1,0 +1,45 @@
+From: Leigh Scott <leigh123linux@gmail.com>
+Date: Tue, 9 Sep 2025 15:26:14 +0100
+Subject: Use libgirepository-2.0 for compatibility with pygobject 3.52
+
+Note this patch leaks the default GIRepository and would not be suitable for
+upstream. But it's a one-time leak of global data, so who cares.
+
+Totem upstream uses libpeas2 instead.
+
+Patch by: Leigh Scott
+This note by: Michael Catanzaro
+
+Origin: vendor, Fedora, https://src.fedoraproject.org/rpms/totem/c/a213a514b7c2ac22d4e012e168e41eaf839e8112?branch=rawhide
+Bug-Debian: https://bugs.debian.org/1099164
+Bug-Debian: https://bugs.debian.org/1118363
+---
+ src/plugins/totem-plugins-engine.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/src/plugins/totem-plugins-engine.c b/src/plugins/totem-plugins-engine.c
+index 9e547dd..79ce172 100644
+--- a/src/plugins/totem-plugins-engine.c
++++ b/src/plugins/totem-plugins-engine.c
+@@ -35,7 +35,7 @@
+ 
+ #include <glib/gi18n.h>
+ #include <glib.h>
+-#include <girepository.h>
++#include <girepository/girepository.h>
+ #include <libpeas/peas-activatable.h>
+ #include <libpeas/peas-extension-set.h>
+ 
+@@ -101,9 +101,9 @@ totem_plugins_engine_get_default (TotemObject *totem)
+ 
+ 	g_return_val_if_fail (totem != NULL, NULL);
+ 
+-	g_irepository_require (g_irepository_get_default (), "Peas", "1.0", 0, NULL);
+-	g_irepository_require (g_irepository_get_default (), "PeasGtk", "1.0", 0, NULL);
+-	g_irepository_require (g_irepository_get_default (), "Totem", TOTEM_API_VERSION, 0, NULL);
++	gi_repository_require (gi_repository_dup_default (), "Peas", "1.0", 0, NULL);
++	gi_repository_require (gi_repository_dup_default (), "PeasGtk", "1.0", 0, NULL);
++	gi_repository_require (gi_repository_dup_default (), "Totem", TOTEM_API_VERSION, 0, NULL);
+ 
+ 	paths = totem_get_plugin_paths ();
+ 

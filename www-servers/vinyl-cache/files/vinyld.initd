@@ -1,0 +1,77 @@
+#!/sbin/openrc-run
+# Copyright 1999-2026 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+VINYLD_PID=${VINYLD_PID:-/run/${SVCNAME}.pid}
+CONFIGFILES="${CONFIGFILE:-/etc/vinyl/default.vcl}"
+
+command="${VINYLD:-/usr/sbin/vinyld}"
+command_args="-j unix,user=vinyl -P ${VINYLD_PID} -f ${CONFIGFILE} ${VINYLD_OPTS}"
+pidfile="${VINYLD_PID}"
+
+extra_commands="configtest"
+extra_started_commands="reload"
+
+description_configtest="Run syntax tests for configuration files."
+description_reload="Reloads the configuration."
+
+depend() {
+	need net
+}
+
+configtest() {
+	ebegin "Checking ${SVCNAME} configuration"
+	checkconfig
+	eend $?
+}
+
+checkconfig() {
+	${VINYLD} -C -f ${CONFIGFILE} >/dev/null 2>&1
+	ret=$?
+	if [ $ret -ne 0 ]; then
+		eerror "${SVCNAME} has detected an error in your setup:"
+		${VINYLD} -C -f ${CONFIGFILE}
+	fi
+
+	return $ret
+}
+
+start_pre() {
+	checkconfig || return 1
+}
+
+stop_pre() {
+	if [ "${RC_CMD}" = "restart" ]; then
+		checkconfig || return 1
+	fi
+}
+
+reload() {
+	checkconfig || return 1
+
+	ebegin "Reloading vinyl"
+
+	$VINYLADM vcl.list >/dev/null 2>&1
+	ret=$?
+	if [ $ret -ne 0 ]; then
+		eerror "${SVCNAME} cannot list configuration"
+		return 1
+	fi
+
+	new_config="reload_$(date +%FT%H:%M:%S)"
+	$VINYLADM vcl.load $new_config $CONFIGFILE >/dev/null 2>&1
+	ret=$?
+	if [ $ret -ne 0 ]; then
+		eerror "${SVCNAME} cannot load configuration"
+		return 1
+	fi
+
+	$VINYLADM vcl.use $new_config >/dev/null 2>&1
+	ret=$?
+	if [ $ret -ne 0 ]; then
+		eerror "${SVCNAME} cannot switch configuration"
+		return 1
+	fi
+
+	eend 0
+}

@@ -15,7 +15,6 @@ SRC_URI="https://github.com/plotly/plotly.py/archive/refs/tags/v${PLOTLY_PV}.tar
 S="${WORKDIR}/plotly.py-${PLOTLY_PV}/packages/python/${PN}"
 
 # The warning about tests not being enabled is a false positive.
-# Add distutils_enable_tests and restrict the tests to suppress the warning.
 RESTRICT="test"
 
 LICENSE="MIT"
@@ -28,4 +27,3 @@ RDEPEND="
 
 # There are sphinx docs but we are missing a bunch of dependencies.
 # distutils_enable_sphinx ../../../doc/apidoc
-distutils_enable_tests pytest

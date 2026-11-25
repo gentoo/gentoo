@@ -1,0 +1,49 @@
+https://git.kernel.org/pub/scm/libs/libtrace/libtraceevent.git/commit/?id=7f9698364b2617ed343e7736904b75cff943132a
+
+From 7f9698364b2617ed343e7736904b75cff943132a Mon Sep 17 00:00:00 2001
+From: Emil Thorsoe <ethorsoe@tuxera.com>
+Date: Thu, 7 May 2026 17:23:22 +0300
+Subject: libtraceevent utest: Fix type of args in test_btf_read
+
+On 32-bit system args contains values that do not fit in 32 long,
+use uint64_t.
+
+Link: https://lore.kernel.org/7940a891-2af7-4ae1-ad5f-3cf7960df529@tuxera.com
+Signed-off-by: Emil Thorsoe <ethorsoe@tuxera.com>
+Signed-off-by: Steven Rostedt <rostedt@goodmis.org>
+---
+ utest/traceevent-utest.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/utest/traceevent-utest.c b/utest/traceevent-utest.c
+index 7d09bf2..ea64166 100644
+--- a/utest/traceevent-utest.c
++++ b/utest/traceevent-utest.c
+@@ -8,6 +8,7 @@
+  */
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <stdint.h>
+ #include <sys/stat.h>
+ #include <fcntl.h>
+ #include <unistd.h>
+@@ -382,7 +383,7 @@ static void test_parse_sizeof_undef(void)
+ 
+ static void test_btf_read(void)
+ {
+-	unsigned long args[] = {0x7ffe7d33f3d0, 0, 0, 0, 0, 0};
++	uint64_t args[] = {0x7ffe7d33f3d0, 0, 0, 0, 0, 0};
+ 	const char *func = "getname_flags";
+ 	struct trace_seq *s = test_seq;
+ 	struct stat st;
+@@ -420,7 +421,7 @@ static void test_btf_read(void)
+ 	trace_seq_init(s);
+ 	trace_seq_printf(s, "%s(", func);
+ 
+-	CU_TEST(tep_btf_print_args(test_tep, s, args, nr, sizeof(long), func) == 0);
++	CU_TEST(tep_btf_print_args(test_tep, s, args, nr, sizeof(*args), func) == 0);
+ 
+ 	trace_seq_puts(s, ")\n");
+ 	trace_seq_terminate(s);
+-- 
+cgit 1.3-korg

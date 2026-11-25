@@ -1,8 +1,8 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit cmake udev python-single-r1
 
@@ -28,6 +28,14 @@ RDEPEND="python? ( ${PYTHON_DEPS} )
 	zeroconf? ( net-dns/avahi[dbus] )"
 DEPEND="${RDEPEND}"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
+
+PATCHES=( "${FILESDIR}"/${P}-cmake4.patch )
+
+pkg_setup() {
+	if use python; then
+		python-single-r1_pkg_setup
+	fi
+}
 
 src_configure() {
 	local mycmakeargs=(

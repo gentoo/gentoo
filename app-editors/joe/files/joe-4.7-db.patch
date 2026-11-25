@@ -1,0 +1,11 @@
+--- a/desktop/Makefile.am
++++ b/desktop/Makefile.am
+@@ -2,8 +2,3 @@ include $(top_srcdir)/Makevars
+ 
+ dist_desktop_DATA = joe.desktop jmacs.desktop jstar.desktop jpico.desktop
+ 
+-update-databases:
+-	-update-desktop-database $(desktopdir)
+-
+-install-data-hook: update-databases
+-uninstall-hook: update-databases

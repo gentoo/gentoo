@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # shellcheck disable=SC2207
@@ -18,7 +18,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{12..14} )
 # NOTE must match media-libs/osl
 LLVM_COMPAT=( {20..20} )
 LLVM_OPTIONAL=1
@@ -256,10 +256,11 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}/${PN}-4.0.2-FindClang.patch"
+	"${FILESDIR}/${PN}-5.0.0-FindClang.patch"
 	"${FILESDIR}/${PN}-4.1.1-FindLLVM.patch"
 	"${FILESDIR}/${PN}-4.1.1-numpy.patch"
 	"${FILESDIR}/${PN}-4.3.2-system-glog.patch"
+	"${FILESDIR}/${PN}-5.0.0-osd-omp-link.patch"
 )
 
 blender_check_requirements() {
@@ -605,11 +606,6 @@ src_configure() {
 	if use hip; then
 		mycmakeargs+=(
 			-DHIP_ROOT_DIR="$(hipconfig -p)"
-
-			-DHIP_HIPCC_FLAGS="-fcf-protection=none"
-
-			-DCMAKE_HIP_LINK_EXECUTABLE="$(get_llvm_prefix)/bin/clang++"
-
 			-DCYCLES_HIP_BINARIES_ARCH="$(get_amdgpu_flags)"
 		)
 
@@ -649,10 +645,12 @@ src_configure() {
 		)
 	fi
 
-	if tc-is-clang || use osl; then
+	if use osl; then
 		mycmakeargs+=(
 			-DWITH_CLANG="yes"
 			-DWITH_LLVM="yes"
+			-DLLVM_ROOT="$(get_llvm_prefix)"
+			-DClang_ROOT="$(get_llvm_prefix)"
 		)
 	fi
 
@@ -903,16 +901,6 @@ pkg_postinst() {
 		ewarn "an other LLVM version than what OSL is linked to."
 		ewarn "See https://bugs.gentoo.org/880671 for more details"
 		ewarn ""
-	fi
-
-	# NOTE build_files/cmake/Modules/FindPythonLibsUnix.cmake: set(_PYTHON_VERSION_SUPPORTED 3.11)
-	if ! use python_single_target_python3_11; then
-		elog "You are building Blender with a newer python version than"
-		elog "supported by this version upstream."
-		elog "If you experience breakages with e.g. plugins, please switch to"
-		elog "PYTHON_SINGLE_TARGET: python3_11 instead."
-		elog "Bug: https://bugs.gentoo.org/737388"
-		elog
 	fi
 
 	xdg_icon_cache_update

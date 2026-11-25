@@ -6,6 +6,7 @@
 		<name>Gentoo Haskell</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">aristidb/http-types</remote-id>
+		<remote-id type="hackage">http-types</remote-id>
+		<remote-id type="github">Vlix/http-types</remote-id>
 	</upstream>
 </pkgmetadata>

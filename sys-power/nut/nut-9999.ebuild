@@ -1,11 +1,11 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..14} )
-inherit bash-completion-r1 desktop linux-info optfeature
-inherit python-single-r1 systemd tmpfiles toolchain-funcs udev wrapper xdg
+PYTHON_COMPAT=( python3_{12..15} )
+inherit desktop linux-info optfeature python-single-r1 shell-completion
+inherit systemd tmpfiles toolchain-funcs udev wrapper xdg
 
 MY_P=${P/_/-}
 
@@ -16,7 +16,11 @@ if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/networkupstools/${PN}.git"
 	inherit git-r3
 else
-	SRC_URI="https://networkupstools.org/source/${PV%.*}/${MY_P}.tar.gz"
+	inherit verify-sig
+	SRC_URI="
+		https://networkupstools.org/source/${PV%.*}/${MY_P}.tar.gz
+		verify-sig? ( https://networkupstools.org/source/${PV%.*}/${MY_P}.tar.gz.sig )
+	"
 	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
 fi
 
@@ -24,7 +28,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="gpio cgi doc ipmi serial i2c +man snmp +usb modbus selinux ssl tcpd test xml zeroconf python monitor systemd"
+IUSE="cgi doc gpio i2c ipmi +man modbus monitor python selinux serial snmp ssl systemd test tcpd upower +usb xml zeroconf"
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="
@@ -39,8 +43,8 @@ DEPEND="
 	acct-user/nut
 	dev-libs/libltdl
 	virtual/udev
-	cgi? ( >=media-libs/gd-2[png] )
-	gpio? ( dev-libs/libgpiod )
+	cgi? ( >=media-libs/gd-2:2=[png] )
+	gpio? ( dev-libs/libgpiod:= )
 	i2c? ( sys-apps/i2c-tools )
 	ipmi? ( sys-libs/freeipmi )
 	modbus? ( dev-libs/libmodbus )
@@ -49,6 +53,10 @@ DEPEND="
 	ssl? ( >=dev-libs/openssl-1:= )
 	systemd? ( >=sys-apps/systemd-253 )
 	tcpd? ( sys-apps/tcp-wrappers )
+	upower? (
+		dev-libs/glib:2
+		sys-power/upower
+	)
 	usb? ( virtual/libusb:1 )
 	xml? ( >=net-libs/neon-0.25.0:= )
 	zeroconf? ( net-dns/avahi )
@@ -67,10 +75,14 @@ RDEPEND="
 	selinux? ( sec-policy/selinux-nut )
 "
 
+if [[ ${PV} != *9999 ]]; then
+	BDEPEND+=" sec-keys/openpgp-keys-nut"
+	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/nut.asc
+fi
+
 PATCHES=(
-	"${FILESDIR}/${PN}-2.6.2-lowspeed-buffer-size.patch"
 )
-PATCH_NEEDS_AUTOGEN=1
+#PATCH_NEEDS_AUTOGEN=1
 
 pkg_pretend() {
 	if use i2c; then
@@ -100,13 +112,12 @@ pkg_setup() {
 }
 
 src_prepare() {
-	if use systemd; then
-		PATCHES+=( "${FILESDIR}/systemd_notify_285.patch" )
-	else
-		PATCHES+=( "${FILESDIR}/systemd_notify_285_openrc.patch" )
-	fi
-
 	default
+
+	# po files not installed so symlinks would be orphans.
+	# Even so symlinks would be only useful for gtk2 and qt5 as per upstream.
+	sed -e '/^install-data-hook-app-locale-symlinks:/,/^$/ { /UTF8_POFILE/d }' \
+		-i scripts/python/Makefile.* || die
 
 	if [[ ${PV} == *9999 ]] || [[ ${PATCH_NEEDS_AUTOGEN} == 1 ]] ; then
 		./autogen.sh || die
@@ -119,6 +130,7 @@ src_configure() {
 	local myeconfargs=(
 		--datadir=/usr/share/nut
 		--datarootdir=/usr/share/nut
+		--disable-spellcheck # bug #974679
 		--disable-static
 		--disable-strip
 		--disable-Werror
@@ -129,12 +141,14 @@ src_configure() {
 		--with-htmlpath=/usr/share/nut/html
 		--with-logfacility=LOG_DAEMON
 		--with-statepath=/run/nut
-		--with-systemdsystemunitdir="$(systemd_get_systemunitdir)"
+		# systemdsystemunitdir implies "basic" systemd support, bug #977380
+		--with-systemdsystemunitdir="$(usex systemd $(systemd_get_systemunitdir) no)"
 		--with-systemdtmpfilesdir="/usr/lib/tmpfiles.d"
+		# Shortcut systemd feature tests to avoid sandbox violations, bug #985347
+		ac_cv_path_SYSTEMD_ANALYZE_PROGRAM="${BROOT}/bin/$(usex systemd true false)"
 		--with-udev-dir="$(get_udevdir)"
 		--with-user=nut
 		--without-powerman
-		--without-python
 		--without-python2
 		--with-altpidpath=/run/nut
 		--with-pidpath=/run/nut
@@ -151,6 +165,7 @@ src_configure() {
 		$(use_with systemd libsystemd)
 		$(use_with tcpd wrap)
 		$(use_with usb)
+		$(use_with upower)
 		$(use_with xml neon)
 		$(use_with zeroconf avahi)
 	)
@@ -215,10 +230,10 @@ src_install() {
 	fi
 
 	if use monitor; then
-		make_wrapper NUT-Monitor-py3qt5 /usr/share/nut/nut-monitor/app/NUT-Monitor-py3qt5 /usr/share/nut/nut-monitor/app
+		make_wrapper NUT-Monitor-py3qt6 /usr/share/nut/nut-monitor/app/NUT-Monitor-py3qt6 /usr/share/nut/nut-monitor/app
 
 		# Install desktop shortcut
-		newmenu scripts/python/app/nut-monitor-py3qt5.desktop nut-monitor.desktop
+		newmenu scripts/python/app/nut-monitor-py3qt6.desktop nut-monitor.desktop
 
 		# Installing Application icons
 		local res
@@ -256,7 +271,7 @@ pkg_postinst() {
 
 	udev_reload
 
-	tmpfiles_process nut-common-tmpfiles.conf
+	use systemd && tmpfiles_process nut-common-tmpfiles.conf
 	xdg_pkg_postinst
 }
 

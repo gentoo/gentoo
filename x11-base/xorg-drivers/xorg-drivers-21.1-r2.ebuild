@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -35,7 +35,6 @@ IUSE_VIDEO_CARDS="
 	video_cards_intel
 	video_cards_mga
 	video_cards_nouveau
-	video_cards_omap
 	video_cards_qxl
 	video_cards_r128
 	video_cards_radeon
@@ -44,9 +43,6 @@ IUSE_VIDEO_CARDS="
 	video_cards_tegra
 	video_cards_vc4
 	video_cards_vesa
-	video_cards_via
-	video_cards_virtualbox
-	video_cards_vmware
 	video_cards_nvidia
 "
 
@@ -78,7 +74,6 @@ PDEPEND="
 	video_cards_intel?         ( >=x11-base/xorg-server-${PV}[-minimal] )
 	video_cards_mga?           ( >=x11-drivers/xf86-video-mga-1.6.5 )
 	video_cards_nouveau?       ( >=x11-drivers/xf86-video-nouveau-1.0.13 )
-	video_cards_omap?          ( >=x11-drivers/xf86-video-omap-0.4.5 )
 	video_cards_qxl?           ( x11-drivers/xf86-video-qxl )
 	video_cards_nvidia?        ( x11-drivers/nvidia-drivers )
 	video_cards_r128?          ( >=x11-drivers/xf86-video-r128-6.10.2 )
@@ -88,7 +83,4 @@ PDEPEND="
 	video_cards_tegra?         ( >=x11-base/xorg-server-${PV}[-minimal] )
 	video_cards_vc4?           ( >=x11-base/xorg-server-${PV}[-minimal] )
 	video_cards_vesa?          ( x11-drivers/xf86-video-vesa )
-	video_cards_via?           ( x11-drivers/xf86-video-openchrome )
-	video_cards_virtualbox?    ( x11-drivers/xf86-video-vboxvideo )
-	video_cards_vmware?        ( >=x11-drivers/xf86-video-vmware-13.3.0 )
 "

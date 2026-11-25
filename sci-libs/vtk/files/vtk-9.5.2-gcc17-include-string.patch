@@ -1,0 +1,22 @@
+From 6c0eea93a53da99afe1cdd7e660935bb139ba2c2 Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx@gmail.com>
+Date: Mon, 8 Jun 2026 16:00:43 +0200
+Subject: gcc17 include string
+
+Signed-off-by: Paul Zander <negril.nx@gmail.com>
+
+diff --git a/ThirdParty/token/vtktoken/token/Manager.h b/ThirdParty/token/vtktoken/token/Manager.h
+index 69a3840ca5..19585a8999 100644
+--- a/ThirdParty/token/vtktoken/token/Manager.h
++++ b/ThirdParty/token/vtktoken/token/Manager.h
+@@ -8,6 +8,7 @@
+ #include <functional>
+ #include <memory>
+ #include <mutex>
++#include <string>
+ #include <unordered_map>
+ #include <unordered_set>
+ 
+-- 
+2.54.0
+

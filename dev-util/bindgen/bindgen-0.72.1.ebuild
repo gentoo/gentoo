@@ -1,4 +1,4 @@
-# Copyright 2023-2025 Gentoo Authors
+# Copyright 2023-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,7 +6,7 @@ EAPI=8
 CRATES=" "
 inherit rust-toolchain cargo
 
-DESCRIPTION="Automatically generates Rust FFI bindings to C and C++ libraries."
+DESCRIPTION="Automatically generate Rust FFI bindings to C and C++ libraries"
 HOMEPAGE="https://rust-lang.github.io/rust-bindgen/"
 SRC_URI="https://github.com/rust-lang/rust-${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 	https://github.com/gentoo-crate-dist/rust-${PN}/releases/download/v${PV}/rust-${P}-crates.tar.xz

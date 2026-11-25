@@ -1,0 +1,34 @@
+From 9b2bf1a6d17c2d39a4709afe3f3174e04a7e0fc3 Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+Date: Fri, 13 Mar 2026 11:48:08 +0100
+Subject: [PATCH] boost-1.70
+
+support boost::system header-only
+
+Signed-off-by: Paul Zander <negril.nx+gentoo@gmail.com>
+
+diff --git a/autoconf/ax_boost_system.m4 b/autoconf/ax_boost_system.m4
+index 4d1c92b..c7cafd4 100644
+--- a/autoconf/ax_boost_system.m4
++++ b/autoconf/ax_boost_system.m4
+@@ -78,6 +78,9 @@ AC_DEFUN([AX_BOOST_SYSTEM],
+         if test "x$ax_cv_boost_system" = "xyes"; then
+             AC_SUBST(BOOST_CPPFLAGS)
+ 
++            if test "x$ax_boost_user_system_lib" = "xheader-only"; then
++                AC_DEFINE(HAVE_BOOST_SYSTEM,,[define if the Boost::System header is available])
++            else
+             AC_DEFINE(HAVE_BOOST_SYSTEM,,[define if the Boost::System library is available])
+             BOOSTLIBDIR=`echo $BOOST_LDFLAGS | sed -e 's/@<:@^\/@:>@*//'`
+ 
+@@ -112,6 +115,7 @@ AC_DEFUN([AX_BOOST_SYSTEM],
+             if test "x$link_system" = "xno"; then
+                 AC_MSG_ERROR(Could not link against $ax_lib !)
+             fi
++            fi
+         fi
+ 
+         CPPFLAGS="$CPPFLAGS_SAVED"
+-- 
+2.53.0
+

@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,7 +13,7 @@ SRC_URI="https://github.com/airdcpp-web/${PN}/archive/${PV}.tar.gz -> ${P}.tar.g
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~riscv ~x86"
+KEYWORDS="amd64 ~riscv x86"
 IUSE="nat-pmp +tbb +webui"
 
 RDEPEND="
@@ -40,6 +40,12 @@ BDEPEND="
 	${PYTHON_DEPS}
 "
 PDEPEND="webui? ( www-apps/airdcpp-webui )"
+
+PATCHES=(
+	# Fix build with OpenSSL 4
+	# https://github.com/airdcpp/airdcpp-core/commit/c7a85311d
+	"${FILESDIR}/${PN}-2.14.0-openssl-4.patch"
+)
 
 src_configure() {
 	local mycmakeargs=(

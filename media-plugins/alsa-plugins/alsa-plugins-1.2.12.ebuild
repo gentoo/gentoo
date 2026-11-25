@@ -35,6 +35,10 @@ BDEPEND="
 	verify-sig? ( sec-keys/openpgp-keys-alsa )
 "
 
+PATCHES=(
+	"${FILESDIR}"/${P}-ffmpeg9.patch
+)
+
 src_prepare() {
 	default
 

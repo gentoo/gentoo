@@ -64,7 +64,7 @@ DEPEND="
 	system-icu? ( dev-libs/icu:= )
 	suid? ( acct-group/mail )
 	systemd? ( sys-apps/systemd:= )
-	textcat? ( app-text/libexttextcat )
+	textcat? ( app-text/libexttextcat:= )
 	unwind? ( sys-libs/libunwind:= )
 	zstd? ( app-arch/zstd:= )
 	"

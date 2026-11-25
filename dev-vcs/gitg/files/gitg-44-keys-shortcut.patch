@@ -1,0 +1,55 @@
+From: =?utf-8?q?Jean-Fran=C3=A7ois_Fortin_Tam?= <nekohayo@gmail.com>
+Date: Thu, 7 Dec 2023 17:27:24 -0500
+Subject: Use Alt+Page_Up / Alt+Page_Down for previous/next in the commit
+ dialog
+
+(cherry picked from commit 992722b53f38fa2e83e68f35aa52dede0b5893b7)
+
+Origin: upstream, after 44
+---
+ gitg/commit/gitg-commit-dialog.vala | 7 +++++--
+ gitg/resources/ui/gitg-shortcuts.ui | 4 ++--
+ 2 files changed, 7 insertions(+), 4 deletions(-)
+
+diff --git a/gitg/commit/gitg-commit-dialog.vala b/gitg/commit/gitg-commit-dialog.vala
+index cf57020..f5f12f4 100644
+--- a/gitg/commit/gitg-commit-dialog.vala
++++ b/gitg/commit/gitg-commit-dialog.vala
+@@ -764,11 +764,14 @@ class Dialog : Gtk.Dialog
+ 				d_button_ok.activate();
+ 				return true;
+ 			}
+-			else if ((event.keyval == Gdk.Key.Left || event.keyval == Gdk.Key.KP_Left))
++		}
++		else if ((mmask & event.state) == Gdk.ModifierType.MOD1_MASK)
++		{
++			if (event.keyval == Gdk.Key.Page_Up)
+ 			{
+ 				on_prev_commit_message_button_clicked ();
+ 			}
+-			else if ((event.keyval == Gdk.Key.Right || event.keyval == Gdk.Key.KP_Right))
++			else if (event.keyval == Gdk.Key.Page_Down)
+ 			{
+ 				on_next_commit_message_button_clicked ();
+ 			}
+diff --git a/gitg/resources/ui/gitg-shortcuts.ui b/gitg/resources/ui/gitg-shortcuts.ui
+index 8c19885..9cb5745 100644
+--- a/gitg/resources/ui/gitg-shortcuts.ui
++++ b/gitg/resources/ui/gitg-shortcuts.ui
+@@ -174,14 +174,14 @@
+             <child>
+               <object class="GtkShortcutsShortcut">
+                 <property name="visible">true</property>
+-                <property name="accelerator">&lt;primary&gt;Left</property>
++                <property name="accelerator">&lt;Alt&gt;Page_Up</property>
+                 <property name="title" translatable="yes" context="shortcut window">Previous commit message</property>
+               </object>
+             </child>
+             <child>
+               <object class="GtkShortcutsShortcut">
+                 <property name="visible">true</property>
+-                <property name="accelerator">&lt;primary&gt;Right</property>
++                <property name="accelerator">&lt;Alt&gt;Page_Down</property>
+                 <property name="title" translatable="yes" context="shortcut window">Next commit message</property>
+               </object>
+             </child>

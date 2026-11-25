@@ -1,9 +1,9 @@
-# Copyright 2022-2025 Gentoo Authors
+# Copyright 2022-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 inherit python-any-r1 readme.gentoo-r1 toolchain-funcs wine
 
 WINE_GECKO=2.47.4
@@ -222,7 +222,7 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
-	wine_src_postinst
+	wine_pkg_postinst
 
 	[[ -v WINE_HAD_ANY_SLOT ]] || readme.gentoo_print_elog
 

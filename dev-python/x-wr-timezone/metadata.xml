@@ -7,7 +7,7 @@
 	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
-		<remote-id type="github">niccokunzmann/x-wr-timezone</remote-id>
+		<remote-id type="github">pycalendar/x-wr-timezone</remote-id>
 		<remote-id type="pypi">x-wr-timezone</remote-id>
 	</upstream>
 </pkgmetadata>

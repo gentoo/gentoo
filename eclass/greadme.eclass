@@ -4,7 +4,7 @@
 # @ECLASS: greadme.eclass
 # @MAINTAINER:
 # Florian Schmaus <flow@gentoo.org>
-# @SUPPORTED_EAPIS: 8
+# @SUPPORTED_EAPIS: 8 9
 # @BLURB: install a doc file, that will be conditionally shown via elog messages
 # @DESCRIPTION:
 # An eclass for installing a README.gentoo doc file with important
@@ -45,6 +45,7 @@ _GREADME_ECLASS=1
 
 case ${EAPI} in
 	8) inherit eapi9-pipestatus ;;
+	9) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
@@ -61,7 +62,14 @@ _GREADME_REL_PATH="/usr/share/doc/${PF}/README.gentoo"
 # @ECLASS_VARIABLE: GREADME_DISABLE_AUTOFORMAT
 # @DEFAULT_UNSET
 # @DESCRIPTION:
-# If non-empty, the readme file will not be automatically formatted.
+# If non-empty, the readme file will not be automatically formatted if
+# EAPI < 9.
+
+# @ECLASS_VARIABLE: GREADME_AUTOFORMAT
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# If non-empty, the readme file will be automatically formatted if
+# EAPI >= 9.
 
 # @FUNCTION: greadme_stdin
 # @USAGE: [--append]
@@ -113,7 +121,19 @@ _greadme_install_doc() {
 	debug-print-function ${FUNCNAME} "$@"
 
 	local greadme="${_GREADME_TMP_FILE}"
-	if [[ ! ${GREADME_DISABLE_AUTOFORMAT} ]]; then
+
+	local autoformat
+	if [[ ${EAPI} == 8 ]]; then
+		# Older EAPI default is to auto-format.
+		autoformat=1
+		[[ ${GREADME_DISABLE_AUTOFORMAT} ]] && autoformat=
+	else
+		# The modern default is not to auto-format.
+		autoformat=
+		[[ ${GREADME_AUTOFORMAT} ]] && autoformat=1
+	fi
+
+	if [[ ${autoformat} ]]; then
 		greadme="${_GREADME_TMP_FILE}".formatted
 
 		# Use fold, followed by a sed to strip trailing whitespace.

@@ -1,0 +1,45 @@
+From e7be28fc4baa4701bab2415562f86378d61f2279 Mon Sep 17 00:00:00 2001
+From: "Z. Liu" <zhixu.liu@gmail.com>
+Date: Sun, 15 Nov 2026 13:42:11 +0800
+Subject: [PATCH 2/4] "%Lx" is not supported on musl
+
+replace it with strtoull
+
+Signed-off-by: Z. Liu <zhixu.liu@gmail.com>
+
+diff --git a/libop/op_events.c b/libop/op_events.c
+index 000b1dd2..deb65047 100644
+--- a/libop/op_events.c
++++ b/libop/op_events.c
+@@ -23,6 +23,7 @@
+ #include <stdlib.h>
+ #include <stdio.h>
+ #include <ctype.h>
++#include <errno.h>
+ 
+ static LIST_HEAD(events_list);
+ static LIST_HEAD(um_list);
+@@ -82,9 +83,18 @@ static int parse_hex(char const * str)
+ 
+ static u64 parse_long_hex(char const * str)
+ {
+-	u64 value;
+-	if (sscanf(str, "%Lx", &value) != 1)
++	/*
++	 * strtoull(3) is used rather than sscanf(3) with the %Lx conversion:
++	 * musl's sscanf() does not implement %Lx, it reports success without
++	 * storing anything, so every "event:" value would be read as garbage.
++	 */
++	char *end;
++
++	errno = 0;
++	u64 value = strtoull(str, &end, 16);
++	if (end == str || *end != '\0' || errno != 0) {
+ 		parse_error("expected long hexadecimal value");
++	}
+ 
+ 	fflush(stderr);
+ 	return value;
+-- 
+2.49.1
+

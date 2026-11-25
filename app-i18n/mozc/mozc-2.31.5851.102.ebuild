@@ -1,4 +1,4 @@
-# Copyright 2025 Gentoo Authors
+# Copyright 2025-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -24,7 +24,7 @@ PROTO_VER="29.3"
 # to simplify update
 CPYTHON_VER="3.11.10+20241016"
 
-DESCRIPTION="Mozc - Japanese input method editor."
+DESCRIPTION="Japanese input method editor"
 HOMEPAGE="https://github.com/google/mozc"
 # for new release, update versions according to MODULE.bazel or failures of the fetch's phase of bazel
 SRC_URI="

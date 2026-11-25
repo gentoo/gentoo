@@ -1,0 +1,57 @@
+# VMD compatibility patch for CUDA 13
+#
+# CUDA 13 removed several fields from the cudaDeviceProp structure that
+# VMD previously used to query device information. Specifically:
+#   - clockRate
+#   - kernelExecTimeoutEnabled
+#   - computeMode
+#   - singleToDoublePrecisionPerfRatio
+#
+# This patch replaces direct access to those fields with calls to
+# cudaDeviceGetAttribute(), which is the recommended approach and is
+# compatible with all CUDA versions.
+#
+# The changes are made in src/CUDAUtil.cu, in the functions:
+#   - vmd_cuda_device_props()
+#   - vmd_cuda_devpool_setdevice()
+#
+# Temporary variables are introduced where necessary to avoid scoping
+# issues, while preserving the original logic.
+#
+--- a/src/CUDAUtil.cu.old	2026-10-06 11:36:05.084205696 +0200
++++ b/src/CUDAUtil.cu	2026-10-06 11:36:20.990156537 +0200
+@@ -108,21 +108,21 @@
+   if (memb)
+     *memb = deviceProp.totalGlobalMem;
+   if (clockratekhz)
+-    *clockratekhz = deviceProp.clockRate;
++    cudaDeviceGetAttribute(clockratekhz, cudaDevAttrClockRate, dev);
+   if (smcount)
+     *smcount = deviceProp.multiProcessorCount;
+   if (asyncenginecount)
+     *asyncenginecount = deviceProp.asyncEngineCount;
+   if (kerneltimeout)
+-    *kerneltimeout = (deviceProp.kernelExecTimeoutEnabled != 0);
++    { int _kerneltimeout = 0; cudaDeviceGetAttribute(&_kerneltimeout, cudaDevAttrKernelExecTimeout, dev); *kerneltimeout = (_kerneltimeout != 0); }
+   if (integratedgpu)
+     *integratedgpu = (deviceProp.integrated != 0);
+   if (canmaphostmem)
+     *canmaphostmem = (deviceProp.canMapHostMemory != 0);
+   if (computemode)
+-    *computemode = deviceProp.computeMode;
++    cudaDeviceGetAttribute(computemode, cudaDevAttrComputeMode, dev);
+   if (spdpfpperfratio)
+-    *spdpfpperfratio = deviceProp.singleToDoublePrecisionPerfRatio;
++    cudaDeviceGetAttribute(spdpfpperfratio, cudaDevAttrSingleToDoublePrecisionPerfRatio, dev);
+   if (pageablememaccess)
+     *pageablememaccess = deviceProp.pageableMemoryAccess;
+   if (pageablememaccessuseshostpagetables)
+@@ -491,7 +491,7 @@
+   memset(&deviceProp, 0, sizeof(cudaDeviceProp));
+   if (cudaGetDeviceProperties(&deviceProp, dev) == cudaSuccess) {
+     float smscale = ((float) deviceProp.multiProcessorCount) / 30.0f;
+-    double clockscale = ((double) deviceProp.clockRate) / 1295000.0;
++    int _clockratekhz = 0; cudaDeviceGetAttribute(&_clockratekhz, cudaDevAttrClockRate, dev); double clockscale = ((double) _clockratekhz) / 1295000.0;
+     float speedscale = smscale * ((float) clockscale);
+ 
+ #if 0

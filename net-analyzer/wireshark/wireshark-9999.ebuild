@@ -6,13 +6,13 @@ EAPI=8
 LUA_COMPAT=( lua5-{3..4} )
 PYTHON_COMPAT=( python3_{12..14} )
 
-inherit fcaps lua-single python-any-r1 qmake-utils toolchain-funcs xdg cmake
+inherit fcaps lua-single python-any-r1 toolchain-funcs xdg cmake
 
 DESCRIPTION="Network protocol analyzer (sniffer)"
 HOMEPAGE="https://www.wireshark.org/"
 
 if [[ ${PV} == *9999* ]] ; then
-	EGIT_REPO_URI="https://gitlab.com/wireshark/wireshark"
+	EGIT_REPO_URI="https://gitlab.com/wireshark/wireshark.git"
 	inherit git-r3
 else
 	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/wireshark.asc
@@ -151,6 +151,17 @@ src_unpack() {
 	fi
 }
 
+src_prepare() {
+	# since 4.6.5 the Lua version is found "automatically" and can no longer
+	# be passed in via LUA_FIND_VERSIONS, so we override the search list.
+	if use lua; then
+		sed -i "s/set(LUA_VERSIONS5 5.5 5.4 5.3 5.2 5.1 5.0)/set(LUA_VERSIONS5 ${ELUA#lua})/g" \
+			cmake/modules/FindLua.cmake || die
+	fi
+
+	cmake_src_prepare
+}
+
 src_configure() {
 	local mycmakeargs
 
@@ -168,10 +179,6 @@ src_configure() {
 		-DENABLE_CCACHE=OFF
 
 		$(use androiddump && use pcap && echo -DEXTCAP_ANDROIDDUMP_LIBPCAP=yes)
-		$(usex gui LRELEASE=$(qt6_get_bindir)/lrelease '')
-		$(usex gui MOC=$(qt6_get_bindir)/moc '')
-		$(usex gui RCC=$(qt6_get_bindir)/rcc '')
-		$(usex gui UIC=$(qt6_get_bindir)/uic '')
 
 		-DBUILD_androiddump=$(usex androiddump)
 		-DBUILD_capinfos=$(usex capinfos)
@@ -206,7 +213,6 @@ src_configure() {
 		-DENABLE_ILBC=$(usex ilbc)
 		-DENABLE_KERBEROS=$(usex kerberos)
 		-DENABLE_LUA=$(usex lua)
-		-DLUA_FIND_VERSIONS="${ELUA#lua}"
 		-DENABLE_LZ4=$(usex lz4)
 		-DENABLE_MINIZIP=$(usex minizip)
 		-DENABLE_MINIZIPNG=OFF
@@ -293,14 +299,14 @@ src_install() {
 	if use gui ; then
 		local s
 
-		for s in 16 32 48 64 128 256 512 1024 ; do
+		for s in 16 32 48 64 256 ; do
 			insinto /usr/share/icons/hicolor/${s}x${s}/apps
 			newins resources/icons/wsicon${s}.png wireshark.png
 		done
 
 		for s in 16 24 32 48 64 128 256 ; do
 			insinto /usr/share/icons/hicolor/${s}x${s}/mimetypes
-			newins resources/icons//WiresharkDoc-${s}.png application-vnd.tcpdump.pcap.png
+			newins resources/icons/WiresharkDoc-${s}.png application-vnd.tcpdump.pcap.png
 		done
 	fi
 

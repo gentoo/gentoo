@@ -16,6 +16,9 @@ networks using an encrypted tunnel.</longdescription>
     <flag name="dco">Enable support for kernel data channel offload</flag>
     <flag name="down-root">Enable the down-root plugin</flag>
     <flag name="iproute2">Enabled iproute2 support instead of net-tools</flag>
+    <flag name="kernel-ovpn">
+        Transitional flag to support OVPN mainline module
+    </flag>
     <flag name="mbedtls">Use mbed TLS as the backend crypto library</flag>
     <flag name="openssl">Use OpenSSL as the backend crypto library</flag>
     <flag name="pkcs11">Enable PKCS#11 smartcard support</flag>

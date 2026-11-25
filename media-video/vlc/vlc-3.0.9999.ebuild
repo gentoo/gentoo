@@ -41,10 +41,10 @@ IUSE="alsa aom archive aribsub bidi bluray chromaprint chromecast dav1d dbus
 	dc1394 debug directx +dvbpsi dvd +encode faad fdk +ffmpeg flac fluidsynth
 	fontconfig +gcrypt gme keyring gstreamer +gui ieee1394 jack jpeg kate
 	libass libcaca libnotify +libsamplerate libtiger linsys lirc live lua
-	macosx-notifications mad matroska modplug mp3 mtp musepack ncurses nfs ogg
-	omxil optimisememory opus png projectm pulseaudio run-as-root samba
+	mad matroska modplug mp3 mtp musepack ncurses nfs ogg
+	omxil optimisememory opus png projectm pulseaudio run-as-root samba selinux
 	sftp shout sid skins soxr speex srt ssl svg taglib theora tremor truetype twolame
-	udev upnp vaapi v4l vdpau vnc vpx wayland +X x264 x265 xml zeroconf zvbi
+	udev upnp vaapi v4l vdpau vnc qsv vpx wayland +X x264 x265 xml zeroconf zvbi
 	cpu_flags_arm_neon cpu_flags_ppc_altivec cpu_flags_x86_mmx cpu_flags_x86_sse
 "
 REQUIRED_USE="
@@ -61,6 +61,7 @@ REQUIRED_USE="
 "
 # live+snapshots need bison+flex
 BDEPEND="
+	dev-build/autoconf-archive
 	sys-devel/bison
 	sys-devel/flex
 	>=sys-devel/gettext-0.19.8
@@ -74,6 +75,7 @@ BDEPEND="
 RDEPEND="
 	media-libs/libvorbis
 	net-dns/libidn:=
+	net-libs/librist
 	virtual/zlib:=
 	virtual/libintl
 	virtual/opengl
@@ -122,12 +124,11 @@ RDEPEND="
 	keyring? ( app-crypt/libsecret )
 	gstreamer? ( >=media-libs/gst-plugins-base-1.4.5:1.0 )
 	gui? (
-		dev-qt/qtcore:5
-		dev-qt/qtgui:5
-		dev-qt/qtsvg:5
-		dev-qt/qtwidgets:5
+		dev-qt/qtbase:6[gui,opengl,widgets]
+		dev-qt/qtdeclarative:6
+		dev-qt/qtsvg:6
 		X? (
-			dev-qt/qtx11extras:5
+			dev-qt/qtbase:6=[X]
 			x11-libs/libX11
 		)
 	)
@@ -174,6 +175,7 @@ RDEPEND="
 		>=media-libs/libprojectm-3.1.12:0=
 	)
 	pulseaudio? ( media-libs/libpulse )
+	qsv? ( media-libs/libvpl:= )
 	samba? ( >=net-fs/samba-4.0.0:0[client,-debug(-)] )
 	sftp? ( net-libs/libssh2 )
 	shout? ( media-libs/libshout )
@@ -229,6 +231,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	X? ( x11-base/xorg-proto )
 "
+RDEPEND+=" selinux? ( sec-policy/selinux-mplayer )"
 
 DOCS=( AUTHORS THANKS NEWS README doc/fortunes.txt )
 
@@ -258,6 +261,9 @@ src_prepare() {
 		./bootstrap
 	fi
 
+	# Disable Qt5
+	sed -i 's/Qt5Svg/Qt5Svg Qt5DisableDetection/' configure.ac || die
+
 	# Make it build with libtool 1.5
 	rm m4/lt* m4/libtool.m4 || die
 
@@ -268,6 +274,13 @@ src_prepare() {
 	if ! use dbus ; then
 		sed -i 's/ --started-from-file//' share/vlc.desktop.in || die
 	fi
+
+	local CXXSTD="17"
+	if has_version ">=dev-cpp/abseil-cpp-20260107.0"; then
+		# needs >=c++20
+		CXXSTD="20"
+	fi
+	sed -i -e "/AX_CXX_COMPILE_STDCXX/{s/_[0-9]*(/(${CXXSTD}, /}" configure.ac || die
 
 	eautoreconf
 }
@@ -344,7 +357,6 @@ src_configure() {
 		$(use_enable lirc)
 		$(use_enable live live555)
 		$(use_enable lua)
-		$(use_enable macosx-notifications osx-notifications)
 		$(use_enable mad)
 		$(use_enable matroska)
 		$(use_enable modplug mod)
@@ -383,6 +395,7 @@ src_configure() {
 		$(use_enable vaapi libva)
 		$(use_enable vdpau)
 		$(use_enable vnc)
+		$(use_enable qsv vpl)
 		$(use_enable vpx)
 		$(use_enable wayland)
 		$(use_with X x)
@@ -412,13 +425,13 @@ src_configure() {
 		--disable-libplacebo
 		--disable-maintainer-mode
 		--disable-merge-ffmpeg
-		--disable-mfx
 		--disable-mmal
+		--disable-openapv
 		--disable-opencv
 		--disable-opensles
 		--disable-oss
+		--disable-osx-notifications # MacOS only
 		--disable-rpi-omxil
-		--disable-schroedinger
 		--disable-sdl-image # not officially supported anymore
 		--disable-shine
 		--disable-sndio
@@ -486,6 +499,14 @@ src_install() {
 	if ! use gui; then
 		rm "${ED}"/usr/share/applications/*desktop || die
 	fi
+}
+
+pkg_preinst() {
+	if use gui && has_version ">=${CATEGORY}/${PN}-4[gui]"; then
+		ewarn "Downgrade from VLC-4 detected. If you experience runtime issues,"
+		ewarn "try cleaning up ~/.config/vlc first."
+	fi
+	xdg_pkg_preinst
 }
 
 pkg_postinst() {

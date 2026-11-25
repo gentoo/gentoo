@@ -5,7 +5,7 @@
     <email>gnu_andrew@member.fsf.org</email>
     <name>Andrew John Hughes</name>
   </maintainer>
-  <maintainer type="project">
+  <maintainer type="project" proxied="maintainer-and-proxy">
     <email>java@gentoo.org</email>
     <name>Java</name>
   </maintainer>

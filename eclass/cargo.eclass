@@ -21,7 +21,7 @@ if [[ -z ${_CARGO_ECLASS} ]]; then
 _CARGO_ECLASS=1
 
 if [[ -n ${RUST_NEEDS_LLVM} ]]; then
-		inherit llvm-r1
+	inherit llvm-r2
 fi
 
 if [[ -n ${CARGO_OPTIONAL} ]]; then
@@ -201,6 +201,22 @@ ECARGO_VENDOR="${ECARGO_HOME}/gentoo"
 # }
 # @CODE
 
+# @ECLASS_VARIABLE: CARGO_SKIP_TESTS
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# Optional array of test names to be skipped.
+# Should be defined before calling cargo_src_test.
+#
+# @CODE
+# src_test() {
+# 	local CARGO_SKIP_TESTS=(
+#		tests::filesystem
+#		tests::network
+# 	)
+# 	cargo_src_test --no-fail-fast
+# }
+# @CODE
+
 # @ECLASS_VARIABLE: ECARGO_HOME
 # @OUTPUT_VARIABLE
 # @DESCRIPTION:
@@ -280,7 +296,7 @@ _cargo_set_crate_uris() {
 			name="${BASH_REMATCH[1]}"
 			version="${BASH_REMATCH[2]}"
 		fi
-		url="https://crates.io/api/v1/crates/${name}/${version}/download -> ${name}-${version}.crate"
+		url="https://static.crates.io/crates/${name}/${name}-${version}.crate"
 		CARGO_CRATE_URIS+="${url} "
 
 		# when invoked by pkgbump, avoid fetching all the crates
@@ -294,7 +310,7 @@ _cargo_set_crate_uris() {
 			local crate commit crate_uri crate_dir host repo_ext feat_expr
 
 			for crate in "${!GIT_CRATES[@]}"; do
-				IFS=';' read -r crate_uri commit crate_dir host <<< "${GIT_CRATES[${crate}]}"
+				IFS=';' read -rd '' crate_uri commit crate_dir host < <(printf %s "${GIT_CRATES[${crate}]}")
 
 				if [[ -z ${host} ]]; then
 					case "${crate_uri}" in
@@ -502,10 +518,10 @@ cargo_update_crates () {
 	cargo_env "${@}" || die "Failed to update crates"
 }
 
-# @FUNCTION: cargo_src_unpack
+# @FUNCTION: cargo_crate_unpack
 # @DESCRIPTION:
-# Unpacks the package and the cargo registry.
-cargo_src_unpack() {
+# Unpack the *.crate files from ${A}.
+cargo_crate_unpack() {
 	debug-print-function ${FUNCNAME} "$@"
 
 	mkdir -p "${ECARGO_VENDOR}" "${S}" || die
@@ -516,9 +532,6 @@ cargo_src_unpack() {
 		case "${archive}" in
 			*.crate)
 				crates+=( "${archive}" )
-				;;
-			*)
-				unpack "${archive}"
 				;;
 		esac
 	done
@@ -555,9 +568,28 @@ cargo_src_unpack() {
 			eqawarn "a crate tarball instead and fetch it via SRC_URI.  You can use"
 			eqawarn "'pycargoebuild --crate-tarball' to create one."
 		fi
-		einfo "this package uses ${#crates[@]} number of crates: you are all good"
 	fi
+}
 
+# @FUNCTION: cargo_src_unpack
+# @DESCRIPTION:
+# Unpacks the package and the cargo registry.
+cargo_src_unpack() {
+	debug-print-function ${FUNCNAME} "$@"
+
+	mkdir -p "${ECARGO_VENDOR}" "${S}" || die
+
+	local archive
+	for archive in ${A}; do
+		case "${archive}" in
+			*.crate)
+				;;
+			*)
+				unpack "${archive}"
+				;;
+		esac
+	done
+	cargo_crate_unpack
 	cargo_gen_config
 }
 
@@ -605,8 +637,6 @@ cargo_live_src_unpack() {
 		umask "${EVCS_UMASK}" || die "Bad options to umask: ${EVCS_UMASK}"
 	fi
 
-	pushd "${S}" > /dev/null || die
-
 	# Respect user settings before cargo_gen_config is called.
 	if [[ ! ${CARGO_TERM_COLOR} ]]; then
 		[[ "${NOCOLOR}" = true || "${NOCOLOR}" = yes ]] && export CARGO_TERM_COLOR=never
@@ -636,8 +666,6 @@ cargo_live_src_unpack() {
 	if [[ -d ${ECARGO_REGISTRY_DIR}/git && ! -L "${ECARGO_HOME}/git" ]]; then
 		ln -sv "${ECARGO_REGISTRY_DIR}/git" "${ECARGO_HOME}/git" || die
 	fi
-
-	popd > /dev/null || die
 
 	# Restore settings if needed.
 	[[ ${unset_color} ]] && unset CARGO_TERM_COLOR
@@ -836,7 +864,35 @@ cargo_src_test() {
 
 	_cargo_check_initialized
 
-	set -- "${CARGO}" test $(usex debug "" --release) ${ECARGO_ARGS[@]} "$@"
+	# This is the same as myfeatures in cargo_src_configure:
+	# Prefix all test names with '--skip'.
+	[[ -z ${CARGO_SKIP_TESTS} ]] && declare -a CARGO_SKIP_TESTS=()
+	local CARGO_SKIP_TESTS_TYPE=$(declare -p CARGO_SKIP_TESTS 2>&-)
+	if [[ "${CARGO_SKIP_TESTS_TYPE}" != "declare -a CARGO_SKIP_TESTS="* ]]; then
+		die "CARGO_SKIP_TESTS must be declared as an array"
+	fi
+
+	skip=( ${CARGO_SKIP_TESTS[@]/#/--skip } )
+
+	# The skip args must be passed to the test harness, after a '--' on
+	# the command line of cargo test.
+	# To avoid breakage if the caller of cargo_src_test also passes '--',
+	# we split the caller args and group the skip args together with the
+	# caller args.
+	local args=( $@ )
+
+	sep="${#args}"
+	for i in "${!args[@]}"; do
+		[[ "${args[i]}" == "--" ]] && sep="$i";
+	done
+
+	cargo_test_args=( ${args[@]:0:sep} )
+	test_harness_args=( -- ${skip[@]} ${args[@]:sep} )
+
+	set -- "${CARGO}" test $(usex debug "" --release) \
+		${ECARGO_ARGS[@]} \
+		${cargo_test_args[@]} \
+		${test_harness_args[@]}
 	einfo "${@}"
 	cargo_env "${@}" || die "cargo test failed"
 }

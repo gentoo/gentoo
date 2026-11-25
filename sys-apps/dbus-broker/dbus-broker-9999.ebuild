@@ -1,4 +1,4 @@
-# Copyright 2017-2025 Gentoo Authors
+# Copyright 2017-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -35,7 +35,9 @@ DEPEND="
 	selinux? ( >=sys-libs/libselinux-3.2 )
 "
 RDEPEND="${DEPEND}
-	launcher? ( sys-apps/dbus )"
+	launcher? ( sys-apps/dbus )
+	selinux? ( sec-policy/selinux-dbus )
+"
 BDEPEND="
 	doc? ( dev-python/docutils )
 	virtual/pkgconfig

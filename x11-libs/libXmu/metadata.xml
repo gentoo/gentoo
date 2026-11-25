@@ -6,6 +6,6 @@
     <name>X11</name>
   </maintainer>
   <upstream>
-    <remote-id type="freedesktop-gitlab">xorg/lib/libXmu</remote-id>
+    <remote-id type="freedesktop-gitlab">xorg/lib/libxmu</remote-id>
   </upstream>
 </pkgmetadata>

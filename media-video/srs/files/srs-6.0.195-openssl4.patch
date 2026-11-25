@@ -1,0 +1,30 @@
+--- a/src/protocol/srs_protocol_http_client.cpp	2026-11-03 20:27:39.225882342 +0100
++++ b/src/protocol/srs_protocol_http_client.cpp	2026-11-03 20:35:03.099124647 +0100
+@@ -61,11 +61,8 @@
+     srs_error_t err = srs_success;
+ 
+     // For HTTPS, try to connect over security transport.
+-#if (OPENSSL_VERSION_NUMBER < 0x10002000L) // v1.0.2
+     ssl_ctx = SSL_CTX_new(TLS_method());
+-#else
+-    ssl_ctx = SSL_CTX_new(TLSv1_2_method());
+-#endif
++    SSL_CTX_set_min_proto_version(ssl_ctx, TLS1_2_VERSION);
+     SSL_CTX_set_verify(ssl_ctx, SSL_VERIFY_PEER, srs_verify_callback);
+     srs_assert(SSL_CTX_set_cipher_list(ssl_ctx, "ALL") == 1);
+ 
+--- a/src/app/srs_app_conn.cpp	2026-11-05 14:52:11.030229969 +0100
++++ b/src/app/srs_app_conn.cpp	2026-11-05 14:53:13.904477569 +0100
+@@ -718,11 +718,8 @@
+     srs_error_t err = srs_success;
+ 
+     // For HTTPS, try to connect over security transport.
+-#if (OPENSSL_VERSION_NUMBER < 0x10002000L) // v1.0.2
+     ssl_ctx = SSL_CTX_new(TLS_method());
+-#else
+-    ssl_ctx = SSL_CTX_new(TLSv1_2_method());
+-#endif
++    SSL_CTX_set_min_proto_version(ssl_ctx, TLS1_2_VERSION);
+     SSL_CTX_set_verify(ssl_ctx, SSL_VERIFY_NONE, NULL);
+     srs_assert(SSL_CTX_set_cipher_list(ssl_ctx, "ALL") == 1);
+ 

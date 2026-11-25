@@ -1,0 +1,8 @@
+--- maxima-5.49.0/doc/info/de/Makefile.am
++++ maxima-5.49.0/doc/info/de/Makefile.am
+@@ -1,4 +1,4 @@
+-MAKEINFOFLAGS = --enable-encoding -I . -I .. -I ../.. $(srcdir)/..
++MAKEINFOFLAGS = --enable-encoding -I . -I .. -I ../.. -I $(srcdir)/..
+ 
+ TEXINFO_TEX = ../texinfo.tex
+ lang = de

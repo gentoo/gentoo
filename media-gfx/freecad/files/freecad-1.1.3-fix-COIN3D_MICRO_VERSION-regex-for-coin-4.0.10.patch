@@ -1,0 +1,32 @@
+From e3e56059865849c6b1c85161f69183ad872414e3 Mon Sep 17 00:00:00 2001
+From: Christoph Moench-Tegeder <cmt@FreeBSD.org>
+Date: Sun, 21 Jun 2026 21:05:46 +0200
+Subject: fix COIN3D_MICRO_VERSION regex for coin 4.0.10
+
+In cMake/FreeCAD_Helpers/SetupCoin3D.cmake, the version of Coin3D
+we're builing against is extracted from Coin3D's header files via
+regexes - but the regex only accepts single digit versions. That
+might be fine for COIN_MAJOR_VERSION (currently 4 and increasing
+only rarely) and COIN3D_MINOR_VERSION (which is 0 for some years
+now), but with the release of Coin3D 4.0.10, we should catch all
+digits in COIN_MICRO_VERSION (now at 10), else the build against
+the new Coin3D release fails with
+: CMake Error at cMake/FreeCAD_Helpers/SetupCoin3D.cmake:79 (message):
+:   Coin3D version 4.0.1 mismatches Pivy Coin3D 4.0.10.
+
+diff --git a/cMake/FreeCAD_Helpers/SetupCoin3D.cmake b/cMake/FreeCAD_Helpers/SetupCoin3D.cmake
+index a026764540..0a4bd7ffdb 100644
+--- a/cMake/FreeCAD_Helpers/SetupCoin3D.cmake
++++ b/cMake/FreeCAD_Helpers/SetupCoin3D.cmake
+@@ -29,7 +29,7 @@ macro(SetupCoin3D)
+         set(COIN3D_MAJOR_VERSION "${CMAKE_MATCH_1}")
+         string(REGEX MATCH "define[ \t]+COIN_MINOR_VERSION[ \t]+([0-9?])" _coin3d_minor_version_match "${_coin3d_basic_h}")
+         set(COIN3D_MINOR_VERSION "${CMAKE_MATCH_1}")
+-        string(REGEX MATCH "define[ \t]+COIN_MICRO_VERSION[ \t]+([0-9?])" _coin3d_micro_version_match "${_coin3d_basic_h}")
++        string(REGEX MATCH "define[ \t]+COIN_MICRO_VERSION[ \t]+([0-9?]+)" _coin3d_micro_version_match "${_coin3d_basic_h}")
+         set(COIN3D_MICRO_VERSION "${CMAKE_MATCH_1}")
+         set(COIN3D_VERSION "${COIN3D_MAJOR_VERSION}.${COIN3D_MINOR_VERSION}.${COIN3D_MICRO_VERSION}")
+     ENDIF ()
+-- 
+2.55.0
+

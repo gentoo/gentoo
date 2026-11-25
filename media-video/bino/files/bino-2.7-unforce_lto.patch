@@ -1,0 +1,11 @@
+Respect userflags
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -13,7 +13,6 @@ set(CMAKE_AUTOMOC ON)
+ project(Bino LANGUAGES CXX)
+ 
+ set(CMAKE_CXX_STANDARD 17)
+-set(CMAKE_INTERPROCEDURAL_OPTIMIZATION TRUE)
+ 
+ # Required: Qt6
+ find_package(Qt6 6.6.0 REQUIRED COMPONENTS OpenGLWidgets Multimedia LinguistTools)

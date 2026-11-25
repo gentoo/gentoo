@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,8 +6,8 @@ EAPI=7
 CODE=7832035fb9249dce
 
 DESCRIPTION="Collection of utility modules for Tk, and a companion to Tcllib"
-HOMEPAGE="http://www.tcl.tk/software/tklib"
-SRC_URI="http://core.tcl.tk/${PN}/raw/${P}.tar.bz2?name=${CODE} -> ${P}.tar.bz2"
+HOMEPAGE="http://www.tcl-lang.org/software/tklib"
+SRC_URI="http://core.tcl-lang.org/${PN}/raw/${P}.tar.bz2?name=${CODE} -> ${P}.tar.bz2"
 
 SLOT="0"
 KEYWORDS="~amd64 ~x86"

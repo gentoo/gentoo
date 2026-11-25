@@ -1,0 +1,36 @@
+PR merged: https://github.com/groonga/groonga/pull/2790.patch
+The ODR violation happens because function pointer types like `grn_tokenizer_init_func` take `grn_tokenizer_query` as an argument,
+and `grn_tokenizer_query` has two different definitions.
+Include `grn_tokenizer.h` from `grn_db.h` so that the non-deprecated definition is always used.
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -562,6 +562,18 @@ if(GRN_WITH_UBSAN)
+   endif()
+ endif()
+ 
++option(GRN_WITH_LTO "Enable link-time optimization" OFF)
++if(GRN_WITH_LTO)
++  include(CheckIPOSupported)
++  check_ipo_supported(RESULT lto_supported OUTPUT lto_error)
++  if(lto_supported)
++    set(CMAKE_INTERPROCEDURAL_OPTIMIZATION ON)
++  else()
++    message(FATAL_ERROR "LTO not supported: ${lto_error}")
++  endif()
++  check_build_flag("-Werror=odr")
++endif()
++
+ if(WIN32)
+   target_link_libraries(grn_dependencies INTERFACE dbghelp.lib)
+   target_link_libraries(grn_dependencies INTERFACE psapi.lib)
+--- a/lib/grn_db.h
++++ b/lib/grn_db.h
+@@ -21,6 +21,8 @@
+ 
+ #include "grn.h"
+ 
++#include "grn_tokenizer.h"
++
+ #include "grn_ctx.h"
+ #include "grn_options.h"
+ #include "grn_rset.h"

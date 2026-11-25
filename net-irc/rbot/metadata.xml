@@ -48,7 +48,7 @@
     flag is disabled the plugin is also disabled by default.
     </flag>
     <flag name="host">
-    Add dependency over <pkg>net-dns/bind-tools</pkg> (providing
+    Add dependency over <pkg>net-dns/bind</pkg> (providing
     /usr/bin/host), which is needed to enable the "host" plugin for
     rbot. If the USE flag is disabled the plugin is also disabled by
     default.

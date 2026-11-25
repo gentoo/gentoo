@@ -1,0 +1,51 @@
+# Copyright 1999-2026 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=8
+
+inherit meson
+
+DESCRIPTION="A wallpaper utility for Wayland"
+HOMEPAGE="https://github.com/swaywm/swaybg"
+
+if [[ ${PV} == 9999 ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/swaywm/${PN}.git"
+else
+	inherit verify-sig
+	SRC_URI="https://github.com/swaywm/${PN}/releases/download/v${PV}/${P}.tar.gz
+		https://github.com/swaywm/${PN}/releases/download/v${PV}/${P}.tar.gz.sig"
+	KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64 ~riscv x86"
+fi
+
+LICENSE="MIT"
+SLOT="0"
+IUSE="gdk-pixbuf"
+
+RDEPEND="
+	dev-libs/wayland
+	x11-libs/cairo
+	gdk-pixbuf? ( x11-libs/gdk-pixbuf:2 )
+"
+DEPEND="${RDEPEND}
+	>=dev-libs/wayland-protocols-1.31
+"
+BDEPEND="
+	app-text/scdoc
+	dev-util/wayland-scanner
+	virtual/pkgconfig
+"
+
+if [[ ${PV} != 9999 ]]; then
+	BDEPEND+=" verify-sig? ( sec-keys/openpgp-keys-emersion )"
+	VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/emersion.asc"
+fi
+
+src_configure() {
+	local emesonargs=(
+		-Dman-pages=enabled
+		$(meson_feature gdk-pixbuf)
+	)
+
+	meson_src_configure
+}

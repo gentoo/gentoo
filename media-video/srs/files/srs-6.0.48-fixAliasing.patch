@@ -1,0 +1,51 @@
+--- a/src/protocol/srs_protocol_json.cpp	2026-05-20 13:57:07.926822541 +0200
++++ b/src/protocol/srs_protocol_json.cpp	2026-05-20 22:31:55.581820291 +0200
+@@ -131,7 +131,10 @@
+             {
+                 unsigned int length;
+                 
+-                json_object_entry * values;
++                union {
++                   json_object_entry * values;
++                   size_t values_accumulator;
++                };
+                 
+ #if defined(__cplusplus) && __cplusplus >= 201103L
+                 decltype(values) begin () const
+@@ -398,6 +401,8 @@
+     
+     if (!state->first_pass)
+     {
++        void* buffer;
++
+         value = *top = *alloc;
+         *alloc = (*alloc)->_reserved.next_alloc;
+         
+@@ -427,13 +432,15 @@
+                 
+                 values_size = sizeof (*value->u.object.values) * value->u.object.length;
+                 
+-                if (! (value->u.object.values = (json_object_entry *) json_alloc
+-                       (state, values_size + ((unsigned long) value->u.object.values), 0)) )
++                buffer = json_alloc (state, values_size + ((unsigned long) value->u.object.values), 0);
++                if (!buffer)
+                 {
+                     return 0;
+                 }
++
++                value->u.object.values = (json_object_entry *)buffer;
+                 
+-                value->_reserved.object_mem = (*(char **) &value->u.object.values) + values_size;
++                value->_reserved.object_mem = (char*)buffer + values_size;
+                 
+                 value->u.object.length = 0;
+                 break;
+@@ -696,7 +703,7 @@
+                         case json_object:
+                             
+                             if (state.first_pass)
+-                                (*(json_char **) &top->u.object.values) += string_length + 1;
++                                top->u.object.values_accumulator += string_length + 1;
+                             else
+                             {
+                                 top->u.object.values [top->u.object.length].name

@@ -1,0 +1,69 @@
+--- a/EXAMPLE/pclinsol.c	2026-06-09 21:45:19.791434053 +0200
++++ b/EXAMPLE/pclinsol.c	2026-06-09 21:50:22.730307528 +0200
+@@ -35,7 +35,8 @@
+     SuperMatrix   U;       /* factor U */
+     NCPformat *Ustore;
+     SuperMatrix   B;
+-    int_t      nrhs, ldx, info, m, n, nnz, b;
++    int        m, nn;
++    int_t      nrhs, ldx, info, n, nnz, b;
+     int_t      nprocs; /* maximum number of processors to use. */
+     int_t      panel_size, relax, maxsup;
+     int_t      permc_spec;
+@@ -79,7 +80,9 @@
+ #elif defined( HB )
+     creadhb(&m, &n, &nnz, &a, &asub, &xa);
+ #else 
+-    creadMM(&m, &n, &nnz, &a, &asub, &xa);
++    nn = n;
++    creadMM(&m, &nn, &nnz, &a, &asub, &xa);
++    n = nn;
+ #endif
+ 
+     cCreate_CompCol_Matrix(&A, m, n, nnz, a, asub, xa, SLU_NC, SLU_C, SLU_GE);
+--- a/EXAMPLE/pdlinsol.c	2026-06-09 21:50:42.510103477 +0200
++++ b/EXAMPLE/pdlinsol.c	2026-06-09 21:52:01.207291624 +0200
+@@ -35,7 +35,8 @@
+     SuperMatrix   U;       /* factor U */
+     NCPformat *Ustore;
+     SuperMatrix   B;
+-    int_t      nrhs, ldx, info, m, n, nnz, b;
++    int        m, nn;
++    int_t      nrhs, ldx, info, n, nnz, b;
+     int_t      nprocs; /* maximum number of processors to use. */
+     int_t      panel_size, relax, maxsup;
+     int_t      permc_spec;
+@@ -79,7 +80,9 @@
+ #elif defined( HB )
+     dreadhb(&m, &n, &nnz, &a, &asub, &xa);
+ #else 
+-    dreadMM(&m, &n, &nnz, &a, &asub, &xa);
++    nn = n;
++    dreadMM(&m, &nn, &nnz, &a, &asub, &xa);
++    n = nn;
+ #endif
+ 
+     dCreate_CompCol_Matrix(&A, m, n, nnz, a, asub, xa, SLU_NC, SLU_D, SLU_GE);
+--- a/EXAMPLE/pslinsol.c	2026-06-09 21:52:30.182992696 +0200
++++ b/EXAMPLE/pslinsol.c	2026-06-09 21:54:36.248692207 +0200
+@@ -35,7 +35,8 @@
+     SuperMatrix   U;       /* factor U */
+     NCPformat *Ustore;
+     SuperMatrix   B;
+-    int_t      nrhs, ldx, info, m, n, nnz, b;
++    int        m, nn;
++    int_t      nrhs, ldx, info, n, nnz, b;
+     int_t      nprocs; /* maximum number of processors to use. */
+     int_t      panel_size, relax, maxsup;
+     int_t      permc_spec;
+@@ -79,7 +80,9 @@
+ #elif defined( HB )
+     sreadhb(&m, &n, &nnz, &a, &asub, &xa);
+ #else 
+-    sreadMM(&m, &n, &nnz, &a, &asub, &xa);
++    nn = n;
++    sreadMM(&m, &nn, &nnz, &a, &asub, &xa);
++    n = nn;
+ #endif
+ 
+     sCreate_CompCol_Matrix(&A, m, n, nnz, a, asub, xa, SLU_NC, SLU_S, SLU_GE);

@@ -1,0 +1,39 @@
+From c94e36bd08d959faf89c9cfe80e082d5c59c3d9f Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Wed, 1 Jul 2026 16:31:41 -0400
+Subject: [PATCH] plugins-root/check_icmp.c: fix unsigned short overflow
+
+The number of targets (hosts) for check_icmp is tallied up, one at a
+time, in
+
+  static unsigned short targets = 0;
+
+When more than USHRT_MAX hosts are specified, check_icmp segfaults
+before dropping privileges. This may be exploitable, and is bad in any
+case. The same issue was recently fixed in monitoring-plugins:
+
+  https://www.openwall.com/lists/oss-security/2026/07/01/5
+
+The two codebases have diverged, but the issue is easy to reproduce in
+nagios-plugins as well. Afterwards, fixing it is a matter of refusing
+to add_target() when there are already USHRT_MAX targets.
+---
+ plugins-root/check_icmp.c | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/plugins-root/check_icmp.c b/plugins-root/check_icmp.c
+index f21228fa..34ea12a1 100644
+--- a/plugins-root/check_icmp.c
++++ b/plugins-root/check_icmp.c
+@@ -1705,6 +1705,11 @@ static int add_target_ip(char *arg, struct sockaddr_storage *in) {
+   struct sockaddr_in *sin = NULL, *host_sin;
+   struct sockaddr_in6 *sin6 = NULL, *host_sin6;
+ 
++  if (targets == USHRT_MAX) {
++    crash("add_target_ip(%s, ...): maximum number of targets (%hu) exceeded",
++	  arg, USHRT_MAX);
++  }
++
+   if (address_family == AF_INET) {
+     sin = (struct sockaddr_in *)in;
+   } else {

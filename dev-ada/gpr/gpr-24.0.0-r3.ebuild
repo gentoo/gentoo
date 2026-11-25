@@ -32,7 +32,7 @@ DEPEND="${RDEPEND}
 
 src_compile() {
 	build () {
-		gprbuild -j$(makeopts_jobs) -m -p -v -XLIBRARY_TYPE=$1 \
+		gprbuild -j$(get_makeopts_jobs) -m -p -v -XLIBRARY_TYPE=$1 \
 			-XGPR2_BUILD=release -XXMLADA_BUILD=$1 gpr2.gpr \
 			-largs ${LDFLAGS} \
 			-cargs ${ADAFLAGS} || die "gprbuild failed"
@@ -54,7 +54,7 @@ src_compile() {
 		libtype='relocatable'
 	fi
 
-	gprbuild -p -m -v -j$(makeopts_jobs) -aP . -XGPR2_BUILD=release \
+	gprbuild -p -m -v -j$(get_makeopts_jobs) -aP . -XGPR2_BUILD=release \
 		-XLIBRARY_TYPE=${libtype} -XXMLADA_BUILD=${libtype} tools/gpr2-tools.gpr \
 		-largs ${LDFLAGS} -cargs ${ADAFLAGS} || die
 }

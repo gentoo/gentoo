@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,7 +12,7 @@ SRC_URI="https://github.com/tpm2-software/${PN}/releases/download/${PV}/${P}.tar
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 arm arm64 ppc64 ~riscv x86"
-IUSE="static-libs test"
+IUSE="selinux static-libs test"
 
 RESTRICT="!test? ( test )"
 
@@ -28,6 +28,7 @@ DEPEND="${RDEPEND}
 		dev-util/cmocka
 		sys-apps/iproute2[-minimal]
 	)"
+RDEPEND+=" selinux? ( sec-policy/selinux-tpm2 )"
 BDEPEND="virtual/pkgconfig
 	dev-util/gdbus-codegen"
 

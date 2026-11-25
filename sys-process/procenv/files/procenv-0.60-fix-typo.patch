@@ -1,0 +1,12 @@
+814c4ebf400aaa7423f2e908983763d418747912
+--- a/configure.ac
++++ b/configure.ac
+@@ -95,7 +95,7 @@ AC_ARG_ENABLE([tests],
+ 
+ AM_CONDITIONAL([ENABLE_TESTS], test "$enable_tests" = yes)
+ AM_CONDITIONAL([HAVE_CHECK], test "$HAVE_CHECK" = yes)
+-AM_CONDITIONAL([PACKAGE_URL], "$PACKAGE_URL")
++AM_CONDITIONAL([PACKAGE_URL], test -n "$PACKAGE_URL")
+ 
+ #---------------------------------------------------------------------
+ # Other checks

@@ -1,0 +1,23 @@
+From 73eead150c44fc83747defc374b17190f9fed599 Mon Sep 17 00:00:00 2001
+From: 0xC0ncord <me@concord.sh>
+Date: Fri, 6 Nov 2026 12:44:29 -0500
+Subject: [PATCH] FIX(plugins): add missing exception include
+
+Add a missing include for <exception> in link, which is needed by
+std::terminate.
+---
+ plugins/link/link.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/plugins/link/link.cpp b/plugins/link/link.cpp
+index 73a9e62dcbd..d3a65ebd6ef 100644
+--- a/plugins/link/link.cpp
++++ b/plugins/link/link.cpp
+@@ -6,6 +6,7 @@
+ #include <chrono>
+ #include <cstdint>
+ #include <cstring>
++#include <exception>
+ #include <iostream>
+ #include <string>
+ 

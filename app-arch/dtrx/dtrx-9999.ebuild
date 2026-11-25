@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -37,7 +37,7 @@ src_prepare() {
 
 pkg_postinst() {
 	local -a supported_formats=(
-		arj bzip2 cpio gzip lrzip lzip p7zip rpm unrar unzip xz-utils
+		arj bzip2 cpio gzip lrzip lzip 7zip rpm unrar unzip xz-utils
 		zip zstd
 	)
 	local supported_format=""

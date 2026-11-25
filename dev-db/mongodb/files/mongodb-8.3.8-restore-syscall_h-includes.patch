@@ -1,0 +1,25 @@
+These cpp files reference SYS_* macros but do not explicitly include syscall.h as required.
+
+diff '--color=auto' -ur a/src/mongo/util/stacktrace_details.cpp b/src/mongo/util/stacktrace_details.cpp
+--- a/src/mongo/util/stacktrace_details.cpp	2026-06-15 18:37:04.000000000 -0400
++++ b/src/mongo/util/stacktrace_details.cpp	2026-06-16 14:31:50.121848572 -0400
+@@ -34,6 +34,7 @@
+ #include "mongo/base/parse_number.h"
+ 
+ #include <unistd.h>
++#include <syscall.h>
+ 
+ #include <boost/filesystem/directory.hpp>
+ #include <boost/filesystem/fstream.hpp>
+diff '--color=auto' -ur a/src/mongo/util/stacktrace_test.cpp b/src/mongo/util/stacktrace_test.cpp
+--- a/src/mongo/util/stacktrace_test.cpp	2026-06-15 18:37:04.000000000 -0400
++++ b/src/mongo/util/stacktrace_test.cpp	2026-06-16 14:31:46.751895923 -0400
+@@ -34,7 +34,7 @@
+ #include <fmt/format.h>
+ #include <fmt/printf.h>  // IWYU pragma: keep
+ #include <fmt/ranges.h>  // IWYU pragma: keep
+-// IWYU pragma: no_include "syscall.h"
++#include "syscall.h"
+ // IWYU pragma: no_include "cxxabi.h"
+ #include "mongo/base/parse_number.h"
+ #include "mongo/bson/bsonelement.h"

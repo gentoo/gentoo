@@ -10,6 +10,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">async-timeout</remote-id>
-		<remote-id type="github">aio-libs/async-timeout</remote-id>
+		<remote-id type="github">aio-libs-abandoned/async-timeout</remote-id>
 	</upstream>
 </pkgmetadata>

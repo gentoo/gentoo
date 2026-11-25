@@ -1,8 +1,8 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-USE_RUBY="ruby32 ruby33 ruby34"
+USE_RUBY="ruby32 ruby33 ruby34 ruby40"
 
 RUBY_FAKEGEM_EXTRADOC="CHANGELOG.md README.md"
 
@@ -10,18 +10,22 @@ RUBY_FAKEGEM_GEMSPEC="loofah.gemspec"
 
 inherit ruby-fakegem
 
-DESCRIPTION="Library for manipulating and transforming HTML/XML documents and fragments."
+DESCRIPTION="Library for manipulating and transforming HTML/XML documents and fragments"
 HOMEPAGE="https://github.com/flavorjones/loofah"
 SRC_URI="https://github.com/flavorjones/loofah/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86"
 IUSE="test"
 
 ruby_add_rdepend "=dev-ruby/crass-1.0* >=dev-ruby/crass-1.0.2 >=dev-ruby/nokogiri-1.12.0"
 
-ruby_add_bdepend "test? ( >=dev-ruby/rr-1.1.0 )"
+ruby_add_bdepend "test? (
+	dev-ruby/bundler
+	dev-ruby/minitest:5
+	>=dev-ruby/rr-1.1.0
+)"
 
 all_ruby_prepare() {
 	# Fix version in gemspec
@@ -32,8 +36,15 @@ all_ruby_prepare() {
 
 	# Avoid test failing on different whitespace.
 	sed -i -e '/test_fragment_whitewash_on_microsofty_markup/askip "gentoo"' test/integration/test_ad_hoc.rb || die
+
+	cat <<-EOF > "${T}/Gemfile" || die
+	gem "crass"
+	gem "minitest", "~> 5"
+	gem "nokogiri"
+	gem "rr"
+	EOF
 }
 
 each_ruby_test() {
-	${RUBY} -Ilib:.:test -e 'Dir["test/**/test_*.rb"].each{|f| require f}' || die
+	BUNDLE_GEMFILE="${T}/Gemfile" ${RUBY} -S bundle exec ${RUBY} -Ilib:.:test -e 'Dir["test/**/test_*.rb"].each{|f| require f}' || die
 }

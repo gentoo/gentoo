@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">powa-team/pg_qualstats</remote-id>
+	</upstream>
+	<longdescription>
+		A PostgreSQL extension keeping statistics on predicates found
+		in WHERE statements and JOIN clauses. The powa project makes use
+		of this to provide advances index suggestions.
+	</longdescription>
+</pkgmetadata>

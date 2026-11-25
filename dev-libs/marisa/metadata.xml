@@ -13,6 +13,9 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
+	<use>
+		<flag name="tools">Build command-line tools</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">s-yata/marisa-trie</remote-id>
 	</upstream>

@@ -1,0 +1,19 @@
+From 80a126d04ec4943f96cb98d9cc152af1a4c1d0a0 Mon Sep 17 00:00:00 2001
+From: Mounir IDRASSI <mounir.idrassi@amcrypto.jp>
+Date: Sat, 13 Jun 2026 11:32:59 +0900
+Subject: [PATCH] Fix release date string to match actual TC_RELEASE_DATE_DAY
+ value
+
+---
+
+--- a/Common/Tcdefs.h
++++ b/Common/Tcdefs.h
+@@ -73,7 +73,7 @@ extern unsigned short _rotl16(unsigned short value, unsigned char shift);
+ #define VERSION_NUM						0x0126
+ 
+ // Release date
+-#define TC_STR_RELEASE_DATE			L"June 8, 2026"
++#define TC_STR_RELEASE_DATE			L"June 9, 2026"
+ #define TC_RELEASE_DATE_YEAR			2026
+ #define TC_RELEASE_DATE_MONTH			 6
+ #define TC_RELEASE_DATE_DAY			 9

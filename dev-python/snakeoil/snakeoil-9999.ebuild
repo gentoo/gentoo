@@ -4,8 +4,10 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=flit
-PYTHON_COMPAT=( python3_{11..14} pypy3_11 )
+PYPI_VERIFY_REPO=https://github.com/pkgcore/snakeoil
+PYTHON_COMPAT=( python3_{13..15} )
 PYTHON_REQ_USE="threads(+)"
+
 inherit distutils-r1
 
 if [[ ${PV} == *9999 ]] ; then
@@ -18,10 +20,17 @@ else
 fi
 
 DESCRIPTION="misc common functionality and useful optimizations"
-HOMEPAGE="https://github.com/pkgcore/snakeoil"
+HOMEPAGE="
+	https://github.com/pkgcore/snakeoil/
+	https://pypi.org/project/snakeoil/
+"
 
 LICENSE="BSD BSD-2 MIT"
 SLOT="0"
 
-EPYTEST_PLUGINS=( pytest-subtests )
+BDEPEND="
+	test? ( dev-python/sphinx[${PYTHON_USEDEP}] )
+"
+
+EPYTEST_PLUGINS=()
 distutils_enable_tests pytest

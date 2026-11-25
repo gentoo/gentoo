@@ -1,0 +1,117 @@
+From 6f67d0712c5ad4a388eb058245c163f15ceea288 Mon Sep 17 00:00:00 2001
+From: "Jeffrey C. Ollie" <jeff@ocjtech.us>
+Date: Sun, 8 Nov 2026 19:23:06 -0600
+Subject: [PATCH 1/2] simd: decode the valid prefix again when simdutf reports
+ an error
+
+When convert_utf8_to_utf32_with_errors hits invalid UTF-8, DecodeUTF8
+assumed the output before the error was already decoded and only
+counted how many codepoints that was. simdutf promises nothing about
+the output on error, and its icelake (AVX-512) kernels don't leave the
+valid prefix there, so text before an invalid sequence comes out as
+garbage. Ghostty's vendored simdutf is built without the icelake
+kernels, which hid this, but a build against a system simdutf
+(-fsys=simdutf) on an AVX-512 CPU fails `decode simd matches scalar`
+and decodes terminal output wrongly.
+
+Everything before the error position is valid UTF-8, so convert it
+again with convert_valid_utf8_to_utf32, which costs about what the
+count_utf8 pass it replaces did. The all-valid path is unchanged.
+
+See: https://github.com/ghostty-org/ghostty/discussions/15152
+---
+ src/simd/vt.cpp | 10 ++++++----
+ 1 file changed, 6 insertions(+), 4 deletions(-)
+
+diff --git a/src/simd/vt.cpp b/src/simd/vt.cpp
+index 15d46966a..6f9cd152e 100644
+--- a/src/simd/vt.cpp
++++ b/src/simd/vt.cpp
+@@ -177,10 +177,12 @@ size_t DecodeUTF8(const uint8_t* HWY_RESTRICT input,
+       break;
+     }
+ 
+-    // On error, r.count is the input byte position of the error.
+-    // The output buffer is already written up to that point, but
+-    // we need count_utf8 to find how many char32_t that produced.
+-    out += simdutf::count_utf8(in, r.count);
++    // On error, r.count is the input byte position of the error, and
++    // everything before it is valid UTF-8. simdutf promises nothing about
++    // what it left in the output for that part, and its icelake (AVX-512)
++    // kernels don't leave it decoded, so convert it again rather than
++    // trusting the buffer. This costs about what counting it would.
++    out += simdutf::convert_valid_utf8_to_utf32(in, r.count, out);
+ 
+     // Compute the maximal subpart at the error position and emit
+     // a single U+FFFD for it.
+-- 
+2.56.0
+
+
+From ed51ab4a7df162c8cadd82fc7b11e2f323c13418 Mon Sep 17 00:00:00 2001
+From: "Jeffrey C. Ollie" <jeff@ocjtech.us>
+Date: Sun, 8 Nov 2026 19:36:23 -0600
+Subject: [PATCH 2/2] simdutf: build the icelake (AVX-512) kernels again
+
+The vendored simdutf was built with SIMDUTF_IMPLEMENTATION_ICELAKE=0
+to work around https://github.com/ziglang/zig/issues/20414, where Zig
+0.13 couldn't compile simdutf's AVX-512 code. Zig 0.17 builds it
+for x86_64 Linux, macOS and Windows targets, so drop the workaround
+and let simdutf pick its icelake kernels at runtime on CPUs that have
+them, like a system simdutf already does.
+
+Those kernels don't leave the valid prefix in the output when they hit
+an error, which the previous commit stopped relying on.
+
+Highway's AVX-512 targets stay disabled: Highway 1.2 asks for the
+"evex512" target feature, which clang 22 removed, so they don't
+compile with the current Zig until we update to Highway 1.4. Update
+the comment there to say so.
+---
+ pkg/simdutf/build.zig    |  3 ---
+ src/build/SharedDeps.zig | 15 ++++++++++-----
+ 2 files changed, 10 insertions(+), 8 deletions(-)
+
+diff --git a/pkg/simdutf/build.zig b/pkg/simdutf/build.zig
+index 3efc08263..607099d01 100644
+--- a/pkg/simdutf/build.zig
++++ b/pkg/simdutf/build.zig
+@@ -38,9 +38,6 @@ pub fn build(b: *std.Build) !void {
+ 
+     var flags: std.ArrayList([]const u8) = .empty;
+     defer flags.deinit(b.allocator);
+-    // Zig 0.13 bug: https://github.com/ziglang/zig/issues/20414
+-    // (See root Ghostty build.zig on why we do this)
+-    try flags.append(b.allocator, "-DSIMDUTF_IMPLEMENTATION_ICELAKE=0");
+ 
+     // Fixes linker issues for release builds missing ubsanitizer symbols
+     try flags.appendSlice(b.allocator, &.{
+diff --git a/src/build/SharedDeps.zig b/src/build/SharedDeps.zig
+index 8f4e23954..b439ead2f 100644
+--- a/src/build/SharedDeps.zig
++++ b/src/build/SharedDeps.zig
+@@ -931,11 +931,16 @@ pub fn addSimd(
+ 
+         var flags: std.ArrayListUnmanaged([]const u8) = .empty;
+ 
+-        // Zig 0.13 bug: https://github.com/ziglang/zig/issues/20414
+-        // To workaround this we just disable AVX512 support completely.
+-        // The performance difference between AVX2 and AVX512 is not
+-        // significant for our use case and AVX512 is very rare on consumer
+-        // hardware anyways.
++        // Highway 1.2 asks for the "evex512" target feature in its AVX-512
++        // target attributes on any clang 18 or newer, and clang 22 removed
++        // that feature (llvm/llvm-project#157034), so with the clang in
++        // current Zig those targets don't compile. (Before that, Zig 0.13
++        // couldn't build them either:
++        // https://github.com/ziglang/zig/issues/20414.) Highway 1.4 only
++        // asks for it where the compiler has it, so this can go when we
++        // update to it. Our Highway code gains little from AVX-512 over
++        // AVX2; simdutf, which does the UTF-8 decoding, keeps its AVX-512
++        // kernels.
+         const HWY_DISABLED_TARGETS: c_int = HWY_AVX10_2 | HWY_AVX3_SPR | HWY_AVX3_ZEN4 | HWY_AVX3_DL | HWY_AVX3;
+         if (target.result.cpu.arch == .x86_64) try flags.append(
+             b.allocator,
+-- 
+2.56.0
+

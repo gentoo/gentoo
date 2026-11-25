@@ -1,0 +1,14 @@
+--- a/3rdparty/st-srs/md_linux.S	2026-05-18 13:13:12.877856232 +0200
++++ b/3rdparty/st-srs/md_linux.S	2026-05-18 13:13:25.236717606 +0200
+@@ -166,3 +166,4 @@
+ #endif
+ 
+ #endif
++.section .note.GNU-stack,"",@progbits
+--- a/3rdparty/st-srs/md_linux2.S	2026-05-18 13:13:16.400816716 +0200
++++ b/3rdparty/st-srs/md_linux2.S	2026-05-18 13:13:25.236717606 +0200
+@@ -510,3 +510,4 @@
+ #endif
+ 
+ #endif
++.section .note.GNU-stack,"",@progbits

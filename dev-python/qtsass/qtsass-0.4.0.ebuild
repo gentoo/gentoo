@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 DISTUTILS_USE_PEP517=setuptools
 
 inherit distutils-r1
@@ -26,10 +26,5 @@ RDEPEND="
 	>=dev-python/libsass-0.22.0[${PYTHON_USEDEP}]
 "
 
-BDEPEND="
-	test? (
-		dev-python/flaky[${PYTHON_USEDEP}]
-	)
-"
-
+EPYTEST_PLUGINS=( flaky )
 distutils_enable_tests pytest

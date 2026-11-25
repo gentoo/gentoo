@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
 PYPI_VERIFY_REPO=https://github.com/lmfit/uncertainties
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 
 inherit distutils-r1 optfeature pypi
 
@@ -28,6 +28,17 @@ BDEPEND="
 
 EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
+
+python_test() {
+	local EPYTEST_DESELECT=()
+	if ! has_version "dev-python/scipy[${PYTHON_USEDEP}]"; then
+		EPYTEST_DESELECT+=(
+			doc/user_guide.rst::user_guide.rst
+		)
+	fi
+
+	epytest
+}
 
 pkg_postinst() {
 	optfeature "numpy support" dev-python/numpy

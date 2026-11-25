@@ -1,0 +1,53 @@
+From efeade2a06dbf24343a378c9384a2eeaf1739755 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Javier=20Jard=C3=B3n?= <jjardon@gnome.org>
+Date: Sun, 6 Feb 2011 22:19:23 +0000
+Subject: [PATCH] configure.ac: Use AC_RUN_IFELSE instead deprecated AC_TRY_RUN
+
+---
+ configure.ac | 30 ++++++++++++++----------------
+ 1 file changed, 14 insertions(+), 16 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 794f5947c1..c29d973b99 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -596,22 +596,20 @@ AC_MSG_CHECKING([for extra flags to get ANSI library prototypes])
+ 
+ gtk_save_LIBS=$LIBS
+ LIBS="$LIBS -lm"
+-AC_TRY_RUN([#include <math.h>
+-             int main (void) { return (log(1) != log(1.)); }],
+-     AC_MSG_RESULT(none needed),
+-     gtk_save_CFLAGS="$CFLAGS"
+-     CFLAGS="$CFLAGS -std1"
+-     AC_TRY_RUN([#include <math.h>
+-	         int main (void) { return (log(1) != log(1.)); }],
+-         AC_MSG_RESULT(-std1),
+-         AC_MSG_RESULT()
+-         CFLAGS="$gtk_save_CFLAGS"
+-         AC_MSG_WARN(
+-                [No ANSI prototypes found in library. (-std1 didn't work.)]),
+-	 true
+-     ),
+-     AC_MSG_RESULT(none needed)
+-)
++AC_RUN_IFELSE([AC_LANG_SOURCE([[#include <math.h>
++                                int main (void) { return (log(1) != log(1.)); }]])],
++              [AC_MSG_RESULT(none needed)],
++              [gtk_save_CFLAGS="$CFLAGS"
++               CFLAGS="$CFLAGS -std1"
++               AC_RUN_IFELSE([AC_LANG_SOURCE([[#include <math.h>
++                                               int main (void) { return (log(1) != log(1.)); }]])],
++                             [AC_MSG_RESULT(-std1)],
++                             [AC_MSG_RESULT()
++                              CFLAGS="$gtk_save_CFLAGS"
++                              AC_MSG_WARN([No ANSI prototypes found in library. (-std1 did not work.)])],
++                             [true])],
++              [AC_MSG_RESULT(none needed)])
++
+ LIBS=$gtk_save_LIBS
+ 
+ AC_MSG_CHECKING(for the BeOS)
+-- 
+2.54.0
+

@@ -1,0 +1,39 @@
+When using Clang 18<->22 with ld.lld, build fails with:
+ld.lld: error: version script assignment of 'global' to symbol 'test_shade' failed: symbol not defined
+The issue is that test_shade does not belong to liboslcomp, instead it belongs to libtestshade, and ld.lld actually checks that and fails.
+The minimal fix is to remove test_shade from hidesymbols.map, the slightly better way is to create a separate symbols map for libtestshade.
+
+See also:
+  https://bugs.gentoo.org/929091
+  https://github.com/AcademySoftwareFoundation/OpenShadingLanguage/pull/2094
+--- a/src/build-scripts/hidesymbols.map
++++ b/src/build-scripts/hidesymbols.map
+@@ -1,4 +1,4 @@
+ {
+-    global: *OSL*; test_shade; *osl*imageio*; *osl_input_extensions; PyInit*;
++    global: *OSL*; *osl*imageio*; *osl_input_extensions; PyInit*;
+     local: osl_*; *pvt*; *;
+ };
+--- a/src/testshade/CMakeLists.txt
++++ b/src/testshade/CMakeLists.txt
+@@ -110,6 +110,13 @@ if (NOT CODECOV)
+                            OUTPUT_NAME libtestshade${OSL_LIBNAME_SUFFIX}
+                            )
+ 
++    # Only libtestshade exports test_shade; keep it out of the global map.
++    if (VISIBILITY_MAP_COMMAND)
++        set_property (TARGET libtestshade
++                      APPEND PROPERTY LINK_FLAGS
++                      -Wl,--version-script=${CMAKE_CURRENT_SOURCE_DIR}/testshade_symbols.map)
++    endif ()
++
+     target_link_libraries (libtestshade
+                            PRIVATE
+                                oslexec oslquery oslcomp)
+--- /dev/null
++++ b/src/testshade/testshade_symbols.map
+@@ -0,0 +1,4 @@
++{
++    global: test_shade;
++    local: *;
++};

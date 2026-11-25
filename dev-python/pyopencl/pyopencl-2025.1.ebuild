@@ -1,17 +1,19 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..13} )
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=scikit-build-core
+PYPI_VERIFY_REPO=https://github.com/inducer/pyopencl
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit distutils-r1 multiprocessing pypi
 
 DESCRIPTION="Python wrapper for OpenCL"
 HOMEPAGE="
 	https://mathema.tician.de/software/pyopencl/
+	https://github.com/inducer/pyopencl/
 	https://pypi.org/project/pyopencl/
 "
 
@@ -45,9 +47,11 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}"/pyopencl-2025.1-nanobind-flags.patch
+	"${FILESDIR}"/${PN}-2025.1-nanobind-flags.patch
+	"${FILESDIR}"/${P}-numpy-build.patch
 )
 
+EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
 
 python_configure_all() {

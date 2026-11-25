@@ -1,0 +1,44 @@
+https://bugs.gentoo.org/970713
+
+From e359bdc261f9493d91b3cf792fe4fc480ecd6dc3 Mon Sep 17 00:00:00 2001
+From: Kerin Millar <kfm@plushkava.net>
+Date: Thu, 13 Nov 2025 18:39:28 +0000
+Subject: [PATCH] jobs.c: only call bgp_delete on a newly-created pid if
+ asynchronous
+
+This is a backport of the following change from the devel branch.
+
+jobs.c
+    - make_child: only call bgp_delete on a newly-created pid if that
+      process is asynchronous, since that is what will cause it to be
+      put into the bgpids table. This mostly matters for procsubs and
+      asynchronous jobs, but will happen for comsubs in async jobs
+      and coprocs as well.
+
+Bug: https://bugs.gentoo.org/965423
+Signed-off-by: Kerin Millar <kfm@plushkava.net>
+---
+ jobs.c | 8 +++++---
+ 1 file changed, 5 insertions(+), 3 deletions(-)
+
+diff --git a/jobs.c b/jobs.c
+index cbcc2c15..bafa7c26 100644
+--- jobs.c
++++ jobs.c
+@@ -2482,9 +2482,11 @@ make_child (char *command, int flags)
+ 	 been reused. */
+       delete_old_job (pid);
+ 
+-      /* Perform the check for pid reuse unconditionally.  Some systems reuse
+-	 PIDs before giving a process CHILD_MAX/_SC_CHILD_MAX unique ones. */
+-      bgp_delete (pid);		/* new process, discard any saved status */
++      /* Perform the check for background pid reuse unconditionally.
++	 Some systems reuse PIDs before giving a process
++	 CHILD_MAX/_SC_CHILD_MAX unique ones. */
++      if (async_p)
++	bgp_delete (pid);	/* new background process, discard any saved status */
+ 
+       last_made_pid = pid;
+ 
+-- 
+2.51.2

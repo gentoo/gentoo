@@ -41,11 +41,11 @@ IUSE="alsa aom archive aribsub bidi bluray chromaprint chromecast dav1d dbus
 	dc1394 debug directx +dvbpsi dvd +encode faad fdk +ffmpeg flac fluidsynth
 	fontconfig +gcrypt gme keyring gstreamer +gui ieee1394 jack jpeg kate libass
 	libcaca libdrm libnotify libplacebo +libsamplerate libtiger linsys lirc live
-	loudness lua macosx-notifications mad matroska modplug mp3 mtp musepack ncurses
-	nfs ogg omxil optimisememory opus png projectm pulseaudio run-as-root samba
-	sftp shout sid skins soxr speex srt ssl svg taglib theora tremor truetype
-	twolame udev upnp vaapi v4l vdpau vnc vpx wayland +X x264 x265 xml zeroconf
-	zvbi cpu_flags_arm_neon cpu_flags_ppc_altivec cpu_flags_x86_sse
+	loudness lua mad matroska modplug mp3 mtp ncurses nfs ogg omxil
+	optimisememory opus png projectm pulseaudio run-as-root samba selinux sftp shout sid
+	skins soxr speex srt ssl svg taglib theora tremor truetype twolame udev upnp
+	vaapi v4l vdpau vnc vpx wayland +X x264 x265 xml zeroconf zvbi
+	cpu_flags_arm_neon cpu_flags_ppc_altivec cpu_flags_x86_sse
 "
 REQUIRED_USE="
 	chromecast? ( encode )
@@ -61,13 +61,14 @@ REQUIRED_USE="
 "
 # live+snapshots need bison+flex
 BDEPEND="
+	dev-build/autoconf-archive
 	sys-devel/bison
 	sys-devel/flex
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
 	lua? ( ${LUA_DEPS} )
 	amd64? ( dev-lang/yasm )
-	wayland? ( dev-util/wayland-scanner )
+	wayland? ( >=dev-util/wayland-scanner-1.23 )
 	x86? ( dev-lang/yasm )
 "
 # depends on abseil-cpp via protobuf targets
@@ -123,7 +124,7 @@ COMMON_DEPEND="
 	gstreamer? ( >=media-libs/gst-plugins-base-1.4.5:1.0 )
 	gui? (
 		dev-qt/qt5compat:6[qml]
-		dev-qt/qtbase:6=[gui,widgets]
+		dev-qt/qtbase:6=[gui,opengl,widgets]
 		dev-qt/qtdeclarative:6
 		dev-qt/qtsvg:6
 		kde-frameworks/kwindowsystem:6
@@ -166,7 +167,6 @@ COMMON_DEPEND="
 	modplug? ( >=media-libs/libmodplug-0.8.9.0 )
 	mp3? ( media-sound/mpg123-base )
 	mtp? ( media-libs/libmtp:= )
-	musepack? ( media-sound/musepack-tools )
 	ncurses? ( sys-libs/ncurses:=[unicode(+)] )
 	nfs? ( >=net-fs/libnfs-0.10.0:= )
 	ogg? ( media-libs/libogg )
@@ -215,7 +215,7 @@ COMMON_DEPEND="
 	vpx? ( media-libs/libvpx:= )
 	wayland? (
 		>=dev-libs/wayland-1.15
-		>=dev-libs/wayland-protocols-1.12
+		>=dev-libs/wayland-protocols-1.33
 	)
 	X? (
 		x11-libs/libX11
@@ -236,6 +236,7 @@ DEPEND="${COMMON_DEPEND}
 "
 RDEPEND="${COMMON_DEPEND}
 	gui? ( kde-frameworks/qqc2-desktop-style:6 )
+	selinux? ( sec-policy/selinux-mplayer )
 "
 
 DOCS=( AUTHORS THANKS NEWS README.md doc/fortunes.txt )
@@ -243,7 +244,7 @@ DOCS=( AUTHORS THANKS NEWS README.md doc/fortunes.txt )
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.0.0_pre20260320-gettext-version.patch # bug 766549
 	"${FILESDIR}"/${PN}-4.0.0_pre20260320-no-vlc-cache-gen.patch # bugs 564842, 608256
-	"${FILESDIR}"/${PN}-4.0.0_pre20260320-fix-libtremor-libs.patch # build system
+	"${FILESDIR}"/${PN}-4.0.0_pre20260418-fix-libtremor-libs.patch # build system
 	"${FILESDIR}"/${PN}-4.0.0_pre20260320-configure-lua-version.patch
 	"${FILESDIR}"/${PN}-4.0.0_pre20260215-force-x11.patch # crashes w/ wayland platform plugin
 )
@@ -275,6 +276,19 @@ src_prepare() {
 	if ! use dbus ; then
 		sed -i 's/ --started-from-file//' share/vlc.desktop.in || die
 	fi
+
+	# old bundled version
+	# so we need to call AX_CXX_COMPILE_STDCXX directly
+	rm \
+		m4/ax_cxx_compile_stdcxx.m4 \
+		m4/ax_cxx_compile_stdcxx_17.m4 \
+		|| die
+	local CXXSTD="17"
+	if has_version ">=dev-cpp/abseil-cpp-20260107.0"; then
+		# needs >=c++20
+		CXXSTD="20"
+	fi
+	sed -i -e "/AX_CXX_COMPILE_STDCXX/{s/_17(/(${CXXSTD}, /}" configure.ac || die
 
 	eautoreconf
 }
@@ -352,13 +366,11 @@ src_configure() {
 		$(use_enable live live555)
 		$(use_enable loudness ebur128)
 		$(use_enable lua)
-		$(use_enable macosx-notifications osx-notifications)
 		$(use_enable mad)
 		$(use_enable matroska)
 		$(use_enable modplug mod)
 		$(use_enable mp3 mpg123)
 		$(use_enable mtp)
-		$(use_enable musepack mpc)
 		$(use_enable ncurses)
 		$(use_enable nfs)
 		$(use_enable ogg)
@@ -417,6 +429,7 @@ src_configure() {
 		--disable-opencv
 		--disable-opensles
 		--disable-oss
+		--disable-osx-notifications # MacOS only
 		--disable-rpi-omxil
 		--disable-shine
 		--disable-sndio
@@ -485,6 +498,15 @@ src_install() {
 	fi
 }
 
+pkg_preinst() {
+	if use gui && has_version "<${CATEGORY}/${PN}-4[gui]"; then
+		ewarn "Upgrade from VLC-3 detected. If you experience runtime issues,"
+		ewarn "try cleaning up ~/.config/vlc first."
+		ewarn
+	fi
+	xdg_pkg_preinst
+}
+
 pkg_postinst() {
 	if [[ -z "${ROOT}" ]] && [[ -x "${EROOT}"/usr/libexec/vlc/vlc-cache-gen ]] ; then
 		einfo "Running ${EPREFIX}/usr/libexec/vlc/vlc-cache-gen on ${EROOT}/usr/$(get_libdir)/vlc/plugins/"
@@ -495,7 +517,12 @@ pkg_postinst() {
 		ewarn "If you do not do it, vlc will take a long time to load."
 	fi
 
-	use gui && xdg_pkg_postinst
+	if use gui; then
+		ewarn "Starting VLC GUI is only supported by using its desktop file."
+		ewarn "Manually calling vlc from command line is known to break in Wayland sessions."
+
+		xdg_pkg_postinst
+	fi
 }
 
 pkg_postrm() {

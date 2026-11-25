@@ -1,0 +1,11 @@
+--- a/rt/help/help.tdesc	2026-05-18 16:03:41.653576306 +0200
++++ b/rt/help/help.tdesc	2026-05-18 16:06:38.378582894 +0200
+@@ -45,6 +45,8 @@
+      cat _stderr.[0-9][0-9][0-9] > _stderr.orig
+      cleanUp _stderr.orig err.txt
+ 
++     sed -i '/libsandbox.so/d' err.txt
++
+      rm -f results.csv
+      wrapperDiff --csv results.csv $(testDir)/out.txt out.txt
+      wrapperDiff --csv results.csv $(testDir)/err.txt err.txt

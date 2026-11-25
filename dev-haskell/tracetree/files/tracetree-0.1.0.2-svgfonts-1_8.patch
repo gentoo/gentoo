@@ -1,0 +1,66 @@
+From db0b0defa60752fcb7f191cd8c3cebc198fddb66 Mon Sep 17 00:00:00 2001
+From: hololeap <hololeap@protonmail.com>
+Date: Tue, 20 Jan 2026 18:43:58 -0700
+Subject: [PATCH 1/1] Support SVGFonts-1.8
+
+Signed-off-by: hololeap <hololeap@protonmail.com>
+--- a/ttrender/Debug/Trace/Tree/Render/Simple.hs
++++ b/ttrender/Debug/Trace/Tree/Render/Simple.hs
+@@ -12,6 +12,17 @@ import Debug.Trace.Tree.Render.Options
+ import Debug.Trace.Tree.Render.Constants
+ import qualified Debug.Trace.Tree.Render.Edged as Edged
+ 
++import System.IO.Unsafe (unsafePerformIO)
++
++bit' :: PreparedFont Double
++bit' = unsafePerformIO bit
++
++lin' :: PreparedFont Double
++lin' = unsafePerformIO lin
++
++textSVG' :: Double -> PreparedFont Double -> String -> Path V2 Double
++textSVG' h fnt = drop_rect . fit_height h . svgText (textOpts fnt)
++
+ renderTree :: RenderOptions -> SimpleTree -> Diagram B
+ renderTree options@RenderOptions{..} =
+       Edged.renderTree drawEdgeLabel (drawNode options) renderShowCoords
+@@ -32,12 +43,12 @@ drawNode RenderOptions{..} node =
+ 
+ drawEdgeLabel :: Maybe String -> Maybe String -> String -> (Diagram B, ArrowOpts Double)
+ drawEdgeLabel _ Nothing str = (
+-    stroke (textSVG' (textOpts constEdgeLabelHeight bit) str) # fc black # lw none
++    stroke (textSVG' constEdgeLabelHeight bit' str) # fc black # lw none
+   , arrOpts & shaftStyle %~ dashingG [constMissingNodeDash, constMissingNodeDash] 0
+             & headTexture .~ solid grey
+   )
+ drawEdgeLabel _ (Just _) str = (
+-    stroke (textSVG' (textOpts constEdgeLabelHeight bit) str) # fc black # lw none
++    stroke (textSVG' constEdgeLabelHeight bit' str) # fc black # lw none
+   , arrOpts
+   )
+ 
+@@ -50,10 +61,9 @@ arrOpts :: ArrowOpts Double
+ arrOpts = with & headLength .~ global constArrowHeadLength
+                & shaftStyle %~ lw (global constArrowLineWidth) . lc grey
+ 
+-textOpts :: Double -> PreparedFont Double -> TextOpts Double
+-textOpts h fnt = with {
++textOpts :: PreparedFont Double -> TextOpts Double
++textOpts fnt = with {
+     textFont   = fnt
+-  , textHeight = h
+   }
+ 
+ box :: String -> Maybe (Colour Double) -> Diagram B
+@@ -63,7 +73,7 @@ box str mc = mconcat [
+     ]
+   where
+     txt :: Path V2 Double
+-    txt = textSVG' (textOpts constNodeLabelHeight lin) str
++    txt = textSVG' constNodeLabelHeight lin' str
+ 
+     bb :: BoundingBox V2 Double
+     bb = boundingBoxGrow constNodePadding (boundingBox txt) <> boundingBox minBB
+-- 
+2.52.0
+

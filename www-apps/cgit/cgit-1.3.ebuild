@@ -22,9 +22,9 @@ SRC_URI="https://www.kernel.org/pub/software/scm/git/git-${GIT_V}.tar.xz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 arm ~riscv x86"
+KEYWORDS="amd64 arm ~arm64 ~riscv x86"
 
-IUSE="doc +highlight +lua test"
+IUSE="doc +highlight +lua selinux test"
 REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} ) ${PYTHON_REQUIRED_USE}"
 
 RESTRICT="!test? ( test )"
@@ -55,6 +55,7 @@ BDEPEND="
 		>=app-text/asciidoc-8.5.1
 	)
 "
+RDEPEND+=" selinux? ( sec-policy/selinux-git )"
 
 PATCHES=( "${FILESDIR}"/${PN}-highlight.patch )
 
@@ -82,6 +83,9 @@ src_configure() {
 		echo "LUA_PKGCONFIG = ${ELUA}" >> cgit.conf || die "echo LUA_PKGCONFIG failed"
 	else
 		echo "NO_LUA = 1" >> cgit.conf || die "echo NO_LUA failed"
+	fi
+	if use elibc_musl; then
+		echo 'export NO_REGEX=NeedsStartEnd' >> cgit.conf || die "echo export NO_REGEX=NeedsStartEnd failed"
 	fi
 }
 

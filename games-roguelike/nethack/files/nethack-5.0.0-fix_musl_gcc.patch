@@ -1,0 +1,17 @@
+patch from upstream https://github.com/NetHack/NetHack/commit/2445b97
+fix with musl/gcc
+https://github.com/NetHack/NetHack/issues/1530
+https://bugs.gentoo.org/975067
+--- a/sys/unix/hints/linux.500
++++ b/sys/unix/hints/linux.500
+@@ -197,7 +197,10 @@ ifeq "$(CCISCLANG)" "1"
+ # clang-specific ends
+ else
+ # gcc-specific starts
++ifndef MUSL
++# __sighandler_t does not exist in musl
+ LIBCFLAGS+=-DSIG_RET_TYPE=__sighandler_t
++endif
+ # gcc-specific ends
+ endif
+ 

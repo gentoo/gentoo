@@ -5,7 +5,7 @@
     <email>me@rahil.rocks</email>
     <name>Rahil Bhimjiani</name>
   </maintainer>
-  <maintainer type="person">
+  <maintainer type="person" proxied="maintainer-and-proxy">
     <email>grobian@gentoo.org</email>
     <name>Fabian Groffen</name>
   </maintainer>

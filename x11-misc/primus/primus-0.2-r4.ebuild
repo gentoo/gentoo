@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -48,7 +48,7 @@ src_compile() {
 	mymake() {
 		emake LIBDIR=$(get_libdir)
 	}
-	multilib_parallel_foreach_abi mymake
+	multilib_foreach_abi mymake
 }
 
 src_install() {

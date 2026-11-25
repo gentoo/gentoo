@@ -1,0 +1,25 @@
+https://bugs.gentoo.org/977454
+https://github.com/lief-project/LIEF/pull/1351
+
+From dba3bba004ad0eba3cb966340ddfcaf6137b7f15 Mon Sep 17 00:00:00 2001
+From: Ted Rodgers <ted.d.rodgers@gmail.com>
+Date: Sun, 14 Jun 2026 22:57:44 -0400
+Subject: [PATCH] add #include <sstream> for gcc-17
+
+---
+ include/LIEF/PE/ResourcesManager.hpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/include/LIEF/PE/ResourcesManager.hpp b/include/LIEF/PE/ResourcesManager.hpp
+index e59d846144..413ba06fe4 100644
+--- a/deps/LIEF/include/LIEF/PE/ResourcesManager.hpp
++++ b/deps/LIEF/include/LIEF/PE/ResourcesManager.hpp
+@@ -16,6 +16,7 @@
+ #ifndef LIEF_PE_RESOURCES_MANAGER_H
+ #define LIEF_PE_RESOURCES_MANAGER_H
+ #include <ostream>
++#include <sstream>
+ 
+ #include "LIEF/visibility.h"
+ #include "LIEF/Object.hpp"
+

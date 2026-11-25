@@ -17,25 +17,80 @@
 
 #--- END OF EXAMPLES ---
 
+# Mike Gilbert <floppym@gentoo.org> (2026-11-11)
+# Replaced by meson_format_array_function in meson.eclass.
+dev-build/meson-format-array
+
+# Mike Pagano <mpagano@gentoo.org> (2026-11-02)
+# nginx-unit was removed from the gentoo tree on 2026-04-13
+# This completes the process with the removal of the user and
+# group.
+acct-group/nginx-unit
+acct-user/nginx-unit
+
+# Michał Górny <mgorny@gentoo.org> (2026-10-22)
+# Since 5.0.0 release, the package is outright broken (unbound local).
+# The "open source" support mailing list dropped my mail, and either way
+# upstream seems to stopped paying any attention to it.
+dev-python/reportlab
+
+# Michał Górny <mgorny@gentoo.org> (2026-08-01)
+# Used only by old dev-python/feedparser versions.  To be last-rited
+# once they're gone.
+dev-python/sgmllib3k
+
+# Michał Górny <mgorny@gentoo.org> (2026-07-27)
+# The project is not actively developed since 2020, when the developer
+# switched to Rust.  The maintenance currently seems to be limited to
+# mass merging slop security fixes.  dev-python/dulwich seems to be
+# the best available alternative right now.
+dev-python/gitpython
+
+# Alfred Wingate <parona@protonmail.com> (2026-07-26)
+# Discontinued upstream since 2019.
+# Replaced by dev-ruby/sassc
+# https://sass-lang.com/blog/ruby-sass-is-unsupported/
+dev-ruby/sass
+
+# Michał Górny <mgorny@gentoo.org> (2026-06-06)
+# Discontinued upstream, with explicit note that they will not be fixing
+# any further security issues.
+dev-python/bleach
+
+# Michał Górny <mgorny@gentoo.org> (2026-05-08)
+# The package was archived upstream as pytest-9 features built-in
+# subtest support.  Gotta check if we need any code changes, or can just
+# drop it in place.
+dev-python/pytest-subtests
+
+# Michał Górny <mgorny@gentoo.org> (2026-04-01)
+# Upstream is no longer accepting nor publishing any bug reports.
+# As such, the package is not suitable for public consumption anymore.
+# On top of that, the package is heavily relying on unsafe Rust, which
+# completely defeats the purpose of Rust in the first place.
+# https://github.com/ijl/orjson?tab=readme-ov-file#orjson
+dev-python/orjson
+
+# Michał Górny <mgorny@gentoo.org> (2026-04-01)
+# Upstream is no longer accepting nor publishing any bug reports.
+# As such, the package is not suitable for public consumption anymore.
+# https://github.com/encode/httpx/discussions/3784
+dev-python/httpx
+
 # Michał Górny <mgorny@gentoo.org> (2026-03-25)
 # Backwards compatibility package for pkg_resources that have been
 # removed from >=dev-python/setuptools-82.  Please migrate to
 # importlib.{metadata,resources} and/or dev-python/packaging.
 dev-python/pkg-resources
 
-# Michał Górny <mgorny@gentoo.org> (2025-11-25)
-# The package has turned into complete AI slop.  Every subsequent
-# release introduces serious quality issues, and potential security
-# concerns.  Please ask upstreams to move away from it.
-dev-python/autobahn
-
 # Michał Górny <mgorny@gentoo.org> (2025-11-04)
-# Please depend on virtual/zlib, unless you are sure that the package
-# in question is not compatible with sys-libs/zlib-ng[compat] and/or
-# sys-libs/minizip-ng[compat].  In the latter case, please report a bug,
-# so that upstream can improve the API/ABI compatibility.
+# Please depend on virtual/zlib instead of sys-libs/zlib directly, unless
+# you are sure that the package in question is not compatible with
+# sys-libs/zlib-ng[compat] and/or sys-libs/minizip-ng[compat].  In the
+# latter case, please report a bug, so that upstream can improve the
+# API/ABI compatibility.
 # This is a temporary deprecation to aid transitioning packages imported
-# from other repositories.
+# from other repositories. The sys-libs/zlib package itself is not deprecated!
 sys-libs/zlib
 
 # Michał Górny <mgorny@gentoo.org> (2025-10-26)
@@ -47,49 +102,6 @@ dev-python/httpretty
 # Only exists temporarily to facilitate upgrades for exaile.
 # Bug 892854
 dev-python/berkeleydb
-
-# Michał Górny <mgorny@gentoo.org> (2025-10-01)
-# dev-python/passlib is unmaintained upstream (last release in 2020),
-# and we keep having to patch breakage out.  Packages really need
-# to migrate out of it.
-dev-python/passlib
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-08-20)
-# Qt5 upstream OSS support ended on 2020-12-08. Public availability of
-# commercial 5.15 LTS releases is delayed by 1 year since then. The final
-# release happened on 2025-05-19, which means a) we will not get it until
-# 2026-06-19, b) any bugs discovered since last May will not be fixed and
-# c) no bugs since 2020-12-08 that haven't also been affecting Qt6 were
-# fixed at all. Bug 948836
-dev-qt/linguist-tools:5
-dev-qt/qtconcurrent:5
-dev-qt/qtdbus:5
-dev-qt/qtdeclarative:5
-dev-qt/qtgui:5
-dev-qt/qtmultimedia:5
-dev-qt/qtnetwork:5
-dev-qt/qtopengl:5
-dev-qt/qtprintsupport:5
-dev-qt/qtquickcontrols:5
-dev-qt/qtquickcontrols2:5
-dev-qt/qtsql:5
-dev-qt/qtsvg:5
-dev-qt/qttest:5
-dev-qt/qttranslations:5
-dev-qt/qtwayland:5
-dev-qt/qtwidgets:5
-dev-qt/qtx11extras:5
-dev-qt/qtxml:5
-dev-python/pyqt5
-
-# Michał Górny <mgorny@gentoo.org> (2025-07-29)
-# dev-python/flaky and dev-python/pytest-rerunfailurse have conflicting
-# pytest fixtures, with the latter providing a more powerful fixture
-# (and the former breaking packages requiring it).  If your package
-# uses `@pytest.mark.flaky`, use pytest-rerunfailures instead.
-# If it uses `@flaky.flaky`, send a patch upstream to switch
-# to `@pytest.mark.flaky`.
-dev-python/flaky
 
 # Michał Górny <mgorny@gentoo.org> (2025-06-28)
 # versioningit does not provide any support for building via GitHub
@@ -112,11 +124,6 @@ dev-python/legacy-cgi
 # Michał Górny <mgorny@gentoo.org> (2023-12-10)
 # Superseded by dev-python/psycopg:0 (version 3).
 dev-python/psycopg:2
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2023-10-21)
-# QtScript is deprecated since Qt 5.5, all projects must port away.
-# Bug 915779
-dev-qt/qtscript:5
 
 # Sam James <sam@gentoo.org> (2023-04-07)
 # Inactive upstream, doesn't support newer Rubies.

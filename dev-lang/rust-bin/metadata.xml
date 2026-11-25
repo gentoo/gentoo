@@ -9,6 +9,7 @@
 		<flag name="clippy">Install clippy, Rust code linter</flag>
 		<flag name="rust-analyzer">Install rust-analyzer, A Rust compiler front-end for IDEs (language server)</flag>
 		<flag name="rust-src">Install rust-src, needed by developer tools and for build-std (cross)</flag>
+		<flag name="rustc-dev">Install rustc-dev, internal compiler libraries needed to link to compiler internals (e.g. for crubit)</flag>
 		<flag name="rustfmt">Install rustfmt, Rust code formatter</flag>
 	</use>
 	<upstream>

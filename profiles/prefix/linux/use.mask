@@ -1,5 +1,13 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Fabian Groffen <grobian@gentoo.org> (2026-05-15)
+# elfutils[debuginfod] works on Linux
+-debuginfod
+
+# Fabian Groffen <grobian@gentoo.org> (2026-05-15)
+# epoll is Linux's way, also on Prefix
+-epoll
 
 # Michael Haubenwallner <haubi@gentoo.org> (2016-04-19)
 # Unmask the linux-glibc combo, or we get bug#574822.

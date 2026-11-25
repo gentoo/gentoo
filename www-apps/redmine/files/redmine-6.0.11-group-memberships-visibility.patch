@@ -1,0 +1,123 @@
+https://www.redmine.org/projects/redmine/wiki/security_advisories
+Bug: https://www.redmine.org/issues/44468
+From https://github.com/redmine/redmine/commit/39e799652b6d5108690e9d5c2f071bd85bad1130
+From: Marius Balteanu <marius.balteanu@zitec.com>
+Date: Mon, 28 Sep 2026 19:09:04 +0000
+Subject: [PATCH] Only render memberships in visible projects in the groups API
+ (#44468).
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Add a Member.visible scope that restricts memberships to projects the
+user is allowed to view members of, use it in the groups API template,
+and switch users#show to the same scope so both endpoints share one
+definition of a visible membership.
+
+Patch by Jens Krämer (user:jkraemer).
+
+git-svn-id: https://svn.redmine.org/redmine/trunk@25164 e93f8b46-1217-0410-a6f0-8f06a7374b81
+(cherry picked from commit 39e799652b6d5108690e9d5c2f071bd85bad1130)
+--- a/app/controllers/users_controller.rb
++++ b/app/controllers/users_controller.rb
+@@ -94,7 +94,7 @@ class UsersController < ApplicationController
+     end
+ 
+     # show projects based on current user visibility
+-    @memberships = @user.memberships.preload(:roles, :project).where(Project.visible_condition(User.current)).to_a
++    @memberships = @user.memberships.visible.preload(:roles, :project).to_a
+ 
+     @issue_counts = {}
+     @issue_counts[:assigned] = {
+--- a/app/models/member.rb
++++ b/app/models/member.rb
+@@ -33,6 +33,10 @@ class Member < ApplicationRecord
+   scope :active, (lambda do
+     joins(:principal).where(:users => {:status => Principal::STATUS_ACTIVE})
+   end)
++  scope :visible, (lambda do |*args|
++    joins(:project).
++      where(Project.allowed_to_condition(args.shift || User.current, :view_members, *args))
++  end)
+   # Sort by first role and principal
+   scope :sorted, (lambda do
+     includes(:member_roles, :roles, :principal).
+--- a/app/views/groups/show.api.rsb
++++ b/app/views/groups/show.api.rsb
+@@ -12,7 +12,7 @@ api.group do
+   end if include_in_api_response?('users') && !@group.builtin?
+ 
+   api.array :memberships do
+-    @group.memberships.preload(:roles, :project).each do |membership|
++    @group.memberships.visible.preload(:roles, :project).each do |membership|
+       api.membership do
+         api.id membership.id
+         api.project :id => membership.project.id, :name => membership.project.name
+--- a/test/integration/api_test/groups_test.rb
++++ b/test/integration/api_test/groups_test.rb
+@@ -120,6 +120,32 @@ class Redmine::ApiTest::GroupsTest < Redmine::ApiTest::Base
+     end
+   end
+ 
++  test "GET /groups/:id.xml with include=memberships should only include memberships in visible projects" do
++    # group 10 is a member of the private project 5, which dlopper can not see
++    Member.create!(:principal => Group.find(10), :project_id => 1, :role_ids => [2])
++
++    get '/groups/10.xml?include=memberships', :headers => credentials('admin')
++    assert_response :success
++    assert_select 'group memberships membership', 2
++
++    get '/groups/10.xml?include=memberships', :headers => credentials('dlopper')
++    assert_response :success
++    assert_select 'group memberships' do
++      assert_select 'membership', 1
++      assert_select 'membership project[id="1"]'
++      assert_select 'membership project[id="5"]', 0
++    end
++  end
++
++  test "GET /groups/:id.json with include=memberships should only include memberships in visible projects" do
++    Member.create!(:principal => Group.find(10), :project_id => 1, :role_ids => [2])
++
++    get '/groups/10.json?include=memberships', :headers => credentials('dlopper')
++    assert_response :success
++    json = ActiveSupport::JSON.decode(response.body)
++    assert_equal [1], json['group']['memberships'].map {|membership| membership['project']['id']}
++  end
++
+   test "POST /groups.xml with valid parameters should create the group" do
+     assert_difference('Group.count') do
+       post(
+--- a/test/unit/member_test.rb
++++ b/test/unit/member_test.rb
+@@ -27,6 +27,30 @@ class MemberTest < ActiveSupport::TestCase
+     @jsmith = Member.find(1)
+   end
+ 
++  def test_visible_scope_should_only_include_memberships_in_projects_visible_to_the_user
++    # dlopper is a member of project 1 only and can not see the private project 5
++    user = User.find(3)
++    memberships = Member.visible(user).to_a
++
++    assert_include Member.find(1), memberships
++    assert_equal [], memberships.select {|m| m.project_id == 5}
++    assert memberships.all? {|m| m.project.visible?(user)}
++  end
++
++  def test_visible_scope_should_default_to_current_user
++    User.current = User.find(3)
++    assert_equal Member.visible(User.find(3)).to_a, Member.visible.to_a
++  end
++
++  def test_visible_scope_should_include_all_memberships_in_active_projects_for_admin
++    assert_equal Member.count, Member.visible(User.find(1)).count
++  end
++
++  def test_visible_scope_should_exclude_memberships_in_archived_projects
++    Project.find(1).update_column :status, Project::STATUS_ARCHIVED
++    assert_not_include Member.find(1), Member.visible(User.find(1)).to_a
++  end
++
+   def test_sorted_scope_on_project_members
+     members = Project.find(1).members.sorted.to_a
+     roles = members.map {|m| m.roles.sort.first}

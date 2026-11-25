@@ -112,6 +112,9 @@
     <flag name="sysvipc">
       Enable the PHP System-V semaphore, shared memory and IPC extension
     </flag>
+    <flag name="test-full">
+      Run slower tests
+    </flag>
     <flag name="tokenizer">
       Add support for the PHP file parser
     </flag>

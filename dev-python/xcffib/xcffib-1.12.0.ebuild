@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{11..14} pypy3_11 )
+PYTHON_COMPAT=( python3_{12..15} )
 
 inherit distutils-r1 pypi
 
@@ -23,9 +23,7 @@ DEPEND="
 	x11-libs/libxcb
 "
 RDEPEND="
-	$(python_gen_cond_dep '
-		>=dev-python/cffi-1.1.0:=[${PYTHON_USEDEP}]
-	' 'python*')
+	>=dev-python/cffi-1.1.0:=[${PYTHON_USEDEP}]
 	${DEPEND}
 "
 BDEPEND="

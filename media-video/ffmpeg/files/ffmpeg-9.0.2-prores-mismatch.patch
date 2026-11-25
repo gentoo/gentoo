@@ -1,0 +1,18 @@
+https://bugs.gentoo.org/983364
+https://code.ffmpeg.org/FFmpeg/FFmpeg/commit/5656e9e5ab6
+--- a/libavcodec/tests/x86/dct.c
++++ b/libavcodec/tests/x86/dct.c
+@@ -29,4 +29,4 @@
+ #if CONFIG_PRORES_DECODER && ARCH_X86_64 && HAVE_X86ASM
+-void ff_prores_idct_put_10_sse2(uint16_t *dst, int linesize,
+-                                int16_t *block, int16_t *qmat);
++void ff_prores_idct_put_10_sse2(uint16_t *dst, ptrdiff_t linesize,
++                                int16_t *block, const int16_t *qmat);
+ 
+@@ -52,4 +52,4 @@
+ # if HAVE_AVX_EXTERNAL
+-void ff_prores_idct_put_10_avx(uint16_t *dst, int linesize,
+-                               int16_t *block, int16_t *qmat);
++void ff_prores_idct_put_10_avx(uint16_t *dst, ptrdiff_t linesize,
++                               int16_t *block, const int16_t *qmat);
+ PR_WRAP(avx)

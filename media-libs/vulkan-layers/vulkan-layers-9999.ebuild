@@ -23,7 +23,7 @@ HOMEPAGE="https://github.com/KhronosGroup/Vulkan-ValidationLayers"
 LICENSE="Apache-2.0"
 SLOT="0"
 IUSE="wayland test X"
-RESTRICT="!test? ( test )"
+RESTRICT="!test? ( test ) test"
 
 RDEPEND="~dev-util/spirv-tools-${PV}[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}
@@ -55,6 +55,7 @@ multilib_src_configure() {
 		-DBUILD_WSI_XCB_SUPPORT=$(usex X)
 		-DBUILD_WSI_XLIB_SUPPORT=$(usex X)
 		-DBUILD_TESTS=$(usex test)
+		-DUPDATE_DEPS=OFF
 	)
 	cmake_src_configure
 }

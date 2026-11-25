@@ -1,0 +1,11 @@
+https://bugs.gentoo.org/979428
+--- a/plugins/perl/meson.build
++++ b/plugins/perl/meson.build
+@@ -83,6 +83,7 @@ perl_dep = declare_dependency(
+ 
+ shared_module('perl',
+   sources: ['perl.c', hexchat_perl_module, irc_perl_module],
++  c_args: ['-std=gnu99'],
+   dependencies: [libgio_dep, hexchat_plugin_dep, perl_dep],
+   install: true,
+   install_dir: plugindir,

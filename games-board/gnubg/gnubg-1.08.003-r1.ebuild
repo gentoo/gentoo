@@ -1,9 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 inherit autotools desktop python-single-r1 xdg
 
 DESCRIPTION="GNU BackGammon"
@@ -15,9 +15,12 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~ppc64 ~x86"
 IUSE="
 	cpu_flags_x86_avx cpu_flags_x86_sse cpu_flags_x86_sse2
-	gui opengl python sqlite"
-REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )
-	opengl? ( gui )"
+	gui opengl python sqlite
+"
+REQUIRED_USE="
+	python? ( ${PYTHON_REQUIRED_USE} )
+	opengl? ( gui )
+"
 
 RDEPEND="
 	dev-libs/cglm
@@ -41,13 +44,15 @@ RDEPEND="
 	)
 	opengl? ( media-libs/libepoxy )
 	python? ( ${PYTHON_DEPS} )
-	sqlite? ( dev-db/sqlite:3 )"
+	sqlite? ( dev-db/sqlite:3 )
+"
 DEPEND="${RDEPEND}"
 BDEPEND="
 	dev-build/autoconf-archive
 	sys-devel/gettext
 	virtual/pkgconfig
-	python? ( ${PYTHON_DEPS} )"
+	python? ( ${PYTHON_DEPS} )
+"
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup

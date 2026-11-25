@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake-multilib edo multiprocessing
+inherit cmake-multilib edo multiprocessing toolchain-funcs
 
 DESCRIPTION="Scalable Video Technology for AV1 (SVT-AV1 Encoder)"
 HOMEPAGE="https://gitlab.com/AOMediaCodec/SVT-AV1"
@@ -77,9 +77,21 @@ multilib_src_compile() {
 	if use pgo; then
 		mkdir -p "${BUILD_DIR}/objective-1-fast/" || die
 		cp "${DISTDIR}/svt-av1-${PROFILING_VIDEO}" "${BUILD_DIR}/objective-1-fast/${PROFILING_VIDEO}" || die
-		cmake_build PGOCompileGen
+
+		## Run the targets PGOCompileGen and PGOCompileUSE manually for more verbose output
+
+		# equivalent to the target PGOCompileGen
+		edo cmake "${BUILD_DIR}" -DSVT_INTERNAL_PGO_GENERATE=ON -DSVT_INTERNAL_PGO_USE=OFF
+		cmake_build SvtAv1EncApp
+
 		cmake_build PGOGenerateProfile
-		cmake_build PGOCompileUse
+
+		# equivalent to the target PGOCompileUse
+		edo cmake "${BUILD_DIR}" -DSVT_INTERNAL_PGO_GENERATE=OFF -DSVT_INTERNAL_PGO_USE=ON
+		if tc-is-clang; then
+			edo llvm-profdata merge --sparse=true *.profraw -o default.profdata
+		fi
+		cmake_build SvtAv1EncApp
 	fi
 
 	cmake_src_compile

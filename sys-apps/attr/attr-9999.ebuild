@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,10 +9,16 @@ if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://git.savannah.gnu.org/git/${PN}.git"
 	inherit autotools git-r3
 else
-	inherit libtool
+	VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/acl.asc"
+	inherit libtool verify-sig
 
-	SRC_URI="mirror://nongnu/${PN}/${P}.tar.xz"
+	SRC_URI="
+		mirror://nongnu/${PN}/${P}.tar.xz
+		verify-sig? ( mirror://nongnu/${PN}/${P}.tar.xz.sig )
+	"
+
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+	BDEPEND="verify-sig? ( sec-keys/openpgp-keys-acl )"
 fi
 
 DESCRIPTION="Extended attributes tools"
@@ -22,11 +28,7 @@ LICENSE="LGPL-2.1+"
 SLOT="0"
 IUSE="debug nls static-libs"
 
-BDEPEND="nls? ( sys-devel/gettext )"
-
-PATCHES=(
-	"${FILESDIR}/${PN}-2.5.2-r1-musl-1.2.5.patch"
-)
+BDEPEND+=" nls? ( sys-devel/gettext )"
 
 src_prepare() {
 	default

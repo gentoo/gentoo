@@ -1,11 +1,11 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit distutils-r1 optfeature xdg
 
@@ -15,7 +15,7 @@ LICENSE="GPL-3+"
 SLOT="0"
 
 if [[ "${PV}" == "9999" ]]; then
-	EGIT_REPO_URI="https://lab.louiz.org/${PN}/${PN}.git https://github.com/poezio/poezio.git"
+	EGIT_REPO_URI="https://codeberg.org/poezio/poezio.git"
 	inherit git-r3
 
 	# We build the html documentation using sphinx.
@@ -26,14 +26,11 @@ else
 fi
 
 RDEPEND="
-	dev-python/aiodns[${PYTHON_USEDEP}]
-	dev-python/pyasn1-modules[${PYTHON_USEDEP}]
-	dev-python/pyasn1[${PYTHON_USEDEP}]
-	>=dev-python/slixmpp-1.10.0[${PYTHON_USEDEP}]
+	>=dev-python/slixmpp-1.14.0[${PYTHON_USEDEP}]
 "
 
 PATCHES=(
-	"${FILESDIR}/Do-not-install-man-pages-and-files-in-usr-share-poez.patch"
+	"${FILESDIR}/poezio-0.17-Do-not-install-man-pages-and-files-in-usr-share.patch"
 )
 
 distutils_enable_tests pytest

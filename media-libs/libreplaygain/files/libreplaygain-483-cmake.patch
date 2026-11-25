@@ -1,0 +1,47 @@
+From daaf3a02b5824461b4b473374678ac7cbf177a31 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Sun, 17 May 2026 10:22:48 +0200
+Subject: [PATCH] Fix build w/ CMake-4, drop CMAKE_VERBOSE_MAKEFILE and
+ optimisations
+
+Separate shared from static libs build/install.
+Decided to completely bypass root dir CMakeLists.txt to keep the delta
+small and avoid trouble with CRLF line endings.
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ src/CMakeLists.txt | 20 +++++++++++++-------
+ 1 file changed, 13 insertions(+), 7 deletions(-)
+
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 9ce9aae..a738314 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -1,11 +1,17 @@
+-include_directories(${libreplaygain_SOURCE_DIR}/include)
++cmake_minimum_required(VERSION 3.16...4.4)
+ 
+-add_library(replaygain-static STATIC gain_analysis)
+-set_target_properties(replaygain-static PROPERTIES OUTPUT_NAME replaygain CLEAN_DIRECT_OUTPUT 1)
++project(libreplaygain C)
+ 
+-add_library(replaygain-shared SHARED gain_analysis)
+-set_target_properties(replaygain-shared PROPERTIES OUTPUT_NAME replaygain CLEAN_DIRECT_OUTPUT 1 VERSION 1.0.0 SOVERSION 1)
++include_directories(../include)
+ 
+-install(TARGETS replaygain-static replaygain-shared LIBRARY DESTINATION "lib${LIB_SUFFIX}" ARCHIVE DESTINATION "lib${LIB_SUFFIX}" COMPONENT libraries)
++if(BUILD_SHARED_LIBS)
++    add_library(replaygain-shared SHARED gain_analysis.c)
++    set_target_properties(replaygain-shared PROPERTIES OUTPUT_NAME replaygain CLEAN_DIRECT_OUTPUT 1 VERSION 1.0.0 SOVERSION 1 LINKER_LANGUAGE C)
++    install(TARGETS replaygain-shared LIBRARY DESTINATION "lib${LIB_SUFFIX}" ARCHIVE DESTINATION "lib${LIB_SUFFIX}" COMPONENT libraries)
++else()
++    add_library(replaygain-static STATIC gain_analysis.c)
++    set_target_properties(replaygain-static PROPERTIES OUTPUT_NAME replaygain CLEAN_DIRECT_OUTPUT 1 LINKER_LANGUAGE C)
++    install(TARGETS replaygain-static LIBRARY DESTINATION "lib${LIB_SUFFIX}" ARCHIVE DESTINATION "lib${LIB_SUFFIX}" COMPONENT libraries)
++endif()
+ 
+-install(FILES ${libreplaygain_SOURCE_DIR}/include/replaygain/gain_analysis.h DESTINATION include/replaygain COMPONENT headers)
++install(FILES ../include/replaygain/gain_analysis.h DESTINATION include/replaygain COMPONENT headers)
+-- 
+2.54.0
+

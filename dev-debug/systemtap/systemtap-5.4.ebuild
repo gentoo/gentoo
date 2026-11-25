@@ -20,7 +20,7 @@ else
 		verify-sig? ( https://sourceware.org/ftp/${PN}/releases/${P}.tar.gz.asc )
 	"
 
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+	KEYWORDS="~alpha amd64 arm arm64 ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
 
 	BDEPEND="verify-sig? ( sec-keys/openpgp-keys-fche )"
 fi
@@ -164,8 +164,10 @@ src_install() {
 
 	# Avoid file collision with dev-debug/dtrace
 	mv "${ED}"/usr/bin/dtrace "${ED}"/usr/bin/stap-dtrace || die
+	mv "${ED}"/usr/share/man/man1/dtrace.1 "${ED}"/usr/share/man/man1/stap-dtrace.1 || die
 
 	if use dtrace-symlink ; then
 		dosym stap-dtrace /usr/bin/dtrace
+		newman - dtrace.1 <<<".so stap-dtrace.1"
 	fi
 }

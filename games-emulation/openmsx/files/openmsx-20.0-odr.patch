@@ -1,0 +1,51 @@
+From 3078e381f21af0bdf5351f1865b802948d41e09e Mon Sep 17 00:00:00 2001
+From: m9710797 <vermaelen.wouter@gmail.com>
+Date: Mon, 10 Mar 2025 17:42:33 +0100
+Subject: [PATCH] Resolve -Wodr warning in LTO build
+
+Both 'OSDWidget.cc' and 'ImGuiSettings.cc' defined a _different_ struct
+'Rectangle' with the _same_ name. That's a One Definition Rule (ODR)
+violation.
+
+Fixed by placing (both) in an anonymous namespace. This gives the class
+internal linkage, meaning the name is private in the .cc file it's
+defined in. Thus avoiding the ODR violation.
+
+This fixes:
+    One-Definition-Rule for link time optimization is broken by struct Rectangle
+    https://github.com/openMSX/openMSX/issues/1873
+---
+ src/console/OSDWidget.cc   | 2 +-
+ src/imgui/ImGuiSettings.cc | 2 ++
+ 2 files changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/src/console/OSDWidget.cc b/src/console/OSDWidget.cc
+index f011dbd2e5..0e4d5a6bbc 100644
+--- a/src/console/OSDWidget.cc
++++ b/src/console/OSDWidget.cc
+@@ -22,7 +22,7 @@ using namespace gl;
+ namespace openmsx {
+ 
+ // intersect two rectangles
+-struct Rectangle { int x, y, w, h; };
++namespace { struct Rectangle { int x, y, w, h; }; }
+ static constexpr Rectangle intersect(const Rectangle& a, const Rectangle& b)
+ {
+ 	int x1 = std::max<int>(a.x, b.x);
+diff --git a/src/imgui/ImGuiSettings.cc b/src/imgui/ImGuiSettings.cc
+index bedf69ef2b..67c7666b83 100644
+--- a/src/imgui/ImGuiSettings.cc
++++ b/src/imgui/ImGuiSettings.cc
+@@ -510,10 +510,12 @@ void ImGuiSettings::showMenu(MSXMotherBoard* motherBoard)
+ 	return (min <= x) && (x <= max);
+ }
+ 
++namespace {
+ struct Rectangle {
+ 	gl::vec2 topLeft;
+ 	gl::vec2 bottomRight;
+ };
++}
+ [[nodiscard]] static bool insideRectangle(gl::vec2 mouse, Rectangle r)
+ {
+ 	return between(mouse.x, r.topLeft.x, r.bottomRight.x) &&

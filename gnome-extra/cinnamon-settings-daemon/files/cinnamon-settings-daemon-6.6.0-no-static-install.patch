@@ -1,0 +1,22 @@
+From 029be9afe9468ed89290ea164a5d15e0615e1091 Mon Sep 17 00:00:00 2001
+From: Sparky Bluefang <sparky@bluefang-logic.com>
+Date: Wed, 15 Apr 2026 03:10:58 -0400
+Subject: [PATCH] Don't install the static csd library.
+
+---
+ cinnamon-settings-daemon/meson.build | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/cinnamon-settings-daemon/meson.build b/cinnamon-settings-daemon/meson.build
+index 7b623455..2f10d401 100644
+--- a/cinnamon-settings-daemon/meson.build
++++ b/cinnamon-settings-daemon/meson.build
+@@ -20,8 +20,6 @@ csd_lib = static_library(
+     csd_sources,
+     include_directories: include_dirs,
+     dependencies: csd_deps,
+-    install: true,
+-    install_dir: apilibdir,
+ )
+ 
+ csd_dep = declare_dependency(

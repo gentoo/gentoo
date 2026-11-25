@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -38,6 +38,9 @@ ruby_add_bdepend "
 	)"
 
 all_ruby_prepare() {
+	sed -e '3igem "minitest", "~> 5"' \
+		-i test/cases/helper.rb || die
+
 	# Set test environment to our hand.
 	sed -i -e '/load_paths/d' test/cases/helper.rb || die "Unable to remove load paths"
 }

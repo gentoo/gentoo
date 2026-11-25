@@ -4,7 +4,7 @@
 EAPI=8
 
 # https://codeberg.org/ziglang/zig/src/tag/${PV}#building-from-source
-LLVM_COMPAT=( 21 )
+LLVM_COMPAT=( 23 )
 LLVM_OPTIONAL=1
 
 ZIG_SLOT="$(ver_cut 1-2)"
@@ -44,12 +44,13 @@ fi
 # lib/libc/glibc: BSD HPND ISC inner-net LGPL-2.1+
 LICENSE="MIT Apache-2.0-with-LLVM-exceptions || ( UoI-NCSA MIT ) || ( Apache-2.0-with-LLVM-exceptions Apache-2.0 MIT BSD-2 ) public-domain BSD-2 ZPL ISC HPND BSD inner-net LGPL-2.1+"
 SLOT="${ZIG_SLOT}"
-IUSE="debug doc +llvm"
+IUSE="debug doc +llvm test"
 REQUIRED_USE="
 	!llvm? ( !doc )
 	llvm? ( ${LLVM_REQUIRED_USE} )
+	test? ( debug llvm )
 "
-RESTRICT="!llvm? ( test )"
+RESTRICT="!test? ( test )"
 
 # Used by both "cmake" and "zig" eclasses.
 BUILD_DIR="${WORKDIR}/${P}_build"
@@ -75,9 +76,8 @@ DOCS=( "README.md" "doc/build.zig.zon.md" )
 # zig.eclass does not set this for us since we use ZIG_OPTIONAL=1
 QA_FLAGS_IGNORED="usr/.*/zig/${PV}/bin/zig"
 
-# Since commit https://codeberg.org/ziglang/zig/commit/e7d28344fa3ee81d6ad7ca5ce1f83d50d8502118
-# Zig uses self-hosted compiler only
-CHECKREQS_MEMORY="4G"
+# https://codeberg.org/ziglang/zig/src/tag/0.16.0/build.zig#L775-L778
+CHECKREQS_MEMORY="8G"
 
 pkg_setup() {
 	# Skip detecting zig executable.
@@ -131,11 +131,11 @@ src_configure() {
 	# and can't resolve native target, so we pass target in exact form.
 	declare -r -g ZIG_HOST_AS_TARGET="$(zig-utils_c_env_to_zig_target "${CBUILD:-${CHOST}}" "${CFLAGS}"})"
 
+	export ZIG_LIB_DIR="${S}/lib/"
+
 	# Note that if we are building with CMake, "my_zbs_args"
 	# are used only after compiling zig2.
 	local my_zbs_args=(
-		--zig-lib-dir "${S}/lib/"
-
 		--prefix "${EPREFIX}/${ZIG_SYS_INSTALL_DEST}/"
 		--prefix-lib-dir lib/
 
@@ -148,6 +148,9 @@ src_configure() {
 		# More asserts and so on by default if "debug" is enabled.
 		--release=$(usex debug safe fast)
 	)
+
+	# Pass version string to build if not using git.
+	[[ ${PV} = 9999 ]] || my_zbs_args+=( -Dversion-string="${PV}" )
 
 	# Scenarios of compilation:
 
@@ -346,7 +349,7 @@ pkg_postinst() {
 
 	if ! use llvm; then
 		elog "Currently, Zig built without LLVM support lacks some"
-		elog "important features such as most optimizations, @cImport, etc."
+		elog "features such as optimizations, linker features, etc."
 		elog "They are listed under \"Building from Source without LLVM\""
 		elog "section of the README file from \"/usr/share/doc/${PF}\" ."
 	fi

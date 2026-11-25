@@ -1,0 +1,70 @@
+From https://github.com/luceneplusplus/LucenePlusPlus/pull/200
+Bug: https://bugs.gentoo.org/973146
+Pruned compiler errors to relevant lines.
+
+From: Gianfranco Costamagna <costamagnagianfranco@yahoo.it>
+Date: Sat, 24 Feb 2024 21:26:58 +0100
+Subject: [PATCH] Update DefaultSimilarity.cpp
+
+This fixes a linker failure when building tests (lto related?)
+https://launchpadlibrarian.net/715939877/buildlog_ubuntu-noble-amd64.lucene++_3.0.9-1_BUILDING.txt.gz
+..
+/usr/bin/ld: /tmp/ccUJivoA.ltrans35.ltrans.o:(.data.rel.ro+0x558): undefined reference to `Lucene::DefaultSimilarity::queryNorm(double)'
+/usr/bin/ld: /tmp/ccUJivoA.ltrans35.ltrans.o:(.data.rel.ro+0x568): undefined reference to `Lucene::DefaultSimilarity::sloppyFreq(int)'
+/usr/bin/ld: /tmp/ccUJivoA.ltrans35.ltrans.o:(.data.rel.ro+0x570): undefined reference to `Lucene::DefaultSimilarity::tf(double)'
+/usr/bin/ld: /tmp/ccUJivoA.ltrans35.ltrans.o:(.data.rel.ro+0x588): undefined reference to `Lucene::DefaultSimilarity::idf(int, int)'
+/usr/bin/ld: /tmp/ccUJivoA.ltrans35.ltrans.o:(.data.rel.ro+0x590): undefined reference to `Lucene::DefaultSimilarity::coord(int, int)'
+/usr/bin/ld: /tmp/ccUJivoA.ltrans72.ltrans.o:(.data.rel.ro+0x360): undefined reference to `Lucene::DefaultSimilarity::lengthNorm(std::__cxx11::basic_string<wchar_t, std::char_traits<wchar_t>, std::allocator<wchar_t> > const&, int)'
+..
+---
+ src/core/search/DefaultSimilarity.cpp | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/src/core/search/DefaultSimilarity.cpp b/src/core/search/DefaultSimilarity.cpp
+index c98f2d95..da4c3db2 100644
+--- a/src/core/search/DefaultSimilarity.cpp
++++ b/src/core/search/DefaultSimilarity.cpp
+@@ -27,35 +27,35 @@ double DefaultSimilarity::computeNorm(const String& fieldName, const FieldInvert
+     return (state->getBoost() * lengthNorm(fieldName, numTerms));
+ }
+ 
+-inline double DefaultSimilarity::lengthNorm(const String& fieldName, int32_t numTokens) {
++double DefaultSimilarity::lengthNorm(const String& fieldName, int32_t numTokens) {
+     return (double)(1.0 / std::sqrt((double)numTokens));
+ }
+ 
+-inline double DefaultSimilarity::queryNorm(double sumOfSquaredWeights) {
++double DefaultSimilarity::queryNorm(double sumOfSquaredWeights) {
+     return (double)(1.0 / std::sqrt(sumOfSquaredWeights));
+ }
+ 
+-inline double DefaultSimilarity::tf(double freq) {
++double DefaultSimilarity::tf(double freq) {
+     return (double)std::sqrt(freq);
+ }
+ 
+-inline double DefaultSimilarity::sloppyFreq(int32_t distance) {
++double DefaultSimilarity::sloppyFreq(int32_t distance) {
+     return (1.0 / (double)(distance + 1));
+ }
+ 
+-inline double DefaultSimilarity::idf(int32_t docFreq, int32_t numDocs) {
++double DefaultSimilarity::idf(int32_t docFreq, int32_t numDocs) {
+     return (double)(std::log((double)numDocs / (double)(docFreq + 1)) + 1.0);
+ }
+ 
+-inline double DefaultSimilarity::coord(int32_t overlap, int32_t maxOverlap) {
++double DefaultSimilarity::coord(int32_t overlap, int32_t maxOverlap) {
+     return (double)overlap / (double)maxOverlap;
+ }
+ 
+-inline void DefaultSimilarity::setDiscountOverlaps(bool v) {
++void DefaultSimilarity::setDiscountOverlaps(bool v) {
+     discountOverlaps = v;
+ }
+ 
+-inline bool DefaultSimilarity::getDiscountOverlaps() {
++bool DefaultSimilarity::getDiscountOverlaps() {
+     return discountOverlaps;
+ }
+ 

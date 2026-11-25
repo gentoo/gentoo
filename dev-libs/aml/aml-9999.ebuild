@@ -1,4 +1,4 @@
-# Copyright 2020-2025 Gentoo Authors
+# Copyright 2020-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,23 +13,14 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/any1/aml.git"
 else
 	SRC_URI="https://github.com/any1/aml/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~riscv ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
 fi
 
 LICENSE="ISC"
-SLOT="0"
+SLOT="0/$(ver_cut 1)"
 IUSE="examples"
 
 DEPEND="elibc_musl? ( sys-libs/queue-standalone )"
-
-src_prepare() {
-	default
-
-	# The bundled copy includes cdefs which breaks on musl and this header is
-	# already available on glibc. See bug #828806 and
-	# https://github.com/any1/aml/issues/11.
-	rm include/sys/queue.h || die
-}
 
 src_configure() {
 	local emesonargs=(

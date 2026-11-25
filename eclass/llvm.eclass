@@ -1,6 +1,7 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# @DEAD
 # @ECLASS: llvm.eclass
 # @MAINTAINER:
 # Michał Górny <mgorny@gentoo.org>
@@ -82,7 +83,7 @@ DEPEND="!!llvm-core/llvm:0"
 # @INTERNAL
 # @DESCRIPTION:
 # Correct values of LLVM slots, newest first.
-declare -g -r _LLVM_KNOWN_SLOTS=( {19..8} )
+declare -g -r _LLVM_KNOWN_SLOTS=( 19 )
 
 # @ECLASS_VARIABLE: LLVM_ECLASS_SKIP_PKG_SETUP
 # @INTERNAL

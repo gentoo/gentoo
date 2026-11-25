@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,7 +11,7 @@ RUBY_FAKEGEM_GEMSPEC="megatest.gemspec"
 
 inherit ruby-fakegem
 
-DESCRIPTION="A test-unit like framework with a focus on usability, designed with CI in mind."
+DESCRIPTION="A test-unit like framework with a focus on usability, designed with CI in mind"
 HOMEPAGE="https://github.com/byroot/megatest"
 SRC_URI="https://github.com/byroot/megatest/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 

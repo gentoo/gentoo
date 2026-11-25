@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -50,6 +50,10 @@ ruby_add_bdepend "
 		>=dev-ruby/sqlite3-1.6.6
 	)"
 
+PATCHES=(
+	"${FILESDIR}"/activestorage-7.2.3-ffmpeg-8.patch
+)
+
 all_ruby_prepare() {
 	# Remove items from the common Gemfile that we don't need for this
 	# test run. This also requires handling some gemspecs.
@@ -58,6 +62,7 @@ all_ruby_prepare() {
 		-e '/group :\(cable\|doc\|job\|lint\|mdl\|rubocop\|test\)/,/^end/ s:^:#:' \
 		-e '/sprockets-rails/ s/, require: false//' \
 		-e '/sqlite/ s/1.6.4/99/' \
+		-e 's/gem "minitest"/gem "minitest", "~> 5"/' \
 		-i ../Gemfile || die
 	rm ../Gemfile.lock || die
 

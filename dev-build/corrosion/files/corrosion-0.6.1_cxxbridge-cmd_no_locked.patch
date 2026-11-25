@@ -1,0 +1,20 @@
+From https://github.com/corrosion-rs/corrosion/commit/4b954fa5a238d78a80aacf85a667f4b426926e71
+From: Jonathan Schwender <schwenderjonathan@gmail.com>
+Date: Sat, 16 May 2026 16:25:49 +0200
+Subject: [PATCH] Install cxxbridge-cmd without --locked
+
+cxxbridge-cmd does not have a lockfile,
+and adding --locked caused issues for users
+using offline mode.
+
+Fixes #672
+--- a/cmake/Corrosion.cmake
++++ b/cmake/Corrosion.cmake
+@@ -1862,7 +1862,6 @@ function(corrosion_add_cxxbridge cxx_target)
+                     $CACHE{CORROSION_TOOLS_CARGO} install
+                     cxxbridge-cmd
+                     --version "${cxx_required_version}"
+-                    --locked
+                     --root "${CMAKE_BINARY_DIR}/corrosion/cxxbridge_v${cxx_required_version}"
+                     --quiet
+                     # todo: use --target-dir to potentially reuse artifacts

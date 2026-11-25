@@ -19,7 +19,7 @@ S="${WORKDIR}"
 
 LICENSE="LGPL-3"
 SLOT="0"
-KEYWORDS="-* ~amd64"
+KEYWORDS="-* amd64"
 IUSE="java offlinehelp python"
 
 # "en:en-US" for mapping from Gentoo "en" to upstream "en-US" etc.

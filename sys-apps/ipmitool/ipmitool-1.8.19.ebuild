@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -26,7 +26,7 @@ SRC_URI+="
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 arm64 ~hppa ~loong ppc ppc64 ~riscv x86"
-IUSE="openbmc openipmi static"
+IUSE="openbmc openipmi selinux static"
 
 RDEPEND="
 	dev-libs/openssl:=
@@ -39,6 +39,7 @@ DEPEND="
 	virtual/os-headers
 	openipmi? ( sys-libs/openipmi )
 "
+RDEPEND+=" selinux? ( sec-policy/selinux-ipmitool )"
 #freeipmi? ( sys-libs/freeipmi )
 # ipmitool CAN build against || ( sys-libs/openipmi sys-libs/freeipmi )
 # but it doesn't actually need either.

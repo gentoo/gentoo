@@ -1,11 +1,11 @@
-# Copyright 2023-2025 Gentoo Authors
+# Copyright 2023-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 inherit gnome2 meson
 
-DESCRIPTION="An application to acquire and list Kerberos tickets."
+DESCRIPTION="An application to acquire and list Kerberos tickets"
 HOMEPAGE="https://gitlab.gnome.org/GNOME/krb5-auth-dialog/"
 SRC_URI="https://download.gnome.org/sources/${PN}/$(ver_cut 1)/${P}.tar.xz"
 

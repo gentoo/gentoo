@@ -13,5 +13,4 @@
   <upstream>
     <remote-id type="github">tmux-plugins/vim-tmux</remote-id>
   </upstream>
-  <stabilize-allarches/>
 </pkgmetadata>

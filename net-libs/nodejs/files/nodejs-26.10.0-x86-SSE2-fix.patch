@@ -1,0 +1,22 @@
+diff --git a/deps/v8/src/strings/string-hasher.cc b/deps/v8/src/strings/string-hasher.cc
+index bea067c6f0..42dc676228 100644
+--- a/deps/v8/src/strings/string-hasher.cc
++++ b/deps/v8/src/strings/string-hasher.cc
+@@ -24,7 +24,7 @@ struct ConvertTo8BitHashReader {
+     DCHECK_LE(p[5], 0xff);
+     DCHECK_LE(p[6], 0xff);
+     DCHECK_LE(p[7], 0xff);
+-#ifdef __SSE2__
++#if defined(__SSE2__) && defined(V8_TARGET_ARCH_64_BIT)
+     __m128i x = _mm_loadu_si128(reinterpret_cast<const __m128i*>(p));
+     return _mm_cvtsi128_si64(_mm_packus_epi16(x, x));
+ #elif defined(__ARM_NEON__)
+@@ -45,7 +45,7 @@ struct ConvertTo8BitHashReader {
+     DCHECK_LE(p[1], 0xff);
+     DCHECK_LE(p[2], 0xff);
+     DCHECK_LE(p[3], 0xff);
+-#ifdef __SSE2__
++#if defined(__SSE2__) && defined(V8_TARGET_ARCH_64_BIT)
+     __m128i x = _mm_loadu_si64(reinterpret_cast<const __m128i*>(p));
+     return _mm_cvtsi128_si64(_mm_packus_epi16(x, x));
+ #elif defined(__ARM_NEON__)

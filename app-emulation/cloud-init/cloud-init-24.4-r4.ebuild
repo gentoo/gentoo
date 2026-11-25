@@ -1,9 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{12..13} )
 inherit edo python-single-r1 udev
 
 DESCRIPTION="Cloud instance initialisation magic"
@@ -44,7 +44,7 @@ BDEPEND="
 	test? (
 		$(python_gen_cond_dep '
 			dev-python/mock[${PYTHON_USEDEP}]
-			dev-python/passlib[${PYTHON_USEDEP}]
+			dev-python/libpass[${PYTHON_USEDEP}]
 			dev-python/pytest[${PYTHON_USEDEP}]
 			dev-python/pytest-mock[${PYTHON_USEDEP}]
 			dev-python/responses[${PYTHON_USEDEP}]

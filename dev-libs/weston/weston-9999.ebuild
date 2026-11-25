@@ -4,7 +4,7 @@
 EAPI=8
 
 LUA_COMPAT=( lua5-4 )
-PYTHON_COMPAT=( python3_{10..14} )
+PYTHON_COMPAT=( python3_{10..15} )
 
 inherit lua-single meson python-any-r1 readme.gentoo-r1 xdg-utils
 
@@ -22,14 +22,13 @@ fi
 LICENSE="MIT CC-BY-SA-3.0"
 SLOT="0"
 
-IUSE="+desktop +drm editor examples +gles2 headless ivi jpeg kiosk lcms lua pipewire rdp remoting +resize-optimization +suid systemd test vnc vulkan wayland-compositor webp +X xwayland"
+IUSE="+desktop +drm editor examples +gles2 headless ivi jpeg kiosk lcms lua pipewire rdp +resize-optimization +suid systemd test vnc vulkan wayland-compositor webp +X xwayland"
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="
 	drm? ( gles2 )
 	lua? ( ${LUA_REQUIRED_USE} )
 	pipewire? ( drm )
-	remoting? ( drm gles2 )
 	test? ( headless )
 	wayland-compositor? ( gles2 )
 	|| ( drm headless rdp vnc wayland-compositor X )
@@ -38,11 +37,11 @@ REQUIRED_USE="
 RDEPEND="
 	>=dev-libs/libinput-1.2.0
 	>=dev-libs/wayland-1.22.0
-	<media-libs/libdisplay-info-0.4.0:=
+	<media-libs/libdisplay-info-0.5.0:=
 	media-libs/libpng:0=
 	sys-auth/seatd:=
 	>=x11-libs/cairo-1.11.3
-	>=x11-libs/libdrm-2.4.108
+	>=x11-libs/libdrm-2.4.130
 	>=x11-libs/libxkbcommon-0.5.0
 	>=x11-libs/pixman-0.25.2
 	x11-misc/xkeyboard-config
@@ -65,17 +64,11 @@ RDEPEND="
 	lcms? ( >=media-libs/lcms-2.9:2 )
 	lua? ( ${LUA_DEPS} )
 	pipewire? ( >=media-video/pipewire-0.3:= )
-	rdp? ( >=net-misc/freerdp-2.3.0:=[server] )
-	remoting? (
-		dev-libs/glib:2
-		media-libs/gstreamer:1.0
-		media-libs/gst-plugins-base:1.0
-	)
+	rdp? ( >=net-misc/freerdp-3[server] )
 	systemd? ( sys-apps/systemd )
 	vnc? (
-		=dev-libs/aml-0.3*
-		>=gui-libs/neatvnc-0.8.1
-		<gui-libs/neatvnc-0.10.0
+		=dev-libs/aml-1*:=
+		=gui-libs/neatvnc-1*:=
 		sys-libs/pam
 	)
 	vulkan? (
@@ -125,8 +118,6 @@ src_configure() {
 		$(meson_use gles2 renderer-gl)
 		$(meson_use xwayland)
 		$(meson_use systemd)
-		$(meson_use remoting)
-		$(meson_use pipewire)
 		$(meson_use desktop shell-desktop)
 		$(meson_use ivi shell-ivi)
 		$(meson_use lua shell-lua)
@@ -149,9 +140,12 @@ src_test() {
 	xdg_environment_reset
 	addwrite /dev/dri/
 
-	# xwayland test can fail if X11 socket already exists.
-	cd "${BUILD_DIR}" || die
-	meson test $(meson test --list | grep -Exv "weston:xwayland") || die
+	local -a EMESON_SKIP_TESTS=(
+		# xwayland test can fail if X11 socket already exists.
+		weston:xwayland
+	)
+
+	meson_src_test
 }
 
 src_install() {

@@ -1,0 +1,134 @@
+https://bugs.gentoo.org/975259
+https://github.com/maekitalo/cxxtools/issues/38
+
+Modified whitespace to apply without https://github.com/maekitalo/cxxtools/commit/21893eca492b3063f6f11f002c23e73abcbdc23e
+
+From https://github.com/maekitalo/cxxtools/commit/354ddfecd33067d8aac339437defdcf0b8c32b68
+From: =?UTF-8?q?Tommi=20M=C3=A4kitalo?= <tommi@tntnet.org>
+Date: Tue, 25 Apr 2023 13:44:17 +0200
+Subject: [PATCH] Fix for C++20
+
+some typedefs are removed from std::allocator
+--- a/include/cxxtools/string.h
++++ b/include/cxxtools/string.h
+@@ -51,10 +51,10 @@ class basic_string< cxxtools::Char > {
+         typedef char_traits< cxxtools::Char > traits_type;
+         typedef std::allocator<cxxtools::Char> allocator_type;
+         typedef allocator_type::difference_type difference_type;
+-        typedef allocator_type::reference reference;
+-        typedef allocator_type::const_reference const_reference;
+-        typedef allocator_type::pointer pointer;
+-        typedef allocator_type::const_pointer const_pointer;
++        typedef value_type& reference;
++        typedef const value_type& const_reference;
++        typedef value_type* pointer;
++        typedef const value_type* const_pointer;
+         typedef value_type* iterator;
+         typedef const value_type* const_iterator;
+ 
+--- a/src/charmapcodec.cpp
++++ b/src/charmapcodec.cpp
+@@ -82,7 +82,7 @@ CharMapCodec::result CharMapCodec::do_out(MBState& /*s*/, const Char* fromBegin,
+     while (fromNext < fromEnd && toNext < toEnd)
+     {
+         *toNext = toChar(_charMap, *fromNext);
+-        log_debug(fromNext->value() << " => " << static_cast<unsigned>(static_cast<unsigned char>(*toNext)));
++        log_debug(static_cast<unsigned>(fromNext->value()) << " => " << static_cast<unsigned>(static_cast<unsigned char>(*toNext)));
+         ++fromNext;
+         ++toNext;
+     }
+--- a/src/log.cpp
++++ b/src/log.cpp
+@@ -653,7 +653,7 @@ namespace
+     Logger::log_level_type logFlag2logLevel(Logger::log_flag_type flag)
+     {
+       if (flag == Logger::LOG_TRACE)
+-        return static_cast<Logger::log_level_type>(Logger::LOG_LEVEL_DEBUG | Logger::LOG_TRACE);
++        return static_cast<Logger::log_level_type>(Logger::LOG_LEVEL_DEBUG | static_cast<Logger::log_level_type>(Logger::LOG_TRACE));
+       return static_cast<Logger::log_level_type>((flag << 1) - 1);
+     }
+ 
+@@ -765,9 +765,9 @@ namespace
+       {
+         Logger::log_flag_type r = str2logflag(level.c_str() + 1);
+         if (r == 0)
+-          return Logger::LOG_LEVEL_DEBUG | Logger::LOG_TRACE;
++          return Logger::LOG_LEVEL_DEBUG | static_cast<Logger::log_level_type>(Logger::LOG_TRACE);
+ 
+-        return logFlag2logLevel(r) | Logger::LOG_TRACE;
++        return logFlag2logLevel(r) | static_cast<Logger::log_level_type>(Logger::LOG_TRACE);
+       }
+ 
+       // case "everything below level":
+From https://github.com/maekitalo/cxxtools/commit/7de2501261ace60a5851af6ec3f1832ab25d4458
+From: =?UTF-8?q?Tommi=20M=C3=A4kitalo?= <tommi@tntnet.org>
+Date: Thu, 5 Feb 2026 08:18:05 +0100
+Subject: [PATCH] Fix compiling with C++20 (martinkg)
+
+--- a/include/cxxtools/unit/assertion.h
++++ b/include/cxxtools/unit/assertion.h
+@@ -32,6 +32,8 @@
+ #include <stdexcept>
+ #include <iostream>
+ #include <sstream>
++#include <string>
++#include <cwchar>
+ 
+ namespace cxxtools {
+ 
+@@ -99,6 +101,42 @@ namespace unit {
+             } \
+         } while (false)
+ 
++    //! @internal
++    // Helper to safely stream values to std::ostream (C++20+ compliant)
++    template <typename T>
++    inline void streamValue(std::ostream& os, const T& value)
++    {
++        os << value;
++    }
++
++    // wchar_t* overload: operator<< is deleted for std::ostream in C++20+
++    inline void streamValue(std::ostream& os, const wchar_t* value)
++    {
++        if (!value)
++        {
++            os << "(null)";
++            return;
++        }
++
++        // Best-effort conversion for test output
++        std::wstring ws(value);
++        std::string s(ws.begin(), ws.end());
++        os << s;
++    }
++
++    // wchar_t overload: operator<< is deleted for std::ostream in C++20+
++    inline void streamValue(std::ostream& os, wchar_t value)
++    {
++        // Represent single wide character as string for output
++        wchar_t buf[2];
++        buf[0] = value;
++        buf[1] = L'\0';
++
++        std::wstring ws(buf);
++        std::string s(ws.begin(), ws.end());
++        os << s;
++    }
++
+     //! @internal
+     template <typename A, typename B>
+     void assertEquals(const char* cond1, const A& value1, const char* cond2, const B& value2, const SourceInfo& si)
+@@ -106,7 +144,11 @@ namespace unit {
+         if ( ! (value1 == value2) )
+         {
+             std::ostringstream _cxxtools_msg;
+-            _cxxtools_msg << "not equal:\n\tvalue1 (" << cond1 << ")=\n\t\t<" << value1 << ">\n\tvalue2 (" << cond2 << ")=\n\t\t<" << value2 << '>';
++            _cxxtools_msg << "not equal:\n\tvalue1 (" << cond1 << ")=\n\t\t<";
++            streamValue(_cxxtools_msg, value1);
++            _cxxtools_msg << ">\n\tvalue2 (" << cond2 << ")=\n\t\t<";
++            streamValue(_cxxtools_msg, value2);
++            _cxxtools_msg << '>';
+             throw cxxtools::unit::Assertion(_cxxtools_msg.str(), si);
+         }
+     }

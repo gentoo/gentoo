@@ -3,11 +3,11 @@
 
 EAPI=8
 
-LLVM_COMPAT=( {18..22} )
+LLVM_COMPAT=( {18..23} )
 RUST_MIN_VER="1.85.0"
 RUST_OPTIONAL=1
 
-inherit cmake flag-o-matic linux-info llvm-r1 rust
+inherit cmake flag-o-matic linux-info llvm-r2 rust
 
 DESCRIPTION="High-level tracing language for eBPF"
 HOMEPAGE="https://github.com/bpftrace/bpftrace"
@@ -39,7 +39,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-libs/blazesym_c-0.1.1
-	>=dev-libs/libbpf-1.6:=[static-libs]
+	>=dev-libs/libbpf-1.7:=[static-libs]
 	>=dev-util/bcc-0.25.0
 	$(llvm_gen_dep '
 		llvm-core/clang:${LLVM_SLOT}=
@@ -88,6 +88,12 @@ pkg_pretend() {
 		~HAVE_EBPF_JIT
 	"
 
+	if use test; then
+		# force linux-info to check kernel configurations only in the
+		# running kernel, not in any on-disk configuration (bug 977516)
+		KERNEL_DIR="linux-info-runtime-checks-only"
+	fi
+
 	check_extra_config
 
 	if use test; then
@@ -100,7 +106,7 @@ pkg_pretend() {
 }
 
 pkg_setup() {
-	llvm-r1_pkg_setup
+	llvm-r2_pkg_setup
 	use test && rust_pkg_setup
 }
 

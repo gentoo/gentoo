@@ -1,0 +1,22 @@
+---
+ CMakeLists.txt | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 0fa5996..d0f8f83 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -458,7 +458,11 @@ endif()
+ 
+ # webm_parser headers are rooted at webm/.
+ set_target_properties(webm PROPERTIES PUBLIC_HEADER
+-                                      "${webm_parser_public_headers}")
++                                      "${webm_parser_public_headers}"
++                                      OUTPUT_NAME webm
++                                      SOVERSION "1"
++                                      VERSION "${PROJECT_VERSION}"
++                                      )
+ install(
+   TARGETS webm
+   ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+

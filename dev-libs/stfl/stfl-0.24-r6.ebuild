@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 GENTOO_DEPEND_ON_PERL=no
 inherit edo perl-module python-r1 toolchain-funcs
 

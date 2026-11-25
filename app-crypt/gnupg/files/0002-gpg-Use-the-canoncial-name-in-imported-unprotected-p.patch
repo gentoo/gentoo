@@ -1,0 +1,82 @@
+From 5523cec6913bcbd1a374d183899a6f298d2c0e32 Mon Sep 17 00:00:00 2001
+Message-ID: <5523cec6913bcbd1a374d183899a6f298d2c0e32.1790625327.git.sam@gentoo.org>
+In-Reply-To: <42386bcf8861f04c1bdec5cbb139a03da83d8ef9.1790625327.git.sam@gentoo.org>
+References: <42386bcf8861f04c1bdec5cbb139a03da83d8ef9.1790625327.git.sam@gentoo.org>
+From: Werner Koch <wk@gnupg.org>
+Date: Mon, 28 Sep 2026 15:49:24 +0200
+Subject: [PATCH GnuPG 2/3] gpg: Use the canoncial name in imported unprotected
+ private keys.
+
+* g10/import.c (oid_to_canon_curve): New.
+(build_mode1003_sexp): Use it here.
+--
+
+We should use the human readable curve names instead of the dotted
+decimal form if possible.
+---
+ g10/import.c | 28 +++++++++++++++++++++++++---
+ 1 file changed, 25 insertions(+), 3 deletions(-)
+
+diff --git a/g10/import.c b/g10/import.c
+index 793c0479d..d0985c80d 100644
+--- a/g10/import.c
++++ b/g10/import.c
+@@ -2664,6 +2664,28 @@ build_sexp_from_mlk (gcry_sexp_t *r_skey, PKT_public_key *pk,
+ }
+ 
+ 
++/* Return a malloced string with the canonical name of the curve
++ * represented by MPI A.  If no canonical name is known the OID in
++ * dotted-decimal form is returned.  On error NULL is returned. */
++static char *
++oid_to_canon_curve (gcry_mpi_t a)
++{
++  char *curvestr;
++
++  curvestr = openpgp_oid_to_str (a);
++  if (curvestr)
++    {
++      const char *curvename = openpgp_oid_to_curve (curvestr, 1);
++      if (curvename)
++        {
++          xfree (curvestr);
++          curvestr = xtrystrdup (curvename);
++        }
++    }
++  return curvestr;
++}
++
++
+ /* This function builds a gpg-agent private key format (aka mode1003)
+  * s-expression from the secret key packet in PK.  It currently
+  * fails for a protected key.  The final plan is to use a separate
+@@ -2726,7 +2748,7 @@ build_mode1003_sexp (PKT_public_key *pk, gcry_sexp_t *result)
+ 
+     case PUBKEY_ALGO_ECDH:
+       /* Note that pkey[2] conveys the KDF parameters.  */
+-      curvename = openpgp_oid_to_str (pk->pkey[0]);
++      curvename = oid_to_canon_curve (pk->pkey[0]);
+       if (!curvename)
+         err = gpg_error_from_syserror ();
+       else if (openpgp_oid_is_cv25519 (pk->pkey[0]))
+@@ -2746,7 +2768,7 @@ build_mode1003_sexp (PKT_public_key *pk, gcry_sexp_t *result)
+       break;
+ 
+     case PUBKEY_ALGO_ECDSA:
+-      curvename = openpgp_oid_to_str (pk->pkey[0]);
++      curvename = oid_to_canon_curve (pk->pkey[0]);
+       if (!curvename)
+         err = gpg_error_from_syserror ();
+       else
+@@ -2756,7 +2778,7 @@ build_mode1003_sexp (PKT_public_key *pk, gcry_sexp_t *result)
+       break;
+ 
+     case PUBKEY_ALGO_EDDSA:
+-      curvename = openpgp_oid_to_str (pk->pkey[0]);
++      curvename = oid_to_canon_curve (pk->pkey[0]);
+       if (!curvename)
+         err = gpg_error_from_syserror ();
+       else
+-- 
+2.55.0
+

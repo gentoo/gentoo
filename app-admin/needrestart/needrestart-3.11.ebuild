@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,7 +15,7 @@ DESCRIPTION="Restart daemons after library updates"
 HOMEPAGE="https://fiasko-nw.net/~thomas/tag/needrestart.html https://github.com/liske/needrestart"
 LICENSE="GPL-2+"
 SLOT="0"
-IUSE="systemd"
+IUSE="selinux systemd"
 
 RDEPEND="
 	>=sys-apps/sed-4.2.2

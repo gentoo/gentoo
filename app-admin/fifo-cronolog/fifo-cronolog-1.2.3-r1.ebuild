@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,7 +7,7 @@ inherit systemd
 
 DESCRIPTION="cronolog wrapper for use with dumb daemons like squid, varnish and so on"
 HOMEPAGE="https://gitweb.gentoo.org/proj/fifo-cronolog.git"
-SRC_URI="http://dev.gentoo.org/~robbat2/distfiles/${P}.tar.gz"
+SRC_URI="https://distfiles.gentoo.org/pub/dev/robbat2@gentoo.org/${PN}/${P}.tar.gz"
 
 LICENSE="BSD-2 GPL-2"
 SLOT="0"
@@ -16,7 +16,7 @@ KEYWORDS="amd64 ~x86"
 RDEPEND="app-admin/cronolog"
 
 src_compile() {
-	emake all
+	emake all CFLAGS="${CFLAGS}"
 }
 
 src_install() {

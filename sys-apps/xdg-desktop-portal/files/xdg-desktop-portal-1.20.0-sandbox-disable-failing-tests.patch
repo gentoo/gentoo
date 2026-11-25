@@ -16,10 +16,3 @@ index 377d48a..8a6ebe0 100644
    'test_openuri.py',
    'test_permission_store.py',
    'test_print.py',
-@@ -191,4 +189,4 @@ if enable_installed_tests
-       install_dir: installed_tests_data_dir,
-     )
-   endforeach
--endif
-\ No newline at end of file
-+endif

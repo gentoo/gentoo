@@ -1,0 +1,13 @@
+The "unsupported" container it is testing for seems to works with
+ffmpeg-9 which causes the test to (successfully) fail.
+
+Would rather not skip the entire subset of tests (important for testing
+ffmpeg), so insert a QSKIP only on this specific bit for now.
+--- a/tests/auto/integration/qmediaplayerformatsupport/tst_qmediaplayerformatsupport.cpp
++++ b/tests/auto/integration/qmediaplayerformatsupport/tst_qmediaplayerformatsupport.cpp
+@@ -111,4 +111,5 @@
+     void play_fails_withUnsupportedContainer()
+     {
++        QSKIP("Skipped on Gentoo");
+         QFETCH(const QUrl, url);
+ 

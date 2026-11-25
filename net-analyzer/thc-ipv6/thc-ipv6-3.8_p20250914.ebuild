@@ -30,6 +30,11 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
+PATCHES=(
+	# merged
+	"${FILESDIR}"/${P}-fix_parallel.patch
+)
+
 src_prepare() {
 	sed -e '/^CFLAGS+=-g/s,CFLAGS+=,CFLAGS?=,' \
 		-i Makefile || die
@@ -47,6 +52,6 @@ src_compile() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" PREFIX="/usr" STRIP="true" install
+	emake DESTDIR="${D}" PREFIX="${EPREFIX}/usr" STRIP="true" install
 	dodoc CHANGES HOWTO-INJECT README.md
 }

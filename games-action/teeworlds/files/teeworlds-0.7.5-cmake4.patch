@@ -1,0 +1,10 @@
+Upstream had several cmake version-related changes like [1] but staying
+conservative in this old release for [2].
+
+[1] https://github.com/teeworlds/teeworlds/commit/15dbf346
+[2] https://bugs.gentoo.org/957687
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1 +1 @@
+-cmake_minimum_required(VERSION 2.8)
++cmake_minimum_required(VERSION 2.8...3.16)

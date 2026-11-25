@@ -1,0 +1,46 @@
+Respect CC/CXX, don't use GCC-only flags, don't append -g, don't
+append -L/usr/local.
+
+diff --git a/Makefile b/Makefile
+index 1d5fad9..f3d7938 100644
+--- a/Makefile
++++ b/Makefile
+@@ -2,7 +2,7 @@ ALL: default
+ 
+ # When -g is used, it seems that stackdump does not work.
+ # GPROFFLAG = -pg
+-GPROFFLAG = -g
++#GPROFFLAG = -g
+ #GPROFFLAG = 
+ 
+ PREFIX?=/usr/local
+@@ -63,7 +63,7 @@ CDDDEFINE_PREFIX = -DNOCDDPREFIX
+ endif
+ 
+ ifeq ($(cddpath),)
+-CDD_LINKOPTIONS = -L/usr/local -lcddgmp
++CDD_LINKOPTIONS = -lcddgmp
+ CDD_INCLUDEOPTIONS =
+ else
+ CDD_LINKOPTIONS = $(cddpath)/lib/libcddgmp.a
+@@ -142,9 +142,9 @@ PREFIX =
+ SHELL       = /bin/sh
+ #ARCH        = LINUX
+ 
+-CC          = $(PREFIX)gcc
++CC          ?= $(PREFIX)gcc
+ CLINKER     = $(CC)
+-CXX         = $(PREFIX)g++
++CXX         ?= $(PREFIX)g++
+ CCLINKER    = $(CXX)
+ 
+ #CC          = $(PREFIX)gcc-8.1
+@@ -162,7 +162,7 @@ SYMMETRICTRAVERSAL_FLAGS = -fno-guess-branch-probability
+ # -rdynamic is Linux-only; use TBB for parallel execution support
+ PLATFORM_LINKOPTIONS = -L$(HOMEBREW_PREFIX)/opt/tbb/lib -ltbb
+ else
+-SYMMETRICTRAVERSAL_FLAGS = -fno-guess-branch-probability
++#SYMMETRICTRAVERSAL_FLAGS = -fno-guess-branch-probability
+ PLATFORM_LINKOPTIONS = -rdynamic -ltbb
+ endif
+ 

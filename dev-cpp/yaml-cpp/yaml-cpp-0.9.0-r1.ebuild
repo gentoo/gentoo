@@ -12,7 +12,7 @@ S="${WORKDIR}/yaml-cpp-${P}"
 
 LICENSE="MIT"
 SLOT="0/$(ver_cut 0-2)"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="amd64 ~arm arm64 ~hppa ~loong ppc ppc64 ~riscv ~sparc x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 

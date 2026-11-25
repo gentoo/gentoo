@@ -1,21 +1,18 @@
-# Copyright 2019-2025 Gentoo Authors
+# Copyright 2019-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} pypy3 pypy3_11 )
 DISTUTILS_USE_PEP517=setuptools
+PYPI_NO_NORMALIZE=1
+PYTHON_COMPAT=( python3_{12..14} )
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="Pygments Github custom lexers"
 HOMEPAGE="
 	https://github.com/liluo/pygments-github-lexers/
 	https://pypi.org/project/pygments-github-lexers/
-"
-SRC_URI="
-	https://github.com/liluo/${PN}/archive/v${PV}.tar.gz
-		-> ${P}.gh.tar.gz
 "
 
 LICENSE="BSD-2"
@@ -32,5 +29,3 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}/pygments-github-lexers-0.0.5-escape-sequences.patch"
 )
-
-# no tests

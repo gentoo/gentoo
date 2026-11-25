@@ -1,9 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-USE_RUBY="ruby32 ruby33 ruby34"
+USE_RUBY="ruby32 ruby33 ruby34 ruby40"
 
 RUBY_FAKEGEM_EXTRADOC="History.txt README.rdoc"
 RUBY_FAKEGEM_GEMSPEC="${PN}.gemspec"
@@ -16,7 +16,7 @@ SRC_URI="https://github.com/drbrain/net-http-persistent/archive/refs/tags/v${PV}
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1)"
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86"
 IUSE="doc test"
 
 ruby_add_rdepend "|| ( dev-ruby/connection_pool:3 >=dev-ruby/connection_pool-2.2.4:0 )"

@@ -50,6 +50,14 @@ src_unpack() {
 	fi
 }
 
+src_test() {
+	# The default portage tempdir is too long for AF_UNIX sockets
+	local -x TMPDIR
+	TMPDIR="$(mktemp -d --tmpdir=/tmp ${PF}-XXX || die)"
+
+	default
+}
+
 src_install() {
 	dobin getuto
 }

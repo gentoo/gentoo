@@ -1,0 +1,29 @@
+https://github.com/dracut-ng/dracut/commit/86dae8081027e3461a49999d63938561eb2ed662
+diff --git a/dracut.conf.d/gentoo/01-gentoo.conf b/dracut.conf.d/gentoo/01-gentoo.conf
+index 5c12d1c50b..218e70b99b 100644
+--- a/dracut.conf.d/gentoo/01-gentoo.conf
++++ b/dracut.conf.d/gentoo/01-gentoo.conf
+@@ -1,2 +1,22 @@
+-# Gentoo specific Dracut configuration
++# Build an initramfs specific to this machine by default. This ensures
++# local configuration files (/etc/...) are included.
++hostonly="yes"
++hostonly_mode="sloppy"
++
++# Usage of ukify is controlled via sys-kernel/installkernel[+/-ukify].
++# Automatic delegation in sys-kernel/dracut is disabled here.
+ ukify="no"
++# Building an UKI is toggled by sys-kernel/installkernel[+/-uki].
++# If the ukify USE flag is also enabled then ukify is used to build
++# the UKI. If not, then Dracut uses objcopy/objdump to build an UKI.
++# Automatic delegation to ukify is disabled, see also above.
++# By default we do not build an UKI (initramfs only).
++uefi="no"
++
++# Inclusion of CPU microcode is controlled via:
++#     sys-kernel/linux-firmware[+/-initramfs], and/or
++#     sys-firmware/intel-microcode[+/-initramfs]
++# The later takes precedence if both are installed. Disable the
++# inclusion by default here, the aforementioned packages override it.
++# If neither package is installed then no microcode can be included.
++early_microcode="no"

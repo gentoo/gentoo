@@ -4,10 +4,10 @@
 EAPI=8
 
 LUA_COMPAT=( luajit )
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 VALA_USE_DEPEND=vapigen
 
-inherit bash-completion-r1 branding flag-o-matic lua-single meson python-single-r1 toolchain-funcs vala xdg
+inherit branding flag-o-matic locale-utils lua-single meson python-single-r1 shell-completion toolchain-funcs vala xdg
 
 DESCRIPTION="GNU Image Manipulation Program"
 HOMEPAGE="https://www.gimp.org/"
@@ -31,7 +31,7 @@ else
 		[[ $(( $(ver_cut 2) % 2 )) -eq 0 ]] &&
 		[[ $(( $(ver_cut 3) % 2 )) -eq 0 ]]
 	then
-		KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~x86"
+		KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
 	fi
 fi
 
@@ -51,6 +51,7 @@ RESTRICT="!test? ( test )"
 COMMON_DEPEND="
 	${PYTHON_DEPS}
 	$(python_gen_cond_dep '
+		dev-python/pycairo[${PYTHON_USEDEP}]
 		>=dev-python/pygobject-3.0:3[${PYTHON_USEDEP}]
 	')
 	>=app-accessibility/at-spi2-core-2.4.0
@@ -61,6 +62,7 @@ COMMON_DEPEND="
 	>=app-text/poppler-0.69.0[cairo]
 	>=app-text/poppler-data-0.4.9
 	>=dev-libs/appstream-0.16.1:=
+	>=dev-libs/fribidi-1.0.8:=
 	>=dev-libs/glib-2.70.0:2[introspection]
 	>=dev-libs/gobject-introspection-1.82.0-r2
 	>=dev-libs/json-glib-1.2.6
@@ -80,7 +82,7 @@ COMMON_DEPEND="
 	net-libs/glib-networking[ssl]
 	virtual/zlib:=
 	>=x11-libs/cairo-1.14.0[introspection(+),X?]
-	>=x11-libs/gdk-pixbuf-2.30.8:2[introspection]
+	>=x11-libs/gdk-pixbuf-2.32.0:2[introspection]
 	>=x11-libs/gtk+-3.24.0:3[introspection,wayland?,X?]
 	>=x11-libs/pango-1.50.0[introspection,X?]
 	aalib? ( media-libs/aalib )
@@ -161,24 +163,7 @@ pkg_pretend() {
 }
 
 pkg_setup() {
-	if [[ ${MERGE_TYPE} != binary ]]; then
-		use openmp && tc-check-openmp
-
-		# bug #969468
-		local locales="$(locale -a)"
-		if ! has "en_US.utf8" ${locales} && ! has "en_US.UTF-8" ${locales}; then
-			# portage splits and unset LC_ALL. Cannot rely on that
-			if [[ "${LANG}" != "C" ]] && [[ "${LANG}" != "POSIX" ]] && [[ "${LANG}" == "${LANG#C\.}" ]]; then
-				# Set LC_ALL to avoid locales breaking due to the profile setting LC_MESSAGES=C
-				# and portage itself setting LC_COLLATE=C
-				einfo "Setting LC_ALL=${LANG} based on LANG because en_US.UTF-8 isn't available, bug #968468"
-				export LC_ALL="${LANG}"
-			else
-				eerror "Cannot use LANG=${LANG} as it cannot be C or POSIX"
-				die "en_US.UTF-8 isn't available and cannot fallback to user locale, bug #969468"
-			fi
-		fi
-	fi
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 
 	python-single-r1_pkg_setup
 	use lua && lua-single_pkg_setup
@@ -195,23 +180,30 @@ src_prepare() {
 	default
 
 	# Fix Gimp  and GimpUI devel doc installation paths
-	sed -i -e "s/'doc'/'gtk-doc'/" devel-docs/reference/gimp/meson.build || die
-	sed -i -e "s/'doc'/'gtk-doc'/" devel-docs/reference/gimp-ui/meson.build || die
+	sed -e "s/'doc'/'gtk-doc'/" -i devel-docs/reference/gimp{,-ui}/meson.build || die
 
 	# Fix pygimp.interp python implementation path.
 	# Meson @PYTHON_PATH@ use sandbox path e.g.:
 	# '/var/tmp/portage/media-gfx/gimp-2.99.12/temp/python3.10/bin/python3'
-	sed -i -e 's/@PYTHON_EXE@/'${EPYTHON}'/' plug-ins/python/pygimp.interp.in || die
+	sed -e 's/@PYTHON_EXE@/'${EPYTHON}'/' -i plug-ins/python/pygimp.interp.in || die
 
 	# Set proper intallation path of documentation logo
-	sed -i -e "s/'gimp-' + gimp_api_version/'gimp-${PVR}'/" gimp-data/images/logo/meson.build || die
+	sed -e "s/'gimp-' + gimp_api_version/'gimp-${PVR}'/" -i gimp-data/images/logo/meson.build || die
 
-	# Force disable x11_target if USE="-X" is setup. See bug 943164 for additional info
-	use !X && { sed -i -e 's/x11_target = /x11_target = false #/' meson.build || die; }
+	# Force disable x11_target if USE="-X" is setup. See bug #943164 for additional info
+	if use !X; then
+		sed -e 's/x11_target = /x11_target = false #/' -i meson.build || die
+	fi
+
+	# Disable automagic pandoc use that isn't relevant for a package build
+	sed -e '/pandoc/ s/ = .*/ = disabler()/' -i docs/meson.build || die
+
+	# Needs to be properly hooked up to USE="test-full"
+	sed -e "s|subdir('app/tests/uitests')|ui_tests_status = 'disabled by ebuild'|" -i meson.build || die
 }
 
 src_configure() {
-	# defang automagic dependencies. Bug 943164
+	# Defang automagic dependencies, bug #943164
 	use wayland || append-cppflags -DGENTOO_GTK_HIDE_WAYLAND
 	use X || append-cppflags -DGENTOO_GTK_HIDE_X11
 
@@ -227,9 +219,7 @@ src_configure() {
 		-Denable-multiproc=true
 		-Dappdata-test=disabled
 		-Dbug-report-url="${BRANDING_OS_BUG_REPORT_URL}"
-		-Dilbm=disabled
 		-Dlibbacktrace=false
-		-Dwebkit-unmaintained=false
 		$(meson_feature aalib aa)
 		$(meson_feature alsa)
 		$(meson_feature bash-completion)
@@ -261,11 +251,15 @@ src_configure() {
 }
 
 src_compile() {
+	# gen-languages needs en_US.UTF-8, bug #969468
+	local -x LOCPATH
+	elocale_gen en_US.UTF-8
+
 	export XDG_DATA_DIRS="${EPREFIX}"/usr/share  # bug 587004
 	meson_src_compile
 }
 
-# for https://bugs.gentoo.org/664938
+# bug #664938
 _rename_plugins() {
 	einfo 'Renaming plug-ins to not collide with pre-2.10.6 file layout (bug #664938)...'
 	local prename=gimp-org-

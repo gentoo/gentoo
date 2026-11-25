@@ -5,7 +5,7 @@
 		<email>michal.privoznik@gmail.com</email>
 		<name>Michal Privoznik</name>
 	</maintainer>
-	<maintainer type="project">
+	<maintainer type="project" proxied="maintainer-and-proxy">
 		<email>virtualization@gentoo.org</email>
 		<name>Gentoo Virtualization Project</name>
 	</maintainer>

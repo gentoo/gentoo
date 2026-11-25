@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -28,7 +28,7 @@ fi
 # source files are mixed GPL-3+ and GPL-2+
 LICENSE="GPL-3+ GPL-2"
 SLOT="0"
-IUSE="network nls policykit pulseaudio"
+IUSE="network nls policykit pulseaudio selinux"
 
 DEPEND="
 	$(python_gen_cond_dep '
@@ -82,6 +82,9 @@ RDEPEND="
 			media-sound/pulseaudio-daemon[bluetooth]
 			<media-sound/pulseaudio-15.99.1[bluetooth]
 		)
+	)
+	selinux? (
+		sec-policy/selinux-blueman
 	)
 "
 

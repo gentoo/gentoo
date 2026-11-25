@@ -1,6 +1,45 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Ionen Wolkens <ionen@gentoo.org> (2026-10-23)
+# Makes use of non-portable atomics broken on ppc32 (bug #981875).
+app-text/mdbook serve
+
+# Bernard Cafarelli <voyageur@gentoo.org> (2026-10-09)
+# Requires unkeyworded media-libs/libshumate and app-text/libspelling
+media-gfx/geeqie map spell
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2026-08-31)
+# Requires unkeyworded dependencies
+dev-vcs/subversion kwallet
+sys-auth/polkit kde
+sys-block/gparted kde
+virtual/notification-daemon kde
+
+# Alfred Wingate <parona@protonmail.com> (2026-07-26)
+# Firefox not keyworded here
+dev-util/selenium-manager test
+
+# Ionen Wolkens <ionen@gentoo.org> (2026-05-31)
+# dev-qt/qtmultimedia:6 was dekeyworded due to notable test failures
+# which stalled stabilizations (bug #973096) and there is low interest
+# in getting it fixed.
+app-office/texstudio video
+dev-python/pyqt6 multimedia speech
+games-roguelike/nethack qt6
+media-plugins/audacious-plugins qtmedia
+media-video/mkvtoolnix dbus gui
+
+# Ionen Wolkens <ionen@gentoo.org> (2026-05-28)
+# Old media-video/ffmpeg-compat:4 was dekeyworded on ppc due to build
+# issues which are not going to be looked into (ffmpeg-4 may be removed
+# entirely in a near future).
+media-sound/moc ffmpeg
+
+# Sam James <sam@gentoo.org> (2026-04-28)
+# dev-cpp/cpp-httplib doesn't support 32-bit arches
+dev-util/ccache http
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2026-03-21)
 # Needs as-yet-unkeyworded KF6 (bug #934215)
 >media-video/vlc-3.9999 gui skins
@@ -8,15 +47,15 @@
 # Ionen Wolkens <ionen@gentoo.org> (2026-03-16)
 # media-libs/opencolorio is not keyworded here
 media-video/ffmpeg opencolorio
+media-video/ffmpeg-compat opencolorio
 
 # Sam James <sam@gentoo.org> (2025-08-29)
 # net-misc/passt not yet keyworded here
 app-emulation/qemu passt
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-07-31)
-# dev-python/pyqt5, dev-python/pyqt6 are not stable.
+# dev-python/pyqt6 is not stable.
 dev-python/matplotlib qt6 test
-net-print/hplip qt5
 
 # Hans de Graaff <graaff@gentoo.org> (2025-06-29)
 # Requires large parts of dev-ruby/rails to be keyworded.
@@ -26,7 +65,7 @@ dev-ruby/minitest-hooks test
 # Sam James <sam@gentoo.org> (2025-05-16)
 # gpio: dev-libs/libgpiod not keyworded here
 # modbus: dev-libs/libmodbus not keyworded here
-# monitor: dev-python/pyqt5 not keyworded here
+# monitor: dev-python/pyqt6 not keyworded here
 sys-power/nut gpio modbus monitor
 
 # Sam James <sam@gentoo.org> (2025-02-21)
@@ -70,7 +109,6 @@ x11-misc/xdg-utils plasma
 # Needs dev-qt/qtquick3d:6 which itself needs media-libs/assimp that
 # is no longer keyworded here and currently fails tests (bug #935313).
 dev-python/pyqt6 quick3d
-dev-qt/qtmultimedia:6 qml
 
 # Sam James <sam@gentoo.org> (2024-05-19)
 # media-libs/jasper not yet keyworded here: https://bugs.gentoo.org/921559
@@ -97,6 +135,7 @@ sys-libs/libnvme keyutils
 # Michał Górny <mgorny@gentoo.org> (2023-10-15)
 # Need dev-python/notebook (that indirectly requires net-libs/nodejs).
 dev-python/ipython notebook
+dev-python/matplotlib-inline test
 dev-python/nbclient test
 dev-python/nbconvert test
 
@@ -145,11 +184,6 @@ dev-util/diffoscope opendocument pascal pdf R
 # Sam James <sam@gentoo.org> (2022-11-19)
 # Fails to compile because of size, bug #829602.
 llvm-core/clang extra
-
-# Nowa Ammerlaan <nowa@gentoo.org> (2022-09-23)
-# The corresponding Qt5 modules are not keyworded on ppc, and we don't want to
-# keyword them solely because of PyQt5 while there are no other in-tree users.
-dev-python/pyqt5 speech
 
 # Arthur Zamarin <arthurzam@gentoo.org> (2022-08-15)
 # deps not keyworded

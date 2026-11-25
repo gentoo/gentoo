@@ -1,0 +1,12 @@
+--- a/m4/ax_lib_fftw3.m4	2026-09-15 09:01:23.181964635 +0200
++++ b/m4/ax_lib_fftw3.m4	2026-09-15 09:04:28.721957025 +0200
+@@ -80,7 +80,8 @@
+       fftw3_lib_flag=""
+       fftw3_LIBS=""
+     else
+-      fftw3_libname="${!fftw3_libvar:2}"
++      eval "fftw3_lib_flag=\$${fftw3_libvar}"
++      fftw3_libname="${fftw3_lib_flag#??}"
+       fftw3_lib_flag="-l${fftw3_libname}"
+       fftw3_LIBS="${fftw3_lib_flag} -lm"
+     fi

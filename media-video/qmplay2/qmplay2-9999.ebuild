@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -21,12 +21,11 @@ LICENSE="LGPL-3"
 SLOT="0"
 
 IUSE="avdevice +audiofilters +alsa cdio cuvid extensions gme inputs libass
-	modplug notifications opengl pipewire portaudio pulseaudio sid
-	shaders +taglib vaapi videofilters visualizations vulkan xv"
+	libopenmpt notifications opengl pipewire portaudio pulseaudio sid
+	+taglib vaapi videofilters visualizations vulkan xv"
 
 REQUIRED_USE="
 	audiofilters? ( || ( alsa pipewire portaudio pulseaudio ) )
-	shaders? ( vulkan )
 "
 
 RDEPEND="
@@ -39,15 +38,18 @@ RDEPEND="
 	extensions? ( dev-qt/qtdeclarative:6 )
 	gme? ( media-libs/game-music-emu )
 	libass? ( media-libs/libass )
+	libopenmpt? ( media-libs/libopenmpt )
 	opengl? ( virtual/opengl )
 	pipewire? ( media-video/pipewire )
 	portaudio? ( media-libs/portaudio )
 	pulseaudio? ( media-libs/libpulse )
-	sid? ( media-libs/libsidplayfp )
-	shaders? ( >=media-libs/shaderc-2020.1 )
+	sid? ( <media-libs/libsidplayfp-3.0.0 )
 	taglib? ( media-libs/taglib:= )
 	vaapi? ( media-libs/libva[X] )
-	vulkan? ( >=media-libs/vulkan-loader-1.2.133 )
+	vulkan? (
+		>=media-libs/vulkan-loader-1.2.133
+		>=media-libs/shaderc-2020.1
+	)
 	xv? ( x11-libs/libXv )
 "
 DEPEND="${RDEPEND}"
@@ -78,10 +80,10 @@ src_configure() {
 		-DUSE_DBUS_PM=ON
 		-DUSE_FREEDESKTOP_NOTIFICATIONS=ON
 		-DUSE_LIBASS=$(usex libass)
+		-DUSE_OPENMPT=$(usex libopenmpt)
 		-DUSE_NOTIFY=$(usex notifications)
 		-DUSE_OPENGL=$(usex opengl)
 		-DUSE_VULKAN=$(usex vulkan)
-		-DUSE_GLSLC=$(usex shaders)
 		-DUSE_XVIDEO=$(usex xv)
 
 		# ffmpeg
@@ -96,7 +98,6 @@ src_configure() {
 		-DUSE_AUDIOFILTERS=$(usex audiofilters)
 		-DUSE_CUVID=$(usex cuvid)
 		-DUSE_INPUTS=$(usex inputs)
-		-DUSE_MODPLUG=$(usex modplug)
 		-DUSE_PIPEWIRE=$(usex pipewire)
 		-DUSE_PORTAUDIO=$(usex portaudio)
 		-DUSE_PULSEAUDIO=$(usex pulseaudio)

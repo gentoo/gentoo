@@ -5,15 +5,25 @@
 		<email>prometheanfire@gentoo.org</email>
 		<name>Matthew Thode</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>zx2c4@gentoo.org</email>
+		<name>Jason A. Donenfeld</name>
+	</maintainer>
 	<longdescription lang="en">
-		LSP (Linux Studio Plugins) is a collection of open-source plugins
-		currently compatible with LADSPA, LV2 and LinuxVST formats.
+		LSP (Linux Studio Plugins) is a collection of audio plugins in CLAP,
+		GStreamer, LADSPA, LV2, VST2 and VST3 formats, and standalone applications
+		with dummy, JACK and PipeWire audio backends.
 	</longdescription>
 	<use>
-		<flag name="lv2">Build lv2 plugins</flag>
-		<flag name="vst">Support LinuxVST plugins</flag>
+		<flag name="clap">Build CLAP plugins</flag>
+		<flag name="lv2">Build LV2 plugins</flag>
+		<flag name="pipewire">Enable the native PipeWire backend for standalone applications</flag>
+		<flag name="standalone">Build standalone applications, including the built-in dummy audio backend</flag>
+		<flag name="vst">Build VST2 plugins (for versions before 1.2.37)</flag>
+		<flag name="vst2">Build VST2 plugins</flag>
+		<flag name="vst3">Build VST3 plugins</flag>
 	</use>
 	<upstream>
-		<remote-id type="github">sadko4u/lsp-plugins</remote-id>
+		<remote-id type="github">lsp-plugins/lsp-plugins</remote-id>
 	</upstream>
 </pkgmetadata>

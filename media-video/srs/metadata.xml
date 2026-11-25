@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>tupone@gentoo.org</email>
+		<name>Tupone Alfredo</name>
+	</maintainer>
+	<use>
+		<flag name="h265">Enable H.265 support</flag>
+		<flag name="signal-api">Enable Signal-API</flag>
+		<flag name="srt">Enable Secure Reliable Transport (SRT) support via <pkg>net-libs/srt</pkg></flag>
+	</use>
+	<upstream>
+		<remote-id type="github">ossrs/srs</remote-id>
+	</upstream>
+</pkgmetadata>

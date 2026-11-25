@@ -1,11 +1,10 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=hatchling
-PYTHON_FULLY_TESTED=( pypy3_11 python3_{11..13} )
-PYTHON_COMPAT=( "${PYTHON_FULLY_TESTED[@]}" python3_14 )
+PYTHON_COMPAT=( python3_{12..15} )
 
 inherit distutils-r1 pypi
 
@@ -25,9 +24,7 @@ RDEPEND="
 "
 BDEPEND="
 	test? (
-		$(python_gen_cond_dep '
-			dev-python/pydantic[${PYTHON_USEDEP}]
-		' "${PYTHON_FULLY_TESTED[@]}")
+		dev-python/pydantic[${PYTHON_USEDEP}]
 	)
 "
 
@@ -40,7 +37,7 @@ python_test() {
 		test/test_end2end.py
 	)
 
-	if ! has "${EPYTHON/./_}" "${PYTHON_FULLY_TESTED[@]}"; then
+	if ! has_version "dev-python/pydantic[${PYTHON_USEDEP}]"; then
 		EPYTEST_IGNORE+=(
 			# Needs pydantic
 			test/test_methods/test_hg.py

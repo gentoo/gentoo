@@ -1,9 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..13} pypy3_11 )
+PYTHON_COMPAT=( python3_{11..14} pypy3_11 )
 
 inherit cmake python-any-r1
 
@@ -14,7 +14,7 @@ S="${WORKDIR}/mongo-c-driver-${PV}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm64 ~hppa ~loong ~mips ~ppc ~riscv ~s390 ~sparc x86"
+KEYWORDS="~alpha amd64 arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc x86"
 IUSE="examples static-libs"
 
 # tests are covered in mongo-c-driver and are not easily runnable in here

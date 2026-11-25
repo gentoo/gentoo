@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit crossdev multilib flag-o-matic
+inherit crossdev multilib flag-o-matic toolchain-funcs
 
 DESCRIPTION="GNU Hurd is the GNU project's replacement for UNIX"
 HOMEPAGE="https://www.gnu.org/software/hurd/hurd.html"
@@ -20,8 +20,15 @@ elif [[ ${PV} == *_p* ]] ; then
 	# savannah doesn't allow snapshot downloads from cgit as of 2026-03,
 	# but the Debian maintainer is also upstream, so just use theirs
 	# instead.
-	SRC_URI="mirror://debian/pool/main/${PN:0:1}/${PN}/${MY_P}.orig.tar.bz2"
-	S="${WORKDIR}"/${MY_P/_/-}
+	#SRC_URI="mirror://debian/pool/main/${PN:0:1}/${PN}/${MY_P}.orig.tar.bz2"
+	#S="${WORKDIR}"/${MY_P/_/-}
+
+	# Debian only make full snapshots every so often, but apply other
+	# commits as backports. This is a bit awkward for us to follow, so
+	# roll our own snapshots:
+	# $ git archive --format=tar --prefix=hurd/ HEAD | xz > hurd-0.9_p20260331.tar.xz
+	SRC_URI="https://distfiles.gentoo.org/pub/proj/hurd/snapshots/hurd/${P}.tar.xz"
+	S="${WORKDIR}"/${PN}
 else
 	SRC_URI="mirror://gnu/${PN}/${P}.tar.bz2"
 fi
@@ -31,7 +38,7 @@ SLOT="0"
 if is_crosspkg ; then
 	IUSE="custom-cflags headers-only"
 else
-	IUSE="custom-cflags headers-only ncurses rumpkernel xkb"
+	IUSE="custom-cflags headers-only lwip ncurses rumpkernel xkb"
 fi
 [[ ${PV} != 9999 ]] && KEYWORDS="~amd64 ~x86"
 
@@ -51,6 +58,7 @@ else
 		x11-libs/libpciaccess[static-libs]
 		virtual/libcrypt:=[static-libs]
 		virtual/zlib:=[static-libs]
+		lwip? ( net-libs/lwip )
 		ncurses? ( sys-libs/ncurses:= )
 		rumpkernel? ( sys-kernel/rumpkernel )
 		xkb? ( x11-libs/libxkbcommon )
@@ -61,6 +69,7 @@ fi
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.9_p20251029-rump-link.patch
+	"${FILESDIR}"/${PN}-0.9_p20251029-openrc-init-no-a.patch
 	"${FILESDIR}"/${PN}-0.9_p20251029-libports-iterate-refcount.patch
 )
 
@@ -90,6 +99,11 @@ src_configure() {
 		# Builds everything twice and needs profiling libs
 		--disable-profile
 	)
+
+	# Make sure host make.conf doesn't pollute us
+	if target_is_not_host || tc-is-cross-compiler ; then
+		CHOST=${CTARGET} strip-unsupported-flags
+	fi
 
 	if ! use custom-cflags ; then
 		strip-flags
@@ -125,6 +139,7 @@ src_configure() {
 		cat <<-EOF >> config.make.in || die "Failed to amend config.make.in"
 		HAVE_LIBGCRYPT = no
 		HAVE_LIBPCIACCESS = no
+		HAVE_LIBLWIP = no
 		HAVE_XKBCOMMON = no
 		EOF
 	else
@@ -146,6 +161,7 @@ src_configure() {
 		)
 
 		cat <<-EOF >> config.make.in || die "Failed to amend config.make.in"
+		HAVE_LIBLWIP = $(usex lwip)
 		HAVE_XKBCOMMON = $(usex xkb)
 		EOF
 	fi

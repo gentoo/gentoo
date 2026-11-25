@@ -1,0 +1,55 @@
+See https://bugs.gentoo.org/984178. Taken from (merged)
+https://github.com/jemalloc/jemalloc/pull/3034
+
+From b832f91554076dced14cc66658f6ca76d4baee16 Mon Sep 17 00:00:00 2001
+From: h2h <h2h@meta.com>
+Date: Thu, 8 Oct 2026 13:41:06 -0700
+Subject: [PATCH] Explicitly specify pointer type arithmetics to avoid UB in
+ clang build
+
+---
+ include/jemalloc/internal/edata.h | 5 -----
+ src/emap.c                        | 6 +++---
+ 2 files changed, 3 insertions(+), 8 deletions(-)
+
+diff --git a/include/jemalloc/internal/edata.h b/include/jemalloc/internal/edata.h
+index 8f85ff1eac..13dcb5b5c7 100644
+--- a/include/jemalloc/internal/edata.h
++++ b/include/jemalloc/internal/edata.h
+@@ -516,11 +516,6 @@ edata_ps_get(const edata_t *edata) {
+ 	return edata->e_ps;
+ }
+ 
+-static inline void *
+-edata_before_get(const edata_t *edata) {
+-	return (void *)((byte_t *)edata_base_get(edata) - PAGE);
+-}
+-
+ static inline void *
+ edata_last_get(const edata_t *edata) {
+ 	return (void *)((byte_t *)edata_base_get(edata) + edata_size_get(edata)
+diff --git a/src/emap.c b/src/emap.c
+index 6863c2ae08..ff634e1fca 100644
+--- a/src/emap.c
++++ b/src/emap.c
+@@ -53,8 +53,8 @@ emap_try_acquire_edata_neighbor_impl(tsdn_t *tsdn, emap_t *emap, edata_t *edata,
+ 	    || expected_state == extent_state_retained
+ 	    || expected_state == extent_state_pinned);
+ 
+-	void *neighbor_addr = forward ? edata_past_get(edata)
+-	                              : edata_before_get(edata);
++	uintptr_t neighbor_addr = forward ? (uintptr_t)edata_past_get(edata)
++	                              : (uintptr_t)edata_base_get(edata) - PAGE;
+ 	/*
+ 	 * This is subtle; the rtree code asserts that its input pointer is
+ 	 * non-NULL, and this is a useful thing to check.  But it's possible
+@@ -63,7 +63,7 @@ emap_try_acquire_edata_neighbor_impl(tsdn_t *tsdn, emap_t *emap, edata_t *edata,
+ 	 * randomization is on, but it could in principle happen anywhere).  In
+ 	 * this case, edata_before_get(edata) is NULL, triggering the assert.
+ 	 */
+-	if (neighbor_addr == NULL) {
++	if (neighbor_addr == 0) {
+ 		return NULL;
+ 	}
+ 
+

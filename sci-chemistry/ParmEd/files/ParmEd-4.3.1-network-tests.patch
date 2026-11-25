@@ -1,0 +1,173 @@
+Description: Skip tests requiring network access.
+Author: Andrius Merkys <merkys@debian.org>
+Forwarded: not-needed
+--- a/test/test_parmed_formats.py
++++ b/test/test_parmed_formats.py
+@@ -2206,6 +2206,7 @@
+     def setUp(self):
+         self.url = 'https://github.com/ParmEd/ParmEd/raw/master/test/files/'
+ 
++    @unittest.skip("Not running tests requiring network access")
+     def test_download_off(self):
+         """ Tests automatic loading of downloaded OFF files """
+         self.assertTrue(amber.AmberOFFLibrary.id_format(self.url + 'amino12.lib'))
+@@ -2214,24 +2215,28 @@
+         for key, item in off.items():
+             self.assertIsInstance(item, ResidueTemplate)
+ 
++    @unittest.skip("Not running tests requiring network access")
+     def test_download_amber_prmtop(self):
+         """ Tests automatic loading of downloaded AmberParm object """
+         self.assertTrue(amber.AmberFormat.id_format(self.url + 'tip4p.parm7'))
+         parm = amber.AmberFormat.parse(self.url + 'tip4p.parm7')
+         self.assertIsInstance(parm, amber.AmberParm)
+ 
++    @unittest.skip("Not running tests requiring network access")
+     def test_download_amoeba_prmtop(self):
+         """ Tests automatic loading of downloaded AmoebaParm object """
+         self.assertTrue(amber.AmberFormat.id_format(self.url + 'nma.parm7'))
+         parm = amber.AmberFormat.parse(self.url + 'nma.parm7')
+         self.assertIsInstance(parm, amber.AmoebaParm)
+ 
++    @unittest.skip("Not running tests requiring network access")
+     def test_download_chamber_prmtop(self):
+         """ Tests automatic loading of downloaded ChamberParm object """
+         self.assertTrue(amber.AmberFormat.id_format(self.url + 'ala_ala_ala.parm7'))
+         parm = amber.AmberFormat.parse(self.url + 'ala_ala_ala.parm7')
+         self.assertIsInstance(parm, amber.ChamberParm)
+ 
++    @unittest.skip("Not running tests requiring network access")
+     def test_download_raw_amber_format(self):
+         """ Tests automatic loading of downloaded AmberFormat object """
+         self.assertTrue(amber.AmberFormat.id_format(self.url + 'cSPCE.mdl'))
+@@ -2239,36 +2244,42 @@
+         self.assertIsInstance(parm, amber.AmberFormat)
+         self.assertNotIsInstance(parm, amber.AmberParm)
+ 
++    @unittest.skip("Not running tests requiring network access")
+     def test_download_amber_restart_ascii(self):
+         """ Tests automatic loading of downloaded Amber ASCII restart file """
+         self.assertTrue(amber.AmberAsciiRestart.id_format(self.url + 'trx.inpcrd'))
+         parm = amber.AmberAsciiRestart(self.url + 'trx.inpcrd')
+         self.assertIsInstance(parm, amber.AmberAsciiRestart)
+ 
++    @unittest.skip("Not running tests requiring network access")
+     def test_download_amber_traj_ascii(self):
+         """ Tests automatic loading of downloaded Amber mdcrd file """
+         self.assertTrue(amber.AmberMdcrd.id_format(self.url + 'tz2.truncoct.crd'))
+         crd = amber.AmberMdcrd(self.url + 'tz2.truncoct.crd', natom=5827, hasbox=True)
+         self.assertIsInstance(crd, amber.AmberMdcrd)
+ 
++    @unittest.skip("Not running tests requiring network access")
+     def test_download_charmm_psf(self):
+         """ Tests automatic loading of downloaded CHARMM PSF file """
+         self.assertTrue(formats.PSFFile.id_format(self.url + 'ala_ala_ala.psf'))
+         parm = formats.PSFFile.parse(self.url + 'ala_ala_ala.psf')
+         self.assertIsInstance(parm, charmm.CharmmPsfFile)
+ 
++    @unittest.skip("Not running tests requiring network access")
+     def test_download_charmm_crd(self):
+         """ Tests automatic loading of downloaded CHARMM crd file """
+         self.assertTrue(charmm.CharmmCrdFile.id_format(self.url + 'dhfr_min_charmm.crd'))
+         crd = charmm.CharmmCrdFile(self.url + 'dhfr_min_charmm.crd')
+         self.assertIsInstance(crd, charmm.CharmmCrdFile)
+ 
++    @unittest.skip("Not running tests requiring network access")
+     def test_download_charmm_restart(self):
+         """ Tests automatic loading of downloaded CHARMM restart file """
+         self.assertTrue(charmm.CharmmRstFile.id_format(self.url + 'sample-charmm.rst'))
+         crd = charmm.CharmmRstFile(self.url + 'sample-charmm.rst')
+         self.assertIsInstance(crd, charmm.CharmmRstFile)
+ 
++    @unittest.skip("Not running tests requiring network access")
+     def test_download_pdb(self):
+         """ Tests automatic loading of downloaded PDB files """
+         self.assertTrue(formats.PDBFile.id_format(self.url + '4lzt.pdb'))
+@@ -2276,6 +2287,7 @@
+         self.assertIsInstance(pdb, Structure)
+         self.assertEqual(len(pdb.atoms), 1164)
+ 
++    @unittest.skip("Not running tests requiring network access")
+     def test_download_cif(self):
+         """ Tests automatic loading of downloaded PDBx/mmCIF files """
+         self.assertTrue(formats.CIFFile.id_format(self.url + '4LZT.cif'))
+@@ -2283,6 +2295,7 @@
+         self.assertIsInstance(cif, Structure)
+         self.assertEqual(len(cif.atoms), 1164)
+ 
++    @unittest.skip("Not running tests requiring network access")
+     def test_download_mol2(self):
+         """ Tests automatic loading of downloaded mol2 and mol3 files """
+         self.assertTrue(formats.Mol2File.id_format(self.url + 'test_multi.mol2'))
+@@ -2292,6 +2305,7 @@
+         mol3 = formats.Mol2File.parse(self.url + 'tripos9.mol2')
+         self.assertIsInstance(mol3, ResidueTemplate)
+ 
++    @unittest.skip("Not running tests requiring network access")
+     @unittest.skipUnless(HAS_GROMACS, "Cannot run GROMACS tests without GROMACS")
+     def test_download_gromacs_topology(self):
+         """ Tests automatic loading of downloaded Gromacs topology file """
+@@ -2299,12 +2313,14 @@
+         top = gromacs.GromacsTopologyFile(self.url + '1aki.charmm27.top')
+         self.assertIsInstance(top, gromacs.GromacsTopologyFile)
+ 
++    @unittest.skip("Not running tests requiring network access")
+     def test_download_gromacs_gro(self):
+         """ Tests automatic loading of downloaded Gromacs GRO file """
+         self.assertTrue(gromacs.GromacsGroFile.id_format(self.url + '1aki.ff99sbildn.gro'))
+         gro = gromacs.GromacsGroFile.parse(self.url + '1aki.ff99sbildn.gro')
+         self.assertIsInstance(gro, Structure)
+ 
++    @unittest.skip("Not running tests requiring network access")
+     def test_download_netcdf(self):
+         """ Tests that NetCDF files always fail when trying to download them """
+         self.assertFalse(amber.NetCDFRestart.id_format(self.url + 'ncinpcrd.rst7'))
+--- a/test/test_parmed_genopen.py
++++ b/test/test_parmed_genopen.py
+@@ -53,18 +53,21 @@
+         text = bz2.BZ2File(self.get_fn('test.bz2', written=True), 'r').read()
+         self.assertEqual(text.decode('ascii'), ALPHABET)
+ 
++    @unittest.skip("Not running tests requiring network access")
+     def test_read_normal_URL(self):
+         """ Tests genopen reading a remote file """
+         url = 'https://github.com/ParmEd/ParmEd/raw/master/test/files/tripos1.mol2'
+         with closing(genopen(url, 'r')) as f:
+             self.assertEqual(f.read(), open(get_fn('tripos1.mol2')).read())
+ 
++    @unittest.skip("Not running tests requiring network access")
+     def test_read_bzipped_URL(self):
+         """ Tests genopen reading a bzipped remote file """
+         url = 'https://github.com/ParmEd/ParmEd/raw/master/test/files/4lzt.pdb.bz2'
+         with closing(genopen(url, 'r')) as f:
+             self.assertEqual(f.read(), genopen(get_fn('4lzt.pdb.bz2')).read())
+ 
++    @unittest.skip("Not running tests requiring network access")
+     def test_read_gzipped_URL(self):
+         """ Tests genopen reading a gzipped remote file """
+         url = 'https://github.com/ParmEd/ParmEd/raw/master/test/files/4lzt.pdb.gz'
+@@ -105,12 +108,14 @@
+         text = bz2.BZ2File(self.get_fn('test.txt.bz2', written=True)).read()
+         self.assertEqual(text.decode('ascii'), ALPHABET*2)
+ 
++    @unittest.skip("Not running tests requiring network access")
+     def test_append_remote_file(self):
+         """ Tests that genopen appending a remote file fails """
+         url = 'http://q4md-forcefieldtools.org/REDDB/projects/W-73/tripos1.mol2'
+         self.assertRaises(ValueError, lambda: genopen(url, 'a'))
+         self.assertRaises(ValueError, lambda: genopen(url, 'w'))
+ 
++    @unittest.skip("Not running tests requiring network access")
+     def test_read_bad_URL(self):
+         """ Tests proper exception handling of non-existent URL """
+         self.assertRaises(IOError, lambda: genopen('http://asdkfjasdf.lib'))
+--- a/test/test_parmed_structure.py
++++ b/test/test_parmed_structure.py
+@@ -1384,6 +1384,7 @@
+         self.assertEqual(len(self.sys2.cmaps), len(x2.cmaps))
+         self.assertEqual(len(self.sys3.cmaps), len(x3.cmaps))
+ 
++    @unittest.skip("Not running tests requiring network access")
+     def test_save_psf2(self):
+         """ Test saving PSF file for unparametrized system """
+         url = 'http://ambermd.org/tutorials/advanced/tutorial1/files/polyAT.pdb'

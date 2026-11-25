@@ -26,7 +26,7 @@ PIPEWIRE_DOCS_PREBUILT_DEV=sam
 PIPEWIRE_DOCS_VERSION="$(ver_cut 1-2).0"
 # Default to generating docs (inc. man pages) if no prebuilt; overridden later
 PIPEWIRE_DOCS_USEFLAG="+man"
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 inherit meson-multilib optfeature prefix python-any-r1 systemd tmpfiles udev
 
 if [[ ${PV} == 9999 ]] ; then
@@ -63,7 +63,7 @@ LICENSE="MIT LGPL-2.1+ GPL-2"
 SLOT="0/0.4"
 IUSE="${PIPEWIRE_DOCS_USEFLAG} bluetooth elogind dbus doc echo-cancel extra ffmpeg fftw flatpak gstreamer gsettings"
 IUSE+=" ieee1394 jack-client jack-sdk libcamera loudness lv2 modemmanager pipewire-alsa readline roc selinux"
-IUSE+=" pulseaudio sound-server ssl system-service systemd test v4l X zeroconf"
+IUSE+=" pulseaudio sound-server sofa ssl system-service systemd test v4l X zeroconf"
 
 # Once replacing system JACK libraries is possible, it's likely that
 # jack-client IUSE will need blocking to avoid users accidentally
@@ -145,8 +145,8 @@ RDEPEND="
 	flatpak? ( dev-libs/glib )
 	gstreamer? (
 		>=dev-libs/glib-2.32.0:2
-		>=media-libs/gstreamer-1.10.0:1.0
-		media-libs/gst-plugins-base:1.0
+		>=media-libs/gstreamer-1.22.0:1.0
+		>=media-libs/gst-plugins-base-1.22.0:1.0
 	)
 	gsettings? ( >=dev-libs/glib-2.26.0:2 )
 	ieee1394? ( media-libs/libffado[${MULTILIB_USEDEP}] )
@@ -155,7 +155,7 @@ RDEPEND="
 		!media-sound/jack-audio-connection-kit
 		!media-sound/jack2
 	)
-	libcamera? ( media-libs/libcamera:= )
+	libcamera? ( >=media-libs/libcamera-0.6.0:= )
 	loudness? ( media-libs/libebur128:=[${MULTILIB_USEDEP}] )
 	lv2? ( media-libs/lilv )
 	modemmanager? ( >=net-misc/modemmanager-1.10.0 )
@@ -165,6 +165,7 @@ RDEPEND="
 	roc? ( >=media-libs/roc-toolkit-0.4.0:= )
 	readline? ( sys-libs/readline:= )
 	selinux? ( sys-libs/libselinux )
+	sofa? ( media-libs/libmysofa )
 	ssl? ( dev-libs/openssl:= )
 	systemd? ( sys-apps/systemd )
 	system-service? ( acct-user/pipewire )
@@ -176,10 +177,9 @@ RDEPEND="
 	)
 	zeroconf? ( net-dns/avahi )
 "
-
 DEPEND="${RDEPEND}"
-
 PDEPEND=">=media-video/wireplumber-0.5.2"
+RDEPEND+=" selinux? ( sec-policy/selinux-pipewire )"
 
 # Present RDEPEND that are currently always disabled due to the PW
 # code using them being required to be disabled by Gentoo guidelines
@@ -294,7 +294,7 @@ multilib_src_configure() {
 		-Dudev=enabled
 		-Dudevrulesdir="${EPREFIX}$(get_udevdir)/rules.d"
 		-Dsdl2=disabled # Controls SDL2 dependent code (currently only examples when -Dinstalled_tests=enabled which we never install)
-		-Dlibmysofa=disabled # libmysofa is unpackaged
+		$(meson_native_use_feature sofa libmysofa)
 		$(meson_native_use_feature extra sndfile) # Enables libsndfile dependent code (currently only pw-cat)
 		-Dsession-managers="[]" # All available session managers are now their own projects, so there's nothing to build
 
@@ -424,6 +424,19 @@ pkg_postinst() {
 			# https://gitlab.freedesktop.org/pipewire/pipewire/-/issues/3243
 			ewarn "Please restart KWin/Mutter after upgrading PipeWire."
 			ewarn "Screencasting may not work until you do."
+		fi
+
+		# Upgrading from a previous major version may require a restart (bug #964059)
+		if use sound-server && ver_test $(ver_cut 1-2 ${ver}) -lt $(ver_cut 1-2 ${PV}) ; then
+			ewarn "Please restart PipeWire after upgrading to a new major version:"
+			if use systemd ; then
+				ewarn " $ systemctl --user daemon-reload"
+				ewarn " $ systemctl restart --user pipewire.service"
+				ewarn " $ systemctl restart --user pipewire-pulse.service"
+				ewarn " $ systemctl restart --user wireplumber.service"
+			else
+				ewarn " $ gentoo-pipewire-launcher restart"
+			fi
 		fi
 
 		if ver_test ${ver} -le 0.3.66-r1 ; then

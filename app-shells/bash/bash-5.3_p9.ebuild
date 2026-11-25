@@ -175,6 +175,7 @@ src_configure() {
 	unset -v YACC
 
 	if tc-is-cross-compiler; then
+		export CC_FOR_BUILD="$(tc-getBUILD_CC)"
 		# https://lists.gnu.org/archive/html/bug-bash/2025-05/msg00029.html
 		export CFLAGS_FOR_BUILD="${BUILD_CFLAGS} -std=gnu17"
 

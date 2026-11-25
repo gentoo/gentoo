@@ -13,6 +13,7 @@
     constrained linear mathematical optimization problems.
   </longdescription>
   <use>
+    <flag name="asl">Use <pkg>sci-libs/coinasl</pkg></flag>
     <flag name="glpk">
       Enable GNU Linear Programming Kit
       <pkg>sci-mathematics/glpk</pkg> support

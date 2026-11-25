@@ -1,5 +1,5 @@
 #!/sbin/openrc-run
-# Copyright 2016-2018 Gentoo Foundation
+# Copyright 2016-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 description="Prometheus exporter for MySQL server metrics"
@@ -14,13 +14,13 @@ EXPORTER_TERMTIMEOUT=${EXPORTER_TERMTIMEOUT:-"TERM/60/KILL/5"}
 command="/usr/bin/mysqld_exporter"
 command_args="${EXPORTER_FLAGS}"
 command_background="true"
+command_user="${EXPORTER_USER}:${EXPORTER_GROUP}"
+directory="/var/lib/mysqld_exporter"
 start_stop_daemon_args="${EXPORTER_SSDARGS}"
-start_stop_daemon_args="${start_stop_daemon_args} --user ${EXPORTER_USER}"
-start_stop_daemon_args="${start_stop_daemon_args} --group ${EXPORTER_GROUP}"
 
 # We are forcing log files because upstream is going to remove syslog support :/
-start_stop_daemon_args="${start_stop_daemon_args} --stdout /var/log/mysqld_exporter/${RC_SVCNAME}.log"
-start_stop_daemon_args="${start_stop_daemon_args} --stderr /var/log/mysqld_exporter/${RC_SVCNAME}.log"
+output_log="/var/log/mysqld_exporter/${RC_SVCNAME}.log"
+error_log="/var/log/mysqld_exporter/${RC_SVCNAME}.log"
 
 getconfig() {
 	local key="$1"

@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,7 +9,7 @@ MY_P="${PN}-$(ver_rs 0- '-')"
 TCLCONFIGId=4a924db4fb37fa0c7cc2ae987b294dbaa97bc713
 
 DESCRIPTION="Tcl Thread extension"
-HOMEPAGE="http://www.tcl.tk/"
+HOMEPAGE="http://www.tcl-lang.org/"
 SRC_URI="
 	https://github.com/tcltk/${PN}/archive/refs/tags/${MY_P}.tar.gz
 	https://github.com/tcltk/tclconfig/archive/${TCLCONFIGId}.tar.gz

@@ -1,0 +1,76 @@
+# Adapt to OpenSSL 4, bug #2491639, CPAN RT#179961, proposed upstream
+https://src.fedoraproject.org/rpms/perl-Crypt-SSLeay/raw/rawhide/f/Crypt-SSLeay-0.72-Adapt-to-OpenSSL-4.patch
+
+From 948e9a3c658cc254df5ef3737378c65672a6c46d Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Petr=20P=C3=ADsa=C5=99?= <ppisar@redhat.com>
+Date: Tue, 7 Jul 2026 10:33:02 +0200
+Subject: [PATCH] Adapt to OpenSSL 4
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+OpenSSL 4 made ASN1_STRING structure opaque and compilation failed:
+
+    SSLeay.xs: In function ‘XS_Crypt__SSLeay__X509_get_notBeforeString’:
+    SSLeay.xs:516:54: error: invalid use of incomplete typedef ‘ASN1_TIME’ {aka ‘struct asn1_string_st’}
+      516 |             RETVAL = (char *)X509_get_notBefore(cert)->data;
+	  |                                                      ^~
+    SSLeay.xs: In function ‘XS_Crypt__SSLeay__X509_get_notAfterString’:
+    SSLeay.xs:524:53: error: invalid use of incomplete typedef ‘ASN1_TIME’ {aka ‘struct asn1_string_st’}
+      524 |             RETVAL = (char *)X509_get_notAfter(cert)->data;
+	  |                                                     ^~
+
+This patch changes the two Perl subroutines to use the current OpenSSL
+API.
+---
+ SSLeay.xs | 20 ++++++++++++++++++++
+ 1 file changed, 20 insertions(+)
+
+diff --git a/SSLeay.xs b/SSLeay.xs
+index 47b4bcf..d9360c3 100644
+--- a/SSLeay.xs
++++ b/SSLeay.xs
+@@ -509,6 +509,15 @@ issuer_name(cert)
+         OUTPUT:
+            RETVAL
+ 
++#if SSLEAY_VERSION_NUMBER >= 0x40000000
++const char *
++get_notBeforeString(cert)
++         X509* cert
++         CODE:
++            RETVAL = (const char *)ASN1_STRING_get0_data(X509_get_notBefore(cert));
++         OUTPUT:
++            RETVAL
++#else
+ char *
+ get_notBeforeString(cert)
+          X509* cert
+@@ -516,7 +525,17 @@ get_notBeforeString(cert)
+             RETVAL = (char *)X509_get_notBefore(cert)->data;
+          OUTPUT:
+             RETVAL
++#endif
+ 
++#if SSLEAY_VERSION_NUMBER >= 0x40000000
++const char *
++get_notAfterString(cert)
++         X509* cert
++         CODE:
++            RETVAL = (const char *)ASN1_STRING_get0_data(X509_get_notAfter(cert));
++         OUTPUT:
++            RETVAL
++#else
+ char *
+ get_notAfterString(cert)
+          X509* cert
+@@ -524,6 +543,7 @@ get_notAfterString(cert)
+             RETVAL = (char *)X509_get_notAfter(cert)->data;
+          OUTPUT:
+             RETVAL
++#endif
+ 
+ MODULE = Crypt::SSLeay      PACKAGE = Crypt::SSLeay::Version    PREFIX = VERSION_
+ 
+-- 
+2.55.0

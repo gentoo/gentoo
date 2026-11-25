@@ -1,0 +1,11 @@
+--- a/auxiliary/Makefile	2026-04-23 23:53:10.818831380 +0200
++++ b/auxiliary/Makefile	2026-04-23 23:53:33.536570618 +0200
+@@ -22,7 +22,7 @@
+ devclean : distclean
+ 
+ convcal$(EXE) : convcal.c
+-	$(CC) $(CFLAGS0) $(CPPFLAGS) -Wl,-z,relro -Wl,-z,now -o $@ convcal.c $(NOGUI_LIBS)
++	$(CC) $(CFLAGS0) $(CPPFLAGS) -Wl,-z,relro -Wl,-z,now $(LDFLAGS) -o $@ convcal.c $(NOGUI_LIBS)
+ 
+ install : $(AUXILIARIES) $(PROGRAMS) $(SCRIPTS)
+ 	$(MKINSTALLDIRS) $(DESTDIR)$(GRACE_HOME)/auxiliary

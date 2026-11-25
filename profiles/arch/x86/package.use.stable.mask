@@ -17,6 +17,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Ionen Wolkens <ionen@gentoo.org> (2026-04-16)
+# media-libs/opencolorio is not stable here and has many dependencies.
+# Not overly worth extra stabilizations over new still scarcely used
+# colour filters. Can revisit if someone wants this.
+media-video/ffmpeg opencolorio
+media-video/ffmpeg-compat opencolorio
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-12-13)
 # media-gfx/asymptote is not stable here, bug #961740
 dev-tex/rubber test
@@ -36,10 +43,6 @@ dev-perl/Business-ISBN barcode
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-08-29)
 # dev-perl/GDTextUtil is not stable here. Bug #661634
 media-video/vdrsync dvdr
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-03-07)
-# KDE Frameworks is no longer stable on x86
-x11-themes/QGnomePlatform qt5
 
 # Sam James <sam@gentoo.org> (2025-02-13)
 # sys-cluster/corosync is marked stable here
@@ -77,7 +80,7 @@ virtual/notification-daemon kde
 
 # Matt Turner <mattst88@gentoo.org> (2024-07-14)
 # spirv-llvm-translator < 17 is not stable on x86.
-<llvm-core/libclc-17 spirv
+<llvm-runtimes/libclc-17 spirv
 
 # Sam James <sam@gentoo.org> (2024-04-30)
 # sys-block/nbdkit is not yet marked stable here
@@ -101,12 +104,6 @@ sci-libs/gsl cblas-external
 # Hans de Graaff <graaff@gentoo.org> (2023-03-28)
 # dev-ruby/stringex is not marked stable here yet
 dev-ruby/kramdown unicode
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2022-09-14)
-# sci-libs/vtk is not stable on x86 and we don't want to complicate
-# newer maxima and geant stabilisation, bug #867547, #886975
-sci-mathematics/maxima vtk
-sci-physics/geant vtk
 
 # Sam James <sam@gentoo.org> (2022-07-06)
 # sci-libs/sundials is not marked stable on x86
@@ -168,8 +165,3 @@ gnustep-base/gnustep-make libobjc2
 # Michael Palimaka <kensington@gentoo.org> (2016-05-26)
 # Dependencies not yet stable
 dev-cpp/eigen test
-
-# Michał Górny <mgorny@gentoo.org> (2014-03-30)
-# Don't apply stable masks to python-exec since we're forcing every
-# impl there anyway. Please keep this in sync with use.stable.mask.
-dev-lang/python-exec -python_targets_pypy3_11

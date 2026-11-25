@@ -1,0 +1,48 @@
+From d281cd47b41e8a4ef9a7e73fad5c84189b60a34a Mon Sep 17 00:00:00 2001
+From: Craig Andrews <candrews@integralblue.com>
+Date: Tue, 3 Nov 2026 11:04:44 -0500
+Subject: [PATCH] Fix AMF decoding error handling and checks
+
+Fix CVE-2026-112060 and CVE-2026-112061
+
+See: https://hackmd.io/@haindpwn/cve-2026-112060-112061-librtmp-amf3-decode-and-strict-array-oob
+---
+ librtmp/amf.c | 11 +++++++++--
+ 1 file changed, 9 insertions(+), 2 deletions(-)
+
+diff --git a/librtmp/amf.c b/librtmp/amf.c
+index 7954144..b1dc6df 100644
+--- a/librtmp/amf.c
++++ b/librtmp/amf.c
+@@ -730,6 +730,8 @@ AMFProp_Decode(AMFObjectProperty *prop, const char *pBuffer, int nSize,
+       }
+     case AMF_STRICT_ARRAY:
+       {
++	if (nSize < 4)
++	  return -1;
+ 	unsigned int nArrayLen = AMF_DecodeInt32(pBuffer);
+ 	nSize -= 4;
+ 
+@@ -1143,8 +1145,11 @@ AMF3_Decode(AMFObject *obj, const char *pBuffer, int nSize, int bAMFData)
+ 	        goto invalid;
+ 	      nRes = AMF3Prop_Decode(&prop, pBuffer, nSize, FALSE);
+ 	      if (nRes == -1)
+-		RTMP_Log(RTMP_LOGDEBUG, "%s, failed to decode AMF3 property!",
+-		    __FUNCTION__);
++		{
++		  RTMP_Log(RTMP_LOGDEBUG, "%s, failed to decode AMF3 property!",
++		      __FUNCTION__);
++		  break;
++		}
+ 
+ 	      AMFProp_SetName(&prop, AMF3CD_GetProp(&cd, i));
+ 	      AMF_AddProp(obj, &prop);
+@@ -1161,6 +1166,8 @@ AMF3_Decode(AMFObject *obj, const char *pBuffer, int nSize, int bAMFData)
+ 		  if (nSize <=0)
+ 		    goto invalid;
+ 		  nRes = AMF3Prop_Decode(&prop, pBuffer, nSize, TRUE);
++		  if (nRes == -1)
++		    break;
+ 		  AMF_AddProp(obj, &prop);
+ 
+ 		  pBuffer += nRes;

@@ -1,0 +1,42 @@
+https://github.com/shadow-maint/shadow/pull/1699
+
+From ba4419c57b222b0d34a2b933e7ee92914a51b596 Mon Sep 17 00:00:00 2001
+From: ojab <ojab@ojab.ru>
+Date: Wed, 29 Jul 2026 15:07:43 +0000
+Subject: [PATCH] subid: Add `<stdint.h>` for `uintmax_t`
+
+```
+find_new_sub_uids.c:80:27: error: 'uintmax_t' undeclared (first use in this function)
+find_new_sub_gids.c:80:27: error: 'uintmax_t' undeclared (first use in this function)
+```
+
+Fixes: 4d800cf2eb9e (2026-04-09; "subid: Add deterministic subid ranges")
+---
+ lib/find_new_sub_gids.c | 1 +
+ lib/find_new_sub_uids.c | 1 +
+ 2 files changed, 2 insertions(+)
+
+diff --git a/lib/find_new_sub_gids.c b/lib/find_new_sub_gids.c
+index 3971ce922e..de514d6b09 100644
+--- a/lib/find_new_sub_gids.c
++++ b/lib/find_new_sub_gids.c
+@@ -8,6 +8,7 @@
+ 
+ #ifdef ENABLE_SUBIDS
+ 
++#include <stdint.h>
+ #include <stdio.h>
+ #include <errno.h>
+ 
+diff --git a/lib/find_new_sub_uids.c b/lib/find_new_sub_uids.c
+index 65f6815467..f0b4328387 100644
+--- a/lib/find_new_sub_uids.c
++++ b/lib/find_new_sub_uids.c
+@@ -8,6 +8,7 @@
+ 
+ #ifdef ENABLE_SUBIDS
+ 
++#include <stdint.h>
+ #include <stdio.h>
+ #include <errno.h>
+ 

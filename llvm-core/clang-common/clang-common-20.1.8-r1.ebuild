@@ -1,9 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit bash-completion-r1 elisp-common llvm.org multilib
+inherit elisp-common llvm.org multilib shell-completion
 
 DESCRIPTION="Common files shared between multiple slots of clang"
 HOMEPAGE="https://llvm.org/"
@@ -251,6 +251,7 @@ src_install() {
 	# elif __GENTOO_HAS_FEATURE(numerical_stability_sanitizer)
 	# elif __GENTOO_HAS_FEATURE(realtime_sanitizer)
 	# elif __GENTOO_HAS_FEATURE(thread_sanitizer)
+	# elif defined(_GENTOO_NO_FORTIFY_SOURCE)
 	# else
 	#  define _FORTIFY_SOURCE ${fortify_level}
 	# endif

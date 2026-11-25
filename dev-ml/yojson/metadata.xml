@@ -6,7 +6,7 @@
     <name>François-Xavier Carton</name>
     <email>fx.carton91@gmail.com</email>
   </maintainer>
-  <maintainer type="project">
+  <maintainer type="project" proxied="maintainer-and-proxy">
     <email>ml@gentoo.org</email>
     <name>ML</name>
   </maintainer>

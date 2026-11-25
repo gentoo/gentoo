@@ -1,0 +1,14 @@
+https://bugs.gentoo.org/978404
+
+--- a/common.mk   2026-07-03 17:07:42.176631332 +0300
++++ b/common.mk 2026-07-03 17:12:20.450178450 +0300
+@@ -558,7 +558,7 @@
+ # The following value, in a pkg-config file, sets the conventional pkg-config
+ # variables that the pkg-config user can override at pkg-config time.
+ PKGCONFIG_VAR_SET = \
+-  prefix=$(PREFIX)\nexec_prefix=$${prefix}\nincludedir=$${prefix}/include\nlibdir=$${exec_prefix}/lib
++  prefix=$(PREFIX)\nexec_prefix=$${prefix}\nincludedir=$(HEADERINST_DIR)\nlibdir=$(LIBINST_DIR)
+ 
+ 
+ ##############################################################################
+

@@ -1,0 +1,43 @@
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+
+Find the system flatbuffers and allow for newer revisions.
+
+The generated schema pins the exact version of the bundled flatbuffers, which
+never matches whatever dev-libs/flatbuffers happens to be installed. Upstream
+guarantees wire and API compatibility within a major version, so only assert
+that.
+
+diff --git a/cmake/OpenCVDetectFlatbuffers.cmake b/cmake/OpenCVDetectFlatbuffers.cmake
+index b94f2d3..dbfa532 100644
+--- a/cmake/OpenCVDetectFlatbuffers.cmake
++++ b/cmake/OpenCVDetectFlatbuffers.cmake
+@@ -1,12 +1,6 @@
+ if(WITH_FLATBUFFERS)
+-  set(HAVE_FLATBUFFERS 1)
+-  set(flatbuffers_VERSION "25.9.23")
+-  ocv_install_3rdparty_licenses(flatbuffers "${OpenCV_SOURCE_DIR}/3rdparty/flatbuffers/LICENSE.txt")
+-  ocv_add_external_target(flatbuffers "${OpenCV_SOURCE_DIR}/3rdparty/flatbuffers/include" "" "HAVE_FLATBUFFERS=1")
+-  set(CUSTOM_STATUS_flatbuffers "    Flatbuffers:" "builtin/3rdparty (${flatbuffers_VERSION})")
+-endif()
+-
+-if(WITH_FLATBUFFERS OR HAVE_FLATBUFFERS)
++  find_package(flatbuffers REQUIRED)
++  set(HAVE_FLATBUFFERS "${flatbuffers_FOUND}")
+   list(APPEND CUSTOM_STATUS flatbuffers)
+ 
+   if(HAVE_FLATBUFFERS)
+diff --git a/modules/dnn/misc/tflite/schema_generated.h b/modules/dnn/misc/tflite/schema_generated.h
+index b1e333c..4e4f568 100644
+--- a/modules/dnn/misc/tflite/schema_generated.h
++++ b/modules/dnn/misc/tflite/schema_generated.h
+@@ -8,9 +8,7 @@
+ 
+ // Ensure the included flatbuffers.h is the same version as when this file was
+ // generated, otherwise it may not be compatible.
+-static_assert(FLATBUFFERS_VERSION_MAJOR == 25 &&
+-              FLATBUFFERS_VERSION_MINOR == 9 &&
+-              FLATBUFFERS_VERSION_REVISION == 23,
++static_assert(FLATBUFFERS_VERSION_MAJOR == 25,
+              "Non-compatible flatbuffers version included");
+ 
+ namespace opencv_tflite {

@@ -3,6 +3,7 @@
 
 EAPI=8
 
+RPM_COMPRESS_TYPE=xz
 inherit rpm systemd xdg-utils
 
 MY_PN="${PN/-bin/}"

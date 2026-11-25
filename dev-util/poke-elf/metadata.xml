@@ -6,6 +6,6 @@
     <name>Arsen Arsenović</name>
   </maintainer>
   <upstream>
-    <remote-id type="savannah">poke/poke-elf</remote-id>
+    <remote-id type="savannah">poke</remote-id>
   </upstream>
 </pkgmetadata>

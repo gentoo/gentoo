@@ -1,0 +1,6 @@
+/var/log/valkey/valkey.log /var/log/valkey/sentinel.log {
+	compress
+	delaycompress
+	notifempty
+	missingok
+}

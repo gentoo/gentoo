@@ -1,0 +1,21 @@
+--- a/test/key_test.rb
++++ b/test/key_test.rb
+@@ -78,7 +78,7 @@ describe GPGME::Key do
+     end
+ 
+     it "can specify options for Ctx" do
+-      GPGME::Ctx.expects(:new).with(:armor => true).yields(mock(:export_keys => true))
++      GPGME::Ctx.expects(:new).with({"armor": true}).yields(mock({"export_keys": true}))
+       GPGME::Key.export("wadus", :armor => true)
+     end
+ 
+@@ -114,7 +114,7 @@ describe GPGME::Key do
+     end
+ 
+     it "can specify options for Ctx" do
+-      GPGME::Ctx.expects(:new).with(:armor => true).yields(mock(:import_keys => true, :import_result => true))
++      GPGME::Ctx.expects(:new).with({"armor": true}).yields(mock({"import_keys": true, "import_result": true}))
+       GPGME::Key.import("wadus", :armor => true)
+     end
+   end
+

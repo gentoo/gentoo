@@ -12,6 +12,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="github">geopython/OWSLib</remote-id>
-		<remote-id type="pypi">OWSLib</remote-id>
+		<remote-id type="pypi">owslib</remote-id>
 	</upstream>
 </pkgmetadata>

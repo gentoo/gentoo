@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -71,7 +71,7 @@ src_configure() {
 		)
 		cmake_src_configure
 	}
-	multilib_parallel_foreach_abi abi_configure
+	multilib_foreach_abi abi_configure
 }
 
 src_install() {

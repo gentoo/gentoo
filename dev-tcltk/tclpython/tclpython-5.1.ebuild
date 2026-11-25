@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit python-single-r1 toolchain-funcs
 
@@ -13,7 +13,7 @@ SRC_URI="https://github.com/amykyta3/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ppc x86"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 

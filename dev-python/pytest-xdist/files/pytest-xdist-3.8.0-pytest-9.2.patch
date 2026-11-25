@@ -1,0 +1,342 @@
+From 8f83805569c1fb03a6f686409e65a1723614743e Mon Sep 17 00:00:00 2001
+From: itscloud0 <cloud0beats@gmail.com>
+Date: Mon, 21 Sep 2026 11:54:28 +0400
+Subject: [PATCH 1/3] Fix loadgroup with pytest main node IDs
+
+---
+ changelog/1386.bugfix.rst | 1 +
+ src/xdist/remote.py       | 7 ++++++-
+ 2 files changed, 7 insertions(+), 1 deletion(-)
+ create mode 100644 changelog/1386.bugfix.rst
+
+diff --git a/changelog/1386.bugfix.rst b/changelog/1386.bugfix.rst
+new file mode 100644
+index 00000000..4862c841
+--- /dev/null
++++ b/changelog/1386.bugfix.rst
+@@ -0,0 +1 @@
++Fix ``--dist=loadgroup`` with pytest main, whose structured node IDs no longer honor writes to ``_nodeid``.
+diff --git a/src/xdist/remote.py b/src/xdist/remote.py
+index 4d7c9267..ae8968e3 100644
+--- a/src/xdist/remote.py
++++ b/src/xdist/remote.py
+@@ -261,7 +261,12 @@ def pytest_collection_modifyitems(
+                     gnames.add(str(name))
+                 if not gnames:
+                     continue
+-                item._nodeid = f"{item.nodeid}@{'_'.join(sorted(gnames))}"
++                nodeid = f"{item.nodeid}@{'_'.join(sorted(gnames))}"
++                node_id = getattr(item, "_id", None)
++                if node_id is None:
++                    item._nodeid = nodeid
++                else:
++                    item._id = node_id.parse(nodeid)
+ 
+     @pytest.hookimpl
+     def pytest_collection_finish(self, session: pytest.Session) -> None:
+
+From ffa67feff7aafe4d2aefada6f9d356e9ea121278 Mon Sep 17 00:00:00 2001
+From: itscloud0 <cloud0beats@gmail.com>
+Date: Tue, 22 Sep 2026 08:08:46 +0400
+Subject: [PATCH 2/3] Keep loadgroup metadata separate from node IDs
+
+---
+ src/xdist/dsession.py            |  7 +++++--
+ src/xdist/remote.py              | 12 +++++-------
+ src/xdist/scheduler/each.py      |  5 ++++-
+ src/xdist/scheduler/load.py      |  5 ++++-
+ src/xdist/scheduler/loadgroup.py | 16 ++++++++++++++++
+ src/xdist/scheduler/loadscope.py |  5 ++++-
+ src/xdist/scheduler/protocol.py  |  1 +
+ src/xdist/scheduler/worksteal.py |  5 ++++-
+ src/xdist/workermanage.py        |  7 ++++++-
+ testing/acceptance_test.py       |  6 ++----
+ testing/test_remote.py           | 28 ++++++++++++++++++++++++++--
+ 11 files changed, 77 insertions(+), 20 deletions(-)
+
+diff --git a/src/xdist/dsession.py b/src/xdist/dsession.py
+index 41e62d46..9862a451 100644
+--- a/src/xdist/dsession.py
++++ b/src/xdist/dsession.py
+@@ -279,7 +279,10 @@ def pytest_terminal_summary(self, terminalreporter: Any) -> None:
+             terminalreporter.write_sep("=", f"xdist: {self._summary_report}")
+ 
+     def worker_collectionfinish(
+-        self, node: WorkerController, ids: Sequence[str]
++        self,
++        node: WorkerController,
++        ids: Sequence[str],
++        group_names: Sequence[str | None] | None = None,
+     ) -> None:
+         """Worker has finished test collection.
+ 
+@@ -297,7 +300,7 @@ def worker_collectionfinish(
+         assert self._session is not None
+         self._session.testscollected = len(ids)
+         assert self.sched is not None
+-        self.sched.add_node_collection(node, ids)
++        self.sched.add_node_collection(node, ids, group_names)
+         if self.terminal:
+             self.trdist.setstatus(
+                 node.gateway.spec, WorkerStatus.CollectionDone, tests_collected=len(ids)
+diff --git a/src/xdist/remote.py b/src/xdist/remote.py
+index ae8968e3..ce535bc8 100644
+--- a/src/xdist/remote.py
++++ b/src/xdist/remote.py
+@@ -248,8 +248,9 @@ def pytest_collection_modifyitems(
+         config: pytest.Config,
+         items: list[pytest.Item],
+     ) -> None:
+-        # add the group name to nodeid as suffix if --dist=loadgroup
++        # Send group names separately so pytest owns test node IDs.
+         if config.getvalue("loadgroup"):
++            self._group_names: list[str | None] = []
+             for item in items:
+                 gnames: set[str] = set()
+                 for mark in item.iter_markers("xdist_group"):
+@@ -260,13 +261,9 @@ def pytest_collection_modifyitems(
+                     )
+                     gnames.add(str(name))
+                 if not gnames:
++                    self._group_names.append(None)
+                     continue
+-                nodeid = f"{item.nodeid}@{'_'.join(sorted(gnames))}"
+-                node_id = getattr(item, "_id", None)
+-                if node_id is None:
+-                    item._nodeid = nodeid
+-                else:
+-                    item._id = node_id.parse(nodeid)
++                self._group_names.append("_".join(sorted(gnames)))
+ 
+     @pytest.hookimpl
+     def pytest_collection_finish(self, session: pytest.Session) -> None:
+@@ -274,6 +271,7 @@ def pytest_collection_finish(self, session: pytest.Session) -> None:
+             "collectionfinish",
+             topdir=str(self.config.rootpath),
+             ids=[item.nodeid for item in session.items],
++            group_names=getattr(self, "_group_names", None),
+         )
+ 
+     @pytest.hookimpl
+diff --git a/src/xdist/scheduler/each.py b/src/xdist/scheduler/each.py
+index bf914519..bacb3e85 100644
+--- a/src/xdist/scheduler/each.py
++++ b/src/xdist/scheduler/each.py
+@@ -71,7 +71,10 @@ def add_node(self, node: WorkerController) -> None:
+         self.node2pending[node] = []
+ 
+     def add_node_collection(
+-        self, node: WorkerController, collection: Sequence[str]
++        self,
++        node: WorkerController,
++        collection: Sequence[str],
++        group_names: Sequence[str | None] | None = None,
+     ) -> None:
+         """Add the collected test items from a node.
+ 
+diff --git a/src/xdist/scheduler/load.py b/src/xdist/scheduler/load.py
+index 95094fd4..b33d647f 100644
+--- a/src/xdist/scheduler/load.py
++++ b/src/xdist/scheduler/load.py
+@@ -125,7 +125,10 @@ def add_node(self, node: WorkerController) -> None:
+         self.node2pending[node] = []
+ 
+     def add_node_collection(
+-        self, node: WorkerController, collection: Sequence[str]
++        self,
++        node: WorkerController,
++        collection: Sequence[str],
++        group_names: Sequence[str | None] | None = None,
+     ) -> None:
+         """Add the collected test items from a node.
+ 
+diff --git a/src/xdist/scheduler/loadgroup.py b/src/xdist/scheduler/loadgroup.py
+index 798c7128..2d75100a 100644
+--- a/src/xdist/scheduler/loadgroup.py
++++ b/src/xdist/scheduler/loadgroup.py
+@@ -1,5 +1,7 @@
+ from __future__ import annotations
+ 
++from collections.abc import Sequence
++
+ import pytest
+ 
+ from xdist.remote import Producer
+@@ -21,6 +23,20 @@ def __init__(self, config: pytest.Config, log: Producer | None = None) -> None:
+         else:
+             self.log = log.loadgroupsched
+ 
++    def add_node_collection(
++        self,
++        node: WorkerController,
++        collection: Sequence[str],
++        group_names: Sequence[str | None] | None = None,
++    ) -> None:
++        if group_names is not None:
++            assert len(collection) == len(group_names)
++            collection = [
++                f"{nodeid}@{group_name}" if group_name is not None else nodeid
++                for nodeid, group_name in zip(collection, group_names)
++            ]
++        super().add_node_collection(node, collection)
++
+     def _split_scope(self, nodeid: str) -> str:
+         """Determine the scope (grouping) of a nodeid.
+ 
+diff --git a/src/xdist/scheduler/loadscope.py b/src/xdist/scheduler/loadscope.py
+index 3ff14032..61ce5096 100644
+--- a/src/xdist/scheduler/loadscope.py
++++ b/src/xdist/scheduler/loadscope.py
+@@ -207,7 +207,10 @@ def remove_node(self, node: WorkerController) -> str | None:
+         return crashitem
+ 
+     def add_node_collection(
+-        self, node: WorkerController, collection: Sequence[str]
++        self,
++        node: WorkerController,
++        collection: Sequence[str],
++        group_names: Sequence[str | None] | None = None,
+     ) -> None:
+         """Add the collected test items from a node.
+ 
+diff --git a/src/xdist/scheduler/protocol.py b/src/xdist/scheduler/protocol.py
+index 2e9129c3..9158c5d4 100644
+--- a/src/xdist/scheduler/protocol.py
++++ b/src/xdist/scheduler/protocol.py
+@@ -25,6 +25,7 @@ def add_node_collection(
+         self,
+         node: WorkerController,
+         collection: Sequence[str],
++        group_names: Sequence[str | None] | None = None,
+     ) -> None: ...
+ 
+     def mark_test_complete(
+diff --git a/src/xdist/scheduler/worksteal.py b/src/xdist/scheduler/worksteal.py
+index 550372ee..92010fc3 100644
+--- a/src/xdist/scheduler/worksteal.py
++++ b/src/xdist/scheduler/worksteal.py
+@@ -134,7 +134,10 @@ def add_node(self, node: WorkerController) -> None:
+         self.node2pending[node] = []
+ 
+     def add_node_collection(
+-        self, node: WorkerController, collection: Sequence[str]
++        self,
++        node: WorkerController,
++        collection: Sequence[str],
++        group_names: Sequence[str | None] | None = None,
+     ) -> None:
+         """Add the collected test items from a node.
+ 
+diff --git a/src/xdist/workermanage.py b/src/xdist/workermanage.py
+index c54b18fb..3761255d 100644
+--- a/src/xdist/workermanage.py
++++ b/src/xdist/workermanage.py
+@@ -439,7 +439,12 @@ def process_from_remote(
+                     rep.item_index = item_index
+                 self.notify_inproc(eventname, node=self, rep=rep)
+             elif eventname == "collectionfinish":
+-                self.notify_inproc(eventname, node=self, ids=kwargs["ids"])
++                self.notify_inproc(
++                    eventname,
++                    node=self,
++                    ids=kwargs["ids"],
++                    group_names=kwargs.get("group_names"),
++                )
+             elif eventname == "runtest_protocol_complete":
+                 self.notify_inproc(eventname, node=self, **kwargs)
+             elif eventname == "unscheduled":
+diff --git a/testing/acceptance_test.py b/testing/acceptance_test.py
+index 4bd7039e..0e53d192 100644
+--- a/testing/acceptance_test.py
++++ b/testing/acceptance_test.py
+@@ -1572,8 +1572,7 @@ def test_1():
+         # get test names
+         a_1 = next(t[2] for t in res if "test_a.py::test_1" in t[2])
+         b_1 = next(t[2] for t in res if "test_b.py::test_1" in t[2])
+-        # check groups
+-        assert a_1.split("@")[1] == b_1.split("@")[1] == "group1_group2"
++        assert a_1[0] == b_1[0]
+ 
+     def test_multiple_group_order(self, pytester: pytest.Pytester) -> None:
+         test_file = """
+@@ -1594,8 +1593,7 @@ def test_1():
+         # get test names
+         a_1 = next(t[2] for t in res if "test_a.py::test_1" in t[2])
+         b_1 = next(t[2] for t in res if "test_b.py::test_1" in t[2])
+-        # check groups, order should be sorted
+-        assert a_1.split("@")[1] == b_1.split("@")[1] == "a_aa_b_c_c2_d"
++        assert a_1[0] == b_1[0]
+ 
+ 
+ class TestLocking:
+diff --git a/testing/test_remote.py b/testing/test_remote.py
+index 762c5734..3d21891c 100644
+--- a/testing/test_remote.py
++++ b/testing/test_remote.py
+@@ -47,11 +47,11 @@ def __init__(
+         self.use_callback = False
+         self.events = Queue()  # type: ignore[var-annotated]
+ 
+-    def setup(self) -> None:
++    def setup(self, *args: str) -> None:
+         self.pytester.chdir()
+         # import os ; os.environ['EXECNET_DEBUG'] = "2"
+         self.gateway = execnet.makegateway("execmodel=main_thread_only//popen")
+-        self.config = config = self.pytester.parseconfigure()
++        self.config = config = self.pytester.parseconfigure(*args)
+         putevent = self.events.put if self.use_callback else None
+ 
+         class DummyMananger:
+@@ -168,6 +168,30 @@ def test_func():
+         ev = worker.popevent("workerfinished")
+         assert "workeroutput" in ev.kwargs
+ 
++    def test_loadgroup_collects_group_names_separately(
++        self, worker: WorkerSetup
++    ) -> None:
++        worker.pytester.makepyfile(
++            """
++            import pytest
++
++            @pytest.mark.xdist_group("group")
++            def test_grouped():
++                pass
++
++            def test_ungrouped():
++                pass
++            """
++        )
++        worker.setup("--dist=loadgroup")
++        ev = worker.popevent("collectionfinish")
++
++        assert ev.kwargs["ids"] == [
++            "test_loadgroup_collects_group_names_separately.py::test_grouped",
++            "test_loadgroup_collects_group_names_separately.py::test_ungrouped",
++        ]
++        assert ev.kwargs["group_names"] == ["group", None]
++
+     def test_remote_collect_skip(
+         self, worker: WorkerSetup, unserialize_report: UnserializerReport
+     ) -> None:
+
+From a1a13c7494bcccb5fee7c6bfd74524b59cb479f8 Mon Sep 17 00:00:00 2001
+From: itscloud0 <cloud0beats@gmail.com>
+Date: Thu, 24 Sep 2026 08:08:26 +0400
+Subject: [PATCH 3/3] Fix loadgroup type import
+
+---
+ src/xdist/scheduler/loadgroup.py | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/xdist/scheduler/loadgroup.py b/src/xdist/scheduler/loadgroup.py
+index 2d75100a..0ab3ef42 100644
+--- a/src/xdist/scheduler/loadgroup.py
++++ b/src/xdist/scheduler/loadgroup.py
+@@ -5,6 +5,7 @@
+ import pytest
+ 
+ from xdist.remote import Producer
++from xdist.workermanage import WorkerController
+ 
+ from .loadscope import LoadScopeScheduling
+ 

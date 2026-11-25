@@ -1,0 +1,8 @@
+--- a/DistUtilsExtra/command/build_extra.py
++++ b/DistUtilsExtra/command/build_extra.py
+@@ -53,3 +53,5 @@
+         self.sub_commands.insert(
+             0, ("build_kdeui", has_kdeui)
+         )  # need to run before build_py
++
++build = build_extra

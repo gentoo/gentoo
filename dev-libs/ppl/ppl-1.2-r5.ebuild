@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,8 +6,8 @@ EAPI=8
 inherit autotools flag-o-matic
 
 DESCRIPTION="The Parma Polyhedra Library for numerical analysis of complex systems"
-HOMEPAGE="http://bugseng.com/products/ppl"
-SRC_URI="http://bugseng.com/products/ppl/download/ftp/releases/${PV}/${P}.tar.xz
+HOMEPAGE="https://bugseng.com/ppl"
+SRC_URI="https://support.bugseng.com/ppl/download/ftp/releases/${PV}/${P}.tar.xz
 	https://dev.gentoo.org/~juippis/distfiles/tmp/${P}-r3-disable-boeing-tests.patch"
 
 LICENSE="GPL-3"

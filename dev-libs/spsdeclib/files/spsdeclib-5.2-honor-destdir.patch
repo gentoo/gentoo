@@ -1,0 +1,28 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -195,12 +195,19 @@
+ 
+ if(NOT ANDROID AND UNIX AND NOT APPLE)
+     # Backwards-compatible lowercase .so symlink.
+-    install(CODE [[
+-        execute_process(
+-            COMMAND "${CMAKE_COMMAND}" -E create_symlink libCAPSImage.so libcapsimage.so
+-            WORKING_DIRECTORY "${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR}"
+-        )
+-    ]] COMPONENT Runtime)
++    add_custom_command(TARGET CAPSImage POST_BUILD
++        COMMAND ${CMAKE_COMMAND} -E create_symlink
++        libCAPSImage.so
++        libcapsimage.so
++        BYPRODUCTS libcapsimage.so
++        WORKING_DIRECTORY $<TARGET_FILE_DIR:CAPSImage>
++    )
++
++    install(FILES
++        $<TARGET_FILE_DIR:CAPSImage>/libcapsimage.so
++        DESTINATION ${CMAKE_INSTALL_LIBDIR}
++        COMPONENT Runtime
++    )
+ endif()
+ 
+ # -----------------------------------------------------------------------------

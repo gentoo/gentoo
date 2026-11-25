@@ -1,0 +1,19 @@
+Proton uses a newer mono version but hasn't updated it here yet.
+--- a/dlls/appwiz.cpl/addons.c
++++ b/dlls/appwiz.cpl/addons.c
+@@ -58,6 +58,6 @@
+ 
+-#define MONO_VERSION "10.4.1"
++#define MONO_VERSION "11.3.0"
+ #if defined(__i386__) || defined(__x86_64__)
+ #define MONO_ARCH "x86"
+-#define MONO_SHA "071f4b2887e1c97a11d791ff3d65be9429eed6dec4c2708888bfd546ba358e23"
++#define MONO_SHA "df2dfc1665c2511882e7cabd56eafd0c0a3d94e5a7e86f969277f6c189d418d3"
+ #else
+--- a/dlls/mscoree/mscoree_private.h
++++ b/dlls/mscoree/mscoree_private.h
+@@ -47,3 +47,3 @@
+ 
+-#define WINE_MONO_VERSION "10.4.1"
++#define WINE_MONO_VERSION "11.3.0"
+ 

@@ -1,0 +1,16 @@
+# Drop use of gRPCConfig.cmake for detection and fall back to pkgcfg use.
+# gRPCConfig.cmake uses find_dependency(Protobuf CONFIG) which fails for 
+# >=dev-libs/protobuf-31.1
+diff --git a/cmake/Modules/FindgRPC.cmake b/cmake/Modules/FindgRPC.cmake
+index e7180e0..dfdd8bb 100644
+--- a/cmake/Modules/FindgRPC.cmake
++++ b/cmake/Modules/FindgRPC.cmake
+@@ -16,7 +16,7 @@
+ 
+ # Step 1: Try cmake CONFIG mode (preferred).
+ # This works on Windows/vcpkg, Ubuntu 24.04+, and Fedora 38+.
+-find_package(gRPC CONFIG QUIET)
++#find_package(gRPC CONFIG QUIET)
+ 
+ if(gRPC_FOUND)
+     if(TARGET gRPC::grpc++)

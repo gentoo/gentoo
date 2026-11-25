@@ -1,5 +1,12 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Eli Schwartz <eschwartz@gentoo.org> (2026-10-29)
+# Need systemd enabled here for depgraph (otherwise uses basu).
+gui-libs/xdg-desktop-portal-wlr systemd
+gui-apps/mako systemd
+gui-wm/sway systemd
+dev-libs/libei systemd
 
 # Sam James <sam@gentoo.org> (2022-01-03)
 # Need systemd enabled here for depgraph: bug #830485

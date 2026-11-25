@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,12 +13,13 @@ SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-grep-3.8
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~arm ~mips ppc x86"
-IUSE=""
+IUSE="selinux"
 
 RDEPEND="
 	app-shells/bash
 	dev-lang/perl
 	sys-process/lsof[rpc]
+	selinux? ( sec-policy/selinux-rkhunter )
 "
 
 S="${WORKDIR}/${P}/files"

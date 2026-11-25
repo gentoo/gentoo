@@ -13,8 +13,8 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/emersion/${PN}.git"
 else
 	inherit verify-sig
-	SRC_URI="https://github.com/emersion/${PN}/releases/download/v${PV}/${P}.tar.gz -> ${P}.gh.tar.gz
-		https://github.com/emersion/${PN}/releases/download/v${PV}/${P}.tar.gz.sig -> ${P}.gh.tar.gz.sig"
+	SRC_URI="https://github.com/emersion/${PN}/releases/download/v${PV}/${P}.tar.gz
+		https://github.com/emersion/${PN}/releases/download/v${PV}/${P}.tar.gz.sig"
 	KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 fi
 
@@ -24,20 +24,15 @@ IUSE="elogind +icons systemd"
 
 RDEPEND="
 	dev-libs/wayland
+	sys-apps/dbus
 	x11-libs/pango
 	x11-libs/cairo
-	|| (
-		systemd? ( sys-apps/systemd )
-		elogind? ( sys-auth/elogind )
-		sys-libs/basu
-	)
-	sys-apps/dbus
-	icons? (
-		x11-libs/gdk-pixbuf
-	)
+	systemd? ( sys-apps/systemd )
+	elogind? ( sys-auth/elogind )
+	!systemd? ( !elogind? ( sys-libs/basu ) )
+	icons? ( x11-libs/gdk-pixbuf:2 )
 "
-DEPEND="
-	${RDEPEND}
+DEPEND="${RDEPEND}
 	>=dev-libs/wayland-protocols-1.32
 "
 BDEPEND="
@@ -74,4 +69,7 @@ src_install() {
 	meson_src_install
 
 	systemd_douserunit contrib/systemd/mako.service
+
+	exeinto /etc/user/init.d
+	newexe contrib/openrc-user.init mako
 }

@@ -1,0 +1,21 @@
+[Unit]
+Description=Prometheus exporter for MySQL server metrics
+Documentation=https://github.com/prometheus/mysqld_exporter
+Wants=network-online.target
+After=network-online.target mysqld.service mariadb.service
+
+[Service]
+User=mysqld_exporter
+Group=mysqld_exporter
+WorkingDirectory=/var/lib/mysqld_exporter
+Restart=on-failure
+ExecStart=/usr/bin/mysqld_exporter --config.my-cnf=/var/lib/mysqld_exporter/.my.cnf
+
+NoNewPrivileges=true
+ProtectSystem=full
+ProtectHome=true
+PrivateTmp=true
+PrivateDevices=true
+
+[Install]
+WantedBy=multi-user.target

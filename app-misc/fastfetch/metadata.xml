@@ -13,6 +13,7 @@
 </upstream>
 <use>
 	<flag name="chafa">Enables text/graphics renderer with <pkg>media-gfx/chafa</pkg></flag>
+	<flag name="efl">Enables Enlightenment support using <pkg>dev-libs/efl</pkg></flag>
 	<flag name="ddcutil">Use <pkg>app-misc/ddcutil</pkg> to query monitor settings</flag>
 	<flag name="drm">Enables support for X.org's <pkg>x11-libs/libdrm</pkg></flag>
 	<flag name="elf">Use libelf to extract strings from binaries</flag>

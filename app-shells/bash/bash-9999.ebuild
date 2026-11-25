@@ -104,6 +104,9 @@ QA_CONFIGURE_OPTIONS="--disable-static"
 PATCHES=(
 	#"${WORKDIR}"/${PN}-${GENTOO_PATCH_VER}/
 
+	# bug #971782
+	"${FILESDIR}"/${PN}-5.3_p9-general-workaround-aliasing-violation-in-REVERSE_LIS.patch
+
 	# Patches to or from Chet, posted to the bug-bash mailing list.
 	"${FILESDIR}/${PN}-5.0-syslog-history-extern.patch"
 )
@@ -178,6 +181,7 @@ src_configure() {
 	unset -v YACC
 
 	if tc-is-cross-compiler; then
+		export CC_FOR_BUILD="$(tc-getBUILD_CC)"
 		# https://lists.gnu.org/archive/html/bug-bash/2025-05/msg00029.html
 		export CFLAGS_FOR_BUILD="${BUILD_CFLAGS} -std=gnu17"
 

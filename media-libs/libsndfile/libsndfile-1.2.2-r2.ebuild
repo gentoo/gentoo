@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -45,6 +45,9 @@ fi
 
 src_prepare() {
 	default
+
+	# https://github.com/libsndfile/libsndfile/issues/1107 (bug #946672)
+	sed -i -e '/lossy_comp_test.*ogg_opus/d' tests/test_wrapper.sh.in || die
 
 	[[ ${PV} == *9999 ]] && eautoreconf
 }

@@ -1,7 +1,7 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 LUA_COMPAT=( lua5-{1..3} )
 inherit lua-single
@@ -51,5 +51,8 @@ src_install() {
 	dodir /opt/hermes
 	cp -r "${S}"/. "${ED}"/opt/hermes/ || die
 
-	doenvd "${FILESDIR}"/99hermes
+	newenvd - 99hermes <<- _EOF_
+		PATH="${EPREFIX}/opt/hermes/bin"
+	_EOF_
+
 }

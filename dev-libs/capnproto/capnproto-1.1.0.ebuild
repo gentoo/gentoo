@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,7 +7,7 @@ inherit cmake flag-o-matic
 
 DESCRIPTION="RPC/Serialization system with capabilities support"
 HOMEPAGE="https://capnproto.org"
-SRC_URI="https://github.com/sandstorm-io/capnproto/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/capnproto/capnproto/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}"/${P}/c++
 
 LICENSE="MIT"

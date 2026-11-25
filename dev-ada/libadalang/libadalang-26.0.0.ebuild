@@ -1,9 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{12..13} )
+PYTHON_COMPAT=( python3_{13..14} )
 ADA_COMPAT=( gcc_{14..16} )
 
 inherit ada python-single-r1 multiprocessing
@@ -36,8 +36,8 @@ BDEPEND="
 			dev-python/sphinx[${PYTHON_USEDEP}]
 			dev-python/sphinx-rtd-theme[${PYTHON_USEDEP}]
 		)
-	')
-	test? ( dev-ada/e3-testsuite )"
+		test? ( dev-ada/e3-testsuite[${PYTHON_USEDEP}] )
+	')"
 
 pkg_setup() {
 	python-single-r1_pkg_setup
@@ -63,7 +63,7 @@ src_compile() {
 	use static-libs && libType+=",static"
 	use static-pic  && libType+=",static-pic"
 	${EPYTHON} -m langkit.scripts.lkm build -v debug \
-		--library-types ${libType} --jobs $(makeopts_jobs) \
+		--library-types ${libType} --jobs $(get_makeopts_jobs) \
 		--disable-java \
 		|| die
 	if use doc; then

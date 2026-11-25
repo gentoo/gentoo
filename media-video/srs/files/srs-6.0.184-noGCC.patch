@@ -1,0 +1,80 @@
+--- a/auto/depends.sh	2026-05-28 09:53:44.956682763 +0200
++++ b/auto/depends.sh	2026-05-28 09:54:48.638104360 +0200
+@@ -61,30 +61,6 @@
+     fi
+     exit $ret;
+ fi
+-gcc --version >/dev/null 2>/dev/null; ret=$?; if [[ 0 -ne $ret ]]; then
+-    if [[ $OS_IS_CENTOS == YES ]]; then
+-        echo "Please install gcc by:"
+-        echo "  yum install -y gcc"
+-    elif [[ $OS_IS_UBUNTU == YES ]]; then
+-        echo "Please install gcc by:"
+-        echo "  apt install -y gcc"
+-    else
+-        echo "Please install gcc"
+-    fi
+-    exit $ret;
+-fi
+-g++ --version >/dev/null 2>/dev/null; ret=$?; if [[ 0 -ne $ret ]]; then
+-    if [[ $OS_IS_CENTOS == YES ]]; then
+-        echo "Please install g++ by:"
+-        echo "  yum install -y gcc-c++"
+-    elif [[ $OS_IS_UBUNTU == YES ]]; then
+-        echo "Please install g++ by:"
+-        echo "  apt install -y g++"
+-    else
+-        echo "Please install gcc-c++"
+-    fi
+-    exit $ret;
+-fi
+ make --version >/dev/null 2>/dev/null; ret=$?; if [[ 0 -ne $ret ]]; then
+     if [[ $OS_IS_CENTOS == YES ]]; then
+         echo "Please install make by:"
+@@ -143,18 +119,6 @@
+ fi
+ # Check tclsh, which is depended by SRT.
+ if [[ $SRS_SRT == YES ]]; then
+-    tclsh <<< "exit" >/dev/null 2>&1; ret=$?; if [[ 0 -ne $ret ]]; then
+-        if [[ $OS_IS_CENTOS == YES ]]; then
+-            echo "Please install tclsh by:"
+-            echo "  yum install -y tcl"
+-        elif [[ $OS_IS_UBUNTU == YES ]]; then
+-            echo "Please install tclsh by:"
+-            echo "  apt install -y tclsh"
+-        else
+-            echo "Please install tclsh"
+-        fi
+-        exit $ret;
+-    fi
+     cmake --version >/dev/null 2>/dev/null; ret=$?; if [[ 0 -ne $ret ]]; then
+         if [[ $OS_IS_CENTOS == YES ]]; then
+             echo "Please install cmake by:"
+--- a/auto/options.sh	2026-05-30 22:03:43.674352125 +0200
++++ b/auto/options.sh	2026-05-30 22:04:17.641002121 +0200
+@@ -162,7 +162,6 @@
+         echo "Warning: Your OS is not Ubuntu(no apt-get), CentOS(no yum), maxOS(not Darwin), Windows(not CYGWIN)"
+     fi
+ }
+-apply_system_options
+ 
+ #####################################################################################
+ # Show help menu.
+--- a/auto/setup_variables.sh	2026-05-30 22:04:45.460715450 +0200
++++ b/auto/setup_variables.sh	2026-05-30 22:26:06.381516409 +0200
+@@ -6,7 +6,6 @@
+ OS_PREFIX="Platform"
+ 
+ # Detect gcc, which is required.
+-gcc --version >/dev/null 2>/dev/null || (ret=$?; echo "Please install gcc"; exit $ret)
+ 
+ # Discover SRS version from header file.
+ mkdir -p ${SRS_OBJS} &&
+@@ -19,7 +18,6 @@
+ gcc -g -O0 ${SRS_OBJS}/test_version.c -I${SRS_WORKDIR}/src/core -o ${SRS_OBJS}/test_version 1>/dev/null 2>&1 &&
+ SRS_VERSION=$(./${SRS_OBJS}/test_version 2>/dev/null) &&
+ SRS_MAJOR=$(echo $SRS_VERSION |awk -F . '{print $1}');
+-ret=$?; rm -rf ${SRS_OBJS}/test_version*; if [[ $ret -ne 0 ]]; then echo "Detect SRS version failed"; exit $ret; fi
+ echo "Discover SRS version=${SRS_VERSION}, major=${SRS_MAJOR}"
+ 
+ if [[ $OSTYPE == cygwin ]]; then

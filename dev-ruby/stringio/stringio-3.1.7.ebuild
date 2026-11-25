@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -10,7 +10,7 @@ RUBY_FAKEGEM_GEMSPEC="stringio.gemspec"
 
 inherit ruby-fakegem
 
-DESCRIPTION="Pseudo IO class from/to String."
+DESCRIPTION="Pseudo IO class from/to String"
 HOMEPAGE="https://github.com/ruby/stringio"
 SRC_URI="https://github.com/ruby/stringio/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 

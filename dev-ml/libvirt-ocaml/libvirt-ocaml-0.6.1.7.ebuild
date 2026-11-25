@@ -1,7 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+
+inherit dot-a
 
 DESCRIPTION="OCaml language binding for libvirt native C API"
 HOMEPAGE="https://ocaml.libvirt.org/"
@@ -18,3 +20,14 @@ DEPEND="app-emulation/libvirt
 BDEPEND="dev-lang/perl
 	 dev-ml/findlib[ocamlopt]
 	 virtual/pkgconfig"
+
+src_configure() {
+	lto-guarantee-fat
+	default
+}
+
+src_install() {
+	# ocaml always installs a static lib even without USE=static-libs
+	strip-lto-bytecode "${ED}"
+	default
+}

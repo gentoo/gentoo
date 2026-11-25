@@ -6,7 +6,7 @@ EAPI=8
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
 PYPI_PN=netCDF4
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 
 inherit distutils-r1 optfeature pypi
 
@@ -19,7 +19,7 @@ HOMEPAGE="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 arm64 ~x86"
 IUSE="blosc bzip2 mpi test szip zstd"
 RESTRICT="!test? ( test )"
 
@@ -43,10 +43,13 @@ BDEPEND="
 	)
 "
 
+EPYTEST_PLUGINS=()
+EPYTEST_XDIST=1
+distutils_enable_tests pytest
+
 python_test() {
 	local -x NO_NET=1
-	cd test || die
-	"${EPYTHON}" run_all.py || die
+	epytest test
 }
 
 pkg_postinst() {

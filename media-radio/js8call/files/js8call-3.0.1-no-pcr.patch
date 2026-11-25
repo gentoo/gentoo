@@ -1,0 +1,13 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index fa3b7c5..8bd1dcc 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -230,6 +230,8 @@ configure_file(
+   "${CMAKE_CURRENT_BINARY_DIR}/js8call_config.h"
+ )
+ 
++add_definitions(-include ${CMAKE_CURRENT_BINARY_DIR}/js8call_config.h)
++
+ target_precompile_headers(
+   ${TARGET} PRIVATE
+   ${CMAKE_CURRENT_BINARY_DIR}/js8call_config.h

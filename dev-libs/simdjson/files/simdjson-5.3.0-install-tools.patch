@@ -1,0 +1,46 @@
+diff --git a/tests/dom/CMakeLists.txt b/tests/dom/CMakeLists.txt
+index 55781ebf8..58c58940c 100644
+--- a/tests/dom/CMakeLists.txt
++++ b/tests/dom/CMakeLists.txt
+@@ -78,14 +78,14 @@ if (BASH AND (NOT WIN32) AND SIMDJSON_BASH AND (TARGET json2json)) # The scripts
+   # jsonpointer tool test: check that jsonpointer resolves a JSON Pointer in
+   # twitter.json, and that it fails cleanly on a file it cannot load
+   #
+-  add_test(NAME jsonpointer COMMAND $<TARGET_FILE:jsonpointer> ${EXAMPLE_JSON} /statuses/0/id)
+-  set_tests_properties(jsonpointer PROPERTIES PASS_REGULAR_EXPRESSION "\"value\":505874924095815681")
+-  set_property(TEST jsonpointer APPEND PROPERTY LABELS acceptance per_implementation)
+-  add_test(NAME jsonpointer_missing_file COMMAND $<TARGET_FILE:jsonpointer> ${EXAMPLE_JSON}.missing /statuses/0/id)
++  add_test(NAME simdjsonpointer COMMAND $<TARGET_FILE:simdjsonpointer> ${EXAMPLE_JSON} /statuses/0/id)
++  set_tests_properties(simdjsonpointer PROPERTIES PASS_REGULAR_EXPRESSION "\"value\":505874924095815681")
++  set_property(TEST simdjsonpointer APPEND PROPERTY LABELS acceptance per_implementation)
++  add_test(NAME jsonpointer_missing_file COMMAND $<TARGET_FILE:simdjsonpointer> ${EXAMPLE_JSON}.missing /statuses/0/id)
+   set_tests_properties(jsonpointer_missing_file PROPERTIES WILL_FAIL TRUE)
+   set_property(TEST jsonpointer_missing_file APPEND PROPERTY LABELS acceptance per_implementation)
+-  add_dependencies(acceptance_tests jsonpointer)
+-  add_dependencies(per_implementation_tests jsonpointer)
++  add_dependencies(acceptance_tests simdjsonpointer)
++  add_dependencies(per_implementation_tests simdjsonpointer)
+ 
+   #
+   # minify tool test: check that minify prints the minified document and
+diff --git a/tools/CMakeLists.txt b/tools/CMakeLists.txt
+index f3eaa0541..4eaff3d1d 100644
+--- a/tools/CMakeLists.txt
++++ b/tools/CMakeLists.txt
+@@ -1,12 +1,13 @@
+-if(TARGET cxxopts) # we only build the tools if cxxopts is available
++if(SIMDJSON_TOOLS)
+   message(STATUS "We have cxxopts as a dependency and we are building the tools (e.g., json2json).")
+-  foreach(tool IN ITEMS json2json jsonstats jsonpointer minify)
++  foreach(tool IN ITEMS json2json jsonstats simdjsonpointer minify)
+     add_executable("${tool}" "${tool}.cpp")
+     simdjson_apply_props("${tool}")
+     target_link_libraries(
+         "${tool}" PRIVATE
+-        simdjson simdjson-internal-flags simdjson-windows-headers cxxopts
++        simdjson simdjson-internal-flags simdjson-windows-headers
+     )
++    install(TARGETS "${tool}")
+   endforeach()
+ else()
+   message(STATUS "We are missing cxxopts as a dependency so the tools (e.g., json2json) are omitted.")

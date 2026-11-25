@@ -13,11 +13,13 @@ else
 	SRC_URI="https://github.com/Icinga/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 fi
 
-LICENSE="GPL-2"
+LICENSE="GPL-3+"
 SLOT="0"
 
 DEPEND=">=net-analyzer/icinga2-2.4.0
-	>=www-apps/icingaweb2-2.5.0"
+	>=dev-libs/icinga-php-library-0.19.0
+	>=dev-libs/icinga-php-thirdparty-0.15.0
+	>=www-apps/icingaweb2-2.12.5"
 RDEPEND="${DEPEND}"
 
 src_install() {

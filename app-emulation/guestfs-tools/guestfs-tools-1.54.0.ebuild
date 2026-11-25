@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,7 +18,7 @@ SRC_URI="https://download.libguestfs.org/${PN}/${MY_PV_1}-${SD}/${P}.tar.gz"
 LICENSE="GPL-2 LGPL-2"
 SLOT="0/${MY_PV_1}"
 if [[ ${SD} == "stable" ]] ; then
-	KEYWORDS=""
+	KEYWORDS="~amd64"
 fi
 IUSE="doc libvirt +ocaml +perl test"
 RESTRICT="!test? ( test )"
@@ -83,15 +83,13 @@ BDEPEND="
 	test? ( ocaml? ( dev-ml/ounit2[ocamlopt] ) )
 "
 
-src_prepare() {
-	cat <<EOF > "${S}/m4/guestfs-bash-completion.m4" || die
-dnl Unconditionally install Bash completion files
-AC_MSG_CHECKING([for bash-completions directory])
-AC_SUBST([BASH_COMPLETIONS_DIR],[$(get_bashcompdir)])
-AC_MSG_RESULT([\$BASH_COMPLETIONS_DIR])
-AM_CONDITIONAL([HAVE_BASH_COMPLETION],[/bin/true])
-EOF
+PATCHES=(
+	"${FILESDIR}/${PN}-1.54.0-guestfs-bash-completion.m4-more-control.patch"
+	"${FILESDIR}/${PN}-1.54.0-bash-Remove-vestigial-bash-completions.patch"
+	"${FILESDIR}/${PN}-1.52.3-common-libguestfs-1.58-compat.patch"
+)
 
+src_prepare() {
 	default
 	eautoreconf
 }
@@ -109,6 +107,8 @@ src_configure() {
 		$(use_enable ocaml)
 		$(use_enable perl)
 		$(use_with libvirt)
+		--with-bash-completion
+		--with-bash-completion-dir="$(get_bashcompdir)"
 	)
 
 	econf "${myconf[@]}"

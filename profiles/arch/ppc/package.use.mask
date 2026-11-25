@@ -1,6 +1,27 @@
 # Copyright 2023-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# David Seifert <soap@gentoo.org> (2026-09-07)
+# sci-libs/libaec is not keyworded here (bug #966099), and >=sci-libs/hdf5-2.2.0
+# requires it directly instead of via virtual/szip
+>=sci-libs/hdf5-2.2.0 szip
+
+# Nicolas PARLANT <nicolas.parlant@parhuet.fr> (2026-07-30)
+# dev-python/qtpy is not keyworded here
+media-libs/libffado gui
+
+# Rick Farina <zerochaos@gentoo.org> (2026-06-13)
+# net-wireless/rtl_433 and deps are not keyworded here
+net-wireless/kismet rtlsdr
+
+# Alexey Sokolov <alexey+gentoo@asokolov.org> (2026-06-04)
+# New versions of dev-cpp/cpp-httplib dropped support for 32 bits. Bug #973312
+dev-util/ccache http
+
+# Brett A C Sheffield <bacs@librecast.net> (2026-04-22)
+# virtual/pandoc is not keyworded here
+>=dev-libs/xmlsec-1.3.11 doc
+
 # Robin H. Johnson <robbat2@gentoo.org> (2026-03-22)
 # sys-block/vdo not keyworded here
 sys-fs/lvm2 vdo
@@ -12,13 +33,6 @@ app-office/texstudio qtermwidget
 # Jaco Kroon <jaco@uls.co.za> (2026-02-06)
 # Requires sys-auth/libyubikey
 net-dialup/freeradius yubikey
-
-# Eli Schwartz <eschwartz@gentoo.org> (2025-12-09)
-# libyuv is Google code, fails on "fringe" arches.
-# https://bugs.gentoo.org/959389
-media-libs/imlib2 y4m
-media-libs/libavif libyuv
-net-libs/pjproject libyuv
 
 # Alfred Wingate <parona@protonmail.com> (2025-11-15)
 # sci-libs/libaec is not keyworded here (bug #966099)
@@ -35,6 +49,10 @@ net-wireless/kismet mqtt
 # Cristian Othón Martínez Vera <cfuga@cfuga.mx> (2025-07-15)
 # Needs gui-apps/grim, which is not keyworded here
 x11-misc/xscreensaver wayland
+
+# Dawid Rogowicz <rogowiczdawid@naoha.org> (2026-07-16)
+# Needs dev-libs/plasma-wayland-protocols, which is not keyworded here
+app-i18n/fcitx wayland
 
 # NRK <nrk@disroot.org> (2025-05-18)
 # app-arch/plzip is not keyworded

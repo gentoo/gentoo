@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,13 +9,15 @@ DESCRIPTION="A fast JSON parser/generator for C++ with both SAX/DOM style API"
 HOMEPAGE="https://rapidjson.org/"
 
 if [[ ${PV} == *9999 ]] ; then
-	EGIT_REPO_URI="https://github.com/miloyip/rapidjson.git"
+	EGIT_REPO_URI="https://github.com/Tencent/rapidjson.git"
 	EGIT_SUBMODULES=()
 	inherit git-r3
 else
-	SRC_URI="https://github.com/miloyip/rapidjson/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
-	S="${WORKDIR}/rapidjson-${PV}"
+	# no up-to-date releases or tags
+	COMMIT="24b5e7a8b27f42fa16b96fc70aade9106cf7102f"
+	SRC_URI="https://github.com/Tencent/rapidjson/archive/${COMMIT}.tar.gz -> rapidjson-${PV}.tar.gz"
+	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+	S="${WORKDIR}/rapidjson-${COMMIT}"
 fi
 
 LICENSE="MIT"
@@ -30,7 +32,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.1.0-system_gtest.patch"
-	"${FILESDIR}/${PN}-1.1.1-valgrind_optional.patch"
+	"${FILESDIR}/${PN}-1.1.1-cmake4.patch"
 )
 
 src_prepare() {
@@ -53,7 +55,7 @@ src_configure() {
 		-DRAPIDJSON_BUILD_THIRDPARTY_GTEST=OFF
 	)
 	use test && mycmakeargs+=(
-		-DVALGRIND_EXECUTABLE=
+		-DVALGRIND_FOUND=
 	)
 	cmake_src_configure
 }

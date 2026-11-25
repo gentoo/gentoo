@@ -1,0 +1,39 @@
+https://bugs.gentoo.org/973136
+https://github.com/systemd/systemd/issues/41749
+https://github.com/systemd/systemd/pull/41756
+https://github.com/systemd/systemd/commit/1d78c2d327cbd4e738d0f1281a976a771f643517
+
+From 1d78c2d327cbd4e738d0f1281a976a771f643517 Mon Sep 17 00:00:00 2001
+From: Nandakumar Raghavan <naraghavan@microsoft.com>
+Date: Tue, 21 Apr 2026 13:14:17 +0000
+Subject: [PATCH] gpt-auto-generator: do not fail on missing libcryptsetup when
+ verity is not used
+
+add_veritysetup() is called unconditionally  from add_root_mount() and
+add_usr_mount() whenever in_initrd() is true, to generate units that
+only activate if verity devices appear. However, when compiled without
+libcryptsetup, this function returned a hard error, causing the entire
+generator to fail even when no verity protection is in use.
+
+Change the #else fallback to log a debug message and return 0, matching
+the pattern already used by add_root_cryptsetup().
+---
+ src/gpt-auto-generator/gpt-auto-generator.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/gpt-auto-generator/gpt-auto-generator.c b/src/gpt-auto-generator/gpt-auto-generator.c
+index 6716a8d1aaf7c..abbb955e5992e 100644
+--- a/src/gpt-auto-generator/gpt-auto-generator.c
++++ b/src/gpt-auto-generator/gpt-auto-generator.c
+@@ -295,8 +295,8 @@ static int add_veritysetup(
+ 
+         return 0;
+ #else
+-        return log_error_errno(SYNTHETIC_ERRNO(EOPNOTSUPP),
+-                               "Partition is Verity protected, but systemd-gpt-auto-generator was compiled without libcryptsetup support.");
++        log_warning("Compiled without libcryptsetup support, skipping verity setup for '%s'.", id);
++        return 0;
+ #endif
+ }
+ #endif
+

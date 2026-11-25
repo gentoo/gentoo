@@ -1,0 +1,22 @@
+From cea820b2257e93fea1e510d899ccca368ff36b0d Mon Sep 17 00:00:00 2001
+From: Alexander Puck Neuwirth <alexander@neuwirth-informatik.de>
+Date: Wed, 27 May 2026 09:08:38 +0200
+Subject: [PATCH] fix fortran module dependence in automake
+
+Closes: https://github.com/BL-highprecision/ARPREC/issues/4
+---
+ toolkit/Makefile.am | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/toolkit/Makefile.am b/toolkit/Makefile.am
+index 925835b..239aa08 100644
+--- a/toolkit/Makefile.am
++++ b/toolkit/Makefile.am
+@@ -21,5 +21,7 @@ nodist_EXTRA_mathtool_SOURCES = dummy.cpp
+ mathtool_LINK = $(CXXLINK)
+ 
+ toolkit: $(TOOLKIT)
++mathinit.$(OBJEXT): globdata.$(OBJEXT) # fortran mod needed first
++mathtool.$(OBJEXT) pslqsub.$(OBJEXT) quadsub.$(OBJEXT) rootsub.$(OBJEXT) zetapz.$(OBJEXT): globdata.$(OBJEXT) # fortran mod needed first
+ 
+ endif

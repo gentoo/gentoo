@@ -1,0 +1,32 @@
+See https://bugs.gentoo.org/836839 and https://github.com/lgi-devs/lgi/issues/353
+FP conversion in Lua 5.1/32bit cannot represent exactly large unsigned integers
+Skip tests w/ large unsigned if lua-5.1
+--- a/tests/gireg.lua
++++ b/tests/gireg.lua
+@@ -143,7 +150,10 @@ function gireg.type_uint32()
+    if not nativeIntegers then
+       checkv(R.test_uint32(1.1), 1, 'number')
+    end
+-   checkv(R.test_uint32(0xffffffff), 0xffffffff, 'number')
++   -- skip large unsigned on Lua 5.1
++   if not (_VERSION == "Lua 5.1" and not jit) then
++      checkv(R.test_uint32(0xffffffff), 0xffffffff, 'number')
++   end
+    check(not pcall(R.test_uint32, 0x100000000))
+    check(not pcall(R.test_uint32, -1))
+    check(not pcall(R.test_uint32))
+@@ -815,9 +823,12 @@ function gireg.enum()
+    check(R.test_enum_param(-1) == 'value3')
+ 
+    check(R.TestEnumUnsigned.VALUE1 == 1)
+-   check(R.TestEnumUnsigned.VALUE2 == 0x80000000)
+    check(R.TestEnumUnsigned[1] == 'VALUE1')
+-   check(R.TestEnumUnsigned[0x80000000] == 'VALUE2')
++   -- skip large unsigned enum on Lua 5.1
++   if not (_VERSION == "Lua 5.1" and not jit) then
++      check(R.TestEnumUnsigned.VALUE2 == 0x80000000)
++      check(R.TestEnumUnsigned[0x80000000] == 'VALUE2')
++   end
+    check(R.TestEnumUnsigned[-1] == -1)
+ end
+ 

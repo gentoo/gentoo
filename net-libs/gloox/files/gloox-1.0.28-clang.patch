@@ -1,0 +1,13 @@
+use NULL for context with zero context length for modern clang
+anyway, use_context is disabled (last param)
+--- a/src/tlsopensslclient.cpp
++++ b/src/tlsopensslclient.cpp
+@@ -51,7 +51,7 @@ namespace gloox
+     {
+       unsigned char buf[32];
+       const char* const label = "EXPORTER-Channel-Binding";
+-      SSL_export_keying_material( m_ssl, buf, 32, label, strlen( label ), { 0 }, 1, 0 );
++      SSL_export_keying_material( m_ssl, buf, 32, label, strlen( label ), NULL, 0, 0 );
+       return std::string( reinterpret_cast<char* const>( buf ), 32 );
+     }
+     else

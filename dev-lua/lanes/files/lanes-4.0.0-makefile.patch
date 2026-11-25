@@ -1,0 +1,21 @@
+--- a/Makefile
++++ b/Makefile
+@@ -277,7 +277,6 @@
+ 	mkdir -p $(LUA_LIBDIR) $(LUA_SHAREDIR)
+ 	install -m 644 $(_LANES_TARGET) $(LUA_LIBDIR)
+ 	cp -p src/lanes.lua $(LUA_SHAREDIR)
+-	install -m 644 $(_DUE_TARGET) $(LUA_LIBDIR)
+ 
+ uninstall:
+ 	rm $(LUA_LIBDIR)/lanes_core.$(_SO)
+--- a/src/Lanes.makefile
++++ b/src/Lanes.makefile
+@@ -29,7 +29,7 @@
+ # Note: Don't put $(LUA_LIBS) ahead of $^; MSYS will not like that (I think)
+ #
+ $(_TARGET): $(_OBJ)
+-	$(CC) $(LIBFLAG) $^ $(LIBS) $(LUA_LIBS) -o $@
++	$(CC) $(LDFLAGS) $(LIBFLAG) $^ $(LIBS) $(LUA_LIBS) -o $@
+ 
+ clean:
+ 	-rm -rf $(_TARGET) *.o *.map *.gch

@@ -1,0 +1,480 @@
+Add missing headers and declarations for GCC 16.
+
+Based on Nuitari netqmail-c14.patch (bug #885061).
+Bug: https://bugs.gentoo.org/944901
+
+--- a/bouncesaying.c
++++ b/bouncesaying.c
+@@ -1,3 +1,4 @@
++#include <unistd.h>
+ #include "fork.h"
+ #include "strerr.h"
+ #include "error.h"
+--- a/cdb_seek.c
++++ b/cdb_seek.c
+@@ -1,5 +1,6 @@
+ #include <sys/types.h>
+ #include <errno.h>
++#include <unistd.h>
+ #include "cdb.h"
+ 
+ #ifndef SEEK_SET
+--- a/cdbmss.h
++++ b/cdbmss.h
+@@ -13,4 +13,8 @@
+   int fd;
+ } ;
+ 
++extern int cdbmss_start();
++extern int cdbmss_add();
++extern int cdbmss_finish();
++
+ #endif
+--- a/chkshsgr.c
++++ b/chkshsgr.c
+@@ -1,7 +1,11 @@
++#include <unistd.h>
++#include <grp.h>
++#include <sys/types.h>
+ #include "exit.h"
++
+ void main()
+ {
+- short x[4];
++ gid_t x[4];
+ 
+  x[0] = x[1] = 0;
+  if (getgroups(1,x) == 0) if (setgroups(1,x) == -1) _exit(1);
+--- a/dnsmxip.c
++++ b/dnsmxip.c
+@@ -1,3 +1,4 @@
++#include <unistd.h>
+ #include "substdio.h"
+ #include "subfd.h"
+ #include "stralloc.h"
+--- a/except.c
++++ b/except.c
+@@ -1,3 +1,4 @@
++#include <unistd.h>
+ #include "fork.h"
+ #include "strerr.h"
+ #include "wait.h"
+--- a/fd_copy.c
++++ b/fd_copy.c
+@@ -1,4 +1,5 @@
+ #include <fcntl.h>
++#include <unistd.h>
+ #include "fd.h"
+ 
+ int fd_copy(to,from)
+--- a/fd_move.c
++++ b/fd_move.c
+@@ -1,4 +1,5 @@
+ #include "fd.h"
++#include <unistd.h>
+ 
+ int fd_move(to,from)
+ int to;
+--- a/hier.c
++++ b/hier.c
+@@ -3,6 +3,7 @@
+ #include "auto_uids.h"
+ #include "fmt.h"
+ #include "fifo.h"
++#include "install.h"
+ 
+ char buf[100 + FMT_ULONG];
+ 
+--- a/idedit.c
++++ b/idedit.c
+@@ -9,6 +9,7 @@
+ #include "open.h"
+ #include "seek.h"
+ #include "fork.h"
++#include "wait.h"
+ 
+ #define FATAL "idedit: fatal: "
+ #define WARNING "idedit: warning: "
+--- a/install-big.c
++++ b/install-big.c
+@@ -3,6 +3,7 @@
+ #include "auto_uids.h"
+ #include "fmt.h"
+ #include "fifo.h"
++#include "install.h"
+ 
+ char buf[100 + FMT_ULONG];
+ 
+--- a/install.c
++++ b/install.c
+@@ -1,9 +1,11 @@
++#include <sys/stat.h>
+ #include "substdio.h"
+ #include "strerr.h"
+ #include "error.h"
+ #include "open.h"
+ #include "readwrite.h"
+ #include "exit.h"
++#include "fifo.h"
+ 
+ extern void hier();
+ 
+--- a/install.h
++++ b/install.h
+@@ -0,0 +1,10 @@
++#ifndef INSTALL_H
++#define INSTALL_H
++
++extern void d();  /* create directory with specified permissions */
++extern void h();  /* create hierarchy root directory */
++extern void z();  /* create empty file of specified size */
++extern void p();  /* create named pipe (FIFO) */
++extern void c();  /* copy file with specified permissions */
++
++#endif
+--- a/ipme.c
++++ b/ipme.c
+@@ -8,6 +8,7 @@
+ #ifndef SIOCGIFCONF /* whatever works */
+ #include <sys/sockio.h>
+ #endif
++#include <unistd.h>
+ #include "hassalen.h"
+ #include "byte.h"
+ #include "ip.h"
+--- a/maildir.c
++++ b/maildir.c
+@@ -1,5 +1,6 @@
+ #include <sys/types.h>
+ #include <sys/stat.h>
++#include <unistd.h>
+ #include "prioq.h"
+ #include "env.h"
+ #include "stralloc.h"
+--- a/maildir2mbox.c
++++ b/maildir2mbox.c
+@@ -1,3 +1,5 @@
++#include <stdio.h>
++#include <sys/stat.h>
+ #include "readwrite.h"
+ #include "prioq.h"
+ #include "env.h"
+--- a/maildirmake.c
++++ b/maildirmake.c
+@@ -1,3 +1,5 @@
++#include <sys/stat.h>
++#include <unistd.h>
+ #include "strerr.h"
+ #include "exit.h"
+ 
+--- a/newfield.c
++++ b/newfield.c
+@@ -1,3 +1,4 @@
++#include <unistd.h>
+ #include "fmt.h"
+ #include "datetime.h"
+ #include "stralloc.h"
+--- a/predate.c
++++ b/predate.c
+@@ -10,6 +10,7 @@
+ #include "subfd.h"
+ #include "readwrite.h"
+ #include "exit.h"
++#include "sig.h"
+ 
+ #define FATAL "predate: fatal: "
+ 
+--- a/prot.c
++++ b/prot.c
+@@ -1,5 +1,7 @@
+ #include "hasshsgr.h"
+ #include "prot.h"
++#include <unistd.h>
++#include <grp.h>
+ 
+ /* XXX: there are more portability problems here waiting to leap out at me */
+ 
+--- a/qmail-inject.c
++++ b/qmail-inject.c
+@@ -1,3 +1,4 @@
++#include <unistd.h>
+ #include "sig.h"
+ #include "substdio.h"
+ #include "stralloc.h"
+--- a/qmail-lspawn.c
++++ b/qmail-lspawn.c
+@@ -1,3 +1,4 @@
++#include <unistd.h>
+ #include "fd.h"
+ #include "wait.h"
+ #include "prot.h"
+@@ -13,6 +14,8 @@
+ #include "auto_qmail.h"
+ #include "auto_uids.h"
+ #include "qlx.h"
++#include "open.h"
++#include "byte.h"
+ 
+ char *aliasempty;
+ 
+--- a/qmail-newmrh.c
++++ b/qmail-newmrh.c
+@@ -1,3 +1,5 @@
++#include <stdio.h>
++#include <sys/stat.h>
+ #include "strerr.h"
+ #include "stralloc.h"
+ #include "substdio.h"
+@@ -7,6 +9,7 @@
+ #include "open.h"
+ #include "auto_qmail.h"
+ #include "cdbmss.h"
++#include "case.h"
+ 
+ #define FATAL "qmail-newmrh: fatal: "
+ 
+--- a/qmail-newu.c
++++ b/qmail-newu.c
+@@ -1,3 +1,5 @@
++#include <sys/stat.h>
++#include <stdio.h>
+ #include "stralloc.h"
+ #include "subfd.h"
+ #include "getln.h"
+@@ -9,6 +11,7 @@
+ #include "error.h"
+ #include "case.h"
+ #include "auto_qmail.h"
++#include "byte.h"
+ 
+ void die_temp() { _exit(111); }
+ 
+--- a/qmail-pw2u.c
++++ b/qmail-pw2u.c
+@@ -17,6 +17,7 @@
+ #include "auto_break.h"
+ #include "auto_qmail.h"
+ #include "auto_usera.h"
++#include "byte.h"
+ 
+ void die_chdir()
+ {
+--- a/qmail-qmqpc.c
++++ b/qmail-qmqpc.c
+@@ -135,7 +135,7 @@
+ 
+ stralloc servers = {0};
+ 
+-main()
++int main(void)
+ {
+   int i;
+   int j;
+--- a/qmail-qmqpd.c
++++ b/qmail-qmqpd.c
+@@ -8,6 +8,8 @@
+ #include "now.h"
+ #include "fmt.h"
+ #include "env.h"
++#include "byte.h"
++#include "str.h"
+ 
+ void resources() { _exit(111); }
+ 
+@@ -105,7 +107,7 @@
+ 
+ int flagok = 1;
+ 
+-main()
++int main(void)
+ {
+   char *result;
+   unsigned long qp;
+--- a/qmail-qmtpd.c
++++ b/qmail-qmtpd.c
+@@ -12,6 +12,7 @@
+ #include "readwrite.h"
+ #include "control.h"
+ #include "received.h"
++#include "scan.h"
+ 
+ void badproto() { _exit(100); }
+ void resources() { _exit(111); }
+@@ -75,7 +76,7 @@
+ char *relayclient;
+ int relayclientlen;
+ 
+-main()
++int main(void)
+ {
+   char ch;
+   int i;
+--- a/qmail-rspawn.c
++++ b/qmail-rspawn.c
+@@ -1,3 +1,4 @@
++#include <unistd.h>
+ #include "fd.h"
+ #include "wait.h"
+ #include "substdio.h"
+--- a/qmail-send.c
++++ b/qmail-send.c
+@@ -1,5 +1,6 @@
+ #include <sys/types.h>
+ #include <sys/stat.h>
++#include <utime.h>
+ #include "readwrite.h"
+ #include "sig.h"
+ #include "direntry.h"
+@@ -452,15 +453,15 @@
+ {
+  int c;
+  struct prioq_elt pe;
+- time_t ut[2]; /* XXX: more portable than utimbuf, but still worrisome */
++ struct utimbuf ut;
+ 
+  for (c = 0;c < CHANNELS;++c)
+    while (prioq_min(&pqchan[c],&pe))
+     {
+      prioq_delmin(&pqchan[c]);
+      fnmake_chanaddr(pe.id,c);
+-     ut[0] = ut[1] = pe.dt;
+-     if (utime(fn.s,ut) == -1)
++     ut.actime = ut.modtime = pe.dt;
++     if (utime(fn.s,&ut) == -1)
+        log3("warning: unable to utime ",fn.s,"; message will be retried too soon\n");
+     }
+ }
+--- a/qmail-showctl.c
++++ b/qmail-showctl.c
+@@ -1,5 +1,6 @@
+ #include <sys/types.h>
+ #include <sys/stat.h>
++#include <unistd.h>
+ #include "substdio.h"
+ #include "subfd.h"
+ #include "exit.h"
+--- a/qmail-start.c
++++ b/qmail-start.c
+@@ -1,3 +1,5 @@
++#include <unistd.h>
++#include <sys/stat.h>
+ #include "fd.h"
+ #include "prot.h"
+ #include "exit.h"
+--- a/qmail-tcpto.c
++++ b/qmail-tcpto.c
+@@ -1,3 +1,4 @@
++#include <unistd.h>
+ /* XXX: this program knows quite a bit about tcpto's internals */
+ 
+ #include "substdio.h"
+@@ -10,6 +11,8 @@
+ #include "exit.h"
+ #include "datetime.h"
+ #include "now.h"
++#include "byte.h"
++#include "open.h"
+ 
+ void die(n) int n; { substdio_flush(subfdout); _exit(n); }
+ 
+--- a/rcpthosts.c
++++ b/rcpthosts.c
+@@ -6,6 +6,7 @@
+ #include "constmap.h"
+ #include "stralloc.h"
+ #include "rcpthosts.h"
++#include "case.h"
+ 
+ static int flagrh = 0;
+ static stralloc rh = {0};
+--- a/remoteinfo.c
++++ b/remoteinfo.c
+@@ -2,6 +2,7 @@
+ #include <sys/socket.h>
+ #include <netinet/in.h>
+ #include <fcntl.h>
++#include <unistd.h>
+ #include "byte.h"
+ #include "substdio.h"
+ #include "ip.h"
+--- a/scan.h
++++ b/scan.h
+@@ -23,5 +23,6 @@
+ extern unsigned int scan_memcmp();
+ 
+ extern unsigned int scan_long();
++extern unsigned int scan_8long();
+ 
+ #endif
+--- a/seek_cur.c
++++ b/seek_cur.c
+@@ -1,4 +1,5 @@
+ #include <sys/types.h>
++#include <unistd.h>
+ #include "seek.h"
+ 
+ #define CUR 1 /* sigh */
+--- a/seek_end.c
++++ b/seek_end.c
+@@ -1,4 +1,5 @@
+ #include <sys/types.h>
++#include <unistd.h>
+ #include "seek.h"
+ 
+ #define END 2 /* sigh */
+--- a/seek_set.c
++++ b/seek_set.c
+@@ -1,4 +1,5 @@
+ #include <sys/types.h>
++#include <unistd.h>
+ #include "seek.h"
+ 
+ #define SET 0 /* sigh */
+--- a/seek_trunc.c
++++ b/seek_trunc.c
+@@ -1,4 +1,5 @@
+ #include <sys/types.h>
++#include <unistd.h>
+ #include "seek.h"
+ 
+ int seek_trunc(fd,pos) int fd; seek_pos pos;
+--- a/sendmail.c
++++ b/sendmail.c
+@@ -1,3 +1,4 @@
++#include <unistd.h>
+ #include "sgetopt.h"
+ #include "substdio.h"
+ #include "subfd.h"
+--- a/spawn.c
++++ b/spawn.c
+@@ -1,5 +1,6 @@
+ #include <sys/types.h>
+ #include <sys/stat.h>
++#include <unistd.h>
+ #include "sig.h"
+ #include "wait.h"
+ #include "substdio.h"
+--- a/tcp-env.c
++++ b/tcp-env.c
+@@ -2,6 +2,7 @@
+ #include <sys/socket.h>
+ #include <sys/param.h>
+ #include <netinet/in.h>
++#include <unistd.h>
+ #include "sig.h"
+ #include "stralloc.h"
+ #include "str.h"
+--- a/trigger.c
++++ b/trigger.c
+@@ -1,3 +1,4 @@
++#include <unistd.h>
+ #include "select.h"
+ #include "open.h"
+ #include "trigger.h"
+--- a/triggerpull.c
++++ b/triggerpull.c
+@@ -1,3 +1,4 @@
++#include <unistd.h>
+ #include "ndelay.h"
+ #include "open.h"
+ #include "triggerpull.h"

@@ -1,0 +1,109 @@
+From 4501337bab87ec8724ae45fa50713584a211fb3a Mon Sep 17 00:00:00 2001
+From: Andrew Savchenko <bircoph@gmail.com>
+Date: Fri, 4 Jan 2019 16:37:35 +0300
+Subject: [PATCH 09/13] docbook2pdf
+
+Jadetex based converters require jadetex tuning:
+  save_size=50000
+  max_strings=1000000
+  pool_size=2000000
+  hash_extra=150000
+Otherwise TeX will run out of its capacity during large PDFs
+generation.
+
+docbook2pdf needs to ignore an ID reference value which no element
+has as its ID:
+  -e no-idref
+This is already done by other converters implicitly.
+
+(cherry picked from commit c81ef9c4109eb1bfc9cb42d952b9d5240f3d713b)
+(cherry picked from commit c4515998db6078ccf82fad23b774bc243ba1f020)
+(cherry picked from commit 876c27c8fb7cc3c80e31d3e642a7727313b4f0c0)
+--- a/doc/xml/AdminGuide/Makefile.in
++++ b/doc/xml/AdminGuide/Makefile.in
+@@ -33,6 +33,7 @@ XSLTPROC = @XSLTPROC@
+ DOCBOOK2PDF = @DOCBOOK2PDF@
+ KINDLEGEN = @KINDLEGEN@
+ DBTOEPUB = $(DOCBOOK_STYLESHEETS)/epub/bin/dbtoepub
++TEXOPTS = save_size=50000 max_strings=1000000 pool_size=2000000 hash_extra=150000
+ 
+ XSL_FLAGS = --path '@abs_builddir@'
+ 
+@@ -48,8 +49,10 @@ $(BOOK).pdf: $(SRCS)
+ 		$(XSLTPROC) $(DOCBOOK_STYLESHEETS)/fo/docbook.xsl \
+ 		    $(srcdir)/$(BOOK).xml > $(BOOK).fo; \
+ 		$(DOCBOOK2PDF) $(BOOK).fo $(BOOK).pdf; \
++	elif test "x$(DOCBOOK2PDF)" = "xdocbook2pdf"; then \
++		$(TEXOPTS) $(DOCBOOK2PDF) -e no-idref $(BOOK).xml; \
+ 	else \
+-		$(DOCBOOK2PDF) --output=$@ --xslt-opts="$(XSL_FLAGS)" \
++		$(TEXOPTS) $(DOCBOOK2PDF) --output=$@ --xslt-opts="$(XSL_FLAGS)" \
+ 		    $(srcdir)/$(BOOK).xml; \
+ 	fi
+ 
+--- a/doc/xml/AdminRef/Makefile.in
++++ b/doc/xml/AdminRef/Makefile.in
+@@ -16,6 +16,7 @@ XSLTPROC = @XSLTPROC@ --stringparam variablelist.as.blocks 1 --param use.id.as.f
+ DOCBOOK2PDF = @DOCBOOK2PDF@
+ DBTOEPUB = $(DOCBOOK_STYLESHEETS)/epub/bin/dbtoepub
+ KINDLEGEN = @KINDLEGEN@
++TEXOPTS = save_size=50000 max_strings=1000000 pool_size=2000000 hash_extra=150000
+ 
+ XSL_FLAGS = --path '@abs_builddir@'
+ 
+@@ -28,8 +29,10 @@ $(BOOK).pdf: $(SRCS)
+ 		    $(DOCBOOK_STYLESHEETS)/fo/docbook.xsl \
+ 		    $(srcdir)/$(BOOK).xml > $(BOOK).fo; \
+ 		$(DOCBOOK2PDF) $(BOOK).fo $(BOOK).pdf; \
++	elif test "x$(DOCBOOK2PDF)" = "xdocbook2pdf"; then \
++		$(TEXOPTS) $(DOCBOOK2PDF) -e no-idref $(BOOK).xml; \
+ 	else \
+-		$(DOCBOOK2PDF) --output=$@ --xslt-opts="$(XSL_FLAGS)" \
++		$(TEXOPTS) $(DOCBOOK2PDF) --output=$@ --xslt-opts="$(XSL_FLAGS)" \
+ 		    $(srcdir)/$(BOOK).xml; \
+ 	fi
+ 
+--- a/doc/xml/QuickStartUnix/Makefile.in
++++ b/doc/xml/QuickStartUnix/Makefile.in
+@@ -31,6 +31,7 @@ XSLTPROC = @XSLTPROC@
+ DOCBOOK2PDF = @DOCBOOK2PDF@
+ DBTOEPUB = $(DOCBOOK_STYLESHEETS)/epub/bin/dbtoepub
+ KINDLEGEN = @KINDLEGEN@
++TEXOPTS = save_size=50000 max_strings=1000000 pool_size=2000000 hash_extra=150000
+ 
+ XSL_FLAGS = --path '@abs_builddir@'
+ 
+@@ -47,8 +48,10 @@ $(BOOK).pdf: $(SRCS)
+ 		    $(DOCBOOK_STYLESHEETS)/fo/docbook.xsl \
+ 		    $(srcdir)/$(BOOK).xml > $(BOOK).fo; \
+ 		$(DOCBOOK2PDF) $(BOOK).fo $(BOOK).pdf; \
++	elif test "x$(DOCBOOK2PDF)" = "xdocbook2pdf"; then \
++		$(TEXOPTS) $(DOCBOOK2PDF) -e no-idref $(BOOK).xml; \
+ 	else \
+-		$(DOCBOOK2PDF) --output=$@ --xslt-opts="$(XSL_FLAGS)" \
++		$(TEXOPTS) $(DOCBOOK2PDF) --output=$@ --xslt-opts="$(XSL_FLAGS)" \
+ 		    $(srcdir)/$(BOOK).xml; \
+ 	fi
+ 
+--- a/doc/xml/UserGuide/Makefile.in
++++ b/doc/xml/UserGuide/Makefile.in
+@@ -31,6 +31,7 @@ XSLTPROC = @XSLTPROC@
+ DOCBOOK2PDF = @DOCBOOK2PDF@
+ DBTOEPUB = $(DOCBOOK_STYLESHEETS)/epub/bin/dbtoepub
+ KINDLEGEN = @KINDLEGEN@
++TEXOPTS = save_size=50000 max_strings=1000000 pool_size=2000000 hash_extra=150000
+ 
+ XSL_FLAGS = --path '@abs_builddir@'
+ 
+@@ -47,8 +48,10 @@ $(BOOK).pdf: $(SRCS)
+ 		    $(DOCBOOK_STYLESHEETS)/fo/docbook.xsl \
+ 		    $(srcdir)/$(BOOK).xml > $(BOOK).fo; \
+ 		$(DOCBOOK2PDF) $(BOOK).fo $(BOOK).pdf; \
++	elif test "x$(DOCBOOK2PDF)" = "xdocbook2pdf"; then \
++		$(TEXOPTS) $(DOCBOOK2PDF) -e no-idref $(BOOK).xml; \
+ 	else \
+-		$(DOCBOOK2PDF) --output=$@ --xslt-opts="$(XSL_FLAGS)" \
++		$(TEXOPTS) $(DOCBOOK2PDF) --output=$@ --xslt-opts="$(XSL_FLAGS)" \
+ 		    $(srcdir)/$(BOOK).xml; \
+ 	fi
+ 

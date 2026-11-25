@@ -1,0 +1,30 @@
+From c90051dbbfd5781964db9d9d5b20a32b4fdefaf6 Mon Sep 17 00:00:00 2001
+From: Maseru898 <marcel.weissenbach@miraclelinux.com>
+Date: Mon, 15 Jun 2026 18:04:52 +0900
+Subject: [PATCH] build: Only require MT32 Package when actually enabled
+
+Currently the find_package runs unrelated to the variable check which causes it to always get executed. Moved it to its correct place so it only gets executed if building with MT32 is actually requested by setting the variable
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 399899d1eb8..0eb03b50162 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -340,6 +340,7 @@ endif()
+ option(OPT_MT32EMU "Enable Roland MT-32 emulation support" ON)
+ if (OPT_MT32EMU)
+   set(C_MT32EMU ON)
++  find_package(MT32Emu REQUIRED)
+ endif()
+ 
+ if (OPT_DEBUGGER)
+@@ -488,7 +489,6 @@ find_package(SDL2_image CONFIG REQUIRED)
+ find_package(iir REQUIRED)
+ find_package(PNG REQUIRED)
+ find_package(OpenGL REQUIRED)
+-find_package(MT32Emu REQUIRED)
+ find_package(FluidSynth REQUIRED CONFIG)
+ if (C_ALSA)
+   find_package(ALSA REQUIRED)

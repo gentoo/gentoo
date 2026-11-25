@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,7 +8,7 @@ JAVA_TESTING_FRAMEWORKS="junit-4"
 
 inherit java-pkg-2 java-pkg-simple
 
-DESCRIPTION="Use beautiful Java code to generate beautiful Java code."
+DESCRIPTION="Use beautiful Java code to generate beautiful Java code"
 HOMEPAGE="https://github.com/square/javapoet/"
 SRC_URI="https://github.com/square/${PN}/archive/${P}.tar.gz"
 S="${WORKDIR}/${PN}-${P}"

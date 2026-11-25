@@ -1,4 +1,4 @@
-# Copyright 2019-2025 Gentoo Authors
+# Copyright 2019-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: acct-user.eclass
@@ -19,7 +19,7 @@
 # on the package providing it.
 #
 # The ebuild needs to call acct-user_add_deps after specifying
-# ACCT_USER_GROUPS.
+# ACCT_USER_GROUPS or ACCT_USER_HOME_OWNER.
 #
 # Example:
 # If your package needs user 'foo' belonging to same-named group, you
@@ -50,6 +50,10 @@ case ${EAPI} in
 esac
 
 inherit user-info
+
+case ${EAPI} in
+	7|8) inherit edo ;;
+esac
 
 [[ ${CATEGORY} == acct-user ]] ||
 	die "Ebuild error: this eclass can be used only in acct-user category!"
@@ -147,13 +151,14 @@ ACCT_USER_NAME=${PN}
 : "${KEYWORDS:=~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~arm64-macos ~x64-macos ~x64-solaris}"
 S=${WORKDIR}
 
+IDEPEND="!prefix? ( >=sys-apps/shadow-4.6 )"
 
 # << API functions >>
 
 # @FUNCTION: acct-user_add_deps
 # @DESCRIPTION:
-# Generate appropriate RDEPEND from ACCT_USER_GROUPS.  This must be
-# called if ACCT_USER_GROUPS are set.
+# Generate appropriate RDEPEND from ACCT_USER_GROUPS and
+# ACCT_USER_HOME_OWNER.  This must be called if one of these are set.
 acct-user_add_deps() {
 	debug-print-function ${FUNCNAME} "$@"
 
@@ -165,51 +170,26 @@ acct-user_add_deps() {
 	fi
 
 	RDEPEND+=${ACCT_USER_GROUPS[*]/#/ acct-group/}
+
+	local user group
+	case ${ACCT_USER_HOME_OWNER} in
+		*:*)
+			user=${ACCT_USER_HOME_OWNER%:*}
+			group=${ACCT_USER_HOME_OWNER#*:} ;;
+		*)
+			user=${ACCT_USER_HOME_OWNER}
+			group= ;;
+	esac
+
+	# Add ACCT_USER_HOME_OWNER dependencies if necessary.
+	[[ -n ${user} && ${user} != "${ACCT_USER_NAME}" ]] &&
+		RDEPEND+=" acct-user/${user}"
+	[[ -n ${group} ]] && ! has "${group}" "${ACCT_USER_GROUPS[@]}" &&
+		RDEPEND+=" acct-group/${group}"
+
 	_ACCT_USER_ADD_DEPS_CALLED=1
 }
 
-
-# << Helper functions >>
-
-# @FUNCTION: eislocked
-# @USAGE: <user>
-# @INTERNAL
-# @DESCRIPTION:
-# Check whether the specified user account is currently locked.
-# Returns 0 if it is locked, 1 if it is not, 2 if the platform
-# does not support determining it.
-eislocked() {
-	[[ $# -eq 1 ]] || die "usage: ${FUNCNAME} <user>"
-
-	if [[ ${EUID} -ne 0 || -n ${EPREFIX} ]]; then
-		einfo "Insufficient privileges to execute ${FUNCNAME[0]}"
-		return 0
-	fi
-
-	case ${CHOST} in
-	*-freebsd*|*-dragonfly*|*-netbsd*)
-		[[ $(egetent "$1" | cut -d: -f2) == '*LOCKED*'* ]]
-		;;
-
-	*-openbsd*)
-		return 2
-		;;
-
-	*)
-		# NB: 'no password' and 'locked' are indistinguishable
-		# but we also expire the account which is more clear
-		local shadow
-		if [[ -n "${ROOT}" ]]; then
-			shadow=$(grep "^$1:" "${ROOT}/etc/shadow")
-		else
-			shadow=$(getent shadow "$1")
-		fi
-
-		[[ $( echo ${shadow} | cut -d: -f2) == '!'* ]] &&
-			[[ $(echo ${shadow} | cut -d: -f8) == 1 ]]
-		;;
-	esac
-}
 
 # << Phase functions >>
 
@@ -365,7 +345,7 @@ acct-user_pkg_preinst() {
 		fi
 
 		elog "Adding user ${ACCT_USER_NAME}"
-		useradd "${opts[@]}" "${ACCT_USER_NAME}" || die "useradd failed with status $?"
+		nonfatal edo useradd "${opts[@]}" "${ACCT_USER_NAME}" || die "useradd failed with status $?"
 		_ACCT_USER_ADDED=1
 	fi
 
@@ -440,10 +420,13 @@ acct-user_pkg_postinst() {
 		--shell "${_ACCT_USER_SHELL}"
 		--gid "${groups[0]}"
 		--groups "${aux_groups// /,}"
+		--expiredate ""
 	)
 
-	if eislocked "${ACCT_USER_NAME}"; then
-		opts+=( --expiredate "" --unlock )
+	local pwhash=$(egetent shadow "${ACCT_USER_NAME}" | cut -d: -f2)
+	if [[ ${pwhash} != '!' && ${pwhash} = '!'* ]]; then
+		# Unlock the account if a password hash exists.
+		opts+=( --unlock )
 	fi
 
 	if [[ -n ${ROOT} ]]; then
@@ -467,30 +450,24 @@ acct-user_pkg_postinst() {
 	fi
 
 	elog "Updating user ${ACCT_USER_NAME}"
-	# usermod outputs a warning if unlocking the account would result in an
-	# empty password. Hide stderr in a text file and display it if usermod fails.
-	usermod "${opts[@]}" "${ACCT_USER_NAME}" 2>"${T}/usermod-error.log"
+	nonfatal edo usermod "${opts[@]}" "${ACCT_USER_NAME}"
 	local status=$?
-	if [[ ${status} -ne 0 ]]; then
-		cat "${T}/usermod-error.log" >&2
-		if [[ ${status} -eq 8 ]]; then
-			# usermod refused to update the home directory
-			# for a uid with active processes.
-			eerror "Failed to update user ${ACCT_USER_NAME}"
-			eerror "This user currently has one or more running processes."
-			eerror "Please update this user manually with the following command:"
+	if [[ ${status} -eq 8 ]]; then
+		# usermod refused to update the home directory
+		# for a uid with active processes.
+		eerror "Failed to update user ${ACCT_USER_NAME}"
+		eerror "This user currently has one or more running processes."
+		eerror "Please update this user manually with the following command:"
 
-			# Surround opts with quotes.
-			# With bash-5 (EAPI 8), we can use "${opts[@]@Q}" instead.
-			local q="'"
-			local optsq=( "${opts[@]/#/${q}}" )
-			optsq=( "${optsq[@]/%/${q}}" )
+		# Surround opts with quotes.
+		# With bash-5 (EAPI 8), we can use "${opts[@]@Q}" instead.
+		local q="'"
+		local optsq=( "${opts[@]/#/${q}}" )
+		optsq=( "${optsq[@]/%/${q}}" )
 
-			eerror "  usermod ${optsq[*]} ${ACCT_USER_NAME}"
-		else
-			eerror "$(<"${T}/usermod-error.log")"
-			die "usermod failed with status ${status}"
-		fi
+		eerror "  usermod ${optsq[*]} ${ACCT_USER_NAME}"
+	elif [[ ${status} -ne 0 ]]; then
+		die "usermod failed with status ${status}"
 	fi
 }
 
@@ -537,7 +514,7 @@ acct-user_pkg_prerm() {
 	fi
 
 	elog "Locking user ${ACCT_USER_NAME}"
-	usermod "${opts[@]}" "${ACCT_USER_NAME}" || die "usermod failed with status $?"
+	nonfatal edo usermod "${opts[@]}" "${ACCT_USER_NAME}" || die "usermod failed with status $?"
 }
 
 fi

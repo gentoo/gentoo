@@ -53,7 +53,7 @@ dist-kernel_get_image_path() {
 		arm)
 			echo arch/arm/boot/zImage
 			;;
-		hppa|ppc|ppc64|sparc)
+		alpha|hppa|m68k|mips|ppc|ppc64|s390|sparc)
 			# https://www.kernel.org/doc/html/latest/powerpc/bootwrapper.html
 			# ./ is required because of ${image_path%/*}
 			# substitutions in the code
@@ -339,6 +339,126 @@ dist-kernel_compressed_module_cleanup() {
 			\) | sed -e 's:[.]ko\(\|[.]gz\|[.]xz\|[.]zst\)$::' |
 				sort | uniq -d || die
 	)
+}
+
+# @FUNCTION: dist-kernel_can_update_src_symlink
+# @USAGE: <target>
+# @DESCRIPTION:
+# Determine whether the symlink at <target> (full path) should be
+# updated.  Returns 0 if it should, 1 to leave as-is.
+dist-kernel_can_update_src_symlink() {
+	debug-print-function ${FUNCNAME} "$@"
+
+	[[ ${#} -eq 1 ]] || die "${FUNCNAME}: invalid arguments"
+	local target=${1}
+
+	# if the symlink does not exist or is broken, update
+	[[ ! -e ${target} ]] && return 0
+	# if the target does not seem to contain kernel sources
+	# (i.e. is probably a leftover directory), update
+	[[ ! -e ${target}/Makefile ]] && return 0
+
+	local symlink_target=$(readlink "${target}")
+	# the symlink target should start with the same basename as target
+	# (e.g. "linux-*")
+	[[ ${symlink_target} != ${target##*/}-* ]] && return 1
+
+	# try to establish the kernel version from symlink target
+	local symlink_ver=${symlink_target#${target##*/}-}
+	# strip KV_LOCALVERSION, we want to update the old kernels not using
+	# KV_LOCALVERSION suffix and the new kernels using it
+	symlink_ver=${symlink_ver%${KV_LOCALVERSION}}
+	symlink_ver=${symlink_ver/-p/_p}
+	# strip -p* revision
+	local symlink_ver_no_rev=${symlink_ver%_p[0-9]*}
+	local rev=${symlink_ver#${symlink_ver_no_rev}}
+	rev=${rev#_p}
+
+	# if ${symlink_ver} contained anything but numbers and revision (e.g.
+	# an extra suffix), it's not our kernel, so leave it alone
+	[[ -n ${symlink_ver_no_rev//[0-9.]/} || -n ${rev//[0-9]/} ]] && return 1
+
+	local symlink_pkg=${CATEGORY}/${PN}-${symlink_ver}
+	# if the current target is either being replaced, or still
+	# installed (probably depclean candidate), update the symlink
+	has "${symlink_ver}" ${REPLACING_VERSIONS} && return 0
+	has_version -r "~${symlink_pkg}" && return 0
+
+	# otherwise it could be another kernel package, so leave it alone
+	return 1
+}
+
+# @FUNCTION: dist-kernel_update_src_symlink
+# @USAGE: <target> <version>
+# @DESCRIPTION:
+# Update the kernel source symlink at <target> (full path) with a link
+# to <target>-<version> if it's either missing or pointing out to
+# an older version of this package.
+dist-kernel_update_src_symlink() {
+	debug-print-function ${FUNCNAME} "$@"
+
+	[[ ${#} -eq 2 ]] || die "${FUNCNAME}: invalid arguments"
+	local target=${1}
+	local version=${2}
+
+	if dist-kernel_can_update_src_symlink "${target}"; then
+		ebegin "Updating ${target} symlink"
+		ln -f -n -s "${target##*/}-${version}" "${target}"
+		eend ${?}
+	# If we're upgrading from older versions of g-k-bin that did not
+	# use the "-bin" suffix in KV_LOCALVERSION, we need to override
+	# the check in the eclass to successfully migrate the symlink.
+	# Since sys-kernel/gentoo-kernel was not co-installable with g-k-bin
+	# then, let's use its non-presence as a good heuristic whether to
+	# trigger the migration path.
+	elif [[ ${CATEGORY}/${PN} == sys-kernel/gentoo-kernel-bin ]] &&
+		! has_version sys-kernel/gentoo-kernel &&
+		KV_LOCALVERSION=${KV_LOCALVERSION%-bin} \
+		dist-kernel_can_update_src_symlink "${target}"
+	then
+		ebegin "Updating ${target} symlink"
+		ln -f -n -s "${target##*/}-${version}" "${target}"
+		eend ${?}
+	else
+		elog "${target} points at another kernel, leaving it as-is."
+		elog "Please use 'eselect kernel' to update it when desired."
+	fi
+}
+
+# @FUNCTION: dist-kernel_update_lib_symlinks
+# @USAGE: [<kv-full>] [<image-path>]
+# @DESCRIPTION:
+# Update the symlinks in ${ED}/lib/modules/${KV_FULL} if the system is
+# running merged-usr.  Intended to be used in pkg_preinst().
+dist-kernel_update_lib_symlinks() {
+	debug-print-function ${FUNCNAME} "$@"
+
+	[[ ${#} -gt 2 ]] && die "${FUNCNAME}: invalid arguments"
+	local version=${1:-${KV_FULL}}
+	local image_path=${2:-$(dist-kernel_get_image_path)}
+
+	if [[ -L ${EROOT}/lib && ${EROOT}/lib -ef ${EROOT}/usr/lib ]]; then
+		# Adjust symlinks for merged-usr.
+		local file
+		for file in build source; do
+			if [[ -L "${ED}/lib/modules/${version}/${file}" ]]; then
+				rm "${ED}/lib/modules/${version}/${file}" || die
+				dosym "../../../src/linux-${version}" "/usr/lib/modules/${version}/${file}"
+			fi
+		done
+		for file in .config System.map; do
+			if [[ -L "${ED}/lib/modules/${version}/${file#.}" ]]; then
+				rm "${ED}/lib/modules/${version}/${file#.}" || die
+				dosym "../../../src/linux-${version}/${file}" "/usr/lib/modules/${version}/${file#.}"
+			fi
+		done
+		for file in vmlinux vmlinuz; do
+			if [[ -L "${ED}/lib/modules/${version}/${file}" ]]; then
+				rm "${ED}/lib/modules/${version}/${file}" || die
+				dosym "../../../src/linux-${version}/${image_path}" "/usr/lib/modules/${version}/${file}"
+			fi
+		done
+	fi
 }
 
 _DIST_KERNEL_UTILS=1

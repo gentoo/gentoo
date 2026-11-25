@@ -1,0 +1,30 @@
+From f5d03423d1ed6f12650dc26a0bd7311f1b7baa43 Mon Sep 17 00:00:00 2001
+From: Pierre-Marie de Rodat <derodat@adacore.com>
+Date: Tue, 2 Dec 2025 12:01:16 +0000
+Subject: [PATCH] langkit.stylechecks: update for Python 3.14
+
+---
+ langkit/stylechecks/__init__.py | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/langkit/stylechecks/__init__.py b/langkit/stylechecks/__init__.py
+index baad53147..51b0ee273 100755
+--- a/langkit/stylechecks/__init__.py
++++ b/langkit/stylechecks/__init__.py
+@@ -772,13 +772,14 @@ def node_lineno(node: ast.AST) -> int:
+                     elif (
+                         isinstance(node, ast.stmt)
+                         and isinstance(node, ast.Expr)
+-                        and isinstance(node.value, ast.Str)
++                        and isinstance(node.value, ast.Constant)
++                        and isinstance(node.value.value, str)
+                     ):
+                         # Sometimes we use docstrings on local variables, and
+                         # ast.get_docstring does not allow us to catch that.
+                         # Instead, process all string literals that appear at
+                         # the root of a statement.
+-                        raw_docstring = node.value.s
++                        raw_docstring = node.value.value
+                         docstring, lineno_offset = preprocess_docstring(
+                             raw_docstring
+                         )

@@ -1,9 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit autotools
+inherit autotools dot-a
 
 MY_P="${P/_/-}"
 DESCRIPTION="A portable high-level Jabber/XMPP client library for C++"
@@ -27,12 +27,18 @@ DEPEND="
 RDEPEND="${DEPEND}"
 BDEPEND="virtual/pkgconfig"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.0.28-clang.patch
+	"${FILESDIR}"/${PN}-1.0.28-openssl-4.patch
+)
+
 src_prepare() {
 	default
 	eautoreconf
 }
 
 src_configure() {
+	use static-libs && lto-guarantee-fat
 	local myeconfargs=(
 		$(usex debug "--enable-debug" '')
 		$(use_enable static-libs static)
@@ -57,4 +63,6 @@ src_install() {
 
 		dodoc -r src/examples/
 	fi
+
+	use static-libs && strip-lto-bytecode
 }

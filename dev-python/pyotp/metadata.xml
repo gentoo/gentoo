@@ -7,7 +7,7 @@
 	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
-		<remote-id type="pypi">pyotp</remote-id>
+		<remote-id type="pypi">PyOTP</remote-id>
 		<remote-id type="github">pyauth/pyotp</remote-id>
 	</upstream>
 </pkgmetadata>

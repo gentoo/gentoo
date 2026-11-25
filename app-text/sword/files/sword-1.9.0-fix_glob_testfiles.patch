@@ -1,0 +1,22 @@
+Fix dash: replace shell brace expansion with FILE(GLOB)
+--- a/tests/testsuite/CMakeLists.txt
++++ b/tests/testsuite/CMakeLists.txt
+@@ -7,9 +7,17 @@ FILE(WRITE "${CMAKE_CURRENT_BINARY_DIR}/sword.conf" "[Install]\nLocalePath=${CMA
+ FILE(WRITE "${CMAKE_CURRENT_BINARY_DIR}/sword.conf"
+ 	"[Install]\nLocalePath=${CMAKE_CURRENT_SOURCE_DIR}/../../")
+ 
++FILE(GLOB TEST_SUITE
++	"${CMAKE_CURRENT_SOURCE_DIR}/*.sh"
++	"${CMAKE_CURRENT_SOURCE_DIR}/*.good"
++	"${CMAKE_CURRENT_SOURCE_DIR}/*.imp"
++	"${CMAKE_CURRENT_SOURCE_DIR}/*.txt"
++	"${CMAKE_CURRENT_SOURCE_DIR}/*.xml"
++)
++
+ ADD_CUSTOM_TARGET(
+ 	tests_configure
+-	COMMAND cp "${CMAKE_CURRENT_SOURCE_DIR}/*.{sh,good,imp,txt,xml}" "${CMAKE_CURRENT_BINARY_DIR}"
++	COMMAND ${CMAKE_COMMAND} -E copy ${TEST_SUITE} "${CMAKE_CURRENT_BINARY_DIR}"
+ 	DEPENDS ${test_PROGRAMS}
+ 	WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+ )

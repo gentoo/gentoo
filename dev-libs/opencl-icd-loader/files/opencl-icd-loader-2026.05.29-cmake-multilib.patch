@@ -1,0 +1,34 @@
+From: =?utf-8?q?Lo=C3=AFc_Minier?= <loic.minier@oss.qualcomm.com>
+Date: Sat, 2 May 2026 14:28:02 +0200
+Subject: [PATCH] fix cmake installation path for multiarch
+
+Install cmake files to LIBDIR instead of DATADIR.
+
+There are a couple of arch specific pathnames there:
+  set_target_properties(OpenCL::OpenCL PROPERTIES
+    IMPORTED_LOCATION_NONE "${_IMPORT_PREFIX}/lib/aarch64-linux-gnu/libOpenCL.so.1.0.0"
+  [...]
+  list(APPEND _cmake_import_check_files_for_OpenCL::OpenCL "${_IMPORT_PREFIX}/lib/aarch64-linux-gnu/libOpenCL.so.1.0.0" )
+
+The upstream code seems to make use of cmake's "export" feature to
+generate these, so it might be hard to craft the right contents, or it
+might have to be a patch to cmake itself.
+
+Bug-Debian: https://bugs.debian.org/1133783
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 1ce37cf..e6f1123 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -258,7 +258,7 @@ file(
+   "include(\"\${CMAKE_CURRENT_LIST_DIR}/OpenCLICDLoaderTargets.cmake\")"
+ )
+ 
+-set(config_package_location ${CMAKE_INSTALL_DATADIR}/cmake/OpenCLICDLoader)
++set(config_package_location ${CMAKE_INSTALL_LIBDIR}/cmake/OpenCLICDLoader)
+ install(
+   EXPORT OpenCLICDLoaderTargets
+   FILE OpenCLICDLoaderTargets.cmake

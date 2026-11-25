@@ -1,0 +1,159 @@
+--- darcs-2.18.5-orig/Setup.hs	2001-09-09 11:46:40.000000000 +1000
++++ darcs-2.18.5/Setup.hs	2026-10-25 11:21:23.258491483 +1100
+@@ -2,13 +2,14 @@
+ -- portions copyright (c) 2008 David Roundy
+ -- portions copyright (c) 2007-2009 Judah Jacobson
+ {-# OPTIONS_GHC -Wall #-}
++{-# LANGUAGE CPP #-}
+ import Distribution.Simple
+          ( defaultMainWithHooks, UserHooks(..), simpleUserHooks )
+ import Distribution.PackageDescription ( PackageDescription )
+ import Distribution.Package ( packageVersion )
+ import Distribution.Version( Version )
+ import Distribution.Simple.LocalBuildInfo
+-         ( LocalBuildInfo(..), absoluteInstallDirs )
++         ( LocalBuildInfo(..), absoluteInstallDirs, buildDir )
+ import Distribution.Simple.InstallDirs (mandir, CopyDest (NoCopyDest))
+ import Distribution.Simple.Setup
+     (buildVerbosity, copyDest, copyVerbosity, fromFlag,
+@@ -19,13 +20,18 @@
+      rewriteFileEx)
+ import Distribution.Verbosity ( Verbosity, silent )
+ import Distribution.Text ( display )
++#if MIN_VERSION_Cabal(3,14,0)
++import Distribution.Utils.Path ( makeRelativePathEx, getSymbolicPath, (</>) )
++#endif
+ 
+ import Control.Monad ( unless, when, void )
+ import System.Directory ( doesDirectoryExist, doesFileExist )
+ import System.IO ( openFile, IOMode(..) )
+ import System.Process (callProcess, runProcess)
+ import Data.List( isInfixOf )
++#if !MIN_VERSION_Cabal(3,14,0)
+ import System.FilePath ( (</>) )
++#endif
+ 
+ import qualified Control.Exception as Exception
+ 
+@@ -73,22 +79,39 @@
+ 
+ buildManpage :: LocalBuildInfo -> IO ()
+ buildManpage lbi = do
++#if MIN_VERSION_Cabal(3,14,0)
++  have_darcs_exe_dir <- doesDirectoryExist (getSymbolicPath $ buildDir lbi </> (makeRelativePathEx "darcs"))
++#else
+   have_darcs_exe_dir <- doesDirectoryExist (buildDir lbi </> "darcs")
++#endif
+   when have_darcs_exe_dir $ do
++#if MIN_VERSION_Cabal(3,14,0)
++    let darcs = getSymbolicPath $ buildDir lbi </> (makeRelativePathEx "darcs/darcs")
++        manpage = getSymbolicPath $ buildDir lbi </> (makeRelativePathEx "darcs/darcs.1")
++#else
+     let darcs = buildDir lbi </> "darcs/darcs"
+         manpage = buildDir lbi </> "darcs/darcs.1"
++#endif
+     manpageHandle <- openFile manpage WriteMode
+     void $ runProcess darcs ["help","manpage"]
+             Nothing Nothing Nothing (Just manpageHandle) Nothing
+ 
+ installManpage :: PackageDescription -> LocalBuildInfo -> Verbosity -> CopyDest -> IO ()
+ installManpage pkg lbi verbosity copy = do
++#if MIN_VERSION_Cabal(3,14,0)
++  have_manpage <- doesFileExist (getSymbolicPath $ buildDir lbi </> (makeRelativePathEx $ "darcs" </> "darcs.1"))
++#else
+   have_manpage <- doesFileExist (buildDir lbi </> "darcs" </> "darcs.1")
++#endif
+   when have_manpage $
+     copyFiles
+       verbosity
+       (mandir (absoluteInstallDirs pkg lbi copy) </> "man1")
++#if MIN_VERSION_Cabal(3,14,0)
++      [(getSymbolicPath $ buildDir lbi </> (makeRelativePathEx "darcs"), "darcs.1")]
++#else
+       [(buildDir lbi </> "darcs", "darcs.1")]
++#endif
+ 
+ -- ---------------------------------------------------------------------
+ -- version module
+@@ -125,10 +148,18 @@
+ generateVersionModule :: Verbosity -> LocalBuildInfo -> String -> String -> IO ()
+ generateVersionModule verbosity lbi version state = do
+   let dir = autogenPackageModulesDir lbi
++#if MIN_VERSION_Cabal(3,14,0)
++  createDirectoryIfMissingVerbose verbosity True ( getSymbolicPath dir )
++#else
+   createDirectoryIfMissingVerbose verbosity True dir
++#endif
+   ctx <- context verbosity
+   hash <- weakhash verbosity
++#if MIN_VERSION_Cabal(3,14,0)
++  rewriteFileEx silent ( getSymbolicPath $ dir </> (makeRelativePathEx "Version.hs")) $ unlines
++#else
+   rewriteFileEx silent (dir </> "Version.hs") $ unlines
++#endif
+     ["module Version where"
+     ,"import Darcs.Prelude"
+     ,"version, weakhash, context :: String"
+--- darcs-2.18.5-orig/darcs.cabal	2026-10-25 10:37:01.554724465 +1100
++++ darcs-2.18.5/darcs.cabal	2026-10-25 11:16:02.211589935 +1100
+@@ -123,10 +123,10 @@
+ -- ----------------------------------------------------------------------
+ 
+ custom-setup
+-    setup-depends: base      >= 4.10 && < 4.20,
+-                   Cabal     >= 2.4 && < 3.11,
++    setup-depends: base      >= 4.10 && < 4.23,
++                   Cabal     >= 2.4 && < 3.17,
+                    process   >= 1.2.3.0 && < 1.7,
+-                   filepath  >= 1.4.1 && < 1.5.0.0,
++                   filepath  >= 1.4.1 && < 1.6.0.0,
+                    directory >= 1.2.7 && < 1.4
+ 
+ -- ----------------------------------------------------------------------
+@@ -416,11 +416,11 @@
+       build-depends:  unix              >= 2.7.1.0 && < 2.9,
+                       directory         >= 1.2.7 && < 1.4
+ 
+-    build-depends:    base              >= 4.10 && < 4.20,
++    build-depends:    base              >= 4.10 && < 4.23,
+                       safe              >= 0.3.20 && < 0.4,
+                       stm               >= 2.1 && < 2.6,
+                       binary            >= 0.5 && < 0.11,
+-                      containers        >= 0.5.11 && < 0.8,
++                      containers        >= 0.5.11 && < 0.9,
+                       regex-base        >= 0.94.0.1 && < 0.94.1,
+                       regex-tdfa        >= 1.3.2 && < 1.4,
+                       regex-applicative >= 0.2 && < 0.4,
+@@ -436,7 +436,7 @@
+                       base16-bytestring >= 1.0 && < 1.1,
+                       utf8-string       >= 1 && < 1.1,
+                       vector            >= 0.11 && < 0.14,
+-                      tar               >= 0.5 && < 0.7,
++                      tar               >= 0.5 && < 0.8,
+                       data-ordlist      == 0.4.*
+ 
+     if impl(ghc < 8.10)
+@@ -450,12 +450,12 @@
+                       unix-compat       >= 0.6 && < 0.8,
+                       bytestring        >= 0.10.6 && < 0.13,
+                       old-time          >= 1.1.0.3 && < 1.2,
+-                      time              >= 1.9 && < 1.15,
++                      time              >= 1.9 && < 1.16,
+                       text              >= 1.2.1.3 && < 2.2,
+                       temporary         >= 1.2.1 && < 1.4,
+                       process           >= 1.2.3.0 && < 1.7,
+                       array             >= 0.5.1.0 && < 0.6,
+-                      hashable          >= 1.2.3.3 && < 1.5,
++                      hashable          >= 1.2.3.3 && < 1.6,
+                       mmap              >= 0.5.9 && < 0.6,
+                       zlib              >= 0.6.1.2 && < 0.8,
+                       network-uri       >= 2.6 && < 2.8,
+@@ -593,7 +593,7 @@
+                     text,
+                     directory,
+                     FindBin      >= 0.0.5 && < 0.1,
+-                    QuickCheck   >= 2.13 && < 2.16,
++                    QuickCheck   >= 2.13 && < 2.20,
+                     quickcheck-instances       >= 0.3.29.1 && < 0.4,
+                     leancheck    >= 0.9 && < 1.1,
+                     HUnit        >= 1.3 && < 1.7,

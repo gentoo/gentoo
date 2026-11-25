@@ -1,0 +1,14 @@
+MeatPack tests call hidden internal symbols, causing undefined-reference errors
+ in shared builds.
+https://bugs.gentoo.org/978220
+
+--- a/tests/binarize/CMakeLists.txt
++++ b/tests/binarize/CMakeLists.txt
+@@ -7,6 +7,7 @@ add_executable(binarize_tests
+     meatpack_overflow_tests.cpp
+     meatpack_whitespace_tests.cpp
+     metadata_iterator_tests.cpp
++    "${PROJECT_SOURCE_DIR}/src/LibBGCode/binarize/meatpack.cpp"
+ )
+ 
+ target_link_libraries(binarize_tests ${_libname}_binarize test_common)

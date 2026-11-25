@@ -1,0 +1,31 @@
+https://bugs.gentoo.org/960113
+https://gitlab.winehq.org/mono/mono/-/commit/2224c6915a98f870cc9a3a9f9e3698e7b20e3d27
+
+From 2224c6915a98f870cc9a3a9f9e3698e7b20e3d27 Mon Sep 17 00:00:00 2001
+From: Esme Povirk <esme@codeweavers.com>
+Date: Sat, 12 Apr 2025 20:31:54 +0000
+Subject: [PATCH] arm64: Fix a pointer-to-int cast size mismatch.
+
+---
+ mono/utils/mono-sigcontext.h | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/mono/utils/mono-sigcontext.h b/mono/utils/mono-sigcontext.h
+index 2153c1cad57..6426f44b7c7 100644
+--- a/mono/utils/mono-sigcontext.h
++++ b/mono/utils/mono-sigcontext.h
+@@ -492,6 +492,12 @@ typedef struct ucontext {
+ 	#define UCONTEXT_REG_SP(ctx) (((ucontext_t*)(ctx))->uc_mcontext.sp)
+ 	#define UCONTEXT_REG_R0(ctx) (((ucontext_t*)(ctx))->uc_mcontext.regs [ARMREG_R0])
+ 	#define UCONTEXT_GREGS(ctx) (&(((ucontext_t*)(ctx))->uc_mcontext.regs))
++	#define UCONTEXT_REG_SET_PC(ctx, val) do { \
++		UCONTEXT_REG_PC (ctx) = (gsize)(val); \
++		 } while (0)
++	#define UCONTEXT_REG_SET_SP(ctx, val) do { \
++		UCONTEXT_REG_SP (ctx) = (val); \
++		 } while (0)
+ #endif
+ 
+ #ifndef UCONTEXT_REG_SET_PC
+-- 
+GitLab

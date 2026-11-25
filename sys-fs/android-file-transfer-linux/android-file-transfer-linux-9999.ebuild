@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{12..14} )
 inherit cmake python-single-r1 xdg
 
 DESCRIPTION="Android File Transfer for Linux"
@@ -63,4 +63,16 @@ src_configure() {
 	use python && mycmakeargs+=( -DPython_EXECUTABLE="${PYTHON}" )
 
 	cmake_src_configure
+}
+
+src_install() {
+	cmake_src_install
+
+	if use python; then
+		dodoc -r python/example
+		echo "from .aftl import *" > "${BUILD_DIR}"/python/__init__.py || die
+		python_moduleinto aftl
+		python_domodule "${BUILD_DIR}"/python/{__init__.py,*.so}
+		rm "${ED}"/usr/aftl.cpython-*.so || die
+	fi
 }

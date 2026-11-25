@@ -1,0 +1,13 @@
+Allow the user to set their own mtune/march flags. There is no reason to force specific flags.
+
+diff '--color=auto' -ur a/bazel/toolchains/cc/mongo_linux/mongo_linux_cc_toolchain_config.bzl b/bazel/toolchains/cc/mongo_linux/mongo_linux_cc_toolchain_config.bzl
+--- a/bazel/toolchains/cc/mongo_linux/mongo_linux_cc_toolchain_config.bzl	2026-06-15 18:37:04.000000000 -0400
++++ b/bazel/toolchains/cc/mongo_linux/mongo_linux_cc_toolchain_config.bzl	2026-07-20 17:27:34.493483935 -0400
+@@ -2007,7 +2007,6 @@
+         tsan_feature,
+         ubsan_feature,
+         ubsan_third_party_feature,
+-        mtune_march_feature,
+         compress_debug_disable_feature,
+         rpath_override_feature,
+         warnings_as_errors_link_feature,

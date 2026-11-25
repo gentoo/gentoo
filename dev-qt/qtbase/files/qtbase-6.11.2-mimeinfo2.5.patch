@@ -1,0 +1,22 @@
+https://bugs.kde.org/show_bug.cgi?id=522948
+https://codereview.qt-project.org/c/qt/qtbase/+/765860
+--- a/src/corelib/mimetypes/qmimedatabase.cpp
++++ b/src/corelib/mimetypes/qmimedatabase.cpp
+@@ -270,5 +270,2 @@
+     const QStringView myGroup = QStringView{mimeTypeName}.left(mimeTypeName.indexOf(u'/'));
+-    // All text/* types are subclasses of text/plain.
+-    if (myGroup == "text"_L1 && mimeTypeName != plainTextMimeType())
+-        return plainTextMimeType();
+     // All real-file mimetypes implicitly derive from application/octet-stream
+@@ -297,2 +294,11 @@
+         provider->addParents(mimeName, result);
++
++    // Implicit rule from the spec: all text/* types are subclasses of text/plain. It holds even
++    // for types that declare other parents, and shared-mime-info >= 2.5 relies on that rather
++    // than listing text/plain (e.g. text/x-shellscript only declares application/x-executable).
++    if (mimeName.startsWith("text/"_L1) && mimeName != plainTextMimeType()
++        && !result.contains(plainTextMimeType())) {
++        result.append(plainTextMimeType());
++    }
++
+     if (result.isEmpty()) {

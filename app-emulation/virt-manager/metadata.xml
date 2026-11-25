@@ -5,7 +5,7 @@
 		<name>Filip Kobierski</name>
 		<email>fkobi@pm.me</email>
 	</maintainer>
-	<maintainer type="project">
+	<maintainer type="project" proxied="maintainer-and-proxy">
 		<email>virtualization@gentoo.org</email>
 		<name>Gentoo Virtualization Project</name>
 	</maintainer>

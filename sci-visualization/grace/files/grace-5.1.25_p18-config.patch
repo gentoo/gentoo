@@ -1,0 +1,10 @@
+--- a/configure	2026-04-24 14:49:53.519758443 +0200
++++ b/configure	2026-04-24 14:51:11.453860825 +0200
+@@ -7800,6 +7800,7 @@
+ /* end confdefs.h.  */
+ 
+ #include <string.h>
++#include <stdlib.h>
+ #include <t1lib.h>
+       int main(void) {
+         char *vlib;

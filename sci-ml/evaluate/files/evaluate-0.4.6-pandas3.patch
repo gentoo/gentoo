@@ -1,0 +1,11 @@
+--- a/src/evaluate/visualization.py	2026-05-25 23:04:36.112310403 +0200
++++ b/src/evaluate/visualization.py	2026-05-25 23:05:32.135713980 +0200
+@@ -225,6 +225,7 @@
+         format_cfg=format_cfg,
+     )
+     for g in zip(data.index):
+-        radar.plot(data.loc[g].values, label=g, marker=format_cfg["marker"], markersize=format_cfg["markersize"])
++        key = g[0] if isinstance(g, tuple) and len(g) == 1 else g
++        radar.plot(data.loc[key].values, label=key, marker=format_cfg["marker"], markersize=format_cfg["markersize"])
+         radar.use_legend(**{"loc": format_cfg["legend_loc"], "bbox_to_anchor": format_cfg["bbox_to_anchor"]})
+     return fig

@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{12..14} )
 
 inherit linux-info python-any-r1 systemd toolchain-funcs
 
@@ -13,7 +13,7 @@ SRC_URI="https://git.kernel.org/pub/scm/utils/cpu/mce/mcelog.git/snapshot/${P}.t
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="selinux"
 
 RDEPEND="selinux? ( sec-policy/selinux-mcelog )"

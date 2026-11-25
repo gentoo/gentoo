@@ -4,7 +4,7 @@ exec bwrap \
     --bind / / \
     --dev-bind /dev /dev \
     --ro-bind /etc/microsoft/identity-broker/etc/lsb-release /etc/lsb-release \
-    --ro-bind /etc/microsoft/identity-broker/etc/os-release /etc/os-release \
+    --ro-bind /etc/microsoft/identity-broker/usr/lib/os-release /usr/lib/os-release \
     --ro-bind /etc/pam.d/system-auth /etc/pam.d/common-password \
     -- \
     /opt/microsoft/intune/libexec/"${0##*/}" "${@}"

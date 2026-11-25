@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>mpagano@gentoo.org</email>
-		<name>Mike Pagano</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<longdescription>
 		This software is a filter program used with Common UNIX Printing System
 		(CUPS) from the Linux. This can supply the high quality print with

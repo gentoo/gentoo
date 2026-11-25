@@ -1,0 +1,61 @@
+From 557428c750139e2097fcfcc1438440037b058a36 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Sat, 6 Jun 2026 10:06:34 +0200
+Subject: [PATCH] CMake: Add explicit KDEPIM_EWS option
+
+- Make Qt6WebEngine required when enabled
+- Qca is only used with KDEPIM_EWS
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt           | 14 +++++++++-----
+ resources/CMakeLists.txt |  2 +-
+ 2 files changed, 10 insertions(+), 6 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 5052b88d1..07b9fcb73 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -64,10 +64,7 @@ find_package(SharedMimeInfo ${SharedMimeInfo_MINIMUM_VERSION} REQUIRED)
+ find_package(Sasl2)
+ set_package_properties(Sasl2 PROPERTIES TYPE REQUIRED)
+ 
+-find_package(Qca-qt6 2.3.7 CONFIG REQUIRED)
+-set_package_properties(Qca-qt6 PROPERTIES DESCRIPTION "Qt Cryptographic Architecture"
+-                   URL "https://invent.kde.org/libraries/qca" TYPE REQUIRED
+-                   PURPOSE "Needed for ews resource.")
++option(KDEPIM_EWS "Enable EWS resource" ON)
+ option(KDEPIM_RUN_AKONADI_TEST "Enable autotest based on Akonadi." TRUE)
+ # QT package
+ find_package(Qt6TextToSpeech ${QT_REQUIRED_VERSION} CONFIG)
+@@ -79,7 +76,14 @@ if(Qt6TextToSpeech_FOUND)
+ set(HAVE_TEXT_TO_SPEECH_SUPPORT TRUE)
+ endif()
+ find_package(Qt6 ${QT_REQUIRED_VERSION} CONFIG REQUIRED Network Widgets Test DBus NetworkAuth Concurrent)
+-find_package(Qt6WebEngineWidgets ${QT_REQUIRED_VERSION} CONFIG)
++
++if(KDEPIM_EWS)
++    find_package(Qt6WebEngineWidgets ${QT_REQUIRED_VERSION} CONFIG REQUIRED)
++    find_package(Qca-qt6 2.3.7 CONFIG REQUIRED)
++    set_package_properties(Qca-qt6 PROPERTIES DESCRIPTION "Qt Cryptographic Architecture"
++                    URL "https://invent.kde.org/libraries/qca" TYPE REQUIRED
++                    PURPOSE "Needed for ews resource.")
++endif()
+ 
+ # KF6 package
+ find_package(KF6Config ${KF_MIN_VERSION} CONFIG REQUIRED)
+diff --git a/resources/CMakeLists.txt b/resources/CMakeLists.txt
+index b2a667176..296e99df3 100644
+--- a/resources/CMakeLists.txt
++++ b/resources/CMakeLists.txt
+@@ -57,6 +57,6 @@ add_subdirectory(vcarddir)
+ add_subdirectory(icaldir)
+ add_subdirectory(vcard)
+ add_subdirectory(folderarchivesettings)
+-if(TARGET Qt::WebEngineWidgets)
++if(KDEPIM_EWS)
+     add_subdirectory(ews)
+ endif()
+-- 
+2.54.0
+

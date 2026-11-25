@@ -1,0 +1,28 @@
+diff '--color=auto' -Naur a/src/lib/crypto/ec.cpp b/src/lib/crypto/ec.cpp
+--- a/src/lib/crypto/ec.cpp	2025-11-21 15:12:02.000000000 +0200
++++ b/src/lib/crypto/ec.cpp	2026-04-04 08:22:12.502593507 +0300
+@@ -40,6 +40,10 @@
+ #include "botan/ecdh.h"
+ #include <cassert>
+ #endif
++#include <botan/version.h>
++#if BOTAN_VERSION_CODE >= BOTAN_VERSION_CODE_FOR(3, 11, 0)
++#include <botan/ec_group.h>
++#endif
+ 
+ namespace pgp {
+ namespace ec {
+diff '--color=auto' -Naur a/src/lib/crypto/exdsa_ecdhkem.cpp b/src/lib/crypto/exdsa_ecdhkem.cpp
+--- a/src/lib/crypto/exdsa_ecdhkem.cpp	2025-11-21 15:12:02.000000000 +0200
++++ b/src/lib/crypto/exdsa_ecdhkem.cpp	2026-04-04 08:34:49.684582995 +0300
+@@ -34,6 +34,10 @@
+ #include "string.h"
+ #include "utils.h"
+ #include <cassert>
++#include <botan/version.h>
++#if BOTAN_VERSION_CODE >= BOTAN_VERSION_CODE_FOR(3, 11, 0)
++#include <botan/ec_group.h>
++#endif
+ 
+ ec_key_t::~ec_key_t()
+ {

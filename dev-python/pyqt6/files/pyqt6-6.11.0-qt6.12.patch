@@ -1,0 +1,21 @@
+Quick fix to build with (still unrleeased) Qt 6.12.0.
+--- a/sip/QtCore/QtCoremod.sip
++++ b/sip/QtCore/QtCoremod.sip
+@@ -23,5 +23,5 @@
+ %Module(name=PyQt6.QtCore, call_super_init=True, default_VirtualErrorHandler=PyQt6, keyword_arguments="Optional", use_limited_api=True, py_ssize_t_clean=True)
+ 
+-%Timeline {Qt_6_0_0 Qt_6_1_0 Qt_6_2_0 Qt_6_3_0 Qt_6_4_0 Qt_6_5_0 Qt_6_6_0 Qt_6_7_0 Qt_6_8_0 Qt_6_9_0 Qt_6_10_0 Qt_6_11_0}
++%Timeline {Qt_6_0_0 Qt_6_1_0 Qt_6_2_0 Qt_6_3_0 Qt_6_4_0 Qt_6_5_0 Qt_6_6_0 Qt_6_7_0 Qt_6_8_0 Qt_6_9_0 Qt_6_10_0 Qt_6_11_0 Qt_6_12_0}
+ 
+ %Platforms {Android iOS Linux macOS WebAssembly Windows}
+--- a/sip/QtCore/qcoreevent.sip
++++ b/sip/QtCore/qcoreevent.sip
+@@ -201,6 +201,8 @@
+         TabletTrackingChange,
+         GraphicsSceneLeave,
++%If (- Qt_6_12_0)
+         EnterEditFocus,
+         LeaveEditFocus,
++%End
+ %If (Qt_6_6_0 -)
+         DevicePixelRatioChange,

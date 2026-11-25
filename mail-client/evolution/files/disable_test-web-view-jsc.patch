@@ -1,0 +1,22 @@
+Description: Disable a test that won't start due to webkit sandbox
+ 3: Test command: /build/reproducible-path/evolution-3.62.0/obj-x86_64-linux-gnu/src/e-util/test-web-view-jsc
+ 3: Working Directory: /build/reproducible-path/evolution-3.62.0/obj-x86_64-linux-gnu/src/e-util
+ [...]
+ 3: # Start of EWebView tests
+ 3: # GLib-GIO-DEBUG: _g_io_module_get_default: Found default implementation local (GLocalVfs) for ‘gio-vfs’
+ 3: # GLib-GIO-DEBUG: _g_io_module_get_default: Found default implementation dconf (DConfSettingsBackend) for ‘gsettings-backend’
+ 3: not ok /EWebView/JSCObjectProperties - FATAL-WARNING: Path /usr/share/evolution/webkit must be created before adding it to the sandbox
+ 3: Bail out!
+ 3/3 Test #3: test-web-view-jsc ................Subprocess aborted***Exception:   0.25 sec
+
+--- a/src/e-util/CMakeLists.txt
++++ b/src/e-util/CMakeLists.txt
+@@ -862,7 +862,7 @@ add_private_programs_simple(
+ add_test_programs(
+ 	test-markdown
+ 	test-ui-action
+-	test-web-view-jsc
++#	test-web-view-jsc
+ )
+ 
+ add_private_program(test-html-editor-units

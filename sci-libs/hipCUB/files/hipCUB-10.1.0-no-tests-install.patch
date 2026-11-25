@@ -1,0 +1,33 @@
+Do not install tests
+--- a/test/CMakeLists.txt
++++ b/test/CMakeLists.txt
+@@ -58,7 +58,6 @@ function(add_relative_test test_name test_target resource_group)
+         ENVIRONMENT "LLVM_PROFILE_FILE=${PROFILE_DIR}/profraw/hipcub-coverage_%m.profraw"
+       )
+     endif()
+-    rocm_install(TARGETS ${test_target} COMPONENT tests)
+     file(APPEND "${INSTALL_TEST_FILE}" "add_test(${test_name} \"../${EXE_NAME}\")\n")
+     # Set the resource group for the test. This must correspond to a gfxID present in resources.json.
+     file(APPEND "${INSTALL_TEST_FILE}" "set_tests_properties([=[${test_name}]=] PROPERTIES RESOURCE_GROUPS \"1,${resource_group}:1\")\n")
+@@ -174,21 +173,3 @@ else()
+         "${ROCM_LIBRARIES_ROOT}/shared/ctest/TestCategories.cmake - "
+         "skipping hipCUB test category labels")
+ endif()
+-
+-
+-rocm_install(
+-    FILES "${INSTALL_TEST_FILE}"
+-    DESTINATION "${CMAKE_INSTALL_BINDIR}/${PROJECT_NAME}"
+-    COMPONENT tests
+-    RENAME "CTestTestfile.cmake"
+-)
+-
+-# Install the executable using the standard install command instead of rocm_install
+-# since we want to put it in a custom DESTINATION (rocm_install does not support
+-# the DESTINATION option for TARGETS).
+-set_property(TARGET generate_resource_spec APPEND PROPERTY INSTALL_RPATH "$ORIGIN/../../lib")
+-install(
+-    TARGETS generate_resource_spec
+-    DESTINATION "${CMAKE_INSTALL_BINDIR}/${PROJECT_NAME}"
+-    COMPONENT tests
+-)

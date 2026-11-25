@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,7 +16,7 @@ SRC_URI="
 LICENSE="BSD"
 SLOT="0/15"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~sparc x86"
-IUSE="cairo +cpuid cuda debug doc l0 nvml +pci rocm static-libs svg udev valgrind xml X video_cards_nvidia"
+IUSE="cairo +cpuid cuda debug doc l0 nvml +pci rocm selinux static-libs svg udev valgrind xml X video_cards_nvidia"
 
 # opencl: opencl support dropped with x11-drivers/ati-drivers being removed (bug #582406).
 #         anyone with hardware is welcome to step up and help test to get it re-added.
@@ -45,6 +45,7 @@ DEPEND="
 	${RDEPEND}
 	valgrind? ( dev-debug/valgrind )
 "
+RDEPEND+=" selinux? ( sec-policy/selinux-hwloc )"
 BDEPEND="virtual/pkgconfig"
 
 PATCHES=( "${FILESDIR}/${PN}-1.8.1-gl.patch" )

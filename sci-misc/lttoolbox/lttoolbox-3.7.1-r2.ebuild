@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -24,6 +24,7 @@ BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.7.1-bashism.patch
+	"${FILESDIR}"/${PN}-3.7.1-clang.patch
 	"${FILESDIR}"/${PN}-3.7.1-cstdint-include.patch
 	"${FILESDIR}"/${PN}-3.7.1-libxml2-2.14.patch
 )

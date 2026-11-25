@@ -1,0 +1,54 @@
+From 81f98b43556366e5c5740efed5839c0c1b7fafbd Mon Sep 17 00:00:00 2001
+Message-ID: <81f98b43556366e5c5740efed5839c0c1b7fafbd.1783899089.git.sam@gentoo.org>
+In-Reply-To: <dee64f93c975515f6d8e286c3be776a7a57deba2.1783899089.git.sam@gentoo.org>
+References: <dee64f93c975515f6d8e286c3be776a7a57deba2.1783899089.git.sam@gentoo.org>
+From: Sam James <sam@gentoo.org>
+Date: Mon, 18 May 2026 01:32:05 +0100
+Subject: [PATCH 3/4] su: use auth_use_pam
+
+su is linked against pam:
+```
+$ lddtree /bin/su
+/bin/su (interpreter => /lib64/ld-linux-x86-64.so.2)
+    libpam.so.0 => /usr/lib64/libpam.so.0
+        libaudit.so.1 => /usr/lib64/libaudit.so.1
+            libcap-ng.so.0 => /usr/lib64/libcap-ng.so.0
+    libpam_misc.so.0 => /usr/lib64/libpam_misc.so.0
+    libc.so.6 => /usr/lib64/libc.so.6
+```
+
+Noticed when looking into the same bug as 169f725b3ff9988de5ab9b628fc45efb8b29d0b2.
+
+Bug: https://bugs.gentoo.org/973082
+Signed-off-by: Sam James <sam@gentoo.org>
+Signed-off-by: Jason Zaman <perfinion@gentoo.org>
+(cherry picked from commit 26497fd12d221df3826bb972327144c3e90fc563)
+---
+ policy/modules/admin/su.if | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/policy/modules/admin/su.if b/policy/modules/admin/su.if
+index ebb7ef0e0..4566b522b 100644
+--- a/policy/modules/admin/su.if
++++ b/policy/modules/admin/su.if
+@@ -78,7 +78,7 @@ template(`su_restricted_domain_template', `
+ 
+ 	auth_domtrans_chk_passwd($1_su_t)
+ 	auth_dontaudit_read_shadow($1_su_t)
+-	auth_use_nsswitch($1_su_t)
++	auth_use_pam($1_su_t)
+ 	auth_create_faillog_files($1_su_t)
+ 	auth_rw_faillog($1_su_t)
+ 	auth_setattr_faillog_files($1_su_t)
+@@ -186,7 +186,7 @@ template(`su_role_template',`
+ 
+ 	auth_domtrans_chk_passwd($1_su_t)
+ 	auth_dontaudit_read_shadow($1_su_t)
+-	auth_use_nsswitch($1_su_t)
++	auth_use_pam($1_su_t)
+ 	auth_create_faillog_files($1_su_t)
+ 	auth_rw_faillog($1_su_t)
+ 	auth_setattr_faillog_files($1_su_t)
+-- 
+2.55.0
+

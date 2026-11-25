@@ -1,0 +1,22 @@
+#!/sbin/openrc-run
+# Copyright 1999-2017 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+: ${VALKEY_SENTINEL_DIR:=/tmp}
+: ${VALKEY_SENTINEL_CONF:=/etc/valkey/sentinel.conf}
+: ${VALKEY_SENTINEL_USER:=valkey}
+: ${VALKEY_SENTINEL_GROUP:=valkey}
+: ${VALKEY_SENTINEL_TIMEOUT:=30}
+
+command="/usr/sbin/valkey-sentinel"
+command_args="${VALKEY_SENTINEL_CONF}"
+command_background="true"
+command_user="${VALKEY_SENTINEL_USER}:${VALKEY_SENTINEL_GROUP}"
+pidfile="/run/${RC_SVCNAME}.pid"
+retry="${VALKEY_SENTINEL_TIMEOUT}"
+start_stop_daemon_args="--chdir \"${VALKEY_SENTINEL_DIR}\""
+
+depend() {
+	use localmount logger
+	after keepalived valkey
+}

@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,7 +16,10 @@ else
 fi
 
 DESCRIPTION="Instant messaging client using the encrypted p2p Tox protocol"
-HOMEPAGE="https://qtox.github.io/"
+HOMEPAGE="
+	https://qtox.github.io/
+	https://github.com/TokTok/qTox/
+"
 
 LICENSE="GPL-3+"
 SLOT="0"

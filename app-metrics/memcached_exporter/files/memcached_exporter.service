@@ -1,0 +1,14 @@
+[Unit]
+Description=Prometheus memcached exporter
+Documentation=https://github.com/prometheus/memcached_exporter/
+After=network-online.target
+
+[Service]
+User=memcached_exporter
+Group=memcached_exporter
+Restart=on-failure
+ExecStart=/usr/bin/memcached_exporter --web.listen-address=:9150 --memcached.address=localhost:11211
+TimeoutStopSec=20s
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,47 @@
+From a880070ce7ede60be0cf1cb7f013f21ac46b6e7d Mon Sep 17 00:00:00 2001
+From: Christopher Byrne <salah.coronya@gmail.com>
+Date: Fri, 24 Apr 2026 18:47:13 -0500
+Subject: [PATCH 1/2] bash/*: Remove vestigial bash completions
+
+They've long since moved to other projects, and Gentoo Portage complains about them.
+
+Signed-off-by: Christopher Byrne <salah.coronya@gmail.com>
+---
+ bash/virt-alignment-scan | 6 ------
+ bash/virt-win-reg        | 6 ------
+ 2 files changed, 12 deletions(-)
+
+diff --git a/bash/virt-alignment-scan b/bash/virt-alignment-scan
+index 36529fa8..ba299064 100644
+--- a/bash/virt-alignment-scan
++++ b/bash/virt-alignment-scan
+@@ -79,12 +79,6 @@ _guestfs_virttools ()
+     esac
+ }
+ 
+-_guestunmount ()
+-{
+-    _guestfs_virttools "guestunmount" 1
+-} &&
+-complete -o default -F _guestunmount guestunmount
+-
+ _virt_alignment_scan ()
+ {
+     _guestfs_virttools "virt-alignment-scan" 1
+diff --git a/bash/virt-win-reg b/bash/virt-win-reg
+index 91cfbf82..a430508a 100644
+--- a/bash/virt-win-reg
++++ b/bash/virt-win-reg
+@@ -45,9 +45,3 @@ _virt_win_reg ()
+     _guestfs_options_only "virt-win-reg"
+ } &&
+ complete -o default -F _virt_win_reg virt-win-reg
+-
+-_libguestfs-test-tool ()
+-{
+-    _guestfs_options_only "libguestfs-test-tool"
+-} &&
+-complete -o default -F _libguestfs-test-tool libguestfs-test-tool
+-- 
+2.53.0
+

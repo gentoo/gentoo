@@ -1,0 +1,50 @@
+https://github.com/bfgroup/b2/commit/708353cdeb6006757e7c6971283efb53f718ae25
+https://bugs.gentoo.org/970330
+Fixed patch path to accommodate $S.
+
+From: zyk2507 <93830642+zyk2507@users.noreply.github.com>
+Date: Sun, 1 Feb 2026 12:36:17 +0800
+Subject: [PATCH] Fix crash in var_defines when define string is empty (#535)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+* Fix crash in var_defines when define string is empty
+
+b2 aborts in var_defines on empty define
+
+* Redo no-value error fix to keep previous flow.
+
+Still avoid errors for empty variables, but do so while not early continue, and to keep the use of string_view.
+
+---------
+
+Co-authored-by: René Ferdinand Rivera Morell <grafikrobot@gmail.com>
+--- a/engine/variable.cpp
++++ b/engine/variable.cpp
+@@ -78,8 +78,14 @@ void var_defines(struct module_t * module, const char * const * e, int preproces
+ 	for (; *e; ++e)
+ 	{
+ 		::b2::string_view def(*e);
+-		::b2::string_view var(def.begin(), def.find('='));
+-		::b2::string_view val(def.begin() + var.size() + 1);
++		::b2::string_view var = def;
++		::b2::string_view val;
++		auto eq = def.find('=');
++		if (eq != ::b2::string_view::npos)
++		{
++			var = ::b2::string_view(def.begin(), eq);
++			val = ::b2::string_view(def.begin() + eq + 1);
++		}
+ 		b2::jam::variable jam_var { module,
+ 			std::string { var.begin(), var.end() }.c_str() };
+ 		// std::printf(">> var_defines: *e = %s\n", *e);
+@@ -89,7 +95,7 @@ void var_defines(struct module_t * module, const char * const * e, int preproces
+ 		// }
+ 
+ 		// No value to set var with.
+-		if (var.size() == def.size()) continue;
++		if (val.empty()) continue;
+ 
+ 		// Skip pre-processing, to just set the raw value.
+ 		if (preprocess == 0)

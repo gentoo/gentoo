@@ -1,11 +1,11 @@
-# Copyright 2023-2025 Gentoo Authors
+# Copyright 2023-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 inherit systemd optfeature
 
-DESCRIPTION="Policy-driven snapshot management and replication tools for OpenZFS."
+DESCRIPTION="Policy-driven snapshot management and replication tools for OpenZFS"
 HOMEPAGE="https://github.com/jimsalterjrs/sanoid"
 
 if [[ "${PV}" = *9999 ]]; then

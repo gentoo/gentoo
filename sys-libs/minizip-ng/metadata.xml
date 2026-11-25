@@ -6,7 +6,10 @@
 		<name>Gentoo Base System</name>
 	</maintainer>
 	<use>
-		<flag name="compat">Enable compatibility with <pkg>sys-libs/zlib</pkg>'s USE=minizip</flag>
+		<flag name="compat">
+		Enable compatibility with <pkg>sys-libs/zlib</pkg>'s USE=minizip, allowing minizip-ng
+		to replace it. Only enable if you want to replace reference minizip with minizip-ng.
+		</flag>
 		<flag name="openssl">Use <pkg>dev-libs/openssl</pkg> for further encryption capabilities</flag>
 	</use>
 	<upstream>

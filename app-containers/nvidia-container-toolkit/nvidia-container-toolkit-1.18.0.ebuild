@@ -8,7 +8,7 @@ EGO_PN="github.com/NVIDIA/${PN}"
 inherit go-module
 
 DESCRIPTION="NVIDIA container runtime toolkit"
-HOMEPAGE="https://github.com/NVIDIA/container-toolkit"
+HOMEPAGE="https://github.com/NVIDIA/nvidia-container-toolkit"
 
 if [[ "${PV}" == "9999" ]] ; then
 	inherit git-r3

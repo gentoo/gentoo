@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -20,6 +20,8 @@ IUSE="devtools"
 
 # Does all kinds of wonky stuff like connecting to Docker daemon, network activity, ...
 RESTRICT+=" test"
+
+BDEPEND=">=dev-lang/go-1.25.0"
 
 PATCHES=( "${FILESDIR}/go-ethereum-1.16.7-dont-strip.patch" )
 

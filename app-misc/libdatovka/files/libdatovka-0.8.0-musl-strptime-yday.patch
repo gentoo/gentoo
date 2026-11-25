@@ -1,0 +1,133 @@
+From 813c4dda8b6d75dc1f8e7ab1237d0efc468d3fbb Mon Sep 17 00:00:00 2001
+From: David Seifert <soap@gentoo.org>
+Date: Sun, 8 Nov 2026 10:59:01 +0100
+Subject: [PATCH] Fix parsing of ordinal ISO 8601 dates on musl.
+
+POSIX does not require strptime() to derive tm_mon/tm_mday from %j, and
+musl does not, so ordinal ISO 8601 dates (e.g. "2001-34") were mis-parsed
+on musl. Compute tm_mon and tm_mday from tm_yday after parsing.
+
+Bug: https://bugs.gentoo.org/922481
+---
+ src/unix.c  |  7 ++++++-
+ src/utils.c | 21 +++++++++++++++++++++
+ src/utils.h |  4 ++++
+ src/win32.c | 20 +-------------------
+ 4 files changed, 32 insertions(+), 20 deletions(-)
+
+diff --git a/src/unix.c b/src/unix.c
+index 746b42f..9158d3e 100644
+--- a/src/unix.c
++++ b/src/unix.c
+@@ -4,6 +4,7 @@
+ #include <time.h>
+ #include "compiler.h" /* _hidden */
+ #include "libdatovka/isds.h"
++#include "utils.h"
+ 
+ #if HAVE_LIBCURL
+ /* Convert UTF-8 @string representation of ISO 8601 date to @time.
+@@ -22,8 +23,12 @@ _hidden isds_error _isds_datestring2tm(const xmlChar *string, struct tm *time) {
+         return IE_SUCCESS;
+ 
+     offset = strptime((char*)string, "%Y-%j", time);
+-    if (offset && *offset == '\0')
++    if (offset && *offset == '\0') {
++        /* POSIX does not require strptime() to set tm_mon and tm_mday
++         * from %j, and musl only sets tm_yday. */
++        _isds_yday2mday(time);
+         return IE_SUCCESS;
++    }
+ 
+     return IE_NOTSUP;
+ }
+diff --git a/src/utils.c b/src/utils.c
+index 514403d..8f31fdc 100644
+--- a/src/utils.c
++++ b/src/utils.c
+@@ -378,3 +378,24 @@ _hidden int _isds_hex2i(char digit) {
+ _hidden int _isds_sizet2int(size_t val) {
+     return (val <= INT_MAX) ? (int) val : -1;
+ }
++
++/* Set tm_mon and tm_mday from tm_year and tm_yday. */
++_hidden void _isds_yday2mday(struct tm *time) {
++    static const int mtab[12] =
++        {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
++    int i, mdays, year = 1900 + time->tm_year;
++    const int leap = (!(year % 4) && ((year % 100) || !(year %400))) ? 1 : 0;
++
++    time->tm_mday = time->tm_yday + 1;
++
++    for (i = 0; i < 12; i++) {
++        mdays = mtab[i] + ((i == 1) ? leap : 0);
++        if (time->tm_mday > mdays) {
++            time->tm_mday -= mdays;
++        } else {
++            break;
++        }
++    }
++
++    time->tm_mon = i;
++}
+diff --git a/src/utils.h b/src/utils.h
+index b9718d0..721dbae 100644
+--- a/src/utils.h
++++ b/src/utils.h
+@@ -4,6 +4,7 @@
+ #include <stdlib.h>
+ #include <stdarg.h>
+ #include <stdio.h>
++#include <time.h>
+ 
+ /* PANIC macro aborts current process without any clean up.
+  * Use it as last resort fatal error solution */
+@@ -103,4 +104,7 @@ int _isds_sizet2int(size_t val);
+     (memory) = NULL; \
+ }
+ 
++/* Set tm_mon and tm_mday from tm_year and tm_yday. */
++void _isds_yday2mday(struct tm *time);
++
+ #endif
+diff --git a/src/win32.c b/src/win32.c
+index 431a4e8..d4593cc 100644
+--- a/src/win32.c
++++ b/src/win32.c
+@@ -7,24 +7,6 @@
+ #include "win32.h"
+ 
+ #if HAVE_LIBCURL
+-static void yday2mday(struct tm *time) {
+-    static int mtab[12] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+-    int i, year = 1900 + time->tm_year;
+-
+-    mtab[1] = (!(year % 4) && ((year % 100) || !(year %400))) ? 29 : 28;
+-    time->tm_mday = time->tm_yday + 1;
+-
+-    for (i = 0; i < 12; i++) {
+-        if (time->tm_mday > mtab[i]) {
+-            time->tm_mday -= mtab[i];
+-        } else {
+-            break;
+-        }
+-    }
+-
+-    time->tm_mon = i;
+-}
+-
+ /* Convert UTF-8 @string representation of ISO 8601 date to @time.
+  * XXX: Not all ISO formats are supported */
+ isds_error _isds_datestring2tm(const xmlChar *string, struct tm *time) {
+@@ -49,7 +31,7 @@ isds_error _isds_datestring2tm(const xmlChar *string, struct tm *time) {
+             && tmp == strlen((const char*)string)) {
+         time->tm_yday--;
+         time->tm_year -= 1900;
+-        yday2mday(time);
++        _isds_yday2mday(time);
+             return IE_SUCCESS;
+     }
+ 
+-- 
+2.56.0
+

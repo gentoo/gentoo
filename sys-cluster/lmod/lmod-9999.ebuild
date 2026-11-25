@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,6 +17,8 @@ else
 	S="${WORKDIR}"/Lmod-${PV}
 	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
 fi
+SRC_URI+=" https://dev.gentoo.org/~tupone/distfiles/${PN}-9.1.2-load-err.txt"
+SRC_URI+=" https://dev.gentoo.org/~tupone/distfiles/${PN}-9.2-help-err.txt"
 
 LICENSE="MIT"
 SLOT="0"
@@ -37,15 +39,16 @@ RDEPEND="${LUA_DEPS}
 BDEPEND="${RDEPEND}
 	app-alternatives/bc
 	test? (
-		$(lua_gen_cond_dep '
-			dev-util/hermes[${LUA_SINGLE_USEDEP}]
-		')
+		>=dev-util/hermes-3.1[${LUA_SINGLE_USEDEP}]
 		app-shells/tcsh
 	)
 	virtual/pkgconfig
 "
 
-PATCHES=( "${FILESDIR}"/${PN}-8.4.19-no-libsandbox.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-8.4.19-no-libsandbox.patch
+	"${FILESDIR}"/${PN}-8.7.55-make.patch
+)
 
 pkg_pretend() {
 	elog "You can control the siteName and syshost settings by"
@@ -59,10 +62,27 @@ pkg_pretend() {
 
 src_prepare() {
 	default
-	rm -r pkgs/{luafilesystem,term} || die
-	rm -r rt/{ck_mtree_syntax,colorize,end2end,help,ifur,settarg} || die
+	rm -r rt/end2end || die # should run in a git repository
 	hprefixify -w '/#\!\/bin\/tcsh/' rt/csh_swap/csh_swap.tdesc || die
 	eautoreconf
+	sed -i \
+		-e "1s|#!/usr/bin/env lua|#!${LUA}|" \
+		proj_mgmt/joinBase64Results \
+		proj_mgmt/clean_gold_files/regularize \
+		|| die
+	sed -i \
+		-e "s|    lua|    ${LUA}|" \
+		rt/csh_swap/csh_swap.tdesc \
+		|| die
+	sed -i \
+		-e "/prepend_path/d" \
+		rt/changeMPATH/mf/Core/admin/admin-1.0.lua \
+		rt/changeMPATH/mf/Core2/admin/admin-1.0.lua \
+		|| die
+	cp "${DISTDIR}"/${PN}-9.1.2-load-err.txt \
+		rt/load/err.txt || die
+	cp "${DISTDIR}"/${PN}-9.2-help-err.txt \
+		rt/help/err.txt || die
 }
 
 src_configure() {

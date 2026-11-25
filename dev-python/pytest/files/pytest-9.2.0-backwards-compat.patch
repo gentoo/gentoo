@@ -1,0 +1,191 @@
+From 620cc433033b6d2170ea983e5f90b56d1d577f04 Mon Sep 17 00:00:00 2001
+From: Ronny Pfannschmidt <opensource@ronnypfannschmidt.de>
+Date: Wed, 4 Nov 2026 03:34:41 -0500
+Subject: [PATCH] Merge pull request #15296 from
+ pytest-dev/claude/project-thread-cukdhn
+
+Accept numeric strings for verbosity options in TOML again, with a deprecation
+
+(cherry picked from commit 08017d9ada4c72a7b6a78f7873c238070e24c982)
+--- a/src/_pytest/config/__init__.py
++++ b/src/_pytest/config/__init__.py
+@@ -1261,6 +1261,7 @@ def __init__(
+         self.trace = self.pluginmanager.trace.root.get("config")
+         self.hook = self.pluginmanager.hook
+         self._inicache: dict[str, Any] = {}
++        self._warned_verbosity_strings: set[str] = set()
+         self._inicfg: ConfigDict = {}
+         self._cleanup_stack = contextlib.ExitStack()
+         self.pluginmanager.register(self, "pytestconfig")
+@@ -2268,8 +2269,26 @@ def get_verbosity(self, verbosity_type: str | None = None) -> int:
+         level = self.getini(ini_name)
+         if level == Config._VERBOSITY_INI_DEFAULT:
+             return global_level
+-
+-        return int(level)
++        if isinstance(level, int):
++            return level
++        try:
++            int_level = int(level)
++        except ValueError:
++            raise UsageError(
++                f"{self.inipath}: config option '{ini_name}' expects an int "
++                f"or 'auto', got {level!r}"
++            ) from None
++        # A numeric str only gets here from TOML: in ini mode the int member
++        # of the option type already converted it.
++        if ini_name not in self._warned_verbosity_strings:
++            self._warned_verbosity_strings.add(ini_name)
++            self.issue_config_time_warning(
++                _pytest.deprecated.TOML_NUMERIC_STRING.format(
++                    name=ini_name, value=level
++                ),
++                stacklevel=2,
++            )
++        return int_level
+ 
+     @staticmethod
+     def _verbosity_ini_name(verbosity_type: str) -> str:
+@@ -2289,7 +2308,9 @@ def _add_verbosity_ini(parser: Parser, verbosity_type: str, help: str) -> None:
+         parser.addini(
+             Config._verbosity_ini_name(verbosity_type),
+             help=help,
+-            type=int | Literal["auto"],
++            # str rather than Literal["auto"]: numeric strings in TOML are
++            # deprecated but still accepted, see get_verbosity.
++            type=int | str,
+             default=Config._VERBOSITY_INI_DEFAULT,
+         )
+ 
+--- a/src/_pytest/deprecated.py
++++ b/src/_pytest/deprecated.py
+@@ -114,6 +114,13 @@
+     '(e.g. type="args") instead of relying on the implicit string default.'
+ )
+ 
++TOML_NUMERIC_STRING = UnformattedWarning(
++    PytestRemovedIn10Warning,
++    "{name} = {value!r} in TOML configuration is deprecated, "
++    "use an integer instead: {name} = {value}\n"
++    "See https://docs.pytest.org/en/stable/deprecations.html#toml-numeric-strings",
++)
++
+ # You want to make some `__init__` or function "private".
+ #
+ #   def my_private_function(some, args):
+--- a/src/_pytest/tmpdir.py
++++ b/src/_pytest/tmpdir.py
+@@ -30,6 +30,7 @@
+ from _pytest.config import hookimpl
+ from _pytest.config.argparsing import Parser
+ from _pytest.deprecated import check_ispytest
++from _pytest.deprecated import TOML_NUMERIC_STRING
+ from _pytest.fixtures import fixture
+ from _pytest.fixtures import FixtureRequest
+ from _pytest.monkeypatch import MonkeyPatch
+@@ -97,7 +98,18 @@ def from_config(
+         :meta private:
+         """
+         check_ispytest(_ispytest)
+-        count = int(config.getini("tmp_path_retention_count"))
++        count = config.getini("tmp_path_retention_count")
++        if isinstance(count, str):
++            # A str only gets here from TOML: in ini mode the int member of
++            # the option type already converted it.
++            value = count
++            count = int(value)
++            config.issue_config_time_warning(
++                TOML_NUMERIC_STRING.format(
++                    name="tmp_path_retention_count", value=value
++                ),
++                stacklevel=2,
++            )
+         if count < 0:
+             raise ValueError(
+                 f"tmp_path_retention_count must be >= 0. Current input: {count}."
+@@ -299,6 +311,7 @@ def pytest_addoption(parser: Parser) -> None:
+         "tmp_path_retention_count",
+         help="How many sessions should we keep the `tmp_path` directories, according to `tmp_path_retention_policy`.",
+         default=3,
++        # str: numeric strings in TOML are deprecated but still accepted.
+         type=int | str,
+     )
+ 
+--- a/testing/test_config.py
++++ b/testing/test_config.py
+@@ -13,6 +13,7 @@
+ from typing import Any
+ from typing import cast
+ from typing import Literal
++import warnings
+ 
+ import _pytest._code
+ from _pytest.assertion.rewrite import AssertionRewritingHook
+@@ -3630,7 +3631,6 @@ def test_getini(
+     @pytest.mark.parametrize(
+         ("name", "value"),
+         [
+-            ("verbosity_assertions", '"loud"'),
+             ("log_file_mode", '"x"'),
+             ("parametrize_long_str_id_strategy", '"bogus"'),
+         ],
+@@ -3645,3 +3645,36 @@ def test_get_verbosity(self, pytester: Pytester) -> None:
+         pytester.maketoml("[pytest]\nverbosity_assertions = 2\n")
+         config = pytester.parseconfig()
+         assert config.get_verbosity(Config.VERBOSITY_ASSERTIONS) == 2
++
++    def test_get_verbosity_numeric_string_deprecated(self, pytester: Pytester) -> None:
++        pytester.maketoml('[pytest]\nverbosity_assertions = "2"\n')
++        pytester.makepyfile(
++            """
++            from pytest import Config
++
++            def test_a(pytestconfig):
++                assert pytestconfig.get_verbosity(Config.VERBOSITY_ASSERTIONS) == 2
++
++            def test_b(pytestconfig):
++                assert pytestconfig.get_verbosity(Config.VERBOSITY_ASSERTIONS) == 2
++            """
++        )
++        result = pytester.runpytest()
++        result.assert_outcomes(passed=2, warnings=1)
++        result.stdout.fnmatch_lines(
++            ["*PytestRemovedIn10Warning: verbosity_assertions = '2' in TOML*"]
++        )
++
++    def test_get_verbosity_ini_numeric_string(self, pytester: Pytester) -> None:
++        pytester.makeini("[pytest]\nverbosity_assertions = 2\n")
++        config = pytester.parseconfig()
++        with warnings.catch_warnings():
++            warnings.simplefilter("error")
++            assert config.get_verbosity(Config.VERBOSITY_ASSERTIONS) == 2
++
++    @pytest.mark.parametrize("toml_value", ['"loud"', "true", "2.5"])
++    def test_get_verbosity_invalid(self, pytester: Pytester, toml_value: str) -> None:
++        pytester.maketoml(f"[pytest]\nverbosity_assertions = {toml_value}\n")
++        config = pytester.parseconfig()
++        with pytest.raises(UsageError, match="verbosity_assertions"):
++            config.get_verbosity(Config.VERBOSITY_ASSERTIONS)
+--- a/testing/test_tmpdir.py
++++ b/testing/test_tmpdir.py
+@@ -232,6 +232,20 @@ def test_1(tmp_path):
+             # Check the base dir itself is gone without depending on test results
+             assert base_dir == []
+ 
++    def test_retention_count_toml_string_deprecated(self, pytester: Pytester) -> None:
++        pytester.maketoml('[pytest]\ntmp_path_retention_count = "2"\n')
++        pytester.makepyfile(
++            """
++            def test_1(tmp_path_factory):
++                assert tmp_path_factory._retention_count == 2
++            """
++        )
++        result = pytester.runpytest()
++        result.assert_outcomes(passed=1, warnings=1)
++        result.stdout.fnmatch_lines(
++            ["*PytestRemovedIn10Warning: tmp_path_retention_count = '2' in TOML*"]
++        )
++
+     @pytest.mark.parametrize("policy", ['"failed"', '"all"'])
+     @pytest.mark.parametrize("count", [0, 1, 3])
+     def test_retention_count(self, pytester: Pytester, policy, count) -> None:

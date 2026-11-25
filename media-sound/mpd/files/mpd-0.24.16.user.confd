@@ -1,0 +1,14 @@
+# Copyright 2026 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+#MPD_CFGFILE="${XDG_CONFIG_HOME}/mpd/mpd.conf"
+
+# For all command line options, please see `mpd --help`
+#MPD_EXTRA_ARGS="--verbose"
+
+# See https://mpd.readthedocs.io/en/stable/user.html#startup
+rc_ulimit=""
+# Required by io-uring
+#rc_ulimit="${rc_ulimit} -l 65535"
+# Required for real-time
+#rc_ulimit="${rc_ulimit} -r 40"

@@ -1,0 +1,29 @@
+From cee6efe196baed28cd6f6000aa6ac415d1210dfe Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <chewi@gentoo.org>
+Date: Tue, 8 Sep 2026 16:24:13 +0100
+Subject: [PATCH] rust: respect CARGO_BUILD_TARGET when locating build output
+
+When cross-compiling, Cargo always writes to a target-tuple subdirectory
+determined by CARGO_BUILD_TARGET, even when it matches the native tuple.
+The build looked in $BUILD_DIR/$BUILD_TYPE directly, so it failed to
+locate the freshly built library.
+
+Respect CARGO_BUILD_TARGET in the output path so the correct artifact
+is located.
+
+Signed-off-by: James Le Cuirot <chewi@gentoo.org>
+--- a/src/cargo-meson.sh
++++ b/src/cargo-meson.sh
+@@ -38,7 +38,7 @@ then
+ 	exit $RET
+ fi
+ 
+-if ! cmp "$BUILD_DIR/$BUILD_TYPE/$LIBNAME" "$BUILD_DIR/libgitcore.a" >/dev/null 2>&1
++if ! cmp "$BUILD_DIR/${CARGO_BUILD_TARGET-}/$BUILD_TYPE/$LIBNAME" "$BUILD_DIR/libgitcore.a" >/dev/null 2>&1
+ then
+-	cp "$BUILD_DIR/$BUILD_TYPE/$LIBNAME" "$BUILD_DIR/libgitcore.a"
++	cp "$BUILD_DIR/${CARGO_BUILD_TARGET-}/$BUILD_TYPE/$LIBNAME" "$BUILD_DIR/libgitcore.a"
+ fi
+-- 
+2.55.0
+

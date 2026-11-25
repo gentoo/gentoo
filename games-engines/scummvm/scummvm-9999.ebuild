@@ -1,11 +1,11 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 inherit desktop flag-o-matic toolchain-funcs xdg
 
-DESCRIPTION="Reimplementation of the SCUMM game engine used in Lucasarts adventures"
+DESCRIPTION="Reimplementation of various game engines for adventures and role-playing games"
 HOMEPAGE="https://www.scummvm.org/"
 
 if [[ ${PV} == *9999* ]]; then
@@ -92,6 +92,13 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=strict-aliasing, -Werror=odr, -Werror=lto-type-mismatch
+	# https://bugs.gentoo.org/968927
+	# https://bugs.gentoo.org/965158
+	# https://bugs.scummvm.org/ticket/17412
+	append-flags -fno-strict-aliasing
+	filter-lto
+
 	use x86 && append-ldflags -Wl,-z,noexecstack
 	tc-export STRINGS
 

@@ -36,58 +36,378 @@
 
 #--- END OF EXAMPLES ---
 
-# Michał Górny <mgorny@gentoo.org> (2026-03-25)
-# Broken with >=dev-python/numpy-2.  Unmaintained.  No revdeps.
-# Removal on 2026-04-24.  Bug #962941.
-dev-python/amodem
+# Andreas Sturmlechner <asturm@gentoo.org> (2026-11-24)
+# Dead upstream. KDE-bug: https://bugs.kde.org/show_bug.cgi?id=508169
+# Removal on 2026-12-15.
+kde-misc/kio-gdrive
 
-# Ionen Wolkens <ionen@gentoo.org> (2026-03-23)
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2026-11-20)
+# Unused sec-keys.
+# Removal on 2026-12-20.
+sec-keys/openpgp-keys-apache-xmlgraphics-batik
+sec-keys/openpgp-keys-apache-xmlgraphics-commons
+sec-keys/openpgp-keys-apache-xmlgraphics-fop
+
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2026-11-19)
+# Unused Java library
+# Removal on 2026-12-19.
+dev-java/bcmail
+
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2026-11-16)
+# Unused sec-keys.
+# Removal on 2026-12-16.
+sec-keys/openpgp-keys-sjaranowski
+sec-keys/apache-tomcat-jakartaee-migration
+sec-keys/apache-creadur
+
+# Jonas Stein <jstein@gentoo.org> (2026-11-14)
+# Removal on 2026-12-14.  Bug #986570.
+x11-themes/gentoo-artwork
+
+# Michał Górny <mgorny@gentoo.org> (2026-11-09)
+# Regressions causing test failures:
+# https://github.com/gorakhargosh/watchdog/issues/1432
+=dev-python/watchdog-7.1.0
+
+# Ulrich Müller <ulm@gentoo.org> (2026-11-08)
+# Pretest versions, masked for testing.
+<app-editors/emacs-31.1.9999:31-vcs
+
+# Michał Górny <mgorny@gentoo.org> (2026-11-03)
+# Low quality, unmaintained package.  No revdeps.
+# Removal on 2026-12-03.  Bug #985546.
+dev-cpp/libjson-rpc-cpp
+
+# James Le Cuirot <chewi@gentoo.org> (2026-10-30)
+# This version is widely reported to be broken. Upstream has been silent on the
+# issue. Bug #983634.
+=media-video/makemkv-2.0.0
+
+# Alfred Wingate <parona@protonmail.com> (2026-10-25)
+# Ruby 3.2 is no longer supported upstream and will no longer
+# receive security updates. This mask also includes any
+# remaining ruby32-only packages.
+dev-lang/ruby:3.2
+=dev-libs/Ice-3.7.10-r1
+app-admin/fluentd
+dev-ruby/blinkstick
+dev-ruby/faraday-httpclient
+dev-ruby/faraday-patron
+dev-ruby/faraday-rack
+dev-ruby/faraday_middleware-multi_json
+dev-ruby/faraday_middleware
+dev-ruby/faraday-net_http_persistent:1
+dev-ruby/faraday-retry:1
+dev-ruby/faraday:1
+dev-ruby/faraday-net_http:1
+dev-ruby/faraday-net_http:2
+dev-ruby/io-event:1.1
+dev-ruby/rantly:2
+net-misc/mikutter
+
+# Michael Orlitzky <mjo@gentoo.org> (2026-10-24)
+# dev-php packages that were added to support composer, phpunit,
+# etc. and are now abandoned. All are outdated and several have known
+# security issues. Removal on 2026-12-01 if no one complains.
+dev-php/File_Iterator
+dev-php/SabreAMF
+dev-php/Text_Template
+dev-php/ca-bundle
+dev-php/cli-prompt
+dev-php/doctrine
+dev-php/doctrine-instantiator
+dev-php/fedora-autoloader
+dev-php/jsonlint
+dev-php/json-schema
+dev-php/metadata-minifier
+dev-php/mmslib
+dev-php/myclabs-deepcopy
+dev-php/nikic-php-parser
+dev-php/phar-io-manifest
+dev-php/phar-io-version
+dev-php/phar-utils
+dev-php/psr-log
+dev-php/reactphp-promise
+dev-php/sebastian-code-unit-reverse-lookup
+dev-php/sebastian-complexity
+dev-php/sebastian-diff
+dev-php/sebastian-environment
+dev-php/sebastian-lines-of-code
+dev-php/sebastian-resource-operations
+dev-php/sebastian-type
+dev-php/sebastian-version
+dev-php/semver
+dev-php/spdx-licenses
+dev-php/symfony-filesystem
+dev-php/symfony-finder
+dev-php/symfony-process
+dev-php/theseer-Autoload
+dev-php/theseer-DirectoryScanner
+dev-php/theseer-tokenizer
+dev-php/twig
+dev-php/webmozart-assert
+dev-php/xdebug-handler
+dev-php/zetacomponents-Base
+dev-php/zetacomponents-ConsoleTools
+
+# David Seifert <soap@gentoo.org> (2026-10-24)
+# Upstream abandoned, GTK+2 based, blocks openssl-4 migration.
+# net-irc/zoitechat is a maintained GTK+3 fork, please switch to that.
+# Removal on 2026-11-23. Bug #977173.
+net-irc/hexchat
+
+# David Seifert <soap@gentoo.org> (2026-10-24)
+# Unmaintained, blocks openssl-4 transition, tons of bugs, X.509 + HPN
+# patches are a lost cause. For X.509, use net-misc/pkixssh. HPN-SSH is
+# not packaged as a separate fork, and requires a dedicated commitment.
+# Removal on 2026-11-23. Bug #978473.
+net-misc/openssh-contrib
+
+# Michał Górny <mgorny@gentoo.org> (2026-10-22)
+# Not ported to py3.13.  No revdeps.
+# Removal on 2026-11-21.  Bug #952389.
+dev-python/pythondialog
+
+# Michał Górny <mgorny@gentoo.org> (2026-10-22)
+# Not ported to py3.13.  Ton of other bugs reported, including build
+# failures and a version bump request.
+# Removal on 2026-11-21.  Bug #952686.
+sci-mathematics/gsl-shell
+
+# Michał Górny <mgorny@gentoo.org> (2026-10-22)
+# Not ported to py3.13.  Indirectly depends on dev-python/sphinx that
+# dropped py3.12 support.
+# Removal on 2026-11-21.  Bug #956588.
+mail-client/alot
+
+# Sam James <sam@gentoo.org> (2026-10-22)
+# Replaced by importlib, no reverse dependencies (bug #984696). Removal
+# on 2026-11-22.
+dev-python/entrypoints
+
+# Sam James <sam@gentoo.org> (2026-10-20)
+# Breaks one of its major reverse dependencies, so mask for now as nothing
+# needs a newer version yet (bug #984580).
+>=app-text/podofo-1
+
+# Eli Schwartz <eschwartz@gentoo.org> (2026-10-18)
+# Unmaintained in gentoo, formally abandoned upstream in favor of
+# media-libs/libv4l[dvb]. Sources no longer available upstream.
+# Fails to build with modern gcc.
+# Removal on 2026-11-17.  Bug #969753.
+media-tv/linuxtv-dvb-apps
+
+# Michał Górny <mgorny@gentoo.org> (2026-10-13)
+# Part of removed dev-python/pyproject-fmt.  No revdeps left.
+# Removal on 2026-11-12.  Bug #984202.
+dev-python/toml-fmt-common
+
+# Michał Górny <mgorny@gentoo.org> (2026-10-13)
+# The package is bloated and hostile to downstream packaging.  The two
+# latest upstream releases don't build because of various issues.
+# Removal on 2026-11-12.  Bug #984201.
+media-gfx/fotema
+
+# Matt Jolly <kangie@gentoo.org> (2026-10-09)
+# Dropped upstream, use www-client/opera or www-client/opera-developer.
+# Removal on 2026-11-09. Bug #983935.
+www-client/opera-beta
+
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2026-10-08)
+# Blocks removal of vulnerable old slot of dev-java/commons-lang:3.6
+# Nothing depends on it.
+# HOMEPAGE is unresponsive.
+# SRC_URI is hosted in a devspace which does no longer exist.
+# Removal on 2026-11-08.  Bug #938231.
+dev-lang/tuprolog
+
+# Jaco Kroon <jkroon@gentoo.org> (2026-10-06)
+# Unmaintained, abandoned by maintainer.
+# You can look at net-misc/ntpsec or net-misc/chrony as replacement.
+# See also: https://wiki.gentoo.org/wiki/Network_Time_Protocol
+# Removal on 2027-01-04. Bug #962880, and many more.
+net-misc/ntp
+
+# Ionen Wolkens <ionen@gentoo.org> (2026-10-01)
 # Masked for testing the new .0 version and leave time for packages
-# to catch up on support. Will likely be kept masked until 6.11.1
+# to catch up on support. Will likely be kept masked until 6.12.1
 # is released unless there is a notable reason to need this earlier.
 #
-# If wanted, feel welcome to add `dev-qt/*:6/6.11.0` to package.unmask
+# If wanted, feel welcome to add `dev-qt/*:6/6.12.0` to package.unmask
 # and report issues.
-=dev-python/pyside-6.11.0*
-=dev-qt/qt-docs-6.11.0*
-=dev-qt/qt3d-6.11.0*
-=dev-qt/qt5compat-6.11.0*
-=dev-qt/qtbase-6.11.0*
-=dev-qt/qtcharts-6.11.0*
-=dev-qt/qtconnectivity-6.11.0*
-=dev-qt/qtdeclarative-6.11.0*
-=dev-qt/qtgraphs-6.11.0*
-=dev-qt/qthttpserver-6.11.0*
-=dev-qt/qtimageformats-6.11.0*
-=dev-qt/qtlanguageserver-6.11.0*
-=dev-qt/qtlocation-6.11.0*
-=dev-qt/qtmultimedia-6.11.0*
-=dev-qt/qtnetworkauth-6.11.0*
-=dev-qt/qtpositioning-6.11.0*
-=dev-qt/qtquick3d-6.11.0*
-=dev-qt/qtquicktimeline-6.11.0*
-=dev-qt/qtremoteobjects-6.11.0*
-=dev-qt/qtscxml-6.11.0*
-=dev-qt/qtsensors-6.11.0*
-=dev-qt/qtserialbus-6.11.0*
-=dev-qt/qtserialport-6.11.0*
-=dev-qt/qtshadertools-6.11.0*
-=dev-qt/qtspeech-6.11.0*
-=dev-qt/qtsvg-6.11.0*
-=dev-qt/qttools-6.11.0*
-=dev-qt/qttranslations-6.11.0*
-=dev-qt/qtvirtualkeyboard-6.11.0*
-=dev-qt/qtwayland-6.11.0*
-=dev-qt/qtwebchannel-6.11.0*
-=dev-qt/qtwebengine-6.11.0*
-=dev-qt/qtwebsockets-6.11.0*
-=dev-qt/qtwebview-6.11.0*
+=dev-python/pyside-6.12.0*
+=dev-qt/qt-docs-6.12.0*
+=dev-qt/qt3d-6.12.0*
+=dev-qt/qt5compat-6.12.0*
+=dev-qt/qtbase-6.12.0*
+=dev-qt/qtcharts-6.12.0*
+=dev-qt/qtconnectivity-6.12.0*
+=dev-qt/qtdeclarative-6.12.0*
+=dev-qt/qtgraphs-6.12.0*
+=dev-qt/qthttpserver-6.12.0*
+=dev-qt/qtimageformats-6.12.0*
+=dev-qt/qtlanguageserver-6.12.0*
+=dev-qt/qtlocation-6.12.0*
+=dev-qt/qtmultimedia-6.12.0*
+=dev-qt/qtnetworkauth-6.12.0*
+=dev-qt/qtpositioning-6.12.0*
+=dev-qt/qtquick3d-6.12.0*
+=dev-qt/qtquicktimeline-6.12.0*
+=dev-qt/qtremoteobjects-6.12.0*
+=dev-qt/qtscxml-6.12.0*
+=dev-qt/qtsensors-6.12.0*
+=dev-qt/qtserialbus-6.12.0*
+=dev-qt/qtserialport-6.12.0*
+=dev-qt/qtshadertools-6.12.0*
+=dev-qt/qtspeech-6.12.0*
+=dev-qt/qtsvg-6.12.0*
+=dev-qt/qttasktree-6.12.0*
+=dev-qt/qttools-6.12.0*
+=dev-qt/qttranslations-6.12.0*
+=dev-qt/qtvirtualkeyboard-6.12.0*
+=dev-qt/qtwayland-6.12.0*
+=dev-qt/qtwebchannel-6.12.0*
+=dev-qt/qtwebsockets-6.12.0*
+=dev-qt/qtwebview-6.12.0*
+
+# Viorel Munteanu <ceamac@gentoo.org> (2026-09-27)
+# Drupal 11.2.x is EOL, no longer receives security updates.
+# Keeping it in tree only to help upgrading from 10.6.x to 11.3.x.
+# Upgrading directly from 10.6 to 11.3 can result in this error:
+# Uncaught PHP Exception TypeError: \
+# 	"Drupal\\Core\\Utility\\ThemeRegistry::getPreprocessInvokes(): \
+# 	Return value must be of type array, null returned"
+# Will be removed when 10.6.x reaches end of life (after December 2026).
+www-apps/drupal:11.2.14
+
+# Sam James <sam@gentoo.org> (2026-09-24)
+# Increasingly challenging to maintain with increased release cadence,
+# upstream toolchain changes, and conflicts between trying to provide
+# a consistent experience for Gentoo users (avoiding bundled where possible)
+# vs. getting updates out in a timely manner.  Many unfixed vulnerabilities.
+#
+# Keeping it in ::gentoo isn't a matter of just supplying an updated ebuild,
+# but a commitment to keeping it up to date and finding a compromise between
+# users' expectations (like various USE flags & not forcing all bundled
+# components) and maintainability.
+#
+# Still supported packages include:
+#   www-client/google-chrome variants
+# Other chromium-based browsers:
+#   www-client/microsoft-edge
+#   www-client/opera
+#   www-client/vivaldi
+# qtwebengine-based browsers (uses chromium's engine):
+#   kde-apps/konqueror
+#   www-client/falkon
+#   www-client/qutebrowser
+# Other browsers:
+#   www-client/firefox and www-client/firefox-bin
+#   www-client/seamonkey
+#
+# Removal on 2026-10-24.  Bug #982204.
+<www-client/chromium-151.0.7922.169-r1
+
+# Sam James <sam@gentoo.org> (2026-09-24)
+# ImageMagick 6 only receives security fixes now upstream and already
+# suffers serious bugs. EOL announcement:
+# https://github-stories.com/2026/imagemagick-6-end-of-life-announcement/
+# Please upgrade to ImageMagick 7.
+=media-gfx/imagemagick-6*
+
+# Sam James <sam@gentoo.org> (2026-09-22)
+# Substantial rewrite to drop qpdf->pdfio has introduced some bugs, too
+# many fixes to backport and some aren't fixed at all yet (bug #983080,
+# and tagged onto bug #981565 too).
+~net-print/libcupsfilters-2.2.1
+
+# Sam James <sam@gentoo.org> (2026-09-08)
+# Changes ctest(1) behaviour to exit non-zero if no tests, which
+# may break many ebuilds. Needs some assessment.
+>=dev-build/cmake-4.4.0
+
+# David Seifert <soap@gentoo.org> (2026-09-07)
+# Unmaintained, lots of FetchContent_* hacks.
+# Removal on 2026-10-07. Bug #927149.
+sci-physics/espresso
+
+# Ulrich Müller <ulm@gentoo.org> (2026-08-31)
+# Snapshot versions, masked for testing.
+<app-editors/emacs-32.0.9999:32-vcs
+
+# Nowa Ammerlaan <nowa@gentoo.org> (2026-08-06)
+# This version was pulled from upstream. The reason for this is
+# unclear. But masked just as a precaution. Bug #980367.
+=sys-boot/shim-16.1_p8
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2026-07-07)
+# dev-embedded/ponyprog destabilisation mask, bug #978907
+=dev-embedded/ponyprog-3.1.4_p20250501-r0
+
+# Eray Aslan <eras@gentoo.org> (2026-07-06)
+# Introduces backwards breaking change. Mask until downstreams adjust
+>=dev-db/lmdb-1.0.0
+
+# Michał Górny <mgorny@gentoo.org> (2026-06-03)
+# Mike Pagano <mpagano@gentoo.org> (2026-06-03)
+# Support for 5.10.x and 5.15.x kernels in Gentoo is being discontinued.
+#
+# These kernel branches differ so much from the mainline kernel that
+# security patches are frequently delayed or never backported upstream
+# at all.  The need for proactive downstream backporting creates a lot
+# of maintenance effort for us, and we neither feel confident with
+# correctness, nor with completeness of our backports.
+#
+# Users can still download kernel sources from upstream repositories
+# if necessary.
+#
+# Bug #976694.  Removal on 2026-07-03.
+<sys-kernel/gentoo-sources-6
+<sys-kernel/gentoo-kernel-6
+<sys-kernel/gentoo-kernel-bin-6
+<sys-kernel/vanilla-sources-6
+<sys-kernel/vanilla-kernel-6
+<virtual/dist-kernel-6
+
+# Sam James <sam@gentoo.org> (2026-06-02)
+# Fails to start (bug #976623)
+=sys-auth/elogind-255.26
+=sys-auth/elogind-257.15
+
+# David Seifert <soap@gentoo.org> (2026-05-30)
+# Last update 25 years ago, stuck on linux-mod.eclass, lots of QA issues,
+# doesn't build on recent kernels. Removal on 2026-06-29. Bug #908712.
+media-libs/svgalib
+
+# Paul Zander <negril.nx+gentoo@gmail.com> (2025-10-17)
+# to many breakages
+dev-cpp/eigen:3/5.0
+
+# Sam James <sam@gentoo.org> (2026-05-17)
+# Tries to delete many files (bug #975236)
+=dev-util/jenkins-bin-2.561
+
+# Sam James <sam@gentoo.org> (2026-05-05)
+# dev-debug/pwndbg itself needs >=dev-util/unicorn-2.1.4, while
+# pwndbg also depends on dev-util/pwntools which needs <dev-util/unicorn-2.1.4.
+#
+# Mask to avoid Portage wasting time trying to find a solution, when
+# the only one available is to downgrade.
+>=dev-util/pwntools-4.15.0
+
+# Sam James <sam@gentoo.org> (2026-04-17)
+# app-misc/tmux fails to open with newer ncurses (bug #972804)
+>=sys-libs/ncurses-6.6_p20260411
+
+# Sam James <sam@gentoo.org> (2026-03-30)
+# >=1.7.0 is an LLM-driven revamp of the project.
+>=sys-fs/quotatool-1.7.0
 
 # Sam James <sam@gentoo.org> (2026-03-22)
 # Commits since the last release of Crypt-OpenSSL-RSA (0.370) are heavily
 # driven by LLM automation. Avoid exposing users to this (bug #971488).
 # Sadly, other dists by the same maintainers upstream are also affected,
-# and so these are includeed here too.
+# and so these are included here too.
 >dev-perl/Crypt-OpenSSL-RSA-0.370.0
 >dev-perl/B-COW-0.7.0
 >dev-perl/Business-UPS-2.20.0
@@ -108,208 +428,16 @@ dev-python/amodem
 >dev-perl/XString-0.5.0
 >dev-perl/YAML-Syck-1.360.0
 
-# Michał Górny <mgorny@gentoo.org> (2026-03-20)
-# Low-value package with a test suite that requires tons of effort to
-# work offline. Upstream made that harder again in the most recent
-# release.  If you need pipx functionality, dev-python/uv provides uvx
-# executable.
-# Removal on 2026-04-19.  Bug #971387.
-dev-python/pipx
-
-# Michał Górny <mgorny@gentoo.org> (2026-03-19)
-#
-# MkDocs 1.x are no longer maintained upstream.  MkDocs 2.x, while not
-# yet released, are not backwards compatible and have made some
-# questionable design choices, such as removing plugin support.  MkDocs
-# 1.x have been then forked into ProperDocs, which are not a drop-in
-# replacment.  Also, Zensical started being independently developed.
-#
-# Over all this time, MkDocs have been barely used in ::gentoo,
-# and the work invested in keeping the whole stack working, along with
-# all the plugins and NIH dependencies, greatly exceeded the benefit.
-# It does not help that most of this is developed with the assumption
-# that docs will be built straight from the git repository.
-#
-# Removal on 2026-04-18.  Bug #971358.
-dev-python/csscompressor
-dev-python/dunamai
-dev-python/ghp-import
-dev-python/griffe
-dev-python/griffe-inherited-docstrings
-dev-python/jsmin
-dev-python/markdown-exec
-dev-python/mergedeep
-dev-python/mkdocs
-dev-python/mkdocs-autorefs
-dev-python/mkdocs-bootstrap
-dev-python/mkdocs-bootswatch
-dev-python/mkdocs-gen-files
-dev-python/mkdocs-get-deps
-dev-python/mkdocs-git-authors-plugin
-dev-python/mkdocs-git-revision-date-localized-plugin
-dev-python/mkdocs-htmlproofer-plugin
-dev-python/mkdocs-i18n
-dev-python/mkdocs-material
-dev-python/mkdocs-material-extensions
-dev-python/mkdocs-minify-plugin
-dev-python/mkdocs-monorepo-plugin
-dev-python/mkdocs-pymdownx-material-extras
-dev-python/mkdocs-redirects
-dev-python/mkdocs-static-i18n
-dev-python/mkdocstrings
-dev-python/mkdocstrings-python
-dev-python/paginate
-dev-python/pygments-ansi-color
-dev-python/pyyaml-env-tag
-dev-python/readtime
-dev-python/uv-dynamic-versioning
-
-# Jakov Smolić <jsmolic@gentoo.org> (2026-03-13)
-# sqlite-3.52.0 has been withdrawn shortly after its release due to
-# backwards-compatibility issues
-# https://sqlite.org/releaselog/3_52_0.html
-=dev-db/sqlite-3.52.0-r1
-=dev-python/apsw-3.52.0.0
-
-# Mike Pagano <mpagano@gentoo.org> (2026-03-13)
-# Upstream has announced the archiving of this application
-# at repo location: https://github.com/nginx/unit/
-# This announcement includes the statement that security
-# issues may not be addressed. Possible alternatives
-# are www-servers/nginx or www-servers/apache
-# depending on your application needs.
-# Removal on 2026-04-13.
-www-servers/nginx-unit
-
-# Alfredo Tupone <tupone@gentoo.org> (2026-03-12)
-# No reverse dependency. Included in dev-tcltk/tklib
-# Removeal on 2026-04-12. Bug #971127
-dev-tcltk/tablelist
-
-# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2026-03-10)
-# Unused Java library.
-# Last consumer was net-p2p/freenet-0.7.5_p1505-r0.
-# Removal on 2026-04-10. Bug #971058.
-dev-java/mersennetwister
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2026-03-09)
-# Latest release is >21 years old, no one else packages this, buffer overflow
-# at launch, packaged only in gentoo. Alternatives exist, including the dockapp
-# x11-plugins/wmamixer. Bug #969091
-# Removal on 2026-04-08.
-media-sound/alsamixer-app
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2026-03-09)
-# Dead CORBA implementation, no one else packages this, impossible to build.
-# Many bugs: #298101, #515938, #725192, #871237, #874090, #882479, #882633,
-# #898086, #919509, #952927, #967177
-# Removal on 2026-04-08.
-net-misc/mico
-
-# Arthur Zamarin <arthurzam@gentoo.org> (2026-03-09)
-# Live only package, Upstream archived, integrated into
-# app-shells/bash-completion-2.17.0, which was already stabled.
-# Removal on 2026-04-08.  Bugs #792303, #960480.
-app-shells/tmux-bash-completion
-
 # Alfredo Tupone <tupone@gentoo.org> (2026-03-05)
 # Need more testing
 >=dev-lang/tcl-9
 >=dev-lang/tk-9
-
-# Michał Górny <mgorny@gentoo.org> (2026-02-28)
-# The test suite is broken since 1.16.0 (Nov 2025), and upstream did not
-# address the problem so far: https://github.com/pypa/hatch/issues/2123
-# Removal on 2026-03-30.  Bug #970681.
-dev-python/hatch
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2026-02-27)
-# Obsolete Qt5 non-qtbase modules without revdeps.
-# Removal on 2026-03-29.
-dev-qt/designer:5
-dev-qt/qthelp:5
-dev-qt/qtwaylandscanner:5
-dev-qt/qtxmlpatterns:5
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2026-02-27)
-# Obsolete Qt5 non-qtbase modules without revdeps.
-dev-qt/qtimageformats:5
-dev-qt/qtscxml:5
-dev-qt/qtspeech:5
-dev-qt/qtwebsockets:5
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2026-02-24)
-# Phonon is effectively dead upstream, its only remaining backend depends
-# on VLC-3. Bug #935797  Removal on 2026-03-26.
-media-libs/phonon
-media-libs/phonon-vlc
-
-# Michael Orlitzky <mjo@gentoo.org> (2026-02-24)
-# Haskell package (hard to maintain) that never evolved. Easy to
-# replace with a SQL query. Removal on or after 2026-03-24.
-net-mail/list-remote-forwards
-net-mail/mailbox-count
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2026-02-15)
-# Masked for testing and possible libvlc revdeps breakage.
-~media-video/vlc-4.0.0_pre20260320
 
 # Thomas Beierlein <tomjbe@gentoo.org> (2026-02-14)
 # Move ebuild versioning to classical x.y.z number scheme
 # Should be kept until net-wireless/sdrplay-3.15.2 (dep for coming
 # new version) gets stable.
 >=net-wireless/soapysdrplay-20000000
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2026-02-12)
-# Misc Qt5-based libraries without any revdeps left.
-# Removal on 2026-03-14.
-dev-qt/qtlockedfile
-dev-qt/qtsingleapplication
-
-# David Seifert <soap@gentoo.org> (2026-02-11)
-# No other distro packages this, last release over 12 years ago, C23 issues.
-# Removal on 2026-03-13. Bug #944878.
-sci-biology/qrna
-
-# David Seifert <soap@gentoo.org> (2026-02-11)
-# Obscure package, no revdeps, unmaintained, EAPI 7, lots of build issues.
-# Removal on 2026-03-13. Bug #944918.
-sci-biology/mcl
-
-# David Seifert <soap@gentoo.org> (2026-02-10)
-# Abandoned, sguil-sensor already removed, blocks bug #868468.
-# Removal on 2026-03-12.
-net-analyzer/sguil-client
-
-# David Seifert <soap@gentoo.org> (2026-02-10)
-# Noone packages this anymore, dead upstream, C23 and QA issues.
-# Removal on 2026-03-12. Bug #945039.
-net-misc/lanmap
-
-# David Seifert <soap@gentoo.org> (2026-02-10)
-# Noone packages this anymore, dead upstream, fails tests on newer GCC.
-# Removal on 2026-03-12. Bug #963013.
-net-libs/libpcapnav
-
-# David Seifert <soap@gentoo.org> (2026-02-10)
-# Noone packages this anymore, dead upstream, lots of C23 and QA issues.
-# Removal on 2026-03-12. Bug #945187.
-net-analyzer/trafshow
-
-# David Seifert <soap@gentoo.org> (2026-02-10)
-# Removed by most distros, upstream disappeared, lots of QA and packaging
-# issues. Removal on 2026-03-12. Bug #945190.
-net-analyzer/tcptrace
-
-# David Seifert <soap@gentoo.org> (2026-02-10)
-# Removed by most distros, last release over 20 years ago, C23 issues.
-# Removal on 2026-03-12. Bug #945193.
-net-analyzer/labrea
-
-# David Seifert <soap@gentoo.org> (2026-02-10)
-# Removed by most distros, upstream disappeared, lots of QA and packaging
-# issues. Removal on 2026-03-12. Bug #943786.
-net-analyzer/echoping
 
 # Sam James <sam@gentoo.org> (2026-02-09)
 # This suite of packages is currently best placed in an overlay/external
@@ -343,110 +471,6 @@ net-analyzer/echoping
 <=dev-libs/hyprgraphics-0.1.5
 <=gui-wm/hyprland-0.51.1
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2026-02-08)
-# All remaining KF5 revdeps have been masked.
-# Removal some time after 2026-02-15.
-kde-frameworks/karchive:5
-kde-frameworks/kauth:5
-kde-frameworks/kbookmarks:5
-kde-frameworks/kcmutils:5
-kde-frameworks/kcodecs:5
-kde-frameworks/kcompletion:5
-kde-frameworks/kconfig:5
-kde-frameworks/kconfigwidgets:5
-kde-frameworks/kcoreaddons:5
-kde-frameworks/kcrash:5
-kde-frameworks/kdbusaddons:5
-kde-frameworks/kdeclarative:5
-kde-frameworks/kded:5
-kde-frameworks/kdoctools:5
-kde-frameworks/kglobalaccel:5
-kde-frameworks/kguiaddons:5
-kde-frameworks/ki18n:5
-kde-frameworks/kiconthemes:5
-kde-frameworks/kio:5
-kde-frameworks/kitemviews:5
-kde-frameworks/kjobwidgets:5
-kde-frameworks/knotifications:5
-kde-frameworks/kpackage:5
-kde-frameworks/kservice:5
-kde-frameworks/kwallet:5
-kde-frameworks/kwidgetsaddons:5
-kde-frameworks/kwindowsystem:5
-kde-frameworks/kxmlgui:5
-kde-frameworks/solid:5
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2026-02-08)
-# All remaining KF5-based applications have been masked.
-# Removal on 2026-02-28.
-kde-plasma/kwayland-integration:5
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2026-02-08)
-# KF5/Qt5 integration is no longer worth it.
-# Removal some time after 2026-02-15.
-kde-plasma/kwayland:5
-kde-plasma/breeze:5
-kde-plasma/plasma-integration:5
-kde-plasma/oxygen:5
-kde-frameworks/frameworkintegration:5
-kde-frameworks/knewstuff:5
-kde-frameworks/attica:5
-kde-frameworks/kirigami:5
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2026-02-08)
-# Deprecated since Qt 5.5, no more revdeps. Bug #915779
-# Removal on 2026-02-28.
-dev-qt/qtscript:5
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2026-02-08)
-# Stuck on Qt5Script in the foreseeable future.  Until a Qt6 release is
-# ready, app-editors/okteta-0.26.60_pre* snapshots will be provided for
-# ~arch, main limitation being the structures tool disabled from build
-# (it requires the biggest, remaining porting effort).  Double-check to
-# backup your data before modifying files with okteta snapshots.
-# If you rely on the structures tool or are affected by a critical bug in
-# our okteta snapshots, the alternative is using the Flatpak version.
-# Bug #962280. Removal some time after 2026-02-15.
-app-editors/okteta:5
-kde-frameworks/kitemmodels:5
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2026-02-08)
-# Stuck on Qt5/PyQt5 in the foreseeable future.  Until a Qt6 release is
-# ready, krita-6.0.0 pre-releases will be provided for ~arch.
-# If you rely on krita for professional work or plugins only available in
-# krita-5, your options are Flatpak or snap, or downloading upstream's own
-# 64-bit AppImage - see also: https://krita.org/download/
-# Bug #955168. Removal some time after 2026-02-15.
-media-gfx/krita:5
-kde-apps/libkdcraw:5
-kde-apps/libkexiv2:5
-kde-frameworks/kimageformats:5
-
-# David Seifert <soap@gentoo.org> (2026-02-07)
-# Never packaged by other distros, QA and C23 issues.
-# Removal on 2026-03-09.
-net-analyzer/traceproto
-
-# David Seifert <soap@gentoo.org> (2026-02-07)
-# -Wformat and C23 issues, no other distro packages this anymore.
-# Removal on 2026-03-09.
-net-analyzer/mping
-
-# David Seifert <soap@gentoo.org> (2026-02-07)
-# Abandoned upstream, no other distro packages this anymore, lots of QA and
-# build issues. Removal on 2026-03-09. Bug #945191.
-net-analyzer/nttcp
-
-# David Seifert <soap@gentoo.org> (2026-02-06)
-# Abandoned upstream, no other distro packages this anymore, lots of QA and
-# build issues. Removal on 2026-03-08. Bug #899932.
-net-analyzer/ipcad
-
-# David Seifert <soap@gentoo.org> (2026-02-06)
-# Upstream disappeared, no other distro packages this anymore, lots of QA and
-# build issues. Removal on 2026-03-08. Bug #680718.
-net-analyzer/arp-sk
-
 # Arthur Zamarin <arthurzam@gentoo.org> (2026-02-06)
 # Marked as pre-release post release itself. Released without
 # maintainer ACK.
@@ -462,17 +486,8 @@ net-analyzer/arp-sk
 # This version has lit a firecracker under the community and attracted
 # some ire. The situation is in a state of mild flux, and more generally
 # requires further consideration to determine the correct course of
-# action. Use at your own risk.
+# action. Use at your own risk. See bug #969475.
 >=app-text/calibre-8.11.0
-
-# Michał Górny <mgorny@gentoo.org> (2025-12-12)
-# Upstream has switched to LLM-first coding which has already caused
-# a number of suspicious bugs.  At this point, new versions
-# of the packages cannot be trusted to be safe to use.  Furthermore,
-# the maintenance cost of dealing with packaging bugs alone
-# is overwhelming to human maintainers of this package.
->=dev-python/autobahn-25.10
->=dev-python/txaio-25.10
 
 # Sam James <sam@gentoo.org> (2025-11-25)
 # Generates session keys with weak (no) randomness. Please re-encrypt
@@ -480,67 +495,16 @@ net-analyzer/arp-sk
 # See bug #966299.
 =dev-util/librnp-0.18.0
 
-# Michał Górny <mgorny@gentoo.org> (2025-10-12)
-# Requires Rust with RUST_SYSROOTS=bpf, which isn't currently supported
-# by dev-lang/rust-bin.  Also needs net-proxy/mitmproxy-linux updates.
->=dev-util/bpf-linker-0.9.15-r1
-
-# Lukas Schmelting <lschmelting@posteo.com> (2025-10-03)
-# Breaks e.g. in combination with gnome-shell-48.4, gettext/gjs (bug #963815)
->=dev-libs/glib-2.86.0
->=dev-libs/gobject-introspection-1.86.0
->=dev-libs/gobject-introspection-common-1.86.0
->=dev-util/gdbus-codegen-2.86.0
->=dev-util/glib-utils-2.86.0
-
 # Sam James <sam@gentoo.org> (2025-09-21)
 # Breaks (common) mt7921e WiFi driver with a hang in many cases, affecting
 # not just network. See bug #963106.
 =sys-kernel/linux-firmware-20250917
 =sys-kernel/linux-firmware-20251011
 
-# Andreas K. Hüttel <dilfridge@gentoo.org> (2025-07-04)
-# Obsolete Perl virtuals that will be removed (the list is work in progress).
-# If you have any of these installed, just remove them; they should not be
-# required anymore.
-virtual/perl-bignum
-virtual/perl-HTTP-Tiny
-virtual/perl-IO-Zlib
-virtual/perl-Locale-Maketext
-virtual/perl-Math-BigInt-FastCalc
-virtual/perl-Math-BigRat
-virtual/perl-Math-Complex
-virtual/perl-Module-Load-Conditional
-virtual/perl-Parse-CPAN-Meta
-virtual/perl-Params-Check
-perl-core/Params-Check
-virtual/perl-Term-ReadLine
-virtual/perl-Unicode-Collate
-virtual/perl-Unicode-Normalize
-
-# Michał Górny <mgorny@gentoo.org> (2025-06-29)
-# File collision against gnome-base/gnome-keyring[pam], which is
-# required via pambase.  Masked until the maintainer determines a good
-# solution.  Bug #959274.
-=app-crypt/libsecret-0.21.7-r1
-
-# Sam James <sam@gentoo.org> (2025-06-12)
-# Breaks several applications (bug #957943)
->=dev-python/pygobject-3.52
->=net-im/gajim-2.3.0
-
 # Sam James <sam@gentoo.ogr> (2025-06-08)
 # Masked for testing (bug #957583).
 >=sys-devel/gettext-0.24
 >=dev-libs/libintl-0.24
-
-# Sam James <sam@gentoo.org> (2025-06-03)
-# Fetching from GitHub seems broken with this:
-# > Connecting to github.com|20.26.156.215|:443... connected.
-# > ERROR: cannot verify github.com's certificate, issued by 'CN=Sectigo ECC Domain Validation Secure Server CA,O=Sectigo Limited,L=Salford,ST=Greater Manchester,C=GB':
-# >  Unable to locally verify the issuer's authority.
-# See bug #963400.
-=app-misc/ca-certificates-20250419.3.112
 
 # Sam James <sam@gentoo.org> (2025-05-26)
 # Breaks some reverse dependencies and is abandoned upstream (bug #956630).
@@ -549,15 +513,6 @@ virtual/perl-Unicode-Normalize
 # Sam James <sam@gentoo.org> (2025-05-23)
 # Severe memory leak (bug #953874)
 =app-i18n/ibus-anthy-1.5.17
-
-# Alfred Wingate <parona@protonmail.com> (2025-05-17)
-# Masked for testing
-dev-db/mysql:8.4
-
-# Michał Górny <mgorny@gentoo.org> (2025-04-19)
-# This package will no longer feature stable keywords, due to unresolved
-# test failures blocking the stabilization request for months.
-<dev-python/mpi4py-4
 
 # Norbert Norbiros <norbiros@protonmail.com> (2025-04-01)
 # Screen v5.0.0 has a lot of regressions
@@ -647,23 +602,6 @@ app-emulation/virtualbox-kvm
 # The symbol versioning "fix" breaks anything built with 3.0.0.
 >=dev-libs/libassuan-3.0.1
 
-# Michał Górny <mgorny@gentoo.org> (2023-06-21)
-# suitesparseconfig-7.0.0 fails to build with multilib enabled
-# because of dependencies that cannot be satisfied.  All the other
-# packages require it.  Bug #908851.
-=sci-libs/amd-3.0.3
-=sci-libs/btf-2.0.3
-=sci-libs/camd-3.0.3
-=sci-libs/ccolamd-3.0.3
-=sci-libs/cholmod-4.0.3
-=sci-libs/colamd-3.0.3
-=sci-libs/cxsparse-4.0.3
-=sci-libs/klu-2.0.3
-=sci-libs/ldl-3.0.3
-=sci-libs/spqr-3.0.3
-=sci-libs/suitesparseconfig-7.0.0
-=sci-libs/umfpack-6.1.0
-
 # Ionen Wolkens <ionen@gentoo.org> (2023-03-30)
 # NVIDIA dropped support for the 390.xx branch in December 2022[1].
 #
@@ -690,11 +628,6 @@ x11-drivers/nvidia-drivers:0/390
 # Apparently the "b" in version means "beta". 3.24 is available, we
 # should update to that. #841437
 ~sci-physics/bullet-3.22b
-
-# Brian Evans <grknight@gentoo.org> (2022-01-07)
-# The main consumer, phpunit, does not initiate the new timer correctly
-# This is likely to cause issues in tests; Unmask if using for other purposes
->=dev-php/PHP_Timer-5.0
 
 # Ionen Wolkens <ionen@gentoo.org> (2021-10-09)
 # Vulkan beta driver branch aimed at Vulkan developers for testing
@@ -738,12 +671,6 @@ media-plugins/kodi-game-libretro-dosbox
 # <glibc-2.26.
 ~net-libs/libnsl-0
 ~net-libs/rpcsvc-proto-0
-
-# Nicolas Bock <nicolasbock@gentoo.org> (2017-10-31)
-# There are multiple unresolved upstream issues with >=jabref-bin-4.0 (#636036).
-# If you still would like to use this version, please report any issues to
-# upstream.
->=app-text/jabref-bin-4.0
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2017-05-21)
 # (and others, updated later)

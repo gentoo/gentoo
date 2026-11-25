@@ -8,12 +8,12 @@ PLOCALES="aa af am an ar ary as ast ay az be be@latin ber bg bn bn_IN br bs ca c
 inherit plocale
 
 DESCRIPTION="Translation data for Cinnamon"
-HOMEPAGE="https://projects.linuxmint.com/cinnamon/ https://github.com/linuxmint/cinnamon-translations"
+HOMEPAGE="https://linuxmint-developer-guide.readthedocs.io/en/latest/cinnamon.html https://linuxmint.com/"
 SRC_URI="https://github.com/linuxmint/cinnamon-translations/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 arm64 ~loong ~ppc64 ~riscv x86"
 
 BDEPEND="sys-devel/gettext"
 

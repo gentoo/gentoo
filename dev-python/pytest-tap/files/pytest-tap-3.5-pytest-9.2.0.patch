@@ -1,0 +1,53 @@
+https://github.com/python-tap/pytest-tap/issues/139
+https://github.com/python-tap/pytest-tap/commit/b5cda048aa374c45cc29074dcd8639cf90b6c44c
+
+From b5cda048aa374c45cc29074dcd8639cf90b6c44c Mon Sep 17 00:00:00 2001
+From: "dependabot[bot]" <49699333+dependabot[bot]@users.noreply.github.com>
+Date: Thu, 29 Oct 2026 03:34:24 -0400
+Subject: [PATCH] Bump virtualenv from 20.36.1 to 21.14.13 (#135)
+
+* Bump virtualenv from 20.36.1 to 21.14.13
+
+Bumps [virtualenv](https://github.com/pypa/virtualenv) from 20.36.1 to 21.14.13.
+- [Release notes](https://github.com/pypa/virtualenv/releases)
+- [Changelog](https://github.com/pypa/virtualenv/blob/main/docs/changelog.rst)
+- [Commits](https://github.com/pypa/virtualenv/compare/20.36.1...21.14.13)
+
+---
+updated-dependencies:
+- dependency-name: virtualenv
+  dependency-version: 21.14.13
+  dependency-type: indirect
+...
+
+Signed-off-by: dependabot[bot] <support@github.com>
+
+* Fix pytest 9.2 option destination conflict
+
+---------
+
+Signed-off-by: dependabot[bot] <support@github.com>
+Co-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>
+Co-authored-by: mblaymanbot <matthewlayman+githubbot@gmail.com>
+---
+ src/pytest_tap/plugin.py |  6 ++-
+ uv.lock                  | 92 ++++++++++++++++++++++++++++++----------
+ 2 files changed, 75 insertions(+), 23 deletions(-)
+
+diff --git a/src/pytest_tap/plugin.py b/src/pytest_tap/plugin.py
+index a952bd4..4d01c64 100644
+--- a/src/pytest_tap/plugin.py
++++ b/src/pytest_tap/plugin.py
+@@ -131,7 +131,11 @@ def pytest_addoption(parser):
+     )
+     # Deprecated, but keeping for backwards compatibility.
+     group.addoption(
+-        "--tap-stream", default=False, action="store_true", help=argparse.SUPPRESS
++        "--tap-stream",
++        default=False,
++        dest="tap_stream",
++        action="store_true",
++        help=argparse.SUPPRESS,
+     )
+     group.addoption(
+         "--tap-files",

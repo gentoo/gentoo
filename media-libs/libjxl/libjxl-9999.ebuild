@@ -38,7 +38,10 @@ RDEPEND="
 	>=x11-misc/shared-mime-info-2.2
 "
 DEPEND+="
-	test? ( dev-cpp/gtest[${MULTILIB_USEDEP}] )
+	test? (
+		dev-cpp/gtest[${MULTILIB_USEDEP}]
+		>=dev-cpp/highway-1.0.7[${MULTILIB_USEDEP},test]
+	)
 "
 BDEPEND="
 	test? ( x11-misc/xdg-utils )
@@ -65,8 +68,6 @@ multilib_src_configure() {
 		-DJPEGXL_ENABLE_DOXYGEN=OFF
 		-DJPEGXL_ENABLE_MANPAGES=OFF
 		-DJPEGXL_ENABLE_JNI=OFF
-		-DJPEGXL_ENABLE_JPEGLI=OFF
-		-DJPEGXL_ENABLE_JPEGLI_LIBJPEG=OFF
 		-DJPEGXL_ENABLE_TCMALLOC=OFF
 		-DJPEGXL_ENABLE_EXAMPLES=OFF
 		-DBUILD_TESTING=$(usex test ON OFF)
@@ -84,7 +85,6 @@ multilib_src_configure() {
 			-DJPEGXL_ENABLE_OPENEXR=$(usex openexr)
 			-DJPEGXL_ENABLE_PLUGINS=ON
 			-DJPEGXL_ENABLE_PLUGIN_GDKPIXBUF=$(usex gdk-pixbuf)
-			-DJPEGXL_ENABLE_PLUGIN_GIMP210=OFF
 			-DJPEGXL_ENABLE_PLUGIN_MIME=OFF
 		)
 	else

@@ -1,9 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 PYTHON_REQ_USE="sqlite,ssl"
 
 inherit edo toolchain-funcs python-single-r1 qmake-utils verify-sig xdg
@@ -127,6 +127,7 @@ PATCHES=(
 	# (last commit in 2017)
 	"${FILESDIR}/${PN}-7.0.0-jxr-test.patch"
 	"${FILESDIR}/${PN}-8.9.0-piper.patch"
+	"${FILESDIR}/${PN}-ffmpeg9.patch"
 )
 
 src_prepare() {

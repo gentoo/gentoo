@@ -25,6 +25,7 @@
 		<flag name="hwloc">Add support for hwloc (<pkg>sys-apps/hwloc</pkg>)</flag>
 		<flag name="hdf5">Add support for hdf5 (<pkg>sci-libs/hdf5</pkg>)</flag>
 		<flag name="hypre">Add support for hypre (<pkg>sci-libs/hypre</pkg>)</flag>
+		<flag name="int64">Use 64 bit indexes</flag>
 		<flag name="matio">Add support for matio (<pkg>sci-libs/matio</pkg>)</flag>
 		<flag name="metis">
 			Add support for metis (<pkg>sci-libs/metis</pkg> or <pkg>sci-libs/parmetis</pkg>)

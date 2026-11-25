@@ -1,0 +1,18 @@
+https://github.com/BYVoid/OpenCC/blob/ver.1.4.2/packaging/debian/debian/patches/0011-drop-python-cli-entry-point.patch
+Drop the python console_scripts opencc entry point so it does not overwrite
+the native C++ /usr/bin/opencc CLI tool.
+
+--- a/setup.py
++++ b/setup.py
+@@ -221,11 +221,6 @@ setuptools.setup(
+         'bdist_wheel': BDistWheelCommand,
+     },
+     setup_requires=setup_requires,
+-    entry_points={
+-        'console_scripts': [
+-            'opencc=opencc.cli:main',
+-        ],
+-    },
+ 
+     classifiers=[
+         'Development Status :: 5 - Production/Stable',

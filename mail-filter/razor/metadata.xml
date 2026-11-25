@@ -3,7 +3,7 @@
 <pkgmetadata>
 	<!-- maintainer-needed -->
 	<!-- future maintainer: please uncomment the following contact:
-	<maintainer type="person">
+	<maintainer type="person" proxied="yes">
 		<email>razor-admin@cloudmark.com</email>
 		<description>
 			A contact designated by upstream developers. This email address

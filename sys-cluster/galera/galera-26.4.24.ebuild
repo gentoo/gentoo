@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -50,7 +50,7 @@ src_prepare() {
 	# Remove optional garbd daemon
 	if ! use garbd ; then
 		rm -r garb || die "Failed to remove garbd daemon"
-		sed -i '/add_subdirectory(garb)/d' CMakeLists.txt || die
+		cmake_comment_add_subdirectory garb
 	fi
 }
 

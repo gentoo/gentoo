@@ -6,6 +6,6 @@
     <name>X11</name>
   </maintainer>
   <upstream>
-    <remote-id type="freedesktop-gitlab">xorg/lib/libXres</remote-id>
+    <remote-id type="freedesktop-gitlab">xorg/lib/libxres</remote-id>
   </upstream>
 </pkgmetadata>

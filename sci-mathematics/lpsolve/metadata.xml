@@ -10,6 +10,7 @@
 		<name>Gentoo Mathematics Project</name>
 	</maintainer>
 	<upstream>
+		<remote-id type="github">lp-solve/lp_solve</remote-id>
 		<remote-id type="sourceforge">lpsolve</remote-id>
 	</upstream>
 </pkgmetadata>

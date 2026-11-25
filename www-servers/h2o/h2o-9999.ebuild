@@ -2,8 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
+
+CMAKE_QA_COMPAT_SKIP=1
 SSL_DEPS_SKIP=1
-USE_RUBY="ruby31 ruby32 ruby33"
+USE_RUBY="ruby32 ruby33 ruby34"
 
 inherit cmake git-r3 ruby-single ssl-cert systemd toolchain-funcs
 
@@ -14,19 +16,19 @@ EGIT_REPO_URI="https://github.com/${PN}/${PN}.git"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS=""
-IUSE="libh2o +mruby"
+IUSE="brotli io-uring libh2o +mruby zstd"
 
 RDEPEND="acct-group/h2o
 	acct-user/h2o
 	dev-lang/perl
 	dev-libs/openssl:0=
-	!sci-libs/libh2o
 	sys-libs/libcap
+	!sci-libs/libh2o
 	virtual/zlib:=
-	libh2o? (
-		app-arch/brotli
-		dev-libs/libuv
-	)"
+	brotli? ( app-arch/brotli:= )
+	io-uring? ( sys-libs/liburing:= )
+	libh2o? ( dev-libs/libuv:= )
+	zstd? ( app-arch/zstd:= )"
 DEPEND="${RDEPEND}
 	mruby? (
 		${RUBY_DEPS}
@@ -69,7 +71,11 @@ src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_INSTALL_SYSCONFDIR="${EPREFIX}"/etc/${PN}
 		-DWITH_CCACHE=OFF
+		-DWITH_BROTLI=$(usex brotli)
+		-DWITH_IO_URING=$(usex io-uring)
+		-DWITH_MPTCP=ON
 		-DWITH_MRUBY=$(usex mruby)
+		-DWITH_ZSTD=$(usex zstd)
 		-DWITHOUT_LIBS=$(usex !libh2o)
 		-DBUILD_SHARED_LIBS=$(usex libh2o)
 	)

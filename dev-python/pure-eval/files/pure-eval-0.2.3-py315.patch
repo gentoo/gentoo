@@ -1,0 +1,16 @@
+From d70a873553d3163373ebcbb4217a1144fd371df2 Mon Sep 17 00:00:00 2001
+From: Alex Hall <alex.mojaki@gmail.com>
+Date: Sun, 11 Jan 2026 14:05:46 +0200
+Subject: [PATCH] Test and fix python 3.15
+
+--- a/pure_eval/my_getattr_static.py
++++ b/pure_eval/my_getattr_static.py
+@@ -69,7 +69,7 @@ def getattr_static(obj, attr):
+         klass = type(obj)
+         dict_attr = _shadowed_dict(klass)
+         if (dict_attr is _sentinel or
+-                type(dict_attr) is types.MemberDescriptorType):
++                type(dict_attr) is types.MemberDescriptorType or type(dict_attr) is types.GetSetDescriptorType):
+             instance_result = _check_instance(obj, attr)
+         else:
+             raise CannotEval

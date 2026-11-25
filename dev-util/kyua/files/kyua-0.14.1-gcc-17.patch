@@ -1,0 +1,44 @@
+From 6e61c01f2915398fd1bf583c2c03bc93fef6c1d5 Mon Sep 17 00:00:00 2001
+From: Mike Gilbert <floppym@gentoo.org>
+Date: Fri, 5 Jun 2026 13:54:06 -0400
+Subject: [PATCH] utils/sqlite/database.hpp: #include <string> for std::string
+
+Bug: https://bugs.gentoo.org/976789
+---
+ utils/sqlite/database.hpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/utils/sqlite/database.hpp b/utils/sqlite/database.hpp
+index ca91a6a3..6c6f259f 100644
+--- a/utils/sqlite/database.hpp
++++ b/utils/sqlite/database.hpp
+@@ -43,6 +43,7 @@ extern "C" {
+ 
+ #include <cstddef>
+ #include <memory>
++#include <string>
+ 
+ #include "utils/fs/path_fwd.hpp"
+ #include "utils/optional_fwd.hpp"
+From 818175ab163161caca7b03af1723261c9d19a3e2 Mon Sep 17 00:00:00 2001
+From: Mike Gilbert <floppym@gentoo.org>
+Date: Mon, 8 Jun 2026 14:30:30 -0400
+Subject: [PATCH] utils/text/regex.hpp: #include <string> for std::string
+
+Bug: https://bugs.gentoo.org/976938
+---
+ utils/text/regex.hpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/utils/text/regex.hpp b/utils/text/regex.hpp
+index b3d20c24..d4981dfc 100644
+--- a/utils/text/regex.hpp
++++ b/utils/text/regex.hpp
+@@ -36,6 +36,7 @@
+ 
+ #include <cstddef>
+ #include <memory>
++#include <string>
+ 
+ 
+ namespace utils {

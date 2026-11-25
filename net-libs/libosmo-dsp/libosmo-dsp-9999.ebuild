@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -23,9 +23,13 @@ IUSE="doc static-libs"
 RDEPEND="sci-libs/fftw:3.0="
 DEPEND="${RDEPEND}"
 BDEPEND="
-	doc? ( app-text/doxygen )
+	doc? (
+		app-text/doxygen
+		dev-libs/mathjax )
 	virtual/pkgconfig
 "
+
+PATCHES=( "${FILESDIR}"/${PN}-${PV}-use-mathjax.patch )
 
 src_prepare() {
 	default

@@ -10,10 +10,10 @@ inherit gnome.org meson python-single-r1 xdg
 DESCRIPTION="Introspection system for GObject-based libraries"
 HOMEPAGE="https://gi.readthedocs.io/"
 
-LICENSE="LGPL-2+ GPL-2+"
+LICENSE="FSFUL GPL-2+ LGPL-2+"
 SLOT="0"
 
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~x64-macos ~x64-solaris"
 
 IUSE="doctool gtk-doc test"
 RESTRICT="!test? ( test )"
@@ -55,6 +55,10 @@ BDEPEND="
 		')
 	)
 "
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.86.0-tests-setuptools.patch
+)
 
 pkg_setup() {
 	python-single-r1_pkg_setup

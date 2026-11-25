@@ -1,0 +1,123 @@
+No proper upstream fix yet, patch taken from [1]. Sounded questionable
+but upon inspection I believe it's Ok. Originally tried Fedora's patch
+but it caused test failures (or at least did with python3.14).
+
+In addition to [1], this also extend on py314-tests.patch to adjust
+refcount values for py315. [1] mentions & explain these failures a bit
+but did not address them, I "believe" that they are nothing to worry
+about. If this test causes more problems, may make sense to patch it
+out downstream until upstream handles it.
+
+[1] https://github.com/pygame/pygame/issues/4716#issuecomment-6104711463
+--- a/src_c/pgcompat.h
++++ b/src_c/pgcompat.h
+@@ -25,3 +25,25 @@
+     PySlice_GetIndicesEx(slice, length, start, stop, step, slicelength)
+ 
++/* PyWeakref_GetObject() was removed in Python 3.15. PyWeakref_GetRef()
++ * (Python 3.13+) replaces it: returns 1 and a new reference if the referent
++ * is alive, 0 and NULL if it is dead, -1 and NULL on error. */
++#if PY_VERSION_HEX < 0x030D0000
++static inline int
++PyWeakref_GetRef(PyObject *ref, PyObject **pobj)
++{
++    PyObject *obj = PyWeakref_GetObject(ref);
++    if (obj == NULL) {
++        *pobj = NULL;
++        return -1;
++    }
++    if (obj == Py_None) {
++        *pobj = NULL;
++        return 0;
++    }
++    Py_INCREF(obj);
++    *pobj = obj;
++    return 1;
++}
++#endif
++
+ #endif /* ~PGCOMPAT_INTERNAL_H */
+--- a/src_c/surface.c
++++ b/src_c/surface.c
+@@ -1021,6 +1021,12 @@
+ 
+     for (i = 0; i < len; i++) {
+-        tmp = PyWeakref_GetObject(PyList_GetItem(surf->locklist, i));
+-        Py_INCREF(tmp);
++        if (PyWeakref_GetRef(PyList_GetItem(surf->locklist, i), &tmp) < 0) {
++            Py_DECREF(tuple);
++            return NULL;
++        }
++        if (tmp == NULL) { /* dead lock owner: report None, as before */
++            tmp = Py_None;
++            Py_INCREF(tmp);
++        }
+         PyTuple_SetItem(tuple, i, tmp);
+     }
+@@ -3444,9 +3450,15 @@
+     consumer_ref = internal->consumer_ref;
+     assert(consumer_ref && PyWeakref_CheckRef(consumer_ref));
+-    consumer = PyWeakref_GetObject(consumer_ref);
+-    if (consumer) {
+-        if (!pgSurface_UnlockBy((pgSurfaceObject *)view_p->obj, consumer)) {
++    if (PyWeakref_GetRef(consumer_ref, &consumer) < 0) {
++        PyErr_Clear();
++    }
++    else {
++        /* A dead consumer is passed as None, as PyWeakref_GetObject() did,
++         * so UnlockBy still purges its dead lock entry. */
++        if (!pgSurface_UnlockBy((pgSurfaceObject *)view_p->obj,
++                                consumer ? consumer : Py_None)) {
+             PyErr_Clear();
+         }
++        Py_XDECREF(consumer);
+     }
+     Py_DECREF(consumer_ref);
+--- a/src_c/surflock.c
++++ b/src_c/surflock.c
+@@ -122,9 +122,14 @@
+     if (surf->locklist != NULL) {
+         PyObject *item, *ref;
++        int alive, match;
+         Py_ssize_t len = PyList_Size(surf->locklist);
+         while (--len >= 0 && !found) {
+             item = PyList_GetItem(surf->locklist, len);
+-            ref = PyWeakref_GetObject(item);
+-            if (ref == lockobj) {
++            if (PyWeakref_GetRef(item, &ref) < 0) {
++                return 0;
++            }
++            match = (ref == lockobj);
++            Py_XDECREF(ref);
++            if (match) {
+                 if (PySequence_DelItem(surf->locklist, len) == -1) {
+                     return 0;
+@@ -140,6 +145,11 @@
+         while (--len >= 0) {
+             item = PyList_GetItem(surf->locklist, len);
+-            ref = PyWeakref_GetObject(item);
+-            if (ref == Py_None) {
++            alive = PyWeakref_GetRef(item, &ref);
++            if (alive < 0) {
++                noerror = 0;
++                continue;
++            }
++            Py_XDECREF(ref);
++            if (!alive) {
+                 if (PySequence_DelItem(surf->locklist, len) == -1) {
+                     noerror = 0;
+--- a/test/rwobject_test.py
++++ b/test/rwobject_test.py
+@@ -83,7 +83,10 @@
+             before = getrefcount(bpath)
+             bpath = encode_string(bpath)
+-            self.assertEqual(getrefcount(bpath), before)
++            if sys.version_info >= (3, 15):
++                self.assertEqual(getrefcount(bpath), before + 1)
++            else:
++                self.assertEqual(getrefcount(bpath), before)
+             bpath = encode_string(upath)
+-            if sys.version_info >= (3, 14):
++            if sys.version_info[:2] == (3, 14):
+                 self.assertEqual(getrefcount(bpath), before - 1)
+             else:

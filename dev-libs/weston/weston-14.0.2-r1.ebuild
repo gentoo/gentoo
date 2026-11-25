@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -145,9 +145,12 @@ src_test() {
 	xdg_environment_reset
 	addwrite /dev/dri/
 
-	# xwayland test can fail if X11 socket already exists.
-	cd "${BUILD_DIR}" || die
-	meson test $(meson test --list | grep -Exv "xwayland") || die
+	local -a EMESON_SKIP_TESTS=(
+		# xwayland test can fail if X11 socket already exists.
+		weston:xwayland
+	)
+
+	meson_src_test
 }
 
 src_install() {

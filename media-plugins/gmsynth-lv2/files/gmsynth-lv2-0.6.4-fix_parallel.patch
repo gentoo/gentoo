@@ -1,0 +1,13 @@
+backport https://github.com/x42/gmsynth.lv2/commit/13acf5e
+see https://bugs.gentoo.org/982836
+Ensure that $(BUILDDIR) is created before using it
+--- a/Makefile
++++ b/Makefile
+@@ -128,6 +128,7 @@ $(BUILDDIR)$(LV2NAME).ttl: Makefile lv2ttl/$(LV2NAME).*.in
+ 		lv2ttl/$(LV2NAME).ttl.in > $(BUILDDIR)$(LV2NAME).ttl
+ 
+ $(BUILDDIR)%.sf2: sf2/*.sf2
++	@mkdir -p $(BUILDDIR)
+ 	cp -v sf2/$(*F).sf2 $@
+ 
+ FLUID_SRC = \

@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,7 @@ SRC_URI="https://github.com/lazarus-pkgs/suck/archive/${PV}.tar.gz -> ${P}.tar.g
 LICENSE="public-domain"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
-IUSE="perl ssl"
+IUSE="perl selinux ssl"
 
 RDEPEND="
 	sys-libs/gdbm:=
@@ -23,6 +23,7 @@ DEPEND="${RDEPEND}
 	sys-libs/db
 	perl? ( dev-lang/perl )
 "
+RDEPEND+=" selinux? ( sec-policy/selinux-inn )"
 
 src_prepare() {
 	default

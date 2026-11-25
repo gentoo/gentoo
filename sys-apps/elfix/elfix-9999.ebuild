@@ -1,7 +1,10 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+
+PYTHON_COMPAT=( python3_{11..14} )
+inherit python-single-r1
 
 if [[ ${PV} == *9999* ]] ; then
 	EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/elfix.git"
@@ -18,15 +21,18 @@ HOMEPAGE="https://www.gentoo.org/proj/en/hardened/pax-quickstart.xml
 LICENSE="GPL-3+"
 SLOT="0"
 IUSE="+ptpax test +xtpax"
-REQUIRED_USE="|| ( ptpax xtpax )"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}
+	|| ( ptpax xtpax )
+"
 # These only work with a properly configured PaX kernel
 RESTRICT="!test? ( test ) test"
 
-DEPEND="~dev-python/pypax-${PV}[ptpax=,xtpax=]
+DEPEND="$(python_gen_cond_dep "~dev-python/pypax-${PV}[ptpax=,xtpax=,\${PYTHON_USEDEP}]")
 	ptpax? ( dev-libs/elfutils )
 	xtpax? ( sys-apps/attr )"
 
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	${PYTHON_DEPS}"
 
 src_prepare() {
 	default
@@ -42,4 +48,9 @@ src_configure() {
 		$(use_enable test tests) \
 		$(use_enable ptpax) \
 		$(use_enable xtpax)
+}
+
+src_install() {
+	default
+	python_fix_shebang "${ED}"
 }

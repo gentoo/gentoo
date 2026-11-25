@@ -1,0 +1,7 @@
+https://github.com/yt-dlp/yt-dlp/issues/17951
+https://github.com/yt-dlp/yt-dlp/pull/17952
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -479 +479 @@
+-[tool.pytest]
++[tool.pytest.ini_options]

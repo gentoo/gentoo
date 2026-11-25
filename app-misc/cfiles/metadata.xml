@@ -5,7 +5,7 @@
 	<email>yumi.tanaka@miraclelinux.com</email>
 	<name>Yumi Tanaka</name>
 </maintainer>
-<maintainer type="person">
+<maintainer type="person" proxied="maintainer-and-proxy">
 	<email>alicef@gentoo.org</email>
 	<name>Alice Ferrazzi</name>
 </maintainer>

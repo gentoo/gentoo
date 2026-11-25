@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,6 +19,10 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 BDEPEND="test? ( dev-util/cmocka )"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-tests-x32.patch
+)
 
 src_configure() {
 	local mycmakeargs=(

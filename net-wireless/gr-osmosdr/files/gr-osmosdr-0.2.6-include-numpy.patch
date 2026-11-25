@@ -1,0 +1,27 @@
+diff --git a/python/bindings/CMakeLists.txt b/python/bindings/CMakeLists.txt
+index f2233cf..3252313 100644
+--- a/python/bindings/CMakeLists.txt
++++ b/python/bindings/CMakeLists.txt
+@@ -5,6 +5,22 @@
+ # SPDX-License-Identifier: GPL-3.0-or-later
+ #
+ 
++# Find the Python interpreter
++find_package(Python REQUIRED COMPONENTS Interpreter)
++
++# Execute Python to get the NumPy include directory
++execute_process(
++    COMMAND ${Python_EXECUTABLE} -c "import numpy; print(numpy.get_include())"
++    OUTPUT_VARIABLE NUMPY_INCLUDE_DIR
++    OUTPUT_STRIP_TRAILING_WHITESPACE
++)
++
++# Print the path to verify it works during configuration
++message(STATUS "NumPy include directory: ${NUMPY_INCLUDE_DIR}")
++
++# Include the directory globally or link it to your target
++include_directories(${NUMPY_INCLUDE_DIR})
++
+ GR_PYTHON_CHECK_MODULE_RAW(
+     "pygccxml"
+     "import pygccxml"

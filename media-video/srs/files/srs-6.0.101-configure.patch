@@ -1,0 +1,36 @@
+--- a/auto/depends.sh	2026-05-17 23:01:03.161690035 +0200
++++ b/auto/depends.sh	2026-05-17 23:02:36.192627760 +0200
+@@ -286,13 +286,6 @@
+     echo "The state-threads is ok."
+ else
+     echo "Building state-threads." &&
+-    rm -rf ${SRS_OBJS}/${SRS_PLATFORM}/st-srs ${SRS_OBJS}/${SRS_PLATFORM}/3rdparty/st ${SRS_OBJS}/st &&
+-    cp -rf ${SRS_WORKDIR}/3rdparty/st-srs ${SRS_OBJS}/${SRS_PLATFORM}/ &&
+-    env EXTRA_CFLAGS="${_ST_EXTRA_CFLAGS}" make -C ${SRS_OBJS}/${SRS_PLATFORM}/st-srs ${_ST_MAKE_ARGS} &&
+-    mkdir -p ${SRS_OBJS}/${SRS_PLATFORM}/3rdparty/st &&
+-    cp -f ${SRS_OBJS}/${SRS_PLATFORM}/st-srs/${_ST_OBJ}/st.h ${SRS_OBJS}/${SRS_PLATFORM}/3rdparty/st/ &&
+-    cp -f ${SRS_OBJS}/${SRS_PLATFORM}/st-srs/${_ST_OBJ}/libst.a ${SRS_OBJS}/${SRS_PLATFORM}/3rdparty/st/ &&
+-    cp -rf ${SRS_OBJS}/${SRS_PLATFORM}/3rdparty/st ${SRS_OBJS}/ &&
+     echo "The state-threads is ok."
+ fi
+ # check status
+--- a/3rdparty/st-srs/Makefile	2026-05-18 13:08:03.167341955 +0200
++++ b/3rdparty/st-srs/Makefile	2026-05-18 13:08:29.674043565 +0200
+@@ -135,7 +135,6 @@
+ OTHER_FLAGS += -O2
+ else
+ OTHER_FLAGS += -g -O0
+-DEFINES     += -DDEBUG
+ endif
+ 
+ ##########################
+--- a/configure	2026-05-18 13:08:15.814199594 +0200
++++ b/configure	2026-05-18 13:08:29.675043554 +0200
+@@ -86,7 +86,6 @@
+ #####################################################################################
+ # build tools or compiler args.
+ # enable gdb debug
+-GDBDebug=" -g -O0"
+ # the warning level.
+ WarnLevel=" -Wall"
+ # the compile standard.

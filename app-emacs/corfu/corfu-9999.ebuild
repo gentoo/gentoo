@@ -1,7 +1,7 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=9
 
 NEED_EMACS="29.1"
 
@@ -25,7 +25,7 @@ LICENSE="GPL-3+"
 SLOT="0"
 
 RDEPEND="
-	app-emacs/compat
+	>=app-emacs/compat-31.0.0.1
 "
 BDEPEND="
 	${RDEPEND}
@@ -36,7 +36,6 @@ SITEFILE="50${PN}-gentoo.el"
 
 src_prepare() {
 	default
-
 	mv ./extensions/*.el . || die
 }
 

@@ -1,13 +1,15 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
+RPM_COMPRESS_TYPE=none
 inherit rpm
 
 DESCRIPTION="Intel's implementation of the OpenCL standard"
 HOMEPAGE="https://www.intel.com/content/www/us/en/developer/articles/tool/opencl-drivers.html#cpu-section"
 SRC_URI="https://registrationcenter-download.intel.com/akdlm/irc_nas/vcp/15532/l_opencl_p_${PV}.tgz"
+S="${WORKDIR}/l_opencl_p_${PV}"
 
 LICENSE="Intel-SDP"
 SLOT="0"
@@ -24,8 +26,6 @@ RDEPEND="
 	sys-process/numactl
 	>=virtual/opencl-3"
 
-S="${WORKDIR}/l_opencl_p_${PV}"
-
 INTEL_CL="opt/intel/opencl_compilers_and_libraries_${PV}/linux"
 INTEL_INSTALL_PATH="/opt/intel/opencl-${PV}"
 INTEL_VENDOR_DIR=usr/lib/OpenCL/vendors/intel
@@ -35,7 +35,9 @@ QA_PREBUILT="${INTEL_INSTALL_PATH}/*"
 
 src_unpack() {
 	default
-	rpm_unpack "${S}/rpm/intel-openclrt-${PV}-${ALT_PV}.x86_64.rpm"
+	pushd "${S}" >/dev/null || die
+	rpm_unpack ./rpm/intel-openclrt-${PV}-${ALT_PV}.x86_64.rpm
+	popd >/dev/null || die
 }
 
 src_install() {

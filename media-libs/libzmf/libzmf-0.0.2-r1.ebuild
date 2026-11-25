@@ -1,9 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-if [[ ${PV} == *9999 ]]; then
+if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://git.libreoffice.org/libzmf"
 	inherit git-r3 autotools
 else
@@ -16,7 +16,7 @@ HOMEPAGE="https://wiki.documentfoundation.org/DLP/Libraries/libzmf"
 
 LICENSE="MPL-2.0"
 SLOT="0"
-IUSE="debug doc test tools"
+IUSE="debug test tools"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -29,18 +29,17 @@ DEPEND="${RDEPEND}
 	dev-libs/boost
 	test? ( dev-util/cppunit )
 "
-BDEPEND="doc? ( app-text/doxygen )"
 
 src_prepare() {
 	default
-	[[ ${PV} == *9999 ]] && eautoreconf
+	[[ ${PV} == *9999* ]] && eautoreconf
 }
 
 src_configure() {
 	local myeconfargs=(
 		--disable-werror
+		--without-docs
 		$(use_enable debug)
-		$(use_with doc docs)
 		$(use_enable test tests)
 		$(use_enable tools)
 	)

@@ -10,7 +10,15 @@
 		<remote-id type="github">osandov/drgn</remote-id>
 	</upstream>
 	<use>
-		<flag name="debuginfod">Enable debuginfod support</flag>
-		<flag name="lzma">Support XZ-compressed debug information (MiniDebugInfo).</flag>
+		<flag name="debuginfod">
+		Enable debuginfod support.
+		</flag>
+		<flag name="json">
+		Use <pkg>dev-libs/json-c</pkg> for <pkg>app-emulation/qemu</pkg>
+		debugging over the QEMU Machine Protocol (QMP).
+		</flag>
+		<flag name="lzma">
+		Support XZ-compressed debug information (MiniDebugInfo).
+		</flag>
 	</use>
 </pkgmetadata>

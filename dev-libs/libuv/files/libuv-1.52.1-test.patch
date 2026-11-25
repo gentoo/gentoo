@@ -1,0 +1,28 @@
+# https://github.com/libuv/libuv/pull/5144
+# https://bugs.gentoo.org/971783
+From 609c23c13a849c7f56477b88586f74d033faa1b5 Mon Sep 17 00:00:00 2001
+From: Santiago Gimeno <santiago.gimeno@gmail.com>
+Date: Mon, 25 May 2026 11:36:04 +0200
+Subject: [PATCH] test: skip recvmsg unreachable test when no ipv6
+
+Guard `udp_recvmsg_unreachable_error6` in case ipv6 is not supported.
+
+Fixes: https://github.com/libuv/libuv/issues/5143
+---
+ test/test-udp-recvmsg-unreachable-error.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/test/test-udp-recvmsg-unreachable-error.c b/test/test-udp-recvmsg-unreachable-error.c
+index 48990cc6d48..950263e3e55 100644
+--- a/test/test-udp-recvmsg-unreachable-error.c
++++ b/test/test-udp-recvmsg-unreachable-error.c
+@@ -91,6 +91,9 @@ TEST_IMPL(udp_recvmsg_unreachable_error6) {
+ #if !defined(__linux__)
+   RETURN_SKIP("This test is Linux-specific");
+ #endif
++  if (!can_ipv6())
++    RETURN_SKIP("IPv6 not supported");
++
+   struct sockaddr_in6 server_addr, client_addr;
+   uv_udp_t client;
+   uv_timer_t timer;

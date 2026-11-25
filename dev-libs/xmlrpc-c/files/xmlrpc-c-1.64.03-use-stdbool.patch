@@ -1,0 +1,16 @@
+Replace custom bool definitions with stdbool.h to work with C23.
+
+--- a/lib/util/include/bool.h
++++ b/lib/util/include/bool.h
+@@ -9,10 +9,7 @@
+ /* At least the GNU compiler defines __bool_true_false_are_defined */
+ #ifndef __bool_true_false_are_defined
+ #define __bool_true_false_are_defined
+-typedef enum {
+-    false = 0,
+-    true = 1
+-} bool;
++#include <stdbool.h>
+ #endif
+ #endif
+ 

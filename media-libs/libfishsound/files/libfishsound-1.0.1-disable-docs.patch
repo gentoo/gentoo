@@ -1,0 +1,22 @@
+https://bugs.gentoo.org/949580
+Lift document disablement from sed on configure to
+patch on configure.ac, disable example building,
+as they are thrown away afterwards anyway.
+--- a/configure.ac
++++ b/configure.ac
+@@ -49,7 +49,7 @@
+ PKG_PROG_PKG_CONFIG
+ 
+ # Check for doxygen
+-AC_CHECK_PROG(HAVE_DOXYGEN, doxygen, true, false)
++AC_CHECK_PROG(HAVE_DOXYGEN, doxygen-dummy, true, false)
+ AM_CONDITIONAL(HAVE_DOXYGEN,$HAVE_DOXYGEN)
+ if test $HAVE_DOXYGEN = "false"; then
+              AC_MSG_WARN([*** doxygen not found, docs will not be built])
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -1,3 +1,3 @@
+ ## Process this file with automake to produce Makefile.in
+ 
+-SUBDIRS = libfishsound examples tests
++SUBDIRS = libfishsound tests

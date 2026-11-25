@@ -1,0 +1,12 @@
+Quick fix, future releases will remove libfmt usage.
+
+https://bugs.gentoo.org/986002
+https://github.com/diasurgical/DevilutionX/commit/ac2d7fc731bc3
+--- a/Source/qol/xpbar.cpp
++++ b/Source/qol/xpbar.cpp
+@@ -10,4 +10,5 @@
+ 
+ #include <fmt/core.h>
++#include <fmt/format.h>
+ 
+ #include "control.h"

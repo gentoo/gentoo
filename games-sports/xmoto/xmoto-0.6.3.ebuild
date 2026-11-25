@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -51,20 +51,20 @@ PATCHES=(
 )
 
 src_prepare() {
+	cmake_src_prepare
+
 	# fix fonts path
 	sed -e 's:ASIAN_TTF_FILE=.*)$:ASIAN_TTF_FILE=\\\"'"${EPREFIX}"'/usr/share/fonts/arphicfonts/bkai00mp.ttf\\\"):' \
 		-i src/CMakeLists.txt || die
 	sed -e 's:Textures/Fonts/DejaVu:'"${EPREFIX}"'/usr/share/fonts/dejavu/DejaVu:' \
 		-i src/drawlib/DrawLib.cpp || die
 
-	sed -e "/add_subdirectory.*\(bzip2\|lua\|xdgbasedir\)/d" -i src/CMakeLists.txt || die
+	cmake_comment_add_subdirectory -f src ".*bzip2" ".*lua" ".*xdgbasedir"
 	rm -r vendor/{bzip2,lua,xdgbasedir} || die
 
 	if use system-ode; then
 		rm -r vendor/{ode,libccd} || die
 	fi
-
-	cmake_src_prepare
 }
 
 src_configure() {

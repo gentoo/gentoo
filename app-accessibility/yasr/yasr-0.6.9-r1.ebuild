@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -20,6 +20,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-0.6.9-automake113.patch
 	"${FILESDIR}"/${PN}-0.6.9-gettext019.patch
 	"${FILESDIR}"/${PN}-0.6.9-gcc43.patch
+	"${FILESDIR}"/${PN}-0.6.9-gcc16.patch # bug 943766, 881865
 	"${FILESDIR}"/${PN}-0.6.9-remove-m4.patch
 )
 

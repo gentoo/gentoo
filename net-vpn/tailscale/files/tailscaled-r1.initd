@@ -1,0 +1,29 @@
+#!/sbin/openrc-run
+# Copyright 2020-2026 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+name="tailscaled"
+description="Tailscale node agent"
+command=/usr/sbin/tailscaled
+command_args="--state=/var/lib/tailscale/tailscaled.state --socket=/run/tailscale/tailscaled.sock --port=${tailscaled_port:-41641} ${tailscaled_args}"
+supervisor=supervise-daemon
+retry="${retry:-SIGTERM/30/SIGKILL/5}"
+
+depend() {
+	use net dns logger
+	after firewall
+}
+
+start_pre() {
+	checkpath -d -m 0755 /run/tailscale
+	checkpath -d -m 0750 /var/lib/tailscale
+}
+
+stop_post() {
+	# Restore DNS configuration, routes and firewall rules, as upstream's
+	# systemd unit does, so a stopped tailscaled doesn't leave the system
+	# with a broken resolver.
+	ebegin "Cleaning up tailscale system state"
+	${command} --cleanup
+	eend $?
+}

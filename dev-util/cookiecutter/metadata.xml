@@ -5,10 +5,6 @@
 		<email>cedk@gentoo.org</email>
 		<name>Cédric Krier</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>nowa@gentoo.org</email>
-		<name>Nowa Ammerlaan</name>
-	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="github">cookiecutter/cookiecutter</remote-id>

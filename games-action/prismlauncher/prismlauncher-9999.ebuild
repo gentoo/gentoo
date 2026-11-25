@@ -4,7 +4,7 @@
 EAPI=8
 
 QTMIN=6.0.0
-inherit cmake java-pkg-2 optfeature toolchain-funcs xdg
+inherit branding cmake java-pkg-2 optfeature toolchain-funcs xdg
 
 DESCRIPTION="Custom, open source Minecraft launcher"
 HOMEPAGE="https://prismlauncher.org/ https://github.com/PrismLauncher/PrismLauncher"
@@ -38,7 +38,7 @@ COMMON_DEPEND="
 	app-arch/libarchive:=
 	app-text/cmark:=
 	dev-cpp/tomlplusplus
-	>=dev-qt/qtbase-${QTMIN}:6[concurrent,gui,network,widgets,xml(+)]
+	>=dev-qt/qtbase-${QTMIN}:6[concurrent,gui,opengl,network,vulkan,widgets,xml(+)]
 	>=dev-qt/qtnetworkauth-${QTMIN}:6
 	games-util/gamemode
 	media-gfx/qrencode:=
@@ -63,6 +63,10 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+PATCHES=(
+	"${FILESDIR}/${PN}-11.0.2-fortify-source-redef.patch"
+)
+
 src_prepare() {
 	cmake_src_prepare
 
@@ -86,10 +90,9 @@ src_configure() {
 		-DCMAKE_INSTALL_PREFIX="/usr"
 		# Resulting binary is named prismlauncher
 		-DLauncher_APP_BINARY_NAME="${PN}"
-		-DLauncher_BUILD_PLATFORM="Gentoo"
+		-DLauncher_BUILD_PLATFORM="${BRANDING_OS_PRETTY_NAME}"
 		-DLauncher_QT_VERSION_MAJOR=6
 
-		-DENABLE_LTO=$(tc-is-lto)
 		-DBUILD_TESTING=$(usex test)
 	)
 

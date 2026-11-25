@@ -41,4 +41,4 @@ dev-ada/xmlada
 # enforce 64-bit time_t as required by this profile.
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2025-05-29)
 # Version updated
-<sys-devel/gcc-13.3.1_p20250522-r1
+<sys-devel/gcc-11.5.0

@@ -4,7 +4,8 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{12..14} )
+PYPI_VERIFY_REPO=https://github.com/behave/behave
+PYTHON_COMPAT=( python3_{12..15} )
 
 inherit distutils-r1 pypi
 

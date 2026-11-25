@@ -1,11 +1,11 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 GENTOO_DEPEND_ON_PERL=no
 LUA_COMPAT=( lua5-{1..5} luajit )
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit perl-module lua-single meson mono-env python-single-r1 xdg
 
@@ -19,7 +19,7 @@ if [[ "${PV}" == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/${PN}/${PN}.git"
 else
 	SRC_URI="https://github.com/${PN}/${PN}/releases/download/v${PV}/${P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86"
+	KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ppc ppc64 ~riscv ~sparc x86"
 fi
 
 LICENSE="GPL-2 plugin-fishlim? ( MIT )"
@@ -72,6 +72,10 @@ BDEPEND="
 	sys-devel/gettext
 	virtual/pkgconfig
 "
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.16.2-perl-5.44.patch
+)
 
 pkg_setup() {
 	use lua && lua-single_pkg_setup

@@ -18,6 +18,8 @@
     complementary packages.
   </longdescription>
   <upstream>
+    <bugs-to>https://github.com/minad/vertico/</bugs-to>
+    <changelog>https://raw.githubusercontent.com/minad/vertico/refs/heads/main/CHANGELOG.org</changelog>
     <remote-id type="github">minad/vertico</remote-id>
   </upstream>
 </pkgmetadata>

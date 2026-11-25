@@ -5,7 +5,7 @@ EAPI=8
 
 inherit cmake-multilib multibuild
 
-DESCRIPTION="A simple library to load images of various formats as SDL surfaces."
+DESCRIPTION="A simple library to load images of various formats as SDL surfaces"
 HOMEPAGE="https://www.libsdl.org/projects/SDL_image/"
 SRC_URI="https://github.com/libsdl-org/SDL_image/archive/refs/tags/release-${PV}/SDL3_image-${PV}.tar.gz"
 

@@ -1,0 +1,33 @@
+From 5d33b8871420e4ad8754931177ce935c38bd5323 Mon Sep 17 00:00:00 2001
+From: Mike Gilbert <floppym@gentoo.org>
+Date: Thu, 2 Apr 2026 15:04:17 -0400
+Subject: [PATCH] ksmbd.service: remove network-online.target dependency
+
+The network does not need to be fully online to start a deamon that
+listens on the wildcard address.
+
+If the admin alters the default configuratin to listen on specific
+interfaces or addresses, they can alter the systemd unit accordingly.
+
+Signed-off-by: Mike Gilbert <floppym@gentoo.org>
+---
+ ksmbd.service.in | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/ksmbd.service.in b/ksmbd.service.in
+index 280dce84ce99..8ce47d80c4e4 100644
+--- a/ksmbd.service.in
++++ b/ksmbd.service.in
+@@ -1,8 +1,7 @@
+ [Unit]
+ Description=ksmbd userspace daemon
+ Requires=modprobe@ksmbd.service
+-Wants=network-online.target
+-After=modprobe@ksmbd.service network.target network-online.target
++After=modprobe@ksmbd.service network.target
+ 
+ [Service]
+ Type=forking
+-- 
+2.53.0
+

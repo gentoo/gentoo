@@ -1,8 +1,8 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit gnome.org gnome2-utils meson python-any-r1 vala xdg
 
@@ -11,7 +11,7 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/gnome-tetravex"
 
 LICENSE="GPL-2+ CC-BY-SA-3.0"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~loong ~riscv x86"
+KEYWORDS="amd64 ~arm arm64 ~loong ~riscv x86"
 IUSE="cli +gui test"
 REQUIRED_USE="|| ( cli gui )"
 RESTRICT="!test? ( test )"

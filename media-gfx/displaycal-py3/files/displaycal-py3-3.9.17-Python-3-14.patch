@@ -1,0 +1,13 @@
+diff --git a/DisplayCAL/meta.py b/DisplayCAL/meta.py
+index 581ae3d7..19ad4b93 100644
+--- a/DisplayCAL/meta.py
++++ b/DisplayCAL/meta.py
+@@ -54,7 +54,7 @@ appstream_id = ".".join(reversed([name] + DOMAIN.split(".")))
+ name_html = '<span class="appname">Display<span>CAL</span></span>'
+ 
+ py_minversion = (3, 8)
+-py_maxversion = (3, 13)
++py_maxversion = (3, 14)
+ 
+ version = VERSION_STRING
+ version_lin = VERSION_STRING  # Linux

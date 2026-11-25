@@ -1,6 +1,49 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Mike Gilbert <floppym@gentoo.org> (2026-11-07)
+# dev-ruby/asciidoctor is not keyworded.
+sys-kernel/dracut asciidoctor
+
+# Lukas Schmelting <lschmelting@posteo.com> (2026-09-10)
+# dev-util/bpftool not keyworded here
+net-misc/networkmanager clat
+
+# David Seifert <soap@gentoo.org> (2026-09-07)
+# sci-libs/libaec is not keyworded here, and >=sci-libs/hdf5-2.2.0
+# requires it directly instead of via virtual/szip
+>=sci-libs/hdf5-2.2.0 szip
+
+# Sam James <sam@gentoo.org> (2026-09-04)
+# sys-apps/xdg-desktop-portal not keyworded here
+x11-base/xwayland libei
+
+# Nicolas PARLANT <nicolas.parlant@parhuet.fr> (2026-07-30)
+# dev-python/qtpy is not keyworded here
+media-libs/libffado gui
+
+# Pacho Ramos <pacho@gentoo.org> (2026-07-05)
+# QT6 is not keyworded here, bug #977775
+dev-libs/appstream test
+
+# Ionen Wolkens <ionen@gentoo.org> (2026-06-10)
+# llvm-core/clang is not available here, and neither is nvidia
+media-video/ffmpeg cuda-clang
+media-video/ffmpeg-compat cuda-clang
+
+# Pacho Ramos <pacho@gentoo.org> (2026-05-09)
+# dev-libs/appstream not keyworded, bug #977775
+app-misc/media-player-info test
+dev-util/meld test
+
+# Alfred Wingate <parona@protonmail.com> (2026-05-03)
+# dev-libs/libthai not keyworded here
+x11-libs/pango libthai
+
+# Sam James <sam@gentoo.org> (2026-04-11)
+# Unkeyworded dependencies
+sys-libs/libcap-ng bpf
+
 # Robin H. Johnson <robbat2@gentoo.org> (2026-03-22)
 # sys-block/vdo not keyworded here
 sys-fs/lvm2 vdo
@@ -8,6 +51,7 @@ sys-fs/lvm2 vdo
 # Ionen Wolkens <ionen@gentoo.org> (2026-03-16)
 # media-libs/opencolorio is not keyworded here
 media-video/ffmpeg opencolorio
+media-video/ffmpeg-compat opencolorio
 
 # Sam James <sam@gentoo.org> (2026-02-11)
 # sys-libs/libnvme not keyworded here
@@ -68,10 +112,6 @@ media-libs/openal gui
 # NRK <nrk@disroot.org> (2025-04-07)
 # media-libs/libyuv is not keyworded
 media-libs/imlib2 y4m
-
-# Cristian Othón Martínez Vera <cfuga@cfuga.mx> (2025-04-09)
-# dev-db/tinycdb is not keyworded here
-mail-mta/sendmail tinycdb
 
 # NRK <nrk@disroot.org> (2025-03-17)
 # media-libs/libyuv is not keyworded
@@ -137,6 +177,7 @@ sci-visualization/gnuplot amos
 # Leonardo Hernández Hernández <leohdz172@proton.me> (2024-07-07)
 # media-libs/quirc and media-sound/liblc3 are not keyworded here
 media-video/ffmpeg quirc liblc3
+media-video/ffmpeg-compat quirc liblc3
 
 # matoro <matoro_gentoo@matoro.tk> (2024-07-03)
 # Requires dev-util/shelltestrunner
@@ -158,10 +199,6 @@ media-video/ffmpeg-compat libplacebo
 # Michał Górny <mgorny@gentoo.org> (2024-05-08)
 # Requires sys-devel/{clang,llvm}:16.
 dev-lang/python jit
-
-# matoro <matoro_gentoo@matoro.tk> (2024-02-29)
-# sys-apps/xdg-desktop-portal is not keyworded here, #925731
-x11-base/xwayland libei
 
 # matoro <matoro_gentoo@matoro.tk> (2024-02-06)
 # Pulls in dev-python/scipy, which does not pass tests, #923067
@@ -189,7 +226,7 @@ dev-perl/DBD-mysql mysql
 app-text/doxygen gui
 dev-build/cmake gui
 
-# Violet Purcell <vimproved@inventati.org> (2023-10-12)
+# Violet Purcell <vi@vimproved.dev> (2023-10-12)
 # dev-build/samurai is not keyworded here.
 app-alternatives/ninja samurai
 
@@ -290,6 +327,7 @@ media-libs/freetype svg
 # Adel Kara Slimane <adel.ks@zegrapher.com> (2022-03-14)
 # Untested useflag on other arches, needs keywording
 media-video/ffmpeg vmaf
+media-video/ffmpeg-compat vmaf
 
 # Sam James <sam@gentoo.org> (2022-01-29)
 # app-text/ronn-ng not keyworded here, bug #801103
@@ -357,16 +395,6 @@ app-crypt/pinentry efl
 # sci-libs/cholmod is not keyworded.
 sci-libs/umfpack cholmod
 
-# Sam James <sam@gentoo.org> (2021-02-22)
-# media-sound/sndio is not yet keyworded here
-# bug #769098, bug #769122
-media-libs/openal sndio
-media-video/ffmpeg sndio
-media-video/ffmpeg-compat sndio
-media-sound/moc sndio
-media-libs/libsdl2 sndio
-media-libs/libao sndio
-
 # Sam James <sam@gentoo.org> (2021-01-19)
 # Avoid pulling in a large unkeyworded dep
 # which is largely a desktop application
@@ -400,6 +428,7 @@ media-libs/mesa video_cards_zink vulkan-overlay
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2020-07-18)
 # net-libs/webkit-gtk has no alpha keywords
+app-editors/emacs xwidgets
 gnome-extra/evolution-data-server oauth-gtk3 oauth-gtk4
 # needs gnome-extra/sushi, depends on net-libs/webkit-gtk
 gnome-base/nautilus previewer
@@ -584,10 +613,6 @@ media-sound/rhythmbox upnp-av
 # Pacho Ramos <pacho@gentoo.org> (2015-11-15)
 # Missing keywords
 >=media-plugins/grilo-plugins-0.2.14 upnp-av
-
-# Davide Pesavento <pesa@gentoo.org> (2015-10-26)
-# Tests require non-keyworded qt5
-dev-qt/qtchooser test
 
 # Alexandre Rostovtsev <tetromino@gentoo.org> (2015-09-10)
 # Requires wifi USE flag, which is masked for this arch

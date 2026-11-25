@@ -7,7 +7,7 @@ GENTOO_DEPEND_ON_PERL=no
 
 LUA_COMPAT=( lua5-{1,3,4} luajit )
 
-PYTHON_COMPAT=( python3_{12..14} )
+PYTHON_COMPAT=( python3_{13..14} )
 PYTHON_REQ_USE="threads(+)"
 
 USE_PHP="php8-2 php8-3"
@@ -16,7 +16,7 @@ PHP_EXT_NAME="xapian"
 PHP_EXT_INI="yes"
 PHP_EXT_OPTIONAL_USE="php"
 
-USE_RUBY="ruby31 ruby32"
+USE_RUBY="ruby31 ruby32 ruby33"
 RUBY_OPTIONAL="yes"
 
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/ollybetts.asc
@@ -33,7 +33,7 @@ S="${WORKDIR}/${P}" # need this here, some inherited eclasses change it
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm ~hppa ppc ppc64 ~sparc x86"
 IUSE="java lua perl php python ruby tcl ${GENTOO_PERL_USESTRING}"
 REQUIRED_USE="
 	|| ( java lua perl php python ruby tcl )

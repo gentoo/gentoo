@@ -1,0 +1,50 @@
+Bug: https://bugs.gentoo.org/971605
+Bug: https://bugzilla.redhat.com/show_bug.cgi?id=2309148
+
+From c330b5820eefa8e703dbce7278c2a62d9c69166a Mon Sep 17 00:00:00 2001
+From: Kan-Ru Chen <kanru@kanru.info>
+Date: Mon, 23 Dec 2024 08:42:33 +0900
+Subject: Send CTRL-EVENT-SIGNAL-CHANGE message to control interfaces only
+
+The default logging level for the CTRL-EVENT-SIGNAL-CHANGE message
+may be repeated many times and fill the log file or journal.
+
+For example https://bugzilla.redhat.com/show_bug.cgi?id=2309148 and
+the first few results from searching CTRL-EVENT-SIGNAL-CHANGE on the
+web contain various complaints and workarounds.
+
+Change the logging method to wpa_msg_ctrl to avoid sending frequent
+messages to the syslog but still allow the message to be consumed by
+control interface monitors.
+
+Signed-off-by: Kan-Ru Chen <kanru@kanru.info>
+---
+ wpa_supplicant/events.c | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/wpa_supplicant/events.c b/wpa_supplicant/events.c
+index 5a1bc6d58..00109a0cd 100644
+--- a/wpa_supplicant/events.c
++++ b/wpa_supplicant/events.c
+@@ -6766,12 +6766,12 @@ void wpa_supplicant_event(void *ctx, enum wpa_event_type event,
+ 					data->eapol_rx.encrypted);
+ 		break;
+ 	case EVENT_SIGNAL_CHANGE:
+-		wpa_msg(wpa_s, MSG_INFO, WPA_EVENT_SIGNAL_CHANGE
+-			"above=%d signal=%d noise=%d txrate=%lu",
+-			data->signal_change.above_threshold,
+-			data->signal_change.data.signal,
+-			data->signal_change.current_noise,
+-			data->signal_change.data.current_tx_rate);
++		wpa_msg_ctrl(wpa_s, MSG_INFO, WPA_EVENT_SIGNAL_CHANGE
++			     "above=%d signal=%d noise=%d txrate=%lu",
++			     data->signal_change.above_threshold,
++			     data->signal_change.data.signal,
++			     data->signal_change.current_noise,
++			     data->signal_change.data.current_tx_rate);
+ 		wpa_bss_update_level(wpa_s->current_bss,
+ 				     data->signal_change.data.signal);
+ 		bgscan_notify_signal_change(
+-- 
+cgit v1.2.3
+

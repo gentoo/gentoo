@@ -13,7 +13,7 @@ S="${WORKDIR}/${PN}-${COMMIT}"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ppc64 x86"
+KEYWORDS="amd64 ~arm64 ~ppc ppc64 x86"
 IUSE="test"
 RESTRICT="!test? ( test ) test"
 
@@ -36,12 +36,8 @@ PATCHES=(
 
 src_prepare() {
 	# Hangs
-	sed -i \
-		-e '/add_subdirectory(.*Dialog.*Test)/s/^/# removed by Gentoo: &/' \
-		-e '/add_subdirectory(RuleSetViewTest)/s/^/# removed by Gentoo: &/' \
-		-e '/add_subdirectory(ObjectManipulatorTest)/s/^/# removed by Gentoo: &/' \
-		-e '/add_subdirectory(RuleSetViewContextMenuTest)/s/^/# removed by Gentoo: &/' \
-		src/unit_tests/CMakeLists.txt || die
+	cmake_comment_add_subdirectory -f src/unit_tests ".*Dialog.*Test" \
+		RuleSetViewTest ObjectManipulatorTest RuleSetViewContextMenuTest
 
 	cmake_src_prepare
 }

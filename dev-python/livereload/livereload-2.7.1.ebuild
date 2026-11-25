@@ -1,10 +1,10 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 
 inherit distutils-r1
 
@@ -28,25 +28,16 @@ IUSE="examples"
 RDEPEND="
 	dev-python/tornado[${PYTHON_USEDEP}]
 "
-BDEPEND="
-	test? (
-		dev-python/pytest-rerunfailures[${PYTHON_USEDEP}]
-	)
-"
 
+# tests/test_watcher.py::TestWatcher::test_watch_multiple_dirs
+# is extremely flaky
+EPYTEST_PLUGINS=()
+EPYTEST_RERUNS=10
 distutils_enable_tests pytest
 distutils_enable_sphinx docs \
 	dev-python/furo \
 	dev-python/myst-parser \
 	dev-python/sphinxcontrib-programoutput
-
-python_test() {
-	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
-
-	# tests/test_watcher.py::TestWatcher::test_watch_multiple_dirs
-	# is extremely flaky
-	epytest -p rerunfailures --reruns=10
-}
 
 python_install_all() {
 	if use examples; then

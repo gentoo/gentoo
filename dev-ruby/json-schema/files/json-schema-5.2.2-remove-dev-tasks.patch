@@ -1,0 +1,29 @@
+Remove voxpupuli-rubocop and github_changelog_generator dev task blocks.
+Developer linting is not our concern when testing the package for compatibility.
+
+--- a/Rakefile
++++ b/Rakefile
+@@ -58,23 +58,3 @@ end
+ task update: %i[update_common_tests update_meta_schemas]
+ 
+-begin
+-  require 'voxpupuli/rubocop/rake'
+-rescue LoadError
+-  # the voxpupuli-rubocop gem is optional
+-end
+-
+ task default: :test
+-
+-begin
+-  require 'rubygems'
+-  require 'github_changelog_generator/task'
+-rescue LoadError
+-else
+-  GitHubChangelogGenerator::RakeTask.new :changelog do |config|
+-    config.exclude_labels = %w{duplicate question invalid wontfix wont-fix skip-changelog dependencies}
+-    config.user = 'voxpupuli'
+-    config.project = 'json-schema'
+-    gem_version = Gem::Specification.load("#{config.project}.gemspec").version
+-    config.future_release = "v#{gem_version}"
+-  end
+-end

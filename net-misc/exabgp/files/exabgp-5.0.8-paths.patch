@@ -1,0 +1,15 @@
+diff --git a/setup.py b/setup.py
+index 0e8708905..8f45402cd 100644
+--- a/setup.py
++++ b/setup.py
+@@ -32,8 +32,8 @@ def filesOf(directory):
+ 
+ 
+ data_files = [
+-    ('etc/exabgp/examples', filesOf('etc/exabgp')),
+-    ('etc/exabgp/examples/run', filesOf('etc/exabgp/run')),
++    ('share/exabgp/examples', filesOf('etc/exabgp')),
++    ('share/exabgp/examples/run', filesOf('etc/exabgp/run')),
+ ]
+ 
+ 

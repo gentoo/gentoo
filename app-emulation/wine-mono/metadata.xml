@@ -12,6 +12,8 @@
 		mscoree.dll, and it is not intended to be useful for any other
 		purpose.
 	</longdescription>
+	<!-- prebuilt and wine pins to versions making stabling pointless -->
+	<straight-to-stable/>
 	<use>
 		<flag name="shared">
 			Install pre-unpacked files which do not need to

@@ -1,0 +1,77 @@
+https://github.com/ufoaiorg/ufoai/pull/67.patch
+From: Matt Jolly <kangie@gentoo.org>
+Date: Sun, 1 Nov 2026 11:53:12 +1000
+Subject: [PATCH] Fix LTO/ODR violations in duplicated local structs
+
+--- a/src/client/cinematic/cl_cinematic_ogm.cpp
++++ b/src/client/cinematic/cl_cinematic_ogm.cpp
+@@ -32,7 +32,7 @@ typedef struct {
+ 	long vg[256];
+ 	long ub[256];
+ 	long yy[256];
+-} yuvTable_t;
++} ogmYuvTable_t;
+ 
+ #define OGG_BUFFER_SIZE	(8 * 1024)
+ 
+@@ -76,7 +76,7 @@ typedef struct
+ 	musicStream_t musicStream;
+ } ogmCinematic_t;
+ 
+-static yuvTable_t ogmCin_yuvTable;
++static ogmYuvTable_t ogmCin_yuvTable;
+ 
+ #define OGMCIN (*((ogmCinematic_t*)cin->codecData))
+ 
+--- a/src/client/cinematic/cl_cinematic_roq.cpp
++++ b/src/client/cinematic/cl_cinematic_roq.cpp
+@@ -36,7 +36,7 @@ typedef struct {
+ 	int	ug[256];
+ 	int	vg[256];
+ 	int	ub[256];
+-} yuvTable_t;
++} roqYuvTable_t;
+ 
+ #define ROQ_IDENT					0x1084
+ 
+@@ -94,7 +94,7 @@ typedef struct {
+ } roqCinematic_t;
+ 
+ static short		roqCin_sqrTable[256];
+-static yuvTable_t	roqCin_yuvTable;
++static roqYuvTable_t	roqCin_yuvTable;
+ 
+ static int			roqCin_quadOffsets2[2][4];
+ static int			roqCin_quadOffsets4[2][4];
+--- a/src/client/ui/node/ui_node_messagelist.cpp
++++ b/src/client/ui/node/ui_node_messagelist.cpp
+@@ -33,6 +33,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+ #include "ui_node_text.h"
+ #include "ui_node_messagelist.h"
+ #include "ui_node_abstractnode.h"
++#include "../../cgame/campaign/cp_messages.h"
+ 
+ #include "../../client.h"
+ #include "../../../shared/parse.h"
+@@ -49,18 +50,6 @@ static const int DATETIME_COLUUI_SIZE = 180;
+ static int mouseScrollX;
+ static int mouseScrollY;
+ 
+-/* Russian timestamp (with UTF-8) is 23 bytes long */
+-#define TIMESTAMP_TEXT 24
+-typedef struct uiMessageListNodeMessage_s {
+-	char title[MAX_VAR];
+-	char timestamp[TIMESTAMP_TEXT];
+-	char* text;
+-	date_t date;
+-	const char* iconName;
+-	int lineUsed;		/**< used by the node to cache the number of lines need (often =1) */
+-	struct uiMessageListNodeMessage_s* next;
+-} uiMessageListNodeMessage_t;
+-
+ /** @todo implement this on a per-node basis */
+ static uiMessageListNodeMessage_t* messageStack;
+ 
+-- 
+2.55.0
+

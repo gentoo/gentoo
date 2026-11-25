@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
@@ -6,13 +6,13 @@ EAPI="8"
 inherit flag-o-matic
 
 DESCRIPTION="Static code analysis of refpolicy style SELinux policy"
-HOMEPAGE="https://github.com/TresysTechnology/selint/wiki"
+HOMEPAGE="https://github.com/SELinuxProject/selint/wiki"
 
 if [[ ${PV} == 9999 ]] ; then
 	inherit autotools git-r3
-	EGIT_REPO_URI="https://github.com/TresysTechnology/selint.git"
+	EGIT_REPO_URI="https://github.com/SELinuxProject/selint.git"
 else
-	SRC_URI="https://github.com/TresysTechnology/selint/releases/download/v${PV}/${P}.tar.gz"
+	SRC_URI="https://github.com/SELinuxProject/selint/releases/download/v${PV}/${P}.tar.gz"
 	KEYWORDS="amd64 ~arm x86"
 fi
 

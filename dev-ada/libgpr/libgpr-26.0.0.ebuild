@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,7 +18,7 @@ S="${WORKDIR}"/${MYP}
 
 LICENSE="GPL-3"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE="static-libs static-pic"
 
 RDEPEND="dev-ada/xmlada:=[shared,static-libs?,static-pic?,${ADA_USEDEP}]"
@@ -42,7 +42,7 @@ src_configure() {
 
 src_compile() {
 	build () {
-		gprbuild -p -m -j$(makeopts_jobs) -XBUILD=production -v \
+		gprbuild -p -m -j$(get_makeopts_jobs) -XBUILD=production -v \
 			-XLIBRARY_TYPE=$1 -XXMLADA_BUILD=$1 \
 			gpr/gpr.gpr -cargs:C ${CFLAGS} -cargs:Ada ${ADAFLAGS} || die
 	}

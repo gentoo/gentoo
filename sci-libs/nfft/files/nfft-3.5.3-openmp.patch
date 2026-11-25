@@ -1,0 +1,58 @@
+--- a/applications/fastsum/Makefile.am	2026-09-19 22:53:57.849954511 +0200
++++ b/applications/fastsum/Makefile.am	2026-09-19 22:54:59.329364284 +0200
+@@ -33,6 +33,7 @@
+   libfastsum_threads_la_LDFLAGS = @fftw3_threads_LDFLAGS@
+ if HAVE_OPENMP
+   libfastsum_threads_la_CFLAGS = $(OPENMP_CFLAGS)
++  libfastsum_threads_la_LIBADD += -lomp
+ endif
+ endif
+ 
+--- a/julia/nfft/Makefile.am	2026-09-19 23:01:26.115650984 +0200
++++ b/julia/nfft/Makefile.am	2026-09-19 23:02:12.018210301 +0200
+@@ -14,6 +14,9 @@
+ endif
+ 
+ libnfftjulia_la_LIBADD = $(top_builddir)/libnfft3@PREC_SUFFIX@_julia.la @fftw3_LDFLAGS@ $(libadd_for_fftw_threads) @fftw3_LIBS@
++if HAVE_OPENMP
++  libnfftjulia_la_CFLAGS = $(OPENMP_CFLAGS)
++endif
+ 
+ libnfftjulia_la_LDFLAGS = -no-undefined -shared -avoid-version @fftw3_LDFLAGS@
+ 
+--- a/configure.ac	2026-09-19 23:26:29.855965100 +0200
++++ b/configure.ac	2026-09-19 23:26:48.348781187 +0200
+@@ -314,6 +314,9 @@
+ # whether ln -s works
+ AC_PROG_LN_S
+ 
++AC_PROG_EGREP
++AC_PROG_SED
++
+ ################################################################################
+ # 3rd party libraries
+ ################################################################################
+--- a/julia/nfct/Makefile.am	2026-09-19 23:31:07.140207466 +0200
++++ b/julia/nfct/Makefile.am	2026-09-19 23:31:59.305688673 +0200
+@@ -16,6 +16,9 @@
+ libnfctjulia_la_LIBADD = $(top_builddir)/libnfft3@PREC_SUFFIX@_julia.la @fftw3_LDFLAGS@ $(libadd_for_fftw_threads) @fftw3_LIBS@
+ 
+ libnfctjulia_la_LDFLAGS = -no-undefined -shared -avoid-version @fftw3_LDFLAGS@
++if HAVE_OPENMP
++  libnfctjulia_la_CFLAGS = $(OPENMP_CFLAGS)
++endif
+ 
+ EXTRA_DIST = NFCT.jl simple_test_1d.jl simple_test_2d.jl simple_test_3d.jl
+ 
+--- a/julia/nfst/Makefile.am	2026-09-19 23:34:13.229356784 +0200
++++ b/julia/nfst/Makefile.am	2026-09-19 23:35:14.410748329 +0200
+@@ -16,6 +16,9 @@
+ libnfstjulia_la_LIBADD = $(top_builddir)/libnfft3@PREC_SUFFIX@_julia.la @fftw3_LDFLAGS@ $(libadd_for_fftw_threads) @fftw3_LIBS@
+ 
+ libnfstjulia_la_LDFLAGS = -no-undefined -shared -avoid-version @fftw3_LDFLAGS@
++if HAVE_OPENMP
++libnfstjulia_la_CFLAGS = $(OPENMP_CFLAGS)
++endif
+ 
+ EXTRA_DIST = NFST.jl simple_test_1d.jl simple_test_2d.jl simple_test_3d.jl
+ 

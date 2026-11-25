@@ -13,7 +13,7 @@ if [[ ${PV} == *9999* ]] ; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/strukturag/libheif/releases/download/v${PV}/${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
+	KEYWORDS="amd64 arm arm64 ~loong ppc64 ~riscv x86"
 fi
 
 LICENSE="GPL-3 MIT"
@@ -60,6 +60,7 @@ MULTILIB_WRAPPED_HEADERS=(
 
 PATCHES=(
 	"${FILESDIR}"/libheif-1.21.2-svt-av1-4.patch
+	"${FILESDIR}"/libheif-1.21.2-svt-av1-4.1.patch
 )
 
 pkg_pretend() {

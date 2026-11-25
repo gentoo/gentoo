@@ -1,0 +1,49 @@
+From: hololeap <hololeap@protonmail.com>
+Signed-off-by: hololeap <hololeap@protonmail.com>
+
+* There was a slight discrepency between the expected and actual results
+  of the "before-golden" test, likely due to a change in tasty's output.
+
+* The example executable is renamed to tasty-golden-example in the ebuild
+  to prevent possible name collisions.
+
+--- tasty-golden-2.3.6/tests/golden/before-accept.golden	2001-09-09 11:46:40.000000000 +1000
++++ tasty-golden-2.3.6-r1/tests/golden/before-accept.golden	2026-10-26 20:21:16.889316102 +1100
+@@ -91,7 +91,7 @@
+       Use --accept or increase --size-cutoff to see full output.
+       Use -p '$0=="Tests.Failing tests.goldenVsString"' to rerun this test only.
+     goldenVsStringDiff: FAIL
+-      Test output was different from 'example/golden/fail/goldenVsStringDiff.golden'. Output of ["diff","example/golden/fail/goldenVsStringDiff.golden","/private/var/folders/19/d9jtc4c5365g3c_5jjk7m_980000gn/T/goldenVsStringDiff.actual"]:
++      Test output was different from 'example/golden/fail/goldenVsStringDiff.golden'. Output of ["diff","example/golden/fail/goldenVsStringDiff.golden","/var/tmp/portage/dev-haskell/tasty-golden-2.3.6/temp/goldenVsStringDiff.actual"]:
+       1d0
+       < 1
+       4d2
+--- tasty-golden-2.3.6/tests/test.hs	2001-09-09 11:46:40.000000000 +1000
++++ tasty-golden-2.3.6-r1/tests/test.hs	2026-10-26 20:19:49.602614993 +1100
+@@ -89,7 +89,7 @@
+           -- timings.
+           --
+           -- NB: cannot use multiline literals because of CPP.
+-          let cmd = shell ("cd " ++ tmp ++ " && example | " ++
++          let cmd = shell ("cd " ++ tmp ++ " && tasty-golden-example | " ++
+                       "sed -Ee 's/[[:digit:]-]+\\.actual/.actual/g; s/ \\([[:digit:].]+s\\)//' > " ++
+                       our</>"tests/golden/before-accept.actual || true")
+           runProcess_ cmd
+@@ -102,7 +102,7 @@
+         (do
+           tmp <- tmpIO
+           our <- getCurrentDirectory
+-          let cmd = shell ("cd " ++ tmp ++ " && example --accept | sed -Ee 's/ \\([[:digit:].]+s\\)//' > " ++
++          let cmd = shell ("cd " ++ tmp ++ " && tasty-golden-example --accept | sed -Ee 's/ \\([[:digit:].]+s\\)//' > " ++
+                           our </>"tests/golden/with-accept.actual")
+           runProcess_ cmd
+         )
+@@ -114,7 +114,7 @@
+         (do
+           tmp <- tmpIO
+           our <- getCurrentDirectory
+-          let cmd = shell ("cd " ++ tmp ++ " && example | sed -Ee 's/ \\([[:digit:].]+s\\)//' > " ++
++          let cmd = shell ("cd " ++ tmp ++ " && tasty-golden-example | sed -Ee 's/ \\([[:digit:].]+s\\)//' > " ++
+                           our</>"tests/golden/after-accept.actual")
+           runProcess_ cmd
+         )

@@ -1,0 +1,22 @@
+--- a/getopt.h	2026-04-07 15:14:48.565190070 +0200
++++ b/getopt.h	2026-04-07 15:17:07.788553013 +0200
+@@ -117,7 +117,7 @@
+ #define optional_argument       2
+ #endif	/* need getopt */
+ 
+-#if defined(__GNU_LIBRARY__) || defined (WIN32) || defined (__CYGWIN__)
++#if defined(__GNU_LIBRARY__) || defined (WIN32) || defined (__CYGWIN__) || defined(__linux__)
+ /* Many other libraries have conflicting prototypes for getopt, with
+    differences in the consts, in stdlib.h.  To avoid compilation
+    errors, only prototype getopt for the GNU C library.  And not when
+--- a/getopt.c	2026-04-07 15:14:45.507226231 +0200
++++ b/getopt.c	2026-04-07 15:16:52.243736062 +0200
+@@ -194,7 +194,7 @@
+ /* Value of POSIXLY_CORRECT environment variable.  */
+ static char *posixly_correct;
+ 
+-#if defined(__GNU_LIBRARY__) || defined(WIN32)
++#if defined(__GNU_LIBRARY__) || defined(WIN32) || defined(__linux__)
+ /* We want to avoid inclusion of string.h with non-GNU libraries
+    because there are many ways it can cause trouble.
+    On some systems, it contains special magic macros that don't work

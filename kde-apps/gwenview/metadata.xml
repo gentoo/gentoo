@@ -6,13 +6,14 @@
 		<name>Gentoo KDE Project</name>
 	</maintainer>
 	<upstream>
-		<bugs-to>https://bugs.kde.org/</bugs-to>
+		<bugs-to>https://bugs.kde.org/enter_bug.cgi?product=gwenview</bugs-to>
+		<remote-id type="kde-invent">graphics/gwenview</remote-id>
 	</upstream>
 	<use>
 		<flag name="activities">Enable kactivities support</flag>
 		<flag name="annotate">Enable support for image annotations using <pkg>media-libs/kimageannotator</pkg></flag>
 		<flag name="fits">Enable support for NASA's <pkg>sci-libs/cfitsio</pkg> library</flag>
-		<flag name="mpris">Enable support for MPRIS2 interface, requiring <pkg>dev-qt/qtdbus</pkg> as dependency.</flag>
+		<flag name="mpris">Enable support for MPRIS2 interface, requiring <pkg>dev-qt/qtbase</pkg>[dbus] as dependency</flag>
 		<flag name="share">Enable support for a share menu using <pkg>kde-frameworks/purpose</pkg></flag>
 	</use>
 </pkgmetadata>

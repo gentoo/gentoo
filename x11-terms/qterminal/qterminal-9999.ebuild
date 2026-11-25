@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,7 +6,10 @@ EAPI=8
 inherit cmake xdg
 
 DESCRIPTION="Qt-based multitab terminal emulator"
-HOMEPAGE="https://lxqt-project.org/"
+HOMEPAGE="
+	https://lxqt-project.org/
+	https://github.com/lxqt/qterminal/
+"
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
@@ -21,7 +24,7 @@ SLOT="0"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-BDEPEND=">=dev-util/lxqt-build-tools-2.2.0"
+BDEPEND=">=dev-util/lxqt-build-tools-2.4.0"
 DEPEND="
 	>=dev-qt/qtbase-6.6:6=[dbus,gui,widgets,X]
 	kde-plasma/layer-shell-qt:6

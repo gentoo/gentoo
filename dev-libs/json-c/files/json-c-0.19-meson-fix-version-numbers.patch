@@ -1,0 +1,35 @@
+https://github.com/json-c/json-c/pull/948
+
+From e7d683adc4648feb9777778c4627d6c553c3182e Mon Sep 17 00:00:00 2001
+Message-ID: <e7d683adc4648feb9777778c4627d6c553c3182e.1784353111.git.sam@gentoo.org>
+From: Sam James <sam@gentoo.org>
+Date: Sat, 18 Jul 2026 06:37:36 +0100
+Subject: [PATCH] meson: fix version numbers
+
+---
+ meson.build | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/meson.build b/meson.build
+index 9ba3a45..ea4aa9c 100644
+--- a/meson.build
++++ b/meson.build
+@@ -1,5 +1,5 @@
+ 
+-project('json-c', 'c', version: '0.18.99',
++project('json-c', 'c', version: '0.19',
+   meson_version: '>=0.54.0',
+   license: 'MIT',
+   default_options: ['buildtype=release', 'warning_level=2'])
+@@ -261,7 +261,7 @@ libjson = library('json-c',
+   dependencies: bsd_dep,
+   install: true,
+   link_args: sym,
+-  version: '5.4.0',
++  version: '5.5.0',
+   soversion: '5',
+ )
+ 
+-- 
+2.55.0
+

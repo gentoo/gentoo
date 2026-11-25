@@ -20,17 +20,17 @@ HOMEPAGE="https://github.com/moonlight-stream/moonlight-qt"
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="cuda +drm embedded glslow +vaapi vdpau vkslow vulkan wayland X"
+IUSE="cuda-clang +drm embedded glslow +vaapi vdpau vkslow vulkan wayland X"
 
 RDEPEND="
 	dev-libs/openssl:=
 	dev-qt/qtbase:6[gui,network]
-	dev-qt/qtdeclarative:6[svg]
+	dev-qt/qtdeclarative:6[opengl,svg]
 	media-libs/libglvnd
 	media-libs/libsdl2[gles2,haptic,joystick,kms,sound,video]
 	media-libs/opus
 	media-libs/sdl2-ttf
-	>=media-video/ffmpeg-6:=[cuda?,drm?,vaapi?,vdpau?,vulkan?]
+	>=media-video/ffmpeg-6:=[cuda-clang?,drm?,vaapi?,vdpau?,vulkan?]
 	drm? ( x11-libs/libdrm )
 	vaapi? ( media-libs/libva:=[wayland?,X?] )
 	vdpau? (
@@ -56,7 +56,8 @@ src_configure() {
 		PREFIX="${EPREFIX}/usr"
 		CONFIG+="
 			disable-mmal
-			$(usex cuda "" disable-cuda)
+			disable-prebuilts
+			$(usex cuda-clang enable-cuda "")
 			$(usex drm "" disable-libdrm)
 			$(usex vaapi "" disable-libva)
 			$(usex vdpau "" disable-libvdpau)

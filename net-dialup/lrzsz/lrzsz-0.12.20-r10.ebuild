@@ -9,7 +9,7 @@ DESCRIPTION="Communication package providing the X, Y, and ZMODEM file transfer 
 HOMEPAGE="https://www.ohse.de/uwe/software/lrzsz.html"
 SRC_URI="
 	https://www.ohse.de/uwe/releases/${P}.tar.gz
-	https://dev.gentoo.org/~ceamac/${CATEGORY}/${PN}/gettext-0.19.8-runtime-m4.tar.xz
+	https://distfiles.gentoo.org/pub/dev/ceamac@gentoo.org/${CATEGORY}/${PN}/gettext-0.19.8-runtime-m4.tar.xz
 "
 
 LICENSE="GPL-2"

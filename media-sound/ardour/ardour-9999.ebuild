@@ -1,9 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..15} )
 PYTHON_REQ_USE='threads(+)'
 inherit desktop edo flag-o-matic optfeature python-any-r1 waf-utils toolchain-funcs xdg
 
@@ -16,14 +16,12 @@ if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/Ardour/ardour.git"
 	inherit git-r3
 else
-	# We previously had 8.12 instead of 8.12.0 despite SRC_URI + S
-	[[ ${PV} != 8.12 ]] && die "Please fix the version to be X.Y.Z instead of X.Y on this next bump!"
 	# upstream doesn't provide a release tarball in github repo
 	# see https://github.com/Ardour/ardour/blob/master/README-GITHUB.txt
 	# official link is available here, but with token/expiration:
 	# https://community.ardour.org/download?architecture=x86_64&type=source
-	SRC_URI="https://dev.gentoo.org/~fordfrog/distfiles/Ardour-${PV}.0.tar.bz2"
-	S="${WORKDIR}/Ardour-${PV}.0"
+	SRC_URI="https://dev.gentoo.org/~fordfrog/distfiles/Ardour-${PV}.tar.bz2"
+	S="${WORKDIR}/Ardour-${PV}"
 	KEYWORDS="~amd64 ~loong ~x86"
 fi
 
@@ -161,6 +159,7 @@ src_configure() {
 		--configdir="${EPREFIX}"/etc
 		--cxx17
 		--freedesktop
+		--no-execstack
 		--noconfirm
 		--optimize
 		--with-backends=$(IFS=','; echo "${backends[*]}")

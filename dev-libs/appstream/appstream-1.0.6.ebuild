@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,7 +11,7 @@ if [[ ${PV} == *9999* ]]; then
 else
 	MY_PN="AppStream"
 	SRC_URI="https://www.freedesktop.org/software/appstream/releases/${MY_PN}-${PV}.tar.xz"
-	KEYWORDS="amd64 arm arm64 ~loong ppc ppc64 ~riscv x86"
+	KEYWORDS="~alpha amd64 arm arm64 ~loong ppc ppc64 ~riscv x86"
 	S="${WORKDIR}/${MY_PN}-${PV}"
 fi
 
@@ -59,7 +59,10 @@ BDEPEND="
 	vala? ( $(vala_depend) )
 "
 
-PATCHES=( "${FILESDIR}"/${PN}-1.0.0-disable-Werror-flags.patch ) # bug 733774
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.0.0-disable-Werror-flags.patch # bug 733774
+	"${FILESDIR}"/${P}-missing-fontconfig-include.patch # bug 977023
+)
 
 src_prepare() {
 	default

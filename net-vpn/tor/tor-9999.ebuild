@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/torproject.org.asc
 inherit edo python-any-r1 readme.gentoo-r1 systemd verify-sig
 
@@ -17,11 +17,13 @@ if [[ ${PV} == 9999 ]] ; then
 	inherit autotools git-r3
 else
 	SRC_URI="
-		https://www.torproject.org/dist/${MY_PF}.tar.gz
+		https://dist.torproject.org/${MY_PF}.tar.gz
 		https://archive.torproject.org/tor-package-archive/${MY_PF}.tar.gz
 		verify-sig? (
 			https://dist.torproject.org/${MY_PF}.tar.gz.sha256sum
 			https://dist.torproject.org/${MY_PF}.tar.gz.sha256sum.asc
+			https://archive.torproject.org/tor-package-archive/${MY_PF}.tar.gz.sha256sum
+			https://archive.torproject.org/tor-package-archive/${MY_PF}.tar.gz.sha256sum.asc
 		)
 	"
 
@@ -74,7 +76,7 @@ BDEPEND+="
 DOCS=()
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-0.2.7.4-torrc.sample.patch
+	"${FILESDIR}"/${PN}-0.4.9.17-torrc.sample.patch
 )
 
 QA_CONFIG_IMPL_DECL_SKIP=(
@@ -188,9 +190,10 @@ src_install() {
 	default
 	readme.gentoo_create_doc
 
-	newconfd "${FILESDIR}"/tor.confd tor
-	newinitd "${FILESDIR}"/tor.initd-r9 tor
-	systemd_dounit "${FILESDIR}"/tor.service
+	newconfd "${FILESDIR}"/tor.confd-r1 tor
+	newinitd "${FILESDIR}"/tor.initd-r10 tor
+	systemd_newunit "${FILESDIR}"/tor.service-r1 "${PN}.service"
+	systemd_newunit "${FILESDIR}"/tor_at.service "${PN}@.service"
 
 	keepdir /var/lib/tor
 
@@ -198,5 +201,5 @@ src_install() {
 	fowners tor:tor /var/lib/tor
 
 	insinto /etc/tor/
-	newins "${FILESDIR}"/torrc-r2 torrc
+	newins "${FILESDIR}"/torrc-r3 torrc
 }

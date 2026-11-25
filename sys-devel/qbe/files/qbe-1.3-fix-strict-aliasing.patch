@@ -1,0 +1,50 @@
+From 64535f5eb9d8e71a9af6b22bc41b7746c86fa534 Mon Sep 17 00:00:00 2001
+From: "Haelwenn (lanodan) Monnier" <contact@hacktivis.me>
+Date: Sun, 7 Jun 2026 02:15:01 +0200
+Subject: [PATCH qbe] emit: fix aliasing-breaking pointer dereference via union
+Message-ID: <20260607002047.1519619-1-contact@hacktivis.me>
+X-Archived-At: https://lists.sr.ht/~mpu/qbe/patches/69989
+X-Upstream-Status: merged
+
+    emit.c:186:50: error: dereferencing type-punned pointer will break strict-aliasing rules [-Werror=strict-aliasing]
+
+Bug: https://bugs.gentoo.org/976975
+---
+ emit.c | 9 +++++----
+ 1 file changed, 5 insertions(+), 4 deletions(-)
+
+diff --git a/emit.c b/emit.c
+index 45a6e5a..0abb3f2 100644
+--- a/emit.c
++++ b/emit.c
+@@ -160,6 +160,7 @@ emitfin(FILE *f, char *sec[3])
+ 	Asmbits *b;
+ 	int lg, i;
+ 	union { int32_t i; float f; } u;
++	union { int64_t i; double f; } uu;
+ 
+ 	if (!stash)
+ 		return;
+@@ -178,13 +179,13 @@ emitfin(FILE *f, char *sec[3])
+ 						"\n\t.quad %"PRId64
+ 						"\n\t.quad 0\n\n",
+ 						(int64_t)b->n);
+-				else if (lg == 3)
++				else if (lg == 3) {
++					uu.i = b->n;
+ 					fprintf(f,
+ 						"\n\t.quad %"PRId64
+ 						" /* %f */\n\n",
+-						(int64_t)b->n,
+-						*(double *)&b->n);
+-				else if (lg == 2) {
++						uu.i, uu.f);
++				} else if (lg == 2) {
+ 					u.i = b->n;
+ 					fprintf(f,
+ 						"\n\t.int %"PRId32
+
+base-commit: c0818978acec60ebb6167fade60fb7012cbf20ca
+-- 
+2.52.0
+

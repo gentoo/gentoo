@@ -1,0 +1,19 @@
+https://github.com/flameshot-org/flameshot/pull/5012
+
+From: ShengYi Hung <aokblast@FreeBSD.org>
+Date: Tue, 20 Oct 2026 23:01:01 -0500
+Subject: [PATCH] utils: Add missing iterator in strfparse
+
+In here, we use back_inserter but without including iterator
+header. Include this to prevent build failure on libcxx.
+
+--- a/src/utils/strfparse.cpp
++++ b/src/utils/strfparse.cpp
+@@ -5,6 +5,7 @@
+
+ #include <algorithm>
+ #include <ctime>
++#include <iterator>
+ #include <map>
+ #include <sstream>
+

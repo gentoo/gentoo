@@ -1,0 +1,24 @@
+https://bugs.gentoo.org/976106
+https://github.com/voxpupuli/json-schema/pull/557
+
+From 9f52b34a54a9063aace89edeb3caf1e96acee851 Mon Sep 17 00:00:00 2001
+From: Tim Meusel <tim@bastelfreak.de>
+Date: Sat, 20 Dec 2025 22:07:49 +0100
+Subject: [PATCH] bigdecimal: Allow 4.x
+
+---
+ json-schema.gemspec | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/json-schema.gemspec b/json-schema.gemspec
+index 36acd2aa..fde94b6f 100644
+--- a/json-schema.gemspec
++++ b/json-schema.gemspec
+@@ -23,5 +23,5 @@ Gem::Specification.new do |s|
+   s.add_development_dependency 'webmock', '~> 3.23'
+ 
+   s.add_dependency 'addressable', '~> 2.8'
+-  s.add_dependency 'bigdecimal', '~> 3.1'
++  s.add_dependency 'bigdecimal', '>= 3.1', '< 5'
+ end
+

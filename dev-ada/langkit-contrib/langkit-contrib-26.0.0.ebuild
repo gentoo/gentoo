@@ -1,9 +1,9 @@
-# Copyright 2025 Gentoo Authors
+# Copyright 2025-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{12..13} )
+PYTHON_COMPAT=( python3_{13..14} )
 ADA_COMPAT=( gcc_{12..16} )
 
 DISTUTILS_USE_PEP517=setuptools
@@ -54,7 +54,7 @@ src_compile() {
 		--library-types=${libtype} \
 		--no-langkit-support \
 		--build-mode prod \
-		--jobs $(makeopts_jobs) --gargs \\-v || die
+		--jobs $(get_makeopts_jobs) --gargs \\-v || die
 }
 
 src_install() {

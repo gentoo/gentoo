@@ -1,0 +1,18 @@
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -97,10 +97,14 @@ SYSCONFIG_FILE = @SYSCONFIG_FILE@
+ endif
+ 
+ # Compiler flags
++ifndef CPPFLAGS
++CPPFLAGS = @CPPFLAGS@
++endif
++CPPFLAGS += @DEFS@
+ ifndef CFLAGS
+ CFLAGS = @CFLAGS@
+ endif
+-CFLAGS += -Wall -Wstrict-prototypes -pipe -O2 -fno-tree-slp-vectorize
++CFLAGS += $(CPPFLAGS)
+ 
+ ifndef DFLAGS
+ DFLAGS = @DFLAGS@

@@ -6,7 +6,7 @@ EAPI=8
 # Bump notes: https://wiki.gentoo.org/wiki/Project:Rust/Rust_bump
 
 LLVM_COMPAT=( 21 )
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 
 RUST_PATCH_VER=${PV#*_p}
 RUST_MAX_VER=${PV%%_*}
@@ -20,8 +20,16 @@ else
 	RUST_MIN_VER="$(ver_cut 1).$(($(ver_cut 2) - 1)).0"
 fi
 
-inherit check-reqs estack flag-o-matic llvm-r1 multiprocessing optfeature \
-	multilib multilib-build python-any-r1 rust rust-toolchain toolchain-funcs verify-sig
+# Bump vendored crates for openssl-4 support, bug #977001
+# Upstream Issue: https://github.com/rust-lang/rust/issues/155397
+CRATE_PATHS_OVERRIDE="
+	curl@0.4.50
+	curl-sys@0.4.89+curl-8.20.0
+	openssl@0.10.81
+	openssl-sys@0.9.117
+"
+inherit cargo check-reqs estack flag-o-matic llvm-r2 multiprocessing optfeature
+inherit multilib multilib-build python-any-r1 rust-toolchain toolchain-funcs verify-sig
 
 if [[ ${PV} = *9999* ]]; then
 	inherit git-r3
@@ -45,6 +53,10 @@ else
 	"
 	S="${WORKDIR}/${MY_P}-src"
 	KEYWORDS="amd64 arm arm64 ~loong ~mips ppc ppc64 ~riscv ~sparc x86"
+fi
+
+if [[ ${PKGBUMPING} != ${PVR} ]]; then
+	SRC_URI+=" ${CARGO_CRATE_URIS}"
 fi
 
 DESCRIPTION="Systems programming language originally developed by Mozilla"
@@ -248,7 +260,7 @@ pkg_setup() {
 	rust_pkg_setup
 
 	if use system-llvm; then
-		llvm-r1_pkg_setup
+		llvm-r2_pkg_setup
 
 		local llvm_config="$(get_llvm_prefix)/bin/llvm-config"
 		export LLVM_LINK_SHARED=1
@@ -317,9 +329,11 @@ src_unpack() {
 	elif use verify-sig ; then
 		# Patch tarballs are not signed (but we trust Gentoo infra)
 		verify-sig_verify_detached "${DISTDIR}"/rustc-${PV}-src.tar.xz{,.asc}
-		default
+		cargo_src_unpack
+		ln -s "${ECARGO_VENDOR}"/* "${S}/vendor/"
 	else
-		default
+		cargo_src_unpack
+		ln -s "${ECARGO_VENDOR}"/* "${S}/vendor/"
 	fi
 }
 

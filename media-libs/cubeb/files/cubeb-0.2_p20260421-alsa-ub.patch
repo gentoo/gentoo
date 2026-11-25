@@ -1,0 +1,15 @@
+This caused crashes in pcsx2 with the bundled cubeb, and odds are
+it could could problems here too when using ALSA.
+
+https://github.com/mozilla/cubeb/pull/829
+--- a/src/cubeb.c
++++ b/src/cubeb.c
+@@ -741,4 +741,8 @@
+ 
+   rv = context->ops->enumerate_devices(context, devtype, collection);
++  if (rv != CUBEB_OK) {
++    collection->device = NULL;
++    collection->count = 0;
++  }
+ 
+   if (cubeb_log_get_callback()) {

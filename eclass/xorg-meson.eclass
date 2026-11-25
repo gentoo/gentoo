@@ -1,4 +1,4 @@
-# Copyright 2025 Gentoo Authors
+# Copyright 2025-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: xorg-meson.eclass
@@ -6,7 +6,7 @@
 # x11@gentoo.org
 # @AUTHOR:
 # Author: Matt Turner <mattst88@gentoo.org>
-# @SUPPORTED_EAPIS: 8
+# @SUPPORTED_EAPIS: 8 9
 # @PROVIDES: meson meson-multilib
 # @BLURB: Reduces code duplication in the X11 ebuilds.
 # @DESCRIPTION:
@@ -21,7 +21,7 @@
 # everything else should be automatic.
 
 case ${EAPI} in
-	8) ;;
+	8|9) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
@@ -48,7 +48,7 @@ fi
 # @DESCRIPTION:
 # Set up SRC_URI for individual releases. If set to an empty
 # string, no SRC_URI will be provided by the eclass.
-: "${XORG_BASE_INDIVIDUAL_URI="https://www.x.org/releases/individual"}"
+: "${XORG_BASE_INDIVIDUAL_URI="https://xorg.freedesktop.org/archive/individual"}"
 
 # @ECLASS_VARIABLE: XORG_MODULE
 # @PRE_INHERIT
@@ -75,9 +75,9 @@ fi
 # @DESCRIPTION:
 # For git checkout the git repository might differ from package name.
 # This variable can be used for proper directory specification
-: "${XORG_PACKAGE_NAME:=${PN}}"
+: "${XORG_PACKAGE_NAME:=${PN,,}}"
 
-HOMEPAGE="https://www.x.org/wiki/ https://gitlab.freedesktop.org/xorg/${XORG_MODULE}${XORG_PACKAGE_NAME}"
+HOMEPAGE="https://www.x.org/ https://gitlab.freedesktop.org/xorg/${XORG_MODULE}${XORG_PACKAGE_NAME}"
 
 # @ECLASS_VARIABLE: XORG_TARBALL_SUFFIX
 # @PRE_INHERIT

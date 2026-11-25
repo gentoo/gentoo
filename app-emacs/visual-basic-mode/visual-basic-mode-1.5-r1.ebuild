@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,7 +9,7 @@ DESCRIPTION="A mode for editing Visual Basic programs"
 HOMEPAGE="https://www.emacswiki.org/emacs/VisualBasicMode"
 
 # taken from https://www.emacswiki.org/emacs/${PN}.el
-SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.el.xz"
+SRC_URI="https://distfiles.gentoo.org/pub/proj/emacs/${P}.el.xz"
 
 LICENSE="GPL-3+"
 SLOT="0"

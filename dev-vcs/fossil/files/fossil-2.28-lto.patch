@@ -1,0 +1,30 @@
+From bba1e06973bb5149f6f6b3cf04e233cfc40fb803 Mon Sep 17 00:00:00 2001
+From: Matt Jolly <kangie@gentoo.org>
+Date: Tue, 3 Nov 2026 13:07:11 +1000
+Subject: [PATCH] Fix LTO type mismatch for deduceDatabaseType
+
+The declaration of deduceDatabaseType in src/main.c did not match its
+actual definition in extsrc/shell.c. The function takes three arguments,
+but the prototype only declared two, which triggered an LTO
+type-mismatch during compilation.
+
+Update the prototype and call site to pass the missing openFlags
+argument.
+
+Signed-off-by: Matt Jolly <kangie@gentoo.org>
+--- a/src/main.c
++++ b/src/main.c
+@@ -693,8 +693,8 @@ static void fossil_init_flags_from_options(void){
+ ** to cause Fossil to launch with "fossil ui" on that repo.
+ */
+ static int fossilExeHasAppendedRepo(void){
+-  extern int deduceDatabaseType(const char*,int);
+-  if( 2==deduceDatabaseType(g.nameOfExe,0) ){
++  extern int deduceDatabaseType(const char*,int,int);
++  if( 2==deduceDatabaseType(g.nameOfExe,0,0) ){
+     static char *azAltArgv[] = { 0, "ui", 0, 0 };
+     azAltArgv[0] = g.nameOfExe;
+     azAltArgv[2] = g.nameOfExe;
+-- 
+2.56.0
+

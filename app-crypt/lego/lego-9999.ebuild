@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,7 +8,7 @@ inherit go-module
 DESCRIPTION="Let's Encrypt/ACME client (like certbot or acme.sh) and library written in Go"
 HOMEPAGE="https://github.com/go-acme/lego/"
 
-DOCUMENTATION_COMMIT=093311eaa03c9f9f4cfdd9ef6bbc24547abfea4f
+DOCUMENTATION_COMMIT=730a4b67f540fed7c39088506f49f6b29cbfbfb8
 
 if [[ ${PV} == 9999* ]]; then
 	inherit git-r3
@@ -17,7 +17,7 @@ else
 	SRC_URI="
 	https://github.com/go-acme/lego/archive/v${PV}.tar.gz -> ${P}.tar.gz
 	https://github.com/go-acme/lego/archive/${DOCUMENTATION_COMMIT}.tar.gz -> ${P}-docs.tar.gz
-	https://github.com/rahilarious/gentoo-distfiles/releases/download/${P}/deps.tar.xz -> ${P}-deps.tar.xz
+	https://github.com/gentoo-golang-dist/lego/releases/download/v${PV}/${P}-vendor.tar.xz -> ${P}-deps.tar.xz
 "
 	KEYWORDS="~amd64 ~arm64"
 fi
@@ -34,6 +34,8 @@ SLOT="0"
 PROPERTIES="test_network"
 RESTRICT="test"
 
+BDEPEND=">=dev-lang/go-1.26.0"
+
 src_unpack() {
 	if [[ ${PV} == 9999* ]]; then
 		git-r3_src_unpack
@@ -42,7 +44,7 @@ src_unpack() {
 		EGIT_CHECKOUT_DIR="${WORKDIR}/${PN}-${DOCUMENTATION_COMMIT}"
 		git-r3_src_unpack
 	else
-		default
+		go-module_src_unpack
 	fi
 }
 
@@ -61,7 +63,7 @@ src_compile() {
 		VERSION="${PV}"
 	fi
 
-	ego build -trimpath -ldflags "-X main.version=${VERSION}" -o dist/"${PN}" ./cmd/lego/
+	ego build -trimpath -ldflags "-X main.version=${VERSION}" -o dist/"${PN}" .
 }
 
 src_test() {
@@ -75,4 +77,10 @@ src_install() {
 	# docs
 	einstalldocs
 	dodoc -r ../"${PN}"-"${DOCUMENTATION_COMMIT}"/*
+}
+
+pkg_postinst() {
+	ewarn "If you're upgrading from v4 to v5 then you MUST migrate"
+	ewarn "Follow this migration guide"
+	ewarn "https://go-acme.github.io/lego/migration/cli/index.html"
 }

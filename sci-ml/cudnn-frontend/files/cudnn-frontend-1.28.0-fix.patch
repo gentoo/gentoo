@@ -1,0 +1,22 @@
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+Subject: [PATCH] samples: include <memory> and <cudnn_graph.h> explicitly
+
+helpers.h uses std::unique_ptr/std::make_unique and the cudnnHandle_t API
+but relies on both arriving transitively. Include them directly; <stdexcept>
+is unused.
+
+Rebased onto 1.28.0 (upstream added an SPDX header and <vector>).
+--- a/samples/cpp/utils/helpers.h
++++ b/samples/cpp/utils/helpers.h
+@@ -6,9 +6,10 @@
+ #pragma once
+ 
+ #include <vector>
+-#include <stdexcept>
++#include <memory>
+ #include <sstream>
+ 
++#include <cudnn_graph.h>
+ #include <cuda_runtime.h>
+ #include <cuda_fp16.h>
+ 

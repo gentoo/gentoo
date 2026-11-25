@@ -1,0 +1,14 @@
+https://bugs.gentoo.org/978762
+https://github.com/uim/uim/issues/207
+https://github.com/uim/sigscheme/pull/21
+--- a/sigscheme/src/module-sscm-ext.c
++++ b/sigscheme/src/module-sscm-ext.c
+@@ -233,7 +233,7 @@ scm_require_internal(const char *filename)
+ }
+ 
+ SCM_EXPORT ScmObj
+-scm_p_require(ScmObj filename)
++scm_p_require(volatile ScmObj filename)
+ {
+ #if SCM_COMPAT_SIOD
+     ScmObj loaded_str, retsym;

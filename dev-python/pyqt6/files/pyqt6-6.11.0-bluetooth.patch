@@ -1,0 +1,24 @@
+https://bugs.gentoo.org/980692
+--- a/config-tests/cfgtest_QtCore.cpp
++++ b/config-tests/cfgtest_QtCore.cpp
+@@ -33,2 +33,6 @@
+ 
++#if !defined(QT_SUPPORTS_INT128)
++    out << "PyQt_INT128\n";
++#endif
++
+ #if QT_VERSION < 0x060500 || !QT_CONFIG(permissions)
+--- a/sip/QtBluetooth/qbluetoothuuid.sip
++++ b/sip/QtBluetooth/qbluetoothuuid.sip
+@@ -332,3 +332,5 @@
+     quint32 toUInt32(bool *ok = 0) const;
++%If (!PyQt_INT128)
+     quint128 toUInt128() const;
++%End
+     static QString serviceClassToString(QBluetoothUuid::ServiceClassUuid uuid);
+--- a/sip/QtCore/QtCoremod.sip
++++ b/sip/QtCore/QtCoremod.sip
+@@ -32,2 +32,3 @@
+ %Feature PyQt_qreal_double
++%Feature PyQt_INT128
+ %Feature PyQt_PrintDialog

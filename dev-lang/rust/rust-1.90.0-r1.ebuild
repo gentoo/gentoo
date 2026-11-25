@@ -4,7 +4,7 @@
 EAPI=8
 
 LLVM_COMPAT=( 20 )
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 
 MRUSTC_VERSION="0.12.0"
 MRUSTC_RUST_VERSION="1.90.0"
@@ -25,8 +25,17 @@ else
 	RUST_MIN_VER="$(ver_cut 1).$(($(ver_cut 2) - 1)).0"
 fi
 
-inherit check-reqs estack edo flag-o-matic llvm-r1 multiprocessing optfeature \
-	multilib multilib-build python-any-r1 rust rust-toolchain toolchain-funcs verify-sig
+# Bump vendored crates for openssl-4 support, bug #977001
+# Upstream Issue: https://github.com/rust-lang/rust/issues/155397
+CRATE_PATHS_OVERRIDE="
+	curl@0.4.48
+	curl-sys@0.4.77+curl-8.10.1
+	openssl@0.10.81
+	openssl-sys@0.9.117
+"
+
+inherit cargo check-reqs estack edo flag-o-matic llvm-r2 multiprocessing optfeature
+inherit multilib multilib-build python-any-r1 rust-toolchain toolchain-funcs verify-sig
 
 if [[ ${PV} = *9999* ]]; then
 	inherit git-r3
@@ -50,6 +59,10 @@ else
 	"
 	S="${WORKDIR}/${MY_P}-src"
 	KEYWORDS="amd64 arm arm64 ~loong ~mips ppc ppc64 ~riscv ~sparc x86"
+fi
+
+if [[ ${PKGBUMPING} != ${PVR} ]]; then
+	SRC_URI+=" ${CARGO_CRATE_URIS}"
 fi
 
 DESCRIPTION="Systems programming language originally developed by Mozilla"
@@ -117,7 +130,8 @@ BDEPEND="${PYTHON_DEPS}
 	test? ( dev-debug/gdb )
 	verify-sig? ( sec-keys/openpgp-keys-rust )
 	mrustc-bootstrap? (
-		~dev-lang/mrustc-${MRUSTC_VERSION}
+		amd64? ( ~dev-lang/mrustc-${MRUSTC_VERSION} )
+		arm64? ( ~dev-lang/mrustc-0.12.0_p20261018 )
 		dev-build/cmake
 		sys-devel/gcc:*
 	)
@@ -269,7 +283,7 @@ pkg_setup() {
 	fi
 
 	if use system-llvm; then
-		llvm-r1_pkg_setup
+		llvm-r2_pkg_setup
 
 		local llvm_config="$(get_llvm_prefix)/bin/llvm-config"
 		export LLVM_LINK_SHARED=1
@@ -338,9 +352,11 @@ src_unpack() {
 	elif use verify-sig ; then
 		# Patch tarballs are not signed (but we trust Gentoo infra)
 		verify-sig_verify_detached "${DISTDIR}"/rustc-${PV}-src.tar.xz{,.asc}
-		default
+		cargo_src_unpack
+		ln -s "${ECARGO_VENDOR}"/* "${S}/vendor/"
 	else
-		default
+		cargo_src_unpack
+		ln -s "${ECARGO_VENDOR}"/* "${S}/vendor/"
 	fi
 }
 

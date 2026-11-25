@@ -11,7 +11,6 @@
 	<use>
 		<flag name="crypt">Enable support for payload encryption with <pkg>dev-libs/libsodium</pkg></flag>
 		<flag name="http">Enable support for the built-in HTTP REST API</flag>
-		<flag name="kill">Enable support removing data via the API (dangerous)</flag>
 		<flag name="lua">Enable support for Lua hook integration</flag>
 		<flag name="mqtt">Enable MQTT support</flag>
 		<flag name="ping">Enable support for the "pingping" monitoring feature</flag>

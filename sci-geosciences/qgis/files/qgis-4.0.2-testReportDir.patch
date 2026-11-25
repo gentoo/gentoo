@@ -1,0 +1,13 @@
+diff --git a/src/core/qgsrenderchecker.cpp b/src/core/qgsrenderchecker.cpp
+index c75985a..4696f18 100644
+--- a/src/core/qgsrenderchecker.cpp
++++ b/src/core/qgsrenderchecker.cpp
+@@ -54,7 +54,7 @@ QgsRenderChecker::QgsRenderChecker()
+ QDir QgsRenderChecker::testReportDir()
+ {
+   if ( qgetenv( "QGIS_CONTINUOUS_INTEGRATION_RUN" ) == u"true"_s )
+-    return QDir( QDir( "/root/QGIS" ).filePath( u"qgis_test_report"_s ) );
++    return QDir( QDir( qgetenv( "HOME" ) ).filePath( u"qgis_test_report"_s ) );
+   else if ( !qgetenv( "QGIS_TEST_REPORT" ).isEmpty() )
+     return QDir( qgetenv( "QGIS_TEST_REPORT" ) );
+   else

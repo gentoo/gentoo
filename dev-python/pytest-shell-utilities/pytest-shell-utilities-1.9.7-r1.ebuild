@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_1{0..4} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit distutils-r1
 
@@ -31,15 +31,14 @@ RDEPEND="
 "
 BDEPEND="
 	dev-python/setuptools-scm[${PYTHON_USEDEP}]
-	test? (
-		dev-python/pytest-subtests[${PYTHON_USEDEP}]
-	)
 "
 
 PATCHES=(
 	"${FILESDIR}/pytest-shell-utilities-1.9.7-py314.patch"
 )
 
+EPYTEST_PLUGINS=( "${PN}" pytest-subtests )
+EPYTEST_PLUGIN_LOAD_VIA_ENV=1
 distutils_enable_tests pytest
 
 export SETUPTOOLS_SCM_PRETEND_VERSION=${PV}

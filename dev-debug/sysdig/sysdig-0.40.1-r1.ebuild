@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -58,10 +58,11 @@ PDEPEND="modules? ( =dev-debug/scap-driver-${LIBS_VERSION}* )"
 
 PATCHES=(
 	"${FILESDIR}/0.38.1-scap-loader.patch"
+	"${FILESDIR}/0.40.1-cmake4.patch"
 )
 
 pkg_pretend() {
-	if use bpf; then
+	if use bpf && [[ ${MERGE_TYPE} != binary ]] ; then
 		local CONFIG_CHECK="
 			~BPF
 			~BPF_EVENTS

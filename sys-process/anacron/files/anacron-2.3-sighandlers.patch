@@ -1,0 +1,41 @@
+https://bugs.gentoo.org/943949
+Correct signal handler signatures.
+Also prevent unexpected environment modification
+by strdup'ing new environment. Mutes const qualifier
+discard warning, too.
+--- a/main.c
++++ b/main.c
+@@ -214,19 +214,19 @@
+ }
+ 
+ void
+-handle_sigalrm()
++handle_sigalrm(int)
+ {
+     got_sigalrm = 1;
+ }
+ 
+ void
+-handle_sigchld()
++handle_sigchld(int)
+ {
+     got_sigchld = 1;
+ }
+ 
+ void
+-handle_sigusr1()
++handle_sigusr1(int)
+ {
+     got_sigusr1 = 1;
+ }
+--- a/runjob.c
++++ b/runjob.c
+@@ -86,7 +86,7 @@
+ static void
+ xputenv(const char *s)
+ {
+-    if (putenv(s)) die_e("Can't set the environment");
++    if (putenv(strdup(s))) die_e("Can't set the environment");
+ }
+ 
+ static void

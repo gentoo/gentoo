@@ -6,6 +6,7 @@
 		<name>Gentoo Haskell</name>
 	</maintainer>
 	<upstream>
+		<remote-id type="hackage">haskell-src-exts</remote-id>
 		<remote-id type="github">haskell-suite/haskell-src-exts</remote-id>
 	</upstream>
 </pkgmetadata>

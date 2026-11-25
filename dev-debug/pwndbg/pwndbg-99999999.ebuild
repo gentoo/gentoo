@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=hatchling
 DISTUTILS_SINGLE_IMPL=1
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{12..14} )
 
 inherit distutils-r1
 
@@ -18,7 +18,7 @@ if [[ ${PV} == "99999999" ]]; then
 else
 	MY_PV="${PV:0:4}.${PV:4:2}.${PV:6:2}"
 	SRC_URI="https://github.com/pwndbg/pwndbg/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm64 ~x86"
+	KEYWORDS="~amd64 ~arm64"
 	S="${WORKDIR}/${PN}-${MY_PV}"
 fi
 
@@ -29,9 +29,10 @@ RDEPEND="
 	dev-debug/gdb[python,${PYTHON_SINGLE_USEDEP}]
 	~dev-python/gdb-pt-dump-0.0.0_p20240401[${PYTHON_SINGLE_USEDEP}]
 	$(python_gen_cond_dep '
-		>=dev-libs/capstone-6.0.0_alpha5[python,${PYTHON_USEDEP}]
+		>=dev-libs/capstone-6.0.0_alpha6[python,${PYTHON_USEDEP}]
+		>=dev-python/niche-elf-0.3.7[${PYTHON_USEDEP}]
 		>=dev-python/psutil-7.0.0[${PYTHON_USEDEP}]
-		>=dev-python/pycparser-2.23[${PYTHON_USEDEP}]
+		>=dev-python/pycparser-3.0[${PYTHON_USEDEP}]
 		>=dev-python/pyelftools-0.32[${PYTHON_USEDEP}]
 		>=dev-python/pygments-2.19.2[${PYTHON_USEDEP}]
 		>=dev-python/requests-2.32.5[${PYTHON_USEDEP}]

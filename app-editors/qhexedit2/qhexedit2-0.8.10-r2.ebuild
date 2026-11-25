@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..14} )
+PYTHON_COMPAT=( python3_{11..14} )
 inherit python-r1 qmake-utils
 
 DESCRIPTION="Hex editor library, Qt application written in C++ with Python bindings"
@@ -17,10 +17,6 @@ IUSE="doc +gui python"
 REQUIRED_USE="
 	python? ( ${PYTHON_REQUIRED_USE} )
 "
-
-PATCHES=(
-	"${FILESDIR}/${PN}-0.8.10-pyqt6.patch"
-)
 
 RDEPEND="
 	dev-qt/qtbase:6[gui,widgets]
@@ -42,6 +38,8 @@ BDEPEND="
 		')
 	)
 "
+
+PATCHES=( "${FILESDIR}/${P}-pyqt6.patch" )
 
 src_configure() {
 	QHEXEDIT_DESTDIR="${S}" eqmake6 src/qhexedit.pro

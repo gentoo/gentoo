@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # James Le Cuirot <chewi@gentoo.org> (2021-09-04)
@@ -51,7 +51,7 @@ games-arcade/thinktanks-demo
 games-emulation/gens
 games-emulation/vgba
 games-emulation/zinc
-games-emulation/zsnes
+<games-emulation/zsnes-2.3.0
 games-fps/etqw-bin
 games-fps/etqw-data
 games-fps/etqw-demo
@@ -59,9 +59,6 @@ games-fps/glxquake-bin
 games-fps/legends
 games-fps/sauerbraten
 games-fps/soldieroffortune
-games-fps/ut2003
-games-fps/ut2003-demo
-games-fps/ut2004-demo
 games-misc/little-inferno
 games-misc/papers-please
 games-puzzle/braid-hb

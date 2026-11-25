@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{12..13} )
+PYTHON_COMPAT=( python3_13 )
 ADA_COMPAT=( gcc_{14..15} )
 
 inherit ada python-single-r1 multiprocessing
@@ -38,14 +38,14 @@ pkg_setup() {
 
 src_compile() {
 	build() {
-		gprbuild -v -j$(makeopts_jobs) -p -P gnat/libgnatdoc.gpr \
+		gprbuild -v -j$(get_makeopts_jobs) -p -P gnat/libgnatdoc.gpr \
 			-XLIBRARY_TYPE=$1 -cargs:Ada ${ADAFLAGS} -cargs:C ${CFLAGS} \
 			-largs ${LDFLAGS} || die
 	}
 	build relocatable
 	use static-libs && build static
 	use static-pic  && build static-pic
-	gprbuild -v -j$(makeopts_jobs) -p -P gnat/gnatdoc.gpr \
+	gprbuild -v -j$(get_makeopts_jobs) -p -P gnat/gnatdoc.gpr \
 		-XLIBRARY_TYPE=relocatable -cargs:Ada ${ADAFLAGS} -cargs:C ${CFLAGS} \
 		-largs ${LDFLAGS} || die
 	if use doc; then
@@ -54,7 +54,7 @@ src_compile() {
 }
 
 src_test() {
-	gprbuild -v -j$(makeopts_jobs) -p -P gnat/tests/test_drivers.gpr \
+	gprbuild -v -j$(get_makeopts_jobs) -p -P gnat/tests/test_drivers.gpr \
 		-XLIBRARY_TYPE=relocatable || die
 	PATH="${S}/bin:$PATH" \
 		${EPYTHON} testsuite/testsuite.py || die

@@ -76,6 +76,22 @@ qemu_arch_if_needed() {
 	return 0
 }
 
+
+# @FUNCTION: _sysroot_compile_and_link_test_exe
+# @USAGE: <output-path-name>
+# @INTERNAL
+# @DESCRIPTION:
+# Compile and link a test executable that does nothing except to return success.
+# The executable is built for the *host* machine using $(tc-getCC), *not* for
+# the build machine using $(tc-getBUILD_CC).
+_sysroot_compile_and_link_test_exe() {
+	[[ -n "${1}" ]] || die 'Must specify test executable path name.'
+	local test="${1}"
+	echo 'int main(void) { return 0; }' > "${test}.c" || die "failed to write ${test##*/}.c"
+	$(tc-getCC) ${CFLAGS} ${CPPFLAGS} ${LDFLAGS} -o "${test}" "${test}.c" || die "failed to build ${test##*/}"
+}
+
+
 # @FUNCTION: sysroot_make_run_prefixed
 # @DESCRIPTION:
 # Create a wrapper script for directly running executables within a (sys)root
@@ -117,7 +133,7 @@ sysroot_make_run_prefixed() {
 		fi
 	fi
 
-	if [[ ${CHOST} = *-mingw32 ]]; then
+	if [[ ${CHOST} = *-mingw32 || ${CHOST} = *-cygwin ]]; then
 		if ! type -P wine >/dev/null; then
 			einfo "Wine not found. Continuing without ${SCRIPT##*/} wrapper."
 			return 2
@@ -135,15 +151,26 @@ sysroot_make_run_prefixed() {
 		einfo "Target is not Linux. Continuing without ${SCRIPT##*/} wrapper."
 		return 2
 	elif ! QEMU_ARCH=$(qemu_arch_if_needed); then
-		# glibc: ld.so is a symlink, ldd is a binary.
-		# musl: ld.so doesn't exist, ldd is a symlink.
-		local DLINKER candidate
-		for candidate in "${MYEROOT}"/usr/bin/{ld.so,ldd}; do
-			if [[ -L ${candidate} ]]; then
-				DLINKER=${candidate}
-				break
-			fi
-		done
+		local DLINKER
+		if [[ "${ABI-${DEFAULT_ABI}}" == "${DEFAULT_ABI}" ]]; then
+			# glibc: ld.so is a symlink, ldd is a binary.
+			# musl: ld.so doesn't exist, ldd is a symlink.
+			local candidate
+			for candidate in "${MYEROOT}"/usr/bin/{ld.so,ldd}; do
+				if [[ -L ${candidate} ]]; then
+					DLINKER=${candidate}
+					break
+				fi
+			done
+		else
+			# non-default ABI needs a non-default dynamic linker
+			SCRIPT+="-${ABI}"
+			local test="${SCRIPT}-test"
+			_sysroot_compile_and_link_test_exe "${test}"
+			read -d '' -r DLINKER < <($(tc-getOBJCOPY) -O binary -j .interp -- "${test}" /dev/stdout)
+			DLINKER="${DLINKER:+${MYEROOT}${DLINKER}}"
+			[[ -f ${DLINKER} && -x ${DLINKER} ]] || DLINKER=
+		fi
 		[[ -n ${DLINKER} ]] || die "failed to find dynamic linker"
 
 		# musl symlinks ldd to ld-musl.so to libc.so. We want the ld-musl.so
@@ -169,8 +196,7 @@ sysroot_make_run_prefixed() {
 		# and worse if QEMU does not support the architecture. We therefore need
 		# to perform our own test up front.
 		local test="${SCRIPT}-test"
-		echo 'int main(void) { return 0; }' > "${test}.c" || die "failed to write ${test##*/}"
-		$(tc-getCC) ${CFLAGS} ${CPPFLAGS} ${LDFLAGS} "${test}.c" -o "${test}" || die "failed to build ${test##*/}"
+		_sysroot_compile_and_link_test_exe "${test}"
 
 		if ! "${SCRIPT}" "${test}" &>/dev/null; then
 			einfo "Failed to run ${test##*/}. Continuing without ${SCRIPT##*/} wrapper."

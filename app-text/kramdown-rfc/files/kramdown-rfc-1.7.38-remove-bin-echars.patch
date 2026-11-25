@@ -1,0 +1,38 @@
+From e04a1da48afdde6e86645c713d60c6f262e6b372 Mon Sep 17 00:00:00 2001
+From: Florian Schmaus <flo@geekplace.eu>
+Date: Mon, 27 Mar 2023 11:26:09 +0200
+Subject: [PATCH] Remove bin/echars
+
+--- a/kramdown-rfc2629.gemspec
++++ b/kramdown-rfc2629.gemspec
+@@ -7,17 +7,13 @@ spec = Gem::Specification.new do |s|
+   s.add_dependency('kramdown', '~> 2.4.0')
+   s.add_dependency('kramdown-parser-gfm', '~> 1.1')
+   s.add_dependency('json_pure', '~> 2.0')
+-  s.add_dependency('unicode-name', '~> 1.0')
+-  s.add_dependency('unicode-blocks', '~> 1.0')
+-  s.add_dependency('unicode-scripts', '~> 1.0')
+   s.add_dependency('net-http-persistent', '~> 4.0')
+-  s.add_dependency('differ', '~> 0.1')
+   s.add_dependency('base64', '~> 0.2')
+   s.add_dependency('ostruct', '~> 0.6')
+   s.files = Dir['lib/**/*.rb'] +
+             %w(README.md LICENSE kramdown-rfc2629.gemspec
+                bin/kdrfc bin/kramdown-rfc bin/kramdown-rfc2629
+-               bin/doilit bin/echars bin/kramdown-rfc-extract-markdown
++               bin/doilit bin/kramdown-rfc-extract-markdown
+                bin/kramdown-rfc-extract-sourcecode
+                bin/kramdown-rfc-extract-figures-tables
+                bin/kramdown-rfc-lsr data/kramdown-rfc2629.erb
+@@ -27,7 +23,7 @@ spec = Gem::Specification.new do |s|
+                bin/de-gfm
+                bin/kramdown-rfc-clean-svg-ids)
+   s.require_path = 'lib'
+-  s.executables = ['kramdown-rfc', 'kramdown-rfc2629', 'doilit', 'echars',
++  s.executables = ['kramdown-rfc', 'kramdown-rfc2629', 'doilit',
+                    'kramdown-rfc-extract-markdown',
+                    'kramdown-rfc-extract-sourcecode',
+                    'kramdown-rfc-extract-figures-tables',
+-- 
+2.53.0
+

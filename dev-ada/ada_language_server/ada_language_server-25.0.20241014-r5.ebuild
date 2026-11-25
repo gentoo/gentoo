@@ -1,4 +1,4 @@
-# Copyright 2021-2025 Gentoo Authors
+# Copyright 2021-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -46,24 +46,24 @@ REQUIRED_USE="${ADA_REQUIRED_USE}"
 PATCHES=( "${FILESDIR}"/${P}-accessCheck.patch )
 
 src_compile() {
-	gprbuild -v -m -j$(makeopts_jobs) -P gnat/lsp_server.gpr -p \
+	gprbuild -v -m -j$(get_makeopts_jobs) -P gnat/lsp_server.gpr -p \
 		-XLIBRARY_TYPE=relocatable -XXMLADA_BUILD=relocatable \
 		-XGPR_BUILD=relocatable -cargs:Ada ${ADAFLAGS} -largs ${LDFLAGS} \
 		|| die
-	gprbuild -v -m -j$(makeopts_jobs) -P gnat/lsp_3_17.gpr -p \
+	gprbuild -v -m -j$(get_makeopts_jobs) -P gnat/lsp_3_17.gpr -p \
 		-XLIBRARY_TYPE=relocatable -XXMLADA_BUILD=relocatable \
 		-XGPR_BUILD=relocatable -cargs:Ada ${ADAFLAGS} -largs ${LDFLAGS} \
 		|| die
-	gprbuild -v -m -j$(makeopts_jobs) -P gnat/tester.gpr -p \
+	gprbuild -v -m -j$(get_makeopts_jobs) -P gnat/tester.gpr -p \
 		-XLIBRARY_TYPE=relocatable -XXMLADA_BUILD=relocatable \
 		-XGPR_BUILD=relocatable -cargs:Ada ${ADAFLAGS} -largs ${LDFLAGS} \
 		|| die
-	gprbuild -v -m -j$(makeopts_jobs) -P gnat/lsp_client.gpr -p \
+	gprbuild -v -m -j$(get_makeopts_jobs) -P gnat/lsp_client.gpr -p \
 		-XLIBRARY_TYPE=relocatable -XXMLADA_BUILD=relocatable \
 		-XGPR_BUILD=relocatable -cargs:Ada ${ADAFLAGS} -largs ${LDFLAGS} \
 		|| die
 	if use gtk; then
-		gprbuild -v -m -j$(makeopts_jobs) -P gnat/lsp_client_glib.gpr -p \
+		gprbuild -v -m -j$(get_makeopts_jobs) -P gnat/lsp_client_glib.gpr -p \
 			-XLIBRARY_TYPE=relocatable -XXMLADA_BUILD=relocatable \
 			-XGPR_BUILD=relocatable -cargs:Ada ${ADAFLAGS} -largs ${LDFLAGS} \
 			|| die

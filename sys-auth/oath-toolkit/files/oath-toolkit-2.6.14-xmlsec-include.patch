@@ -1,0 +1,23 @@
+https://codeberg.org/oath-toolkit/oath-toolkit/pulls/122
+
+From e24aacac6e1443f97259d2e28dd6e3f9ea8c4225 Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+Date: Sun, 1 Nov 2026 15:58:15 +0100
+Subject: fix implicit-function-declaration
+
+Bug: https://bugs.gentoo.org/985360
+
+diff --git a/libpskc/global.c b/libpskc/global.c
+index 2b1b5af..6336078 100644
+--- a/libpskc/global.c
++++ b/libpskc/global.c
+@@ -30,6 +30,7 @@
+ #ifdef USE_XMLSEC
+ # include <xmlsec/xmlsec.h>
+ # include <xmlsec/crypto.h>
++# include <xmlsec/dl.h>
+ #endif
+ 
+ static int _pskc_init = 0;
+-- 
+2.56.0

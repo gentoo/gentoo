@@ -1,0 +1,56 @@
+From 0862e0b784c211284b0d9d481bb09f3c3387dd16 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Mon, 2 Nov 2026 11:51:22 +0100
+Subject: [PATCH] Provide no-<feature> cli options even if built without
+ <feature>
+
+Affects:
+- no-lockscreen (KWIN_BUILD_SCREENLOCKER)
+- no-kactivities (KWIN_BUILD_ACTIVITIES)
+
+Aligns with:
+- no-global-shortcuts (present regardless of KWIN_BUILD_GLOBALSHORTCUTS)
+
+Login managers using KWin as compositor typically start it with unwanted
+features disabled via no-<feature> options. Unfortunately, those options
+are currently only present when KWin was built with the features enabled
+in the first place, lack of which leads to startup error.
+
+If the features are disabled, these options should simply turn into no-ops
+instead, making login managers' default configuration more robust as well.
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ src/main_wayland.cpp | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
+
+diff --git a/src/main_wayland.cpp b/src/main_wayland.cpp
+index 686847ea3f2..3f7ef2683ca 100644
+--- a/src/main_wayland.cpp
++++ b/src/main_wayland.cpp
+@@ -448,21 +448,19 @@ int main(int argc, char *argv[])
+     QCommandLineOption screenLockerOption(QStringLiteral("lockscreen"),
+                                           i18n("Starts the session in locked mode."));
+     parser.addOption(screenLockerOption);
++#endif
+ 
+     QCommandLineOption noScreenLockerOption(QStringLiteral("no-lockscreen"),
+                                             i18n("Starts the session without lock screen support."));
+     parser.addOption(noScreenLockerOption);
+-#endif
+ 
+     QCommandLineOption noGlobalShortcutsOption(QStringLiteral("no-global-shortcuts"),
+                                                i18n("Starts the session without global shortcuts support."));
+     parser.addOption(noGlobalShortcutsOption);
+ 
+-#if KWIN_BUILD_ACTIVITIES
+     QCommandLineOption noActivitiesOption(QStringLiteral("no-kactivities"),
+                                           i18n("Disable KActivities integration."));
+     parser.addOption(noActivitiesOption);
+-#endif
+ 
+     QCommandLineOption exitWithSessionOption(QStringLiteral("exit-with-session"),
+                                              i18n("Exit after the session application, which is started by KWin, closed."),
+-- 
+GitLab
+

@@ -1,0 +1,20 @@
+--- a/tests/unit/botocore/test_compress.py
++++ b/tests/unit/botocore/test_compress.py
+@@ -107,11 +107,17 @@ def request_dict_non_seekable_bytes_stre
+ class StaticGzipFile(gzip.GzipFile):
+     def __init__(self, *args, **kwargs):
+         kwargs['mtime'] = 1
++        # Python 3.15 changed default gzip header output; pin level so these
++        # tests remain byte-stable across runtimes.
++        kwargs['compresslevel'] = 9
+         super().__init__(*args, **kwargs)
+ 
+ 
+ def static_compress(*args, **kwargs):
+     kwargs['mtime'] = 1
++    # Python 3.15 changed default gzip header output; pin level so these
++    # tests remain byte-stable across runtimes.
++    kwargs['compresslevel'] = 9
+     return gzip.compress(*args, **kwargs)
+ 
+ 

@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -23,11 +23,13 @@ RDEPEND="
 	acct-group/dnscrypt-proxy
 	acct-user/dnscrypt-proxy
 "
+DEPEND="${RDEPEND}"
+BDEPEND=">=dev-lang/go-1.25"
 
 FILECAPS=( cap_net_bind_service+ep usr/bin/dnscrypt-proxy )
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-2.1.11-config-full-paths.patch
+	"${FILESDIR}"/${PN}-2.1.16-config-full-paths.patch
 )
 
 src_compile() {
@@ -60,11 +62,11 @@ src_install() {
 	newinitd "${FILESDIR}"/dnscrypt-proxy.initd dnscrypt-proxy
 	newconfd "${FILESDIR}"/dnscrypt-proxy.confd dnscrypt-proxy
 
-	systemd_newunit "${FILESDIR}"/dnscrypt-proxy.service dnscrypt-proxy.service
+	systemd_newunit "${FILESDIR}"/dnscrypt-proxy.service-r2 dnscrypt-proxy.service
 	systemd_newunit "${FILESDIR}"/dnscrypt-proxy.socket dnscrypt-proxy.socket
 
 	insinto /etc/logrotate.d
-	newins "${FILESDIR}"/dnscrypt-proxy.logrotate dnscrypt-proxy
+	newins "${FILESDIR}"/dnscrypt-proxy.logrotate-r1 dnscrypt-proxy
 
 	einstalldocs
 }
@@ -89,7 +91,6 @@ pkg_postinst() {
 		elog "It is disabled by default for new installations"
 		elog "check "$(systemd_get_systemunitdir)/${PN}.service" for details"
 		elog
-
 	fi
 
 	elog "After starting the service you will need to update your"

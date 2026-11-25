@@ -13,7 +13,7 @@ SRC_URI="https://github.com/greenbone/greenbone-feed-sync/archive/refs/tags/v${P
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="cron"
 
 COMMON_DEPEND="

@@ -21,9 +21,11 @@ SLOT="0"
 
 RDEPEND="
 	dev-libs/glib:2
-	x11-libs/gdk-pixbuf[jpeg]
+	sci-geosciences/gpsd:=
+	x11-libs/cairo
+	x11-libs/gdk-pixbuf:2[jpeg]
 	x11-libs/gtk+:3
-	x11-libs/goocanvas:3.0
+	x11-libs/pango
 	net-misc/curl
 "
 DEPEND="${RDEPEND}"
@@ -35,14 +37,10 @@ BDEPEND="
 
 DOCS=( AUTHORS NEWS README )
 
-PATCHES=(
-	# remove wrong doc location
-	"${FILESDIR}/${PN}-2.3-doc.patch"
-	"${FILESDIR}/${PN}-2.3-gethostbyname.patch"
-)
-
 src_prepare() {
 	default
+	# remove wrong doc location
+	sed -i -e "s/pkgdata/# pkgdata/g" Makefile.am || die
 	# prepare Version info
 	if [[ ${PV} != "9999" ]]; then
 		echo "${PV}" > "${S}"/.tarball-version

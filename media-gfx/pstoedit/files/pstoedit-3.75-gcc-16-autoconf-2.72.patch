@@ -1,0 +1,45 @@
+From 7a8765ed3cbb851c1a21bbc49b20b443b6122ab1 Mon Sep 17 00:00:00 2001
+From: "Barak A. Pearlmutter" <barak+git@pearlmutter.net>
+Date: Sun, 19 Apr 2026 08:33:52 +0100
+Subject: [PATCH] GCC-16 autoconf 2.72
+
+See https://bugs.debian.org/1133609
+
+The issue ...
+
+GCC-16 defaults to C++20+, where u8"..." string literals changed from
+const char* to const char8_t*. This caused autoconf 2.72's C++11
+detection test to fail, so it explicitly set -std=gnu++11 in CXX.
+And that is too old for the code here.
+
+The fix ...
+
+configure.ac: remove -std=gnu++11 flag, then make sure C++17 or later
+is available. (Required by "if constexpr" in src/dynload.cpp:135.)
+
+The bug is fixed in autoconf 2.73, but this fix should still be okay.
+
+Gbp-Pq: Name 0001-GCC-16-autoconf-2.72.patch
+
+diff --git a/configure.ac b/configure.ac
+index e0d1001..a70cc16 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -41,6 +41,17 @@ dnl seems to be broken : AC_LIBTOOL_TAGS([CXX])
+ dnl Check for various programs the Makefile needs.
+ AC_PROG_CC
+ AC_PROG_CXX
++dnl Work around bug in autoconf 2.72; note: fixed in autoconf 2.73.
++dnl
++dnl AC_PROG_CXX's C++11 detection test uses u8"..." string literals,
++dnl which changed from const char* to const char8_t* in C++20, causing
++dnl the test to fail with a C++20-defaulting compiler (e.g., GCC-16)
++dnl and making autoconf fall back to -std=gnu++11. Strip whatever
++dnl -std= flag it may have added and explicitly require C++17 or later
++dnl instead.
++CXX="$(echo "${CXX}" | sed 's/ -std=[[^ ]]*//g')"
++CXXCPP="$(echo "${CXXCPP}" | sed 's/ -std=[[^ ]]*//g')"
++AX_CXX_COMPILE_STDCXX([17], [], [mandatory])
+ 
+ AC_MSG_CHECKING(for g++ std)
+ AC_COMPILE_IFELSE([AC_LANG_SOURCE([[ constexpr int ce = 10; int * p = nullptr; ]])],

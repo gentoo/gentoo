@@ -1,8 +1,8 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-USE_RUBY="ruby31 ruby32 ruby33 ruby34"
+USE_RUBY="ruby32 ruby33 ruby34 ruby40"
 
 RUBY_FAKEGEM_BINWRAP=""
 RUBY_FAKEGEM_EXTRADOC="README.md HISTORY.md"
@@ -17,7 +17,7 @@ SRC_URI="https://github.com/copiousfreetime/launchy/archive/refs/tags/v${PV}.tar
 LICENSE="ISC"
 
 SLOT="$(ver_cut 1)"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
 IUSE="test"
 
 ruby_add_rdepend "
@@ -27,10 +27,19 @@ ruby_add_rdepend "
 	!<dev-ruby/launchy-2.5.2-r1
 "
 
-ruby_add_bdepend "test? ( >=dev-ruby/minitest-5.0:5 )"
+ruby_add_bdepend "test? (
+	dev-ruby/bundler
+	>=dev-ruby/minitest-5.0:5
+)"
 
 all_ruby_prepare() {
 	sed -i -e "/[Ss]implecov/d" spec/spec_helper.rb || die
+
+	sed -e '/minitest-focus/d' \
+		-e '/minitest-junit/d' \
+		-e '/require: false/ s:^:#:' \
+		-i Gemfile || die
+	rm Gemfile.lock || die
 
 	# Avoid tests depending on the current user's desktop environment.
 	sed -e '/returns NotFound if it cannot determine/askip "gentoo"' \
@@ -42,5 +51,5 @@ all_ruby_prepare() {
 }
 
 each_ruby_test() {
-	CI=true virtx each_fakegem_test
+	BUNDLE_GEMFILE="${S}/Gemfile" CI=true virtx ${RUBY} -S bundle exec ${RUBY} -S rake test || die
 }

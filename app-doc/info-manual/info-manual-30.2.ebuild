@@ -1,4 +1,4 @@
-# Copyright 2024-2025 Gentoo Authors
+# Copyright 2024-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -10,7 +10,7 @@ HOMEPAGE="https://www.gnu.org/software/emacs/
 # bsdtar -cJvf ${P}.tar.xz -s "%.*/%${P}/%" --include="*/misc/info.texi" \
 # --include="*/misc/doclicense.texi" --include="*/emacs/docstyle.texi" \
 # --include="*/info/info.info" @emacs-${PV}.tar.xz
-SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.tar.xz"
+SRC_URI="https://distfiles.gentoo.org/pub/proj/emacs/${P}.tar.xz"
 
 LICENSE="FDL-1.3+"
 SLOT="0"

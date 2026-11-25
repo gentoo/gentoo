@@ -1,11 +1,11 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 LUA_COMPAT=( lua5-{1..4} luajit )
-PYTHON_COMPAT=( python3_{11..14} )
-RUST_MIN_VER="1.85.1"
+PYTHON_COMPAT=( python3_{12..14} )
+RUST_MIN_VER="1.85.0"
 RUST_OPTIONAL=1
 
 inherit cargo flag-o-matic lua-single meson python-any-r1 toolchain-funcs
@@ -17,19 +17,22 @@ if [[ ${PV} == *9999* ]] ; then
 	EGIT_REPO_URI="https://github.com/PowerDNS/pdns"
 	EGIT_BRANCH="master"
 	inherit git-r3
+	# the first 8 digits of the sha256sum of the 9999 crates tarball
+	CRATES_HASH=d7740dcd
+	CRATES_PV="${PV}"-"${CRATES_HASH}"
 else
 	SRC_URI="https://downloads.powerdns.com/releases/${P}.tar.xz"
 	KEYWORDS="~amd64 ~x86"
+	CRATES_PV="${PV}"
 fi
 
 SRC_URI+="
-	doc? ( https://www.applied-asynchrony.com/distfiles/${PN}-docs-${PV}.tar.xz )
-	yaml? ( https://www.applied-asynchrony.com/distfiles/${PN}-rust-${PV}-crates.tar.xz )
+	yaml? ( https://www.applied-asynchrony.com/distfiles/${PN}-rust-${CRATES_PV}-crates.tar.xz )
 "
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="bpf cdb dnscrypt dnstap doc doh doh3 ipcipher ipcrypt lmdb quic regex snmp +ssl systemd test web xdp yaml"
+IUSE="bpf cdb dnscrypt dnstap doh doh3 ipcipher ipcrypt lmdb otlp quic regex snmp +ssl systemd test web xdp yaml"
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="${LUA_REQUIRED_USE}
@@ -43,7 +46,6 @@ RDEPEND="acct-group/dnsdist
 	acct-user/dnsdist
 	bpf? ( dev-libs/libbpf:= )
 	cdb? ( dev-db/tinycdb:= )
-	dev-libs/boost:=
 	sys-libs/libcap
 	dev-libs/libedit
 	dev-libs/libsodium:=
@@ -51,6 +53,7 @@ RDEPEND="acct-group/dnsdist
 	doh? ( net-libs/nghttp2:= )
 	doh3? ( net-libs/quiche:= )
 	lmdb? ( dev-db/lmdb:= )
+	otlp? ( net-misc/curl )
 	quic? ( net-libs/quiche )
 	regex? ( dev-libs/re2:= )
 	snmp? ( net-analyzer/net-snmp:= )
@@ -60,7 +63,9 @@ RDEPEND="acct-group/dnsdist
 	${LUA_DEPS}
 "
 
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	dev-libs/boost:=
+"
 BDEPEND="$(python_gen_any_dep 'dev-python/pyyaml[${PYTHON_USEDEP}]')
 	virtual/pkgconfig
 	yaml? ( ${RUST_DEPEND} )
@@ -132,6 +137,7 @@ src_configure() {
 		$(meson_feature ipcipher)
 		$(meson_feature ipcrypt ipcrypt2)
 		$(meson_feature lmdb)
+		$(meson_feature otlp)
 		$(meson_feature quic dns-over-quic)
 		$(meson_feature regex re2)
 		$(meson_feature snmp)
@@ -161,8 +167,6 @@ src_test() {
 
 src_install() {
 	meson_src_install
-
-	use doc && dodoc -r "${WORKDIR}"/html
 
 	insinto /etc/dnsdist
 	doins "${FILESDIR}"/dnsdist.conf.example

@@ -1,0 +1,9 @@
+# Copyright 1999-2026 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Fabian Groffen <grobian@gentoo.org> (2026-05-22)
+# need newer versions for gnulib fix necessary on more recent illumnos
+# https://bugs.gentoo.org/975237, inverse of bug #957583
+>=sys-devel/gettext-0.24
+>=dev-libs/libintl-0.24
+

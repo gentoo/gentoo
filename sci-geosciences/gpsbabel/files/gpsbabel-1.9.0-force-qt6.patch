@@ -1,0 +1,102 @@
+From 59b36e14fb713bf2c6147cd0bcf6397544501b0f Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Sun, 17 May 2026 00:24:32 +0200
+Subject: [PATCH] Force Qt6 properly
+
+Closes: https://bugs.gentoo.org/961578
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt              | 6 +++---
+ gui/CMakeLists.txt          | 7 +++----
+ gui/coretool/CMakeLists.txt | 5 ++---
+ 3 files changed, 8 insertions(+), 10 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index eb8bada..4d4bf54 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -9,6 +9,7 @@ project(gpsbabel LANGUAGES C CXX VERSION ${GB.VERSION})
+ set(CMAKE_CXX_STANDARD 17)
+ set(CMAKE_CXX_STANDARD_REQUIRED True)
+ 
++set(QT_VERSION_MAJOR 6)
+ # Do this after we set up common variables but before creating other
+ # variables that will be inherited.
+ add_subdirectory(gui)
+@@ -26,8 +27,7 @@ set(CMAKE_AUTORCC ON)
+ add_executable(gpsbabel)
+ 
+ # Find the QtCore library
+-find_package(QT NAMES Qt6 Qt5 COMPONENTS Core REQUIRED)
+-find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Core REQUIRED)
++find_package(Qt${QT_VERSION_MAJOR} CONFIG REQUIRED COMPONENTS Core)
+ list(APPEND QT_LIBRARIES Qt${QT_VERSION_MAJOR}::Core)
+ if(${Qt${QT_VERSION_MAJOR}Core_VERSION} VERSION_LESS 5.12)
+   message(FATAL_ERROR "Qt version ${Qt${QT_VERSION_MAJOR}Core_VERSION} found, but version 5.12 or newer is required.")
+@@ -35,7 +35,7 @@ else()
+   message(STATUS "Using Qt${QT_VERSION_MAJOR} version ${Qt${QT_VERSION_MAJOR}Core_VERSION}")
+ endif()
+ if(${QT_VERSION_MAJOR} EQUAL "6")
+-  find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Core5Compat REQUIRED)
++  find_package(Qt${QT_VERSION_MAJOR} CONFIG REQUIRED COMPONENTS Core5Compat)
+   list(APPEND QT_LIBRARIES Qt${QT_VERSION_MAJOR}::Core5Compat)
+ endif()
+ 
+diff --git a/gui/CMakeLists.txt b/gui/CMakeLists.txt
+index 97062e8..0489038 100644
+--- a/gui/CMakeLists.txt
++++ b/gui/CMakeLists.txt
+@@ -22,8 +22,7 @@ if(NOT UNIX OR APPLE)
+ endif()
+ 
+ # Find the QtCore library
+-find_package(QT NAMES Qt6 Qt5 COMPONENTS Core REQUIRED)
+-find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Core Gui Network SerialPort Widgets Xml REQUIRED)
++find_package(Qt${QT_VERSION_MAJOR} CONFIG REQUIRED COMPONENTS Core Gui Network SerialPort Widgets Xml)
+ list(APPEND QT_LIBRARIES Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Gui Qt${QT_VERSION_MAJOR}::Network Qt${QT_VERSION_MAJOR}::SerialPort Qt${QT_VERSION_MAJOR}::Widgets Qt${QT_VERSION_MAJOR}::Xml)
+ if(${Qt${QT_VERSION_MAJOR}Core_VERSION} VERSION_LESS 5.12)
+   message(FATAL_ERROR "Qt version ${Qt${QT_VERSION_MAJOR}Core_VERSION} found, but version 5.12 or newer is required.")
+@@ -33,7 +32,7 @@ endif()
+ 
+ option(GPSBABEL_MAPPREVIEW "enable map preview." ON)
+ if (GPSBABEL_MAPPREVIEW)
+-  find_package(Qt${QT_VERSION_MAJOR} COMPONENTS WebEngineWidgets WebChannel REQUIRED)
++  find_package(Qt${QT_VERSION_MAJOR} CONFIG REQUIRED COMPONENTS WebEngineWidgets WebChannel)
+   list(APPEND QT_LIBRARIES Qt${QT_VERSION_MAJOR}::WebEngineWidgets Qt${QT_VERSION_MAJOR}::WebChannel)
+ else()
+   target_compile_definitions(gpsbabelfe PRIVATE DISABLE_MAPPREVIEW)
+@@ -173,7 +172,7 @@ message(STATUS "Libs are: \"${LnkLibs}\"")
+ get_target_property(IncDirs gpsbabelfe INCLUDE_DIRECTORIES)
+ message(STATUS "Include Directores are: \"${IncDirs}\"")
+ 
+-find_package(Qt${QT_VERSION_MAJOR} QUIET COMPONENTS LinguistTools)
++find_package(Qt${QT_VERSION_MAJOR} CONFIG QUIET COMPONENTS LinguistTools)
+ if (NOT Qt${QT_VERSION_MAJOR}LinguistTools_FOUND)
+   message(WARNING "Qt${QT_VERSION_MAJOR}LinguistTools not found, gpsbabelfe translations cannot be updated or released, and application cannot be packaged.")
+ else()
+diff --git a/gui/coretool/CMakeLists.txt b/gui/coretool/CMakeLists.txt
+index dbe37b7..677050b 100644
+--- a/gui/coretool/CMakeLists.txt
++++ b/gui/coretool/CMakeLists.txt
+@@ -4,8 +4,7 @@ endif()
+ 
+ add_executable(coretool EXCLUDE_FROM_ALL)
+ 
+-find_package(QT NAMES Qt6 Qt5 COMPONENTS Core REQUIRED)
+-find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Core Widgets REQUIRED)
++find_package(Qt${QT_VERSION_MAJOR} CONFIG REQUIRED COMPONENTS Core Widgets)
+ list(APPEND QT_LIBRARIES Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Widgets)
+ 
+ list(APPEND SOURCES ../formatload.cc)
+@@ -39,7 +38,7 @@ list(APPEND TRANSLATIONS gpsbabel_hu.ts)
+ list(APPEND TRANSLATIONS gpsbabel_it.ts)
+ list(APPEND TRANSLATIONS gpsbabel_ru.ts)
+ 
+-find_package(Qt${QT_VERSION_MAJOR} QUIET COMPONENTS LinguistTools)
++find_package(Qt${QT_VERSION_MAJOR} CONFIG QUIET COMPONENTS LinguistTools)
+ if(Qt${QT_VERSION_MAJOR}LinguistTools_FOUND)
+   # The line numbers are almost meaningless the way we generate corestrings.h, and we force everything to the same context.
+   # With line numbers and the similartext heuristic enabled translations can be copied from an old message to a new message,
+-- 
+2.54.0
+

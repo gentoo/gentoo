@@ -24,11 +24,26 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
+IUSE="test"
+RESTRICT="!test? ( test )"
 
-RDEPEND="!sys-fs/exfat-utils"
+RDEPEND="
+	!sys-fs/exfat-utils
+	sys-apps/util-linux
+	elibc_musl? ( sys-libs/fts-standalone )
+"
+DEPEND="${RDEPEND}"
+BDEPEND+="
+	virtual/pkgconfig
+"
 
 src_prepare() {
 	default
 
 	[[ ${PV} == *9999 ]] && eautoreconf
+}
+
+src_configure() {
+	# https://github.com/exfatprogs/exfatprogs/issues/391 wrt tests
+	econf $(use_enable test tests)
 }

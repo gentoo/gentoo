@@ -1,0 +1,85 @@
+Source:
+https://github.com/zynaddsubfx/zynaddsubfx/commit/ffe9ca1375168dd86c974dbe7c0264fce393150e
+https://github.com/zynaddsubfx/zynaddsubfx/commit/730ae35c763d3e65849932f6207ed349a59a96c9
+
+From ffe9ca1375168dd86c974dbe7c0264fce393150e Mon Sep 17 00:00:00 2001
+From: Johannes Lorenz <j.git@lorenz-ho.me>
+Date: Sun, 29 Dec 2024 03:22:44 +0100
+Subject: [PATCH] CMake cleanup
+
+* Raise CMake minimum version to 3.5 (due to deprecation warnings)
+---
+ CMakeLists.txt             |  3 +-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index e678d939c..9bae0b40d 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,9 +1,10 @@
+-cmake_minimum_required(VERSION 3.0)
++cmake_minimum_required(VERSION 3.5)
+ set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake/")
+ project(zynaddsubfx)
+ set(VERSION_MAJOR "3")
+ set(VERSION_MINOR "0")
+ set(VERSION_REVISION "6")
++cmake_policy(SET CMP0072 NEW)
+ 
+ #Set data directory, if any
+ if(DEFINED ZYN_DATADIR)
+
+From 730ae35c763d3e65849932f6207ed349a59a96c9 Mon Sep 17 00:00:00 2001
+From: Johannes Lorenz <j.git@lorenz-ho.me>
+Date: Sat, 22 Feb 2025 16:46:31 +0100
+Subject: [PATCH] Various CMake updates/fixes
+
+* Raise CMake minimum version to prevent warnings
+* Add missing FFTW include dirs (not used on Linux because they are
+  often in default paths like `/usr/include`)
+* Link against rt library only if it exists
+---
+ CMakeLists.txt           | 2 +-
+ src/CMakeLists.txt       | 2 +-
+ src/Tests/CMakeLists.txt | 5 ++++-
+ 3 files changed, 6 insertions(+), 3 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 9bae0b40d..451c59575 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.5)
++cmake_minimum_required(VERSION 3.10)
+ set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake/")
+ project(zynaddsubfx)
+ set(VERSION_MAJOR "3")
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index c6fa46c99..9b7923f38 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -351,7 +351,7 @@ list(APPEND AUDIO_LIBRARY_DIRS ${LIBLO_LIBRARY_DIRS})
+ message(STATUS "Compiling with liblo")
+ 
+ # other include directories
+-include_directories(${ZLIB_INCLUDE_DIRS} ${MXML_INCLUDE_DIRS})
++include_directories(${ZLIB_INCLUDE_DIRS} ${MXML_INCLUDE_DIRS} ${FFTW3F_INCLUDE_DIRS})
+ include_directories(${CMAKE_BINARY_DIR}/src) # for zyn-version.h ...
+ 
+ if(NOT ${X11_X11_LIB} STREQUAL "")
+diff --git a/src/Tests/CMakeLists.txt b/src/Tests/CMakeLists.txt
+index 2a113d2cb..f55f77a9f 100644
+--- a/src/Tests/CMakeLists.txt
++++ b/src/Tests/CMakeLists.txt
+@@ -71,7 +71,10 @@ if(NOT (${CMAKE_SYSTEM_NAME} STREQUAL "Windows"))
+                            ${PLATFORM_LIBRARIES})
+ 
+     add_executable(ins-test InstrumentStats.cpp)
+-    target_link_libraries(ins-test ${test_lib} rt)
++    target_link_libraries(ins-test ${test_lib})
++    if(HAVE_LIBRT)
++        target_link_libraries(ins-test rt)
++    endif()
+ 
+     if(LIBLO_FOUND)
+         quick_test(PortChecker lo-server zynaddsubfx_core zynaddsubfx_nio

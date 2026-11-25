@@ -1,10 +1,10 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{12..15} )
 
 inherit distutils-r1
 
@@ -30,6 +30,8 @@ RDEPEND="
 	${DEPEND}
 "
 
+EPYTEST_PLUGINS=()
+EPYTEST_XDIST=1
 distutils_enable_tests pytest
 distutils_enable_sphinx docs dev-python/sphinx-rtd-theme
 
@@ -37,10 +39,6 @@ EPYTEST_DESELECT=(
 	tests/test_smart_pointer.py
 )
 
-python_prepare_all() {
-	local PATCHES=(
-		"${FILESDIR}/${PN}-2.4.0-doc.patch"
-	)
-
-	distutils-r1_python_prepare_all
-}
+PATCHES=(
+	"${FILESDIR}/${PN}-2.4.0-doc.patch"
+)

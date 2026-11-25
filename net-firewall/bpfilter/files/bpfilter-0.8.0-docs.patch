@@ -1,0 +1,25 @@
+diff --git a/doc/CMakeLists.txt b/doc/CMakeLists.txt
+index e4dcc6c..1349524 100644
+--- a/doc/CMakeLists.txt
++++ b/doc/CMakeLists.txt
+@@ -152,7 +152,6 @@ add_custom_command(
+ 	COMMAND
+ 		${SPHINX_BIN}
+ 			-E				# Ensure the Doxygen changes are accounted for
+-			-W 				# Return non-zero if a warning is triggered...
+ 			--keep-going	# ... but don't stop as soon as there is a warning.
+ 			-q				# Quiet.
+ 			--jobs auto		# Use multiple cores.
+diff --git a/doc/Doxyfile.in b/doc/Doxyfile.in
+index d8310ba..1718743 100644
+--- a/doc/Doxyfile.in
++++ b/doc/Doxyfile.in
+@@ -23,7 +23,7 @@ GENERATE_DEPRECATEDLIST = YES
+ # Configuration options related to warning and progress messages
+ #---------------------------------------------------------------------------
+ QUIET                   = YES
+-WARN_AS_ERROR           = FAIL_ON_WARNINGS_PRINT
++WARN_AS_ERROR           = NO
+ 
+ #---------------------------------------------------------------------------
+ # Configuration options related to the input files

@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: mount-boot.eclass
@@ -33,13 +33,6 @@ mount-boot_pkg_preinst() {
 
 mount-boot_pkg_prerm() {
 	mount-boot_check_status
-
-	if [[ -z ${EPREFIX} ]] \
-		&& ! ( shopt -s failglob; : "${EROOT}"/boot/.keep* ) 2>/dev/null
-	then
-		# Create a .keep file, in case it is shadowed at the mount point
-		touch "${EROOT}"/boot/.keep 2>/dev/null
-	fi
 }
 
 # No-op phases for backwards compatibility

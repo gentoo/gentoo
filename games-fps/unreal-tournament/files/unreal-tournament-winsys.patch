@@ -1,0 +1,14 @@
+The game defaults to X11 when Wayland is available, but Wayland users would
+most likely want to use native Wayland. The wrapper script also updates this
+setting, but this patch ensures it works on the first run.
+
+--- a/System/Default.ini
++++ b/System/Default.ini
+@@ -157,6 +157,7 @@
+ MinDesiredFrameRate=30.0
+ Decals=True
+ NoDynamicLights=False
++WindowingSystem=SDL3_WINDOWING_SystemPreferred
+ 
+ [Engine.Player]
+ ConfiguredInternetSpeed=20000

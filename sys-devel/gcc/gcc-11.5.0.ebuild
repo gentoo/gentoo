@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,13 +6,12 @@ EAPI=8
 # Maintenance notes and explanations of GCC handling are on the wiki:
 # https://wiki.gentoo.org/wiki/Project:Toolchain/sys-devel/gcc
 
-TOOLCHAIN_PATCH_DEV="sam"
 TOOLCHAIN_HAS_TESTS=1
 PATCH_GCC_VER="11.5.0"
-PATCH_VER="2"
+PATCH_VER="5"
 MUSL_VER="4"
 MUSL_GCC_VER="11.5.0"
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 
 if [[ ${PV} == *.9999 ]] ; then
 	MY_PV_2=$(ver_cut 2)
@@ -54,6 +53,10 @@ if [[ ${CATEGORY} != cross-* ]] ; then
 	DEPEND="${RDEPEND}"
 fi
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-11-clang-static-stage1-libs.patch
+)
+
 src_prepare() {
 	local p upstreamed_patches=(
 		# add them here
@@ -63,6 +66,4 @@ src_prepare() {
 	done
 
 	toolchain_src_prepare
-
-	eapply_user
 }

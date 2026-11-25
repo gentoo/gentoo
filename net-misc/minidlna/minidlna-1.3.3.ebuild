@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,7 +15,7 @@ SRC_URI="
 LICENSE="BSD GPL-2"
 SLOT="0"
 KEYWORDS="amd64 arm ~arm64 x86"
-IUSE="branding netgear readynas zeroconf"
+IUSE="branding netgear readynas selinux zeroconf"
 
 DEPEND="
 	dev-db/sqlite:3
@@ -33,6 +33,7 @@ RDEPEND="
 	${DEPEND}
 	acct-group/minidlna
 	acct-user/minidlna
+	selinux? ( sec-policy/selinux-minidlna )
 "
 BDEPEND="
 	virtual/pkgconfig

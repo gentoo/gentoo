@@ -1,0 +1,148 @@
+From https://github.com/xiph/opus/commit/2f289b5702933cc1cb73cae11c22bf99471787b2
+From: Mark Harris <mark.hsj@gmail.com>
+Date: Sat, 17 Jan 2026 11:10:03 -0800
+Subject: [PATCH] test_unit_mathops: Fix thresholds for OPUS_FAST_INT64==0
+
+When Opus 1.6.1 is configured for 32-bit x86 Linux fixed point and
+built with gcc 15.2.1 -g -O2, celt/tests/test_unit_mathops fails:
+
+$ ./configure --disable-shared --enable-fixed-point CFLAGS="-g -O2 -m32"
+$ make
+$ ./celt/tests/test_unit_mathops
+celt_cos_norm32 failed: error: [1.01295e-07 > 1.00000e-07] (x = -60.863989)
+celt_cos_norm32 max_error: 1.0129511e-07
+celt_rsqrt_norm32 max_error: 5.5827723e-08
+celt_rcp_norm32 max_rel_error: 5.4362772e-09
+$
+
+Although the maximum error of celt_cos_norm32(x) is 9.2365831e-08
+when OPUS_FAST_INT64==1 (within the 1e-07 error threshold),
+the maximum error is 1.1771954e-07 when OPUS_FAST_INT64==0
+(at x = -1020311236 (Q30) = -0.9502388872206211), due to the increased
+error of the MULT32_32_Q31() macro.  (The max_error displayed by the
+test is lower because it only checks a few hundred input values.)
+
+The exact input values checked depend on whether excess x87 precision
+is used, as it is here.  It is possible to reproduce the failure
+on x86_64 if celt/arch.h is changed to force OPUS_FAST_INT64=0,
+and either -m32 in CFLAGS is changed to -mfpmath=387 (so that the
+exact same input values are used as on 32-bit x86) or the step on
+celt/tests/test_unit_mathops.c line 560 is changed from 0.007f to
+0.003f so that more input values are checked.
+
+Similarly, when OPUS_FAST_INT64==0, the maximum error of
+celt_rsqrt_norm32(x) for x >= 0.25 is 6.7833817e-08
+(at x = 831847643 (Q31) = 0.387359244283288717), and the maximum
+error of celt_log2_db(x) for x > 0 with qext is 2.8475355e-07
+(at x = 1307637557 (Q14) = 79811.862609863281).  Although these
+errors exceeded the error threshold, these tests happened to pass
+just because the test does not check any input values where the
+result exceeds the error threshold.
+
+These error thresholds are adjusted to accommodate the maximum
+OPUS_FAST_INT64==0 error.
+
+The maximum error of celt_rcp_norm32(x) and celt_atan_norm(x) was
+already within the threshold.
+---
+ celt/tests/test_unit_mathops.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/celt/tests/test_unit_mathops.c b/celt/tests/test_unit_mathops.c
+index c3adb3f4c..32d7bebc6 100644
+--- a/celt/tests/test_unit_mathops.c
++++ b/celt/tests/test_unit_mathops.c
+@@ -287,7 +287,7 @@ void testlog2_db(void)
+    /* celt_log2_db test */
+    float error = -1;
+    float max_error = -2;
+-   float error_threshold = 2.e-07;
++   float error_threshold = 2.9e-07;
+    opus_int32 x = 0;
+    int q_input = 14;
+    for (x = 8; x < 1073741824; x += (x >> 3))
+@@ -414,7 +414,7 @@ void testilog2(void)
+ 
+ void testrsqrt(void)
+ {
+-   float error_threshold = 6.e-08;
++   float error_threshold = 6.8e-08;
+    float error = 0;
+    float max_error = 0;
+    float fx = 0;
+@@ -552,7 +552,7 @@ void test_cos_norm32(void)
+ {
+    float error = -1;
+    float max_error = -2;
+-   float error_threshold = 1e-07;
++   float error_threshold = 1.2e-07;
+    float fx = 0;
+    opus_int32 x = 0;
+    int q_input = 30;
+
+From: https://github.com/xiph/opus/commit/3a9d586aa8304429b24c3c83c2929f6b4189a99b
+From: Mark Harris <mark.hsj@gmail.com>
+Date: Sat, 17 Jan 2026 11:39:02 -0800
+Subject: [PATCH] test_unit_mathops: Fix values in error messages
+
+Some fixed point values were displayed at the wrong scale
+in the error message displayed when the test failed.
+--- a/celt/tests/test_unit_mathops.c
++++ b/celt/tests/test_unit_mathops.c
+@@ -301,7 +301,7 @@ void testlog2_db(void)
+       if (error > error_threshold)
+       {
+          fprintf(stderr, "celt_log2_db failed: error: [%.5e > %.5e] (x = %f)\n",
+-                 error, error_threshold, FIX_INT_TO_DOUBLE(x, DB_SHIFT));
++                 error, error_threshold, FIX_INT_TO_DOUBLE(x, q_input));
+          ret = 1;
+       }
+    }
+@@ -492,7 +492,7 @@ void testatan_norm(void)
+       {
+          fprintf(stderr,
+                  "celt_atan_norm failed: error: [%.5e > %.5e] (x = %f)\n",
+-                 error, error_threshold, FIX_INT_TO_DOUBLE(x, DB_SHIFT));
++                 error, error_threshold, FIX_INT_TO_DOUBLE(x, q_input));
+          ret = 1;
+       }
+    }
+@@ -532,8 +532,9 @@ void testatan2p_norm(void)
+          if (error > error_threshold)
+          {
+             fprintf(stderr,
+-                  "celt_atan2p_norm failed: error: [%.5e > %.5e] (x = %f)\n",
+-                  error, error_threshold, FIX_INT_TO_DOUBLE(x, DB_SHIFT));
++                  "celt_atan2p_norm failed: error: [%.5e > %.5e] (y/x = %f/%f)\n",
++                  error, error_threshold, FIX_INT_TO_DOUBLE(y, q_input),
++                  FIX_INT_TO_DOUBLE(x, q_input));
+             ret = 1;
+          }
+       }
+@@ -570,7 +571,7 @@ void test_cos_norm32(void)
+       {
+          fprintf(stderr,
+                  "celt_cos_norm32 failed: error: [%.5e > %.5e] (x = %f)\n",
+-                 error, error_threshold, FIX_INT_TO_DOUBLE(x, DB_SHIFT));
++                 error, error_threshold, FIX_INT_TO_DOUBLE(x, q_input));
+          ret = 1;
+       }
+    }
+
+From https://github.com/xiph/opus/commit/6dcfcbe9eb07cddfa7198eef6ea4a63e1659c33c
+From: Mark Harris <mark.hsj@gmail.com>
+Date: Sat, 17 Jan 2026 11:13:46 -0800
+Subject: [PATCH] test_unit_mathops: test_rcp_norm32: Exclude invalid 1.0 input
+
+Cannot represent 1.0 as a signed Q31 fixed point value.
+--- a/celt/tests/test_unit_mathops.c
++++ b/celt/tests/test_unit_mathops.c
+@@ -595,7 +595,7 @@ void test_rcp_norm32(void)
+    opus_val32 x;
+    int q_input = 31;
+
+-   for (fx = 0.5; fx <= 1.0; fx += 0.0000007)
++   for (fx = 0.5; fx < 1.0; fx += 0.0000007)
+    {
+       x = DOUBLE_TO_FIX_INT(fx, q_input);
+       quantized_fx = FIX_INT_TO_DOUBLE(x, q_input);

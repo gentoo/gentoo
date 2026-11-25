@@ -1,0 +1,27 @@
+From 7a4463762710e16cbc5fefde22082d837fac4412 Mon Sep 17 00:00:00 2001
+From: Ryan Volz <ryan.volz@gmail.com>
+Date: Fri, 25 Sep 2026 13:27:58 -0400
+Subject: [PATCH] cmake: Add missing log_add_impl.hpp to distributed headers
+
+This is a new header for v4.11, referenced by the existing log.hpp and
+log_add.hpp public headers.
+
+Signed-off-by: Ryan Volz <ryan.volz@gmail.com>
+
+Modified for gentoo build (adapt diff path) by Thomas Beierlein <tomjbe@gentoo,org>
+---
+ host/include/uhd/utils/CMakeLists.txt | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/include/uhd/utils/CMakeLists.txt b/include/uhd/utils/CMakeLists.txt
+index 6c380f0433..d1e3d78e77 100644
+--- a/include/uhd/utils/CMakeLists.txt
++++ b/include/uhd/utils/CMakeLists.txt
+@@ -24,6 +24,7 @@ UHD_INSTALL(FILES
+     interpolation.hpp
+     log.hpp
+     log_add.hpp
++    log_add_impl.hpp
+     math.hpp
+     msg_task.hpp
+     noncopyable.hpp

@@ -1,0 +1,328 @@
+https://github.com/lericson/pylibmc/issues/302
+https://github.com/lericson/pylibmc/pull/303
+
+From 76c966a113a02e170926f622da4dc8a4f2ba6f21 Mon Sep 17 00:00:00 2001
+From: "Bryan C. Mills" <bryan@duolingo.com>
+Date: Tue, 10 Mar 2026 00:37:37 -0400
+Subject: [PATCH 1/3] Fix doctests.txt for libmemcache 1.0.18
+
+Fixes lericson/pylibmc#302.
+---
+ tests/doctests.txt | 4 +++-
+ 2 files changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/tests/doctests.txt b/tests/doctests.txt
+index 3bc5728..6ed44bd 100644
+--- a/tests/doctests.txt
++++ b/tests/doctests.txt
+@@ -209,11 +209,13 @@ Per-error exceptions
+ ... except pylibmc.NotFound:
+ ...   print("ok")
+ ok
++>>> c.set_behaviors({"verify_keys": True})
+ >>> try:
+ ...   c.incr(chr(0))
+-... except (pylibmc.ProtocolError, pylibmc.SocketCreateError):
++... except pylibmc.BadKeyProvided:
+ ...   print("ok")
+ ok
++>>> c.set_behaviors({"verify_keys": False})
+ 
+ Behaviors.
+ >>> c.set_behaviors({"tcp_nodelay": True, "hash": 6})
+
+From de096912844a6df42da8f9ad2b826769ee643a01 Mon Sep 17 00:00:00 2001
+From: "Bryan C. Mills" <bryan@duolingo.com>
+Date: Tue, 10 Mar 2026 00:41:30 -0400
+Subject: [PATCH 2/3] Fix a use-after-free bug in gets
+
+Fixes lericson/pylibmc#300.
+---
+ src/_pylibmcmodule.c              |  16 +----
+ tests/test_gets_use_after_free.py | 107 ++++++++++++++++++++++++++++++
+ 2 files changed, 110 insertions(+), 13 deletions(-)
+ create mode 100644 tests/test_gets_use_after_free.py
+
+diff --git a/src/_pylibmcmodule.c b/src/_pylibmcmodule.c
+index 545b658..83ca929 100644
+--- a/src/_pylibmcmodule.c
++++ b/src/_pylibmcmodule.c
+@@ -759,8 +759,6 @@ static PyObject *PylibMC_Client_gets(PylibMC_Client *self, PyObject *arg) {
+     *keys = PyBytes_AS_STRING(arg);
+     *keylengths = (size_t)PyBytes_GET_SIZE(arg);
+ 
+-    Py_DECREF(arg);
+-
+     Py_BEGIN_ALLOW_THREADS;
+ 
+     rc = memcached_mget(self->mc, keys, keylengths, 1);
+@@ -769,6 +767,8 @@ static PyObject *PylibMC_Client_gets(PylibMC_Client *self, PyObject *arg) {
+ 
+     Py_END_ALLOW_THREADS;
+ 
++    Py_DECREF(arg);
++
+     int miss = 0;
+     int fail = 0;
+     if (rc == MEMCACHED_SUCCESS && res != NULL) {
+@@ -2463,14 +2463,6 @@ static int _key_normalized_obj(PyObject **key) {
+     key_str = PyBytes_AS_STRING(retval);
+     key_sz = PyBytes_GET_SIZE(retval);
+     rc = _key_normalized_str(&key_str, &key_sz);
+-    if (rc == 2) {
+-        retval = PyBytes_FromStringAndSize(key_str, key_sz);
+-        if (retval != NULL) {
+-            rc = 1;
+-        } else {
+-            rc = 0;
+-        }
+-    }
+ 
+ END:
+     if (retval != orig_key) {
+@@ -2488,9 +2480,7 @@ static int _key_normalized_obj(PyObject **key) {
+ }
+ 
+ /**
+- * Normalize memcached key.
+- *
+- * Returns 0 if invalid, 1 if already normalized, and 2 if mutated.
++ * Validate a memcached key.  Returns 0 if invalid, 1 if valid.
+  */
+ static int _key_normalized_str(char **str, Py_ssize_t *size) {
+     /* libmemcached pads max_key_size with one byte for null termination */
+diff --git a/tests/test_gets_use_after_free.py b/tests/test_gets_use_after_free.py
+new file mode 100644
+index 0000000..fdcb861
+--- /dev/null
++++ b/tests/test_gets_use_after_free.py
+@@ -0,0 +1,107 @@
++"""Regression test for premature Py_DECREF in PylibMC_Client_gets.
++
++The bug only triggered with str keys: _key_normalized_obj encodes the
++str into a new bytes object, and the call to Py_DECREF
++deallocated it immediately (BEFORE it was passed to memcached_mget),
++causing a use-after-free and potential reads of arbitrary keys.
++
++Requires a running memcached (see MEMCACHED_HOST/PORT env vars).
++"""
++
++import os
++import subprocess
++import sys
++import textwrap
++
++import pytest
++
++from pylibmc.test import make_test_client
++from tests import PylibmcTestCase
++
++
++def _run_with_debug_malloc(script, timeout=10):
++    """Run a Python script in a subprocess with PYTHONMALLOC=debug.
++
++    The debug allocator fills freed memory with 0xDD, making
++    use-after-free bugs deterministically detectable.
++    """
++    return subprocess.run(
++        [sys.executable, "-c", script],
++        env={**os.environ, "PYTHONMALLOC": "debug"},
++        capture_output=True,
++        text=True,
++        timeout=timeout,
++    )
++
++
++class TestGetsUseAfterFree(PylibmcTestCase):
++
++    def test_gets_str_key_reads_freed_buffer(self):
++        """gets(str_key) sends garbage because the key buffer is freed first.
++
++        With PYTHONMALLOC=debug the freed buffer becomes 0xDD bytes, so
++        memcached_mget asks for a nonexistent key and returns a miss.
++        get(str_key) works correctly as a control.
++
++        This test runs in a subprocess so that PYTHONMALLOC=debug is
++        active regardless of how the outer test runner was invoked.
++        """
++        host = os.environ.get("MEMCACHED_HOST", "127.0.0.1")
++        port = os.environ.get("MEMCACHED_PORT", "11211")
++
++        result = _run_with_debug_malloc(textwrap.dedent(f"""\
++            import sys
++            import pylibmc
++
++            mc = pylibmc.Client(
++                ["{host}:{port}"], behaviors={{"cas": True}},
++            )
++
++            key_str = "test_gets_uaf"
++            key_bytes = key_str.encode("utf-8")
++            assert mc.set(key_bytes, 42)
++
++            # Control: get() Py_DECREFs AFTER memcached_get — no UAF.
++            val = mc.get(key_str)
++            if val != 42:
++                print(f"get() failed: {{val!r}}", file=sys.stderr)
++                sys.exit(2)
++
++            # Bug: gets() Py_DECREFs BEFORE memcached_mget — UAF.
++            value, cas = mc.gets(key_str)
++            if value != 42:
++                print(
++                    f"BUG: gets({{key_str!r}}) = ({{value!r}}, {{cas!r}}), "
++                    f"expected (42, <cas>)\\n"
++                    f"     get({{key_str!r}})  = 42 (correct)\\n"
++                    f"Key buffer was used after free in PylibMC_Client_gets.",
++                    file=sys.stderr,
++                )
++                sys.exit(1)
++        """))
++
++        if result.returncode == 1:
++            pytest.fail(
++                f"gets() use-after-free confirmed:\n{result.stderr.strip()}"
++            )
++        elif result.returncode == 2:
++            pytest.fail(
++                f"get() failed (is memcached running?):\n"
++                f"{result.stderr.strip()}"
++            )
++        elif result.returncode != 0:
++            pytest.fail(
++                f"Subprocess failed (exit {result.returncode}):\n"
++                f"{result.stderr.strip()}"
++            )
++
++    def test_gets_bytes_key_not_affected(self):
++        """gets(bytes_key) was not affected by the bug.
++        
++        This serves as a control case for the test.
++        """
++        mc = make_test_client(binary=False, behaviors={"cas": True})
++        key = b"test_gets_bytes_ok"
++        assert mc.set(key, 99)
++        value, _cas = mc.gets(key)
++        assert value == 99
+
+From fa897d09b8b2d084279bb2a635611f26d7023f61 Mon Sep 17 00:00:00 2001
+From: "Bryan C. Mills" <bryan@duolingo.com>
+Date: Tue, 10 Mar 2026 00:42:29 -0400
+Subject: [PATCH 3/3] Fix a masked error in get_multi
+
+Fixes lericson/pylibmc#301.
+---
+ src/_pylibmcmodule.c                    | 13 +++--
+ tests/test_fetch_multi_error_masking.py | 65 +++++++++++++++++++++++++
+ 2 files changed, 75 insertions(+), 3 deletions(-)
+ create mode 100644 tests/test_fetch_multi_error_masking.py
+
+diff --git a/src/_pylibmcmodule.c b/src/_pylibmcmodule.c
+index 83ca929..39293b8 100644
+--- a/src/_pylibmcmodule.c
++++ b/src/_pylibmcmodule.c
+@@ -1666,7 +1666,10 @@ static pylibmc_mget_res _fetch_multi(memcached_st *mc,
+         result = memcached_fetch_result(mc, result, &res.rc);
+ 
+         if (result == NULL || res.rc == MEMCACHED_END) {
+-            /* This is how libmecached signals EOF. */
++            /* memcached_fetch_result returns NULL once all servers are
++             * exhausted.  res.rc distinguishes normal completion
++             * (MEMCACHED_END, MEMCACHED_NOTFOUND) from errors
++             * (e.g. MEMCACHED_CONNECTION_FAILURE). */
+             break;
+         } else if (res.rc == MEMCACHED_BAD_KEY_PROVIDED
+                 || res.rc == MEMCACHED_NO_KEY_PROVIDED) {
+@@ -1678,7 +1681,6 @@ static pylibmc_mget_res _fetch_multi(memcached_st *mc,
+         }
+     }
+ 
+-    res.rc = MEMCACHED_SUCCESS;
+     return res;
+ }
+ 
+@@ -1797,7 +1799,12 @@ static PyObject *PylibMC_Client_get_multi(
+     res = _fetch_multi(self->mc, req);
+     Py_END_ALLOW_THREADS;
+ 
+-    if (res.rc != MEMCACHED_SUCCESS) {
++    /* _fetch_multi returns the rc from the final memcached_fetch_result
++     * call.  Per the libmemcached docs, that function sets rc to END on
++     * successful conclusion, or NOTFOUND if no keys matched — both are
++     * normal outcomes for get_multi.  Any other code (e.g.
++     * CONNECTION_FAILURE) is an actual error. */
++    if (res.rc != MEMCACHED_END && res.rc != MEMCACHED_NOTFOUND) {
+         PylibMC_ErrFromMemcached(self, res.err_func, res.rc);
+         goto earlybird;
+     }
+diff --git a/tests/test_fetch_multi_error_masking.py b/tests/test_fetch_multi_error_masking.py
+new file mode 100644
+index 0000000..ef66833
+--- /dev/null
++++ b/tests/test_fetch_multi_error_masking.py
+@@ -0,0 +1,65 @@
++"""Regression test for error masking in _fetch_multi.
++
++If the connection failed after the initial memcached_mget had already succeeded,
++_fetch_multi would interpret the NULL return from memcached_fetch_result as EOF
++and unconditionally overwrite the result's status with MEMCACHED_SUCCESS.
++"""
++
++import socket
++import threading
++import time
++import unittest
++
++import pytest
++
++import pylibmc
++
++
++def _mock_text_server():
++    """Start a mock memcached that sends one VALUE then drops the connection.
++
++    Returns (port, thread).  The server socket is cleaned up by the
++    handler thread after a single accepted connection.
++    """
++    server_sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
++    server_sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
++    server_sock.bind(("127.0.0.1", 0))
++    port = server_sock.getsockname()[1]
++    server_sock.listen(1)
++    server_sock.settimeout(10)
++
++    def handler():
++        try:
++            conn, _ = server_sock.accept()
++            data = b""
++            while b"\r\n" not in data:
++                chunk = conn.recv(4096)
++                if not chunk:
++                    break
++                data += chunk
++            conn.sendall(b"VALUE key1 0 5\r\nhello\r\n")
++            time.sleep(0.05)
++            conn.close()
++        except Exception:
++            pass
++        finally:
++            server_sock.close()
++
++    t = threading.Thread(target=handler, daemon=True)
++    t.start()
++    return port, t
++
++
++class TestFetchMultiErrorMasking(unittest.TestCase):
++
++    def test_get_multi_returns_error_on_connection_drop(self):
++        port, server_thread = _mock_text_server()
++
++        mc = pylibmc.Client([f"127.0.0.1:{port}"])
++        try:
++            result = mc.get_multi([b"key1", b"key2", b"key3"])
++            pytest.fail(f"get_multi failed to raise pylibmc.Error. Partial results: {result!r}")
++        except pylibmc.Error:
++            return  # Correct: connection error raised.
++        finally:
++            server_thread.join()

@@ -1,6 +1,10 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2026-04-28)
+# dev-cpp/cpp-httplib doesn't support 32-bit arches
+dev-util/ccache http
+
 # Robin H. Johnson <robbat2@gentoo.org> (2026-03-22)
 # sys-block/vdo not keyworded here
 sys-fs/lvm2 vdo
@@ -34,7 +38,7 @@ dev-lang/python jit
 # USE=bpf depends on llvm-core/clang which is not keyworded on m68k
 media-libs/libv4l bpf
 
-# Violet Purcell <vimproved@inventati.org> (2023-10-12)
+# Violet Purcell <vi@vimproved.dev> (2023-10-12)
 # dev-build/samurai is not keyworded here.
 app-alternatives/ninja samurai
 
@@ -55,6 +59,7 @@ sys-apps/systemd xkb
 # Adel Kara Slimane <adel.ks@zegrapher.com> (2022-03-14)
 # Untested useflag on other arches, needs keywording
 media-video/ffmpeg vmaf
+media-video/ffmpeg-compat vmaf
 
 # James Le Cuirot <chewi@gentoo.org> (2022-01-09)
 # Most usage of KMS requires GBM, which is provided by Mesa, which currently

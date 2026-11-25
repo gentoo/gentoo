@@ -9,6 +9,6 @@
     <flag name="uuid">Use UUID for session identification instead of IP address and system time.</flag>
   </use>
   <upstream>
-    <remote-id type="freedesktop-gitlab">xorg/lib/libSM</remote-id>
+    <remote-id type="freedesktop-gitlab">xorg/lib/libsm</remote-id>
   </upstream>
 </pkgmetadata>

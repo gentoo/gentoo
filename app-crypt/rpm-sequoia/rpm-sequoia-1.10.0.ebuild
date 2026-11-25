@@ -258,7 +258,7 @@ LLVM_COMPAT=( {19..21} )
 RUST_MIN_VER="1.85.0"
 RUST_NEEDS_LLVM=1
 
-inherit cargo llvm-r1
+inherit cargo llvm-r2
 
 DESCRIPTION="Implementation of the RPM PGP interface using Sequoia"
 HOMEPAGE="https://sequoia-pgp.org/ https://github.com/rpm-software-management/rpm-sequoia"
@@ -295,7 +295,7 @@ BDEPEND="
 QA_FLAGS_IGNORED="usr/lib.*/librpm_sequoia.so.1"
 
 pkg_setup() {
-	llvm-r1_pkg_setup
+	llvm-r2_pkg_setup
 	rust_pkg_setup
 }
 

@@ -1,0 +1,34 @@
+Make sure cobalt gets actually built & installed correctly even when the
+toplevel build is using std=c++17. Similar to the fix for msm.
+https://bugs.gentoo.org/977237
+
+--- a/libs/cobalt/build/Jamfile
++++ a/libs/cobalt/build/Jamfile
+@@ -21,6 +21,7 @@ explicit
+ 
+ project : requirements
+   <define>BOOST_ASIO_NO_DEPRECATED
++  <toolset>gcc:<cxxflags>"-std=c++20 -fcoroutines"
+   <toolset>msvc:<define>_SCL_SECURE_NO_WARNINGS
+   <toolset>msvc:<define>_CRT_SECURE_NO_DEPRECATE
+   <toolset>msvc:<cxxflags>/bigobj
+@@ -57,9 +57,6 @@ lib boost_cobalt
+    : cobalt_sources
+    : requirements <define>BOOST_COBALT_SOURCE=1
+      <link>shared:<define>BOOST_COBALT_DYN_LINK=1
+-     [ requires
+-        cxx20_hdr_concepts
+-     ]
+      <boost.cobalt.pmr>boost-container:<library>/boost/container//boost_container
+       [ check-target-builds
+           $(config-binding:D)//cpp_lib_memory_resource
+--- a/libs/cobalt/test/Jamfile.jam
++++ a/libs/cobalt/test/Jamfile.jam
+@@ -10,6 +10,7 @@ import boost-cobalt ;
+ 
+ project : requirements
+   <define>BOOST_ASIO_NO_DEPRECATED
++  <toolset>gcc:<cxxflags>"-std=c++20 -fcoroutines"
+   <toolset>msvc:<define>_SCL_SECURE_NO_WARNINGS
+   <toolset>msvc:<define>_CRT_SECURE_NO_DEPRECATE
+   <toolset>msvc:<cxxflags>/bigobj

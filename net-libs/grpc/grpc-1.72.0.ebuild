@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -42,9 +42,11 @@ RESTRICT="!test? ( test )"
 # look for submodule versions in third_party dir
 RDEPEND="
 	>=dev-cpp/abseil-cpp-20240116:=
+	<dev-cpp/abseil-cpp-20260107
 	>=dev-libs/re2-0.2022.04.01:=
 	>=dev-libs/openssl-1.1.1:0=[-bindist(-)]
 	>=dev-libs/protobuf-27.0:=
+	<dev-libs/protobuf-34
 	dev-libs/xxhash
 	>=net-dns/c-ares-1.19.1:=
 	virtual/zlib:=
@@ -163,8 +165,14 @@ src_prepare() {
 		# So we make it output to cmake/build as the code expects and run it from there.
 		cat >> "${S}/CMakeLists.txt" <<- EOF || die
 		if(gRPC_BUILD_TESTS)
-		  set_target_properties(httpcli_test httpscli_test PROPERTIES RUNTIME_OUTPUT_DIRECTORY "\${CMAKE_CURRENT_BINARY_DIR}/cmake/build")
-		  set_tests_properties(httpcli_test httpscli_test PROPERTIES WORKING_DIRECTORY "\${CMAKE_CURRENT_BINARY_DIR}/cmake/build")
+		  set_target_properties(httpcli_test httpscli_test
+		    PROPERTIES
+		      RUNTIME_OUTPUT_DIRECTORY "\${CMAKE_CURRENT_BINARY_DIR}/cmake/build"
+		  )
+		  set_tests_properties(httpcli_test httpscli_test
+		   PROPERTIES
+		   WORKING_DIRECTORY "\${CMAKE_CURRENT_BINARY_DIR}/cmake/build"
+		  )
 		endif()
 		EOF
 

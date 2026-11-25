@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -25,7 +25,7 @@ RESTRICT="test"
 
 DEPEND=">=app-text/poppler-21.12.0:=[cairo]
 	>=app-text/zathura-0.5.3:=
-	dev-libs/girara:=
+	<dev-libs/girara-2026.02.04:=
 	dev-libs/glib:2
 	x11-libs/cairo"
 

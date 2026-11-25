@@ -1,12 +1,12 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
 PYPI_NO_NORMALIZE=1
-PYTHON_FULLY_TESTED=( python3_{10..13} pypy3 )
-PYTHON_COMPAT=( "${PYTHON_FULLY_TESTED[@]}" pypy3_11 python3_13t python3_14 python3_14t )
+PYTHON_FULLY_TESTED=( python3_{12..15} python3_{14..15}t )
+PYTHON_COMPAT=( "${PYTHON_FULLY_TESTED[@]}" pypy3_12 )
 
 inherit distutils-r1 pypi
 
@@ -40,6 +40,7 @@ PATCHES=(
 	"${FILESDIR}/python-dateutil-2.9.0-no-pytest-cov.patch"
 )
 
+EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
 
 python_prepare_all() {
@@ -51,12 +52,14 @@ python_prepare_all() {
 
 python_test() {
 	local EPYTEST_IGNORE=()
-	if ! has_version "dev-python/hypothesis[${PYTHON_USEDEP}]"; then
+	local EPYTEST_PLUGINS=( "${EPYTEST_PLUGINS[@]}" )
+	if has_version "dev-python/hypothesis[${PYTHON_USEDEP}]"; then
+		EPYTEST_PLUGINS+=( hypothesis )
+	else
 		EPYTEST_IGNORE+=(
 			tests/property
 		)
 	fi
 
-	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	epytest
 }

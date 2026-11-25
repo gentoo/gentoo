@@ -1,8 +1,13 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Unmask the flag which corresponds to ARCH.
 -arm64
+
+# Michał Górny <mgorny@gentoo.org> (2025-09-29)
+# dev-python/pypy:3.12 is not keyworded everywhere.
+-python_single_target_pypy3_12
+-python_targets_pypy3_12
 
 # Paul Zander <negril.nx+gentoo@gmail.com> (2025-05-01)
 # media-libs/libspng only keyworded on amd64, arm64
@@ -50,11 +55,6 @@
 # Michał Górny <mgorny@gentoo.org> (2021-01-07)
 # Prebuilt kernels are supported here.
 -dist-kernel
-
-# Sam James <sam@gentoo.org> (2020-10-08)
-# PyPy3 works on arm64
--python_targets_pypy3_11
--python_single_target_pypy3_11
 
 # David Seifert <soap@gentoo.org> (2020-05-17)
 # Mono is hopelessly broken on arm64

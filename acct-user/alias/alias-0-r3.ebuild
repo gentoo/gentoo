@@ -1,4 +1,4 @@
-# Copyright 2019-2024 Gentoo Authors
+# Copyright 2019-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,6 +13,3 @@ ACCT_USER_HOME_PERMS=02755
 ACCT_USER_GROUPS=( nofiles )
 
 acct-user_add_deps
-
-DEPEND+=" acct-group/qmail "
-RDEPEND+=" acct-group/qmail "

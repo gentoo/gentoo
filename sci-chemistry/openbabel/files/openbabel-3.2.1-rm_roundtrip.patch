@@ -1,0 +1,28 @@
+this test is skipped because it's really long and heavy, could be >1500s
+do not build/install it either
+see https://bugs.gentoo.org/977020
+--- a/test/CMakeLists.txt
++++ b/test/CMakeLists.txt
+@@ -233,22 +233,6 @@ if(WITH_INCHI)
+   endforeach(test ${inchitests})
+ endif(WITH_INCHI)
+ 
+-# ###########################################################
+-# roundtrip
+-# ###########################################################
+-add_executable(roundtrip roundtrip.cpp)
+-target_link_libraries(roundtrip ${libs})
+-
+-if(NOT BUILD_SHARED AND NOT BUILD_MIXED)
+-  set_target_properties(roundtrip PROPERTIES LINK_SEARCH_END_STATIC TRUE)
+-endif()
+-
+-install(TARGETS roundtrip
+-  RUNTIME DESTINATION bin
+-  LIBRARY DESTINATION lib${LIB_SUFFIX}
+-  ARCHIVE DESTINATION lib${LIB_SUFFIX}
+-)
+-
+ # ##########################
+ # Tests wrapped in Python #
+ # ##########################

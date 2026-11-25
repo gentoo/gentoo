@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,7 +12,7 @@ EAPI=8
 # Regular snapshots should be made from the v2.1 branch. Get the version with
 # `git show -s --format=%ct`
 
-inherit toolchain-funcs
+inherit flag-o-matic toolchain-funcs
 
 # Split release channel (such as "2.1") from relver (such as "1727870382")
 VER_CHANNEL=${PV%.*}
@@ -69,6 +69,9 @@ _emake() {
 }
 
 src_compile() {
+	# https://bugs.gentoo.org/669284
+	filter-flags -fno-asynchronous-unwind-tables
+
 	tc-export_build_env
 	_emake XCFLAGS="$(usex lua52compat "-DLUAJIT_ENABLE_LUA52COMPAT" "")"
 }

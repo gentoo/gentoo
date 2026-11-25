@@ -63,14 +63,14 @@ inherit llvm-utils multilib
 # @DESCRIPTION:
 # Oldest supported LLVM slot.  This is used to automatically filter out
 # unsupported LLVM_COMPAT values.
-_LLVM_OLDEST_SLOT=15
+_LLVM_OLDEST_SLOT=20
 
 # @ECLASS_VARIABLE: _LLVM_NEWEST_STABLE
 # @INTERNAL
 # @DESCRIPTION:
 # The newest stable LLVM version.  Versions newer than that won't
 # be automatically enabled via USE defaults.
-_LLVM_NEWEST_STABLE=21
+_LLVM_NEWEST_STABLE=23
 
 # == control variables ==
 
@@ -82,7 +82,7 @@ _LLVM_NEWEST_STABLE=21
 #
 # Example:
 # @CODE
-# LLVM_COMPAT=( {15..17} )
+# LLVM_COMPAT=( {20..23} )
 # @CODE
 
 # @ECLASS_VARIABLE: LLVM_OPTIONAL

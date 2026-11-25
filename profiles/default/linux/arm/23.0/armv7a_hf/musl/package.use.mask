@@ -4,3 +4,7 @@
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2024-03-20)
 # Does not compile with musl-1.2.4
 sys-devel/gcc sanitize
+
+# Mike Pagano <mpagano@gentoo.org> (2026-09-26)
+# Rust (and thus Node Temporal) is masked on armv7a hard-float musl profiles
+net-libs/nodejs temporal

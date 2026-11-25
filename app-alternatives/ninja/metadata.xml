@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="project">
+	<maintainer type="project" proxied="maintainer-and-proxy">
 		<email>base-system@gentoo.org</email>
 		<name>Gentoo Base System</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>vimproved@inventati.org</email>
+	<maintainer type="person" proxied="yes">
+		<email>vi@vimproved.dev</email>
 		<name>Violet Purcell</name>
 	</maintainer>
 	<use>

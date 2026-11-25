@@ -1,0 +1,20 @@
+Don't strip symbols and DWARF at link time; let portage handle stripping
+so QA0020 (pre-stripped files) does not trigger and FEATURES=splitdebug
+still works as expected.
+
+The -X options are reordered before '-extldflags=...' because Go's
+-ldflags parser rejects values that start with a single quote.
+
+Bug: https://bugs.gentoo.org/976193
+
+--- a/Makefile
++++ b/Makefile
+@@ -65,7 +65,7 @@ else
+ EXTLDFLAGS = -Wl,-undefined,dynamic_lookup
+ endif
+ $(CMD_TARGETS): cmd-%:
+-	go build -ldflags "-s -w '-extldflags=$(EXTLDFLAGS)' -X $(CLI_VERSION_PACKAGE).gitCommit=$(GIT_COMMIT) -X $(CLI_VERSION_PACKAGE).version=$(CLI_VERSION)" $(COMMAND_BUILD_OPTIONS) $(MODULE)/cmd/$(*)
++	go build -ldflags "-X $(CLI_VERSION_PACKAGE).gitCommit=$(GIT_COMMIT) -X $(CLI_VERSION_PACKAGE).version=$(CLI_VERSION) '-extldflags=$(EXTLDFLAGS)'" $(COMMAND_BUILD_OPTIONS) $(MODULE)/cmd/$(*)
+
+ build:
+ 	go build ./...

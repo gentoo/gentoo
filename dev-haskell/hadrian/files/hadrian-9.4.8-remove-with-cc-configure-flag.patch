@@ -1,0 +1,25 @@
+From: hololeap <hololeap@protonmail.com>
+Date: Sat, 31 Aug 2024 22:26:34 -0600
+Subject: [PATCH 1/1] Remove --with-cc from configure flags
+
+configure responds with:
+
+    WARNING: unrecognized options: --with-cc
+
+This triggers Gentoo's QA notice, "Unrecognized configure options", when
+building GHC.
+
+Signed-off-by: hololeap <hololeap@protonmail.com>
+--- a/src/Settings/Builders/Cabal.hs
++++ b/src/Settings/Builders/Cabal.hs
+@@ -200,7 +200,6 @@ configureArgs cFlags' ldFlags' = do
+         , conf "--with-gmp-libraries"     $ arg =<< getSetting GmpLibDir
+         , conf "--with-curses-libraries"  $ arg =<< getSetting CursesLibDir
+         , conf "--host"                   $ arg =<< getSetting TargetPlatformFull
+-        , conf "--with-cc" $ arg =<< getBuilderPath . (Cc CompileC) =<< getStage
+         , notStage0 ? arg "--ghc-option=-ghcversion-file=rts/include/ghcversion.h"
+         ]
+ 
+-- 
+2.44.2
+

@@ -1,11 +1,11 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{12..14} )
 
 inherit distutils-r1
 
@@ -32,8 +32,11 @@ RDEPEND="
 "
 
 PATCHES=(
-	# https://github.com/palfrey/tagpy/pull/37
-	"${FILESDIR}"/${PN}-2025.1-fix-check-taglib.patch
+	# upstream
+	"${FILESDIR}"/${P}-fix-check-taglib.patch
+	"${FILESDIR}"/${P}-fix-setuptools-0.84.patch
+	"${FILESDIR}"/${P}-fix-taglib-2.3.2.patch
 )
 
+EPYTEST_PLUGINS=()
 distutils_enable_tests pytest

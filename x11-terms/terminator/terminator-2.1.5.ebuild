@@ -1,10 +1,10 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 inherit distutils-r1 optfeature verify-sig virtualx xdg
 
 DESCRIPTION="Multiple GNOME terminals in one window"
@@ -44,6 +44,7 @@ VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/terminator.asc
 
 PATCHES=(
 	"${FILESDIR}"/terminator-1.91-desktop.patch
+	"${FILESDIR}"/terminator-2.1.5-accelerator-parse-hash.patch
 )
 
 src_test() {

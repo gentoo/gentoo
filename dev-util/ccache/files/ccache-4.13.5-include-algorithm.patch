@@ -1,0 +1,41 @@
+https://github.com/ccache/ccache/commit/3cead85a51b30663130dface477f560f96aeeab5
+https://github.com/ccache/ccache/pull/1754
+
+From 3cead85a51b30663130dface477f560f96aeeab5 Mon Sep 17 00:00:00 2001
+From: Linux User <linuxusergd@outlook.com>
+Date: Mon, 20 Jul 2026 09:43:22 +0000
+Subject: [PATCH] fix: Include algorithm header (#1754)
+
+This fixes a build error with clang 23:
+
+error: no member named 'any_of' in namespace 'std'; did you mean '__any_of'?
+---
+ src/ccache/storage/storage.cpp | 1 +
+ src/ccache/util/path.cpp       | 2 ++
+ 2 files changed, 3 insertions(+)
+
+diff --git a/src/ccache/storage/storage.cpp b/src/ccache/storage/storage.cpp
+index a4c5574b..7e73b72a 100644
+--- a/src/ccache/storage/storage.cpp
++++ b/src/ccache/storage/storage.cpp
+@@ -48,6 +48,7 @@
+ 
+ #include <cxxurl/url.hpp>
+ 
++#include <algorithm>
+ #include <cmath>
+ #include <memory>
+ #include <string>
+diff --git a/src/ccache/util/path.cpp b/src/ccache/util/path.cpp
+index e8a7bb71..64151c26 100644
+--- a/src/ccache/util/path.cpp
++++ b/src/ccache/util/path.cpp
+@@ -23,6 +23,8 @@
+ #include <ccache/util/format.hpp>
+ #include <ccache/util/string.hpp>
+ 
++#include <algorithm>
++
+ #ifdef _WIN32
+ const char k_dev_null_path[] = "nul:";
+ #else

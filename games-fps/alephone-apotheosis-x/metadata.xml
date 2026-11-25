@@ -13,4 +13,5 @@
 		<email>kangie@gentoo.org</email>
 		<name>Matt Jolly</name>
 	</maintainer>
+	<stabilize-allarches/>
 </pkgmetadata>

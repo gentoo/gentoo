@@ -4,7 +4,7 @@
 EAPI=8
 
 GENTOO_DEPEND_ON_PERL=no
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 WANT_AUTOMAKE=none
 
 inherit autotools python-single-r1 libtool perl-module systemd
@@ -93,6 +93,14 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-5.9.3-0002-Tidy-up-net-snmp-config-output.patch
 	"${FILESDIR}"/${PN}-5.9.3-0003-Prune-Libs.private-entries-in-netsnmp-.pc.in.patch
 	"${FILESDIR}"/${PN}-5.9.3-0004-Search-for-ltinfo-in-configure-if-needed.patch
+	"${FILESDIR}"/${PN}-5.9.5-c23.patch
+)
+
+QA_CONFIG_IMPL_DECL_SKIP=(
+	# only exists on Windows
+	ioctlsocket
+	# removed from Linux since 5.5
+	sysctl
 )
 
 pkg_setup() {

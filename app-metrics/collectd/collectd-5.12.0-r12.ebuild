@@ -1,11 +1,11 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 JAVA_PKG_OPT_USE="collectd_plugins_java"
 LUA_COMPAT=( lua5-{1..4} )
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit autotools fcaps java-pkg-opt-2 linux-info lua-single perl-functions python-single-r1 systemd tmpfiles udev
 
@@ -138,7 +138,7 @@ COMMON_DEPEND="
 	collectd_plugins_snmp?			( net-analyzer/net-snmp:= )
 	collectd_plugins_snmp_agent?		( net-analyzer/net-snmp:= )
 	collectd_plugins_sysevent?		( dev-libs/yajl:= )
-	collectd_plugins_varnish?		( www-servers/varnish:= )
+	collectd_plugins_varnish?		( <www-servers/vinyl-cache-9.0.0:= )
 	collectd_plugins_virt?			( app-emulation/libvirt:= dev-libs/libxml2:2= )
 	collectd_plugins_write_http?		( net-misc/curl:0= dev-libs/yajl:= )
 	collectd_plugins_write_kafka?		( >=dev-libs/librdkafka-0.9.0.99:= dev-libs/yajl:= )

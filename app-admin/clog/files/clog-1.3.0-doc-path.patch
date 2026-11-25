@@ -1,0 +1,26 @@
+From 67d9da292879a442f05cc9eb08627c6dcc7c88bc Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Sun, 17 May 2026 01:23:12 +0200
+Subject: [PATCH] Fix doc install path
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 73bdf53..fe562c5 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -17,7 +17,7 @@ set (PACKAGE_TARNAME "${PACKAGE}")
+ set (PACKAGE_VERSION "${VERSION}")
+ set (PACKAGE_STRING "${PACKAGE} ${VERSION}")
+ 
+-SET (CLOG_DOCDIR  share/doc/clog CACHE STRING "Installation directory for doc files")
++SET (CLOG_DOCDIR  share/clog     CACHE STRING "Installation directory for doc files")
+ SET (CLOG_BINDIR  bin            CACHE STRING "Installation directory for the binary")
+ 
+ message ("-- Configuring cmake.h")
+-- 
+2.54.0
+

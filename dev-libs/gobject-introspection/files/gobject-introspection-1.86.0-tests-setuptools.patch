@@ -1,0 +1,53 @@
+https://gitlab.gnome.org/GNOME/gobject-introspection/-/work_items/575#note_2838785
+--- a/tests/scanner/test_ccompiler.py	2026-08-17 05:31:19.341878650 +0000
++++ b/tests/scanner/test_ccompiler.py	2026-08-17 05:45:37.094350170 +0000
+@@ -82,7 +82,9 @@
+         except ImportError as e:
+             raise unittest.SkipTest(e)
+ 
+-        with patch.object(distutils.ccompiler.CCompiler, 'spawn') as spawn:
++        # setuptools >= 84 replaced spawn() with call() -> subprocess.check_call()
++        with patch.object(distutils.ccompiler.CCompiler, 'spawn') as spawn, \
++             patch('subprocess.check_call') as check_call:
+             with Environ(environ):
+                 cc = CCompiler(compiler_name=compiler_name)
+                 # Avoid check if target is newer from source.
+@@ -90,8 +92,11 @@
+                 # Don't actually do anything.
+                 cc.compiler.dry_run = True
+                 cc.compile(pkg_config_cflags, cpp_includes, [source], init_sections)
+-        self.assertEqual(1, spawn.call_count)
+-        args, kwargs = spawn.call_args
++        if spawn.call_count:
++            args, kwargs = spawn.call_args
++            return args[0]
++        self.assertEqual(1, check_call.call_count)
++        args, kwargs = check_call.call_args
+         return args[0]
+ 
+     def preprocess_args(self, environ={}, compiler_name=None,
+@@ -103,7 +108,9 @@
+         except ImportError as e:
+             raise unittest.SkipTest(e)
+ 
+-        with patch.object(distutils.ccompiler.CCompiler, 'spawn') as spawn:
++        # setuptools >= 84 replaced spawn() with call() -> subprocess.check_call()
++        with patch.object(distutils.ccompiler.CCompiler, 'spawn') as spawn, \
++             patch('subprocess.check_call') as check_call:
+             with Environ(environ):
+                 cc = CCompiler(compiler_name=compiler_name)
+                 # Avoid check if target is newer from source.
+@@ -111,8 +118,11 @@
+                 # Don't actually do anything.
+                 cc.compiler.dry_run = True
+                 cc.preprocess(source, output, cpp_options)
+-        self.assertEqual(1, spawn.call_count)
+-        args, kwargs = spawn.call_args
++        if spawn.call_count:
++            args, kwargs = spawn.call_args
++            return args[0]
++        self.assertEqual(1, check_call.call_count)
++        args, kwargs = check_call.call_args
+         return args[0]
+ 
+     @unittest.skip("Currently a Python build time compiler is used as the default.")

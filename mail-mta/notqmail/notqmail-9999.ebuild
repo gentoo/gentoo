@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -61,7 +61,7 @@ VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/notqmail.asc
 
 LICENSE="public-domain"
 SLOT="0"
-IUSE="gencertdaily highvolume pop3 qmail-spp ssl test vanilla"
+IUSE="gencertdaily highvolume pop3 qmail-spp selinux ssl test vanilla"
 REQUIRED_USE="vanilla? ( !ssl !qmail-spp !highvolume !gencertdaily ) gencertdaily? ( ssl )"
 RESTRICT="!test? ( test )"
 
@@ -97,6 +97,7 @@ RDEPEND="${DEPEND}
 	!mail-mta/netqmail
 	!mail-mta/sendmail
 	!mail-mta/ssmtp[mta]
+	selinux? ( sec-policy/selinux-qmail )
 "
 PDEPEND="
 	virtual/daemontools

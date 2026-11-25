@@ -52,7 +52,7 @@ if [[ -z ${_RUST_ECLASS} ]]; then
 _RUST_ECLASS=1
 
 if [[ -n ${RUST_NEEDS_LLVM} ]]; then
-	inherit llvm-r1
+	inherit llvm-r2
 fi
 
 if [[ -n ${RUST_MULTILIB} ]]; then
@@ -67,32 +67,19 @@ fi
 # @DESCRIPTION:
 # Definitive list of Rust slots and the associated LLVM slot, newest first.
 declare -A -g -r _RUST_LLVM_MAP=(
-	["9999"]=22
+	["9999"]=23
+	["1.100.0"]=23
+	["1.99.1"]=23
+	["1.99.0"]=23
+	["1.98.1"]=22
+	["1.97.1"]=22
+	["1.96.1"]=22
 	["1.95.0"]=22
-	["1.94.0"]=21
+	["1.94.1"]=21
 	["1.93.1"]=21
-	["1.93.0"]=21
 	["1.92.0"]=21
 	["1.91.0"]=21
 	["1.90.0"]=20
-	["1.89.0"]=20
-	["1.88.0"]=20
-	["1.87.0"]=20
-	["1.86.0"]=19
-	["1.85.1"]=19
-	["1.85.0"]=19
-	["1.84.1"]=19
-	["1.84.0"]=19
-	["1.83.0"]=19
-	["1.82.0"]=19
-	["1.81.0"]=18
-	["1.80.1"]=18
-	["1.79.0"]=18
-	["1.78.0"]=18
-	["1.77.1"]=17
-	["1.76.0"]=17
-	["1.75.0"]=17
-	["1.74.1"]=17
 )
 
 # @ECLASS_VARIABLE: _RUST_SLOTS_ORDERED
@@ -103,31 +90,18 @@ declare -A -g -r _RUST_LLVM_MAP=(
 # this array is used to store the Rust slots in a more convenient order for iteration.
 declare -a -g -r _RUST_SLOTS_ORDERED=(
 	"9999"
+	"1.100.0"
+	"1.99.1"
+	"1.99.0"
+	"1.98.1"
+	"1.97.1"
+	"1.96.1"
 	"1.95.0"
-	"1.94.0"
+	"1.94.1"
 	"1.93.1"
-	"1.93.0"
 	"1.92.0"
 	"1.91.0"
 	"1.90.0"
-	"1.89.0"
-	"1.88.0"
-	"1.87.0"
-	"1.86.0"
-	"1.85.1"
-	"1.85.0"
-	"1.84.1"
-	"1.84.0"
-	"1.83.0"
-	"1.82.0"
-	"1.81.0"
-	"1.80.1"
-	"1.79.0"
-	"1.78.0"
-	"1.77.1"
-	"1.76.0"
-	"1.75.0"
-	"1.74.1"
 )
 
 # == user control knobs ==
@@ -187,7 +161,7 @@ declare -a -g -r _RUST_SLOTS_ORDERED=(
 # packages that need a tight coupling between Rust and LLVM but don't
 # really care _which_ version of Rust is selected. Combine with
 # RUST_MAX_VER and RUST_MIN_VER to limit the range of Rust versions
-# that are acceptable. Will `die` if llvm-r1 is not inherited or
+# that are acceptable. Will `die` if llvm-r2 is not inherited or
 # an invalid combination of RUST and LLVM slots is detected; this probably
 # means that a LLVM slot in LLVM_COMPAT has had all of its Rust slots filtered.
 

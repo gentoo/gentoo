@@ -1,0 +1,158 @@
+diff --git a/common/mlcustomize/crypt-c.c b/common/mlcustomize/crypt-c.c
+index e1bc740..e358018 100644
+--- a/common/mlcustomize/crypt-c.c
++++ b/common/mlcustomize/crypt-c.c
+@@ -47,7 +47,7 @@ virt_customize_crypt (value keyv, value saltv)
+    */
+   r = crypt (String_val (keyv), String_val (saltv));
+   if (r == NULL)
+-    caml_unix_error (errno, (char *) "crypt", Nothing);
++    unix_error (errno, (char *) "crypt", Nothing);
+   rv = caml_copy_string (r);
+ 
+   CAMLreturn (rv);
+diff --git a/common/mltools/tools_utils-c.c b/common/mltools/tools_utils-c.c
+index 21f7469..4ff42e5 100644
+--- a/common/mltools/tools_utils-c.c
++++ b/common/mltools/tools_utils-c.c
+@@ -126,10 +126,10 @@ guestfs_int_mllib_rfc3339_date_time_string (value unitv)
+   size_t total = 0;
+ 
+   if (clock_gettime (CLOCK_REALTIME, &ts) == -1)
+-    caml_unix_error (errno, (char *) "clock_gettime", Val_unit);
++    unix_error (errno, (char *) "clock_gettime", Val_unit);
+ 
+   if (localtime_r (&ts.tv_sec, &tm) == NULL)
+-    caml_unix_error (errno, (char *) "localtime_r", caml_copy_int64 (ts.tv_sec));
++    unix_error (errno, (char *) "localtime_r", caml_copy_int64 (ts.tv_sec));
+ 
+   /* Sadly strftime does not support nanoseconds, so what we do is:
+    * - stringify everything before the nanoseconds
+@@ -141,17 +141,17 @@ guestfs_int_mllib_rfc3339_date_time_string (value unitv)
+ 
+   ret = strftime (buf, sizeof (buf), "%Y-%m-%dT%H:%M:%S.", &tm);
+   if (ret == 0)
+-    caml_unix_error (errno, (char *) "strftime", Val_unit);
++    unix_error (errno, (char *) "strftime", Val_unit);
+   total += ret;
+ 
+   ret = snprintf (buf + total, sizeof (buf) - total, "%09ld", ts.tv_nsec);
+   if (ret == 0)
+-    caml_unix_error (errno, (char *) "sprintf", caml_copy_int64 (ts.tv_nsec));
++    unix_error (errno, (char *) "sprintf", caml_copy_int64 (ts.tv_nsec));
+   total += ret;
+ 
+   ret = strftime (buf + total, sizeof (buf) - total, "%z", &tm);
+   if (ret == 0)
+-    caml_unix_error (errno, (char *) "strftime", Val_unit);
++    unix_error (errno, (char *) "strftime", Val_unit);
+   total += ret;
+ 
+   /* Move the timezone minutes one character to the right, moving the
+diff --git a/common/mlutils/c_utils-c.c b/common/mlutils/c_utils-c.c
+index f0e2798..54791ec 100644
+--- a/common/mlutils/c_utils-c.c
++++ b/common/mlutils/c_utils-c.c
+@@ -68,7 +68,7 @@ guestfs_int_mlutils_shell_unquote (value strv)
+ 
+   ret = guestfs_int_shell_unquote (String_val (strv));
+   if (ret == NULL)
+-    caml_unix_error (errno, (char *) "guestfs_int_shell_unquote", Nothing);
++    unix_error (errno, (char *) "guestfs_int_shell_unquote", Nothing);
+ 
+   retv = caml_copy_string (ret);
+   free (ret);
+@@ -102,7 +102,7 @@ guestfs_int_mlutils_full_path (value dirv, value namev)
+ 
+   ret = guestfs_int_full_path (String_val (dirv), name);
+   if (ret == NULL)
+-    caml_unix_error (errno, (char *) "guestfs_int_full_path", dirv);
++    unix_error (errno, (char *) "guestfs_int_full_path", dirv);
+   rv = caml_copy_string (ret);
+   free (ret);
+ 
+diff --git a/common/mlutils/unix_utils-c.c b/common/mlutils/unix_utils-c.c
+index 919f526..b6ad832 100644
+--- a/common/mlutils/unix_utils-c.c
++++ b/common/mlutils/unix_utils-c.c
+@@ -149,7 +149,7 @@ guestfs_int_mllib_fnmatch (value patternv, value strv, value flagsv)
+     /* XXX The fnmatch specification doesn't mention what errors can
+      * be returned by fnmatch.  Assume they are errnos for now.
+      */
+-    caml_unix_error (errno, (char *) "fnmatch", patternv);
++    unix_error (errno, (char *) "fnmatch", patternv);
+   }
+ }
+ 
+@@ -182,16 +182,16 @@ guestfs_int_mllib_fsync_file (value filenamev)
+   /* Note to do fsync you have to open for write. */
+   fd = open (filename, O_RDWR);
+   if (fd == -1)
+-    caml_unix_error (errno, (char *) "open", filenamev);
++    unix_error (errno, (char *) "open", filenamev);
+ 
+   if (fsync (fd) == -1) {
+     err = errno;
+     close (fd);
+-    caml_unix_error (err, (char *) "fsync", filenamev);
++    unix_error (err, (char *) "fsync", filenamev);
+   }
+ 
+   if (close (fd) == -1)
+-    caml_unix_error (errno, (char *) "close", filenamev);
++    unix_error (errno, (char *) "close", filenamev);
+ 
+   CAMLreturn (Val_unit);
+ }
+@@ -205,13 +205,13 @@ guestfs_int_mllib_mkdtemp (value val_pattern)
+ 
+   pattern = strdup (String_val (val_pattern));
+   if (pattern == NULL)
+-    caml_unix_error (errno, (char *) "strdup", val_pattern);
++    unix_error (errno, (char *) "strdup", val_pattern);
+ 
+   ret = mkdtemp (pattern);
+   if (ret == NULL) {
+     int err = errno;
+     free (pattern);
+-    caml_unix_error (err, (char *) "mkdtemp", val_pattern);
++    unix_error (err, (char *) "mkdtemp", val_pattern);
+   }
+ 
+   rv = caml_copy_string (ret);
+@@ -229,7 +229,7 @@ guestfs_int_mllib_realpath (value pathv)
+ 
+   r = realpath (String_val (pathv), NULL);
+   if (r == NULL)
+-    caml_unix_error (errno, (char *) "realpath", pathv);
++    unix_error (errno, (char *) "realpath", pathv);
+ 
+   rv = caml_copy_string (r);
+   free (r);
+@@ -257,7 +257,7 @@ guestfs_int_mllib_statvfs_statvfs (value pathv)
+   struct statvfs buf;
+ 
+   if (statvfs (String_val (pathv), &buf) == -1)
+-    caml_unix_error (errno, (char *) "statvfs", pathv);
++    unix_error (errno, (char *) "statvfs", pathv);
+ 
+   f_bsize = buf.f_bsize;
+   f_frsize = buf.f_frsize;
+@@ -281,7 +281,7 @@ guestfs_int_mllib_statvfs_statvfs (value pathv)
+                            (PULARGE_INTEGER) &free_bytes_available,
+                            (PULARGE_INTEGER) &total_number_of_bytes,
+                            (PULARGE_INTEGER) &total_number_of_free_bytes))
+-    caml_unix_error (EIO, (char *) "statvfs: GetDiskFreeSpaceEx", pathv);
++    unix_error (EIO, (char *) "statvfs: GetDiskFreeSpaceEx", pathv);
+ 
+   /* XXX I couldn't determine how to get block size.  MSDN has a
+    * unhelpful hard-coded list here:
+@@ -356,7 +356,7 @@ guestfs_int_mllib_statvfs_is_network_filesystem (value pathv)
+   struct statfs buf;
+ 
+   if (statfs (String_val (pathv), &buf) == -1)
+-    caml_unix_error (errno, (char *) "statvfs", pathv);
++    unix_error (errno, (char *) "statvfs", pathv);
+ 
+   /* Some but not all of these are defined in <linux/magic.h>. */
+ #ifndef CIFS_MAGIC_NUMBER

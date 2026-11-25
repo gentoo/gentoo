@@ -1,0 +1,22 @@
+Bug: https://savannah.gnu.org/bugs/index.php?68762
+Bug: https://bugs.gentoo.org/983511
+From: "G. Branden Robinson" <g.branden.robinson@gmail.com>
+Date: Fri, 10 Apr 2026 02:49:08 -0500
+Subject: [PATCH] src/roff/troff/env.cpp: Rationalize `#include`s.
+
+* src/roff/troff/env.cpp: Rationalize header file inclusions, adding
+  "<stdlib.h>" and "<string.h>".
+--- a/src/roff/troff/env.cpp
++++ b/src/roff/troff/env.cpp
+@@ -24,6 +24,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>. */
+ 
+ #include <errno.h> // errno
+ #include <math.h> // ceil(), fabs()
++#include <stdlib.h> // strtol()
++#include <string.h> // strchr(), strcpy(), strerror(), strncmp(),
++		    // strstr()
+ 
+ #include <vector>
+ #include <algorithm> // find()
+-- 
+2.56.0

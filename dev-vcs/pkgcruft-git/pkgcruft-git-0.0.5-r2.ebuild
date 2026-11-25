@@ -6,6 +6,9 @@ EAPI=8
 LLVM_COMPAT=( {19..21} )
 RUST_MIN_VER="1.90.0"
 
+# vendored openssl-sys-0.9.111 doesn't support openssl-4
+CRATES="openssl-sys@0.9.117"
+
 inherit cargo edo llvm-r2 multiprocessing
 
 DESCRIPTION="QA support for verifying git commits via pkgcruft"
@@ -23,7 +26,10 @@ else
 	# To get the value from the repo use the following command:
 	# sed -rn "/^PACKAGE_VERSION=/ s/^.*='(.*)'/\1/p" **/scallop/bash/configure
 	SCALLOP_VERSION="5.3.9.20251212"
-	SRC_URI="https://github.com/pkgcraft/pkgcraft/releases/download/${P}/${P}.tar.xz"
+	SRC_URI="
+		https://github.com/pkgcraft/pkgcraft/releases/download/${P}/${P}.tar.xz
+		${CARGO_CRATE_URIS}
+	"
 	KEYWORDS="amd64 arm64"
 fi
 
@@ -73,6 +79,19 @@ src_unpack() {
 	else
 		cargo_src_unpack
 	fi
+}
+
+src_prepare() {
+	default
+
+	local crate=openssl-sys-0.9.117
+	rm -r vendor/openssl-sys || die
+	mv "${ECARGO_VENDOR}"/${crate} vendor/openssl-sys || die
+	local sum=$(sha256sum "${DISTDIR}"/${crate}.crate | cut -d' ' -f1)
+	sed -i -e "/^name = \"openssl-sys\"$/,/^checksum/{" \
+		-e "s/^version = .*/version = \"0.9.117\"/" \
+		-e "s/^checksum = .*/checksum = \"${sum}\"/" \
+		-e "}" Cargo.lock || die
 }
 
 src_test() {

@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,13 +19,13 @@ HOMEPAGE="https://hpx.stellar-group.org/"
 
 LICENSE="Boost-1.0"
 SLOT="0"
-IUSE="examples jemalloc mpi papi +perftools tbb zlib"
+IUSE="examples mpi papi +perftools tbb zlib"
 # tests fail to compile
 RESTRICT="test"
 
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
-	?? ( jemalloc perftools tbb )
+	?? ( perftools tbb )
 "
 
 BDEPEND="
@@ -42,7 +42,6 @@ RDEPEND="
 	<dev-cpp/asio-1.34
 	dev-libs/boost:=
 	sys-apps/hwloc:=
-	jemalloc? ( dev-libs/jemalloc:= )
 	mpi? ( virtual/mpi )
 	papi? ( dev-libs/papi )
 	perftools? ( dev-util/google-perftools:= )
@@ -87,9 +86,7 @@ src_configure() {
 		-DHPX_WITH_COMPRESSION_ZLIB=$(usex zlib)
 		-DHPX_WITH_TESTS=OFF
 	)
-	if use jemalloc; then
-		mycmakeargs+=( -DHPX_WITH_MALLOC=jemalloc )
-	elif use perftools; then
+	if use perftools; then
 		mycmakeargs+=( -DHPX_WITH_MALLOC=tcmalloc )
 	elif use tbb; then
 		mycmakeargs+=( -DHPX_WITH_MALLOC=tbbmalloc )

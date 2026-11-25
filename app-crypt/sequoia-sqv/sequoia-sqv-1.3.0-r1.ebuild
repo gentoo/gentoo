@@ -6,7 +6,7 @@ EAPI=8
 CRATES="
 "
 
-LLVM_COMPAT=( {17..20} )
+LLVM_COMPAT=( {17..22} )
 RUST_MIN_VER="1.79.0"
 
 inherit cargo llvm-r1 shell-completion

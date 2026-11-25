@@ -1,0 +1,21 @@
+commit bef9e0035464a906dc520f1d135208b537cc65c3
+Author: Brian Bockelman <bbockelm@cse.unl.edu>
+Date:   Tue Jun 18 20:38:41 2019 -0500
+
+    Free memory for temporary data buffer.
+    
+    With this, deserializing the macaroon no longer leaks the buffer
+    on success.
+
+diff --git a/macaroons.c b/macaroons.c
+index ab296c8..d35f6bf 100644
+--- a/macaroons.c
++++ b/macaroons.c
+@@ -1741,6 +1741,7 @@ macaroon_deserialize(const char* _data, enum macaroon_returncode* err)
+         return NULL;
+     }
+ 
++    free(data);
+     *err = MACAROON_SUCCESS;
+     return M;
+ }

@@ -21,20 +21,20 @@ fi
 
 LICENSE="CC0-1.0"
 SLOT="0"
-DEPEND="
+COMMON_DEPEND="
 	dev-libs/wayland
 	x11-libs/libxkbcommon
 	=gui-libs/wlroots-$(ver_cut 1-2)*:=
 "
+DEPEND="
+	${COMMON_DEPEND}
+	dev-libs/wayland-protocols
+"
 RDEPEND="
-	${DEPEND}
+	${COMMON_DEPEND}
 	!gui-libs/wlroots[tinywl(-)]
 "
-BDEPEND="
-	dev-libs/wayland-protocols
-	dev-util/wayland-scanner
-	virtual/pkgconfig
-"
+BDEPEND="virtual/pkgconfig"
 
 if [[ ${PV} != 9999 ]]; then
 	BDEPEND+=" verify-sig? ( sec-keys/openpgp-keys-emersion )"

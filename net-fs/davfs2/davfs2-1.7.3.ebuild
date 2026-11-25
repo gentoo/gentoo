@@ -37,6 +37,8 @@ BDEPEND="
 src_prepare() {
 	default
 
+	sed -i 's/\(-D_FORTIFY_SOURCE=2\)/-U_FORTIFY_SOURCE \1/g' src/Makefile.am || die
+
 	# apply the patch by sed, upstream uses meson now
 	# see https://github.com/alisarctl/davfs2/pull/28
 	sed -i -E '/AC_CHECK_HEADERS\(\[error.h/{

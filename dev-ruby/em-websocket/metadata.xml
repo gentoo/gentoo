@@ -6,6 +6,8 @@
     <name>Gentoo Ruby Project</name>
   </maintainer>
   <upstream>
+    <doc>https://www.rubydoc.info/gems/em-websocket/</doc>
     <remote-id type="github">igrigorik/em-websocket</remote-id>
+    <remote-id type="rubygems">em-websocket</remote-id>
   </upstream>
 </pkgmetadata>

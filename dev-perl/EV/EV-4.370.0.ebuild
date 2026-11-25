@@ -11,7 +11,7 @@ DESCRIPTION="Perl interface to libev, a high performance full-featured event loo
 
 LICENSE=" || ( Artistic GPL-1+ ) || ( BSD-2 GPL-2+ )"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm ppc ppc64 ~riscv x86"
 
 RDEPEND="
 	dev-perl/common-sense

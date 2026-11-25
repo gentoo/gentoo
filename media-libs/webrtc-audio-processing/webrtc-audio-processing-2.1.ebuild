@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,7 +11,7 @@ SRC_URI="https://freedesktop.org/software/pulseaudio/${PN}/${P}.tar.xz"
 
 LICENSE="BSD"
 SLOT="2"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE="cpu_flags_arm_neon cpu_flags_x86_sse"
 
 RDEPEND=">=dev-cpp/abseil-cpp-20240722:=[${MULTILIB_USEDEP}]"
@@ -32,5 +32,13 @@ multilib_src_configure() {
 		$(meson_feature cpu_flags_arm_neon neon)
 		$(meson_use cpu_flags_x86_sse inline-sse)
 	)
+
+	if has_version ">=dev-cpp/abseil-cpp-20260107.0"; then
+		# needs >=c++20
+		emesonargs=(
+			-Dcpp_std=c++20
+		)
+	fi
+
 	meson_src_configure
 }

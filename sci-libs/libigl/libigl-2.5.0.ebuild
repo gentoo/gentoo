@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="amd64 ~arm64 x86"
 IUSE="static-libs"
 
-DEPEND="dev-cpp/eigen:3"
+DEPEND="dev-cpp/eigen:="
 RDEPEND="${DEPEND}"
 
 src_prepare() {

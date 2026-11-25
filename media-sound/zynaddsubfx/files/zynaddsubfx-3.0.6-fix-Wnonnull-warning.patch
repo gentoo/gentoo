@@ -1,0 +1,28 @@
+From 42e91c8ee3a06d8a29562706b6b2346de99aca81 Mon Sep 17 00:00:00 2001
+From: fundamental <mark.d.mccurry@gmail.com>
+Date: Wed, 4 May 2022 17:09:58 -0400
+Subject: [PATCH] Fix strstr() null warning
+
+Comment out part of incomplete dispatch matcher
+Resolve #46
+---
+ src/dispatch.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/dispatch.c b/src/dispatch.c
+index 4a6c14a..0ce3359 100644
+--- a/src/dispatch.c
++++ b/src/dispatch.c
+@@ -287,10 +287,12 @@ bool rtosc_match_partial(const char *a, const char *b)
+             return true;
+         else
+             return false;
++    /*
+     } else if(type == 4) {
+         //extract substring
+         const char *sub=NULL;
+         return strstr(a,sub);
++        */
+     } else if(type == RTOSC_MATCH_OPTIONS || type == 6) {
+         return false;
+     } else if(type == RTOSC_MATCH_ENUMERATED) {

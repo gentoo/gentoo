@@ -1,0 +1,41 @@
+https://bugs.debian.org/884626
+https://rt.cpan.org/Public/Bug/Display.html?id=124165
+
+Description: Comment out unused DMX definitions
+ The upstream Linux kernel has dropped these unused definitions, so do not attempt
+ to use them in this module:
+ https://git.linuxtv.org/media_tree.git/commit/?id=13adefbe9e566c6db91579e4ce17f1e5193d6f2c
+ https://git.linuxtv.org/media_tree.git/commit/?id=791edca5685b26d4575e59f5420ba3e206f5cebb
+Author: Nick Morrott <knowledgejunkie@gmail.com>
+Bug: <URL to the upstream bug report if any, implies patch has been forwarded, optional>
+Last-Update: 2018-01-21
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+--- a/DVB.xs
++++ b/DVB.xs
+@@ -190,17 +190,17 @@
+   CONST (DMX_CHECK_CRC),
+   CONST (DMX_ONESHOT),
+   CONST (DMX_IMMEDIATE_START),
+-  CONST (DMX_KERNEL_CLIENT),
++  //CONST (DMX_KERNEL_CLIENT),
+ 
+-  CONST (DMX_SOURCE_FRONT0),
+-  CONST (DMX_SOURCE_FRONT1),
+-  CONST (DMX_SOURCE_FRONT2),
+-  CONST (DMX_SOURCE_FRONT3),
++  //CONST (DMX_SOURCE_FRONT0),
++  //CONST (DMX_SOURCE_FRONT1),
++  //CONST (DMX_SOURCE_FRONT2),
++  //CONST (DMX_SOURCE_FRONT3),
+ 
+-  CONST (DMX_SOURCE_DVR0),
+-  CONST (DMX_SOURCE_DVR1),
+-  CONST (DMX_SOURCE_DVR2),
+-  CONST (DMX_SOURCE_DVR3),
++  //CONST (DMX_SOURCE_DVR0),
++  //CONST (DMX_SOURCE_DVR1),
++  //CONST (DMX_SOURCE_DVR2),
++  //CONST (DMX_SOURCE_DVR3),
+ 
+   //CONST (DMX_SCRAMBLING_OFF),
+   //CONST (DMX_SCRAMBLING_ON),

@@ -1,9 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit cmake flag-o-matic
+inherit cmake flag-o-matic xdg
 
 DESCRIPTION="Open Source Flight Simulator"
 HOMEPAGE="https://www.flightgear.org/"
@@ -60,11 +60,10 @@ DEPEND="${COMMON_DEPEND}
 RDEPEND="${COMMON_DEPEND}
 	~games-simulation/${PN}-data-${PV}
 "
-BDEPEND="qt6? ( dev-qt/qttools:6 )"
+BDEPEND="qt6? ( dev-qt/qttools:6[linguist] )"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-2024.1.1-cmake.patch"
-	"${FILESDIR}/${PN}-2024.1.1-fix-fgpanel.patch"
 	"${FILESDIR}/0001-check-to-be-sure-that-n-is-not-being-set-as-format-t.patch"
 	"${FILESDIR}/0003-make-fglauncher-a-static-library.patch"
 	"${FILESDIR}/0005-make-fgqmlui-a-static-library.patch"
@@ -126,16 +125,12 @@ src_configure() {
 		-DUSE_AEONWAVE=OFF
 		-DUSE_DBUS=$(usex dbus)
 		-DWITH_FGPANEL=$(usex utils)
+		-DENABLE_FGQCANVAS=OFF # still Qt5-only, bug 968375
 	)
 	if use gdal && use utils; then
 		mycmakeargs+=(-DENABLE_DEMCONVERT=ON)
 	else
 		mycmakeargs+=(-DENABLE_DEMCONVERT=OFF)
-	fi
-	if use qt6 && use utils; then
-		mycmakeargs+=(-DENABLE_FGQCANVAS=ON)
-	else
-		mycmakeargs+=(-DENABLE_FGQCANVAS=OFF)
 	fi
 
 	cmake_src_configure

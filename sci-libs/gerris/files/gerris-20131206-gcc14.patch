@@ -1,0 +1,33 @@
+--- a/configure.ac	2026-11-23 08:23:17.015241439 +0100
++++ b/configure.ac	2026-11-23 08:23:21.842185579 +0100
+@@ -146,7 +146,7 @@
+ # check that pointers can be stored in doubles
+ AC_MSG_CHECKING(whether pointers can be stored in doubles)
+ AC_TRY_RUN([
+-main () {
++int main () {
+   if (sizeof (void *) > sizeof (double))
+     return 1;
+   return 0;
+--- a/modules/bubbles.c	2026-11-23 08:29:55.129645041 +0100
++++ b/modules/bubbles.c	2026-11-23 12:10:34.592898468 +0100
+@@ -418,7 +418,8 @@
+ static void bubble_fraction_init (GfsVariable * v)
+ {
+   v->units = 0.;
+-  GFS_PARTICULATE_FIELD (v)->voidfraction_func = voidfraction_from_bubbles;
++  GFS_PARTICULATE_FIELD (v)->voidfraction_func =
++    (void (*)(FttCell *, GfsVariable *, GfsParticulate *))voidfraction_from_bubbles;
+   GFS_BUBBLE_FRACTION (v)->kernel_function = gfs_function_new (gfs_function_spatial_class (), 0.);
+ }
+ 
+@@ -471,7 +472,8 @@
+ 
+ static void bubble_fraction_dt_init (GtsObject * o)
+ {
+-  GFS_PARTICULATE_FIELD (o)->voidfraction_func = dVpdt_from_particles;
++  GFS_PARTICULATE_FIELD (o)->voidfraction_func = 
++    (void (*)(FttCell *, GfsVariable *, GfsParticulate *)) dVpdt_from_particles;
+ }
+ 
+ GfsVariableClass * gfs_bubble_fraction_dt_class (void)

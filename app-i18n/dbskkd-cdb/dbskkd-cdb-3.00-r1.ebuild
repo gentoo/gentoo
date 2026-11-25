@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,6 +12,7 @@ SRC_URI="https://github.com/jj1bdx/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 ppc x86"
+IUSE="selinux"
 
 DEPEND="
 	|| (
@@ -25,6 +26,7 @@ RDEPEND="
 	acct-user/dbskkd
 	app-i18n/skk-jisyo[cdb]
 	sys-apps/xinetd
+	selinux? ( sec-policy/selinux-dbskk )
 "
 
 PATCHES=( "${FILESDIR}"/${PN}-gentoo.patch )

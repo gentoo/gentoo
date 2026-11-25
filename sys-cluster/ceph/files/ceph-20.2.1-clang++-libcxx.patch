@@ -1,0 +1,185 @@
+From: Felix W. (65278) <felix@zeynix.de> 
+Date: Fri, 11 Sep 2026 15:30:00 +0200
+Subject: [PATCH]: ceph-20.2.1 clang/libcxx compat
+
+libcxx is internally c++20, and has no support for features which
+have been deprecated, such as std::result_of, or abi compatibility
+namespacing like std::__cxx11. I've tried to keep the patchset
+compatible with libstdc++ here, but I can't test all combinations.
+
+Apart of that, clang++ has trouble inferring types (or is stricter
+about typing), meaning that types had to be more explicit. This
+should not hurt compiling with g++ in any way.
+
+I am not certain about the type ceph::coarse_real_time::clock and 
+ceph::real_time::clock should take when printed to cout. I've decided
+to cast them to time_t because the code is there and it works.
+
+Index: ceph-20.2.1/src/dmclock/support/src/indirect_intrusive_heap.h
+===================================================================
+--- ceph-20.2.1.orig/src/dmclock/support/src/indirect_intrusive_heap.h
++++ ceph-20.2.1/src/dmclock/support/src/indirect_intrusive_heap.h
+@@ -60,7 +60,7 @@ namespace crimson {
+ 
+     static_assert(
+       std::is_same<bool,
+-      typename std::result_of<C(const T&,const T&)>::type>::value,
++      typename std::invoke_result<C,const T&,const T&>::type>::value,
+       "class C must define operator() to take two const T& and return a bool");
+ 
+     static_assert(K >= 2, "K (degree of branching) must be at least 2");
+Index: ceph-20.2.1/src/s3select/include/s3select_parquet_intrf.h
+===================================================================
+--- ceph-20.2.1.orig/src/s3select/include/s3select_parquet_intrf.h
++++ ceph-20.2.1/src/s3select/include/s3select_parquet_intrf.h
+@@ -1045,7 +1045,7 @@ class SerializedRowGroup : public RowGro
+ 
+     const CryptoContext ctx {
+         col->has_dictionary_page(),
+-        row_group_ordinal_,
++        static_cast<int16_t>(row_group_ordinal_),
+         static_cast<int16_t>(i),
+         meta_decryptor_factory,
+         data_decryptor_factory,
+Index: ceph-20.2.1/src/rgw/driver/rados/rgw_reshard.cc
+===================================================================
+--- ceph-20.2.1.orig/src/rgw/driver/rados/rgw_reshard.cc
++++ ceph-20.2.1/src/rgw/driver/rados/rgw_reshard.cc
+@@ -1658,7 +1658,7 @@ int RGWReshard::process_entry(const cls_
+       ldpp_dout(dpp, 20) <<  __func__ <<
+ 	": INFO: reshard reduction for bucket \"" <<
+ 	entry.bucket_name << "\" will not proceed until " <<
+-	(when_queued + timespan) << dendl;
++	ceph::real_clock::to_time_t(when_queued + timespan) << dendl;
+ 
+       return 0;
+     }
+Index: ceph-20.2.1/src/rgw/rgw_bucket_logging.cc
+===================================================================
+--- ceph-20.2.1.orig/src/rgw/rgw_bucket_logging.cc
++++ ceph-20.2.1/src/rgw/rgw_bucket_logging.cc
+@@ -491,7 +491,7 @@ int log_record(rgw::sal::Driver* driver,
+         return ret;
+       }
+     } else {
+-      ldpp_dout(dpp, 20) << "INFO: record will be written to current logging object '" << obj_name << "'. will be comitted at: " << time_to_commit << dendl;
++      ldpp_dout(dpp, 20) << "INFO: record will be written to current logging object '" << obj_name << "'. will be comitted at: " << ceph::coarse_real_time::clock::to_time_t(time_to_commit) << dendl;
+     }
+   } else if (ret == -ENOENT) {
+     // try to create the temporary log object for the first time
+Index: ceph-20.2.1/src/rgw/driver/rados/rgw_sal_rados.cc
+===================================================================
+--- ceph-20.2.1.orig/src/rgw/driver/rados/rgw_sal_rados.cc
++++ ceph-20.2.1/src/rgw/driver/rados/rgw_sal_rados.cc
+@@ -2820,7 +2820,7 @@ int RadosObject::set_obj_attrs(const Dou
+   const bool log_op = flags & rgw::sal::FLAG_LOG_OP;
+   // make a tiny adjustment to the existing mtime so that fetch_remote_obj()
+   // won't return ERR_NOT_MODIFIED when syncing the modified object
+-  const auto mtime = log_op ? state.mtime + std::chrono::nanoseconds(1) : state.mtime;
++  const auto mtime = log_op ? static_cast<ceph::real_time>(state.mtime + std::chrono::nanoseconds(1)) : static_cast<ceph::real_time>(state.mtime);
+   return store->getRados()->set_attrs(dpp, rados_ctx,
+ 			bucket->get_info(),
+ 			get_obj(),
+Index: ceph-20.2.1/src/common/io_exerciser/ObjectModel.cc
+===================================================================
+--- ceph-20.2.1.orig/src/common/io_exerciser/ObjectModel.cc
++++ ceph-20.2.1/src/common/io_exerciser/ObjectModel.cc
+@@ -76,6 +76,8 @@ void ObjectModel::applyIoOp(IoOp& op) {
+           if (writeOp.offset[i] + writeOp.length[i] > contents.size()) {
+             contents.resize(writeOp.offset[i] + writeOp.length[i]);
+           }
++	  // Note: std::execution::seq is an experimental feature in libcxx.
++	  // Use -fexperimental-library when compiling.
+           std::generate(std::execution::seq,
+                         std::next(contents.begin(), writeOp.offset[i]),
+                         std::next(contents.begin(),
+Index: ceph-20.2.1/src/rgw/driver/d4n/d4n_directory.cc
+===================================================================
+--- ceph-20.2.1.orig/src/rgw/driver/d4n/d4n_directory.cc
++++ ceph-20.2.1/src/rgw/driver/d4n/d4n_directory.cc
+@@ -182,7 +182,12 @@ int BucketDirectory::zscan(const DoutPre
+       return -ec.value();
+     }
+ 
++// std::__cxx11 avoids abi mismatch in libstdc++. It does not apply to other stdlibs.
++#ifdef __GLIBCXX__
+     std::vector<boost::redis::resp3::basic_node<std::__cxx11::basic_string<char> > > root_array;
++#else
++    std::vector<boost::redis::resp3::basic_node<std::basic_string<char> > > root_array;
++#endif
+     if (resp.has_value()) {
+       root_array = resp.value();
+       ldpp_dout(dpp, 20) << "BucketDirectory::" << __func__ << "() aggregate size is: " << root_array.size() << dendl;
+Index: ceph-20.2.1/src/common/io_exerciser/IoSequence.cc
+===================================================================
+--- ceph-20.2.1.orig/src/common/io_exerciser/IoSequence.cc
++++ ceph-20.2.1/src/common/io_exerciser/IoSequence.cc
+@@ -9,52 +9,52 @@ std::ostream& ceph::io_exerciser::operat
+                                              const Sequence& seq) {
+   switch (seq) {
+     case Sequence::SEQUENCE_SEQ0:
+-      os << "SEQUENCE_SEQ0";
++      os << static_cast<std::string>("SEQUENCE_SEQ0");
+       break;
+     case Sequence::SEQUENCE_SEQ1:
+-      os << "SEQUENCE_SEQ1";
++      os << static_cast<std::string>("SEQUENCE_SEQ1");
+       break;
+     case Sequence::SEQUENCE_SEQ2:
+-      os << "SEQUENCE_SEQ2";
++      os << static_cast<std::string>("SEQUENCE_SEQ2");
+       break;
+     case Sequence::SEQUENCE_SEQ3:
+-      os << "SEQUENCE_SEQ3";
++      os << static_cast<std::string>("SEQUENCE_SEQ3");
+       break;
+     case Sequence::SEQUENCE_SEQ4:
+-      os << "SEQUENCE_SEQ4";
++      os << static_cast<std::string>("SEQUENCE_SEQ4");
+       break;
+     case Sequence::SEQUENCE_SEQ5:
+-      os << "SEQUENCE_SEQ5";
++      os << static_cast<std::string>("SEQUENCE_SEQ5");
+       break;
+     case Sequence::SEQUENCE_SEQ6:
+-      os << "SEQUENCE_SEQ6";
++      os << static_cast<std::string>("SEQUENCE_SEQ6");
+       break;
+     case Sequence::SEQUENCE_SEQ7:
+-      os << "SEQUENCE_SEQ7";
++      os << static_cast<std::string>("SEQUENCE_SEQ7");
+       break;
+     case Sequence::SEQUENCE_SEQ8:
+-      os << "SEQUENCE_SEQ8";
++      os << static_cast<std::string>("SEQUENCE_SEQ8");
+       break;
+     case Sequence::SEQUENCE_SEQ9:
+-      os << "SEQUENCE_SEQ9";
++      os << static_cast<std::string>("SEQUENCE_SEQ9");
+       break;
+     case Sequence::SEQUENCE_SEQ10:
+-      os << "SEQUENCE_SEQ10";
++      os << static_cast<std::string>("SEQUENCE_SEQ10");
+       break;
+     case Sequence::SEQUENCE_SEQ11:
+-      os << "SEQUENCE_SEQ11";
++      os << static_cast<std::string>("SEQUENCE_SEQ11");
+       break;
+     case Sequence::SEQUENCE_SEQ12:
+-      os << "SEQUENCE_SEQ12";
++      os << static_cast<std::string>("SEQUENCE_SEQ12");
+       break;
+     case Sequence::SEQUENCE_SEQ13:
+-      os << "SEQUENCE_SEQ13";
++      os << static_cast<std::string>("SEQUENCE_SEQ13");
+       break;
+     case Sequence::SEQUENCE_SEQ14:
+-      os << "SEQUENCE_SEQ14";
++      os << static_cast<std::string>("SEQUENCE_SEQ14");
+       break;
+     case Sequence::SEQUENCE_END:
+-      os << "SEQUENCE_END";
++      os << static_cast<std::string>("SEQUENCE_END");
+       break;
+   }
+   return os;

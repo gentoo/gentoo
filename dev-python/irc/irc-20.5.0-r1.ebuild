@@ -1,10 +1,10 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{12..15} )
 
 inherit distutils-r1 pypi
 
@@ -28,15 +28,18 @@ RDEPEND="
 	dev-python/more-itertools[${PYTHON_USEDEP}]
 	dev-python/pytz[${PYTHON_USEDEP}]
 	>=dev-python/tempora-1.6[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep '
-		dev-python/importlib-resources[${PYTHON_USEDEP}]
-	' 3.11)
 "
 BDEPEND="
 	>=dev-python/setuptools-scm-3.4.1[${PYTHON_USEDEP}]
 "
 
+EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
+
+PATCHES=(
+	# https://github.com/jaraco/irc/pull/236
+	"${FILESDIR}/${P}-py314.patch"
+)
 
 python_install_all() {
 	if use examples; then

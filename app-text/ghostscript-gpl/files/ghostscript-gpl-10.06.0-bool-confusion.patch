@@ -1,0 +1,44 @@
+https://cgit.ghostscript.com/cgi-bin/cgit.cgi/ghostpdl.git/commit/?id=795c4a6db646
+Bug: https://bugs.gentoo.org/964040
+
+From: Chris Liddell <chris.liddell@artifex.com>
+Date: Wed, 26 Nov 2025 15:31:57 +0000
+Subject: Bug 708608: Fix confusion caused by modern C having a boolean type
+
+Because C99 and later have a proper, built-in boolean type, rather than a
+typedef of an underlying integer type, the check for whether we're rendering
+an image into a pattern accumulator was yielding an unexpected result.
+
+The default dev_spec_op method returns an "undefined" error when queried with the
+gxdso_in_pattern_accumulator op, that is, a negative integer. When "bool" was
+simply a typdefed integer value, that was fine, and the following lines
+checked for and handled that.
+
+With an actual boolean type, false == 0, and true == !false, so any value other
+than 0 became true.
+
+That then changed the decision on whether to gridfit images, meaning the user
+space to device space rounding was handled differently. That then caused a
+scanline of the image to be repeated.
+
+The value is now assigned based on a conditional, so it correctly assigns a
+true/false value.
+---
+ base/gxipixel.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
+
+diff --git a/base/gxipixel.c b/base/gxipixel.c
+index 768a93114..cb3ff36a6 100644
+--- a/base/gxipixel.c
++++ b/base/gxipixel.c
+@@ -319,9 +319,7 @@ gx_image_enum_begin(gx_device * dev, const gs_gstate * pgs,
+      */
+ 
+     /* Ask the device if we are in a pattern accumulator */
+-    in_pattern_accumulator = (dev_proc(dev, dev_spec_op)(dev, gxdso_in_pattern_accumulator, NULL, 0));
+-    if (in_pattern_accumulator < 0)
+-        in_pattern_accumulator = 0;
++    in_pattern_accumulator = ((dev_proc(dev, dev_spec_op)(dev, gxdso_in_pattern_accumulator, NULL, 0)) > 0);
+ 
+     /* Figure out if we are orthogonal */
+     if (mat.xy == 0 && mat.yx == 0)

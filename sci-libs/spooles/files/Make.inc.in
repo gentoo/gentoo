@@ -1,0 +1,9 @@
+.POSIX:
+THREAD_LIBS = -lpthread
+CC = @CC@
+AR = @AR@
+RANLIB = @RANLIB@
+ARFLAGS = rv
+.c.a :
+	$(CC) $(CFLAGS) -c $<
+	$(AR) $(ARFLAGS) $@ $*.o

@@ -6,6 +6,6 @@
     <name>X11</name>
   </maintainer>
   <upstream>
-    <remote-id type="freedesktop-gitlab">xorg/lib/libXfixes</remote-id>
+    <remote-id type="freedesktop-gitlab">xorg/lib/libxfixes</remote-id>
   </upstream>
 </pkgmetadata>

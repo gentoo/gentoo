@@ -17,7 +17,7 @@ else
 	MY_PV="R${PV//./_}"
 	SRC_URI="https://github.com/freeciv/freeciv/archive/refs/tags/${MY_PV}.tar.gz -> ${P}.tar.gz"
 	if [[ ${PV} != *_beta* ]]; then
-		KEYWORDS="~amd64 ~ppc64 ~x86"
+		KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 	fi
 	MY_P="${PN}-${MY_PV}"
 	S="${WORKDIR}/${MY_P}"
@@ -135,8 +135,8 @@ src_configure() {
 
 	# the client and fpmc arrays are now populated (or not for dedicated); let's add them to emesonargs
 	emesonargs+=(
-		-Dclients="$(meson-format-array "${myclient[*]}")"
-		-Dfcmp="$(meson-format-array "${myfcmp[*]}")"
+		-Dclients="$(meson_format_array "${myclient[*]}")"
+		-Dfcmp="$(meson_format_array "${myfcmp[*]}")"
 	)
 
 	if use sound; then
@@ -156,7 +156,7 @@ src_configure() {
 	# default-enabled upstream
 	use rule-editor && tools+=( ruledit ruleup )
 	emesonargs+=(
-		-Dtools="$(meson-format-array "${tools[*]}")"
+		-Dtools="$(meson_format_array "${tools[*]}")"
 	)
 
 	# Anything that can be trivially set by meson_use goes here
@@ -179,7 +179,7 @@ src_install() {
 	# that would require a lot of work to avoid orphan files.
 	# freeciv-manual only supports one ruleset argument at a time.
 	elog "Generating html manual..."
-	for RULESET in alien civ1 civ2 civ2civ3 classic goldkeep multiplayer sandbox
+	for RULESET in alien civ1 civ2 civ2civ3 classic multiplayer sandbox
 	do
 		$(find "${WORKDIR}" -type d -maxdepth 1 -mindepth 1 -iname '*-build')/freeciv-manual -r ${RULESET} ||
 			die "Unable to generate HTML output for ${RULESET}"

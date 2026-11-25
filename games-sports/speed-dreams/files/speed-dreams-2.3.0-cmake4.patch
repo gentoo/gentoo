@@ -1,0 +1,40 @@
+Source: https://forge.a-lec.org/speed-dreams/speed-dreams-code/commit/83565828
+
+From 83565828e5443374cbcd43d32352dfa1e8db5197 Mon Sep 17 00:00:00 2001
+From: beaglejoe <beaglejoe@30fe4595-0a0c-4342-8851-515496e4dcbd>
+Date: Sun, 29 Oct 2023 15:54:29 +0000
+Subject: [PATCH] Fix CMake warning
+
+git-svn-id: https://svn.code.sf.net/p/speed-dreams/code/trunk@9184 30fe4595-0a0c-4342-8851-515496e4dcbd
+
+Former-commit-id: d767d2e273538fbb3f51cb9632b84462d65a3837
+Former-commit-id: 7712f03f8b70b077da09ed4b995b99118a44a36a
+---
+ CMakeLists.txt                       | 3 ++-
+ src/tools/trackeditor/CMakeLists.txt | 2 +-
+ 2 files changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 3c0802ff8..694401932 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,4 +1,5 @@
+-CMAKE_MINIMUM_REQUIRED(VERSION 2.8.12 FATAL_ERROR)
++#CMAKE_MINIMUM_REQUIRED(VERSION 2.8.12 FATAL_ERROR)
++CMAKE_MINIMUM_REQUIRED(VERSION 3.5 FATAL_ERROR)
+ 
+ MESSAGE(STATUS CMAKE_VERSION = "${CMAKE_VERSION}")
+ 
+diff --git a/src/tools/trackeditor/CMakeLists.txt b/src/tools/trackeditor/CMakeLists.txt
+index ed7a5fd7f..8d5eb919d 100644
+--- a/src/tools/trackeditor/CMakeLists.txt
++++ b/src/tools/trackeditor/CMakeLists.txt
+@@ -3,7 +3,7 @@
+ # building all of SD, set the _STANDALONE flag which is used to skip 
+ # the SD specific calls
+ 
+-CMAKE_MINIMUM_REQUIRED(VERSION 2.8.12 FATAL_ERROR)
++CMAKE_MINIMUM_REQUIRED(VERSION 3.5 FATAL_ERROR)
+ 
+ IF(POLICY CMP0048)
+    CMAKE_POLICY(SET CMP0048 NEW)

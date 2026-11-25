@@ -15,7 +15,7 @@
 		the Nintendo DS.
 	</longdescription>
 	<upstream>
-		<bugs-to>https://gitlab.com/jgemu/melonds/-/issues</bugs-to>
+		<bugs-to>https://gitlab.com/jgemu/melonds/-/work_items</bugs-to>
 		<remote-id type="gitlab">jgemu/melonds</remote-id>
 	</upstream>
 </pkgmetadata>

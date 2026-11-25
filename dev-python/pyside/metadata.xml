@@ -17,6 +17,7 @@
 		<flag name="core">Build QtCore module, if disable then only shiboken will be built</flag>
 		<flag name="designer">Build QtDesigner and QtUiTools modules</flag>
 		<flag name="gles2-only">Build QtGui "QOpenGL*" classes</flag>
+		<flag name="graphs">Build QtGraphs module</flag>
 		<flag name="gui">Build QtGui module</flag>
 		<flag name="help">Build QtHelp module</flag>
 		<flag name="httpserver">Build QtHttpServer module</flag>

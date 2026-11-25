@@ -1,0 +1,25 @@
+From 19825a46b17e11ea97b51f541e904eb4d9f78c91 Mon Sep 17 00:00:00 2001
+From: Stefan Strogin <stefan@steils.org>
+Date: Sat, 2 May 2026 03:49:25 +0000
+Subject: [PATCH] Fix build with GCC 16
+
+---
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index 5e0b618..06b8859 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -8,7 +8,7 @@ AC_PROG_CXX
+ 
+ # Need to check this directory on bsd systems
+ CPPFLAGS="$CPPFLAGS -I/usr/local/include -I/opt/local/include"
+-CXXFLAGS="$CXXFLAGS -D__STRICT_ANSI__"
++CXXFLAGS="$CXXFLAGS -std=c++11"
+ LDFLAGS="$LDFLAGS -L/opt/local/lib"
+ 
+ AC_CHECK_HEADERS(sys/ioctl.h termios.h)
+-- 
+2.54.0
+

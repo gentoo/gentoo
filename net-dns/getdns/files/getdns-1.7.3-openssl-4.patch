@@ -1,0 +1,71 @@
+See PR https://github.com/getdnsapi/getdns/pull/551
+and for ssl_dane https://github.com/getdnsapi/ssl_dane/pull/3
+Fix openssl-4 compatibility, see https://bugs.gentoo.org/985455
+
+From 735764d84272cb46f8fd4c3ddfe0cacbda0d9323 Mon Sep 17 00:00:00 2001
+From: Ravi Kant Sharma <ravi.kant.sharma@canonical.com>
+Date: Mon, 6 Jul 2026 13:15:01 +0200
+Subject: [PATCH] Fix OpenSSL 4.0 compatibility in anchor-internal.c
+
+Replace direct ASN1_BIT_STRING member access (->data, ->length) with
+ASN1_STRING_get0_data() and ASN1_STRING_length() accessors.
+--- a/src/tls/anchor-internal.c
++++ b/src/tls/anchor-internal.c
+@@ -60,10 +60,12 @@ _getdns_get_usage_of_ex(X509* cert)
+ 	ASN1_BIT_STRING* s;
+ 
+ 	if((s=X509_get_ext_d2i(cert, NID_key_usage, NULL, NULL))) {
+-		if(s->length > 0) {
+-			val = s->data[0];
+-			if(s->length > 1)
+-				val |= s->data[1] << 8;
++		const unsigned char *data = ASN1_STRING_get0_data(s);
++		int len = ASN1_STRING_length(s);
++		if(len > 0) {
++			val = data[0];
++			if(len > 1)
++				val |= data[1] << 8;
+ 		}
+ 		ASN1_BIT_STRING_free(s);
+ 	}
+From 16545beb712e95da974ba1e658967a34fe67cfa5 Mon Sep 17 00:00:00 2001
+From: Ravi Kant Sharma <ravi.kant.sharma@canonical.com>
+Date: Mon, 6 Jul 2026 13:13:28 +0200
+Subject: [PATCH] Fix OpenSSL 4.0 compatibility
+
+Use const for X509_get_issuer_name(), X509_get_subject_name(),
+X509_NAME_get_entry(), and X509_NAME_ENTRY_get_data() return values.
+Update set_issuer_name() signature to accept const X509_NAME*.
+--- a/src/ssl_dane/danessl.c
++++ b/src/ssl_danedanessl.c
+@@ -373,7 +373,7 @@ static X509_NAME *akid_issuer_name(AUTHORITY_KEYID *akid)
+     return 0;
+ }
+ 
+-static int set_issuer_name(X509 *cert, AUTHORITY_KEYID *akid, X509_NAME *subj)
++static int set_issuer_name(X509 *cert, AUTHORITY_KEYID *akid, const X509_NAME *subj)
+ {
+     X509_NAME *name = akid_issuer_name(akid);
+ 
+@@ -428,7 +428,7 @@ static int wrap_issuer(
+     int ret = 1;
+     X509 *cert = 0;
+     AUTHORITY_KEYID *akid;
+-    X509_NAME *name = X509_get_issuer_name(subject);
++    const X509_NAME *name = X509_get_issuer_name(subject);
+     EVP_PKEY *newkey = key ? key : X509_get_pubkey(subject);
+ 
+ #define WRAP_MID 0		/* Ensure intermediate. */
+@@ -767,9 +767,9 @@ static const char *parse_dns_name(const GENERAL_NAME *gn)
+ 
+ static char *parse_subject_name(X509 *cert)
+ {
+-    X509_NAME *name = X509_get_subject_name(cert);
+-    X509_NAME_ENTRY *entry;
+-    ASN1_STRING *entry_str;
++    const X509_NAME *name = X509_get_subject_name(cert);
++    const X509_NAME_ENTRY *entry;
++    const ASN1_STRING *entry_str;
+     unsigned char *namebuf;
+     int nid = NID_commonName;
+     int len;

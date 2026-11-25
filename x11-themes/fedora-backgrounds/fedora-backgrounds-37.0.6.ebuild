@@ -1,7 +1,7 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=9
 
 DESCRIPTION="A set of default and supplemental wallpapers for Fedora"
 HOMEPAGE="https://github.com/fedoradesign/backgrounds"
@@ -17,3 +17,5 @@ LICENSE="CC-BY-SA-4.0"
 SLOT="$(ver_cut 1)"
 
 KEYWORDS="amd64 x86"
+
+BDEPEND="virtual/imagemagick-tools[png]"

@@ -10,5 +10,6 @@
 	</use>
 	<upstream>
 		<remote-id type="cpe">cpe:/a:gnupg:libgpg-error</remote-id>
+		<remote-id type="github">gpg/libgpg-error</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -14,7 +14,7 @@ SRC_URI="https://github.com/john30/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="+contrib doc knx mqtt +ssl test"
 RESTRICT="!test? ( test )"
 

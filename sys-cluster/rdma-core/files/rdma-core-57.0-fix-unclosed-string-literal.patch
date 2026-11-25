@@ -1,0 +1,19 @@
+From 54fa841b48f0e867ede682561005069d72b47fd6 Mon Sep 17 00:00:00 2001
+From: Florian Schmaus <flo@geekplace.eu>
+Date: Tue, 2 Jun 2026 09:41:31 +0200
+Subject: [PATCH] Fix unclosed string literal in mlx5dv_flow
+
+--- a/pyverbs/providers/mlx5/mlx5dv_flow.pyx
++++ b/pyverbs/providers/mlx5/mlx5dv_flow.pyx
+@@ -258,7 +258,7 @@ cdef class Mlx5Flow(Flow):
+             elif (<Mlx5FlowActionAttr>attr).attr.type not in \
+                 [dv.MLX5DV_FLOW_ACTION_IBV_FLOW_ACTION, dv.MLX5DV_FLOW_ACTION_DEST_DEVX]:
+                raise PyverbsUserError(f'Unsupported action type: '
+-                                      f'{<Mlx5FlowActionAttr>attr).attr.type}.')
++                                      f'{(<Mlx5FlowActionAttr>attr).attr.type}.')
+             memcpy(tmp_addr, &(<Mlx5FlowActionAttr>attr).attr,
+                    sizeof(dv.mlx5dv_flow_action_attr))
+             tmp_addr += sizeof(dv.mlx5dv_flow_action_attr)
+-- 
+2.53.0
+

@@ -131,7 +131,7 @@
 		<flag name="vtv">
 			Build support for virtual table verification (a C++ hardening feature).
 
-			This does not control whether GCC defaults to using VTV>
+			This does not control whether GCC defaults to using VTV.
 
 			Note that actually using VTV breaks ABI and hence the whole
 			system must be built with -fvtable-verify.

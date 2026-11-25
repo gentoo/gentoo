@@ -1,0 +1,62 @@
+--- a/common/Linux/LnxHostSys.cpp
++++ b/common/Linux/LnxHostSys.cpp
+@@ -19,2 +19,5 @@
+ #include <ucontext.h>
++#ifndef __FreeBSD__
++#include <cstdlib>
++#endif
+ #endif
+--- a/common/ReadbackSpinManager.cpp
++++ b/common/ReadbackSpinManager.cpp
+@@ -6,2 +6,3 @@
+ #include <algorithm>
++#include <cstdlib>
+ 
+--- a/common/SmallString.cpp
++++ b/common/SmallString.cpp
+@@ -9,2 +9,3 @@
+ #include <cstdio>
++#include <cstdlib>
+ #include <cstring>
+--- a/common/YAML.cpp
++++ b/common/YAML.cpp
+@@ -12,2 +12,3 @@
+ #include <csetjmp>
++#include <exception>
+ 
+--- a/pcsx2/CDVD/ThreadedFileReader.h
++++ b/pcsx2/CDVD/ThreadedFileReader.h
+@@ -11,2 +11,3 @@
+ #include <condition_variable>
++#include <string>
+ 
+--- a/pcsx2/GS/MultiISA.cpp
++++ b/pcsx2/GS/MultiISA.cpp
+@@ -14,2 +14,3 @@
+ #ifdef _M_X86
++#include <cstdlib>
+ 
+--- a/pcsx2/Host/SDLAudioStream.cpp
++++ b/pcsx2/Host/SDLAudioStream.cpp
+@@ -9,2 +9,3 @@
+ 
++#include <cstdlib>
+ #include <SDL3/SDL.h>
+--- a/pcsx2/Patch.h
++++ b/pcsx2/Patch.h
+@@ -22,2 +22,3 @@
+ 
++#include <cstdlib>
+ #include <string>
+--- a/pcsx2/USB/qemu-usb/core.cpp
++++ b/pcsx2/USB/qemu-usb/core.cpp
+@@ -35,2 +35,3 @@
+ #include <climits>
++#include <cstdlib>
+ #include <cstring>
+--- a/pcsx2/USB/qemu-usb/usb-ohci.cpp
++++ b/pcsx2/USB/qemu-usb/usb-ohci.cpp
+@@ -10,2 +10,3 @@
+ 
++#include <cstdlib>
+ #include <cstring>

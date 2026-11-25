@@ -1,0 +1,161 @@
+https://bugs.gentoo.org/974283
+https://gstreamer.freedesktop.org/security/sa-2026-0014.html
+https://gitlab.freedesktop.org/gstreamer/gstreamer/-/merge_requests/11259
+
+Modified to apply without
+https://gitlab.freedesktop.org/gstreamer/gstreamer/-/commit/b72d4cd6fdf1e42618bec01ee55d58a1717c856b
+
+From 845e9cf7d12da539ee9f4a8e5ce4ce880485c6c2 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Sebastian=20Dr=C3=B6ge?= <sebastian@centricular.com>
+Date: Thu, 26 Mar 2026 18:45:11 +0200
+Subject: [PATCH 1/8] av1parse: Avoid signed 32 bit integer overflow when
+ parsing LEB128 values
+
+Fixes https://gitlab.freedesktop.org/gstreamer/gstreamer/-/work_items/4994
+
+Part-of: <https://gitlab.freedesktop.org/gstreamer/gstreamer/-/merge_requests/11259>
+--- a/gst-libs/gst/codecparsers/gstav1parser.c
++++ b/gst-libs/gst/codecparsers/gstav1parser.c
+@@ -295,7 +295,7 @@ av1_bitstreamfn_leb128 (GstBitReader * br, GstAV1ParserResult * retval)
+     if (*retval != GST_AV1_PARSER_OK)
+       return 0;
+ 
+-    value |= (((gint) leb128_byte & 0x7f) << (i * 7));
++    value |= (((guint64) leb128_byte & 0x7f) << (i * 7));
+     if (!(leb128_byte & 0x80))
+       break;
+   }
+--- a/gst/videoparsers/gstav1parse.c
++++ b/gst/videoparsers/gstav1parse.c
+@@ -250,7 +250,7 @@ _read_leb128 (guint8 * data, GstAV1ParserResult * retval, guint32 * comsumed)
+       return 0;
+     }
+ 
+-    value |= (((gint) leb128_byte & 0x7f) << (i * 7));
++    value |= (((guint64) leb128_byte & 0x7f) << (i * 7));
+     if (!(leb128_byte & 0x80))
+       break;
+   }
+-- 
+GitLab
+
+
+From f9d57db394341bf518725f75d23f22e89b4c2023 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Sebastian=20Dr=C3=B6ge?= <sebastian@centricular.com>
+Date: Thu, 26 Mar 2026 18:52:48 +0200
+Subject: [PATCH 3/8] av1parse: Be more explicit about available data when
+ parsing LEB128 values
+
+The caller already checks that at least 8 bytes are available, which is the
+maximum this function is going to parse anyway, but better to not hardcode this
+assumption and instead actually check for it.
+
+Part-of: <https://gitlab.freedesktop.org/gstreamer/gstreamer/-/merge_requests/11259>
+--- a/gst/videoparsers/gstav1parse.c
++++ b/gst/videoparsers/gstav1parse.c
+@@ -230,7 +230,8 @@ _obu_name (GstAV1OBUType type)
+ }
+ 
+ static guint32
+-_read_leb128 (guint8 * data, GstAV1ParserResult * retval, guint32 * comsumed)
++_read_leb128 (guint8 * data, gsize size, GstAV1ParserResult * retval,
++    guint32 * comsumed)
+ {
+   guint8 leb128_byte = 0;
+   guint64 value = 0;
+@@ -239,7 +240,7 @@ _read_leb128 (guint8 * data, GstAV1ParserResult * retval, guint32 * comsumed)
+   GstBitReader br;
+   guint32 cur_pos;
+ 
+-  gst_bit_reader_init (&br, data, 8);
++  gst_bit_reader_init (&br, data, size);
+ 
+   cur_pos = gst_bit_reader_get_pos (&br);
+   for (i = 0; i < 8; i++) {
+@@ -2245,7 +2246,7 @@ again:
+     goto out;
+   }
+ 
+-  tu_sz = _read_leb128 (map_info.data, &res, &consumed);
++  tu_sz = _read_leb128 (map_info.data, map_info.size, &res, &consumed);
+   if (tu_sz == 0 || res != GST_AV1_PARSER_OK) {
+     /* error to get the TU size, should not be annex b. */
+     goto out;
+-- 
+GitLab
+
+
+From 6e842602a704503da9f8e000a9a4f054d7a0ddd8 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Sebastian=20Dr=C3=B6ge?= <sebastian@centricular.com>
+Date: Thu, 26 Mar 2026 19:18:33 +0200
+Subject: [PATCH 5/8] av1parse: Allow G_MAXUINT32 as LEB128 encoded value
+
+The spec states that any value less than or equal to (1<<32) - 1 should be
+accepted but we were rejecting (1<<32) - 1.
+
+Part-of: <https://gitlab.freedesktop.org/gstreamer/gstreamer/-/merge_requests/11259>
+--- a/gst-libs/gst/codecparsers/gstav1parser.c
++++ b/gst-libs/gst/codecparsers/gstav1parser.c
+@@ -301,7 +301,7 @@ av1_bitstreamfn_leb128 (GstBitReader * br, GstAV1ParserResult * retval)
+   }
+ 
+   /* check for bitstream conformance see chapter4.10.5 */
+-  if (value < G_MAXUINT32) {
++  if (value <= G_MAXUINT32) {
+     return (guint32) value;
+   } else {
+     GST_WARNING ("invalid leb128");
+--- a/gst/videoparsers/gstav1parse.c
++++ b/gst/videoparsers/gstav1parse.c
+@@ -258,7 +258,7 @@ _read_leb128 (guint8 * data, gsize size, GstAV1ParserResult * retval,
+ 
+   *comsumed = (gst_bit_reader_get_pos (&br) - cur_pos) / 8;
+   /* check for bitstream conformance see chapter4.10.5 */
+-  if (value < G_MAXUINT32) {
++  if (value <= G_MAXUINT32) {
+     *retval = GST_AV1_PARSER_OK;
+     return (guint32) value;
+   } else {
+-- 
+GitLab
+
+
+From 00d6368e59f3caeda083c97ec2e1ab99e70aaf3f Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Sebastian=20Dr=C3=B6ge?= <sebastian@centricular.com>
+Date: Thu, 26 Mar 2026 19:26:54 +0200
+Subject: [PATCH 7/8] av1parse: Correctly reject LEB128 values where the 8th
+ byte has the high bit set
+
+This is invalid according to the specification.
+
+Part-of: <https://gitlab.freedesktop.org/gstreamer/gstreamer/-/merge_requests/11259>
+--- a/gst-libs/gst/codecparsers/gstav1parser.c
++++ b/gst-libs/gst/codecparsers/gstav1parser.c
+@@ -298,6 +298,11 @@ av1_bitstreamfn_leb128 (GstBitReader * br, GstAV1ParserResult * retval)
+     value |= (((guint64) leb128_byte & 0x7f) << (i * 7));
+     if (!(leb128_byte & 0x80))
+       break;
++
++    if (i == 7 && leb128_byte & 0x80) {
++      *retval = GST_AV1_PARSER_BITSTREAM_ERROR;
++      return 0;
++    }
+   }
+ 
+   /* check for bitstream conformance see chapter4.10.5 */
+--- a/gst/videoparsers/gstav1parse.c
++++ b/gst/videoparsers/gstav1parse.c
+@@ -254,6 +254,11 @@ _read_leb128 (guint8 * data, gsize size, GstAV1ParserResult * retval,
+     value |= (((guint64) leb128_byte & 0x7f) << (i * 7));
+     if (!(leb128_byte & 0x80))
+       break;
++
++    if (i == 7 && leb128_byte & 0x80) {
++      *retval = GST_AV1_PARSER_BITSTREAM_ERROR;
++      return 0;
++    }
+   }
+ 
+   *comsumed = (gst_bit_reader_get_pos (&br) - cur_pos) / 8;
+-- 
+GitLab

@@ -1,0 +1,55 @@
+From 85982d61790dbbf940c12ad6e747bb1ada0b1355 Mon Sep 17 00:00:00 2001
+From: ceroma <165659-ceroma@users.noreply.gitlab.gnome.org>
+Date: Thu, 18 Dec 2025 06:00:26 +0000
+Subject: [PATCH] local-display-factory: look for 'boot_display' sysfs attr
+
+---
+ daemon/gdm-local-display-factory.c | 23 +++++++++++++++++++++--
+ 1 file changed, 21 insertions(+), 2 deletions(-)
+
+diff --git a/daemon/gdm-local-display-factory.c b/daemon/gdm-local-display-factory.c
+index e284f7992..f1ccf643a 100644
+--- a/daemon/gdm-local-display-factory.c
++++ b/daemon/gdm-local-display-factory.c
+@@ -424,6 +424,7 @@ udev_is_settled (GdmLocalDisplayFactory *factory)
+                 const gchar *id_path = g_udev_device_get_property (device, "ID_PATH");
+                 g_autoptr (GUdevDevice) platform_device = NULL;
+                 g_autoptr (GUdevDevice) pci_device = NULL;
++                g_autoptr (GUdevDevice) drm_device = NULL;
+ 
+                 if (g_strrstr (id_path, "platform-simple-framebuffer") != NULL) {
+                         node = next_node;
+@@ -451,10 +452,28 @@ udev_is_settled (GdmLocalDisplayFactory *factory)
+                                  factory->seat0_has_boot_up_graphics = TRUE;
+                                  is_settled = TRUE;
+                                  break;
+-                        } else {
+-                                 g_debug ("GdmLocalDisplayFactory: Found secondary PCI graphics adapter, not proceeding yet.");
+                         }
+                 }
++
++                drm_device = g_udev_device_get_parent_with_subsystem (device, "drm", NULL);
++
++                if (drm_device != NULL) {
++                        gboolean boot_display;
++
++                        boot_display = g_udev_device_get_sysfs_attr_as_int (drm_device, "boot_display");
++
++                        if (boot_display == 1) {
++                                 g_debug ("GdmLocalDisplayFactory: Found primary PCI graphics adapter, proceeding.");
++                                 factory->seat0_has_boot_up_graphics = TRUE;
++                                 is_settled = TRUE;
++                                 break;
++                        }
++                }
++
++                if (pci_device != NULL || drm_device != NULL) {
++                        g_debug ("GdmLocalDisplayFactory: Found secondary PCI graphics adapter, not proceeding yet.");
++                }
++
+                 node = next_node;
+         }
+ 
+-- 
+GitLab
+

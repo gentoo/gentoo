@@ -1,0 +1,27 @@
+From 8cf6919655749e1c273f1ea2d5980e4d59831abb Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+Date: Fri, 18 Sep 2026 00:17:59 +0200
+Subject: support Catch2 v3 part2
+
+updated for v6.2.2607
+fix simd_math.cpp
+
+Signed-off-by: Paul Zander <negril.nx+gentoo@gmail.com>
+
+diff --git a/tests/catch/simd_math.cpp b/tests/catch/simd_math.cpp
+index 4dafe812..6bf3a90b 100644
+--- a/tests/catch/simd_math.cpp
++++ b/tests/catch/simd_math.cpp
+@@ -1,4 +1,9 @@
++#ifdef CATCH2_v3
++#include <catch2/catch_all.hpp>
++using Catch::Approx;
++#else
+ #include <catch2/catch.hpp>
++#endif
+ 
+ #include <cmath>
+ #include <random>
+-- 
+2.55.0
+

@@ -1,0 +1,81 @@
+https://bugs.gentoo.org/971977
+https://github.com/OpenVoxProject/openfact/pull/100
+
+From 2b85d85bb35bfce4ac55ba3794a6b3f5329dc534 Mon Sep 17 00:00:00 2001
+From: Anthony Ryan <anthonyryan1@gmail.com>
+Date: Tue, 7 Apr 2026 21:09:44 -0400
+Subject: [PATCH] Fix OS detection for Gentoo now that they changed to
+ single-quotes in /etc/os-release
+
+Signed-off-by: Anthony Ryan <anthonyryan1@gmail.com>
+---
+ lib/facter/resolvers/os_release.rb       |  2 +-
+ spec/facter/resolvers/os_release_spec.rb | 28 ++++++++++++++++++++++++
+ spec/fixtures/os_release_gentoo          |  8 +++++++
+ 3 files changed, 37 insertions(+), 1 deletion(-)
+ create mode 100644 spec/fixtures/os_release_gentoo
+
+diff --git a/lib/facter/resolvers/os_release.rb b/lib/facter/resolvers/os_release.rb
+index 0d7a93cc7..103aaaa20 100644
+--- a/lib/facter/resolvers/os_release.rb
++++ b/lib/facter/resolvers/os_release.rb
+@@ -49,7 +49,7 @@ def read_and_parse_os_release_file
+ 
+           pairs = []
+           content.each do |line|
+-            pairs << line.strip.delete('"').split('=', 2) unless line.start_with?('#')
++            pairs << line.strip.delete(%q('")).split('=', 2) unless line.start_with?('#')
+           end
+ 
+           pairs
+diff --git a/spec/facter/resolvers/os_release_spec.rb b/spec/facter/resolvers/os_release_spec.rb
+index 67cbac03b..0ea5a7627 100644
+--- a/spec/facter/resolvers/os_release_spec.rb
++++ b/spec/facter/resolvers/os_release_spec.rb
+@@ -189,4 +189,32 @@
+       expect(result).to eq('VirtuozzoLinux')
+     end
+   end
++
++  context 'when on Gentoo with single-quoted values' do
++    let(:os_release_content) { load_fixture('os_release_gentoo').readlines }
++
++    it 'returns os NAME' do
++      result = Facter::Resolvers::OsRelease.resolve(:name)
++
++      expect(result).to eq('Gentoo')
++    end
++
++    it 'returns os PRETTY_NAME' do
++      result = Facter::Resolvers::OsRelease.resolve(:pretty_name)
++
++      expect(result).to eq('Gentoo Linux')
++    end
++
++    it 'returns os VERSION_ID' do
++      result = Facter::Resolvers::OsRelease.resolve(:version_id)
++
++      expect(result).to eq('2.15')
++    end
++
++    it 'returns os id' do
++      result = Facter::Resolvers::OsRelease.resolve(:id)
++
++      expect(result).to eq('gentoo')
++    end
++  end
+ end
+diff --git a/spec/fixtures/os_release_gentoo b/spec/fixtures/os_release_gentoo
+new file mode 100644
+index 000000000..df7778b52
+--- /dev/null
++++ b/spec/fixtures/os_release_gentoo
+@@ -0,0 +1,8 @@
++NAME='Gentoo'
++ID=gentoo
++PRETTY_NAME='Gentoo Linux'
++ANSI_COLOR='1;32'
++HOME_URL='https://www.gentoo.org/'
++SUPPORT_URL='https://www.gentoo.org/support/'
++BUG_REPORT_URL='https://bugs.gentoo.org/'
++VERSION_ID='2.15'

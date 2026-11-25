@@ -59,13 +59,17 @@ gnome-base/gnome-control-center wayland
 gnome-base/gnome-shell wayland
 gnome-extra/tecla wayland
 gui-libs/gtk wayland
+# gtkmm with USE=vulkan depends on gtk[vulkan] which sets vulkan-loader[wayland]
+dev-cpp/gtkmm vulkan
 gui-libs/vte wayland
 media-libs/clutter wayland
 media-libs/clutter-gtk wayland
 media-video/celluloid wayland
+net-libs/gnome-online-accounts gnome
 net-libs/webkit-gtk:6 wayland
 sys-apps/xdg-desktop-portal-gnome wayland
 x11-libs/vte wayland
+x11-misc/xscreensaver gdm
 
 # matoro <matoro_gentoo@matoro.tk> (2023-04-10)
 # media-libs/libldac casualties (#80238)

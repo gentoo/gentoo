@@ -3,6 +3,8 @@
 
 EAPI=8
 
+inherit autotools
+
 DESCRIPTION="Kernel coredump file access"
 HOMEPAGE="https://codeberg.org/ptesarik/libkdumpfile"
 SRC_URI="https://codeberg.org/ptesarik/libkdumpfile/releases/download/v${PV}/${P}.tar.bz2"
@@ -21,6 +23,17 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 BDEPEND="virtual/pkgconfig"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.5.6-binutils-2.46.patch
+)
+
+src_prepare() {
+	default
+
+	# for binutils-2.46 patch
+	eautoreconf
+}
 
 src_configure() {
 	local myeconfargs=(

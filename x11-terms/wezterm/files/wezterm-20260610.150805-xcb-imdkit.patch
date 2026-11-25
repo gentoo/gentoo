@@ -1,0 +1,20 @@
+--- wezterm-891bed31b75f7a71b78e8f42ad07ae89bf99a7de-orig/Cargo.toml	2026-06-15 13:55:17.949999137 +1000
++++ wezterm-891bed31b75f7a71b78e8f42ad07ae89bf99a7de/Cargo.toml	2026-06-15 11:33:45.421037361 +1000
+@@ -92,7 +92,7 @@
+ filedescriptor = { version="0.8.3", path = "filedescriptor" }
+ filenamegen = "0.2.6"
+ filesystem = { path = "lua-api-crates/filesystem" }
+-finl_unicode = { path="deps/finl_unicode", default-features=false, features=["categories", "grapheme_clusters"]}
++finl_unicode = { path = "deps/finl_unicode", default-features=false, features=["categories", "grapheme_clusters"]}
+ fixed = "1.23"
+ fixedbitset = {version="0.4", default-features=false}
+ flume = "0.11"
+@@ -269,7 +269,7 @@
+ winreg = "0.10"
+ x11 = "2.21"
+ xcb = "1.3"
+-xcb-imdkit = { version="0.3", git="https://github.com/wezterm/xcb-imdkit-rs.git", rev="212330f7c6c37794d78061a773e8f4f9e4785bbb"}
++xcb-imdkit = { path = "deps/xcb-imdkit", features = ["use-system-lib"] }
+ xkbcommon = "0.7.0"
+ xml-rs = "0.8"
+ zbus = "4.2"

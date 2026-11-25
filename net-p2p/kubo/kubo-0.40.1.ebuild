@@ -6,7 +6,7 @@ EAPI=8
 inherit go-module shell-completion systemd
 
 # Starting at v0.37.0 migrations are builtin. Older versions still needs
-# external programs to migrate so we should let the deprecated method for a 
+# external programs to migrate so we should let the deprecated method for a
 # couple of releases more.
 
 # Upstreams has a directory for each migration, for example fs-repo-15-to-16,
@@ -30,8 +30,12 @@ S="${WORKDIR}"
 
 LICENSE="Apache-2.0 BSD BSD-2 CC0-1.0 ISC MIT MPL-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
+BDEPEND="
+	>=dev-lang/go-1.25.0
+	<dev-lang/go-1.27
+"
 DEPEND="
 	acct-group/ipfs
 	acct-user/ipfs

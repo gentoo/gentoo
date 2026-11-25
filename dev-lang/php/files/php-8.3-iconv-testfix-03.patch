@@ -1,0 +1,43 @@
+From 13ac9654125e28d999cb7996ff04bc4839d0a42a Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Wed, 1 Jul 2026 18:39:44 -0400
+Subject: [PATCH] ext/iconv/tests/bug52211.phpt: use per-iconv charset names
+
+The charset names used in this test are implementation-specific, and
+in particular are not known to musl. This causes musl to fall back to
+utf8, in which the input string is not actually invalid, leading to
+a failed test. The input string is already invalid in ASCII however,
+so we solve the general problem by using ASCII as the to/from charset
+unless the ICONV_IMPL is known to support the originals.
+---
+ ext/iconv/tests/bug52211.phpt | 16 +++++++++++++++-
+ 1 file changed, 15 insertions(+), 1 deletion(-)
+
+diff --git a/ext/iconv/tests/bug52211.phpt b/ext/iconv/tests/bug52211.phpt
+index f213c764de81..fe599f8ac559 100644
+--- a/ext/iconv/tests/bug52211.phpt
++++ b/ext/iconv/tests/bug52211.phpt
+@@ -5,8 +5,22 @@ iconv
+ --FILE--
+ <?php
+ 
++// According to POSIX 2024, the to/from charset names are
++// implementation-defined. To keep this test true to its original
++// purpose, we retain the charsets used in bug 52211, but only when
++// the implementation is known to support them. Otherwise we default
++// both to ASCII, which should be supported everywhere (in particular
++// on musl) yet still considers the input invalid.
++$from_charset = "ASCII";
++$to_charset = "ASCII";
++
++if (ICONV_IMPL == "libiconv" || ICONV_IMPL == "glibc") {
++    $from_charset = "CP850";
++    $to_charset = "ISO-8859-1";
++}
++
+ $str = "PATHOLOGIES MÉDICO-CHIRUR. ADUL. PL";
+-$str_iconv = iconv('CP850', 'ISO-8859-1', $str );
++$str_iconv = iconv($from_charset, $to_charset, $str );
+ var_dump($str_iconv);
+ 
+ ?>

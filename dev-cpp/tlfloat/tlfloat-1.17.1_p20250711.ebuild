@@ -22,7 +22,10 @@ KEYWORDS="~amd64 ~arm64 ~riscv"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-PATCHES=( "${FILESDIR}"/${P}-fPIC.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-fPIC.patch
+	"${FILESDIR}"/${P}-libcxx.patch
+)
 
 src_configure() {
 	local mycmakeargs=(

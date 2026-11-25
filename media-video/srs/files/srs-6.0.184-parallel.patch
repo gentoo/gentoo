@@ -1,0 +1,24 @@
+--- a/3rdparty/st-srs/Makefile	2026-05-25 13:53:33.891633234 +0200
++++ b/3rdparty/st-srs/Makefile	2026-05-25 13:55:24.715434835 +0200
+@@ -269,10 +269,10 @@
+ 	rm -f $@
+ 	cp public.h $@
+ 
+-$(TARGETDIR)/md_linux.o: md_linux.S
++$(TARGETDIR)/md_linux.o: md_linux.S $(TARGETDIR)
+ 	$(CC) $(CFLAGS) -c $< -o $@
+ 
+-$(TARGETDIR)/md_linux2.o: md_linux2.S
++$(TARGETDIR)/md_linux2.o: md_linux2.S $(TARGETDIR)
+ 	$(CC) $(CFLAGS) -c $< -o $@
+ 
+ $(TARGETDIR)/md_darwin.o: md_darwin.S
+@@ -281,7 +281,7 @@
+ $(TARGETDIR)/md_cygwin64.o: md_cygwin64.S
+ 	$(CC) $(CFLAGS) -c $< -o $@
+ 
+-$(TARGETDIR)/%.o: %.c common.h md.h
++$(TARGETDIR)/%.o: %.c common.h md.h $(TARGETDIR)
+ 	$(CC) $(CFLAGS) -c $< -o $@
+ 
+ clean:

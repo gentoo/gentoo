@@ -1,0 +1,11 @@
+{
+  "discord_desktop_core": 1,
+  "discord_erlpack": 1,
+  "discord_spellcheck": 1,
+  "discord_utils": 1,
+  "discord_voice": 1,
+  "discord_zstd": 1,
+  "discord_rpc": 1,
+  "discord_game_utils": 1,
+  "discord_krisp": 1
+}

@@ -1,9 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{12..13} )
+PYTHON_COMPAT=( python3_{13..14} )
 
 inherit linux-info meson python-single-r1 systemd udev
 
@@ -71,6 +71,7 @@ CONFIG_CHECK="~HIDRAW"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.17-basename.patch
+	"${FILESDIR}"/${PN}-0.18-swig-4.5.patch
 )
 
 pkg_setup() {

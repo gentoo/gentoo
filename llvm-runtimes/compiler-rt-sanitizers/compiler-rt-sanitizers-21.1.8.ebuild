@@ -1,9 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 inherit check-reqs cmake flag-o-matic llvm.org llvm-utils python-any-r1
 
 DESCRIPTION="Compiler runtime libraries for clang (sanitizers & xray)"
@@ -60,6 +60,7 @@ LLVM_COMPONENTS=( compiler-rt cmake llvm/cmake )
 LLVM_TEST_COMPONENTS=(
 	llvm/include/llvm/ProfileData llvm/lib/Testing/Support third-party
 )
+LLVM_PATCHSET=${PV}
 llvm.org_set_globals
 
 python_check_deps() {

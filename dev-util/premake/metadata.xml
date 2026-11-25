@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>titanofold@gentoo.org</email>
-		<name>Aaron W. Swenson</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<longdescription lang="en">
 		Describe your software project just once, using Premake's simple and
 		easy to read syntax, and build it everywhere. Generate project files

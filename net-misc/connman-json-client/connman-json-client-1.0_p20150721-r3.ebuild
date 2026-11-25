@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,7 +19,10 @@ DEPEND="dev-libs/json-c:0=
 	sys-libs/ncurses:0"
 RDEPEND="${DEPEND}"
 
-PATCHES=( "${FILESDIR}"/cjc-fix-for-json-0.14.patch )
+PATCHES=(
+	"${FILESDIR}"/cjc-fix-for-json-0.14.patch
+	"${FILESDIR}"/connman-json-client-1.0_p20150721.ncurses.patch
+)
 
 src_prepare() {
 	sed -i -e '/^AM_CFLAGS/ s/ -Werror$//' Makefile.am || die

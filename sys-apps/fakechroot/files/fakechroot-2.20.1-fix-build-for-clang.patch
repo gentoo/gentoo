@@ -1,0 +1,121 @@
+https://github.com/dex4er/fakechroot/pull/126
+
+From 7dec1d6d94cffab2d1968a1c0e5b665439e33c32 Mon Sep 17 00:00:00 2001
+From: "Z. Liu" <zhixu.liu@gmail.com>
+Date: Tue, 20 Oct 2026 15:09:18 +0800
+Subject: [PATCH 1/2] drop unused fakechroot_wrapper::func member
+
+The func member of struct fakechroot_wrapper is never used: lazy
+resolution only needs nextfunc and name (see fakechroot_loadfunc).
+Initializing it from the wrapped function name makes the
+wrapper_alias() wrappers take the address of functions that glibc
+fortify headers turn into overloaded (pass_object_size / builtin)
+versions, which fails with clang, e.g.:
+
+  open64.c:32:15: error: address of overloaded function 'open64' is ambiguous
+
+Since the member is dead weight, simply remove it.
+
+Signed-off-by: Z. Liu <zhixu.liu@gmail.com>
+
+diff --git a/src/libfakechroot.h b/src/libfakechroot.h
+index 4cf199f..56c7a6d 100644
+--- a/src/libfakechroot.h
++++ b/src/libfakechroot.h
+@@ -143,7 +143,6 @@
+ 
+ #define wrapper_decl(function) \
+     LOCAL struct fakechroot_wrapper fakechroot_##function##_wrapper_decl SECTION_DATA_FAKECHROOT = { \
+-        (fakechroot_wrapperfn_t) function, \
+         NULL, \
+         #function \
+     }
+@@ -204,7 +203,6 @@
+ typedef void (*fakechroot_wrapperfn_t)(void);
+ 
+ struct fakechroot_wrapper {
+-    fakechroot_wrapperfn_t func;
+     fakechroot_wrapperfn_t nextfunc;
+     const char *name;
+ };
+-- 
+2.49.1
+
+
+From 75a47531758019f3d77ad53b46807b07a5237133 Mon Sep 17 00:00:00 2001
+From: "Z. Liu" <zhixu.liu@gmail.com>
+Date: Tue, 20 Oct 2026 15:10:34 +0800
+Subject: [PATCH 2/2] use ANSI prototypes for the ftw()/nftw() entry points
+
+The entry points of ftw.c are still defined with old style (K&R)
+parameter lists.  C23 removed that language feature, so the build
+fails when the configured compiler defaults to C23 (modern autoconf
+probes for -std=gnu23 via AC_PROG_CC), e.g.:
+
+  ftw.c:869:11: error: unknown type name 'path'
+    869 | FTW_NAME (path, func, descriptors)
+
+Convert these definitions to ANSI prototypes, no functional change.
+
+Signed-off-by: Z. Liu <zhixu.liu@gmail.com>
+
+diff --git a/src/ftw.c b/src/ftw.c
+index 92fc126..0e6130f 100644
+--- a/src/ftw.c
++++ b/src/ftw.c
+@@ -866,10 +866,7 @@ ftw_startup (const char *dir, int is_nftw, void *func, int descriptors,
+ /* Entry points.  */
+ 
+ int
+-FTW_NAME (path, func, descriptors)
+-     const char *path;
+-     FTW_FUNC_T func;
+-     int descriptors;
++FTW_NAME (const char *path, FTW_FUNC_T func, int descriptors)
+ {
+   debug(FTW_NAME_STRING "(\"%s\", &func, %d)", path, descriptors);
+   return ftw_startup (path, 0, func, descriptors, 0);
+@@ -878,11 +875,7 @@ FTW_NAME (path, func, descriptors)
+ #if ((!defined(__FTW64_C) && HAVE_NFTW) || (defined(__FTW64_C) && HAVE_NFTW64))
+ #ifndef _LIBC
+ int
+-NFTW_NAME (path, func, descriptors, flags)
+-     const char *path;
+-     NFTW_FUNC_T func;
+-     int descriptors;
+-     int flags;
++NFTW_NAME (const char *path, NFTW_FUNC_T func, int descriptors, int flags)
+ {
+   debug(NFTW_NAME_STRING "(\"%s\", &func, %d, %d)", path, descriptors, flags);
+   return ftw_startup (path, 1, func, descriptors, flags);
+@@ -894,11 +887,8 @@ NFTW_NAME (path, func, descriptors, flags)
+ int NFTW_NEW_NAME (const char *, NFTW_FUNC_T, int, int);
+ 
+ int
+-NFTW_NEW_NAME (path, func, descriptors, flags)
+-     const char *path;
+-     NFTW_FUNC_T func;
+-     int descriptors;
+-     int flags;
++NFTW_NEW_NAME (const char *path, NFTW_FUNC_T func, int descriptors,
++               int flags)
+ {
+   debug(NFTW_NEW_NAME_STRING "(\"%s\", &func, %d, %d)", path, descriptors, flags);
+   if (flags
+@@ -920,11 +910,8 @@ int NFTW_OLD_NAME (const char *, NFTW_FUNC_T, int, int);
+ 
+ int
+ attribute_compat_text_section
+-NFTW_OLD_NAME (path, func, descriptors, flags)
+-     const char *path;
+-     NFTW_FUNC_T func;
+-     int descriptors;
+-     int flags;
++NFTW_OLD_NAME (const char *path, NFTW_FUNC_T func, int descriptors,
++               int flags)
+ {
+   debug(NFTW_OLD_NAME_STRING "(\"%s\", &func, %d, %d)", path, descriptors, flags);
+   flags &= (FTW_PHYS | FTW_MOUNT | FTW_CHDIR | FTW_DEPTH);
+-- 
+2.49.1
+

@@ -53,6 +53,7 @@
 		<remote-id type="github">boostorg/coroutine</remote-id>
 		<remote-id type="github">boostorg/coroutine2</remote-id>
 		<remote-id type="github">boostorg/date_time</remote-id>
+		<remote-id type="github">boostorg/decimal</remote-id>
 		<remote-id type="github">boostorg/describe</remote-id>
 		<remote-id type="github">boostorg/detail</remote-id>
 		<remote-id type="github">boostorg/dll</remote-id>

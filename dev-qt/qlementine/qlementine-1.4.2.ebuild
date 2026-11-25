@@ -5,7 +5,7 @@ EAPI=8
 
 inherit cmake
 
-DESCRIPTION="Modern QStyle for desktop Qt6 applications."
+DESCRIPTION="Modern QStyle for desktop Qt6 applications"
 HOMEPAGE="https://github.com/oclero/qlementine"
 
 if [[ ${PV} == 9999 ]]; then

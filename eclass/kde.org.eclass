@@ -1,10 +1,10 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: kde.org.eclass
 # @MAINTAINER:
 # kde@gentoo.org
-# @SUPPORTED_EAPIS: 8
+# @SUPPORTED_EAPIS: 8 9
 # @BLURB: Support eclass for packages that are hosted on kde.org infrastructure.
 # @DESCRIPTION:
 # This eclass is mainly providing facilities for the three upstream release
@@ -15,13 +15,13 @@
 # It also contains default meta variables for settings not specific to any
 # particular build system.
 
-case ${EAPI} in
-	8) ;;
-	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
-esac
-
 if [[ -z ${_KDE_ORG_ECLASS} ]]; then
 _KDE_ORG_ECLASS=1
+
+case ${EAPI} in
+	8|9) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
 
 # @ECLASS_VARIABLE: KDE_BUILD_TYPE
 # @DESCRIPTION:
@@ -34,7 +34,10 @@ fi
 export KDE_BUILD_TYPE
 
 if [[ ${KDE_BUILD_TYPE} == live ]]; then
-	inherit git-r3
+	case ${EAPI} in
+		8) inherit eapi9-pipestatus ;&
+		*) inherit git-r3 ;;
+	esac
 fi
 
 # @ECLASS_VARIABLE: KDE_ORG_CATEGORIES
@@ -160,20 +163,10 @@ has ${PV} "${KDE_PV_UNRELEASED[*]}" && KDE_ORG_UNRELEASED=true
 
 HOMEPAGE="https://kde.org/"
 
-if [[ ${CATEGORY} == dev-qt ]]; then
-	KDE_ORG_NAME=${QT5_MODULE:-${PN}}
-	HOMEPAGE="https://community.kde.org/Qt5PatchCollection
-		https://invent.kde.org/qt/qt/ https://www.qt.io/"
-fi
-
 case ${KDE_BUILD_TYPE} in
 	live)
 		EGIT_MIRROR=${EGIT_MIRROR:=https://invent.kde.org/${KDE_ORG_CATEGORY}}
 		EGIT_REPO_URI="${EGIT_MIRROR}/${EGIT_REPONAME:=$KDE_ORG_NAME}.git"
-
-		if [[ ${PV} == 5.15.*.9999 && ${CATEGORY} == dev-qt ]]; then
-			EGIT_BRANCH="kde/$(ver_cut 1-2)"
-		fi
 		;;
 	*)
 		if [[ -n ${KDE_ORG_COMMIT} ]]; then
@@ -182,15 +175,11 @@ case ${KDE_BUILD_TYPE} in
 			SRC_URI+=" https://invent.kde.org/${KDE_ORG_CATEGORY}/${KDE_ORG_NAME}/-/"
 			SRC_URI+="archive/${KDE_ORG_COMMIT}/${KDE_ORG_NAME}-${KDE_ORG_COMMIT}.tar.gz"
 			SRC_URI+=" -> ${_KDE_ORG_TARFILE}"
-		fi
-		[[ ${KDE_ORG_UNRELEASED} == true ]] && RESTRICT+=" fetch"
-		debug-print "${LINENO} ${ECLASS} ${FUNCNAME}: SRC_URI is ${SRC_URI}"
-		if [[ -n ${KDE_ORG_COMMIT} ]]; then
 			S=${WORKDIR}/${KDE_ORG_NAME}-${KDE_ORG_COMMIT}
-			[[ ${CATEGORY} == dev-qt ]] && QT5_BUILD_DIR="${S}_build"
 		else
 			S=${WORKDIR}/${KDE_ORG_TAR_PN}-${PV}
 		fi
+		debug-print "${LINENO} ${ECLASS} ${FUNCNAME}: SRC_URI is ${SRC_URI}"
 		;;
 esac
 
@@ -223,15 +212,51 @@ kde.org_pkg_nofetch() {
 	eerror "${KDE_ORG_SCHEDULE_URI}"
 }
 
+# @FUNCTION: _kde.org_live_corrosion_unpack
+# @INTERNAL
+# @DESCRIPTION:
+# Handle rust crates for live packages. Iterates S directory with
+# corrosion_import_crate to fetch with cargo_live_src_unpack.
+_kde.org_live_corrosion_unpack() {
+	debug-print-function ${FUNCNAME} "$@"
+
+	# Need to handle every corrosion "project" individually.
+	local path
+	while IFS= read -r -d '' path ; do
+		S="${path%/*}" cargo_live_src_unpack
+	done < <(find "${S}" -type f -iname CMakeLists.txt -print0 | xargs -0 grep -z -Z -l -i corrosion_import_crate; pipestatus || die)
+}
+
 # @FUNCTION: kde.org_src_unpack
 # @DESCRIPTION:
 # Unpack the sources, automatically handling both release and live ebuilds.
+# For releases, if cargo.eclass is inherited, call cargo_src_unpack instead of
+# default.  For live ebuilds, if both cmake.eclass and cargo.eclass are
+# inherited, deal with potential Corrosion.
 kde.org_src_unpack() {
 	debug-print-function ${FUNCNAME} "$@"
 
+	# cargo detection, but only if rust_pkg_setup was called (CARGO_OPTIONAL support)
+	local isrusty
+	if has cargo ${INHERITED} && [[ -n "${CARGO}" ]]; then
+		isrusty=true
+	fi
+
 	case ${KDE_BUILD_TYPE} in
-		live) git-r3_src_unpack ;&
-		*) default ;;
+		live)
+			git-r3_src_unpack
+			default
+			if has cmake ${INHERITED} && [[ ${isrusty} ]]; then
+				_kde.org_live_corrosion_unpack
+			fi
+			;;
+		*)
+			if [[ ${isrusty} ]]; then
+				cargo_src_unpack
+			else
+				default
+			fi
+			;;
 	esac
 }
 

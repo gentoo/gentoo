@@ -1,0 +1,33 @@
+exporters/jaeger: include unistd.h for close()
+
+`close()` is declared in `<unistd.h>`. Without this header, the
+build fails with both gcc and clang.
+
+The Jaeger exporter has been removed upstream, so this fix is
+not submitted upstream.
+
+clang:
+> exporters/jaeger/src/TUDPTransport.cc:71:7: error: no type named 'close' in the global namespace
+>    71 |     ::THRIFT_CLOSESOCKET(socket_);
+>       |     ~~^
+> /usr/include/thrift/transport/PlatformSocket.h:102:30: note: expanded from macro 'THRIFT_CLOSESOCKET'
+>   102 | #  define THRIFT_CLOSESOCKET close
+>       |                              ^
+
+gcc:
+> In file included from exporters/jaeger/src/TUDPTransport.h:16,
+>                  from exporters/jaeger/src/TUDPTransport.cc:6:
+> exporters/jaeger/src/TUDPTransport.cc: In member function ‘virtual void opentelemetry::v1::exporter::jaeger::TUDPTransport::close()’:
+> exporters/jaeger/src/TUDPTransport.cc:71:7: error: ‘::close’ has not been declared; did you mean ‘pclose’?
+>    71 |     ::THRIFT_CLOSESOCKET(socket_);
+>       |       ^~~~~~~~~~~~~~~~~~
+--- a/exporters/jaeger/src/TUDPTransport.h
++++ b/exporters/jaeger/src/TUDPTransport.h
+@@ -10,6 +10,7 @@
+ #  include <string.h>
+ #  include <sys/socket.h>
+ #  include <sys/types.h>
++#  include <unistd.h>
+ #endif
+ 
+ #include <opentelemetry/version.h>

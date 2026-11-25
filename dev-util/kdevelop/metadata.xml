@@ -6,12 +6,14 @@
 		<name>Gentoo KDE Project</name>
 	</maintainer>
 	<upstream>
-		<bugs-to>https://bugs.kde.org/</bugs-to>
+		<bugs-to>https://bugs.kde.org/enter_bug.cgi?product=kdevelop</bugs-to>
+		<remote-id type="kde-invent">kdevelop/kdevelop</remote-id>
 	</upstream>
 	<use>
 		<flag name="gdbui">Enable GUI for attaching GDB to a running process</flag>
 <!--		<flag name="hex">Enable hex editor plugin via <pkg>app-editors/okteta</pkg></flag> -->
 		<flag name="qmake">Enable support for QMake build system</flag>
 		<flag name="share">Enable support for patch sharing using <pkg>kde-frameworks/purpose</pkg></flag>
+		<flag name="webengine">Enable integrated documentation viewer using <pkg>dev-qt/qtwebengine</pkg></flag>
 	</use>
 </pkgmetadata>

@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -14,7 +14,7 @@ LICENSE="BSD-with-attribution GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc x86"
 IUSE="afs backup calalarm caps clamav http kerberos ldap \
-	mysql nntp pam perl postgres replication +server sieve \
+	mysql nntp pam perl postgres replication +server selinux sieve \
 	sqlite ssl static-libs tcpd test xapian"
 RESTRICT="!test? ( test )"
 
@@ -65,6 +65,7 @@ RDEPEND="${DEPEND}
 	!app-arch/dump
 	!dev-python/tables"
 DEPEND+=" test? ( dev-util/cunit )"
+RDEPEND+=" selinux? ( sec-policy/selinux-cyrus )"
 BDEPEND="app-alternatives/lex
 	virtual/pkgconfig
 	app-alternatives/yacc

@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{12..14} )
 DISTUTILS_USE_PEP517=setuptools
 inherit distutils-r1 shell-completion
 
@@ -16,7 +16,7 @@ if [[ ${PV} == "9999" ]]; then
 else
 	SRC_URI="https://github.com/Gallopsled/pwntools/archive/${PV/_beta/beta}.tar.gz -> ${P}.gh.tar.gz"
 	if [[ ${PV} != *_beta* ]] ; then
-		KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
+		KEYWORDS="~amd64 ~arm64 ~riscv"
 	fi
 	S="${WORKDIR}/${PN}-${PV/_beta/beta}"
 fi

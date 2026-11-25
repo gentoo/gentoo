@@ -1,0 +1,14 @@
+diff --git a/packages/shylu/shylu_node/basker/src/shylubasker_order_scotch.hpp b/packages/shylu/shylu_node/basker/src/shylubasker_order_scotch.hpp
+index 2ff63c9c..e68e3e4b 100644
+--- a/packages/shylu/shylu_node/basker/src/shylubasker_order_scotch.hpp
++++ b/packages/shylu/shylu_node/basker/src/shylubasker_order_scotch.hpp
+@@ -885,7 +885,7 @@ namespace BaskerNS
+           {
+             if(M.row_idx(k) != i)
+             {
+-              BASKER_ASSERT(sptr < M.nnz);
++              // BASKER_ASSERT(sptr < M.nnz);
+               sg.Ai[sptr++] = M.row_idx(k);
+               sj++;
+             }
+

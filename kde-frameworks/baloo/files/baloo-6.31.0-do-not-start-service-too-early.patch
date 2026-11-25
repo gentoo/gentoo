@@ -1,0 +1,30 @@
+From 096b0d3f7166ed2bde0266cfad9f04ca50903090 Mon Sep 17 00:00:00 2001
+From: Harald Sitter <sitter@kde.org>
+Date: Tue, 13 Oct 2026 18:32:06 +0200
+Subject: [PATCH] service: do not start too early
+
+previously the service got queued along with all the other early start
+units but in fact we a) don't need to be up ASAP and b) require a
+compositor to avoid crashing the extractor on neither working wayland or
+x11 sockets. as such, order the service after the core session target
+has been reached
+---
+ src/file/kde-baloo.service.in | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/file/kde-baloo.service.in b/src/file/kde-baloo.service.in
+index ddb698e5..e0f39606 100644
+--- a/src/file/kde-baloo.service.in
++++ b/src/file/kde-baloo.service.in
+@@ -1,6 +1,8 @@
+ [Unit]
+ Description=Baloo File Indexer Daemon
+ PartOf=graphical-session.target
++# We need the compositor to be running since we fork QGuiApplications.
++After=graphical-session.target
+ 
+ [Service]
+ ExecStart=@KDE_INSTALL_FULL_LIBEXECDIR_KF@/baloo_file
+-- 
+GitLab
+

@@ -92,7 +92,6 @@ Exporters
     </flag>
   </use>
   <upstream>
-    <remote-id type="bitbucket">sinbad/ogre</remote-id>
     <remote-id type="github">OGRECave/ogre</remote-id>
   </upstream>
 </pkgmetadata>

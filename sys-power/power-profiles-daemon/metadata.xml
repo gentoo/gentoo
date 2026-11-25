@@ -6,6 +6,6 @@
 		<name>Pacho Ramos</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="freedesktop-gitlab">hadess/power-profiles-daemon</remote-id>
+		<remote-id type="freedesktop-gitlab">upower/power-profiles-daemon</remote-id>
 	</upstream>
 </pkgmetadata>

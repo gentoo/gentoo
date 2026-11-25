@@ -1,0 +1,8 @@
+--- a/tests/meson.build
++++ b/tests/meson.build
+@@ -27,3 +27,4 @@ vn_protocol_tests = executable(
+   include_directories: ['../include',
+                         '../include/vulkan'],
+ )
++test('venus protocol tests', vn_protocol_tests)
+

@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit distutils-r1 pypi shell-completion
 
@@ -17,7 +17,7 @@ HOMEPAGE="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
+KEYWORDS="amd64 arm64 ~riscv x86"
 
 RDEPEND="
 	dev-python/cloudpickle[${PYTHON_USEDEP}]
@@ -40,6 +40,11 @@ src_prepare() {
 		-e '/sphinx_sitemap/d' \
 		-e '/sphinx_reredirects/d' \
 		-i doc/conf.py || die
+
+	# Disable xdist to avoid issues if pytest-xdist is installed.
+	sed \
+		-e 's/from xdist import plugin/raise ImportError()/' \
+		-i tests/conftest.py || die
 
 	distutils-r1_src_prepare
 }

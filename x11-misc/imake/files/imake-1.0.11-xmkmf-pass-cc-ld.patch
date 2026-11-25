@@ -1,0 +1,21 @@
+Makefile calls imake again but with ignored CC/LD.
+Passing only if set rather than use defaults.
+diff --git a/xmkmf.in b/xmkmf.in
+index 5da01c0..426f9ee 100644
+--- a/xmkmf.in
++++ b/xmkmf.in
+@@ -54,11 +54,11 @@ case "$do_all" in
+ yes)
+     imake $imake_defines $args &&
+     echo "make Makefiles" &&
+-    make Makefiles &&
++    make ${CC:+CC="$CC"} ${LD:+LD="$LD"} Makefiles &&
+     echo "make includes" &&
+-    make includes &&
++    make ${CC:+CC="$CC"} ${LD:+LD="$LD"} includes &&
+     echo "make depend" &&
+-    make depend
++    make ${CC:+CC="$CC"} ${LD:+LD="$LD"} depend
+     ;;
+ *)
+     imake $imake_defines $args

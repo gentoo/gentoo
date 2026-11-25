@@ -1,0 +1,44 @@
+Without this, loading the gdk-pixbuf plugin fails because of undefined
+references in libwmf.so.
+--- a/configure.ac
++++ b/configure.ac
+@@ -287,6 +287,8 @@ fi
+ 
+ AM_CONDITIONAL(LIBWMF_OPT_X,[ test "x$no_x" != "xyes" ])
+ 
++AC_SUBST(WMF_X_LDFLAGS)
++
+ dnl (2) expat/libxml2 {-lexpat/-lxml2}
+ 
+ WMF_XML_DIR=""
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -58,7 +58,7 @@ else
+ LIBGD = extra/gd/libgd.la
+ endif
+ 
+-libwmf_la_LIBADD = ipa/libipa.la libwmflite.la $(LIBGD) $(LIBTRIO)
++libwmf_la_LIBADD = ipa/libipa.la libwmflite.la $(LIBGD) $(LIBTRIO) $(FT2_LIBS) $(WMF_XML_LIBS)
+ 
+ libwmf_la_LDFLAGS = \
+ 	-no-undefined \
+@@ -72,7 +72,7 @@ loader_LTLIBRARIES = $(GDK_PIXBUF_PLUGIN)
+ 
+ io_wmf_la_SOURCES = io-wmf.c
+ 
+-io_wmf_la_LIBADD = libwmf.la libwmflite.la @GDK_PIXBUF_LIBS@
++io_wmf_la_LIBADD = libwmf.la libwmflite.la @GDK_PIXBUF_LIBS@ @WMF_X_LDFLAGS@
+ 
+ io_wmf_la_LDFLAGS = -no-undefined -module -avoid-version
+ 
+--- a/src/ipa/Makefile.am
++++ b/src/ipa/Makefile.am
+@@ -17,7 +17,7 @@ AM_CPPFLAGS += \
+ noinst_LTLIBRARIES = libipa.la
+ 
+ libipa_la_SOURCES = eps.c fig.c svg.c xgd.c x.c ipa.c plot.c foreign.c
+-
++libipa_la_LIBADD = $(WMF_X_LDFLAGS)
+ libipa_la_LDFLAGS =
+ 
+ IPAHEADERS = \

@@ -7,7 +7,7 @@ DISTUTILS_SINGLE_IMPL=1
 # >= 6.2.1 uses a bunch of setuptools hooks instead of vanilla setuptools
 # https://github.com/streamlink/streamlink/commit/194d9bc193f5285bc1ba33af5fd89209a96ad3a7
 DISTUTILS_USE_PEP517=standalone
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 PYTHON_REQ_USE='xml(+),threads(+)'
 inherit distutils-r1
 
@@ -51,7 +51,7 @@ RDEPEND="
 		)
 		>=dev-python/requests-2.30.0[${PYTHON_USEDEP}]
 		dev-python/isodate[${PYTHON_USEDEP}]
-		>=dev-python/lxml-4.6.4[${PYTHON_USEDEP}]
+		>=dev-python/lxml-5.0.0[${PYTHON_USEDEP}]
 		>=dev-python/websocket-client-1.2.1[${PYTHON_USEDEP}]
 		dev-python/pycountry[${PYTHON_USEDEP}]
 		>=dev-python/pycryptodome-3.4.3[${PYTHON_USEDEP}]

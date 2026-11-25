@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,7 +19,7 @@ HOMEPAGE="https://libmtp.sourceforge.net/"
 
 LICENSE="LGPL-2.1" # LGPL-2+ and LGPL-2.1+ ?
 SLOT="0/9" # Based on SONAME of libmtp shared library
-IUSE="+crypt doc examples static-libs"
+IUSE="+crypt doc examples selinux static-libs"
 
 RDEPEND="
 	acct-group/plugdev
@@ -27,6 +27,7 @@ RDEPEND="
 	virtual/libusb:1
 	crypt? ( dev-libs/libgcrypt:0= )"
 DEPEND="${RDEPEND}"
+RDEPEND+=" selinux? ( sec-policy/selinux-libmtp )"
 BDEPEND="
 	sys-devel/gettext
 	virtual/pkgconfig

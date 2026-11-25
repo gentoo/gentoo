@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -41,7 +41,7 @@ SRC_URI="http://qmail.org/${P}.tar.gz
 LICENSE="public-domain"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~mips ~ppc64 ~s390 ~sparc ~x86"
-IUSE="gencertdaily highvolume pop3 qmail-spp ssl vanilla"
+IUSE="gencertdaily highvolume pop3 qmail-spp selinux ssl vanilla"
 REQUIRED_USE="vanilla? ( !ssl !qmail-spp !highvolume )"
 RESTRICT="test"
 
@@ -74,6 +74,7 @@ RDEPEND="${DEPEND}
 	!mail-mta/qmail-ldap
 	!mail-mta/sendmail
 	!mail-mta/ssmtp[mta]
+	selinux? ( sec-policy/selinux-qmail )
 "
 PDEPEND="
 	virtual/daemontools

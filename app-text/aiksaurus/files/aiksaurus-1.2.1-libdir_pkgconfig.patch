@@ -1,0 +1,22 @@
+do not hardcode libdir
+see https://bugs.gentoo.org/979297 
+--- a/base/aiksaurus-1.0.pc.in
++++ b/base/aiksaurus-1.0.pc.in
+@@ -1,6 +1,6 @@
+ prefix=@prefix@
+ exec_prefix=${prefix}
+-libdir=${exec_prefix}/lib
++libdir=@libdir@
+ includedir=${prefix}/include
+ 
+ Name: Aiksaurus
+--- a/gtk/gaiksaurus-1.0.pc.in
++++ b/gtk/gaiksaurus-1.0.pc.in
+@@ -1,6 +1,6 @@
+ prefix=@prefix@
+ exec_prefix=${prefix}
+-libdir=${exec_prefix}/lib
++libdir=@libdir@
+ includedir=${prefix}/include
+ 
+ Name: AiksaurusGTK

@@ -20,7 +20,6 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="+man"
 
 DEPEND="
 	>=dev-libs/wayland-protocols-1.14
@@ -30,8 +29,8 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 BDEPEND="
+	app-text/scdoc
 	dev-util/wayland-scanner
-	man? ( app-text/scdoc )
 "
 
 if [[ ${PV} != 9999 ]]; then
@@ -41,7 +40,7 @@ fi
 
 src_configure() {
 	local emesonargs=(
-		$(meson_feature man man-pages)
+		-Dman-pages=enabled
 	)
 	meson_src_configure
 }

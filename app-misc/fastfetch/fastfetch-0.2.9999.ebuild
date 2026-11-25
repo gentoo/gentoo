@@ -3,7 +3,8 @@
 
 EAPI=8
 
-inherit cmake flag-o-matic
+LUA_COMPAT=( lua5-{3..4} )
+inherit cmake flag-o-matic lua-single
 
 DESCRIPTION="Fast neofetch-like system information tool"
 HOMEPAGE="https://github.com/fastfetch-cli/fastfetch"
@@ -20,18 +21,17 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="X chafa dbus ddcutil drm elf gnome imagemagick opencl opengl pulseaudio sqlite test vulkan wayland xcb xrandr"
+IUSE="X chafa dbus drm efl elf gnome imagemagick lua opencl opengl sqlite test vaapi vdpau vulkan wayland xcb xrandr"
 RESTRICT="!test? ( test )"
 
 # note - qa-vdb will always report errors because fastfetch loads the libs dynamically
 # make sure to crank yyjson minimum version to match bundled version
 RDEPEND="
-	>=dev-libs/yyjson-0.12.0
+	>=dev-libs/yyjson-0.13.0:=
 	sys-apps/hwdata
 	virtual/zlib:=
 	chafa? ( media-gfx/chafa )
 	dbus? ( sys-apps/dbus )
-	ddcutil? ( app-misc/ddcutil:= )
 	drm? ( x11-libs/libdrm )
 	elf? ( virtual/libelf:= )
 	gnome? (
@@ -39,13 +39,15 @@ RDEPEND="
 		gnome-base/dconf
 	)
 	imagemagick? ( media-gfx/imagemagick:= )
+	lua? ( ${LUA_DEPS} )
 	opencl? ( virtual/opencl )
 	opengl? (
 		media-libs/libglvnd[X?]
 		X? ( x11-libs/libX11 )
 	)
-	pulseaudio? ( media-libs/libpulse )
 	sqlite? ( dev-db/sqlite:3 )
+	vaapi? ( media-libs/libva:=[X?] )
+	vdpau? ( x11-libs/libvdpau )
 	vulkan? (
 		media-libs/vulkan-loader
 		sys-apps/pciutils
@@ -56,6 +58,7 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
+	efl? ( dev-libs/efl )
 	opengl? ( X? ( x11-base/xorg-proto ) )
 	xcb? ( x11-base/xorg-proto )
 	xrandr? ( x11-base/xorg-proto )
@@ -65,7 +68,16 @@ BDEPEND="virtual/pkgconfig"
 
 REQUIRED_USE="
 	chafa? ( imagemagick )
+	lua? ( ${LUA_REQUIRED_USE} )
 "
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.64.1-cmake_lua_version.patch
+)
+
+pkg_setup() {
+	use lua && lua-single_pkg_setup
+}
 
 src_configure() {
 	local fastfetch_enable_imagemagick7=no
@@ -89,30 +101,47 @@ src_configure() {
 		-DENABLE_RPM=no
 		-DENABLE_ZLIB=yes
 		-DENABLE_SYSTEM_YYJSON=yes
+		-DENABLE_IMAGE_LOGO=yes
 		-DIS_MUSL=$(usex elibc_musl)
 		-DINSTALL_LICENSE=no
 		-DBUILD_FLASHFETCH=no
+		-DPACKAGES_REMOVE_DISABLED=yes
 
 		-DENABLE_CHAFA=$(usex chafa)
 		-DENABLE_DBUS=$(usex dbus)
 		-DENABLE_DCONF=$(usex gnome)
-		-DENABLE_DDCUTIL=$(usex ddcutil)
 		-DENABLE_DRM=$(usex drm)
+		-DENABLE_EET=$(usex efl)
 		-DENABLE_ELF=$(usex elf)
 		-DENABLE_EGL=$(usex opengl)
 		-DENABLE_GIO=$(usex gnome)
 		-DENABLE_GLX=${glx}
 		-DENABLE_IMAGEMAGICK6=${fastfetch_enable_imagemagick6}
 		-DENABLE_IMAGEMAGICK7=${fastfetch_enable_imagemagick7}
+		-DENABLE_LUA=$(usex lua)
 		-DENABLE_OPENCL=$(usex opencl)
-		-DENABLE_PULSE=$(usex pulseaudio)
 		-DENABLE_SQLITE3=$(usex sqlite)
+		-DENABLE_VADRM=$(usex vaapi)
+		-DENABLE_VDPAU=$(usex vdpau)
 		-DENABLE_VULKAN=$(usex vulkan)
 		-DENABLE_WAYLAND=$(usex wayland)
 		-DENABLE_XCB_RANDR=$(usex xcb)
 		-DENABLE_XRANDR=$(usex xrandr)
 		-DBUILD_TESTS=$(usex test)
+		-DTARGET_DIR_ROOT="${EPREFIX}"
 	)
+
+	if use vaapi && use X; then
+		mycmakeargs+=( -DENABLE_VAX11=1 )
+	else
+		mycmakeargs+=( -DENABLE_VAX11=0 )
+	fi
+
+	if use lua; then
+		mycmakeargs+=(
+			-DLUA_VERSION="$(lua_get_version)"
+		)
+	fi
 
 	append-cppflags -DNDEBUG
 

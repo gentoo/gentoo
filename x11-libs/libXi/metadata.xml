@@ -6,6 +6,6 @@
     <name>X11</name>
   </maintainer>
   <upstream>
-    <remote-id type="freedesktop-gitlab">xorg/lib/libXi</remote-id>
+    <remote-id type="freedesktop-gitlab">xorg/lib/libxi</remote-id>
   </upstream>
 </pkgmetadata>

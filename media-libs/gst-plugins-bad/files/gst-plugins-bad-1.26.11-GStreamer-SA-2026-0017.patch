@@ -1,0 +1,31 @@
+https://bugs.gentoo.org/974284
+https://gstreamer.freedesktop.org/security/sa-2026-0017.html
+https://gitlab.freedesktop.org/gstreamer/gstreamer/-/merge_requests/11241
+
+From ce1b288d546f58eb35f9d626815a58260cd2b0c1 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Sebastian=20Dr=C3=B6ge?= <sebastian@centricular.com>
+Date: Thu, 12 Mar 2026 11:14:11 +0200
+Subject: [PATCH] h266parser: Avoid integer overflow when parsing profile /
+ tier / level
+
+And as a result also avoid a stack overflow.
+
+Thanks to Nicholas Soh for finding and analyzing the issue, and suggesting this fix.
+
+Fixes https://gitlab.freedesktop.org/gstreamer/gstreamer/-/issues/4958
+
+Part-of: <https://gitlab.freedesktop.org/gstreamer/gstreamer/-/merge_requests/11241>
+--- a/gst-libs/gst/codecparsers/gsth266parser.c
++++ b/gst-libs/gst/codecparsers/gsth266parser.c
+@@ -380,7 +380,7 @@ static gboolean
+ gst_h266_parse_profile_tier_level (GstH266ProfileTierLevel * ptl,
+     NalReader * nr, guint8 profileTierPresentFlag, guint8 MaxNumSubLayersMinus1)
+ {
+-  gint8 i;
++  gint i;
+ 
+   GST_LOG ("parsing \"Profile Tier Level parameters\"");
+ 
+-- 
+GitLab
+

@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 inherit meson-multilib python-any-r1
 
 if [[ ${PV} == 9999 ]]; then
@@ -33,7 +33,7 @@ HOMEPAGE="
 
 LICENSE="
 	LGPL-2.1+
-	|| ( Apache-2.0 Boost-1.0 MIT )
+	|| ( Apache-2.0 Boost-1.0 MIT ) public-domain
 	opengl? ( MIT )
 "
 SLOT="0/$(ver_cut 2 ${PV}.9999)" # soname

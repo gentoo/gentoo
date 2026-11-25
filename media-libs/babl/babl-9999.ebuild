@@ -20,11 +20,16 @@ HOMEPAGE="https://gegl.org/babl/"
 
 LICENSE="LGPL-3"
 SLOT="0"
-IUSE="+introspection lcms vala cpu_flags_x86_avx2 cpu_flags_x86_f16c cpu_flags_x86_mmx cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_sse4_1"
-REQUIRED_USE="vala? ( introspection )"
+IUSE="gtk-doc +introspection lcms vala cpu_flags_x86_avx2 cpu_flags_x86_f16c cpu_flags_x86_mmx cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_sse4_1"
+REQUIRED_USE="
+	gtk-doc? ( introspection )
+	vala? ( introspection )
+"
 
 BDEPEND="
 	virtual/pkgconfig
+	gtk-doc? ( dev-util/gi-docgen )
+	introspection? ( dev-libs/gobject-introspection )
 	vala? ( $(vala_depend) )
 "
 RDEPEND="
@@ -36,6 +41,8 @@ DEPEND="${RDEPEND}"
 src_prepare() {
 	default
 	gnome2_environment_reset
+
+	sed -e '/babl_docs =/,/^)$/ { /install_dir/ s|doc|gtk-doc| }' -i docs/reference/meson.build || die
 }
 
 src_configure() {
@@ -49,6 +56,7 @@ src_configure() {
 	#     detected
 	local emesonargs=(
 		-Dwith-docs=false
+		$(meson_feature gtk-doc gi-docgen)
 		$(meson_use introspection enable-gir)
 		$(meson_feature lcms with-lcms)
 		$(meson_use vala enable-vapi)

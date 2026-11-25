@@ -72,7 +72,10 @@
 			via pam_sss.
 		</flag>
 		<flag name="yescrypt">
-			Switch Linux-PAM's pam_unix module to use yescrypt for passwords hashes rather than MD5
+			Switch Linux-PAM's pam_unix module to use yescrypt for passwords hashes
+			rather than MD5. Like with USE=sha512 (see that description), this
+			only changes the default, and hashes with other types are still
+			supported.
 		</flag>
 		<flag name="pam_krb5">
 			Enable pam_krb5 module on system auth stack, as an alternative
@@ -96,6 +99,9 @@
 			Enable pam_securetty module in the login stack. Not generally
 			relevant anymore as the login stack only refers to local logins
 			and local terminals imply secure access in the first place.
+		</flag>
+		<flag name="turnstile">
+			Use pam_turnstile module to register user sessions with turnstile.
 		</flag>
 	</use>
 	<upstream>

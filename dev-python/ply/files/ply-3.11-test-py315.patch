@@ -1,0 +1,26 @@
+From 3ef4ef231342ca00f7f97772fea451c66aced03b Mon Sep 17 00:00:00 2001
+From: Tom spot Callaway <spotaws@amazon.com>
+Date: Thu, 18 Dec 2025 10:39:22 -0500
+Subject: [PATCH] Fix testyacc.py to work with Python 3.15
+
+Signed-off-by: Tom spot Callaway <spotaws@amazon.com>
+---
+ tests/testyacc.py | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/test/testyacc.py b/test/testyacc.py
+index b488bf7..14ddef7 100644
+--- a/test/testyacc.py
++++ b/test/testyacc.py
+@@ -21,7 +21,10 @@ def make_pymodule_path(filename):
+     file = os.path.basename(filename)
+     mod, ext = os.path.splitext(file)
+ 
+-    if sys.hexversion >= 0x3040000:
++    if sys.hexversion >= 0x3050000:
++        import importlib.util
++        fullpath = importlib.util.cache_from_source(filename)
++    elif sys.hexversion >= 0x3040000:
+         import importlib.util
+         fullpath = importlib.util.cache_from_source(filename, ext=='.pyc')
+     elif sys.hexversion >= 0x3020000:

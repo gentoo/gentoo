@@ -1,4 +1,4 @@
-# Copyright 2022-2025 Gentoo Authors
+# Copyright 2022-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,9 +15,12 @@ SRC_URI="ftp://ftp.chkrootkit.org/pub/seg/pac/${P}.tar.gz
 LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm ~hppa ~mips ppc ppc64 ~s390 ~sparc x86"
-IUSE="+cron"
+IUSE="+cron selinux"
 
-RDEPEND="cron? ( virtual/cron )"
+RDEPEND="
+	cron? ( virtual/cron )
+	selinux? ( sec-policy/selinux-chkrootkit )
+"
 
 PATCHES=(
 	"${WORKDIR}/${P}-gentoo.patch"

@@ -1,0 +1,10 @@
+# Shared-library: export only public sb_stemmer_* symbols (matching libstemmer.h)
+--- /dev/null
++++ b/libstemmer/symbol.map
+@@ -0,0 +1,6 @@
++SB_STEMMER_0 {
++    global:
++        sb_stemmer_*;
++    local:
++        *;
++};

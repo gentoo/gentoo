@@ -32,5 +32,5 @@ llvm-runtimes/clang-rtlib-config
 llvm-runtimes/clang-unwindlib-config
 llvm-runtimes/clang-stdlib-config
 llvm-runtimes/clang-runtime
-llvm-core/libclc
+llvm-runtimes/libclc
 llvm-runtimes/libatomic-stub

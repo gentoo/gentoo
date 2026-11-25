@@ -1,0 +1,154 @@
+The default build tries to download a python executable and all required python modules during
+the build process. While we can pre-populate the Bazel modules to avoid downloading them,
+we cannot prevent poetry from attempting to access PyPI.
+
+Additionally, local_host_values expects to use the downloaded python binary to get the number
+of CPUs on the local system. Since we are not using thin_lto, it is simpler to remove this
+rather than trying to force it to use the sytem python.
+
+This patch allows us to use the system python and removes the rules_poetry Bazel module.
+Additional references to poetry and the downloaded python interpreter are removed by the ebuild.
+
+diff '--color=auto' -ur a/bazel/mongo_src_rules.bzl b/bazel/mongo_src_rules.bzl
+--- a/bazel/mongo_src_rules.bzl	2026-06-15 18:37:04.000000000 -0400
++++ b/bazel/mongo_src_rules.bzl	2026-07-23 13:00:38.576931113 -0400
+@@ -26,7 +26,6 @@
+     "extract_debuginfo_binary",
+     "extract_debuginfo_test",
+ )
+-load("@local_host_values//:local_host_values_set.bzl", "NUM_CPUS")
+ load("@evergreen_variables//:evergreen_variables.bzl", "UNSAFE_COMPILE_VARIANT", "UNSAFE_VERSION_ID")
+ load("//bazel/toolchains/cc/mongo_windows:mongo_windows_cc_toolchain_config.bzl", "MIN_VER_MAP")
+ load("@bazel_skylib//rules:common_settings.bzl", "BuildSettingInfo")
+@@ -670,9 +669,6 @@
+         "data": data + SANITIZER_DATA + ["//bazel:test_wrapper"],
+         "tags": tags,
+         "linkopts": linkopts + rpath_flags + select({
+-            "//bazel/config:thin_lto_enabled": ["-Wl,--threads=" + str(NUM_CPUS)],
+-            "//conditions:default": [],
+-        }) + select({
+             "//bazel/config:simple_build_id_enabled": ["-Wl,--build-id=0x" +
+                                                        hex32(hash(name)) +
+                                                        hex32(hash(name)) +
+@@ -698,9 +694,6 @@
+             "@platforms//os:windows": {"cpp_link.coefficient": "1.0"},
+             "//conditions:default": {"cpp_link.coefficient": "18.0"},
+         }) | select({
+-            "//bazel/config:thin_lto_enabled": {"cpp_link.cpus": str(NUM_CPUS)},
+-            "//conditions:default": {},
+-        }) | select({
+             "//bazel/config:remote_link_arm_linux_linkstatic": {"cpp_link.Pool": "arm_linker"},
+             "//conditions:default": {},
+         }),
+diff '--color=auto' -ur a/MODULE.bazel b/MODULE.bazel
+--- a/MODULE.bazel	2026-06-15 18:37:04.000000000 -0400
++++ b/MODULE.bazel	2026-07-23 13:01:05.110856938 -0400
+@@ -115,13 +115,6 @@
+     version = "6.3.0",
+ )
+ 
+-bazel_dep(name = "rules_poetry", version = "")
+-git_override(
+-    module_name = "rules_poetry",
+-    commit = "092d43107d13e711ac4ac92050d8b570bcc8ef43",
+-    patches = ["//bazel/rules_poetry:rules_poetry.patch"],
+-    remote = "https://github.com/mongodb-forks/rules_poetry",
+-)
+ 
+ #
+ ## We need skylib to be able to use config_setting_group in rule_poetry below
+@@ -258,20 +251,10 @@
+     "py_windows_x86_64",
+ )
+ 
+-register_toolchains(
+-    "@py_linux_arm64//:python_toolchain",
+-    "@py_linux_ppc64le//:python_toolchain",
+-    "@py_linux_s390x//:python_toolchain",
+-    "@py_linux_x86_64//:python_toolchain",
+-    "@py_macos_arm64//:python_toolchain",
+-    "@py_macos_x86_64//:python_toolchain",
+-    "@py_windows_x86_64//:python_toolchain",
+-)
+ 
+ # broken on windows currently
+ setup_local_host_values = use_repo_rule("//bazel/platforms:local_host_values.bzl", "setup_local_host_values")
+ 
+-setup_local_host_values(name = "local_host_values")
+ 
+ setup_evergreen_variables = use_repo_rule("//bazel/repository_rules:evergreen_variables.bzl", "setup_evergreen_variables")
+ 
+@@ -295,3 +278,28 @@
+ use_repo(setup_mongo_windows_toolchains_extension, "mongo_windows_toolchain")
+ 
+ register_toolchains("@mongo_windows_toolchain//...")
++
++local_runtime_repo = use_repo_rule(
++    "@rules_python//python/local_toolchains:repos.bzl",
++    "local_runtime_repo",
++)
++
++local_runtime_toolchains_repo = use_repo_rule(
++    "@rules_python//python/local_toolchains:repos.bzl",
++    "local_runtime_toolchains_repo",
++)
++
++local_runtime_repo(
++    name = "gentoo_python",
++    interpreter_path = "@PYTHON@",
++    on_failure = "fail",
++    dev_dependency = True
++)
++
++local_runtime_toolchains_repo(
++    name = "gentoo_python_toolchain",
++    runtimes = ["gentoo_python"],
++    dev_dependency = True
++)
++
++register_toolchains("@gentoo_python_toolchain//:all", dev_dependency = True)
+diff '--color=auto' -ur a/WORKSPACE.bazel b/WORKSPACE.bazel
+--- a/WORKSPACE.bazel	2026-06-15 18:37:04.000000000 -0400
++++ b/WORKSPACE.bazel	2026-07-23 13:00:38.577333981 -0400
+@@ -107,19 +107,6 @@
+ 
+ rules_coverity_toolchains()
+ 
+-load("@rules_poetry//rules_poetry:poetry.bzl", "poetry")
+-
+-poetry(
+-    name = "poetry",
+-    excludes = [
+-        "mdit-py-plugins",  # plugins for markdown-it-py. Introduces an optional circular dependency that bazel does not like.
+-    ],
+-    lockfile = "//:poetry.lock",
+-    pyproject = "//:pyproject.toml",
+-    python_interpreter_target_default = "@py_host//:dist/bin/python3",
+-    python_interpreter_target_mac = "@py_host//:dist/bin/python3",
+-    python_interpreter_target_win = "@py_host//:dist/python.exe",
+-)
+ 
+ load("@aspect_rules_js//js:toolchains.bzl", "DEFAULT_NODE_VERSION", "rules_js_register_toolchains")
+ 
+@@ -187,14 +174,6 @@
+ 
+ codeowners_binary()
+ 
+-poetry(
+-    name = "poetry_bazel_rules_mongo",
+-    lockfile = "@bazel_rules_mongo//:poetry.lock",
+-    pyproject = "@bazel_rules_mongo//:pyproject.toml",
+-    python_interpreter_target_default = "@py_host//:dist/bin/python3",
+-    python_interpreter_target_mac = "@py_host//:dist/bin/python3",
+-    python_interpreter_target_win = "@py_host//:dist/python.exe",
+-)
+ 
+ load("//bazel/format:shfmt.bzl", "shfmt")
+ 
+@@ -207,3 +186,6 @@
+ load("//bazel/mongot_extension_signing_key:mongot_extension_signing_key.bzl", "mongot_extension_signing_key")
+ 
+ mongot_extension_signing_key()
++
++load("@rules_python//python:repositories.bzl", "py_repositories")
++py_repositories()

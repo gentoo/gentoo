@@ -3,11 +3,12 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..14} )
-inherit optfeature python-any-r1 readme.gentoo-r1 toolchain-funcs wine
+PYTHON_COMPAT=( python3_{12..15} )
+inherit eapi9-ver flag-o-matic optfeature python-any-r1
+inherit readme.gentoo-r1 toolchain-funcs wine
 
 WINE_GECKO=2.47.4
-WINE_MONO=10.4.1
+WINE_MONO=11.3.0
 WINE_PV=$(ver_rs 2 -)
 
 if [[ ${PV} == 9999 ]]; then
@@ -24,7 +25,8 @@ DESCRIPTION="Valve Software's fork of Wine"
 HOMEPAGE="https://github.com/ValveSoftware/wine/"
 
 LICENSE="
-	LGPL-2.1+ BSD BSD-2 IJG MIT OPENLDAP ZLIB gsm libpng2 libtiff
+	LGPL-2.1+
+	BSD BSD-2 IJG MIT OPENLDAP ZLIB gsm libpng2 libtiff public-domain
 	|| ( WTFPL-2 public-domain )
 "
 SLOT="${PV}"
@@ -116,18 +118,16 @@ RDEPEND="
 "
 DEPEND="
 	${WINE_COMMON_DEPEND}
-	|| (
-		sys-devel/gcc:*
-		llvm-runtimes/compiler-rt:*[atomic-builtins(-)]
-	)
-	sys-kernel/linux-headers
+	>=sys-kernel/linux-headers-6.14
 	X? ( x11-base/xorg-proto )
 "
 BDEPEND="
 	${PYTHON_DEPS}
 	dev-lang/perl
+	sys-devel/binutils:*
 	sys-devel/bison
 	sys-devel/flex
+	sys-devel/gcc:*
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )
 	wayland? ( dev-util/wayland-scanner )
@@ -138,14 +138,16 @@ QA_CONFIG_IMPL_DECL_SKIP=(
 	res_getservers # false positive
 )
 QA_TEXTRELS="usr/lib/*/wine/i386-unix/*.so" # uses -fno-PIC -Wl,-z,notext
+# intentionally ignored: https://gitlab.winehq.org/wine/wine/-/commit/433c2f8c06
+QA_FLAGS_IGNORED="usr/lib/.*/wine/.*-unix/wine.*-preloader"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-7.0.4-musl.patch
 	"${FILESDIR}"/${PN}-7.0.4-noexecstack.patch
 	"${FILESDIR}"/${PN}-8.0.1c-unwind.patch
-	"${FILESDIR}"/${PN}-8.0.4-restore-menubuilder.patch
 	"${FILESDIR}"/${PN}-9.0-rpath.patch
-	"${FILESDIR}"/${PN}-9.0.4-binutils2.44.patch
+	"${FILESDIR}"/${PN}-11.0.1-restore-menubuilder.patch
+	"${FILESDIR}"/${PN}-11.0.3-match-mono-with-proton.patch
 )
 
 src_prepare() {
@@ -154,22 +156,19 @@ src_prepare() {
 
 	wine_src_prepare
 
-	# this is kind-of best effort and ignores llvm slots, ideally
-	# atomic-builtins should be package.use.force then could drop this
-	if tc-is-clang && [[ $(tc-get-c-rtlib) == compiler-rt ]] &&
-		has_version -d 'llvm-runtimes/compiler-rt[-atomic-builtins(-)]'
-	then
-		# needed by Valve's fsync patches if using compiler-rt w/o atomics
-		sed -e '/^UNIX_LIBS.*=/s/$/ -latomic/' \
-			-i dlls/{ntdll,winevulkan}/Makefile.in || die
-	fi
-
 	# proton variant also needs specfiles and vulkan
 	tools/make_specfiles || die # perl
 	dlls/winevulkan/make_vulkan -X video.xml -x vk.xml || die # python
 }
 
 src_configure() {
+	# Valve does not really support anything but gcc+bfd, and some of
+	# their modifications have been fragile and accumulating issues
+	# that they seemingly have no interest in fixing (bug #977021)
+	tc-is-gcc || unset AR AS CC CPP CXX LD NM OBJ{COPY,DUMP} RANLIB READELF STRIP
+	tc-ld-is-bfd || append-ldflags -fuse-ld=bfd
+	strip-unsupported-flags
+
 	local wineconfargs=(
 		# upstream (Valve) doesn't really support misc configurations (e.g.
 		# adds vulkan code not always guarded by --with-vulkan), so force
@@ -184,12 +183,15 @@ src_configure() {
 		--without-cups
 		--without-gphoto
 		--without-gssapi
+		--without-hwloc
 		--without-krb5
 		--without-netapi
 		--without-opencl
 		--without-pcap
 		--without-pcsclite
 		--without-sane
+		ac_cv_header_bluetooth_bluetooth_h=no
+		ac_cv_header_bluetooth_rfcomm_h=no
 		ac_cv_lib_soname_odbc=
 
 		$(use_enable gecko mshtml)
@@ -204,7 +206,6 @@ src_configure() {
 		$(use_with fontconfig)
 		$(use_with gstreamer)
 		$(use_with nls gettext)
-		--without-osmesa # media-libs/mesa no longer supports this
 		--without-oss # media-sound/oss is not packaged (OSSv4)
 		$(use_with pulseaudio pulse)
 		$(use_with sdl)
@@ -231,6 +232,16 @@ src_install() {
 
 	wine_src_install
 
+	# Valve's proton expects wine64{,-preloader} under i386-unix and
+	# creates them using Proton's Makefile[1] rather than Wine's,
+	# causes `could not load kernel32.dll` errors if missing (note
+	# *also* needed for 64bit-only builds, so we skip 32bit checks)
+	# [1] https://github.com/ValveSoftware/Proton/commit/e50807ac2e9d
+	if use amd64; then
+		dosym -r ${WINE_PREFIX}/wine/{x86_64,i386}-unix/wine64
+		dosym -r ${WINE_PREFIX}/wine/{x86_64,i386}-unix/wine64-preloader
+	fi
+
 	dodoc ANNOUNCE* AUTHORS README* documentation/README*
 	readme.gentoo_create_doc
 }
@@ -240,7 +251,7 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
-	wine_src_postinst
+	wine_pkg_postinst
 
 	[[ -v WINE_HAD_ANY_SLOT ]] || readme.gentoo_print_elog
 
@@ -253,4 +264,13 @@ pkg_postinst() {
 	ewarn "with real Steam+Proton, and Gentoo is largely unable to help"
 	ewarn "unless it is a build/packaging issue. So, if need support, try"
 	ewarn "normal Wine or Proton instead."
+
+	if ver_replacing -lt 11; then
+		elog
+		elog "Note that >=${PN}-11 now has ntsync support that can be used"
+		elog "rather than setting WINEFSYNC=1. It is used by default if /dev/ntsync"
+		elog "exists unless PROTON_NO_NTSYNC=1 is set. Requires CONFIG_NTSYNC in"
+		elog "the kernel and, if built as a module, will need a file containing"
+		elog "ntsync in ${EROOT}/etc/modules-load.d/ to be auto-loaded."
+	fi
 }

@@ -1,0 +1,14 @@
+Fix broken gettext domain.
+--- a/configure.ac
++++ b/configure.ac
+@@ -137,8 +137,8 @@ AC_ARG_VAR([DEFAULT_LOG_TARGET], m4_flatten([
+ 
+ #############################################################
+ 
+-AC_SUBST([GETTEXT_PACKAGE], [PACKAGE_NAME])
+-AC_DEFINE_UNQUOTED([GETTEXT_PACKAGE], ["$GETTEXT_PACKAGE"],)
++GETTEXT_PACKAGE=firewalld
++AC_SUBST(GETTEXT_PACKAGE)
+ 
+ IT_PROG_INTLTOOL([0.35.0], [no-xml])
+ AM_PO_SUBDIRS

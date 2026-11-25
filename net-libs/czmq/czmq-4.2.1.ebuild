@@ -1,7 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
+
+inherit flag-o-matic libtool
 
 DESCRIPTION="High-level C Binding for ZeroMQ"
 HOMEPAGE="http://czmq.zeromq.org"
@@ -11,6 +13,10 @@ LICENSE="MPL-2.0"
 SLOT="0/4"
 KEYWORDS="amd64 arm arm64 ~hppa ~ppc64 ~riscv x86"
 IUSE="curl drafts http-client http-server lz4 nss systemd test +uuid"
+REQUIRED_USE="
+	http-client? ( drafts )
+	http-server? ( drafts )
+"
 RESTRICT="!test? ( test )"
 
 BDEPEND="app-text/asciidoc
@@ -32,7 +38,20 @@ DEPEND="${RDEPEND}"
 
 DOCS=( AUTHORS NEWS README.md )
 
+src_prepare() {
+	default
+	elibtoolize
+}
+
 src_configure() {
+	# -Werror=strict-aliasing
+	# https://bugs.gentoo.org/964691
+	# https://github.com/zeromq/czmq/issues/2334
+	#
+	# Do not trust with LTO either.
+	append-flags -fno-strict-aliasing
+	filter-lto
+
 	local myeconfargs=(
 		--enable-drafts=$(usex drafts)
 		--with-docs=no

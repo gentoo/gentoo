@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,11 +7,15 @@ EAPI=8
 # APR_PV="${PV}"
 APR_PV="1.7.2"
 
-inherit autotools db-use multilib toolchain-funcs
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/apache-httpd.asc
+inherit autotools db-use multilib toolchain-funcs verify-sig
 
 DESCRIPTION="Apache Portable Runtime Utility Library"
 HOMEPAGE="https://apr.apache.org/"
-SRC_URI="mirror://apache/apr/${P}.tar.bz2"
+SRC_URI="
+	mirror://apache/apr/${P}.tar.bz2
+	verify-sig? ( mirror://apache/apr/${P}.tar.bz2.asc )
+"
 
 LICENSE="Apache-2.0"
 SLOT="1"
@@ -41,6 +45,7 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	>=dev-build/libtool-2.4.2
 	doc? ( app-text/doxygen )
+	verify-sig? ( sec-keys/openpgp-keys-apache-httpd )
 "
 
 DOCS=( CHANGES NOTICE README )

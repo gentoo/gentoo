@@ -1,0 +1,20 @@
+--- a/.promu.yml	2026-11-07 14:12:34.255626589 -0700
++++ b/.promu.yml	2026-11-07 14:14:32.702652246 -0700
+@@ -1,6 +1,7 @@
+ go:
+   # This must match .github/workflows/ci.yml.
+   version: 1.27
++  cgo: true
+ repository:
+   path: github.com/superq/chrony_exporter
+ build:
+@@ -10,6 +11,9 @@
+     -X github.com/prometheus/common/version.Branch={{.Branch}}
+     -X github.com/prometheus/common/version.BuildUser={{user}}@{{host}}
+     -X github.com/prometheus/common/version.BuildDate={{date "20060102-15:04:05"}}
++  static: false
++  binaries:
++    - name: chrony_exporter
+ tarball:
+   files:
+     - LICENSE

@@ -1,0 +1,35 @@
+https://github.com/tmux/tmux/issues/4739
+https://github.com/tmux/tmux/commit/2e5e9c02982776a35a0378206966991e5dd4c723
+
+From 2e5e9c02982776a35a0378206966991e5dd4c723 Mon Sep 17 00:00:00 2001
+From: Nicholas Marriott <nicholas.marriott@gmail.com>
+Date: Mon, 8 Dec 2025 21:41:30 +0000
+Subject: [PATCH] Fix calculation of scaled SIXEL size, from nincsnevem662 at
+ gmail dot com in GitHub issue 4739.
+
+---
+ image-sixel.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/image-sixel.c b/image-sixel.c
+index 1c93d7a77..5c8004619 100644
+--- a/image-sixel.c
++++ b/image-sixel.c
+@@ -455,12 +455,12 @@ sixel_scale(struct sixel_image *si, u_int xpixel, u_int ypixel, u_int ox,
+ 	new->p2 = si->p2;
+ 
+ 	new->set_ra = si->set_ra;
+-	/* clamp to slice end */
+-	new->ra_x = si->ra_x < psx ? si->ra_x : psx;
+-	new->ra_y = si->ra_y < psy ? si->ra_y : psy;
+-	/* subtract slice origin */
++	/* subtract offset */
+ 	new->ra_x = new->ra_x > pox ? new->ra_x - pox : 0;
+ 	new->ra_y = new->ra_y > poy ? new->ra_y - poy : 0;
++	/* clamp to size */
++	new->ra_x = si->ra_x < psx ? si->ra_x : psx;
++	new->ra_y = si->ra_y < psy ? si->ra_y : psy;
+ 	/* resize */
+ 	new->ra_x = new->ra_x * xpixel / si->xpixel;
+ 	new->ra_y = new->ra_y * ypixel / si->ypixel;
+

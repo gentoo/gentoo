@@ -1,0 +1,54 @@
+From 2c39c4b7046c83078397b8d1c75fdee2cd87f3db Mon Sep 17 00:00:00 2001
+From: Matt Jolly <kangie@gentoo.org>
+Date: Tue, 3 Nov 2026 18:10:09 +1000
+Subject: [PATCH] fix lto type mismatch
+
+--- a/source/client/cl_view.c
++++ b/source/client/cl_view.c
+@@ -41,7 +41,11 @@ beam_t	r_beams[MAX_BEAMS];
+ 
+ extern cvar_t *cl_showPlayerNames;
+ extern cvar_t *name;
+-extern char map_music[260];
++#if defined WIN32_VARIANT
++extern char map_music[MAX_PATH];
++#else
++extern char map_music[MAX_OSPATH];
++#endif
+ extern cvar_t *background_music;
+ extern qboolean IsVisible(vec3_t org1,vec3_t org2);
+ extern void R_VCFreeFrame(void);
+--- a/source/client/snd_openal.c
++++ b/source/client/snd_openal.c
+@@ -2287,7 +2287,11 @@ void S_StartMenuMusic( void )
+ 	S_StartMusic( "music/menumusic.wav" );
+ }
+ 
+-extern char map_music[260]; // declared and set in r_model.c
++#if defined WIN32_VARIANT
++extern char map_music[MAX_PATH]; // declared and set in r_model.c
++#else
++extern char map_music[MAX_OSPATH]; // declared and set in r_model.c
++#endif
+ 
+ void S_StartMapMusic( void )
+ {
+@@ -2907,4 +2911,3 @@ void sndCvarInit( void )
+ 	snd_developer = Cvar_Get( "snd_developer", "0", 0);
+ 
+ }
+-
+--- a/source/ref_gl/r_iqm.c
++++ b/source/ref_gl/r_iqm.c
+@@ -192,7 +192,7 @@ void Matrix3x4GenRotate(matrix3x4_t *out, float angle, const vec3_t axis)
+ 	Vector4Set(out->c, axis[0]*axis[2]*(1-ck)-axis[1]*sk, axis[1]*axis[2]*(1-ck)+axis[0]*sk, axis[2]*axis[2]*(1-ck)+ck, 0);
+ }
+ 
+-void Matrix3x4ForEntity(matrix3x4_t *out, entity_t *ent, float z)
++void Matrix3x4ForEntity(matrix3x4_t *out, entity_t *ent)
+ {
+     matrix3x4_t rotmat;
+     vec3_t rotaxis;
+-- 
+2.56.0
+

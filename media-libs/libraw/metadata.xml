@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-        <!-- maintainer-needed -->
-        <upstream>
-            <remote-id type="github">LibRaw/LibRaw</remote-id>
-        </upstream>
+	<!-- maintainer-needed -->
+	<upstream>
+		<changelog>https://www.libraw.org/download#changelog</changelog>
+		<remote-id type="github">LibRaw/LibRaw</remote-id>
+	</upstream>
 </pkgmetadata>

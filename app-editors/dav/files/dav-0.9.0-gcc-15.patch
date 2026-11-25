@@ -1,0 +1,27 @@
+Description: Fix build with GCC-15
+Author: Marcos Talau <talau@debian.org>
+Bug-Debian: https://bugs.debian.org/1096506
+Last-Update: 2026-01-05
+
+--- dav-text-0.9.0.orig/main.c
++++ dav-text-0.9.0/main.c
+@@ -749,7 +749,7 @@ void logMsg(char *msg) {
+   }
+ }
+ 
+-void sigcatch() {
++void sigcatch(int) {
+   quit("");
+ }
+ 
+--- dav-text-0.9.0.orig/main.h
++++ dav-text-0.9.0/main.h
+@@ -31,7 +31,7 @@ void doAlternativeArguments(int argc, ch
+ void quit(char *text);
+ void displayHelp();
+ void displayVersion();
+-void sigcatch();
++void sigcatch(int);
+ void loadSettings();
+ void writeRC(FILE *fp);
+ void tryQuit();

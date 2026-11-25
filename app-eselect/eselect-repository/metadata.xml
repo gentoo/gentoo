@@ -9,7 +9,7 @@
 		<flag name="mercurial">Support mercurial sync-type.</flag>
 	</use>
 	<upstream>
-		<remote-id type="github">projg2/eselect-repository</remote-id>
+		<remote-id type="github">gentoo/eselect-repository</remote-id>
 	</upstream>
 	<stabilize-allarches/>
 </pkgmetadata>

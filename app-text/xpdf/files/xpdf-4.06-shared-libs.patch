@@ -1,0 +1,47 @@
+--- xpdf-4.01.orig/cmake-config.txt
++++ xpdf-4.01/cmake-config.txt
+@@ -12,6 +12,9 @@
+ include(CheckCXXSourceCompiles)
+ include(GNUInstallDirs)
+ 
++set(XPDF_LIBDIR ${CMAKE_INSTALL_LIBDIR}/xpdf)
++set(CMAKE_INSTALL_RPATH ${CMAKE_INSTALL_FULL_LIBDIR}/xpdf)
++
+ enable_language(CXX)
+ 
+ #--- set default C/C++ compiler flags for Unix
+--- xpdf-4.01.orig/fofi/CMakeLists.txt
++++ xpdf-4.01/fofi/CMakeLists.txt
+@@ -24,3 +24,5 @@
+ add_library(fofi
+   $<TARGET_OBJECTS:fofi_objs>
+ )
++
++install(TARGETS fofi LIBRARY DESTINATION ${XPDF_LIBDIR})
+--- xpdf-4.01.orig/goo/CMakeLists.txt
++++ xpdf-4.01/goo/CMakeLists.txt
+@@ -25,3 +25,5 @@
+ add_library(goo
+   $<TARGET_OBJECTS:goo_objs>
+ )
++
++install(TARGETS goo LIBRARY DESTINATION ${XPDF_LIBDIR})
+--- xpdf-4.01.orig/splash/CMakeLists.txt
++++ xpdf-4.01/splash/CMakeLists.txt
+@@ -44,4 +44,6 @@
+   add_library(splash
+     $<TARGET_OBJECTS:splash_objs>
+   )
++
++  install(TARGETS splash LIBRARY DESTINATION ${XPDF_LIBDIR})
+ endif ()
+--- xpdf-4.01.orig/xpdf-qt/CMakeLists.txt
++++ xpdf-4.01/xpdf-qt/CMakeLists.txt
+@@ -93,6 +93,7 @@
+   else ()
+     set_property(TARGET xpdf PROPERTY Qt5_NO_LINK_QTMAIN ON)
+   endif ()
++  set_property(TARGET xpdf PROPERTY INSTALL_RPATH "")
+ 
+   install(TARGETS xpdf RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
+   install(FILES ${PROJECT_SOURCE_DIR}/doc/xpdf.1 DESTINATION ${CMAKE_INSTALL_MANDIR}/man1)

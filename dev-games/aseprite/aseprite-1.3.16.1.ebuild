@@ -103,8 +103,7 @@ src_prepare() {
 		-e 's:add_subdirectory(TinyEXIF):add_subdirectory(TinyEXIF EXCLUDE_FROM_ALL):g' \
 			third_party/CMakeLists.txt || die
 	# Aseprite: don't use bundled gtest
-	sed -i -e '/add_subdirectory(googletest)/d' \
-		laf/third_party/CMakeLists.txt || die
+	cmake_comment_add_subdirectory -f laf/third_party googletest
 	# Fix shebang in thumbnailer
 	sed -i -e 's:#!/usr/bin/sh:#!/bin/sh:' \
 		src/desktop/linux/aseprite-thumbnailer || die

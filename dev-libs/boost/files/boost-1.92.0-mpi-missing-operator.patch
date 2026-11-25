@@ -1,0 +1,46 @@
+https://github.com/boostorg/mpi/issues/179
+https://github.com/boostorg/mpi/commit/7c6b9c1be2eba1bf65271adee11683d0e9976ff2
+
+From: Alain Miniussi <alain.miniussi@oca.eu>
+Date: Mon, 10 Aug 2026 21:17:53 +0200
+Subject: [PATCH] Fixes #179.
+
+Boost.Python indexing suites instantiate code paths requiring stored
+types to be equality comparable.
+
+`boost::mpi::python::request_with_value` did not provide an
+`operator==`, causing compilation failures.
+
+Add the missing comparison operator and keep existing tests passing.
+
+This is similar to other Boost.Python requirements already documented
+in `py_nonblocking.hpp`.
+--- a/libs/mpi/src/python/py_request.cpp
++++ b/libs/mpi/src/python/py_request.cpp
+@@ -64,6 +64,10 @@ const object python::request_with_value::wrap_test()
+     return object();
+ }
+ 
++bool operator==(python::request_with_value const&, python::request_with_value const&) {
++  PyErr_SetString(PyExc_NotImplementedError, "mpi requests are not comparable");
++  throw error_already_set();
++}
+ 
+ namespace boost { namespace mpi { namespace python {
+   
+--- a/libs/mpi/src/python/request_with_value.hpp
++++ b/libs/mpi/src/python/request_with_value.hpp
+@@ -65,7 +65,12 @@ namespace boost { namespace mpi { namespace python {
+       friend request_with_value communicator_irecv_content(
+           const communicator&, int, int, content&);
+   };
+-
++      
++  // FIXME: requests are not comparable, thus this operator makes no sense.
++  // Unfortunately, indexing_suites insist on having __contains__ available.
++  // Just make it error out for now.
++  bool
++  operator==(request_with_value const& ,request_with_value const&);
+ } } }
+ 
+ #endif

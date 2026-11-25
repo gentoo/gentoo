@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,7 +8,7 @@ MAVEN_ID="org.apache.commons:commons-imaging:1.0-alpha3"
 
 inherit java-pkg-2 java-pkg-simple verify-sig
 
-DESCRIPTION="Apache Commons Imaging (previously Sanselan) is a pure-Java image library."
+DESCRIPTION="Apache Commons Imaging (previously Sanselan), a pure-Java image library"
 HOMEPAGE="https://commons.apache.org/proper/commons-imaging/"
 SRC_URI="mirror://apache/commons/imaging/source/${P/_/-}-src.tar.gz
 	verify-sig? ( https://downloads.apache.org/commons/imaging/source/${P/_/-}-src.tar.gz.asc )"

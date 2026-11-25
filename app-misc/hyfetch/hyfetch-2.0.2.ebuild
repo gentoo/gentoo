@@ -162,11 +162,11 @@ LICENSE="MIT"
 # Dependent crate licenses
 LICENSE+=" Apache-2.0 ISC LGPL-3+ MIT MPL-2.0 Unicode-3.0"
 SLOT="0"
-KEYWORDS="amd64 ~arm64"
+KEYWORDS="amd64 arm64"
 
 src_install() {
 	dodir usr/bin
-	dobin target/release/hyfetch
+	dobin "$(cargo_target_dir)"/hyfetch
 	newbin neofetch neowofetch
 	doman docs/hyfetch.1
 	newman docs/neofetch.1 neowofetch.1

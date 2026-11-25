@@ -23,6 +23,10 @@
 		interfaces. A core set of components, written and maintained by the
 		Dash team, is available in the dash-core-components library.
 	</longdescription>
+	<use>
+		<flag name="compress">Use <pkg>dev-python/flask-compress</pkg> to save bandwidth</flag>
+		<flag name="diskcache">Use <pkg>dev-python/diskcache</pkg> to cache on disk</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">plotly/dash</remote-id>
 	</upstream>

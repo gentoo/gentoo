@@ -1,0 +1,42 @@
+Skip the tests relied on a patch applied on the bundled version
+See https://github.com/rakshasa/libtorrent/commit/5af34f5
+test_getdn_oversized_name is fixed with udns-0.7
+--- a/test/net/test_udns_resolver.cc
++++ b/test/net/test_udns_resolver.cc
+@@ -171,6 +171,7 @@ send_answer(const scratch_server& server, const sockaddr_in& to, const std::vect
+ 
+ } // namespace
+ 
++#if 0
+ void
+ test_udns_resolver::test_random32_exceeds_microsecond_range() {
+   // A clock-derived value cannot exceed the largest tv_usec, so a single value
+@@ -182,6 +183,7 @@ test_udns_resolver::test_random32_exceeds_microsecond_range() {
+ 
+   CPPUNIT_ASSERT(above_microsecond_range);
+ }
++#endif
+ 
+ void
+ test_udns_resolver::test_reply_without_qr_flag_is_rejected() {
+--- a/test/net/test_udns_resolver.h
++++ b/test/net/test_udns_resolver.h
+@@ -6,8 +6,6 @@
+ class test_udns_resolver : public test_fixture {
+   CPPUNIT_TEST_SUITE(test_udns_resolver);
+ 
+-  CPPUNIT_TEST(test_random32_exceeds_microsecond_range);
+-  CPPUNIT_TEST(test_reply_without_qr_flag_is_rejected);
+   CPPUNIT_TEST(test_reply_with_qr_flag_is_accepted);
+ 
+   CPPUNIT_TEST_SUITE_END();
+--- a/test/net/test_udns_parse.h
++++ b/test/net/test_udns_parse.h
+@@ -7,7 +7,6 @@ class test_udns_parse : public test_fixture {
+   CPPUNIT_TEST_SUITE(test_udns_parse);
+ 
+   CPPUNIT_TEST(test_getdn_max_length_name);
+-  CPPUNIT_TEST(test_getdn_oversized_name);
+ 
+   CPPUNIT_TEST_SUITE_END();
+ 

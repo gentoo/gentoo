@@ -1,22 +1,42 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..15} )
 
-inherit flag-o-matic git-r3 linux-info python-single-r1 systemd toolchain-funcs
+inherit flag-o-matic linux-info python-single-r1 systemd toolchain-funcs
+
+# We need to re-host the pre-built assets tarball because it's hidden behind a
+# download API. It's smaller than the npm cache needed to rebuild them.
+# When bumping, run this, and update WEBUI_VUE_HASH below.
+# EXTRA_ECONF="--enable-vue_cache --disable-vue_build" ebuild tvheadend-9999.ebuild clean compile
+# cp -v /var/tmp/portage/media-tv/tvheadend-9999/work/tvheadend-9999/build.linux/webui-vue-*.tgz /var/cache/distfiles/
+
+if [[ ${PV} == *9999* ]]; then
+	EGIT_REPO_URI="https://github.com/${PN}/${PN}.git"
+	inherit git-r3
+else
+	COMMIT=""
+	WEBUI_VUE_HASH=""
+	SRC_URI="https://github.com/tvheadend/tvheadend/archive/${COMMIT}.tar.gz -> ${P}.tar.gz
+		https://dev.gentoo.org/~chewi/distfiles/webui-vue-${WEBUI_VUE_HASH}.tgz"
+	S="${WORKDIR}/${PN}-${COMMIT}"
+	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+	export TVHEADEND_FILE_CACHE="${DISTDIR}"
+fi
 
 DESCRIPTION="Tvheadend is a TV streaming server and digital video recorder"
 HOMEPAGE="https://tvheadend.org/"
-EGIT_REPO_URI="https://github.com/${PN}/${PN}.git"
+
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="dbus debug +ddci dvbcsa +dvb +ffmpeg hdhomerun +imagecache +inotify iptv opus satip systemd +timeshift uriparser vpx x264 x265 xmltv zeroconf zlib"
+IUSE="dbus debug +ddci dvbcsa +dvb +ffmpeg hdhomerun +imagecache +inotify iptv opus satip systemd +timeshift uriparser vaapi vpx x264 x265 xmltv zeroconf zlib"
 
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
 	ddci? ( dvb )
+	vaapi? ( ffmpeg )
 "
 
 BDEPEND="
@@ -31,7 +51,7 @@ RDEPEND="
 	virtual/libiconv
 	dbus? ( sys-apps/dbus )
 	dvbcsa? ( media-libs/libdvbcsa )
-	ffmpeg? ( media-video/ffmpeg:=[opus?,vpx?,x264?,x265?] )
+	ffmpeg? ( =media-video/ffmpeg-8.1*:=[opus?,vpx?,x264?,x265?] )
 	hdhomerun? ( media-libs/libhdhomerun )
 	dev-libs/openssl:0=
 	uriparser? ( dev-libs/uriparser )
@@ -51,6 +71,7 @@ DEPEND="
 		x264? ( media-libs/x264 )
 		x265? ( media-libs/x265 )
 	)
+	vaapi? ( media-libs/libva:= )
 "
 
 RDEPEND+="
@@ -61,6 +82,10 @@ RDEPEND+="
 	xmltv? ( media-tv/xmltv )
 "
 
+[[ ${PV} == *9999* ]] && BDEPEND+="
+	net-libs/nodejs[npm]
+"
+
 # Some patches from:
 # https://github.com/rpmfusion/tvheadend
 
@@ -69,15 +94,35 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-4.3-hdhomerun.patch
 	"${FILESDIR}"/${PN}-4.2.2-dtv_scan_tables.patch
 	"${FILESDIR}"/${PN}-4.2.7-python3.patch
+	"${FILESDIR}"/${PN}-4.3-ffmpeg9.patch
 )
 
 DOCS=( README.md )
+
+# Make npm behave.
+export npm_config_audit=false
+export npm_config_color=false
+export npm_config_foreground_scripts=true
+export npm_config_loglevel=verbose
+export npm_config_optional=true
+export npm_config_progress=false
+export npm_config_save=false
 
 pkg_setup() {
 	python-single-r1_pkg_setup
 
 	use inotify &&
 		CONFIG_CHECK="~INOTIFY_USER" linux-info_pkg_setup
+}
+
+src_unpack() {
+	if [[ ${PV} == *9999* ]]; then
+		git-r3_src_unpack
+		# This downloads things so must go in src_unpack to avoid the sandbox.
+		env -C "${S}"/src/webui/static-vue npm install || die
+	else
+		unpack ${P}.tar.gz
+	fi
 }
 
 # We unconditionally enable codecs that do not require additional
@@ -93,43 +138,62 @@ src_configure() {
 	# https://github.com/tvheadend/tvheadend/issues/1732
 	filter-lto
 
+	local myconf=(
+		--disable-bundle
+		--disable-ccache
+		--disable-dvbscan
+		--disable-ffmpeg_static
+		--disable-hdhomerun_static
+		--enable-libfdkaac
+		--enable-libtheora
+		--enable-libvorbis
+		--nowerror
+		$(use_enable dbus dbus_1)
+		$(use_enable debug trace)
+		$(use_enable ddci)
+		$(use_enable dvb linuxdvb)
+		$(use_enable dvbcsa)
+		$(use_enable dvbcsa capmt)
+		$(use_enable dvbcsa cccam)
+		$(use_enable dvbcsa constcw)
+		$(use_enable dvbcsa cwc)
+		$(use_enable ffmpeg libav)
+		$(use_enable hdhomerun hdhomerun_client)
+		$(use_enable imagecache)
+		$(use_enable inotify)
+		$(use_enable iptv)
+		$(use_enable opus libopus)
+		$(use_enable satip satip_server)
+		$(use_enable satip satip_client)
+		$(use_enable systemd libsystemd_daemon)
+		$(use_enable timeshift)
+		$(use_enable uriparser)
+		$(use_enable vaapi)
+		$(use_enable vpx libvpx)
+		$(use_enable x264 libx264)
+		$(use_enable x265 libx265)
+		$(use_enable zeroconf avahi)
+		$(use_enable zlib)
+	)
+
+	# For live, we build the assets, but for non-live, we just use pre-built
+	# assets. If you want to modify the assets, use the live ebuild.
+	if [[ ${PV} == *9999* ]]; then
+		myconf+=(
+			--disable-vue_cache
+			--enable-vue_build
+		)
+	else
+		myconf+=(
+			--enable-vue_cache
+			--disable-vue_build
+		)
+	fi
+
 	CC="$(tc-getCC)" \
 	PKG_CONFIG="$(tc-getPKG_CONFIG)" \
-	econf \
-		--disable-bundle \
-		--disable-ccache \
-		--disable-dvbscan \
-		--disable-ffmpeg_static \
-		--disable-hdhomerun_static \
-		--enable-libfdkaac \
-		--enable-libtheora \
-		--enable-libvorbis \
-		--nowerror \
-		$(use_enable dbus dbus_1) \
-		$(use_enable debug trace) \
-		$(use_enable ddci) \
-		$(use_enable dvb linuxdvb) \
-		$(use_enable dvbcsa) \
-		$(use_enable dvbcsa capmt) \
-		$(use_enable dvbcsa cccam) \
-		$(use_enable dvbcsa constcw) \
-		$(use_enable dvbcsa cwc) \
-		$(use_enable ffmpeg libav) \
-		$(use_enable hdhomerun hdhomerun_client) \
-		$(use_enable imagecache) \
-		$(use_enable inotify) \
-		$(use_enable iptv) \
-		$(use_enable opus libopus) \
-		$(use_enable satip satip_server) \
-		$(use_enable satip satip_client) \
-		$(use_enable systemd libsystemd_daemon) \
-		$(use_enable timeshift) \
-		$(use_enable uriparser) \
-		$(use_enable vpx libvpx) \
-		$(use_enable x264 libx264) \
-		$(use_enable x265 libx265) \
-		$(use_enable zeroconf avahi) \
-		$(use_enable zlib)
+	npm_config_offline=1 \
+	econf "${myconf[@]}"
 }
 
 src_compile() {

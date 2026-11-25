@@ -1,0 +1,306 @@
+https://github.com/gnosek/fcgiwrap/pull/35
+
+From 14c0fb75367ccda0b7acaae8c4fe9564f45346b4 Mon Sep 17 00:00:00 2001
+From: Taras Taranenko <ttaranenko@localhost.localdomain>
+Date: Thu, 24 Mar 2016 12:30:51 +0100
+Subject: [PATCH 1/4] added timeout parameter to fcgiwrap
+
+---
+ fcgiwrap.c | 73 ++++++++++++++++++++++++++++++++++++++++++++++++++++--
+ 1 file changed, 71 insertions(+), 2 deletions(-)
+
+diff --git a/fcgiwrap.c b/fcgiwrap.c
+index 0a5be7a..2ee4a5c 100644
+--- a/fcgiwrap.c
++++ b/fcgiwrap.c
+@@ -98,9 +98,15 @@ static const char * blacklisted_env_vars[] = {
+ 
+ static int stderr_to_fastcgi = 0;
+ 
+-
++#define TIMEOUT_MAX 3600	/* an hour timeout */
+ #define FCGI_BUF_SIZE 4096
+ 
++/* timeout related data */
++static int timed_out;
++static int term_signal = SIGTERM;  /* same default as kill command.  */
++static int monitored_pid;
++static int timeout;
++
+ static int write_all(int fd, char *buf, size_t size)
+ {
+ 	size_t nleft = size;
+@@ -528,6 +534,49 @@ static void NORETURN cgi_error(const char *message, const char *reason, const ch
+ 	_exit(99);
+ }
+ 
++static void unblock_signal (int sig)
++{
++  sigset_t unblock_set;
++  sigemptyset (&unblock_set);
++  sigaddset (&unblock_set, sig);
++  sigprocmask (SIG_UNBLOCK, &unblock_set, NULL);
++}
++
++/* Start the timeout after which we'll receive a SIGALRM.
++   '0' means don't timeout.  */
++static void settimeout (int duration)
++{
++  	/* We configure timers below so that SIGALRM is sent on expiry.
++     Therefore ensure we don't inherit a mask blocking SIGALRM.  */
++  	unblock_signal (SIGALRM);
++
++  	if (TIMEOUT_MAX <= duration)
++    	timeout = TIMEOUT_MAX;
++  	else {
++  		timeout = duration;
++  	}
++	alarm (timeout);
++}
++
++static void cleanup (int sig)
++{
++	if (sig == SIGALRM)
++    {
++    	timed_out = 1;
++      	sig = term_signal;
++    }
++  	if (monitored_pid)
++    {
++    	/* Send the signal directly to the monitored child */
++    	kill (monitored_pid, sig);
++		//FCGI_puts("Status: 504 Gateway Timeout\nContent-type: text/plain\n");
++		//FCGI_puts("CGI script execution timeout");
++    }
++  	else /* we're the child or the child is not exec'd yet.  */
++    	_exit (128 + sig);
++}
++
++
+ static void handle_fcgi_request(void)
+ {
+ 	int pipe_in[2];
+@@ -565,6 +614,7 @@ static void handle_fcgi_request(void)
+ 
+ 			signal(SIGCHLD, SIG_DFL);
+ 			signal(SIGPIPE, SIG_DFL);
++			signal(SIGALRM, SIG_DFL);
+ 
+ 			filename = get_cgi_filename();
+ 			inherit_environment();
+@@ -605,6 +655,10 @@ static void handle_fcgi_request(void)
+ 			fc.reply_state = REPLY_STATE_INIT;
+ 			fc.cgi_pid = pid;
+ 
++			if (timeout>0) {
++				monitored_pid = pid;
++      			settimeout (timeout);
++			}
+ 			fcgi_pass(&fc);
+ 	}
+ 	return;
+@@ -640,13 +694,23 @@ static void fcgiwrap_main(void)
+ 	signal(SIGCHLD, SIG_IGN);
+ 	signal(SIGPIPE, SIG_IGN);
+ 
++	sigint_received = 0;
++
+ 	// Use sigaction for SIGINT so we can avoid SA_RESTART and actually react
+ 	a.sa_handler = sigint_handler;
+ 	a.sa_flags = 0;
++
+ 	sigemptyset( &a.sa_mask );
+ 	sigaction( SIGINT, &a, NULL );
+ 	sigaction( SIGTERM, &a, NULL );
+ 
++	struct sigaction sa;
++  	sigemptyset (&sa.sa_mask);  /* Allow concurrent calls to handler */
++  	sa.sa_handler = cleanup;
++  	sa.sa_flags = SA_RESTART;   /* Restart syscalls if possible, as that's
++                                   more likely to work cleanly.  */
++  	sigaction (SIGALRM, &sa, NULL); /* our timeout.  */
++
+ 	inherited_environ = environ;
+ 
+ 	while (FCGI_Accept() >= 0 && !sigint_received) {
+@@ -844,8 +908,9 @@ int main(int argc, char **argv)
+ 	char *socket_url = NULL;
+ 	int fd = FCGI_FD;
+ 	int c;
++	timeout = 0;
+ 
+-	while ((c = getopt(argc, argv, "c:hfs:p:")) != -1) {
++	while ((c = getopt(argc, argv, "c:t:hfs:p:")) != -1) {
+ 		switch (c) {
+ 			case 'f':
+ 				stderr_to_fastcgi++;
+@@ -856,6 +921,7 @@ int main(int argc, char **argv)
+ 					"Options are:\n"
+ 					"  -f\t\t\tSend CGI's stderr over FastCGI\n"
+ 					"  -c <number>\t\tNumber of processes to prefork\n"
++					"  -t <number>\t\tNumber of seconds after those CGI process would be killed\n"
+ 					"  -s <socket_url>\tSocket to bind to (say -s help for help)\n"
+ 					"  -h\t\t\tShow this help message and exit\n"
+ 					"  -p <path>\t\tRestrict execution to this script. (repeated options will be merged)\n"
+@@ -867,6 +933,9 @@ int main(int argc, char **argv)
+ 			case 'c':
+ 				nchildren = atoi(optarg);
+ 				break;
++			case 't':
++				timeout = atoi(optarg);
++				break;
+ 			case 's':
+ 				socket_url = strdup(optarg);
+ 				break;
+-- 
+2.55.0
+
+
+From b8fe97fec74e8d22d69073babf53d16bf70c5b59 Mon Sep 17 00:00:00 2001
+From: Taras Taranenko <ttaranenko@localhost.localdomain>
+Date: Thu, 24 Mar 2016 12:45:42 +0100
+Subject: [PATCH 2/4] added timeout parameter to fcgiwrap, optimization
+
+---
+ fcgiwrap.c | 20 ++++++++------------
+ 1 file changed, 8 insertions(+), 12 deletions(-)
+
+diff --git a/fcgiwrap.c b/fcgiwrap.c
+index 2ee4a5c..f4a1306 100644
+--- a/fcgiwrap.c
++++ b/fcgiwrap.c
+@@ -547,7 +547,7 @@ static void unblock_signal (int sig)
+ static void settimeout (int duration)
+ {
+   	/* We configure timers below so that SIGALRM is sent on expiry.
+-     Therefore ensure we don't inherit a mask blocking SIGALRM.  */
++    Therefore ensure we don't inherit a mask blocking SIGALRM.  */
+   	unblock_signal (SIGALRM);
+ 
+   	if (TIMEOUT_MAX <= duration)
+@@ -562,21 +562,15 @@ static void cleanup (int sig)
+ {
+ 	if (sig == SIGALRM)
+     {
+-    	timed_out = 1;
+       	sig = term_signal;
++	  	if (monitored_pid)
++    	{
++    		/* Send the signal directly to the monitored child */
++    		kill (monitored_pid, sig);
++    	}
+     }
+-  	if (monitored_pid)
+-    {
+-    	/* Send the signal directly to the monitored child */
+-    	kill (monitored_pid, sig);
+-		//FCGI_puts("Status: 504 Gateway Timeout\nContent-type: text/plain\n");
+-		//FCGI_puts("CGI script execution timeout");
+-    }
+-  	else /* we're the child or the child is not exec'd yet.  */
+-    	_exit (128 + sig);
+ }
+ 
+-
+ static void handle_fcgi_request(void)
+ {
+ 	int pipe_in[2];
+@@ -593,6 +587,8 @@ static void handle_fcgi_request(void)
+ 	if (pipe(pipe_out) < 0) goto err_pipeout;
+ 	if (pipe(pipe_err) < 0) goto err_pipeerr;
+ 
++	monitored_pid = 0;
++
+ 	switch((pid = fork())) {
+ 		case -1:
+ 			goto err_fork;
+-- 
+2.55.0
+
+
+From 9929cb579c51358a4ab66244e159c77d8d91a1f2 Mon Sep 17 00:00:00 2001
+From: Taras Taranenko <ttaranenko@localhost.localdomain>
+Date: Thu, 24 Mar 2016 13:08:30 +0100
+Subject: [PATCH 3/4] added timeout parameter to fcgiwrap, optimization 2
+
+---
+ fcgiwrap.c | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/fcgiwrap.c b/fcgiwrap.c
+index f4a1306..75ef2ce 100644
+--- a/fcgiwrap.c
++++ b/fcgiwrap.c
+@@ -102,7 +102,6 @@ static int stderr_to_fastcgi = 0;
+ #define FCGI_BUF_SIZE 4096
+ 
+ /* timeout related data */
+-static int timed_out;
+ static int term_signal = SIGTERM;  /* same default as kill command.  */
+ static int monitored_pid;
+ static int timeout;
+-- 
+2.55.0
+
+
+From 4bb131fa6591f6b9cecd0203e2d91cd014920c9f Mon Sep 17 00:00:00 2001
+From: Taras Taranenko <ttaranenko@localhost.localdomain>
+Date: Thu, 24 Mar 2016 13:26:47 +0100
+Subject: [PATCH 4/4] added timeout parameter to fcgiwrap, final
+
+---
+ fcgiwrap.c | 33 ++++++++++++++++-----------------
+ 1 file changed, 16 insertions(+), 17 deletions(-)
+
+diff --git a/fcgiwrap.c b/fcgiwrap.c
+index 75ef2ce..04b0d34 100644
+--- a/fcgiwrap.c
++++ b/fcgiwrap.c
+@@ -545,29 +545,28 @@ static void unblock_signal (int sig)
+    '0' means don't timeout.  */
+ static void settimeout (int duration)
+ {
+-  	/* We configure timers below so that SIGALRM is sent on expiry.
+-    Therefore ensure we don't inherit a mask blocking SIGALRM.  */
+-  	unblock_signal (SIGALRM);
+-
+-  	if (TIMEOUT_MAX <= duration)
+-    	timeout = TIMEOUT_MAX;
+-  	else {
+-  		timeout = duration;
+-  	}
+-	alarm (timeout);
++	/* We configure timers below so that SIGALRM is sent on expiry.
++	Therefore ensure we don't inherit a mask blocking SIGALRM.  */
++	unblock_signal (SIGALRM);
++
++	if (TIMEOUT_MAX <= duration)
++		timeout = TIMEOUT_MAX;
++	else
++ 		timeout = duration;
++
++	alarm(timeout);
+ }
+ 
+ static void cleanup (int sig)
+ {
+ 	if (sig == SIGALRM)
+-    {
+-      	sig = term_signal;
+-	  	if (monitored_pid)
+-    	{
++	{
++    	sig = term_signal;
++    	if (monitored_pid) {
+     		/* Send the signal directly to the monitored child */
+-    		kill (monitored_pid, sig);
+-    	}
+-    }
++			kill (monitored_pid, sig);
++		}
++	}
+ }
+ 
+ static void handle_fcgi_request(void)
+-- 
+2.55.0

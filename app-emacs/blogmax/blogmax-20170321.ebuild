@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,13 +8,13 @@ inherit elisp edos2unix readme.gentoo-r1
 DESCRIPTION="Blogging in Emacs"
 HOMEPAGE="https://billstclair.com/blogmax/index.html"
 # snapshot from https://github.com/billstclair/BlogMax
-SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.tar.xz"
+SRC_URI="https://distfiles.gentoo.org/pub/proj/emacs/${P}.tar.xz"
+S="${WORKDIR}/${PN}"
 
 LICENSE="GPL-1+"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 
-S="${WORKDIR}/${PN}"
 ELISP_REMOVE="*.elc gpl.txt"
 SITEFILE="50${PN}-gentoo.el"
 

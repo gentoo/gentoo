@@ -1,0 +1,23 @@
+Fix build of tests with libstdc++-16
+
+libstdc++-16 provides std::hash<__int128> also in strict (-std=c++17) mode
+--- a/test/rocprim/test_device_segmented_topk.cpp
++++ b/test/rocprim/test_device_segmented_topk.cpp
+@@ -91,6 +91,9 @@ void inline compare_k(InputVector input, OutputVector output, SizeOut k)
+ 
+ namespace std
+ {
++// provided by libstdc++ (GNU mode, or since 16 also strict mode) and libc++
++#if !defined(__GLIBCXX_TYPE_INT_N_0) && !(defined(_GLIBCXX_RELEASE) && _GLIBCXX_RELEASE >= 16) \
++    && !defined(_LIBCPP_VERSION)
+ template<>
+ struct hash<rocprim::int128_t>
+ {
+@@ -113,6 +116,7 @@ struct hash<rocprim::uint128_t>
+         return (hash<std::uint64_t>{}(low) * 31) + hash<std::uint64_t>{}(high);
+     }
+ };
++#endif
+ 
+ template<>
+ struct hash<rocprim::half>

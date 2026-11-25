@@ -1,0 +1,16 @@
+Check new target RapidJSON added by rapidjson (commit b1c0c28)
+see https://bugs.gentoo.org/974359
+--- a/cmake-proxies/cmake-modules/dependencies/rapidjson.cmake
++++ b/cmake-proxies/cmake-modules/dependencies/rapidjson.cmake
+@@ -2,7 +2,10 @@
+ 
+ if(NOT ${_OPT}use_rapidjson STREQUAL "off")
+    if(NOT TARGET rapidjson::rapidjson)
+-      if(TARGET rapidjson)
++      if(TARGET RapidJSON)
++         # New target RapidJSON
++         add_library( rapidjson::rapidjson ALIAS RapidJSON )
++      elseif(TARGET rapidjson)
+          add_library( rapidjson::rapidjson ALIAS rapidjson )
+       else()
+          # At least on Arch RapidJSONConfig.cmake does not define a target at all

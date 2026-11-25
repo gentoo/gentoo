@@ -11,7 +11,7 @@ SRC_URI="https://github.com/pnggroup/pngcheck/archive/v${PV}.tar.gz -> ${P}.tar.
 
 LICENSE="HPND GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 RDEPEND="virtual/zlib:="
 DEPEND="${RDEPEND}"

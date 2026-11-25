@@ -1,0 +1,108 @@
+https://bugs.gentoo.org/974284
+https://gstreamer.freedesktop.org/security/sa-2026-0013.html
+https://gitlab.freedesktop.org/gstreamer/gstreamer/-/merge_requests/11240
+
+From 9a4bef4892c23b9d156f810d5e1a18ffc774a595 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Sebastian=20Dr=C3=B6ge?= <sebastian@centricular.com>
+Date: Thu, 26 Mar 2026 18:31:05 +0200
+Subject: [PATCH 1/2] h264parse: Remove pointless allocation failure handling
+
+g_new0() already aborts the process on allocation failure.
+
+Part-of: <https://gitlab.freedesktop.org/gstreamer/gstreamer/-/merge_requests/11240>
+--- a/gst-libs/gst/codecparsers/gsth264parser.c
++++ b/gst-libs/gst/codecparsers/gsth264parser.c
+@@ -2044,8 +2044,6 @@ gst_h264_parse_sps_mvc_data (NalReader * nr, GstH264SPS * sps)
+   READ_UE_MAX (nr, mvc->num_views_minus1, GST_H264_MAX_VIEW_COUNT - 1);
+ 
+   mvc->view = g_new0 (GstH264SPSExtMVCView, mvc->num_views_minus1 + 1);
+-  if (!mvc->view)
+-    goto error_allocation_failed;
+ 
+   for (i = 0; i <= mvc->num_views_minus1; i++)
+     READ_UE_MAX (nr, mvc->view[i].view_id, GST_H264_MAX_VIEW_ID);
+@@ -2083,8 +2081,6 @@ gst_h264_parse_sps_mvc_data (NalReader * nr, GstH264SPS * sps)
+   mvc->level_value =
+       g_new0 (GstH264SPSExtMVCLevelValue,
+       mvc->num_level_values_signalled_minus1 + 1);
+-  if (!mvc->level_value)
+-    goto error_allocation_failed;
+ 
+   for (i = 0; i <= mvc->num_level_values_signalled_minus1; i++) {
+     GstH264SPSExtMVCLevelValue *const level_value = &mvc->level_value[i];
+@@ -2095,8 +2091,6 @@ gst_h264_parse_sps_mvc_data (NalReader * nr, GstH264SPS * sps)
+     level_value->applicable_op =
+         g_new0 (GstH264SPSExtMVCLevelValueOp,
+         level_value->num_applicable_ops_minus1 + 1);
+-    if (!level_value->applicable_op)
+-      goto error_allocation_failed;
+ 
+     for (j = 0; j <= level_value->num_applicable_ops_minus1; j++) {
+       GstH264SPSExtMVCLevelValueOp *const op = &level_value->applicable_op[j];
+@@ -2105,8 +2099,6 @@ gst_h264_parse_sps_mvc_data (NalReader * nr, GstH264SPS * sps)
+ 
+       READ_UE_MAX (nr, op->num_target_views_minus1, 1023);
+       op->target_view_id = g_new (guint16, op->num_target_views_minus1 + 1);
+-      if (!op->target_view_id)
+-        goto error_allocation_failed;
+ 
+       for (k = 0; k <= op->num_target_views_minus1; k++)
+         READ_UE_MAX (nr, op->target_view_id[k], GST_H264_MAX_VIEW_ID);
+@@ -2115,11 +2107,6 @@ gst_h264_parse_sps_mvc_data (NalReader * nr, GstH264SPS * sps)
+   }
+   return TRUE;
+ 
+-error_allocation_failed:
+-  GST_WARNING ("failed to allocate memory");
+-  gst_h264_sps_clear (sps);
+-  return FALSE;
+-
+ error:
+   gst_h264_sps_clear (sps);
+   return FALSE;
+-- 
+GitLab
+
+
+From 1f823ee39f253fc23ad95e6833281146cad8ecad Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Sebastian=20Dr=C3=B6ge?= <sebastian@centricular.com>
+Date: Thu, 26 Mar 2026 18:37:50 +0200
+Subject: [PATCH 2/2] h264parse: Avoid NULL pointer dereferences when freeing
+ partially parsed SPS/MVC data
+
+Fixes https://gitlab.freedesktop.org/gstreamer/gstreamer/-/work_items/4992
+
+Part-of: <https://gitlab.freedesktop.org/gstreamer/gstreamer/-/merge_requests/11240>
+--- a/gst-libs/gst/codecparsers/gsth264parser.c
++++ b/gst-libs/gst/codecparsers/gsth264parser.c
+@@ -2623,15 +2623,19 @@ gst_h264_sps_mvc_clear (GstH264SPS * sps)
+   g_free (mvc->view);
+   mvc->view = NULL;
+ 
+-  for (i = 0; i <= mvc->num_level_values_signalled_minus1; i++) {
+-    GstH264SPSExtMVCLevelValue *const level_value = &mvc->level_value[i];
+-
+-    for (j = 0; j <= level_value->num_applicable_ops_minus1; j++) {
+-      g_free (level_value->applicable_op[j].target_view_id);
+-      level_value->applicable_op[j].target_view_id = NULL;
++  if (mvc->level_value) {
++    for (i = 0; i <= mvc->num_level_values_signalled_minus1; i++) {
++      GstH264SPSExtMVCLevelValue *const level_value = &mvc->level_value[i];
++
++      if (level_value->applicable_op) {
++        for (j = 0; j <= level_value->num_applicable_ops_minus1; j++) {
++          g_free (level_value->applicable_op[j].target_view_id);
++          level_value->applicable_op[j].target_view_id = NULL;
++        }
++      }
++      g_free (level_value->applicable_op);
++      level_value->applicable_op = NULL;
+     }
+-    g_free (level_value->applicable_op);
+-    level_value->applicable_op = NULL;
+   }
+   g_free (mvc->level_value);
+   mvc->level_value = NULL;
+-- 
+GitLab
+

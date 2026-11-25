@@ -1,0 +1,48 @@
+From 7ac409bd9fe2528205547cad52c0072f00311f17 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
+Date: Mon, 9 Feb 2026 16:58:56 +0000
+Subject: [PATCH] meson: fix GExiv2 GIR name
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+The API bump means GExiv2-0.16 is needed instead of 0.10
+
+Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
+---
+ meson.build     | 2 ++
+ src/meson.build | 3 +--
+ 2 files changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/meson.build b/meson.build
+index 590fb5f..19e4fff 100644
+--- a/meson.build
++++ b/meson.build
+@@ -48,8 +48,10 @@ lcms2_dep = dependency('lcms2', version: lcms2_min_version)
+ libpeas_dep = dependency('libpeas-1.0', version: libpeas_min_version)
+ libpeas_gtk_dep = dependency('libpeas-gtk-1.0', version: libpeas_min_version)
+ gexiv2_dep = dependency('gexiv2-0.16', version: gexiv2_016_min_version, required: false)
++gexiv2_gi_name = 'GExiv2-0.16'
+ if not gexiv2_dep.found()
+     gexiv2_dep = dependency('gexiv2', version: gexiv2_min_version)
++    gexiv2_gi_name = 'GExiv2-0.10'
+ endif
+ xext_dep = dependency('xext', version: xext_min_version)
+ # Cannot use pkg-config file as it includes a bogus '-fopenmp' arg in Libs
+diff --git a/src/meson.build b/src/meson.build
+index a109409..c9e3312 100644
+--- a/src/meson.build
++++ b/src/meson.build
+@@ -92,8 +92,7 @@ gir_incs = [
+   'Peas-1.0',
+   'Gst-1.0',
+   'GstBase-1.0',
+-  'GExiv2-0.10',
+-]
++] + gexiv2_gi_name
+ 
+ gir_dir = join_paths(entangle_datadir, 'gir-1.0')
+ typelib_dir = join_paths(entangle_libdir, 'girepository-1.0')
+-- 
+2.53.0
+

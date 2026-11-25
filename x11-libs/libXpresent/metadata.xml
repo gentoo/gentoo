@@ -6,6 +6,6 @@
     <name>X11</name>
   </maintainer>
   <upstream>
-    <remote-id type="freedesktop-gitlab">xorg/lib/libXpresent</remote-id>
+    <remote-id type="freedesktop-gitlab">xorg/lib/libxpresent</remote-id>
   </upstream>
 </pkgmetadata>

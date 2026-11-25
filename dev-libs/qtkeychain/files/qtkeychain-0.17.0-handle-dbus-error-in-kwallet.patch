@@ -1,0 +1,30 @@
+From 0deb2c067ed6d4e9842c98eccf09c3ff004b3c54 Mon Sep 17 00:00:00 2001
+From: Nicolas Fella <nicolas.fella@gmx.de>
+Date: Tue, 25 Aug 2026 17:37:07 +0200
+Subject: [PATCH] Handle DBus error in KWallet::networkWallet
+
+If the reply is an error trying to interpret the reply as a string
+will give the error message as string. Feeding that to openWallet()
+will then try to open that wallet, which makes no sense.
+
+Instead check whether the reply is valid and error out otherwise.
+---
+ qtkeychain/keychain_unix.cpp | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/qtkeychain/keychain_unix.cpp b/qtkeychain/keychain_unix.cpp
+index c3ee625..10a10cf 100644
+--- a/qtkeychain/keychain_unix.cpp
++++ b/qtkeychain/keychain_unix.cpp
+@@ -258,6 +258,11 @@ void JobPrivate::kwalletWalletFound(QDBusPendingCallWatcher *watcher)
+     // This allows to wait for user to unlock wallet, e.g. at Plasma startup
+     iface->setTimeout(0x7FFFFFFF);
+ 
++    if (!reply.isValid()) {
++        q->emitFinishedWithError(OtherError, reply.error().message());
++        return;
++    }
++
+     const QDBusPendingReply<int> pendingReply = iface->open(reply.value(), 0, q->service());
+     auto pendingWatcher = new QDBusPendingCallWatcher(pendingReply, this);
+     connect(pendingWatcher, &QDBusPendingCallWatcher::finished, this,

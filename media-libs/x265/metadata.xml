@@ -5,6 +5,7 @@
     <email>media-video@gentoo.org</email>
   </maintainer>
   <use>
+    <flag name="cet">Enable Intel Control-flow Enforcement Technology.</flag>
     <flag name="10bit">Add support for producing 10bits HEVC.</flag>
     <flag name="12bit">Add support for producing 12bits HEVC.</flag>
     <flag name="numa">Build with support for NUMA nodes.</flag>
@@ -12,5 +13,6 @@
   </use>
   <upstream>
     <remote-id type="bitbucket">multicoreware/x265_git</remote-id>
+    <remote-id type="github">Multicorewareinc/x265</remote-id>
   </upstream>
 </pkgmetadata>

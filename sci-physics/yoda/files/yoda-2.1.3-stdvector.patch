@@ -1,0 +1,173 @@
+From 22c3cfbd04bdd7ef31db0800f9fa8d5a7f637e2e Mon Sep 17 00:00:00 2001
+From: Alexander Puck Neuwirth <alexander@neuwirth-informatik.de>
+Date: Mon, 25 May 2026 12:55:59 +0200
+Subject: [PATCH 1/2] Use namespace std and remove std:: prefixes
+
+---
+ tests/TestBinnedStorage.cc | 35 ++++++++++++++++++-----------------
+ 1 file changed, 18 insertions(+), 17 deletions(-)
+
+diff --git a/tests/TestBinnedStorage.cc b/tests/TestBinnedStorage.cc
+index 4ce8a18c..b61a078a 100644
+--- a/tests/TestBinnedStorage.cc
++++ b/tests/TestBinnedStorage.cc
+@@ -9,18 +9,19 @@
+ #include <vector>
+ 
+ using namespace YODA;
++using namespace std;
+ 
+-using DStrAxis = Axis<std::string>;
++using DStrAxis = Axis<string>;
+ using CDblAxis = Axis<double>;
+ using DIntAxis = Axis<int>;
+ 
+ using BinningT = Binning<DStrAxis, CDblAxis, DIntAxis>;
+ 
+ template <typename T>
+-using StorageT = BinnedStorage<T, std::string, double, int>;
++using StorageT = BinnedStorage<T, string, double, int>;
+ 
+ template <size_t N, typename T>
+-using FillableT = FillableStorage<N, T, std::string, double, int>;
++using FillableT = FillableStorage<N, T, string, double, int>;
+ 
+ auto constructors() {
+   BinningT binning({"test1", "test2"}, {1., 2., 3., 4.}, {1, 2, 3, 4, 5});
+@@ -63,7 +64,7 @@ auto adapterConstructors() {
+   auto binStorage2 = FillableT<3, double>(binning, adapter1);
+   auto binStorage3 = FillableT<3, TestClass>(binning, adapter2);
+ 
+-  binStorage3.fill({"test1", 1.5, 1}, std::make_index_sequence<3>());
++  binStorage3.fill({"test1", 1.5, 1}, make_index_sequence<3>());
+ 
+   FillableT<3, TestClass>::BinType& bin = binStorage3.binAt({"test1", 1.5, 1});
+ 
+@@ -83,10 +84,10 @@ auto set() {
+ }
+ 
+ auto binsVectorWrapper() {
+-  auto binning = std::make_shared<BinningT>(
++  auto binning = make_shared<BinningT>(
+     BinningT({"test1", "test2"}, {1., 2., 3., 4.}, {1, 2, 3, 4, 5}));
+   using BinT = Bin<3, int, BinningT>;
+-  std::vector<BinT> bins;
++  vector<BinT> bins;
+ 
+   bins.reserve(100);
+   for(size_t i = 0; i < 100; i++){
+@@ -94,9 +95,9 @@ auto binsVectorWrapper() {
+   }
+ 
+   /// @note Must be sorted.
+-  std::vector<size_t> hiddenBins = {0, 9, 15, 87};
++  vector<size_t> hiddenBins = {0, 9, 15, 87};
+ 
+-  auto vecWrapper = BinsVecWrapper<std::vector<BinT>>(bins, hiddenBins);
++  auto vecWrapper = BinsVecWrapper<vector<BinT>>(bins, hiddenBins);
+ 
+   for (auto& bin : vecWrapper) {
+     for (auto& i : hiddenBins) {
+@@ -178,8 +179,8 @@ auto dbnAdapter() {
+ 
+   auto binStorage = FillableT<3, Dbn<3>>(binning);
+ 
+-  binStorage.fill({"test1", 1.4, 1}, std::make_index_sequence<3>(), 2.0, 1.0);
+-  binStorage.fill({"test1", 1.6, 1}, std::make_index_sequence<3>(), 2.0, 1.0);
++  binStorage.fill({"test1", 1.4, 1}, make_index_sequence<3>(), 2.0, 1.0);
++  binStorage.fill({"test1", 1.6, 1}, make_index_sequence<3>(), 2.0, 1.0);
+ 
+   auto& bin = binStorage.binAt({"test1", 1.4, 1});
+ 
+@@ -190,7 +191,7 @@ auto shape() {
+   vector<string> sedges{"A", "B", "C"};
+   vector<double> dedges{1.,2.,3.,4.};
+   vector<int> iedges{1,2,3,4,5,6,7};
+-  using BinStorageT = BinnedStorage<double, std::string, double, int>;
++  using BinStorageT = BinnedStorage<double, string, double, int>;
+   BinStorageT storage(sedges, dedges, iedges);
+   const bool res1 = storage.shape() == vector<size_t>{3, 3, 7};
+   const bool res2 = storage.shape(true) == vector<size_t>{4, 5, 8};
+@@ -198,10 +199,10 @@ auto shape() {
+ }
+ 
+ auto getBins() {
+-  using BinStorageT = BinnedStorage<double, std::string, double>;
++  using BinStorageT = BinnedStorage<double, string, double>;
+   BinStorageT binnedStorage1({"test1", "test2"}, { 1.0, 2.0, 3.0});
+ 
+-  std::vector<size_t> overflowIndices = {0, 1, 2, 3, 6, 9, 10, 11};
++  vector<size_t> overflowIndices = {0, 1, 2, 3, 6, 9, 10, 11};
+ 
+   auto binsVec1 = binnedStorage1.bins();
+ 
+@@ -213,11 +214,11 @@ auto getBins() {
+ 
+   /// @note Double curly braces to construct temporary axes, because
+   /// there is no constructor defined to work with arguments
+-  /// of std::initializer_list<T> and std::initializer_list<std::initializer_list<T>>
++  /// of initializer_list<T> and initializer_list<initializer_list<T>>
+   /// type. Intermediate axis is created.
+   /*BinStorageT binnedStorage2({{"test1", "test2"}}, {{{1., 2.}, {3., 4.}}});
+ 
+-  std::vector<size_t> hiddenBinIndices = {4, 5}; /// {0,1} + 2*2
++  vector<size_t> hiddenBinIndices = {4, 5}; /// {0,1} + 2*2
+ 
+   auto binsVec2 = binnedStorage2.bins(true);
+ 
+@@ -231,7 +232,7 @@ auto getBins() {
+ }
+ 
+ auto mergeBins() {
+-  using BinStorageT = BinnedStorage<double, std::string, double>;
++  using BinStorageT = BinnedStorage<double, string, double>;
+   BinStorageT binnedStorage1({"test1", "test2"}, {1., 2., 3.});
+   BinStorageT binnedStorage2({"test1", "test2"}, {1., 2., 3., 4., 5., 6.});
+ 
+@@ -248,7 +249,7 @@ auto mergeBins() {
+ }
+ 
+ auto binnedStorageOperators() {
+-  using BinStorageT = BinnedStorage<double, std::string, double>;
++  using BinStorageT = BinnedStorage<double, string, double>;
+   BinStorageT binnedStorage1({"test1", "test2"}, {1., 2., 3.});
+   BinStorageT binnedStorage2({"test1", "test2"}, {1., 2., 3., 4., 5., 6.});
+ 
+-- 
+GitLab
+
+
+From a34335f7058152218ba35a5c2af13780c1c6524f Mon Sep 17 00:00:00 2001
+From: Alexander Puck Neuwirth <alexander@neuwirth-informatik.de>
+Date: Mon, 25 May 2026 14:01:46 +0200
+Subject: [PATCH 2/2] rename: set -> setFunction
+
+---
+ tests/TestBinnedStorage.cc | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/tests/TestBinnedStorage.cc b/tests/TestBinnedStorage.cc
+index b61a078a..9382f40f 100644
+--- a/tests/TestBinnedStorage.cc
++++ b/tests/TestBinnedStorage.cc
+@@ -71,7 +71,7 @@ auto adapterConstructors() {
+   return CHECK_TEST_RES(bin.counter == 1);
+ }
+ 
+-auto set() {
++auto setFunction() {
+   BinningT binning({"test1", "test2"}, {1., 2., 3., 4.}, {1, 2, 3, 4, 5});
+ 
+   auto binStorage = FillableT<3, TestClass>(binning, [](...){});
+@@ -285,7 +285,7 @@ auto testBinnedStorage() {
+   return CHECK_TEST_RES(
+     (constructors()            == EXIT_SUCCESS) &&
+     (adapterConstructors()     == EXIT_SUCCESS) &&
+-    (set()                     == EXIT_SUCCESS) &&
++    (setFunction()                     == EXIT_SUCCESS) &&
+     (binsVectorWrapper()       == EXIT_SUCCESS) &&
+     (binSpaceCharacteristics() == EXIT_SUCCESS) &&
+     (arithmeticWrapper()       == EXIT_SUCCESS) &&
+-- 
+GitLab
+

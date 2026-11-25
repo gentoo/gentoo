@@ -1,0 +1,31 @@
+https://github.com/rthalley/dnspython/commit/d91f1ee30bcc68cb356d13b7c5f14b49e63c58bc
+
+From d91f1ee30bcc68cb356d13b7c5f14b49e63c58bc Mon Sep 17 00:00:00 2001
+From: Bob Halley <halley@dnspython.org>
+Date: Sun, 12 Apr 2026 10:47:20 -0700
+Subject: [PATCH] fix testInvalidDigestLengthCDS0 for 3.15
+
+---
+ tests/test_dnssec.py | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/tests/test_dnssec.py b/tests/test_dnssec.py
+index 77bd4fef..b1995034 100644
+--- a/tests/test_dnssec.py
++++ b/tests/test_dnssec.py
+@@ -1246,11 +1246,12 @@ def testInvalidDigestLengthCDS0(self):  # type: () -> None
+             "digest length inconsistent with digest type": ["0 0 0 0000"],
+             "Odd-length string": ["0 0 0 0", "0 0 0 000"],
+         }
+-        for msg, records in test_records.items():
++        for _, records in test_records.items():
+             for record in records:
+                 with self.assertRaises(dns.exception.SyntaxError) as cm:
+                     dns.rdata.from_text(dns.rdataclass.IN, dns.rdatatype.CDS, record)
+-                self.assertEqual(msg, str(cm.exception))
++                # we don't test the message because it varies between pre=3.15 and 3.15
++                #self.assertEqual(msg, str(cm.exception))
+ 
+     def testMakeCDS(self):  # type: () -> None
+         name = dns.name.from_text("example.com")
+

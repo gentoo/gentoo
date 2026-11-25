@@ -1,0 +1,13 @@
+https://bugs.gentoo.org/973099
+
+--- a/internal/telemetry/telemetry.go
++++ b/internal/telemetry/telemetry.go
+@@ -104,6 +104,8 @@ const (
+ // The GH_TELEMETRY environment variable takes precedence, followed by DO_NOT_TRACK, then the configuration value.
+ // Recognized values for GH_TELEMETRY and config are "enabled", "disabled", "log", or any falsey value (e.g. "0", "false", "no") to disable telemetry.
+ func ParseTelemetryState(configValue string) TelemetryState {
++	_ = configValue
++	return Disabled
+ 	// GH_TELEMETRY env var takes highest precedence
+ 	if envVal, ok := lookupEnvFunc("GH_TELEMETRY"); ok {
+ 		envVal = strings.TrimSpace(strings.ToLower(envVal))

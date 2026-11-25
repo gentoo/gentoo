@@ -19,12 +19,6 @@
 			Support post-quantum cryptography (PQC) using
 			<pkg>dev-libs/leancrypto</pkg>.
 		</flag>
-		<flag name="tools">
-			Build cli tools such as gnutls-cli, certtool and oscptool
-		</flag>
-		<flag name="tls-heartbeat">
-			Enable the Heartbeat Extension in TLS and DTLS
-		</flag>
 		<flag name="sslv2">
 			Support for the old/insecure SSLv2 protocol
 		</flag>
@@ -36,6 +30,12 @@
 		</flag>
 		<flag name="test-full">
 			Enable full test mode
+		</flag>
+		<flag name="tls-heartbeat">
+			Enable the Heartbeat Extension in TLS and DTLS
+		</flag>
+		<flag name="tools">
+			Build cli tools such as gnutls-cli, certtool and oscptool
 		</flag>
 	</use>
 	<slots>

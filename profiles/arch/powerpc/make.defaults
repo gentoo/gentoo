@@ -1,4 +1,4 @@
-# Copyright 2019-2025 Gentoo Authors
+# Copyright 2019-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # All extra USE/etc should be specified in sub-profiles.
@@ -7,3 +7,7 @@
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2019-08-30)
 # Unhide PPC specific USE_EXPANDs.
 USE_EXPAND_HIDDEN="-CPU_FLAGS_PPC"
+
+# James Le Cuirot <chewi@gentoo.org> (2026-02-13)
+# Enable the native QEMU target for this architecture by default.
+QEMU_SOFTMMU_TARGETS="ppc"

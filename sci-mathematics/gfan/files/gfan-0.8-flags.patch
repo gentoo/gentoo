@@ -1,0 +1,47 @@
+Description: Use CXXFLAGS/LDFLAGS exported by dpkg-dev
+Author: Cédric Boutillier <boutil@debian.org>
+Author: Doug Torrance <dtorrance@debian.org>
+Forwarded: yes
+Last-Update: 2020-11-13
+
+--- a/Makefile
++++ b/Makefile
+@@ -184,7 +184,7 @@
+ #OPTFLAGS    =  -DGMPRATIONAL -Wuninitialized -fno-omit-frame-pointer -O3 -msse2 -ftree-vectorizer-verbose=2 -ffast-math #-DNDEBUG
+ #OPTFLAGS    =  -DGMPRATIONAL -Wuninitialized -fno-omit-frame-pointer -O3 -mavx -msse2 -ftree-vectorizer-verbose=2 -ffast-math #-DNDEBUG
+ 
+-CFLAGS	  = $(OPTFLAGS) $(GPROFFLAG) $(STACTDUMP_OPTIONS) $(ADDITIONALINCLUDEOPTIONS) -g $(CDDDEFINE_PREFIX) -std=c++20 $(TBB_INCLUDEOPTIONS) #-pedantic
++CPPFLAGS += -DGMPRATIONAL -std=c++20
+ #CFLAGS	  = $(OPTFLAGS) $(GPROFFLAG) $(STACTDUMP_OPTIONS) $(ADDITIONALINCLUDEOPTIONS) -std=c++0x -g $(CDDDEFINE_PREFIX) #-pedantic
+ #CFLAGS	  = $(OPTFLAGS) $(GPROFFLAG) $(STACTDUMP_OPTIONS) $(ADDITIONALINCLUDEOPTIONS) -D_GLIBCXX_DEBUG -g $(CDDDEFINE_PREFIX) #-pedantic
+ CCFLAGS	  = $(CFLAGS)
+@@ -480,7 +480,7 @@
+ # Either this is a bug in the code or in the compiler. The bug disappears by compiling with -fno-guess-branch-probability
+ # SYMMETRICTRAVERSAL_FLAGS is set to -fno-guess-branch-probability on Linux/gcc and empty on macOS/clang.
+ src/symmetrictraversal.o: src/symmetrictraversal.cpp
+-	$(CXX) $(CFLAGS) $(SYMMETRICTRAVERSAL_FLAGS) -c src/symmetrictraversal.cpp -o src/symmetrictraversal.o
++	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(SYMMETRICTRAVERSAL_FLAGS) -c src/symmetrictraversal.cpp -o src/symmetrictraversal.o
+ 
+ # Define suffixes to make the program compile on legolas.imf.au.dk :
+ .SUFFIXES: .o .cpp .c
+@@ -565,7 +565,7 @@
+ default: $(OBJECTS) $(ADDITIONALOBJECTS) $(EXECS)
+ 
+ $(MAIN): $(OBJECTS)
+-	$(CCLINKER) $(OBJECTS) $(ADDITIONALLINKOPTIONS) $(GPROFFLAG) -lpthread $(PLATFORM_LINKOPTIONS) -o $(MAIN)
++	$(CCLINKER) $(OBJECTS) $(LDFLAGS) $(ADDITIONALLINKOPTIONS) $(GPROFFLAG) -lpthread $(PLATFORM_LINKOPTIONS) -o $(MAIN)
+ 
+ release:
+ 	rm -f -r $(RELEASEDIR)/*
+@@ -689,9 +689,9 @@
+ check:
+ 	./gfan _test
+ .c.o:
+-	$(CC) $(CFLAGS) -c $< -o $(patsubst %.c,%.o,$<)
++	$(CC) $(CPPFLAGS) $(CFLAGS) -c $< -o $(patsubst %.c,%.o,$<)
+ .cpp.o:
+-	$(CXX) $(CFLAGS) -c $< -o $(patsubst %.cpp,%.o,$<)
++	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $< -o $(patsubst %.cpp,%.o,$<)
+ 
+ # wget http://ftp.sunet.se/pub/gnu/gmp/gmp-4.2.2.tar.gz
+ # tar -xzvf gmp-4.2.2.tar.gz

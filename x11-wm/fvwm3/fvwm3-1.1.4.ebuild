@@ -7,7 +7,7 @@ EAPI=8
 # Scripting for this is in sam-gentoo-scripts.
 : ${FVWM3_DOCS_PREBUILT:=1}
 
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 GO_OPTIONAL=1
 inherit go-module meson optfeature python-single-r1
 
@@ -24,7 +24,7 @@ else
 	if [[ ${FVWM3_DOCS_PREBUILT} == 1 ]]; then
 		SRC_URI+=" https://deps.gentoo.zip/x11-wm/fvwm3/${P}-docs.tar.xz"
 	fi
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
+	KEYWORDS="amd64 ~arm ~arm64 ppc ~ppc64 ~riscv x86"
 fi
 
 LICENSE="GPL-2+ FVWM

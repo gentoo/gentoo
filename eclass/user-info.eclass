@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: user-info.eclass
@@ -22,7 +22,7 @@ esac
 # Small wrapper for getent (Linux), nidump (< Mac OS X 10.5),
 # dscl (Mac OS X 10.5), and pw (FreeBSD) used in enewuser()/enewgroup().
 #
-# Supported databases: group passwd
+# Supported databases: group passwd shadow
 # Warning: This function can be used only in pkg_* phases when ROOT is valid.
 egetent() {
 	local db=$1 key=$2
@@ -30,7 +30,7 @@ egetent() {
 	[[ $# -ge 3 ]] && die "usage: egetent <database> <key>"
 
 	case ${db} in
-	passwd|group) ;;
+	group|passwd|shadow) ;;
 	*) die "sorry, database '${db}' not yet supported; file a bug" ;;
 	esac
 
@@ -63,7 +63,7 @@ egetent() {
 			type -p nscd >/dev/null && nscd -i "${db}" 2>/dev/null
 			getent "${db}" "${key}"
 		else
-			if [[ ${key} =~ ^[[:digit:]]+$ ]]; then
+			if [[ ${db} != shadow && ${key} =~ ^[[:digit:]]+$ ]]; then
 				grep -E "^([^:]*:){2}${key}:" "${ROOT}/etc/${db}"
 			else
 				grep "^${key}:" "${ROOT}/etc/${db}"

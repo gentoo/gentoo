@@ -16,7 +16,7 @@ SRC_URI="
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ppc ppc64 ~riscv ~s390 ~sparc x86"
-IUSE="pam ssl tcpd"
+IUSE="pam selinux ssl tcpd"
 
 DEPEND="
 	>=sys-libs/libcap-2
@@ -28,6 +28,7 @@ DEPEND="
 
 RDEPEND="${DEPEND}
 	net-ftp/ftpbase
+	selinux? ( sec-policy/selinux-ftp )
 "
 
 BDEPEND="verify-sig? ( sec-keys/openpgp-keys-vsftpd )"

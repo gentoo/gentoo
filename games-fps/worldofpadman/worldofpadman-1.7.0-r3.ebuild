@@ -1,9 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit cmake desktop
+inherit cmake flag-o-matic desktop
 
 DESCRIPTION="Cartoon style multiplayer first-person shooter"
 HOMEPAGE="https://worldofpadman.net/"
@@ -43,6 +43,15 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=strict-aliasing
+	# https://bugs.gentoo.org/963754
+	# https://github.com/PadWorld-Entertainment/worldofpadman/issues/416
+	#
+	# Many issues, most but not all are warning level =2 ("might") set by CMake.
+	# There are still some "will" issues as well.
+	append-flags -fno-strict-aliasing
+	filter-lto
+
 	local arch
 
 	if use amd64 ; then

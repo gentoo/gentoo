@@ -1,10 +1,10 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 COMMIT="e855f62e6697cf756ad2eed2ed03b8d06ba2019b"
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit ffmpeg-compat flag-o-matic linux-info python-single-r1 systemd toolchain-funcs
 

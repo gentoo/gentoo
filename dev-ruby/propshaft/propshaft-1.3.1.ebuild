@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -28,11 +28,24 @@ ruby_add_rdepend "
 	dev-ruby/rack:*
 "
 
-ruby_add_bdepend "test? ( >=dev-ruby/rails-7.0.0 )"
+ruby_add_bdepend "test? (
+	dev-ruby/bundler
+	dev-ruby/minitest:5
+	>=dev-ruby/rails-7.0.0
+)"
 
 all_ruby_prepare() {
 	rm -f Gemfile.lock || die
 	sed -i -e '/debug/ s:^:#:' Gemfile || die
 
 	sed -i -e 's:_relative ": "./:' ${RUBY_FAKEGEM_GEMSPEC} || die
+
+	cat <<-EOF > "${T}/Gemfile" || die
+	gem "minitest", "~> 5"
+	gem "rails", ">= 7.0.0"
+	EOF
+}
+
+each_ruby_test() {
+	BUNDLE_GEMFILE="${T}/Gemfile" ${RUBY} -S bundle exec ${RUBY} -S rake || die
 }

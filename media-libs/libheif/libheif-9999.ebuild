@@ -18,41 +18,53 @@ fi
 
 LICENSE="GPL-3 MIT"
 SLOT="0/$(ver_cut 1-2)"
-IUSE="+aom dav1d +de265 doc ffmpeg gdk-pixbuf gui +jpeg +jpeg2k +kvazaar openh264 rav1e svt-av1 test test-full +threads tools +webp x264 x265"
-# IUSE+=" vvdec vvenc"
-REQUIRED_USE="test-full? ( test )"
+IUSE="+aom dav1d +de265 doc ffmpeg gdk-pixbuf geotiff gui +jpeg +jpeg2k +kvazaar openh264 rav1e svt-av1 test test-full +threads tools +webp x264 x265"
+# IUSE+=" uvg266 vvdec vvenc"
+REQUIRED_USE="
+	test-full? ( test )
+"
 RESTRICT="!test? ( test )"
 
 BDEPEND="
-	doc? ( app-text/doxygen )
+	doc? (
+		app-text/doxygen
+		media-gfx/graphviz
+	)
 "
-DEPEND="
-	media-libs/libpng:=[${MULTILIB_USEDEP}]
-	media-libs/tiff:=[${MULTILIB_USEDEP}]
-	virtual/zlib:=[${MULTILIB_USEDEP}]
+RDEPEND="
 	aom? ( >=media-libs/libaom-2.0.0:=[${MULTILIB_USEDEP}] )
 	dav1d? ( media-libs/dav1d:=[${MULTILIB_USEDEP}] )
 	de265? ( media-libs/libde265[${MULTILIB_USEDEP}] )
-	ffmpeg? ( media-video/ffmpeg:=[${MULTILIB_USEDEP}] )
-	gdk-pixbuf? ( x11-libs/gdk-pixbuf[${MULTILIB_USEDEP}] )
+	ffmpeg? ( >=media-video/ffmpeg-7.1:=[${MULTILIB_USEDEP}] )
+	gdk-pixbuf? ( x11-libs/gdk-pixbuf:2[${MULTILIB_USEDEP}] )
 	jpeg? ( media-libs/libjpeg-turbo:=[${MULTILIB_USEDEP}] )
 	jpeg2k? ( media-libs/openjpeg:=[${MULTILIB_USEDEP}] )
 	kvazaar? ( media-libs/kvazaar:=[${MULTILIB_USEDEP}] )
 	openh264? ( media-libs/openh264:=[${MULTILIB_USEDEP}] )
 	rav1e? ( media-video/rav1e:= )
 	svt-av1? ( media-libs/svt-av1:=[${MULTILIB_USEDEP}] )
+	test-full? (
+		app-arch/brotli:=[${MULTILIB_USEDEP}]
+		virtual/zlib:=[${MULTILIB_USEDEP}]
+	)
 	tools? (
+		media-libs/libpng:=[${MULTILIB_USEDEP}]
+		geotiff? (
+			media-libs/tiff:=[${MULTILIB_USEDEP}]
+			sci-libs/libgeotiff:=
+		)
 		gui? (
-			media-libs/libsdl2:=[${MULTILIB_USEDEP}]
+			media-libs/libsdl2[${MULTILIB_USEDEP}]
 		)
 	)
 	webp? ( media-libs/libwebp:= )
 	x264? ( media-libs/x264:=[${MULTILIB_USEDEP}] )
 	x265? ( media-libs/x265:=[${MULTILIB_USEDEP}] )
 "
-# 	vvdec? ( >=media-libs/vvdec-3.0.0:=::guru[${MULTILIB_USEDEP}] )
-# 	vvenc? ( media-libs/vvenc:=::guru[${MULTILIB_USEDEP}] )
-RDEPEND="${DEPEND}"
+	# uvg266? ( media-libs/uvg266:=[${MULTILIB_USEDEP}] )
+	# vvdec? ( >=media-libs/vvdec-3.0.0:=::guru[${MULTILIB_USEDEP}] )
+	# vvenc? ( media-libs/vvenc:=::guru[${MULTILIB_USEDEP}] )
+DEPEND="${RDEPEND}"
 
 MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/libheif/heif_version.h
@@ -64,9 +76,15 @@ pkg_pretend() {
 	fi
 }
 
+src_prepare() {
+	cmake_src_prepare
+
+	sed -e 's:geotiff/::g' -i heifio/CMakeLists.txt heifio/decoder_tiff.cc || die
+}
+
 multilib_src_configure() {
 	local mycmakeargs=(
-		$(cmake_use_find_package doc Doxygen)
+		-DBUILD_DOCUMENTATION=$(usex doc)
 		-DBUILD_TESTING=$(usex test)
 		-DENABLE_PLUGIN_LOADING=true
 		-DWITH_LIBDE265=$(usex de265)
@@ -83,8 +101,10 @@ multilib_src_configure() {
 		-DWITH_RAV1E=$(multilib_native_usex rav1e)
 		-DWITH_SvtEnc=$(usex svt-av1)
 		-DWITH_LIBSHARPYUV=$(usex webp)
+		# -DWITH_UVG266=$(usex uvg266) # uvg266 not yet packaged
 		# -DWITH_VVDEC=$(usex vvdec) # vvdec not yet packaged, in ::guru
 		# -DWITH_VVENC=$(usex vvenc) # vvenc not yet packaged, in ::guru
+		-DWITH_WEBCODECS="no" # requires emscripten "$(usex de265)"
 		-DWITH_X264=$(usex x264)
 		-DWITH_X265=$(usex x265)
 		-DWITH_KVAZAAR=$(usex kvazaar)
@@ -92,7 +112,22 @@ multilib_src_configure() {
 		-DWITH_JPEG_ENCODER=$(usex jpeg)
 		-DWITH_OpenJPEG_DECODER=$(usex jpeg2k)
 		-DWITH_OpenJPEG_ENCODER=$(usex jpeg2k)
+		-DWITH_OPENJPH_ENCODER=OFF
+		-DWITH_UNCOMPRESSED_CODEC=ON
+
+		-DWITH_LIBPNG_INTERNAL="no"
+		$(cmake_use_find_package jpeg JPEG)
+		$(cmake_use_find_package tools PNG)
+		$(cmake_use_find_package webp WEBP)
+		$(cmake_use_find_package geotiff TIFF)
 	)
+
+	if multilib_native_use geotiff; then
+		mycmakeargs+=(
+			# depends on tiff being found
+			-DWITH_GEOTIFF="yes"
+		)
+	fi
 
 	# Allow tests that rely on options not normally enabled
 	# https://github.com/strukturag/libheif/blob/v1.20.1/tests/CMakeLists.txt#L36-L46
@@ -101,11 +136,33 @@ multilib_src_configure() {
 		mycmakeargs+=(
 			-DENABLE_EXPERIMENTAL_FEATURES=ON
 			-DWITH_REDUCED_VISIBILITY=OFF
-			-DWITH_UNCOMPRESSED_CODEC=ON
 		)
 	fi
 
 	cmake_src_configure
+}
+
+multilib_src_test() {
+	local CMAKE_SKIP_TESTS=()
+
+	if ! use test-full; then
+		CMAKE_SKIP_TESTS+=(
+			"^encode_grid$"
+			"^region$"
+			"^text$"
+			"^component_descriptions$"
+		)
+	fi
+
+	cmake_src_test
+}
+
+multilib_src_install() {
+	if multilib_native_use doc; then
+		local HTML_DOCS=( "${BUILD_DIR}"/apidoc/html/. )
+	fi
+
+	cmake_src_install
 }
 
 pkg_postinst() {

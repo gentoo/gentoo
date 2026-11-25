@@ -18,4 +18,4 @@ SRC_URI="https://github.com/threedaymonk/htmlentities/archive/refs/tags/v${PV}.t
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"

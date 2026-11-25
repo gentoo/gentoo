@@ -5,7 +5,7 @@
   <email>gnu-emacs@gentoo.org</email>
   <name>Gentoo GNU Emacs project</name>
 </maintainer>
-<stabilize-allarches/>
+<stabilize-allarches restrict="&lt;app-emacs/emacs-jabber-0.10.0"/>
 <upstream>
   <remote-id type="sourceforge">emacs-jabber</remote-id>
 </upstream>

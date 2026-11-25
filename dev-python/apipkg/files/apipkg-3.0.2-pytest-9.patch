@@ -1,0 +1,27 @@
+From ca5adbb0b918f63b33c60040104bb0ab6ede7e9d Mon Sep 17 00:00:00 2001
+From: Steve Kowalik <steven@wedontsleep.org>
+Date: Thu, 27 Nov 2025 16:48:00 +1100
+Subject: [PATCH] Support pytest 9
+
+Change the function specification of pytest_report_header to not use any
+arguments.
+
+Closes #55
+---
+ .github/workflows/pythonapp.yml | 2 +-
+ conftest.py                     | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/conftest.py b/conftest.py
+index 795c06b..7d2ef32 100644
+--- a/conftest.py
++++ b/conftest.py
+@@ -6,7 +6,7 @@
+ INSTALL_TYPE = "editable" if apipkg.__file__ == LOCAL_APIPKG else "full"
+ 
+ 
+-def pytest_report_header(startdir):
++def pytest_report_header():
+     return "apipkg {install_type} install version={version}".format(
+         install_type=INSTALL_TYPE, version=apipkg.__version__
+     )

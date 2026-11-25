@@ -1,0 +1,25 @@
+https://gitlab.com/ixion/ixion/-/commit/cc484b27bc2d0b519d7176bfbc6f728573f9ed61
+
+From cc484b27bc2d0b519d7176bfbc6f728573f9ed61 Mon Sep 17 00:00:00 2001
+From: Kohei Yoshida <kohei.yoshida@gmail.com>
+Date: Sat, 31 Aug 2024 13:07:05 -0400
+Subject: [PATCH] Add missing include with Visual Studio 17
+
+---
+ src/libixion/lexer_tokens.hpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/libixion/lexer_tokens.hpp b/src/libixion/lexer_tokens.hpp
+index 7bde5bc8..8ea2c315 100644
+--- a/src/libixion/lexer_tokens.hpp
++++ b/src/libixion/lexer_tokens.hpp
+@@ -15,6 +15,7 @@
+ #include <memory>
+ #include <variant>
+ #include <string_view>
++#include <string>
+ 
+ namespace ixion {
+ 
+-- 
+GitLab

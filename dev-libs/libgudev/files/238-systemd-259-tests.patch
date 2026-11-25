@@ -1,0 +1,50 @@
+https://bugs.gentoo.org/971296
+https://gitlab.gnome.org/GNOME/libgudev/-/issues/10
+https://gitlab.gnome.org/GNOME/libgudev/-/merge_requests/34
+
+From 67b7db1d91c8da1f9bed56596e4c23f39b00bc0d Mon Sep 17 00:00:00 2001
+From: r-vdp <ramses@well-founded.dev>
+Date: Fri, 13 Mar 2026 11:46:34 +0100
+Subject: [PATCH] tests: clear environment before
+ udev_device_new_from_environment
+
+udev_device_new_from_environment() processes all of environ, adding
+unrecognised entries as device properties. Since systemd 259.4 (PR #41001)
+property validation rejects keys/values with control characters.
+
+Build and CI environments routinely contain env vars whose values
+include newlines, causing the device creation to fail with EINVAL.
+
+Fix by calling clearenv() before setting the udev-specific variables,
+so only the intended properties are present when the device is created.
+---
+ tests/test-gudevdevice.c | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/tests/test-gudevdevice.c b/tests/test-gudevdevice.c
+index 9639058..d64c1ce 100644
+--- a/tests/test-gudevdevice.c
++++ b/tests/test-gudevdevice.c
+@@ -6,6 +6,7 @@
+  */
+ 
+ #include <locale.h>
++#include <stdlib.h>
+ #include <unistd.h>
+ #include <stdio.h>
+ #include <glib.h>
+@@ -24,6 +25,12 @@ test_tags ()
+ 	struct udev_device *udev_device = NULL;
+ 	g_autoptr(GUdevDevice) dev = NULL;
+ 
++	/* Clear the environment so that udev_device_new_from_environment() only
++	 * sees the properties we set below. Since systemd 259.4 property
++	 * validation rejects keys/values with control characters, and build and CI
++	 * environments routinely contain env vars whose values include newlines. */
++	clearenv ();
++
+ 	/* Push device information into environment. */
+ 	g_setenv ("DEVPATH", "/devices/dev1", TRUE);
+ 	g_setenv ("SUBSYSTEM", "subsystem", TRUE);
+-- 
+2.53.0

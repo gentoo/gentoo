@@ -4,7 +4,7 @@
 EAPI=8
 
 LUA_COMPAT=( lua5-4 )
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{12..14} )
 
 inherit cmake linux-info lua-single python-any-r1 readme.gentoo-r1 xdg
 
@@ -14,7 +14,7 @@ SRC_URI="https://github.com/brndnmtthws/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.
 
 LICENSE="GPL-3 BSD LGPL-2.1 MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~ppc ppc64 ~riscv ~sparc x86"
 IUSE="apcupsd bundled-toluapp cmus colour-name-map curl doc extras hddtemp ical
 	iconv imlib intel-backlight iostats irc lua-cairo lua-cairo-xlib
 	lua-imlib lua-rsvg math moc mouse-events mpd mysql ncurses nvidia
@@ -240,11 +240,11 @@ src_install() {
 
 		insinto /usr/share/gtksourceview-4/language-specs
 		doins "${S}"/extras/gedit/conky.lang
+
+		rm -r "${ED}"/{nano,vim} || die
 	fi
 
 	readme.gentoo_create_doc
-
-	rm -rf "${ED}"/{nano,vim} || die
 }
 
 pkg_postinst() {

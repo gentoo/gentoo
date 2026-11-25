@@ -1,0 +1,20 @@
+https://github.com/facebook/yoga/pull/1935
+
+Add the BUILD_TESTS option to make building tests optional
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 55f1a6df35..fcfa593a41 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -10,7 +10,10 @@ set(CMAKE_VERBOSE_MAKEFILE on)
+ include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/project-defaults.cmake)
+ 
+ add_subdirectory(yoga)
+-add_subdirectory(tests)
++option(BUILD_TESTS "Build tests" ON)
++if(BUILD_TESTS)
++    add_subdirectory(tests)
++endif()
+ 
+ option(BUILD_FUZZ_TESTS "Build fuzz tests" OFF)
+ 

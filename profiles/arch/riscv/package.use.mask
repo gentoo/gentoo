@@ -1,5 +1,32 @@
-# Copyright 2019-2025 Gentoo Authors
+# Copyright 2019-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Thibaud CANALE <thican@thican.net> (2026-10-04)
+# dev-python/cloudflare doesn’t have ~riscv keyword.
+app-crypt/certbot certbot-dns-cloudflare
+
+# Thibaud CANALE <thican@thican.net> (2026-05-17)
+# Tests require dev-python/respx
+app-crypt/certbot test
+dev-python/cloudflare test
+
+# Michael Orlitzky <mjo@gentoo.org> (2026-09-19)
+# The test suite passes, but one of its test deps
+# (dev-python/ml-dtypes) isn't keyworded yet due to
+# failing its own test suite.
+dev-python/gfloat test
+
+# Alfred Wingate <parona@protonmail.com> (2026-05-13)
+# dev-qt/qtgraphs:6 is not keyworded here
+dev-python/pyside graphs
+
+# Pacho Ramos <pacho@gentoo.org> (2026-05-09)
+# media-plugins/gst-plugin-gtk4 is not keyworded
+>=net-im/gajim-2.3 voice
+
+# Cristian Othón Martínez Vera <cfuga@cfuga.mx> (2026-03-22)
+# app-pda/usbmuxd is not keyworded here
+gnome-base/gvfs ios
 
 # Robin H. Johnson <robbat2@gentoo.org> (2026-03-22)
 # sys-block/vdo not keyworded here
@@ -33,10 +60,6 @@ virtual/lapacke -flexiblas
 # Michał Górny <mgorny@gentoo.org> (2025-09-12)
 # These BLAS/LAPACK providers are keyworded here.
 sci-libs/flexiblas -openblas
-
-# Alfred Wingate <parona@protonmail.com> (2025-07-31)
-# mongodb not keyworded here
-sci-libs/gdal mongodb
 
 # Paul Zander <negril.nx+gentoo@gmail.com> (2025-05-02)
 # Broken bundled Eigen, fails to compile. See bug #865191.
@@ -86,6 +109,7 @@ sci-mathematics/maxima vtk
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-06-15)
 # Requires unkeyworded dev-qt/qtwebengine (and revdeps)
 kde-plasma/plasma-nm openconnect
+net-irc/quassel urlpreview
 
 # Sam James <sam@gentoo.org> (2024-05-19)
 # media-libs/jasper not yet keyworded here: https://bugs.gentoo.org/921559
@@ -155,7 +179,7 @@ app-editors/neovim lua_single_target_luajit
 
 # Yixun Lan <dlan@gentoo.org> (2022-11-24)
 # depend on dev-libs/libpcre2[jit] which not supported yet, bug #879511
-www-servers/varnish jit
+www-servers/vinyl-cache jit
 
 # Yixun Lan <dlan@gentoo.org> (2022-01-27)
 # This target supports ASAN/etc...

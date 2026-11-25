@@ -4,6 +4,20 @@
 # New entries go on top.
 # Please use the same syntax as in package.use.mask.
 
+# Sam James <sam@gentoo.org> (2026-11-02)
+# =dev-libs/openssl-4* is not yet marked stable
+net-misc/curl ech
+net-proxy/haproxy ech
+
+# Alfredo Tupone <tupone@gentoo.org> (2024-01-20)
+# dev-util/hip not yet stable
+sci-ml/gloo rocm
+
+# Paul Zander <negril.nx+gentoo@gmail.com> (2026-05-04)
+# Not intended for general use.
+# The tests are wired up so we can test compilers.
+dev-cpp/eigen test
+
 # Alfred Wingate <parona@protonmail.com> (2026-01-31)
 # Experimental upstream.
 # lgi in a weird state where tests either fail for the last real release
@@ -33,7 +47,8 @@ app-arch/mt-st test
 >=dev-java/protobuf-java-4.28.3 system-protoc
 
 # Joonas Niilola <juippis@gentoo.org> (2023-07-14)
-# Calendar is broken with some languages on 115.0 release with <icu-75.
+# Calendar is broken with some languages on 115.0 release with >=icu-74.
+# https://unicode-org.atlassian.net/browse/ICU-22132
 # Bug #910229, #920713
 >=mail-client/thunderbird-115.0 system-icu
 
@@ -156,10 +171,6 @@ app-backup/backup-manager s3
 # Requires unmaintained unstable dependency net-libs/gloox.
 # The go flag requires stable masked dev-lang/go[gccgo].
 www-servers/uwsgi go uwsgi_plugins_alarm_xmpp
-
-# Michael Palimaka <kensington@gentoo.org> (2017-08-11)
-# Unstable dependencies.
-dev-util/rpmdevtools emacs
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2017-03-23)
 # Requires dev-lang/julia stabilisation, bug #613576

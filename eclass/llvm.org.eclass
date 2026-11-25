@@ -57,7 +57,7 @@ LLVM_VERSION=$(ver_cut 1-3)
 # @DESCRIPTION:
 # The major version of current LLVM trunk.  Used to determine
 # the correct branch to use.
-_LLVM_MAIN_MAJOR=23
+_LLVM_MAIN_MAJOR=24
 
 # @ECLASS_VARIABLE: _LLVM_SOURCE_TYPE
 # @INTERNAL
@@ -72,14 +72,11 @@ if [[ -z ${_LLVM_SOURCE_TYPE+1} ]]; then
 			_LLVM_SOURCE_TYPE=snapshot
 
 			case ${PV} in
-				23.0.0_pre20260321)
-					EGIT_COMMIT=df9eb79970c012990e829d174d181d575d414efe
+				24.0.0_pre20261121)
+					EGIT_COMMIT=0c41652846ac0771141157712a31b6ff29e78a0c
 					;;
-				23.0.0_pre20260314)
-					EGIT_COMMIT=1f9b32ba061e7d5f7173a6a7150faf31964c2974
-					;;
-				23.0.0_pre20260307)
-					EGIT_COMMIT=704c87bb948aff1bec718d56ad52b9b5d9c49cfb
+				24.0.0_pre20261115)
+					EGIT_COMMIT=5c34792296df2e9e880198205282b17f4d210fbe
 					;;
 				*)
 					die "Unknown snapshot: ${PV}"
@@ -185,13 +182,23 @@ case ${LLVM_MAJOR} in
 			XCore
 		)
 		;;
-	*)
+	2[0-3])
 		ALL_LLVM_EXPERIMENTAL_TARGETS=(
 			ARC CSKY DirectX M68k Xtensa
 		)
 		ALL_LLVM_PRODUCTION_TARGETS=(
 			AArch64 AMDGPU ARM AVR BPF Hexagon Lanai LoongArch Mips
 			MSP430 NVPTX PowerPC RISCV Sparc SPIRV SystemZ VE
+			WebAssembly X86 XCore
+		)
+		;;
+	*)
+		ALL_LLVM_EXPERIMENTAL_TARGETS=(
+			ARC CSKY M68k Xtensa
+		)
+		ALL_LLVM_PRODUCTION_TARGETS=(
+			AArch64 AMDGPU ARM AVR BPF DirectX Hexagon Lanai LoongArch
+			Mips MSP430 NVPTX PowerPC RISCV Sparc SPIRV SystemZ VE
 			WebAssembly X86 XCore
 		)
 		;;
@@ -301,6 +308,9 @@ llvm.org_set_globals() {
 				22*)
 					LLVM_MANPAGE_DIST="llvm-${LLVM_MAJOR}.1.0-r2-manpages.tar.xz"
 					;;
+				23*)
+					LLVM_MANPAGE_DIST="llvm-${LLVM_MAJOR}.1.6-manpages.tar.xz"
+					;;
 			esac
 		fi
 
@@ -308,7 +318,7 @@ llvm.org_set_globals() {
 		if [[ -n ${LLVM_MANPAGE_DIST} ]]; then
 			SRC_URI+="
 				!doc? (
-					https://dev.gentoo.org/~mgorny/dist/llvm/${LLVM_MANPAGE_DIST}
+					https://distfiles.gentoo.org/pub/proj/llvm/manpages/${LLVM_MANPAGE_DIST}
 				)
 			"
 		fi
@@ -316,7 +326,8 @@ llvm.org_set_globals() {
 
 	if [[ -n ${LLVM_PATCHSET} ]]; then
 		SRC_URI+="
-			https://dev.gentoo.org/~mgorny/dist/llvm/llvm-gentoo-patchset-${LLVM_PATCHSET}.tar.xz"
+			https://distfiles.gentoo.org/pub/proj/llvm/patchsets/${LLVM_MAJOR}/llvm-gentoo-patchset-${LLVM_PATCHSET}.tar.xz
+		"
 	fi
 
 	local x

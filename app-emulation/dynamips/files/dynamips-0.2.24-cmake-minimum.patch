@@ -1,0 +1,11 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -6,7 +6,7 @@
+ #  - ANY_COMPILER    : skip compiler check (assumes gcc)
+ #  - CMAKE_INSTALL_PREFIX : where to install
+ 
+-cmake_minimum_required ( VERSION 3.5 )
++cmake_minimum_required ( VERSION 3.12 )
+ foreach ( _dir
+    "/usr/sfw" # search in "Sun FreeWare" (SunOS)
+    "/opt/csw" # search in "OpenCSW" (SunOS)

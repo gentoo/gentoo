@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,7 +18,7 @@ S="${WORKDIR}/${PN}-${MY_PV}.orig"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 arm ppc ppc64 x86"
-IUSE="nls X"
+IUSE="nls selinux X"
 
 RDEPEND="
 	>=sys-apps/debianutils-1.16
@@ -34,6 +34,7 @@ RDEPEND="
 	)"
 DEPEND="${RDEPEND}
 	virtual/os-headers"
+RDEPEND+=" selinux? ( sec-policy/selinux-apm )"
 
 PATCHES=(
 	"${WORKDIR}"/${MY_P}-${PATCHV}.diff

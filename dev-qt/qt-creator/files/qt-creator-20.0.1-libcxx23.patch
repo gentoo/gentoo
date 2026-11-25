@@ -1,0 +1,44 @@
+https://bugs.gentoo.org/981862
+https://github.com/nonstd-lite/span-lite/pull/88
+https://github.com/nonstd-lite/span-lite/commit/5ac676ad861
+--- a/src/libs/3rdparty/span/span.hpp
++++ b/src/libs/3rdparty/span/span.hpp
+@@ -47,4 +47,20 @@
+ #endif
+ 
++#ifndef  span_CONFIG_CONTRACT_LEVEL_ON
++# define span_CONFIG_CONTRACT_LEVEL_ON  1
++#endif
++
++#ifndef  span_CONFIG_CONTRACT_VIOLATION_THROWS
++# define span_CONFIG_CONTRACT_VIOLATION_THROWS  0
++#endif
++
++#ifndef   span_CONFIG_CONTRACT_VIOLATION_TERMINATES
++# if      span_CONFIG_CONTRACT_VIOLATION_THROWS
++#  define span_CONFIG_CONTRACT_VIOLATION_TERMINATES  0
++# else
++#  define span_CONFIG_CONTRACT_VIOLATION_TERMINATES  1
++# endif
++#endif
++
+ #ifndef  span_CONFIG_EXTENT_TYPE
+ # define span_CONFIG_EXTENT_TYPE  std::size_t
+@@ -171,6 +187,6 @@
+ #endif
+ 
+-#if    defined( span_CONFIG_CONTRACT_VIOLATION_THROWS     ) && span_CONFIG_CONTRACT_VIOLATION_THROWS && \
+-       defined( span_CONFIG_CONTRACT_VIOLATION_TERMINATES ) && span_CONFIG_CONTRACT_VIOLATION_TERMINATES
++#if    span_CONFIG_CONTRACT_VIOLATION_THROWS && \
++       span_CONFIG_CONTRACT_VIOLATION_TERMINATES
+ # error Please define none or one of span_CONFIG_CONTRACT_VIOLATION_THROWS and span_CONFIG_CONTRACT_VIOLATION_TERMINATES to 1, but not both.
+ #endif
+@@ -497,4 +513,8 @@
+ #endif
+ 
++#if span_CONFIG( CONTRACT_VIOLATION_TERMINATES )
++# include <exception>
++#endif
++
+ // Contract violation
+ 

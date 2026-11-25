@@ -1,0 +1,60 @@
+From d5a7f21c4dda48686368b3413e7267cef628ef0d Mon Sep 17 00:00:00 2001
+From: Kerin Millar <kfm@plushkava.net>
+Date: Fri, 23 Oct 2026 03:06:03 +0200
+Subject: [PATCH] display.c: restore prompt reprinting for single-byte mode
+
+In a single-byte locale, recalling a short history entry after one that
+spanned several lines can corrupt the displayed prompt if it contains
+terminal escape sequences. For example:
+
+  $ LC_ALL=C PS1='White \[\e[01;32m\]green\[\e[00m\] \$ '
+  White green $ true 1
+  White green $ echo "<a command long enough to wrap>"
+  <Up> <Up>
+  mgreen $ true 1rue 1
+
+Upon moving back to the prompt line, the cursor is physically situated
+at column 0. However, in single-byte mode, the _rl_last_c_pos variable
+represents a buffer index rather than a screen column. In this example,
+the prompt contains 13 bytes of invisible escape sequences, so readline
+adjusts the index from 0 to 13. That offset happens to fall upon the
+final 'm' of the first escape sequence.
+
+Previously, the rl_redisplay() function would detect that this position
+was at or before the last invisible character and reprint the prompt
+from column 0. As of readline83-004, the test instead uses the length of
+the prompt, plus the applicable line offset. The resulting position is
+necessarily beyond the last invisible character, so the prompt is not
+reprinted. Output instead begins at byte 13, explaining the stray 'm'
+and the displacement of the text that follows.
+
+The change was intended for multibyte mode, in which _rl_last_c_pos
+counts screen columns, but also replaced the single-byte calculation.
+Restore the latter, leaving the multibyte behaviour unchanged.
+
+Fixes: 8b464c68f8ec980e72ae0e9bac9257d2d85cb521
+Bug: https://bugs.gentoo.org/984299
+Signed-off-by: Kerin Millar <kfm@plushkava.net>
+---
+ display.c | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/display.c b/display.c
+index 2ddcf85..e404e09 100644
+--- a/display.c
++++ b/display.c
+@@ -1509,7 +1509,11 @@ rl_redisplay (void)
+ 	         on the current screen line begins in the buffer. It is a
+ 	         buffer position, an index into curline
+ 	         (local_prompt + pmt_offset) */
+-	      cursor_bufpos = pmt_offset + local_prompt_len;
++	      cursor_bufpos = pmt_offset;
++	      if (mb_cur_max == 1 || rl_byte_oriented)
++		cursor_bufpos += _rl_last_c_pos;
++	      else
++		cursor_bufpos += local_prompt_len;
+ 
+ 	      if (local_prompt && local_prompt_invis_chars[cursor_linenum] &&
+ 		    _rl_last_c_pos > 0 &&
+-- 
+2.55.0

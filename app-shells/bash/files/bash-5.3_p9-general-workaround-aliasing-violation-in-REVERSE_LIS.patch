@@ -1,0 +1,53 @@
+https://lists.gnu.org/archive/html/bug-bash/2026-03/msg00069.html
+
+From 7309ee9f263dfcaf11eeca679cfec5cf5c8f9455 Mon Sep 17 00:00:00 2001
+Message-ID: <7309ee9f263dfcaf11eeca679cfec5cf5c8f9455.1774896688.git.sam@gentoo.org>
+From: Sam James <sam@gentoo.org>
+Date: Mon, 30 Mar 2026 19:19:33 +0100
+Subject: [PATCH] general: workaround aliasing violation in REVERSE_LIST macro
+
+In jobs.c, say, we have:
+```
+      p->next = (PROCESS *)NULL;
+      newjob->pipe = REVERSE_LIST (the_pipeline, PROCESS *);
+      for (p = newjob->pipe; p->next; p = p->next)
+```
+
+REVERSE_LIST (-> list_reverse) reverses the linked list `the_pipeline`
+while doing accesses as GENERIC_LIST*, but the original elements are PROCESS*.
+
+I think GCC has an exemption for doing this with void* but even that isn't
+required to work by the standard. I think it either needs to be done with char*
+or with GENERIC_LIST marked with __attribute__((may_alias))
+(though that isn't portable).
+
+For Gentoo, the alias approach is fine until this gets fixed upstream,
+so do that.
+
+This fixes bash being miscompiled by GCC 16 with -O2 -flto and USE=-plugins
+(for -rdynamic to be dropped).
+
+Bug: https://bugs.gentoo.org/971782
+Signed-off-by: Sam James <sam@gentoo.org>
+---
+ general.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/general.h b/general.h
+index 5b1eac08..883939a7 100644
+--- general.h
++++ general.h
+@@ -122,7 +122,7 @@ extern char *strcpy (char *, const char *);
+    can be written to handle the general case for linked lists. */
+ typedef struct g_list {
+   struct g_list *next;
+-} GENERIC_LIST;
++} __attribute__((may_alias)) GENERIC_LIST;
+ 
+ /* Here is a generic structure for associating character strings
+    with integers.  It is used in the parser for shell tokenization. */
+
+base-commit: 637f5c8696a6adc9b4519f1cd74aa78492266b7f
+-- 
+2.53.0
+

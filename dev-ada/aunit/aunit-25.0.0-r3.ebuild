@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -47,7 +47,7 @@ src_prepare() {
 }
 
 src_compile() {
-	emake GPROPTS_EXTRA="-j$(makeopts_jobs) -v -cargs ${ADAFLAGS}"
+	emake GPROPTS_EXTRA="-j$(get_makeopts_jobs) -v -cargs ${ADAFLAGS}"
 	use doc && emake -C doc aunit_cb.html
 }
 

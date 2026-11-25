@@ -1,0 +1,41 @@
+https://github.com/sashs/filebytes/commit/469058d50d4b7ff8da54b623a0a1aa972cd78dc6
+
+From 469058d50d4b7ff8da54b623a0a1aa972cd78dc6 Mon Sep 17 00:00:00 2001
+From: Seva Alekseyev <sevaa@nih.gov>
+Date: Thu, 4 Dec 2025 11:24:19 -0500
+Subject: [PATCH] No more hand parsing __init__ for VERSION
+
+---
+ setup.py | 22 ++--------------------
+ 1 file changed, 2 insertions(+), 20 deletions(-)
+
+diff --git a/setup.py b/setup.py
+index d2d7cdb..5890e5a 100644
+--- a/setup.py
++++ b/setup.py
+@@ -1,22 +1,4 @@
+ from setuptools import setup
+-import ast
+-import os
+-currentDir = os.path.dirname(os.path.abspath(__file__))
+-#currentDir = Path(__file__).parent
++from filebytes.__init__ import VERSION
+ 
+-def extractMetaInfo(src):
+-    info = {}
+-    a=ast.parse(src)
+-    for e in a.body:
+-        if isinstance(e, ast.Assign) and isinstance(e.value, ast.Str):
+-            info[e.targets[0].id] = e.value.s
+-    return info
+-
+-text = ''
+-with open(currentDir  +os.path.sep+"filebytes"+ os.path.sep+"__init__.py") as f:
+-    text = f.read()
+-
+-version = extractMetaInfo(text)["VERSION"]
+-
+-
+-setup(version=version)
++setup(version=VERSION)
+

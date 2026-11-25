@@ -1,9 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 inherit flag-o-matic libtool python-single-r1 verify-sig
 
 DESCRIPTION="Command-line tool and library to read and convert trace files"
@@ -16,7 +16,7 @@ S="${WORKDIR}/${PN}$(ver_cut 1)-${PV}"
 
 LICENSE="GPL-2"
 SLOT="2/$(ver_cut 1)"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ppc ppc64 ~riscv x86"
 IUSE="doc +elfutils +man plugins python"
 REQUIRED_USE="plugins? ( python ) python? ( ${PYTHON_REQUIRED_USE} )"
 
@@ -34,7 +34,7 @@ BDEPEND="
 	app-alternatives/lex
 	python? (
 		>=dev-lang/swig-3.0
-		$(python_gen_cond_dep 'dev-python/setuptools[${PYTHON_USEDEP}]' python3_12)
+		$(python_gen_cond_dep 'dev-python/setuptools[${PYTHON_USEDEP}]')
 		doc? ( >=dev-python/sphinx-1.3 )
 	)
 	doc? ( >=app-text/doxygen-1.8.6 )
@@ -45,6 +45,10 @@ BDEPEND="
 	verify-sig? ( sec-keys/openpgp-keys-jeremiegalarneau )
 "
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/jeremiegalarneau.asc
+
+PATCHES=(
+	"${FILESDIR}"/babeltrace-2.1.2-swig-4.5.patch
+)
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup

@@ -1,0 +1,146 @@
+From 1c693064220db179fb9cdca8bc17326039fdd662 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Jos=C3=A9=20Valim?= <jose.valim@gmail.com>
+Date: Tue, 9 Jun 2026 14:15:27 +0200
+Subject: [PATCH 2/3] Validate paths and files when extracting archives
+
+---
+ lib/mix/lib/mix/tasks/archive.install.ex | 60 +++++++++++++++++++++---
+ lib/mix/test/mix/tasks/archive_test.exs  | 39 +++++++++++++++
+ 2 files changed, 92 insertions(+), 7 deletions(-)
+
+diff --git a/lib/mix/lib/mix/tasks/archive.install.ex b/lib/mix/lib/mix/tasks/archive.install.ex
+index 19814f1c8..305c5d7e5 100644
+--- a/lib/mix/lib/mix/tasks/archive.install.ex
++++ b/lib/mix/lib/mix/tasks/archive.install.ex
+@@ -119,7 +119,8 @@ def find_previous_versions(src) do
+   @impl true
+   def install(basename, contents, previous) do
+     ez_path = Path.join(Mix.path_for(:archives), basename)
+-    dir_dest = resolve_destination(ez_path, contents)
++    archive_name = archive_name!(contents)
++    dir_dest = Path.join(Path.dirname(ez_path), archive_name)
+ 
+     remove_previous_versions(previous)
+ 
+@@ -149,17 +150,62 @@ def build(_install_spec, _opts) do
+ 
+   ### Private helpers
+ 
+-  defp resolve_destination(ez_path, contents) do
+-    with {:ok, [_comment, zip_first_file | _]} <- :zip.list_dir(contents),
+-         {:zip_file, zip_first_path, _, _, _, _} = zip_first_file,
+-         [zip_root_dir | _] = Path.split(zip_first_path) do
+-      Path.join(Path.dirname(ez_path), zip_root_dir)
++  defp archive_name!(contents) do
++    with {:ok, files} <- :zip.list_dir(contents),
++         zip_files = Enum.filter(files, &match?({:zip_file, _, _, _, _, _}, &1)),
++         true <- zip_files != [] do
++      Enum.reduce(zip_files, nil, fn zip_file, root ->
++        validate_archive_path!(zip_file, root)
++      end)
+     else
+       _ ->
+-        Mix.raise("Installation failed: invalid archive file")
++        Mix.raise("Installation failed: invalid archive file, no files found")
+     end
+   end
+ 
++  defp validate_archive_path!({:zip_file, path, file_info, _, _, _}, root) do
++    type = elem(file_info, 2)
++    path = zip_path_to_string(path)
++
++    unless type in [:regular, :directory] do
++      Mix.raise(
++        "Installation failed: invalid archive file, #{inspect(path)} is not a regular file or directory"
++      )
++    end
++
++    cond do
++      Path.type(path) != :relative ->
++        Mix.raise(
++          "Installation failed: invalid archive file, #{inspect(path)} is an absolute path"
++        )
++
++      String.contains?(path, ["..", "\\", <<0>>]) ->
++        Mix.raise("Installation failed: invalid archive file, #{inspect(path)} is an unsafe path")
++
++      true ->
++        :ok
++    end
++
++    case String.split(path, "/", trim: true) do
++      [new_root | _] ->
++        cond do
++          root && root != new_root ->
++            Mix.raise(
++              "Installation failed: invalid archive file, #{inspect(path)} is outside archive root #{inspect(root)}"
++            )
++
++          true ->
++            new_root
++        end
++
++      [] ->
++        Mix.raise("Installation failed: invalid archive file, #{inspect(path)} is empty")
++    end
++  end
++
++  defp zip_path_to_string(path) when is_list(path), do: List.to_string(path)
++  defp zip_path_to_string(path) when is_binary(path), do: path
++
+   defp archives(name) do
+     Mix.path_for(:archives)
+     |> Path.join(name)
+diff --git a/lib/mix/test/mix/tasks/archive_test.exs b/lib/mix/test/mix/tasks/archive_test.exs
+index 88c306051..e7a0af9e6 100644
+--- a/lib/mix/test/mix/tasks/archive_test.exs
++++ b/lib/mix/test/mix/tasks/archive_test.exs
+@@ -119,6 +119,45 @@ test "archive install invalid file" do
+     end)
+   end
+ 
++  test "archive install rejects parent directory entries" do
++    in_tmp("archive install rejects parent directory entries", fn ->
++      assert {:ok, _} =
++               :zip.create(~c"bad-0.1.0.ez", [
++                 {~c"../outside", "bad"},
++                 {~c"bad-0.1.0/ebin/bad", "bad"}
++               ])
++
++      send(self(), {:mix_shell_input, :yes?, true})
++
++      assert_raise Mix.Error, ~r/invalid archive file/, fn ->
++        Mix.Tasks.Archive.Install.run(["bad-0.1.0.ez"])
++      end
++
++      refute File.exists?(tmp_path("userhome/outside"))
++      refute File.exists?(tmp_path("userhome/.mix/outside"))
++      refute File.dir?(tmp_path("userhome/.mix/archives/bad-0.1.0"))
++    end)
++  end
++
++  test "archive install rejects entries outside the archive root" do
++    in_tmp("archive install rejects entries outside the archive root", fn ->
++      assert {:ok, _} =
++               :zip.create(~c"bad-0.1.0.ez", [
++                 {~c"bad-0.1.0/ebin/bad", "bad"},
++                 {~c"other-0.1.0/ebin/bad", "bad"}
++               ])
++
++      send(self(), {:mix_shell_input, :yes?, true})
++
++      assert_raise Mix.Error, ~r/invalid archive file/, fn ->
++        Mix.Tasks.Archive.Install.run(["bad-0.1.0.ez"])
++      end
++
++      refute File.dir?(tmp_path("userhome/.mix/archives/bad-0.1.0"))
++      refute File.dir?(tmp_path("userhome/.mix/archives/other-0.1.0"))
++    end)
++  end
++
+   test "archive install missing file" do
+     message = ~r[Expected "./unlikely-to-exist-0.1.0.ez" to be a local file path]
+ 
+-- 
+2.52.0
+

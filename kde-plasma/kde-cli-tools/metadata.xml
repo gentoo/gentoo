@@ -9,7 +9,4 @@
 		<bugs-to>https://bugs.kde.org/enter_bug.cgi?product=kde-cli-tools</bugs-to>
 		<remote-id type="kde-invent">plasma/kde-cli-tools</remote-id>
 	</upstream>
-	<use>
-		<flag name="kdesu">Pull in graphical kdesu frontend <pkg>kde-plasma/kdesu-gui</pkg></flag>
-	</use>
 </pkgmetadata>

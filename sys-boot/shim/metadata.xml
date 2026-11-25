@@ -2,8 +2,12 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>zerochaos@gentoo.org</email>
-		<name>Rick Farina</name>
+		<email>nowa@gentoo.org</email>
+		<name>Nowa Ammerlaan</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>base-system@gentoo.org</email>
+		<name>Gentoo Base System</name>
 	</maintainer>
 	<upstream>
 		<remote-id type="cpe">cpe:/a:redhat:shim</remote-id>

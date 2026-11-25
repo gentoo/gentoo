@@ -56,7 +56,7 @@ else
 		KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~arm64-macos ~x64-macos ~x64-solaris"
 	fi
 
-	BDEPEND="verify-sig? ( >=sec-keys/openpgp-keys-bradking-20250904 )"
+	BDEPEND="verify-sig? ( >=sec-keys/openpgp-keys-bradking-20260908 )"
 fi
 
 [[ ${CMAKE_DOCS_PREBUILT} == 1 ]] && CMAKE_DOCS_USEFLAG="doc"
@@ -70,7 +70,7 @@ RESTRICT="!test? ( test )"
 
 # >= 1.51.0-r1 for ppc32 workaround (bug #941738)
 RDEPEND="
-	>=app-arch/libarchive-3.3.3:=
+	>=app-arch/libarchive-3.8.0:=
 	app-crypt/rhash:0=
 	>=dev-libs/expat-2.0.1
 	>=dev-libs/jsoncpp-1.9.2-r2:0=
@@ -91,12 +91,10 @@ BDEPEND+="
 	test? ( app-arch/libarchive[zstd] )
 "
 
-SITEFILE="50${PN}-gentoo.el"
-
 PATCHES=(
 	# Prefix
 	"${FILESDIR}"/${PN}-3.27.0_rc1-0001-Don-t-use-.so-for-modules-on-darwin-macos.-Use-.bund.patch
-	"${FILESDIR}"/${PN}-3.27.0_rc1-0002-Set-some-proper-paths-to-make-cmake-find-our-tools.patch
+	"${FILESDIR}"/${PN}-4.4.2-0002-Set-some-proper-paths-to-make-cmake-find-our-tools.patch
 	# Misc
 	"${FILESDIR}"/${PN}-3.27.0_rc1-0004-Ensure-that-the-correct-version-of-Qt-is-always-used.patch
 	"${FILESDIR}"/${PN}-3.27.0_rc1-0005-Respect-Gentoo-s-Python-eclasses.patch
@@ -264,21 +262,36 @@ src_test() {
 	pushd "${BUILD_DIR}" > /dev/null || die
 
 	# Excluded tests:
-	#    BootstrapTest: we actually bootstrap it every time so why test it?
-	#    BundleUtilities: bundle creation broken
-	#    CMakeOnly.AllFindModules: pthread issues
-	#    CTest.updatecvs: which fails to commit as root
-	#    Fortran: requires fortran
-	#    RunCMake.CompilerLauncher: also requires fortran
-	#    RunCMake.CPack_RPM: breaks if app-arch/rpm is installed because
-	#        debugedit binary is not in the expected location
-	#    RunCMake.CPack_DEB: breaks if app-arch/dpkg is installed because
-	#        it can't find a deb package that owns libc
-	#    TestUpload, which requires network access
-	#    RunCMake.CMP0125, known failure reported upstream (bug #829414)
+	local CMAKE_SKIP_TESTS=(
+		# BootstrapTest: we actually bootstrap it every time so why test it?
+		"BootstrapTest"
+		# BundleUtilities: bundle creation broken
+		"BundleUtilities"
+		# CMakeOnly.AllFindModules: pthread issues
+		"CMakeOnly.AllFindModules"
+		# TODO
+		"CompileOptions"
+		# CTest.updatecvs: which fails to commit as root
+		"CTest.UpdateCVS"
+		# Fortran: requires fortran
+		"Fortran"
+		# RunCMake.CompilerLauncher: also requires fortran
+		"RunCMake.CompilerLauncher"
+		# RunCMake.CPack_RPM: breaks if app-arch/rpm is installed because
+		#    debugedit binary is not in the expected location
+		# RunCMake.CPack_DEB: breaks if app-arch/dpkg is installed because
+		#    it can't find a deb package that owns libc
+		# RunCMake.CPack_TGZ: requires 64-bit time_t (bug #967480)
+		"RunCMake.CPack_(DEB|RPM|TGZ)"
+		# TestUpload, which requires network access
+		"TestUpload"
+		# RunCMake.CMP0125, known failure reported upstream (bug #829414)
+		"RunCMake.CMP0125"
+	)
+
 	local myctestargs=(
-		--output-on-failure
-		-E "(BootstrapTest|BundleUtilities|CMakeOnly.AllFindModules|CompileOptions|CTest.UpdateCVS|Fortran|RunCMake.CompilerLauncher|RunCMake.CPack_(DEB|RPM)|TestUpload|RunCMake.CMP0125)" \
+		# Filter all tests requiring Fortran
+		-LE "Fortran"
 	)
 
 	local -x QT_QPA_PLATFORM=offscreen
@@ -302,6 +315,9 @@ src_install() {
 
 	insinto /usr/share/vim/vimfiles/ftdetect
 	doins "${FILESDIR}/${PN}.vim"
+
+	# Part of app-emacs/cmake-mode instead
+	rm -r "${ED}"/usr/share/emacs || die
 
 	dobashcomp Auxiliary/bash-completion/{${PN},ctest,cpack}
 }

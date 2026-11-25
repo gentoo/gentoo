@@ -1,0 +1,25 @@
+https://bugs.gentoo.org/953761
+Based on upstream patch:
+https://github.com/GothenburgBitFactory/libshared/commit/e19bf08450d5b054550c38eebe4980b8fc412d22.patch
+From: Thomas Lauf <lauft@users.noreply.github.com>
+
+---
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 03a26c7..5f2b311 100644
+--- a/src/libshared/CMakeLists.txt
++++ b/src/libshared/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required (VERSION 2.8)
++cmake_minimum_required (VERSION 3.10)
+ set (CMAKE_LEGACY_CYGWIN_WIN32 0) # Remove when CMake >= 2.8.4 is required
+ set (CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake")
+ set (HAVE_CMAKE true)
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index d0d6e46..7884ee7 100644
+--- a/src/libshared/src/CMakeLists.txt
++++ b/src/libshared/src/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required (VERSION 2.8)
++cmake_minimum_required (VERSION 3.10)
+ include_directories (${CMAKE_SOURCE_DIR}
+                      ${CMAKE_SOURCE_DIR}/src)

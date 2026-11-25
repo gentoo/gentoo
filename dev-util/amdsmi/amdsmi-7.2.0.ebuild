@@ -80,7 +80,7 @@ src_configure() {
 		-DBUILD_TESTS=$(usex test)
 		-Wno-dev
 	)
-	use test && mycmakeargs+=( -CMAKE_REQUIRE_FIND_PACKAGE_GTest=ON )
+	use test && mycmakeargs+=( -DCMAKE_REQUIRE_FIND_PACKAGE_GTest=ON )
 	cmake_src_configure
 }
 

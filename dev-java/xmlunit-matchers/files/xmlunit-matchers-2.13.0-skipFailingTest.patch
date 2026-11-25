@@ -1,0 +1,32 @@
+This test needs network access. Otherwise it fails with:
+There was 1 failure:
+1) shouldSuccessfullyValidateInstanceWithoutExplicitSchemaSource(org.xmlunit.matchers.ValidationMatcherTest)
+java.lang.AssertionError: 
+Expected: is  that "file:/var/tmp/portage/dev-java/xmlunit-matchers-2.12.0/work/xmlunit-2.12.0-src/xmlunit-matchers/../test-resources/BookXsdGenerated.xml" validates
+     but:  got validation errors: ValidationProblem { line=2, column=254, type=WARNING, message='schema_reference.4: Failed to read schema document 'https://www.xmlunit.org/test-support/Book.xsd', because 1) could not find the document; 2) the document could not be read; 3) the root element of the document is not <xsd:schema>.' }ValidationProblem { line=2, column=254, type=ERROR, message='cvc-elt.1.a: Cannot find the declaration of element 'Book'.' }ValidationProblem { line=3, column=12, type=WARNING, message='schema_reference.4: Failed to read schema document 'https://www.xmlunit.org/test-support/Book.xsd', because 1) could not find the document; 2) the document could not be read; 3) the root element of the document is not <xsd:schema>.' }ValidationProblem { line=4, column=13, type=WARNING, message='schema_reference.4: Failed to read schema document 'https://www.xmlunit.org/test-support/Book.xsd', because 1) could not find the document; 2) the document could not be read; 3) the root element of the document is not <xsd:schema>.' }ValidationProblem { line=5, column=13, type=WARNING, message='schema_reference.4: Failed to read schema document 'https://www.xmlunit.org/test-support/Book.xsd', because 1) could not find the document; 2) the document could not be read; 3) the root element of the document is not <xsd:schema>.' }ValidationProblem { line=6, column=11, type=WARNING, message='schema_reference.4: Failed to read schema document 'https://www.xmlunit.org/test-support/Book.xsd', because 1) could not find the document; 2) the document could not be read; 3) the root element of the document is not <xsd:schema>.' }ValidationProblem { line=7, column=11, type=WARNING, message='schema_reference.4: Failed to read schema document 'https://www.xmlunit.org/test-support/Book.xsd', because 1) could not find the document; 2) the document could not be read; 3) the root element of the document is not <xsd:schema>.' }ValidationProblem { line=8, column=16, type=WARNING, message='schema_reference.4: Failed to read schema document 'https://www.xmlunit.org/test-support/Book.xsd', because 1) could not find the document; 2) the document could not be read; 3) the root element of the document is not <xsd:schema>.' }
+	at org.hamcrest.MatcherAssert.assertThat(MatcherAssert.java:20)
+	at org.junit.Assert.assertThat(Assert.java:964)
+	at org.junit.Assert.assertThat(Assert.java:930)
+	at org.xmlunit.matchers.ValidationMatcherTest.shouldSuccessfullyValidateInstanceWithoutExplicitSchemaSource(ValidationMatcherTest.java:89)
+
+FAILURES!!!
+
+--- a/src/test/java/org/xmlunit/matchers/ValidationMatcherTest.java
++++ b/src/test/java/org/xmlunit/matchers/ValidationMatcherTest.java
+@@ -15,6 +15,7 @@ package org.xmlunit.matchers;
+ 
+ import org.junit.Rule;
+ import org.junit.Test;
++import org.junit.Ignore;
+ import org.junit.rules.ExpectedException;
+ import org.xmlunit.TestResources;
+ import org.xmlunit.validation.Languages;
+@@ -78,7 +79,7 @@ public class ValidationMatcherTest {
+                    is(valid(new StreamSource(new File(TestResources.BOOK_XSD)))));
+     }
+ 
+-    @Test
++    @Test @Ignore
+     public void shouldSuccessfullyValidateInstanceWithoutExplicitSchemaSource() {
+         try {
+             Class.forName("java.nio.file.FileSystem");

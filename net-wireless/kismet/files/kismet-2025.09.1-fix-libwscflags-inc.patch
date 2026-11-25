@@ -1,0 +1,36 @@
+From 15a653437d3527bb6697df031d7062ad0efc3295 Mon Sep 17 00:00:00 2001
+From: Mike Kershaw / Dragorn <dragorn@kismetwireless.net>
+Date: Tue, 16 Jun 2026 09:08:13 -0400
+Subject: [PATCH] configure: fix missing cflags for libwebsockets
+
+---
+ configure    | 2 +-
+ configure.ac | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/configure b/configure
+index 9f3c52c45..ada141409 100755
+--- a/configure
++++ b/configure
+@@ -13336,7 +13336,7 @@ if test "x$ac_cv_lib_websockets_lws_client_connect_via_info" = xyes
+ then :
+ 
+                      LIBWSLIBS=`pkg-config --libs libwebsockets`
+-                     LIBWSFLAGS=`pkg-config --cflags libwebsockets`
++                     LIBWSCFLAGS=`pkg-config --cflags libwebsockets`
+ 
+                      have_libwebsockets="yes"
+ 
+diff --git a/configure.ac b/configure.ac
+index 0fb3029c6..a8def2a97 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -1177,7 +1177,7 @@ AS_IF([test "x$want_libwebsockets" != "xno"], [
+         AC_CHECK_LIB([websockets], [lws_client_connect_via_info],
+                      [
+                      LIBWSLIBS=`pkg-config --libs libwebsockets`
+-                     LIBWSFLAGS=`pkg-config --cflags libwebsockets`
++                     LIBWSCFLAGS=`pkg-config --cflags libwebsockets`
+ 
+                      have_libwebsockets="yes"
+                      AC_DEFINE(HAVE_LIBWEBSOCKETS, 1, libwebsockets)

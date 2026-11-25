@@ -1,0 +1,17 @@
+Backport https://sourceforge.net/p/xine/xine-lib-1.2/ci/ea7071
+add support for >=libnfs-6.0 (LIBNFS_API_V2)
+--- a/src/input/input_nfs.c
++++ b/src/input/input_nfs.c
+@@ -134,7 +134,11 @@
+   int rc;
+ 
+   while (got < len) {
+-    rc = nfs_read(this->nfs, this->nfsfh, len - got, buf + got);
++#ifdef LIBNFS_API_V2
++    rc = nfs_read (this->nfs, this->nfsfh, buf + got, len - got);
++#else
++    rc = nfs_read (this->nfs, this->nfsfh, len - got, buf + got);
++#endif
+     if (rc <= 0) {
+       if (errno == EAGAIN || errno == EINTR)
+         continue;

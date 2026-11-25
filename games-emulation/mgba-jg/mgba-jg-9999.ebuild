@@ -1,4 +1,4 @@
-# Copyright 2022-2024 Gentoo Authors
+# Copyright 2022-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -22,7 +22,7 @@ LICENSE="BSD-2 MPL-2.0"
 SLOT="1"
 
 DEPEND="
-	media-libs/jg:1=
+	>=media-libs/jg-2.0.0
 "
 RDEPEND="
 	${DEPEND}

@@ -1,0 +1,15 @@
+--- a/src/app/srs_app_srt_conn.cpp	2026-05-21 20:30:36.842253202 +0200
++++ b/src/app/srs_app_srt_conn.cpp	2026-05-21 20:31:39.140565168 +0200
+@@ -396,11 +396,11 @@
+     // TODO: FIXME: the code below is repeat in srs_app_rtmp_conn.cpp, refactor it later, use function instead.
+ 
+     // Check whether RTC stream is busy.
++    bool edge = _srs_config->get_vhost_is_edge(req_->vhost);
+ #ifdef SRS_RTC
+     SrsSharedPtr<SrsRtcSource> rtc;
+     bool rtc_server_enabled = _srs_config->get_rtc_server_enabled();
+     bool rtc_enabled = _srs_config->get_rtc_enabled(req_->vhost);
+-    bool edge = _srs_config->get_vhost_is_edge(req_->vhost);
+ 
+     if (rtc_enabled && edge) {
+         rtc_enabled = false;

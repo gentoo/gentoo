@@ -13,3 +13,8 @@ NZBGET_CONFIGFILE="/etc/nzbgetd.conf"
 
 # Other options
 NZBGET_OPTS=""
+
+# Passed to start-stop-daemon's "retry" parameter.
+# By default, send SIGTERM, wait for up to 30 seconds before sending SIGKILL,
+# then fail if the service hasn't stopped after 5 more seconds.
+#NZBGET_TERMTIMEOUT="TERM/30/KILL/5"

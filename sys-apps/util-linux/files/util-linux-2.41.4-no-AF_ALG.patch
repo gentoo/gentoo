@@ -1,0 +1,19 @@
+Don't enable AF_ALG support:
+* https://github.com/util-linux/util-linux/issues/4329
+* https://github.com/util-linux/util-linux/pull/4334#issuecomment-4492009559
+
+It's brittle and on its way out of the kernel. hardlink automagically using
+it has triggered a kernel panic as well: https://sporks.space/2026/05/19/chasing-down-why-installing-the-kernel-segfaulted/
+--- a/include/fileeq.h
++++ b/include/fileeq.h
+@@ -10,10 +10,6 @@
+ #include <stdint.h>
+ #include <stdbool.h>
+ 
+-#if defined(__linux__) && defined(HAVE_LINUX_IF_ALG_H)
+-# define USE_FILEEQ_CRYPTOAPI 1
+-#endif
+-
+ /* Number of bytes from the beginning of the file we always
+  * compare by memcmp() */
+ #define UL_FILEEQ_INTROSIZ	32

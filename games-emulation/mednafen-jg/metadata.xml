@@ -17,7 +17,7 @@
 		SNK Neo Geo Pocket Color and Bandai WonderSwan/Color.
 	</longdescription>
 	<upstream>
-		<bugs-to>https://gitlab.com/jgemu/mednafen/-/issues</bugs-to>
+		<bugs-to>https://gitlab.com/jgemu/mednafen/-/work_items</bugs-to>
 		<changelog>https://gitlab.com/jgemu/mednafen/-/blob/master/ChangeLog</changelog>
 		<remote-id type="gitlab">jgemu/mednafen</remote-id>
 	</upstream>

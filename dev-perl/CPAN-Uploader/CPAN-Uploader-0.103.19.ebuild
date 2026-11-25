@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Upload things to the CPAN"
 
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="amd64 ~arm64 ppc ~ppc64 ~sparc x86"
 IUSE="minimal"
 
 RDEPEND="

@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -24,6 +24,7 @@ PATCHES=(
 	"${WORKDIR}"/${PN}-2.7-cblas.patch
 	"${FILESDIR}"/${PN}-2.7.1-configure-clang16.patch
 	"${FILESDIR}"/${PN}-2.7.1-test-tolerance.patch
+	"${FILESDIR}"/${PN}-2.7.1-test_relax_luc.patch
 )
 
 src_prepare() {

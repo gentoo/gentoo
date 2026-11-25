@@ -1,7 +1,8 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=9
+
 inherit go-module
 
 DESCRIPTION="GitHub CLI"
@@ -12,17 +13,23 @@ if [[ ${PV} == *9999 ]]; then
 	EGIT_REPO_URI="https://github.com/cli/cli.git"
 else
 	SRC_URI="https://github.com/cli/cli/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	SRC_URI+=" https://dev.gentoo.org/~williamh/dist/${P}-deps.tar.xz"
+	SRC_URI+=" https://github.com/gentoo-golang-dist/${PN}/releases/download/v${PV}/${P}-deps.tar.xz"
 	KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv"
 	S="${WORKDIR}/cli-${PV}"
 fi
 
-LICENSE="MIT Apache-2.0 BSD BSD-2 MPL-2.0"
+LICENSE="MIT"
+# Dependent licenses
+LICENSE+=" Apache-2.0 BSD BSD-2 ISC MIT MPL-2.0 Unlicense"
 SLOT="0"
+RESTRICT="test"
 
 RDEPEND=">=dev-vcs/git-1.7.3"
+BDEPEND=">=dev-lang/go-1.26.1"
 
-RESTRICT="test"
+PATCHES=(
+	"${FILESDIR}/${PN}-2.92.0-disable-telemetry.patch"
+)
 
 src_unpack() {
 	if [[ ${PV} == *9999 ]]; then

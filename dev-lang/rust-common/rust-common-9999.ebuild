@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -68,6 +68,6 @@ src_compile() {
 }
 
 src_install() {
-	newbashcomp src/tools/cargo/src/etc/cargo.bashcomp.sh cargo
-	dozshcomp src/tools/cargo/src/etc/_cargo
+	newbashcomp src/tools/cargo/etc/cargo.bashcomp.sh cargo
+	dozshcomp src/tools/cargo/etc/_cargo
 }

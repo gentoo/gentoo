@@ -1,7 +1,8 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+
 inherit cmake
 
 DESCRIPTION="dockapp showing the load of every logical CPU on the system"
@@ -22,8 +23,7 @@ PATCHES=( "${FILESDIR}"/${P}-cmake.patch )
 
 src_prepare() {
 	cmake_src_prepare
-	sed -e "/cmake_minimum_required/s/3.9/3.10/" -i CMakeLists.txt || die
-	use doc || sed -e "s/add_subdirectory(doc)//" -i CMakeLists.txt || die
+	use doc || cmake_comment_add_subdirectory doc
 }
 
 src_install() {

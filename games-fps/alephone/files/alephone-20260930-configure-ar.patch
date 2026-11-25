@@ -1,0 +1,32 @@
+From 978c216b025be128ba3202eb97c7f30332343550 Mon Sep 17 00:00:00 2001
+From: Matt Jolly <kangie@gentoo.org>
+Date: Sat, 17 Oct 2026 13:29:22 +1000
+Subject: [PATCH] fix: build: look for `ar` directly
+
+Previously we got `ar` indirectly by AC_PROG_RANLIB which results in
+`ar` being selected on systems where (e.g., AR="x86_64-pc-linux-gnu-ar")
+is correct.
+
+Bug: https://bugs.gentoo.org/984028
+Signed-off-by: Matt Jolly <kangie@gentoo.org>
+--- a/configure.ac
++++ b/configure.ac
+@@ -42,6 +42,7 @@ AX_ARG_WITH([libyuv], [libyuv support for film export and video playback])
+ AX_ARG_WITH([nfd], [Native file dialog support])
+ 
+ dnl Check for programs.
++AC_PROG_AR
+ AC_PROG_CC
+ AC_PROG_CPP
+ AC_PROG_CXX
+@@ -322,6 +323,7 @@ dnl Print summary of key compilation variables.
+ AS_ECHO([""])
+ AS_ECHO(["Compilation settings:"])
+ AS_ECHO([""])
++AS_ECHO(["         AR: ${AR}"])
+ AS_ECHO(["         CC: ${CC}"])
+ AS_ECHO(["        CXX: ${CXX}"])
+ AS_ECHO(["        CPP: ${CPP}"])
+-- 
+2.54.0
+

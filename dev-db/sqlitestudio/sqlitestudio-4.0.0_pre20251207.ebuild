@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,7 +8,7 @@ COMMIT=bac238ccb0000419a66f3b2134b08d1f7a2bd076
 PLOCALES="af_ZA ar_SA be_BY ca_ES cs_CZ da_DK de_DE el_GR en_US es_ES fa_IR fi_FI fr_FR he_IL hu_HU it_IT ja_JP kaa ko_KR nl_NL no_NO pl_PL pt_BR pt_PT ro_RO ru_RU sk_SK sr_SP sv_SE tr_TR uk_UA vi_VN zh_CN zh_TW"
 
 # ScriptingPython says exactly 3.9
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{12..15} )
 inherit desktop plocale python-single-r1 qmake-utils xdg
 
 DESCRIPTION="Powerful cross-platform SQLite database manager"

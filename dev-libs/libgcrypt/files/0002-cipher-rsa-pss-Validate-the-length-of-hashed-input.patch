@@ -1,0 +1,43 @@
+From 612eb8c157c057feeaf17d30644fd65b05c5ea25 Mon Sep 17 00:00:00 2001
+Message-ID: <612eb8c157c057feeaf17d30644fd65b05c5ea25.1788185282.git.sam@gentoo.org>
+In-Reply-To: <cf55ce42d0268f9cfd7abc43aa4ec62d2e8c3f53.1788185282.git.sam@gentoo.org>
+References: <cf55ce42d0268f9cfd7abc43aa4ec62d2e8c3f53.1788185282.git.sam@gentoo.org>
+From: NIIBE Yutaka <gniibe@fsij.org>
+Date: Thu, 27 Aug 2026 14:36:35 +0900
+Subject: [PATCH 2/3] cipher:rsa:pss: Validate the length of hashed input.
+
+* cipher/rsa-common.c (_gcry_rsa_pss_verify): Reject invalid input.
+
+--
+
+GnuPG-bug-id: 8391
+Reported-by: JEAN Jeremy <Jeremy.Jean@ssi.gouv.fr>
+Signed-off-by: NIIBE Yutaka <gniibe@fsij.org>
+---
+ cipher/rsa-common.c | 10 +++++++++-
+ 1 file changed, 9 insertions(+), 1 deletion(-)
+
+diff --git a/cipher/rsa-common.c b/cipher/rsa-common.c
+index f8d06c72..8c732f65 100644
+--- a/cipher/rsa-common.c
++++ b/cipher/rsa-common.c
+@@ -1094,7 +1094,15 @@ _gcry_rsa_pss_verify (gcry_mpi_t value, int hashed_already,
+       _gcry_md_reset (hd);
+     }
+   else
+-    memcpy (mhash, p, hlen);
++    {
++      if ((input_nbits+7)/8 != hlen)
++        {
++          rc = GPG_ERR_INV_ARG;
++          goto leave;
++        }
++
++      memcpy (mhash, p, hlen);
++    }
+ 
+   /* Convert the signature into an octet string.  */
+   rc = octet_string_from_mpi (&em, NULL, encoded, emlen);
+-- 
+2.55.0
+

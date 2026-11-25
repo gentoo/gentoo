@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -66,6 +66,14 @@ pkg_setup() {
 	fi
 }
 
+src_prepare() {
+	sed -i \
+		-e '/-Wstrict-overflow=/d' \
+		config/gnu-warnings/*-4.8 \
+		|| die
+	cmake_src_prepare
+}
+
 src_configure() {
 	# bug #686620
 	use sparc && tc-is-gcc && append-flags -fno-tree-ccp
@@ -121,4 +129,7 @@ src_configure() {
 src_install() {
 	cmake_src_install
 	rm -r "${ED}/usr/tmp" || die
+
+	sed -i -e "s|Module Directory:.*|Module Directory: ${EPREFIX}/usr/include|" \
+		"${ED}/usr/$(get_libdir)/libhdf5.settings" || die
 }

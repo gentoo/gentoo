@@ -1,0 +1,31 @@
+https://github.com/vstinner/python-ptrace/pull/91
+
+From 324404a3d7ca7d329f1595f2520e779412d6fa98 Mon Sep 17 00:00:00 2001
+From: Stefano Rivera <stefano@rivera.za.net>
+Date: Sat, 11 Oct 2025 15:36:41 +0200
+Subject: [PATCH] Add support for Python 3.14
+
+Python 3.14 now uses linkat() if it's available
+https://github.com/python/cpython/issues/81793
+
+I'm not quite sure why the ARM64 and RISC-V versions were using
+linkat() there, previously, but that doesn't seem relevant to this
+change :)
+---
+ tests/test_strace.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/test_strace.py b/tests/test_strace.py
+index 2020a3b..89f77b6 100755
+--- a/tests/test_strace.py
++++ b/tests/test_strace.py
+@@ -86,7 +86,7 @@ def test_rename(self):
+ 
+     def test_link(self):
+         pattern = br"^link\('oldpath', 'newpath'\)"
+-        if AARCH64 or RISCV:
++        if AARCH64 or RISCV or sys.version_info >= (3, 14):
+             pattern = br"^linkat\(.*'oldpath'.*'newpath'.*\)"
+         self.assert_syscall("import os; os.link('oldpath', 'newpath')",
+                             pattern)
+

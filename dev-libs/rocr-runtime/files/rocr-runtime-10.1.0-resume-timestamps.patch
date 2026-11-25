@@ -1,0 +1,97 @@
+Fix profiling timestamps after resume from suspend
+
+On gfx1151 (Strix Halo), the GPU timestamp counter used by CP, SDMA and
+s_memrealtime restarts from 0 on resume from s2idle, while the KFD clock
+counter (SMUIO golden TSC) keeps counting. Since 6e6e616744 (#5093), ROCr
+rejects all dispatch and copy timestamps that are older than agent
+creation, so hipEventElapsedTime returns 0 or negative values and MIOpen
+Find mode fails.
+
+Estimate the epoch offset, like it is done on Windows (a54bd1c7b9) and
+proposed for the opposite direction in
+https://github.com/ROCm/rocm-systems/pull/12577 and
+https://github.com/ROCm/rocm-systems/issues/9018.
+--- a/runtime/hsa-runtime/core/inc/amd_gpu_agent.h
++++ b/runtime/hsa-runtime/core/inc/amd_gpu_agent.h
+@@ -618,6 +618,9 @@ class GpuAgent : public GpuAgentInt {
+   // @brief Update ::t1_ tick count.
+   void SyncClocks();
+ 
++  // @brief Validates raw timestamps of a signal and updates gpu_clock_offset_.
++  bool CheckRawTs(uint64_t start, uint64_t end);
++
+   // @brief Binds the second-level trap handler to this node.
+   void BindTrapHandler();
+ 
+@@ -721,7 +724,8 @@ class GpuAgent : public GpuAgentInt {
+   // @brief Offset (in GPU ticks) between AQL dispatch timestamp clock and
+   // D3DKMTQueryClockCalibration GPU clock.  Non-zero on Windows where the two
+   // GPU clock domains share frequency but differ in epoch.  Computed on first
+-  // TranslateTime call; zero on Linux (clocks match).
++  // TranslateTime call.  On Linux, non-zero after the GPU timestamp counter
++  // restarted on resume from suspend.
+   int64_t gpu_clock_offset_;
+ 
+   // @brief s_memrealtime nominal clock frequency
+--- a/runtime/hsa-runtime/core/runtime/amd_gpu_agent.cpp
++++ b/runtime/hsa-runtime/core/runtime/amd_gpu_agent.cpp
+@@ -3197,7 +3197,7 @@ void GpuAgent::TranslateTime(core::Signal* signal, hsa_amd_profiling_dispatch_ti
+   uint64_t start, end;
+   signal->GetRawTs(false, start, end);
+ 
+-  if ((start == 0) || (end == 0) || (start < t0_.GPUClockCounter) || (end < t0_.GPUClockCounter)) {
++  if (!CheckRawTs(start, end)) {
+     debug_print("Signal %p time stamps may be invalid (start=%" PRIu64 ", end=%" PRIu64 ", t0=%" PRIu64 ").\n",
+                 &signal->signal_, start, end, t0_.GPUClockCounter);
+     time.start = 0;
+@@ -3215,7 +3215,7 @@ void GpuAgent::TranslateTime(core::Signal* signal, hsa_amd_profiling_async_copy_
+   uint64_t start, end;
+   signal->GetRawTs(true, start, end);
+ 
+-  if ((start == 0) || (end == 0) || (start < t0_.GPUClockCounter) || (end < t0_.GPUClockCounter)) {
++  if (!CheckRawTs(start, end)) {
+     debug_print("Signal %p async copy time stamps may be invalid (start=%" PRIu64 ", end=%" PRIu64 ", t0=%" PRIu64 ").\n",
+                 &signal->signal_, start, end, t0_.GPUClockCounter);
+     time.start = 0;
+@@ -3229,6 +3229,24 @@ void GpuAgent::TranslateTime(core::Signal* signal, hsa_amd_profiling_async_copy_
+   time.start = TranslateTime(start);
+ }
+ 
++bool GpuAgent::CheckRawTs(uint64_t start, uint64_t end) {
++  if ((start == 0) || (end == 0)) return false;
++
++  std::lock_guard<std::mutex> lock(t1_lock_);
++#ifndef _WIN32
++  // The GPU timestamp counter (CP, SDMA, s_memrealtime) can restart from 0 on resume from
++  // suspend (e.g. s2idle on gfx1151), while the KFD clock counter keeps counting.  Ticks
++  // written after agent creation can't predate t0_, so estimate the new epoch offset,
++  // assuming that the packet has just completed.
++  if ((end >= start) && (end - gpu_clock_offset_ < t0_.GPUClockCounter)) {
++    SyncClocks();
++    gpu_clock_offset_ = int64_t(end - t1_.GPUClockCounter);
++  }
++#endif
++  return (start - gpu_clock_offset_ >= t0_.GPUClockCounter) &&
++      (end - gpu_clock_offset_ >= t0_.GPUClockCounter);
++}
++
+ /*
+ Times during program execution are interpolated to adjust for relative clock drift.
+ Interval timing may appear as ticks well before process start, leading to large errors due to
+@@ -3244,13 +3262,11 @@ uint64_t GpuAgent::TranslateTime(uint64_t tick) {
+ 
+   std::lock_guard<std::mutex> lock(t1_lock_);
+ 
+-#ifdef _WIN32
+-  // On Windows, AQL dispatch timestamps may have a fixed epoch offset from
+-  // D3DKMTQueryClockCalibration's GPUClockCounter (same clock domain, different
+-  // base).  Subtract the offset before interpolation (0 until first detection).
++  // AQL dispatch timestamps may have an epoch offset from the clock counters (fixed
++  // on Windows, after resume from suspend on Linux).  Subtract the offset before
++  // interpolation (0 until first detection).
+   // gpu_clock_offset_ is read and written under t1_lock_ to avoid data races.
+   tick -= gpu_clock_offset_;
+-#endif
+   // Limit errors due to correlated pair certainty to ~0.5us.
+   // extrapolated time < (0.5us / half clock read certainty) * delay between clock measures
+   // clock read certainty is <4us.

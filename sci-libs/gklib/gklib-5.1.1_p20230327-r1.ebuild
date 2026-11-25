@@ -1,11 +1,10 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit cmake
-
 COMMIT="8bd6bad750b2b0d90800c632cf18e8ee93ad72d7"
+inherit cmake
 
 DESCRIPTION="Helper routines and frameworks used by KarypisLab software"
 HOMEPAGE="https://github.com/KarypisLab/GKlib"
@@ -19,12 +18,12 @@ KEYWORDS="amd64 arm arm64 ~hppa ~loong ~mips ~ppc ppc64 ~riscv ~s390 ~sparc ~x86
 PATCHES=(
 	"${FILESDIR}/${P}-multilib.patch"
 	"${FILESDIR}/${P}-respect-user-flags.patch"
+	"${FILESDIR}/${P}-cmake4.patch" # bug 957610
 )
 
 src_configure() {
-	local mycmakeargs=()
 	if ! use amd64 && ! use x86; then # bug 905642
-		mycmakeargs+=(
+		local mycmakeargs=(
 			-DNO_X86=ON
 		)
 	fi

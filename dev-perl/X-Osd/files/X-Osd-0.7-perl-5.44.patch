@@ -1,0 +1,12 @@
+https://bugs.gentoo.org/978368
+--- a/Osd.xs
++++ b/Osd.xs
+@@ -42,7 +42,7 @@ constant(char *name, int len, int arg)
+ 
+ MODULE = X::Osd		PACKAGE = X::Osd		PREFIX = xosd_
+ 
+-PROTOTYPES: DISABLES
++PROTOTYPES: DISABLE
+ 		
+ double
+ constant(sv,arg)

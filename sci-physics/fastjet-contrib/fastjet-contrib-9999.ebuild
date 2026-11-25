@@ -1,4 +1,4 @@
-# Copyright 2025 Gentoo Authors
+# Copyright 2025-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,7 +8,7 @@ inherit subversion toolchain-funcs
 MY_PN=fjcontrib
 MY_P=${MY_PN}-${PV}
 
-DESCRIPTION="3rd party extensions of FastJet."
+DESCRIPTION="3rd party extensions of FastJet"
 HOMEPAGE="https://fastjet.hepforge.org/contrib/"
 ESVN_REPO_URI="https://svn.hepforge.org/fastjetsvn/contrib/trunk"
 

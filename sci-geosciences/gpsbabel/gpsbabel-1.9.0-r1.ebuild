@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -57,7 +57,7 @@ DEPEND="${RDEPEND}"
 DOCS=( AUTHORS NEWS README.{contrib,igc,md} gui/README.gui )
 
 PATCHES=(
-	"${FILESDIR}/${PN}-1.8.0-no-automagic-qt5-qt6.patch"
+	"${FILESDIR}"/${P}-force-qt6.patch # bug 961578
 	"${FILESDIR}"/${P}-xmldoc.patch
 	"${FILESDIR}"/${P}-xmllint.patch
 )
@@ -69,7 +69,7 @@ src_prepare() {
 	rm -r shapelib zlib || die
 
 	use doc && cp "${DISTDIR}/gpsbabel.org-style3.css" "${S}"
-	use gui || sed -i -e '/add_subdirectory(gui)/d' CMakeLists.txt || die
+	use gui || cmake_comment_add_subdirectory gui
 }
 
 src_configure() {
@@ -77,7 +77,6 @@ src_configure() {
 		-DGPSBABEL_WITH_LIBUSB=pkgconfig
 		-DGPSBABEL_WITH_SHAPELIB=pkgconfig
 		-DGPSBABEL_WITH_ZLIB=pkgconfig
-		-DUSE_QT6=ON
 	)
 
 	cmake_src_configure

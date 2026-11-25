@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -14,7 +14,10 @@ LICENSE="CPOL"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-PATCHES=( "${FILESDIR}"/${P}-Wliteral-suffix.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-Wliteral-suffix.patch
+	"${FILESDIR}"/${P}-wchar.patch
+)
 
 src_configure() {
 	tc-export CXX

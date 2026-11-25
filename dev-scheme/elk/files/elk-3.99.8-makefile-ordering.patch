@@ -1,0 +1,23 @@
+Fix ordering problems, allow parallel build.
+https://bugs.gentoo.org/880349
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -1,6 +1,6 @@
+ NULL = 
+ 
+-SUBDIRS = include src lib scm doc examples test
++SUBDIRS = . include src lib scm doc examples test
+ DIST_SUBDIRS = $(SUBDIRS)
+ 
+ EXTRA_DIST = \
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -66,7 +66,7 @@
+ 	$(NULL)
+ 
+ bin_PROGRAMS = elk
+-elk_LDADD = $(top_builddir)/src/libelk.la
++elk_LDADD = libelk.la
+ elk_SOURCES = main.c
+ 
+ install-exec-hook:

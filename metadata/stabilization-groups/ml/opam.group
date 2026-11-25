@@ -1,0 +1,8 @@
+dev-ml/opam
+dev-ml/opam-core
+dev-ml/opam-state
+dev-ml/opam-client
+dev-ml/opam-format
+dev-ml/opam-solver
+dev-ml/opam-installer
+dev-ml/opam-repository

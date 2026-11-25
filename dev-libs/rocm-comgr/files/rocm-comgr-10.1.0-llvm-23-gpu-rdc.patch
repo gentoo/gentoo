@@ -1,0 +1,35 @@
+Fix hiprtc -fgpu-rdc with llvm-23
+
+LLVM 23 does not assign GUIDs to functions linked with -mlink-builtin-bitcode-postopt,
+so LTO summary emission aborts with "expected function definition ... to have an
+associated value info". Link device libraries pre-opt for HIP, like the clang driver does.
+
+Bug: https://github.com/llvm/llvm-project/pull/211155
+--- a/src/comgr-compiler.cpp
++++ b/src/comgr-compiler.cpp
+@@ -38,6 +38,7 @@
+ #include "clang/Frontend/TextDiagnosticPrinter.h"
+ #include "clang/FrontendTool/Utils.h"
+ #include "clang/Options/Options.h"
++#include "llvm/Config/llvm-config.h"
+ #include "llvm/ADT/STLExtras.h"
+ #include "llvm/ADT/SmallVector.h"
+ #include "llvm/ADT/StringExtras.h"
+@@ -1712,8 +1713,15 @@ amd_comgr_status_t AMDGPUCompiler::compileToBitcode(bool WithDeviceLibs) {
+     // necessary for HIP (for example if HIP adopts the same AMDGPUSimplifyLibs
+     // strategy that potentially introduces undefined device-library symbols),
+     // we will need also apply this option in compileToRelocatable().
+-    Args.push_back("-Xclang");
+-    Args.push_back("-mlink-builtin-bitcode-postopt");
++#if LLVM_VERSION_MAJOR < 24
++    // LLVM 23 does not assign GUIDs to post-opt linked functions, which
++    // breaks LTO summary emission for -fgpu-rdc; HIP does not need postopt
++    if (getLanguage() != AMD_COMGR_LANGUAGE_HIP)
++#endif
++    {
++      Args.push_back("-Xclang");
++      Args.push_back("-mlink-builtin-bitcode-postopt");
++    }
+   }
+ 
+   return processFiles(AMD_COMGR_DATA_KIND_BC, ".bc");

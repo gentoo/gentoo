@@ -1,4 +1,4 @@
-# Copyright 2025 Gentoo Authors
+# Copyright 2025-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,7 +11,7 @@ inherit cmake
 
 LICENSE="Apache-2.0"
 SLOT="$(ver_cut 1)"
-KEYWORDS="~amd64"
+KEYWORDS="amd64 arm64 ~riscv x86"
 
 IUSE="test"
 
@@ -29,6 +29,7 @@ src_configure()
 {
 	local mycmakeargs=(
 		-DBUILD_TESTING=$(usex test ON OFF)
+		-DUNSAFE_TREAT_WARNINGS_AS_ERRORS=OFF
 	)
 
 	cmake_src_configure

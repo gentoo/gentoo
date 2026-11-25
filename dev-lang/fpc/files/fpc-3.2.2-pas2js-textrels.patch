@@ -1,0 +1,13 @@
+--- a/utils/pas2js/fpmake.pp	2024-07-21 19:58:24.000000000 +0200
++++ b/utils/pas2js/fpmake.pp	2026-02-07 15:54:55.725497010 +0100
+@@ -24,8 +24,10 @@
+     P.Email := 'michael@freepascal.org';
+     P.NeedLibC:= false;
+     P.ShortName:='p2js';
+ 
++    P.Options.Add('-k-znotext');
++
+     P.Directory:=ADirectory;
+     P.Version:='3.2.2';
+     P.OSes:=AllUnixOSes+AllBSDOSes+AllWindowsOSes-[WinCE];
+     if Defaults.CPU=jvm then

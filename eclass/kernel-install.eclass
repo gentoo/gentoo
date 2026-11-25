@@ -178,7 +178,7 @@ if [[ ${KERNEL_IUSE_GENERIC_UKI} ]]; then
 		["sys-fs/multipath-tools"]="GPL-2"
 		["sys-fs/xfsprogs"]="LGPL-2.1"
 		["sys-kernel/dracut"]="GPL-2"
-		["sys-kernel/linux-firmware[redistributable,-unknown-license]"]="GPL-2 GPL-2+ GPL-3 BSD MIT || ( MPL-1.1 GPL-2 ) linux-fw-redistributable BSD-2 BSD BSD-4 ISC MIT"
+		["sys-kernel/linux-firmware[redistributable,-unknown-license(-)]"]="GPL-2 GPL-2+ GPL-3 BSD MIT || ( MPL-1.1 GPL-2 ) linux-fw-redistributable BSD-2 BSD BSD-4 ISC MIT"
 		["sys-libs/glibc"]="LGPL-2.1+ BSD HPND ISC inner-net rc PCRE"
 		["sys-libs/libapparmor"]="GPL-2 LGPL-2.1"
 		["sys-libs/libcap"]="|| ( GPL-2 BSD )"
@@ -235,76 +235,6 @@ BDEPEND="
 		sparc? ( app-emulation/qemu[qemu_softmmu_targets_sparc,qemu_softmmu_targets_sparc64] )
 		x86? ( app-emulation/qemu[qemu_softmmu_targets_i386] )
 	)"
-
-# @FUNCTION: kernel-install_can_update_symlink
-# @USAGE:
-# @DESCRIPTION:
-# Determine whether the symlink at <target> (full path) should be
-# updated.  Returns 0 if it should, 1 to leave as-is.
-kernel-install_can_update_symlink() {
-	debug-print-function ${FUNCNAME} "$@"
-
-	[[ ${#} -eq 1 ]] || die "${FUNCNAME}: invalid arguments"
-	local target=${1}
-
-	# if the symlink does not exist or is broken, update
-	[[ ! -e ${target} ]] && return 0
-	# if the target does not seem to contain kernel sources
-	# (i.e. is probably a leftover directory), update
-	[[ ! -e ${target}/Makefile ]] && return 0
-
-	local symlink_target=$(readlink "${target}")
-	# the symlink target should start with the same basename as target
-	# (e.g. "linux-*")
-	[[ ${symlink_target} != ${target##*/}-* ]] && return 1
-
-	# try to establish the kernel version from symlink target
-	local symlink_ver=${symlink_target#${target##*/}-}
-	# strip KV_LOCALVERSION, we want to update the old kernels not using
-	# KV_LOCALVERSION suffix and the new kernels using it
-	symlink_ver=${symlink_ver%${KV_LOCALVERSION}}
-	symlink_ver=${symlink_ver/-p/_p}
-	# strip -p* revision
-	local symlink_ver_no_rev=${symlink_ver%_p[0-9]*}
-	local rev=${symlink_ver#${symlink_ver_no_rev}}
-	rev=${rev#_p}
-
-	# if ${symlink_ver} contained anything but numbers and revision (e.g.
-	# an extra suffix), it's not our kernel, so leave it alone
-	[[ -n ${symlink_ver_no_rev//[0-9.]/} || -n ${rev//[0-9]/} ]] && return 1
-
-	local symlink_pkg=${CATEGORY}/${PN}-${symlink_ver}
-	# if the current target is either being replaced, or still
-	# installed (probably depclean candidate), update the symlink
-	has "${symlink_ver}" ${REPLACING_VERSIONS} && return 0
-	has_version -r "~${symlink_pkg}" && return 0
-
-	# otherwise it could be another kernel package, so leave it alone
-	return 1
-}
-
-# @FUNCTION: kernel-install_update_symlink
-# @USAGE: <target> <version>
-# @DESCRIPTION:
-# Update the kernel source symlink at <target> (full path) with a link
-# to <target>-<version> if it's either missing or pointing out to
-# an older version of this package.
-kernel-install_update_symlink() {
-	debug-print-function ${FUNCNAME} "$@"
-
-	[[ ${#} -eq 2 ]] || die "${FUNCNAME}: invalid arguments"
-	local target=${1}
-	local version=${2}
-
-	if kernel-install_can_update_symlink "${target}"; then
-		ebegin "Updating ${target} symlink"
-		ln -f -n -s "${target##*/}-${version}" "${target}"
-		eend ${?}
-	else
-		elog "${target} points at another kernel, leaving it as-is."
-		elog "Please use 'eselect kernel' to update it when desired."
-	fi
-}
 
 # @FUNCTION: kernel-install_get_qemu_arch
 # @DESCRIPTION:
@@ -632,25 +562,7 @@ kernel-install_pkg_preinst() {
 		fi
 	fi
 
-	if [[ -L ${EROOT}/lib && ${EROOT}/lib -ef ${EROOT}/usr/lib ]]; then
-		# Adjust symlinks for merged-usr.
-		rm "${ED}/lib/modules/${KV_FULL}"/{build,source} || die
-		dosym "../../../src/linux-${KV_FULL}" "/usr/lib/modules/${KV_FULL}/build"
-		dosym "../../../src/linux-${KV_FULL}" "/usr/lib/modules/${KV_FULL}/source"
-		local file
-		for file in .config System.map; do
-			if [[ -L "${ED}/lib/modules/${KV_FULL}/${file#.}" ]]; then
-				rm "${ED}/lib/modules/${KV_FULL}/${file#.}" || die
-				dosym "../../../src/linux-${KV_FULL}/${file}" "/usr/lib/modules/${KV_FULL}/${file#.}"
-			fi
-		done
-		for file in vmlinux vmlinuz; do
-			if [[ -L "${ED}/lib/modules/${KV_FULL}/${file}" ]]; then
-				rm "${ED}/lib/modules/${KV_FULL}/${file}" || die
-				dosym "../../../src/linux-${KV_FULL}/${image_path}" "/usr/lib/modules/${KV_FULL}/${file}"
-			fi
-		done
-	fi
+	dist-kernel_update_lib_symlinks "${KV_FULL}" "${image_path}"
 }
 
 # @FUNCTION: kernel-install_extract_from_uki
@@ -776,7 +688,7 @@ kernel-install_install_all() {
 kernel-install_pkg_postinst() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	kernel-install_update_symlink "${EROOT}/usr/src/linux" "${KV_FULL}"
+	dist-kernel_update_src_symlink "${EROOT}/usr/src/linux" "${KV_FULL}"
 	dist-kernel_compressed_module_cleanup \
 		"${EROOT}/lib/modules/${KV_FULL}"
 

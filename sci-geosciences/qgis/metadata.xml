@@ -15,14 +15,15 @@
 	</longdescription>
 	<use>
 		<flag name="3d">Build QGIS 3D library using <pkg>dev-qt/qt3d</pkg></flag>
+		<flag name="geographiclib">Build with GeographicLib (geodesic, gravity, geomagnetic calculations and conversions)</flag>
 		<flag name="georeferencer">Determines whether georeferencer plugin should be built</flag>
-		<flag name="grass">Add support for grass</flag>
+		<flag name="grass">Install and integrate Grass GIS as well</flag>
 		<flag name="hdf5">Enable MDAL support for <pkg>sci-libs/hdf5</pkg></flag>
 		<flag name="mapserver">Determines whether mapserver should be built</flag>
 		<flag name="netcdf">Enable MDAL support for GRIB and XMDF formats</flag>
 		<flag name="pdal">Enable support for PDAL for point clouds via <pkg>sci-libs/pdal</pkg></flag>
 		<flag name="qml">Enable support Qml-based plugins using <pkg>dev-qt/qtdeclarative</pkg></flag>
-		<flag name="webengine">Enable webengine support using <pkg>dev-qt/qtwebengine</pkg></flag>
+		<flag name="webengine">Enable webengine support using <pkg>dev-python/pyqt6-webengine</pkg></flag>
 	</use>
 	<upstream>
 		<remote-id type="github">qgis/QGIS</remote-id>

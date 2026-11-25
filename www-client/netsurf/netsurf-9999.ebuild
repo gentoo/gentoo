@@ -1,14 +1,14 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=9
 
 inherit desktop git-r3 netsurf toolchain-funcs
 
 DESCRIPTION="A free, open source web browser"
 HOMEPAGE="https://www.netsurf-browser.org/"
 
-EGIT_REPO_URI="https://git.netsurf-browser.org/${PN}.git"
+EGIT_REPO_URI="git://git.netsurf-browser.org/${PN}.git"
 LICENSE="GPL-2 MIT"
 SLOT="0"
 IUSE="bmp fbcon truetype +gif +gtk +javascript +jpeg
@@ -60,8 +60,8 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}/${PN}-3.10-julia-libutf8proc-header-location.patch"
 	"${FILESDIR}/${PN}-3.10-disable-failing-tests.patch"
+	"${FILESDIR}/${PN}-3.12-no-corestrings.patch"
 )
 
 DOCS=(
@@ -122,18 +122,20 @@ src_install() {
 		# See earlier comments about rsvg.h.
 		_emake NETSURF_USE_RSVG=NO TARGET=framebuffer DESTDIR="${D}" install
 		elog "framebuffer binary has been installed as netsurf-fb"
-		make_desktop_entry "${EPREFIX}/usr/bin/netsurf-fb %u" \
-						   NetSurf-framebuffer \
-						   netsurf \
-						   "Network;WebBrowser"
+		make_desktop_entry "${EPREFIX}/usr/bin/netsurf-fb" \
+						   -a "%u" \
+						   -n NetSurf-framebuffer \
+						   -i netsurf \
+						   -c "Network;WebBrowser"
 	fi
 	if use gtk ; then
 		_emake TARGET=gtk3 DESTDIR="${D}" install
 		elog "netsurf gtk3 version has been installed as netsurf-gtk3"
-		make_desktop_entry "${EPREFIX}/usr/bin/netsurf-gtk3 %u" \
-						   NetSurf-gtk3 \
-						   netsurf \
-						   "Network;WebBrowser"
+		make_desktop_entry "${EPREFIX}/usr/bin/netsurf-gtk3" \
+						   -a "%u" \
+						   -n NetSurf-gtk3 \
+						   -i netsurf \
+						   -c "Network;WebBrowser"
 	fi
 
 	insinto /usr/share/pixmaps

@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -21,11 +21,10 @@ fi
 
 LICENSE="BSD-2 GPL-2"
 SLOT="0"
-IUSE="+dhcp"
+IUSE="+dhcp systemd"
 
 RDEPEND="
 	sys-apps/gentoo-functions
-	>=sys-apps/openrc-0.15
 	dhcp? (
 		|| (
 			net-misc/dhcpcd
@@ -33,6 +32,8 @@ RDEPEND="
 			sys-apps/busybox
 		)
 	)
+	systemd? ( sys-apps/systemd )
+	!systemd? ( >=sys-apps/openrc-0.15 )
 "
 BDEPEND="
 	kernel_linux? ( virtual/pkgconfig )

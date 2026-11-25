@@ -44,6 +44,10 @@ QA_CONFIG_IMPL_DECL_SKIP=(
 	unreachable
 )
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.6.14-xmlsec-include.patch
+)
+
 src_prepare() {
 	default
 

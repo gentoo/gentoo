@@ -1,0 +1,50 @@
+https://bugs.gentoo.org/962747
+https://github.com/iputils/iputils/issues/598
+https://github.com/iputils/iputils/pull/611
+
+From 1c4e790b17d351c7e84f14c3d0d6735183319de4 Mon Sep 17 00:00:00 2001
+From: Cyril Hrubis <chrubis@suse.cz>
+Date: Tue, 14 Oct 2025 12:02:46 +0200
+Subject: [PATCH] ping: Fix unaligned access in struct ping_rts
+
+The outbuf in struct ping_rts is used as a buffer for composing outgoing
+packets, the problem was that it was accessed in larger chunks than a
+byte but at the same time the buffer is defined as an array of bytes,
+hence the memory alignment was not guaranteed.
+
+This was found on SPARC where ping crashed with SIGBUS when attempting
+to call gettimeofday() with a pointer inside of the outbuf buffer. There
+are many more cases in the code where we access the array by a larger
+than byte quantities that were working fine only by a chance as most of
+the time the outpack buffer was accidentally aligned to four byte
+boundary (since the start of the structure has to be aligned for 64bit
+on 64bit machine and the array is preceeded by 32bit integer).
+
+The proper solution is to add the aligned attribute to the array, which
+forces the start of the outpack array to be aligned to the largest data
+type used on the targed machine.
+
+Fixes: https://github.com/iputils/iputils/issues/598
+Closes: https://github.com/iputils/iputils/pull/600
+Signed-off-by: Cyril Hrubis <chrubis@suse.cz>
+Reported-by: Stian Halseth <stian@itx.no>
+Tested-by: Stian Halseth <stian@itx.no>
+Reviewed-by: Petr Vorel <pvorel@suse.cz>
+---
+ ping/ping.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/ping/ping.h b/ping/ping.h
+index c4916af4..84d1e8bb 100644
+--- a/ping/ping.h
++++ b/ping/ping.h
+@@ -167,7 +167,7 @@ struct ping_ni {
+ /*ping runtime state */
+ struct ping_rts {
+ 	unsigned int mark;
+-	unsigned char outpack[MAXPACKET];
++	unsigned char outpack[MAXPACKET] __attribute__ ((aligned));
+ 
+ 	struct rcvd_table rcvd_tbl;
+ 
+

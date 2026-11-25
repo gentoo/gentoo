@@ -1,0 +1,11 @@
+--- a/src/check/Makefile	2026-05-31 21:22:26.421017889 +0200
++++ b/src/check/Makefile	2026-05-31 21:22:57.352697002 +0200
+@@ -368,7 +368,7 @@
+ 
+ check_scotch_graph_dump		:	test_scotch_graph_dump2
+ 					$(EXECS) ./test_scotch_graph_dump2 $(TMPDIR)/m16x16_b1.grf
+-					$(PROGDIFF) "data/bump_b1.grf" "$(TMPDIR)/bump_b1.grf"
++					$(PROGDIFF) "data/m16x16_b1.grf" "$(TMPDIR)/m16x16_b1.grf"
+ 
+ test_scotch_graph_dump2		:	test_scotch_graph_dump2.c	\
+ 					$(SCOTCHLIBDIR)/libscotch$(LIB)

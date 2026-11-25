@@ -1,9 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 inherit flag-o-matic python-any-r1 scons-utils toolchain-funcs
 
 DESCRIPTION="HTTP client library"
@@ -31,6 +31,7 @@ DEPEND="${RDEPEND}"
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.3.8-static-lib.patch
 	"${FILESDIR}"/${PN}-1.3.10-multilib-link-path.patch
+	"${FILESDIR}"/${PN}-1.3.10-openssl-4.patch
 )
 
 src_prepare() {

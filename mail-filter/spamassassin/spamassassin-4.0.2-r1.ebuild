@@ -17,8 +17,8 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="Apache-2.0 GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
-IUSE="berkdb cron ipv6 ldap mysql postgres qmail sqlite ssl test"
+KEYWORDS="amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv ~s390 ~sparc x86"
+IUSE="berkdb cron ipv6 ldap mysql postgres qmail selinux sqlite ssl test"
 RESTRICT="!test? ( test )"
 
 # The Makefile.PL script checks for dependencies, but only fails if a
@@ -84,7 +84,11 @@ DEPEND="${REQDEPEND}
 	test? (
 		${OPTDEPEND}
 	)"
-RDEPEND="${REQDEPEND} ${OPTDEPEND}"
+RDEPEND="${REQDEPEND} ${OPTDEPEND}
+	selinux? (
+		sec-policy/selinux-milter
+		sec-policy/selinux-spamassassin
+	)"
 BDEPEND="${RDEPEND}
 	verify-sig? ( sec-keys/openpgp-keys-spamassassin )"
 

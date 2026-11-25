@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -14,7 +14,7 @@ SRC_URI="https://plocate.sesse.net/download/${P}.tar.gz"
 LICENSE="GPL-2 GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 ~arm arm64 ~x86"
-IUSE="+io-uring"
+IUSE="+io-uring selinux"
 
 RDEPEND="
 	acct-group/locate
@@ -23,6 +23,7 @@ RDEPEND="
 	!sys-apps/mlocate
 "
 DEPEND="${RDEPEND}"
+RDEPEND+=" selinux? ( sec-policy/selinux-slocate )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.1.15-meson-use-feature-option-for-libiouring.patch

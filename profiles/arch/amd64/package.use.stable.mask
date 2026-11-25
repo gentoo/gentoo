@@ -17,6 +17,18 @@
 
 #--- END OF EXAMPLES ---
 
+# Eli Schwartz <eschwartz@gentoo.org> (2026-11-07)
+# sys-block/libfabric not stable here
+sys-cluster/openmpi libfabric
+
+# Paul Zander <negril.nx+gentoo@gmail.com> (2026-04-28)
+# SPIRV target requires dev-libs/level-zero.
+llvm-runtimes/openmp level-zero
+
+# Paul Zander <negril.nx+gentoo@gmail.com> (2026-04-28)
+# OpenMP offloading GPU runtimes are not keyworded everywhere.
+llvm-runtimes/clang-runtime llvm_targets_AMDGPU llvm_targets_NVPTX llvm_targets_SPIRV
+
 # Matt Jolly <kangie@gentoo.org> (2026-03-10)
 # mrustc is not yet stable on amd64, but we want bootstrap for Rust
 ~dev-lang/rust-1.90.0 mrustc-bootstrap
@@ -39,6 +51,7 @@ media-sound/liblc3 -test
 # Ionen Wolkens <ionen@gentoo.org> (2025-03-10)
 # dev-util/nvidia-cuda-toolkit may never be stabilized
 media-libs/osl clang-cuda
+media-gfx/blender optix
 
 # Sam James <sam@gentoo.org> (2025-02-13)
 # sys-cluster/corosync is marked stable here
@@ -74,7 +87,7 @@ dev-python/nbval -doc
 # AMDGPU enablement depends on dev-libs/rocr-runtime, ~amd64 only
 # See also: https://bugs.gentoo.org/891499
 llvm-runtimes/offload llvm_targets_AMDGPU
-llvm-runtimes/openmp llvm_targets_AMDGPU
+llvm-runtimes/openmp llvm_targets_AMDGPU rocm
 
 # Sam James <sam@gentoo.org> (2022-12-11)
 # net-libs/rustls-ffi is not yet marked stable
@@ -92,7 +105,6 @@ dev-util/diffoscope haskell
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2021-05-07)
 # openjfx:8 will never be stabilized
 # openjfx:11 probably will neither
-dev-java/openjdk:8 javafx
 dev-java/openjdk:11 javafx
 
 # Thomas Deutschmann <whissi@gentoo.org> (2020-09-07)
@@ -134,8 +146,3 @@ dev-db/mariadb mroonga
 # Requires more testing
 # and additional unstable dependencies
 gnustep-base/gnustep-make libobjc2
-
-# Michał Górny <mgorny@gentoo.org> (2014-03-30)
-# Don't apply stable masks to python-exec since we're forcing every
-# impl there anyway. Please keep this in sync with use.stable.mask.
-dev-lang/python-exec -python_targets_pypy3_11

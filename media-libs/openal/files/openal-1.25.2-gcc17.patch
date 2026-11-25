@@ -1,0 +1,20 @@
+https://github.com/kcat/openal-soft/pull/1292
+
+From c625fdbf69be5d43f653fe9163bd81812338b401 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Thu, 4 Jun 2026 23:05:02 +0100
+Subject: [PATCH] Add missing <fstream> include
+
+GCC 17 shuffles around some internal transitive includes, so an explicit
+<fstream> is needed now.
+--- a/common/filesystem.h
++++ b/common/filesystem.h
+@@ -60,6 +60,7 @@
+ 
+ #ifdef GHC_USE_STD_FS
+     #include <filesystem>
++    #include <fstream>
+     namespace fs {
+         using namespace std::filesystem;
+         using ifstream = std::ifstream;
+

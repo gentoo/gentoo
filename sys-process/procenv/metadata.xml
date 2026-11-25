@@ -2,6 +2,9 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<!-- maintainer-needed -->
+	<use>
+		<flag name="numa">Enable NUMA support using <pkg>sys-process/numactl</pkg></flag>
+	</use>
 	<upstream>
 		<remote-id type="launchpad">procenv</remote-id>
 		<remote-id type="github">jamesodhunt/procenv</remote-id>

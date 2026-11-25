@@ -9,4 +9,7 @@
 		<flag name="fontforge">Use <pkg>media-gfx/fontforge</pkg> to build fonts from source</flag>
 	</use>
 	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="github">liberationfonts/liberation-fonts</remote-id>
+	</upstream>
 </pkgmetadata>

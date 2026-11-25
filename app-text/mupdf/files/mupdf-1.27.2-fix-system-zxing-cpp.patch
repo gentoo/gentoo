@@ -1,0 +1,23 @@
+Cannot be upstreamed as is. It would break upstreams vendored zxing-cpp.
+
+--- a/source/fitz/zxingbarcode.cpp
++++ b/source/fitz/zxingbarcode.cpp
+@@ -28,13 +28,13 @@
+ #error "FZ_ENABLE_BARCODE set without HAVE_ZXINGCPP!"
+ #endif
+ 
+-#include "ReadBarcode.h"
++#include "ZXing/ReadBarcode.h"
+ 
+ #ifdef ZXING_EXPERIMENTAL_API
+-#include "WriteBarcode.h"
++#include "ZXing/WriteBarcode.h"
+ #else
+-#include "BitMatrix.h"
+-#include "MultiFormatWriter.h"
++#include "ZXing/BitMatrix.h"
++#include "ZXing/MultiFormatWriter.h"
+ #endif
+ 
+ using namespace ZXing;
+

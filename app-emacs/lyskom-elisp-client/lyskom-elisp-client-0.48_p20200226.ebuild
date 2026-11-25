@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,16 +6,16 @@ EAPI=7
 inherit elisp readme.gentoo-r1
 
 DESCRIPTION="Elisp client for the LysKOM conference system"
-HOMEPAGE="http://www.lysator.liu.se/lyskom/klienter/emacslisp/index.en.html"
+HOMEPAGE="https://www.lysator.liu.se/lyskom/klienter/emacslisp/index.en.html"
 # snapshot of git://git.lysator.liu.se/${PN}/${PN}.git
-SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.tar.xz"
+SRC_URI="https://distfiles.gentoo.org/pub/proj/emacs/${P}.tar.xz"
+S="${WORKDIR}/${PN}"
 
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 ~sparc x86"
 IUSE="l10n_sv"
 
-S="${WORKDIR}/${PN}"
 ELISP_PATCHES="${PN}-0.48_p20161231-no-git.patch"
 SITEFILE="50${PN}-gentoo.el"
 

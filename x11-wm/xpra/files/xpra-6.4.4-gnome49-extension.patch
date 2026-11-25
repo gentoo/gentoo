@@ -1,0 +1,59 @@
+From 64d76c103d8d6534da22e52ff3c412548e622164 Mon Sep 17 00:00:00 2001
+From: ndias <Nuno.Dias@gmail.com>
+Date: Tue, 2 Dec 2025 17:54:00 +0000
+Subject: [PATCH 1/2] Update extension.js
+
+Update extension to work with gnome-shell 49
+---
+ .../extensions/input-source-manager@xpra_org/extension.js   | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/fs/share/gnome-shell/extensions/input-source-manager@xpra_org/extension.js b/fs/share/gnome-shell/extensions/input-source-manager@xpra_org/extension.js
+index 870927dbed..7b8478bdce 100644
+--- a/fs/share/gnome-shell/extensions/input-source-manager@xpra_org/extension.js
++++ b/fs/share/gnome-shell/extensions/input-source-manager@xpra_org/extension.js
+@@ -18,8 +18,8 @@
+  * SPDX-License-Identifier: GPL-2.0-or-later
+  */
+ 
+-const { Gio } = imports.gi;
+-const { getInputSourceManager } = imports.ui.status.keyboard;
++import Gio from 'gi://Gio';
++import * as getInputSourceManager from 'resource:///org/gnome/shell/ui/status/keyboard.js';
+ 
+ const XMLInterface = `<node>
+   <interface name="xpra_org.InputSourceManager">
+@@ -40,7 +40,7 @@ function init(meta) {
+     return new InputSourceManagerInterface();
+ }
+ 
+-class InputSourceManagerInterface {
++export default class InputSourceManagerInterface {
+     enable() {
+         this._ism = new ISMWrapper();
+         this._dbusObj= Gio.DBusExportedObject.wrapJSObject(XMLInterface, this._ism);
+
+From 4e7e4b54b37d4701c90ac2d6603d84b64e00e49b Mon Sep 17 00:00:00 2001
+From: ndias <Nuno.Dias@gmail.com>
+Date: Tue, 2 Dec 2025 17:56:34 +0000
+Subject: [PATCH 2/2] Update metadata.json
+
+Update to work with gnome-shell 49
+---
+ .../extensions/input-source-manager@xpra_org/metadata.json     | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/fs/share/gnome-shell/extensions/input-source-manager@xpra_org/metadata.json b/fs/share/gnome-shell/extensions/input-source-manager@xpra_org/metadata.json
+index c99d8362d9..cfc3c822c2 100644
+--- a/fs/share/gnome-shell/extensions/input-source-manager@xpra_org/metadata.json
++++ b/fs/share/gnome-shell/extensions/input-source-manager@xpra_org/metadata.json
+@@ -9,7 +9,8 @@
+     "41",
+     "42",
+     "43",
+-    "44"
++    "44",
++    "49"
+   ],
+   "url": "https://github.com/Xpra-org/xpra/",
+   "uuid": "input-source-manager@xpra_org",

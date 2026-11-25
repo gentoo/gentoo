@@ -9,7 +9,7 @@ RUBY_FAKEGEM_EXTRADOC="History.rdoc README.rdoc"
 
 inherit ruby-fakegem
 
-DESCRIPTION="A tiny mock and stub object framework for minitest."
+DESCRIPTION="A tiny mock and stub object framework for minitest"
 HOMEPAGE="https://minite.st/"
 
 LICENSE="MIT"

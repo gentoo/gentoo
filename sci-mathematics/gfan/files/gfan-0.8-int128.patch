@@ -1,0 +1,394 @@
+Debian's int128 patch, with the use of abseil made unconditional.
+
+diff --git a/Makefile b/Makefile
+index 1d5fad9..79fce9d 100644
+--- a/Makefile
++++ b/Makefile
+@@ -166,6 +166,8 @@ SYMMETRICTRAVERSAL_FLAGS = -fno-guess-branch-probability
+ PLATFORM_LINKOPTIONS = -rdynamic -ltbb
+ endif
+ 
++PLATFORM_LINKOPTIONS += -labsl_int128
++
+ #OPTFLAGS    = -O2 -DGMPRATIONAL -DNDEBUG
+ # Note that gcc produces wrong code with -O3
+ # OPTFLAGS    =  -DGMPRATIONAL -Wuninitialized -O3 -fno-omit-frame-pointer -fdelete-null-pointer-checks -fno-inline-functions -fno-inline-small-functions#-fno-common  #-fno-inline-functions #-D_GLIBCXX_DEBUG #-O2	 #-O3 -fno-guess-branch-probability #-DNDEBUG
+diff --git a/src/app_test.cpp b/src/app_test.cpp
+index 4a91102..797e26c 100644
+--- a/src/app_test.cpp
++++ b/src/app_test.cpp
+@@ -766,14 +766,14 @@ int testGfanLib()
+ 		std::cerr<<"Digits:"<<std::numeric_limits<short>::digits<<"\n";
+ 		std::cerr<<"Digits:"<<std::numeric_limits<int>::digits<<"\n";
+ 		std::cerr<<"Digits:"<<std::numeric_limits<long int>::digits<<"\n";
+-		std::cerr<<"Digits:"<<std::numeric_limits<__int128_t>::digits<<"\n";
++		std::cerr<<"Digits:"<<std::numeric_limits<absl::int128>::digits<<"\n";
+ 
+ 
+ 		{
+-			  __int128 t=0;
+-			  __int128 A=2;
+-			  __int128 s=-4;
+-			  __int128 B=1;
++			  absl::int128 t=0;
++			  absl::int128 A=2;
++			  absl::int128 s=-4;
++			  absl::int128 B=1;
+ 			  B=(B<<127)+3;
+ 			  std::cerr<<"---B\n";
+ 			  std::cerr<<toStr(t)<<"\n";
+diff --git a/src/gfanlib_circuittableint.h b/src/gfanlib_circuittableint.h
+index 6078a36..415aeb1 100644
+--- a/src/gfanlib_circuittableint.h
++++ b/src/gfanlib_circuittableint.h
+@@ -18,16 +18,20 @@
+ #include <algorithm>
+ #include "gfanlib_frequencytable.h"
+ 
++#include <absl/numeric/int128.h>
++
+ namespace gfan{
+ 
+ 
+-  
+   /* We would like to use std::make_unsigned<> but that does not necessarily
+      work for 128 bit integers. Therefore we define: */
+   template<typename> struct MyMakeUnsigned;
+   template <> struct MyMakeUnsigned<int32_t>{typedef uint32_t type;};
+   template <> struct MyMakeUnsigned<int64_t>{typedef uint64_t type;};
+-  template <> struct MyMakeUnsigned<__int128>{typedef unsigned __int128 type;};
++#if __SIZEOF_LONG__ == 8
++  template <> struct MyMakeUnsigned<long long int>{typedef unsigned long long int type;};
++#endif
++  template <> struct MyMakeUnsigned<absl::int128>{typedef absl::uint128 type;};
+ 
+   class MVMachineIntegerOverflow: public std::exception
+ {
+@@ -52,14 +56,14 @@ extern IntegerConversionException IntegerConversionException;
+ 
+ // If there is support for operator<< on 128 bit values, then the following 6 procedures can be simplified.
+ 
+-static std::string toStr(__int128_t b)
++static std::string toStr(absl::int128 b)
+ {
+ 	std::stringstream s;
+ 	s<<"["<<std::setfill('0')<<std::setw(16)<<std::hex<<(uint64_t)(b>>64)<<":"<<std::setfill('0')<<std::setw(16)<<std::hex<<(uint64_t)b<<"]";
+ 	return s.str();
+ }
+ 
+-static std::string toStr(__uint128_t b)
++static std::string toStr(absl::uint128 b)
+ {
+ 	std::stringstream s;
+ 	s<<"["<<std::setfill('0')<<std::setw(16)<<std::hex<<(uint64_t)(b>>64)<<":"<<std::setfill('0')<<std::setw(16)<<std::hex<<(uint64_t)b<<"]";
+@@ -96,22 +100,37 @@ static std::string toStr(uint32_t b)
+ 
+ class my256s{
+ public:
+-	__int128_t lo,hi;
+-	my256s(__int128_t lo_,__int128_t hi_):
++	absl::int128 lo,hi;
++	my256s(absl::int128 lo_,absl::int128 hi_):
+ 		lo(lo_),
+ 		hi(hi_)
+ 	{
+ 	}
+-	my256s(__int128_t v):
++	my256s(absl::int128 v):
+ 		lo(v),
+ 		hi(0)
+ 	{
+ 		if(v<0)hi=-1;
+ 	}
++	my256s(int lo_,absl::int128 hi_):
++		lo(static_cast<absl::int128>(lo_)),
++		hi(hi_)
++	{
++	}
++	my256s(absl::uint128 lo_,absl::int128 hi_):
++		lo(static_cast<absl::int128>(lo_)),
++		hi(hi_)
++	{
++	}
++	my256s(absl::int128 lo_,absl::uint128 hi_):
++		lo(lo_),
++		hi(static_cast<absl::int128>(hi_))
++	{
++	}
+ 	my256s operator+(my256s b)
+ 	{
+-		__uint128_t newLo=lo+b.lo;
+-		bool carry=newLo<__uint128_t(lo);
++		absl::uint128 newLo=lo+b.lo;
++		bool carry=newLo<absl::uint128(lo);
+ 		my256s r(newLo,hi+b.hi+carry);
+ //		std::cerr<<"sum"<<toStr(*this)<<toStr(b)<<"equals"<<toStr(r)<<"\n";
+ 		return r;
+@@ -121,7 +140,7 @@ public:
+ 	{
+ 		return ::gfan::toStr(m.hi)+::gfan::toStr(m.lo);
+ 	}
+-	my256s operator/(__int128_t b)const
++	my256s operator/(absl::int128 b)const
+ 	{
+ 		std::cerr<<"Dividing"<<toStr(*this)<<"by"<<::gfan::toStr(b)<<"\n";
+ 		assert(0);
+@@ -132,16 +151,16 @@ public:
+ 		if(i==128)return my256s(0,lo);
+ 		if(!(i>=0 && i<=127))std::cerr<<"i"<<i<<"\n";
+ 		assert(i>=0 && i<=127);
+-		__uint128_t carry=i?(__uint128_t(lo))>>(128-i):0;
++		absl::uint128 carry=i?(absl::uint128(lo))>>(128-i):0;
+ 		return my256s(lo<<i,(hi<<i)+carry);
+ 	}
+ 	my256s operator>>(int i)const
+ 	{
+ 		assert(i>=0 && i<=127);
+-//		__uint128_t carry=(__uint128_t(hi))<<(128-i);
+-		__uint128_t carry=i?(__uint128_t(hi))<<(128-i):0;// a shift of 128 is undefined according to standard
++//		absl::uint128 carry=(absl::uint128(hi))<<(128-i);
++		absl::uint128 carry=i?(absl::uint128(hi))<<(128-i):0;// a shift of 128 is undefined according to standard
+ //		std::cerr<<"carry"<<toStr(carry)<<"\n";
+-		my256s r((__uint128_t(lo)>>i)+carry,hi>>i);
++		my256s r((absl::uint128(lo)>>i)+carry,hi>>i);
+ 
+ //		std::cerr<<"Shift"<<toStr(*this)<<">>"<<i<<"="<<toStr(r)<<"\n";
+ 		return r;
+@@ -150,15 +169,15 @@ public:
+ 		{
+ 			if(hi<b.hi)return true;
+ 			if(hi>b.hi)return false;
+-			return ((__uint128_t)lo)<=((__uint128_t)b.lo);
++			return ((absl::uint128)lo)<=((absl::uint128)b.lo);
+ 		}
+ 	bool operator<(my256s b)const
+ 		{
+ 			if(hi<b.hi)return true;
+ 			if(hi>b.hi)return false;
+-			return ((__uint128_t)lo)<((__uint128_t)b.lo);
++			return ((absl::uint128)lo)<((absl::uint128)b.lo);
+ 		}
+-	bool operator<=(__int128_t b)const
++	bool operator<=(absl::int128 b)const
+ 		{
+ 		return *this<=my256s(b);
+ 		}
+@@ -167,7 +186,7 @@ public:
+ 		my256s temp(~lo,~hi);
+ 		return temp+my256s(1,0);
+ 	}
+-	explicit operator __int128()const
++	explicit operator absl::int128()const
+ 	{
+ 		return lo;
+ 	}
+@@ -175,7 +194,7 @@ public:
+ 
+ class my256u{
+ public:
+-	__int128_t lo,hi;
++	absl::int128 lo,hi;
+ 	my256u(my256s const &a):
+ 		lo(a.lo),
+ 		hi(a.hi)
+@@ -187,21 +206,21 @@ public:
+ 	}
+ 	bool operator<=(my256s const &b)//full implementation not required as this simulates a cast to unsigned and a comparison.
+ 	{
+-		if((__uint128_t)hi<(__uint128_t)b.hi)return true;
+-		if((__uint128_t)hi>(__uint128_t)b.hi)return false;
+-		return ((__uint128_t)lo)<=((__uint128_t)b.lo);
++		if((absl::uint128)hi<(absl::uint128)b.hi)return true;
++		if((absl::uint128)hi>(absl::uint128)b.hi)return false;
++		return ((absl::uint128)lo)<=((absl::uint128)b.lo);
+ 	}
+ 	bool operator<(my256s const &b)//full implementation not required as this simulates a cast to unsigned and a comparison.
+ 	{
+-		if((__uint128_t)hi<(__uint128_t)b.hi)return true;
+-		if((__uint128_t)hi>(__uint128_t)b.hi)return false;
+-		return ((__uint128_t)lo)<((__uint128_t)b.lo);
++		if((absl::uint128)hi<(absl::uint128)b.hi)return true;
++		if((absl::uint128)hi>(absl::uint128)b.hi)return false;
++		return ((absl::uint128)lo)<((absl::uint128)b.lo);
+ 	}
+ 	my256u operator<<(int i)const
+ 	{
+ 		assert(i>=0 && i<=127);
+-		__uint128_t carry=i?(__uint128_t(lo))>>(128-i):0;
+-		return my256s(lo<<i,__int128_t((hi<<i)+carry));
++		absl::uint128 carry=i?(absl::uint128(lo))>>(128-i):0;
++		return my256s(lo<<i,absl::int128((hi<<i)+carry));
+ 	}
+ };
+ 
+@@ -211,17 +230,28 @@ static int64_t extMul(int32_t a, int32_t b)
+ {
+ 	return ((int64_t)a)*((int64_t)b);
+ }
+-static __int128_t extMul(int64_t a, int64_t b)
++static absl::int128 extMul(int64_t a, int64_t b)
+ {
+-	return ((__int128_t)a)*((__int128_t)b);
++	return ((absl::int128)a)*((absl::int128)b);
++}
++#if __SIZEOF_LONG__ == 8
++static long long int extMul(long long int a, long long int b)
++{
++	return a * b;
++}
++#endif
++
++static absl::uint128 unsignedProd64(uint64_t x,uint64_t y)
++{
++	return absl::uint128(x)*absl::uint128(y);
+ }
+ 
+-static __uint128_t unsignedProd64(uint64_t x,uint64_t y)
++static absl::uint128 unsignedProd64(absl::uint128 x,absl::uint128 y)
+ {
+-	return __uint128_t(x)*__uint128_t(y);
++	return x * y;
+ }
+ 
+-static my256u unsignedProd128(__uint128_t x,__uint128_t y)
++static my256u unsignedProd128(absl::uint128 x,absl::uint128 y)
+ {
+ 	my256s a(unsignedProd64(x,y),0);
+ 	my256s b(unsignedProd64(x>>64,y),0);
+@@ -230,7 +260,7 @@ static my256u unsignedProd128(__uint128_t x,__uint128_t y)
+ 	return a+(b<<64)+(c<<64)+(d<<128);
+ }
+ 
+-static my256s extMul(__int128_t a, __int128_t b)
++static my256s extMul(absl::int128 a, absl::int128 b)
+ {
+ //	std::cerr<<"mul"<<toStr(a)<<"*"<<toStr(b)<<"\n";
+ 	auto temp=unsignedProd128(a,b);
+@@ -304,7 +334,7 @@ public:
+ 	friend CircuitTableIntPOD operator*(CircuitTableIntPOD const &a, CircuitTableIntPOD const &b){CircuitTableIntPOD ret;ret.v=a.v*b.v;return ret;}
+ 	friend CircuitTableIntPOD operator/(CircuitTableIntPOD const &a, CircuitTableIntPOD const &b){CircuitTableIntPOD ret;ret.v=a.v/b.v;return ret;}//This is used very few times. Should we require this be an exact division?
+  public:
+-	static const word halfBound{(word{1}<<(std::numeric_limits<word>::digits/2-2))-1};
++	static constexpr word halfBound{(word{1}<<(std::numeric_limits<word>::digits/2-2))-1};
+ 	// In the code products of CircuitTableIntPOD objects are summed. To avoid overflows one of the factors must "fit in half" and the "number of summands" may not exceed a certain number. The bounds are specified in the following functions:
+ 	bool fitsInHalf()const{return v>-halfBound && v<halfBound;}// Is it better to allow only non-negative numbers?
+ 	static bool isSuitableSummationNumber(int numberOfSummands){return numberOfSummands<halfBound;}
+@@ -354,7 +384,7 @@ public:
+ 	//	return std::to_string((int64_t)v);/*cast seems to be needed (128 bit will not work)*/
+ 		return toStr(v);
+ 	}
+-	int64_t toInt64()const{return v;}//WHAT SHOULD HAPPEN TO THIS FUNCTION?
++	int64_t toInt64()const{return static_cast<int64_t>(v);}//WHAT SHOULD HAPPEN TO THIS FUNCTION?
+   friend std::ostream &operator<<(std::ostream &f, CircuitTableIntPOD const &a){f<</*(int)*/a.toString();return f;}
+ 	Double extend()const{Double ret;ret.v=v;return ret;}
+ 	CircuitTableIntPOD &maddWithOverflowChecking(CircuitTableIntPOD const &a, CircuitTableIntPOD const&b){Double t=this->extend();t+=extendedMultiplication(a,b);*this=t.castToSingle();return *this;}
+@@ -548,8 +578,8 @@ public:
+ 			  int D=std::numeric_limits<word>::digits;
+ 			  if(D==0){D=127;}//fixes bug in gcc-8.1
+ 			  bool doesOverflow=(((word)t.v)==(word{1}<<(D-1)));// What is the purpose of this line. Do we really want to subtract 1? That seems wrong since word is signed. Look at comment below
+-			  longword min64=0;
+-			  longword max64=0;
++			  longword min64=static_cast<longword>(0);
++			  longword max64=static_cast<longword>(0);
+ 			  for(int i=0;i<c;i++)
+ 			  {
+ 				  // In the unlikely event that all the numbers to be multiplied are -2^31, the following code will overflow. Therefore the overflow flag was set as above.
+@@ -571,15 +601,14 @@ public:
+ 	static CircuitTableIntPOD quickScaleNoShiftBounded(CircuitTableIntPOD * __restrict__ aa, CircuitTableIntPOD s, CircuitTableIntPOD::Divisor denominatorDivisor,int c, CircuitTableIntPOD boundA)
+ 	{
+ //		assert(!boundA.isPositive());
+-		if(0)
+-		{
++#if 0
+ 			static FrequencyTable A("Multiplier");
+ 			A.record(s.toInt64()&255);
+ 			static FrequencyTable B("Divisor");
+ 			B.record(denominatorDivisor.v&255);
+ 			static FrequencyTable C("AreEqual");
+ 			C.record(s.toInt64()==denominatorDivisor.v);
+-		}
++#endif
+ 		CircuitTableIntPOD max{};assert(max.v==0);
+ 	    CircuitTableIntPOD min{};assert(min.v==0);
+ 	    CircuitTableIntPOD ret{};assert(ret.v==0);
+@@ -667,8 +696,8 @@ public:
+ 			  int D=std::numeric_limits<word>::digits;
+ 			  if(D==0){D=127;}//fixes bug in gcc-8.1
+ 			  bool doesOverflow=false;//(((word)t.v)==(word{1}<<(D-1)));// What is the purpose of this line? t is not defined. Do we really want to subtract 1? That seems wrong since word is signed. Look at comment below
+-			  longword min64=0;
+-			  longword max64=0;
++			  longword min64=static_cast<longword>(0);
++			  longword max64=static_cast<longword>(0);
+ 			  for(int i=0;i<c;i++)
+ 			  {
+ 				  longword/*int64_t*/ temp=(extMul(s.v,aa[i].v))/denominatorDivisor.v;
+@@ -723,8 +752,8 @@ public:
+ 
+ 
+ typedef CircuitTableIntPOD<int32_t,int64_t> CircuitTableInt32POD;
+-typedef CircuitTableIntPOD<int64_t,__int128_t> CircuitTableInt64POD;
+-typedef CircuitTableIntPOD<__int128_t,my256s> CircuitTableInt128POD;
++typedef CircuitTableIntPOD<int64_t,absl::int128> CircuitTableInt64POD;
++typedef CircuitTableIntPOD<absl::int128,my256s> CircuitTableInt128POD;
+ 
+ static bool hasPod(class CircuitTalbeInt32 *c){return true;}
+ static bool hasPod(class CircuitTalbeInt64 *c){return true;}
+@@ -737,20 +766,20 @@ template<> inline CircuitTableIntPOD<int32_t,int64_t> CircuitTableIntPOD<int32_t
+ 	return ret;
+ }
+ 
+-template<> inline CircuitTableIntPOD<int64_t,__int128_t> CircuitTableIntPOD<int64_t,__int128_t>::Double::castToSingle()const//casts and checks precission
++template<> inline CircuitTableIntPOD<int64_t,absl::int128> CircuitTableIntPOD<int64_t,absl::int128>::Double::castToSingle()const//casts and checks precission
+ {
+ 	if(v>=0x7fffffffffffffff || -v>=0x7fffffffffffffff) throw MVMachineIntegerOverflow;
+ 	CircuitTableIntPOD ret;
+-	ret.v=v;
++	ret.v=static_cast<int64_t>(v);
+ 	return ret;
+ }
+ 
+-template<> inline CircuitTableIntPOD<__int128_t,my256s> CircuitTableIntPOD<__int128_t,my256s>::Double::castToSingle()const//casts and checks precission
++template<> inline CircuitTableIntPOD<absl::int128,my256s> CircuitTableIntPOD<absl::int128,my256s>::Double::castToSingle()const//casts and checks precission
+ {
+   // DANGER !!!
+   //if(v>=0x7fffffffffffffffffffffffffffffff || -v>=0x7fffffffffffffffffffffffffffffff) throw MVMachineIntegerOverflow;
+ 	CircuitTableIntPOD ret;
+-	ret.v=__int128(v);
++	ret.v=absl::int128(v);
+ 	return ret;
+ }
+ 
+@@ -787,7 +816,8 @@ public:
+ 	static bool POD2;
+ 	CircuitTableInt128()noexcept{v=0;}
+ 	CircuitTableInt128(CircuitTableInt128POD const &m){v=m.v;}
+-	CircuitTableInt128(__int128_t val){v=val;}
++	CircuitTableInt128(absl::int128 val){v=val;}
++	CircuitTableInt128(int val){v=val;}
+ 	CircuitTableInt128(std::string const&s){
+ 	  int64_t proxy;
+ 	  std::istringstream a(s); a>>proxy;
+diff --git a/src/gfanlib_tableau.h b/src/gfanlib_tableau.h
+index d2ced06..c6d2e14 100644
+--- a/src/gfanlib_tableau.h
++++ b/src/gfanlib_tableau.h
+@@ -335,8 +335,8 @@ template <class mvtyp> class Tableau{
+ 			{
+ 				combinedMatrix=Matrix<mvtyp>(M.getHeight()+1,M.getHeight()+1+M.getWidth(),mr);
+ 				combinedMatrix.setSubMatrix(0,M.getHeight()+1,M.getHeight(),getWidth(),M);
+-				for(int i=0;i<M.getHeight()+1;i++)combinedMatrix[i][i]=1;
+-				for(int i=M.getHeight()+1;i<getWidth();i++)combinedMatrix[M.getHeight()][i]=1;
++				for(int i=0;i<M.getHeight()+1;i++)combinedMatrix[i][i]=static_cast<mvtyp>(1);
++				for(int i=M.getHeight()+1;i<getWidth();i++)combinedMatrix[M.getHeight()][i]=static_cast<mvtyp>(1);
+ //				Matrix<mvtyp> M2=M;
+ //				M2.appendRow(Vector<mvtyp>::allOnes(M2.getWidth()));
+ //				combinedMatrix=combineLeftRight(M2.identity(M.getHeight()+1),M2,mr);
+@@ -348,7 +348,7 @@ template <class mvtyp> class Tableau{
+ 			}
+ 			assert(inBasis.size()==getWidth());
+ 			for(int i=0;i<M.getHeight()+appendAllOnes;i++){basisIndices[i]=i;inBasis[i]=true;}
+-			determinantOfBasis=1;
++			determinantOfBasis=static_cast<mvtyp>(1);
+ 			computeRowBounds();
+ 		}
+ 		Tableau(Tableau<mvtyp> const &a, MR *mr=get_default_resource()):

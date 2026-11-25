@@ -3,14 +3,14 @@
 
 EAPI=8
 
-inherit crossdev flag-o-matic toolchain-funcs
+inherit autotools crossdev flag-o-matic toolchain-funcs
 
 DESCRIPTION="GNU Mach microkernel, for the Hurd"
 HOMEPAGE="https://www.gnu.org/software/hurd/microkernel/mach/gnumach.html"
 
 if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://git.savannah.gnu.org/git/hurd/gnumach.git"
-	inherit autotools git-r3
+	inherit git-r3
 elif [[ ${PV} == *_p* ]] ; then
 	MY_PV=${PV%_p*}+git${PV#*_p}
 	MY_P=${PN}_${MY_PV}
@@ -18,15 +18,22 @@ elif [[ ${PV} == *_p* ]] ; then
 	# savannah doesn't allow snapshot downloads from cgit as of 2026-03,
 	# but the Debian maintainer is also upstream, so just use theirs
 	# instead.
-	SRC_URI="mirror://debian/pool/main/${PN:0:1}/${PN}/${MY_P}.orig.tar.xz"
-	S="${WORKDIR}"/${MY_P/_/-}
+	#SRC_URI="mirror://debian/pool/main/${PN:0:1}/${PN}/${MY_P}.orig.tar.xz"
+	#S="${WORKDIR}"/${MY_P/_/-}
+
+	# Debian only make full snapshots every so often, but apply other
+	# commits as backports. This is a bit awkward for us to follow, so
+	# roll our own snapshots:
+	# $ git archive --format=tar --prefix=gnumach/ HEAD | xz > gnumach-1.8_p20260330.tar.xz
+	SRC_URI="https://distfiles.gentoo.org/pub/proj/hurd/snapshots/gnumach/${P}.tar.xz"
+	S="${WORKDIR}"/${PN}
 else
 	SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 fi
 
 LICENSE="GPL-2 BSD-2"
 SLOT="0"
-IUSE="headers-only"
+IUSE="debug headers-only"
 [[ ${PV} != 9999 ]] && KEYWORDS="~amd64 ~x86"
 
 if is_crosspkg ; then
@@ -39,9 +46,11 @@ else
 	"
 fi
 
+BDEPEND="sys-apps/texinfo"
+
 src_prepare() {
 	default
-	[[ ${PV} == 9999 ]] && eautoreconf
+	eautoreconf
 }
 
 src_configure() {
@@ -54,6 +63,11 @@ src_configure() {
 		else
 			export MIG="${CTARGET}-mig"
 		fi
+	fi
+
+	# Make sure host make.conf doesn't pollute us
+	if target_is_not_host || tc-is-cross-compiler ; then
+		CHOST=${CTARGET} strip-unsupported-flags
 	fi
 
 	strip-flags
@@ -75,6 +89,8 @@ src_configure() {
 
 		# Needed for QEMU with `-net nic,model=ne2k_pc` at least
 		--enable-net-group
+
+		$(use_enable debug kdb)
 	)
 
 	econf "${myeconfargs[@]}"

@@ -1,0 +1,36 @@
+https://bugs.gentoo.org/953761
+Based on upstream patch:
+https://github.com/GothenburgBitFactory/clog/commit/e2e9050c33da3a1dbf0a48be520299e63d32adf6.patch
+From: Thomas Lauf <thomas.lauf@tngtech.com>
+
+---
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 93d99c6..df7cef8 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required (VERSION 2.8)
++cmake_minimum_required (VERSION 3.10)
+ set (CMAKE_LEGACY_CYGWIN_WIN32 0) # Remove when CMake >= 2.8.4 is required
+ set (CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake")
+ set (HAVE_CMAKE true)
+diff --git a/doc/CMakeLists.txt b/doc/CMakeLists.txt
+index 1010224..3b996f7 100644
+--- a/doc/CMakeLists.txt
++++ b/doc/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required (VERSION 2.8)
++cmake_minimum_required (VERSION 3.10)
+ message ("-- Configuring man pages")
+ set (man_FILES clog.1)
+ foreach (man_FILE ${man_FILES})
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index f273c82..b888df9 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 2.8)
++cmake_minimum_required (VERSION 3.10)
+ include_directories (${CMAKE_SOURCE_DIR}
+                      ${CMAKE_SOURCE_DIR}/src
+                      ${CMAKE_SOURCE_DIR}/src/libshared/src

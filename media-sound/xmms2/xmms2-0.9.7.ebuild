@@ -3,8 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..14} )
-PYTHON_REQ_USE="threads(+)"
+PYTHON_COMPAT=( python3_{12..15} )
 inherit flag-o-matic optfeature perl-functions python-single-r1 waf-utils
 
 DESCRIPTION="X(cross)platform Music Multiplexing System, next generation of the XMMS player"

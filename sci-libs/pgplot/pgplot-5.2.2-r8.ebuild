@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -79,6 +79,7 @@ src_configure() {
 	# bug #722190
 	append-fflags $(test-flags-FC -fallow-argument-mismatch)
 
+	append-cflags -std=gnu89
 	./makemake . linux
 	# post makefile creation prefix hack
 	sed -i -e "s|/usr|${EPREFIX}/usr|g" makefile || die

@@ -49,10 +49,9 @@ fi
 
 # @ECLASS_VARIABLE: ECM_NONGUI
 # @DESCRIPTION:
-# By default, for all CATEGORIES except kde-frameworks, assume we are building
-# a GUI application. Add dependency on kde-frameworks/breeze-icons or
-# kde-frameworks/oxygen-icons. With KFMIN lower than 6.9.0, inherit xdg.eclass,
-# run pkg_preinst, pkg_postinst and pkg_postrm. If set to "true", do nothing.
+# By default, for all CATEGORIES except kde-frameworks, set to "false", which
+# assumes we are building a GUI application, and depend on breeze-icons or
+# oxygen-icons.  If set to "true", do nothing.
 : "${ECM_NONGUI:=false}"
 if [[ ${CATEGORY} == kde-frameworks ]]; then
 	ECM_NONGUI=true
@@ -81,28 +80,27 @@ fi
 # Will accept "true", "false", "optional", "forceoptional", "forceoff".
 # If set to "false" (default), do nothing.
 # Otherwise, add "+handbook" to IUSE, add the appropriate dependency, and let
-# KF${_KFSLOT}DocTools generate and install the handbook from docbook file(s)
-# found in ECM_HANDBOOK_DIR. However if !handbook, disable build of
-# ECM_HANDBOOK_DIR in CMakeLists.txt.
-# If set to "optional", build with
-# -DCMAKE_DISABLE_FIND_PACKAGE_KF${_KFSLOT}DocTools=ON when !handbook. In case
-# package requires KF5KDELibs4Support, see next:
-# If set to "forceoptional", remove a KF${_KFSLOT}DocTools dependency from the
-# root CMakeLists.txt in addition to the above.
+# KF6DocTools generate and install the handbook from docbook file(s) found in
+# ECM_HANDBOOK_DIR. However if !handbook, disable build of ECM_HANDBOOK_DIR in
+# CMakeLists.txt.
+# If set to "optional", build with -DCMAKE_DISABLE_FIND_PACKAGE_KF6DocTools=ON
+# when !handbook.
+# If set to "forceoptional", remove a KF6DocTools dependency from the root
+# CMakeLists.txt in addition to the above.
 : "${ECM_HANDBOOK:=false}"
 
 # @ECLASS_VARIABLE: ECM_HANDBOOK_DIR
 # @DESCRIPTION:
 # Specifies the directory containing the docbook file(s) relative to ${S} to
-# be processed by KF${_KFSLOT}DocTools (kdoctools_install).
+# be processed by KF6DocTools (kdoctools_install).
 : "${ECM_HANDBOOK_DIR:=doc}"
 
 # @ECLASS_VARIABLE: ECM_PO_DIRS
 # @PRE_INHERIT
 # @DESCRIPTION:
 # Specifies directories of l10n files relative to ${S} to be processed by
-# KF${_KFSLOT}I18n (ki18n_install). If IUSE nls exists and is disabled then
-# disable build of these directories in CMakeLists.txt.
+# KF6I18n (ki18n_install). If IUSE nls exists and is disabled then disable
+# build of these directories in CMakeLists.txt.
 if [[ ${ECM_PO_DIRS} ]]; then
 	[[ ${ECM_PO_DIRS@a} == *a* ]] ||
 		die "ECM_PO_DIRS must be an array"
@@ -124,10 +122,10 @@ fi
 # If set to "true", add "doc" to IUSE, add the appropriate dependency, let
 # -DBUILD_QCH=ON generate and install Qt compressed help files when USE=doc.
 # If set to "false", do nothing.
-if [[ ${CATEGORY} = kde-frameworks && ${_KFSLOT} == 5 ]]; then
+if [[ ${CATEGORY} = kde-frameworks ]]; then
 # TODO: Implement KF 6.15 changes how API documentation is built. See also:
 #   https://mail.kde.org/pipermail/distributions/2025-June/001595.html
-	: "${ECM_QTHELP:=true}"
+	: "${ECM_QTHELP:=false}"
 fi
 : "${ECM_QTHELP:=false}"
 
@@ -143,20 +141,11 @@ fi
 # @ECLASS_VARIABLE: ECM_TEST
 # @DEFAULT_UNSET
 # @DESCRIPTION:
-# Will accept "true", "false", "forceoptional", and "forceoptional-recursive".
-# For KF5-based ebuilds, additionally accepts "optional".
+# Will accept "true", "false" or "forceoptional".
 # Default value is "false", except for CATEGORY=kde-frameworks where it is
 # set to "true". If set to "false", do nothing.
 # For any other value, add "test" to IUSE. If set to "forceoptional", ignore
-# "autotests", "test", "tests" subdirs from top-level CMakeLists.txt when
-# USE=!test. If set to "forceoptional-recursive", make autotest(s), unittest(s)
-# and test(s) subdirs from *any* CMakeLists.txt in ${S} and below conditional
-# on BUILD_TESTING when USE=!test. This is always meant as a short-term fix and
-# creates ${T}/${P}-tests-optional.patch to refine and submit upstream.
-# For KF5-based ebuilds:
-# Additionally DEPEND on dev-qt/qttest:5 if USE=test, but punt Qt5Test
-# dependency if set to "forceoptional*" with USE=!test.
-# If set to "optional", build with -DCMAKE_DISABLE_FIND_PACKAGE_Qt5Test=ON
+# "appiumtests", "autotests", "test", "tests" subdirs from root CMakeLists.txt
 # when USE=!test.
 if [[ ${CATEGORY} = kde-frameworks ]]; then
 	: "${ECM_TEST:=true}"
@@ -168,33 +157,17 @@ fi
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Minimum version of Frameworks to require. Default value for kde-frameworks
-# is ${PV} and 5.116.0 baseline for everything else.
-# If set to >=5.240, KF6/Qt6 is assumed thus SLOT=6 dependencies added and
-# -DQT_MAJOR_VERSION=6 added to cmake args.
+# is ${PV} and 6.22.0 baseline for everything else.  KF5 is unsupported.
 if [[ ${CATEGORY} = kde-frameworks ]]; then
 	: "${KFMIN:=$(ver_cut 1-2)}"
 fi
-: "${KFMIN:=5.116.0}"
+: "${KFMIN:=6.22.0}"
 
 if ver_test ${KFMIN} -lt 6.9 && [[ ${ECM_NONGUI} == false ]]; then
 	inherit xdg
 fi
 
-# @ECLASS_VARIABLE: _KFSLOT
-# @INTERNAL
-# @DESCRIPTION:
-# KDE Frameworks and Qt main slot dependency, implied by KFMIN version, *not*
-# necessarily the package's SLOT. This is being used throughout the eclass to
-# depend on either :5 or :6 Qt/KF packages as well as setting correctly
-# prefixed cmake args.
-: "${_KFSLOT:=5}"
-if [[ ${CATEGORY} == kde-frameworks ]]; then
-	ver_test ${KFMIN} -ge 5.240 && _KFSLOT=6
-else
-	if [[ ${KFMIN/.*} == 6 ]] || $(ver_test ${KFMIN} -ge 5.240); then
-		_KFSLOT=6
-	fi
-fi
+ver_test ${KFMIN} -lt 5.240 && die "KF5 is unsupported!"
 
 # @ECLASS_VARIABLE: KDE_GCC_MINIMAL
 # @DEFAULT_UNSET
@@ -233,11 +206,7 @@ esac
 case ${ECM_DESIGNERPLUGIN} in
 	true)
 		IUSE+=" designer"
-		if [[ ${_KFSLOT} == 6 ]]; then
-			BDEPEND+=" designer? ( dev-qt/qttools:${_KFSLOT}[designer] )"
-		else
-			BDEPEND+=" designer? ( dev-qt/designer:${_KFSLOT} )"
-		fi
+		BDEPEND+=" designer? ( dev-qt/qttools:6[designer] )"
 		;;
 	false) ;;
 	*)
@@ -260,7 +229,7 @@ esac
 case ${ECM_HANDBOOK} in
 	true|optional|forceoptional)
 		IUSE+=" +handbook"
-		BDEPEND+=" handbook? ( >=kde-frameworks/kdoctools-${KFMIN}:${_KFSLOT} )"
+		BDEPEND+=" handbook? ( >=kde-frameworks/kdoctools-${KFMIN}:6 )"
 		;;
 	false|forceoff) ;;
 	*)
@@ -281,13 +250,11 @@ esac
 case ${ECM_QTHELP} in
 	true)
 		IUSE+=" doc"
-		COMMONDEPEND+=" doc? ( dev-qt/qt-docs:${_KFSLOT} )"
-		BDEPEND+=" doc? ( >=app-text/doxygen-1.8.13-r1 )"
-		if [[ ${_KFSLOT} == 6 ]]; then
-			BDEPEND+=" doc? ( dev-qt/qttools:${_KFSLOT}[assistant] )"
-		else
-			BDEPEND+=" doc? ( dev-qt/qthelp:${_KFSLOT} )"
-		fi
+		COMMONDEPEND+=" doc? ( dev-qt/qt-docs:6 )"
+		BDEPEND+=" doc? (
+			>=app-text/doxygen-1.8.13-r1
+			dev-qt/qttools:6[assistant]
+		)"
 		;;
 	false) ;;
 	*)
@@ -298,13 +265,10 @@ esac
 
 case ${ECM_TEST} in
 	optional)
-		if [[ ${_KFSLOT} != 5 ]]; then
-			eerror "Banned value for \${ECM_TEST}"
-			die "Value ${ECM_TEST} is only supported in KF5"
-		fi
+		eerror "Banned value for \${ECM_TEST}"
+		die "Value ${ECM_TEST} was only supported in KF5"
 		;;
-	true|forceoptional|forceoptional-recursive) ;;
-	false) ;;
+	true|false|forceoptional) ;;
 	*)
 		eerror "Unknown value for \${ECM_TEST}"
 		die "Value ${ECM_TEST} is not supported"
@@ -319,16 +283,8 @@ if [[ ${ECM_TEST} != false ]]; then
 	IUSE+=" test"
 	RESTRICT+=" !test? ( test )"
 fi
-if [[ ${_KFSLOT} == 6 ]]; then
-	RDEPEND+=" >=kde-frameworks/kf-env-6"
-	COMMONDEPEND+=" dev-qt/qtbase:${_KFSLOT}"
-else
-	RDEPEND+=" >=kde-frameworks/kf-env-4"
-	COMMONDEPEND+=" dev-qt/qtcore:${_KFSLOT}"
-	if [[ ${ECM_TEST} != false ]]; then
-		DEPEND+=" test? ( dev-qt/qttest:5 )"
-	fi
-fi
+RDEPEND+=" >=kde-frameworks/kf-env-6"
+COMMONDEPEND+=" dev-qt/qtbase:6"
 
 DEPEND+=" ${COMMONDEPEND}"
 RDEPEND+=" ${COMMONDEPEND}"
@@ -338,12 +294,37 @@ unset COMMONDEPEND
 # @INTERNAL
 # @DESCRIPTION:
 # Use with ECM_HANDBOOK=optional; ticks either -DBUILD_DOC if available,
-# or -DCMAKE_DISABLE_FIND_PACKAGE_KF${_KFSLOT}DocTools
+# or -DCMAKE_DISABLE_FIND_PACKAGE_KF6DocTools
 _ecm_handbook_optional() {
 	if grep -Eq "option.*BUILD_DOC" CMakeLists.txt; then
 		echo "-DBUILD_DOC=$(usex handbook)"
 	else
-		echo "-DCMAKE_DISABLE_FIND_PACKAGE_KF${_KFSLOT}DocTools=$(usex !handbook)"
+		echo "-DCMAKE_DISABLE_FIND_PACKAGE_KF6DocTools=$(usex !handbook)"
+	fi
+}
+
+# @FUNCTION: _ecm_buildqch_optional
+# @INTERNAL
+# @DESCRIPTION:
+# Used with ECM_QTHELP; ticks -DBUILD_QCH only if available.
+_ecm_buildqch_optional() {
+	if use doc; then
+		echo "-DBUILD_QCH=ON"
+	elif grep -Eq "option.*BUILD_QCH" CMakeLists.txt; then
+		echo "-DBUILD_QCH=OFF"
+	fi
+}
+
+# @FUNCTION: _ecm_disable_unwanted
+# @INTERNAL
+# @DESCRIPTION:
+# Disable unwanted CMake options if they are present.
+_ecm_disable_unwanted() {
+	if grep -Eq "option.*ENABLE_PCH" CMakeLists.txt; then
+		echo "-DENABLE_PCH=OFF"
+	fi
+	if grep -Eq "option.*WARNINGS_AS_ERRORS" CMakeLists.txt; then
+		echo "-DWARNINGS_AS_ERRORS=OFF"
 	fi
 }
 
@@ -564,50 +545,26 @@ ecm_src_prepare() {
 
 	# limit playing field of locale stripping to kde-*/ categories
 	if [[ ${CATEGORY} = kde-* ]] ; then
-		# TODO: cleanup after KF5 removal:
-		# always install unconditionally for <kconfigwidgets-6.16 - if you use
-		# language X as system language, and there is a combobox with language
-		# names, the translated language name for language Y is taken from
-		# /usr/share/locale/Y/kf${_KFSLOT}_entry.desktop
-		if ! [[ ${PN} == kconfigwidgets && ${_KFSLOT} == 5 ]]; then
-			_ecm_strip_handbook_translations
-		fi
+		_ecm_strip_handbook_translations
 	fi
 
 	# only build unit tests when required
 	if ! { in_iuse test && use test; } ; then
-		if [[ ${ECM_TEST} = forceoptional ]] ; then
-			[[ ${_KFSLOT} = 5 ]] && ecm_punt_qt_module Test
-			# if forceoptional, also cover non-kde categories
-			cmake_comment_add_subdirectory appiumtests autotests test tests
-		elif [[ ${ECM_TEST} = forceoptional-recursive ]] ; then
-			[[ ${_KFSLOT} = 5 ]] && ecm_punt_qt_module Test
-			local f pf="${T}/${P}"-tests-optional.patch
-			touch ${pf} || die "Failed to touch patch file"
-			for f in $(find . -type f -name "CMakeLists.txt" -exec \
-				grep -li "^\s*add_subdirectory\s*\(\s*.*\(auto|unit\)\?tests\?\s*)\s*\)" {} \;); do
-				cp ${f} ${f}.old || die "Failed to prepare patch origfile"
-				pushd ${f%/*} > /dev/null || die
-					ecm_punt_qt_module Test
-					sed -i CMakeLists.txt -e \
-						"/^#/! s/add_subdirectory\s*\(\s*.*\(auto|unit\)\?tests\?\s*)\s*\)/if(BUILD_TESTING)\n&\nendif()/I" \
-						|| die
-				popd > /dev/null || die
-				diff -Naur ${f}.old ${f} 1>>${pf}
-				rm ${f}.old || die "Failed to clean up"
-			done
-			eqawarn "QA Notice: Build system modified by ECM_TEST=forceoptional-recursive."
-			eqawarn "Unified diff file ready for pickup in:"
-			eqawarn "  ${pf}"
-			eqawarn "Push it upstream to make this message go away."
-		elif [[ -n ${_KDE_ORG_ECLASS} ]] ; then
+		if has kde.org ${INHERITED} && [[ ${ECM_TEST} != forceoptional ]]; then
 			cmake_comment_add_subdirectory appiumtests autotests test tests
 		fi
 	fi
 
 	# in frameworks, tests = manual tests so never build them
-	if [[ -n ${_FRAMEWORKS_KDE_ORG_ECLASS} ]] && [[ ${PN} != extra-cmake-modules ]]; then
+	if has frameworks.kde.org ${INHERITED}; then
 		cmake_comment_add_subdirectory tests
+	fi
+
+	# disable upstream git hooks (program detection, hook installation ...)
+	if [[ -d .git ]]; then
+		if grep -Eq "\s*set.*GIT_SOURCE_TARBALL TRUE" CMakeLists.txt; then
+			sed -e "/\s*set.*GIT_SOURCE_TARBALL/s/TRUE/FALSE/" -i CMakeLists.txt || die
+		fi
 	fi
 }
 
@@ -624,20 +581,21 @@ ecm_src_configure() {
 
 	local cmakeargs
 
-	if [[ ${_KFSLOT} == 6 ]]; then
-		cmakeargs+=( -DQT_MAJOR_VERSION=6 )
-	fi
-
-	if in_iuse test && ! use test ; then
-		cmakeargs+=( -DBUILD_TESTING=OFF )
-
-		if [[ ${_KFSLOT} = 5 && ${ECM_TEST} = optional ]] ; then
-			cmakeargs+=( -DCMAKE_DISABLE_FIND_PACKAGE_Qt5Test=ON )
-		fi
+	if in_iuse test; then
+		cmakeargs+=( $(usev !test -DBUILD_TESTING=OFF) )
 	fi
 
 	if [[ ${ECM_HANDBOOK} = optional ]] ; then
 		cmakeargs+=( $(_ecm_handbook_optional) )
+	fi
+
+	if [[ ${ECM_QTHELP} = true ]]; then
+		cmakeargs+=( $(_ecm_buildqch_optional) )
+	fi
+
+	# disable upstream CMake settings ... currently mostly PIM
+	if has gear.kde.org ${INHERITED}; then
+		cmakeargs+=( $(_ecm_disable_unwanted) )
 	fi
 
 	if in_iuse designer && [[ ${ECM_DESIGNERPLUGIN} = true ]]; then
@@ -648,10 +606,6 @@ ecm_src_configure() {
 		cmakeargs+=( -DBUILD_PYTHON_BINDINGS=OFF )
 	fi
 
-	if [[ ${ECM_QTHELP} = true ]]; then
-		cmakeargs+=( -DBUILD_QCH=$(usex doc) )
-	fi
-
 	# Common ECM configure parameters (invariants)
 	local ecm_config=${BUILD_DIR}/gentoo_ecm_config.cmake
 	cat > ${ecm_config} <<- _EOF_ || die
@@ -660,21 +614,18 @@ ecm_src_configure() {
 		set(ECM_DISABLE_APPSTREAMTEST ON CACHE BOOL "") # *-disable-appstreamtest.patch
 		set(ECM_DISABLE_GIT ON CACHE BOOL "") # *-disable-git-commit-hooks.patch
 
-		# KDEInstallDirs[56] section
+		set(BUILD_WITH_QT6 ON CACHE BOOL "") # QtVersionOption.cmake: Hard-require Qt6
+		# KDEInstallDirs6 section
 		set(KDE_INSTALL_USE_QT_SYS_PATHS ON CACHE BOOL "") # install mkspecs in same dir as Qt stuff
 		# move handbook outside of doc dir, bug #667138
 		set(KDE_INSTALL_DOCBUNDLEDIR "${EPREFIX}/usr/share/help" CACHE PATH "")
 		set(KDE_INSTALL_INFODIR "${EPREFIX}/usr/share/info" CACHE PATH "")
 		set(KDE_INSTALL_LIBDIR $(get_libdir) CACHE PATH "Output directory for libraries")
 		set(KDE_INSTALL_MANDIR "${EPREFIX}/usr/share/man" CACHE PATH "")
-	_EOF_
 
-	if [[ ${_KFSLOT} == 6 ]]; then
-		cat >> ${ecm_config} <<- _EOF_ || die
-			# TODO: Ask upstream why LIBEXECDIR is set to EXECROOTDIR/LIBDIR/libexec, bug #928345
-			set(KDE_INSTALL_LIBEXECDIR "${EPREFIX}/usr/libexec" CACHE PATH "")
-		_EOF_
-	fi
+		# TODO: Ask upstream why LIBEXECDIR is set to EXECROOTDIR/LIBDIR/libexec, bug #928345
+		set(KDE_INSTALL_LIBEXECDIR "${EPREFIX}/usr/libexec" CACHE PATH "")
+	_EOF_
 
 	# allow the ebuild to override what we set here
 	mycmakeargs=(
@@ -761,7 +712,7 @@ ecm_src_install() {
 		fi
 	}
 
-	if [[ -n ${_KDE_ORG_ECLASS} && -d "${ED}"/usr/share/metainfo/ ]]; then
+	if has kde.org ${INHERITED} && [[ -d "${ED}"/usr/share/metainfo/ ]]; then
 		if [[ ${KDE_ORG_NAME} != ${PN} ]]; then
 			local ecm_metainfo mainslot=${SLOT%/*}
 			pushd "${ED}"/usr/share/metainfo/ > /dev/null || die

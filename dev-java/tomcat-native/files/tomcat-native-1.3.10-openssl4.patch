@@ -1,0 +1,28 @@
+This code was dropped upstream in 34604c6b5b7735384fa7937f3373a2a80bb50ccf
+so i't's not clear if it's really used for 1.3.x or not, but it is compiled,
+so apply the trivial fix to use getters for the opaque type.
+--- a/src/sslinfo.c
++++ b/src/sslinfo.c
+@@ -55,15 +55,15 @@ static int get_days_remaining(ASN1_UTCTIME *tm)
+     /* Fail if the time isn't a valid ASN.1 UTCTIME; RFC3280 mandates
+      * that the seconds digits are present even though ASN.1
+      * doesn't. */
+-    if (tm->length < 11 || !ASN1_UTCTIME_check(tm))
++    if (ASN1_STRING_get_length(tm) < 11 || !ASN1_UTCTIME_check(tm))
+         return 0;
+ 
+-    exp.tm_year = DIGIT2NUM(tm->data);
+-    exp.tm_mon  = DIGIT2NUM(tm->data + 2) - 1;
+-    exp.tm_mday = DIGIT2NUM(tm->data + 4) + 1;
+-    exp.tm_hour = DIGIT2NUM(tm->data + 6);
+-    exp.tm_min  = DIGIT2NUM(tm->data + 8);
+-    exp.tm_sec  = DIGIT2NUM(tm->data + 10);
++    exp.tm_year = DIGIT2NUM(ASN1_STRING_get0_data(tm));
++    exp.tm_mon  = DIGIT2NUM(ASN1_STRING_get0_data(tm) + 2) - 1;
++    exp.tm_mday = DIGIT2NUM(ASN1_STRING_get0_data(tm) + 4) + 1;
++    exp.tm_hour = DIGIT2NUM(ASN1_STRING_get0_data(tm) + 6);
++    exp.tm_min  = DIGIT2NUM(ASN1_STRING_get0_data(tm) + 8);
++    exp.tm_sec  = DIGIT2NUM(ASN1_STRING_get0_data(tm) + 10);
+ 
+     if (exp.tm_year <= 50)
+         exp.tm_year += 100;

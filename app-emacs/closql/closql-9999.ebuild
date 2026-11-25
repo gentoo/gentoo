@@ -1,7 +1,7 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=9
 
 NEED_EMACS="28.1"
 
@@ -18,16 +18,17 @@ else
 	SRC_URI="https://github.com/magit/${PN}/archive/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz"
 
-	KEYWORDS="~amd64"
+	KEYWORDS="~amd64 ~x86"
 fi
 
 LICENSE="GPL-3+"
 SLOT="0"
 
 RDEPEND="
-	app-emacs/compat
-	app-emacs/cond-let
-	app-emacs/emacsql
+	>=app-emacs/compat-31.0
+	>=app-emacs/cond-let-1.1
+	>=app-emacs/emacsql-4.4
+	>=app-emacs/llama-1.0
 "
 BDEPEND="
 	${RDEPEND}

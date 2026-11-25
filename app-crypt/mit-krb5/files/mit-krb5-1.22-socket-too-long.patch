@@ -1,0 +1,69 @@
+Use a short tempdir for UNIX-domain sockets in t_changepw.py and
+t_sendto_kdc.py (bug #978403).
+
+Otherwise, we get a UNIX domain socket path too long error.
+Mirror the approach already used by t_ccache.py / t_otp.py
+
+--- a/tests/t_changepw.py
++++ b/tests/t_changepw.py
+@@ -1,10 +1,14 @@
+ from k5test import *
++import tempfile
+
+-# Also listen on a UNIX domain sockets for kpasswd.
++# sun_path is limited to 108 bytes on Linux; the portage build path
++# can push $testdir/*.sock past that limit. Use a short tempdir
++# instead, matching what t_ccache.py / t_otp.py already do.
++sockdir = tempfile.mkdtemp()
+ unix_conf = {'realms': {'$realm': {
+-    'kdc_listen': '$port0, $testdir/krb5.sock',
+-    'kadmind_listen': '$port1, $testdir/kadmin.sock',
+-    'kpasswd_listen': '$port2, $testdir/kpasswd.sock'}}}
++    'kdc_listen': '$port0, %s/k' % sockdir,
++    'kadmind_listen': '$port1, %s/a' % sockdir,
++    'kpasswd_listen': '$port2, %s/p' % sockdir}}}
+ realm = K5Realm(create_host=False,get_creds=False, kdc_conf=unix_conf)
+ realm.start_kadmind()
+ realm.prep_kadmin()
+@@ -56,9 +60,9 @@ realm.run([kadminl, 'delprinc', 'testprinc'])
+ mark('password change over UNIX domain socket')
+
+ unix_cli_conf = {'realms': {'$realm': {
+-    'kdc': '$testdir/krb5.sock',
+-    'admin_server': '$testdir/kadmin.sock',
+-    'kpasswd_server': '$testdir/kpasswd.sock'}}}
++    'kdc': '%s/k' % sockdir,
++    'admin_server': '%s/a' % sockdir,
++    'kpasswd_server': '%s/p' % sockdir}}}
+ unix_cli = realm.special_env('unix_cli', False, krb5_conf=unix_cli_conf)
+
+ realm.run([kadminl, 'addprinc', '-pw', 'pw1', 'testprinc'])
+--- a/tests/t_sendto_kdc.py
++++ b/tests/t_sendto_kdc.py
+@@ -1,4 +1,5 @@
+ from k5test import *
++import tempfile
+
+ realm = K5Realm(create_host=False)
+
+@@ -27,14 +28,18 @@
+
+ mark('UNIX domain socket')
+
+-conf_unix = {'realms': {'$realm': {'kdc_listen': '$testdir/krb5.sock',
++# sun_path is limited to 108 bytes on Linux; the portage build path
++# can push $testdir/krb5.sock past that limit.  Use a short tempdir
++# instead, matching what t_ccache.py / t_otp.py already do.
++sockdir = tempfile.mkdtemp()
++conf_unix = {'realms': {'$realm': {'kdc_listen': '%s/k' % sockdir,
+                                    'kdc_tcp_listen': ''}}}
+ unix = realm.special_env('unix', True, kdc_conf=conf_unix)
+ realm.run([kdb5_util, 'load', dumpfile], env=unix)
+ realm.stop_kdc()
+ realm.start_kdc(env=unix)
+
+-conf_unix_cli = {'realms': {'$realm': {'kdc': '$testdir/krb5.sock'}}}
++conf_unix_cli = {'realms': {'$realm': {'kdc': '%s/k' % sockdir}}}
+ unix_cli = realm.special_env('unix_cli', False, krb5_conf=conf_unix_cli)
+
+ # Do a kinit and check if we send the packet via a UNIX domain socket.

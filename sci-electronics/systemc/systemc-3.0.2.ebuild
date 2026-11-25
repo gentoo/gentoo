@@ -16,7 +16,7 @@ if [[ "${PV}" == "9999" ]] ; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/accellera-official/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+	KEYWORDS="amd64 ~arm ~arm64 ~riscv ~x86"
 fi
 
 LICENSE="Apache-2.0"
@@ -24,9 +24,13 @@ SLOT="0"
 IUSE="debug doc examples static-libs"
 REQUIRED_USE="examples? ( doc )"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.3.4-arch-pthreads-fallback.patch
+)
+
 src_prepare() {
 	default
-	eautoconf --force
+	eautoreconf
 }
 
 src_configure() {

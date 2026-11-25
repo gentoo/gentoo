@@ -3,6 +3,7 @@
 <pkgmetadata>
 	<!-- maintainer-needed -->
 	<upstream>
+		<changelog>https://imapsync.lamiral.info/ChangeLog</changelog>
 		<remote-id type="github">imapsync/imapsync</remote-id>
 	</upstream>
 </pkgmetadata>

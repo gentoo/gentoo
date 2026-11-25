@@ -1,0 +1,63 @@
+https://github.com/CESNET/libnetconf2/commit/e2089fe7930ddb23b10602eaa67f049b7d21b7a4
+
+From e2089fe7930ddb23b10602eaa67f049b7d21b7a4 Mon Sep 17 00:00:00 2001
+From: Michal Vasko <mvasko@cesnet.cz>
+Date: Thu, 30 Jul 2026 16:01:27 +0200
+Subject: [PATCH] session openssl UPDATE do not access ASN1_OCTET_STRING
+ directly
+
+Obsolete in OpenSSL 4.0.
+
+Fixes #612
+---
+ src/session_openssl.c | 20 +++++++++++---------
+ 1 file changed, 11 insertions(+), 9 deletions(-)
+
+diff --git a/src/session_openssl.c b/src/session_openssl.c
+index 4543730c..77f49607 100644
+--- a/src/session_openssl.c
++++ b/src/session_openssl.c
+@@ -618,7 +618,8 @@ nc_tls_get_san_value_type_wrap(void *sans, int idx, char **san_value, NC_TLS_CTN
+ {
+     int ret = 0;
+     GENERAL_NAME *san;
+-    ASN1_OCTET_STRING *ip;
++    int ip_length;
++    const unsigned char *ip_data;
+ 
+     *san_value = NULL;
+     *san_type = NC_TLS_CTN_UNKNOWN;
+@@ -643,24 +644,25 @@ nc_tls_get_san_value_type_wrap(void *sans, int idx, char **san_value, NC_TLS_CTN
+         break;
+     case GEN_IPADD:
+         *san_type = NC_TLS_CTN_SAN_IP_ADDRESS;
+-        ip = san->d.iPAddress;
+-        if (ip->length == 4) {
+-            if (asprintf(san_value, "%d.%d.%d.%d", ip->data[0], ip->data[1], ip->data[2], ip->data[3]) == -1) {
++        ip_data = ASN1_STRING_get0_data(san->d.iPAddress);
++        ip_length = ASN1_STRING_length(san->d.iPAddress);
++        if (ip_length == 4) {
++            if (asprintf(san_value, "%d.%d.%d.%d", ip_data[0], ip_data[1], ip_data[2], ip_data[3]) == -1) {
+                 ERRMEM;
+                 *san_value = NULL;
+                 ret = -1;
+             }
+-        } else if (ip->length == 16) {
++        } else if (ip_length == 16) {
+             if (asprintf(san_value, "%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x",
+-                    ip->data[0], ip->data[1], ip->data[2], ip->data[3], ip->data[4], ip->data[5],
+-                    ip->data[6], ip->data[7], ip->data[8], ip->data[9], ip->data[10], ip->data[11],
+-                    ip->data[12], ip->data[13], ip->data[14], ip->data[15]) == -1) {
++                    ip_data[0], ip_data[1], ip_data[2], ip_data[3], ip_data[4], ip_data[5],
++                    ip_data[6], ip_data[7], ip_data[8], ip_data[9], ip_data[10], ip_data[11],
++                    ip_data[12], ip_data[13], ip_data[14], ip_data[15]) == -1) {
+                 ERRMEM;
+                 *san_value = NULL;
+                 ret = -1;
+             }
+         } else {
+-            WRN(NULL, "SAN IP address in an unknown format (length is %d).", ip->length);
++            WRN(NULL, "SAN IP address in an unknown format (length is %d).", ip_length);
+             ret = 1;
+         }
+         break;

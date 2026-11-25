@@ -1,6 +1,18 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Joonas Niilola <juippis@gentoo.org> (2026-10-30)
+# Dependency not stable on arm.
+app-crypt/libsecret test-rust
+dev-util/glade gjs
+
+# Ionen Wolkens <ionen@gentoo.org> (2026-04-16)
+# media-libs/opencolorio is not stable here and has many dependencies.
+# Not overly worth extra stabilizations over new still scarcely used
+# colour filters. Can revisit if someone wants this.
+media-video/ffmpeg opencolorio
+media-video/ffmpeg-compat opencolorio
+
 # Matt Turner <mattst88@gentoo.org> (2025-11-24)
 # spirv-llvm-translator < 20 is not stable here.
 dev-util/mesa_clc llvm_slot_18 llvm_slot_19
@@ -47,10 +59,6 @@ app-admin/syslog-ng grpc
 # Destabilize dev-db/redis for ~arm due to a lack of security stabilization
 # almost one year to this this date. bug 915548#c6
 dev-libs/hiredis test
-
-# Matt Turner <mattst88@gentoo.org> (2023-10-30)
-# libei not stable yet
-x11-base/xwayland libei
 
 # Sam James <sam@gentoo.org> (2023-07-28)
 # media-libs/libffado not marked stable here

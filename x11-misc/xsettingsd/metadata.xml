@@ -6,6 +6,7 @@
 		<name>Gentoo KDE Project</name>
 	</maintainer>
 	<upstream>
+		<remote-id type="codeberg">derat/xsettingsd</remote-id>
 		<remote-id type="github">derat/xsettingsd</remote-id>
 	</upstream>
 </pkgmetadata>

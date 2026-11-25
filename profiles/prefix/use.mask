@@ -1,6 +1,13 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Fabian Groffen <grobian@gentoo.org> (2026-05-15)
+# requires elfutils[debuginfod], elfutils is Linux only
+debuginfod
+
+# Fabian Groffen <grobian@gentoo.org> (2026-05-15)
+# epoll is Linux only
+epoll
 
 # Fabian Groffen <grobian@gentoo.org> (2018-12-29)
 # separate /usr has been disabled for long in Prefix, so ensure we don't

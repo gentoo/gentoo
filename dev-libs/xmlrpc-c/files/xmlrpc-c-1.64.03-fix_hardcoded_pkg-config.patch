@@ -1,0 +1,22 @@
+https://sourceforge.net/p/xmlrpc-c/code/3151
+https://bugs.gentoo.org/870253
+--- a/configure.in
++++ b/configure.in
+@@ -696,7 +696,7 @@ dnl =======================================================================
+ 
+ AC_MSG_CHECKING(for OpenSSL library)
+ 
+-if pkg-config openssl; then
++if ${PKG_CONFIG} openssl; then
+   HAVE_OPENSSL=yes
+ else
+   HAVE_OPENSSL=no
+@@ -747,7 +747,7 @@ dnl =======================================================================
+ 
+ AC_MSG_CHECKING(for Libxml2 library)
+ 
+-if pkg-config libxml-2.0; then
++if ${PKG_CONFIG} libxml-2.0; then
+   HAVE_LIBXML2=yes
+ else
+   HAVE_LIBXML2=no

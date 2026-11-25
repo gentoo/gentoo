@@ -10,7 +10,7 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/bijiben"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 DEPEND="
 	>=app-misc/tinysparql-3.4.0-r1:3=

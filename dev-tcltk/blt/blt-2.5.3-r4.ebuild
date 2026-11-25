@@ -53,6 +53,8 @@ PATCHES=(
 	"${WORKDIR}"/patches/pointertoint.patch
 	"${WORKDIR}"/patches/autoreconf.patch
 	"${WORKDIR}"/patches/switch.patch
+	"${FILESDIR}"/${P}-clang-image-ptr.patch
+	"${FILESDIR}"/${P}-clang-treeview-node.patch
 	"${FILESDIR}"/${P}-gentoo.patch
 	"${FILESDIR}"/${P}-darwin.patch
 	"${FILESDIR}"/${P}-gbsd.patch

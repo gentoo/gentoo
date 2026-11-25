@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -10,7 +10,7 @@ HOMEPAGE="https://apps.gnome.org/Dspy/"
 
 LICENSE="GPL-3+ LGPL-3+"
 SLOT="1"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 ~arm64"
 
 DEPEND="
 	>=dev-libs/glib-2.82:2

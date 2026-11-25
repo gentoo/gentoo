@@ -5,15 +5,19 @@
 		<email>alexander@tsoy.me</email>
 		<name>Alexander Tsoy</name>
 	</maintainer>
-	<maintainer type="person">
+	<maintainer type="person" proxied="maintainer-and-proxy">
 		<email>floppym@gentoo.org</email>
 		<name>Mike Gilbert</name>
 	</maintainer>
-	<maintainer type="person">
+	<maintainer type="person" proxied="maintainer-and-proxy">
 		<email>nowa@gentoo.org</email>
 		<name>Nowa Ammerlaan</name>
 	</maintainer>
 	<use>
+		<flag name="asciidoctor">
+			Build manpages using <pkg>dev-ruby/asciidoctor</pkg>
+			instead of <pkg>app-text/asciidoc</pkg>.
+		</flag>
 		<flag name="dracut-cpio">Build the enhanced 'dracut-cpio' program</flag>
 	</use>
 	<upstream>

@@ -1,0 +1,13 @@
+diff --git a/libraries/terminfo/configure b/libraries/terminfo/configure
+index 9c66cad..30ade23 100755
+--- a/libraries/terminfo/configure
++++ b/libraries/terminfo/configure
+@@ -1821,7 +1821,7 @@ if test "x$curses_libraries" != "xNONE"; then
+   TERMINFO_LIB_DIRS=$curses_libraries
+ fi
+ 
+-if test "x$curses_library" == "xNONE"; then
++if test "x$curses_library" = "xNONE"; then
+ ac_ext=c
+ ac_cpp='$CPP $CPPFLAGS'
+ ac_compile='$CC -c $CFLAGS $CPPFLAGS conftest.$ac_ext >&5'

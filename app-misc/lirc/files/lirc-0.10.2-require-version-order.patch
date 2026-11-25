@@ -1,0 +1,57 @@
+# https://sourceforge.net/p/lirc/tickets/390/
+diff '--color=auto' -ur lirc-0.10.2.orig/tools/lirc-setup/baseview.py lirc-0.10.2/tools/lirc-setup/baseview.py
+--- lirc-0.10.2.orig/tools/lirc-setup/baseview.py	2026-05-04 18:59:12.493744608 +0200
++++ lirc-0.10.2/tools/lirc-setup/baseview.py	2026-05-04 18:59:40.556194224 +0200
+@@ -3,8 +3,8 @@
+ 
+ import sys
+ import gi
+-from gi.repository import Gtk         # pylint: disable=no-name-in-module
+ gi.require_version('Gtk', '3.0')
++from gi.repository import Gtk         # pylint: disable=no-name-in-module
+ 
+ def _hasitem(dict_, key_):
+     ''' Test if dict contains a non-null value for key. '''
+Sólo en lirc-0.10.2/tools/lirc-setup: baseview.py~
+diff '--color=auto' -ur lirc-0.10.2.orig/tools/lirc-setup/choosers.py lirc-0.10.2/tools/lirc-setup/choosers.py
+--- lirc-0.10.2.orig/tools/lirc-setup/choosers.py	2026-05-04 18:59:12.493550596 +0200
++++ lirc-0.10.2/tools/lirc-setup/choosers.py	2026-05-04 19:00:26.015207412 +0200
+@@ -6,13 +6,12 @@
+ 
+ import os
+ import gi
++gi.require_version('Gtk', '3.0')
+ from gi.repository import Gtk         # pylint: disable=no-name-in-module
+ 
+ import mvc_model
+ import baseview
+ 
+-gi.require_version('Gtk', '3.0')
+-
+ _DEBUG = 'LIRC_DEBUG' in os.environ
+ 
+ 
+Sólo en lirc-0.10.2/tools/lirc-setup: choosers.py~
+diff '--color=auto' -ur lirc-0.10.2.orig/tools/lirc-setup/mvc_view.py lirc-0.10.2/tools/lirc-setup/mvc_view.py
+--- lirc-0.10.2.orig/tools/lirc-setup/mvc_view.py	2026-05-04 18:59:12.493716742 +0200
++++ lirc-0.10.2/tools/lirc-setup/mvc_view.py	2026-05-04 19:00:00.256768438 +0200
+@@ -10,6 +10,8 @@
+ import textwrap
+ 
+ import gi
++gi.require_version('Gtk', '3.0')
++gi.require_version('Vte', '2.91')
+ from gi.repository import Gtk         # pylint: disable=no-name-in-module
+ from gi.repository import Vte         # pylint: disable=no-name-in-module
+ from gi.repository import GLib        # pylint: disable=no-name-in-module
+@@ -19,9 +21,6 @@
+ import mvc_model
+ import util
+ 
+-gi.require_version('Gtk', '3.0')
+-gi.require_version('Vte', '2.91')
+-
+ REMOTES_LIST_URL = "http://lirc-remotes.sourceforge.net/remotes.list"
+ _DEBUG = 'LIRC_DEBUG' in os.environ
+ 
+Sólo en lirc-0.10.2/tools/lirc-setup: mvc_view.py~

@@ -1,0 +1,46 @@
+https://github.com/json-c/json-c/pull/948
+
+From 06c0508d8bacf56d5f439864dc9155f8df8b16f2 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Sat, 18 Jul 2026 06:37:36 +0100
+Subject: [PATCH 4/4] meson: fix pkgconfig file
+
+Fix includedir and libdir to have proper paths (not just relative ones
+to prefix).
+
+Using Meson's native pkgconfig module is the best way of doing this.
+
+Signed-off-by: Sam James <sam@gentoo.org>
+---
+ meson.build | 18 +++++-------------
+ 1 file changed, 5 insertions(+), 13 deletions(-)
+
+diff --git a/meson.build b/meson.build
+index 234a5958b1..f811382ec4 100644
+--- a/meson.build
++++ b/meson.build
+@@ -283,19 +283,11 @@ endif
+ install_headers(installed_headers, subdir: 'json-c')
+ 
+ # pkg-config file
+-configure_file(
+-  input: 'json-c.pc.in',
+-  output: 'json-c.pc',
+-  install: true,
+-  install_dir: get_option('libdir') / 'pkgconfig',
+-  configuration: {
+-    'prefix': get_option('prefix'),
+-    'exec_prefix': get_option('prefix'),
+-    'libdir': get_option('libdir'),
+-    'includedir': get_option('includedir'),
+-    'VERSION': meson.project_version(),
+-    'LIBS': '',
+-  }
++pkg = import('pkgconfig')
++pkg.generate(
++  libjson,
++  description: 'A JSON implementation in C',
++  subdirs: 'json-c',
+ )
+ 
+ # Optional apps

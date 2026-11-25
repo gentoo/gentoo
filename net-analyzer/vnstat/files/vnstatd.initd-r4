@@ -1,0 +1,23 @@
+#!/sbin/openrc-run
+# Copyright 1999-2026 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+: ${VNSTATD_USER:=vnstat}
+: ${VNSTATD_CONFIGFILE:=/etc/vnstat.conf}
+
+name="vnStat daemon"
+description="vnstatd updates vnStat databases"
+command="/usr/sbin/vnstatd"
+command_args="${VNSTATD_OPTS} --nodaemon --config ${VNSTATD_CONFIGFILE}"
+command_background=true
+command_user="${VNSTATD_USER}"
+pidfile="/run/${RC_SVCNAME}.pid"
+required_files="${VNSTATD_CONFIGFILE}"
+
+extra_started_commands="reload"
+
+reload() {
+	ebegin "Reloading ${name} configuration"
+	start-stop-daemon --signal HUP --pidfile "${pidfile}"
+	eend $?
+}

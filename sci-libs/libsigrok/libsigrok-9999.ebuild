@@ -1,11 +1,12 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..13} )
-USE_RUBY="ruby31 ruby32"
+PYTHON_COMPAT=( python3_{11..14} )
+USE_RUBY="ruby31 ruby32 ruby33"
 RUBY_OPTIONAL="yes"
+inherit flag-o-matic toolchain-funcs
 inherit python-r1 java-pkg-opt-2 ruby-ng udev xdg-utils
 
 case ${PV} in
@@ -122,6 +123,9 @@ src_prepare() {
 }
 
 sigrok_src_configure() {
+	# bug #981675
+	[[ ${CHOST} == *-darwin* ]] && append-cflags $(test-flags-CC -fpermissive)
+
 	local myeconfargs=(
 		--disable-python
 		--disable-ruby

@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -36,7 +36,6 @@ PATCHES=(
 	"${FILESDIR}/${PN}-2.0.0-nptl-hardened.patch"
 	"${FILESDIR}/${PN}-2.0.0-lv2-automagic.patch"
 	"${FILESDIR}/${PN}-2.1.1-fix-yyterror-not-declared.patch"
-	"${FILESDIR}/${PN}-2.3.1-c99-configure.patch"
 )
 
 DOCS=( AUTHORS ChangeLog NEWS README )

@@ -1,0 +1,56 @@
+From 6a2f636ebed03d8d4a579ec0ff541ed6c2c90d8f Mon Sep 17 00:00:00 2001
+From: Keith Bowes <keithbowes@users.noreply.github.com>
+Date: Thu, 15 Oct 2026 05:42:06 -0400
+Subject: [PATCH] OpenSSL 4 compatibility (#5050)
+
+Closes #5049
+
+Bumps the minimum required OpenSSL version to 1.1 (for ASN1_STRING_get0_data()), which seems reasonable; one hopes that no one has a version that old.
+---
+ auto.def       | 5 +++--
+ conn/openssl.c | 8 ++++----
+ 2 files changed, 7 insertions(+), 6 deletions(-)
+
+diff --git a/auto.def b/auto.def
+index ccb8d696aba..bbad465dedb 100644
+--- a/auto.def
++++ b/auto.def
+@@ -725,7 +725,7 @@ if {[get-define want-gnutls] && [get-define want-ssl]} {
+ 
+ if {[get-define want-ssl]} {
+   # OpenSSL
+-  if {[pkgconf false openssl]} {
++  if {[pkgconf false openssl >= 1.1]} {
+     # cool - we do not make pkg-config mandatory for OpenSSL because BSDs still
+     # ship OpenSSL in the base system. Those aren't available through
+     # pkg-config.
+@@ -737,7 +737,8 @@ if {[get-define want-ssl]} {
+       if {![cc-check-includes openssl/bio.h openssl/err.h openssl/ssl.h] ||
+           ![cc-check-function-in-lib X509_STORE_CTX_new crypto] ||
+           ![cc-check-function-in-lib SSL_new ssl] ||
+-          ![cc-with {-includes openssl/ssl.h} {cc-check-decls SSL_set_mode}]} {
++          ![cc-with {-includes openssl/ssl.h} {cc-check-decls SSL_set_mode}] ||
++          ![cc-check-function-in-lib ASN1_STRING_get0_data crypto]} {
+         user-error "Unable to find OpenSSL"
+       }
+       define-append CFLAGS $ssl_cflags
+diff --git a/conn/openssl.c b/conn/openssl.c
+index 0d4564f6b8a..8aa3d9594fb 100644
+--- a/conn/openssl.c
++++ b/conn/openssl.c
+@@ -753,11 +753,11 @@ static int check_host(X509 *x509cert, const char *hostname, char *err, size_t er
+       if (subj_alt_name->type == GEN_DNS)
+       {
+         has_san_dns = true;
+-        if ((subj_alt_name->d.ia5->length >= 0) &&
+-            (mutt_str_len((char *) subj_alt_name->d.ia5->data) ==
+-             (size_t) subj_alt_name->d.ia5->length) &&
++        if ((ASN1_STRING_length(subj_alt_name->d.ia5) >= 0) &&
++            (mutt_str_len((char *) ASN1_STRING_get0_data(subj_alt_name->d.ia5)) ==
++             (size_t) ASN1_STRING_length(subj_alt_name->d.ia5)) &&
+             (match_found = hostname_match(hostname_ascii,
+-                                          (char *) (subj_alt_name->d.ia5->data))))
++                                          (char *) (ASN1_STRING_get0_data(subj_alt_name->d.ia5)))))
+         {
+           break;
+         }

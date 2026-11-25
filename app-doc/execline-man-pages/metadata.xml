@@ -7,6 +7,6 @@
 	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
-		<remote-id type="sourcehut">~flexibeast/execline-man-pages</remote-id>
+		<remote-id type="sourcehut">~humm/execline-man-pages</remote-id>
 	</upstream>
 </pkgmetadata>

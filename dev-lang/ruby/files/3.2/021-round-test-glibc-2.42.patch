@@ -1,0 +1,78 @@
+https://bugs.ruby-lang.org/issues/21666
+https://github.com/ruby/ruby/commit/c5bd4acd30320a8e180ce9fcb24acdab4e10c73a
+
+From 9bd3e3a2597b40237957e7fa67f666725b6b470c Mon Sep 17 00:00:00 2001
+Message-ID: <9bd3e3a2597b40237957e7fa67f666725b6b470c.1775890716.git.sam@gentoo.org>
+From: nagachika <nagachika@ruby-lang.org>
+Date: Sat, 29 Nov 2025 12:31:08 +0900
+Subject: [PATCH] merge revision(s) c5bd4acd30320a8e180ce9fcb24acdab4e10c73a:
+ [Backport #21666]
+
+	[PATCH] [Bug #21666] Get rid of use of unspecified values
+---
+ spec/ruby/core/math/lgamma_spec.rb | 11 ++++-------
+ test/ruby/test_math.rb             | 12 +++++++++++-
+ 2 files changed, 15 insertions(+), 8 deletions(-)
+
+diff --git a/spec/ruby/core/math/lgamma_spec.rb b/spec/ruby/core/math/lgamma_spec.rb
+index 33e7836448..2bf350993e 100644
+--- a/spec/ruby/core/math/lgamma_spec.rb
++++ b/spec/ruby/core/math/lgamma_spec.rb
+@@ -5,10 +5,8 @@
+     Math.lgamma(0).should == [infinity_value, 1]
+   end
+ 
+-  platform_is_not :windows do
+-    it "returns [Infinity, 1] when passed -1" do
+-      Math.lgamma(-1).should == [infinity_value, 1]
+-    end
++  it "returns [Infinity, ...] when passed -1" do
++    Math.lgamma(-1)[0].should == infinity_value
+   end
+ 
+   it "returns [Infinity, -1] when passed -0.0" do
+@@ -47,8 +45,7 @@
+     Math.lgamma(infinity_value).should == [infinity_value, 1]
+   end
+ 
+-  it "returns [NaN, 1] when passed NaN" do
+-    Math.lgamma(nan_value)[0].nan?.should be_true
+-    Math.lgamma(nan_value)[1].should == 1
++  it "returns [NaN, ...] when passed NaN" do
++    Math.lgamma(nan_value)[0].should.nan?
+   end
+ end
+diff --git a/test/ruby/test_math.rb b/test/ruby/test_math.rb
+index 73f44c6ae3..ae3d1be959 100644
+--- a/test/ruby/test_math.rb
++++ b/test/ruby/test_math.rb
+@@ -296,12 +296,22 @@ def test_lgamma
+     assert_float_and_int([Math.log(6),                1], Math.lgamma(4))
+ 
+     assert_raise_with_message(Math::DomainError, /\blgamma\b/) { Math.lgamma(-Float::INFINITY) }
++
++    x, sign = Math.lgamma(+0.0)
++    mesg = "Math.lgamma(+0.0) should be [INF, +1]"
++    assert_infinity(x, mesg)
++    assert_equal(+1, sign, mesg)
++
+     x, sign = Math.lgamma(-0.0)
+     mesg = "Math.lgamma(-0.0) should be [INF, -1]"
+     assert_infinity(x, mesg)
+     assert_predicate(x, :positive?, mesg)
+     assert_equal(-1, sign, mesg)
+-    x, sign = Math.lgamma(Float::NAN)
++
++    x, = Math.lgamma(-1)
++    assert_infinity(x, "Math.lgamma(-1) should be +INF")
++
++    x, = Math.lgamma(Float::NAN)
+     assert_nan(x)
+   end
+ 
+
+base-commit: 5483bfc1ae5725e871cbbddf313626fbb0f2dbb8
+prerequisite-patch-id: e1e341a29d6cceed0666bbaead934a8704d7be33
+-- 
+2.53.0
+

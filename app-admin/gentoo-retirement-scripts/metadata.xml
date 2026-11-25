@@ -6,7 +6,4 @@
 		<name>Michał Górny</name>
 	</maintainer>
 	<stabilize-allarches/>
-	<upstream>
-		<remote-id type="github">projg2/gentoo-retirement-scripts</remote-id>
-	</upstream>
 </pkgmetadata>

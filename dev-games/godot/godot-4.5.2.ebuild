@@ -3,14 +3,13 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 inherit branding desktop python-any-r1 flag-o-matic scons-utils
 inherit shell-completion toolchain-funcs xdg
 
 DESCRIPTION="Multi-platform 2D and 3D game engine with a feature-rich editor"
 HOMEPAGE="https://godotengine.org/"
 SRC_URI="
-	https://downloads.tuxfamily.org/godotengine/${PV}/${P}-stable.tar.xz
 	https://github.com/godotengine/godot/releases/download/${PV}-stable/${P}-stable.tar.xz
 "
 S=${WORKDIR}/${P}-stable
@@ -119,11 +118,10 @@ src_prepare() {
 src_compile() {
 	local -x BUILD_NAME=${BRANDING_OS_ID} # replaces "custom_build" in version
 
+	tc-export AR CC CXX RANLIB
 	filter-lto #921017
 
 	local esconsargs=(
-		AR="$(tc-getAR)" CC="$(tc-getCC)" CXX="$(tc-getCXX)"
-
 		progress=no
 		verbose=yes
 

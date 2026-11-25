@@ -1,9 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit flag-o-matic libtool multilib-minimal
+inherit flag-o-matic libtool autotools multilib-minimal
 
 DESCRIPTION="Transport Independent RPC library (SunRPC replacement)"
 HOMEPAGE="https://sourceforge.net/projects/libtirpc/ https://git.linux-nfs.org/?p=steved/libtirpc.git"
@@ -30,8 +30,23 @@ BDEPEND="
 src_prepare() {
 	cp -ra "${WORKDIR}"/tirpc "${S}"/ || die
 
-	default
-	elibtoolize
+	if [[ ${CHOST} != *-linux-* ]]; then
+
+		# it hurds
+		eapply "${FILESDIR}/${P}-nonlinux.patch"
+		eapply "${FILESDIR}/${P}-hurd.patch"
+		eapply "${FILESDIR}/${P}-hurd-client.patch"
+
+		default
+		# not sure if this is a good idea here yet
+		eautoreconf
+
+	else
+
+		default
+		elibtoolize
+
+	fi
 }
 
 multilib_src_configure() {

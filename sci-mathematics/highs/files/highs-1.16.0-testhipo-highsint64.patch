@@ -1,0 +1,64 @@
+diff --git a/check/TestHipo.cpp b/check/TestHipo.cpp
+index 873cd7c2c4..712c6784f3 100644
+--- a/check/TestHipo.cpp
++++ b/check/TestHipo.cpp
+@@ -2,6 +2,7 @@
+ #include <iostream>
+ #include <vector>
+ 
++#include "HConfig.h"
+ #include "HCheckConfig.h"
+ #include "Highs.h"
+ #include "HighsExternalApi.h"
+@@ -167,16 +168,16 @@ TEST_CASE("issue-3369", "[highs_hipo]") {
+ 
+ TEST_CASE("test-hipo-linear-solver", "[highs_hipo]") {
+   // problem size
+-  const int n = 5;
+-  const int nz = 10;
++  const HighsInt n = 5;
++  const HighsInt nz = 10;
+ 
+   // define the lower triangle in CSC format, with 0-based indexing
+-  int ptr[n + 1] = {0, 3, 5, 8, 9, 10};
+-  int rows[nz] = {0, 2, 3, 1, 2, 2, 3, 4, 3, 4};
++  HighsInt ptr[n + 1] = {0, 3, 5, 8, 9, 10};
++  HighsInt rows[nz] = {0, 2, 3, 1, 2, 2, 3, 4, 3, 4};
+   double vals[nz] = {5, 3, 4, 3, 2, 9, -1, 1, 8, 1};
+ 
+   // matrix is spd, so expect all pivots to be positive
+-  int signs[n] = {1, 1, 1, 1, 1};
++  HighsInt signs[n] = {1, 1, 1, 1, 1};
+ 
+   // rhs and expected solution
+   double rhs[n] = {1, 2, 3, 4, 5};
+@@ -205,12 +206,12 @@ TEST_CASE("test-hipo-linear-solver", "[highs_hipo]") {
+   FactorHighs_setRegularisation(FH, 0.0, 0.0);
+ 
+   // compute ordering with metis
+-  int perm[n];
+-  int metis_status = FactorHighs_reorderMetis(FH, n, nz, rows, ptr, perm);
++  HighsInt perm[n];
++  HighsInt metis_status = FactorHighs_reorderMetis(FH, n, nz, rows, ptr, perm);
+   REQUIRE(metis_status == 0);
+ 
+   // perform analyse phase
+-  int analyse_status =
++  HighsInt analyse_status =
+       FactorHighs_analyse(FH, S, n, nz, rows, ptr, signs, perm);
+   REQUIRE(analyse_status == 0);
+ 
+@@ -219,11 +220,11 @@ TEST_CASE("test-hipo-linear-solver", "[highs_hipo]") {
+   FactorHighs_symbolic_print(FH, S, verbose);
+ 
+   // factorise the matrix
+-  int factorise_status = FactorHighs_factorise(FH, S, n, nz, rows, ptr, vals);
++  HighsInt factorise_status = FactorHighs_factorise(FH, S, n, nz, rows, ptr, vals);
+   REQUIRE(factorise_status == 0);
+ 
+   // compute the inertia of the factorisation
+-  int pos, neg, zero;
++  HighsInt pos, neg, zero;
+   double zero_tolerance = 1e-16;
+   FactorHighs_inertia(FH, &pos, &neg, &zero, zero_tolerance);
+ 

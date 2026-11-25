@@ -1,0 +1,12 @@
+https://github.com/TomasTomecek/sen/issues/192
+--- a/tests/test_widgets.py~	2021-11-01 10:02:44.000000000 +0100
++++ b/tests/test_widgets.py	2026-05-14 10:48:56.201370414 +0200
+@@ -4,7 +4,7 @@
+ 
+ import pytest
+ from flexmock import flexmock
+-from urwid.listbox import SimpleListWalker
++from urwid import SimpleListWalker
+ 
+ from sen.tui.widgets.list.base import WidgetBase
+ from sen.tui.widgets.list.common import ScrollableListBox, AsyncScrollableListBox

@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,14 +13,17 @@ S="${WORKDIR}/${P/_/}"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="pacemaker +udev xen"
+IUSE="pacemaker selinux +udev xen"
 
 DEPEND="
 	sys-apps/keyutils
 	pacemaker? ( sys-cluster/pacemaker )
 	udev? ( virtual/udev )
 "
-RDEPEND="${DEPEND}"
+RDEPEND="
+	${DEPEND}
+	selinux? ( sec-policy/selinux-drbd )
+"
 BDEPEND="
 	app-alternatives/lex
 	virtual/pkgconfig

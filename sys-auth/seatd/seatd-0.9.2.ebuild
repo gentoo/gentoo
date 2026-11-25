@@ -16,7 +16,7 @@ else
 fi
 LICENSE="MIT"
 SLOT="0/1"
-IUSE="builtin elogind server systemd"
+IUSE="builtin elogind selinux server systemd"
 REQUIRED_USE="?? ( elogind systemd )"
 
 DEPEND="
@@ -25,6 +25,7 @@ DEPEND="
 "
 RDEPEND="${DEPEND}
 	server? ( acct-group/seat )
+	selinux? ( sec-policy/selinux-seatd )
 "
 BDEPEND=">=app-text/scdoc-1.9.7"
 

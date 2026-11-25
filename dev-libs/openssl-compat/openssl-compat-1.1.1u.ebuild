@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,7 +6,7 @@ EAPI=8
 inherit edo flag-o-matic toolchain-funcs multilib-minimal
 
 MY_P=openssl-${PV/_/-}
-DESCRIPTION="Full-strength general purpose cryptography library (including SSL and TLS)"
+DESCRIPTION="Library-only copy of old dev-libs/openssl for prebuilt binaries"
 HOMEPAGE="https://www.openssl.org/"
 SRC_URI="mirror://openssl/source/${MY_P}.tar.gz"
 S="${WORKDIR}/${MY_P}"

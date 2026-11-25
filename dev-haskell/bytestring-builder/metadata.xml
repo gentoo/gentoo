@@ -30,4 +30,8 @@
 		which are not exported in 7.6.  Furthermore, these module names should be
 		deprecated in 7.10.
 	</longdescription>
+	<upstream>
+		<remote-id type="hackage">bytestring-builder</remote-id>
+		<remote-id type="github">lpsmith/bytestring-builder</remote-id>
+	</upstream>
 </pkgmetadata>

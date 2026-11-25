@@ -10,7 +10,7 @@
 		<name>Python</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">tomchristie/mkautodoc</remote-id>
+		<remote-id type="github">lovelydinosaur/mkautodoc</remote-id>
 		<remote-id type="pypi">mkautodoc</remote-id>
 	</upstream>
 	<stabilize-allarches/>

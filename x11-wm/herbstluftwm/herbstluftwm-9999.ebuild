@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{10..14} )
 DISTUTILS_USE_PEP517=setuptools
 DISTUTILS_OPTIONAL=1
 
-inherit cmake desktop distutils-r1
+inherit cmake desktop distutils-r1 systemd
 
 DESCRIPTION="A manual tiling window manager for X"
 HOMEPAGE="https://herbstluftwm.org/"
@@ -91,7 +91,7 @@ src_prepare() {
 
 src_configure() {
 	# Ensure that 'python3' is in PATH. #765118
-	python_setup
+	use python && python_setup
 
 	local mycmakeargs=(
 		-DWITH_DOCUMENTATION=$(usex doc)
@@ -106,6 +106,13 @@ src_compile() {
 		pushd python > /dev/null || die
 		distutils-r1_src_compile
 		popd >/dev/null || die
+	fi
+
+	# The following symlinks are required for src_test
+	ln -s "${BUILD_DIR}/herbstclient" || die "Could not symlink herbstclient"
+	ln -s "${BUILD_DIR}/herbstluftwm" || die "Could not symlink herbstluftwm"
+	if [[ -n "${EGIT_REPO_URI}" ]]; then
+		ln -s "${BUILD_DIR}/doc/hlwm-doc.json" "doc/hlwm-doc.json" || die "Could not symlink hlwm-doc.json"
 	fi
 }
 
@@ -126,7 +133,7 @@ src_install() {
 	# since they are then shipped pre-compiled in herbstluftwm's
 	# release tarbal. Or they exist in live ebuilds if the 'doc' USE
 	# flag is enabled.
-	if [[ "${PV}" != 9999 ]] || use doc; then
+	if [[ -n "${EGIT_REPO_URI}" ]] || use doc; then
 		local man_pages=(
 			herbstluftwm.1
 			herbstclient.1
@@ -142,17 +149,27 @@ src_install() {
 	# also in applications/. This allows herbstluftwm to be used as
 	# window manager of a Gnome flashback session.
 	domenu "${ED}"/usr/share/xsessions/herbstluftwm.desktop
+
+	systemd_newuserunit - herbstluftwm.service <<-EOF
+	[Unit]
+	Description=Herbstluftwm Window Manager
+	PartOf=graphical-session.target
+	After=graphical-session-pre.target
+
+	[Service]
+	ExecStart=/usr/bin/herbstluftwm
+	Restart=on-failure
+	EOF
 }
 
 distutils_enable_tests pytest
 
 src_test() {
-	if [[ -n "${EGIT_REPO_URI}" ]]; then
-		ln -s "${BUILD_DIR}/doc/hlwm-doc.json" "doc/hlwm-doc.json" || die "Could not symlink hlwm-doc.json"
-	fi
-
-	ln -s "${BUILD_DIR}/herbstclient" || die "Could not symlink herbstclient"
-	ln -s "${BUILD_DIR}/herbstluftwm" || die "Could not symlink herbstluftwm"
-
+	local EPYTEST_DESELECT=(
+		# Stress test that rapidly creates 50 clients. Prone to
+		# IPC/Xvfb timeouts, especially in parallelized builds
+		# environments.
+		tests/test_rules.py::test_floatplacement_smart_create_many
+	)
 	distutils-r1_src_test
 }

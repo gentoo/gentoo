@@ -51,10 +51,6 @@ QA_CONFIG_IMPL_DECL_SKIP=(
 
 DOCS=( CHANGES README )
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-2.4-flags.patch
-)
-
 src_prepare() {
 	default
 	eautoreconf

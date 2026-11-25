@@ -6,4 +6,7 @@
 		<name>Jason A. Donenfeld</name>
 	</maintainer>
 	<longdescription>iodine lets you tunnel IPv4 data through a DNS server. This can be usable in different situations where internet access is firewalled, but DNS queries are allowed</longdescription>
+	<upstream>
+		<remote-id type="github">yarrick/iodine</remote-id>
+	</upstream>
 </pkgmetadata>

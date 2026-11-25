@@ -1,0 +1,10 @@
+My understanding is that this assignment is unnecessary and can be
+removed.
+https://bugs.gentoo.org/981337
+https://github.com/pygame/pygame/issues/4716#issuecomment-6104711463
+--- a/src_c/cython/pygame/_sprite.pyx
++++ b/src_c/cython/pygame/_sprite.pyx
+@@ -147,3 +147,2 @@
+     def __cinit__(self):
+-        self.__dict__ = {}
+         self.__g = set() # The groups the sprite is in

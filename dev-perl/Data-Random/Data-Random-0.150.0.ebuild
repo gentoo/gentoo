@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Module used to generate random data"
 
 SLOT="0"
-KEYWORDS="~amd64 ~sparc ~x86"
+KEYWORDS="amd64 ~sparc x86"
 
 BDEPEND="
 	>=dev-perl/File-ShareDir-Install-0.60.0

@@ -4,7 +4,7 @@
 EAPI=8
 
 LUA_COMPAT=( lua5-1 luajit )
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 inherit flag-o-matic lua-single meson optfeature pax-utils python-single-r1 xdg
 
 if [[ ${PV} == 9999 ]]; then
@@ -21,11 +21,11 @@ HOMEPAGE="https://mpv.io/"
 LICENSE="LGPL-2.1+ GPL-2+ BSD ISC MIT" #506946
 SLOT="0/2" # soname
 IUSE="
-	+X +alsa aqua archive bluray cdda +cli coreaudio debug +drm dvb
-	dvd +egl gamepad +iconv jack javascript jpeg lcms libcaca +libmpv
-	+lua nvenc openal pipewire pulseaudio rubberband sdl selinux sixel
-	sndio soc subrandr test tools +uchardet vaapi vdpau +vulkan wayland
-	xv zimg zlib
+	+X +alsa aqua archive bluray cdda +cli coreaudio +curl debug +drm
+	dvb dvd +egl gamepad +iconv jack javascript jpeg lcms libcaca
+	+libmpv +lua nvenc openal pipewire pulseaudio rubberband sdl
+	selinux sixel sndio soc subrandr test tools +uchardet vaapi vdpau
+	+vulkan wayland xv zimg zlib
 "
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
@@ -45,8 +45,8 @@ RESTRICT="!test? ( test )"
 
 COMMON_DEPEND="
 	media-libs/libass:=[fontconfig]
-	>=media-libs/libplacebo-7.360.1:=[vulkan?]
-	>=media-video/ffmpeg-6.1:=[encode(+),soc(-)?,threads(+),vaapi?,vdpau?]
+	>=media-libs/libplacebo-7.387.0:=[vulkan?]
+	>=media-video/ffmpeg-6.1:=[encode(+),threads(+),vaapi?,vdpau?]
 	X? (
 		x11-libs/libX11
 		x11-libs/libXScrnSaver
@@ -63,12 +63,16 @@ COMMON_DEPEND="
 		dev-libs/libcdio-paranoia:=
 		dev-libs/libcdio:=
 	)
+	curl? ( net-misc/curl )
 	drm? (
 		media-libs/libdisplay-info:=
 		x11-libs/libdrm
 		egl? ( media-libs/mesa[gbm(+)] )
 	)
-	dvd? ( media-libs/libdvdnav )
+	dvd? (
+		media-libs/libdvdnav
+		>=media-libs/libdvdread-7.1.1:=
+	)
 	egl? (
 		media-libs/libglvnd
 		media-libs/libplacebo[opengl]
@@ -91,6 +95,7 @@ COMMON_DEPEND="
 	sdl? ( media-libs/libsdl2[sound,threads(+),video] )
 	sixel? ( media-libs/libsixel )
 	sndio? ( media-sound/sndio:= )
+	soc? ( >=media-video/ffmpeg-8.1:=[soc(-)] )
 	subrandr? ( >=media-libs/subrandr-1.1.0 )
 	vaapi? ( media-libs/libva:=[X?,drm(+)?,wayland?] )
 	vdpau? (
@@ -129,6 +134,10 @@ BDEPEND="
 	wayland? ( >=dev-util/wayland-scanner-1.23 )
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.41.0-v4l2request.patch
+)
+
 pkg_setup() {
 	use lua && lua-single_pkg_setup
 	python-single-r1_pkg_setup
@@ -160,7 +169,9 @@ src_configure() {
 		$(meson_feature bluray libbluray)
 		$(meson_feature cdda)
 		-Dcplugins=enabled
+		$(meson_feature curl libcurl)
 		$(meson_feature dvb dvbin)
+		$(meson_feature dvd dvda)
 		$(meson_feature dvd dvdnav)
 		$(meson_feature gamepad sdl2-gamepad)
 		$(meson_feature iconv)
@@ -206,6 +217,7 @@ src_configure() {
 
 		# hardware decoding
 		$(meson_feature nvenc cuda-hwaccel)
+		$(meson_feature soc v4l2request)
 		$(meson_feature vaapi)
 		$(meson_feature vdpau)
 	)
@@ -243,6 +255,12 @@ src_install() {
 		dodir /usr/share/doc/${PF}/html
 		mv "${ED}"/usr/share/doc/{mpv,${PF}/html}/mpv.html || die
 		mv "${ED}"/usr/share/doc/{mpv,${PF}/examples} || die
+	fi
+
+	# prevent build-only ffnvcodec from leaking into the .pc (bug #971646)
+	if use libmpv && use nvenc; then
+		sed -Ee '/^Requires/s/ffnvcodec[^,]*,? ?//;s/, $//;/^Requires[^:]*: $/d' \
+			-i "${ED}"/usr/$(get_libdir)/pkgconfig/mpv.pc || die
 	fi
 
 	local GLOBIGNORE=*/*build*:*/*policy*

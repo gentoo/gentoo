@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,7 +15,7 @@ SRC_URI="https://s3.amazonaws.com/phusion-passenger/releases/${P}.tar.gz"
 LICENSE="Boost-1.0 MIT BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
-IUSE="apache2 debug"
+IUSE="apache2 debug selinux"
 
 ruby_add_bdepend "dev-ruby/rake"
 
@@ -33,6 +33,7 @@ CDEPEND="
 
 RDEPEND="${RDEPEND} ${CDEPEND}"
 DEPEND="${DEPEND} ${CDEPEND}"
+RDEPEND+=" selinux? ( sec-policy/selinux-passenger )"
 
 APACHE2_MOD_CONF="30_mod_${PN}-5.0.0 30_mod_${PN}"
 APACHE2_MOD_DEFINE="PASSENGER"

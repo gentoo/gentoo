@@ -6,7 +6,7 @@
 		<name>Sam James</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">roc-streaming/openfec</remote-id>
+		<remote-id type="github">roc-streaming/roc-toolkit</remote-id>
 	</upstream>
 	<use>
 		<flag name="tools">Install helper tools like roc-conv, roc-recv, roc-send</flag>

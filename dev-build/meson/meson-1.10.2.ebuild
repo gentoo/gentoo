@@ -37,7 +37,7 @@ else
 	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/jpakkane.gpg
 
 	if [[ ${PV} != *_rc* ]] ; then
-		KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~arm64-macos ~x64-macos ~x64-solaris"
+		KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~arm64-macos ~x64-macos ~x64-solaris"
 	fi
 fi
 
@@ -49,6 +49,15 @@ SLOT="0"
 IUSE="test test-full"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="test-full? ( test )"
+
+# test-full contains various test dependencies, for optional test cases of
+# frameworks Meson has support for. These will *usually* get skipped
+# automatically if uninstalled. The dep allows:
+# - guaranteeing the whole test suite runs transparently without skips
+# - reducing brittleness of frameworks that straddle multiple packages
+#   - Qt is a particular example of this. qt5 is deprecated, but we need qtbase
+#     consistently installed as long as it isn't masked for removal. TODO: drop
+#     dev-qt/*:5 from DEPEND once they are masked.
 
 DEPEND="
 	test? (
@@ -85,8 +94,6 @@ DEPEND="
 		sys-devel/bison
 		sys-devel/flex
 
-		dev-qt/linguist-tools:5
-		dev-qt/qtwidgets:5
 		dev-qt/qtbase:6[gui,widgets]
 		dev-qt/qtdeclarative:6
 		dev-qt/qttools:6

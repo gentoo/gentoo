@@ -12,7 +12,7 @@ if [[ ${PV##*.} = 9999 ]]; then
 	EGIT_CHECKOUT_DIR="${WORKDIR}/${PN}"
 	S="${EGIT_CHECKOUT_DIR}"
 else
-	SRC_URI="https://dev.gentoo.org/~ulm/emacs/${P}.tar.xz"
+	SRC_URI="https://distfiles.gentoo.org/pub/proj/emacs/${P}.tar.xz"
 	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~sparc x86 ~x64-macos"
 fi
 
@@ -26,7 +26,7 @@ IUSE="games gsettings gui"
 DEPEND="games? ( acct-group/gamestat )"
 RDEPEND="${DEPEND}
 	!<app-emacs/emacs-daemon-0.25
-	!<x11-misc/emacs-desktop-mail-1.3"
+	!x11-misc/emacs-desktop-mail"
 PDEPEND=">=app-editors/emacs-26.1:*"
 IDEPEND="gui? ( gsettings? ( dev-libs/glib ) )"
 

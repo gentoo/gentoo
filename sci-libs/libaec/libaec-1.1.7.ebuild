@@ -1,0 +1,41 @@
+# Copyright 1999-2026 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=8
+
+inherit cmake
+
+MY_P="${PN}-v${PV}"
+DESCRIPTION="Adaptive Entropy Coding library"
+HOMEPAGE="https://gitlab.dkrz.de/dkrz-sw/libaec"
+SRC_URI="https://gitlab.dkrz.de/dkrz-sw/libaec/-/archive/v${PV}/${MY_P}.tar.bz2"
+S="${WORKDIR}/${MY_P}"
+
+LICENSE="BSD-2"
+SLOT="0/2"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
+IUSE="+szip test"
+RESTRICT="!test? ( test )"
+
+RDEPEND="szip? ( !sci-libs/szip )"
+
+src_configure() {
+	local mycmakeargs=(
+		-DBUILD_TESTING=$(usex test)
+		-DBUILD_STATIC_LIBS=OFF
+		-DCMAKE_INSTALL_LIBDIR=$(get_libdir)
+	)
+
+	cmake_src_configure
+}
+
+src_install() {
+	cmake_src_install
+
+	# avoid conflict with szip (easier than patching)
+	if ! use szip; then
+		rm "${ED}"/usr/include/szlib.h || die
+		rm "${ED}"/usr/$(get_libdir)/libsz* || die
+		rm "${ED}"/usr/share/doc/${PF}/README.SZIP || die
+	fi
+}

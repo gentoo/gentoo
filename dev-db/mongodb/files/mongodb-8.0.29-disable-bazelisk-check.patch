@@ -1,0 +1,15 @@
+We are not using MongoDB's Bazelisk wrapper, so disable this check.
+
+diff '--color=auto' -ur a/bazel/toolchains/cc/mongo_linux/mongo_compiler_flags.bzl b/bazel/toolchains/cc/mongo_linux/mongo_compiler_flags.bzl
+--- a/bazel/toolchains/cc/mongo_linux/mongo_compiler_flags.bzl	2026-05-29 12:33:28.214355674 -0400
++++ b/bazel/toolchains/cc/mongo_linux/mongo_compiler_flags.bzl	2026-05-29 12:33:56.981998170 -0400
+@@ -370,8 +362,7 @@
+     SYMBOL_ORDER_COPTS +
+     COVERAGE_FLAGS +
+     PGO_PROFILE_FLAGS +
+-    SHARED_ARCHIVE_COPTS +
+-    RUNNING_THROUGH_BAZELISK_CHECK
++    SHARED_ARCHIVE_COPTS
+ )
+ 
+ MONGO_LINUX_CC_LINKFLAGS = (

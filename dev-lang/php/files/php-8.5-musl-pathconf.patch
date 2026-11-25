@@ -1,0 +1,28 @@
+Test fix from https://github.com/php/php-src/pull/22717
+
+To avoid eautoreconf in the meantime, we define the HAVE_PATHCONF and
+HAVE_FPATHCONF via cppflags.
+
+diff --git a/ext/posix/tests/posix_pathconf.phpt b/ext/posix/tests/posix_pathconf.phpt
+index ba451c62df97..8df6e872119b 100644
+--- a/ext/posix/tests/posix_pathconf.phpt
++++ b/ext/posix/tests/posix_pathconf.phpt
+@@ -13,12 +13,15 @@ try {
+ } catch (\ValueError $e) {
+ 	echo $e->getMessage(). "\n";
+ }
+-var_dump(posix_pathconf(str_repeat('non_existent', 4096), POSIX_PC_NAME_MAX));
+-var_dump(posix_errno() != 0);
++
++/* POSIX specifically allows implementations to ignore the first
++ * argument if it will not affect the result. */
++$result = posix_pathconf(str_repeat('non_existent', 4096),
++                         POSIX_PC_NAME_MAX);
++var_dump( ($result == false && posix_errno() != 0) || is_int($result) );
+ var_dump(posix_pathconf(sys_get_temp_dir(), POSIX_PC_PATH_MAX));
+ ?>
+ --EXPECTF--
+ posix_pathconf(): Argument #1 ($path) must not be empty
+-bool(false)
+ bool(true)
+ int(%d)

@@ -3,6 +3,6 @@
 <pkgmetadata>
 	<!-- maintainer-needed -->
 	<upstream>
-		<remote-id type="github">marlam/bino-mirror</remote-id>
+		<remote-id type="github">marlam/bino</remote-id>
 	</upstream>
 </pkgmetadata>

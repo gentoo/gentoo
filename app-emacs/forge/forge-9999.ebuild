@@ -1,7 +1,7 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=9
 
 NEED_EMACS="29.1"
 
@@ -16,7 +16,7 @@ if [[ "${PV}" == *9999* ]] ; then
 
 	EGIT_REPO_URI="https://github.com/magit/${PN}"
 else
-	SRC_URI="https://github.com/magit/${PN}/archive/v${PV}.tar.gz
+	SRC_URI="https://github.com/magit/${PN}/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz"
 
 	KEYWORDS="~amd64"
@@ -28,17 +28,16 @@ LICENSE="GPL-3+"
 SLOT="0"
 
 RDEPEND="
-	>=app-emacs/compat-30.1.0.0
-	>=app-emacs/magit-4.4.0
-	app-emacs/closql
-	app-emacs/cond-let
-	app-emacs/dash
-	app-emacs/emacsql
-	app-emacs/ghub
-	app-emacs/llama
-	app-emacs/markdown-mode
-	app-emacs/transient
-	app-emacs/yaml
+	>=app-emacs/closql-2.4
+	>=app-emacs/compat-30.1.0.1
+	>=app-emacs/cond-let-1.0.0
+	>=app-emacs/emacsql-4.3.6
+	>=app-emacs/ghub-5.2.0
+	>=app-emacs/llama-1.0.4
+	>=app-emacs/magit-4.5.0
+	>=app-emacs/markdown-mode-2.8
+	>=app-emacs/transient-0.13
+	>=app-emacs/yaml-1.2.3
 "
 BDEPEND="
 	${RDEPEND}

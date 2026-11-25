@@ -1,0 +1,38 @@
+https://bugs.gentoo.org/976643
+https://github.com/valkey-io/valkey/commit/c15eee3407ecca35f274afc76e52a602a18ddfa1
+
+From c15eee3407ecca35f274afc76e52a602a18ddfa1 Mon Sep 17 00:00:00 2001
+From: Ricardo Dias <rjd15372@gmail.com>
+Date: Mon, 23 Sep 2024 09:23:48 +0100
+Subject: [PATCH] Changes `tcmalloc.h` header location (#1039)
+
+This commit changes the `tcmalloc.h` header location from the deprecated
+location `google/` to `gperftools/`.
+
+**Why we're doing this now?**
+
+The location `google/tcmalloc.h` has been deprecated for more than 10
+years in favor of `gperftools/tcmalloc.h`, and the deprecated location
+will be removed in the next release of gperftools.
+
+Fixes #1033
+
+Signed-off-by: Ricardo Dias <ricardo.dias@percona.com>
+---
+ src/zmalloc.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/zmalloc.h b/src/zmalloc.h
+index f389b905c03..ada2257616f 100644
+--- a/src/zmalloc.h
++++ b/src/zmalloc.h
+@@ -39,7 +39,7 @@
+ 
+ #if defined(USE_TCMALLOC)
+ #define ZMALLOC_LIB ("tcmalloc-" __xstr(TC_VERSION_MAJOR) "." __xstr(TC_VERSION_MINOR))
+-#include <google/tcmalloc.h>
++#include <gperftools/tcmalloc.h>
+ #if (TC_VERSION_MAJOR == 1 && TC_VERSION_MINOR >= 6) || (TC_VERSION_MAJOR > 1)
+ #define HAVE_MALLOC_SIZE 1
+ #define zmalloc_size(p) tc_malloc_size(p)
+

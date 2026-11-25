@@ -1,0 +1,94 @@
+patch from fedora:
+https://src.fedoraproject.org/rpms/musescore/blob/rawhide/f/musescore-include.patch
+
+--- a/src/framework/cloud/internal/abstractcloudservice.cpp
++++ b/src/framework/cloud/internal/abstractcloudservice.cpp
+@@ -29,6 +29,7 @@
+ #include <QUrlQuery>
+ #include <QHttpMultiPart>
+ #include <QRandomGenerator>
++#include <QTimer>
+ 
+ #include "clouderrors.h"
+ #include "multiwindows/resourcelockguard.h"
+--- a/src/framework/global/api/apiutils.h
++++ b/src/framework/global/api/apiutils.h
+@@ -26,6 +26,7 @@
+ #include <vector>
+ #include <QString>
+ #include <QJSValue>
++#include <QMetaEnum>
+ 
+ #include "apitypes.h"
+ #include "iapiengine.h"
+--- a/src/framework/ui/api/keyboardapi.h
++++ b/src/framework/ui/api/keyboardapi.h
+@@ -27,8 +27,8 @@
+ #include "modularity/ioc.h"
+ #include "shortcuts/ishortcutscontroller.h"
+ #include "ui/imainwindow.h"
++#include <QWindow>
+ 
+-class QWindow;
+ namespace muse::api {
+ class KeyboardApi : public api::ApiObject
+ {
+--- a/src/framework/uicomponents/qml/Muse/UiComponents/abstracttableviewmodel.cpp
++++ b/src/framework/uicomponents/qml/Muse/UiComponents/abstracttableviewmodel.cpp
+@@ -22,6 +22,7 @@
+ #include "abstracttableviewmodel.h"
+ 
+ #include <QSet>
++#include <QTimer>
+ 
+ #include "internal/tableviewlistcell.h"
+ 
+--- a/src/framework/uicomponents/qml/Muse/UiComponents/windowview.h
++++ b/src/framework/uicomponents/qml/Muse/UiComponents/windowview.h
+@@ -23,6 +23,7 @@
+ 
+ #include <qqmlintegration.h>
+ 
++#include <QQmlEngine>
+ #include <QQmlParserStatus>
+ #include <QQuickItem>
+ #include <QQuickView>
+@@ -37,7 +38,6 @@
+ 
+ Q_MOC_INCLUDE(< QWindow >)
+ 
+-class QQmlEngine;
+ class QQuickCloseEvent;
+ class QQuickView;
+ 
+--- a/src/framework/ui/qml/Muse/Ui/initialletternavigation.cpp
++++ b/src/framework/ui/qml/Muse/Ui/initialletternavigation.cpp
+@@ -26,6 +26,8 @@
+ 
+ #include "navigationpanel.h"
+ 
++#include <QRegularExpression>
++
+ using namespace muse::ui;
+ 
+ static QSet<Qt::Key> NAVIGATION_KEYS = {
+--- a/src/framework/ui/view/interactiveprovider.cpp
++++ b/src/framework/ui/view/interactiveprovider.cpp
+@@ -29,6 +29,7 @@
+ #include <QGuiApplication>
+ #include <QWindow>
+ #include <QWidget>
++#include <QQmlEngine>
+ 
+ #include "global/async/async.h"
+ #include "diagnostics/diagnosticutils.h"
+--- a/src/importexport/lyricsexport/internal/lrcwriter.cpp
++++ b/src/importexport/lyricsexport/internal/lrcwriter.cpp
+@@ -23,6 +23,7 @@
+ #include "lrcwriter.h"
+ 
+ #include <QBuffer>
++#include <QRegularExpression>
+ 
+ #include "io/file.h"
+ #include "types/ret.h"

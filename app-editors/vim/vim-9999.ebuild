@@ -1,27 +1,27 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 # Please bump with app-editors/vim-core and app-editors/gvim
 
-VIM_VERSION="9.1"
-VIM_PATCHES_VERSION="9.0.2092"
+VIM_VERSION="9.2"
+VIM_PATCHES_VERSION="9.2.1119"
 
 LUA_COMPAT=( lua5-{1..4} luajit )
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 PYTHON_REQ_USE="threads(+)"
-USE_RUBY="ruby31 ruby32"
+USE_RUBY="ruby32 ruby33"
 GENTOO_DEPEND_ON_PERL=no
 
-inherit bash-completion-r1 flag-o-matic lua-single desktop perl-module python-single-r1 ruby-single toolchain-funcs vim-doc xdg-utils
+inherit vim-doc flag-o-matic lua-single perl-module python-single-r1 ruby-single shell-completion toolchain-funcs desktop xdg-utils
 
-if [[ ${PV} == 9999* ]]; then
+if [[ ${PV} == 9999* ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/vim/vim.git"
 else
 	SRC_URI="https://github.com/vim/vim/archive/v${PV}.tar.gz -> ${P}.tar.gz
-		https://git.sr.ht/~xxc3nsoredxx/vim-patches/refs/download/vim-${VIM_PATCHES_VERSION}-patches/vim-${VIM_PATCHES_VERSION}-patches.tar.xz"
+		https://gitweb.gentoo.org/proj/vim-patches.git/snapshot/vim-patches-vim-${VIM_PATCHES_VERSION}-patches.tar.bz2"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~arm64-macos ~x64-macos ~x64-solaris"
 fi
 
@@ -30,26 +30,33 @@ HOMEPAGE="https://www.vim.org https://github.com/vim/vim"
 
 LICENSE="vim"
 SLOT="0"
-IUSE="acl crypt cscope debug gpm lua minimal nls perl python racket ruby selinux sound tcl terminal vim-pager X ${GENTOO_PERL_USESTRING}"
+IUSE="X acl crypt cscope debug gpm images lua minimal nls pango perl python racket ruby selinux sound tcl terminal vim-pager wayland ${GENTOO_PERL_USESTRING}"
 REQUIRED_USE="
 	lua? ( ${LUA_REQUIRED_USE} )
 	python? ( ${PYTHON_REQUIRED_USE} )
+	images? ( !minimal )
+	pango? ( !minimal )
 	vim-pager? ( !minimal )
 "
 
 RDEPEND="
-	~app-editors/vim-core-${PV}
 	>=app-eselect/eselect-vi-1.1
 	>=sys-libs/ncurses-5.2-r2:0=
+	nls? ( virtual/libintl )
 	acl? ( kernel_linux? ( sys-apps/acl ) )
+	images? ( x11-libs/pixman )
+	pango? (
+		x11-libs/cairo
+		>=x11-libs/pango-1.44
+	)
 	crypt? ( dev-libs/libsodium:= )
 	cscope? ( dev-util/cscope )
 	gpm? ( >=sys-libs/gpm-1.19.3 )
-	lua? (
-		${LUA_DEPS}
+	lua? ( ${LUA_DEPS}
 		$(lua_gen_impl_dep 'deprecated' lua5-1)
 	)
-	nls? ( virtual/libintl )
+	~app-editors/vim-core-${PV}
+	vim-pager? ( app-editors/vim-core[-minimal] )
 	perl? (
 		${GENTOO_PERL_DEPSTRING}
 		dev-lang/perl:=
@@ -60,7 +67,7 @@ RDEPEND="
 	selinux? ( sys-libs/libselinux )
 	sound? ( media-libs/libcanberra )
 	tcl? ( dev-lang/tcl:0= )
-	vim-pager? ( app-editors/vim-core[-minimal] )
+	wayland? ( dev-libs/wayland )
 	X? ( x11-libs/libXt )
 "
 DEPEND="${RDEPEND}
@@ -68,7 +75,7 @@ DEPEND="${RDEPEND}
 "
 # configure runs the Lua interpreter
 BDEPEND="
-	dev-build/autoconf
+	>=dev-build/autoconf-2.71
 	lua? ( ${LUA_DEPS} )
 	nls? ( sys-devel/gettext )
 "
@@ -77,11 +84,11 @@ PDEPEND="!minimal? ( app-vim/gentoo-syntax )"
 if [[ ${PV} != 9999* ]]; then
 	# Gentoo patches to fix runtime issues, cross-compile errors, etc
 	PATCHES=(
-		"${WORKDIR}/vim-${VIM_PATCHES_VERSION}-patches"
+		"${WORKDIR}/vim-patches-vim-${VIM_PATCHES_VERSION}-patches"
 	)
 fi
 
-# platform-specific checks (bug #898450 #898452):
+# platform-specific checks (bug #898452):
 # - acl()     -- Solaris
 # - statacl() -- AIX
 QA_CONFIG_IMPL_DECL_SKIP=(
@@ -158,16 +165,8 @@ src_prepare() {
 	# (2) Rebuild auto/configure
 	# (3) Notice auto/configure is newer than auto/config.mk
 	# (4) Run ./configure (with wrong args) to remake auto/config.mk
-	sed -i -e \
-		's# auto/config\.mk:#:#' src/Makefile || die "Makefile sed failed"
+	sed -i 's# auto/config\.mk:#:#' src/Makefile || die "Makefile sed failed"
 	rm src/auto/configure || die "rm failed"
-
-	# --with-features=huge forces on cscope even if we --disable it. We need
-	# to sed this out to avoid screwiness. (1 Sep 2004 ciaranm)
-	if ! use cscope; then
-		sed -i -e \
-			'/# define FEAT_CSCOPE/d' src/feature.h || die "couldn't disable cscope"
-	fi
 
 	# bug 908961
 	if use elibc_musl ; then
@@ -180,26 +179,25 @@ src_configure() {
 
 	# This should fix a sandbox violation (see bug #24447). The hvc
 	# things are for ppc64, see bug #86433.
-	local file
 	for file in /dev/pty/s* /dev/console /dev/hvc/* /dev/hvc*; do
-		if [[ -e ${file} ]]; then
+		if [[ -e "${file}" ]]; then
 			addwrite ${file}
 		fi
 	done
 
-	local myconf=(
-		--with-modified-by="Gentoo-${PVR} (RIP Bram)"
-		--enable-gui=no
-		--disable-darwin
-	)
-
+	local myconf=()
 	if use minimal; then
-		myconf+=(
+		myconf=(
 			--with-features=tiny
+			--disable-hardcopy-pango
+			--disable-pixman
 			--disable-nls
 			--disable-canberra
 			--disable-acl
+			--enable-gui=no
+			--without-wayland
 			--without-x
+			--disable-darwin
 			--disable-luainterp
 			--disable-perlinterp
 			--disable-pythoninterp
@@ -212,7 +210,7 @@ src_configure() {
 	else
 		use debug && append-flags "-DDEBUG"
 
-		myconf+=(
+		myconf=(
 			--with-features=huge
 			$(use_enable sound canberra)
 			$(use_enable acl)
@@ -220,6 +218,11 @@ src_configure() {
 			$(use_enable cscope)
 			$(use_enable gpm)
 			$(use_enable nls)
+			# Render :hardcopy with system Pango/Cairo instead of Vim's
+			# own PostScript generator: proper Unicode, and PDF output.
+			# Sixel/Kitty image rendering in the terminal; needs pixman
+			$(use_enable images pixman)
+			$(use_enable pango hardcopy-pango)
 			$(use_enable perl perlinterp)
 			$(use_enable python python3interp)
 			$(use_with python python3-command "${PYTHON}")
@@ -228,7 +231,15 @@ src_configure() {
 			$(use_enable selinux)
 			$(use_enable tcl tclinterp)
 			$(use_enable terminal)
+			$(use_with   wayland)
 		)
+
+		# --with-features=huge forces on cscope even if we --disable it. We need
+		# to sed this out to avoid screwiness. (1 Sep 2004 ciaranm)
+		if ! use cscope; then
+			sed -i -e \
+				'/# define FEAT_CSCOPE/d' src/feature.h || die "sed failed"
+		fi
 
 		if use lua; then
 			# -DLUA_COMPAT_OPENLIB=1 is required to enable the
@@ -245,6 +256,8 @@ src_configure() {
 		# don't test USE=X here ... see bug #19115
 		# but need to provide a way to link against X ... see bug #20093
 		myconf+=(
+			--enable-gui=no
+			--disable-darwin
 			$(use_with X x)
 		)
 	fi
@@ -263,7 +276,9 @@ src_configure() {
 			   vim_cv_toupper_broken=no
 	fi
 
-	econf "${myconf[@]}"
+	econf \
+		--with-modified-by="Gentoo-${PVR} (RIP Bram)" \
+		"${myconf[@]}"
 }
 
 src_compile() {
@@ -294,27 +309,37 @@ src_test() {
 	# for more information on test variables we can use.
 	# Note that certain variables need vim-compatible regex (not PCRE), see e.g.
 	# http://www.softpanorama.org/Editors/Vimorama/vim_regular_expressions.shtml.
-	#
-	# Skipped tests:
-	# - Test_expand_star_star
-	# Hangs because of a recursive symlink in /usr/include/nodejs (bug #616680)
-	# - Test_exrc
-	# Looks in wrong location? (bug #742710)
-	# - Test_job_tty_in_out
-	# Fragile and depends on TERM(?)
-	# - Test_spelldump_bang
-	# Hangs.
-	# - Test_fuzzy_completion_env
-	# Too sensitive to leaked environment variables.
-	# - Test_term_mouse_multiple_clicks_to_select_mode
-	# Hangs.
-	# - Test_spelldump
-	# Hangs.
-	# - Test_glvs_*
-	# Depends on local network.
-	export TEST_SKIP_PAT='\(Test_expand_star_star\|Test_exrc\|Test_job_tty_in_out\|Test_spelldump_bang\|Test_fuzzy_completion_env\|Test_term_mouse_multiple_clicks_to_select_mode\|Test_spelldump\|Test_glvs_\)'
+	local skip_tests=(
+		# Hangs because of a recursive symlink in /usr/include/nodejs (bug #616680)
+		Test_expand_star_star
+		# Looks in wrong location? (bug #742710)
+		Test_exrc
+		# Fragile and depends on TERM(?)
+		Test_job_tty_in_out
+		# Too sensitive to leaked environment variables.
+		Test_fuzzy_completion_env
+		# Hangs.
+		Test_term_mouse_multiple_clicks_to_select_mode
+		# Depends on local network.
+		Test_glvs_
+		# sensitive to the terminal geometry
+		Test_splitkeep_screen_smoothscroll
+	)
+	# \v (very magic) so the list can be joined with a plain '|'
+	local -x TEST_SKIP_PAT="\\v($(IFS='|'; echo "${skip_tests[*]}"))"
 
-	# Don't do additional GUI tests.
+	local skip_test_files=(
+		# TODO
+		test_crypt.vim
+		# Tests needing X
+		test_clientserver.vim
+		test_vim9_builtin.vim
+	)
+	local f
+	for f in "${skip_test_files[@]}"; do
+		echo "throw 'Skipped: needs X'" > "src/testdir/${f}" || die
+	done
+
 	emake -j1 -C src/testdir nongui
 }
 
@@ -354,23 +379,23 @@ src_install() {
 }
 
 pkg_postinst() {
-	# update documentation tags (from vim-doc.eclass)
+	# Update documentation tags (from vim-doc.eclass)
 	update_vim_helptags
+
+	# Call eselect vi update
+	eselect_vi_update
 
 	# update desktop file mime cache
 	xdg_desktop_database_update
-
-	# call eselect vi update
-	eselect_vi_update
 }
 
 pkg_postrm() {
-	# update documentation tags (from vim-doc.eclass)
+	# Update documentation tags (from vim-doc.eclass)
 	update_vim_helptags
+
+	# Call eselect vi update
+	eselect_vi_update
 
 	# update desktop file mime cache
 	xdg_desktop_database_update
-
-	# call eselect vi update
-	eselect_vi_update
 }

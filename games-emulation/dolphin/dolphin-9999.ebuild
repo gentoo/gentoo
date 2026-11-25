@@ -3,10 +3,14 @@
 
 EAPI=8
 
-LLVM_COMPAT=( {18..21} )
+# Bumping notes:
+# * Update DOLPHIN_TAG_COMMIT to match commit used in tag.
+# * Update *_COMMIT for the vendored packages based on their submodules in Externals/.
+
+LLVM_COMPAT=( {18..23} )
 LLVM_OPTIONAL=1
 
-inherit cmake llvm-r2 pax-utils xdg
+inherit branding cmake llvm-r2 pax-utils toolchain-funcs xdg
 
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
@@ -23,6 +27,9 @@ if [[ ${PV} == *9999 ]]; then
 		Externals/watcher/watcher
 	)
 else
+	# bug #979791
+	DOLPHIN_TAG_COMMIT=6094cfcf7b8fba733b3116fdf3414d51c1c0e4a4
+
 	CPPIPC_COMMIT=ce0773b3e6d5abaa8d104100c5704321113853ca
 	CPPOPTPARSE_COMMIT=2265d647232249a53a03b411099863ceca35f0d3
 	IMGUI_COMMIT=45acd5e0e82f4c954432533ae9985ff0e1aad6d5
@@ -168,12 +175,68 @@ add_bundled_licenses() {
 }
 add_bundled_licenses
 
+# TODO: use eclass function when it exists, bug #892331
+tc-check-cxx-min_ver() {
+	do_check() {
+		debug-print "C++ library version check for ${1}"
+		debug-print "Detected: ${2}"
+		debug-print "Required: ${3}"
+		if ver_test ${2} -lt ${3}; then
+			eerror "Your current C++ library is too old for this package!"
+			die "Active C++ library is too old for this package (found ${1} ${2})."
+		fi
+	}
+
+	get_cxx_version() {
+		$(tc-getCXX) -x c++ -E -P ${CXXFLAGS} ${CPPFLAGS} - <<-EOF | sed -n 's/^GENTOO_CXX_VERSION \(.*\)$/\1/p'
+		#if __cplusplus >= 202002L
+		#include <version>
+		#else
+		#include <ciso646>
+		#endif
+		GENTOO_CXX_VERSION ${1}
+		EOF
+	}
+
+	case ${1} in
+		libc++)
+			[[ $(tc-get-cxx-stdlib) == libc++ ]] || return
+			do_check libc++ $(get_cxx_version _LIBCPP_VERSION) ${2}
+			;;
+		libstdc++)
+			[[ $(tc-get-cxx-stdlib) == libstdc++ ]] || return
+			do_check libstdc++ $(get_cxx_version _GLIBCXX_RELEASE) ${2}
+			;;
+		*)
+			eerror "Unknown first parameter for ${FUNCNAME} - must be libc++ or libstdc++"
+			die "${FUNCNAME}: Parameter ${1} unknown"
+			;;
+	esac
+}
+
+is_toolchain_new_enough() {
+	# See libstdc++_min_version and libc++_min_version in CMakeLists.txt
+	tc-check-cxx-min_ver libstdc++ 12
+	tc-check-cxx-min_ver libc++ 180000
+}
+
+pkg_pretend() {
+	[[ ${MERGE_TYPE} != binary ]] && is_toolchain_new_enough
+}
+
 pkg_setup() {
+	[[ ${MERGE_TYPE} != binary ]] && is_toolchain_new_enough
+
 	use llvm && llvm-r2_pkg_setup
 }
 
 src_prepare() {
 	if [[ ${PV} != *9999 ]]; then
+		# Set tag commit to fix netplay against builds on other platforms, bug #979791
+		eapply "${FILESDIR}"/dolphin-2606-git-rev.patch
+		sed -e "s|@@GENTOO_DOLPHIN_COMMIT@@|${DOLPHIN_TAG_COMMIT}|" \
+			-i CMake/ScmRevGen.cmake || die
+
 		mv -T "${WORKDIR}/cpp-ipc-${CPPIPC_COMMIT}" Externals/cpp-ipc/cpp-ipc || die
 		mv -T "${WORKDIR}/cpp-optparse-${CPPOPTPARSE_COMMIT}" Externals/cpp-optparse/cpp-optparse || die
 		mv -T "${WORKDIR}/imgui-${IMGUI_COMMIT}" Externals/imgui/imgui || die
@@ -199,10 +262,6 @@ src_prepare() {
 
 	einfo "removing sources: ${remove[*]}"
 	rm -r "${remove[@]}" || die
-
-	# Use ccache only when user did set FEATURES=ccache (or similar)
-	# # not when ccache binary is present in system (automagic).
-	sed -e '/include(CCache)/d' -i CMakeLists.txt || die
 
 	# Remove dirty suffix: needed for netplay
 	sed -i -e 's/--dirty/&=""/' CMake/ScmRevGen.cmake || die
@@ -258,6 +317,11 @@ src_configure() {
 		-DUSE_SYSTEM_CURL=ON
 		-DUSE_SYSTEM_ICONV=ON
 		-DUSE_SYSTEM_HIDAPI=ON
+
+		-DDISTRIBUTOR="${BRANDING_OS_NAME}"
+
+		# Use ccache only when user did set FEATURES=ccache (or similar)
+		-DENABLE_CCACHE=OFF
 
 		# Undo cmake.eclass's defaults.
 		# All dolphin's libraries are private

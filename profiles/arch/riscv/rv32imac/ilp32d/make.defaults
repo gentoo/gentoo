@@ -1,4 +1,4 @@
-# Copyright 2019-2021 Gentoo Authors
+# Copyright 2019-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # RISC-V rv32imac/ilp32d no-multilib profile
@@ -26,3 +26,7 @@ LDFLAGS="-Wl,-O1 -Wl,--as-needed -Wl,-z,pack-relative-relocs -Wl,--no-keep-memor
 # We need to undo this for riscv32 since it only has the 64bit interface
 #
 enable_year2038="yes"
+
+# James Le Cuirot <chewi@gentoo.org> (2026-02-13)
+# Enable the native QEMU target for this architecture by default.
+QEMU_SOFTMMU_TARGETS="riscv32"

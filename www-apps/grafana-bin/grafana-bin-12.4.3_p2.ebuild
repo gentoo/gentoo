@@ -1,0 +1,80 @@
+# Copyright 1999-2026 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=8
+
+inherit systemd
+
+MY_PN=${PN/-bin/}
+MY_PV=${PV/_beta/-beta}
+
+DESCRIPTION="Gorgeous metric viz, dashboards & editors for Graphite, InfluxDB & OpenTSDB"
+HOMEPAGE="https://grafana.org"
+
+REAL_PV="12.4.3+security-02"
+REAL_PVR="12.4.3+security-02_25720634919"
+BASE_A_ARM64="grafana_${REAL_PVR}_linux_arm64.tar.gz"
+BASE_A_AMD64="grafana_${REAL_PVR}_linux_amd64.tar.gz"
+BASE_URL="https://dl.grafana.com/grafana/release/${REAL_PV}"
+MY_PATCH="" # leading zero means we cannot use plain $PV
+SRC_URI="
+amd64? (
+	${BASE_URL}/${BASE_A_AMD64}
+)
+arm64? (
+	${BASE_URL}/${BASE_A_ARM64}
+)
+"
+S=${WORKDIR}/${MY_PN}-${REAL_PV}
+
+LICENSE="AGPL-3"
+SLOT="0"
+KEYWORDS="-* amd64 ~arm64"
+RESTRICT="mirror"
+
+DEPEND="acct-group/grafana
+	acct-user/grafana"
+RDEPEND="${DEPEND}
+	media-libs/fontconfig"
+
+QA_PREBUILT="usr/bin/grafana*"
+QA_PRESTRIPPED=${QA_PREBUILT}
+
+src_install() {
+	keepdir /etc/grafana
+	insinto /etc/grafana
+	newins "${S}"/conf/sample.ini grafana.ini
+	rm "${S}"/conf/sample.ini || die
+
+	# Frontend assets
+	insinto /usr/share/${MY_PN}
+	doins -r public conf
+
+	dobin bin/grafana-cli
+	dobin bin/grafana
+	dobin bin/grafana-server
+
+	newconfd "${FILESDIR}"/grafana-r1.confd grafana
+	newinitd "${FILESDIR}"/grafana.initd2 grafana
+	systemd_newunit "${FILESDIR}"/grafana.service grafana.service
+
+	keepdir /var/{lib,log}/grafana
+	keepdir /var/lib/grafana/{dashboards,plugins}
+	fowners grafana:grafana /var/{lib,log}/grafana
+	fowners grafana:grafana /var/lib/grafana/{dashboards,plugins}
+	fperms 0750 /var/{lib,log}/grafana
+	fperms 0750 /var/lib/grafana/{dashboards,plugins}
+}
+
+pkg_postinst() {
+	if [[ -z "${REPLACING_VERSIONS}" ]]; then
+		# This is a new installation
+
+		elog "${PN} has built-in log rotation. Please see [log.file] section of"
+		elog "/etc/grafana/grafana.ini for related settings."
+		elog
+		elog "You may add your own custom configuration for app-admin/logrotate if you"
+		elog "wish to use external rotation of logs. In this case, you also need to make"
+		elog "sure the built-in rotation is turned off."
+	fi
+}

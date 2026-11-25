@@ -1,0 +1,15 @@
+This code ends up calling external programs with an empty environment (other than SDKROOT), which breaks
+anything that requires the PATH variable to be set (such as ccache).
+
+diff '--color=auto' -ur a/bazel/config/generate_config_header.bzl b/bazel/config/generate_config_header.bzl
+--- a/bazel/config/generate_config_header.bzl	2026-08-11 15:14:12.000000000 -0400
++++ b/bazel/config/generate_config_header.bzl	2026-08-28 12:06:48.341631610 -0400
+@@ -92,7 +92,7 @@
+                         "--compiler-args",
+                         " ".join(compiler_flags),
+                         "--env-vars",
+-                        json.encode(env_flags | {"SDKROOT": ctx.attr._sdkroot[sdkroot_provider].path}),
++                        json.encode(ctx.configuration.default_shell_env | env_flags | {"SDKROOT": ctx.attr._sdkroot[sdkroot_provider].path}),
+                     ],
+     )
+ 

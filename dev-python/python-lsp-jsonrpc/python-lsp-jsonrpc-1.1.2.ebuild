@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
 PYPI_NO_NORMALIZE=1
-PYTHON_COMPAT=( python3_{11..14} pypy3 pypy3_11 )
+PYTHON_COMPAT=( python3_{12..15} )
 
 inherit distutils-r1 pypi
 
@@ -29,10 +29,10 @@ BDEPEND="
 	)
 "
 
+EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
 
 python_test() {
 	local -x TZ=UTC
-	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	epytest -o addopts=
 }

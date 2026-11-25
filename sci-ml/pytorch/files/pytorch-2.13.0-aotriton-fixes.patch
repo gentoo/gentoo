@@ -1,0 +1,46 @@
+Fix installation with aotriton
+
+Upstream bug: https://github.com/pytorch/pytorch/issues/158109
+--- a/cmake/External/aotriton.cmake
++++ b/cmake/External/aotriton.cmake
+@@ -56,7 +56,8 @@ if(NOT __AOTRITON_INCLUDED)
+   set(__AOTRITON_Z "gz")
+   # Set the default __AOTRITON_LIB path
+   if(NOT WIN32)
+-    set(__AOTRITON_LIB "lib/libaotriton_v2.so")
++    include(GNUInstallDirs)
++    set(__AOTRITON_LIB "${CMAKE_INSTALL_LIBDIR}/libaotriton_v2.so")
+   else()
+     set(__AOTRITON_LIB "lib/aotriton_v2.lib")
+   endif()
+@@ -240,10 +241,6 @@ if(NOT __AOTRITON_INCLUDED)
+ 
+   # Note it is INSTALL"ED"
+   if(DEFINED ENV{AOTRITON_INSTALLED_PREFIX})
+-    install(DIRECTORY
+-            $ENV{AOTRITON_INSTALLED_PREFIX}/lib
+-            $ENV{AOTRITON_INSTALLED_PREFIX}/include
+-            DESTINATION ${__AOTRITON_INSTALL_DIR})
+     set(__AOTRITON_INSTALL_DIR "$ENV{AOTRITON_INSTALLED_PREFIX}")
+     message(STATUS "Using Preinstalled AOTriton at ${__AOTRITON_INSTALL_DIR}")
+   elseif(DEFINED ENV{AOTRITON_INSTALL_FROM_SOURCE})
+@@ -280,19 +277,4 @@ if(NOT __AOTRITON_INCLUDED)
+   target_link_libraries(__caffe2_aotriton INTERFACE "${__AOTRITON_INSTALL_DIR}/${__AOTRITON_LIB}")
+   target_include_directories(__caffe2_aotriton INTERFACE ${__AOTRITON_INSTALL_DIR}/include)
+   set(AOTRITON_FOUND TRUE)
+-  # Install libaotriton_v2.so into the cmake install tree so it ends up in
+-  # site-packages/torch/lib/ when building with scikit-build-core.
+-  # aotriton's ExternalProject puts the library directly in the source tree
+-  # (${PROJECT_SOURCE_DIR}/torch/lib/) without a cmake install() rule, so it
+-  # is absent from the installed wheel and causes link failures in downstream
+-  # cmake builds (e.g., custom op builds) that link against installed torch.
+-  install(DIRECTORY "${__AOTRITON_INSTALL_DIR}/lib/"
+-    DESTINATION "lib"
+-    FILES_MATCHING PATTERN "libaotriton_v2*.so*"
+-  )
+-  # Install aotriton GPU kernel images (compressed ISA blobs) into the wheel.
+-  install(DIRECTORY "${__AOTRITON_INSTALL_DIR}/lib/aotriton.images"
+-    DESTINATION "lib"
+-    OPTIONAL
+-  )
+ endif() # __AOTRITON_INCLUDED

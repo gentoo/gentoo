@@ -1,6 +1,11 @@
 # Copyright 2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Emi <reedy.sailors.8t@icloud.com> (2026-07-30)
+# Turnstile is only being tested on Linux
+# running it on different kernels is likely to cause issues
+sys-auth/pambase turnstile
+
 # Sam James <sam@gentoo.org> (2026-03-10)
 # Fails to link
 net-libs/gnutls post-quantum
@@ -45,10 +50,6 @@ net-fs/samba fam
 # Masked due to upstream build failures (bug #693018)
 # One example: https://tracker.ceph.com/issues/41523
 >=sys-cluster/ceph-14.2 dpdk
-
-# Michael Palimaka <kensington@gentoo.org> (2015-09-03)
-# Native inotify support is preferred on linux.
-kde-frameworks/kcoreaddons fam
 
 # Diego Elio Pettenò <flameeyes@gentoo.org> (2012-08-27)
 # The libpci access is only used for linux.

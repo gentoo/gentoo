@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
@@ -60,6 +60,18 @@ src_prepare() {
 }
 
 src_configure() {
+	# --Werror=lto-type-mismatch
+	# https://bugs.gentoo.org/927332
+	# https://github.com/ygrek/mldonkey/pull/153
+	filter-lto
+
+	# https://bugs.gentoo.org/944981
+	# https://github.com/ygrek/mldonkey/issues/130
+	#
+	# Ancient vendored md4 library requires passing a define "if and only if
+	# the compiler supports function argument prototyping".
+	append-cflags -DPROTOTYPES
+
 	local myconf=()
 
 	local my_extra_libs

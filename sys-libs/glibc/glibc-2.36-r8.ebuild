@@ -6,7 +6,7 @@ EAPI=7
 # Bumping notes: https://wiki.gentoo.org/wiki/Project:Toolchain/sys-libs/glibc
 # Please read & adapt the page as necessary if obsolete.
 
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{11..12} )
 TMPFILES_OPTIONAL=1
 
 inherit python-any-r1 prefix preserve-libs toolchain-funcs flag-o-matic gnuconfig \
@@ -1521,7 +1521,7 @@ glibc_do_src_install() {
 	# creation of the "factory" symlink in pkg_postinst().
 	rm -f "${ED}"/etc/localtime
 
-	# Generate all locales if this is a native build as locale generation
+	# Compile all locales when requested, but only for native builds.
 	if use compile-locales && ! is_crosscompile ; then
 		if ! run_locale_gen "${ED%/}"; then
 			die "locale-gen(8) unexpectedly failed during the ${EBUILD_PHASE_FUNC} phase"

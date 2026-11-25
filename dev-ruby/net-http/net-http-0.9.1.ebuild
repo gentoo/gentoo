@@ -32,4 +32,13 @@ all_ruby_prepare() {
 		-e 's/__FILE__/"'${RUBY_FAKEGEM_GEMSPEC}'"/' \
 		-e 's/git ls-files -z/find * -print0/' \
 		-i ${RUBY_FAKEGEM_GEMSPEC} || die
+
+	# May fail in a network sandbox
+	sed -e '/def test_proxy_address_ENV$/,/^  end/ s:^:#:' \
+		-e '/def test_proxy_eh_ENV$/,/^  end/ s:^:#:' \
+		-e '/def test_proxy_eh_ENV_no_proxy$/,/^  end/ s:^:#:' \
+		-e '/def test_proxy_eh_ENV_with_urlencoded_user$/,/^  end/ s:^:#:' \
+		-e '/def test_proxy_eh_ENV_with_user$/,/^  end/ s:^:#:' \
+		-e '/def test_proxy_port_ENV$/,/^  end/ s:^:#:' \
+		-i test/net/http/test_http.rb || die
 }

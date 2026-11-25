@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # snapshot extracted from git://git.savannah.gnu.org/gnulib.git using
@@ -9,7 +9,7 @@ EAPI=8
 
 DESCRIPTION="Git merge driver for GNU style ChangeLog files"
 HOMEPAGE="https://www.gnu.org/software/vc-changelog/"
-SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${PN}-${PV#*pre}.tar.xz"
+SRC_URI="https://distfiles.gentoo.org/pub/dev/ulm@gentoo.org/${PN}-${PV#*pre}.tar.xz"
 S="${WORKDIR}/${PN}"
 
 LICENSE="GPL-3+"

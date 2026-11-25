@@ -1,0 +1,47 @@
+gcc 16 + LTO with -fdevirtualize-speculatively: https://bugs.gentoo.org/967623
+
+From 85c105ab0bf953c4758aa0d52618d34e33977acc Mon Sep 17 00:00:00 2001
+From: got3nks <got3nks@users.noreply.github.com>
+Date: Thu, 9 Jul 2026 12:03:29 +0200
+Subject: [PATCH] fix(amulecmd): define MULE_EVT_NOTIFY so LTO builds link
+
+amulecmd references MULE_EVT_NOTIFY through the header-inline CMuleGUIEvent
+(pulled in via TextClient.cpp) but links no translation unit that defines it:
+GuiEvents.cpp (muleappcore) and WebInterface.cpp (webserver) are not linked
+into amulecmd. Non-LTO builds dead-strip the unused inline CMuleGUIEvent
+ctor/Clone() copies before the symbol is demanded, so the gap stayed latent;
+under LTO the vtable is retained and the reference reaches the final link
+undefined, breaking the amulecmd link.
+
+Regression from c30cdc42b, which changed MULE_EVT_NOTIFY from a plain
+const wxEventType (an int, foldable/strippable) into a const
+wxEventTypeTag<wxEvent> object. Define it in amulecmd's console TU, matching
+the per-binary event-definition pattern already used for MULE_EVT_LOGLINE in
+LoggerConsole.cpp.
+
+Refs #367
+---
+ src/TextClient.cpp | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
+
+diff --git a/src/TextClient.cpp b/src/TextClient.cpp
+index 20281049ea..e27618dd0d 100644
+--- a/src/TextClient.cpp
++++ b/src/TextClient.cpp
+@@ -1382,6 +1382,16 @@ int CamulecmdApp::OnRun()
+ 
+ // Stub functions needed by the linker in ASIO builds
+ #include "GuiEvents.h"
++
++// MULE_EVT_NOTIFY is declared in GuiEvents.h and referenced by the header-inline
++// CMuleGUIEvent (its ctor and Clone()) that this console binary pulls in, but amulecmd
++// links no TU that defines it: GuiEvents.cpp lives in muleappcore and WebInterface.cpp
++// in the webserver, neither of which amulecmd links. Non-LTO builds dead-strip the
++// unused inline copies before the symbol is demanded; LTO keeps the CMuleGUIEvent vtable
++// and the reference survives to the final link, so the definition must live here. Same
++// per-binary event-definition pattern as MULE_EVT_LOGLINE in LoggerConsole.cpp.
++wxDEFINE_EVENT(MULE_EVT_NOTIFY, wxEvent);
++
+ namespace MuleNotify
+ {
+ void HandleNotification(const class CMuleNotiferBase &) {}

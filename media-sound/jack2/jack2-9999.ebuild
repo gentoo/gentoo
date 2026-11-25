@@ -1,10 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..14} )
-PYTHON_REQ_USE="threads(+)"
+PYTHON_COMPAT=( python3_{12..15} )
 inherit flag-o-matic python-single-r1 waf-utils multilib-minimal
 
 if [[ ${PV} == 9999 ]]; then

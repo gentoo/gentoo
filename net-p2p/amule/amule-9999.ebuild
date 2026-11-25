@@ -1,119 +1,103 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+
 WX_GTK_VER="3.2-gtk3"
 
-inherit autotools eapi9-ver flag-o-matic wxwidgets xdg-utils
+inherit cmake flag-o-matic wxwidgets xdg
 
 if [[ ${PV} == 9999 ]] ; then
-	EGIT_REPO_URI="https://github.com/amule-project/amule"
+	EGIT_REPO_URI="https://github.com/amule-org/amule"
 	inherit git-r3
 else
-	MY_P="${PN/m/M}-${PV}"
-	SRC_URI="https://download.sourceforge.net/${PN}/${MY_P}.tar.xz"
-	S="${WORKDIR}/${MY_P}"
+	SRC_URI="https://github.com/amule-org/amule/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~alpha ~amd64 ~arm ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
 fi
 
 DESCRIPTION="aMule, the all-platform eMule p2p client"
-HOMEPAGE="https://www.amule.org/"
+HOMEPAGE="https://amule-org.github.io/"
 
 LICENSE="GPL-2+"
 SLOT="0"
-IUSE="daemon debug geoip +gui nls remote stats upnp"
+IUSE="bfd daemon debug geoip +gui mediainfo nls remote stats test upnp"
+# Make the package useful and simplify dependency management
+REQUIRED_USE="|| ( daemon gui remote )"
+
+RESTRICT="!test? ( test )"
 
 RDEPEND="
-	dev-libs/boost:=
 	dev-libs/crypto++:=
-	sys-libs/binutils-libs:0=
 	sys-libs/readline:0=
 	virtual/zlib:=
-	x11-libs/wxGTK:${WX_GTK_VER}=
-	daemon? ( acct-user/amule )
-	geoip? ( dev-libs/geoip )
-	gui? ( x11-libs/wxGTK:${WX_GTK_VER}=[X] )
+	x11-libs/wxGTK:${WX_GTK_VER}=[curl]
+	bfd? ( sys-libs/binutils-libs:0= )
+	daemon? (
+		acct-user/amule
+		dev-libs/boost:=
+	)
+	gui? (
+		dev-libs/boost:=
+		x11-libs/wxGTK:${WX_GTK_VER}=[X]
+		geoip? ( dev-libs/libmaxminddb )
+	)
+	mediainfo? ( media-libs/libmediainfo )
 	nls? ( virtual/libintl )
 	remote? (
 		acct-user/amule
 		media-libs/libpng:0=
 	)
 	stats? ( media-libs/gd:=[jpeg,png] )
-	upnp? ( net-libs/libupnp:0 )
-"
-DEPEND="${RDEPEND}
-	gui? ( dev-util/desktop-file-utils )
+	upnp? ( net-libs/libupnp:0= )
 "
 BDEPEND="
 	virtual/pkgconfig
-	>=dev-build/boost-m4-0.4_p20221019
 	nls? ( sys-devel/gettext )
 "
-
-PATCHES=(
-	"${FILESDIR}/${PN}-2.3.2-disable-version-check.patch"
-	"${FILESDIR}/${PN}-2.3.3-fix-exception.patch"
-	"${FILESDIR}/${PN}-2.3.3-backport-pr368.patch"
-	"${FILESDIR}/${PN}-2.3.3-use-xdg-open-as-preview-default.patch"
-	"${FILESDIR}/${PN}-9999-gettext-0.23.patch"
-)
-
-src_prepare() {
-	default
-	rm m4/boost.m4 || die
-
-	if [[ ${PV} == 9999 ]]; then
-		./autogen.sh || die
-	else
-		eautoreconf
-	fi
-}
 
 src_configure() {
 	setup-wxwidgets
 
 	use debug || append-cppflags -DwxDEBUG_LEVEL=0
-	append-cxxflags -std=gnu++14
+	CMAKE_BUILD_TYPE=$(usex debug Debug ${CMAKE_BUILD_TYPE})
 
-	local myconf=(
-		--with-denoise-level=0
-		--with-wx-config="${WX_CONFIG}"
-		--enable-amulecmd
-		--with-boost
-		$(use_enable debug)
-		$(use_enable daemon amule-daemon)
-		$(use_enable geoip)
-		$(use_enable nls)
-		$(use_enable remote webserver)
-		$(use_enable stats cas)
-		$(use_enable stats alcc)
-		$(use_enable upnp)
+	# TODO: replace amuleweb with amuleapi
+	local mycmakeargs=(
+		-DBUILD_ALCC=YES
+		-DBUILD_ED2K=YES
+		-DENABLE_VERSION_CHECK=NO
+		-DBUILD_ALC="$(usex gui)"
+		-DBUILD_AMULECMD="$(usex remote)"
+		-DBUILD_DAEMON="$(usex daemon)"
+		-DENABLE_MEDIA_PROBE="$(usex mediainfo)"
+		-DBUILD_CAS="$(usex stats)"
+		-DBUILD_MONOLITHIC="$(usex gui)"
+		-DBUILD_TESTING="$(usex test)"
+		-DBUILD_WEBSERVER="$(usex remote)"
+		-DENABLE_BFD="$(usex bfd)"
+		-DENABLE_NLS="$(usex nls)"
+		-DENABLE_UPNP="$(usex upnp)"
 	)
 
 	if use gui; then
-		myconf+=(
-			$(use_enable remote amule-gui)
-			$(use_enable stats alc)
-			$(use_enable stats wxcas)
+		mycmakeargs+=(
+			-DBUILD_REMOTEGUI="$(usex remote)"
+			-DBUILD_WXCAS="$(usex stats)"
+			-DENABLE_IP2COUNTRY="$(usex geoip)"
 		)
 	else
-		myconf+=(
-			--disable-monolithic
-			--disable-amule-gui
-			--disable-alc
-			--disable-wxcas
+		mycmakeargs+=(
+			-DBUILD_REMOTEGUI=NO
+			-DBUILD_WXCAS=NO
+			-DENABLE_IP2COUNTRY=NO
 		)
 	fi
 
-	econf "${myconf[@]}"
-}
-
-src_test() {
-	emake check
+	cmake_src_configure
 }
 
 src_install() {
-	default
+	cmake_src_install
 
 	if use daemon; then
 		newconfd "${FILESDIR}"/amuled.confd-r1 amuled
@@ -132,20 +116,9 @@ src_install() {
 }
 
 pkg_postinst() {
-	if use daemon || use remote && ver_replacing -lt "2.3.2-r4"; then
-		elog "Default user under which amuled and amuleweb daemons are started"
-		elog "have been changed from p2p to amule. Default home directory have been"
-		elog "changed as well."
-		echo
-		elog "If you want to preserve old download/share location, you can create"
-		elog "symlink /var/lib/amule/.aMule pointing to the old location and adjust"
-		elog "files ownership *or* restore AMULEUSER and AMULEHOME variables in"
-		elog "/etc/conf.d/{amuled,amuleweb} to the old values."
-	fi
-
-	use gui && xdg_desktop_database_update
+	use gui && xdg_pkg_postinst
 }
 
 pkg_postrm() {
-	use gui && xdg_desktop_database_update
+	use gui && xdg_pkg_postrm
 }

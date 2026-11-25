@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -38,6 +38,13 @@ PATCHES=(
 	"${FILESDIR}/${PN}-2.0.2-udev-rules-path.patch"
 
 )
+
+src_prepare() {
+	# Fix CMake-4 compatibility
+	sed -e '/cmake_minimum_required/s/3\.7\.2/3.10/' -i CMakeLists.txt || die
+
+	cmake_src_prepare
+}
 
 src_configure() {
 	local mycmakeargs=(

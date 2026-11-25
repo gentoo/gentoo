@@ -1,10 +1,10 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 PYTHON_REQ_USE="xml(+)"
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{12..14} )
 
 inherit gnome2 python-any-r1 vala virtualx
 
@@ -39,6 +39,11 @@ BDEPEND="
 PDEPEND="
 	net-im/telepathy-mission-control
 "
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.24.2-glib-tests.patch
+	"${FILESDIR}"/${PN}-0.24.2-c99.patch
+)
 
 src_configure() {
 	use vala && vala_setup

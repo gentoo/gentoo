@@ -131,3 +131,15 @@ index 4f13cceeff..c6ce7f1e1d 100644
          self.assertEqual(get_max_test_processes(), 1)
          with mock.patch.dict(os.environ, {"DJANGO_TEST_PROCESSES": "7"}):
              self.assertEqual(get_max_test_processes(), 1)
+diff --git a/tests/runtests.py b/tests/runtests.py
+index 2c92af0389..3f9892f2ca 100755
+--- a/tests/runtests.py
++++ b/tests/runtests.py
+@@ -519,6 +519,7 @@ def paired_tests(paired_test, options, test_labels, start_at, start_after):
+ 
+ 
+ if __name__ == "__main__":
++    multiprocessing.set_start_method("fork")
+     # Create a specific subdirectory for the duration of the test suite.
+     TMPDIR = tempfile.mkdtemp(prefix="django_")
+     # Set the TMPDIR environment variable in addition to tempfile.tempdir

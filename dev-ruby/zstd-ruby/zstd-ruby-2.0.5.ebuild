@@ -19,13 +19,13 @@ RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 
 inherit ruby-fakegem
 
-DESCRIPTION="Ruby binding for zstd (Zstandard - Fast real-time compression algorithm)."
+DESCRIPTION="Ruby binding for zstd (Zstandard - Fast real-time compression algorithm)"
 HOMEPAGE="https://github.com/SpringMT/zstd-ruby"
 SRC_URI="https://github.com/SpringMT/zstd-ruby/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="$(ver_cut 1)"
-KEYWORDS="~amd64 ~ppc64"
+KEYWORDS="amd64 ~ppc64"
 
 all_ruby_prepare() {
 	sed -e 's/git ls-files -z/find * -print0/' \

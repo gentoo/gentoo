@@ -22,4 +22,8 @@
 		Workshop on Generic Programming (WGP) 2014.
 		
 	</longdescription>
+	<upstream>
+		<remote-id type="hackage">sop-core</remote-id>
+		<remote-id type="github">well-typed/generics-sop</remote-id>
+	</upstream>
 </pkgmetadata>

@@ -13,7 +13,7 @@ SRC_URI="http://code.haskell.org/~wwolff/haskellmode/${P}.tar.bz2"
 
 LICENSE="BSD"
 SLOT=0
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 
 RDEPEND="
 	dev-lang/ghc[doc]

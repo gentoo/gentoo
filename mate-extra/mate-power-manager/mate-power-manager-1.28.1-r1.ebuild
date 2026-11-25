@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit mate
+inherit mate virtualx
 
 MINOR=$(($(ver_cut 2) % 2))
 if [[ ${MINOR} -eq 0 ]]; then
@@ -69,5 +69,5 @@ src_configure() {
 src_test() {
 	unset DBUS_SESSION_BUS_ADDRESS
 
-	dbus-launch Xemake check || die "Test phase failed"
+	virtx emake check || die "Test phase failed"
 }

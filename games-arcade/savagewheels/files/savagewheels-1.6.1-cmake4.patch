@@ -1,0 +1,16 @@
+--- a/CMakeLists.txt~	2016-05-08 14:23:30.000000000 +0200
++++ b/CMakeLists.txt	2026-06-13 13:15:11.725330192 +0200
+@@ -1,4 +1,4 @@
+-cmake_minimum_required (VERSION 2.8)
++cmake_minimum_required (VERSION 3.10)
+ project(savagewheels)
+ 
+ ### Defaults
+--- a/tools/swv_builder/CMakeLists.txt~	2016-05-08 14:23:30.000000000 +0200
++++ b/tools/swv_builder/CMakeLists.txt	2026-06-13 13:15:21.714344790 +0200
+@@ -1,4 +1,4 @@
+-cmake_minimum_required (VERSION 2.6)
++cmake_minimum_required (VERSION 3.10)
+ project(swv_builder) 
+ 
+ ### src

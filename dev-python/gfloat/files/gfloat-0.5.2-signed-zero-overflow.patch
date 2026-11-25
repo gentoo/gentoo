@@ -1,0 +1,51 @@
+From 575ceff2babe3e54795ec4ce441ec8e981462f9b Mon Sep 17 00:00:00 2001
+From: Andrew Fitzgibbon <awf@fitzgibbon.ie>
+Date: Fri, 18 Sep 2026 15:58:51 +0100
+Subject: [PATCH] Fix binary64 ndarray encoding overflow for signed zero
+
+---
+ src/gfloat/encode_ndarray.py |  5 ++++-
+ test/test_encode.py          | 17 +++++++++++++++++
+ 2 files changed, 21 insertions(+), 1 deletion(-)
+
+diff --git a/src/gfloat/encode_ndarray.py b/src/gfloat/encode_ndarray.py
+index af883e4..3d5981c 100644
+--- a/src/gfloat/encode_ndarray.py
++++ b/src/gfloat/encode_ndarray.py
+@@ -51,7 +51,10 @@ def encode_ndarray(fi: FormatInfo, v: npt.NDArray) -> npt.NDArray:
+ 
+     if fi.has_zero:
+         if fi.has_nz:
+-            code[v == 0] = np.where(sign[v == 0], fi.code_of_negzero, fi.code_of_zero)
++            # binary64's negative-zero code exceeds the signed int64 range.
++            code[v == 0] = np.where(
++                sign[v == 0], np.uint64(fi.code_of_negzero), np.uint64(fi.code_of_zero)
++            )
+         else:
+             code[v == 0] = fi.code_of_zero
+ 
+diff --git a/test/test_encode.py b/test/test_encode.py
+index efdaa1f..8ab344f 100644
+--- a/test/test_encode.py
++++ b/test/test_encode.py
+@@ -62,3 +62,20 @@ def test_encode_edges(fi: FormatInfo, enc: Callable) -> None:
+             if fi.domain == Domain.Extended
+             else fi.code_of_nan if fi.num_nans > 0 else fi.code_of_min
+         )
++
++
++@pytest.mark.parametrize(
++    "values",
++    [
++        [0.0, -0.0],
++        [[-0.0, 0.0], [1.0, -1.0]],
++        [1.0, -1.0],  # The zero selection is empty, as in issue #63.
++        [],
++    ],
++)
++def test_encode_binary64_signed_zero(values: npt.ArrayLike) -> None:
++    v = np.array(values, dtype=np.float64)
++    codes = encode_ndarray(format_info_binary64, v)
++    assert codes.dtype == np.dtype(np.uint64)
++    assert codes.shape == v.shape
++    np.testing.assert_array_equal(codes, v.view(np.uint64))

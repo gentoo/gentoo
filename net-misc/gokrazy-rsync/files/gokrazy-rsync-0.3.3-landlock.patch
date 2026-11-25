@@ -1,0 +1,61 @@
+https://github.com/gokrazy/rsync/commit/c8f9158d4fbd9d1897a4a5d1c2b391e2a8b6e1d8
+
+From c8f9158d4fbd9d1897a4a5d1c2b391e2a8b6e1d8 Mon Sep 17 00:00:00 2001
+From: Michael Stapelberg <michael@stapelberg.de>
+Date: Thu, 22 Jan 2026 08:30:21 +0100
+Subject: [PATCH] landlock: broaden access to entire /etc (see comment)
+
+---
+ internal/restrict/restrict_linux.go | 32 ++++++++++++++---------------
+ 1 file changed, 16 insertions(+), 16 deletions(-)
+
+diff --git a/internal/restrict/restrict_linux.go b/internal/restrict/restrict_linux.go
+index 61f6004..ce0928f 100644
+--- a/internal/restrict/restrict_linux.go
++++ b/internal/restrict/restrict_linux.go
+@@ -13,20 +13,6 @@ import (
+ // ExtraHook is set when testing to make the landlock rule set more permissive.
+ var ExtraHook func() []landlock.Rule
+ 
+-// As of Go 1.24, the net package Go resolver reads
+-// the following DNS configurations files:
+-var dnsLookup = []string{
+-	"/etc/resolv.conf",
+-	"/etc/hosts",
+-	"/etc/services",
+-	"/etc/nsswitch.conf",
+-}
+-
+-var userLookup = []string{
+-	"/etc/passwd", // user lookup
+-	"/etc/group",  // group lookup
+-}
+-
+ func MaybeFileSystem(roDirsOrFiles []string, rwDirs []string) error {
+ 	re := ExtraHook
+ 	if re == nil {
+@@ -49,8 +35,22 @@ func MaybeFileSystem(roDirsOrFiles []string, rwDirs []string) error {
+ 	log.Printf("setting up landlock ACL (paths ro: %q, paths rw: %q)", roDirs, rwDirs)
+ 	err := landlock.V3.BestEffort().RestrictPaths(
+ 		append(re(), []landlock.Rule{
+-			landlock.ROFiles(dnsLookup...).IgnoreIfMissing(),
+-			landlock.ROFiles(userLookup...).IgnoreIfMissing(),
++			// rsync needs /etc/passwd and /etc/group for user/group lookup.
++			//
++			// As of Go 1.24, the net package Go resolver reads
++			// the following DNS configurations files:
++			//
++			// - /etc/resolv.conf
++			// - /etc/hosts
++			// - /etc/services
++			// - /etc/nsswitch.conf
++			//
++			// Because the /etc/resolv.conf file might be re-created (by DHCP
++			// clients, Tailscale, or similar), we need to provide the entire
++			// /etc directory instead of individual files. Otherwise, the
++			// program seems to work at first and then fails DNS resolution
++			// after a while.
++			landlock.RODirs("/etc").IgnoreIfMissing(),
+ 			landlock.RODirs(roDirs...).IgnoreIfMissing(),
+ 			landlock.ROFiles(roFiles...).IgnoreIfMissing(),
+ 			landlock.RWDirs(rwDirs...).WithRefer(),

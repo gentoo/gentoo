@@ -1,12 +1,12 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 # Please bump with app-editors/vim and app-editors/gvim
 
-VIM_VERSION="9.1"
-VIM_PATCHES_VERSION="9.0.2092"
+VIM_VERSION="9.2"
+VIM_PATCHES_VERSION="9.2.1119"
 inherit desktop flag-o-matic prefix toolchain-funcs vim-doc xdg-utils
 
 if [[ ${PV} == 9999* ]] ; then
@@ -16,7 +16,7 @@ if [[ ${PV} == 9999* ]] ; then
 else
 	SRC_URI="https://github.com/vim/vim/archive/v${PV}.tar.gz -> vim-${PV}.tar.gz
 		https://gitweb.gentoo.org/proj/vim-patches.git/snapshot/vim-patches-vim-${VIM_PATCHES_VERSION}-patches.tar.bz2"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-macos ~x64-solaris"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~arm64-macos ~x64-macos ~x64-solaris"
 fi
 
 DESCRIPTION="vim and gvim shared files"
@@ -30,7 +30,7 @@ IUSE="nls acl minimal"
 RDEPEND="dev-util/xxd"
 # ncurses is only needed by ./configure, so no subslot operator required
 DEPEND=">=sys-libs/ncurses-5.2-r2:0"
-BDEPEND="dev-build/autoconf"
+BDEPEND=">=dev-build/autoconf-2.71"
 
 if [[ ${PV} != 9999* ]]; then
 	# Gentoo patches to fix runtime issues, cross-compile errors, etc
@@ -134,8 +134,10 @@ src_configure() {
 	export ac_cv_prog_STRIP="$(type -P true ) faking strip"
 
 	local myconf=(
-		--with-modified-by=Gentoo-${PVR}
+		--with-modified-by="Gentoo-${PVR} (RIP Bram)"
 		--enable-gui=no
+		--disable-hardcopy-pango
+		--without-wayland
 		--without-x
 		--disable-darwin
 		--disable-perlinterp

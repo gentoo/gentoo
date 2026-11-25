@@ -1,0 +1,32 @@
+remove -Werror
+see https://bugs.gentoo.org/979178
+--- a/game/CMakeLists.txt
++++ b/game/CMakeLists.txt
+@@ -302,12 +302,6 @@ if(WIN32)
+ 	set_target_properties(performous PROPERTIES OUTPUT_NAME "Performous")
+ endif()
+ 
+-if(WIN32 AND MSVC)
+-#	target_compile_options(performous PUBLIC /WX)
+-else()
+-	target_compile_options(performous PUBLIC -Werror)
+-endif()
+-
+ # Generate config.hh
+ configure_file("${CMAKE_CURRENT_SOURCE_DIR}/config.cmake.hh" "${CMAKE_CURRENT_BINARY_DIR}/config.hh" @ONLY)
+ target_include_directories(performous PRIVATE "${CMAKE_CURRENT_BINARY_DIR}" "${CMAKE_CURRENT_SOURCE_DIR}")
+--- a/testing/CMakeLists.txt
++++ b/testing/CMakeLists.txt
+@@ -74,12 +74,6 @@ if(GTest_FOUND)
+ 
+ 	target_include_directories(performous_test PRIVATE ".." "../game" "${Performous_BINARY_DIR}/game")
+ 
+-	if(WIN32 AND MSVC)
+-#		target_compile_options(performous_test PUBLIC /WX)
+-	else()
+-		target_compile_options(performous_test PUBLIC -Werror)
+-	endif()
+-	
+ 	find_package(SDL2 REQUIRED)
+ 	if (TARGET SDL2::SDL2)
+ 		target_link_libraries(performous_test PRIVATE SDL2::SDL2)

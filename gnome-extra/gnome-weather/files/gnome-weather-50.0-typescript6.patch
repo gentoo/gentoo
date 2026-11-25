@@ -1,0 +1,22 @@
+--- gnome-weather-50.0/tsconfig.json
++++ gnome-weather-50.0/tsconfig.json
+@@ -3,7 +3,7 @@
+         "experimentalDecorators": true,
+         "strict": true,
+         "target": "ES2022",
+-        "baseUrl": ".",
++        "rootDir": "src",
+         "moduleResolution": "bundler",
+         "module": "ES2022",
+         "lib": [
+--- gnome-weather-50.0/src/service/searchProvider.ts
++++ gnome-weather-50.0/src/service/searchProvider.ts
+@@ -22,7 +22,7 @@ import GWeather from 'gi://GWeather';
+ 
+ import * as Util from '../misc/util.js';
+ import {WeatherBackgroundService} from './main.js';
+-import {WorldModel} from 'src/shared/world.js';
++import {WorldModel} from '../shared/world.js';
+ 
+ type ResultMeta = {
+     name: GLib.Variant<'s'>;

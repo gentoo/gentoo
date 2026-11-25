@@ -1,0 +1,49 @@
+# Copyright 2025-2026 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=8
+
+DISTUTILS_EXT=1
+DISTUTILS_USE_PEP517=setuptools
+PYTHON_COMPAT=( python3_{12..15} )
+
+inherit distutils-r1 pypi
+
+DESCRIPTION="Fast serialization and validation library, with builtin support for many formats"
+HOMEPAGE="
+	https://github.com/msgspec/msgspec
+	https://pypi.org/project/msgspec/
+"
+# No tests in sdist
+SRC_URI="
+	https://github.com/msgspec/msgspec/archive/refs/tags/${PV}.tar.gz
+		-> ${P}.gh.tar.gz
+"
+
+LICENSE="BSD"
+SLOT="0"
+KEYWORDS="~alpha amd64"
+
+BDEPEND="
+	dev-python/cython[${PYTHON_USEDEP}]
+	>=dev-python/setuptools-scm-8[${PYTHON_USEDEP}]
+	test? (
+		dev-python/attrs[${PYTHON_USEDEP}]
+		dev-python/msgpack[${PYTHON_USEDEP}]
+		dev-python/pyyaml[${PYTHON_USEDEP}]
+		dev-python/tomli-w[${PYTHON_USEDEP}]
+	)
+"
+
+EPYTEST_PLUGINS=()
+distutils_enable_tests pytest
+
+python_test() {
+	local EPYTEST_IGNORE=(
+		# Lint tests
+		tests/unit/test_cpylint.py
+	)
+
+	rm -rf msgspec || die
+	epytest tests/unit
+}

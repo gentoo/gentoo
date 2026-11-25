@@ -1,0 +1,488 @@
+From 22c6dbcbf42c16ab63752de5ae64b0cded558d48 Mon Sep 17 00:00:00 2001
+From: Ard Biesheuvel <ardb@kernel.org>
+Date: Tue, 1 Sep 2026 18:20:54 +0200
+Subject: [PATCH 1/4] ArmVirtPkg: Create platform DXE driver to detect the GIC
+ version
+
+Take the code from ArmVirtGicArchLib, which is injected into the unified
+GIC driver by NULL library class resolution to set the associated PCDs
+as the driver loads, and implement a DXE driver that performs the same
+DT based detection.
+
+However, in this case, the driver installs a NULL protocol under a GUID
+that indicates the presence of either a V2 or a V3 (or later) GIC, in a
+way that allows the DXE driver dispatcher to take this into account.
+
+This will allow the unified GIC driver to be replaced with the split V2
+and V3 versions, which is all we care to support going forward.
+
+Signed-off-by: Ard Biesheuvel <ardb@kernel.org>
+
+diff --git a/ArmVirtPkg/ArmVirtPkg.dec b/ArmVirtPkg/ArmVirtPkg.dec
+index fd9a31a916d4..e91c70c95e95 100644
+--- a/ArmVirtPkg/ArmVirtPkg.dec
++++ b/ArmVirtPkg/ArmVirtPkg.dec
+@@ -40,6 +40,9 @@
+   gArmCcaIpaWidthGuid              = { 0xbdb66787, 0xfc8a, 0x412e, { 0xa0, 0x9b, 0x84, 0x96, 0x61, 0x81, 0x72, 0xc0 } }
+   gArmCcaIsRealmGuid               = { 0x45e4546d, 0x26ea, 0x449d, { 0xa4, 0xa6, 0xcb, 0x5a, 0x54, 0xe3, 0x03, 0x7c } }
+ 
++  gArmVirtPlatformHasGicV2         = { 0x5f69e3c5, 0x9cd4, 0x47cf, { 0xa5, 0x31, 0x56, 0x15, 0xcb, 0x80, 0xf5, 0x8b } }
++  gArmVirtPlatformHasGicV3         = { 0xa74128a8, 0xb243, 0x4157, { 0x9c, 0xa4, 0x47, 0x63, 0x29, 0x3a, 0x68, 0x45 } }
++
+ [PcdsFeatureFlag]
+   #
+   # Feature Flag PCD that defines whether TPM2 support is enabled
+diff --git a/ArmVirtPkg/Library/ArmVirtGicPlatformDxe/ArmVirtGicPlatformDxe.c b/ArmVirtPkg/Library/ArmVirtGicPlatformDxe/ArmVirtGicPlatformDxe.c
+new file mode 100644
+index 000000000000..81d9d2ff8797
+--- /dev/null
++++ b/ArmVirtPkg/Library/ArmVirtGicPlatformDxe/ArmVirtGicPlatformDxe.c
+@@ -0,0 +1,201 @@
++/** @file
++  NULL library class implementation to discover the GIC for DT based virt platforms
++
++  Copyright (c) 2015 - 2016, Linaro Ltd. All rights reserved.<BR>
++  Copyright (c) 2026, Arm Ltd. All rights reserved.<BR>
++  Copyright (c) 2026, Google LLC. All rights reserved.<BR>
++
++  SPDX-License-Identifier: BSD-2-Clause-Patent
++
++**/
++
++#include <PiDxe.h>
++
++#include <Library/ArmGicLib.h>
++#include <Library/BaseLib.h>
++#include <Library/DebugLib.h>
++#include <Library/MapMmioLib.h>
++#include <Library/PcdLib.h>
++#include <Library/UefiBootServicesTableLib.h>
++
++#include <Protocol/FdtClient.h>
++
++EFI_STATUS
++EFIAPI
++ArmVirtGicPlatformDxeInitialize (
++  IN EFI_HANDLE        ImageHandle,
++  IN EFI_SYSTEM_TABLE  *SystemTable
++  )
++{
++  FDT_CLIENT_PROTOCOL  *FdtClient;
++  CONST UINT64         *Reg;
++  UINT32               RegSize;
++  UINTN                AddressCells, SizeCells;
++  UINTN                GicRevision;
++  EFI_STATUS           Status;
++  UINT64               DistBase, CpuBase, RedistBase;
++  UINT64               DistSize, CpuSize, RedistSize;
++  RETURN_STATUS        PcdStatus;
++  EFI_HANDLE           Handle;
++  CONST EFI_GUID       *DepexGuid;
++
++  Status = gBS->LocateProtocol (
++                  &gFdtClientProtocolGuid,
++                  NULL,
++                  (VOID **)&FdtClient
++                  );
++  ASSERT_EFI_ERROR (Status);
++
++  GicRevision = 2;
++  Status      = FdtClient->FindCompatibleNodeReg (
++                             FdtClient,
++                             "arm,cortex-a15-gic",
++                             (CONST VOID **)&Reg,
++                             &AddressCells,
++                             &SizeCells,
++                             &RegSize
++                             );
++  if (Status == EFI_NOT_FOUND) {
++    GicRevision = 3;
++    Status      = FdtClient->FindCompatibleNodeReg (
++                               FdtClient,
++                               "arm,gic-v3",
++                               (CONST VOID **)&Reg,
++                               &AddressCells,
++                               &SizeCells,
++                               &RegSize
++                               );
++  }
++
++  if (EFI_ERROR (Status)) {
++    return Status;
++  }
++
++  switch (GicRevision) {
++    case 3:
++      //
++      // The GIC v3 DT binding describes a series of at least 3 physical (base
++      // addresses, size) pairs: the distributor interface (GICD), at least one
++      // redistributor region (GICR) containing dedicated redistributor
++      // interfaces for all individual CPUs, and the CPU interface (GICC).
++      // Under virtualization, we assume that the first redistributor region
++      // listed covers the boot CPU. Also, our GICv3 driver only supports the
++      // system register CPU interface, so we can safely ignore the MMIO version
++      // which is listed after the sequence of redistributor interfaces.
++      // This means we are only interested in the first two memory regions
++      // supplied, and ignore everything else.
++      //
++      ASSERT (RegSize >= 32);
++
++      // RegProp[0..1] == { GICD base, GICD size }
++      DistBase = SwapBytes64 (Reg[0]);
++      ASSERT (DistBase < MAX_UINTN);
++      DistSize = SwapBytes64 (Reg[1]);
++      ASSERT (DistSize < MAX_UINTN);
++
++      // RegProp[2..3] == { GICR base, GICR size }
++      RedistBase = SwapBytes64 (Reg[2]);
++      ASSERT (RedistBase < MAX_UINTN);
++      RedistSize = SwapBytes64 (Reg[3]);
++      ASSERT (RedistSize < MAX_UINTN);
++
++      PcdStatus = PcdSet64S (PcdGicDistributorBase, DistBase);
++      ASSERT_RETURN_ERROR (PcdStatus);
++      PcdStatus = PcdSet64S (PcdGicRedistributorsBase, RedistBase);
++      ASSERT_RETURN_ERROR (PcdStatus);
++
++      DEBUG ((
++        DEBUG_INFO,
++        "Found GIC v3 Distributor @ 0x%Lx, Len 0x%Lx\n",
++        DistBase,
++        DistSize
++        ));
++
++      DEBUG ((
++        DEBUG_INFO,
++        "Found GIC v3 Redistributor @ 0x%Lx, Len 0x%Lx\n",
++        RedistBase,
++        RedistSize
++        ));
++
++      Status = MapMmioMemory (
++                 DistBase,
++                 DistSize,
++                 (EFI_MEMORY_UC | EFI_MEMORY_XP)
++                 );
++      if (EFI_ERROR (Status)) {
++        ASSERT_EFI_ERROR (Status);
++        return Status;
++      }
++
++      Status = MapMmioMemory (
++                 RedistBase,
++                 RedistSize,
++                 (EFI_MEMORY_UC | EFI_MEMORY_XP)
++                 );
++      if (EFI_ERROR (Status)) {
++        ASSERT_EFI_ERROR (Status);
++        return Status;
++      }
++
++      DepexGuid = &gArmVirtPlatformHasGicV3;
++      break;
++
++    case 2:
++      //
++      // When the GICv2 is emulated with virtualization=on, it adds a virtual
++      // set of control registers. This means the register property can be
++      // either 32 or 64 bytes in size.
++      //
++      ASSERT ((RegSize == 32) || (RegSize == 64));
++
++      DistBase = SwapBytes64 (Reg[0]);
++      DistSize = SwapBytes64 (Reg[1]);
++      CpuBase  = SwapBytes64 (Reg[2]);
++      CpuSize  = SwapBytes64 (Reg[3]);
++      ASSERT (DistBase < MAX_UINTN);
++      ASSERT (CpuBase < MAX_UINTN);
++      ASSERT (DistSize < MAX_UINTN);
++      ASSERT (CpuSize < MAX_UINTN);
++
++      PcdStatus = PcdSet64S (PcdGicDistributorBase, DistBase);
++      ASSERT_RETURN_ERROR (PcdStatus);
++      PcdStatus = PcdSet64S (PcdGicInterruptInterfaceBase, CpuBase);
++      ASSERT_RETURN_ERROR (PcdStatus);
++
++      DEBUG ((DEBUG_INFO, "Found GICv2 @ 0x%Lx/0x%Lx\n", DistBase, CpuBase));
++
++      Status = MapMmioMemory (
++                 DistBase,
++                 DistSize,
++                 (EFI_MEMORY_UC | EFI_MEMORY_XP)
++                 );
++      if (EFI_ERROR (Status)) {
++        ASSERT_EFI_ERROR (Status);
++        return Status;
++      }
++
++      Status = MapMmioMemory (
++                 CpuBase,
++                 CpuSize,
++                 (EFI_MEMORY_UC | EFI_MEMORY_XP)
++                 );
++      if (EFI_ERROR (Status)) {
++        ASSERT_EFI_ERROR (Status);
++        return Status;
++      }
++
++      DepexGuid = &gArmVirtPlatformHasGicV2;
++      break;
++
++    default:
++      DEBUG ((DEBUG_ERROR, "%a: No GIC revision specified!\n", __func__));
++      return EFI_NOT_FOUND;
++  }
++
++  Handle = NULL;
++  Status = gBS->InstallMultipleProtocolInterfaces (&Handle, DepexGuid, NULL, NULL);
++  ASSERT_EFI_ERROR (Status);
++
++  return EFI_REQUEST_UNLOAD_IMAGE;
++}
+diff --git a/ArmVirtPkg/Library/ArmVirtGicPlatformDxe/ArmVirtGicPlatformDxe.inf b/ArmVirtPkg/Library/ArmVirtGicPlatformDxe/ArmVirtGicPlatformDxe.inf
+new file mode 100644
+index 000000000000..2321d2cf353c
+--- /dev/null
++++ b/ArmVirtPkg/Library/ArmVirtGicPlatformDxe/ArmVirtGicPlatformDxe.inf
+@@ -0,0 +1,52 @@
++#/** @file
++#
++#  Component description file for ArmVirtGicPlatformDxe module
++#
++#  Copyright (c) 2015, Linaro Ltd. All rights reserved.<BR>
++#  Copyright (c) 2026, Arm Ltd. All rights reserved.<BR>
++#  Copyright (c) 2026, Google LLC. All rights reserved.<BR>
++#
++#  SPDX-License-Identifier: BSD-2-Clause-Patent
++#
++#**/
++
++[Defines]
++  INF_VERSION                    = 1.30
++  BASE_NAME                      = ArmVirtGicPlatformDxe
++  FILE_GUID                      = b8de02d5-3164-448f-879c-62f695d6cca8
++  MODULE_TYPE                    = DXE_DRIVER
++  VERSION_STRING                 = 1.0
++  ENTRY_POINT                    = ArmVirtGicPlatformDxeInitialize
++
++[Sources]
++  ArmVirtGicPlatformDxe.c
++
++[LibraryClasses]
++  BaseLib
++  DebugLib
++  PcdLib
++  MapMmioLib
++  UefiBootServicesTableLib
++  UefiDriverEntryPoint
++
++[Packages]
++  ArmPkg/ArmPkg.dec
++  ArmVirtPkg/ArmVirtPkg.dec
++  EmbeddedPkg/EmbeddedPkg.dec
++  MdePkg/MdePkg.dec
++  OvmfPkg/OvmfPkg.dec
++
++[Protocols]
++  gFdtClientProtocolGuid                                ## CONSUMES
++
++[Pcd]
++  gArmTokenSpaceGuid.PcdGicDistributorBase
++  gArmTokenSpaceGuid.PcdGicRedistributorsBase
++  gArmTokenSpaceGuid.PcdGicInterruptInterfaceBase
++
++[Guids]
++  gArmVirtPlatformHasGicV2
++  gArmVirtPlatformHasGicV3
++
++[Depex]
++  gFdtClientProtocolGuid
+
+From 81e0b6361b401264c359e9eacf93e953e3c10bd0 Mon Sep 17 00:00:00 2001
+From: Ard Biesheuvel <ardb@kernel.org>
+Date: Tue, 1 Sep 2026 18:41:02 +0200
+Subject: [PATCH 2/4] ArmVirtPkg: Implement stub DEPEX libraries for GIC v2/v3
+ presence
+
+Allow the unified ArmGicDxe driver to be replaced with either the v2 or
+the v3 one, depending on what the platform actually implements.
+
+This involves injecting a DEPEX on the ArmVirtPkg specific GUID that
+conveys whether the GIC is a revision 2 or a newer one.
+
+This DEPEX injection is done by adding a NULL library class resolution
+to each driver when incorporating it into the platform build. So add a
+library for GICv2 and one for GICv3 or newer.
+
+Signed-off-by: Ard Biesheuvel <ardb@kernel.org>
+
+diff --git a/ArmVirtPkg/Library/ArmGicDepexLib/ArmGicDepexLib.c b/ArmVirtPkg/Library/ArmGicDepexLib/ArmGicDepexLib.c
+new file mode 100644
+index 000000000000..e69de29bb2d1
+diff --git a/ArmVirtPkg/Library/ArmGicDepexLib/ArmGicV2DepexLib.inf b/ArmVirtPkg/Library/ArmGicDepexLib/ArmGicV2DepexLib.inf
+new file mode 100644
+index 000000000000..bd06dcf452af
+--- /dev/null
++++ b/ArmVirtPkg/Library/ArmGicDepexLib/ArmGicV2DepexLib.inf
+@@ -0,0 +1,27 @@
++#/** @file
++#
++#  Component description file for ArmGicDepexLib module
++#
++#  Copyright (c) 2026, Google LLC. All rights reserved.<BR>
++#
++#  SPDX-License-Identifier: BSD-2-Clause-Patent
++#
++#**/
++
++[Defines]
++  INF_VERSION         = 1.30
++  BASE_NAME           = ArmGicV2DepexLib
++  FILE_GUID           = 7daabe90-e7a7-4b8a-8b28-1a4532afb691
++  MODULE_TYPE         = BASE
++  VERSION_STRING      = 1.0
++  LIBRARY_CLASS       = NULL
++
++[Sources]
++  ArmGicDepexLib.c
++
++[Packages]
++  ArmVirtPkg/ArmVirtPkg.dec
++  MdePkg/MdePkg.dec
++
++[Depex]
++  gArmVirtPlatformHasGicV2
+diff --git a/ArmVirtPkg/Library/ArmGicDepexLib/ArmGicV3DepexLib.inf b/ArmVirtPkg/Library/ArmGicDepexLib/ArmGicV3DepexLib.inf
+new file mode 100644
+index 000000000000..02ef5193f357
+--- /dev/null
++++ b/ArmVirtPkg/Library/ArmGicDepexLib/ArmGicV3DepexLib.inf
+@@ -0,0 +1,27 @@
++#/** @file
++#
++#  Component description file for ArmGicDepexLib module
++#
++#  Copyright (c) 2026, Google LLC. All rights reserved.<BR>
++#
++#  SPDX-License-Identifier: BSD-2-Clause-Patent
++#
++#**/
++
++[Defines]
++  INF_VERSION         = 1.30
++  BASE_NAME           = ArmGicV3DepexLib
++  FILE_GUID           = 12849212-ea40-4cd4-be97-de7636f05539
++  MODULE_TYPE         = BASE
++  VERSION_STRING      = 1.0
++  LIBRARY_CLASS       = NULL
++
++[Sources]
++  ArmGicDepexLib.c
++
++[Packages]
++  ArmVirtPkg/ArmVirtPkg.dec
++  MdePkg/MdePkg.dec
++
++[Depex]
++  gArmVirtPlatformHasGicV3
+
+From d43a446baa384796b2c9897be5f86aa268e53d32 Mon Sep 17 00:00:00 2001
+From: Ard Biesheuvel <ardb@kernel.org>
+Date: Tue, 1 Sep 2026 18:50:49 +0200
+Subject: [PATCH 3/4] ArmVirtPkg: Switch all platforms to split v2/v3 GIC
+ drivers
+
+Use the separate v2 and v3 versions of the GIC driver, rather than the
+unified one, which is a bit odd because a platform never implements
+both, and GICv2 is obsolete by now.
+
+The only reason the unified driver is being kept alive is for virtual
+platforms that could decide to expose either. Let's refactor this a bit
+so that the version detection is separated from the driver dispatch
+itself, so that ordinary DEPEX resolution can be used to load either the
+v2 or the v3 driver.
+
+Signed-off-by: Ard Biesheuvel <ardb@kernel.org>
+
+diff --git a/ArmVirtPkg/ArmVirt.dsc.inc b/ArmVirtPkg/ArmVirt.dsc.inc
+index fb1edceafcd2..73723fab8922 100644
+--- a/ArmVirtPkg/ArmVirt.dsc.inc
++++ b/ArmVirtPkg/ArmVirt.dsc.inc
+@@ -517,9 +517,14 @@ DEFINE FD_SIZE_IN_MB    = 3
+ 
+ !include OvmfPkg/Include/Dsc/ShellComponents.dsc.inc
+ 
+-  ArmPkg/Drivers/ArmGicDxe/ArmGicDxe.inf {
++  ArmVirtPkg/Library/ArmVirtGicPlatformDxe/ArmVirtGicPlatformDxe.inf
++  ArmPkg/Drivers/ArmGicDxe/ArmGicV2Dxe.inf {
+     <LibraryClasses>
+-      NULL|ArmVirtPkg/Library/ArmVirtGicArchLib/ArmVirtGicArchLib.inf
++      NULL|ArmVirtPkg/Library/ArmGicDepexLib/ArmGicV2DepexLib.inf
++  }
++  ArmPkg/Drivers/ArmGicDxe/ArmGicV3Dxe.inf {
++    <LibraryClasses>
++      NULL|ArmVirtPkg/Library/ArmGicDepexLib/ArmGicV3DepexLib.inf
+   }
+   ArmPkg/Drivers/TimerDxe/TimerDxe.inf {
+     <LibraryClasses>
+diff --git a/ArmVirtPkg/ArmVirtCloudHv.fdf b/ArmVirtPkg/ArmVirtCloudHv.fdf
+index c7d212429a03..8a92843abf71 100644
+--- a/ArmVirtPkg/ArmVirtCloudHv.fdf
++++ b/ArmVirtPkg/ArmVirtCloudHv.fdf
+@@ -132,7 +132,9 @@ READ_LOCK_STATUS   = TRUE
+   INF MdeModulePkg/Universal/Console/TerminalDxe/TerminalDxe.inf
+   INF MdeModulePkg/Universal/SerialDxe/SerialDxe.inf
+ 
+-  INF ArmPkg/Drivers/ArmGicDxe/ArmGicDxe.inf
++  INF ArmVirtPkg/Library/ArmVirtGicPlatformDxe/ArmVirtGicPlatformDxe.inf
++  INF ArmPkg/Drivers/ArmGicDxe/ArmGicV2Dxe.inf
++  INF ArmPkg/Drivers/ArmGicDxe/ArmGicV3Dxe.inf
+   INF ArmPkg/Drivers/TimerDxe/TimerDxe.inf
+   INF MdeModulePkg/Universal/WatchdogTimerDxe/WatchdogTimer.inf
+ 
+diff --git a/ArmVirtPkg/ArmVirtKvmTool.fdf b/ArmVirtPkg/ArmVirtKvmTool.fdf
+index ede74c08a8ff..fa22491d7aba 100644
+--- a/ArmVirtPkg/ArmVirtKvmTool.fdf
++++ b/ArmVirtPkg/ArmVirtKvmTool.fdf
+@@ -134,7 +134,9 @@ READ_LOCK_STATUS   = TRUE
+   INF MdeModulePkg/Universal/Console/TerminalDxe/TerminalDxe.inf
+   INF MdeModulePkg/Universal/SerialDxe/SerialDxe.inf
+ 
+-  INF ArmPkg/Drivers/ArmGicDxe/ArmGicDxe.inf
++  INF ArmVirtPkg/Library/ArmVirtGicPlatformDxe/ArmVirtGicPlatformDxe.inf
++  INF ArmPkg/Drivers/ArmGicDxe/ArmGicV2Dxe.inf
++  INF ArmPkg/Drivers/ArmGicDxe/ArmGicV3Dxe.inf
+   INF ArmPkg/Drivers/TimerDxe/TimerDxe.inf
+   INF MdeModulePkg/Universal/WatchdogTimerDxe/WatchdogTimer.inf
+   INF OvmfPkg/VirtNorFlashDxe/VirtNorFlashDxe.inf
+diff --git a/ArmVirtPkg/ArmVirtQemuFvMain.fdf.inc b/ArmVirtPkg/ArmVirtQemuFvMain.fdf.inc
+index ad158f57f127..f2bef9d1dda7 100644
+--- a/ArmVirtPkg/ArmVirtQemuFvMain.fdf.inc
++++ b/ArmVirtPkg/ArmVirtQemuFvMain.fdf.inc
+@@ -76,7 +76,9 @@ READ_LOCK_STATUS   = TRUE
+   INF MdeModulePkg/Universal/Console/TerminalDxe/TerminalDxe.inf
+   INF MdeModulePkg/Universal/SerialDxe/SerialDxe.inf
+ 
+-  INF ArmPkg/Drivers/ArmGicDxe/ArmGicDxe.inf
++  INF ArmVirtPkg/Library/ArmVirtGicPlatformDxe/ArmVirtGicPlatformDxe.inf
++  INF ArmPkg/Drivers/ArmGicDxe/ArmGicV2Dxe.inf
++  INF ArmPkg/Drivers/ArmGicDxe/ArmGicV3Dxe.inf
+   INF ArmPkg/Drivers/TimerDxe/TimerDxe.inf
+   INF OvmfPkg/VirtNorFlashDxe/VirtNorFlashDxe.inf
+   INF MdeModulePkg/Universal/WatchdogTimerDxe/WatchdogTimer.inf
+diff --git a/ArmVirtPkg/ArmVirtXen.fdf b/ArmVirtPkg/ArmVirtXen.fdf
+index b7ddc5f9daf3..9d8ff900492e 100644
+--- a/ArmVirtPkg/ArmVirtXen.fdf
++++ b/ArmVirtPkg/ArmVirtXen.fdf
+@@ -142,7 +142,9 @@ READ_LOCK_STATUS   = TRUE
+   INF MdeModulePkg/Universal/Console/TerminalDxe/TerminalDxe.inf
+   INF MdeModulePkg/Universal/SerialDxe/SerialDxe.inf
+ 
+-  INF ArmPkg/Drivers/ArmGicDxe/ArmGicDxe.inf
++  INF ArmVirtPkg/Library/ArmVirtGicPlatformDxe/ArmVirtGicPlatformDxe.inf
++  INF ArmPkg/Drivers/ArmGicDxe/ArmGicV2Dxe.inf
++  INF ArmPkg/Drivers/ArmGicDxe/ArmGicV3Dxe.inf
+   INF ArmPkg/Drivers/TimerDxe/TimerDxe.inf
+   INF MdeModulePkg/Universal/WatchdogTimerDxe/WatchdogTimer.inf
+ 
+

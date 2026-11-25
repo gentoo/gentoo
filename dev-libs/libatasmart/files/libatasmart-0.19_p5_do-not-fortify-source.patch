@@ -1,0 +1,23 @@
+From: Filip Kobierski <fkobi@pm.me>
+
+Bug: https://bugs.gentoo.org/890275
+---
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index 1f47716..c78f06e 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -88,7 +88,7 @@ CC_CHECK_FLAGS_APPEND([with_cflags], [CFLAGS], [\
+         -Wunsafe-loop-optimizations \
+         -Wpacked \
+         -Werror=overflow \
+-        -Wp,-D_FORTIFY_SOURCE=2 \
++        -Wp, \
+         -ffast-math \
+         -fno-common \
+         -fdiagnostics-show-option \
+-- 
+2.45.2
+

@@ -1,0 +1,23 @@
+Don't turn all warnings into errors with the default "strict" feature,
+every new Rust release adds lints that break the build.
+
+Bug: https://bugs.gentoo.org/961269
+Upstream fixed the current warnings in:
+https://github.com/influxdata/flux/pull/5560
+https://github.com/influxdata/flux/pull/5568
+https://github.com/influxdata/flux/pull/5585
+
+--- a/libflux/flux/src/lib.rs
++++ b/libflux/flux/src/lib.rs
+@@ -1,4 +1,3 @@
+-#![cfg_attr(feature = "strict", deny(warnings, missing_docs))]
+ 
+ //! This module provides the public facing API for Flux's Go runtime, including formatting,
+ //! parsing, and standard library analysis.
+--- a/libflux/flux-core/src/lib.rs
++++ b/libflux/flux-core/src/lib.rs
+@@ -1,4 +1,3 @@
+-#![cfg_attr(feature = "strict", deny(warnings, missing_docs))]
+ #![allow(
+     clippy::needless_update, //
+     clippy::identity_op, // Warns on `1 * YEARS` which seems clearer than `YEARS`

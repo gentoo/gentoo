@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{12..14} )
 # NEED_BOOTSTRAP is for developers to quickly generate a tarball
 # for publishing to the tree.
 NEED_BOOTSTRAP="no"
@@ -20,7 +20,7 @@ fi
 
 LICENSE="LGPL-2.1+ public-domain BSD BSD-2"
 SLOT="0/1"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
 IUSE="+compat static-libs +system test headers-only"
 RESTRICT="!test? ( test )"
 
@@ -41,11 +41,11 @@ RDEPEND="${DEPEND}
 "
 BDEPEND="
 	dev-lang/perl
-	test? ( $(python_gen_any_dep 'dev-python/passlib[${PYTHON_USEDEP}]') )
+	test? ( $(python_gen_any_dep 'dev-python/libpass[${PYTHON_USEDEP}]') )
 "
 
 python_check_deps() {
-	python_has_version "dev-python/passlib[${PYTHON_USEDEP}]"
+	python_has_version "dev-python/libpass[${PYTHON_USEDEP}]"
 }
 
 pkg_pretend() {

@@ -1,0 +1,24 @@
+https://bugs.gentoo.org/955995
+From: Martin Jambor <mjambor@suse.cz>
+Date: Wed, 30 Apr 2025 18:35:11 +0200
+Subject: Add -fno-builtin to CFLAGS when building integration tests
+References: boo#1240665, https://github.com/jemalloc/jemalloc/issues/2823
+Upstream: tbd
+
+GCC 15 optimizes out allocations which aligned_alloc integration test
+expects to fail.  Using the -fno-builtin option prevents GCC from
+treating malloc specially in this way and the test-suite to pass.
+
+
+Index: jemalloc-5.3.0/Makefile.in
+===================================================================
+--- jemalloc-5.3.0.orig/Makefile.in
++++ jemalloc-5.3.0/Makefile.in
+@@ -654,6 +654,7 @@ uninstall: uninstall_doc
+ endif
+
+ tests_unit: $(TESTS_UNIT:$(srcroot)%.c=$(objroot)%$(EXE))
++tests_integration: CFLAGS += -fno-builtin
+ tests_integration: $(TESTS_INTEGRATION:$(srcroot)%.c=$(objroot)%$(EXE)) $(TESTS_INTEGRATION_CPP:$(srcroot)%.cpp=$(objroot)%$(EXE))
+ tests_analyze: $(TESTS_ANALYZE:$(srcroot)%.c=$(objroot)%$(EXE))
+ tests_stress: $(TESTS_STRESS:$(srcroot)%.c=$(objroot)%$(EXE))

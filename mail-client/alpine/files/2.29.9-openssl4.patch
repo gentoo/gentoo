@@ -1,0 +1,22 @@
+https://bugs.gentoo.org/984930
+
+--- a/imap/src/osdep/unix/ssl_unix.c
++++ b/imap/src/osdep/unix/ssl_unix.c
+@@ -546,7 +546,7 @@ static char *ssl_validate_cert (X509 *ce
+        /* older versions of OpenSSL use "ia5" instead of dNSName */
+        for (i = 0; ret && (i < n); i++)
+ 	 if ((name = sk_GENERAL_NAME_value (ext,i)) &&
+-	    (name->type = GEN_DNS) && (s = name->d.ia5->data) &&
++	    (name->type = GEN_DNS) && (s = ASN1_STRING_get0_data(name->d.ia5)) &&
+ 	    ssl_compare_hostnames (host,s)) ret = NIL;
+      if(ext) GENERAL_NAMES_free(ext);
+   }
+@@ -571,7 +571,7 @@ static char *ssl_validate_cert (X509 *ce
+ 	           /* older versions of OpenSSL use "ia5" instead of dNSName */
+ 	      for (i = 0; ret && (i < n); i++)
+ 		  if ((name = sk_GENERAL_NAME_value (ext,i)) &&
+-		     (name->type = GEN_DNS) && (s = name->d.ia5->data) &&
++		     (name->type = GEN_DNS) && (s = ASN1_STRING_get0_data(name->d.ia5)) &&
+ 		     ssl_compare_hostnames (host,s)) ret = NIL;
+ 	  if(ext) GENERAL_NAMES_free(ext);
+         }

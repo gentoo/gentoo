@@ -1,0 +1,44 @@
+--- a/asm-analysis/src/test/java/org/objectweb/asm/tree/analysis/AnalyzerWithBasicInterpreterTest.java
++++ b/asm-analysis/src/test/java/org/objectweb/asm/tree/analysis/AnalyzerWithBasicInterpreterTest.java
+@@ -206,7 +206,7 @@ class AnalyzerWithBasicInterpreterTest extends AsmTest {
+   void testAnalyze_mergeWithJsrReachableFromTwoDifferentPaths()
+       throws IOException, AnalyzerException {
+     ClassReader classReader =
+-        new ClassReader(Files.newInputStream(Paths.get("src/test/resources/Issue316204.class")));
++        new ClassReader(Files.newInputStream(Paths.get("asm-analysis/src/test/resources/Issue316204.class")));
+     ClassNode classNode = new ClassNode();
+     classReader.accept(classNode, 0);
+     Analyzer<BasicValue> analyzer = new Analyzer<>(new BasicInterpreter());
+--- a/asm-commons/src/test/java/org/objectweb/asm/commons/LocalVariablesSorterTest.java
++++ b/asm-commons/src/test/java/org/objectweb/asm/commons/LocalVariablesSorterTest.java
+@@ -216,7 +216,7 @@ class LocalVariablesSorterTest extends AsmTest {
+   @Test
+   void testAllMethods_issue317586() throws IOException {
+     ClassReader classReader =
+-        new ClassReader(Files.newInputStream(Paths.get("src/test/resources/Issue317586.class")));
++        new ClassReader(Files.newInputStream(Paths.get("asm-commons/src/test/resources/Issue317586.class")));
+     ClassWriter classWriter = new ClassWriter(0);
+     ClassVisitor localVariablesSorter =
+         new LocalVariablesSorterClassAdapter(/* latest */ Opcodes.ASM10_EXPERIMENTAL, classWriter);
+--- a/asm-util/src/test/java/org/objectweb/asm/util/TextifierTest.java
++++ b/asm-util/src/test/java/org/objectweb/asm/util/TextifierTest.java
+@@ -84,7 +84,7 @@ class TextifierTest extends AsmTest {
+             0);
+ 
+     String expectedText =
+-        Files.readString(Paths.get("src/test/resources/" + classParameter.getName() + ".txt"))
++        Files.readString(Paths.get("asm-util/src/test/resources/" + classParameter.getName() + ".txt"))
+             .replace("\r", "");
+ 
+     assertEquals(expectedText, output.toString());
+--- a/asm/src/test/java/org/objectweb/asm/ClassWriterTest.java
++++ b/asm/src/test/java/org/objectweb/asm/ClassWriterTest.java
+@@ -387,7 +387,7 @@ class ClassWriterTest extends AsmTest {
+   @ValueSource(strings = {"Issue307600.class", "Issue311642.class"})
+   void testToByteArray_computeMaxs_largeSubroutines(final String classFileName) throws IOException {
+     ClassReader classReader =
+-        new ClassReader(Files.newInputStream(Paths.get("src/test/resources/" + classFileName)));
++        new ClassReader(Files.newInputStream(Paths.get("asm/src/test/resources/" + classFileName)));
+     ClassWriter classWriter = new ClassWriter(ClassWriter.COMPUTE_MAXS);
+     classReader.accept(classWriter, attributes(), 0);
+ 

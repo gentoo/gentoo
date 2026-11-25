@@ -1,0 +1,84 @@
+From 665a0df36ab2e6edf3921ea0bda5ff047781c266 Mon Sep 17 00:00:00 2001
+From: Matt Turner <mattst88@gmail.com>
+Date: Mon, 14 Sep 2026 23:20:13 -0400
+Subject: [PATCH] Fix format specifier for 64-bit index in error messages
+
+Commit e2ab21f2 ("Implement GL_EXT_shader_64bit_indexing") made the
+index int64_t but left the "index out of range" messages using '%d'.
+
+32-bit ARM and PowerPC align 64-bit variadic arguments, so '%d' reads
+the skipped padding (a stack slot on ARM, a register on PowerPC) and
+prints garbage. This breaks the runtests single-thread vs. multithread
+output comparison.
+
+Fixes #4180
+
+(cherry picked from commit b44e6091549ca4cc801a74622848cbc259cce6db)
+---
+ glslang/MachineIndependent/ParseContextBase.cpp | 10 +++++-----
+ glslang/MachineIndependent/ParseHelper.cpp      |  6 +++---
+ 2 files changed, 8 insertions(+), 8 deletions(-)
+
+diff --git ./glslang/MachineIndependent/ParseContextBase.cpp ./glslang/MachineIndependent/ParseContextBase.cpp
+index 50bec19f..1acc2748 100644
+--- ./glslang/MachineIndependent/ParseContextBase.cpp
++++ ./glslang/MachineIndependent/ParseContextBase.cpp
+@@ -290,27 +290,27 @@ void TParseContextBase::checkIndex(const TSourceLoc& loc, const TType& type, int
+                type.getArraySizes()->getOuterNode()->getAsSymbolNode() == nullptr; };
+ 
+     if (index < 0) {
+-        error(loc, "", "[", "index out of range '%d'", index);
++        error(loc, "", "[", "index out of range '%lld'", (long long)index);
+         index = 0;
+     } else if (type.isArray()) {
+         if (type.isSizedArray() && !sizeIsSpecializationExpression() &&
+             index >= type.getOuterArraySize()) {
+-            error(loc, "", "[", "array index out of range '%d'", index);
++            error(loc, "", "[", "array index out of range '%lld'", (long long)index);
+             index = type.getOuterArraySize() - 1;
+         }
+     } else if (type.isVector()) {
+         if (index >= type.getVectorSize()) {
+-            error(loc, "", "[", "vector index out of range '%d'", index);
++            error(loc, "", "[", "vector index out of range '%lld'", (long long)index);
+             index = type.getVectorSize() - 1;
+         }
+     } else if (type.isMatrix()) {
+         if (index >= type.getMatrixCols()) {
+-            error(loc, "", "[", "matrix index out of range '%d'", index);
++            error(loc, "", "[", "matrix index out of range '%lld'", (long long)index);
+             index = type.getMatrixCols() - 1;
+         }
+     } else if (type.isCoopVecNV()) {
+         if (index >= type.computeNumComponents()) {
+-            error(loc, "", "[", "cooperative vector index out of range '%d'", index);
++            error(loc, "", "[", "cooperative vector index out of range '%lld'", (long long)index);
+             index = type.computeNumComponents() - 1;
+         }
+     }
+diff --git ./glslang/MachineIndependent/ParseHelper.cpp ./glslang/MachineIndependent/ParseHelper.cpp
+index dbafc8a8..b1124713 100644
+--- ./glslang/MachineIndependent/ParseHelper.cpp
++++ ./glslang/MachineIndependent/ParseHelper.cpp
+@@ -631,15 +631,15 @@ TIntermTyped* TParseContext::handleBracketDereference(const TSourceLoc& loc, TIn
+             base->getWritableType().setImplicitlySized(true);
+             if (base->getQualifier().builtIn == EbvClipDistance &&
+                 indexValue >= resources.maxClipDistances) {
+-                error(loc, "gl_ClipDistance", "[", "array index out of range '%d'", indexValue);
++                error(loc, "gl_ClipDistance", "[", "array index out of range '%lld'", (long long)indexValue);
+             }
+             else if (base->getQualifier().builtIn == EbvCullDistance &&
+                 indexValue >= resources.maxCullDistances) {
+-                error(loc, "gl_CullDistance", "[", "array index out of range '%d'", indexValue);
++                error(loc, "gl_CullDistance", "[", "array index out of range '%lld'", (long long)indexValue);
+             }
+             else if (base->getQualifier().builtIn == EbvSampleMask &&
+                 indexValue >= (resources.maxSamples + 31) / 32) {
+-                error(loc, "gl_SampleMask", "[", "array index out of range '%d'", indexValue);
++                error(loc, "gl_SampleMask", "[", "array index out of range '%lld'", (long long)indexValue);
+             }
+             // For 2D per-view builtin arrays, update the inner dimension size in parent type
+             if (base->getQualifier().isPerView() && base->getQualifier().builtIn != EbvNone) {
+-- 
+2.54.0
+

@@ -4,5 +4,4 @@ auth       include		system-auth
 account    include		system-auth
 password   include		system-auth
 session    include		system-auth
-session    required     pam_env.so
 session    optional		pam_xauth.so

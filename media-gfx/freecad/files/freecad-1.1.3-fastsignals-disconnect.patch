@@ -1,0 +1,23 @@
+From b9cac43474f6b66175f8f538eee5bc94eba62e74 Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+Date: Mon, 12 Jan 2026 23:27:53 +0100
+Subject: [PATCH] fastsignals disconnect
+
+Signed-off-by: Paul Zander <negril.nx+gentoo@gmail.com>
+
+diff --git a/src/Mod/Cloud/App/AppCloud.cpp b/src/Mod/Cloud/App/AppCloud.cpp
+index 87014fccf7..3f616123b3 100644
+--- a/src/Mod/Cloud/App/AppCloud.cpp
++++ b/src/Mod/Cloud/App/AppCloud.cpp
+@@ -1553,6 +1553,7 @@ bool Cloud::Module::cloudRestore(const char* BucketName)
+     string uri;
+     uri = this->URL.getStrValue() + ":" + this->TCPPort.getStrValue() + "/" + string(BucketName);
+     doc->FileName.setValue(uri);
+-    doc->signalLinkXsetValue.disconnect(boost::bind(&Cloud::Module::LinkXSetValue, this, _1));
++    //doc->signalLinkXsetValue.disconnect(boost::bind(&Cloud::Module::LinkXSetValue, this, _1));
++    doc->signalLinkXsetValue.disconnect_all_slots();
+     return (true);
+ }
+-- 
+2.52.0
+

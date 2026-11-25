@@ -11,7 +11,7 @@ HOMEPAGE="https://gitlab.gnome.org/Archive/gnome-nettool"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm ~ppc ~ppc64 ~sparc x86"
 
 DEPEND="
 	>=x11-libs/gtk+-3.0.0:3

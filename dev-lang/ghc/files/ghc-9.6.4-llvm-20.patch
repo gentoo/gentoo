@@ -1,0 +1,43 @@
+From: hololeap <hololeap@protonmail.com>
+Date: Mon, 16 Jun 2025 11:40:06 -0700
+Subject: [PATCH 1/1] Patch ghc-9.6 for llvm-20 support
+
+This patch was adapted from the original ghc-9.4.5-llvm-16.patch
+
+Thanks-to: Violet Purcell <vimproved@inventati.org>
+Bug: https://github.com/gentoo-haskell/gentoo-haskell/issues/1519
+Signed-off-by: hololeap <hololeap@protonmail.com>
+--- a/compiler/GHC/Driver/Pipeline/Execute.hs
++++ b/compiler/GHC/Driver/Pipeline/Execute.hs
+@@ -989,8 +989,7 @@ llvmOptions :: LlvmConfig
+             -> DynFlags
+             -> [(String, String)]  -- ^ pairs of (opt, llc) arguments
+ llvmOptions llvm_config dflags =
+-       [("-enable-tbaa -tbaa",  "-enable-tbaa") | gopt Opt_LlvmTBAA dflags ]
+-    ++ [("-relocation-model=" ++ rmodel
++       [("-relocation-model=" ++ rmodel
+         ,"-relocation-model=" ++ rmodel) | not (null rmodel)]
+     ++ [("-stack-alignment=" ++ (show align)
+         ,"-stack-alignment=" ++ (show align)) | align > 0 ]
+--- a/configure.ac
++++ b/configure.ac
+@@ -553,7 +553,7 @@ AC_SUBST(InstallNameToolCmd)
+ # versions of LLVM simultaneously, but that stopped working around
+ # 3.5/3.6 release of LLVM.
+ LlvmMinVersion=11  # inclusive
+-LlvmMaxVersion=16 # not inclusive
++LlvmMaxVersion=21 # not inclusive
+ AC_SUBST([LlvmMinVersion])
+ AC_SUBST([LlvmMaxVersion])
+ sUPPORTED_LLVM_VERSION_MIN=$(echo \($LlvmMinVersion\) | sed 's/\./,/')
+--- a/llvm-passes
++++ b/llvm-passes
+@@ -1,5 +1,5 @@
+ [
+-(0, "-enable-new-pm=0 -mem2reg -globalopt -lower-expect"),
+-(1, "-enable-new-pm=0 -O1 -globalopt"),
+-(2, "-enable-new-pm=0 -O2")
++(0, "-passes=module(default<O0>,function(mem2reg),globalopt,function(lower-expect))"),
++(1, "-passes=module(default<O1>,globalopt)"),
++(2, "-passes=module(default<O2>)")
+ ]

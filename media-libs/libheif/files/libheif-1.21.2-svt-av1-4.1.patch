@@ -1,0 +1,31 @@
+https://bugs.gentoo.org/973595
+https://github.com/strukturag/libheif/commit/9c9d839132f8846652ecadceaa8dcf23d1ff3e4c
+
+From 9c9d839132f8846652ecadceaa8dcf23d1ff3e4c Mon Sep 17 00:00:00 2001
+From: Joachim Bauch <bauch@struktur.de>
+Date: Wed, 8 Apr 2026 10:23:34 +0200
+Subject: [PATCH] Add patch to fix building against SVT-AV1 4.1.0
+
+--- a/libheif/plugins/encoder_svt.cc
++++ b/libheif/plugins/encoder_svt.cc
+@@ -838,7 +838,19 @@ static heif_error svt_start_sequence_encoding_intern(void* encoder_raw, const he
+     // svt_config.force_key_frames = true; TODO: this does not seem to work (see all [1])
+ 
+ #if 1
+-#if SVT_AV1_CHECK_VERSION(4, 0, 0)
++#if SVT_AV1_CHECK_VERSION(4, 1, 0)
++    switch (options->gop_structure) {
++      case heif_sequence_gop_structure_intra_only:
++        //svt_config.pred_structure = 1; // LOW_DELAY
++        break;
++      case heif_sequence_gop_structure_lowdelay:
++        //svt_config.pred_structure = 1; // LOW_DELAY
++        break;
++      case heif_sequence_gop_structure_unrestricted:
++        svt_config.pred_structure = PredStructure::RANDOM_ACCESS;
++        break;
++    }
++#elif SVT_AV1_CHECK_VERSION(4, 0, 0)
+     switch (options->gop_structure) {
+       case heif_sequence_gop_structure_intra_only:
+         //svt_config.pred_structure = 1; // LOW_DELAY

@@ -1,0 +1,13 @@
+https://github.com/boostorg/serialization/issues/333
+
+--- a/boost/archive/iterators/wchar_from_mb.hpp
++++ b/boost/archive/iterators/wchar_from_mb.hpp
+@@ -94,7 +94,7 @@ class wchar_from_mb
+ 
+     template<typename T>
+     struct sliding_buffer {
+-        boost::array<T, 32> m_buffer;
++        boost::array<T, 32> m_buffer = {};
+         typename boost::array<T, 32>::const_iterator m_next_available;
+         typename boost::array<T, 32>::iterator m_next;
+         bool m_done;

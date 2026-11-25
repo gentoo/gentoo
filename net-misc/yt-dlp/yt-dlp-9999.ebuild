@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=hatchling
-PYTHON_COMPAT=( pypy3_11 python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 inherit distutils-r1 optfeature shell-completion wrapper
 
 if [[ ${PV} == 9999 ]]; then
@@ -16,8 +16,6 @@ else
 			-> ${P}.tar.gz
 	"
 	S=${WORKDIR}/${PN}
-	# note that yt-dlp bumps are typically done straight-to-stable (unless some
-	# major/breaking changes) given website changes breaks it on a whim
 	KEYWORDS="amd64 arm arm64 ~hppa ppc ppc64 ~riscv x86 ~arm64-macos ~x64-macos"
 fi
 
@@ -40,13 +38,16 @@ IUSE="+deno"
 RDEPEND="
 	dev-python/pycryptodome[${PYTHON_USEDEP}]
 	=dev-python/yt-dlp-ejs-0.8*[${PYTHON_USEDEP}]
-	deno? ( >=dev-lang/deno-bin-2.6.6 )
+	deno? ( >=dev-lang/deno-bin-2.9.8 )
 "
 BDEPEND="
 	test? ( media-video/ffmpeg[webp] )
 "
 
 if [[ ${PV} == 9999 ]]; then
+	# ignoring PG0305 only in live, properly pre-generated in releases
+	# -- manpage tarballs in live would become outdated and pandoc has
+	# limited arch availability to be unconditional
 	IUSE+=" man"
 	BDEPEND+=" man? ( virtual/pandoc )"
 fi

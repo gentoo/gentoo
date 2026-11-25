@@ -1,0 +1,21 @@
+https://github.com/Pingus/pingus/issues/199
+--- a/src/lisp/getters.hpp
++++ b/src/lisp/getters.hpp
+@@ -31,7 +31,7 @@
+   if(lisp->get_list_size() != 2)
+     return false;
+   
+-  const Lisp* el = lisp->get_list_elem(1);
++  const Lisp* el = lisp->get_list_elem(1).get();
+   return get(el, val);
+ }
+ 
+@@ -47,7 +47,7 @@
+   list.clear();
+   for(size_t n = 1; n < lisp->get_list_size(); ++n) {
+     T val;
+-    if(get(lisp->get_list_elem(n), val) == false) {
++    if(get(lisp->get_list_elem(n).get(), val) == false) {
+       list.clear();
+       return false;
+     }

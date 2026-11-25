@@ -14,7 +14,7 @@ S="${WORKDIR}"/${MYP}
 LICENSE="GPL-2"
 
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ppc x86"
 
 DEPEND="dev-lang/tk"
 RDEPEND="${DEPEND}
@@ -45,5 +45,5 @@ src_install() {
 	# Add docs...this is important
 	dodoc {CHANGELOG,FAQ}.txt
 
-	make_desktop_entry ${PN} TkRev "${EPREFIX}"/usr/$(get_libdir)/tkrev/bitmaps/ticklefish_med.gif
+	make_desktop_entry ${PN} -n TkRev -i "${EPREFIX}"/usr/$(get_libdir)/tkrev/bitmaps/ticklefish_med.gif
 }

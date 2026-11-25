@@ -1,0 +1,58 @@
+From d2825f101c43ebefed8c2327a30eef99176184ae Mon Sep 17 00:00:00 2001
+From: Peter Hutterer <peter.hutterer@who-t.net>
+Date: Wed, 24 Jun 2026 11:59:13 +1000
+Subject: [PATCH] util: explicitly reject rejecting negative numbers in xatou
+
+Make this behave as expected: passing in a negative number should be
+rejected, there's no point for the strtoul behavior in libei.
+
+This fixes the failing test on 32 bits - ULONG_MAX == UINT_MAX so
+the previous range check didn't work.
+
+Closes #95
+
+Assisted-by: Claude:claude-opus-4-6
+Part-of: <https://gitlab.freedesktop.org/libinput/libei/-/merge_requests/399>
+---
+ src/util-strings.c | 2 --
+ src/util-strings.h | 8 ++++++++
+ 2 files changed, 8 insertions(+), 2 deletions(-)
+
+diff --git ./src/util-strings.c ./src/util-strings.c
+index 6e6140a..686c5da 100644
+--- ./src/util-strings.c
++++ ./src/util-strings.c
+@@ -694,8 +694,6 @@ MUNIT_TEST(test_xatou)
+ 	/* Overflow beyond ULONG_MAX - strtoul sets errno, must fail */
+ 	munit_assert_false(xatou("18446744073709551616", &val));
+ 
+-	/* negative numbers: strtoul wraps "-1" to ULONG_MAX without
+-	 * setting errno, but v > UINT_MAX catches it */
+ 	munit_assert_false(xatou("-1", &val));
+ 
+ 	/* invalid strings */
+diff --git ./src/util-strings.h ./src/util-strings.h
+index e62df4c..6ecde51 100644
+--- ./src/util-strings.h
++++ ./src/util-strings.h
+@@ -171,9 +171,17 @@ xatou_base(const char *str, unsigned int *val, int base)
+ {
+ 	char *endptr;
+ 	unsigned long v;
++	const char *s = str;
+ 
+ 	assert(base == 10 || base == 16 || base == 8);
+ 
++	/* strtoul silently wraps negative numbers but there's no
++	 * use-case for our helpers where this makes sense */
++	while (isspace((unsigned char)*s))
++		s++;
++	if (*s == '-')
++		return false;
++
+ 	errno = 0;
+ 	v = strtoul(str, &endptr, base);
+ 	if (errno > 0)
+-- 
+2.54.0
+

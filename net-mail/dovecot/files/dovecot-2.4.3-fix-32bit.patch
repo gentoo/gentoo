@@ -1,0 +1,76 @@
+bug #971763
+Test values overflow long in 32bit
+--- a/src/lib/test-event-filter.c
++++ b/src/lib/test-event-filter.c
+@@ -1003,32 +1003,32 @@
+ 		{ "field > 1mins", 60 * 1000 * 1000, FALSE },
+ 		{ "field < 1mins", 60 * 1000 * 1000, FALSE },
+
+-		{ "field = 1hours", 60L * 60 * 1000 * 1000, TRUE },
+-		{ "field = 1h", 60L * 60 * 1000 * 1000, TRUE },
+-		{ "field = 3600000000", 60L * 60 * 1000 * 1000, TRUE },
+-		{ "field >= 1hours", 60L * 60 * 1000 * 1000, TRUE },
+-		{ "field <= 1hours", 60L * 60 * 1000 * 1000, TRUE },
+-		{ "field > 1mins", 60L * 60 * 1000 * 1000, TRUE },
+-		{ "field > 1hours", 60L * 60 * 1000 * 1000, FALSE },
+-		{ "field < 1hours", 60L * 60 * 1000 * 1000, FALSE },
++		{ "field = 1hours", 60LL * 60 * 1000 * 1000, TRUE },
++		{ "field = 1h", 60LL * 60 * 1000 * 1000, TRUE },
++		{ "field = 3600000000", 60LL * 60 * 1000 * 1000, TRUE },
++		{ "field >= 1hours", 60LL * 60 * 1000 * 1000, TRUE },
++		{ "field <= 1hours", 60LL * 60 * 1000 * 1000, TRUE },
++		{ "field > 1mins", 60LL * 60 * 1000 * 1000, TRUE },
++		{ "field > 1hours", 60LL * 60 * 1000 * 1000, FALSE },
++		{ "field < 1hours", 60LL * 60 * 1000 * 1000, FALSE },
+
+-		{ "field = 1days", 24L * 60 * 60 * 1000 * 1000, TRUE },
+-		{ "field = 1d", 24L * 60 * 60 * 1000 * 1000, TRUE },
+-		{ "field = 86400000000", 24L * 60 * 60 * 1000 * 1000, TRUE },
+-		{ "field >= 1days", 24L * 60 * 60 * 1000 * 1000, TRUE },
+-		{ "field <= 1days", 24L * 60 * 60 * 1000 * 1000, TRUE },
+-		{ "field > 1hours", 24L * 60 * 60 * 1000 * 1000, TRUE },
+-		{ "field > 1days", 24L * 60 * 60 * 1000 * 1000, FALSE },
+-		{ "field < 1days", 24L * 60 * 60 * 1000 * 1000, FALSE },
++		{ "field = 1days", 24LL * 60 * 60 * 1000 * 1000, TRUE },
++		{ "field = 1d", 24LL * 60 * 60 * 1000 * 1000, TRUE },
++		{ "field = 86400000000", 24LL * 60 * 60 * 1000 * 1000, TRUE },
++		{ "field >= 1days", 24LL * 60 * 60 * 1000 * 1000, TRUE },
++		{ "field <= 1days", 24LL * 60 * 60 * 1000 * 1000, TRUE },
++		{ "field > 1hours", 24LL * 60 * 60 * 1000 * 1000, TRUE },
++		{ "field > 1days", 24LL * 60 * 60 * 1000 * 1000, FALSE },
++		{ "field < 1days", 24LL * 60 * 60 * 1000 * 1000, FALSE },
+
+-		{ "field = 1weeks", 7L * 24 * 60 * 60 * 1000 * 1000, TRUE },
+-		{ "field = 1w", 7L * 24 * 60 * 60 * 1000 * 1000, TRUE },
+-		{ "field = 604800000000", 7L * 24 * 60 * 60 * 1000 * 1000, TRUE },
+-		{ "field >= 1weeks", 7L * 24 * 60 * 60 * 1000 * 1000, TRUE },
+-		{ "field <= 1weeks", 7L * 24 * 60 * 60 * 1000 * 1000, TRUE },
+-		{ "field > 1days", 7L * 24 * 60 * 60 * 1000 * 1000, TRUE },
+-		{ "field > 1weeks", 7L * 24 * 60 * 60 * 1000 * 1000, FALSE },
+-		{ "field < 1weeks", 7L * 24 * 60 * 60 * 1000 * 1000, FALSE },
++		{ "field = 1weeks", 7LL * 24 * 60 * 60 * 1000 * 1000, TRUE },
++		{ "field = 1w", 7LL * 24 * 60 * 60 * 1000 * 1000, TRUE },
++		{ "field = 604800000000", 7LL * 24 * 60 * 60 * 1000 * 1000, TRUE },
++		{ "field >= 1weeks", 7LL * 24 * 60 * 60 * 1000 * 1000, TRUE },
++		{ "field <= 1weeks", 7LL * 24 * 60 * 60 * 1000 * 1000, TRUE },
++		{ "field > 1days", 7LL * 24 * 60 * 60 * 1000 * 1000, TRUE },
++		{ "field > 1weeks", 7LL * 24 * 60 * 60 * 1000 * 1000, FALSE },
++		{ "field < 1weeks", 7LL * 24 * 60 * 60 * 1000 * 1000, FALSE },
+ 	};
+
+ 	struct event_filter *filter;
+
+---
+On 32-bit systems with signed time_t (e.g. x86), the gmtime_max
+configure test incorrectly reports TIME_T_MAX_BITS=32 instead of 31.
+--- a/m4/gmtime_max.m4	2026-03-31 17:09:12.700626480 +0200
++++ b/m4/gmtime_max.m4	2026-03-31 17:09:39.249235416 +0200
+@@ -8,7 +8,7 @@
+         FILE *f;
+         int bits;
+     
+-        for (bits = 1; bits < sizeof(time_t)*8; bits++) {
++        for (bits = 1; bits < sizeof(time_t)*8 - 1; bits++) {
+           time_t t = ((time_t)1 << bits) - 1;
+           if (gmtime(&t) == NULL) {
+             bits--;

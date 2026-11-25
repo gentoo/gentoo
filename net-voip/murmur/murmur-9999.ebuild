@@ -25,10 +25,17 @@ if [[ "${PV}" == 9999 ]] ; then
 	)
 else
 	MY_PN="mumble"
+	MY_TAG=""
+
 	if [[ "${PV}" == *_pre* ]] ; then
 		MY_P="${MY_PN}-${PV}"
 		SRC_URI="https://dev.gentoo.org/~concord/distfiles/${MY_P}.tar.xz"
 		S="${WORKDIR}/${MY_P}"
+	elif [[ -n "${MY_TAG}" ]] ; then
+		MY_PV="$(ver_cut 1-2).0-${MY_TAG}"
+		MY_P="${MY_PN}-${PV}"
+		SRC_URI="https://github.com/mumble-voip/${MY_PN}/releases/download/v${MY_PV}/${MY_P}.tar.gz"
+		S="${WORKDIR}/${MY_PN}-${PV/_*}"
 	else
 		MY_PV="${PV/_/-}"
 		MY_P="${MY_PN}-${MY_PV}"
@@ -47,13 +54,10 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	acct-group/murmur
 	acct-user/murmur
-	dev-cpp/cli11
-	dev-cpp/nlohmann_json
-	>=dev-db/soci-4.1.2-r2[mysql?,postgres?,sqlite?]
+	>=dev-db/soci-4.1.4[mysql?,postgres?,sqlite?]
 	>=dev-libs/openssl-1.0.0b:0=
 	>=dev-libs/protobuf-2.2.0:=
 	dev-libs/spdlog:=
-	>=dev-libs/utfcpp-4.0.0
 	dev-qt/qtbase:6[dbus,network,sqlite?,ssl,xml]
 	sys-apps/lsb-release
 	>=sys-libs/libcap-2.15
@@ -62,7 +66,10 @@ RDEPEND="
 "
 
 DEPEND="${RDEPEND}
+	dev-cpp/cli11
+	dev-cpp/nlohmann_json
 	dev-libs/boost
+	>=dev-libs/utfcpp-4.0.0
 	dev-qt/qtbase:6[test?]
 "
 BDEPEND="
@@ -94,6 +101,10 @@ src_prepare() {
 		-e 's:;logfile=mumble-server.log:logfile=/var/log/murmur/murmur.log:' \
 		-e 's:;pidfile=:pidfile=/run/murmur/murmur.pid:' \
 		-i auxiliary_files/mumble-server.ini || die
+
+	# Fix path to server config file in the systemd unit
+	sed -e 's|mumble-server\.ini|murmur.ini|' \
+		-i auxiliary_files/config_files/mumble-server.service.in || die
 
 	# Replace the default group and user _mumble-server with murmur
 	grep -r -l _mumble-server auxiliary_files/ | xargs sed -i 's/_mumble-server/murmur/g' || die
@@ -142,24 +153,24 @@ src_install() {
 	newins "${FILESDIR}"/murmur.logrotate murmur
 
 	# Copy over the initd file so we can modify it incase zeroconf support is on.
-	cp "${FILESDIR}"/murmur.initd-r3 "${T}"/murmur.initd || die
+	cp "${FILESDIR}"/murmur.initd-r4 "${T}"/murmur.initd || die
 
 	if use zeroconf; then
 		sed -e 's:need:need avahi-daemon:' -i "${T}"/murmur.initd || die
 	fi
 
 	newinitd "${T}"/murmur.initd murmur
-	newconfd "${FILESDIR}"/murmur.confd-r2 murmur
+	newconfd "${FILESDIR}"/murmur.confd-r3 murmur
 
 	keepdir /var/lib/murmur /var/log/murmur
 	fowners -R murmur /var/lib/murmur /var/log/murmur
 	fperms 750 /var/lib/murmur /var/log/murmur
 
 	mv "${ED}"/etc/murmur/mumble-server.ini "${ED}"/etc/murmur/murmur.ini || die
+	fperms 640 /etc/murmur/murmur.ini
+
 	mv "${D}/$(systemd_get_systemunitdir)/mumble-server.service" \
 		"${D}/$(systemd_get_systemunitdir)/murmur.service" || die
-	sed -i 's|mumble-server\.ini|murmur.ini|' "${D}/$(systemd_get_systemunitdir)/murmur.service" || die
-	sed -i '/^ExecStart/{s|-ini|--ini|;s| -fg||}' "${D}/$(systemd_get_systemunitdir)/murmur.service" || die
 
 	readme.gentoo_create_doc
 }

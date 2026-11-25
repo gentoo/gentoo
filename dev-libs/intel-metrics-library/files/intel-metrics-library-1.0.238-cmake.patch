@@ -1,0 +1,14 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -673,11 +673,6 @@
+         "${CMAKE_BUILD_TYPE}" STREQUAL "release-internal" OR
+         "${CMAKE_BUILD_TYPE}" STREQUAL "releaseinternal")
+         set (COMMON_COMPILE_OPTIONS ${COMMON_COMPILE_OPTIONS}
+-            -O3                 # optimize for speed with conforming optimizations
+-            -ffast-math         # enable fast-math optimizations (equivalent intent to -Ofast)
+-            -Werror             # treats warning as errors
+-            -fvisibility=hidden # hides non-exported symbols
+-            -flto               # enables Link-Time Optimization (LTO) at compile-time; must be consistent with LTO at link-time
+             -fPIC               # generates position-independent code during the compilation phase
+             )
+     endif ()

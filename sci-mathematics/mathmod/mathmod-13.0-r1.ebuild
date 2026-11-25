@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -22,9 +22,10 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 PATCHES=(
-	# both merged
+	# all in master
 	"${FILESDIR}"/${PN}-13.0-missing_include.patch
 	"${FILESDIR}"/${PN}-13.0-fix_cxx20.patch
+	"${FILESDIR}"/${PN}-13.0-fix_comparison.patch
 )
 
 src_configure() {

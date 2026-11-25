@@ -1,0 +1,115 @@
+From 7a7ec432f6e579f7409acee5f9287609d9703abe Mon Sep 17 00:00:00 2001
+From: Swagtoy <me@ow.swag.toys>
+Date: Sat, 13 Jun 2026 02:33:40 -0400
+Subject: [PATCH] leader: Get DCONF_PROFILE from gdm's
+ .config/environment.d/gdm.conf
+
+GDM recently(?) started passing its environment variables via
+systemd's .config/environment.d in v50, and in turn, leader-main.c
+would try to get org.gnome.desktop.session's session-name value, which
+was overriden to 'gnome-login' for the GDM DCONF_PROFILE.
+
+So we need to read the environment variables ourselves, just to get at
+what we need.
+---
+ src/leader-openrc.c | 63 +++++++++++++++++++++++++++++++++++++++++++--
+ 1 file changed, 61 insertions(+), 2 deletions(-)
+
+diff --git a/src/leader-openrc.c b/src/leader-openrc.c
+index a7eeb8c..0b9e5ca 100644
+--- a/src/leader-openrc.c
++++ b/src/leader-openrc.c
+@@ -80,6 +80,63 @@ monitor_hangup_cb (int          fd,
+         return G_SOURCE_REMOVE;
+ }
+ 
++// This is all a hack! DCONF_PROFILE is not set in leader-main.c for
++// OpenRC systems since it relies on the systemd environment.d
++// file. So we have to read this ourselves.
++static void
++try_get_gsetting_gdm_session_name(char const *user, char **session_name)
++{
++        if (g_getenv("DCONF_PROFILE") && !strcmp("gdm", g_getenv("DCONF_PROFILE")))
++        {
++                // but oh, is it a mystery? it's safe to assure the
++                // below is done, as this is mostly all done in
++                // leader-main.c
++                return;
++        }
++        g_autoptr (GError) error = NULL;
++        // HACK: We need DCONF_PROFILE
++        if (!strcmp(*session_name, "gnome") &&
++            (!strcmp(user, "gdm-greeter") || sscanf(user, "gdm-greeter-%*d") > 0))
++        {
++                g_autofree char *filename = g_strdup_printf("/run/gdm/home/%s/.config/environment.d/gdm.conf", user);
++                g_autoptr (GIOChannel) chan = g_io_channel_new_file(filename, "r", &error);
++                if (error)
++                {
++                        g_warning("Couldn't open %s: %s", filename, error->message);
++                        goto out;
++                }
++
++                char *env;
++                gsize len;
++                while (g_io_channel_read_line(chan, &env, &len, NULL, NULL) == G_IO_STATUS_NORMAL)
++                {
++                        // anyone who tells you to use regex is lying to you
++                        char key[64], val[256];
++                        if (sscanf(env, "%63[^=]=%255s", key, val) != 2)
++                                goto out;
++
++                        // yes, this is the _only_ thing we want :)
++                        if (!strcmp(key, "DCONF_PROFILE"))
++                        {
++                                g_debug("Setting %s to %s, the nasty way...", key, val);
++                                setenv(key, val, true);
++                                goto out;
++                        }
++                }
++        }
++out:
++        g_debug("Dconf profile is: %s", g_getenv("DCONF_PROFILE"));
++
++        if (g_getenv("DCONF_PROFILE") && !strcmp(g_getenv("DCONF_PROFILE"), "gdm"))
++        {
++                g_autoptr (GSettings) settings = g_settings_new("org.gnome.desktop.session");
++                *session_name = g_settings_get_string(settings, "session-name");
++                g_info("Hijacked the session-name: %s", *session_name);
++        }
++
++        // we're fine at this point, it's probably just a regular user
++}
++
+ static void
+ debug_logger (gchar const *log_domain,
+               GLogLevelFlags log_level,
+@@ -99,7 +156,7 @@ main (int argc, char **argv)
+         g_log_set_default_handler(debug_logger, NULL);
+         g_autoptr (GError) error = NULL;
+         g_auto (Leader) ctx = { .fifo_fd = -1 };
+-        const char *session_name = NULL;
++        g_autofree char *session_name = NULL;
+         const char *debug_string = NULL;
+         g_autofree char *target = NULL;
+         g_autofree char *fifo_path = NULL;
+@@ -111,7 +168,7 @@ main (int argc, char **argv)
+ 
+         if (argc < 2)
+             g_error ("No session name was specified");
+-        session_name = argv[1];
++        session_name = strdup(argv[1]);
+ 
+         // probably not rely on this
+         char const *user = g_getenv("USER");
+@@ -119,6 +176,8 @@ main (int argc, char **argv)
+                 user = "gdm-greeter"; // :/
+         g_info("User is: %s", user);
+ 
++        try_get_gsetting_gdm_session_name(user, &session_name);
++
+         // strncmp because we also have gdm-greeter-{2,3,4,...}
+         if (strncmp(user, "gdm-greeter", sizeof("gdm-greeter")) == 0)
+         {
+-- 
+2.53.0
+

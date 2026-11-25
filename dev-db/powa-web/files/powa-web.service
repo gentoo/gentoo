@@ -1,0 +1,12 @@
+[Unit]
+Description=PoWA user interface
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/powa-web
+Group=powa
+PIDFile=/run/powa-web.pid
+User=powa
+
+[Install]
+WantedBy=multi-user.target

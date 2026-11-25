@@ -1,0 +1,20 @@
+https://gitlab.com/arandr/arandr/-/work_items/58
+https://bugs.gentoo.org/969799#c10
+
+--- a/setup.py
++++ b/setup.py
+@@ -53,7 +53,13 @@ class NoOptionCommand(Command):
+     """Command that doesn't take any options"""
+     user_options = []
+ 
+-    def initialize_options(self): pass
++    def initialize_options(self):
++        try:
++            super().initialize_options()
++        except Exception:
++            pass
++        if not hasattr(self, "dry_run"):
++            self.dry_run = False
+     def finalize_options(self): pass
+ 
+ class update_pot(NoOptionCommand):

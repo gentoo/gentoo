@@ -1,0 +1,34 @@
+From f5a86f3c623330aa3817ea2ee735c96bb4ec30e9 Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+Date: Sun, 31 May 2026 23:15:24 +0200
+Subject: cccl 3.0
+
+Signed-off-by: Paul Zander <negril.nx+gentoo@gmail.com>
+
+diff --git a/ThirdParty/viskores/vtkviskores/viskores/viskores/exec/cuda/internal/WrappedOperators.h b/ThirdParty/viskores/vtkviskores/viskores/viskores/exec/cuda/internal/WrappedOperators.h
+index c00f1414..802ee555 100644
+--- a/ThirdParty/viskores/vtkviskores/viskores/viskores/exec/cuda/internal/WrappedOperators.h
++++ b/ThirdParty/viskores/vtkviskores/viskores/viskores/exec/cuda/internal/WrappedOperators.h
+@@ -30,7 +30,8 @@ VISKORES_THIRDPARTY_PRE_INCLUDE
+ #include <thrust/system/cuda/memory.h>
+ VISKORES_THIRDPARTY_POST_INCLUDE
+ 
+-#if THRUST_VERSION >= 200500
++#if THRUST_VERSION >= 300200
++#elif THRUST_VERSION >= 200500
+ #include <cuda/std/type_traits>
+ #endif
+ 
+@@ -209,7 +210,8 @@ namespace detail
+ // the binary functor is commutative and the T type is is_arithmetic
+ //
+ //
+-#if THRUST_VERSION >= 200500
++#if THRUST_VERSION >= 300200
++#elif THRUST_VERSION >= 200500
+ template <typename T, typename F>
+ struct is_commutative<viskores::exec::cuda::internal::WrappedBinaryOperator<T, F>>
+   : public ::cuda::std::is_arithmetic<T>
+-- 
+2.54.0
+

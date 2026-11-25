@@ -1,0 +1,10 @@
+--- a/sntp/configure.ac	2026-02-27 15:38:32.797019944 -0800
++++ b/sntp/configure.ac	2026-02-27 15:38:44.254081143 -0800
+@@ -131,6 +131,7 @@
+ 
+ # Checks for library functions.
+ AC_CHECK_FUNCS([socket])
++AC_CHECK_FUNCS([strdup strnlen memchr strerror setrlimit strchr])
+ 
+ NTP_UNITYBUILD
+ 

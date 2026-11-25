@@ -12,7 +12,7 @@ MATE_SUBMODULES_ID="dd9bd3436f2cb6410b04eefbd69306d93cd07b30"
 
 MINOR=$(($(ver_cut 2) % 2))
 if [[ ${MINOR} -eq 0 ]]; then
-	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~riscv ~x86"
+	KEYWORDS="amd64 ~arm ~arm64 ~loong ~riscv x86"
 	# Release archive not pushed in main website (?)
 	SRC_URI="
 		https://github.com/mate-desktop/mate-panel/archive/refs/tags/v${PV}.tar.gz

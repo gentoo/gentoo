@@ -16,6 +16,7 @@
 	</longdescription>
 	<use>
 		<flag name="ccache">build ccache-swig(a fast compiler cache)</flag>
+		<flag name="test-full">Test against more languages</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">swig/swig</remote-id>

@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit python-single-r1
 
@@ -17,7 +17,7 @@ S="${WORKDIR}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~ppc64 ~x86"
 IUSE="chrome chromium +firefox vivaldi"
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}

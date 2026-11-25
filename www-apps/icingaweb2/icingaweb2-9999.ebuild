@@ -1,9 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit depend.apache
+inherit depend.apache eapi9-ver
 
 DESCRIPTION="Icinga Web 2 - Frontend for icinga2"
 HOMEPAGE="https://icinga.com/"
@@ -17,7 +17,7 @@ else
 	KEYWORDS="~amd64 ~arm64 ~x86"
 fi
 
-LICENSE="GPL-2"
+LICENSE="GPL-3+"
 SLOT="0"
 IUSE="apache2 apache2-server fpm ldap mysql nginx pdf postgres"
 REQUIRED_USE="( ?? ( apache2-server nginx ) ) apache2? ( apache2-server )"
@@ -30,9 +30,11 @@ DEPEND=">=net-analyzer/icinga2-2.1.1
 		|| (
 			dev-lang/php:8.2[apache2?,cli,curl,fileinfo,fpm?,gd,intl,ldap?,mysql?,nls,pdo,postgres?,sockets,ssl,xslt,xml]
 			dev-lang/php:8.3[apache2?,cli,curl,fileinfo,fpm?,gd,intl,ldap?,mysql?,nls,pdo,postgres?,sockets,ssl,xslt,xml]
+			dev-lang/php:8.4[apache2?,cli,curl,fileinfo,fpm?,gd,intl,ldap?,mysql?,nls,pdo,postgres?,sockets,ssl,xslt,xml]
+			dev-lang/php:8.5[apache2?,cli,curl,fileinfo,fpm?,gd,intl,ldap?,mysql?,nls,pdo,postgres?,sockets,ssl,xslt,xml]
 		)
-		>=dev-libs/icinga-php-library-0.13.0
-		>=dev-libs/icinga-php-thirdparty-0.12.0
+		>=dev-libs/icinga-php-library-1.1.0
+		>=dev-libs/icinga-php-thirdparty-1.0.0
 		acct-group/icingacmd
 		acct-group/icingaweb2"
 RDEPEND="${DEPEND}
@@ -72,5 +74,9 @@ src_install() {
 }
 
 pkg_postinst() {
+	if ver_replacing -lt 2.13; then
+		ewarn "The monitoring module is no longer part of Icinga Web since 2.13."
+		ewarn "Its successor is Icinga DB Web (www-apps/icingadb-web)."
+	fi
 	einfo "Run 'emerge --config =${CATEGORY}/${PF}' to finish setup."
 }

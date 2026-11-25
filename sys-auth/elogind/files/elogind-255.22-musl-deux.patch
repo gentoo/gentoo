@@ -1,0 +1,54 @@
+https://bugs.gentoo.org/967711#c5
+
+From 182f0406205b2d9302f555a1afb52d6f70dc488e Mon Sep 17 00:00:00 2001
+From: "David C. Manuelda" <StormByte@gmail.com>
+Date: Sun, 19 Apr 2026 23:31:25 +0200
+Subject: [PATCH] Musl fixes
+
+---
+ src/basic/missing_prctl.h                | 3 +++
+ src/libelogind/sd-journal/journal-file.h | 1 +
+ src/shared/user-record-nss.h             | 1 -
+ 3 files changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/src/basic/missing_prctl.h b/src/basic/missing_prctl.h
+index 7d9e395..80d9af3 100644
+--- a/src/basic/missing_prctl.h
++++ b/src/basic/missing_prctl.h
+@@ -1,7 +1,10 @@
+ /* SPDX-License-Identifier: LGPL-2.1-or-later */
+ #pragma once
+ 
++#include <sys/prctl.h>
++#ifndef PR_SET_MM_MAP
+ #include <linux/prctl.h>
++#endif
+ 
+ /* 58319057b7847667f0c9585b9de0e8932b0fdb08 (4.3) */
+ #ifndef PR_CAP_AMBIENT
+diff --git a/src/libelogind/sd-journal/journal-file.h b/src/libelogind/sd-journal/journal-file.h
+index c3c5f59..3e62495 100644
+--- a/src/libelogind/sd-journal/journal-file.h
++++ b/src/libelogind/sd-journal/journal-file.h
+@@ -3,6 +3,7 @@
+ 
+ #include <fcntl.h>
+ #include <inttypes.h>
++#include <sys/stat.h>
+ //#include <sys/uio.h>
+ 
+ #if HAVE_GCRYPT
+diff --git a/src/shared/user-record-nss.h b/src/shared/user-record-nss.h
+index 7a41be7..3a970a6 100644
+--- a/src/shared/user-record-nss.h
++++ b/src/shared/user-record-nss.h
+@@ -2,7 +2,6 @@
+ #pragma once
+ 
+ #include <grp.h>
+-#include <gshadow.h>
+ #include <pwd.h>
+ #include <shadow.h>
+ 
+-- 
+2.53.0

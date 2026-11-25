@@ -14,7 +14,7 @@ SRC_URI="https://github.com/garabik/pydf/archive/refs/tags/v${PV}.tar.gz -> ${P}
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 arm ~arm64 ppc ppc64 ~riscv x86"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RDEPEND="${PYTHON_DEPS}"

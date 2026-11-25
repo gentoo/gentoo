@@ -1,0 +1,30 @@
+PR pending https://github.com/groonga/groonga/pull/2799.patch
+fix https://bugs.gentoo.org/973576
+Blosc2's CMake file only accepts a requested version when the major
+version matches the installed one. Requesting 2.10.0 fails even if 3.X
+system version is installed and compiled fine. Rework the detection
+logic.
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1446,16 +1446,15 @@ if(NOT "${GRN_WITH_BLOSC}" STREQUAL "no")
+   if("${GRN_WITH_BLOSC}" STREQUAL "bundled")
+     set(Blosc2_FOUND FALSE)
+   else()
+-    if("${GRN_WITH_BLOSC}" STREQUAL "system")
+-      find_package(Blosc2 ${GRN_BLOSC_REQUIRED_VERSION} REQUIRED)
+-    else()
+-      find_package(Blosc2 ${GRN_BLOSC_REQUIRED_VERSION})
+-    endif()
++    find_package(Blosc2 QUIET)
+   endif()
+-  if(Blosc2_FOUND)
++  if(Blosc2_FOUND AND Blosc2_VERSION VERSION_GREATER_EQUAL GRN_BLOSC_REQUIRED_VERSION)
+     set(GRN_WITH_BLOSC TRUE)
+     target_link_libraries(grn_dependencies INTERFACE Blosc2::blosc2_shared)
+     message(STATUS "Blosc: system")
++  elseif("${GRN_WITH_BLOSC}" STREQUAL "system")
++    message(FATAL_ERROR
++      "Blosc2 >=${GRN_BLOSC_REQUIRED_VERSION} not found!")
+   elseif(NOT FETCHCONTENT_FULLY_DISCONNECTED)
+     # FETCHCONTENT_FULLY_DISCONNECTED isn't for disabling network
+     # access but deb uses it...

@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Getopt::Long with usage text"
 
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~sparc ~x86 ~x64-macos"
+KEYWORDS="amd64 arm ~arm64 ppc ~ppc64 ~riscv ~sparc x86 ~x64-macos"
 IUSE="minimal"
 
 RDEPEND="

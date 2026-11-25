@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,7 +6,7 @@ EAPI=8
 inherit flag-o-matic gnome2 virtualx
 
 DESCRIPTION="Clutter is a library for creating graphical user interfaces"
-HOMEPAGE="https://wiki.gnome.org/Projects/Clutter"
+HOMEPAGE="https://gitlab.gnome.org/Archive/clutter"
 
 LICENSE="LGPL-2.1+ FDL-1.1+"
 SLOT="1.0"

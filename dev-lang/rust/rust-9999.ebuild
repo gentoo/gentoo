@@ -5,8 +5,8 @@ EAPI=8
 
 # Bump notes: https://wiki.gentoo.org/wiki/Project:Rust/Rust_bump
 
-LLVM_COMPAT=( 22 )
-PYTHON_COMPAT=( python3_{11..14} )
+LLVM_COMPAT=( 23 )
+PYTHON_COMPAT=( python3_{12..14} )
 
 # Patches are kept in rust-patches.git, see its README.rst for the versioning
 # scheme.
@@ -15,7 +15,7 @@ PYTHON_COMPAT=( python3_{11..14} )
 # in the ebuild for changes that don't require a revbump.
 #
 # Uncomment this line when the ebuild needs a patchset update but no revbump.
-#RUST_PATCH_VER=${PV}-1
+# RUST_PATCH_VER=${PV}-1
 
 RUST_MAX_VER=${PV%%_*}
 RUST_PV=${PV%%_p*}
@@ -24,14 +24,14 @@ RUST_P=${PN}-${RUST_PV}
 
 if [[ ${PV} == *9999* ]]; then
 	# Update this as new `beta` releases come out.
-	RUST_MIN_VER="1.94.0"
+	RUST_MIN_VER="1.96.0"
 elif [[ ${PV} == *beta* ]]; then
 	RUST_MIN_VER="$(ver_cut 1).$(($(ver_cut 2) - 1)).0"
 else
 	RUST_MIN_VER="$(ver_cut 1).$(($(ver_cut 2) - 1)).0"
 fi
 
-inherit check-reqs estack flag-o-matic llvm-r1 multiprocessing optfeature
+inherit check-reqs estack flag-o-matic llvm-r2 multiprocessing optfeature
 inherit multilib multilib-build python-any-r1 rust rust-toolchain toolchain-funcs
 inherit verify-sig
 
@@ -83,14 +83,14 @@ done
 
 # Bare metal targets which can be built on the host system and have no
 # dependency on compiler runtime, libc and unwinder.
-ALL_RUST_SYSROOTS=( bpf wasm )
+ALL_RUST_SYSROOTS=( aarch64_unknown_none bpf wasm )
 ALL_RUST_SYSROOTS=( "${ALL_RUST_SYSROOTS[@]/#/rust_sysroots_}" )
 
 LICENSE="|| ( MIT Apache-2.0 ) BSD BSD-1 BSD-2 BSD-4"
 SLOT="${PV%%_*}" # Beta releases get to share the same SLOT as the eventual stable
 
 IUSE="big-endian +clippy cpu_flags_x86_sse2 debug dist +doc llvm-libunwind lto"
-IUSE+=" +rustfmt rust-analyzer rust-src +system-llvm test"
+IUSE+=" +rustfmt rust-analyzer rustc-dev rust-src +system-llvm test"
 IUSE+=" ${ALL_LLVM_TARGETS[*]} ${ALL_RUST_SYSROOTS[*]}"
 
 if [[ ${PV} = *9999* ]]; then
@@ -135,7 +135,8 @@ BDEPEND="
 
 DEPEND="
 	>=app-arch/xz-utils-5.2
-	net-misc/curl:=[http2,ssl]
+	dev-db/sqlite:3
+	net-misc/curl[http2,ssl]
 	virtual/zlib:=
 	dev-libs/openssl:0=
 	system-llvm? (
@@ -162,6 +163,7 @@ REQUIRED_USE="
 	|| ( ${ALL_LLVM_TARGETS[*]} )
 	rust-analyzer? ( rust-src )
 	test? ( ${ALL_LLVM_TARGETS[*]} )
+	rust_sysroots_aarch64_unknown_none? ( llvm_targets_AArch64 )
 	rust_sysroots_bpf? ( llvm_targets_BPF )
 	rust_sysroots_wasm? ( llvm_targets_WebAssembly )
 	x86? ( cpu_flags_x86_sse2 )
@@ -185,6 +187,7 @@ QA_SONAME="
 
 QA_PRESTRIPPED="
 	usr/lib/${PN}/${SLOT}/lib/rustlib/.*/bin/rust-llvm-dwp
+	usr/lib/${PN}/${SLOT}/lib/rustlib/.*/bin/rust-objcopy
 	usr/lib/${PN}/${SLOT}/lib/rustlib/.*/lib/self-contained/crtn.o
 "
 
@@ -206,6 +209,33 @@ toml_usex() {
 	usex "${1}" true false
 }
 
+# Returns "host" (if native arm64 or host CC is clang), "clang" (if clang is
+# available), or the crossdev tuple prefix for an installed aarch64 GCC.
+rust_get_aarch64_baremetal_tc() {
+	if use arm64 || tc-is-clang; then
+		echo "host"
+		return 0
+	fi
+
+	if command -v "${CHOST}-clang" >/dev/null 2>&1; then
+		if "${CHOST}-clang" --print-targets 2>/dev/null | grep -q "aarch64"; then
+			echo "clang"
+			return 0
+		fi
+	fi
+
+	local tuple
+	# Just try some common crossdev toolchain prefixes for aarch64
+	for tuple in aarch64-unknown-none aarch64-none-elf aarch64-elf aarch64-unknown-linux-gnu aarch64-linux-gnu; do
+		if command -v "${tuple}-gcc" >/dev/null 2>&1; then
+			echo "${tuple}"
+			return 0
+		fi
+	done
+
+	return 1
+}
+
 pre_build_checks() {
 	local M=9216
 	# multiply requirements by 1.3 if we are doing x86-multilib
@@ -225,6 +255,7 @@ pre_build_checks() {
 			M=$(( $(usex ${ltarget} 256 0) + ${M} ))
 		done
 	fi
+	M=$(( $(usex rust_sysroots_aarch64_unknown_none 256 0) + ${M} ))
 	M=$(( $(usex rust_sysroots_bpf 256 0) + ${M} ))
 	M=$(( $(usex rust_sysroots_wasm 256 0) + ${M} ))
 	M=$(( $(usex debug 2 1) * ${M} ))
@@ -235,6 +266,17 @@ pre_build_checks() {
 	eshopts_pop
 	M=$(( $(usex doc 256 0) + ${M} ))
 	CHECKREQS_DISK_BUILD=${M}M check-reqs_pkg_${EBUILD_PHASE}
+
+	# This is best-effort - There _will_ be footguns / edge cases when detecting the baremetal toolchain
+	# if we don't want to _force_ users into installing Clang either way via BDEPEND.
+	# We can assume that users wanting rust_sysroots_aarch64_unknown_none are aware
+	# of the requirements for a baremetal AArch64 toolchain
+	if use rust_sysroots_aarch64_unknown_none && ! rust_get_aarch64_baremetal_tc >/dev/null; then
+		eerror "USE=rust_sysroots_aarch64_unknown_none on non-arm64 requires either:"
+		eerror "  1. llvm-core/clang installed with LLVM_TARGETS=\"AArch64\", OR"
+		eerror "  2. An aarch64 crossdev toolchain (e.g. 'crossdev -s1 -t aarch64-unknown-none')"
+		die "No suitable AArch64 C compiler found for rust_sysroots_aarch64_unknown_none"
+	fi
 }
 
 llvm_check_deps() {
@@ -260,6 +302,17 @@ pkg_setup() {
 	pre_build_checks
 	python-any-r1_pkg_setup
 
+	if ! [[ -v _RUST_LLVM_MAP[${SLOT}] ]] ; then
+		die "${SLOT} is missing from rust.eclass's RUST_LLVM_MAP! Please fix the eclass."
+	fi
+	local found_slot i
+	for (( i = 0; i < ${#_RUST_SLOTS_ORDERED[@]} ; i++ )) ; do
+		[[ ${_RUST_SLOTS_ORDERED[i]} == ${SLOT} ]] && found_slot=1
+	done
+	if ! [[ -v found_slot ]] ; then
+		die "${SLOT} is missing from rust.eclass's _RUST_SLOTS_ORDERED! Please fix the eclass."
+	fi
+
 	export LIBGIT2_NO_PKG_CONFIG=1 #749381
 	if tc-is-cross-compiler; then
 		use system-llvm && die "USE=system-llvm not allowed when cross-compiling"
@@ -271,11 +324,14 @@ pkg_setup() {
 	rust_pkg_setup
 
 	if use system-llvm; then
-		llvm-r1_pkg_setup
+		llvm-r2_pkg_setup
 
 		local llvm_config="$(get_llvm_prefix)/bin/llvm-config"
+		# ebuild ... protection (developers)
+		[[ -x "${llvm_config}" ]] || die "system-llvm selected but llvm-config is unavailable: ${llvm_config}"
+		local llvm_libdir="$(${llvm_config} --libdir)"
 		export LLVM_LINK_SHARED=1
-		export RUSTFLAGS="${RUSTFLAGS} -Lnative=$("${llvm_config}" --libdir)"
+		export RUSTFLAGS="${RUSTFLAGS} -Lnative=${llvm_libdir}"
 	fi
 }
 
@@ -323,8 +379,9 @@ src_unpack() {
 		# to ensure that all dependencies are present and up-to-date
 		mkdir "${S}/vendor" || die
 		# This also compiles the 'build helper', there's no way to avoid this.
-		${EPYTHON} "${S}"/x.py vendor -v --config="${T}"/vendor-bootstrap.toml -j$(makeopts_jobs) ||
-			die "Failed to vendor dependencies"
+		${EPYTHON} "${S}"/x.py vendor -v --config="${T}"/vendor-bootstrap.toml \
+			-j$(get_makeopts_jobs) ||
+				die "Failed to vendor dependencies"
 		# TODO: This has to be generated somehow, this is from a 1.84.x tarball I had lying around.
 		cat <<- _EOF_ > "${S}/.cargo/config.toml"
 			[source.crates-io]
@@ -363,16 +420,66 @@ src_prepare() {
 src_configure() {
 	if tc-is-cross-compiler; then
 		export PKG_CONFIG_ALLOW_CROSS=1
-		export PKG_CONFIG_PATH="${ESYSROOT}/usr/$(get_libdir)/pkgconfig"
-		export OPENSSL_INCLUDE_DIR="${ESYSROOT}/usr/include"
-		export OPENSSL_LIB_DIR="${ESYSROOT}/usr/$(get_libdir)"
+
+		local rust_host_triple="$(rust_abi "${CHOST}")"
+
+		# https://docs.rs/pkg-config/latest/pkg_config/#cross-compilation
+		local pcvar
+		for pcvar in PKG_CONFIG_{PATH,LIBDIR} ; do
+			pcvar="${pcvar}_${rust_host_triple//-/_}"
+
+			[[ -n ${!pcvar} ]] && continue
+
+			case ${pcvar} in
+				*PKG_CONFIG_PATH*)
+					printf -v "${pcvar}" "${ESYSROOT}/usr/$(get_libdir)/pkgconfig"
+					;;
+				*PKG_CONFIG_LIBDIR*)
+					printf -v "${pcvar}" "${ESYSROOT}/usr/$(get_libdir)"
+					;;
+				*)
+					continue
+					;;
+			esac
+
+			export "${pcvar}"
+		done
+
+		# https://docs.rs/openssl/latest/openssl/#manual
+		local osslvar
+		for osslvar in OPENSSL_{INCLUDE_,LIB_,}DIR ; do
+			osslvar="${rust_host_triple}_${osslvar}"
+			osslvar="${osslvar^^}"
+			osslvar="${osslvar//-/_}"
+
+			[[ -n ${!osslvar} ]] && continue
+
+			case ${osslvar} in
+				*OPENSSL_DIR*)
+					printf -v "${osslvar}" "${ESYSROOT}/usr"
+					;;
+				*OPENSSL_INCLUDE_DIR*)
+					printf -v "${osslvar}" "${ESYSROOT}/usr/include"
+					;;
+				*OPENSSL_LIB_DIR*)
+					printf -v "${osslvar}" "${ESYSROOT}/usr/$(get_libdir)"
+					;;
+				*)
+					continue
+					;;
+			esac
+
+			export "${osslvar}"
+		done
+
+		# https://issues.chromium.org/issues/357917328
+		# https://github.com/rust-lang/libz-sys/blob/1.1.18/build.rs#L25
+		export LIBZ_SYS_STATIC=1
 	fi
 
 	# Avoid bundled copies of libraries
 	export RUSTONIG_SYSTEM_LIBONIG=1
-	# Need to check if these can be optional
-	#export LIBSQLITE3_SYS_USE_PKG_CONFIG=1
-	#export LIBSSH2_SYS_USE_PKG_CONFIG=1
+	export LIBSQLITE3_SYS_USE_PKG_CONFIG=1
 
 	filter-lto # https://bugs.gentoo.org/862109 https://bugs.gentoo.org/866231
 
@@ -384,6 +491,9 @@ src_configure() {
 	done
 	if use rust_sysroots_bpf; then
 		rust_targets+=",\"bpfeb-unknown-none\",\"bpfel-unknown-none\""
+	fi
+	if use rust_sysroots_aarch64_unknown_none; then
+		rust_targets+=",\"aarch64-unknown-none\",\"aarch64-unknown-none-softfloat\""
 	fi
 	if use rust_sysroots_wasm; then
 		rust_targets+=",\"wasm32-unknown-unknown\""
@@ -400,7 +510,7 @@ src_configure() {
 	use clippy && tools+=',"clippy"'
 	use rustfmt && tools+=',"rustfmt"'
 	use rust-analyzer && tools+=',"rust-analyzer","rust-analyzer-proc-macro-srv"'
-	use rust-src && tools+=',"src"'
+	use rust-src && tools+=',"rust-src"'
 
 	if [[ ${PV} == *9999* ]]; then
 		use miri && tools+=',"miri"'
@@ -540,7 +650,7 @@ src_configure() {
 		remap-debuginfo = true
 		lld = $(usex system-llvm false $(toml_usex rust_sysroots_wasm))
 		$(if use lto && tc-is-clang && ! tc-ld-is-mold; then
-			echo "use-lld = true"
+			echo "bootstrap-override-lld = true"
 		fi)
 		# only deny warnings if doc+wasm are NOT requested, documenting stage0 wasm std fails without it
 		# https://github.com/rust-lang/rust/issues/74976
@@ -556,6 +666,13 @@ src_configure() {
 		compression-profile = "balanced"
 	_EOF_
 
+	local host_ar host_cc host_cxx host_linker host_ranlib
+	host_ar="$(tc-getAR)"
+	host_cc="$(tc-getCC)"
+	host_cxx="$(tc-getCXX)"
+	host_linker="$(tc-getCC)"
+	host_ranlib="$(tc-getRANLIB)"
+
 	for v in $(multilib_get_enabled_abi_pairs); do
 		rust_target=$(rust_abi $(get_abi_CHOST ${v##*.}))
 		arch_cflags="$(get_abi_CFLAGS ${v##*.})"
@@ -564,11 +681,11 @@ src_configure() {
 
 		cat <<- _EOF_ >> "${S}"/bootstrap.toml
 			[target.${rust_target}]
-			ar = "$(tc-getAR)"
-			cc = "$(tc-getCC)"
-			cxx = "$(tc-getCXX)"
-			linker = "$(tc-getCC)"
-			ranlib = "$(tc-getRANLIB)"
+			ar = "${host_ar}"
+			cc = "${host_cc}"
+			cxx = "${host_cxx}"
+			linker = "${host_linker}"
+			ranlib = "${host_ranlib}"
 			llvm-libunwind = "$(usex llvm-libunwind $(usex system-llvm system in-tree) no)"
 		_EOF_
 		if use system-llvm; then
@@ -608,6 +725,59 @@ src_configure() {
 			# wasm target does not have profiler_builtins https://bugs.gentoo.org/848483
 			profiler = false
 		_EOF_
+	fi
+	if use rust_sysroots_aarch64_unknown_none; then
+		local bm_tc="$(rust_get_aarch64_baremetal_tc)"
+		local baremetal_ar baremetal_cc baremetal_cxx baremetal_linker baremetal_ranlib
+
+		case "${bm_tc}" in
+			host) # host toolchain if suitable (native arm64 gcc or tc-is-clang)
+				baremetal_ar="${host_ar}"
+				baremetal_cc="${host_cc}"
+				baremetal_cxx="${host_cxx}"
+				baremetal_linker="${host_linker}"
+				baremetal_ranlib="${host_ranlib}"
+				;;
+			clang) # host toolchain is GCC but we have a valid Clang for baremetal
+				baremetal_ar="llvm-ar"
+				baremetal_cc="${CHOST}-clang"
+				baremetal_cxx="${CHOST}-clang++"
+				baremetal_linker="$(usex system-llvm lld rust-lld)"
+				baremetal_ranlib="llvm-ranlib"
+				;;
+			*) # crossdev (have fun, best effort detecting on tuple)
+				baremetal_ar="${bm_tc}-ar"
+				baremetal_cc="${bm_tc}-gcc"
+				baremetal_cxx="${bm_tc}-g++"
+				baremetal_linker="${bm_tc}-gcc"
+				baremetal_ranlib="${bm_tc}-ranlib"
+				;;
+		esac
+
+		local target
+		for target in aarch64-unknown-none aarch64-unknown-none-softfloat; do
+			export CFLAGS_${target//-/_}="$(
+				if [[ ${bm_tc} == "clang" ]] || ( [[ ${bm_tc} == "host" ]] && tc-is-clang ); then
+					CC="${baremetal_cc} --target=aarch64-unknown-none" # no softfloat clang target
+				else
+					CC="${baremetal_cc}"
+				fi
+				if ! use arm64; then
+					filter-flags '-mcpu*' '-march*' '-mtune*'
+				fi
+				strip-unsupported-flags
+				echo "${CFLAGS}"
+			)"
+			cat <<- _EOF_ >> "${S}"/bootstrap.toml
+				[target.${target}]
+				ar = "${baremetal_ar}"
+				cc = "${baremetal_cc}"
+				cxx = "${baremetal_cxx}"
+				linker = "${baremetal_linker}"
+				ranlib = "${baremetal_ranlib}"
+				profiler = false
+			_EOF_
+		done
 	fi
 
 	if [[ -n ${I_KNOW_WHAT_I_AM_DOING_CROSS} ]]; then # whitespace intentionally shifted below
@@ -715,7 +885,8 @@ src_configure() {
 
 src_compile() {
 	# -v will show invocations, -vv "very verbose" is overkill, -vvv "very very verbose" is insane
-	RUST_BACKTRACE=1 "${EPYTHON}" ./x.py build -v --config="${S}"/bootstrap.toml -j$(makeopts_jobs) || die
+	RUST_BACKTRACE=1 "${EPYTHON}" ./x.py build -v \
+		--config="${S}"/bootstrap.toml -j$(get_makeopts_jobs) || die
 }
 
 src_test() {
@@ -723,18 +894,25 @@ src_test() {
 
 	# those are basic and codegen tests.
 	local tests=(
-		codegen
 		codegen-units
-		compile-fail
+		crashes
+		codegen-llvm
 		incremental
 		mir-opt
 		pretty
 		run-make
+		run-make-cargo
+	)
+
+	# tests for standard and core library
+	local std_tests=(
+		std
+		core
 	)
 
 	# fails if llvm is not built with ALL targets.
 	# and known to fail with system llvm sometimes.
-	use system-llvm || tests+=( assembly )
+	use system-llvm || tests+=( assembly-llvm )
 
 	# fragile/expensive/less important tests
 	# or tests that require extra builds
@@ -745,19 +923,18 @@ src_test() {
 			rustdoc-js
 			rustdoc-js-std
 			rustdoc-ui
-			run-make-fulldeps
 			ui
 			ui-fulldeps
 		)
 	fi
 
 	local i failed=()
-	einfo "rust_src_test: enabled tests ${tests[@]/#/src/test/}"
-	for i in "${tests[@]}"; do
-		local t="src/test/${i}"
+	einfo "rust_src_test: enabled tests ${tests[@]} ${std_tests[@]}"
+	for i in "tests/${tests[@]}" "library/${std_tests[@]}"; do
+		local t="${i}"
 		einfo "rust_src_test: running ${t}"
 		if ! RUST_BACKTRACE=1 "${EPYTHON}" ./x.py test -vv --config="${S}"/bootstrap.toml \
-				-j$(makeopts_jobs) --no-doc --no-fail-fast "${t}"
+				-j$(get_makeopts_jobs) --no-doc --no-fail-fast "${t}"
 		then
 				failed+=( "${t}" )
 				eerror "rust_src_test: ${t} failed"
@@ -771,7 +948,15 @@ src_test() {
 }
 
 src_install() {
-	DESTDIR="${D}" "${EPYTHON}" ./x.py install -v --config="${S}"/bootstrap.toml -j$(makeopts_jobs) || die
+	DESTDIR="${D}" "${EPYTHON}" ./x.py install -v \
+		--config="${S}"/bootstrap.toml -j$(get_makeopts_jobs) || die
+
+	# Not required for general use, installs rustc-dev component (i.e. internal rlibs)
+	# needed to link to compiler internals for (e.g.) crubit
+	if use rustc-dev ; then
+		DESTDIR="${D}" "${EPYTHON}" ./x.py install rustc-dev -v \
+			--config="${S}"/bootstrap.toml -j$(get_makeopts_jobs) || die
+	fi
 
 	docompress /usr/lib/${PN}/${SLOT}/share/man/
 
@@ -862,7 +1047,8 @@ src_install() {
 	doins "${T}/provider-${PN}-${SLOT}"
 
 	if use dist; then
-		"${EPYTHON}" ./x.py dist -v --config="${S}"/bootstrap.toml -j$(makeopts_jobs) || die
+		"${EPYTHON}" ./x.py dist -v --config="${S}"/bootstrap.toml \
+			-j$(get_makeopts_jobs) || die
 		insinto "/usr/lib/${PN}/${SLOT}/dist"
 		doins -r "${S}/build/dist/."
 	fi

@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -10,7 +10,7 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/metacity/"
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 ~riscv"
-IUSE="+libcanberra vulkan xinerama"
+IUSE="+libcanberra selinux vulkan xinerama"
 
 # TODO: libgtop could be optional, but no knob
 RDEPEND="
@@ -43,6 +43,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	x11-base/xorg-proto
 "
+RDEPEND+="selinux? ( sec-policy/selinux-wm )"
 BDEPEND="
 	vulkan? ( dev-util/vulkan-headers )
 	dev-util/glib-utils

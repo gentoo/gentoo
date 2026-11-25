@@ -38,7 +38,7 @@ BDEPEND="
 "
 
 config_uncomment() {
-	sed -i -e "s://\s*\(#define\s*$1\):\1:" config.h || die
+	sed -i -e "s://\s*\(#define\s*$2\):\1:" "$1" || die
 }
 
 pkg_pretend() {
@@ -52,10 +52,10 @@ pkg_setup() {
 src_prepare() {
 	default
 
-	use asm || config_uncomment CRYPTOPP_DISABLE_ASM
+	use asm || config_uncomment config_asm.h CRYPTOPP_DISABLE_ASM
 
 	# ASM isn't Darwin/Mach-O ready, #479554, buildsys doesn't grok CPPFLAGS
-	[[ ${CHOST} == *-darwin* ]] && config_uncomment CRYPTOPP_DISABLE_ASM
+	[[ ${CHOST} == *-darwin* ]] && config_uncomment config_asm.h CRYPTOPP_DISABLE_ASM
 }
 
 src_configure() {

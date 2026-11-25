@@ -1,9 +1,9 @@
-# Copyright 2022-2025 Gentoo Authors
+# Copyright 2022-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 DISTUTILS_USE_PEP517=flit
-PYTHON_COMPAT=( python3_{12..14} )
+PYTHON_COMPAT=( python3_{13..14} )
 
 inherit distutils-r1 pypi
 
@@ -13,6 +13,10 @@ HOMEPAGE="https://pypi.org/project/sphinx-inline-tabs/"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 arm64 ~riscv ~x86"
+
+BDEPEND="
+	<dev-python/flit-core-4[${PYTHON_USEDEP}]
+"
 
 RDEPEND="
 	>=dev-python/sphinx-6.0[${PYTHON_USEDEP}]

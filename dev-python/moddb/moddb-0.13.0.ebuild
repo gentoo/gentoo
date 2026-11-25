@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 
 inherit distutils-r1
 
@@ -20,14 +20,12 @@ KEYWORDS="~amd64 ~x86"
 RESTRICT="test"
 PROPERTIES="test? ( test_network )"
 
+BDEPEND="dev-python/pkg-resources[${PYTHON_USEDEP}]"
+
 RDEPEND="
 	dev-python/beautifulsoup4[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]
 "
-
-BDEPEND="test? (
-	dev-python/pytest-rerunfailures[${PYTHON_USEDEP}]
-)"
 
 EPYTEST_DESELECT=(
 	# These tests require valid moddb.com login information
@@ -40,6 +38,7 @@ EPYTEST_DESELECT=(
 )
 
 distutils_enable_sphinx docs/source dev-python/sphinx-autodoc-typehints
+EPYTEST_PLUGINS=( pytest-rerunfailures )
 distutils_enable_tests pytest
 
 python_test() {

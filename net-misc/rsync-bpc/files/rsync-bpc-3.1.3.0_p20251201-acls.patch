@@ -1,0 +1,20 @@
+Wrap content of lib/sysacls.c in ifdef, like it's
+done in rsync. Fixes build with USE=-acl
+https://bugs.gentoo.org/971729
+--- a/lib/sysacls.c
++++ b/lib/sysacls.c
+@@ -24,6 +24,8 @@
+ #include "rsync.h"
+ #include "sysacls.h"
+ 
++#ifdef SUPPORT_ACLS
++
+ #ifdef DEBUG
+ #undef DEBUG
+ #endif
+@@ -2790,3 +2792,5 @@
+ 	}
+ 	return 0;
+ }
++
++#endif /* SUPPORT_ACLS */

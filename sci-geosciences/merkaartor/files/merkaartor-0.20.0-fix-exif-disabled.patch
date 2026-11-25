@@ -1,0 +1,28 @@
+https://bugs.gentoo.org/941962
+https://github.com/openstreetmap/merkaartor/pull/302
+
+From ff11bb2a29a8c429f22c50ccdde7ab1210a182f0 Mon Sep 17 00:00:00 2001
+From: Nikolay Korotkiy <sikmir@disroot.org>
+Date: Mon, 9 Sep 2024 20:29:27 +0400
+Subject: [PATCH] Fix build with GEOIMAGE=0
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -371,9 +371,7 @@ src/Docks/MinimumRelationProperties.ui
+ src/Docks/PropertiesDock.h
+ src/Docks/DirtyDock.h
+ src/Docks/StyleDock.cpp
+-src/Docks/GeoImageDock.cpp
+ src/Docks/DirtyDock.ui
+-src/Docks/GeoImageDock.h
+ src/Docks/MDockAncestor.cpp
+ src/Docks/MinimumTrackPointProperties.ui
+ src/Docks/StyleDock.h
+@@ -507,6 +505,7 @@ endif()
+ 
+ if (GEOIMAGE)
+     list(APPEND PKGCONFIG_REQUIRED_LIBS exiv2)
++    list(APPEND merkaartor_SRCS src/Docks/GeoImageDock.cpp src/Docks/GeoImageDock.h)
+     add_definitions(-DGEOIMAGE=1)
+ endif()
+ 

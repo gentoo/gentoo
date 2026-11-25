@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=uv-build
-PYTHON_COMPAT=( python3_{12..14} )
+PYTHON_COMPAT=( python3_{13..15} )
 
 inherit distutils-r1
 
@@ -21,7 +21,7 @@ S="${WORKDIR}/httpdomain-${PV}"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 arm arm64 ppc ppc64 ~riscv x86"
 
 RDEPEND="
 	>=dev-python/sphinx-6.0[${PYTHON_USEDEP}]

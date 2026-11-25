@@ -1,0 +1,16 @@
+diff --git a/app/HighsRuntimeOptions.h b/app/HighsRuntimeOptions.h
+index ec1edd0..72c250f 100644
+--- a/app/HighsRuntimeOptions.h
++++ b/app/HighsRuntimeOptions.h
+@@ -14,7 +14,7 @@
+ 
+ #include <cassert>
+ 
+-#include "../extern/CLI11.hpp"
++#include <CLI/CLI.hpp>
+ #include "HConfig.h"
+ #include "io/HighsIO.h"
+ #include "io/LoadOptions.h"
+-- 
+2.53.0
+

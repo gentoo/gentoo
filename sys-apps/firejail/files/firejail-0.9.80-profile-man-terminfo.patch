@@ -1,0 +1,21 @@
+https://github.com/netblue30/firejail/pull/7131/changes/37ba4767194cb3b0516909c6e71a63caa0024d7b
+From: Hank Leininger <hlein@korelogic.com>
+Date: Fri, 10 Apr 2026 12:50:59 -0600
+Subject: [PATCH] profiles: man: add terminfo
+
+Closes: https://github.com/netblue30/firejail/issues/7130
+Signed-off-by: Hank Leininger <hlein@korelogic.com>
+--- a/etc/profile-m-z/man.profile
++++ b/etc/profile-m-z/man.profile
+@@ -59,7 +59,7 @@ disable-mnt
+ #private-bin apropos,bash,cat,catman,col,gpreconv,groff,grotty,gunzip,gzip,less,man,most,nroff,preconv,sed,sh,tbl,tr,troff,whatis,which,xtotroff,zcat,zsoelim
+ private-cache
+ private-dev
+-private-etc @x11,groff,man_db.conf,manpath.config,sysless
++private-etc @x11,groff,man_db.conf,manpath.config,sysless,terminfo
+ #private-tmp
+ 
+ dbus-user none
+-- 
+2.53.0
+

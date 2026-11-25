@@ -1,4 +1,4 @@
-# Copyright 2020-2025 Gentoo Authors
+# Copyright 2020-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,18 +17,16 @@ else
 fi
 
 LICENSE="ISC"
-SLOT="0"
+SLOT="0/$(ver_cut 1)"
 IUSE="examples gbm h264 jpeg ssl test tracing websockets"
 REQUIRED_USE="h264? ( gbm )"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	=dev-libs/aml-0.3*
-	virtual/zlib:=
+	=dev-libs/aml-1*:=
 	x11-libs/pixman
-	examples? (
-		media-libs/libpng:=
-	)
+	virtual/zlib:=
+	examples? ( media-libs/libpng:= )
 	gbm? ( media-libs/mesa )
 	h264? (
 		media-video/ffmpeg:=
@@ -49,13 +47,6 @@ DEPEND="
 BDEPEND="
 	virtual/pkgconfig
 "
-
-src_prepare() {
-	default
-
-	# useful soname (https://github.com/any1/neatvnc/issues/124)
-	sed -i -e "s/'0.0.0'/meson.project_version()/" meson.build || die
-}
 
 src_configure() {
 	local emesonargs=(

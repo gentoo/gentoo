@@ -1,0 +1,37 @@
+Gentoo Bug: https://bugs.gentoo.org/979828
+Upstream PR: https://github.com/lxqt/libfm-qt/pull/1135
+
+From 8beed83f6e31458f39eb1aa90934cdb7b3c5847d Mon Sep 17 00:00:00 2001
+From: Jimi Huotari <chiitoo@gentoo.org>
+Date: Fri, 6 Nov 2026 17:29:05 +0200
+Subject: [PATCH] cmake: fix pkgconfig libdir path
+
+The 'libdir=@CMAKE_INSTALL_PREFIX@/lib' is less than optimal when
+actually installing 'lib64' things, so let's make use of
+'@CMAKE_INSTALL_LIBDIR@' for it.
+
+Relevant downstream bugs:
+
+- https://bugs.gentoo.org/979828
+- https://bugs.gentoo.org/729642
+
+Signed-off-by: Jimi Huotari <chiitoo@gentoo.org>
+---
+ src/libfm-qt.pc.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/libfm-qt.pc.in b/src/libfm-qt.pc.in
+index 793fb13..36520e8 100644
+--- a/src/libfm-qt.pc.in
++++ b/src/libfm-qt.pc.in
+@@ -1,6 +1,6 @@
+ prefix=@CMAKE_INSTALL_PREFIX@
+ exec_prefix=${prefix}
+-libdir=${exec_prefix}/lib
++libdir=${exec_prefix}/@CMAKE_INSTALL_LIBDIR@
+ includedir=${prefix}/include
+ 
+ Name: libfm-qt
+-- 
+2.56.0
+

@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,7 +8,7 @@ MAVEN_ID="com.github.marschall:memoryfilesystem:2.3.0"
 
 inherit java-pkg-2 java-pkg-simple
 
-DESCRIPTION="An in memory implementation of a JSR-203 file system."
+DESCRIPTION="An in memory implementation of a JSR-203 file system"
 HOMEPAGE="https://github.com/marschall/memoryfilesystem"
 SRC_URI="https://github.com/marschall/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${P}"

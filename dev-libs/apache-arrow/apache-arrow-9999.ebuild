@@ -52,7 +52,7 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
-	dev-cpp/xsimd
+	>=dev-cpp/xsimd-14.0.0
 	>=dev-libs/boost-1.81.0
 	json? ( dev-libs/rapidjson )
 	test? (

@@ -1,0 +1,19 @@
+Makefile.SH: record to be installed location in install_name
+
+Instead of using $PWD, which is our build directory, use the to be
+installed to location for the install_name on Darwin, soas to make it
+point to something valid.
+
+Signed-off-by: Fabian Groffen <grobian@gentoo.org>
+
+--- a/Makefile.SH
++++ b/Makefile.SH
+@@ -64,7 +64,7 @@
+ 				${revision}.${patchlevel}.${subversion}"
+ 		case "$osvers" in
+ 	        1[5-9]*|[2-9]*)
+-			shrpldflags="$shrpldflags -install_name `pwd -P`/libperl.${revision}.${patchlevel}.dylib -Xlinker -headerpad_max_install_names"
++			shrpldflags="$shrpldflags -install_name \$(shrpdir)/libperl.${revision}.${patchlevel}.dylib -Xlinker -headerpad_max_install_names"
+ 			exeldflags="-Xlinker -headerpad_max_install_names"
+ 			;;
+ 		*)

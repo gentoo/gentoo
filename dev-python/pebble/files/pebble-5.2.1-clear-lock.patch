@@ -1,0 +1,31 @@
+From 711c98f4193f4006f699e3d245d6855385eb267e Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Fri, 31 Jul 2026 20:25:35 +0200
+Subject: [PATCH] fix(channel): fix clearing `writer_mutex`
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Fix a typo that resulted in `reader_mutex` being cleared twice, leaving
+`writer_mutex` assigned to a deleted mutex.
+
+Fixes #164
+
+Signed-off-by: Michał Górny <mgorny@gentoo.org>
+---
+ pebble/pool/channel.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/pebble/pool/channel.py b/pebble/pool/channel.py
+index edd5c1f..76a2359 100644
+--- a/pebble/pool/channel.py
++++ b/pebble/pool/channel.py
+@@ -196,7 +196,7 @@ class ChannelMutex:
+         """Ensure named semaphores are cleaned up on Posix OSes using spawn."""
+         del self.reader_mutex
+         del self.writer_mutex
+-        self.reader_mutex = self.reader_mutex = None
++        self.reader_mutex = self.writer_mutex = None
+ 
+     @property
+     @contextmanager

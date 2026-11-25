@@ -1,0 +1,49 @@
+From 634c5720ccce706ce189fd82f9248b80061093a9 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Tue, 12 May 2026 22:46:18 +0200
+Subject: [PATCH] Fix build w/ Qt 6.11/PyQt6-6.11
+
+Contains git master cherry-picks, fixed for distribution purpose:
+
+- Update SIP ABI to 13.8
+  This API is used in the updated version of PyQt6 6.11.0
+  (cherry picked from commit 30182dbfe789c9b44e5762978bf9ebb22c4f72b6)
+- Make the selection of SIP ABI automatic
+  Ideally, we should selection the ABI level depending
+  on the version of PyQt6, not of the version of Qt itself,
+  but let's keep it simpler for now.
+  (cherry picked from commit bf7fa438058f95df35d98da73f6ba8b6751c01d4)
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ cmake/modules/SIPMacros.cmake | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/cmake/modules/SIPMacros.cmake b/cmake/modules/SIPMacros.cmake
+index 113a3b3234..6e48224492 100644
+--- a/cmake/modules/SIPMacros.cmake
++++ b/cmake/modules/SIPMacros.cmake
+@@ -152,13 +152,19 @@ else()
+         endif()
+ 
+         if (QT_MAJOR_VERSION STREQUAL "6")
+-            set(abi_version "13.0")
++            if (${Qt6_VERSION} VERSION_GREATER_EQUAL "6.11.0")
++                set(abi_version "13.8")
++            else()
++                set(abi_version "13.0")
++            endif()
+             set(sip_disabled_features "[\"Krita_Qt5\"]")
+         else()
+             set(abi_version "12.8")
+             set(sip_disabled_features "[]")
+         endif()
+ 
++        message(STATUS "SIP ABI version: ${abi_version}")
++
+         set(module_tags)
+         if (QT_MAJOR_VERSION STREQUAL "5")
+             foreach(_tag ${SIP_TAGS})
+-- 
+2.54.0
+

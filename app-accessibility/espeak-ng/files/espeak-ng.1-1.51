@@ -1,0 +1,137 @@
+.\" generated with Ronn-NG/v0.10.1
+.\" http://github.com/apjanke/ronn-ng/tree/0.10.1
+.TH "ESPEAK\-NG" "1" "April 2026" ""
+.SH "NAME"
+\fBespeak\-ng\fR \- A multi\-lingual software speech synthesizer\.
+.SH "SYNOPSIS"
+\fBespeak\-ng\fR [\fIoptions\fR] [\fIwords\fR]
+.SH "DESCRIPTION"
+\fBespeak\-ng\fR is a software speech synthesizer for English, and some other languages\.
+.SH "OPTIONS"
+.TP
+\fB\-h\fR, \fB\-\-help\fR
+Show summary of options\.
+.TP
+\fB\-\-version\fR
+Prints the espeak library version and the location of the espeak voice data\.
+.TP
+\fB\-f <text file>\fR
+Text file to speak\.
+.TP
+\fB\-\-stdin\fR
+Read text input from stdin till to the end of a stream at once\.
+.P
+If neither \-f nor \-\-stdin are provided, then <words> from parameter are spoken, or text is spoken from stdin, read separately one line by line at a time\.
+.TP
+\fB\-d <device>\fR
+Use the specified device to speak the audio on\. If not specified, the default audio device is used\.
+.TP
+\fB\-q\fR
+Quiet, don't produce any speech (may be useful with \-x)\.
+.TP
+\fB\-a <integer>\fR
+Amplitude, 0 to 200, default is 100\.
+.TP
+\fB\-g <integer>\fR
+Word gap\. Pause between words, units of 10ms at the default speed\.
+.TP
+\fB\-k <integer>\fR
+Indicate capital letters with: 1=sound, 2=the word "capitals", higher values = a pitch increase (try \-k20)\.
+.TP
+\fB\-l <integer>\fR
+Line length\. If not zero (which is the default), consider lines less than this length as end\-of\-clause\.
+.TP
+\fB\-p <integer>\fR
+Pitch adjustment, 0 to 99, default is 50\.
+.TP
+\fB\-s <integer>\fR
+Speed in words per minute, default is 175\.
+.TP
+\fB\-v <voice name>\fR
+Use voice file of this name from espeak\-ng\-data/voices\. A variant can be specified using \fIvoice\fR+\fIvariant\fR, such as af+m3\.
+.TP
+\fB\-w <wave file name>\fR
+Write output to this WAV file, rather than speaking it directly\.
+.TP
+\fB\-\-split=<minutes>\fR
+Used with \fB\-w\fR to split the audio output into <minutes> recorded chunks\.
+.TP
+\fB\-b\fR
+Input text encoding, 1=UTF8, 2=8 bit, 4=16 bit\.
+.TP
+\fB\-m\fR
+Indicates that the text contains SSML (Speech Synthesis Markup Language) tags or other XML tags\. Those SSML tags which are supported are interpreted\. Other tags, including HTML, are ignored, except that some HTML tags such as
+.TP
+\fB\-x\fR
+Write phoneme mnemonics to stdout\.
+.TP
+\fB\-X\fR
+Write phonemes mnemonics and translation trace to stdout\. If rules files have been built with \-\-compile=debug, line numbers will also be displayed\.
+.TP
+\fB\-z\fR
+No final sentence pause at the end of the text\.
+.TP
+\fB\-\-stdout\fR
+Write speech output to stdout\.
+.TP
+\fB\-\-compile=voicename\fR
+Compile the pronunciation rules and dictionary in the current directory\. =<voicename< is optional and specifies which language is compiled\.
+.TP
+\fB\-\-compile\-debug=voicename\fR
+Compile the pronunciation rules and dictionary in the current directory as above, but include line numbers, that get shown when \-X is used\.
+.TP
+\fB\-\-ipa\fR
+Write phonemes to stdout using International Phonetic Alphabet\. \-\-ipa=1 Use ties, \-\-ipa=2 Use ZWJ, \-\-ipa=3 Separate with _\.
+.TP
+\fB\-\-tie=<character>\fR
+The character to use to join multi\-letter phonemes in \-x and \-\-ipa output\.
+.TP
+\fB\-\-path=<path>\fR
+Specifies the directory containing the espeak\-ng\-data directory\.
+.TP
+\fB\-\-pho\fR
+Write mbrola phoneme data (\.pho) to stdout or to the file in \-\-phonout\.
+.TP
+\fB\-\-phonout=<filename>\fR
+Write output from \-x \-X commands and mbrola phoneme data to this file\.
+.TP
+\fB\-\-punct="<characters>"\fR
+Speak the names of punctuation characters during speaking\. If =<characters> is omitted, all punctuation is spoken\.
+.TP
+\fB\-\-sep=<character>\fR
+The character to separate phonemes from the \-x and \-\-ipa output\.
+.TP
+\fB\-\-voices[=<language code>]\fR
+Lists the available voices\. If =<language code> is present then only those voices which are suitable for that language are listed\. If \fBxx\-yy\fR language code is passed, then voices with \fByy\fR of \fBxx\fR language variants are shown with higher priority than just \fBxx\fR\. If \fBvariant\fR is passed, then all voice variants are shown\. If \fBmb\fR or \fBmbrola\fR is passed, then all voices using the MBROLA voice synthesizer are shown\. If \fBall\fR is passed, then all eSpeak NG voices, voice variants and MBROLA voices are shown\.
+.TP
+\fB\-\-voices=<directory>\fR
+Lists the voices in the specified subdirectory\.
+.SH "EXAMPLES"
+.TP
+\fBespeak\-ng "This is a test"\fR
+Speak the sentence "This is a test" using the default English voice\.
+.TP
+\fBespeak\-ng \-f hello\.txt\fR
+Speak the contents of hello\.txt using the default English voice\.
+.TP
+\fBcat hello\.txt | espeak\-ng\fR
+Speak the contents of hello\.txt using the default English voice\.
+.TP
+\fBespeak\-ng \-x hello\fR
+Speak the word "hello" using the default English voice, and print the phonemes that were spoken\.
+.TP
+\fBespeak\-ng \-ven\-us "[[h@'loU]]"\fR
+Speak the phonemes "h@'loU" using the American English voice\.
+.TP
+\fBespeak\-ng \-\-voices\fR
+List all voices supported by eSpeak\.
+.TP
+\fBespeak\-ng \-\-voices=en\fR
+List all voices that speak English (\fBen\fR)\.
+.TP
+\fBespeak\-ng \-\-voices=mb\fR
+List all voices using the MBROLA voice synthesizer\.
+.SH "AUTHOR"
+eSpeak NG is maintained by Reece H\. Dunn \fImsclrhd@gmail\.com\fR\. It is based on eSpeak by Jonathan Duddington \fIjonsd@jsd\.clara\.co\.uk\fR\.
+.P
+This manual page is based on the eSpeak page written by Luke Yelavich \fIthemuso@ubuntu\.com\fR for the Ubuntu project\.

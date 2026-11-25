@@ -1,0 +1,16 @@
+
+x3/attribute_type_check.cpp:34:42: error: 'decay_t' is not a member of 'boost'; did you mean 'std::decay_t'?
+   34 | static inline checked_attr_parser<boost::decay_t<Value>, Expected>
+      |                                          ^~~~~~~
+
+--- a/libs/spirit/test/x3/attribute_type_check.cpp
++++ b/libs/spirit/test/x3/attribute_type_check.cpp
+@@ -31,7 +31,7 @@ struct checked_attr_parser : x3::attr_pa
+ };
+ 
+ template <typename Expected, typename Value>
+-static inline checked_attr_parser<boost::decay_t<Value>, Expected>
++static inline checked_attr_parser<std::decay_t<Value>, Expected>
+ checked_attr(Value&& value) { return { std::forward<Value>(value) }; }
+ 
+ // instantiate our type checker

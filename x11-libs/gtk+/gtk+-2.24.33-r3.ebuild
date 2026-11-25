@@ -1,22 +1,21 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 GNOME2_EAUTORECONF="yes"
 
-inherit flag-o-matic gnome2 multilib multilib-minimal readme.gentoo-r1 virtualx
+inherit flag-o-matic gnome2 multilib multilib-minimal readme.gentoo-r1 toolchain-funcs virtualx
 
 DESCRIPTION="Gimp ToolKit +"
 HOMEPAGE="https://www.gtk.org/"
 
 LICENSE="LGPL-2+"
 SLOT="2"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~x64-macos ~x64-solaris"
 IUSE="aqua cups examples +introspection test vim-syntax xinerama"
 REQUIRED_USE="
 	xinerama? ( !aqua )
 "
-
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~x64-macos ~x64-solaris"
 
 # Upstream wants us to do their job:
 # https://bugzilla.gnome.org/show_bug.cgi?id=768663#c1
@@ -106,6 +105,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.24.33-respect-NM.patch # requires eautoreconf
 	# Fix casts, bug #880617
 	"${FILESDIR}"/${PN}-2.24.33-Fix-casts.patch
+	# Fixes "ac_fn_c_try_run: command not found", bug #887337
+	"${FILESDIR}"/${PN}-2.24.33-configure.ac-Use-AC_RUN_IFELSE.patch # requires eautoreconf
 )
 
 strip_builddir() {
@@ -181,6 +182,8 @@ src_prepare() {
 multilib_src_configure() {
 	[[ ${ABI} == ppc64 ]] && append-flags -mminimal-toc
 
+	tc-export CPP
+
 	ECONF_SOURCE=${S} \
 	gnome2_src_configure \
 		$(usex aqua --with-gdktarget=quartz --with-gdktarget=x11) \
@@ -244,7 +247,7 @@ pkg_preinst() {
 			touch "${ED}${cache}" || die
 		fi
 	}
-	multilib_parallel_foreach_abi multilib_pkg_preinst
+	multilib_foreach_abi multilib_pkg_preinst
 }
 
 pkg_postinst() {
@@ -254,7 +257,7 @@ pkg_postinst() {
 		gnome2_query_immodules_gtk2 \
 			|| die "Update immodules cache failed (for ${ABI})"
 	}
-	multilib_parallel_foreach_abi multilib_pkg_postinst
+	multilib_foreach_abi multilib_pkg_postinst
 
 	set_gtk2_confdir
 

@@ -25,8 +25,8 @@ fi
 LICENSE="GPL-2"
 SLOT="0"
 
-IUSE="dco down-root examples inotify iproute2 +lz4 +lzo mbedtls +openssl"
-IUSE+=" pam pkcs11 +plugins selinux systemd test"
+IUSE="dco down-root examples inotify iproute2 kernel-ovpn +lz4 +lzo mbedtls"
+IUSE+=" +openssl pam pkcs11 +plugins selinux systemd test"
 
 RESTRICT="!test? ( test )"
 REQUIRED_USE="
@@ -47,8 +47,12 @@ COMMON_DEPEND="
 	openssl? ( >=dev-libs/openssl-1.0.2:0= )
 	pam? ( sys-libs/pam )
 	pkcs11? ( >=dev-libs/pkcs11-helper-1.11 )
+	selinux? ( sys-libs/libselinux )
 	systemd? ( sys-apps/systemd )
-	dco? ( >=net-vpn/ovpn-dco-0.2 >=dev-libs/libnl-3.2.29:= )
+	dco? (
+		!kernel-ovpn? ( >=net-vpn/ovpn-dco-0.2 )
+		>=dev-libs/libnl-3.2.29:=
+	)
 	sys-libs/libcap-ng:=
 "
 
@@ -70,15 +74,19 @@ RDEPEND="
 if [[ ${PV} = "9999" ]]; then
 	BDEPEND+=" dev-python/docutils"
 else
-	BDEPEND+=" verify-sig? ( sec-keys/openpgp-keys-openvpn )"
+	BDEPEND+=" verify-sig? ( >=sec-keys/openpgp-keys-openvpn-202600704 )"
 fi
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-2.6.17-tests-no-lto.patch
+	# Paired with LTO hack in src_configure, don't drop!
+	"${FILESDIR}"/${PN}-2.7.7-tests-no-lto.patch
 )
 
 pkg_setup() {
 	local CONFIG_CHECK="~TUN"
+	if use kernel-ovpn; then
+		local CONFIG_CHECK+=" ~OVPN"
+	fi
 	linux-info_pkg_setup
 }
 
@@ -115,6 +123,7 @@ src_configure() {
 		$(use_enable iproute2)
 		$(use_enable pam plugin-auth-pam)
 		$(use_enable down-root plugin-down-root)
+		$(use_enable selinux)
 		$(use_enable systemd)
 		$(use_enable dco)
 	)
@@ -133,19 +142,14 @@ src_test() {
 	elog "Running top-level tests"
 	emake check
 
-	pushd tests/unit_tests &>/dev/null || die
 	elog "Running unit tests"
-	emake check
-	popd &>/dev/null || die
+	emake -C tests/unit_tests check
 }
 
 src_install() {
 	default
 
-	find "${ED}/usr" -name '*.la' -delete || die
-
-	# install documentation
-	dodoc AUTHORS ChangeLog PORTS README
+	find "${ED}/usr" -type f -name '*.la' -delete || die
 
 	# Install some helper scripts
 	keepdir /etc/openvpn
@@ -154,19 +158,14 @@ src_install() {
 	doexe "${FILESDIR}/down.sh"
 
 	# Install the init script and config file
-	newinitd "${FILESDIR}/${PN}-2.1.init" openvpn
+	newinitd "${FILESDIR}/${PN}-2.2.init" openvpn
 	newconfd "${FILESDIR}/${PN}-2.1.conf" openvpn
 
 	# install examples, controlled by the respective useflag
 	if use examples ; then
-		# (is the below comment relevant anymore?)
-		## dodoc does not supportly support directory traversal, #15193
 		docinto examples
 		dodoc -r sample contrib
 	fi
-
-	# https://bugs.gentoo.org/755680#c3
-	doman doc/openvpn.8
 
 	# https://github.com/OpenVPN/openvpn/issues/482 (bug #857648)
 	newtmpfiles distro/systemd/tmpfiles-openvpn.conf openvpn.conf

@@ -1,0 +1,28 @@
+# Remove warnings emitted by -Wunterminated-string-initialization
+# Upstream MR: https://sourceforge.net/p/tuxpaint/tuxpaint/merge-requests/24/
+--- a/src/compiler.h.o
++++ b/src/compiler.h
+@@ -134,3 +134,12 @@
+ #define FALL_THROUGH ((void)0)
+ #endif /* __GNUC__ >= 7 */
+ #endif
++
++// Used to, e.g, prevent warnings from -Wunterminated-string-initialization
++#ifndef NONSTRING
++#if defined(__GNUC__) && __GNUC__ >= 8
++#define NONSTRING __attribute__ ((nonstring))
++#else
++#define NONSTRING
++#endif
++#endif
+--- a/src/rgblinear.h
++++ b/src/rgblinear.h
+@@ -78,7 +78,7 @@ static const float sRGB_to_linear_table[256] = {
+ };
+ 
+ // this goes the other way; range checking will be required
+-static const unsigned char linear_to_sRGB_table[4096] =
++static const unsigned char linear_to_sRGB_table[4096] NONSTRING =
+   "\x00\x01\x02\x03\x03\x04\x05\x06\x07\x08\x08\x09\x0a\x0b\x0b\x0c\x0d\x0d"
+   "\x0e\x0f\x10\x10\x11\x11\x12\x12\x13\x13\x14\x14\x15\x15\x16\x16\x17\x17"
+   "\x18\x18\x18\x19\x19\x1a\x1a\x1a\x1b\x1b\x1c\x1c\x1c\x1d\x1d\x1d\x1e\x1e"

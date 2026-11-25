@@ -1,0 +1,10 @@
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -15,7 +15,6 @@ AM_CFLAGS += -fdata-sections -ffunction-sections
+ endif
+ 
+ # keep it tight
+-AM_CFLAGS += -Werror
+ 
+ bin_PROGRAMS = procenv
+ 

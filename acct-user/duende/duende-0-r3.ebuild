@@ -1,4 +1,4 @@
-# Copyright 2019-2024 Gentoo Authors
+# Copyright 2019-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,6 +9,3 @@ ACCT_USER_ID=66
 ACCT_USER_GROUPS=( "maradns" )
 
 acct-user_add_deps
-
-DEPEND+=" acct-group/maradns "
-RDEPEND+=" acct-group/maradns "

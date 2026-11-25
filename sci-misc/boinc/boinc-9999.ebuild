@@ -1,4 +1,4 @@
-# Copyright 2023-2025 Gentoo Authors
+# Copyright 2023-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,7 +6,7 @@ EAPI=8
 MY_PV=$(ver_cut 1-2)
 WX_GTK_VER=3.2-gtk3
 
-inherit autotools bash-completion-r1 linux-info optfeature wxwidgets xdg-utils
+inherit autotools linux-info optfeature shell-completion wxwidgets xdg-utils
 
 DESCRIPTION="The Berkeley Open Infrastructure for Network Computing"
 HOMEPAGE="https://boinc.berkeley.edu/"
@@ -35,7 +35,7 @@ SLOT="0"
 
 # - "X" builds idle tracking via XScrnSaver and the libboinc_graphics2 library
 # - "gui" builds the manager app and the screensaver
-IUSE="X gui"
+IUSE="X gui selinux"
 
 DEPEND="
 	>=acct-user/boinc-1
@@ -58,7 +58,10 @@ DEPEND="
 		x11-libs/xcb-util
 	)
 "
-RDEPEND="${DEPEND}"
+RDEPEND="
+	${DEPEND}
+	selinux? ( sec-policy/selinux-boinc )
+"
 BDEPEND="
 	app-text/docbook-xml-dtd:4.4
 	app-text/docbook2X
@@ -92,7 +95,10 @@ src_prepare() {
 	default
 
 	# prevent bad changes in compile flags, bug 286701
-	sed -i -e "s:BOINC_SET_COMPILE_FLAGS::" configure.ac || die "sed failed"
+	sed -e "s:BOINC_SET_COMPILE_FLAGS::" \
+		-e "/-mavx/d" \
+		-e "/-msse3/d" \
+		-i configure.ac || die "sed failed"
 
 	eautoreconf
 }

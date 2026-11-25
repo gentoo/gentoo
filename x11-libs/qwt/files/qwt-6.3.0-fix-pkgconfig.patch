@@ -1,0 +1,22 @@
+Source: https://src.fedoraproject.org/rpms/qwt/blob/rawhide/f/qwt-pkgconfig.patch
+
+--- a/src/src.pro
++++ b/src/src.pro
+@@ -86,14 +86,14 @@ contains(QWT_CONFIG, QwtPkgConfig) {
+     greaterThan(QT_MAJOR_VERSION, 4) {
+ 
+         QMAKE_PKGCONFIG_FILE = Qt$${QT_MAJOR_VERSION}$${QMAKE_PKGCONFIG_NAME}
+-        QMAKE_PKGCONFIG_REQUIRES = Qt5Widgets Qt5Concurrent Qt5PrintSupport
++        QMAKE_PKGCONFIG_REQUIRES = Qt$${QT_MAJOR_VERSION}Widgets Qt$${QT_MAJOR_VERSION}Concurrent Qt$${QT_MAJOR_VERSION}PrintSupport
+ 
+         contains(QWT_CONFIG, QwtSvg) {
+-            QMAKE_PKGCONFIG_REQUIRES += Qt5Svg
++            QMAKE_PKGCONFIG_REQUIRES += Qt$${QT_MAJOR_VERSION}Svg
+         }
+ 
+         contains(QWT_CONFIG, QwtOpenGL) {
+-            QMAKE_PKGCONFIG_REQUIRES += Qt5OpenGL
++            QMAKE_PKGCONFIG_REQUIRES += Qt$${QT_MAJOR_VERSION}OpenGL
+         }
+ 
+         QMAKE_DISTCLEAN += $${DESTDIR}/$${QMAKE_PKGCONFIG_DESTDIR}/$${QMAKE_PKGCONFIG_FILE}.pc

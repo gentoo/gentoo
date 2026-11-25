@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,11 +12,16 @@ SRC_URI="https://pwauth.googlecode.com/files/${P}.tar.gz"
 LICENSE="Apache-1.1"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
-IUSE="faillog pam ignore-case domain-aware"
+IUSE="domain-aware faillog ignore-case pam selinux"
 
-DEPEND="pam? ( sys-libs/pam )
-	!pam? ( virtual/libcrypt:= )"
-RDEPEND="${DEPEND}"
+DEPEND="
+	pam? ( sys-libs/pam )
+	!pam? ( virtual/libcrypt:= )
+"
+RDEPEND="
+	${DEPEND}
+	selinux? ( sec-policy/selinux-pwauth )
+"
 
 PATCHES=(
 	"${FILESDIR}/${P}-config.patch"

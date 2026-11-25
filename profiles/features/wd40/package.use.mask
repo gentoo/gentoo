@@ -1,6 +1,171 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Michael Orlitzky <mjo@gentoo.org> (2026-11-21)
+# Pulls in app-antivirus/clamav.
+mail-client/claws-mail clamav
+mail-filter/MailScanner clamav
+mail-filter/amavisd-new clamav
+mail-filter/mimedefang clamav
+net-ftp/frox clamav
+net-ftp/proftpd clamav
+net-mail/cyrus-imapd clamav
+net-proxy/havp clamav
+
+# Michał Górny <mgorny@gentoo.org> (2025-11-17)
+# Needs dev-python/pip -> uv-build.
+dev-python/argcomplete test
+dev-python/argparse-manpage test
+dev-python/build test
+dev-python/distlib test
+dev-python/ensurepip-setuptools test
+dev-python/helpdev test
+dev-python/jupyter-core test
+dev-python/logbook test
+dev-python/pytest-skip-markers test
+dev-python/pythran test
+dev-python/rope test
+dev-python/scikit-build test
+dev-python/setuptools test
+dev-python/virtualenv test
+dev-python/virtualenvwrapper test
+media-gfx/openscad test
+media-tv/mythtv python
+media-video/yle-dl test
+sci-libs/dlib test
+
+# Michał Górny <mgorny@gentoo.org> (2025-11-17)
+# Needs dev-python/dblatex -> uv-build.
+dev-util/ragel doc
+
+# Pacho Ramos <pacho@gentoo.org> (2026-10-31)
+# tests need rustified librsvg
+>=gui-libs/gtk-4.22 test
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2026-10-20)
+# Requires dev-build/corrosion, iow rust/cargo.
+kde-plasma/kdeplasma-addons led
+>=kde-plasma/kwin-6.8.0 lock
+virtual/notification-daemon kde
+
+# Michał Górny <mgorny@gentoo.org> (2025-10-09)
+# Need dev-python/dnspython -> uv-build.
+dev-python/psycopg test
+dev-python/wtforms test
+
+# Thibaud CANALE <thican@thican.net> (2026-05-17)
+# Tests require dev-python/trio
+app-crypt/certbot test
+dev-python/cloudflare test
+dev-python/httpx-aiohttp test
+
+# Michał Górny <mgorny@gentoo.org> (2025-08-29)
+# Need dev-python/hypothesis.
+dev-python/accessible-pygments test
+dev-python/argon2-cffi test
+dev-python/attrs test
+dev-python/binaryornot test
+dev-python/brotlicffi test
+dev-python/cattrs test
+dev-python/chardet test
+dev-python/commonmark test
+dev-python/coverage test
+dev-python/ecdsa test
+dev-python/gmpy2 test
+dev-python/h2 test
+dev-python/hpack test
+dev-python/hyperlink test
+dev-python/hypothesis-gentoo test
+dev-python/icalendar test
+dev-python/idna test
+dev-python/iso8601 test
+dev-python/isoduration test
+dev-python/isort test
+dev-python/jsondiff test
+dev-python/jsonpatch test
+dev-python/jsonpath-ng test
+dev-python/kombu test
+dev-python/mccabe test
+dev-python/mpmath test
+dev-python/multidict test
+dev-python/munkres test
+dev-python/natsort test
+dev-python/numpy test
+dev-python/packaging test
+dev-python/pandas test
+dev-python/parver test
+dev-python/pikepdf test
+dev-python/priority test
+dev-python/pyarrow test
+dev-python/pycairo test
+dev-python/pynacl test
+dev-python/pyrsistent test
+dev-python/pytest test
+dev-python/pytest-asyncio test
+dev-python/pytest-twisted test
+dev-python/python-dateutil test
+dev-python/python-subunit test
+dev-python/pyudev test
+dev-python/quart test
+dev-python/rapidfuzz test
+dev-python/rfc3339-validator test
+dev-python/rfc3986-validator test
+dev-python/scipy test
+dev-python/srt test
+dev-python/sympy test
+dev-python/terminaltables3 test
+dev-python/textdistance test
+dev-python/time-machine test
+dev-python/tornado test
+dev-python/url-normalize test
+dev-python/wcag-contrast-ratio test
+dev-python/xarray test
+dev-python/yarl test
+dev-python/zeroconf test
+dev-python/zstandard test
+media-libs/mutagen test
+sci-libs/pyshp test
+
+# Pacho Ramos <pacho@gentoo.org> (2026-08-10)
+# Needs gnome-control-center and other rust reverse deps
+app-emulation/winetricks gui
+app-office/gnucash doc
+dev-perl/Panotools-Script gui
+gnome-base/gvfs google onedrive test
+gnome-extra/gnome-commander doc
+mate-base/mate help
+media-sound/pulseeffects doc
+x11-misc/mugshot gnome
+x11-misc/xscreensaver gdm
+
+# Michał Górny <mgorny@gentoo.org> (2025-08-09)
+# Require dev-python/pydantic and dev-python/inline-snapshot,
+# respectively.
+dev-python/cappa test
+dev-python/yaxmldiff test
+
+# Michał Górny <mgorny@gentoo.org> (2025-08-09)
+# Require dev-python/sybil.
+dev-python/tldextract test
+
+# Eli Schwartz <eschwartz@gentoo.org> (2026-07-07)
+# Requires >= on gtk/libadwaita, which is masked for librsvg
+# reasons.
+>=dev-util/sysprof-50.0 gtk
+
+# Michał Górny <mgorny@gentoo.org> (2025-05-23)
+# dev-python/pytest-socket now requires dev-python/uv-build.
+dev-ada/e3-core test
+
+# Michał Górny <mgorny@gentoo.org> (2025-05-07)
+# dev-python/mypy now started requiring NIH Rust packages.
+dev-python/charset-normalizer native-extensions
+
+# Michał Górny <mgorny@gentoo.org> (2025-05-02)
+# dev-python/cbor2 has been RIIR-ed, and the fallback Python
+# implementation was removed at the same time.  Cover its revdeps.
+sys-apps/fwupd uefi
+
 # Ionen Wolkens <ionen@gentoo.org> (2026-03-22)
 # app-text/mdbook is written in rust
 >=dev-libs/wayland-1.25.0 doc
@@ -106,12 +271,16 @@ sys-kernel/installkernel efistub
 # Need dev-python/jsonschema (or its revdeps).
 dev-python/botocore test
 dev-python/ipython nbconvert test
+dev-python/opentelemetry-sdk test
 dev-python/sphinx-autodoc-typehints test
 >=sci-libs/gdal-3.11.3 python
+>=app-admin/awscli-2 test
+dev-python/jupyter-builder test
 
 # Michał Górny <mgorny@gentoo.org> (2024-02-01)
 # Need dev-python/trio.
 >=dev-python/urllib3-2.2.0 test
+>=dev-python/websockets-17.0 test
 
 # Takuya Wakazono <pastalian46@gmail.com> (2023-11-21)
 # Need app-crypt/rpm-sequoia.
@@ -126,6 +295,7 @@ dev-python/jupyter-client test
 # Michał Górny <mgorny@gentoo.org> (2023-10-15)
 # Need dev-python/notebook.
 dev-python/ipython notebook
+dev-python/matplotlib-inline test
 dev-python/nbclient test
 dev-python/nbconvert test
 
@@ -166,10 +336,6 @@ dev-python/django test
 # Hans de Graaff <graaff@gentoo.org> (2023-03-04)
 # The JIT compiler in ruby requires rust
 dev-lang/ruby jit
-
-# Sam James <sam@gentoo.org> (2022-12-26)
-# Needs dev-python/mkdocs-redirects->dev-python/twine which is masked on wd40
-dev-debug/gef doc
 
 # Sam James <sam@gentoo.org> (2022-12-11)
 # net-libs/rustls-ffi needs Rust.
@@ -257,6 +423,7 @@ www-apps/roundup ssl
 dev-python/anyio test
 dev-python/httpcore test
 dev-python/httpx test
+dev-python/httpx2 test
 dev-python/aiohttp-socks test
 dev-python/truststore test
 

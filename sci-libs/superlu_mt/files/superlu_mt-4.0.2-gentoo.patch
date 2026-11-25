@@ -1,0 +1,202 @@
+--- a/SRC/CMakeLists.txt	2026-05-22 18:54:31.445818114 +0200
++++ b/SRC/CMakeLists.txt	2026-05-22 18:56:42.921385043 +0200
+@@ -1,32 +1,33 @@
+ 
+ file (GLOB sources "*.c")
+-add_library (superlu_mt${PLAT} ${sources})
+-set_target_properties (superlu_mt${PLAT} PROPERTIES POSITION_INDEPENDENT_CODE ON)
++add_library (superlu_mt ${sources})
++set_target_properties (superlu_mt PROPERTIES POSITION_INDEPENDENT_CODE ON)
++set_target_properties (superlu_mt PROPERTIES VERSION ${PROJECT_VERSION} SOVERSION 4)
+ 
+-set_property(TARGET superlu_mt${PLAT} PROPERTY C_STANDARD 99)
++set_property(TARGET superlu_mt PROPERTY C_STANDARD 99)
+ 
+ if (HAVE_LIB_M)
+-  target_link_libraries (superlu_mt${PLAT} PRIVATE m)
++  target_link_libraries (superlu_mt PRIVATE m)
+ endif ()
+ 
+-target_link_libraries (superlu_mt${PLAT} PRIVATE ${BLAS_LIB})
+-target_compile_definitions (superlu_mt${PLAT} PRIVATE Add_)
++target_link_libraries (superlu_mt PRIVATE ${BLAS_LIB})
++target_compile_definitions (superlu_mt PRIVATE Add_)
+ 
+ if (PLAT STREQUAL "_PTHREAD")
+-  target_compile_definitions (superlu_mt${PLAT} PUBLIC __PTHREAD)
+-  target_link_libraries (superlu_mt${PLAT} PRIVATE ${CMAKE_THREAD_LIBS_INIT})
++  target_compile_definitions (superlu_mt PUBLIC __PTHREAD)
++  target_link_libraries (superlu_mt PRIVATE ${CMAKE_THREAD_LIBS_INIT})
+ elseif (PLAT STREQUAL "_OPENMP")
+-  target_compile_definitions (superlu_mt${PLAT} PUBLIC __OPENMP)
+-  target_link_libraries (superlu_mt${PLAT} PRIVATE OpenMP::OpenMP_C)
++  target_compile_definitions (superlu_mt PUBLIC __OPENMP)
++  target_link_libraries (superlu_mt PRIVATE OpenMP::OpenMP_C)
+ endif ()
+ 
+ if (LONGINT)
+-  target_compile_definitions (superlu_mt${PLAT} PUBLIC _LONGINT)
++  target_compile_definitions (superlu_mt PUBLIC _LONGINT)
+ endif ()
+ 
+-target_include_directories (superlu_mt${PLAT} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
+-target_include_directories (superlu_mt${PLAT} INTERFACE $<INSTALL_INTERFACE:include>)
+-install (TARGETS superlu_mt${PLAT} DESTINATION ${CMAKE_INSTALL_LIBDIR})
++target_include_directories (superlu_mt PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
++target_include_directories (superlu_mt INTERFACE $<INSTALL_INTERFACE:include>)
++install (TARGETS superlu_mt DESTINATION ${CMAKE_INSTALL_LIBDIR})
+ 
+ file (GLOB headers "*.h")
+ install (FILES ${headers} DESTINATION ${SUPERLUMT_INSTALL_INCLUDEDIR})
+--- a/TESTING/MATGEN/CMakeLists.txt	2026-05-22 19:05:33.122576739 +0200
++++ b/TESTING/MATGEN/CMakeLists.txt	2026-05-22 19:05:57.296311914 +0200
+@@ -107,4 +107,4 @@
+ endif()
+ 
+ add_library(matgen ${sources})
+-target_link_libraries(matgen superlu_mt${PLAT})
++target_link_libraries(matgen superlu_mt)
+--- a/TESTING/CMakeLists.txt	2026-05-22 19:07:38.919198655 +0200
++++ b/TESTING/CMakeLists.txt	2026-05-22 19:08:27.072671097 +0200
+@@ -52,7 +52,7 @@
+   add_executable(pstest
+ 		psdrive.c sp_sconvert.c psgst01.c psgst02.c psgst04.c psgst07.c
+           	psgssv.c psgssvx.c sp_ienv.c )
+-  target_link_libraries(pstest ${test_link_libs})
++  target_link_libraries(pstest ${test_link_libs} ${BLAS_LIB})
+   add_superlumt_test(pstest g10)
+ endif()
+ 
+@@ -61,7 +61,7 @@
+   add_executable(pdtest
+ 		pddrive.c sp_dconvert.c pdgst01.c pdgst02.c pdgst04.c pdgst07.c
+ 		pdgssv.c pdgssvx.c sp_ienv.c )
+-  target_link_libraries(pdtest ${test_link_libs})
++  target_link_libraries(pdtest ${test_link_libs} ${BLAS_LIB})
+   add_superlumt_test(pdtest g10)
+ endif()
+ 
+@@ -69,7 +69,7 @@
+   add_executable(pctest
+ 		pcdrive.c sp_cconvert.c pcgst01.c pcgst02.c pcgst04.c pcgst07.c
+           	pcgssv.c pcgssvx.c sp_ienv.c )
+-  target_link_libraries(pctest ${test_link_libs})
++  target_link_libraries(pctest ${test_link_libs} ${BLAS_LIB})
+   add_superlumt_test(pctest cg20.cua)
+ endif()
+ 
+@@ -77,6 +77,6 @@
+   add_executable(pztest
+ 		pzdrive.c sp_zconvert.c pzgst01.c pzgst02.c pzgst04.c pzgst07.c
+ 		pzgssv.c pzgssvx.c sp_ienv.c )
+-  target_link_libraries(pztest ${test_link_libs})
++  target_link_libraries(pztest ${test_link_libs} ${BLAS_LIB})
+   add_superlumt_test(pztest cg20.cua)
+ endif()
+--- a/EXAMPLE/CMakeLists.txt	2026-05-22 19:46:35.843324532 +0200
++++ b/EXAMPLE/CMakeLists.txt	2026-05-22 19:47:44.266558926 +0200
+@@ -32,80 +32,80 @@
+ 
+ # examples for complex
+ add_executable(pclinsol  ${_DEPENDENCY_ALL} pclinsol.c)
+-target_link_libraries(pclinsol superlu_mt${PLAT})
++target_link_libraries(pclinsol superlu_mt)
+ 
+ add_executable(pclinsolx  ${_DEPENDENCY_ALL} pclinsolx.c)
+-target_link_libraries(pclinsolx superlu_mt${PLAT})
++target_link_libraries(pclinsolx superlu_mt)
+ 
+ add_executable(pclinsolx1  ${_DEPENDENCY_ALL} pclinsolx1.c)
+-target_link_libraries(pclinsolx1 superlu_mt${PLAT})
++target_link_libraries(pclinsolx1 superlu_mt)
+ 
+ add_executable(pclinsolx2  ${_DEPENDENCY_ALL} pclinsolx2.c)
+-target_link_libraries(pclinsolx2 superlu_mt${PLAT})
++target_link_libraries(pclinsolx2 superlu_mt)
+ 
+ add_executable(pcrepeat  ${_DEPENDENCY_ALL} pcrepeat.c)
+-target_link_libraries(pcrepeat superlu_mt${PLAT})
++target_link_libraries(pcrepeat superlu_mt)
+ 
+ add_executable(pcspmd  ${_DEPENDENCY_ALL} pcspmd.c)
+-target_link_libraries(pcspmd superlu_mt${PLAT})
++target_link_libraries(pcspmd superlu_mt)
+ 
+ # examples for double
+ add_executable(pdlinsol  ${_DEPENDENCY_ALL} pdlinsol.c)
+-target_link_libraries(pdlinsol superlu_mt${PLAT})
++target_link_libraries(pdlinsol superlu_mt)
+ 
+ add_executable(pdlinsolx  ${_DEPENDENCY_ALL} pdlinsolx.c)
+-target_link_libraries(pdlinsolx superlu_mt${PLAT})
++target_link_libraries(pdlinsolx superlu_mt)
+ 
+ add_executable(pdlinsolx1  ${_DEPENDENCY_ALL} pdlinsolx1.c)
+-target_link_libraries(pdlinsolx1 superlu_mt${PLAT})
++target_link_libraries(pdlinsolx1 superlu_mt)
+ 
+ add_executable(pdlinsolx2  ${_DEPENDENCY_ALL} pdlinsolx2.c)
+-target_link_libraries(pdlinsolx2 superlu_mt${PLAT})
++target_link_libraries(pdlinsolx2 superlu_mt)
+ 
+ add_executable(pdrepeat  ${_DEPENDENCY_ALL} pdrepeat.c)
+-target_link_libraries(pdrepeat superlu_mt${PLAT})
++target_link_libraries(pdrepeat superlu_mt)
+ 
+ add_executable(pdspmd  ${_DEPENDENCY_ALL} pdspmd.c)
+-target_link_libraries(pdspmd superlu_mt${PLAT})
++target_link_libraries(pdspmd superlu_mt)
+ 
+ # examples for float
+ add_executable(pslinsol  ${_DEPENDENCY_ALL} pslinsol.c)
+-target_link_libraries(pslinsol superlu_mt${PLAT})
++target_link_libraries(pslinsol superlu_mt)
+ 
+ add_executable(pslinsolx  ${_DEPENDENCY_ALL} pslinsolx.c)
+-target_link_libraries(pslinsolx superlu_mt${PLAT})
++target_link_libraries(pslinsolx superlu_mt)
+ 
+ add_executable(pslinsolx1  ${_DEPENDENCY_ALL} pslinsolx1.c)
+-target_link_libraries(pslinsolx1 superlu_mt${PLAT})
++target_link_libraries(pslinsolx1 superlu_mt)
+ 
+ add_executable(pslinsolx2  ${_DEPENDENCY_ALL} pslinsolx2.c)
+-target_link_libraries(pslinsolx2 superlu_mt${PLAT})
++target_link_libraries(pslinsolx2 superlu_mt)
+ 
+ add_executable(psrepeat  ${_DEPENDENCY_ALL} psrepeat.c)
+-target_link_libraries(psrepeat superlu_mt${PLAT})
++target_link_libraries(psrepeat superlu_mt)
+ 
+ add_executable(psspmd  ${_DEPENDENCY_ALL} psspmd.c)
+-target_link_libraries(psspmd superlu_mt${PLAT})
++target_link_libraries(psspmd superlu_mt)
+ 
+ 
+ # examples for double complex
+ add_executable(pzlinsol  ${_DEPENDENCY_ALL} pzlinsol.c)
+-target_link_libraries(pzlinsol superlu_mt${PLAT})
++target_link_libraries(pzlinsol superlu_mt)
+ 
+ add_executable(pzlinsolx  ${_DEPENDENCY_ALL} pzlinsolx.c)
+-target_link_libraries(pzlinsolx superlu_mt${PLAT})
++target_link_libraries(pzlinsolx superlu_mt)
+ 
+ add_executable(pzlinsolx1  ${_DEPENDENCY_ALL} pzlinsolx1.c)
+-target_link_libraries(pzlinsolx1 superlu_mt${PLAT})
++target_link_libraries(pzlinsolx1 superlu_mt)
+ 
+ add_executable(pzlinsolx2  ${_DEPENDENCY_ALL} pzlinsolx2.c)
+-target_link_libraries(pzlinsolx2 superlu_mt${PLAT})
++target_link_libraries(pzlinsolx2 superlu_mt)
+ 
+ add_executable(pzrepeat  ${_DEPENDENCY_ALL} pzrepeat.c)
+-target_link_libraries(pzrepeat superlu_mt${PLAT})
++target_link_libraries(pzrepeat superlu_mt)
+ 
+ add_executable(pzspmd  ${_DEPENDENCY_ALL} pzspmd.c)
+-target_link_libraries(pzspmd superlu_mt${PLAT})
++target_link_libraries(pzspmd superlu_mt)
+ 
+ 
+ if(MSVC AND WinGetOpt_FOUND)

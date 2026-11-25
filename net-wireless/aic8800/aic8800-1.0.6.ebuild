@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
@@ -18,7 +18,7 @@ IUSE="+firmware udev"
 
 CONFIG_CHECK="MAC80211 USB ~BT_HCIBTUSB"
 
-PATCHES="${FILESDIR}/${PN}-1.0.6-linux-6.12.patch"
+PATCHES=( "${FILESDIR}"/${PN}-1.0.6-linux-6.12.patch )
 
 BDEPEND+="
 	$(unpacker_src_uri_depends)"

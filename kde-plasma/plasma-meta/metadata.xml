@@ -6,9 +6,10 @@
 		<name>Gentoo KDE Project</name>
 	</maintainer>
 	<upstream>
-		<bugs-to>https://bugs.kde.org/</bugs-to>
+		<bugs-to>https://bugs.kde.org/enter_bug.cgi?classification=Plasma</bugs-to>
 	</upstream>
 	<use>
+		<flag name="backup">Pull in <pkg>kde-plasma/kup</pkg> for an integrated backup/restore solution</flag>
 		<flag name="browser-integration">Enable integration with Chrome/Firefox with browser extensions</flag>
 		<flag name="crash-handler">Pull in <pkg>kde-plasma/drkonqi</pkg> for assisted upstream crash reports</flag>
 		<flag name="crypt">Pull in <pkg>kde-plasma/plasma-vault</pkg> for encrypted vaults integration</flag>
@@ -19,12 +20,10 @@
 		<flag name="grub">Pull in Breeze theme for <pkg>sys-boot/grub</pkg></flag>
 		<flag name="gtk">Enable Breeze widget style and system settings module for GTK+</flag>
 		<flag name="kwallet">Enable support for KWallet auto-unlocking via <pkg>kde-plasma/kwallet-pam</pkg></flag>
-		<flag name="ocr">Enable Optical Character Recognition support via <pkg>app-text/tesseract</pkg></flag>
 		<flag name="oxygen-theme">Pull in Oxygen icons, sound theme and visual style for KDE Plasma</flag>
 		<flag name="plymouth">Pull in Breeze theme for <pkg>sys-boot/plymouth</pkg></flag>
 		<flag name="pulseaudio">Install Plasma applet for PulseAudio volume management</flag>
-		<flag name="qt5">Pull in required packages for seamless integration of KF5/Qt5-based applications</flag>
-		<flag name="sddm">Pull in the <pkg>x11-misc/sddm</pkg> display manager and system settings module</flag>
+		<flag name="sddm">Pull in the <pkg>gui-apps/sddm</pkg> display manager and system settings module</flag>
 		<flag name="sdk">Pull in <pkg>kde-plasma/plasma-sdk</pkg> for Plasma development</flag>
 		<flag name="smart">Pull in <pkg>kde-plasma/plasma-disks</pkg> for disk health monitoring</flag>
 		<flag name="thunderbolt">Pull in <pkg>kde-plasma/plasma-thunderbolt</pkg> control center module</flag>
@@ -34,5 +33,6 @@
 		<flag name="wallpapers">Install wallpapers for the Plasma Workspace</flag>
 		<flag name="webengine">Use <pkg>kde-apps/khelpcenter</pkg> to access the locally installed KDE Help System Handbook</flag>
 		<flag name="xwayland">Enable Wayland windows screensharing to XWayland applications via <pkg>gui-apps/xwaylandvideobridge</pkg></flag>
+		<flag name="X">Enable X window manager support via <pkg>kde-plasma/kwin-x11</pkg> (only until and including Plasma 6.7)</flag>
 	</use>
 </pkgmetadata>

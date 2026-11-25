@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,7 +16,7 @@ SRC_URI="https://salsa.debian.org/blade/${PN}/-/archive/debian/${MY_PV}/${MY_P}.
 LICENSE="BSD-4 ZLIB public-domain"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
-IUSE="doc fuse systemd tcpd"
+IUSE="doc fuse selinux systemd tcpd"
 
 DEPEND="acct-user/apt-cacher-ng
 	acct-group/apt-cacher-ng
@@ -30,7 +30,8 @@ DEPEND="acct-user/apt-cacher-ng
 	tcpd? ( sys-apps/tcp-wrappers )"
 BDEPEND="virtual/pkgconfig"
 RDEPEND="${DEPEND}
-	dev-lang/perl"
+	dev-lang/perl
+	selinux? ( sec-policy/selinux-aptcacher )"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-3.3.1-flags.patch"

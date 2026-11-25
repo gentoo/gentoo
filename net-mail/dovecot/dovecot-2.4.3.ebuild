@@ -36,7 +36,7 @@ S="${WORKDIR}/${MY_P}"
 PIEGONHOLE_S="../dovecot-pigeonhole-${MY_PV}"
 LICENSE="LGPL-2.1 MIT"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="amd64 ~arm arm64 ~hppa ~mips ~ppc ppc64 ~riscv ~sparc ~x86"
 
 IUSE_DOVECOT_AUTH_DICT="cdb kerberos ldap lua mysql pam postgres sqlite"
 IUSE_DOVECOT_COMPRESS="lz4 zstd"
@@ -75,7 +75,7 @@ DEPEND="
 	system-icu? ( dev-libs/icu:= )
 	suid? ( acct-group/mail )
 	systemd? ( sys-apps/systemd:= )
-	textcat? ( app-text/libexttextcat )
+	textcat? ( app-text/libexttextcat:= )
 	unwind? ( sys-libs/libunwind:= )
 	zstd? ( app-arch/zstd:= )
 	"

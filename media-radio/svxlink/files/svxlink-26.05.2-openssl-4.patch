@@ -1,0 +1,119 @@
+From 860cd1e7330a785f98a3cbda7839220e5e0c3fa6 Mon Sep 17 00:00:00 2001
+From: Ravi Kant Sharma <ravi.kant.sharma@canonical.com>
+Date: Thu, 25 Jun 2026 11:32:33 +0200
+Subject: [PATCH] Fix OpenSSL 4.0 compatibility in async SSL code
+
+---
+ src/async/core/AsyncSslCertSigningReq.h   | 10 +++++-----
+ src/async/core/AsyncSslX509.h             | 18 ++++++------------
+ src/async/demo/AsyncSslTcpServer_demo.cpp |  4 ++--
+ 3 files changed, 13 insertions(+), 19 deletions(-)
+
+diff --git a/src/async/core/AsyncSslCertSigningReq.h b/src/async/core/AsyncSslCertSigningReq.h
+index 2ee6ac8e1..5343a5374 100644
+--- a/src/async/core/AsyncSslCertSigningReq.h
++++ b/src/async/core/AsyncSslCertSigningReq.h
+@@ -292,17 +292,17 @@ class SslCertSigningReq
+     bool addSubjectName(const std::string& field, const std::string& value)
+     {
+       assert(m_req != nullptr);
+-      X509_NAME* name = X509_REQ_get_subject_name(m_req);
++      X509_NAME* name = X509_NAME_new();
+       if (name == nullptr)
+       {
+-        name = X509_NAME_new();
++        return false;
+       }
+-      assert(name != nullptr);
+       bool success = (X509_NAME_add_entry_by_txt(name, field.c_str(),
+             MBSTRING_UTF8,
+             reinterpret_cast<const unsigned char*>(value.c_str()),
+             value.size(), -1, 0) == 1);
+       success = success && (X509_REQ_set_subject_name(m_req, name) == 1);
++      X509_NAME_free(name);
+       return success;
+     }
+ 
+@@ -404,8 +404,8 @@ class SslCertSigningReq
+       //int lastpos = X509_NAME_get_index_by_NID(subj, NID_commonName, -1);
+       if (lastpos >= 0)
+       {
+-        X509_NAME_ENTRY *e = X509_NAME_get_entry(subj, lastpos);
+-        ASN1_STRING *d = X509_NAME_ENTRY_get_data(e);
++        const X509_NAME_ENTRY *e = X509_NAME_get_entry(subj, lastpos);
++        const ASN1_STRING *d = X509_NAME_ENTRY_get_data(e);
+         cn = reinterpret_cast<const char*>(ASN1_STRING_get0_data(d));
+       }
+       return cn;
+diff --git a/src/async/core/AsyncSslX509.h b/src/async/core/AsyncSslX509.h
+index 335fab2bc..983b64d95 100644
+--- a/src/async/core/AsyncSslX509.h
++++ b/src/async/core/AsyncSslX509.h
+@@ -354,8 +354,8 @@ class SslX509
+ #endif
+       if (lastpos >= 0)
+       {
+-        X509_NAME_ENTRY *e = X509_NAME_get_entry(subj, lastpos);
+-        ASN1_STRING *d = X509_NAME_ENTRY_get_data(e);
++        const X509_NAME_ENTRY *e = X509_NAME_get_entry(subj, lastpos);
++        const ASN1_STRING *d = X509_NAME_ENTRY_get_data(e);
+         cn = reinterpret_cast<const char*>(ASN1_STRING_get0_data(d));
+       }
+       return cn;
+@@ -712,11 +712,7 @@ class SslX509
+     {
+       // FIXME: Error handling
+       assert(m_cert != nullptr);
+-      X509_NAME* name = X509_get_issuer_name(m_cert);
+-      if (name == nullptr)
+-      {
+-        name = X509_NAME_new();
+-      }
++      X509_NAME* name = X509_NAME_new();
+       assert(name != nullptr);
+       int ret = X509_NAME_add_entry_by_txt(name, field.c_str(), MBSTRING_UTF8,
+           reinterpret_cast<const unsigned char*>(value.c_str()),
+@@ -724,6 +720,7 @@ class SslX509
+       assert(ret == 1);
+       ret = X509_set_issuer_name(m_cert, name);
+       assert(ret == 1);
++      X509_NAME_free(name);
+     }
+ 
+     /**
+@@ -735,11 +732,7 @@ class SslX509
+     {
+       // FIXME: Error handling
+       assert(m_cert != nullptr);
+-      X509_NAME* name = X509_get_subject_name(m_cert);
+-      if (name == nullptr)
+-      {
+-        name = X509_NAME_new();
+-      }
++      X509_NAME* name = X509_NAME_new();
+       assert(name != nullptr);
+       int ret = X509_NAME_add_entry_by_txt(name, field.c_str(), MBSTRING_UTF8,
+           reinterpret_cast<const unsigned char*>(value.c_str()),
+@@ -747,6 +740,7 @@ class SslX509
+       assert(ret == 1);
+       ret = X509_set_subject_name(m_cert, name);
+       assert(ret == 1);
++      X509_NAME_free(name);
+     }
+ 
+     /**
+diff --git a/src/async/demo/AsyncSslTcpServer_demo.cpp b/src/async/demo/AsyncSslTcpServer_demo.cpp
+index 24071cc4e..2e6e1c0ca 100644
+--- a/src/async/demo/AsyncSslTcpServer_demo.cpp
++++ b/src/async/demo/AsyncSslTcpServer_demo.cpp
+@@ -86,8 +86,8 @@ class MySslServer
+               {
+                   break;
+               }
+-              X509_NAME_ENTRY *e = X509_NAME_get_entry(subj, lastpos);
+-              ASN1_STRING *d = X509_NAME_ENTRY_get_data(e);
++              const X509_NAME_ENTRY *e = X509_NAME_get_entry(subj, lastpos);
++              const ASN1_STRING *d = X509_NAME_ENTRY_get_data(e);
+               const unsigned char* str = (ASN1_STRING_get0_data(d));
+               std::cout << "### CN=" << str << std::endl;
+           }

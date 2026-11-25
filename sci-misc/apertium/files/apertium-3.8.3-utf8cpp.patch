@@ -1,0 +1,42 @@
+From 1211c1a2ed6c8b615bab1dc5b11dd340ece40368 Mon Sep 17 00:00:00 2001
+From: Tino Didriksen <mail@tinodidriksen.com>
+Date: Wed, 27 Dec 2023 14:22:42 +0000
+Subject: [PATCH] Fix utfcpp 4.x build failure (fixes #193)
+
+---
+ apertium/adapt_docx.cc | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/apertium/adapt_docx.cc b/apertium/adapt_docx.cc
+index 91f49371..7e54d222 100644
+--- a/apertium/adapt_docx.cc
++++ b/apertium/adapt_docx.cc
+@@ -257,13 +257,13 @@ size_t findBoundary(string _text, size_t begin)
+ 	size_t length = _text.length();
+ 	if (begin == 0 || begin >= length)
+ 		return begin;
+-	const unsigned char *text = (unsigned char *) _text.c_str();
+-	utf8::iterator<const unsigned char*> textBegin(text, text, text + length);
+-	utf8::iterator<const unsigned char*> textEnd(text + length, text, text + length);
+-	utf8::iterator<const unsigned char*> it(text + begin, text, text + length);
+-	utf8::iterator<const unsigned char*> minBoundary = it;
++	auto text = _text.c_str();
++	utf8::iterator<const char*> textBegin(text, text, text + length);
++	utf8::iterator<const char*> textEnd(text + length, text, text + length);
++	utf8::iterator<const char*> it(text + begin, text, text + length);
++	utf8::iterator<const char*> minBoundary = it;
+ 	uint32_t cur = *it, cur_1 = 0, cur_2 = 0;
+-	utf8::iterator<const unsigned char*> it2 = it;
++	utf8::iterator<const char*> it2 = it;
+ 	cur_1 = *(--it2);
+ 	if (it2 != textBegin)
+ 		cur_2 = *(--it2);
+@@ -412,7 +412,7 @@ void process(string fileName, bool outputsName, bool pretty)
+ 	xmlDocDumpFormatMemory(document, &buffer, &sizeBuffer, pretty ? 1: 0);
+ 	if (outputsName)
+ 		cout << "<file name=\"" << fileName << "\"/> ";
+-	const unsigned char *p = buffer;
++	const xmlChar *p = buffer;
+ 	p = printNl2spc(p);
+ 	if (pretty)
+ 		cout << p;

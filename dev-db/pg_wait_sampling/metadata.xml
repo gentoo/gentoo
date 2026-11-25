@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">postgrespro/pg_wait_sampling</remote-id>
+	</upstream>
+	<longdescription>
+		PostgreSQL provides information about current wait event of particular process.
+		However, in order to gather descriptive statistics of server behavior user have
+		to sample current wait event multiple times. This is an extension for collecting
+		sampling statistics of wait events.
+	</longdescription>
+</pkgmetadata>

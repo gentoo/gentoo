@@ -1,8 +1,8 @@
-# Copyright 2022-2025 Gentoo Authors
+# Copyright 2022-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{10..14} )
 inherit python-r1 cmake
 
 CommitId=95163a75c51bc8dc29f72d0d7419ec50132984ff

@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,21 +7,21 @@ if [[ ${PV#9999} != ${PV} ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://code.videolan.org/videolan/libbluray.git"
 else
-	SRC_URI="https://downloads.videolan.org/pub/videolan/libbluray/${PV}/${P}.tar.bz2"
+	SRC_URI="https://downloads.videolan.org/pub/videolan/libbluray/${PV}/${P}.tar.xz"
 	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
 fi
 
-inherit autotools java-pkg-opt-2 multilib-minimal
+inherit meson-multilib java-pkg-opt-2
 
 DESCRIPTION="Blu-ray playback libraries"
 HOMEPAGE="https://www.videolan.org/developers/libbluray.html"
 
-LICENSE="LGPL-2.1"
-SLOT="0/2"
-IUSE="aacs bdplus +fontconfig java +truetype utils +xml"
+LICENSE="LGPL-2.1+"
+SLOT="0/3"
+IUSE="aacs bdplus +fontconfig static-libs +truetype utils +xml"
 
 COMMON_DEPEND="
-	>=dev-libs/libudfread-1.1.0:=[${MULTILIB_USEDEP}]
+	>=dev-libs/libudfread-1.2.0:=[${MULTILIB_USEDEP}]
 	aacs? ( >=media-libs/libaacs-0.6.0[${MULTILIB_USEDEP}] )
 	bdplus? ( media-libs/libbdplus[${MULTILIB_USEDEP}] )
 	fontconfig? ( >=media-libs/fontconfig-2.10.92[${MULTILIB_USEDEP}] )
@@ -31,7 +31,7 @@ COMMON_DEPEND="
 DEPEND="
 	${COMMON_DEPEND}
 	java? (
-		>=dev-java/ant-1.10.14-r3:0
+		>=dev-java/ant-1.10.15:0
 		>=virtual/jdk-1.8:*
 	)
 "
@@ -44,49 +44,42 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-jars.patch
-	"${FILESDIR}"/${PN}-1.3.4-fix-libudfread-option.patch
+	"${FILESDIR}"/${PN}-1.4.1-jars.patch
 )
-
-DOCS=( ChangeLog README.md )
 
 src_prepare() {
 	default
 
-	eautoreconf
+	if use java; then
+		cat > src/libbluray/bdj/build.properties <<-EOF || die "build.properties"
+			ant.build.javac.source=$(java-pkg_get-source)
+			ant.build.javac.target=$(java-pkg_get-target)
+			java_version_asm=1.8
+			java_version_bdj=1.8
+		EOF
+	fi
 }
 
 multilib_src_configure() {
-	# bug #621992
-	use java || unset JDK_HOME
+	local emesonargs=(
+		-Ddefault_library=$(multilib_native_usex static-libs both shared)
 
-	local myeconfargs=(
-		--disable-optimizations
-		--with-external-libudfread
-		$(multilib_native_use_enable utils examples)
-		$(multilib_native_use_enable java bdjava-jar)
-		$(use_with fontconfig)
-		$(use_with truetype freetype)
-		$(use_with xml libxml2)
+		-Denable_examples=false
+		-Denable_devtools=false
+		$(meson_native_use_bool utils enable_tools)
+		$(meson_native_use_feature java bdj_jar)
+		$(meson_feature fontconfig)
+		$(meson_feature truetype freetype)
+		$(meson_feature xml libxml2)
 	)
 
-	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
+	meson_src_configure
 }
 
 multilib_src_install() {
-	emake DESTDIR="${D}" install
+	meson_src_install
 
 	multilib_is_native_abi || return
 
-	use utils &&
-		find .libs/ -type f -executable ! -name "${PN}.*" \
-			 $(use java || echo '! -name bdj_test') -exec dobin {} +
-
 	use java && java-pkg_regjar "${ED}"/usr/share/${PN}/lib/*.jar
-}
-
-multilib_src_install_all() {
-	einstalldocs
-
-	find "${ED}" -name '*.la' -delete || die
 }

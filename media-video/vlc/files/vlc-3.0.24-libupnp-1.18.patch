@@ -1,0 +1,33 @@
+From d80c4667a32c33bb300bb6a43e0bda3713905e2b Mon Sep 17 00:00:00 2001
+From: Olaf Hering <olaf@aepfle.de>
+Date: Fri, 8 May 2026 05:07:32 +0000
+Subject: [PATCH] upnp: server: handle libupnp 1.18.0 API change in Upnp_FunPtr
+
+The *event argument changed from "const void *" to "void *".
+
+Co-authored-by: Abderhman Gamal <abderhmangamal246@gmail.com>
+Signed-off-by: Olaf Hering <olaf@aepfle.de>
+(cherry picked from commit cb761db2f6d10feec82af20f81392f9ced6008c8)
+---
+ modules/services_discovery/upnp.hpp | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/modules/services_discovery/upnp.hpp b/modules/services_discovery/upnp.hpp
+index 352079c5954..04b41278e03 100644
+--- a/modules/services_discovery/upnp.hpp
++++ b/modules/services_discovery/upnp.hpp
+@@ -35,10 +35,10 @@
+ 
+ #include <vlc_common.h>
+ 
+-#if UPNP_VERSION < 10800
+-typedef void* UpnpEventPtr;
+-#else
++#if UPNP_VERSION_MAJOR == 17 || (UPNP_VERSION_MAJOR == 1 && (UPNP_VERSION < 11426 || (UPNP_VERSION > 11429 && UPNP_VERSION < 11800)))
+ typedef const void* UpnpEventPtr;
++#else
++typedef void* UpnpEventPtr;
+ #endif
+ 
+ namespace SD
+-- 

@@ -1,0 +1,11 @@
+--- a/bindings/python/plplotc.i	2026-06-06 15:07:35.176696756 +0200
++++ b/bindings/python/plplotc.i	2026-06-06 15:08:19.222247311 +0200
+@@ -1217,7 +1217,7 @@
+         {                     // grab the Global Interpreter Lock to be sure threads don't mess us up
+             MY_BLOCK_THREADS
+             // build the argument list
+-#ifdef PL_HAVE_PTHREAD
++#if 1
+             px = PyArray_SimpleNewFromData( 1, &nn, NPY_PLFLT, (void *) x );
+             py = PyArray_SimpleNewFromData( 1, &nn, NPY_PLFLT, (void *) y );
+ #else

@@ -1,0 +1,27 @@
+From 6cc0d1162f31302cd95fcca49744847da3071672 Mon Sep 17 00:00:00 2001
+From: Alfred Wingate <parona@protonmail.com>
+Date: Sat, 21 Mar 2026 21:01:11 +0200
+Subject: [PATCH] Explicitly use the fork start method on all platforms
+
+The default has changed away from fork on all platforms in python 3.14.
+
+See-Also: cfc804776f24c7230627b15bd935e5da5f809db7
+See-Also: https://github.com/python/cpython/issues/84559
+Signed-off-by: Alfred Wingate <parona@protonmail.com>
+--- a/src/pytest_flask/live_server.py
++++ b/src/pytest_flask/live_server.py
+@@ -9,9 +9,8 @@ import time
+ import pytest
+ 
+ 
+-# force 'fork' on macOS
+-if platform.system() == "Darwin":
+-    multiprocessing = multiprocessing.get_context("fork")
++# errors on start methods other than "fork". Default changed away from it for MacOS in 3.8 and the rest of the platforms in 3.14.
++multiprocessing = multiprocessing.get_context("fork")  # type: ignore[assignment]
+ 
+ 
+ class LiveServer:  # pragma: no cover
+-- 
+2.54.0
+

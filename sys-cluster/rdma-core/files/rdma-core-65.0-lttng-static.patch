@@ -1,0 +1,40 @@
+From 136666a396a81f65c9a7ff8764fc37dc41bb64ec Mon Sep 17 00:00:00 2001
+From: David Seifert <soap@gentoo.org>
+Date: Wed, 9 Sep 2026 21:45:37 +0200
+Subject: [PATCH] Fix static build against lttng
+
+* With `cmake -DENABLE_STATIC=1 -DTRACING=LTTNG ..`:
+
+    /tmp/rdma-core/providers/efa/efa_trace.h:16:38: fatal error: efa_trace.h: No such file or directory
+       16 | #define LTTNG_UST_TRACEPOINT_INCLUDE "efa_trace.h"
+          |                                      ^~~~~~~~~~~~~
+    compilation terminated.
+    ninja: build stopped: subcommand failed.
+
+Signed-off-by: David Seifert <soap@gentoo.org>
+---
+ buildlib/rdma_functions.cmake | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/buildlib/rdma_functions.cmake b/buildlib/rdma_functions.cmake
+index 6e0c7d2e8..1942e630f 100644
+--- a/buildlib/rdma_functions.cmake
++++ b/buildlib/rdma_functions.cmake
+@@ -152,6 +152,8 @@ function(rdma_shared_provider DEST VERSION_SCRIPT SOVERSION VERSION)
+   # Create a static provider library
+   if (ENABLE_STATIC)
+     add_library(${DEST}-static STATIC ${ARGN})
++    # LTTng tracepoint headers re-#include themselves by quoted name
++    target_include_directories(${DEST}-static PUBLIC ".")
+     rdma_public_static_lib(${DEST} ${DEST}-static ${VERSION_SCRIPT})
+   endif()
+ 
+@@ -198,6 +200,8 @@ function(rdma_provider DEST)
+   # Create a static provider library
+   if (ENABLE_STATIC)
+     add_library(${DEST} STATIC ${ARGN})
++    # LTTng tracepoint headers re-#include themselves by quoted name
++    target_include_directories(${DEST} PUBLIC ".")
+     rdma_public_static_lib("${DEST}-rdmav${IBVERBS_PABI_VERSION}" ${DEST} ${BUILDLIB}/provider.map)
+   endif()
+ 

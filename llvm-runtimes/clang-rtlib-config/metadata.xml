@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
+	<maintainer type="person" proxied="yes">
 		<email>vadorovsky@protonmail.com</email>
 		<name>Michal Rostecki</name>
 	</maintainer>
-	<maintainer type="project">
+	<maintainer type="project" proxied="maintainer-and-proxy">
 		<email>llvm@gentoo.org</email>
 	</maintainer>
 	<use>

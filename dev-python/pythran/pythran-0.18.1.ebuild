@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( pypy3_11 python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 
 inherit distutils-r1
 
@@ -76,6 +76,9 @@ python_test() {
 		pythran/tests/test_distutils.py::TestMeson::test_meson_build
 		# numpy.distutils is dead and broken
 		pythran/tests/test_distutils.py::TestDistutils
+		# numpy changes
+		pythran/tests/test_numpy_func0.py::TestNumpyFunc0::test_cross1
+		pythran/tests/test_numpy_func0.py::TestNumpyFunc0::test_cross4
 	)
 	local EPYTEST_IGNORE=(
 		pythran/benchmarks

@@ -1,0 +1,40 @@
+From 264f59ee29208c7ceaaf9b3cd5dc4f64b900c3de Mon Sep 17 00:00:00 2001
+From: AshyPinguin <pinguinlars1105+gentoo@gmail.com>
+Date: Thu, 28 May 2026 20:19:16 +0200
+Subject: [PATCH 2/3] compat: use emerge instead of apt
+
+Since apt isn't installed on Gentoo system, it doesn't make sense to use
+apt. So this patch achieves the same but with emerge.
+
+Signed-off-by: AshyPinguin <pinguinlars1105+gentoo@gmail.com>
+---
+ raspinfo/raspinfo | 13 +++++++------
+ 1 file changed, 7 insertions(+), 6 deletions(-)
+
+diff --git a/raspinfo/raspinfo b/raspinfo/raspinfo
+index 258c228..315489b 100755
+--- a/raspinfo/raspinfo
++++ b/raspinfo/raspinfo
+@@ -255,12 +255,13 @@ echo
+ echo "Package version information"
+ echo "---------------------------"
+ 
+-apt-cache policy raspberrypi-ui-mods | head -2
+-apt-cache policy raspberrypi-sys-mods | head -2
+-apt-cache policy openbox | head -2
+-apt-cache policy lxpanel | head -2
+-apt-cache policy pcmanfm | head -2
+-apt-cache policy rpd-plym-splash | head -2
++# apt-cache policy raspberrypi-ui-mods | head -2
++# apt-cache policy raspberrypi-sys-mods | head -2
++# apt-cache policy openbox | head -2
++# apt-cache policy lxpanel | head -2
++# apt-cache policy pcmanfm | head -2
++# apt-cache policy rpd-plym-splash | head -2
++emerge --info dev-embedded/raspberrypi-utils::gentoo | grep --color=never -A 1 "^dev-embedded/raspberrypi-utils"
+ 
+ echo
+ echo "Networking Information"
+-- 
+2.53.0
+

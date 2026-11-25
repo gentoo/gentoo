@@ -20,7 +20,7 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="+gdk-pixbuf +man +pam"
+IUSE="+gdk-pixbuf +pam"
 
 DEPEND="
 	dev-libs/wayland
@@ -32,10 +32,10 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 BDEPEND="
+	app-text/scdoc
 	>=dev-libs/wayland-protocols-1.25
 	>=dev-util/wayland-scanner-1.15
 	virtual/pkgconfig
-	man? ( app-text/scdoc )
 "
 
 if [[ ${PV} != 9999 ]]; then
@@ -45,7 +45,7 @@ fi
 
 src_configure() {
 	local emesonargs=(
-		$(meson_feature man man-pages)
+		-Dman-pages=enabled
 		$(meson_feature pam)
 		$(meson_feature gdk-pixbuf)
 		-Dfish-completions=true

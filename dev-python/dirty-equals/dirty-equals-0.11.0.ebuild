@@ -1,10 +1,10 @@
-# Copyright 2022-2025 Gentoo Authors
+# Copyright 2022-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=hatchling
-PYTHON_FULLY_TESTED=( python3_{11..14} pypy3_11 )
+PYTHON_FULLY_TESTED=( python3_{12..15} )
 PYTHON_COMPAT=( "${PYTHON_FULLY_TESTED[@]}" )
 
 inherit distutils-r1
@@ -22,7 +22,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="amd64 arm arm64 ~loong ppc ppc64 ~riscv ~s390 ~sparc x86"
 
 BDEPEND="
 	test? (
@@ -50,5 +50,5 @@ python_test() {
 	fi
 
 	local -x TZ=UTC
-	epytest "${args[@]}"
+	epytest
 }

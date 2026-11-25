@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,6 +13,7 @@ S="${WORKDIR}/nx-libs-${PV}"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~arm64 ~ppc ~riscv x86"
+IUSE="selinux"
 
 RDEPEND="dev-libs/libxml2:=
 	media-libs/libjpeg-turbo:*
@@ -36,6 +37,8 @@ RDEPEND="dev-libs/libxml2:=
 DEPEND="${RDEPEND}
 	x11-base/xorg-proto
 	x11-libs/libfontenc"
+
+RDEPEND+=" selinux? ( sec-policy/selinux-nx )"
 
 BDEPEND="virtual/pkgconfig
 	x11-misc/gccmakedep

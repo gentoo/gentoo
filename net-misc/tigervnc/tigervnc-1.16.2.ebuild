@@ -252,7 +252,7 @@ pkg_postinst() {
 		elog
 	}
 
-	local OPTIONAL_DM="gnome-base/gdm x11-misc/lightdm x11-misc/sddm x11-misc/slim"
+	local OPTIONAL_DM="gnome-base/gdm x11-misc/lightdm gui-apps/sddm x11-misc/slim"
 	use server && \
 		optfeature "keeping track of the xorg-server module" net-misc/tigervnc-xorg-module && \
 		optfeature_header "Install any additional display manager package:" && \

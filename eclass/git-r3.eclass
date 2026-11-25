@@ -322,6 +322,67 @@ _git-r3_env_setup() {
 	fi
 }
 
+# @FUNCTION: _git-r3_get_object_format
+# @USAGE: <hash>
+# @INTERNAL
+# @DESCRIPTION:
+# Determine the object format from hash. Prints "sha1" or "sha256".
+_git-r3_get_object_format() {
+	local h=${1}
+
+	case "${#h}" in
+		40)
+			echo sha1
+			;;
+		64)
+			echo sha256
+			;;
+		*)
+			die "Unrecognized hash: ${h}"
+			;;
+	esac
+}
+
+# @FUNCTION: _git-r3_create_gitdir
+# @USAGE: <repo-uri>
+# @RETURN: 0 if successful or GIT_DIR exists already, 1 if ls-remote failed
+# @INTERNAL
+# @DESCRIPTION:
+# Create GIT_DIR if necessary.
+_git-r3_create_gitdir() {
+	local repo_uri=${1}
+
+	[[ -d ${GIT_DIR} ]] && return 0
+
+	if [[ ! -d ${EGIT3_STORE_DIR} ]]; then
+		(
+			addwrite /
+			mkdir -p "${EGIT3_STORE_DIR}"
+		) || die "Unable to create ${EGIT3_STORE_DIR}"
+	fi
+
+	# determine the remote object format
+	local head_ref
+	head_ref=(
+		$(git ls-remote "${repo_uri}" "HEAD")
+	)
+	[[ ${?} -ne 0 ]] && return 1
+	local object_format=$(_git-r3_get_object_format "${head_ref[0]}")
+
+	local saved_umask
+	if [[ ${EVCS_UMASK} ]]; then
+		saved_umask=$(umask)
+		umask "${EVCS_UMASK}" || die "Bad options to umask: ${EVCS_UMASK}"
+	fi
+	mkdir "${GIT_DIR}" || die
+
+	git init --object-format="${object_format}" --bare -b __init__ || die
+	if [[ ${saved_umask} ]]; then
+		umask "${saved_umask}" || die
+	fi
+	return 0
+}
+
 # @FUNCTION: _git-r3_set_gitdir
 # @USAGE: <repo-uri>
 # @INTERNAL
@@ -334,7 +395,8 @@ _git-r3_env_setup() {
 _git-r3_set_gitdir() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	local repo_name=${1#*://*/}
+	local repo_uri=${1}
+	local repo_name=${repo_uri#*://*/}
 
 	# strip the trailing slash
 	repo_name=${repo_name%/}
@@ -364,38 +426,9 @@ _git-r3_set_gitdir() {
 	local distdir=${PORTAGE_ACTUAL_DISTDIR:-${DISTDIR}}
 	: "${EGIT3_STORE_DIR:=${distdir}/git3-src}"
 
-	GIT_DIR=${EGIT3_STORE_DIR}/${repo_name}
-
-	EVCS_STORE_DIRS+=( "${GIT_DIR}" )
-
-	if [[ ! -d ${EGIT3_STORE_DIR} && ! ${EVCS_OFFLINE} ]]; then
-		(
-			addwrite /
-			mkdir -p "${EGIT3_STORE_DIR}"
-		) || die "Unable to create ${EGIT3_STORE_DIR}"
-	fi
-
 	addwrite "${EGIT3_STORE_DIR}"
-	if [[ ! -d ${GIT_DIR} ]]; then
-		if [[ ${EVCS_OFFLINE} ]]; then
-			eerror "A clone of the following repository is required to proceed:"
-			eerror "  ${1}"
-			eerror "However, networking activity has been disabled using EVCS_OFFLINE and there"
-			eerror "is no local clone available."
-			die "No local clone of ${1}. Unable to proceed with EVCS_OFFLINE."
-		fi
 
-		local saved_umask
-		if [[ ${EVCS_UMASK} ]]; then
-			saved_umask=$(umask)
-			umask "${EVCS_UMASK}" || die "Bad options to umask: ${EVCS_UMASK}"
-		fi
-		mkdir "${GIT_DIR}" || die
-		git init --bare -b __init__ || die
-		if [[ ${saved_umask} ]]; then
-			umask "${saved_umask}" || die
-		fi
-	fi
+	GIT_DIR=${EGIT3_STORE_DIR}/${repo_name}
 }
 
 # @FUNCTION: _git-r3_set_submodules
@@ -591,6 +624,14 @@ git-r3_fetch() {
 
 	local -x GIT_DIR
 	_git-r3_set_gitdir "${repos[0]}"
+	if [[ ! -d ${GIT_DIR} && ${EVCS_OFFLINE} ]]; then
+		eerror "A clone of the following repository is required to proceed:"
+		eerror "  ${repos[0]}"
+		eerror "However, network activity has been disabled using EVCS_OFFLINE and there"
+		eerror "is no local clone available."
+		die "No local clone of ${repos[0]}. Unable to proceed with EVCS_OFFLINE."
+	fi
+	EVCS_STORE_DIRS+=( "${GIT_DIR}" )
 
 	einfo "Repository id: ${GIT_DIR##*/}"
 
@@ -664,6 +705,7 @@ git-r3_fetch() {
 	for r in "${repos[@]}"; do
 		if [[ ! ${EVCS_OFFLINE} ]]; then
 			einfo "Fetching ${r} ..."
+			_git-r3_create_gitdir "${r}" || continue
 
 			local fetch_command=( git fetch "${r}" )
 			local clone_type=${EGIT_CLONE_TYPE}
@@ -850,7 +892,15 @@ git-r3_fetch() {
 	if [[ ${saved_umask} ]]; then
 		umask "${saved_umask}" || die
 	fi
-	[[ ${success} ]] || die "Unable to fetch from any of EGIT_REPO_URI"
+	if [[ ! ${success} ]]; then
+		eerror "Fetching git repository failed. Please inspect the log for errors."
+		eerror "If you see 'mismatched algorithm' errors, please remove the local clone"
+		eerror "and try again:"
+		eerror "  rm -r ${GIT_DIR}"
+		eerror
+
+		die "Unable to fetch from any of EGIT_REPO_URI"
+	fi
 
 	# submodules can reference commits in any branch
 	# always use the 'mirror' mode to accommodate that, bug #503332
@@ -958,7 +1008,8 @@ git-r3_checkout() {
 		# use git init+fetch instead of clone since the latter doesn't like
 		# non-empty directories.
 
-		git init --quiet -b __init__ || die
+		local object_format=$(_git-r3_get_object_format "${new_commit_id}")
+		git init --object-format="${object_format}" --quiet -b __init__ || die
 		if [[ ${EGIT_LFS} ]]; then
 			# The "skip-repo" flag will just skip the installation of the pre-push hooks.
 			# We don't use these hook as we don't do any pushes

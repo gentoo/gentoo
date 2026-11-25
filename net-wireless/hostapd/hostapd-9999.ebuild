@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -25,7 +25,7 @@ fi
 
 LICENSE="BSD"
 SLOT="0"
-IUSE="internal-tls ipv6 netlink selinux sqlite +suiteb +wps"
+IUSE="internal-tls netlink selinux sqlite +suiteb +wps"
 
 DEPEND="
 	internal-tls? ( dev-libs/libtommath )
@@ -78,107 +78,92 @@ src_configure() {
 		return 0
 	fi
 
-	# toolchain setup
-	echo "CC = $(tc-getCC)" > "${CONFIG}" || die
+	cat > "${CONFIG}" <<-EOF || die
+		CC = $(tc-getCC)
 
-	# EAP authentication methods
-	echo "CONFIG_EAP=y" >> "${CONFIG}" || die
-	echo "CONFIG_ERP=y" >> "${CONFIG}" || die
-	echo "CONFIG_EAP_MD5=y" >> "${CONFIG}" || die
+		# EAP authentication methods
+		CONFIG_EAP=y
+		CONFIG_ERP=y
+		CONFIG_EAP_MD5=y
+		CONFIG_EAP_IKEV2=y
+		CONFIG_EAP_TNC=y
+		CONFIG_EAP_GTC=y
+		CONFIG_EAP_SIM=y
+		CONFIG_EAP_AKA=y
+		CONFIG_EAP_AKA_PRIME=y
+		CONFIG_EAP_EKE=y
+		CONFIG_EAP_PAX=y
+		CONFIG_EAP_PSK=y
+		CONFIG_EAP_SAKE=y
+		CONFIG_EAP_GPSK=y
+		CONFIG_EAP_GPSK_SHA256=y
+
+		# drivers
+		CONFIG_DRIVER_WIRED=y
+		CONFIG_DRIVER_NONE=y
+		CONFIG_DRIVER_NL80211=y
+
+		CONFIG_ELOOP_EPOLL=y
+
+		# misc
+		CONFIG_DEBUG_FILE=y
+		CONFIG_PKCS12=y
+		CONFIG_RADIUS_SERVER=y
+		CONFIG_IEEE80211R=y
+		CONFIG_IEEE80211AC=y
+		CONFIG_IEEE80211AX=y
+		CONFIG_IEEE80211BE=y
+		CONFIG_OCV=y
+		CONFIG_RSN_PREAUTH=y
+		CONFIG_IPV6=y
+		CONFIG_INTERWORKING=y
+		CONFIG_FULL_DYNAMIC_VLAN=y
+		CONFIG_HS20=y
+		CONFIG_WNM=y
+		CONFIG_FST=y
+		CONFIG_FST_TEST=y
+		CONFIG_ACS=y
+	EOF
 
 	if use suiteb; then
-		echo "CONFIG_SUITEB=y" >> "${CONFIG}" || die
-		echo "CONFIG_SUITEB192=y" >> "${CONFIG}" || die
+		cat >> "${CONFIG}" <<-EOF || die
+			CONFIG_SUITEB=y
+			CONFIG_SUITEB192=y
+		EOF
 	fi
 
-	if use internal-tls ; then
+	if use internal-tls; then
 		echo "CONFIG_TLS=internal" >> "${CONFIG}" || die
 	else
 		# SSL authentication methods
-		echo "CONFIG_DPP=y" >> "${CONFIG}" || die
-		echo "CONFIG_EAP_FAST=y" >> "${CONFIG}" || die
-		echo "CONFIG_EAP_MSCHAPV2=y" >> "${CONFIG}" || die
-		echo "CONFIG_EAP_PEAP=y" >> "${CONFIG}" || die
-		echo "CONFIG_EAP_PWD=y" >> "${CONFIG}" || die
-		echo "CONFIG_EAP_TLS=y" >> "${CONFIG}" || die
-		echo "CONFIG_EAP_TTLS=y" >> "${CONFIG}" || die
-		echo "CONFIG_OWE=y" >> "${CONFIG}" || die
-		echo "CONFIG_SAE=y" >> "${CONFIG}" || die
-		echo "CONFIG_TLSV11=y" >> "${CONFIG}" || die
-		echo "CONFIG_TLSV12=y" >> "${CONFIG}" || die
+		cat >> "${CONFIG}" <<-EOF || die
+			CONFIG_DPP=y
+			CONFIG_EAP_FAST=y
+			CONFIG_EAP_MSCHAPV2=y
+			CONFIG_EAP_PEAP=y
+			CONFIG_EAP_PWD=y
+			CONFIG_EAP_TLS=y
+			CONFIG_EAP_TTLS=y
+			CONFIG_OWE=y
+			CONFIG_SAE=y
+			CONFIG_TLSV11=y
+			CONFIG_TLSV12=y
+		EOF
 	fi
 
 	if use wps; then
-		# Enable Wi-Fi Protected Setup
-		echo "CONFIG_WPS=y" >> "${CONFIG}" || die
-		echo "CONFIG_WPS2=y" >> "${CONFIG}" || die
-		echo "CONFIG_WPS_UPNP=y" >> "${CONFIG}" || die
-		echo "CONFIG_WPS_NFC=y" >> "${CONFIG}" || die
-		einfo "Enabling Wi-Fi Protected Setup support"
+		cat >> "${CONFIG}" <<-EOF || die
+			CONFIG_WPS=y
+			CONFIG_WPS_UPNP=y
+			CONFIG_WPS_NFC=y
+		EOF
 	fi
 
-	echo "CONFIG_EAP_IKEV2=y" >> "${CONFIG}" || die
-	echo "CONFIG_EAP_TNC=y" >> "${CONFIG}" || die
-	echo "CONFIG_EAP_GTC=y" >> "${CONFIG}" || die
-	echo "CONFIG_EAP_SIM=y" >> "${CONFIG}" || die
-	echo "CONFIG_EAP_AKA=y" >> "${CONFIG}" || die
-	echo "CONFIG_EAP_AKA_PRIME=y" >> "${CONFIG}" || die
-	echo "CONFIG_EAP_EKE=y" >> "${CONFIG}" || die
-	echo "CONFIG_EAP_PAX=y" >> "${CONFIG}" || die
-	echo "CONFIG_EAP_PSK=y" >> "${CONFIG}" || die
-	echo "CONFIG_EAP_SAKE=y" >> "${CONFIG}" || die
-	echo "CONFIG_EAP_GPSK=y" >> "${CONFIG}" || die
-	echo "CONFIG_EAP_GPSK_SHA256=y" >> "${CONFIG}" || die
-
-	einfo "Enabling drivers: "
-
-	# drivers
-	echo "CONFIG_DRIVER_HOSTAP=y" >> "${CONFIG}" || die
-	einfo "  HostAP driver enabled"
-	echo "CONFIG_DRIVER_WIRED=y" >> "${CONFIG}" || die
-	einfo "  Wired driver enabled"
-	echo "CONFIG_DRIVER_NONE=y" >> "${CONFIG}" || die
-	einfo "  None driver enabled"
-
-	einfo "  nl80211 driver enabled"
-	echo "CONFIG_DRIVER_NL80211=y" >> "${CONFIG}" || die
-
-	# epoll
-	echo "CONFIG_ELOOP_EPOLL=y" >> "${CONFIG}" || die
-
-	# misc
-	echo "CONFIG_DEBUG_FILE=y" >> "${CONFIG}" || die
-	echo "CONFIG_PKCS12=y" >> "${CONFIG}" || die
-	echo "CONFIG_RADIUS_SERVER=y" >> "${CONFIG}" || die
-	echo "CONFIG_IAPP=y" >> "${CONFIG}" || die
-	echo "CONFIG_IEEE80211R=y" >> "${CONFIG}" || die
-	echo "CONFIG_IEEE80211W=y" >> "${CONFIG}" || die
-	echo "CONFIG_IEEE80211N=y" >> "${CONFIG}" || die
-	echo "CONFIG_IEEE80211AC=y" >> "${CONFIG}" || die
-	echo "CONFIG_IEEE80211AX=y" >> "${CONFIG}" || die
-	echo "CONFIG_OCV=y" >> "${CONFIG}" || die
-	echo "CONFIG_PEERKEY=y" >> "${CONFIG}" || die
-	echo "CONFIG_RSN_PREAUTH=y" >> "${CONFIG}" || die
-	echo "CONFIG_INTERWORKING=y" >> "${CONFIG}" || die
-	echo "CONFIG_FULL_DYNAMIC_VLAN=y" >> "${CONFIG}" || die
-	echo "CONFIG_HS20=y" >> "${CONFIG}" || die
-	echo "CONFIG_WNM=y" >> "${CONFIG}" || die
-	echo "CONFIG_FST=y" >> "${CONFIG}" || die
-	echo "CONFIG_FST_TEST=y" >> "${CONFIG}" || die
-	echo "CONFIG_ACS=y" >> "${CONFIG}" || die
-
 	if use netlink; then
-		# Netlink support
 		echo "CONFIG_VLAN_NETLINK=y" >> "${CONFIG}" || die
 	fi
 
-	if use ipv6; then
-		# IPv6 support
-		echo "CONFIG_IPV6=y" >> "${CONFIG}" || die
-	fi
-
 	if use sqlite; then
-		# Sqlite support
 		echo "CONFIG_SQLITE=y" >> "${CONFIG}" || die
 	fi
 

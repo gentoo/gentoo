@@ -37,7 +37,16 @@ _SELINUX_POLICY_2_ECLASS=1
 # This variable contains the version string of the selinux-base-policy package
 # that this module build depends on. It is used to patch with the appropriate
 # patch bundle(s) that are part of selinux-base-policy.
-: "${BASEPOL:="${PVR}"}"
+# EAPI <=7 packages had -rN and patchbundle named -rN
+# EAPI 8 moved packages to _p, but kept patchbundles unchanged as -rN
+# Releases in 2026 made the patchbundles with _pN to match PV
+if [[ ${EAPI} = 7 ]]; then
+	: "${BASEPOL:="${PVR}"}"
+elif [[ ${EAPI} = 8 ]] && ver_test -lt 2.20260101; then
+	: "${BASEPOL:="${PV/_p/-r}"}"
+else
+	: "${BASEPOL:="${PV}"}"
+fi
 
 # @ECLASS_VARIABLE: POLICY_PATCH
 # @DESCRIPTION:
@@ -55,7 +64,7 @@ _SELINUX_POLICY_2_ECLASS=1
 # (space-separated) or a bash array.
 : "${POLICY_FILES:=""}"
 
-if [[ ${EAPI} = 7 ]]; then
+if [[ "${EAPI}" = 7 ]]; then
 	# @ECLASS_VARIABLE: POLICY_TYPES
 	# @DESCRIPTION:
 	# This variable informs the eclass for which SELinux policies the module should
@@ -84,6 +93,18 @@ fi
 # The default value is the 'master' branch.
 : "${SELINUX_GIT_BRANCH:="master"}"
 
+# @ECLASS_VARIABLE: SELINUX_POLICY_USEDEP
+# @OUTPUT_VARIABLE
+# @DESCRIPTION:
+# This variable contains the USE dependency constraints for policy packages.
+SELINUX_POLICY_USEDEP="selinux_policy_types_targeted(-)?,selinux_policy_types_strict(-)?,selinux_policy_types_mcs(-)?,selinux_policy_types_mls(-)?"
+
+# @ECLASS_VARIABLE: _SELINUX_POLICY_UPSTREAM_PV
+# @INTERNAL
+# @DESCRIPTION:
+# Internal variable representing (spoofed) upstream refpolicy version.
+_SELINUX_POLICY_UPSTREAM_PV=$(ver_cut 1-2)
+
 case ${BASEPOL} in
 	9999)
 		inherit git-r3
@@ -93,7 +114,7 @@ case ${BASEPOL} in
 		;;
 esac
 
-if [[ ${EAPI} != 7 ]]; then
+if [[ "${EAPI}" != 7 ]]; then
 	# Build all policy types by default
 	IUSE="+selinux_policy_types_targeted +selinux_policy_types_strict +selinux_policy_types_mcs +selinux_policy_types_mls"
 	REQUIRED_USE="|| ( selinux_policy_types_targeted selinux_policy_types_strict selinux_policy_types_mcs selinux_policy_types_mls )"
@@ -101,12 +122,14 @@ fi
 
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:SELinux"
 if [[ -n ${BASEPOL} && "${BASEPOL}" != "9999" ]]; then
+	# TODO: move this to distfiles.gentoo.org/pub/proj
 	SRC_URI="
-		https://github.com/SELinuxProject/refpolicy/releases/download/RELEASE_${PV/./_}/refpolicy-${PV}.tar.bz2
+		https://github.com/SELinuxProject/refpolicy/releases/download/RELEASE_${_SELINUX_POLICY_UPSTREAM_PV/./_}/refpolicy-${_SELINUX_POLICY_UPSTREAM_PV}.tar.bz2
 		https://dev.gentoo.org/~perfinion/patches/selinux-base-policy/patchbundle-selinux-base-policy-${BASEPOL}.tar.bz2
+		https://dev.gentoo.org/~sam/patches/selinux-base-policy/patchbundle-selinux-base-policy-${BASEPOL}.tar.bz2
 	"
 elif [[ "${BASEPOL}" != "9999" ]]; then
-	SRC_URI="https://github.com/SELinuxProject/refpolicy/releases/download/RELEASE_${PV/./_}/refpolicy-${PV}.tar.bz2"
+	SRC_URI="https://github.com/SELinuxProject/refpolicy/releases/download/RELEASE_${_SELINUX_POLICY_UPSTREAM_PV/./_}/refpolicy-${_SELINUX_POLICY_UPSTREAM_PV}.tar.bz2"
 fi
 
 LICENSE="GPL-2"
@@ -118,7 +141,7 @@ S="${WORKDIR}"
 if [[ -n ${BASEPOL} ]]; then
 	_BASE_POLICY_VERSION="${BASEPOL}"
 else
-	_BASE_POLICY_VERSION="${PV}"
+	_BASE_POLICY_VERSION="${_SELINUX_POLICY_UPSTREAM_PV}"
 fi
 
 if [[ ${EAPI} = 7 ]]; then
@@ -127,15 +150,10 @@ if [[ ${EAPI} = 7 ]]; then
 		>=sec-policy/selinux-base-policy-${_BASE_POLICY_VERSION}
 	"
 else
-	RDEPEND=">=sys-apps/policycoreutils-2.5"
-	for _poltype in selinux_policy_types_{targeted,strict,mcs,mls}; do
-		RDEPEND+="
-			${_poltype}? (
-				>=sec-policy/selinux-base-policy-${_BASE_POLICY_VERSION}[${_poltype}]
-			)
-		"
-	done
-	unset _poltype
+	RDEPEND="
+		>=sys-apps/policycoreutils-2.5
+		>=sec-policy/selinux-base-policy-${_BASE_POLICY_VERSION}[${SELINUX_POLICY_USEDEP}]
+	"
 fi
 
 unset _BASE_POLICY_VERSION
@@ -178,14 +196,17 @@ selinux-policy-2_src_prepare() {
 
 	# Patch the sources with the base patchbundle
 	if [[ -n ${BASEPOL} && "${BASEPOL}" != "9999" ]]; then
-		cd "${S}" || die "Could not enter ${S}"
+		pushd "${S}" >/dev/null || die "Could not enter ${S}"
 		einfo "Applying SELinux policy updates ... "
 		eapply -p0 -- "${WORKDIR}/0001-full-patch-against-stable-release.patch"
+		popd >/dev/null || die
 	fi
 
 	# Call in eapply_user. We do this early on as we start moving
 	# files left and right hereafter.
+	pushd "${WORKDIR}"/refpolicy >/dev/null || die
 	eapply_user
+	popd >/dev/null || die
 
 	# Copy additional files to the 3rd_party/ location
 	if [[ "$(declare -p POLICY_FILES 2>/dev/null 2>&1)" = "declare -a"* || -n ${POLICY_FILES} ]]; then
@@ -206,31 +227,31 @@ selinux-policy-2_src_prepare() {
 
 	# Collect only those files needed for this particular module
 	for i in ${MODS}; do
-		modfiles="$(find "${S}/refpolicy/policy/modules" -iname $i.te) $modfiles"
-		modfiles="$(find "${S}/refpolicy/policy/modules" -iname $i.fc) $modfiles"
-		modfiles="$(find "${S}/refpolicy/policy/modules" -iname $i.cil) $modfiles"
-		if [[ ${add_interfaces} -eq 1 ]]; then
-			modfiles="$(find "${S}/refpolicy/policy/modules" -iname $i.if) $modfiles"
+		modfiles="$(find "${S}/refpolicy/policy/modules" -iname "${i}.te") ${modfiles}"
+		modfiles="$(find "${S}/refpolicy/policy/modules" -iname "${i}.fc") ${modfiles}"
+		modfiles="$(find "${S}/refpolicy/policy/modules" -iname "${i}.cil") ${modfiles}"
+		if [[ "${add_interfaces}" -eq 1 ]]; then
+			modfiles="$(find "${S}/refpolicy/policy/modules" -iname "${i}.if") ${modfiles}"
 		fi
 	done
 
 	_selinux_prepare_modules() {
-		mkdir "${S}"/${1} || die "Failed to create directory ${S}/${1}"
-		cp "${S}"/refpolicy/doc/Makefile.example "${S}"/${1}/Makefile \
+		mkdir "${S}/${1}" || die "Failed to create directory ${S}/${1}"
+		cp "${S}/refpolicy/doc/Makefile.example" "${S}/${1}/Makefile" \
 			|| die "Failed to copy Makefile.example to ${S}/${1}/Makefile"
 
-		cp ${modfiles} "${S}"/${1} \
+		cp ${modfiles} "${S}/${1}" \
 			|| die "Failed to copy the module files to ${S}/${1}"
 	}
 
-	if [[ ${EAPI} = 7 ]]; then
+	if [[ "${EAPI}" = 7 ]]; then
 		for i in ${POLICY_TYPES}; do
-			_selinux_prepare_modules $i
+			_selinux_prepare_modules "${i}"
 		done
 	else
 		for i in targeted strict mcs mls; do
-			if use selinux_policy_types_${i}; then
-				_selinux_prepare_modules $i
+			if use "selinux_policy_types_${i}"; then
+				_selinux_prepare_modules "${i}"
 			fi
 		done
 	fi
@@ -254,13 +275,13 @@ selinux-policy-2_src_compile() {
 		# build system.
 		[[ "${useflag}" = selinux_policy_types_* ]] && continue
 
-		use ${useflag} && makeuse="${makeuse} -D use_${useflag}"
+		use "${useflag}" && makeuse="${makeuse} -D use_${useflag}"
 	done
 
 	_selinux_compile_modules() {
 		# Support USE flags in builds
 		export M4PARAM="${makeuse}"
-		emake NAME=$1 SHAREDIR="${EPREFIX}"/usr/share/selinux -C "${S}"/${1}
+		emake NAME="${1}" SHAREDIR="${EPREFIX}/usr/share/selinux" -C "${S}/${1}"
 	}
 
 	if [[ ${EAPI} = 7 ]]; then
@@ -286,28 +307,28 @@ selinux-policy-2_src_install() {
 	_selinux_install_modules() {
 		for i in ${MODS}; do
 			einfo "Installing ${1} ${i} policy package"
-			insinto ${BASEDIR}/${1}
+			insinto "${BASEDIR}/${1}"
 			if [[ -f "${S}/${1}/${i}.pp" ]]; then
-				doins "${S}"/${1}/${i}.pp || die "Failed to add ${i}.pp to ${1}"
+				doins "${S}/${1}/${i}.pp" || die "Failed to add ${i}.pp to ${1}"
 			elif [[ -f "${S}/${1}/${i}.cil" ]]; then
-				doins "${S}"/${1}/${i}.cil || die "Failed to add ${i}.cil to ${1}"
+				doins "${S}/${1}/${i}.cil" || die "Failed to add ${i}.cil to ${1}"
 			fi
 
 			if [[ "${POLICY_FILES[@]}" = *"${i}.if"* ]]; then
-				insinto ${BASEDIR}/${1}/include/3rd_party
-				doins "${S}"/${1}/${i}.if || die "Failed to add ${i}.if to ${1}"
+				insinto "${BASEDIR}/${1}/include/3rd_party"
+				doins "${S}/${1}/${i}.if" || die "Failed to add ${i}.if to ${1}"
 			fi
 		done
 	}
 
-	if [[ ${EAPI} = 7 ]]; then
+	if [[ "${EAPI}" = 7 ]]; then
 		for i in ${POLICY_TYPES}; do
-			_selinux_install_modules $i
+			_selinux_install_modules "${i}"
 		done
 	else
 		for i in targeted strict mcs mls; do
-			if use selinux_policy_types_${i}; then
-				_selinux_install_modules $i
+			if use "selinux_policy_types_${i}"; then
+				_selinux_install_modules "${i}"
 			fi
 		done
 	fi
@@ -330,10 +351,10 @@ selinux-policy-2_pkg_postinst() {
 	_selinux_postinst() {
 		if [[ "${1}" = "strict" && "${MODS}" = "unconfined" ]]; then
 			einfo "Ignoring loading of unconfined module in strict module store."
-			continue
+			return
 		fi
 
-		einfo "Inserting the following modules into the $i module store: ${MODS}"
+		einfo "Inserting the following modules into the ${i} module store: ${MODS}"
 
 		cd "${ROOT}/usr/share/selinux/${1}" || die "Could not enter /usr/share/selinux/${1}"
 		for i in ${MODS}; do
@@ -344,11 +365,11 @@ selinux-policy-2_pkg_postinst() {
 			fi
 		done
 
-		semodule ${root_opts} -s ${1} -i ${COMMAND}
+		semodule ${root_opts} -s "${1}" -i ${COMMAND}
 		if [[ $? -ne 0 ]]; then
 			ewarn "SELinux module load failed. Trying full reload..."
 
-			semodule ${root_opts} -s ${1} -i ./*.pp
+			semodule ${root_opts} -s "${1}" -i ./*.pp
 
 			if [[ $? -ne 0 ]]; then
 				ewarn "Failed to reload SELinux policies."
@@ -373,14 +394,14 @@ selinux-policy-2_pkg_postinst() {
 		COMMAND=""
 	}
 
-	if [[ ${EAPI} = 7 ]]; then
+	if [[ "${EAPI}" = 7 ]]; then
 		for i in ${POLICY_TYPES}; do
-			_selinux_postinst $i
+			_selinux_postinst "${i}"
 		done
 	else
 		for i in targeted strict mcs mls; do
-			if use selinux_policy_types_${i}; then
-				_selinux_postinst $i
+			if use "selinux_policy_types_${i}"; then
+				_selinux_postinst "${i}"
 			fi
 		done
 	fi
@@ -417,7 +438,7 @@ selinux-policy-2_pkg_postinst() {
 		fi
 
 		# Policy packages may pull in other policy packages, filter those out.
-		readarray -t PKGSET <<<"$(echo "${out}" | grep -v 'sec-policy/selinux-')"
+		readarray -t PKGSET < <(echo "${out}" | grep -v 'sec-policy/selinux-')
 
 		[[ "${#PKGSET[@]}" -ne 0 ]] && rlpkg "${PKGSET[@]}"
 	fi
@@ -429,41 +450,39 @@ selinux-policy-2_pkg_postinst() {
 # deactivating the policy on the system.
 selinux-policy-2_pkg_postrm() {
 	# Only if we are not upgrading
-	if [[ -z "${REPLACED_BY_VERSION}" ]]; then
-		# Set root path and don't load policy into the kernel when cross compiling
-		local root_opts=""
-		if [[ -n ${ROOT} ]]; then
-			root_opts="-p ${ROOT} -n"
-		fi
+	if [[ -n "${REPLACED_BY_VERSION}" ]]; then
+		return
+	fi
 
-		# build up the command in the case of multiple modules
-		local COMMAND
-		for i in ${MODS}; do
-			COMMAND="-r ${i} ${COMMAND}"
-		done
+	# Set root path and don't load policy into the kernel when cross compiling
+	local root_opts=()
+	if [[ -n ${ROOT} ]]; then
+		root_opts=( '-p' "${ROOT}" '-n' )
+	fi
 
-		_selinux_postrm() {
-			einfo "Removing the following modules from the $1 module store: ${MODS}"
+	_selinux_postrm() {
+		einfo "Removing the following modules from the ${1} module store: ${MODS}"
 
-			semodule ${root_opts} -s ${1} ${COMMAND}
-			if [[ $? -ne 0 ]]; then
-				ewarn "SELinux module unload failed."
-			else
-				einfo "SELinux modules unloaded successfully."
-			fi
-		}
-
-		if [[ ${EAPI} = 7 ]]; then
-			for i in ${POLICY_TYPES}; do
-				_selinux_postrm $i
-			done
+		# We rely on ${MODS} being split as it's not a bash array. SELinux modules
+		# can't contain whitespace anyway, so splitting is fine here.
+		# shellcheck disable=SC2086
+		if semodule "${root_opts[@]}" -s "${1}" -r ${MODS}; then
+			einfo "SELinux modules unloaded successfully."
 		else
-			for i in targeted strict mcs mls; do
-				if use selinux_policy_types_${i}; then
-					_selinux_postrm $i
-				fi
-			done
+			ewarn "SELinux module unload failed."
 		fi
+	}
+
+	if [[ "${EAPI}" = 7 ]]; then
+		for i in ${POLICY_TYPES}; do
+			_selinux_postrm "${i}"
+		done
+	else
+		for i in targeted strict mcs mls; do
+			if use "selinux_policy_types_${i}"; then
+				_selinux_postrm "${i}"
+			fi
+		done
 	fi
 }
 

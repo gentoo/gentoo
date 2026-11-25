@@ -1,10 +1,10 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit distutils-r1 pypi
 
@@ -17,7 +17,7 @@ HOMEPAGE="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 x86"
+KEYWORDS="amd64 arm64 x86"
 
 RDEPEND="
 	dev-python/cssselect[${PYTHON_USEDEP}]
@@ -39,26 +39,22 @@ BDEPEND="
 
 DOCS=( CHANGELOG.md README.md )
 
-distutils_enable_sphinx docs/source dev-python/alabaster
-distutils_enable_tests pytest
-
+EPYTEST_PLUGINS=()
 EPYTEST_IGNORE=(
 	# Skip code quality check
 	"lib/urlwatch/tests/test_pep8.py"
 )
-
 EPYTEST_DESELECT=(
 	# Require the pdftotext module
 	"lib/urlwatch/tests/test_filter_documentation.py::test_url[https://example.net/pdf-test.pdf]"
 	"lib/urlwatch/tests/test_filter_documentation.py::test_url[https://example.net/pdf-test-password.pdf]"
 )
 
+distutils_enable_sphinx docs/source dev-python/alabaster
+distutils_enable_tests pytest
+
 pkg_postinst() {
 	if [[ -z "${REPLACING_VERSIONS}" ]]; then
-		if ! has_version dev-python/chump; then
-			elog "Install 'dev-python/chump' to enable Pushover" \
-				"notifications support"
-		fi
 		if ! has_version dev-python/jq; then
 			elog "Install 'dev-python/jq' to enable jq filtering support"
 		fi

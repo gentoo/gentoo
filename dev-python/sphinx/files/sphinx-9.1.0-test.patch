@@ -1,0 +1,48 @@
+From c01b0eb640bbc3dbd8141f3ea08df9edaa78ab2c Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?B=C3=A9n=C3=A9dikt=20Tran?=
+ <10796600+picnixz@users.noreply.github.com>
+Date: Sun, 7 Jun 2026 11:49:11 +0200
+Subject: [PATCH] Fix `test_search.py` with long-word splitting (#14474)
+
+---
+ tests/roots/test-search/index.rst | 1 +
+ tests/test_search.py              | 7 ++++++-
+ 2 files changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/tests/roots/test-search/index.rst b/tests/roots/test-search/index.rst
+index b38fd0271f6..c618633c345 100644
+--- a/tests/roots/test-search/index.rst
++++ b/tests/roots/test-search/index.rst
+@@ -19,6 +19,7 @@ International
+ 
+ .. tip::
+    :class: no-search
++
+    bat cat
+ 
+ .. toctree::
+diff --git a/tests/test_search.py b/tests/test_search.py
+index f94ae987bb7..64ec4670085 100644
+--- a/tests/test_search.py
++++ b/tests/test_search.py
+@@ -76,6 +76,11 @@ def is_registered_term(index: Any, keyword: str) -> bool:
+     return index['terms'].get(keyword, []) != []
+ 
+ 
++def is_registered_prefix(index: Any, prefix: str) -> bool:
++    terms = index['terms']
++    return any(k.startswith(prefix) and v != [] for k, v in terms.items())
++
++
+ FILE_CONTENTS = """\
+ section_title
+ =============
+@@ -144,7 +149,7 @@ def test_stemmer(app: SphinxTestApp) -> None:
+     searchindex = load_searchindex(app.outdir / 'searchindex.js')
+     print(searchindex)
+     assert is_registered_term(searchindex, 'findthisstemmedkey')
+-    assert is_registered_term(searchindex, 'intern')
++    assert is_registered_prefix(searchindex, 'intern')
+ 
+ 
+ @pytest.mark.sphinx('html', testroot='search')

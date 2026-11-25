@@ -1,11 +1,11 @@
-# Copyright 2023-2025 Gentoo Authors
+# Copyright 2023-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=hatchling
 PYPI_VERIFY_REPO=https://github.com/python-jsonschema/referencing
-PYTHON_COMPAT=( pypy3_11 python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..15} python3_{14,15}t )
 
 inherit distutils-r1 pypi
 
@@ -24,7 +24,7 @@ RDEPEND="
 	>=dev-python/rpds-py-0.7.0[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep '
 		>=dev-python/typing-extensions-4.4.0[${PYTHON_USEDEP}]
-	' 3.{11..12})
+	' 3.12)
 "
 BDEPEND="
 	dev-python/hatch-vcs[${PYTHON_USEDEP}]
@@ -33,5 +33,5 @@ BDEPEND="
 	)
 "
 
-EPYTEST_PLUGINS=( pytest-subtests )
+EPYTEST_PLUGINS=()
 distutils_enable_tests pytest

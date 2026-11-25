@@ -1,0 +1,21 @@
+[Unit]
+Description=chrony exporter
+Documentation=https://github.com/SuperQ/chrony_exporter
+Requires=chronyd.socket
+
+[Service]
+User=chrony_exporter
+Group=chrony_exporter
+# Need ntp group to access chronyd unix socket.
+SupplementaryGroups=ntp
+Restart=on-failure
+Environment=command_args=
+EnvironmentFile=-/etc/sysconfig/chrony_exporter
+ExecStart=/usr/sbin/chrony_exporter --web.systemd-socket $command_args
+ExecReload=/usr/bin/kill -HUP $MAINPID
+TimeoutStopSec=20s
+SendSIGKILL=no
+
+[Install]
+WantedBy=multi-user.target
+

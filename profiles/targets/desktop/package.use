@@ -1,15 +1,21 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Michael Orlitzky <mjo@gentoo.org> (2026-07-14)
+# USE=qt6 (the desktop profile default) implies USE=doc, and together
+# they pull in dev-qt/qttools:6[assistant]. Disabling both seems like a
+# better default than enabling both. Bug 977138.
+dev-libs/uriparser -qt6
+
+# Ian Jordan <immoloism@gmail.com> (2026-06-15)
+# Circular depend on webp and tiff #972473
+# Helps users going from a basic to desktop profile.
+media-libs/libwebp -tiff
+
 # Ian Jordan <immoloism@gmail.com> (2026-01-14)
 # Use PipeWire sound server. It also acts as PulseAudio implementation for
 # packages using media-libs/libpulse (e.g. via USE="pulseaudio").
 media-video/pipewire sound-server
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-12-16)
-# Enable IUSE qt5 for current stable pkgs with USE-revdeps before dropping
-# it from make.defaults. # Bug #948836
-<x11-libs/qwt-6.3.0 qt5
 
 # Sam James <sam@gentoo.org> (2025-10-18)
 # media-libs/freetype works better with media-libs/harfbuzz support.
@@ -33,13 +39,8 @@ dev-qt/qtbase libproxy
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2023-11-12)
 # NSS: Required by kde-apps/okular[pdf]
-# Boost: app-text/poppler[qt5] recommended w/ Boost (bug #795888)
+# Boost: app-text/poppler[qt6] recommended w/ Boost (bug #795888)
 app-text/poppler nss boost
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2023-11-11)
-# egl+libinput required by dev-qt/qtwayland:5
-# libinput required by kde-plasma/kwayland-integration:5
-dev-qt/qtgui:5 egl libinput
 
 # Mart Raudsepp <leio@gentoo.org> (2023-10-01)
 # kde-plasma/kwin and x11-wm/mutter[wayland] require xwayland[libei] for
@@ -52,10 +53,6 @@ x11-base/xwayland libei
 # Qt 6 just for something people are unlikely to want. Plus, it avoids a
 # circular dependency out of the box.
 dev-build/cmake -gui
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2023-07-29)
-# Required by dev-python/pyqt5[multimedia]
-dev-qt/qtmultimedia:5 widgets
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2023-05-21)
 # Needed by a global USE=wayland right now (REQUIRED_USE conflicts)
@@ -109,10 +106,6 @@ media-video/mpv -sdl
 # Mike Gilbert <floppym@gentoo.org> (2017-01-04)
 # Needed by x11-misc/xdg-utils.
 app-text/xmlto text
-
-# Ben de Groot <yngwin@gentoo.org> (2015-02-18)
-# Enable sensible defaults for desktop users (bug #540046)
-dev-python/pyqt5 gui multimedia network printsupport widgets
 
 # Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (2014-05-08)
 # Enable x11-libs/libxcb[xkb] as it is needed by x11-libs/libxkbcommon[X]

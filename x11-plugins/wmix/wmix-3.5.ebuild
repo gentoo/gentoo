@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -19,6 +19,10 @@ RDEPEND="media-libs/alsa-lib
 	x11-libs/libXrandr"
 DEPEND="${RDEPEND}
 	x11-base/xorg-proto"
+
+PATCHES=(
+	"${FILESDIR}/wmix-3.5-bool.patch"
+)
 
 src_prepare() {
 	default

@@ -1,10 +1,10 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 PYTHON_REQ_USE="sqlite"
 
 inherit distutils-r1 shell-completion
@@ -30,7 +30,6 @@ DEPEND="${RDEPEND}
 		dev-python/attrs[${PYTHON_USEDEP}]
 		>=dev-python/click-7.0[${PYTHON_USEDEP}]
 		dev-python/hypothesis[${PYTHON_USEDEP}]
-		>=dev-python/py-1.5.0[${PYTHON_USEDEP}]
 		dev-python/pytest[${PYTHON_USEDEP}]
 		>=dev-python/pyyaml-4.2[${PYTHON_USEDEP}]
 		>=dev-python/vcrpy-4.0.2[${PYTHON_USEDEP}]

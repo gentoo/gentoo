@@ -1,0 +1,38 @@
+From: hololeap <hololeap@protonmail.com>
+Date: Fri, 16 Aug 2024 16:06:21 -0600
+Subject: [PATCH 1/1] Send grep stderr to /dev/null for three tests
+
+Tests fail because grep emits warnings which are seen as unexpected
+output. Redirect stderr to /dev/null for these three grep commands.
+
+* T12504
+* T13340
+* T7014
+
+Signed-off-by: hololeap <hololeap@protonmail.com>
+--- a/testsuite/tests/hsc2hs/Makefile
++++ b/testsuite/tests/hsc2hs/Makefile
+@@ -52,9 +52,9 @@ T11004:
+ T12504:
+ 	'$(HSC2HS)' $(HSC2HS_OPTS) T12504/path/to/$@.hsc
+ ifeq "$(WINDOWS)" "YES"
+-	grep '{-# LINE 1 "T12504\\\\path\\\\to\\\\$@\.hsc" #-}' T12504/path/to/$@.hs
++	grep '{-# LINE 1 "T12504\\\\path\\\\to\\\\$@\.hsc" #-}' T12504/path/to/$@.hs 2>/dev/null
+ else
+-	grep '{-# LINE 1 "T12504/path/to/$@\.hsc" #-}' T12504/path/to/$@.hs
++	grep '{-# LINE 1 "T12504/path/to/$@\.hsc" #-}' T12504/path/to/$@.hs 2>/dev/null
+ endif
+ 
+ .PHONY: T15758
+--- a/testsuite/tests/numeric/should_run/Makefile
++++ b/testsuite/tests/numeric/should_run/Makefile
+@@ -6,5 +6,5 @@ include $(TOP)/mk/test.mk
+ T7014:
+ 	rm -f T7014.simpl T7014.o T7014.hi
+ 	'$(TEST_HC)' -Wall -v0 -O --make T7014.hs -fforce-recomp -ddump-simpl > T7014.simpl
+-	! grep -Eq -f T7014.primops T7014.simpl
++	! grep -Eq -f T7014.primops T7014.simpl 2>/dev/null
+ 	./T7014
+-- 
+2.44.2
+

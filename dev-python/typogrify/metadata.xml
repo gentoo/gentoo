@@ -8,7 +8,7 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">typogrify</remote-id>
-		<remote-id type="github">mintchaos/typogrify</remote-id>
-		<bugs-to>https://github.com/mintchaos/typogrify/issues/</bugs-to>
+		<remote-id type="github">justinmayer/typogrify</remote-id>
+		<bugs-to>https://github.com/justinmayer/typogrify/issues/</bugs-to>
 	</upstream>
 </pkgmetadata>

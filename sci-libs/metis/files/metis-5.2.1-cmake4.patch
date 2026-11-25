@@ -1,0 +1,19 @@
+From 350931887dfc00c2e3cb7551c5abf30e0297126a Mon Sep 17 00:00:00 2001
+From: George Karypis <karypis@umn.edu>
+Date: Fri, 4 Jul 2025 14:44:10 -0500
+Subject: [PATCH] updated the minimum CMAKE version
+
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index a15d19a..ef34603 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 2.8)
++cmake_minimum_required(VERSION 3.10)
+ project(METIS C)
+ 
+ set(SHARED FALSE CACHE BOOL "build a shared library")

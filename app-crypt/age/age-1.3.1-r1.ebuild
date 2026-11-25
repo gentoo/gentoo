@@ -12,7 +12,7 @@ SRC_URI+=" https://dev.gentoo.org/~graaff/age/${P}-deps.tar.xz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 ~arm64"
 
 src_prepare() {
 	default

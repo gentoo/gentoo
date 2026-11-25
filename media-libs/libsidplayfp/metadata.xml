@@ -5,6 +5,9 @@
 		<email>sound@gentoo.org</email>
 		<name>Gentoo Sound project</name>
 	</maintainer>
+	<use>
+		<flag name="usb">Support USBSID-Pico hardware SID via libusb</flag>
+	</use>
 	<upstream>
 		<remote-id type="sourceforge">sidplay-residfp</remote-id>
 		<remote-id type="github">libsidplayfp/libsidplayfp</remote-id>

@@ -1,4 +1,4 @@
-# Copyright 2025 Gentoo Authors
+# Copyright 2025-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -24,7 +24,10 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
-	<dev-cpp/jsoncons-1.5.0
+	|| (
+		>=dev-cpp/jsoncons-1.6.0
+		<dev-cpp/jsoncons-1.5.0
+	)
 	dev-cpp/pcg-cpp
 "
 BDEPEND="virtual/pkgconfig"

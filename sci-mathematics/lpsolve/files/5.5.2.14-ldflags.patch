@@ -1,0 +1,21 @@
+https://bugs.gentoo.org/976325
+
+--- a/lp_solve/ccc
++++ b/lp_solve/ccc
+@@ -42,4 +42,4 @@ then opts='-O0'
+ else dl=-ldl
+ fi
+ 
+-$c -I.. -I../bfp -I../bfp/bfp_LUSOL -I../bfp/bfp_LUSOL/LUSOL -I../colamd -I../shared $opts $def $NOISNAN -DYY_NEVER_INTERACTIVE -DPARSER_LP -DINVERSE_ACTIVE=INVERSE_LUSOL -DRoleIsExternalInvEngine $src -o bin/$PLATFORM/lp_solve $math $dl
++$c -I.. -I../bfp -I../bfp/bfp_LUSOL -I../bfp/bfp_LUSOL/LUSOL -I../colamd -I../shared $opts $def $NOISNAN -DYY_NEVER_INTERACTIVE -DPARSER_LP -DINVERSE_ACTIVE=INVERSE_LUSOL -DRoleIsExternalInvEngine ${LDFLAGS} $src -o bin/$PLATFORM/lp_solve $math $dl
+--- a/lpsolve55/ccc
++++ b/lpsolve55/ccc
+@@ -50,7 +50,7 @@ $ranlib bin/$PLATFORM/liblpsolve55.a
+ if [ "$so" != "" ]
+ then
+   $c -fpic -s -c -I.. -I../shared -I../bfp -I../bfp/bfp_LUSOL -I../bfp/bfp_LUSOL/LUSOL -I../colamd -I. $opts $NOISNAN -DYY_NEVER_INTERACTIVE -DPARSER_LP -DINVERSE_ACTIVE=INVERSE_LUSOL -DRoleIsExternalInvEngine $src
+-  $c -shared -Wl,-Bsymbolic -Wl,-soname,liblpsolve55.so -o bin/$PLATFORM/liblpsolve55.so `echo $src|sed s/[.]c/.o/g|sed 's/[^ ]*\///g'` -lc -lm -ldl
++  $c -shared -Wl,-Bsymbolic -Wl,-soname,liblpsolve55.so ${LDFLAGS} -o bin/$PLATFORM/liblpsolve55.so `echo $src|sed s/[.]c/.o/g|sed 's/[^ ]*\///g'` -lc -lm -ldl
+ fi
+ 
+ rm *.o 2>/dev/null

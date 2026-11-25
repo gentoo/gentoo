@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
+	<maintainer type="person" proxied="maintainer-and-proxy">
 		<email>chutzpah@gentoo.org</email>
 		<name>Patrick McLean</name>
 	</maintainer>
@@ -11,5 +11,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="gitlab">OpenRGBDevelopers/OpenRGBSkinPlugin</remote-id>
+		<remote-id type="codeberg">OpenRGB/OpenRGBSkinPlugin</remote-id>
 	</upstream>
 </pkgmetadata>

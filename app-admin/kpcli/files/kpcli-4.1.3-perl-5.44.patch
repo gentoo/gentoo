@@ -1,0 +1,36 @@
+https://sourceforge.net/p/kpcli/bugs/60/
+--- a/kpcli
++++ b/kpcli
+@@ -197,6 +197,8 @@
+ #our $FORCED_READLINE = 'Term::ReadLine::Gnu';
+ #our $FORCED_READLINE = 'Term::ReadLine::Perl';
+ #our $FORCED_READLINE = 'Term::ReadLine::Perl5';
++
++my @BUSY_CHARS = qw(\\ | / -); # Unfortunate workaround to Perl 5.44+ stupidity
+ 
+ # Pull in optional perl modules with run-time loading
+ my %OPTIONAL_PM=();
+@@ -1666,9 +1668,9 @@
+   my %results=();
+   my @empties = ();
+   print "  working...\r";
+-  my @busy_chars = qw(\ | / -); my $i=0; my $in=10;
++  my $i=0; my $in=10;
+   foreach my $ent (@targets) {
+-    printf "%s\r", $busy_chars[int($i/$in)%($#busy_chars+1)] if (!($i++ % $in));
++    printf "%s\r", $BUSY_CHARS[int($i/$in)%($#BUSY_CHARS+1)] if (!($i++ % $in));
+     my $pass = get_password($state->{kdb},$ent);
+     if (length($pass) == 0) {
+       push @empties, $ent;
+@@ -1794,9 +1796,9 @@
+   my $k=$state->{kdb};
+   my %password_lengths;
+   print "  working...\r";
+-  my @busy_chars = qw(\ | / -); my $i=0; my $in=100;
++  my $i=0; my $in=100;
+   foreach my $ent_id (values(%{$state->{all_ent_paths_fwd}})) {
+-    printf "%s\r", $busy_chars[int($i/$in)%($#busy_chars+1)] if (!($i++ % $in));
++    printf "%s\r", $BUSY_CHARS[int($i/$in)%($#BUSY_CHARS+1)] if (!($i++ % $in));
+     my $ent = get_entry_by_uuid($k, $ent_id);
+     my $pass_len = length(get_password($state->{kdb},$ent));
+     if ($pass_len < 1) {

@@ -1,0 +1,130 @@
+DisplayEvents: Fix compilation with Autotools on Ubuntu.
+
+Sort plugins/Makefile.am alphabetically.
+
+Authored by: wh11204 2025-04-10
+
+https://sourceforge.net/p/codeblocks/code/13653/
+
+$ svn diff -r r13652:r13653 > r13653.patch
+
+Patch amended to apply on Gentoo (adds 'a/' and 'b/' prefixes).
+
+This should fix dev-util/codeblocks-25.03 'undefined reference'
+compile errors such as the following:
+
+make[3]: Entering directory '/var/tmp/portage/dev-util/codeblocks-25.03-r2/work/codeblocks_25.03/src/plugins/displayevents'
+/bin/sh ../../../libtool  --tag=CXX   --mode=compile x86_64-pc-linux-gnu-g++ -std=c++11 -DHAVE_CONFIG_H -I. -I../../../src/include  -I/usr/lib64/wx/include/gtk3-unicode-3.2 -I/usr/include/wx-3.2 -D_FILE_OFFSET_BITS=64 -DWXUSINGDLL -D__WXGTK__ -pthread -I../../../src/include -DCB_AUTOCONF  -DNDEBUG -DPIC -DTIXML_USE_STL=YES  -O2 -pipe -march=x86-64 -mtune=generic -fno-strict-aliasing -fPIC -fexceptions -c -o DisplayEvents.lo DisplayEvents.cpp
+PWD=`pwd` cd . && zip -R /var/tmp/portage/dev-util/codeblocks-25.03-r2/work/codeblocks_25.03/src/plugins/displayevents/DisplayEvents.zip manifest.xml > /dev/null
+libtool: compile:  x86_64-pc-linux-gnu-g++ -std=c++11 -DHAVE_CONFIG_H -I. -I../../../src/include -I/usr/lib64/wx/include/gtk3-unicode-3.2 -I/usr/include/wx-3.2 -D_FILE_OFFSET_BITS=64 -DWXUSINGDLL -D__WXGTK__ -pthread -I../../../src/include -DCB_AUTOCONF -DNDEBUG -DPIC -DTIXML_USE_STL=YES -O2 -pipe -march=x86-64 -mtune=generic -fno-strict-aliasing -fPIC -fexceptions -c DisplayEvents.cpp  -fPIC -DPIC -o .libs/DisplayEvents.o
+/bin/sh ../../../libtool  --tag=CXX   --mode=link x86_64-pc-linux-gnu-g++ -std=c++11  -O2 -pipe -march=x86-64 -mtune=generic -fno-strict-aliasing -fPIC -fexceptions -module -version-info 0:1:0 -shared -no-undefined -avoid-version -Wl,--no-undefined -Wl,-O1 -Wl,--as-needed -Wl,-z,pack-relative-relocs -o libDisplayEvents.la -rpath /usr/lib64/codeblocks/plugins DisplayEvents.lo  ../../sdk/libcodeblocks.la -lpthread -ldl
+libtool: link: x86_64-pc-linux-gnu-g++  -fPIC -DPIC -shared -nostdlib /usr/lib/gcc/x86_64-pc-linux-gnu/15/../../../../lib64/crti.o /usr/lib/gcc/x86_64-pc-linux-gnu/15/crtbeginS.o  .libs/DisplayEvents.o   -Wl,-rpath -Wl,/var/tmp/portage/dev-util/codeblocks-25.03-r2/work/codeblocks_25.03/src/sdk/.libs -Wl,--as-needed ../../sdk/.libs/libcodeblocks.so -L/usr/lib64 -lpthread -ldl -L/usr/lib/gcc/x86_64-pc-linux-gnu/15 -L/usr/lib/gcc/x86_64-pc-linux-gnu/15/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/usr/lib/gcc/x86_64-pc-linux-gnu/15/../../../../x86_64-pc-linux-gnu/lib -L/usr/lib/gcc/x86_64-pc-linux-gnu/15/../../.. -L/lib -L/usr/lib -lstdc++ -lm -lgcc_s -lc -lgcc_s /usr/lib/gcc/x86_64-pc-linux-gnu/15/crtendS.o /usr/lib/gcc/x86_64-pc-linux-gnu/15/../../../../lib64/crtn.o  -O2 -march=x86-64 -mtune=generic -Wl,--no-undefined -Wl,-O1 -Wl,-z -Wl,pack-relative-relocs   -pthread -Wl,-soname -Wl,libDisplayEvents.so -o .libs/libDisplayEvents.so
+/usr/x86_64-pc-linux-gnu/binutils-bin/2.47/ld: .libs/DisplayEvents.o: in function `wxString::append(char const*) [clone .isra.0]':
+DisplayEvents.cpp:(.text+0x150b): undefined reference to `wxConvLibcPtr'
+
+$ find /usr/lib64/ -name 'libwx*.so' | xargs -I {} sh -c 'nm -D --defined-only ${1} 2>/dev/null | grep wxConvLibcPtr && echo ${1}' _ {}
+0000000000145e90 T _Z19wxGet_wxConvLibcPtrv@@WXU_3.2
+00000000002d2cc0 B wxConvLibcPtr@@WXU_3.2
+/usr/lib64/libwx_baseu-3.2.so
+
+Index: src/plugins/Makefile.am
+===================================================================
+--- a/src/plugins/Makefile.am	(revision 13652)
++++ b/src/plugins/Makefile.am	(revision 13653)
+@@ -26,12 +26,20 @@
+ MAYBE_DEBUGGER=debuggergdb
+ endif
+ 
++if BUILD_DISPLAYEVENTS
++MAYBE_DISPLAYEVENTS=displayevents
++endif
++
++if BUILD_MANIFEST
++MAYBE_MANIFEST=xpmanifest
++endif
++
+ if BUILD_MIMEHANDLER
+ MAYBE_MIMEHANDLER=defaultmimehandler
+ endif
+ 
+-if BUILD_DISPLAYEVENTS
+-MAYBE_DISPLAYEVENTS=displayevents
++if BUILD_OCCURRENCESHIGHLIGHTING
++MAYBE_OCCURRENCESHIGHLIGHTING=occurrenceshighlighting
+ endif
+ 
+ if BUILD_OPENFILESLIST
+@@ -38,10 +46,6 @@
+ MAYBE_OPENFILESLIST=openfileslist
+ endif
+ 
+-if BUILD_OCCURRENCESHIGHLIGHTING
+-MAYBE_OCCURRENCESHIGHLIGHTING=occurrenceshighlighting
+-endif
+-
+ if BUILD_PROJECTSIMPORTER
+ MAYBE_PROJECTSIMPORTER=projectsimporter
+ endif
+@@ -54,12 +58,8 @@
+ MAYBE_TODO=todo
+ endif
+ 
+-if BUILD_MANIFEST
+-MAYBE_MANIFEST=xpmanifest
+-endif
+-
+ SUBDIRS=$(MAYBE_ABBREVIATIONS) \
+-    $(MAYBE_ASTYLE) \
++		$(MAYBE_ASTYLE) \
+ 		$(MAYBE_AUTOSAVE) \
+ 		$(MAYBE_CLASSWIZARD) \
+ 		$(MAYBE_CODECOMPLETION) \
+@@ -66,13 +66,13 @@
+ 		$(MAYBE_COMPILER) \
+ 		$(MAYBE_DEBUGGER) \
+ 		$(MAYBE_DISPLAYEVENTS) \
++		$(MAYBE_MANIFEST) \
+ 		$(MAYBE_MIMEHANDLER) \
+-		$(MAYBE_SCRIPTEDWIZARD) \
+ 		$(MAYBE_PROJECTSIMPORTER) \
++		$(MAYBE_OCCURRENCESHIGHLIGHTING) \
+ 		$(MAYBE_OPENFILESLIST) \
+-		$(MAYBE_OCCURRENCESHIGHLIGHTING) \
++		$(MAYBE_SCRIPTEDWIZARD) \
+ 		$(MAYBE_TODO) \
+-		$(MAYBE_MANIFEST) \
+ 		contrib
+ # the 'contrib' subdir contains its own filtering
+ 
+@@ -85,8 +85,8 @@
+ 		debuggergdb \
+ 		defaultmimehandler \
+ 		displayevents \
++		occurrenceshighlighting \
+ 		openfileslist \
+-		occurrenceshighlighting \
+ 		projectsimporter \
+ 		scriptedwizard \
+ 		todo \
+@@ -97,3 +97,4 @@
+ 		loghacker \
+ 		modpoller \
+ 		tidycmt
++
+Index: src/plugins/displayevents/Makefile.am
+===================================================================
+--- a/src/plugins/displayevents/Makefile.am	(revision 13652)
++++ b/src/plugins/displayevents/Makefile.am	(revision 13653)
+@@ -5,10 +5,9 @@
+ 
+ pluginlib_LTLIBRARIES = libDisplayEvents.la
+ 
+-libDisplayEvents_la_LDFLAGS = -module -version-info 0:1:0 -shared -no-undefined -avoid-version
++libDisplayEvents_la_LDFLAGS = @MODULE_SHARED_LDFLAGS@ -version-info 0:1:0 -shared -no-undefined -avoid-version
+ 
+-libDisplayEvents_la_LIBADD = $(PLUGIN_WX_LIBS) \
+-							../../sdk/libcodeblocks.la
++libDisplayEvents_la_LIBADD = ../../sdk/libcodeblocks.la $(WX_LIBS)
+ 
+ libDisplayEvents_la_SOURCES = DisplayEvents.cpp
+ 

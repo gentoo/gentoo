@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
@@ -34,7 +34,7 @@ S="${WORKDIR}/${MY_P}"
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0/$(ver_cut 1-2)"
 IUSE="+crypt doc examples +slz +net_ns +pcre pcre-jit prometheus-exporter
-ssl systemd test +threads tools zlib lua 51degrees wurfl"
+selinux ssl systemd test +threads tools zlib lua 51degrees wurfl"
 REQUIRED_USE="pcre-jit? ( pcre )
 	lua? ( ${LUA_REQUIRED_USE} )
 	?? ( slz zlib )"
@@ -59,7 +59,8 @@ DEPEND="
 	)"
 RDEPEND="${DEPEND}
 	acct-group/haproxy
-	acct-user/haproxy"
+	acct-user/haproxy
+	selinux? ( sec-policy/selinux-haproxy )"
 
 DOCS=( CHANGELOG CONTRIBUTING MAINTAINERS README )
 EXTRAS=( admin/halog admin/iprange dev/tcploop dev/hpack )

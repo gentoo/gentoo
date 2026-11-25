@@ -21,6 +21,9 @@
     <flag name="sundials">Enable the ode15i and ode15s ODE solvers using <pkg>sci-libs/sundials</pkg></flag>
   </use>
   <upstream>
+    <bugs-to>https://savannah.gnu.org/bugs/?group=octave</bugs-to>
+    <changelog>https://octave.org/news.html</changelog>
+    <doc>https://docs.octave.org/latest/</doc>
     <remote-id type="savannah">octave</remote-id>
   </upstream>
 </pkgmetadata>

@@ -1,0 +1,71 @@
+https://www.redmine.org/projects/redmine/wiki/security_advisories
+Bug: https://www.redmine.org/issues/44467
+From https://github.com/redmine/redmine/commit/055c260bb1d9c3c454bcad23387d02e1acafac12
+From: Marius Balteanu <marius.balteanu@zitec.com>
+Date: Mon, 28 Sep 2026 19:07:09 +0000
+Subject: [PATCH] Ensure API issue children inclusion respects issue visibility
+ (#44467).
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Patch by Jens Krämer (user:jkraemer).
+
+git-svn-id: https://svn.redmine.org/redmine/trunk@25163 e93f8b46-1217-0410-a6f0-8f06a7374b81
+(cherry picked from commit 055c260bb1d9c3c454bcad23387d02e1acafac12)
+--- a/app/helpers/issues_helper.rb
++++ b/app/helpers/issues_helper.rb
+@@ -681,7 +681,7 @@ module IssuesHelper
+     return if issue.leaf?
+ 
+     api.array :children do
+-      issue.children.each do |child|
++      issue.children.visible.each do |child|
+         api.issue(:id => child.id) do
+           api.tracker(:id => child.tracker_id, :name => child.tracker.name) unless child.tracker.nil?
+           api.subject child.subject
+--- a/test/integration/api_test/issues_test.rb
++++ b/test/integration/api_test/issues_test.rb
+@@ -364,6 +364,42 @@ class Redmine::ApiTest::IssuesTest < Redmine::ApiTest::Base
+     assert_equal 1, json['issue']['children'].count {|child| child.key?('children')}
+   end
+ 
++  def generate_issue_with_invisible_descendants
++    issue = Issue.generate_with_descendants!(:project_id => 1)
++    child = issue.children.first
++    Issue.generate!(:project => issue.project, :subject => 'Private child', :parent_issue_id => issue.id, :is_private => true)
++    Issue.generate!(:project => issue.project, :subject => 'Private grandchild', :parent_issue_id => child.id, :is_private => true)
++    Issue.generate!(:project_id => 5, :subject => 'Child in private project', :parent_issue_id => issue.id)
++    issue.reload
++  end
++
++  test "GET /issues/:id.xml with subtasks should not include invisible descendants" do
++    issue = generate_issue_with_invisible_descendants
++    get "/issues/#{issue.id}.xml?include=children"
++
++    assert_select 'issue id', :text => issue.id.to_s do
++      assert_select '~ children[type=array] > issue', 2
++      assert_select '~ children[type=array] > issue > children > issue', 1
++    end
++    assert_select 'subject', :text => 'Child1'
++    assert_select 'subject', :text => 'Child2'
++    assert_select 'subject', :text => 'Child11'
++    assert_select 'subject', :text => 'Private child', :count => 0
++    assert_select 'subject', :text => 'Private grandchild', :count => 0
++    assert_select 'subject', :text => 'Child in private project', :count => 0
++  end
++
++  test "GET /issues/:id.json with subtasks should not include invisible descendants" do
++    issue = generate_issue_with_invisible_descendants
++    get "/issues/#{issue.id}.json?include=children"
++
++    json = ActiveSupport::JSON.decode(response.body)
++    children = json['issue']['children']
++    assert_equal ['Child1', 'Child2'], children.pluck('subject')
++    assert_equal ['Child11'], children.first['children'].pluck('subject')
++    assert_nil children.last['children']
++  end
++
+   test "GET /issues/:id.json with no spent time should return floats" do
+     issue = Issue.generate!
+     get "/issues/#{issue.id}.json"

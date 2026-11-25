@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -20,7 +20,6 @@ IUSE="64-bit-bfd cet multitarget nls static-libs test"
 #                      for the patchsets
 
 PATCH_VER=1
-PATCH_DEV=dilfridge
 
 MY_PN=binutils
 MY_P=${MY_PN}-${PV}
@@ -32,16 +31,22 @@ elif [[ ${PV} == *9999 ]]; then
 	inherit git-r3
 	SLOT="0/$(ver_cut 1-2)"
 else
+	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/binutils.asc
+	inherit verify-sig
 	PATCH_BINUTILS_VER=${PATCH_BINUTILS_VER:-${PV}}
 	PATCH_DEV=${PATCH_DEV:-dilfridge}
-	SRC_URI="mirror://gnu/binutils/${MY_P}.tar.xz
-	https://dev.gentoo.org/~${PATCH_DEV}/distfiles/${MY_P}.tar.xz
-	https://dev.gentoo.org/~${PATCH_DEV}/distfiles/${MY_PN}-${PATCH_BINUTILS_VER}-patches-${PATCH_VER}.tar.xz"
+	SRC_URI="
+		mirror://gnu/binutils/${MY_P}.tar.xz
+		verify-sig? ( mirror://gnu/binutils/${MY_P}.tar.xz.sig )
+	"
+	[[ -z ${PATCH_VER} ]] || SRC_URI+=" https://distfiles.gentoo.org/pub/proj/toolchain/${MY_PN}/patches/${MY_PN}-${PATCH_BINUTILS_VER}-patches-${PATCH_VER}.tar.xz"
 	SLOT="0/${PV}"
 	#KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~arm64-macos ~x64-macos ~x64-solaris"
+
+	BDEPEND="verify-sig? ( sec-keys/openpgp-keys-binutils )"
 fi
 
-BDEPEND="
+BDEPEND+="
 	nls? ( sys-devel/gettext )
 	test? ( dev-util/dejagnu )
 "
@@ -65,7 +70,7 @@ src_unpack() {
 		"
 		EGIT_CHECKOUT_DIR=${WORKDIR}/patches-git
 		git-r3_src_unpack
-		mv patches-git/9999 patch || die
+		mv patches-git/9999 patches || die
 
 		if [[ ${PV} != 9999 ]] ; then
 			EGIT_BRANCH=binutils-$(ver_cut 1)_$(ver_cut 2)-branch
@@ -79,6 +84,7 @@ src_unpack() {
 		EGIT_CHECKOUT_DIR=${S}
 		git-r3_src_unpack
 	else
+		use verify-sig && verify-sig_verify_detached "${DISTDIR}"/${MY_P/-hppa64/}.tar.xz{,.sig}
 		unpack ${MY_P}.tar.xz
 
 		cd "${WORKDIR}" || die
@@ -97,7 +103,7 @@ src_unpack() {
 src_prepare() {
 	if [[ -n ${PATCH_VER} ]] ; then
 		einfo "Applying binutils-${PATCH_BINUTILS_VER} patchset ${PATCH_VER}"
-		eapply "${WORKDIR}/patch"/*.patch
+		eapply "${WORKDIR}/patches"
 	fi
 
 	# Fix cross-compile relinking issue, bug #626402

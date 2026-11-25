@@ -1,9 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 inherit bash-completion-r1 desktop linux-info optfeature
 inherit python-single-r1 systemd tmpfiles toolchain-funcs udev wrapper xdg
 
@@ -119,6 +119,7 @@ src_configure() {
 	local myeconfargs=(
 		--datadir=/usr/share/nut
 		--datarootdir=/usr/share/nut
+		--disable-spellcheck # bug #974679
 		--disable-static
 		--disable-strip
 		--disable-Werror

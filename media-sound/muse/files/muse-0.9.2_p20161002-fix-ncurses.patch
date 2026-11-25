@@ -1,0 +1,47 @@
+https://bugs.gentoo.org/932135
+---
+diff --git a/src/ncursesgui/libcdk/cdk.c b/src/ncursesgui/libcdk/cdk.c
+index 95ab0bc..91466ba 100644
+--- a/src/ncursesgui/libcdk/cdk.c
++++ b/src/ncursesgui/libcdk/cdk.c
+@@ -1231,8 +1231,7 @@ void moveCursesWindow (WINDOW *window, int xdiff, int ydiff)
+    ypos += ydiff;
+    mvwin(window, ypos, xpos);
+ #else
+-   window->_begx += xdiff;
+-   window->_begy += ydiff;
++   wmove(window, getbegy(window) + ydiff, getbegx(window) + xdiff);
+ #endif
+ }
+ 
+diff --git a/src/ncursesgui/libcdk/cdk.h b/src/ncursesgui/libcdk/cdk.h
+index b4868a8..8a47d99 100644
+--- a/src/ncursesgui/libcdk/cdk.h
++++ b/src/ncursesgui/libcdk/cdk.h
+@@ -199,26 +199,6 @@ typedef int boolean;
+ #define MAX_LINES	5000
+ #define MAX_BUTTONS	200
+ 
+-/*
+- * Not all variants of curses define getmaxx, etc.  But use the provided ones
+- * if they exist, to work around differences in the underlying implementation.
+- */
+-#if !(defined(getmaxx) || defined(HAVE_GETMAXX))
+-#define getmaxx(a)	((a)->_maxx)
+-#endif
+-
+-#if !(defined(getmaxy) || defined(HAVE_GETMAXY))
+-#define getmaxy(a)	((a)->_maxy)
+-#endif
+-
+-#if !(defined(getbegx) || defined(HAVE_GETBEGX))
+-#define getbegx(a)	((a)->_begx)
+-#endif
+-
+-#if !(defined(getbegy) || defined(HAVE_GETBEGY))
+-#define getbegy(a)	((a)->_begy)
+-#endif
+-
+ #define	MAXIMUM(a,b)	((a) > (b) ? (a) : (b))
+ #define	MINIMUM(a,b)	((a) < (b) ? (a) : (b))
+ #define	HALF(a)		((a) >> 1)

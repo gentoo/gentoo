@@ -1,0 +1,91 @@
+From 769cd10ca24f3f59e05a52ff9d9f2cdeec22b2d7 Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+Date: Thu, 10 Sep 2026 19:28:54 +0200
+Subject: gcc-17 include iostream
+
+Signed-off-by: Paul Zander <negril.nx+gentoo@gmail.com>
+
+diff --git a/cuda/common/include/pcl/cuda/time_gpu.h b/cuda/common/include/pcl/cuda/time_gpu.h
+index 4457029c6..cb51a673d 100644
+--- a/cuda/common/include/pcl/cuda/time_gpu.h
++++ b/cuda/common/include/pcl/cuda/time_gpu.h
+@@ -39,6 +39,7 @@
+ 
+ #include <cuda.h>
+ #include <pcl/cuda/cutil_inline.h>
++#include <iostream>
+ 
+ namespace pcl
+ {
+diff --git a/cuda/sample_consensus/src/sac_model_1point_plane.cu b/cuda/sample_consensus/src/sac_model_1point_plane.cu
+index 033de426a..53f92913c 100644
+--- a/cuda/sample_consensus/src/sac_model_1point_plane.cu
++++ b/cuda/sample_consensus/src/sac_model_1point_plane.cu
+@@ -47,6 +47,7 @@
+ 
+ #include <vector_types.h>
+ #include <stdio.h>
++#include <iostream>
+ #include <limits>
+ 
+ // specify inlier computation method
+-- 
+2.55.0
+
+
+From 323f2e1ef49853fde45d6e75b430660d2f994b2f Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+Date: Thu, 10 Sep 2026 20:18:26 +0200
+Subject: use nullptr
+
+Signed-off-by: Paul Zander <negril.nx+gentoo@gmail.com>
+
+diff --git a/cuda/common/include/pcl/cuda/time_gpu.h b/cuda/common/include/pcl/cuda/time_gpu.h
+index cb51a673d..108ddc7fc 100644
+--- a/cuda/common/include/pcl/cuda/time_gpu.h
++++ b/cuda/common/include/pcl/cuda/time_gpu.h
+@@ -75,7 +75,7 @@ namespace pcl
+           cutilSafeCall (cudaEventCreate (&start_));
+           cutilSafeCall (cudaEventCreate (&end_));
+   
+-          cutilSafeCall (cudaEventRecord (start_, 0));
++          cutilSafeCall (cudaEventRecord (start_, nullptr));
+         }
+   
+         /** \brief Stop the timer. */
+@@ -85,7 +85,7 @@ namespace pcl
+           CUT_CHECK_ERROR ("dude");
+           // Measure time needed to copy data
+           cutilSafeCall (cudaDeviceSynchronize ());
+-          cutilSafeCall (cudaEventRecord (end_, 0));
++          cutilSafeCall (cudaEventRecord (end_, nullptr));
+           cutilSafeCall (cudaEventSynchronize (end_));
+           cutilSafeCall (cudaEventElapsedTime (&elapsed_time_, start_, end_));
+   
+-- 
+2.55.0
+
+
+From 01134d22dbbaa30c28fc8473e143eb2520cc1c0d Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+Date: Thu, 10 Sep 2026 20:18:36 +0200
+Subject: use cstdio
+
+Signed-off-by: Paul Zander <negril.nx+gentoo@gmail.com>
+
+diff --git a/gpu/people/src/cuda/nvidia/NCVPyramid.cu b/gpu/people/src/cuda/nvidia/NCVPyramid.cu
+index 440d80fb7..cc88a1bea 100644
+--- a/gpu/people/src/cuda/nvidia/NCVPyramid.cu
++++ b/gpu/people/src/cuda/nvidia/NCVPyramid.cu
+@@ -40,7 +40,7 @@
+ 
+ 
+ #include <cuda_runtime.h>
+-#include <stdio.h>
++#include <cstdio>
+ #include "NCV.hpp"
+ #include "NCVAlg.hpp"
+ #include "NCVPyramid.hpp"
+-- 
+2.55.0
+

@@ -1,0 +1,42 @@
+From e00b5b849e467fd3661ebdbfb7e49db5abb5c313 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Caol=C3=A1n=20McNamara?= <caolan.mcnamara@collabora.com>
+Date: Mon, 1 Jun 2026 19:03:43 +0100
+Subject: [PATCH] avoid ending up with -isystem /usr/include, which breaks
+ horribly
+
+Try an alternative workaround for the macOS ci's -Werror and --with=boost=/opt/homebrew
+
+In file included from /usr/include/c++/15/ext/string_conversions.h:45,
+                 from /usr/include/c++/15/bits/basic_string.h:4442,
+                 from /usr/include/c++/15/string:56,
+                 from ../../inc/libcmis/allowable-actions.hxx:32,
+                 from allowable-actions.cxx:29:
+/usr/include/c++/15/cstdlib:83:15: fatal error: stdlib.h: No such file or directory
+   83 | #include_next <stdlib.h>
+      |               ^~~~~~~~~~
+compilation terminated.
+---
+ configure.ac | 10 ++++++----
+ 1 file changed, 6 insertions(+), 4 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 68d2dcb..7186058 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -170,10 +170,12 @@ BOOST_UUID
+ AS_IF([test "x$enable_client" != "xno"], [
+ 	BOOST_PROGRAM_OPTIONS
+ ])
+-# Treat boost headers as system headers so -Wshadow / -Weffc++ etc.
+-# inside them do not break the build under -Werror. boost.m4 emits
+-# -I$prefix; rewrite to -isystem $prefix.
+-BOOST_CPPFLAGS=`echo "$BOOST_CPPFLAGS" | sed 's|-I|-isystem |g'`
++# Our macOS CI uses --with-boost=/opt/homebrew and then has warnings which trip
++# up -Werror. So rewrite the -I that boost.m4 emits to -isystem so -Wshadow, etc
++# inside boost don't make ci fail
++AS_IF([test -n "$with_boost" -a "x$with_boost" != "xyes" -a "x$with_boost" != "xno"], [
++	BOOST_CPPFLAGS=`echo "$BOOST_CPPFLAGS" | sed 's|-I|-isystem |g'`
++])
+ AC_SUBST(BOOST_CPPFLAGS)
+ 
+ # Checks for header files.

@@ -9,7 +9,7 @@ SRC_URI="https://github.com/OpenSC/${PN}/releases/download/${P}/${P}.tar.bz2"
 
 LICENSE="|| ( BSD GPL-2 )"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
 IUSE="doc gnutls nss test"
 # Fails trying to load /usr/lib/pkcs11/provider.so?
 RESTRICT="!test? ( test ) test"
@@ -24,6 +24,10 @@ BDEPEND="
 	virtual/pkgconfig
 	doc? ( >=app-text/doxygen-1.4.7 )
 "
+
+PATCHES=(
+	"${FILESDIR}"/${P}-openssl-4.patch
+)
 
 src_configure() {
 	local myeconfargs=(

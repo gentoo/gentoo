@@ -1,0 +1,44 @@
+From: Dominik Mierzejewski <dominik@greysector.net>
+Date: Wed, 10 Sep 2025 10:35:14 +0000
+Subject: fix build with libpeas1-1.36.0-11 (gir-2.0 port)
+
+See: https://src.fedoraproject.org/rpms/libpeas1/c/247a876ce08dc8cc7f56111ffd7fc8a9acefd4a8
+
+Origin: https://src.fedoraproject.org/rpms/gitg/blob/rawhide/f/gitg-gir-2.0.patch
+---
+ gitg/gitg-plugins-engine.vala       | 2 +-
+ vapi/gobject-introspection-1.0.vapi | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/gitg/gitg-plugins-engine.vala b/gitg/gitg-plugins-engine.vala
+index 93a14ef..5dacb83 100644
+--- a/gitg/gitg-plugins-engine.vala
++++ b/gitg/gitg-plugins-engine.vala
+@@ -28,7 +28,7 @@ public class PluginsEngine : Peas.Engine
+ 	{
+ 		enable_loader("python");
+ 
+-		var repo = Introspection.Repository.get_default();
++		var repo = Introspection.Repository.dup_default();
+ 
+ 		try
+ 		{
+diff --git a/vapi/gobject-introspection-1.0.vapi b/vapi/gobject-introspection-1.0.vapi
+index 28f7c49..e0394e6 100644
+--- a/vapi/gobject-introspection-1.0.vapi
++++ b/vapi/gobject-introspection-1.0.vapi
+@@ -1,4 +1,4 @@
+-[CCode (cprefix = "GI", lower_case_cprefix = "g_i", cheader_filename = "girepository.h")]
++[CCode (cprefix = "GI", lower_case_cprefix = "gi_", cheader_filename = "girepository/girepository.h")]
+ namespace Introspection
+ {
+ 	[CCode (cprefix = "G_IREPOSITORY_ERROR_")]
+@@ -16,7 +16,7 @@ namespace Introspection
+ 
+ 	[CCode (ref_function = "", unref_function = "")]
+ 	public class Repository {
+-		public static unowned Repository get_default();
++		public static unowned Repository dup_default();
+ 		public static void prepend_search_path(string directory);
+ 		public static unowned GLib.SList<string> get_search_path();
+ 

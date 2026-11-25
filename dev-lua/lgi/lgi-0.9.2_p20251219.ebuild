@@ -19,7 +19,7 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~loong ~ppc ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~loong ppc ppc64 ~riscv ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="${LUA_REQUIRED_USE}"
@@ -53,6 +53,7 @@ DEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.9.2-multi_lua_impl.patch
 	"${FILESDIR}"/${PN}-0.9.2-fix_tests.patch
+	"${FILESDIR}"/${PN}-0.9.2-skip_tests_5-1.patch
 )
 
 lua_src_prepare() {

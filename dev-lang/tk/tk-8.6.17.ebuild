@@ -10,7 +10,7 @@ inherit autotools multilib-minimal multilib prefix toolchain-funcs virtualx
 MY_P="${PN}${PV/_beta/b}"
 
 DESCRIPTION="Tk Widget Set"
-HOMEPAGE="https://www.tcl.tk/"
+HOMEPAGE="https://www.tcl-lang.org/"
 SRC_URI="https://downloads.sourceforge.net/tcl/${MY_P}-src.tar.gz"
 
 SPARENT="${WORKDIR}/${PN}$(ver_cut 1-3 ${PV})"
@@ -18,7 +18,7 @@ S="${SPARENT}"/unix
 
 LICENSE="tcltk"
 SLOT="0/8.6"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~x64-macos ~x64-solaris"
 IUSE="debug +threads truetype aqua xscreensaver"
 RESTRICT="!test? ( test )"
 

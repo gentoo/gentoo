@@ -3,7 +3,7 @@
 
 EAPI=8
 ADA_COMPAT=( gcc_{13..16} )
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit ada python-any-r1 multiprocessing
 
@@ -52,7 +52,7 @@ src_compile() {
 			-XPRETTIER_ADA_LIBRARY_TYPE=$1 \
 			-P prettier_ada.gpr \
 			-p \
-			-j$(makeopts_jobs) \
+			-j$(get_makeopts_jobs) \
 			-largs ${LDFLAGS} \
 			-cargs ${ADAFLAGS} \
 			|| die "gprbuild failed"
@@ -90,7 +90,7 @@ src_test() {
 		-XPRETTIER_ADA_LIBRARY_TYPE=static \
 		-P testsuite/test_programs/test_programs.gpr \
 		-p \
-		-j$(makeopts_jobs) \
+		-j$(get_makeopts_jobs) \
 		|| die
 	gprinstall \
 		-XLIBRARY_TYPE=static \

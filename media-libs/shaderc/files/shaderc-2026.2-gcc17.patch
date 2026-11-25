@@ -1,0 +1,33 @@
+https://bugs.gentoo.org/976599
+https://github.com/google/shaderc/commit/9e119b33883a7e6413553de1ab0fd232d80736ee
+
+From 9e119b33883a7e6413553de1ab0fd232d80736ee Mon Sep 17 00:00:00 2001
+From: Sergei Trofimovich <slyich@gmail.com>
+Date: Mon, 1 Jun 2026 17:01:59 +0100
+Subject: [PATCH] io_shaderc.h: add missing `<fstream>` include (#1571)
+
+`gcc-17` cleaned up transitive header inclusion and exposed missing
+header as a build failure:
+
+```
+In file included from /build/source/libshaderc_util/src/io_shaderc.cc:15:
+/build/source/libshaderc_util/include/libshaderc_util/io_shaderc.h:54:31: error: 'std::ofstream' has not been declared
+   54 |                               std::ofstream* file_stream, std::ostream* err);
+      |                               ^~~
+```
+---
+ libshaderc_util/include/libshaderc_util/io_shaderc.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/libshaderc_util/include/libshaderc_util/io_shaderc.h b/libshaderc_util/include/libshaderc_util/io_shaderc.h
+index b9116c11e..500919a2e 100644
+--- a/libshaderc_util/include/libshaderc_util/io_shaderc.h
++++ b/libshaderc_util/include/libshaderc_util/io_shaderc.h
+@@ -15,6 +15,7 @@
+ #ifndef LIBSHADERC_UTIL_IO_H_
+ #define LIBSHADERC_UTIL_IO_H_
+ 
++#include <fstream>
+ #include <string>
+ #include <vector>
+ 

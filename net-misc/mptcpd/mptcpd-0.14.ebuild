@@ -1,11 +1,11 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 inherit autotools linux-info systemd
 
-DESCRIPTION="Daemon that performs multipath TCP path management related operations."
+DESCRIPTION="Daemon that performs multipath TCP path management related operations"
 HOMEPAGE="https://github.com/intel/mptcpd/"
 
 LICENSE="GPL-2"
@@ -34,7 +34,7 @@ if [[ ${PV} == 9999* ]]; then
 	EGIT_REPO_URI="https://github.com/intel/mptcpd.git"
 else
 	SRC_URI="https://github.com/intel/mptcpd/releases/download/v${PV}/${P}.tar.gz"
-	KEYWORDS="~amd64"
+	KEYWORDS="amd64"
 fi
 
 CONFIG_CHECK="MPTCP"

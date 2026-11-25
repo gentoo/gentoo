@@ -1,0 +1,13 @@
+Needed so the test links s.t. we can skip it in the ebuild. It needs
+internal symbols only exposed when linking statically.
+--- a/tests/Makefile.am
++++ b/tests/Makefile.am
+@@ -901,7 +901,7 @@ deleted_lib_so_CFLAGS = $(fpic_CFLAGS) -fasynchronous-unwind-tables
+ aggregate_size_LDADD = $(libdw) $(libelf) $(argp_LDADD)
+ peel_type_LDADD = $(libdw) $(libelf) $(argp_LDADD)
+ vdsosyms_LDADD = $(libeu) $(libdw) $(libelf)
+-elf_from_memory_LDADD = ../libdw/libdw.a -lz $(zip_LIBS) $(libelf) $(libebl) $(libeu) -ldl -lpthread
++elf_from_memory_LDADD = $(libdw) -lz $(zip_LIBS) $(libelf) $(libebl) $(libeu) -ldl -lpthread
+ getsrc_die_LDADD = $(libeu) $(libdw) $(libelf)
+ strptr_LDADD = $(libelf)
+ newdata_LDADD = $(libelf)

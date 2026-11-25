@@ -3,37 +3,40 @@
 
 EAPI=8
 
+RUST_MIN_VER="1.88.0"
+
 CRATES="
 ${PN}@${PV}
 anyhow@1.0.26
 ansi_term@0.11.0
-aho-corasick@1.1.4
+aho-corasick@1.1.5
 android-tzdata@0.1.1
 android_system_properties@0.1.5
-arrayvec@0.7.6
+arrayvec@0.7.8
 atty@0.2.14
-autocfg@1.5.0
+autocfg@1.5.1
 backtrace@0.3.37
 backtrace@sys-0.1.31
 base64@0.22.1
 bindgen@0.72.1
 bitflags@1.3.2
-bitflags@2.10.0
-boring@4.21.1
-boring-sys@4.21.1
+bitflags@2.13.2
+boring@5.2.0
+boring-sys@5.2.0
 bstr@0.2.12
 bumpalo@3.17.0
 byteorder@1.3.4
+bytes@1.12.1
 cast@0.2.3
-cc@1.2.55
+cc@1.8.0
 cdylib-link-lines@0.1.5
 cexpr@0.6.0
 cfg-if@0.1.10
-cfg-if@1.0.4
+cfg-if@1.0.5
 chrono@0.4.40
-clang-sys@1.8.1
+clang-sys@1.9.1
 clap@2.33.3
-cmake@0.1.57
+cmake@0.1.58
 core-foundation-sys@0.8.7
 criterion@0.3.1
 criterion@plot-0.4.1
@@ -43,149 +46,151 @@ crossbeam@queue-0.2.1
 crossbeam@utils-0.7.2
 csv@1.1.3
 csv@core-0.1.10
-data-encoding@2.10.0
-darling@0.21.3
-darling_core@0.21.3
-darling_macro@0.21.3
+data-encoding@2.11.1
+darling@0.24.1
+darling_core@0.24.1
+darling_macro@0.24.1
 data@encoding-2.3.3
 debug_panic@0.2.1
 deranged@0.4.1
-displaydoc@0.2.5
+displaydoc@0.2.7
 enum_dispatch@0.3.13
-either@1.15.0
+either@1.19.0
 env_logger@0.8.4
-equivalent@1.0.2
-find-msvc-tools@0.1.9
+equivalent@1.0.3
+find-msvc-tools@0.1.14
 fnv@1.0.7
+foldhash@0.2.0
 foreign-types@0.5.0
-foreign-types-macros@0.2.3
+foreign-types-macros@0.2.4
 foreign-types-shared@0.3.1
 form_urlencoded@1.2.2
 fuchsia-zircon@0.3.3
 fuchsia-zircon-sys@0.3.3
 fs_extra@1.3.0
 fslock@0.2.1
-futures-core@0.3.31
-futures-macro@0.3.31
-futures-task@0.3.31
-futures-timer@3.0.3
-futures-util@0.3.31
+futures-core@0.3.34
+futures-macro@0.3.34
+futures-task@0.3.34
+futures-timer@3.0.4
+futures-util@0.3.34
 getrandom@0.2.17
-glob@0.3.3
+glob@0.3.4
 hashbrown@0.12.3
 hashbrown@0.15.5
-hashbrown@0.16.1
+hashbrown@0.17.1
 hermit@abi-0.1.19
 hex@0.4.3
-humantime@2.1.0
+humantime@2.4.0
 iana-time-zone-haiku@0.1.2
 iana-time-zone@0.1.63
-icu_collections@2.1.1
-icu_locale_core@2.1.1
+icu_collections@2.3.0
+icu_locale_core@2.3.0
 icu_locid@1.5.0
 icu_locid_transform_data@1.5.1
 icu_locid_transform@1.5.0
-icu_normalizer@2.1.1
-icu_normalizer_data@2.1.1
-icu_properties@2.1.2
-icu_properties_data@2.1.2
-icu_provider@2.1.1
+icu_normalizer@2.3.0
+icu_normalizer_data@2.3.0
+icu_properties@2.3.0
+icu_properties_data@2.3.0
+icu_provider@2.3.1
 icu_provider_macros@1.5.0
 ident_case@1.0.1
 idna@1.1.0
-idna_adapter@1.2.1
-intrusive-collections@0.9.7
+idna_adapter@1.2.2
+intrusive-collections@0.10.3
 iovec@0.1.4
 itertools@0.13.0
-itoa@1.0.17
+itoa@1.0.18
 js-sys@0.3.77
 kernel32-sys@0.2.2
 lazycell@1.3.0
 lazy_static@1.5.0
-libc@0.2.181
+libc@0.2.189
 libloading@0.8.9
 libm@0.2.16
-litemap@0.8.1
-log@0.4.29
+litemap@0.8.3
+log@0.4.34
 matches@0.1.10
 maybe-uninit@2.0.0
-memchr@2.8.0
+memchr@2.8.3
 memoffset@0.9.1
 minimal-lexical@0.2.1
-mio@1.1.1
+mio@1.2.4
 miow@0.4.0
 net2@0.2.37
 nom@7.1.3
 num-conv@0.1.0
 num-traits@0.2.19
 num_cpus@1.12.0
-octets@0.3.5
+octets@0.3.7
 openssl-macros@0.1.1
 peeking_take_while@0.1.2
-pin-project-lite@0.2.16
+pin-project-lite@0.2.17
 pin-utils@0.1.0
 indexmap@1.9.3
-indexmap@2.13.0
-once_cell@1.21.3
+indexmap@2.14.2
+once_cell@1.21.4
 oorandom@11.1.0
 percent-encoding@2.3.2
 pkg-config@0.3.32
 plotters@0.2.12
-potential_utf@0.1.4
+potential_utf@0.1.6
 powerfmt@0.2.0
-proc-macro-crate@3.4.0
-proc-macro2@1.0.106
-qlog@0.16.0
-quote@1.0.44
+proc-macro-crate@3.5.0
+proc-macro2@1.0.107
+qlog@0.18.2
+quote@1.0.47
 rayon@1.3.0
 rayon@core-1.7.0
-regex@1.12.3
-regex-automata@0.4.14
-regex-syntax@0.8.9
+regex@1.13.1
+regex-automata@0.4.18
+regex-syntax@0.8.11
 relative-path@1.9.3
 ring@0.17.14
 rstest@0.26.1
 rstest_macros@0.26.1
 rustc_version@0.4.1
-rustc-hash@2.1.1
+rustc-hash@2.1.3
 rustversion@1.0.20
-rust_decimal@1.40.0
+rust_decimal@1.43.0
 ryu@1.0.20
 same-file@1.0.6
 scopeguard@1.1.0
 sfv@0.9.4
-semver@1.0.27
+semver@1.0.28
 semver-parser@0.7.0
-serde@1.0.228
-serde_core@1.0.228
-serde_derive@1.0.228
-serde_json@1.0.149
-serde_with@3.16.1
-serde_with_macros@3.16.1
+serde@1.0.229
+serde_core@1.0.229
+serde_derive@1.0.229
+serde_json@1.0.154
+serde_with@3.24.0
+serde_with_macros@3.24.0
 shlex@1.3.0
+shlex@2.0.1
 slab@0.4.12
-smallvec@1.15.1
+smallvec@1.16.3
 spin@0.9.8
 stable_deref_trait@1.2.1
 strsim@0.8.0
 strsim@0.11.1
-syn@1.0.109
-syn@2.0.114
-synstructure@0.13.2
+syn@2.0.119
+syn@3.0.9
+synstructure@0.14.0
 termcolor@1.1.2
 textwrap@0.11.0
 time@0.3.41
 time-core@0.1.4
 time-macros@0.2.22
-tinystr@0.8.2
+tinystr@0.8.4
 tinytemplate@1.0.3
 tinyvec@1.6.1
 tinyvec_macros@0.1.1
-toml_datetime@0.7.5+spec-1.1.0
-toml_edit@0.23.10+spec-1.0.0
-toml_parser@1.0.7+spec-1.1.0
+toml_datetime@1.1.2+spec-1.1.0
+toml_edit@0.25.17+spec-1.1.0
+toml_parser@1.1.5+spec-1.1.0
 unicode-bidi@0.3.15
-unicode-ident@1.0.23
+unicode-ident@1.0.27
 unicode-normalization@0.1.23
 unicode-width@0.1.10
 unicode-xid@0.2.4
@@ -249,23 +254,23 @@ windows-targets@0.48.5
 windows-link@0.2.1
 windows-result@0.3.2
 windows-strings@0.4.0
-winnow@0.7.14
+winnow@1.0.4
 write16@1.0.0
-writeable@0.6.2
+writeable@0.6.4
 ws2_32-sys@0.2.1
-yoke@0.8.1
-yoke-derive@0.8.1
-zerofrom@0.1.6
-zerofrom-derive@0.1.6
-zerotrie@0.2.3
-zerovec@0.11.5
-zerovec-derive@0.11.2
-zmij@1.0.20
+yoke@0.8.3
+yoke-derive@0.8.4
+zerofrom@0.1.8
+zerofrom-derive@0.1.8
+zerotrie@0.2.5
+zerovec@0.11.8
+zerovec-derive@0.11.6
+zmij@1.0.23
 "
 
 RUST_MULTILIB=1
 
-inherit cargo cmake flag-o-matic multilib-minimal
+inherit cargo multilib-minimal
 
 DESCRIPTION="Implementation of the QUIC transport protocol and HTTP/3"
 HOMEPAGE="https://github.com/cloudflare/quiche"
@@ -273,12 +278,10 @@ HOMEPAGE="https://github.com/cloudflare/quiche"
 if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/cloudflare/${PN}.git"
 	inherit git-r3
-	CMAKE_USE_DIR="${S}/quiche/deps/boringssl"
 else
 	SRC_URI="${CARGO_CRATE_URIS}"
 	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 	S="${WORKDIR}/${P//_/-}"
-	CMAKE_USE_DIR="${S}/deps/boringssl"
 fi
 
 LICENSE="|| ( Apache-2.0 Boost-1.0 )
@@ -291,15 +294,12 @@ LICENSE="|| ( Apache-2.0 Boost-1.0 )
 	|| ( Unlicense MIT )
 	openssl"
 SLOT="0/0"
-IUSE=""
 DOCS=( COPYING README.md )
 
 BDEPEND="
 	dev-build/cmake
+	llvm-core/clang
 "
-DEPEND=""
-RDEPEND=""
-
 BUILD_DIR="${WORKDIR}/${P}"
 
 src_unpack() {
@@ -313,7 +313,7 @@ src_unpack() {
 }
 
 src_prepare() {
-	cmake_src_prepare
+	default
 	multilib_copy_sources
 }
 
@@ -321,22 +321,12 @@ src_configure() {
 	multilib-minimal_src_configure
 }
 
-multilib_src_configure() {
-	append-flags "-fPIC"
-	local mycmakeargs=(
-		-DOPENSSL_NO_ASM=ON
-		-DBUILD_SHARED_LIBS=OFF
-	)
-	BUILD_DIR="${BUILD_DIR}/deps/boringssl/build" cmake_src_configure
-}
-
 src_compile() {
 	multilib-minimal_src_compile
 }
 
 multilib_src_compile() {
-	BUILD_DIR="${BUILD_DIR}/deps/boringssl/build" cmake_src_compile bssl
-	QUICHE_BSSL_PATH="${BUILD_DIR}/deps/boringssl" cargo_src_compile --features "ffi pkg-config-meta"
+	cargo_src_compile --features "ffi pkg-config-meta"
 }
 
 src_test() {
@@ -344,7 +334,7 @@ src_test() {
 }
 
 multilib_src_test() {
-	QUICHE_BSSL_PATH="${BUILD_DIR}/deps/boringssl" cargo_src_test
+	cargo_src_test
 }
 
 src_install() {
@@ -356,7 +346,9 @@ multilib_src_install() {
 	insinto "/usr/$(get_libdir)/pkgconfig"
 	doins "$(cargo_target_dir)"/quiche.pc
 	doheader -r include/*
-	dolib.so "$(cargo_target_dir)"/libquiche.so
-	QA_FLAGS_IGNORED+=" usr/$(get_libdir)/libquiche.so" # rust libraries don't use LDFLAGS
-	QA_SONAME+=" usr/$(get_libdir)/libquiche.so" # https://github.com/cloudflare/quiche/issues/165
+	# install libquiche.so as as .0.0.0
+	newlib.so "$(cargo_target_dir)"/libquiche.so libquiche.so.0.0.0 || die
+	# manually create .so symlinks: https://github.com/cloudflare/quiche/issues/165
+	ln -s libquiche.so.0.0.0 "${ED}"/usr/$(get_libdir)/libquiche.so.0 || die
+	ln -s  libquiche.so.0 "${ED}"/usr/$(get_libdir)/libquiche.so || die
 }

@@ -1,0 +1,14 @@
+Link: https://narkive.com/H54UQbMD.3
+Bug: https://bugs.gentoo.org/971182
+
+--- a/libsmdb/smdb2.c
++++ b/libsmdb/smdb2.c
+@@ -440,7 +440,7 @@
+ 
+ static void
+ db_err_cb(
+-#  if DB_VERSION_MAJOR == 4 && DB_VERSION_MINOR >= 3
++#  if DB_VERSION_MAJOR > 4 || DB_VERSION_MAJOR == 4 && DB_VERSION_MINOR >= 3
+ 	  const DB_ENV *dbenv, const char *errpfx, const char *msg
+ #  else
+ 	  const char *errpfx, char *msg

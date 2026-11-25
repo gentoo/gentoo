@@ -1,0 +1,115 @@
+https://gitlab.com/gnu-clisp/clisp/-/commit/dd899c54f551d0fa4bb5418a5048e91aa4e7353c
+
+From dd899c54f551d0fa4bb5418a5048e91aa4e7353c Mon Sep 17 00:00:00 2001
+From: Bruno Haible <bruno@clisp.org>
+Date: Mon, 28 Apr 2025 00:14:58 +0200
+Subject: [PATCH] Find a better way to make things work with gcc 15.1.0.
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Suggested by Jerry James in
+<https://gitlab.com/gnu-clisp/clisp/-/merge_requests/12>.
+
+According to ISO C 99/11/17 § 6.5.6.(8), ISO C 23 § 6.5.7.(9),
+computing (T*)0 + constant is undefined behaviour.
+
+* package.d (rehash_symtab): Change 'offset' to be of integral type.
+Re-enable gcc optimizations.
+(map_symtab, map_symtab_c): Change 'offset' to be of integral type.
+
+diff --git a/src/package.d b/src/package.d
+index e9b771dad..858097430 100644
+--- a/src/package.d
++++ b/src/package.d
+@@ -193,12 +188,11 @@ local maygc object rehash_symtab (object symtab) {
+      first process the symbols, that sit in lists
+      (maybe Conses become free): */
+   {
+-    var gcv_object_t* offset = 0; /* offset = sizeof(gcv_object_t)*index */
++    var uintP offset = 0; /* offset = sizeof(gcv_object_t)*index */
+     var uintC count = oldsize;
+     do {
+       var object oldentry = /* entry with number index in oldtable */
+-        *(gcv_object_t*)(pointerplus(&TheSvector(STACK_2)->data[0],
+-                                     (aint)offset));
++        *(gcv_object_t*)(pointerplus(&TheSvector(STACK_2)->data[0],offset));
+       if (consp(oldentry)) /* this time process only non-empty symbol-lists */
+         do {
+           pushSTACK(Cdr(oldentry)); /* save rest-list */
+@@ -210,22 +204,21 @@ local maygc object rehash_symtab (object symtab) {
+           newinsert(Car(oldentry),newsize);
+           oldentry = popSTACK(); /* rest-list */
+         } while (consp(oldentry));
+-      offset++;
++      offset += sizeof(gcv_object_t);
+     } while (--count);
+   }
+   { /* then process symbols, that sit there collision-free: */
+-    var gcv_object_t* offset = 0; /* offset = sizeof(gcv_object_t)*index */
++    var uintP offset = 0; /* offset = sizeof(gcv_object_t)*index */
+     var uintC count;
+     dotimespC(count,oldsize, {
+       var object oldentry = /* entry with number index in oldtable */
+-        *(gcv_object_t*)(pointerplus(&TheSvector(STACK_2)->data[0],
+-                                     (aint)offset));
++        *(gcv_object_t*)(pointerplus(&TheSvector(STACK_2)->data[0],offset));
+       if (!listp(oldentry)) { /* this time process only symbols /= NIL */
+         pushSTACK(oldentry); /* dummy, so that the stack is fine */
+         newinsert(oldentry,newsize); /* enter into the new table */
+         skipSTACK(1);
+       }
+-      offset++;
++      offset += sizeof(gcv_object_t);
+     });
+   }
+   /* stack layout: tab, oldtable, free-conses, newtable. */
+@@ -1422,11 +1411,11 @@ local maygc void map_symtab (object fun, object symtab) {
+   pushSTACK(Symtab_table(symtab)); /* table vector */
+   /* number of entries */
+   var uintL size = posfixnum_to_V(Symtab_size(symtab));
+-  var gcv_object_t* offset = 0; /* offset = sizeof(gcv_object_t)*index */
++  var uintP offset = 0; /* offset = sizeof(gcv_object_t)*index */
+   var uintC count;
+   dotimespC(count,size, {
+     var object entry = /* entry with number index in table */
+-      *(gcv_object_t*)(pointerplus(&TheSvector(STACK_0)->data[0],(aint)offset));
++      *(gcv_object_t*)(pointerplus(&TheSvector(STACK_0)->data[0],offset));
+     if (atomp(entry)) {
+       if (!nullp(entry)) {
+         /* entry is a symbol /= NIL */
+@@ -1443,7 +1432,7 @@ local maygc void map_symtab (object fun, object symtab) {
+       } while (!matomp(STACK_0));
+       skipSTACK(1);
+     }
+-    offset++;
++    offset += sizeof(gcv_object_t);
+   });
+   skipSTACK(2);
+ }
+@@ -1461,11 +1450,11 @@ local maygc void map_symtab_c (one_sym_function_t* fun, void* data, object symta
+   pushSTACK(Symtab_table(symtab)); /* table vector */
+   /* number of entries */
+   var uintL size = posfixnum_to_V(Symtab_size(symtab));
+-  var gcv_object_t* offset = 0; /* offset = sizeof(gcv_object_t)*index */
++  var uintP offset = 0; /* offset = sizeof(gcv_object_t)*index */
+   var uintC count;
+   dotimespC(count,size, {
+     var object entry = /* entry with number index in table */
+-      *(gcv_object_t*)(pointerplus(&TheSvector(STACK_0)->data[0],(aint)offset));
++      *(gcv_object_t*)(pointerplus(&TheSvector(STACK_0)->data[0],offset));
+     if (atomp(entry)) {
+       if (!nullp(entry)) { /* entry is a symbol /= NIL */
+         (*fun)(data,entry); /* apply function */
+@@ -1479,7 +1468,7 @@ local maygc void map_symtab_c (one_sym_function_t* fun, void* data, object symta
+       } while (!matomp(STACK_0));
+       skipSTACK(1);
+     }
+-    offset++;
++    offset += sizeof (gcv_object_t);
+   });
+   skipSTACK(1);
+ }
+-- 
+2.49.1
+

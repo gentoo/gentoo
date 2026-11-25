@@ -1,0 +1,34 @@
+https://github.com/java-native-access/jna/pull/1729
+
+From 3fe4cb5fdc035e14d19d85b19a27711d1eebc356 Mon Sep 17 00:00:00 2001
+Message-ID: <3fe4cb5fdc035e14d19d85b19a27711d1eebc356.1780940871.git.sam@gentoo.org>
+From: Sam James <sam@gentoo.org>
+Date: Mon, 8 Jun 2026 18:30:25 +0100
+Subject: [PATCH] native: fix parallel build issue
+
+This can be reproduced with `make --shuffle=3224289900`. The $(TESTLIB2)
+target needs libtestlib.* as it uses $(TESTDEP) in the rule, but it doesn't
+depend on that library actually being built yet. Fix that.
+
+Bug: https://bugs.gentoo.org/963877
+Signed-off-by: Sam James <sam@gentoo.org>
+---
+ native/Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/native/Makefile b/native/Makefile
+index 4bce56b60..cc01b259d 100644
+--- a/native/Makefile
++++ b/native/Makefile
+@@ -509,7 +509,7 @@ TESTDEP=$(TESTLIB:.dll=.lib)
+ else
+ TESTDEP=$(TESTLIB)
+ endif
+-$(TESTLIB2): $(BUILD)/testlib2.o
++$(TESTLIB2): $(BUILD)/testlib2.o $(TESTDEP)
+ 	$(LD) $(LDFLAGS) $< $(TESTDEP) $(LIBS)
+ 
+ ifneq ($(DYNAMIC_LIBFFI),true)
+-- 
+2.54.0
+

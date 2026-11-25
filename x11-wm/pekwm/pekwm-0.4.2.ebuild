@@ -12,7 +12,7 @@ S="${WORKDIR}/pekwm-${PV}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~mips ~ppc ~x86"
+KEYWORDS="amd64 ~mips ppc x86"
 IUSE="debug +jpeg pango +png test truetype xinerama +xpm"
 RESTRICT="!test? ( test )"
 

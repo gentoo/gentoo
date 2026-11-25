@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,7 +12,7 @@ HOMEPAGE="https://www.bugzilla.org"
 LICENSE="MPL-2.0"
 KEYWORDS="amd64 ~riscv x86"
 
-IUSE="apache2 doc mysql postgres +sqlite test"
+IUSE="apache2 doc mysql postgres selinux +sqlite test"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="|| ( mysql postgres sqlite )"
 
@@ -42,6 +42,7 @@ RDEPEND="
 	!apache2? ( virtual/httpd-cgi )
 	postgres? ( >=dev-perl/DBD-Pg-1.49 )
 	mysql? ( >=dev-perl/DBD-mysql-4.0.5 )
+	selinux? ( sec-policy/selinux-bugzilla )
 	sqlite? ( >=dev-perl/DBD-SQLite-1.290.0 )
 "
 

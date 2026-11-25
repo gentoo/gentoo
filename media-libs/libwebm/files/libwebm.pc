@@ -1,0 +1,10 @@
+prefix=/usr
+libdir=${prefix}/@LIBDIR@
+includedir=${prefix}/include
+
+Name: libwebm
+Description: WebM is an open, royalty-free, media file format designed for the web
+URL: https://chromium.googlesource.com/webm/libwebm
+Version: @PACKAGE_VERSION@
+Libs: -L${libdir} -lwebm
+Cflags: -I${includedir}/webm

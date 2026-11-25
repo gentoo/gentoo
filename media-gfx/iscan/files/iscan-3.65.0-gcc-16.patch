@@ -1,0 +1,34 @@
+Source: https://bugs.gentoo.org/967771
+
+--- a/drivers/combo.cpp
++++ b/drivers/combo.cpp
+@@ -106,7 +106,7 @@
+ 
+           constraint::ptr cp ((*sp->options ())[key].constraint ());
+ 
+-          if (cp && val == (*cp) (val))
++          if (cp && utsushi::value(val) == (*cp) (val))
+             {
+               (*sp->options ())[key] = val;
+             }
+@@ -114,7 +114,7 @@
+             {                   // expand shorthand
+               if (val == "adf") val = "ADF";
+               if (val == "fb")  val = "Document Table";
+-              if (!cp || val == (*cp) (val))
++              if (!cp || utsushi::value(val) == (*cp) (val))
+                 {
+                   (*sp->options ())[key] = val;
+                 }
+
+--- a/drivers/esci/compound-scanner.cpp
++++ b/drivers/esci/compound-scanner.cpp
+@@ -1337,7 +1337,7 @@
+     }
+ 
+   if (val_.count ("doc-source")
+-      && string ("ADF") == val_["doc-source"])
++      && value ("ADF") == val_["doc-source"])
+     {
+       if (val_.count ("border-fill"))
+         {

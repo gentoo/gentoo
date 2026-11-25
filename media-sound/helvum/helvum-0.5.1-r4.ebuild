@@ -1,4 +1,4 @@
-# Copyright 2023-2024 Gentoo Authors
+# Copyright 2023-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -109,9 +109,9 @@ CRATES="
 	winnow@0.5.15
 "
 
-LLVM_COMPAT=( {16..19} )
+LLVM_COMPAT=( {19..21} )
 
-inherit cargo desktop llvm-r1 xdg
+inherit cargo desktop llvm-r2 xdg
 
 DESCRIPTION="A GTK patchbay for pipewire"
 HOMEPAGE="https://gitlab.freedesktop.org/pipewire/helvum"
@@ -127,7 +127,7 @@ LICENSE+="
 	Unicode-DFS-2016
 "
 SLOT="0"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 arm64"
 
 # Clang needed for bindgen
 BDEPEND="
@@ -153,7 +153,7 @@ RDEPEND="${DEPEND}"
 QA_FLAGS_IGNORED="usr/bin/${PN}"
 
 pkg_setup() {
-	llvm-r1_pkg_setup
+	llvm-r2_pkg_setup
 	rust_pkg_setup
 }
 

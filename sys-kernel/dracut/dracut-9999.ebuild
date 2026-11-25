@@ -2,19 +2,19 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+
 CARGO_OPTIONAL=1
 
-inherit cargo flag-o-matic bash-completion-r1 edo optfeature systemd toolchain-funcs
+inherit cargo flag-o-matic edo optfeature shell-completion systemd toolchain-funcs
 
 if [[ ${PV} == 9999 ]] ; then
 	inherit git-r3
-	EGIT_REPO_URI="https://github.com/dracut-ng/dracut-ng"
+	EGIT_REPO_URI="https://github.com/dracut-ng/dracut"
 else
 	if [[ "${PV}" != *_rc* ]]; then
-		KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
+		KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 	fi
-	SRC_URI="https://github.com/dracut-ng/dracut-ng/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
-	S="${WORKDIR}/${PN}-ng-${PV}"
+	SRC_URI="https://github.com/dracut-ng/dracut/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 fi
 
 DESCRIPTION="Generic initramfs generation tool"
@@ -22,7 +22,7 @@ HOMEPAGE="https://github.com/dracut-ng/dracut-ng/wiki"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="dracut-cpio selinux systemd test"
+IUSE="asciidoctor dracut-cpio selinux systemd test"
 RESTRICT="test"
 PROPERTIES="test? ( test_privileged test_network )"
 
@@ -40,6 +40,7 @@ RDEPEND="${COMMON_DEPEND}
 		sys-apps/openrc[sysv-utils(-),selinux?]
 		sys-apps/systemd[sysv-utils(+)]
 		sys-apps/s6-linux-init[sysv-utils(-)]
+		sys-apps/dinit[sysv-utils(-)]
 	)
 	>=sys-apps/util-linux-2.21
 	virtual/pkgconfig[native-symlinks(+)]
@@ -57,10 +58,8 @@ DEPEND="${COMMON_DEPEND}
 "
 
 BDEPEND="
-	|| (
-		app-text/asciidoc
-		dev-ruby/asciidoctor
-	)
+	asciidoctor? ( dev-ruby/asciidoctor )
+	!asciidoctor? ( app-text/asciidoc )
 	app-text/docbook-xml-dtd:4.5
 	>=app-text/docbook-xsl-stylesheets-1.75.2
 	>=dev-libs/libxslt-1.1.26
@@ -104,8 +103,6 @@ QA_MULTILIB_PATHS="usr/lib/dracut/.*"
 
 PATCHES=(
 	"${FILESDIR}"/gentoo-ldconfig-paths-r1.patch
-	# Gentoo specific acct-user and acct-group conf adjustments
-	"${FILESDIR}"/${PN}-110-acct-user-group-gentoo.patch
 )
 
 pkg_setup() {
@@ -122,9 +119,8 @@ src_configure() {
 		--systemdsystemunitdir="$(systemd_get_systemunitdir)"
 	)
 
-	if ! has_version -b dev-ruby/asciidoctor; then
-		myconf+=( --disable-asciidoctor )
-	fi
+	# custom configure does not recognize --enable-asciidoctor
+	use asciidoctor || myconf+=( --disable-asciidoctor )
 
 	# this emulates what the build system would be doing without us
 	append-cflags -D_FILE_OFFSET_BITS=64

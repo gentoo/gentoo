@@ -7,7 +7,7 @@ DESCRIPTION="Text file backspacing and ANSI SGR as faces"
 HOMEPAGE="https://user42.tuxfamily.org/tty-format/index.html
 	https://www.emacswiki.org/emacs/TtyFormat"
 # taken from https://download.tuxfamily.org/user42/tty-format.el"
-SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.el.xz"
+SRC_URI="https://distfiles.gentoo.org/pub/proj/emacs/${P}.el.xz"
 S="${WORKDIR}"
 
 LICENSE="GPL-3+"

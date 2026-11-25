@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 inherit toolchain-funcs python-single-r1 optfeature
 
 MY_PV=$(ver_cut 1-2)
@@ -34,13 +34,14 @@ fi
 
 LICENSE="GPL-2"
 SLOT="8"
-IUSE="doc examples fastjet +hepmc3 highfive lhapdf mg5mes mpich openmp python rivet root static-libs test zlib" # evtgen powheg
+IUSE="doc examples fastjet hepmc2 +hepmc3 highfive lhapdf mg5mes mpich openmp python rivet root static-libs test zlib" # evtgen powheg
 RESTRICT="!test? ( test )"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="
 	fastjet? ( sci-physics/fastjet )
 	hepmc3? ( sci-physics/hepmc:3= )
+	hepmc2? ( sci-physics/hepmc:2= )
 	lhapdf? ( sci-physics/lhapdf:= )
 	zlib? ( virtual/zlib:= )
 	highfive? (
@@ -126,6 +127,7 @@ src_configure() {
 		$(usex fastjet "--with-fastjet3" "") \
 		$(usex zlib "--with-gzip" "") \
 		$(use_with hepmc3) \
+		$(use_with hepmc2) \
 		$(use_with highfive) \
 		$(usex highfive --with-hdf5 "") \
 		$(use_with python) \

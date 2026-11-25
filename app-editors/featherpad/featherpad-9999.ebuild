@@ -1,11 +1,11 @@
-# Copyright 2021-2024 Gentoo Authors
+# Copyright 2021-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 inherit git-r3 cmake xdg
 
-DESCRIPTION="Lightweight Qt5 Plain-Text Editor for Linux"
+DESCRIPTION="Lightweight Qt6 Plain-Text Editor for Linux"
 HOMEPAGE="https://github.com/tsujan/FeatherPad"
 EGIT_REPO_URI="https://github.com/tsujan/FeatherPad"
 

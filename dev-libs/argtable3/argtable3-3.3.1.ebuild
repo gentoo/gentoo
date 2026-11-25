@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -24,6 +24,12 @@ SLOT="0"
 KEYWORDS="~amd64 ~riscv"
 IUSE="examples test"
 RESTRICT="!test? ( test )"
+
+src_prepare() {
+	# Don't append -Werror to CFLAGS.
+	sed -e '/set(CMAKE_C_FLAGS.*-Werror/d' -i src/CMakeLists.txt || die
+	cmake_src_prepare
+}
 
 src_configure() {
 	local mycmakeargs=(

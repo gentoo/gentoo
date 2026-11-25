@@ -1,0 +1,68 @@
+# Copyright 1999-2026 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=8
+
+inherit autotools
+
+DESCRIPTION="Line and word breaking library"
+HOMEPAGE="http://vimgadgets.sourceforge.net/libunibreak/ https://github.com/adah1972/libunibreak"
+SRC_URI="https://github.com/adah1972/${PN}/archive/refs/tags/${PN}_${PV/./_}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}"/${PN}-${PN}_${PV/./_}
+
+LICENSE="ZLIB"
+SLOT="0/7"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
+IUSE="doc +man static-libs test"
+RESTRICT="!test? ( test )"
+
+BDEPEND="
+	man? ( app-text/doxygen )
+	doc? (
+		app-text/doxygen
+		media-gfx/graphviz
+	)
+"
+
+src_prepare() {
+	default
+
+	eautoreconf
+
+	if use man; then
+		echo 'GENERATE_MAN=YES' >> Doxyfile || die
+	fi
+	if use doc; then
+		echo 'GENERATE_HTML=YES' >> Doxyfile || die
+	else
+		echo 'GENERATE_HTML=NO' >> Doxyfile || die
+	fi
+}
+
+src_configure() {
+	econf $(use_enable static-libs static)
+}
+
+src_compile() {
+	default
+	if use man; then
+		doxygen || die 'doxygen failed'
+		pushd "${S}"/doc/man > /dev/null
+		mv man3 x || die
+		mkdir man3 || die
+		for h in graphemebreak linebreak linebreakdef unibreakbase unibreakdef wordbreak; do
+			mv x/${h}.h.3 man3/ || die "man ${h} not found"
+		done
+		rm -rf x || die
+		popd > /dev/null
+	fi
+}
+
+src_install() {
+	use doc && HTML_DOCS=( doc/html/. )
+	default
+	find "${D}" -name '*.la' -delete || die
+	if use man; then
+		doman doc/man/man3/*.3
+	fi
+}

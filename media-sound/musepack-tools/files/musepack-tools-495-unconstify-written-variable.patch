@@ -1,0 +1,36 @@
+diff '--color=auto' -r -u a/common/fastmath.c b/common/fastmath.c
+--- a/common/fastmath.c	2013-10-21 21:21:51.000000000 -0000
++++ b/common/fastmath.c	2026-04-29 19:23:16.853879006 -0000
+@@ -20,10 +20,10 @@
+ 
+ #ifdef FAST_MATH
+ 
+-const float  tabatan2   [ 2*TABSTEP+1] [2];
+-const float  tabcos     [26*TABSTEP+1] [2];
+-const float  tabsqrt_ex [256];
+-const float  tabsqrt_m  [   TABSTEP+1] [2];
++float  tabatan2   [ 2*TABSTEP+1] [2];
++float  tabcos     [26*TABSTEP+1] [2];
++float  tabsqrt_ex [256];
++float  tabsqrt_m  [   TABSTEP+1] [2];
+ 
+ 
+ void   Init_FastMath ( void )
+diff '--color=auto' -r -u a/include/mpc/mpcmath.h b/include/mpc/mpcmath.h
+--- a/include/mpc/mpcmath.h	2013-10-21 21:21:51.000000000 -0000
++++ b/include/mpc/mpcmath.h	2026-04-29 19:29:49.576261251 -0000
+@@ -86,10 +86,10 @@
+ # define IFLOORF(x)   my_ifloor ((float)(x))
+ 
+ void   Init_FastMath ( void );
+-extern const float  tabatan2   [] [2];
+-extern const float  tabcos     [] [2];
+-extern const float  tabsqrt_ex [];
+-extern const float  tabsqrt_m  [] [2];
++extern float  tabatan2   [] [2];
++extern float  tabcos     [] [2];
++extern float  tabsqrt_ex [];
++extern float  tabsqrt_m  [] [2];
+ 
+ static mpc_inline float my_atan2 ( float x, float y )
+ {

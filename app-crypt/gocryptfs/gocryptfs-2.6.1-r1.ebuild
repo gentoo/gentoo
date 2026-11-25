@@ -22,9 +22,9 @@ LICENSE="MIT"
 # Vendored licenses
 LICENSE+=" Apache-2.0 BSD MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 arm64 ~ppc64 ~riscv ~x86"
 
-IUSE="test"
+IUSE="test selinux"
 
 RESTRICT="!test? ( test ) test"
 PROPERTIES="test_privileged"
@@ -36,6 +36,7 @@ BDEPEND="
 	test? ( sys-fs/fuse:0 )
 	verify-sig? ( sec-keys/openpgp-keys-gocryptfs )
 "
+RDEPEND+=" selinux? ( sec-policy/selinux-cryfs )"
 
 src_unpack() {
 	if use verify-sig; then

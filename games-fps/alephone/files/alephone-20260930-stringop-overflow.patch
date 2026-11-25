@@ -1,0 +1,62 @@
+From 4e8932572089741ab3b908d065ef2a23b3687489 Mon Sep 17 00:00:00 2001
+From: Matt Jolly <kangie@gentoo.org>
+Date: Sat, 17 Oct 2026 15:37:22 +1000
+Subject: [PATCH] fix: sound: suppress `-Wstringop-overflow` warning
+
+GCC15 on aarch64 emits a `-Wstringop-overflow` on this code when it's
+inlined. It appears to be a false positive, and attempts to rewrite it
+"more safely" just result in variations on the warning.
+
+Wrap it in a pragma to suppress the warning in this case.
+
+This will suppress the warning, however we'll still see this warning in
+LTO builds. GCC with the fix in commit
+`4c85f7cf587f0f62a5eb1884998d4ed30a39552a` (gcc-17) will enable the pragma
+to survive LTO builds.
+
+See-also: https://gcc.gnu.org/pipermail/gcc-bugs/2026-July/967130.html
+Signed-off-by: Matt Jolly <kangie@gentoo.org>
+---
+ Source_Files/Sound/AudioPlayer.h | 15 ++++++++++++++-
+ 1 file changed, 14 insertions(+), 1 deletion(-)
+
+diff --git a/Source_Files/Sound/AudioPlayer.h b/Source_Files/Sound/AudioPlayer.h
+index 2896b221..fd3e1d65 100644
+--- a/Source_Files/Sound/AudioPlayer.h
++++ b/Source_Files/Sound/AudioPlayer.h
+@@ -50,12 +50,25 @@ public:
+         shared_queue.push(value);
+     }
+ 
++#if defined(__GNUC__) && !defined(__clang__)
++#pragma GCC diagnostic push
++#pragma GCC diagnostic ignored "-Wstringop-overflow"
++#endif
++
++    // GCC 15 on aarch64 emits a false-positive -Wstringop-overflow warning for
++    // this two-slot double-buffer switch. The code is intentionally bounded to
++    // exactly two entries, so keep the warning quiet here without changing the
++    // behavior.
+     void Set(const T& value) {
+         int swappedIndex = index ^ 1;
+         structure[swappedIndex] = value;
+         index = swappedIndex;
+     }
+ 
++#if defined(__GNUC__) && !defined(__clang__)
++#pragma GCC diagnostic pop
++#endif
++
+     bool Consume(T& returnValue) {
+         return shared_queue.pop(returnValue);
+     }
+@@ -130,4 +143,4 @@ protected:
+     virtual void Rewind();
+ };
+ 
+-#endif
+\ No newline at end of file
++#endif
+-- 
+2.54.0
+

@@ -1,11 +1,11 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 # Needed to build tests for now
 CMAKE_MAKEFILE_GENERATOR=emake
-inherit cmake
+inherit cmake flag-o-matic
 
 DESCRIPTION="C++ template static library of common data structures and algorithms"
 HOMEPAGE="https://lemon.cs.elte.hu/trac/lemon/"
@@ -40,6 +40,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.3-as-needed.patch
 	"${FILESDIR}"/${P}-cmake4.patch # bug 967729
 	"${FILESDIR}"/${P}-disable-broken-tests.patch
+	"${FILESDIR}"/${P}-clang.patch
 )
 
 src_prepare() {
@@ -52,6 +53,8 @@ src_prepare() {
 }
 
 src_configure() {
+	append-cxxflags -std=c++14
+
 	local mycmakeargs=(
 		-DLEMON_ENABLE_COIN=$(usex coin)
 		-DLEMON_ENABLE_GLPK=$(usex glpk)

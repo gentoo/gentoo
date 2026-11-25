@@ -1,0 +1,35 @@
+diff '--color=auto' -urN a/MODULE.bazel b/MODULE.bazel
+--- a/MODULE.bazel	2026-11-10 15:05:20.814374378 -0500
++++ b/MODULE.bazel	2026-11-10 15:09:07.573726528 -0500
+@@ -107,6 +107,10 @@
+ single_version_override(
+     module_name = "aspect_rules_js",
+     version = "2.1.3",
++    patches = [
++        "//patches:rules_js-tar-fix.patch",
++    ],
++    patch_strip = 1,
+ )
+ 
+ bazel_dep(name = "rules_nodejs", version = "6.3.0")
+diff '--color=auto' -urN a/patches/BUILD.bazel b/patches/BUILD.bazel
+--- a/patches/BUILD.bazel	1969-12-31 19:00:00.000000000 -0500
++++ b/patches/BUILD.bazel	2026-11-10 15:10:07.291668579 -0500
+@@ -0,0 +1 @@
++
+diff '--color=auto' -urN a/patches/rules_js-tar-fix.patch b/patches/rules_js-tar-fix.patch
+--- a/patches/rules_js-tar-fix.patch	1969-12-31 19:00:00.000000000 -0500
++++ b/patches/rules_js-tar-fix.patch	2026-11-10 15:03:40.369681204 -0500
+@@ -0,0 +1,12 @@
++diff '--color=auto' -ur a/npm/private/tar.bzl b/npm/private/tar.bzl
++--- a/npm/private/tar.bzl	2025-01-22 12:36:29.000000000 -0500
+++++ b/npm/private/tar.bzl	2026-11-10 15:03:08.321045327 -0500
++@@ -13,8 +13,6 @@
++     """
++ 
++     # We assume that any linux platform is using GNU tar.
++-    if repo_utils.is_linux(rctx):
++-        return "gnu"
++ 
++     tar_args = ["tar", "--version"]
++     result = rctx.execute(tar_args)

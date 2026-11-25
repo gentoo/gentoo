@@ -1,4 +1,4 @@
-# Copyright 2019-2024 Gentoo Authors
+# Copyright 2019-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,7 +19,7 @@ fi
 
 LICENSE="GPL-3+"
 SLOT="0"
-IUSE="+svg man"
+IUSE="+svg"
 
 RDEPEND="
 	dev-libs/wayland
@@ -29,9 +29,9 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
+	>=app-text/scdoc-1.9.3
 	dev-libs/wayland-protocols
 	virtual/pkgconfig
-	man? ( >=app-text/scdoc-1.9.3 )
 "
 
 PATCHES=(
@@ -40,7 +40,7 @@ PATCHES=(
 
 src_configure() {
 	local emesonargs=(
-		$(meson_feature man man-pages)
+		-Dman-pages=enabled
 		$(meson_feature svg librsvg)
 	)
 	meson_src_configure

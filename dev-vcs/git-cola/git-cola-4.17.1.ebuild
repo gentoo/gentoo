@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{12..14} )
+PYTHON_COMPAT=( python3_{13..14} )
 DISTUTILS_SINGLE_IMPL=true
 DISTUTILS_USE_PEP517=setuptools
 inherit desktop distutils-r1 optfeature readme.gentoo-r1 virtualx xdg
@@ -16,7 +16,7 @@ S="${WORKDIR}/${PN}-v${PV}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 RDEPEND="
 	$(python_gen_cond_dep '

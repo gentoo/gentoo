@@ -1,0 +1,39 @@
+--- a/auto/depends.sh	2026-05-25 13:20:21.917190847 +0200
++++ b/auto/depends.sh	2026-05-25 13:22:04.733076267 +0200
+@@ -171,18 +171,6 @@
+ pkg-config --version >/dev/null 2>/dev/null; ret=$?; if [[ 0 -ne $ret ]]; then
+     echo "Please install pkg-config"; exit $ret;
+ fi
+-which ls >/dev/null 2>/dev/null; ret=$?; if [[ 0 -ne $ret ]]; then
+-    if [[ $OS_IS_CENTOS == YES ]]; then
+-        echo "Please install which by:"
+-        echo "  yum install -y which"
+-    elif [[ $OS_IS_UBUNTU == YES ]]; then
+-        echo "Please install which by:"
+-        echo "  apt install -y which"
+-    else
+-        echo "Please install which"
+-    fi
+-    exit $ret;
+-fi
+ 
+ #####################################################################################
+ # Try to load cache if exists /usr/local/srs-cache
+@@ -636,7 +624,7 @@
+ # live transcoding, ffmpeg-4.1, x264-core157, lame-3.99.5, libaacplus-2.0.2.
+ #####################################################################################
+ # Guess where is the ffmpeg.
+-SYSTEMP_FFMPEG_BIN=`which ffmpeg`
++SYSTEMP_FFMPEG_BIN=`type -P ffmpeg`
+ # Always link the ffmpeg tools if exists.
+ if [[ -f $SYSTEMP_FFMPEG_BIN && ! -f ${SRS_OBJS}/ffmpeg/bin/ffmpeg ]]; then
+     mkdir -p ${SRS_OBJS}/ffmpeg/bin &&
+@@ -680,7 +668,7 @@
+     fi
+     # For cross-build.
+     if [[ $SRS_CROSS_BUILD == YES ]]; then
+-        TOOL_GCC_REALPATH=$(realpath $(which $SRS_TOOL_CC))
++        TOOL_GCC_REALPATH=$(realpath $(type -P $SRS_TOOL_CC))
+         SRT_COMPILER_PREFIX=$(echo $TOOL_GCC_REALPATH |sed 's/-gcc.*$/-/')
+         LIBSRT_OPTIONS="$LIBSRT_OPTIONS --with-compiler-prefix=$SRT_COMPILER_PREFIX"
+     fi

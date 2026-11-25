@@ -1,0 +1,60 @@
+--- a/EXAMPLE/pclinsol.c	2026-05-22 19:38:53.437498482 +0200
++++ b/EXAMPLE/pclinsol.c	2026-05-22 19:39:23.801158738 +0200
+@@ -19,6 +19,9 @@
+ #include <unistd.h> 
+ #include "slu_mt_cdefs.h"
+ 
++void
++parse_command_line(int argc, char *argv[], int_t *procs, int_t *n,
++		   int_t *b, int_t *w, int_t *r, int_t *maxsup);
+ int main(int argc, char *argv[])
+ {
+     SuperMatrix   A;
+@@ -39,7 +42,6 @@
+     trans_t  trans;
+     complex   *xact, *rhs;
+     superlu_memusage_t   superlu_memusage;
+-    void   parse_command_line();
+ 
+     nrhs              = 1;
+     trans             = NOTRANS;
+--- a/EXAMPLE/pdlinsol.c	2026-05-22 19:40:45.760241681 +0200
++++ b/EXAMPLE/pdlinsol.c	2026-05-22 19:41:12.516942298 +0200
+@@ -19,6 +19,9 @@
+ #include <unistd.h> 
+ #include "slu_mt_ddefs.h"
+ 
++void
++parse_command_line(int argc, char *argv[], int_t *procs, int_t *n,
++		   int_t *b, int_t *w, int_t *r, int_t *maxsup);
+ int main(int argc, char *argv[])
+ {
+     SuperMatrix   A;
+@@ -39,7 +42,6 @@
+     trans_t  trans;
+     double   *xact, *rhs;
+     superlu_memusage_t   superlu_memusage;
+-    void   parse_command_line();
+ 
+     nrhs              = 1;
+     trans             = NOTRANS;
+--- a/EXAMPLE/pslinsol.c	2026-05-22 19:42:19.429193597 +0200
++++ b/EXAMPLE/pslinsol.c	2026-05-22 19:43:09.011638806 +0200
+@@ -19,6 +19,9 @@
+ #include <unistd.h> 
+ #include "slu_mt_sdefs.h"
+ 
++void
++parse_command_line(int argc, char *argv[], int_t *procs, int_t *n,
++		   int_t *b, int_t *w, int_t *r, int_t *maxsup);
+ int main(int argc, char *argv[])
+ {
+     SuperMatrix   A;
+@@ -39,7 +42,6 @@
+     trans_t  trans;
+     float   *xact, *rhs;
+     superlu_memusage_t   superlu_memusage;
+-    void   parse_command_line();
+ 
+     nrhs              = 1;
+     trans             = NOTRANS;

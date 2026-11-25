@@ -1,0 +1,72 @@
+#!/sbin/openrc-run
+# Copyright 1999-2026 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+if [ "${POSTGREY_TYPE}" = "inet" ] ; then
+	POSTGREY_ADDR="${POSTGREY_TYPE}=${POSTGREY_HOST}:${POSTGREY_PORT}"
+else
+	POSTGREY_ADDR="${POSTGREY_TYPE}=${POSTGREY_SOCKET}"
+fi
+
+conf="/etc/conf.d/postgrey"
+extra_started_commands="reload"
+pidfile="/run/${RC_SVCNAME}.pid"
+command="/usr/sbin/postgrey"
+command_args="--${POSTGREY_ADDR} --daemonize --pidfile=${pidfile}"
+command_args="${command_args} --user=postgrey --group=postgrey"
+command_args="${command_args} ${POSTGREY_DELAY:+--delay=${POSTGREY_DELAY}}"
+command_args="${command_args} ${POSTGREY_OPTS}"
+command_args="${command_args} ${POSTGREY_TEXT:+--greylist-text=\"${POSTGREY_TEXT}\"}"
+
+depend() {
+	before postfix
+	provide postfix_greylist
+}
+
+conf_error() {
+	eerror "You need to setup ${conf} first"
+	return 1
+}
+
+checkconfig() {
+	if [ -z "${POSTGREY_TYPE}" ] ; then
+		einfo "You need to choose the server type you want"
+		einfo "by setting the POSTGREY_TYPE variable in ${conf}."
+	elif [ "${POSTGREY_TYPE}" = "inet" ] ; then
+		if [ -z "${POSTGREY_PORT}" ] || [ -z "${POSTGREY_HOST}" ] ; then
+			einfo "The following entries are missing in ${conf}:"
+			[ -z "${POSTGREY_HOST}" ] && einfo "  - POSTGREY_HOST"
+			[ -z "${POSTGREY_PORT}" ] && einfo "  - POSTGREY_PORT"
+			conf_error
+		fi
+	elif [ "${POSTGREY_TYPE}" = "unix" ] ; then
+		if  [ -z "${POSTGREY_SOCKET}" ] ; then
+			einfo "The following entries are missing in ${conf}:"
+			[ -z "${POSTGREY_SOCKET}" ] && einfo "  - POSTGREY_SOCKET"
+			conf_error
+		fi
+	else
+		einfo "Unknown POSTGREY_TYPE in ${conf}. Please choose 'inet' or 'unix'."
+		conf_error
+	fi
+}
+
+start_pre() {
+	if [ "${RC_CMD}" != "restart" ] ; then
+		checkconfig || return $?
+	fi
+}
+
+stop_pre() {
+	if [ "${RC_CMD}" = "restart" ] ; then
+		checkconfig || return $?
+	fi
+}
+
+reload() {
+	checkconfig || return $?
+
+	ebegin "Reloading Postgrey"
+	start-stop-daemon --signal HUP --pidfile ${pidfile}
+	eend $?
+}

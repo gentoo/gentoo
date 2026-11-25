@@ -1,0 +1,13 @@
+#!/sbin/openrc-run
+
+supervisor=supervise-daemon
+
+depend() {
+	need dbus
+	after logger
+}
+
+description="Thermal Daemon Service"
+command="/usr/sbin/thermald"
+command_args="--dbus-enable --adaptive"
+command_args_foreground="--no-daemon"

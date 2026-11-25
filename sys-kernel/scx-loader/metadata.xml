@@ -2,7 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person" proxied="yes">
-		<email>vimproved@inventati.org</email>
+		<email>vi@vimproved.dev</email>
 		<name>Violet Purcell</name>
 	</maintainer>
 	<maintainer type="project" proxied="proxy">

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>sam@gentoo.org</email>
+		<name>Sam James</name>
+	</maintainer>
+	<use>
+		<flag name="utempter">Include libutempter support</flag>
+		<flag name="sixel">Enable sixel support</flag>
+	</use>
+	<longdescription>
+		opentmux is a "terminal multiplexer", it enables a number of terminals
+		(or windows) to be accessed and controlled from a single terminal.
+		tmux is intended to be a simple, modern, BSD-licensed alternative to
+		programs such as <pkg>app-misc/screen</pkg>.
+
+		This is a fork of <pkg>app-misc/tmux</pkg>.
+	</longdescription>
+	<upstream>
+		<remote-id type="codeberg">opentmux/opentmux</remote-id>
+	</upstream>
+</pkgmetadata>

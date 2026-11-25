@@ -1,0 +1,41 @@
+https://github.com/freerange/mocha/commit/1b1aa0d0e25f4527a0455562e964c19d23b987df
+
+From 1b1aa0d0e25f4527a0455562e964c19d23b987df Mon Sep 17 00:00:00 2001
+From: Earlopain <14981592+Earlopain@users.noreply.github.com>
+Date: Fri, 9 May 2025 12:52:14 +0200
+Subject: [PATCH] Fix compatibility with ruby 3.5
+
+In 3.5, most of the `cgi` gem is removed. Only methods relating to escaping/unescaping are retained.
+
+That means, on 3.5 you get this error:
+> NoMethodError: undefined method 'parse' for class CGI
+
+This replaces the cgi usage with https://docs.ruby-lang.org/en/master/URI.html#method-c-decode_www_form, that also returns this information.
+
+It's in array form, so it first needs to be converted to an hash.
+
+This method is available on all versions going back to at least Ruby 2.0 so compatibility should be ok with this.
+
+https://bugs.ruby-lang.org/issues/21258
+--- a/lib/mocha/parameter_matchers/equivalent_uri.rb
++++ b/lib/mocha/parameter_matchers/equivalent_uri.rb
+@@ -2,7 +2,6 @@
+ 
+ require 'mocha/parameter_matchers/base'
+ require 'uri'
+-require 'cgi'
+ 
+ module Mocha
+   module ParameterMatchers
+@@ -55,7 +54,10 @@ def mocha_inspect
+ 
+       # @private
+       def explode(uri)
+-        query_hash = CGI.parse(uri.query || '')
++        query_hash = Hash.new { |hash, key| hash[key] = [] }
++        URI.decode_www_form(uri.query || '').each do |key, value|
++          query_hash[key] << value
++        end
+         URI::Generic::COMPONENT.inject({}) { |h, k| h.merge(k => uri.__send__(k)) }.merge(query: query_hash)
+       end
+     end

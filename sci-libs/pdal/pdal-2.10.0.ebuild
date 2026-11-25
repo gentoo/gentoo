@@ -12,7 +12,7 @@ S="${WORKDIR}/PDAL-${PV}-src"
 
 LICENSE="BSD"
 SLOT="0/20"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~x86"
 IUSE="debug postgres test"
 RESTRICT="!test? ( test )"
 
@@ -36,6 +36,9 @@ DEPEND="
 	test? ( sci-libs/gdal[geos,jpeg(+),png,sqlite] )
 "
 
+# avoid false positive warning on deprecated CMake version in unused example files
+CMAKE_QA_COMPAT_SKIP=1
+
 src_configure() {
 	local mycmakeargs=(
 		-DBUILD_PLUGIN_PGPOINTCLOUD="$(usex postgres)"
@@ -48,8 +51,10 @@ src_configure() {
 }
 
 src_test() {
+	# exclude failing tests
+	# idea: prefetch remote files for local testing
 	local myctestargs=(
-		--exclude-regex '(pgpointcloudtest|pdal_info_test|pdal_io_bpf_base_test|pdal_io_bpf_zlib_test|pdal_io_copc_reader_test|pdal_filters_overlay_test|pdal_filters_stats_test|pdal_app_plugin_test|pdal_merge_test|pdal_io_stac_reader_test)'
+		--exclude-regex '(pgpointcloudtest|pdal_info_test|pdal_io_bpf_base_test|pdal_io_bpf_zlib_test|pdal_io_copc_reader_test|pdal_io_copc_remote_reader_test|pdal_filters_overlay_test|pdal_filters_stats_test|pdal_app_plugin_test|pdal_merge_test|pdal_io_stac_reader_test)'
 		--output-on-failure
 		-j1
 	)

@@ -1,0 +1,27 @@
+PR pending https://gitlab.gnome.org/GNOME/dia/-/merge_requests/146.patch
+see https://bugs.gentoo.org/983078
+fix compile with >=poppler-26.06
+From 2373861a858fb6ee7d50870ae66a59f05c6cd4bd Mon Sep 17 00:00:00 2001
+From: Nadzeya Hutsko <nadzeya@ubuntu.com>
+Date: Wed, 22 Jul 2026 20:46:52 +0200
+Subject: [PATCH] Fix build with Poppler >= 26.06
+
+poppler 26.06 changed the Page box accessors to return a const reference
+instead of a pointer. Take the address of the result, guarded by a
+version check so older poppler still builds
+--- a/plug-ins/pdf/pdf-import.cpp
++++ b/plug-ins/pdf/pdf-import.cpp
+@@ -93,8 +93,13 @@ public :
+                       (Annot *annot, void *user_data) G_GNUC_UNUSED,
+                   void   *annotDisplayDecideCbkData   G_GNUC_UNUSED)
+   {
++#if POPPLER_VERSION_MAJOR > 26 || (POPPLER_VERSION_MAJOR == 26 && POPPLER_VERSION_MINOR >= 6)
++    const PDFRectangle *mediaBox = &page->getMediaBox();
++    const PDFRectangle *clipBox = &page->getCropBox ();
++#else
+     const PDFRectangle *mediaBox = page->getMediaBox();
+     const PDFRectangle *clipBox = page->getCropBox ();
++#endif
+ 
+     if (page->isOk()) {
+       real w1 = (clipBox->x2 - clipBox->x1);

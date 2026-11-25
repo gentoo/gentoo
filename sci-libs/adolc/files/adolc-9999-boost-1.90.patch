@@ -1,0 +1,70 @@
+From bc0263fb87e5e14c0b31b912c66b0895778654f0 Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+Date: Fri, 13 Mar 2026 12:05:56 +0100
+Subject: [PATCH] boost 1.90
+
+use BoostConfig.cmake (CMP0167)
+boost::system is header only since boost 1.70, so require at least that
+
+Signed-off-by: Paul Zander <negril.nx+gentoo@gmail.com>
+
+diff --git a/ADOL-C/boost-test/CMakeLists.txt b/ADOL-C/boost-test/CMakeLists.txt
+index 4061a36..89a7635 100644
+--- a/ADOL-C/boost-test/CMakeLists.txt
++++ b/ADOL-C/boost-test/CMakeLists.txt
+@@ -4,13 +4,13 @@ if(3RDPARTY_BOOST_DIR)
+   set(BOOST_ROOT ${3RDPARTY_BOOST_DIR})
+ endif()
+ 
+-set(BOOST_MIN_VERSION "1.59.0")
++set(BOOST_MIN_VERSION "1.70.0")
+ set(Boost_NO_BOOST_CMAKE ON)
+ 
+-find_package(Boost ${BOOST_MIN_VERSION} REQUIRED COMPONENTS unit_test_framework system)
++find_package(Boost ${BOOST_MIN_VERSION} REQUIRED COMPONENTS unit_test_framework CONFIG)
+ 
+ if(NOT Boost_FOUND)
+-  message(FATAL_ERROR "Fatal error: Boost (version >= 1.69.0) required.")
++  message(FATAL_ERROR "Fatal error: Boost (version >= 1.70.0) required.")
+ endif()
+ 
+ find_package(OpenMP)
+@@ -58,8 +58,7 @@ add_executable(boost-test-adolc ${SOURCE_FILES})
+ target_include_directories(boost-test-adolc PRIVATE "${ADOLC_INCLUDE_DIR}")
+ target_link_libraries(boost-test-adolc PRIVATE
+     adolc
+-    Boost::system 
+-    Boost::unit_test_framework)
++    ${Boost_LIBRARIES})
+ 
+ if(TARGET ADOLCInterface)
+   target_sources(boost-test-adolc PRIVATE c_interface_tape_loc.cpp)
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 21063c1..138e842 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -179,7 +179,7 @@ endif (ENABLE_HARDDEBUG)
+ 
+ 
+ if (ENABLE_BOOST_POOL)
+-  find_package(Boost 1.54 REQUIRED COMPONENTS)
++  find_package(Boost 1.70 REQUIRED COMPONENTS CONFIG)
+   target_link_libraries(adolc PUBLIC Boost::boost)
+   set(USE_BOOST_POOL "#define USE_BOOST_POOL 1")
+ endif()
+diff --git a/adolc-config.cmake.in b/adolc-config.cmake.in
+index 4f89149..999dc16 100644
+--- a/adolc-config.cmake.in
++++ b/adolc-config.cmake.in
+@@ -20,7 +20,7 @@ endif()
+ 
+ set(WITH_BOOST @WITH_BOOST@)
+ if(WITH_BOOST)
+-  find_dependency(Boost 1.54 REQUIRED COMPONENTS system)
++  find_dependency(Boost 1.70 REQUIRED CONFIG)
+ endif()
+ 
+ # Add the targets file
+-- 
+2.53.0
+

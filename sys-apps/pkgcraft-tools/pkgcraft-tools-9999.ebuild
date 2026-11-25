@@ -4,7 +4,7 @@
 EAPI=8
 
 LLVM_COMPAT=( {19..22} )
-RUST_MIN_VER="1.90.0"
+RUST_MIN_VER="1.96.0"
 
 inherit cargo edo llvm-r2 multiprocessing shell-completion
 

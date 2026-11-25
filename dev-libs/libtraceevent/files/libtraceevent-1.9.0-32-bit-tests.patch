@@ -1,0 +1,60 @@
+https://git.kernel.org/pub/scm/libs/libtrace/libtraceevent.git/commit/?id=5b44859765fc10920cfde68f8e327e6c92fc23ee
+
+From 5b44859765fc10920cfde68f8e327e6c92fc23ee Mon Sep 17 00:00:00 2001
+From: Emil Thorsoe <ethorsoe@tuxera.com>
+Date: Wed, 6 May 2026 22:11:51 +0300
+Subject: libtraceevent utest: Read btf file in utest if mmap fails
+
+When mmap of the btf file fails in utest, fall back to malloc and
+read.
+
+This mmap fails with ENODEV on i686 nix build on nixos-unstable.
+
+Link: https://lore.kernel.org/d6e07cd6-cb78-4119-a048-920ca58b4830@tuxera.com
+Signed-off-by: Emil Thorsoe <ethorsoe@tuxera.com>
+Signed-off-by: Steven Rostedt <rostedt@goodmis.org>
+---
+ utest/traceevent-utest.c | 19 ++++++++++++++++---
+ 1 file changed, 16 insertions(+), 3 deletions(-)
+
+diff --git a/utest/traceevent-utest.c b/utest/traceevent-utest.c
+index b62411c..7d09bf2 100644
+--- a/utest/traceevent-utest.c
++++ b/utest/traceevent-utest.c
+@@ -388,6 +388,7 @@ static void test_btf_read(void)
+ 	struct stat st;
+ 	void *buf;
+ 	int fd, nr = 6;
++	bool malloced = false;
+ 
+ 	fd = open("/sys/kernel/btf/vmlinux", O_RDONLY);
+ 	if (fd < 0) {
+@@ -397,11 +398,23 @@ static void test_btf_read(void)
+ 	CU_TEST(fstat(fd, &st) == 0);
+ 
+ 	buf = mmap(NULL, st.st_size, PROT_READ, MAP_PRIVATE, fd, 0);
+-	CU_TEST(buf != MAP_FAILED);
+-
++	if (buf == MAP_FAILED) {
++		malloced = true;
++		buf = malloc(st.st_size);
++		if (buf == NULL) {
++			printf("[FAILED TO ALLOCATE MEMORY FOR BTF FILE CONTENTS] ...");
++			close(fd);
++			return;
++		}
++		CU_TEST(read(fd, buf, st.st_size) == st.st_size);
++	}
+ 	CU_TEST(tep_load_btf(test_tep, buf, st.st_size) == 0);
+ 
+-	munmap(buf, st.st_size);
++	if (malloced) {
++		free(buf);
++	} else {
++		munmap(buf, st.st_size);
++	}
+ 	close(fd);
+ 
+ 	trace_seq_init(s);
+-- 
+cgit 1.3-korg

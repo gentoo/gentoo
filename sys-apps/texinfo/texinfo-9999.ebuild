@@ -61,7 +61,11 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	${REGEN_BDEPEND}
 	nls? ( >=sys-devel/gettext-0.19.6 )
-	test? ( dev-perl/Test-Deep )
+	test? (
+		dev-perl/Data-Compare
+		dev-perl/Test-Deep
+		dev-perl/Text-Diff
+	)
 "
 
 src_prepare() {

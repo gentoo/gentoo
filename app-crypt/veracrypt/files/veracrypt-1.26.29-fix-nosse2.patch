@@ -1,0 +1,31 @@
+Fix building with NOSSE2.
+The change in Tcdefs.h is not required for x86, but for some reason it is
+necessary for x86_64.
+
+https://github.com/veracrypt/VeraCrypt/pull/1891
+
+--- a/Common/Tcdefs.h
++++ b/Common/Tcdefs.h
+@@ -52,9 +52,7 @@ extern unsigned short _rotl16(unsigned short value, unsigned char shift);
+ 
+ #endif // defined(_UEFI)
+ 
+-#ifdef TC_WINDOWS_BOOT
+ #include <stddef.h>
+-#endif
+ 
+ #define TC_APP_NAME						"VeraCrypt"
+ 
+--- a/Makefile
++++ b/Makefile
+@@ -289,8 +289,8 @@ ifeq "$(shell uname -s)" "Linux"
+ 	endif
+ 	
+ 	ifeq "$(origin NOSSE2)" "command line"
+-		CFLAGS += -mno-sse2
+-		CXXFLAGS += -mno-sse2
++		CFLAGS += -mno-sse2 -DCRYPTOPP_DISABLE_AESNI -DCRYPTOPP_DISABLE_SHANI
++		CXXFLAGS += -mno-sse2 -DCRYPTOPP_DISABLE_AESNI -DCRYPTOPP_DISABLE_SHANI
+ 		WXCONFIG_CFLAGS += -mno-sse2
+ 		WXCONFIG_CXXFLAGS += -mno-sse2
+ 	endif

@@ -1,0 +1,40 @@
+From 4f2c7605a30efb1cf0b3b35e367ac56492918684 Mon Sep 17 00:00:00 2001
+From: "Brandon T. Willard" <brandonwillard@users.noreply.github.com>
+Date: Tue, 24 Feb 2026 15:30:19 -0600
+Subject: [PATCH] Update ast.Num to ast.Constant
+
+Closes #48
+---
+ tests/test_more.py | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/tests/test_more.py b/tests/test_more.py
+index 440c1be..081eaf8 100644
+--- a/tests/test_more.py
++++ b/tests/test_more.py
+@@ -33,9 +33,9 @@ def test_unify_object():
+ def test_unify_nonstandard_object():
+     _unify.add((ast.AST, ast.AST, Mapping), _unify_object)
+     x = var()
+-    assert unify(ast.Num(n=1), ast.Num(n=1), {}) == {}
+-    assert unify(ast.Num(n=1), ast.Num(n=2), {}) is False
+-    assert unify(ast.Num(n=1), ast.Num(n=x), {}) == {x: 1}
++    assert unify(ast.Constant(n=1), ast.Constant(n=1), {}) == {}
++    assert unify(ast.Constant(n=1), ast.Constant(n=2), {}) is False
++    assert unify(ast.Constant(n=1), ast.Constant(n=x), {}) == {x: 1}
+ 
+ 
+ def test_reify_object():
+@@ -51,9 +51,9 @@ def test_reify_object():
+ def test_reify_nonstandard_object():
+     _reify.add((ast.AST, Mapping), _reify_object)
+     x = var()
+-    assert reify(ast.Num(n=1), {}).n == 1
+-    assert reify(ast.Num(n=x), {}).n == x
+-    assert reify(ast.Num(n=x), {x: 2}).n == 2
++    assert reify(ast.Constant(n=1), {}).n == 1
++    assert reify(ast.Constant(n=x), {}).n == x
++    assert reify(ast.Constant(n=x), {x: 2}).n == 2
+ 
+ 
+ def test_reify_slots():

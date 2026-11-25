@@ -1,5 +1,9 @@
-# Copyright 2025 Gentoo Authors
+# Copyright 2025-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Sam James <sam@gentoo.org> (2026-04-17)
+# Older libsanitizer not ported to 64-bit time_t.
+<sys-devel/gcc-13 sanitize
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2025-07-10)
 # We need the gcc patchset here, otherwise things break.

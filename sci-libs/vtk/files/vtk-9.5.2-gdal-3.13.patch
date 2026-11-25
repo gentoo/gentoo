@@ -1,0 +1,65 @@
+https://gitlab.kitware.com/vtk/vtk/-/merge_requests/13291
+https://gitlab.kitware.com/vtk/vtk/-/commit/2395603fdddc40c29efc64c632ae98225ca2a58e
+
+From 2395603fdddc40c29efc64c632ae98225ca2a58e Mon Sep 17 00:00:00 2001
+From: Sankhesh Jhaveri <sankhesh.jhaveri@kitware.com>
+Date: Wed, 27 May 2026 19:16:10 -0400
+Subject: [PATCH] Fix GDAL const conversion issue
+
+This change fixes a compiler error where 'CSLConstList' {aka const char*
+const*} is being converted to 'char**'.
+--- a/Geovis/GDAL/vtkGDALRasterConverter.cxx
++++ b/Geovis/GDAL/vtkGDALRasterConverter.cxx
+@@ -149,7 +149,11 @@ void vtkGDALRasterConverter::vtkGDALRasterConverterInternal::CopyToVTK(
+       }
+ 
+       vtkNew<vtkLookupTable> colorTable;
++#if (GDAL_VERSION_MAJOR > 3) || (GDAL_VERSION_MAJOR == 3 && GDAL_VERSION_MINOR >= 13)
++      const char* const* categoryNames = band->GetCategoryNames();
++#else
+       char** categoryNames = band->GetCategoryNames();
++#endif
+ 
+       colorTable->IndexedLookupOn();
+       int numEntries = gdalTable->GetColorEntryCount();
+--- a/IO/GDAL/vtkGDALRasterReader.cxx
++++ b/IO/GDAL/vtkGDALRasterReader.cxx
+@@ -182,7 +182,11 @@ void vtkGDALRasterReader::vtkGDALRasterReaderInternal::ReadMetaData(const std::s
+     this->Reader->DriverShortName = GDALGetDriverShortName(driver);
+     this->Reader->DriverLongName = GDALGetDriverLongName(driver);
+ 
++#if (GDAL_VERSION_MAJOR > 3) || (GDAL_VERSION_MAJOR == 3 && GDAL_VERSION_MINOR >= 13)
++    const char* const* papszMetaData = GDALGetMetadata(this->GDALData, nullptr);
++#else
+     char** papszMetaData = GDALGetMetadata(this->GDALData, nullptr);
++#endif
+     if (CSLCount(papszMetaData) > 0)
+     {
+       for (int i = 0; papszMetaData[i] != nullptr; ++i)
+@@ -734,7 +738,11 @@ void vtkGDALRasterReader::vtkGDALRasterReaderInternal::ReadColorTable(
+     return;
+   }
+ 
++#if (GDAL_VERSION_MAJOR > 3) || (GDAL_VERSION_MAJOR == 3 && GDAL_VERSION_MINOR >= 13)
++  const char* const* categoryNames = rasterBand->GetCategoryNames();
++#else
+   char** categoryNames = rasterBand->GetCategoryNames();
++#endif
+ 
+   colorTable->IndexedLookupOn();
+   int numEntries = gdalTable->GetColorEntryCount();
+@@ -882,7 +890,11 @@ std::vector<std::string> vtkGDALRasterReader::GetDomainMetaData(const std::strin
+ {
+   std::vector<std::string> domainMetaData;
+ 
++#if (GDAL_VERSION_MAJOR > 3) || (GDAL_VERSION_MAJOR == 3 && GDAL_VERSION_MINOR >= 13)
++  const char* const* papszMetadata = GDALGetMetadata(this->Impl->GDALData, domain.c_str());
++#else
+   char** papszMetadata = GDALGetMetadata(this->Impl->GDALData, domain.c_str());
++#endif
+ 
+   if (CSLCount(papszMetadata) > 0)
+   {
+-- 
+GitLab
+

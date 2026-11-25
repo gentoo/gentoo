@@ -1,0 +1,165 @@
+From cc1a060dfff7ce792aab99364638a85efdbeb2a0 Mon Sep 17 00:00:00 2001
+From: Tete17 <miguel_tete17@hotmail.com>
+Date: Sun, 29 Mar 2026 13:55:10 +0200
+Subject: [PATCH] Fix strict-aliasing violations in number.vala,
+ math-equation.vala, and buttons-programming.vala
+
+Replace pointer type-punning casts with Memory.copy (memcpy) to comply
+with C strict-aliasing rules. The old casts (e.g. *(uint32*) &real)
+caused compilation failures with -Werror=strict-aliasing.
+
+Also add -Werror=strict-aliasing to the default GCC project arguments
+to prevent future regressions.
+
+Closes #520
+---
+ lib/math-equation.vala       | 21 +++++++++++++++++----
+ lib/number.vala              | 30 ++++++++++++++++++++++++------
+ meson.build                  |  1 +
+ src/buttons-programming.vala |  8 ++++++--
+ 4 files changed, 48 insertions(+), 12 deletions(-)
+
+diff --git a/lib/math-equation.vala b/lib/math-equation.vala
+index 0619022b..ed05607d 100644
+--- a/lib/math-equation.vala
++++ b/lib/math-equation.vala
+@@ -1635,12 +1635,16 @@ public class MathEquation : GtkSource.Buffer
+             if (word_size == 64)
+             {
+                 double d = x.to_double ();
+-                bits = *(uint64*) &d;
++                uint64 dbits = 0;
++                Memory.copy (&dbits, &d, sizeof (double));
++                bits = dbits;
+             }
+             else
+             {
+                 float f = x.to_float ();
+-                bits = *(uint32*) &f;
++                uint32 fbits = 0;
++                Memory.copy (&fbits, &f, sizeof (float));
++                bits = fbits;
+             }
+         }
+         else if (x.is_negative ())
+@@ -1656,9 +1660,18 @@ public class MathEquation : GtkSource.Buffer
+         if (is_float)
+         {
+             if (word_size == 64)
+-                x = new Number.double (*(double*) &bits);
++            {
++                double d = 0;
++                Memory.copy (&d, &bits, sizeof (double));
++                x = new Number.double (d);
++            }
+             else
+-                x = new Number.float (*(float*) &bits);
++            {
++                uint32 fbits = (uint32) bits;
++                float f = 0;
++                Memory.copy (&f, &fbits, sizeof (float));
++                x = new Number.float (f);
++            }
+             x.set_force_float (true);
+         }
+         else if (x.is_negative ())
+diff --git a/lib/number.vala b/lib/number.vala
+index ddab6fe6..f45565b0 100644
+--- a/lib/number.vala
++++ b/lib/number.vala
+@@ -87,7 +87,9 @@ public class Number : GLib.Object
+             num.set_double (real, imag);
+         else
+         {
+-            num.set_unsigned_integer ((ulong) *(uint32*) &real, 0);
++            uint32 bits = 0;
++            Memory.copy (&bits, &real, sizeof (uint32));
++            num.set_unsigned_integer ((ulong) bits, 0);
+             finite = false;
+         }
+     }
+@@ -98,7 +100,9 @@ public class Number : GLib.Object
+             num.set_double (real, imag);
+         else
+         {
+-            num.set_unsigned_integer ((ulong) *(uint64*) &real, 0);
++            uint64 bits = 0;
++            Memory.copy (&bits, &real, sizeof (uint64));
++            num.set_unsigned_integer ((ulong) bits, 0);
+             finite = false;
+         }
+     }
+@@ -162,8 +166,15 @@ public class Number : GLib.Object
+         {
+             uint64 bits = to_unsigned_integer ();
+             if (bits > uint32.MAX)
+-                return (float) *(double*) &bits;
+-            return *(float*) &bits;
++            {
++                double d = 0;
++                Memory.copy (&d, &bits, sizeof (double));
++                return (float) d;
++            }
++            uint32 bits32 = (uint32) bits;
++            float f = 0;
++            Memory.copy (&f, &bits32, sizeof (float));
++            return f;
+         }
+         return num.get_real ().val.get_float (MPFR.Round.NEAREST);
+     }
+@@ -174,8 +185,15 @@ public class Number : GLib.Object
+         {
+             uint64 bits = to_unsigned_integer ();
+             if (bits > uint32.MAX)
+-                return *(double*) &bits;
+-            return (double) *(float*) &bits;
++            {
++                double d = 0;
++                Memory.copy (&d, &bits, sizeof (double));
++                return d;
++            }
++            uint32 bits32 = (uint32) bits;
++            float f = 0;
++            Memory.copy (&f, &bits32, sizeof (float));
++            return (double) f;
+         }
+         return num.get_real ().val.get_double (MPFR.Round.NEAREST);
+     }
+diff --git a/meson.build b/meson.build
+index 1b669de9..c86389c0 100644
+--- a/meson.build
++++ b/meson.build
+@@ -58,6 +58,7 @@ if cc.get_id() == 'gcc'
+     '-Wno-discarded-qualifiers',
+     '-DVALA_STRICT_C', '-Wno-incompatible-pointer-types',
+     '-Wno-unused-variable', '-Wno-unused-but-set-variable',
++    '-Werror=strict-aliasing',
+     language : 'c'
+   )
+ endif
+diff --git a/src/buttons-programming.vala b/src/buttons-programming.vala
+index 33f2e08c..81f48411 100644
+--- a/src/buttons-programming.vala
++++ b/src/buttons-programming.vala
+@@ -231,12 +231,16 @@ public class ProgrammingButtonPanel : Adw.BreakpointBin
+                 if (equation.word_size == 64)
+                 {
+                     double d = x.to_double ();
+-                    bits = *(uint64*) &d;
++                    uint64 dbits = 0;
++                    Memory.copy (&dbits, &d, sizeof (double));
++                    bits = dbits;
+                 }
+                 else if (equation.word_size == 32)
+                 {
+                     float f = x.to_float ();
+-                    bits = *(uint32*) &f;
++                    uint32 fbits = 0;
++                    Memory.copy (&fbits, &f, sizeof (float));
++                    bits = fbits;
+                 }
+                 else
+                     enabled = false;
+-- 
+GitLab
+

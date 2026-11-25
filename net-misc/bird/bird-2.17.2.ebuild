@@ -1,4 +1,4 @@
-# Copyright 2020-2025 Gentoo Authors
+# Copyright 2020-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,7 +12,7 @@ LICENSE="GPL-2"
 
 SLOT="0"
 KEYWORDS="amd64 ~arm64 ~loong ~x86 ~x64-macos"
-IUSE="+client custom-cflags debug libssh"
+IUSE="+client custom-cflags debug libssh selinux"
 
 RDEPEND="
 	client? (
@@ -23,12 +23,15 @@ RDEPEND="
 		acct-group/bird
 		acct-user/bird
 	)
-	libssh? ( net-libs/libssh:= )"
+	libssh? ( net-libs/libssh:= )
+"
+DEPEND="${RDEPEND}"
 BDEPEND="
 	app-alternatives/yacc
 	app-alternatives/lex
 	sys-devel/m4
 "
+RDEPEND+=" selinux? ( sec-policy/selinux-bird )"
 
 FILECAPS=(
 	CAP_NET_ADMIN			usr/sbin/bird

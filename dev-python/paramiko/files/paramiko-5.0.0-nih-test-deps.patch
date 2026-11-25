@@ -1,0 +1,129 @@
+From 58dbeb2d72fb00465b606c22c8f665ad7177a664 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Tue, 17 May 2022 07:26:36 +0200
+Subject: [PATCH 1/3] Replace pytest-relaxed with plain pytest.raises
+
+There is really no technical reason to bring pytest-relaxed to call
+@raises as a decorator while plain pytest works just fine.  Plus,
+pytest.raises() is used in test_sftp already.
+
+pytest-relaxed causes humongous breakage to other packages
+on the system.  It has been banned from Gentoo for this reason.
+---
+ tests/test_client.py | 19 +++++++++----------
+ 1 file changed, 9 insertions(+), 10 deletions(-)
+
+diff --git a/tests/test_client.py b/tests/test_client.py
+index df66f7da..75e30501 100644
+--- a/tests/test_client.py
++++ b/tests/test_client.py
+@@ -33,7 +33,6 @@ from tempfile import mkstemp
+ from unittest.mock import patch
+ 
+ import pytest
+-from pytest_relaxed import raises
+ 
+ import paramiko
+ from paramiko import SSHClient
+@@ -710,10 +709,10 @@ class PasswordPassphraseTests(ClientTest):
+ 
+     # TODO: more granular exception pending #387; should be signaling "no auth
+     # methods available" because no key and no password
+-    @raises(SSHException)
+     def test_passphrase_kwarg_not_used_for_password_auth(self):
+-        # Using the "right" password in the "wrong" field shouldn't work.
+-        self._test_connection(passphrase="pygmalion")
++        with pytest.raises(SSHException):
++            # Using the "right" password in the "wrong" field shouldn't work.
++            self._test_connection(passphrase="pygmalion")
+ 
+     def test_passphrase_kwarg_used_for_key_passphrase(self):
+         # Straightforward again, with new passphrase kwarg.
+@@ -731,14 +730,14 @@ class PasswordPassphraseTests(ClientTest):
+             password="television",
+         )
+ 
+-    @raises(AuthenticationException)  # TODO: more granular
+     def test_password_kwarg_not_used_for_passphrase_when_passphrase_kwarg_given(  # noqa
+         self,
+     ):
+         # Sanity: if we're given both fields, the password field is NOT used as
+         # a passphrase.
+-        self._test_connection(
+-            key_filename=_support("test_rsa_password.key"),
+-            password="television",
+-            passphrase="wat? lol no",
+-        )
++        with pytest.raises(AuthenticationException):
++            self._test_connection(
++                key_filename=_support("test_rsa_password.key"),
++                password="television",
++                passphrase="wat? lol no",
++            )
+From 42ddab757cb5f9cc71a5924443620ad08f02550a Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Sat, 21 Jan 2023 06:56:09 +0100
+Subject: [PATCH 2/3] Remove icecream dep
+
+---
+ tests/conftest.py | 6 ------
+ 1 file changed, 6 deletions(-)
+
+diff --git a/tests/conftest.py b/tests/conftest.py
+index 4e9ae8a5..ef0b1231 100644
+--- a/tests/conftest.py
++++ b/tests/conftest.py
+@@ -5,8 +5,6 @@ import threading
+ from pathlib import Path
+ 
+ import pytest
+-from icecream import ic
+-from icecream import install as install_ic
+ from invoke.vendor.lexicon import Lexicon
+ 
+ from paramiko import (
+@@ -23,10 +21,6 @@ from ._loop import LoopSocket
+ from ._stub_sftp import StubServer, StubSFTPServer
+ from ._util import _support
+ 
+-# Better print() for debugging - use ic()!
+-install_ic()
+-ic.configureOutput(includeContext=True)
+-
+ 
+ # Perform logging by default; pytest will capture and thus hide it normally,
+ # presenting it on error/failure. (But also allow turning it off when doing
+From f67b8881361358151a2ce1937323366f5303ea50 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Fri, 26 May 2023 06:18:25 +0200
+Subject: [PATCH 3/3] Remove pointless use of Lexicon vendored from invoke with
+ class
+
+---
+ tests/conftest.py | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/tests/conftest.py b/tests/conftest.py
+index ef0b1231..64b7e0dc 100644
+--- a/tests/conftest.py
++++ b/tests/conftest.py
+@@ -5,8 +5,6 @@ import threading
+ from pathlib import Path
+ 
+ import pytest
+-from invoke.vendor.lexicon import Lexicon
+-
+ from paramiko import (
+     SFTP,
+     ECDSAKey,
+@@ -146,6 +144,10 @@ key_data = [
+ ]
+ 
+ 
++class Lexicon:
++    pass
++
++
+ @pytest.fixture(scope="session", params=key_data, ids=lambda x: x[1])
+ def keys(request):
+     """

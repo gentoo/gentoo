@@ -10,4 +10,4 @@ inherit perl-module
 DESCRIPTION="Color palette constructor"
 
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"

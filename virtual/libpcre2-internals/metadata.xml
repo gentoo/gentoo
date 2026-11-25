@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>base-system@gentoo.org</email>
+		<name>Gentoo Base System</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>selinux@gentoo.org</email>
+		<name>SELinux Team</name>
+	</maintainer>
+	<longdescription>
+	Virtual for use by packages like the SELinux userland suite which
+	rely on internals of libpcre2's representation being saved to disk.
+	</longdescription>
+</pkgmetadata>

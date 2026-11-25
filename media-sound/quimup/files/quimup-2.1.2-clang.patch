@@ -1,0 +1,13 @@
+fix compilation with clang
+not reported to upstream (no bugtracker)
+--- a/source/qm_itemlist.h
++++ b/source/qm_itemlist.h
+@@ -49,7 +49,7 @@ public:
+     QString sorter;
+ 
+     // Override the < operator for alist.sort();
+-    bool operator < (const qm_listItemInfo& litem)
++    bool operator < (const qm_listItemInfo& litem) const
+     {
+         return sorter < litem.sorter;
+     }

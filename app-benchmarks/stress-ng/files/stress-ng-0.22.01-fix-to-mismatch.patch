@@ -1,0 +1,64 @@
+From bd329b79b0c80875686da0f2dfbcc8252a1b3070 Mon Sep 17 00:00:00 2001
+From: Colin Ian King <colin.i.king@gmail.com>
+Date: Sun, 1 Nov 2026 15:35:37 +0000
+Subject: [PATCH] core-cpu: fix LTO build error with gentoo builds
+
+Using LTO builds on gentoo are failing with the following
+error:
+
+core-cpu.c:976:34: error: type of '__cpu_model' does not match original declaration
+  976 | extern struct stress_cpu_model_t __cpu_model;
+      |                                  ^
+
+the definitation of the __cpu_model matches that of the one in
+gcc's libgcc so this is a tool chain mystery for now. Since the fields
+being accessed are not outside the gcc's libgcc __cpu_model struct
+no harm is occuring so I'm deeming this is a legitimate access and
+this error can be safely ignored. Add -Wno-lto-type-mismatch to LDFLAGS
+to override this error for now.
+
+Also re-work the __cpu_model declaration by using __processor_model to
+match that of the libgcc definition of __cpu_model.
+
+Closes: https://github.com/ColinIanKing/stress-ng/issues/685
+
+Signed-off-by: Colin Ian King <colin.i.king@gmail.com>
+---
+ Makefile   | 1 +
+ core-cpu.c | 5 +++--
+ 2 files changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 1f338448b..716ee3b99 100644
+--- a/Makefile
++++ b/Makefile
+@@ -231,6 +231,7 @@ endif
+ #
+ ifeq ($(LTO),1)
+ override CFLAGS += $(foreach flag,-flto=auto,$(cc_supports_flag))
++override LDFLAGS += $(foreach flag,-Wno-lto-type-mismatch,$(cc_supports_flag))
+ endif
+ 
+ ifeq ($(GARBAGE_COLLECT),1)
+diff --git a/core-cpu.c b/core-cpu.c
+index 6a50040be..5c56c081b 100644
+--- a/core-cpu.c
++++ b/core-cpu.c
+@@ -977,14 +977,15 @@ void OPTIMIZE3 stress_cpu_fp_subnormals_enable(void)
+  *  call __cpu_indicator_init() and then compare __cpu_model.__cpu_subtype
+  *  to pick an "arch=" clone. Layout is fixed by the libgcc ABI.
+  */
+-struct stress_cpu_model_t {
++struct __processor_model {
+ 	unsigned int __cpu_vendor;
+ 	unsigned int __cpu_type;
+ 	unsigned int __cpu_subtype;
+ 	unsigned int __cpu_features[1];
+ };
+ 
+-extern struct stress_cpu_model_t __cpu_model;
++extern struct __processor_model __cpu_model;
++
+ extern void __real___cpu_indicator_init(void);
+ 
+ void __wrap___cpu_indicator_init(void);

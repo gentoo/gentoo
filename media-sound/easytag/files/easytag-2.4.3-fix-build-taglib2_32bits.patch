@@ -1,0 +1,176 @@
+backport https://gitlab.gnome.org/GNOME/easytag/-/commit/3f753f8.patch
+rebased and modified to keep compatibility w/ taglib-1
+see https://bugs.gentoo.org/982733
+fix taglib-2 w/ 32-bits architecture
+--- a/src/tags/gio_wrapper.cc
++++ b/src/tags/gio_wrapper.cc
+@@ -48,7 +48,7 @@ GIO_InputStream::name () const
+ 
+ TagLib::ByteVector
+ #if (TAGLIB_MAJOR_VERSION == 2)
+-GIO_InputStream::readBlock (ulong len)
++GIO_InputStream::readBlock (size_t len)
+ #else
+ GIO_InputStream::readBlock (TagLib::ulong len)
+ #endif
+@@ -109,7 +109,11 @@ GIO_InputStream::isOpen () const
+ }
+ 
+ void
++#if (TAGLIB_MAJOR_VERSION == 2)
++GIO_InputStream::seek (TagLib::offset_t offset, TagLib::IOStream::Position p)
++#else
+ GIO_InputStream::seek (long int offset, TagLib::IOStream::Position p)
++#endif
+ {
+     if (error)
+     {
+@@ -147,13 +151,21 @@ GIO_InputStream::clear ()
+     }
+ }
+ 
++#if (TAGLIB_MAJOR_VERSION == 2)
++TagLib::offset_t
++#else
+ long int
++#endif
+ GIO_InputStream::tell () const
+ {
+     return g_seekable_tell (G_SEEKABLE (stream));
+ }
+ 
++#if (TAGLIB_MAJOR_VERSION == 2)
++TagLib::offset_t
++#else
+ long int
++#endif
+ GIO_InputStream::length ()
+ {
+     if (error)
+@@ -175,7 +187,11 @@ GIO_InputStream::length ()
+ }
+ 
+ void
++#if (TAGLIB_MAJOR_VERSION == 2)
++GIO_InputStream::truncate (TagLib::offset_t len)
++#else
+ GIO_InputStream::truncate (long int len)
++#endif
+ {
+     g_warning ("%s", "Trying to truncate read-only file");
+ }
+@@ -215,7 +231,7 @@ GIO_IOStream::name () const
+ 
+ TagLib::ByteVector
+ #if (TAGLIB_MAJOR_VERSION == 2)
+-GIO_IOStream::readBlock (ulong len)
++GIO_IOStream::readBlock (size_t len)
+ #else
+ GIO_IOStream::readBlock (TagLib::ulong len)
+ #endif
+@@ -430,7 +446,11 @@ GIO_IOStream::isOpen () const
+ }
+ 
+ void
++#if (TAGLIB_MAJOR_VERSION == 2)
++GIO_IOStream::seek (TagLib::offset_t offset, TagLib::IOStream::Position p)
++#else
+ GIO_IOStream::seek (long int offset, TagLib::IOStream::Position p)
++#endif
+ {
+     if (error)
+     {
+@@ -464,13 +484,21 @@ GIO_IOStream::clear ()
+     g_clear_error (&error);
+ }
+ 
++#if (TAGLIB_MAJOR_VERSION == 2)
++TagLib::offset_t
++#else
+ long int
++#endif
+ GIO_IOStream::tell () const
+ {
+     return g_seekable_tell (G_SEEKABLE (stream));
+ }
+ 
++#if (TAGLIB_MAJOR_VERSION == 2)
++TagLib::offset_t
++#else
+ long int
++#endif
+ GIO_IOStream::length ()
+ {
+     long rv = -1;
+@@ -494,7 +522,11 @@ GIO_IOStream::length ()
+ }
+ 
+ void
++#if (TAGLIB_MAJOR_VERSION == 2)
++GIO_IOStream::truncate (TagLib::offset_t len)
++#else
+ GIO_IOStream::truncate (long int len)
++#endif
+ {
+     if (error)
+     {
+--- a/src/tags/gio_wrapper.h
++++ b/src/tags/gio_wrapper.h
+@@ -34,7 +34,7 @@ public:
+     virtual ~GIO_InputStream ();
+     virtual TagLib::FileName name () const;
+ #if (TAGLIB_MAJOR_VERSION == 2)
+-    virtual TagLib::ByteVector readBlock (ulong length);
++    virtual TagLib::ByteVector readBlock (size_t length);
+     virtual void writeBlock (TagLib::ByteVector const &data);
+     virtual void insert (TagLib::ByteVector const &data, TagLib::offset_t start = 0, size_t replace = 0);
+     virtual void removeBlock (TagLib::offset_t start = 0, size_t length = 0);
+@@ -46,11 +46,19 @@ public:
+ #endif
+     virtual bool readOnly () const;
+     virtual bool isOpen () const;
++#if (TAGLIB_MAJOR_VERSION == 2)
++    virtual void seek (TagLib::offset_t offset, TagLib::IOStream::Position p = TagLib::IOStream::Beginning);
++    virtual void clear ();
++    virtual TagLib::offset_t tell () const;
++    virtual TagLib::offset_t length ();
++    virtual void truncate (TagLib::offset_t length);
++#else
+     virtual void seek (long int offset, TagLib::IOStream::Position p = TagLib::IOStream::Beginning);
+     virtual void clear ();
+     virtual long int tell () const;
+     virtual long int length ();
+     virtual void truncate (long int length);
++#endif
+ 
+     virtual const GError *getError() const;
+ 
+@@ -69,7 +77,7 @@ public:
+     virtual ~GIO_IOStream ();
+     virtual TagLib::FileName name () const;
+ #if (TAGLIB_MAJOR_VERSION == 2)
+-    virtual TagLib::ByteVector readBlock (ulong length);
++    virtual TagLib::ByteVector readBlock (size_t length);
+     virtual void writeBlock (TagLib::ByteVector const &data);
+     virtual void insert (TagLib::ByteVector const &data, TagLib::offset_t start = 0, size_t replace = 0);
+     virtual void removeBlock (TagLib::offset_t start = 0, size_t len = 0);
+@@ -81,11 +89,19 @@ public:
+ #endif
+     virtual bool readOnly () const;
+     virtual bool isOpen () const;
++#if (TAGLIB_MAJOR_VERSION == 2)
++    virtual void seek (TagLib::offset_t offset, TagLib::IOStream::Position p = TagLib::IOStream::Beginning);
++    virtual void clear ();
++    virtual TagLib::offset_t tell () const;
++    virtual TagLib::offset_t length ();
++    virtual void truncate (TagLib::offset_t length);
++#else
+     virtual void seek (long int offset, TagLib::IOStream::Position p = TagLib::IOStream::Beginning);
+     virtual void clear ();
+     virtual long int tell () const;
+     virtual long int length ();
+     virtual void truncate (long int length);
++#endif
+ 
+     virtual const GError *getError() const;
+ 

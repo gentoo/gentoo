@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,7 +15,7 @@ else
 	S="${WORKDIR}/${MY_P/_/-}"
 fi
 
-PYTHON_COMPAT=( python3_{12..13} )
+PYTHON_COMPAT=( python3_{13..14} )
 DISTUTILS_USE_PEP517=setuptools
 
 inherit distutils-r1 linux-info optfeature tmpfiles ${SRC_ECLASS}
@@ -31,6 +31,7 @@ BDEPEND="
 	app-text/asciidoc
 "
 DEPEND="
+	app-portage/gemato[${PYTHON_USEDEP}]
 	sys-apps/portage[${PYTHON_USEDEP}]
 	>=dev-python/snakeoil-0.6.5[${PYTHON_USEDEP}]
 	dev-python/fasteners[${PYTHON_USEDEP}]

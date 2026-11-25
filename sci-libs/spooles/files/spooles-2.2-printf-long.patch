@@ -1,0 +1,145 @@
+From 6f30f1cef38d548b1b0f8cd720e52f2e40608f22 Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+Date: Thu, 16 Apr 2026 15:20:16 +0200
+Subject: printf long
+
+Signed-off-by: Paul Zander <negril.nx+gentoo@gmail.com>
+
+diff --git a/Chv/src/init.c b/Chv/src/init.c
+index faa6b7b..ad873cf 100644
+--- a/Chv/src/init.c
++++ b/Chv/src/init.c
+@@ -58,7 +58,7 @@ case SPOOLES_REAL :
+    } else {
+       fprintf(stderr, 
+               "\n fatal error in Chv_nbytesNeeded()"
+-              "\n sizeof(int) = %d, sizeof(double) = %d",
++              "\n sizeof(int) = %lu, sizeof(double) = %lu",
+               sizeof(int), sizeof(double)) ;
+       exit(-1) ;
+    }
+@@ -90,7 +90,7 @@ case SPOOLES_COMPLEX :
+    } else {
+       fprintf(stderr, 
+               "\n fatal error in Chv_nbytesNeeded()"
+-              "\n sizeof(int) = %d, sizeof(double) = %d",
++              "\n sizeof(int) = %lu, sizeof(double) = %lu",
+               sizeof(int), sizeof(double)) ;
+       exit(-1) ;
+    }
+diff --git a/DenseMtx/src/IO.c b/DenseMtx/src/IO.c
+index b7495a1..bdccb73 100644
+--- a/DenseMtx/src/IO.c
++++ b/DenseMtx/src/IO.c
+@@ -519,7 +519,7 @@ fprintf(fp, "\n rowind = %p, colind = %p, entries = %p",
+         mtx->rowind, mtx->colind, mtx->entries) ;
+ fprintf(fp, ", base = %p", DV_entries(&mtx->wrkDV)) ;
+ fprintf(fp, 
+-       "\n rowind - base = %d, colind - base = %d, entries - base = %d",
++       "\n rowind - base = %ld, colind - base = %ld, entries - base = %ld",
+        mtx->rowind - (int *) DV_entries(&mtx->wrkDV),
+        mtx->colind - (int *) DV_entries(&mtx->wrkDV),
+        mtx->entries - DV_entries(&mtx->wrkDV)) ;
+diff --git a/DenseMtx/src/init.c b/DenseMtx/src/init.c
+index 850dff5..500129c 100644
+--- a/DenseMtx/src/init.c
++++ b/DenseMtx/src/init.c
+@@ -47,7 +47,7 @@ if ( sizeof(int) == sizeof(double) ) {
+    nbytes = ((nint + 1)/2 + ndouble)*sizeof(double) ;
+ } else {
+    fprintf(stderr, "\n error in DenseMtx_nbytesNeeded(%d,%d)"
+-           "\n sizeof(int) = %d, sizeof(double) = %d",
++           "\n sizeof(int) = %ld, sizeof(double) = %ld",
+            nrow, ncol, sizeof(int), sizeof(double)) ;
+    exit(-1) ;
+ }
+diff --git a/MT/src/QRfactorMT.c b/MT/src/QRfactorMT.c
+index ff52f52..a58e655 100644
+--- a/MT/src/QRfactorMT.c
++++ b/MT/src/QRfactorMT.c
+@@ -215,7 +215,7 @@ void             *status ;
+                  myid, rc) ;
+          exit(-1) ;
+       } else if ( msglvl > 2 ) {
+-         fprintf(stderr, "\n thread %d created", tids[myid]) ;
++         fprintf(stderr, "\n thread %lu created", tids[myid]) ;
+       }
+    }
+    for ( myid = 0 ; myid < nthread ; myid++ ) {
+diff --git a/MT/src/factorMT.c b/MT/src/factorMT.c
+index 477bc8e..58ae6d2 100644
+--- a/MT/src/factorMT.c
++++ b/MT/src/factorMT.c
+@@ -328,7 +328,7 @@ for ( myid = 0, data = dataObjects ; myid < nthread ; myid++, data++ ) {
+               myid, rc) ;
+       exit(-1) ;
+    } else if ( msglvl > 1 ) {
+-      fprintf(stderr, "\n thread %d created", tids[myid]) ;
++      fprintf(stderr, "\n thread %lu created", tids[myid]) ;
+    }
+ }
+ MARKTIME(t2) ;
+@@ -490,7 +490,7 @@ if ( msglvl > 2 ) {
+ #if THREAD_TYPE == TT_POSIX
+ if ( msglvl > 2 ) {
+    fprintf(stdout, "\n ### inside workerFactor, myid = %d" 
+-                   ", pthread_self() = %d", myid, pthread_self()) ;
++                   ", pthread_self() = %lu", myid, pthread_self()) ;
+    fflush(stdout) ;
+ }
+ #endif
+diff --git a/MT/src/mvm.c b/MT/src/mvm.c
+index 24a6049..c66c3a3 100644
+--- a/MT/src/mvm.c
++++ b/MT/src/mvm.c
+@@ -278,7 +278,7 @@ for ( myid = 0, obj = MTmvmObjs ; myid < nthread ; myid++, obj++ ) {
+            myid, rc) ;
+       exit(-1) ;
+    } else if ( msglvl > 2 ) {
+-      fprintf(stderr, "\n %% thread %d created", tids[myid]) ;
++      fprintf(stderr, "\n %% thread %lu created", tids[myid]) ;
+    }
+ }
+ MARKTIME(t2) ;
+diff --git a/SubMtx/src/init.c b/SubMtx/src/init.c
+index 24b9fb4..9cd6713 100644
+--- a/SubMtx/src/init.c
++++ b/SubMtx/src/init.c
+@@ -107,7 +107,7 @@ if ( sizeof(int) == sizeof(double) ) {
+    nbytes = ((nint + 1)/2 + ndouble)*sizeof(double) ;
+ } else {
+    fprintf(stderr, "\n error in SubMtx_nbytesNeeded(%d,%d)"
+-           "\n sizeof(int) = %d, sizeof(double) = %d",
++           "\n sizeof(int) = %lu, sizeof(double) = %lu",
+            nrow, ncol, sizeof(int), sizeof(double)) ;
+    exit(-1) ;
+ }
+diff --git a/Utilities/MM.h b/Utilities/MM.h
+index 11e86c5..0bc3e80 100644
+--- a/Utilities/MM.h
++++ b/Utilities/MM.h
+@@ -33,18 +33,18 @@ if ( (count) > 0 ) { \
+    if ( (ptr = (type *)malloc((unsigned long)((count)*sizeof(type)))) \
+         == NULL ) {\
+       fprintf(stderr, \
+-              "\n ALLOCATE failure : bytes %d, line %d, file %s", \
++              "\n ALLOCATE failure : bytes %ld, line %d, file %s", \
+               (count)*sizeof(type), __LINE__, __FILE__) ; \
+       exit(-1) ; } \
+    else if ( MEMORY_DEBUG > 0 ) { \
+       fprintf(stderr, \
+-              "\n ALLOCATE : address %p, bytes %d, line %d, file %s", \
++              "\n ALLOCATE : address %p, bytes %ld, line %d, file %s", \
+               ptr, (count)*sizeof(type), __LINE__, __FILE__) ; } } \
+ else if ( (count) == 0 ) { \
+    ptr = NULL ; } \
+ else { \
+    fprintf(stderr, \
+-           "\n ALLOCATE error : bytes %d, line %d, file %s", \
++           "\n ALLOCATE error : bytes %ld, line %d, file %s", \
+            (count)*sizeof(type), __LINE__, __FILE__) ; \
+    exit(-1) ; }
+ /*
+-- 
+2.53.0
+

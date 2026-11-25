@@ -19,6 +19,9 @@
 		libs. Each directory directory contains multiple 3D model files, with
 		the following supported file formats: WRL, STEP.
 	</longdescription>
+	<use>
+		<flag name="stpz">Gzip-compress installed .step models to .stpz; breaks project portability with non-Gentoo distros</flag>
+	</use>
 	<upstream>
 		<remote-id type="gitlab">kicad/libraries/kicad-packages3D</remote-id>
 	</upstream>

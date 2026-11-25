@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=no
 PYPI_PN=setuptools
-PYTHON_COMPAT=( python3_{11..14} pypy3_11 )
+PYTHON_COMPAT=( python3_{12..15} python3_{14,15}t )
 PYTHON_REQ_USE="xml(+)"
 
 inherit distutils-r1 pypi
@@ -18,13 +18,18 @@ HOMEPAGE="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~arm64-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~arm64-macos ~x64-macos ~x64-solaris"
 
 RDEPEND="
 	>=dev-python/jaraco-text-4.0.0[${PYTHON_USEDEP}]
 	>=dev-python/packaging-25.0[${PYTHON_USEDEP}]
 	>=dev-python/platformdirs-4.4.0[${PYTHON_USEDEP}]
-	!<dev-python/setuptools-82[${PYTHON_USEDEP}]
+	!<dev-python/setuptools-82
+"
+BDEPEND="
+	test? (
+		dev-python/setuptools[${PYTHON_USEDEP}]
+	)
 "
 
 EPYTEST_PLUGINS=()
@@ -36,6 +41,8 @@ EPYTEST_IGNORE=(
 )
 
 python_test() {
+	# needed only by setuptools
+	rm -f conftest.py || die
 	epytest pkg_resources
 }
 

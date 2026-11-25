@@ -11,7 +11,7 @@
 	</maintainer>
 	<longdescription>
 		QtPy is a small abstraction layer that lets you write applications using a single API call to either PyQt or PySide.
-		It provides support for PyQt6, PyQt5 and PySide6.
+		It provides support for PyQt6 and PySide6.
 		Basically, you can write your code as if you were using PyQt6 but import Qt modules from qtpy instead of PyQt6 (or PySide6)
 	</longdescription>
 	<use>

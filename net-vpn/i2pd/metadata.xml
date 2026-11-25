@@ -9,6 +9,9 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
+	<use>
+		<flag name="torrents">Build the built-in torrent client</flag>
+	</use>
 	<upstream>
 		<bugs-to>https://github.com/PurpleI2P/i2pd/issues</bugs-to>
 		<changelog>https://github.com/PurpleI2P/i2pd/blob/openssl/ChangeLog</changelog>

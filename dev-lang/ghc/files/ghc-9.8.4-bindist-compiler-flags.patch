@@ -1,0 +1,19 @@
+From c9731d6d (Synchronize bindist configure for #24324)
+
+Autoconf can append a language-standard option to CC/CXX. Keep that option in
+CFLAGS/CXXFLAGS so the installed compiler settings contain executable names.
+
+https://gitlab.haskell.org/ghc/ghc/-/commit/c9731d6d
+
+--- a/distrib/configure.ac.in
++++ b/distrib/configure.ac.in
+@@ -109,6 +109,9 @@ dnl ** Which gcc to use?
+ dnl --------------------------------------------------------------
+ AC_PROG_CC([gcc clang])
+ AC_PROG_CXX([g++ clang++ c++])
++# Work around #24324
++MOVE_TO_FLAGS([CC],[CFLAGS])
++MOVE_TO_FLAGS([CXX],[CXXFLAGS])
+ 
+ dnl ** figure out how to invoke the C preprocessor (i.e. `gcc -E`)
+ AC_PROG_CPP

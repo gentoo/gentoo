@@ -23,6 +23,7 @@ RDEPEND="
 	${DEPEND}
 	net-firewall/iptables
 "
+BDEPEND=">=dev-lang/go-1.25.0"
 
 src_compile() {
 	export -n GOCACHE XDG_CACHE_HOME

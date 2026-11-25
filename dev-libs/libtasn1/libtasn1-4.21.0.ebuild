@@ -19,7 +19,7 @@ IUSE="static-libs"
 BDEPEND="
 	sys-apps/help2man
 	app-alternatives/yacc
-	verify-sig? ( >=sec-keys/openpgp-keys-libtasn1-20260112 )
+	verify-sig? ( >=sec-keys/openpgp-keys-libtasn1-20260210-r1 )
 "
 
 DOCS=( AUTHORS ChangeLog NEWS README.md THANKS )

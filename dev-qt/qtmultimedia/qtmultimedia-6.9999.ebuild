@@ -9,22 +9,19 @@ inherit flag-o-matic qt6-build
 DESCRIPTION="Multimedia (audio, video, radio, camera) library for the Qt6 framework"
 
 if [[ ${QT6_BUILD_TYPE} == release ]]; then
-	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~ppc64 ~riscv ~x86"
 fi
 
 IUSE="
 	+X alsa +dbus eglfs +ffmpeg gstreamer opengl pipewire pulseaudio
-	qml v4l vaapi vulkan wayland
+	qml +v4l vaapi vulkan wayland
 "
-# tst_qmediaplayerbackend hard requires qml, review in case becomes optional
 REQUIRED_USE="
 	|| ( ffmpeg gstreamer )
 	eglfs? ( ffmpeg opengl qml )
-	test? ( qml )
 	vaapi? ( ffmpeg opengl )
 "
 
-# dlopen/dbus: pipewire
 RDEPEND="
 	~dev-qt/qtbase-${PV}:6[concurrent,gui,network,opengl=,vulkan=,widgets]
 	alsa? (
@@ -51,7 +48,7 @@ RDEPEND="
 	)
 	opengl? ( media-libs/libglvnd )
 	pipewire? (
-		~dev-qt/qtbase-${PV}:6[dbus?]
+		~dev-qt/qtbase-${PV}:6[dbus=]
 		media-video/pipewire:=
 	)
 	pulseaudio? ( media-libs/libpulse )
@@ -59,6 +56,7 @@ RDEPEND="
 		~dev-qt/qtdeclarative-${PV}:6
 		~dev-qt/qtquick3d-${PV}:6
 	)
+	vaapi? ( media-libs/libva:= )
 "
 DEPEND="
 	${RDEPEND}
@@ -81,6 +79,7 @@ CMAKE_SKIP_TESTS=(
 	tst_qmediaplayerbackend
 	tst_qsoundeffect
 	# may try to use v4l2 or hardware acceleration depending on availability
+	tst_qcamerabackend #972689
 	tst_qmediarecorderbackend
 	tst_qscreencapture_integration
 	tst_qscreencapturebackend
@@ -92,10 +91,21 @@ CMAKE_SKIP_TESTS=(
 	tst_qwindowcapturebackend
 )
 
-src_configure() {
-	# eigen + ppc32 seems broken w/ -maltivec (forced by Qt, bug #943402)
-	use ppc && append-cppflags -DEIGEN_DONT_VECTORIZE
+PATCHES=(
+	"${FILESDIR}"/${PN}-6.11.2-libcxx23-mutex.patch
+)
 
+src_prepare() {
+	qt6-build_src_prepare
+
+	# test expects GStreamer to report an exact bitrate value, but
+	# this varies depending on version and Qt updates it only now
+	# and then (disabling permanently with a sed to avoid rebases)
+	sed -e '/bool validateBitRates = GST_CHECK_VERSION/s/= .*/= false;/' \
+		-i tests/auto/unit/plugins/multimedia/gstreamer/gstreamer_backend/tst_gstreamer_backend.cpp || die
+}
+
+src_configure() {
 	# normally passed by the build system, but needed for 32-on-64 chroots
 	use x86 && append-cppflags -DDISABLE_SIMD -DPFFFT_SIMD_DISABLE
 
@@ -112,6 +122,7 @@ src_configure() {
 		")
 		$(qt_feature pipewire)
 		$(usev pipewire $(qt_feature dbus pipewire_screencapture))
+		-DQT_FEATURE_pipewire_symbolloader=OFF
 		$(qt_feature pulseaudio)
 		$(qt_feature v4l linux_v4l)
 		$(qt_feature vaapi)

@@ -1,0 +1,29 @@
+https://bugs.kde.org/show_bug.cgi?id=525727
+https://codereview.qt-project.org/c/qt/qtdeclarative/+/777121
+--- a/src/quick/util/qquickpixmapcache.cpp
++++ b/src/quick/util/qquickpixmapcache.cpp
+@@ -262,5 +262,4 @@
+         return runLoopReaderThreadExecutionEnforcer;
+     }
+-    QObject *eventLoopQuitHack;
+     QMutex mutex;
+     ReaderThreadExecutionEnforcer *runLoopReaderThreadExecutionEnforcer = nullptr;
+@@ -607,7 +606,4 @@
+     Q_DETACH_THREAD_AFFINITY_MARKER(m_readerThreadAffinityMarker);
+ #if QT_CONFIG(quick_pixmap_cache_threaded_download)
+-    eventLoopQuitHack = new QObject;
+-    eventLoopQuitHack->moveToThread(this);
+-    QObject::connect(eventLoopQuitHack, &QObject::destroyed, this, &QThread::quit, Qt::DirectConnection);
+     start(QThread::LowestPriority);
+ #else
+@@ -657,9 +653,5 @@
+ 
+ #if QT_CONFIG(quick_pixmap_cache_threaded_download)
+-    // ... schedule stopping of this thread via the eventLoopQuitHack (processJobs scheduled above
+-    // will run first) ...
+-    eventLoopQuitHack->deleteLater();
+-    // ... and wait() for it all to finish, as the thread will only quit after eventLoopQuitHack
+-    // has been deleted.
++    quit();
+     wait();
+ #endif

@@ -1,5 +1,10 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Eli Schwartz <eschwartz@gentoo.org> (2026-10-29)
+# Need elogind enabled here for depgraph (otherwise uses basu, which is
+# not keyworded).
+dev-libs/libei elogind
 
 # Tobias Klausmann <klausman@gentoo.org> 2014-12-04
 # The Firefox/Mozilla build system is broken in regards to linking the shipped

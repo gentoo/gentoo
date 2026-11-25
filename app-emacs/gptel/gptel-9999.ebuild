@@ -1,7 +1,7 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=9
 
 NEED_EMACS="27.1"
 
@@ -14,6 +14,7 @@ if [[ "${PV}" == *9999* ]] ; then
 	inherit git-r3
 
 	EGIT_REPO_URI="https://github.com/karthink/${PN}"
+	EGIT_SUBMODULES=()
 else
 	SRC_URI="https://github.com/karthink/${PN}/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz"
@@ -26,13 +27,13 @@ SLOT="0"
 
 RDEPEND="
 	>=app-emacs/compat-30.1.0.0
-	app-emacs/transient
+	>=app-emacs/transient-0.7.4
 "
 BDEPEND="
 	${RDEPEND}
 "
 
-DOCS=( README.org )
+DOCS=( README.org NEWS )
 SITEFILE="50${PN}-gentoo.el"
 
 src_compile() {

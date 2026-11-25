@@ -20,7 +20,7 @@ DESCRIPTION="Khronos reference front-end for GLSL and ESSL, and sample SPIR-V ge
 HOMEPAGE="https://www.khronos.org/opengles/sdk/tools/Reference-Compiler/ https://github.com/KhronosGroup/glslang"
 
 LICENSE="BSD"
-SLOT="0/16.2"
+SLOT="0/16.6"
 
 BDEPEND="${PYTHON_DEPS}
 	~dev-util/spirv-tools-${PV}[${MULTILIB_USEDEP}]
@@ -35,4 +35,12 @@ multilib_src_configure() {
 		-DALLOW_EXTERNAL_SPIRV_TOOLS=ON
 	)
 	cmake_src_configure
+}
+
+multilib_src_test() {
+	local CMAKE_SKIP_TESTS=(
+		# bug #977176 (https://github.com/KhronosGroup/glslang/issues/4180)
+		$(usev arm 'glslang-testsuite')
+	)
+	cmake_src_test
 }

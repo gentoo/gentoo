@@ -45,7 +45,7 @@
 +end
 +
 +def duktape_try_compile
-+  try_compile "int main() {return 0;}", "", {werror: true}
++  try_compile "int main() {return 0;}", "", werror: true
 +end
 +
 +def add_cflags(flags)

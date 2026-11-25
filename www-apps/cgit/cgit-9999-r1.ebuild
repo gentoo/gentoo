@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,14 +13,14 @@ inherit flag-o-matic lua-single python-single-r1 tmpfiles toolchain-funcs webapp
 
 [[ -z "${CGIT_CACHEDIR}" ]] && CGIT_CACHEDIR="/var/cache/${PN}/"
 
-GIT_V="2.50.0"
+GIT_V="2.54.0"
 
 DESCRIPTION="A fast web-interface for Git repositories"
 HOMEPAGE="https://git.zx2c4.com/cgit/about"
 if [[ ${PV} =~ 9999* ]]; then
 	EGIT_REPO_URI="https://git.zx2c4.com/cgit"
-	# v2.50.0 updates in this branch series
-	EGIT_COMMIT=23bc4e4563a98652e90c14b4456ec81622c5ec79
+	# Often newer git updates on this branch
+	EGIT_COMMIT=1d3633c83f26615dbb78c969c89ddd72905ae63d
 	EGIT_BRANCH=ch/for-jason
 else
 	SRC_URI="https://www.kernel.org/pub/software/scm/git/git-${GIT_V}.tar.xz
@@ -30,7 +30,7 @@ fi
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="doc +highlight +lua test"
+IUSE="doc +highlight +lua selinux test"
 REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} ) ${PYTHON_REQUIRED_USE}"
 RESTRICT="!test? ( test )"
 
@@ -60,6 +60,7 @@ BDEPEND="
 		>=app-text/asciidoc-8.5.1
 	)
 "
+RDEPEND+=" selinux? ( sec-policy/selinux-git )"
 
 PATCHES=( "${FILESDIR}"/${PN}-highlight.patch )
 
@@ -87,6 +88,9 @@ src_configure() {
 		echo "LUA_PKGCONFIG = ${ELUA}" >> cgit.conf || die "echo LUA_PKGCONFIG failed"
 	else
 		echo "NO_LUA = 1" >> cgit.conf || die "echo NO_LUA failed"
+	fi
+	if use elibc_musl; then
+		echo 'export NO_REGEX=NeedsStartEnd' >> cgit.conf || die "echo export NO_REGEX=NeedsStartEnd failed"
 	fi
 }
 

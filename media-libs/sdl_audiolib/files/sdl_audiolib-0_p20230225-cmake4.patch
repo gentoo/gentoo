@@ -1,0 +1,6 @@
+https://bugs.gentoo.org/964533
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1 +1 @@
+-cmake_minimum_required(VERSION 3.8)
++cmake_minimum_required(VERSION 3.8...4.3)

@@ -1,0 +1,30 @@
+From https://github.com/WebKit/WebKit/commit/b3aa62a294153fb345405f0dde0e5765a8e83abf
+From: Alberto Garcia <berto@igalia.com>
+Date: Wed, 18 Nov 2026 05:57:08 -0800
+Subject: [PATCH] [GTK][2.54.3] gtk/WebKitWebViewBase.cpp:3849:23: error: no
+ viable overloaded '=' https://bugs.webkit.org/show_bug.cgi?id=332157
+
+Unreviewed build fix.
+
+Drop the type reference indication (i.e.  turn "auto&" into "auto")
+because the ::platformImage() function returns a Skia sk_sp<T> smart
+pointer by value.
+
+The same fix was applied in the main branch in 319114@main as part of
+a larger change.
+
+* Source/WebKit/UIProcess/API/gtk/WebKitWebViewBase.cpp:
+(webkitWebViewBaseSetCursor):
+
+Canonical link: https://commits.webkit.org/317695.778@webkitglib/2.54
+--- a/Source/WebKit/UIProcess/API/gtk/WebKitWebViewBase.cpp
++++ b/Source/WebKit/UIProcess/API/gtk/WebKitWebViewBase.cpp
+@@ -3820,7 +3820,7 @@ void webkitWebViewBaseSetCursor(WebKitWebViewBase* webViewBase, const Cursor& cu
+ 
+     auto cursorScale = cursor.imageScaleFactor();
+     IntPoint effectiveHotSpot = determineHotSpot(cursor.image().get(), cursor.hotSpot()).scaled(1 / cursorScale);
+-    auto& platformImage = nativeImage->platformImage();
++    auto platformImage = nativeImage->platformImage();
+ 
+ #if USE(GTK4)
+     if (cursorScale != 1) {

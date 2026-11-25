@@ -1,0 +1,33 @@
+https://github.com/PowerDNS/pdns/pull/17624
+Patch minimised & paths adjusted for dnsdist tarball.
+
+From: =?UTF-8?q?Holger=20Hoffst=C3=A4tte?= <holger@applied-asynchrony.com>
+Date: Sun, 28 Jun 2026 13:47:10 +0200
+Subject: [PATCH] dnsdist: add missing ComboAddress functions to Lua bindings
+
+iputils.hh implements toStringReversed & toStringNoInterface, but they
+were not exposed to Lua:
+
+ > ca4=newCA("192.168.100.200")
+ > ca4:toStringReversed()
+ 200.100.168.192
+ > ca6=newCA("fd39:8628:558:0:62b5:8dff:fe1e:d8a8")
+ > ca6:toStringReversed()
+ 8.a.8.d.e.1.e.f.f.f.d.8.5.b.2.6.0.0.0.0.8.5.5.0.8.2.6.8.9.3.d.f
+ > ca6if=newCA("fe80::1ff:fe23:4567:890a%eth0")
+ > ca6if:toStringNoInterface()
+ fe80::1ff:fe23:4567:890a
+
+Signed-off-by: Holger Hoffstätte <holger@applied-asynchrony.com>
+
+--- a/dnsdist-lua-bindings.cc
++++ b/dnsdist-lua-bindings.cc
+@@ -482,6 +482,8 @@ void setupLuaBindings(LuaContext& luaCtx, bool client, bool configCheck)
+   luaCtx.registerFunction<string (ComboAddress::*)() const>("tostringWithPort", [](const ComboAddress& addr) { return addr.toStringWithPort(); });
+   luaCtx.registerFunction<string (ComboAddress::*)() const>("__tostring", [](const ComboAddress& addr) { return addr.toString(); });
+   luaCtx.registerFunction<string (ComboAddress::*)() const>("toString", [](const ComboAddress& addr) { return addr.toString(); });
++  luaCtx.registerFunction<string (ComboAddress::*)() const>("toStringNoInterface", [](const ComboAddress& addr) { return addr.toStringNoInterface(); });
++  luaCtx.registerFunction<string (ComboAddress::*)() const>("toStringReversed", [](const ComboAddress& addr) { return addr.toStringReversed(); });
+   luaCtx.registerFunction<string (ComboAddress::*)() const>("toStringWithPort", [](const ComboAddress& addr) { return addr.toStringWithPort(); });
+   luaCtx.registerFunction<string (ComboAddress::*)() const>("getRaw", [](const ComboAddress& addr) { return addr.toByteString(); });
+   luaCtx.registerFunction<uint16_t (ComboAddress::*)() const>("getPort", [](const ComboAddress& addr) { return ntohs(addr.sin4.sin_port); });

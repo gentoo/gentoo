@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: waf-utils.eclass
@@ -63,14 +63,6 @@ waf-utils_src_configure() {
 				eerror "or that the latter is used within python_foreach_impl as appropriate."
 			fi
 			eerror
-			fail=1
-		fi
-
-		if [[ ${PYTHON_REQ_USE} != *threads* ]]; then
-			eerror "Waf requires threading support in Python. To accommodate this requirement,"
-			eerror "please add 'threads(+)' to PYTHON_REQ_USE variable (above inherit line)."
-			eerror "For more information and examples, please see:"
-			eerror "    https://wiki.gentoo.org/wiki/Project:Python/waf-utils_integration"
 			fail=1
 		fi
 	fi

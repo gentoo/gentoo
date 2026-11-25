@@ -1,0 +1,32 @@
+https://github.com/knorrie/python-btrfs/issues/55
+https://github.com/knorrie/python-btrfs/commit/7d27aa6665bd38ad05b6eb990dd3bfd5394ee37f
+
+From: Hans van Kranenburg <hans@knorrie.org>
+Date: Sun, 10 May 2026 10:59:27 +0200
+Subject: [PATCH] setup.py: convert license classifier to SPDX
+
+setuptools >75.6.0 wants to see the license type specified differently.
+Use SPDX identifier instead of the now unused field in classifiers.
+
+Thanks Holger Hoffstätte, for reporting.
+---
+ setup.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/setup.py b/setup.py
+index 744bf26..25ca48a 100644
+--- a/setup.py
++++ b/setup.py
+@@ -56,11 +56,11 @@ def get_version():
+         'Development Status :: 5 - Production/Stable',
+         'Intended Audience :: Developers',
+         'Intended Audience :: System Administrators',
+-        'License :: OSI Approved :: GNU Lesser General Public License v3 (LGPLv3)',
+         'Programming Language :: Python :: 3 :: Only',
+         'Programming Language :: Python :: Implementation :: CPython',
+         'Operating System :: POSIX :: Linux',
+         'Topic :: System :: Filesystems',
+         'Topic :: System :: Systems Administration',
+     ],
++    license='LGPL-3.0-or-later',
+ )

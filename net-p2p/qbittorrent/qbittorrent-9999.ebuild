@@ -36,12 +36,12 @@ REQUIRED_USE="
 RDEPEND="
 	>=dev-libs/boost-1.76:=
 	>=dev-libs/openssl-3.0.2:=
-	>=dev-qt/qtbase-6.5:6[network,ssl,sql,sqlite,xml]
+	>=dev-qt/qtbase-6.6:6[network,ssl,sql,sqlite,xml]
 	>=net-libs/libtorrent-rasterbar-2.0.10:=
 	>=virtual/zlib-1.2.11:=
 	gui? (
-		>=dev-qt/qtbase-6.5:6[dbus?,gui,widgets]
-		>=dev-qt/qtsvg-6.5:6
+		>=dev-qt/qtbase-6.6:6[dbus?,gui,widgets]
+		>=dev-qt/qtsvg-6.6:6
 	)
 	webui? (
 		acct-group/qbittorrent
@@ -52,7 +52,7 @@ DEPEND="
 	${RDEPEND}
 "
 BDEPEND+="
-	>=dev-qt/qttools-6.5:6[linguist]
+	>=dev-qt/qttools-6.6:6[linguist]
 	virtual/pkgconfig
 "
 
@@ -105,8 +105,7 @@ src_test() {
 	my_src_test() {
 		# cmake does not detect tests by default, if you use enable_testing
 		# in a subdirectory instead of the root CMakeLists.txt
-		cd "${BUILD_DIR}"/test || die
-		edo ctest .
+		edo ctest --test-dir=test
 	}
 
 	multibuild_foreach_variant my_src_test

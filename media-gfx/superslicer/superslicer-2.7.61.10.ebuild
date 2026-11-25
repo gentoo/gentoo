@@ -1,4 +1,4 @@
-# Copyright 2026 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -25,7 +25,7 @@ IUSE="test"
 RESTRICT="test"
 
 RDEPEND="
-	dev-cpp/eigen:3
+	dev-cpp/eigen:=
 	dev-cpp/tbb:=
 	dev-libs/boost:=[nls]
 	dev-libs/cereal

@@ -1,4 +1,4 @@
-# Copyright 2025 Gentoo Authors
+# Copyright 2025-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,4 +12,4 @@ inherit sec-keys
 DESCRIPTION="OpenPGP keys used by Jérémie Galarneau"
 HOMEPAGE="https://github.com/jgalar"
 
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ppc ppc64 ~riscv x86"

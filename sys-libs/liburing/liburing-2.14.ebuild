@@ -22,9 +22,9 @@ fi
 
 LICENSE="MIT"
 SLOT="0/2" # liburing.so major version
-
 IUSE="examples static-libs test"
-RESTRICT="!test? ( test )"
+# https://lore.kernel.org/io-uring/13d5c94e-9f3c-4a0e-a468-562e78155ba5@kernel.dk/
+RESTRICT="!test? ( test ) test"
 
 # At least installed headers need <linux/*>, bug #802516
 DEPEND=">=sys-kernel/linux-headers-5.1"

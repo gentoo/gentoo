@@ -1,9 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-POSTGRES_COMPAT=( {12..17} )
+POSTGRES_COMPAT=( {14..18} )
 
 inherit postgres-multi
 
@@ -14,6 +14,7 @@ SRC_URI="https://api.pgxn.org/dist/${PN}/${PV}/${P}.zip"
 LICENSE="POSTGRESQL"
 SLOT="0"
 KEYWORDS="amd64"
+REQUIRED_USE="${POSTGRES_REQ_USE}"
 
 DEPEND="${POSTGRES_DEP}
 		app-arch/unzip

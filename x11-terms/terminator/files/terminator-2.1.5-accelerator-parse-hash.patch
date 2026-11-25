@@ -1,0 +1,42 @@
+https://github.com/gnome-terminator/terminator/pull/1092
+
+From 22785efe3bbeb49b1de011d2fc9d14b5c1bed5e4 Mon Sep 17 00:00:00 2001
+From: Anton Bolshakov <blshkv@gmail.com>
+Date: Wed, 3 Jun 2026 12:26:31 +0800
+Subject: [PATCH] tests: fix accelerator_parse hash mismatch on Python 3.14
+
+gi._gi.ResultTuple (returned by Gtk.accelerator_parse()) has __hash__
+hardcoded to 0, while plain tuples use content-based hashing. This
+breaks set membership checks: (key, mods) in {ResultTuple(...)} fails
+even though equality holds, because Python set lookup uses hash first.
+
+Fix: wrap Gtk.accelerator_parse() calls with tuple() so both the set
+contents and the lookup key share the same hash implementation.
+
+Fixes: #1089
+---
+ tests/test_prefseditor_keybindings.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/tests/test_prefseditor_keybindings.py b/tests/test_prefseditor_keybindings.py
+index 56ee3b74..5f1079cc 100644
+--- a/tests/test_prefseditor_keybindings.py
++++ b/tests/test_prefseditor_keybindings.py
+@@ -56,7 +56,7 @@ def test_non_empty_default_keybinding_accels_are_distinct():
+     from terminatorlib import config
+ 
+     all_default_accelerators = [
+-        Gtk.accelerator_parse(accel)
++        tuple(Gtk.accelerator_parse(accel))
+         for accel in config.DEFAULTS["keybindings"].values()
+         if accel != ""  # ignore empty key bindings
+     ]
+@@ -156,7 +156,7 @@ def test_duplicate_accels_not_possible_to_set(accel_params):
+     binding = liststore.get_value(liststore.get_iter(path), 0)
+ 
+     all_default_accelerators = {
+-        Gtk.accelerator_parse(accel)
++        tuple(Gtk.accelerator_parse(accel))
+         for accel in config.DEFAULTS["keybindings"].values()
+         if accel != ""  # ignore empty key bindings
+     }

@@ -1,0 +1,18 @@
+--- a/CMakeLists.txt	2026-06-02 23:19:52.839492564 +0200
++++ b/CMakeLists.txt	2026-06-02 23:20:08.205334183 +0200
+@@ -1,4 +1,4 @@
+-CMAKE_MINIMUM_REQUIRED(VERSION 3.1.0)
++CMAKE_MINIMUM_REQUIRED(VERSION 3.10.0)
+ CMAKE_POLICY(SET CMP0048 NEW)
+ PROJECT(qrupdate-ng VERSION 1.1.3 LANGUAGES Fortran)
+ ENABLE_TESTING()
+--- a/lapack-missing/CMakeLists.txt	2026-06-02 23:20:19.487217889 +0200
++++ b/lapack-missing/CMakeLists.txt	2026-06-02 23:20:32.195086886 +0200
+@@ -1,6 +1,6 @@
+ PROJECT(LAPACK_MISSING Fortran)
+ IF(${CMAKE_SOURCE_DIR} STREQUAL ${PROJECT_SOURCE_DIR})
+-	cmake_minimum_required(VERSION 3.0)
++	cmake_minimum_required(VERSION 3.10)
+ 	LIST(APPEND CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/CMakeModules")
+ 
+ 	MESSAGE(STATUS "essl-lapack standalone build")

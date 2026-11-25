@@ -29,14 +29,14 @@ DEPEND="
 	test? (
 		>=dev-cpp/catch-3.4.0:0
 		dev-libs/boost
-		dev-cpp/eigen
+		dev-cpp/eigen:=
 		media-libs/opencv
 	)
 "
 
 DOCS=( {README,CHANGELOG}.md )
 
-PATCHES="${FILESDIR}/${P}_use_system_catch2_fix_QA_cmake4_warning.patch"
+PATCHES=( "${FILESDIR}"/${P}_use_system_catch2_fix_QA_cmake4_warning.patch )
 
 src_configure() {
 	default

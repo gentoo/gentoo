@@ -1,4 +1,4 @@
-# Copyright 2022-2025 Gentoo Authors
+# Copyright 2022-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,7 +12,7 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/HansKristian-Work/vkd3d-proton.git"
 else
 	# tarball is same as upstream except for including git submodules
-	SRC_URI="https://dev.gentoo.org/~ionen/distfiles/${P}.tar.xz"
+	SRC_URI="https://distfiles.gentoo.org/pub/dev/ionen@gentoo.org/${P}.tar.xz"
 	KEYWORDS="-* ~amd64 ~x86"
 fi
 
@@ -25,11 +25,8 @@ IUSE="+abi_x86_32 crossdev-mingw debug extras +strip"
 
 BDEPEND="
 	dev-util/glslang
-	!crossdev-mingw? ( dev-util/mingw64-toolchain[${MULTILIB_USEDEP}] )"
-
-PATCHES=(
-	"${FILESDIR}"/${PN}-2.6-wow64-setup.patch
-)
+	!crossdev-mingw? ( dev-util/mingw64-toolchain[${MULTILIB_USEDEP}] )
+"
 
 pkg_pretend() {
 	[[ ${MERGE_TYPE} == binary ]] && return
@@ -64,17 +61,6 @@ src_prepare() {
 	default
 
 	sed -i "/^basedir=/s|=.*|=${EPREFIX}/usr/lib/${PN}|" setup_vkd3d_proton.sh || die
-
-	if [[ ${PV} != 9999 ]]; then
-		# update to match version+hash of release tag on bump
-		local tag_ver=
-		local tag_hash=
-		[[ ${PV} == ${tag_ver} ]] || die "hash has not been updated"
-
-		# without .git, meson sets vkd3d_build as 0x${PV} leading to failure
-		sed -i "s/@VCS_TAG@/${tag_hash::15}/" vkd3d_build.h.in || die
-		sed -i "s/@VCS_TAG@/${tag_hash::7}/" vkd3d_version.h.in || die
-	fi
 }
 
 src_configure() {

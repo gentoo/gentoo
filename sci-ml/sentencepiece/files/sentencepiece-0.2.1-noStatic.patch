@@ -1,0 +1,30 @@
+--- a/src/CMakeLists.txt	2026-05-30 17:25:40.642080260 +0200
++++ b/src/CMakeLists.txt	2026-05-30 17:27:13.404125929 +0200
+@@ -234,16 +234,10 @@
+   endif()
+ endif()
+ 
+-add_library(sentencepiece-static STATIC ${SPM_SRCS})
+-add_library(sentencepiece_train-static STATIC ${SPM_TRAIN_SRCS})
+-
+-target_link_libraries(sentencepiece-static INTERFACE ${SPM_LIBS})
+-target_link_libraries(sentencepiece_train-static INTERFACE sentencepiece-static ${SPM_LIBS})
+-
+ if (SPM_ENABLE_SHARED)
+   target_link_libraries(sentencepiece ${SPM_LIBS})
+   target_link_libraries(sentencepiece_train ${SPM_LIBS} sentencepiece)
+-  set(SPM_INSTALLTARGETS sentencepiece sentencepiece_train sentencepiece-static sentencepiece_train-static)
++  set(SPM_INSTALLTARGETS sentencepiece sentencepiece_train)
+   set_target_properties(sentencepiece sentencepiece_train PROPERTIES SOVERSION 0 VERSION 0.0.0)
+   set_target_properties(sentencepiece PROPERTIES WINDOWS_EXPORT_ALL_SYMBOLS YES)
+   set_target_properties(sentencepiece_train PROPERTIES WINDOWS_EXPORT_ALL_SYMBOLS YES)
+@@ -260,9 +254,6 @@
+   set(SPM_INSTALLTARGETS sentencepiece-static sentencepiece_train-static)
+ endif()
+ 
+-set_target_properties(sentencepiece-static PROPERTIES OUTPUT_NAME "sentencepiece")
+-set_target_properties(sentencepiece_train-static PROPERTIES OUTPUT_NAME "sentencepiece_train")
+-
+ if (NOT MSVC)
+   set(CMAKE_CXX_FLAGS "-O3 -Wall -fPIC ${CMAKE_CXX_FLAGS}")
+   if (SPM_NO_THREADLOCAL)

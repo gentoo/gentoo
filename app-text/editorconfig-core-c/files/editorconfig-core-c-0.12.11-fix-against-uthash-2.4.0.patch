@@ -1,0 +1,14 @@
+https://bugs.gentoo.org/984691#c15
+
+--- a/src/lib/ec_glob.c
++++ b/src/lib/ec_glob.c
+@@ -32,7 +32,7 @@
+ #include <string.h>
+ #include <pcre2.h>
+ 
+-#define utarray_oom() { return -2; }
++#define utarray_oom() exit(-2)
+ #include "utarray.h"
+ #include "misc.h"
+ #include "util.h"
+

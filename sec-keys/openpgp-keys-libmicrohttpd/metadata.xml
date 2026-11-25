@@ -2,7 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person" proxied="yes">
-		<email>k2k@narod.ru</email>
+		<email>k2k@drgrin.dev</email>
 		<name>Evgeny Grin</name>
 	</maintainer>
 	<maintainer type="project" proxied="proxy">
@@ -11,4 +11,3 @@
 	</maintainer>
 	<stabilize-allarches/>
 </pkgmetadata>
-

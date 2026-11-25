@@ -1,0 +1,34 @@
+#!/sbin/openrc-run
+# Copyright 1999-2026 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+description="KMS System Console"
+supervisor="supervise-daemon"
+port="${RC_SVCNAME#*.}"
+command=/usr/bin/kmscon
+command_args_foreground="--vt=${port} --no-switchvt ${kmscon_options}"
+pidfile="/run/${RC_SVCNAME}.pid"
+
+depend() {
+
+    after local
+
+	provide getty
+
+}
+
+start_pre() {
+        if [ "$port" = "$RC_SVCNAME" ]; then
+                eerror "${RC_SVCNAME} cannot be started directly. You must create"
+                eerror "symbolic links to it for the ports you want to start"
+                eerror "kmscon on and add those to the appropriate runlevels."
+                return 1
+        else
+                export EINFO_QUIET="${quiet:-yes}"
+        fi
+}
+
+stop_pre() {
+
+        export EINFO_QUIET="${quiet:-yes}"
+}

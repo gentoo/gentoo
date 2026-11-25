@@ -1,9 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit gnome2
+inherit autotools gnome2
 
 DESCRIPTION="Convert UML diagrams produced with Dia to various source code flavours"
 HOMEPAGE="http://dia2code.sourceforge.net/"
@@ -27,6 +27,7 @@ PATCHES=(
 src_prepare() {
 	# Script makes use of arrays
 	sed -e 's:/bin/sh:/bin/bash:' -i tests/tests.sh || die
+	eautoheader
 	gnome2_src_prepare
 }
 

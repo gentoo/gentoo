@@ -33,6 +33,10 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-0.09.2_p20230330-gcc16.patch"
+)
+
 src_prepare() {
 	default
 	rm m4/m4_ax_boost* || die

@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -66,17 +66,4 @@ universal_unpack() {
 
 	# remove all backup files
 	find . -iname "*~" -exec rm {} \; 2>/dev/null
-}
-
-src_prepare() {
-	default
-	kernel-2_src_prepare
-}
-
-pkg_postinst() {
-	kernel-2_pkg_postinst
-}
-
-pkg_postrm() {
-	kernel-2_pkg_postrm
 }

@@ -1,0 +1,12 @@
+--- a/libcerf.pc.in	2026-11-06 20:35:10.911088237 +0100
++++ b/libcerf.pc.in	2026-11-06 20:35:45.433682829 +0100
+@@ -1,7 +1,7 @@
+ prefix=@CMAKE_INSTALL_PREFIX@
+ exec_prefix=${prefix}
+-libdir=${prefix}/lib
+-includedir=${prefix}/include
++libdir=@CMAKE_INSTALL_FULL_LIBDIR@
++includedir=@CMAKE_INSTALL_FULL_INCLUDEDIR@
+ 
+ Name: libcerf
+ Description: Complex error function library

@@ -8,4 +8,7 @@
 	<use>
 		<flag name="efl">Build <pkg>dev-libs/efl</pkg> based pinentry</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">gpg/pinentry</remote-id>
+	</upstream>
 </pkgmetadata>

@@ -1,0 +1,14 @@
+Pass CPPFLAGS and LDFLAGS to the compiler so the build respects the
+user's flags.
+
+--- a/Makefile
++++ b/Makefile
+@@ -1,7 +1,7 @@
+ CC=gcc
+
+ all: zerofree.c
+-	$(CC) $(CFLAGS) -o zerofree zerofree.c -lext2fs
++	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) -o zerofree zerofree.c -lext2fs
+
+ clean:
+ 	/bin/rm -f *.o *~ zerofree

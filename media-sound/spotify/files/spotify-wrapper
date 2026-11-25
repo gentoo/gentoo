@@ -1,6 +1,6 @@
 #!/bin/sh
 
-export LD_LIBRARY_PATH="/usr/lib64/apulse"
+export LD_LIBRARY_PATH="/usr/lib64/apulse:/usr/lib/ffmpeg7/lib64"
 
 if command -v spotify-dbus.py > /dev/null; then
         echo "Launching spotify with Gnome systray integration."

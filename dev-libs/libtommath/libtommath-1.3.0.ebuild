@@ -49,10 +49,10 @@ _emake() {
 		AR="$(tc-getAR)" \
 		RANLIB="$(tc-getRANLIB)" \
 		IGNORE_SPEED=1 \
-		DESTDIR="${ED}" \
+		DESTDIR="${D}" \
 		PREFIX="${EPREFIX}/usr" \
-		LIBPATH="/usr/$(get_libdir)" \
-		INCPATH="/usr/include" \
+		LIBPATH="${EPREFIX}/usr/$(get_libdir)" \
+		INCPATH="${EPREFIX}/usr/include" \
 		"$@"
 }
 

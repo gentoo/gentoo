@@ -1,9 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 PYTHON_REQ_USE="threads(+),xml(+)"
 
 inherit cmake flag-o-matic python-single-r1
@@ -30,7 +30,7 @@ else
 		S="${WORKDIR}/${PN}-Version-$(ver_rs 1- -)"
 	fi
 
-	KEYWORDS="~amd64 ~arm64 ~sparc ~x86 ~x64-solaris"
+	KEYWORDS="amd64 arm64 ~sparc x86 ~x64-solaris"
 fi
 
 LICENSE="MIT"

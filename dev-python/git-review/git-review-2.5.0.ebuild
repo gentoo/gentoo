@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -34,6 +34,8 @@ RDEPEND="
 BDEPEND="
 	>=dev-python/pbr-4.1.0[${PYTHON_USEDEP}]
 	test? (
+		>=dev-python/fixtures-4.3.2[${PYTHON_USEDEP}]
+		>=dev-python/testtools-0.9.34[${PYTHON_USEDEP}]
 		virtual/jre:*
 	)
 "

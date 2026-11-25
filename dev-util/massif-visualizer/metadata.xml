@@ -6,7 +6,8 @@
 		<name>Gentoo KDE Project</name>
 	</maintainer>
 	<upstream>
-		<bugs-to>https://bugs.kde.org/</bugs-to>
+		<bugs-to>https://bugs.kde.org/enter_bug.cgi?product=massif-visualizer</bugs-to>
+		<remote-id type="kde-invent">sdk/massif-visualizer</remote-id>
 	</upstream>
 	<use>
 		<flag name="callgraph">Enable detailed snapshot analysis using <pkg>media-gfx/kgraphviewer</pkg></flag>

@@ -1,11 +1,11 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 
 inherit distutils-r1
 
@@ -28,10 +28,10 @@ RDEPEND="
 	dev-python/pillow[${PYTHON_USEDEP}]
 "
 
+EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
 
 python_prepare_all() {
-	sed -e "/'nose>=1.0'/d" -i setup.py || die
 	cat > src/pillowfight/_version.h <<- EOF || die
 		#define INTERNAL_PILLOWFIGHT_VERSION "$(ver_cut 1-3)"
 	EOF

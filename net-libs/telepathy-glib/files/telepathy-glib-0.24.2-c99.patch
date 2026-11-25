@@ -1,0 +1,28 @@
+https://gitlab.freedesktop.org/telepathy/telepathy-glib/-/commit/72412c944b771f3214ddc40fa9dea82cea3a5651
+
+From 72412c944b771f3214ddc40fa9dea82cea3a5651 Mon Sep 17 00:00:00 2001
+From: Mamoru TASAKA <mtasaka@fedoraproject.org>
+Date: Fri, 2 Feb 2024 12:17:44 +0900
+Subject: [PATCH] fix: build fix with -Werror=incompatible-pointer-types
+
+gcc14 defaults to -Werror=incompatible-pointer-types .
+Fix build error with this option.
+---
+ telepathy-glib/protocol.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/telepathy-glib/protocol.c b/telepathy-glib/protocol.c
+index 88fdff382..25b36620b 100644
+--- a/telepathy-glib/protocol.c
++++ b/telepathy-glib/protocol.c
+@@ -1791,7 +1791,7 @@ _tp_protocol_parse_manager_file (GKeyFile *file,
+         i++;
+     }
+ 
+-  param_specs = g_ptr_array_new_full (i, tp_value_array_free);
++  param_specs = g_ptr_array_new_full (i, (GDestroyNotify) tp_value_array_free);
+ 
+   for (key = keys; key != NULL && *key != NULL; key++)
+     {
+-- 
+GitLab

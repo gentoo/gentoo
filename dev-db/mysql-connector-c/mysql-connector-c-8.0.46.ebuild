@@ -1,0 +1,170 @@
+# Copyright 1999-2026 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=8
+
+inherit cmake-multilib flag-o-matic toolchain-funcs
+
+DESCRIPTION="C client library for MariaDB/MySQL"
+HOMEPAGE="https://dev.mysql.com/downloads/"
+
+if [[ ${PV} == "9999" ]]; then
+	EGIT_REPO_URI="https://github.com/mysql/mysql-server.git"
+
+	inherit git-r3
+else
+	SRC_URI="https://dev.mysql.com/get/Downloads/MySQL-$(ver_cut 1-2)/mysql-boost-${PV}.tar.gz"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+
+	S="${WORKDIR}/mysql-${PV}"
+fi
+
+LICENSE="GPL-2"
+SLOT="0/21"
+IUSE="ldap static-libs"
+
+RDEPEND="
+	>=app-arch/lz4-1.9.4:=[${MULTILIB_USEDEP}]
+	app-arch/zstd:=[${MULTILIB_USEDEP}]
+	dev-libs/openssl:=[${MULTILIB_USEDEP}]
+	net-libs/libtirpc:=[${MULTILIB_USEDEP}]
+	>=virtual/zlib-1.2.13:=[${MULTILIB_USEDEP}]
+	ldap? ( dev-libs/cyrus-sasl:=[${MULTILIB_USEDEP}] )
+"
+DEPEND="${RDEPEND}"
+# zstd/openssl/zlib are required for native tools while cross-compiling
+BDEPEND="
+	app-arch/zstd
+	dev-libs/openssl
+	virtual/zlib
+"
+
+DOCS=( README )
+
+# Wrap the config script
+MULTILIB_CHOST_TOOLS=( /usr/bin/mysql_config )
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-8.0.36-always-build-decompress-utilities.patch
+	"${FILESDIR}"/${PN}-8.0.19-do-not-install-comp_err.patch
+	"${FILESDIR}"/${PN}-8.0.27-res_n.patch
+	"${FILESDIR}"/${PN}-8.0.46-openssl-4.patch
+)
+
+src_prepare() {
+	sed -i -e 's/CLIENT_LIBS/CONFIG_CLIENT_LIBS/' "scripts/CMakeLists.txt" || die
+
+	# All these are for the server only.
+	# Disable rpm call which would trigger sandbox, #692368
+	sed -i \
+		-e '/MYSQL_CHECK_LIBEVENT/d' \
+		-e '/MYSQL_CHECK_RAPIDJSON/d' \
+		-e '/MYSQL_CHECK_ICU/d' \
+		-e '/MYSQL_CHECK_EDITLINE/d' \
+		-e '/MYSQL_CHECK_CURL/d' \
+		-e '/ADD_SUBDIRECTORY(man)/d' \
+		-e '/ADD_SUBDIRECTORY(share)/d' \
+		-e '/INCLUDE(cmake\/boost/d' \
+		-e 's/MY_RPM rpm/MY_RPM rpmNOTEXISTENT/' \
+		CMakeLists.txt || die
+
+	# Skip building clients
+	echo > client/CMakeLists.txt || die
+
+	# Forcefully disable auth plugin
+	if ! use ldap ; then
+		sed -i -e '/MYSQL_CHECK_SASL/d' CMakeLists.txt || die
+		echo > libmysql/authentication_ldap/CMakeLists.txt || die
+	fi
+
+	cmake_src_prepare
+
+	if tc-is-cross-compiler; then
+		BUILD_NATIVE="${S}_build_native"
+		cp -R "${S}" "${BUILD_NATIVE}" || die
+
+		# avoid unused deps for the native tools
+		sed -e '/MYSQL_CHECK_LZ4/d' \
+			-e '/MYSQL_CHECK_RPC/d' \
+			-i "${BUILD_NATIVE}"/CMakeLists.txt || die
+		sed -e 's/ext::lz4//g' \
+			-i "${BUILD_NATIVE}"/utilities/CMakeLists.txt || die
+
+		# Invoke native tools using absolute paths
+		local rnative="${BUILD_NATIVE}"/runtime_output_directory
+		sed -e "s:COMMAND uca9dump:COMMAND ${rnative}/uca9dump:g" \
+			-i strings/CMakeLists.txt || die
+		sed -e "s:COMMAND comp_client_err:COMMAND ${rnative}/comp_client_err:g" \
+			-i utilities/CMakeLists.txt || die
+		sed -e "s:COMMAND comp_err:COMMAND ${rnative}/comp_err:g" \
+			-i utilities/CMakeLists.txt || die
+		sed -e "s:COMMAND comp_sql:COMMAND ${rnative}/comp_sql:g" \
+			-i scripts/CMakeLists.txt \
+			-i scripts/sys_schema/CMakeLists.txt || die
+		sed -e "s:COMMAND libmysql_api_test:COMMAND ${rnative}/libmysql_api_test:g" \
+			-i libmysql/CMakeLists.txt || die
+
+		# do compile-only tests while cross-compiling
+		sed -e '/CHECK_C_SOURCE_/s/_RUNS/_COMPILES/' \
+			-i configure.cmake || die
+	fi
+}
+
+multilib_src_configure() {
+	# Code is now requiring C++17 due to
+	# https://github.com/mysql/mysql-server/commit/236ab55bedd8c9eacd80766d85edde2a8afacd08
+	append-cxxflags -std=c++17
+
+	# LTO leads to double free in mysql-connector-c++ tests
+	filter-lto
+
+	local mycmakeargs=(
+		-DCMAKE_C_FLAGS_RELWITHDEBINFO=-DNDEBUG
+		-DCMAKE_CXX_FLAGS_RELWITHDEBINFO=-DNDEBUG
+		-DINSTALL_LAYOUT=RPM
+		-DINSTALL_LIBDIR=$(get_libdir)
+		-DWITH_DEFAULT_COMPILER_OPTIONS=OFF
+		-DENABLED_LOCAL_INFILE=ON
+		-DMYSQL_UNIX_ADDR="${EPREFIX}/run/mysqld/mysqld.sock"
+		# Automagically uses LLD with not using LTO (bug #710272, #775845)
+		-DUSE_LD_LLD=OFF
+		-DWITH_LZ4=system
+		-DWITH_NUMA=OFF
+		-DWITH_SSL=system
+		-DWITH_ZLIB=system
+		-DWITH_ZSTD=system
+		-DLIBMYSQL_OS_OUTPUT_NAME=mysqlclient
+		-DSHARED_LIB_PATCH_VERSION="0"
+		-DCMAKE_POSITION_INDEPENDENT_CODE=ON
+		-DWITHOUT_SERVER=ON
+		-DWITH_BUILD_ID=OFF
+	)
+
+	cmake_src_configure
+
+	if tc-is-cross-compiler; then
+		mycmakeargs=(
+			-DFORCE_INSOURCE_BUILD=ON
+			${mycmakeargs[@]/-DWITH_LZ4=system}
+		)
+		CMAKE_USE_DIR="${BUILD_NATIVE}" BUILD_DIR="${BUILD_NATIVE}" tc-env_build cmake_src_configure
+	fi
+}
+
+multilib_src_compile() {
+	if tc-is-cross-compiler; then
+		BUILD_DIR="${BUILD_NATIVE}" tc-env_build cmake_build uca9dump comp_client_err comp_err comp_sql libmysql_api_test
+	fi
+	cmake_src_compile
+}
+
+multilib_src_install_all() {
+	doman \
+		man/my_print_defaults.1 \
+		man/perror.1 \
+		man/zlib_decompress.1
+
+	if ! use static-libs ; then
+		find "${ED}" -name "*.a" -delete || die
+	fi
+}

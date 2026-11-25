@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,7 +9,7 @@ RUBY_FAKEGEM_EXTENSIONS=(src/ruby/ext/grpc/extconf.rb)
 RUBY_FAKEGEM_EXTRAINSTALL="etc src"
 RUBY_FAKEGEM_RECIPE_TEST="none"
 
-inherit multiprocessing ruby-fakegem
+inherit flag-o-matic multiprocessing ruby-fakegem
 
 DESCRIPTION="Send RPCs from Ruby using GRPC"
 HOMEPAGE="https://github.com/grpc/grpc"
@@ -26,6 +26,9 @@ ruby_add_rdepend "
 
 each_ruby_configure() {
 	export GRPC_RUBY_BUILD_PROCS="$(makeopts_jobs)"
+
+	# 965335
+	filter-lto
 
 	each_fakegem_configure
 }

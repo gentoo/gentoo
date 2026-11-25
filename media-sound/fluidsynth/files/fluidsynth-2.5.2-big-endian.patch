@@ -1,0 +1,38 @@
+https://bugs.gentoo.org/973126
+https://github.com/FluidSynth/fluidsynth/pull/1783
+
+From b194715787cbab66bd8d68a41b27ee6445b11457 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Fri, 24 Apr 2026 00:01:16 +0100
+Subject: [PATCH] utils: fix big endian path for cpp11 implementation
+
+Copying the implementation from embedded (091e849170c5f2e0fb4ef9f011f9798312add7be)
+is sufficient here.
+
+Reported by ernsteiswuerfel at https://bugs.gentoo.org/973126.
+---
+ src/utils/fluid_sys_cpp11.h | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/src/utils/fluid_sys_cpp11.h b/src/utils/fluid_sys_cpp11.h
+index 5b14defb6..ffb80cb3b 100644
+--- a/src/utils/fluid_sys_cpp11.h
++++ b/src/utils/fluid_sys_cpp11.h
+@@ -46,10 +46,17 @@ extern "C" {
+ #endif
+ 
+ /* Endian detection */
++#ifdef WORDS_BIGENDIAN
++#define FLUID_IS_BIG_ENDIAN       true
++
++#define FLUID_LE32TOH(x)          (((0xFF000000 & (x)) >> 24) | ((0x00FF0000 & (x)) >> 8) | ((0x0000FF00 & (x)) << 8) | ((0x000000FF & (x)) << 24));
++#define FLUID_LE16TOH(x)          (((0xFF00 & (x)) >> 8) | ((0x00FF & (x)) << 8))
++#else
+ #define FLUID_IS_BIG_ENDIAN       false
+ 
+ #define FLUID_LE32TOH(x)          (x)
+ #define FLUID_LE16TOH(x)          (x)
++#endif
+ 
+ /*
+  * Utility functions

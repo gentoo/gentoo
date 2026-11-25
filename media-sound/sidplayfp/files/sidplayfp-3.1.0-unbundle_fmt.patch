@@ -1,0 +1,168 @@
+See PR pending https://github.com/libsidplayfp/sidplayfp/pull/135.patch
+add --with-system-fmt option (disabled by default)
+move bundled fmt into fmt_contrib to avoid conflicts
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -26,23 +26,29 @@ src/stilview
+ 
+ #=========================================================
+ #fmt
++if USE_SYSTEM_FMT
++AM_CPPFLAGS += $(FMT_CFLAGS)
++fmt_SOURCES =
++else
++AM_CPPFLAGS += -I $(top_srcdir)/libs/fmt_internal
+ fmt_SOURCES = \
+-libs/fmt/args.h \
+-libs/fmt/base.h \
+-libs/fmt/chrono.h \
+-libs/fmt/color.h \
+-libs/fmt/compile.h \
+-libs/fmt/core.h \
+-libs/fmt/format-inl.h \
+-libs/fmt/format.cc \
+-libs/fmt/format.h \
+-libs/fmt/os.cc \
+-libs/fmt/os.h \
+-libs/fmt/ostream.h \
+-libs/fmt/printf.h \
+-libs/fmt/ranges.h \
+-libs/fmt/std.h \
+-libs/fmt/xchar.h
++libs/fmt_internal/fmt/args.h \
++libs/fmt_internal/fmt/base.h \
++libs/fmt_internal/fmt/chrono.h \
++libs/fmt_internal/fmt/color.h \
++libs/fmt_internal/fmt/compile.h \
++libs/fmt_internal/fmt/core.h \
++libs/fmt_internal/fmt/format-inl.h \
++libs/fmt_internal/fmt/format.cc \
++libs/fmt_internal/fmt/format.h \
++libs/fmt_internal/fmt/os.cc \
++libs/fmt_internal/fmt/os.h \
++libs/fmt_internal/fmt/ostream.h \
++libs/fmt_internal/fmt/printf.h \
++libs/fmt_internal/fmt/ranges.h \
++libs/fmt_internal/fmt/std.h \
++libs/fmt_internal/fmt/xchar.h
++endif
+ 
+ #=========================================================
+ # sidplayfp
+@@ -95,7 +101,8 @@ $(PTHREAD_CFLAGS)
+ src_sidplayfp_LDADD = \
+ $(SIDPLAYFP_LIBS) \
+ $(W32_LIBS) \
+-$(PTHREAD_LIBS)
++$(PTHREAD_LIBS) \
++$(FMT_LIBS)
+ 
+ #=========================================================
+ # stilview
+@@ -107,7 +114,8 @@ src/codeConvert.h \
+ src/stilview.cpp
+ 
+ src_stilview_LDADD = \
+-$(STILVIEW_LIBS)
++$(STILVIEW_LIBS) \
++$(FMT_LIBS)
+ 
+ #=========================================================
+ # docs
+--- a/configure.ac
++++ b/configure.ac
+@@ -94,6 +94,20 @@ AS_IF([test "x$enable_debug" = "xno"],
+   [AC_MSG_RESULT([yes])],
+ )
+ 
++AC_ARG_WITH([system-fmt], AS_HELP_STRING([--with-system-fmt], [use system fmt library instead of bundled version]),
++    [with_system_fmt=$withval],
++    [with_system_fmt=no]
++)
++
++AS_IF([test "x$with_system_fmt" = "xyes"], [
++    PKG_CHECK_MODULES([FMT], [fmt >= 11.0.0])
++    AC_DEFINE([USE_SYSTEM_FMT], [1], [Use system fmt])
++], [
++    AC_MSG_NOTICE([Using bundled fmt library])
++])
++
++AM_CONDITIONAL([USE_SYSTEM_FMT], [test "x$with_system_fmt" = "xyes"])
++
+ AC_SUBST([debug_flags])
+ 
+ AC_CONFIG_FILES([
+--- a/src/IniConfig.cpp
++++ b/src/IniConfig.cpp
+@@ -25,7 +25,7 @@
+ 
+ #include "IniConfig.h"
+ 
+-#include "fmt/format.h"
++#include <fmt/format.h>
+ 
+ #include <string>
+ 
+--- a/src/args.cpp
++++ b/src/args.cpp
+@@ -23,7 +23,8 @@
+ 
+ #include "dataParser.h"
+ #include "utils.h"
+-#include "fmt/format.h"
++
++#include <fmt/format.h>
+ 
+ #include <iostream>
+ 
+--- a/src/menu.cpp
++++ b/src/menu.cpp
+@@ -22,9 +22,10 @@
+ #include "player.h"
+ 
+ #include "codeConvert.h"
+-#include "fmt/format.h"
++
++#include <fmt/format.h>
+ #if defined(_WIN32) && defined(UNICODE)
+-#  include "fmt/xchar.h"
++#  include <fmt/xchar.h>
+ #endif
+ 
+ #include <cctype>
+--- a/src/player.cpp
++++ b/src/player.cpp
+@@ -21,9 +21,10 @@
+ 
+ #include "player.h"
+ 
+-#include "fmt/format.h"
+ #include "filesystem/filesystem.hpp"
+ 
++#include <fmt/format.h>
++
+ #include <cstdlib>
+ #include <cmath>
+ #include <cstring>
+--- a/src/siddefines.h
++++ b/src/siddefines.h
+@@ -22,7 +22,7 @@
+ #ifndef SIDDEFINES_H
+ #define SIDDEFINES_H
+ 
+-#include "fmt/color.h"
++#include <fmt/color.h>
+ 
+ using color_t = fmt::terminal_color;
+ 
+--- a/src/stilview.cpp
++++ b/src/stilview.cpp
+@@ -23,7 +23,7 @@
+ // STILView - command line version
+ //
+ 
+-#include "fmt/format.h"
++#include <fmt/format.h>
+ 
+ #include <fstream>
+ #include <iostream>

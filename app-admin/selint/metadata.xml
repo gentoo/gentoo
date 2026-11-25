@@ -6,6 +6,6 @@
 		<name>SELinux Team</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">TresysTechnology/selint</remote-id>
+		<remote-id type="github">SELinuxProject/selint</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -6,9 +6,9 @@
 		<name>Gentoo Video project</name>
 	</maintainer>
 	<use>
-		<flag name="enc265">Enable build of enc265 tool</flag>
 		<flag name="dec265">Enable build of dec265 example program</flag>
-		<flag name="sdl">Enable video output of dec265 example program with <pkg>media-libs/libsdl</pkg></flag>
+		<flag name="enc265">Enable build of enc265 tool</flag>
+		<flag name="sdl">Enable video output of dec265 example program with <pkg>media-libs/libsdl2</pkg></flag>
 		<flag name="tools">Enable installation of varous binary tools</flag>
 	</use>
 	<upstream>

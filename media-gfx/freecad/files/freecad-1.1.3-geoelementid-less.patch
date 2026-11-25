@@ -1,0 +1,29 @@
+--- a/src/Mod/Sketcher/App/GeoEnum.h
++++ b/src/Mod/Sketcher/App/GeoEnum.h
+@@ -114,6 +114,10 @@
+      */
+     bool operator==(const GeoElementId& obj) const;
+ 
++    /** @brief less-than operator
++     */
++    bool operator<(const GeoElementId& obj) const;
++
+     /** @brief inequality operator
+      */
+     bool operator!=(const GeoElementId& obj) const;
+--- a/src/Mod/Sketcher/App/GeoEnum.cpp
++++ b/src/Mod/Sketcher/App/GeoEnum.cpp
+@@ -32,6 +32,13 @@
+     return this->GeoId == obj.GeoId && this->Pos == obj.Pos;
+ }
+ 
++bool GeoElementId::operator<(const GeoElementId& obj) const
++{
++    return (this->GeoId != obj.GeoId)
++        ? (this->GeoId < obj.GeoId)
++        : (static_cast<int>(this->Pos) < static_cast<int>(obj.Pos));
++}
++
+ bool GeoElementId::operator!=(const GeoElementId& obj) const
+ {
+     return this->GeoId != obj.GeoId || this->Pos != obj.Pos;

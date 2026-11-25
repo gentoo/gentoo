@@ -1,9 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 
 inherit edo pam python-any-r1 readme.gentoo-r1
 
@@ -19,12 +19,12 @@ if [[ ${PV} == *9999 ]]; then
 else
 	SRC_URI="https://gitweb.gentoo.org/proj/pambase.git/snapshot/${P}.tar.bz2"
 
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+	KEYWORDS="~amd64"
 fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="caps debug elogind gnome-keyring homed minimal mktemp +nullok pam_krb5 pam_ssh +passwdqc pwhistory pwquality securetty selinux sha512 sssd systemd +yescrypt"
+IUSE="caps debug elogind gnome-keyring homed minimal mktemp +nullok pam_krb5 pam_ssh +passwdqc pwhistory pwquality securetty selinux sha512 sssd systemd +yescrypt turnstile"
 
 RESTRICT="binchecks"
 
@@ -56,8 +56,13 @@ RDEPEND="
 	sha512? ( >=sys-libs/pam-${MIN_PAM_REQ} )
 	homed? ( sys-apps/systemd[homed] )
 	systemd? ( sys-apps/systemd[pam] )
+	!systemd? (
+		sys-apps/openrc[pam]
+		!elogind? ( sys-auth/pam_xdg )
+	)
 	yescrypt? ( sys-libs/libxcrypt[system] )
 	sssd? ( sys-auth/sssd )
+	turnstile? ( sys-apps/turnstile )
 "
 BDEPEND="
 	$(python_gen_any_dep '
@@ -97,6 +102,7 @@ src_configure() {
 		$(usev selinux '--selinux')
 		$(usex systemd '--systemd' '--openrc')
 		$(usev sssd '--sssd')
+		$(usev turnstile '--turnstile')
 
 		--encrypt=${crypt}
 	)

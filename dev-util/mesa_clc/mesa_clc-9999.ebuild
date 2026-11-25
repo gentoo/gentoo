@@ -1,12 +1,12 @@
-# Copyright 2023-2025 Gentoo Authors
+# Copyright 2023-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-LLVM_COMPAT=( {18..21} )
-PYTHON_COMPAT=( python3_{11..14} )
+LLVM_COMPAT=( {18..22} )
+PYTHON_COMPAT=( python3_{12..15} )
 
-inherit llvm-r1 meson python-any-r1
+inherit llvm-r2 meson python-any-r1
 
 MY_PV="${PV/_/-}"
 
@@ -20,7 +20,7 @@ if [[ ${PV} == 9999 ]]; then
 else
 	S="${WORKDIR}/mesa-${MY_PV}"
 	SRC_URI="https://archive.mesa3d.org/mesa-${MY_PV}.tar.xz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
 fi
 
 LICENSE="MIT"
@@ -37,8 +37,8 @@ RDEPEND="
 	$(llvm_gen_dep '
 		dev-util/spirv-llvm-translator:${LLVM_SLOT}
 		llvm-core/clang:${LLVM_SLOT}=
-		=llvm-core/libclc-${LLVM_SLOT}*
 		llvm-core/llvm:${LLVM_SLOT}=
+		=llvm-runtimes/libclc-${LLVM_SLOT}*
 	')
 "
 DEPEND="${RDEPEND}
@@ -63,7 +63,7 @@ python_check_deps() {
 }
 
 pkg_setup() {
-	llvm-r1_pkg_setup
+	llvm-r2_pkg_setup
 	python-any-r1_pkg_setup
 }
 
@@ -81,6 +81,7 @@ src_configure() {
 	use debug && EMESON_BUILDTYPE=debug
 
 	local emesonargs=(
+		-Dallow-broken-lto=true
 		-Dllvm=enabled
 		-Dshared-llvm=enabled
 		-Dmesa-clc=enabled

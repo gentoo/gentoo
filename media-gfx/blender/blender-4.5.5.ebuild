@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # shellcheck disable=SC2207
@@ -18,7 +18,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{12..14} )
 # NOTE must match media-libs/osl
 LLVM_COMPAT=( {18..20} )
 LLVM_OPTIONAL=1
@@ -57,7 +57,7 @@ else
 			https://download.blender.org/source/blender-test-data-${BLENDER_BRANCH}.0-1.tar.xz
 		)
 	"
-	KEYWORDS="~amd64 ~arm64"
+	KEYWORDS="amd64 ~arm64"
 fi
 
 # assets is CC0-1.0
@@ -917,16 +917,6 @@ pkg_postinst() {
 		ewarn "an other LLVM version than what OSL is linked to."
 		ewarn "See https://bugs.gentoo.org/880671 for more details"
 		ewarn ""
-	fi
-
-	# NOTE build_files/cmake/Modules/FindPythonLibsUnix.cmake: set(_PYTHON_VERSION_SUPPORTED 3.11)
-	if ! use python_single_target_python3_11; then
-		elog "You are building Blender with a newer python version than"
-		elog "supported by this version upstream."
-		elog "If you experience breakages with e.g. plugins, please switch to"
-		elog "PYTHON_SINGLE_TARGET: python3_11 instead."
-		elog "Bug: https://bugs.gentoo.org/737388"
-		elog
 	fi
 
 	xdg_icon_cache_update

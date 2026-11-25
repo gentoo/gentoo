@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -28,6 +28,7 @@ ruby_add_rdepend "
 
 ruby_add_bdepend "
 	test? (
+		dev-ruby/bundler
 		dev-ruby/minitest:5
 		>=dev-ruby/railties-6.1:*
 		dev-ruby/test-unit:2
@@ -38,4 +39,17 @@ all_ruby_prepare() {
 
 	# It looks like tests are order dependent
 	sed -i -e '/test_order/ s/:random/:alpha/' test/test_helper.rb || die
+
+	cat <<-EOF > "${T}/Gemfile" || die
+	gem "actionpack", ">= 6.1"
+	gem "activesupport", ">= 6.1"
+	gem "minitest", "~> 5"
+	gem "railties", ">= 6.1"
+	gem "sprockets", ">= 3"
+	gem "test-unit", ">= 2"
+	EOF
+}
+
+each_ruby_test() {
+	BUNDLE_GEMFILE="${T}/Gemfile" ${RUBY} -S bundle exec ${RUBY} -S rake || die
 }

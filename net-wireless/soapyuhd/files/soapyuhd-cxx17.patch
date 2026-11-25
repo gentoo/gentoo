@@ -1,0 +1,25 @@
+From 020430131c3fa4cf70e9ba5c0a65b0765af59099 Mon Sep 17 00:00:00 2001
+From: Martin Pluskal <martin@pluskal.org>
+Date: Thu, 18 Jun 2026 19:46:20 +0200
+Subject: [PATCH] Require C++17
+
+UHD 4.x public headers use std::optional and std::is_convertible_v
+(e.g. uhd/rfnoc/actions.hpp, uhd/utils/cast.hpp), which need C++17.
+Building against the current default (C++14) fails to compile them.
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 916687b..160f257 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -25,7 +25,7 @@ cmake_minimum_required(VERSION 2.8.12...3.10)
+ project(SoapyUHD CXX C)
+ enable_testing()
+ 
+-set(CMAKE_CXX_STANDARD 14)
++set(CMAKE_CXX_STANDARD 17)
+ 
+ #select the release build type by default to get optimization flags
+ if(NOT CMAKE_BUILD_TYPE)

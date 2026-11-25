@@ -2,7 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{9..13} )
+
+PYPI_VERIFY_REPO=https://github.com/coldfix/udiskie
+PYTHON_COMPAT=( python3_{11..14} )
 DISTUTILS_USE_PEP517=setuptools
 inherit distutils-r1 pypi xdg-utils
 
@@ -11,7 +13,7 @@ HOMEPAGE="https://pypi.org/project/udiskie/ https://github.com/coldfix/udiskie"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE="autostart libnotify"
 
 RDEPEND="dev-python/docopt[${PYTHON_USEDEP}]
@@ -20,9 +22,13 @@ RDEPEND="dev-python/docopt[${PYTHON_USEDEP}]
 	sys-fs/udisks:2[daemon]
 	libnotify? ( x11-libs/libnotify[introspection] )"
 DEPEND="app-text/asciidoc
-	test? ( dev-python/keyutils[${PYTHON_USEDEP}]
-		dev-python/pyyaml[${PYTHON_USEDEP}] )"
+	test? ( dev-python/pyyaml[${PYTHON_USEDEP}] )"
 
+EPYTEST_IGNORE=(
+	# bug #972714
+	test/test_cache.py
+)
+EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
 
 src_prepare() {

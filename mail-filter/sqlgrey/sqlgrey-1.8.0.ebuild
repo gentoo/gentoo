@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,7 +12,7 @@ SRC_URI="https://downloads.sourceforge.net/project/sqlgrey/sqlgrey-1.8%20%28stab
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~sparc x86"
-IUSE="mysql postgres +sqlite"
+IUSE="mysql postgres selinux +sqlite"
 REQUIRED_USE="|| ( mysql postgres sqlite )"
 
 RDEPEND="acct-user/sqlgrey
@@ -23,6 +23,7 @@ RDEPEND="acct-user/sqlgrey
 	virtual/mailx
 	mysql? ( dev-perl/DBD-mysql )
 	postgres? ( dev-perl/DBD-Pg )
+	selinux? ( sec-policy/selinux-milter )
 	sqlite? ( dev-perl/DBD-SQLite )"
 DEPEND="${RDEPEND}"
 

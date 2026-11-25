@@ -2,11 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{10..13} )
-inherit meson python-any-r1 systemd vala
+PYTHON_COMPAT=( python3_{11..14} )
+inherit locale-utils meson python-any-r1 systemd vala
 
 DESCRIPTION="D-Bus interfaces for querying and manipulating user account information"
-HOMEPAGE="https://www.freedesktop.org/wiki/Software/AccountsService/"
+HOMEPAGE="https://www.freedesktop.org/wiki/Software/AccountsService/ https://gitlab.freedesktop.org/accountsservice/accountsservice"
 SRC_URI="https://www.freedesktop.org/software/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-3+"
@@ -72,6 +72,10 @@ python_check_deps() {
 src_prepare() {
 	default
 
+	# Without glibc the locale the language tests need cannot be generated
+	use elibc_glibc ||
+		eapply "${FILESDIR}"/${PN}-23.13.9-test-languages.patch #903347
+
 	use vala && vala_setup
 }
 
@@ -92,6 +96,13 @@ src_configure() {
 		$(meson_use vala vapi)
 	)
 	meson_src_configure
+}
+
+src_test() {
+	# The daemon is run with LC_ALL=en_IE.UTF-8, bug #903347
+	local -x LOCPATH
+	elocale_gen en_IE.UTF-8
+	meson_src_test
 }
 
 src_install() {

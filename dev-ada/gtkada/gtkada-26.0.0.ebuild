@@ -48,7 +48,7 @@ src_configure() {
 }
 
 src_compile() {
-	emake -j1 PROCESSORS=$(makeopts_jobs)
+	emake -j1 PROCESSORS=$(get_makeopts_jobs)
 }
 
 src_install() {

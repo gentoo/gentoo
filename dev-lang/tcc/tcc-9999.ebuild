@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -26,7 +26,7 @@ if [[ ${PV} != *9999* ]] ; then
 fi
 
 BDEPEND="dev-lang/perl" # doc generation
-IUSE="test"
+IUSE="hardened test"
 RESTRICT="!test? ( test )"
 
 src_prepare() {
@@ -69,11 +69,15 @@ src_configure() {
 	use elibc_musl && libc=musl
 
 	# not autotools, so call configure directly
+	#
+	# --with-selinux actually controls using mmap vs malloc for
+	# executable memory with -run, so gate it on USE=hardened instead.
 	./configure --cc="$(tc-getCC)" \
 		${libc:+--config-${libc}} \
 		--prefix="${EPREFIX}/usr" \
 		--libdir="${EPREFIX}/usr/$(get_libdir)" \
-		--docdir="${EPREFIX}/usr/share/doc/${PF}"
+		--docdir="${EPREFIX}/usr/share/doc/${PF}" \
+		$(usev hardened '--with-selinux')
 }
 
 src_compile() {

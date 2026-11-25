@@ -6,7 +6,7 @@
 # Eric Joldasov <bratishkaerik@landless-city.net>
 # @AUTHOR:
 # Alfred Wingate <parona@protonmail.com>
-# Violet Purcell <vimproved@inventati.org>
+# Violet Purcell <vi@vimproved.dev>
 # Eric Joldasov <bratishkaerik@landless-city.net>
 # @SUPPORTED_EAPIS: 8
 # @PROVIDES: zig-utils
@@ -54,7 +54,7 @@ case ${EAPI} in
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
-inherit multiprocessing zig-utils
+inherit multiprocessing toolchain-funcs zig-utils
 
 # @ECLASS_VARIABLE: ZIG_OPTIONAL
 # @PRE_INHERIT
@@ -244,6 +244,82 @@ zig_get_jobs() {
 	fi
 }
 
+# @FUNCTION: _zig_write_libc_txt
+# @INTERNAL
+# @USAGE: <output_file_path>
+# @DESCRIPTION:
+# Generates the zig_libc.txt configuration file based on the target C compiler
+# information and writes it to the specified target path.
+_zig_write_libc_txt() {
+	[[ -z ${1} ]] && die "${ECLASS}: ${FUNCNAME}: missing required argument"
+	local output_file="${1}"
+
+	# Sync with the output format of `zig libc`.
+	# TODO maybe add to upstream to use ZON format instead...
+	# Will also help "https://github.com/ziglang/zig/issues/20327",
+	# and hopefully will respect our settings too.
+
+	local cc crt1_path libgcc_path
+	cc="$(tc-getCC)"
+	# Omitted CFLAGS here, because for cases where location changes
+	# (say, multilib with "-m32" flag) Zig does not support them.
+	# So there will be danger of desync-ed object formats.
+	libgcc_path="$("${cc}" --print-libgcc-file-name)"
+	crt1_path="$("${cc}" --print-file-name=crt1.o)"
+
+	# Check if file paths are absolute and files exists
+	if [[ "${libgcc_path}" != /* || ! -f "${libgcc_path}" ]]; then
+		die "${ECLASS}: Failed to provide Zig libc info"
+	fi
+	if [[ "${crt1_path}" != /* || ! -f "${crt1_path}" ]]; then
+		die "${ECLASS}: Failed to provide Zig libc info"
+	fi
+
+	local crtbegin_dir="${libgcc_path%/*}"
+	local crt1_dir="${crt1_path%/*}"
+	# Note: paths from "--libc" are not prepended by "--sysroot" value,
+	# so repeat prefix here.
+	local include_dir="${ESYSROOT}/usr/include"
+
+	local crtbegin_obj="crtbeginS.o"
+	local crtend_obj="crtendS.o"
+	if [[ "$(tc-get-c-rtlib)" = "compiler-rt" ]]; then
+		local host=${CTARGET:-${CHOST}}
+		crtbegin_obj="clang_rt.crtbegin-${host%%-*}.o"
+		crtend_obj="clang_rt.crtend-${host%%-*}.o"
+	fi
+
+	# No quotes here, paths are interpreted verbatim.
+	if ver_test "${ZIG_SLOT}" -ge "0.17"; then
+		# https://codeberg.org/ziglang/zig/src/commit/da561521dd78dcde03fc51de8fd64551b368f56d/lib/std/zig/LibCInstallation.zig#L136-L165
+		cat <<- _EOF_ > "${output_file}" || die "Failed to provide Zig libc info"
+			include_dir=${include_dir}
+			sys_include_dir=${include_dir}
+			cc_dir=${crtbegin_dir}
+			crt_dir=${crt1_dir}
+			crtbegin_obj=${crtbegin_obj}
+			crtend_obj=${crtend_obj}
+			# Windows with MSVC only.
+			msvc_lib_dir=
+			kernel32_lib_dir=
+			# Darwin only.
+			darwin_sdk_dir=
+		_EOF_
+	else
+		# https://codeberg.org/ziglang/zig/src/tag/0.16.0/lib/std/zig/LibCInstallation.zig#L133-L158
+		cat <<- _EOF_ > "${output_file}" || die "Failed to provide Zig libc info"
+			include_dir=${include_dir}
+			sys_include_dir=${include_dir}
+			crt_dir=${crt1_dir}
+			# Windows with MSVC only.
+			msvc_lib_dir=
+			kernel32_lib_dir=
+			# Haiku only.
+			gcc_dir=
+		_EOF_
+	fi
+}
+
 # @FUNCTION: zig_init_base_args
 # @DESCRIPTION:
 # Stores basic args for future "ezig build" calls in ZBS_ARGS_BASE.
@@ -272,24 +348,7 @@ zig_get_jobs() {
 zig_init_base_args() {
 	[[ "${ZBS_ARGS_BASE}" ]] && return
 
-	# Sync with the output format of `zig libc`.
-	# TODO maybe add to upstream to use ZON format instead...
-	# Will also help "https://github.com/ziglang/zig/issues/20327",
-	# and hopefully will respect our settings too.
-	cat <<- _EOF_ > "${T}/zig_libc.txt" || die "Failed to provide Zig libc info"
-		# Note: they are not prepended by "--sysroot" value,
-		# so repeat it here.
-		# Also, no quotes here, they are interpreted verbatim.
-		include_dir=${ESYSROOT}/usr/include/
-		sys_include_dir=${ESYSROOT}/usr/include/
-		crt_dir=${ESYSROOT}/usr/$(get_libdir)/
-		# Windows with MSVC only.
-		msvc_lib_dir=
-		# Windows with MSVC only.
-		kernel32_lib_dir=
-		# Haiku only.
-		gcc_dir=
-	_EOF_
+	_zig_write_libc_txt "${T}/zig_libc.txt"
 
 	declare -g -a ZBS_ARGS_BASE=(
 		-j$(zig_get_jobs)
@@ -339,25 +398,28 @@ zig_pkg_setup() {
 	# Environment variables set by this eclass.
 
 	# Used by Zig Build System to find `pkg-config`.
-	# UPSTREAM Used only by 9999 for now, should land in future
-	# 0.14 release.
 	export PKG_CONFIG="${PKG_CONFIG:-"$(tc-getPKG_CONFIG)"}"
 	# Used by whole Zig toolchain (most of the sub-commands)
 	# to find local and global cache directories.
 	export ZIG_LOCAL_CACHE_DIR="${T}/zig-cache/local/"
 	export ZIG_GLOBAL_CACHE_DIR="${T}/zig-cache/global/"
+
+	# Used by `zig fetch` and `zig build` to save packages.
+	# Zig 0.17+: https://codeberg.org/ziglang/zig/pulls/31992
+	if ver_test "${ZIG_SLOT}" -ge "0.17"; then
+		export ZIG_LOCAL_PKG_DIR="${T}/zig-cache/pkgs/"
+	fi
 }
 
 # @FUNCTION: zig_live_fetch
 # @USAGE: [<args>...]
+# @DEPRECATED: zig_live_src_unpack
 # @DESCRIPTION:
 # Fetches packages, if they exist, to the "ZBS_ECLASS_DIR/p/".
 # Adds build file path to ZBS_BASE_ARGS.
 # If you have some lazy dependency which is not triggered in default
 # configuration, pass options like you would pass them for regular
 # "ezig build".  Try to cover all of them before "src_configure".
-# **Note**: this function will be deprecated once/if
-# https://github.com/ziglang/zig/pull/19975 lands.
 #
 # Example:
 # @CODE
@@ -375,6 +437,10 @@ zig_pkg_setup() {
 # }
 # @CODE
 zig_live_fetch() {
+	if ver_test "${ZIG_SLOT}" -ge "0.16"; then
+		die "${ECLASS}: zig_live_fetch is not supported for Zig 0.16+, use zig_live_src_unpack instead"
+	fi
+
 	# This function will likely be called in src_unpack,
 	# before [zig_]src_prepare, so this directory might not
 	# exist yet.
@@ -430,13 +496,89 @@ zig_src_unpack() {
 
 	# Now unpack all Zig dependencies, including those that are
 	# now unpacked from tarball-tarball.
+
+	# Starting from Zig 0.16, packages can now be stored in two forms:
+	# 1. Compressed (used for checks and caches)
+	# 2. Folder (used for compilation and system mode)
 	local zig_dep
-	for zig_dep in "${zig_deps[@]}"; do
-		# Hide now-spammy hash from stdout
-		ezig fetch --global-cache-dir "${ZBS_ECLASS_DIR}/" \
-			"${DISTDIR}/${zig_dep}" > /dev/null
-	done
+	if ver_test "${ZIG_SLOT}" -ge "0.16"; then
+		# Two version-specific notes for 0.16.0:
+		# 1. Saves to zig-pkg/ local folder (not configurable).
+		# 2. Regression: needs build.zig to operate.
+
+		# Both of them are fixed for master and 0.17+.
+		# https://codeberg.org/ziglang/zig/pulls/31992
+
+		# `touch` necessary only for 0.16, but it won't hurt for 0.17+.
+		touch build.zig || die
+		for zig_dep in "${zig_deps[@]}"; do
+			# Hide now-spammy hash from stdout
+			if [[ -f "${WORKDIR}/${zig_dep}" ]]; then
+				ezig fetch --save-exact="${zig_dep##-*}" "${WORKDIR}/${zig_dep}" > /dev/null
+			else
+				ezig fetch --save-exact="${zig_dep##-*}" "${DISTDIR}/${zig_dep}" > /dev/null
+			fi
+		done
+
+		# For 0.17 and later:
+		# Folder packages: saved into "${ZIG_LOCAL_PKG_DIR}" (because this env var is supported)
+		# Compacted packages: saved into "${ZIG_GLOBAL_CACHE_DIR}/p/"
+
+		# For 0.16.0:
+		# Folder packages: saved into "${WORKDIR}/zig-pkg/" (because hardcoded to local zig-pkg)
+		# Compacted packages: saved into "${ZIG_GLOBAL_CACHE_DIR}/p/"
+	else
+		for zig_dep in "${zig_deps[@]}"; do
+			# Hide now-spammy hash from stdout
+			ezig fetch --global-cache-dir "${ZBS_ECLASS_DIR}/" \
+				"${DISTDIR}/${zig_dep}" > /dev/null
+		done
+
+		# For 0.15 and before:
+		# Folder packages: saved into "${ZBS_ECLASS_DIR}/p/" (because passed --global-cache-dir)
+		# Compacted packages: don't exist.
+	fi
+
 	einfo "ZBS: ${#zig_deps[@]} dependencies unpacked"
+}
+
+# @FUNCTION: zig_live_src_unpack
+# @DESCRIPTION:
+# Fetches all dependencies with build runner eagerly.
+# Supported for Zig 0.16+.
+zig_live_src_unpack() {
+	if ver_test "${ZIG_SLOT}" -lt "0.16"; then
+		die "${ECLASS}: zig_live_src_unpack is supported only for Zig 0.16+"
+	fi
+
+	if [[ "${EBUILD_PHASE}" != "unpack" ]]; then
+		die "${FUNCNAME}: not valid for ${EBUILD_PHASE}. Use src_unpack instead"
+	fi
+
+	mkdir -p "${BUILD_DIR}" > /dev/null || die
+	pushd "${BUILD_DIR}" > /dev/null || die
+
+	ZBS_ARGS_BASE+=( --build-file "${S}/build.zig" )
+
+	local args=(
+		"${ZBS_ARGS_BASE[@]}"
+
+		--fetch=all
+	)
+
+	# See notes in zig_src_unpack
+	if ver_test "${ZIG_SLOT}" -eq "0.16"; then
+		# Redirect hardcoded cache subfolder to same one
+		# as src_unpack and src_prepare use.
+		mkdir -p "${WORKDIR}/zig-pkg/" || die
+		ln -s "${WORKDIR}/zig-pkg" "${S}/zig-pkg" || die
+	fi
+
+	einfo "ZBS: live-fetching with:"
+	einfo "${args[@]}"
+	ezig build "${args[@]}" > /dev/null
+
+	popd > /dev/null || die
 }
 
 # @FUNCTION: zig_src_prepare
@@ -452,11 +594,20 @@ zig_src_prepare() {
 	mkdir -p "${BUILD_DIR}" || die
 	einfo "BUILD_DIR: \"${BUILD_DIR}\""
 
-	local system_dir="${ZBS_ECLASS_DIR}/p/"
+	# See notes in zig_src_unpack
+	local system_dir
+	if ver_test "${ZIG_SLOT}" -ge "0.17"; then
+		system_dir="${ZIG_LOCAL_PKG_DIR}"
+	elif ver_test "${ZIG_SLOT}" -eq "0.16"; then
+		system_dir="${WORKDIR}/zig-pkg/"
+	else
+		system_dir="${ZBS_ECLASS_DIR}/p/"
+	fi
+
 	mkdir -p "${system_dir}" || die
 	ZBS_ARGS_BASE+=(
-		# Disable network access after ensuring all dependencies
-		# are unpacked (by "src_unpack" or "live_fetch")
+		# Disable network access after ensuring
+		# all dependencies are unpacked into folder form
 		--system "${system_dir}"
 	)
 }

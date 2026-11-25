@@ -1,0 +1,21 @@
+From: =?utf-8?q?Jeremy_B=C3=ADcha?= <jeremy.bicha@canonical.com>
+Date: Wed, 6 Dec 2023 13:00:25 -0500
+Subject: Revert "Bump version for development"
+
+This reverts commit 587cbe32f73c8ba9105d43537c0ae73f535aefaa.
+---
+ meson.build | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/meson.build b/meson.build
+index 129aa52..03d3ccc 100644
+--- a/meson.build
++++ b/meson.build
+@@ -1,6 +1,6 @@
+ project(
+   'gitg', ['c', 'vala'],
+-  version: '45.alpha',
++  version: '44',
+   license: 'GPL2+',
+   default_options: 'buildtype=debugoptimized',
+   meson_version: '>= 0.50.0',

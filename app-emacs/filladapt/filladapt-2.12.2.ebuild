@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,7 +8,7 @@ inherit elisp readme.gentoo-r1
 DESCRIPTION="Filladapt enhances the behavior of Emacs' fill functions"
 HOMEPAGE="http://www.wonderworks.com/
 	https://elpa.gnu.org/packages/filladapt.html"
-SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.el.gz"
+SRC_URI="https://distfiles.gentoo.org/pub/proj/emacs/${P}.el.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"

@@ -1,4 +1,4 @@
-# Copyright 2018-2025 Gentoo Authors
+# Copyright 2018-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -44,8 +44,6 @@ src_prepare() {
 }
 
 src_configure() {
-	# Workaround for bug #965545
-	tc-is-gcc && [[ $(gcc-major-version) -eq 16 ]] && filter-lto
 	meson-multilib_src_configure
 }
 

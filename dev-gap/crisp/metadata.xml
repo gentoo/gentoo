@@ -4,7 +4,7 @@
   <maintainer type="person">
     <email>mjo@gentoo.org</email>
   </maintainer>
-  <maintainer type="person">
+  <maintainer type="person" proxied="yes">
     <email>frp.bissey@gmail.com</email>
     <name>François Bissey</name>
   </maintainer>

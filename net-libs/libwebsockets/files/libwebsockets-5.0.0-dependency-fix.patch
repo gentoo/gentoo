@@ -1,0 +1,16 @@
+--- a/lib/CMakeLists.txt	2026-07-27 15:06:14.564116044 -0400
++++ b/lib/CMakeLists.txt	2026-07-27 15:07:13.319945813 -0400
+@@ -408,6 +408,13 @@ if (UNIX OR MINGW)
+ # figure out pkfcfg required libs here
+ 
+ set(lws_requires "")
++if (LWS_WITH_MBEDTLS)
++  if (NOT lws_requires STREQUAL "")
++    set(lws_requires "${lws_requires},mbedtls-3")
++  else()
++    set(lws_requires "mbedtls-3")
++  endif()
++endif()
+ if (LWS_HAVE_LIBCAP)
+ 	if (NOT lws_requires STREQUAL "")
+ 		set(lws_requires "${lws_requires},libcap")

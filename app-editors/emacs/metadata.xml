@@ -81,6 +81,9 @@
       effect only on 32-bit systems, where it increases the maximum buffer
       size from 0.5 to 2 GiB, at the cost of 10% to 30% Lisp slowdown.
     </flag>
+    <flag name="xwidgets">
+      Enable use of GTK widgets in Emacs buffers (requires GTK3)
+    </flag>
   </use>
   <upstream>
     <remote-id type="savannah">emacs</remote-id>

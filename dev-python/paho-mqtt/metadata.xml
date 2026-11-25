@@ -11,7 +11,7 @@
 	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
-		<remote-id type="github">eclipse/paho.mqtt.python</remote-id>
+		<remote-id type="github">eclipse-paho/paho.mqtt.python</remote-id>
 		<remote-id type="pypi">paho-mqtt</remote-id>
 	</upstream>
 </pkgmetadata>

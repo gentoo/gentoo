@@ -1,0 +1,15 @@
+Do not skip eval of ENABLE_DOXYGEN/_MANUAL if doxgen not found
+see https://bugs.gentoo.org/977904
+
+diff --git a/docs/CMakeLists.txt b/docs/CMakeLists.txt
+index e8e1859..902017c 100644
+--- a/docs/CMakeLists.txt
++++ b/docs/CMakeLists.txt
+@@ -108,7 +108,6 @@ endif(ENABLE_MAN_PAGES)
+ find_package(Doxygen)
+ if (NOT Doxygen_FOUND)
+   message(STATUS "Doxygen not found - skipping API/Doxygen and Manual components.")
+-  return()
+ endif()
+ set(ENABLE_MANUAL_OR_DOXYGEN false)
+ 

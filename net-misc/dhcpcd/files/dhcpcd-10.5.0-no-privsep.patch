@@ -1,0 +1,25 @@
+https://github.com/NetworkConfiguration/dhcpcd/commit/eb9fd7dfb162f4c2ebec5338f0d07f9158e371bb
+
+From eb9fd7dfb162f4c2ebec5338f0d07f9158e371bb Mon Sep 17 00:00:00 2001
+From: Roy Marples <roy@marples.name>
+Date: Wed, 5 Aug 2026 13:20:46 +0100
+Subject: [PATCH] control: Fix non privsep builds
+
+---
+ src/control.c               | 2 +-
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/src/control.c b/src/control.c
+index 6ed7dd16..114435e3 100644
+--- a/src/control.c
++++ b/src/control.c
+@@ -381,8 +381,8 @@ control_new(struct dhcpcd_ctx *ctx, int fd, unsigned int flags)
+ {
+ 	struct fd_list *l;
+ 	size_t cnt;
+-#ifdef PRIVSEP
+ 	struct fd_list *n;
++#ifdef PRIVSEP
+ 	unsigned int id;
+ #endif
+ 

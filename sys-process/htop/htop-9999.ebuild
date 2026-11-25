@@ -21,10 +21,11 @@ S="${WORKDIR}/${P/_}"
 
 LICENSE="GPL-2+"
 SLOT="0"
-IUSE="caps debug delayacct hwloc lm-sensors llvm-libunwind openvz unicode unwind vserver"
+IUSE="bfd caps debug delayacct hwloc lm-sensors llvm-libunwind unicode unwind"
 
 RDEPEND="
 	sys-libs/ncurses:=[unicode(+)?]
+	bfd? ( sys-libs/binutils-libs:= )
 	hwloc? ( sys-apps/hwloc:= )
 	unwind? (
 		!llvm-libunwind? ( sys-libs/libunwind:= )
@@ -42,6 +43,11 @@ BDEPEND="virtual/pkgconfig"
 DOCS=( ChangeLog README.md )
 
 CONFIG_CHECK="~TASKSTATS ~TASK_XACCT ~TASK_IO_ACCOUNTING ~CGROUPS"
+WARNING_CGROUPS="CONFIG_CGROUPS is required for the cgroups column in htop"
+
+QA_CONFIG_IMPL_DECL_SKIP=(
+	typeof # backtrace check triggers this as noise from a failure
+)
 
 src_prepare() {
 	default
@@ -59,13 +65,13 @@ src_configure() {
 
 	local myeconfargs=(
 		--enable-unicode
+		$(use_enable bfd demangling libiberty)
 		$(use_enable debug)
 		$(use_enable hwloc)
 		$(use_enable !hwloc affinity)
-		$(use_enable openvz)
 		$(use_enable unicode)
-		$(use_enable unwind)
-		$(use_enable vserver)
+		$(use_enable unwind backtrace)
+		$(use_with unwind libunwind)
 	)
 
 	if use kernel_linux ; then

@@ -41,6 +41,9 @@ PATCHES=(
 
 src_prepare() {
 	default
+
+	sed -i 's/\(-D_FORTIFY_SOURCE=2\)/-U_FORTIFY_SOURCE \1/g' src/Makefile.am || die
+
 	eautoreconf
 }
 

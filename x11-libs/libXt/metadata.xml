@@ -6,6 +6,6 @@
     <name>X11</name>
   </maintainer>
   <upstream>
-    <remote-id type="freedesktop-gitlab">xorg/lib/libXt</remote-id>
+    <remote-id type="freedesktop-gitlab">xorg/lib/libxt</remote-id>
   </upstream>
 </pkgmetadata>

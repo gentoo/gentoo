@@ -1,4 +1,4 @@
-# Copyright 2017-2025 Gentoo Authors
+# Copyright 2017-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -80,7 +80,7 @@ LICENSE="GPL-3+"
 LICENSE+=" Apache-2.0 MIT Unicode-DFS-2016 Unlicense"
 SLOT="0"
 KEYWORDS="amd64 ~arm64 ppc64 ~riscv ~x86"
-IUSE="man selinux"
+IUSE="selinux"
 
 DEPEND="
 	acct-user/greetd
@@ -91,7 +91,7 @@ RDEPEND="
 	${DEPEND}
 	selinux? ( sec-policy/selinux-xserver )
 "
-BDEPEND="man? ( app-text/scdoc )"
+BDEPEND="app-text/scdoc"
 
 QA_FLAGS_IGNORED="usr/bin/.*greet.*"
 
@@ -101,12 +101,10 @@ PATCHES=(
 
 src_compile() {
 	cargo_src_compile
-	if use man; then
-		scdoc < ./man/agreety-1.scd > ./agreety.1 || die
-		scdoc < ./man/greetd-1.scd > ./greetd.1 || die
-		scdoc < ./man/greetd-5.scd > ./greetd.5 || die
-		scdoc < ./man/greetd-ipc-7.scd > ./greetd-ipc.7 || die
-	fi
+	scdoc < ./man/agreety-1.scd > ./agreety.1 || die
+	scdoc < ./man/greetd-1.scd > ./greetd.1 || die
+	scdoc < ./man/greetd-5.scd > ./greetd.5 || die
+	scdoc < ./man/greetd-ipc-7.scd > ./greetd-ipc.7 || die
 }
 
 src_install() {
@@ -117,9 +115,7 @@ src_install() {
 
 	systemd_dounit greetd.service
 
-	if use man; then
-		doman agreety.1 greetd.1 greetd.5 greetd-ipc.7
-	fi
+	doman agreety.1 greetd.1 greetd.5 greetd-ipc.7
 
 	newpamd - greetd <<-EOF
 		# newer greetd errors when no greetd-specific pam.d config is

@@ -1,0 +1,63 @@
+Patches pulled from https://todo.sr.ht/~lattis/muon/145 and merged into one below.
+
+Athored by Sertonix <sertonix@posteo.net>.
+
+diff --git a/src/external/pkgconfig_libpkgconf.c b/src/external/pkgconfig_libpkgconf.c
+index ee4697f..c58c3cd 100644
+--- a/src/external/pkgconfig_libpkgconf.c
++++ b/src/external/pkgconfig_libpkgconf.c
+@@ -40,7 +40,11 @@ muon_pkgconf_init(struct workspace *wk, struct pkgconf_client *c, enum machine_k
+ {
+ 	TracyCZoneAutoS;
+ 	c->personality = pkgconf_cross_personality_default();
+-	pkgconf_client_init(&c->client, error_handler, NULL, c->personality);
++	pkgconf_client_init(&c->client, error_handler, NULL, c->personality
++#if defined(LIBPKGCONF_VERSION) && LIBPKGCONF_VERSION >= 20991
++		, NULL, NULL
++#endif
++	);
+ 
+ 	struct obj_array *pkg_config_path;
+ 	{
+@@ -263,7 +267,11 @@ apply_variable(pkgconf_client_t *client, pkgconf_pkg_t *world, void *_ctx, int m
+ 	pkgconf_pkg_t *pkg = dep->match;
+ 
+ 	if (pkg != NULL) {
++#if defined(LIBPKGCONF_VERSION) && LIBPKGCONF_VERSION >= 20995
++		var = pkgconf_variable_eval_name(client, &pkg->vars, ctx->var);
++#else
+ 		var = pkgconf_tuple_find(client, &pkg->vars, ctx->var);
++#endif
+ 		if (var != NULL) {
+ 			*ctx->res = make_str(ctx->wk, var);
+ 			found = true;
+diff --git a/subprojects/meson-tests/common/44 pkgconfig-gen/meson.build b/subprojects/meson-tests/common/44 pkgconfig-gen/meson.build
+index ec2e339..00014ae 100644
+--- a/subprojects/meson-tests/common/44 pkgconfig-gen/meson.build	
++++ b/subprojects/meson-tests/common/44 pkgconfig-gen/meson.build	
+@@ -33,8 +33,10 @@ install_headers('simple.h')
+ 
+ to_validate = []
+ 
+-# generate for systems without a glib pc file
++# generate for systems without these pc files
+ pkgg.generate(name: 'glib-2.0', dataonly: true)
++pkgg.generate(name: 'gio-2.0', dataonly: true)
++pkgg.generate(name: 'gobject-2.0', dataonly: true)
+ 
+ if host_machine.system() != 'windows'
+     # These libraries are not present in a windows default install.
+diff --git a/subprojects/meson-tests/common/44 pkgconfig-gen/test.json b/subprojects/meson-tests/common/44 pkgconfig-gen/test.json
+index eace7a8..8beee8c 100644
+--- a/subprojects/meson-tests/common/44 pkgconfig-gen/test.json	
++++ b/subprojects/meson-tests/common/44 pkgconfig-gen/test.json	
+@@ -15,7 +15,9 @@
+     {"type": "file", "file": "usr/lib/pkgconfig/simple6.pc"},
+     {"type": "file", "file": "usr/lib/pkgconfig/ct.pc"},
+     {"type": "file", "file": "usr/lib/pkgconfig/ct0.pc"},
++    {"type": "file", "file": "usr/share/pkgconfig/gio-2.0.pc"},
+     {"type": "file", "file": "usr/share/pkgconfig/glib-2.0.pc"},
++    {"type": "file", "file": "usr/share/pkgconfig/gobject-2.0.pc"},
+     {"type": "file", "file": "usr/share/pkgconfig/libhello_nolib.pc"}
+   ],
+   "stdout": [

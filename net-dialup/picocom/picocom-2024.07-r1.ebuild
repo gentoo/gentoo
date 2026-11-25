@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,13 +11,13 @@ DESCRIPTION="minimal dumb-terminal emulation program"
 HOMEPAGE="https://gitlab.com/wsakernel/picocom"
 SRC_URI="
 	https://gitlab.com/wsakernel/${PN}/-/archive/${MY_PV}/${PN}-${MY_PV}.tar.bz2
-	!man? ( https://dev.gentoo.org/~ceamac/${CATEGORY}/${PN}/${P}.1.bz2 )
+	!man? ( https://distfiles.gentoo.org/pub/dev/ceamac@gentoo.org/${CATEGORY}/${PN}/${P}.1.bz2 )
 "
 S="${WORKDIR}/${PN}-${MY_PV}"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 arm64 ~loong ~ppc ppc64 ~riscv"
+KEYWORDS="amd64 arm64 ~loong ~ppc ppc64 ~riscv ~sparc"
 IUSE="+man"
 
 BDEPEND="man? ( dev-go/go-md2man )"

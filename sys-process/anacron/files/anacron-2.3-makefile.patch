@@ -1,0 +1,14 @@
+https://bugs.gentoo.org/715952
+Need to append `-lobstack` for musl build, can't stuff it in
+LDFLAGS due to `--as-needed`
+--- a/Makefile
++++ b/Makefile
+@@ -57,7 +57,7 @@
+ include $(csources:.c=.d)
+ 
+ anacron: $(objects)
+-	$(CC) $(LDFLAGS) $^ $(LOADLIBES) -o $@
++	$(CC) $(LDFLAGS) $^ $(LOADLIBES) $(LIBS) -o $@
+ 
+ %.o : %.c
+ 	$(CC) -c $(ALL_CPPFLAGS) $(CFLAGS) $< -o $@

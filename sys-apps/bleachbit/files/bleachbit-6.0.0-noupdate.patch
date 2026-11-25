@@ -1,0 +1,12 @@
+Disable update by default
+--- a/bleachbit/Options.py
++++ b/bleachbit/Options.py
+@@ -47,7 +47,7 @@ OPTION_DEFAULTS = {
+     'auto_hide': {'value': True},
+     'auto_detect_lang': {'value': True},
+     'check_beta': {'value': False},
+-    'check_online_updates': {'value': True},
++    'check_online_updates': {'value': False},
+     'dark_mode': {'value': True},
+     'debug': {'value': False},
+     'delete_confirmation': {'value': True},

@@ -3,7 +3,7 @@
 
 EAPI=8
 
-USE_RUBY="ruby32 ruby33 ruby34"
+USE_RUBY="ruby32 ruby33 ruby34 ruby40"
 
 RUBY_FAKEGEM_BINWRAP=""
 RUBY_FAKEGEM_TASK_DOC="yard"
@@ -21,13 +21,13 @@ SRC_URI="https://github.com/sferik/multi_xml/archive/v${PV}.tar.gz -> ${P}.tar.g
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm64 ~ppc ~ppc64 ~x86"
 IUSE="doc test"
 
 ruby_add_rdepend "|| ( dev-ruby/bigdecimal:4 >=dev-ruby/bigdecimal-3.1:0 )"
 
 ruby_add_bdepend "doc? ( dev-ruby/yard )"
-ruby_add_bdepend "test? ( >=dev-ruby/minitest-5.27:5 dev-ruby/ox )"
+ruby_add_bdepend "test? ( >=dev-ruby/minitest-5.27:5 dev-ruby/nokogiri dev-ruby/ox )"
 
 all_ruby_prepare() {
 	sed -e 's:_relative ": "./:' \

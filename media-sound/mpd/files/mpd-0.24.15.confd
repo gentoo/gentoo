@@ -1,0 +1,18 @@
+# Copyright 2026 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+#MPD_CFGFILE=/etc/mpd.conf
+#MPD_USER=mpd
+
+# For all command line options, please see `mpd --help`
+#MPD_EXTRA_ARGS="--verbose"
+
+# log errors at startup
+error_log="/var/log/mpd/mpd.err"
+
+# See https://mpd.readthedocs.io/en/stable/user.html#startup
+rc_ulimit=""
+# Required by io-uring
+#rc_ulimit="${rc_ulimit} -l 65535"
+# Required for real-time
+#rc_ulimit="${rc_ulimit} -r 40"

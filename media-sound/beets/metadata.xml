@@ -2,6 +2,10 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person" proxied="yes">
+    <email>vi@vimproved.dev</email>
+    <name>Violet Purcell</name>
+  </maintainer>
+  <maintainer type="person" proxied="yes">
     <email>guillaumeseren@gmail.com</email>
     <name>Guillaume Seren</name>
   </maintainer>
@@ -33,6 +37,7 @@
   </longdescription>
   <stabilize-allarches/>
   <upstream>
+    <doc>https://beets.readthedocs.io/</doc>
     <remote-id type="pypi">beets</remote-id>
     <remote-id type="github">beetbox/beets</remote-id>
   </upstream>

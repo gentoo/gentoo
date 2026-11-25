@@ -1,22 +1,22 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 # Uncomment when introducing a patch which touches configure
 RSYNC_NEEDS_AUTOCONF=1
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{12..15} )
 inherit flag-o-matic prefix python-single-r1 systemd
 
 DESCRIPTION="File transfer program to keep remote files into sync"
 HOMEPAGE="https://rsync.samba.org/"
 if [[ ${PV} == *9999 ]] ; then
-	EGIT_REPO_URI="https://github.com/WayneD/rsync.git"
+	EGIT_REPO_URI="https://github.com/RsyncProject/rsync.git"
 	inherit autotools git-r3
 
 	REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 else
-	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/andrewtridgell.asc
+	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/zendodd.asc
 	inherit verify-sig
 
 	if [[ -n ${RSYNC_NEEDS_AUTOCONF} ]] ; then
@@ -25,31 +25,51 @@ else
 
 	if [[ ${PV} == *_pre* ]] ; then
 		SRC_DIR="src-previews"
+		# Upstream make some private tarballs available for security releases
+		# for testing.
+		SRC_URI="
+			${PN}-v${PV/_pre/-test}.tar.gz
+			verify-sig? ( ${PN}-v${PV/_pre/-test}.tar.gz.asc )
+		"
+		S="${WORKDIR}"/${PN}-v${PV/_pre/-test}
+
+		RESTRICT="fetch"
 	else
 		SRC_DIR="src"
 		KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~arm64-macos ~x64-macos ~x64-solaris"
-	fi
 
-	SRC_URI="https://rsync.samba.org/ftp/rsync/${SRC_DIR}/${P/_/}.tar.gz
-		verify-sig? ( https://rsync.samba.org/ftp/rsync/${SRC_DIR}/${P/_/}.tar.gz.asc )"
-	S="${WORKDIR}"/${P/_/}
+		SRC_URI="
+			https://rsync.samba.org/ftp/rsync/${SRC_DIR}/${P/_/}.tar.gz
+			https://github.com/RsyncProject/rsync/releases/download/v${PV}/${P/_/}.tar.gz
+			verify-sig? (
+				https://rsync.samba.org/ftp/rsync/${SRC_DIR}/${P/_/}.tar.gz.asc
+				https://github.com/RsyncProject/rsync/releases/download/v${PV}/${P/_/}.tar.gz.asc
+			)
+		"
+		S="${WORKDIR}"/${P/_/}
+	fi
 fi
 
-LICENSE="GPL-3"
+# GPL-2 for init script
+LICENSE="GPL-3 GPL-3+ GPL-2"
 SLOT="0"
-IUSE="acl examples iconv lz4 rrsync ssl stunnel system-zlib xattr +xxhash zstd"
-REQUIRED_USE+=" examples? ( ${PYTHON_REQUIRED_USE} )"
-REQUIRED_USE+=" rrsync? ( ${PYTHON_REQUIRED_USE} )"
+IUSE="acl examples iconv idn lz4 rrsync ssl stunnel system-zlib test xattr +xxhash zstd"
+RESTRICT+=" !test? ( test )"
+REQUIRED_USE+="
+	examples? ( ${PYTHON_REQUIRED_USE} )
+	rrsync? ( ${PYTHON_REQUIRED_USE} )
+	test? ( ${PYTHON_REQUIRED_USE} )
+"
 
-# attr is autodetected and then dropped by -Wl,--as-needed:
-# https://github.com/RsyncProject/rsync/pull/753
 RDEPEND="
 	>=dev-libs/popt-1.19
-	acl? ( virtual/acl )
+	acl? ( >=virtual/acl-2.4.0 )
 	examples? (
 		${PYTHON_DEPS}
 		dev-lang/perl
 	)
+	iconv? ( virtual/libiconv )
+	idn? ( net-dns/libidn2:= )
 	lz4? ( app-arch/lz4:= )
 	rrsync? (
 		${PYTHON_DEPS}
@@ -61,26 +81,29 @@ RDEPEND="
 	system-zlib? ( virtual/zlib:= )
 	xxhash? ( >=dev-libs/xxhash-0.8 )
 	zstd? ( >=app-arch/zstd-1.4:= )
-	iconv? ( virtual/libiconv )"
+"
 DEPEND="${RDEPEND}"
 BDEPEND="
 	examples? ( ${PYTHON_DEPS} )
 	rrsync? ( ${PYTHON_DEPS} )
+	test? ( ${PYTHON_DEPS} )
 "
 
 if [[ ${PV} == *9999 ]] ; then
-	BDEPEND+=" ${PYTHON_DEPS}
+	BDEPEND+="
+		${PYTHON_DEPS}
 		$(python_gen_cond_dep '
 			dev-python/commonmark[${PYTHON_USEDEP}]
-		')"
+		')
+	"
 else
-	BDEPEND+=" verify-sig? ( sec-keys/openpgp-keys-andrewtridgell )"
+	BDEPEND+=" verify-sig? ( sec-keys/openpgp-keys-zendodd )"
 fi
 
 pkg_setup() {
 	# - USE=examples needs Python itself at runtime, but nothing else
 	# - 9999 needs commonmark at build time
-	if [[ ${PV} == *9999 ]] || use examples || use rrsync; then
+	if [[ ${PV} == *9999 ]] || use examples || use rrsync || use test ; then
 		python-single-r1_pkg_setup
 	fi
 }
@@ -115,6 +138,7 @@ src_configure() {
 		--enable-ipv6
 		$(use_enable acl acl-support)
 		$(use_enable iconv)
+		$(use_enable idn)
 		$(use_enable lz4)
 		$(use_with rrsync)
 		$(use_enable ssl openssl)
@@ -124,11 +148,7 @@ src_configure() {
 		$(use_enable zstd)
 	)
 
-	# https://github.com/WayneD/rsync/pull/428
 	if is-flagq -fsanitize=undefined ; then
-		sed -E -i \
-			-e 's:#define CAREFUL_ALIGNMENT (0|1):#define CAREFUL_ALIGNMENT 1:' \
-			byteorder.h || die
 		append-flags -DCAREFUL_ALIGNMENT
 	fi
 
@@ -139,7 +159,7 @@ src_install() {
 	emake DESTDIR="${D}" install
 
 	newconfd "${FILESDIR}"/rsyncd.conf.d rsyncd
-	newinitd "${FILESDIR}"/rsyncd.init.d-r1 rsyncd
+	newinitd "${FILESDIR}"/rsyncd.init.d-r2 rsyncd
 
 	dodoc NEWS.md README.md TODO tech_report.tex
 
@@ -147,7 +167,7 @@ src_install() {
 	newins "${FILESDIR}"/rsyncd.conf-3.2.7-r5 rsyncd.conf
 
 	insinto /etc/logrotate.d
-	newins "${FILESDIR}"/rsyncd.logrotate rsyncd
+	newins "${FILESDIR}"/rsyncd.logrotate-r1 rsyncd
 
 	insinto /etc/xinetd.d
 	newins "${FILESDIR}"/rsyncd.xinetd-3.0.9-r1 rsyncd
@@ -172,6 +192,8 @@ src_install() {
 	eprefixify "${ED}"/etc/{,xinetd.d}/rsyncd*
 
 	systemd_newunit packaging/systemd/rsync.service rsyncd.service
+	systemd_newunit packaging/systemd/rsync@.service 'rsyncd@.service'
+	systemd_newunit packaging/systemd/rsync.socket rsyncd.socket
 }
 
 pkg_postinst() {

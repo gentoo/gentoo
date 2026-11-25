@@ -1,0 +1,26 @@
+Needed for multilib to work
+
+https://gitlab.freedesktop.org/virgl/venus-protocol/-/merge_requests/127
+https://gitlab.freedesktop.org/virgl/venus-protocol/-/commit/4dadbf462d1fe8b192c8648c4f1a370601adf23e
+
+From 4dadbf462d1fe8b192c8648c4f1a370601adf23e Mon Sep 17 00:00:00 2001
+From: "Jan Alexander Steffens (heftig)" <heftig@archlinux.org>
+Date: Wed, 18 Nov 2026 21:43:08 +0100
+Subject: [PATCH] install pkg-config file into datadir
+
+The product seems to be architecture-independent.
+
+Part-of: <https://gitlab.freedesktop.org/virgl/venus-protocol/-/merge_requests/127>
+--- a/meson.build
++++ b/meson.build
+@@ -184,6 +184,7 @@ if not_subproj
+     description: 'Venus Vulkan protocol',
+     version: meson.project_version(),
+     subdirs: [meson.project_name()],
++    install_dir: get_option('datadir') / 'pkgconfig',
+   )
+ 
+   subdir('tests')
+-- 
+GitLab
+

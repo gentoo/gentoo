@@ -32,6 +32,7 @@ ways :
     <remote-id type="github">atari800/atari800</remote-id>
   </upstream>
   <use>
+    <flag name="download">Support downloading ROMs automatically</flag>
     <flag name="encode-mp3">Support recording sound in MP3 format</flag>
   </use>
 </pkgmetadata>

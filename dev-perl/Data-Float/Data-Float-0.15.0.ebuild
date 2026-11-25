@@ -10,6 +10,6 @@ inherit perl-module
 DESCRIPTION="Details of the floating point data type"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 x86"
 
 PERL_RM_FILES=( "t/pod_syn.t" "t/pod_cvg.t" )

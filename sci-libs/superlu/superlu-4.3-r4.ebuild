@@ -83,5 +83,5 @@ src_install() {
 		dodoc -r EXAMPLE FORTRAN
 	fi
 
-	find "${ED}" -name "*.a" -delete || die
+	find "${ED}" -name "*.a" -or -name "*.la" -delete || die
 }

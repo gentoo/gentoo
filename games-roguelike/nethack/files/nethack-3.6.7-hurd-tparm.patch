@@ -1,0 +1,15 @@
+Not a favorable solution, since this is probably some outdated quirk to begin
+with. But in life, shall we leave the unknown to itself...
+
+diff '--color=auto' -ru NetHack-3.6.7/win/tty/termcap.c NetHack-3.6.7-fix/win/tty/termcap.c
+--- NetHack-3.6.7/win/tty/termcap.c	2026-03-29 17:22:57.252478012 -0400
++++ NetHack-3.6.7-fix/win/tty/termcap.c	2026-03-29 18:36:03.070723420 -0400
+@@ -838,7 +838,7 @@
+ 
+ #include <curses.h>
+ 
+-#if !defined(LINUX) && !defined(__FreeBSD__) && !defined(NOTPARMDECL)
++#if !defined(__gnu_hurd__) && !defined(LINUX) && !defined(__FreeBSD__) && !defined(NOTPARMDECL)
+ extern char *tparm();
+ #endif
+ 

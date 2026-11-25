@@ -6,9 +6,10 @@
 		<name>Java</name>
 	</maintainer>
 	<upstream>
+		<bugs-to>https://codeberg.org/snakeyaml/snakeyaml/issues</bugs-to>
+		<changelog>https://codeberg.org/snakeyaml/snakeyaml/wiki/Changes</changelog>
+		<doc>https://codeberg.org/snakeyaml/snakeyaml/wiki/Documentation</doc>
 		<remote-id type="bitbucket">snakeyaml/snakeyaml</remote-id>
-		<changelog>https://bitbucket.org/snakeyaml/snakeyaml/wiki/Changes</changelog>
-		<bugs-to>https://bitbucket.org/snakeyaml/snakeyaml/issues</bugs-to>
-		<doc>https://bitbucket.org/snakeyaml/snakeyaml/wiki/Documentation</doc>
+		<remote-id type="codeberg">snakeyaml/snakeyaml</remote-id>
 	</upstream>
 </pkgmetadata>

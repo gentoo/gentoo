@@ -1,0 +1,17 @@
+Patch the build system to support rapidyenc downloaded into the source
+directory.
+--- a/cmake/rapidyenc.cmake
++++ b/cmake/rapidyenc.cmake
+@@ -49,11 +49,7 @@ endif()
+ ExternalProject_add(
+ 	rapidyenc
+ 	PREFIX			rapidyenc
+-	GIT_REPOSITORY	https://github.com/nzbgetcom/rapidyenc.git
+-	GIT_TAG			v1.1.1-20260217
+-	TLS_VERIFY		TRUE
+-	GIT_SHALLOW		TRUE
+-	GIT_PROGRESS	TRUE
++	URL rapidyenc
+ 	DOWNLOAD_EXTRACT_TIMESTAMP	TRUE
+ 	BUILD_BYPRODUCTS ${RAPIDYENC_LIBS}
+ 	CMAKE_ARGS		 ${CMAKE_ARGS}

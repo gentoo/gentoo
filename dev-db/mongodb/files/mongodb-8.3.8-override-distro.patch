@@ -1,0 +1,14 @@
+Does not recognize gentoo and returns None when a string is expected, crashing python.
+
+diff '--color=auto' -ur a/bazel/utils.bzl b/bazel/utils.bzl
+--- a/bazel/utils.bzl	2026-06-15 18:37:04.000000000 -0400
++++ b/bazel/utils.bzl	2026-07-20 17:25:36.461316417 -0400
+@@ -197,6 +197,8 @@
+     return distro, arch, substitutions
+ 
+ def get_host_distro_major_version(repository_ctx):
++    # Override: Always return gentoo regardless
++    return "gentoo"
+     _DISTRO_PATTERN_MAP = {
+         "Ubuntu 18*": "ubuntu18",
+         "Ubuntu 20*": "ubuntu20",

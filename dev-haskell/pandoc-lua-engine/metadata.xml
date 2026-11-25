@@ -5,6 +5,9 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
+	<use>
+		<flag name="repl">Include pandoc Lua repl.</flag>
+	</use>
 	<upstream>
 		<remote-id type="hackage">pandoc-lua-engine</remote-id>
 		<remote-id type="github">jgm/pandoc</remote-id>

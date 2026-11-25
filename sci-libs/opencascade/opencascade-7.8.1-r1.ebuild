@@ -30,7 +30,7 @@ else
 	S="${WORKDIR}/${MY_PN}-${MY_PV}"
 
 	if [[ "${PV}" != *rc* ]]; then
-		KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
+		KEYWORDS="amd64 ~arm ~arm64 ~riscv ~x86"
 	fi
 fi
 
@@ -134,6 +134,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-7.8.0-jemalloc-noexcept.patch"
 	"${FILESDIR}/${PN}-7.8.1-vtk_components.patch"
 	"${FILESDIR}/${PN}-7.8.1-freetype-const.patch"
+	"${FILESDIR}/${PN}-7.8.1-no-tk.patch"
 )
 
 src_unpack() {

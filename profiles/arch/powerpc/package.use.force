@@ -1,5 +1,13 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Eli Schwartz <eschwartz@gentoo.org> (2026-10-29)
+# Need elogind enabled here for depgraph (otherwise uses basu, which is
+# not keyworded).
+gui-libs/xdg-desktop-portal-wlr elogind
+gui-apps/mako elogind
+gui-wm/sway elogind
+dev-libs/libei elogind
 
 # Ionen Wolkens <ionen@gentoo.org> (2024-03-31)
 # MPV currently[1] has no plans to support >=lua5-3 making luajit

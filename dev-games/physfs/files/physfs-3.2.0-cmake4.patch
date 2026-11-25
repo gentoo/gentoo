@@ -1,0 +1,26 @@
+Sources:
+https://github.com/icculus/physfs/pull/56
+https://github.com/icculus/physfs/commit/32858b462a7d8017697a0f20bab160b5a4d8507a
+
+From 32858b462a7d8017697a0f20bab160b5a4d8507a Mon Sep 17 00:00:00 2001
+From: Ozkan Sezer <sezeroz@gmail.com>
+Date: Thu, 31 Jul 2025 20:47:00 +0300
+Subject: [PATCH] cmake: set maximum policy to 4.0
+
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index bd9cd88b..2ea14a49 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -11,7 +11,7 @@
+ 
+ set(PHYSFS_VERSION 3.3.0)
+ 
+-cmake_minimum_required(VERSION 3.0)
++cmake_minimum_required(VERSION 3.5...4.0)
+ 
+ project(PhysicsFS VERSION ${PHYSFS_VERSION} LANGUAGES C )
+ 

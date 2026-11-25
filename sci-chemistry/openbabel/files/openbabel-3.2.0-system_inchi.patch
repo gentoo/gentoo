@@ -1,0 +1,93 @@
+See PR pending https://github.com/openbabel/openbabel/pull/2969.patch
+fix headers with system InChI / various changes to handle InChI option
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -144,6 +144,7 @@ option(OPENBABEL_USE_SYSTEM_INCHI
+   "Use the system inchi library." OFF)
+ if(OPENBABEL_USE_SYSTEM_INCHI)
+   find_package(Inchi REQUIRED)
++  add_definitions(-DHAVE_SYSTEM_INCHI)
+   if (NOT INCHI_FOUND)
+     message(FATAL_ERROR "Inchi library not found.")
+   endif()
+--- a/include/openbabel/inchiformat.h
++++ b/include/openbabel/inchiformat.h
+@@ -21,8 +21,13 @@ GNU General Public License for more details.
+ #include <openbabel/obconversion.h>
+ #include <openbabel/obmolecformat.h>
+ 
++#ifdef HAVE_SYSTEM_INCHI
++#include <inchi_api.h>
++#define CURRENT_VER "unknown" // bcf_s.h is not packaged
++#else
+ #include "../inchi/inchi_api.h"
+ #include "../inchi/bcf_s.h"  // for CURRENT_VER
++#endif
+ #ifdef HAVE_SSTREAM
+ #include <sstream>
+ #else
+
+--- a/include/CMakeLists.txt
++++ b/include/CMakeLists.txt
+@@ -5,9 +5,13 @@ file(GLOB stereo_headers      openbabel/stereo/*.h)
+ file(GLOB depict_headers      openbabel/depict/*.h)
+ file(GLOB lbfgs_headers       LBFGS/*.h)
+ 
++if(WITH_INCHI)
+ if(NOT OPENBABEL_USE_SYSTEM_INCHI)
+ install(FILES inchi/inchi_api.h          DESTINATION include/inchi)
+ endif(NOT OPENBABEL_USE_SYSTEM_INCHI)
++else(WITH_INCHI)
++list(FILTER openbabel_headers      EXCLUDE REGEX ".*inchiformat\\.h$")
++endif(WITH_INCHI)
+ install(FILES chemdrawcdx.h        DESTINATION ${OB_INCLUDE_DIRS}/openbabel)
+ install(FILES ${openbabel_headers} DESTINATION ${OB_INCLUDE_DIRS}/openbabel)
+ install(FILES ${math_headers}      DESTINATION ${OB_INCLUDE_DIRS}/openbabel/math)
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -34,10 +34,15 @@ set(descriptors
+   descriptors/cmpdfilter.cpp
+   descriptors/groupcontrib.cpp
+   descriptors/filters.cpp
+-  descriptors/inchidescriptor.cpp
+   descriptors/smartsdescriptors.cpp
+ )
+ 
++if(WITH_INCHI)
++  set(descriptors ${descriptors}
++    descriptors/inchidescriptor.cpp
++  )
++endif()
++
+ set(fingerprints
+   fingerprints/finger2.cpp
+   fingerprints/finger3.cpp
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -142,15 +142,17 @@ endif()
+ option(WITH_INCHI   "Build inchi support" ON)
+ option(OPENBABEL_USE_SYSTEM_INCHI
+   "Use the system inchi library." OFF)
+-if(OPENBABEL_USE_SYSTEM_INCHI)
+-  find_package(Inchi REQUIRED)
+-  add_definitions(-DHAVE_SYSTEM_INCHI)
+-  if (NOT INCHI_FOUND)
+-    message(FATAL_ERROR "Inchi library not found.")
++if(WITH_INCHI)
++  if(OPENBABEL_USE_SYSTEM_INCHI)
++    find_package(Inchi REQUIRED)
++    add_definitions(-DHAVE_SYSTEM_INCHI)
++    if (NOT INCHI_FOUND)
++      message(FATAL_ERROR "Inchi library not found.")
++    endif()
++  else()
++    message(STATUS "Using included inchi library.")
++    set(INCHI_LIBRARY inchi)
+   endif()
+-else()
+-  message(STATUS "Using included inchi library.")
+-  set(INCHI_LIBRARY inchi)
+ endif()
+ 
+ if(WIN32)

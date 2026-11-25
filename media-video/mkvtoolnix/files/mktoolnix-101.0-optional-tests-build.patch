@@ -1,0 +1,31 @@
+https://bugs.gentoo.org/978866#c8
+
+Thanks to  Bernd Feige.
+
+--- a/ac/gtest.m4
++++ b/ac/gtest.m4
+@@ -35,5 +35,23 @@ AC_DEFUN([AX_GTEST],[
+   AC_SUBST(GTEST_TYPE)
+ ])
+ 
+-AX_GTEST
++AC_ARG_ENABLE(
++  [tests],
++  AS_HELP_STRING([--disable-tests],[Disable building of unit tests (default: auto)]),
++  [],
++  [enable_tests=auto]
++)
++
++if test x"$enable_tests" != xno; then
++  AX_GTEST
++else
++  GTEST_CFLAGS=
++  GTEST_LIBS=
++  GTEST_TYPE=no
++  AC_SUBST([GTEST_CFLAGS])
++  AC_SUBST([GTEST_LIBS])
++  AC_SUBST([GTEST_TYPE])
++  AC_MSG_NOTICE([Tests disabled; not looking for gtest])
++fi
++
+ AC_PATH_PROG(VALGRIND, valgrind,, $PATH)

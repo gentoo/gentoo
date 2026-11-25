@@ -5,7 +5,7 @@ EAPI=8
 
 # Please bump with media-video/x264-encoder
 
-inherit multilib-minimal toolchain-funcs flag-o-matic
+inherit edo multilib-minimal toolchain-funcs flag-o-matic
 
 DESCRIPTION="Free library for encoding X264/AVC streams"
 HOMEPAGE="https://www.videolan.org/developers/x264.html"
@@ -45,33 +45,35 @@ multilib_src_configure() {
 		export AS="${CC}"
 	fi
 
-	local asm_conf=""
+	local myconf=(
+		--prefix="${EPREFIX}"/usr
+		--libdir="${EPREFIX}"/usr/$(get_libdir)
+		--disable-cli
+		--disable-avs
+		--disable-lavf
+		--disable-swscale
+		--disable-ffms
+		--disable-gpac
+		--enable-pic
+		--enable-shared
+		--host="${CHOST}"
+		--cross-prefix="${CHOST}-"
+		$(usex interlaced "" "--disable-interlaced")
+		$(usex opencl "" "--disable-opencl")
+		$(usex static-libs "--enable-static" "")
+	)
 
-	if \
-		[[ ${ABI} == x86* ]] \
-		|| [[ ${ABI} == "x32" ]] \
-		|| [[ ${CHOST} == armv5* ]] \
-		|| [[ ${ABI} == ppc* ]] && { use !cpu_flags_ppc_altivec ; } \
-		|| use mips && { ! test-compile 'c' 'int main(void){__asm__("addvi.b $w0, $w1, 1");return 0;}' ; }
-	then
-		asm_conf=" --disable-asm"
+	if [[ ${ABI} == x86* || ${ABI} == x32 || ${CHOST} == armv5* ]]; then
+		myconf+=( --disable-asm )
+	elif [[ ${ABI} == ppc* ]]; then
+		if ! use cpu_flags_ppc_altivec; then
+			myconf+=( --disable-asm )
+		fi
+	elif use mips; then
+		if ! test-compile 'c' 'int main(void){__asm__("addvi.b $w0, $w1, 1");return 0;}'; then
+			myconf+=( --disable-asm )
+		fi
 	fi
 
-	"${S}/configure" \
-		--prefix="${EPREFIX}"/usr \
-		--libdir="${EPREFIX}"/usr/$(get_libdir) \
-		--disable-cli \
-		--disable-avs \
-		--disable-lavf \
-		--disable-swscale \
-		--disable-ffms \
-		--disable-gpac \
-		--enable-pic \
-		--enable-shared \
-		--host="${CHOST}" \
-		--cross-prefix="${CHOST}-" \
-		$(usex interlaced "" "--disable-interlaced") \
-		$(usex opencl "" "--disable-opencl") \
-		$(usex static-libs "--enable-static" "") \
-		${asm_conf} || die
+	edo "${S}"/configure "${myconf[@]}"
 }

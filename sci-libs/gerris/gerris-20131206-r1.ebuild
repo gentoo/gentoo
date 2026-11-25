@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -46,6 +46,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-20131206-DEFAULT_SOURCE-replacement.patch
 	"${FILESDIR}"/${PN}-20131206-slibtool.patch
 	"${FILESDIR}"/${PN}-20131206-respect-NM.patch
+	"${FILESDIR}"/${PN}-20131206-gcc14.patch
 )
 
 src_prepare() {

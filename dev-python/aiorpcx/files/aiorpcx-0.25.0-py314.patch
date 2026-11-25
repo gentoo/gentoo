@@ -1,0 +1,22 @@
+From 25043621700672ee375d20b78804118acac43b1b Mon Sep 17 00:00:00 2001
+From: Neil Booth <kyuupichan@pm.me>
+Date: Thu, 19 Feb 2026 13:29:30 +0000
+Subject: [PATCH] Make test_misc() async (danigm)
+
+---
+ tests/test_jsonrpc.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/test_jsonrpc.py b/tests/test_jsonrpc.py
+index 81414a7..8cda788 100755
+--- a/tests/test_jsonrpc.py
++++ b/tests/test_jsonrpc.py
+@@ -1064,7 +1064,7 @@ async def send_batch(batch):
+             await group.spawn(send_batch(batch))
+ 
+ 
+-def test_misc(protocol):
++async def test_misc(protocol):
+     '''Misc tests to get full coverage.'''
+     connection = JSONRPCConnection(protocol)
+ 

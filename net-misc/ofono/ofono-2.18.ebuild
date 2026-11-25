@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,8 +11,8 @@ SRC_URI="https://mirrors.edge.kernel.org/pub/linux/network/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
-IUSE="+atmodem bluetooth +datafiles doc dundee examples +isimodem +phonesim +qmimodem system-ell tools +udev upower"
+KEYWORDS="amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv ~sparc x86"
+IUSE="+atmodem bluetooth +datafiles doc dundee examples +isimodem +phonesim +qmimodem selinux system-ell tools +udev upower"
 
 REQUIRED_USE="dundee? ( bluetooth )"
 
@@ -25,6 +25,7 @@ RDEPEND=">=sys-apps/dbus-1.6
 	examples? ( dev-python/dbus-python )
 	tools? ( virtual/libusb:1 )"
 DEPEND="${RDEPEND}"
+RDEPEND+=" selinux? ( sec-policy/selinux-ofono )"
 BDEPEND="virtual/pkgconfig"
 
 DOCS=( ChangeLog AUTHORS )

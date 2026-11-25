@@ -1,0 +1,302 @@
+https://github.com/robbat2/kup/pull/1
+
+From ee7223a8eea366ae8c39450f25272f3006732abb Mon Sep 17 00:00:00 2001
+From: "Robin H. Johnson" <rjohnson@coreweave.com>
+Date: Wed, 11 Mar 2026 21:39:06 -0700
+Subject: [PATCH] feat: putraw command
+
+Signed-off-by: Robin H. Johnson <rjohnson@coreweave.com>
+---
+ kup          | 46 ++++++++++++++++++++++++++++++++++++
+ kup-server   | 67 ++++++++++++++++++++++++++++++++++++++++++++++++++++
+ kup-server.1 |  9 ++++++-
+ kup.1        | 46 +++++++++++++++++++++++++++++-------
+ 4 files changed, 158 insertions(+), 10 deletions(-)
+
+diff --git a/kup b/kup
+index f3a5d0f..bdb37c5 100755
+--- a/kup
++++ b/kup
+@@ -93,6 +93,7 @@ sub usage($) {
+ 	print STDERR "   put local_file signature remote_path\n";
+ 	print STDERR "   put --tar [--prefix=] remote_tree ref signature remote_path\n";
+ 	print STDERR "   put --diff remote_tree ref1 ref2 signature remote_path\n";
++	print STDERR "   putraw local_file signature remote_path\n";
+ 	print STDERR "   mkdir remote_path\n";
+ 	print STDERR "   mv|move old_path new_path\n";
+ 	print STDERR "   ln|link old_path new_path\n";
+@@ -474,6 +475,49 @@ sub cmd_put()
+ 	command('PUT', url_encode($remote));
+ }
+ 
++# PUTRAW command - upload a file exactly as-is without recompression
++sub cmd_putraw()
++{
++	my $file = shift @args;
++
++	if ($file =~ /^-/) {
++		die "$0: unknown option to putraw command: $file\n";
++	}
++
++	# Upload the file as-is; force plain ('%') format so the server stores
++	# exactly the bytes we have locally without decompressing.
++	cat_file('DATA', $file, '%');
++
++	# Get the local filename without directory
++	my($vol, $dir, $file_tail);
++	($vol, $dir, $file_tail) = File::Spec->splitpath($file);
++
++	my $sign   = shift @args;
++	my $remote = shift @args;
++
++	if (!defined($remote)) {
++		usage(1);
++	}
++
++	# Allow trailing slash to use local filename
++	if ($remote =~ m:/$: && defined($file_tail)) {
++		$remote .= $file_tail;
++	}
++
++	my $xrt = $remote;
++	$remote = canonicalize_path($remote);
++	if (!is_valid_filename($remote)) {
++		die "$0: invalid pathname: $xrt\n";
++	}
++
++	if ($remote =~ /\.sign$/) {
++		die "$0: target filename cannot end in .sign\n";
++	}
++
++	cat_file('SIGN', $sign, undef);
++	command('PUTRAW', url_encode($remote));
++}
++
+ # MKDIR command
+ sub cmd_mkdir()
+ {
+@@ -601,6 +645,8 @@ sub process_commands()
+ 
+ 		if ($cmd eq 'put') {
+ 			cmd_put();
++		} elsif ($cmd eq 'putraw') {
++			cmd_putraw();
+ 		} elsif ($cmd eq 'mkdir') {
+ 			cmd_mkdir();
+ 		} elsif ($cmd eq 'move' || $cmd eq 'mv') {
+diff --git a/kup-server b/kup-server
+index 8bdab50..ba326fa 100755
+--- a/kup-server
++++ b/kup-server
+@@ -30,6 +30,8 @@
+ #		- updates the current signature blob (follows immediately)
+ # PUT pathname
+ #		- installs the current data blob as <pathname>
++# PUTRAW pathname
++#		- installs the current data blob as <pathname> without recompression
+ # MKDIR pathname
+ #		- creates a new directory
+ # MOVE old-path new-path
+@@ -903,6 +905,69 @@ sub put_file(@)
+ 	cleanup();
+ }
+ 
++sub putraw_file(@)
++{
++	my @args = @_;
++
++	if (scalar(@args) != 1) {
++		fatal("Bad PUTRAW command");
++	}
++
++	my($file) = @args;
++
++	if (!$have_data) {
++		fatal("PUTRAW without DATA");
++	}
++	if (!$have_sign) {
++		fatal("PUTRAW without SIGN");
++	}
++
++	if (!signature_valid()) {
++		fatal("Signature invalid");
++	}
++
++	if (!is_valid_filename($file)) {
++		fatal("Invalid filename in PUTRAW command");
++	}
++
++	if ($file =~ /\.sign$/) {
++		fatal("$file: Target filename cannot end in .sign");
++	}
++
++	make_timestamps_match();
++
++	# Log SHA256 of the raw (as-uploaded) file
++	my $sha = Digest::SHA->new('sha256');
++	print STDERR "\rCalculating sha256 for ".$file." ";
++	$sha->addfile($tmpdir.'/data');
++	syslog(LOG_NOTICE, "sha256: %s: %s", $file, $sha->hexdigest);
++	print STDERR "... logged.\n";
++
++	lock_tree();
++
++	foreach my $e ('', '.sign') {
++		if (-e $data_path.$file.$e && ! -f _) {
++			fatal("$file: Trying to overwrite a non-file");
++		}
++	}
++
++	my @install_ext = ('.sign', '');
++	my @undoes = ();
++	foreach my $e (@install_ext) {
++		my $target = $data_path.$file.$e;
++		if (!rename($tmpdir.'/data'.$e, $target)) {
++			my $err = $!;
++			unlink(@undoes);
++			$! = $err;
++			fatal("$file: Failed to install files: $!");
++		}
++		push(@undoes, $target);
++	}
++
++	unlock_tree();
++	cleanup();
++}
++
+ sub do_mkdir(@)
+ {
+ 	my @args = @_;
+@@ -1305,6 +1370,8 @@ while (defined($line = get_command())) {
+ 		get_sign_data(@args);
+ 	} elsif ($cmd eq 'PUT') {
+ 		put_file(@args);
++	} elsif ($cmd eq 'PUTRAW') {
++		putraw_file(@args);
+ 	} elsif ($cmd eq 'MKDIR') {
+ 		do_mkdir(@args);
+ 	} elsif ($cmd eq 'MOVE' || $cmd eq 'LINK') {
+diff --git a/kup-server.1 b/kup-server.1
+index 2143090..6dd8ec7 100644
+--- a/kup-server.1
++++ b/kup-server.1
+@@ -28,6 +28,12 @@ for specific tree access control. On the client side, a corresponding
+ client-side utility
+ .BR kup
+ is used to initiate the connection and perform the uploads.
++.PP
++Uploaded files must be accompanied by a PGP detached signature.  For
++the \fBPUT\fP command the signature covers the uncompressed content and
++the server generates all configured compression formats.  For the
++\fBPUTRAW\fP command the signature covers the file exactly as uploaded,
++and the server stores it verbatim without recompression.
+ .SH GLOBAL CONFIG
+ .PP
+ The configuration file for 
+@@ -127,4 +133,5 @@ or (at your option) any later version; incorporated herein by
+ reference.  There is NO warranty; not even for MERCHANTABILITY or
+ FITNESS FOR A PARTICULAR PURPOSE.
+ .SH "SEE ALSO"
+-.BR kup (1)
++.BR kup (1),
++.BR kup-proto (5)
+diff --git a/kup.1 b/kup.1
+index 811afb3..6ad8210 100644
+--- a/kup.1
++++ b/kup.1
+@@ -18,9 +18,13 @@ kup \- kernel.org upload utility
+ .PP
+ This utility is used to upload files to \fIkernel.org\fP and other
+ systems using the same upload system (\fBkup-server\fP).  Each upload
+-is required to have a PGP signature, and the server will generate
+-multiple compressed formats if the content uploaded is intended to be
+-compressed.
++is required to have a PGP signature.  For the
++.B put
++command, the server will generate multiple compressed formats if the
++content uploaded is intended to be compressed.  For the
++.B putraw
++command, the file is stored exactly as uploaded without any
++recompression.
+ .PP
+ Additionally, if the user has content from a
+ .BR git (1)
+@@ -68,15 +72,19 @@ or if not set, no subcommand will be used (default kup-server behavior).
+ A series of commands can be specified on a single command line,
+ separated by a double dash argument (\fB\-\-\fP).
+ .PP
+-In all cases, PGP signatures are detached signature files
++For the \fBput\fP command, PGP signatures are detached signature files
+ corresponding to the \fIuncompressed\fP content.  If a
+-\fIremote_path\fP ends in \fP\.gz\fP then
++\fIremote_path\fP ends in \fB\.gz\fP then
+ .BR gzip ,
+ .B bzip2
+ and
+ .B xz
+ compressed files are generated on the server; otherwise the content is
+ stored uncompressed.
++.PP
++For the \fBputraw\fP command, the PGP signature must correspond to the
++exact bytes of \fIlocal_file\fP as uploaded.  The file is stored
++verbatim at \fIremote_path\fP with no recompression.
+ .TP
+ \fBput\fP \fIlocal_file\fP \fPsignature_file\fP \fIremote_path\fP
+ Upload the file \fIlocal_file\fP signed with
+@@ -111,6 +119,14 @@ version of
+ .B git
+ locally as on the server in order to produce a valid signature.
+ .TP
++\fBputraw\fP \fIlocal_file\fP \fIsignature_file\fP \fIremote_path\fP
++Upload the file \fIlocal_file\fP signed with \fIsignature_file\fP and
++store it at \fIremote_path\fP exactly as-is, without any
++decompression or recompression.  The signature must cover the exact
++bytes of \fIlocal_file\fP.  Unlike \fBput\fP, the remote filename
++extension is not remapped and no additional compression formats are
++generated.
++.TP
+ \fBmkdir\fP \fIremote_path\fP
+ Create a new directory on the server.
+ .TP
+@@ -139,10 +155,10 @@ relative to the \fIold_path\fP minus the final component.  Similarly,
+ if \fInew_path\fP ends in a slash then the final component of
+ \fIold_path\fP will be appended.
+ .PP
+-For the \fPput\fP command, except when \fB\-\-tar\fP or \fB\-\-diff\fP
+-is specified, if the \fIremote_path\fP ends in a slash then the
+-final (filename) component of \fIlocal_file\fP will be appended to the
+-final pathname.
++For the \fBput\fP command, except when \fB\-\-tar\fP or \fB\-\-diff\fP
++is specified, and for the \fBputraw\fP command, if the \fIremote_path\fP
++ends in a slash then the final (filename) component of \fIlocal_file\fP
++will be appended to the final pathname.
+ .SH CONFIG FILE
+ Kup checks the presence of $HOME/.kuprc and can load the
+ .B host
+@@ -174,6 +190,16 @@ kup put foolib-1.0.tar.bz2 foolib-1.0.tar.asc /pub/foolib/foolib-1.0.tar.bz2
+ .fi
+ .RE
+ .PP
++Upload a pre-built tarball exactly as-is (e.g. a release artifact that
++must not be altered), signing the compressed file directly:
++.PP
++.RS
++.nf
++gpg --detach-sign --armor foolib-1.0.tar.gz
++kup putraw foolib-1.0.tar.gz foolib-1.0.tar.gz.asc /pub/foolib/foolib-1.0.tar.gz
++.fi
++.RE
++.PP
+ Generate a tarball locally, sign it, then tell kup-server to generate an
+ identical tarball on the server, verify the signature, and put the compressed
+ results in /pub/foolib:
+@@ -197,6 +223,8 @@ or (at your option) any later version; incorporated herein by
+ reference.  There is NO warranty; not even for MERCHANTABILITY or
+ FITNESS FOR A PARTICULAR PURPOSE.
+ .SH "SEE ALSO"
++.BR kup-proto (5),
++.BR kup-server (1),
+ .BR git (1),
+ .BR ssh (1),
+ .BR gzip (1),
+

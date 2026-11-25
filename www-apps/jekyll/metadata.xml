@@ -4,5 +4,6 @@
 	<!-- maintainer-needed -->
 	<upstream>
 		<remote-id type="github">jekyll/jekyll</remote-id>
+		<remote-id type="rubygems">jekyll</remote-id>
 	</upstream>
 </pkgmetadata>

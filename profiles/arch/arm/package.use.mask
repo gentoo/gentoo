@@ -1,6 +1,39 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Thibaud CANALE <thican@thican.net> (2026-05-17)
+# Tests require dev-python/respx
+app-crypt/certbot test
+dev-python/cloudflare test
+
+# Sam James <sam@gentoo.org> (2026-09-23)
+# Only supported on some arches.
+dev-libs/elfutils -stackprof
+
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2026-08-16)
+# Blocks removal of vulnerable old dev-java/openjdk-bin-8.492_p09
+~sys-devel/gettext-0.21.1 java
+
+# Alfred Wingate <parona@protonmail.com> (2026-07-26)
+# Firefox not keyworded here
+dev-util/selenium-manager test
+
+# Rick Farina <zerochaos@gentoo.org> (2026-06-13)
+# net-wireless/rtl_433 and deps are not keyworded here
+net-wireless/kismet rtlsdr
+
+# Alexey Sokolov <alexey+gentoo@asokolov.org> (2026-06-04)
+# New versions of dev-cpp/cpp-httplib dropped support for 32 bits. Bug #973312
+dev-util/ccache http
+
+# Alfred Wingate <parona@protonmail.com> (2026-05-13)
+# dev-qt/qtgraphs:6 is not keyworded here
+dev-python/pyside graphs
+
+# Brett A C Sheffield <bacs@librecast.net> (2026-04-22)
+# virtual/pandoc is not keyworded here
+>=dev-libs/xmlsec-1.3.11 doc
+
 # Robin H. Johnson <robbat2@gentoo.org> (2026-03-22)
 # sys-block/vdo not keyworded here
 sys-fs/lvm2 vdo
@@ -51,10 +84,6 @@ sci-libs/flexiblas -openblas
 # net-misc/passt not yet keyworded here
 app-emulation/qemu passt
 
-# Alfred Wingate <parona@protonmail.com> (2025-07-31)
-# mongodb not keyworded here
-sci-libs/gdal mongodb
-
 # Cristian Othón Martínez Vera <cfuga@cfuga.mx> (2025-07-15)
 # Needs gui-apps/grim, which is not keyworded here
 x11-misc/xscreensaver wayland
@@ -91,8 +120,9 @@ dev-ml/labltk ocamlopt
 mail-mta/sendmail tinycdb
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-04-02)
-# Needs kde-frameworks/breeze-icons which is not keyworded here.
-net-irc/quassel system-icons
+# spell: kde-frameworks/sonnet is not keyworded here
+# system-icons: kde-frameworks/breeze-icons is not keyworded here
+net-irc/quassel spell system-icons
 
 # NRK <nrk@disroot.org> (2025-03-17)
 # media-libs/libyuv is not keyworded
@@ -225,6 +255,7 @@ dev-lang/idris2 test-full
 dev-python/cloudscraper test
 dev-python/qtpy test
 games-util/lgogdownloader gui
+net-irc/quassel urlpreview
 net-misc/seafile-client shibboleth
 
 # Florian Schmaus <flow@gentoo.org> (2022-11-23)
@@ -251,6 +282,7 @@ app-text/enchant nuspell
 # Adel Kara Slimane <adel.ks@zegrapher.com> (2022-03-14)
 # Untested useflag on other arches, needs keywording
 media-video/ffmpeg vmaf
+media-video/ffmpeg-compat vmaf
 
 # Sam James <sam@gentoo.org> (2022-03-10)
 # Boost has support for ARM32
@@ -587,7 +619,6 @@ net-vpn/tinc vde
 # The QML (V4) and JSC JITs are supported only on amd64/arm/x86,
 # so the flag is masked in the base profile and unmasked here.
 dev-qt/qtdeclarative -jit
-dev-qt/qtscript -jit
 
 # missing keywords
 media-plugins/gst-plugins-meta aac dts dv lame libvisual modplug vcd wavpack

@@ -1,0 +1,20 @@
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+
+fix openjpeg version string
+
+OPENJPEG_VERSION is only set for the bundled copy; the system one exports the
+three components separately.
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index a9321d0..c038e82 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1609,7 +1609,7 @@ endif()
+ 
+ if(HAVE_OPENJPEG)
+   status("    JPEG 2000:" OpenJPEG_FOUND
+-      THEN "OpenJPEG (ver ${OPENJPEG_VERSION})"
++      THEN "OpenJPEG (ver ${OPENJPEG_MAJOR_VERSION}.${OPENJPEG_MINOR_VERSION}.${OPENJPEG_BUILD_VERSION})"
+       ELSE "build (ver ${OPENJPEG_VERSION})"
+   )
+ elseif(HAVE_JASPER)

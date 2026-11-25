@@ -1,0 +1,16 @@
+# valkey-sentinel user.
+VALKEY_SENTINEL_USER="valkey"
+
+# valkey-sentinel group.
+VALKEY_SENTINEL_GROUP="valkey"
+
+# valkey-sentinel configuration file.
+VALKEY_SENTINEL_CONF="/etc/valkey/sentinel.conf"
+
+# valkey-sentinel working directory.
+VALKEY_SENTINEL_DIR="/tmp"
+
+# Specify the network service that corresponds to the "bind" setting
+# in your sentinel.conf. For example, if you bind to 127.0.0.1, this should
+# be set to "net.lo" which provides the loopback interface.
+rc_need="net.lo"

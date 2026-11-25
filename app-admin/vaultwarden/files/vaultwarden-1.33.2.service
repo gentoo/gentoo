@@ -34,7 +34,7 @@ ProtectHome=true
 
 # set entire file system to read only except following paths
 ProtectSystem=strict
-ReadWritePaths=/var/lib/%N -/var/log/%N.log
+ReadWritePaths=/var/lib/%N -/var/log/%N/%N.log
 CacheDirectory=%N
 
 # Set reasonable connection and process limits

@@ -1,0 +1,37 @@
+https://bugs.gentoo.org/955578
+
+diff '--color=auto' -ur a/src/mongo/db/timeseries/bucket_catalog/bucket_catalog.cpp b/src/mongo/db/timeseries/bucket_catalog/bucket_catalog.cpp
+--- a/src/mongo/db/timeseries/bucket_catalog/bucket_catalog.cpp	2026-05-13 19:17:03.000000000 -0400
++++ b/src/mongo/db/timeseries/bucket_catalog/bucket_catalog.cpp	2026-05-29 13:01:10.954824538 -0400
+@@ -177,7 +177,7 @@
+       archivedBuckets(
+           make_tracked_btree_map<ArchivedKey, ArchivedBucket, std::greater<ArchivedKey>>(
+               getTrackingContext(trackingContexts, TrackingScope::kArchivedBuckets))),
+-      collectionTimeFields(make_tracked_unordered_map<UUID, std::tuple<tracked_string, int64_t>>(
++      collectionTimeFields(make_tracked_unordered_map<UUID, std::pair<tracked_string, int64_t>>(
+           getTrackingContext(trackingContexts, TrackingScope::kArchivedBuckets))),
+       outstandingReopeningRequests(
+           make_tracked_unordered_map<
+diff '--color=auto' -ur a/src/mongo/db/timeseries/bucket_catalog/bucket_catalog.h b/src/mongo/db/timeseries/bucket_catalog/bucket_catalog.h
+--- a/src/mongo/db/timeseries/bucket_catalog/bucket_catalog.h	2026-05-13 19:17:03.000000000 -0400
++++ b/src/mongo/db/timeseries/bucket_catalog/bucket_catalog.h	2026-05-29 13:01:10.954999753 -0400
+@@ -181,7 +181,7 @@
+     // many buckets it exist in 'archivedBuckets' for this UUID.
+     // TODO SERVER-70605: Remove this mapping, only needed when usingAlwaysCompressedBuckets is
+     // disabled.
+-    tracked_unordered_map<UUID, std::tuple<tracked_string, int64_t>> collectionTimeFields;
++    tracked_unordered_map<UUID, std::pair<tracked_string, int64_t>> collectionTimeFields;
+ 
+     // All series currently with outstanding reopening operations. Used to coordinate disk access
+     // between reopenings and regular writes to prevent stale reads and corrupted updates.
+diff '--color=auto' -ur a/src/third_party/abseil-cpp/dist/absl/container/internal/container_memory.h b/src/third_party/abseil-cpp/dist/absl/container/internal/container_memory.h
+--- a/src/third_party/abseil-cpp/dist/absl/container/internal/container_memory.h	2026-05-13 19:17:03.000000000 -0400
++++ b/src/third_party/abseil-cpp/dist/absl/container/internal/container_memory.h	2026-05-29 13:01:10.954531877 -0400
+@@ -18,6 +18,7 @@
+ #include <cassert>
+ #include <cstddef>
+ #include <cstring>
++#include <cstdint>
+ #include <memory>
+ #include <new>
+ #include <tuple>

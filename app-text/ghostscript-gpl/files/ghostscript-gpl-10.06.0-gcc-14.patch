@@ -1,0 +1,14 @@
+https://bugs.ghostscript.com/show_bug.cgi?id=708608#c4
+Bug: https://bugs.gentoo.org/971915
+
+--- a/base/stdpre.h
++++ b/base/stdpre.h
+@@ -343,7 +343,7 @@ typedef signed char schar;
+  */
+ 
+ /* C23 has bool as a builtin type. */
+-#if !defined(__cplusplus) && (!defined(__STDC_VERSION__) || __STDC_VERSION__ < 202311L)
++#if !defined(__cplusplus) && (!defined(__STDC_VERSION__) || __STDC_VERSION__ < 202000L)
+ #ifdef __BEOS__
+ typedef unsigned char bool;
+ #else

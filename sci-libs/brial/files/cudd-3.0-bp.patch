@@ -1,0 +1,51 @@
+diff --git a/cudd/cudd.h b/cudd/cudd.h
+index 03dcc9e8..8b52b440 100644
+--- a/cudd/cudd.h
++++ b/cudd/cudd.h
+@@ -88,8 +88,10 @@
+ 
+ #ifdef __cplusplus
+ #include <cstdio>
++#include <cstdint>
+ #else
+ #include <stdio.h>
++#include <stdint.h>
+ #endif
+ 
+ #ifdef __cplusplus
+@@ -379,7 +381,7 @@ typedef int (*DD_QSFP)(const void *, const void *);
+   SeeAlso      [Cudd_NotCond]
+ 
+ ******************************************************************************/
+-#define Cudd_Not(node) ((DdNode *)((long)(node) ^ 01))
++#define Cudd_Not(node) ((DdNode *)((uintptr_t)(node) ^ (uintptr_t) 01))
+ 
+ 
+ /**Macro***********************************************************************
+@@ -395,7 +397,7 @@ typedef int (*DD_QSFP)(const void *, const void *);
+   SeeAlso      [Cudd_Not]
+ 
+ ******************************************************************************/
+-#define Cudd_NotCond(node,c) ((DdNode *)((long)(node) ^ (c)))
++#define Cudd_NotCond(node,c) ((DdNode *)((uintptr_t)(node) ^ (uintptr_t) (c)))
+ 
+ 
+ /**Macro***********************************************************************
+@@ -409,7 +411,7 @@ typedef int (*DD_QSFP)(const void *, const void *);
+   SeeAlso      [Cudd_Complement Cudd_IsComplement]
+ 
+ ******************************************************************************/
+-#define Cudd_Regular(node) ((DdNode *)((unsigned long)(node) & ~01))
++#define Cudd_Regular(node) ((DdNode *)((uintptr_t)(node) & ~(uintptr_t) 01))
+ 
+ 
+ /**Macro***********************************************************************
+@@ -423,7 +425,7 @@ typedef int (*DD_QSFP)(const void *, const void *);
+   SeeAlso      [Cudd_Regular Cudd_IsComplement]
+ 
+ ******************************************************************************/
+-#define Cudd_Complement(node) ((DdNode *)((unsigned long)(node) | 01))
++#define Cudd_Complement(node) ((DdNode *)((uintptr_t)(node) | (uintptr_t) 01))
+ 
+ 
+ /**Macro***********************************************************************

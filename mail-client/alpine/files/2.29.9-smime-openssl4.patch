@@ -1,0 +1,46 @@
+https://github.com/botovq/ports/commit/db8698776dd3e2d0a057e8483fe660dc00ccb435
+Bug: https://bugs.gentoo.org/984930
+
+Do not reach into X509_ALGOR.
+
+--- a/alpine/smime.c
++++ b/alpine/smime.c
+@@ -292,7 +292,10 @@ format_smime_info(int pass, BODY *body, long msgno, gf
+ 		    gf_puts(_("The algorithm used to encrypt was "), pc);
+ 
+ 		    if(alg){
+-			char *n = (char *) OBJ_nid2sn( OBJ_obj2nid(alg->algorithm));
++			const ASN1_OBJECT *obj;
++			const char *n;
++			X509_ALGOR_get0(&obj, NULL, NULL, alg);
++			n = OBJ_nid2sn(OBJ_obj2nid(obj));
+ 
+ 			gf_puts(n ? n : "<unknown>", pc);
+ 
+@@ -395,9 +398,9 @@ output_cert_info(X509 *cert, gf_io_t pc)
+ 	int i;
+ 
+ 	bs = X509_get_serialNumber(cert);
+-	if (bs->length <= (int)sizeof(long)){
++	if (ASN1_STRING_length(bs) <= (int)sizeof(long)){
+ 	   l = ASN1_INTEGER_get(bs);
+-           if (bs->type == V_ASN1_NEG_INTEGER){
++           if (ASN1_STRING_type(bs) == V_ASN1_NEG_INTEGER){
+ 	      l = -l;
+ 	      neg="-";
+ 	   }
+@@ -405,10 +408,10 @@ output_cert_info(X509 *cert, gf_io_t pc)
+               neg="";
+ 	   snprintf(buf, sizeof(buf), " %s%lu (%s0x%lx)", neg, l, neg, l);
+ 	} else {
+-	    snprintf(buf, sizeof(buf), "%s", bs->type == V_ASN1_NEG_INTEGER ? "(Negative)" : "");
+-	    for (i = 0; i < bs->length; i++)
+-		 snprintf(buf + strlen(buf), sizeof(buf) - strlen(buf), "%02x%s", bs->data[i],
+-			i+1 == bs->length ? "" : ":");
++	    snprintf(buf, sizeof(buf), "%s", ASN1_STRING_type(bs) == V_ASN1_NEG_INTEGER ? "(Negative)" : "");
++	    for (i = 0; i < ASN1_STRING_length(bs); i++)
++		 snprintf(buf + strlen(buf), sizeof(buf) - strlen(buf), "%02x%s", ASN1_STRING_get0_data(bs)[i],
++			i+1 == ASN1_STRING_length(bs) ? "" : ":");
+ 	}
+     }
+     gf_puts(buf, spc);

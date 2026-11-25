@@ -1,0 +1,39 @@
+--- a/src/gui/src/Skin.h
++++ b/src/gui/src/Skin.h
+@@ -23,6 +23,8 @@
+ #define H2_SKIN_H
+ 
+ #include <QString>
++#include <QToolBar>
++#include <QToolButton>
+ #include <QtGui>
+ 
+ ///
+--- a/src/gui/src/Widgets/TagEdit.cpp
++++ b/src/gui/src/Widgets/TagEdit.cpp
+@@ -29,6 +29,14 @@
+ #include <core/Preferences/Preferences.h>
+ #include <core/Preferences/Theme.h>
+ 
++#include <QAbstractItemView>
++#include <QHeaderView>
++#include <QLineEdit>
++#include <QScrollArea>
++#include <QPushButton>
++#include <QToolButton>
++#include <QVBoxLayout>
++
+ TagEdit::TagEdit( QWidget* pParent ) : QWidget( pParent )
+ {
+ 	setFocusPolicy( Qt::ClickFocus );
+--- a/src/gui/src/Widgets/TagEdit.h
++++ b/src/gui/src/Widgets/TagEdit.h
+@@ -24,6 +24,8 @@
+ #ifndef TAG_EDIT_H
+ #define TAG_EDIT_H
+ 
++#include <QWidget>
++#include <QTableWidget>
+ #include <QtGui>
+ 
+ #include <core/Object.h>

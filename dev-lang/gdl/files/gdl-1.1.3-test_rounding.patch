@@ -1,0 +1,24 @@
+--- a/testsuite/test_rounding.pro	2026-04-09 20:47:09.851979075 +0200
++++ b/testsuite/test_rounding.pro	2026-04-09 21:01:46.643929351 +0200
+@@ -51,12 +51,17 @@
+ expected=[123, -123]
+ ;
+ for ii=0, N_ELEMENTS(list_numeric_types)-1 do begin
++   ;; Cannot assign negative values to unsigned. Dropping the negative seed
++   ;; for those unsigned types
++   is_unsigned = (types[ii] EQ 1) OR (types[ii] EQ 12) OR (types[ii] EQ 13) OR (types[ii] EQ 15)
++   tseed     = is_unsigned ? seed[0]     : seed
++   texpected = is_unsigned ? expected[0] : expected
+    ;;
+-   if KEYWORD_SET(round) then res_int=ROUND(FIX(seed, type=types[ii]))
+-   if KEYWORD_SET(ceil) then res_int=CEIL(FIX(seed, type=types[ii]))
+-   if KEYWORD_SET(floor) then res_int=FLOOR(FIX(seed, type=types[ii]))
++   if KEYWORD_SET(round) then res_int=ROUND(FIX(tseed, type=types[ii]))
++   if KEYWORD_SET(ceil) then res_int=CEIL(FIX(tseed, type=types[ii]))
++   if KEYWORD_SET(floor) then res_int=FLOOR(FIX(tseed, type=types[ii]))
+    ;;
+-   expected_int=FIX(expected, type=list_numeric_types[ii])
++   expected_int=FIX(texpected, type=list_numeric_types[ii])
+    ;;
+    if KEYWORD_SET(verbose) then begin
+       HELP, res_int

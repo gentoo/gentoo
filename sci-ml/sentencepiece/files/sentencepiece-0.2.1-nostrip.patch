@@ -1,0 +1,12 @@
+--- a/python/setup.py	2026-05-09 23:57:47.371622651 +0200
++++ b/python/setup.py	2026-05-09 23:58:04.971426806 +0200
+@@ -103,9 +103,6 @@
+       if sys.platform == 'aix':
+         cflags.append('-Wl,-s')
+         libs.append('-Wl,-s')
+-      else:
+-        cflags.append('-Wl,-strip-all')
+-        libs.append('-Wl,-strip-all')
+     if sys.platform == 'linux':
+       libs.append('-Wl,-Bsymbolic')
+     if is_gil_disabled():

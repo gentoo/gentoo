@@ -1,0 +1,20 @@
+From: Vcode2407 <vkslog69@gmail.com>
+Subject: [PATCH] Fix fallback uint128 bitwise not in bundled fmt
+
+Origin: https://github.com/fmtlib/fmt/pull/4813
+
+The fallback uint128 type is used on targets without native __int128.
+format_hexfloat needs its missing bitwise-not operator.
+
+--- a/3rdparty/fmtlib/fmt/format.h
++++ b/3rdparty/fmtlib/fmt/format.h
+@@ -298,6 +298,9 @@ class uint128 {
+       -> uint128 {
+     return {lhs.hi_ & rhs.hi_, lhs.lo_ & rhs.lo_};
+   }
++  friend constexpr auto operator~(const uint128& n) -> uint128 {
++    return {~n.hi_, ~n.lo_};
++  }
+   friend FMT_CONSTEXPR auto operator+(const uint128& lhs, const uint128& rhs)
+       -> uint128 {
+     auto result = uint128(lhs);

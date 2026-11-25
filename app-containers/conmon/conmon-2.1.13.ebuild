@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,7 +18,7 @@ fi
 
 LICENSE="Apache-2.0"
 SLOT="0"
-IUSE="+seccomp systemd"
+IUSE="+seccomp selinux systemd"
 RESTRICT="test"
 
 RDEPEND="dev-libs/glib:=
@@ -26,6 +26,7 @@ RDEPEND="dev-libs/glib:=
 	systemd? ( sys-apps/systemd:= )"
 DEPEND="${RDEPEND}"
 BDEPEND="dev-go/go-md2man"
+RDEPEND+=" selinux? ( sec-policy/selinux-podman )"
 
 src_prepare() {
 	default

@@ -1,4 +1,4 @@
-# Copyright 2022-2025 Gentoo Authors
+# Copyright 2022-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -43,7 +43,7 @@ SRC_URI="
 # lib/libc/glibc: BSD HPND ISC inner-net LGPL-2.1+
 LICENSE="MIT Apache-2.0-with-LLVM-exceptions || ( UoI-NCSA MIT ) || ( Apache-2.0-with-LLVM-exceptions Apache-2.0 MIT BSD-2 ) public-domain BSD-2 ZPL ISC HPND BSD inner-net LGPL-2.1+"
 SLOT="$(ver_cut 1-2)"
-KEYWORDS="-* ~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~s390 ~x86"
+KEYWORDS="-* amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~s390 ~x86"
 
 BDEPEND="verify-sig? ( sec-keys/minisig-keys-zig-software-foundation )"
 IDEPEND="app-eselect/eselect-zig"

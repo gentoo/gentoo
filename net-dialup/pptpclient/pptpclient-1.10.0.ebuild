@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,13 +16,14 @@ SRC_URI="https://downloads.sourceforge.net/pptpclient/${MY_P}.tar.gz
 SLOT="0"
 LICENSE="GPL-2"
 KEYWORDS="~alpha amd64 ~arm arm64 ~loong ppc ppc64 ~riscv ~sparc x86"
-IUSE="tk"
+IUSE="tk selinux"
 
 DEPEND="net-dialup/ppp
 	dev-lang/perl
 	tk? ( dev-perl/Tk )"
 RDEPEND="${DEPEND}
-	sys-apps/iproute2"
+	sys-apps/iproute2
+	selinux? ( sec-policy/selinux-ppp )"
 
 RESTRICT="test" #make test is useless and vector_test.c is broken
 

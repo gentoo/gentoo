@@ -1,0 +1,20 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -2755,7 +2755,7 @@ if test "z$enable_pedantic" = "zno" ; then
+     AC_MSG_RESULT([disabled])
+ elif test "z$build_with_gcc" = "zyes" ; then
+     dnl Flags supported since GCC 3.x (always available in any modern GCC)
+-    CFLAGS="$CFLAGS -O -pedantic -pedantic-errors -W -Wall -Wextra"
++    CFLAGS="$CFLAGS -pedantic -W -Wall -Wextra"
+     CFLAGS="$CFLAGS -fno-inline"
+     CFLAGS="$CFLAGS -Wformat=2 -Wformat-security -Wformat-nonliteral"
+     CFLAGS="$CFLAGS -Wconversion -Wunused -Wshadow -Wpointer-arith -Wcast-align"
+@@ -2782,7 +2782,7 @@ elif test "z$build_with_gcc" = "zyes" ; then
+     AC_MSG_RESULT([yes])
+ elif test "z$build_with_clang" = "zyes" ; then
+     dnl Flags supported since Clang 3.x (always available in any modern Clang)
+-    CFLAGS="$CFLAGS -O -pedantic -pedantic-errors -W -Wall -Wextra"
++    CFLAGS="$CFLAGS -pedantic -W -Wall -Wextra"
+     CFLAGS="$CFLAGS -fno-inline"
+     CFLAGS="$CFLAGS -Wformat=2 -Wformat-security -Wformat-nonliteral"
+     CFLAGS="$CFLAGS -Wconversion -Wunused -Wshadow -Wpointer-arith -Wcast-align"

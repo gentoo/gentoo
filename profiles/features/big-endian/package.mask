@@ -1,6 +1,27 @@
 # Copyright 2023-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# M. Muddassar Sarfraz <zyx@envs.net> (2026-11-18)
+# The skia rendering and JSC is broken on big-endian
+>=net-libs/webkit-gtk-2.54.0
+
+# Bernard Cafarelli <voyageur@gentoo.org> (2026-10-10)
+# Upstream removed big-endian code paths
+>=games-emulation/dosbox-staging-0.83.0
+
+# James Le Cuirot <chewi@gentoo.org> (2026-07-30)
+# UT2004 is supported on ppc64le but not ppc64be. I doubt we'll ever see this on
+# any other big endian platform.
+games-fps/ut2004
+games-fps/ut2004-bonuspack-cbp1
+games-fps/ut2004-bonuspack-cbp2
+games-fps/ut2004-bonuspack-xp
+games-fps/ut2004-data
+
+# Eli Schwartz <eschwartz@gentoo.org> (2026-05-04)
+# Tests fail on ppc64, pass on ppc64le. Bug #952112.
+media-libs/libyuv
+
 # James Le Cuirot <chewi@gentoo.org> (2026-02-02)
 # It works on non-x86 arches, but only little endian ones.
 sys-apps/iucode_tool
@@ -12,6 +33,7 @@ dev-python/tables
 # Michał Górny <mgorny@gentoo.org> (2024-06-05)
 # media-libs/exempi is seriously broken on big endian platforms.
 # https://gitlab.freedesktop.org/libopenraw/exempi/-/merge_requests/8#note_2277243
+app-text/papers
 dev-python/python-xmp-toolkit
 media-libs/exempi
 
@@ -87,7 +109,6 @@ media-gfx/alembic
 games-fps/freedoom
 games-engines/odamex
 games-engines/uzdoom
-games-fps/chocolate-doom
 games-fps/crispy-doom
 games-fps/freedoom-data
 media-libs/zmusic
@@ -132,6 +153,17 @@ dev-libs/weston
 # in big-endian package.use.mask:
 # Hard depends on gui-libs/gtk[wayland] since version 48.3
 >=gnome-base/gnome-control-center-48.3
+>=gnome-base/gnome-shell-48.5
+app-eselect/eselect-gnome-shell-extensions
+gnome-base/gdm
+gnome-extra/gnome-browser-connector
+gnome-extra/gnome-shell-extension-appindicator
+gnome-extra/gnome-shell-extension-dash-to-panel
+gnome-extra/gnome-shell-extension-gsconnect
+gnome-extra/gnome-shell-extension-pop-shell
+gnome-extra/gnome-shell-extensions
+gnome-extra/gnome-tweaks
+
 # Hard depends on gui-libs/gtk[X,wayland] since atleast version 47.4
 gnome-base/nautilus
 # gnome-base/nautilus reverse-dependencies
@@ -144,6 +176,7 @@ gnome-base/gnome
 media-gfx/gthumb
 media-sound/rhythmbox
 media-sound/sound-juicer
+>=x11-wm/mutter-50
 
 # matoro <matoro_gentoo@matoro.tk> (2023-04-10)
 # Explicit no-support for BE (#801238)

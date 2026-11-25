@@ -1,15 +1,30 @@
-diff -Naur wmcpuwatch-0.2.orig/CMakeLists.txt wmcpuwatch-0.2/CMakeLists.txt
---- wmcpuwatch-0.2.orig/CMakeLists.txt	2017-09-03 13:58:43.000000000 +0200
-+++ wmcpuwatch-0.2/CMakeLists.txt	2018-01-01 22:28:19.108393247 +0100
-@@ -26,6 +26,7 @@
+From: Bernard Cafarelli <voyageur@gentoo.org>
+Date: Mon, 1 Jan 2018 22:45:14 +0100
+Subject: [PATCH] CMake fixes
+
+Raise CMake minimum version to 3.10
+Handle documentation installation in the ebuild
+Add PROJECT_BINARY_DIR in include directories (to find config.h)
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,6 +1,6 @@
+ #
+ # Define CMake minimum
+-cmake_minimum_required(VERSION 3.9)
++cmake_minimum_required(VERSION 3.10)
+ 
+ #
+ # Project Name: wmcpuwatch
+@@ -26,6 +26,7 @@ configure_file(
  #
  # Define include directories
  include_directories(
-+	"${PROJECT_BINARY_DIR}"
++    "${PROJECT_BINARY_DIR}"
      ${DOCKAPP_INCLUDE_DIR}
      ${X11_X11_INCLUDE_PATH})
  
-@@ -56,8 +57,6 @@
+@@ -56,8 +57,6 @@ target_link_libraries(wmcpuwatch
  install(TARGETS wmcpuwatch RUNTIME DESTINATION bin)
  install(FILES wmcpuwatch.1 DESTINATION share/man/man1)
  install(FILES wmcpuwatch.desktop DESTINATION share/applications)
@@ -18,10 +33,9 @@ diff -Naur wmcpuwatch-0.2.orig/CMakeLists.txt wmcpuwatch-0.2/CMakeLists.txt
  
  #
  # Create a source tarball using CPack
-diff -Naur wmcpuwatch-0.2.orig/doc/CMakeLists.txt wmcpuwatch-0.2/doc/CMakeLists.txt
---- wmcpuwatch-0.2.orig/doc/CMakeLists.txt	2017-09-03 12:00:37.000000000 +0200
-+++ wmcpuwatch-0.2/doc/CMakeLists.txt	2018-01-01 22:33:00.690614708 +0100
-@@ -20,9 +20,6 @@
+--- a/doc/CMakeLists.txt
++++ b/doc/CMakeLists.txt
+@@ -20,9 +20,6 @@ if (DOXYGEN_FOUND)
          WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
          COMMENT "Generating code documentation"
          VERBATIM)

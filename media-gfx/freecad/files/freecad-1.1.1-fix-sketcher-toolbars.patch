@@ -1,0 +1,48 @@
+From 4859a133b1a9179bf313fa60dd6e66dc422709b9 Mon Sep 17 00:00:00 2001
+From: ayyaz20003 <81612629+ayyaz20003@users.noreply.github.com>
+Date: Sat, 4 Apr 2026 07:28:49 +0500
+Subject: [PATCH] Gui: Fix Sketcher toolbar state not persisting across
+ workbench switches (#28674)
+
+--- a/src/Gui/ToolBarManager.cpp
++++ b/src/Gui/ToolBarManager.cpp
+@@ -844,21 +844,8 @@ void ToolBarManager::onTimer()
+ void ToolBarManager::saveState() const
+ {
+     auto ignoreSave = [](QAction* action) {
+-        // If the toggle action is invisible then it's controlled by the application.
+-        // In this case the current state is not saved.
+-        if (!action->isVisible()) {
+-            return true;
+-        }
+-
+-        QVariant property = action->property("DefaultVisibility");
+-        if (property.isNull()) {
+-            return false;
+-        }
+-
+-        // If DefaultVisibility is Unavailable then never save the state because it's
+-        // always controlled by the client code.
+-        auto value = static_cast<ToolBarItem::DefaultVisibility>(property.toInt());
+-        return value == ToolBarItem::DefaultVisibility::Unavailable;
++        // Only save state for toolbars whose toggle action is user-visible.
++        return !action->isVisible();
+     };
+ 
+     QList<ToolBar*> toolbars = toolBars();
+From 7db3f901fdbe427868c5732d43957298f24e342b Mon Sep 17 00:00:00 2001
+From: theo-vt <theo.veilleux.trinh@proton.me>
+Date: Thu, 12 Feb 2026 16:43:44 -0500
+Subject: [PATCH] Fix diapearing sketcher tools
+
+--- a/src/Mod/Sketcher/Gui/ViewProviderSketch.cpp
++++ b/src/Mod/Sketcher/Gui/ViewProviderSketch.cpp
+@@ -3915,8 +3915,6 @@ void ViewProviderSketch::unsetEdit(int ModNum)
+     auto gridnode = getGridNode();
+     pcRoot->removeChild(gridnode);
+ 
+-    Workbench::leaveEditMode();
+-
+     if (listener) {
+         Gui::getMainWindow()->removeEventFilter(listener.get());
+         listener.reset();

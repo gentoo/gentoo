@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -22,6 +22,10 @@ SLOT="2"
 IUSE="debug"
 # Fails w/ connection refused to just-spawned daemon
 RESTRICT="test"
+
+PATCHES=(
+	"${FILESDIR}/${P}-musl.patch"
+)
 
 src_configure() {
 	local myeconfargs=(

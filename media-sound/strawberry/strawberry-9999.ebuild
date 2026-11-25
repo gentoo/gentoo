@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,7 +15,7 @@ else
 	KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 fi
 
-LICENSE="GPL-3 discord? ( MIT )"
+LICENSE="GPL-3"
 SLOT="0"
 IUSE="alsa cdda chromaprint +dbus debug discord kde +loudness ipod moodbar mtp +pulseaudio streaming test X"
 RESTRICT="!test? ( test )"
@@ -25,7 +25,8 @@ COMMON_DEPEND="
 	dev-db/sqlite:3
 	dev-libs/glib:2
 	dev-libs/icu:=
-	dev-libs/kdsingleapplication[qt6(+)]
+	dev-libs/kdsingleapplication:=[qt6(+)]
+	dev-libs/openssl:=
 	dev-qt/qtbase:6[concurrent,dbus?,gui,network,ssl,sql,sqlite,widgets,X?]
 	media-libs/taglib:=
 	media-libs/gstreamer:1.0
@@ -53,7 +54,6 @@ RDEPEND="${COMMON_DEPEND}
 DEPEND="${COMMON_DEPEND}
 	dev-cpp/sparsehash
 	dev-libs/boost
-	discord? ( dev-libs/rapidjson )
 	test? ( dev-cpp/gtest )
 "
 BDEPEND="
@@ -88,13 +88,16 @@ src_configure() {
 		-DENABLE_DEBUG_OUTPUT="$(usex debug)"
 		-DENABLE_DISCORD_RPC="$(usex discord)"
 		-DENABLE_KGLOBALACCEL_GLOBALSHORTCUTS=$(usex kde)
-		-DENABLE_SONGFINGERPRINTING="$(usex chromaprint)"
-		-DENABLE_MUSICBRAINZ="$(usex chromaprint)"
+		-DENABLE_CHROMAPRINT="$(usex chromaprint)"
+		-DENABLE_SONGTRACKING="$(usex chromaprint)"
+		-DENABLE_TAGFETCHER="$(usex chromaprint)"
 		-DENABLE_X11_GLOBALSHORTCUTS="$(usex X)"
 		-DENABLE_AUDIOCD="$(usex cdda)"
 		-DENABLE_MTP="$(usex mtp)"
 		-DENABLE_GPOD="$(usex ipod)"
 		-DENABLE_MOODBAR="$(usex moodbar)"
+		-DENABLE_GSTFASTSPECTRUM="$(usex moodbar)"
+		-DENABLE_WAVEFORM="$(usex moodbar)"
 		-DENABLE_EBUR128="$(usex loudness)"
 		-DENABLE_SUBSONIC="$(usex streaming)"
 		-DENABLE_TIDAL="$(usex streaming)"

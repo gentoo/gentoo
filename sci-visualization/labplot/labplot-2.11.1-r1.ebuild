@@ -45,7 +45,7 @@ DEPEND="
 	>=kde-frameworks/kxmlgui-${KFMIN}:6
 	>=kde-frameworks/syntax-highlighting-${KFMIN}:6
 	>=sci-libs/gsl-1.15:=
-	eigen? ( dev-cpp/eigen:3= )
+	eigen? ( dev-cpp/eigen:= )
 	xlsx? ( dev-libs/qxlsx:= )
 	fftw? ( sci-libs/fftw:3.0= )
 	fits? ( sci-libs/cfitsio:= )

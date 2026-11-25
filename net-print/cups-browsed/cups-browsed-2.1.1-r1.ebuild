@@ -12,7 +12,7 @@ SRC_URI="https://github.com/OpenPrinting/cups-browsed/releases/download/${PV}/${
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
-IUSE="test zeroconf"
+IUSE="test selinux zeroconf"
 
 RDEPEND="
 	dev-libs/glib:2
@@ -27,6 +27,7 @@ BDEPEND="
 	>=sys-devel/gettext-0.18.3
 	virtual/pkgconfig
 "
+RDEPEND+=" selinux? ( sec-policy/selinux-cups )"
 
 # The tests are new since the split out of cups-filters. Actually running them
 # seems to be challenging. You need:

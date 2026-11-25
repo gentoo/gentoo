@@ -1,10 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 PYTHON_COMPAT=( python3_{11..13} )
-
 inherit cmake python-any-r1
 
 DESCRIPTION="High-performance file management over WebDAV/HTTP"
@@ -13,32 +12,29 @@ SRC_URI="https://github.com/cern-fts/${PN}/releases/download/R_${PV//./_}/${P}.t
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="doc test tools"
-RESTRICT="!test? ( test )"
-
-CDEPEND="
-		dev-libs/libxml2:2=
-		dev-libs/openssl:0=
-		dev-libs/rapidjson:0=
-		net-libs/gsoap[ssl,-gnutls]
-		net-misc/curl:0=
-		kernel_linux? ( sys-apps/util-linux )
-"
-
-DEPEND="${CDEPEND}"
-BDEPEND="
-		doc? (
-			app-text/doxygen[dot]
-			dev-python/sphinx
-		)
-		virtual/pkgconfig
-		${PYTHON_DEPS}
-"
-
-RDEPEND="${CDEPEND}"
 
 REQUIRED_USE="test? ( tools )"
+RESTRICT="!test? ( test )"
+
+RDEPEND="
+	dev-libs/libxml2:2=
+	dev-libs/openssl:0=
+	dev-libs/rapidjson:0=
+	net-libs/gsoap[ssl,-gnutls]
+	net-misc/curl:0=
+	kernel_linux? ( sys-apps/util-linux )
+"
+DEPEND="${RDEPEND}"
+BDEPEND="
+	doc? (
+		app-text/doxygen[dot]
+		dev-python/sphinx
+	)
+	virtual/pkgconfig
+	${PYTHON_DEPS}
+"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-cmake4.patch
@@ -49,7 +45,7 @@ src_prepare() {
 
 	for x in doc test; do
 		if ! use $x; then
-			sed -i -e "/add_subdirectory ($x)/d" CMakeLists.txt
+			cmake_comment_add_subdirectory $x
 		fi
 	done
 }

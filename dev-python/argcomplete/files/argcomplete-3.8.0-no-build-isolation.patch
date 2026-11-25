@@ -1,0 +1,13 @@
+diff --git a/test/test.py b/test/test.py
+index b48e9f9..7aaaf5f 100755
+--- a/test/test.py
++++ b/test/test.py
+@@ -1813,7 +1813,7 @@ class TestBashZshGlobalBase(TestBashZshBase):
+         with TempDir(prefix="test_dir_py", dir="."):
+             # Install the fixture outside the interactive shell so pip cannot change its terminal settings.
+             test_package = os.path.join(TEST_DIR, "test_package")
+-            install_command = [sys.executable, "-m", "pip", "install", test_package, "--target", "."]
++            install_command = ["pip", "install", test_package, "--target", ".", "--no-build-isolation"]
+             if not wheel:
+                 install_command.extend(["--no-binary", ":all:"])
+             subprocess.run(install_command, check=True)

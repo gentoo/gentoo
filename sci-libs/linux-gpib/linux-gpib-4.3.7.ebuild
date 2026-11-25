@@ -1,10 +1,10 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 GUILE_COMPAT=( 2-2 3-0 )
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{10..14} )
 DISTUTILS_EXT=1
 DISTUTILS_OPTIONAL=1
 DISTUTILS_USE_PEP517=setuptools
@@ -21,7 +21,7 @@ if [[ ${PV} == 9999 ]]; then
 else
 	SRC_URI="https://downloads.sourceforge.net/linux-gpib/${P}.tar.gz"
 	S="${WORKDIR}/${PN}-user-${PV}"
-	KEYWORDS="~amd64 ~arm ~x86"
+	KEYWORDS="amd64 ~arm ~x86"
 fi
 
 DESCRIPTION="Driver library for GPIB (IEEE 488.2) hardware"

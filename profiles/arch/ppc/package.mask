@@ -1,0 +1,6 @@
+# Copyright 1999-2026 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Alexey Sokolov <alexey+gentoo@asokolov.org> (2026-05-05)
+# New versions dropped support for 32 bits. Bug #973312
+dev-cpp/cpp-httplib

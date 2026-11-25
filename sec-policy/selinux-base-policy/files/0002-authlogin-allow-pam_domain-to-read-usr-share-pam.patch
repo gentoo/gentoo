@@ -1,0 +1,53 @@
+From 491cf6b28dfcc581880b02313609ab2338ce6766 Mon Sep 17 00:00:00 2001
+Message-ID: <491cf6b28dfcc581880b02313609ab2338ce6766.1783899089.git.sam@gentoo.org>
+In-Reply-To: <dee64f93c975515f6d8e286c3be776a7a57deba2.1783899089.git.sam@gentoo.org>
+References: <dee64f93c975515f6d8e286c3be776a7a57deba2.1783899089.git.sam@gentoo.org>
+From: Sam James <sam@gentoo.org>
+Date: Sun, 17 May 2026 01:50:48 +0100
+Subject: [PATCH 2/4] authlogin: allow pam_domain to read /usr/share/pam
+
+.. by allowing /usr overall. pam installs these configuration files there
+as its `vendordir`. It also does this since aea30822e2fa6f87faf2541da140f69dfdfee728.
+
+(I think that commit message isn't quite right: it seems to do this regardless
+of libeconf support.)
+
+This comes from auth_use_pam which sudo and su use:
+```
+AVC avc:  denied  { getattr } for  pid=239941 comm="su" path="/usr/share/pam/security/faillock.conf" dev="dm-0" ino=3227904748
+scontext=staff_u:sysadm_r:sysadm_su_t:s0-s0:c0.c1023
+tcontext=system_u:object_r:usr_t:s0
+tclass=file
+
+AVC avc:  denied  { read } for  pid=239938 comm="sudo" name="pam_env.conf" dev="dm-0" ino=3227906195
+scontext=staff_u:staff_r:staff_sudo_t:s0-s0:c0.c1023
+tcontext=system_u:object_r:usr_t:s0
+tclass=file
+```
+
+This is a followup to 169f725b3ff9988de5ab9b628fc45efb8b29d0b2.
+
+Bug: https://bugs.gentoo.org/973082
+See-also: https://github.com/SELinuxProject/refpolicy/pull/1125
+Signed-off-by: Sam James <sam@gentoo.org>
+Signed-off-by: Jason Zaman <perfinion@gentoo.org>
+(cherry picked from commit f8a10502c4d1edf1f9612ae4f543f94dc9fd8454)
+---
+ policy/modules/system/authlogin.te | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/policy/modules/system/authlogin.te b/policy/modules/system/authlogin.te
+index 7587fd4b5..a54fee6e0 100644
+--- a/policy/modules/system/authlogin.te
++++ b/policy/modules/system/authlogin.te
+@@ -259,6 +259,7 @@ auth_setattr_faillog_files(pam_domain)
+ auth_exec_pam(pam_domain)
+ 
+ files_read_etc_files(pam_domain)
++files_read_usr_files(pam_domain)
+ 
+ logging_send_audit_msgs(pam_domain)
+ logging_send_syslog_msg(pam_domain)
+-- 
+2.55.0
+

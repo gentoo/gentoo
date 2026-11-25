@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<use>
+		<flag name="bytestring-builder">Use ByteString Builders to construct ByteString outputs instead of
+the ByteString type itself. If you&#39;re regularly constructing large
+(&gt;50KB) bytestrings, enabling this can speed up your code. Otherwise,
+enabling this is likely to be a net slowdown.</flag>
+		<flag name="extended-benchmarks">Enable benchmarks for Interpolation and interpolatedstring-perl6</flag>
+		<flag name="text-builder">Use Text Builders to construct Text outputs instead of the
+Text type itself. If you&#39;re regularly constructing large (&gt;50KB)
+text objects, enabling this can speed up your code. Otherwise,
+enabling this is likely to be a net slowdown.</flag>
+	</use>
+	<upstream>
+		<remote-id type="hackage">string-interpolate</remote-id>
+		<remote-id type="gitlab">williamyaoh/string-interpolate</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -12,7 +12,7 @@ HOMEPAGE="https://rubygems.org/gems/sdoc"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~riscv ~sparc ~x86"
+KEYWORDS="~amd64 ~arm ppc ~riscv ~sparc ~x86"
 
 ruby_add_rdepend ">=dev-ruby/rdoc-5.0"
 

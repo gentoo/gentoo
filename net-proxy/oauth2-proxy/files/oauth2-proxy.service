@@ -1,0 +1,40 @@
+[Unit]
+Description=oauth2-proxy - OAuth2/OIDC authenticating reverse proxy
+Documentation=https://oauth2-proxy.github.io/oauth2-proxy/
+Wants=network-online.target
+After=network-online.target nss-lookup.target
+
+[Service]
+Type=exec
+DynamicUser=yes
+# The config usually contains secrets; it is passed as a credential so it can
+# stay root:root 0600.
+LoadCredential=oauth2-proxy.cfg:/etc/oauth2-proxy/oauth2-proxy.cfg
+ExecStart=/usr/bin/oauth2-proxy --config=${CREDENTIALS_DIRECTORY}/oauth2-proxy.cfg
+Restart=on-failure
+RestartSec=5
+
+CapabilityBoundingSet=
+LockPersonality=yes
+MemoryDenyWriteExecute=yes
+NoNewPrivileges=yes
+PrivateDevices=yes
+PrivateTmp=yes
+ProtectClock=yes
+ProtectControlGroups=yes
+ProtectHome=yes
+ProtectHostname=yes
+ProtectKernelLogs=yes
+ProtectKernelModules=yes
+ProtectKernelTunables=yes
+ProtectProc=invisible
+ProtectSystem=strict
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+RestrictNamespaces=yes
+RestrictRealtime=yes
+SystemCallArchitectures=native
+SystemCallFilter=@system-service
+SystemCallFilter=~@privileged @resources
+
+[Install]
+WantedBy=multi-user.target

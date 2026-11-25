@@ -1,0 +1,10 @@
+--- a/lttoolbox/sorted_vector.hpp	2026-04-28 13:07:16.872483211 +0200
++++ b/lttoolbox/sorted_vector.hpp	2026-04-28 13:08:00.256988347 +0200
+@@ -22,6 +22,7 @@
+ #include <vector>
+ #include <algorithm>
+ #include <functional>
++#include <iterator>
+ 
+ namespace detail {
+ 	template<typename ForwardIt, typename Comp>

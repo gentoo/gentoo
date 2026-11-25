@@ -1,0 +1,43 @@
+https://bugs.gentoo.org/978474
+https://rt.cpan.org/Public/Bug/Display.html?id=178571
+
+From: Jitka Plesnikova <jplesnik@redhat.com>
+Co-authored-by: Claude Opus 4.6 (Anthropic AI)
+Subject: Rename atfork_child to bdb_atfork_child to avoid collision with perl 5.43.2+
+
+Perl 5.43.2 introduced Perl_atfork_child() as a new API function and
+added a macro `atfork_child -> Perl_atfork_child` in embed.h. This
+causes a build failure because BDB.xs defines its own static
+atfork_child() function, which after macro expansion becomes a static
+redeclaration of the non-static Perl_atfork_child.
+
+Rename the local function to bdb_atfork_child to avoid the name
+collision.
+
+diff --git a/BDB.xs b/BDB.xs
+index 2424cc1..11c8b9e 100644
+--- a/BDB.xs
++++ b/BDB.xs
+@@ -986,7 +986,11 @@ static void atfork_parent (void)
+   X_UNLOCK (wrklock);
+ }
+
+-static void atfork_child (void)
++/* Perl 5.43.2+ defines atfork_child as a macro expanding to
++ * Perl_atfork_child. Use a different name to avoid the collision.
++ */
++#undef atfork_child
++static void bdb_atfork_child (void)
+ {
+   bdb_req prv;
+
+@@ -1441,7 +1445,7 @@ BOOT:
+
+         create_respipe ();
+
+-        X_THREAD_ATFORK (atfork_prepare, atfork_parent, atfork_child);
++        X_THREAD_ATFORK (atfork_prepare, atfork_parent, bdb_atfork_child);
+         patch_errno ();
+ }
+
+

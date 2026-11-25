@@ -1,0 +1,54 @@
+diff --git a/setup.py b/setup.py
+index 5b96127..1accfc0 100644
+--- a/setup.py
++++ b/setup.py
+@@ -10,11 +10,11 @@ DEFINES = [("NDEBUG", None), ("SIMDJSON_ENABLE_NAN_INF", "1")]
+ ext = Extension(
+     "fastsimdjson",
+     # src/fastsimdjson.cpp includes vendor/simdjson.cpp (a unity build).
+-    sources=["src/fastsimdjson.cpp", "vendor/simdutf.cpp"],
+-    depends=["vendor/simdjson.cpp", "vendor/simdjson.h", "vendor/simdutf.h",
+-             "vendor/zmij.h", "vendor/zmij.cc"],
+-    include_dirs=["vendor"],
++    sources=["src/fastsimdjson.cpp"],
++    depends=[],
++    include_dirs=[],
+     language="c++",
++    libraries=["simdjson", "simdutf", "zmij"],
+     define_macros=DEFINES,
+ )
+ 
+@@ -23,15 +23,8 @@ class BuildExt(build_ext):
+     def build_extensions(self):
+         msvc = self.compiler.compiler_type == "msvc"
+         args = ["/std:c++17", "/O2", "/EHsc", "/utf-8"] if msvc else ["-std=c++17", "-O3"]
+-        # zmij (float formatting) is compiled as C++14: some compilers reject
+-        # its constant tables in C++17 mode.
+-        zmij_args = ["/std:c++14", "/O2", "/EHsc"] if msvc else ["-std=c++14", "-O3"]
+-        zmij = self.compiler.compile([os.path.join("vendor", "zmij.cc")],
+-                                     output_dir=self.build_temp, include_dirs=["vendor"],
+-                                     macros=[("NDEBUG", None)], extra_postargs=zmij_args)
+         for e in self.extensions:
+             e.extra_compile_args = args
+-            e.extra_objects = list(zmij)
+         super().build_extensions()
+ 
+ 
+diff --git a/src/fastsimdjson.cpp b/src/fastsimdjson.cpp
+index f7fcf2b..c273e26 100644
+--- a/src/fastsimdjson.cpp
++++ b/src/fastsimdjson.cpp
+@@ -30,10 +30,9 @@
+ 
+ // simdjson.cpp is compiled here (a unity build) so that dumps can call its
+ // float-to-decimal routine, dtoa_impl::dragonbox, directly.
+-#include "simdjson.h"
+-#include "simdjson.cpp"
+-#include "simdutf.h"
+-#include "zmij.h" // shortest float digits for dumps and dumpb (vendor/zmij.cc)
++#include <simdjson.h>
++#include <simdutf.h>
++#include <zmij.h> // shortest float digits for dumps and dumpb (vendor/zmij.cc)
+ 
+ #ifdef _MSC_VER
+ #include <intrin.h>

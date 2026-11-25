@@ -20,12 +20,14 @@ python3_7		dead	3.7
 python3_8		dead	3.8
 python3_9		dead	3.9
 python3_10		dead	3.10
-python3_11		old	3.11
+python3_11		dead	3.11
 python3_12		old	3.12
-python3_13		current	3.13
-python3_13t		experimental	3.13t
-python3_14		supported	3.14
+python3_13		old	3.13
+python3_13t		dead	3.13t
+python3_14		current	3.14
 python3_14t		experimental	3.14t
+python3_15		experimental	3.15
+python3_15t		experimental	3.15t
 
 pypy1_8	2.7-pypy-1.8	dead	p1.8
 pypy1_9	2.7-pypy-1.9	dead	p1.9
@@ -33,7 +35,8 @@ pypy2_0	2.7-pypy-2.0	dead	p2.0
 
 pypy		dead	pypy
 pypy3		dead	pypy3
-pypy3_11		experimental	pypy3_11
+pypy3_11		dead	pypy3_11
+pypy3_12		experimental	pypy3_12
 
 jython2_5	2.5-jython	dead	j2.5
 jython2_7	2.7-jython	dead	j2.7

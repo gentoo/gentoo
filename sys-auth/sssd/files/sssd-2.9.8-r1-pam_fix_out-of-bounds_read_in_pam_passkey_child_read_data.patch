@@ -1,0 +1,117 @@
+From 73e53fbe95435569ee8620f651f8936b519098ae Mon Sep 17 00:00:00 2001
+From: Xu Raoqing <609179072@qq.com>
+Date: Tue, 21 Apr 2026 16:49:05 +0800
+Subject: [PATCH 1/2] pam: fix out-of-bounds read in
+ pam_passkey_child_read_data
+
+The pam_passkey_child_read_data() function failed to properly handle
+raw bytes received from a pipe. The data was treated as a NUL-terminated
+C string without explicit termination, resulting in an out-of-bounds read
+when processed by snprintf() with %s format.
+
+Fix by using memcpy instead of snprintf and explicitly NUL-terminating
+the buffer. Add checks for buf_len == 0 or buf == NULL to avoid undefined
+behavior. Check the return value of sss_authtok_set_passkey_reply and
+propagate errors properly.
+
+Fixes: CVE-2026-6245
+
+:relnote: Security fix for CVE-2026-6245: out-of-bounds read in PAM passkey responder
+
+Reviewed-by: Alexey Tikhonov <atikhono@redhat.com>
+Reviewed-by: Iker Pedrosa <ipedrosa@redhat.com>
+Reviewed-by: Sumit Bose <sbose@redhat.com>
+(cherry picked from commit 550b08cabe4dd5508c7ea74f634869374204d63f)
+---
+ src/responder/pam/pamsrv_passkey.c | 18 ++++++++++++++----
+ 1 file changed, 14 insertions(+), 4 deletions(-)
+
+diff --git a/src/responder/pam/pamsrv_passkey.c b/src/responder/pam/pamsrv_passkey.c
+index ab8da72eee0..d1446868440 100644
+--- a/src/responder/pam/pamsrv_passkey.c
++++ b/src/responder/pam/pamsrv_passkey.c
+@@ -814,16 +814,26 @@ static void pam_passkey_child_read_data(struct tevent_req *subreq)
+         return;
+     }
+ 
+-    str = malloc(sizeof(char) * buf_len);
+-    if (str == NULL) {
++    if (buf_len == 0 || buf == NULL) {
++        tevent_req_error(req, EINVAL);
+         return;
+     }
+ 
+-    snprintf(str, buf_len, "%s", buf);
++    str = malloc(buf_len + 1);
++    if (str == NULL) {
++        tevent_req_error(req, ENOMEM);
++        return;
++    }
+ 
+-    sss_authtok_set_passkey_reply(state->pd->authtok, str, 0);
++    memcpy(str, buf, buf_len);
++    str[buf_len] = '\0';
+ 
++    ret = sss_authtok_set_passkey_reply(state->pd->authtok, str, 0);
+     free(str);
++    if (ret != EOK) {
++        tevent_req_error(req, ret);
++        return;
++    }
+ 
+     tevent_req_done(req);
+     return;
+
+From 50436ace215bf46ccbfcb070fd3565a19ea223bc Mon Sep 17 00:00:00 2001
+From: Alexey Tikhonov <atikhono@redhat.com>
+Date: Wed, 22 Apr 2026 13:03:48 +0200
+Subject: [PATCH 2/2] PAM/PASSKEY: avoid unnecessary memcpy
+
+`sss_authtok_set_passkey_reply()` -> `sss_authtok_set_string()` handles
+non NULL-terminated buffer correctly.
+
+Reviewed-by: Iker Pedrosa <ipedrosa@redhat.com>
+Reviewed-by: Sumit Bose <sbose@redhat.com>
+(cherry picked from commit 3b0b16e96728b3d2f8ddd8c0ee67b92ec210d44f)
+---
+ src/responder/pam/pamsrv_passkey.c | 16 +++-------------
+ 1 file changed, 3 insertions(+), 13 deletions(-)
+
+diff --git a/src/responder/pam/pamsrv_passkey.c b/src/responder/pam/pamsrv_passkey.c
+index d1446868440..57f37110c8d 100644
+--- a/src/responder/pam/pamsrv_passkey.c
++++ b/src/responder/pam/pamsrv_passkey.c
+@@ -801,7 +801,6 @@ static void pam_passkey_child_read_data(struct tevent_req *subreq)
+ {
+     uint8_t *buf;
+     ssize_t buf_len;
+-    char *str;
+     struct tevent_req *req = tevent_req_callback_data(subreq,
+                                                       struct tevent_req);
+     struct pam_passkey_auth_send_state *state = tevent_req_data(req, struct pam_passkey_auth_send_state);
+@@ -814,22 +813,13 @@ static void pam_passkey_child_read_data(struct tevent_req *subreq)
+         return;
+     }
+ 
+-    if (buf_len == 0 || buf == NULL) {
++    if (buf_len <= 0 || buf == NULL) {
+         tevent_req_error(req, EINVAL);
+         return;
+     }
+ 
+-    str = malloc(buf_len + 1);
+-    if (str == NULL) {
+-        tevent_req_error(req, ENOMEM);
+-        return;
+-    }
+-
+-    memcpy(str, buf, buf_len);
+-    str[buf_len] = '\0';
+-
+-    ret = sss_authtok_set_passkey_reply(state->pd->authtok, str, 0);
+-    free(str);
++    ret = sss_authtok_set_passkey_reply(state->pd->authtok,
++                                        (const char*)buf, (size_t)buf_len);
+     if (ret != EOK) {
+         tevent_req_error(req, ret);
+         return;

@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,10 +15,18 @@ if [[ ${PV} == 9999 ]] ; then
 	inherit git-r3
 	MY_P="imagemagick-9999"
 else
+	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/imagemagick.asc
+	inherit verify-sig
+
 	MY_PV="$(ver_rs 3 '-')"
 	MY_P="ImageMagick-${MY_PV}"
-	SRC_URI="mirror://imagemagick/${MY_P}.tar.xz"
+	SRC_URI="
+		mirror://imagemagick/${MY_P}.tar.xz
+		verify-sig? ( mirror://imagemagick/${MY_P}.tar.xz.asc )
+	"
+
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~arm64-macos ~x64-macos ~x64-solaris"
+	BDEPEND="verify-sig? ( sec-keys/openpgp-keys-imagemagick )"
 fi
 
 S="${WORKDIR}/${MY_P}"
@@ -27,10 +35,12 @@ LICENSE="imagemagick"
 # Please check this on bumps, SONAME is often not updated! Use abidiff on old/new.
 # If ABI is broken, change the bit after the '-'.
 SLOT="0/$(ver_cut 1-3)-18"
-IUSE="bzip2 corefonts +cxx djvu fftw fontconfig fpx graphviz hardened hdri heif"
-IUSE+=" jbig jpeg jpeg2k jpegxl lcms lqr lzma opencl openexr openmp pango perl ${GENTOO_PERL_USESTRING}"
-IUSE+=" +png postscript q32 q8 raw static-libs svg test tiff truetype webp wmf"
-IUSE+=" X xml zip zlib"
+IUSE="
+	bzip2 corefonts +cxx djvu fftw fontconfig fpx graphviz hardened hdri heif
+	jbig jpeg jpeg2k jpegxl lcms lqr lzma opencl openexr openmp pango perl ${GENTOO_PERL_USESTRING}
+	+png postscript q32 q8 raw static-libs svg test tiff truetype webp wmf
+	X xml zip zlib
+"
 
 REQUIRED_USE="
 	corefonts? ( truetype )
@@ -93,7 +103,7 @@ DEPEND="
 	${RDEPEND}
 	X? ( x11-base/xorg-proto )
 "
-BDEPEND="virtual/pkgconfig"
+BDEPEND+=" virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-9999-nocputuning.patch"
@@ -131,9 +141,6 @@ src_configure() {
 
 	[[ ${CHOST} == *-solaris* ]] && append-ldflags -lnsl -lsocket
 
-	# Workaround for bug #941208 (gcc PR117100)
-	tc-is-gcc && [[ $(gcc-major-version) == 13 ]] && append-flags -fno-unswitch-loops
-
 	local myeconfargs=(
 		$(use_enable static-libs static)
 		$(use_enable hdri)
@@ -151,7 +158,7 @@ src_configure() {
 		$(use_with zip)
 		$(use_with zlib)
 		--without-autotrace
-		--with-uhdr
+		--without-uhdr
 		$(use_with postscript dps)
 		$(use_with djvu)
 		--with-dejavu-font-dir="${EPREFIX}"/usr/share/fonts/dejavu
@@ -198,27 +205,31 @@ src_compile() {
 }
 
 src_test() {
-	# Install default (unrestricted) policy in $HOME for test suite, bug #664238
-	local _im_local_config_home="${HOME}/.config/ImageMagick"
-	mkdir -p "${_im_local_config_home}" || \
-		die "Failed to create IM config dir in '${_im_local_config_home}'"
-	cp "${FILESDIR}"/policy.test.xml "${_im_local_config_home}/policy.xml" || \
-		die "Failed to install default blank policy.xml in '${_im_local_config_home}'"
+	# Install default (unrestricted) policy for the test suite, bug #664238
+	#
+	# IM has to be coerced into not looking at the system policy.xml
+	# last. With this, it will look at the one in ${S}/config, the system
+	# one if it exists, then our generous one for tests.
+	local -x XDG_CONFIG_HOME="${T}"
+	local -x MAGICK_HOME="${T}"/ImageMagick
+	local -x MAGICK_CONFIGURE_PATH="${T}"/ImageMagick
 
-	local im_command= IM_COMMANDS=()
-	if [[ ${PV} == 9999 ]] ; then
-		IM_COMMANDS+=( "magick -version" ) # Show version we are using -- cannot verify because of live ebuild
-	else
-		IM_COMMANDS+=( "magick -version | grep -q -- \"${MY_PV}\"" ) # Verify that we are using version we just built
-	fi
-	IM_COMMANDS+=( "magick -list policy" ) # Verify that policy.xml is used
-	IM_COMMANDS+=( "emake check" ) # Run tests
+	sed -i -e '/MAGICK_CONFIGURE_PATH/d' magick.sh common.shi || die
 
-	for im_command in "${IM_COMMANDS[@]}"; do
-		eval "${S}"/magick.sh \
-			${im_command} || \
-			die "Failed to run \"${im_command}\""
-	done
+	mkdir "${XDG_CONFIG_HOME}"/ImageMagick || die
+	mv "${S}"/config/policy.xml{,.bak} || die
+	cp "${S}"/config/policy{-open,}.xml || die
+	cp "${FILESDIR}"/policy.test.xml "${XDG_CONFIG_HOME}"/ImageMagick/policy.xml || die
+
+	local ret=0
+	(
+		# Make sure we use the just-built IM
+		. "${S}"/magick.sh
+		nonfatal emake check
+	) || ret=$?
+
+	mv "${S}"/config/policy.xml{.bak,} || die
+	(( ${ret} == 0 )) || die "emake check failed"
 }
 
 src_install() {
@@ -242,7 +253,7 @@ src_install() {
 	find "${ED}" -name '*.la' -exec sed -i -e "/^dependency_libs/s:=.*:='':" {} + || die
 
 	if use opencl; then
-		cat <<-EOF > "${T}"/99${PN}
+		cat <<-EOF > "${T}"/99${PN} || die
 		SANDBOX_PREDICT="/dev/nvidiactl:/dev/nvidia-uvm:/dev/ati/card:/dev/dri/card:/dev/dri/card0:/dev/dri/renderD128"
 		EOF
 

@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -27,9 +27,10 @@ LICENSE="Apache-2.0"
 LICENSE+=" BSD ECL-2.0 MIT CC0-1.0"
 SLOT="0"
 
-IUSE='dynamicdns dns-alidns dns-azure dns-cloudflare dns-cloudns dns-digitalocean dns-duckdns dns-dynv6 dns-gandi dns-godaddy dns-googleclouddns dns-he dns-hetzner dns-huaweicloud dns-linode dns-mailinabox dns-namecheap dns-netcup dns-netlify dns-ovh dns-porkbun dns-powerdns dns-rfc2136 dns-route53 dns-vultr events-handlers-exec security webdav'
+IUSE='dynamicdns dns-alidns dns-azure dns-cloudflare dns-cloudns dns-digitalocean dns-duckdns dns-dynv6 dns-gandi dns-godaddy dns-googleclouddns dns-he dns-hetzner dns-huaweicloud dns-linode dns-mailinabox dns-namecheap dns-netcup dns-netlify dns-oraclecloud dns-ovh dns-porkbun dns-powerdns dns-rfc2136 dns-route53 dns-unifi dns-vultr events-handlers-exec security webdav'
 RESTRICT="test"
 
+BDEPEND=">=dev-lang/go-1.26.0"
 RDEPEND="
 	acct-user/http
 	acct-group/http"
@@ -73,11 +74,13 @@ src_unpack() {
 	use dns-namecheap && { MOOMODULES[namecheap]="github.com/caddy-dns/namecheap" || die ; }
 	use dns-netcup && { MOOMODULES[netcup]="github.com/caddy-dns/netcup" || die ; }
 	use dns-netlify && { MOOMODULES[netlify]="github.com/caddy-dns/netlify" || die ; }
+	use dns-oraclecloud && { MOOMODULES[oracle]="github.com/caddy-dns/oraclecloud" || die ; }
 	use dns-ovh && { MOOMODULES[ovh]="github.com/caddy-dns/ovh" || die ; }
 	use dns-porkbun && { MOOMODULES[porkbun]="github.com/caddy-dns/porkbun" || die ; }
 	use dns-powerdns && { MOOMODULES[powerdns]="github.com/caddy-dns/powerdns" || die ; }
 	use dns-rfc2136 && { MOOMODULES[rfc]="github.com/caddy-dns/rfc2136" || die ; }
 	use dns-route53 && { MOOMODULES[route53]="github.com/caddy-dns/route53" || die ; }
+	use dns-unifi && { MOOMODULES[unifi]="github.com/caddy-dns/unifi" || die ; }
 	use dns-vultr && { MOOMODULES[vultr]="github.com/caddy-dns/vultr" || die ; }
 
 	export MY_MODULES="${MOOMODULES[@]}" || die
@@ -90,7 +93,7 @@ src_unpack() {
 		pushd "${P}" || die
 		for moo in ${MY_MODULES}; do
 			add_custom_module "${moo}"
-			ego get "${moo}"
+			ego get -x "${moo}"
 		done
 		popd || die
 
@@ -101,7 +104,7 @@ src_unpack() {
 
 		go-module_live_vendor
 	else
-		default
+		go-module_src_unpack
 	fi
 }
 

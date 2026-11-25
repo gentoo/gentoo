@@ -1,9 +1,9 @@
-# Copyright 2022-2025 Gentoo Authors
+# Copyright 2022-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 inherit fortran-2 cmake flag-o-matic python-single-r1
 
 MYP=HepMC3-${PV}
@@ -22,11 +22,12 @@ fi
 
 LICENSE="GPL-3+"
 SLOT="3"
-IUSE="doc test examples python root static-libs"
+IUSE="doc test examples protobuf python root static-libs"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="
+	protobuf? ( dev-libs/protobuf:= )
 	python? (
 		${PYTHON_DEPS}
 		$(python_gen_cond_dep '
@@ -69,6 +70,7 @@ src_configure() {
 	local mycmakeargs=(
 		-DHEPMC3_PYTHON_VERSIONS="${EPYTHON/python/}"
 		-DHEPMC3_ENABLE_ROOTIO=$(usex root ON OFF)
+		-DHEPMC3_ENABLE_PROTOBUFIO=$(usex protobuf ON OFF)
 		-DHEPMC3_ENABLE_PYTHON=$(usex python ON OFF)
 		-DHEPMC3_ENABLE_TEST=$(usex test ON OFF)
 		-DHEPMC3_BUILD_DOCS=$(usex doc ON OFF)

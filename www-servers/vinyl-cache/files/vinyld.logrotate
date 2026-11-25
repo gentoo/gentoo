@@ -1,0 +1,31 @@
+/var/log/vinyl/vinylncsa.log {
+	daily
+	rotate 31
+	copytruncate
+	dateext
+	dateyesterday
+	delaycompress
+	compress
+	notifempty
+	missingok
+
+	prerotate
+		/etc/init.d/vinylncsa -q status && /etc/init.d/vinylncsa -q flush
+	endscript
+}
+
+/var/log/vinyl/vinyllog.log {
+	daily
+	rotate 31
+	copytruncate
+	dateext
+	dateyesterday
+	delaycompress
+	compress
+	notifempty
+	missingok
+
+	prerotate
+		/etc/init.d/vinyllog -q status && /etc/init.d/vinyllog -q flush
+	endscript
+}

@@ -139,6 +139,9 @@ PATCHES=(
 
 	# 915041
 	"${FILESDIR}/audacity-3.7.0-do-not-include-template-on-unix-to-fix-clang-compile.patch"
+
+	# 974359
+	"${FILESDIR}/audacity-3.7.7-fix_rapidjson.patch"
 )
 
 src_prepare() {

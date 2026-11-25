@@ -1,0 +1,6 @@
+# Copyright 2026 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2026-06-09)
+# Needs v7 for asm
+dev-libs/leancrypto asm

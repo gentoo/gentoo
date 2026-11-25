@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,7 +8,7 @@ inherit desktop flag-o-matic toolchain-funcs
 DESCRIPTION="Multi-player 2D client/server space game"
 HOMEPAGE="http://www.xpilot.org/"
 SRC_URI="
-	https://dev.gentoo.org/~ionen/distfiles/${PN}.png
+	https://distfiles.gentoo.org/pub/dev/ionen@gentoo.org/${PN}.png
 	https://downloads.sourceforge.net/xpilotgame/${P}.tar.bz2"
 
 LICENSE="GPL-2+"

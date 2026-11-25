@@ -1,10 +1,10 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 inherit desktop distutils-r1 git-r3 optfeature xdg
 
 DESCRIPTION="GTK image viewer for comic book archives"
@@ -54,7 +54,7 @@ pkg_postinst() {
 	xdg_pkg_postinst
 
 	optfeature "RAR (.cbr) archives" app-arch/unrar
-	optfeature "7Zip archives" app-arch/p7zip
+	optfeature "7Zip archives" app-arch/7zip
 	optfeature "LHA/LZA archives" app-arch/lha
 	optfeature "PDF files" app-text/mupdf
 }

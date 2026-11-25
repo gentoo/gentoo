@@ -6,7 +6,8 @@
 		<name>Gentoo KDE Project</name>
 	</maintainer>
 	<upstream>
-		<bugs-to>https://bugs.kde.org/</bugs-to>
+		<bugs-to>https://bugs.kde.org/enter_bug.cgi?product=ktorrent</bugs-to>
+		<remote-id type="kde-invent">network/libktorrent</remote-id>
 	</upstream>
 	<use>
 		<flag name="xfs">Enable XFS specific disk preallocation support via <pkg>sys-fs/xfsprogs</pkg></flag>

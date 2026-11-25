@@ -1,0 +1,13 @@
+The decompiler integration uses IModule.MetadataFile from the upstream
+locked dependency.
+Do not select the older 8.x API from the local feed.
+
+--- a/paket.dependencies
++++ b/paket.dependencies
+@@ -26,5 +26,5 @@
+ nuget Microsoft.CodeAnalysis
+ nuget FSharp.Analyzers.SDK
+-nuget ICSharpCode.Decompiler
++nuget ICSharpCode.Decompiler >= 11.1.0.9782
+ nuget Mono.Cecil >= 0.11.4
+ nuget FSharpLint.Core

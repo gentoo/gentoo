@@ -1,9 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{11..15} )
 
 inherit autotools eapi9-ver python-single-r1 udev systemd
 
@@ -36,9 +36,11 @@ IUSE="libusb lm-sensors mqtt networkmanager +pcre protobuf rtlsdr selinux +suid 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 # upstream said protobuf-26.1 breaks everything
-# details are unclear at this time but adding restriction for safety
+# 2026.10.1 should be the last release with protobuf support
 CDEPEND="
 	${PYTHON_DEPS}
+	app-arch/xz-utils
+	app-arch/zstd
 	mqtt? ( app-misc/mosquitto )
 	networkmanager? ( net-misc/networkmanager )
 	dev-libs/glib:2
@@ -46,7 +48,7 @@ CDEPEND="
 	dev-libs/openssl:=
 	virtual/zlib:=
 	dev-db/sqlite:3
-	net-libs/libwebsockets:=[client,lejp]
+	>=net-libs/libwebsockets-4.5.8-r1:=[client,lejp]
 	kernel_linux? ( sys-libs/libcap
 			dev-libs/libnl:3
 			net-libs/libpcap
@@ -60,8 +62,10 @@ CDEPEND="
 	')
 	lm-sensors? ( sys-apps/lm-sensors:= )
 	pcre? ( dev-libs/libpcre2:= )
+	rtlsdr? ( net-wireless/rtl-sdr:= )
 	suid? ( sys-libs/libcap )
-	ubertooth? ( net-wireless/ubertooth )
+	ubertooth? ( net-libs/libbtbb
+		net-wireless/ubertooth )
 	"
 RDEPEND="${CDEPEND}
 	acct-user/kismet
@@ -73,7 +77,7 @@ RDEPEND="${CDEPEND}
 		$(python_gen_cond_dep '
 			dev-python/numpy[${PYTHON_USEDEP}]
 		')
-		net-wireless/rtl-sdr:=
+		net-wireless/rtl_433
 	)
 	selinux? ( sec-policy/selinux-kismet )
 "
@@ -84,44 +88,39 @@ DEPEND="${CDEPEND}
 "
 BDEPEND="virtual/pkgconfig"
 
+QA_PREBUILT="
+	usr/share/kismet/firmware/morse/bcf_mm_hl2_ext.bin
+	usr/share/kismet/firmware/morse/bcf_mm_hl1_4v3.bin
+	usr/share/kismet/firmware/morse/bcf_mm_hl1.bin
+	usr/share/kismet/firmware/morse/bcf_mm8108_m20_us.bin
+	usr/share/kismet/firmware/morse/bcf_mf28551.bin
+	usr/share/kismet/firmware/morse/bcf_mf15457.bin
+	usr/share/kismet/firmware/morse/bcf_mf08651_us.bin
+	usr/share/kismet/firmware/morse/bcf_mf08651_jp.bin
+	usr/share/kismet/firmware/morse/bcf_mf08651_4v3_us.bin
+	usr/share/kismet/firmware/morse/bcf_aw_hm677.bin
+	usr/share/kismet/firmware/morse/bcf_aw_hm593_4v3.bin
+	usr/share/kismet/firmware/morse/bcf_aw_hm593.bin
+	usr/share/kismet/firmware/morse/mm8108b2-rl.bin
+"
+
 src_prepare() {
-	#sed -i -e "s:^\(logtemplate\)=\(.*\):\1=/tmp/\2:" \
-	#	conf/kismet_logging.conf || die
-
-	#sed -i -e 's#root#kismet#g' packaging/systemd/kismet.service.in
-
 	rm -r boost || die
 	rm -r fmt || die
-
-	# bundles mpack but I failed to successfully unbundle
-	# rm -r mpack || die
-
-	#dev-libs/jsoncpp
-	#rm -r json || die
-	#sed -i 's#"json/json.h"#<json/json.h>#' jsoncpp.cc kis_net_beast_httpd.h \
-	#	log_tools/kismetdb_clean.cc log_tools/kismetdb_dump_devices.cc \
-	#	log_tools/kismetdb_statistics.cc log_tools/kismetdb_to_gpx.cc \
-	#	log_tools/kismetdb_to_kml.cc log_tools/kismetdb_to_pcap.cc \
-	#	log_tools/kismetdb_to_wiglecsv.cc trackedcomponent.h \
-	#	trackedelement.h trackedelement_workers.h
 
 	default
 
 	if [ "${PV}" = "9999" ]; then
 		sed -i -e 's#-Wno-dangling-reference##g' configure.ac || die
 		eautoreconf
-	# Untested by should fix same in non-live
-	#else
-	#	sed -i -e 's#-Wno-unknown-warning-option ##g' configure || die
 	fi
-
-	#this was added to quiet macosx builds but it makes gcc builds noisier
-	sed -i -e 's#-Wno-unknown-warning-option ##g' Makefile.inc.in || die
 }
 
 src_configure() {
 	econf \
 		$(use_enable libusb libusb) \
+		$(use_enable libusb mm8108) \
+		$(use_enable libusb usbwifi) \
 		$(use_enable libusb wifi-coconut) \
 		$(use_enable mqtt mosquitto) \
 		$(use_enable pcre) \
@@ -129,6 +128,7 @@ src_configure() {
 		$(use_enable lm-sensors lmsensors) \
 		$(use_enable networkmanager libnm) \
 		$(use_enable protobuf) \
+		$(use_enable rtlsdr librtlsdr) \
 		$(use_enable ubertooth) \
 		$(use_enable wext linuxwext) \
 		--sysconfdir=/etc/kismet \

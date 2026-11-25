@@ -3,52 +3,48 @@
 
 EAPI=8
 
-CODENAME="Piers"
+# No new codename for 23.x as of 2026/10/24
+CODENAME=
 
 # libdvd{css,read,nav} are not unbundlable without patching the buildsystem.
 
 # Versions for the forked projects that are bundled
 # See tools/depends/target/<project>/<project>-VERSION
-LIBDVDCSS_VERSION="1.4.3-Next-Nexus-Alpha2-2"
-LIBDVDREAD_VERSION="6.1.3-Next-Nexus-Alpha2-2"
-LIBDVDNAV_VERSION="6.1.1-Next-Nexus-Alpha2-2"
-FFMPEG_VERSION="8.1"
+LIBDVDCSS_VERSION="1.5.0"
+LIBDVDNAV_VERSION="7.0.0"
+LIBDVDREAD_VERSION="7.0.1"
+FFMPEG_VERSION="9.0.2"
 
-# Java bundles from xbmc/interfaces/swig/CMakeLists.txt
-GROOVY_VERSION="4.0.26"
-APACHE_COMMON_LANG_VERSION="3.17.0"
-APACHE_COMMON_TEXT_VERSION="1.13.0"
-
-_JAVA_PKG_WANT_BUILD_VM=( {openjdk{,-jre},icedtea}{,-bin}-{8,11,17,21} )
-JAVA_PKG_WANT_BUILD_VM=${_JAVA_PKG_WANT_BUILD_VM[@]}
-# Required to be set, but not used.
-JAVA_PKG_WANT_SOURCE="21"
-JAVA_PKG_WANT_TARGET="21"
+# Allow bundled swig to avoid pins
+# See tools/depends/native/<project>/<project>-VERSION
+SWIG_VERSION="4.5.0"
 
 PYTHON_REQ_USE="sqlite,ssl"
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 
 # See cmake/scripts/common/ArchSetup.cmake for available options
-CPU_FLAGS="cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_sse3 cpu_flags_x86_sse4_1 cpu_flags_x86_sse4_2 cpu_flags_x86_avx cpu_flags_x86_avx2 cpu_flags_arm_neon"
+declare -ga CPU_FLAGS=( cpu_flags_{x86_{sse,sse2,sse3,ssse3,sse4_1,sse4_2,avx,avx2},arm_neon} )
 
-inherit autotools cmake desktop flag-o-matic java-pkg-2 libtool linux-info optfeature pax-utils python-single-r1 \
+inherit autotools cmake desktop flag-o-matic libtool linux-info optfeature pax-utils python-single-r1 \
 	toolchain-funcs xdg
 
 DESCRIPTION="A free and open source media-player and entertainment hub"
 HOMEPAGE="https://kodi.tv/"
 
 SRC_URI="
-	https://github.com/xbmc/libdvdnav/archive/${LIBDVDNAV_VERSION}.tar.gz
-		-> libdvdnav-${LIBDVDNAV_VERSION}.tar.gz
-	https://github.com/xbmc/libdvdread/archive/${LIBDVDREAD_VERSION}.tar.gz
-		-> libdvdread-${LIBDVDREAD_VERSION}.tar.gz
-	https://mirrors.kodi.tv/build-deps/sources/apache-groovy-binary-${GROOVY_VERSION}.zip
-	https://mirrors.kodi.tv/build-deps/sources/commons-lang3-${APACHE_COMMON_LANG_VERSION}-bin.tar.gz
-	https://mirrors.kodi.tv/build-deps/sources/commons-text-${APACHE_COMMON_TEXT_VERSION}-bin.tar.gz
-	https://ffmpeg.org/releases/ffmpeg-${FFMPEG_VERSION}.tar.xz
+	https://mirrors.kodi.tv/build-deps/sources/libdvdnav-${LIBDVDNAV_VERSION}.tar.bz2
+	https://mirrors.kodi.tv/build-deps/sources/libdvdread-${LIBDVDREAD_VERSION}.tar.bz2
 	css? (
-		https://github.com/xbmc/libdvdcss/archive/${LIBDVDCSS_VERSION}.tar.gz
-			-> libdvdcss-${LIBDVDCSS_VERSION}.tar.gz
+		https://mirrors.kodi.tv/build-deps/sources/libdvdcss-${LIBDVDCSS_VERSION}.tar.bz2
+	)
+	!system-ffmpeg? (
+		https://ffmpeg.org/releases/ffmpeg-${FFMPEG_VERSION}.tar.xz
+	)
+	system-ffmpeg? ( postproc? (
+		https://ffmpeg.org/releases/ffmpeg-${FFMPEG_VERSION}.tar.xz
+	) )
+	!system-swig? (
+		https://mirrors.kodi.tv/build-deps/sources/swig-${SWIG_VERSION}.tar.gz
 	)
 "
 if [[ ${PV} == *9999 ]] ; then
@@ -74,31 +70,29 @@ fi
 
 LICENSE="GPL-2+"
 # vendored dependencies
-# apache-groovy, common-lang3 and commons-text
-LICENSE+=" Apache-2.0"
 # libdvdnav, libdvdread and libdvdcss.
 LICENSE+=" GPL-2+"
 # ffmpeg built as USE="gpl"
-LICENSE+=" GPL-2"
+LICENSE+=" !system-ffmpeg? ( GPL-2 )"
 
 SLOT="0"
 # use flag is called libusb so that it doesn't fool people in thinking that
 # it is _required_ for USB support. Otherwise they'll disable udev and
 # that's going to be worse.
-IUSE="airplay alsa bluetooth bluray caps cec +css dbus doc eventclients gbm gles lcms libusb lirc mariadb mysql nfs +optical pipewire pulseaudio samba +system-ffmpeg test udf udev upnp vaapi vdpau wayland webserver X +xslt zeroconf ${CPU_FLAGS}"
+IUSE="airplay alsa bluetooth bluray caps cec +css dbus doc eventclients gbm gles lcms libusb lirc mariadb mysql nfs +optical pipewire postproc pulseaudio samba soc +system-ffmpeg system-swig test udf udev upnp vaapi vdpau wayland webserver X +xslt zeroconf ${CPU_FLAGS[@]}"
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
 	|| ( gbm wayland X )
 	?? ( mariadb mysql )
 	bluray? ( udf )
 	gbm? ( udev )
+	soc? ( system-ffmpeg )
 	udev? ( !libusb )
 	vdpau? ( X !gles !gbm )
 	zeroconf? ( dbus )
 "
 RESTRICT="!test? ( test )"
 
-# dev-libs/libcec[-cubox] bug #818262
 COMMON_DEPEND="
 	>=dev-libs/flatbuffers-23.3.3:=
 	>=dev-libs/lzo-2.04:2
@@ -110,8 +104,6 @@ COMMON_DEPEND="
 	)
 "
 COMMON_TARGET_DEPEND="${PYTHON_DEPS}
-	app-arch/bzip2
-	app-arch/xz-utils
 	>=net-misc/curl-7.68.0[http2]
 	>=virtual/zlib-1.2.11:=
 	dev-db/sqlite:3
@@ -126,14 +118,12 @@ COMMON_TARGET_DEPEND="${PYTHON_DEPS}
 	dev-libs/tinyxml2:=
 	media-fonts/roboto
 	media-gfx/exiv2:=
-	media-libs/dav1d:=
 	media-libs/libglvnd[X?]
 	>=media-libs/freetype-2.10.1
 	media-libs/harfbuzz:=
 	>=media-libs/libass-0.15.0:=
 	media-libs/mesa[opengl,wayland?,X?]
 	media-libs/taglib:=
-	net-libs/gnutls:=
 	virtual/libiconv
 	virtual/ttf-fonts
 	x11-libs/libdrm
@@ -158,7 +148,7 @@ COMMON_TARGET_DEPEND="${PYTHON_DEPS}
 		sys-libs/libcap
 	)
 	cec? (
-		>=dev-libs/libcec-4.0[-cubox(-)]
+		>=dev-libs/libcec-7.0.0:=
 	)
 	dbus? (
 		sys-apps/dbus
@@ -201,8 +191,19 @@ COMMON_TARGET_DEPEND="${PYTHON_DEPS}
 	samba? (
 		>=net-fs/samba-3.4.6[smbclient(+)]
 	)
+	system-ffmpeg? (
+		postproc? ( =media-video/ffmpeg-$(ver_cut 1-2 ${FFMPEG_VERSION})*:=[encode(+),soc(-)?,vaapi?,vdpau?,X?] )
+		!postproc? ( >=media-video/ffmpeg-7:=[encode(+),soc(-)?,vaapi?,vdpau?,X?] )
+	)
+	!system-ffmpeg? (
+		app-arch/bzip2
+		app-arch/xz-utils
+		media-libs/dav1d:=
+		media-libs/opus:=
+		net-libs/gnutls:=
+	)
 	udf? (
-		>=dev-libs/libudfread-1.0.0
+		>=dev-libs/libudfread-1.0.0:=
 	)
 	udev? (
 		virtual/libudev:=
@@ -254,21 +255,27 @@ DEPEND="
 		x11-libs/libXrender
 	)
 "
+# Rationale for swig pins
+# https://github.com/xbmc/xbmc/blob/master/xbmc/interfaces/swig/README.md#requirements
+# See _verified in xbmc/interfaces/swig/fix-swig-3535.cmake
 BDEPEND="
 	${COMMON_DEPEND}
 	app-arch/unzip
 	dev-build/cmake
-	dev-lang/swig
 	virtual/pkgconfig
-	<=virtual/jre-21-r9999:*
 	doc? (
 		app-text/doxygen
+	)
+	system-swig? (
+		|| (
+			~dev-lang/swig-4.5.1
+			~dev-lang/swig-4.5.0
+		)
 	)
 "
 
 PATCHES=(
 	"${FILESDIR}"/kodi-21-optional-ffmpeg-libx11.patch
-	"${FILESDIR}"/kodi-22-silence-libdvdread-git.patch
 )
 
 # bug #544020
@@ -280,7 +287,6 @@ Please consider enabling IP_MULTICAST under Networking options.
 
 pkg_setup() {
 	check_extra_config
-	ROOT= java-pkg-2_pkg_setup
 	python-single-r1_pkg_setup
 }
 
@@ -291,9 +297,9 @@ src_unpack() {
 		unpack ${MY_P}.tar.gz
 	fi
 
-	unpack apache-groovy-binary-${GROOVY_VERSION}.zip
-	unpack commons-lang3-${APACHE_COMMON_LANG_VERSION}-bin.tar.gz
-	unpack commons-text-${APACHE_COMMON_TEXT_VERSION}-bin.tar.gz
+	if use system-ffmpeg && use postproc; then
+		unpack ffmpeg-${FFMPEG_VERSION}.tar.xz
+	fi
 }
 
 src_prepare() {
@@ -319,6 +325,13 @@ src_prepare() {
 			popd >/dev/null || die
 		done
 		elibtoolize
+	fi
+
+	if use system-ffmpeg && use postproc; then
+		pushd "${WORKDIR}/ffmpeg-${FFMPEG_VERSION}" >/dev/null || die
+		eapply "${S}"/tools/depends/target/ffmpeg/001-ffmpeg-all-libpostproc-plugin.patch
+		eapply "${FILESDIR}"/ffmpeg-no-static-rpath.patch
+		popd >/dev/null || die
 	fi
 }
 
@@ -351,6 +364,7 @@ src_configure() {
 		-DENABLE_CLANGTIDY=OFF
 		-DENABLE_CPPCHECK=OFF
 		-DENABLE_INCLUDEWHATYOUUSE=OFF
+		-DENABLE_PCH=OFF # doesn't make sense for Gentoo
 		# https://bugs.gentoo.org/show_bug.cgi?id=606124
 		-DENABLE_GOLD=OFF
 		-DENABLE_LLD=OFF
@@ -394,40 +408,56 @@ src_configure() {
 		-DENABLE_VDPAU=$(usex vdpau)
 		-DENABLE_XSLT=$(usex xslt)
 
-		# ffmpeg hasn't decided on if postproc is removed or not and kodi has chosen to patch it back
 		-DWITH_FFMPEG=OFF
+		-DDISABLE_FFMPEG_SOURCE_PLUGINS=$(usex !postproc)
 
 		#To bundle or not
 		-DENABLE_INTERNAL_ASS=OFF
-		-DENABLE_INTERNAL_CURL=OFF
 		-DENABLE_INTERNAL_CROSSGUID=OFF
-		-DENABLE_INTERNAL_DAV1D=OFF
+		-DENABLE_INTERNAL_CURL=OFF
 		-DENABLE_INTERNAL_EXIV2=OFF
-		-DENABLE_INTERNAL_FFMPEG=ON
+		-DENABLE_INTERNAL_FFMPEG="$(usex !system-ffmpeg)"
 		-DENABLE_INTERNAL_FLATBUFFERS=OFF
 		-DENABLE_INTERNAL_FMT=OFF
 		-DENABLE_INTERNAL_FSTRCMP=OFF
-		-DENABLE_INTERNAL_GTEST=OFF
-		-DENABLE_INTERNAL_PCRE2=OFF
+		-DENABLE_INTERNAL_LCMS2=OFF
+		-DENABLE_INTERNAL_LZO2=OFF
 		-DENABLE_INTERNAL_NLOHMANNJSON=OFF
+		-DENABLE_INTERNAL_OPUS=OFF
+		-DENABLE_INTERNAL_PCRE2=OFF
 		-DENABLE_INTERNAL_SPDLOG=OFF
+		-DENABLE_INTERNAL_SWIG=$(usex !system-swig)
 		-DENABLE_INTERNAL_TAGLIB=OFF
+		#-DENABLE_INTERNAL_ZSTD=OFF # could be used by other vendored deps
 
 		-DTARBALL_DIR="${DISTDIR}"
-		-Dlibdvdnav_URL="${DISTDIR}/libdvdnav-${LIBDVDNAV_VERSION}.tar.gz"
-		-Dlibdvdread_URL="${DISTDIR}/libdvdread-${LIBDVDREAD_VERSION}.tar.gz"
-		-Dgroovy_SOURCE_DIR="${WORKDIR}/groovy-${GROOVY_VERSION}"
-		-Dapache-commons-lang_SOURCE_DIR="${WORKDIR}/commons-lang3-${APACHE_COMMON_LANG_VERSION}"
-		-Dapache-commons-text_SOURCE_DIR="${WORKDIR}/commons-text-${APACHE_COMMON_TEXT_VERSION}"
-		-DFFMPEG_URL="${DISTDIR}/ffmpeg-${FFMPEG_VERSION}.tar.xz"
+		-DLIBDVDNAV_URL="${DISTDIR}/libdvdnav-${LIBDVDNAV_VERSION}.tar.bz2"
+		-DLIBDVDREAD_URL="${DISTDIR}/libdvdread-${LIBDVDREAD_VERSION}.tar.bz2"
 	)
 
 	# Separated to avoid "Manually-specified variables were not used by the project:"
+	use bluray && mycmakeargs+=(
+		-DENABLE_INTERNAL_BLURAY=OFF
+		-DENABLE_BLURAY_JAR=OFF # applies to internal bluray build
+	)
 	use cec && mycmakeargs+=( -DENABLE_INTERNAL_CEC=OFF )
-	use css && mycmakeargs+=( -Dlibdvdcss_URL="${DISTDIR}/libdvdcss-${LIBDVDCSS_VERSION}.tar.gz" )
+	use css && mycmakeargs+=( -DLIBDVDCSS_URL="${DISTDIR}/libdvdcss-${LIBDVDCSS_VERSION}.tar.bz2" )
+	use mariadb && mycmakeargs+=( -DENABLE_INTERNAL_MARIADBCLIENT=OFF )
+	use !system-ffmpeg && mycmakeargs+=(
+		# Additional find_package on top of core_optional_deps for whatever reason
+		$(cmake_use_find_package vaapi VAAPI)
+		$(cmake_use_find_package vdpau VDPAU)
+		-DENABLE_INTERNAL_DAV1D=OFF
+		-DFFMPEG_URL="${DISTDIR}/ffmpeg-${FFMPEG_VERSION}.tar.xz"
+	)
+	use !system-swig && mycmakeargs+=( -DSWIG_URL="${DISTDIR}/swig-${SWIG_VERSION}.tar.gz" )
 	use nfs && mycmakeargs+=( -DENABLE_INTERNAL_NFS=OFF )
+	use test && mycmakeargs+=( -DENABLE_INTERNAL_GTEST=OFF )
 	use !udev && mycmakeargs+=( -DENABLE_LIBUSB=$(usex libusb) )
+	use udf && mycmakeargs+=( -DENABLE_INTERNAL_UDFREAD=OFF )
+	use webserver && mycmakeargs+=( -DENABLE_INTERNAL_LIBMICROHTTPD=OFF )
 	use X && use !gles && mycmakeargs+=( -DENABLE_GLX=ON )
+	use xslt && mycmakeargs+=( -DENABLE_INTERNAL_XSLT=OFF )
 
 	for flag in ${CPU_FLAGS[@]} ; do
 		local name=${flag#cpu_flags_*_}
@@ -449,6 +479,34 @@ src_configure() {
 	# bug #926076
 	append-flags -fPIC
 
+	if use system-ffmpeg && use postproc; then
+		pushd "${WORKDIR}/ffmpeg-${FFMPEG_VERSION}" >/dev/null || die
+		local ffconf=(
+			--disable-all
+			--enable-postproc
+			--enable-gpl
+		)
+		if tc-is-cross-compiler; then
+			ffconf+=(
+				--enable-cross-compile
+				--arch="$(tc-arch-kernel)"
+				--cross-prefix="${CHOST}-"
+				--host-cc="$(tc-getBUILD_CC)"
+				--target-os=linux
+			)
+		elif use arm; then
+			ffconf+=( --arch=arm )
+		fi
+		./configure "${ffconf[@]}" || die
+		touch libpostproc/libpostproc.a || die # Actually build later.
+		emake libpostproc/libpostproc.pc V=1
+		export PKG_CONFIG_PATH="${PWD}/doc/examples/pc-uninstalled"
+		# Work around CMAKE_FIND_ROOT_PATH_MODE_LIBRARY=ONLY in eclass. It's a
+		# weird thing to do, but probably safer than setting that to BOTH.
+		[[ ${SYSROOT:-/} != / ]] && mycmakeargs+=( -DCMAKE_FIND_ROOT_PATH="${PWD}" )
+		popd >/dev/null || die
+	fi
+
 	if tc-is-cross-compiler; then
 		for t in "${NATIVE_TOOLS[@]}" ; do
 			pushd "${S}/tools/depends/native/$t/src" >/dev/null || die
@@ -463,6 +521,13 @@ src_configure() {
 }
 
 src_compile() {
+	if use system-ffmpeg && use postproc; then
+		pushd "${WORKDIR}/ffmpeg-${FFMPEG_VERSION}" >/dev/null || die
+		emake libpostproc/libpostproc.a V=1
+		rm -r libav* libsw* || die
+		popd >/dev/null || die
+	fi
+
 	if tc-is-cross-compiler; then
 		for t in "${NATIVE_TOOLS[@]}" ; do
 			emake -C "${S}/tools/depends/native/$t/src"
@@ -484,7 +549,12 @@ src_test() {
 	)
 
 	# Tests assumes bluray support is enabled
-	use !bluray && CMAKE_SKIP_TESTS+=( TestURIUtils.GetBasePath )
+	if use !bluray; then
+		CMAKE_SKIP_TESTS+=(
+			TestStacks.TestMovieFilesStackFolderFilesDiscPart
+			TestURIUtils.GetBasePath
+		)
+	fi
 
 	if use arm || use x86; then
 		# bug #779184

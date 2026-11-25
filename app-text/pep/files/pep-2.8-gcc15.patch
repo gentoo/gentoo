@@ -1,0 +1,13 @@
+Fix build with GCC 15
+https://bugs.gentoo.org/944760
+
+--- a/plain.src
++++ b/plain.src
+@@ -112,7 +112,6 @@ static int  NSpace = 0;			    /* No. of spaces not flushed.   */
+ 
+ /*---( forward )------------------------------------------------------------*/
+ 
+-char *getenv();
+ 
+ 
+ /*---( housekeeping )-------------------------------------------------------*/

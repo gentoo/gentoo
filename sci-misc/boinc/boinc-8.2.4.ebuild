@@ -1,4 +1,4 @@
-# Copyright 2023-2025 Gentoo Authors
+# Copyright 2023-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -35,7 +35,7 @@ SLOT="0"
 
 # - "X" builds idle tracking via XScrnSaver and the libboinc_graphics2 library
 # - "gui" builds the manager app and the screensaver
-IUSE="X gui"
+IUSE="X gui selinux"
 
 DEPEND="
 	>=acct-user/boinc-1
@@ -58,7 +58,10 @@ DEPEND="
 		x11-libs/xcb-util
 	)
 "
-RDEPEND="${DEPEND}"
+RDEPEND="
+	${DEPEND}
+	selinux? ( sec-policy/selinux-boinc )
+"
 BDEPEND="
 	app-text/docbook-xml-dtd:4.4
 	app-text/docbook2X

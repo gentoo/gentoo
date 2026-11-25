@@ -3,9 +3,9 @@
 
 EAPI=8
 
-LLVM_COMPAT=( {16..22} )
+LLVM_COMPAT=( {20..23} )
 LLVM_OPTIONAL=1
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 inherit cmake flag-o-matic llvm-r2 python-any-r1 readme.gentoo-r1 xdg
 
 if [[ ${PV} == 9999 ]]; then
@@ -50,6 +50,8 @@ COMMON_DEPEND="
 	dev-cpp/yaml-cpp:=
 	>=dev-qt/qtbase-${QT_PV}=[concurrent,dbus,gui,network,ssl,widgets,xml]
 	>=dev-qt/qtdeclarative-${QT_PV}=
+	>=dev-qt/qthttpserver-${QT_PV}
+	>=dev-qt/qttasktree-${QT_PV}
 	clang? (
 		$(llvm_gen_dep '
 			llvm-core/clang:${LLVM_SLOT}=
@@ -76,6 +78,7 @@ COMMON_DEPEND="
 	tracing? (
 		app-arch/zstd:=
 		dev-libs/elfutils
+		>=dev-qt/qtcanvaspainter-${QT_PV}
 		>=dev-qt/qtcharts-${QT_PV}
 		>=dev-qt/qtshadertools-${QT_PV}
 	)
@@ -94,8 +97,8 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-16.0.0-musl-no-execinfo.patch
-	"${FILESDIR}"/${PN}-12.0.0-musl-no-malloc-trim.patch
+	"${FILESDIR}"/${PN}-21.0.0-musl-no-execinfo.patch
+	"${FILESDIR}"/${PN}-20.0.1-libcxx23.patch
 )
 
 src_prepare() {
@@ -106,7 +109,7 @@ src_prepare() {
 		-i cmake/QtCreatorAPIInternal.cmake || die
 
 	# avoid building manual tests (aka not ran) for nothing (bug #950010)
-	sed -i '/add_subdirectory(manual)/d' tests/CMakeLists.txt || die
+	cmake_comment_add_subdirectory -f tests/CMakeLists.txt manual
 
 	if use plugin-dev; then #928423
 		# cmake --install --component integrates poorly with the cmake
@@ -119,6 +122,8 @@ src_prepare() {
 
 src_configure() {
 	use clang && llvm_chost_setup
+
+	replace-flags '-O[sz]' -O2 #980116
 
 	# -Werror=lto-type-mismatch issues, needs looking into
 	filter-lto
@@ -190,6 +195,10 @@ src_test() {
 	local -x QT_QPA_PLATFORM=offscreen
 
 	local CMAKE_SKIP_TESTS=(
+		# uses debuggers which can be messy/hang depending on setup
+		tst_debugger_backends
+		# fails with sandbox
+		tst_process
 		# skipping same tests+label as upstream's CI by default
 		# `grep ctest .github/workflows/build_cmake.yml`
 		tst_perfdata

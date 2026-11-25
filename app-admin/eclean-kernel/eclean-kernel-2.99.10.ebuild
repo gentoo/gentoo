@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -10,13 +10,13 @@ inherit distutils-r1 pypi
 
 DESCRIPTION="Remove outdated built kernels"
 HOMEPAGE="
-	https://github.com/projg2/eclean-kernel/
+	https://github.com/gentoo/eclean-kernel/
 	https://pypi.org/project/eclean-kernel/
 "
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~loong ~riscv x86"
+KEYWORDS="~alpha amd64 ~arm arm64 ~loong ~riscv x86"
 IUSE="lz4 lzo zstd"
 
 RDEPEND="
@@ -27,4 +27,5 @@ RDEPEND="
 	zstd? ( dev-python/zstandard[${PYTHON_USEDEP}] )
 "
 
+EPYTEST_PLUGINS=()
 distutils_enable_tests pytest

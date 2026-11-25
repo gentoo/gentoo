@@ -1,0 +1,6 @@
+The cyrus-sasl package contains a sample directory with examples in C
+that demonstrate how to build against libsasldb. These examples
+are difficult to build outside the cyrus-sasl tree and offer no value
+for the installed package in Gentoo, which is why they are no longer
+packaged. If you intend to develop e.g. plugins, please see the upstream
+development repository at https://github.com/cyrusimap/cyrus-sasl.

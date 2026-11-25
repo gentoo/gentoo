@@ -4,7 +4,7 @@
 EAPI=8
 
 # keep in sync with blender
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{12..14} )
 
 # Check this on updates
 LLVM_COMPAT=( {18..20} )
@@ -90,6 +90,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}/${PN}-include-cstdint.patch"
+	"${FILESDIR}/${PN}-1.14.7.0-test-shade.patch"
 )
 
 cuda_get_host_compiler() {

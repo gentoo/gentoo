@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,8 +16,8 @@ KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~sparc x86"
 IUSE="nls static-libs"
 
 BDEPEND="
-	app-alternatives/lex
 	dev-build/libtool
+	sys-devel/flex
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )
 "
@@ -44,6 +44,9 @@ src_prepare() {
 }
 
 multilib_src_configure() {
+	# Needs flex specifically
+	unset LEX
+
 	# examples are normally compiled but not installed. They
 	# fail during a mingw crosscompile.
 	local ECONF_SOURCE=${BUILD_DIR}

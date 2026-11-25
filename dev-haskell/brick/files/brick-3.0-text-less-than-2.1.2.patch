@@ -1,0 +1,62 @@
+--- brick-3.0-orig/brick.cabal	2026-11-01 18:07:31.421766377 +1100
++++ brick-3.0/brick.cabal	2026-11-01 18:40:11.729736331 +1100
+@@ -123,7 +123,7 @@
+                        config-ini,
+                        vector,
+                        stm >= 2.4.3,
+-                       text >= 2.1.2,
++                       text >= 1.2.5,
+                        text-zipper >= 0.13,
+                        template-haskell,
+                        deepseq >= 1.3 && < 1.6,
+--- brick-3.0-orig/src/Brick/Widgets/Menu.hs	2026-11-01 18:07:31.430766032 +1100
++++ brick-3.0/src/Brick/Widgets/Menu.hs	2026-11-01 18:55:11.575645878 +1100
+@@ -2,6 +2,8 @@
+ {-# LANGUAGE MultiWayIf #-}
+ {-# LANGUAGE RankNTypes #-}
+ {-# LANGUAGE OverloadedStrings #-}
++{-# LANGUAGE PatternSynonyms #-}
++{-# LANGUAGE ViewPatterns #-}
+ {-# OPTIONS_GHC -fno-warn-unused-top-binds #-}
+ -- | This module provides a menu widget that is similar to the ones
+ -- commonly found in most graphical interface toolkits. Menus carry
+@@ -182,6 +184,22 @@
+ import Brick.Keybindings.KeyConfig
+ import Brick.Keybindings.Pretty
+ 
++-- from text 2.1.2
++-- | Bidirectional pattern synonym for 'empty' and 'null' (both /O(1)/),
++-- to be used together with '(:<)' or '(:>)'.
++--
++-- @since 2.1.2
++pattern Empty :: T.Text
++pattern Empty <- (T.null -> True) where
++  Empty = T.empty
++
++-- from text 2.1.2
++pattern (:<) :: Char -> T.Text -> T.Text
++pattern x :< xs <- (T.uncons -> Just (x, xs)) where
++  (:<) = T.cons
++infixr 5 :<
++{-# COMPLETE Empty, (:<) #-}
++
+ -- | The type of menu regions for embedding in the application's
+ -- resource name and reporting mouse click events.
+ data MenuRegion =
+@@ -752,14 +770,14 @@
+     where
+         parts = go "" title
+ 
+-        go acc (h T.:< tl)
++        go acc (h :< tl)
+             | toLower h == toLower c =
+                 (if T.null acc then [] else [txt acc]) <>
+                 [withDefAttr menuTitleKeyHighlightAttr $ char h] <>
+                 go "" tl
+             | otherwise =
+                 go (T.snoc acc h) tl
+-        go acc T.Empty =
++        go acc Empty =
+             if T.null acc then [] else [txt acc]
+ 
+ -- | Select the next entry in a menu, or the first one if no entry is

@@ -1,14 +1,14 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 inherit toolchain-funcs
 
-MY_P="${P/_p/-}"
-DESCRIPTION="TOMOYO Linux tools"
-HOMEPAGE="http://tomoyo.sourceforge.jp/"
-SRC_URI="mirror://sourceforge.jp/tomoyo/53357/${MY_P}.tar.gz"
+MY_P="${PN}-${PV/_p/-}"
+DESCRIPTION="TOMOYO Linux userspace tools"
+HOMEPAGE="https://tomoyo.sourceforge.net/"
+SRC_URI="https://downloads.sourceforge.net/project/tomoyo/${PN}/$(ver_cut 1-2)/${MY_P}.tar.gz"
 S="${WORKDIR}/${PN}"
 
 LICENSE="GPL-2"
@@ -38,6 +38,9 @@ src_prepare() {
 		usr_sbin/Makefile || die
 
 	tc-export CC PKG_CONFIG
+
+	# Upstream ships pre-gzipped man pages; let portage compress them.
+	gunzip usr_share_man/man8/*.gz || die
 }
 
 src_install() {
@@ -50,7 +53,7 @@ src_install() {
 	_EOF_
 
 	# Fix out-of-place readme and license
-	rm "${ED}"/usr/$(get_libdir)/tomoyo/{COPYING.tomoyo,README.tomoyo} || die
+	rm "${ED}"/usr/"$(get_libdir)"/tomoyo/{COPYING.tomoyo,README.tomoyo} || die
 	dodoc README.tomoyo
 }
 
@@ -61,7 +64,7 @@ pkg_postinst() {
 	elog
 	elog "For more information, please visit the following."
 	elog
-	elog "http://tomoyo.sourceforge.jp/"
+	elog "https://tomoyo.sourceforge.net/"
 }
 
 pkg_config() {

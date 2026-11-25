@@ -9,3 +9,7 @@ sys-kernel/dracut test
 # Requires thin-provisioning-tools, which requires rust, which cannot currently
 # build/install on i486 or any other CPU class lacking sse2.
 sys-fs/lvm2 thin
+
+# Mike Pagano <mpagano@gentoo.org> (2026-09-26)
+# Rust (and thus Node Temporal) is unsupported on i486
+net-libs/nodejs temporal

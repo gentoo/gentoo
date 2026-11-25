@@ -1,0 +1,17 @@
+Compatibility with gcc 13 (pre-C23), see:
+https://codeberg.org/jengelh/pam_mount/commit/64dfcc87ccb6f7b0243b206524f7ea9aa9c59bc8
+
+diff --git a/src/pam_mount.h b/src/pam_mount.h
+index 61395f7..f547d8c 100644
+--- a/src/pam_mount.h
++++ b/src/pam_mount.h
+@@ -14,6 +14,9 @@
+ #else
+ #	define EXPORT_SYMBOL
+ #endif
++#if defined(__STDC_VERSION__) && __STDC_VERSION__ < 202300L
++#	define nullptr NULL
++#endif
+ 
+ #define sizeof_z(x) (sizeof(x) - 1)
+ 

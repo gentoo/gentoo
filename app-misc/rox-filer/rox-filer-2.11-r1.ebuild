@@ -1,9 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit desktop virtualx
+inherit desktop optfeature virtualx
 
 DESCRIPTION="ROX-Filer a drag and drop spatial file manager"
 HOMEPAGE="http://rox.sourceforge.net/desktop/ROX-Filer.html"
@@ -72,4 +72,8 @@ src_install() {
 	dosym ../rox/.DirIcon /usr/share/pixmaps/rox.png
 
 	domenu "${FILESDIR}"/rox.desktop
+}
+
+pkg_postinst() {
+	optfeature "WebP image thumbnails" gui-libs/gdk-pixbuf-loader-webp
 }

@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -29,4 +29,8 @@ all_ruby_prepare() {
 		-e 's/__FILE__/"'${RUBY_FAKEGEM_GEMSPEC}'"/' \
 		-e 's/git ls-files -z/find * -print0/' \
 		-i ${RUBY_FAKEGEM_GEMSPEC} || die
+
+	# May fail in a network sandbox
+	sed -e '/def test_use_pasv_invalid_ip$/,/^  end/ s:^:#:' \
+		-i test/net/ftp/test_ftp.rb || die
 }

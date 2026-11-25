@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,11 +9,11 @@ EAPI=8
 #
 # Also recommend subscribing to the coreutils and bug-coreutils MLs.
 
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{12..14} )
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/coreutils.asc
 inherit branding flag-o-matic python-any-r1 toolchain-funcs verify-sig
 
-MY_PATCH="${PN}-9.6-patches"
+MY_PATCH="${PN}-9.12-patches"
 DESCRIPTION="Standard GNU utilities (chmod, cp, dd, ls, sort, tr, head, wc, who,...)"
 HOMEPAGE="https://www.gnu.org/software/coreutils/"
 
@@ -23,7 +23,7 @@ if [[ ${PV} == 9999 ]] ; then
 elif [[ ${PV} == *_p* ]] ; then
 	# Note: could put this in devspace, but if it's gone, we don't want
 	# it in tree anyway. It's just for testing.
-	MY_SNAPSHOT="$(ver_cut 1-2).327-71a8c"
+	MY_SNAPSHOT="$(ver_cut 1-2).274-7f973"
 	SRC_URI="https://www.pixelbeat.org/cu/coreutils-${MY_SNAPSHOT}.tar.xz -> ${P}.tar.xz"
 	SRC_URI+=" verify-sig? ( https://www.pixelbeat.org/cu/coreutils-${MY_SNAPSHOT}.tar.xz.sig -> ${P}.tar.xz.sig )"
 	S="${WORKDIR}"/${PN}-${MY_SNAPSHOT}
@@ -36,7 +36,7 @@ else
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 fi
 
-SRC_URI+=" !vanilla? ( https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${MY_PATCH}.tar.xz )"
+SRC_URI+=" !vanilla? ( https://distfiles.gentoo.org/pub/dev/sam@gentoo.org/${CATEGORY}/${PN}/${MY_PATCH}.tar.xz )"
 
 LICENSE="GPL-3+"
 SLOT="0"
@@ -76,14 +76,14 @@ RDEPEND+="
 		!sys-apps/util-linux[kill]
 		!sys-process/procps[kill]
 	)
-	!<sys-apps/util-linux-2.13
-	!<sys-apps/sandbox-2.10-r4
-	!sys-apps/stat
-	!net-mail/base64
-	!sys-apps/mktemp
 	!<app-forensics/tct-1.18-r1
 	!<net-fs/netatalk-2.0.3-r4
+	!net-mail/base64
+	!sys-apps/mktemp
+	!<sys-apps/sandbox-2.10-r4
 	!<sys-apps/shadow-4.19.0_rc1
+	!sys-apps/stat
+	!<sys-apps/util-linux-2.13
 "
 
 QA_CONFIG_IMPL_DECL_SKIP=(
@@ -104,7 +104,9 @@ src_unpack() {
 		cd "${S}" || die
 		./bootstrap || die
 
-		sed -i -e "s:submodule-checks ?= no-submodule-changes public-submodule-commit:submodule-checks ?= no-submodule-changes:" gnulib/top/maint.mk || die
+		sed -i \
+			-e "s:submodule-checks ?= no-submodule-changes public-submodule-commit:submodule-checks ?= no-submodule-changes:" \
+			gnulib/top/maint.mk || die
 	elif use verify-sig ; then
 		# Needed for downloaded patch (which is unsigned, which is fine)
 		verify-sig_verify_detached "${DISTDIR}"/${P}.tar.xz{,.sig}
@@ -119,6 +121,13 @@ src_prepare() {
 		"${FILESDIR}"/${PN}-9.5-skip-readutmp-test.patch
 		# Upstream patches
 	)
+
+	if [[ ${PV} == 9999 ]] ; then
+		rm "${WORKDIR}"/${MY_PATCH}/0005-env-printenv-quote-terminals-only.patch \
+			"${WORKDIR}"/${MY_PATCH}/0006-regenerate-info-for-printenv-backport.patch || die
+	else
+		die "Please drop the patch cleanup and reroll the patch tarball before copying from live!"
+	fi
 
 	if ! use vanilla && [[ -d "${WORKDIR}"/${MY_PATCH} ]] ; then
 		PATCHES+=( "${WORKDIR}"/${MY_PATCH} )
@@ -167,11 +176,17 @@ src_configure() {
 		$(use_enable xattr)
 		$(use_with gmp libgmp)
 		$(use_with openssl)
+		$(use_with selinux)
 	)
 
 	if use gmp ; then
 		myconf+=( --with-libgmp-prefix="${ESYSROOT}"/usr )
 	fi
+
+	# https://savannah.gnu.org/support/?111394
+	# This can be removed when we patch dev-build/autoconf, though
+	# packages w/o eautoreconf will still need it.
+	! tc-has-64bit-time_t && [[ ${enable_year2038} == "no" ]] && myconf+=( --disable-year2038 )
 
 	if tc-is-cross-compiler && [[ ${CHOST} == *linux* ]] ; then
 		# bug #311569
@@ -183,15 +198,13 @@ src_configure() {
 	# bug #409919
 	export gl_cv_func_mknod_works=yes
 
+	# https://sourceware.org/PR20381
+	has_version "=sys-libs/glibc-2.44*" && export gl_cv_func_re_compile_pattern_working=no
+
 	if use static ; then
 		append-ldflags -static
 		# bug #321821
 		sed -i '/elf_sys=yes/s:yes:no:' configure || die
-	fi
-
-	if ! use selinux ; then
-		# bug #301782
-		export ac_cv_{header_selinux_{context,flash,selinux}_h,search_setfilecon}=no
 	fi
 
 	econf "${myconf[@]}"
@@ -246,6 +259,8 @@ src_test() {
 			#tests/touch/not-owner.sh
 		)
 	fi
+
+	! tc-has-64bit-time_t && [[ ${enable_year2038} == "no" ]] && xfail_tests+=( test-year2038 )
 
 	# This test is flaky (bug #910640).
 	cat > tests/tty/tty-eof.pl <<-EOF || die

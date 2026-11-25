@@ -1,0 +1,41 @@
+From 01db6085d40a2d4576b83d68e634dfd4f5319fbc Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx@gmail.com>
+Date: Sun, 6 Apr 2025 16:00:16 +0200
+Subject: [PATCH] fix already registered
+
+Bug: https://bugs.gentoo.org/935787
+Signed-off-by: Paul Zander <negril.nx@gmail.com>
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 9dd997c..8bd6253 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -20897,9 +20897,8 @@ target_link_libraries(filter_test_v2_test
+   absl::any
+   absl::optional
+   absl::variant
+-  grpc_unsecure
+   ${_gRPC_PROTOBUF_LIBRARIES}
+-  grpc_test_util
++  grpc_test_util_unsecure
+ )
+ 
+ 
+@@ -35898,8 +35897,7 @@ target_link_libraries(recv_message_filter_bypass_test
+   absl::any
+   absl::optional
+   absl::variant
+-  grpc_unsecure
+-  grpc_test_util
++  grpc_test_util_unsecure
+ )
+ 
+ 
+@@ -43124,7 +43122,6 @@ target_link_libraries(thread_pool_test
+   absl::any
+   absl::optional
+   absl::variant
+-  grpc
+   grpc_test_util_unsecure
+ )
+ 

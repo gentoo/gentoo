@@ -1,5 +1,10 @@
-# Copyright 2022 Gentoo Authors
+# Copyright 2022-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Ian Jordan <immoloism@gmail.com> (2026-10-15)
+# libpcre2[jit] is also currently broken on arm64 BE.
+# This is a temp mask for users until #983389 is resolved.
+dev-libs/libpcre2 jit
 
 # Sam James <sam@gentoo.org> (2022-12-04)
 # libpcre[jit] is broken on arm64 BE and libpcre1 is EOL now

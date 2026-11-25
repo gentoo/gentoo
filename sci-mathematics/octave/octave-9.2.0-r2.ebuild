@@ -104,6 +104,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-5.1.0-pkgbuilddir.patch
+	"${FILESDIR}"/${PN}-9.2.0-fix-qt-help-generator-for-texinfo-7.3.patch
 )
 
 src_prepare() {

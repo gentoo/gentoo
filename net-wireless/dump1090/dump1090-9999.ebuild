@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -31,7 +31,10 @@ DEPEND="
 		virtual/libusb:1
 	)
 	rtlsdr? (
-		net-wireless/rtl-sdr:=
+		|| (
+			net-wireless/rtl-sdr
+			net-wireless/rtl-sdr-blog
+		)
 		virtual/libusb:1
 	)
 "
@@ -40,7 +43,6 @@ BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-6.1-libdir.patch
-	"${FILESDIR}"/${PN}-10.0.1-gcc15.patch
 )
 
 src_prepare() {

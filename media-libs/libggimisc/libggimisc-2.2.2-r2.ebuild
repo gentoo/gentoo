@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,10 +12,9 @@ SRC_URI="https://downloads.sourceforge.net/ggi/${P}.src.tar.bz2"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 ~x86"
-IUSE="fbcon svga"
+IUSE="fbcon"
 
-RDEPEND=">=media-libs/libggi-2.2.2
-	svga? ( media-libs/svgalib )"
+RDEPEND=">=media-libs/libggi-2.2.2"
 DEPEND="${RDEPEND}"
 
 DOCS=( ChangeLog README TODO doc/ggimisc.txt doc/libggimisc{,-functions,-libraries}.txt
@@ -30,7 +29,7 @@ src_prepare() {
 
 src_configure() {
 	econf --disable-x --without-x \
-		$(use_enable svga svgalib) \
+		--disable-svgalib \
 		$(use_enable fbcon fbdev)
 }
 

@@ -19,9 +19,12 @@ enabled by default and PROTON_* variables to control them are unrecognized.
 
 To (optionally) setup some notable defaults of Proton:
 - export WINEFSYNC=1
-.    Often improves performance for CPU-bound applications, recommended
-.    but should be left disabled if get crashes mentioning fsync errors.
-.   >Requires linux kernel >=5.16 if unpatched.
+.    Often improves performance for CPU-bound applications.
+.    Note: in >=wine-proton-11, that is *not* necessary if /dev/ntsync
+.    exists, it will be used by default (unless PROTON_NO_NTSYNC=1)
+.    as a superior alternative to WINEFSYNC. Requires CONFIG_NTSYNC in
+.    the Linux kernel and, if built as a module, will need a file
+.    containing ntsync in /etc/modules-load.d/ to be auto-loaded.
 - export WINE_LARGE_ADDRESS_AWARE=1
 .    Allows 32bit applications to access more memory, notably helps
 .    prevent crashes on memory-heavy applications while using dxvk below.

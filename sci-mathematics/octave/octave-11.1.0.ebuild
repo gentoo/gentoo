@@ -3,13 +3,13 @@
 
 EAPI=8
 
-inherit flag-o-matic fortran-2 java-pkg-opt-2 pax-utils qmake-utils toolchain-funcs xdg
+inherit flag-o-matic fortran-2 java-pkg-opt-2 pax-utils qt-utils toolchain-funcs xdg
 
 DESCRIPTION="High-level interactive language for numerical computations"
-HOMEPAGE="https://www.gnu.org/software/octave/"
+HOMEPAGE="https://octave.org"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.xz"
 
-LICENSE="GPL-3"
+LICENSE="GPL-3+ CC0-1.0 public-domain || ( GPL-3 GPL-2 LGPL-3 )"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~x86"
 
@@ -104,6 +104,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-5.1.0-pkgbuilddir.patch
+	"${FILESDIR}"/${PN}-9.2.0-fix-qt-help-generator-for-texinfo-7.3.patch
 )
 
 src_prepare() {
@@ -179,11 +180,11 @@ src_configure() {
 
 	# Tell autoconf where to find qt binaries, fix bug #837752
 	if use gui ; then
-		export MOC="$(qt6_get_libexecdir)/moc" \
-			UIC="$(qt6_get_libexecdir)/uic" \
-			RCC="$(qt6_get_libexecdir)/rcc" \
-			LRELEASE="$(qt6_get_bindir)/lrelease" \
-			QHELPGENERATOR="$(qt6_get_libexecdir)/qhelpgenerator"
+		export MOC="$(qt_get_broot_binary 6 moc)" \
+			UIC="$(qt_get_broot_binary 6 uic)" \
+			RCC="$(qt_get_broot_binary 6 rcc)" \
+			LRELEASE="$(qt_get_broot_binary 6 lrelease)" \
+			QHELPGENERATOR="$(qt_get_broot_binary 6 qhelpgenerator)"
 	fi
 
 	econf "${myeconfargs[@]}"

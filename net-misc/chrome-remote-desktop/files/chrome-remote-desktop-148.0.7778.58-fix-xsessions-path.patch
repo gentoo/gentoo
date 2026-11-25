@@ -1,0 +1,10 @@
+On Gentoo, Xsession is located at /etc/X11/Sessions.
+
+--- a/opt/google/chrome-remote-desktop/Xsession
++++ b/opt/google/chrome-remote-desktop/Xsession
+@@ -9,4 +9,4 @@
+ 
+ # On Debian-based systems, just delegate to the distro-supplied Xsession script
+ # to launch the selected session.
+-exec /etc/X11/Xsession "$@"
++exec /etc/X11/Sessions/Xsession "$@"

@@ -1,7 +1,7 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=9
 
 NEED_EMACS="28"
 
@@ -39,7 +39,7 @@ src_prepare() {
 	elisp_src_prepare
 
 	# Remove failing tests.
-	rm ./testing/lisp/test-{ob{,-exp,-tangle,-shell},org-clock,ox-icalendar}.el \
+	rm testing/lisp/test-{ob{,-exp,-tangle,-shell},org-clock,ox-icalendar}.el \
 		|| die "failed to remove some test files"
 }
 

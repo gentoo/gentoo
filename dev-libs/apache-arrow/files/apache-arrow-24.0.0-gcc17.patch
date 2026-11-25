@@ -1,0 +1,10 @@
+--- a/src/arrow/util/string_util.h	2026-06-04 20:53:29.410977462 +0200
++++ b/src/arrow/util/string_util.h	2026-06-04 20:53:54.899713942 +0200
+@@ -19,6 +19,7 @@
+ 
+ #include <memory>
+ #include <ostream>
++#include <sstream>
+ #include <string>
+ #include <type_traits>
+ #include <utility>

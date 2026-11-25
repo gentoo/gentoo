@@ -4,19 +4,19 @@
 	<maintainer type="person" proxied="yes">
 		<email>nrk@disroot.org</email>
 	</maintainer>
-	<maintainer type="person">
+	<maintainer type="person" proxied="maintainer-and-proxy">
 		<email>arthurzam@gentoo.org</email>
 		<name>Arthur Zamarin</name>
 	</maintainer>
-	<maintainer type="person">
+	<maintainer type="person" proxied="maintainer-and-proxy">
 		<email>sam@gentoo.org</email>
 		<name>Sam James</name>
 	</maintainer>
 	<use>
-		<flag name="rar">Enable support for non-free rar decoder</flag>
-		<flag name="uasm">Use <pkg>dev-lang/uasm</pkg> to include optimized code</flag>
 		<flag name="jwasm">Use <pkg>dev-lang/jwasm</pkg> to include optimized code (doesn't support AES)</flag>
+		<flag name="rar">Enable support for non-free rar decoder</flag>
 		<flag name="symlink">Install additional symlink to 7z, 7za and 7zr</flag>
+		<flag name="uasm">Use <pkg>dev-lang/uasm</pkg> to include optimized code</flag>
 	</use>
 	<upstream>
 		<maintainer>

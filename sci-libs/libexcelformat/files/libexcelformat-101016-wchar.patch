@@ -1,0 +1,18 @@
+--- a/BasicExcel.cpp	2026-11-06 17:43:16.315666145 +0100
++++ b/BasicExcel.cpp	2026-11-06 17:51:33.569871488 +0100
+@@ -6479,7 +6479,14 @@
+ 			break;
+ 
+ 		case BasicExcelCell::WSTRING:
+-			os << cell.GetWString();
++                        const wchar_t* wstr = cell.GetWString();
++                        if (wstr) {
++                                size_t len = wcslen(wstr);
++                                vector<char> nstr(len * 4 + 1);
++                                size_t converted = wcstombs(&nstr[0], wstr, nstr.size());
++                                if (converted != (size_t)-1)
++                                        os << &nstr[0];
++                        }
+ 			break;
+ 	}
+ 	return os;

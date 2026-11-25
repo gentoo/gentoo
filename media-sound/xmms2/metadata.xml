@@ -11,7 +11,6 @@
 		<flag name="gme">Support for various game audio formats using <pkg>media-libs/game-music-emu</pkg></flag>
 		<flag name="ices">Icecast source output plugin</flag>
 		<flag name="libvisual">Install xmms2-libvisual for use with the 'visualization' effect</flag>
-		<flag name="mac">Support for Monkey's Audio (APE) format using <pkg>media-sound/mac</pkg></flag>
 		<flag name="mlib-update">Enable building of xmms2-mlib-updater client</flag>
 		<flag name="server">Build xmms2 player daemon (otherwise only clients are built)</flag>
 		<flag name="tremor">Support Vorbis using an alternate fixed-point decoder with <pkg>media-libs/tremor</pkg></flag>

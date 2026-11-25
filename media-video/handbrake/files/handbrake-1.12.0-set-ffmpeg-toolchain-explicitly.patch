@@ -1,0 +1,36 @@
+From 395cbd816687354e144d2366cac9885d10fd9bf2 Mon Sep 17 00:00:00 2001
+From: Alfred Wingate <parona@protonmail.com>
+Date: Wed, 25 Dec 2024 19:49:40 +0200
+Subject: [PATCH] Set toolchain explicitly for ffmpeg
+
+Signed-off-by: Alfred Wingate <parona@protonmail.com>
+--- a/contrib/ffmpeg/module.defs
++++ b/contrib/ffmpeg/module.defs
+@@ -96,7 +96,13 @@ FFMPEG.CONFIGURE.extra = \
+     --enable-filter=dialoguenhance \
+     --enable-filter=loudnorm \
+     --enable-filter=stereowiden \
+-    --cc="$(FFMPEG.GCC.gcc)"
++    --cc="$(FFMPEG.GCC.gcc)" \
++    --cxx="$(FFMPEG.GCC.gxx)" \
++    --ar="$(AR.exe)" \
++    --nm="$(NM.exe)" \
++    --strip="$(STRIP.exe)" \
++    --ranlib="$(RANLIB.exe)" \
++    --pkg-config="$(PKGCONFIG.exe)"
+ 
+ ifeq (size-aggressive,$(GCC.O))
+ FFMPEG.CONFIGURE.extra += \
+--- a/make/configure.py
++++ b/make/configure.py
+@@ -1677,6 +1677,7 @@ try:
+         strip      = ToolProbe( 'STRIP.exe',      'strip',      'strip', abort=True )
+         tar        = ToolProbe( 'TAR.exe',        'tar',        'gtar', 'tar', abort=True )
+         python     = ToolProbe( 'PYTHON.exe',     'python',     os.path.basename(sys.executable), abort=True )
++        nm         = ToolProbe( 'NM.exe',         'nm',         'nm', abort=True )
+ 
+         gcc_tools  = ['GCC.gcc',
+                       'cc',
+-- 
+2.55.0
+

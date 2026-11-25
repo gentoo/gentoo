@@ -1,0 +1,45 @@
+use ASN1_TIME_to_tm for openssl-4
+See https://bugs.gentoo.org/984953
+--- a/src/tlsopensslbase.cpp
++++ b/src/tlsopensslbase.cpp
+@@ -224,38 +224,11 @@ namespace gloox
+   int OpenSSLBase::ASN1Time2UnixTime( ASN1_TIME* time )
+   {
+     struct tm t;
+-    const char* str = reinterpret_cast<const char*>( time->data );
+-    size_t i = 0;
+ 
+     memset( &t, 0, sizeof(t) );
+ 
+-    if( time->type == V_ASN1_UTCTIME ) /* two digit year */
+-    {
+-      t.tm_year = ( str[i++] - '0' ) * 10;
+-      t.tm_year += ( str[i++] - '0' );
+-
+-      if( t.tm_year < 70 )
+-        t.tm_year += 100;
+-    }
+-    else if( time->type == V_ASN1_GENERALIZEDTIME ) /* four digit year */
+-    {
+-      t.tm_year = ( str[i++] - '0' ) * 1000;
+-      t.tm_year += ( str[i++] - '0' ) * 100;
+-      t.tm_year += ( str[i++] - '0' ) * 10;
+-      t.tm_year += ( str[i++] - '0' );
+-      t.tm_year -= 1900;
+-    }
+-
+-    t.tm_mon = ( str[i++] - '0' ) * 10;
+-    t.tm_mon += ( str[i++] - '0' ) - 1; // -1 since January is 0 not 1.
+-    t.tm_mday = ( str[i++] - '0' ) * 10;
+-    t.tm_mday += ( str[i++] - '0' );
+-    t.tm_hour = ( str[i++] - '0' ) * 10;
+-    t.tm_hour += ( str[i++] - '0' );
+-    t.tm_min = ( str[i++] - '0' ) * 10;
+-    t.tm_min += ( str[i++] - '0' );
+-    t.tm_sec = ( str[i++] - '0' ) * 10;
+-    t.tm_sec += ( str[i++] - '0' );
++    if( !ASN1_TIME_to_tm( time, &t ) )
++      return -1;
+ 
+     return static_cast<int>( mktime( &t ) );
+   }

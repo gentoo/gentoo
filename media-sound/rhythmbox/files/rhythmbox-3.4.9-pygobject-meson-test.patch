@@ -1,0 +1,77 @@
+From: Pacho Ramos <pachoramos@gmail.com>
+Date: Sun, 17 May 2026 13:30:00 +0200
+Subject: [PATCH] build: fix missing girepository headers when python is disabled
+
+Commit 0cc5960f introduced support for girepository-2.0 to accommodate
+newer PyGObject versions, but placed the dependency resolution and library
+linkage entirely inside the `if enable_python` block.
+
+This caused that, with -Dplugins_python=disabled, the build system skipped
+the introspection dependency logic entirely.
+
+This patch fixes the build by:
+- Moving the `girepository-2.0` capability check outside the python block
+  so it evaluates unconditionally.
+- Extracting the `girepository` and `gobject_introspection` linkage in 
+  `shell/meson.build` out of the python block, guaranteeing the C core 
+  always receives the correct headers regardless of python plugin status.
+
+Fixes: https://gitlab.gnome.org/GNOME/rhythmbox/-/work_items/2135
+---
+ meson.build       | 16 +++++++++-------
+ shell/meson.build |  7 ++++---
+ 2 files changed, 13 insertions(+), 10 deletions(-)
+
+diff '--color=auto' -ur rhythmbox-3.4.9.orig/meson.build rhythmbox-3.4.9/meson.build
+--- rhythmbox-3.4.9.orig/meson.build	2026-05-17 13:00:24.885964255 +0200
++++ rhythmbox-3.4.9/meson.build	2026-05-17 13:13:58.823201484 +0200
+@@ -145,18 +145,20 @@
+ 
+ enable_python = false
+ enable_gir2 = false
++
++if girepository.found() and libpeas.version() > '1.36'
++  enable_gir2 = true
++  cdata.set('USE_GIREPOSITORY2', 1)
++endif
++
+ python_install = python.find_installation('python3', required: get_option('plugins_python'))
+ pygobject = dependency('pygobject-3.0', version: '>= 3.0.0', required: get_option('plugins_python'))
+ if python_install.found() and pygobject.found()
+   enable_python = true
+ 
+   if pygobject.version() >= '3.53.0'
+-    # must have girepository-2.0 and a compatible version of libpeas for this to work
+-    if girepository.found() and libpeas.version() > '1.36'
+-      enable_gir2 = true
+-      cdata.set('USE_GIREPOSITORY2', 1)
+-    else
+-      error('cannot mix girepository 1.0 (via libpeas) and 2.0 (via pygobject)')
++    if not enable_gir2
++      error('pygobject >= 3.53 requires girepository-2.0 and libpeas > 1.36')
+     endif
+   elif pygobject.version() >= '3.52.0'
+     error('rhythmbox cannot be used with pygobject 3.52 due to girepository clashes')
+Sólo en rhythmbox-3.4.9: meson.build~
+diff '--color=auto' -ur rhythmbox-3.4.9.orig/shell/meson.build rhythmbox-3.4.9/shell/meson.build
+--- rhythmbox-3.4.9.orig/shell/meson.build	2026-05-17 13:00:24.901710142 +0200
++++ rhythmbox-3.4.9/shell/meson.build	2026-05-17 13:08:20.446570691 +0200
+@@ -93,11 +93,12 @@
+ 
+ if enable_python
+   rhythmbox_core_deps += [pygobject]
+-  if enable_gir2
+-    rhythmbox_core_deps += [girepository]
+-  else
+-    rhythmbox_core_deps += [gobject_introspection]
+-  endif
++endif
++
++if enable_gir2
++  rhythmbox_core_deps += [girepository]
++else
++  rhythmbox_core_deps += [gobject_introspection]
+ endif
+ 
+ librhythmbox_core = shared_library('rhythmbox-core',
+Sólo en rhythmbox-3.4.9/shell: meson.build~

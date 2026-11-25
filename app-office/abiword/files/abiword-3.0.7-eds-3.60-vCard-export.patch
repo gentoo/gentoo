@@ -1,0 +1,30 @@
+From 4657a5ebd13025365d6fd56a7af77a0625eb3e30 Mon Sep 17 00:00:00 2001
+From: Lukas Schmelting <lschmelting@posteo.com>
+Date: Thu, 16 Apr 2026 23:16:17 +0200
+Subject: [PATCH] app-office/abiword: align with eds-3.60 vCard export
+
+evolution-data-server-3.60 changed the vCard export behaviour that
+AbiWord’s EDS-backed RDF contact export depended on, so builds against a
+current library failed.
+
+Signed-off-by: Lukas Schmelting <lschmelting@posteo.com>
+---
+ src/text/ptbl/xp/pd_DocumentRDF.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/text/ptbl/xp/pd_DocumentRDF.cpp b/src/text/ptbl/xp/pd_DocumentRDF.cpp
+index 3e2b740..c603a88 100644
+--- a/src/text/ptbl/xp/pd_DocumentRDF.cpp
++++ b/src/text/ptbl/xp/pd_DocumentRDF.cpp
+@@ -2034,7 +2034,7 @@ PD_RDFContact::exportToFile( const std::string& filename_const ) const
+         set( c, EVC_TEL,      m_phone );
+         set( c, EVC_X_JABBER, m_jabberID );
+
+-        gchar* data =  e_vcard_to_string( c, EVC_FORMAT_VCARD_30 );
++        gchar* data =  e_vcard_convert_to_string( c, E_VCARD_VERSION_30 );
+         UT_DEBUGMSG(( "saving vcard to file:%s vcard.len:%ld\n", filename.c_str(), strlen(data) ));
+         std::ofstream oss( filename.c_str() );
+         oss.write( data, strlen(data) );
+--
+2.53.0
+

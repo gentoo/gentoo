@@ -6,6 +6,7 @@
 		<name>Gentoo Haskell</name>
 	</maintainer>
 	<upstream>
+		<remote-id type="hackage">getopt-generics</remote-id>
 		<remote-id type="github">soenkehahn/getopt-generics</remote-id>
 	</upstream>
 </pkgmetadata>

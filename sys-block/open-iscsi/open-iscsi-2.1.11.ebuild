@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,7 +12,7 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="LGPL-3+ GPL-2+"
 SLOT="0/0.2"
 KEYWORDS="~alpha amd64 arm arm64 ~mips ppc ppc64 ~riscv ~sparc x86"
-IUSE="debug infiniband +tcp rdma systemd"
+IUSE="debug infiniband +tcp rdma selinux systemd"
 REQUIRED_USE="infiniband? ( rdma ) || ( rdma tcp )"
 # Tries to write to /run/lock/iscsi etc
 RESTRICT="test"
@@ -29,6 +29,7 @@ RDEPEND="
 	${DEPEND}
 	sys-fs/lsscsi
 	sys-apps/util-linux
+	selinux? ( sec-policy/selinux-iscsi )
 "
 BDEPEND="virtual/pkgconfig"
 

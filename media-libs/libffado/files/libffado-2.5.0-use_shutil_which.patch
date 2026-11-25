@@ -1,0 +1,97 @@
+use shutil.which instead of sys-apps/which
+see https://bugs.gentoo.org/940711
+--- a/SConstruct
++++ b/SConstruct
+@@ -27,7 +27,8 @@ from __future__ import print_function
+ FFADO_API_VERSION = "9"
+ FFADO_VERSION="2.5.0"
+ 
+-from subprocess import Popen, PIPE, check_output
++from shutil import which
++from subprocess import check_output
+ import os
+ import re
+ import sys
+@@ -162,10 +163,10 @@ def ConfigGuess( context ):
+     return ret.decode()
+ 
+ def CheckForApp( context, app ):
+-    context.Message( "Checking whether '" + app + "' executes " )
+-    ret = context.TryAction( app )
+-    context.Result( ret[0] )
+-    return ret[0]
++    context.Message( "Checking whether '" + app + "' exists " )
++    ret = which(app) is not None
++    context.Result(ret)
++    return ret
+ 
+ def CheckForPyModule( context, module ):
+     context.Message( "Checking for the python module '" + module + "' " )
+@@ -220,13 +221,10 @@ version_re = re.compile(r'^(\d+)\.(\d+)\.(\d+)')
+ 
+ def CheckJackdVer():
+     print('Checking jackd version...', end='')
+-    popen = Popen(("which", 'jackd'), stdout=PIPE, stderr=PIPE)
+-    stdout, stderr = popen.communicate()
+-    assert popen.returncode in (0, 1), "which returned a unexpected status"
+-    if popen.returncode == 1:
++    jackd = which("jackd")
++    if jackd is None:
+         print("not installed")
+         return None
+-    jackd = stdout.decode ().rstrip ()
+     ret = check_output ((jackd, '--version')).decode() .rstrip ()
+     ret = ret.split ('\n') [-1]; # Last line.
+     ret = ret.split () [2];      # Third field.
+@@ -413,10 +411,10 @@ are retried.
+ 
+ # PyQT checks
+ if env['BUILD_MIXER'] != 'false':
+-    if  (    conf.CheckForApp( 'which pyuic6' ) \
++    if  (    conf.CheckForApp( 'pyuic6' ) \
+          and conf.CheckForPyModule( 'PyQt6' ) \
+          and conf.CheckForPyModule( 'dbus.mainloop.pyqt6' )) \
+-     or (    conf.CheckForApp( 'which pyuic5' ) \
++     or (    conf.CheckForApp( 'pyuic5' ) \
+          and conf.CheckForPyModule( 'PyQt5' ) \
+          and conf.CheckForPyModule( 'dbus.mainloop.pyqt5' )):
+         env['BUILD_MIXER'] = 'true'
+@@ -446,7 +444,7 @@ for pkg in pkgs:
+     name2 = pkg.replace("+","").replace(".","").replace("-","").upper()
+     env['%s_FLAGS' % name2] = conf.GetPKGFlags( pkg, pkgs[pkg] )
+ 
+-if not env['DBUS1_FLAGS'] or not env['DBUSC1_FLAGS'] or not conf.CheckForApp('which dbusxx-xml2cpp'):
++if not env['DBUS1_FLAGS'] or not env['DBUSC1_FLAGS'] or not conf.CheckForApp('dbusxx-xml2cpp'):
+     env['DBUS1_FLAGS'] = b""
+     env['DBUSC1_FLAGS'] = b""
+     print("""
+--- a/support/tools/ffado-diag.in
++++ b/support/tools/ffado-diag.in
+@@ -21,6 +21,8 @@ static_info = "$LIBDATADIR/static_info.txt"
+ 
+ # Test for common FFADO problems
+ 
++from shutil import which
++
+ import glob
+ import os.path
+ import re
+@@ -41,18 +43,6 @@ def indent (lines):
+ def stdout (*args):
+     return subprocess.check_output (args).decode ("utf8")
+ 
+-def which (command):
+-    popen = subprocess.Popen (("which", command), stdout=subprocess.PIPE,
+-                              stderr=subprocess.PIPE)
+-    stdout, stderr = popen.communicate ()
+-    if popen.returncode == 0:
+-        return stdout.decode ("utf8").rstrip ()
+-    elif popen.returncode == 1:
+-        return None
+-    else:
+-        print (stderr)
+-        sys.exit (1)
+-
+ # Parse command line.
+ usage = """Usage: ffado-diag [--static | -V | --version | --usage]
+   --static       Only display executable paths and libraries.

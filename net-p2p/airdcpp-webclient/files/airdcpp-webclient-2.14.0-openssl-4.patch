@@ -1,0 +1,61 @@
+commit c7a85311dd99c321fd981f831482e7dbd2a3f4ab
+Author: maksis <maksis@adrenaline-network.com>
+Date:   Mon Oct 5 11:46:53 2026 +0300
+
+    Fix build with OpenSSL 4
+
+--- a/airdcpp-core/airdcpp/core/crypto/CryptoManager.cpp
++++ b/airdcpp-core/airdcpp/core/crypto/CryptoManager.cpp
+@@ -335,12 +335,12 @@ bool CryptoManager::checkCertificate(int minValidityDays) noexcept{
+ 		return false;
+ 	}
+ 
+-	const ASN1_INTEGER* sn = X509_get_serialNumber(x509);
++	auto sn = X509_get_serialNumber(x509);
+ 	if (!sn || !ASN1_INTEGER_get(sn)) {
+ 		return false;
+ 	}
+ 
+-	X509_NAME* name = X509_get_subject_name(x509);
++	auto name = X509_get_subject_name(x509);
+ 	if (!name) {
+ 		return false;
+ 	}
+@@ -350,7 +350,7 @@ bool CryptoManager::checkCertificate(int minValidityDays) noexcept{
+ 		return false;
+ 	}
+ 
+-	const ASN1_TIME* t = X509_get0_notAfter(x509);
++	auto t = X509_get0_notAfter(x509);
+ 	if (t) {
+ 		time_t minValid = GET_TIME() + 60 * 60 * 24 * minValidityDays;
+ 		if (X509_cmp_time(t, &minValid) < 0) {
+@@ -512,7 +512,7 @@ int CryptoManager::verify_callback(int preverify_ok, X509_STORE_CTX *ctx) {
+ string CryptoManager::formatError(const X509_STORE_CTX *ctx, const string& message) {
+ 	X509* cert = NULL;
+ 	if ((cert = X509_STORE_CTX_get_current_cert(ctx)) != NULL) {
+-		X509_NAME* subject = X509_get_subject_name(cert);
++		auto subject = X509_get_subject_name(cert);
+ 		string tmp, line;
+ 
+ 		tmp = getNameEntryByNID(subject, NID_commonName);
+@@ -536,7 +536,7 @@ string CryptoManager::formatError(const X509_STORE_CTX *ctx, const string& messa
+ 	return Util::emptyString;
+ }
+ 
+-string CryptoManager::getNameEntryByNID(X509_NAME* name, int nid) noexcept{
++string CryptoManager::getNameEntryByNID(const X509_NAME* name, int nid) noexcept{
+ 	int i = X509_NAME_get_index_by_NID(name, nid, -1);
+ 	if (i == -1) {
+ 		return Util::emptyString;
+--- a/airdcpp-core/airdcpp/core/crypto/CryptoManager.h
++++ b/airdcpp-core/airdcpp/core/crypto/CryptoManager.h
+@@ -102,7 +102,7 @@ private:
+ 	}
+ 
+ 	static string formatError(const X509_STORE_CTX *ctx, const string& message);
+-	static string getNameEntryByNID(X509_NAME* name, int nid) noexcept;
++	static string getNameEntryByNID(const X509_NAME* name, int nid) noexcept;
+ 
+ 	void loadKeyprint(const string& file) noexcept;
+ 

@@ -28,6 +28,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.6.4-fsf-gcc-darwin.patch
 	"${FILESDIR}"/${PN}-1.6.2-implicit-function-decl.patch
 	"${FILESDIR}"/${PN}-1.6.6-gcc15.patch
+	"${FILESDIR}"/${PN}-1.6.6-musl.patch
 )
 
 src_prepare() {

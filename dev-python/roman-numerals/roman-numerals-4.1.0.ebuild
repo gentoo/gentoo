@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=flit
 PYPI_VERIFY_REPO=https://github.com/AA-Turner/roman-numerals
-PYTHON_COMPAT=( pypy3_11 python3_{11..14} python3_{13..14}t )
+PYTHON_COMPAT=( python3_{12..15} python3_14t )
 
 inherit distutils-r1 pypi
 

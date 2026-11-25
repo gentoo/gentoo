@@ -6,7 +6,7 @@ EAPI=8
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=standalone
 PYPI_VERIFY_REPO=https://github.com/ansible/pylibssh
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 
 inherit distutils-r1 pypi
 
@@ -46,12 +46,12 @@ python_test() {
 	# They would work by spawning sshd with PermitEmptyPasswords and then ssh'in in with the current user.
 	# "portage" and every other portage installable user is nologin.
 	# Adding a user that allows logging in does not seem reasonable.
-	EPYTEST_IGNORE=(
+	local EPYTEST_IGNORE=(
 		tests/unit/scp_test.py
 		tests/unit/sftp_test.py
 		tests/unit/channel_test.py
 	)
-	EPYTEST_DESELECT=(
+	local EPYTEST_DESELECT=(
 		tests/integration/sshd_test.py::test_sshd_addr_fixture_port
 	)
 	# pytest.ini adds alls sorts of stuff like pytest-cov

@@ -1,5 +1,25 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Sam James <sam@gentoo.org> (2026-11-03)
+# dev-libs/criterion is not marked stable here yet
+app-admin/syslog-ng test
+
+# Matt Jolly <kangie@gentoo.org> (2026-10-18)
+# Not yet keyworded stable, but Rust is.
+dev-lang/rust mrustc-bootstrap
+
+# Sam James <sam@gentoo.org> (2026-09-11)
+# Neither sys-apps/bolt nor kde-plasma/plasma-thunderbolt are marked stable
+# here yet.
+kde-plasma/plasma-meta thunderbolt
+
+# Ionen Wolkens <ionen@gentoo.org> (2026-04-16)
+# media-libs/opencolorio is not stable here and has many dependencies.
+# Not overly worth extra stabilizations over new still scarcely used
+# colour filters. Can revisit if someone wants this.
+media-video/ffmpeg opencolorio
+media-video/ffmpeg-compat opencolorio
 
 # Sam James <sam@gentoo.org> (2025-11-30)
 # sci-libs/blis does not have stable keywords
@@ -39,11 +59,6 @@ sci-mathematics/octave sundials
 # Sam James <sam@gentoo.org> (2022-03-07)
 # sys-cluster/torque not marked stable on arm64
 sys-cluster/openmpi openmpi_rm_pbs
-
-# Michał Górny <mgorny@gentoo.org> (2021-12-31)
-# Don't apply stable masks to python-exec since we're forcing every
-# impl there anyway. Please keep this in sync with use.stable.mask.
-dev-lang/python-exec -python_targets_pypy3_11
 
 # Sam James <sam@gentoo.org> (2021-10-25)
 # Has unstable dependencies we don't want to drag in yet

@@ -1,0 +1,98 @@
+Fix linking of unit tests with LLVM_LINK_LLVM_DYLIB
+--- a/test-unit/CMakeLists.txt
++++ b/test-unit/CMakeLists.txt
+@@ -46,6 +46,12 @@ else()
+   endif()
+ endif()
+ 
++# LLVM's gtest depends on LLVM Support, but installed llvm_gtest from
++# a LLVM_LINK_LLVM_DYLIB build does not carry that dependency.
++if(LLVM_LINK_LLVM_DYLIB AND NOT GTest_FOUND)
++  list(APPEND COMGR_GTEST_LIBS LLVM)
++endif()
++
+ # Pin C++17 and mirror LLVM's RTTI setting (avoids type_info link errors
+ # against LLVM libs built with RTTI off, including hotswap::raiser
+ # which carries its own non-RTTI / non-exceptions compile flags via
+@@ -113,7 +119,11 @@ add_executable(LoggerTests
+   ../src/comgr-logger.cpp
+   ../src/comgr-env.cpp)
+ 
+-llvm_map_components_to_libnames(COMGR_TEST_UNIT_LOGGER_LIBS Support)
++if(LLVM_LINK_LLVM_DYLIB)
++  set(COMGR_TEST_UNIT_LOGGER_LIBS LLVM)
++else()
++  llvm_map_components_to_libnames(COMGR_TEST_UNIT_LOGGER_LIBS Support)
++endif()
+ 
+ target_link_libraries(LoggerTests PRIVATE
+   ${COMGR_GTEST_LIBS}
+--- a/test-unit/hotswap/rewriter/CMakeLists.txt
++++ b/test-unit/hotswap/rewriter/CMakeLists.txt
+@@ -18,8 +18,12 @@ add_executable(HotswapElfTests
+   # definition so non-inlined builds (e.g. -O0 / ASan) resolve.
+   ${PROJECT_SOURCE_DIR}/src/comgr-env.cpp)
+ 
+-llvm_map_components_to_libnames(COMGR_TEST_UNIT_ELF_LIBS
+-  BinaryFormat Object Support TargetParser)
++if(LLVM_LINK_LLVM_DYLIB)
++  set(COMGR_TEST_UNIT_ELF_LIBS LLVM)
++else()
++  llvm_map_components_to_libnames(COMGR_TEST_UNIT_ELF_LIBS
++    BinaryFormat Object Support TargetParser)
++endif()
+ 
+ target_link_libraries(HotswapElfTests PRIVATE
+   ${COMGR_GTEST_LIBS}
+@@ -64,19 +68,23 @@ add_executable(HotswapMCTests
+   ${PROJECT_SOURCE_DIR}/src/hotswap/rewriter/profile.cpp
+   ${PROJECT_SOURCE_DIR}/src/time-stat/time-stat.cpp)
+ 
+-llvm_map_components_to_libnames(COMGR_TEST_UNIT_MC_LIBS
+-  BinaryFormat
+-  MC
+-  MCDisassembler
+-  MCParser
+-  Object
+-  Support
+-  TargetParser
+-  AMDGPUAsmParser
+-  AMDGPUCodeGen
+-  AMDGPUDesc
+-  AMDGPUDisassembler
+-  AMDGPUInfo)
++if(LLVM_LINK_LLVM_DYLIB)
++  set(COMGR_TEST_UNIT_MC_LIBS LLVM)
++else()
++  llvm_map_components_to_libnames(COMGR_TEST_UNIT_MC_LIBS
++    BinaryFormat
++    MC
++    MCDisassembler
++    MCParser
++    Object
++    Support
++    TargetParser
++    AMDGPUAsmParser
++    AMDGPUCodeGen
++    AMDGPUDesc
++    AMDGPUDisassembler
++    AMDGPUInfo)
++endif()
+ 
+ target_link_libraries(HotswapMCTests PRIVATE
+   ${COMGR_GTEST_LIBS}
+@@ -109,8 +117,12 @@ add_executable(HotswapProfileTests
+   ${PROJECT_SOURCE_DIR}/src/hotswap/rewriter/profile.cpp
+   ${PROJECT_SOURCE_DIR}/src/time-stat/time-stat.cpp)
+ 
+-llvm_map_components_to_libnames(COMGR_TEST_UNIT_PROFILE_LIBS
+-  BinaryFormat Object Support TargetParser)
++if(LLVM_LINK_LLVM_DYLIB)
++  set(COMGR_TEST_UNIT_PROFILE_LIBS LLVM)
++else()
++  llvm_map_components_to_libnames(COMGR_TEST_UNIT_PROFILE_LIBS
++    BinaryFormat Object Support TargetParser)
++endif()
+ 
+ target_link_libraries(HotswapProfileTests PRIVATE
+   ${COMGR_GTEST_LIBS}

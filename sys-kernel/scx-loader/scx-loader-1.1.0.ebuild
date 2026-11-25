@@ -191,7 +191,7 @@ LICENSE="GPL-2"
 # Dependent crate licenses
 LICENSE+=" MIT MPL-2.0 Unicode-3.0 ZLIB"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 RDEPEND="~sys-kernel/scx-${PV}"
 

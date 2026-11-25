@@ -1,0 +1,43 @@
+From 8c008b7c34fc293f44047d2ecc0126922ba325db Mon Sep 17 00:00:00 2001
+From: Daniele Forsi IU5HKX <iu5hkx@gmail.com>
+Date: Mon, 24 Aug 2026 23:54:45 +0200
+Subject: [PATCH] Fix building Python bindings with SWIG 4.5
+
+This change is compatible with SWIG 4.4.
+
+Fixes:
+ error: implicit declaration of function 'PyInt_FromLong'
+
+SWIG commit that dropped the macros used for compatibility with Python 2:
+ https://github.com/swig/swig/commit/79f7a2b7cb7ddc256eba09c8770133148025171d
+
+Debian bug report:
+ https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1145352
+
+(cherry picked from commit 40579c6213eee8e4d15b45d176deff3dcab79acd)
+---
+ bindings/hamlib.swg | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/bindings/hamlib.swg b/bindings/hamlib.swg
+index f820ed14a..7fb4f9f86 100644
+--- a/bindings/hamlib.swg
++++ b/bindings/hamlib.swg
+@@ -69,7 +69,7 @@
+   len = $1_dim0;
+   $result = PyList_New(len);
+   for (i = 0; i < len; i++) {
+-    PyList_SetItem($result,i,PyInt_FromLong((long)$1[i]));
++    PyList_SetItem($result,i,PyLong_FromLong((long)$1[i]));
+   }
+ }
+ 
+@@ -78,7 +78,7 @@
+   len = $1_dim0;
+   $result = PyList_New(len);
+   for (i = 0; i < len; i++) {
+-    PyList_SetItem($result,i,PyInt_FromLong((long)$1[i]));
++    PyList_SetItem($result,i,PyLong_FromLong((long)$1[i]));
+   }
+ }
+ 

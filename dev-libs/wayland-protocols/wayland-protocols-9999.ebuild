@@ -19,13 +19,13 @@ fi
 LICENSE="MIT"
 SLOT="0"
 IUSE="test"
-RESTRICT="test" # Bug #843596
+RESTRICT="!test? ( test )"
 
 DEPEND="
 	test? ( dev-libs/wayland )
 "
 BDEPEND="
-	>=dev-util/wayland-scanner-1.23.0
+	>=dev-util/wayland-scanner-1.25.0
 	virtual/pkgconfig
 "
 

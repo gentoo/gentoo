@@ -11,7 +11,7 @@ SRC_URI="https://github.com/g-truc/glm/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="|| ( HappyBunny MIT )"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="amd64 arm arm64 ~loong ppc ppc64 ~riscv ~sparc x86"
 IUSE="test cpu_flags_x86_sse2 cpu_flags_x86_sse3
 	cpu_flags_x86_ssse3 cpu_flags_x86_sse4_1 cpu_flags_x86_sse4_2
 	cpu_flags_x86_avx cpu_flags_x86_avx2"
@@ -20,6 +20,7 @@ RESTRICT="!test? ( test )"
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.9.9.8-big-endian-tests.patch
 	"${FILESDIR}"/${PN}-1.0.2-cmake.patch
+	"${FILESDIR}"/${P}-Werror.patch
 )
 
 DOCS=( manual.md readme.md )

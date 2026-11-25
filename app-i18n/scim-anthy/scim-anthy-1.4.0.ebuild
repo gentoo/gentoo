@@ -11,7 +11,7 @@ SRC_URI="https://github.com/scim-im/scim-anthy/releases/download/RELEASE_${PV//.
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~sparc ~x86"
+KEYWORDS="amd64 ~arm ~sparc x86"
 IUSE="+gtk3 nls"
 
 DEPEND="

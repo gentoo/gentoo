@@ -1,0 +1,21 @@
+Source: https://github.com/KarypisLab/ParMETIS/pull/34
+
+From c4731003101f0579505c3fe6c07247e17be24e39 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Christoph=20Gr=C3=BCninger?= <foss@grueninger.de>
+Date: Fri, 4 Jul 2025 23:14:49 +0200
+Subject: [PATCH] Require CMake 3.10
+
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 146bc5f..b1661a9 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 2.8)
++cmake_minimum_required(VERSION 3.10)
+ project(ParMETIS C)
+ 
+ 

@@ -1,0 +1,65 @@
+From 1c042af146e6b94e43a16f6645e05b6c2ab4b299 Mon Sep 17 00:00:00 2001
+From: Andrey Albershteyn <aalbersh@kernel.org>
+Date: Wed, 21 Oct 2026 10:59:22 +0200
+Subject: [PATCH] libxfs: remove stale xfs_trans_mod_sb() declaration
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+The fa19604607c1 added xfs_trans.h which declares xfs_trans_mod_sb(),
+this function was already declared in xfs_platoform.h. They have
+conflicting type of the last 'delta' argument (stale long, newer int64_t
+from kernel's xfs_trans.h).
+
+This breaks on systems with 32-bit long (e.g. i686) but works fine on 64-bit
+as these are basically the same definitions there.
+
+./libxfs_api_defs.h:390:41: error: conflicting types for 'libxfs_trans_mod_sb'; have 'void(struct xfs_trans *, uint,  long int)' {aka 'void(struct xfs_trans *, unsigned int,  long int)'}
+  390 | #define xfs_trans_mod_sb                libxfs_trans_mod_sb
+      |                                         ^~~~~~~~~~~~~~~~~~~
+xfs_platform.h:411:6: note: in expansion of macro 'xfs_trans_mod_sb'
+  411 | void xfs_trans_mod_sb(struct xfs_trans *, uint, long);
+      |      ^~~~~~~~~~~~~~~~
+./libxfs_api_defs.h:390:41: note: previous declaration of 'libxfs_trans_mod_sb' with type 'void(xfs_trans_t *, uint,  int64_t)' {aka 'void(struct xfs_trans *, unsigned int,  long long int)'}
+  390 | #define xfs_trans_mod_sb                libxfs_trans_mod_sb
+      |                                         ^~~~~~~~~~~~~~~~~~~
+./xfs_trans.h:173:17: note: in expansion of macro 'xfs_trans_mod_sb'
+  173 | void            xfs_trans_mod_sb(xfs_trans_t *, uint, int64_t);
+      |                 ^~~~~~~~~~~~~~~~
+
+Fix by removing stale definition and updating declaration to int64_t.
+
+Fixes: fa19604607c1 ("libxfs: use xfs_trans.h from the kernel source")
+Reported-by: Pavel Reichl <preichl@redhat.com>
+Reviewed-by: Christoph Hellwig <hch@lst.de>
+Signed-off-by: Andrey Albershteyn <aalbersh@kernel.org>
+
+diff --git a/libxfs/trans.c b/libxfs/trans.c
+index c509ca11..920f0eba 100644
+--- a/libxfs/trans.c
++++ b/libxfs/trans.c
+@@ -845,7 +845,7 @@ void
+ libxfs_trans_mod_sb(
+ 	xfs_trans_t		*tp,
+ 	uint			field,
+-	long			delta)
++	int64_t			delta)
+ {
+ 	switch (field) {
+ 	case XFS_TRANS_SB_RES_FDBLOCKS:
+diff --git a/libxfs/xfs_platform.h b/libxfs/xfs_platform.h
+index 4f4990a2..80ff969b 100644
+--- a/libxfs/xfs_platform.h
++++ b/libxfs/xfs_platform.h
+@@ -408,8 +408,6 @@ int  libxfs_mod_incore_sb(struct xfs_mount *, int, int64_t, int);
+ /* percpu counters in mp are #defined to the superblock sb_ counters */
+ #define xfs_reinit_percpu_counters(mp)
+ 
+-void xfs_trans_mod_sb(struct xfs_trans *, uint, long);
+-
+ void xfs_verifier_error(struct xfs_buf *bp, int error,
+ 			xfs_failaddr_t failaddr);
+ void xfs_inode_verifier_error(struct xfs_inode *ip, int error,
+-- 
+2.56.0
+

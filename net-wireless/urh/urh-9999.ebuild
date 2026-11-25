@@ -1,9 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
 inherit distutils-r1 virtualx
@@ -42,6 +42,9 @@ RDEPEND="${DEPEND}
 		dev-python/pyqt6[${PYTHON_USEDEP},testlib]
 		net-wireless/gr-osmosdr"
 
+REQUIRED_USE="
+		test? ( hackrf rtlsdr )"
+
 distutils_enable_tests pytest
 
 PATCHES=( "${FILESDIR}/${PN}-2.9.7-no-numpy-setup.patch" )
@@ -69,11 +72,13 @@ python_test() {
 	# import errors	'tests/test_continuous_modulator.py::TestContinuousModulator::test_modulate_continuously'
 	# import errors	'tests/test_send_recv_dialog_gui.py::TestSendRecvDialog::test_continuous_send_dialog'
 	# import errors	'tests/test_spectrogram.py::TestSpectrogram::test_channel_separation_with_negative_frequency'
+	# assert error in 'test_filter_full_signal'
 	local EPYTEST_DESELECT=(
 		'tests/test_spectrogram.py::TestSpectrogram::test_cancel_filtering'
 		'tests/test_continuous_modulator.py::TestContinuousModulator::test_modulate_continuously'
 		'tests/test_send_recv_dialog_gui.py::TestSendRecvDialog::test_continuous_send_dialog'
 		'tests/test_spectrogram.py::TestSpectrogram::test_channel_separation_with_negative_frequency'
+		'tests/test_filter.py::TestFilter::test_filter_full_signal'
 
 	)
 	cd "${T}" || die

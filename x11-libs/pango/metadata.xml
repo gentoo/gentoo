@@ -7,6 +7,7 @@
   </maintainer>
   <use>
     <flag name="examples">Install source code examples</flag>
+    <flag name="libthai">Support Thai line-breaking with <pkg>dev-libs/libthai</pkg></flag>
     <flag name="sysprof">Enable profiling data capture support using <pkg>dev-util/sysprof-capture</pkg></flag>
     <flag name="X">Build and install the legacy pangoxft library</flag>
   </use>

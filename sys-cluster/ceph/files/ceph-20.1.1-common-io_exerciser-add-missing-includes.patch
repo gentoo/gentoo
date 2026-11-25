@@ -1,0 +1,120 @@
+https://github.com/ceph/ceph/pull/62915
+
+From 4b78bdef09aacf3f08ab0b49cec9564423b94430 Mon Sep 17 00:00:00 2001
+From: Max Kellermann <max.kellermann@ionos.com>
+Date: Tue, 22 Apr 2025 16:23:59 +0200
+Subject: [PATCH] common/io_exerciser: add missing includes
+
+Signed-off-by: Max Kellermann <max.kellermann@ionos.com>
+
+diff --git a/src/common/io_exerciser/IoSequence.cc b/src/common/io_exerciser/IoSequence.cc
+index 2d4b80aa32c..f855aea3e42 100644
+--- a/src/common/io_exerciser/IoSequence.cc
++++ b/src/common/io_exerciser/IoSequence.cc
+@@ -1,6 +1,8 @@
+ #include "IoSequence.h"
+ #include <algorithm>
+ 
++#include <iostream>
++
+ using IoOp = ceph::io_exerciser::IoOp;
+ using OpType = ceph::io_exerciser::OpType;
+ using Sequence = ceph::io_exerciser::Sequence;
+diff --git a/src/common/io_exerciser/Model.h b/src/common/io_exerciser/Model.h
+index 9e421e79a78..5598378fe11 100644
+--- a/src/common/io_exerciser/Model.h
++++ b/src/common/io_exerciser/Model.h
+@@ -1,5 +1,8 @@
+ #pragma once
+ 
++#include <cstdint>
++#include <string>
++
+ #include <boost/asio/io_context.hpp>
+ 
+ #include "IoOp.h"
+@@ -21,6 +24,8 @@
+ namespace ceph {
+ namespace io_exerciser {
+ 
++class IoOp;
++
+ class Model {
+  protected:
+   int num_io{0};
+@@ -42,4 +47,4 @@ class Model {
+ /* Simple RADOS I/O generator */
+ 
+ }  // namespace io_exerciser
+-}  // namespace ceph
+\ No newline at end of file
++}  // namespace ceph
+diff --git a/src/common/io_exerciser/ObjectModel.cc b/src/common/io_exerciser/ObjectModel.cc
+index de77c0757b6..b4edf7925e2 100644
+--- a/src/common/io_exerciser/ObjectModel.cc
++++ b/src/common/io_exerciser/ObjectModel.cc
+@@ -1,4 +1,5 @@
+ #include "ObjectModel.h"
++#include "IoOp.h"
+ 
+ #include <algorithm>
+ #include <execution>
+diff --git a/src/common/io_exerciser/ObjectModel.h b/src/common/io_exerciser/ObjectModel.h
+index cad1307b84e..43d21881374 100644
+--- a/src/common/io_exerciser/ObjectModel.h
++++ b/src/common/io_exerciser/ObjectModel.h
+@@ -1,6 +1,12 @@
+ #pragma once
+ 
+ #include "Model.h"
++#include "include/buffer.h"
++#include "include/interval_set.h"
++#include "include/random.h"
++
++#include <string>
++#include <vector>
+ 
+ /* Overview
+  *
+@@ -51,4 +57,4 @@ class ObjectModel : public Model {
+   void decode(ceph::buffer::list::const_iterator& bl);
+ };
+ }  // namespace io_exerciser
+-}  // namespace ceph
+\ No newline at end of file
++}  // namespace ceph
+diff --git a/src/common/io_exerciser/RadosIo.cc b/src/common/io_exerciser/RadosIo.cc
+index 1b07d4d12ae..8161af16fad 100644
+--- a/src/common/io_exerciser/RadosIo.cc
++++ b/src/common/io_exerciser/RadosIo.cc
+@@ -6,8 +6,12 @@
+ #include <ranges>
+ 
+ #include "DataGenerator.h"
++#include "IoOp.h"
+ #include "common/ceph_json.h"
+ #include "common/json/OSDStructures.h"
++#include "librados/librados_asio.h"
++
++#include <boost/asio/io_context.hpp>
+ 
+ using RadosIo = ceph::io_exerciser::RadosIo;
+ using ConsistencyChecker = ceph::consistency::ConsistencyChecker;
+#diff --git a/src/common/io_exerciser/RadosIo.h b/src/common/io_exerciser/RadosIo.h
+#index c9add85bb82..f3dc0beac19 100644
+#--- a/src/common/io_exerciser/RadosIo.h
+#+++ b/src/common/io_exerciser/RadosIo.h
+#@@ -2,6 +2,10 @@
+# 
+# #include "ObjectModel.h"
+# #include "erasure-code/consistency/ConsistencyChecker.h"
+#+#include "librados/AioCompletionImpl.h"
+#+#include "common/ceph_mutex.h"
+#+
+#+namespace boost::asio { class io_context; }
+# 
+# /* Overview
+#  *
+-- 
+2.49.1
+

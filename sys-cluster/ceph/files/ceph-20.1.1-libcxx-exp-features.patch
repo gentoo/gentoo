@@ -1,0 +1,31 @@
+From: Felix W. (65278) <felix@zeynix.de> 
+Date: Fri, 11 Sep 2026 15:30:00 +0200
+Subject: [PATCH] cmake: add clang/libcxx experimental features for object_io_exerciser
+
+object_io_exerciser uses std::execution, which is an experimental
+feature in libcxx. This patch adds -fexperimental-library should
+the symbol std::execution::seq not exist if you're using clang.
+This possibly breaks on win32, but I have no way of testing.
+
+Index: ceph-20.2.4/src/common/io_exerciser/CMakeLists.txt
+===================================================================
+--- ceph-20.2.4.orig/src/common/io_exerciser/CMakeLists.txt
++++ ceph-20.2.4/src/common/io_exerciser/CMakeLists.txt
+@@ -26,3 +26,17 @@ if(TBB_FOUND)
+   message(STATUS "Linking to TBB for implementations of <execution>.")
+   target_link_libraries(object_io_exerciser TBB::tbb)
+ endif(TBB_FOUND)
++
++
++# libcxx std::execution is experimental. If compiling with clang++
++# and the symbol std::execution::seq does not exist, we set 
++# -fexperimental-library to set _LIBCPP_HAS_EXPERIMENTAL_PSTL:
++# https://github.com/llvm/llvm-project/blob/llvmorg-22.1.8/libcxx/include/execution#L48
++include(CheckCXXSymbolExists)
++check_cxx_symbol_exists("std::execution::seq" execution HAVE_EXECUTION_SEQ)
++
++if((NOT HAVE_EXECUTION_SEQ) AND (CMAKE_CXX_COMPILER_ID STREQUAL "Clang"))
++  target_compile_options(object_io_exerciser 
++	  PRIVATE "-fexperimental-library"
++  ) 
++endif()

@@ -19,21 +19,22 @@ restore system-ode because versions in tree are <0.16
  if(USE_OPENGL)
    find_package(OpenGL REQUIRED)
  endif()
-@@ -98,10 +101,12 @@ check_prototype_definition(mkdir
-   MS_MKDIR
+@@ -98,11 +101,13 @@ check_prototype_definition(mkdir
  )
  
+ add_subdirectory("${PROJECT_SOURCE_DIR}/vendor/bzip2" bzip2)
 -add_subdirectory("${PROJECT_SOURCE_DIR}/vendor/libccd" libccd)
 +if(NOT PREFER_SYSTEM_ODE)
 +  add_subdirectory("${PROJECT_SOURCE_DIR}/vendor/libccd" libccd)
 +  add_subdirectory("${PROJECT_SOURCE_DIR}/vendor/ode" ode)
 +endif()
  add_subdirectory("${PROJECT_SOURCE_DIR}/vendor/chipmunk" chipmunk)
+ add_subdirectory("${PROJECT_SOURCE_DIR}/vendor/lua" lua)
  add_subdirectory("${PROJECT_SOURCE_DIR}/vendor/md5sum" md5sum)
 -add_subdirectory("${PROJECT_SOURCE_DIR}/vendor/ode" ode)
+ add_subdirectory("${PROJECT_SOURCE_DIR}/vendor/xdgbasedir" xdgbasedir)
  add_subdirectory("${PROJECT_SOURCE_DIR}/vendor/glad" glad)
  
- configure_file(common/XMBuildConfig.h.in common/XMBuildConfig.h)
 @@ -510,7 +515,8 @@ target_link_libraries(xmoto PUBLIC
    "$<${USE_SYSTEM_Lua}:${LUA_LIBRARIES}>"
    $<$<NOT:${USE_SYSTEM_Lua}>:lua>

@@ -11,7 +11,7 @@ SRC_URI="mirror://debian/pool/main/d/${PN}/${P/-/_}.tar.xz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ppc ppc64 ~riscv ~s390 ~sparc x86"
 IUSE="+bzip2 +lzma nls selinux test +update-alternatives +zlib +zstd"
 RESTRICT="!test? ( test )"
 
@@ -102,7 +102,7 @@ src_test() {
 src_install() {
 	local DOCS=( debian/changelog THANKS TODO )
 	default
-	strip-lto-bytecode usr/$(get_libdir)/libdpkg.a
+	strip-lto-bytecode
 
 	# https://bugs.gentoo.org/835520
 	mv -v "${ED}"/usr/share/zsh/{vendor-completions,site-functions} || die

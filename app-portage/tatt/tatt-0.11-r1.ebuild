@@ -1,9 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{12..13} )
+PYTHON_COMPAT=( python3_{13..15} )
 DISTUTILS_USE_PEP517=setuptools
 inherit distutils-r1
 
@@ -21,6 +21,7 @@ RDEPEND="
 	app-portage/gentoolkit[${PYTHON_USEDEP}]
 	app-portage/nattka[${PYTHON_USEDEP}]
 	dev-python/configobj[${PYTHON_USEDEP}]
+	dev-python/pkg-resources[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]
 	www-client/pybugz
 "

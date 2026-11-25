@@ -13,26 +13,27 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/swaywm/${PN}.git"
 else
 	inherit verify-sig
-	SRC_URI="https://github.com/swaywm/${PN}/releases/download/v${PV}/${P}.tar.gz -> ${P}.gh.tar.gz
-		https://github.com/swaywm/${PN}/releases/download/v${PV}/${P}.tar.gz.sig -> ${P}.gh.tar.gz.sig"
-	KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
+	SRC_URI="https://github.com/swaywm/${PN}/releases/download/v${PV}/${P}.tar.gz
+		https://github.com/swaywm/${PN}/releases/download/v${PV}/${P}.tar.gz.sig"
+	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
 fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="gdk-pixbuf +man"
+IUSE="gdk-pixbuf"
 
-DEPEND="
+RDEPEND="
 	dev-libs/wayland
-	>=dev-libs/wayland-protocols-1.26
 	x11-libs/cairo
-	gdk-pixbuf? ( x11-libs/gdk-pixbuf )
+	gdk-pixbuf? ( x11-libs/gdk-pixbuf:2 )
 "
-RDEPEND="${DEPEND}"
+DEPEND="${RDEPEND}
+	>=dev-libs/wayland-protocols-1.31
+"
 BDEPEND="
+	app-text/scdoc
 	dev-util/wayland-scanner
 	virtual/pkgconfig
-	man? ( app-text/scdoc )
 "
 
 if [[ ${PV} != 9999 ]]; then
@@ -42,7 +43,7 @@ fi
 
 src_configure() {
 	local emesonargs=(
-		$(meson_feature man man-pages)
+		-Dman-pages=enabled
 		$(meson_feature gdk-pixbuf)
 	)
 

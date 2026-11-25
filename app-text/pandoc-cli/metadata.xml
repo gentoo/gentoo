@@ -9,6 +9,7 @@
 		<flag name="lua">Support custom modifications and conversions with the
 pandoc Lua scripting engine.</flag>
 		<flag name="nightly">Add &#39;-nightly-COMPILEDATE&#39; to the output of &#39;--version&#39;.</flag>
+		<flag name="repl">Include support for running a pandoc Lua repl.</flag>
 		<flag name="server">Include support for running pandoc as an HTTP server.</flag>
 	</use>
 	<upstream>

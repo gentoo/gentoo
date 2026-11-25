@@ -1,0 +1,27 @@
+https://github.com/nghttp2/nghttp2/pull/2828
+
+From 54a657140d19f3ba2309d7ca26caf43c4a85202b Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Sun, 9 Aug 2026 19:30:06 +0100
+Subject: [PATCH] util: add <fstream> include
+
+This shows up with GCC 17 where some transitive internal includes changed:
+it worked by chance before.
+---
+ src/util.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/util.h b/src/util.h
+index 8b7eee9ace..ec16c7f806 100644
+--- a/src/util.h
++++ b/src/util.h
+@@ -46,6 +46,7 @@
+ #include <algorithm>
+ #include <memory>
+ #include <chrono>
++#include <fstream>
+ #include <unordered_map>
+ #include <random>
+ #include <ranges>
+
+

@@ -20,11 +20,12 @@ S="${WORKDIR}/${MY_P}"
 LICENSE="BSD GPL-2"
 # Subslot is for libsubid's SONAME.
 SLOT="0/5"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
 IUSE="acl audit nls pam selinux skey split-usr su systemd test xattr"
 RESTRICT="!test? ( test )"
 
 COMMON_DEPEND="
+	acct-group/shadow
 	virtual/libcrypt:=
 	acl? ( sys-apps/acl:= )
 	audit? ( >=sys-process/audit-2.6:= )
@@ -45,12 +46,10 @@ DEPEND="
 "
 RDEPEND="
 	${COMMON_DEPEND}
-	acct-group/shadow
 	pam? ( >=sys-auth/pambase-20150213 )
 	su? ( !sys-apps/util-linux[su(-)] )
 "
 BDEPEND="
-	acct-group/shadow
 	app-arch/xz-utils
 	sys-devel/gettext
 	test? ( dev-util/cmocka )

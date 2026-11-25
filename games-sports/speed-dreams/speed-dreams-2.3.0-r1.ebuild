@@ -1,4 +1,4 @@
-# Copyright 2021-2025 Gentoo Authors
+# Copyright 2021-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -47,6 +47,7 @@ RDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.2.3_rc1-xmlversion-rpath.patch
+	"${FILESDIR}"/${P}-cmake4.patch # bug 958976
 )
 
 src_unpack() {

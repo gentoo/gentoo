@@ -22,7 +22,7 @@ KEYWORDS="-* amd64 x86"
 
 RDEPEND="=net-misc/asterisk-${PV%%.*}*"
 
-RESTRICT="mirror strip"
+RESTRICT="bindist mirror strip"
 
 S="${WORKDIR}"
 

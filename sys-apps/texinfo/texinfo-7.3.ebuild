@@ -37,7 +37,7 @@ else
 			mirror://gnu/${PN}/${P}.tar.xz
 			verify-sig? ( mirror://gnu/${PN}/${P}.tar.xz.sig )
 		"
-		KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~arm64-macos ~x64-macos ~x64-solaris"
+		KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~arm64-macos ~x64-macos ~x64-solaris"
 		REGEN_BDEPEND="verify-sig? ( sec-keys/openpgp-keys-texinfo )"
 	fi
 fi
@@ -61,7 +61,11 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	${REGEN_BDEPEND}
 	nls? ( >=sys-devel/gettext-0.19.6 )
-	test? ( dev-perl/Test-Deep )
+	test? (
+		dev-perl/Data-Compare
+		dev-perl/Test-Deep
+		dev-perl/Text-Diff
+	)
 "
 
 src_prepare() {

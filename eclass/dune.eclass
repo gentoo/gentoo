@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: dune.eclass
@@ -15,7 +15,7 @@
 # src_install for Dune-based packages.
 
 case ${EAPI} in
-	7|8) ;;
+	7|8|9) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
@@ -29,7 +29,8 @@ _DUNE_ECLASS=1
 # Set before inheriting the eclass.
 : "${DUNE_PKG_NAME:=${PN}}"
 
-inherit edo multiprocessing
+[[ ${EAPI} != 9 ]] && inherit edo
+inherit multiprocessing
 
 # Do not complain about CFLAGS etc since ml projects do not use them.
 QA_FLAGS_IGNORED='.*'
@@ -99,7 +100,7 @@ dune-release() {
 	local -a myduneopts=(
 		--display=short
 		--profile release
-		-j $(makeopts_jobs)
+		-j $(get_makeopts_jobs)
 	)
 
 	# Resolve the package flag.
@@ -165,22 +166,17 @@ dune-install() {
 
 	[[ ${#pkgs[@]} -eq 0 ]] && pkgs=( "${DUNE_PKG_NAME}" )
 
+	local -x DESTDIR="${ED}"
 	local -a myduneopts=(
-		--prefix="${ED}/usr"
-		--libdir="${D}$(ocamlc -where)"
-		--mandir="${ED}/usr/share/man"
+		--prefix="${EPREFIX}/usr"
+		--libdir="$(ocamlc -where)"
+		--mandir="${EPREFIX}/usr/share/man"
+		--docdir="${EPREFIX}/usr/share/doc/${PF}"
 	)
 
 	local pkg
 	for pkg in "${pkgs[@]}" ; do
 		edune install ${myduneopts[@]} ${pkg}
-
-		# Move docs to the appropriate place.
-		if [[ -d "${ED}/usr/doc/${pkg}" ]] ; then
-			mkdir -p "${ED}/usr/share/doc/${PF}/" || die
-			mv "${ED}/usr/doc/${pkg}" "${ED}/usr/share/doc/${PF}/" || die
-			rm -rf "${ED}/usr/doc" || die
-		fi
 	done
 }
 

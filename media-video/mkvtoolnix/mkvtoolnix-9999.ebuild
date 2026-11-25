@@ -1,9 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit autotools flag-o-matic multiprocessing prefix qmake-utils toolchain-funcs xdg
+inherit autotools flag-o-matic multiprocessing prefix qt-utils toolchain-funcs xdg
 
 if [[ ${PV} == *9999 ]] ; then
 	inherit git-r3
@@ -18,8 +18,6 @@ else
 		verify-sig? ( https://mkvtoolnix.download/sources/${P}.tar.xz.sig )
 	"
 	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
-
-	VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/mkvtoolnix.asc"
 fi
 
 DESCRIPTION="Tools to create, alter, and inspect Matroska files"
@@ -34,15 +32,16 @@ RESTRICT="!test? ( test )"
 
 # check NEWS.md for build system changes entries for boost/libebml/libmatroska
 # version requirement updates and other packaging info
+# boost[nls] bug #979450
 RDEPEND="
-	>=dev-libs/boost-1.74.0:=
+	>=dev-libs/boost-1.74.0:=[nls]
 	dev-libs/gmp:=
-	>=dev-libs/libebml-1.4.5:=
+	>=dev-libs/libebml-1.4.7:=
 	>=dev-libs/libfmt-8.0.1:=
 	>=dev-libs/pugixml-1.11
 	>=dev-qt/qtbase-6.2:6[dbus?]
 	media-libs/flac:=
-	>=media-libs/libmatroska-1.7.1:=
+	>=media-libs/libmatroska-1.7.2:=
 	media-libs/libogg
 	media-libs/libvorbis
 	virtual/zlib:=
@@ -71,8 +70,14 @@ BDEPEND="
 "
 
 if [[ ${PV} != *9999 ]] ; then
-	BDEPEND+="verify-sig? ( sec-keys/openpgp-keys-mkvtoolnix )"
+	BDEPEND+="verify-sig? ( sec-keys/openpgp-keys-moritzbunkus )"
+	VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/moritzbunkus.asc"
 fi
+
+PATCHES=(
+	"${FILESDIR}"/mktoolnix-101.0-optional-tests-build.patch
+	"${FILESDIR}"/mktoolnix-101.0-fix-nongui-build.patch
+)
 
 pkg_setup() {
 	if [[ ${MERGE_TYPE} != binary ]]; then
@@ -103,7 +108,11 @@ src_prepare() {
 	fi
 
 	# bug #692018
-	sed -i -e 's/pandoc/diSaBlEd/' ac/pandoc.m4 || die
+	sed -e 's/pandoc/diSaBlEd/' \
+		-e 's/convert/diSaBlEd/' \
+		-e 's/inkscape/diSaBlEd/' \
+		-e 's/magick/diSaBlEd/' \
+		-i ac/tools.m4 || die
 
 	# bug #928463
 	hprefixify "${S}/ac/ax_docbook.m4"
@@ -121,10 +130,11 @@ src_configure() {
 	local myeconfargs=(
 		$(use_enable dbus)
 		$(use_enable debug)
-		$(usex pch "" --disable-precompiled-headers)
-		$(use_enable gui)
 		$(use_with dvd dvdread)
+		$(use_enable gui)
 		$(use_with nls gettext)
+		$(usex pch "" --disable-precompiled-headers)
+		$(use_enable test tests)
 		#$(use_with nls po4a)
 		--disable-update-check
 		--disable-optimization
@@ -134,7 +144,7 @@ src_configure() {
 		# Qt (of some version) is always needed, even for non-GUI builds,
 		# to do e.g. MIME detection. See e.g. bug #844097.
 		# But most of the Qt deps are conditional on a GUI build.
-		--with-qmake6="$(qt6_get_bindir)"/qmake
+		--with-qmake6="$(qt_get_broot_binary 6 qmake)"
 	)
 
 	# Work around bug #904710.

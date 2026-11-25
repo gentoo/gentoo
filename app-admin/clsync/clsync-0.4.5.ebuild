@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -42,6 +42,10 @@ RDEPEND="${DEPEND}
 	!dev-libs/libclsync
 "
 
+PATCHES=(
+	"${FILESDIR}/${P}-gcc16.patch" # bug 943773
+)
+
 pkg_pretend() {
 	if use clsync; then
 		use inotify && CONFIG_CHECK+=" ~INOTIFY_USER"
@@ -52,7 +56,7 @@ pkg_pretend() {
 }
 
 src_prepare() {
-	eapply_user
+	default
 	eautoreconf
 }
 

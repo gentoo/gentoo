@@ -6,7 +6,6 @@
 		<name>Kenton Groombridge</name>
 	</maintainer>
 	<use>
-		<flag name="g15">Enable support for the Logitech G15 LCD (and compatible devices).</flag>
 		<flag name="pipewire">Enable pipewire support for audio output.</flag>
 		<flag name="rnnoise">Enable alternative noise suppression option based on RNNoise.</flag>
 	</use>

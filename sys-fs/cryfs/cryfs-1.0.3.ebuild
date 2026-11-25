@@ -20,7 +20,7 @@ HOMEPAGE="https://www.cryfs.org/"
 
 LICENSE="LGPL-3 MIT"
 SLOT="0"
-IUSE="test"
+IUSE="selinux test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -38,6 +38,7 @@ DEPEND="
 		dev-cpp/gtest
 	)
 "
+RDEPEND+=" selinux? ( sec-policy/selinux-cryfs )"
 BDEPEND="
 	${PYTHON_DEPS}
 	virtual/pkgconfig

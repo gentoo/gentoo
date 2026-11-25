@@ -5,7 +5,7 @@
  GLX_OBJECTS = swt.o glx.o glx_structs.o glx_stats.o
  
 -CFLAGS := $(CFLAGS) \
-+CFLAGS := -fPIC \
++CFLAGS := $(CFLAGS) -fPIC \
  		$(SWT_DEBUG) \
  		$(SWT_WEBKIT_DEBUG) \
  		-DLINUX -DGTK \

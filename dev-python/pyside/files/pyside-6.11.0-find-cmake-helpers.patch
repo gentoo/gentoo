@@ -1,0 +1,26 @@
+diff --git a/sources/pyside6/cmake/PySideHelpers.cmake b/sources/pyside6/cmake/PySideHelpers.cmake
+index ec803a1..335893f 100644
+--- a/sources/pyside6/cmake/PySideHelpers.cmake
++++ b/sources/pyside6/cmake/PySideHelpers.cmake
+@@ -43,6 +43,8 @@ function(pyside_internal_find_host_shiboken_tools)
+     if(QFP_SHIBOKEN_HOST_PATH)
+         list(APPEND find_package_extra_args PATHS "${QFP_SHIBOKEN_HOST_PATH}/lib/cmake")
+         list(PREPEND CMAKE_FIND_ROOT_PATH "${QFP_SHIBOKEN_HOST_PATH}")
++    elseif(QFP_SHIBOKEN_TARGET_PATH)
++        list(APPEND find_package_extra_args PATHS "${QFP_SHIBOKEN_TARGET_PATH}/lib/cmake")
+     endif()
+ 
+     # When doing a regular build, immediately mark the package as required.
+diff --git a/sources/shiboken6/cmake/ShibokenHelpers.cmake b/sources/shiboken6/cmake/ShibokenHelpers.cmake
+index 8c3c8f9..b5e3c68 100644
+--- a/sources/shiboken6/cmake/ShibokenHelpers.cmake
++++ b/sources/shiboken6/cmake/ShibokenHelpers.cmake
+@@ -530,6 +530,8 @@ function(shiboken_internal_find_host_shiboken_tools)
+     if(QFP_SHIBOKEN_HOST_PATH)
+         list(APPEND find_package_extra_args PATHS "${QFP_SHIBOKEN_HOST_PATH}/lib/cmake")
+         list(PREPEND CMAKE_FIND_ROOT_PATH "${QFP_SHIBOKEN_HOST_PATH}")
++    elseif(QFP_SHIBOKEN_TARGET_PATH)
++        list(APPEND find_package_extra_args PATHS "${QFP_SHIBOKEN_TARGET_PATH}/lib/cmake")
+     endif()
+     set(SHIBOKEN6TOOLS_SKIP_FIND_DEPENDENCIES TRUE)
+     find_package(

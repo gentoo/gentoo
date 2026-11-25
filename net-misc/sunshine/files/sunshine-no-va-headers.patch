@@ -1,0 +1,33 @@
+From d5e1d8a4bda8e4b9ac4196cc66287bc6c5134baa Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <chewi@gentoo.org>
+Date: Tue, 27 Oct 2026 23:06:07 +0000
+Subject: [PATCH] build: don't require libva headers with
+ -DSUNSHINE_ENABLE_VAAPI=off
+
+Gentoo either uses the system libva or nothing at all, never the copy
+from build-deps.
+
+Signed-off-by: James Le Cuirot <chewi@gentoo.org>
+--- a/src/config.cpp
++++ b/src/config.cpp
+@@ -48,7 +48,7 @@
+   #include <ffnvcodec/nvEncodeAPI.h>
+ #endif
+ 
+-#if (defined(linux) || defined(__FreeBSD__)) && !defined(DOXYGEN)
++#if defined(SUNSHINE_BUILD_VAAPI) && !defined(DOXYGEN)
+   // For VAAPI rate control types
+   #include <va/va.h>
+ #endif
+@@ -419,7 +419,7 @@ namespace config {
+   }  // namespace qsv
+ 
+   namespace vaapi {
+-#if !(defined(linux) || defined(__FreeBSD__)) || defined(DOXYGEN)
++#if !defined(SUNSHINE_BUILD_VAAPI) || defined(DOXYGEN)
+     constexpr int VA_RC_CBR = 0x00000002;  ///< CBR rate control
+     constexpr int VA_RC_VBR = 0x00000004;  ///< VBR rate control
+     constexpr int VA_RC_CQP = 0x00000010;  ///< CQP rate control
+-- 
+2.55.0
+

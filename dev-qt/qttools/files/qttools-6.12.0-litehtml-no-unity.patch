@@ -1,0 +1,12 @@
+litehtml/src/3rdparty/litehtml/src/css_parser.cpp:136:89:
+    error: specialization of 'litehtml::css_token_vector ...
+--- a/src/assistant/qlitehtml/src/CMakeLists.txt
++++ b/src/assistant/qlitehtml/src/CMakeLists.txt
+@@ -37,6 +37,7 @@
+       litehtml
+       PROPERTIES
+         QT_COMPILE_OPTIONS_DISABLE_WARNINGS ON
++        UNITY_BUILD OFF
+     )
+     set_target_properties(
+       gumbo

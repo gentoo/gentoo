@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_{11..13} )
 inherit autotools python-single-r1
 
 DESCRIPTION="Open Lighting Architecture, a framework for lighting control information"
-HOMEPAGE="https://www.openlighting.org/ola/"
+HOMEPAGE="https://www.openlighting.org/ola/ https://github.com/OpenLightingProject/ola"
 SRC_URI="https://github.com/OpenLightingProject/${PN}/releases/download/${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2+ LGPL-2.1+"

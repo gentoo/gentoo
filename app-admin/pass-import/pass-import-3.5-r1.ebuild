@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 DISTUTILS_USE_PEP517=setuptools
 PYPI_NO_NORMALIZE=1
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/roddhjav.asc
@@ -70,13 +70,15 @@ python_test() {
 	)
 	EPYTEST_IGNORE=()
 
-	if ! has_version dev-python/pykeepass; then
+	local usedep="python_targets_${EPYTHON/./_}(-)"
+
+	if ! has_version "dev-python/pykeepass[${usedep}]"; then
 		EPYTEST_DESELECT+=(
 			tests/imports/test_parse.py::TestParse::test_import_keepass
 		)
 	fi
 
-	if ! has_version dev-python/jsonpath-ng; then
+	if ! has_version "dev-python/jsonpath-ng[${usedep}]"; then
 		EPYTEST_IGNORE+=(
 			tests/filters/test_filter_jsonpath.py
 		)

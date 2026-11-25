@@ -1,0 +1,55 @@
+From 169f725b3ff9988de5ab9b628fc45efb8b29d0b2 Mon Sep 17 00:00:00 2001
+From: Rahul Sandhu <nvraxn@posteo.uk>
+Date: Sat, 2 May 2026 18:22:09 +0100
+Subject: [PATCH] newrole_t, run_init_t: call auth_run_pam()
+
+newrole is linked with PAM:
+
+rsandhu@carbon ~ $ ldd /usr/bin/newrole | ugrep 'pam'
+	libpam.so.0 => /usr/lib64/libpam.so.0 (0x0000738cd6060000)
+	libpam_misc.so.0 => /usr/lib64/libpam_misc.so.0 (0x0000738cd605a000)
+
+And as can be seen from an AVC as well:
+
+avc:  denied  { open } for  pid=1555 comm="newrole" path="/usr/share/pam/security/faillock.conf" dev="vda" ino=59482 scontext=root:staff_r:newrole_t tcontext=system_u:object_r:usr_t tclass=file permissive=1
+
+The same applies for run_init:
+
+avc:  denied  { open } for  pid=7430 comm="newrole" path="/usr/share/pam/security/faillock.conf" dev="vda3" ino=2007669 scontext=root:staff_r:newrole_t tcontext=system_u:object_r:usr_t tclass=file permissive=0
+
+And drop the redundant call to auth_use_nsswitch(): that is implied by
+auth_use_pam()[1].
+
+[1] https://github.com/SELinuxProject/refpolicy/blob/c875d7da32bbd2418287a5eafe5c828d0091e757/policy/modules/system/authlogin.if#L59
+
+Bug: https://bugs.gentoo.org/973082
+Signed-off-by: Rahul Sandhu <nvraxn@posteo.uk>
+---
+ refpolicy/policy/modules/system/selinuxutil.te | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/refpolicy/policy/modules/system/selinuxutil.te b/refpolicy/policy/modules/system/selinuxutil.te
+index 2dc298096..2c4f79391 100644
+--- a/refpolicy/policy/modules/system/selinuxutil.te
++++ b/refpolicy/policy/modules/system/selinuxutil.te
+@@ -291,7 +291,7 @@ term_relabel_all_ptys(newrole_t)
+ term_getattr_unallocated_ttys(newrole_t)
+ term_dontaudit_use_unallocated_ttys(newrole_t)
+ 
+-auth_use_nsswitch(newrole_t)
++auth_use_pam(newrole_t)
+ auth_run_chk_passwd(newrole_t, newrole_roles)
+ auth_run_upd_passwd(newrole_t, newrole_roles)
+ auth_rw_faillog(newrole_t)
+@@ -455,7 +455,7 @@ selinux_compute_create_context(run_init_t)
+ selinux_compute_relabel_context(run_init_t)
+ selinux_compute_user_contexts(run_init_t)
+ 
+-auth_use_nsswitch(run_init_t)
++auth_use_pam(run_init_t)
+ auth_run_chk_passwd(run_init_t, run_init_roles)
+ auth_run_upd_passwd(run_init_t, run_init_roles)
+ auth_dontaudit_read_shadow(run_init_t)
+-- 
+2.54.0
+

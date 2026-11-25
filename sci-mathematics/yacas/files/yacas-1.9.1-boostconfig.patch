@@ -1,0 +1,33 @@
+From 597aac3a1d0de846e810ba8be9b4401e5a0b1c7d Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Sun, 17 May 2026 22:39:19 +0200
+Subject: [PATCH] Raise Boost minimum version to 1.70, use upstream
+ BoostConfig.cmake module
+
+Boost 1.70 was released on April 12th, 2019.
+
+Boost-1.70 introduced their BoostConfig.cmake upstream cmake module
+which CMake Policy CMP0167 drives to port away to (fixes warning
+introduced with CMake >=3.30)
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ cyacas/yacas-kernel/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/cyacas/yacas-kernel/CMakeLists.txt b/cyacas/yacas-kernel/CMakeLists.txt
+index fe1600aa..45a20bf1 100644
+--- a/cyacas/yacas-kernel/CMakeLists.txt
++++ b/cyacas/yacas-kernel/CMakeLists.txt
+@@ -26,7 +26,7 @@ find_path (JSONCPP_INCLUDE_DIR json.h)
+ find_library (JSONCPP_LIBRARY NAMES jsoncpp)
+ 
+ find_package (OpenSSL)
+-find_package (Boost REQUIRED date_time filesystem)
++find_package (Boost 1.70 CONFIG REQUIRED date_time filesystem)
+ 
+ include_directories (include)
+ 
+-- 
+2.54.0
+

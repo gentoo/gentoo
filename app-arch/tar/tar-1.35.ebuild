@@ -62,6 +62,11 @@ src_configure() {
 		--program-prefix=g
 	)
 
+	# https://savannah.gnu.org/support/?111394
+	# This can be removed when we patch dev-build/autoconf, though
+	# packages w/o eautoreconf will still need it.
+	[[ ${enable_year2038} == "no" ]] && myeconfargs+=( --disable-year2038 )
+
 	# Drop CONFIG_SHELL hack after 1.35: https://git.savannah.gnu.org/cgit/tar.git/commit/?id=7687bf4acc4dc4554538389383d7fb4c3e6521cd
 	CONFIG_SHELL="${BROOT}"/bin/bash FORCE_UNSAFE_CONFIGURE=1 econf "${myeconfargs[@]}"
 }

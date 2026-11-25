@@ -1,0 +1,33 @@
+https://salsa.debian.org/webkit-team/webkit/-/blob/wk2/unstable/debian/patches/fix-ftbfs-32bit.patch
+
+From: Alberto Garcia <berto@igalia.com>
+Subject: Fix FTBFS on 32-bit architectures without __uint128_t
+Forwarded: no
+--- webkitgtk.orig/Source/bmalloc/libpas/src/libpas/pas_utils.h
++++ webkitgtk/Source/bmalloc/libpas/src/libpas/pas_utils.h
+@@ -948,6 +948,25 @@ static inline uintptr_t pas_pair_high(pa
+     return pair.high;
+ }
+ 
++#elif __SIZEOF_POINTER__ == 4
++
++typedef uint64_t pas_pair;
++
++static inline pas_pair pas_pair_create(uintptr_t low, uintptr_t high)
++{
++    return ((pas_pair)low) | ((pas_pair)(high) << 32);
++}
++
++static inline uintptr_t pas_pair_low(pas_pair pair)
++{
++    return pair;
++}
++
++static inline uintptr_t pas_pair_high(pas_pair pair)
++{
++    return pair >> 32;
++}
++
+ #else
+ 
+ typedef __uint128_t pas_pair;

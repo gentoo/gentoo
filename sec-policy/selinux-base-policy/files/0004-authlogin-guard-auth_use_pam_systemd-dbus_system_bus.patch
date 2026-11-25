@@ -1,0 +1,65 @@
+From 55f252fafb899f39f6bca809fc06c12e4e3cf3e0 Mon Sep 17 00:00:00 2001
+Message-ID: <55f252fafb899f39f6bca809fc06c12e4e3cf3e0.1783899089.git.sam@gentoo.org>
+In-Reply-To: <dee64f93c975515f6d8e286c3be776a7a57deba2.1783899089.git.sam@gentoo.org>
+References: <dee64f93c975515f6d8e286c3be776a7a57deba2.1783899089.git.sam@gentoo.org>
+From: Sam James <sam@gentoo.org>
+Date: Mon, 25 May 2026 09:43:50 +0100
+Subject: [PATCH 4/4] authlogin: guard
+ auth_use_pam_systemd->dbus_system_bus_client calls with optional_policy
+
+The dbus policy may not be installed (yet) when installing the systemd
+module (for the first time).
+
+Note that it is possible I believe to use systemd w/o DBus at all but
+it's quite rare.
+
+Bug: https://bugs.gentoo.org/975996
+Signed-off-by: Sam James <sam@gentoo.org>
+Signed-off-by: Jason Zaman <perfinion@gentoo.org>
+(cherry picked from commit 8cf8d17f7f51f23ef831da1f0a91a8b99350eca7)
+---
+ policy/modules/system/authlogin.if | 5 ++++-
+ policy/modules/system/authlogin.te | 4 +++-
+ 2 files changed, 7 insertions(+), 2 deletions(-)
+
+diff --git a/policy/modules/system/authlogin.if b/policy/modules/system/authlogin.if
+index bb282024c..82d3f6684 100644
+--- a/policy/modules/system/authlogin.if
++++ b/policy/modules/system/authlogin.if
+@@ -87,7 +87,6 @@ interface(`auth_use_pam',`
+ ## </param>
+ #
+ interface(`auth_use_pam_systemd',`
+-	dbus_system_bus_client($1)
+ 	systemd_connect_machined($1)
+ 	systemd_dbus_chat_logind($1)
+ 	systemd_read_logind_state($1)
+@@ -95,6 +94,10 @@ interface(`auth_use_pam_systemd',`
+ 
+ 	# to read /etc/machine-id
+ 	files_read_etc_runtime_files($1)
++
++	optional_policy(`
++		dbus_system_bus_client($1)
++	')
+ ')
+ 
+ ########################################
+diff --git a/policy/modules/system/authlogin.te b/policy/modules/system/authlogin.te
+index a54fee6e0..42a46c045 100644
+--- a/policy/modules/system/authlogin.te
++++ b/policy/modules/system/authlogin.te
+@@ -168,7 +168,9 @@ ifdef(`distro_ubuntu',`
+ ')
+ 
+ ifdef(`init_systemd',`
+-	auth_use_pam_systemd(chkpwd_t)
++	optional_policy(`
++		auth_use_pam_systemd(chkpwd_t)
++	')
+ ')
+ 
+ optional_policy(`
+-- 
+2.55.0
+

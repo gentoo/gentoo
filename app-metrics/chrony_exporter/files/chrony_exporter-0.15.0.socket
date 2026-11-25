@@ -1,0 +1,9 @@
+[Unit]
+Description=chrony exporter
+Documentation=https://github.com/SuperQ/chrony_exporter
+
+[Socket]
+ListenStream=9123
+
+[Install]
+WantedBy=sockets.target

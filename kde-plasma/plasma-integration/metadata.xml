@@ -6,6 +6,10 @@
 		<name>Gentoo KDE Project</name>
 	</maintainer>
 	<upstream>
-		<bugs-to>https://bugs.kde.org/</bugs-to>
+		<bugs-to>https://bugs.kde.org/enter_bug.cgi?product=plasma-integration</bugs-to>
+		<remote-id type="kde-invent">plasma/plasma-integration</remote-id>
 	</upstream>
+	<use>
+		<flag name="X">Enable support for X11 applications (XWayland)</flag>
+	</use>
 </pkgmetadata>

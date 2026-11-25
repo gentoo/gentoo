@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,7 +11,7 @@ EAPI=8
 PYTHON_COMPAT=( python3_{11..14} )
 TMPFILES_OPTIONAL=1
 
-inherit linux-info meson-multilib python-any-r1 readme.gentoo-r1 systemd tmpfiles virtualx
+inherit linux-info meson-multilib python-any-r1 readme.gentoo-r1 systemd tmpfiles
 
 DESCRIPTION="A message bus system, a simple way for applications to talk to each other"
 HOMEPAGE="https://www.freedesktop.org/wiki/Software/dbus/"
@@ -151,8 +151,7 @@ multilib_src_compile() {
 multilib_src_test() {
 	# DBUS_TEST_MALLOC_FAILURES=0 to avoid huge test logs
 	# https://gitlab.freedesktop.org/dbus/dbus/-/blob/master/CONTRIBUTING.md#L231
-	DBUS_TEST_MALLOC_FAILURES=0 DBUS_VERBOSE=1 virtx meson_src_test
-
+	DBUS_TEST_MALLOC_FAILURES=0 DBUS_VERBOSE=1 meson_src_test
 }
 
 multilib_src_install_all() {

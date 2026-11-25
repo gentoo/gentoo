@@ -10,7 +10,7 @@ EAPI=8
 
 DISTUTILS_OPTIONAL=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{11..15} )
 
 MODULES_INITRAMFS_IUSE=+initramfs
 MODULES_OPTIONAL_IUSE=+modules
@@ -21,7 +21,7 @@ inherit linux-mod-r1 multiprocessing pam systemd udev usr-ldscript
 DESCRIPTION="Linux kernel module and userland utilities for ZFS"
 HOMEPAGE="https://github.com/openzfs/zfs"
 
-MODULES_KERNEL_MAX=6.19
+MODULES_KERNEL_MAX=7.2
 MODULES_KERNEL_MIN=4.18
 
 if [[ ${PV} == "9999" ]]; then
@@ -81,17 +81,6 @@ BDEPEND="
 	)
 "
 
-if [[ ${PV} != "9999" ]] ; then
-	BDEPEND+=" verify-sig? ( sec-keys/openpgp-keys-openzfs )"
-
-	IUSE+=" +dist-kernel-cap"
-	RDEPEND="
-		dist-kernel-cap? ( dist-kernel? (
-			<virtual/dist-kernel-${ZFS_KERNEL_DEP}
-		) )
-	"
-fi
-
 # awk is used for some scripts, completions, and the Dracut module
 RDEPEND="
 	${DEPEND}
@@ -114,8 +103,19 @@ RDEPEND="
 		sys-fs/mdadm
 		sys-process/procps
 	)
-	!<sys-fs/zfs-kmod-2.4.0_rc2-r1
+	!sys-fs/zfs-kmod
 "
+
+if [[ ${PV} != "9999" ]] ; then
+	BDEPEND+=" verify-sig? ( sec-keys/openpgp-keys-openzfs )"
+
+	IUSE+=" +dist-kernel-cap"
+	RDEPEND+="
+		dist-kernel-cap? ( dist-kernel? (
+			<virtual/dist-kernel-${ZFS_KERNEL_DEP}
+		) )
+	"
+fi
 
 REQUIRED_USE="
 	!minimal? ( ${PYTHON_REQUIRED_USE} )
@@ -199,7 +199,8 @@ libsoversion_check() {
 	local bugurl libzfs_sover
 	bugurl="https://bugs.gentoo.org/enter_bug.cgi?form_name=enter_bug&product=Gentoo+Linux&component=Current+packages"
 
-	libzfs_sover="$(grep 'libzfs_la_LDFLAGS += -version-info' lib/libzfs/Makefile.am \
+	libzfs_sover="$(grep -E 'libzfs_la_LDFLAGS[[:space:]]*\+?=[[:space:]]*-version-info' \
+		lib/libzfs/Makefile.am \
 		| grep -Eo '[0-9]+:[0-9]+:[0-9]+')"
 	libzfs_sover="${libzfs_sover%%:*}"
 
@@ -224,6 +225,9 @@ src_prepare() {
 
 	# Run unconditionally (bug #792627)
 	eautoreconf
+
+	# strip forced -Werror, #904378
+	sed -i '/BUILD_FREEBSD_TRUE/s/-Werror //g' Makefile.in || die
 
 	if [[ ${PV} != "9999" ]]; then
 		# Set revision number

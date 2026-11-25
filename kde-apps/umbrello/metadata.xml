@@ -7,6 +7,6 @@
 	</maintainer>
 	<upstream>
 		<bugs-to>https://bugs.kde.org/enter_bug.cgi?product=umbrello</bugs-to>
-		<remote-id type="kde-invent">sdk/umbrello</remote-id> 
+		<remote-id type="kde-invent">sdk/umbrello</remote-id>
 	</upstream>
 </pkgmetadata>

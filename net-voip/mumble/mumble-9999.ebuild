@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 inherit cmake flag-o-matic multilib python-any-r1 xdg
 
 DESCRIPTION="Open source, low-latency, high quality voice chat software"
@@ -26,12 +26,17 @@ if [[ "${PV}" == 9999 ]] ; then
 		3rdparty/tracy
 	)
 else
+	MY_TAG=""
+
 	if [[ "${PV}" == *_pre* ]] ; then
 		SRC_URI="https://dev.gentoo.org/~concord/distfiles/${P}.tar.xz"
+	elif [[ -n "${MY_TAG}" ]] ; then
+		MY_PV="$(ver_cut 1-2).0-${MY_TAG}"
+		SRC_URI="https://github.com/mumble-voip/${PN}/releases/download/v${MY_PV}/${P}.tar.gz"
 	else
 		MY_PV="${PV/_/-}"
 		MY_P="${PN}-${MY_PV}"
-		SRC_URI="https://github.com/mumble-voip/mumble/releases/download/v${MY_PV}/${MY_P}.tar.gz"
+		SRC_URI="https://github.com/mumble-voip/${PN}/releases/download/v${MY_PV}/${MY_P}.tar.gz"
 		S="${WORKDIR}/${P/_*}"
 	fi
 	KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
@@ -43,8 +48,7 @@ IUSE="+alsa debug jack pipewire portaudio pulseaudio multilib nls +rnnoise speec
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	dev-cpp/cli11
-	>=dev-db/soci-4.1.2-r2[sqlite]
+	>=dev-db/soci-4.1.4[sqlite]
 	>=dev-libs/openssl-1.0.0b:0=
 	dev-libs/poco:=[util,xml,zip]
 	>=dev-libs/protobuf-2.2.0:=
@@ -70,6 +74,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
+	dev-cpp/cli11
 	dev-cpp/nlohmann_json
 	dev-qt/qtbase:6[concurrent]
 	dev-libs/boost
@@ -80,6 +85,10 @@ BDEPEND="
 	dev-qt/qttools:6[linguist]
 	virtual/pkgconfig
 "
+
+PATCHES=(
+	"${FILESDIR}/${PN}-1.6.1001-plugins-exception-include.patch"
+)
 
 pkg_setup() {
 	python-any-r1_pkg_setup

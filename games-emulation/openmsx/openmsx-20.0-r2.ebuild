@@ -1,9 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit desktop python-any-r1 readme.gentoo-r1 toolchain-funcs xdg
 
@@ -36,6 +36,9 @@ DOC_CONTENTS="If you want to if you want to emulate real MSX systems and not onl
 PATCHES=(
 	# Drop this after 20.0
 	"${FILESDIR}"/${P}-template.patch
+	# bug #958971
+	# https://github.com/openMSX/openMSX/issues/1873
+	"${FILESDIR}"/${P}-odr.patch
 )
 
 src_prepare() {

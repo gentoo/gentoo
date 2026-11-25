@@ -1,0 +1,13 @@
+[Unit]
+Description=ipmi_exporter service
+After=network.target
+
+[Service]
+Type=exec
+PIDFile=/run/ipmi_exporter.pid
+Restart=always
+RestartSec=1
+ExecStart=/usr/bin/ipmi_exporter --web.listen-address=0.0.0.0:9290 --log.format=json --web.config.file=/etc/exporter-webconfig.yaml
+
+[Install]
+WantedBy=multi-user.target

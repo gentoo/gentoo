@@ -16,11 +16,9 @@
 		<flag name="gnutls">Enable TLS support</flag>
 		<flag name="log-json">Enable logging via JSON</flag>
 		<flag name="maxminddb">Enable geolocation support via <pkg>dev-libs/libmaxminddb</pkg></flag>
-		<flag name="mbedtls">Add support for TLS using the mbedTLS library</flag>
 		<flag name="pcre2">Add support for Perl Compatible Regular Expressions 2</flag>
 		<flag name="re2">Add support for Google RE2 regular expressions library</flag>
 		<flag name="regex-posix">Add support for POSIX Regular Expressions</flag>
-		<flag name="regex-stdlib">Add support for C++ stdlib regular expressions</flag>
 		<flag name="ssl">Enable SSL support</flag>
 		<flag name="sslrehashsignal">Enable rehashing SSL module by SIGUSR1</flag>
 		<flag name="tre">Enable support for TRE, a lightweight, robust, and efficient POSIX compliant regexp matching library</flag>

@@ -6,7 +6,8 @@
 		<name>Gentoo KDE Project</name>
 	</maintainer>
 	<upstream>
-		<bugs-to>https://bugs.kde.org/</bugs-to>
+		<bugs-to>https://bugs.kde.org/enter_bug.cgi?product=KSystemLog</bugs-to>
+		<remote-id type="kde-invent">system/ksystemlog</remote-id>
 	</upstream>
 	<use>
 		<flag name="kdesu">Run as root using kdesu from <pkg>kde-plasma/kde-cli-tools</pkg></flag>

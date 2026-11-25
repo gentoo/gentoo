@@ -1,10 +1,10 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{11..14} pypy3_11 )
+PYTHON_COMPAT=( python3_{12..15} )
 
 inherit distutils-r1
 
@@ -23,21 +23,20 @@ SLOT="0"
 KEYWORDS="amd64 ~arm arm64 ~x86"
 
 RDEPEND="
+	>=dev-python/greenlet-3.0[${PYTHON_USEDEP}]
 	>=dev-python/msgpack-1.0.0[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep '
-		>=dev-python/greenlet-3.0[${PYTHON_USEDEP}]
-	' 'python*')
-	$(python_gen_cond_dep '
-		>=dev-python/typing-extensions-4.5[${PYTHON_USEDEP}]
-	' 3.11)
 "
 BDEPEND="
 	test? (
 		app-editors/neovim
-		dev-python/pytest-timeout[${PYTHON_USEDEP}]
 	)
 "
 
 EPYTEST_PLUGINS=()
 : ${EPYTEST_TIMEOUT:=5}
 distutils_enable_tests pytest
+
+EPYTEST_DESELECT=(
+	# changed error message
+	test/test_vim.py::test_command_error
+)

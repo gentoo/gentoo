@@ -1,0 +1,79 @@
+Rebased From b693feda0148eb421e1f59d468caceb6f3183a82 Mon Sep 17 00:00:00 2001
+From: Mart Raudsepp <mart@leio.tech>
+Date: Mon, 16 Mar 2020 23:43:12 +0200
+Subject: [PATCH] build: Handle lua as needed by Gentoo
+
+Gentoo currently uses unversioned lua:0 - lua.pc instad of lua5.1.pc,
+/usr/bin/lua instead of /usr/bin/lua5.1
+Additionally lua and luajit can be installed in parallel, but only one
+should be chosen - so add explicit meson options to choose between them.
+This is currently in a hacky un-upstreamable way: working correctly only
+if both options are disabled, or only one is enabled and the other
+disabled, but having logic issues if any is "auto" or both enabled; this
+is because feature option is mainly used to handle explicit choice
+between them more easily in a Gentoo-specific patch without having to
+add various conditional branches thanks to the feature being disabled
+acting as a full disabler, so the other option is automatically not
+checked.
+--- a/meson.build
++++ b/meson.build
+@@ -144,18 +144,12 @@ if not python3_dep.found() or python_path != ''
+ endif
+ 
+ pygobject_dep = dependency('pygobject-3.0', version: pygobject_req, required: false)
+-lua51_dep = dependency('lua51', version: lua_req, required: false)
+-if not lua51_dep.found()
+-  lua51_dep = dependency('lua-5.1', version: lua_req, required: false)
+-endif
+-luajit_dep = dependency('luajit', version: luajit_req, required: false)
++lua51_dep = dependency('lua', version: lua_req, required: get_option('lua51'))
++luajit_dep = dependency('luajit', version: luajit_req, required: get_option('luajit'))
+ lua_lgi_found = false
+ lua_lgi_ver = 'not found'
+-lua51_prg = find_program('lua5.1', required: false)
+-if not lua51_prg.found()
+-  lua51_prg = find_program('lua51', required: false)
+-endif
+-luajit_prg = find_program('luajit', required: false)
++lua51_prg = find_program('lua', required: get_option('lua51'))
++luajit_prg = find_program('luajit', required: get_option('luajit'))
+ xmllint_prg = find_program('xmllint', required: false)
+ generate_vapi = get_option('vapi')
+ vapigen_prg = find_program('vapigen', required: generate_vapi)
+@@ -217,6 +211,8 @@ if lua_found
+             lua51_lgi_dep = declare_dependency(version: lua_lgi_ver)
+             lua_lgi_found = true
+         endif
++    else
++        error('lua support requested but lua-lgi not found')
+     endif
+     message('lua-lgi version: ' + lua_lgi_ver)
+ endif
+@@ -402,11 +398,7 @@ endif
+ 
+ build_gjs_loader = get_option('gjs')
+ 
+-build_lua51_loader = get_option('lua51')
+-lua51_found = (luajit_dep.found() or lua51_dep.found()) and lua_lgi_found
+-if build_lua51_loader and not lua51_found
+-  error('Lua51 requested but failed to locate suitable Lua51 and LGI support')
+-endif
++build_lua51_loader = (luajit_dep.found() or lua51_dep.found()) and lua_lgi_found
+ 
+ build_python3_loader = get_option('python3')
+ python3_found = python3_dep.found() and pygobject_dep.found()
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -3,8 +3,11 @@ option('gjs',
+        description: 'Enable GJS support (requires gjs-1.0)')
+ 
+ option('lua51',
+-       type: 'boolean', value: true,
++       type: 'feature', value: 'enabled',
+        description: 'Enable Lua 5.1 support (requires lua-lgi)')
++option('luajit',
++       type: 'feature', value: 'disabled',
++       description: 'Use LuaJIT for Lua 5.1 support (requires lua-lgi)')
+ 
+ option('python3',
+        type: 'boolean', value: true,

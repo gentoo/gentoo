@@ -1,0 +1,21 @@
+[Unit]
+Description=Consul Exporter for Prometheus
+Documentation=https://github.com/prometheus/consul_exporter
+Wants=network-online.target
+After=network-online.target consul.service
+
+[Service]
+Type=simple
+User=consul_exporter
+Group=consul_exporter
+Restart=on-failure
+ExecStart=/usr/bin/consul_exporter
+
+NoNewPrivileges=true
+ProtectSystem=full
+ProtectHome=true
+PrivateTmp=true
+PrivateDevices=true
+
+[Install]
+WantedBy=multi-user.target

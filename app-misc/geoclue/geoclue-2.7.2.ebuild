@@ -14,7 +14,7 @@ SRC_URI="https://gitlab.freedesktop.org/geoclue/${PN}/-/archive/${PV}/${P}.tar.b
 LICENSE="LGPL-2.1+ GPL-2+"
 SLOT="2.0"
 KEYWORDS="~alpha amd64 arm arm64 ~loong ~mips ppc ppc64 ~riscv ~sparc x86"
-IUSE="+introspection gtk-doc modemmanager vala zeroconf"
+IUSE="+introspection gtk-doc modemmanager selinux vala zeroconf"
 REQUIRED_USE="vala? ( introspection )"
 
 DEPEND="
@@ -29,6 +29,7 @@ DEPEND="
 RDEPEND="${DEPEND}
 	acct-user/geoclue
 	sys-apps/dbus
+	selinux? ( sec-policy/selinux-geoclue )
 "
 BDEPEND="${PYTHON_DEPS}
 	>=dev-util/gdbus-codegen-2.80.5-r1

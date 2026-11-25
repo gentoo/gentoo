@@ -4,21 +4,23 @@
 EAPI=8
 
 # These don't necessarily have to align with the upstream release.
-BUILD_DEPS_COMMIT="e87b7cec9c3a01cb671cdd8ba19fe443105412d4"
-DISPLAYDEV_COMMIT="v2025.612.225826"
-ENET_COMMIT="115a10baa1d7f291ff5b870765610fd3b4a6e43c"
-INPUTTINO_COMMIT="504f0abc7da8ebc351f8300fb2ed98db5438ee48"
-MOONLIGHT_COMMIT="5f2280183cb62cba1052894d76e64e5f4153377d"
-NANORS_COMMIT="19f07b513e924e471cadd141943c1ec4adc8d0e0"
-TRAY_COMMIT="0309a7cb84aad25079b60c40d1eae0bacd05b26d"
-SWS_COMMIT="187f798d54a9c6cee742f2eb2c54e9ba26f5a385"
-WLRP_COMMIT="a741f0ac5d655338a5100fc34bc8cec87d237346"
-FFMPEG_VERSION="8.0"
+BUILD_DEPS_COMMIT="v2026.910.121303"
+DISPLAYDEV_COMMIT="v2026.630.230908"
+ENET_COMMIT="aca87840b57f045a1f7f9299e4b1b9b8e2a5e2f1"
+GLAD_COMMIT="v2.0.8"
+LZBC_COMMIT="v2026.905.172735"
+MOONLIGHT_COMMIT="62e066388f1a1b133e0bee947b9a374311a3354b"
+NANORS_COMMIT="b1e3c22ca0cdc0bb83e3cd6ed1a2fc77869ed99a"
+TRAY_COMMIT="v2026.906.164042"
+VHID_COMMIT="v2026.914.1218.10"
+SWS_COMMIT="546895a93a29062bb178367b46c7afb72da9881e"
+WLRP_COMMIT="bf4fc79abc359eea5a0edec0ac6d4a2b2955f82a"
+FFMPEG_VERSION="9.0.2"
 
 # To make the assets tarball:
 # PV=
 # EGIT_OVERRIDE_COMMIT_LIZARDBYTE_SUNSHINE=v$PV ebuild sunshine-9999.ebuild clean compile
-# XZ_OPT=-9 tar --xform="s:^:Sunshine-$PV/:" -Jcf /var/cache/distfiles/sunshine-assets-$PV.tar.xz -C /var/tmp/portage/net-misc/sunshine-9999/work/sunshine-9999 assets/
+# XZ_OPT=-9 gtar --xform="s:^:Sunshine-$PV/:" -Jcf /var/cache/distfiles/sunshine-assets-$PV.tar.xz -C /var/tmp/portage/net-misc/sunshine-9999/work/sunshine-9999 assets/
 
 if [[ ${PV} = 9999* ]]; then
 	inherit git-r3
@@ -32,14 +34,18 @@ else
 			-> libdisplaydevice-${DISPLAYDEV_COMMIT#v}.tar.gz
 		https://github.com/cgutman/enet/archive/${ENET_COMMIT}.tar.gz
 			-> moonlight-enet-${ENET_COMMIT}.tar.gz
-		https://github.com/games-on-whales/inputtino/archive/${INPUTTINO_COMMIT}.tar.gz
-			-> inputtino-${INPUTTINO_COMMIT}.tar.gz
+		https://github.com/Dav1dde/glad/archive/${GLAD_COMMIT}.tar.gz
+			-> glad-${GLAD_COMMIT}.tar.gz
+		https://github.com/LizardByte/lizardbyte-common/archive/${LZBC_COMMIT}.tar.gz
+			-> lizardbyte-common-${LZBC_COMMIT}.tar.gz
 		https://github.com/moonlight-stream/moonlight-common-c/archive/${MOONLIGHT_COMMIT}.tar.gz
 			-> moonlight-common-c-${MOONLIGHT_COMMIT}.tar.gz
 		https://github.com/sleepybishop/nanors/archive/${NANORS_COMMIT}.tar.gz
 			-> nanors-${NANORS_COMMIT}.tar.gz
 		https://github.com/LizardByte/tray/archive/${TRAY_COMMIT}.tar.gz
 			-> LizardByte-tray-${TRAY_COMMIT}.tar.gz
+		https://github.com/LizardByte/libvirtualhid/archive/${VHID_COMMIT}.tar.gz
+			-> libvirtualhid-${VHID_COMMIT}.tar.gz
 		https://gitlab.com/eidheim/Simple-Web-Server/-/archive/${SWS_COMMIT}/Simple-Web-Server-${SWS_COMMIT}.tar.bz2
 		https://gitlab.freedesktop.org/wlroots/wlr-protocols/-/archive/${WLRP_COMMIT}/wlr-protocols-${WLRP_COMMIT}.tar.bz2
 		https://ffmpeg.org/releases/ffmpeg-${FFMPEG_VERSION}.tar.xz
@@ -49,13 +55,15 @@ else
 	S="${WORKDIR}/Sunshine-${PV}"
 fi
 
-inherit cmake fcaps flag-o-matic systemd toolchain-funcs udev xdg
+PYTHON_COMPAT=( python3_{12..15} )
+
+inherit cmake fcaps flag-o-matic optfeature python-any-r1 systemd toolchain-funcs udev xdg
 
 DESCRIPTION="Self-hosted game stream host for Moonlight"
 HOMEPAGE="https://github.com/LizardByte/Sunshine"
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="cuda debug libdrm svt-av1 systemd trayicon vaapi wayland X x264 x265"
+IUSE="cuda debug kde +libdrm pipewire svt-av1 systemd trayicon vaapi vulkan wayland X x264 x265"
 
 # Strings for CPU features in the useflag[:configure_option] form
 # if :configure_option isn't set, it will use 'useflag' as configure option
@@ -126,23 +134,25 @@ CPU_REQUIRED_USE="
 REQUIRED_USE="
 	${CPU_REQUIRED_USE}
 	|| ( cuda libdrm wayland X )
+	kde? ( pipewire wayland )
+	pipewire? ( wayland )
 "
 
 CDEPEND="
-	=dev-libs/boost-1.89*:=[nls]
+	>=dev-libs/boost-1.89:=[nls]
+	dev-libs/glib:2
 	dev-libs/libevdev
 	dev-libs/openssl:=
 	media-libs/opus
 	net-libs/miniupnpc:=
 	net-misc/curl
+	sys-libs/libcap
 	|| (
 		media-libs/libpulse
 		media-sound/apulse[sdk]
 	)
-	libdrm? (
-		sys-libs/libcap
-		x11-libs/libdrm
-	)
+	libdrm? ( x11-libs/libdrm )
+	pipewire? ( media-video/pipewire:= )
 	svt-av1? ( media-libs/svt-av1:= )
 	trayicon? (
 		dev-libs/libayatana-appindicator
@@ -162,6 +172,8 @@ RDEPEND="
 	${CDEPEND}
 	media-libs/mesa[vaapi?]
 	cuda? ( x11-drivers/nvidia-drivers )
+	kde? ( kde-plasma/kwin[screencast(-)] )
+	vulkan? ( media-libs/vulkan-loader )
 	X? (
 		x11-libs/libxcb
 		x11-libs/libXfixes
@@ -170,27 +182,43 @@ RDEPEND="
 	)
 "
 
+# Ensure that the minimum Clang version permitted supports the maximum
+# nvidia-cuda-toolkit version permitted. See PARTIALLY_SUPPORTED in Clang's
+# Basic/Cuda.h. Also check the minimum CUDA version required by Sunshine in
+# linux.cmake. It's okay if Clang doesn't support the latest CUDA versions.
+
 DEPEND="
 	${CDEPEND}
 	dev-cpp/nlohmann_json
-	>=media-libs/amf-headers-1.4.36-r1
-	<media-libs/nv-codec-headers-14
-	cuda? ( dev-util/nvidia-cuda-toolkit )
-	wayland? ( dev-libs/wayland-protocols )
+	>=media-libs/amf-headers-1.5.2
+	=media-libs/nv-codec-headers-13*
+	cuda? (
+		>=dev-util/nvidia-cuda-toolkit-12
+		<dev-util/nvidia-cuda-toolkit-13.5
+	)
+	kde? ( >=dev-libs/plasma-wayland-protocols-1.21 )
+	pipewire? ( x11-libs/libdrm )
+	vulkan? (
+		>=dev-util/vulkan-headers-1.4.317
+		x11-libs/libdrm
+	)
+	wayland? (
+		dev-libs/wayland-protocols
+		x11-libs/libdrm
+	)
 "
 
 BDEPEND="
+	${PYTHON_DEPS}
 	net-libs/nodejs[npm]
 	virtual/pkgconfig
 	cpu_flags_x86_mmx? ( >=dev-lang/nasm-2.13 )
-	cuda? ( llvm-core/clang:*[llvm_targets_NVPTX] )
+	cuda? ( >=llvm-core/clang-23[llvm_targets_NVPTX] )
 	wayland? ( dev-util/wayland-scanner )
+	$(python_gen_any_dep '
+		dev-python/jinja2[${PYTHON_USEDEP}]
+	')
 "
-
-PATCHES=(
-	"${FILESDIR}"/${PN}-2025.122.141614-nvcodec.patch
-	"${FILESDIR}"/${PN}-new-cuda.patch
-)
 
 # Make this mess a bit simpler.
 CMAKE_IN_SOURCE_BUILD=1
@@ -203,6 +231,11 @@ export npm_config_loglevel=verbose
 export npm_config_optional=true # https://github.com/npm/cli/issues/4828
 export npm_config_progress=false
 export npm_config_save=false
+
+python_check_deps() {
+	# needed for glad
+	python_has_version "dev-python/jinja2[${PYTHON_USEDEP}]"
+}
 
 src_unpack() {
 	if [[ ${PV} = 9999* ]]; then
@@ -220,7 +253,7 @@ src_unpack() {
 		git-r3_src_unpack
 
 		local EGIT_REPO_URI="https://github.com/LizardByte/Sunshine.git"
-		local EGIT_SUBMODULES=( third-party/{inputtino,libdisplaydevice,moonlight-common-c{,/enet},nanors,tray,Simple-Web-Server,wlr-protocols} )
+		local EGIT_SUBMODULES=( third-party/{glad,libdisplaydevice,libvirtualhid,lizardbyte-common,moonlight-common-c{,/enet,/nanors},tray,Simple-Web-Server,wlr-protocols} )
 		unset EGIT_CHECKOUT_DIR EGIT_COMMIT EGIT_BRANCH
 		git-r3_src_unpack
 
@@ -228,17 +261,22 @@ src_unpack() {
 		cd "${S}" || die
 		npm install || die
 	else
+		default
 		find moonlight-common-c-${MOONLIGHT_COMMIT} "${S}"/third-party \
-			build-deps-${BUILD_DEPS_COMMIT}/third-party/FFmpeg -mindepth 1 -type d -empty -delete || die
+			build-deps-${BUILD_DEPS_COMMIT#v}/third-party/FFmpeg -mindepth 1 -type d -empty -delete || die
+
 		mv enet-${ENET_COMMIT} moonlight-common-c-${MOONLIGHT_COMMIT}/enet || die
+		mv nanors-${NANORS_COMMIT} moonlight-common-c-${MOONLIGHT_COMMIT}/nanors || die
+
+		mv build-deps-${BUILD_DEPS_COMMIT#v} "${S}"/third-party/build-deps || die
 		mv libdisplaydevice-${DISPLAYDEV_COMMIT#v} "${S}"/third-party/libdisplaydevice || die
-		mv inputtino-${INPUTTINO_COMMIT} "${S}"/third-party/inputtino || die
+		mv glad-${GLAD_COMMIT#v} "${S}"/third-party/glad || die
+		mv lizardbyte-common-${LZBC_COMMIT#v} "${S}"/third-party/lizardbyte-common || die
 		mv moonlight-common-c-${MOONLIGHT_COMMIT} "${S}"/third-party/moonlight-common-c || die
-		mv nanors-${NANORS_COMMIT} "${S}"/third-party/nanors || die
-		mv tray-${TRAY_COMMIT} "${S}"/third-party/tray || die
+		mv tray-${TRAY_COMMIT#v} "${S}"/third-party/tray || die
+		mv libvirtualhid-${VHID_COMMIT#v} "${S}"/third-party/libvirtualhid || die
 		mv Simple-Web-Server-${SWS_COMMIT} "${S}"/third-party/Simple-Web-Server || die
 		mv wlr-protocols-${WLRP_COMMIT} "${S}"/third-party/wlr-protocols || die
-		mv build-deps-${BUILD_DEPS_COMMIT} "${S}"/third-party/build-deps || die
 		mv ffmpeg-${FFMPEG_VERSION} "${S}"/third-party/build-deps/third-party/FFmpeg/FFmpeg || die
 	fi
 }
@@ -246,6 +284,7 @@ src_unpack() {
 src_prepare() {
 	# Avoid CMake compatibility warning.
 	rm third-party/moonlight-common-c/CMakeLists.txt || die
+	find third-party/glad/{example,test} -name CMakeLists.txt -delete || die
 
 	CMAKE_USE_DIR="${S}"/third-party/build-deps cmake_src_prepare
 	default_src_prepare() { :; } # Hack to avoid double patching! :(
@@ -253,6 +292,13 @@ src_prepare() {
 }
 
 src_configure() {
+	local build_deps="${S}"/third-party/build-deps/dist
+
+	# The build assumes these files are bundled.
+	mkdir -p "${build_deps}"/ffmpeg/include third-party/plasma-wayland-protocols/src || die
+	ln -snf "${ESYSROOT}"/usr/include/ffnvcodec "${build_deps}"/ffmpeg/include/ || die
+	ln -snf "${ESYSROOT}"/usr/share/plasma-wayland-protocols third-party/plasma-wayland-protocols/src/protocols || die
+
 	local mycmakeargs=(
 		-DBASH_EXECUTABLE="${BROOT}"/bin/true
 		-DBUILD_ALL_SUNSHINE=no
@@ -261,14 +307,18 @@ src_configure() {
 		-DBUILD_FFMPEG_ALL_PATCHES=yes
 		-DBUILD_FFMPEG_AMF=no
 		-DBUILD_FFMPEG_CBS=yes
+		-DBUILD_FFMPEG_DAV1D=no
 		-DBUILD_FFMPEG_LIBVA=no
 		-DBUILD_FFMPEG_MF=no
 		-DBUILD_FFMPEG_NV_CODEC_HEADERS=no
+		-DBUILD_FFMPEG_OPUS=no
 		-DBUILD_FFMPEG_SVT_AV1=no
+		-DBUILD_FFMPEG_TOOLS=no
+		-DBUILD_FFMPEG_VULKAN=no
 		-DBUILD_FFMPEG_X264=no
 		-DBUILD_FFMPEG_X265=no
 		-DBUILD_SHARED_LIBS=no
-		-DCMAKE_INSTALL_PREFIX="${S}"/third-party/build-deps/dist
+		-DCMAKE_INSTALL_PREFIX="${build_deps}"
 	)
 	CMAKE_USE_DIR="${S}"/third-party/build-deps cmake_src_configure
 
@@ -300,16 +350,19 @@ src_configure() {
 		--enable-static
 		--enable-swscale
 		--enable-v4l2_m2m
+		--enable-vulkan-static
 		$(use_enable cuda)
 		$(use_enable cuda cuda_llvm)
 		$(use_enable svt-av1 libsvtav1)
 		$(use_enable vaapi)
+		$(use_enable vulkan)
 		$(use_enable x264 libx264)
 		$(use_enable x265 libx265)
-		$(usex svt-av1 --enable-encoder=libsvtav1 "")
-		$(usex vaapi --enable-encoder=h264_vaapi,hevc_vaapi,av1_vaapi "")
-		$(usex x264 --enable-encoder=libx264 "")
-		$(usex x265 --enable-encoder=libx265 "")
+		$(usev svt-av1 --enable-encoder=libsvtav1)
+		$(usev vaapi --enable-encoder=h264_vaapi,hevc_vaapi,av1_vaapi)
+		$(usev vulkan --enable-encoder=h264_vulkan,hevc_vulkan,av1_vulkan)
+		$(usev x264 --enable-encoder=libx264)
+		$(usev x265 --enable-encoder=libx265)
 		--enable-encoder=h264_amf,hevc_amf,av1_amf
 		--enable-encoder=h264_nvenc,hevc_nvenc,av1_nvenc
 		--enable-encoder=h264_v4l2m2m,hevc_v4l2m2m
@@ -353,17 +406,21 @@ src_configure() {
 		-DBOOST_USE_STATIC=no
 		-DBUILD_DOCS=no
 		-DBUILD_TESTS=no
-		-DCCACHE_FOUND=no
-		-DFFMPEG_PLATFORM_LIBRARIES="$(usex svt-av1 SvtAv1Enc '');$(usex vaapi 'va;va-drm' '');$(usev x264);$(usev x265)"
-		-DFFMPEG_PREPARED_BINARIES="${S}"/third-party/build-deps/dist
+		-DFFMPEG_PLATFORM_LIBRARIES="$(usev svt-av1 SvtAv1Enc);$(usev vaapi 'va;va-drm');$(usev vulkan);$(usev x264);$(usev x265)"
+		-DFFMPEG_PREPARED_BINARIES="${build_deps}"/ffmpeg
+		-DGLAD_SKIP_PIP_INSTALL=yes
 		-DSUNSHINE_ASSETS_DIR=share/${PN}
 		-DSUNSHINE_ENABLE_CUDA=$(usex cuda)
 		-DSUNSHINE_ENABLE_DRM=$(usex libdrm)
+		-DSUNSHINE_ENABLE_KWIN=$(usex kde)
+		-DSUNSHINE_ENABLE_PORTAL=$(usex pipewire)
 		-DSUNSHINE_ENABLE_VAAPI=$(usex vaapi)
+		-DSUNSHINE_ENABLE_VULKAN=$(usex vulkan)
 		-DSUNSHINE_ENABLE_WAYLAND=$(usex wayland)
 		-DSUNSHINE_ENABLE_X11=$(usex X)
 		-DSUNSHINE_ENABLE_TRAY=$(usex trayicon)
 		-DSUNSHINE_SYSTEM_WAYLAND_PROTOCOLS=yes
+		-DSUNSHINE_SYSTEM_VULKAN_HEADERS=yes
 		-DUDEV_RULES_INSTALL_DIR=$(get_udevdir)/rules.d
 	)
 
@@ -397,7 +454,12 @@ src_compile() {
 pkg_postinst() {
 	udev_reload
 	xdg_pkg_postinst
-	use libdrm && fcaps cap_sys_admin+p usr/bin/"$(readlink "${EROOT}"/usr/bin/${PN})"
+
+	local caps="cap_sys_nice"
+	use libdrm && caps+=",cap_sys_admin"
+	fcaps "${caps}+p" usr/bin/${PN}
+
+	optfeature "hardware encoding with AMD's Advanced Media Framework" media-video/amdgpu-pro-amf
 
 	elog "At upstream's request, please report any issues to https://bugs.gentoo.org"
 	elog "rather than going directly to them."

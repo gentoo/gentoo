@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -22,6 +22,9 @@ HOMEPAGE="http://fedoraproject.org/wiki/Features/numad"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
+IUSE="selinux"
+
+RDEPEND="selinux? ( sec-policy/selinux-numad )"
 
 CONFIG_CHECK="~NUMA ~CPUSETS"
 

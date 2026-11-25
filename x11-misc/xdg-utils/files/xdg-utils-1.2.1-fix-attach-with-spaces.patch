@@ -1,0 +1,15 @@
+https://gitlab.freedesktop.org/xdg/xdg-utils/-/merge_requests/168
+https://bugs.gentoo.org/974348
+From: Brett A C Sheffield <bacs@librecast.net>
+
+--- a/scripts/xdg-email.in
++++ b/scripts/xdg-email.in
+@@ -71,7 +71,7 @@ run_thunderbird()
+     fi
+ 
+     if [ -n "$ATTACH" ] ; then
+-        NEWMAILTO="${NEWMAILTO},attachment='${ATTACH}'"
++        NEWMAILTO="${NEWMAILTO},attachment='file://${ATTACH}'"
+     fi
+ 
+     NEWMAILTO=$(echo "$NEWMAILTO" | sed 's/^,//')

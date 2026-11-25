@@ -1,0 +1,14 @@
+From alpine https://gitlab.alpinelinux.org/alpine/aports/-/raw/3.24-stable/testing/zvbi/fix-strptime-input.patch
+Skip leading whitespaces to ensure reproducible test results with musl.
+--- a/examples/pdc2.c
++++ b/examples/pdc2.c
+@@ -1166,6 +1166,9 @@ parse_test_file_line		(time_t *		timestamp,
+ 	if (!isspace (*s))
+ 		goto invalid;
+ 
++	while (isspace (*s))
++		++s;
++
+ 	memset (&tm, 0, sizeof (tm));
+ 	tm.tm_isdst = -1; /* unknown */
+ 

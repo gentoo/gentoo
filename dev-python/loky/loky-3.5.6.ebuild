@@ -1,10 +1,10 @@
-# Copyright 2020-2025 Gentoo Authors
+# Copyright 2020-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit distutils-r1
 
@@ -53,6 +53,15 @@ python_test() {
 		tests/test_worker_timeout.py::TestTimeoutExecutor::test_worker_timeout_shutdown_no_deadlock
 		tests/test_reusable_executor.py::TestResizeExecutor::test_resize_after_timeout
 	)
+
+	case ${EPYTHON} in
+		python3.14)
+			EPYTEST_DESELECT+=(
+				# libffi gets loaded somehow
+				tests/test_loky_backend.py::TestLokyBackend::test_sync_object_handling
+			)
+			;;
+	esac
 
 	# high memory test needs a lot of memory + is broken on 32-bit platforms
 	epytest --skip-high-memory

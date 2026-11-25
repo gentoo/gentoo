@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,8 +19,8 @@ else
 	#printf -v DOC_PV "%u%02u%02u00" $(ver_rs 1-3 " ")
 
 	SRC_URI="
-		https://sqlite.org/2025/${PN}-src-${SRC_PV}.zip
-		doc? ( https://sqlite.org/2025/${PN}-doc-${DOC_PV}.zip )
+		https://sqlite.org/2026/${PN}-src-${SRC_PV}.zip
+		doc? ( https://sqlite.org/2026/${PN}-doc-${DOC_PV}.zip )
 	"
 	S="${WORKDIR}/${PN}-src-${SRC_PV}"
 
@@ -29,7 +29,8 @@ fi
 
 LICENSE="public-domain"
 SLOT="3"
-IUSE="debug doc icu +readline secure-delete static-libs tcl test tools"
+IUSE="debug doc icu +readline secure-delete static-libs tcl test test-full tools"
+REQUIRED_USE="test-full? ( test )"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -50,7 +51,7 @@ else
 fi
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-3.47.2-hwtime.h-Don-t-use-rdtsc-on-i486.patch
+	"${FILESDIR}"/${PN}-3.53.2-hwtime.h-Don-t-use-rdtsc-on-i486.patch
 )
 
 _fossil_fetch() {
@@ -333,10 +334,10 @@ multilib_src_configure() {
 }
 
 multilib_src_compile() {
-	emake HAVE_TCL="$(usev tcl 1)" TCLLIBDIR="${EPREFIX}/usr/$(get_libdir)/${P}"
+	emake HAVE_TCL="$(usex tcl 1 0)" TCLLIBDIR="${EPREFIX}/usr/$(get_libdir)/${P}"
 
 	if use tools && multilib_is_native_abi; then
-		emake changeset dbdump dbhash dbtotxt index_usage rbu scrub showdb showjournal showshm showstat4 showwal sqldiff sqlite3_analyzer sqlite3_expert sqltclsh
+		emake changeset dbdump dbhash dbtotxt index_usage rbu showdb showjournal showshm showstat4 showwal sqldiff sqlite3_analyzer sqlite3_expert sqltclsh
 	fi
 
 	if [[ ${PV} == 9999 ]] && use doc && multilib_is_native_abi; then
@@ -369,7 +370,12 @@ multilib_src_test() {
 	addpredict "/test.db"
 	addpredict "/ÿ.db"
 
-	emake -Onone $(usex debug 'fulltest' 'test')
+	emake tclextension
+	if multilib_is_native_abi; then
+		emake -Onone $(usex test-full 'xdevtest' 'test')
+	else
+		emake  srctree-check fuzztest sourcetest $TESTPROGS testrunner
+	fi
 }
 
 multilib_src_install() {
@@ -399,7 +405,6 @@ multilib_src_install() {
 		install_tool dbtotxt sqlite3-db-to-txt
 		install_tool index_usage sqlite3-index-usage
 		install_tool rbu sqlite3-rbu
-		install_tool scrub sqlite3-scrub
 		install_tool showdb sqlite3-show-db
 		install_tool showjournal sqlite3-show-journal
 		install_tool showshm sqlite3-show-shm

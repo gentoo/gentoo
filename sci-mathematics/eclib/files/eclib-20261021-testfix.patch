@@ -1,0 +1,187 @@
+From 0c8180b376f3711ed87bef1b816b978ae4730923 Mon Sep 17 00:00:00 2001
+From: John Cremona <j.e.cremona@gmail.com>
+Date: Thu, 5 Nov 2026 16:56:02 +0000
+Subject: [PATCH 1/3] correct random tag on polredtest
+
+---
+ tests/out_no_ntl/polredtest.out | 4 ++--
+ tests/out_ntl/polredtest.out    | 4 ++--
+ tests/polredtest.cc             | 2 +-
+ 3 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/tests/out_no_ntl/polredtest.out b/tests/out_no_ntl/polredtest.out
+index 3f7d997..040cfd1 100644
+--- a/tests/out_no_ntl/polredtest.out
++++ b/tests/out_no_ntl/polredtest.out
+@@ -27,7 +27,7 @@ f = 55*X^3+44*X^2+33*X+22
+  -back to ZZX: 55*X^3+44*X^2+33*X+22
+  OK 
+ Applying polredbest...
+-... reduced polynomial is g = X^3+5*X-14 -- polynomial has been reduced [random]
++... reduced polynomial is g = X^3+5*X-14 -- polynomial has been reduced // random
+ A root of f is a = (-b^2+b-6) / 10 where g(b)=0
+ Applying polredabs...
+ ... reduced polynomial is g = X^3+5*X-14 -- polynomial has been reduced
+@@ -38,7 +38,7 @@ f = X^16+72*X^14+2424*X^12+46368*X^10+562960*X^8+4377600*X^6+23843328*X^4+770457
+  -back to ZZX: X^16+72*X^14+2424*X^12+46368*X^10+562960*X^8+4377600*X^6+23843328*X^4+77045760*X^2+214798336
+  OK 
+ Applying polredbest...
+-... reduced polynomial is g = X^16-20*X^13-70*X^12+76*X^11+200*X^10-296*X^9+5311*X^8-15548*X^7+22808*X^6-30984*X^5+38754*X^4-31428*X^3+16200*X^2-4860*X+729 -- polynomial has been reduced [random]
++... reduced polynomial is g = X^16-20*X^13-70*X^12+76*X^11+200*X^10-296*X^9+5311*X^8-15548*X^7+22808*X^6-30984*X^5+38754*X^4-31428*X^3+16200*X^2-4860*X+729 -- polynomial has been reduced // random
+ A root of f is a = (4183665902985309*b^15+3829872382453820*b^14+1488823182733227*b^13-83923817528918604*b^12-370387530676011520*b^11+19887813966243886*b^10+1031079061817638259*b^9-313832830574432594*b^8+21460365271996744880*b^7-45233655878486791966*b^6+43489228660171819361*b^5-67009469880506200334*b^4+75609983864868159681*b^3-23935838346150362694*b^2+690845945893028298*b+2798091277396537626) / 741644554801867308 where g(b)=0
+ Applying polredabs...
+ ... reduced polynomial is g = X^16-20*X^13-70*X^12+76*X^11+200*X^10-296*X^9+5311*X^8-15548*X^7+22808*X^6-30984*X^5+38754*X^4-31428*X^3+16200*X^2-4860*X+729 -- polynomial has been reduced
+diff --git a/tests/out_ntl/polredtest.out b/tests/out_ntl/polredtest.out
+index 3f7d997..040cfd1 100644
+--- a/tests/out_ntl/polredtest.out
++++ b/tests/out_ntl/polredtest.out
+@@ -27,7 +27,7 @@ f = 55*X^3+44*X^2+33*X+22
+  -back to ZZX: 55*X^3+44*X^2+33*X+22
+  OK 
+ Applying polredbest...
+-... reduced polynomial is g = X^3+5*X-14 -- polynomial has been reduced [random]
++... reduced polynomial is g = X^3+5*X-14 -- polynomial has been reduced // random
+ A root of f is a = (-b^2+b-6) / 10 where g(b)=0
+ Applying polredabs...
+ ... reduced polynomial is g = X^3+5*X-14 -- polynomial has been reduced
+@@ -38,7 +38,7 @@ f = X^16+72*X^14+2424*X^12+46368*X^10+562960*X^8+4377600*X^6+23843328*X^4+770457
+  -back to ZZX: X^16+72*X^14+2424*X^12+46368*X^10+562960*X^8+4377600*X^6+23843328*X^4+77045760*X^2+214798336
+  OK 
+ Applying polredbest...
+-... reduced polynomial is g = X^16-20*X^13-70*X^12+76*X^11+200*X^10-296*X^9+5311*X^8-15548*X^7+22808*X^6-30984*X^5+38754*X^4-31428*X^3+16200*X^2-4860*X+729 -- polynomial has been reduced [random]
++... reduced polynomial is g = X^16-20*X^13-70*X^12+76*X^11+200*X^10-296*X^9+5311*X^8-15548*X^7+22808*X^6-30984*X^5+38754*X^4-31428*X^3+16200*X^2-4860*X+729 -- polynomial has been reduced // random
+ A root of f is a = (4183665902985309*b^15+3829872382453820*b^14+1488823182733227*b^13-83923817528918604*b^12-370387530676011520*b^11+19887813966243886*b^10+1031079061817638259*b^9-313832830574432594*b^8+21460365271996744880*b^7-45233655878486791966*b^6+43489228660171819361*b^5-67009469880506200334*b^4+75609983864868159681*b^3-23935838346150362694*b^2+690845945893028298*b+2798091277396537626) / 741644554801867308 where g(b)=0
+ Applying polredabs...
+ ... reduced polynomial is g = X^16-20*X^13-70*X^12+76*X^11+200*X^10-296*X^9+5311*X^8-15548*X^7+22808*X^6-30984*X^5+38754*X^4-31428*X^3+16200*X^2-4860*X+729 -- polynomial has been reduced
+diff --git a/tests/polredtest.cc b/tests/polredtest.cc
+index 2c225e4..238bc04 100644
+--- a/tests/polredtest.cc
++++ b/tests/polredtest.cc
+@@ -71,7 +71,7 @@ int main()
+                 cout << " -- no change";
+               else
+                 cout << " -- polynomial has been reduced";
+-              if (!canonical && deg(f)>2) cout << " [random]";
++              if (!canonical && deg(f)>2) cout << " // random";
+               cout << endl;
+               if (den==1)
+                 cout << "A root of f is a = " << str(h, "b") << " where g(b)=0" << endl;
+-- 
+2.56.0
+
+From a2309cf87df9cd4ffa15574b858624a4414331b5 Mon Sep 17 00:00:00 2001
+From: John Cremona <j.e.cremona@gmail.com>
+Date: Fri, 6 Nov 2026 11:24:41 +0000
+Subject: [PATCH 2/3] add random tag to roots output too in polredtest, in
+ non-canonical case
+
+---
+ tests/out_no_ntl/polredtest.out | 4 ++--
+ tests/out_ntl/polredtest.out    | 4 ++--
+ tests/polredtest.cc             | 6 ++++--
+ 3 files changed, 8 insertions(+), 6 deletions(-)
+
+diff --git a/tests/out_no_ntl/polredtest.out b/tests/out_no_ntl/polredtest.out
+index 040cfd1..7c7760a 100644
+--- a/tests/out_no_ntl/polredtest.out
++++ b/tests/out_no_ntl/polredtest.out
+@@ -28,7 +28,7 @@ f = 55*X^3+44*X^2+33*X+22
+  OK 
+ Applying polredbest...
+ ... reduced polynomial is g = X^3+5*X-14 -- polynomial has been reduced // random
+-A root of f is a = (-b^2+b-6) / 10 where g(b)=0
++A root of f is a = (-b^2+b-6) / 10 where g(b)=0 // random
+ Applying polredabs...
+ ... reduced polynomial is g = X^3+5*X-14 -- polynomial has been reduced
+ A root of f is a = (-b^2+b-6) / 10 where g(b)=0
+@@ -39,7 +39,7 @@ f = X^16+72*X^14+2424*X^12+46368*X^10+562960*X^8+4377600*X^6+23843328*X^4+770457
+  OK 
+ Applying polredbest...
+ ... reduced polynomial is g = X^16-20*X^13-70*X^12+76*X^11+200*X^10-296*X^9+5311*X^8-15548*X^7+22808*X^6-30984*X^5+38754*X^4-31428*X^3+16200*X^2-4860*X+729 -- polynomial has been reduced // random
+-A root of f is a = (4183665902985309*b^15+3829872382453820*b^14+1488823182733227*b^13-83923817528918604*b^12-370387530676011520*b^11+19887813966243886*b^10+1031079061817638259*b^9-313832830574432594*b^8+21460365271996744880*b^7-45233655878486791966*b^6+43489228660171819361*b^5-67009469880506200334*b^4+75609983864868159681*b^3-23935838346150362694*b^2+690845945893028298*b+2798091277396537626) / 741644554801867308 where g(b)=0
++A root of f is a = (4183665902985309*b^15+3829872382453820*b^14+1488823182733227*b^13-83923817528918604*b^12-370387530676011520*b^11+19887813966243886*b^10+1031079061817638259*b^9-313832830574432594*b^8+21460365271996744880*b^7-45233655878486791966*b^6+43489228660171819361*b^5-67009469880506200334*b^4+75609983864868159681*b^3-23935838346150362694*b^2+690845945893028298*b+2798091277396537626) / 741644554801867308 where g(b)=0 // random
+ Applying polredabs...
+ ... reduced polynomial is g = X^16-20*X^13-70*X^12+76*X^11+200*X^10-296*X^9+5311*X^8-15548*X^7+22808*X^6-30984*X^5+38754*X^4-31428*X^3+16200*X^2-4860*X+729 -- polynomial has been reduced
+ A root of f is a = (8515537569225205*b^15+2154158749277180*b^14-521130839509137*b^13-171430586743748828*b^12-640096784261549264*b^11+506753176966059218*b^10+1927616175477565195*b^9-2024676056672845270*b^8+44489599786657518048*b^7-121065980758500891378*b^6+157993634703675254785*b^5-212708086779409620698*b^4+263113230020112670401*b^3-181693559170675694322*b^2+68429147561094867534*b-11842867458532251306) / 741644554801867308 where g(b)=0
+diff --git a/tests/out_ntl/polredtest.out b/tests/out_ntl/polredtest.out
+index 040cfd1..7c7760a 100644
+--- a/tests/out_ntl/polredtest.out
++++ b/tests/out_ntl/polredtest.out
+@@ -28,7 +28,7 @@ f = 55*X^3+44*X^2+33*X+22
+  OK 
+ Applying polredbest...
+ ... reduced polynomial is g = X^3+5*X-14 -- polynomial has been reduced // random
+-A root of f is a = (-b^2+b-6) / 10 where g(b)=0
++A root of f is a = (-b^2+b-6) / 10 where g(b)=0 // random
+ Applying polredabs...
+ ... reduced polynomial is g = X^3+5*X-14 -- polynomial has been reduced
+ A root of f is a = (-b^2+b-6) / 10 where g(b)=0
+@@ -39,7 +39,7 @@ f = X^16+72*X^14+2424*X^12+46368*X^10+562960*X^8+4377600*X^6+23843328*X^4+770457
+  OK 
+ Applying polredbest...
+ ... reduced polynomial is g = X^16-20*X^13-70*X^12+76*X^11+200*X^10-296*X^9+5311*X^8-15548*X^7+22808*X^6-30984*X^5+38754*X^4-31428*X^3+16200*X^2-4860*X+729 -- polynomial has been reduced // random
+-A root of f is a = (4183665902985309*b^15+3829872382453820*b^14+1488823182733227*b^13-83923817528918604*b^12-370387530676011520*b^11+19887813966243886*b^10+1031079061817638259*b^9-313832830574432594*b^8+21460365271996744880*b^7-45233655878486791966*b^6+43489228660171819361*b^5-67009469880506200334*b^4+75609983864868159681*b^3-23935838346150362694*b^2+690845945893028298*b+2798091277396537626) / 741644554801867308 where g(b)=0
++A root of f is a = (4183665902985309*b^15+3829872382453820*b^14+1488823182733227*b^13-83923817528918604*b^12-370387530676011520*b^11+19887813966243886*b^10+1031079061817638259*b^9-313832830574432594*b^8+21460365271996744880*b^7-45233655878486791966*b^6+43489228660171819361*b^5-67009469880506200334*b^4+75609983864868159681*b^3-23935838346150362694*b^2+690845945893028298*b+2798091277396537626) / 741644554801867308 where g(b)=0 // random
+ Applying polredabs...
+ ... reduced polynomial is g = X^16-20*X^13-70*X^12+76*X^11+200*X^10-296*X^9+5311*X^8-15548*X^7+22808*X^6-30984*X^5+38754*X^4-31428*X^3+16200*X^2-4860*X+729 -- polynomial has been reduced
+ A root of f is a = (8515537569225205*b^15+2154158749277180*b^14-521130839509137*b^13-171430586743748828*b^12-640096784261549264*b^11+506753176966059218*b^10+1927616175477565195*b^9-2024676056672845270*b^8+44489599786657518048*b^7-121065980758500891378*b^6+157993634703675254785*b^5-212708086779409620698*b^4+263113230020112670401*b^3-181693559170675694322*b^2+68429147561094867534*b-11842867458532251306) / 741644554801867308 where g(b)=0
+diff --git a/tests/polredtest.cc b/tests/polredtest.cc
+index 238bc04..a66e309 100644
+--- a/tests/polredtest.cc
++++ b/tests/polredtest.cc
+@@ -74,9 +74,11 @@ int main()
+               if (!canonical && deg(f)>2) cout << " // random";
+               cout << endl;
+               if (den==1)
+-                cout << "A root of f is a = " << str(h, "b") << " where g(b)=0" << endl;
++                cout << "A root of f is a = " << str(h, "b") << " where g(b)=0";
+               else
+-                cout << "A root of f is a = (" << str(h, "b") << ") / " << den << " where g(b)=0" << endl;
++                cout << "A root of f is a = (" << str(h, "b") << ") / " << den << " where g(b)=0";
++              if (!canonical && deg(f)>2) cout << " // random";
++              cout << endl;
+             }
+         }
+       else
+-- 
+2.56.0
+
+From e186f947a83b34d0650bce538404733746b6e12f Mon Sep 17 00:00:00 2001
+From: John Cremona <j.e.cremona@gmail.com>
+Date: Fri, 6 Nov 2026 11:37:19 +0000
+Subject: [PATCH 3/3] fixed 2 test outputs for disable-mpfp config
+
+---
+ tests/out_no_ntl/space3.out | 2 +-
+ tests/out_no_ntl/space4.out | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/tests/out_no_ntl/space3.out b/tests/out_no_ntl/space3.out
+index f9666b8..4822999 100644
+--- a/tests/out_no_ntl/space3.out
++++ b/tests/out_no_ntl/space3.out
+@@ -18,7 +18,7 @@ v = [1,0,0,0] is NOT in the kernel and m*v = [1,4,7,0] --OK
+ v = [0,1,0,0] is NOT in the kernel and m*v = [2,5,8,0] --OK
+ v = [0,0,1,0] is NOT in the kernel and m*v = [3,6,9,0] --OK
+ v = [0,0,0,1] IS in the kernel and m*v = [0,0,0,0] --OK
+-Now compute kernel mod p, p = 1000000000000000000000000000057
++Now compute kernel mod p, p = 100000000000000000000000000000000000000000000000151
+ kernel(m) has basis
+ [[1,0],
+ [-2,0],
+diff --git a/tests/out_no_ntl/space4.out b/tests/out_no_ntl/space4.out
+index 7fafa81..606f596 100644
+--- a/tests/out_no_ntl/space4.out
++++ b/tests/out_no_ntl/space4.out
+@@ -18,7 +18,7 @@ v = [1,0,0,0] is NOT in the kernel and m*v = [1,4,7,0] --OK
+ v = [0,1,0,0] is NOT in the kernel and m*v = [2,5,8,0] --OK
+ v = [0,0,1,0] is NOT in the kernel and m*v = [3,6,9,0] --OK
+ v = [0,0,0,1] IS in the kernel and m*v = [0,0,0,0] --OK
+-Now compute kernel mod p, p = 1000000000000000000000000000057
++Now compute kernel mod p, p = 100000000000000000000000000000000000000000000000151
+ kernel(m) has basis
+ [[1,0],
+ [-2,0],
+-- 
+2.56.0
+

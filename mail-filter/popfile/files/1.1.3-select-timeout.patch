@@ -1,0 +1,17 @@
+Increase select() timeout from 5 to 25 ms to reduce CPU overhead.
+
+--- a/POPFile/Loader.pm
++++ b/POPFile/Loader.pm
+@@ -794,10 +794,10 @@
+             }
+         }
+ 
+-        # Sleep for 0.05 of a second to ensure that POPFile does not
++        # Sleep for 0.25 of a second to ensure that POPFile does not
+         # hog the machine's CPU
+ 
+-        select(undef, undef, undef, 0.05) if !$nowait;
++        select(undef, undef, undef, 0.25) if !$nowait;
+ 
+         # If we are on Windows then reap children here
+ 

@@ -1,10 +1,10 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
 
 DESCRIPTION="Small footprint implementation of Tcl programming language"
-HOMEPAGE="https://jim.tcl.tk/"
+HOMEPAGE="https://jim.tcl-lang.org/"
 SRC_URI="https://github.com/msteveb/jimtcl/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2"
@@ -18,9 +18,9 @@ DEPEND="
 	dev-lang/tcl:0
 "
 
-PATCHES="
+PATCHES=(
 	"${FILESDIR}"/${PN}-0.78-no-bootstrap.patch
-"
+)
 
 src_configure() {
 	CCACHE=None econf --with-jim-shared

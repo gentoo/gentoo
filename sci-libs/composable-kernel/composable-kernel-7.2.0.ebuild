@@ -81,7 +81,7 @@ src_prepare() {
 	sed -e '/-Werror/d' -i cmake/EnableCompilerWarnings.cmake || die
 
 	# don't build examples
-	sed -e "/add_subdirectory(example)/d" -i CMakeLists.txt || die
+	cmake_comment_add_subdirectory example
 
 	# Flag -amdgpu-early-inline-all explodes memory consumption
 	# https://github.com/llvm/llvm-project/issues/86332

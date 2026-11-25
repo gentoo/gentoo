@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit autotools multilib-minimal
+inherit meson-multilib
 
 DESCRIPTION="Library for DVD navigation tools"
 HOMEPAGE="https://www.videolan.org/developers/libdvdnav.html"
@@ -11,8 +11,8 @@ if [[ ${PV} = 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://code.videolan.org/videolan/libdvdnav.git"
 else
-	SRC_URI="https://downloads.videolan.org/pub/videolan/libdvdnav/${PV}/${P}.tar.bz2"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~sparc ~x86 ~x64-macos"
+	SRC_URI="https://downloads.videolan.org/pub/videolan/libdvdnav/${PV}/${P}.tar.xz"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~x64-macos"
 fi
 
 LICENSE="GPL-2"
@@ -21,26 +21,17 @@ IUSE="static-libs"
 
 RDEPEND=">=media-libs/libdvdread-6.0.0:=[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}"
-# To get pkg.m4 for eautoreconf #414391
-BDEPEND="
-	virtual/pkgconfig
-"
-
-DOCS=( AUTHORS ChangeLog doc/dvd_structures doc/library_layout README TODO )
 
 src_prepare() {
+	sed -i -e "s/'COPYING', //" -e "s/doc\/${PN}/doc\/${P}/" meson.build || die
+
 	default
-	eautoreconf
 }
 
 multilib_src_configure() {
-	local myeconfargs=(
-		--enable-shared
-		$(use_enable static-libs static)
+	local emesonargs=(
+		-Ddefault_library=$(usex static-libs both shared)
 	)
-	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
-}
 
-multilib_src_install_all() {
-	find "${ED}" -type f -name "*.la" -delete || die
+	meson_src_configure
 }

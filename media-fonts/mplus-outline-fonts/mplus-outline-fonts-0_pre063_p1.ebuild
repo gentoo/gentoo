@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -14,7 +14,7 @@ SRC_URI="mirror://sourceforge.jp/mplus-fonts/62344/${MY_P}.tar.xz"
 
 LICENSE="mplus-fonts ipafont? ( IPAfont )"
 SLOT="0"
-KEYWORDS="amd64 ~hppa ~loong ppc ~ppc64 x86"
+KEYWORDS="amd64 ~arm ~hppa ~loong ppc ~ppc64 x86"
 IUSE="ipafont"
 RESTRICT="binchecks strip"
 

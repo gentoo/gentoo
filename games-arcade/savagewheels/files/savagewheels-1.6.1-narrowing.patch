@@ -1,0 +1,49 @@
+--- a/src/CSdl.cpp.old	2026-06-13 13:28:42.221225548 +0200
++++ b/src/CSdl.cpp	2026-06-13 13:29:01.736708359 +0200
+@@ -119,7 +119,7 @@
+ ///////////////////////////////////////////////////////////////////////
+ void CSdl::BlitNow( Sint32 x, Sint32 y, SDL_Surface *surf)
+ {
+-	SDL_Rect rdest = { x, y, 0, 0 };
++	SDL_Rect rdest = { static_cast<Sint16>(x), static_cast<Sint16>(y), 0, 0 };
+ 	SDL_BlitSurface(surf, NULL, screen, &rdest);
+ }
+ 
+@@ -129,7 +129,7 @@
+ ///////////////////////////////////////////////////////////////////////
+ void CSdl::BlitNow( Sint32 x, Sint32 y, SDL_Surface *surf, SDL_Rect *rsurf )
+ {
+-	SDL_Rect rdest = { x, y, 0, 0 };
++	SDL_Rect rdest = { static_cast<Sint16>(x), static_cast<Sint16>(y), 0, 0 };
+ 	SDL_BlitSurface(surf, rsurf, screen, &rdest);
+ }
+ 
+@@ -1415,7 +1415,7 @@
+ ///////////////////////////////////////////////////////////////////////
+ SDL_Color CreateColor( int r, int g, int b, int a )
+ {
+-	SDL_Color clr = { r, g, b, a};
++	SDL_Color clr = { static_cast<Uint8>(r), static_cast<Uint8>(g), static_cast<Uint8>(b), static_cast<Uint8>(a) };
+ 	return clr;
+ }
+ 
+@@ -1426,7 +1426,7 @@
+ ///////////////////////////////////////////////////////////////////////
+ SDL_Color CreateColor( int r, int g, int b )
+ {
+-	SDL_Color clr = { r, g, b, 0};
++	SDL_Color clr = { static_cast<Uint8>(r), static_cast<Uint8>(g), static_cast<Uint8>(b), 0 };
+ 	return clr;
+ }
+ 
+--- a/src/CVehicle.cpp.old	2026-06-13 13:41:03.573773883 +0200
++++ b/src/CVehicle.cpp	2026-06-13 13:41:04.780277114 +0200
+@@ -1173,7 +1173,7 @@
+ 	center_x = x + (width >> 1);
+ 	center_y = y + (height >> 1);
+ 
+-	SDL_Rect rect = {0, 0, width, height};
++	SDL_Rect rect = {0, 0, static_cast<Uint16>(width), static_cast<Uint16>(height)};
+ 
+ 	/*
+ 	 * Update bonuses states

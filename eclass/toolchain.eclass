@@ -25,7 +25,8 @@ esac
 DESCRIPTION="The GNU Compiler Collection"
 HOMEPAGE="https://gcc.gnu.org/"
 
-inherit edo flag-o-matic gnuconfig libtool multilib pax-utils rust toolchain-funcs prefix
+inherit edo flag-o-matic gnuconfig libtool multilib multiprocessing
+inherit pax-utils rust toolchain-funcs prefix
 
 [[ -n ${TOOLCHAIN_HAS_TESTS} ]] && inherit python-any-r1
 
@@ -147,11 +148,6 @@ tc_version_is_between() {
 # @DESCRIPTION:
 # Extra options to pass to DejaGnu as RUNTESTFLAGS.
 : "${GCC_TESTS_RUNTESTFLAGS:=}"
-
-# @ECLASS_VARIABLE: TOOLCHAIN_PATCH_DEV
-# @DEFAULT_UNSET
-# @DESCRIPTION:
-# Indicate the developer who hosts the patchset for an ebuild.
 
 # @ECLASS_VARIABLE: TOOLCHAIN_HAS_TESTS
 # @DEFAULT_UNSET
@@ -349,7 +345,7 @@ if [[ ${PN} != kgcc64 && ${PN} != gcc-* ]] ; then
 	# and https://rust-gcc.github.io/2023/04/24/gccrs-and-gcc13-release.html for why
 	# it was disabled in 13.
 	tc_version_is_at_least 14.1 ${PV} && IUSE+=" rust" TC_FEATURES+=( rust )
-	tc_version_is_at_least 13.3.1_p20250522 ${PV} && IUSE+=" time64"
+	tc_version_is_at_least 11.5 ${PV} && IUSE+=" time64"
 	tc_version_is_at_least 15.1 ${PV} && IUSE+=" libgdiagnostics"
 	tc_version_is_at_least 15.1 ${PV} && IUSE+=" cobol" TC_FEATURES+=( cobol )
 	tc_version_is_at_least 16.0.0_p20251130 ${PV} && IUSE+=" algol68"
@@ -414,9 +410,14 @@ fi
 
 if tc_has_feature sanitize ; then
 	# libsanitizer relies on 'crypt.h' to be present
-	# on target. glibc user to provide it unconditionally.
+	# on target. glibc used to provide it unconditionally.
 	# Nowadays it's a standalone library: bug #802648
-	DEPEND+=" sanitize? ( virtual/libcrypt )"
+	DEPEND+="
+		sanitize? (
+			virtual/libcrypt
+			virtual/os-headers
+		)
+	"
 fi
 
 if tc_has_feature systemtap ; then
@@ -499,48 +500,6 @@ if [[ ${TOOLCHAIN_SET_S} == yes ]] ; then
 	fi
 fi
 
-gentoo_urls() {
-	# the list is sorted by likelihood of getting the patches tarball from
-	# respective devspace
-	# slyfox's distfiles are mirrored to sam's devspace
-	declare -A devspace_urls=(
-		[soap]=HTTP~soap/distfiles/URI
-		[sam]=HTTP~sam/distfiles/sys-devel/gcc/URI
-		[slyfox]=HTTP~sam/distfiles/URI
-		[xen0n]=HTTP~xen0n/distfiles/sys-devel/gcc/URI
-		[tamiko]=HTTP~tamiko/distfiles/URI
-		[zorry]=HTTP~zorry/patches/gcc/URI
-		[vapier]=HTTP~vapier/dist/URI
-		[blueness]=HTTP~blueness/dist/URI
-	)
-
-	# Newer ebuilds should set TOOLCHAIN_PATCH_DEV and we'll just
-	# return the full URL from the array.
-	if [[ -n ${TOOLCHAIN_PATCH_DEV} ]] ; then
-		local devspace_url=${devspace_urls[${TOOLCHAIN_PATCH_DEV}]}
-		if [[ -n ${devspace_url} ]] ; then
-			local devspace_url_exp=${devspace_url//HTTP/https:\/\/dev.gentoo.org\/}
-			devspace_url_exp=${devspace_url_exp//URI/$1}
-			echo ${devspace_url_exp}
-			return
-		fi
-	fi
-
-	# But we keep the old fallback list for compatibility with
-	# older ebuilds (overlays etc).
-	local devspace="
-		HTTP~soap/distfiles/URI
-		HTTP~sam/distfiles/URI
-		HTTP~sam/distfiles/sys-devel/gcc/URI
-		HTTP~tamiko/distfiles/URI
-		HTTP~zorry/patches/gcc/URI
-		HTTP~vapier/dist/URI
-		HTTP~blueness/dist/URI
-	"
-	devspace=${devspace//HTTP/https:\/\/dev.gentoo.org\/}
-	echo ${devspace//URI/$1} mirror://gentoo/$1
-}
-
 # This function handles the basics of setting the SRC_URI for a gcc ebuild.
 # To use, set SRC_URI with:
 #
@@ -586,9 +545,9 @@ get_gcc_src_uri() {
 	fi
 
 	[[ -n ${PATCH_VER} ]] && \
-		GCC_SRC_URI+=" $(gentoo_urls gcc-${PATCH_GCC_VER}-patches-${PATCH_VER}.tar.${TOOLCHAIN_PATCH_SUFFIX})"
+		GCC_SRC_URI+=" https://distfiles.gentoo.org/pub/proj/toolchain/gcc/patches/gcc-${PATCH_GCC_VER}-patches-${PATCH_VER}.tar.${TOOLCHAIN_PATCH_SUFFIX}"
 	[[ -n ${MUSL_VER} ]] && \
-		GCC_SRC_URI+=" $(gentoo_urls gcc-${MUSL_GCC_VER}-musl-patches-${MUSL_VER}.tar.${TOOLCHAIN_PATCH_SUFFIX})"
+		GCC_SRC_URI+=" https://distfiles.gentoo.org/pub/proj/toolchain/gcc/patches/gcc-${MUSL_GCC_VER}-musl-patches-${MUSL_VER}.tar.${TOOLCHAIN_PATCH_SUFFIX}"
 
 	[[ -n ${TOOLCHAIN_HAS_TESTS} ]] && \
 		GCC_SRC_URI+=" test? ( https://gitweb.gentoo.org/proj/gcc-patches.git/plain/scripts/testsuite-management/validate_failures.py?id=${GCC_VALIDATE_FAILURES_VERSION} -> gcc-validate-failures-${GCC_VALIDATE_FAILURES_VERSION}.py )"
@@ -701,7 +660,7 @@ toolchain_src_prepare() {
 		BRANDING_GCC_PKGVERSION="${BRANDING_GCC_PKGVERSION}, commit ${EGIT_VERSION}"
 	fi
 
-	eapply_user
+	default
 
 	# Workaround -march=native not working for stage1 with non-GCC (bug #933772).
 	if ! tc-is-gcc && [[ "${CFLAGS}${CXXFLAGS}" == *-march=native* ]] ; then
@@ -776,10 +735,11 @@ do_gcc_gentoo_patches() {
 				fi
 			fi
 
-			local -
+			local shopt_save=$(shopt -p nullglob)
 			shopt -s nullglob
 			einfo "Applying musl patches ..."
 			eapply "${WORKDIR}"/musl/{,nocross/}*.patch
+			${shopt_save}
 		fi
 
 		#
@@ -1162,6 +1122,7 @@ toolchain_setup_ada() {
 	! tc-is-cross-compiler && _toolchain_make_gnat_wrappers
 
 	export CC="$(tc-getCC) -specs=${T}/ada.spec"
+	export CXX="$(tc-getCXX) -specs=${T}/ada.spec"
 
 	if ver_test ${PV} -lt 13 && [[ ${CTARGET#accel-} == hppa* ]] ; then
 		# For HPPA, the ada-bootstrap binaries seem to default
@@ -1201,6 +1162,8 @@ toolchain_setup_d() {
 		die "Did not find any appropriate GDC compiler installed"
 	fi
 
+	export CC=${bootstrap_gcc_bin_dir}/${CHOST}-gcc
+	export CXX=${bootstrap_gcc_bin_dir}/${CHOST}-g++
 	export GDC=${bootstrap_gcc_bin_dir}/${CHOST}-gdc
 }
 
@@ -1214,13 +1177,19 @@ toolchain_src_configure() {
 
 	downgrade_arch_flags
 	gcc_do_filter_flags
-	if [[ ${PN} != kgcc64 && ${PN} != gcc-* ]] && tc_version_is_at_least 13.3.1_p20250522 ${PV}; then
+	if [[ ${PN} != kgcc64 && ${PN} != gcc-* ]] && tc_version_is_at_least 11.5 ${PV}; then
 		append-cppflags "-D_GENTOO_TIME64_FORCE=$(usex time64 1 0)"
 	fi
 
 	if ! tc_version_is_at_least 11 && [[ $(gcc-major-version) -ge 12 ]] ; then
 		# https://gcc.gnu.org/PR105695 (bug #849359)
 		export ac_cv_std_swap_in_utility=no
+	fi
+
+	if is_go && [[ -f "${ESYSROOT}/usr/$(get_libdir)/libruntime.so" ]] ; then
+		# https://gcc.gnu.org/PR121877 (bug #972774)
+		export lt_cv_prog_compiler_c_o_GO=yes
+		export lt_cv_prog_compiler_pic_works_GO=yes
 	fi
 
 	local flag
@@ -1326,8 +1295,12 @@ toolchain_src_configure() {
 		_tc_use_if_iuse d && [[ ${GCCMAJOR} -ge 12 ]]
 	}
 
-	_need_ada_bootstrap_mangling && toolchain_setup_ada
+	# D goes first because while we'd like a matching CC/CXX for it,
+	# it's not critical like it is for Ada, where a configure test
+	# fails when trying to find GNAT w/o it. D has the benefit of the
+	# GDC envvar.
 	_need_d_bootstrap && toolchain_setup_d
+	_need_ada_bootstrap_mangling && toolchain_setup_ada
 
 	confgcc+=( --enable-languages=${GCC_LANG} )
 
@@ -1420,7 +1393,7 @@ toolchain_src_configure() {
 	# Turn on the -Wl,--build-id flag by default for ELF targets. bug #953869
 	# This helps with locating debug files.
 	case ${CTARGET} in
-		*-linux-*|*-elf|*-eabi)
+		*-linux-*)
 			tc_version_is_at_least 4.5 && confgcc+=(
 				--enable-linker-build-id
 			)
@@ -2137,7 +2110,7 @@ gcc_do_filter_flags() {
 			eerror "Different values of l1-cache-size detected!"
 			eerror "GCC will fail to bootstrap when comparing files with these flags."
 			eerror "This CPU is likely big.little/hybrid hardware with power/efficiency cores."
-			eerror "Please install app-misc/resolve-march-native and run 'resolve-march-native'"
+			eerror "Please install app-misc/resolve-march-native and run 'resolve-march-native --drop-cache-sizes'"
 			eerror "to find a safe value of CFLAGS for this CPU. Note that this may vary"
 			eerror "depending on the core it ran on. taskset can be used to fix the cores used."
 			die "Varying l1-cache-size found, aborting (bug #915389, gcc PR#111768)"
@@ -2354,8 +2327,10 @@ gcc_do_make() {
 		# We have a very good host compiler but it may be a bit too good, and
 		# know about flags that the version we are compiling does not know
 		# about. In principle we could check e.g. which gnat1 we are using as
-		# a bootstrap. It's simpler to do it unconditionally for now.
-		elif _tc_use_if_iuse ada || _tc_use_if_iuse d ; then
+		# a bootstrap. It's simpler to do it unconditionally for now, with
+		# the exception of when we're bootstrapping the same version we're
+		# building with.
+		elif ! { tc_use_major_version_only && ver_test $(gcc-major-version) -eq ${SLOT} ; } && { _tc_use_if_iuse ada || _tc_use_if_iuse d ; } ; then
 			einfo "Resetting STAGE1_*FLAGS to -O2 for Ada/D bootstrapping"
 			STAGE1_CFLAGS="-O2"
 			STAGE1_CXXFLAGS="-O2"
@@ -2495,9 +2470,13 @@ toolchain_src_test() {
 		# CFLAGS and so on are repeated here because of tests vs building test
 		# deps like libbacktrace.
 		#
+		# Explicit -jN for testsuite parallelisation, as it inspects MFLAGS
+		# for that, which breaks w/ jobservers (PR127807).
+		#
 		# TODO: Should we try pass in the regular user flags for the non-RUNTESTFLAGS
 		# instances below for building e.g. libbacktrace?
 		nonfatal emake -C "${WORKDIR}"/build -k "${GCC_TESTS_CHECK_TARGET}" \
+			-j$(get_makeopts_jobs) \
 			RUNTESTFLAGS=" \
 				${GCC_TESTS_RUNTESTFLAGS} \
 				CFLAGS_FOR_TARGET='${GCC_TESTS_CFLAGS_FOR_TARGET:-${GCC_TESTS_CFLAGS}}' \

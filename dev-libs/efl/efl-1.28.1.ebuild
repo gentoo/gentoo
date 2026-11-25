@@ -6,7 +6,7 @@ EAPI=8
 LUA_REQ_USE="deprecated(+)"
 LUA_COMPAT=( lua5-{1,2} luajit )
 
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 
 inherit flag-o-matic lua-single meson python-any-r1 xdg
 
@@ -16,7 +16,7 @@ SRC_URI="https://download.enlightenment.org/rel/libs/${PN}/${P}.tar.xz"
 
 LICENSE="BSD-2 GPL-2 LGPL-2.1 ZLIB"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ~ppc ~ppc64 ~riscv x86"
+KEYWORDS="amd64 ~arm arm64 ~ppc ppc64 ~riscv x86"
 IUSE="+X avif bmp connman cpu_flags_arm_neon dds debug doc drm +eet efl-one elogind examples fbcon"
 IUSE+=" +fontconfig fribidi gif glib +gstreamer harfbuzz heif hyphen ibus ico jpeg2k jpegxl json"
 IUSE+=" nls mono opengl +pdf physics pmaps postscript psd pulseaudio raw scim sdl +sound +svg"

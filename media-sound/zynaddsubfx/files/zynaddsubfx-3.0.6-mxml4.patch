@@ -1,0 +1,310 @@
+Source: https://github.com/zynaddsubfx/zynaddsubfx/pull/315
+
+From 2806817938776ecb5e2f0dd7a80649625ccde561 Mon Sep 17 00:00:00 2001
+From: Johannes Lorenz <j.git@lorenz-ho.me>
+Date: Sun, 12 Jan 2025 15:33:11 +0100
+Subject: [PATCH 1/5] Support MXML4, if available
+
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 396f28fee..555825d42 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -33,7 +33,10 @@ if(PKG_CONFIG_FOUND AND NOT (${CMAKE_SYSTEM_NAME} STREQUAL "Windows"))
+     pkg_check_modules(NTK_IMAGES ntk_images)
+ 
+     pkg_check_modules(FFTW3F REQUIRED fftw3f)
+-    pkg_check_modules(MXML REQUIRED mxml)
++    pkg_check_modules(MXML mxml4)
++    if(NOT MXML_FOUND)
++        pkg_check_modules(MXML REQUIRED mxml)
++    endif()
+ 
+     pkg_search_module(LASH lash-1.0)
+     mark_as_advanced(LASH_LIBRARIES)
+diff --git a/src/Misc/XMLwrapper.cpp b/src/Misc/XMLwrapper.cpp
+index e1c55a495..b34c843cc 100644
+--- a/src/Misc/XMLwrapper.cpp
++++ b/src/Misc/XMLwrapper.cpp
+@@ -32,9 +32,30 @@ namespace zyn {
+ int  xml_k   = 0;
+ bool verbose = false;
+ 
+-const char *XMLwrapper_whitespace_callback(mxml_node_t *node, int where)
++#if MXML_MAJOR_VERSION <= 3
++// Mimic datatypes present in mxml4 for compatibility
++typedef int mxml_ws_t;
++typedef int mxml_descend_t;
++// Mimic typenames present in mxml4 for compatibility
++constexpr int MXML_DESCEND_ALL = MXML_DESCEND;
++constexpr int MXML_DESCEND_NONE = MXML_NO_DESCEND;
++constexpr int MXML_TYPE_OPAQUE = MXML_OPAQUE;
++constexpr int MXML_TYPE_ELEMENT = MXML_ELEMENT;
++constexpr int MXML_TYPE_TEXT = MXML_TEXT;
++#endif
++
++const char *XMLwrapper_whitespace_callback(void*, mxml_node_t *node, mxml_ws_t where)
+ {
++#if MXML_MAJOR_VERSION >= 4
++    // New node types in MXL4
++    if(mxmlGetDirective(node))  // "?xml" directive
++        return "\n";
++    else if(mxmlGetDeclaration(node))  // "!DOCTYPE" declaration
++        return nullptr;
++#endif
++
+     const char *name = mxmlGetElement(node);
++    assert(name);
+ 
+     if((where == MXML_WS_BEFORE_OPEN) && (!strcmp(name, "?xml")))
+         return NULL;
+@@ -67,13 +88,21 @@ const char *XMLwrapper_whitespace_callback(mxml_node_t *node, int where)
+     return 0;
+ }
+ 
++#if MXML_MAJOR_VERSION <= 3
++// Wrapper, because int and mxml_ws_t are different types
++inline const char *XMLwrapper_whitespace_callback(mxml_node_t *node, int where)
++{
++    return XMLwrapper_whitespace_callback(nullptr, node, where);
++}
++#endif
++
+ //temporary const overload of mxmlFindElement
+ const mxml_node_t *mxmlFindElement(const mxml_node_t *node,
+                                    const mxml_node_t *top,
+                                    const char *name,
+                                    const char *attr,
+                                    const char *value,
+-                                   int descend)
++                                   mxml_descend_t descend)
+ {
+     return const_cast<const mxml_node_t *>(mxmlFindElement(
+                                                const_cast<mxml_node_t *>(node),
+@@ -92,16 +121,22 @@ XMLwrapper::XMLwrapper()
+     minimal = true;
+     SaveFullXml=false;
+ 
+-    node = tree = mxmlNewElement(MXML_NO_PARENT,
+-                                 "?xml version=\"1.0f\" encoding=\"UTF-8\"?");
++    node = tree = mxmlNewXML("1.0");
++    assert(node);
+     /*  for mxml 2.1f (and older)
+         tree=mxmlNewElement(MXML_NO_PARENT,"?xml");
+         mxmlElementSetAttr(tree,"version","1.0f");
+         mxmlElementSetAttr(tree,"encoding","UTF-8");
+     */
+ 
+-    mxml_node_t *doctype = mxmlNewElement(tree, "!DOCTYPE");
+-    mxmlElementSetAttr(doctype, "ZynAddSubFX-data", NULL);
++    mxml_node_t *doctype =
++#if MXML_MAJOR_VERSION <= 3
++        mxmlNewElement(tree, "!DOCTYPE");
++        mxmlElementSetAttr(doctype, "ZynAddSubFX-data", NULL);
++#else
++        mxmlNewDeclaration(tree, "DOCTYPE ZynAddSubFX-data");
++#endif
++    assert(doctype);
+ 
+     node = root = addparams("ZynAddSubFX-data", 4,
+                             "version-major", stringFrom<int>(
+@@ -164,7 +199,7 @@ bool XMLwrapper::hasPadSynth() const
+                                        "INFORMATION",
+                                        NULL,
+                                        NULL,
+-                                       MXML_DESCEND);
++                                       MXML_DESCEND_ALL);
+ 
+     mxml_node_t *parameter = mxmlFindElement(tmp,
+                                              tmp,
+@@ -204,7 +239,15 @@ char *XMLwrapper::getXMLdata() const
+ {
+     xml_k = 0;
+ 
++#if MXML_MAJOR_VERSION <= 3
+     char *xmldata = mxmlSaveAllocString(tree, XMLwrapper_whitespace_callback);
++#else
++    mxml_options_t *options = mxmlOptionsNew();
++    mxmlOptionsSetWhitespaceCallback(options, XMLwrapper_whitespace_callback, /*cbdata*/nullptr);
++    char *xmldata = mxmlSaveAllocString(tree, options);
++    mxmlOptionsDelete(options);
++#endif
++
+ 
+     return xmldata;
+ }
+@@ -317,8 +360,15 @@ int XMLwrapper::loadXMLfile(const string &filename)
+     if(xmldata == NULL)
+         return -1;  //the file could not be loaded or uncompressed
+ 
++#if MXML_MAJOR_VERSION <= 3
+     root = tree = mxmlLoadString(NULL, trimLeadingWhite(
+-                                     xmldata), MXML_OPAQUE_CALLBACK);
++                                           xmldata), MXML_OPAQUE_CALLBACK);
++#else
++    mxml_options_t *options = mxmlOptionsNew();
++    mxmlOptionsSetTypeValue(options, MXML_TYPE_OPAQUE);
++    root = tree = mxmlLoadString(NULL, options, trimLeadingWhite(xmldata));
++    mxmlOptionsDelete(options);
++#endif
+ 
+     delete[] xmldata;
+ 
+@@ -330,7 +380,7 @@ int XMLwrapper::loadXMLfile(const string &filename)
+                                   "ZynAddSubFX-data",
+                                   NULL,
+                                   NULL,
+-                                  MXML_DESCEND);
++                                  MXML_DESCEND_ALL);
+     if(root == NULL)
+         return -3;  //the XML doesn't embbed zynaddsubfx data
+ 
+@@ -384,8 +434,15 @@ bool XMLwrapper::putXMLdata(const char *xmldata)
+     if(xmldata == NULL)
+         return false;
+ 
++#if MXML_MAJOR_VERSION <= 3
+     root = tree = mxmlLoadString(NULL, trimLeadingWhite(
+-                                     xmldata), MXML_OPAQUE_CALLBACK);
++                                           xmldata), MXML_OPAQUE_CALLBACK);
++#else
++    mxml_options_t *options = mxmlOptionsNew();
++    mxmlOptionsSetTypeValue(options, MXML_TYPE_OPAQUE);
++    root = tree = mxmlLoadString(NULL, options, trimLeadingWhite(xmldata));
++    mxmlOptionsDelete(options);
++#endif
+     if(tree == NULL)
+         return false;
+ 
+@@ -394,7 +451,7 @@ bool XMLwrapper::putXMLdata(const char *xmldata)
+                                   "ZynAddSubFX-data",
+                                   NULL,
+                                   NULL,
+-                                  MXML_DESCEND);
++                                  MXML_DESCEND_ALL);
+     if(root == NULL)
+         return false;
+ 
+@@ -531,11 +588,11 @@ void XMLwrapper::getparstr(const string &name, char *par, int maxstrlen) const
+         return;
+     if(mxmlGetFirstChild(tmp) == NULL)
+         return;
+-    if(mxmlGetType(mxmlGetFirstChild(tmp)) == MXML_OPAQUE) {
++    if(mxmlGetType(mxmlGetFirstChild(tmp)) == MXML_TYPE_OPAQUE) {
+         snprintf(par, maxstrlen, "%s", mxmlGetOpaque(mxmlGetFirstChild(tmp)));
+         return;
+     }
+-    if((mxmlGetType(mxmlGetFirstChild(tmp)) == MXML_TEXT)
++    if((mxmlGetType(mxmlGetFirstChild(tmp)) == MXML_TYPE_TEXT)
+        && (mxmlGetFirstChild(tmp) != NULL)) {
+         snprintf(par, maxstrlen, "%s", mxmlGetText(mxmlGetFirstChild(tmp),NULL));
+         return;
+@@ -555,11 +612,11 @@ string XMLwrapper::getparstr(const string &name,
+     if((tmp == NULL) || (mxmlGetFirstChild(tmp) == NULL))
+         return defaultpar;
+ 
+-    if(mxmlGetType(mxmlGetFirstChild(tmp)) == MXML_OPAQUE
++    if(mxmlGetType(mxmlGetFirstChild(tmp)) == MXML_TYPE_OPAQUE
+        && (mxmlGetOpaque(mxmlGetFirstChild(tmp)) != NULL))
+         return mxmlGetOpaque(mxmlGetFirstChild(tmp));
+ 
+-    if(mxmlGetType(mxmlGetFirstChild(tmp)) == MXML_TEXT
++    if(mxmlGetType(mxmlGetFirstChild(tmp)) == MXML_TYPE_TEXT
+        && (mxmlGetText(mxmlGetFirstChild(tmp),NULL) != NULL))
+         return mxmlGetText(mxmlGetFirstChild(tmp),NULL);
+ 
+@@ -684,8 +741,8 @@ std::vector<XmlNode> XMLwrapper::getBranch(void) const
+     std::vector<XmlNode> res;
+     mxml_node_t *current = mxmlGetFirstChild(node);
+     while(current) {
+-        if(mxmlGetType(current) == MXML_ELEMENT) {
+-#if MXML_MAJOR_VERSION == 3
++        if(mxmlGetType(current) == MXML_TYPE_ELEMENT) {
++#if MXML_MAJOR_VERSION >= 3
+             XmlNode n(mxmlGetElement(current));
+             int count = mxmlElementGetAttrCount(current);
+             const char *name;
+@@ -705,7 +762,7 @@ std::vector<XmlNode> XMLwrapper::getBranch(void) const
+ #endif
+             res.push_back(n);
+         }
+-        current = mxmlWalkNext(current, node, MXML_NO_DESCEND);
++        current = mxmlWalkNext(current, node, MXML_DESCEND_NONE);
+     }
+     return res;
+ }
+diff --git a/src/Tests/MessageTest.cpp b/src/Tests/MessageTest.cpp
+index ef7558dfa..f6810a2f1 100644
+--- a/src/Tests/MessageTest.cpp
++++ b/src/Tests/MessageTest.cpp
+@@ -105,22 +105,16 @@ class MessageTest
+             mw->transmitMsg("/presets/copy", "s", "/part0/kit0/adpars/VoicePar0/FMSmp/");
+ 
+             TS_ASSERT_EQUAL_STR("Poscilgen", mw->getPresetsStore().clipboard.type.c_str());
+-            // a regex would be better here...
+-            // hopefully, mxml will not change its whitespace behavior
+-            assert_non_null(strstr(mw->getPresetsStore().clipboard.data.c_str(), "<par name=\"base_function_par\" value=\"32\" />"),
+-                    "base_function_par at right value", __LINE__);
+-
+-            /* // better test this without string comparison:
++	    //Use XMLwrapper to validate copied XML
+             {
+                 XMLwrapper xml;
+                 bool couldPutXml = xml.putXMLdata(mw->getPresetsStore().clipboard.data.c_str());
+                 TS_ASSERT(couldPutXml);
++		xml.enterbranch("Poscilgen");
+                 unsigned char copiedBasefuncPar = xml.getpar127("base_function_par", 0);
+-                TS_ASSERT_EQUALS(copiedBasefuncPar, 32);
+-            }*/
+-
+-            //printf("clipboard type: %s\n",mw->getPresetsStore().clipboard.type.c_str());
+-            //printf("clipboard data:\n%s\n",mw->getPresetsStore().clipboard.data.c_str());
++		xml.exitbranch();
++                TS_ASSERT_EQUAL_INT(+copiedBasefuncPar, 32);
++            }
+ 
+             TS_ASSERT_EQUAL_INT(osc_dst.Pbasefuncpar, 64);
+             TS_ASSERT_EQUAL_INT(osc_oth.Pbasefuncpar, 64);
+diff --git a/src/Tests/PluginTest.cpp b/src/Tests/PluginTest.cpp
+index 665a7311f..dd0c4214a 100644
+--- a/src/Tests/PluginTest.cpp
++++ b/src/Tests/PluginTest.cpp
+@@ -15,6 +15,7 @@
+ #include <cstdlib>
+ #include <iostream>
+ #include <fstream>
++#include <regex>
+ #include <string>
+ #include "../Misc/MiddleWare.h"
+ #include "../Misc/Master.h"
+@@ -228,12 +229,30 @@ class PluginTest
+ 
+         void testLoadSave(void)
+         {
++            // Do the load/save
+             const string fname = string(SOURCE_DIR) + "/guitar-adnote.xmz";
+-            const string fdata = loadfile(fname);
++            string fdata = loadfile(fname);
+             char *result = NULL;
+             master[0]->putalldata((char*)fdata.c_str());
+             int res = master[0]->getalldata(&result);
+ 
++            // Fixup, because d44dc9b corrupted guitar-adnote.xmz:
++            // Replace "1.0f" with "1.0" and "UTF-8" with "utf-8" in `<?xml...`
++            fdata = std::regex_replace(fdata,
++                                       std::regex(R"(<\?xml version="1\.0f" encoding="UTF-8"\?>)"),
++                                       R"(<?xml version="1.0" encoding="utf-8"?>)");
++
++            // Fixups, because guitar-adnote.xmz was saved with MXML3
++#if MXML_MAJOR_VERSION >= 4
++            // guitar-adnote has tags ending on " />" - we remove the space
++            fdata = std::regex_replace(fdata, std::regex(" />"), "/>");
++            // Remove trailing newline
++            if (fdata.size() >= 1 && fdata[fdata.size() - 1] == '\n') {
++                fdata.pop_back();
++            }
++#endif
++
++            // Checks
+             TS_ASSERT_EQUAL_INT((int)(fdata.length()+1), res);
+             TS_ASSERT(fdata == result);
+             if(fdata != result)

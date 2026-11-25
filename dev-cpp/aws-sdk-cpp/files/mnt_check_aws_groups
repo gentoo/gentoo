@@ -1,0 +1,77 @@
+#! /bin/bash
+
+# Just fake it to allow sourcing the .ebuild file directly into scope.
+inherit() {
+	:
+}
+
+in_array() {
+	local needle="$1"
+	shift
+	while [[ $# -gt 0 ]]; do
+		[[ "$1" = "$needle" ]] && return 0
+		shift
+	done
+	return 1
+}
+
+if [[ -r /usr/libexec/rc/sh/functions.sh ]]; then
+	# We have openrc so high-jack these for prettier output.
+	. /usr/libexec/rc/sh/functions.sh
+else
+	ebegin() { echo "$*"; }
+	eend() { :; }
+	eerror() { echo "$*"; }
+fi
+
+for eb in "$@"; do
+	unset AWS_GROUPS
+	if [[ "$(basename "${eb}")" != aws-sdk-cpp-*.ebuild ]] ; then
+		eerror "Ebuild name ${eb} looks invalid, skipping."
+		continue
+	fi
+	if [[ ! -r "${eb}" ]]; then
+		eerror "${eb} is not readable, skipping."
+		continue
+	fi
+	ebegin "${eb}"
+	r=0
+	
+	if ! ebuild "${eb}" fetch; then
+		eerror "Error fetching dist files."
+		avail_mods=()
+	else
+		distname="$(portageq metadata / ebuild dev-cpp/aws-sdk-cpp-1.11.887 SRC_URI | sed -nre 's/.* -> aws/aws/p')"
+		avail_mods=($(tar tf "$(portageq envvar DISTDIR)/${distname}" --wildcards "*/generated/src/*" | sed -nre 's:.*/generated/src/aws-cpp-sdk-([^/]+)$:\1:p'))
+	fi
+	
+	. "${eb}"
+	declare -A listed_names=()
+	for c in "${!AWS_GROUPS[@]}"; do
+		IFS=';' mods=(${AWS_GROUPS[$c]})
+		for m in "${mods[@]}"; do
+			if [[ -n "${listed_names[$m]}" ]]; then
+				eerror "${m} is listed twice, in first in ${listed_names[$m]} then in ${c}"
+				r=1
+			else
+				listed_names[$m]="${c}"
+			fi
+			if [[ "${#avail_mods[@]}" -gt 0 ]] && ! in_array "${m}" "${avail_mods[@]}"; then
+				eerror "Module ${m} listed in AWS_GROUPS category ${c} is not found in sources."
+				r=1
+			fi
+		done
+		sorted_list="$(printf "%s\n" "${mods[@]}" | sort | tr '\n' ';')"
+		if [[ "${sorted_list%;}" != "${AWS_GROUPS[$c]}" ]]; then
+			eerror "Category ${c} in AWS_GROUPS is not sorted, correctly sorted list is: ${sorted_list%;}"
+			r=1
+		fi
+	done
+	for m in "${avail_mods[@]}"; do
+		if [[ -z "${listed_names[$m]}" ]]; then
+			eerror "Module ${m} in sources is not found in any AWS_GROUPS category."
+			r=1
+		fi
+	done
+	eend $r
+done

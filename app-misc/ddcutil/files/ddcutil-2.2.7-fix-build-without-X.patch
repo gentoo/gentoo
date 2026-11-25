@@ -1,0 +1,34 @@
+https://github.com/rockowitz/ddcutil/issues/606
+
+From a9e7a6015c5a708dc859893f35f1e47bbb764c4a Mon Sep 17 00:00:00 2001
+From: Sanford Rockowitz <rockowitz@minsoft.com>
+Date: Sat, 9 May 2026 15:46:29 -0400
+Subject: [PATCH] comment out lines referencing DREF_DPMS_SUSPEND_STANDBY_OFF
+
+lines existed only in blocks compile when --disable-x11
+---
+ src/ddc/ddc_displays.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/ddc/ddc_displays.c b/src/ddc/ddc_displays.c
+index c8aedfde3..27090c6b4 100644
+--- a/src/ddc/ddc_displays.c
++++ b/src/ddc/ddc_displays.c
+@@ -437,7 +437,7 @@ ddc_detect_all_displays(GPtrArray ** i2c_open_errors_loc) {
+ #else
+          if (dpms_check_drm_asleep_by_dref(dref)) {
+             dpms_state |= DPMS_SOME_DRM_ASLEEP;
+-            dref->flags |= DREF_DPMS_SUSPEND_STANDBY_OFF;
++            // dref->flags |= DREF_DPMS_SUSPEND_STANDBY_OFF;
+           }
+           else {
+              all_displays_asleep = false;
+@@ -511,7 +511,7 @@ ddc_detect_all_displays(GPtrArray ** i2c_open_errors_loc) {
+ #else
+          if (dpms_check_drm_asleep_by_dref(dref)) {
+             dpms_state |= DPMS_SOME_DRM_ASLEEP;
+-            dref->flags |= DREF_DPMS_SUSPEND_STANDBY_OFF;
++            // dref->flags |= DREF_DPMS_SUSPEND_STANDBY_OFF;
+           }
+           else {
+              all_displays_asleep = false;

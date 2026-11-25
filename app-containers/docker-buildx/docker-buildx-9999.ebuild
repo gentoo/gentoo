@@ -1,35 +1,29 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=9
 
 inherit go-module
 
-MY_PN="buildx"
 DESCRIPTION="Docker CLI plugin for extended build capabilities with BuildKit"
 HOMEPAGE="https://github.com/docker/buildx"
+
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/docker/buildx.git"
 else
 	SRC_URI="https://github.com/docker/buildx/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
-	S="${WORKDIR}/${MY_PN}-${PV}"
+	S=${WORKDIR}/${P#docker-}
 fi
 
 LICENSE="Apache-2.0"
+# Dependent licenses
+LICENSE+=" Apache-2.0 BSD BSD-2 ISC MIT MPL-2.0"
 SLOT="0"
 
-IUSE="test"
-
-# This gives us the ability to neatly `-skip` tests.
-# not required once ::gentoo is all > 1.20
-RESTRICT="!test? ( test )"
-
-BDEPEND="
-	test? ( >=dev-lang/go-1.20 )
-"
 RDEPEND="app-containers/docker-cli"
+BDEPEND=">=dev-lang/go-1.26.9:="
 
 src_compile() {
 	local _buildx_r='github.com/docker/buildx'
@@ -37,12 +31,13 @@ src_compile() {
 	if [[ ${PV} == 9999 ]]; then
 		version="$(git rev-parse --short HEAD)"
 	fi
-	ego build -o docker-buildx \
-		-ldflags "-linkmode=external
-		-X $_buildx_r/version.Version=${version}
-		-X $_buildx_r/version.Revision=$(date -u +%FT%T%z)
-		-X $_buildx_r/version.Package=$_buildx_r" \
-		./cmd/buildx
+	local go_ldflags=(
+		"-linkmode=external"
+		-X "${_buildx_r}/version.Version=${version}"
+		-X "${_buildx_r}/version.Revision=$(date -u +%FT%T%z)"
+		-X "${_buildx_r}/version.Package=${_buildx_r}"
+	)
+	ego build -o docker-buildx -ldflags "${go_ldflags[*]}" ./cmd/buildx
 }
 
 src_test() {
@@ -58,5 +53,5 @@ src_install() {
 	exeinto /usr/libexec/docker/cli-plugins
 	doexe docker-buildx
 
-	dodoc README.md
+	einstalldocs
 }

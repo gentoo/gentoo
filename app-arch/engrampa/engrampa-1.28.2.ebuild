@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -50,7 +50,7 @@ src_configure() {
 pkg_postinst() {
 	mate_pkg_postinst
 
-	optfeature "Support for 7-zip" app-arch/p7zip
+	optfeature "Support for 7-zip" app-arch/7zip
 	optfeature "Support for ace" app-arch/unace
 	optfeature "Support for arj" app-arch/arj
 	optfeature "Support for cpio" app-alternatives/cpio

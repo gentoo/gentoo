@@ -1,0 +1,30 @@
+https://bugs.gentoo.org/981284
+
+Raise limited api version to the minimum supported by cython 3.3
+
+--- a/setup.py
++++ b/setup.py
+@@ -10,7 +10,7 @@ from Cython.Build import cythonize
+ #
+ # Py_LIMITED_API values:
+ #
+-# 0x03080000 - Python 3.8 - the minimum version that Cython supports.
++# 0x03090000 - Python 3.9 - the minimum version that Cython-3.3 supports.
+ # 0x030B0000 - Python 3.11 - support typed memoryviews.
+ # 0x030C0000 - Python 3.12 - support vectorcall (performance improvement).
+ 
+@@ -21,12 +21,11 @@ if sys.implementation.name == "cpython" and not sysconfig.get_config_var(
+ ):
+     py_limited_api_kwargs = {
+         "define_macros": [
+-            # For now we are at python 3.8 as we still support 3.10.
+-            ("Py_LIMITED_API", 0x03080000),
++            ("Py_LIMITED_API", 0x03090000),
+         ],
+         "py_limited_api": True,
+     }
+-    bdist_wheel_kwargs = {"py_limited_api": "cp38"}
++    bdist_wheel_kwargs = {"py_limited_api": "cp39"}
+ 
+ setup(
+     ext_modules=cythonize(

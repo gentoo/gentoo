@@ -10,7 +10,7 @@ if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/deskflow/deskflow/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64"
+	KEYWORDS="~amd64 ~arm64"
 fi
 
 DESCRIPTION="Share a mouse and keyboard between computers (FOSS version of Synergy)"
@@ -24,9 +24,9 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	dev-libs/glib:2
 	>=dev-libs/libei-0.99.1
-	dev-libs/libportal:=
+	>=dev-libs/libportal-0.9.1:=
 	dev-libs/openssl:0=
-	dev-qt/qtbase:6[dbus,gui,network,ssl,widgets,xml]
+	dev-qt/qtbase:6[dbus,gui,network,ssl,widgets]
 	x11-libs/libxkbcommon
 	X? (
 		x11-libs/libxkbfile
@@ -50,11 +50,6 @@ BDEPEND="
 	dev-qt/qttools:6[linguist]
 "
 
-DOCS=(
-	README.md
-	doc/user/configuration.md
-)
-
 src_configure() {
 	local mycmakeargs=(
 		-DBUILD_TESTS=$(usex test)
@@ -65,6 +60,10 @@ src_configure() {
 }
 
 src_test() {
-	"${BUILD_DIR}"/bin/legacytests || die
 	BUILD_DIR+=/src/unittests virtx cmake_src_test
+}
+
+src_install() {
+	cmake_src_install
+	rm -rv "${ED}"/usr/share/licenses || die
 }

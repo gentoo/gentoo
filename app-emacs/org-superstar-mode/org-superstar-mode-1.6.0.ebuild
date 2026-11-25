@@ -16,7 +16,7 @@ else
 	SRC_URI="https://github.com/integral-dw/${PN}/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz"
 
-	KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
+	KEYWORDS="amd64 ~arm ~arm64 ~riscv ~x86"
 fi
 
 LICENSE="GPL-3+"

@@ -9,7 +9,7 @@ RUST_MIN_VER="1.85.0"
 
 inherit cargo flag-o-matic
 
-DESCRIPTION="A structural diff that understands syntax."
+DESCRIPTION="A structural diff that understands syntax"
 HOMEPAGE="http://difftastic.wilfred.me.uk/"
 SRC_URI="
 	https://github.com/Wilfred/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.gh.tar.gz

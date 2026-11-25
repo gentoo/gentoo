@@ -1,0 +1,14 @@
+PR merged https://github.com/vanhauser-thc/thc-ipv6/pull/56.patch
+See https://bugs.gentoo.org/972896
+Apply generic rules to PROGRAMS only, ensuring the library is built first w/ implicit rules and avoiding duplicate rules for EXTRA.
+--- a/Makefile
++++ b/Makefile
+@@ -36,7 +36,7 @@ fragrouter6:	fragrouter6.c $(LIBS)
+ connsplit6:	connsplit6.c $(LIBS)
+ 	-$(CC) $(CFLAGS) $(CPPFLAGS) -o $@ $^ $(LDFLAGS) -lnetfilter_queue || /bin/echo -e "\nCompilation of connsplit6 failed, you have to install libnetfilter-queue-dev for this!\n"
+ 
+-%:	%.c $(LIBS)
++$(PROGRAMS): %: %.c $(LIBS)
+ 	$(CC) $(CFLAGS) $(CPPFLAGS) $(STATIC) -o $@ $^ $(LDFLAGS)
+ 
+ strip:	all

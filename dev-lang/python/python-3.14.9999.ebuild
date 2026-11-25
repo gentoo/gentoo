@@ -3,15 +3,13 @@
 
 EAPI="8"
 
-LLVM_COMPAT=( 19 )
-LLVM_OPTIONAL=1
 WANT_LIBTOOL="none"
 
-inherit autotools check-reqs flag-o-matic git-r3 linux-info llvm-r1
+inherit autotools check-reqs flag-o-matic git-r3 linux-info
 inherit multiprocessing pax-utils python-utils-r1 toolchain-funcs
 
 PYVER=$(ver_cut 1-2)
-PATCHSET="python-gentoo-patches-3.14.0b1"
+PATCHSET="python-gentoo-patches-3.14.6_p1"
 
 DESCRIPTION="An interpreted, interactive, object-oriented programming language"
 HOMEPAGE="
@@ -19,7 +17,7 @@ HOMEPAGE="
 	https://github.com/python/cpython/
 "
 SRC_URI="
-	https://dev.gentoo.org/~mgorny/dist/python/${PATCHSET}.tar.xz
+	https://distfiles.gentoo.org/pub/proj/python/patchsets/${PYVER%t}/${PATCHSET}.tar.xz
 "
 EGIT_REPO_URI="https://github.com/python/cpython.git"
 EGIT_BRANCH=${PYVER}
@@ -27,10 +25,9 @@ EGIT_BRANCH=${PYVER}
 LICENSE="PSF-2"
 SLOT="${PYVER}"
 IUSE="
-	bluetooth debug +ensurepip examples gdbm jit libedit +ncurses pgo
+	bluetooth build debug +ensurepip examples gdbm libedit +ncurses pgo
 	+readline +sqlite +ssl tail-call-interp test tk valgrind
 "
-REQUIRED_USE="jit? ( ${LLVM_REQUIRED_USE} )"
 RESTRICT="!test? ( test )"
 
 # Do not add a dependency on dev-lang/python to this ebuild.
@@ -41,16 +38,16 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	app-arch/bzip2:=
 	app-arch/xz-utils:=
-	app-arch/zstd:=
 	app-misc/mime-types
 	>=dev-libs/expat-2.1:=
 	dev-libs/libffi:=
 	dev-libs/mpdecimal:=
 	dev-python/gentoo-common
+	sys-apps/util-linux
 	>=virtual/zlib-1.1.3:=
 	virtual/libintl
+	!build? ( app-arch/zstd:= )
 	gdbm? ( sys-libs/gdbm:=[berkdb] )
-	kernel_linux? ( sys-apps/util-linux:= )
 	ncurses? ( >=sys-libs/ncurses-5.2:= )
 	readline? (
 		!libedit? ( >=sys-libs/readline-4.1:= )
@@ -80,12 +77,6 @@ BDEPEND="
 	dev-build/autoconf-archive
 	app-alternatives/awk
 	virtual/pkgconfig
-	jit? (
-		$(llvm_gen_dep '
-			llvm-core/clang:${LLVM_SLOT}
-			llvm-core/llvm:${LLVM_SLOT}
-		')
-	)
 	tail-call-interp? (
 		|| (
 			>=sys-devel/gcc-16:*
@@ -118,19 +109,10 @@ pkg_pretend() {
 	if use pgo || use test; then
 		check-reqs_pkg_pretend
 	fi
-
-	if use jit; then
-		ewarn "USE=jit is considered experimental upstream.  Using it"
-		ewarn "could lead to unexpected breakage, including race conditions"
-		ewarn "and crashes, respectively.  Please do not file Gentoo bugs, unless"
-		ewarn "you can reproduce the problem with dev-lang/python[-jit].  Instead,"
-		ewarn "please consider reporting JIT problems upstream."
-	fi
 }
 
 pkg_setup() {
 	if [[ ${MERGE_TYPE} != binary ]]; then
-		use jit && llvm-r1_pkg_setup
 		if use test || use pgo; then
 			check-reqs_pkg_setup
 
@@ -403,7 +385,6 @@ src_configure() {
 		--enable-gil
 
 		$(use_with debug assertions)
-		$(use_enable jit experimental-jit)
 		$(use_enable pgo optimizations)
 		$(use_with readline readline "$(usex libedit editline readline)")
 		$(use_with tail-call-interp)
@@ -421,6 +402,7 @@ src_configure() {
 	cat > Modules/Setup.local <<-EOF || die
 		*disabled*
 		nis
+		$(usev build '_zstd')
 		$(usev !gdbm '_gdbm _dbm')
 		$(usev !sqlite '_sqlite3')
 		$(usev !ssl '_hashlib _ssl')

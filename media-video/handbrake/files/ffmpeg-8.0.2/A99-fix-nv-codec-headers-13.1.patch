@@ -1,0 +1,54 @@
+https://bugs.gentoo.org/979520
+https://github.com/FFmpeg/FFmpeg/commit/0a7c5e507b4448f02ca914c50654a3bc979d02dd
+
+From 0a7c5e507b4448f02ca914c50654a3bc979d02dd Mon Sep 17 00:00:00 2001
+From: Diego de Souza <ddesouza@nvidia.com>
+Date: Thu, 5 Mar 2026 17:06:12 +0100
+Subject: [PATCH] avcodec/nvenc: fix compatibility with Video Codec SDK 13.1
+
+NV_ENC_CLOCK_TIMESTAMP_SET was changed in SDK 13.1: countingType was
+replaced by countingTypeLSB and countingTypeMSB.
+
+Signed-off-by: Diego de Souza <ddesouza@nvidia.com>
+Signed-off-by: Timo Rothenpieler <timo@rothenpieler.org>
+--- a/libavcodec/nvenc.c
++++ b/libavcodec/nvenc.c
+@@ -263,8 +263,10 @@ static void nvenc_map_preset(NvencContext *ctx)
+ 
+ static void nvenc_print_driver_requirement(AVCodecContext *avctx, int level)
+ {
+-#if NVENCAPI_CHECK_VERSION(13, 1)
++#if NVENCAPI_CHECK_VERSION(13, 2)
+     const char *minver = "(unknown)";
++#elif NVENCAPI_CHECK_VERSION(13, 1)
++    const char *minver = "610.00";
+ #elif NVENCAPI_CHECK_VERSION(13, 0)
+     const char *minver = "570.0";
+ #elif NVENCAPI_CHECK_VERSION(12, 2)
+@@ -2540,7 +2542,12 @@ static void nvenc_fill_time_code(AVCodecContext *avctx, const AVFrame *frame, NV
+             unsigned hh, mm, ss, ff, drop;
+             ff_timecode_set_smpte(&drop, &hh, &mm, &ss, &ff, avctx->framerate, tc[i + 1], 0, 0);
+ 
++#ifdef NVENC_NEW_COUNTING_TYPE
++            time_code->clockTimestamp[i].countingTypeLSB = 0;
++            time_code->clockTimestamp[i].countingTypeMSB = 0;
++#else
+             time_code->clockTimestamp[i].countingType = 0;
++#endif
+             time_code->clockTimestamp[i].discontinuityFlag = 0;
+             time_code->clockTimestamp[i].cntDroppedFrames = drop;
+             time_code->clockTimestamp[i].nFrames = ff;
+--- a/libavcodec/nvenc.h
++++ b/libavcodec/nvenc.h
+@@ -111,6 +111,11 @@ typedef void ID3D11Device;
+ #define NVENC_HAVE_MVHEVC
+ #endif
+ 
++// SDK 13.1 compile time feature checks
++#if NVENCAPI_CHECK_VERSION(13, 1)
++#define NVENC_NEW_COUNTING_TYPE
++#endif
++
+ typedef struct NvencSurface
+ {
+     NV_ENC_INPUT_PTR input_surface;

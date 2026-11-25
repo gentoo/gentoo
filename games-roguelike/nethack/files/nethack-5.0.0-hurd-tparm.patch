@@ -1,0 +1,13 @@
+diff --git a/win/tty/termcap.c b/win/tty/termcap.c
+index b5ffcef4e..9adbacdb4 100644
+--- a/win/tty/termcap.c
++++ b/win/tty/termcap.c
+@@ -890,7 +890,7 @@ cl_eos(void) /* free after Robert Viduya */
+ 
+ #include <curses.h>
+ 
+-#if !defined(LINUX) && !defined(__FreeBSD__) && !defined(NOTPARMDECL)
++#if !defined(__gnu_hurd__) && !defined(LINUX) && !defined(__FreeBSD__) && !defined(NOTPARMDECL)
+ extern char *tparm();
+ #endif
+ 

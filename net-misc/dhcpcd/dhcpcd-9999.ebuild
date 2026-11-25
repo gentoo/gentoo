@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,13 +9,20 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/NetworkConfiguration/dhcpcd.git"
 else
+	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/roymarples.asc
+	inherit verify-sig
+
 	MY_P="${P/_alpha/-alpha}"
 	MY_P="${MY_P/_beta/-beta}"
 	MY_P="${MY_P/_rc/-rc}"
-	SRC_URI="https://github.com/NetworkConfiguration/dhcpcd/releases/download/v${PV}/${MY_P}.tar.xz"
+	SRC_URI="
+		https://github.com/NetworkConfiguration/dhcpcd/releases/download/v${PV}/${MY_P}.tar.xz
+		verify-sig? ( https://github.com/NetworkConfiguration/dhcpcd/releases/download/v${PV}/${MY_P}.tar.xz.asc )
+	"
 	S="${WORKDIR}/${MY_P}"
 
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+	BDEPEND="verify-sig? ( sec-keys/openpgp-keys-roymarples )"
 fi
 
 DESCRIPTION="A fully featured, yet light weight RFC2131 compliant DHCP client"
@@ -47,6 +54,8 @@ QA_CONFIG_IMPL_DECL_SKIP=(
 	SHA256_Init
 	hmac
 	timingsafe_bcmp
+	getpeereid
+	getprogname
 	# These may exist on some glibc versions, but the checks fail due to
 	# -Werror / undefined reference no matter what. bug #924825
 	arc4random
@@ -72,6 +81,9 @@ src_configure() {
 		--rundir=$(usex kernel_linux "${EPREFIX}/run/dhcpcd" "${EPREFIX}/var/run/dhcpcd")
 		$(usex privsep '--privsepuser=dhcpcd' '')
 		$(usex udev '' '--without-dev --without-udev')
+		# Only needed for some odd platforms, can wire up if someone
+		# identifies which.
+		--without-libpcap
 		CC="$(tc-getCC)"
 	)
 	econf "${myeconfargs[@]}"

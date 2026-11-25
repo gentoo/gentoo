@@ -23,7 +23,7 @@ else
 	MY_P="${P/-/_}"
 	SRC_URI="https://download.libvirt.org/python/${MY_P}.tar.gz
 		verify-sig? ( https://download.libvirt.org/python/${MY_P}.tar.gz.asc )"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+	KEYWORDS="amd64 ~arm arm64 ppc64 x86"
 	RDEPEND="app-emulation/libvirt:0/${PV}"
 	S="${WORKDIR}/${MY_P}"
 fi
@@ -41,7 +41,7 @@ BDEPEND="
 	test? (
 		dev-python/lxml[${PYTHON_USEDEP}]
 	)
-	verify-sig? ( sec-keys/openpgp-keys-libvirt )
+	verify-sig? ( <sec-keys/openpgp-keys-libvirt-20260831 )
 "
 
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/libvirt.org.asc

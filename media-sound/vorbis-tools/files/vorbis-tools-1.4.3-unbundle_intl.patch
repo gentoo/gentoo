@@ -1,0 +1,35 @@
+see https://bugs.gentoo.org/945288
+unbundle old version
+this part is updated by upstream w/ https://gitlab.xiph.org/xiph/vorbis-tools/-/merge_requests/25.patch
+--- a/configure.ac
++++ b/configure.ac
+@@ -196,8 +196,6 @@ fi
+ SHARE_LIBS='$(top_builddir)/share/libutf8.a $(top_builddir)/share/libgetopt.a'
+ SHARE_CFLAGS='-I$(top_srcdir)/include'
+ 
+-I18N_CFLAGS='-I$(top_srcdir)/intl'
+-I18N_LIBS=$INTLLIBS
+ 
+ SOCKET_LIBS=
+ AC_CHECK_LIB(socket, socket, SOCKET_LIBS="-lsocket")
+@@ -413,7 +413,6 @@ AC_CONFIG_FILES([
+ Makefile
+ m4/Makefile
+ po/Makefile.in
+-intl/Makefile
+ include/Makefile
+ share/Makefile
+ win32/Makefile
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -2,8 +2,8 @@
+ 
+ AUTOMAKE_OPTIONS = foreign dist-zip
+ 
+-SUBDIRS = po intl include share win32 @OPT_SUBDIRS@ tests
+-DIST_SUBDIRS = po intl include share win32 ogg123 oggenc oggdec ogginfo \
++SUBDIRS = po include share win32 @OPT_SUBDIRS@ tests
++DIST_SUBDIRS = po include share win32 ogg123 oggenc oggdec ogginfo \
+ 	vcut vorbiscomment m4 tests
+ 
+ EXTRA_DIST = config.rpath README AUTHORS COPYING CHANGES

@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -64,7 +64,7 @@ multilib_src_test() {
 	# cases.
 	# https://github.com/libproxy/libproxy/issues/260 (bug #914382)
 	local -x GIO_USE_NETWORK_MONITOR=base
-	dbus-run-session meson test -C "${BUILD_DIR}" || die 'tests failed'
+	dbus-run-session meson test -C "${BUILD_DIR}" --print-errorlogs || die 'tests failed'
 }
 
 pkg_postinst() {

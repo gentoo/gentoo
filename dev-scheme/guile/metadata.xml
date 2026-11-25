@@ -18,6 +18,7 @@ Guile is a library designed to help programmers create flexible applications. Us
   </use>
   <upstream>
     <doc>https://www.gnu.org/software/guile/manual/html_node/index.html</doc>
+    <remote-id type="codeberg">guile/guile</remote-id>
     <remote-id type="savannah">guile</remote-id>
   </upstream>
   <slots>

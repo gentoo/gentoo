@@ -1,0 +1,10 @@
+--- a/src/quo-private.h	2026-04-20 15:10:50.306375540 +0200
++++ b/src/quo-private.h	2026-04-20 15:11:02.249241749 +0200
+@@ -25,6 +25,7 @@
+ #ifdef HAVE_STDBOOL_H
+ #include <stdbool.h>
+ #endif
++#include <sys/types.h>
+ 
+ /** Library version. */
+ #define QUO_VER    QUO_VERSION_CURRENT

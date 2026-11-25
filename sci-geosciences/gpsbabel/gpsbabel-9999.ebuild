@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -49,8 +49,6 @@ DEPEND="${RDEPEND}"
 
 DOCS=( AUTHORS NEWS README.{contrib,igc,md} gui/README.gui )
 
-PATCHES=( "${FILESDIR}/${PN}-1.8.0-no-automagic-qt5-qt6.patch" )
-
 src_prepare() {
 	cmake_src_prepare
 
@@ -66,7 +64,6 @@ src_configure() {
 		-DGPSBABEL_MAPPREVIEW=ON
 		-DGPSBABEL_EMBED_MAP=ON
 		-DGPSBABEL_EMBED_TRANSLATIONS=ON
-		-DUSE_QT6=ON
 	)
 
 	cmake_src_configure

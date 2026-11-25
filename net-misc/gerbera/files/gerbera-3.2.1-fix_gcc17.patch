@@ -1,0 +1,178 @@
+https://bugs.gentoo.org/976808
+https://github.com/gerbera/gerbera/pull/3841
+https://github.com/gerbera/gerbera/pull/3889
+--- a/src/config/setup/config_setup_path.cc
++++ b/src/config/setup/config_setup_path.cc
+@@ -30,6 +30,7 @@
+ #include "config/config_options.h"
+ #include "util/logger.h"
+ 
++#include <cstring>
+ #include <pugixml.hpp>
+ 
+ bool ConfigPathSetup::checkPathValue(std::string& optValue, std::string& pathValue) const
+--- a/src/content/inotify/mt_inotify.cc
++++ b/src/content/inotify/mt_inotify.cc
+@@ -47,6 +47,7 @@
+ 
+ #include <algorithm>
+ #include <array>
++#include <cstring>
+ #include <sys/inotify.h>
+ #include <sys/ioctl.h>
+ #include <sys/select.h>
+--- a/src/database/search_handler.h
++++ b/src/database/search_handler.h
+@@ -32,7 +32,7 @@
+ #include "util/tools.h"
+ 
+ #include <algorithm>
+-#include <fmt/core.h>
++#include <fmt/format.h>
+ #include <map>
+ #include <memory>
+ #include <tuple>
+--- a/src/exceptions.h
++++ b/src/exceptions.h
+@@ -34,7 +34,7 @@
+ #ifndef __EXCEPTIONS_H__
+ #define __EXCEPTIONS_H__
+ 
+-#include <fmt/core.h>
++#include <fmt/format.h>
+ #include <stdexcept>
+ #include <string>
+ 
+--- a/src/iohandler/mem_io_handler.cc
++++ b/src/iohandler/mem_io_handler.cc
+@@ -35,6 +35,7 @@
+ #include "mem_io_handler.h" // API
+ 
+ #include "exceptions.h"
++#include <cstring>
+ 
+ MemIOHandler::MemIOHandler(const void* buffer, int length)
+     : buffer(new char[length])
+--- a/src/request_handler/request_handler.h
++++ b/src/request_handler/request_handler.h
+@@ -36,6 +36,7 @@
+ 
+ #include <map>
+ #include <memory>
++#include <string>
+ #include <upnp.h>
+ 
+ // forward declaration
+--- a/src/upnp/client_manager.h
++++ b/src/upnp/client_manager.h
+@@ -31,6 +31,7 @@
+ #include <chrono>
+ #include <memory>
+ #include <mutex>
++#include <string>
+ #include <vector>
+ 
+ // forward declarations
+--- a/src/upnp/quirks.h
++++ b/src/upnp/quirks.h
+@@ -29,6 +29,7 @@
+ #include <cstdint>
+ #include <map>
+ #include <memory>
++#include <string>
+ #include <vector>
+ 
+ namespace pugi {
+--- a/src/util/grb_fs.cc
++++ b/src/util/grb_fs.cc
+@@ -27,6 +27,7 @@ Gerbera - https://gerbera.io/
+ #include "util/tools.h"
+ 
+ #include <algorithm>
++#include <cstring>
+ #include <fcntl.h>
+ #include <fstream>
+ #include <sstream>
+--- a/src/util/grb_net.cc
++++ b/src/util/grb_net.cc
+@@ -27,6 +27,7 @@ Gerbera - https://gerbera.io/
+ #include "tools.h"
+ 
+ #include <arpa/inet.h>
++#include <cstring>
+ #include <ifaddrs.h>
+ #include <netdb.h>
+ #include <regex>
+--- a/src/util/string_converter.cc
++++ b/src/util/string_converter.cc
+@@ -41,6 +41,7 @@
+ #include "util/logger.h"
+ 
+ #include <array>
++#include <cstring>
+ #include <vector>
+ #if FMT_VERSION >= 100202
+ #include <fmt/ranges.h>
+--- a/src/util/thread_executor.cc
++++ b/src/util/thread_executor.cc
+@@ -34,6 +34,7 @@
+ #include "thread_executor.h" // API
+ 
+ #include "util/logger.h"
++#include <cstring>
+ 
+ ThreadExecutor::~ThreadExecutor()
+ {
+--- a/src/util/thread_runner.h
++++ b/src/util/thread_runner.h
+@@ -32,6 +32,7 @@
+ 
+ #include <chrono>
+ #include <condition_variable>
++#include <cstring>
+ #include <functional>
+ #include <mutex>
+ #include <pthread.h>
+--- a/src/util/tools.cc
++++ b/src/util/tools.cc
+@@ -39,6 +39,7 @@
+ 
+ #include <algorithm>
+ #include <cinttypes>
++#include <cstring>
+ #include <numeric>
+ #include <queue>
+ #include <regex>
+--- a/src/util/url.h
++++ b/src/util/url.h
+@@ -39,6 +39,7 @@
+ 
+ #include <curl/curl.h>
+ #include <memory>
++#include <sstream>
+ #include <string>
+ 
+ /// @brief Handle urls for CURL
+--- a/src/util/url_utils.cc
++++ b/src/util/url_utils.cc
+@@ -29,6 +29,7 @@ Gerbera - https://gerbera.io/
+ #if FMT_VERSION >= 100202
+ #include <fmt/ranges.h>
+ #endif
++#include <cstring>
+ #include <sstream>
+ 
+ // URL FORMATTING CONSTANTS
+--- a/src/util/url_utils.h
++++ b/src/util/url_utils.h
+@@ -25,6 +25,7 @@
+ #define GERBERA_URL_UTILS_H
+ 
+ #include <map>
++#include <string>
+ #include <string_view>
+ #include <utility>
+ #include <vector>
+-- 
+2.53.0
+

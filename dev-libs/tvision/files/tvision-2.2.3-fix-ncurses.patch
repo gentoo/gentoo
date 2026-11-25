@@ -1,0 +1,22 @@
+https://bugs.gentoo.org/930113
+--- a/classes/unix/unixscr.cc	2026-04-10 19:20:16.696979830 -0000
++++ b/classes/unix/unixscr.cc	2026-04-10 19:19:38.871760425 -0000
+@@ -299,7 +299,8 @@
+     }
+ 
+   /* Configure curses */
+-  stdscr->_flags |= _ISPAD;
++  WINDOW *pad;
++  pad = newpad(getmaxy(stdscr), getmaxx(stdscr));
+   // Make curses interpret the escape sequences
+   keypad(stdscr,TRUE);
+   // SET: remove the buffering and pass the values directly to us. The man
+@@ -749,7 +750,7 @@
+      #endif
+      // SET: Enhanced the cleanup
+      // 1) Undo this nasty trick or curses will fail to do the rest:
+-     stdscr->_flags &= ~_ISPAD;
++     //stdscr->_flags &= ~_ISPAD;
+      // 2) Now reset the attributes, there is no "default color", is an atribute
+      // I know the name of only some attributes: 0=normal (what we need),
+      // 1=bold, 4=underline, 5=blink, 7=inverse and I think they are 9:

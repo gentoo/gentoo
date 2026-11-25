@@ -611,12 +611,7 @@ unpacker_src_uri_depends() {
 		*.rar)
 			deps[rar]="app-arch/unrar" ;;
 		*.7z)
-			deps[7z]="
-				|| (
-					app-arch/7zip
-					app-arch/p7zip
-				)
-			"
+			deps[7z]="app-arch/7zip"
 			;;
 		*.xz)
 			deps[xz]="app-arch/xz-utils" ;;

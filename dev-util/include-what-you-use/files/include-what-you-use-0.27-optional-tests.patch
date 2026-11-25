@@ -1,0 +1,35 @@
+https://bugs.gentoo.org/985264
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -241,6 +241,7 @@ if (TARGET clang-resource-headers)
+   add_dependencies(include-what-you-use clang-resource-headers)
+ endif()
+ 
++if (BUILD_TESTS)
+ if (IWYU_USE_SYSTEM_GTEST)
+   message(STATUS "IWYU: using system gtest")
+   find_package(GTest CONFIG REQUIRED)
+@@ -324,6 +325,7 @@ add_custom_target(iwyu-run-unittests
+   COMMAND $<TARGET_FILE:iwyu-unittests>
+   USES_TERMINAL
+ )
++endif()
+ 
+ # Install programs.
+ include(GNUInstallDirs)
+@@ -364,6 +366,8 @@ if (NOT iwyu_standalone_build)
+   )
+ endif()  
+ 
++
++if (BUILD_TESTS)
+ find_package(Python3 COMPONENTS Interpreter)
+ if (Python3_Interpreter_FOUND)
+   # Map the various IWYU test scripts to CTest tests.
+@@ -396,3 +400,4 @@ if (Python3_Interpreter_FOUND)
+     WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+   )
+ endif()
++endif()
+

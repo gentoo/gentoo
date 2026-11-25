@@ -1,0 +1,19 @@
+Ensure changes to CMAKE_INSTALL_INCLUDEDIR are respected for [1]
+
+Note headers are installed twice (overwritten), CMakeLists.txt's
+does not respect INCLUDEDIR while cmake/SlangTarget.cmake does.
+
+[1] https://bugs.gentoo.org/980471
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -660,5 +659,0 @@
+-install(
+-    DIRECTORY "${slang_SOURCE_DIR}/include"
+-    DESTINATION .
+-    PATTERN ".*" EXCLUDE
+-)
+--- a/extras/pkgconfig/slang-compiler.pc.in
++++ b/extras/pkgconfig/slang-compiler.pc.in
+@@ -4 +4 @@
+-includedir=${prefix}/include
++includedir=${prefix}/@CMAKE_INSTALL_INCLUDEDIR@
