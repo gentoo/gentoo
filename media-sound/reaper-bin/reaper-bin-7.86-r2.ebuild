@@ -8,7 +8,7 @@ inherit desktop xdg
 DESCRIPTION="Digital audio workstation"
 HOMEPAGE="https://www.reaper.fm"
 
-WDL_COMMIT="b9d2ce9f9219594e597073519776b2c221537a2e"
+WDL_COMMIT="65ec404acbade6a2d4dc6e1126f62bd0195672d9"
 VST3_PLUGINTERFACES_VERSION="3.8.1_build_84"
 
 SRC_URI="
@@ -37,6 +37,7 @@ DEPEND="
 	x11-libs/libxcb
 	x11-libs/xcb-util-wm
 	wayland? (
+		dev-libs/libffi
 		dev-libs/wayland
 		dev-libs/wayland-protocols
 		gui-libs/libdecor
