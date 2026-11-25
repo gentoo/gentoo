@@ -9,7 +9,7 @@ MY_PN=${PN/-bin/}
 MY_PV=${PV/_beta/-beta}
 
 DESCRIPTION="Gorgeous metric viz, dashboards & editors for Graphite, InfluxDB & OpenTSDB"
-HOMEPAGE="https://grafana.org"
+HOMEPAGE="https://grafana.com"
 
 SRC_URI="
 amd64? (
