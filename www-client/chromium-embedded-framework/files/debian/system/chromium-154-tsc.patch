@@ -1,0 +1,19 @@
+Author: Andres Salomon <dilinger@debian.org>
+
+Because we delete upstream's bundled tsc and then copy over debian's
+node-typescript, there's the potential for missing inputs from
+lib.whatever.d.ts files not existing in older versions (especially
+in stable/oldstable). Any such mismatch will break the build (even when
+pre-gen has already been run), so get rid of this loop.
+
+Index: chromium-153.0.8010.47/third_party/typescript/tsgo.gni
+===================================================================
+--- chromium-153.0.8010.47.orig/third_party/typescript/tsgo.gni
++++ chromium-153.0.8010.47/third_party/typescript/tsgo.gni
+@@ -137,6 +137,3 @@ _tsgo_lib_files = [
+   "lib.webworker.iterable.d.ts",
+ ]
+ 
+-foreach(file, _tsgo_lib_files) {
+-  tsgo_inputs += [ "//third_party/typescript/$_platform_dir/src/lib/$file" ]
+-}

@@ -1,0 +1,314 @@
+diff '--color=auto' -dNur a/build/config/compiler/BUILD.gn b/build/config/compiler/BUILD.gn
+--- a/build/config/compiler/BUILD.gn	2026-10-21 23:05:05.750495666 +0200
++++ b/build/config/compiler/BUILD.gn	2026-10-21 23:16:42.949529709 +0200
+@@ -365,9 +365,6 @@
+ 
+   configs += [
+     # See the definitions below.
+-    ":clang_revision",
+-    ":rustc_revision",
+-    ":compiler_cpu_abi",
+     ":compiler_codegen",
+     ":compiler_deterministic",
+     ":clang_warning_suppression",
+@@ -1408,43 +1405,6 @@
+     }
+   }
+ 
+-  # Makes builds independent of absolute file path.
+-  if (is_clang && strip_absolute_paths_from_debug_symbols) {
+-    # If debug option is given, clang includes $cwd in debug info by default.
+-    # For such build, this flag generates reproducible obj files even we use
+-    # different build directory like "out/feature_a" and "out/feature_b" if
+-    # we build same files with same compile flag.
+-    # Other paths are already given in relative, no need to normalize them.
+-
+-    # -ffile-compilation-dir is an alias for both -fdebug-compilation-dir=
+-    # and -fcoverage-compilation-dir=.
+-    cflags += [ "-ffile-compilation-dir=." ]
+-
+-    # Convert absolute paths to relative paths. Expands to, for example:
+-    #   -file-prefix-map /path/to/chromium/src=../..
+-    swiftflags += [
+-      "-file-prefix-map",
+-      rebase_path("//.", "") + "=" + rebase_path("//.", root_build_dir),
+-    ]
+-    if (!is_win) {
+-      # We don't use clang -cc1as on Windows (yet? https://crbug.com/762167)
+-      asmflags = [ "-Wa,-fdebug-compilation-dir,." ]
+-    }
+-
+-    if (is_win && use_lld) {
+-      if (symbol_level == 2 || (is_clang && using_sanitizer)) {
+-        # Absolutize source file paths for PDB. Pass the real build directory
+-        # if the pdb contains source-level debug information and if linker
+-        # reproducibility is not critical.
+-        ldflags += [ "/PDBSourcePath:" + rebase_path(root_build_dir) ]
+-      } else {
+-        # Use a fake fixed base directory for paths in the pdb to make the pdb
+-        # output fully deterministic and independent of the build directory.
+-        ldflags += [ "/PDBSourcePath:o:\fake\prefix" ]
+-      }
+-    }
+-  }
+-
+   # Tells the compiler not to use absolute paths when passing the default
+   # paths to the tools it invokes. We don't want this because we don't
+   # really need it and it can mess up the RBE cache entries.
+@@ -1477,121 +1437,6 @@
+   }
+ }
+ 
+-config("clang_revision") {
+-  if (is_clang && clang_base_path == default_clang_base_path &&
+-      current_os != "zos") {
+-    _perform_consistency_checks = current_toolchain == default_toolchain
+-    if (llvm_force_head_revision) {
+-      _head_revision_stamp_path = "//third_party/llvm-build/force_head_revision"
+-      _head_revision = ""
+-      if (path_exists(_head_revision_stamp_path)) {
+-        _head_revision = read_file(_head_revision_stamp_path, "trim string")
+-      }
+-      assert(
+-          _head_revision != "",
+-          "llvm_force_head_revision=true, but no locally built version was detected.")
+-      _clang_revision = _head_revision
+-    } else {
+-      _clang_revision = read_file(
+-              "//third_party/llvm-build/Release+Asserts/cr_build_revision",
+-              "trim string")
+-
+-      # Ensure that the synced clang version matches what's in git.
+-      if (_perform_consistency_checks) {
+-        # Parse the clang version from the Python script.
+-        _clang_version_lines = filter_include(
+-                read_file("//tools/clang/scripts/update.py", "list lines"),
+-                [ "CLANG_*REVISION = *" ])
+-        _py_revision =
+-            string_replace(_clang_version_lines[0], "CLANG_REVISION = '", "")
+-        _py_revision = string_replace(_py_revision, "'", "")
+-        _py_subrevision =
+-            string_replace(_clang_version_lines[1], "CLANG_SUB_REVISION = ", "")
+-        _expected_clang_revision = "$_py_revision-$_py_subrevision"
+-
+-        # TODO(agrieve): Change filter_include to _clang_revision ==
+-        # _expected_clang_revision once angle & webrtc use a GCS DEPS entry
+-        # rather than a update.py runhook.
+-        assert(
+-            filter_include([ _clang_revision ],
+-                           [
+-                             _expected_clang_revision,
+-                             "$_expected_clang_revision,*",
+-                           ]) != [],
+-            "clang_revision=\"$_clang_revision\" but update.py expected \"$_expected_clang_revision\". Did you forget to gclient sync?")
+-      }
+-    }
+-
+-    if (_perform_consistency_checks) {
+-      # Ensure that the revision matches the version major expected by GN.
+-      _versions_match = filter_include([ _clang_revision ],
+-                                       [ "llvmorg-$clang_version-*" ]) != []
+-      assert(
+-          _versions_match,
+-          "clang_revision=\"$_clang_revision\" but clang_version=\"$clang_version\". clang_version in build/toolchain/toolchain.gni is likely outdated.")
+-    }
+-
+-    if (toolchain_has_rust && _perform_consistency_checks &&
+-        !rust_force_head_revision) {
+-      # Ensure that synced rust, crubit, and bindgen versions match what's in
+-      # git.
+-      _rust_update_lines =
+-          read_file("//tools/rust/update_rust.py", "list lines")
+-      _version_lines =
+-          read_file("//third_party/rust-toolchain/VERSION", "list lines")
+-
+-      # The rust revision combines two lines of the file, so we need to do
+-      # some preprocessing to combine them.
+-      _lines = filter_include(_rust_update_lines, [ "RUST_*REVISION = *" ])
+-      _rust_rev =
+-          string_replace(string_replace(_lines[0], "RUST_REVISION = '", ""),
+-                         "'",
+-                         "")
+-      _rust_subrev = string_replace(_lines[1], "RUST_SUB_REVISION = ", "")
+-
+-      _tools = [
+-        {
+-          name = "rustc"
+-          expected_pattern = "rustc *$_rust_rev-$_rust_subrev-*"
+-        },
+-        {
+-          name = "crubit"
+-          update_variable = "CRUBIT_REVISION"
+-        },
+-        {
+-          name = "bindgen"
+-          update_variable = "BINDGEN_REVISION"
+-        },
+-      ]
+-
+-      foreach(_tool, _tools) {
+-        if (defined(_tool.expected_pattern)) {
+-          _expected = _tool.expected_pattern
+-        } else {
+-          _lines = []
+-          _lines = filter_include(_rust_update_lines,
+-                                  [ "${_tool.update_variable} = *" ])
+-          _expected =
+-              string_replace(string_replace(_lines[0],
+-                                            "${_tool.update_variable} = '",
+-                                            "${_tool.name}: "),
+-                             "'",
+-                             "")
+-        }
+-        assert(
+-            filter_include(_version_lines, [ _expected ]) != [],
+-            "${_tool.name} revision in //third_party/rust-toolchain/VERSION does not match update_rust.py. Run \"gclient sync\"?")
+-      }
+-    }
+-
+-    # This is here so that all files get recompiled after a clang roll and
+-    # when turning clang on or off. (defines are passed via the command line,
+-    # and build system rebuild things when their commandline changes). Nothing
+-    # should ever read this define.
+-    defines = [ "CR_CLANG_REVISION=\"$_clang_revision\"" ]
+-  }
+-}
+-
+ # Controls the usage of a warning suppression mapping (WSM) file to suppress
+ # warnings based on the path of the file they come from. It's controlled by the
+ # `clang_warning_suppression_file` gn argument , which points to a text file
+@@ -1653,18 +1498,6 @@
+   condition = is_debug || !(is_mac || is_fuchsia)
+ }
+ 
+-config("rustc_revision") {
+-  if (rustc_revision != "") {
+-    # Similar to the `clang_revision` config, this is here so that all `.rs`
+-    # sources get recompiled after a rustc roll. Nothing should ever read this
+-    # cfg. This will not be set if a custom toolchain is used.
+-    rustflags = [
+-      "--cfg",
+-      "cr_rustc_revision=\"$rustc_revision\"",
+-    ]
+-  }
+-}
+-
+ config("compiler_arm_fpu") {
+   if (current_cpu == "arm" && !is_ios) {
+     cflags = [ "-mfpu=neon" ]
+@@ -2174,11 +2007,7 @@
+       defines = [ "_HAS_NODISCARD" ]
+     }
+   } else {
+-    cflags = [ "-Wall" ]
+-    if (is_clang) {
+-      # Enable extra warnings for chromium_code when we control the compiler.
+-      cflags += [ "-Wextra" ]
+-    }
++    cflags = []
+ 
+     # In Chromium code, we define __STDC_foo_MACROS in order to get the
+     # C99 macros on Mac and Linux.
+@@ -2187,32 +2016,6 @@
+       "__STDC_FORMAT_MACROS",
+     ]
+ 
+-    if (!is_debug && !using_sanitizer && current_cpu != "s390x" &&
+-        current_cpu != "ppc64" && current_cpu != "mips" &&
+-        current_cpu != "mips64" && current_cpu != "riscv64" &&
+-        current_cpu != "loong64") {
+-      # Non-chromium code is not guaranteed to compile cleanly with
+-      # _FORTIFY_SOURCE. Also, fortified build may fail when optimizations are
+-      # disabled, so only do that for Release build.
+-      fortify_level = "2"
+-
+-      # ChromeOS's toolchain supports a high-quality _FORTIFY_SOURCE=3
+-      # implementation with a few custom glibc patches. Use that if it's
+-      # available.
+-      if (is_chromeos_device) {
+-        fortify_level = "3"
+-      }
+-
+-      # _FORTIFY_SOURCE=3 is available in glibc 2.34+. Enable it when building
+-      # with the sysroot where support is guaranteed. Clang is also required
+-      # since the system gcc is often patched to add _FORTIFY_SOURCE=2 which
+-      # would conflict with our definition.
+-      if (use_sysroot && is_clang && !is_android) {
+-        fortify_level = "3"
+-      }
+-      defines += [ "_FORTIFY_SOURCE=" + fortify_level ]
+-    }
+-
+     if (is_apple) {
+       cflags_objc = [ "-Wimplicit-retain-self" ]
+       cflags_objcc = [ "-Wimplicit-retain-self" ]
+@@ -2697,7 +2500,8 @@
+ }
+ 
+ # Turn off optimizations.
+-config("no_optimize") {
++config("no_optimize") { }
++config("xno_optimize") {
+   if (is_win) {
+     cflags = [
+       "/Od",  # Disable optimization.
+@@ -2732,7 +2536,8 @@
+ # Turns up the optimization level. Used to explicitly enable -O2 instead of
+ # -Os for select targets on platforms that use optimize_for_size. No-op
+ # elsewhere.
+-config("optimize_max") {
++config("optimize_max") { }
++config("xoptimize_max") {
+   ldflags = common_optimize_on_ldflags
+   if (is_win) {
+     # Favor speed over size, /O2 must be before the common flags.
+@@ -2753,7 +2558,8 @@
+ #
+ # TODO(crbug.com/41259697) - rework how all of these configs are related
+ # so that we don't need this disclaimer.
+-config("optimize_speed") {
++config("optimize_speed") { }
++config("xoptimize_speed") {
+   ldflags = common_optimize_on_ldflags
+   if (is_win) {
+     # Favor speed over size, /O2 must be before the common flags.
+@@ -2770,7 +2576,8 @@
+   rustflags = [ "-Copt-level=3" ]
+ }
+ 
+-config("optimize_fuzzing") {
++config("optimize_fuzzing") { }
++config("xoptimize_fuzzing") {
+   cflags = [ "-O1" ] + common_optimize_on_cflags
+   rustflags = [ "-Copt-level=1" ]
+   ldflags = common_optimize_on_ldflags
+@@ -2919,7 +2726,8 @@
+ }
+ 
+ # Full symbols.
+-config("symbols") {
++config("symbols") { }
++config("xsymbols") {
+   rustflags = []
+   configs = []
+   if (is_win) {
+@@ -3079,7 +2887,8 @@
+ # Minimal symbols.
+ # This config guarantees to hold symbol for stack trace which are shown to user
+ # when crash happens in unittests running on buildbot.
+-config("minimal_symbols") {
++config("minimal_symbols") { }
++config("xminimal_symbols") {
+   configs = []
+   rustflags = []
+   if (is_win) {
+@@ -3167,7 +2976,8 @@
+ # This configuration contains function names only. That is, the compiler is
+ # told to not generate debug information and the linker then just puts function
+ # names in the final debug information.
+-config("no_symbols") {
++config("no_symbols") { }
++config("xno_symbols") {
+   if (is_win) {
+     ldflags = [ "/DEBUG" ]
+ 

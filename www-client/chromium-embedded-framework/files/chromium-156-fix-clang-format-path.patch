@@ -1,0 +1,11 @@
+--- a/build/rust/gni_impl/cpp_api_from_rust.gni	2026-10-28 21:20:02.000000000 +0100
++++ a/build/rust/gni_impl/cpp_api_from_rust.gni.new	2026-11-25 19:03:49.729009467 +0100
+@@ -112,7 +112,7 @@
+   # hoisting this `cpp_api_from_rust`-agnostic functionality into some other,
+   # reusable location elsewhere.)
+   if (host_os == "linux") {
+-    _clang_format_exe_path = "//buildtools/linux64-format/clang-format"
++    _clang_format_exe_path = "//buildtools/linux64/clang-format"
+   } else if (host_os == "win") {
+     _clang_format_exe_path = "//buildtools/win-format/clang-format.exe"
+   }

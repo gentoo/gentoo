@@ -1,0 +1,44 @@
+../../third_party/devtools-frontend/src/front_end/core/host/DispatchHttpRequestClient.ts:17:41 - error TS9025: Declaration emit for this parameter requires implicitly adding undefined to its type. This is not supported with --isolatedDeclarations.
+
+17   constructor(readonly type: ErrorType, readonly response?: DispatchHttpRequestResult, options?: ErrorOptions) {
+                                           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  ../../third_party/devtools-frontend/src/front_end/core/host/DispatchHttpRequestClient.ts:17:41
+    17   constructor(readonly type: ErrorType, readonly response?: DispatchHttpRequestResult, options?: ErrorOptions) {
+                                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    Add a type annotation to the parameter response.
+
+
+--- a/third_party/devtools-frontend/src/front_end/core/host/DispatchHttpRequestClient.ts
++++ b/third_party/devtools-frontend/src/front_end/core/host/DispatchHttpRequestClient.ts
+@@ -14,7 +14,7 @@ export enum ErrorType {
+ }
+ 
+ export class DispatchHttpRequestError extends Error {
+-  constructor(readonly type: ErrorType, readonly response?: DispatchHttpRequestResult, options?: ErrorOptions) {
++  constructor(readonly type: ErrorType, readonly response?: DispatchHttpRequestResult | undefined, options?: ErrorOptions) {
+     super(undefined, options);
+   }
+ }
+--- a/third_party/devtools-frontend/src/front_end/ui/legacy/ARIAUtils.ts
++++ b/third_party/devtools-frontend/src/front_end/ui/legacy/ARIAUtils.ts
+@@ -420,7 +420,7 @@ export class LiveAnnouncer {
+     element.textContent = Platform.StringUtilities.trimEndWithMaxLength(announcedMessage, 10000);
+   }
+ 
+-  static getOrCreateAnnouncerElement(container: HTMLElement = document.body, role: AnnouncerRole, opts?: {
++  static getOrCreateAnnouncerElement(container: undefined | HTMLElement = document.body, role: AnnouncerRole, opts?: {
+     force: boolean,
+   }): HTMLElement {
+     const existingAnnouncerElement = LiveAnnouncer.#announcerElementsByRole[role].get(container);
+--- a/third_party/devtools-frontend/src/front_end/ui/legacy/Widget.ts
++++ b/third_party/devtools-frontend/src/front_end/ui/legacy/Widget.ts
+@@ -84,7 +84,7 @@ export type WidgetFactory<WidgetT extend
+ export type InferWidgetTFromFactory<F> = F extends WidgetFactory<infer WidgetT>? WidgetT : never;
+ 
+ export class WidgetConfig<WidgetT extends AnyWidget> {
+-  constructor(readonly widgetClass: WidgetFactory<WidgetT>, readonly widgetParams?: Partial<WidgetT>) {
++  constructor(readonly widgetClass: WidgetFactory<WidgetT>, readonly widgetParams?: Partial<WidgetT> | undefined) {
+   }
+ }
+ 
