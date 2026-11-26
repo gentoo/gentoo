@@ -7,7 +7,6 @@ inherit cmake
 
 DESCRIPTION="Qt SQL driver plugin for SQLCipher"
 HOMEPAGE="https://github.com/blizzard4591/qt5-sqlcipher"
-QT6_PV="6.11.1"
 SRC_URI="https://github.com/blizzard4591/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz
 	https://distfiles.gentoo.org/pub/dev/ulm@gentoo.org/${PN}-${PV%_*}-qt-6.11.1.tar.xz"
 
@@ -16,7 +15,7 @@ SLOT="6"
 KEYWORDS="~amd64"
 
 RDEPEND=">=dev-db/sqlcipher-4.6.1
-	>=dev-qt/qtbase-6.9.3:6=[sql,sqlite] <dev-qt/qtbase-6.12:6=[sql,sqlite]"
+	>=dev-qt/qtbase-6.9.3:6=[sql,sqlite] <dev-qt/qtbase-6.13:6=[sql,sqlite]"
 DEPEND="${RDEPEND}"
 
 DOCS=(README.md)
@@ -33,7 +32,7 @@ src_prepare() {
 		case $(ver_cut 1-2 ${v}) in
 			6.9) vc=6.9.3 ;;
 			6.10) vc=6.10.0 ;;
-			6.11) vc=6.11.1 ;;
+			6.11|6.12) vc=6.11.1 ;;
 			*) die "qtbase-${v} not supported" ;;
 		esac
 		elog "qtbase-${v} not in cache, using ${vc} instead"
