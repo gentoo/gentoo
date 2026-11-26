@@ -41,8 +41,10 @@ for eb in "$@"; do
 		eerror "Error fetching dist files."
 		avail_mods=()
 	else
-		distname="$(portageq metadata / ebuild dev-cpp/aws-sdk-cpp-1.11.887 SRC_URI | sed -nre 's/.* -> aws/aws/p')"
-		avail_mods=($(tar tf "$(portageq envvar DISTDIR)/${distname}" --wildcards "*/generated/src/*" | sed -nre 's:.*/generated/src/aws-cpp-sdk-([^/]+)$:\1:p'))
+		distname="$(portageq metadata / ebuild "$(readlink -f "${eb}" | sed -re 's:.*/([^/]+)/[^/]+/([^/]+)[.]ebuild$:\1/\2:')" SRC_URI | sed -nre 's/.* -> aws/aws/p')"
+		avail_mods=($(tar tf "$(portageq envvar DISTDIR)/${distname}" --wildcards "*/generated/src/*" | sed -nre 's:.*/generated/src/aws-cpp-sdk-([^/]+)/?$:\1:p'))
+
+		[[ "${#avail_mods[@]}" -eq 0 ]] && echo "Error calculating available mods from ${distname}" >&2 && exit 1
 	fi
 	
 	. "${eb}"
