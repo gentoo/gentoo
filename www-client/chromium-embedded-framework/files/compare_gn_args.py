@@ -16,3 +16,5 @@ os.environ.pop('TEST_GN_DEFINES')
 for k,v in gentoo_args.items() :
     if k in def_args and v != def_args[k] :
         print("overwriting variable %s with different value (%s -> %s)" % (k, def_args[k], v))
+    if k not in def_args:
+        print("%s=%s not in default args" % (k,v))
