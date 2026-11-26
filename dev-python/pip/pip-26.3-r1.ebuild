@@ -28,27 +28,25 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~ppc ~ppc64 ~riscv ~s390 ~x86"
 IUSE="test test-rust"
 RESTRICT="!test? ( test )"
 
 # see src/pip/_vendor/vendor.txt
 RDEPEND="
-	>=dev-python/cachecontrol-0.14.3[${PYTHON_USEDEP}]
-	>=dev-python/dependency-groups-1.3.0[${PYTHON_USEDEP}]
-	>=dev-python/distlib-0.4.0[${PYTHON_USEDEP}]
+	>=dev-python/cachecontrol-0.14.4[${PYTHON_USEDEP}]
+	>=dev-python/distlib-0.4.4[${PYTHON_USEDEP}]
 	>=dev-python/distro-1.9.0[${PYTHON_USEDEP}]
-	>=dev-python/msgpack-1.1.1[${PYTHON_USEDEP}]
-	>=dev-python/packaging-26.2[${PYTHON_USEDEP}]
-	>=dev-python/platformdirs-4.3.8[${PYTHON_USEDEP}]
-	>=dev-python/pyproject-hooks-1.2.0[${PYTHON_USEDEP}]
-	>=dev-python/requests-2.33.1[${PYTHON_USEDEP}]
-	>=dev-python/rich-14.1.0[${PYTHON_USEDEP}]
-	>=dev-python/resolvelib-1.2.0[${PYTHON_USEDEP}]
+	>=dev-python/msgpack-1.2.4[${PYTHON_USEDEP}]
+	>=dev-python/packaging-26.3[${PYTHON_USEDEP}]
+	>=dev-python/platformdirs-4.12.4[${PYTHON_USEDEP}]
+	>=dev-python/pyproject-hooks-1.3.3[${PYTHON_USEDEP}]
+	>=dev-python/requests-2.34.2[${PYTHON_USEDEP}]
+	>=dev-python/rich-15.0.0[${PYTHON_USEDEP}]
+	>=dev-python/resolvelib-1.2.1[${PYTHON_USEDEP}]
 	>=dev-python/setuptools-70.3.0[${PYTHON_USEDEP}]
 	>=dev-python/tomli-w-1.2.0[${PYTHON_USEDEP}]
-	>=dev-python/truststore-0.10.1[${PYTHON_USEDEP}]
-	>=dev-python/typing-extensions-4.13.2[${PYTHON_USEDEP}]
+	>=dev-python/truststore-0.10.5[${PYTHON_USEDEP}]
 "
 BDEPEND="
 	${RDEPEND}
