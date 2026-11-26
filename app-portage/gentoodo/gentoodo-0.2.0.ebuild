@@ -9,9 +9,9 @@ PYTHON_COMPAT=( python3_{13..15} )
 inherit distutils-r1
 
 DESCRIPTION="Generate reminder emails for Gentoo package maintainers"
-HOMEPAGE="https://github.com/mattst88/gentoo-reminders/"
+HOMEPAGE="https://github.com/mattst88/gentoodo/"
 SRC_URI="
-	https://github.com/mattst88/gentoo-reminders/archive/v${PV}.tar.gz
+	https://github.com/mattst88/gentoodo/archive/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 
