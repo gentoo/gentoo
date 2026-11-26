@@ -1,0 +1,61 @@
+#! /bin/bash
+
+if [[ "$#" -ne 2 ]]; then
+	echo "USAGE: $0 ebuild1 ebuild2" >&2
+	exit 1
+fi
+
+if [[ "${1}" != *.ebuild || ! -r "${1}" ]]; then
+	echo "${1} is not a readable ebuild." >&2
+	exit 1
+fi
+
+if [[ "${2}" != *.ebuild || ! -r "${2}" ]]; then
+	echo "${2} is not a readable ebuild." >&2
+	exit 1
+fi
+
+inherit() {
+	:
+}
+
+load() {
+	local x
+	local -n AWS_GROUPS_TARGET="$2"
+	unset AWS_GROUPS
+	. "$1"
+	for x in "${!AWS_GROUPS[@]}"; do
+		AWS_GROUPS_TARGET[$x]="${AWS_GROUPS[$x]}"
+	done
+}
+
+info() {
+	printf " \033[33m***\033[00m %s\n" "$*"
+}
+
+declare -A AWS_GROUPS1
+declare -A AWS_GROUPS2
+
+load "$1" AWS_GROUPS1
+load "$2" AWS_GROUPS2
+
+r=0
+for x in "${!AWS_GROUPS1[@]}"; do
+	if [[ -z "${AWS_GROUPS2[@]}" ]]; then
+		info "$1 has group ${x} not in $2."
+		r=1
+	elif [[ "${AWS_GROUPS1[$x]}" != "${AWS_GROUPS2[$x]}" ]]; then
+		info "Changes for group ${x} from $1 to $2:"
+		r=1
+		diff --color=always -u <(tr ';' '\n' <<<"${AWS_GROUPS1[$x]}") <(tr ';' '\n' <<<"${AWS_GROUPS2[$x]}") | grep -vE '[-+]{3}|@@'
+	fi
+done
+
+for x in "${!AWS_GROUPS2[@]}"; do
+	if [[ -z "${AWS_GROUPS1[@]}" ]]; then
+		info "$1 does not have group ${x} added to $2."
+		r=1
+	fi
+done
+
+exit $r
