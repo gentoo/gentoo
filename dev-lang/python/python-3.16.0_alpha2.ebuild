@@ -239,6 +239,8 @@ build_cbuild_python() {
 		pyexpat
 		zlib
 		_zstd
+		_remote_debugging
+		_elementtree
 		# We disabled these for CBUILD because Python's setup.py can't handle locating
 		# libdir correctly for cross. This should be rechecked for the pure Makefile approach,
 		# and uncommented if needed.
