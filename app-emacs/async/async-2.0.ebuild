@@ -18,7 +18,7 @@ else
 	SRC_URI="https://github.com/jwiegley/${REAL_PN}/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz"
 	S="${WORKDIR}/${REAL_P}"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 x86"
 fi
 
 LICENSE="GPL-3+"
