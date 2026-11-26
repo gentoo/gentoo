@@ -1,0 +1,23 @@
+https://bugs.gentoo.org/985621 - patch seems obvious enough to not require a signed-off-by.
+
+diff '--color=auto' -urNp imap-2007f-orig/src/osdep/unix/ssl_unix.c imap-2007f-dwok/src/osdep/unix/ssl_unix.c
+--- imap-2007f-orig/src/osdep/unix/ssl_unix.c	2026-11-25 14:55:46.526499492 +0100
++++ imap-2007f-dwok/src/osdep/unix/ssl_unix.c	2026-11-25 14:56:11.373010228 +0100
+@@ -220,7 +220,7 @@ static char *ssl_start_work (SSLSTREAM *
+   if (ssl_last_error) fs_give ((void **) &ssl_last_error);
+   ssl_last_host = host;
+   if (!(stream->context = SSL_CTX_new ((flags & NET_TLSCLIENT) ?
+-				       TLSv1_client_method () :
++				       TLS_client_method () :
+ 				       SSLv23_client_method ())))
+     return "SSL context failed";
+   SSL_CTX_set_options (stream->context,0);
+@@ -718,7 +718,7 @@ void ssl_server_init (char *server)
+   }
+ 				/* create context */
+   if (!(stream->context = SSL_CTX_new (start_tls ?
+-				       TLSv1_server_method () :
++				       TLS_server_method () :
+ 				       SSLv23_server_method ())))
+     syslog (LOG_ALERT,"Unable to create SSL context, host=%.80s",
+ 	    tcp_clienthost ());
