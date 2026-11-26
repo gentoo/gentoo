@@ -32,7 +32,7 @@ else
 		verify-sig? ( https://github.com/streamlink/${PN}/releases/download/${PV}/${P}.tar.gz.asc )
 	"
 
-	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+	KEYWORDS="amd64 ~arm ~arm64 ~x86"
 
 	BDEPEND+=" verify-sig? ( sec-keys/openpgp-keys-streamlink )"
 fi
