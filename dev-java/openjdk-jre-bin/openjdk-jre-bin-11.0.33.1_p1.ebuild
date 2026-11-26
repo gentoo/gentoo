@@ -20,7 +20,7 @@ S="${WORKDIR}/jdk-${MY_PV}-jre"
 
 LICENSE="GPL-2-with-classpath-exception"
 SLOT="11"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="alsa cups headless-awt selinux"
 
 RDEPEND="
