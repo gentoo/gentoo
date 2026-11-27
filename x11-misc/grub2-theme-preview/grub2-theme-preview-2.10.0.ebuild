@@ -3,7 +3,7 @@
 
 EAPI="8"
 
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 DISTUTILS_USE_PEP517=setuptools
 
 inherit distutils-r1
@@ -14,7 +14,7 @@ SRC_URI="https://github.com/hartwork/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="grub_platforms_efi-32 grub_platforms_efi-64 grub_platforms_pc"
 REQUIRED_USE="|| ( grub_platforms_efi-32 grub_platforms_efi-64 grub_platforms_pc )"
 
