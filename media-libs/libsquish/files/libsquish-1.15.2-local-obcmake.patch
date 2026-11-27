@@ -1,0 +1,33 @@
+diff -urN orig/.obcmake/cmake/module/OB/Library.cmake mod/.obcmake/cmake/module/OB/Library.cmake
+--- orig/.obcmake/cmake/module/OB/Library.cmake	2025-09-05 01:11:15.000000000 +0100
++++ mod/.obcmake/cmake/module/OB/Library.cmake	2026-03-18 00:41:55.073580773 +0000
+@@ -533,13 +533,13 @@ function(ob_add_standard_library target)
+         ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+         RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+         FILE_SET headers_api
+-            DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/${_NAMESPACE_LC}/${_ALIAS_LC}"
++            DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}"
+         FILE_SET headers_api_gen
+             OPTIONAL
+-            DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/${_NAMESPACE_LC}/${_ALIAS_LC}"
++            DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}"
+         FILE_SET headers_export
+             OPTIONAL
+-            DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/${_NAMESPACE_LC}/${_ALIAS_LC}"
++            DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}"
+     )
+
+     # Package Config
+diff -urN orig/cmake/FetchOBCMake.cmake mod/cmake/FetchOBCMake.cmake
+--- orig/cmake/FetchOBCMake.cmake	2025-09-05 02:18:42.000000000 +0100
++++ mod/cmake/FetchOBCMake.cmake	2026-03-18 00:41:55.070922176 +0000
+@@ -6,8 +6,7 @@
+ macro(fetch_ob_cmake git_ref)
+     include(FetchContent)
+     FetchContent_Declare(OBCMake
+-        GIT_REPOSITORY "https://github.com/oblivioncth/OBCMake"
+-        GIT_TAG ${git_ref}
++        SOURCE_DIR "${OB_CMAKE_SOURCE_DIR}"
+     )
+     FetchContent_MakeAvailable(OBCMake)
+ endmacro()
