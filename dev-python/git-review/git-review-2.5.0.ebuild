@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 
 inherit distutils-r1
 
@@ -48,6 +48,10 @@ python_prepare_all() {
 	sed -i -e '/manpages/,+1d' setup.cfg || die
 
 	if use test; then
+		# silence ssh warnings (e.g. no PQC kex) that break parsing of gerrit output
+		sed -i -e "s/'-o IdentitiesOnly=yes '/'-o IdentitiesOnly=yes -o LogLevel=ERROR '/" \
+			git_review/tests/__init__.py || die
+
 		mkdir .gerrit || die
 		cp "${DISTDIR}/gerrit-${GERRIT_PV}.war" .gerrit/ || die
 	fi
