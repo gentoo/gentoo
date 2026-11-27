@@ -45,3 +45,9 @@ all_ruby_prepare() {
 	rm -f spec/integration/* || die
 	sed -i -e '/loads files through repl and exits/askip "depends on parent directory"' spec/cli_spec.rb || die
 }
+
+each_ruby_test() {
+	# color and auto_indent are nil when TERM is unset
+	local -x TERM=xterm
+	each_fakegem_test
+}
