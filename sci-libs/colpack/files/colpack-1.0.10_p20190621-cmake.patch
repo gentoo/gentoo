@@ -1,0 +1,8 @@
+--- a/build/cmake/CMakeLists.txt	2026-11-27 20:54:54.529762489 +0100
++++ b/build/cmake/CMakeLists.txt	2026-11-27 20:55:30.831340866 +0100
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.1.3)
++cmake_minimum_required(VERSION 3.10)
+ project(ColPack)
+ 
+ # Set the version number to the *next* release (not to the prevoius release).

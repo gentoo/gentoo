@@ -42,6 +42,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-1.0.10-PR43.patch" # NULL->string() to eliminate UB, support MSVC 2022
 	"${FILESDIR}/${PN}-1.0.10-PR47.patch" # Update Main.cpp
 	"${FILESDIR}/${P}-optionalStatic.patch"
+	"${FILESDIR}/${P}-cmake.patch"
 )
 
 # "top-level" CMakeLists.txt is in build/cmake ...
