@@ -12,7 +12,7 @@ S="${WORKDIR}/lp_solve"
 
 LICENSE="LGPL-2.1"
 SLOT="0/55"
-KEYWORDS="amd64 ~arm arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm arm64 ~loong ~ppc ~ppc64 ~riscv x86"
 
 PATCHES=(
 	"${FILESDIR}"/5.5.2.14-ldflags.patch
