@@ -59,9 +59,12 @@ python_test() {
 	local EPYTEST_DESELECT=(
 		"tests/functional/test_manager.py::test_system_service_cli[system-service(True)]"
 		"tests/functional/test_manager.py::test_system_service_config_fixture[system-service(True)]"
-		tests/integration/factories/daemons/ssh/test_salt_ssh.py::test_salt_ssh
 		tests/integration/factories/daemons/sshd/test_sshd.py::test_connect
 		tests/scenarios/examples/test_echoext.py::test_echoext
+	)
+	local EPYTEST_IGNORE=(
+		# pytest 9 error: marks applied to fixtures
+		tests/integration/factories/daemons/ssh/test_salt_ssh.py
 	)
 
 	local ret tempdir x
