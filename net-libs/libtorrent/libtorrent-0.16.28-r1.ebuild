@@ -37,6 +37,7 @@ BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.16.27-skip_tests_system_udns.patch
+	"${FILESDIR}"/${P}-restrict_metadata.patch #987399
 )
 
 src_prepare() {
