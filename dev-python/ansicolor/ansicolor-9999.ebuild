@@ -31,3 +31,8 @@ SLOT="0"
 
 EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
+
+python_test() {
+	local -x TERM=xterm
+	epytest
+}
