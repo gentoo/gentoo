@@ -14,7 +14,7 @@ SRC_URI="https://github.com/${PN%-vim}/${PN}/archive/v${MY_PV}.tar.gz -> ${MY_P}
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="BSD-2 PSF-2"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 
 VIM_PLUGIN_HELPFILES="${PN%-vim}.txt"
 
