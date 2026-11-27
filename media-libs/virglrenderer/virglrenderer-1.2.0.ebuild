@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 inherit meson python-any-r1
 
 if [[ ${PV} == "9999" ]] ; then
@@ -14,7 +14,7 @@ else
 	SRC_URI="https://gitlab.freedesktop.org/virgl/${PN}/-/archive/${P}/${MY_P}.tar.bz2"
 	S="${WORKDIR}/${MY_P}"
 
-	KEYWORDS="amd64 ~arm64 ~loong ~riscv ~x86"
+	KEYWORDS="amd64 ~arm64 ~loong ~riscv x86"
 fi
 
 DESCRIPTION="Library used implement a virtual 3D GPU used by qemu"
