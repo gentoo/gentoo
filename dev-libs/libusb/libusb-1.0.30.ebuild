@@ -36,6 +36,11 @@ src_prepare() {
 	# bug #923738
 	sed -i -e "s:umockdev-1.0:umockdev-1.0-DISABLED:" configure || die
 
+	# device visible in sysfs but without a node in /dev/bus/usb (containers)
+	# https://github.com/libusb/libusb/issues/1402
+	sed -i -e 's/if (open_err == LIBUSB_ERROR_ACCESS$/& || open_err == LIBUSB_ERROR_NO_DEVICE/' \
+		tests/stress_mt.c || die
+
 	elibtoolize
 }
 
