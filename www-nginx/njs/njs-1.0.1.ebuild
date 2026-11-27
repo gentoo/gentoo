@@ -61,9 +61,6 @@ src_configure() {
 	edo ./configure "${myargs[@]}"
 
 	## The NGINX module part.
-	# Build the stream module unconditionally.
-	sed -i "s/\\\$STREAM/YES/" nginx/config ||
-		die "sed failed"
 
 	# Export PKG_CONFIG for pkg-config-based QuickJS-NG detection.
 	tc-export PKG_CONFIG
@@ -85,7 +82,8 @@ src_configure() {
 
 	use !xml && local -x NJS_LIBXSLT=NO
 
-	nginx-module_src_configure
+	# Build the stream module unconditionally
+	nginx-module_src_configure --with-stream
 }
 
 src_compile() {
