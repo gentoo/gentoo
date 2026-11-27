@@ -15,15 +15,20 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc 
 IUSE="experimental test"
 RESTRICT="!test? ( test )"
 
-RDEPEND="
-	sys-apps/diffutils
-	sys-apps/less
+DEPEND="
 	sys-libs/ncurses:=
 "
-DEPEND="${RDEPEND}"
+RDEPEND="
+	${DEPEND}
+	sys-apps/diffutils
+	sys-apps/less
+"
 BDEPEND="
 	sys-apps/texinfo
-	test? ( app-misc/screen )
+	test? (
+		app-misc/screen
+		sys-apps/diffutils
+	)
 "
 
 src_configure() {
