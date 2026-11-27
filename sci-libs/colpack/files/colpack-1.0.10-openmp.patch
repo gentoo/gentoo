@@ -1,0 +1,11 @@
+--- a/GraphColoring/GraphColoring.cpp	2026-11-27 09:27:13.902684606 +0100
++++ b/GraphColoring/GraphColoring.cpp	2026-11-27 09:27:35.231432697 +0100
+@@ -971,7 +971,7 @@
+ 						i_ConflictVertex[i_thread_num] = BuildStarFromColorCombination_forChecking(i_Mode, i_MaxNumThreads, i_thread_num, iter->first, Colors2Edge_Private, PotentialHub_Private);
+ 
+ 						if(i_ConflictVertex[i_thread_num]  != -1) {
+-							#pragma omp critial
++							#pragma omp critical
+ 							{
+ 								if(pii_ConflictColorCombination!=NULL) {
+ 									(*pii_ConflictColorCombination).first = iter->first.first;

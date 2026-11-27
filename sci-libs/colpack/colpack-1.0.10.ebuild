@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,12 +11,14 @@ DESCRIPTION="C++ algorithms for specialized vertex coloring problems"
 HOMEPAGE="https://cscapes.cs.purdue.edu/coloringpage/"
 SRC_URI="https://github.com/CSCsw/${MYPN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
+S="${WORKDIR}/${MYPN}-${PV}"
+
 LICENSE="GPL-3 LGPL-3"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ppc ppc64 ~riscv ~sparc ~x86"
 IUSE="openmp"
 
-S="${WORKDIR}/${MYPN}-${PV}"
+PATCHES=( "${FILESDIR}"/${P}-openmp.patch )
 
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
