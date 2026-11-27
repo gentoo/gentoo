@@ -11,7 +11,7 @@ SRC_URI="https://github.com/mikalstill/pngtools/archive/v${PV}.tar.gz -> ${P}.gh
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc x86"
 
 RDEPEND="media-libs/libpng:="
 DEPEND="${RDEPEND}"
