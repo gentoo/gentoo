@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
 MY_P="${PN}-debian-${PV}"
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 
 inherit distutils-r1
 
@@ -39,6 +39,5 @@ BDEPEND="
 PATCHES=( "${FILESDIR}/${PN}-3.3-legacy-entrypoint.patch" )
 
 python_test() {
-	local -x SETUPTOOLS_USE_DISTUTILS=stdlib
 	"${EPYTHON}" test/auto.py -v || die "Tests fail with ${EPYTHON}"
 }
