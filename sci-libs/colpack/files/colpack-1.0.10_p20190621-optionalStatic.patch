@@ -1,0 +1,39 @@
+--- a/build/cmake/CMakeLists.txt	2026-11-27 13:37:42.008922871 +0100
++++ b/build/cmake/CMakeLists.txt	2026-11-27 13:42:05.393867633 +0100
+@@ -29,6 +29,7 @@
+ option(ENABLE_EXAMPLES
+     "Build the examples in SampleDrivers/Matrix_Compression_and_Recovery." OFF)
+     option(ENABLE_OPENMP "Enable OpenMP." ON)
++option(BUILD_STATIC "Build the static library." ON)
+ set (CMAKE_CXX_STANDARD 11)
+ 
+ # Configuring variables, etc.
+@@ -52,7 +53,11 @@
+     # Since we do not use __declspec(dllexport) etc, the shared library
+     # does not export symbols and cannot be used in general. Use the the static
+     # library for the examples.
+-    set(ColPack_lib_to_use ColPack_static)
++    if(BUILD_STATIC)
++        set(ColPack_lib_to_use ColPack_static)
++    else()
++        set(ColPack_lib_to_use ColPack_shared)
++    endif()
+     if(${CMAKE_VERSION} VERSION_LESS 3.4)
+         message(STATUS "Cannot use ColPack's shared library on Windows if using CMake older than 3.4 (because no symbols are exported).")
+     else()
+@@ -117,6 +122,7 @@
+ 
+ # Static library.
+ # ---------------
++if(BUILD_STATIC)
+ add_library(ColPack_static STATIC ${HEADERS} ${SOURCES})
+ if(NOT WIN32)
+     # On Windows, the static and shared libraries can't have the same
+@@ -143,6 +149,7 @@
+ # installation, to help downstream projects use ColPack.
+ install(TARGETS ColPack_static EXPORT ColPackTargets
+   ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR})
++endif()
+ 
+ 
+ # Shared library.

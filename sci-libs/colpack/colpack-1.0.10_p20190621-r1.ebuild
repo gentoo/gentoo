@@ -32,7 +32,7 @@ fi
 LICENSE="BSD"
 SLOT="0"
 
-IUSE="openmp"
+IUSE="openmp static-libs"
 RESTRICT="test"
 
 # Upstream is pretty much dead so we backport what's useful
@@ -41,6 +41,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-1.0.10-PR34.patch" # [cmake] Recovery .h -> .cpp
 	"${FILESDIR}/${PN}-1.0.10-PR43.patch" # NULL->string() to eliminate UB, support MSVC 2022
 	"${FILESDIR}/${PN}-1.0.10-PR47.patch" # Update Main.cpp
+	"${FILESDIR}/${P}-optionalStatic.patch"
 )
 
 # "top-level" CMakeLists.txt is in build/cmake ...
@@ -63,6 +64,7 @@ src_configure() {
 	local mycmakeargs=(
 		# -DENABLE_EXAMPLES="$(usex examples)"
 		-DENABLE_OPENMP="$(usex openmp)"
+		-DBUILD_STATIC=$(usex static-libs)
 	)
 
 	cmake_src_configure
