@@ -1,0 +1,110 @@
+Backport security fix (rebased)
+specific tests skipped given it requires functions introduced after 0.16.28
+https://github.com/rakshasa/rtorrent/pull/2118.patch
+From 6e3b81b4d7b4b13eea316334bc7079ee6a7db4fd Mon Sep 17 00:00:00 2001
+From: rakshasa <475125+rakshasa@users.noreply.github.com>
+Date: Thu, 26 Nov 2026 10:37:54 +0000
+Subject: [PATCH 1/3] Require explicit trust for imported resume progress
+
+Co-authored-by: copilot-swe-agent[bot] <198982749+Copilot@users.noreply.github.com>
+--- a/doc/rtorrent.rc
++++ b/doc/rtorrent.rc
+@@ -53,6 +53,11 @@
+ #
+ #directory.watch.ready = ./watch, load.start
+ #schedule = watch_directory,5,5,load.start=./watch/*.torrent
++#
++# Normal loads discard embedded fast-resume progress. Use the corresponding
++# load.*_edited command (for example load.start_edited) only for trusted,
++# deliberately generated or edited resume data. Incorrect resume data can
++# cause unverified pieces to be uploaded.
+ 
+ # Close torrents when disk-space is low.
+ #
+--- a/src/command_events.cc
++++ b/src/command_events.cc
+@@ -407,6 +407,15 @@ initialize_command_events() {
+   CMD2_ANY_LIST    ("load.raw_start",             [](auto, auto& args) { return apply_load(args, core::Manager::create_quiet | core::Manager::create_start | core::Manager::create_raw_data); });
+   CMD2_ANY_LIST    ("load.raw_start_verbose",     [](auto, auto& args) { return apply_load(args, core::Manager::create_start | core::Manager::create_raw_data); });
+ 
++  CMD2_ANY_LIST    ("load.edited",                   [](auto, auto& args) { return apply_load(args, core::Manager::create_quiet | core::Manager::create_tied | core::Manager::create_edited); });
++  CMD2_ANY_LIST    ("load.verbose_edited",           [](auto, auto& args) { return apply_load(args, core::Manager::create_tied | core::Manager::create_edited); });
++  CMD2_ANY_LIST    ("load.start_edited",             [](auto, auto& args) { return apply_load(args, core::Manager::create_quiet | core::Manager::create_tied | core::Manager::create_start | core::Manager::create_edited); });
++  CMD2_ANY_LIST    ("load.start_verbose_edited",     [](auto, auto& args) { return apply_load(args, core::Manager::create_tied | core::Manager::create_start | core::Manager::create_edited); });
++  CMD2_ANY_LIST    ("load.raw_edited",               [](auto, auto& args) { return apply_load(args, core::Manager::create_quiet | core::Manager::create_raw_data | core::Manager::create_edited); });
++  CMD2_ANY_LIST    ("load.raw_verbose_edited",       [](auto, auto& args) { return apply_load(args, core::Manager::create_raw_data | core::Manager::create_edited); });
++  CMD2_ANY_LIST    ("load.raw_start_edited",         [](auto, auto& args) { return apply_load(args, core::Manager::create_quiet | core::Manager::create_start | core::Manager::create_raw_data | core::Manager::create_edited); });
++  CMD2_ANY_LIST    ("load.raw_start_verbose_edited", [](auto, auto& args) { return apply_load(args, core::Manager::create_start | core::Manager::create_raw_data | core::Manager::create_edited); });
++
+   CMD2_ANY_VALUE   ("close_low_diskspace",        [](auto, auto& arg) { return apply_close_low_diskspace(arg, 99); });
+   CMD2_ANY_VALUE   ("close_low_diskspace.normal", [](auto, auto& arg) { return apply_close_low_diskspace(arg, 3); });
+ 
+--- a/src/core/download_factory.cc
++++ b/src/core/download_factory.cc
+@@ -254,15 +254,16 @@ DownloadFactory::receive_success() {
+       root->insert_key_move("libtorrent_resume", *libtorrent_resume_object);
+ 
+   } else {
+-    // We only allow session torrents to keep their
+-    // 'rtorrent/libtorrent' sections. The "fast_resume" section
+-    // should be safe to keep.
++    // Only session torrents keep their rtorrent section.
+     root->erase_key("rtorrent");
+   }
+ 
+   torrent::Object* rtorrent = &root->insert_preserve_copy("rtorrent", torrent::Object::create_map()).first->second;
+   torrent::Object& resumeObject = root->insert_preserve_copy("libtorrent_resume", torrent::Object::create_map()).first->second;
+ 
++  if (!m_session && !m_edited)
++    torrent::resume_clear_progress(*download->download(), resumeObject);
++
+   rtorrent->insert_key("key", download->tracker_controller().key());
+ 
+   initialize_rtorrent(download, rtorrent);
+--- a/src/core/download_factory.h
++++ b/src/core/download_factory.h
+@@ -40,6 +40,8 @@ public:
+   bool                get_session() const   { return m_session; }
+   void                set_session(bool v)   { m_session = v; }
+ 
++  void                set_edited(bool v)    { m_edited = v; }
++
+   bool                get_start() const     { return m_start; }
+   void                set_start(bool v)     { m_start = v; }
+ 
+@@ -71,6 +73,7 @@ private:
+ 
+   std::string         m_uri;
+   bool                m_session{};
++  bool                m_edited{};
+   bool                m_start{};
+   bool                m_printLog{true};
+   bool                m_isFile{};
+--- a/src/core/manager.cc
++++ b/src/core/manager.cc
+@@ -41,6 +41,7 @@ const int Manager::create_start;
+ const int Manager::create_tied;
+ const int Manager::create_quiet;
+ const int Manager::create_raw_data;
++const int Manager::create_edited;
+ 
+ void
+ Manager::push_log(const char* msg) {
+@@ -201,6 +202,7 @@ Manager::try_create_download(const std::string& uri, int flags, const command_li
+   f->commands().insert(f->commands().end(), commands.begin(), commands.end());
+ 
+   f->set_start(flags & create_start);
++  f->set_edited(flags & create_edited);
+   f->set_print_log(!(flags & create_quiet));
+   f->slot_finished([factory = f.get()]() { delete factory; });
+ 
+--- a/src/core/manager.h
++++ b/src/core/manager.h
+@@ -69,6 +69,7 @@ public:
+   static const int create_tied     = 0x2;
+   static const int create_quiet    = 0x4;
+   static const int create_raw_data = 0x8;
++  static const int create_edited   = 0x10;
+ 
+   typedef std::vector<std::string> command_list_type;
+ 

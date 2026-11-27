@@ -1,0 +1,134 @@
+Backport security fix
+https://github.com/rakshasa/rtorrent/pull/2119.patch
+From 4cf631dc83f298e106f0d6848e2a1809a6d87740 Mon Sep 17 00:00:00 2001
+From: rakshasa <475125+rakshasa@users.noreply.github.com>
+Date: Thu, 26 Nov 2026 11:39:05 +0000
+Subject: [PATCH] Use trusted session API when restoring downloads
+
+Co-authored-by: copilot-swe-agent[bot] <198982749+Copilot@users.noreply.github.com>
+--- a/src/core/download_factory.cc
++++ b/src/core/download_factory.cc
+@@ -213,8 +213,8 @@ DownloadFactory::receive_success() {
+     tracker_key = random() % (std::numeric_limits<uint32_t>::max() - 1) + 1;
+ 
+   Download* download = m_stream != nullptr ?
+-    m_manager->download_list()->create(m_stream.get(), tracker_key, m_printLog) :
+-    m_manager->download_list()->create(m_object, tracker_key, m_printLog);
++    m_manager->download_list()->create(m_stream.get(), tracker_key, m_printLog, m_session) :
++    m_manager->download_list()->create(m_object, tracker_key, m_printLog, m_session);
+ 
+   m_object = NULL;
+ 
+--- a/src/core/download_list.cc
++++ b/src/core/download_list.cc
+@@ -140,11 +140,11 @@ DownloadList::find_hex_ptr(const char* hash) {
+ }
+ 
+ Download*
+-DownloadList::create(torrent::Object* obj, uint32_t tracker_key, bool printLog) {
++DownloadList::create(torrent::Object* obj, uint32_t tracker_key, bool printLog, bool is_session) {
+   torrent::Download download;
+ 
+   try {
+-    download = torrent::download_add(obj, tracker_key);
++    download = is_session ? torrent::download_add_session(obj, tracker_key) : torrent::download_add(obj, tracker_key);
+ 
+   } catch (torrent::local_error& e) {
+     if (printLog)
+@@ -161,7 +161,7 @@ DownloadList::create(torrent::Object* obj, uint32_t tracker_key, bool printLog)
+ }
+ 
+ Download*
+-DownloadList::create(std::istream* str, uint32_t tracker_key, bool printLog) {
++DownloadList::create(std::istream* str, uint32_t tracker_key, bool printLog, bool is_session) {
+   torrent::Object* object = new torrent::Object;
+   torrent::Download download;
+ 
+@@ -179,7 +179,7 @@ DownloadList::create(std::istream* str, uint32_t tracker_key, bool printLog) {
+       return NULL;
+     }
+ 
+-    download = torrent::download_add(object, tracker_key);
++    download = is_session ? torrent::download_add_session(object, tracker_key) : torrent::download_add(object, tracker_key);
+ 
+   } catch (torrent::local_error& e) {
+     delete object;
+--- a/src/core/download_list.h
++++ b/src/core/download_list.h
+@@ -61,8 +61,8 @@ class DownloadList : private torrent::utils::linked_unordered_set<std::shared_pt
+   Download*           find_hex_ptr(const char* hash);
+ 
+   // Might move this to DownloadFactory.
+-  Download*           create(std::istream* str, uint32_t tracker_key, bool printLog);
+-  Download*           create(torrent::Object* obj, uint32_t tracker_key, bool printLog);
++  Download*           create(std::istream* str, uint32_t tracker_key, bool printLog, bool is_session);
++  Download*           create(torrent::Object* obj, uint32_t tracker_key, bool printLog, bool is_session);
+ 
+   iterator            insert(Download* d);
+ 
+--- a/test/src/test_download_list.cc
++++ b/test/src/test_download_list.cc
+@@ -3,11 +3,13 @@
+ #include "test/src/test_download_list.h"
+ 
+ #include <cstdio>
++#include <sstream>
+ #include <torrent/download.h>
+ #include <torrent/download_info.h>
+ #include <torrent/exceptions.h>
+ #include <torrent/hash_string.h>
+ #include <torrent/object.h>
++#include <torrent/object_stream.h>
+ #include <torrent/torrent.h>
+ #include <vector>
+ 
+@@ -137,3 +139,31 @@ TestDownloadList::test_insert_duplicate() {
+ 
+   CPPUNIT_ASSERT_THROW(m_list.insert(new core::Download(*d0->download())), torrent::internal_error);
+ }
++
++void
++TestDownloadList::test_meta_download_session() {
++  torrent::Object object = torrent::Object::create_map();
++  auto& info = object.insert_key("info", torrent::Object::create_map());
++  info.insert_key("meta_download", int64_t{1});
++  info.insert_key("name", std::string(40, '5') + ".meta");
++  info.insert_key("pieces", std::string(20, '\x55'));
++
++  CPPUNIT_ASSERT(m_list.create(new torrent::Object(object), 0, false, false) == nullptr);
++  auto download = m_list.create(new torrent::Object(object), 0, false, true);
++  CPPUNIT_ASSERT(download != nullptr);
++  CPPUNIT_ASSERT(download->info()->is_meta_download());
++  torrent::download_remove(*download->download());
++  delete download;
++
++  std::stringstream external;
++  external << object;
++  CPPUNIT_ASSERT(m_list.create(&external, 0, false, false) == nullptr);
++
++  std::stringstream session;
++  session << object;
++  download = m_list.create(&session, 0, false, true);
++  CPPUNIT_ASSERT(download != nullptr);
++  CPPUNIT_ASSERT(download->info()->is_meta_download());
++  torrent::download_remove(*download->download());
++  delete download;
++}
+--- a/test/src/test_download_list.h
++++ b/test/src/test_download_list.h
+@@ -11,6 +11,7 @@ class TestDownloadList : public test_fixture {
+   CPPUNIT_TEST(test_find_hex_after_erase);
+   CPPUNIT_TEST(test_insertion_order);
+   CPPUNIT_TEST(test_insert_duplicate);
++  CPPUNIT_TEST(test_meta_download_session);
+ 
+   CPPUNIT_TEST_SUITE_END();
+ 
+@@ -23,6 +24,7 @@ class TestDownloadList : public test_fixture {
+   void test_find_hex_after_erase();
+   void test_insertion_order();
+   void test_insert_duplicate();
++  void test_meta_download_session();
+ 
+ private:
+   core::DownloadList m_list;
