@@ -32,10 +32,7 @@ RESTRICT="test"
 RDEPEND="
 	${PYTHON_DEPS}
 	app-arch/cabextract
-	|| (
-		>=app-arch/7zip-24.09[symlink(+)]
-		app-arch/p7zip
-	)
+	>=app-arch/7zip-24.09[symlink(+)]
 	app-arch/unzip
 	$(python_gen_cond_dep '
 		dev-python/certifi[${PYTHON_USEDEP}]
