@@ -150,6 +150,8 @@ src_test() {
 		# bug 937090, these fail on tmpfs, as they require
 		# a filesystem with extended attributes, or the server
 		# fails to start due to long path to unix domain socket
+		# FileCloneTest is racy, managers learn of the clones only later
+		# https://github.com/xrootd/xrootd/commit/2881ecc42e
 		$(usev server '
 			XrdCl::LocalFileHandlerTest.XAttrTest
 			XrdCl::FileTest.XAttrTest
@@ -166,6 +168,7 @@ src_test() {
 			XRootD::xcache
 			XRootD::badredir
 			XRootD::posix
+			XrdCl::FileClone.FileCloneTest
 		')
 		$(usev scitokens '
 			XRootD::macaroons
