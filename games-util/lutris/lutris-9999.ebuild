@@ -26,6 +26,9 @@ LICENSE="GPL-3+ CC0-1.0"
 SLOT="0"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
+PROPERTIES="test_network"
+RESTRICT="test"
+
 RDEPEND="
 	${PYTHON_DEPS}
 	app-arch/cabextract
@@ -43,6 +46,7 @@ RDEPEND="
 		dev-python/pillow[${PYTHON_USEDEP}]
 		dev-python/setproctitle[${PYTHON_USEDEP}]
 		dev-python/pygobject:3[cairo,${PYTHON_USEDEP}]
+		dev-python/python-magic[${PYTHON_USEDEP}]
 		dev-python/pypresence[${PYTHON_USEDEP}]
 		dev-python/pyyaml[${PYTHON_USEDEP}]
 		dev-python/requests[${PYTHON_USEDEP}]
@@ -63,21 +67,16 @@ RDEPEND="
 BDEPEND="
 	test? (
 		$(python_gen_cond_dep '
-			dev-python/pytest[${PYTHON_USEDEP}]
+			dev-python/nose2[${PYTHON_USEDEP}]
 		')
 	)
 "
 
 DOCS=( AUTHORS README.rst docs/installers.rst docs/steam.rst )
 
-EPYTEST_IGNORE=(
-	# Requires a Nvidia GPU and driver
-	tests/util/graphics/test_drivers.py
-)
-
 src_test() {
 	meson_src_test
-	virtx epytest
+	virtx nose2 || die "Tests failed with ${EPYTHON}"
 }
 
 src_install() {
