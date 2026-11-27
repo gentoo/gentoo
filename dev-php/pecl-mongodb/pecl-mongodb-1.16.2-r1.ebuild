@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -32,6 +32,14 @@ BDEPEND="${PHP_DEPEND}
 # x86 anymore (bug #645994)
 RESTRICT="x86? ( test )
 	!test? ( test )"
+
+src_prepare() {
+	# we disable client side encryption in libmongoc
+	sed -i -e '/skip_if_crypt_shared();/a<?php skip_if_not_libmongocrypt(); ?>' \
+		tests/manager/manager-getencryptedfieldsmap-001.phpt || die
+
+	php-ext-source-r3_src_prepare
+}
 
 src_configure() {
 	local PHP_EXT_ECONF_ARGS=(
