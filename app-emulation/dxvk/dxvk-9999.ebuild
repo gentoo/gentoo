@@ -132,6 +132,10 @@ multilib_src_install_all() {
 	dodoc README.md dxvk.conf
 
 	find "${ED}" -type f -name '*.a' -delete || die
+
+	# libdisplay-info currently installs stray include and .pc files
+	# even though the library itself is not installed
+	rm -rf "${ED}"/usr/lib/dxvk/{include,x*/pkgconfig} || die
 }
 
 pkg_postinst() {
