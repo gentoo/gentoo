@@ -26,7 +26,7 @@ LICENSE="GPL-3+ CC0-1.0"
 SLOT="0"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-PROPERTIES="test_network"
+PROPERTIES="test? ( test_network )"
 RESTRICT="test"
 
 RDEPEND="
