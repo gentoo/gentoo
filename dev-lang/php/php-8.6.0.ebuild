@@ -139,6 +139,10 @@ DEPEND="${COMMON_DEPEND}
 
 BDEPEND="virtual/pkgconfig"
 
+PATCHES=(
+	"${FILESDIR}/php-8.6-musl-pathconf.patch"
+)
+
 PHP_MV="$(ver_cut 1)"
 
 # ARM/Windows functions (bug 923335)
