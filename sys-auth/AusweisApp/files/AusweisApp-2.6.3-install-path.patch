@@ -1,0 +1,29 @@
+https://github.com/Governikus/AusweisApp/pull/75
+
+From 3eda51d071d6e372033b1873325b55eb68e2740c Mon Sep 17 00:00:00 2001
+From: David Seifert <soap@gentoo.org>
+Date: Fri, 27 Nov 2026 22:38:37 +0100
+Subject: [PATCH] Installationspfad von AusweisApp.rcc unter Linux korrigieren
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Seit 2.6.3 wird AusweisApp.rcc unter ${VENDOR_PATH}/${PROJECT_NAME}
+installiert, zur Laufzeit aber über QStandardPaths unter
+${VENDOR}/${PROJECT_NAME} gesucht. Mit den Standardwerten landet die
+Datei in /usr/share/AusweisApp/AusweisApp/ statt /usr/share/AusweisApp/
+und die Anwendung beendet sich beim Start ("SecureStorage not valid").
+--- a/cmake/Install.cmake
++++ b/cmake/Install.cmake
+@@ -118,7 +118,7 @@ elseif(UNIX)
+ 		set(CMAKE_INSTALL_RPATH "\$ORIGIN")
+ 	endif()
+ 
+-	set(DEFAULT_FILE_DESTINATION ${CMAKE_INSTALL_DATADIR}/${VENDOR_PATH}/${PROJECT_NAME})
++	set(DEFAULT_FILE_DESTINATION ${CMAKE_INSTALL_DATADIR}/${VENDOR}/${PROJECT_NAME})
+ 
+ 	if(INTEGRATED_SDK AND NOT CONTAINER_SDK)
+ 		GET_PUBLIC_HEADER(AusweisAppBinary PUBLIC_HEADER)
+-- 
+2.56.1
+
