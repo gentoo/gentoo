@@ -1,0 +1,20 @@
+diff --git a/nuitka/options/OptionParsing.py b/nuitka/options/OptionParsing.py
+index 2e176ad..a880997 100644
+--- a/nuitka/options/OptionParsing.py
++++ b/nuitka/options/OptionParsing.py
+@@ -833,12 +833,12 @@ warnings_group.add_option(
+     choices=("never", "force", "error", "warning", "info"),
+     dest="update_check",
+     metavar="MODE",
+-    default="warning",
++    default="never",
+     environment_variable_name="NUITKA_UPDATE_CHECK",
+     help="""\
+-Control checking for newer Nuitka releases. Use "never" to disable it,
++Control checking for newer Nuitka releases. Use "never" (default) to disable it,
+ "force" to bypass the cache once, "error" to make outdated versions abort,
+-"warning" (default) to warn, or "info" to merely inform. This can also be
++"warning" to warn, or "info" to merely inform. This can also be
+ controlled with the environment variable 'NUITKA_UPDATE_CHECK'.""",
+ )
+ 
