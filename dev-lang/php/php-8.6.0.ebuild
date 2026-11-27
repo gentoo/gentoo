@@ -242,19 +242,7 @@ src_prepare() {
 	#
 	#   https://github.com/php/php-src/pull/11669
 	#
-	rm ext/standard/tests/file/bug60120.phpt \
-	   ext/standard/tests/general_functions/proc_open_null.phpt \
-	   ext/standard/tests/general_functions/proc_open_redirect.phpt \
-	   ext/standard/tests/general_functions/proc_open_sockets1.phpt \
-	   ext/standard/tests/general_functions/proc_open_sockets2.phpt \
-	   ext/standard/tests/general_functions/proc_open_sockets3.phpt \
-	   ext/standard/tests/ini_info/php_ini_loaded_file.phpt \
-	   sapi/cli/tests/016.phpt \
-	   sapi/cli/tests/023.phpt \
-	   sapi/cli/tests/bug65275.phpt \
-	   sapi/cli/tests/bug74600.phpt \
-	   sapi/cli/tests/bug78323.phpt \
-	   || die
+	rm ext/standard/tests/ini_info/php_ini_loaded_file.phpt || die
 
 	# Most tests failing with an external libgd have been fixed,
 	# but there are a few stragglers:
