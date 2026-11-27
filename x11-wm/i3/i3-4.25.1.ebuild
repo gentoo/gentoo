@@ -66,6 +66,10 @@ RDEPEND="
 "
 BDEPEND="virtual/pkgconfig"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-test-race.patch
+)
+
 src_prepare() {
 	default
 
