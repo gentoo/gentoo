@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..14} python3_14t )
+PYTHON_COMPAT=( python3_{12..14} python3_14t )
 DISTUTILS_EXT=1
 DISTUTILS_OPTIONAL=1
 DISTUTILS_USE_PEP517="setuptools"
@@ -27,7 +27,7 @@ if [[ ${PV} =~ "9999" ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/xrootd/xrootd.git"
 else
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 ~x86"
 	SRC_URI="https://xrootd.web.cern.ch/download/v${PV}/${P}.tar.gz"
 fi
 
