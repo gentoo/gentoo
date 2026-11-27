@@ -102,7 +102,7 @@ BDEPEND="
 QA_MULTILIB_PATHS="usr/lib/dracut/.*"
 
 PATCHES=(
-	"${FILESDIR}"/gentoo-ldconfig-paths-r1.patch
+	"${FILESDIR}"/gentoo-ldconfig-paths-r2.patch
 )
 
 pkg_setup() {
