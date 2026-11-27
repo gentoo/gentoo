@@ -26,4 +26,9 @@ ruby_add_rdepend ">=dev-ruby/ffi-1.15.0"
 all_ruby_prepare() {
 	sed -e '/stat fragment_size is a plausible value/askip "Fails with e.g. ZFS"' \
 		-i spec/sys_filesystem_unix_spec.rb || die
+
+	# known layout mismatch on 32-bit with 64-bit offsets, fix was reverted
+	# https://github.com/djberg96/sys-filesystem/issues/71
+	sed -e "/statvfs struct is expected size/askip 'mismatch on 32-bit' if [nil].pack('P').size == 4" \
+		-i spec/sys_filesystem_unix_spec.rb || die
 }
