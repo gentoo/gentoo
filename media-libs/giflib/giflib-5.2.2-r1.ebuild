@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,7 +7,7 @@ inherit flag-o-matic multilib-minimal toolchain-funcs
 
 DESCRIPTION="Library to handle, display and manipulate GIF images"
 HOMEPAGE="https://sourceforge.net/projects/giflib/"
-SRC_URI="https://downloads.sourceforge.net/giflib/${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/project/giflib/giflib-5.x/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0/7"
@@ -18,6 +18,7 @@ BDEPEND="doc? ( virtual/imagemagick-tools )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-5.2.1-fix-missing-quantize-API-symbols.patch
+	"${FILESDIR}"/${PN}-5.2.2-CVE-2026-26740.patch
 	"${FILESDIR}"/${PN}-5.2.2-fortify.patch
 	"${FILESDIR}"/${PN}-5.2.2-verbose-tests.patch
 )
