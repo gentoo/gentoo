@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<longdescription lang="en">
+		libstudxml is a streaming XML pull parser and streaming XML
+		serializer implementation for modern, standard C++. It is
+		compact, external dependency-free, and reasonably efficient.
+		XML parser is a conforming, non-validating XML 1.0
+		implementation that is based on tested and proven code.
+	</longdescription>
+</pkgmetadata>
