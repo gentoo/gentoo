@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>pmuntz7@gmail.com</email>
+		<name>Peter Muntz</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<use>
+		<flag name="quic">Enable QUIC transport protocol support</flag>
+		<flag name="wireguard">Enable native WireGuard protocol implementation</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">SagerNet/sing-box</remote-id>
+	</upstream>
+</pkgmetadata>
