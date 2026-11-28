@@ -1,0 +1,53 @@
+https://bugs.gentoo.org/985244
+https://gitlab.gnome.org/GNOME/glib/-/merge_requests/5506
+https://gitlab.gnome.org/GNOME/glib/-/merge_requests/5510
+
+From 8e97ca2042aa9b76366686e151ee0e5b018a299b Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Sun, 15 Nov 2026 22:31:31 +0000
+Subject: [PATCH] gbitlock: fix GOTO_ASM clobber
+
+g_bit_trylock and g_pointer_bit_trylock both have inline asm with
+-DUSE_ASM_GOTO that clobbers %al, but doesn't declare this.
+
+This manifests as the 1bit-mutex-emufutex test failing when glib is built
+with `-O2 -march=x86-64-v3 -flto` since r17-5304-gf9eedd09c994e7 but that
+exposes an existing issue with the inline asm here.
+
+The "memory" clobber is not sufficient because %al is a register. We
+still need that clobber too because we use "r" result rather than "m",
+though.
+
+Tell GCC we clobber %al.
+
+Thanks to Ted Rodgers for debugging it and Andrea Pinski for helping me
+understand inline asm more.
+
+Bug: https://bugs.gentoo.org/985244
+Signed-off-by: Sam James <sam@gentoo.org>
+---
+ glib/gbitlock.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/glib/gbitlock.c b/glib/gbitlock.c
+index 8bcfa7d..70caef7 100644
+--- a/glib/gbitlock.c
++++ b/glib/gbitlock.c
+@@ -345,7 +345,7 @@ g_bit_trylock (volatile gint *address,
+                     "movzx %%al, %0"
+                     : "=r" (result)
+                     : "r" (address), "r" (lock_bit)
+-                    : "cc", "memory");
++                    : "al", "cc", "memory");
+ 
+   return result;
+ #else
+@@ -637,7 +637,7 @@ gboolean
+                       "movzx %%al, %0"
+                       : "=r" (result)
+                       : "r" (address), "r" ((gsize) lock_bit)
+-                      : "cc", "memory");
++                      : "al", "cc", "memory");
+ 
+     return result;
+ #else

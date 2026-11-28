@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+
 PYTHON_REQ_USE="xml(+)"
 PYTHON_COMPAT=( python3_{12..15} )
 
@@ -92,6 +93,7 @@ MULTILIB_CHOST_TOOLS=(
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.64.1-mark-gdbus-server-auth-test-flaky.patch
+	"${FILESDIR}"/${PN}-2.88.4-asm-clobber.patch
 )
 
 python_check_deps() {
