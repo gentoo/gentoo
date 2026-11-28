@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+
 PYTHON_REQ_USE="xml(+)"
 PYTHON_COMPAT=( python3_{12..15} )
 
@@ -15,7 +16,6 @@ INTROSPECTION_PV="1.86.0"
 INTROSPECTION_P="${INTROSPECTION_PN}-${INTROSPECTION_PV}"
 SRC_URI="
 	${SRC_URI}
-	https://distfiles.gentoo.org/pub/dev/sam%40gentoo.org/${CATEGORY}/${PN}/${PN}-2.88.2-const-whoops.patch.xz
 	introspection? ( mirror://gnome/sources/gobject-introspection/${INTROSPECTION_PV%.*}/gobject-introspection-${INTROSPECTION_PV}.tar.${GNOME_TARBALL_SUFFIX} )
 "
 INTROSPECTION_SOURCE_DIR="${WORKDIR}/${INTROSPECTION_P}"
