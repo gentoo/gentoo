@@ -135,6 +135,13 @@ esac
 # Supported for OpenPGP and sigstore.
 : "${VERIFY_SIG_OPENPGP_KEY_REFRESH:=no}"
 
+# @ECLASS-VARIABLE: VERIFY_SIG_RUN_DEFAULT_SRC_UNPACK
+# @DESCRIPTION:
+# For compatibility with other eclasses (such as unpacker).  Set it to 
+# "no" if unpacking should be performed not immediately after verifying 
+# signatures but later, according to the ebuild (calling unpacker.eclass).
+: ${VERIFY_SIG_RUN_DEFAULT_SRC_UNPACK:=yes}
+
 # @FUNCTION: verify-sig_verify_detached
 # @USAGE: <file> <sig-file> [<key-file>]
 # @DESCRIPTION:
@@ -521,7 +528,9 @@ verify-sig_src_unpack() {
 	fi
 
 	# finally, unpack the distfiles
-	default_src_unpack
+	if [[ ${VERIFY_SIG_RUN_DEFAULT_SRC_UNPACK} == "yes" ]]; then
+		default_src_unpack
+	fi
 }
 
 fi
