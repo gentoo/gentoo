@@ -105,6 +105,11 @@ python_test() {
 		tests/unit/customizations/emr/test_emr_utils.py::TestEMRutils::test_which_with_existing_command
 		tests/unit/customizations/emr/test_emr_utils.py::TestEMRutils::test_which_with_non_existing_command
 		tests/unit/customizations/wizard/test_app.py
+		# cloudformation functional tests leak YAML 1.1 bool resolvers
+		# into ruamel global state, order-dependent with xdist
+		tests/unit/customizations/wizard/test_core.py::TestPlanner::test_can_prompt_for_conditional_values_false
+		tests/unit/customizations/wizard/test_core.py::TestPlanner::test_can_prompt_for_conditional_values_true
+		tests/unit/customizations/wizard/test_core.py::TestPlanner::test_can_set_default_yes_no_value
 		tests/unit/test_compat.py::TestGetPreferredEncoding::test_getpreferredencoding_with_env_var
 		tests/unit/customizations/s3/test_factory.py::TestMaxAttemptsBounds::test_upper_bound_matches_what_awscrt_accepts
 	)
