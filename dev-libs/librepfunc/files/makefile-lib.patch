@@ -1,0 +1,30 @@
+--- a/Makefile
++++ b/Makefile
+@@ -102,7 +102,8 @@
+ bindir           = $(exec_prefix)/bin
+ sbindir          = $(exec_prefix)/sbin
+ libexecdir       = $(exec_prefix)/libexec
+-libdir           = $(exec_prefix)/lib
++libsubdir       ?= lib
++libdir           = $(exec_prefix)/$(libsubdir)
+ datadir          = $(datarootdir)
+ docdir           = $(datarootdir)/doc/$(package_name)
+ infodir          = $(datarootdir)/info
+@@ -113,7 +114,7 @@
+ man3dir          = $(mandir)/man3
+ man4dir          = $(mandir)/man4
+ man5dir          = $(mandir)/man5
+-pkgconfigdir     = /usr/lib/pkgconfig
++pkgconfigdir     = $(prefix)/$(libsubdir)/pkgconfig
+ 
+ SOURCES  := $(sort $(wildcard $(srcdir)/*.cpp))
+ OBJS      = $(SOURCES:.cpp=.o)
+@@ -126,7 +127,7 @@
+ prefix=$(prefix)
+ exec_prefix=$${prefix}
+ includedir=$${prefix}/include
+-libdir=$${exec_prefix}/lib
++libdir=$${exec_prefix}/$(libsubdir)
+ 
+ Name: librepfunc
+ Description: tools library for w_scan_cpp and wirbelscan
