@@ -15,12 +15,16 @@ KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390
 RDEPEND="!<dev-libs/openssl-1.0.2d-r1:0"
 DEPEND="${RDEPEND}"
 
+src_prepare() {
+	cp "${DISTDIR}"/openssl-c_rehash.sh.${PV} "${WORKDIR}"/c_rehash || die
+	default
+}
+
 src_configure() {
-	sed \
+	sed -i \
 		-e "/^DIR=/s:=.*:=${EPREFIX}/etc/ssl:" \
 		-e "s:SSL_CMD=/usr:SSL_CMD=${EPREFIX}/usr:" \
-		"${DISTDIR}"/openssl-c_rehash.sh.${PV} \
-		> "${WORKDIR}"/c_rehash || die #416717
+		"${WORKDIR}"/c_rehash || die #416717
 }
 
 src_install() {
