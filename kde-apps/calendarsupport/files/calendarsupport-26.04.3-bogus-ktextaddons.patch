@@ -1,0 +1,37 @@
+From ca7ce7b70a605b41a9933991de13cbfdee251a78 Mon Sep 17 00:00:00 2001
+From: Carl Schwan <carl@carlschwan.eu>
+Date: Sat, 28 Nov 2026 15:58:20 +0100
+Subject: [PATCH] Remove KTextAddons as dependency
+
+---
+ CMakeLists.txt     | 1 -
+ src/CMakeLists.txt | 1 -
+ 2 files changed, 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index cb5a8048..3d3536ec 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -134,7 +133,6 @@ find_package(KF6CalendarCore ${KF_MIN_VERSION} CONFIG REQUIRED)
+ find_package(KPim6IdentityManagementCore ${IDENTITYMANAGEMENT_LIB_VERSION} CONFIG REQUIRED)
+ find_package(KF6Holidays ${KF_MIN_VERSION} CONFIG REQUIRED)
+ find_package(KPim6AkonadiCalendar ${AKONADICALENDAR_LIB_VERSION} CONFIG REQUIRED)
+-find_package(KF6TextCustomEditor ${KTEXTADDONS_MIN_VERSION} CONFIG REQUIRED)
+ 
+ ecm_setup_version(PROJECT VARIABLE_PREFIX CALENDARSUPPORT
+                         VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/src/calendarsupport_version.h"
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 11116af4..0d1a46cc 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -111,7 +111,6 @@ target_link_libraries(
+         KF6::ConfigGui
+         Qt::PrintSupport
+     PRIVATE
+-        KF6::TextCustomEditor
+         KF6::I18n
+         KF6::Completion
+         KF6::KIOWidgets
+-- 
+GitLab
+
