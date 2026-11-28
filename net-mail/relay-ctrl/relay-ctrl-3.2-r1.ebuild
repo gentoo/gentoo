@@ -1,0 +1,76 @@
+# Copyright 1999-2025 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=8
+
+inherit toolchain-funcs fixheadtails
+
+DESCRIPTION="SMTP Relaying Control designed for qmail & tcpserver"
+HOMEPAGE="https://untroubled.org/relay-ctrl/"
+SRC_URI="https://untroubled.org/relay-ctrl/archive/${P}.tar.gz"
+
+LICENSE="GPL-2+"
+SLOT="0"
+KEYWORDS="~amd64 ~sparc ~x86"
+
+DEPEND="dev-libs/bglibs"
+RDEPEND="${DEPEND}
+	sys-apps/ucspi-tcp
+	virtual/daemontools"
+
+PATCHES=( "${FILESDIR}"/${PN}-3.1.1-NOFILE-overstep.patch )
+
+src_prepare() {
+	default
+	ht_fix_file "${S}"/Makefile
+}
+
+src_configure() {
+	local myCC="$(tc-getCC)"
+	echo "${myCC} ${CFLAGS}" > conf-cc || die
+	echo "${myCC} ${LDFLAGS}" > conf-ld || die
+	sed -i \
+		-e "s:'ar :'$(tc-getAR) :" \
+		-e "s:'ranlib :'$(tc-getRANLIB) :" Makefile || die
+}
+
+src_install() {
+	dodoc README ANNOUNCEMENT NEWS
+
+	local -r BASE=/var/spool/${PN}
+	local -r BINDIR=/usr/bin \
+		  CONFDIR=/etc/${PN} \
+		  STORAGEDIR="${BASE}"/allow
+
+	exeinto ${BINDIR}
+	doexe relay-ctrl-{age,allow,chdir,check,send,udp}
+	doman relay-ctrl-{age,allow,check,send,udp}.8
+
+	keepdir ${BASE} ${STORAGEDIR}
+	fperms 700 ${BASE}
+	fperms 777 ${STORAGEDIR} # 777 is intentional
+
+	dodir ${CONFDIR}
+	# tell it our storage dir
+	echo "${STORAGEDIR}" > "${D}"${CONFDIR}/RELAY_CTRL_DIR || die
+	# default to 30 minutes
+	echo "1800" > "${D}"${CONFDIR}/RELAY_CTRL_EXPIRY || die
+
+	dodir /etc/cron.hourly
+	echo "#!/bin/sh" > "${D}"/etc/cron.hourly/relay-ctrl-age
+	echo "/usr/bin/envdir ${CONFDIR} ${BINDIR}/relay-ctrl-age" \
+		>> "${D}"/etc/cron.hourly/relay-ctrl-age
+	fperms 755 /etc/cron.hourly/relay-ctrl-age
+}
+
+pkg_postinst() {
+	if [[ -d /usr/lib/courier-imap/authlib ]]; then
+		ln -sf /usr/bin/relay-ctrl-allow \
+			/usr/lib/courier-imap/authlib/relay-ctrl-allow
+	fi
+	elog "Please see the instructions in /usr/share/doc/${PF}/README"
+	elog "for setup instructions with Courier-IMAP and Qmail"
+
+	einfo "Ensure that the relay-ctrl-age cronjob is running"
+	einfo "otherwise your system may accumulate old relay entries."
+}
