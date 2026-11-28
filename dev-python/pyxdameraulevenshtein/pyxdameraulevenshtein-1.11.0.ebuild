@@ -18,7 +18,7 @@ HOMEPAGE="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~ppc64 ~riscv ~x86"
 
 BDEPEND="
 	>=dev-python/cython-3.1[${PYTHON_USEDEP}]
