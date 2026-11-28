@@ -1,0 +1,27 @@
+diff --git a/cblocks/cursesio.c b/cblocks/cursesio.c
+index 16e3cd3..1bae0ec 100644
+--- a/cblocks/cursesio.c
++++ b/cblocks/cursesio.c
+@@ -380,8 +380,7 @@ static void selectrepresentation(void)
+     attr_t	attr;
+ 
+     if (has_colors()) {
+-	int	pair;
+-	short	frgnd, bkgnd;
++	short	frgnd, bkgnd, pair;
+ 
+ 	start_color();
+ 	attr_get(&attr, &pair, NULL);
+diff --git a/cmines/cursesio.c b/cmines/cursesio.c
+index 9bcc9e5..9ea7f71 100644
+--- a/cmines/cursesio.c
++++ b/cmines/cursesio.c
+@@ -366,7 +366,7 @@ int ioinitialize(int updatetimerflag, int showsmileysflag, int silenceflag,
+ 		 int allowoffclicksflag)
+ {
+     attr_t	attr;
+-    int		n;
++    short		n;
+ 
+     updatetimer = updatetimerflag;
+     showsmileys = showsmileysflag;
