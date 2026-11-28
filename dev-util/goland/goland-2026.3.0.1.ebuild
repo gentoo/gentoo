@@ -43,6 +43,7 @@ BDEPEND="
 RDEPEND="
 	dev-lang/go
 	dev-libs/wayland
+	>=sys-apps/baselayout-java-0.1.0-r1
 	sys-libs/pam
 	sys-process/audit
 	>=virtual/jre-17:*
@@ -54,29 +55,29 @@ src_prepare() {
 
 	if ! use arm64; then
 		local remove_me=(
-			lib/async-profiler/aarch64
+			plugins/profiler-asyncOne-plugin/lib/async-profiler/aarch64
 			plugins/go-plugin/lib/dlv/linuxarm/dlv
 			plugins/go-plugin/lib/dlv/linuxarmmusl/dlv
 		)
 	elif ! use amd64; then
 		local remove_me=(
-			lib/async-profiler/amd64
+			plugins/profiler-asyncOne-plugin/lib/async-profiler/amd64
 			plugins/go-plugin/lib/dlv/linuxmusl/dlv
 		)
 	fi
 
 	rm -rv "${remove_me[@]}" || die
+	rm -v jbr/lib/security/cacerts || die
 
 	# excepting files that should be kept for remote plugins
 	if ! use arm64 ; then
 		skip_remote_files=(
-			"plugins/platform-ijent-impl/ijent-aarch64-unknown-linux-musl-release"
-			"plugins/platform-ijent-bundledBinaries/ijent-aarch64-unknown-linux-musl-release"
+			"lib/ijent/ijent-aarch64-unknown-linux-musl-release"
 			"plugins/gateway-plugin/lib/remote-dev-workers/remote-dev-worker-linux-arm64"
 		)
 	elif ! use amd64; then
 		skip_remote_files=(
-			"plugins/platform-ijent-impl/ijent-x86_64-unknown-linux-musl-release"
+			"lib/ijent/ijent-x86_64-unknown-linux-musl-release"
 			"plugins/gateway-plugin/lib/remote-dev-workers/remote-dev-worker-linux-amd64"
 		)
 	fi
@@ -115,6 +116,8 @@ src_install() {
 	fperms 755 "${dir}"/plugins/go-plugin/lib/dlv/linux/dlv
 	fperms 755 "${dir}"/plugins/remote-dev-server/bin/launcher.sh
 	fperms 755 "${dir}"/plugins/remote-dev-server/selfcontained/bin/{Xvfb,xkbcomp}
+
+	dosym -r /etc/ssl/certs/java/cacerts "${dir}"/jbr/lib/security/cacerts
 
 	make_wrapper "${PN}" "${dir}/bin/${PN}"
 	newicon "bin/${PN}.png" "${PN}.png"

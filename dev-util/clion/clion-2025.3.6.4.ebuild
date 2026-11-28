@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit check-reqs desktop optfeature toolchain-funcs wrapper
+inherit desktop optfeature toolchain-funcs wrapper
 
 DESCRIPTION="A complete toolset for C and C++ development"
 HOMEPAGE="https://www.jetbrains.com/clion/"
@@ -17,7 +17,7 @@ LICENSE="|| ( IDEA IDEA_Academic IDEA_Classroom IDEA_OpenSource IDEA_Personal )
 	EPL-1.0 EPL-2.0 GPL-2 GPL-2-with-classpath-exception GPL-3 ISC JDOM
 	LGPL-2.1+ LGPL-3 MIT MPL-1.0 MPL-1.1 OFL-1.1 public-domain PSF-2
 	UoI-NCSA ZLIB"
-SLOT="0/2026"
+SLOT="0/2025"
 KEYWORDS="~amd64 ~arm64"
 RESTRICT="bindist mirror"
 
@@ -46,15 +46,10 @@ RDEPEND="
 	media-libs/alsa-lib
 	media-libs/fontconfig
 	media-libs/freetype:2
-	media-libs/libglvnd
 	media-libs/mesa
 	net-print/cups
 	>=sys-apps/baselayout-java-0.1.0-r1
 	sys-apps/dbus
-	|| (
-		sys-apps/systemd
-		sys-apps/systemd-utils[udev]
-	)
 	x11-libs/cairo
 	x11-libs/libdrm
 	x11-libs/libX11
@@ -75,16 +70,6 @@ RDEPEND="
 	"
 
 QA_PREBUILT="opt/${PN}/*"
-
-CHECKREQS_DISK_BUILD="10G"
-
-pkg_pretend() {
-	check-reqs_pkg_pretend
-}
-
-pkg_setup() {
-	check-reqs_pkg_setup
-}
 
 src_prepare() {
 	if use amd64; then
@@ -110,33 +95,19 @@ src_prepare() {
 		bin/ninja
 		plugins/remote-dev-server/selfcontained
 		plugins/nativeDebug-plugin/bin/lldb/linux/${my_arch_suffix}/bin/LLDBFrontend
-		plugins/clion-radler/DotFiles/runtimes/osx-*
-		plugins/clion-radler/DotFiles/runtimes/win*
-		plugins/clion-radler/DotFiles/macos-*
-		plugins/clion-radler/DotFiles/windows-*
-		plugins/clion-radler/dotTrace.dotMemory/DotFiles/macos-*
-		plugins/clion-radler/dotTrace.dotMemory/DotFiles/windows-*
-		plugins/serial-monitor/bin/OSX
-		plugins/serial-monitor/bin/Windows
 	)
 	remove_me+=(
 		lib/async-profiler/${other_arch_amd64_aarch64}
 		plugins/clion-radler/DotFiles/linux-${other_arch_radler}
-		plugins/clion-radler/DotFiles/runtimes/linux-${other_arch_radler}/native/
-		plugins/clion-radler/DotFiles/runtimes/linux-arm/native/
-		plugins/clion-radler/DotFiles/runtimes/linux-musl-arm/native/
+		plugins/clion-radler/dotCommon/DotFiles/linux-${other_arch_radler}
 		plugins/clion-radler/dotTrace.dotMemory/DotFiles/linux-${other_arch_radler}
-		plugins/nativeDebug-plugin/bin/lldb/linux/${other_arch_amd64_aarch64}
+		plugins/nativeDebug-plugin/bin/lldb/linux/$(usex amd64 aarch64 x64)
 		plugins/python-ce/helpers/pydev/pydevd_attach_to_process/attach_linux_${other_arch_amd64_aarch64}.so
 		plugins/serial-monitor/bin/Linux/$(usex amd64 armv8_64 x86_64)
 	)
 	use !amd64 && remove_me+=(
 		plugins/python-ce/helpers/coveragepy_old/coverage/tracer.cpython-310-x86_64-linux-gnu.so
 		plugins/python-ce/helpers/pydev/pydevd_attach_to_process/attach_linux_x86.so
-	)
-	use !elibc_musl && remove_me+=(
-		plugins/clion-radler/DotFiles/runtimes/linux-musl-arm64
-		plugins/clion-radler/DotFiles/runtimes/linux-musl-x64
 	)
 
 	rm -rv "${remove_me[@]}" || die
@@ -145,12 +116,9 @@ src_prepare() {
 	# excepting files that should be kept for remote plugins
 	skip_remote_files=(
 		"plugins/platform-ijent-impl/ijent-$(usex amd64 aarch64 x86_64)-unknown-linux-musl-release"
-		"plugins/platform-ijent-bundledBinaries/ijent-$(usex amd64 aarch64 x86_64)-unknown-linux-musl-release"
 		"plugins/clion-radler/DotFiles/linux-musl-${other_arch_radler}/jb_zip_unarchiver"
 		"plugins/clion-radler/DotFiles/linux-arm/jb_zip_unarchiver"
 		"plugins/clion-radler/DotFiles/linux-musl-arm/jb_zip_unarchiver"
-		"plugins/clion-radler/DotFiles/runtimes/linux-musl-${other_arch_radler}/native/libdbgshim.so"
-		"plugins/clion-radler/DotFiles/runtimes/linux-arm/native/"
 		"plugins/gateway-plugin/lib/remote-dev-workers/remote-dev-worker-linux-$(usex amd64 arm64 amd64)"
 	)
 	# removing debug symbols and relocating debug files as per #876295
@@ -166,12 +134,8 @@ src_prepare() {
 		fi
 	done
 
-	# updates are handled by the package manager, bug #704494
-	printf '\nide.no.platform.update=Gentoo\n' >> bin/idea.properties || die
-
-	patchelf --set-rpath '$ORIGIN' "plugins/jcef-plugin/jcef/libjcef.so" || die
-	patchelf --set-rpath '$ORIGIN' "plugins/jcef-plugin/jcef/libcef.so" || die
-	patchelf --set-rpath '$ORIGIN' "plugins/jcef-plugin/jcef/jcef_helper" || die
+	patchelf --set-rpath '$ORIGIN' "jbr/lib/libjcef.so" || die
+	patchelf --set-rpath '$ORIGIN' "jbr/lib/jcef_helper" || die
 	patchelf --set-rpath '$ORIGIN/../lib' "bin/clang/linux/${my_arch_suffix}/lib/libclazyPlugin.so" || die
 }
 
@@ -185,10 +149,9 @@ src_install() {
 	if [[ -d jbr ]]; then
 		fperms 755 "${dir}"/jbr/bin/{java,javac,javadoc,jcmd,jdb,jfr,jhsdb,jinfo,jmap,jps,jrunscript,jstack,jstat,keytool,rmiregistry,serialver}
 		# Fix #763582
-		fperms 755 "${dir}"/jbr/lib/{jexec,jspawnhelper}
+		fperms 755 "${dir}"/jbr/lib/{chrome-sandbox,jcef_helper,jexec,jspawnhelper}
 	fi
 
-	fperms 755 "${dir}"/plugins/jcef-plugin/jcef/{cef_server,chrome-sandbox,jcef_helper}
 	fperms 755 "${dir}"/plugins/clion-radler/DotFiles/linux-${my_arch_radler}/Rider.Backend
 
 	dosym -r "${EPREFIX}/usr/bin/ninja" "${dir}"/bin/ninja/linux/${my_arch_suffix}/ninja
@@ -201,7 +164,7 @@ src_install() {
 	# recommended by: https://confluence.jetbrains.com/display/IDEADEV/Inotify+Watches+Limit
 	insinto /usr/lib/sysctl.d
 	newins - 30-"${PN}"-inotify-watches.conf <<<"fs.inotify.max_user_watches = 524288"
-	dostrip -x "${skip_remote_files[@]/#/${dir}/}"
+	dostrip -x "${skip_remote_files[@]/#//opt/clion/}"
 }
 
 pkg_postinst() {

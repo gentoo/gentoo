@@ -110,6 +110,7 @@ src_prepare() {
 		bin/ninja
 		plugins/remote-dev-server/selfcontained
 		plugins/nativeDebug-plugin/bin/lldb/linux/${my_arch_suffix}/bin/LLDBFrontend
+		plugins/clion-radler/DotFiles/ICorDebugMobile
 		plugins/clion-radler/DotFiles/runtimes/osx-*
 		plugins/clion-radler/DotFiles/runtimes/win*
 		plugins/clion-radler/DotFiles/macos-*
@@ -120,13 +121,13 @@ src_prepare() {
 		plugins/serial-monitor/bin/Windows
 	)
 	remove_me+=(
-		lib/async-profiler/${other_arch_amd64_aarch64}
+		plugins/profiler-asyncOne-plugin/lib/async-profiler/${other_arch_amd64_aarch64}
 		plugins/clion-radler/DotFiles/linux-${other_arch_radler}
 		plugins/clion-radler/DotFiles/runtimes/linux-${other_arch_radler}/native/
 		plugins/clion-radler/DotFiles/runtimes/linux-arm/native/
 		plugins/clion-radler/DotFiles/runtimes/linux-musl-arm/native/
 		plugins/clion-radler/dotTrace.dotMemory/DotFiles/linux-${other_arch_radler}
-		plugins/nativeDebug-plugin/bin/lldb/linux/${other_arch_amd64_aarch64}
+		plugins/nativeDebug-plugin/bin/lldb/linux/$(usex amd64 aarch64 x64)
 		plugins/python-ce/helpers/pydev/pydevd_attach_to_process/attach_linux_${other_arch_amd64_aarch64}.so
 		plugins/serial-monitor/bin/Linux/$(usex amd64 armv8_64 x86_64)
 	)
@@ -144,8 +145,7 @@ src_prepare() {
 
 	# excepting files that should be kept for remote plugins
 	skip_remote_files=(
-		"plugins/platform-ijent-impl/ijent-$(usex amd64 aarch64 x86_64)-unknown-linux-musl-release"
-		"plugins/platform-ijent-bundledBinaries/ijent-$(usex amd64 aarch64 x86_64)-unknown-linux-musl-release"
+		"lib/ijent/ijent-$(usex amd64 aarch64 x86_64)-unknown-linux-musl-release"
 		"plugins/clion-radler/DotFiles/linux-musl-${other_arch_radler}/jb_zip_unarchiver"
 		"plugins/clion-radler/DotFiles/linux-arm/jb_zip_unarchiver"
 		"plugins/clion-radler/DotFiles/linux-musl-arm/jb_zip_unarchiver"
