@@ -37,6 +37,7 @@ src_prepare() {
 		"${FILESDIR}"/${PN}-6.0-no-exec-stack.patch
 		"${FILESDIR}"/${PN}-6.0-format-security.patch
 		"${FILESDIR}"/${PN}-6.0-c99-configure.patch
+		"${FILESDIR}"/${PN}-6.0-fix-false-overlap-detection-on-32bit-systems.patch
 	)
 
 	# bug #275244
