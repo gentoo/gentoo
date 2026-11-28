@@ -342,6 +342,9 @@ src_install() {
 
 	# enforce best available python implementation
 	use minimal || python_fix_shebang "${ED}/bin"
+
+	exeinto /usr/libexec/zfs
+	doexe "${FILESDIR}/scrub-gentoo"
 }
 
 _old_layout_cleanup() {
