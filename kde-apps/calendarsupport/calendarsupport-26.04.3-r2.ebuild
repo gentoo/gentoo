@@ -5,7 +5,7 @@ EAPI=8
 
 ECM_QTHELP="false" # TODO: Port to ECMGenerateQDoc
 ECM_TEST="false"
-KFMIN=6.22.0
+KFMIN=6.27.0
 PVCUT=$(ver_cut 1-3)
 QTMIN=6.10.1
 inherit ecm gear.kde.org
@@ -24,7 +24,6 @@ DEPEND="
 	>=kde-apps/akonadi-calendar-${PVCUT}:6=
 	>=kde-apps/kcalutils-${PVCUT}:6=
 	>=kde-apps/kidentitymanagement-${PVCUT}:6=
-	>=kde-apps/kmime-${PVCUT}:6=
 	>=kde-apps/libkdepim-${PVCUT}:6=
 	>=kde-frameworks/kcalendarcore-${KFMIN}:6
 	>=kde-frameworks/kcodecs-${KFMIN}:6
@@ -36,8 +35,12 @@ DEPEND="
 	>=kde-frameworks/ki18n-${KFMIN}:6
 	>=kde-frameworks/kio-${KFMIN}:6
 	>=kde-frameworks/kjobwidgets-${KFMIN}:6
+	>=kde-frameworks/kmime-${KFMIN}:6
 	>=kde-frameworks/kwidgetsaddons-${KFMIN}:6
 "
 RDEPEND="${DEPEND}"
 
-PATCHES=( "${FILESDIR}/${P}-bogus-ktextaddons.patch" )  # in 27.04
+PATCHES=(
+	"${FILESDIR}/${P}-use-kf6mime.patch" # in 26.12
+	"${FILESDIR}/${P}-bogus-ktextaddons.patch" # in 27.04
+)

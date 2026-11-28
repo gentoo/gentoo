@@ -1,0 +1,85 @@
+From b87f410e5baa73f43c1bc7293f0c55c45fe76a85 Mon Sep 17 00:00:00 2001
+From: Volker Krause <vkrause@kde.org>
+Date: Sun, 3 May 2026 12:51:47 +0200
+Subject: [PATCH] Drop obsolete KPim6Mime in favor of KF6Mime
+
+Combines the following upstream commits:
+
+- Add forward compatibility with KMime from KDE Frameworks
+    (cherry picked from commit a44505fdebeeadc6a4389b0740a17bb4e8656794)
+
+- KMIME deprecated is not necessary now
+    (cherry picked from commit af79c189877b9833b2ecfbcfddc2d2094d48d66f)
+
+- In master we depend against kf6mime.
+    (cherry picked from commit 39b49755e9b9d20c23fceb8c68920b8e1cd30f2e)
+
+- Mark KF::Mime as required dependency again
+    Got lost as part of the transition to Frameworks.
+
+(cherry picked from commit a7fbc6a20216dc7af923d8188883fe864e6c6ec3)
+---
+ CMakeLists.txt                     | 5 ++---
+ KPimCalendarSupportConfig.cmake.in | 2 +-
+ src/CMakeLists.txt                 | 2 +-
+ 3 files changed, 4 insertions(+), 5 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 86f0cf09..8fe5e331 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -72,7 +72,6 @@ ecm_check_outbound_license(LICENSES GPL-2.0-only  FILES ${ALL_SOURCE_FILES})
+ include(ECMGenerateQDoc)
+ 
+ set(CALENDARSUPPORT_LIB_VERSION ${PIM_VERSION})
+-set(KMIME_LIB_VERSION "6.7.3")
+ set(CALENDARUTILS_LIB_VERSION "6.7.3")
+ set(IDENTITYMANAGEMENT_LIB_VERSION "6.7.3")
+ set(AKONADICALENDAR_LIB_VERSION "6.7.3")
+@@ -91,7 +90,7 @@ find_package(
+ find_package(KF6I18n ${KF_MIN_VERSION} CONFIG REQUIRED)
+ find_package(KF6GuiAddons ${KF_MIN_VERSION} CONFIG REQUIRED)
+ find_package(KF6KIO ${KF_MIN_VERSION} CONFIG REQUIRED)
+-find_package(KPim6Mime ${KMIME_LIB_VERSION} CONFIG REQUIRED)
++find_package(KF6Mime ${KF_MIN_VERSION} CONFIG REQUIRED)
+ find_package(KF6Codecs ${KF_MIN_VERSION} CONFIG REQUIRED)
+ find_package(KPim6CalendarUtils ${CALENDARUTILS_LIB_VERSION} CONFIG REQUIRED)
+ find_package(KF6CalendarCore ${KF_MIN_VERSION} CONFIG REQUIRED)
+@@ -114,7 +113,7 @@ if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+     # see e.g. https://gcc.gnu.org/bugzilla/show_bug.cgi?id=56556 or https://gcc.gnu.org/bugzilla/show_bug.cgi?id=79328
+     string(APPEND CMAKE_CXX_FLAGS " -Wshadow")
+ endif()
+-ecm_set_disabled_deprecation_versions(QT 6.11.0 KF 6.23.0 KMIME 6.7.0)
++ecm_set_disabled_deprecation_versions(QT 6.11.0 KF 6.23.0 )
+ 
+ option(USE_UNITY_CMAKE_SUPPORT "Use UNITY cmake support (speedup compile time)" OFF)
+ 
+diff --git a/KPimCalendarSupportConfig.cmake.in b/KPimCalendarSupportConfig.cmake.in
+index af609b6e..b161bd5f 100644
+--- a/KPimCalendarSupportConfig.cmake.in
++++ b/KPimCalendarSupportConfig.cmake.in
+@@ -3,7 +3,7 @@
+ 
+ @PACKAGE_INIT@
+ include(CMakeFindDependencyMacro)
+-find_dependency(KPim6Mime "@KMIME_LIB_VERSION@")
++find_dependency(KF6Mime "@KF_MIN_VERSION@")
+ find_dependency(KPim6IdentityManagementCore "@IDENTITYMANAGEMENT_LIB_VERSION@")
+ find_dependency(KPim6AkonadiCalendar "@AKONADICALENDAR_LIB_VERSION@")
+ find_dependency(Qt6PrintSupport "@QT_REQUIRED_VERSION@")
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index dd4a6283..750c4e6a 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -103,7 +103,7 @@ target_include_directories(
+ target_link_libraries(
+     KPim6CalendarSupport
+     PUBLIC
+-        KPim6::Mime
++        KF6::Mime
+         KPim6::IdentityManagementCore
+         KPim6::AkonadiCalendar
+         KF6::ConfigGui
+-- 
+2.56.1
+
