@@ -7,10 +7,13 @@
   </maintainer>
   <use>
     <flag name="canvas">Enable support for <pkg>x11-libs/goocanvas</pkg></flag>
+    <flag name="experimental">Enable experimental features</flag>
     <flag name="http">Enable embedded <pkg>net-libs/libsoup</pkg> based server</flag>
     <flag name="json">Enable support for JSON format</flag>
     <flag name="mdb">Enable support for Microsoft Access database using <pkg>app-office/mdbtools</pkg></flag>
     <flag name="sourceview">Enable support for <pkg>x11-libs/gtksourceview</pkg></flag>
+    <flag name="sqlcipher">Enable support for accessing encrypted databases with <pkg>dev-db/sqlcipher</pkg></flag>
+    <flag name="tools">Build tools such as gda-list-config, gda-list-server and gda-sql</flag>
   </use>
   <upstream>
     <remote-id type="gnome-gitlab">GNOME/libgda</remote-id>
