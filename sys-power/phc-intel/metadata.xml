@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>kaichun.ning@gmail.com</email>
+		<name>Kai-Chun Ning</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+		phc-intel is a drop-in replacement of the in-tree kernel module acpi_cpufreq
+		which supports undervolting older Intel CPUs (Pentium M, Core, Core 2).
+	</longdescription>
+	<use>
+		<flag name="experimental">Enable experimental features</flag>
+	</use>
+	<upstream>
+		<remote-id type="gitlab">linux-phc/phc-intel</remote-id>
+	</upstream>
+</pkgmetadata>

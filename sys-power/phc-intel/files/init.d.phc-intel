@@ -1,0 +1,43 @@
+#!/sbin/openrc-run
+# Copyright 2023 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+description="Intel CPU undervolting"
+command=/usr/bin/phc-intel
+command_user="root"
+extra_started_commands="status set"
+
+depend() {
+  want modules
+}
+
+start() {
+  ebegin "${RC_SVCNAME}: Setting parameters."
+  "${command}" start
+  eend "$?"
+}
+
+stop() {
+  ebegin "${RC_SVCNAME}: Unsetting parameters."
+  "${command}" stop
+  eend "$?"
+}
+
+reload() {
+  ebegin "Reloading ${RC_SVCNAME}"
+  "${command}" stop
+  "${command}" start
+  eend $?
+}
+
+status() {
+  ebegin "${RC_SVCNAME}: Querying status of parameters."
+  "${command}" status
+  eend "$?"
+}
+
+set() {
+  ebegin "${RC_SVCNAME}: Setting parameters."
+  "${command}" set
+  eend "$?"
+}
