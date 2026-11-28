@@ -56,6 +56,7 @@ RDEPEND="
 	sys-apps/dbus
 	x11-libs/gtk+:3[introspection,X]
 	x11-libs/libnotify[introspection]
+        dev-libs/glib:2[introspection]
 	|| (
 		x11-themes/adwaita-icon-theme
 		x11-themes/faenza-icon-theme
