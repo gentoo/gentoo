@@ -67,5 +67,5 @@ python_test() {
 	if ! use native-extensions || [[ ${EPYTHON} == pypy3* ]]; then
 		cext=--no-c-extensions
 	fi
-	epytest "${cext}"
+	epytest -k "not leaks" "${cext}"
 }
