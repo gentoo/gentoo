@@ -1,0 +1,13 @@
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -58,8 +58,8 @@
+   'internal/core-macros',
+ #   'internal/interpreter',
+ #   'tests/doctests',
+-#   'tests/driver/cpp',
+-#   'tests/driver/driverlib',
++  'tests/driver/cpp',
++  'tests/driver/driverlib',
+ #   'tests/driver/interpreter',
+ #   'tests/driver/nodejs',
+ #   'tests/driver/python',
