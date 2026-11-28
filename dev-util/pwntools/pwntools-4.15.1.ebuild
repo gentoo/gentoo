@@ -16,7 +16,7 @@ if [[ ${PV} == "9999" ]]; then
 else
 	SRC_URI="https://github.com/Gallopsled/pwntools/archive/${PV/_beta/beta}.tar.gz -> ${P}.gh.tar.gz"
 	if [[ ${PV} != *_beta* ]] ; then
-		KEYWORDS="amd64 ~arm64 ~riscv"
+		KEYWORDS="~amd64 ~arm64 ~riscv"
 	fi
 	S="${WORKDIR}/${PN}-${PV/_beta/beta}"
 fi
@@ -24,15 +24,11 @@ fi
 LICENSE="MIT GPL-2+ BSD-2"
 SLOT="0"
 
-# <unicorn-2.1.4:
-# https://github.com/Gallopsled/pwntools/issues/2619
-# https://github.com/unicorn-engine/unicorn/issues/2134
 RDEPEND="
 	${PYTHON_DEPS}
 	>=dev-libs/capstone-3.0.5[python,${PYTHON_USEDEP}]
 	>=dev-util/ROPgadget-5.3[${PYTHON_USEDEP}]
 	>=dev-util/unicorn-1.0.2[python,${PYTHON_USEDEP}]
-	<dev-util/unicorn-2.1.4[python,${PYTHON_USEDEP}]
 	dev-python/colored-traceback[${PYTHON_USEDEP}]
 	>=dev-python/intervaltree-3.0[${PYTHON_USEDEP}]
 	>=dev-python/mako-1.0.0[${PYTHON_USEDEP}]
@@ -49,10 +45,6 @@ RDEPEND="
 	>=dev-python/six-1.12.0[${PYTHON_USEDEP}]
 	dev-python/sortedcontainers[${PYTHON_USEDEP}]
 "
-
-PATCHES=(
-	"${FILESDIR}/${PN}-4.11.0_update_deps.patch"
-)
 
 python_configure_all() {
 	DISTUTILS_ARGS=(
