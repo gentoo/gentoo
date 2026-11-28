@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,6 +10,7 @@ MY_PN="WorldOfGoo"
 DESCRIPTION="A puzzle game with a strong emphasis on physics (GOG edition)"
 HOMEPAGE="https://2dboy.com/"
 SRC_URI="world_of_goo_${PV//./_}.sh"
+S="${WORKDIR}"
 
 LICENSE="2dboy-EULA"
 SLOT="0"
@@ -27,12 +28,10 @@ RDEPEND="
 	>=sys-devel/gcc-3.4
 	sys-libs/glibc
 	virtual/opengl
-	!games-puzzle/world-of-goo
 	!games-puzzle/world-of-goo-hb
 "
 
 dir="/opt/${PN%-*}"
-S="${WORKDIR}"
 QA_PREBUILT="${dir#/}/*"
 
 pkg_nofetch() {
