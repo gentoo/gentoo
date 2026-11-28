@@ -99,7 +99,6 @@ wimax
 amr
 
 # No hardware to test by the team
-ios
 ipod
 
 # Stuff that doesn't make sense on this arch
