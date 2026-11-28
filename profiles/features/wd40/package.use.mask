@@ -12,32 +12,6 @@ net-ftp/proftpd clamav
 net-mail/cyrus-imapd clamav
 net-proxy/havp clamav
 
-# Michał Górny <mgorny@gentoo.org> (2025-11-17)
-# Needs dev-python/pip -> uv-build.
-dev-python/argcomplete test
-dev-python/argparse-manpage test
-dev-python/build test
-dev-python/distlib test
-dev-python/ensurepip-setuptools test
-dev-python/helpdev test
-dev-python/jupyter-core test
-dev-python/logbook test
-dev-python/pytest-skip-markers test
-dev-python/pythran test
-dev-python/rope test
-dev-python/scikit-build test
-dev-python/setuptools test
-dev-python/virtualenv test
-dev-python/virtualenvwrapper test
-media-gfx/openscad test
-media-tv/mythtv python
-media-video/yle-dl test
-sci-libs/dlib test
-
-# Michał Górny <mgorny@gentoo.org> (2025-11-17)
-# Needs dev-python/dblatex -> uv-build.
-dev-util/ragel doc
-
 # Pacho Ramos <pacho@gentoo.org> (2026-10-31)
 # tests need rustified librsvg
 >=gui-libs/gtk-4.22 test
