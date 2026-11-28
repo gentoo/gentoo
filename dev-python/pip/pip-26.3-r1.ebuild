@@ -34,7 +34,7 @@ RESTRICT="!test? ( test )"
 
 # see src/pip/_vendor/vendor.txt
 RDEPEND="
-	>=dev-python/cachecontrol-0.14.4[${PYTHON_USEDEP}]
+	>=dev-python/cachecontrol-0.14.3[${PYTHON_USEDEP}]
 	>=dev-python/distlib-0.4.4[${PYTHON_USEDEP}]
 	>=dev-python/distro-1.9.0[${PYTHON_USEDEP}]
 	>=dev-python/msgpack-1.2.4[${PYTHON_USEDEP}]
