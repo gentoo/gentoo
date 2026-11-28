@@ -4,6 +4,10 @@
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2026-11-24)
+# Dependencies are not keyworded here
+xfce-base/xfce4-polkit lxde lxqt
+
 # David Seifert <soap@gentoo.org> (2026-11-07)
 # app-i18n/ibus is not keyworded here.
 app-i18n/uim ibus

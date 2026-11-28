@@ -1,9 +1,9 @@
-# Copyright 1999-2026 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit meson vala xdg-utils
+inherit meson xdg-utils
 
 DESCRIPTION="A session manager for the Xfce desktop environment"
 HOMEPAGE="
@@ -15,24 +15,22 @@ SRC_URI="https://archive.xfce.org/src/xfce/${PN}/${PV%.*}/${P}.tar.xz"
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
-IUSE="X gtk-doc +introspection nls policykit vala wayland +xscreensaver"
-REQUIRED_USE="
-	|| ( wayland X )
-	vala? ( introspection )
-"
+IUSE="X nls policykit wayland +xscreensaver"
+REQUIRED_USE="|| ( X wayland )"
 
 DEPEND="
-	>=dev-libs/glib-2.76.0
+	>=dev-libs/glib-2.72.0
 	>=x11-libs/gdk-pixbuf-2.42.8
-	>=x11-libs/gtk+-3.24.0:3[X?,introspection?,wayland?]
-	>=xfce-base/libxfce4util-4.21.0:=[introspection?,vala?]
+	>=x11-libs/gtk+-3.24.0:3[X?,wayland?]
+	>=xfce-base/libxfce4util-4.19.2:=
 	>=xfce-base/libxfce4ui-4.21.0:=
 	>=xfce-base/libxfce4windowing-4.19.2:=
 	>=xfce-base/xfconf-4.18.0:=
-	introspection? ( >=dev-libs/gobject-introspection-1.72.0:= )
-	policykit? ( >=sys-auth/polkit-0.102 )
+	policykit? (
+		>=sys-auth/polkit-0.102
+		xfce-base/xfce4-polkit
+	)
 	wayland? (
-		>=dev-libs/wayland-1.23
 		>=gui-libs/gtk-layer-shell-0.7.0
 	)
 	X? (
@@ -55,36 +53,20 @@ RDEPEND="
 		)
 	)
 "
-DEPEND+="
-	wayland? (
-		>=dev-libs/wayland-protocols-1.23
-	)
-"
 BDEPEND="
-	dev-build/xfce4-dev-tools
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
-	gtk-doc? ( dev-util/gtk-doc )
-	vala? ( $(vala_depend) )
-	wayland? (
-		>=dev-util/wayland-scanner-1.23
-	)
 "
 
 src_configure() {
 	local emesonargs=(
 		$(meson_feature X x11)
-		$(meson_use gtk-doc)
-		$(meson_use introspection)
-		$(meson_feature vala)
 		$(meson_feature wayland)
 		$(meson_feature wayland gtk-layer-shell)
 		$(meson_feature policykit polkit)
 		-Dxsession-prefix="${EPREFIX}"/usr
 		-Dwayland-session-prefix="${EPREFIX}"/usr
 	)
-
-	use vala && vala_setup
 	meson_src_configure
 }
 

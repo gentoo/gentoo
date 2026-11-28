@@ -1,16 +1,16 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit meson xdg-utils
+inherit xdg-utils
 
 DESCRIPTION="A session manager for the Xfce desktop environment"
 HOMEPAGE="
 	https://docs.xfce.org/xfce/xfce4-session/start
 	https://gitlab.xfce.org/xfce/xfce4-session
 "
-SRC_URI="https://archive.xfce.org/src/xfce/${PN}/${PV%.*}/${P}.tar.xz"
+SRC_URI="https://archive.xfce.org/src/xfce/${PN}/${PV%.*}/${P}.tar.bz2"
 
 LICENSE="GPL-2+"
 SLOT="0"
@@ -20,18 +20,19 @@ REQUIRED_USE="|| ( X wayland )"
 
 DEPEND="
 	>=dev-libs/glib-2.72.0
-	>=x11-libs/gdk-pixbuf-2.42.8
 	>=x11-libs/gtk+-3.24.0:3[X?,wayland?]
 	>=xfce-base/libxfce4util-4.19.2:=
-	>=xfce-base/libxfce4ui-4.21.0:=
+	>=xfce-base/libxfce4ui-4.18.4:=
 	>=xfce-base/libxfce4windowing-4.19.2:=
 	>=xfce-base/xfconf-4.18.0:=
-	policykit? ( >=sys-auth/polkit-0.102 )
+	policykit? (
+		>=sys-auth/polkit-0.102
+		xfce-base/xfce4-polkit
+	)
 	wayland? (
 		>=gui-libs/gtk-layer-shell-0.7.0
 	)
 	X? (
-		x11-apps/iceauth
 		>=x11-libs/libICE-1.0.10
 		>=x11-libs/libSM-1.2.3
 		>=x11-libs/libX11-1.6.7
@@ -42,6 +43,9 @@ RDEPEND="
 	${DEPEND}
 	x11-apps/xrdb
 	nls? ( x11-misc/xdg-user-dirs )
+	X? (
+		x11-apps/iceauth
+	)
 	xscreensaver? (
 		|| (
 			xfce-extra/xfce4-screensaver
@@ -51,24 +55,27 @@ RDEPEND="
 	)
 "
 BDEPEND="
+	dev-libs/glib
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
 "
 
 src_configure() {
-	local emesonargs=(
-		$(meson_feature X x11)
-		$(meson_feature wayland)
-		$(meson_feature wayland gtk-layer-shell)
-		$(meson_feature policykit polkit)
-		-Dxsession-prefix="${EPREFIX}"/usr
-		-Dwayland-session-prefix="${EPREFIX}"/usr
+	local myconf=(
+		$(use_enable X x11)
+		$(use_enable policykit polkit)
+		$(use_enable wayland)
+		$(use_enable wayland gtk-layer-shell)
+		--with-xsession-prefix="${EPREFIX}"/usr
+		ICEAUTH="${EPREFIX}"/usr/bin/iceauth
 	)
-	meson_src_configure
+
+	econf "${myconf[@]}"
 }
 
 src_install() {
-	meson_src_install
+	default
+	find "${ED}" -name '*.la' -delete || die
 
 	exeinto /etc/X11/Sessions
 	newexe - Xfce4 <<-EOF
