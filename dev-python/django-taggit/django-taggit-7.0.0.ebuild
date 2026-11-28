@@ -10,11 +10,11 @@ inherit distutils-r1
 
 DESCRIPTION="Simple tagging for Django"
 HOMEPAGE="
-	https://github.com/jazzband/django-taggit/
+	https://github.com/django-commons/django-taggit/
 	https://pypi.org/project/django-taggit/
 "
 SRC_URI="
-	https://github.com/jazzband/django-taggit/archive/${PV}.tar.gz
+	https://github.com/django-commons/django-taggit/archive/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 
