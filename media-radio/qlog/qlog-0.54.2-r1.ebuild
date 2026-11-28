@@ -34,6 +34,10 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
+PATCHES=(
+	"${FILESDIR}/${P}-desktop.patch"
+)
+
 src_configure() {
 	eqmake6 \
 		PREFIX="${PREFIX}/usr/" \
