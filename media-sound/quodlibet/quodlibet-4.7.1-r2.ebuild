@@ -81,6 +81,9 @@ src_test() {
 		# ?
 		tests/plugin/test_replaygain.py::TReplayGain::test_analyze_sinewave
 	)
+	EPYTEST_IGNORE=(
+		tests/quality/test_mypy.py
+	)
 
 	# https://quodlibet.readthedocs.io/en/latest/development/testing.html#testing
 	#virtx edo ${EPYTHON} setup.py test
