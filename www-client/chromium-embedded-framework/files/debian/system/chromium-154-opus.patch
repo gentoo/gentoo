@@ -1,0 +1,46 @@
+--- a/media/audio/audio_opus_encoder.h
++++ b/media/audio/audio_opus_encoder.h
+@@ -13,7 +13,7 @@
+ #include "media/base/audio_converter.h"
+ #include "media/base/audio_encoder.h"
+ #include "media/base/audio_timestamp_helper.h"
+-#include "third_party/opus/src/include/opus.h"
++#include <opus/opus.h>
+ 
+ namespace media {
+ 
+--- a/third_party/iamf_tools/src/iamf/cli/codec/opus_decoder.cc
++++ b/third_party/iamf_tools/src/iamf/cli/codec/opus_decoder.cc
+@@ -30,8 +30,8 @@
+ #include "iamf/obu/decoder_config/opus_decoder_config.h"
+ #include "iamf/obu/substream_channel_count.h"
+ #include "iamf/obu/types.h"
+-#include "include/opus.h"
+-#include "include/opus_types.h"
++#include <opus.h>
++#include <opus_types.h>
+ 
+ namespace iamf_tools {
+ 
+--- a/third_party/iamf_tools/src/iamf/cli/codec/opus_decoder.h
++++ b/third_party/iamf_tools/src/iamf/cli/codec/opus_decoder.h
+@@ -23,7 +23,7 @@
+ #include "iamf/cli/codec/decoder_base.h"
+ #include "iamf/obu/decoder_config/opus_decoder_config.h"
+ #include "iamf/obu/substream_channel_count.h"
+-#include "include/opus.h"
++#include <opus.h>
+ 
+ namespace iamf_tools {
+ 
+--- a/third_party/iamf_tools/src/iamf/cli/codec/opus_utils.cc
++++ b/third_party/iamf_tools/src/iamf/cli/codec/opus_utils.cc
+@@ -3,7 +3,7 @@
+ #include "absl/status/status.h"
+ #include "absl/strings/str_cat.h"
+ #include "absl/strings/string_view.h"
+-#include "include/opus_defines.h"
++#include <opus_defines.h>
+ 
+ namespace iamf_tools {
+ 

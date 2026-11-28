@@ -1,0 +1,65 @@
+Subject: [PATCH] zip: avoid Chromium-only minizip Unicode fields
+
+Gentoo builds Chromium against system minizip even when using Chromium's
+bundled compiler. Its unz_file_info64 does not have utf8_filename or
+size_utf8_filename. Use the normalized Central Directory name, matching
+the existing Copium system-minizip fix for earlier Chromium builds.
+
+--- a/third_party/zlib/google/zip_reader.cc
++++ b/third_party/zlib/google/zip_reader.cc
+@@ -311,34 +311,6 @@
+     const char* const configured_encoding =
+       encoding_.empty() ? base::kCodepageUTF8 : encoding_.c_str();
+   const char* entry_path_encoding = configured_encoding;
+-  bool physical_path_is_directory = false;
+-  bool physical_path_is_unsafe = false;
+-
+-  // If an Info-ZIP Unicode Path Extra Field is present, the physical Central
+-  // Directory path is about to be overridden. Decode and normalize it now into
+-  // `entry_.physical_path` so consumers (e.g. Safe Browsing) can still see the
+-  // name that other tools (e.g. Windows Explorer) would use for extraction.
+-  if (info.size_utf8_filename > 0) {
+-    std::u16string physical_path_in_utf16;
+-    if (!base::CodepageToUTF16(entry_.path_in_original_encoding,
+-                               configured_encoding,
+-                               base::OnStringConversionError::SUBSTITUTE,
+-                               &physical_path_in_utf16)) {
+-      LOG(ERROR) << "Cannot convert path from encoding " << configured_encoding;
+-      return false;
+-    }
+-    // Normalize() stores the normalized result in entry_.path; copy it before
+-    // applying the Unicode Path Extra Field below.
+-    Normalize(physical_path_in_utf16);
+-    entry_.physical_path = entry_.path;
+-    physical_path_is_directory = entry_.is_directory;
+-    physical_path_is_unsafe = entry_.is_unsafe;
+-
+-    // Use the Info-ZIP Unicode Path Extra Field if present.
+-    DCHECK(info.utf8_filename[info.size_utf8_filename] == '\0');
+-    entry_.path_in_original_encoding = info.utf8_filename;
+-    entry_path_encoding = base::kCodepageUTF8;
+-  }
+ 
+   // Convert path from original encoding to Unicode.
+   std::u16string path_in_utf16;
+@@ -353,17 +325,9 @@
+   // Normalize path.
+   Normalize(path_in_utf16);
+ 
+-  if (info.size_utf8_filename > 0) {
+-    // Treat an entry as a directory only if both names are directories;
+-    // otherwise callers that analyze file entries should inspect it as a file.
+-    entry_.is_directory = entry_.is_directory && physical_path_is_directory;
+-    // Treat an entry as unsafe if either name is unsafe.
+-    entry_.is_unsafe = entry_.is_unsafe || physical_path_is_unsafe;
+-  } else {
+-    // In the common case (no Unicode Path Extra Field) the physical path
+-    // matches the effective path.
+-    entry_.physical_path = entry_.path;
+-  }
++  // System minizip does not expose Chromium's Unicode Path Extra Field.
++  // The physical path therefore matches the decoded and normalized path.
++  entry_.physical_path = entry_.path;
+ 
+   entry_.original_size = info.uncompressed_size;
+ 

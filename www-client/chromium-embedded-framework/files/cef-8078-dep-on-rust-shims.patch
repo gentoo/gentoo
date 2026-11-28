@@ -1,0 +1,26 @@
+--- cef/BUILD.gn
++++ cef/BUILD.gn
+@@ -1946,6 +1946,7 @@
+     sources = libcef_sources_common
+ 
+     deps = libcef_deps_common
++    deps += [ "//build/rust/allocator:rust_alloc_shims" ]
+ 
+     configs += [
+       ":libcef_autogen_config",
+@@ -2556,6 +2557,7 @@
+     deps = [
+       ":libcef",
+       ":libcef_dll_wrapper",
++      "//build/rust/allocator:rust_alloc_shims",
+     ]
+ 
+     defines = [
+@@ -2718,6 +2719,7 @@
+     deps = [
+       ":libcef",
+       ":libcef_dll_wrapper",
++      "//build/rust/allocator:rust_alloc_shims",
+     ]
+ 
+     defines = [

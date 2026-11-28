@@ -1,0 +1,63 @@
+Fix these errors, due to apparent TypeScript 6 vs. 7 incompatibilities:
+
+  FAILED: [code=1] gen/third_party/chromium-bidi/src/bidiMapper/BidiMapper.js [...]
+  [...]
+  ../../third_party/chromium-bidi/src/bidiMapper/modules/script/ChannelProxy.ts(122,13): error TS1361: 'Protocol' cannot be used as a value because it was imported using 'import type'.
+  ../../third_party/chromium-bidi/src/bidiMapper/modules/script/ChannelProxy.ts(152,13): error TS1361: 'Protocol' cannot be used as a value because it was imported using 'import type'.
+  [...]
+
+  FAILED: [code=1] gen/third_party/chromium-bidi/src/bidiMapper/BidiMapper.d.ts [...]
+  [...]
+  ../../third_party/chromium-bidi/src/bidiMapper/CommandProcessor.ts:102:5 - error TS9025: Declaration emit for this parameter requires implicitly adding undefined to its type. This is not supported with --isolatedDeclarations.
+
+  102     parser: BidiCommandParameterParser = new BidiNoOpParser(),
+          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+    ../../third_party/chromium-bidi/src/bidiMapper/CommandProcessor.ts:102:5
+      102     parser: BidiCommandParameterParser = new BidiNoOpParser(),
+              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      Add a type annotation to the parameter parser.
+
+Also fix an assertion failure due to our TypeScript hackery:
+
+     File ".../tools/typescript/ts_library.py", line 376, in main
+       raise AssertionError(error_msg)
+  AssertionError: Undeclared dependencies to definition files encountered while building tools/typescript/definitions. Please list the following file(s) in |definitions|:
+  //../../../../usr/share/nodejs/typescript/lib/lib.es5.d.ts
+  //../../../../usr/share/nodejs/typescript/lib/lib.es2015.d.ts
+  //../../../../usr/share/nodejs/typescript/lib/lib.es2016.d.ts
+  [...]
+
+--- a/third_party/chromium-bidi/src/BUILD.gn
++++ b/third_party/chromium-bidi/src/BUILD.gn
+@@ -37,7 +37,7 @@ if (build_with_chromium) {
+     outputs = [ devtools_protocol_ambient_dts ]
+     _rel_dir = rebase_path(devtools_protocol_types_dir, target_gen_dir)
+     contents = [
+-      "import type * as ProtocolModule from '$_rel_dir/protocol.js';",
++      "import  * as ProtocolModule from '$_rel_dir/protocol.js';",
+       "import type * as ProtocolMappingModule from '$_rel_dir/protocol-mapping.js';",
+       "declare module 'devtools-protocol' {",
+       "  export import Protocol = ProtocolModule.Protocol;",
+--- a/third_party/chromium-bidi/src/bidiMapper/CommandProcessor.ts
++++ b/third_party/chromium-bidi/src/bidiMapper/CommandProcessor.ts
+@@ -99,7 +99,7 @@ export class CommandProcessor extends Ev
+     bluetoothProcessor: BluetoothProcessor,
+     digitalCredentialsProcessor: DigitalCredentialsProcessor,
+     userContextStorage: UserContextStorage,
+-    parser: BidiCommandParameterParser = new BidiNoOpParser(),
++    parser: (BidiCommandParameterParser | undefined) = new BidiNoOpParser(),
+     initConnection: (options: MapperOptions) => Promise<void>,
+     logger?: LoggerFn,
+   ) {
+--- a/tools/typescript/ts_library.py
++++ b/tools/typescript/ts_library.py
+@@ -372,8 +372,6 @@ def main(argv):
+   list_valid, error_msg = validateDefinitionDeps(
+     definitions_files, target_path, args.gen_dir, args.root_gen_dir, definitions
+   )
+-  if not list_valid:
+-    raise AssertionError(error_msg)
+ 
+   if args.in_files is not None:
+     manifest_path = os.path.join(

@@ -1,0 +1,64 @@
+Description: Gate bytemuck's SIMD impls on rust version, not date, to fix FTBFS
+ bytemuck 1.25.0 (vendored by Chromium) ships two implementations of Zeroable/Pod
+ for core::simd::Simd, selected with rustversion: one uses core::simd::LaneCount /
+ SupportedLaneCount, the other omits them (rust removed those on 2026-01-27;
+ upstream bytemuck issue 343). Upstream selects by compiler date.
+ .
+ rustversion mis-dates Debian's stable rustc 1.95 as before that date, so it picks
+ the LaneCount implementation -- but 1.95 already removed LaneCount, and the build
+ fails with E0425/E0405.
+ .
+ Select by rust version instead: before 1.95 (e.g. trixie/bookworm's 1.85) keeps
+ the LaneCount implementation; 1.95+ (sid) uses the other. Builds on both.
+ .
+ Supersedes the earlier bytemuck.patch (it added a bound that 1.25.0 now ships).
+Author: Andres Salomon <dilinger@debian.org>
+Author: Juan Manuel Méndez Rey <juan.mendezr@proton.me>
+Bug: https://github.com/Lokathor/bytemuck/issues/343
+Forwarded: not-needed
+Last-Update: 2026-06-02
+
+diff --git a/third_party/rust/chromium_crates_io/vendor/bytemuck-v1/src/pod.rs b/third_party/rust/chromium_crates_io/vendor/bytemuck-v1/src/pod.rs
+index 330f722..c8a87b5 100644
+--- a/third_party/rust/chromium_crates_io/vendor/bytemuck-v1/src/pod.rs
++++ b/third_party/rust/chromium_crates_io/vendor/bytemuck-v1/src/pod.rs
+@@ -143,7 +143,7 @@ impl_unsafe_marker_for_simd!(
+   }
+ );
+ 
+-#[rustversion::before(2026-01-27)] // See https://github.com/Lokathor/bytemuck/issues/343
++#[rustversion::before(1.95)] // See https://github.com/Lokathor/bytemuck/issues/343
+ #[cfg(feature = "nightly_portable_simd")]
+ #[cfg_attr(
+   feature = "nightly_docs",
+@@ -156,7 +156,7 @@ where
+ {
+ }
+ 
+-#[rustversion::since(2026-01-27)] // See https://github.com/Lokathor/bytemuck/issues/343
++#[rustversion::since(1.95)] // See https://github.com/Lokathor/bytemuck/issues/343
+ #[cfg(feature = "nightly_portable_simd")]
+ #[cfg_attr(
+   feature = "nightly_docs",
+diff --git a/third_party/rust/chromium_crates_io/vendor/bytemuck-v1/src/zeroable.rs b/third_party/rust/chromium_crates_io/vendor/bytemuck-v1/src/zeroable.rs
+index 186c567..7b8c438 100644
+--- a/third_party/rust/chromium_crates_io/vendor/bytemuck-v1/src/zeroable.rs
++++ b/third_party/rust/chromium_crates_io/vendor/bytemuck-v1/src/zeroable.rs
+@@ -222,7 +222,7 @@ impl_unsafe_marker_for_simd!(
+     }
+ );
+ 
+-#[rustversion::before(2026-01-27)] // See https://github.com/Lokathor/bytemuck/issues/343
++#[rustversion::before(1.95)] // See https://github.com/Lokathor/bytemuck/issues/343
+ #[cfg(feature = "nightly_portable_simd")]
+ #[cfg_attr(
+   feature = "nightly_docs",
+@@ -235,7 +235,7 @@ where
+ {
+ }
+ 
+-#[rustversion::since(2026-01-27)] // See https://github.com/Lokathor/bytemuck/issues/343
++#[rustversion::since(1.95)] // See https://github.com/Lokathor/bytemuck/issues/343
+ #[cfg(feature = "nightly_portable_simd")]
+ #[cfg_attr(
+   feature = "nightly_docs",

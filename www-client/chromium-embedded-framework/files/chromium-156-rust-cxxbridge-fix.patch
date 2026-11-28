@@ -1,0 +1,11 @@
+--- a/third_party/rust/cxx/chromium_integration/run_cxxbridge.py
++++ b/third_party/rust/cxx/chromium_integration/run_cxxbridge.py
+@@ -44,7 +44,7 @@
+   parser = argparse.ArgumentParser("<def filter_non_cfg_rustflags>")
+   parser.add_argument("--cfg", action="append"),
+   parsed_rustc_args, _other_args = parser.parse_known_args(
+       args=unrecognized_script_args[:rustflags_separator])
+-  for cfg_arg in parsed_rustc_args.cfg:
++  for cfg_arg in (parsed_rustc_args.cfg or []):
+     if "=" not in cfg_arg:  # `buildflag_header.gni` only supports bool flags.
+       # TODO(https://crbug.com/436606652): Stop using `_BUILDFLAG_NOT_SET_`

@@ -1,0 +1,22 @@
+../../third_party/devtools-frontend/src/front_end/core/host/DispatchHttpRequestClient.ts:17:41 - error TS9025: Declaration emit for this parameter requires implicitly adding undefined to its type. This is not supported with --isolatedDeclarations.
+
+17   constructor(readonly type: ErrorType, readonly response?: DispatchHttpRequestResult, options?: ErrorOptions) {
+                                           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  ../../third_party/devtools-frontend/src/front_end/core/host/DispatchHttpRequestClient.ts:17:41
+    17   constructor(readonly type: ErrorType, readonly response?: DispatchHttpRequestResult, options?: ErrorOptions) {
+                                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    Add a type annotation to the parameter response.
+
+
+
+--- a/third_party/devtools-frontend/src/front_end/core/host/BUILD.gn
++++ b/third_party/devtools-frontend/src/front_end/core/host/BUILD.gn
+@@ -6,7 +6,6 @@ import("../../../scripts/build/ninja/dev
+ import("../../../scripts/build/ninja/devtools_module.gni")
+ 
+ devtools_module("host") {
+-  split_compilation = true
+   sources = [
+     "AidaClient.ts",
+     "AidaClientTypes.ts",

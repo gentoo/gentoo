@@ -1,0 +1,91 @@
+--- /dev/null
++++ b/build/rust/allocator/dummy.rs
+@@ -0,0 +1,1 @@
++fn main() {}
+--- /dev/null
++++ b/build/rust/allocator/generate_rust_shims.py
+@@ -0,0 +1,56 @@
++import subprocess
++import os
++import glob
++import sys
++import shutil
++
++def main():
++    if len(sys.argv) < 4:
++        print("Usage: generate_rust_shims.py <dummy_rs_path> <output_dir> <rustc_path>")
++        sys.exit(1)
++
++    dummy_path = sys.argv[1]
++    output_dir = os.path.abspath(sys.argv[2])
++    rustc_path = sys.argv[3]
++    work_dir = os.path.dirname(dummy_path)
++    
++    os.chdir(work_dir)
++    
++    try:
++        # Use the specified rustc binary instead of the system default
++        subprocess.run([rustc_path, "-C", "save-temps", os.path.basename(dummy_path)], check=True)
++        
++        shim_obj = None
++        for obj in glob.glob("*.o"):
++            try:
++                out = subprocess.check_output(["nm", obj]).decode()
++                if " T " in out and "__rust_alloc" in out:
++                    shim_obj = obj
++                    break
++            except Exception:
++                continue
++        
++        if shim_obj:
++            shutil.copy(shim_obj, os.path.join(output_dir, "rust_alloc_shims.o"))
++            
++            temps = glob.glob("*.o") + glob.glob("*.ll") + glob.glob("*.bc") + glob.glob("*.s")
++            binary_name = os.path.basename(dummy_path).replace(".rs", "")
++            if os.path.exists(binary_name):
++                temps.append(binary_name)
++                
++            for f in temps:
++                try:
++                    os.remove(f)
++                except Exception:
++                    pass
++            
++            sys.exit(0)
++        else:
++            sys.exit(1)
++            
++    except Exception:
++        sys.exit(1)
++
++if __name__ == "__main__":
++    main()
++
+--- a/build/rust/allocator/BUILD.gn
++++ b/build/rust/allocator/BUILD.gn
+@@ -44,4 +44,26 @@
+     visibility = [ ":*" ]
+   }
+ }
++
++if (rust_sysroot_absolute != "") {
++  _rustc_bin_path = rust_sysroot_absolute + "/bin/rustc"
++} else {
++  _rustc_bin_path = rebase_path("//third_party/rust-toolchain/bin/rustc", root_build_dir)
++}
++
++action("generate_rust_shims") {
++  script = "generate_rust_shims.py"
++  inputs = [ "dummy.rs" ]
++  outputs = [ "$target_gen_dir/rust_alloc_shims.o" ]
++  args = [ 
++    rebase_path("dummy.rs", root_build_dir),
++    rebase_path("$target_gen_dir", root_build_dir),
++    _rustc_bin_path
++  ]
++}
++
++static_library("rust_alloc_shims") {
++  sources = [ "$target_gen_dir/rust_alloc_shims.o" ]
++  visibility = [ "*" ]
++}
