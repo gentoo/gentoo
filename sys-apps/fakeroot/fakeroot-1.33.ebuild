@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -26,7 +26,8 @@ BDEPEND="nls? ( app-text/po4a )"
 DOCS=( AUTHORS BUGS DEBUG README doc/README.saving )
 
 PATCHES=(
-	"${FILESDIR}/${PN}-1.32.2-musl.patch"
+	"${FILESDIR}/${PN}-1.32.2-musl-stdint.patch"
+	"${FILESDIR}/${PN}-1.32.2-musl-xattr.patch" # merged upstream 1.37.2
 	"${FILESDIR}/${PN}-1.32.2-configure-id_t.patch" # merged upstream 1.35.1
 )
 
