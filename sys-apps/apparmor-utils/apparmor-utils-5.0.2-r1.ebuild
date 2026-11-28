@@ -57,6 +57,10 @@ src_prepare() {
 
 	sed -i utils/aa-remove-unknown \
 		-e 's#^\(APPARMOR_FUNCTIONS=\).*#\1/usr/libexec/rc.apparmor.functions#' || die
+
+	# unreleased typo fix https://gitlab.com/apparmor/apparmor/-/commit/92cf2e327c5f8f1dcc5af90f9c0980048e241e64
+	sed -i utils/aa-notify.desktop \
+		-e 's/notifictions/notifications/' || die
 }
 
 src_compile() {
@@ -104,4 +108,10 @@ src_install() {
 	pushd binutils > /dev/null || die
 	emake install DESTDIR="${D}" USE_SYSTEM=1
 	popd > /dev/null || die
+}
+
+pkg_postinst() {
+	einfo 'If you want to enable desktop notifications for policy violations,'
+	einfo 'enable the notification deamon by running:'
+	einfo 'cp /usr/share/applications/aa-notify.desktop ~/.config/autostart/.'
 }
