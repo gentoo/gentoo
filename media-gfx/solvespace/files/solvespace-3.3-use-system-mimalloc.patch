@@ -1,0 +1,59 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 367179a..83eae0f 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -240,11 +239,6 @@ if(ENABLE_GUI OR ENABLE_CLI)
+     add_subdirectory(extlib/libdxfrw)
+ endif()
+ 
+-message(STATUS "Using in-tree mimalloc")
+-set(MI_OVERRIDE OFF CACHE BOOL "")
+-set(MI_BUILD_SHARED OFF CACHE BOOL "")
+-set(MI_BUILD_OBJECT OFF CACHE BOOL "")
+-set(MI_BUILD_TESTS OFF CACHE BOOL "")
+ if(EMSCRIPTEN)
+     # HACK: We only use mimalloc for the temporary heap, not as a general purpose
+     # allocator. However, the Emscripten port of mimalloc assumes that it is used
+@@ -257,8 +251,7 @@ if(EMSCRIPTEN)
+     # and remove this hack if we find the need to do so in the future.
+     set(MI_EXTRA_CPPDEFS "emmalloc_free=free;emmalloc_memalign=memalign" CACHE INTERNAL "")
+ endif()
+-add_subdirectory(extlib/mimalloc EXCLUDE_FROM_ALL)
+-set(MIMALLOC_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/extlib/mimalloc/include)
++find_package(mimalloc REQUIRED)
+ 
+ if(NOT FORCE_VENDORED_Eigen3)
+     find_package(Eigen3 CONFIG)
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 3af2075..8aed439 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -29,14 +29,13 @@ target_include_directories(slvs_deps SYSTEM INTERFACE
+     ${ZLIB_INCLUDE_DIR}
+     ${PNG_PNG_INCLUDE_DIR}
+     ${FREETYPE_INCLUDE_DIRS}
+-    ${MIMALLOC_INCLUDE_DIR}
+     ${EIGEN3_INCLUDE_DIRS})
+ target_link_libraries(slvs_deps INTERFACE
+     dxfrw
+     ${ZLIB_LIBRARY}
+     ${PNG_LIBRARY}
+     ${FREETYPE_LIBRARY}
+-    mimalloc-static)
++    mimalloc)
+ 
+ if(NOT USE_QT_GUI OR ENABLE_CLI)
+     target_include_directories(slvs_deps SYSTEM INTERFACE ${CAIRO_INCLUDE_DIRS})
+diff --git a/src/slvs/CMakeLists.txt b/src/slvs/CMakeLists.txt
+index d931f8f..7f5e9e4 100644
+--- a/src/slvs/CMakeLists.txt
++++ b/src/slvs/CMakeLists.txt
+@@ -5,7 +5,7 @@ add_library(slvs-interface INTERFACE)
+ target_sources(slvs-interface INTERFACE lib.cpp)
+ target_compile_definitions(slvs-interface INTERFACE -DLIBRARY)
+ target_include_directories(slvs-interface INTERFACE ${CMAKE_SOURCE_DIR}/include)
+-target_link_libraries(slvs-interface INTERFACE slvs-solver mimalloc-static)
++target_link_libraries(slvs-interface INTERFACE slvs-solver mimalloc)
+ 
+ if(ENABLE_PYTHON_LIB)
+     add_custom_command(
