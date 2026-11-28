@@ -17,17 +17,25 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	app-i18n/opencc:=
-	dev-cpp/glog:=
 	dev-cpp/yaml-cpp:=
 	>=dev-libs/boost-1.74:=
+	dev-libs/darts
 	dev-libs/leveldb:=
 	dev-libs/marisa
+	dev-libs/spdlog:=
 "
 DEPEND="${RDEPEND}
+	dev-libs/utfcpp
+	x11-base/xorg-proto
 	test? ( dev-cpp/gtest )
 "
 
 DOCS=( CHANGELOG.md README.md )
+
+PATCHES=(
+	"${FILESDIR}/${PN}-1.17.0-use-system-headers.patch"
+	"${FILESDIR}/${PN}-1.18.0-use-system-spdlog.patch"
+)
 
 src_configure() {
 	# -Werror=odr
@@ -35,19 +43,11 @@ src_configure() {
 	# https://github.com/rime/librime/issues/954
 	filter-lto
 
-	# for glog
-	if use debug; then
-		append-cxxflags -DDCHECK_ALWAYS_ON
-		local CMAKE_BUILD_TYPE=Debug
-	else
-		append-cxxflags -DNDEBUG
-	fi
-
 	local mycmakeargs=(
 		-DBUILD_TEST=$(usex test)
-		-DCMAKE_BUILD_PARALLEL_LEVEL=$(makeopts_jobs)
 		-DENABLE_EXTERNAL_PLUGINS=ON
 		-DINSTALL_PRIVATE_HEADERS=ON
 	)
+
 	cmake_src_configure
 }

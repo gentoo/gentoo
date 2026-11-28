@@ -1,0 +1,12 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index e3391078..67c2d3a2 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -133,6 +133,7 @@ endif()
+ find_package(Threads REQUIRED)
+ 
+ if(ENABLE_LOGGING)
++  find_package(spdlog REQUIRED)
+   # Always use the bundled, pinned spdlog so that the library is linked
+   # statically and no new runtime dependency is introduced.
+   if(NOT TARGET spdlog::spdlog)

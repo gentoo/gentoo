@@ -11,7 +11,7 @@ SRC_URI="https://github.com/rime/librime/archive/refs/tags/${PV}.tar.gz -> ${P}.
 
 LICENSE="BSD BSD-2 Boost-1.0 MIT"
 SLOT="0/1-${PV}"
-KEYWORDS="amd64 arm64 ~loong ppc ppc64 ~riscv x86"
+KEYWORDS="~amd64 ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
 IUSE="debug test"
 RESTRICT="!test? ( test )"
 
@@ -20,14 +20,21 @@ RDEPEND="
 	dev-cpp/glog:=
 	dev-cpp/yaml-cpp:=
 	>=dev-libs/boost-1.74:=
+	dev-libs/darts
 	dev-libs/leveldb:=
 	dev-libs/marisa
 "
 DEPEND="${RDEPEND}
+	dev-libs/utfcpp
+	x11-base/xorg-proto
 	test? ( dev-cpp/gtest )
 "
 
 DOCS=( CHANGELOG.md README.md )
+
+PATCHES=(
+	"${FILESDIR}/${PN}-1.17.0-use-system-headers.patch"
+)
 
 src_configure() {
 	# -Werror=odr
