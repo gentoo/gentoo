@@ -6,4 +6,7 @@
 		ripOLE is a small program/library designed to pull out attachments from
 		OLE2 data files (ie, MS Office documents).
 	</longdescription>
+	<upstream>
+		<remote-id type="github">inflex/ripOLE</remote-id>
+	</upstream>
 </pkgmetadata>
