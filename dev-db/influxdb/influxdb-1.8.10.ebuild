@@ -45,6 +45,9 @@ src_install() {
 	newins etc/config.sample.toml influxdb.conf
 	insinto /etc/logrotate.d
 	newins scripts/logrotate influxdb
+	exeinto /usr/lib/influxdb/scripts
+	newexe scripts/influxd-systemd-start.sh influxd-systemd-start.sh
+	fowners influxdb:influxdb /usr/lib/influxdb/scripts/influxd-systemd-start.sh
 	systemd_dounit scripts/influxdb.service
 
 	newconfd "${FILESDIR}"/influxdb.confd influxdb
