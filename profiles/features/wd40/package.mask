@@ -116,7 +116,7 @@ dev-python/aiosmtpd
 dev-python/atpublic
 dev-python/authheaders
 dev-python/behave
-dev-python/cachecontrol
+=dev-python/cachecontrol-0.15.0
 dev-python/crispy-bootstrap3
 dev-python/crispy-bootstrap4
 dev-python/crispy-bootstrap5
