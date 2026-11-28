@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+<upstream>
+	<remote-id type="github">openv/vcontrold</remote-id>
+</upstream>
 <maintainer type="person" proxied="yes">
 	<email>tl@stonemx.de</email>
 	<name>Tobias Leupold</name>
