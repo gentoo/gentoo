@@ -12,7 +12,7 @@ else
 	MY_PV="${PV/_pre/-}"
 fi
 MY_SRC="${PN}-${MY_PV}"
-MY_URI="http://ftp.porcupine.org/mirrors/postfix-release/official"
+MY_URI="http://ftp.porcupine.org/mirrors/postfix-release/experimental"
 RC_VER="2.7"
 
 DESCRIPTION="A fast and secure drop-in replacement for sendmail"
@@ -23,16 +23,16 @@ S="${WORKDIR}/${MY_SRC}"
 
 LICENSE="|| ( IBM EPL-2.0 )"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 
-IUSE="+berkdb cdb dovecot-sasl +eai ldap ldap-bind +lmdb mbox memcached mongodb mysql nis pam postgres sasl selinux sqlite ssl tlsrpt"
+IUSE="berkdb cdb dovecot-sasl +eai ldap ldap-bind +lmdb mbox memcached mongodb mysql nis pam postgres sasl selinux sqlite ssl tlsrpt"
 
 DEPEND="
 	acct-group/postfix
 	acct-group/postdrop
 	acct-user/postfix
 	dev-libs/libpcre2:0
-	berkdb? ( >=sys-libs/db-3.2:* )
+	berkdb? ( >=sys-libs/db-3.2:= )
 	cdb? ( || ( >=dev-db/tinycdb-0.76 >=dev-db/cdb-0.75-r4 ) )
 	eai? ( dev-libs/icu:= )
 	ldap? ( net-nds/openldap:= )
@@ -50,6 +50,7 @@ DEPEND="
 	"
 
 RDEPEND="${DEPEND}
+	acct-user/postdrop
 	dev-lang/perl
 	memcached? ( net-misc/memcached )
 	net-mail/mailbase
@@ -298,15 +299,23 @@ src_install() {
 	insinto /usr/include/postfix
 	doins include/*.h
 
-	systemd_dounit "${FILESDIR}/${PN}.service"
+	systemd_dounit "${FILESDIR}/${PN}.service" "${FILESDIR}/postlift.socket"
+	systemd_newunit "${FILESDIR}/postlift.service" "postlift@.service"
 }
 
 pkg_postinst() {
-	if ver_replacing -lt 3.11 ; then
-		# This is an upgrade which requires user review
-		ewarn "Default database and cache type changed to lmdb"
-		ewarn "with postfix-3.11. Please read the migration guide:"
-		ewarn "  https://www.postfix.org/NON_BERKELEYDB_README.html"
+	if has_version -r sys-apps/systemd && ver_replacing -lt 3.12; then
+		elog "For non-root local submissions under NoNewPrivileges=yes or nosuid,"
+		elog "enable the postlift socket on systemd systems:"
+		elog "  systemctl enable --now postlift.socket"
+		elog "Such submissions fail while the socket is inactive, including early boot."
+		elog "See NO_NEW_PRIVILEGES_README for details."
+	fi
+
+	if ver_replacing -lt 3.12; then
+		ewarn "berkdb USE flag is off by default in postfix-3.12."
+		ewarn "Remember to turn it on if you are still using hash"
+		ewarn "or btree local database files."
 	fi
 
 	if ! use berkdb && ! use cdb && ! use lmdb; then
