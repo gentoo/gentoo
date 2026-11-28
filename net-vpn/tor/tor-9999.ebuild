@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{12..14} )
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/torproject.org.asc
-inherit edo python-any-r1 readme.gentoo-r1 systemd verify-sig
+inherit eapi9-ver edo python-any-r1 readme.gentoo-r1 systemd verify-sig
 
 MY_PV="$(ver_rs 4 -)"
 MY_PF="${PN}-${MY_PV}"
@@ -202,4 +202,12 @@ src_install() {
 
 	insinto /etc/tor/
 	newins "${FILESDIR}"/torrc-r3 torrc
+}
+
+pkg_postinst() {
+	if ver_replacing -lt 0.4.9.17-r3; then
+		ewarn "Setting 'User tor' in ${EROOT}/etc/tor/torrc is no longer required"
+		ewarn "as both the systemd unit and OpenRC init scripts start directly"
+		ewarn "with the 'tor' user now."
+	fi
 }
