@@ -1,7 +1,9 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=9
+
+inherit toolchain-funcs
 
 DESCRIPTION="Create a diff disregarding formatting"
 HOMEPAGE="https://www.gnu.org/software/wdiff/"
@@ -13,19 +15,37 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc 
 IUSE="experimental test"
 RESTRICT="!test? ( test )"
 
-RDEPEND="
-	sys-apps/diffutils
-	sys-apps/less
+DEPEND="
 	sys-libs/ncurses:=
 "
-DEPEND="${RDEPEND}"
+RDEPEND="
+	${DEPEND}
+	sys-apps/diffutils
+	sys-apps/less
+"
 BDEPEND="
 	sys-apps/texinfo
-	test? ( app-misc/screen )
+	test? (
+		app-misc/screen
+		sys-apps/diffutils
+	)
 "
 
 src_configure() {
-	econf $(use_enable experimental)
+	local termcap
+
+	# ncurses provides termcap via terminfo which is found in "tinfo" when
+	# installed as ncurses[tinfo] and in "ncurses" when installed as
+	# ncurses[-tinfo].
+	if $(tc-getPKG_CONFIG) --exists tinfo ; then
+		termcap=tinfo
+	else
+		termcap=ncurses
+	fi
+
+	econf \
+		--with-termcap=${termcap} \
+		$(use_enable experimental)
 }
 
 src_test() {
