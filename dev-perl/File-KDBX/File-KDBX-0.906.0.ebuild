@@ -29,5 +29,6 @@ BDEPEND="
 	test? (
 		${RDEPEND}
 		dev-perl/File-KeePass-KDBX
+		dev-perl/Test-Fatal
 	)
 "
