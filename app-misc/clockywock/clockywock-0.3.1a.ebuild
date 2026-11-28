@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,7 +18,10 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 "
 
-PATCHES=( "${FILESDIR}/${P}-makefile.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-makefile.patch"
+	"${FILESDIR}/${P}-nullptr.patch"
+)
 
 src_prepare() {
 	# Respect compiler
