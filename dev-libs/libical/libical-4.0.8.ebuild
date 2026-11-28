@@ -51,6 +51,8 @@ BDEPEND="
 
 DOCS=( CHANGELOG.md CONTRIBUTORS.md README.md docs/UsingLibical.md )
 
+PATCHES=( "${FILESDIR}/${P}-fix-leak.patch" ) # in 4.0.9
+
 python_check_deps() {
 	python_has_version "dev-python/pygobject:3[${PYTHON_USEDEP}]"
 }
