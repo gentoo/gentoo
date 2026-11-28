@@ -11,7 +11,7 @@ SRC_URI="https://github.com/aria2/${PN}/releases/download/release-${PV}/${P}.tar
 
 LICENSE="GPL-2+-with-openssl-exception"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~amd64 ~arm arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
 IUSE="
 	adns bittorrent +gnutls libuv +libxml2 metalink +nettle
 	nls sqlite scripts ssh ssl tcmalloc test xmlrpc
