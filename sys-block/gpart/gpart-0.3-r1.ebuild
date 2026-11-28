@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,6 +16,8 @@ KEYWORDS="amd64 ~hppa x86"
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.1h-errno.patch
 	"${FILESDIR}"/${PN}-0.3-build.patch
+	"${FILESDIR}"/${PN}-0.3-daddr_t.patch
+	"${FILESDIR}"/${PN}-0.3-loff_t.patch
 )
 
 src_prepare() {
