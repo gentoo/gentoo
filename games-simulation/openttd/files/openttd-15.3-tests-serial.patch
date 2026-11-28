@@ -1,0 +1,25 @@
+https://bugs.gentoo.org/987125
+https://github.com/OpenTTD/OpenTTD/pull/14935
+
+From 419ef87ba7aaa3d3fb14eff98fb007974ee39378 Mon Sep 17 00:00:00 2001
+From: glx22 <glx@openttd.org>
+Date: Wed, 17 Dec 2025 17:24:10 +0100
+Subject: [PATCH] Codefix 2b24444: Don't run regression tests in parallel
+
+---
+ cmake/CreateRegression.cmake | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/cmake/CreateRegression.cmake b/cmake/CreateRegression.cmake
+index 355ced191642e..a266b68db6311 100644
+--- a/cmake/CreateRegression.cmake
++++ b/cmake/CreateRegression.cmake
+@@ -54,5 +54,7 @@ macro(create_regression)
+             WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
+     )
+ 
++    set_property(TEST regression_${REGRESSION_TEST_NAME} PROPERTY RUN_SERIAL TRUE)
++
+     add_dependencies(regression regression_${REGRESSION_TEST_NAME})
+ endmacro()
+
