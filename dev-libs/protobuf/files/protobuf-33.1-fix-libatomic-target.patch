@@ -1,0 +1,24 @@
+--- a/cmake/protobuf-configure-target.cmake
++++ b/cmake/protobuf-configure-target.cmake
+@@ -8,7 +8,7 @@
+ # Refactors configuration options set on all Protobuf targets
+ function(protobuf_configure_target target)
+     if(protobuf_LINK_LIBATOMIC)
+-        target_link_libraries(libprotobuf PRIVATE atomic)
++        target_link_libraries("${target}" PRIVATE atomic)
+     endif()
+ 
+     target_compile_features("${target}" PUBLIC cxx_std_17)
+ 
+--- a/cmake/upb_generators.cmake
++++ b/cmake/upb_generators.cmake
+@@ -22,7 +22,7 @@
+     target_compile_definitions(protoc-gen-${generator}
+       PRIVATE LIBPROTOC_EXPORTS PROTOBUF_USE_DLLS)
+   endif()
+-  target_link_libraries(protoc-gen-${generator}
++  target_link_libraries(protoc-gen-${generator} PRIVATE
+     libprotobuf
+     utf8_validity
+     ${protobuf_LIB_UPB}
+
