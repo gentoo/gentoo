@@ -1,0 +1,69 @@
+From https://gitlab.inria.fr/knem/knem/-/commit/5e5268ee35c656d2a67b1a6a1edc52dd93a7feec.patch
+From: Leonid Bloch <lb.workbox@gmail.com>
+Date: Thu, 14 Aug 2025 17:43:22 +0300
+Subject: [PATCH] driver/linux: Fix build with kernels 6.16+ after timer API
+ rename
+
+Upstream kernel commit 41cb08555c4164996d67c78b3bf1c658075b75f1
+renamed the `from_timer()` macro to `timer_container_of()` as a
+part of moving timer APIs to the canonical `timer_*()` namespace.
+
+This causes knem build failures on kernels v6.16+ with:
+  error: implicit declaration of function 'from_timer'
+
+Fix this by:
+- Adding detection for `timer_container_of()` in check_kernel_headers.sh
+- Providing a compatibility macro that maps `from_timer()` to
+  `timer_container_of()` when building against newer kernels
+
+Link: https://lore.kernel.org/all/aB2X0jCKQO56WdMt@gmail.com
+
+Signed-off-by: Leonid Bloch <lb.workbox@gmail.com>
+
+Add missing KNEM_ prefix to macro definition and checks.
+Update Changelog.
+
+Signed-off-by: Brice Goglin <Brice.Goglin@inria.fr>
+--- a/driver/linux/check_kernel_headers.sh
++++ b/driver/linux/check_kernel_headers.sh
+@@ -412,6 +412,19 @@ else
+   echo no
+ fi
+ 
++# from_timer() was renamed to timer_container_of() in v6.16
++echo -n "  checking (in kernel headers) timer_container_of() availability ... "
++if test -e ${LINUX_HDR}/include/linux/timer.h > /dev/null ; then
++  if grep timer_container_of ${LINUX_HDR}/include/linux/timer.h > /dev/null ; then
++    echo "#define KNEM_HAVE_TIMER_CONTAINER_OF 1" >> ${TMP_CHECKS_NAME}
++    echo yes
++  else
++    echo no
++  fi
++else
++  echo no
++fi
++
+ # add the footer
+ echo "" >> ${TMP_CHECKS_NAME}
+ echo "#endif /* __knem_checks_h__ */" >> ${TMP_CHECKS_NAME}
+--- a/driver/linux/knem_hal.h
++++ b/driver/linux/knem_hal.h
+@@ -20,6 +20,16 @@
+ #define DIV_ROUND_UP(n,d) (((n) + (d) - 1) / (d))
+ #endif
+ 
++/* Compatibility for timer API changes */
++#ifdef KNEM_HAVE_TIMER_SETUP
++	#ifdef KNEM_HAVE_TIMER_CONTAINER_OF
++		/* from_timer() was renamed to timer_container_of() in v6.16 */
++		#define from_timer(var, callback_timer, timer_fieldname) \
++				timer_container_of(var, callback_timer, timer_fieldname)
++	#endif
++	/* else: from_timer is already defined in older kernels */
++#endif
++
+ #if (defined KNEM_HAVE_REMAP_VMALLOC_RANGE) && (defined KNEM_HAVE_VMALLOC_USER)
+ /*
+  * Either use both official vmalloc_user()/remap_vmalloc_range() or none
+-- 
+GitLab
