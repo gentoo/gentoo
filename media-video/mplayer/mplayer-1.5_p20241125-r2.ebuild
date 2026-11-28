@@ -508,6 +508,8 @@ src_configure() {
 		append-ldflags -nopie
 	fi
 
+	append-cflags -D_XOPEN_SOURCE
+
 	###########################
 	# X enabled configuration #
 	###########################
