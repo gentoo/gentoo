@@ -5,7 +5,7 @@ EAPI=8
 
 inherit gnustep-2
 
-DESCRIPTION="a simple calendar and agenda application"
+DESCRIPTION="Simple calendar and agenda application"
 HOMEPAGE="https://github.com/poroussel/simpleagenda"
 SRC_URI="https://github.com/poroussel/simpleagenda/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="dbus"
 
-DEPEND=">=dev-libs/libical-0.27
+DEPEND="dev-libs/libical:=
 	>=virtual/gnustep-back-0.20.0
 	dbus? ( gnustep-libs/dbuskit )"
 RDEPEND="${DEPEND}"

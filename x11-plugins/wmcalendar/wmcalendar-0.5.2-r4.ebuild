@@ -1,19 +1,21 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=9
+
 inherit toolchain-funcs
 
-DESCRIPTION="a calendar dockapp"
+DESCRIPTION="Calendar dockapp"
 HOMEPAGE="https://wmcalendar.sourceforge.net"
 SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.tar.gz"
+S="${WORKDIR}/${P}/Src"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ppc ~sparc x86"
 
 RDEPEND="
-	dev-libs/libical
+	dev-libs/libical:=
 	x11-libs/gtk+:2
 	x11-libs/libX11
 	x11-libs/libXext
@@ -23,9 +25,8 @@ BDEPEND="virtual/pkgconfig"
 
 DOCS=( ../{BUGS,CHANGES,HINTS,README,TODO} )
 
-S=${WORKDIR}/${P}/Src
-
-PATCHES=( "${FILESDIR}"/${P}-exit-sin-and-cos.patch
+PATCHES=(
+	"${FILESDIR}"/${P}-exit-sin-and-cos.patch
 	"${FILESDIR}"/${P}-rename_kill_func.patch
 	"${FILESDIR}"/${P}-ical.patch
 	"${FILESDIR}"/${P}-fno-common.patch

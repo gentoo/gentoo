@@ -1,0 +1,197 @@
+From a24eb628697fd086ad83015be6a1778debb6890b Mon Sep 17 00:00:00 2001
+From: UB <ubed@bugqore.com>
+Date: Thu, 19 Nov 2026 20:58:54 +0530
+Subject: [PATCH] icaldirset.c - compare the UID directly in icaldirset_fetch
+ (#1494)
+
+* icaldirset.c - compare the UID directly in icaldirset_fetch
+
+* icalfileset.c, icaldirset.c - free the temporary filesets with icalset_free
+
+icalfileset_produce_icalcluster() and icaldirset_commit() released their
+temporary fileset with icalfileset_free()/fileset->free(), which only
+frees the fileset internals, leaking the icalset struct and its dsn.
+
+* icaldirset.c - list the store directory on Windows
+
+The non-dirent branch of icaldirset_read_directory() called
+_findfirst("*"), which lists the current working directory instead of
+the store directory, so icaldirset never saw the stored clusters on
+Windows.
+---
+ CHANGELOG.md                |  6 +++++
+ src/libicalss/icaldirset.c  | 31 ++++++++++++----------
+ src/libicalss/icalfileset.c |  2 +-
+ src/test/regression.c       | 51 +++++++++++++++++++++++++++++++++++++
+ 4 files changed, 75 insertions(+), 15 deletions(-)
+
+diff --git a/CHANGELOG.md b/CHANGELOG.md
+index d5734aa89..d407db63b 100644
+--- a/CHANGELOG.md
++++ b/CHANGELOG.md
+@@ -66,6 +66,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
+     used to skip the first Sunday and put every occurrence in the other weeks.
+   - Various fixes for fuzzer issues (OOM and cputime).
+ 
++- libicalss:
++  - `icaldirset_fetch()` and `icaldirset_has_uid()` no longer match an unrelated component. The UID
++    was put in a double-quoted icalgauge query that never parsed, so the lookup ran without a filter
++    and returned the first stored component for any UID (and a crafted UID could change the query).
++    The UID is now compared directly.
++
+ - Buildsystem changes:
+   - Generate export headers with CMake, fixing Windows static linking without requiring consumers
+     to define `LIBICAL_*_STATIC_DEFINE`.
+diff --git a/src/libicalss/icaldirset.c b/src/libicalss/icaldirset.c
+index 14d654476..fa82c47b6 100644
+--- a/src/libicalss/icaldirset.c
++++ b/src/libicalss/icaldirset.c
+@@ -65,7 +65,7 @@ icalerrorenum icaldirset_commit(icalset *set)
+     fileset = icalset_new(ICAL_FILE_SET, icalcluster_key(dset->cluster), &options);
+ 
+     (void)fileset->commit(fileset);
+-    fileset->free(fileset);
++    icalset_free(fileset);
+ 
+     return ICAL_NO_ERROR;
+ }
+@@ -115,9 +115,11 @@ static icalerrorenum icaldirset_read_directory(icaldirset *dset)
+ #else
+     struct _finddata_t c_file;
+     intptr_t hFile;
++    char pattern[MAXPATHLEN];
+ 
+-    /* Find first .c file in current directory */
+-    if ((hFile = _findfirst("*", &c_file)) == -1L) {
++    /* Find the first file in the store directory */
++    snprintf(pattern, sizeof(pattern), "%s/*", dset->dir);
++    if ((hFile = _findfirst(pattern, &c_file)) == -1L) {
+         icalerror_set_errno(ICAL_FILE_ERROR);
+         return ICAL_FILE_ERROR;
+     } else {
+@@ -445,31 +447,32 @@ icalcomponent *icaldirset_fetch_match(icalset *set, const icalcomponent *c)
+ icalcomponent *icaldirset_fetch(icalset *set, icalcomponent_kind kind, const char *uid)
+ {
+     icaldirset *dset;
+-    icalgauge *gauge;
+     icalgauge *old_gauge;
+     icalcomponent *c;
+-    char sql[256];
+ 
+     _unused(kind);
+ 
+     icalerror_check_arg_rz((set != 0), "set");
+     icalerror_check_arg_rz((uid != 0), "uid");
+ 
+-    snprintf(sql, 256, "SELECT * FROM VEVENT WHERE UID = \"%s\"", uid);
+-
+-    gauge = icalgauge_new_from_sql(sql, 0);
++    /* Compare the UID directly instead of building an icalgauge query
++       from it, so an unparsable or crafted UID cannot match an
++       unrelated component */
+     dset = (icaldirset *)set;
+     old_gauge = dset->gauge;
+-    dset->gauge = gauge;
+-
+-    c = icaldirset_get_first_component(set);
++    dset->gauge = 0;
+ 
+-    dset->gauge = old_gauge;
++    for (c = icaldirset_get_first_component(set); c != 0;
++         c = icaldirset_get_next_component(set)) {
++        const char *this_uid = icalcomponent_get_uid(c);
+ 
+-    if (gauge) {
+-        icalgauge_free(gauge);
++        if (this_uid != 0 && strcmp(uid, this_uid) == 0) {
++            break;
++        }
+     }
+ 
++    dset->gauge = old_gauge;
++
+     return c;
+ }
+ 
+diff --git a/src/libicalss/icalfileset.c b/src/libicalss/icalfileset.c
+index 648d3f50e..109dde985 100644
+--- a/src/libicalss/icalfileset.c
++++ b/src/libicalss/icalfileset.c
+@@ -141,7 +141,7 @@ icalcluster *icalfileset_produce_icalcluster(const char *path)
+         ret = icalcluster_new(path, NULL);
+     } else {
+         ret = icalcluster_new(path, ((icalfileset *)fileset)->cluster);
+-        icalfileset_free(fileset);
++        icalset_free(fileset);
+     }
+ 
+     icalerror_set_errors_are_fatal(errstate);
+diff --git a/src/test/regression.c b/src/test/regression.c
+index 1883bb602..87e86d2d9 100644
+--- a/src/test/regression.c
++++ b/src/test/regression.c
+@@ -1449,6 +1449,56 @@ static void test_dirset(void)
+     icalset_free(cluster);
+ }
+ 
++static void test_dirset_fetch(void)
++{
++    const bool estate = icalerror_get_errors_are_fatal();
++    const char *uids[] = {"alice@example.com", "bob@example.com"};
++    icalcomponent *c;
++    icalset *s;
++    int i;
++
++    icalerror_set_errors_are_fatal(false);
++
++    (void)mkdir("store-fetch", 0755);
++    (void)unlink("store-fetch/202601");
++
++    s = icaldirset_new("store-fetch");
++    ok("opening 'store-fetch' dirset", s != NULL);
++
++    for (i = 0; i < 2; i++) {
++        char str[512];
++
++        snprintf(str, sizeof(str),
++                 "BEGIN:VCALENDAR\r\n"
++                 "VERSION:2.0\r\n"
++                 "PRODID:-//libical//regression//EN\r\n"
++                 "BEGIN:VEVENT\r\n"
++                 "UID:%s\r\n"
++                 "DTSTAMP:20260101T000000Z\r\n"
++                 "DTSTART:20260105T100000Z\r\n"
++                 "END:VEVENT\r\n"
++                 "END:VCALENDAR\r\n",
++                 uids[i]);
++        ok("adding component to dirset",
++           icaldirset_add_component(s, icalcomponent_new_from_string(str)) == ICAL_NO_ERROR);
++    }
++    (void)icaldirset_commit(s);
++
++    c = icaldirset_fetch(s, ICAL_VEVENT_COMPONENT, "bob@example.com");
++    ok("fetch finds the matching UID",
++       c != NULL && strcmp(icalcomponent_get_uid(c), "bob@example.com") == 0);
++
++    ok("fetch of an unknown UID finds nothing",
++       icaldirset_fetch(s, ICAL_VEVENT_COMPONENT, "nobody@example.com") == NULL);
++    ok("fetch of a UID with a quote finds nothing",
++       icaldirset_fetch(s, ICAL_VEVENT_COMPONENT, "nobody\" OR UID != \"x") == NULL);
++    ok("has_uid of an unknown UID is false",
++       icaldirset_has_uid(s, "nobody@example.com") == 0);
++
++    icalset_free(s);
++    icalerror_set_errors_are_fatal(estate);
++}
++
+ static void test_compare(void)
+ {
+     icalvalue *v1, *v2;
+@@ -8952,6 +9002,7 @@ int main(int argc, const char *argv[])
+     test_run("Test File Set (Extended)", test_fileset_extended, do_test, do_header);
+     test_run("Test Dir Set", test_dirset, do_test, do_header);
+     test_run("Test Dir Set (Extended)", test_dirset_extended, do_test, do_header);
++    test_run("Test Dir Set fetch by UID", test_dirset_fetch, do_test, do_header);
+ 
+ #if defined(LIBICAL_BUILD_TESTING_LONGRUNNING)
+     /* test_file_locks is slow but should work ok */
