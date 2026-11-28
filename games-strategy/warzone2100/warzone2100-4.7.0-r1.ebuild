@@ -6,14 +6,14 @@ EAPI=8
 PLOCALES="ar_SA bg_BG ca_ES cs da de el en_GB eo es et_EE fa_IR fi fr fy ga he_IL hr hu id it ja_JP ko la lt my_MM nb nl pl pt pt_BR ro ru sk sl tr tt_RU uk_UA zh_CN zh_TW"
 inherit branding cmake flag-o-matic plocale xdg
 
-MY_PV=$(ver_cut 1-2)
+MY_PV="${PV%-r1}"
 VIDEOS_PV=2.2
 VIDEOS_P=${PN}-videos-${VIDEOS_PV}.wz
 
 DESCRIPTION="3D real-time strategy game"
 HOMEPAGE="https://wz2100.net/"
 SRC_URI="
-	https://downloads.sourceforge.net/warzone2100/releases/${PV}/${PN}_src.tar.xz -> ${P}.tar.xz
+	https://downloads.sourceforge.net/warzone2100/releases/${MY_PV}/${PN}_src.tar.xz -> ${PN}-${MY_PV}.tar.xz
 	videos? ( https://downloads.sourceforge.net/warzone2100/warzone2100/Videos/${VIDEOS_PV}/high-quality-en/sequences.wz -> ${VIDEOS_P} )
 "
 S="${WORKDIR}/${PN}"
@@ -36,7 +36,7 @@ COMMON_DEPEND="
 	media-libs/libjpeg-turbo
 	media-libs/libogg
 	media-libs/libpng:=
-	>=media-libs/libsdl3-3.2.12[opengl,X]
+	>=media-libs/libsdl3-3.2.12[opengl]
 	media-libs/libtheora:=
 	media-libs/libvorbis
 	media-libs/openal
@@ -75,7 +75,7 @@ PATCHES=(
 )
 
 src_unpack() {
-	unpack ${P}.tar.xz
+	unpack ${PN}-${MY_PV}.tar.xz
 }
 
 src_prepare() {
@@ -142,8 +142,9 @@ src_install() {
 	cmake_src_install
 
 	# We cover licencing within the ebuild itself
-	rm "${ED}"/usr/share/doc/${PF}/COPYING* \
-		"${ED}"/usr/share/doc/${PF}/copyright || die
+	# (upstream installs these into the doc dir root, no per-version subdir)
+	rm -f "${ED}"/usr/share/doc/COPYING* \
+		"${ED}"/usr/share/doc/copyright
 
 	docompress -x /usr/share/man/man6/warzone2100.6.gz
 
