@@ -1,0 +1,24 @@
+Enable TCP wrappers using an option --with-wrappers
+
+--- a/configure.ac	2025-08-06 01:11:20.416351296 +0300
++++ b/configure.ac	2025-08-06 01:16:40.801696525 +0300
+@@ -310,6 +310,11 @@
+ AC_QOSIENT_HASHDEBUG()
+ AC_QOSIENT_NANOSECONDS()
+ AC_QOSIENT_THREADS(V_THREADS)
++AC_ARG_WITH(wrappers,
++  [  --with-wrappers         build with libwrappers support],
++  with_wrappers="$withval",
++  with_wrappers="yes")
++if test "x$with_wrappers" != "xno"; then
+ AC_QOSIENT_TCPWRAP(V_WRAPDEP, V_INCLS)
+ if test ! -z "$V_WRAPDEP"; then
+    if test -f "$V_WRAPDEP"; then
+@@ -333,6 +338,7 @@
+    AC_DEFINE([HAVE_TCP_WRAPPER], [], [Using Tcp wrappers])
+    WRAPLIBS="$V_WRAPDEP"
+ fi
++fi
+ 
+ case "$target_cpu" in
+ *86)
