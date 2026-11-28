@@ -289,6 +289,11 @@ src_test() {
 		"RunCMake.CMP0125"
 	)
 
+	tc-has-64bit-time_t || CMAKE_SKIP_TESTS+=(
+		# CMake Error: Cannot parse SOURCE_DATE_EPOCH as integer
+		"RunCMake.string"
+	)
+
 	local myctestargs=(
 		# Filter all tests requiring Fortran
 		-LE "Fortran"
