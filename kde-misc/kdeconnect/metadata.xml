@@ -11,6 +11,7 @@
 		<remote-id type="kde-invent">network/kdeconnect-kde</remote-id>
 	</upstream>
 	<use>
+		<flag name="digitizer">Enable plugin that allows to use devices as pressure-sensitive drawing tablets</flag>
 		<flag name="pulseaudio">Enable system volume control plugin using <pkg>media-libs/libpulse</pkg></flag>
 		<flag name="telephony">Enable telephony plugin using <pkg>kde-frameworks/modemmanager-qt</pkg></flag>
 		<flag name="X">Enable remote input mousepad/shareinputdevices plugins relying on X11 libs</flag>
