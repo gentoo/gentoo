@@ -36,7 +36,7 @@ index aed023afdc..474f68dfcb 100644
      )
  endif()
  
-+cmake_dependent_option(BUILD_DOC_VIEWER "Build integrated documentation viewer" ON HAIKU OFF)
++cmake_dependent_option(BUILD_DOC_VIEWER "Build integrated documentation viewer" OFF HAIKU ON)
 +
  set(HAVE_KSYSGUARD FALSE)
  find_package(KSysGuard CONFIG QUIET)
