@@ -47,6 +47,10 @@ BDEPEND="
 		")
 		llvm-core/lld
 	)
+	tree-sitter? (
+		dev-util/tree-sitter-cli
+		net-libs/nodejs
+	)
 "
 
 LLVM_COMPONENTS=( lldb cmake llvm/utils )
@@ -72,7 +76,7 @@ src_configure() {
 		-DLLDB_ENABLE_LZMA=$(usex lzma)
 		-DLLDB_ENABLE_LIBXML2=$(usex xml)
 		-DLLVM_ENABLE_TERMINFO=$(usex ncurses)
-		-DLLVM_ENABLE_TREESITTER=$(usex tree-sitter)
+		-DLLDB_ENABLE_TREESITTER=$(usex tree-sitter)
 
 		-DLLDB_INCLUDE_TESTS=$(usex test)
 

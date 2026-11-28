@@ -1,6 +1,10 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2026-11-28)
+# Needs net-libs/nodejs
+llvm-core/lldb tree-sitter
+
 # Thibaud CANALE <thican@thican.net> (2026-05-16)
 # Tests require net-libs/nodejs which is unavailable on x32.
 app-crypt/certbot test

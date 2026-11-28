@@ -1,6 +1,10 @@
 # Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2026-11-28)
+# dev-util/tree-sitter-cli not keyworded on arm
+llvm-core/lldb tree-sitter
+
 # Alfredo Tupone <tupone@gentoo.org> (2026-11-8)
 # sci-libs/coinasl only available on amd64/x86
 sci-libs/coinor-cbc -asl
