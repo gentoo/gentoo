@@ -104,6 +104,15 @@ src_prepare() {
 	}
 	EOF
 
+	# Fails where openat2 is blocked by seccomp (containers), the fallback
+	# follows the absolute symlink outside the sysroot
+	printf "#!/bin/sh\nexit 77" > tests/run-sysroot.sh || die
+	# Need rpm2cpio able to unpack xz payloads, e.g. app-arch/rpm[lzma]
+	if ! { rpm2cpio tests/debuginfod-rpms/rhel7/hello2-1.0-2.x86_64.rpm | cpio -t | grep -q . ; } 2>/dev/null; then
+		printf "#!/bin/sh\nexit 77" > tests/run-debuginfod-extraction.sh || die
+		printf "#!/bin/sh\nexit 77" > tests/run-debuginfod-archive-groom.sh || die
+	fi
+
 	# https://sourceware.org/PR23914
 	sed -i 's:-Werror::' */Makefile.in || die
 }
