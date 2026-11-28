@@ -1,0 +1,45 @@
+https://bugs.gentoo.org/987125
+https://github.com/OpenTTD/OpenTTD/issues/15961
+https://github.com/OpenTTD/OpenTTD/pull/15962
+
+From bd04adf9e0bcdafb734b0f924c8cebe911a295a3 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?S=C3=B6ren=20Tempel?= <soeren+git@soeren-tempel.net>
+Date: Sun, 23 Aug 2026 20:31:25 +0200
+Subject: [PATCH] Codefix #15961: Don't pass a temporary object to
+ BreakIterator::setText
+
+The API contract for BreakIterator::setText state the following:
+
+> The BreakIterator will retain a reference to the supplied string. The
+> caller must not modify or delete the text while the BreakIterator
+> retains the reference.
+
+However, presently, OpenTTD passes a temporary UnicodeString object
+to this function. This object is destroyed as soon as the ->setText
+expression was evaluated.
+
+Therefore, this invocation violates the API contract and since the
+UnicodeString destructor deallocates the underlying memory this can
+cause an access to freed memory later on. To fix this, ensure that the
+BreakIterator does not outlive the UnicodeString by using the same
+lifetime for both objects.
+
+Fixes #15961
+---
+ src/gfx_layout_icu.cpp | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/src/gfx_layout_icu.cpp b/src/gfx_layout_icu.cpp
+index c569d7cb3cb52..e1a678ea345db 100644
+--- a/src/gfx_layout_icu.cpp
++++ b/src/gfx_layout_icu.cpp
+@@ -435,7 +435,8 @@ std::unique_ptr<const ICUParagraphLayout::Line> ICUParagraphLayout::NextLine(int
+ 	if (cur_width > max_width) {
+ 		/* Create a break-iterator to find a good place to break lines. */
+ 		auto break_iterator = ICUParagraphLayoutFactory::GetBreakIterator();
+-		break_iterator->setText(icu::UnicodeString(this->buff, this->buff_length));
++		icu::UnicodeString text(this->buff, this->buff_length);
++		break_iterator->setText(text);
+ 
+ 		auto overflow_run = last_run - 1;
+ 

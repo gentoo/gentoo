@@ -71,6 +71,7 @@ DOCS=( docs/directory_structure.md )
 PATCHES=(
 	"${FILESDIR}/${PN}-1.11.2_dont_compress_man.patch"
 	"${FILESDIR}/${PN}-15.3-tests-serial.patch"
+	"${FILESDIR}/${PN}-15.3-use-after-free.patch"
 )
 
 src_prepare() {
