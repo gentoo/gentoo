@@ -35,6 +35,9 @@ python_test() {
 	# tests/test_window.py::test_fresh_window_data fails if TMUX_PANE is set
 	# https://bugs.gentoo.org/927158
 	local -x TMUX_PANE=
+	# tmux falls back to the passwd shell (nologin for portage), making
+	# panes exit immediately and the server shut down
+	local -x SHELL=/bin/sh
 
 	epytest -o addopts= tests
 }
