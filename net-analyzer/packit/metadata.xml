@@ -8,4 +8,10 @@
 	<upstream>
 		<remote-id type="github">resurrecting-open-source-projects/packit</remote-id>
 	</upstream>
+	<longdescription>
+	Packit (PACket toolKIT) is a network auditing tool. It uses libpcap and can make
+	real packages (frames) that are able to travel in a network. Packit also allows
+	one to add personalized payloads. Other good feature is the possibility to read
+	dump files created by tcpdump.
+	</longdescription>
 </pkgmetadata>
