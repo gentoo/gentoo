@@ -24,6 +24,10 @@ DEPEND="${RDEPEND} dev-lang/perl"
 
 DOCS=( README.md Changes )
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.14-ldflags.patch
+)
+
 src_configure() {
 	lto-guarantee-fat
 	tc-export CC AR
