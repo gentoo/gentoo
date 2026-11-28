@@ -74,6 +74,9 @@ multilib_src_configure() {
 }
 
 multilib_src_test() {
+	# Hangs with 1.6.0 for x32
+	[[ ${ABI} == x32 ]] && EMESON_SKIP_TESTS=( zstd:test-zstd-fast )
+
 	meson_src_test --timeout-multiplier=2
 }
 
