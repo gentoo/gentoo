@@ -161,13 +161,19 @@ src_prepare() {
 		-e 's#load\("\@poetry//.+?"\)\s*##gm;' \
 		-e 's#dependency\(.*?\),?##gs;' {} \; || die
 
-	# bug 982138
+	# bug 982138,985395
 	# fix snappy configuration for cpu features
-	if ! use cpu_flags_x86_sse4_2; then
+	if use cpu_flags_x86_sse4_2; then
+		sed -i '/config:gcc_or_clang/a\            "-msse4.2",' \
+			src/third_party/snappy/BUILD.bazel
+	else
 		sed -i 's/SNAPPY_HAVE_X86_CRC32 1/SNAPPY_HAVE_X86_CRC32 0/' \
 			src/third_party/snappy/platform/build_linux_x86_64/config.h || die
 	fi
-	if ! use cpu_flags_x86_ssse3; then
+	if use cpu_flags_x86_ssse3; then
+		sed -i '/config:gcc_or_clang/a\            "-mssse3",' \
+			src/third_party/snappy/BUILD.bazel
+	else
 		sed -i 's/SNAPPY_HAVE_SSSE3 1/SNAPPY_HAVE_SSSE3 0/' \
 			src/third_party/snappy/platform/build_linux_x86_64/config.h || die
 	fi
