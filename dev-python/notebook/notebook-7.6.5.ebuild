@@ -18,7 +18,7 @@ HOMEPAGE="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
 
 COMMON_DEPEND="
 	>=dev-python/jupyter-builder-1.0.2[${PYTHON_USEDEP}]
